@@ -1,4 +1,4 @@
-# Proposed Extension to Superstring Theory
+# Proposed Extension to the Theory of Everything
 
 **Kihara:** Thinking about it a little, is the advantage of this theory that it is actually a concept of a vacuum (a system where no objects exist), and that it predicts the existence of energy and negative energy solely through the structure of space? Or am I mistaken?
 
