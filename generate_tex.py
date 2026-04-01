@@ -126,6 +126,9 @@ def markdown_to_latex():
 
     if in_list:
         out_lines.append(r'\end{itemize}')
+        
+    if in_code:
+        out_lines.append(r'\end{lstlisting}')
 
     tex_content = tex_header + '\n'.join(out_lines) + tex_footer
     
