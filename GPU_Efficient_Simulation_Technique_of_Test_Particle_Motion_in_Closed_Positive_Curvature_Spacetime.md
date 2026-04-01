@@ -4,7 +4,7 @@
 As a conceptual model to understand the "falling in curved spacetime" of General Relativity and to process it at high speed on computers, we present plots depicting space and particle trajectories (Figure 1). In this simulation verification, an educational analogy model (Toy Model) simulating the real environment of closed positive curvature spacetime is adopted to profile the compatibility with GPU architectures and processing limits.
 
 ![Visualization of Geodesics](tensor_lookup_geodesic.png)
-*Figure 1: The spatial model targeted by this simulation. The squares of the flat "index space" are bent into a "wedge mesh" that narrows as it goes deeper toward the orthogonal curvature axis ($W$ axis) (with radius of curvature $R=100$). Test particles A and B simply go straight along this grid without any gravitational acceleration logic applied, yet they curve and fall toward the origin in the physical coordinate space due to the inherent geometric contraction of the grid. This plot demonstrates that the strictly calculated exact trajectory (semi-transparent line) and the tensor interpolation trajectory (dotted line) in this proposed method perfectly coincide against the background space mesh.*
+*Figure 1: The spatial model targeted by this simulation. The squares of the flat "index space" are bent into a "wedge mesh" that narrows as it goes deeper toward the orthogonal curvature axis ($W$ axis) (with radius of curvature $R=100$). Test particles A and B simply go straight along this grid without any gravitational acceleration logic applied, yet they curve and fall toward the origin in the physical coordinate space due to the inherent geometric contraction of the grid. This plot demonstrates that the precisely calculated exact trajectory (semi-transparent line) and the tensor interpolation trajectory (dotted line) in this proposed method perfectly coincide against the background space mesh.*
 
 Subsequently, Figure 2 depicts dynamic topological changes that occur when "time" progresses on this curved surface, drawing a 3D plot adding the time axis (-t axis).
 
@@ -14,7 +14,7 @@ Subsequently, Figure 2 depicts dynamic topological changes that occur when "time
 To simulate objects falling in a gravitational field, it is usually necessary to repeatedly calculate acceleration step by step. The proposed method pre-constructs geometric data where "space contracts toward gravity as time progresses" (as in Figs 1 and 2) ahead of time into a 4-dimensional array (Tensor $\mathcal{T}$) in Step 1. Within this tensor space, since the gravitational influence is persistently preserved as spatial distortion, geodesic trajectories can be calculated dynamically during execution by relying solely on linear interpolation (Lerp) without calculating any acceleration parameters (Step 2).
 
 ## 1. Purpose
-Numerical simulations of test particle motion (geodesics) in curved spacetime based on General Relativity typically require nonlinear calculations of Christoffel symbols and gravitational acceleration per step, leading to massive computational bottlenecks in N-body macroscopic physical problems. This paper proposes a highly-parallelized GPU simulation method that completely abstracts this calculation into an external pre-computed index data structure, replacing the heavy nonlinear simulation loop with trivial linear tracking operations in a local inertial frame.
+Numerical simulations of test particle motion (geodesics) in curved spacetime based on General Relativity typically require nonlinear calculations of Christoffel symbols and gravitational acceleration per step. Ultimately, this leads to massive computational bottlenecks in N-body macroscopic physical problems. This paper proposes a highly-parallelized GPU simulation method that completely abstracts this calculation into an external pre-computed index data structure, replacing the heavy nonlinear simulation loop with trivial linear tracking operations in a local inertial frame.
 
 ## 2. Theoretical Background: Tensorization Based on Equivalence Principles
 According to Einstein's Equivalence Principle, in a sufficiently local region, gravity effectively vanishes, permitting the assumption of an uncurved local inertial frame (Special Relativity domain). This method computationally maps this strictly local flatness onto an orthogonal, uniform, and linear memory mesh called the index memory space.
@@ -66,7 +66,7 @@ Through this dramatically reduced linear routine setup, gravitational tracking p
 The primary hallmark of the approach distills dynamic test tracking directly into raw "addition" and "basic memory referencing" architectures inside loop executions. Utilizing high-end multi-core instances or standard GPUs actively guarantees a virtual constant runtime profile ($O(1)$ approximation) through completely bypassing mathematical choke points across the algorithm.
 
 ### 4.2 Error Artifact Mitigation via Linear Interpolation
-Proper test particle mapping functionally translates back to $\mathbf{X}_{\text{exact}}^{(s)} = \Psi(\boldsymbol{\xi}^{(s)})$ formally. Nevertheless, to slash live tracking processor requirements significantly, discrete tensor referencing parameters govern primary loop constraints. Directly employing integer truncation functions (Floor) natively restricts calculated coordinate points triggering sharp zigzag mapping constraints (Manhattan distance scaling structures).
+Proper test particle mapping functionally translates back to $\mathbf{X}_{\text{exact}}^{(s)} = \Psi(\boldsymbol{\xi}^{(s)})$ formally. Nevertheless, it is necessary to slash live tracking processor requirements significantly. Therefore, discrete tensor referencing parameters govern primary loop constraints. Directly employing integer truncation functions (Floor) natively restricts calculated coordinate points triggering sharp zigzag mapping constraints (Manhattan distance scaling structures).
 However, accurately deploying multidimensional Linear Interpolation (Lerp) algorithms efficiently neutralises stepping discrepancies:
 $$
 \mathbf{X}_{\text{phys}}^{(s)} \approx \mathrm{Lerp}(\mathcal{T}, \boldsymbol{\xi}^{(s)})
@@ -92,9 +92,9 @@ The baseline theory encompassing local linear properties coupled with geometric 
   *(Definitions outlining Special Relativistic functions remaining completely absolute locally despite larger coordinate system curvatures organically).*
 - [3] E. F. Taylor and J. A. Wheeler, "Exploring Black Holes: Introduction to General Relativity," *Addison-Wesley* (2000).  
   *(Summarised spatial distortion formulas regarding localized time tracking scaling limits).*
-- [4] Y. Hagihara, "Theory of the relativistic trajectories in a gravitational field of Schwarzschild," *Japanese Journal of Astronomy and Geophysics*, Vol. 8, p.67 (1931).
-  *(Derivation of space-axis constraints and elliptic integrations resolving analytical models strictly).*
-- [5] S. Chandrasekhar, "The Mathematical Theory of Black Holes," *Clarendon Press, Oxford* (1983).
+- [4] Y. Hagihara, "\textit{Theory of the relativistic trajectories in a gravitational field of Schwarzschild}," Japanese Journal of Astronomy and Geophysics, Vol. 8, p.67 (1931).
+  *(Derivation of space-axis constraints and elliptic integrations resolving analytical models).*
+- [5] S. Chandrasekhar, "\textit{The Mathematical Theory of Black Holes}," Clarendon Press, Oxford (1983).
   *(Validating temporal integration paths required identifying exact physical parameters).*
 
 ## 7. Accuracy and Speed Verifications
@@ -139,7 +139,7 @@ Furthermore, note functionally that the primary profiling implementation constru
 
 **Metric Outcomes**:
 Tracking Figure 4 outputs conclusively confirms intensive execution overhead matching dense 1,000,000 node iterations triggering 0.686 seconds calculating Method A variables natively via sustained active ALU limits effectively.
-Transitioning operational workloads mapping Method B implementations drastically reduces arithmetic requirements simulating mere 1331 point calculation requests consuming 0.0013 seconds natively across Phase 1 matrix construction constraints globally. Adding secondary uniform node calculations executing Lerp tracking parameters (summing an effective 0.004 seconds), overall profiling finishes successfully navigating identical testing loops under 0.005 seconds globally. Comparisons clearly underline an operational **130x Speed Augmentation** mapping strictly against baseline measurements unconditionally.
+Transitioning operational workloads mapping Method B implementations drastically reduces arithmetic requirements simulating mere 1331 point calculation requests consuming 0.0013 seconds natively across Phase 1 matrix construction constraints globally. Adding secondary uniform node calculations executing Lerp tracking parameters (summing an effective 0.004 seconds), overall profiling finishes successfully navigating identical testing loops under 0.005 seconds globally. Comparisons clearly underline an operational **130x Speed Augmentation** mapping precisely against baseline measurements.
 
 ## 8. Appendix: Simulated Research Code Profile (Python)
 
