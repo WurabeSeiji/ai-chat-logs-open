@@ -54,9 +54,13 @@ def markdown_to_latex():
             continue # Skip main title, already in \title
         elif line.startswith('## '):
             title = line[3:].strip()
-            # remove numbers like "1. " from title
-            title = re.sub(r'^\d+\.\s*', '', title)
-            out_lines.append(r'\section{' + title + '}')
+            # If it's a 2nd level numbering like "2.1 "
+            match = re.match(r'^(\d+\.\d+)\s*(.*)', title)
+            if match:
+                out_lines.append(r'\subsection{' + match.group(2) + '}')
+            else:
+                title = re.sub(r'^\d+\.\s*', '', title)
+                out_lines.append(r'\section{' + title + '}')
             continue
         elif line.startswith('### '):
             title = line[4:].strip()
