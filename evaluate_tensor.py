@@ -70,7 +70,7 @@ def generate_mesh_distortion_fig1():
 # ==========================================
 # Core Mapping Functions
 # ==========================================
-def exact_mapping(xi, R=100.0):
+def lorentz_mapping(xi, R=100.0, m_steps=100):
     """
     Rigorous Exact Mapping utilizing true numerical hyperelliptic integration.
     Replaces the simplistic analytical shortcut (arcsin) with the 
@@ -86,12 +86,11 @@ def exact_mapping(xi, R=100.0):
     #    Evaluating the true non-linear computational FPU load 
     #    over 100 continuous calculus node steps per particle.
     # -------------------------------------------------------------
-    M_STEPS = 100
     X0_integral = np.zeros_like(xi0, dtype=np.float64)
     
-    for step in range(M_STEPS):
-        tau = xi0 * (step + 0.5) / M_STEPS
-        d_tau = xi0 / M_STEPS
+    for step in range(m_steps):
+        tau = xi0 * (step + 0.5) / m_steps
+        d_tau = xi0 / m_steps
         
         # Exact non-linear potential function f(tau) evaluations
         # representing the strong gravitational geometry curvature
@@ -129,7 +128,7 @@ def tensor_lerp_mapping(xi, R):
         for c_idx in corners:
             c_pos = p_floor + c_idx
             c_w = np.prod(np.where(c_idx == 1, p_w, 1.0 - p_w))
-            c_val = exact_mapping(c_pos.reshape(1, 4), R)[0]
+            c_val = lorentz_mapping(c_pos.reshape(1, 4), R)[0]
             val += c_w * c_val
         X_interp[i] = val
     return X_interp
@@ -280,9 +279,9 @@ def generate_geodesic_fig2():
     xi_B[:, 1] = -35.0 + xi_B[:, 0] * v_x
 
     # Retrieve physical trajectories
-    X_phys_A_ex = exact_mapping(xi_A, R)
+    X_phys_A_ex = lorentz_mapping(xi_A, R)
     X_phys_A_ap = tensor_lerp_mapping(xi_A, R)
-    X_phys_B_ex = exact_mapping(xi_B, R)
+    X_phys_B_ex = lorentz_mapping(xi_B, R)
     X_phys_B_ap = tensor_lerp_mapping(xi_B, R)
 
     # Helper to plot physically mapped metric coordinates onto the embedding
@@ -341,8 +340,8 @@ def evaluate_accuracy_fig3():
         xi_path = np.array(xi_path)
             
         # Final exact
-        X_exact_final = exact_mapping(xi_path, R)[-1]
-        X_floor_final = exact_mapping(np.floor(xi_path), R)[-1]
+        X_exact_final = lorentz_mapping(xi_path, R)[-1]
+        X_floor_final = lorentz_mapping(np.floor(xi_path), R)[-1]
         X_lerp_final = tensor_lerp_mapping(xi_path, R)[-1]
             
         final_err_floor = np.linalg.norm(X_exact_final - X_floor_final)
@@ -405,7 +404,7 @@ def evaluate_speed_fig4():
         # Method A: Dense Exact Simulation
         # ---------------------------------------------
         t0 = time.time()
-        X_phys_exact = exact_mapping(xi_dense, R)
+        X_phys_exact = lorentz_mapping(xi_dense, R)
         t_exact = time.time() - t0
         time_exact.append(t_exact)
         print(f" [A] Full Dense Exact (heavy math): {t_exact:.4f} sec")
@@ -429,7 +428,7 @@ def evaluate_speed_fig4():
         xi_coarse[:, 3] = Zc.flatten()
         
         # Heavy math ran only occasionally
-        T_flat = exact_mapping(xi_coarse, R)
+        T_flat = lorentz_mapping(xi_coarse, R)
         T_tensor = T_flat.reshape(N_coarse_side, N_coarse_side, N_coarse_side, 4)
         t_tensor_build = time.time() - t1
         
