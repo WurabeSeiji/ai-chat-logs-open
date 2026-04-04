@@ -1,0 +1,1611 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  12pt,
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \ifXeTeX
+    \usepackage{mathspec} % this also loads fontspec
+  \else
+    \usepackage{unicode-math} % this also loads fontspec
+  \fi
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{Times New Roman}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{HiraginoSans-W3}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{HiraginoSans-W3}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{測地的球面多面体としての球面正方形と高次元超直方体}\label{ux6e2cux5730ux7684ux7403ux9762ux591aux9762ux4f53ux3068ux3057ux3066ux306eux7403ux9762ux6b63ux65b9ux5f62ux3068ux9ad8ux6b21ux5143ux8d85ux76f4ux65b9ux4f53}
+
+\subsection{―
+厳密式・係数計算の根拠・係数表・数値検証・図による比較・再現性情報
+―}\label{ux53b3ux5bc6ux5f0fux4fc2ux6570ux8a08ux7b97ux306eux6839ux62e0ux4fc2ux6570ux8868ux6570ux5024ux691cux8a3cux56f3ux306bux3088ux308bux6bd4ux8f03ux518dux73feux6027ux60c5ux5831}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{要旨}\label{ux8981ux65e8}
+
+本稿では、「球面上の正方形」という問いに対して、互いに異なる 2
+つの自然な定義を区別して扱う。
+
+第一に、球面そのものの内在幾何における等辺・等角の正方形を考え、その面積の厳密式とテイラー展開を導出する。\\
+第二に、(\mathbb{R}\^{}2)
+の正方形を半球表面へ持ち上げた像として定義されるグノモン型測地的球面多面体を考え、その面積公式と係数展開を導出する。
+
+前者は一般的な球面幾何の意味で自然な正方形であり、平面より大きい面積を与える。\\
+後者は本研究独自の定義であり、一般的直感とは逆に、平面正方形より小さい面積を与えるが、これは「下位次元図形の球面像」を測るという定義に対して正しい結果である。
+
+本稿では、両者の係数の分子・分母を汎用的に算出する方法を示し、(R=2)、辺長
+1・2・3 の条件で数値検証を行う。さらに、3D
+図により、青（平面正方形）、赤（内在的球面正方形）、緑（グノモン型球面像）の差を可視化する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{1.
+研究目的と本稿の位置づけ}\label{ux7814ux7a76ux76eeux7684ux3068ux672cux7a3fux306eux4f4dux7f6eux3065ux3051}
+
+本研究の目的は次の通りである。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  内在的球面正方形の面積公式と係数展開を与える。\\
+\item
+  逆グノモン写像 (\Phi\_R)
+  によるグノモン型球面像の面積公式と係数展開を与える。\\
+\item
+  係数の分子・分母の汎用計算法を示す。\\
+\item
+  (R=2)、辺長 1・2・3 の条件で実際に数値検証を行う。\\
+\item
+  3D 図により二つの定義の差を視覚化する。\\
+\item
+  Python スクリプトと実行環境を示し、再現可能な形で結果を提示する。
+\end{enumerate}
+
+\subsection{1.1
+本稿の研究系列における位置づけ（D）}\label{ux672cux7a3fux306eux7814ux7a76ux7cfbux5217ux306bux304aux3051ux308bux4f4dux7f6eux3065ux3051d}
+
+本稿は、次の研究計画の\textbf{第1段階・基底ケース}として位置づけられる。
+
+\textbf{研究計画の全体構造：}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+段階
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+計量
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+対象
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+本稿との関係
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{第1段階}（本稿） & 正定値計量 & (\mathbb{R}\^{}n
+\to S\^{}n(R))、(n=2) & \textbf{本稿で完全実証} \\
+第1段階発展 & 正定値計量 & (n=3,4,\ldots) への一般化 & 今後の課題 \\
+第2段階 & 擬リーマン計量 & 符号反転・双曲方向の出現 & 今後の課題 \\
+\end{longtable}
+}
+
+本稿では \textbf{(n=2)（2次元）}
+を対象として理論と数値を完全に確立する。\\
+一般次元 (n\geq 3) への拡張のための係数一般項 (d\_\{n,m\})
+はすでに7章で導出するが、\\
+(n\geq 3) の数値検証・充填率解析は次稿の課題とする。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{2.
+本研究で扱う二つの正方形}\label{ux672cux7814ux7a76ux3067ux6271ux3046ux4e8cux3064ux306eux6b63ux65b9ux5f62}
+
+\subsection{2.1
+内在的球面正方形}\label{ux5185ux5728ux7684ux7403ux9762ux6b63ux65b9ux5f62}
+
+半径 (R) の球面 (S\^{}2(R))
+上で、次の条件をすべて満たす測地的四角形を考える。
+
+\begin{itemize}
+\tightlist
+\item
+  4 辺の測地線長がすべて (a) で等しい
+\item
+  4 角の内角がすべて等しい
+\item
+  各辺は \textbf{短い方の大円弧} を取る（凸性条件）
+\item
+  内角はすべて同一かつ (\pi/2) より大きい（球面正の過剰）
+\end{itemize}
+
+\textbf{存在・一意性：} このような球面正方形は \[
+0 < a < \frac{\pi R}{2}
+\] の範囲で常に存在し、中心点の置き方と回転を除いて一意である。\\
+上限 (a = \pi R/2) は (\cos(a/R)=0)
+に対応し、正方形が半球全体に退化する限界である。
+
+これは球面そのものの内在幾何における正方形であり、通常の球面幾何の意味で自然である。
+
+\subsection{2.2
+グノモン型測地的球面像}\label{ux30b0ux30ceux30e2ux30f3ux578bux6e2cux5730ux7684ux7403ux9762ux50cf}
+
+(\mathbb{R}\^{}2) の正方形 \[
+[-L/2,L/2]\times[-L/2,L/2]
+\]
+を、半球表面へ持ち上げた像を考える。これは「球面上で内在的に正方形を作る」のではなく、「平面正方形の球面像」を測る定義である。
+
+この違いにより、後に面積補正の符号が逆になる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{3.
+内在的球面正方形}\label{ux5185ux5728ux7684ux7403ux9762ux6b63ux65b9ux5f62-1}
+
+\subsection{3.1 厳密式}\label{ux53b3ux5bc6ux5f0f}
+
+一辺の測地線長を (a)、無次元変数を
+
+\[
+x=\frac{a}{R}
+\]
+
+とおくと、面積は
+
+\[
+\boxed{
+A_{\mathrm{sq}} =
+R^2\left(
+8\arctan\frac{1}{\sqrt{\cos x}}-2\pi
+\right)
+}
+\]
+
+で与えられる。
+
+\subsubsection{3.1.1 Girard
+の定理による導出}\label{girard-ux306eux5b9aux7406ux306bux3088ux308bux5c0eux51fa}
+
+\textbf{Girard の定理} より、球面多角形の面積は \[
+A = R^2\bigl(\Sigma - (n-2)\pi\bigr)
+\] で与えられる（(\Sigma) は内角の和、(n) は頂点数）。\\
+4 角が等しく各角を (\alpha) とすると \[
+A = R^2(4\alpha - 2\pi).
+\]
+
+\textbf{内角 \(\alpha\) の導出：} 正方形を中心から対角線で切ると、4
+つの合同な球面直角三角形が得られる。その 1 つに注目し、\\
+- 北極点 (N)（中心）、頂点 (V)、辺の中点 (M)（角度 (\angle NMV =
+\pi/2)）
+
+という直角三角形 (NVM) を考える。辺長は (NV = \rho)（極角）、(VM =
+a/2)（測地線長の半分）で、(\angle VNM =
+\pi/4)（正方形の4折対称性）である。\\
+球面直角三角形の余弦法則を角版で適用すると \[
+\cos\frac{\pi}{4} = \sin\frac{\alpha}{2}\cdot\cos\frac{a}{2R}
+\quad\Longrightarrow\quad
+\sin\frac{\alpha}{2} = \frac{1}{\sqrt{2}\,\cos(a/2R)}.
+\]
+
+恒等式 (1+\cos x = 2\cos\^{}2(x/2)) を用いると \[
+\sin\frac{\alpha}{2} = \frac{1}{\sqrt{1+\cos x}}.
+\]
+
+ここから (\cos(\alpha/2)) を求める（(\alpha/2 \in (0,\pi/2))
+なので正値）： \[
+\cos\frac{\alpha}{2} = \sqrt{1-\frac{1}{1+\cos x}} = \sqrt{\frac{\cos x}{1+\cos x}}.
+\]
+
+したがって（\textbf{A: arctan変換の完全証明}） \[
+\tan\frac{\alpha}{2}
+= \frac{\sin(\alpha/2)}{\cos(\alpha/2)}
+= \frac{1/\sqrt{1+\cos x}}{\sqrt{\cos x/(1+\cos x)}}
+= \frac{1}{\sqrt{\cos x}},
+\qquad
+\therefore\quad
+\frac{\alpha}{2} = \arctan\frac{1}{\sqrt{\cos x}},
+\quad
+\alpha = 2\arctan\frac{1}{\sqrt{\cos x}}.
+\]
+
+これを Girard の式に代入すれば \[
+A = R^2\!\left(4 \cdot 2\arctan\frac{1}{\sqrt{\cos x}} - 2\pi\right)
+= R^2\!\left(8\arctan\frac{1}{\sqrt{\cos x}} - 2\pi\right) \qquad \square
+\]
+
+\subsection{3.2
+テイラー展開}\label{ux30c6ux30a4ux30e9ux30fcux5c55ux958b}
+
+\[
+\frac{A_{\mathrm{sq}}}{R^2} =
+\sum_{n=1}^\infty c_n x^{2n}
+\]
+
+と展開すると、先頭項は
+
+\[
+\frac{A_{\mathrm{sq}}}{R^2} =
+x^2
++\frac{x^4}{6}
++\frac{49x^6}{1440}
++\frac{167x^8}{20160}
++\frac{66181x^{10}}{29030400}
++\cdots
+\]
+
+である。したがって
+
+\[
+A_{\mathrm{sq}} =
+a^2
++\frac{a^4}{6R^2}
++\frac{49a^6}{1440R^4}
++\frac{167a^8}{20160R^6}
++\cdots
+\]
+
+となる。第 2 項が正なので、平面正方形より大きくなる方向の補正を持つ。
+
+\subsubsection{3.2.1 収束半径}\label{ux53ceux675fux534aux5f84}
+
+面積公式の (\arctan(1/\sqrt{\cos x})) は (\cos x = 0)、すなわち \[
+x = \frac{\pi}{2} \quad \Longleftrightarrow \quad a = \frac{\pi R}{2}
+\] で発散する（(\arctan\infty = \pi/2)）。これがテイラー展開 \[
+\frac{A_{\mathrm{sq}}}{R^2} = \sum_{n\ge 1} c_n x^{2n}
+\] の\textbf{収束半径}を決める特異点であり、(\textbar x\textbar{}
+\textless{} \pi/2) でのみ級数が収束する。\\
+(R=2) の場合、(a=3) では (x = 3/2 = 1.5 \approx 0.955 \cdot (\pi/2))
+と特異点に接近するため、20 項打ち切りでも相対誤差が約 2.9\%
+まで拡大する。\\
+一方 (a=1) では (x = 0.5) と収束半径の 1/3 以下なので、20 項で相対誤差
+(\sim 10\^{}\{-12\}) を達成できる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{4.
+内在的球面正方形の係数計算の根拠}\label{ux5185ux5728ux7684ux7403ux9762ux6b63ux65b9ux5f62ux306eux4fc2ux6570ux8a08ux7b97ux306eux6839ux62e0}
+
+\subsection{4.1
+微分による簡約}\label{ux5faeux5206ux306bux3088ux308bux7c21ux7d04}
+
+\[
+f(x)=8\arctan\frac{1}{\sqrt{\cos x}}-2\pi
+\]
+
+とおくと、
+
+\[
+f'(x)=4\tan\frac{x}{2}\,\sec^{1/2}x
+\]
+
+である。
+
+ここで
+
+\begin{itemize}
+\tightlist
+\item
+  (\tan(x/2)) の係数はベルヌーイ数で書ける
+\item
+  (\sec\^{}\{1/2\}x) の係数は一般化オイラー数で書ける
+\end{itemize}
+
+ため、(c\_n) は両者の畳み込みになる。
+
+\subsection{4.2 一般式}\label{ux4e00ux822cux5f0f}
+
+\[
+\boxed{
+c_n =
+\frac{4}{n}
+\sum_{m=1}^n
+\frac{(2^{2m}-1)(-1)^{m-1}B_{2m}}{(2m)!}
+\cdot
+\frac{E^{(1/2)}_{2n-2m}}{(2n-2m)!}
+}
+\]
+
+ここで (B\_\{2m\}) はベルヌーイ数、(E\^{}\{(1/2)\}\emph{\{2k\})
+は\textbf{一般化オイラー数}（\textbf{E}: generalized Euler
+numbers）である。\\
+一般化オイラー数 (E\^{}\{(\nu)\}}\{2k\}) は (\sec\^{}\nu x) の Taylor
+展開係数として定義される： \[
+\sec^\nu x = \sum_{k=0}^\infty \frac{E^{(\nu)}_{2k}}{(2k)!}\,x^{2k}.
+\] 本稿で用いる (\nu = 1/2) の場合は (\sec\^{}\{1/2\} x =
+(\cos x)\^{}\{-1/2\}) の展開係数に対応し、\\
+SymPy の \texttt{series}
+関数により厳密分数として自動生成できる（6節参照）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{5.
+内在的球面正方形の係数表}\label{ux5185ux5728ux7684ux7403ux9762ux6b63ux65b9ux5f62ux306eux4fc2ux6570ux8868}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0532}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1064}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.4468}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1702}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2234}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+(n)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+項
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+係数 (c\_n)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+分子
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+分母
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & (x\^{}2) & (1) & 1 & 1 \\
+2 & (x\^{}4) & (1/6) & 1 & 6 \\
+3 & (x\^{}6) & (49/1440) & 49 & 1440 \\
+4 & (x\^{}8) & (167/20160) & 167 & 20160 \\
+5 & (x\^{}\{10\}) & (66181/29030400) & 66181 & 29030400 \\
+6 & (x\^{}\{12\}) & (186133/273715200) & 186133 & 273715200 \\
+7 & (x\^{}\{14\}) & (597139789/2789705318400) & 597139789 &
+2789705318400 \\
+8 & (x\^{}\{16\}) & (5854838551/83691159552000) & 5854838551 &
+83691159552000 \\
+9 & (x\^{}\{18\}) & (2751729902863/117071976333312000) & 2751729902863 &
+117071976333312000 \\
+10 & (x\^{}\{20\}) & (1255969968796261/155705728523304960000) &
+1255969968796261 & 155705728523304960000 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{6.
+逆グノモン写像と球面像（F）}\label{ux9006ux30b0ux30ceux30e2ux30f3ux5199ux50cfux3068ux7403ux9762ux50cff}
+
+\subsection{6.1
+逆グノモン写像の定義}\label{ux9006ux30b0ux30ceux30e2ux30f3ux5199ux50cfux306eux5b9aux7fa9}
+
+原点中心・半径 (R) の球面 (S\textsuperscript{2(R)\subset\mathbb{R}}3)
+への\textbf{逆グノモン写像} (\Phi\_R) を
+
+\[
+\boxed{
+\Phi_R:\mathbb{R}^2\to S^2(R),\qquad
+\Phi_R(y_1,y_2)
+=\frac{R}{\sqrt{R^2+y_1^2+y_2^2}}\,(y_1,\,y_2,\,R)
+}
+\]
+
+と定義する。これは「平面 (z=R) 上の点 ((y\_1,y\_2,R))
+を原点から球面へ中心投影する写像」であり、通常のグノモン射影（球面 (\to)
+平面）の逆写像に相当する。\\
+特に、直線（平面上の測地線）は (\Phi\_R)
+によって大円弧（球面上の測地線）に写るという重要な性質を持つ。
+
+\subsection{6.2
+ヤコビアンと誘導面積要素（B）}\label{ux30e4ux30b3ux30d3ux30a2ux30f3ux3068ux8a98ux5c0eux9762ux7a4dux8981ux7d20b}
+
+(\Phi\_R) の偏微分を計算する。(\rho = \sqrt{R^2+y_1^2+y_2^2}) とおくと
+\[
+\frac{\partial\Phi_R}{\partial y_1}
+= \frac{R}{\rho^3}\bigl(R^2+y_2^2,\;-y_1 y_2,\;-R y_1\bigr),
+\qquad
+\frac{\partial\Phi_R}{\partial y_2}
+= \frac{R}{\rho^3}\bigl(-y_1 y_2,\;R^2+y_1^2,\;-R y_2\bigr).
+\]
+
+外積を計算すると \[
+\frac{\partial\Phi_R}{\partial y_1}\times\frac{\partial\Phi_R}{\partial y_2}
+= \frac{R^2}{\rho^4}\,\bigl(R y_1,\;R y_2,\;R^2\bigr)
+= \frac{R^3}{\rho^4}\,(y_1,\,y_2,\,R).
+\]
+
+そのノルム（面積要素）は \[
+\boxed{
+\left|\frac{\partial\Phi_R}{\partial y_1}\times\frac{\partial\Phi_R}{\partial y_2}\right|
+= \frac{R^3}{\rho^3}
+= \frac{R^3}{(R^2+y_1^2+y_2^2)^{3/2}}
+}
+\]
+
+となる。これが誘導面積要素 (dA\_\{S\^{}2\}) であり、この値は常に 1
+未満（中心 (y=0) で
+1、外側で単調減少）なので球面への写像は面積を圧縮する。
+
+\subsection{6.3
+球面像の面積公式}\label{ux7403ux9762ux50cfux306eux9762ux7a4dux516cux5f0f}
+
+平面正方形 ({[}-h,h{]}\^{}2) の球面像 (\Phi\_R({[}-h,h{]}\^{}2))
+の面積は上のヤコビアンを積分して
+
+\[
+\boxed{
+V_2(h,h;R) =
+\int_{-h}^h \int_{-h}^h
+\frac{R^3}{(R^2+y_1^2+y_2^2)^{3/2}}
+\,dy_1dy_2
+}
+\]
+
+で与えられる（(h=L/2)）。
+
+\subsection{6.4
+なぜ平面より小さくなるか}\label{ux306aux305cux5e73ux9762ux3088ux308aux5c0fux3055ux304fux306aux308bux304b}
+
+面積要素
+(R\textsuperscript{3/(R}2+y\_1\textsuperscript{2+y\_2}2)\^{}\{3/2\})
+は中心以外で 1 未満、すなわち外側ほど圧縮されるため
+
+\[
+\boxed{
+\text{逆グノモン写像では、平面正方形より小さい面積になる}
+}
+\]
+
+のが正しい。これは内在的球面正方形が平面より大きくなる方向とは逆であり、両定義の本質的な違いを表している。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{7.
+グノモン型の係数計算の根拠}\label{ux30b0ux30ceux30e2ux30f3ux578bux306eux4fc2ux6570ux8a08ux7b97ux306eux6839ux62e0}
+
+\subsection{7.1 二項展開}\label{ux4e8cux9805ux5c55ux958b}
+
+\[
+\left(1+\frac{y_1^2+y_2^2}{R^2}\right)^{-3/2} =
+\sum_{m=0}^\infty
+(-1)^m \frac{(3/2)_m}{m!}
+\left(\frac{y_1^2+y_2^2}{R^2}\right)^m
+\]
+
+\subsection{7.2
+多項展開とモーメント積分}\label{ux591aux9805ux5c55ux958bux3068ux30e2ux30fcux30e1ux30f3ux30c8ux7a4dux5206}
+
+さらに
+
+\[
+(y_1^2+y_2^2)^m =
+\sum_{\alpha_1+\alpha_2=m}
+\frac{m!}{\alpha_1!\alpha_2!}
+y_1^{2\alpha_1}y_2^{2\alpha_2}
+\]
+
+であり、
+
+\[
+\int_{-h}^h y^{2\alpha}dy =
+\frac{2h^{2\alpha+1}}{2\alpha+1}
+\]
+
+を用いることで、等辺長 (L) に対する係数
+
+\[
+V_2=L^2\sum_{m=0}^\infty d_{2,m}\left(\frac{L^2}{R^2}\right)^m
+\]
+
+の一般項
+
+\[
+\boxed{
+d_{2,m} =
+\frac{(-1)^m}{4^m}
+\frac{(3/2)_m}{m!}
+\sum_{\alpha_1+\alpha_2=m}
+\frac{m!}{\alpha_1!\alpha_2!}
+\frac{1}{(2\alpha_1+1)(2\alpha_2+1)}
+}
+\]
+
+が得られる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{8.
+グノモン型の係数表（(n=2)）}\label{ux30b0ux30ceux30e2ux30f3ux578bux306eux4fc2ux6570ux8868n2}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rrrr@{}}
+\toprule\noalign{}
+(m) & 係数 (d\_\{2,m\}) & 分子 & 分母 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & (1) & 1 & 1 \\
+1 & (-1/4) & -1 & 4 \\
+2 & (7/96) & 7 & 96 \\
+3 & (-3/128) & -3 & 128 \\
+4 & (83/10240) & 83 & 10240 \\
+5 & (-73/24576) & -73 & 24576 \\
+6 & (523/458752) & 523 & 458752 \\
+7 & (-119/262144) & -119 & 262144 \\
+\end{longtable}
+}
+
+したがって
+
+\[
+V_2 =
+L^2\left(
+1
+-\frac14\frac{L^2}{R^2}
++\frac7{96}\frac{L^4}{R^4}
+-\frac3{128}\frac{L^6}{R^6}
++\cdots
+\right)
+\]
+
+である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{9. テスト条件}\label{ux30c6ux30b9ux30c8ux6761ux4ef6}
+
+本稿の検証では、図との対応を明確にするため、次の共通条件を用いた。
+
+\begin{itemize}
+\tightlist
+\item
+  球半径：(R=2)
+\item
+  正方形の辺長：(L=1,2,3)
+\end{itemize}
+
+ただし、
+
+\begin{itemize}
+\tightlist
+\item
+  内在的球面正方形では、一辺の測地線長を (a=L) とする
+\item
+  グノモン型では、平面正方形の辺長を (L) とする
+\end{itemize}
+
+また、数値検証条件は以下の通りである。
+
+\subsection{9.1
+内在的球面正方形}\label{ux5185ux5728ux7684ux7403ux9762ux6b63ux65b9ux5f62-2}
+
+\begin{itemize}
+\tightlist
+\item
+  展開次数：20 項
+\end{itemize}
+
+\subsection{9.2 グノモン型}\label{ux30b0ux30ceux30e2ux30f3ux578b}
+
+\begin{itemize}
+\tightlist
+\item
+  展開項数：8 項
+\item
+  厳密値は SciPy \texttt{nquad} による数値積分で評価
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{10. テスト結果}\label{ux30c6ux30b9ux30c8ux7d50ux679c}
+
+\subsection{10.1 実行出力}\label{ux5b9fux884cux51faux529b}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{=== Coefficient tuples: intrinsic spherical square ===}
+\NormalTok{[(1, 1), (1, 6), (49, 1440), (167, 20160), (66181, 29030400), (186133, 273715200), (597139789, 2789705318400), (5854838551, 83691159552000), (2751729902863, 117071976333312000), (1255969968796261, 155705728523304960000)]}
+
+\NormalTok{=== Coefficient tuples: projected geodesic spherical orthotope (n=2) ===}
+\NormalTok{[(1, 1), ({-}1, 4), (7, 96), ({-}3, 128), (83, 10240), ({-}73, 24576), (523, 458752), ({-}119, 262144)]}
+
+\NormalTok{=== TEST TABLE: R = 2 ===}
+
+\NormalTok{[Intrinsic spherical square]}
+\NormalTok{a=1.0 | exact=1.043932462200186 | series20=1.043932462197239 | abs\_err=2.947e{-}12 | rel\_err=2.823e{-}12}
+\NormalTok{a=2.0 | exact=4.849031451771832 | series20=4.849013969642932 | abs\_err=1.748e{-}05 | rel\_err=3.605e{-}06}
+\NormalTok{a=3.0 | exact=16.814441096237310 | series20=16.333358819997567 | abs\_err=4.811e{-}01 | rel\_err=2.861e{-}02}
+
+\NormalTok{[Projected gnomonic image, n=2]}
+\NormalTok{L=1.0 | exact=0.941720095153300 | series8=0.941720092582649 | abs\_err=2.571e{-}09 | rel\_err=2.730e{-}09 | quad\_err=1.077e{-}14}
+\NormalTok{L=2.0 | exact=3.221726732645293 | series8=3.221201433454241 | abs\_err=5.253e{-}04 | rel\_err=1.630e{-}04 | quad\_err=3.660e{-}14}
+\NormalTok{L=3.0 | exact=5.892286294986240 | series8=5.323648250814792 | abs\_err=5.686e{-}01 | rel\_err=9.651e{-}02 | quad\_err=1.083e{-}09}
+
+\NormalTok{[Reference flat Euclidean square areas]}
+\NormalTok{L=1.0 | flat\_area=1.000000000000000}
+\NormalTok{L=2.0 | flat\_area=4.000000000000000}
+\NormalTok{L=3.0 | flat\_area=9.000000000000000}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{10.2
+主要結果の整理}\label{ux4e3bux8981ux7d50ux679cux306eux6574ux7406}
+
+\subsubsection{10.2.1
+内在的球面正方形（(R=2)）}\label{ux5185ux5728ux7684ux7403ux9762ux6b63ux65b9ux5f62r2}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1190}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1786}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1786}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2619}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2619}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+辺長 (a)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+厳密値
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+20 項級数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+絶対誤差
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+相対誤差
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 1.043932462200 & 1.043932462197 & (2.95\times 10\^{}\{-12\}) &
+(2.82\times 10\^{}\{-12\}) \\
+2 & 4.849031451772 & 4.849013969643 & (1.75\times 10\^{}\{-5\}) &
+(3.61\times 10\^{}\{-6\}) \\
+3 & 16.814441096237 & 16.333358819998 & (4.81\times 10\^{}\{-1\}) &
+(2.86\times 10\^{}\{-2\}) \\
+\end{longtable}
+}
+
+\subsubsection{10.2.2
+グノモン型（(R=2)）}\label{ux30b0ux30ceux30e2ux30f3ux578br2}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1190}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2738}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2738}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+辺長 (L)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+厳密値
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+8 項級数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+絶対誤差
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+相対誤差
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 0.941720095153 & 0.941720092583 & (2.57\times 10\^{}\{-9\}) &
+(2.73\times 10\^{}\{-9\}) \\
+2 & 3.221726732645 & 3.221201433454 & (5.25\times 10\^{}\{-4\}) &
+(1.63\times 10\^{}\{-4\}) \\
+3 & 5.892286294986 & 5.323648250815 & (5.69\times 10\^{}\{-1\}) &
+(9.65\times 10\^{}\{-2\}) \\
+\end{longtable}
+}
+
+\subsubsection{10.2.3
+平面正方形（比較基準）}\label{ux5e73ux9762ux6b63ux65b9ux5f62ux6bd4ux8f03ux57faux6e96}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rr@{}}
+\toprule\noalign{}
+辺長 (L) & 面積 (L\^{}2) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 1 \\
+2 & 4 \\
+3 & 9 \\
+\end{longtable}
+}
+
+\subsubsection{\texorpdfstring{10.2.4 体積充填率 (\rho\_2 =
+V\_2/L\^{}2)（C）}{10.2.4 体積充填率 (\_2 = V\_2/L\^{}2)（C）}}\label{ux4f53ux7a4dux5145ux586bux7387-_2-v_2l2c}
+
+逆グノモン写像による球面像面積の平面面積に対する比を\textbf{体積充填率}と呼ぶ。\\
+これは曲率 (R)
+のもとで平面が球面にどれだけ「圧縮」されるかを直接示す量であり、\\
+研究計画 Phase 2（符号反転モデルとの比較）の基準量となる。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1176}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3412}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3412}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+辺長 (L)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+(V\_2)（グノモン型）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+(L\^{}2)（平面）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+充填率 (\rho\_2)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 0.941720095153 & 1 & 0.9417 \\
+2 & 3.221726732645 & 4 & 0.8054 \\
+3 & 5.892286294986 & 9 & 0.6547 \\
+\end{longtable}
+}
+
+辺長が大きくなるほど充填率が低下する（球面による圧縮が強まる）。\\
+(L \to 0) では (\rho\_2 \to 1)（平坦極限）、(L \to \pi R) では (\rho\_2
+\to 0)（半球全体を覆う限界）となる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{11.
+検算の根拠と結果}\label{ux691cux7b97ux306eux6839ux62e0ux3068ux7d50ux679c}
+
+\subsection{11.1
+内在的球面正方形}\label{ux5185ux5728ux7684ux7403ux9762ux6b63ux65b9ux5f62-3}
+
+次の 2 つを比較した。
+
+\textbf{（1）厳密式}
+
+\[
+A_{\mathrm{sq}} =
+R^2\left(
+8\arctan\frac{1}{\sqrt{\cos(a/R)}}-2\pi
+\right)
+\]
+
+\textbf{（2）SymPy から生成した係数列による 20 項級数評価}
+
+この 2 つの一致を確認した。
+
+\subsection{11.2 グノモン型}\label{ux30b0ux30ceux30e2ux30f3ux578b-1}
+
+次の 2 つを比較した。
+
+\textbf{（1）厳密面積公式}
+
+\[
+V_2 =
+\int_{-L/2}^{L/2}\int_{-L/2}^{L/2}
+\frac{R^3}{(R^2+y_1^2+y_2^2)^{3/2}}
+\;dy_1dy_2
+\]
+
+\textbf{（2）二項展開＋多項展開＋モーメント積分から得た 8 項級数}
+
+この 2 つの一致を確認した。
+
+\subsection{11.3
+検算結果の解釈}\label{ux691cux7b97ux7d50ux679cux306eux89e3ux91c8}
+
+\begin{itemize}
+\tightlist
+\item
+  辺長 1 では両モデルとも高精度に一致する。
+\item
+  辺長 2 では誤差は増えるが、まだ傾向比較には十分使える。
+\item
+  辺長 3
+  では両者とも収束半径境界に近づき、有限項近似の精度は大きく低下する。
+\end{itemize}
+
+したがって、本稿の図と数表は「差が可視化される一方で、級数の有効範囲も分かる」という意味を持つ。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{12. 図による比較}\label{ux56f3ux306bux3088ux308bux6bd4ux8f03}
+
+本研究では、(R=2)、辺長 (L=1,2,3) の場合について、以下の 3 種類を同一 3D
+図上にプロットした。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{青}：平面正方形（(z=0) 上）
+\item
+  \textbf{赤}：内在的球面正方形
+\item
+  \textbf{緑}：グノモン型球面像
+\end{itemize}
+
+\subsection{12.1 辺長 1 の場合}\label{ux8fbaux9577-1-ux306eux5834ux5408}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={(R=2)、辺長 1 の場合。青（平面正方形）・赤（内在的球面正方形）・緑（グノモン型球面像）の比較。面積差は小さいが三者が既に別の値を持つ。}]{three_surfaces_new_R2.png}}
+\caption{(R=2)、辺長 1
+の場合。青（平面正方形）・赤（内在的球面正方形）・緑（グノモン型球面像）の比較。面積差は小さいが三者が既に別の値を持つ。}
+\end{figure}
+
+\textbf{図1.} (R=2)、辺長 1 の場合。\\
+差はまだ小さいが、青・赤・緑がすでに別の幾何学量を表していることが分かる。
+
+\subsection{12.2 辺長 2 の場合}\label{ux8fbaux9577-2-ux306eux5834ux5408}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={(R=2)、辺長 2 の場合。青・赤・緑の面積差が明瞭になる。}]{three_surfaces_new_R2_side2.png}}
+\caption{(R=2)、辺長 2 の場合。青・赤・緑の面積差が明瞭になる。}
+\end{figure}
+
+\textbf{図2.} (R=2)、辺長 2 の場合。\\
+青（平面）、赤（内在的球面正方形）、緑（グノモン型球面像）の面積差がかなり明瞭になる。
+
+\subsection{12.3 辺長 3 の場合}\label{ux8fbaux9577-3-ux306eux5834ux5408}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={(R=2)、辺長 3 の場合。赤（内在的）が大きく膨らみ、緑（グノモン型）が強く圧縮される。定義の差が極端に現れる。}]{three_surfaces_new_R2_side3.png}}
+\caption{(R=2)、辺長 3
+の場合。赤（内在的）が大きく膨らみ、緑（グノモン型）が強く圧縮される。定義の差が極端に現れる。}
+\end{figure}
+
+\textbf{図3.} (R=2)、辺長 3 の場合。\\
+定義の違いにより、赤は大きく膨らみ、緑は強く圧縮される。\\
+この図は、「球面上の正方形」が一意ではなく、定義によって極端に異なる値をとることを最もよく示している。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{13. 今後の課題（G）}\label{ux4ecaux5f8cux306eux8ab2ux984cg}
+
+本稿は、研究計画第1段階の (n=2) 基底ケースとして完結している。\\
+以下に今後の展開を示す。
+
+\subsection{\texorpdfstring{13.1 第1段階の発展：(n\geq 3)
+への一般化}{13.1 第1段階の発展：(n) への一般化}}\label{ux7b2c1ux6bb5ux968eux306eux767aux5c55n-ux3078ux306eux4e00ux822cux5316}
+
+(d\_\{n,m\}) の一般項（7章）はすでに任意次元に対して導出済みである。\\
+次の課題は、(n=3,4) に対して：
+
+\begin{itemize}
+\tightlist
+\item
+  係数表の生成・数値検証
+\item
+  充填率 (\rho\_n(R;Q)) の次元依存性の解析
+\item
+  (n \to \infty) での収束挙動
+\end{itemize}
+
+を明らかにすることである。
+
+\subsection{13.2
+第2段階：擬リーマン計量への拡張}\label{ux7b2c2ux6bb5ux968eux64ecux30eaux30fcux30deux30f3ux8a08ux91cfux3078ux306eux62e1ux5f35}
+
+本稿の正定値計量モデルは、\textbf{符号反転} \[
+\eta = \mathrm{diag}(-1,+1,+1,+1)
+\] を導入した擬リーマン構造の比較基準として機能する。\\
+第2段階では、球面 (S\^{}n(R)) の1軸符号を反転した de Sitter 型超曲面 \[
+-X_0^2 + X_1^2 + \cdots + X_n^2 = R^2
+\]
+上の対応する写像・充填率を解析し、\textbf{コンパクト方向と非コンパクト方向の非対称性}が幾何学的に現れる条件を探索する。
+
+\textbf{ただし}、符号反転の物理的解釈（時間の矢・因果律）は本研究の範囲外であり、純粋な幾何学的構造の解析に留める。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{付録
+A：n=4（5次元埋め込み）計算実験}\label{ux4ed8ux9332-an45ux6b21ux5143ux57cbux3081ux8fbcux307fux8a08ux7b97ux5b9fux9a13}
+
+本付録では、研究計画 Phase 1 の発展として、逆グノモン写像
+
+\[
+\Phi_R:\mathbb{R}^4\to S^4(R)\subset\mathbb{R}^5,\quad
+\Phi_R(y_1,y_2,y_3,y_4)=\frac{R}{\sqrt{R^2+\|y\|^2}}\,(y_1,y_2,y_3,y_4,R)
+\]
+
+による4次元超直方体 ({[}-L/2,L/2{]}\^{}4)
+の球面像の超体積と充填率を検証する。\\
+計算は (n=2) と同じ手法（論文の一般項 (d\_\{n,m\})
+による級数、\texttt{nquad} による厳密値）を用いる。
+
+\subsection{A.1 係数
+(d\_\{4,m\})（8項、厳密分数）}\label{a.1-ux4fc2ux6570-d_4m8ux9805ux53b3ux5bc6ux5206ux6570}
+
+論文 7.2 節の一般項を (n=4) に適用して得られる係数を以下に示す。\\
+符号が交代し、絶対値が単調減少する傾向が見える。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rrrrr@{}}
+\toprule\noalign{}
+(m) & 係数 (d\_\{4,m\}) & 分子 & 分母 & 小数値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & (1) & 1 & 1 & +1.00000000 \\
+1 & (-5/6) & -5 & 6 & -0.83333333 \\
+2 & (7/12) & 7 & 12 & +0.58333333 \\
+3 & (-19/48) & -19 & 48 & -0.39583333 \\
+4 & (3113/11520) & 3113 & 11520 & +0.27022569 \\
+5 & (-481/2560) & -481 & 2560 & -0.18789063 \\
+6 & (28727/215040) & 28727 & 215040 & +0.13358910 \\
+7 & (-376193/3870720) & -376193 & 3870720 & -0.09718941 \\
+\end{longtable}
+}
+
+\subsection{A.2
+収束半径の次元依存性}\label{a.2-ux53ceux675fux534aux5f84ux306eux6b21ux5143ux4f9dux5b58ux6027}
+
+グノモン型の二項展開
+((1+\textbar y\textbar{}\textsuperscript{2/R}2)\^{}\{-(n+1)/2\})
+が超直方体全域で収束するための条件は、\\
+角での最大値
+
+\[
+\|y\|^2_{\max} = n\cdot\left(\frac{L}{2R}\right)^2 < 1 \quad\Longleftrightarrow\quad L < \frac{2R}{\sqrt{n}}
+\]
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rrccc@{}}
+\toprule\noalign{}
+(n) & (R=2) での収束上限 & (L=1) & (L=2) & (L=3) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+2 & (L \textless{} 2\sqrt{2} \approx 2.83) & ✅ & ✅ & ✅ \\
+4 & (L \textless{} 2) & ✅ & ⚠️境界 & ❌発散 \\
+\end{longtable}
+}
+
+\textbf{重要：} (n)
+が増えるほど収束上限が縮小する。これは高次元ほど超直方体の角が遠くなるためである。
+
+\subsection{A.3 L=1 の検証（nquad 厳密値 vs
+8項級数）}\label{a.3-l1-ux306eux691cux8a3cnquad-ux53b3ux5bc6ux5024-vs-8ux9805ux7d1aux6570}
+
+(L=1) は収束域の深部（(\sqrt{n}\cdot L/(2R) =
+0.5)）にあり、8項級数が高精度で機能する。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+項目 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+厳密値 (V\_4)（nquad） & 0.822839796502 \\
+8項級数値 & 0.822838868902 \\
+絶対誤差 & (9.28e-07) \\
+相対誤差 & (1.13e-06) \\
+平面超体積 (L\^{}4) & 1.0 \\
+充填率 (\rho\_4) & 0.822840 \\
+\end{longtable}
+}
+
+(n=2) の充填率 (\rho\_2 = 0.9417) と比べて (\rho\_4 = 0.8228)
+と大幅に低下している。\\
+これは \textbf{次元が上がるほど球面による圧縮が強まる} ことを示す。
+
+\subsection{A.4 L=2, 3
+における発散}\label{a.4-l2-3-ux306bux304aux3051ux308bux767aux6563}
+
+(L=2): 収束境界（(\sqrt{4}\cdot 1.0/2 =
+1)）にあたり、8項級数の精度は保証されない。\\
+(L=3): 収束条件を満たさず（(\sqrt{4}\cdot 1.5/2 = 1.5 \textgreater{}
+1)）、8項級数は (-1407)
+と明確な負値を示し、\textbf{発散の数値的証拠}となっている。
+
+\[
+\text{8項級数}(L=3) \approx -1407 \quad\longrightarrow\quad \text{発散（参考値として無効）}
+\]
+
+\subsection{\texorpdfstring{A.5 充填率 (\rho\_n) の次元比較（(R=2,
+L=1)）}{A.5 充填率 (\_n) の次元比較（(R=2, L=1)）}}\label{a.5-ux5145ux586bux7387-_n-ux306eux6b21ux5143ux6bd4ux8f03r2-l1}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rcrr@{}}
+\toprule\noalign{}
+次元 (n) & 埋め込み空間 & 超体積 (V\_n) & 充填率 (\rho\_n) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+2 & (\mathbb{R}\^{}3) & 0.941720 & 0.9417 \\
+4 & (\mathbb{R}\^{}5) & 0.822840 & 0.8228 \\
+\end{longtable}
+}
+
+(n=4) での充填率低下（(-0.119)）は、(n)
+次元でのコンパクト方向の「縮み方」の系統的増大を示しており、\\
+Phase 2（符号反転）との比較の基準量となる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{14. 再現性情報}\label{ux518dux73feux6027ux60c5ux5831}
+
+\subsection{14.1 Python
+バージョン}\label{python-ux30d0ux30fcux30b8ux30e7ux30f3}
+
+Python 3.13.5
+
+\subsection{14.2
+プラットフォーム}\label{ux30d7ux30e9ux30c3ux30c8ux30d5ux30a9ux30fcux30e0}
+
+Linux-4.4.0-x86\_64-with-glibc2.41
+
+\subsection{14.3
+使用ライブラリとバージョン}\label{ux4f7fux7528ux30e9ux30a4ux30d6ux30e9ux30eaux3068ux30d0ux30fcux30b8ux30e7ux30f3}
+
+\begin{itemize}
+\tightlist
+\item
+  sympy 1.14.0
+\item
+  scipy 1.17.0
+\item
+  numpy 2.3.5
+\end{itemize}
+
+\subsection{14.4 実行方法}\label{ux5b9fux884cux65b9ux6cd5}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ExtensionTok{python3}\NormalTok{ zenmi\_report\_spherical\_polytope\_complete\_R2.py}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{14.5
+実行スクリプト全文}\label{ux5b9fux884cux30b9ux30afux30eaux30d7ux30c8ux5168ux6587}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#!/usr/bin/env python3}
+\CommentTok{\# {-}*{-} coding: utf{-}8 {-}*{-}}
+
+\CommentTok{"""}
+\CommentTok{zenmi\_report\_spherical\_polytope\_complete\_R2.py}
+
+\CommentTok{再現性情報}
+\CommentTok{==========}
+\CommentTok{本スクリプトは、以下の環境で実行・検証した。}
+
+\CommentTok{Python}
+\CommentTok{{-}{-}{-}{-}{-}{-}}
+\CommentTok{3.13.5}
+
+\CommentTok{Platform}
+\CommentTok{{-}{-}{-}{-}{-}{-}{-}{-}}
+\CommentTok{Linux{-}4.4.0{-}x86\_64{-}with{-}glibc2.41}
+
+\CommentTok{主要ライブラリ}
+\CommentTok{{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+\CommentTok{sympy == 1.14.0}
+\CommentTok{scipy == 1.17.0}
+\CommentTok{numpy == 2.3.5}
+
+\CommentTok{研究目的}
+\CommentTok{========}
+\CommentTok{本スクリプトは、以下の 2 系統の幾何学的対象を同時に検証する。}
+
+\CommentTok{1. 2 次元の内在的球面正方形}
+\CommentTok{   {-} 球面そのものの上で、等辺・等角に定義される測地的正方形}
+\CommentTok{   {-} 厳密式とテイラー展開係数を計算する}
+
+\CommentTok{2. 高次元のグノモン型測地的球面超直方体}
+\CommentTok{   {-} R\^{}n の直方体を S\^{}n 上へ持ち上げた像として定義する}
+\CommentTok{   {-} 厳密数値積分と、級数展開による係数を計算する}
+
+\CommentTok{本スクリプトが行うこと}
+\CommentTok{======================}
+\CommentTok{1. 内在的球面正方形のテイラー係数 c\_n を (分子, 分母) のタプル列で生成}
+\CommentTok{2. 内在的球面正方形の厳密値と級数近似値を比較}
+\CommentTok{3. 高次元グノモン型測地的球面超直方体の係数 d\_\{n,m\} を (分子, 分母) のタプル列で生成}
+\CommentTok{4. 高次元版の厳密数値積分と級数近似値を比較}
+\CommentTok{5. R = 2, 辺長 L = 1, 2, 3 の比較表を出力}
+
+\CommentTok{主要テスト条件}
+\CommentTok{==============}
+\CommentTok{[共通]}
+\CommentTok{{-} 球半径 R = 2}
+
+\CommentTok{[内在的球面正方形]}
+\CommentTok{{-} 一辺の測地線長 a = 1, 2, 3}
+\CommentTok{{-} 展開次数 = 20（x\^{}20 まで）}
+\CommentTok{{-} a=3 の場合は x=a/R=1.5 が収束半径 π/2 に近く、20 項近似の精度低下を確認する}
+
+\CommentTok{[高次元グノモン型]}
+\CommentTok{{-} 各方向の辺長 L = 1, 2, 3}
+\CommentTok{{-} 半幅 h = L/2}
+\CommentTok{{-} 次元 n = 2}
+\CommentTok{{-} 展開項数 = 8}
+
+\CommentTok{ファイルの役割}
+\CommentTok{==============}
+\CommentTok{【本ファイル】zenmi\_report\_spherical\_polytope\_complete\_R2.py}
+\CommentTok{    {-} 本研究の「計算コア」スクリプトである。}
+\CommentTok{    {-} 数値計算関数（係数生成・厳密値・級数近似・誤差）をすべて定義・実装している。}
+\CommentTok{    {-} 単体で実行すると、計算結果を標準出力に表示するのみで、}
+\CommentTok{      論文ファイル（MD）・図（PNG）には一切手を加えない。}
+
+\CommentTok{【論文更新スクリプト】update\_tables.py}
+\CommentTok{    {-} 本ファイルの計算関数を呼び出した上で、以下を一括自動更新する。}
+\CommentTok{        1. 論文 MD の 10.2 節「主要結果の整理」数表を計算値で上書き}
+\CommentTok{        2. 論文 MD の 13.5 節「実行スクリプト全文」コードブロックを}
+\CommentTok{           本ファイルの最新内容で自動同期}
+\CommentTok{        3. 論文 MD に掲載している 3 枚の PNG 図（辺長 1/2/3）を再生成}
+
+\CommentTok{実行方法}
+\CommentTok{========}
+\CommentTok{【計算結果だけ確認したい場合（論文ファイルを変更しない）】}
+\CommentTok{    python3 zenmi\_report\_spherical\_polytope\_complete\_R2.py}
+
+\CommentTok{    標準出力に以下を表示する:}
+\CommentTok{        {-} 内在的球面正方形の係数タプル列}
+\CommentTok{        {-} 高次元版 n=2 の係数タプル列}
+\CommentTok{        {-} R=2、辺長 1/2/3 に対する厳密値 / 級数値 / 誤差の比較表}
+
+\CommentTok{【論文 MD と図を最新状態に更新する場合】}
+\CommentTok{    python3 update\_tables.py}
+
+\CommentTok{    これを実行すると次の変更がすべて自動で行われる:}
+\CommentTok{        ・zenmi\_report\_spherical\_polytope\_reproducible\_full\_R2.md}
+\CommentTok{            → 数表（10.2.1 / 10.2.2 節）を計算値で上書き}
+\CommentTok{            → スクリプト全文（13.5 節）を本ファイルの現在の内容で同期}
+\CommentTok{        ・three\_surfaces\_new\_R2\{,\_side2,\_side3\}.png の再生成}
+
+\CommentTok{    ⚠ 注意: update\_tables.py は MD ファイルを直接書き換える。}
+\CommentTok{            論文本体を変更したくない場合は、上の}
+\CommentTok{            python3 zenmi\_report\_spherical\_polytope\_complete\_R2.py}
+\CommentTok{            を実行すること。}
+
+\CommentTok{理論的背景}
+\CommentTok{==========}
+\CommentTok{[A] 内在的球面正方形}
+\CommentTok{    面積公式:}
+\CommentTok{        A/R\^{}2 = 8*atan(1/sqrt(cos(x))) {-} 2*pi,   x = a/R}
+
+\CommentTok{    テイラー展開:}
+\CommentTok{        A/R\^{}2 = sum\_\{n\textgreater{}=1\} c\_n x\^{}(2n)}
+
+\CommentTok{    係数 c\_n は、tan(x/2) と sec(x)\^{}(1/2) の級数係数の畳み込みとして得られる。}
+\CommentTok{    実装では SymPy を使って厳密分数として自動生成する。}
+
+\CommentTok{[B] 高次元グノモン型測地的球面超直方体（2 次元面積版）}
+\CommentTok{    面積公式:}
+\CommentTok{        V\_2(h,h;R)}
+\CommentTok{          = ∫∫ R\^{}3/(R\^{}2 + y\_1\^{}2 + y\_2\^{}2)\^{}(3/2) dy\_1 dy\_2,  y\_i in [{-}h,h]}
+
+\CommentTok{    等辺長 L の場合:}
+\CommentTok{        V\_2 = L\^{}2 * sum\_\{m\textgreater{}=0\} d\_\{2,m\} * (L\^{}2/R\^{}2)\^{}m}
+
+\CommentTok{    係数 d\_\{2,m\} は、}
+\CommentTok{    {-} 二項展開}
+\CommentTok{    {-} 多項展開}
+\CommentTok{    {-} 直方体上のモーメント積分}
+\CommentTok{    を組み合わせて厳密分数として計算する。}
+\CommentTok{"""}
+
+\ImportTok{import}\NormalTok{ math}
+\ImportTok{from}\NormalTok{ math }\ImportTok{import}\NormalTok{ atan, sqrt, cos, pi}
+\ImportTok{from}\NormalTok{ fractions }\ImportTok{import}\NormalTok{ Fraction}
+\ImportTok{import}\NormalTok{ sympy }\ImportTok{as}\NormalTok{ sp}
+\ImportTok{from}\NormalTok{ scipy.integrate }\ImportTok{import}\NormalTok{ nquad}
+
+
+\KeywordTok{def}\NormalTok{ intrinsic\_coeff\_tuples(n\_terms}\OperatorTok{=}\DecValTok{10}\NormalTok{):}
+\NormalTok{    x }\OperatorTok{=}\NormalTok{ sp.symbols(}\StringTok{"x"}\NormalTok{)}
+\NormalTok{    f }\OperatorTok{=} \DecValTok{8} \OperatorTok{*}\NormalTok{ sp.atan(}\DecValTok{1} \OperatorTok{/}\NormalTok{ sp.sqrt(sp.cos(x))) }\OperatorTok{{-}} \DecValTok{2} \OperatorTok{*}\NormalTok{ sp.pi}
+\NormalTok{    ser }\OperatorTok{=}\NormalTok{ sp.series(f, x, }\DecValTok{0}\NormalTok{, }\DecValTok{2} \OperatorTok{*}\NormalTok{ n\_terms }\OperatorTok{+} \DecValTok{1}\NormalTok{).removeO()}
+\NormalTok{    out }\OperatorTok{=}\NormalTok{ []}
+    \ControlFlowTok{for}\NormalTok{ n }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{1}\NormalTok{, n\_terms }\OperatorTok{+} \DecValTok{1}\NormalTok{):}
+\NormalTok{        c }\OperatorTok{=}\NormalTok{ sp.simplify(ser.coeff(x, }\DecValTok{2} \OperatorTok{*}\NormalTok{ n))}
+\NormalTok{        num, den }\OperatorTok{=}\NormalTok{ sp.fraction(c)}
+\NormalTok{        out.append((}\BuiltInTok{int}\NormalTok{(num), }\BuiltInTok{int}\NormalTok{(den)))}
+    \ControlFlowTok{return}\NormalTok{ out}
+
+
+\KeywordTok{def}\NormalTok{ intrinsic\_area\_exact(a: }\BuiltInTok{float}\NormalTok{, R: }\BuiltInTok{float}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{float}\NormalTok{:}
+\NormalTok{    x }\OperatorTok{=}\NormalTok{ a }\OperatorTok{/}\NormalTok{ R}
+    \ControlFlowTok{return}\NormalTok{ (R }\OperatorTok{**} \DecValTok{2}\NormalTok{) }\OperatorTok{*}\NormalTok{ (}\FloatTok{8.0} \OperatorTok{*}\NormalTok{ atan(}\FloatTok{1.0} \OperatorTok{/}\NormalTok{ sqrt(cos(x))) }\OperatorTok{{-}} \FloatTok{2.0} \OperatorTok{*}\NormalTok{ pi)}
+
+
+\KeywordTok{def}\NormalTok{ intrinsic\_area\_series(a: }\BuiltInTok{float}\NormalTok{, R: }\BuiltInTok{float}\NormalTok{, coeffs) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{float}\NormalTok{:}
+\NormalTok{    x }\OperatorTok{=}\NormalTok{ a }\OperatorTok{/}\NormalTok{ R}
+\NormalTok{    s }\OperatorTok{=} \FloatTok{0.0}
+    \ControlFlowTok{for}\NormalTok{ n, (num, den) }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(coeffs, start}\OperatorTok{=}\DecValTok{1}\NormalTok{):}
+\NormalTok{        s }\OperatorTok{+=}\NormalTok{ (num }\OperatorTok{/}\NormalTok{ den) }\OperatorTok{*}\NormalTok{ (x }\OperatorTok{**}\NormalTok{ (}\DecValTok{2} \OperatorTok{*}\NormalTok{ n))}
+    \ControlFlowTok{return}\NormalTok{ (R }\OperatorTok{**} \DecValTok{2}\NormalTok{) }\OperatorTok{*}\NormalTok{ s}
+
+
+\KeywordTok{def}\NormalTok{ weak\_compositions(total: }\BuiltInTok{int}\NormalTok{, parts: }\BuiltInTok{int}\NormalTok{):}
+    \ControlFlowTok{if}\NormalTok{ parts }\OperatorTok{==} \DecValTok{1}\NormalTok{:}
+        \ControlFlowTok{yield}\NormalTok{ (total,)}
+        \ControlFlowTok{return}
+    \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(total }\OperatorTok{+} \DecValTok{1}\NormalTok{):}
+        \ControlFlowTok{for}\NormalTok{ rest }\KeywordTok{in}\NormalTok{ weak\_compositions(total }\OperatorTok{{-}}\NormalTok{ a, parts }\OperatorTok{{-}} \DecValTok{1}\NormalTok{):}
+            \ControlFlowTok{yield}\NormalTok{ (a,) }\OperatorTok{+}\NormalTok{ rest}
+
+
+\KeywordTok{def}\NormalTok{ projected\_equal\_edge\_coeff\_tuples(dim: }\BuiltInTok{int}\NormalTok{, n\_terms}\OperatorTok{=}\DecValTok{8}\NormalTok{):}
+\NormalTok{    out }\OperatorTok{=}\NormalTok{ []}
+    \ControlFlowTok{for}\NormalTok{ m }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(n\_terms):}
+\NormalTok{        total }\OperatorTok{=}\NormalTok{ Fraction(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+        \ControlFlowTok{for}\NormalTok{ alpha }\KeywordTok{in}\NormalTok{ weak\_compositions(m, dim):}
+\NormalTok{            multinomial }\OperatorTok{=}\NormalTok{ math.factorial(m)}
+            \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in}\NormalTok{ alpha:}
+\NormalTok{                multinomial }\OperatorTok{//=}\NormalTok{ math.factorial(a)}
+\NormalTok{            denom }\OperatorTok{=} \DecValTok{1}
+            \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in}\NormalTok{ alpha:}
+\NormalTok{                denom }\OperatorTok{*=}\NormalTok{ (}\DecValTok{2} \OperatorTok{*}\NormalTok{ a }\OperatorTok{+} \DecValTok{1}\NormalTok{)}
+\NormalTok{            total }\OperatorTok{+=}\NormalTok{ Fraction(multinomial, denom)}
+
+\NormalTok{        poch }\OperatorTok{=}\NormalTok{ Fraction(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+        \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(m):}
+\NormalTok{            poch }\OperatorTok{*=}\NormalTok{ Fraction(dim }\OperatorTok{+} \DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{) }\OperatorTok{+}\NormalTok{ j}
+
+\NormalTok{        coeff }\OperatorTok{=}\NormalTok{ Fraction((}\OperatorTok{{-}}\DecValTok{1}\NormalTok{) }\OperatorTok{**}\NormalTok{ m, }\DecValTok{1}\NormalTok{) }\OperatorTok{*}\NormalTok{ poch }\OperatorTok{*}\NormalTok{ total }\OperatorTok{/}\NormalTok{ Fraction(math.factorial(m) }\OperatorTok{*}\NormalTok{ (}\DecValTok{4} \OperatorTok{**}\NormalTok{ m), }\DecValTok{1}\NormalTok{)}
+\NormalTok{        out.append((coeff.numerator, coeff.denominator))}
+    \ControlFlowTok{return}\NormalTok{ out}
+
+
+\KeywordTok{def}\NormalTok{ projected\_area\_exact\_equal(R: }\BuiltInTok{float}\NormalTok{, L: }\BuiltInTok{float}\NormalTok{):}
+\NormalTok{    h }\OperatorTok{=}\NormalTok{ L }\OperatorTok{/} \FloatTok{2.0}
+
+    \KeywordTok{def}\NormalTok{ integrand(y1, y2):}
+        \ControlFlowTok{return}\NormalTok{ R }\OperatorTok{**} \DecValTok{3} \OperatorTok{/}\NormalTok{ (R }\OperatorTok{**} \DecValTok{2} \OperatorTok{+}\NormalTok{ y1 }\OperatorTok{*}\NormalTok{ y1 }\OperatorTok{+}\NormalTok{ y2 }\OperatorTok{*}\NormalTok{ y2) }\OperatorTok{**}\NormalTok{ (}\DecValTok{3} \OperatorTok{/} \DecValTok{2}\NormalTok{)}
+
+\NormalTok{    val, err }\OperatorTok{=}\NormalTok{ nquad(integrand, [[}\OperatorTok{{-}}\NormalTok{h, h], [}\OperatorTok{{-}}\NormalTok{h, h]])}
+    \ControlFlowTok{return}\NormalTok{ val, err}
+
+
+\KeywordTok{def}\NormalTok{ projected\_area\_series\_equal(R: }\BuiltInTok{float}\NormalTok{, L: }\BuiltInTok{float}\NormalTok{, coeffs):}
+\NormalTok{    x2 }\OperatorTok{=}\NormalTok{ (L }\OperatorTok{*}\NormalTok{ L) }\OperatorTok{/}\NormalTok{ (R }\OperatorTok{*}\NormalTok{ R)}
+\NormalTok{    s }\OperatorTok{=} \FloatTok{0.0}
+    \ControlFlowTok{for}\NormalTok{ m, (num, den) }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(coeffs):}
+\NormalTok{        s }\OperatorTok{+=}\NormalTok{ (num }\OperatorTok{/}\NormalTok{ den) }\OperatorTok{*}\NormalTok{ (x2 }\OperatorTok{**}\NormalTok{ m)}
+    \ControlFlowTok{return}\NormalTok{ (L }\OperatorTok{**} \DecValTok{2}\NormalTok{) }\OperatorTok{*}\NormalTok{ s}
+
+
+\KeywordTok{def}\NormalTok{ rel\_err(approx: }\BuiltInTok{float}\NormalTok{, exact: }\BuiltInTok{float}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{float}\NormalTok{:}
+    \ControlFlowTok{if}\NormalTok{ exact }\OperatorTok{==} \FloatTok{0.0}\NormalTok{:}
+        \ControlFlowTok{return} \BuiltInTok{abs}\NormalTok{(approx }\OperatorTok{{-}}\NormalTok{ exact)}
+    \ControlFlowTok{return} \BuiltInTok{abs}\NormalTok{((approx }\OperatorTok{{-}}\NormalTok{ exact) }\OperatorTok{/}\NormalTok{ exact)}
+
+
+\KeywordTok{def}\NormalTok{ main():}
+\NormalTok{    R }\OperatorTok{=} \FloatTok{2.0}
+\NormalTok{    lengths }\OperatorTok{=}\NormalTok{ [}\FloatTok{1.0}\NormalTok{, }\FloatTok{2.0}\NormalTok{, }\FloatTok{3.0}\NormalTok{]}
+
+\NormalTok{    coeffs\_intr }\OperatorTok{=}\NormalTok{ intrinsic\_coeff\_tuples(}\DecValTok{10}\NormalTok{)}
+\NormalTok{    coeffs\_proj }\OperatorTok{=}\NormalTok{ projected\_equal\_edge\_coeff\_tuples(}\DecValTok{2}\NormalTok{, }\DecValTok{8}\NormalTok{)}
+
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"=== Coefficient tuples: intrinsic spherical square ==="}\NormalTok{)}
+    \BuiltInTok{print}\NormalTok{(coeffs\_intr)}
+    \BuiltInTok{print}\NormalTok{()}
+
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"=== Coefficient tuples: projected geodesic spherical orthotope (n=2) ==="}\NormalTok{)}
+    \BuiltInTok{print}\NormalTok{(coeffs\_proj)}
+    \BuiltInTok{print}\NormalTok{()}
+
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"=== TEST TABLE: R = 2 ==="}\NormalTok{)}
+    \BuiltInTok{print}\NormalTok{()}
+
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"[Intrinsic spherical square]"}\NormalTok{)}
+    \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in}\NormalTok{ lengths:}
+\NormalTok{        exact }\OperatorTok{=}\NormalTok{ intrinsic\_area\_exact(a, R)}
+\NormalTok{        approx }\OperatorTok{=}\NormalTok{ intrinsic\_area\_series(a, R, coeffs\_intr)}
+        \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"a=}\SpecialCharTok{\{}\NormalTok{a}\SpecialCharTok{:.1f\}}\SpecialStringTok{ | exact=}\SpecialCharTok{\{}\NormalTok{exact}\SpecialCharTok{:.15f\}}\SpecialStringTok{ | series20=}\SpecialCharTok{\{}\NormalTok{approx}\SpecialCharTok{:.15f\}}\SpecialStringTok{ | abs\_err=}\SpecialCharTok{\{}\BuiltInTok{abs}\NormalTok{(approx}\OperatorTok{{-}}\NormalTok{exact)}\SpecialCharTok{:.3e\}}\SpecialStringTok{ | rel\_err=}\SpecialCharTok{\{}\NormalTok{rel\_err(approx, exact)}\SpecialCharTok{:.3e\}}\SpecialStringTok{"}\NormalTok{)}
+    \BuiltInTok{print}\NormalTok{()}
+
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"[Projected gnomonic image, n=2]"}\NormalTok{)}
+    \ControlFlowTok{for}\NormalTok{ L }\KeywordTok{in}\NormalTok{ lengths:}
+\NormalTok{        exact, quad\_err }\OperatorTok{=}\NormalTok{ projected\_area\_exact\_equal(R, L)}
+\NormalTok{        approx }\OperatorTok{=}\NormalTok{ projected\_area\_series\_equal(R, L, coeffs\_proj)}
+        \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"L=}\SpecialCharTok{\{}\NormalTok{L}\SpecialCharTok{:.1f\}}\SpecialStringTok{ | exact=}\SpecialCharTok{\{}\NormalTok{exact}\SpecialCharTok{:.15f\}}\SpecialStringTok{ | series8=}\SpecialCharTok{\{}\NormalTok{approx}\SpecialCharTok{:.15f\}}\SpecialStringTok{ | abs\_err=}\SpecialCharTok{\{}\BuiltInTok{abs}\NormalTok{(approx}\OperatorTok{{-}}\NormalTok{exact)}\SpecialCharTok{:.3e\}}\SpecialStringTok{ | rel\_err=}\SpecialCharTok{\{}\NormalTok{rel\_err(approx, exact)}\SpecialCharTok{:.3e\}}\SpecialStringTok{ | quad\_err=}\SpecialCharTok{\{}\NormalTok{quad\_err}\SpecialCharTok{:.3e\}}\SpecialStringTok{"}\NormalTok{)}
+    \BuiltInTok{print}\NormalTok{()}
+
+    \BuiltInTok{print}\NormalTok{(}\StringTok{"[Reference flat Euclidean square areas]"}\NormalTok{)}
+    \ControlFlowTok{for}\NormalTok{ L }\KeywordTok{in}\NormalTok{ lengths:}
+        \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"L=}\SpecialCharTok{\{}\NormalTok{L}\SpecialCharTok{:.1f\}}\SpecialStringTok{ | flat\_area=}\SpecialCharTok{\{}\NormalTok{L}\OperatorTok{**}\DecValTok{2}\SpecialCharTok{:.15f\}}\SpecialStringTok{"}\NormalTok{)}
+
+
+\ControlFlowTok{if} \VariableTok{\_\_name\_\_} \OperatorTok{==} \StringTok{"\_\_main\_\_"}\NormalTok{:}
+\NormalTok{    main()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{14. 考察}\label{ux8003ux5bdf}
+
+本研究の図と数値結果から、次の点が明確になる。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{内在的球面正方形}は、球面そのものの幾何に従うため、平面正方形より面積が大きくなる。\\
+\item
+  \textbf{グノモン型球面像}は、平面正方形の球面像であるため、外側ほど圧縮され、平面正方形より面積が小さくなる。\\
+\item
+  両者はともに「球面上の正方形」と呼べるが、\textbf{別問題}であり、片方を省略してはならない。\\
+\item
+  辺長が大きくなるにつれて差は顕著になり、図による可視化の意義が大きくなる。\\
+\item
+  同時に、級数近似の精度は収束半径に近づくほど悪化する。よって、図と数表は幾何学的差異だけでなく、近似法の適用限界も示している。
+\end{enumerate}
+
+\subsection{14.1
+人間的直感による理解（誤読防止のための説明）}\label{ux4ebaux9593ux7684ux76f4ux611fux306bux3088ux308bux7406ux89e3ux8aa4ux8aadux9632ux6b62ux306eux305fux3081ux306eux8aacux660e}
+
+本研究で扱った二つの「球面上の正方形」は、見かけ上は似ていても、\textbf{何を固定し、どちら向きに変形しているか}
+が異なる。\\
+この違いを人間的直感で理解するには、\textbf{ゴム膜の比喩}が有効である。
+
+\subsubsection{(a)
+内在的球面正方形}\label{a-ux5185ux5728ux7684ux7403ux9762ux6b63ux65b9ux5f62}
+
+内在的球面正方形は、直感的には
+
+\[
+\boxed{
+\text{「球の外側から、辺の長さを保った正方形のゴム膜を球面に押し当てたもの」}
+}
+\]
+
+とみなせる。
+
+このとき、固定されているのは \textbf{球面上の辺長（測地線長）}
+である。\\
+したがって、球面の正曲率の影響で内部は外へふくらみ、平面正方形より広い領域を囲む。
+
+その結果、
+
+\[
+\boxed{
+\text{内在的球面正方形の面積は、平面正方形より大きくなる}
+}
+\]
+
+という結果が自然に理解できる。
+
+\subsubsection{(b)
+グノモン型測地的球面像}\label{b-ux30b0ux30ceux30e2ux30f3ux578bux6e2cux5730ux7684ux7403ux9762ux50cf}
+
+一方、グノモン型は、直感的には
+
+\[
+\boxed{
+\text{「平面上の正方形のゴム膜を、球の内側からクシャッと縮めて球面に押し付けたもの」}
+}
+\]
+
+とみなせる。
+
+このとき、固定されているのは \textbf{平面側の元の正方形}
+であり、球面上の辺長ではない。\\
+球面へ持ち上げる過程で、外側ほど面積要素が圧縮されるため、球面像の面積は平面正方形より小さくなる。
+
+したがって、
+
+\[
+\boxed{
+\text{グノモン型球面像の面積は、平面正方形より小さくなる}
+}
+\]
+
+のが正しい。
+
+\subsubsection{(c)
+本研究の本質}\label{c-ux672cux7814ux7a76ux306eux672cux8cea}
+
+以上より、本研究で得られた
+
+\begin{itemize}
+\tightlist
+\item
+  「一方は面積が増える」
+\item
+  「もう一方は面積が減る」
+\end{itemize}
+
+という結果は矛盾ではない。\\
+むしろこれは、
+
+\[
+\boxed{
+\text{外から貼ると膨らみ、内から押すと縮む}
+}
+\]
+
+という、\textbf{変形の方向と保存量の違い} に対応している。
+
+したがって、本研究で比較している二つの図形は、どちらも自然でありながら、\textbf{定義そのものが異なるため、面積の挙動が逆になる}のである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{15. 結論}\label{ux7d50ux8ad6}
+
+本稿では、球面上の正方形に対する 2
+つの異なる定義を区別し、それぞれについて面積公式、係数計算、数値検証、3D
+可視化を行った。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{内在的球面正方形}は、平面より大きい面積を与える。\\
+\item
+  \textbf{グノモン型球面像}は、平面より小さい面積を与える。
+\end{itemize}
+
+この差は誤りではなく、\textbf{定義が異なるために生じる正しい差}である。
+
+さらに、(R=2)、辺長 1・2・3 の 3D
+図を用いることで、両者の差が視覚的に非常に分かりやすくなった。\\
+とくに辺長 2、3
+の場合には、青・赤・緑の差が明瞭であり、論文本体でこの図を引用することによって、定義の違いとその帰結を一目で説明できる。
+
+したがって本研究は、
+
+\[
+\boxed{
+\text{「球面上の正方形」は一意ではなく、定義に応じて異なる自然な幾何量が存在する}
+}
+\]
+
+ことを、数式・係数・検算・図の全てを用いて示したものである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{付録A.
+二つの定義を省略してはならない理由}\label{ux4ed8ux9332a.-ux4e8cux3064ux306eux5b9aux7fa9ux3092ux7701ux7565ux3057ux3066ux306fux306aux3089ux306aux3044ux7406ux7531}
+
+本稿で扱った二つの図形は、どちらも「球面上の正方形」と呼ばれうるが、問いそのものが異なる。
+
+\begin{itemize}
+\item
+  「球面そのものの中で正方形を作る」\\
+  → 内在的球面正方形
+\item
+  「平面正方形を球面に持ち上げた像を測る」\\
+  → グノモン型測地的球面像
+\end{itemize}
+
+したがって、最初の一般的な球面正方形の議論を省略してはならない。\\
+本稿の価値は、むしろこの二つを区別し、それぞれが異なる正しい答えを与えることを明示した点にある。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+以上
+
+\end{document}
