@@ -1,0 +1,389 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{cite}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{remark}{Remark}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{observation}{Observation}
+
+\title{\textbf{Geometric Formulation of 4-Dimensional Spacetime\\
+via Gnomonic Projection}}
+
+\author{Noriaki Kihara\\
+\small WF System Co., Ltd.\\
+\small (Osaka University, School of Engineering Science, Alumni)}
+
+\date{April 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This note examines, from a purely geometric viewpoint, the deformation of the induced metric tensor that arises when 4-dimensional Euclidean space is mapped onto the surface of a 5-dimensional hypersphere of curvature radius $R$ via the gnomonic (central) projection. In particular, we present step-by-step derivations of: (i) the exact induced metric tensor $g_{\mu\nu}$ (including the contribution of the fifth component), and (ii) the geometric relationship between the Einstein tensor and the constant $\Lambda = 3/R^2$. Physical interpretation is deferred to future work; no cosmological assumptions are made in this note.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+
+The gnomonic projection is defined as the central projection from the center of a sphere onto a tangent plane, and its most important property --- that great circles (geodesics) on the sphere map to straight lines on the plane --- is well established \cite{Snyder1987}.
+
+This note extends this projection from 4 to 5 dimensions and investigates the metric structure that arises in the resulting coordinate system. The problem is purely geometric; physical interpretations (gravity, spacetime, relativity, etc.) lie outside the scope of this note.
+
+\section{Preliminaries: Definition and Basic Properties}
+
+\subsection{Gnomonic Projection in General Dimension}
+
+\begin{definition}[$n$-dimensional gnomonic projection {\rm\cite{Snyder1987,Coxeter1969}}]
+In $n$-dimensional Euclidean space, consider a tangent hyperplane $\Pi_R$ at distance $R$ from the center of a sphere (with coordinates $(x^1, \ldots, x^n) \in \mathbb{R}^n$, origin at the point of tangency). Setting $l = \sqrt{R^2 + \sum_{i=1}^n (x^i)^2}$, we call
+\begin{equation}
+\Phi: \Pi_R \to S^n(R) \subset \mathbb{R}^{n+1}, \quad
+(x^1, \ldots, x^n) \mapsto \left(\frac{R x^1}{l}, \ldots, \frac{R x^n}{l},\ \frac{R^2}{l}\right)
+\label{eq:gnomonic}
+\end{equation}
+the \emph{gnomonic projection}, where $S^n(R)$ is the $n$-sphere of radius $R$ embedded in $\mathbb{R}^{n+1}$:
+\[
+S^n(R) = \left\{(Y^1, \ldots, Y^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; \sum_{A=1}^{n+1} (Y^A)^2 = R^2 \right\}.
+\]
+\end{definition}
+
+\begin{proposition}[Geodesic preservation {\rm\cite{Snyder1987}}]
+Under the gnomonic projection, any straight line on the tangent plane maps to a great circle (geodesic) on the sphere.
+\end{proposition}
+
+\section{Derivation of the Metric Tensor}
+
+\subsection{Setup}
+
+We set $n=4$ and consider the gnomonic projection from the tangent hyperplane $\Pi_R$ (coordinates $(x^1, x^2, x^3, x^4)$) to $S^4(R) \subset \mathbb{R}^5$. Since the tangent plane is Euclidean, $x_\mu = x^\mu$. By Definition~2.1, the 5-dimensional target coordinates are
+\begin{equation}
+(Y^1, Y^2, Y^3, Y^4, Y^5) = \left(\frac{Rx^1}{l},\ \frac{Rx^2}{l},\ \frac{Rx^3}{l},\ \frac{Rx^4}{l},\ \frac{R^2}{l}\right),
+\label{eq:coords}
+\end{equation}
+\begin{equation}
+l = \sqrt{R^2 + \textstyle\sum_{\mu=1}^4 (x^\mu)^2},\quad r^2 = \textstyle\sum_{\mu=1}^4(x^\mu)^2,\quad l^2 = R^2 + r^2.
+\label{eq:l}
+\end{equation}
+
+\subsection{Derivation of the Pullback Metric}
+
+The induced metric on $S^4(R) \subset \mathbb{R}^5$ is determined by the standard inner product on $\mathbb{R}^5$ via \cite{Spivak1999}:
+\begin{equation}
+dS^2 = \sum_{A=1}^{5} (dY^A)^2.
+\label{eq:ambient}
+\end{equation}
+\textbf{We compute all five components, including the fifth.}
+
+\medskip\noindent\textbf{Components 1--4} $(Y^\mu = R x^\mu / l)$:
+
+\begin{lemma}
+\begin{equation}
+\frac{\partial Y^\mu}{\partial x^\nu} = \frac{R}{l}\left(\delta^\mu_\nu - \frac{x^\mu x^\nu}{l^2}\right).
+\label{eq:jacobian}
+\end{equation}
+\end{lemma}
+\begin{proof}
+$\dfrac{\partial}{\partial x^\nu}\!\left(\dfrac{Rx^\mu}{l}\right)
+= \dfrac{R\delta^\mu_\nu}{l} + Rx^\mu\!\left(-\dfrac{x^\nu}{l^3}\right)
+= \dfrac{R}{l}\!\left(\delta^\mu_\nu - \dfrac{x^\mu x^\nu}{l^2}\right).\qedhere$
+\end{proof}
+
+Therefore,
+\begin{equation}
+\sum_{\mu=1}^4(dY^\mu)^2 = \frac{R^2}{l^2}\sum_{\nu,\rho=1}^{4}\!\left(\delta_{\nu\rho} - \frac{2x_\nu x_\rho}{l^2} + \frac{r^2 x_\nu x_\rho}{l^4}\right)dx^\nu dx^\rho.
+\label{eq:sum14}
+\end{equation}
+
+\medskip\noindent\textbf{Fifth component} $(Y^5 = R^2/l)$:
+\begin{equation}
+\frac{\partial Y^5}{\partial x^\nu} = -\frac{R^2 x^\nu}{l^3}, \qquad
+\left(dY^5\right)^2 = \frac{R^4}{l^6}\,x_\nu x_\rho\,dx^\nu dx^\rho.
+\label{eq:comp5}
+\end{equation}
+
+\medskip\noindent\textbf{Summing all components.}
+The coefficient of $x_\nu x_\rho$ from \eqref{eq:sum14} and \eqref{eq:comp5} is
+\[
+-\frac{2R^2}{l^4} + \frac{R^2 r^2}{l^6} + \frac{R^4}{l^6}
+= -\frac{2R^2}{l^4} + \frac{R^2(r^2+R^2)}{l^6}
+= -\frac{2R^2}{l^4} + \frac{R^2}{l^4} = -\frac{R^2}{l^4}.
+\]
+Therefore,
+\begin{equation}
+\boxed{g_{\mu\nu} = \frac{R^2}{l^2}\left(\delta_{\mu\nu} - \frac{x_\mu x_\nu}{l^2}\right).}
+\label{eq:metric}
+\end{equation}
+
+\begin{remark}[Indispensability of the fifth component]
+If the fifth component $(dY^5)^2$ is omitted, the coefficient of $x_\nu x_\rho$ remains $-2R^2/l^4 + R^2 r^2/l^6$ and \eqref{eq:metric} cannot be obtained. The contribution $+R^4/l^6 = +R^2/l^4 - R^2 r^2/l^6$ from the fifth component exactly compensates this deficit.
+\end{remark}
+
+\section{Christoffel Symbols and Riemann Curvature}
+
+\begin{theorem}[Curvature tensor of a space of constant curvature {\rm\cite{doCarmo1992,MTW1973,Wald1984}}]
+The Riemann curvature tensor of the $n$-sphere $S^n(R)$ is
+\begin{equation}
+R_{\mu\nu\rho\sigma} = \frac{1}{R^2}(g_{\mu\rho}g_{\nu\sigma} - g_{\mu\sigma}g_{\nu\rho}).
+\label{eq:riemann}
+\end{equation}
+\end{theorem}
+
+\begin{remark}
+Equation~\eqref{eq:riemann} is the standard result for spaces of constant curvature \cite{Wald1984,MTW1973}. The direct derivation in gnomonic coordinates from the Christoffel formula is planned for Appendix~A; here we cite~\cite{doCarmo1992,MTW1973}.
+\end{remark}
+
+\section{Ricci Tensor and Einstein Tensor}
+
+\subsection{Ricci Tensor}
+
+\begin{proposition}
+The Ricci tensor of the $n$-sphere $S^n(R)$ is
+\begin{equation}
+R_{\mu\nu} = \frac{n-1}{R^2}g_{\mu\nu}.
+\label{eq:ricci}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Substituting \eqref{eq:riemann} into $R_{\mu\nu} = g^{\rho\sigma}R_{\mu\rho\nu\sigma}$:
+\[
+g^{\rho\sigma}R_{\mu\rho\nu\sigma} = \frac{1}{R^2}g^{\rho\sigma}(g_{\mu\nu}g_{\rho\sigma} - g_{\mu\sigma}g_{\nu\rho}).
+\]
+First term: $g^{\rho\sigma}g_{\mu\nu}g_{\rho\sigma} = n\,g_{\mu\nu}$.
+Second term: $g^{\rho\sigma}g_{\mu\sigma}g_{\nu\rho} = g_{\nu\mu}= g_{\mu\nu}$.
+Hence $R_{\mu\nu} = \frac{1}{R^2}(n-1)g_{\mu\nu}$.\qedhere
+\end{proof}
+
+\subsection{Ricci Scalar}
+
+\begin{equation}
+R_{\rm scalar} = g^{\mu\nu}R_{\mu\nu} = \frac{n(n-1)}{R^2}.
+\label{eq:ricciscalar}
+\end{equation}
+For $n=4$: $R_{\rm scalar} = 12/R^2$.
+
+\subsection{Einstein Tensor}
+
+From the definition \cite{MTW1973}:
+\begin{equation}
+G_{\mu\nu} = R_{\mu\nu} - \tfrac{1}{2}g_{\mu\nu}R_{\rm scalar}.
+\end{equation}
+For $n=4$:
+\begin{equation}
+G_{\mu\nu} = \frac{3}{R^2}g_{\mu\nu} - \frac{6}{R^2}g_{\mu\nu} = -\frac{3}{R^2}g_{\mu\nu}.
+\label{eq:einstein}
+\end{equation}
+
+\section{Main Theorem}
+
+\begin{theorem}[Main result]\label{thm:main}
+When the tangent hyperplane $\Pi_R$ of 4-dimensional Euclidean space is mapped to $S^4(R)$ via the gnomonic projection, the induced metric $g_{\mu\nu}$ (eq.~\eqref{eq:metric}) satisfies
+\begin{equation}
+G_{\mu\nu} + \Lambda\, g_{\mu\nu} = 0 \qquad \text{with} \qquad
+\boxed{\Lambda = \frac{3}{R^2}.}
+\label{eq:einstein-eq}
+\end{equation}
+\end{theorem}
+\begin{proof}
+From \eqref{eq:einstein}, $G_{\mu\nu} = -\frac{3}{R^2}g_{\mu\nu}$; setting $\Lambda = \frac{3}{R^2}$ gives~\eqref{eq:einstein-eq} immediately.\qedhere
+\end{proof}
+
+\begin{remark}
+Equation~\eqref{eq:einstein-eq} is a \emph{geometric identity} for $S^4(R)$ with Euclidean signature and is not to be interpreted as a physical law. It is structurally distinct from de Sitter spacetime with Lorentzian signature; the two are related by analytic continuation (Wick rotation $t \to it$, see \cite{Wald1984} Appendix~D).
+
+Both the Euclidean and Lorentzian versions share $\Lambda = 3/R^2$, consistent with the Gibbons--Hawking Euclidean quantum gravity framework \cite{GibbonsHawking1977}. The sign difference is a technical issue bridged by Wick rotation.
+\end{remark}
+
+\begin{remark}[General dimension]
+For the $n$-sphere $S^n(R)$, the value of $\Lambda$ satisfying $G_{\mu\nu} + \Lambda g_{\mu\nu} = 0$ is
+\[
+\Lambda_n = \frac{(n-1)(n-2)}{2R^2}
+\]
+(for $n=4$: $\Lambda_4 = 3/R^2$). The case $n=4$ is physically distinguished by its correspondence to the de Sitter vacuum solution.
+\end{remark}
+
+\section{Topics for Future Investigation}
+
+The following are planned for future work:
+\begin{itemize}
+\item \textbf{Geometric interpretation of Wick rotation:} How to describe $t \to it$ within the gnomonic framework.
+\item \textbf{Lorentzian gnomonic projection:} Derivation of the induced metric for $l^2 = R^2 + x^2 + y^2 + z^2 - t^2$.
+\item \textbf{Geodesics under symmetry:} Geodesic equations for $X^2=X^3=X^4=b$, $X^1=t$.
+\item \textbf{Introduction of matter:} Extension to $T_{\mu\nu} \neq 0$.
+\item \textbf{Euclidean/Lorentzian correspondence:} Proof of the correspondence between unified formula~(D.3) and the Beltrami--de Sitter metric of Guo et al.\ \cite{Guo2004,Guo2006,Guo2007}.
+\end{itemize}
+
+\section{Summary of Results}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{llll}
+\toprule
+Item & Result & Eq. & Source \\
+\midrule
+Map definition & $Y^\mu = Rx^\mu/l$,\ $Y^5 = R^2/l$ & \eqref{eq:coords} & \cite{Snyder1987,Coxeter1969} \\
+Induced metric & $g_{\mu\nu} = \frac{R^2}{l^2}\!\left(\delta_{\mu\nu} - \frac{x_\mu x_\nu}{l^2}\right)$ & \eqref{eq:metric} & This work \\
+Riemann curvature & $\frac{1}{R^2}(g_{\mu\rho}g_{\nu\sigma}-g_{\mu\sigma}g_{\nu\rho})$ & \eqref{eq:riemann} & \cite{doCarmo1992,MTW1973,Wald1984} \\
+Ricci tensor & $R_{\mu\nu} = \frac{3}{R^2}g_{\mu\nu}$ & \eqref{eq:ricci} & This work \\
+Ricci scalar & $R_{\rm scalar} = \frac{12}{R^2}$ & \eqref{eq:ricciscalar} & This work \\
+Einstein tensor & $G_{\mu\nu} = -\frac{3}{R^2}g_{\mu\nu}$ & \eqref{eq:einstein} & This work \\
+\textbf{Main theorem} & $G_{\mu\nu} + \Lambda g_{\mu\nu} = 0$,\ $\Lambda = \frac{3}{R^2}$ & \eqref{eq:einstein-eq} & This work \\
+\bottomrule
+\end{tabular}
+\caption{Summary of main results.}
+\end{table}
+
+\begin{thebibliography}{99}
+
+\bibitem{Snyder1987}
+J.~P.~Snyder,
+\textit{Map Projections: A Working Manual},
+U.S. Geological Survey Professional Paper 1395,
+U.S. Government Printing Office, Washington D.C., 1987, pp.~164--168.
+
+\bibitem{Coxeter1969}
+H.~S.~M.~Coxeter,
+\textit{Introduction to Geometry}, 2nd ed.,
+Wiley, New York, 1969, Chapter~15.
+
+\bibitem{doCarmo1992}
+M.~P.~do Carmo,
+\textit{Riemannian Geometry},
+Birkh\"{a}user, Boston, 1992, Chapter~4.
+
+\bibitem{MTW1973}
+C.~W.~Misner, K.~S.~Thorne, J.~A.~Wheeler,
+\textit{Gravitation},
+W.~H.~Freeman, San Francisco, 1973, \S13.5.
+
+\bibitem{Wald1984}
+R.~M.~Wald,
+\textit{General Relativity},
+University of Chicago Press, Chicago, 1984, Appendix~D.
+
+\bibitem{Spivak1999}
+M.~Spivak,
+\textit{A Comprehensive Introduction to Differential Geometry},
+Vol.~2, 3rd ed., Publish or Perish, Houston, 1999, Chapter~4.
+
+\bibitem{Lee2018}
+J.~M.~Lee,
+\textit{Introduction to Riemannian Manifolds}, 2nd ed.,
+Springer, New York, 2018, Example~3.14.
+
+\bibitem{GibbonsHawking1977}
+G.~W.~Gibbons and S.~W.~Hawking,
+``Action integrals and partition functions in quantum gravity,''
+\textit{Physical Review D}, \textbf{15}, 2752--2756, 1977.
+
+\bibitem{Guo2004}
+H.-Y.~Guo, C.-G.~Huang, Z.~Xu, B.~Zhou,
+``On Beltrami model of de Sitter spacetime,''
+\textit{Modern Physics Letters A}, \textbf{19}, 1701--1710, 2004.
+arXiv:hep-th/0405137.
+
+\bibitem{Guo2006}
+H.-Y.~Guo,
+``The Beltrami Model of De Sitter Space,''
+arXiv:hep-th/0607017, 2006.
+
+\bibitem{Guo2007}
+H.-Y.~Guo, C.-G.~Huang, Z.~Xu, B.~Zhou,
+``Beltrami Model of Riemann-Sphere and de Sitter Spacetime,''
+arXiv:gr-qc/0703078, 2007.
+
+\end{thebibliography}
+
+\appendix
+
+\section{Direct Computation of Christoffel Symbols (Planned)}
+
+A complete derivation of $\Gamma^\lambda_{\mu\nu}$ from the metric \eqref{eq:metric} via the Christoffel formula, leading directly to the Riemann curvature tensor of Theorem~4.1, is planned for a future report. At present we cite \cite{doCarmo1992,MTW1973}.
+
+\section{Flat Limit $R \to \infty$}
+
+As $R \to \infty$, $l \to R$, so $g_{\mu\nu} \to \delta_{\mu\nu}$ and $\Lambda = 3/R^2 \to 0$. The metric converges to flat Euclidean metric and the curvature vanishes, corresponding to the gnomonic projection degenerating to the identity map.
+
+\section{Regularity of the Projection}
+
+\begin{proposition}[Regularity]
+Let $\Phi: \mathbb{R}^4 \to S^4(R)$ be the gnomonic projection. The following hold:
+\begin{enumerate}
+\item $R \to 0$ ($r > 0$ fixed): $Y^5,\, Y^\mu \to 0$. Image degenerates to the origin but does not diverge.
+\item $R \to \infty$ ($r$ fixed): $Y^5 \to \infty$; $Y^\mu \to x^\mu$ (finite).
+\item Fixed $R > 0$: $l \geq R > 0$, so $\Phi$ is $C^\infty$ on all of $\mathbb{R}^4$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Direct computation of $l = \sqrt{R^2+r^2}$: (1) $Y^5 = R^2/l \leq R^2/r \to 0$. (2) $Y^5 = R(1+r^2/R^2)^{-1/2} \to \infty$. (3) $l \geq R > 0$ for each component.\qedhere
+\end{proof}
+
+\section{Squared Metric: Unified Description of Euclidean and Lorentzian Geometries}
+
+Within the geometric description of the gnomonic projection, the transition from Euclidean to Lorentzian geometry can be described as a choice of the real parameter $\epsilon_\mu$.
+
+\begin{remark}
+The correspondence between the Lorentzian gnomonic projection ($\epsilon_4 = -1$) and the Beltrami coordinate system of de Sitter spacetime has been established as prior work by Guo et al., starting from the Lorentzian side \cite{Guo2004,Guo2006,Guo2007}. The originality of this appendix lies in the explicit derivation of the unified formula~(D.3), which encompasses both the Euclidean case ($S^4(R)$, \cite{GibbonsHawking1977}) and the Lorentzian case (de Sitter--Beltrami, \cite{Guo2004,Guo2006,Guo2007}) as special cases of a single $\epsilon_\mu$ parametrization.
+\end{remark}
+
+\begin{observation}[Quadratic nature of physical metrics]
+All metrics appearing in the gnomonic projection involve only $t^2$, never $t$ itself:
+\[
+l^2 = R^2 + x^2 + y^2 + z^2 \pm t^2, \quad ds^2 = \pm dt^2 + dx^2 + dy^2 + dz^2.
+\]
+The sign difference is a choice of coefficient $\epsilon_\mu \in \{+1,-1\}$.
+\end{observation}
+
+\begin{proposition}[Unified Euclidean/Lorentzian description]\label{prop:D1}
+Choose $(\epsilon_1,\epsilon_2,\epsilon_3,\epsilon_4)\in\{+1,-1\}^4$. Define the embedding metric
+\begin{equation}
+dS^2_{\rm emb} = \sum_{\mu=1}^{4}\epsilon_\mu(dY^\mu)^2 + (dY^5)^2, \tag{D.1}
+\end{equation}
+the tangent-plane metric $ds^2_{\rm tan} = \sum_{\mu}\epsilon_\mu(dx^\mu)^2$, and $l^2 = R^2+\sum_\mu\epsilon_\mu(x^\mu)^2$. With the same gnomonic map $Y^\mu = Rx^\mu/l$, $Y^5 = R^2/l$, the induced metric is
+\begin{equation}
+g_{\mu\nu} = \frac{R^2}{l^2}\!\left(\epsilon_\mu\delta_{\mu\nu} - \frac{\epsilon_\mu\epsilon_\nu x_\mu x_\nu}{l^2}\right). \tag{D.3}
+\end{equation}
+(Einstein summation is not used for repeated indices.)
+\end{proposition}
+\begin{proof}
+Setting $r_\epsilon^2 = \sum_\mu\epsilon_\mu(x^\mu)^2 = l^2-R^2$ and computing $\sum_\mu\epsilon_\mu(dY^\mu)^2 + (dY^5)^2$, the coefficient of $\epsilon_\nu\epsilon_\rho x_\nu x_\rho$ combines as
+\[
+-\frac{2R^2}{l^4}+\frac{R^2 r_\epsilon^2}{l^6}+\frac{R^4}{l^6}
+= -\frac{2R^2}{l^4}+\frac{R^2 l^2}{l^6} = -\frac{R^2}{l^4},
+\]
+using $r_\epsilon^2+R^2=l^2$.\qedhere
+\end{proof}
+
+\begin{remark}[Geometric correspondence with Wick rotation]
+Within the geometric description of the gnomonic projection, the Wick rotation $t\to it$ corresponds to $\epsilon_4: +1\to -1$:
+\begin{align*}
+\text{Euclidean}:&\quad \epsilon_\mu=(+1,+1,+1,+1)\;\Rightarrow\;l^2=R^2+x^2+y^2+z^2+t^2,\\
+\text{Lorentzian}:&\quad \epsilon_\mu=(+1,+1,+1,-1)\;\Rightarrow\;l^2=R^2+x^2+y^2+z^2-t^2.
+\end{align*}
+Both are special cases of the single framework defined by (D.1). Note that the necessity of Wick rotation for path-integral convergence in quantum gravity lies outside the scope of this note.
+\end{remark}
+
+The image of the map satisfies
+\begin{equation}
+\sum_{\mu=1}^4\epsilon_\mu(Y^\mu)^2 + (Y^5)^2 = R^2, \tag{D.6}
+\end{equation}
+which for $\epsilon_\mu=(+1,+1,+1,-1)$ gives the pseudo-sphere
+$(Y^1)^2+(Y^2)^2+(Y^3)^2-(Y^4)^2+(Y^5)^2=R^2$
+in $\mathbb{R}^{4,1}$, structurally corresponding to the de Sitter hypersurface. A rigorous proof of this correspondence starting from (D.3) is deferred to future work.
+
+\bigskip
+\noindent\textit{This note aims to organize geometric facts and offers no physical interpretation. All sources are cited in the references.}
+
+\end{document}
