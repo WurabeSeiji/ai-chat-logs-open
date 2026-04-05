@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>精度評価</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f5f0e8; font-family: monospace; padding: 16px 8px; }
+  h1 { font-size: 1.1rem; color: #2c5f8a; margin-bottom: 4px; }
+  p.sub { font-size: 0.72rem; color: #6b6050; margin-bottom: 12px; }
+  .controls { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; align-items: center; }
+  .ctrl { display: flex; flex-direction: column; font-size: 0.72rem; color: #5a5040; }
+  .val { color: #c0392b; font-weight: bold; }
+  input[type=range] { width: 130px; accent-color: #2c5f8a; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.72rem; }
+  th { background: #2c5f8a; color: #fff; padding: 5px 6px; text-align: center; }
+  td { padding: 4px 6px; text-align: right; border-bottom: 1px solid #d8d0c0; }
+  td:first-child { text-align: center; font-weight: bold; }
+  tr:nth-child(even) { background: #ede8dc; }
+  .good   { color: #27ae60; }
+  .warn   { color: #e67e22; }
+  .bad    { color: #c0392b; }
+  .summary { margin-top: 12px; font-size: 0.72rem; color: #3a3020; background: #ede8dc; padding: 8px 10px; border: 1px solid #a09070; line-height: 1.8; }
+</style>
+</head>
+<body>
+<h1>正写像・逆写像 精度評価</h1>
+<p class="sub">圧縮率 × 伸張率 = 1 からの誤差を次元ごとに評価</p>
+
+<div class="controls">
+  <div class="ctrl">
+    <label>d = <span class="val" id="dVal">1.00</span></label>
+    <input type="range" id="dSlider" min="0.5" max="1.8" step="0.05" value="1.0">
+  </div>
+  <div class="ctrl">
+    <label>y = <span class="val" id="yVal">1.00</span></label>
+    <input type="range" id="ySlider" min="0.1" max="2.0" step="0.05" value="1.0">
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>n</th>
+      <th>θ (rad)</th>
+      <th>圧縮率</th>
+      <th>伸張率</th>
+      <th>積</th>
+      <th>誤差</th>
+      <th>有効桁数</th>
+    </tr>
+  </thead>
+  <tbody id="tbody"></tbody>
+</table>
+
+<div class="summary" id="summary"></div>
+
+<script>
+function I(k, theta) {
+  var s = Math.sin(theta), c = Math.cos(theta);
+  if (k === 1) return theta;
+  if (k === 2) return 1 - c;
+  return -Math.pow(s, k-2)*c/(k-1) + (k-2)/(k-1)*I(k-2, theta);
+}
+
+function omega(k) {
+  if (k === 0) return 2;
+  if (k === 1) return 2*Math.PI;
+  return (2*Math.PI/(k-1))*omega(k-2);
+}
+
+function evaluate(d, y, dim) {
+  var n = dim;
+  var theta = (n === 2)
+    ? Math.atan2(y, d)
+    : Math.atan2(Math.sqrt(n-1)*y, d);
+  var volArc = omega(n-2) * I(n-1, theta);
+  var volTan = Math.pow(2*y, n-1);
+  var comp   = volArc / volTan;   // 圧縮率
+  var stretch = volTan / volArc;  // 伸張率
+  var product = comp * stretch;   // = 1 のはず
+  var error   = Math.abs(product - 1.0);
+  // 有効桁数 = -log10(error)
+  var digits  = (error === 0) ? 16 : Math.max(0, -Math.log10(error));
+  return {
+    theta: theta, comp: comp, stretch: stretch,
+    product: product, error: error, digits: digits
+  };
+}
+
+function fmt(v, dec) { return v.toFixed(dec); }
+function fmtE(v) {
+  if (v === 0) return '0';
+  return v.toExponential(2);
+}
+
+function update() {
+  var d = parseFloat(document.getElementById('dSlider').value);
+  var y = parseFloat(document.getElementById('ySlider').value);
+  document.getElementById('dVal').textContent = d.toFixed(2);
+  document.getElementById('yVal').textContent = y.toFixed(2);
+
+  var tbody = document.getElementById('tbody');
+  tbody.innerHTML = '';
+
+  var minDigits = 999, maxError = 0;
+
+  for (var n = 2; n <= 10; n++) {
+    var r = evaluate(d, y, n);
+    var cls = r.digits >= 13 ? 'good' : r.digits >= 10 ? 'warn' : 'bad';
+    var tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td>' + n + '</td>' +
+      '<td>' + fmt(r.theta, 6) + '</td>' +
+      '<td>' + fmt(r.comp, 8) + '</td>' +
+      '<td>' + fmt(r.stretch, 8) + '</td>' +
+      '<td>' + fmt(r.product, 15) + '</td>' +
+      '<td class="' + cls + '">' + fmtE(r.error) + '</td>' +
+      '<td class="' + cls + '">' + fmt(r.digits, 1) + '</td>';
+    tbody.appendChild(tr);
+
+    if (r.digits < minDigits) minDigits = r.digits;
+    if (r.error  > maxError)  maxError  = r.error;
+  }
+
+  // サマリー
+  var sumEl = document.getElementById('summary');
+  sumEl.innerHTML =
+    '【評価サマリー】<br>' +
+    'd = ' + d.toFixed(2) + '　y = ' + y.toFixed(2) + '<br>' +
+    '最小有効桁数: <strong>' + fmt(minDigits, 1) + ' 桁</strong><br>' +
+    '最大誤差: <strong>' + fmtE(maxError) + '</strong><br>' +
+    '<br>' +
+    '● 緑（13桁以上）: IEEE 754 の理論限界に近い<br>' +
+    '● 橙（10〜13桁）: 軽微な桁落ち<br>' +
+    '● 赤（10桁未満）: 有意な桁落ち<br>' +
+    '<br>' +
+    '漸化式の再帰深度が増すほど桁落ちが累積します。<br>' +
+    'n=10（I(9,θ)）では再帰が4〜5段になります。';
+}
+
+document.getElementById('dSlider').addEventListener('input', update);
+document.getElementById('ySlider').addEventListener('input', update);
+update();
+</script>
+</body>
+</html>

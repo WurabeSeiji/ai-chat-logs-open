@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>逆グノモン写像</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #f5f0e8; color: #1c1a15;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 14px 8px 32px;
+  }
+  h1 { font-size: 1.15rem; margin-bottom: 2px; color: #2c5f8a; }
+  p.sub { font-size: 0.72rem; color: #6b6050; margin-bottom: 10px; text-align: center; }
+
+  .controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+    width: 100%; max-width: 500px;
+    margin-bottom: 10px;
+  }
+  .ctrl { display: flex; flex-direction: column; }
+  .ctrl label { font-size: 0.72rem; color: #5a5040; margin-bottom: 2px; }
+  .val { color: #c0392b; font-weight: bold; }
+  input[type=range] { width: 100%; accent-color: #2c5f8a; }
+
+  .infobox {
+    width: 100%; max-width: 500px;
+    background: #ede8dc;
+    border: 1px solid #a09070;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    font-family: monospace;
+    font-size: 0.73rem;
+    color: #3a3020;
+    line-height: 2.0;
+  }
+  .infobox .row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; }
+  .lbl  { color: #6a5a40; }
+  .varc { color: #2c5f8a; font-weight: bold; font-size: 0.88rem; }
+  .vtan { color: #c0392b; font-weight: bold; font-size: 0.88rem; }
+  .vrat { color: #b8860b; font-weight: bold; font-size: 0.88rem; }
+  .arr  { color: #aaa; }
+  .note { font-size: 0.65rem; color: #999; }
+
+  canvas { background: #fff; border: 1px solid #a09070; display: block; width: 100%; box-shadow: 2px 2px 0 #c8b898; }
+
+  .legend { display: flex; gap: 14px; margin-top: 10px; font-size: 0.7rem; flex-wrap: wrap; justify-content: center; color: #4a3e2e; }
+  .leg { display: flex; align-items: center; gap: 5px; }
+  .ll { width: 20px; height: 3px; flex-shrink: 0; }
+  .ld { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+</style>
+</head>
+<body>
+<h1>逆グノモン写像：n次元超体積への拡張</h1>
+<p class="sub">球面超体積 → 接線側超体積　θ = arctan(√(n-1)·y / d)</p>
+
+<div class="controls">
+  <div class="ctrl">
+    <label>接線位置 d = <span class="val" id="dVal">1.00</span></label>
+    <input type="range" id="dSlider" min="0.5" max="2.0" step="0.05" value="1.0">
+  </div>
+  <div class="ctrl">
+    <label>点の数 <span class="val" id="nPtsVal">9</span></label>
+    <input type="range" id="nPtsSlider" min="3" max="19" step="2" value="9">
+  </div>
+  <div class="ctrl">
+    <label>y範囲 ±<span class="val" id="yVal">1.0</span></label>
+    <input type="range" id="ySlider" min="0.1" max="2.5" step="0.1" value="1.0">
+  </div>
+  <div class="ctrl">
+    <label>次元数 n = <span class="val" id="dimVal">2</span></label>
+    <input type="range" id="dimSlider" min="2" max="10" step="1" value="2">
+  </div>
+</div>
+
+<div class="infobox">
+  <!-- 入力: y -->
+  <div class="row">
+    <span class="lbl">入力:</span>
+    <span class="lbl">y =</span><span class="vtan" id="dispY">—</span>
+    <span class="arr">→</span>
+    <span class="lbl">接線側 (2y)^(n-1) =</span><span class="vtan" id="dispVolTan">—</span>
+  </div>
+  <!-- θとl -->
+  <div class="row">
+    <span class="lbl">θ = arctan(√(n-1)·y/d) =</span><span class="varc" id="dispTheta">—</span><span class="lbl">rad</span>
+    <span class="lbl">　l =</span><span class="varc" id="dispL">—</span>
+  </div>
+  <!-- 球面側（出力） -->
+  <div class="row">
+    <span class="lbl">球面側:</span>
+    <span class="lbl">ω(n-2)·I(n-1,θ) =</span><span class="varc" id="dispVolArc">—</span>
+  </div>
+  <!-- 伸張率 -->
+  <div class="row">
+    <span class="lbl">体積伸張率 =</span><span class="vrat" id="dispRatio">—</span>
+    <span class="note" id="dispNote">—</span>
+  </div>
+</div>
+
+<canvas id="c"></canvas>
+
+<div class="legend">
+  <div class="leg"><div class="ll" style="background:#2c5f8a;height:2.5px"></div>半円弧</div>
+  <div class="leg"><div class="ld" style="background:#2c5f8a"></div>弧上の等角度点</div>
+  <div class="leg"><div class="ll" style="border-top:2px dashed #c0392b;height:0"></div>接線</div>
+  <div class="leg"><div class="ld" style="background:#c0392b"></div>接線上の投影点</div>
+  <div class="leg"><div class="ll" style="border-top:1px dashed #5a7a4a;height:0"></div>投影線</div>
+  <div class="leg"><div class="ld" style="background:#fff;border:1.5px solid #333"></div>原点 O</div>
+</div>
+
+<script>
+var canvas = document.getElementById('c');
+var ctx    = canvas.getContext('2d');
+var PAD    = 36;
+var OX = 0, OY = 0, SC = 100;
+
+function cx(x) { return OX + x * SC; }
+function cy(y) { return OY - y * SC; }
+
+function resizeCanvas() {
+  var w = Math.min(window.innerWidth, document.body.clientWidth) - 16;
+  canvas.width  = w;
+  canvas.height = Math.round(w * 0.9);
+}
+window.addEventListener('resize', function() { resizeCanvas(); draw(); });
+
+// ── 漸化式 I(k, θ) ──────────────────────────────
+// I(1, θ) = θ
+// I(2, θ) = 1 - cosθ
+// I(k, θ) = -sin^(k-2)(θ)cosθ/(k-1) + (k-2)/(k-1) * I(k-2, θ)
+function I(k, theta) {
+  var s = Math.sin(theta);
+  var c = Math.cos(theta);
+  if (k === 1) return theta;
+  if (k === 2) return 1 - c;
+  return -Math.pow(s, k-2) * c / (k-1) + (k-2)/(k-1) * I(k-2, theta);
+}
+
+// ── k次元球面の全表面積 ω(k) ────────────────────
+// ω(0)=2, ω(1)=2π, ω(k)=2π/(k-1)·ω(k-2)
+function omega(k) {
+  if (k === 0) return 2;
+  if (k === 1) return 2 * Math.PI;
+  return (2 * Math.PI / (k - 1)) * omega(k - 2);
+}
+
+// ── n次元での計算（逆写像）──────────────────────
+// 入力: y（正写像と同じy範囲を使用）
+// θ = arctan(√(n-1)·y/d)  ← 正写像と同じ式
+// l = √(d² + (n-1)·y²)
+// 球面側超体積 = ω(n-2)·I(n-1, θ)
+// 接線側超体積 = (2y)^(n-1)
+// 伸張率 = 接線側 / 球面側  ← 正写像の圧縮率の逆数
+function calcAll(d, y, dim) {
+  var n = dim;
+  var theta = (n === 2)
+    ? Math.atan2(y, d)
+    : Math.atan2(Math.sqrt(n-1) * y, d);
+  var l      = Math.sqrt(d*d + (n-1)*y*y);
+  var volArc = omega(n-2) * I(n-1, theta);
+  var volTan = Math.pow(2*y, n-1);
+  var ratio  = (volArc > 0) ? volTan / volArc : 0;
+  return { theta: theta, y: y, l: l, volArc: volArc, volTan: volTan, ratio: ratio };
+}
+
+function fmt(v) {
+  if (v === 0) return '0';
+  if (!isFinite(v)) return '∞';
+  if (Math.abs(v) >= 10000 || (Math.abs(v) < 0.0001 && v !== 0))
+    return v.toExponential(3);
+  return v.toFixed(4);
+}
+
+var d, nPts, yRange, dim;
+
+function readSliders() {
+  d      = parseFloat(document.getElementById('dSlider').value);
+  nPts   = parseInt(document.getElementById('nPtsSlider').value);
+  yRange = parseFloat(document.getElementById('ySlider').value);
+  dim    = parseInt(document.getElementById('dimSlider').value);
+  document.getElementById('dVal').textContent    = d.toFixed(2);
+  document.getElementById('nPtsVal').textContent = nPts;
+  document.getElementById('yVal').textContent    = yRange.toFixed(1);
+  document.getElementById('dimVal').textContent  = dim;
+}
+
+function draw() {
+  resizeCanvas();
+  var W = canvas.width, H = canvas.height;
+  readSliders();
+
+  var vRep   = calcAll(d, yRange, dim);
+  var yExtN  = yRange;
+
+  // 表示範囲
+  var xLo = -0.3, xHi = Math.max(d + 0.55, 1.8);
+  var yDisp = yExtN;
+  var yLo = -yDisp * 1.18, yHi = yDisp * 1.18;
+
+  SC = Math.min((W - 2*PAD) / (xHi - xLo), (H - 2*PAD) / (yHi - yLo));
+  var dW = (xHi - xLo) * SC, dH = (yHi - yLo) * SC;
+  OX = PAD + (W - 2*PAD - dW) / 2 + (-xLo) * SC;
+  OY = PAD + (H - 2*PAD - dH) / 2 + yHi * SC;
+
+  // 背景
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, W, H);
+
+  // グリッド
+  ctx.strokeStyle = '#e8e0d4';
+  ctx.lineWidth = 0.8;
+  for (var gx = Math.ceil(xLo/0.5)*0.5; gx <= xHi+0.01; gx += 0.5) {
+    ctx.beginPath(); ctx.moveTo(cx(gx), PAD); ctx.lineTo(cx(gx), H-PAD); ctx.stroke();
+  }
+  var rawSt = (yDisp * 2) / 5;
+  var exp2  = Math.pow(10, Math.floor(Math.log10(Math.max(rawSt, 1e-9))));
+  var gyStep = exp2 * (rawSt/exp2 < 2 ? 1 : rawSt/exp2 < 5 ? 2 : 5);
+  for (var gy = Math.ceil(yLo/gyStep)*gyStep; gy <= yHi+0.001; gy += gyStep) {
+    ctx.beginPath(); ctx.moveTo(PAD, cy(gy)); ctx.lineTo(W-PAD, cy(gy)); ctx.stroke();
+  }
+
+  // 軸
+  ctx.strokeStyle = '#888070';
+  ctx.lineWidth = 1.3;
+  ctx.beginPath(); ctx.moveTo(PAD, cy(0)); ctx.lineTo(W-PAD, cy(0)); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx(0), PAD); ctx.lineTo(cx(0), H-PAD); ctx.stroke();
+
+  // 軸ラベル
+  ctx.fillStyle = '#9a8a70';
+  ctx.font = '10px monospace';
+  ctx.textAlign = 'center';
+  for (var lx = 0; lx <= xHi; lx += 0.5)
+    ctx.fillText(lx.toFixed(1), cx(lx), cy(0)+14);
+  ctx.textAlign = 'right';
+  for (var ly = Math.ceil(yLo/gyStep)*gyStep; ly <= yHi+0.001; ly += gyStep) {
+    if (Math.abs(ly) < gyStep*0.01) continue;
+    ctx.fillText(ly.toFixed(1), cx(0)-3, cy(ly)+4);
+  }
+  ctx.fillStyle = '#6a5a40';
+  ctx.font = '11px sans-serif';
+  ctx.textAlign = 'left';
+  ctx.fillText('x', W-PAD+4, cy(0)+4);
+  ctx.fillText('y', cx(0)+3, PAD-6);
+
+  // y等間隔リスト（正写像と同じy範囲を使用）
+  var ys = [];
+  for (var i = 0; i < nPts; i++)
+    ys.push(-yRange + i * (2*yRange / (nPts-1)));
+
+  // 各yに対応するθ（n次元）と弧上の座標
+  var angles = ys.map(function(y) {
+    var absY = Math.abs(y) < 1e-9 ? 1e-9 : Math.abs(y);
+    var v = calcAll(d, absY, dim);
+    return (y >= 0 ? 1 : -1) * v.theta;
+  });
+  var projYs = ys; // 接線上のyはそのまま
+
+  // 投影線（背面）
+  ctx.setLineDash([4,4]);
+  ctx.lineWidth = 0.9;
+  ctx.globalAlpha = 0.45;
+  angles.forEach(function(theta, i) {
+    ctx.strokeStyle = '#5a7a4a';
+    ctx.beginPath();
+    ctx.moveTo(cx(0), cy(0));
+    ctx.lineTo(cx(d), cy(projYs[i]));
+    ctx.stroke();
+  });
+  ctx.setLineDash([]);
+  ctx.globalAlpha = 1;
+
+  // 半円弧（parametric）
+  ctx.strokeStyle = '#2c5f8a';
+  ctx.lineWidth = 2.5;
+  ctx.shadowColor = '#2c5f8a44';
+  ctx.shadowBlur = 6;
+  ctx.beginPath();
+  for (var si = 0; si <= 200; si++) {
+    var t = -Math.PI/2 + si*(Math.PI/200);
+    si===0 ? ctx.moveTo(cx(Math.cos(t)), cy(Math.sin(t)))
+           : ctx.lineTo(cx(Math.cos(t)), cy(Math.sin(t)));
+  }
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+
+  // 接線
+  ctx.strokeStyle = '#c0392b';
+  ctx.lineWidth = 2;
+  ctx.setLineDash([7,4]);
+  ctx.beginPath();
+  ctx.moveTo(cx(d), cy(-yExtN*1.1));
+  ctx.lineTo(cx(d), cy( yExtN*1.1));
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = '#c0392b';
+  ctx.font = 'bold 11px sans-serif';
+  ctx.textAlign = 'left';
+  ctx.fillText('x = ' + d.toFixed(2), cx(d)+5, cy(yExtN*0.85));
+
+  // 各点（伸張率で濃淡）
+  ys.forEach(function(y, i) {
+    var absY = Math.abs(y) < 1e-9 ? 1e-9 : Math.abs(y);
+    var v = calcAll(d, absY, dim);
+    var theta = angles[i];
+    var ax = Math.cos(theta), ay = Math.sin(theta);
+    var alpha = Math.min(1, Math.max(0.2, 1/Math.max(v.ratio, 0.01)));
+
+    // 接線上の点（赤）
+    ctx.fillStyle = '#c0392b';
+    ctx.shadowColor = '#c0392b55'; ctx.shadowBlur = 5;
+    ctx.beginPath();
+    ctx.arc(cx(d), cy(y), 4.5, 0, 2*Math.PI);
+    ctx.fill();
+
+    // 弧上の点（青・伸張率で濃淡）
+    ctx.fillStyle = 'rgba(44,95,138,' + (0.35 + 0.65*alpha) + ')';
+    ctx.shadowColor = '#2c5f8a55'; ctx.shadowBlur = 7;
+    ctx.beginPath();
+    ctx.arc(cx(ax), cy(ay), 5.5, 0, 2*Math.PI);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  });
+
+  // 原点
+  ctx.fillStyle = '#ffffff';
+  ctx.strokeStyle = '#333'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(cx(0), cy(0), 5, 0, 2*Math.PI);
+  ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#1c1a15';
+  ctx.font = 'bold 13px serif';
+  ctx.textAlign = 'left';
+  ctx.fillText('O', cx(0)+6, cy(0)-4);
+
+  // ── 情報パネル更新（y = yRange を代表値として使用）──
+  var vr = calcAll(d, yRange, dim);
+  document.getElementById('dispY').textContent      = yRange.toFixed(3);
+  document.getElementById('dispVolTan').textContent = fmt(vr.volTan);
+  document.getElementById('dispTheta').textContent  = vr.theta.toFixed(4);
+  document.getElementById('dispL').textContent      = vr.l.toFixed(4);
+  document.getElementById('dispVolArc').textContent = fmt(vr.volArc);
+  document.getElementById('dispRatio').textContent  = fmt(vr.ratio);
+
+  var notes = {
+    2:  '正写像圧縮率の逆数 ✓',
+    3:  '2π(1-cosθ) の逆',
+    4:  'π(2θ-sin2θ) の逆',
+    5:  '漸化式 I(4,θ) の逆',
+    6:  '漸化式 I(5,θ) の逆',
+    7:  '漸化式 I(6,θ) の逆',
+    8:  '漸化式 I(7,θ) の逆',
+    9:  '漸化式 I(8,θ) の逆',
+    10: '漸化式 I(9,θ) の逆'
+  };
+  document.getElementById('dispNote').textContent = '← ' + (notes[dim] || '');
+}
+
+['dSlider','nPtsSlider','ySlider','dimSlider'].forEach(function(id) {
+  document.getElementById(id).addEventListener('input', draw);
+});
+draw();
+</script>
+</body>
+</html>
