@@ -1,0 +1,441 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{remark}{Remark}
+\newtheorem*{observation}{Observation}
+\newtheorem*{hypothesis}{Hypothesis}
+
+\title{\textbf{Geometric Origin of Lorentzian Spacetime\\via Gnomonic Projection:\\A Unified Description through\\the Discretization Constant $C$}}
+
+\author{Noriaki Kihara\\
+\small WF System Co., Ltd.\\
+\small (Osaka University, School of Engineering Science, Alumni)\\
+\small \href{https://orcid.org/0009-0004-6753-4020}{ORCID: 0009-0004-6753-4020}\\
+\small \href{https://doi.org/10.5281/zenodo.19434932}{DOI: 10.5281/zenodo.19434932}}
+
+\date{April 2026\\[5pt]\small Research Note (Geometric Investigation)}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+In the previous paper~\cite{Paper1}, we mapped 4-dimensional Euclidean space onto the hypersphere $S^4(R)$ via gnomonic projection and derived the geometric identity $G_{\mu\nu} + \Lambda g_{\mu\nu} = 0$ with $\Lambda = 3/R^2$. However, the following questions remained open: (1) Why does time carry a metric signature different from space? (2) Can the mapping be defined on discrete coordinates? (3) How many free parameters are required?
+
+This paper provides geometric answers. First, motivated by the unobservability of the $R$-direction, we axiomatically introduce the Lorentzian signature (Axiom~3.1). Second, we show that quadratic metrics are a number-theoretic requirement for discretization (\S6.1) and that a single coupling constant $C$ (dimension: length) suffices (\S6.2). We prove that global regularity is guaranteed under Euclidean signature, while a cosmological horizon naturally emerges under Lorentzian signature (Theorem~6.1). The number-theoretic anomaly at $N=3$ spatial dimensions and the necessity of a fifth dimension are established via Fermat's two-square theorem.
+\end{abstract}
+
+\tableofcontents
+
+%========================================
+\section{Introduction}
+%========================================
+
+\subsection{Results of the Previous Paper}
+
+The previous paper~\cite{Paper1} considered the central projection (gnomonic projection) from $n$-dimensional Euclidean space onto the $(n+1)$-dimensional hypersphere $S^n(R)$:
+\begin{equation}
+\Phi: \Pi_R \to S^n(R), \quad Y^\mu = \frac{Rx^\mu}{l}, \quad Y^{n+1} = \frac{R^2}{l}, \quad l = \sqrt{R^2 + \sum_\mu (x^\mu)^2} \tag{1.1}
+\end{equation}
+For $n = 4$, the pullback metric was derived:
+\begin{equation}
+g_{\mu\nu} = \frac{R^2}{l^2}\left(\delta_{\mu\nu} - \frac{x_\mu x_\nu}{l^2}\right) \tag{1.2}
+\end{equation}
+and $S^4(R)$ satisfies:
+\begin{equation}
+G_{\mu\nu} + \Lambda g_{\mu\nu} = 0, \qquad \Lambda = \frac{3}{R^2} \tag{1.3}
+\end{equation}
+Appendix~D of~\cite{Paper1} introduced signature parameters $\epsilon_\mu \in \{+1, -1\}$:
+\begin{equation}
+g_{\mu\nu} = \frac{R^2}{l^2}\left(\epsilon_\mu \delta_{\mu\nu} - \frac{\epsilon_\mu \epsilon_\nu x_\mu x_\nu}{l^2}\right), \qquad l^2 = R^2 + \sum_\mu \epsilon_\mu (x^\mu)^2 \tag{1.4}
+\end{equation}
+
+\subsection{Open Questions}
+
+The previous paper presented $\epsilon_4 = -1$ (Lorentzian signature) as an \emph{option}, but did not explain why it is physically realized. This paper provides a geometric motivation, systematically develops the consequences, and clarifies the motivation for discrete coordinates.
+
+\subsection{Organization}
+
+\S2: Einstein tensor in general dimensions. \S3: Lorentzian signature. \S4: Lorentz group. \S5: Cognitive limits. \S6: Discrete coordinates and $C$. \S7: Singularity avoidance. \S8: Consistency checks. \S9: Information preservation. \S10: Outlook.
+
+%========================================
+\section{Einstein Tensor in General Dimensions}
+%========================================
+
+\begin{proposition}[Einstein tensor in general dimensions~{\rm\cite{doCarmo1992,Wald1984}}]\label{prop:general}
+On the $n$-dimensional sphere $S^n(R)$:
+\begin{equation}
+R_{\mu\nu\rho\sigma} = \frac{1}{R^2}(g_{\mu\rho}g_{\nu\sigma} - g_{\mu\sigma}g_{\nu\rho}), \qquad R_{\mu\nu} = \frac{n-1}{R^2}g_{\mu\nu} \tag{2.1}
+\end{equation}
+\begin{equation}
+R_{\text{scalar}} = \frac{n(n-1)}{R^2}, \qquad G_{\mu\nu} = -\frac{(n-1)(n-2)}{2R^2}g_{\mu\nu} \tag{2.2}
+\end{equation}
+\begin{equation}
+\Lambda_n = \frac{(n-1)(n-2)}{2R^2} \tag{2.3}
+\end{equation}
+\end{proposition}
+
+\begin{center}
+\begin{tabular}{ccl}
+\toprule
+Dimension $n$ & $\Lambda_n$ & Status \\
+\midrule
+1 & 0 & Trivial \\
+2 & 0 & Identically zero \\
+3 & $1/R^2$ & Non-trivial (minimum) \\
+\textbf{4} & $\mathbf{3/R^2}$ & \textbf{Main result of~\cite{Paper1}} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}
+Non-trivial GR requires $n \geq 3$; $n = 4$ is physically distinguished.
+\end{remark}
+
+%========================================
+\section{Geometric Motivation and Axiomatic Setting for the Lorentzian Signature}
+%========================================
+
+\subsection{Structural Singularity of the $R$-Direction}
+
+The 5-dimensional image of the gnomonic mapping~(1.1):
+\[
+\underbrace{Y^1, Y^2, Y^3, Y^4}_{\text{4D coordinates}} = \frac{Rx^\mu}{l}, \qquad \underbrace{Y^5}_{\text{$R$-direction}} = \frac{R^2}{l}
+\]
+
+\begin{proposition}[Asymmetry of $R$-direction]\label{prop:asym}
+$Y^5$ is qualitatively different from $Y^1, \ldots, Y^4$: the 4D coordinates are intrinsic to $S^4(R)$, while $Y^5$ is the normal direction in the embedding space and is in principle unmeasurable by an observer confined to the sphere.
+\end{proposition}
+
+\subsection{Imaginary Rotation of the Unobservable Dimension}
+
+\begin{definition}[Axiom~3.1: Axiomatic setting of the Lorentzian signature]\label{ax:lor}
+We adopt two axioms:
+
+\textbf{Axiom A} (Cognitive constraint): The intrinsic metric $g_{\mu\nu}$ of $S^n(R)$ (eq.~(1.2)) does not contain the embedding coordinate $Y^5$ (Gauss's Theorema Egregium). An observer using only the intrinsic metric cannot directly observe the $Y^5$-direction.
+
+\textbf{Axiom B} (Imaginary rotation of unobservable dimension): The $R$-direction, intrinsically unobservable by Axiom~A, is represented as an effective imaginary axis.
+\end{definition}
+
+Axiom~A follows from Gauss's Theorema Egregium and admits no room for assumption. Axiom~B is a physical assumption.
+
+Under Axioms A and B:
+
+\begin{enumerate}
+\item[(i)] $x^1, x^2, x^3$ are identified as spatial, $x^4 = ct$ as temporal.
+\item[(ii)] $w_{\text{eff}} = i/R$, so $w_{\text{eff}}^2 = -1/R^2$.
+\item[(iii)] The sign of $x^4 = ct$ flips: $\epsilon_4 = +1 \to -1$.
+\end{enumerate}
+
+Result:
+\begin{equation}
+l^2 = R^2 + x^2 + y^2 + z^2 - c^2t^2 \tag{3.3}
+\end{equation}
+\textbf{The Lorentzian signature $(-,+,+,+)$ is obtained under Axioms~A and B.}
+
+\begin{remark}[Status of this claim]
+Axiom~B could be replaced by other interpretations (compactification, gauge freedom, etc.). This paper explores consequences of Axiom~B, justified by consistency with observation.
+\end{remark}
+
+\subsection{Relationship to Conventional Wick Rotation}
+
+This paper reverses the causal direction: the Lorentzian world is the ``cognitive reality'' for internal observers, while the Euclidean structure is the underlying geometric entity.
+
+%========================================
+\section{Geometric Origin of the Lorentz Group}
+%========================================
+
+\begin{proposition}[Chain of symmetry groups~{\rm\cite{Wald1984,Guo2004}}]\label{prop:chain}
+\begin{equation}
+SO(5) \xrightarrow[\text{Axiom~3.1}]{\epsilon_4: +1 \to -1} SO(4,1) \xrightarrow[R \to \infty]{\text{flat limit}} SO(3,1) \tag{4.1}
+\end{equation}
+where $SO(5)$ is the isometry group of Euclidean $S^4(R)$, $SO(4,1)$ is the de Sitter group, and $SO(3,1)$ is the Lorentz group.
+\end{proposition}
+
+Lorentz transformations are geometrically derived as the flat limit of de Sitter symmetry. The constancy of the speed of light is a consequence; the more fundamental principle is the symmetry of the gnomonic mapping.
+
+%========================================
+\section{Cognitive Limits of Internal Observers}
+%========================================
+
+\begin{theorem}[Interior angle upper bound]\label{thm:angle}
+For a geodesic triangle on $S^n(R)$:
+\begin{equation}
+\alpha + \beta + \gamma = \pi + \frac{A}{R^2} \tag{5.1}
+\end{equation}
+At maximum area $A_{\max} = 2\pi R^2$:
+\begin{equation}
+(\alpha + \beta + \gamma)_{\max} = 3\pi = 540^\circ \tag{5.2}
+\end{equation}
+This upper bound is a universal constant \textbf{independent of $R$}.
+\end{theorem}
+
+\begin{proof}
+By the Gauss--Bonnet theorem~\cite{doCarmo1992}, $\alpha + \beta + \gamma - \pi = A/R^2$. Maximum $A = 2\pi R^2$ gives $3\pi$.
+\end{proof}
+
+\begin{remark}
+$R$ itself is measurable via the angular excess $\Delta = A/R^2$ for known $A$.
+\end{remark}
+
+\begin{proposition}[Conformal factor]
+The gnomonic mapping involves the position-dependent conformal factor $R/l$, with $R/l = 1$ at the origin and $R/l \to 0$ as $r \to \infty$.
+\end{proposition}
+
+%========================================
+\section{Discrete Coordinates and the Coupling Constant $C$}
+%========================================
+
+\subsection{Number-Theoretic Motivation}
+
+\begin{observation}[Number-theoretic motivation for quadratic forms~{\rm\cite{Hurwitz1898}}]
+On the integer lattice $\mathbb{Z}^n$, a multiplicative norm ($N(zw) = N(z)N(w)$) taking integer values requires the Gaussian integer norm $N(a+bi) = a^2 + b^2$ as minimal structure. By Hurwitz's theorem~(1898), composition algebras with multiplicative norms exist only in dimensions $1, 2, 4, 8$.
+\end{observation}
+
+\begin{remark}[Circumstantial evidence for discreteness]
+Quadratic metrics are consistent with continuous spacetime but \emph{required} for discretization:
+\[
+\text{Discreteness} \Longrightarrow \text{Quadratic metrics required}
+\]
+\[
+\text{Quadratic metrics} \not\Longrightarrow \text{Discreteness (but serve as evidence)}
+\]
+\end{remark}
+
+\subsection{Introduction of $C$}
+
+\begin{definition}[Coupling constant $C$]\label{def:C}
+A constant $C > 0$ with dimension of length defines $w = C/R$. Under the assumption $w \in \mathbb{Z}_{\geq 0}$:
+\begin{equation}
+w = \frac{C}{R} \in \mathbb{Z}_{\geq 0}, \qquad R = \frac{C}{w} \tag{6.1}
+\end{equation}
+Dimensionless coordinates: $\tilde{x}^\mu = x^\mu / C \in \mathbb{Z}$.
+\end{definition}
+
+\subsection{Discrete Gnomonic Mapping}
+
+\begin{definition}[Discrete gnomonic mapping]\label{def:discrete}
+\begin{equation}
+\tilde{L}^2 = 1 + w^2 \tilde{\sigma}^2, \qquad \tilde{\sigma}^2 = \sum_\mu \epsilon_\mu (\tilde{x}^\mu)^2 \tag{6.2}
+\end{equation}
+\begin{equation}
+\tilde{Y}^\mu = \frac{\tilde{x}^\mu}{\tilde{L}}, \qquad \tilde{Y}^5 = \frac{1}{w\tilde{L}} \tag{6.3}
+\end{equation}
+\end{definition}
+
+\subsection{Regularity}
+
+\begin{theorem}[Signature-dependent regularity]\label{thm:reg}
+\textbf{(i)} Euclidean: $\tilde{\sigma}^2 \geq 0 \Rightarrow \tilde{L}^2 \geq 1 > 0$. Globally regular.
+
+\textbf{(ii)} Lorentzian: $\tilde{L}^2 = 0$ at
+\begin{equation}
+c^2t^2 = R^2 + x^2 + y^2 + z^2 \tag{6.6}
+\end{equation}
+This is the \textbf{cosmological horizon} in de Sitter spacetime~\cite{Guo2004}.
+\end{theorem}
+
+\begin{remark}[Diophantine equations on the horizon]
+For $w = 1$ and isotropic points $\tilde{x} = \tilde{y} = \tilde{z} = s$, the horizon condition reduces to the Pell equation $\tilde{t}^2 - 3s^2 = 1$, with minimal solution $(s, \tilde{t}) = (1, 2)$.
+\end{remark}
+
+\begin{remark}[Discrete isotropy and dimensional constraints~{\rm\cite{Kihara2026b}}]\label{rem:fermat}
+The author's previous work~\cite{Kihara2026b} determined the existence conditions for isotropic geodesics $l^2 + t^2 = Nx^2$ on $\mathbb{Z}^{1+N}$. By Fermat's two-square theorem: solutions exist if and only if every prime $p \equiv 3 \pmod{4}$ in $N$ appears with even exponent.
+
+\begin{center}
+\begin{tabular}{cccll}
+\toprule
+$N$ & $D=N\!+\!1$ & Prime factors & Solutions & Notes \\
+\midrule
+1 & 2 & $1$ & \checkmark & Pythagorean triples \\
+2 & 3 & $2$ & \checkmark & \\
+\textbf{3} & \textbf{4} & $3 \equiv 3$ (odd) & \textbf{None} & \textbf{Our universe} \\
+4 & 5 & $2^2$ & \checkmark & Kaluza--Klein \\
+5 & 6 & $5 \equiv 1$ & \checkmark & \\
+9 & 10 & $3^2$ (even) & \checkmark & Superstrings \\
+10 & 11 & $2 \times 5$ & \checkmark & M-theory \\
+25 & 26 & $5^2$ & \checkmark & Bosonic strings \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+$N = 3$ exhibits an arithmetic anomaly. $N = 4$ is the first extension admitting solutions, suggesting a fifth dimension is required for discrete isotropy.
+\end{remark}
+
+\begin{corollary}[Continuous limit]
+As $C \to 0$: $\tilde{L}^2 \to l^2/R^2$ and $\tilde{Y}^\mu \to Rx^\mu/l = Y^\mu$, formally recovering~(1.1).
+\end{corollary}
+
+\subsection{Physical Identification of $C$}
+
+\begin{hypothesis}[$C$ and Planck length]\label{hyp:planck}
+\begin{equation}
+C \sim \ell_P = \sqrt{\frac{\hbar G}{c^3}} \approx 1.616 \times 10^{-35}\,\text{m} \tag{6.5}
+\end{equation}
+\end{hypothesis}
+
+%========================================
+\section{Singularity Avoidance and Cosmological Horizons}
+%========================================
+
+\begin{theorem}[Euclidean regularity]
+For fixed $R > 0$, $\Phi: \mathbb{R}^4 \to S^4(R)$ is $C^\infty$-regular on all of $\mathbb{R}^4$, since $l = \sqrt{R^2 + r^2} \geq R > 0$.
+\end{theorem}
+
+\begin{theorem}[Lorentzian regularity]
+$\Phi$ is $C^\infty$-regular in the static patch $l^2 > 0$. The boundary $l^2 = 0$ defines the cosmological horizon.
+\end{theorem}
+
+\begin{proposition}[Singularity avoidance]
+As $R \to 0$ ($r > 0$ fixed): $Y^5, Y^\mu \to 0$. The image degenerates but does not diverge.
+\end{proposition}
+
+\begin{theorem}[Bijectivity and information preservation]\label{thm:bij}
+\textbf{(i)} Euclidean: $\Phi$ is a $C^\infty$-bijection onto the open hemisphere. Inverse $\Phi^{-1}$ exists.
+
+\textbf{(ii)} Lorentzian: bijection within the static patch ($l^2 > 0$).
+\end{theorem}
+
+%========================================
+\section{Consistency Checks}
+%========================================
+
+Under Hypothesis~\ref{hyp:planck} ($C = \ell_P$):
+
+\textbf{Check 1:} $R_{\text{current}} = \sqrt{3/\Lambda_{\text{obs}}} \approx 1.65 \times 10^{26}\,\text{m} \approx 5.3\,\text{Gpc}$, consistent with the observable universe $R_H \approx 4.4 \times 10^{26}\,\text{m}$.
+
+\textbf{Check 2:} $w = C/R_{\text{current}} \approx 10^{-61} \ll 1$. The present universe is near $w = 0$ (Minkowski).
+
+\textbf{Check 3:} The gap between $w = 0$ ($\Lambda = 0$) and $w = 1$ ($\Lambda \sim 10^{122}\Lambda_{\text{obs}}$) is the discrete cosmological constant problem.
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Quantity & From $C = \ell_P$ & Known value & Status \\
+\midrule
+Planck length & $1.616 \times 10^{-35}$ m & $\ell_P$ & \checkmark\,(by def.) \\
+Planck time & $5.39 \times 10^{-44}$ s & $t_P$ & \checkmark \\
+$R_{\text{current}}$ & $1.65 \times 10^{26}$ m & $R_H \sim 4.4 \times 10^{26}$ m & \checkmark\,(same order) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}[Avoiding circular reasoning]
+The non-trivial check is that $R_{\text{current}} \sim R_H$ independently.
+\end{remark}
+
+%========================================
+\section{Geometric Bijectivity and Information-Theoretic Implications}
+%========================================
+
+\begin{proposition}
+Under Euclidean signature, $\Phi$ is a singularity-free $C^\infty$-bijection for all $R > 0$, preserving information in principle.
+\end{proposition}
+
+Under Lorentzian signature, information preservation is limited to the static patch. Application to the black hole information paradox requires quantum theory within the gnomonic framework (future work).
+
+%========================================
+\section{Outlook for Doctoral Research}
+%========================================
+
+\subsection{Extension to arbitrary dimensions}
+
+The gnomonic framework extends to $S^n(R)$ for arbitrary $n$. The number-theoretic constraints (Remark~\ref{rem:fermat}) strongly constrain which dimensions admit isotropic discrete geodesics. The chain ``discrete isotropy $\to$ 5th dimension $\to$ Kaluza--Klein interpretation $\to$ emergence of electromagnetic force''~\cite{Kaluza1921,Klein1926} is the subject of a forthcoming paper.
+
+\subsection{Fine-structure constant $\alpha$}
+Connection to Wyler's formula~\cite{Wyler1971} via $SO(5,1) \to SO(4,2) \cong SU(2,2)/\mathbb{Z}_2$.
+
+\subsection{Strong and weak forces}
+Confinement ($V \sim \kappa r$) and flavor transitions require new extensions beyond this framework.
+
+\subsection{Quantum theory, mass spectrum, and cosmology}
+Discrete lattice structure connects to lattice field theory and loop quantum gravity. Derivation of $R(t)$ dynamics and Friedmann equation correspondence remain open.
+
+%========================================
+\section*{Summary of Results}
+%========================================
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Item & Result & Status \\
+\midrule
+Lorentzian signature & Axioms A, B $\to$ $(-,+,+,+)$ & Axiom~3.1 \\
+Quadratic metrics & Hurwitz theorem & Obs.~6.0 \\
+Symmetry chain & $SO(5) \to SO(4,1) \to SO(3,1)$ & Prop.~\ref{prop:chain} \\
+Angle upper bound & $540^\circ$ ($R$-independent) & Thm.~\ref{thm:angle} \\
+Coupling constant & $w = C/R \in \mathbb{Z}_{\geq 0}$ & Def.~\ref{def:C} \\
+Euclidean regularity & $\tilde{L}^2 \geq 1$ & Thm.~\ref{thm:reg}(i) \\
+Lorentzian horizon & $l^2 = 0$ & Thm.~\ref{thm:reg}(ii) \\
+Singularity avoidance & $C^\infty$ bijection & Thm.~\ref{thm:bij} \\
+$R_{\text{current}} \sim R_H$ & Same order of magnitude & Consistency \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{thebibliography}{99}
+
+\bibitem{Paper1}
+N.~Kihara, ``Geometric Formulation of 4-Dimensional Spacetime via Gnomonic Projection,'' 2026.
+DOI: \href{https://doi.org/10.5281/zenodo.19427780}{10.5281/zenodo.19427780}.
+
+\bibitem{doCarmo1992}
+M.~P.~do Carmo, \textit{Riemannian Geometry}, Birkh\"{a}user, 1992, Chapter~4.
+
+\bibitem{Wald1984}
+R.~M.~Wald, \textit{General Relativity}, University of Chicago Press, 1984, Appendix~D.
+
+\bibitem{GibbonsHawking1977}
+G.~W.~Gibbons and S.~W.~Hawking, ``Action integrals and partition functions in quantum gravity,'' \textit{Phys.\ Rev.\ D}, \textbf{15}, 2752, 1977.
+
+\bibitem{Guo2004}
+H.-Y.~Guo, C.-G.~Huang, Z.~Xu, B.~Zhou, ``On Beltrami model of de Sitter spacetime,'' \textit{Mod.\ Phys.\ Lett.\ A}, \textbf{19}, 1701, 2004. arXiv:hep-th/0405137.
+
+\bibitem{Kaluza1921}
+T.~Kaluza, ``Zum Unit\"{a}tsproblem der Physik,'' \textit{Sitzungsber.\ Preuss.\ Akad.\ Wiss.}, 966--972, 1921.
+
+\bibitem{Klein1926}
+O.~Klein, ``Quantentheorie und f\"{u}nfdimensionale Relativit\"{a}tstheorie,'' \textit{Z.\ Phys.}, \textbf{37}, 895, 1926.
+
+\bibitem{Wyler1971}
+A.~Wyler, ``L'espace sym\'{e}trique du groupe des \'{e}quations de Maxwell,'' \textit{C.\ R.\ Acad.\ Sci.\ Paris}, \textbf{272}, 186, 1971.
+
+\bibitem{MTW1973}
+C.~W.~Misner, K.~S.~Thorne, J.~A.~Wheeler, \textit{Gravitation}, W.~H.~Freeman, 1973, \S13.5.
+
+\bibitem{Spivak1999}
+M.~Spivak, \textit{A Comprehensive Introduction to Differential Geometry}, Vol.~2, 3rd ed., Publish or Perish, 1999, Chapter~4.
+
+\bibitem{Snyder1987}
+J.~P.~Snyder, \textit{Map Projections: A Working Manual}, USGS Prof.\ Paper 1395, 1987, pp.~164--168.
+
+\bibitem{Kihara2026b}
+N.~Kihara, ``Solution of Positive Integer Solutions in Discrete Minkowski Intervals Using Gaussian Integers,'' GitHub: ai-chat-logs-open, 2026.
+
+\bibitem{Hurwitz1898}
+A.~Hurwitz, ``\"{U}ber die Composition der quadratischen Formen von beliebig vielen Variablen,'' \textit{Nachr.\ Ges.\ Wiss.\ G\"{o}ttingen}, 309--316, 1898.
+
+\bibitem{Planck2020}
+Planck Collaboration, ``Planck 2018 results.~VI.,'' \textit{Astron.\ Astrophys.}, \textbf{641}, A6, 2020.
+
+\end{thebibliography}
+
+\bigskip
+\noindent\textit{This paper is confined to pure geometry. Physical claims and experimental predictions are left for future research.}\\
+\textit{Last updated: 2026-04-06}
+
+\end{document}
