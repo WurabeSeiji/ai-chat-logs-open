@@ -41,7 +41,7 @@
 | プラットフォーム | 公開日 | URL / 備考 |
 |---|---|---|
 | **GitHub** | 2026-04-05 | https://github.com/WurabeSeiji/ai-chat-logs-open |
-| **Zenodo** | 2026-04-05 | https://doi.org/10.5281/zenodo.19427780（論文1のみ） |
+| **Zenodo** | 2026-04-06 | 論文1: https://doi.org/10.5281/zenodo.19427780 / 論文2: https://doi.org/10.5281/zenodo.19434932 / 論文3: https://doi.org/10.5281/zenodo.19435162 |
 | **Academia.edu** | 2026-04-05 | https://www.academia.edu/ (木原 範昭 プロフィールより) |
 | **Zenn** | 2026-04-05 | https://zenn.dev（記事：gnomonic-projection-spacetime-geometry） |
 | **note** | 2026-04-05 | https://note.com/kiharanoriaki/n/nc51e43282b0a |
@@ -52,10 +52,9 @@
 
 | プラットフォーム | 状況 | 理由・次のアクション |
 |---|---|---|
-| **arXiv** | 🔶 保留中 | 投稿途中まで完了。紹介者（endorser）が必要なため保留。大阪大学理学研究科・理論物理学者への査読依頼を予定。 |
-| **ResearchGate** | 🔶 保留中 | 機関メール（@osaka-u.ac.jp 等）が必要なため認証不可。arXiv 登録後、論文DOIが増えた段階で再挑戦予定。 |
-| **OSF Preprints** | ❌ 見送り | 2025年8月25日より新規投稿を停止中。再開後に投稿予定。 |
-| **Zenodo（論文2・3）** | 🔶 予定 | 論文2・3の Zenodo 登録は未実施。査読後に登録予定。 |
+| **arXiv** | 🔶 保留中 | 紹介者（endorser）が必要なため保留。 |
+| **ResearchGate** | 🔶 保留中 | 機関メール必要。arXiv 登録後に再挑戦予定。 |
+| **OSF Preprints** | ❌ 見送り | 2025年8月25日より新規投稿を停止中。 |
 
 ---
 
@@ -76,14 +75,22 @@
 
 | ファイル名 | 説明 |
 |---|---|
+| `gnomonic_lorentzian_origin.tex` | LaTeXソース（日本語版） |
+| `gnomonic_lorentzian_origin.pdf` | PDF（日本語版） |
 | `gnomonic_lorentzian_origin.md` | Markdown（日本語版） |
+| `gnomonic_lorentzian_origin_en.tex` | LaTeXソース（英語版） |
+| `gnomonic_lorentzian_origin_en.pdf` | PDF（英語版） |
 | `gnomonic_lorentzian_origin_en.md` | Markdown（英語版） |
 
 ### 論文3：電荷次元と電磁場理論
 
 | ファイル名 | 説明 |
 |---|---|
+| `gnomonic_charge_dimension.tex` | LaTeXソース（日本語版） |
+| `gnomonic_charge_dimension.pdf` | PDF（日本語版） |
 | `gnomonic_charge_dimension.md` | Markdown（日本語版） |
+| `gnomonic_charge_dimension_en.tex` | LaTeXソース（英語版） |
+| `gnomonic_charge_dimension_en.pdf` | PDF（英語版） |
 | `gnomonic_charge_dimension_en.md` | Markdown（英語版） |
 
 ---
@@ -92,6 +99,8 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-04-06 | 論文2・3：Zenodo 公開完了（DOI確定）|
+| 2026-04-06 | 論文2・3：日英 LaTeX/PDF を追加 |
 | 2026-04-06 | 論文3：テスト粒子応答を「仮定」→「幾何学的帰結」に修正（注意 8.3）|
 | 2026-04-06 | 論文3：Maxwell 方程式の完全形を導出済みとして格上げ（命題 8.4）|
 | 2026-04-06 | 論文3：$e$ → $e_0$ 統一、概要・結果表の更新 |
