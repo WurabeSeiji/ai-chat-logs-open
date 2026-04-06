@@ -22,7 +22,8 @@
 
 **タイトル（日本語）**：離散グノモン正写像における電荷次元の幾何学的起源：5次元時空と電荷量子化  
 **タイトル（英語）**：Geometric Origin of the Charge Dimension in Discrete Gnomonic Projection: 5-Dimensional Spacetime and Charge Quantization  
-**内容：** 第5次元を電荷次元 $\phi = Qq$ と同定。$Q = C/e_0$ による電荷量子化、$1/r^2$ Coulomb 法則の導出、Maxwell 方程式の完全形、スピン1/スピン2 偏向構造、等価原理の不在の幾何学的説明。
+**内容：** 第5次元を電荷次元 $\phi = Qq$ と同定。$Q = C/e_0$ による電荷量子化、$1/r^2$ Coulomb 法則の導出、Maxwell 方程式の完全形、スピン1/スピン2 偏向構造、等価原理の不在の幾何学的説明。  
+**DOI：** https://doi.org/10.5281/zenodo.19435162
 
 ---
 

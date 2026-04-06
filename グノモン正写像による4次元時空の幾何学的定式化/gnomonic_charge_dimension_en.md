@@ -5,6 +5,7 @@
 **ORCID:** 0009-0004-6753-4020  
 **Date:** April 2026  
 **Type:** Research Note (Geometric Investigation)  
+**DOI:** https://doi.org/10.5281/zenodo.19435162  
 **Previous Papers:**
 - [1] Geometric Formulation of 4-Dimensional Spacetime via Gnomonic Projection. DOI: 10.5281/zenodo.19427780.
 - [2] Geometric Origin of Lorentzian Spacetime via Gnomonic Projection: A Unified Description through the Discretization Constant $C$.

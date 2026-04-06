@@ -1,0 +1,390 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{remark}{Remark}
+\newtheorem*{observation}{Observation}
+
+\title{\textbf{Geometric Origin of the Charge Dimension\\in Discrete Gnomonic Projection:\\5-Dimensional Spacetime and Charge Quantization}}
+
+\author{Noriaki Kihara\\
+\small WF System Co., Ltd.\\
+\small (Osaka University, School of Engineering Science, Alumni)\\
+\small \href{https://orcid.org/0009-0004-6753-4020}{ORCID: 0009-0004-6753-4020}\\
+\small \href{https://doi.org/10.5281/zenodo.19435162}{DOI: 10.5281/zenodo.19435162}}
+
+\date{April 2026\\[5pt]\small Research Note (Geometric Investigation)}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+In the previous paper~\cite{Paper2}, we showed that the isotropic geodesic equation on the discrete Minkowski lattice $\mathbb{Z}^{1+N}$ has no solutions for $N=3$ (arithmetic anomaly) but admits solutions for $N=4$. This paper identifies the fifth dimension with the charge (Coulomb) dimension and extends the gnomonic projection to $S^5(R)$.
+
+No new coupling constants are introduced. The sole coupling constant $C$ (dimension: length) is retained, and a conversion coefficient $Q = C/e_0$ ($e_0$: minimum charge quantum) is defined. The coordinate $\tilde{\phi} = q/e_0 \in \mathbb{Z}$ becomes an integer charge number, and charge quantization is derived from the discrete lattice without compactification. The $1/r^2$ Coulomb law is derived from the gnomonic mapping in the charge direction, and combined with Lorentz invariance from~\cite{Paper2}, Maxwell's equations in their entirety are geometrically derived. The difference in polarization structure between electromagnetic waves (spin-1) and gravitational waves (spin-2) emerges from the difference in observability of the curvature directions.
+\end{abstract}
+
+\tableofcontents
+
+%========================================
+\section{Introduction: Confirmation of Discretization Premises}
+%========================================
+
+\subsection{Premise: The Discrete Gnomonic Mapping Has Been Verified}
+
+This paper takes the \textbf{discrete gnomonic projection} established in~\cite{Paper2} as its starting point. The following results have already been verified:
+
+\begin{enumerate}
+\item The coupling constant $C$ discretizes coordinates: $\tilde{x}^\mu = x^\mu/C \in \mathbb{Z}$.
+\item Under $w = C/R \in \mathbb{Z}_{\geq 0}$, the discrete gnomonic mapping $\tilde{Y}^\mu = \tilde{x}^\mu/\tilde{L}$ is defined.
+\item All metrics are quadratic: $\tilde{\sigma}^2 = \sum_\mu \epsilon_\mu (\tilde{x}^\mu)^2$, $\tilde{L}^2 = 1 + w^2\tilde{\sigma}^2$.
+\item Euclidean: $\tilde{L}^2 \geq 1 > 0$ at all lattice points (Theorem~6.1(i) of~\cite{Paper2}).
+\end{enumerate}
+
+\subsection{Fundamental Reason for Quadratic Metrics}
+
+On the discrete lattice $\mathbb{Z}^n$, each coordinate takes positive and negative integers. A metric must be sign-invariant: $(-n)^2 = n^2$ for all $n \in \mathbb{Z}$. The quadratic form is the minimal structure guaranteeing this:
+\begin{equation}
+\text{Discrete lattice} \;\Longrightarrow\; \text{Negative coordinates} \;\Longrightarrow\; \text{Sign invariance required} \;\Longrightarrow\; (\tilde{x}^\mu)^2 \tag{1.1}
+\end{equation}
+
+\begin{remark}[Physical meaning of negative coordinate values]
+For spatial axes: isotropy ($\pm n$ indistinguishable). For time: convention (arrow of time). For charge $\phi = Qq$: physical distinction (positive/negative charge). In all cases, the metric $(\tilde{x}^\mu)^2$ handles negative values; the physical distinction is preserved in the coordinate value, not the metric.
+\end{remark}
+
+\subsection{Number-Theoretic Motivation: Why Five Dimensions}
+
+From Remark~6.2 of~\cite{Paper2} and~\cite{Kihara2026b}: on $\mathbb{Z}^{1+N}$, the isotropic geodesic equation $l^2 + t^2 = Nx^2$ has solutions iff every prime $p \equiv 3 \pmod{4}$ in $N$ appears with even exponent (Fermat). $N=3$ violates this ($3 \equiv 3$); $N=4$ satisfies it ($4=2^2$). \textbf{Discrete isotropy requires at least $N=4$ spatial dimensions.}
+
+\subsection{Observability of the Charge Dimension}
+
+In Axiom~3.1 of~\cite{Paper2}, unobservability of $R$ led to imaginary rotation (Lorentzian signature). The charge dimension $\phi$ is \textbf{observable} (charge can be measured), so Axiom~B is \textbf{not applied}: $\epsilon_4 = +1$.
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Dimension & Observability & Axiom~B applied? \\
+\midrule
+$Y^{n+1}$ ($R$-direction) & Unobservable & Yes $\to$ sign reversal \\
+$\phi = Qq$ (charge) & \textbf{Observable} & \textbf{No} $\to$ sign unchanged \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Organization}
+
+\S2: 5D gnomonic mapping. \S3: Coefficient $Q$ and charge quantization. \S4: 5D discrete mapping. \S5: Recovery of discrete isotropy. \S6: 5D Einstein tensor. \S7: Consistency. \S8: Future tasks and electromagnetic field.
+
+%========================================
+\section{Extension of the 5-Dimensional Gnomonic Mapping}
+%========================================
+
+\subsection{Coordinate System}
+
+\begin{equation}
+(x^1, x^2, x^3, x^4, x^5) = (x, y, z, \phi, ct) \tag{2.1}
+\end{equation}
+Signature: $\epsilon_\mu = (+1,+1,+1,+1,-1)$.
+
+\subsection{5D Gnomonic Mapping}
+
+Applying~\cite{Paper1} to $n=5$:
+\begin{equation}
+\Phi: \Pi_R \to S^5(R), \quad Y^\mu = \frac{Rx^\mu}{l}, \quad Y^6 = \frac{R^2}{l} \tag{2.3}
+\end{equation}
+\begin{equation}
+l^2 = R^2 + x^2 + y^2 + z^2 + Q^2q^2 - c^2t^2 \tag{2.4}
+\end{equation}
+Pullback metric:
+\begin{equation}
+g_{\mu\nu} = \frac{R^2}{l^2}\left(\epsilon_\mu \delta_{\mu\nu} - \frac{\epsilon_\mu\epsilon_\nu x_\mu x_\nu}{l^2}\right) \tag{2.5}
+\end{equation}
+
+%========================================
+\section{Conversion Coefficient $Q$ and Charge Quantization}
+%========================================
+
+\subsection{Structural Symmetry with $c$}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+ & Time $\to$ Length & Charge $\to$ Length \\
+\midrule
+Coefficient & $c$ & $Q$ \\
+Formula & $x^5 = ct$ & $x^4 = Qq$ \\
+Dimension & m/s & m/C \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Determination of $Q$}
+
+Discretization $\tilde{\phi} = Qq/C \in \mathbb{Z}$ requires a minimum charge quantum $e_0$:
+\begin{equation}
+Q = \frac{C}{e_0}, \qquad \tilde{\phi} = \frac{q}{e_0} \in \mathbb{Z} \tag{3.3}
+\end{equation}
+With $e_0 = e/3$ (quark charge):
+\begin{equation}
+Q = \frac{3C}{e} \approx 3.03 \times 10^{-16}\;\text{m/C} \tag{3.5}
+\end{equation}
+
+\subsection{Charge Quantization}
+
+\begin{theorem}[Charge quantization]\label{thm:charge}
+Under $\tilde{\phi} \in \mathbb{Z}$ and $Q = C/e_0$:
+\begin{equation}
+q = n \cdot e_0, \qquad n \in \mathbb{Z} \tag{3.7}
+\end{equation}
+\end{theorem}
+
+\begin{remark}[Compactification unnecessary]
+Unlike Kaluza--Klein theory~\cite{Kaluza1921,Klein1926}, charge quantization here derives from the discrete lattice $\tilde{\phi} \in \mathbb{Z}$, not from periodicity. The $\phi$-direction is non-compact.
+\end{remark}
+
+\begin{remark}[Discrete coordinates for known particles]
+With $e_0 = e/3$: proton ($\tilde{\phi}=+3$), electron ($-3$), u quark ($+2$), d quark ($-1$), neutrino ($0$). All integers; $\tilde{\phi}^2$ identical for $\pm$ values.
+\end{remark}
+
+%========================================
+\section{5-Dimensional Discrete Gnomonic Mapping}
+%========================================
+
+\subsection{Discretization}
+
+\begin{equation}
+\tilde{x} = x/C,\; \tilde{y} = y/C,\; \tilde{z} = z/C,\; \tilde{\phi} = q/e_0,\; \tilde{t} = ct/C \;\in \mathbb{Z} \tag{4.1}
+\end{equation}
+
+\subsection{Discrete Metric}
+
+\begin{equation}
+\tilde{L}^2 = 1 + w^2\tilde{\sigma}^2, \qquad \tilde{\sigma}^2 = \tilde{x}^2 + \tilde{y}^2 + \tilde{z}^2 + \tilde{\phi}^2 - \tilde{t}^2 \tag{4.2}
+\end{equation}
+
+\subsection{Regularity (5D)}
+
+\begin{theorem}[5D regularity]\label{thm:5dreg}
+\textbf{(i)} Euclidean: $\tilde{L}^2 \geq 1 > 0$ globally.
+
+\textbf{(ii)} Lorentzian: horizon at $c^2t^2 = R^2 + x^2 + y^2 + z^2 + Q^2q^2$. The charge term $Q^2q^2 \geq 0$ \textbf{expands} the regular region compared to 4D.
+\end{theorem}
+
+%========================================
+\section{Recovery of Discrete Isotropy at $N=4$}
+%========================================
+
+For $N=4$: $4 = 2^2$ contains no prime $p \equiv 3 \pmod{4}$. The equation $l^2 + t^2 = 4x^2$ has solutions. Minimal: $l=0, t=2, x=1$.
+
+\begin{proposition}[Recovery of discrete isotropy]\label{prop:isotropy}
+No isotropic null geodesic exists on $\mathbb{Z}^{1+3}$, but they exist on $\mathbb{Z}^{1+4}$ with the charge dimension. The charge dimension is number-theoretically required for discrete isotropy.
+\end{proposition}
+
+%========================================
+\section{5-Dimensional Einstein Tensor}
+%========================================
+
+Applying Proposition~2.1 of~\cite{Paper1} to $n=5$:
+\begin{equation}
+\Lambda_5 = \frac{(5-1)(5-2)}{2R^2} = \frac{6}{R^2}, \qquad G_{\mu\nu} + \frac{6}{R^2}g_{\mu\nu} = 0 \tag{6.1--6.2}
+\end{equation}
+
+Compared to 4D: $\Lambda_5 = 2\Lambda_4$.
+
+%========================================
+\section{Consistency Checks}
+%========================================
+
+\textbf{Coupling constants:} Only $C$. $Q = C/e_0$ is a conversion coefficient, not a free parameter.
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Quantity & Conversion & Discrete coord. & Quantization \\
+\midrule
+Position & $x$ [m] & $\tilde{x} = x/C \in \mathbb{Z}$ & Length \\
+Time & $t$ [s] $\to$ $ct$ [m] & $\tilde{t} = ct/C \in \mathbb{Z}$ & Time \\
+Charge & $q$ [C] $\to$ $Qq$ [m] & $\tilde{\phi} = q/e_0 \in \mathbb{Z}$ & \textbf{Charge} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{proposition}[Safety of negative coordinates]\label{prop:safety}
+In the discrete gnomonic mapping, $\tilde{L}^2$ is invariant under sign change of any $\tilde{x}^\mu$, since $(\tilde{x}^\mu)^2 = (-\tilde{x}^\mu)^2$.
+\end{proposition}
+
+%========================================
+\section{Future Tasks and the Electromagnetic Field}
+%========================================
+
+\subsection{Derivation of the Fine-Structure Constant}
+
+$\alpha = e^2/(4\pi\epsilon_0 \hbar c) \approx 1/137$ is not derived in this paper. Connection to Wyler's formula~\cite{Wyler1971} via the $SO(5,1)$ symmetry group of $S^5(R)$ is an important future task.
+
+\subsection{Electromagnetic Field from the Charge Direction}
+
+\subsubsection{Directed Curvature in the $\phi$-Direction}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+ & Gravity & Electromagnetism \\
+\midrule
+Curvature direction & $R$ (unobservable) & $\phi = Qq$ (\textbf{observable, directed}) \\
+Curvature radius & $R$ & $\phi_0 = Qq_0$ (source charge) \\
+Nature & Uniform & \textbf{Directed} (sign of $q_0$) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection{4D Beltrami Metric ($R = \infty$)}
+
+Source charge $q_0$ curves $(x,y,z,t)$-space with radius $\phi_0 = Qq_0$:
+\begin{equation}
+g_{\mu\nu} = \frac{\phi_0^2}{l_q^2}\left(\eta_{\mu\nu} - \frac{x_\mu x_\nu}{l_q^2}\right), \qquad l_q^2 = \phi_0^2 + \sigma^2 \tag{8.1}
+\end{equation}
+where $\eta_{\mu\nu} = \text{diag}(+1,+1,+1,-1)$, $\sigma^2 = x^2+y^2+z^2-c^2t^2$.
+
+\subsubsection{Inverse Metric and Christoffel Symbols}
+
+With $\Sigma = l_q^2/\phi_0^2$, $K = 1/\phi_0^2$:
+\begin{equation}
+g^{\mu\nu} = \Sigma(\eta^{\mu\nu} + Kx^\mu x^\nu), \qquad \Gamma^\rho_{\mu\nu} = -\frac{K}{\Sigma}(x_\mu \delta^\rho_\nu + x_\nu \delta^\rho_\mu) \tag{8.2--8.3}
+\end{equation}
+
+\subsubsection{Derivation of the $1/r^2$ Law}
+
+The gnomonic embedding gives $Y^i = \phi_0 x^i / l_q$. For a spatially static particle ($x^i = r_i = \text{const}$), time progression changes $l_q$. The second time derivative at $t=0$:
+\begin{equation}
+\frac{d^2 Y^i}{dt^2}\bigg|_{t=0} = \frac{\phi_0\, r_i\, c^2}{(\phi_0^2 + r^2)^{3/2}} \tag{8.7}
+\end{equation}
+In the limit $r \gg |\phi_0|$:
+\begin{equation}
+\boxed{\frac{d^2 Y^i}{dt^2} \approx \frac{Qq_0 \cdot c^2}{r^2}\,\hat{r}_i} \tag{8.8}
+\end{equation}
+\textbf{This is the $1/r^2$ Coulomb law.}
+
+\subsubsection{Test Particle Response}
+
+\begin{remark}[Test charge response is geometric]
+A neutral particle ($q_1 = 0$) sits at the tangent point $\phi_1 = 0$ where the metric is flat; no force. A charged particle ($q_1 \neq 0$) is displaced from the tangent point; curvature effects are proportional to $|q_1|$:
+\begin{equation}
+a \sim \frac{Q^2 q_0 q_1 c^2}{r^2} \tag{8.9}
+\end{equation}
+\end{remark}
+
+\begin{remark}[Absence of the equivalence principle]
+For gravity: $R$ is unobservable, so all particles respond identically (equivalence principle). For EM: $\phi$ is observable, so response depends on $q_1$ (no equivalence principle). The equivalence principle is a \textbf{consequence} of the unobservability of $R$.
+\end{remark}
+
+\subsubsection{Polarity and Directionality}
+
+The sign of $\phi_0 = Qq_0$ determines field direction: $q_0 > 0 \to$ outward; $q_0 < 0 \to$ inward. Gravity ($R$ undirected) is always attractive; EM ($\phi$ directed) can be attractive or repulsive.
+
+\subsubsection{Polarization: Spin-1 vs Spin-2}
+
+\begin{proposition}[Polarization and observability]\label{prop:polar}
+EM waves are spin-1 (vector polarization) because the $\phi$-direction is directed. Gravitational waves are spin-2 (tensor polarization) because the $R$-direction is undirected.
+\end{proposition}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+ & EM waves & Gravitational waves \\
+\midrule
+Curvature dir. & $\phi$ (directed) & $R$ (undirected) \\
+Perturbation & Vector (selects direction) & Symmetric tensor \\
+Spin & \textbf{1} & \textbf{2} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection{Complete Form of Maxwell's Equations}
+
+\begin{proposition}[Geometric derivation of Maxwell's equations]\label{prop:maxwell}
+Coulomb's law (8.8) from this paper, combined with Lorentz invariance from~\cite{Paper2}, yields all four Maxwell equations. The magnetic field $\mathbf{B}$ is the Lorentz transform of $\mathbf{E}$; Faraday's and Amp\`{e}re's laws follow from covariance.
+\end{proposition}
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Maxwell's equation & Derivation \\
+\midrule
+$\nabla \cdot \mathbf{E} = \rho/\epsilon_0$ & Eq.~(8.8) \\
+$\nabla \cdot \mathbf{B} = 0$ & $\phi$ is 1D $\to$ no monopole d.o.f. \\
+$\nabla \times \mathbf{E} = -\partial\mathbf{B}/\partial t$ & Lorentz invariance~\cite{Paper2} \\
+$\nabla \times \mathbf{B} = \mu_0\mathbf{J} + \mu_0\epsilon_0\partial\mathbf{E}/\partial t$ & Lorentz invariance~\cite{Paper2} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%========================================
+\section*{Summary of Results}
+%========================================
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Item & Result & Eq. & Status \\
+\midrule
+Number-theoretic motivation & No solution at $N\!=\!3$; exists at $N\!=\!4$ & \S1.3 & Fermat~\cite{Kihara2026b} \\
+Charge observability & $\phi$ observable $\to$ $\epsilon_4\!=\!+1$ & \S1.4 & Axioms A,B \\
+Conversion coeff.\ $Q$ & $Q = C/e_0$ & (3.3) & Definition \\
+Charge quantization & $q = ne_0$ & (3.7) & Thm.~\ref{thm:charge} \\
+5D regularity & $\tilde{L}^2 \geq 1$; horizon expansion & (4.4) & Thm.~\ref{thm:5dreg} \\
+Discrete isotropy & $t = 2x$ at $N\!=\!4$ & (5.2) & Prop.~\ref{prop:isotropy} \\
+5D $\Lambda$ & $\Lambda_5 = 6/R^2$ & (6.1) & Prop.~2.1 \\
+Coulomb's law & $d^2Y^i/dt^2 \approx Qq_0 c^2/r^2$ & (8.8) & \S8.2 \\
+Equivalence principle & $R$ unobs.\ $\to$ yes; $\phi$ obs.\ $\to$ no & Rem.~8.3 & \S8.2 \\
+Polarization & EM: spin-1; GW: spin-2 & Prop.~\ref{prop:polar} & \S8.2 \\
+Maxwell's equations & Coulomb + Lorentz $\to$ complete & Prop.~\ref{prop:maxwell} & \S8.2 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{thebibliography}{99}
+
+\bibitem{Paper1}
+N.~Kihara, ``Geometric Formulation of 4-Dimensional Spacetime via Gnomonic Projection,'' 2026.
+DOI: \href{https://doi.org/10.5281/zenodo.19427780}{10.5281/zenodo.19427780}.
+
+\bibitem{Paper2}
+N.~Kihara, ``Geometric Origin of Lorentzian Spacetime via Gnomonic Projection: A Unified Description through the Discretization Constant $C$,'' 2026.
+DOI: \href{https://doi.org/10.5281/zenodo.19434932}{10.5281/zenodo.19434932}.
+
+\bibitem{Kihara2026b}
+N.~Kihara, ``Solution of Positive Integer Solutions in Discrete Minkowski Intervals Using Gaussian Integers,'' GitHub: ai-chat-logs-open, 2026.
+
+\bibitem{Kaluza1921}
+T.~Kaluza, ``Zum Unit\"{a}tsproblem der Physik,'' \textit{Sitzungsber.\ Preuss.\ Akad.\ Wiss.}, 966--972, 1921.
+
+\bibitem{Klein1926}
+O.~Klein, ``Quantentheorie und f\"{u}nfdimensionale Relativit\"{a}tstheorie,'' \textit{Z.\ Phys.}, \textbf{37}, 895, 1926.
+
+\bibitem{Wyler1971}
+A.~Wyler, ``L'espace sym\'{e}trique du groupe des \'{e}quations de Maxwell,'' \textit{C.\ R.\ Acad.\ Sci.\ Paris}, \textbf{272}, 186, 1971.
+
+\bibitem{Hurwitz1898}
+A.~Hurwitz, ``\"{U}ber die Composition der quadratischen Formen von beliebig vielen Variablen,'' \textit{Nachr.\ Ges.\ Wiss.\ G\"{o}ttingen}, 309--316, 1898.
+
+\end{thebibliography}
+
+\bigskip
+\noindent\textit{This paper is confined to pure geometry and number theory. Electromagnetic dynamics, the fine-structure constant, and identification with existing theories are left for future research.}\\
+\textit{Last updated: 2026-04-06}
+
+\end{document}
