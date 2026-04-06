@@ -1,0 +1,436 @@
+% !TEX program = lualatex
+\documentclass[12pt,a4paper]{ltjsarticle}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{booktabs}
+\usepackage{luatexja-fontspec}
+
+% 定理環境
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem*{remark}{注意}
+\newtheorem*{observation}{観察}
+\newtheorem*{hypothesis}{仮説}
+
+\title{\textbf{グノモン正写像に基づく Lorentzian 時空の\\幾何学的起源：離散化定数 $C$ による統一的記述}}
+
+\author{木原 範昭（Noriaki Kihara）\\
+\small WF System Co., Ltd.\\
+\small （大阪大学 基礎工学部 卒業）\\
+\small \href{https://orcid.org/0009-0004-6753-4020}{ORCID: 0009-0004-6753-4020}\\
+\small \href{https://doi.org/10.5281/zenodo.19434932}{DOI: 10.5281/zenodo.19434932}}
+
+\date{2026年4月\\[5pt]\small 研究ノート（幾何学的考察）}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+前論文~\cite{Paper1} において，グノモン正写像により4次元ユークリッド空間を超球面 $S^4(R)$ に写像し，Einstein テンソルの幾何学的恒等式 $G_{\mu\nu} + \Lambda g_{\mu\nu} = 0$（$\Lambda = 3/R^2$）を導出した．しかし以下の問いは未解決であった：(1) なぜ時間は空間と異なる符号 $(-,+,+,+)$ を持つのか，(2) 写像は離散的な座標系でも定義可能か，(3) 自由パラメータはいくつ必要か．
+
+本稿は，これらの問いに対する幾何学的回答を与える．第一に，$R$ 方向が内部観測者にとって不可観測であることを動機として，Lorentzian 符号を公理的に導入する（公理~3.1）．第二に，物理計量が2乗形式であるという事実が離散化の数論的必要条件であることを指摘し（\S6.1），唯一の結合定数 $C$（次元：長さ）の導入により写像が離散座標系で定義可能であることを示す．Euclidean 符号では写像の大域的正則性が保証され，Lorentzian 符号では宇宙論的ホライズンが自然に出現することを証明する（定理~6.1）．$N = 3$ の算術的アノマリーと5次元の必然性を Fermat の二平方和定理により確立する．
+\end{abstract}
+
+\tableofcontents
+
+%========================================
+\section{はじめに}
+%========================================
+
+\subsection{前論文の到達点}
+
+前論文~\cite{Paper1} は，$n$ 次元ユークリッド空間から $(n+1)$ 次元超球面 $S^n(R)$ への中心射影（グノモン正写像）
+\begin{equation}
+\Phi: \Pi_R \to S^n(R), \quad Y^\mu = \frac{Rx^\mu}{l}, \quad Y^{n+1} = \frac{R^2}{l}, \quad l = \sqrt{R^2 + \sum_\mu (x^\mu)^2} \tag{1.1}
+\end{equation}
+の $n = 4$ の場合に対し，引き戻し計量
+\begin{equation}
+g_{\mu\nu} = \frac{R^2}{l^2}\left(\delta_{\mu\nu} - \frac{x_\mu x_\nu}{l^2}\right) \tag{1.2}
+\end{equation}
+を導出し，$S^4(R)$ が定曲率空間として
+\begin{equation}
+G_{\mu\nu} + \Lambda g_{\mu\nu} = 0, \qquad \Lambda = \frac{3}{R^2} \tag{1.3}
+\end{equation}
+を満たすことを示した．さらに付録~D において符号パラメータ $\epsilon_\mu \in \{+1, -1\}$ を導入し，統一的記述
+\begin{equation}
+g_{\mu\nu} = \frac{R^2}{l^2}\left(\epsilon_\mu \delta_{\mu\nu} - \frac{\epsilon_\mu \epsilon_\nu x_\mu x_\nu}{l^2}\right), \qquad l^2 = R^2 + \sum_\mu \epsilon_\mu (x^\mu)^2 \tag{1.4}
+\end{equation}
+を与えた．
+
+\subsection{未解決の問い}
+
+前論文は $\epsilon_4 = -1$（Lorentzian 符号）を\textbf{選択肢}として示したが，なぜそれが物理的に実現されるかを説明しなかった．本稿では，この符号に対する幾何学的動機付けを与え，それを\textbf{公理として採用した場合の帰結}を体系的に示す．
+
+\subsection{本稿の構成}
+
+\S2：一般次元での Einstein テンソル．\S3：Lorentzian 符号の幾何学的動機付け．\S4：ローレンツ群の起源．\S5：内部観測者の認知限界．\S6：離散座標と結合定数 $C$．\S7：特異点回避．\S8：整合性の確認．\S9：情報保存．\S10：展望．
+
+%========================================
+\section{一般次元での Einstein テンソル}
+%========================================
+
+\begin{proposition}[一般次元の Einstein テンソル~{\normalfont\cite{doCarmo1992,Wald1984}}]\label{prop:general}
+$n$ 次元球面 $S^n(R)$ 上では：
+\begin{equation}
+R_{\mu\nu\rho\sigma} = \frac{1}{R^2}(g_{\mu\rho}g_{\nu\sigma} - g_{\mu\sigma}g_{\nu\rho}), \qquad R_{\mu\nu} = \frac{n-1}{R^2}g_{\mu\nu} \tag{2.1}
+\end{equation}
+\begin{equation}
+R_{\text{scalar}} = \frac{n(n-1)}{R^2}, \qquad G_{\mu\nu} = -\frac{(n-1)(n-2)}{2R^2}g_{\mu\nu} \tag{2.2}
+\end{equation}
+\begin{equation}
+\Lambda_n = \frac{(n-1)(n-2)}{2R^2} \tag{2.3}
+\end{equation}
+\end{proposition}
+
+\begin{center}
+\begin{tabular}{ccl}
+\toprule
+次元 $n$ & $\Lambda_n$ & Einstein テンソルの状態 \\
+\midrule
+1 & 0 & 自明解 \\
+2 & 0 & 恒等的に零 \\
+3 & $1/R^2$ & 非自明（最低次元） \\
+\textbf{4} & $\mathbf{3/R^2}$ & \textbf{前論文の主結果} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+%========================================
+\section{Lorentzian 符号の幾何学的動機付けと公理的設定}
+%========================================
+
+\subsection{$R$ 方向の構造的特異性}
+
+グノモン写像~(1.1) の5次元像：
+\[
+\underbrace{Y^1, Y^2, Y^3, Y^4}_{\text{4次元座標}} = \frac{Rx^\mu}{l}, \qquad \underbrace{Y^5}_{\text{$R$ 方向}} = \frac{R^2}{l}
+\]
+
+\begin{proposition}[$R$ 方向と4次元座標の非対称性]\label{prop:asym}
+$Y^5$ は $Y^1, \ldots, Y^4$ とは質的に異なる：4次元座標は $S^4(R)$ の内在的座標であるのに対し，$Y^5$ は埋め込み空間の法線方向であり，球面の内部に留まる観測者が持つ測定手段では原理的に測定できない．
+\end{proposition}
+
+\subsection{不可観測次元の虚軸化}
+
+\begin{definition}[公理~3.1：Lorentzian 符号の公理的設定]\label{ax:lor}
+以下の二つの公理を採用する：
+
+\textbf{公理 A}（認知制約）：$S^n(R)$ の内在計量 $g_{\mu\nu}$（式~(1.2)）は埋め込み座標 $Y^5$ を含まない（Gauss の驚異定理）．したがって，内在計量のみを用いる観測者は，$Y^5$ 方向を直接観測する手段を持たない．
+
+\textbf{公理 B}（不可観測次元の虚軸化）：公理~A により内在的に不可観測な $R$ 方向を，有効的な虚軸として表現する．
+\end{definition}
+
+公理~A は Gauss の驚異定理から直接従う数学的帰結であり，仮定の余地はない．公理~B は物理的仮定である．
+
+公理~A, B のもとでの帰結：
+
+\begin{enumerate}
+\item[(i)] $x^1, x^2, x^3$ を空間座標，$x^4 = ct$ を時間座標と同定する．
+\item[(ii)] $w_{\text{有効}} = i/R$，したがって $w_{\text{有効}}^2 = -1/R^2$．
+\item[(iii)] $x^4 = ct$ の項の符号が反転：$\epsilon_4 = +1 \to -1$．
+\end{enumerate}
+
+結果：
+\begin{equation}
+l^2 = R^2 + x^2 + y^2 + z^2 - c^2t^2 \tag{3.3}
+\end{equation}
+\textbf{Lorentzian 符号 $(-,+,+,+)$ が，公理~A, B のもとで得られる．}
+
+\begin{remark}[本主張の位置づけ]
+公理~B は他の解釈（コンパクト化，ゲージ自由度等）でも原理的には置換可能である．本稿は公理~B を採用した場合の帰結を探求する．正当化は，その帰結が観測と整合することによる．
+\end{remark}
+
+\subsection{従来の Wick 回転との関係}
+
+本稿の立場は因果関係を逆転させる：Wick 回転が「便利な手法」なのではなく，内部観測者にとって Lorentzian 世界が「認知される現実」であり，Euclidean 構造が「背後にある幾何学的実体」である．
+
+%========================================
+\section{ローレンツ群の幾何学的起源}
+%========================================
+
+\begin{proposition}[対称群の鎖~{\normalfont\cite{Wald1984,Guo2004}}]\label{prop:chain}
+\begin{equation}
+SO(5) \xrightarrow[\text{公理~3.1}]{\epsilon_4: +1 \to -1} SO(4,1) \xrightarrow[R \to \infty]{\text{平坦極限}} SO(3,1) \tag{4.1}
+\end{equation}
+\end{proposition}
+
+\textbf{意義：}ローレンツ変換は「光速不変の原理から導かれる」のではなく，「グノモン写像の de Sitter 対称性の平坦極限」として幾何学的に導出される．
+
+%========================================
+\section{内部観測者の認知限界}
+%========================================
+
+\begin{theorem}[内角上限定理]\label{thm:angle}
+$S^n(R)$ 上の測地三角形の内角 $\alpha, \beta, \gamma$ について：
+\begin{equation}
+\alpha + \beta + \gamma = \pi + \frac{A}{R^2} \tag{5.1}
+\end{equation}
+最大面積 $A_{\max} = 2\pi R^2$ において：
+\begin{equation}
+(\alpha + \beta + \gamma)_{\max} = 3\pi = 540° \tag{5.2}
+\end{equation}
+この上限値 $540°$ は $R$ に依存しない普遍的な幾何学的定数である．
+\end{theorem}
+
+\begin{proof}
+Gauss--Bonnet の定理~\cite{doCarmo1992} より，$\alpha + \beta + \gamma - \pi = A/R^2$．最大値 $A = 2\pi R^2$ で $3\pi$．
+\end{proof}
+
+\begin{remark}
+$R$ 自体は既知の面積 $A$ を持つ三角形の内角超過 $\Delta = A/R^2$ から測定可能である．
+\end{remark}
+
+\begin{proposition}[共形因子]
+グノモン写像は位置依存的な共形因子 $R/l$ を含む．原点で $R/l = 1$，$r \to \infty$ で $R/l \to 0$．
+\end{proposition}
+
+%========================================
+\section{離散座標と結合定数 $C$}
+%========================================
+
+\subsection{動機：2乗計量と離散化の数論的関係}
+
+\begin{observation}[2乗形式の数論的動機付け~{\normalfont\cite{Hurwitz1898}}]
+整数格子 $\mathbb{Z}^n$ 上で乗法的ノルム（$N(zw) = N(z)N(w)$）を持つ計量を定義するには，ガウス整数環のノルム $N(a+bi) = a^2 + b^2$ が最小構造となる．Hurwitz の定理~(1898) により，乗法的ノルムを持つ組成代数は次元 $1, 2, 4, 8$ に限られる．
+\end{observation}
+
+\begin{remark}[離散性の傍証]
+含意の方向は一方向である：
+\[
+\text{離散性} \Longrightarrow \text{2乗計量が必須}
+\]
+\[
+\text{2乗計量} \not\Longrightarrow \text{離散性（ただし傍証となる）}
+\]
+\end{remark}
+
+\subsection{結合定数 $C$ の導入}
+
+\begin{definition}[結合定数 $C$]\label{def:C}
+次元「長さ」を持つ定数 $C > 0$ を導入し，曲率パラメータ $w = C/R$ を定義する．$w \in \mathbb{Z}_{\geq 0}$ に制限する：
+\begin{equation}
+w = \frac{C}{R} \in \mathbb{Z}_{\geq 0}, \qquad R = \frac{C}{w} \tag{6.1}
+\end{equation}
+無次元座標：$\tilde{x}^\mu = x^\mu / C \in \mathbb{Z}$．
+\end{definition}
+
+\subsection{離散グノモン写像}
+
+\begin{definition}[離散グノモン写像]\label{def:discrete}
+\begin{equation}
+\tilde{L}^2 = 1 + w^2 \tilde{\sigma}^2, \qquad \tilde{\sigma}^2 = \sum_\mu \epsilon_\mu (\tilde{x}^\mu)^2 \tag{6.2}
+\end{equation}
+\begin{equation}
+\tilde{Y}^\mu = \frac{\tilde{x}^\mu}{\tilde{L}}, \qquad \tilde{Y}^5 = \frac{1}{w\tilde{L}} \tag{6.3}
+\end{equation}
+\end{definition}
+
+\subsection{写像の定義域と正則性}
+
+\begin{theorem}[符号依存の正則性]\label{thm:reg}
+\textbf{(i)} Euclidean 符号：$\tilde{\sigma}^2 \geq 0 \Rightarrow \tilde{L}^2 \geq 1 > 0$．大域的に正則．
+
+\textbf{(ii)} Lorentzian 符号：$\tilde{L}^2 = 0$ の境界は
+\begin{equation}
+c^2t^2 = R^2 + x^2 + y^2 + z^2 \tag{6.6}
+\end{equation}
+これは de Sitter 時空の\textbf{宇宙論的ホライズン}に対応する~\cite{Guo2004}．
+\end{theorem}
+
+\begin{remark}[ディオファントス方程式]
+$w = 1$ かつ等方的格子点 $\tilde{x} = \tilde{y} = \tilde{z} = s$ のとき，ホライズン条件は Pell 方程式 $\tilde{t}^2 - 3s^2 = 1$ に帰着し，最小解 $(s, \tilde{t}) = (1, 2)$ が存在する．
+\end{remark}
+
+\begin{remark}[離散等方性と次元の制約~{\normalfont\cite{Kihara2026b}}]\label{rem:fermat}
+著者の先行研究~\cite{Kihara2026b} により，離散 Minkowski 格子 $\mathbb{Z}^{1+N}$ 上の等方的測地線方程式 $l^2 + t^2 = Nx^2$ の解の存在条件が完全に決定された．Fermat の二平方和定理により：$N$ の素因数分解において $p \equiv 3 \pmod{4}$ の素数の指数がすべて偶数であることが必要十分条件．
+
+\begin{center}
+\begin{tabular}{cccll}
+\toprule
+$N$ & $D=N\!+\!1$ & 素因数 & 等方解 & 備考 \\
+\midrule
+1 & 2 & $1$ & あり & Pythagorean 三つ組 \\
+2 & 3 & $2$ & あり & \\
+\textbf{3} & \textbf{4} & $3 \equiv 3$（奇数乗） & \textbf{なし} & \textbf{我々の宇宙} \\
+4 & 5 & $2^2$ & あり & Kaluza--Klein \\
+5 & 6 & $5 \equiv 1$ & あり & \\
+9 & 10 & $3^2$（偶数乗） & あり & 超弦理論 \\
+10 & 11 & $2 \times 5$ & あり & M理論 \\
+25 & 26 & $5^2$ & あり & ボソン弦理論 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+$N = 3$ が「算術的アノマリー」を持ち，$N = 4$ で初めて解が存在することは，離散等方性のために\textbf{5次元目が必然的に要請される}ことを示唆する．
+\end{remark}
+
+\begin{corollary}[連続極限]
+$C \to 0$ で $\tilde{L}^2 \to l^2/R^2$，$\tilde{Y}^\mu \to Rx^\mu/l = Y^\mu$ となり，連続版~(1.1) に形式的に一致する．
+\end{corollary}
+
+\subsection{$C$ の物理的同定}
+
+\begin{hypothesis}[$C$ と Planck 長さの同定]\label{hyp:planck}
+\begin{equation}
+C \sim \ell_P = \sqrt{\frac{\hbar G}{c^3}} \approx 1.616 \times 10^{-35}\,\text{m} \tag{6.5}
+\end{equation}
+\end{hypothesis}
+
+%========================================
+\section{特異点回避と宇宙論的ホライズン}
+%========================================
+
+\begin{theorem}[Euclidean 版の正則性]
+固定 $R > 0$ に対し，$\Phi: \mathbb{R}^4 \to S^4(R)$ は $\mathbb{R}^4$ 全域で $C^\infty$ 級正則．$l = \sqrt{R^2 + r^2} \geq R > 0$．
+\end{theorem}
+
+\begin{theorem}[Lorentzian 版の正則性]
+$\Phi$ は $l^2 > 0$（静的パッチ）で $C^\infty$ 級正則．境界 $l^2 = 0$ が宇宙論的ホライズンを定義する．
+\end{theorem}
+
+\begin{proposition}[特異点回避]
+$R \to 0$（$r > 0$ 固定）で $Y^5, Y^\mu \to 0$．写像像は原点に縮退するが発散しない．
+\end{proposition}
+
+\begin{theorem}[全単射・情報保存]\label{thm:bij}
+\textbf{(i)} Euclidean 版：$\Phi$ は開半球面への $C^\infty$ 級全単射．逆写像 $\Phi^{-1}$ が存在．
+
+\textbf{(ii)} Lorentzian 版：静的パッチ（$l^2 > 0$）内での全単射．
+\end{theorem}
+
+%========================================
+\section{整合性の確認}
+%========================================
+
+仮説~\ref{hyp:planck}（$C = \ell_P$）のもとで：
+
+\textbf{検証 1：}$R_{\text{current}} = \sqrt{3/\Lambda_{\text{obs}}} \approx 1.65 \times 10^{26}\,\text{m} \approx 5.3\,\text{Gpc}$．観測可能な宇宙 $R_H \approx 4.4 \times 10^{26}\,\text{m}$ と同オーダー．
+
+\textbf{検証 2：}$w = C/R_{\text{current}} \approx 10^{-61} \ll 1$．現在の宇宙は $w = 0$（Minkowski）に極めて近い．
+
+\textbf{検証 3：}$w = 0$（$\Lambda = 0$）と $w = 1$（$\Lambda \sim 10^{122}\Lambda_{\text{obs}}$）の間に中間状態が存在しない（離散版宇宙定数問題）．
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+物理量 & $C = \ell_P$ からの値 & 既知の値 & 整合性 \\
+\midrule
+Planck 長さ & $1.616 \times 10^{-35}$ m & $\ell_P$ & \checkmark（定義） \\
+Planck 時間 & $5.39 \times 10^{-44}$ s & $t_P$ & \checkmark \\
+$R_{\text{current}}$ & $1.65 \times 10^{26}$ m & $R_H \sim 4.4 \times 10^{26}$ m & \checkmark（同オーダー） \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}[循環論法の回避]
+本節で非自明なのは，$R_{\text{current}}$ が宇宙の観測可能半径 $R_H$ と独立に同オーダーとなること（検証~1）のみである．
+\end{remark}
+
+%========================================
+\section{幾何学的全単射性とその情報論的含意}
+%========================================
+
+\begin{proposition}
+Euclidean 符号では，$\Phi$ は全 $R > 0$ に対し特異点のない $C^\infty$ 全単射であり，情報は原理的に保存される．
+\end{proposition}
+
+Lorentzian 符号では，情報保存は静的パッチ内に限られる．ブラックホール情報パラドックスへの適用には，グノモン枠組みでの量子論の定式化が必要（今後の課題）．
+
+%========================================
+\section{博士課程への展望}
+%========================================
+
+\subsection{任意次元への拡張と離散数論的制約}
+
+注意~\ref{rem:fermat} の数論的制約は，離散等方性を保つ空間次元 $N$ を強く制約する．$N = 3$ が算術的に特異であり，$N = 4$ で初めて解が存在する事実は，「離散等方性の要請 $\to$ 5次元の必要性 $\to$ Kaluza--Klein 的解釈~\cite{Kaluza1921,Klein1926} $\to$ 電磁力の創発」という論理的鎖の可能性を示す．
+
+\subsection{微細構造定数 $\alpha$}
+$SO(5,1) \to SO(4,2) \cong SU(2,2)/\mathbb{Z}_2$ と Wyler 公式~\cite{Wyler1971} の接続．
+
+\subsection{強い力と弱い力}
+閉じ込めポテンシャル $V \sim \kappa r$ およびフレーバー変換には本枠組みを超える拡張が必要．
+
+\subsection{量子論・質量スペクトル・宇宙論}
+離散格子構造は格子場理論・ループ量子重力と構造的に類似．$R(t)$ のダイナミクスおよび Friedmann 方程式との対応は今後の課題．
+
+%========================================
+\section*{結果の整理}
+%========================================
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+項目 & 結果 & 状態 \\
+\midrule
+Lorentzian 符号の公理 & 公理 A, B $\to$ $(-,+,+,+)$ & 公理~3.1 \\
+2乗計量の動機付け & Hurwitz 定理 & 観察~6.0 \\
+対称群の鎖 & $SO(5) \to SO(4,1) \to SO(3,1)$ & 命題~\ref{prop:chain} \\
+内角上限値 & $540°$（$R$ 非依存） & 定理~\ref{thm:angle} \\
+結合定数 & $w = C/R \in \mathbb{Z}_{\geq 0}$ & 定義~\ref{def:C} \\
+正則性（Euclidean） & $\tilde{L}^2 \geq 1$ & 定理~\ref{thm:reg}(i) \\
+ホライズン（Lorentzian） & $l^2 = 0$ & 定理~\ref{thm:reg}(ii) \\
+特異点回避 & $C^\infty$ 全単射 & 定理~\ref{thm:bij} \\
+$R_{\text{current}} \sim R_H$ & 同オーダー & 整合性確認 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{thebibliography}{99}
+
+\bibitem{Paper1}
+Kihara, N. (2026). Geometric Formulation of 4-Dimensional Spacetime via Gnomonic Projection.
+DOI: \href{https://doi.org/10.5281/zenodo.19427780}{10.5281/zenodo.19427780}.
+
+\bibitem{doCarmo1992}
+M.~P.~do Carmo, \textit{Riemannian Geometry}, Birkh\"{a}user, 1992, Chapter~4.
+
+\bibitem{Wald1984}
+R.~M.~Wald, \textit{General Relativity}, University of Chicago Press, 1984, Appendix~D.
+
+\bibitem{GibbonsHawking1977}
+G.~W.~Gibbons, S.~W.~Hawking, ``Action integrals and partition functions in quantum gravity,'' \textit{Phys.\ Rev.\ D}, \textbf{15}, 2752, 1977.
+
+\bibitem{Guo2004}
+H.-Y.~Guo, C.-G.~Huang, Z.~Xu, B.~Zhou, ``On Beltrami model of de Sitter spacetime,'' \textit{Mod.\ Phys.\ Lett.\ A}, \textbf{19}, 1701, 2004. arXiv:hep-th/0405137.
+
+\bibitem{Kaluza1921}
+T.~Kaluza, ``Zum Unit\"{a}tsproblem der Physik,'' \textit{Sitzungsber.\ Preuss.\ Akad.\ Wiss.}, 966--972, 1921.
+
+\bibitem{Klein1926}
+O.~Klein, ``Quantentheorie und f\"{u}nfdimensionale Relativit\"{a}tstheorie,'' \textit{Z.\ Phys.}, \textbf{37}, 895, 1926.
+
+\bibitem{Wyler1971}
+A.~Wyler, ``L'espace sym\'{e}trique du groupe des \'{e}quations de Maxwell,'' \textit{C.\ R.\ Acad.\ Sci.\ Paris}, \textbf{272}, 186, 1971.
+
+\bibitem{MTW1973}
+C.~W.~Misner, K.~S.~Thorne, J.~A.~Wheeler, \textit{Gravitation}, W.~H.~Freeman, 1973, \S13.5.
+
+\bibitem{Spivak1999}
+M.~Spivak, \textit{A Comprehensive Introduction to Differential Geometry}, Vol.~2, 3rd ed., Publish or Perish, 1999, Chapter~4.
+
+\bibitem{Snyder1987}
+J.~P.~Snyder, \textit{Map Projections: A Working Manual}, USGS Prof.\ Paper 1395, 1987, pp.~164--168.
+
+\bibitem{Kihara2026b}
+Kihara, N. (2026). 離散ミンコフスキー間隔におけるガウス整数を用いた正整数解の解法. GitHub: ai-chat-logs-open.
+
+\bibitem{Hurwitz1898}
+A.~Hurwitz, ``\"{U}ber die Composition der quadratischen Formen von beliebig vielen Variablen,'' \textit{Nachr.\ Ges.\ Wiss.\ G\"{o}ttingen}, 309--316, 1898.
+
+\bibitem{Planck2020}
+Planck Collaboration, ``Planck 2018 results.~VI.,'' \textit{Astron.\ Astrophys.}, \textbf{641}, A6, 2020.
+
+\end{thebibliography}
+
+\bigskip
+\noindent\textit{本稿の議論は純粋幾何学の範囲に限定される．物理的主張・実験的予言・既存理論との同定は今後の研究課題である．}\\
+\textit{最終更新：2026-04-06}
+
+\end{document}
