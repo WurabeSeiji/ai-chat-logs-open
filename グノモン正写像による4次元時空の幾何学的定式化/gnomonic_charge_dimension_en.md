@@ -527,7 +527,7 @@ The enormous gap between $w = 0$ and $w = 1$ (the discrete version of the cosmol
 
 [1] Kihara, N. (2026). Geometric Formulation of 4-Dimensional Spacetime via Gnomonic Projection. DOI: 10.5281/zenodo.19427780.
 
-[2] Kihara, N. (2026). Geometric Origin of Lorentzian Spacetime via Gnomonic Projection: A Unified Description through the Discretization Constant $C$.
+[2] Kihara, N. (2026). Geometric Origin of Lorentzian Spacetime via Gnomonic Projection: A Unified Description through the Discretization Constant $C$. DOI: 10.5281/zenodo.19434932.
 
 [3] Kihara, N. (2026). Solution of Positive Integer Solutions in Discrete Minkowski Intervals Using Gaussian Integers. GitHub: ai-chat-logs-open.
 

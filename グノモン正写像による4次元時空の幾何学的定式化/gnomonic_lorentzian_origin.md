@@ -5,6 +5,7 @@
 **ORCID：** 0009-0004-6753-4020  
 **作成日：** 2026年4月  
 **種別：** 研究ノート（幾何学的考察）  
+**DOI：** https://doi.org/10.5281/zenodo.19434932  
 **前論文：** Geometric Formulation of 4-Dimensional Spacetime via Gnomonic Projection  
 DOI: https://doi.org/10.5281/zenodo.19427780
 

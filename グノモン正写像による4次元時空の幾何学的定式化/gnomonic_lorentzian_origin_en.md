@@ -5,6 +5,7 @@
 **ORCID:** 0009-0004-6753-4020  
 **Date:** April 2026  
 **Type:** Research Note (Geometric Investigation)  
+**DOI:** https://doi.org/10.5281/zenodo.19434932  
 **Previous Paper:** Geometric Formulation of 4-Dimensional Spacetime via Gnomonic Projection  
 DOI: https://doi.org/10.5281/zenodo.19427780
 

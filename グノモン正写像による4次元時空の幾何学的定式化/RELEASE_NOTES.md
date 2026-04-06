@@ -15,7 +15,8 @@
 
 **タイトル（日本語）**：グノモン正写像に基づく Lorentzian 時空の幾何学的起源：離散化定数 $C$ による統一的記述  
 **タイトル（英語）**：Geometric Origin of Lorentzian Spacetime via Gnomonic Projection: A Unified Description through the Discretization Constant $C$  
-**内容：** $R$ 方向の不可観測性（公理 A, B）から Lorentzian 符号 $(-,+,+,+)$ を導出。2乗計量の数論的動機付け、唯一の結合定数 $C$、離散グノモン写像、宇宙論的ホライズン、$N = 3$ の算術的アノマリーと5次元の必然性。
+**内容：** $R$ 方向の不可観測性（公理 A, B）から Lorentzian 符号 $(-,+,+,+)$ を導出。2乗計量の数論的動機付け、唯一の結合定数 $C$、離散グノモン写像、宇宙論的ホライズン、$N = 3$ の算術的アノマリーと5次元の必然性。  
+**DOI：** https://doi.org/10.5281/zenodo.19434932
 
 ### 論文3：電荷次元と電磁場理論
 
