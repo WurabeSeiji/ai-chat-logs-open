@@ -1,0 +1,117 @@
+\documentclass[border=12pt,tikz]{standalone}
+\usepackage{amsmath,amssymb}
+\usepackage{CJKutf8}
+\usetikzlibrary{arrows.meta,calc,patterns}
+
+\begin{document}
+\begin{CJK}{UTF8}{ipxm}
+\begin{tikzpicture}[
+    >=Stealth,
+    font=\small,
+    every node/.style={inner sep=2pt}
+]
+
+% --- Parameters ---
+\def\R{3.5}
+\def\planeW{5.0}
+
+% ============================================================
+%  LEFT: R > 0 case (main figure)
+% ============================================================
+
+% --- Lower hemisphere (gray, not covered) ---
+\draw[thick, gray!40] (0,0) +(-180:{\R}) arc (-180:0:{\R});
+\node[gray!50, font=\footnotesize] at (0,-2.2) {（写像の像に含まれない）};
+
+% --- Upper hemisphere (black, covered) ---
+\draw[very thick] (0,0) +(0:{\R}) arc (0:180:{\R});
+
+% --- Equator line ---
+\draw[thick, gray!60, densely dotted] (-\R,0) -- (\R,0);
+\node[gray!60, font=\footnotesize, right=2pt] at (\R,0) {赤道 $Y^{n+1}=0$};
+
+% --- Origin O ---
+\filldraw (0,0) circle (2pt);
+\node[below=8pt] at (0,0) {$O$（投影中心）};
+
+% --- Contact point P ---
+\filldraw (0,\R) circle (2pt);
+\node[above left=3pt] at (0,\R) {接点 $P = Re_{n+1}$};
+
+% --- Distance brace R ---
+\draw[decorate, decoration={brace, amplitude=5pt, mirror, raise=6pt}]
+    (0.05,0.05) -- (0.05,\R-0.05);
+\node[right=14pt] at (0,\R/2) {$R > 0$};
+
+% --- Projection center axis ---
+\draw[thick, dashed] (0,0) -- (0,\R);
+\draw[thick, dashed, -{Stealth[length=6pt]}] (0,\R) -- (0,\R+2.0);
+\node[left=4pt] at (0,\R+1.7) {$e_{n+1}$};
+\node[right=4pt, font=\footnotesize, blue!60!black] at (0,\R+1.7)
+    {（投影中心軸）};
+
+% --- Tangent hyperplane Pi_R ---
+\draw[very thick, blue] (-\planeW,\R) -- (\planeW,\R);
+\node[blue, below left=2pt] at (-\planeW+0.2,\R) {$\Pi_R$（接超平面）};
+
+% --- Coordinate arrow on Pi_R ---
+\draw[-{Stealth[length=5pt]}, blue!60!black, thick]
+    (0.6,\R+0.15) -- (4.2,\R+0.15);
+\node[blue!60!black, above=1pt] at (2.4,\R+0.15) {座標 $x^1, \ldots, x^n$};
+
+% --- A point on Pi_R ---
+\coordinate (Q) at (3.2,\R);
+\filldraw[red!80!black] (Q) circle (2.5pt);
+\node[above=8pt, red!80!black] at (Q) {$x$};
+
+% --- Compute intersection of ray O->Q with sphere ---
+\pgfmathsetmacro{\Qx}{3.2}
+\pgfmathsetmacro{\Qy}{\R}
+\pgfmathsetmacro{\raylen}{sqrt(\Qx*\Qx + \Qy*\Qy)}
+\pgfmathsetmacro{\Sx}{\R*\Qx/\raylen}
+\pgfmathsetmacro{\Sy}{\R*\Qy/\raylen}
+
+% --- Projection ray ---
+\draw[red!60!black, dashed] (0,0) -- (Q);
+
+% --- Point on sphere ---
+\filldraw[red!40!blue] (\Sx,\Sy) circle (2.5pt);
+\node[below right=3pt, red!40!blue] at (\Sx,\Sy) {$\Phi(x)$};
+
+% --- Phi arrow ---
+\draw[-{Stealth[length=5pt]}, red!40!blue, thick, shorten >=5pt, shorten <=5pt]
+    ($(Q)+(0,-0.2)$) to[bend right=25]
+    node[left=2pt, pos=0.5, font=\footnotesize]{$\Phi$}
+    (\Sx,\Sy);
+
+% --- Annotation: upper hemisphere ---
+\node[font=\footnotesize, align=center] at (-3.5,2.0)
+    {上半球 $H^+$\\（$Y^{n+1} > 0$）\\$\Phi$ の像};
+
+% --- Background space label ---
+\node[gray, font=\normalsize] at (-4.0,-3.5)
+    {背景空間 $\mathbb{R}^{n+1}$};
+
+% ============================================================
+%  Annotation: R < 0 case (small, below)
+% ============================================================
+
+% --- R < 0 tangent plane (dashed, below) ---
+\draw[thick, blue!40, dashed] (-3.5,-\R) -- (3.5,-\R);
+\node[blue!40, font=\footnotesize, right=2pt] at (3.5,-\R)
+    {$R < 0$: $\Pi_R$ は $-e_{n+1}$ 側};
+
+% --- R < 0 contact point ---
+\filldraw[gray!60] (0,-\R) circle (2pt);
+\node[below left=2pt, gray!60, font=\footnotesize] at (0,-\R) {$P' = Re_{n+1}$（$R<0$）};
+
+% --- Arrow for R < 0 ---
+\draw[thick, gray!50, dashed] (0,0) -- (0,-\R);
+
+% --- Annotation ---
+\node[gray!70, font=\footnotesize, align=left] at (4.2,-2.5)
+    {$R < 0$ のとき\\下半球 $H^-$ を被覆};
+
+\end{tikzpicture}
+\end{CJK}
+\end{document}

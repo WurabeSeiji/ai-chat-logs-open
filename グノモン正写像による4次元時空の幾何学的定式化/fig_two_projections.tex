@@ -1,0 +1,126 @@
+\documentclass[border=12pt,tikz]{standalone}
+\usepackage{amsmath,amssymb}
+\usepackage{CJKutf8}
+\usetikzlibrary{arrows.meta,calc,decorations.markings}
+
+\begin{document}
+\begin{CJK}{UTF8}{ipxm}
+\begin{tikzpicture}[
+    >=Stealth,
+    font=\small,
+    every node/.style={inner sep=2pt},
+]
+
+\def\Ra{2.0}  % R1 (small)
+\def\Rb{3.2}  % R2 (large)
+
+% Angle of ray OP1 from vertical
+\pgfmathsetmacro{\thDeg}{atan(\Ra/\Rb)}  % arctan(R1/R2)
+\pgfmathsetmacro{\raylen}{sqrt(\Ra*\Ra+\Rb*\Rb)}
+
+% ============================================================
+%  TWO CONCENTRIC CIRCLES
+% ============================================================
+\draw[red!50!black, thick] (0,0) circle (\Ra);
+\node[red!50!black, font=\footnotesize] at ({-\Ra*cos(45)},{-\Ra*sin(45)-0.25}) {$S(R_1)$};
+
+\draw[blue!50!black, thick] (0,0) circle (\Rb);
+\node[blue!50!black, font=\footnotesize] at ({-\Rb*cos(45)-0.1},{-\Rb*sin(45)-0.25}) {$S(R_2)$};
+
+% Origin O
+\filldraw (0,0) circle (2pt);
+\node[below left=3pt] at (0,0) {$O$};
+
+% ============================================================
+%  TANGENT LINES
+% ============================================================
+
+% Blue: horizontal tangent at y = R2
+\draw[blue, very thick] (-1.0,\Rb) -- (4.0,\Rb);
+\node[blue, above=2pt, font=\footnotesize] at (-0.5,\Rb) {$\Pi_{R_2}$};
+
+% Red: vertical tangent at x = R1
+\draw[red!70!black, very thick] (\Ra,-0.8) -- (\Ra,4.0);
+\node[red!70!black, right=3pt, font=\footnotesize] at (\Ra,3.8) {$\Pi_{R_1}$};
+
+% ============================================================
+%  INTERSECTION POINT P1
+% ============================================================
+\coordinate (P1) at (\Ra,\Rb);
+\filldraw[black] (P1) circle (3pt);
+\node[above right=3pt, font=\normalsize] at (P1) {$P_1$};
+\node[right=15pt, font=\footnotesize, gray] at (P1) {$(R_1, R_2)$};
+
+% ============================================================
+%  PROJECTION RAY from O through P1
+% ============================================================
+\draw[gray, dashed] (0,0) -- (P1);
+
+% Points on each sphere (same ray, same angle theta)
+\pgfmathsetmacro{\QBx}{\Rb*\Ra/\raylen}  % on S(R2)
+\pgfmathsetmacro{\QBy}{\Rb*\Rb/\raylen}
+\pgfmathsetmacro{\QAx}{\Ra*\Ra/\raylen}  % on S(R1)
+\pgfmathsetmacro{\QAy}{\Ra*\Rb/\raylen}
+
+\filldraw[blue!70!black] (\QBx,\QBy) circle (3pt);
+\filldraw[red!60!black] (\QAx,\QAy) circle (3pt);
+
+% ============================================================
+%  THICK ARCS from north poles to projection points
+% ============================================================
+
+% Blue arc: from (0, R2) to Phi_{R2}(P1) along S(R2)
+% Angle from vertical = thDeg, arc from 90 deg to (90-thDeg) deg
+\draw[blue, line width=3pt, opacity=0.7,
+  -{Stealth[length=8pt,width=6pt]}]
+  (90:\Rb) arc (90:{90-\thDeg}:\Rb);
+\node[blue, font=\normalsize, left=8pt] at ({0.5*\Rb*sin(\thDeg/2)},{\Rb*cos(\thDeg/2)})
+  {$R_2\theta$};
+
+% Red arc: from (0, R1) to Phi_{R1}(P1) along S(R1)
+% Same angle thDeg, but on smaller circle
+% North pole of S(R1) at (0, R1)
+\filldraw[red!60!black] (0,\Ra) circle (2pt);
+
+\draw[red!70!black, line width=3pt, opacity=0.7,
+  -{Stealth[length=8pt,width=6pt]}]
+  (90:\Ra) arc (90:{90-\thDeg}:\Ra);
+\node[red!70!black, font=\normalsize, left=6pt] at ({0.3*\Ra*sin(\thDeg/2)},{\Ra*cos(\thDeg/2)})
+  {$R_1\theta$};
+
+% ============================================================
+%  ANGLE theta
+% ============================================================
+\draw[gray, thin] (0,0.8) arc (90:{90-\thDeg}:0.8);
+\node[gray, font=\footnotesize, above=1pt] at ({0.8*sin(\thDeg/2)},{0.8*cos(\thDeg/2)})
+  {$\theta$};
+
+% ============================================================
+%  Contact points
+% ============================================================
+\filldraw[blue] (0,\Rb) circle (2.5pt);
+\node[blue, left=4pt, font=\footnotesize] at (0,\Rb) {$P_{R_2}$};
+
+\filldraw[red!70!black] (\Ra,0) circle (2.5pt);
+\node[red!70!black, below=4pt, font=\footnotesize] at (\Ra,0) {$P_{R_1}$};
+
+% R1, R2 braces
+\draw[red!70!black, thick, decorate, decoration={brace, amplitude=4pt, mirror, raise=3pt}]
+  (0,-0.1) -- (\Ra,-0.1);
+\node[red!70!black, below=8pt, font=\footnotesize] at (\Ra/2,0) {$R_1$};
+
+\draw[blue, thick, decorate, decoration={brace, amplitude=4pt, raise=3pt}]
+  (-0.1,0) -- (-0.1,\Rb);
+\node[blue, left=8pt, font=\footnotesize] at (0,\Rb/2) {$R_2$};
+
+% ============================================================
+%  KEY MESSAGE
+% ============================================================
+\node[font=\normalsize, align=left, text width=9cm] at (2.5,-2.5)
+  {同じ背景座標の点 $P_1$ への射影線は同じ角度 $\theta$ を成す．\\
+   弧の長さ（主観空間での距離）は $R_1\theta$ と $R_2\theta$．\\
+   \textbf{比は $R_1 : R_2$}（曲率半径の比に等しい）．};
+
+\end{tikzpicture}
+\end{CJK}
+\end{document}

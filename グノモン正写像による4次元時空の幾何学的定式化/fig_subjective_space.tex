@@ -1,0 +1,157 @@
+\documentclass[border=12pt,tikz]{standalone}
+\usepackage{amsmath,amssymb}
+\usepackage{CJKutf8}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+\begin{CJK}{UTF8}{ipxm}
+\begin{tikzpicture}[
+    >=Stealth,
+    font=\small,
+    every node/.style={inner sep=2pt},
+]
+
+% === Oblique projection parameters ===
+\def\R{3.0}
+\def\ax{1.0}\def\ay{0.0}
+\def\bx{0.0}\def\by{1.0}
+\def\cx{-0.45}\def\cy{-0.35}
+
+% 3D -> 2D
+\newcommand{\proj}[3]{%
+  ({(#1)*\ax+(#3)*\cx},{(#2)*\by+(#3)*\cy})%
+}
+
+% ============================================================
+%  SPHERE wireframe (upper hemisphere)
+% ============================================================
+
+% Equator
+\draw[thick, gray!40]
+  plot[domain=0:360, samples=73, smooth]
+    (\proj{\R*cos(\x)}{0}{\R*sin(\x)});
+
+% Latitude lines
+\foreach \th in {30,60} {
+  \pgfmathsetmacro{\rr}{\R*cos(\th)}
+  \pgfmathsetmacro{\hh}{\R*sin(\th)}
+  \draw[thin, gray!25]
+    plot[domain=0:360, samples=73, smooth]
+      (\proj{\rr*cos(\x)}{\hh}{\rr*sin(\x)});
+}
+
+% Longitude lines
+\foreach \ph in {0,45,...,315} {
+  \draw[thin, gray!25]
+    plot[domain=0:90, samples=19, smooth]
+      (\proj{\R*cos(\ph)*cos(\x)}{\R*sin(\x)}{\R*sin(\ph)*cos(\x)});
+}
+
+% ============================================================
+%  PROJECTED GRID ON SPHERE
+% ============================================================
+\def\step{0.8}
+\def\Ng{2}
+
+% Horizontal lines (constant z-index) -> blue
+\foreach \j in {-\Ng,...,\Ng} {
+  \pgfmathsetmacro{\pz}{\j*\step}
+  \draw[blue!70!black, thick]
+    plot[domain={-\Ng*\step}:{\Ng*\step}, samples=41, smooth]
+      ({
+        \R*(\x)/sqrt((\x)*(\x)+\R*\R+(\pz)*(\pz))*\ax
+        + \R*(\pz)/sqrt((\x)*(\x)+\R*\R+(\pz)*(\pz))*\cx
+      },{
+        \R*\R/sqrt((\x)*(\x)+\R*\R+(\pz)*(\pz))*\by
+        + \R*(\pz)/sqrt((\x)*(\x)+\R*\R+(\pz)*(\pz))*\cy
+      });
+}
+
+% Vertical lines (constant x-index) -> red
+\foreach \i in {-\Ng,...,\Ng} {
+  \pgfmathsetmacro{\px}{\i*\step}
+  \draw[red!70!black, thick]
+    plot[domain={-\Ng*\step}:{\Ng*\step}, samples=41, smooth]
+      ({
+        \R*(\px)/sqrt((\px)*(\px)+\R*\R+(\x)*(\x))*\ax
+        + \R*(\x)/sqrt((\px)*(\px)+\R*\R+(\x)*(\x))*\cx
+      },{
+        \R*\R/sqrt((\px)*(\px)+\R*\R+(\x)*(\x))*\by
+        + \R*(\x)/sqrt((\px)*(\px)+\R*\R+(\x)*(\x))*\cy
+      });
+}
+
+% ============================================================
+%  TANGENT PLANE Pi_R (touching sphere at P)
+% ============================================================
+\pgfmathsetmacro{\plE}{\Ng*\step+0.3}
+
+% Plane background (at height R = touching north pole)
+\fill[blue!5, opacity=0.5]
+  \proj{-\plE}{\R}{-\plE}
+  -- \proj{\plE}{\R}{-\plE}
+  -- \proj{\plE}{\R}{\plE}
+  -- \proj{-\plE}{\R}{\plE}
+  -- cycle;
+\draw[blue, thick]
+  \proj{-\plE}{\R}{-\plE}
+  -- \proj{\plE}{\R}{-\plE}
+  -- \proj{\plE}{\R}{\plE}
+  -- \proj{-\plE}{\R}{\plE}
+  -- cycle;
+
+% Grid on Pi_R (horizontal = blue)
+\foreach \j in {-\Ng,...,\Ng} {
+  \pgfmathsetmacro{\pz}{\j*\step}
+  \draw[blue!40, thin]
+    \proj{-\Ng*\step}{\R}{\pz} -- \proj{\Ng*\step}{\R}{\pz};
+}
+% Grid on Pi_R (vertical = red)
+\foreach \i in {-\Ng,...,\Ng} {
+  \pgfmathsetmacro{\px}{\i*\step}
+  \draw[red!40, thin]
+    \proj{\px}{\R}{-\Ng*\step} -- \proj{\px}{\R}{\Ng*\step};
+}
+
+% Label Pi_R
+\node[blue, font=\normalsize, above left=2pt] at \proj{-\plE}{\R}{\plE}
+  {$\Pi_R$（接超平面）};
+\node[blue!60!black, font=\footnotesize] at \proj{0}{\R+0.6}{0}
+  {正方形の座標格子 $(x^1, x^2)$};
+
+% Axis labels on plane
+\node[red!60!black, font=\footnotesize, right=1pt] at \proj{\Ng*\step+0.4}{\R}{0}
+  {$x^1$};
+\node[blue!60!black, font=\footnotesize, right=1pt] at \proj{0}{\R}{\Ng*\step+0.5}
+  {$x^2$};
+
+% ============================================================
+%  O -> P line with arrow (R direction)
+% ============================================================
+\draw[very thick, -{Stealth[length=7pt]}, black]
+  \proj{0}{0}{0} -- \proj{0}{\R}{0};
+\node[right=6pt, font=\normalsize] at \proj{0}{\R/2}{0} {$R$};
+\node[left=3pt, font=\footnotesize] at \proj{0}{\R/2}{0} {$e_{n+1}$};
+
+% North pole P (contact point)
+\filldraw[black] \proj{0}{\R}{0} circle (2.5pt);
+\node[left=6pt, font=\normalsize] at \proj{0}{\R}{0} {$P$};
+
+% O (projection center)
+\filldraw[black] \proj{0}{0}{0} circle (2pt);
+\node[below=5pt] at \proj{0}{0}{0} {$O$（投影中心）};
+
+% ============================================================
+%  LABELS
+% ============================================================
+
+% H+ label
+\node[font=\normalsize, align=center] at \proj{-3.2}{2.0}{0}
+  {主観空間 $H^+$\\{\footnotesize 格子は球面上で歪む}};
+
+% S^n(R)
+\node[gray, font=\footnotesize] at \proj{2.5}{-0.3}{-1.5} {$S^n(R)$};
+
+\end{tikzpicture}
+\end{CJK}
+\end{document}
