@@ -1,4 +1,4 @@
-# グノモン正写像による4次元時空の幾何学的定式化
+# 中心投影による4次元空間の幾何学的定式化
 
 **著者：** Noriaki Kihara（木原 範昭）  
 **所属：** WF System Co., Ltd.（大阪大学 基礎工学部 卒業）  
@@ -9,35 +9,65 @@
 
 ## 概要
 
-本報告は，4次元ユークリッド空間をグノモン正写像（中心射影）によって曲率半径 $R$ の5次元超球体表面へ写像したとき，写像後の座標系において生じる誘導計量の変形を純粋に幾何学的観点から考察するものである．特に，(i) 写像後の誘導計量テンソル $g_{\mu\nu}$ の厳密な導出（第5成分の寄与を含む），(ii) アインシュタインテンソルと定数 $\Lambda = 3/R^2$ との幾何学的関係，を段階的に示す．物理的解釈は次年度以降の課題とし，本報告では一切の宇宙論的仮定を排除する．
+本報告は，4次元ユークリッド空間（接超平面 $\Pi_R$）を中心投影（central projection）によって曲率半径 $R$ の5次元超球体表面へ写像したとき，写像後の座標系において生じる誘導計量の変形を純粋に幾何学的観点から考察するものである．ここで用いる中心投影は，球の中心を投影中心とし接超平面を投影面とするものであり，地図学においてはグノモン正写像（gnomonic projection）として知られる特殊な中心投影に相当する [1]．特に，(i) 写像後の誘導計量テンソル $g_{\mu\nu}$ の厳密な導出（第5成分の寄与を含む），(ii) アインシュタインテンソルと定数 $\Lambda = 3/R^2$ との幾何学的関係，を段階的に示す．本報告では一切の宇宙論的仮定を排除する．
 
 ---
 
 ## 1. はじめに
 
-グノモン写像（gnomonic projection）は，球の中心から接平面への中心射影として定義され，その最も重要な性質として「球面上の大円（測地線）が接平面上の直線に写る」ことが知られている [1]．
+中心投影（central projection）は，球の中心を投影中心として接平面へ射影する写像として定義される．地図学ではグノモン写像（gnomonic projection）として知られ [1]，その最も重要な性質として「球面上の大円（測地線）が接平面上の直線に写る」ことが知られている．
 
-本報告では，この写像を4次元から5次元へ拡張し，写像後の座標系に生じる計量構造を調べる．この問題設定は純粋に幾何学的であり，物理的解釈（重力，時空，相対性理論等）は本報告の範囲外とする．
+本報告では，この中心投影を4次元から5次元へ拡張し，写像後の座標系に生じる計量構造を調べる．この問題設定は純粋に幾何学的であり，物理的解釈（重力，時空，相対性理論等）は本報告の範囲外とする．
 
 ---
 
-## 2. 準備：グノモン写像の定義と基本性質
+### 1.1 描像の同値性について
 
-### 2.1 一般次元のグノモン写像
+本稿では時空を中心投影による構成で記述するが，Lorentzian 版（$\epsilon_4 = -1$）の誘導計量 (C.3) は，de Sitter 時空の Beltrami 座標系における計量と同一の座標表示で数値的に一致する（付録C，および先行研究 [8, 9, 10]）．したがって両者は同一の微分可能多様体と同一の計量 $g_{\mu\nu}$ をもつローレンツ多様体であり，内在幾何として完全に等価である．
 
-**定義 2.1**（$n$ 次元グノモン写像）[1, 2]  
+この等価性の本質は，多様体の内部に住む観測者の立場から理解できる．内部の観測者が測定しうるのは計量 $g_{\mu\nu}$ とそこから導かれる曲率のみであり，その時空が「接平面から中心投影で構成されたもの」であるか「de Sitter 時空として直接与えられたもの」であるかを内在的に区別する手段は原理的に存在しない．埋め込み空間の存在，接平面の選び方，写像の構成法はいずれも外在的（extrinsic）な情報であり，内在幾何には現れない [3, 6]．
+
+一般相対論における物理量――測地線，曲率テンソル，共変微分，場の方程式の解，物理的観測量――はすべて計量 $g_{\mu\nu}$ とその微分のみから決まり，多様体の具体的な記述の仕方（どの座標系で書くか，どの埋め込みで可視化するか，どの構成法で到達したか）には依存しない．これは一般共変性（general covariance）および微分同相不変性（diffeomorphism invariance）の直接の帰結であり [4, 5]，本稿を貫く原理である．
+
+したがって本稿で中心投影描像を用いて行う任意の計算は，同一の計量のもとで de Sitter 描像を用いて行う計算と数学的に同値であり，両者の結果は恒等的に一致する．個別の物理量について同値性を逐一証明する必要はなく，計量の一致（付録C）と一般共変性（上記原理）から自動的に従う．本稿では以後，計算の見通しがよい中心投影描像を採用するが，得られる結論はすべて de Sitter 描像においても同じく成立する．
+
+### 1.2 ローレンツ符号の前提について
+
+本稿は物理的解釈を目的としないが，ローレンツ符号の由来に関する誤解を避けるため，前提の論理的位置づけをここで明確にしておく．
+
+Lorentzian 版の中心投影（付録C，$\epsilon_4 = -1$）において，誘導計量 $g_{\mu\nu}$ の時間成分の二乗項に負符号が現れる．この負符号の由来について，本稿の論理構造を以下に整理する．
+
+ローレンツ符号 $(-,+,+,+)$――すなわち時間方向の計量成分が負であること――は，de Sitter 時空や中心投影構成の帰結として導かれるものではない．これは因果構造（光円錐の存在）および光速度不変性という経験的事実から要請される，時空多様体の基本的前提である [4, 5]．平坦な Minkowski 時空も，Schwarzschild 解も，FLRW 宇宙も，de Sitter 時空も，すべてこの同じローレンツ符号を共有しており，符号の負性は特定の解に固有の性質ではない．
+
+中心投影による構成では，この前提は埋め込み先の5次元空間の計量 $\eta_{AB} = \mathrm{diag}(-1,+1,+1,+1,+1)$ として表現される．誘導計量は引き戻し $g_{\mu\nu} = \eta_{AB}\,\partial_\mu X^A\,\partial_\nu X^B$ によって定まるから，埋め込み先のローレンツ符号は $g_{\mu\nu}$ に直接継承される．これは符号の物理的由来を与えるものではなく，前提が構成の全段階で一貫して保持されることの数学的確認である．
+
+したがって本稿の論理構造は以下のように整理される：
+
+1. 時空がローレンツ符号をもつことは**物理的前提**として採用される（本稿の枠内では導出の対象ではない）
+2. 中心投影による構成は，この前提を埋め込み先の $\eta_{AB}$ として具体化し，引き戻しを通じて $g_{\mu\nu}$ に継承する
+3. 得られた $g_{\mu\nu}$ が de Sitter 計量と一致することは，構成の**結果**として導かれる（付録C）
+
+符号の物理的由来は因果律および光速度不変性にあり，これは本構成の外に位置する前提である．
+
+---
+
+## 2. 準備：中心投影の定義と基本性質
+
+### 2.1 一般次元の中心投影
+
+**定義 2.1**（$n$ 次元中心投影）[1, 2]  
 $n$ 次元ユークリッド空間において，球の中心から距離 $R$（曲率半径 $R$ に対応）の接点を持つ接超平面 $\Pi_R$（接点を原点とする座標 $(x^1, \ldots, x^n) \in \mathbb{R}^n$ を持つ $n$ 次元ユークリッド平面）を考える．$l = \sqrt{R^2 + \sum_{i=1}^n (x^i)^2}$ とおくとき，
 
 $$\Phi: \Pi_R \to S^n(R) \subset \mathbb{R}^{n+1}, \quad (x^1, \ldots, x^n) \mapsto \left(\frac{R x^1}{l}, \ldots, \frac{R x^n}{l},\ \frac{R^2}{l}\right) \tag{2.1}$$
 
-を**グノモン正写像**と呼ぶ．ここで $S^n(R)$ は $\mathbb{R}^{n+1}$ に埋め込まれた半径 $R$ の $n$ 次元球面
+を**中心投影**と呼ぶ．ここで $S^n(R)$ は $\mathbb{R}^{n+1}$ に埋め込まれた半径 $R$ の $n$ 次元球面
 
 $$S^n(R) = \left\{(Y^1, \ldots, Y^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; \sum_{A=1}^{n+1} (Y^A)^2 = R^2 \right\}$$
 
 である．
 
 **命題 2.1**（大円保存）[1]  
-グノモン写像のもとで，接平面上の任意の直線は球面上の大円（測地線）に写る．
+中心投影のもとで，接平面上の任意の直線は球面上の大円（測地線）に写る．
 
 ---
 
@@ -45,13 +75,13 @@ $$S^n(R) = \left\{(Y^1, \ldots, Y^{n+1}) \in \mathbb{R}^{n+1} \;\middle|\; \sum_
 
 ### 3.1 写像の設定
 
-本節では $n=4$ として，接超平面 $\Pi_R$（座標 $(x^1, x^2, x^3, x^4)$）から半径 $R$ の5次元超球面 $S^4(R) \subset \mathbb{R}^5$ へのグノモン写像を考える．接平面はユークリッド的であるから $x_\mu = x^\mu$（$\mu = 1,2,3,4$）とする．定義 2.1 により写像先の5次元座標は
+本節では $n=4$ として，接超平面 $\Pi_R$（座標 $(x^1, x^2, x^3, x^4)$）から半径 $R$ の5次元超球面 $S^4(R) \subset \mathbb{R}^5$ への中心投影を考える．接平面はユークリッド的であるから $x_\mu = x^\mu$（$\mu = 1,2,3,4$）とする．定義 2.1 により写像先の5次元座標は
 
 $$(Y^1, Y^2, Y^3, Y^4, Y^5) = \left(\frac{Rx^1}{l},\ \frac{Rx^2}{l},\ \frac{Rx^3}{l},\ \frac{Rx^4}{l},\ \frac{R^2}{l}\right) \tag{3.1}$$
 
 $$l = \sqrt{R^2 + \sum_{\mu=1}^4 (x^\mu)^2},\quad r^2 = \sum_{\mu=1}^4(x^\mu)^2,\quad l^2 = R^2 + r^2 \tag{3.2}$$
 
-と書く．$(Y^1, \ldots, Y^4)$ を $(X^1, \ldots, X^4)$ と略記する．
+と書く．
 
 ### 3.2 引き戻し計量の導出
 
@@ -96,19 +126,14 @@ $$\boxed{g_{\mu\nu} = \frac{R^2}{l^2}\left(\delta_{\mu\nu} - \frac{x_\mu x_\nu}{
 
 ---
 
-## 4. クリストッフェル記号とリーマン曲率
-
-### 4.1 リーマン曲率テンソル
+## 4. リーマン曲率テンソル
 
 **定理 4.1**（定曲率空間の曲率テンソル）[3, 4, 5]  
 $n$ 次元球面 $S^n(R)$ のリーマン曲率テンソルは
 
 $$R_{\mu\nu\rho\sigma} = \frac{1}{R^2}(g_{\mu\rho}g_{\nu\sigma} - g_{\mu\sigma}g_{\nu\rho}) \tag{4.1}$$
 
-で与えられる．
-
-**注意 4.1**  
-(4.1) は定曲率空間の標準的な結果である [4, 5]．グノモン座標での直接的な導出（クリストッフェル記号 $\Gamma^\lambda_{\mu\nu}$ からの計算）は付録Aに記す予定であるが，本報告では文献 [3, 4, 5] を引用する．
+で与えられる．これは定曲率空間の標準的な結果である [3, 4, 5]．
 
 ---
 
@@ -153,10 +178,10 @@ $$G_{\mu\nu} = \frac{3}{R^2}g_{\mu\nu} - \frac{1}{2}\cdot\frac{12}{R^2}\,g_{\mu\
 
 ---
 
-## 6. 主定理
+## 6. 主結果
 
-**定理 6.1**（主結果）  
-4次元ユークリッド空間の接超平面 $\Pi_R$ を，曲率半径 $R$ の超球面 $S^4(R)$ へグノモン正写像したとき，写像後の誘導計量テンソル $g_{\mu\nu}$（式 (3.8)）に対して，
+**命題 6.1**（主結果）  
+4次元ユークリッド空間の接超平面 $\Pi_R$ を，曲率半径 $R$ の超球面 $S^4(R)$ へ中心投影したとき，写像後の誘導計量テンソル $g_{\mu\nu}$（式 (3.8)）に対して，
 
 $$G_{\mu\nu} + \Lambda\, g_{\mu\nu} = 0 \tag{6.1}$$
 
@@ -167,51 +192,33 @@ $$\boxed{\Lambda = \frac{3}{R^2}} \tag{6.2}$$
 **証明**  
 (5.4) より $G_{\mu\nu} = -\dfrac{3}{R^2}g_{\mu\nu}$ であるから，$\Lambda = \dfrac{3}{R^2}$ とおけば (6.1) が直ちに成立する．$\square$
 
-**注意 6.0**（記法について）  
-本定理では $n=4$ の場合を主結果として $\Lambda$（添字なし）で表す．一般次元への拡張は注意 6.2 に $\Lambda_n$ として記した．
-
 **注意 6.1**  
-(6.1) は **Euclidean signature の $S^4(R)$ に対する幾何学的恒等式** であり，物理法則として解釈するものではない．Lorentzian signature を持つ de Sitter 時空とは本質的に別物であり，両者は解析接続（Wick 回転 $t \to it$）の関係にある（[5] Appendix D 参照）．
-
-なお，Euclidean 版と Lorentzian 版はともに同じ $\Lambda = 3/R^2$ を持ち，Gibbons–Hawking の Euclidean 量子重力論 [8] における枠組みと一致する．この意味で，Euclidean/Lorentzian の符号の違いはWick 回転という既知の数学的手続きで橋渡しされる**テクニカルな問題**であり，本定式化が一般相対性理論の真空解と矛盾しないことを意味する．物理的含意の詳細は次年度以降に論じる．
+(6.1) は **Euclidean signature の $S^4(R)$ に対する幾何学的恒等式** であり，物理法則として解釈するものではない．Lorentzian signature を持つ de Sitter 時空との関係は付録Cで議論する．
 
 **注意 6.2**（一般次元への拡張）  
-本定理は $n=4$ に限ったものではない．一般の $n$ 次元球面 $S^n(R)$ に対しては，(5.2)(5.3) より
+本命題は $n=4$ に限らない．一般の $n$ 次元球面 $S^n(R)$ に対しては，(5.2)(5.3) より
 
 $$G_{\mu\nu} = \frac{n-1}{R^2}g_{\mu\nu} - \frac{1}{2}\cdot\frac{n(n-1)}{R^2}g_{\mu\nu} = -\frac{(n-1)(n-2)}{2R^2}g_{\mu\nu}$$
 
-となり，$G_{\mu\nu} + \Lambda g_{\mu\nu} = 0$ を満たす $\Lambda$ は
+となり，$G_{\mu\nu} + \Lambda g_{\mu\nu} = 0$ を満たす $\Lambda_n$ は
 
 $$\Lambda_n = \frac{(n-1)(n-2)}{2R^2}$$
 
-で与えられる（$n=4$ では $\Lambda_4 = 3/R^2$）．$n=4$ すなわち $3+1$ 次元の場合が de Sitter 真空解と対応する点で物理的に際立つが，その解釈は次年度の課題とする．
+で与えられる（$n=4$ では $\Lambda_4 = 3/R^2$）．
 
 ---
 
-## 7. 今後の考察予定
+## 7. 結果の整理
 
-本報告の幾何学的結果を出発点として，次年度以降に検討する課題を列挙する（いずれも本報告の範囲外）．
-
-- **Wick 回転の幾何学的解釈：** $t \to it$ という操作をグノモン写像の枠内でどう記述するか．本報告の Euclidean 定式化から Lorentzian 版への橋渡しとなる核心的課題
-- **Lorentzian 版グノモン写像：** $l^2 = R^2 + x^2 + y^2 + z^2 - t^2$ とした場合の誘導計量の導出と符号の変化の確認
-- **対称条件下の測地線：** $X^2 = X^3 = X^4 = b$，$X^1 = t$ のもとでの測地線方程式
-- **対称条件 $b=t$ の幾何学的意味：** $r^2 = 3t^2$ が成立する等距離曲線の解釈
-- **物質項の導入：** $T_{\mu\nu} \neq 0$ の場合への拡張
-- **Euclidean/Lorentzian の対応：** 定理 6.1 と de Sitter 真空解との関係の精査（[8] 参照），および付録D の統一公式 (D.3) と Guo らの Beltrami-de Sitter 計量 [9, 10, 11] との厳密な一致の証明
-
----
-
-## 8. 結果の整理
-
-| 項目 | 結果 | 式番号 | 出典 |
-|------|------|--------|------|
-| 写像の定義 | $Y^\mu = Rx^\mu/l$，$Y^5 = R^2/l$ | (3.1) | [1, 2] |
-| 誘導計量 | $g_{\mu\nu} = \dfrac{R^2}{l^2}\!\left(\delta_{\mu\nu} - \dfrac{x_\mu x_\nu}{l^2}\right)$ | (3.8) | 本報告 |
-| リーマン曲率 | $R_{\mu\nu\rho\sigma} = \dfrac{1}{R^2}(g_{\mu\rho}g_{\nu\sigma}-g_{\mu\sigma}g_{\nu\rho})$ | (4.1) | [3,4,5] |
-| リッチテンソル | $R_{\mu\nu} = \dfrac{3}{R^2}g_{\mu\nu}$ | (5.1) | 本報告 |
-| リッチスカラー | $R_{\text{scalar}} = \dfrac{12}{R^2}$ | (5.2) | 本報告 |
-| アインシュタインテンソル | $G_{\mu\nu} = -\dfrac{3}{R^2}g_{\mu\nu}$ | (5.4) | 本報告 |
-| **主定理** | $G_{\mu\nu} + \Lambda g_{\mu\nu} = 0$，$\Lambda = \dfrac{3}{R^2}$ | (6.2) | 本報告 |
+| 項目                     | 結果                                                                                       | 式番号 | 出典    |
+| ------------------------ | ------------------------------------------------------------------------------------------ | ------ | ------- |
+| 写像の定義               | $Y^\mu = Rx^\mu/l$，$Y^5 = R^2/l$                                                          | (3.1)  | [1, 2]  |
+| 誘導計量                 | $g_{\mu\nu} = \dfrac{R^2}{l^2}\!\left(\delta_{\mu\nu} - \dfrac{x_\mu x_\nu}{l^2}\right)$   | (3.8)  | 本報告  |
+| リーマン曲率             | $R_{\mu\nu\rho\sigma} = \dfrac{1}{R^2}(g_{\mu\rho}g_{\nu\sigma}-g_{\mu\sigma}g_{\nu\rho})$ | (4.1)  | [3,4,5] |
+| リッチテンソル           | $R_{\mu\nu} = \dfrac{3}{R^2}g_{\mu\nu}$                                                    | (5.1)  | [3,4,5] |
+| リッチスカラー           | $R_{\text{scalar}} = \dfrac{12}{R^2}$                                                      | (5.2)  | [3,4,5] |
+| アインシュタインテンソル | $G_{\mu\nu} = -\dfrac{3}{R^2}g_{\mu\nu}$                                                   | (5.4)  | [3,4,5] |
+| **主結果**               | $G_{\mu\nu} + \Lambda g_{\mu\nu} = 0$，$\Lambda = \dfrac{3}{R^2}$                          | (6.2)  | 本報告  |
 
 ---
 
@@ -229,42 +236,34 @@ $$\Lambda_n = \frac{(n-1)(n-2)}{2R^2}$$
 
 [6] Spivak, M., *A Comprehensive Introduction to Differential Geometry*, Vol. 2, 3rd ed., Publish or Perish, Houston, 1999, Chapter 4.
 
-[7] Lee, J. M., *Introduction to Riemannian Manifolds*, 2nd ed., Springer, New York, 2018, Example 3.14.
-
-[8] Gibbons, G. W. and Hawking, S. W., "Action integrals and partition functions in quantum gravity," *Physical Review D*, **15**, 2752–2756, 1977.  
+[7] Gibbons, G. W. and Hawking, S. W., "Action integrals and partition functions in quantum gravity," *Physical Review D*, **15**, 2752–2756, 1977.  
 　　（Euclidean 量子重力論の基礎；Euclidean de Sitter 時空と $\Lambda = 3/R^2$ の関係）
 
-[9] Guo, H.-Y., Huang, C.-G., Xu, Z., Zhou, B., "On Beltrami model of de Sitter spacetime," *Modern Physics Letters A*, **19**, 1701–1710, 2004. arXiv:hep-th/0405137.  
-　　（Lorentzian グノモン写像による de Sitter Beltrami 座標の構成；付録D の $\epsilon_4=-1$ ケースの先行研究）
+[8] Guo, H.-Y., Huang, C.-G., Xu, Z., Zhou, B., "On Beltrami model of de Sitter spacetime," *Modern Physics Letters A*, **19**, 1701–1710, 2004. arXiv:hep-th/0405137.  
+　　（Lorentzian 中心投影による de Sitter Beltrami 座標の構成；付録C の $\epsilon_4=-1$ ケースの先行研究）
 
-[10] Guo, H.-Y., "The Beltrami Model of De Sitter Space," arXiv:hep-th/0607017, 2006.  
-　　（グノモン投影による de Sitter 計量の直接構成と de Sitter 不変特殊相対性理論）
+[9] Guo, H.-Y., "The Beltrami Model of De Sitter Space," arXiv:hep-th/0607017, 2006.  
+　　（中心投影による de Sitter 計量の直接構成と de Sitter 不変特殊相対性理論）
 
-[11] Guo, H.-Y., Huang, C.-G., Xu, Z., Zhou, B., "Beltrami Model of Riemann-Sphere and de Sitter Spacetime," arXiv:gr-qc/0703078, 2007.  
+[10] Guo, H.-Y., Huang, C.-G., Xu, Z., Zhou, B., "Beltrami Model of Riemann-Sphere and de Sitter Spacetime," arXiv:gr-qc/0703078, 2007.  
 　　（$S^n(R)$（Euclidean）と $dS^n$（Lorentzian）の Beltrami モデルの比較；本付録の統一的視点との接点）
 
 ---
 
-## 付録A：クリストッフェル記号の直接計算（次年度予定）
-
-計量 (3.8) からクリストッフェルの公式によって $\Gamma^\lambda_{\mu\nu}$ を陽に計算し，定理 4.1 のリーマン曲率テンソルを直接導出する計算を，次年度の報告において完成させる予定である．現時点では [3, 4] の結果を引用する．
-
----
-
-## 付録B：$R \to \infty$ の平坦極限
+## 付録A：$R \to \infty$ の平坦極限
 
 $R \to \infty$ のとき $l \to R$ であるから，
 
 $$g_{\mu\nu} \to \delta_{\mu\nu}, \quad \Lambda = \frac{3}{R^2} \to 0$$
 
-計量は平坦なユークリッド計量に収束し，曲率はゼロに収束する．これはグノモン写像が恒等写像に退化することに対応する（極限操作の詳細については [3] Chapter 4 を参照）．
+計量は平坦なユークリッド計量に収束し，曲率はゼロに収束する．これは中心投影が恒等写像に退化することに対応する（極限操作の詳細については [3] Chapter 4 を参照）．
 
 ---
 
-## 付録C：写像の正則性
+## 付録B：写像の正則性
 
-**命題 C.1**（グノモン正写像の正則性）  
-$\Phi: \mathbb{R}^4 \to S^4(R)$ を定義 2.1 のグノモン正写像とする．$r = \sqrt{\sum_\mu (x^\mu)^2}$ とおくとき，
+**命題 B.1**（中心投影の正則性）  
+$\Phi: \mathbb{R}^4 \to S^4(R)$ を定義 2.1 の中心投影とする．$r = \sqrt{\sum_\mu (x^\mu)^2}$ とおくとき，
 
 $$Y^5 = \frac{R^2}{l} = \frac{R^2}{\sqrt{R^2 + r^2}}, \quad Y^\mu = \frac{Rx^\mu}{\sqrt{R^2+r^2}}$$
 
@@ -272,67 +271,58 @@ $$Y^5 = \frac{R^2}{l} = \frac{R^2}{\sqrt{R^2 + r^2}}, \quad Y^\mu = \frac{Rx^\mu
 
 1. **$R \to 0$（$r > 0$ 固定）：** $Y^5 = R^2/\sqrt{R^2+r^2} \to 0$，$Y^\mu \to 0$．写像像は原点に縮退するが発散しない．
 
-2. **$R \to \infty$（$r$ 固定）：** $Y^5 = R/\sqrt{1+r^2/R^2} \to \infty$．第5成分が発散する．一方 $Y^\mu \to x^\mu$（有限）．
+2. **$R \to \infty$（$r$ 固定）：** $Y^5 = R/\sqrt{1+r^2/R^2} \to \infty$．第5成分が発散する．一方 $Y^\mu \to x^\mu$（有限）．これは $\Phi$ の像が $S^4(R)$ の北極近傍に局在し，$R \to \infty$ で球面が接平面に漸近すること（付録A の平坦極限）と整合する．
 
 3. **固定 $R > 0$：** $l = \sqrt{R^2+r^2} \geq R > 0$ であるから分母は常に正であり，$\Phi$ は $\mathbb{R}^4$ 全域で $C^\infty$ 級の正則写像である．
 
 **証明**  
 いずれも $l = \sqrt{R^2+r^2}$ の直接計算による．(1) $R\to 0$：$Y^5 = R^2/l \leq R^2/r \to 0$．(2) $R\to\infty$：$Y^5 = R\cdot(1+r^2/R^2)^{-1/2} \to \infty$．(3) $R>0$ のとき $l \geq R > 0$ であるから各成分は $r$ に関して $C^\infty$．$\square$
 
-**注意 C.1**  
-命題 C.1-(2) の $R \to \infty$ における $Y^5 \to \infty$ は，第5成分（埋め込み空間の余剰次元方向）が発散することを示す．これは付録Bで示した「$R\to\infty$ で計量 $g_{\mu\nu} \to \delta_{\mu\nu}$（平坦極限）」と整合的である：球面が「無限に大きな球」になる極限で，接平面との差異が消えると同時に，埋め込み次元方向への射影が無限遠に退くことに対応する．
 ---
 
-## 付録D：2乗計量の本質的観察と Euclidean/Lorentzian の統一的記述
+## 付録C：Euclidean/Lorentzian の統一的記述
 
-本報告の定式化を精査すると，グノモン写像の幾何学的記述の範囲においては，Euclidean から Lorentzian への移行が $\epsilon_\mu$ という実数パラメータの選択として記述できることが見えてくる．以下にその論拠を純粋に数学的事実として記す．
+本付録では，本文の中心投影の構成を符号パラメータ $\epsilon_\mu \in \{+1,-1\}$ により一般化し，Euclidean ケースと Lorentzian ケースを統一的に扱う公式を導出する．
 
-なお，Lorentzian グノモン写像（$\epsilon_4 = -1$）の誘導計量が de Sitter 時空の Beltrami 座標系に対応することは，郭漢英（H.-Y. Guo）らによって Lorentzian 出発点から先行研究として確立されている [9, 10, 11]．本付録の独自性は，Euclidean ケース（$S^4(R)$，[8]）と Lorentzian ケース（de Sitter Beltrami，[9, 10, 11]）の**両者を $\epsilon_\mu$ という単一パラメータで統一する公式 (D.3) の明示的導出**にある．
+Lorentzian 中心投影（$\epsilon_4 = -1$）の誘導計量が de Sitter 時空の Beltrami 座標系に対応することは，郭漢英（H.-Y. Guo）らによって Lorentzian 出発点から先行研究として確立されている [8, 9, 10]．本付録の独自性は，Euclidean ケース（$S^4(R)$，[7]）と Lorentzian ケース（de Sitter Beltrami，[8, 9, 10]）の**両者を $\epsilon_\mu$ という単一パラメータで統一する公式 (C.3) の明示的導出**にある．
 
-**観察 D.1**（物理計量の2乗性）  
-グノモン写像に現れる全ての計量は，$t$ 自身ではなく $t^2$ の形でのみ登場する：
-
-$$l^2 = R^2 + x^2 + y^2 + z^2 \pm t^2, \quad ds^2 = \pm dt^2 + dx^2 + dy^2 + dz^2$$
-
-$t^2,\ x^2,\ y^2,\ z^2$ はいずれも**常に非負の実数**である．符号の違いはこれらの2乗量に付与される**係数 $\epsilon_\mu \in \{+1,-1\}$ の選択**に過ぎない．$t$ 自身は補助的な座標量であり，物理計量として本質的なのは常に $t^2$ である．
-
-**命題 D.1**（Euclidean/Lorentzian の統一的記述）  
+**命題 C.1**（Euclidean/Lorentzian の統一的記述）  
 符号系 $(\epsilon_1, \epsilon_2, \epsilon_3, \epsilon_4) \in \{+1,-1\}^4$ を選ぶ．
 
 **埋め込み空間の計量**を $\mathbb{R}^5$ の標準計量ではなく，
 
-$$dS^2_{\rm emb} = \sum_{\mu=1}^{4} \epsilon_\mu (dY^\mu)^2 + (dY^5)^2 \tag{D.1}$$
+$$dS^2_{\rm emb} = \sum_{\mu=1}^{4} \epsilon_\mu (dY^\mu)^2 + (dY^5)^2 \tag{C.1}$$
 
 と定義する（第5成分 $Y^5$ の係数は $+1$ に固定）．
 
 接超平面 $\Pi_R$ 上の計量を
 
-$$ds^2_{\rm tan} = \sum_{\mu=1}^{4} \epsilon_\mu (dx^\mu)^2 \tag{D.2}$$
+$$ds^2_{\rm tan} = \sum_{\mu=1}^{4} \epsilon_\mu (dx^\mu)^2 \tag{C.2}$$
 
-とし，$l^2 = R^2 + \sum_{\mu=1}^4 \epsilon_\mu (x^\mu)^2$ とおく．グノモン写像 $\Phi$ の定義は本文 (2.1) と同じく
+とし，$l^2 = R^2 + \sum_{\mu=1}^4 \epsilon_\mu (x^\mu)^2$ とおく．中心投影 $\Phi$ の定義は本文 (2.1) と同じく
 
 $$Y^\mu = \frac{R x^\mu}{l} \quad (\mu=1,2,3,4), \quad Y^5 = \frac{R^2}{l}$$
 
 とする．このとき $\Phi$ によって引き戻された誘導計量は
 
-$$g_{\mu\nu} = \frac{R^2}{l^2}\left(\epsilon_\mu \delta_{\mu\nu} - \frac{\epsilon_\mu \epsilon_\nu x_\mu x_\nu}{l^2}\right) \tag{D.3}$$
+$$g_{\mu\nu} = \frac{R^2}{l^2}\left(\epsilon_\mu \delta_{\mu\nu} - \frac{\epsilon_\mu \epsilon_\nu x_\mu x_\nu}{l^2}\right) \tag{C.3}$$
 
 で与えられる（添え字の繰り返しに Einstein 規約は用いない）．
 
 **証明**  
-(D.1) のもとで $dS^2_{\rm emb}$ を接平面の座標で表す．
+(C.1) のもとで $dS^2_{\rm emb}$ を接平面の座標で表す．
 
-$dY^\mu$ は本文補題 3.1 と同様に計算され，
+$dY^\mu$ は本文補題 3.1 と同様に計算される．各 $\mu$ について $(dY^\mu)^2$ を $dx^\nu dx^\rho$ の二次形式として展開し，$\mu$ についての和を実行すると，
 
-$$\sum_{\mu=1}^4 \epsilon_\mu (dY^\mu)^2 = \frac{R^2}{l^2} \sum_{\nu,\rho=1}^4 \left(\epsilon_\nu \delta_{\nu\rho} - \frac{2\epsilon_\nu \epsilon_\rho x_\nu x_\rho}{l^2} + \frac{\epsilon_\nu \epsilon_\rho r_\epsilon^2 x_\nu x_\rho}{l^4}\right) dx^\nu dx^\rho \tag{D.4}$$
+$$\sum_{\mu=1}^4 \epsilon_\mu (dY^\mu)^2 = \frac{R^2}{l^2} \sum_{\nu,\rho=1}^4 \left(\epsilon_\nu \delta_{\nu\rho} - \frac{2\epsilon_\nu \epsilon_\rho x_\nu x_\rho}{l^2} + \frac{\epsilon_\nu \epsilon_\rho r_\epsilon^2 x_\nu x_\rho}{l^4}\right) dx^\nu dx^\rho \tag{C.4}$$
 
 ただし $r_\epsilon^2 = \sum_\mu \epsilon_\mu (x^\mu)^2 = l^2 - R^2$．
 
-第5成分は $Y^5 = R^2/l$ より，
+第5成分は $Y^5 = R^2/l$ より，本文 (3.7) と同様の展開により，
 
-$$(dY^5)^2 = \frac{R^4}{l^6}\left(\sum_\nu \epsilon_\nu x_\nu dx^\nu\right)^2 = \frac{R^4}{l^6}\,\epsilon_\nu \epsilon_\rho\, x_\nu x_\rho\, dx^\nu dx^\rho \tag{D.5}$$
+$$(dY^5)^2 = \frac{R^4}{l^6}\left(\sum_\nu \epsilon_\nu x_\nu dx^\nu\right)^2 = \frac{R^4}{l^6}\sum_{\nu,\rho=1}^4\,\epsilon_\nu \epsilon_\rho\, x_\nu x_\rho\, dx^\nu dx^\rho \tag{C.5}$$
 
-$\epsilon_\nu \epsilon_\rho\, x_\nu x_\rho$ の係数を (D.4) と (D.5) で合算する：
+$\epsilon_\nu \epsilon_\rho\, x_\nu x_\rho$ の係数を (C.4) と (C.5) で合算する：
 
 $$-\frac{2R^2}{l^4} + \frac{R^2 r_\epsilon^2}{l^6} + \frac{R^4}{l^6} = -\frac{2R^2}{l^4} + \frac{R^2(r_\epsilon^2 + R^2)}{l^6} = -\frac{2R^2}{l^4} + \frac{R^2 l^2}{l^6} = -\frac{R^2}{l^4}$$
 
@@ -340,30 +330,15 @@ $$-\frac{2R^2}{l^4} + \frac{R^2 r_\epsilon^2}{l^6} + \frac{R^4}{l^6} = -\frac{2R
 
 $$dS^2_{\rm emb} = \frac{R^2}{l^2}\epsilon_\nu \delta_{\nu\rho}\, dx^\nu dx^\rho - \frac{R^2}{l^4}\epsilon_\nu \epsilon_\rho\, x_\nu x_\rho\, dx^\nu dx^\rho$$
 
-よって (D.3) が成立する．$\square$
+よって (C.3) が成立する．$\square$
 
-**注意 D.2**（相殺機構が機能する条件）  
-証明の鍵は $r_\epsilon^2 + R^2 = l^2$，すなわち $l^2$ の定義と $r_\epsilon^2$ の定義が**同じ $\epsilon_\mu$** を用いることである．埋め込み空間の計量 (D.1) を $\epsilon_\mu$ で変えずに接平面の計量のみ変えた場合，この等式が崩れ相殺が機能しない（これが「単純な符号の書き換えでは不十分」な理由であり，埋め込み空間の計量の同時変更が不可欠である）．
+**注意 C.1**（相殺機構が機能する条件）  
+証明の鍵は $r_\epsilon^2 + R^2 = l^2$，すなわち $l^2$ の定義と $r_\epsilon^2$ の定義が**同じ $\epsilon_\mu$** を用いることである．埋め込み空間の計量 (C.1) を $\epsilon_\mu$ で変えずに接平面の計量のみ変えた場合，この等式が崩れ相殺が機能しない（これが「単純な符号の書き換えでは不十分」な理由であり，埋め込み空間の計量の同時変更が不可欠である）．
 
-**注意 D.3**（Wick 回転との幾何学的対応）  
-グノモン写像の幾何学的記述の範囲において，Wick 回転 $t \to it$ は
-
-$$\epsilon_4 : +1 \to -1$$
-
-という係数符号の変更として記述できる：
-
-$$\text{Euclidean}: \quad \epsilon_\mu = (+1,+1,+1,+1) \quad \Rightarrow \quad l^2 = R^2 + x^2 + y^2 + z^2 + t^2$$
-
-$$\text{Lorentzian}: \quad \epsilon_\mu = (+1,+1,+1,-1) \quad \Rightarrow \quad l^2 = R^2 + x^2 + y^2 + z^2 - t^2$$
-
-両者は埋め込み空間の計量 (D.1) と写像の定義を共有する**単一の幾何学的枠組み**の特殊ケースとして記述される．なお，Wick 回転が経路積分の収束性のために必要とされる文脈（量子重力論等）は本報告の範囲外であり，ここでは純粋に幾何学的な記述上の対応として述べる．
-
-**注意 D.4**（本付録の位置づけと超曲面の確認）  
-命題 D.1 は埋め込み空間の計量を (D.1) と定義した場合の数学的帰結である．
-
+**注意 C.2**（超曲面の確認）  
 写像の像が乗る超曲面を確認する：
 
-$$\sum_{\mu=1}^4 \epsilon_\mu (Y^\mu)^2 + (Y^5)^2 = \frac{R^2}{l^2}\,r_\epsilon^2 + \frac{R^4}{l^2} = \frac{R^2(r_\epsilon^2 + R^2)}{l^2} = \frac{R^2 \cdot l^2}{l^2} = R^2 \tag{D.6}$$
+$$\sum_{\mu=1}^4 \epsilon_\mu (Y^\mu)^2 + (Y^5)^2 = \frac{R^2}{l^2}\,r_\epsilon^2 + \frac{R^4}{l^2} = \frac{R^2(r_\epsilon^2 + R^2)}{l^2} = \frac{R^2 \cdot l^2}{l^2} = R^2 \tag{C.6}$$
 
 すなわち写像の像は常に半径 $R$ の超曲面上に乗る．符号選択による超曲面の変化：
 
@@ -371,7 +346,7 @@ $$\epsilon_\mu = (+1,+1,+1,+1): \quad (Y^1)^2+(Y^2)^2+(Y^3)^2+(Y^4)^2+(Y^5)^2 = 
 
 $$\epsilon_\mu = (+1,+1,+1,-1): \quad (Y^1)^2+(Y^2)^2+(Y^3)^2-(Y^4)^2+(Y^5)^2 = R^2 \quad \text{（擬球面，Lorentzian）}$$
 
-後者は $\mathbb{R}^{4,1}$ における擬球面であり，de Sitter 超曲面と構造的に対応する．Guo らは Lorentzian 出発点からこの射影を「Beltrami-de Sitter モデル」として先行研究 [9, 10, 11] において確立しており，本付録の統一公式 (D.3) の $\epsilon_4 = -1$ の特殊ケースが同モデルと一致することが予測される．統一公式 (D.3) から出発した場合の厳密な対応証明は次年度以降の課題とする．
+後者は $\mathbb{R}^{4,1}$ における擬球面であり，de Sitter 超曲面に対応する．Guo らは Lorentzian 出発点からこの射影を「Beltrami-de Sitter モデル」として先行研究 [8, 9, 10] において確立しており，本付録の統一公式 (C.3) の $\epsilon_4 = -1$ の特殊ケースが同モデルと一致する．
 
 ---
 
