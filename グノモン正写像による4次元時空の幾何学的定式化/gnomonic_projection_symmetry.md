@@ -4,7 +4,8 @@
 **所属：** WF System Co., Ltd.（大阪大学 基礎工学部 卒業）  
 **作成日：** 2026年4月  
 **種別：** 研究ノート（幾何学的考察）  
-**前論文：** [1] 中心投影による4次元空間の幾何学的定式化. DOI: 10.5281/zenodo.19427780.
+**DOI：** [10.5281/zenodo.19434932](https://doi.org/10.5281/zenodo.19434932)  
+**前論文：** [1] 中心投影による4次元空間の幾何学的定式化. DOI: [10.5281/zenodo.19427780](https://doi.org/10.5281/zenodo.19427780).
 
 ---
 
@@ -273,7 +274,7 @@ $$\Pi_R^{(A)} \xrightarrow{\Phi_A} S^n(R) \xrightarrow{\Phi_B^{-1}} \Pi_R^{(B)} 
 
 ## 参考文献
 
-[1] Kihara, N. (2026). 中心投影による4次元空間の幾何学的定式化. DOI: 10.5281/zenodo.19427780.
+[1] Kihara, N. (2026). 中心投影による4次元空間の幾何学的定式化. DOI: [10.5281/zenodo.19427780](https://doi.org/10.5281/zenodo.19427780).
 
 [2] do Carmo, M. P., *Riemannian Geometry*, Birkhaeuser, Boston, 1992, Chapter 4.
 
