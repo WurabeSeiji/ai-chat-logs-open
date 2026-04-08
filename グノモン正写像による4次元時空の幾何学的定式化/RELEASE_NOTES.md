@@ -11,18 +11,18 @@
 **内容：** $S^4(R)$ への中心射影から引き戻し計量と Einstein テンソル $G_{\mu\nu} + \Lambda g_{\mu\nu} = 0$ を導出。  
 **DOI：** https://doi.org/10.5281/zenodo.19427780
 
-### 論文2：Lorentzian 符号の起源
+### 論文2：5つの幾何学的対称性
 
-**タイトル（日本語）**：グノモン正写像に基づく Lorentzian 時空の幾何学的起源：離散化定数 $C$ による統一的記述  
-**タイトル（英語）**：Geometric Origin of Lorentzian Spacetime via Gnomonic Projection: A Unified Description through the Discretization Constant $C$  
-**内容：** $R$ 方向の不可観測性（公理 A, B）から Lorentzian 符号 $(-,+,+,+)$ を導出。2乗計量の数論的動機付け、唯一の結合定数 $C$、離散グノモン写像、宇宙論的ホライズン、$N = 3$ の算術的アノマリーと5次元の必然性。  
+**タイトル（日本語）**：中心投影の幾何学的対称性：多軸モデルの数学的基盤  
+**タイトル（英語）**：Geometric Symmetries of Central Projection: Mathematical Foundations of the Multi-Axis Model  
+**内容：** 中心投影が持つ5つの幾何学的対称性（離散安定性、軸の対等性、測地線偏差と弁別不可能性、主観座標系の変換可能性、大円上の向心加速度）を厳密に証明。  
 **DOI：** https://doi.org/10.5281/zenodo.19434932
 
-### 論文3：電荷次元と電磁場理論
+### 論文3：第5軸の追加と $1/r^2$ 構造
 
-**タイトル（日本語）**：離散グノモン正写像における電荷次元の幾何学的起源：5次元時空と電荷量子化  
-**タイトル（英語）**：Geometric Origin of the Charge Dimension in Discrete Gnomonic Projection: 5-Dimensional Spacetime and Charge Quantization  
-**内容：** 第5次元を電荷次元 $\phi = Qq$ と同定。$Q = C/e_0$ による電荷量子化、$1/r^2$ Coulomb 法則の導出、Maxwell 方程式の完全形、スピン1/スピン2 偏向構造、等価原理の不在の幾何学的説明。  
+**タイトル（日本語）**：離散中心投影における第5次元の幾何学的役割：電荷の量子化と $1/r^2$ 法則  
+**タイトル（英語）**：Geometric Role of the Fifth Dimension in Discrete Central Projection: Charge Quantization and the $1/r^2$ Law  
+**内容：** 離散等方性のための次元要請（$N=4$）、離散格子からの量子化（コンパクト化不要）、第5軸方向の測地線偏差と $1/r^2$ スケーリング。物理的同定は行わず幾何学的命題に限定。  
 **DOI：** https://doi.org/10.5281/zenodo.19435162
 
 ---
@@ -71,18 +71,18 @@
 | `gnomonic_spacetime_geometry_en.pdf` | PDF（英語版） |
 | `gnomonic_spacetime_geometry_en.md` | Markdown（英語版） |
 
-### 論文2：Lorentzian 符号の起源
+### 論文2：5つの幾何学的対称性
 
 | ファイル名 | 説明 |
 |---|---|
-| `gnomonic_lorentzian_origin.tex` | LaTeXソース（日本語版） |
-| `gnomonic_lorentzian_origin.pdf` | PDF（日本語版） |
-| `gnomonic_lorentzian_origin.md` | Markdown（日本語版） |
-| `gnomonic_lorentzian_origin_en.tex` | LaTeXソース（英語版） |
-| `gnomonic_lorentzian_origin_en.pdf` | PDF（英語版） |
-| `gnomonic_lorentzian_origin_en.md` | Markdown（英語版） |
+| `gnomonic_projection_symmetry.tex` | LaTeXソース（日本語版） |
+| `gnomonic_projection_symmetry.pdf` | PDF（日本語版） |
+| `gnomonic_projection_symmetry.md` | Markdown（日本語版） |
+| `gnomonic_projection_symmetry_en.tex` | LaTeXソース（英語版） |
+| `gnomonic_projection_symmetry_en.pdf` | PDF（英語版） |
+| `gnomonic_projection_symmetry_en.md` | Markdown（英語版） |
 
-### 論文3：電荷次元と電磁場理論
+### 論文3：第5軸の追加と $1/r^2$ 構造
 
 | ファイル名 | 説明 |
 |---|---|
@@ -93,12 +93,44 @@
 | `gnomonic_charge_dimension_en.pdf` | PDF（英語版） |
 | `gnomonic_charge_dimension_en.md` | Markdown（英語版） |
 
+### ハンドアウト（3論文概要）
+
+| ファイル名 | 説明 |
+|---|---|
+| `gnomonic_summary_handout_ja.tex` | LaTeXソース（日本語版） |
+| `gnomonic_summary_handout_ja.pdf` | PDF（日本語版） |
+| `gnomonic_summary_handout_ja.md` | Markdown（日本語版） |
+| `gnomonic_summary_handout_en.tex` | LaTeXソース（英語版） |
+| `gnomonic_summary_handout_en.pdf` | PDF（英語版） |
+| `gnomonic_summary_handout_en.md` | Markdown（英語版） |
+| `qr_paper1.png` | QRコード（論文1 DOIリンク） |
+| `qr_paper2.png` | QRコード（論文2 DOIリンク） |
+| `qr_paper3.png` | QRコード（論文3 DOIリンク） |
+
+### 図
+
+| ファイル名 | 説明 |
+|---|---|
+| `fig_central_projection.png` | 中心投影の概念図（日本語） |
+| `fig_central_projection_en.png` | 中心投影の概念図（英語） |
+| `fig_subjective_space.png` | 主観空間の概念図（日本語） |
+| `fig_subjective_space_en.png` | 主観空間の概念図（英語） |
+| `fig_two_projections.png` | 2つの投影の比較図（日本語） |
+| `fig_two_projections_en.png` | 2つの投影の比較図（英語） |
+| `note_header.png` | note 記事ヘッダー画像 |
+
 ---
 
 ## 変更履歴
 
 | 日付 | 内容 |
 |---|---|
+| 2026-04-09 | 全プラットフォーム上書き更新（Zenodo・Academia.edu・Zenn・note） |
+| 2026-04-08 | 論文2：全面改訂（タイトル・内容変更、ファイル名 gnomonic_lorentzian_origin → gnomonic_projection_symmetry） |
+| 2026-04-08 | 論文3：全面改訂（タイトル・内容変更、物理的同定を排除し幾何学的命題に限定） |
+| 2026-04-08 | ハンドアウト（日英 md/tex/pdf）新規作成、QRコード追加 |
+| 2026-04-08 | 英語版概念図（fig_*_en.png）3点追加 |
+| 2026-04-08 | note ヘッダー画像更新、Zenn 記事更新 |
 | 2026-04-06 | 論文2・3：Zenodo 公開完了（DOI確定）|
 | 2026-04-06 | 論文2・3：日英 LaTeX/PDF を追加 |
 | 2026-04-06 | 論文3：テスト粒子応答を「仮定」→「幾何学的帰結」に修正（注意 8.3）|
