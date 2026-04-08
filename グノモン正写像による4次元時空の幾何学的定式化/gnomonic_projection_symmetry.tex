@@ -1,0 +1,525 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{luatexja}
+\usepackage{luatexja-fontspec}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\geometry{margin=25mm}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{remark}[theorem]{注意}
+\newtheorem{observation}[theorem]{観察}
+
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0.5em}
+
+\begin{document}
+
+\section{中心投影の幾何学的対称性：多軸モデルの数学的基盤}\label{ux4e2dux5fc3ux6295ux5f71ux306eux5e7eux4f55ux5b66ux7684ux5bfeux79f0ux6027ux591aux8ef8ux30e2ux30c7ux30ebux306eux6570ux5b66ux7684ux57faux76e4}
+
+\textbf{著者：} Noriaki Kihara（木原 範昭）\\
+\textbf{所属：} WF System Co., Ltd.（大阪大学 基礎工学部 卒業）\\
+\textbf{作成日：} 2026年4月\\
+\textbf{種別：} 研究ノート（幾何学的考察）\\
+\textbf{DOI：} \href{https://doi.org/10.5281/zenodo.19434932}{10.5281/zenodo.19434932}\\
+\textbf{前論文：} {[}1{]} 中心投影による4次元空間の幾何学的定式化. DOI: \href{https://doi.org/10.5281/zenodo.19427780}{10.5281/zenodo.19427780}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{概要}\label{ux6982ux8981}
+
+前稿 {[}1{]} において，中心投影（central projection）により \(n\) 次元接超平面を超球面 \(S^n(R)\) に写像し，誘導計量テンソルおよび Einstein テンソルを導出した．本稿では，この中心投影が持つ5つの幾何学的対称性を厳密に証明する：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{離散安定性：} 座標が零・正の整数・負の整数のいずれの値をとっても，写像が大域的に正則であり発散しないこと
+\item
+  \textbf{軸の対等性：} 背景空間 \(\mathbb{R}^{n+1}\) のどの軸を投影中心に選んでも，写像の数学的構造が同一であること
+\item
+  \textbf{測地線偏差：} 主観空間 \(H^+\)（断面曲率 \(K = 1/R^2\)）上で，曲率半径 \(R\) が測地線間の偏差を生み，そのスカラー量 \(|\xi|^2\) が内部観測者に測定可能であること
+\item
+  \textbf{主観座標系の変換可能性：} 異なる軸を中心とする2つの中心投影の主観座標系が，逆射影と再射影の合成により相互変換可能であること
+\item
+  \textbf{大円上の向心加速度：} 主観空間の大円（測地線）に沿って等速円運動する内部観測者は，曲率半径 \(R\) と角速度 \(\omega\) により定まる向心加速度 \(a = R\omega^2\) をスカラーとして測定する．この量は加速度の大きさのみを与え，方向は内部観測者に弁別できない
+\end{enumerate}
+
+これら5つの性質は純粋に幾何学的な命題であり，物理的解釈を含まない．
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. はじめに}\label{ux306fux3058ux3081ux306b}
+
+前稿 {[}1{]} は，\(n\) 次元ユークリッド空間の接超平面 \(\Pi_R\) から超球面 \(S^n(R) \subset \mathbb{R}^{n+1}\) への中心投影を定義し，\(n = 4\) の場合に誘導計量 \(g_{\mu\nu}\) と Einstein テンソルを導出した．本稿の目的は，中心投影の構造そのものが持つ幾何学的対称性を明らかにすることである．
+
+これらの対称性は，中心投影に基づくモデルが複数の独立な座標軸を包含しうるための数学的基盤を提供する．本稿では一切の物理的解釈を排除し，純粋に幾何学的な命題とその証明のみを述べる．
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. 準備：一般軸の中心投影}\label{ux6e96ux5099ux4e00ux822cux8ef8ux306eux4e2dux5fc3ux6295ux5f71}
+
+本節の用語は {[}1{]} §2 の定義に従う．読者の便宜のため，図と用語表を再掲する．
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1284}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.7064}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1651}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+用語
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+定義
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+記号
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{背景空間} & 球面 \(S^n(R)\) を含むユークリッド空間 & \(\mathbb{R}^{n+1}\) \\
+\textbf{接超平面} & 接点 \(P = Re_{n+1}\) を原点とし \(e_{n+1}\) に直交する \(n\) 次元平面 & \(\Pi_R\) \\
+\textbf{主観空間} & \(\Phi\) の像．球面の上半球 \(\{Y^{n+1} > 0\}\)．内部観測者が住む空間 & \(H^+\) \\
+\textbf{内部観測者} & 主観空間 \(H^+\) の内部で計量 \(g_{\mu\nu}\) のみを用いて測定を行う仮想的な観測者 & --- \\
+\textbf{曲率半径} & 球面 \(S^n(R)\) の半径．断面曲率は \(K = 1/R^2\) & \(R\) \\
+\textbf{投影中心} & 背景空間の原点（球の中心） & \(O\) \\
+\textbf{投影中心軸} & \(O\) から接点 \(P\) への方向（\(e_{n+1}\) 方向） & --- \\
+\end{longtable}
+}
+
+本稿で追加する用語：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.0745}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.8245}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1011}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+用語
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+定義
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+記号
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{測地線偏差} & 隣接測地線間の偏差ベクトル \(\xi^\mu\) の2乗ノルム \(g_{\mu\nu}\xi^\mu\xi^\nu\)．内部観測者が曲率半径 \(R\) に起因して測定しうる \([L^2]\) 次元の量 & \(\lvert\xi\rvert^2\) \\
+\textbf{大円} & 主観空間 \(H^+\) 上の測地線．背景空間において投影中心 \(O\) を通る平面と \(S^n(R)\) の交わりとして与えられる円．主観空間内では曲率半径 \(R\) の円弧として現れる & --- \\
+\textbf{向心加速度} & 大円に沿って等速円運動する内部観測者が，自身の固有時に対する速度の方向変化として測定する加速度の大きさ．古典力学の公式 \(a = R\omega^2 = v^2/R\) で与えられる & \(a\) \\
+\end{longtable}
+}
+
+\textbf{図 2.2（再掲）：} 接超平面 \(\Pi_R\) 上の正方形格子が，中心投影 \(\Phi\) により主観空間 \(H^+\)（球面上半球）上の曲線格子に写される．
+
+\textbf{図 2.3（再掲）：曲率半径と主観距離の関係．} 同じ角度 \(\theta\) に対する弧の長さは \(R_1\theta\) と \(R_2\theta\) であり，比は \(R_1 : R_2\)（曲率半径の比に等しい）．背景座標が同じでも曲率半径が異なれば主観距離は異なる．
+
+\subsubsection{2.1 中心投影と軸の記法}\label{ux4e2dux5fc3ux6295ux5f71ux3068ux8ef8ux306eux8a18ux6cd5}
+
+前稿 {[}1{]} 定義 2.1 の中心投影は，投影中心軸を \(e_{n+1}\) に固定し，\(l = \sqrt{R^2 + \sum_{i=1}^{n}(x^i)^2}\) とおいて次のように定義された：
+
+\[\Phi: \Pi_R \to S^n(R), \quad (x^1, \ldots, x^n) \mapsto \left(\frac{Rx^1}{l}, \ldots, \frac{Rx^n}{l},\; \frac{R^2}{l}\right) \tag{2.1}\]
+
+本稿では複数の軸を比較する．式 (2.1) の構造は投影中心軸の選択に依存しない------\(e_{n+1}\) の役割を任意の基底ベクトル \(e_A\)（\(A \in \{1, \ldots, n+1\}\)）に置き換えれば，\(\Phi\) の最後の成分 \(R^2/l\) が \(A\) 番目の成分に，残りの \(n\) 個の成分が \(\mu \neq A\) に対応するだけである．そこで投影中心軸 \(e_A\) に対応する中心投影・接超平面・主観座標をそれぞれ \(\Phi_A\), \(\Pi_R^{(A)}\), \((x^\mu)_{\mu \neq A}\) と表し，式 (2.1) を書き直すと
+
+\[Y^\mu = \frac{Rx^\mu}{l_A} \quad (\mu \neq A), \qquad Y^A = \frac{R^2}{l_A}, \qquad l_A = \sqrt{R^2 + \sum_{\mu \neq A}(x^\mu)^2} \tag{2.2}\]
+
+が得られる．前稿の定義は \(A = n+1\) の場合に他ならない．逆写像は \(x^\mu = RY^\mu/Y^A\)（\(\mu \neq A\)）であり（前稿 {[}1{]} §2），\(\Phi_A\) の像は開半球面 \(H_A^+ = \{Y \in S^n(R) \mid Y^A > 0\}\) である．
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. 対称性 I：離散安定性}\label{ux5bfeux79f0ux6027-iux96e2ux6563ux5b89ux5b9aux6027}
+
+\textbf{定理 3.1}（Euclidean 中心投影の大域的正則性）\\
+Euclidean 版の中心投影 \(\Phi_A\) において，任意の座標値 \(x^\mu \in \mathbb{R}\)（\(\mu \neq A\)）に対して以下が成立する：
+
+\textbf{(i)} \(l_A^2 = R^2 + \displaystyle\sum_{\mu \neq A}(x^\mu)^2 \geq R^2 > 0\)
+
+\textbf{(ii)} \(|Y^\mu| = R|x^\mu|/l_A < R\) （\(\mu \neq A\)）
+
+\textbf{(iii)} \(0 < Y^A = R^2/l_A \leq R\)
+
+特に，\(x^\mu\) が零・正の整数・負の整数のいずれの値をとっても，\(\Phi_A\) は定義域全体で正則であり，像は \(S^n(R)\) の開半球面に含まれ，いかなる成分も発散しない．
+
+\textbf{証明}\\
+(i) \(\sum_{\mu \neq A}(x^\mu)^2 \geq 0\) であるから \(l_A^2 \geq R^2 > 0\)．\\
+(ii) \(l_A^2 = R^2 + \sum(x^\mu)^2 > (x^\mu)^2\) であるから \(|x^\mu| < l_A\)．したがって \(|Y^\mu| = R|x^\mu|/l_A < R\)．\\
+(iii) \(l_A > 0\) より \(Y^A > 0\)．\(l_A \geq R\) より \(Y^A = R^2/l_A \leq R\)．等号は \(x^\mu = 0\)（全 \(\mu \neq A\)）のとき，すなわち接点 \(P_A\) に一致するとき成立する．\(\square\)
+
+\textbf{系 3.1}（負座標に対する不変性）\\
+2乗形式 \((x^\mu)^2\) は \(x^\mu\) の符号に依存しない：
+
+\[(-x^\mu)^2 = (x^\mu)^2 \qquad \forall\, x^\mu \tag{3.1}\]
+
+したがって \(l_A^2\) は各座標の符号に依存せず，\(x^\mu\) と \(-x^\mu\) に対して同一の値をとる．中心投影の全成分 \(Y^\mu, Y^A\) もまた，\(x^\mu\) の符号反転に対して \(Y^\mu \to -Y^\mu\)（反対側の点に写る）と整合的に変化し，\(l_A\) の値自体は不変である．
+
+\textbf{系 3.2}（\(|x| \to \infty\) での漸近挙動）\\
+\(r^2 = \sum_{\mu \neq A}(x^\mu)^2 \to \infty\) のとき：
+
+\[Y^\mu \to \frac{Rx^\mu}{r} \quad \text{（有界，$|Y^\mu| \to R|x^\mu|/r$）}, \qquad Y^A = \frac{R^2}{l_A} \to 0 \tag{3.2}\]
+
+すなわち写像の像は \(S^n(R)\) の赤道面 \(\{Y^A = 0\}\) に漸近するが，いかなる成分も発散しない．中心投影は無限遠を球面の赤道に「圧縮」する．
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. 対称性 II：軸の対等性}\label{ux5bfeux79f0ux6027-iiux8ef8ux306eux5bfeux7b49ux6027}
+
+\textbf{定理 4.1}（軸の対等性）\\
+定義 2.1 の中心投影 \(\Phi_A\) において，写像の数学的構造は軸の選択 \(A\) に依存しない：
+
+\textbf{(i)} 任意の \(A, B \in \{1, \ldots, n+1\}\) に対し，\(\Phi_A\) と \(\Phi_B\) は同一の代数的構造を持つ．すなわち，軸の再命名（添え字の入れ替え \(A \leftrightarrow B\)）のもとで，式 (2.2) は形式的に同一である．
+
+\textbf{(ii)} 引き戻し計量の構造も同一：軸 \(A\) を中心として引き戻した計量は
+
+\[g_{\mu\nu}^{(A)} = \frac{R^2}{l_A^2}\left(\delta_{\mu\nu} - \frac{x_\mu x_\nu}{l_A^2}\right) \qquad (\mu, \nu \neq A) \tag{4.1}\]
+
+の形を持ち，曲率テンソル，リッチテンソル，Einstein テンソルはいずれも \(A\) の選択に依存しない：
+
+\[R_{\mu\nu\rho\sigma}^{(A)} = \frac{1}{R^2}(g_{\mu\rho}^{(A)}g_{\nu\sigma}^{(A)} - g_{\mu\sigma}^{(A)}g_{\nu\rho}^{(A)}), \qquad G_{\mu\nu}^{(A)} + \Lambda_n\, g_{\mu\nu}^{(A)} = 0 \tag{4.2}\]
+
+\textbf{証明}\\
+(i) 式 (2.2) において \(A\) は「投影中心軸」のラベルにすぎない．\(A\) を \(B\) に置き換えると \(Y^\mu = Rx^\mu/l_B\)（\(\mu \neq B\)），\(Y^B = R^2/l_B\)，\(l_B^2 = R^2 + \sum_{\mu \neq B}(x^\mu)^2\) となり，同一の代数的構造が再現される．\\
+(ii) 前稿 {[}1{]} §3 の引き戻し計量の導出は，「投影中心軸」がどの軸であるかにのみ依存し，その計算は任意の \(A\) に対して同一の手順で実行される．得られる計量 (4.1) は \(S^n(R)\) の内在計量の座標表現であり，定曲率空間の曲率テンソル（{[}1{]} 定理 4.1）は計量のみから決まるため，\(A\) の選択に依存しない．\(\square\)
+
+\textbf{注意 4.1}（幾何学的解釈）\\
+定理 4.1 は，\(S^n(R)\) の等長群 \(SO(n+1)\)（Euclidean 版）が \(\mathbb{R}^{n+1}\) の軸方向の置換を含むことの反映である．\(S^n(R)\) は最大対称空間であり {[}2, 3{]}，どの点を接点に選んでも同一の内在幾何が得られる．
+
+\textbf{注意 4.2}（\(R\) を変数とした場合の安定性）\\
+定義 2.1 において \(R > 0\) は定数として導入したが，\(R\) を正の変数（\(R > 0\)）としても写像の正則性は保たれる：\(l_A^2 = R^2 + \sum(x^\mu)^2 > 0\) は \(R > 0\) である限り成立する．\(R\) の変動に伴い断面曲率 \(K = 1/R^2\) および誘導計量は \(R\) に依存するが，写像の定義域・全単射性は影響を受けない．
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. 対称性 III：測地線偏差}\label{ux5bfeux79f0ux6027-iiiux6e2cux5730ux7ddaux504fux5dee}
+
+投影中心軸の値（曲率半径 \(R\) またはその他の軸）は，Gauss の驚異定理 {[}2, Ch.4{]} により，主観空間 \(H^+\) の内部観測者には長さ \([L]\) として直接測定できない．内部観測者が曲率半径 \(R\) の存在を認識する手段の一つが，隣接する2本の測地線間の偏差------すなわち\textbf{測地線偏差} \(|\xi|^2\)（§2 用語表）------である．
+
+\textbf{定義 5.1}（測地線偏差の2乗ノルム）\\
+偏差ベクトル \(\xi^\mu\) に対し，誘導計量 \(g_{\mu\nu}\) による2乗ノルム
+
+\[|\xi|^2 \;=\; g_{\mu\nu}\,\xi^\mu\,\xi^\nu \tag{5.5}\]
+
+を\textbf{測地線偏差の2乗ノルム}と呼ぶ．以下，本論文において「測地線偏差」とは，特に断らない限りこの \(|\xi|^2\) を指す．
+
+\subsubsection{\texorpdfstring{5.1 Jacobi 方程式と \(S^n(R)\) 上の偏差ベクトル}{5.1 Jacobi 方程式と S\^{}n(R) 上の偏差ベクトル}}\label{jacobi-ux65b9ux7a0bux5f0fux3068-snr-ux4e0aux306eux504fux5deeux30d9ux30afux30c8ux30eb}
+
+\textbf{定理 5.1}（測地線偏差方程式 {[}2, 3{]}）\\
+リーマン多様体 \((M, g)\) 上の測地線の1パラメータ族 \(\gamma_s(\tau)\) に対し，偏差ベクトル \(\xi^\mu = \partial \gamma_s^\mu / \partial s\) は Jacobi 方程式
+
+\[\frac{D^2 \xi^\mu}{d\tau^2} = -R^\mu{}_{\nu\rho\sigma}\, u^\nu \xi^\rho u^\sigma \tag{5.1}\]
+
+を満たす．ここで \(D/d\tau\) は測地線に沿った共変微分，\(u^\mu = d\gamma^\mu/d\tau\) は接線ベクトルである．
+
+\textbf{命題 5.1}（\(S^n(R)\) 上の偏差ベクトル）\\
+定曲率空間 \(S^n(R)\) のリーマン曲率テンソル（{[}1{]} 定理 4.1）
+
+\[R^\mu{}_{\nu\rho\sigma} = \frac{1}{R^2}(\delta^\mu_\rho\, g_{\nu\sigma} - \delta^\mu_\sigma\, g_{\nu\rho}) \tag{5.2}\]
+
+を Jacobi 方程式 (5.1) に代入すると，弧長パラメータ（\(g_{\nu\sigma}u^\nu u^\sigma = 1\)）に対して
+
+\[\frac{D^2 \xi^\mu}{d\tau^2} = -\frac{1}{R^2}\left(\xi^\mu - (u_\sigma \xi^\sigma)\, u^\mu\right) \tag{5.3}\]
+
+が得られる．測地線に直交する成分 \(\xi^\mu_\perp\)（\(u_\mu \xi^\mu_\perp = 0\)）に対しては
+
+\[\frac{D^2 \xi^\mu_\perp}{d\tau^2} = -\frac{1}{R^2}\,\xi^\mu_\perp \tag{5.4}\]
+
+\textbf{証明}\\
+(5.2) を (5.1) に代入する：\(-R^\mu{}_{\nu\rho\sigma}\, u^\nu \xi^\rho u^\sigma = -(1/R^2)(\delta^\mu_\rho\, g_{\nu\sigma}\, u^\nu u^\sigma\, \xi^\rho - \delta^\mu_\sigma\, g_{\nu\rho}\, u^\nu \xi^\rho\, u^\sigma) = -(1/R^2)(\xi^\mu - (u_\sigma\xi^\sigma)u^\mu)\)．弧長条件 \(g_{\nu\sigma}u^\nu u^\sigma = 1\) を用いた．直交成分 \(u_\mu\xi^\mu_\perp = 0\) に対し第2項が消えて (5.4) を得る．負符号は正曲率空間における測地線の収束（振動的偏差 \(\xi_\perp \propto \cos(\tau/R)\)）を反映する．\(\square\)
+
+\subsubsection{5.2 測地線偏差の次元と符号不変性}\label{ux6e2cux5730ux7ddaux504fux5deeux306eux6b21ux5143ux3068ux7b26ux53f7ux4e0dux5909ux6027}
+
+\textbf{定理 5.2}（測地線偏差 \(|\xi|^2\) の次元と符号不変性）\\
+定義 5.1 の \(|\xi|^2 = g_{\mu\nu}\,\xi^\mu\,\xi^\nu\) に対し，以下が成立する：
+
+\textbf{(i) 次元：} \(|\xi|^2\) の次元は \([L^2]\) である．\(g_{\mu\nu}\) は \(R^2\) の有理式であり \(R\)（奇数冪）を独立に含まないから（(4.1) より），投影中心軸の値は \([L]\) として内部から測定不可能であり，\(R^2\)（\([L^2]\)）を通じてのみ \(|\xi|^2\) に寄与する．軸の対等性（定理 4.1）により，この性質はすべての軸に等しく適用される．
+
+\textbf{(ii) 符号不変性：} \(|\xi|^2 = g_{\mu\nu}\,\xi^\mu\,\xi^\nu\) はリーマン的二次形式から作られるスカラー不変量であり，任意の座標の符号反転 \(x^\mu \to -x^\mu\) のもとで値が不変である．したがって主観空間 \(H^+\) の内部観測者は，\(|\xi|^2\) の測定から座標の正負を弁別することはできない．
+
+\textbf{証明}\\
+(i) \(g_{\mu\nu}\) は無次元（\(R^2/l_A^2\) と \(x_\mu x_\nu/l_A^2\) の組合せ），\(\xi^\mu\) は \([L]\) であるから \(|\xi|^2\) は \([L^2]\)．\(g_{\mu\nu} = (R^2/l_A^2)(\delta_{\mu\nu} - x_\mu x_\nu/l_A^2)\) において \(R\) は \(R^2\) を通じてのみ現れる．\\
+(ii) 座標の符号反転 \(\phi \to \phi' = -\phi\) は微分同相写像の一種である．テンソル変換則のもとで，計量の非対角成分は
+
+\[g_{\phi' j'} = \frac{\partial \phi}{\partial \phi'}\,\frac{\partial x^j}{\partial x'^j}\,g_{\phi j} = (-1)(1)\,g_{\phi j} = -g_{\phi j} \tag{5.6}\]
+
+と変換される．一方，反変ベクトルの成分も同じ変換則に従い \(\xi^{\phi'} = (\partial \phi'/\partial \phi)\,\xi^\phi = -\xi^\phi\) となる．\(\xi^j\) は不変である．したがって非対角寄与の内積は
+
+\[g_{\phi' j'}\,\xi^{\phi'}\,\xi^j = (-g_{\phi j})(-\xi^\phi)\,\xi^j = g_{\phi j}\,\xi^\phi\,\xi^j \tag{5.7}\]
+
+となり，符号が相殺して値は不変である．対角成分 \(g_{\mu\mu}\,(\xi^\mu)^2\) は明らかに符号反転に対して不変であるから，\(|\xi|^2 = g_{\mu\nu}\,\xi^\mu\,\xi^\nu\) 全体が任意の座標の符号反転のもとで不変である．
+
+より一般に，\(|\xi|^2\) はリーマン的二次形式から作られるスカラー不変量であり，任意の微分同相写像（座標の符号反転を含む）のもとで値が不変である．座標の向き付けを弁別するには擬スカラー（Levi-Civita 記号を含む量）が必要であるが，\(|\xi|^2\) はそれを含まない．\(\square\)
+
+\textbf{注意 5.1}（定理 5.2 の意味）\\
+曲率半径 \(R\) は \([L]\) として内部観測者に測定不可能であるが，測地線偏差 \(|\xi|^2\) は \([L^2]\) 次元の量として主観空間 \(H^+\) 内から測定可能である．ただしこの量はスカラー不変量であるため，座標の符号も曲率の方向も内部観測者には弁別できない．\(R\) から内部観測者に到達する情報は，\(|\xi|^2\) という符号を持たない正の量に集約される．曲率の方向や座標の正負は背景空間 \(\mathbb{R}^{n+1}\) においてのみ定義される情報であり，主観空間の内在幾何には現れない．
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. 対称性 IV：主観座標系の変換可能性}\label{ux5bfeux79f0ux6027-ivux4e3bux89b3ux5ea7ux6a19ux7cfbux306eux5909ux63dbux53efux80fdux6027}
+
+本節では，異なる軸を投影中心とする2つの中心投影の「主観座標系」が，球面上の点（「神の目」座標）を経由して相互変換可能であることを示す．
+
+\subsubsection{6.1 神の目座標と主観座標}\label{ux795eux306eux76eeux5ea7ux6a19ux3068ux4e3bux89b3ux5ea7ux6a19}
+
+\textbf{定義 6.1}\\
+\(S^n(R)\) 上の点 \(Y = (Y^1, \ldots, Y^{n+1})\)（\(\sum_{A=1}^{n+1}(Y^A)^2 = R^2\)）を\textbf{神の目座標}（embedding coordinates）と呼ぶ．
+
+軸 \(A\) を投影中心とした中心投影 \(\Phi_A\) の逆写像（§2.1）により得られる座標 \((x^\mu)_{\mu \neq A}\) を，軸 \(A\) に対する\textbf{主観座標}と呼ぶ．
+
+\subsubsection{6.2 座標変換の構成}\label{ux5ea7ux6a19ux5909ux63dbux306eux69cbux6210}
+
+\textbf{定理 6.1}（主観座標系の変換可能性）\\
+\(A, B \in \{1, \ldots, n+1\}\)（\(A \neq B\)）を異なる2つの軸とする．\(\Phi_A\) の像 \(H_A^+ = \{Y \in S^n(R) \mid Y^A > 0\}\) と \(\Phi_B\) の像 \(H_B^+ = \{Y \in S^n(R) \mid Y^B > 0\}\) の共通部分を \(U_{AB} = H_A^+ \cap H_B^+\) とする．\(U_{AB}\) は \(S^n(R)\) の空でない開集合である．
+
+\(U_{AB}\) に対応する主観座標の間に，合成写像
+
+\[T_{A \to B} = \Phi_B^{-1} \circ \Phi_A: \Phi_A^{-1}(U_{AB}) \to \Phi_B^{-1}(U_{AB}) \tag{6.1}\]
+
+が定義され，これは \(C^\infty\) 級の微分同相写像である．
+
+\textbf{証明}\\
+\(\Phi_A\) は \(\Pi_R^{(A)}\) から \(H_A^+\) への \(C^\infty\) 級全単射であり（定理 3.1），\(\Phi_B^{-1}\) は \(H_B^+\) から \(\Pi_R^{(B)}\) への \(C^\infty\) 級全単射である．\(U_{AB}\) は空でない（例えば \(Y = (R/\sqrt{n+1})\,(1,1,\ldots,1) \in U_{AB}\)）．\(\Phi_A\) と \(\Phi_B^{-1}\) がともに \(C^\infty\) 級であるから，合成 \(T_{A \to B}\) も \(C^\infty\) 級である．逆写像 \(T_{B \to A} = \Phi_A^{-1} \circ \Phi_B\) が同様に \(C^\infty\) 級であるから，\(T_{A \to B}\) は微分同相写像である．\(\square\)
+
+\subsubsection{6.3 変換の明示的公式}\label{ux5909ux63dbux306eux660eux793aux7684ux516cux5f0f}
+
+\textbf{命題 6.1}（主観座標変換の明示的公式）\\
+軸 \(A\) の主観座標 \((x^\mu)_{\mu \neq A}\) から軸 \(B\) の主観座標 \((x'^\nu)_{\nu \neq B}\) への変換 \(T_{A \to B}\) は以下の手順で与えられる：
+
+\textbf{Step 1}（射影：主観座標 → 神の目座標）
+
+\[Y^\mu = \frac{Rx^\mu}{l_A} \quad (\mu \neq A), \qquad Y^A = \frac{R^2}{l_A} \tag{6.2}\]
+
+\textbf{Step 2}（逆射影：神の目座標 → 別の主観座標）
+
+\[x'^\nu = \frac{R\,Y^\nu}{Y^B} \quad (\nu \neq B) \tag{6.3}\]
+
+この2段階を合成すると，\(\nu \neq B\) かつ \(\nu \neq A\) の場合：
+
+\[x'^\nu = \frac{R \cdot Rx^\nu / l_A}{Rx^B/l_A} = x^\nu \quad \text{（$A$ でも $B$ でもない軸は不変）} \tag{6.4}\]
+
+\(\nu = A\)（すなわち \(A\) 軸の主観座標を \(B\) 軸の主観座標で表す）の場合：
+
+\[x'^A = \frac{R \cdot Y^A}{Y^B} = \frac{R \cdot R^2/l_A}{Rx^B/l_A} = \frac{R^2}{x^B} \tag{6.5}\]
+
+\textbf{証明}\\
+(6.4)：\(\nu \neq A\) かつ \(\nu \neq B\) のとき，\(Y^\nu = Rx^\nu/l_A\) であり，\(Y^B = Rx^B/l_A\) であるから，\(x'^\nu = RY^\nu/Y^B = R(Rx^\nu/l_A)/(Rx^B/l_A) = x^\nu\)．\\
+(6.5)：\(Y^A = R^2/l_A\)，\(Y^B = Rx^B/l_A\) であるから，\(x'^A = RY^A/Y^B = R(R^2/l_A)/(Rx^B/l_A) = R^2/x^B\)．\(\square\)
+
+\textbf{注意 6.1}（変換の構造）\\
+式 (6.4)--(6.5) は次の構造を持つ：
+
+\begin{itemize}
+\tightlist
+\item
+  \(A\) でも \(B\) でもない軸の座標は変換で\textbf{不変}（\(x'^\nu = x^\nu\)）
+\item
+  \(A\) 軸と \(B\) 軸の間には反転的関係 \(x'^A = R^2/x^B\) が成立する
+\end{itemize}
+
+この変換は \(S^n(R)\) 上の点を経由する純粋な幾何演算であり，いかなる物理的仮定も含まない．
+
+\textbf{注意 6.2}（推移性）\\
+3つ以上の軸 \(A, B, C\) に対して，\(T_{A \to C} = T_{B \to C} \circ T_{A \to B}\) が成立する．これは \(T_{A \to B}\) が神の目座標を経由するため自明に従う：
+
+\[\Pi_R^{(A)} \xrightarrow{\Phi_A} S^n(R) \xrightarrow{\Phi_B^{-1}} \Pi_R^{(B)} \xrightarrow{\Phi_B} S^n(R) \xrightarrow{\Phi_C^{-1}} \Pi_R^{(C)}\]
+
+中間の \(\Phi_B^{-1} \circ \Phi_B = \mathrm{id}\) が消えるため，\(T_{A \to C} = \Phi_C^{-1} \circ \Phi_A\) に帰着する．
+
+\subsubsection{6.4 座標変換の Jacobian とスケールファクター}\label{ux5ea7ux6a19ux5909ux63dbux306e-jacobian-ux3068ux30b9ux30b1ux30fcux30ebux30d5ux30a1ux30afux30bfux30fc}
+
+\textbf{命題 6.2}（座標変換の Jacobian）\\
+\(T_{A \to B}\) の Jacobian は以下で与えられる：
+
+\textbf{(i)} \(A\) でも \(B\) でもない軸 \(\nu\) に対し：\(\dfrac{\partial x'^\nu}{\partial x^\mu} = \delta^\nu_\mu\)（恒等）
+
+\textbf{(ii)} \(\nu = A\)，\(\mu = B\) の成分：
+
+\[\frac{\partial x'^A}{\partial x^B} = -\frac{R^2}{(x^B)^2} \tag{6.6}\]
+
+このスケールファクターは \([L]/[L]\)（無次元）であり，\textbf{1次}である．
+
+\textbf{証明}\\
+(i) (6.4) より \(x'^\nu = x^\nu\)（\(\nu \neq A, \nu \neq B\)）であるから偏微分は Kronecker delta．(ii) (6.5) より \(x'^A = R^2/x^B\) であるから \(\partial x'^A/\partial x^B = -R^2/(x^B)^2\)．次元：\([L^2]/[L^2] = [L^0]\)．\(\square\)
+
+\textbf{命題 6.3}（計量テンソル成分の変換）\\
+\(B\) 軸の主観座標 \((x^\mu)_{\mu \neq B}\) における計量成分 \(g_{Bj}\)（\(j \neq B\)，\(j \neq A\)）が，\(A\) 軸の主観座標 \((x'^\nu)_{\nu \neq A}\) では
+
+\[g'_{Aj} = \frac{\partial x^B}{\partial x'^A}\, g_{Bj} = -\frac{(x^B)^2}{R^2}\, g_{Bj} \tag{6.7}\]
+
+と変換される．
+
+\textbf{注意 6.3}（スケールファクターの次数）\\
+座標変換はテンソルの各添え字に対して Jacobian を1回適用する規則（1次のテンソル変換則）に従う．
+
+\subsubsection{6.5 等質性と位置情報の構造的脱落}\label{ux7b49ux8ceaux6027ux3068ux4f4dux7f6eux60c5ux5831ux306eux69cbux9020ux7684ux8131ux843d}
+
+\textbf{命題 6.4}（等質空間としての \(S^n(R)\)）\\
+超球面 \(S^n(R)\) の等長群は \(O(n+1)\) であり，\(S^n(R)\) 上に推移的に作用する：
+
+\[S^n(R) \cong SO(n+1)\,/\,SO(n) \tag{6.8}\]
+
+すなわち，任意の2点 \(P, Q \in S^n(R)\) に対し，\(\sigma(P) = Q\) を満たす等長変換 \(\sigma \in SO(n+1)\) が存在する {[}2, Ch.8; 4{]}．
+
+\textbf{命題 6.5}（位置情報の構造的脱落）\\
+遷移関数 \(T_{A \to B}\) に入るパラメータは曲率半径 \(R\) と座標値 \(x^\mu\) のみである．背景空間 \(\mathbb{R}^{n+1}\) における投影中心の絶対位置は \(T_{A \to B}\) に現れない．
+
+\textbf{証明}\\
+命題 6.4 により，球面上の任意の点は等長変換で他の任意の点に移せる．等長変換は内在計量を保存するから，接点の選択は等長変換の違いに吸収される．命題 6.1 の明示的公式 (6.4)--(6.5) において，右辺に現れるのは \(R\) と座標値のみであり，接点の位置座標は含まれない．\(\square\)
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. 対称性 V：大円上の向心加速度}\label{ux5bfeux79f0ux6027-vux5927ux5186ux4e0aux306eux5411ux5fc3ux52a0ux901fux5ea6}
+
+本節では，主観空間 \(H^+\) の大円（測地線）に沿って等速円運動する内部観測者が，曲率半径 \(R\) と角速度 \(\omega\) により定まる向心加速度 \(a = R\omega^2\) をスカラーとして測定することを示す．これは古典力学の遠心力公式（高校物理 II の標準的結果 {[}5{]}）の，主観空間 \(H^+\) への直接の適用である．
+
+\subsubsection{7.1 主観空間の大円}\label{ux4e3bux89b3ux7a7aux9593ux306eux5927ux5186}
+
+\textbf{定義 7.1}（大円）\\
+主観空間 \(H^+\) 上の\textbf{大円}とは，背景空間 \(\mathbb{R}^{n+1}\) において投影中心 \(O\) を通る2次元平面と \(S^n(R)\) の交わりとして与えられる円のことをいう．大円は \(S^n(R)\) の測地線であり，主観空間内では曲率半径 \(R\) の円弧として現れる．
+
+\textbf{命題 7.1}（大円の幾何学的性質）\\
+\(S^n(R)\) 上の大円 \(C\) は次の性質を持つ：
+
+\textbf{(i)} \(C\) は測地線である（{[}2, Ch.4; 3, Ch.3{]}）．\\
+\textbf{(ii)} \(C\) の曲率半径は \(R\)（球面の曲率半径）に等しい．\\
+\textbf{(iii)} \(C\) の弧長 \(\ell\) と中心角 \(\theta\) の関係は \(\ell = R\theta\)．
+
+\textbf{証明}\\
+(i) 定曲率空間 \(S^n(R)\) における測地線は，\(\mathbb{R}^{n+1}\) における2次元平面（原点を通る）と球面の交わりとして特徴づけられる {[}2, Ch.4{]}．これは大円の定義と一致する．\\
+(ii) 大円は半径 \(R\) の球面の中心を通る平面で切ったときに得られる円であり，その半径は \(R\) である．\\
+(iii) 半径 \(R\) の円における弧長と中心角の標準的関係．\(\square\)
+
+\textbf{注意 7.1}（軸の対等性との整合）\\
+大円は背景空間における平面と球面の交わりとして定義されるが，対称性 II（定理 4.1）により，主観空間 \(H^+\) から見れば，どの大円も同じ曲率半径 \(R\) を持つ測地線である．「どの大円か」を区別する情報（背景空間における平面の方向）は内部観測者には弁別できない．
+
+\subsubsection{7.2 大円上の等速円運動と向心加速度}\label{ux5927ux5186ux4e0aux306eux7b49ux901fux5186ux904bux52d5ux3068ux5411ux5fc3ux52a0ux901fux5ea6}
+
+\textbf{定義 7.2}（大円上の等速円運動）\\
+内部観測者が主観空間 \(H^+\) の大円 \(C\) に沿って，固有時 \(\tau\) に対して一定の角速度 \(\omega\) で運動するとき，これを\textbf{大円上の等速円運動}と呼ぶ．観測者の位置は中心角 \(\theta(\tau) = \omega\tau\) で表される．
+
+\textbf{定理 7.1}（大円上の向心加速度）\\
+主観空間 \(H^+\) の大円 \(C\)（曲率半径 \(R\)）に沿って角速度 \(\omega\) で等速円運動する内部観測者は，次の大きさを持つ向心加速度を測定する：
+
+\[a = R\omega^2 = \frac{v^2}{R} \tag{7.1}\]
+
+ここで \(v = R\omega\) は観測者の接線速度（弧長に対する固有時微分）である．
+
+\textbf{証明}\\
+半径 \(R\)，角速度 \(\omega\) の円運動における向心加速度の大きさは，古典力学の標準的結果として \(a = R\omega^2\) で与えられる {[}5{]}．接線速度 \(v\) と角速度 \(\omega\) の関係 \(v = R\omega\) から，\(a = v^2/R\) も同値に成立する．
+
+主観空間 \(H^+\) の大円 \(C\) は曲率半径 \(R\) の円弧（命題 7.1 (ii)）であり，内部観測者が \(C\) に沿って等速円運動するとき，その運動は半径 \(R\) の円運動である．したがって観測者が測定する向心加速度の大きさは \(a = R\omega^2\) となる．\(\square\)
+
+\textbf{注意 7.2}（古典力学公式の適用について）\\
+定理 7.1 の証明は，主観空間内の局所的な運動が古典力学の円運動と同型であることに依拠する．主観空間 \(H^+\) は連結なリーマン多様体であり，その上の測地線（大円）は局所的に円弧として振る舞う．観測者の固有時 \(\tau\) に対する位置の2階微分が向心加速度を与えるという古典力学の関係式は，主観空間の内在計量から導かれる速度と加速度の関係としてそのまま成立する．高校物理 II {[}5{]} における遠心力公式 \(a = R\omega^2\) は，この主観空間内の運動学に対して直接適用される．
+
+\subsubsection{7.3 向心加速度のスカラー性と方向の不可弁別性}\label{ux5411ux5fc3ux52a0ux901fux5ea6ux306eux30b9ux30abux30e9ux30fcux6027ux3068ux65b9ux5411ux306eux4e0dux53efux5f01ux5225ux6027}
+
+\textbf{定理 7.2}（向心加速度の方向不可弁別性）\\
+定理 7.1 の向心加速度 \(a = R\omega^2\) は次の性質を持つ：
+
+\textbf{(i) スカラー性：} \(a\) は加速度ベクトルの大きさ（ノルム）であり，スカラー量である．次元は \([L T^{-2}]\)．
+
+\textbf{(ii) 方向不可弁別性：} 内部観測者は加速度の\textbf{大きさ} \(a = R\omega^2\) を測定できるが，その\textbf{方向}（背景空間における向心方向）は対称性 III（定理 5.2 (ii)）により弁別できない．加速度の方向は背景空間 \(\mathbb{R}^{n+1}\) においてのみ定義される情報であり，主観空間の内在幾何には現れない．
+
+\textbf{(iii) 軸の対等性：} 対称性 II（定理 4.1）により，どの軸 \(A\) を投影中心とする中心投影であっても，主観空間 \(H_A^+\) における大円上の向心加速度は同じ形式 \(a = R\omega^2\) で与えられる．
+
+\textbf{証明}\\
+(i) 古典力学における向心加速度の大きさは加速度ベクトルのノルムであり，スカラー量として定義される．\\
+(ii) 加速度ベクトルの方向は，主観空間内では「大円の中心へ向かう方向」として定義されるが，主観空間 \(H^+\) 内には大円の「中心」に対応する点は存在しない（大円の中心は背景空間 \(\mathbb{R}^{n+1}\) における投影中心 \(O\) または対応する平面上の点であり，主観空間の点ではない）．したがって内部観測者は加速度の向きを主観空間内の点として指し示すことができず，方向は弁別不可能である．大きさ \(a = R\omega^2\) のみがスカラー量として残る．これは対称性 III（定理 5.2 (ii)）の「向きはスカラー不変量から弁別不可能」という一般的主張の，向心加速度への特殊化である．\\
+(iii) 対称性 II（定理 4.1）により，引き戻し計量と曲率テンソルの構造は軸の選択に依存しない．大円の定義（命題 7.1）も軸の選択に依存しないため，向心加速度の公式 \(a = R\omega^2\) もすべての軸に等しく適用される．\(\square\)
+
+\textbf{注意 7.3}（対称性 III との関係）\\
+対称性 III（定理 5.2）は測地線偏差 \(|\xi|^2\) という \([L^2]\) 次元のスカラー不変量について述べた．対称性 V の向心加速度 \(a = R\omega^2\) は \([L T^{-2}]\) 次元のスカラー量であり，異なる物理的次元を持つ．両者に共通するのは，「内部観測者は曲率半径 \(R\) に起因する量をスカラーとしてのみ測定でき，その方向や符号は弁別できない」という構造である．対称性 V は，対称性 III の構造が測地線偏差以外の量（向心加速度）にも拡張されることを示す．
+
+\textbf{注意 7.4}（軸の対等性による拡張）\\
+対称性 II（定理 4.1）により，本節の議論は投影中心軸 \(A\) がどの軸であっても成立する．特に第5軸以降を新たな投影中心として中心投影を構成した場合でも，その曲率半径を \(R'\) とすれば，主観空間内の大円上の向心加速度は \(a = R'\omega^2\) で与えられる．これは軸の追加に対する対称性 V の不変性を意味する．
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. 結果の整理}\label{ux7d50ux679cux306eux6574ux7406}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.0655}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.5345}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.0414}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3586}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+対称性
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+式番号
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+根拠
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{I. 離散安定性} & 任意の \(x^\mu \in \mathbb{Z}\)（零・正・負）に対し \(l_A > 0\)，写像は正則で全成分有界 & (3.1)--(3.2) & 定理 3.1 \\
+\textbf{II. 軸の対等性} & どの軸を投影中心に選んでも，写像・計量・曲率テンソルの構造は同一 & (4.1)--(4.2) & 定理 4.1 \\
+\textbf{III. 測地線偏差} & \$ & \xi & \^{}2 = g\_\{\mu\nu\}\xi\textsuperscript{\mu\xi}\nu\$ は \([L^2]\) 次元のスカラー不変量．座標の符号も曲率方向も内部から弁別不可能 \\
+\textbf{IV. 座標変換} & 異なる軸の主観座標は逆射影→再射影で \(C^\infty\) 級に相互変換可能．スケールファクターは1次（\([L]/[L]\)）．等質性により位置情報は脱落し，\(R\) が唯一のパラメータ & (6.1)--(6.8) & 定理 6.1, 命題 6.2--6.5 \\
+\textbf{V. 向心加速度} & 大円上の等速円運動する内部観測者は \(a = R\omega^2\) をスカラーとして測定．加速度の方向は内部から弁別不可能 & (7.1) & 定理 7.1, 7.2 \\
+\end{longtable}
+}
+
+これら5つの対称性により，中心投影に基づくモデルは以下の構造的能力を持つ：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  離散的な整数値（零・正・負）をとる座標軸を安全に追加できる（対称性 I）
+\item
+  追加軸も既存軸と完全に同一の幾何学的構造を持つ（対称性 II）
+\item
+  任意の軸方向の曲率半径 \(R\) が測地線偏差 \(|\xi|^2\) を生む．\(|\xi|^2\) は \([L^2]\) 次元のスカラー不変量であり，座標の正負も曲率方向も内部観測者には弁別できない（対称性 III, 定理 5.2）
+\item
+  異なる軸を中心とする主観座標系は整合的に変換可能であり，計量成分の変換スケールは1次（各添え字につき Jacobian 1回）である（対称性 IV, 命題 6.2--6.3）
+\item
+  等質性により座標変換に位置情報は混入せず，\(R\) が唯一の外部パラメータである（命題 6.4--6.5）
+\item
+  主観空間の大円に沿った等速円運動する内部観測者は，曲率半径 \(R\) と角速度 \(\omega\) により定まる向心加速度 \(a = R\omega^2\) をスカラーとして測定する．方向は弁別不可能であり，対称性 II により軸の選択にも依存しない（対称性 V, 定理 7.1, 7.2）
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+{[}1{]} Kihara, N. (2026). 中心投影による4次元空間の幾何学的定式化. DOI: \href{https://doi.org/10.5281/zenodo.19427780}{10.5281/zenodo.19427780}.
+
+{[}2{]} do Carmo, M. P., \emph{Riemannian Geometry}, Birkhaeuser, Boston, 1992, Chapter 4, 8.
+
+{[}3{]} Wald, R. M., \emph{General Relativity}, University of Chicago Press, Chicago, 1984, Appendix C, D.
+
+{[}4{]} Wolf, J. A., \emph{Spaces of Constant Curvature}, 6th ed., AMS Chelsea Publishing, Providence, 2011, Chapter 2.
+
+{[}5{]} 文部科学省検定済教科書『物理 II』（高等学校理科用），円運動の章（向心加速度 \(a = r\omega^2 = v^2/r\)）．
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\emph{本稿は純粋に幾何学的な命題の証明に限定される．物理的解釈は行わない．}
+
+\end{document}

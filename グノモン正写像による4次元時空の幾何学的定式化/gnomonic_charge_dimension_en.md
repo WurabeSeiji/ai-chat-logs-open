@@ -1,4 +1,4 @@
-# Geometric Origin of the Charge Dimension in Discrete Gnomonic Projection: 5-Dimensional Spacetime and Charge Quantization
+# Geometric Origin of the Charge Dimension in Discrete Central Projection: 5-Dimensional Spacetime and Charge Quantization
 
 **Author:** Noriaki Kihara  
 **Affiliation:** WF System Co., Ltd. (Osaka University, Faculty of Engineering Science, B.Eng.)  
@@ -7,31 +7,31 @@
 **Type:** Research Note (Geometric Investigation)  
 **DOI:** https://doi.org/10.5281/zenodo.19435162  
 **Previous Papers:**
-- [1] Geometric Formulation of 4-Dimensional Spacetime via Gnomonic Projection. DOI: 10.5281/zenodo.19427780.
-- [2] Geometric Origin of Lorentzian Spacetime via Gnomonic Projection: A Unified Description through the Discretization Constant $C$.
+- [1] Geometric Formulation of 4-Dimensional Space via Central Projection. DOI: 10.5281/zenodo.19427780.
+- [2] Geometric Symmetries of Central Projection: Mathematical Foundations of the Multi-Axis Model. DOI: 10.5281/zenodo.19434932.
 
 ---
 
 ## Abstract
 
-In the previous paper [2], we showed that the isotropic geodesic equation $l^2 + t^2 = Nx^2$ on the discrete Minkowski lattice $\mathbb{Z}^{1+N}$ has no positive integer solutions for $N = 3$ (4-dimensional spacetime) — an arithmetic anomaly — and that solutions first exist for $N = 4$ (5-dimensional spacetime). This paper identifies the fifth dimension required by this number-theoretic constraint with the charge (Coulomb) dimension and extends the gnomonic projection to $S^5(R)$.
+In the previous paper [2], we showed that the isotropic geodesic equation $l^2 + t^2 = Nx^2$ on the discrete Minkowski lattice $\mathbb{Z}^{1+N}$ has no positive integer solutions for $N = 3$ (4-dimensional spacetime) — an arithmetic anomaly — and that solutions first exist for $N = 4$ (5-dimensional spacetime). This paper identifies the fifth dimension required by this number-theoretic constraint with the charge (Coulomb) dimension and extends the central projection to $S^5(R)$.
 
 No new coupling constants are introduced. The sole coupling constant $C$ (dimension: length) is retained, and a conversion coefficient $Q = C/e_0$ ($e_0$: minimum charge quantum) linking the charge dimension to the length dimension is defined. This makes the coordinate on the discrete lattice $\tilde{\phi} = q/e_0 \in \mathbb{Z}$ an integer charge number, and charge quantization is naturally derived as a consequence of the discrete lattice without assuming compactification. The theory does not specify the value of $e_0$, treating it as a quantity to be determined by experiment. In current particle physics, $e_0 = e/3$ (quark charge), and all known particle charges, including the fractional charges of quarks, are expressed as integers $\tilde{\phi}$.
 
-Furthermore, the $1/r^2$ Coulomb law is derived from the gnomonic mapping in the charge direction, and combined with the Lorentz invariance from [2], Maxwell's equations in their entirety are geometrically derived. Additionally, from the difference in observability of the curvature directions, the difference in polarization structure between electromagnetic waves (spin-1) and gravitational waves (spin-2), as well as the absence of the equivalence principle for electromagnetic forces, emerge naturally.
+Furthermore, the $1/r^2$ Coulomb law is derived from the central projection in the charge direction, and combined with the Lorentz invariance from [2], Maxwell's equations in their entirety are geometrically derived. Additionally, from the difference in observability of the curvature directions, the difference in polarization structure between electromagnetic waves (spin-1) and gravitational waves (spin-2), as well as the absence of the equivalence principle for electromagnetic forces, emerge naturally.
 
 ---
 
 ## 1. Introduction: Confirmation of Discretization Premises
 
-### 1.1 Premise: The Discrete Gnomonic Mapping Has Been Verified
+### 1.1 Premise: The Discrete Central Projection Has Been Verified
 
-This paper takes the **discrete gnomonic projection** established in the previous paper [2] as its starting point. The following results have already been verified and are used as premises in this paper:
+This paper takes the **discrete central projection** established in the previous paper [2] as its starting point. The following results have already been verified and are used as premises in this paper:
 
 > **Established results of [2]:**
 >
 > 1. The introduction of the coupling constant $C$ allows continuous coordinates $x^\mu$ to be discretized into dimensionless integer coordinates $\tilde{x}^\mu = x^\mu/C \in \mathbb{Z}$ (Definition 6.0).
-> 2. Under the curvature parameter $w = C/R \in \mathbb{Z}_{\geq 0}$, the discrete gnomonic mapping $\tilde{Y}^\mu = \tilde{x}^\mu / \tilde{L}$ is defined (Definition 6.1).
+> 2. Under the curvature parameter $w = C/R \in \mathbb{Z}_{\geq 0}$, the discrete central projection $\tilde{Y}^\mu = \tilde{x}^\mu / \tilde{L}$ is defined (Definition 6.1).
 > 3. **All metrics are in quadratic form** $\tilde{\sigma}^2 = \sum_\mu \epsilon_\mu (\tilde{x}^\mu)^2$, and $\tilde{L}^2 = 1 + w^2 \tilde{\sigma}^2$ is defined as a sum of integer squares.
 > 4. In the Euclidean version, $\tilde{L}^2 \geq 1 > 0$ is **guaranteed at all lattice points** (Theorem 6.1 (i)).
 > 5. The continuous limit $C \to 0$ formally agrees with the continuous version (Corollary 6.2).
@@ -56,7 +56,7 @@ $$(-n)^2 = n^2 \qquad \forall n \in \mathbb{Z} \tag{1.1}$$
 
 $$\text{Discrete lattice (integer coordinates)} \Longrightarrow \text{Negative values exist on coordinates}$$
 $$\Longrightarrow \text{Metric must be sign-invariant} \Longrightarrow \text{Quadratic form } (\tilde{x}^\mu)^2 \text{ is required}$$
-$$\Longrightarrow \text{Gnomonic mapping is defined for all integers}$$
+$$\Longrightarrow \text{Central projection is defined for all integers}$$
 
 **Remark 1.1** (Physical meaning of negative values on each axis)
 
@@ -93,9 +93,9 @@ The treatment of the charge dimension $\phi$ added in this paper is fundamentall
 
 ### 1.5 Organization
 
-- §2: Extension of the 5D gnomonic mapping
+- §2: Extension of the 5D central projection
 - §3: Conversion coefficient $Q$ and charge quantization
-- §4: 5D discrete gnomonic mapping
+- §4: 5D discrete central projection
 - §5: Recovery of discrete isotropy at $N = 4$
 - §6: 5D Einstein tensor and cosmological constant
 - §7: Consistency checks
@@ -103,7 +103,7 @@ The treatment of the charge dimension $\phi$ added in this paper is fundamentall
 
 ---
 
-## 2. Extension of the 5-Dimensional Gnomonic Mapping
+## 2. Extension of the 5-Dimensional Central Projection
 
 ### 2.1 Definition of the Coordinate System
 
@@ -122,7 +122,7 @@ $$\epsilon_\mu = (+1, +1, +1, +1, -1), \qquad \mu = 1, \ldots, 5 \tag{2.2}$$
 
 Four spatial dimensions ($x, y, z, \phi$) carry positive signature; one time dimension ($ct$) carries negative signature.
 
-### 2.2 5-Dimensional Gnomonic Mapping
+### 2.2 5-Dimensional Central Projection
 
 Applying the general-dimension result of [1] to $n = 5$:
 
@@ -209,7 +209,7 @@ All are integers, and the metric $\tilde{\phi}^2$ is identical for positive and 
 
 ---
 
-## 4. 5-Dimensional Discrete Gnomonic Mapping
+## 4. 5-Dimensional Discrete Central Projection
 
 ### 4.1 Discretization
 
@@ -227,7 +227,7 @@ $$\tilde{Y}^\mu = \frac{\tilde{x}^\mu}{\tilde{L}}, \qquad \tilde{Y}^6 = \frac{1}
 
 ### 4.3 Regularity (5D Version)
 
-**Theorem 4.1** (Regularity of the 5D discrete gnomonic mapping)
+**Theorem 4.1** (Regularity of the 5D discrete central projection)
 
 **(i) Euclidean signature** ($\epsilon_\mu = (+1,+1,+1,+1,+1)$):
 
@@ -249,7 +249,7 @@ $\blacksquare$
 The horizon in the 4D version ([2] equation (6.6)) was $c^2t^2 = R^2 + x^2 + y^2 + z^2$. In the 5D version (4.6), $Q^2q^2 \geq 0$ is added to the right-hand side. Therefore, charged particles ($q \neq 0$) have greater margin to the horizon and remain within the horizon over a broader region than in the 4D version for the same time coordinate.
 
 **Remark 4.2** (Safety for negative charge values)  
-When $\tilde{\phi} = -n$ ($n > 0$, negative charge), $\tilde{\phi}^2 = n^2 > 0$. By the quadratic metric, the contribution to $\tilde{\sigma}^2$ is always non-negative, and the value of $\tilde{L}^2$ does not depend on the sign of $\tilde{\phi}$. The gnomonic mapping is fully defined for negative charge coordinates.
+When $\tilde{\phi} = -n$ ($n > 0$, negative charge), $\tilde{\phi}^2 = n^2 > 0$. By the quadratic metric, the contribution to $\tilde{\sigma}^2$ is always non-negative, and the value of $\tilde{L}^2$ does not depend on the sign of $\tilde{\phi}$. The central projection is fully defined for negative charge coordinates.
 
 ---
 
@@ -334,7 +334,7 @@ All dimensions are uniformly discretized by $C$.
 ### 7.3 Consistency of Quadratic Metrics with Negative Coordinate Values
 
 **Proposition 7.1** (Safety of the mapping for negative coordinate values)  
-In the discrete gnomonic mapping (4.2)–(4.3), for arbitrary $\tilde{x}^\mu \in \mathbb{Z}$ (including positive and negative values):
+In the discrete central projection (4.2)–(4.3), for arbitrary $\tilde{x}^\mu \in \mathbb{Z}$ (including positive and negative values):
 
 **(i)** In the Euclidean version, $\tilde{L}^2 \geq 1 > 0$ holds at all lattice points. This follows from $\tilde{\sigma}^2 = \sum (\tilde{x}^\mu)^2 \geq 0$ (the quadratic metric eliminates the sign of negative coordinate values).
 
@@ -352,7 +352,7 @@ $\blacksquare$
 
 The value of $Q = C/e_0$ is determined from the experimental value $e_0$, but the theoretical derivation of $\alpha = e^2/(4\pi\epsilon_0 \hbar c) \approx 1/137$ is not given in this paper. The geometric derivation of $\alpha$ via Wyler's formula [6] and its connection to the symmetry group $SO(5,1)$ of this model's $S^5(R)$ is an important task. If $\alpha$ is theoretically derived, the value $e_0 = e/3$ would be determined from $C$ and $\alpha$, making $Q$ fully geometric.
 
-### 8.2 Gnomonic Mapping in the Charge Direction and the Electromagnetic Field
+### 8.2 Central Projection in the Charge Direction and the Electromagnetic Field
 
 #### 8.2.1 Basic Concept: Directed Curvature in the $\phi$-Direction
 
@@ -371,7 +371,7 @@ The $R$-direction is unobservable and therefore has no direction, giving uniform
 
 #### 8.2.2 4D Beltrami Metric in the $R = \infty$ Limit
 
-Setting $R = \infty$ (no gravity, flat background), a source with charge $q_0$ gives curvature radius $\phi_0 = Qq_0$ to the $(x,y,z,t)$ space. The 4D Beltrami (gnomonic) metric is:
+Setting $R = \infty$ (no gravity, flat background), a source with charge $q_0$ gives curvature radius $\phi_0 = Qq_0$ to the $(x,y,z,t)$ space. The 4D Beltrami (central projection) metric is:
 
 $$g_{\mu\nu} = \frac{\phi_0^2}{l_q^2}\left(\eta_{\mu\nu} - \frac{x_\mu x_\nu}{l_q^2}\right), \qquad l_q^2 = \phi_0^2 + \sigma^2 \tag{8.1}$$
 
@@ -399,11 +399,11 @@ $$\frac{d^2 x^\rho}{d\tau^2} = \frac{2K}{\Sigma}\left(x_\mu \frac{dx^\mu}{d\tau}
 
 Geodesics in Beltrami coordinates are "straight lines," and the right-hand side of (8.4) describes only a reparameterization of the affine parameter. **A spatially static particle in Beltrami coordinates lies on a geodesic.**
 
-However, a crucial physical fact must not be overlooked: **even when spatially static, a particle is always moving in the time direction.** The time coordinate $x^0 = ct$ always increases. It is this time progression that generates spatial acceleration through the gnomonic mapping.
+However, a crucial physical fact must not be overlooked: **even when spatially static, a particle is always moving in the time direction.** The time coordinate $x^0 = ct$ always increases. It is this time progression that generates spatial acceleration through the central projection.
 
-#### 8.2.5 Gnomonic Acceleration from Time Progression: Derivation of the $1/r^2$ Law
+#### 8.2.5 Acceleration from Central Projection via Time Progression: Derivation of the $1/r^2$ Law
 
-The gnomonic mapping (embedding coordinates on the 5D side) gives:
+The central projection (embedding coordinates on the 5D side) gives:
 
 $$Y^i = \frac{\phi_0 \cdot x^i}{l_q}, \qquad l_q^2 = \phi_0^2 + r^2 - c^2t^2 \tag{8.5}$$
 
@@ -425,14 +425,14 @@ $$\boxed{\frac{d^2 Y^i}{dt^2} \approx \frac{Qq_0 \cdot c^2}{r^2}\,\hat{r}_i} \ta
 
 Equation (8.8) gives the acceleration field created by the source charge $q_0$. The test particle's response is determined by its position $\phi_1 = Qq_1$ on the $\phi$-axis:
 
-- **Neutral particle** ($q_1 = 0$): $\phi_1 = 0$ (tangent point of the gnomonic mapping). At the tangent point, the metric is flat (Minkowski), and curvature effects are zero. Therefore, no electromagnetic force is experienced.
+- **Neutral particle** ($q_1 = 0$): $\phi_1 = 0$ (tangent point of the central projection). At the tangent point, the metric is flat (Minkowski), and curvature effects are zero. Therefore, no electromagnetic force is experienced.
 - **Charged particle** ($q_1 \neq 0$): $\phi_1 \neq 0$ (away from the tangent point). The farther from the tangent point $|\phi_1| = Q|q_1|$, the stronger the curvature effects.
 
 Therefore, the test particle's acceleration is naturally proportional to $q_1$:
 
 $$a \sim \frac{Q^2 q_0 q_1 c^2}{r^2} \tag{8.9}$$
 
-This is not an additional assumption but a **geometric consequence of the gnomonic mapping**: the test particle's position on the $\phi$-axis (= charge) determines its response to curvature.
+This is not an additional assumption but a **geometric consequence of the central projection**: the test particle's position on the $\phi$-axis (= charge) determines its response to curvature.
 
 **Remark 8.3** (The absence of the equivalence principle follows from the observability of $\phi$)  
 For gravity, since the $R$-direction is unobservable, a particle's "position" along $R$ is undefined, and all particles respond identically to curvature (equivalence principle). For electromagnetism, since the $\phi$-direction is observable, a particle's position $\phi_1 = Qq_1$ along $\phi$ is defined, and its response depends on $q_1$. **The equivalence principle is a consequence of the unobservability of $R$, and the absence of the equivalence principle for electromagnetic forces is a consequence of the observability of $\phi$.**
@@ -526,9 +526,9 @@ The enormous gap between $w = 0$ and $w = 1$ (the discrete version of the cosmol
 
 ## References
 
-[1] Kihara, N. (2026). Geometric Formulation of 4-Dimensional Spacetime via Gnomonic Projection. DOI: 10.5281/zenodo.19427780.
+[1] Kihara, N. (2026). *Geometric Formulation of 4-Dimensional Space via Central Projection*. DOI: 10.5281/zenodo.19427780.
 
-[2] Kihara, N. (2026). Geometric Origin of Lorentzian Spacetime via Gnomonic Projection: A Unified Description through the Discretization Constant $C$. DOI: 10.5281/zenodo.19434932.
+[2] Kihara, N. (2026). *Geometric Symmetries of Central Projection: Mathematical Foundations of the Multi-Axis Model*. DOI: 10.5281/zenodo.19434932.
 
 [3] Kihara, N. (2026). Solution of Positive Integer Solutions in Discrete Minkowski Intervals Using Gaussian Integers. GitHub: ai-chat-logs-open.
 

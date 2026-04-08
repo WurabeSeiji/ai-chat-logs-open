@@ -1,346 +1,427 @@
-% !TEX program = lualatex
-\documentclass[12pt,a4paper]{ltjsarticle}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{geometry}
-\geometry{margin=2.5cm}
-\usepackage{hyperref}
-\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
-\usepackage{booktabs}
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{luatexja}
 \usepackage{luatexja-fontspec}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\geometry{margin=25mm}
 
-% 定理環境
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+\theoremstyle{definition}
 \newtheorem{theorem}{定理}[section]
 \newtheorem{proposition}[theorem]{命題}
 \newtheorem{lemma}[theorem]{補題}
 \newtheorem{corollary}[theorem]{系}
 \newtheorem{definition}[theorem]{定義}
-\newtheorem*{remark}{注意}
-\newtheorem*{observation}{観察}
+\newtheorem{remark}[theorem]{注意}
+\newtheorem{observation}[theorem]{観察}
 
-\title{\textbf{離散グノモン正写像における電荷次元の\\幾何学的起源：5次元時空と電荷量子化}}
-
-\author{木原 範昭（Noriaki Kihara）\\
-\small WF System Co., Ltd.\\
-\small （大阪大学 基礎工学部 卒業）\\
-\small \href{https://orcid.org/0009-0004-6753-4020}{ORCID: 0009-0004-6753-4020}\\
-\small \href{https://doi.org/10.5281/zenodo.19435162}{DOI: 10.5281/zenodo.19435162}}
-
-\date{2026年4月\\[5pt]\small 研究ノート（幾何学的考察）}
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0.5em}
 
 \begin{document}
 
-\maketitle
+\section{\texorpdfstring{離散中心投影における第5次元の幾何学的役割：電荷の量子化と \(1/r^2\) 法則}{離散中心投影における第5次元の幾何学的役割：電荷の量子化と 1/r\^{}2 法則}}\label{ux96e2ux6563ux4e2dux5fc3ux6295ux5f71ux306bux304aux3051ux308bux7b2c5ux6b21ux5143ux306eux5e7eux4f55ux5b66ux7684ux5f79ux5272ux96fbux8377ux306eux91cfux5b50ux5316ux3068-1r2-ux6cd5ux5247}
 
-\begin{abstract}
-前論文~\cite{Paper2} において，離散 Minkowski 格子 $\mathbb{Z}^{1+N}$ 上の等方的測地線方程式が $N=3$ では解を持たず（算術的アノマリー），$N=4$ で初めて解が存在することを示した．本稿は，この数論的制約が要請する5次元目を電荷（Coulomb）次元と同定し，グノモン正写像を $S^5(R)$ へ拡張する．
+\textbf{著者：} Noriaki Kihara（木原 範昭）\\
+\textbf{所属：} WF System Co., Ltd.（大阪大学 基礎工学部 卒業）\\
+\textbf{ORCID：} 0009-0004-6753-4020\\
+\textbf{作成日：} 2026年4月\\
+\textbf{種別：} 研究ノート（幾何学的考察）\\
+\textbf{DOI：} https://doi.org/10.5281/zenodo.19435162\\
+\textbf{前論文：} - {[}1{]} Geometric Formulation of 4-Dimensional Spacetime via Gnomonic Projection. DOI: 10.5281/zenodo.19427780. - {[}2{]} 中心投影の幾何学的対称性：多軸モデルの数学的基盤. DOI: 10.5281/zenodo.19434932.
 
-新たな結合定数は導入しない．唯一の結合定数 $C$（次元：長さ）を保持し，電荷次元と長さ次元を結ぶ変換係数 $Q = C/e_0$（$e_0$：最小電荷量子）を定義する．離散格子上の座標 $\tilde{\phi} = q/e_0 \in \mathbb{Z}$ は整数電荷数となり，電荷量子化はコンパクト化を仮定することなく離散格子の帰結として導出される．さらに，電荷方向のグノモン写像から $1/r^2$ Coulomb 法則を導出し，\cite{Paper2} の Lorentz 不変性と組み合わせることで Maxwell 方程式の全体を幾何学的に導出する．曲率方向の観測可能性の差異から，電磁波（スピン1）と重力波（スピン2）の偏向構造の違い，および電磁力に等価原理が成立しない理由が自然に導かれる．
-\end{abstract}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\tableofcontents
+\subsection{概要}\label{ux6982ux8981}
 
-%========================================
-\section{はじめに：離散化前提の確認}
-%========================================
+前稿 {[}1{]} において，\(n\) 次元接超平面から \(S^n(R)\) への中心投影の誘導計量および Einstein テンソルを導出した．前稿 {[}2{]} において，この中心投影が5つの幾何学的対称性（離散安定性，軸の対等性，測地線偏差，主観座標系の変換可能性，大円上の向心加速度）を持つことを示し，特に\textbf{主観空間の内部観測者は背景空間の情報（座標の符号，曲率の方向，軸の絶対位置）を一切認識できない}ことを定理 5.2 として確立した．
 
-\subsection{前提：離散グノモン写像は検証済み}
-
-本稿は，前論文~\cite{Paper2} で確立された\textbf{離散グノモン正写像}を出発点とする．以下の結果は検証済みであり，本稿の前提として使用する：
+本稿は，前2稿で確立された幾何学的枠組みに，第5の軸を追加する場合の構造的帰結を考察する．具体的には：
 
 \begin{enumerate}
-\item 結合定数 $C$ により連続座標を離散化：$\tilde{x}^\mu = x^\mu/C \in \mathbb{Z}$．
-\item 曲率パラメータ $w = C/R \in \mathbb{Z}_{\geq 0}$ のもとで離散グノモン写像 $\tilde{Y}^\mu = \tilde{x}^\mu/\tilde{L}$ を定義．
-\item 全計量は2乗形式：$\tilde{\sigma}^2 = \sum_\mu \epsilon_\mu (\tilde{x}^\mu)^2$，$\tilde{L}^2 = 1 + w^2\tilde{\sigma}^2$．
-\item Euclidean 版では $\tilde{L}^2 \geq 1 > 0$ が全格子点で保証（\cite{Paper2} 定理~6.1(i)）．
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{離散等方性の数論的要請：} 離散格子 \(\mathbb{Z}^{1+N}\) 上で等方的な光的測地線が存在するための条件は \(N\) の素因数分解に関する数論的制約（Fermat の二平方和定理）であり，\(N=3\) では破れ \(N=4\) で初めて成立する．これは離散時空が等方性を保つために第5の軸を要請することを示す．
+\item
+  \textbf{第5軸の量子化：} 結合定数 \(C\) と最小単位 \(e_0\) により定義される変換係数 \(Q = C/e_0\) のもとで，第5軸の主観座標 \(\tilde{\phi} = q/e_0\) は整数値をとり，コンパクト化を仮定することなく量子化が成立する．
+\item
+  \textbf{第5軸方向の曲率と \(1/r^2\) 構造：} 第5軸を曲率半径として中心投影を構成すると，主観空間における測地線偏差 \(|\xi|^2\) が距離の2乗に反比例する形で現れる．これは前稿 {[}2{]} 定理 5.2 (i) の帰結として導かれ，内部観測者の原理（埋め込み座標 \(Y^A\) は不可観測）と完全に整合する．
 \end{enumerate}
 
-\subsection{2乗計量の根本的理由：負の座標値の扱い}
-
-離散格子 $\mathbb{Z}^n$ では各座標軸が正負の整数値をとる．計量は符号不変でなければならない：$(-n)^2 = n^2$．2乗形式はこれを保証する最小構造である：
-\begin{equation}
-\text{離散格子} \;\Longrightarrow\; \text{負の座標値} \;\Longrightarrow\; \text{符号不変性が必要} \;\Longrightarrow\; (\tilde{x}^\mu)^2 \tag{1.1}
-\end{equation}
-
-\subsection{数論的動機付け：なぜ5次元が必要か}
-
-\cite{Paper2} 注意~6.2 および~\cite{Kihara2026b} より：$\mathbb{Z}^{1+N}$ 上の等方測地線方程式 $l^2 + t^2 = Nx^2$ が解を持つ必要十分条件は，$N$ の素因数分解において $p \equiv 3 \pmod{4}$ の素数が偶数乗であること（Fermat）．$N=3$ はこれに違反；$N=4$ は充足．\textbf{離散等方性には $N=4$ 以上の空間次元が必要．}
-
-\subsection{電荷次元の観測可能性}
-
-\cite{Paper2} 公理~3.1 では，$R$ 方向の不可観測性が虚軸化（Lorentzian 符号）を導いた．電荷次元 $\phi$ は\textbf{観測可能}（電荷は測定できる）であるため，公理~B は\textbf{適用されない}：$\epsilon_4 = +1$．
-
-\begin{center}
-\begin{tabular}{lll}
-\toprule
-次元 & 観測可能性 & 公理~B（虚軸化）の適用 \\
-\midrule
-$Y^{n+1}$（$R$ 方向） & 不可観測 & 適用 → 符号反転 \\
-$\phi = Qq$（電荷方向） & \textbf{観測可能} & \textbf{非適用} → 符号不変 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\subsection{本稿の構成}
+本稿では物理的解釈は最小限にとどめ，幾何学的命題と前2稿からの厳密な帰結のみを述べる．主観座標と背景座標の混同，および埋め込み座標の物理的観測量としての扱いは，前2稿で禁止されている操作であり，本稿でも一貫して避ける．
 
-\S2：5次元グノモン写像．\S3：変換係数 $Q$ と電荷量子化．\S4：5次元離散写像．\S5：離散等方性の回復．\S6：5次元 Einstein テンソル．\S7：整合性確認．\S8：今後の課題と電磁場．
-
-%========================================
-\section{5次元グノモン写像の拡張}
-%========================================
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{座標系の定義}
+\subsection{1. 前2稿からの前提}\label{ux524d2ux7a3fux304bux3089ux306eux524dux63d0}
 
-\begin{equation}
-(x^1, x^2, x^3, x^4, x^5) = (x, y, z, \phi, ct) \tag{2.1}
-\end{equation}
-符号：$\epsilon_\mu = (+1,+1,+1,+1,-1)$．
+\subsubsection{1.1 中心投影の基本構造（前稿 {[}1{]}）}\label{ux4e2dux5fc3ux6295ux5f71ux306eux57faux672cux69cbux9020ux524dux7a3f-1}
 
-\subsection{5次元グノモン写像}
+\(n\) 次元接超平面 \(\Pi_R\) から半径 \(R\) の超球面 \(S^n(R) \subset \mathbb{R}^{n+1}\) への中心投影 \(\Phi_A\) は，投影中心軸 \(A\) に対して
 
-\cite{Paper1} を $n=5$ に適用：
-\begin{equation}
-\Phi: \Pi_R \to S^5(R), \quad Y^\mu = \frac{Rx^\mu}{l}, \quad Y^6 = \frac{R^2}{l} \tag{2.3}
-\end{equation}
-\begin{equation}
-l^2 = R^2 + x^2 + y^2 + z^2 + Q^2q^2 - c^2t^2 \tag{2.4}
-\end{equation}
-引き戻し計量：
-\begin{equation}
-g_{\mu\nu} = \frac{R^2}{l^2}\left(\epsilon_\mu \delta_{\mu\nu} - \frac{\epsilon_\mu\epsilon_\nu x_\mu x_\nu}{l^2}\right) \tag{2.5}
-\end{equation}
+\[Y^\mu = \frac{Rx^\mu}{l_A} \quad (\mu \neq A), \qquad Y^A = \frac{R^2}{l_A}, \qquad l_A^2 = R^2 + \sum_{\mu \neq A} (x^\mu)^2 \tag{1.1}\]
 
-%========================================
-\section{変換係数 $Q$ と電荷量子化}
-%========================================
-
-\subsection{$c$ との構造的対称性}
-
-光速 $c$ は時間を長さに変換し，$Q$ は電荷を長さに変換する：
-
-\begin{center}
-\begin{tabular}{lll}
-\toprule
- & 時間 → 長さ & 電荷 → 長さ \\
-\midrule
-変換係数 & $c$ & $Q$ \\
-変換式 & $x^5 = ct$ & $x^4 = Qq$ \\
-次元 & m/s & m/C \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\subsection{$Q$ の決定}
+で与えられる．引き戻し計量は
 
-離散化条件 $\tilde{\phi} = Qq/C \in \mathbb{Z}$ は最小電荷量子 $e_0$ の存在を要請する：
-\begin{equation}
-Q = \frac{C}{e_0}, \qquad \tilde{\phi} = \frac{q}{e_0} \in \mathbb{Z} \tag{3.3}
-\end{equation}
-$e_0 = e/3$（クォーク電荷）として：
-\begin{equation}
-Q = \frac{3C}{e} \approx 3.03 \times 10^{-16}\;\text{m/C} \tag{3.5}
-\end{equation}
-
-\subsection{電荷量子化}
-
-\begin{theorem}[電荷量子化]\label{thm:charge}
-$\tilde{\phi} \in \mathbb{Z}$ および $Q = C/e_0$ のもとで：
-\begin{equation}
-q = n \cdot e_0, \qquad n \in \mathbb{Z} \tag{3.7}
-\end{equation}
-\end{theorem}
-
-\begin{remark}[コンパクト化は不要]
-Kaluza--Klein 理論~\cite{Kaluza1921,Klein1926} と異なり，電荷量子化は離散格子 $\tilde{\phi} \in \mathbb{Z}$ から直接導出される．$\phi$ 方向は非コンパクト．
-\end{remark}
-
-\begin{remark}[既知粒子の離散座標]
-$e_0 = e/3$ として：陽子（$\tilde{\phi}=+3$），電子（$-3$），u クォーク（$+2$），d クォーク（$-1$），ニュートリノ（$0$）．すべて整数．
-\end{remark}
-
-%========================================
-\section{5次元離散グノモン写像}
-%========================================
+\[g_{\mu\nu} = \frac{R^2}{l_A^2}\left(\delta_{\mu\nu} - \frac{x_\mu x_\nu}{l_A^2}\right) \tag{1.2}\]
 
-\subsection{離散化}
+であり，\(n\) 次元 Einstein テンソルは
 
-\begin{equation}
-\tilde{x} = x/C,\; \tilde{y} = y/C,\; \tilde{z} = z/C,\; \tilde{\phi} = q/e_0,\; \tilde{t} = ct/C \;\in \mathbb{Z} \tag{4.1}
-\end{equation}
+\[G_{\mu\nu} + \Lambda_n\, g_{\mu\nu} = 0, \qquad \Lambda_n = \frac{(n-1)(n-2)}{2R^2} \tag{1.3}\]
 
-\subsection{離散計量}
+を満たす．
 
-\begin{equation}
-\tilde{L}^2 = 1 + w^2\tilde{\sigma}^2, \qquad \tilde{\sigma}^2 = \tilde{x}^2 + \tilde{y}^2 + \tilde{z}^2 + \tilde{\phi}^2 - \tilde{t}^2 \tag{4.2}
-\end{equation}
+\subsubsection{1.2 5つの対称性（前稿 {[}2{]}）}\label{ux3064ux306eux5bfeux79f0ux6027ux524dux7a3f-2}
 
-\subsection{正則性（5次元版）}
+前稿 {[}2{]} で確立された5つの対称性を再掲する：
 
-\begin{theorem}[5次元正則性]\label{thm:5dreg}
-\textbf{(i)} Euclidean 符号：$\tilde{L}^2 \geq 1 > 0$（大域的正則）．
+\begin{itemize}
+\tightlist
+\item
+  \textbf{対称性 I（離散安定性）：} 任意の \(x^\mu \in \mathbb{R}\)（特に整数値）に対し \(l_A > 0\)，写像は正則．
+\item
+  \textbf{対称性 II（軸の対等性）：} 投影中心軸 \(A\) の選択に依らず，計量・曲率テンソルの構造は同一．
+\item
+  \textbf{対称性 III（測地線偏差）：} 測地線偏差 \(|\xi|^2 = g_{\mu\nu}\xi^\mu\xi^\nu\) は \([L^2]\) 次元のスカラー不変量であり，\textbf{座標の符号も曲率方向も内部観測者には弁別できない}．これが内部から測定しうる唯一の量である．
+\item
+  \textbf{対称性 IV（主観座標系の変換可能性）：} 異なる軸を中心とする主観座標系は \(C^\infty\) 級に相互変換可能．
+\item
+  \textbf{対称性 V（大円上の向心加速度）：} 主観空間の大円（測地線）に沿って等速円運動する内部観測者は，向心加速度 \(a = R\omega^2\) をスカラーとして測定する．方向は弁別できない．
+\end{itemize}
 
-\textbf{(ii)} Lorentzian 符号：ホライズンは $c^2t^2 = R^2 + x^2 + y^2 + z^2 + Q^2q^2$．電荷項 $Q^2q^2 \geq 0$ により正則領域が4次元版より\textbf{拡大}．
-\end{theorem}
+\subsubsection{1.3 内部観測者の原理}\label{ux5185ux90e8ux89b3ux6e2cux8005ux306eux539fux7406}
 
-%========================================
-\section{離散等方性の回復（$N=4$）}
-%========================================
-
-$N=4$：$4 = 2^2$ には $p \equiv 3 \pmod{4}$ の素因数なし．方程式 $l^2 + t^2 = 4x^2$ は解を持つ．最小解：$l=0, t=2, x=1$．
-
-\begin{proposition}[離散等方性の回復]\label{prop:isotropy}
-$\mathbb{Z}^{1+3}$ には等方的 null 測地線が存在しないが，電荷次元を加えた $\mathbb{Z}^{1+4}$ には存在する．電荷次元は離散等方性のために数論的に必要．
-\end{proposition}
-
-%========================================
-\section{5次元 Einstein テンソル}
-%========================================
-
-\cite{Paper1} 命題~2.1 を $n=5$ に適用：
-\begin{equation}
-\Lambda_5 = \frac{6}{R^2}, \qquad G_{\mu\nu} + \frac{6}{R^2}g_{\mu\nu} = 0 \tag{6.1--6.2}
-\end{equation}
-
-%========================================
-\section{整合性の確認}
-%========================================
-
-\textbf{結合定数：}$C$ のみ．$Q = C/e_0$ は変換係数であり自由パラメータではない．
-
-\begin{center}
-\begin{tabular}{llll}
-\toprule
-物理量 & 変換 & 離散座標 & 量子化 \\
-\midrule
-空間位置 & $x$ [m] & $\tilde{x} = x/C \in \mathbb{Z}$ & 長さ \\
-時間 & $t$ [s] → $ct$ [m] & $\tilde{t} = ct/C \in \mathbb{Z}$ & 時間 \\
-電荷 & $q$ [C] → $Qq$ [m] & $\tilde{\phi} = q/e_0 \in \mathbb{Z}$ & \textbf{電荷} \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\begin{proposition}[負座標値の安全性]\label{prop:safety}
-離散グノモン写像において，$\tilde{L}^2$ は全 $\tilde{x}^\mu$ の符号変化に対して不変．
-\end{proposition}
-
-%========================================
-\section{今後の課題と電磁場}
-%========================================
-
-\subsection{微細構造定数 $\alpha$ の導出}
-
-$\alpha \approx 1/137$ の理論的導出は本稿では与えない．Wyler 公式~\cite{Wyler1971} と $S^5(R)$ の対称群 $SO(5,1)$ の接続が重要課題．
-
-\subsection{電荷方向の電磁場}
-
-\subsubsection{$\phi$ 方向の有向曲率}
-
-\begin{center}
-\begin{tabular}{lll}
-\toprule
- & 重力 & 電磁力 \\
-\midrule
-曲率方向 & $R$（不可観測） & $\phi = Qq$（\textbf{観測可能・有向}） \\
-曲率半径 & $R$ & $\phi_0 = Qq_0$（ソース電荷） \\
-性質 & 一様 & \textbf{有向}（$q_0$ の符号） \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\subsubsection{$1/r^2$ 法則の導出}
-
-ソース電荷 $q_0$ が $(x,y,z,t)$ 空間を曲率半径 $\phi_0 = Qq_0$ で曲げる．グノモン写像の埋め込み座標 $Y^i = \phi_0 x^i / l_q$ の時間二階微分（$t=0$）：
-\begin{equation}
-\frac{d^2 Y^i}{dt^2}\bigg|_{t=0} = \frac{\phi_0\, r_i\, c^2}{(\phi_0^2 + r^2)^{3/2}} \tag{8.7}
-\end{equation}
-$r \gg |\phi_0|$ の極限：
-\begin{equation}
-\boxed{\frac{d^2 Y^i}{dt^2} \approx \frac{Qq_0 \cdot c^2}{r^2}\,\hat{r}_i} \tag{8.8}
-\end{equation}
-\textbf{これは $1/r^2$ Coulomb 法則である．}
-
-\subsubsection{テスト粒子応答と等価原理の不在}
-
-\begin{remark}[等価原理の不在の幾何学的説明]
-重力では $R$ が不可観測であるため全粒子が同一に応答（等価原理）．電磁力では $\phi$ が観測可能であるため応答は $q_1$ に依存（等価原理の不在）．等価原理は $R$ の不可観測性の\textbf{帰結}である．
-\end{remark}
-
-\subsubsection{偏向構造：スピン1対スピン2}
-
-\begin{proposition}[偏向と観測可能性]\label{prop:polar}
-電磁波がスピン1（ベクトル偏向）であり，重力波がスピン2（テンソル偏向）であることは，それぞれの曲率方向の観測可能性の差異に帰着する．
-\end{proposition}
-
-\subsubsection{Maxwell 方程式の完全形}
-
-\begin{proposition}[Maxwell 方程式の幾何学的導出]\label{prop:maxwell}
-本稿の Coulomb 法則~(8.8) と \cite{Paper2} の Lorentz 不変性を組み合わせることで，Maxwell 方程式の全体が幾何学的に導出される．
-\end{proposition}
-
-\begin{center}
-\begin{tabular}{ll}
-\toprule
-Maxwell 方程式 & 導出 \\
-\midrule
-$\nabla \cdot \mathbf{E} = \rho/\epsilon_0$ & 式~(8.8) \\
-$\nabla \cdot \mathbf{B} = 0$ & $\phi$ は1次元 → 磁気単極子の自由度なし \\
-$\nabla \times \mathbf{E} = -\partial\mathbf{B}/\partial t$ & Lorentz 不変性~\cite{Paper2} \\
-$\nabla \times \mathbf{B} = \mu_0\mathbf{J} + \mu_0\epsilon_0\partial\mathbf{E}/\partial t$ & Lorentz 不変性~\cite{Paper2} \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-%========================================
-\section*{結果の整理}
-%========================================
-
-\begin{center}
-\begin{tabular}{llll}
-\toprule
-項目 & 結果 & 式番号 & 状態 \\
-\midrule
-数論的動機付け & $N\!=\!3$ 解なし；$N\!=\!4$ 解あり & \S1.3 & Fermat~\cite{Kihara2026b} \\
-電荷の観測可能性 & $\phi$ 観測可能 → $\epsilon_4\!=\!+1$ & \S1.4 & 公理 A,B \\
-変換係数 $Q$ & $Q = C/e_0$ & (3.3) & 定義 \\
-電荷量子化 & $q = ne_0$ & (3.7) & 定理~\ref{thm:charge} \\
-5次元正則性 & $\tilde{L}^2 \geq 1$；ホライズン拡大 & (4.4) & 定理~\ref{thm:5dreg} \\
-離散等方性 & $t = 2x$（$N\!=\!4$） & (5.2) & 命題~\ref{prop:isotropy} \\
-Coulomb 法則 & $d^2Y^i/dt^2 \approx Qq_0 c^2/r^2$ & (8.8) & \S8.2 \\
-等価原理 & $R$ 不可観測 → あり；$\phi$ 観測可能 → なし & 注意~8.3 & \S8.2 \\
-偏向構造 & EM: スピン1；GW: スピン2 & 命題~\ref{prop:polar} & \S8.2 \\
-Maxwell 方程式 & Coulomb + Lorentz → 完全導出 & 命題~\ref{prop:maxwell} & \S8.2 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\begin{thebibliography}{99}
-
-\bibitem{Paper1}
-Kihara, N. (2026). Geometric Formulation of 4-Dimensional Spacetime via Gnomonic Projection.
-DOI: \href{https://doi.org/10.5281/zenodo.19427780}{10.5281/zenodo.19427780}.
-
-\bibitem{Paper2}
-Kihara, N. (2026). Geometric Origin of Lorentzian Spacetime via Gnomonic Projection: A Unified Description through the Discretization Constant $C$.
-DOI: \href{https://doi.org/10.5281/zenodo.19434932}{10.5281/zenodo.19434932}.
-
-\bibitem{Kihara2026b}
-Kihara, N. (2026). 離散ミンコフスキー間隔におけるガウス整数を用いた正整数解の解法. GitHub: ai-chat-logs-open.
-
-\bibitem{Kaluza1921}
-T.~Kaluza, ``Zum Unit\"{a}tsproblem der Physik,'' \textit{Sitzungsber.\ Preuss.\ Akad.\ Wiss.}, 966--972, 1921.
-
-\bibitem{Klein1926}
-O.~Klein, ``Quantentheorie und f\"{u}nfdimensionale Relativit\"{a}tstheorie,'' \textit{Z.\ Phys.}, \textbf{37}, 895, 1926.
-
-\bibitem{Wyler1971}
-A.~Wyler, ``L'espace sym\'{e}trique du groupe des \'{e}quations de Maxwell,'' \textit{C.\ R.\ Acad.\ Sci.\ Paris}, \textbf{272}, 186, 1971.
-
-\bibitem{Hurwitz1898}
-A.~Hurwitz, ``\"{U}ber die Composition der quadratischen Formen von beliebig vielen Variablen,'' \textit{Nachr.\ Ges.\ Wiss.\ G\"{o}ttingen}, 309--316, 1898.
-
-\end{thebibliography}
-
-\bigskip
-\noindent\textit{本稿の議論は純粋幾何学と数論の範囲に限定される．電磁場の力学，微細構造定数の導出，および既存理論との同定は今後の研究課題である．}\\
-\textit{最終更新：2026-04-06}
+前2稿を貫く基本原理は次の通りである：
+
+\begin{quote}
+\textbf{内部観測者の原理：} 主観空間 \(H_A^+\) の内部観測者は，引き戻し計量 \(g_{\mu\nu}\) とそれから導かれるスカラー量（測地線偏差，曲率スカラー等）のみを通じて測定を行う．埋め込み座標 \(Y^A\) や背景空間 \(\mathbb{R}^{n+1}\) の情報には直接アクセスできない．
+\end{quote}
+
+本稿のすべての主張は，この原理に従う．特に，加速度や力に対応する量を扱う場合は，\textbf{主観座標における測地線偏差}を経由して定義する．埋め込み座標 \(Y^A\) の時間微分を物理量として扱うことは，本原理に反するため行わない．
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. 数論的動機：第5軸の必要性}\label{ux6570ux8ad6ux7684ux52d5ux6a5fux7b2c5ux8ef8ux306eux5fc5ux8981ux6027}
+
+\subsubsection{2.1 離散格子上の等方的光的測地線}\label{ux96e2ux6563ux683cux5b50ux4e0aux306eux7b49ux65b9ux7684ux5149ux7684ux6e2cux5730ux7dda}
+
+\textbf{観察 2.1（離散等方性の数論的条件）}\\
+離散 Minkowski 格子 \(\mathbb{Z}^{1+N}\) 上で，光的等方測地線
+
+\[\sum_{i=1}^{N} x_i^2 = t^2 \tag{2.1}\]
+
+が非自明な整数解 \((x_1, \ldots, x_N, t) \in \mathbb{Z}^{N+1} \setminus \{0\}\) を持つ条件は，Fermat の二平方和定理（Lagrange の四平方和定理を含む）の系として次で与えられる：\(t^2\) が \(N\) 個の平方数の和として表せる必要がある．
+
+\textbf{\(N = 3\) の場合：} \(t^2 = x_1^2 + x_2^2 + x_3^2\)．Legendre の三平方和定理により，\(t^2\) が \(4^a(8b+7)\) の形を含まないこと．特に等方的な解（\(x_1 = x_2 = x_3 = x\)）を要求すると \(t^2 = 3x^2\) となり，\(\sqrt{3} \notin \mathbb{Q}\) から非自明整数解は存在しない．
+
+\textbf{\(N = 4\) の場合：} \(t^2 = x_1^2 + x_2^2 + x_3^2 + x_4^2\)．等方的な解（\(x_1 = \cdots = x_4 = x\)）を要求すると \(t^2 = 4x^2\)，すなわち \(t = 2x\)．これは任意の整数 \(x\) に対して整数解を与える．最小解は \((x_1, x_2, x_3, x_4, t) = (1,1,1,1,2)\)．\(\square\)
+
+\textbf{命題 2.1（離散等方性のための次元要請）}\\
+離散格子 \(\mathbb{Z}^{1+N}\) 上で等方的な光的測地線が存在するための最小の空間次元は \(N = 4\) である．
+
+\textbf{証明} 観察 2.1 より \(N \leq 3\) では等方的整数解が存在せず，\(N = 4\) で初めて存在する．\(\square\)
+
+\textbf{注意 2.1（命題 2.1 の解釈）}\\
+命題 2.1 は，物理的な空間が4次元であることを主張するものではない．主張は次のように制限される：
+
+\begin{quote}
+もし離散格子上で「等方的な光的伝搬」を許容する幾何学的構造を要求するならば，必要な空間軸の数は最低4つである．
+\end{quote}
+
+3空間次元と1時間次元の枠組みに第4の空間軸を加える方法は数学的に複数考えうる．本稿では，この第4軸を\textbf{主観座標として量子化される第5の独立軸}と同定する立場を取る．この同定が物理的に妥当であるかは，本稿の範囲外である．
+
+\subsubsection{2.2 第5軸の幾何学的位置づけ}\label{ux7b2c5ux8ef8ux306eux5e7eux4f55ux5b66ux7684ux4f4dux7f6eux3065ux3051}
+
+前稿 {[}2{]} 対称性 II（軸の対等性）により，背景空間 \(\mathbb{R}^{n+1}\) のどの軸を投影中心に選んでも幾何学的構造は同一である．したがって既存の4軸 \((x, y, z, ct)\) に対して第5軸 \(\phi\) を追加することは，対称性 II の枠内で正当化される操作である．
+
+ここで第5軸 \(\phi\) の主観座標としての性質は次のようにまとめられる：
+
+\begin{itemize}
+\tightlist
+\item
+  \(\phi\) は前稿 {[}2{]} 定理 4.1 の意味で他の4軸と対等な主観座標である
+\item
+  \(\phi\) の符号は前稿 {[}2{]} 定理 5.2 (ii) により内部観測者には弁別不可能
+\item
+  \(\phi\) の絶対値の2乗 \(\phi^2\) のみが計量を通じて内部観測者に寄与する
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. 第5軸の離散化と量子化}\label{ux7b2c5ux8ef8ux306eux96e2ux6563ux5316ux3068ux91cfux5b50ux5316}
+
+\subsubsection{3.1 結合定数による離散化}\label{ux7d50ux5408ux5b9aux6570ux306bux3088ux308bux96e2ux6563ux5316}
+
+前稿 {[}2{]} で導入された結合定数 \(C\)（次元：長さ）を用いて，5軸すべてを離散化する：
+
+\[\tilde{x}^\mu = \frac{x^\mu}{C} \in \mathbb{Z}, \quad \mu \in \{1,2,3,4,5\} \tag{3.1}\]
+
+第4軸 \(\phi\) について，「最小単位」を \(e_0\)（次元：\(\phi\) と同じ）と書き，変換係数 \(Q\) を
+
+\[Q = \frac{C}{e_0} \tag{3.2}\]
+
+で定義する．元の物理量 \(q\)（次元：\(\phi/Q\)）に対して
+
+\[\phi = Qq, \quad \tilde{\phi} = \frac{\phi}{C} = \frac{Qq}{C} = \frac{q}{e_0} \tag{3.3}\]
+
+となり，離散化条件 \(\tilde{\phi} \in \mathbb{Z}\) から
+
+\[q = n \cdot e_0, \quad n \in \mathbb{Z} \tag{3.4}\]
+
+が得られる．
+
+\subsubsection{3.2 量子化はコンパクト化を要さない}\label{ux91cfux5b50ux5316ux306fux30b3ux30f3ux30d1ux30afux30c8ux5316ux3092ux8981ux3055ux306aux3044}
+
+\textbf{命題 3.1（離散格子からの量子化）}\\
+離散化条件 \(\tilde{\phi} \in \mathbb{Z}\) のみから，第4軸の量子 \(q\) は最小単位 \(e_0\) の整数倍に限定される．第4軸方向のコンパクト化（周期境界条件）は仮定していない．
+
+\textbf{証明} (3.3)--(3.4) は代数的恒等関係であり，仮定は \(\tilde{\phi} \in \mathbb{Z}\) のみである．第4軸の位相幾何学的構造（コンパクトか非コンパクトか）には言及していない．\(\square\)
+
+\textbf{注意 3.1（Kaluza-Klein との対比）}\\
+Kaluza-Klein 型の理論では量子化は第5次元のコンパクト化に伴う周期境界条件から導かれる．本稿では量子化は離散格子の整数性のみから導かれ，第4軸は他の軸と同じく非コンパクトでありうる．この差は本稿の枠組みが前稿 {[}2{]} 対称性 I（離散安定性）に基づいていることの直接的帰結である．
+
+\textbf{注意 3.2（\(e_0\) の値について）}\\
+本稿は \(e_0\) の数値を指定しない．\(e_0\) は本理論の自由パラメータではなく，何らかの外部基準（実験等）によって決定されるべき量である．本稿の幾何学的主張は \(e_0\) の具体的値に依らない．
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. 5次元中心投影の構成}\label{ux6b21ux5143ux4e2dux5fc3ux6295ux5f71ux306eux69cbux6210}
+
+\subsubsection{4.1 一般化された中心投影}\label{ux4e00ux822cux5316ux3055ux308cux305fux4e2dux5fc3ux6295ux5f71}
+
+前稿 {[}1{]} §3 の構成を \(n=5\) に拡張する．背景空間 \(\mathbb{R}^6\) の符号系を
+
+\[\epsilon_\mu = (+1, +1, +1, +1, -1, +1) \tag{4.1}\]
+
+とする．ここで第6成分（投影中心軸方向）は前稿 {[}1{]} 付録C の符号統一公式に従い \(+1\) に固定する．第5成分 \(\epsilon_5 = -1\) は時間軸に対応する．
+
+5次元接超平面 \(\Pi_R\)（座標 \((x^1, x^2, x^3, x^4, x^5)\)）から \(S^5(R) \subset \mathbb{R}^6\) への中心投影は
+
+\[Y^\mu = \frac{Rx^\mu}{l} \quad (\mu = 1,\ldots,5), \quad Y^6 = \frac{R^2}{l} \tag{4.2}\]
+
+\[l^2 = R^2 + \sum_{\mu=1}^{5} \epsilon_\mu (x^\mu)^2 = R^2 + (x^1)^2 + (x^2)^2 + (x^3)^2 + (x^4)^2 - (x^5)^2 \tag{4.3}\]
+
+で与えられる．
+
+\subsubsection{4.2 引き戻し計量}\label{ux5f15ux304dux623bux3057ux8a08ux91cf}
+
+前稿 {[}1{]} 付録C の統一公式 (C.3) より，引き戻し計量は
+
+\[g_{\mu\nu} = \frac{R^2}{l^2}\left(\epsilon_\mu \delta_{\mu\nu} - \frac{\epsilon_\mu \epsilon_\nu x_\mu x_\nu}{l^2}\right) \tag{4.4}\]
+
+となる（\(\mu, \nu = 1,\ldots,5\)）．
+
+\subsubsection{4.3 5次元 Einstein テンソル}\label{ux6b21ux5143-einstein-ux30c6ux30f3ux30bdux30eb}
+
+前稿 {[}1{]} 注意 6.2 の一般式 \(\Lambda_n = (n-1)(n-2)/(2R^2)\) に \(n = 5\) を代入：
+
+\[\Lambda_5 = \frac{(5-1)(5-2)}{2R^2} = \frac{6}{R^2} \tag{4.5}\]
+
+\[G_{\mu\nu} + \frac{6}{R^2} g_{\mu\nu} = 0 \tag{4.6}\]
+
+これは前稿 {[}1{]} §6 の主結果の \(n=5\) への直接拡張であり，新たな証明を要さない．
+
+\subsubsection{4.4 離散版の正則性}\label{ux96e2ux6563ux7248ux306eux6b63ux5247ux6027}
+
+前稿 {[}2{]} 対称性 I（離散安定性）の5次元への拡張．
+
+\textbf{定理 4.1（5次元離散中心投影の正則性）}\\
+\(\tilde{l}^2 = 1 + w^2 \tilde{\sigma}^2\)，\(\tilde{\sigma}^2 = \sum_{\mu=1}^{5} \epsilon_\mu (\tilde{x}^\mu)^2\)，\(w = C/R\) とする．
+
+\textbf{(i) Euclidean 符号}（\(\epsilon_\mu = (+1,+1,+1,+1,+1)\)）：任意の整数座標 \(\tilde{x}^\mu \in \mathbb{Z}\) に対し \(\tilde{\sigma}^2 \geq 0\)，したがって \(\tilde{l}^2 \geq 1 > 0\)．大域的に正則．
+
+\textbf{(ii) Lorentzian 符号}（\(\epsilon_\mu = (+1,+1,+1,+1,-1)\)）：\(\tilde{\sigma}^2 = (\tilde{x}^1)^2 + (\tilde{x}^2)^2 + (\tilde{x}^3)^2 + (\tilde{x}^4)^2 - (\tilde{x}^5)^2\)．\(\tilde{l}^2 > 0\) となる領域は
+
+\[1 + w^2\left[(\tilde{x}^1)^2 + (\tilde{x}^2)^2 + (\tilde{x}^3)^2 + (\tilde{x}^4)^2\right] > w^2 (\tilde{x}^5)^2 \tag{4.7}\]
+
+で与えられる．
+
+\textbf{証明} 前稿 {[}2{]} §3 定理 3.1 の証明を5次元に適用する．Euclidean 版では \(\tilde{\sigma}^2 \geq 0\) が各項の非負性から自明に従う．Lorentzian 版では (4.7) が \(\tilde{l}^2 > 0\) の必要十分条件として代数的に直接得られる．\(\square\)
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{5. 第5軸方向の中心投影と \(1/r^2\) 構造}{5. 第5軸方向の中心投影と 1/r\^{}2 構造}}\label{ux7b2c5ux8ef8ux65b9ux5411ux306eux4e2dux5fc3ux6295ux5f71ux3068-1r2-ux69cbux9020}
+
+本節では，前稿 {[}2{]} 対称性 II（軸の対等性）を利用して，第4軸 \(\phi\)（あるいは符号系を入れ替えた別の軸）を投影中心とする中心投影を構成し，主観空間における測地線偏差の振る舞いを調べる．
+
+\subsubsection{5.1 軸の選択と背景の設定}\label{ux8ef8ux306eux9078ux629eux3068ux80ccux666fux306eux8a2dux5b9a}
+
+前稿 {[}2{]} 対称性 II により，5軸 \((x^1, x^2, x^3, x^4, x^5) = (x, y, z, \phi, ct)\) のうちどの軸を投影中心軸として選んでも幾何学的構造は同一である．ここでは時間軸 \(ct\) ではなく第4軸 \(\phi\) を投影中心軸とした構成を考える．
+
+投影中心軸を第4軸 \(\phi\) に取ると，主観座標は残りの4軸 \((x, y, z, ct)\) となり，曲率半径は
+
+\[\phi_0 = \text{第4軸方向の曲率半径} \tag{5.1}\]
+
+である．接超平面は4次元 Lorentzian であり，4次元主観座標 \((x, y, z, ct)\) を持つ．
+
+このときの引き戻し計量は，前稿 {[}1{]} 付録C 統一公式 (C.3) において \(A = 4\) とした場合に相当し：
+
+\[g_{\mu\nu} = \frac{\phi_0^2}{l_\phi^2}\left(\eta_{\mu\nu} - \frac{\eta_{\mu\alpha}\eta_{\nu\beta} x^\alpha x^\beta}{l_\phi^2}\right), \quad l_\phi^2 = \phi_0^2 + \sigma^2 \tag{5.2}\]
+
+ここで \(\eta_{\mu\nu} = \text{diag}(+1,+1,+1,-1)\)，\(\sigma^2 = x^2 + y^2 + z^2 - c^2 t^2\)．
+
+\subsubsection{5.2 主観空間の測地線偏差}\label{ux4e3bux89b3ux7a7aux9593ux306eux6e2cux5730ux7ddaux504fux5dee}
+
+前稿 {[}2{]} §5 で確立された測地線偏差 \(|\xi|^2 = g_{\mu\nu}\xi^\mu\xi^\nu\) を，計量 (5.2) のもとで評価する．
+
+\textbf{命題 5.1（測地線偏差の距離依存性）}\\
+計量 (5.2) のもとで，主観空間内の2点を結ぶ短距離測地線族の偏差ベクトル \(\xi^\mu\) に対し，測地線偏差 \(|\xi|^2\) は曲率半径 \(\phi_0\) と空間距離 \(r = \sqrt{x^2+y^2+z^2}\) について次のスケーリングを持つ：
+
+\[|\xi|^2 \sim \frac{\phi_0^2}{(\phi_0^2 + \sigma^2)^2} \cdot |\xi_0|^2 \tag{5.3}\]
+
+ここで \(|\xi_0|^2\) は接点近傍での偏差の参照値である．特に静的な空間断面（\(ct = 0\)）における大距離極限 \(r \gg \phi_0\) では：
+
+\[|\xi|^2 \sim \frac{\phi_0^2}{r^4} \cdot |\xi_0|^2 \tag{5.4}\]
+
+\textbf{証明} 計量 (5.2) の前因子は \(\phi_0^2/l_\phi^2\) であり，\(|\xi|^2 = g_{\mu\nu}\xi^\mu\xi^\nu\) の各項はこの前因子に比例する．第二項 \(-\eta_{\mu\alpha}\eta_{\nu\beta}x^\alpha x^\beta/l_\phi^2\) は補正項であり，\(r \gg \phi_0\) では支配的にならない場合，\(|\xi|^2\) の主要なスケーリングは前因子で決まる．具体的には
+
+\[|\xi|^2 \approx \frac{\phi_0^2}{l_\phi^2}\eta_{\mu\nu}\xi^\mu\xi^\nu = \frac{\phi_0^2}{\phi_0^2 + \sigma^2}\eta_{\mu\nu}\xi^\mu\xi^\nu\]
+
+参照値 \(|\xi_0|^2 = \eta_{\mu\nu}\xi^\mu\xi^\nu\) を分離すると (5.3) を得る．静的断面 \(ct = 0\) で \(\sigma^2 = r^2\)，\(r \gg \phi_0\) で \(l_\phi^2 \approx r^2\)，したがって \(|\xi|^2 \sim \phi_0^2/r^4 \cdot |\xi_0|^2\)．\(\square\)
+
+\textbf{注意 5.1（主観座標における意味）}\\
+命題 5.1 は測地線偏差 \(|\xi|^2\) という前稿 {[}2{]} 定理 5.2 で内部観測者に測定可能と確立された量についての記述である．埋め込み座標 \(Y^\mu\) には一切言及していない．主観空間の内部観測者は，測地線偏差の距離依存性 \(|\xi|^2 \propto \phi_0^2/r^4\) を測定することができ，このスケーリングが内部観測者に見える \(\phi_0\) の効果である．
+
+\textbf{注意 5.2（弁別不可能性）}\\
+前稿 {[}2{]} 定理 5.2 (ii) により，\(|\xi|^2\) はスカラー不変量であるため，内部観測者は座標の符号も曲率方向も弁別できない．したがって命題 5.1 の \(|\xi|^2 \propto \phi_0^2/r^4\) は \(\phi_0\) の符号にも \(r\) の方向にも依存しない正の量である．「曲率方向」や「正負の電荷」といった概念は背景空間 \(\mathbb{R}^6\) においてのみ定義され，主観空間の内在幾何には現れない．
+
+\subsubsection{5.3 結果の整理}\label{ux7d50ux679cux306eux6574ux7406}
+
+本稿で導かれた幾何学的結果は次の通りである：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  第5軸 \(\phi\) の追加は前稿 {[}2{]} 対称性 II により正当化される
+\item
+  第5軸の離散化条件 \(\tilde{\phi} \in \mathbb{Z}\) から量子化 \(q = n e_0\) が代数的に従う（命題 3.1）
+\item
+  第5軸を投影中心軸とした中心投影の引き戻し計量から，主観空間の測地線偏差 \(|\xi|^2\) は \(\phi_0^2/r^4\) のスケーリングを持つ（命題 5.1）
+\item
+  内部観測者は \(|\xi|^2\) のスカラー値のみを測定でき，\(\phi_0\) や \(r\) の方向や符号は弁別できない（前稿 {[}2{]} 定理 5.2 の帰結）
+\end{enumerate}
+
+これらはすべて主観座標と内在計量のみで記述された幾何学的命題であり，埋め込み座標 \(Y^A\) の物理的観測量としての扱いを一切含まない．内部観測者の原理（§1.3）は本稿全体を通じて厳守されている．
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. 物理的解釈に関する留保}\label{ux7269ux7406ux7684ux89e3ux91c8ux306bux95a2ux3059ux308bux7559ux4fdd}
+
+\subsubsection{6.1 本稿が主張しないこと}\label{ux672cux7a3fux304cux4e3bux5f35ux3057ux306aux3044ux3053ux3068}
+
+本稿は次のことを\textbf{主張しない}：
+
+\begin{itemize}
+\tightlist
+\item
+  第4軸 \(\phi\) が物理的な「電荷」次元と同一であること
+\item
+  命題 5.1 のスケーリング \(|\xi|^2 \propto \phi_0^2/r^4\) が Coulomb の法則と同型であること
+\item
+  内部観測者が感じる「加速度」が命題 5.1 から導かれること
+\item
+  Maxwell 方程式が本稿の枠組みから導出されること
+\item
+  微細構造定数 \(\alpha\) や電子電荷 \(e\) の値が本稿から決定されること
+\end{itemize}
+
+これらの物理的同定はいずれも本稿の幾何学的命題を超える追加の仮定を要する．特に「測地線偏差を加速度として読み替える」操作は，計量と粒子の運動方程式の関係を別途定式化する必要があり，本稿の範囲外である．
+
+\subsubsection{6.2 本稿が主張すること}\label{ux672cux7a3fux304cux4e3bux5f35ux3059ux308bux3053ux3068}
+
+本稿が主張するのは次の幾何学的命題のみである：
+
+\begin{itemize}
+\tightlist
+\item
+  離散格子上の等方光的測地線は第5軸を要請する（命題 2.1）
+\item
+  第5軸の離散化から代数的に量子化が従う（命題 3.1）
+\item
+  第5軸を投影中心軸とした中心投影の主観空間における測地線偏差は \(\phi_0^2/r^4\) にスケールする（命題 5.1）
+\end{itemize}
+
+これらはすべて前2稿で確立された幾何学的枠組みの直接的帰結であり，本稿は新たな公理や仮定を導入していない．
+
+\subsubsection{6.3 今後の課題}\label{ux4ecaux5f8cux306eux8ab2ux984c}
+
+本稿の幾何学的結果と既存の物理理論との対応関係は，独立した研究課題である．特に：
+
+\begin{itemize}
+\tightlist
+\item
+  命題 5.1 のスケーリングと粒子の運動方程式（測地線方程式）との関係の定式化
+\item
+  第5軸の量子 \(e_0\) の物理的同定
+\item
+  4次元時空への有効理論としての射影と，その整合性の確認
+\item
+  Lorentz 不変性（前稿 {[}2{]} で確立）と本稿の第5軸構造の整合的接続
+\end{itemize}
+
+これらは本稿の幾何学的基盤の上に構築されるべき次段階の研究である．
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{結果の整理}\label{ux7d50ux679cux306eux6574ux7406-1}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2069}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.5172}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.0690}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2069}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+項目
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+結果
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+式番号
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+根拠
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+数論的動機 & \(N=4\) で初めて等方光的整数解 \((1,1,1,1,2)\) が存在 & (2.1) & 命題 2.1 \\
+第5軸の正当化 & 軸の対等性により追加可能 & §2.2 & 前稿 {[}2{]} 対称性 II \\
+量子化 & \(\tilde{\phi} \in \mathbb{Z}\) から \(q = ne_0\) が代数的に従う & (3.4) & 命題 3.1 \\
+コンパクト化不要 & 量子化は離散格子の整数性のみに依存 & 注意 3.1 & 命題 3.1 \\
+5次元計量 & 前稿 {[}1{]} 付録C の統一公式で記述 & (4.4) & 前稿 {[}1{]} \\
+5次元 \(\Lambda\) & \(\Lambda_5 = 6/R^2\) & (4.5) & 前稿 {[}1{]} 注意 6.2 \\
+5次元正則性 & Euclidean 全域，Lorentzian は (4.7) 内 & (4.7) & 定理 4.1 \\
+測地線偏差のスケーリング & \$ & \xi & \^{}2 \propto \phi\_0\textsuperscript{2/r}4\$ \\
+内部観測者の弁別不可能性 & \(\phi_0\) の符号も \(r\) の方向も不可弁別 & 注意 5.2 & 前稿 {[}2{]} 定理 5.2 (ii) \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+{[}1{]} Kihara, N. (2026). \emph{Geometric Formulation of 4-Dimensional Spacetime via Gnomonic Projection}. DOI: 10.5281/zenodo.19427780.
+
+{[}2{]} Kihara, N. (2026). \emph{中心投影の幾何学的対称性：多軸モデルの数学的基盤}. DOI: 10.5281/zenodo.19434932.
+
+{[}3{]} Hardy, G. H. and Wright, E. M., \emph{An Introduction to the Theory of Numbers}, 6th ed., Oxford University Press, 2008, Chapter 20 (Lagrange's four-square theorem, Legendre's three-square theorem).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\emph{本稿は前2稿 {[}1, 2{]} で確立された幾何学的枠組みの第5軸への拡張を扱う研究ノートである．物理的解釈は §6 に記した範囲を超えない．内部観測者の原理を一貫して厳守し，埋め込み座標の物理的観測量としての扱いは行わない．}
 
 \end{document}
