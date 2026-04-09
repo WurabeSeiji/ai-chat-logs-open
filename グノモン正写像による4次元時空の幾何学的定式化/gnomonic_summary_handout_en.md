@@ -13,7 +13,7 @@
 |---|-------|-----|
 | [1] | Geometric Formulation of 4-Dimensional Space via Central Projection | [10.5281/zenodo.19427780](https://doi.org/10.5281/zenodo.19427780) |
 | [2] | Geometric Symmetries of Central Projection: Mathematical Foundations of the Multi-Axis Model | [10.5281/zenodo.19434932](https://doi.org/10.5281/zenodo.19434932) |
-| [3] | Geometric Role of the Fifth Dimension in Discrete Central Projection: Charge Quantization and the $1/r^2$ Law | [10.5281/zenodo.19435162](https://doi.org/10.5281/zenodo.19435162) |
+| [3] | Relativity of Observation in Multiple Subjective Spaces: Geometric Consequences of the Symmetries of Central Projection | [10.5281/zenodo.19435162](https://doi.org/10.5281/zenodo.19435162) |
 
 | Paper [1] | Paper [2] | Paper [3] |
 |:-:|:-:|:-:|
@@ -77,23 +77,19 @@ The Jacobian of coordinate transformations between subjective systems is $\parti
 
 ---
 
-### Paper [3]: Addition of the Fifth Axis and $1/r^2$ Structure
+### Paper [3]: Multiple Subjective Spaces and Relativity of Observation
 
-**11. Number-Theoretic Requirement for Discrete Isotropy**  
-The minimum spatial dimension for isotropic null geodesics on a discrete lattice $\mathbb{Z}^{1+N}$ is $N = 4$. For $N = 3$, $\sqrt{3} \notin \mathbb{Q}$ precludes solutions; for $N = 4$, $t = 2x$ provides solutions.  
+**11. Simultaneous Existence of Multiple Subjective Spaces**  
+From the ambient space $\mathbb{R}^{n+1}$, $n+1$ subjective spaces $\{H_A^+\}$ can be simultaneously constructed by the choice of the projection center axis. Each subjective space possesses structurally identical geometric properties by Symmetry II.  
 (Section 2, Proposition 2.1)
 
-**12. Quantization from the Discrete Lattice**  
-From the discretization condition $\tilde{\phi} \in \mathbb{Z}$ alone, $q = n \cdot e_0$ follows algebraically. No compactification is required.  
+**12. Limits of Information Obtained by Internal Observers**  
+An internal observer obtains only quantities constructed from the metric of their own subjective space and cannot access the value of the projection center axis, absolute position in the ambient space, or the existence of other subjective spaces.  
 (Section 3, Proposition 3.1)
 
-**13. Geodesic Deviation and $1/r^2$ Scaling along the Fifth Axis**  
-With the fifth axis $\phi$ as the projection center, geodesic deviation in the subjective space scales as
-
-$$|\xi|^2 \sim \frac{\phi_0^2}{r^4} \cdot |\xi_0|^2$$
-
-This is a positive quantity independent of the sign of $\phi_0$ and the direction of $r$.  
-(Section 5, Proposition 5.1, Remark 5.2)
+**13. Exchange of Axis Roles and Relativity of Observation**  
+What is the "projection center axis" (an external axis not directly accessible) for observer $A$ appears as one of the subjective coordinates for observer $B$, and vice versa. The roles of axes that are equivalent in the ambient space are exchanged by the choice of the observer's standpoint. There exists no geometric basis for determining which observer's standpoint is "correct."  
+(Section 4, Proposition 4.1; Section 5, Theorem 5.1)
 
 ---
 
@@ -120,26 +116,26 @@ Central Projection Φ: Π_R → Sⁿ(R)
 ├── Measurability of Acceleration (Symmetry V)
 │    Centripetal acceleration a = Rω² is measurable as a scalar
 │
-└── Addition of the Fifth Axis (Paper [3])
-     ├── Number-theoretic requirement for discrete isotropy → N=4
-     ├── Discrete lattice → quantization
-     └── Geodesic deviation ∝ φ₀²/r⁴ (1/r² structure)
+└── Multiple Subjective Spaces and Relativity of Observation (Paper [3])
+     ├── n+1 subjective spaces simultaneously constructible
+     ├── Internal observers access only their own subjective space
+     └── Axis roles are exchanged by the observer's standpoint
 ```
 
-This framework possesses a structure in which multiple independent axes generating acceleration (axes with different curvature radii) can coexist without geometric breakdown. Subjective coordinates for each axis are mutually transformable via Symmetry IV, and all axes are equivalent by Symmetry II.
+This framework possesses a structure in which multiple independent axes generating acceleration (axes with different curvature radii) can coexist without geometric breakdown. Subjective coordinates for each axis are mutually transformable via Symmetry IV, and all axes are equivalent by Symmetry II. Furthermore, by Paper [3], multiple subjective spaces with different projection center axes coexist simultaneously, and each internal observer observes the same ambient space in a different form.
 
 ---
 
 ## What This Research Does Not Claim
 
-This research is confined to purely geometric propositions and their proofs. The following physical identifications are not made:
+This research is confined to purely geometric propositions and their proofs. The following claims are not made:
 
-- That the fifth axis $\phi$ is identical to the physical "charge" dimension
-- That $|\xi|^2 \propto \phi_0^2/r^4$ is isomorphic to Coulomb's law
-- That Maxwell's equations are derivable from this framework
-- That unification of electromagnetic and gravitational fields has been achieved
+- That the internal observers of subjective spaces physically exist
+- That the "relativity of observation" corresponds to any specific theory of relativity in physics
+- That a particular subjective space corresponds to our universe
+- That physical laws are derivable from the structure of subjective spaces
 
-These physical identifications require additional assumptions beyond the geometric propositions of this research (Paper [3], Section 6).
+These physical interpretations require additional assumptions beyond the geometric propositions of this research (Paper [3], Section 7).
 
 ---
 
@@ -149,4 +145,4 @@ These physical identifications require additional assumptions beyond the geometr
 
 [2] Kihara, N. (2026). *Geometric Symmetries of Central Projection: Mathematical Foundations of the Multi-Axis Model*. DOI: 10.5281/zenodo.19434932.
 
-[3] Kihara, N. (2026). *Geometric Role of the Fifth Dimension in Discrete Central Projection: Charge Quantization and the $1/r^2$ Law*. DOI: 10.5281/zenodo.19435162.
+[3] Kihara, N. (2026). *Relativity of Observation in Multiple Subjective Spaces: Geometric Consequences of the Symmetries of Central Projection*. DOI: 10.5281/zenodo.19435162.
