@@ -2,12 +2,12 @@
 
 ## 論文シリーズ
 
-本リポジトリは、グノモン正写像（中心射影）に基づく時空の幾何学的定式化に関する一連の研究ノートを収録する。
+本リポジトリは、中心投影（central projection）に基づく空間の幾何学的定式化に関する一連の研究ノートを収録する。
 
 ### 論文1：基礎定式化
 
-**タイトル（日本語）**：グノモン正写像による4次元時空の幾何学的定式化  
-**タイトル（英語）**：Geometric Formulation of 4-Dimensional Spacetime via Gnomonic Projection  
+**タイトル（日本語）**：中心投影による4次元空間の幾何学的定式化  
+**タイトル（英語）**：Geometric Formulation of 4-Dimensional Space via Central Projection  
 **内容：** $S^4(R)$ への中心射影から引き戻し計量と Einstein テンソル $G_{\mu\nu} + \Lambda g_{\mu\nu} = 0$ を導出。  
 **DOI：** https://doi.org/10.5281/zenodo.19427780
 
@@ -18,11 +18,11 @@
 **内容：** 中心投影が持つ5つの幾何学的対称性（離散安定性、軸の対等性、測地線偏差と弁別不可能性、主観座標系の変換可能性、大円上の向心加速度）を厳密に証明。  
 **DOI：** https://doi.org/10.5281/zenodo.19434932
 
-### 論文3：第5軸の追加と $1/r^2$ 構造
+### 論文3：複数の主観空間と観測の相対性
 
-**タイトル（日本語）**：離散中心投影における第5次元の幾何学的役割：電荷の量子化と $1/r^2$ 法則  
-**タイトル（英語）**：Geometric Role of the Fifth Dimension in Discrete Central Projection: Charge Quantization and the $1/r^2$ Law  
-**内容：** 離散等方性のための次元要請（$N=4$）、離散格子からの量子化（コンパクト化不要）、第5軸方向の測地線偏差と $1/r^2$ スケーリング。物理的同定は行わず幾何学的命題に限定。  
+**タイトル（日本語）**：複数の主観空間における観測の相対性：中心投影の対称性の幾何学的帰結  
+**タイトル（英語）**：Relativity of Observation in Multiple Subjective Spaces: Geometric Consequences of the Symmetries of Central Projection  
+**内容：** 論文2の対称性II（軸の対等性）と対称性IV（主観座標系の変換可能性）から、複数の主観空間の同時構成可能性、内部観測者の取得情報の限界、軸の役割の交換と観測の相対性を導出。物理的解釈は行わず幾何学的命題に限定。  
 **DOI：** https://doi.org/10.5281/zenodo.19435162
 
 ---
@@ -82,16 +82,16 @@
 | `gnomonic_projection_symmetry_en.pdf` | PDF（英語版） |
 | `gnomonic_projection_symmetry_en.md` | Markdown（英語版） |
 
-### 論文3：第5軸の追加と $1/r^2$ 構造
+### 論文3：複数の主観空間と観測の相対性
 
 | ファイル名 | 説明 |
 |---|---|
-| `gnomonic_charge_dimension.tex` | LaTeXソース（日本語版） |
-| `gnomonic_charge_dimension.pdf` | PDF（日本語版） |
-| `gnomonic_charge_dimension.md` | Markdown（日本語版） |
-| `gnomonic_charge_dimension_en.tex` | LaTeXソース（英語版） |
-| `gnomonic_charge_dimension_en.pdf` | PDF（英語版） |
-| `gnomonic_charge_dimension_en.md` | Markdown（英語版） |
+| `subjective_space_relativity.tex` | LaTeXソース（日本語版） |
+| `subjective_space_relativity.pdf` | PDF（日本語版） |
+| `subjective_space_relativity.md` | Markdown（日本語版） |
+| `subjective_space_relativity_en.tex` | LaTeXソース（英語版） |
+| `subjective_space_relativity_en.pdf` | PDF（英語版） |
+| `subjective_space_relativity_en.md` | Markdown（英語版） |
 
 ### ハンドアウト（3論文概要）
 
@@ -117,6 +117,7 @@
 | `fig_subjective_space_en.png` | 主観空間の概念図（英語） |
 | `fig_two_projections.png` | 2つの投影の比較図（日本語） |
 | `fig_two_projections_en.png` | 2つの投影の比較図（英語） |
+| `note_article.md` | note 記事本文（Markdown） |
 | `note_header.png` | note 記事ヘッダー画像 |
 
 ---
@@ -125,6 +126,11 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-04-09 | Zenodo 全3論文：メタデータ修正（タイトル・Description を最新版に統一、日本語タイトル・日本語 Abstract を追加） |
+| 2026-04-09 | GitHub リポジトリ：Description・Topics 更新、README.md を論文一覧付きに改訂 |
+| 2026-04-09 | Zenn 記事：論文3リライトに対応して全面更新 |
+| 2026-04-09 | 論文3：全面リライト（旧版 gnomonic_charge_dimension を削除、新版 subjective_space_relativity として再構成。論文2の対称性II・IVから観測の相対性を導出する構成に変更） |
+| 2026-04-09 | ハンドアウト（日英 md/tex/pdf）を論文3リライトに対応して更新 |
 | 2026-04-09 | 全プラットフォーム上書き更新（Zenodo・Academia.edu・Zenn・note） |
 | 2026-04-08 | 論文2：全面改訂（タイトル・内容変更、ファイル名 gnomonic_lorentzian_origin → gnomonic_projection_symmetry） |
 | 2026-04-08 | 論文3：全面改訂（タイトル・内容変更、物理的同定を排除し幾何学的命題に限定） |
