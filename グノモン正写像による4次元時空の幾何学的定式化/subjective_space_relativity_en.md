@@ -12,7 +12,7 @@
 
 ## Abstract
 
-In the preceding two papers [1, 2], we constructed a map from an $n$-dimensional tangent hyperplane to the hypersphere $S^n(R)$ via central projection and proved five geometric symmetries of this construction. In the present paper, as a natural consequence of Symmetry II (axis equivalence) and Symmetry IV (convertibility of subjective coordinate systems) from [2], we show that **multiple subjective spaces with different projection center axes can be constructed from the same ambient space, and the observables in each subjective space depend on the choice of the internal observer's standpoint**.
+In the preceding two papers [1, 2], we constructed a map from an $n$-dimensional tangent hyperplane to the hypersphere $S^n(R)$ via central projection and proved four geometric symmetries of this construction. In the present paper, as a natural consequence of Symmetry II (axis equivalence) and Symmetry IV (convertibility of subjective coordinate systems) from [2], we show that **multiple subjective spaces with different projection center axes can be constructed from the same ambient space, and the observables in each subjective space depend on the choice of the internal observer's standpoint**.
 
 Specifically:
 
@@ -27,13 +27,12 @@ This is a purely geometric consequence derived directly from Symmetries II and I
 
 ## 1. Introduction
 
-Paper [1] defined a central projection from the $n$-dimensional tangent hyperplane $\Pi_R$ to the hypersphere $S^n(R) \subset \mathbb{R}^{n+1}$ and derived the induced metric and the Einstein tensor. Paper [2] proved five geometric symmetries of this central projection:
+Paper [1] defined a central projection from the $n$-dimensional tangent hyperplane $\Pi_R$ to the hypersphere $S^n(R) \subset \mathbb{R}^{n+1}$ and derived the induced metric and the Einstein tensor. Paper [2] proved four geometric symmetries of this central projection:
 
 - **Symmetry I** (discrete stability): The map is regular whether the coordinates take zero, positive integer, or negative integer values
 - **Symmetry II** (axis equivalence): The structure of the map is identical regardless of which axis of the ambient space $\mathbb{R}^{n+1}$ is chosen as the projection center
 - **Symmetry III** (geodesic deviation): The radius of curvature $R$ generates geodesic deviation $|\xi|^2$
 - **Symmetry IV** (convertibility of subjective coordinate systems): Two subjective coordinate systems centered on different axes are mutually convertible
-- **Symmetry V** (centripetal acceleration): Uniform circular motion on a great circle yields centripetal acceleration $a = R\omega^2$ as a scalar
 
 In this paper, we describe the structure that follows naturally from Symmetries II and IV in particular. Specifically, we show that multiple subjective spaces constructed from the ambient space $\mathbb{R}^{n+1}$ with different projection center axes can coexist simultaneously, and that the internal observer in each subjective space obtains different observables.
 
@@ -101,18 +100,16 @@ Observer $A$ obtains the following information:
 
 **(ii)** Scalar invariants constructed from the metric $g_{\mu\nu}^{(A)}$ (geodesic deviation $|\xi|^2$, scalar curvature $n(n-1)/R^2$, etc.)
 
-**(iii)** The magnitude of centripetal acceleration $a = R\omega^2$ from motion on great circles within the subjective space (Theorem 7.1 of [2])
-
 Information that observer $A$ does **not** obtain:
 
-**(iv)** The value of the projection center axis $A$ (not measurable as a quantity of dimension $[L]$ by Theorem 5.2 (i) of [2])
+**(iii)** The value of the projection center axis $A$ (not measurable as a quantity of dimension $[L]$ by Theorem 5.2 (i) of [2])
 
-**(v)** Absolute position in the ambient space $\mathbb{R}^{n+1}$ (Proposition 6.5 of [2]: structural loss of positional information)
+**(iv)** Absolute position in the ambient space $\mathbb{R}^{n+1}$ (Proposition 6.5 of [2]: structural loss of positional information)
 
-**(vi)** The existence or structure of other subjective spaces $H_B^+$ ($B \neq A$) outside the subjective space $H_A^+$ (observer $A$ has access only to the interior of their own subjective space $H_A^+$)
+**(v)** The existence or structure of other subjective spaces $H_B^+$ ($B \neq A$) outside the subjective space $H_A^+$ (observer $A$ has access only to the interior of their own subjective space $H_A^+$)
 
 **Proof**  
-(i)--(iii) follow directly from the results of [1, 2]. (iv) follows from Theorem 5.2 (i) of [2]. (v) follows from Proposition 6.5 of [2]. (vi) follows from the definition of an internal observer (glossary of [2] Section 2): an internal observer is a hypothetical observer who performs measurements using only the metric of their own subjective space and does not have access to other subjective spaces. $\square$
+(i)--(ii) follow directly from the results of [1, 2]. (iii) follows from Theorem 5.2 (i) of [2]. (iv) follows from Proposition 6.5 of [2]. (v) follows from the definition of an internal observer (glossary of [2] Section 2): an internal observer is a hypothetical observer who performs measurements using only the metric of their own subjective space and does not have access to other subjective spaces. $\square$
 
 ### 3.2 Role of Axes in the Subjective Space of Observer $A$
 
@@ -143,6 +140,9 @@ The following comparison holds for observer $A$ and observer $B$:
 (i) By Theorem 6.1 of [2], the composition $T_{A \to B} = \Phi_B^{-1} \circ \Phi_A$ of $\Phi_A$ and $\Phi_B$ is a $C^\infty$ diffeomorphism. The subjective coordinates of observer $A$ and those of observer $B$ are related through this composition map.
 
 (ii)--(iii) By Section 2.1 of [2], the coordinates obtained by the inverse map $\Phi_A^{-1}$ are $(x^\mu)_{\mu \neq A}$, which do not include axis $A$ itself. Axis $A$ is a basis vector of the ambient space $\mathbb{R}^{n+1}$ and does not appear in observer $A$'s subjective space $H_A^+$. On the other hand, in observer $B$'s subjective space $H_B^+$, as long as $A \neq B$, axis $A$ of the ambient space appears as the subjective coordinate $x'^A$. By formula (6.5) of Proposition 6.1 of [2], the coordinate $x'^A$ in observer $B$'s subjective coordinates is related to $x^B$ in observer $A$'s subjective coordinates by $x'^A = R^2/x^B$. $\square$
+
+**Remark** (on the notation $x'^A$)  
+Here $x'^A$ denotes the coordinate component in the $A$-direction within observer $B$'s subjective coordinate system (cf. Paper [2], Eq. (6.5)). Note that this refers to the component representing the $A$-direction in $B$'s coordinate system, not axis $A$ itself.
 
 ### 4.2 Exchange of Roles of Observables
 

@@ -11,15 +11,14 @@
 
 ## Abstract
 
-In the preceding paper [1], central projection was used to map an $n$-dimensional tangent hyperplane onto the hypersphere $S^n(R)$, and the induced metric tensor and Einstein tensor were derived. In this paper, we rigorously prove five geometric symmetries possessed by this central projection:
+In the preceding paper [1], central projection was used to map an $n$-dimensional tangent hyperplane onto the hypersphere $S^n(R)$, and the induced metric tensor and Einstein tensor were derived. In this paper, we rigorously prove four geometric symmetries possessed by this central projection:
 
 1. **Discrete stability:** The mapping is globally regular and non-divergent regardless of whether coordinates take zero, positive integer, or negative integer values
 2. **Axis equivalence:** The mathematical structure of the mapping is identical regardless of which axis of the background space $\mathbb{R}^{n+1}$ is chosen as the projection center
 3. **Geodesic deviation:** On the subjective space $H^+$ (sectional curvature $K = 1/R^2$), the curvature radius $R$ generates deviation between geodesics, and the scalar quantity $|\xi|^2$ is measurable by an internal observer
 4. **Transformability of subjective coordinate systems:** The subjective coordinate systems of two central projections centered on different axes are mutually transformable via the composition of inverse projection and re-projection
-5. **Centripetal acceleration on great circles:** An internal observer in uniform circular motion along a great circle (geodesic) of the subjective space measures a centripetal acceleration $a = R\omega^2$ as a scalar, determined by the curvature radius $R$ and angular velocity $\omega$. This quantity gives only the magnitude of the acceleration; the direction is indiscernible to the internal observer
 
-These five properties are purely geometric propositions and contain no physical interpretation.
+These four properties are purely geometric propositions and contain no physical interpretation.
 
 ---
 
@@ -53,7 +52,6 @@ Additional terminology introduced in this paper:
 | ---- | ---------- | ------ |
 | **Geodesic deviation** | The squared norm $g_{\mu\nu}\xi^\mu\xi^\nu$ of the deviation vector $\xi^\mu$ between adjacent geodesics. A quantity of dimension $[L^2]$ that the internal observer can measure, arising from the curvature radius $R$ | $\lvert\xi\rvert^2$ |
 | **Great circle** | A geodesic on the subjective space $H^+$. Given as the intersection of a plane passing through the projection center $O$ in the background space with $S^n(R)$. Appears as a circular arc of curvature radius $R$ within the subjective space | --- |
-| **Centripetal acceleration** | The magnitude of acceleration measured by an internal observer in uniform circular motion along a great circle, as the rate of change in direction of velocity with respect to proper time. Given by the classical mechanics formula $a = R\omega^2 = v^2/R$ | $a$ |
 
 <img src="fig_subjective_space_en.png" style="width:50%;" alt="Figure 2.2 (reproduced): Coordinate grid of the tangent hyperplane and subjective space">
 
@@ -185,17 +183,7 @@ For $|\xi|^2 = g_{\mu\nu}\,\xi^\mu\,\xi^\nu$ of Definition 5.1, the following ho
 
 **Proof**  
 (i) $g_{\mu\nu}$ is dimensionless (a combination of $R^2/l_A^2$ and $x_\mu x_\nu/l_A^2$), and $\xi^\mu$ has dimension $[L]$, so $|\xi|^2$ has dimension $[L^2]$. In $g_{\mu\nu} = (R^2/l_A^2)(\delta_{\mu\nu} - x_\mu x_\nu/l_A^2)$, $R$ appears only through $R^2$.  
-(ii) The coordinate sign reversal $\phi \to \phi' = -\phi$ is a type of diffeomorphism. Under the tensor transformation law, the off-diagonal components of the metric transform as
-
-$$g_{\phi' j'} = \frac{\partial \phi}{\partial \phi'}\,\frac{\partial x^j}{\partial x'^j}\,g_{\phi j} = (-1)(1)\,g_{\phi j} = -g_{\phi j} \tag{5.6}$$
-
-Meanwhile, the contravariant vector components follow the same transformation law: $\xi^{\phi'} = (\partial \phi'/\partial \phi)\,\xi^\phi = -\xi^\phi$. $\xi^j$ is invariant. Therefore, the inner product of the off-diagonal contributions is
-
-$$g_{\phi' j'}\,\xi^{\phi'}\,\xi^j = (-g_{\phi j})(-\xi^\phi)\,\xi^j = g_{\phi j}\,\xi^\phi\,\xi^j \tag{5.7}$$
-
-and the signs cancel, leaving the value invariant. The diagonal components $g_{\mu\mu}\,(\xi^\mu)^2$ are clearly invariant under sign reversal, so $|\xi|^2 = g_{\mu\nu}\,\xi^\mu\,\xi^\nu$ as a whole is invariant under any coordinate sign reversal.
-
-More generally, $|\xi|^2$ is a scalar invariant constructed from a Riemannian quadratic form and is invariant under any diffeomorphism (including coordinate sign reversals). Distinguishing the orientation of coordinates requires a pseudo-scalar (a quantity involving the Levi-Civita symbol), but $|\xi|^2$ does not contain one. $\square$
+(ii) Since $|\xi|^2 = g_{\mu\nu}\,\xi^\mu\,\xi^\nu$ is a scalar invariant (rank-0 tensor), it is invariant under any coordinate transformation, including the sign reversal $\phi \to -\phi$. Distinguishing the orientation of coordinates requires a pseudo-scalar (a quantity involving the Levi-Civita symbol), but $|\xi|^2$ does not contain one. $\square$
 
 **Remark 5.1** (Meaning of Theorem 5.2)  
 The curvature radius $R$ is unmeasurable by the internal observer as $[L]$, but the geodesic deviation $|\xi|^2$ is measurable from within the subjective space $H^+$ as a quantity of dimension $[L^2]$. However, since this quantity is a scalar invariant, neither the sign of the coordinates nor the direction of the curvature is discernible to the internal observer. The information that reaches the internal observer from $R$ is condensed into $|\xi|^2$, a positive quantity without sign. The direction of curvature and the sign of coordinates are information defined only in the background space $\mathbb{R}^{n+1}$ and do not appear in the intrinsic geometry of the subjective space.
@@ -308,92 +296,22 @@ By Proposition 6.4, any point on the sphere can be moved to any other point by a
 
 ---
 
-## 7. Symmetry V: Centripetal Acceleration on Great Circles
-
-In this section, we show that an internal observer in uniform circular motion along a great circle (geodesic) of the subjective space $H^+$ measures a centripetal acceleration $a = R\omega^2$ as a scalar, determined by the curvature radius $R$ and angular velocity $\omega$. This is a direct application of the centrifugal force formula of classical mechanics (a standard result from introductory physics [5]) to the subjective space $H^+$.
-
-### 7.1 Great Circles of the Subjective Space
-
-**Definition 7.1** (Great Circle)  
-A **great circle** on the subjective space $H^+$ is a circle given as the intersection of a 2-dimensional plane passing through the projection center $O$ in the background space $\mathbb{R}^{n+1}$ with $S^n(R)$. A great circle is a geodesic of $S^n(R)$ and appears as a circular arc of curvature radius $R$ within the subjective space.
-
-**Proposition 7.1** (Geometric Properties of Great Circles)  
-A great circle $C$ on $S^n(R)$ has the following properties:
-
-**(i)** $C$ is a geodesic ([2, Ch.4; 3, Ch.3]).  
-**(ii)** The curvature radius of $C$ equals $R$ (the curvature radius of the sphere).  
-**(iii)** The relationship between the arc length $\ell$ and the central angle $\theta$ of $C$ is $\ell = R\theta$.
-
-**Proof**  
-(i) Geodesics on the constant curvature space $S^n(R)$ are characterized as intersections of 2-dimensional planes (passing through the origin) with the sphere in $\mathbb{R}^{n+1}$ [2, Ch.4]. This coincides with the definition of great circles.  
-(ii) A great circle is the circle obtained by cutting the sphere of radius $R$ with a plane passing through its center, and its radius is $R$.  
-(iii) The standard relationship between arc length and central angle for a circle of radius $R$. $\square$
-
-**Remark 7.1** (Consistency with Axis Equivalence)  
-Great circles are defined as intersections of planes with the sphere in the background space, but by Symmetry II (Theorem 4.1), from the perspective of the subjective space $H^+$, every great circle is a geodesic with the same curvature radius $R$. The information that distinguishes "which great circle" (the direction of the plane in the background space) is indiscernible to the internal observer.
-
-### 7.2 Uniform Circular Motion on Great Circles and Centripetal Acceleration
-
-**Definition 7.2** (Uniform Circular Motion on a Great Circle)  
-When an internal observer moves along a great circle $C$ of the subjective space $H^+$ at a constant angular velocity $\omega$ with respect to proper time $\tau$, this is called **uniform circular motion on a great circle**. The observer's position is expressed by the central angle $\theta(\tau) = \omega\tau$.
-
-**Theorem 7.1** (Centripetal Acceleration on a Great Circle)  
-An internal observer in uniform circular motion at angular velocity $\omega$ along a great circle $C$ (curvature radius $R$) of the subjective space $H^+$ measures a centripetal acceleration of the following magnitude:
-
-$$a = R\omega^2 = \frac{v^2}{R} \tag{7.1}$$
-
-where $v = R\omega$ is the observer's tangential velocity (proper time derivative of arc length).
-
-**Proof**  
-The magnitude of centripetal acceleration in circular motion of radius $R$ and angular velocity $\omega$ is a standard result of classical mechanics: $a = R\omega^2$ [5]. From the relationship $v = R\omega$ between tangential velocity $v$ and angular velocity $\omega$, $a = v^2/R$ also holds equivalently.
-
-A great circle $C$ of the subjective space $H^+$ is a circular arc of curvature radius $R$ (Proposition 7.1 (ii)), and when the internal observer undergoes uniform circular motion along $C$, this motion is circular motion of radius $R$. Therefore, the magnitude of the centripetal acceleration measured by the observer is $a = R\omega^2$. $\square$
-
-**Remark 7.2** (On the Application of Classical Mechanics Formulas)  
-The proof of Theorem 7.1 relies on the fact that local motion within the subjective space is isomorphic to circular motion in classical mechanics. The subjective space $H^+$ is a connected Riemannian manifold, and geodesics (great circles) on it behave locally as circular arcs. The classical mechanics relation that the second derivative of position with respect to the observer's proper time $\tau$ gives centripetal acceleration holds directly as a relationship between velocity and acceleration derived from the intrinsic metric of the subjective space. The centrifugal force formula $a = R\omega^2$ from introductory physics [5] applies directly to the kinematics within this subjective space.
-
-### 7.3 Scalar Nature of Centripetal Acceleration and Indiscernibility of Direction
-
-**Theorem 7.2** (Indiscernibility of Direction of Centripetal Acceleration)  
-The centripetal acceleration $a = R\omega^2$ of Theorem 7.1 has the following properties:
-
-**(i) Scalar nature:** $a$ is the magnitude (norm) of the acceleration vector and is a scalar quantity. Its dimension is $[L T^{-2}]$.
-
-**(ii) Indiscernibility of direction:** The internal observer can measure the **magnitude** $a = R\omega^2$ of the acceleration, but its **direction** (the centripetal direction in the background space) is indiscernible by Symmetry III (Theorem 5.2 (ii)). The direction of the acceleration is information defined only in the background space $\mathbb{R}^{n+1}$ and does not appear in the intrinsic geometry of the subjective space.
-
-**(iii) Axis equivalence:** By Symmetry II (Theorem 4.1), regardless of which axis $A$ is chosen as the projection center for the central projection, the centripetal acceleration on great circles in the subjective space $H_A^+$ is given by the same form $a = R\omega^2$.
-
-**Proof**  
-(i) The magnitude of centripetal acceleration in classical mechanics is defined as the norm of the acceleration vector, which is a scalar quantity.  
-(ii) The direction of the acceleration vector is defined within the subjective space as "the direction toward the center of the great circle," but there is no point corresponding to the "center" of the great circle within the subjective space $H^+$ (the center of the great circle is the projection center $O$ in the background space $\mathbb{R}^{n+1}$ or a point on the corresponding plane, which is not a point of the subjective space). Therefore, the internal observer cannot point to the direction of acceleration as a point within the subjective space, and the direction is indiscernible. Only the magnitude $a = R\omega^2$ remains as a scalar quantity. This is a specialization to centripetal acceleration of the general statement from Symmetry III (Theorem 5.2 (ii)) that "direction is indiscernible from scalar invariants."  
-(iii) By Symmetry II (Theorem 4.1), the structure of the pullback metric and curvature tensor is independent of the axis choice. Since the definition of great circles (Proposition 7.1) is also independent of the axis choice, the centripetal acceleration formula $a = R\omega^2$ applies equally to all axes. $\square$
-
-**Remark 7.3** (Relationship with Symmetry III)  
-Symmetry III (Theorem 5.2) addressed the scalar invariant $|\xi|^2$ of dimension $[L^2]$, the geodesic deviation. The centripetal acceleration $a = R\omega^2$ of Symmetry V is a scalar quantity of dimension $[L T^{-2}]$, possessing a different physical dimension. What both share is the structure that "the internal observer can measure quantities arising from the curvature radius $R$ only as scalars, and their direction or sign is indiscernible." Symmetry V demonstrates that the structure of Symmetry III extends to quantities beyond geodesic deviation (namely, centripetal acceleration).
-
-**Remark 7.4** (Extension via Axis Equivalence)  
-By Symmetry II (Theorem 4.1), the discussion of this section holds regardless of which axis $A$ is the projection center. In particular, even when constructing a central projection with the 5th axis or beyond as a new projection center, if its curvature radius is $R'$, the centripetal acceleration on great circles in the subjective space is given by $a = R'\omega^2$. This signifies the invariance of Symmetry V under the addition of axes.
-
----
-
-## 8. Summary of Results
+## 7. Summary of Results
 
 | Symmetry | Content | Eq. | Basis |
 | -------- | ------- | --- | ----- |
 | **I. Discrete stability** | For arbitrary $x^\mu \in \mathbb{Z}$ (zero, positive, negative), $l_A > 0$; the mapping is regular and all components are bounded | (3.1)--(3.2) | Theorem 3.1 |
 | **II. Axis equivalence** | Regardless of which axis is chosen as the projection center, the structure of the mapping, metric, and curvature tensor is identical | (4.1)--(4.2) | Theorem 4.1 |
-| **III. Geodesic deviation** | $\lvert\xi\rvert^2 = g_{\mu\nu}\xi^\mu\xi^\nu$ is a scalar invariant of dimension $[L^2]$. Neither the sign of coordinates nor the direction of curvature is discernible from within | (5.1)--(5.7) | Definition 5.1, Theorem 5.2 |
+| **III. Geodesic deviation** | $\lvert\xi\rvert^2 = g_{\mu\nu}\xi^\mu\xi^\nu$ is a scalar invariant of dimension $[L^2]$. Neither the sign of coordinates nor the direction of curvature is discernible from within | (5.1)--(5.5) | Definition 5.1, Theorem 5.2 |
 | **IV. Coordinate transformation** | Subjective coordinates of different axes are mutually transformable via inverse projection $\to$ re-projection as $C^\infty$ diffeomorphisms. The scale factor is first order ($[L]/[L]$). By homogeneity, position information is absent; $R$ is the sole parameter | (6.1)--(6.8) | Theorem 6.1, Propositions 6.2--6.5 |
-| **V. Centripetal acceleration** | An internal observer in uniform circular motion on a great circle measures $a = R\omega^2$ as a scalar. The direction of the acceleration is indiscernible from within | (7.1) | Theorems 7.1, 7.2 |
 
-These five symmetries endow the model based on central projection with the following structural capabilities:
+These four symmetries endow the model based on central projection with the following structural capabilities:
 
 1. Coordinate axes taking discrete integer values (zero, positive, negative) can be safely added (Symmetry I)
 2. Added axes have exactly the same geometric structure as existing axes (Symmetry II)
 3. The curvature radius $R$ in any axis direction generates geodesic deviation $|\xi|^2$. $|\xi|^2$ is a scalar invariant of dimension $[L^2]$, and neither the sign of coordinates nor the direction of curvature is discernible to the internal observer (Symmetry III, Theorem 5.2)
 4. Subjective coordinate systems centered on different axes are consistently transformable, and the transformation scale of metric components is first order (one Jacobian per index) (Symmetry IV, Propositions 6.2--6.3)
 5. By homogeneity, no position information enters the coordinate transformation, and $R$ is the sole external parameter (Propositions 6.4--6.5)
-6. An internal observer in uniform circular motion along a great circle of the subjective space measures a centripetal acceleration $a = R\omega^2$ determined by the curvature radius $R$ and angular velocity $\omega$ as a scalar. The direction is indiscernible, and by Symmetry II, it does not depend on the choice of axis (Symmetry V, Theorems 7.1, 7.2)
 
 ---
 
@@ -407,7 +325,6 @@ These five symmetries endow the model based on central projection with the follo
 
 [4] Wolf, J. A., *Spaces of Constant Curvature*, 6th ed., AMS Chelsea Publishing, Providence, 2011, Chapter 2.
 
-[5] Standard introductory physics textbooks, chapter on circular motion (centripetal acceleration $a = r\omega^2 = v^2/r$).
 
 ---
 

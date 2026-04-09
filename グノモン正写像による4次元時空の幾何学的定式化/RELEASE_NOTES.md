@@ -11,11 +11,11 @@
 **内容：** $S^4(R)$ への中心射影から引き戻し計量と Einstein テンソル $G_{\mu\nu} + \Lambda g_{\mu\nu} = 0$ を導出。  
 **DOI：** https://doi.org/10.5281/zenodo.19427780
 
-### 論文2：5つの幾何学的対称性
+### 論文2：4つの幾何学的対称性
 
 **タイトル（日本語）**：中心投影の幾何学的対称性：多軸モデルの数学的基盤  
 **タイトル（英語）**：Geometric Symmetries of Central Projection: Mathematical Foundations of the Multi-Axis Model  
-**内容：** 中心投影が持つ5つの幾何学的対称性（離散安定性、軸の対等性、測地線偏差と弁別不可能性、主観座標系の変換可能性、大円上の向心加速度）を厳密に証明。  
+**内容：** 中心投影が持つ4つの幾何学的対称性（離散安定性、軸の対等性、測地線偏差と弁別不可能性、主観座標系の変換可能性）を厳密に証明。  
 **DOI：** https://doi.org/10.5281/zenodo.19434932
 
 ### 論文3：複数の主観空間と観測の相対性
@@ -71,7 +71,7 @@
 | `gnomonic_spacetime_geometry_en.pdf` | PDF（英語版） |
 | `gnomonic_spacetime_geometry_en.md` | Markdown（英語版） |
 
-### 論文2：5つの幾何学的対称性
+### 論文2：4つの幾何学的対称性
 
 | ファイル名 | 説明 |
 |---|---|

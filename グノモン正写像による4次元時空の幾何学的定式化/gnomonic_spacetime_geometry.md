@@ -191,7 +191,7 @@ $$g^{\rho\sigma}R_{\mu\rho\nu\sigma} = \frac{1}{R^2}g^{\rho\sigma}(g_{\mu\nu}g_{
 各項を計算する：
 
 - **第1項：** $g^{\rho\sigma}g_{\mu\nu}g_{\rho\sigma} = g_{\mu\nu}\cdot\underbrace{g^{\rho\sigma}g_{\rho\sigma}}_{=\,\delta^\rho{}_\rho\,=\,n} = n\,g_{\mu\nu}$
-- **第2項：** $g^{\rho\sigma}g_{\mu\sigma}g_{\nu\rho} = \underbrace{g^{\rho\sigma}g_{\mu\sigma}}_{=\,\delta^\rho_\mu}g_{\nu\rho} = g_{\nu\mu} = g_{\mu\nu}$
+- **第2項：** $g^{\rho\sigma}g_{\mu\sigma}g_{\nu\rho} = \underbrace{g^{\rho\sigma}g_{\mu\sigma}}_{=\,\delta^\rho{}_\mu}g_{\nu\rho} = g_{\nu\mu} = g_{\mu\nu}$
 
 したがって，
 

@@ -49,7 +49,7 @@ As $R \to \infty$: $g_{\mu\nu} \to \delta_{\mu\nu}$, $\Lambda \to 0$. The centra
 
 ---
 
-### Paper [2]: Five Geometric Symmetries
+### Paper [2]: Four Geometric Symmetries
 
 **5. Symmetry I (Discrete Stability)**  
 For any coordinate value — zero, positive integer, or negative integer — $l_A > 0$ holds and the central projection is globally regular without breakdown.  
@@ -67,11 +67,7 @@ The geodesic deviation $|\xi|^2 = g_{\mu\nu}\xi^\mu\xi^\nu$ is a scalar invarian
 Subjective coordinate systems centered on different axes are mutually transformable via $T_{A \to B} = \Phi_B^{-1} \circ \Phi_A$, a $C^\infty$ diffeomorphism. The only parameters are the curvature radius $R$ and coordinate values. Background coordinates are preserved.  
 (Section 6, Theorem 6.1, Proposition 6.5)
 
-**9. Symmetry V (Centripetal Acceleration on Great Circles)**  
-An internal observer in uniform circular motion along a great circle (geodesic) measures centripetal acceleration $a = R\omega^2$ as a scalar. The direction is indistinguishable.  
-(Section 7, Theorems 7.1 and 7.2)
-
-**10. Curvature Radius as Scale Factor**  
+**9. Curvature Radius as Scale Factor**  
 The Jacobian of coordinate transformations between subjective systems is $\partial x'^A/\partial x^B = -R^2/(x^B)^2$, with a dimensionless ($[L]/[L]$) first-order scale factor. The curvature radius $R$ serves as the sole transformation parameter.  
 (Section 6.4, Proposition 6.2)
 
@@ -112,9 +108,6 @@ Central Projection Φ: Π_R → Sⁿ(R)
 │
 ├── Indistinguishability (Symmetry III, Theorem 5.2)
 │    Curvature direction and sign are invisible from within
-│
-├── Measurability of Acceleration (Symmetry V)
-│    Centripetal acceleration a = Rω² is measurable as a scalar
 │
 └── Multiple Subjective Spaces and Relativity of Observation (Paper [3])
      ├── n+1 subjective spaces simultaneously constructible
