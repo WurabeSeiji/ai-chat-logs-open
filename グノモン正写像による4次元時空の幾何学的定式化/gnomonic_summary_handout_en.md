@@ -1,4 +1,4 @@
-# Geometric Formulation of Spacetime via Central Projection: Overview of 8 Papers
+# Geometric Formulation of Spacetime via Central Projection: Overview of 10 Papers
 
 **Author:** Noriaki Kihara  
 **Affiliation:** WF System Co., Ltd. (Osaka University, Faculty of Engineering Science, graduated)  
@@ -19,6 +19,8 @@
 | [6] | Subjective Spaces from Zero to Four Dimensions | [10.5281/zenodo.19533292](https://doi.org/10.5281/zenodo.19533292) |
 | [7] | On the Continuity of Geodesics in Subjective Spaces | [10.5281/zenodo.19533299](https://doi.org/10.5281/zenodo.19533299) |
 | [8] | Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle | [10.5281/zenodo.19533313](https://doi.org/10.5281/zenodo.19533313) |
+| [9] | Schwarzschild–de Sitter Exact Solution in the Central Projection Framework | [10.5281/zenodo.19538098](https://doi.org/10.5281/zenodo.19538098) |
+| [10] | Dimensional Interpretation of Geodesic Structure at the $R \to 0$ Limit | [10.5281/zenodo.19538106](https://doi.org/10.5281/zenodo.19538106) |
 
 ---
 
@@ -134,17 +136,45 @@ A geodesic $\gamma$ on the parent subjective space $\Pi_R$ and a geodesic $\gamm
 
 ---
 
+### Paper [9]: Schwarzschild–de Sitter Exact Solution
+
+**20. Unique Construction of the Exact Solution**  
+The spherically symmetric static exact solution of the vacuum Einstein equation $G_{\mu\nu} + \Lambda g_{\mu\nu} = 0$ ($\Lambda = 3/R^2$) from Paper [1] is uniquely determined as the Schwarzschild–de Sitter metric $f(r) = 1 - 2M/r - r^2/R^2$ by Birkhoff's theorem (with $\Lambda$ extension). No additional assumptions are required.  
+(§3, Eq. 3.4)
+
+**21. Disappearance of Horizon Structure at $R \to 0$**  
+As $R \to 0$, the cosmological horizon $r_{\mathrm{C}} \to 0$, merging with the black hole horizon and eliminating the region where an internal observer can exist. This is the exact-solution-level counterpart of the structural tension in Paper [4] §3.2.  
+(§4.2–§4.3)
+
+**22. Recovery of Horizon Structure in the Child Subjective Space**  
+By Proposition 4.1 of Paper [4], a child subjective space $\Pi_{R'}$ can be constructed from the $R \to 0$ limit region, with $R'$ independent of $R$. In the child's exact solution $f'(r') = 1 - 2M'/r' - r'^2/R'^2$, the inter-horizon observer region recovers when $R'$ is finite.  
+(§5.2–§5.3)
+
+---
+
+### Paper [10]: Dimensional Interpretation of the $R \to 0$ Limit
+
+**23. Correspondence between $R \to 0$ and Zero-Dimensional Subjective Space**  
+The structure of a subjective space at the $R \to 0$ limit geometrically corresponds to the description of a zero-dimensional subjective space in Paper [6]: disappearance of geodesic deviation, disappearance of internal structure, and disappearance of curvature recognition.  
+(§3, Observation 3.1)
+
+**24. Description as Dimensional Transition**  
+Tracking a geodesic of the parent subjective space toward $R \to 0$ is described in two stages. Stage 1 (Dimensional collapse): the parent's dimensional structure is lost, approaching zero dimensions. Stage 2 (Dimensional reconstruction): a child subjective space is elevated via Proposition 4.1, and dimensional structure unfolds. The "terminus" of the geodesic is not the annihilation of structure but a transition point of dimensional structure.  
+(§5, Observation 5.1)
+
+---
+
 ### Paper [8]: Singularity of Four Dimensions
 
-**20. Integer Property of the Circumscribed Hypersphere Diameter**  
+**25. Integer Property of the Circumscribed Hypersphere Diameter**  
 The diameter $2\sqrt{n}$ of the circumscribed hypersphere of a unit $n$-dimensional hypercube is an integer if and only if $n$ is a perfect square. Excluding the trivial $n = 1$, $n = 4$ is the smallest non-trivial dimension satisfying the integer property.  
 (§3)
 
-**21. Settling at Four Dimensions**  
+**26. Settling at Four Dimensions**  
 The dimension that simultaneously satisfies symmetry preservation, integer property, circumscribed sphere diameter minimization, and hypervolume minimization — the "settling dimension" — is $n = 4$. Starting from zero dimensions and sequentially releasing degrees of freedom, dimensions 1–3 cannot satisfy the stability conditions, and it is only at four dimensions that all rules are simultaneously satisfied.  
 (§12)
 
-**22. Origin of the Time Axis**  
+**27. Origin of the Time Axis**  
 An odd number of axis inversions is required to realize negative volume. The most economical single-axis inversion generates $(-1)^1 = -1$. This "1-to-3 asymmetry" gives rise to the structure of one time axis and three spatial axes in the Minkowski metric $(-,+,+,+)$.  
 (§13)
 
@@ -186,6 +216,15 @@ Central Projection Φ: Π_R → Sⁿ(R)
 │
 ├── Continuity of Geodesics (Paper [7])
 │    └── Parent-child geodesics are independent geometric objects
+│
+├── Schwarzschild–de Sitter Exact Solution (Paper [9])
+│    ├── Uniquely determined from Paper [1]'s equation without additional assumptions
+│    ├── Horizons merge and observer region vanishes at R → 0
+│    └── Horizon structure recovers in child subjective space
+│
+├── Dimensional Interpretation of R → 0 Limit (Paper [10])
+│    ├── R → 0 corresponds to zero-dimensional subjective space
+│    └── Dimensional collapse → Dimensional reconstruction (two-stage description)
 │
 └── Singularity of Four Dimensions (Paper [8])
      ├── Integer property of circumscribed hypersphere diameter
@@ -247,3 +286,11 @@ These physical interpretations require additional assumptions beyond the geometr
 
 ![QR Paper 8](qr_paper8.png)
 [8] Kihara, N. (2026). *Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle*. DOI: 10.5281/zenodo.19533313.
+
+&nbsp;
+
+[9] Kihara, N. (2026). *Schwarzschild–de Sitter Exact Solution in the Central Projection Framework*. DOI: 10.5281/zenodo.19538098.
+
+&nbsp;
+
+[10] Kihara, N. (2026). *Dimensional Interpretation of Geodesic Structure at the R→0 Limit*. DOI: 10.5281/zenodo.19538106.

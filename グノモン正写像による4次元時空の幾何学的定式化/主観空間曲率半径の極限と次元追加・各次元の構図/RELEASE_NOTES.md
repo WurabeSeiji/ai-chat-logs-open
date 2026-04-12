@@ -34,10 +34,24 @@
 
 ### 論文8：離散充填モデルと時空の構造
 
-**タイトル（日本語）**：体積1の四次元超直方体に外接する超球体の直径 — 離散充填モデルから導かれる時空の次元・時間の起源・宇宙の始まり  
+**タイトル（日本語）**：体積1の四次元超直方体に外接する超球体の直径 — 離��充填モデルから導かれる時空の次元・時間の起源・宇宙の始まり  
 **タイトル（英語）**：Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle — Spacetime Dimensionality, the Origin of Time, and the Beginning of the Universe as Derived from a Discrete Packing Model  
 **内容：** 離散性と安定性の2つの仮定から、体積保存則を経由して、$n = 4$ の特殊性（$\sqrt{n}$ が整数となる最小の非自明次元）、1軸反転による時間軸の起源、符号構造 $(-,+,+,+)$、宇宙と反宇宙のペア構造、時間の創発を演繹的に導出する数学的思考実験。  
 **DOI：** https://doi.org/10.5281/zenodo.19533313
+
+### 論文9：Schwarzschild–de Sitter 厳密解
+
+**タイトル（日本語）**：中心投影フレームワークにおける Schwarzschild–de Sitter 厳密解 — 論文 [1] の真空 Einstein 方程式の球対称静的厳密解  
+**タイトル（英語）**：Schwarzschild–de Sitter Exact Solution in the Central Projection Framework — Spherically Symmetric Static Exact Solution of the Vacuum Einstein Equation from Paper [1]  
+**内容：** 論文 [1] の真空 Einstein 方程式 $G_{\mu\nu} + \Lambda g_{\mu\nu} = 0$（$\Lambda = 3/R^2$）の球対称静的厳密解として Schwarzschild–de Sitter 計量を構成。Birkhoff の定理により追加仮定な���に一意に決定される。$R \to 0$ 極限で宇宙論的地平面が消失し、論文 [4] の構造的緊張が厳密解のレベルで表現される。入れ��構造により子主観空間で地平面構造が回復する。  
+**DOI：** https://doi.org/10.5281/zenodo.19538098
+
+### 論文10：$R \to 0$ 極限の次元的解釈
+
+**タイトル（日本語）**：$R \to 0$ 極限における測地線構造の次元的解釈 — 入れ子構造と次元階層の統合的記述  
+**タイトル（英語）**：Dimensional Interpretation of Geodesic Structure at the $R \to 0$ Limit — An Integrated Description of Nested Structure and Dimensional Hierarchy  
+**内容：** 論文 [4] の入れ子構造、論文 [6] の次元階層、論文 [7] の測地線の橋渡し、論文 [9] の Schwarzschild–de Sitter 厳密解を統合し、$R \to 0$ 極限を「次元的縮退」と「次元的再構成」の二段階として記述。論文 [8] の0次元からの次元展開への接続を明示。  
+**DOI：** https://doi.org/10.5281/zenodo.19538106
 
 ---
 
@@ -117,12 +131,37 @@
 | `5. Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle.tex` | LaTeXソース（英語版） |
 | `5. Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle.pdf` | PDF（英語版） |
 
+### 論文9：Schwarzschild–de Sitter 厳密解
+
+| ファイル名 | 説明 |
+|---|---|
+| `7. 中心投影フレームワークにおけるSchwarzschild-de Sitter厳密解.md` | Markdown（日本語版） |
+| `7. 中心投影フレームワークにおけるSchwarzschild-de Sitter厳密解.tex` | LaTeXソース（日本語版） |
+| `7. 中心投影フレームワークにおけるSchwarzschild-de Sitter厳密解.pdf` | PDF（日本語版） |
+| `7. Schwarzschild-de Sitter Exact Solution in the Central Projection Framework.md` | Markdown（英語版） |
+| `7. Schwarzschild-de Sitter Exact Solution in the Central Projection Framework.tex` | LaTeXソース（英語版） |
+| `7. Schwarzschild-de Sitter Exact Solution in the Central Projection Framework.pdf` | PDF（英語版） |
+
+### 論文10：$R \to 0$ 極限の次元的解釈
+
+| ファイル名 | 説明 |
+|---|---|
+| `6. R→0極限における測地線構造の次元的解釈.md` | Markdown（日本語版） |
+| `6. R→0極限における測地線構造の次元的解釈.tex` | LaTeXソース（日本語版） |
+| `6. R→0極限における測地線構造の次元的解釈.pdf` | PDF（日本語版） |
+| `6. Dimensional Interpretation of Geodesic Structure at the R→0 Limit.md` | Markdown（英語版） |
+| `6. Dimensional Interpretation of Geodesic Structure at the R→0 Limit.tex` | LaTeXソース（英語版） |
+| `6. Dimensional Interpretation of Geodesic Structure at the R→0 Limit.pdf` | PDF（英語版） |
+
 ---
 
 ## 変更履歴
 
 | 日付 | 内容 |
 |---|---|
+| 2026-04-12 | 論文9・10：Zenodo公開完了（DOI確定、各6ファイル） |
+| 2026-04-12 | 論文9・10：日英 Markdown・LaTeX・PDF 作成完了 |
+| 2026-04-12 | 論文4〜8：「付録: シリーズの論理的読み順」を日英全10ファイルに追加 |
 | 2026-04-12 | 論文4〜8：Zenodo公開完了（DOI確定、各6ファイル） |
 | 2026-04-12 | 論文4〜8：日英 LaTeX・PDF 作成完了 |
 | 2026-04-12 | 論文4〜8：DOI埋め込み完了 |

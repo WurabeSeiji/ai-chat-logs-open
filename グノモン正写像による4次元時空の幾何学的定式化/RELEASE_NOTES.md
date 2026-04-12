@@ -36,6 +36,8 @@
 | 6 | ゼロ次元から四次元主観空間の考察 | [10.5281/zenodo.19533292](https://doi.org/10.5281/zenodo.19533292) |
 | 7 | 主観空間における測地線の連続性についての考察 | [10.5281/zenodo.19533299](https://doi.org/10.5281/zenodo.19533299) |
 | 8 | 体積1の四次元超直方体に外接する超球体の直径 | [10.5281/zenodo.19533313](https://doi.org/10.5281/zenodo.19533313) |
+| 9 | 中心投影フレームワークにおける Schwarzschild–de Sitter 厳密解 | [10.5281/zenodo.19538098](https://doi.org/10.5281/zenodo.19538098) |
+| 10 | $R \to 0$ 極限における測地線構造の次元的解釈 | [10.5281/zenodo.19538106](https://doi.org/10.5281/zenodo.19538106) |
 
 ---
 
@@ -53,7 +55,7 @@
 | プラットフォーム | 公開日 | URL / 備考 |
 |---|---|---|
 | **GitHub** | 2026-04-05 | https://github.com/WurabeSeiji/ai-chat-logs-open |
-| **Zenodo** | 2026-04-06 | 論文1: https://doi.org/10.5281/zenodo.19427780 / 論文2: https://doi.org/10.5281/zenodo.19434932 / 論文3: https://doi.org/10.5281/zenodo.19435162 / 論文4: https://doi.org/10.5281/zenodo.19526549 / 論文5: https://doi.org/10.5281/zenodo.19526913 / 論文6: https://doi.org/10.5281/zenodo.19533292 / 論文7: https://doi.org/10.5281/zenodo.19533299 / 論文8: https://doi.org/10.5281/zenodo.19533313 |
+| **Zenodo** | 2026-04-06 | 論文1: https://doi.org/10.5281/zenodo.19427780 / 論文2: https://doi.org/10.5281/zenodo.19434932 / 論文3: https://doi.org/10.5281/zenodo.19435162 / 論文4: https://doi.org/10.5281/zenodo.19526549 / 論文5: https://doi.org/10.5281/zenodo.19526913 / 論文6: https://doi.org/10.5281/zenodo.19533292 / 論文7: https://doi.org/10.5281/zenodo.19533299 / 論文8: https://doi.org/10.5281/zenodo.19533313 / 論文9: https://doi.org/10.5281/zenodo.19538098 / 論文10: https://doi.org/10.5281/zenodo.19538106 |
 | **Academia.edu** | 2026-04-05 | https://www.academia.edu/ (木原 範昭 プロフィールより) |
 | **Zenn** | 2026-04-05 | https://zenn.dev（記事：gnomonic-projection-spacetime-geometry） |
 | **note** | 2026-04-05 | https://note.com/kiharanoriaki/n/nc51e43282b0a |
@@ -138,6 +140,7 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-04-12 | 論文9・10：Zenodo公開完了（DOI確定）、日英 Markdown・LaTeX・PDF を作成。論文4〜8に読み順ガイド追加。ハンドアウト・RELEASE_NOTES.md を論文10本体制に更新 |
 | 2026-04-12 | 論文4〜8：Zenodo公開完了（DOI確定）、日英 Markdown・LaTeX・PDF を作成、RELEASE_NOTES.md・Zenn記事を論文8本体制に更新 |
 | 2026-04-09 | ピアレビュー対応：論文2から対称性V（向心加速度）を削除、5つ→4つの対称性に修正。全論文・ハンドアウト・Zenn・note・Zenodoに波及修正を反映 |
 | 2026-04-09 | 軽微修正：論文1 命題5.1 添字清書、論文2 定理5.2(ii) 証明簡略化、論文3 命題4.1 記号注記追加 |

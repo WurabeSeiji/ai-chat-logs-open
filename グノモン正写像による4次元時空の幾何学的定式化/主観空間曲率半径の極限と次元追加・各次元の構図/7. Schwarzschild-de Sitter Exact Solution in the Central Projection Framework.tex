@@ -1,0 +1,447 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\geometry{margin=25mm}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0.5em}
+
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\begin{document}
+
+\section{Schwarzschild--de Sitter Exact Solution in the Central
+Projection
+Framework}\label{schwarzschildde-sitter-exact-solution-in-the-central-projection-framework}
+
+\textbf{--- A Spherically Symmetric Static Exact Solution of the Vacuum
+Einstein Equation from Paper {[}1{]} ---}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Author}: Noriaki Kihara (WF System Co., Ltd.)
+
+\textbf{Date}: April 2026
+
+\textbf{DOI:}
+\href{https://doi.org/10.5281/zenodo.19538098}{10.5281/zenodo.19538098}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+In this paper, we construct the Schwarzschild--de Sitter metric as the
+spherically symmetric static exact solution of the vacuum Einstein
+equation \(G_{\mu\nu} + \Lambda\, g_{\mu\nu} = 0\) (\(\Lambda = 3/R^2\))
+derived in the preceding paper {[}1{]}. This exact solution is uniquely
+determined from the equation in {[}1{]} without additional assumptions
+(by Birkhoff's theorem). We take the limit \(R \to 0\) in the
+constructed exact solution and describe how the structural tension
+identified in paper {[}4{]} is expressed in the language of this exact
+solution.
+
+\textbf{Disclaimer}: This paper only constructs a mathematically
+rigorous solution of the equation derived in paper {[}1{]} and does not
+claim that this exact solution describes any actual astrophysical
+object. The Schwarzschild--de Sitter metric is a well-known solution in
+general relativity, and this paper positions that solution within the
+context of the central projection framework. Physical interpretation is
+outside the scope of this paper and is left to the reader.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Introduction}\label{introduction}
+
+In the preceding paper {[}1{]}, Proposition 6.1, the vacuum Einstein
+equation
+
+\[G_{\mu\nu} + \Lambda\, g_{\mu\nu} = 0, \qquad \Lambda = \frac{3}{R^2} \tag{1.1}\]
+
+was derived for the induced metric \(g_{\mu\nu}\) under the central
+projection \(\Phi : \Pi_R \to S^4(R)\). This equation was proved as a
+geometric identity (paper {[}1{]}, Remark 6.1) and contains no
+additional physical assumptions.
+
+The purpose of this paper is to construct the spherically symmetric
+static exact solution of equation (1.1) and to examine the parameter
+dependence on the curvature radius \(R\), particularly the behavior in
+the limit \(R \to 0\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Verification of
+Prerequisites}\label{verification-of-prerequisites}
+
+Before seeking the spherically symmetric static exact solution of
+equation (1.1), we verify the structural properties of the central
+projection framework.
+
+\subsubsection{2.1 Spherical Symmetry}\label{spherical-symmetry}
+
+The central projection \(\Phi\) is defined as a projection onto the
+hypersphere \(S^n(R)\) of radius \(R\) in the background space
+\(\mathbb{R}^{n+1}\) (paper {[}1{]}, §2). This construction is invariant
+under rotations about the central axis and possesses spherical symmetry.
+
+\subsubsection{2.2 Vacuum Condition}\label{vacuum-condition}
+
+The right-hand side of equation (1.1) is zero. That is, it is a vacuum
+equation that does not include contributions from the energy-momentum
+tensor \(T_{\mu\nu}\).
+
+\subsubsection{\texorpdfstring{2.3 Origin of the Cosmological Term
+\(\Lambda\)}{2.3 Origin of the Cosmological Term \textbackslash Lambda}}\label{origin-of-the-cosmological-term-lambda}
+
+\(\Lambda = 3/R^2\) is a quantity derived from the geometric structure
+of the central projection (paper {[}1{]}, equation 6.2). Unlike the
+cosmological constant introduced externally in general relativity, in
+the present framework \(\Lambda\) is \textbf{intrinsically determined}
+as a function of the curvature radius \(R\).
+
+\subsubsection{2.4 Stationarity}\label{stationarity}
+
+In the construction of paper {[}1{]}, the subjective space \(\Pi_R\)
+contains neither positional nor temporal information. The induced metric
+\(g_{\mu\nu}\) depends only on the coordinates \(x^\mu\) and does not
+contain a time variable. This property is consistent with the exact
+solution being static.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. Construction of the Schwarzschild--de Sitter Exact
+Solution}\label{construction-of-the-schwarzschildde-sitter-exact-solution}
+
+\subsubsection{3.1 Application of Birkhoff's
+Theorem}\label{application-of-birkhoffs-theorem}
+
+By the \(\Lambda\)-extended version of Birkhoff's theorem in general
+relativity (Kottler, 1918), the solution of the spherically symmetric
+vacuum Einstein equation
+
+\[G_{\mu\nu} + \Lambda\, g_{\mu\nu} = 0 \tag{3.1}\]
+
+is static and uniquely reduces to the following Schwarzschild--de Sitter
+metric (Kottler metric):
+
+\[ds^2 = -f(r)\,dt^2 + f(r)^{-1}\,dr^2 + r^2\,d\Omega^2 \tag{3.2}\]
+
+where
+
+\[f(r) = 1 - \frac{2M}{r} - \frac{\Lambda}{3}\,r^2 \tag{3.3}\]
+
+Here \(M\) is an integration constant (mass parameter) and \(d\Omega^2\)
+is the metric on the unit sphere.
+
+\subsubsection{3.2 Substitution into the Central Projection
+Framework}\label{substitution-into-the-central-projection-framework}
+
+Substituting \(\Lambda = 3/R^2\) from equation (1.1) into equation (3.3)
+yields
+
+\[f(r) = 1 - \frac{2M}{r} - \frac{r^2}{R^2} \tag{3.4}\]
+
+This is the Schwarzschild--de Sitter exact solution in the central
+projection framework.
+
+\subsubsection{3.3 Special Cases}\label{special-cases}
+
+\textbf{Case \(M = 0\)}: Equation (3.4) becomes
+
+\[f(r) = 1 - \frac{r^2}{R^2} \tag{3.5}\]
+
+reducing to the pure de Sitter metric. This corresponds to the case
+without a mass source, and represents the spherically symmetric
+expression of the induced metric of the central projection itself.
+
+\textbf{Case \(R \to \infty\) (\(\Lambda \to 0\))}: Equation (3.4)
+becomes
+
+\[f(r) \to 1 - \frac{2M}{r} \tag{3.6}\]
+
+reducing to the standard Schwarzschild metric. This is consistent with
+the \(R \to \infty\) limit in paper {[}4{]}, §2.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{4. Examination of the \(R \to 0\)
+Limit}{4. Examination of the R \textbackslash to 0 Limit}}\label{examination-of-the-r-to-0-limit}
+
+\subsubsection{\texorpdfstring{4.1 Divergence of
+\(\Lambda\)}{4.1 Divergence of \textbackslash Lambda}}\label{divergence-of-lambda}
+
+In the limit \(R \to 0\), \(\Lambda = 3/R^2 \to \infty\). The
+\(r^2/R^2\) term in equation (3.4) becomes dominant, yielding
+
+\[f(r) \approx -\frac{r^2}{R^2} \tag{4.1}\]
+
+for any value of \(r > 0\). Since \(f(r) < 0\), surfaces of
+\(r = \text{const}\) become timelike (corresponding to structures inside
+a horizon).
+
+\subsubsection{4.2 Horizon Structure}\label{horizon-structure}
+
+The solutions of \(f(r) = 0\) give the positions of horizons. From
+equation (3.4):
+
+\[1 - \frac{2M}{r} - \frac{r^2}{R^2} = 0 \tag{4.2}\]
+
+When \(R\) is sufficiently large, two positive solutions exist:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Black hole horizon} \(r_{\mathrm{BH}}\): near \(r \approx 2M\)
+\item
+  \textbf{Cosmological horizon} \(r_{\mathrm{C}}\): near \(r \approx R\)
+\end{itemize}
+
+In the limit \(R \to 0\), \(r_{\mathrm{C}} \to 0\), and the cosmological
+horizon approaches and merges with the black hole horizon. That is, the
+``region in which an observer can exist'' between the two horizons
+vanishes.
+
+\subsubsection{4.3 Correspondence with the Structural Tension of Paper
+{[}4{]}}\label{correspondence-with-the-structural-tension-of-paper-4}
+
+The structural tension identified in paper {[}4{]}, §3.2 --- where the
+upper bound on geodesic deviation \(|\xi|^2_{\max}(R)\) approaches zero
+while the local curvature diverges --- is expressed in the language of
+the exact solution of this section as follows:
+
+As \(R \to 0\), the cosmological horizon \(r_{\mathrm{C}} \to 0\), and
+the region in which an internal observer can exist vanishes. This is the
+exact-solution-level counterpart of the statement in paper {[}4{]}, §3.2
+that ``the quantities measurable by an observer within the subjective
+space approach zero.''
+
+\subsubsection{4.4 Scope of the Claims in This
+Section}\label{scope-of-the-claims-in-this-section}
+
+The claims of this section are limited to the following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  What geometric structure the exact solution (3.4) of equation (1.1)
+  from paper {[}1{]} exhibits in the limit \(R \to 0\).
+\item
+  How this structure corresponds to the structural tension in paper
+  {[}4{]}, §3.2.
+\end{enumerate}
+
+This paper does not claim that this exact solution describes any
+specific astrophysical object (such as a black hole). \(M\) is a
+mathematical integration constant, and its identification with physical
+mass lies beyond the scope of this paper.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Connection with the Nested
+Structure}\label{connection-with-the-nested-structure}
+
+\subsubsection{5.1 Application of Proposition
+4.1}\label{application-of-proposition-4.1}
+
+To the situation described in §4, where the region for an internal
+observer vanishes in the \(R \to 0\) limit, Proposition 4.1 of paper
+{[}4{]} (existence of nested structures) is applicable. For any value of
+\(R > 0\), from any point within the subjective space \(\Pi_R\), a new
+subjective space \(\Pi_{R'}\) with curvature radius \(R' > 0\) can be
+constructed, where \(R'\) can be chosen independently of \(R\).
+
+\subsubsection{5.2 Exact Solution in Child Subjective
+Spaces}\label{exact-solution-in-child-subjective-spaces}
+
+In the child subjective space \(\Pi_{R'}\), the construction of paper
+{[}1{]} applies directly. Therefore, the vacuum Einstein equation in
+\(\Pi_{R'}\) is
+
+\[G'_{\mu\nu} + \Lambda'\, g'_{\mu\nu} = 0, \qquad \Lambda' = \frac{3}{R'^2} \tag{5.1}\]
+
+and its spherically symmetric static exact solution is
+
+\[f'(r') = 1 - \frac{2M'}{r'} - \frac{r'^2}{R'^2} \tag{5.2}\]
+
+Since \(R'\) is independent of \(R\), even when \(R \to 0\) in the
+parent subjective space, \(R'\) can be kept finite in the child
+subjective space.
+
+\subsubsection{5.3 Recovery of the Horizon
+Structure}\label{recovery-of-the-horizon-structure}
+
+The ``region in which an observer can exist,'' which vanished in the
+parent subjective space as described in §4.2, is recovered within the
+child subjective space \(\Pi_{R'}\) as long as \(R' > 0\) remains
+finite. The exact solution (5.2) of the child subjective space possesses
+a black hole horizon and a cosmological horizon according to the value
+of \(R'\), and a well-defined region in which an observer can exist lies
+between the two horizons.
+
+\subsubsection{5.4 Scope of the Claims in This
+Section}\label{scope-of-the-claims-in-this-section-1}
+
+The claims of this section are limited to the following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  By Proposition 4.1 of paper {[}4{]}, a child subjective space can be
+  constructed from the domain of the \(R \to 0\) limit.
+\item
+  The equation from paper {[}1{]} and its exact solution hold also in
+  the child subjective space.
+\item
+  The inter-horizon region that vanished in the parent subjective space
+  is recovered within the child subjective space.
+\end{enumerate}
+
+These are direct consequences of Proposition 6.1 of paper {[}1{]} and
+Proposition 4.1 of paper {[}4{]}, and contain no new assumptions.
+Physical interpretation is outside the scope of this paper and is left
+to the reader.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Discussion}\label{discussion}
+
+In this paper, we constructed the Schwarzschild--de Sitter metric as the
+spherically symmetric static exact solution of the vacuum Einstein
+equation derived in Proposition 6.1 of paper {[}1{]}, and connected the
+behavior in the \(R \to 0\) limit with the nested structure of paper
+{[}4{]}.
+
+The descriptions in this paper are limited to the following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  From equation (1.1) of paper {[}1{]} and Birkhoff's theorem, the
+  Schwarzschild--de Sitter solution is uniquely determined without
+  additional assumptions.
+\item
+  By substituting \(\Lambda = 3/R^2\), the exact solution is described
+  in a concrete form with \(R\) as a parameter.
+\item
+  In the limit \(R \to 0\), the region for an internal observer
+  vanishes, which constitutes the exact-solution-level counterpart of
+  the structural tension in paper {[}4{]}, §3.2.
+\item
+  Through the nested structure of Proposition 4.1 of paper {[}4{]}, the
+  inter-horizon region is recovered in the child subjective space.
+\end{enumerate}
+
+This paper does not claim that this exact solution describes any
+specific physical situation. \(M\) is an integration constant and \(R\)
+is the curvature radius of the central projection; the identification of
+either with physical quantities lies beyond the scope of this paper.
+Correspondences with physics concepts related to the Schwarzschild--de
+Sitter metric (black holes, cosmological horizons, Hawking radiation,
+information paradox, etc.) are problems outside the geometric framework
+and are not addressed in this paper.
+
+\subsubsection{Appendix: Suggested Logical Reading
+Order}\label{appendix-suggested-logical-reading-order}
+
+The papers in this series are numbered in order of publication, but the
+following logical reading order is recommended:
+
+\begin{itemize}
+\tightlist
+\item
+  Papers {[}1{]}--{[}3{]}: Foundational framework
+\item
+  Paper {[}4{]}: Limits of \(R\) and nested structures
+\item
+  Paper {[}5{]}: Dimension addition
+\item
+  \textbf{This paper (Paper {[}9{]}): Exact solution and horizon
+  structure in the \(R \to 0\) limit}
+\item
+  Paper {[}7{]}: Bridging of geodesics
+\item
+  Paper {[}6{]}: Description of subjective spaces in each dimension
+\item
+  Paper {[}8{]}: Dimensional development from zero dimensions
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. Conclusion}\label{conclusion}
+
+The spherically symmetric static exact solution of the vacuum Einstein
+equation \(G_{\mu\nu} + \Lambda g_{\mu\nu} = 0\) (\(\Lambda = 3/R^2\))
+in the central projection framework is uniquely determined by Birkhoff's
+theorem (with \(\Lambda\) extension) as the Schwarzschild--de Sitter
+metric \(f(r) = 1 - 2M/r - r^2/R^2\). No additional assumptions are
+required for this construction. In the limit \(R \to 0\), the region for
+an internal observer vanishes, but through the nested structure of
+Proposition 4.1 of paper {[}4{]}, the same exact solution structure is
+recovered in the child subjective space with \(R'\) as an independent
+parameter. Physical interpretation is outside the scope of this paper
+and is left to the reader.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+{[}1{]} Noriaki Kihara, ``Geometric Formalization of 4-Dimensional
+Spacetime via Central Projection,'' Zenodo, DOI: 10.5281/zenodo.19427780
+(2026).
+
+{[}2{]} Noriaki Kihara, ``Geometric Symmetries of the Central
+Projection: Mathematical Foundations of the Multi-Axis Model,'' Zenodo,
+DOI: 10.5281/zenodo.19434932 (2026).
+
+{[}3{]} Noriaki Kihara, ``Relativity of Observation in Multiple
+Subjective Spaces: Geometric Consequences of Central Projection
+Symmetries,'' Zenodo, DOI: 10.5281/zenodo.19435162 (2026).
+
+{[}4{]} Noriaki Kihara, ``On the Limits of the Curvature Radius in
+Central Projection --- The Cases \(R \to \infty\) and \(R \to 0\),''
+Zenodo, DOI: 10.5281/zenodo.19526549 (2026).
+
+{[}5{]} Noriaki Kihara, ``On Dimension Addition to Background Spaces and
+Subjective Spaces,'' Zenodo, DOI: 10.5281/zenodo.19526913 (2026).
+
+{[}6{]} Noriaki Kihara, ``Subjective Spaces from Zero to Four
+Dimensions,'' Zenodo, DOI: 10.5281/zenodo.19533292 (2026).
+
+{[}7{]} Noriaki Kihara, ``On the Continuity of Geodesics in Subjective
+Spaces --- Bridging Geodesics from Parent to Child Subjective Spaces,''
+Zenodo, DOI: 10.5281/zenodo.19533299 (2026).
+
+{[}8{]} Noriaki Kihara, ``Diameter of the Circumscribed Hypersphere of a
+Unit Four-Dimensional Hyperrectangle,'' Zenodo, DOI:
+10.5281/zenodo.19533313 (2026).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\end{document}
