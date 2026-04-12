@@ -289,8 +289,10 @@ These physical interpretations require additional assumptions beyond the geometr
 
 &nbsp;
 
+![QR Paper 9](qr_paper9.png)
 [9] Kihara, N. (2026). *Schwarzschild–de Sitter Exact Solution in the Central Projection Framework*. DOI: 10.5281/zenodo.19538098.
 
 &nbsp;
 
+![QR Paper 10](qr_paper10.png)
 [10] Kihara, N. (2026). *Dimensional Interpretation of Geodesic Structure at the R→0 Limit*. DOI: 10.5281/zenodo.19538106.
