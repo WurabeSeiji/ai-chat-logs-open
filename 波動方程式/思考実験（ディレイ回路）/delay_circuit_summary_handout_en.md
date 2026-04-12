@@ -170,12 +170,25 @@ These physical identifications require additional assumptions beyond the computa
 
 ## References
 
+![QR Paper 1](qr_paper1.png)
 [1] Kihara, N. (2026). *An Information-Theoretic Framework for Information Transmission*. DOI: 10.5281/zenodo.19534345.
 
+&nbsp;
+
+![QR Paper 2](qr_paper2.png)
 [2] Kihara, N. (2026). *Symmetries Inherent in the Delay Circuit Model*. DOI: 10.5281/zenodo.19534347.
 
+&nbsp;
+
+![QR Paper 3](qr_paper3.png)
 [3] Kihara, N. (2026). *Realization of Simple Harmonic Oscillation and Sinusoidal Waves in the Delay Circuit Model*. DOI: 10.5281/zenodo.19534349.
 
+&nbsp;
+
+![QR Paper 4](qr_paper4.png)
 [4] Kihara, N. (2026). *Realization of Perfectly Elastic Collision in the Delay Circuit Model*. DOI: 10.5281/zenodo.19534353.
 
+&nbsp;
+
+![QR Paper 5](qr_paper5.png)
 [5] Kihara, N. (2026). *Realization of a Wave Packet Collapse Model in the Delay Circuit Model*. DOI: 10.5281/zenodo.19534355.

@@ -210,18 +210,40 @@ These physical interpretations require additional assumptions beyond the geometr
 
 ## References
 
+![QR Paper 1](qr_paper1.png)
 [1] Kihara, N. (2026). *Geometric Formulation of 4-Dimensional Spacetime via Gnomonic Projection*. DOI: 10.5281/zenodo.19427780.
 
+&nbsp;
+
+![QR Paper 2](qr_paper2.png)
 [2] Kihara, N. (2026). *Geometric Symmetries of Central Projection: Mathematical Foundations of the Multi-Axis Model*. DOI: 10.5281/zenodo.19434932.
 
+&nbsp;
+
+![QR Paper 3](qr_paper3.png)
 [3] Kihara, N. (2026). *Relativity of Observation in Multiple Subjective Spaces: Geometric Consequences of the Symmetries of Central Projection*. DOI: 10.5281/zenodo.19435162.
 
+&nbsp;
+
+![QR Paper 4](qr_paper4.png)
 [4] Kihara, N. (2026). *On the Limits of the Curvature Radius in Central Projection*. DOI: 10.5281/zenodo.19526549.
 
+&nbsp;
+
+![QR Paper 5](qr_paper5.png)
 [5] Kihara, N. (2026). *On Dimension Addition to Background Spaces and Subjective Spaces*. DOI: 10.5281/zenodo.19526913.
 
+&nbsp;
+
+![QR Paper 6](qr_paper6.png)
 [6] Kihara, N. (2026). *Subjective Spaces from Zero to Four Dimensions*. DOI: 10.5281/zenodo.19533292.
 
+&nbsp;
+
+![QR Paper 7](qr_paper7.png)
 [7] Kihara, N. (2026). *On the Continuity of Geodesics in Subjective Spaces*. DOI: 10.5281/zenodo.19533299.
 
+&nbsp;
+
+![QR Paper 8](qr_paper8.png)
 [8] Kihara, N. (2026). *Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle*. DOI: 10.5281/zenodo.19533313.

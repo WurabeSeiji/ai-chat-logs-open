@@ -210,18 +210,40 @@ $R \to 0$ で $\Lambda = 3/R^2$ は発散するが、誘導計量・曲率テン
 
 ## 参考文献
 
+![QR Paper 1](qr_paper1.png)
 [1] Kihara, N. (2026). *Geometric Formulation of 4-Dimensional Spacetime via Gnomonic Projection*. DOI: 10.5281/zenodo.19427780.
 
+&nbsp;
+
+![QR Paper 2](qr_paper2.png)
 [2] Kihara, N. (2026). *中心投影の幾何学的対称性：多軸モデルの数学的基盤*. DOI: 10.5281/zenodo.19434932.
 
+&nbsp;
+
+![QR Paper 3](qr_paper3.png)
 [3] Kihara, N. (2026). *複数の主観空間における観測の相対性：中心投影の対称性の幾何学的帰結*. DOI: 10.5281/zenodo.19435162.
 
+&nbsp;
+
+![QR Paper 4](qr_paper4.png)
 [4] Kihara, N. (2026). *中心投影における曲率半径の極限についての考察*. DOI: 10.5281/zenodo.19526549.
 
+&nbsp;
+
+![QR Paper 5](qr_paper5.png)
 [5] Kihara, N. (2026). *背景空間と主観空間への次元追加についての考察*. DOI: 10.5281/zenodo.19526913.
 
+&nbsp;
+
+![QR Paper 6](qr_paper6.png)
 [6] Kihara, N. (2026). *ゼロ次元から四次元主観空間の考察*. DOI: 10.5281/zenodo.19533292.
 
+&nbsp;
+
+![QR Paper 7](qr_paper7.png)
 [7] Kihara, N. (2026). *主観空間における測地線の連続性についての考察*. DOI: 10.5281/zenodo.19533299.
 
+&nbsp;
+
+![QR Paper 8](qr_paper8.png)
 [8] Kihara, N. (2026). *体積1の四次元超直方体に外接する超球体の直径*. DOI: 10.5281/zenodo.19533313.
