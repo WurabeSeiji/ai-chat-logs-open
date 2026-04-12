@@ -1,0 +1,614 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\geometry{margin=25mm}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0.5em}
+
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\begin{document}
+
+\section{What Is the Diameter of the Circumscribed Hypersphere of a Four-Dimensional Hyperrectangle with Unit Volume?}\label{what-is-the-diameter-of-the-circumscribed-hypersphere-of-a-four-dimensional-hyperrectangle-with-unit-volume}
+
+\subsection{── Spacetime Dimensionality, the Origin of Time, and the Beginning of the Universe as Derived from a Discrete Packing Model ──}\label{spacetime-dimensionality-the-origin-of-time-and-the-beginning-of-the-universe-as-derived-from-a-discrete-packing-model}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Author}: Noriaki Kihara (WF System Co., Ltd.)
+
+\textbf{Date}: April 2026
+
+\textbf{DOI:} \href{https://doi.org/10.5281/zenodo.19533313}{10.5281/zenodo.19533313}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{0. Scope of This Paper's Claims (Required Reading)}\label{scope-of-this-papers-claims-required-reading}
+
+This paper is a \textbf{purely mathematical thought experiment} and makes no claims about the actual universe. To prevent misreading, the paper's \textbf{claims} and \textbf{non-claims} are stated explicitly at the outset.
+
+\subsubsection{What This Paper Claims}\label{what-this-paper-claims}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Starting from two assumptions --- ``discreteness'' and ``stability'' --- together with a ``volume conservation law,'' certain geometric and combinatorial consequences are \textbf{deductively derived}.
+\item
+  Among those consequences is the mathematical fact that \textbf{\(n = 4\)} is uniquely selected as the smallest non-trivial dimension for which \(\sqrt{n}\) is an integer.
+\item
+  For the sign-reversal operation on signed volumes in four dimensions, there exists a minimally economical option --- \textbf{single-axis reversal} --- which produces the structural asymmetry of ``1 versus 3.''
+\item
+  The mathematical structures above possess forms \textbf{structurally analogous} to physical concepts such as four-dimensional spacetime, the Minkowski metric, and the beginning of the universe.
+\item
+  The argument in this paper is essentially \textbf{combinatorics of information}: the ``zero-dimensional state'' at the starting point refers not to a physical point but to \textbf{structural information} held statically without spatial degrees of freedom (see the supplementary note in Section 8 for details).
+\end{enumerate}
+
+\subsubsection{What This Paper Does Not Claim}\label{what-this-paper-does-not-claim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{This paper does not explain why the actual universe is four-dimensional.} Why physical spacetime has four dimensions is an unsolved problem in physics; this paper makes no claim whatsoever that its model provides the answer.
+\item
+  \textbf{This paper is not a physical theory.} No rigorous correspondence has been established with general relativity, quantum field theory, the Standard Model, string theory, quantum gravity, or related frameworks. Nor does this paper claim that its ``hyperrectangles'' correspond to physical entities.
+\item
+  \textbf{Terms such as ``time,'' ``space,'' ``matter,'' ``antimatter,'' and ``Big Bang'' as used in this paper are metaphors.} They should not be identified with the same-named concepts in physics. They are borrowed terms used solely to describe features of mathematical structures.
+\item
+  \textbf{This paper makes no empirical predictions.} It provides no quantitative predictions verifiable by observation or experiment, and constitutes neither an alternative to, nor a refutation or corroboration of, any existing physical theory.
+\item
+  \textbf{This paper makes no cosmological interpretations whatsoever.} Cosmological language appearing in this paper (e.g., ``the beginning of the universe,'' ``emergence of time,'' ``universe and anti-universe'') is entirely \textbf{metaphorical language} intended to convey features of mathematical structures intuitively; it is not a hypothesis, claim, or prediction regarding the actual universe.
+\end{enumerate}
+
+\subsubsection{The Position of This Paper}\label{the-position-of-this-paper}
+
+This paper is a record of a thought experiment conducted interactively, beginning from the elementary geometric question of the circumscribed sphere diameter of a four-dimensional hyperrectangle and exploring how far interesting structures can be derived from a very small number of assumptions. It is \textbf{mathematical play} and \textbf{intellectual exercise}. Readers are invited to read it not as a physical claim but as an \textbf{illustration} of how concepts such as symmetry, integrality, and conservation laws interact with one another.
+
+Discussing the correspondence between mathematical structures and physical reality requires rigorous formalization, connection to existing physics, and observational verification far beyond the scope of this paper. Those tasks lie outside its reach.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. A Naive Question: The Diameter of the Circumscribed Hypersphere}\label{a-naive-question-the-diameter-of-the-circumscribed-hypersphere}
+
+Consider a four-dimensional hypercube with side length 1. What is the diameter of the four-dimensional hypersphere circumscribed about this hypercube --- that is, the hypersphere passing through all of its vertices?
+
+The length of the space diagonal of a four-dimensional hypercube is
+
+\[d = \sqrt{1^2 + 1^2 + 1^2 + 1^2} = \sqrt{4} = 2\]
+
+Since the diameter of the circumscribed hypersphere equals this diagonal, the \textbf{diameter is 2} (radius 1).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Symmetric Packing: How Many Can Be Packed?}\label{symmetric-packing-how-many-can-be-packed}
+
+Next, consider packing multiple copies of this four-dimensional hypercube inside the circumscribed hypersphere while preserving rotational symmetry.
+
+Arranging unit hypercubes symmetrically around the origin, each hypercube can occupy one ``orthant'' of four-dimensional space. Since there are \(2^4 = 16\) orthants in four dimensions, \textbf{16} unit hypercubes share a corner at the origin and pack together without gaps, forming a hypercube \([-1,1]^4\) with side length 2.
+
+This arrangement preserves the full symmetry group \(B_4\) of the hypercube (order 384) and is the most symmetric packing possible. The radius of the circumscribed hypersphere --- the distance from the center to a vertex --- is \(\sqrt{1^2+1^2+1^2+1^2} = 2\), giving a \textbf{diameter of 4}.
+
+A comparison across dimensions is shown below:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Dimension \(n\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Count \(2^n\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Circumscribed sphere diameter \(2\sqrt{n}\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+2 & 4 & \(2\sqrt{2} \approx 2.83\) \\
+3 & 8 & \(2\sqrt{3} \approx 3.46\) \\
+\textbf{4} & \textbf{16} & \textbf{4 (integer)} \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. The Special Nature of Four Dimensions}\label{the-special-nature-of-four-dimensions}
+
+A noteworthy fact emerges here. The circumscribed sphere diameter \(2\sqrt{n}\) is an integer only when \(\sqrt{n}\) is an integer --- that is, only when \(n\) is a perfect square.
+
+\[n = 1, 4, 9, 16, 25, \ldots\]
+
+Excluding the trivial case \(n = 1\) (a one-dimensional line segment), \textbf{\(n = 4\) is the smallest non-trivial dimension satisfying integrality}. This is not a coincidence; it is an essential property that underpins the discussion that follows.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. Layered Packing and Sequences}\label{layered-packing-and-sequences}
+
+Starting from a single hypercube at the center, consider building up symmetrically one layer at a time. The total structure up through layer \(k\) forms a hypercube with side length \((2k+1)\), with a cumulative total of \((2k+1)^4\) hypercubes.
+
+The number of hypercubes added in the \(k\)-th layer is
+
+\[a_k = (2k+1)^4 - (2k-1)^4 = 64k^3 + 16k\]
+
+The specific values are:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ccc@{}}
+\toprule\noalign{}
+Layer \(k\) & Added count \(a_k\) & Cumulative \((2k+1)^4\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 (center) & 1 & 1 \\
+1 & 80 & 81 \\
+2 & 544 & 625 \\
+3 & 1,776 & 2,401 \\
+4 & 4,160 & 6,561 \\
+5 & 8,080 & 14,641 \\
+\end{longtable}
+}
+
+The cumulative total \((2k+1)^4\) is a sequence of fourth powers, and this is the most natural layering scheme that expands outward while fully preserving the \(B_4\) symmetry of the hypercube.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. The Sequence of Circumscribed Hypersphere Diameters}\label{the-sequence-of-circumscribed-hypersphere-diameters}
+
+The diameter of the circumscribed hypersphere for a hypercube with side length \((2k+1)\), built up through \(k\) layers, is
+
+\[D_k = \sqrt{4} \cdot (2k+1) = 2(2k+1)\]
+
+Written as a sequence, this gives
+
+\[2, \; 6, \; 10, \; 14, \; 18, \; 22, \; \ldots\]
+
+This is an arithmetic sequence \((4k+2)\) with first term 2 and common difference 4. In terms of radii, the values form the odd number sequence \(1, 3, 5, 7, 9, \ldots\). This property, too, holds precisely because of the integrality \(\sqrt{n} = 2\) in four dimensions.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Four Dimensions as a Stability Condition}\label{four-dimensions-as-a-stability-condition}
+
+Based on the results so far, let us define as a stability condition the requirement that ``symmetric packing within the circumscribed hypersphere is possible and the diameter is an integer.'' It has been confirmed that the smallest non-trivial dimension satisfying this condition is \textbf{\(n = 4\)}.
+
+This stability condition does not hold for three-dimensional cubes. The circumradius of a cube with side length \((2k+1)\) is \(\sqrt{3} \cdot (2k+1)/2\), and since \(\sqrt{3}\) is irrational, the vertices do not lie on a sphere at integer distances. The symmetry group \(B_3\) (order 48) is also far weaker than \(B_4\) (order 384).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. Signed Volume: Negative Volume}\label{signed-volume-negative-volume}
+
+At this point, the direction of the discussion turns, and a \textbf{sign} is introduced for the volume of a hyperrectangle.
+
+Ordinary geometric volume is always non-negative, but in linear algebra one can consider signed volume --- oriented volume defined by a determinant. Regarding a four-dimensional hyperrectangle as a parallelepiped spanned by four vectors \(\mathbf{v}_1, \mathbf{v}_2, \mathbf{v}_3, \mathbf{v}_4\), its signed volume is \(\det[\mathbf{v}_1 \; \mathbf{v}_2 \; \mathbf{v}_3 \; \mathbf{v}_4]\).
+
+Reversing \(k\) vectors (multiplying by \(-1\)) multiplies the sign by \((-1)^k\). Therefore:
+
+\begin{itemize}
+\tightlist
+\item
+  Reversing 1 vector: \((-1)^1 = -1\) (volume becomes negative)
+\item
+  Reversing 2 vectors: \((-1)^2 = +1\) (remains positive)
+\item
+  Reversing 3 vectors: \((-1)^3 = -1\) (becomes negative)
+\item
+  Reversing 4 vectors: \((-1)^4 = +1\) (returns to positive)
+\end{itemize}
+
+Negative volume is realized by reversing exactly 1 or exactly 3 axes.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. Initial Conditions: A Zero-Volume Compressed State}\label{initial-conditions-a-zero-volume-compressed-state}
+
+From here, construction of the cosmological model begins. The following initial conditions are assumed.
+
+It is assumed that \textbf{the beginning of the universe started from a zero-dimensional state} --- a maximally compressed state with no dimensional degrees of freedom. The following are packed into this state:
+
+\begin{itemize}
+\tightlist
+\item
+  \((2k+1)^4\) four-dimensional hyperrectangles with volume \(+1\)
+\item
+  \((2k+1)^4\) four-dimensional hyperrectangles with volume \(-1\)
+\item
+  \textbf{The total signed volume is zero}
+\end{itemize}
+
+The whole is compressed inside a circumscribed hypersphere of diameter 2. This is an extreme degenerate state in which \(2 \cdot (2k+1)^4\) hyperrectangles --- normally requiring space for a sphere that holds only one --- are stacked on top of one another.
+
+Although positive and negative contributions cancel to give total volume zero, the information of ``count'' and ``symmetric structure'' is retained in the number \((2k+1)^4\).
+
+\subsubsection{Supplementary Note: The Meaning of ``Information'' in Zero Dimensions}\label{supplementary-note-the-meaning-of-information-in-zero-dimensions}
+
+The natural question arises: ``How can \((2k+1)^4\) hyperrectangles exist in zero dimensions?'' This paper's position on this question is clarified below.
+
+\textbf{Zero-dimensional} in this paper refers to a state with absolutely no spatial extent (degrees of freedom). However, being zero-dimensional does not mean having no information. Zero dimensions can carry information \(I\) of the kind ``present or absent.''
+
+The ``information'' referred to here is not limited to representations such as bit strings of 1s and 0s. It may be real-valued, complex-valued, matrix-valued, tensor-valued, or any combination thereof. The only requirement is simply:
+
+\begin{quote}
+\textbf{What information exists or does not exist is expressed statically without any spatial extent.}
+\end{quote}
+
+The description at the starting point of this paper --- ``\((2k+1)^4\) positive hyperrectangles and \((2k+1)^4\) negative hyperrectangles'' --- does not refer to objects arranged in space, but rather describes \textbf{the structure of this static information \(I\)}. It should be read as: combinatorial information concerning count, sign, and symmetry is held as a state with zero degrees of freedom.
+
+In other words, the zero-dimensional state in this paper is not a ``physical situation in which objects are packed into a point,'' but rather \textbf{``structural information prior to its unfolding.''} The release of degrees of freedom corresponds to the process in which this information is \textbf{read out} in a dimensioned form.
+
+In this sense, the argument in this paper is \textbf{combinatorics of information} before it is a physical picture, and the assertion that ``information exists in zero dimensions'' is mathematically non-contradictory.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+At this point, the most important principle is stated explicitly:
+
+\begin{quote}
+\textbf{The volume conservation law cannot be violated.}
+\end{quote}
+
+If negative volume were not permitted, the beginning of the universe would require positive volume to emerge from zero volume, violating the conservation law. \textbf{Negative volume is not a strange assumption; it is a logical necessity for preserving the conservation law.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. The First Degree of Freedom: Unfolding into One Dimension}\label{the-first-degree-of-freedom-unfolding-into-one-dimension}
+
+Next, suppose that one-dimensional degrees of freedom are suddenly granted. At this point, the following two rules are introduced:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Minimize the packing density} (spread as thinly as possible).
+\item
+  \textbf{Minimize the total four-dimensional hypervolume} (minimize the spread in four-dimensional directions).
+\end{enumerate}
+
+Satisfying both rules simultaneously, the limiting solution is for positive--negative pairs to be arranged point-by-point along a one-dimensional axis. The four-dimensional cross-section of each pair approaches zero, and the structure extends only in the length direction by \((2k+1)^4\).
+
+As a result, the whole degenerates into ``a one-dimensional line of zero thickness and length \((2k+1)^4\).'' This is a transition that abandons four-dimensional degrees of freedom in favor of one-dimensional degrees of freedom; the information of the original four-dimensional structure remains fully encoded in the one-dimensional quantity \((2k+1)^4\) --- the length.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. Unfolding into Two Dimensions and Diameter Minimization}\label{unfolding-into-two-dimensions-and-diameter-minimization}
+
+When the degrees of freedom become two-dimensional, a third rule is added:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \textbf{Minimize the diameter of the circumscribed hypersphere.}
+\end{enumerate}
+
+In one dimension, the length \((2k+1)^4\) directly becomes the diameter, which is excessively large. With two-dimensional degrees of freedom, the diameter can be minimized by \textbf{folding this into a square configuration}.
+
+Arranging \((2k+1)^4\) elements in a square, each side has length
+
+\[\sqrt{(2k+1)^4} = (2k+1)^2\]
+
+and the diameter of the circumscribed hypersphere shrinks to the square's diagonal:
+
+\[\sqrt{2} \cdot (2k+1)^2\]
+
+The four-dimensional directions remain collapsed to a point; the structure is unfolded in the two-dimensional direction as a \((2k+1)^2 \times (2k+1)^2\) lattice.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{11. Pattern of Side Lengths Across Dimensions}\label{pattern-of-side-lengths-across-dimensions}
+
+A pattern now becomes visible. The side length in each dimension is:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ccc@{}}
+\toprule\noalign{}
+Degrees of freedom (dimension) & Side length & Integer? \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & \((2k+1)^4\) & Integer \\
+2 & \((2k+1)^2\) & Integer \\
+3 & \((2k+1)^{4/3}\) & \textbf{Non-integer} \\
+\textbf{4} & \((2k+1)^1 = 2k+1\) & \textbf{Integer} \\
+\end{longtable}
+}
+
+The exponent decreases as \(4/n\) (where \(n\) is the number of dimensions of degrees of freedom). When \(n = 3\), the exponent \(4/3\) is not an integer and the structure does not fit on a lattice. \textbf{Only at \(n = 4\) does the exponent return to 1, and the original symmetric hypercube structure is fully recovered.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{12. Why the System Settles in Four Dimensions}\label{why-the-system-settles-in-four-dimensions}
+
+Searching for a ``dimension in which the system can settle'' --- one satisfying all the rules (maintenance of symmetry, integrality, minimization of circumscribed sphere diameter, minimization of hypervolume) simultaneously --- one finds:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\(n = 0\)}: The initial state. Total volume zero, compressed into a sphere of diameter 2. The starting point.
+\item
+  \textbf{\(n = 1\)}: A line of length \((2k+1)^4\). The diameter explodes in size, violating diameter minimization. A transient state.
+\item
+  \textbf{\(n = 2\)}: \(\sqrt{n}\) is irrational. An intermediate state in which integrality is not recovered.
+\item
+  \textbf{\(n = 3\)}: \(\sqrt{n}\) is irrational. The side length \((2k+1)^{4/3}\) is also non-integer. Unstable.
+\item
+  \textbf{\(n = 4\)}: \(\sqrt{n} = 2\), integrality recovered. Full recovery of \(B_4\) symmetry. The original hypercube structure with side length \((2k+1)\) is restored, and the system is stable with diameter \(2(2k+1)\). \textbf{The first true equilibrium point.}
+\end{itemize}
+
+Further equilibrium points exist at \(n = 9, 16, \ldots\), but the system stops at the minimum solution of 4, balancing diameter minimization with the preference not to increase dimensionality.
+
+\begin{quote}
+\textbf{Starting from zero dimensions and releasing degrees of freedom one by one, none of the dimensions 1 through 3 can sustain a stable equilibrium; only upon reaching four dimensions are all rules simultaneously satisfied and the system settles.}
+\end{quote}
+
+Viewing this sequence, after 0 the next dimension at which the system can settle is 4; given degrees of freedom, the system ends up stable in four dimensions. Four-dimensionality is not an assumption but a consequence.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{13. The Origin of the Time Axis: Why Exactly One Axis Is Special}\label{the-origin-of-the-time-axis-why-exactly-one-axis-is-special}
+
+Realizing negative volume requires reversing an odd number of axes. The most economical operation is \textbf{reversing exactly one axis}, producing \((-1)^1 = -1\).
+
+By reversing \textbf{exactly one} of the four axes --- distinguishing it from the others --- negative volume is realized. The remaining three axes are not involved in the reversal and remain on equal footing.
+
+\begin{quote}
+\textbf{This ``1 versus 3 asymmetry'' is the origin of the structure in four-dimensional spacetime consisting of one time axis and three spatial axes.}
+\end{quote}
+
+In the Minkowski metric \(ds^2 = -dt^2 + dx^2 + dy^2 + dz^2\), only the temporal component carries a negative sign. In the present model, this sign asymmetry is \textbf{naturally derived} from the foundational fact that ``exactly one axis was reversed to create negative volume.'' Rather than inserting a sign into the metric after the fact, the sign asymmetry originates from the very structure of the beginning of the universe.
+
+This uniqueness does not hold in a three-dimensional cube model. In three dimensions, \((-1)^1 = -1\) and \((-1)^3 = -1\), so both single-axis reversal and triple-axis reversal produce a negative value. There is no way to decide between ``1 versus 2'' and ``3 versus 0,'' and the special status of the time axis cannot be uniquely determined. The even-dimensional nature of four dimensions guarantees the structure in which single-axis reversal uniquely determines the time axis.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{14. The Volume Conservation Law and the Beginning of the Universe}\label{the-volume-conservation-law-and-the-beginning-of-the-universe}
+
+The logical structure of the model is reorganized as follows:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The volume conservation law cannot be violated (a fundamental principle of physics).
+\item
+  → If there was a beginning, the total volume must always be zero.
+\item
+  → Negative volume is logically required.
+\item
+  → Axis reversal is necessary.
+\item
+  → Pair symmetry cannot be maintained unless the dimension is even.
+\item
+  → Stability requires \(\sqrt{n}\) to be an integer.
+\item
+  → The smallest non-trivial solution is \(n = 4\).
+\item
+  → The minimal operation for negative volume is single-axis reversal.
+\item
+  → Exactly one axis is special = time.
+\item
+  → The remaining three axes are on equal footing = space.
+\end{enumerate}
+
+\textbf{There are only two assumptions:}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Assumption 1}: The universe is discrete.
+\item
+  \textbf{Assumption 2}: A stable minimal unit exists.
+\end{itemize}
+
+Four-dimensionality, the special nature of the time axis, and the beginning of the universe are all \textbf{consequences} of these two assumptions --- not input parameters.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{15. The Spherical Shell Model: Spacetime with Positive Curvature}\label{the-spherical-shell-model-spacetime-with-positive-curvature}
+
+Here one rule is changed. Instead of ``reducing the packing density (spreading uniformly in the interior),'' consider the rule ``concentrating at the boundary of the dimension.'' What happens then?
+
+The surface of a four-dimensional hypersphere is the three-dimensional sphere \(S^3\). If the positive--negative pairs of hyperrectangles concentrate on the surface rather than spreading uniformly in the interior, the \((2k+1)^4\) pairs adhere to the surface of a hypersphere of radius \((2k+1)\) as an extremely thin shell.
+
+All stability conditions are satisfied:
+
+\begin{itemize}
+\tightlist
+\item
+  The integrality \(\sqrt{4} = 2\) is maintained.
+\item
+  \(B_4\) symmetry is also maintained on the spherical shell.
+\item
+  The circumscribed sphere diameter \(2(2k+1)\) is unchanged.
+\item
+  The total volume zero of positive--negative pairs is preserved.
+\end{itemize}
+
+The decisive importance of this modification is that it naturally explains \textbf{the origin of the three-dimensional space we observe}. Since the surface of a four-dimensional hypersphere is a three-dimensional manifold, an observer living on this thin shell would perceive the universe as three-dimensional space.
+
+This picture serves as a metaphor for \textbf{closed four-dimensional spacetime with positive curvature}. In a closed Friedmann universe in general relativity (FLRW metric with \(k = +1\)), the spatial cross-section at each moment in time is \(S^3\), and its radius changes with time. In the present model:
+
+\begin{itemize}
+\tightlist
+\item
+  Radius of \(S^3\) \(= (2k+1)\) → corresponds to time evolution
+\item
+  Thickness of shell \(\approx 0\) → matter concentrates on the spatial cross-section
+\item
+  Positive curvature \(= 1/(2k+1)^2\) → curvature decreases as \(k\) increases
+\end{itemize}
+
+As \(k\) increases, the curvature \(1/(2k+1)^2\) decreases, and the space appears nearly flat locally. This is consistent with the observational fact that the present universe appears nearly flat while potentially retaining a small positive curvature.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{16. Universe and Anti-Universe: Separation of Positive and Negative}\label{universe-and-anti-universe-separation-of-positive-and-negative}
+
+A further rule is introduced:
+
+\begin{quote}
+\textbf{There may be multiple circumscribed hyperspheres, so long as volume is conserved across the whole.}
+\end{quote}
+
+This relaxation of the constraint removes the requirement that positive and negative hyperrectangles be packed into the same hypersphere. The consequence is:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Positive hypersphere}: diameter \(2(2k+1)\), containing \((2k+1)^4\) hyperrectangles with volume \(+1\)
+\item
+  \textbf{Negative hypersphere}: diameter \(2(2k+1)\), containing \((2k+1)^4\) hyperrectangles with volume \(-1\)
+\item
+  \textbf{Total volume}: \(+(2k+1)^4 - (2k+1)^4 = 0\) (conservation law satisfied)
+\end{itemize}
+
+Both have the same diameter, the same count, and the same symmetry, and each independently satisfies the stability conditions.
+
+This signifies \textbf{pair creation of a universe and an anti-universe}. The unfolding from a zero-dimensional state is realized as twin universes with completely separated positive and negative volumes.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{17. A Universe with Time and a Universe without Time}\label{a-universe-with-time-and-a-universe-without-time}
+
+Returning to the earlier argument that single-axis reversal generates time:
+
+\textbf{Our universe (the negative-volume side)}: - One axis reversed → \((-1)^1 = -1\) → negative volume - A time axis exists → dynamic, subject to change - Minkowski metric \((-,+,+,+)\)
+
+\textbf{The paired universe (the positive-volume side)}: - No axis reversal → \((+1)^4 = +1\) → positive volume - No time axis → all four axes are on equal footing - Euclidean metric \((+,+,+,+)\)
+
+Because the paired universe has no time, it has no change, causality, or dynamics. It is a structure that simply ``exists'' statically as four-dimensional space. Observing it is in principle impossible for us, because the act of observation itself presupposes time.
+
+\begin{quote}
+\textbf{The existence of time is itself a ``liability,'' and a ``static structure without time'' that cancels it must necessarily exist as a pair.}
+\end{quote}
+
+Time is not something that exists as a matter of course; it is a structure that arose as the price to be paid for satisfying the conservation law.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{18. Fluctuations in Initial Distribution and the Complexity of the Universe}\label{fluctuations-in-initial-distribution-and-the-complexity-of-the-universe}
+
+Consider initial conditions in which the distribution of positive and negative hyperrectangles between the two hyperspheres is not perfectly symmetric.
+
+If the \textbf{positive hypersphere} contains \(+N\) and \(-m\) elements while the \textbf{negative hypersphere} contains \(-N\) and \(+m\) elements (with the total always summing to zero), each hypersphere is in an unstable state in which a minority of opposite-sign elements is present.
+
+As this minority annihilates with the majority and rearrangement proceeds, the following phenomena naturally emerge:
+
+\textbf{Annihilation dynamics}: Positive-volume hyperrectangles that have mixed into our hypersphere (the negative-volume side) pair up with negative ones and disappear. This corresponds to the annihilation of matter and antimatter (used here metaphorically) in the early universe.
+
+\textbf{Residual asymmetry}: If the distribution is not perfectly symmetric but has a minute bias, annihilation leaves a small ``remainder.'' This corresponds to baryon asymmetry (the reason only matter remains in the present universe). Observations suggest that matter outnumbered antimatter by approximately one part in a billion. In the present model, this is expressed as a minute deviation in the initial distribution.
+
+\textbf{Seeds of structure formation}: Depending on the pattern of the distributional deviation, positive and negative elements may fail to fully separate locally and instead form clumps. These could become density fluctuations and, in turn, seeds for galaxies and large-scale structure.
+
+\textbf{The complexity parameter}: When \(k\) is small, the total number of hyperrectangles is small and the system reaches stability relatively quickly. When \(k\) is large, the combinations are vast and a complex, rich intermediate process emerges. The parameter \(k\) thus determines the ``complexity'' of the universe.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{19. The Emergence of Time: Initially There Was No Time}\label{the-emergence-of-time-initially-there-was-no-time}
+
+Finally, the deepest consequence is stated.
+
+Single-axis reversal is not the only way to realize negative volume. Triple-axis reversal also gives \((-1)^3 = -1\), producing a negative value. Consider an initial condition in which the reversal axes of the negative-volume hyperrectangles are all different from one another.
+
+\textbf{Initial state}: Some hyperrectangles have the first axis reversed, others the third, and still others three axes simultaneously. ``Which axis is time'' is not determined. Every direction looks equivalent, and \textbf{there is no consistent time axis --- that is, there is no time}.
+
+\textbf{Intermediate process}: As annihilation and rearrangement proceed, the energetically most economical configuration (single-axis reversal only) becomes dominant. This is \textbf{spontaneous symmetry breaking}: from a state in which all four axes were equivalent, one is progressively selected.
+
+\textbf{Stable state}: Nearly all hyperrectangles come to share the same single axis as their reversal axis. At this moment, for the first time a consistent temporal direction is defined throughout the universe. This is the \textbf{emergence of time}.
+
+\begin{quote}
+\textbf{Time is not a fundamental structure of the universe; it is an order that emerged as a result of stabilization.}
+\end{quote}
+
+Initially there was no time and the four-dimensional space was isotropic. Through annihilation dynamics the reversal axes aligned, and time condensed.
+
+This picture has contact with the following problems in physics:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{The Planck era}: In the very early universe, the very concept of spacetime is thought not to be well-defined. In the present model, this is naturally expressed as a state in which the reversal axes are not aligned and time cannot be defined.
+\item
+  \textbf{Inflation}: The process by which the reversal axes rapidly align may correspond to exponential expansion. ``The birth of time'' and ``the rapid expansion of space'' become two aspects of the same process.
+\item
+  \textbf{Contact with quantum gravity}: In many quantum gravity theories, ``time is not fundamental but emergent.'' The present model concretely realizes this as the statistical alignment of reversal axes of discrete hyperrectangles.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{20. Conclusion: What Follows from Two Assumptions}\label{conclusion-what-follows-from-two-assumptions}
+
+Counting the assumptions of this model precisely:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Assumption 1}: The universe is discrete.
+\item
+  \textbf{Assumption 2}: A stable minimal unit exists.
+\end{itemize}
+
+From these, via the volume conservation law, the following are all \textbf{deductively derived}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Spacetime is four-dimensional} --- the smallest non-trivial dimension for which \(\sqrt{n}\) is an integer
+\item
+  \textbf{Exactly one time axis is special} --- single-axis reversal as the minimal operation for negative volume
+\item
+  \textbf{Space is three-dimensional and isotropic} --- the remaining three axes, uninvolved in reversal, are on equal footing
+\item
+  \textbf{The sign structure of the Minkowski metric} \((-,+,+,+)\) --- the sign of the reversal axis
+\item
+  \textbf{The universe was able to ``begin''} --- expansion from volume zero without violating the conservation law
+\item
+  \textbf{The paired structure of universe and anti-universe} --- stabilization through separation of positive and negative
+\item
+  \textbf{Matter--antimatter asymmetry} --- a minute deviation in the initial distribution
+\item
+  \textbf{The emergence of time} --- statistical alignment of reversal axes
+\item
+  \textbf{The possibility of a closed universe with positive curvature} --- correspondence with the spherical shell model
+\end{enumerate}
+
+Even the number of dimensions is a derived quantity, not an input parameter.
+
+The present model requires no additional physical constants, no compactification of extra dimensions, and no anthropic principle. From two assumptions --- discreteness and stability --- and one principle --- the volume conservation law --- it provides a unified framework for addressing the principal questions concerning the structure of spacetime and the origin of the universe.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\emph{This paper is a record of a model built up step by step through an interactive thought experiment, starting from the elementary geometric question of the circumscribed sphere diameter of a four-dimensional hyperrectangle.}
+
+\end{document}
