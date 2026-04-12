@@ -1,0 +1,172 @@
+% !TEX program = lualatex
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{booktabs}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+
+\title{Symmetries Inherent in the Delay Circuit Model}
+
+\author{Noriaki Kihara\\
+WF System Co., Ltd.\\
+Osaka University, School of Engineering Science (graduated)}
+
+\date{April 2026\quad Research Note\\[4pt]
+DOI: \href{https://doi.org/10.5281/zenodo.19534347}{10.5281/zenodo.19534347}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+% empty
+\end{abstract}
+
+\section{Introduction}
+% empty
+
+\section{Preliminaries: Summary of Definitions from the Previous Paper}
+% empty
+
+\section{Organization of Symmetries}
+
+\subsection{Symmetry of $I$ and $\overline{I}$}
+
+In the previous paper \cite{kihara2026} \S2.2 Property~5, the inversion $\overline{I}$ was defined as
+an operation within the same class. That is, $I$ and $\overline{I}$ belong to the same class.
+
+The operation rule of the delay circuit $F_D$ depends solely on the equivalence check between the
+input information and the internal information (whether $\mathrm{IN} \neq I$ holds). Replacing $I$
+with $\overline{I}$ does not change the equivalence check or the structure of the operation rule.
+
+\paragraph{Definition (Inversion Symmetry).}
+The operation rule of the delay circuit $F_D$ is invariant under the transformation $I \to
+\overline{I}$. This is called \emph{inversion symmetry}.
+
+This property is a trivial consequence that follows directly from the definition
+(\cite{kihara2026} \S2.2) that inversion is an operation within the same class and satisfies
+$\overline{\overline{I}} = I$.
+
+\subsection{Definition of the Superclass}
+
+The previous paper \cite{kihara2026} dealt only with operations within the same class (the delay
+circuit $F_D$ and the NOT operation circuit). In this section, we define a concept for handling
+information belonging to different classes in a unified manner.
+
+A tuple $(A, B, C_1, C_2, \ldots, C_m)$ of information belonging to different classes is defined
+as a \textbf{superclass} $\mathcal{I}$. The number of child elements is arbitrary (including zero),
+and neither the class nor the value of each child element is constrained. When there are zero child
+elements, this corresponds to $\mathrm{null}$.
+
+The superclass is required to satisfy the following properties.
+
+\paragraph{Property 1: Order Independence.}
+The superclass does not depend on the order in which child elements appear.
+\[
+  (A, B) = (B, A)
+\]
+
+\paragraph{Property 2: Transparency of null.}
+A $\mathrm{null}$ element as a child element of the superclass is equivalent to its absence.
+\[
+  (A, \mathrm{null}, B) = (A, B)
+\]
+
+\paragraph{Property 3: Existence of Inverse Operations.}
+For any operation on a superclass $\mathcal{I}$, an inverse operation exists.
+
+The operation satisfying Properties 1 through 3 above is denoted $*$.
+
+\paragraph{Definition of Meta-Information.}
+The base class of the superclass has \textbf{meta-information} that is distinct from the
+information $I$ itself. Meta-information consists of the following two components:
+
+\begin{itemize}
+  \item \textbf{Counter $n$:} Accumulates the number of passes through the delay circuit. Its
+        initial value is $\mathrm{null}$.
+  \item \textbf{Operation function $*$:} The operation executed when passing through the delay
+        circuit. Its initial value is $\mathrm{null}$. The operation function $*$ can reference $n$.
+\end{itemize}
+
+Meta-information accompanies information $I$ but is not the value of $I$ itself. Therefore, the
+definition of information $I$ in \cite{kihara2026} \S2.2 remains unchanged.
+
+$n$ is an exception to the inverse operation rule: even when an inverse operation is performed, $n$
+is preserved.
+
+\subsection{Extended Definition of $F_D$}
+
+The operation rule of $F_D$ defined in \cite{kihara2026} \S2.2 (copying input information to
+internal information and passing it to the output) is not changed. When information of the
+superclass passes through, $F_D$ performs the following operations on the meta-information of the
+passing information, in addition to the original operation rule:
+
+\begin{enumerate}
+  \item Increment the counter $n$ by $+1$ (if $n = \mathrm{null}$, set it from $0$ to $1$)
+  \item Execute the operation function $*$ if it is not $\mathrm{null}$
+\end{enumerate}
+
+The entity that operates on meta-information is $F_D$; the information $I$ itself does not need to
+recognize that it ``has passed through $F_D$.''
+
+The NOT operation circuit does not operate on meta-information. This structurally corroborates the
+fact stated in \cite{kihara2026} \S2.3 that ``because the NOT operation circuit's operation
+involves no delay, it is not counted in the delay count $n$.''
+
+When an operation generates child classes on its own, $n$ can be re-initialized.
+
+\subsection{Consistency between the Superclass and the Delay Circuit}
+
+The superclass $\mathcal{I}$ satisfies the definition of information $I$ in
+\cite{kihara2026} \S2.2 (``any information that can be represented numerically''). That is, a
+tuple of information $(A, B)$ or $(C_1, C_2, \ldots, C_m)$ belonging to the superclass can each
+be treated as a single piece of information $I$.
+
+Therefore, the definitions of the delay circuit $F_D$ and the NOT operation circuit
+(\cite{kihara2026} \S2.2--\S2.4) apply to superclass information without modification. The
+meta-information operations added in \S3.3 are not a modification of the original operation rule
+of $F_D$ but rather the addition of a new operational layer.
+
+\subsection{External Intervention from Outside the System}
+
+The operation rule of $F_D$ defined in the previous paper \cite{kihara2026} and the
+meta-information operations in \S3.3 specify the deterministic behavior inside the system. In this
+section, we define intervention from outside the system.
+
+\paragraph{External Intervention.}
+We allow the operation of forcibly overwriting the internal information of a specific $F_D$ from
+outside the system. This operation is performed independently of the operation rules inside the
+system.
+
+External intervention is an exception to Property~3 of \S3.2: information that has undergone
+external intervention is excluded from the scope of inverse operations. That is, external
+intervention introduces irreversibility into the interior of the system.
+
+From the perspective of an observer inside the system, external intervention is an event that
+appears suddenly from outside the causal order.
+
+\textit{Note:} This definition suggests that the present model admits a hierarchical structure.
+The relationship between an upper-level system and a lower-level system is outside the scope of
+this paper.
+
+\section{Discussion}
+% empty
+
+\section{Conclusion}
+
+Formulating this model as equations and mapping it to a physical framework are outside the scope
+of this paper.
+
+\begin{thebibliography}{9}
+\bibitem{kihara2026}
+  Noriaki Kihara,
+  ``Information-Theoretic Organization of Information Transmission,''
+  Research Note, April 2026.
+\end{thebibliography}
+
+\end{document}

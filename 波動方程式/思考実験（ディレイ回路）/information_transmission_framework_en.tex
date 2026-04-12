@@ -1,0 +1,319 @@
+% !TEX program = lualatex
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{booktabs}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+
+\title{An Information-Theoretic Framework for Information Transmission}
+\author{Noriaki Kihara\\
+WF System Co., Ltd.\\
+Osaka University, School of Engineering Science (graduated)}
+\date{April 2026\quad Research Note\\[4pt]
+DOI: \href{https://doi.org/10.5281/zenodo.19534345}{10.5281/zenodo.19534345}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Three properties are defined for information $I$: the null state, equivalence judgment, and inversion. Two types of operational elements are defined: the delay circuit $F_D$ and the NOT operation circuit. By combining these elements, discrete oscillation patterns and propagation patterns are constructed, and it is shown that the formulation of each takes mathematically identical forms to the formulas for simple harmonic oscillation, uniform propagation, and the fundamental vibration of a string. This paper contains no physical claims and deals solely with the consistency of the model as a computational framework.
+\end{abstract}
+
+\section{Introduction}
+
+This paper formulates information transmission as an abstract computational process and organizes the discrete patterns derived from its operational rules.
+
+Specifically, two operational elements are defined: a delay circuit that transmits information from input to output, and a NOT operation circuit that inverts information. Three configurations are considered: a single element with feedback connection, a series connection, and a series connection with feedback added. The expressions obtained from each configuration are compared with known physical formulas.
+
+\section{Preliminaries: Definitions and Basic Concepts}
+
+\subsection{Scope and Limitations of This Paper}
+
+This paper does \textbf{not} claim or prove the following:
+
+\begin{itemize}
+  \item \textbf{Proof of theories concerning physical entities}: The delay circuit treated in this paper is an abstract model of information computation, and does not claim the validity of any particular physical system or physical law.
+  \item \textbf{Proof of rigor in information theory}: ``Information'' in this paper differs from the information quantity $I$ in Shannon information theory, and does not aim for rigorous argument based on the axioms of information theory.
+\end{itemize}
+
+What this paper shows is that when information transmission from input to output is formulated as an abstract computational process, the \textbf{operational consistency} of that process is maintained.
+
+\subsection{Definition of the Delay Circuit}
+
+\textbf{Information $I$} means any information that can be represented numerically. Its form may be arbitrary: scalar values, complex values, matrices, tensors, etc. However, information $I$ is assumed to satisfy the following properties:
+
+\begin{enumerate}
+  \item \textbf{Existence of the null state}: A state in which information does not exist, $I = \mathrm{null}$, can be defined.
+  \item \textbf{Possibility of null judgment}: For any information $I$, it can be determined whether $I = \mathrm{null}$ or not. The comparison $\mathrm{null} = \mathrm{null}$ is taken to be true.
+  \item \textbf{Definition of class}: Information belongs to a class (type). For any two pieces of information $I_a,\, I_b$, it can be determined whether they belong to the same class or not. For example, a real number and an array belong to different classes. $\mathrm{null}$ is assumed to belong to any class (i.e., for any information $I$, the class judgment between $\mathrm{null}$ and $I$ always yields the same class).
+  \item \textbf{Possibility of equivalence judgment}: For any two pieces of information $I_a,\, I_b$ belonging to the same class, it can be determined whether $I_a = I_b$ (whether they are the same information).
+  \item \textbf{Definition of inversion}: For any information $I$, its inversion $\overline{I}$ can be defined. Inversion is an operation within the same class and satisfies $\overline{\overline{I}} = I$ (double inversion returns to the original). Also, $\overline{\mathrm{null}} = \mathrm{null}$.
+\end{enumerate}
+
+\textbf{Information transmission} is defined as the transmission of information $I$ from an input point $\mathrm{IN}$ to an output point $\mathrm{OUT}$.
+
+The operation
+\begin{equation}
+  \mathrm{OUT} = F_D(\mathrm{IN})
+\end{equation}
+that performs information transmission defines $F_D$ as a \textbf{delay circuit}. The delay circuit requires that the input information and output information belong to the same class.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{fig1_delay_circuit.pdf}
+  \caption{Delay circuit}
+\end{figure}
+
+\subsection{The Role of Delay in Information Transmission}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.6\textwidth]{fig2_delay_circuit_internal.pdf}
+  \caption{Internal structure of the delay circuit}
+\end{figure}
+
+\paragraph{Internal Structure of the Delay Circuit}
+
+The information observable from inside the delay circuit $F_D$ consists of the following two elements:
+
+\begin{itemize}
+  \item \textbf{Input information $\mathrm{IN}$}: Information supplied from outside. It can only be referenced and cannot be modified from within $F_D$.
+  \item \textbf{Internal information $I$}: Information held internally by $F_D$. It is observable from outside as $\mathrm{OUT}$, but cannot be modified from outside.
+\end{itemize}
+
+\paragraph{Initial State}
+
+The initial state of the delay circuit $F_D$ is $I = \mathrm{null}$, $\mathrm{OUT} = \mathrm{null}$.
+
+\paragraph{Operational Rules}
+
+The delay circuit $F_D$ operates according to the following rules:
+
+\begin{enumerate}
+  \item If $\mathrm{IN} \neq I$, or if $I = \mathrm{null}$:
+    \begin{itemize}
+      \item Copy the input information $\mathrm{IN}$ to the internal information $I$ ($I \leftarrow \mathrm{IN}$)
+      \item After a delay of one step, output the internal information $I$ to the output $\mathrm{OUT}$
+    \end{itemize}
+  \item If $\mathrm{IN} = I$:
+    \begin{itemize}
+      \item Do nothing ($\mathrm{OUT}$ does not change)
+    \end{itemize}
+\end{enumerate}
+
+\paragraph{Observable Quantities from Outside}
+
+The operation of the delay circuit $F_D$ proceeds in discrete steps. The only quantity observable from outside is the number of times the delay operation has been executed (the delay count $n$). Since the NOT operation circuit operates without delay, it is not included in the delay count $n$.
+
+\subsection{NOT Operation Circuit}
+
+The NOT operation circuit is a circuit that holds internal information $I$, inverts the input information $\mathrm{IN}$, and outputs it immediately (without delay). The input information $\mathrm{IN}$, internal information $I$, and output information $\mathrm{OUT}$ all belong to the same class.
+
+\begin{itemize}
+  \item \textbf{Internal information $I$}: Holds the inversion of $\mathrm{IN}$. Observable from outside as $\mathrm{OUT}$.
+\end{itemize}
+
+\paragraph{Operational Rules}
+
+\begin{enumerate}
+  \item If $\mathrm{IN} \neq \mathrm{null}$:
+    \begin{itemize}
+      \item $I \leftarrow \overline{\mathrm{IN}}$, $\mathrm{OUT} = I$
+    \end{itemize}
+  \item If $\mathrm{IN} = \mathrm{null}$ and $I \neq \mathrm{null}$:
+    \begin{itemize}
+      \item $\mathrm{OUT} = I$ (output the internal information as is)
+    \end{itemize}
+  \item If $\mathrm{IN} = \mathrm{null}$ and $I = \mathrm{null}$:
+    \begin{itemize}
+      \item $\mathrm{OUT} = \mathrm{null}$
+    \end{itemize}
+\end{enumerate}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\textwidth]{fig3_not_circuit.pdf}
+  \caption{NOT operation circuit}
+\end{figure}
+
+\section{Simple Oscillation Circuit}
+
+The delay circuit $F_D$ and the NOT operation circuit are connected to form the following feedback structure. The output of $F_D$ is connected to the input of NOT, and the output of NOT is connected to the input of $F_D$.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.6\textwidth]{fig4_oscillation_circuit.pdf}
+  \caption{Simple oscillation circuit}
+\end{figure}
+
+\subsection{Oscillation Sequence}
+
+The following shows the output transitions of the simple oscillation circuit at each step.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Output transitions of the simple oscillation circuit}
+  \begin{tabular}{ccc}
+    \toprule
+    Delay count $n$ & $F_D$ OUT & NOT OUT \\
+    \midrule
+    $0$ & $\mathrm{null}$ & $\mathrm{null}$ \\
+    $1$ & $I$ & $\overline{I}$ \\
+    $2$ & $\overline{I}$ & $I$ \\
+    $3$ & $I$ & $\overline{I}$ \\
+    $4$ & $\overline{I}$ & $I$ \\
+    $\vdots$ & $\vdots$ & $\vdots$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+For $n \geq 1$, the output of $F_D$ alternates between $I$ and $\overline{I}$. This is a discrete oscillation.
+
+\subsection{Formulation}
+
+Let information $I$ be a scalar value and define the inversion as $\overline{I} = -I$. The output of $F_D$ in the simple oscillation circuit is expressed as follows:
+
+\begin{equation}
+  x(n) = I \cdot (-1)^{n+1} \quad (n = 1, 2, 3, \ldots)
+\end{equation}
+
+That is, the output alternates between $I$ and $-I$ with respect to the delay count $n$.
+
+\section{Open String Information Transmission Model}
+
+Consider a structure in which $n$ delay circuits $F_{D1}, F_{D2}, \ldots, F_{Dn}$ are connected in series, with an input point $\mathrm{IN}_1$ at the left end and an output point $\mathrm{OUT}_n$ at the right end. This corresponds to a model of a string with free ends.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{fig5_open_string.pdf}
+  \caption{Open string information transmission model}
+\end{figure}
+
+\subsection{Propagation Sequence}
+
+The following shows the output transitions when information $I$ is given to $\mathrm{IN}_1$ at delay count $n = 0$.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Output transitions of the open string model}
+  \begin{tabular}{ccccccc}
+    \toprule
+    Delay count $n$ & $\mathrm{IN}_1$ & $\mathrm{OUT}_1$ & $\mathrm{OUT}_2$ & $\mathrm{OUT}_3$ & $\cdots$ & $\mathrm{OUT}_n$ \\
+    \midrule
+    $0$ & $I$ & $\mathrm{null}$ & $\mathrm{null}$ & $\mathrm{null}$ & $\cdots$ & $\mathrm{null}$ \\
+    $1$ & $I$ & $I$ & $\mathrm{null}$ & $\mathrm{null}$ & $\cdots$ & $\mathrm{null}$ \\
+    $2$ & $I$ & $I$ & $I$ & $\mathrm{null}$ & $\cdots$ & $\mathrm{null}$ \\
+    $3$ & $I$ & $I$ & $I$ & $I$ & $\cdots$ & $\mathrm{null}$ \\
+    $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ \\
+    $n$ & $I$ & $I$ & $I$ & $I$ & $\cdots$ & $I$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Information $I$ propagates one $F_D$ element at a time per delay operation.
+
+\subsection{Formulation}
+
+Let $k$ denote the arrival position of information after $n$ delay operations (the index number of the leading $F_D$):
+
+\begin{equation}
+  k = n
+\end{equation}
+
+That is, the arrival position of information is linear with respect to the delay count.
+
+\section{Closed String Information Transmission Model}
+
+In the open string structure of Chapter~4, the output $\mathrm{OUT}_n$ of $F_{Dn}$ is connected to the input $\mathrm{IN}_1$ of $F_{D1}$ via a NOT operation circuit, forming a negative feedback loop.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{fig6_closed_string.pdf}
+  \caption{Closed string information transmission model (negative feedback)}
+\end{figure}
+
+\subsection{Propagation Sequence}
+
+The following shows the propagation sequence for the case of three $F_D$ elements ($F_{D1}, F_{D2}, F_{D3}$). As the initial condition, information $I$ is given to $F_{D1}$.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Propagation sequence of the closed string model (3 elements)}
+  \begin{tabular}{cccccccc}
+    \toprule
+    Loop $m$ & Delay count $n$ & $\mathrm{IN}_1$ & $\mathrm{OUT}_1$ & $\mathrm{OUT}_2$ & $\mathrm{OUT}_3$ & NOT OUT \\
+    \midrule
+    $0$ & $0$  & $I$            & $\mathrm{null}$  & $\mathrm{null}$  & $\mathrm{null}$  & $\mathrm{null}$ \\
+    $0$ & $1$  & $I$            & $I$              & $\mathrm{null}$  & $\mathrm{null}$  & $\mathrm{null}$ \\
+    $0$ & $2$  & $I$            & $I$              & $I$              & $\mathrm{null}$  & $\mathrm{null}$ \\
+    $0$ & $3$  & $I$            & $I$              & $I$              & $I$              & $\overline{I}$  \\
+    $1$ & $4$  & $\overline{I}$ & $\overline{I}$   & $I$              & $I$              & $\overline{I}$  \\
+    $1$ & $5$  & $\overline{I}$ & $\overline{I}$   & $\overline{I}$   & $I$              & $\overline{I}$  \\
+    $1$ & $6$  & $\overline{I}$ & $\overline{I}$   & $\overline{I}$   & $\overline{I}$   & $I$             \\
+    $2$ & $7$  & $I$            & $I$              & $\overline{I}$   & $\overline{I}$   & $I$             \\
+    $2$ & $8$  & $I$            & $I$              & $I$              & $\overline{I}$   & $I$             \\
+    $2$ & $9$  & $I$            & $I$              & $I$              & $I$              & $\overline{I}$  \\
+    $3$ & $10$ & $\overline{I}$ & $\overline{I}$   & $I$              & $I$              & $\overline{I}$  \\
+    $3$ & $11$ & $\overline{I}$ & $\overline{I}$   & $\overline{I}$   & $I$              & $\overline{I}$  \\
+    $3$ & $12$ & $\overline{I}$ & $\overline{I}$   & $\overline{I}$   & $\overline{I}$   & $I$             \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+For each loop $m$, a wave of $I$ and $\overline{I}$ propagates from $F_{D1}$ to $F_{Dn}$, is inverted by NOT at the right end, and the next loop begins. One loop consists of $n$ operations, and one complete oscillation of $I$ and $\overline{I}$ (2 loops: $I \to \overline{I} \to I$) consists of $2n$ operations.
+
+\subsection{Formulation}
+
+In a closed string consisting of $n$ $F_D$ elements, $n$ delay operations are required for information to pass through all elements. Since one oscillation including inversion at NOT ($I \to \overline{I} \to I$) comprises 2 loops, the number of delay operations required for one oscillation is $2n$.
+
+\begin{equation}
+  N_{\text{oscillation}} = 2n
+\end{equation}
+
+Meanwhile, for the fundamental vibration (mode 1) of a string fixed at both ends, one oscillation is completed while the wave makes one round trip along the full length of the string. If the string is divided into $n$ discrete elements and one step is required to pass through one element, the number of steps per oscillation is likewise $2n$.
+
+The structure of both is identical.
+
+\section{Discussion}
+
+In this paper, using only the minimal definitions of two types of operational elements (the delay circuit $F_D$ and the NOT operation circuit) and information $I$, the following three correspondences were obtained.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Summary of correspondences}
+  \begin{tabular}{lll}
+    \toprule
+    Configuration & Result of this model & Analogous physical structure \\
+    \midrule
+    $F_D$ + NOT (single loop) & $x(n) = I \cdot (-1)^{n+1}$ & Simple harmonic oscillation \\
+    Series connection of $F_D$ (open string) & Arrival position $k = n$ (linear propagation) & Uniform propagation \\
+    Series $F_D$ + NOT (closed string) & 1 oscillation $= 2n$ operations & Fundamental vibration of a string (mode 1) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+In each case, the patterns derived from the operational rules of this model share structural commonality with analogous physical structures. This commonality is a consequence of the operational consistency of this model and does not constitute a physical claim.
+
+\section{Conclusion}
+
+Three properties were defined for information $I$: the null state, equivalence judgment, and inversion. Two operational elements were defined: the delay circuit $F_D$ and the NOT operation circuit. By combining these elements, discrete oscillation and propagation patterns corresponding to simple harmonic oscillation, linear propagation, and the fundamental vibration of a string were constructed, and it was shown that each yields the same pattern as the corresponding known physical structure.
+
+\begin{thebibliography}{9}
+\bibitem{hara}
+  Yasuo Hara,
+  \textit{Fundamentals of Physics},
+  Gakujutsu Tosho Shuppansha.
+
+\bibitem{toda}
+  Morikazu Toda,
+  \textit{Theory of Oscillations},
+  Iwanami Shoten.
+\end{thebibliography}
+
+\end{document}
