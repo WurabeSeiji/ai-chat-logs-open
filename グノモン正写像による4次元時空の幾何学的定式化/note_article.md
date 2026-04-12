@@ -39,21 +39,15 @@ n次元接超平面 Π_R
 
 射影の定義式：
 
-$$
-Y^\mu = \frac{R x^\mu}{l}, \quad Y^{n+1} = \frac{R^2}{l}, \quad l = \sqrt{R^2 + \sum_{\mu=1}^n (x^\mu)^2}
-$$
+![射影の定義式](note_images/eq1_projection.png)
 
 引き戻し計量：
 
-$$
-g_{\mu\nu} = \frac{R^2}{l^2}\left(\delta_{\mu\nu} - \frac{x_\mu x_\nu}{l^2}\right)
-$$
+![引き戻し計量](note_images/eq2_metric.png)
 
 n 次元 Einstein テンソルが次を満たすことを証明：
 
-$$
-G_{\mu\nu} + \Lambda_n\, g_{\mu\nu} = 0, \qquad \Lambda_n = \frac{(n-1)(n-2)}{2R^2}
-$$
+![Einstein方程式](note_images/eq3_einstein.png)
 
 さらに、Lorentzian 版の誘導計量が **de Sitter 時空の Beltrami 座標系**と完全に等価であること、平坦極限 R → ∞ で Minkowski 時空に帰着することを示しました。
 
@@ -181,9 +175,7 @@ $$
 
 Birkhoff の定理により、球対称真空解は一意に決定されます。追加の仮定は一切不要で、Schwarzschild–de Sitter 計量が得られます：
 
-$$
-f(r) = 1 - \frac{2M}{r} - \frac{r^2}{R^2}
-$$
+![SdS計量](note_images/eq4_sds.png)
 
 R → 0 極限では宇宙論的ホライズン r_C → 0 となり、ブラックホール・ホライズンと融合して観測者領域が消滅します。これは論文 [4] §3.2 の構造的緊張の厳密解レベルでの対応物です。
 
