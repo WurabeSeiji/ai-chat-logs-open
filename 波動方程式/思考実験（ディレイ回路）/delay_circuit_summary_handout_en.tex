@@ -1,0 +1,143 @@
+% !TEX program = pdflatex
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{booktabs}
+
+\title{Information Transmission Model via Delay Circuits:\\Summary of 5 Papers}
+\author{Noriaki Kihara\\
+WF System Co., Ltd.\\
+Osaka University, Faculty of Engineering Science (graduated)\\
+ORCID: 0009-0004-6753-4020}
+\date{April 2026}
+
+\begin{document}
+\maketitle
+
+\section*{Paper List}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{clc}
+\toprule
+\# & Title & DOI \\
+\midrule
+{[1]} & An Information-Theoretic Framework for Information Transmission & \href{https://doi.org/10.5281/zenodo.19534345}{10.5281/zenodo.19534345} \\
+{[2]} & Symmetries Inherent in the Delay Circuit Model & \href{https://doi.org/10.5281/zenodo.19534347}{10.5281/zenodo.19534347} \\
+{[3]} & Realization of Simple Harmonic Oscillation and Sinusoidal Waves & \href{https://doi.org/10.5281/zenodo.19534349}{10.5281/zenodo.19534349} \\
+{[4]} & Realization of Perfectly Elastic Collision & \href{https://doi.org/10.5281/zenodo.19534353}{10.5281/zenodo.19534353} \\
+{[5]} & Realization of a Wave Packet Collapse Model & \href{https://doi.org/10.5281/zenodo.19534355}{10.5281/zenodo.19534355} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{Purpose of This Research}
+
+Starting from only two computational elements --- the delay circuit $F_D$ (which transmits information with a one-step delay) and the NOT operation circuit (which inverts information instantaneously) --- we deductively construct patterns ranging from oscillation, propagation, and collision to wave packet collapse. The starting point is the minimal definition that ``the transmission of information $I$ is accompanied by a delay.'' No physical claims are made.
+
+\section*{Constructed Computational Propositions}
+
+\subsection*{Paper [1]: Basic Structure of Information Transmission}
+
+\textbf{1. Three Properties of Information $I$}\quad
+Three properties are defined for information $I$: existence of a null state, equivalence judgment, and inversion ($\overline{\overline{I}} = I$). (\S 2)
+
+\textbf{2. Delay Circuit $F_D$ and NOT Operation Circuit}\quad
+$F_D$ is defined as a circuit that outputs input information after a one-step delay. The NOT operation circuit is defined as a circuit that inverts input information without delay. (\S 3)
+
+\textbf{3. Simple Harmonic Oscillation Pattern}\quad
+By feedback connection of $F_D$ and NOT, the oscillation pattern $x(n) = I \cdot (-1)^{n+1}$ is constructed. (\S 4.1)
+
+\textbf{4. Constant-Velocity Propagation Pattern}\quad
+By serial connection of $F_D$ (open string model), the linear propagation pattern with arrival position $k = n$ is constructed. (\S 4.2)
+
+\textbf{5. Fundamental String Vibration Pattern}\quad
+By the closed string model ($F_D$ serial + NOT), a fundamental vibration pattern where one oscillation $= 2n$ operations is constructed. (\S 4.3)
+
+\subsection*{Paper [2]: Framework Extension}
+
+\textbf{6. Inversion Symmetry}\quad
+The operation rule of $F_D$ is invariant under the transformation $I \to \overline{I}$. (\S 3.1)
+
+\textbf{7. Superclass and Meta-Information}\quad
+A superclass for grouping information of different classes, and meta-information (counter $n$, operation function $*$) attached to information are defined. (\S 3.2, \S 3.3)
+
+\textbf{8. External Intervention}\quad
+An operation that forcibly rewrites the internal information of a specific $F_D$ from outside the system is defined. From the perspective of the system's interior, this is observed as an event that suddenly appears from outside causality. (\S 3.5)
+
+\subsection*{Paper [3]: Four Types of Wave Patterns}
+
+\textbf{9. Class $A$ (Square Wave)}\quad
+A square wave is constructed as a class without an operation function $*$. (\S 3.3)
+
+\textbf{10. Class $B$ (Transverse Wave / Sinusoidal Wave)}\quad
+By setting $w = w_{\max} \cdot \sin(n/m \cdot 360^\circ)$ as the operation function $*$, a transverse wave with displacement perpendicular to the propagation direction is constructed. (\S 3.4)
+
+\textbf{11. Class $C$ (Longitudinal Wave)}\quad
+Using the same $*$ as Class $B$, a longitudinal wave is constructed by interpreting the output $w$ as displacement in the propagation direction. (\S 3.5)
+
+\textbf{12. Class $D$ (Rotational Wave)}\quad
+By setting $w = (n/m \cdot 360^\circ) \bmod 360^\circ$ as $*$, a rotational wave is constructed. (\S 3.6)
+
+The definitions of $F_D$ and the NOT operation circuit are not modified at all. Differences in wave types are expressed solely through the choice of class definition and $*$.
+
+\subsection*{Paper [4]: Perfectly Elastic Collision}
+
+\textbf{13. Class $E$ (Transverse Wave with Position Information)}\quad
+Class $B$ is extended to define Class $E$ with initial position $x_0$, current position $x$, and displacement $dx$. (\S 3)
+
+\textbf{14. Non-Interaction Model (Pass-Through)}\quad
+A model is constructed where two instances of Class $E$ propagate in opposite directions and pass through each other without interaction at the same position. (\S 4)
+
+\textbf{15. Class $F$ (with Collision Functionality)}\quad
+Class $F$ is defined by adding collision radius $r$ and collision condition $(x_1 - x_2)^2 < \max(r_1^2, r_2^2)$ to Class $E$. Using $w_{\max}$ as an analogue of mass, $dx$ is updated according to the formula for one-dimensional perfectly elastic collision. (\S 5)
+
+\textbf{16. Conservation of Momentum and Energy}\quad
+It is verified that the momentum analogue $Q = w_{\max,1} \cdot dx_1 + w_{\max,2} \cdot dx_2$ and the energy analogue $K = w_{\max,1} \cdot dx_1^2 + w_{\max,2} \cdot dx_2^2$ are conserved before and after collision. (\S 5.2)
+
+\subsection*{Paper [5]: Wave Packet Collapse}
+
+\textbf{17. Class $G$ (Promotion of Wave Packet Radius and Maximum Wave Height to Information)}\quad
+Class $G$ is defined by promoting the meta-information $r$ (wave packet radius) and $w_{\max}$ (maximum wave height) of Class $F$ to information. (\S 2)
+
+\textbf{18. Mass Analogue $M = w_{\max} \cdot r$}\quad
+The mass analogue is defined as $M = w_{\max} \cdot r$, and it is shown that $M$ is conserved before and after collision. (\S 2.2)
+
+\textbf{19. Wave Packet Collapse Rule}\quad
+A rule is constructed where the wave packet radius collapses as $r^{\text{new}} = \min(r_1, r_2)$ upon collision, and the maximum wave height increases as $w_{\max}^{\text{new}} = M / r^{\text{new}}$ due to conservation of $M$. (\S 2.4)
+
+\textbf{20. Wave Packet Collapse Sequence}\quad
+A process is realized where a photon with a wide wave packet ($r = 48$, $w_{\max} = 1$) collides with an electron with a narrow wave packet ($r = 6$), causing the wave packet to collapse to $r = 6$, $w_{\max} = 8$. (\S 3)
+
+\section*{What This Research Does Not Claim}
+
+This research is limited to describing the consistency of the computational model. The following claims are not made:
+
+\begin{itemize}
+  \item That delay circuits represent physical entities or devices
+  \item That the derived patterns constitute derivations or proofs of physical laws
+  \item That the physical mechanism of wave packet collapse is explained
+  \item That the mass analogue $w_{\max}$ is identical to physical mass
+  \item That external intervention corresponds to quantum mechanical observation
+\end{itemize}
+
+These physical identifications require additional assumptions beyond the computational propositions of this research (Paper [5] \S 4).
+
+\section*{References}
+
+{[1]} Kihara, N. (2026). \textit{An Information-Theoretic Framework for Information Transmission}. DOI: \href{https://doi.org/10.5281/zenodo.19534345}{10.5281/zenodo.19534345}.
+
+{[2]} Kihara, N. (2026). \textit{Symmetries Inherent in the Delay Circuit Model}. DOI: \href{https://doi.org/10.5281/zenodo.19534347}{10.5281/zenodo.19534347}.
+
+{[3]} Kihara, N. (2026). \textit{Realization of Simple Harmonic Oscillation and Sinusoidal Waves in the Delay Circuit Model}. DOI: \href{https://doi.org/10.5281/zenodo.19534349}{10.5281/zenodo.19534349}.
+
+{[4]} Kihara, N. (2026). \textit{Realization of Perfectly Elastic Collision in the Delay Circuit Model}. DOI: \href{https://doi.org/10.5281/zenodo.19534353}{10.5281/zenodo.19534353}.
+
+{[5]} Kihara, N. (2026). \textit{Realization of a Wave Packet Collapse Model in the Delay Circuit Model}. DOI: \href{https://doi.org/10.5281/zenodo.19534355}{10.5281/zenodo.19534355}.
+
+\end{document}

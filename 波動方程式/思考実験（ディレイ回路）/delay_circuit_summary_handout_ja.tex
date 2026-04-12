@@ -1,0 +1,142 @@
+% !TEX program = lualatex
+\documentclass[12pt,a4paper]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{booktabs}
+\usepackage{luatexja-fontspec}
+
+\title{ディレイ回路による情報伝達モデル：5論文の概要}
+\author{木原 範昭（Noriaki Kihara）\\
+WF System Co., Ltd.\\
+大阪大学 基礎工学部 卒業\\
+ORCID: 0009-0004-6753-4020}
+\date{2026年4月}
+
+\begin{document}
+\maketitle
+
+\section*{論文一覧}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{clc}
+\toprule
+\# & タイトル & DOI \\
+\midrule
+{[1]} & 情報伝達の情報論的整理 & \href{https://doi.org/10.5281/zenodo.19534345}{10.5281/zenodo.19534345} \\
+{[2]} & ディレイ回路モデルに内在する対称性の整理 & \href{https://doi.org/10.5281/zenodo.19534347}{10.5281/zenodo.19534347} \\
+{[3]} & ディレイ回路モデルでの単振動・正弦波の実現 & \href{https://doi.org/10.5281/zenodo.19534349}{10.5281/zenodo.19534349} \\
+{[4]} & ディレイ回路モデルでの完全弾性衝突の実現 & \href{https://doi.org/10.5281/zenodo.19534353}{10.5281/zenodo.19534353} \\
+{[5]} & ディレイ回路モデルでの波束の収縮モデルの実現 & \href{https://doi.org/10.5281/zenodo.19534355}{10.5281/zenodo.19534355} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{本研究の主旨}
+
+ディレイ回路 $F_D$（1ステップ遅延で情報を伝達する回路）とNOT演算回路（即座に情報を反転する回路）という2つの演算要素のみから，振動・伝播・衝突・波束の収縮に至るパターンを演繹的に構成する．出発点は「情報 $I$ の伝達に遅延が伴う」という最小限の定義であり，物理的主張は一切含まない．
+
+\section*{構成された演算的命題}
+
+\subsection*{論文 [1]：情報伝達の基本構造}
+
+\textbf{1. 情報 $I$ の3つの性質}\quad
+情報 $I$ に null状態の存在，等価判定，反転（$\overline{\overline{I}} = I$）の3つの性質を定義した．（\S 2）
+
+\textbf{2. ディレイ回路 $F_D$ とNOT演算回路}\quad
+$F_D$ は入力情報を1ステップの遅延の後に出力する回路，NOT演算回路は入力情報を遅延なしで反転する回路として定義した．（\S 3）
+
+\textbf{3. 単振動パターン}\quad
+$F_D$ とNOTの帰還接続により，$x(n) = I \cdot (-1)^{n+1}$ の振動パターンを構成した．（\S 4.1）
+
+\textbf{4. 等速伝播パターン}\quad
+$F_D$ の直列接続（開いた縄モデル）により，到達位置 $k = n$ の線形伝播パターンを構成した．（\S 4.2）
+
+\textbf{5. 弦の基本振動パターン}\quad
+$F_D$ 直列＋NOTの閉じた縄モデルにより，1振動 $= 2n$ 回の演算となる基本振動パターンを構成した．（\S 4.3）
+
+\subsection*{論文 [2]：フレームワークの拡張}
+
+\textbf{6. 反転対称性}\quad
+$F_D$ の演算規則は $I \to \overline{I}$ の変換で不変である．（\S 3.1）
+
+\textbf{7. スーパークラスとメタ情報}\quad
+異なるクラスの情報をまとめて扱うスーパークラス，および情報に付随するメタ情報（カウンタ $n$，演算ファンクション $*$）を定義した．（\S 3.2, \S 3.3）
+
+\textbf{8. 外部介入}\quad
+系の外部から特定の $F_D$ の内部情報を強制的に書き換える操作を定義した．系の内部から見ると，因果の外から突然現れるイベントとして観測される．（\S 3.5）
+
+\subsection*{論文 [3]：4種類の波動パターン}
+
+\textbf{9. クラス $A$（方形波）}\quad
+演算ファンクション $*$ を持たないクラスとして，方形波を構成した．（\S 3.3）
+
+\textbf{10. クラス $B$（横波・正弦波）}\quad
+$w = w_{\max} \cdot \sin(n/m \cdot 360^\circ)$ を演算ファンクション $*$ とすることで，伝播方向に垂直な変位を持つ横波を構成した．（\S 3.4）
+
+\textbf{11. クラス $C$（縦波）}\quad
+クラス $B$ と同一の $*$ で，出力 $w$ を伝播方向の変位と解釈することで縦波を構成した．（\S 3.5）
+
+\textbf{12. クラス $D$（回転波）}\quad
+$w = (n/m \cdot 360^\circ) \bmod 360^\circ$ を $*$ とすることで回転波を構成した．（\S 3.6）
+
+$F_D$ とNOT演算回路の定義は一切変更していない．波動の種類の違いは，クラスの定義と $*$ の選択のみで表現される．
+
+\subsection*{論文 [4]：完全弾性衝突}
+
+\textbf{13. クラス $E$（位置情報付き横波）}\quad
+クラス $B$ を拡張し，初期位置 $x_0$，現在位置 $x$，変位量 $dx$ を追加したクラス $E$ を定義した．（\S 3）
+
+\textbf{14. 非干渉モデル（すれ違い）}\quad
+クラス $E$ の2つのインスタンスが逆方向に伝播し，同一位置を通過しても相互作用しないモデルを構成した．（\S 4）
+
+\textbf{15. クラス $F$（衝突機能付き）}\quad
+クラス $E$ に衝突半径 $r$ と衝突判定 $(x_1 - x_2)^2 < \max(r_1^2, r_2^2)$ を追加したクラス $F$ を定義した．$w_{\max}$ を質量の類似物として，1次元完全弾性衝突の公式により $dx$ を更新する．（\S 5）
+
+\textbf{16. 運動量・エネルギーの保存}\quad
+運動量の類似物 $Q = w_{\max,1} \cdot dx_1 + w_{\max,2} \cdot dx_2$ とエネルギーの類似物 $K = w_{\max,1} \cdot dx_1^2 + w_{\max,2} \cdot dx_2^2$ が衝突前後で保存されることを検証した．（\S 5.2）
+
+\subsection*{論文 [5]：波束の収縮}
+
+\textbf{17. クラス $G$（波束半径と最大波高の情報昇格）}\quad
+クラス $F$ のメタ情報であった $r$（波束半径）と $w_{\max}$（最大波高）を情報に昇格させたクラス $G$ を定義した．（\S 2）
+
+\textbf{18. 質量の類似物 $M = w_{\max} \cdot r$}\quad
+質量の類似物を $M = w_{\max} \cdot r$ と定義し，衝突前後で $M$ が保存されることを示した．（\S 2.2）
+
+\textbf{19. 波束の収縮規則}\quad
+衝突時に $r^{\text{new}} = \min(r_1, r_2)$ として波束半径が収縮し，$M$ の保存により $w_{\max}^{\text{new}} = M / r^{\text{new}}$ として最大波高が増大する規則を構成した．（\S 2.4）
+
+\textbf{20. 波束の収縮のシーケンス}\quad
+広い波束（$r = 48$, $w_{\max} = 1$）を持つ光子が，狭い波束（$r = 6$）を持つ電子と衝突することで，波束が $r = 6$, $w_{\max} = 8$ に収縮する過程を実現した．（\S 3）
+
+\section*{本研究が主張しないこと}
+
+本研究は演算モデルの整合性の記述に限定される．以下の主張は行わない：
+
+\begin{itemize}
+  \item ディレイ回路が物理的な実体やデバイスを表すこと
+  \item 導出されたパターンが物理法則の導出や証明であること
+  \item 波束の収縮の物理的メカニズムを説明すること
+  \item 質量の類似物 $w_{\max}$ が物理的な質量と同一であること
+  \item 外部介入が量子力学的な観測に対応すること
+\end{itemize}
+
+これらの物理的同定は，本研究の演算的命題を超える追加の仮定を要する（論文 [5] \S 4）．
+
+\section*{参考文献}
+
+{[1]} Kihara, N. (2026). \textit{情報伝達の情報論的整理}. DOI: \href{https://doi.org/10.5281/zenodo.19534345}{10.5281/zenodo.19534345}.
+
+{[2]} Kihara, N. (2026). \textit{ディレイ回路モデルに内在する対称性の整理}. DOI: \href{https://doi.org/10.5281/zenodo.19534347}{10.5281/zenodo.19534347}.
+
+{[3]} Kihara, N. (2026). \textit{ディレイ回路モデルでの単振動・正弦波の実現}. DOI: \href{https://doi.org/10.5281/zenodo.19534349}{10.5281/zenodo.19534349}.
+
+{[4]} Kihara, N. (2026). \textit{ディレイ回路モデルでの完全弾性衝突の実現}. DOI: \href{https://doi.org/10.5281/zenodo.19534353}{10.5281/zenodo.19534353}.
+
+{[5]} Kihara, N. (2026). \textit{ディレイ回路モデルでの波束の収縮モデルの実現}. DOI: \href{https://doi.org/10.5281/zenodo.19534355}{10.5281/zenodo.19534355}.
+
+\end{document}
