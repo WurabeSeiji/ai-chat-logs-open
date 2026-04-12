@@ -1,210 +1,161 @@
-\documentclass[a4paper,11pt]{ltjsarticle}
-\usepackage{luatexja}
-\usepackage{luatexja-fontspec}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{mathtools}
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{hyperref}
-\usepackage{graphicx}
-\usepackage{float}
+% !TEX program = lualatex
+\documentclass[12pt,a4paper]{ltjsarticle}
+\usepackage{amsmath,amssymb}
 \usepackage{geometry}
-\geometry{margin=25mm}
+\geometry{margin=2.5cm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{booktabs}
+\usepackage{luatexja-fontspec}
 
-\hypersetup{
-  colorlinks=true,
-  linkcolor=blue,
-  urlcolor=blue,
-  citecolor=blue
-}
+\title{中心投影による時空の幾何学的定式化：8論文の概要}
+\author{木原 範昭（Noriaki Kihara）\\
+WF System Co., Ltd.\\
+大阪大学 基礎工学部 卒業\\
+ORCID: 0009-0004-6753-4020}
+\date{2026年4月}
 
-\setlength{\parindent}{1em}
-\setlength{\parskip}{0.5em}
-
-\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \begin{document}
+\maketitle
 
-\section{中心投影による時空の幾何学的定式化：3論文の概要}\label{ux4e2dux5fc3ux6295ux5f71ux306bux3088ux308bux6642ux7a7aux306eux5e7eux4f55ux5b66ux7684ux5b9aux5f0fux53163ux8ad6ux6587ux306eux6982ux8981}
+\section*{論文一覧}
 
-\textbf{著者：} Noriaki Kihara（木原 範昭）\\
-\textbf{所属：} WF System Co., Ltd.（大阪大学 基礎工学部 卒業）\\
-\textbf{ORCID：} 0009-0004-6753-4020\\
-\textbf{作成日：} 2026年4月
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{clc}
+\toprule
+\# & タイトル & DOI \\
+\midrule
+{[1]} & 中心投影による4次元空間の幾何学的定式化 & \href{https://doi.org/10.5281/zenodo.19427780}{10.5281/zenodo.19427780} \\
+{[2]} & 中心投影の幾何学的対称性 & \href{https://doi.org/10.5281/zenodo.19434932}{10.5281/zenodo.19434932} \\
+{[3]} & 複数の主観空間における観測の相対性 & \href{https://doi.org/10.5281/zenodo.19435162}{10.5281/zenodo.19435162} \\
+{[4]} & 中心投影における曲率半径の極限についての考察 & \href{https://doi.org/10.5281/zenodo.19526549}{10.5281/zenodo.19526549} \\
+{[5]} & 背景空間と主観空間への次元追加についての考察 & \href{https://doi.org/10.5281/zenodo.19526913}{10.5281/zenodo.19526913} \\
+{[6]} & ゼロ次元から四次元主観空間の考察 & \href{https://doi.org/10.5281/zenodo.19533292}{10.5281/zenodo.19533292} \\
+{[7]} & 主観空間における測地線の連続性についての考察 & \href{https://doi.org/10.5281/zenodo.19533299}{10.5281/zenodo.19533299} \\
+{[8]} & 体積1の四次元超直方体に外接する超球体の直径 & \href{https://doi.org/10.5281/zenodo.19533313}{10.5281/zenodo.19533313} \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\section*{本研究の主旨}
 
-\subsection{論文一覧}\label{ux8ad6ux6587ux4e00ux89a7}
+$n$ 次元接超平面から超球面 $S^n(R)$ への中心投影（central projection）が持つ幾何学的性質のみから，加速度を生む複数の独立な軸が矛盾なく共存しうる統一的フレームワークを構築する．物理的同定は行わず，幾何学的命題とその証明に徹する．
 
-{\def\LTcaptype{table} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1765}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5294}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2941}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-\#
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-タイトル
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-DOI
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-{[}1{]} & 中心投影による4次元空間の幾何学的定式化 & \href{https://doi.org/10.5281/zenodo.19427780}{10.5281/zenodo.19427780} \\
-{[}2{]} & 中心投影の幾何学的対称性：多軸モデルの数学的基盤 & \href{https://doi.org/10.5281/zenodo.19434932}{10.5281/zenodo.19434932} \\
-{[}3{]} & 複数の主観空間における観測の相対性：中心投影の対称性の幾何学的帰結 & \href{https://doi.org/10.5281/zenodo.19435162}{10.5281/zenodo.19435162} \\
-\end{longtable}
-}
+\section*{証明された幾何学的命題}
 
-{\def\LTcaptype{table} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
-  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\centering
-論文 {[}1{]}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-論文 {[}2{]}
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-論文 {[}3{]}
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\includegraphics[width=3cm]{qr_paper1.png} & \includegraphics[width=3cm]{qr_paper2.png} & \includegraphics[width=3cm]{qr_paper3.png} \\
-\end{longtable}
-}
+\subsection*{論文 [1]：中心投影の基本構造}
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\textbf{1. de Sitter 時空との同型性}\quad
+中心投影の Lorentzian 版の誘導計量が de Sitter 時空の Beltrami 座標系と数値的に一致し，内在幾何として完全に等価であることを証明した．（\S 1.1，付録C 命題C.1）
 
-\subsection{本研究の主旨}\label{ux672cux7814ux7a76ux306eux4e3bux65e8}
+\textbf{2. 正逆投影の正則性}\quad
+$l = \sqrt{R^2 + r^2} \geq R > 0$ であるから，中心投影 $\Phi$ は定義域全体で $C^\infty$ 正則．逆変換 $x^\mu = RY^\mu/Y^{n+1}$ も上半球面 $H^+$ 上で正則．写像は全単射．（付録B 命題B.1）
 
-\(n\) 次元接超平面から超球面 \(S^n(R)\) への中心投影（central projection）が持つ幾何学的性質のみから、加速度を生む複数の独立な軸が矛盾なく共存しうる統一的フレームワークを構築する。物理的同定は行わず、幾何学的命題とその証明に徹する。
+\textbf{3. 誘導計量と Einstein テンソル}\quad
+引き戻し計量 $g_{\mu\nu} = (R^2/l^2)(\delta_{\mu\nu} - x_\mu x_\nu/l^2)$ を厳密に導出し，$n$ 次元 Einstein テンソルが $G_{\mu\nu} + \Lambda_n g_{\mu\nu} = 0$（$\Lambda_n = (n{-}1)(n{-}2)/(2R^2)$）を満たすことを示した．（\S 3, \S 6 命題6.1）
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\textbf{4. 平坦極限}\quad
+$R \to \infty$ で $g_{\mu\nu} \to \delta_{\mu\nu}$，$\Lambda \to 0$．中心投影は恒等写像に退化し，Minkowski 時空に帰着する．（付録A）
 
-\subsection{証明された幾何学的命題}\label{ux8a3cux660eux3055ux308cux305fux5e7eux4f55ux5b66ux7684ux547dux984c}
+\subsection*{論文 [2]：4つの幾何学的対称性}
 
-\subsubsection{論文 {[}1{]}：中心投影の基本構造}\label{ux8ad6ux6587-1ux4e2dux5fc3ux6295ux5f71ux306eux57faux672cux69cbux9020}
+\textbf{5. 対称性 I（離散安定性）}\quad
+座標が零・正の整数・負の整数のいずれの値をとっても $l_A > 0$ であり，中心投影は大域的に正則で破綻しない．（\S 3 定理3.1）
 
-\textbf{1. de Sitter 時空との同型性}\\
-中心投影の Lorentzian 版の誘導計量が de Sitter 時空の Beltrami 座標系と数値的に一致し、内在幾何として完全に等価であることを証明した。\\
-（§1.1、付録C 命題C.1）
+\textbf{6. 対称性 II（軸の対等性）}\quad
+背景空間 $\mathbb{R}^{n+1}$ のどの軸を投影中心に選んでも，計量・曲率テンソル・Einstein テンソルの数学的構造は同一．（\S 4 定理4.1）
 
-\textbf{2. 正逆投影の正則性}\\
-\(l = \sqrt{R^2 + r^2} \geq R > 0\) であるから、中心投影 \(\Phi\) は定義域全体で \(C^\infty\) 正則。逆変換 \(x^\mu = RY^\mu/Y^{n+1}\) も上半球面 \(H^+\) 上で正則。写像は全単射。\\
-（付録B 命題B.1）
+\textbf{7. 対称性 III（測地線偏差と弁別不可能性）}\quad
+測地線偏差 $|\xi|^2 = g_{\mu\nu}\xi^\mu\xi^\nu$ は $[L^2]$ 次元のスカラー不変量であり，内部観測者が曲率の存在を認識する唯一の手段．ただし座標の符号も曲率の方向も弁別できない．（\S 5 定理5.2）
 
-\textbf{3. 誘導計量と Einstein テンソル}\\
-引き戻し計量 \(g_{\mu\nu} = (R^2/l^2)(\delta_{\mu\nu} - x_\mu x_\nu/l^2)\) を厳密に導出し、\(n\) 次元 Einstein テンソルが \(G_{\mu\nu} + \Lambda_n g_{\mu\nu} = 0\)（\(\Lambda_n = (n{-}1)(n{-}2)/(2R^2)\)）を満たすことを示した。\\
-（§3, §6 命題6.1）
+\textbf{8. 対称性 IV（主観座標系の変換可能性）}\quad
+異なる軸を中心とする主観座標系は，$T_{A \to B} = \Phi_B^{-1} \circ \Phi_A$ により $C^\infty$ 級に相互変換可能．変換のパラメータは曲率半径 $R$ と座標値のみ．（\S 6 定理6.1，命題6.5）
 
-\textbf{4. 平坦極限}\\
-\(R \to \infty\) で \(g_{\mu\nu} \to \delta_{\mu\nu}\)、\(\Lambda \to 0\)。中心投影は恒等写像に退化し、Minkowski 時空に帰着する。\\
-（付録A）
+\textbf{9. スケールファクターとしての曲率半径}\quad
+主観座標間の変換の Jacobian は $\partial x'^A/\partial x^B = -R^2/(x^B)^2$ であり，スケールファクターは無次元1次．曲率半径 $R$ が座標変換の唯一のパラメータとして機能する．（\S 6.4 命題6.2）
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\subsection*{論文 [3]：複数の主観空間と観測の相対性}
 
-\subsubsection{論文 {[}2{]}：4つの幾何学的対称性}\label{ux8ad6ux6587-24ux3064ux306eux5e7eux4f55ux5b66ux7684ux5bfeux79f0ux6027}
+\textbf{10. 複数の主観空間の同時存在}\quad
+背景空間 $\mathbb{R}^{n+1}$ から，投影中心軸の選択により $n+1$ 通りの主観空間 $\{H_A^+\}$ が同時に構成可能．各主観空間は対称性 II により構造的に同一の幾何学的性質を持つ．（\S 2 命題2.1）
 
-\textbf{5. 対称性 I（離散安定性）}\\
-座標が零・正の整数・負の整数のいずれの値をとっても \(l_A > 0\) であり、中心投影は大域的に正則で破綻しない。\\
-（§3 定理3.1）
+\textbf{11. 内部観測者の取得情報の限界}\quad
+内部観測者は自分の主観空間の計量から構成される量のみを取得し，投影中心軸の値，背景空間における絶対位置，他の主観空間の存在のいずれにもアクセスできない．（\S 3 命題3.1）
 
-\textbf{6. 対称性 II（軸の対等性）}\\
-背景空間 \(\mathbb{R}^{n+1}\) のどの軸を投影中心に選んでも、計量・曲率テンソル・Einstein テンソルの数学的構造は同一。\\
-（§4 定理4.1）
+\textbf{12. 軸の役割の交換と観測の相対性}\quad
+観測者 $A$ にとっての「投影中心軸」が，観測者 $B$ にとっては主観座標の一つとして現れ，逆もまた然り．どの観測者の立場が「正しい」かを決める幾何学的根拠は存在しない．（\S 4 命題4.1，\S 5 定理5.1）
 
-\textbf{7. 対称性 III（測地線偏差と弁別不可能性）}\\
-測地線偏差 \(|\xi|^2 = g_{\mu\nu}\xi^\mu\xi^\nu\) は \([L^2]\) 次元のスカラー不変量であり、内部観測者が曲率の存在を認識する唯一の手段。ただし座標の符号も曲率の方向も弁別できない。加速度の方向は背景座標でのみ定義される。\\
-（§5 定理5.2）
+\subsection*{論文 [4]：曲率半径の極限}
 
-\textbf{8. 対称性 IV（主観座標系の変換可能性）}\\
-異なる軸を中心とする主観座標系は、背景座標を経由して \(T_{A \to B} = \Phi_B^{-1} \circ \Phi_A\) により \(C^\infty\) 級に相互変換可能。変換のパラメータは曲率半径 \(R\) と座標値のみ。背景座標は保存される。\\
-（§6 定理6.1、命題6.5）
+\textbf{13. 極限 $R \to \infty$ の正則性}\quad
+$R \to \infty$ で誘導計量は平坦ユークリッド空間に漸近し，$\Lambda = 3/R^2 \to 0$ となる．Einstein 方程式の各項は数学的に well-defined な漸近を示す．（\S 2.1）
 
-\textbf{9. スケールファクターとしての曲率半径}\\
-主観座標間の変換の Jacobian は \(\partial x'^A/\partial x^B = -R^2/(x^B)^2\) であり、スケールファクターは \([L]/[L]\)（無次元、1次）。曲率半径 \(R\) が座標変換の唯一のパラメータとして機能する。\\
-（§6.4 命題6.2）
+\textbf{14. 極限 $R \to 0$ の正則性と構造的緊張}\quad
+$R \to 0$ で $\Lambda = 3/R^2$ は発散するが，各項は $R > 0$ で well-defined．測地線偏差の上限がゼロに漸近する一方，局所曲率は $1/R^2$ のオーダーで発散し，構造的緊張が生じる．（\S 3.1, \S 3.2）
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\textbf{15. 入れ子構造の存在}\quad
+任意の主観空間 $\Pi_R$ 内の任意の点 $p$ に対し，$p$ を立ち上がり点とする新たな主観空間 $\Pi_{R'}$ が任意の $R' > 0$ に対して存在する．（\S 4.2 命題4.1）
 
-\subsubsection{論文 {[}3{]}：複数の主観空間と観測の相対性}\label{ux8ad6ux6587-3ux8907ux6570ux306eux4e3bux89b3ux7a7aux9593ux3068ux89b3ux6e2cux306eux76f8ux5bfeux6027}
+\subsection*{論文 [5]：次元追加の考察}
 
-\textbf{10. 複数の主観空間の同時存在}\\
-背景空間 \(\mathbb{R}^{n+1}\) から、投影中心軸の選択により \(n+1\) 通りの主観空間 \(\{H_A^+\}\) が同時に構成可能である。各主観空間は対称性 II により構造的に同一の幾何学的性質を持つ。\\
-（§2 命題2.1）
+\textbf{16. 次元追加の二分類}\quad
+種類 I（既存曲率半径 $R$ の支配下での追加）と種類 II（新たな独立した曲率半径 $R'$ の導入を伴う追加）に区別される．（\S 2.2）
 
-\textbf{11. 内部観測者の取得情報の限界}\\
-内部観測者は自分の主観空間の計量から構成される量のみを取得し、投影中心軸の値、背景空間における絶対位置、他の主観空間の存在のいずれにもアクセスできない。\\
-（§3 命題3.1）
+\textbf{17. 有限曲率主観空間への次元追加}\quad
+種類 I は軸の対等性により任意に実行可能．種類 II では，新曲率半径に対応する軸と支配下の追加次元を同時に追加しない限り，主観空間はゼロ次元に退化する．（\S 4.2 観察4.1, \S 4.3 観察4.2--4.3）
 
-\textbf{12. 軸の役割の交換と観測の相対性}\\
-観測者 \(A\) にとって「投影中心軸」（直接アクセスできない外部の軸）であるものが、観測者 \(B\) にとっては主観座標の一つとして現れ、逆もまた然り。背景空間で対等な軸の役割は、観測者の立場の選択により交換される。どの観測者の立場が「正しい」かを決める幾何学的根拠は存在しない。\\
-（§4 命題4.1、§5 定理5.1）
+\subsection*{論文 [6]：ゼロ次元から四次元主観空間}
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\textbf{18. 各次元の主観空間の特性}\quad
+0次元：内部構造なし．1次元：方向の概念なし．2次元：初めて面積・角度・測地線偏差が定義可能，ただし時間軸選択は決定不可．3次元：体積が定義可能．4次元：超体積が定義可能，ただし時間軸本数が一意に決定されない．（\S 2--\S 6）
 
-\subsection{フレームワークの構造}\label{ux30d5ux30ecux30fcux30e0ux30efux30fcux30afux306eux69cbux9020}
+\subsection*{論文 [7]：測地線の連続性}
 
-上記の幾何学的命題を組み合わせると、次の構造が得られる：
+\textbf{19. 親子測地線の独立性}\quad
+親主観空間 $\Pi_R$ 上の測地線 $\gamma$ と，$\gamma$ 上の点を立ち上がり点とする子主観空間 $\Pi_{R'}$ 上の測地線 $\gamma'$ は，同じ背景空間を共有しながら，独立に定義された幾何学的対象である．（\S 4.3，定理6.1の直接帰結）
 
-\begin{verbatim}
-中心投影 Φ: Π_R → S^n(R)
-│
-├── 軸の対等性（対称性 II）
-│    どの軸を投影中心に選んでも同一構造
-│
-├── 主観座標の変換可能性（対称性 IV）
-│    異なる軸の主観座標は R をパラメータとして正逆変換可能
-│
-├── 離散安定性（対称性 I）
-│    整数座標でも正則
-│
-├── 弁別不可能性（対称性 III, 定理5.2）
-│    曲率方向・符号は内部から見えない
-│
-└── 複数の主観空間と観測の相対性（論文 [3]）
-     ├── n+1 通りの主観空間が同時構成可能
-     ├── 内部観測者は自分の主観空間のみにアクセス
-     └── 軸の役割は観測者の立場により交換される
-\end{verbatim}
+\subsection*{論文 [8]：四次元の特異性}
 
-このフレームワークは、加速度を生む独立な軸（曲率半径の異なる複数の軸）が共存しても幾何学的に破綻しない構造を持つ。各軸の主観座標は対称性IVにより相互変換可能であり、対称性IIにより全ての軸が対等である。さらに論文 {[}3{]} により、異なる軸を投影中心とする複数の主観空間が同時に存在し、それぞれの内部観測者は同じ背景空間を異なる形で観測する。
+\textbf{20. 外接超球直径の整数性}\quad
+体積1の $n$ 次元超立方体の外接超球直径 $2\sqrt{n}$ が整数になるのは $n$ が完全平方数のとき．$n = 1$（自明）を除けば，$n = 4$ が整数性を満たす最小の非自明次元．（\S 3）
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\textbf{21. 四次元への落ち着き}\quad
+対称性維持・整数性・外接球直径最小化・超体積最小化をすべて満たす「落ち着ける次元」は $n = 4$．（\S 12）
 
-\subsection{本研究が主張しないこと}\label{ux672cux7814ux7a76ux304cux4e3bux5f35ux3057ux306aux3044ux3053ux3068}
+\textbf{22. 時間軸の起源}\quad
+負の体積実現に奇数本の軸反転が必須．最も経済的な1本だけの反転で $(-1)^1 = -1$ が生成される．この「1対3の非対称性」がミンコフスキー計量 $(-,+,+,+)$ における時間軸1本と空間軸3本の構造の起源となる．（\S 13）
 
-本研究は純粋に幾何学的な命題の証明に限定される。以下の主張は行わない：
+\section*{本研究が主張しないこと}
+
+本研究は純粋に幾何学的な命題の証明に限定される．以下の主張は行わない：
 
 \begin{itemize}
-\tightlist
-\item
-  主観空間の内部観測者が物理的に実在すること
-\item
-  「観測の相対性」が物理学における特定の相対性理論に対応すること
-\item
-  特定の主観空間が我々の宇宙に対応すること
-\item
-  主観空間の構造から物理法則が導出されること
+  \item 主観空間の内部観測者が物理的に実在すること
+  \item 「観測の相対性」が物理学における特定の相対性理論に対応すること
+  \item 特定の主観空間が我々の宇宙に対応すること
+  \item 主観空間の構造から物理法則が導出されること
 \end{itemize}
 
-これらの物理的解釈は、本研究の幾何学的命題を超える追加の仮定を要する（論文 {[}3{]} §7）。
+これらの物理的解釈は，本研究の幾何学的命題を超える追加の仮定を要する（論文 {[3]} \S 7）．
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\section*{参考文献}
 
-\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+{[1]} Kihara, N. (2026). \textit{Geometric Formulation of 4-Dimensional Spacetime via Gnomonic Projection}. DOI: \href{https://doi.org/10.5281/zenodo.19427780}{10.5281/zenodo.19427780}.
 
-{[}1{]} Kihara, N. (2026). \emph{Geometric Formulation of 4-Dimensional Spacetime via Gnomonic Projection}. DOI: 10.5281/zenodo.19427780.
+{[2]} Kihara, N. (2026). \textit{中心投影の幾何学的対称性：多軸モデルの数学的基盤}. DOI: \href{https://doi.org/10.5281/zenodo.19434932}{10.5281/zenodo.19434932}.
 
-{[}2{]} Kihara, N. (2026). \emph{中心投影の幾何学的対称性：多軸モデルの数学的基盤}. DOI: 10.5281/zenodo.19434932.
+{[3]} Kihara, N. (2026). \textit{複数の主観空間における観測の相対性}. DOI: \href{https://doi.org/10.5281/zenodo.19435162}{10.5281/zenodo.19435162}.
 
-{[}3{]} Kihara, N. (2026). \emph{複数の主観空間における観測の相対性：中心投影の対称性の幾何学的帰結}. DOI: 10.5281/zenodo.19435162.
+{[4]} Kihara, N. (2026). \textit{中心投影における曲率半径の極限についての考察}. DOI: \href{https://doi.org/10.5281/zenodo.19526549}{10.5281/zenodo.19526549}.
+
+{[5]} Kihara, N. (2026). \textit{背景空間と主観空間への次元追加についての考察}. DOI: \href{https://doi.org/10.5281/zenodo.19526913}{10.5281/zenodo.19526913}.
+
+{[6]} Kihara, N. (2026). \textit{ゼロ次元から四次元主観空間の考察}. DOI: \href{https://doi.org/10.5281/zenodo.19533292}{10.5281/zenodo.19533292}.
+
+{[7]} Kihara, N. (2026). \textit{主観空間における測地線の連続性についての考察}. DOI: \href{https://doi.org/10.5281/zenodo.19533299}{10.5281/zenodo.19533299}.
+
+{[8]} Kihara, N. (2026). \textit{体積1の四次元超直方体に外接する超球体の直径}. DOI: \href{https://doi.org/10.5281/zenodo.19533313}{10.5281/zenodo.19533313}.
 
 \end{document}
