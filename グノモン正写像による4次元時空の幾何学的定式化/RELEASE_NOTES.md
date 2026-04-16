@@ -39,6 +39,24 @@
 | 9 | 中心投影フレームワークにおける Schwarzschild–de Sitter 厳密解 | [10.5281/zenodo.19538098](https://doi.org/10.5281/zenodo.19538098) |
 | 10 | $R \to 0$ 極限における測地線構造の次元的解釈 | [10.5281/zenodo.19538106](https://doi.org/10.5281/zenodo.19538106) |
 
+### 位相方程式篇（`波動方程式/中心投影における位相方程式/` フォルダに収録）
+
+| # | タイトル | DOI |
+|:-:|:--|:--|
+| W1 | 中心投影による主観空間の構成と位相空間における相互作用の定式化 | [10.5281/zenodo.19534373](https://doi.org/10.5281/zenodo.19534373) |
+| W2 | 波束の収縮していない光子モデルの検証 | [10.5281/zenodo.19534409](https://doi.org/10.5281/zenodo.19534409) |
+| W3 | 万物の理論が満たすべき構造要件の定式化 | [10.5281/zenodo.19601592](https://doi.org/10.5281/zenodo.19601592) |
+
+### ディレイ回路シリーズ（`波動方程式/思考実験（ディレイ回路）/` フォルダに収録）
+
+| # | タイトル | DOI |
+|:-:|:--|:--|
+| DR1 | 情報伝達の情報論的整理 | [10.5281/zenodo.19534345](https://doi.org/10.5281/zenodo.19534345) |
+| DR2 | ディレイ回路モデルでの単振動・正弦波の実現 | [10.5281/zenodo.19534349](https://doi.org/10.5281/zenodo.19534349) |
+| DR3 | ディレイ回路モデルに内在する対称性の整理 | [10.5281/zenodo.19534353](https://doi.org/10.5281/zenodo.19534353) |
+| DR4 | ディレイ回路モデルでの完全弾性衝突の実現 | [10.5281/zenodo.19534357](https://doi.org/10.5281/zenodo.19534357) |
+| DR5 | ディレイ回路モデルでの波束の収縮モデルの実現 | [10.5281/zenodo.19534361](https://doi.org/10.5281/zenodo.19534361) |
+
 ---
 
 ## 著者情報
@@ -55,7 +73,7 @@
 | プラットフォーム | 公開日 | URL / 備考 |
 |---|---|---|
 | **GitHub** | 2026-04-05 | https://github.com/WurabeSeiji/ai-chat-logs-open |
-| **Zenodo** | 2026-04-06 | 論文1: https://doi.org/10.5281/zenodo.19427780 / 論文2: https://doi.org/10.5281/zenodo.19434932 / 論文3: https://doi.org/10.5281/zenodo.19435162 / 論文4: https://doi.org/10.5281/zenodo.19526549 / 論文5: https://doi.org/10.5281/zenodo.19526913 / 論文6: https://doi.org/10.5281/zenodo.19533292 / 論文7: https://doi.org/10.5281/zenodo.19533299 / 論文8: https://doi.org/10.5281/zenodo.19533313 / 論文9: https://doi.org/10.5281/zenodo.19538098 / 論文10: https://doi.org/10.5281/zenodo.19538106 |
+| **Zenodo** | 2026-04-06〜 | 論文1〜10、ディレイ回路DR1〜DR5、位相方程式篇W1〜W3（計18論文）。DOI一覧は上記の論文シリーズ表を参照 |
 | **Academia.edu** | 2026-04-05 | https://www.academia.edu/ (木原 範昭 プロフィールより) |
 | **Zenn** | 2026-04-05 | https://zenn.dev（記事：gnomonic-projection-spacetime-geometry） |
 | **note** | 2026-04-05 | https://note.com/kiharanoriaki/n/nc51e43282b0a |
@@ -140,6 +158,8 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-04-16 | 位相方程式篇 論文3（W3）：万物の理論が満たすべき構造要件の定式化 — Zenodo公開完了（DOI: 10.5281/zenodo.19601592） |
+| 2026-04-14 | 位相方程式篇 論文1（W1）・論文2（W2）：Zenodo公開完了。ディレイ回路シリーズ DR1〜DR5：Zenodo公開完了 |
 | 2026-04-12 | 論文9・10：Zenodo公開完了（DOI確定）、日英 Markdown・LaTeX・PDF を作成。論文4〜8に読み順ガイド追加。ハンドアウト・RELEASE_NOTES.md を論文10本体制に更新 |
 | 2026-04-12 | 論文4〜8：Zenodo公開完了（DOI確定）、日英 Markdown・LaTeX・PDF を作成、RELEASE_NOTES.md・Zenn記事を論文8本体制に更新 |
 | 2026-04-09 | ピアレビュー対応：論文2から対称性V（向心加速度）を削除、5つ→4つの対称性に修正。全論文・ハンドアウト・Zenn・note・Zenodoに波及修正を反映 |
