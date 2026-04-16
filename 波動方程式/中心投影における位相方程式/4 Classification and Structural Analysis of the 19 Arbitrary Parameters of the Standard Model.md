@@ -50,15 +50,19 @@ These constants are classified by the dimensional composition of their constitue
 
 | # | Parameter | Symbol | Value | Dimensions | Conversion |
 |---|-----------|--------|-------|------------|------------|
-| P2 | Planck constant | $\hbar$ | 1.055 $\times$ 10$^{-34}$ J$\cdot$s (definition) | $[M L^2 T^{-1}]$ ($M^{+1}$) | Energy $E$ $\leftrightarrow$ Frequency $\nu$: $E = \hbar\omega$ |
+| P2 | Planck constant | h | 6.626 $\times$ 10$^{-34}$ J$\cdot$s (definition) | $[M L^2 T^{-1}]$ ($M^{+1}$) | Energy $E$ $\leftrightarrow$ Frequency $\nu$: $E = h\nu$ |
 | P3 | Gravitational constant | G | 6.674 $\times$ 10$^{-11}$ m$^3$/(kg$\cdot$s$^2$) | $[L^3 M^{-1} T^{-2}]$ ($M^{-1}$) | Mass $M$ $\leftrightarrow$ Spacetime curvature $L^{-2}$: $R \sim GM/(c^2 r)$ |
+| $\beta$ | Minimum area unit of spacetime | $\beta$ | $1.641 \times 10^{-69}$ | $[L^2]$ | Value obtained by converting $h$ to $[L^2]$ with $c = G = 1$ (see derivation below) |
 
-- Both are composed of the same three dimensions $M, L, T$, but **the sign of $M$ is opposite**.
-  - $\hbar$: $M^{+1}$ — as mass increases, energy (frequency) increases
-  - $G$: $M^{-1}$ — as mass increases, the gravitational constant's contribution inversely decreases (the curvature radius grows)
-- This **opposite behavior with respect to mass** already suggests at the level of dimensional analysis the fundamental reason why quantum mechanics and general relativity are difficult to unify.
-- $\hbar$ is the foundation of quantum mechanics (discretization), $G$ is the foundation of general relativity (geometrization).
-- $G$ has a **duality**: it is both a dimensional conversion constant and the gravitational coupling constant (strength of the force).
+**Derivation of $\beta$:** The Planck constant $h = 6.626 \times 10^{-34}$ kg$\cdot$m$^2\cdot$s$^{-1}$ is converted to a numerical value of dimension $[L^2]$ by eliminating SI units (kg, m, s) via $c = 1$, $G = 1$. $\beta = 2\pi \ell_P^2$ (Planck area times $2\pi$), corresponding to the area of the minimum cell (pixel) of discrete spacetime.
+
+1. $c = 1$: From $1 \text{ s} = 2.998 \times 10^{8} \text{ m}$, we get $\text{s}^{-1} = (2.998 \times 10^{8})^{-1} \text{ m}^{-1}$
+
+$$h = 6.626 \times 10^{-34} \text{ kg}\cdot\text{m}^2\cdot\text{s}^{-1} = \frac{6.626 \times 10^{-34}}{2.998 \times 10^{8}} \text{ kg}\cdot\text{m} = 2.210 \times 10^{-42} \text{ kg}\cdot\text{m}$$
+
+2. $G = 1$: From $G = 7.426 \times 10^{-28} \text{ m/kg} = 1$, we get $1 \text{ kg} = 7.426 \times 10^{-28} \text{ m}$
+
+$$\beta = 2.210 \times 10^{-42} \times 7.426 \times 10^{-28} = 1.641 \times 10^{-69} \quad [L^2]$$
 
 #### Group III: Spacetime + Mass + Temperature ($M, L, T, \Theta$)
 
