@@ -233,6 +233,57 @@ The number of dimensions is determined by the structure of conserved quantities 
 
 **Regularity of the inverse mapping:** Furthermore, the inverse mapping of this finitization mapping must also be regular. That is, the original information must be recoverable from the information mapped to a finite range. This is already required by Requirement 5 (existence of inverse operations) and the definition of operation $F^*$ in §1.2 (input information and output information belong to the same type), but is restated here in the context of finiteness of values. If a finitization mapping irreversibly loses information, it does not satisfy the requirements of operation $F^*$.
 
+#### Requirement 8: Dimensional Unification
+
+**Requirement:** The dimensions of all physical quantities appearing in the theory must be expressible as powers $L^n$ of a single fundamental dimension $L$ (length).
+
+**Rationale:** In current physics, four independent dimensions are used: mass $M$, length $L$, time $T$, and charge $Q$. However, upon adopting natural units ($c = 1$, $\hbar = 1$):
+
+$$[T] = [L], \quad [M] = [L^{-1}], \quad [E] = [L^{-1}]$$
+
+The dimensions of major physical quantities are expressed in terms of $L^n$ as follows:
+
+| Physical quantity | SI dimension | $L^n$ expression |
+|:--|:--|:--|
+| Length $L$ | $L$ | $L^1$ |
+| Time $T$ | $T$ | $L^1$ ($c = 1$) |
+| Mass $M$ | $M$ | $L^{-1}$ ($\hbar = 1$) |
+| Energy $E$ | $ML^2T^{-2}$ | $L^{-1}$ |
+| Velocity $v$ | $LT^{-1}$ | $L^0$ (dimensionless) |
+| Gravitational constant $G$ | $M^{-1}L^3T^{-2}$ | $L^2$ |
+| Planck constant $\hbar$ | $ML^2T^{-1}$ | $L^0$ (by definition, $\hbar = 1$) |
+| Speed of light $c$ | $LT^{-1}$ | $L^0$ (by definition, $c = 1$) |
+
+**Consequence for the charge dimension:** Under this requirement, charge $Q$ must also be expressible as $L^n$. In Gaussian units, $[Q] = [M^{1/2}L^{3/2}T^{-1}]$, and under $c = \hbar = 1$, this yields $[Q] = [L^0]$ (dimensionless). That is, the elementary charge $e$ becomes a dimensionless pure numerical constant, and the fine-structure constant $\alpha = e^2/(4\pi)$ also becomes a pure geometric constant.
+
+**Verification:** The major equations of gravitational field theory, electromagnetism, quantum mechanics, and thermodynamics all satisfy this requirement.
+
+**Sufficiency:** Since the definition of information $I$ in §1.1 does not constrain the structure of dimensions, a construction that unifies all dimensions into $L^n$ is permitted.
+
+#### Requirement 9: Scale Symmetry
+
+**Requirement:** All equations appearing in the theory must be scale-homogeneous under the scale transformation $L \to \lambda L$ ($\lambda > 0$). That is, when each physical quantity has dimension $L^n$, it transforms as $L^n \to \lambda^n L^n$ under $L \to \lambda L$, and both sides of any equation must carry the same power $\lambda^k$.
+
+**Rationale:** For a Theory of Everything to depend on a specific scale (a specific length) would mean that another theory is needed to explain the origin of that scale. A truly fundamental theory must be scale-homogeneous (power-law). Logarithmic scale dependence (e.g., the logarithmic running of the coupling constant $\alpha_s(\mu)$ in quantum chromodynamics) does not satisfy this requirement.
+
+**Formulation:** By Requirement 8, all physical quantities have dimension $L^n$. Under the scale transformation $L \to \lambda L$:
+
+$$f(\lambda L) = \lambda^k f(L)$$
+
+is required to hold. This means that $f$ is a homogeneous function of degree $k$ in $L$.
+
+**Verification results:** This requirement was verified for the following major equations:
+
+- **Classical mechanics:** Newton's equation of motion $F = ma$, gravitational force $F = GMm/r^2$, Kepler's third law $T^2 \propto a^3$ — all scale-homogeneous ✓
+- **Gravitational field theory:** Einstein equation $G_{\mu\nu} = 8\pi G T_{\mu\nu}$, Schwarzschild solution $r_s = 2GM/c^2$, geodesic equation — all scale-homogeneous ✓
+- **Electromagnetism:** Maxwell's equations, Coulomb force $F = e^2/(4\pi r^2)$, Lorentz force — all scale-homogeneous ✓
+- **Quantum mechanics:** Schrödinger equation, Dirac equation, Klein–Gordon equation — all scale-homogeneous ✓
+- **Thermodynamics:** Stefan–Boltzmann law $P \propto T^4$, blackbody radiation spectrum — all scale-homogeneous ✓
+
+**Exception:** The coupling constant $\alpha_s(\mu)$ of quantum chromodynamics (QCD) exhibits logarithmic running and does not satisfy this requirement. This suggests that QCD is an effective theory incorporating renormalization group effects and requires derivation from a more fundamental theory.
+
+**Sufficiency:** Since the definitions of §1 do not prescribe any specific behavior under scale transformations, the construction of a scale-homogeneous theory is permitted.
+
 ---
 
 ## 4. Remarks: Examples of Constructions That Facilitate Satisfaction of Structural Requirements
@@ -246,10 +297,6 @@ Using central projection as a mapping from coordinate space to phase space facil
 ### 4.2 Treating Coordinate Information as Phase Information
 
 When coordinate information is treated as phase information (angles), the domain of values becomes bounded (e.g., $0$ to $2\pi$), making it easier to structurally guarantee Requirement 7 (finiteness of values).
-
-### 4.3 Scale Symmetry (Large-Small Symmetry)
-
-When a theory possesses symmetry between large and small scales (scale inversion symmetry), ultraviolet and infrared divergences are symmetrically constrained, further strengthening the satisfaction of Requirement 7 (finiteness of values).
 
 ---
 
