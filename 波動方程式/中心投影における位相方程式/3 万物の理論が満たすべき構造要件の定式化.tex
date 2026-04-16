@@ -1,0 +1,524 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{luatexja}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage[margin=25mm]{geometry}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{remark}[theorem]{注意}
+\newtheorem{observation}[theorem]{観察}
+
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\begin{document}
+
+\section{── 情報と演算の定義に基づく構造的制約
+──}\label{ux60c5ux5831ux3068ux6f14ux7b97ux306eux5b9aux7fa9ux306bux57faux3065ux304fux69cbux9020ux7684ux5236ux7d04}
+
+\textbf{著者:} 木原 範昭 (WF System Co., Ltd.)
+
+\textbf{日付:} 2026年4月
+
+\textbf{DOI:}
+\href{https://doi.org/10.5281/zenodo.19601592}{10.5281/zenodo.19601592}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{0.
+本稿の主張範囲について（必読）}\label{ux672cux7a3fux306eux4e3bux5f35ux7bc4ux56f2ux306bux3064ux3044ux3066ux5fc5ux8aad}
+
+本稿は、万物の理論（Theory of
+Everything）が満たすべき構造要件を、情報と演算の厳密な定義に基づいて定式化する思考実験である。
+
+\subsection{本稿が主張すること}\label{ux672cux7a3fux304cux4e3bux5f35ux3059ux308bux3053ux3068}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  万物の理論の最も基本的な出発点として、情報 \(I\) と演算 \(F^*\)
+  の厳密な定義を与えること。
+\item
+  認知可能性の要求から因果構造が不可避的に発生することを示すこと。
+\item
+  この定義と因果構造の上に、万物の理論が満たすべき構造要件を列挙すること。
+\item
+  これらの要件から導かれる帰結を整理すること。
+\end{enumerate}
+
+\subsection{本稿が主張しないこと}\label{ux672cux7a3fux304cux4e3bux5f35ux3057ux306aux3044ux3053ux3068}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  本稿は物理学の理論ではない。現実の宇宙について何かを主張するものではない。
+\item
+  本稿は特定の幾何学的構成（中心投影等）を前提としない。構造要件は幾何学に依存しない一般的な要求として定式化される。
+\item
+  本稿は実証的予言を行わない。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{1. 定義}\label{ux5b9aux7fa9}
+
+本章では、万物の理論の出発点となる最も基本的な定義を与える。ここで定義するのは\textbf{情報}と\textbf{演算}のみであり、因果・時間・空間・物質といった概念は一切前提としない。
+
+本章の定義は、情報の数学的基礎 {[}1{]} および計算可能性理論 {[}2{]}
+の枠組みを参照しつつ、物理理論の基盤として必要十分な最小の公理系として構成したものである。
+
+\subsection{\texorpdfstring{1.1 情報 \(I\)
+の定義}{1.1 情報 I の定義}}\label{ux60c5ux5831-i-ux306eux5b9aux7fa9}
+
+\textbf{情報 \(I\)}
+とは，数値表現できるあらゆる情報を意味する．その形式はスカラー値，複素数値，行列，テンソルなど任意である．ただし，情報
+\(I\) は以下の性質を満たすものとする：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{null 状態の存在}：情報が存在しない状態 \(I = \mathrm{null}\)
+  を定義できる．
+\item
+  \textbf{null 判定の可能性}：任意の情報 \(I\)
+  に対して，\(I = \mathrm{null}\)
+  であるか否かを判定できる．\(\mathrm{null}\) 同士の比較
+  \(\mathrm{null} = \mathrm{null}\) は真とする．
+\item
+  \textbf{型の定義}：情報はそれぞれ型（type）に属する．任意の2つの情報
+  \(I_a,\, I_b\)
+  に対して，同一の型に属するか否かを判定できる．例えば，実数と配列は異なる型である．\(\mathrm{null}\)
+  は任意の型に属するものとする（すなわち，任意の情報 \(I\) に対して
+  \(\mathrm{null}\) と \(I\) の型判定は常に同一の型と判定される）．
+\item
+  \textbf{等価判定の可能性}：同一の型に属する任意の2つの情報
+  \(I_a,\, I_b\)
+  に対して，\(I_a = I_b\)（同一の情報であるか否か）を判定できる．
+\end{enumerate}
+
+\subsection{\texorpdfstring{1.2 演算 \(F^*\)
+の定義}{1.2 演算 F\^{}* の定義}}\label{ux6f14ux7b97-f-ux306eux5b9aux7fa9}
+
+情報から情報への写像
+
+\[
+\mathrm{OUT} = F^*(\mathrm{IN})
+\]
+
+を\textbf{演算}と定める．演算 \(F^*\)
+は，入力情報と出力情報が同一の型に属することを要求する．
+
+演算 \(F^*\) は以下の内部構造を持つ：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{入力情報
+  \(\mathrm{IN}\)}：外部から与えられる情報．参照のみ可能であり，\(F^*\)
+  の内部から変更することはできない．
+\item
+  \textbf{内部情報 \(I\)}：\(F^*\) が内部に保持する情報．外部からは
+  \(\mathrm{OUT}\)
+  として観測可能であるが，外部から変更することはできない．
+\end{itemize}
+
+\subsubsection{初期状態}\label{ux521dux671fux72b6ux614b}
+
+演算 \(F^*\) の初期状態は
+\(I = \mathrm{null}\)，\(\mathrm{OUT} = \mathrm{null}\) とする．
+
+\subsubsection{演算規則}\label{ux6f14ux7b97ux898fux5247}
+
+演算 \(F^*\) は以下の規則に従って動作する：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\mathrm{IN} \neq I\)，または \(I = \mathrm{null}\) の場合：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    入力情報 \(\mathrm{IN}\) を内部情報 \(I\)
+    にコピーする（\(I \leftarrow \mathrm{IN}\)）
+  \item
+    内部情報 \(I\) を出力情報 \(\mathrm{OUT}\) に出力する
+  \end{itemize}
+\item
+  \(\mathrm{IN} = I\) の場合：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    何もしない（\(\mathrm{OUT}\) は変化しない）
+  \end{itemize}
+\end{enumerate}
+
+\subsection{1.3
+定義の完結性}\label{ux5b9aux7fa9ux306eux5b8cux7d50ux6027}
+
+以上の定義（§1.1--§1.2）は、万物の理論の出発点として必要十分な最小の定義である。
+
+この定義は：
+
+\begin{itemize}
+\tightlist
+\item
+  因果を前提としない（IN と OUT の間に時間的順序は仮定されていない）
+\item
+  時間を前提としない
+\item
+  空間を前提としない
+\item
+  次元数を前提としない
+\item
+  特定の物理理論を前提としない
+\item
+  特定の幾何学を前提としない
+\item
+  情報の形式を限定しない（スカラー、ベクトル、行列、テンソルなど任意）
+\end{itemize}
+
+この定義だけでは因果は存在しない。定常的な情報の状態（変化のない状態）は、この定義のもとで矛盾なく記述される。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{2.
+認知可能性と因果の発生}\label{ux8a8dux77e5ux53efux80fdux6027ux3068ux56e0ux679cux306eux767aux751f}
+
+\subsection{2.1
+認知可能性の要求}\label{ux8a8dux77e5ux53efux80fdux6027ux306eux8981ux6c42}
+
+§1
+の定義だけでは、情報と演算は「存在する」が、それを区別したり識別したりする主体がない。「認知」の最小の定義は以下である：
+
+\textbf{認知可能性：} 演算 \(F^*\) の入力情報 \(\mathrm{IN}\) と出力情報
+\(\mathrm{OUT}\) が区別できること。すなわち、\(\mathrm{IN}\) と
+\(\mathrm{OUT}\) の間に\textbf{順序}が存在すること。
+
+\subsection{2.2
+因果の不可避的な発生}\label{ux56e0ux679cux306eux4e0dux53efux907fux7684ux306aux767aux751f}
+
+認知可能性を要求した瞬間に、以下が不可避的に発生する：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{順序の発生：} \(\mathrm{IN}\) が先、\(\mathrm{OUT}\)
+  が後という方向が生まれる
+\item
+  \textbf{因果の発生：} \(\mathrm{IN}\)（原因）→ \(F^*\)（過程）→
+  \(\mathrm{OUT}\)（結果）という三段階の分離が確定する
+\item
+  \textbf{演算回数の発生：} 演算 \(F^*\)
+  が何回実行されたかを数える累積回数
+  \(n\)（0以上の整数）が定義可能になる
+\end{enumerate}
+
+演算回数 \(n\) は、演算 \(F^*\)
+の各インスタンスに\textbf{固有の局所的な値}であり、系全体のグローバルなカウンタではない。グローバルな時間パラメータの不在は、一般相対性理論における「凍結時間問題」{[}3{]}
+と整合する。
+
+\subsection{2.3
+因果なき状態の許容}\label{ux56e0ux679cux306aux304dux72b6ux614bux306eux8a31ux5bb9}
+
+重要な点として、§1
+の定義は因果のない状態も許容する。すなわち、認知可能性を要求\textbf{しない}場合、情報と演算は因果なしに存在しうる。
+
+これは、因果構造を持たないが存在しうる状態に対応する。因果なき存在は、量子重力理論における「時間のない物理学」の議論
+{[}4{]}
+とも関連する。このような状態は「存在する」が「認知されない」状態であり、§1
+の定義のもとで矛盾なく記述される。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{3. 構造要件}\label{ux69cbux9020ux8981ux4ef6}
+
+\subsection{3.1 基本要件}\label{ux57faux672cux8981ux4ef6}
+
+\textbf{§1 の情報 \(I\) と演算 \(F^*\)
+の定義が、現在の物理学におけるあらゆる情報とあらゆる演算を包含できること。}
+
+\textbf{スコープ：}
+ここでいう「万物の理論」とは、数理的に解析可能な物理学の全領域を対象とする。社会学、歴史学、思想、経済学などの人文・社会科学は対象外である。本稿の構造要件は、物理法則として数式で記述可能な現象のみを包含することを目指すものであり、それ以外の領域への適用可能性については一切主張しない。
+
+\subsection{3.2
+詳細要件のスコープ}\label{ux8a73ux7d30ux8981ux4ef6ux306eux30b9ux30b3ux30fcux30d7}
+
+基本要件（§3.1）から導かれる詳細要件の対象範囲は、以下に限定する：
+
+\begin{itemize}
+\tightlist
+\item
+  理論物理学
+\item
+  素粒子物理学
+\item
+  重力場理論
+\item
+  一般相対性理論
+\end{itemize}
+
+これら以外の物理学の分野（熱力学、統計力学、物性物理学、流体力学等）については、将来的な追加スコープとして本稿の詳細要件の対象外とする。
+
+\subsection{3.3
+スコープに基づく追加定義}\label{ux30b9ux30b3ux30fcux30d7ux306bux57faux3065ux304fux8ffdux52a0ux5b9aux7fa9}
+
+§1--§2 の定義はスコープに依存しない一般的な定義である。§3.2
+のスコープ（理論物理学、素粒子物理学、重力場理論、一般相対性理論）に対して詳細要件を記述するために、以下の追加定義を与える。
+
+\subsubsection{3.3.1 因果}\label{ux56e0ux679c}
+
+§2.2 で発生した順序構造を、本スコープでは以下のように定義する：
+
+\textbf{因果：} 演算 \(F^*\) の入力情報
+\(\mathrm{IN}\)（原因）と出力情報
+\(\mathrm{OUT}\)（結果）の間に存在する、不可逆な順序関係。すなわち、\(\mathrm{IN}\)
+→ \(F^*\) → \(\mathrm{OUT}\)
+という方向が確定しており、逆方向は許されない。
+
+ここで定義する因果は、時間とは無関係である。時間の方向（過去→未来）とも無関係である。時間は
+§1.1 の情報 \(I\)
+の一種として扱われるものであり、因果の定義に時間は必要としない。時間が存在しなくても、因果は存在する。
+
+\subsubsection{3.3.2
+保存量（対称性）}\label{ux4fddux5b58ux91cfux5bfeux79f0ux6027}
+
+\textbf{保存量：} 演算 \(F^*\)
+の前後で不変に保たれる情報の量。すなわち、演算 \(F^*\)
+がどのように実行されても、その値が変化しない情報 \(I\) の関数 \(Q(I)\)
+を保存量と呼ぶ。
+
+ネーターの定理 {[}5{]}
+により、保存量は対称性と等価である。すなわち、保存量 \(Q\)
+の存在は、演算 \(F^*\)
+がある変換のもとで不変であること（対称性）と一対一に対応する。
+
+\subsubsection{3.3.3 次元}\label{ux6b21ux5143}
+
+\textbf{次元：} 情報 \(I\) が変化しうる独立な方向の数。すなわち、情報
+\(I\) の状態空間における独立な自由度の数を次元と定義する。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{null 次元：}
+  次元の情報自体が存在しない状態（\(d = \mathrm{null}\)）。§1.1 の null
+  状態に対応する。次元という概念そのものが定義されていないため、空間的な性質について何も語ることができない。
+\item
+  \textbf{零次元（\(d = 0\)）：} 次元は存在するがその値が 0
+  である状態。情報 \(I\)
+  が変化しうる独立な方向を持たない。ただし、情報自体は存在しうる。零次元においては、情報の「ある」（\(I \neq \mathrm{null}\)）と「ない」（\(I = \mathrm{null}\)）を区別できる。情報の個数や大きさは定義されないが、存在するか否かは判定可能である。ここで注意すべきは、§1.1
+  の情報 \(I\)
+  の定義はその内容の大きさや複雑さを制限しないことである。全宇宙の状態をエンコードした単一の情報もまた情報
+  \(I\)
+  である。したがって、零次元であっても、その「ある」1個の情報が任意に複雑な内容を持ちうる。
+\item
+  \textbf{\(d\) 次元（\(d \geq 1\)）：} 情報 \(I\) が \(d\)
+  個の独立な方向に変化しうる状態。
+\item
+  \textbf{無限次元：} 情報 \(I\)
+  が変化しうる独立な方向の数に上限がない状態。
+\end{itemize}
+
+次元数は、保存量（対称性）の構造から決定される。
+
+\subsection{3.4 詳細要件}\label{ux8a73ux7d30ux8981ux4ef6}
+
+\subsubsection{要件
+1：因果律の存在}\label{ux8981ux4ef6-1ux56e0ux679cux5f8bux306eux5b58ux5728}
+
+\textbf{要件：}
+理論は因果構造を持たなければならない。すなわち、原因と結果の間に順序が存在しなければならない。
+
+\textbf{根拠：}
+理論物理学、素粒子物理学、重力場理論、一般相対性理論のいずれにおいても、因果律は最も基本的な前提である。因果律のない物理理論は存在しない。
+
+\textbf{充足性：} §2
+により、認知可能性を要求した時点で因果構造は不可避的に発生する。したがって、この要件は
+§1 の定義と §2 の認知可能性の要求によって既に満たされている。
+
+\subsubsection{要件
+2：保存量が定義可能であること}\label{ux8981ux4ef6-2ux4fddux5b58ux91cfux304cux5b9aux7fa9ux53efux80fdux3067ux3042ux308bux3053ux3068}
+
+\textbf{要件：} 理論は、演算 \(F^*\)
+の前後で不変に保たれる量（保存量）を定義できなければならない。
+
+\textbf{根拠：}
+物理学のあらゆる分野において、保存量は最も基本的な構造である。エネルギー保存、運動量保存、角運動量保存、電荷保存など、保存量なしに物理理論は成立しない。ネーターの定理
+{[}5{]}
+により、保存量は対称性と等価である。��称性が保存量を生み、保存量の構造が空間の次元を規定する。したがって、次元の存在よりも保存量の定義可能性が先行する。
+
+\textbf{充足性：} §1 の演算 \(F^*\) は、\(\mathrm{IN} = I\)
+のとき何もしない（\(\mathrm{OUT}\)
+は変化しない）という規則を持つ。これは、入力が内部状態と一致する場合に出力が保存されることを意味する。保存量は、この不変性条件を満たす情報の組として定義可能である。
+
+\subsubsection{要件
+3：次元が定義可能であること}\label{ux8981ux4ef6-3ux6b21ux5143ux304cux5b9aux7fa9ux53efux80fdux3067ux3042ux308bux3053ux3068}
+
+\textbf{要件：} 理論は、§3.3.3
+で定義した次元の概念を持たなければならない。すなわち、情報 \(I\)
+の状態空間において、独立な自由度の数としての次元が定義可能でなければならない。
+
+\textbf{スコープ依存性：} この要件は §3.2
+のスコープに依存する要件である。§1--§2
+の一般的な定義は次元の存在を前提としないが、本稿のスコープ（理論物理学、素粒子物理学、重力場理論、一般相対性理論）においては、いずれの分野も次元構造の上に定式化されている。次元を必要としない理論は本稿のスコープ外である。したがって、本スコープにおいて次元が定義可能であることは必須要件である。
+
+\textbf{充足性：} §3.3.3 により、情報 \(I\)
+の変化しうる独立な方向の数として次元は定義可能である。null
+次元、零次元、\(d\) 次元、無限次元の各場合が明確に区別される。
+
+\textbf{拡張要件：}
+万物の理論では、現在のスコープでは必須ではない以下の要件を満たすことが必要であると定義する。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{次元の無限拡張性：}
+  現在の理論は特定の次元数（3+1次元等）を前提としている。しかし、万物の理論は、零次元から無限次元までのいかなる次元数においても破綻せず正則であることを要件とする。
+\item
+  \textbf{次元の対称性：}
+  現在の理論は特定の軸に意味を設けている（時間軸と空間軸の区別等）。しかし、万物の理論は、すべての次元が対等であること（次元に対称性があること）を要件とする。特定の軸に特別な役割を与えることは、対称性の自発的破れの結果として導出されるべきであり、定義に含めてはならない。
+\item
+  \textbf{連続・離散の不問性：}
+  現在の理論は次元が連続であることを前提としている。しかし、万物の理論は、次元が連続値であっても離散値であっても破綻せず正則であることを要件とする。
+\end{itemize}
+
+\subsubsection{要件
+4：因果の反転可能性}\label{ux8981ux4ef6-4ux56e0ux679cux306eux53cdux8ee2ux53efux80fdux6027}
+
+\textbf{要件：}
+理論は、因果の方向を反転しても破綻せず正則でなければならない。すなわち、\(\mathrm{IN}\)（原因）→
+\(F^*\) → \(\mathrm{OUT}\)（結果）の方向を \(\mathrm{OUT}\)（原因）→
+\(F^*\) →
+\(\mathrm{IN}\)（結果）と読み替えても、理論の構造が保たれなければならない。
+
+\textbf{スコープ依存性：} この要件は §3.2
+のスコープに依存する要件である。本スコープの4分野（理論物理学、素粒子物理学、重力場理論、一般相対性理論）においては、基本方程式はすべて因果の反転のもとで対称である。因果の反転に対して非対称な理論（熱力学等）は本スコープ外である。
+
+\textbf{因果の反転と時間の反転の区別：}
+ここで要求するのはあくまで\textbf{因果の反転}であり、時間の反転とは同義ではない。§3.3.1
+で定義した通り、因果は時間とは無関係に定義される。因果を反転した際に時間の反転が必要となるか否かは、個別理論に応じた演算
+\(F^*\) の具体的な構成に依存する要件であり、本稿の構造要件には含めない。
+
+\textbf{充足性：} §1.2 の演算 \(F^*\)
+の定義は、入力と出力の役割の交換を禁止していない。因果の反転は、§2.1
+の認知可能性（順序の存在）を保ったまま、その方向を逆転させることに相当する。
+
+\subsubsection{要件
+5：反転演算が定義可能であること}\label{ux8981ux4ef6-5ux53cdux8ee2ux6f14ux7b97ux304cux5b9aux7fa9ux53efux80fdux3067ux3042ux308bux3053ux3068}
+
+\textbf{要件：} 理論は、演算 \(F^*\)
+の結果を元に戻す反転演算を定義できなければならない。
+
+\textbf{スコープ依存性：} この要件は §3.2
+のスコープに依存する要件である。理論物理学ではユニタリ変換の可逆性、素粒子物理学では
+CPT
+対称性、重力場理論および一般相対性理論では場の方程式の可逆性が、それぞれ反転演算の存在を要求している。
+
+\textbf{充足性：} §1.2 の演算 \(F^*\)
+は情報から情報への写像として定義されており、反転演算を禁止していない。反転演算は、\(F^*\)
+とは別の演算として定義可能である。
+
+\subsubsection{要件
+6：演算の合成が可能であること}\label{ux8981ux4ef6-6ux6f14ux7b97ux306eux5408ux6210ux304cux53efux80fdux3067ux3042ux308bux3053ux3068}
+
+\textbf{要件：} 理論は、複数の演算 \(F^*\)
+を連鎖・合成できなければならない。すなわち、ある演算の出力を別の演算の入力とすることが可能でなければならない。
+
+\textbf{スコープ依存性：} この要件は §3.2
+のスコープに依存する要件である。理論物理学では対称性の群構造、素粒子物理学では場の相互作用と摂動展開、重力場理論では非線形な場の方程式、一般相対性理論では座標変換の合成が、それぞれ演算の合成を要求している。
+
+\textbf{充足性：} §1.2 の演算 \(F^*\)
+は、入力情報と出力情報が同一の型に属することを要求している。したがって、ある演算の出力を同一の型の別の演算の入力として渡すことが可能であり、演算の合成は定義により保証されている。
+
+\subsubsection{要件
+7：値の有限性が保証可能であること}\label{ux8981ux4ef6-7ux5024ux306eux6709ux9650ux6027ux304cux4fddux8a3cux53efux80fdux3067ux3042ux308bux3053ux3068}
+
+\textbf{要件：} 理論は、情報 \(I\)
+の値が無限になりうる場合、それを有限の範囲に写像する方法が存在しなければならない。すなわち、演算
+\(F^*\) の繰り返しによって情報 \(I\)
+の値が発散することを、構造的に回避できなければならない。
+
+\textbf{スコープ依存性：} この要件は §3.2
+のスコープに依存する要件である。理論物理学および素粒子物理学では、場の量子論における紫外発散・赤外発散が根本的な問題であり、繰り込み理論によって対処されている
+{[}6{]}。重力場理論および一般相対性理論では、特異点（ブラックホール中心等）における発散が未解決の問題である
+{[}7{]}。これらはいずれも、値の有限性が構造的に保証されていないことに起因する。万物の理論は、個別の手法（繰り込み等）に依存するのではなく、構造レベルで値の有限性を保証する写像の存在を要件とする。
+
+\textbf{充足性：} §1.1 の情報 \(I\)
+の定義は、値の範囲を制限していない。したがって、有限の範囲への写像を構成する余地がある。ただし、具体的な写像の方法（位相空間への埋め込み、コンパクト化等）は本稿の構造要件の範囲外であり、個別理論の構成に委ねられる。
+
+\textbf{逆写像の正則性：}
+さらに、この有限化写像の逆写像もまた正則でなければならない。すなわち、有限の範囲に写像された情報から元の情報を復元できなければならない。これは、要件
+5（反転演算の存在）および §1.2 の演算 \(F^*\)
+の定義（入力情報と出力情報が同一の型に属する）から既に要求されているが、値の有限性の文脈において改めて明記する。有限化写像が情報を不可逆に失うならば、それは演算
+\(F^*\) の要件を満たさない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{4.
+備考：構造要件の充足を容易にする構成例}\label{ux5099ux8003ux69cbux9020ux8981ux4ef6ux306eux5145ux8db3ux3092ux5bb9ux6613ux306bux3059ux308bux69cbux6210ux4f8b}
+
+本章は必須要件ではない。§3
+の構造要件を満たす理論を構成する際に、充足を容易にすると考えられる手法を備考として列挙する。
+
+\subsection{4.1 中心投影}\label{ux4e2dux5fc3ux6295ux5f71}
+
+座標空間から位相空間への写像として中心投影を用いると、要件
+7（値の有限性）の充足が容易になる。中心投影は、無限遠を含む座標空間を有限の位相空間に写像する方法であり、写像の逆写像も正則である。
+
+\subsection{4.2
+座標情報の位相情報としての取り扱い}\label{ux5ea7ux6a19ux60c5ux5831ux306eux4f4dux76f8ux60c5ux5831ux3068ux3057ux3066ux306eux53d6ux308aux6271ux3044}
+
+座標情報を位相情報（角度）として取り扱うと、値の定義域が有界（例えば
+\(0\) から \(2\pi\)）となるため、要件
+7（値の有限性）が構造的に保証されやすい。
+
+\subsection{4.3
+スケール対称性（大小の対称性）}\label{ux30b9ux30b1ux30fcux30ebux5bfeux79f0ux6027ux5927ux5c0fux306eux5bfeux79f0ux6027}
+
+理論が大スケールと小スケールの間に対称性（スケール反転対称性）を持つ場合、紫外発散と赤外発散が対称的に制約されるため、要件
+7（値の有限性）の充足がさらに強固になる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+{[}1{]} C. E. Shannon, ``A Mathematical Theory of Communication,''
+\emph{Bell System Technical Journal}, vol.~27, pp.~379--423, 623--656,
+1948. --- 情報の数学的定義の基礎。
+
+{[}2{]} A. M. Turing, ``On Computable Numbers, with an Application to
+the Entscheidungsproblem,'' \emph{Proceedings of the London Mathematical
+Society}, ser. 2, vol.~42, pp.~230--265, 1937. ---
+計算可能性と演算の形式的定義。
+
+{[}3{]} C. J. Isham, ``Canonical Quantum Gravity and the Problem of
+Time,'' in \emph{Integrable Systems, Quantum Groups, and Quantum Field
+Theories}, NATO ASI Series, vol.~409, pp.~157--287, 1993. ---
+量子重力における凍結時間問題。グローバルな時間パラメータの不在。
+
+{[}4{]} C. Rovelli, ``Forget Time,'' \emph{Foundations of Physics},
+vol.~41, pp.~1475--1490, 2011. arXiv:0903.3832. ---
+基礎物理学における「時間のない」定式化の可能性。
+
+{[}5{]} E. Noether, ``Invariante Variationsprobleme,'' \emph{Nachrichten
+von der Gesellschaft der Wissenschaften zu Göttingen}, pp.~235--257,
+1918. --- 対称性と保存量の等価性（ネーターの定理）。
+
+{[}6{]} S. Weinberg, ``Living with Infinities,'' arXiv:0903.0568, 2009.
+--- 場の量子論における発散問題と繰り込みの概観。
+
+{[}7{]} R. Penrose, ``Gravitational Collapse and Space-Time
+Singularities,'' \emph{Physical Review Letters}, vol.~14, pp.~57--59,
+1965. --- 一般相対性理論における特異点定理。
+
+\end{document}
