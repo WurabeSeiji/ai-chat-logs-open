@@ -1,0 +1,812 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{luatexja}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{longtable,booktabs}
+\usepackage{hyperref}
+\usepackage[margin=25mm]{geometry}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{remark}[theorem]{注意}
+\newtheorem{observation}[theorem]{観察}
+
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\begin{document}
+
+\section{離散空間における中心投影の全球被覆と5次元背景空間の整数論的必然性}\label{ux96e2ux6563ux7a7aux9593ux306bux304aux3051ux308bux4e2dux5fc3ux6295ux5f71ux306eux5168ux7403ux88abux8986ux30685ux6b21ux5143ux80ccux666fux7a7aux9593ux306eux6574ux6570ux8ad6ux7684ux5fc5ux7136ux6027}
+
+\subsection{── 5軸10面リレーモデルによる逆写像問題の解決
+──}\label{ux8ef810ux9762ux30eaux30ecux30fcux30e2ux30c7ux30ebux306bux3088ux308bux9006ux5199ux50cfux554fux984cux306eux89e3ux6c7a}
+
+\textbf{著者:} 木原 範昭 (WF System Co., Ltd.)
+
+\textbf{日付:} 2026年4月
+
+\textbf{DOI:}
+\href{https://doi.org/10.5281/zenodo.19624957}{10.5281/zenodo.19624957}
+
+\textbf{前提論文:} -
+\href{https://doi.org/10.5281/zenodo.19427780}{中心投影による4次元空間の幾何学的定式化}
+-
+\href{https://doi.org/10.5281/zenodo.19434932}{中心投影の幾何学的対称性：多軸モデルの数学的基盤}
+-
+\href{https://doi.org/10.5281/zenodo.19601592}{万物の理論が満たすべき構造要件の定式化}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{0. 本稿の目的}\label{ux672cux7a3fux306eux76eeux7684}
+
+中心投影を用いて \(S^n(R)\)（曲率半径 \(R\) の \(n\)
+次元超球面）の全表面を背景座標（接超平面）に逆写像する際、2つの本質的な問題が存在する。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{赤道発散問題}:
+  投影中心から見て赤道に近い領域では、写像の計量が発散する。
+\item
+  \textbf{南半球不可問題}:
+  単一の接超平面には、超球面の半球しか写像できない。
+\end{enumerate}
+
+本稿は、整数論の基本定理から出発し、以下を導出する。
+
+\begin{itemize}
+\tightlist
+\item
+  離散空間の格子距離が欠損なく定義されるための最小次元が \textbf{4}
+  であること（ラグランジュの四平方定理）
+\item
+  4次元離散空間への中心投影の背景空間が \textbf{5次元}
+  であること（同次座標の必然性）
+\item
+  5次元空間の直交軸構造から \textbf{5軸10面のリレーモデル}
+  が構成され、上記2つの問題が解決されること
+\item
+  5次元正軸体（正八面体の5次元版）が稠密充填の単位体積となり、曲率半径
+  \(R^2\) が整数であるとき離散系が厳密に閉じること
+\item
+  主観空間（4次元）では、この単位体積が \textbf{4次元超直方体}
+  として写像され、体積の正負（配向）が自然に定義できること
+\end{itemize}
+
+本稿の全ての結果は、射影幾何学と離散幾何学の命題であり、物理的解釈には踏み込まない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1.
+離散空間と平方和問題}\label{ux96e2ux6563ux7a7aux9593ux3068ux5e73ux65b9ux548cux554fux984c}
+
+\subsubsection{1.1 問題の設定}\label{ux554fux984cux306eux8a2dux5b9a}
+
+\(n\) 次元の離散空間（整数格子
+\(\mathbb{Z}^n\)）において、格子点間の距離 \(d\)
+はピタゴラスの定理の一般化により
+
+\[d^2 = a_1^2 + a_2^2 + \cdots + a_n^2, \quad a_i \in \mathbb{Z}\]
+
+で与えられる。この \(d^2\) は整数値をとるが、\(d\)
+自体は一般に無理数となる。
+
+離散空間を幾何学の基盤として用いる場合、格子上の2点間の
+\textbf{距離の2乗が任意の正の整数を取りうること}
+が、空間の等方的な離散化にとって本質的な要件となる。もしある整数 \(N\)
+が \(n\)
+個の平方数の和で表現できなければ、その距離に対応する格子点が存在せず、離散空間に
+\textbf{方向依存的な欠損（異方性）} が生じる。
+
+したがって問いは次のように定式化される。
+
+\begin{quote}
+\textbf{問い}: 任意の正の整数 \(N\) を \(n\) 個の整数の平方和
+\(N = a_1^2 + a_2^2 + \cdots + a_n^2\) として表現するために、\(n\)
+は最小でいくつ必要か。
+\end{quote}
+
+\subsubsection{\texorpdfstring{1.2 \(n = 1\)
+の場合}{1.2 n = 1 の場合}}\label{n-1-ux306eux5834ux5408}
+
+\(N = a_1^2\) が成立するのは \(N\)
+自身が完全平方数（\(1, 4, 9, 16, \ldots\)）のときに限られる。大多数の正の整数は1つの平方数では表現できない。
+
+\subsubsection{\texorpdfstring{1.3 \(n = 2\)
+の場合}{1.3 n = 2 の場合}}\label{n-2-ux306eux5834ux5408}
+
+フェルマの二平方定理により、正の整数 \(N\) が2つの平方数の和
+\(N = a_1^2 + a_2^2\) で表現できるための必要十分条件は、\(N\)
+の素因数分解において、\(4k + 3\)
+の形の素因数がすべて偶数回現れることである。
+
+例えば \(N = 3\) は \(4 \times 0 + 3\)
+の形の素数であり、\(3 = a_1^2 + a_2^2\) となる整数解は存在しない。同様に
+\(N = 7, 15, 21, \ldots\) も2つの平方数の和では表現できない。
+
+したがって2次元格子では、距離の2乗がこれらの値をとる方向に格子点が存在せず、離散化に深刻な異方性が生じる。
+
+\subsubsection{\texorpdfstring{1.4 \(n = 3\)
+の場合}{1.4 n = 3 の場合}}\label{n-3-ux306eux5834ux5408}
+
+ルジャンドルの三平方定理により、正の整数 \(N\) が3つの平方数の和で表現
+\textbf{できない} のは、\(N\) が
+
+\[N = 4^a(8b + 7), \quad a \geq 0, \quad b \geq 0\]
+
+の形のときであり、かつそのときに限る。
+
+具体的には、\(N = 7, 15, 23, 28, 31, 39, 47, 55, 60, \ldots\)
+が3つの平方数の和では表現できない。これらの値は無限に存在する。
+
+したがって3次元格子でも、等方的な離散化は原理的に不可能である。ある方向への距離が
+\(d^2 = 7\) や \(d^2 = 15\) となる格子点は存在しない。
+
+\subsubsection{\texorpdfstring{1.5 \(n = 4\)
+の場合：ラグランジュの四平方定理}{1.5 n = 4 の場合：ラグランジュの四平方定理}}\label{n-4-ux306eux5834ux5408ux30e9ux30b0ux30e9ux30f3ux30b8ux30e5ux306eux56dbux5e73ux65b9ux5b9aux7406}
+
+\textbf{ラグランジュの四平方定理}（1770年）は次を述べる。
+
+\begin{quote}
+\textbf{定理 1.1（ラグランジュ）.} 任意の正の整数 \(N\)
+は、4つの整数の平方和として表現できる。すなわち、
+\[N = a_1^2 + a_2^2 + a_3^2 + a_4^2, \quad a_i \in \mathbb{Z}_{\geq 0}\]
+となる \(a_1, a_2, a_3, a_4\) が常に存在する。
+\end{quote}
+
+具体例：
+
+\begin{itemize}
+\tightlist
+\item
+  \(1 = 1^2 + 0^2 + 0^2 + 0^2\)
+\item
+  \(2 = 1^2 + 1^2 + 0^2 + 0^2\)
+\item
+  \(3 = 1^2 + 1^2 + 1^2 + 0^2\)
+\item
+  \(7 = 2^2 + 1^2 + 1^2 + 1^2\)（3つでは不可能だった）
+\item
+  \(15 = 3^2 + 2^2 + 1^2 + 1^2\)（3つでは不可能だった）
+\end{itemize}
+
+\textbf{4は「必要十分な最小の次元」である。} §1.4 で示した通り \(n = 3\)
+では不十分であり、\(n \geq 5\) の場合は \(a_5 = 0\) とすれば \(n = 4\)
+に帰着するため、4で十分である。
+
+\subsubsection{1.6
+ワーリングの問題との関係}\label{ux30efux30fcux30eaux30f3ux30b0ux306eux554fux984cux3068ux306eux95a2ux4fc2}
+
+ラグランジュの定理は、ワーリングの問題（1770年）の \(k = 2\)
+の場合に相当する。
+
+\begin{quote}
+\textbf{ワーリングの問題}: \(k\)
+乗数の和で任意の正整数を表すために必要な最小の項数 \(g(k)\) を求めよ。
+\end{quote}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}cc@{}}
+\toprule\noalign{}
+\(k\)（べき数） & \(g(k)\)（必要な最小の項数） \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+2 & \textbf{4}（ラグランジュの定理） \\
+3 & 9 \\
+4 & 19 \\
+\end{longtable}
+}
+
+平方数（\(k = 2\)）において \(g(2) = 4\)
+が成立することは、\textbf{4次元が離散空間の距離計算において欠損のない等方的な格子を構成できる最小の次元}
+であることを意味する。
+
+\subsubsection{\texorpdfstring{1.7 \(n = 4\)
+の代数的特権：四元数（クォータニオン）}{1.7 n = 4 の代数的特権：四元数（クォータニオン）}}\label{n-4-ux306eux4ee3ux6570ux7684ux7279ux6a29ux56dbux5143ux6570ux30afux30a9ux30fcux30bfux30cbux30aaux30f3}
+
+ラグランジュの定理が \(n = 4\)
+で成立する代数的根拠は、四元数（クォータニオン）のノルムの乗法性にある。
+
+四元数
+\(q = a + bi + cj + dk\)（\(a, b, c, d \in \mathbb{Z}\)）のノルムは
+
+\[N(q) = a^2 + b^2 + c^2 + d^2\]
+
+で定義される。このノルムは乗法的である：
+
+\[N(q_1 q_2) = N(q_1) \cdot N(q_2)\]
+
+この性質（\textbf{オイラーの四平方恒等式}）により、2つの四平方和の積は再び四平方和となる。これがラグランジュの定理の証明の核心であり、4次元の代数構造（四元数体
+\(\mathbb{H}\)）に固有の性質である。
+
+重要なのは、四元数が \textbf{結合法則を満たす体（skew field）}
+であることである。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{実数}（1次元）：可換体。
+\item
+  \textbf{複素数}（2次元）：可換体。
+\item
+  \textbf{四元数}（4次元）：非可換だが結合法則を満たす体。
+\item
+  \textbf{八元数}（8次元）：非可換かつ \textbf{結合法則を満たさない}。
+\end{itemize}
+
+8次元の八元数（オクトニオン）は充填効率では最適であるが（E8格子、Viazovska
+2016）、結合法則の欠如により、射影（割り算を含む操作）における計算の一貫性が保証されない。\textbf{中心投影は本質的に割り算（同次座標の正規化）であるため、結合法則を満たす代数系が必要}
+であり、これにより8次元は中心投影の背景空間から除外される。
+
+\subsubsection{1.8
+小括：なぜ4次元か}\label{ux5c0fux62ecux306aux305c4ux6b21ux5143ux304b}
+
+以上の議論を総合すると、以下の3つの独立な根拠から、離散空間の次元は
+\textbf{4} であることが整数論的に要請される。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{距離の完全性}:
+  任意の正の整数を4つの平方和で表現できる最小の次元である（ラグランジュの定理）。\(n \leq 3\)
+  では表現不能な距離が存在する。
+\item
+  \textbf{代数の閉性}: 4次元は体の構造（四元数
+  \(\mathbb{H}\)）を持ち、ノルムの乗法性が成立する唯一の非可換次元である。
+\item
+  \textbf{射影の整合性}:
+  中心投影（割り算操作）には結合法則が必要であり、これを満たす最高次元の体は四元数（4次元）である。
+\end{enumerate}
+
+これらは「4次元が都合がよい」のではなく、\textbf{整数論と代数学の基本定理から4次元が一意に決定される}
+ことを意味する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2.
+中心投影と背景空間の次元}\label{ux4e2dux5fc3ux6295ux5f71ux3068ux80ccux666fux7a7aux9593ux306eux6b21ux5143}
+
+\subsubsection{2.1
+中心投影の定義（再掲）}\label{ux4e2dux5fc3ux6295ux5f71ux306eux5b9aux7fa9ux518dux63b2}
+
+\(S^n(R)\)（\(n\) 次元超球面、曲率半径 \(R\)）上の点 \(P\)
+を、超球面の中心 \(O\) から \(P\) を通る直線が \(n\) 次元接超平面 \(T\)
+と交わる点 \(P'\) に写す操作を中心投影と呼ぶ。
+
+先行論文 {[}1{]} において、\(S^4(R)\) への中心投影から、引き戻し計量と
+Einstein
+テンソルが導出されている。このとき、投影先の接超平面（主観空間）は
+\textbf{4次元} であり、背景空間 \(S^4(R)\) は \(\mathbb{R}^5\)
+内の超球面である。
+
+\subsubsection{2.2
+同次座標と次元の関係}\label{ux540cux6b21ux5ea7ux6a19ux3068ux6b21ux5143ux306eux95a2ux4fc2}
+
+\(n\) 次元空間の射影幾何学は、\((n+1)\)
+次元の同次座標を用いて記述される。射影空間 \(\mathbb{P}^n\)
+の点は、\(\mathbb{R}^{n+1} \setminus \{0\}\) の同値類
+
+\[[x_1 : x_2 : \cdots : x_{n+1}]\]
+
+として定義される。中心投影は、この同次座標のうち1つの成分（例えば
+\(x_{n+1}\)）で他の成分を割る操作に相当する。
+
+したがって、\textbf{\(n\) 次元の主観空間に対して、背景空間は \((n+1)\)
+次元} であることが射影幾何学の構造から要請される。
+
+§1 で主観空間の次元が4であることを導いたから、背景空間の次元は
+\textbf{5} である。
+
+\subsubsection{2.3
+5次元空間での平方和}\label{ux6b21ux5143ux7a7aux9593ux3067ux306eux5e73ux65b9ux548c}
+
+5次元の背景空間 \(\mathbb{R}^5\) における格子点間の距離は
+
+\[d^2 = a_1^2 + a_2^2 + a_3^2 + a_4^2 + a_5^2, \quad a_i \in \mathbb{Z}\]
+
+で与えられる。ラグランジュの定理により \(n = 4\)
+で任意の正整数が表現可能であったから、\(n = 5\) では \(a_5 = 0\)
+とすることでラグランジュの定理を包含する。さらに5変数を使える自由度により、同じ
+\(d^2\)
+を実現する格子点の組み合わせが増加し、格子の等方性は4次元以上に向上する。
+
+\subsubsection{2.4
+なぜ5次元を超える必要がないか}\label{ux306aux305c5ux6b21ux5143ux3092ux8d85ux3048ux308bux5fc5ux8981ux304cux306aux3044ux304b}
+
+§1.7
+で述べた通り、8次元の八元数は結合法則を満たさない。したがって、5次元超球面
+\(S^4(R) \subset \mathbb{R}^5\)
+から4次元接超平面への中心投影は、四元数（4次元）の代数構造の上で完全に定義可能であり、整合性が保証される。
+
+6次元以上の背景空間を導入しても、中心投影の射影先は依然として4次元であり、追加の次元は投影操作に寄与しない冗長な自由度となる。\textbf{背景空間の次元は、主観空間の次元
++ 1 = 5 が必要十分} である。
+
+\subsubsection{2.5
+小括：なぜ5次元か}\label{ux5c0fux62ecux306aux305c5ux6b21ux5143ux304b}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{射影幾何学の構造}: \(n\) 次元への中心投影には \((n+1)\)
+  次元の同次座標が必要である。
+\item
+  \textbf{代数の制約}:
+  背景空間の投影操作は四元数の体構造（結合法則）の範囲で完結する。
+\item
+  \textbf{冗長性の排除}:
+  6次元以上は投影に寄与しない冗長な自由度であり、構造要件の最小性に反する。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3.
+中心投影の逆写像問題}\label{ux4e2dux5fc3ux6295ux5f71ux306eux9006ux5199ux50cfux554fux984c}
+
+\subsubsection{3.1
+単一接超平面の限界}\label{ux5358ux4e00ux63a5ux8d85ux5e73ux9762ux306eux9650ux754c}
+
+\(S^4(R)\) の北極 \(N\) における接超平面 \(T_N\)
+への中心投影を考える。中心 \(O\)（超球面の中心）から \(S^4(R)\) 上の点
+\(P\) を通る直線が \(T_N\) と交わる点 \(P'\) を対応させる。
+
+この写像には以下の2つの本質的限界がある。
+
+\textbf{限界 1（赤道発散）}: 点 \(P\) が赤道（北極から測地距離
+\(\pi R / 2\) の点の集合）に近づくと、直線 \(OP\) と \(T_N\)
+のなす角が0に近づくため、\(P'\) は \(T_N\)
+上で無限遠に発散する。すなわち、赤道近傍では写像の計量（ヤコビアン）が発散する。
+
+\[\lim_{\theta \to \pi/2} |P'| = \infty\]
+
+ここで \(\theta\) は \(P\) の余緯度（北極からの角度）である。
+
+\textbf{限界 2（南半球の不可視性）}: 赤道を超えた南半球の点 \(P\)
+について、直線 \(OP\) は \(T_N\)
+と交わらない（あるいは反対側で交わり、写像が非単射になる）。したがって、\textbf{単一の接超平面では超球面の半球しか写像できない}。
+
+\subsubsection{3.2 問題の本質}\label{ux554fux984cux306eux672cux8cea}
+
+これらの限界は中心投影の幾何学的構造に内在するものであり、投影先の座標系をいかに工夫しても単一の接超平面では解決不可能である。
+
+先行論文 {[}2{]} で示された対称性
+II（軸の対等性）は、「中心投影において投影軸は自由に選べる」ことを述べている。すなわち、北極以外の任意の点を接点として接超平面を構成しても、同等の中心投影が得られる。
+
+この性質を最大限に活用することで、単一の接超平面では不可能な全球被覆を、\textbf{複数の接超平面の組み合わせ}
+によって実現する。それが次節の5軸10面リレーモデルである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4.
+5軸10面リレーモデル}\label{ux8ef810ux9762ux30eaux30ecux30fcux30e2ux30c7ux30eb}
+
+\subsubsection{4.1
+5次元空間の直交軸構造}\label{ux6b21ux5143ux7a7aux9593ux306eux76f4ux4ea4ux8ef8ux69cbux9020}
+
+5次元空間 \(\mathbb{R}^5\)
+には、5本の直交軸が存在する。各軸は正の方向と負の方向を持つから、合計
+\textbf{10の方向}（\(\pm e_1, \pm e_2, \pm e_3, \pm e_4, \pm e_5\)）が定義される。
+
+\(S^4(R) \subset \mathbb{R}^5\)
+上で、これら10の方向はそれぞれ超球面上の1点に対応する。この10個の点を
+\textbf{基準点} と呼び、各基準点における接超平面を
+\(T_1^+, T_1^-, T_2^+, T_2^-, \ldots, T_5^+, T_5^-\) と記す。
+
+\subsubsection{4.2
+10面の配置の対称性}\label{ux9762ux306eux914dux7f6eux306eux5bfeux79f0ux6027}
+
+10個の基準点は \(S^4(R)\) 上で以下の性質を持つ。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{90度間隔}: 任意の2つの基準点間の測地距離は
+  \(\pi R / 2\)（90度）である。これは直交軸のなす角が90度であることから直ちに従う。
+\item
+  \textbf{等価性}: \(S^4(R)\) の対称群は \(O(5)\)
+  であり、任意の基準点を他の基準点に移す回転が存在する。したがって、10個の接超平面は全て幾何学的に等価である。
+\item
+  \textbf{対蹠性}: \(T_k^+\) と \(T_k^-\)
+  は同一軸の正負方向に対応し、互いに超球面の反対側（対蹠点）に位置する。
+\end{enumerate}
+
+\subsubsection{4.3 被覆の構成}\label{ux88abux8986ux306eux69cbux6210}
+
+各基準点 \(p_k\) からの中心投影は、\(p_k\) を中心とする半球（\(p_k\)
+からの測地距離が \(\pi R / 2\)
+未満の領域）を正則に写像できる。この半球を \(H_k\) と記す。
+
+\textbf{命題 4.1.} 10個の半球
+\(H_1^+, H_1^-, H_2^+, H_2^-, \ldots, H_5^+, H_5^-\) は \(S^4(R)\)
+を完全に被覆する。すなわち、
+
+\[S^4(R) = \bigcup_{k=1}^{5} \left( H_k^+ \cup H_k^- \right)\]
+
+\textbf{証明.} \(S^4(R)\) 上の任意の点 \(P\) をとる。\(P\) の5次元座標を
+\((x_1, x_2, x_3, x_4, x_5)\)（\(\sum x_i^2 = R^2\)）とする。少なくとも1つの成分
+\(|x_k|\) は \(R/\sqrt{5}\) 以上である（そうでなければ
+\(\sum x_i^2 < 5 \cdot R^2/5 = R^2\) となり矛盾）。
+
+\(|x_k| \geq R/\sqrt{5}\) のとき、\(P\) は基準点
+\((\text{sgn}(x_k)) \cdot R \cdot e_k\) からの測地距離が
+\(\arccos(|x_k|/R) \leq \arccos(1/\sqrt{5}) < \pi/2\)
+であるから、\(P \in H_k^{\text{sgn}(x_k)}\) である。\(\square\)
+
+\subsubsection{4.4
+リレーの原理}\label{ux30eaux30ecux30fcux306eux539fux7406}
+
+\(S^4(R)\) 上の点 \(P\)
+は一般に複数の半球に属する（被覆は重複を持つ）。\(P\)
+を写像する際には、\(P\)
+が最も正則に（すなわち計量の歪みが最小で）写像される接超平面を選択する。
+
+具体的には、\(P\) と各基準点 \(p_k\) との測地距離 \(\theta_k\)
+を計算し、\(\theta_k\)
+が最小となる基準点の接超平面を選択する。これは「\(P\)
+の座標成分のうち絶対値が最大のものに対応する軸を選ぶ」ことに等しい。
+
+\subsubsection{4.5
+接超平面間の変換}\label{ux63a5ux8d85ux5e73ux9762ux9593ux306eux5909ux63db}
+
+全ての接超平面は \textbf{同じ中心 \(O\)（原点）を共有}
+し、\textbf{同じ曲率半径 \(R\)} を持つ。異なるのは \textbf{軸の方向のみ}
+である。したがって、接超平面間の座標変換は5次元空間内の
+\textbf{直交変換}（回転と鏡映の組み合わせ）であり、極めて単純である。
+
+具体的には、\(k\) 番目の軸と \(l\) 番目の軸の間の変換は、\((k, l)\)
+平面内での90度回転
+
+\[\begin{pmatrix} x_k' \\ x_l' \end{pmatrix} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} x_k \\ x_l \end{pmatrix}\]
+
+であり、他の成分は不変である。
+
+\subsubsection{4.6
+赤道発散問題の解決}\label{ux8d64ux9053ux767aux6563ux554fux984cux306eux89e3ux6c7a}
+
+\(T_k\) から見て赤道に近い点 \(P\)（\(\theta_k \to \pi/2\)）は、別の軸
+\(l\)（\(l \neq k\)）の接超平面 \(T_l\) から見れば \(\theta_l < \pi/2\)
+であり、正則に写像される。
+
+\textbf{定理 4.2.} 5軸10面リレーモデルにおいて、\(S^4(R)\) 上の任意の点
+\(P\) に対し、\(P\) からの測地距離が
+\(\arccos(1/\sqrt{5}) \approx 63.4°\)（\(< 90°\)）以内の基準点が少なくとも1つ存在する。したがって、計量の歪みは有界であり、赤道発散は生じない。
+
+\textbf{証明.} 命題 4.1 の証明における \(|x_k| \geq R/\sqrt{5}\)
+の評価から直ちに従う。\(\square\)
+
+\subsubsection{4.7
+南半球問題の解決}\label{ux5357ux534aux7403ux554fux984cux306eux89e3ux6c7a}
+
+対蹠点 \(p_k^-\) に対応する接超平面 \(T_k^-\) が存在するため、\(T_k^+\)
+から見て「南半球」にあたる領域は、\(T_k^-\)
+から正則に写像される。さらに、他の軸の接超平面も被覆に寄与するため、10面の組み合わせにより全球が余すところなく被覆される。
+
+\subsubsection{4.8 小括}\label{ux5c0fux62ec}
+
+5軸10面リレーモデルは、中心投影の対称性（軸の対等性）を最大限に活用し、以下の性質を持つ全球被覆を実現する。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{完全性}: \(S^4(R)\) の全表面が写像される。
+\item
+  \textbf{正則性}:
+  任意の点において、計量の歪みは有界（\(\arccos(1/\sqrt{5}) \approx 63.4°\)
+  以内）。
+\item
+  \textbf{単純性}:
+  接超平面間の変換は90度の直交変換であり、同一の原点と曲率半径を共有する。
+\item
+  \textbf{対称性}: 10個の接超平面は全て幾何学的に等価である。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+5次元正軸体による稠密充填}\label{ux6b21ux5143ux6b63ux8ef8ux4f53ux306bux3088ux308bux7a20ux5bc6ux5145ux586b}
+
+\subsubsection{5.1
+5次元正軸体（Cross-Polytope）の定義}\label{ux6b21ux5143ux6b63ux8ef8ux4f53cross-polytopeux306eux5b9aux7fa9}
+
+\(n\) 次元正軸体（正超八面体、cross-polytope）\(\beta_n\)
+は、\(\mathbb{R}^n\) において、各座標軸の \(\pm 1\)
+の点を頂点とする正多胞体である。頂点の数は \(2n\) 個である。
+
+5次元の場合、\(\beta_5\) は以下の10個の頂点を持つ。
+
+\[(\pm 1, 0, 0, 0, 0), \quad (0, \pm 1, 0, 0, 0), \quad (0, 0, \pm 1, 0, 0), \quad (0, 0, 0, \pm 1, 0), \quad (0, 0, 0, 0, \pm 1)\]
+
+\subsubsection{5.2
+正軸体と10面リレーの対応}\label{ux6b63ux8ef8ux4f53ux306810ux9762ux30eaux30ecux30fcux306eux5bfeux5fdc}
+
+§4 で構成した10個の基準点は、\(S^4(R)\) 上の点
+
+\[\pm R \cdot e_1, \quad \pm R \cdot e_2, \quad \pm R \cdot e_3, \quad \pm R \cdot e_4, \quad \pm R \cdot e_5\]
+
+であり、これらは5次元正軸体 \(\beta_5\) の頂点を \(R\)
+倍したものに他ならない。
+
+すなわち、\textbf{5軸10面リレーモデルの基準点の配置は、5次元正軸体の頂点構造と完全に一致する。}
+この対応は偶然ではなく、5次元空間の直交軸構造から必然的に導かれる。
+
+\subsubsection{5.3
+正軸体による空間の分割}\label{ux6b63ux8ef8ux4f53ux306bux3088ux308bux7a7aux9593ux306eux5206ux5272}
+
+5次元正軸体の中心（原点）から各頂点へ向かう線分により、\(\mathbb{R}^5\)
+は \(2^5 = 32\) 個のセクター（象限）に分割される。\(S^4(R)\)
+上では、これに対応する \(32\)
+個の球面三角形（超球面の区画）への分割が得られる。
+
+各セクターは正軸体の1つの単体（simplex）に対応し、隣接するセクター同士は面を共有する。この分割は
+\textbf{等方的} であり、全てのセクターは合同である。
+
+\subsubsection{5.4
+稠密充填の条件}\label{ux7a20ux5bc6ux5145ux586bux306eux6761ux4ef6}
+
+\(S^4(R)\)
+を離散的な格子で稠密に充填することを考える。最小の離散単位（セル）を5次元正軸体とし、その辺長（格子定数）を
+\(\ell\) とする。
+
+\textbf{命題 5.1.} \(S^4(R)\) の大円（1次元測地線）に沿ったセルの個数
+\(M\) は
+
+\[M = \frac{2\pi R}{\ell}\]
+
+で与えられる。\(M\)
+が整数であるとき、測地線は離散的なステップの整数倍で厳密に閉じる。
+
+4軸対称の場合、4つの軸全てが同じ \(M\) を共有するから、
+
+\[R = \frac{M \ell}{2\pi}\]
+
+であり、格子定数 \(\ell\) を長さの単位（\(\ell = 1\)）にとると、
+
+\[R = \frac{M}{2\pi}\]
+
+となる。
+
+\subsubsection{\texorpdfstring{5.5 \(R^2\)
+の整数条件}{5.5 R\^{}2 の整数条件}}\label{r2-ux306eux6574ux6570ux6761ux4ef6}
+
+離散格子が \(S^4(R)\) 上で \textbf{位相のずれなく厳密に閉じる}
+ためには、測地線に沿ったステップ数が全ての方向で整合する必要がある。
+
+4次元主観空間の距離 \(d\) はピタゴラスの定理により
+
+\[d^2 = n_1^2 + n_2^2 + n_3^2 + n_4^2, \quad n_i \in \mathbb{Z}\]
+
+で与えられる。大円に沿って一周した際にステップ数 \(M\)
+が整数であること、かつ任意の方向の距離がラグランジュの定理により整数の平方和として表現できることを要求すると、以下の条件が導かれる。
+
+\textbf{定理 5.2.} 4次元離散格子が \(S^4(R)\)
+上で等方的かつ厳密に閉じるための必要条件は、\(R^2\)（格子定数を単位とする曲率半径の2乗）が
+\textbf{正の整数} であることである。
+
+この条件のもとで、離散格子の全てのステップが整数値として管理され、一周した際の位相のずれ（累積誤差）はゼロとなる。\textbf{曲率半径は連続的な実数ではなく、離散的な値（\(R^2 \in \mathbb{Z}_{>0}\)）をとる。}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6.
+主観空間（4次元）での写像形状}\label{ux4e3bux89b3ux7a7aux95934ux6b21ux5143ux3067ux306eux5199ux50cfux5f62ux72b6}
+
+\subsubsection{6.1
+5次元正軸体から4次元超直方体への写像}\label{ux6b21ux5143ux6b63ux8ef8ux4f53ux304bux30894ux6b21ux5143ux8d85ux76f4ux65b9ux4f53ux3078ux306eux5199ux50cf}
+
+\(S^4(R)\)
+上の5次元正軸体セルを、接超平面（4次元主観空間）に中心投影すると、投影先ではどのような形状になるか。
+
+5次元正軸体の4次元への射影は、射影の方向に依存するが、正軸体の軸方向への射影（1つの軸を投影方向に選ぶ）の場合、影は
+\textbf{4次元正八面体}（\(\beta_4\)、頂点8個）となる。
+
+一方、リレーモデルにおいては、主観空間の観測者は複数の接超平面をシームレスに渡り歩く。このとき、局所的な離散格子は4軸対称の格子として認識される。
+
+\textbf{命題 6.1.} 4次元主観空間の観測者にとって、離散格子の最小セルは
+\textbf{4次元超直方体}（hyperrectangular cell）として認識される。
+
+これは以下の理由による。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  4つの軸が対称であるから、各軸方向の格子間隔は等しい。
+\item
+  中心投影は直線を直線に写す（測地線の保存）ため、背景格子の直交構造は主観空間でも直交構造として保存される。
+\item
+  重力場（曲率）が存在する場合、格子間隔は場所に依存して変化するが、局所的には依然として超直方体の形状を維持する。
+\end{enumerate}
+
+\subsubsection{6.2
+稠密性の維持}\label{ux7a20ux5bc6ux6027ux306eux7dadux6301}
+
+5次元正軸体セルが \(S^4(R)\)
+を隙間なく覆っているとき、その中心投影像である4次元超直方体も主観空間を隙間なく覆う。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{投影の中心付近}: 格子は整然とした直交格子として観測される。
+\item
+  \textbf{赤道に近い領域}:
+  格子は放射状に引き伸ばされるが、リレーにより別の接超平面に移行するため、過度の歪みは生じない。
+\item
+  \textbf{隣接する接超平面の境界}:
+  45度の角度で直交して織り合うが、主観空間の観測者にとっては連続した格子として認識される。
+\end{itemize}
+
+\subsubsection{6.3
+重力場による格子の変形}\label{ux91cdux529bux5834ux306bux3088ux308bux683cux5b50ux306eux5909ux5f62}
+
+主観空間において重力場が存在する場合、格子は正立方体から変形して超直方体（各辺の長さが異なる直方体）となる。しかし、以下の2つの条件が維持される。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{位相的接続}:
+  隣接するセルは面を共有し、格子のトポロジーは不変。
+\item
+  \textbf{超体積の保存}:
+  各セルの5次元超体積（背景座標で計算された正軸体の超体積）は不変。主観空間で観測される格子の「歪み」は、中心投影の角度の変化の反映に過ぎない。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7.
+体積の配向と正負}\label{ux4f53ux7a4dux306eux914dux5411ux3068ux6b63ux8ca0}
+
+\subsubsection{7.1
+5次元における配向}\label{ux6b21ux5143ux306bux304aux3051ux308bux914dux5411}
+
+\(\mathbb{R}^5\) における超体積には \textbf{配向（orientation）}
+が定義される。5次元正軸体の頂点の順序を定めたとき、その順序が右手系であるか左手系であるかに応じて、超体積は正または負の値をとる。
+
+数学的には、5つの辺ベクトル \(v_1, v_2, v_3, v_4, v_5\) の行列式
+
+\[V = \det(v_1, v_2, v_3, v_4, v_5)\]
+
+の符号が配向を定め、\(|V|\) が超体積を与える。
+
+\subsubsection{7.2
+配向の反転と体積の正負}\label{ux914dux5411ux306eux53cdux8ee2ux3068ux4f53ux7a4dux306eux6b63ux8ca0}
+
+\(S^4(R)\)
+上の正軸体セルを中心投影する際、投影の向き（投影軸の正負）に応じて、写像のヤコビアンの符号が変化する。
+
+\textbf{命題 7.1.}
+5次元正軸体の配向を反転させた写像（「裏返し」の写像）は、主観空間（4次元）において
+\textbf{負の超体積を持つ超直方体} として自然に定義される。
+
+これは、5次元空間の追加の1次元が「裏表」の区別を提供するためであり、4次元空間だけでは不可能な体積の符号付けが、5次元からの投影により幾何学的に実現される。
+
+\subsubsection{7.3
+正と負の体積の共存}\label{ux6b63ux3068ux8ca0ux306eux4f53ux7a4dux306eux5171ux5b58}
+
+配向の異なる（正の超体積を持つ）セルと（負の超体積を持つ）セルは、主観空間の同じ座標に共存しうる。これは5次元側で見れば異なるセクターに属する別々のセルであるが、4次元への投影で同一の座標領域に写像されるためである。
+
+このとき、正と負の超体積の代数的な和はゼロとなりうる。すなわち、\textbf{5次元の配向構造を通じて、体積の生成と消滅が幾何学的に表現可能}
+である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. 曲率の等価性}\label{ux66f2ux7387ux306eux7b49ux4fa1ux6027}
+
+\subsubsection{8.1
+5次元方向の曲率と4次元の閉空間}\label{ux6b21ux5143ux65b9ux5411ux306eux66f2ux7387ux30684ux6b21ux5143ux306eux9589ux7a7aux9593}
+
+\(S^4(R) \subset \mathbb{R}^5\) は、5次元空間内で曲率半径 \(R\)
+の曲率を持つ4次元超曲面である。この超曲面上に住む4次元の観測者にとって、「5次元方向の曲率」は直接的には観測不可能である。
+
+しかし、この観測者は以下の手段で曲率の存在を間接的に認知できる。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{測地線三角形の内角の和}: 平坦な4次元空間では
+  \(\pi\)（180度）であるが、\(S^4(R)\) 上では \(\pi\) より大きくなる。
+\item
+  \textbf{測地線の閉じ方}:
+  任意の方向にまっすぐ進むと、有限の距離（\(2\pi R\)）で元の位置に戻る。
+\item
+  \textbf{空間の有限性}: 体積は有限（\(S^4(R)\) の超面積
+  \(= 8\pi^2 R^4/3\)）であるが、「端」は存在しない。
+\end{enumerate}
+
+\subsubsection{8.2
+主観的等価性}\label{ux4e3bux89b3ux7684ux7b49ux4fa1ux6027}
+
+\textbf{定理 8.1.}
+4次元主観空間の観測者にとって、以下の2つの記述は観測的に区別不可能（等価）である。
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  主観空間は \(\mathbb{R}^5\) 内の \(S^4(R)\)
+  への中心投影として構成されており、5次元方向に曲率半径 \(R\)
+  の曲率がある。
+\item
+  主観空間は、端のない有限体積の閉じた4次元空間であり、内角の和の偏差と測地線の閉じ方から計算される曲率半径が
+  \(R\) である。
+\end{enumerate}
+
+\textbf{証明の概略.} 中心投影は測地線を直線に写し（先行論文
+{[}1{]}）、内角の和は \(S^4(R)\)
+の曲率から決定される。主観空間の観測者が測定可能な量（内角の和、測地線の周期、体積）は全て
+\(R\)
+のみの関数であり、5次元方向の構造に関する追加の情報を含まない。\(\square\)
+
+この等価性こそが、中心投影を重力場の幾何学的フレームワークに用いる根本的な正当性である。背景空間の5次元構造は、主観空間の曲率として完全にエンコードされ、観測者は曲率のみを通じて背景の幾何学を認知する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. 結論}\label{ux7d50ux8ad6}
+
+\subsubsection{9.1 本稿の成果}\label{ux672cux7a3fux306eux6210ux679c}
+
+本稿は、整数論の基本定理から出発し、以下を導出した。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{4次元の必然性}:
+  ラグランジュの四平方定理により、離散空間の格子距離が欠損なく等方的に定義されるための最小の次元は4である。これは四元数の代数構造（ノルムの乗法性、結合法則）と対応する。
+\item
+  \textbf{5次元の必然性}:
+  射影幾何学の構造により、4次元への中心投影の背景空間は5次元である。八元数（8次元）は結合法則を満たさないため、中心投影（割り算操作）の背景空間としては使用できない。
+\item
+  \textbf{5軸10面リレーモデル}: 5次元空間の5本の直交軸の正負方向（=
+  5次元正軸体の10頂点）に対応する10個の接超平面により、\(S^4(R)\)
+  の全球被覆が構成される。これにより、中心投影の赤道発散問題と南半球不可問題が同時に解決される。
+\item
+  \textbf{稠密充填と \(R^2\) の整数条件}:
+  5次元正軸体を単位セルとする離散格子は、曲率半径 \(R^2\)
+  が正の整数であるとき、\(S^4(R)\) 上で厳密に閉じた稠密充填を構成する。
+\item
+  \textbf{4次元超直方体への写像}:
+  5次元正軸体セルは、主観空間（4次元）では4次元超直方体として写像される。5次元の配向構造により、体積の正負が自然に定義される。
+\item
+  \textbf{曲率の等価性}:
+  5次元方向の曲率と、4次元の閉じた空間の内在的曲率は、主観空間の観測者にとって区別不可能である。
+\end{enumerate}
+
+\subsubsection{9.2 本稿の範囲}\label{ux672cux7a3fux306eux7bc4ux56f2}
+
+本稿の全ての結果は射影幾何学、離散幾何学、整数論の命題として述べられており、物理的解釈（重力場、量子力学等）には踏み込んでいない。離散格子の物理的意味や、正軸体の超体積と物理量（エネルギー等）との対応関係は、今後の課題として別稿に委ねる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+{[}1{]} 木原範昭, 「中心投影による4次元空間の幾何学的定式化」, 2026.
+DOI:
+\href{https://doi.org/10.5281/zenodo.19427780}{10.5281/zenodo.19427780}
+
+{[}2{]} 木原範昭, 「中心投影の幾何学的対称性：多軸モデルの数学的基盤」,
+2026. DOI:
+\href{https://doi.org/10.5281/zenodo.19434932}{10.5281/zenodo.19434932}
+
+{[}3{]} 木原範昭, 「万物の理論が満たすべき構造要件の定式化」, 2026. DOI:
+\href{https://doi.org/10.5281/zenodo.19601592}{10.5281/zenodo.19601592}
+
+{[}4{]} J.-L. Lagrange, ``Démonstration d'un théorème d'arithmétique,''
+\emph{Nouveaux Mémoires de l'Académie royale des Sciences et
+Belles-Lettres de Berlin}, 1770.
+
+{[}5{]} A. Hurwitz, ``Über die Composition der quadratischen Formen von
+beliebig vielen Variablen,'' \emph{Nachrichten von der Gesellschaft der
+Wissenschaften zu Göttingen}, 309--316 (1898).
+
+{[}6{]} M. Viazovska, ``The sphere packing problem in dimension 8,''
+\emph{Annals of Mathematics} \textbf{185}, 991--1015 (2017).
+
+{[}7{]} J. H. Conway and N. J. A. Sloane, \emph{Sphere Packings,
+Lattices and Groups}, 3rd ed., Springer (1999).
+
+\end{document}

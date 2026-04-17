@@ -1,0 +1,973 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{longtable,booktabs,array,calc}
+\usepackage{hyperref}
+\usepackage[margin=25mm]{geometry}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\newcounter{none}
+
+\begin{document}
+
+\section{Full Spherical Coverage of Central Projection in Discrete Space
+and the Number-Theoretic Necessity of 5-Dimensional Background
+Space}\label{full-spherical-coverage-of-central-projection-in-discrete-space-and-the-number-theoretic-necessity-of-5-dimensional-background-space}
+
+\subsection{--- Resolution of the Inverse Mapping Problem via the 5-Axis
+10-Face Relay Model
+---}\label{resolution-of-the-inverse-mapping-problem-via-the-5-axis-10-face-relay-model}
+
+\textbf{Author:} Noriaki Kihara (WF System Co., Ltd.)
+
+\textbf{Date:} April 2026
+
+\textbf{DOI:}
+\href{https://doi.org/10.5281/zenodo.19624957}{10.5281/zenodo.19624957}
+
+\textbf{Prerequisite papers:} -
+\href{https://doi.org/10.5281/zenodo.19427780}{Geometric Formulation of
+4-Dimensional Space via Central Projection} -
+\href{https://doi.org/10.5281/zenodo.19434932}{Geometric Symmetries of
+Central Projection: Mathematical Foundations of Multi-Axis Models} -
+\href{https://doi.org/10.5281/zenodo.19601592}{Formulation of Structural
+Requirements for a Theory of Everything}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{0. Purpose of This Paper}\label{purpose-of-this-paper}
+
+When inversely mapping the entire surface of \(S^n(R)\) (the
+\(n\)-dimensional hypersphere of curvature radius \(R\)) onto background
+coordinates (tangent hyperplanes) using central projection, two
+essential problems arise.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Equatorial divergence problem}: In regions near the equator as
+  seen from the projection center, the metric of the mapping diverges.
+\item
+  \textbf{South-hemisphere invisibility problem}: A single tangent
+  hyperplane can only map one hemisphere of the hypersphere.
+\end{enumerate}
+
+Starting from fundamental theorems of number theory, this paper derives
+the following:
+
+\begin{itemize}
+\tightlist
+\item
+  The minimum dimension for lattice distances in discrete space to be
+  defined without gaps is \textbf{4} (Lagrange's four-square theorem).
+\item
+  The background space for central projection onto 4-dimensional
+  discrete space is \textbf{5-dimensional} (necessity of homogeneous
+  coordinates).
+\item
+  The orthogonal axis structure of 5-dimensional space yields a
+  \textbf{5-axis 10-face relay model} that resolves both problems above.
+\item
+  The 5-dimensional cross-polytope (5-dimensional analogue of the
+  regular octahedron) serves as the unit cell for dense packing, and the
+  discrete system closes exactly when the curvature radius satisfies
+  \(R^2 \in \mathbb{Z}_{>0}\).
+\item
+  In the subjective space (4-dimensional), this unit cell is mapped as a
+  \textbf{4-dimensional hyperrectangular cell}, and positive/negative
+  volume (orientation) is naturally defined.
+\end{itemize}
+
+All results in this paper are propositions of projective geometry and
+discrete geometry, and no physical interpretation is introduced.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Discrete Space and the Sum-of-Squares
+Problem}\label{discrete-space-and-the-sum-of-squares-problem}
+
+\subsubsection{1.1 Problem Setting}\label{problem-setting}
+
+In an \(n\)-dimensional discrete space (integer lattice
+\(\mathbb{Z}^n\)), the distance \(d\) between lattice points is given by
+the generalized Pythagorean theorem:
+
+\[d^2 = a_1^2 + a_2^2 + \cdots + a_n^2, \quad a_i \in \mathbb{Z}\]
+
+This \(d^2\) takes integer values, though \(d\) itself is generally
+irrational.
+
+When using discrete space as the foundation for geometry, it is an
+essential requirement for isotropic discretization that \textbf{the
+square of the distance between any two lattice points can take any
+positive integer value}. If some integer \(N\) cannot be expressed as
+the sum of \(n\) squares, then no lattice point exists at that distance,
+creating \textbf{direction-dependent gaps (anisotropy)} in the discrete
+space.
+
+The question is therefore formulated as follows:
+
+\begin{quote}
+\textbf{Question}: What is the minimum \(n\) required to express any
+positive integer \(N\) as a sum of \(n\) squares of integers:
+\(N = a_1^2 + a_2^2 + \cdots + a_n^2\)?
+\end{quote}
+
+\subsubsection{\texorpdfstring{1.2 The Case
+\(n = 1\)}{1.2 The Case n = 1}}\label{the-case-n-1}
+
+\(N = a_1^2\) holds only when \(N\) itself is a perfect square
+(\(1, 4, 9, 16, \ldots\)). The vast majority of positive integers cannot
+be expressed as a single square.
+
+\subsubsection{\texorpdfstring{1.3 The Case
+\(n = 2\)}{1.3 The Case n = 2}}\label{the-case-n-2}
+
+By Fermat's two-square theorem, the necessary and sufficient condition
+for a positive integer \(N\) to be expressible as the sum of two squares
+\(N = a_1^2 + a_2^2\) is that every prime factor of \(N\) of the form
+\(4k + 3\) appears to an even power.
+
+For example, \(N = 3\) is a prime of the form \(4 \times 0 + 3\), and no
+integer solution exists for \(3 = a_1^2 + a_2^2\). Similarly,
+\(N = 7, 15, 21, \ldots\) cannot be expressed as the sum of two squares.
+
+Therefore, in a 2-dimensional lattice, no lattice points exist in
+directions where the square of the distance takes these values,
+resulting in severe anisotropy in the discretization.
+
+\subsubsection{\texorpdfstring{1.4 The Case
+\(n = 3\)}{1.4 The Case n = 3}}\label{the-case-n-3}
+
+By Legendre's three-square theorem, a positive integer \(N\)
+\textbf{cannot} be expressed as the sum of three squares if and only if
+\(N\) is of the form
+
+\[N = 4^a(8b + 7), \quad a \geq 0, \quad b \geq 0\]
+
+Specifically, \(N = 7, 15, 23, 28, 31, 39, 47, 55, 60, \ldots\) cannot
+be expressed as the sum of three squares. Infinitely many such values
+exist.
+
+Therefore, isotropic discretization is impossible in principle even in a
+3-dimensional lattice. No lattice point exists at distances with
+\(d^2 = 7\) or \(d^2 = 15\) in certain directions.
+
+\subsubsection{\texorpdfstring{1.5 The Case \(n = 4\): Lagrange's
+Four-Square
+Theorem}{1.5 The Case n = 4: Lagrange's Four-Square Theorem}}\label{the-case-n-4-lagranges-four-square-theorem}
+
+\textbf{Lagrange's four-square theorem} (1770) states the following:
+
+\begin{quote}
+\textbf{Theorem 1.1 (Lagrange).} Every positive integer \(N\) can be
+expressed as the sum of four squares of integers. That is, there always
+exist \(a_1, a_2, a_3, a_4\) such that
+\[N = a_1^2 + a_2^2 + a_3^2 + a_4^2, \quad a_i \in \mathbb{Z}_{\geq 0}\]
+\end{quote}
+
+Concrete examples:
+
+\begin{itemize}
+\tightlist
+\item
+  \(1 = 1^2 + 0^2 + 0^2 + 0^2\)
+\item
+  \(2 = 1^2 + 1^2 + 0^2 + 0^2\)
+\item
+  \(3 = 1^2 + 1^2 + 1^2 + 0^2\)
+\item
+  \(7 = 2^2 + 1^2 + 1^2 + 1^2\) (impossible with three squares)
+\item
+  \(15 = 3^2 + 2^2 + 1^2 + 1^2\) (impossible with three squares)
+\end{itemize}
+
+\textbf{4 is the necessary and sufficient minimum dimension.} As shown
+in §1.4, \(n = 3\) is insufficient, and for \(n \geq 5\), setting
+\(a_5 = 0\) reduces to the \(n = 4\) case, so 4 is sufficient.
+
+\subsubsection{1.6 Relation to Waring's
+Problem}\label{relation-to-warings-problem}
+
+Lagrange's theorem corresponds to the \(k = 2\) case of Waring's problem
+(1770):
+
+\begin{quote}
+\textbf{Waring's problem}: Find the minimum number of terms \(g(k)\)
+required to express any positive integer as a sum of \(k\)-th powers.
+\end{quote}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}cc@{}}
+\toprule\noalign{}
+\(k\) (power) & \(g(k)\) (minimum terms required) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+2 & \textbf{4} (Lagrange's theorem) \\
+3 & 9 \\
+4 & 19 \\
+\end{longtable}
+}
+
+The fact that \(g(2) = 4\) for squares (\(k = 2\)) means that \textbf{4
+is the minimum dimension at which a discrete space can constitute an
+isotropic lattice without gaps in distance computation}.
+
+\subsubsection{\texorpdfstring{1.7 The Algebraic Privilege of \(n = 4\):
+Quaternions}{1.7 The Algebraic Privilege of n = 4: Quaternions}}\label{the-algebraic-privilege-of-n-4-quaternions}
+
+The algebraic basis for Lagrange's theorem holding at \(n = 4\) lies in
+the multiplicativity of the quaternion norm.
+
+The norm of a quaternion \(q = a + bi + cj + dk\)
+(\(a, b, c, d \in \mathbb{Z}\)) is defined as
+
+\[N(q) = a^2 + b^2 + c^2 + d^2\]
+
+This norm is multiplicative:
+
+\[N(q_1 q_2) = N(q_1) \cdot N(q_2)\]
+
+This property (\textbf{Euler's four-square identity}) ensures that the
+product of two four-square sums is again a four-square sum. This is the
+core of the proof of Lagrange's theorem and is a property intrinsic to
+the algebraic structure of 4 dimensions (the quaternion algebra
+\(\mathbb{H}\)).
+
+Crucially, the quaternions form a \textbf{skew field satisfying the
+associative law}:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Real numbers} (1-dimensional): commutative field.
+\item
+  \textbf{Complex numbers} (2-dimensional): commutative field.
+\item
+  \textbf{Quaternions} (4-dimensional): non-commutative but satisfying
+  the associative law; a skew field.
+\item
+  \textbf{Octonions} (8-dimensional): non-commutative and \textbf{not
+  satisfying the associative law}.
+\end{itemize}
+
+The 8-dimensional octonions are optimal in packing efficiency (E8
+lattice, Viazovska 2016), but the lack of associativity means that
+computational consistency in projection operations (which involve
+division) is not guaranteed. \textbf{Since central projection is
+essentially a division operation (normalization of homogeneous
+coordinates), an algebraic system satisfying the associative law is
+required}, thereby excluding 8 dimensions from the background space for
+central projection.
+
+\subsubsection{1.8 Summary: Why 4
+Dimensions}\label{summary-why-4-dimensions}
+
+Synthesizing the above arguments, three independent grounds require the
+dimension of discrete space to be \textbf{4} from number-theoretic
+considerations:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Completeness of distances}: 4 is the minimum dimension at
+  which any positive integer can be expressed as a sum of squares
+  (Lagrange's theorem). For \(n \leq 3\), certain distances cannot be
+  represented.
+\item
+  \textbf{Algebraic closure}: 4 dimensions possess a field structure
+  (quaternions \(\mathbb{H}\)) with multiplicative norms, being the
+  unique non-commutative dimension with this property.
+\item
+  \textbf{Projective consistency}: Central projection (a division
+  operation) requires the associative law, and the highest-dimensional
+  field satisfying this is the quaternions (4 dimensions).
+\end{enumerate}
+
+These do not mean ``4 dimensions happen to be convenient,'' but rather
+that \textbf{4 dimensions are uniquely determined by fundamental
+theorems of number theory and algebra}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Central Projection and the Dimension of Background
+Space}\label{central-projection-and-the-dimension-of-background-space}
+
+\subsubsection{2.1 Definition of Central Projection
+(Recap)}\label{definition-of-central-projection-recap}
+
+The operation of mapping a point \(P\) on \(S^n(R)\) (the
+\(n\)-dimensional hypersphere of curvature radius \(R\)) to the point
+\(P'\) where the line from the center \(O\) of the hypersphere through
+\(P\) intersects the \(n\)-dimensional tangent hyperplane \(T\) is
+called central projection.
+
+In the preceding paper {[}1{]}, the pullback metric and Einstein tensor
+were derived from central projection onto \(S^4(R)\). The projection
+target tangent hyperplane (subjective space) is \textbf{4-dimensional},
+and the background space \(S^4(R)\) is a hypersphere in
+\(\mathbb{R}^5\).
+
+\subsubsection{2.2 Homogeneous Coordinates and Dimensional
+Relationship}\label{homogeneous-coordinates-and-dimensional-relationship}
+
+The projective geometry of \(n\)-dimensional space is described using
+\((n+1)\)-dimensional homogeneous coordinates. Points of the projective
+space \(\mathbb{P}^n\) are defined as equivalence classes of
+\(\mathbb{R}^{n+1} \setminus \{0\}\):
+
+\[[x_1 : x_2 : \cdots : x_{n+1}]\]
+
+Central projection corresponds to dividing the other components by one
+component (e.g., \(x_{n+1}\)) of these homogeneous coordinates.
+
+Therefore, \textbf{for an \(n\)-dimensional subjective space, the
+background space must be \((n+1)\)-dimensional}, as required by the
+structure of projective geometry.
+
+Since §1 derived that the dimension of subjective space is 4, the
+dimension of background space is \textbf{5}.
+
+\subsubsection{2.3 Sum of Squares in 5-Dimensional
+Space}\label{sum-of-squares-in-5-dimensional-space}
+
+The distance between lattice points in the 5-dimensional background
+space \(\mathbb{R}^5\) is given by
+
+\[d^2 = a_1^2 + a_2^2 + a_3^2 + a_4^2 + a_5^2, \quad a_i \in \mathbb{Z}\]
+
+Since Lagrange's theorem showed that any positive integer is
+representable at \(n = 4\), the \(n = 5\) case subsumes Lagrange's
+theorem by setting \(a_5 = 0\). Moreover, the additional degree of
+freedom from five variables increases the number of lattice point
+combinations realizing the same \(d^2\), improving lattice isotropy
+beyond 4 dimensions.
+
+\subsubsection{2.4 Why No Dimension Beyond 5 Is
+Needed}\label{why-no-dimension-beyond-5-is-needed}
+
+As stated in §1.7, 8-dimensional octonions do not satisfy the
+associative law. Therefore, central projection from the 5-dimensional
+hypersphere \(S^4(R) \subset \mathbb{R}^5\) to a 4-dimensional tangent
+hyperplane is completely definable on the algebraic structure of
+quaternions (4 dimensions), and consistency is guaranteed.
+
+Even if a background space of 6 or more dimensions were introduced, the
+projection target would still be 4-dimensional, and the additional
+dimensions would be redundant degrees of freedom not contributing to the
+projection operation. \textbf{The dimension of background space is
+necessary and sufficient at subjective space dimension + 1 = 5}.
+
+\subsubsection{2.5 Summary: Why 5
+Dimensions}\label{summary-why-5-dimensions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Structure of projective geometry}: Central projection onto
+  \(n\) dimensions requires \((n+1)\)-dimensional homogeneous
+  coordinates.
+\item
+  \textbf{Algebraic constraint}: The projection operations in the
+  background space are completed within the field structure of
+  quaternions (associative law).
+\item
+  \textbf{Elimination of redundancy}: 6 or more dimensions are redundant
+  degrees of freedom that do not contribute to projection, violating the
+  minimality of structural requirements.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. Inverse Mapping Problems of Central
+Projection}\label{inverse-mapping-problems-of-central-projection}
+
+\subsubsection{3.1 Limitations of a Single Tangent
+Hyperplane}\label{limitations-of-a-single-tangent-hyperplane}
+
+Consider central projection onto the tangent hyperplane \(T_N\) at the
+north pole \(N\) of \(S^4(R)\). A point \(P\) on \(S^4(R)\) is mapped to
+the point \(P'\) where the line from the center \(O\) (center of the
+hypersphere) through \(P\) intersects \(T_N\).
+
+This mapping has two essential limitations:
+
+\textbf{Limitation 1 (Equatorial divergence)}: As \(P\) approaches the
+equator (the set of points at geodesic distance \(\pi R / 2\) from the
+north pole), the angle between line \(OP\) and \(T_N\) approaches 0, so
+\(P'\) diverges to infinity on \(T_N\). That is, the metric (Jacobian)
+of the mapping diverges near the equator.
+
+\[\lim_{\theta \to \pi/2} |P'| = \infty\]
+
+where \(\theta\) is the colatitude (angle from the north pole) of \(P\).
+
+\textbf{Limitation 2 (South-hemisphere invisibility)}: For points \(P\)
+in the south hemisphere beyond the equator, the line \(OP\) does not
+intersect \(T_N\) (or intersects on the opposite side, making the
+mapping non-injective). Therefore, \textbf{a single tangent hyperplane
+can only map one hemisphere of the hypersphere}.
+
+\subsubsection{3.2 The Essence of the
+Problem}\label{the-essence-of-the-problem}
+
+These limitations are inherent in the geometric structure of central
+projection and cannot be resolved by any modification of the coordinate
+system on a single tangent hyperplane.
+
+Symmetry II (equivalence of axes) demonstrated in the preceding paper
+{[}2{]} states that ``projection axes can be freely chosen in central
+projection.'' That is, constructing a tangent hyperplane at any point
+other than the north pole yields an equivalent central projection.
+
+By maximally exploiting this property, full spherical
+coverage---impossible with a single tangent hyperplane---is realized
+through a \textbf{combination of multiple tangent hyperplanes}. This is
+the 5-axis 10-face relay model of the next section.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. The 5-Axis 10-Face Relay
+Model}\label{the-5-axis-10-face-relay-model}
+
+\subsubsection{4.1 Orthogonal Axis Structure of 5-Dimensional
+Space}\label{orthogonal-axis-structure-of-5-dimensional-space}
+
+In 5-dimensional space \(\mathbb{R}^5\), there exist 5 orthogonal axes.
+Each axis has positive and negative directions, yielding a total of
+\textbf{10 directions}
+(\(\pm e_1, \pm e_2, \pm e_3, \pm e_4, \pm e_5\)).
+
+On \(S^4(R) \subset \mathbb{R}^5\), each of these 10 directions
+corresponds to a point on the hypersphere. These 10 points are called
+\textbf{reference points}, and the tangent hyperplanes at each reference
+point are denoted \(T_1^+, T_1^-, T_2^+, T_2^-, \ldots, T_5^+, T_5^-\).
+
+\subsubsection{4.2 Symmetry of the 10-Face
+Configuration}\label{symmetry-of-the-10-face-configuration}
+
+The 10 reference points have the following properties on \(S^4(R)\):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{90-degree spacing}: The geodesic distance between any two
+  reference points is \(\pi R / 2\) (90 degrees). This follows
+  immediately from the fact that the orthogonal axes are at right
+  angles.
+\item
+  \textbf{Equivalence}: The symmetry group of \(S^4(R)\) is \(O(5)\),
+  and there exists a rotation mapping any reference point to any other.
+  Therefore, all 10 tangent hyperplanes are geometrically equivalent.
+\item
+  \textbf{Antipodality}: \(T_k^+\) and \(T_k^-\) correspond to the
+  positive and negative directions of the same axis and are located at
+  antipodal points on the hypersphere.
+\end{enumerate}
+
+\subsubsection{4.3 Construction of
+Coverage}\label{construction-of-coverage}
+
+The central projection from each reference point \(p_k\) can regularly
+map the hemisphere centered at \(p_k\) (the region within geodesic
+distance \(\pi R / 2\) from \(p_k\)). Denote this hemisphere as \(H_k\).
+
+\textbf{Proposition 4.1.} The 10 hemispheres
+\(H_1^+, H_1^-, H_2^+, H_2^-, \ldots, H_5^+, H_5^-\) completely cover
+\(S^4(R)\). That is,
+
+\[S^4(R) = \bigcup_{k=1}^{5} \left( H_k^+ \cup H_k^- \right)\]
+
+\textbf{Proof.} Take any point \(P\) on \(S^4(R)\). Let the
+5-dimensional coordinates of \(P\) be \((x_1, x_2, x_3, x_4, x_5)\)
+(\(\sum x_i^2 = R^2\)). At least one component satisfies
+\(|x_k| \geq R/\sqrt{5}\) (otherwise
+\(\sum x_i^2 < 5 \cdot R^2/5 = R^2\), a contradiction).
+
+When \(|x_k| \geq R/\sqrt{5}\), the geodesic distance from \(P\) to the
+reference point \((\text{sgn}(x_k)) \cdot R \cdot e_k\) is
+\(\arccos(|x_k|/R) \leq \arccos(1/\sqrt{5}) < \pi/2\), so
+\(P \in H_k^{\text{sgn}(x_k)}\). \(\square\)
+
+\subsubsection{4.4 The Relay Principle}\label{the-relay-principle}
+
+A point \(P\) on \(S^4(R)\) generally belongs to multiple hemispheres
+(the coverage has overlaps). When mapping \(P\), one selects the tangent
+hyperplane where \(P\) is mapped most regularly (i.e., with minimum
+metric distortion).
+
+Specifically, one computes the geodesic distance \(\theta_k\) between
+\(P\) and each reference point \(p_k\), and selects the tangent
+hyperplane of the reference point for which \(\theta_k\) is smallest.
+This is equivalent to ``choosing the axis corresponding to the
+coordinate component with the largest absolute value among \(P\)'s
+coordinates.''
+
+\subsubsection{4.5 Transformation Between Tangent
+Hyperplanes}\label{transformation-between-tangent-hyperplanes}
+
+All tangent hyperplanes \textbf{share the same center \(O\) (origin)}
+and \textbf{have the same curvature radius \(R\)}. Only the \textbf{axis
+direction} differs. Therefore, coordinate transformations between
+tangent hyperplanes are \textbf{orthogonal transformations}
+(combinations of rotations and reflections) in 5-dimensional space, and
+are extremely simple.
+
+Specifically, the transformation between the \(k\)-th axis and the
+\(l\)-th axis is a 90-degree rotation in the \((k, l)\) plane:
+
+\[\begin{pmatrix} x_k' \\ x_l' \end{pmatrix} = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} x_k \\ x_l \end{pmatrix}\]
+
+with all other components unchanged.
+
+\subsubsection{4.6 Resolution of the Equatorial Divergence
+Problem}\label{resolution-of-the-equatorial-divergence-problem}
+
+A point \(P\) near the equator as seen from \(T_k\)
+(\(\theta_k \to \pi/2\)) satisfies \(\theta_l < \pi/2\) for a different
+axis \(l\) (\(l \neq k\)), and is regularly mapped from the tangent
+hyperplane \(T_l\).
+
+\textbf{Theorem 4.2.} In the 5-axis 10-face relay model, for any point
+\(P\) on \(S^4(R)\), there exists at least one reference point within
+geodesic distance \(\arccos(1/\sqrt{5}) \approx 63.4°\) (\(< 90°\)) from
+\(P\). Therefore, metric distortion is bounded, and equatorial
+divergence does not occur.
+
+\textbf{Proof.} This follows immediately from the estimate
+\(|x_k| \geq R/\sqrt{5}\) in the proof of Proposition 4.1. \(\square\)
+
+\subsubsection{4.7 Resolution of the South-Hemisphere
+Problem}\label{resolution-of-the-south-hemisphere-problem}
+
+Since the tangent hyperplane \(T_k^-\) corresponding to the antipodal
+point \(p_k^-\) exists, the region constituting the ``south hemisphere''
+as seen from \(T_k^+\) is regularly mapped from \(T_k^-\). Furthermore,
+tangent hyperplanes of other axes also contribute to coverage, so the
+combination of all 10 faces covers the entire sphere without exception.
+
+\subsubsection{4.8 Summary}\label{summary}
+
+The 5-axis 10-face relay model maximally exploits the symmetry of
+central projection (equivalence of axes) to achieve full spherical
+coverage with the following properties:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Completeness}: The entire surface of \(S^4(R)\) is mapped.
+\item
+  \textbf{Regularity}: At any point, metric distortion is bounded
+  (within \(\arccos(1/\sqrt{5}) \approx 63.4°\)).
+\item
+  \textbf{Simplicity}: Transformations between tangent hyperplanes are
+  90-degree orthogonal transformations, sharing the same origin and
+  curvature radius.
+\item
+  \textbf{Symmetry}: All 10 tangent hyperplanes are geometrically
+  equivalent.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Dense Packing by the 5-Dimensional
+Cross-Polytope}\label{dense-packing-by-the-5-dimensional-cross-polytope}
+
+\subsubsection{5.1 Definition of the 5-Dimensional
+Cross-Polytope}\label{definition-of-the-5-dimensional-cross-polytope}
+
+The \(n\)-dimensional cross-polytope (regular hyperoctahedron)
+\(\beta_n\) is the regular polytope in \(\mathbb{R}^n\) whose vertices
+are the \(\pm 1\) points on each coordinate axis. The number of vertices
+is \(2n\).
+
+In the 5-dimensional case, \(\beta_5\) has the following 10 vertices:
+
+\[(\pm 1, 0, 0, 0, 0), \quad (0, \pm 1, 0, 0, 0), \quad (0, 0, \pm 1, 0, 0), \quad (0, 0, 0, \pm 1, 0), \quad (0, 0, 0, 0, \pm 1)\]
+
+\subsubsection{5.2 Correspondence Between the Cross-Polytope and the
+10-Face
+Relay}\label{correspondence-between-the-cross-polytope-and-the-10-face-relay}
+
+The 10 reference points constructed in §4 are the points on \(S^4(R)\):
+
+\[\pm R \cdot e_1, \quad \pm R \cdot e_2, \quad \pm R \cdot e_3, \quad \pm R \cdot e_4, \quad \pm R \cdot e_5\]
+
+These are none other than the vertices of the 5-dimensional
+cross-polytope \(\beta_5\) scaled by \(R\).
+
+That is, \textbf{the configuration of reference points in the 5-axis
+10-face relay model coincides exactly with the vertex structure of the
+5-dimensional cross-polytope.} This correspondence is not coincidental
+but follows necessarily from the orthogonal axis structure of
+5-dimensional space.
+
+\subsubsection{5.3 Partition of Space by the
+Cross-Polytope}\label{partition-of-space-by-the-cross-polytope}
+
+The line segments from the center (origin) of the 5-dimensional
+cross-polytope to each vertex partition \(\mathbb{R}^5\) into
+\(2^5 = 32\) sectors (orthants). On \(S^4(R)\), a corresponding
+partition into \(32\) spherical simplices (sections of the hypersphere)
+is obtained.
+
+Each sector corresponds to one simplex of the cross-polytope, and
+adjacent sectors share faces. This partition is \textbf{isotropic}, with
+all sectors being congruent.
+
+\subsubsection{5.4 Condition for Dense
+Packing}\label{condition-for-dense-packing}
+
+Consider densely packing \(S^4(R)\) with a discrete lattice. Let the
+minimal discrete unit (cell) be the 5-dimensional cross-polytope with
+edge length (lattice constant) \(\ell\).
+
+\textbf{Proposition 5.1.} The number \(M\) of cells along a great circle
+(1-dimensional geodesic) of \(S^4(R)\) is
+
+\[M = \frac{2\pi R}{\ell}\]
+
+When \(M\) is an integer, the geodesic closes exactly at an integer
+multiple of discrete steps.
+
+In the case of 4-axis symmetry, all four axes share the same \(M\), so
+
+\[R = \frac{M \ell}{2\pi}\]
+
+Taking the lattice constant \(\ell\) as the unit of length
+(\(\ell = 1\)),
+
+\[R = \frac{M}{2\pi}\]
+
+\subsubsection{\texorpdfstring{5.5 The Integer Condition on
+\(R^2\)}{5.5 The Integer Condition on R\^{}2}}\label{the-integer-condition-on-r2}
+
+For the discrete lattice to \textbf{close exactly without phase drift}
+on \(S^4(R)\), the number of steps along geodesics must be consistent in
+all directions.
+
+The distance \(d\) in the 4-dimensional subjective space is given by the
+Pythagorean theorem:
+
+\[d^2 = n_1^2 + n_2^2 + n_3^2 + n_4^2, \quad n_i \in \mathbb{Z}\]
+
+Requiring that the step count \(M\) be an integer when traversing a
+great circle, and that distances in all directions be expressible as
+sums of squares of integers by Lagrange's theorem, yields the following
+condition:
+
+\textbf{Theorem 5.2.} A necessary condition for a 4-dimensional discrete
+lattice to close isotropically and exactly on \(S^4(R)\) is that \(R^2\)
+(the square of the curvature radius in units of the lattice constant) is
+a \textbf{positive integer}.
+
+Under this condition, all steps of the discrete lattice are managed as
+integer values, and the phase drift (cumulative error) upon completing
+one circuit is zero. \textbf{The curvature radius takes not continuous
+real values but discrete values (\(R^2 \in \mathbb{Z}_{>0}\)).}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Mapping Shape in the Subjective Space (4
+Dimensions)}\label{mapping-shape-in-the-subjective-space-4-dimensions}
+
+\subsubsection{6.1 Mapping from 5-Dimensional Cross-Polytope to
+4-Dimensional Hyperrectangular
+Cell}\label{mapping-from-5-dimensional-cross-polytope-to-4-dimensional-hyperrectangular-cell}
+
+When a 5-dimensional cross-polytope cell on \(S^4(R)\) is centrally
+projected onto a tangent hyperplane (4-dimensional subjective space),
+what shape does it take in the projection target?
+
+The projection of a 5-dimensional cross-polytope into 4 dimensions
+depends on the projection direction; for projection along an axis
+direction of the cross-polytope (choosing one axis as the projection
+direction), the shadow is a \textbf{4-dimensional regular octahedron}
+(\(\beta_4\), 8 vertices).
+
+On the other hand, in the relay model, the observer in the subjective
+space seamlessly traverses multiple tangent hyperplanes. In this case,
+the local discrete lattice is perceived as a lattice with 4-axis
+symmetry.
+
+\textbf{Proposition 6.1.} To an observer in the 4-dimensional subjective
+space, the minimal cell of the discrete lattice is perceived as a
+\textbf{4-dimensional hyperrectangular cell}.
+
+This is for the following reasons:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Since the four axes are symmetric, lattice spacings in each axis
+  direction are equal.
+\item
+  Central projection maps straight lines to straight lines (preservation
+  of geodesics), so the orthogonal structure of the background lattice
+  is preserved as orthogonal structure in the subjective space.
+\item
+  When a gravitational field (curvature) is present, lattice spacings
+  vary with location, but locally the hyperrectangular shape is
+  maintained.
+\end{enumerate}
+
+\subsubsection{6.2 Maintenance of Density}\label{maintenance-of-density}
+
+When 5-dimensional cross-polytope cells cover \(S^4(R)\) without gaps,
+their central projection images---4-dimensional hyperrectangular
+cells---also cover the subjective space without gaps.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Near the projection center}: The lattice is observed as an
+  orderly orthogonal lattice.
+\item
+  \textbf{Regions near the equator}: The lattice is radially stretched,
+  but relay to another tangent hyperplane prevents excessive distortion.
+\item
+  \textbf{Boundaries between adjacent tangent hyperplanes}: They
+  interweave at 45-degree angles, but the observer in the subjective
+  space perceives a continuous lattice.
+\end{itemize}
+
+\subsubsection{6.3 Lattice Deformation by Gravitational
+Fields}\label{lattice-deformation-by-gravitational-fields}
+
+When a gravitational field exists in the subjective space, the lattice
+deforms from a perfect hypercube into a hyperrectangular cell (a
+rectangular solid with unequal edge lengths in each direction). However,
+two conditions are maintained:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Topological connectivity}: Adjacent cells share faces, and the
+  topology of the lattice is invariant.
+\item
+  \textbf{Hypervolume preservation}: The 5-dimensional hypervolume of
+  each cell (computed in background coordinates as the hypervolume of
+  the cross-polytope) is invariant. The ``distortion'' of the lattice
+  observed in the subjective space is merely a reflection of the change
+  in central projection angle.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. Volume Orientation and
+Sign}\label{volume-orientation-and-sign}
+
+\subsubsection{7.1 Orientation in 5
+Dimensions}\label{orientation-in-5-dimensions}
+
+Hypervolume in \(\mathbb{R}^5\) has a defined \textbf{orientation}. When
+the order of the vertices of a 5-dimensional cross-polytope is fixed,
+the hypervolume takes a positive or negative value depending on whether
+the ordering is right-handed or left-handed.
+
+Mathematically, the sign of the determinant of five edge vectors
+\(v_1, v_2, v_3, v_4, v_5\)
+
+\[V = \det(v_1, v_2, v_3, v_4, v_5)\]
+
+determines the orientation, and \(|V|\) gives the hypervolume.
+
+\subsubsection{7.2 Orientation Reversal and Sign of
+Volume}\label{orientation-reversal-and-sign-of-volume}
+
+When centrally projecting a cross-polytope cell on \(S^4(R)\), the sign
+of the Jacobian of the mapping changes depending on the direction of
+projection (positive or negative of the projection axis).
+
+\textbf{Proposition 7.1.} The mapping with reversed orientation of the
+5-dimensional cross-polytope (the ``inside-out'' mapping) is naturally
+defined as a \textbf{hyperrectangular cell with negative hypervolume} in
+the subjective space (4 dimensions).
+
+This is because the extra dimension of 5-dimensional space provides the
+distinction between ``front and back,'' enabling a geometric sign
+assignment to volume that is impossible in 4-dimensional space alone,
+realized through projection from 5 dimensions.
+
+\subsubsection{7.3 Coexistence of Positive and Negative
+Volumes}\label{coexistence-of-positive-and-negative-volumes}
+
+Cells with different orientations (positive hypervolume) and (negative
+hypervolume) can coexist at the same coordinates in the subjective
+space. From the 5-dimensional perspective, these are separate cells
+belonging to different sectors, but they are mapped to the same
+coordinate region in the 4-dimensional projection.
+
+In this case, the algebraic sum of positive and negative hypervolumes
+can be zero. That is, \textbf{through the orientation structure of 5
+dimensions, the creation and annihilation of volume are geometrically
+expressible}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. Equivalence of Curvature}\label{equivalence-of-curvature}
+
+\subsubsection{8.1 5-Dimensional Curvature and 4-Dimensional Closed
+Space}\label{dimensional-curvature-and-4-dimensional-closed-space}
+
+\(S^4(R) \subset \mathbb{R}^5\) is a 4-dimensional hypersurface with
+curvature radius \(R\) in 5-dimensional space. For a 4-dimensional
+observer living on this hypersurface, the ``curvature in the 5th
+dimension'' is not directly observable.
+
+However, such an observer can indirectly perceive the existence of
+curvature through the following means:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Sum of angles in geodesic triangles}: In flat 4-dimensional
+  space this equals \(\pi\) (180 degrees), but on \(S^4(R)\) it exceeds
+  \(\pi\).
+\item
+  \textbf{Closure of geodesics}: Traveling straight in any direction,
+  one returns to the starting point after a finite distance
+  (\(2\pi R\)).
+\item
+  \textbf{Finiteness of space}: The volume is finite (hypersurface area
+  of \(S^4(R) = 8\pi^2 R^4/3\)), but no ``boundary'' exists.
+\end{enumerate}
+
+\subsubsection{8.2 Subjective Equivalence}\label{subjective-equivalence}
+
+\textbf{Theorem 8.1.} For an observer in the 4-dimensional subjective
+space, the following two descriptions are observationally
+indistinguishable (equivalent):
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  The subjective space is constructed as central projection onto
+  \(S^4(R)\) in \(\mathbb{R}^5\), with curvature radius \(R\) in the
+  5th-dimensional direction.
+\item
+  The subjective space is a closed 4-dimensional space with finite
+  volume and no boundary, whose curvature radius computed from the
+  deviation of angle sums and closure of geodesics is \(R\).
+\end{enumerate}
+
+\textbf{Sketch of proof.} Central projection maps geodesics to straight
+lines (preceding paper {[}1{]}), and the sum of angles is determined by
+the curvature of \(S^4(R)\). The quantities measurable by the
+subjective-space observer (angle sums, geodesic periods, volume) are all
+functions of \(R\) alone and contain no additional information about the
+structure in the 5th dimension. \(\square\)
+
+This equivalence is the fundamental justification for using central
+projection as a geometric framework for gravitational fields. The
+5-dimensional structure of the background space is completely encoded as
+curvature in the subjective space, and the observer perceives the
+background geometry solely through curvature.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. Conclusions}\label{conclusions}
+
+\subsubsection{9.1 Results of This Paper}\label{results-of-this-paper}
+
+Starting from fundamental theorems of number theory, this paper has
+derived the following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Necessity of 4 dimensions}: By Lagrange's four-square theorem,
+  the minimum dimension for lattice distances in discrete space to be
+  defined isotropically without gaps is 4. This corresponds to the
+  algebraic structure of quaternions (multiplicativity of norms,
+  associative law).
+\item
+  \textbf{Necessity of 5 dimensions}: By the structure of projective
+  geometry, the background space for central projection onto 4
+  dimensions is 5-dimensional. Since octonions (8 dimensions) do not
+  satisfy the associative law, they cannot serve as the background space
+  for central projection (a division operation).
+\item
+  \textbf{5-axis 10-face relay model}: The 10 tangent hyperplanes
+  corresponding to the positive and negative directions of the 5
+  orthogonal axes in 5-dimensional space (= the 10 vertices of the
+  5-dimensional cross-polytope) constitute a full spherical coverage of
+  \(S^4(R)\). This simultaneously resolves the equatorial divergence
+  problem and the south-hemisphere invisibility problem of central
+  projection.
+\item
+  \textbf{Dense packing and the integer condition on \(R^2\)}: A
+  discrete lattice with the 5-dimensional cross-polytope as its unit
+  cell constitutes an exact closed dense packing on \(S^4(R)\) when the
+  curvature radius satisfies \(R^2 \in \mathbb{Z}_{>0}\).
+\item
+  \textbf{Mapping to 4-dimensional hyperrectangular cells}: The
+  5-dimensional cross-polytope cells are mapped as 4-dimensional
+  hyperrectangular cells in the subjective space (4 dimensions). The
+  orientation structure of 5 dimensions naturally defines positive and
+  negative volumes.
+\item
+  \textbf{Equivalence of curvature}: Curvature in the 5th-dimensional
+  direction and the intrinsic curvature of a closed 4-dimensional space
+  are indistinguishable to an observer in the subjective space.
+\end{enumerate}
+
+\subsubsection{9.2 Scope of This Paper}\label{scope-of-this-paper}
+
+All results in this paper are stated as propositions of projective
+geometry, discrete geometry, and number theory, without invoking
+physical interpretations (gravitational fields, quantum mechanics,
+etc.). The physical meaning of discrete lattices and the correspondence
+between hypervolumes of cross-polytopes and physical quantities (energy,
+etc.) are left as future work in separate papers.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+{[}1{]} N. Kihara, ``Geometric Formulation of 4-Dimensional Space via
+Central Projection,'' 2026. DOI:
+\href{https://doi.org/10.5281/zenodo.19427780}{10.5281/zenodo.19427780}
+
+{[}2{]} N. Kihara, ``Geometric Symmetries of Central Projection:
+Mathematical Foundations of Multi-Axis Models,'' 2026. DOI:
+\href{https://doi.org/10.5281/zenodo.19434932}{10.5281/zenodo.19434932}
+
+{[}3{]} N. Kihara, ``Formulation of Structural Requirements for a Theory
+of Everything,'' 2026. DOI:
+\href{https://doi.org/10.5281/zenodo.19601592}{10.5281/zenodo.19601592}
+
+{[}4{]} J.-L. Lagrange, ``Démonstration d'un théorème d'arithmétique,''
+\emph{Nouveaux Mémoires de l'Académie royale des Sciences et
+Belles-Lettres de Berlin}, 1770.
+
+{[}5{]} A. Hurwitz, ``Über die Composition der quadratischen Formen von
+beliebig vielen Variablen,'' \emph{Nachrichten von der Gesellschaft der
+Wissenschaften zu Göttingen}, 309--316 (1898).
+
+{[}6{]} M. Viazovska, ``The sphere packing problem in dimension 8,''
+\emph{Annals of Mathematics} \textbf{185}, 991--1015 (2017).
+
+{[}7{]} J. H. Conway and N. J. A. Sloane, \emph{Sphere Packings,
+Lattices and Groups}, 3rd ed., Springer (1999).
+
+\end{document}
