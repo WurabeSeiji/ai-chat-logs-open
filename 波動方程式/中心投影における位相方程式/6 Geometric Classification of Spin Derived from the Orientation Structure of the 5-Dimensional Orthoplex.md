@@ -8,18 +8,13 @@
 
 **DOI:** [10.5281/zenodo.19630972](https://doi.org/10.5281/zenodo.19630972)
 
-**Prerequisite Papers:**
-- [Full Spherical Coverage of Central Projection in Discrete Space and the Number-Theoretic Necessity of 5-Dimensional Background Space](https://doi.org/10.5281/zenodo.19624957)
-- [Formulation of Structural Requirements for a Theory of Everything](https://doi.org/10.5281/zenodo.19601592)
-- [Classification and Structural Analysis of the 19 Arbitrary Parameters of the Standard Model](https://doi.org/10.5281/zenodo.19604965)
-
 ---
 
 ## 0. Purpose of This Paper
 
-In the preceding paper [W5], we demonstrated that the 5-dimensional orthoplex (the 5-dimensional regular cross-polytope) constitutes the unit cell for dense packing of discrete space, and that under central projection it is mapped to a hyperrectangle in the 4-dimensional subjective space. We also established in Proposition 7.1 that the sign of the volume (orientation) is naturally defined through the determinant sign of the 5-dimensional edge vectors.
+The 5-dimensional orthoplex (the 5-dimensional regular cross-polytope, 5-orthoplex) is a regular polytope in $\mathbb{R}^5$ whose volume sign (orientation) is naturally defined through the determinant sign of the edge vectors.
 
-This paper further analyzes the orientation structure and derives the following:
+This paper takes as its starting point the assumption that the five coordinate axes are classified into "three observable spatial axes" and "two unobservable axes" (Assumption A, Section 1.3), and analyzes the orientation structure to derive the following:
 
 1. The set of representable spin quantum numbers is limited to six values: $s = 0, \frac{1}{2}, 1, \frac{3}{2}, 2, \frac{5}{2}$, as determined by the orientation degrees of freedom of the 5-dimensional orthoplex.
 2. The distinction between half-integer spin (fermions) and integer spin (bosons) is derived as a geometric difference between vertex states and edge-midpoint states.
@@ -47,22 +42,23 @@ The number of $k$-dimensional faces is given by $2^{k+1}\binom{5}{k+1}$.
 | 3 | Tetrahedral cells | 80 | $2^4 \binom{5}{4}$ |
 | 4 | 5-cell facets | 32 | $2^5 \binom{5}{5}$ |
 
-### 1.2 Integrality of Metrics
-
-With unit edge length, the metric at each dimension is computed as follows.
-
-| Dimension | Metric | Value per element | Rational? |
-|:---------:|:------:|:-----------------:|:---------:|
-| 0 | Count | 1 | Rational |
-| 1 | Edge length | 1 | Rational |
-| 2 | Area (equilateral triangle) | $\frac{\sqrt{3}}{4}$ | **Irrational** |
-| 3 | Volume (regular tetrahedron) | $\frac{\sqrt{2}}{12}$ | **Irrational** |
-
-Only the 0-dimensional (count) and 1-dimensional (edge length) metrics are rational. Metrics of dimension 2 and above necessarily involve irrational numbers. This indicates the privileged status of edges (1-dimensional elements) in integer geometry.
-
-### 1.3 A Numerical Coincidence Specific to 5 Dimensions
+### 1.2 A Numerical Coincidence Specific to 5 Dimensions
 
 The count of 2-dimensional faces (triangles), 80, coincides with the count of 3-dimensional cells (tetrahedra), 80. This follows from $2^3 \binom{5}{3} = 2^4 \binom{5}{4}$ and is specific to 5 dimensions. It suggests a structure in which face orientation and chirality are in one-to-one correspondence.
+
+### 1.3 Assumption on Axis Classification
+
+The five coordinate axes of the 5-dimensional orthoplex are mathematically equivalent. In this paper, we adopt the following assumption.
+
+**Assumption A (Physical classification of axes).** The five coordinate axes are classified as follows.
+
+- **Spatial axes** ($x_1, x_2, x_3$): Three axes corresponding to the 3-dimensional space directly observable by the observer. Since their directions are fixed from the observer's perspective, sign reversal is not permitted. The three axes are symmetric under the permutation group $S_3$.
+- **Fourth axis** ($x_4$): An axis corresponding to time. It is a dimension orthogonal to 3-dimensional space that is not directly observable, and sign reversal is permitted.
+- **Fifth axis** ($x_5$): An axis corresponding to a large-scale spatial curvature radius. It is a dimension orthogonal to 3-dimensional space that is not directly observable, and sign reversal is permitted.
+
+Under this classification, the only axes that can undergo independent sign reversal are the fourth and fifth axes, totaling two.
+
+**Remark.** This assumption is naturally derived from the framework of central projection developed in the author's other work, but the results of this paper follow from this assumption alone and do not presuppose central projection.
 
 ---
 
@@ -95,13 +91,13 @@ This symmetric sequence reflects the Hodge duality between $k$ and $(5-k)$. In p
 
 ## 3. Geometric Derivation of Spin Values
 
-### 3.1 Classification of Axes by Physical Role
+### 3.1 Axis Classification (Application of Assumption A)
 
-The five coordinate axes are classified based on symmetry.
+By Assumption A (Section 1.3), the five coordinate axes are classified as follows.
 
-- **Spatial axes**: $x_1, x_2, x_3$ (three axes, symmetric under the permutation group $S_3$)
-- **Fourth axis**: $x_4$ (asymmetric with respect to spatial axes; first candidate for sign reversal)
-- **Fifth axis**: $x_5$ (the additional dimension for projection; second candidate for sign reversal)
+- **Spatial axes**: $x_1, x_2, x_3$ (three axes, symmetric under the permutation group $S_3$, sign reversal not permitted)
+- **Fourth axis**: $x_4$ (corresponding to time, sign reversal permitted)
+- **Fifth axis**: $x_5$ (corresponding to spatial curvature radius, sign reversal permitted)
 
 The three spatial axes are interchangeable, while the fourth and fifth axes each play an independent role.
 
@@ -147,17 +143,17 @@ $$\sum_{s} (2s+1) = 1 + 2 + 3 + 4 + 5 + 6 = 21 = T(6)$$
 
 ## 4. Geometric Origin of Half-Integer Spin
 
-### 4.1 Edge Midpoints and Half-Integer Coordinates
+### 4.1 Edge Midpoints and Non-Coincidence with the Vertex Lattice
 
-The vertices of the 5-dimensional orthoplex lie on the integer lattice (combinations of $\pm 1$ and $0$ along each axis).
+Each vertex of the 5-dimensional orthoplex lies on a single coordinate axis, having exactly one nonzero coordinate. That is, the vertex on axis $i$ takes the form $a_i e_i$ ($a_i > 0$), with only one nonzero entry. The scale $a_i$ of each axis may differ in general (under Assumption A, the spatial axes share $a_1 = a_2 = a_3$, the fourth axis has $a_4$, and the fifth axis has $a_5$, where $a_5 \gg 1$ is permitted).
 
-The midpoint of the edge connecting two adjacent vertices, for example $e_1 = (1,0,0,0,0)$ and $e_2 = (0,1,0,0,0)$, is
+The midpoint of the edge connecting two adjacent vertices, for example $a_1 e_1 = (a_1, 0, 0, 0, 0)$ and $a_2 e_2 = (0, a_2, 0, 0, 0)$, is
 
-$$m_{12} = \left(\frac{1}{2}, \frac{1}{2}, 0, 0, 0\right),$$
+$$m_{12} = \left(\frac{a_1}{2}, \frac{a_2}{2}, 0, 0, 0\right),$$
 
-which has **half-integer coordinates**.
+which has **two simultaneously nonzero coordinates**.
 
-**Proposition 4.1.** In the 5-dimensional orthoplex defined on the integer lattice, the edge midpoints lie on a half-integer lattice. These half-integer lattice points constitute the geometric locus of half-integer spin (fermion) states.
+**Proposition 4.1.** Each vertex of the 5-dimensional orthoplex has exactly one nonzero coordinate, whereas each edge midpoint has two nonzero coordinates and therefore does not lie on the vertex lattice. These non-vertex lattice points constitute the geometric locus of half-integer spin (fermion) states. This property is preserved regardless of the scale of each axis.
 
 ### 4.2 Geometric Meaning of 720° Rotation
 
@@ -348,9 +344,9 @@ The results of this paper are self-contained as propositions of discrete geometr
 
 ### 9.1 Quantitative Derivation of Mass Ratios
 
-We suggested that the mass hierarchy of three generations may arise from the breaking of the $S_3$ symmetry of spatial axes by the choice of projection axis (Section 7). However, the specific values of mass ratios have not been derived.
+We suggested that the mass hierarchy of three generations may arise from some mechanism of $S_3$ symmetry breaking of the spatial axes (Section 7). However, the specific values of mass ratios have not been derived.
 
-**Problem:** Can the mass ratios $m_e : m_\mu : m_\tau$, etc., be derived quantitatively from the angles between the projection axis and each spatial axis?
+**Problem:** Can the mechanism of $S_3$ symmetry breaking be identified, and the mass ratios $m_e : m_\mu : m_\tau$, etc., be derived quantitatively?
 
 ### 9.2 Derivation of the Gauge Group $\mathrm{SU}(3) \times \mathrm{SU}(2) \times \mathrm{U}(1)$
 
@@ -394,22 +390,12 @@ These results indicate the possibility that the axioms of quantum mechanics conc
 
 ## References
 
-[1] N. Kihara, "Geometric Formulation of 4-Dimensional Space via Central Projection," 2026. DOI: 10.5281/zenodo.19427780
+[1] D. Finkelstein & J. Rubinstein, "Connection between Spin, Statistics, and Kinks," *J. Math. Phys.* 9, 1762 (1968).
 
-[2] N. Kihara, "Geometric Symmetry of Central Projection: Mathematical Foundations of the Multi-Axis Model," 2026. DOI: 10.5281/zenodo.19434932
+[2] M.F. Atiyah, N.S. Manton & B.J. Schroers, "Geometric Models of Matter," *Proc. R. Soc. A* 468, 1252 (2012). arXiv: 1108.5151.
 
-[3] N. Kihara, "Formulation of Structural Requirements for a Theory of Everything," 2026. DOI: 10.5281/zenodo.19601592
+[3] C. Furey, "Standard Model Physics from an Algebra?" arXiv: 1611.09182 (2016).
 
-[4] N. Kihara, "Classification and Structural Analysis of the 19 Arbitrary Parameters of the Standard Model," 2026. DOI: 10.5281/zenodo.19604965
+[4] Th. Kaluza, "Zum Unitätsproblem der Physik," *Sitzungsber. Preuss. Akad. Wiss. Berlin* 966–972 (1921).
 
-[5] N. Kihara, "Full Spherical Coverage of Central Projection in Discrete Space and the Number-Theoretic Necessity of 5-Dimensional Background Space," 2026. DOI: 10.5281/zenodo.19624957
-
-[6] D. Finkelstein & J. Rubinstein, "Connection between Spin, Statistics, and Kinks," *J. Math. Phys.* 9, 1762 (1968).
-
-[7] M.F. Atiyah, N.S. Manton & B.J. Schroers, "Geometric Models of Matter," *Proc. R. Soc. A* 468, 1252 (2012). arXiv: 1108.5151.
-
-[8] C. Furey, "Standard Model Physics from an Algebra?" arXiv: 1611.09182 (2016).
-
-[9] Th. Kaluza, "Zum Unitätsproblem der Physik," *Sitzungsber. Preuss. Akad. Wiss. Berlin* 966–972 (1921).
-
-[10] H.S.M. Coxeter, *Regular Polytopes*, Dover (1973).
+[5] H.S.M. Coxeter, *Regular Polytopes*, Dover (1973).
