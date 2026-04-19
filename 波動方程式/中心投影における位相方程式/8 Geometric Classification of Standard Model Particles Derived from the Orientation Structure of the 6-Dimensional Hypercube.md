@@ -15,8 +15,8 @@
 In the author's preceding work [7], six spin quantum numbers $s = 0, \frac{1}{2}, 1, \frac{3}{2}, 2, \frac{5}{2}$ were derived as bivectors from the 3-cell orientation structure of the 5-dimensional hypercube. However, the 5-dimensional framework had the following limitations:
 
 1. **Absence of color charge**: No degree of freedom to distinguish the three colors of quarks.
-2. **No quark–lepton distinction**: The same orientation corresponds to both quarks and leptons.
-3. **Insufficient gauge bosons**: Only 4 spin-1 boson orientations, falling short of the 12 Standard Model states ($\gamma, g_1$–$g_8, W^\pm, Z^0$).
+2. **No quark--lepton distinction**: The same orientation corresponds to both quarks and leptons.
+3. **Insufficient gauge bosons**: Only 4 spin-1 boson orientations, falling short of the 12 Standard Model states ($\gamma, g_1$--$g_8, W^\pm, Z^0$).
 4. **Graviton placement**: The spin-2 boson requires $n = 2$, but with only two non-spatial axes, only one combination was available.
 
 This paper resolves all of these problems by adding a sixth axis to the 5-dimensional framework. The additional axis is a **discrete label axis** qualitatively distinct from space, time, and curvature, which geometrically introduces internal degrees of freedom corresponding to color charge.
@@ -61,7 +61,9 @@ Assumption A (physical classification of five axes) from the preceding works [6,
 
 - **Spatial axes** ($x_1, x_2, x_3$): Three axes corresponding to 3-dimensional space directly perceivable by the observer. Sign reversal is not permitted. The three axes are mutually symmetric under the permutation group $S_3$.
 - **Temporal axis** ($x_4 = t$): The axis corresponding to time. Sign reversal $\pm 1$ is possible. The range is finite (2 values).
-- **Curvature axis** ($x_5 = R$): The axis corresponding to the curvature radius of space. Takes discrete values $R = \pm n^2$ ($n \in \mathbb{N}$). The range is **unbounded**.
+- **Scale axis** ($x_5 = R$): The axis corresponding to the curvature radius of space. The range is unbounded, making it the only axis among the six with an unlimited degree of freedom.
+
+**Remark.** In the preceding work [W5], the number-theoretic conditions of central projection in discrete space lead to the discretization $R = \pm n^2 \cdot L_0$ ($n \in \mathbb{N}$, $L_0$ is a unit length). However, all results in this paper hold without this discretization and remain valid when $R$ takes continuous values.
 - **Color axis** ($x_6 = Q$): The axis corresponding to internal degrees of freedom. Takes discrete label values $Q \in \{0, r, g, b\}$ (4 values).
 
 ### 2.2 Four Qualitative Differences
@@ -72,7 +74,7 @@ The six axes are classified into four qualitatively distinct types.
 |:----:|:----:|:------:|:-------:|:-----:|
 | Position | $x, y, z$ | Continuous | "Where is it?" | $S_3$ constrained |
 | Direction | $t$ | $\pm 1$ | "Which way?" | 2 values |
-| Scale | $R$ | $\pm n^2$ | "How large?" | **Unbounded** |
+| Scale | $R$ | Unbounded | "How large?" | **Unbounded** |
 | Label | $Q$ | $0, r, g, b$ | "What kind?" | 4 values |
 
 **Proposition 2.1.** Among the six axes, only the $R$ axis has an unbounded range. The **type** of a particle (spin, color charge, generation) is determined by the finite discrete structure of $(x, y, z, t, Q)$, while the **mass** of a particle is determined by the sole unbounded degree of freedom ($R$).
@@ -81,8 +83,8 @@ The six axes are classified into four qualitatively distinct types.
 
 The $Q$ axis represents a label (which kind), not a quantity (how much). The following consequences follow immediately from this property:
 
-1. **Charge quantization**: Since $Q$ takes only discrete values, charge is intrinsically quantized — not as a consequence of continuous U(1) symmetry, but as an inherent property of the axis discreteness.
-2. **Physical determination of label count**: The number of values of $Q$ is not constrained by hypercube geometry. The number of values is determined by what the physics requires — namely, the number of color degrees of freedom.
+1. **Charge quantization**: Since $Q$ takes only discrete values, charge is intrinsically quantized -- not as a consequence of continuous U(1) symmetry, but as an inherent property of the axis discreteness.
+2. **Physical determination of label count**: The number of values of $Q$ is not constrained by hypercube geometry. The number of values is determined by what the physics requires -- namely, the number of color degrees of freedom.
 3. **Coupling strength and channel count**: The coupling strength of a force is proportional to the number of interaction channels provided by $Q$ labels (detailed in Section 7).
 
 ---
@@ -131,11 +133,15 @@ The four values $Q \in \{0, r, g, b\}$ have the following physical correspondenc
 | $g$ | Green | Quark |
 | $b$ | Blue | Quark |
 
-**Proposition 4.1 (Quark–lepton theorem).** States with $Q = 0$ correspond to leptons (no color charge), while states with $Q \in \{r, g, b\}$ correspond to quarks (with color charge). For a given geometric orientation $(x, y, z, t, R)$, the four values of $Q$ cause each generation of fermions to split into one lepton type and three quark colors.
+**Proposition 4.1 (Quark--lepton theorem).** States with $Q = 0$ correspond to leptons (no color charge), while states with $Q \in \{r, g, b\}$ correspond to quarks (with color charge). For a given geometric orientation $(x, y, z, t, R)$, the four values of $Q$ cause each generation of fermions to split into one lepton type and three quark colors.
+
+**Remark (On the degrees of freedom for electric and color charge).** In the Standard Model, electric charge and color charge are orthogonal, independent quantum numbers. In the present framework, color charge is given by the $Q$-axis value ($0$ vs $\{r, g, b\}$), while the sign of electric charge is distinguished by the orientation signs of the spatial axes (see Table A in Section 8: within each generation, spatial signs $+$ and $-$ separate charged and neutral particles). Furthermore, the denominator 3 in quark fractional charges ($\pm 1/3, \pm 2/3$) coincides with the number of nonzero $Q$-axis values ($|\{r, g, b\}| = 3$). That is, leptons ($Q = 0$, colorless) carry electric charge in units of 1, while quarks ($Q \neq 0$, 3 colors) carry electric charge in units of $1/3$. The complete derivation of electric charge (in particular, the asymmetry between $+2/3$ and $-1/3$) remains a task for future work (see Section 9).
+
+We also considered adding electric charge as an independent seventh axis. However, increasing the number of non-spatial axes to four would raise the number of $n = 2$ (spin-2) types to $\binom{4}{2} = 6$ and expand the spin-$3/2$ fermion families to four, thereby producing a particle spectrum similar to that of supersymmetry theories. Given the current experimental situation (non-observation of supersymmetric particles), this paper adopts the approach of reading electric charge from the $Q$-axis structure and spatial axis signs. This design allows natural extension by adding a seventh axis should supersymmetric particles be discovered in the future.
 
 ### 4.2 Derivation of Eight Gluon States
 
-Gluons are spin-1 gauge bosons that mediate color charge transitions. For the three nonzero values $\{r, g, b\}$ of the $Q$ axis, gluons are represented as color–anticolor pairs.
+Gluons are spin-1 gauge bosons that mediate color charge transitions. For the three nonzero values $\{r, g, b\}$ of the $Q$ axis, gluons are represented as color--anticolor pairs.
 
 **Proposition 4.2 (Gluon theorem).** The number of independent gauge boson states mediating transitions among color labels $\{r, g, b\}$ is
 
@@ -155,7 +161,7 @@ According to the type of non-spatial axis, spin-1 gauge bosons are classified as
 |:----------:|:----------:|:-----------------:|:-----------------:|:-----:|
 | $t$ axis | Temporal | $(0,0,0,\pm,0,Q)$ | $W^+, W^-$ | 2 |
 | $R$ axis | Curvature | $(0,0,0,0,\pm,Q)$ | $\gamma, Z^0$ | 2 |
-| $Q$ axis | Color | $(0,0,0,0,0,Q_i \to Q_j)$ | Gluons $g_1$–$g_8$ | 8 |
+| $Q$ axis | Color | $(0,0,0,0,0,Q_i \to Q_j)$ | Gluons $g_1$--$g_8$ | 8 |
 | **Total** | | | | **12** |
 
 The two $W$ boson states ($t = +1, -1$) correspond to positive and negative charges. $\gamma$ and $Z^0$ correspond to the sign of the $R$ axis, with the distinction between massless ($M(\gamma) = 0$) and massive ($M(Z) \neq 0$). The eight gluon states follow from Proposition 4.2.
@@ -168,13 +174,17 @@ The total of 12 agrees with the number of gauge boson states in the Standard Mod
 
 ### 5.1 Resolution by Three Non-Spatial Axes
 
-In five dimensions (two non-spatial axes), the only $n = 2$ bivector was $e_4 \wedge e_5$ ($t \wedge R$) — **one combination**. In six dimensions (three non-spatial axes: $t, R, Q$), $n = 2$ increases to **three combinations**:
+In five dimensions (two non-spatial axes), the only $n = 2$ bivector was $e_4 \wedge e_5$ ($t \wedge R$) -- **one combination**. In six dimensions (three non-spatial axes: $t, R, Q$), $n = 2$ increases to **three combinations**:
+
+**Remark (On Q-axis participation in bivectors).** The $Q$ axis is a label axis and does not participate in the geometric faces of the hypercube (the 80 faces of Section 6.3). However, in the classification of bivectors that determine spin, $Q$ participates as one of the non-spatial axes in the type enumeration. That is, $e_t \wedge e_Q$ and $e_R \wedge e_Q$ are not geometric 2-faces but **abstract bivector types** defined as combinations of non-spatial axes.
 
 | Normal bivector | Fixed axes | $C$ matrix |
 |:--------------:|:----------:|:----------:|
 | $e_t \wedge e_R$ | $t, R$ | $\mathrm{diag}(+,+,+,-,-,Q)$ |
-| $e_t \wedge e_Q$ | $t, Q$ | $\mathrm{diag}(+,+,+,-,R,-)$ |
-| $e_R \wedge e_Q$ | $R, Q$ | $\mathrm{diag}(+,+,+,t,-,-)$ |
+| $e_t \wedge e_Q$ | $t, Q$ | $\mathrm{diag}(+,+,+,-,R,\bar{Q})$ |
+| $e_R \wedge e_Q$ | $R, Q$ | $\mathrm{diag}(+,+,+,t,-,\bar{Q})$ |
+
+**Remark ($C$ matrix notation for the $Q$ component).** In the $C$ matrix, the $Q$ component is written as $Q$ when it is preserved. When the $Q$ component is "reversed," it is written as $\bar{Q}$, meaning anticolor substitution ($r \leftrightarrow \bar{r}$, $g \leftrightarrow \bar{g}$, $b \leftrightarrow \bar{b}$, $0 \leftrightarrow 0$).
 
 **Proposition 5.1.** In the 6-dimensional framework, spin-2 bosons come in three types.
 
@@ -188,7 +198,7 @@ The graviton naturally corresponds to the $tR$ type. The $tQ$ and $RQ$ types are
 
 ### 5.2 Resolution of the 5-Dimensional Problem
 
-The problem in five dimensions — that "the graviton does not fit into a 4-facet center" — was due to dimensional insufficiency. In six dimensions, with three non-spatial axes, multiple $n = 2$ bivectors exist, providing the graviton with a natural geometric position.
+The problem in five dimensions -- that "the graviton does not fit into a 4-facet center" -- was due to dimensional insufficiency. In six dimensions, with three non-spatial axes, multiple $n = 2$ bivectors exist, providing the graviton with a natural geometric position.
 
 ---
 
@@ -196,7 +206,7 @@ The problem in five dimensions — that "the graviton does not fit into a 4-face
 
 ### 6.1 Uniqueness of the R Axis: The Sole Unbounded Degree of Freedom
 
-$R = \pm n^2$ ($n \in \mathbb{N}$) takes unbounded discrete values. The $R$ axis is the only one among the six axes with an unbounded range.
+The $R$ axis is the only one among the six axes with an unbounded range.
 
 | Axis | Number of possible values |
 |:----:|:------------------------:|
@@ -207,7 +217,7 @@ $R = \pm n^2$ ($n \in \mathbb{N}$) takes unbounded discrete values. The $R$ axis
 
 ### 6.2 Mass and Area
 
-Due to the structure $R = n^2$, the $R$ axis has the dimension of $L^2$ (area). Among the 80 square faces of the 5-dimensional hypercube, the area of faces containing the $R$ axis is proportional to $n^2$.
+The $R$ axis corresponds to the curvature radius and has dimension $L$ (length). The area of square faces containing the $R$ axis is proportional to the value of $R$, so mass is determined by the area structure of $R$-containing faces.
 
 **Definition 6.1.** The **signed area** $M(\sigma)$ of an orientation structure $\sigma$ is defined as the sum of the products of orientation signs and areas over all square faces containing the $R$ axis:
 
@@ -219,8 +229,8 @@ Among the 80 square faces, those containing the $R$ ($= x_5$) axis are classifie
 
 | Face type | Bivector | Type count | Face count | Area scale |
 |:---------:|:--------:|:----------:|:----------:|:----------:|
-| Spatial–$R$ | $e_i \wedge e_5$ | 3 | $3 \times 8 = 24$ | $L \cdot n^2$ |
-| $t$–$R$ | $e_4 \wedge e_5$ | 1 | $8$ | $T \cdot n^2$ |
+| Spatial--$R$ | $e_i \wedge e_5$ | 3 | $3 \times 8 = 24$ | $L \cdot R$ |
+| $t$--$R$ | $e_4 \wedge e_5$ | 1 | $8$ | $T \cdot R$ |
 | **Total** | | **4** | **32** | |
 
 Faces containing the $R$ axis account for 32 out of 80 total faces, or $\frac{2}{5}$ of the total.
@@ -231,34 +241,22 @@ Faces containing the $R$ axis account for 32 out of 80 total faces, or $\frac{2}
 
 The masslessness of the photon and gluons is explained as a consequence of the vanishing signed area of the corresponding orientations.
 
-### 6.5 Mass and Frequency
-
-$R$ is the curvature radius of space and relates to spatial extent (wavelength $\lambda$). Wavelength and frequency are connected by $\lambda \nu = c$, and from the mass–energy equivalence $E = mc^2$ and the quantum relation $E = h\nu$:
-
-$$m = \frac{h\nu}{c^2}$$
-
-**Proposition 6.2.** For a given orientation structure $(x, y, z, t, Q)$, different values of $R = n^2$ yield different mass states. This is analogous to the fundamental tone and overtones of a vibrating string: different values of $n$ form a mass spectrum of particles with identical quantum numbers (spin, color charge, generation).
-
-**Proposition 6.3.** The experimentally measured mass of a particle is the representative value of the most stable vibrational mode (fundamental frequency) for each orientation structure. The "resonances" observed in accelerator experiments may correspond to higher-order vibrational modes (overtones) of the same orientation structure.
-
 ---
 
 ## 7. Determination of Coupling Strength by Channel Count
 
 ### 7.1 Channel Count and Coupling Constants
 
-**Proposition 7.1.** The coupling strength of a force is proportional to the number of $Q$ channels available for the interaction.
+**Proposition 7.1 (Qualitative indication).** The coupling strength of a force may be qualitatively related to the type of axis involved in the interaction and the number of channels.
 
-| Force | Mediator | $Q$ channels | Relative coupling |
-|:-----:|:--------:|:------------:|:-----------------:|
-| Strong | $g_1$–$g_8$ | 8 ($3 \times 3 - 1$) | Strongest |
-| Electromagnetic | $\gamma$ | Couples to charged ($Q \neq 0$) | Intermediate |
-| Weak | $W^\pm, Z^0$ | $t$ axis reversal only | Weak |
-| Gravity | $G$ | $Q$-independent ($n = 2$) | Weakest |
+| Force | Mediator | Axis involved | Coupling characteristic |
+|:-----:|:--------:|:-------------:|:-----------------------:|
+| Strong | $g_1$--$g_8$ | $Q$ axis (8 color-transition channels) | Between color-charged particles only |
+| Electromagnetic | $\gamma$ | $R$ axis | Between particles with nonzero electric charge (see Section 4 remark) |
+| Weak | $W^\pm, Z^0$ | $t$ axis | All fermions |
+| Gravity | $G$ | $t \wedge R$ ($n = 2$) | All particles ($Q$-independent) |
 
-*Rationale.* The greater the number of channels, the larger the total transition probability in scattering processes, and hence the larger the effective coupling constant. The strong force utilizes transitions among $Q$ labels (8 channels) and is therefore far stronger than gravity ($n = 2$, spacetime structure only), which is $Q$-independent.
-
-**Remark.** In the Standard Model, the hierarchy of coupling constants $\alpha_s \approx 1, \alpha \approx 1/137, \alpha_W \approx 10^{-6}, \alpha_G \approx 10^{-39}$ cannot be quantitatively explained by channel count differences alone. Channel count provides the qualitative origin of the hierarchy; precise derivation of the values remains a task for future work.
+**Remark.** In the Standard Model, coupling constants near the energy scale $M_Z$ are $\alpha_s \approx 0.1$, $\alpha \approx 1/137$, $\alpha_W \approx 1/30$, $\alpha_G \approx 10^{-39}$; the strong, electromagnetic, and weak forces are of comparable order, while gravity alone is extremely weak. Quantitative derivation of this hierarchy structure remains a task for future work.
 
 ---
 
@@ -275,7 +273,7 @@ $$m = \frac{h\nu}{c^2}$$
 | W boson | $W^-$ | 1 | $(0,0,0,-,0,0)$ | 1 | 80,379 | $t$ type |
 | Photon | $\gamma$ | 1 | $(0,0,0,0,+,0)$ | 1 | 0 | $R$ type, $M = 0$ |
 | Z boson | $Z^0$ | 1 | $(0,0,0,0,-,0)$ | 1 | 91,188 | $R$ type, $M \neq 0$ |
-| Gluon | $g_1$–$g_8$ | 1 | $(0,0,0,0,0,Q_i{\to}Q_j)$ | 1 | 0 | $Q$ type, 8 color transitions |
+| Gluon | $g_1$--$g_8$ | 1 | $(0,0,0,0,0,Q_i{\to}Q_j)$ | 1 | 0 | $Q$ type, 8 color transitions |
 | Graviton | $G$ | 2 | $(0,0,0,\pm,\pm,0)$ | 2 | 0 | $tR$ type |
 
 #### Fermions: Leptons ($Q = 0$, color-neutral)
@@ -317,20 +315,22 @@ Each quark has three color states $Q = r, g, b$. Antiquarks correspond to revers
 | Antilepton | 1/2 | 0 | 6 | 6 | 6 |
 | Quark | 1/2 | r,g,b | 6 | 18 | 18 |
 | Antiquark | 1/2 | $\bar{r},\bar{g},\bar{b}$ | 6 | 18 | 18 |
-| **Total** | | | | **62** | **62** |
+| **Total** | | | | **62** | **61 + $G$** |
+
+**Remark.** The Standard Model comprises 61 states (excluding the graviton). The graviton $G$ is not an element of the Standard Model but a hypothetical particle of quantum gravity. The 62 states of this paper provide a unified classification of the 61 Standard Model states plus one graviton state ("SM + gravity").
 
 ### Table B: Predictions of Undiscovered Particles
 
 | Prediction | $s$ | B/F | $n$ | Orientation feature | Gen. | States |
 |------------|-----|-----|-----|---------------------|------|--------|
-| $tQ$ type boson | 2 | B | 2 | $t, Q$ fixed | — | Predicted |
-| $RQ$ type boson | 2 | B | 2 | $R, Q$ fixed | — | Predicted |
-| $t$ type fermion | 3/2 | F | 1 | Spatial–$t$ normal | 3 gen. | 12 × 4($Q$) |
-| $R$ type fermion | 3/2 | F | 1 | Spatial–$R$ normal | 3 gen. | 12 × 4($Q$) |
-| $Q$ type fermion | 3/2 | F | 1 | Spatial–$Q$ normal | 3 gen. | 12 × 4($Q$) |
-| $tR$ type fermion | 5/2 | F | 2 | $t$–$R$ normal | None | 4 × 4($Q$) |
-| $tQ$ type fermion | 5/2 | F | 2 | $t$–$Q$ normal | None | 4 × 4($Q$) |
-| $RQ$ type fermion | 5/2 | F | 2 | $R$–$Q$ normal | None | 4 × 4($Q$) |
+| $tQ$ type boson | 2 | B | 2 | $t, Q$ fixed | -- | Predicted |
+| $RQ$ type boson | 2 | B | 2 | $R, Q$ fixed | -- | Predicted |
+| $t$ type fermion | 3/2 | F | 1 | Spatial--$t$ normal | 3 gen. | 12 x 4($Q$) |
+| $R$ type fermion | 3/2 | F | 1 | Spatial--$R$ normal | 3 gen. | 12 x 4($Q$) |
+| $Q$ type fermion | 3/2 | F | 1 | Spatial--$Q$ normal | 3 gen. | 12 x 4($Q$) |
+| $tR$ type fermion | 5/2 | F | 2 | $t$--$R$ normal | None | 4 x 4($Q$) |
+| $tQ$ type fermion | 5/2 | F | 2 | $t$--$Q$ normal | None | 4 x 4($Q$) |
+| $RQ$ type fermion | 5/2 | F | 2 | $R$--$Q$ normal | None | 4 x 4($Q$) |
 
 **Remark.** The $s = 3/2$ fermions split into three families ($t$ type, $R$ type, $Q$ type), each possessing a three-generation structure. Compared with the gravitino (one species) of supersymmetry theory, this predicts a far richer structure.
 
@@ -339,7 +339,7 @@ Each quark has three color states $Q = r, g, b$. Antiquarks correspond to revers
 | Problem | 5D (W7) | 6D (this paper) | Status |
 |:-------:|:-------:|:----------------:|:------:|
 | Color charge | Absent | $Q \in \{0,r,g,b\}$ | **Resolved** |
-| Quark–lepton distinction | Impossible | $Q = 0$ vs $Q \neq 0$ | **Resolved** |
+| Quark--lepton distinction | Impossible | $Q = 0$ vs $Q \neq 0$ | **Resolved** |
 | Gluon state count | Insufficient (4 vs 12) | $3 \times 3 - 1 = 8$ | **Resolved** |
 | Gauge boson total | 4 | 12 ($W^{\pm} + \gamma + Z + g \times 8$) | **Resolved** |
 | Graviton | Position unclear | $tR$ type, $n = 2$ | **Resolved** |
@@ -385,17 +385,17 @@ From the 6-dimensional framework obtained by adding a sixth axis ($Q$ axis: 4-va
 
 3. **Derivation of eight gluon states**: The number is determined as $3 \times 3 - 1 = 8$ color transitions without assuming SU(3).
 
-4. **Complete correspondence of 12 gauge boson states**: The three families — $t$ type ($W^\pm$), $R$ type ($\gamma, Z^0$), and $Q$ type ($g_1$–$g_8$) — reproduce all 12 Standard Model gauge boson states exactly.
+4. **Complete correspondence of 12 gauge boson states**: The three families -- $t$ type ($W^\pm$), $R$ type ($\gamma, Z^0$), and $Q$ type ($g_1$--$g_8$) -- reproduce all 12 Standard Model gauge boson states exactly.
 
 5. **Natural placement of the graviton**: With three non-spatial axes, the $n = 2$ (spin-2 boson) naturally corresponds to the graviton as the $tR$ type. Additionally, $tQ$-type and $RQ$-type spin-2 bosons are newly predicted.
 
-6. **Areal origin of mass**: The signed area of faces containing the $R$ axis determines mass, and the discreteness $R = n^2$ provides a frequency structure for mass.
+6. **Areal origin of mass**: The signed area of faces containing the $R$ axis determines mass. The $R$ axis is the sole unbounded degree of freedom among the six axes, providing a continuous range for mass.
 
 7. **Coupling strength**: The number of $Q$ channels qualitatively explains the hierarchy of coupling strengths. Coupling constants originate from the state count of the orientation structure, not as free parameters.
 
-8. **Reproduction of all 62 Standard Model states**: A complete correspondence has been given for 14 boson states ($H + W^\pm + \gamma + Z + g \times 8 + G$) and 48 fermion states (12 leptons + 36 quarks).
+8. **Reproduction of 62 SM + gravity states**: A correspondence has been given for 14 boson states ($H + W^\pm + \gamma + Z + g \times 8 + G$) and 48 fermion states (12 leptons + 36 quarks). Of these, 61 states correspond to the Standard Model and the graviton state corresponds to quantum gravity.
 
-The structure in which six coordinate axes divide into four qualitatively distinct types — **position** (3 spatial axes), **direction** (1 temporal axis), **scale** (1 curvature axis), and **label** (1 color axis) — suggests that many of the free parameters of the Standard Model are geometric consequences.
+The structure in which six coordinate axes divide into four qualitatively distinct types -- **position** (3 spatial axes), **direction** (1 temporal axis), **scale** (1 curvature axis), and **label** (1 color axis) -- suggests that many of the free parameters of the Standard Model are geometric consequences.
 
 ---
 
@@ -407,10 +407,12 @@ The structure in which six coordinate axes divide into four qualitatively distin
 
 [3] Furey, C. "Standard Model Physics from an Algebra?" arXiv: 1611.09182 (2016).
 
-[4] Kaluza, Th. "Zum Unitätsproblem der Physik." *Sitzungsber. Preuss. Akad. Wiss. Berlin* 966-972 (1921).
+[4] Kaluza, Th. "Zum Unitatsproblem der Physik." *Sitzungsber. Preuss. Akad. Wiss. Berlin* 966-972 (1921).
 
 [5] Coxeter, H.S.M. *Regular Polytopes.* Dover (1973).
 
 [6] Kihara, N. "Geometric Classification of Spin Derived from the Orientation Structure of the 5-Dimensional Orthoplex." DOI: [10.5281/zenodo.19630972](https://doi.org/10.5281/zenodo.19630972) (2026).
 
 [7] Kihara, N. "Bivectorial Classification of Spin Derived from the Orientation Structure of the 5-Dimensional Hypercube." DOI: [10.5281/zenodo.19643358](https://doi.org/10.5281/zenodo.19643358) (2026).
+
+[W5] Kihara, N. "Complete Spherical Coverage of Central Projection in Discrete Space and the Number-Theoretic Necessity of the 5-Dimensional Background Space." DOI: [10.5281/zenodo.19624957](https://doi.org/10.5281/zenodo.19624957) (2026).

@@ -1,7 +1,7 @@
 \documentclass[a4paper,11pt]{ltjsarticle}
 \usepackage{luatexja}
 \usepackage{amsmath,amssymb,amsthm}
-\usepackage{longtable,booktabs}
+\usepackage{longtable,booktabs,array,calc}
 \usepackage{hyperref}
 \usepackage[margin=25mm]{geometry}
 
@@ -123,11 +123,16 @@
   \textbf{時間軸}（\(x_4 = t\)）：時間に相当する軸。符号反転 \(\pm 1\)
   が可能。値域は有限（2値）。
 \item
-  \textbf{曲率軸}（\(x_5 = R\)）：空間の曲率半径に相当する軸。\(R = \pm n^2\)（\(n \in \mathbb{N}\)）の離散値を取る。値域は\textbf{無限}。
-\item
-  \textbf{色軸}（\(x_6 = Q\)）：内部自由度に相当する軸。離散ラベル
-  \(Q \in \{0, r, g, b\}\) の4値を取る。
+  \textbf{スケール軸}（\(x_5 = R\)）：空間の曲率半径に相当する軸。値域は非有界であり、6軸の中で唯一、上限のない自由度を持つ。
 \end{itemize}
+
+\textbf{注記.} 先行研究 {[}W5{]}
+において、離散空間での中心投影の整数論的条件から
+\(R = \pm n^2 \cdot L_0\)（\(n \in \mathbb{N}\), \(L_0\)
+は単位長）の離散化が導かれている。ただし本稿の結果はこの離散化を必要とせず、\(R\)
+が連続値を取る場合にも全て成立する。 -
+\textbf{色軸}（\(x_6 = Q\)）：内部自由度に相当する軸。離散ラベル
+\(Q \in \{0, r, g, b\}\) の4値を取る。
 
 \subsubsection{2.2
 4種の質的差異}\label{ux7a2eux306eux8ceaux7684ux5deeux7570}
@@ -144,7 +149,7 @@
 \endlastfoot
 位置 & \(x, y, z\) & 連続 & 「どこにあるか」 & \(S_3\) 束縛 \\
 向き & \(t\) & \(\pm 1\) & 「どちら向きか」 & 2値 \\
-スケール & \(R\) & \(\pm n^2\) & 「どれだけ大きいか」 & \textbf{無限} \\
+スケール & \(R\) & 非有界 & 「どれだけ大きいか」 & \textbf{無限} \\
 ラベル & \(Q\) & \(0, r, g, b\) & 「何の種類か」 & 4値 \\
 \end{longtable}
 }
@@ -277,6 +282,24 @@ kind）である。この性質から以下が直ちに帰結する。
 \((x, y, z, t, R)\) に対して、\(Q\)
 の値が4通り存在することにより、各世代のフェルミオンはレプトン1種とクォーク3色に分岐する。
 
+\textbf{注記（電荷と色荷の自由度について）.}
+標準模型において電荷と色荷は直交する独立な量子数である。本稿の枠組みでは、色荷は
+\(Q\) 軸の値（\(0\) vs
+\(\{r, g, b\}\)）で与えられ、電荷の符号は空間軸の配向符号によって区別される（§8
+の表 A 参照：各世代で空間符号 \(+\) と \(-\)
+が荷電粒子と中性粒子を分ける）。さらに、クォークの分数電荷（\(\pm 1/3, \pm 2/3\)）の分母
+3 は、\(Q\)
+軸の非ゼロ値の数（\(|\{r, g, b\}| = 3\)）と一致する。すなわち、レプトン（\(Q = 0\),
+色なし）は電荷単位 1 を持ち、クォーク（\(Q \neq 0\), 3色）は電荷単位
+\(1/3\) を持つ。電荷の完全な導出（特に \(+2/3\) と \(-1/3\)
+の非対称性）は今後の課題である（§9 参照）。
+
+なお、電荷を独立な第7軸として追加する設計も検討したが、非空間軸が4本に増えると
+\(n = 2\)（スピン2）の型が \(C(4, 2) = 6\) 種に増加し、スピン \(3/2\)
+フェルミオンも4族に拡大するため、超対称性理論と類似の粒子スペクトルを生むことになる。現在の実験的状況（超対称性粒子の未発見）を踏まえ、本稿では電荷を
+\(Q\)
+軸の構造と空間軸の符号から読み取る方針を採る。この設計により、将来超対称性粒子が発見された場合にも、第7軸の追加によって自然に拡張可能である。
+
 \subsubsection{4.2
 グルーオン8状態の導出}\label{ux30b0ux30ebux30fcux30aaux30f38ux72b6ux614bux306eux5c0eux51fa}
 
@@ -357,6 +380,13 @@ SM対応
 \(e_4 \wedge e_5\)（\(t \wedge R\)）の\textbf{1通り}のみであった。6次元（非空間軸3本：\(t, R, Q\)）では、\(n = 2\)
 は以下の\textbf{3通り}に増加する。
 
+\textbf{注記（\(Q\) 軸の双ベクトルへの参加について）.} \(Q\)
+軸はラベル軸であり、超直方体の幾何学的な面（§6.3
+の80面）には参加しない。しかし、スピンを決定する双ベクトルの分類においては、\(Q\)
+は非空間軸の1本として型の数え上げに参加する。すなわち、\(e_t \wedge e_Q\)
+や \(e_R \wedge e_Q\) は幾何学的な2-face
+ではなく、非空間軸の組合せとして定義される\textbf{抽象的な双ベクトル型}である。
+
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}ccc@{}}
 \toprule\noalign{}
@@ -366,10 +396,17 @@ SM対応
 \bottomrule\noalign{}
 \endlastfoot
 \(e_t \wedge e_R\) & \(t, R\) & \(\mathrm{diag}(+,+,+,-,-,Q)\) \\
-\(e_t \wedge e_Q\) & \(t, Q\) & \(\mathrm{diag}(+,+,+,-,R,-)\) \\
-\(e_R \wedge e_Q\) & \(R, Q\) & \(\mathrm{diag}(+,+,+,t,-,-)\) \\
+\(e_t \wedge e_Q\) & \(t, Q\) & \(\mathrm{diag}(+,+,+,-,R,\bar{Q})\) \\
+\(e_R \wedge e_Q\) & \(R, Q\) & \(\mathrm{diag}(+,+,+,t,-,\bar{Q})\) \\
 \end{longtable}
 }
+
+\textbf{注記（\(C\) 行列の \(Q\) 成分の記法）.} \(C\)
+行列において、\(Q\) 成分が保存される場合は \(Q\) と記す。\(Q\)
+成分が「反転」される場合は \(\bar{Q}\)
+と記し、これは色ラベルの反色置換（\(r \leftrightarrow \bar{r}\),
+\(g \leftrightarrow \bar{g}\), \(b \leftrightarrow \bar{b}\),
+\(0 \leftrightarrow 0\)）を意味する。
 
 \textbf{命題 5.1.}
 6次元の枠組みにおいて、スピン2のボソンは3つの型を持つ。
@@ -405,8 +442,7 @@ SM対応
 \subsubsection{6.1
 R軸の特殊性：唯一の無限自由度}\label{rux8ef8ux306eux7279ux6b8aux6027ux552fux4e00ux306eux7121ux9650ux81eaux7531ux5ea6}
 
-\(R = \pm n^2\)（\(n \in \mathbb{N}\)）は上限のない離散値を取る。\(R\)
-軸は6本の軸の中で唯一、値域が非有界である。
+\(R\) 軸は6本の軸の中で唯一、値域が非有界である。
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}cc@{}}
@@ -425,9 +461,9 @@ R軸の特殊性：唯一の無限自由度}\label{rux8ef8ux306eux7279ux6b8aux60
 
 \subsubsection{6.2 質量と面積}\label{ux8ceaux91cfux3068ux9762ux7a4d}
 
-\(R = n^2\) の構造により、\(R\) 軸の次元は
-\(L^2\)（面積）に相当する。5次元超直方体の80個の正方形面のうち、\(R\)
-軸を含む面の面積は \(n^2\) に比例する。
+\(R\) 軸は曲率半径に相当し、次元 \(L\)（長さ）を持つ。\(R\)
+軸を含む正方形面の面積は \(R\) の値に比例するため、質量は \(R\)
+軸を含む面の面積構造によって決定される。
 
 \textbf{定義 6.1.} 配向構造 \(\sigma\) の\textbf{符号付き面積}
 \(M(\sigma)\) を、\(R\)
@@ -449,8 +485,8 @@ R軸を含む面の分類}\label{rux8ef8ux3092ux542bux3080ux9762ux306eux5206ux98
 \bottomrule\noalign{}
 \endlastfoot
 空間-\(R\) & \(e_i \wedge e_5\) & 3 & \(3 \times 8 = 24\) &
-\(L \cdot n^2\) \\
-\(t\)-\(R\) & \(e_4 \wedge e_5\) & 1 & \(8\) & \(T \cdot n^2\) \\
+\(L \cdot R\) \\
+\(t\)-\(R\) & \(e_4 \wedge e_5\) & 1 & \(8\) & \(T \cdot R\) \\
 \textbf{合計} & & \textbf{4} & \textbf{32} & \\
 \end{longtable}
 }
@@ -465,24 +501,6 @@ R軸を含む面の分類}\label{rux8ef8ux3092ux542bux3080ux9762ux306eux5206ux98
 
 光子やグルーオンの質量がゼロであることは、対応する配向の符号付き面積が消失する帰結として説明される。
 
-\subsubsection{6.5
-質量と周波数}\label{ux8ceaux91cfux3068ux5468ux6ce2ux6570}
-
-\(R\) は空間の曲率半径であり、空間の広がり（波長
-\(\lambda\)）に関係する。波長と周波数は \(\lambda \nu = c\)
-で結ばれ、質量-エネルギー等価 \(E = mc^2\) と量子力学的関係 \(E = h\nu\)
-から、
-
-\[m = \frac{h\nu}{c^2}\]
-
-\textbf{命題 6.2.} 同一の配向構造 \((x, y, z, t, Q)\)
-に対して、\(R = n^2\)
-の異なる値は異なる質量状態を与える。これは弦の基音と倍音に相当し、\(n\)
-の異なる値は同一量子数（スピン、色荷、世代）を持つ粒子の質量スペクトルを形成する。
-
-\textbf{命題 6.3.}
-実験的に測定される粒子の質量は、各配向構造における最も安定な振動モード（基本周波数）の代表値である。加速器実験で観測される「共鳴」は、同一配向構造の高次振動モード（倍音）に対応する可能性がある。
-
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{7.
@@ -491,39 +509,49 @@ R軸を含む面の分類}\label{rux8ef8ux3092ux542bux3080ux9762ux306eux5206ux98
 \subsubsection{7.1
 チャンネル数と結合定数}\label{ux30c1ux30e3ux30f3ux30cdux30ebux6570ux3068ux7d50ux5408ux5b9aux6570}
 
-\textbf{命題 7.1.} 力の結合強度は、相互作用に利用可能な \(Q\)
-チャンネル数に比例する。
+\textbf{命題 7.1（定性的示唆）.}
+力の結合強度は、相互作用に関与する軸の種類とチャンネル数に定性的に関係する可能性がある。
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}cccc@{}}
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1143}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2571}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3143}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3143}}@{}}
 \toprule\noalign{}
-力 & 媒介粒子 & \(Q\) チャンネル & 結合の相対強度 \\
+\begin{minipage}[b]{\linewidth}\centering
+力
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+媒介粒子
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+関与する軸
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+結合の特徴
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-強い力 & \(g_1\)--\(g_8\) & 8（\(3 \times 3 - 1\)） & 最強 \\
-電磁力 & \(\gamma\) & 荷電粒子（\(Q \neq 0\)）と結合 & 中間 \\
-弱い力 & \(W^\pm, Z^0\) & \(t\) 軸反転のみ & 弱い \\
-重力 & \(G\) & \(Q\) 非依存（\(n = 2\)） & 最弱 \\
+強い力 & \(g_1\)--\(g_8\) & \(Q\) 軸（色遷移 8 チャンネル） &
+色荷を持つ粒子間のみ \\
+電磁力 & \(\gamma\) & \(R\) 軸 & 非ゼロ電荷を持つ粒子間（§4
+注記参照） \\
+弱い力 & \(W^\pm, Z^0\) & \(t\) 軸 & 全フェルミオン \\
+重力 & \(G\) & \(t \wedge R\)（\(n = 2\)） & 全粒子（\(Q\) 非依存） \\
 \end{longtable}
 }
 
-\emph{根拠.}
-チャンネル数が多いほど、散乱過程における遷移確率の総和が大きくなり、したがって有効結合定数が大きくなる。強い力は
-\(Q\) ラベル間の遷移（8チャンネル）を利用するため、\(Q\)
-に依存しない重力（\(n = 2\)、時空構造のみ）より格段に強い。
-
-\textbf{注記.} 標準模型において結合定数
-\(\alpha_s \approx 1, \alpha \approx 1/137, \alpha_W \approx 10^{-6}, \alpha_G \approx 10^{-39}\)
-の階層は、チャンネル数の差異だけでは定量的に説明できない。チャンネル数は階層の定性的起源を与えるが、正確な値の導出は今後の課題である。
+\textbf{注記.} 標準模型における結合定数はエネルギースケール \(M_Z\)
+付近で \(\alpha_s \approx 0.1\), \(\alpha \approx 1/137\),
+\(\alpha_W \approx 1/30\), \(\alpha_G \approx 10^{-39}\)
+であり、強い力・電磁力・弱い力は同程度のオーダーにある。重力のみが極端に弱い。この階層構造の定量的導出は今後の課題である。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{8.
 標準模型粒子との完全対応表}\label{ux6a19ux6e96ux6a21ux578bux7c92ux5b50ux3068ux306eux5b8cux5168ux5bfeux5fdcux8868}
 
-\subsubsection{表A：確認済み粒子 ↔
+\subsubsection{表A：確認済み粒子 $\leftrightarrow$
 6次元配向}\label{ux8868aux78baux8a8dux6e08ux307fux7c92ux5b50-6ux6b21ux5143ux914dux5411}
 
 \paragraph{ボソン}\label{ux30dcux30bdux30f3}
@@ -636,9 +664,14 @@ Z ボソン & \(Z^0\) & 1 & \((0,0,0,0,-,0)\) & 1 & 91,188 & \(R\) 型,
 反レプトン & 1/2 & 0 & 6 & 6 & 6 \\
 クォーク & 1/2 & r,g,b & 6 & 18 & 18 \\
 反クォーク & 1/2 & \(\bar{r},\bar{g},\bar{b}\) & 6 & 18 & 18 \\
-\textbf{合計} & & & & \textbf{62} & \textbf{62} \\
+\textbf{合計} & & & & \textbf{62} & \textbf{61 + \(G\)} \\
 \end{longtable}
 }
+
+\textbf{注記.}
+標準模型は61状態（グラビトンを含まない）から成る。グラビトン \(G\)
+は標準模型の要素ではなく、量子重力の仮説的粒子である。本稿の62状態は、標準模型61状態にグラビトン1状態を加えた「SM
++ 重力」の統一的分類を与える。
 
 \subsubsection{表B：未発見粒子の予言}\label{ux8868bux672aux767aux898bux7c92ux5b50ux306eux4e88ux8a00}
 
@@ -802,14 +835,14 @@ CKM行列とPMNS行列}\label{ckmux884cux5217ux3068pmnsux884cux5217}
   型のスピン2ボソンを新たに予言する。
 \item
   \textbf{質量の面積的起源}: \(R\)
-  軸を含む面の符号付き面積が質量を決定し、\(R = n^2\)
-  の離散性が質量の周波数構造を与える。
+  軸を含む面の符号付き面積が質量を決定する。\(R\)
+  軸は6軸中唯一の非有界自由度であり、質量の連続的な値域を与える。
 \item
   \textbf{力の結合強度}: \(Q\)
   チャンネル数が力の結合強度の階層を定性的に説明する。結合定数は自由パラメータではなく、配向構造の状態数に起因する。
 \item
-  \textbf{標準模型の全62状態を再現}:
-  ボソン14状態（\(H + W^\pm + \gamma + Z + g \times 8 + G\)）とフェルミオン48状態（レプトン12＋クォーク36）の完全な対応を与えた。
+  \textbf{標準模型+重力の62状態を再現}:
+  ボソン14状態（\(H + W^\pm + \gamma + Z + g \times 8 + G\)）とフェルミオン48状態（レプトン12＋クォーク36）の対応を与えた。うち61状態は標準模型に、グラビトン1状態は量子重力に対応する。
 \end{enumerate}
 
 6本の座標軸が4つの質的に異なる種類------\textbf{位置}（空間3軸）、\textbf{向き}（時間1軸）、\textbf{スケール}（曲率1軸）、\textbf{ラベル}（色1軸）------に分かれるという構造は、標準模型の自由パラメータの多くが幾何学的帰結であることを示唆している。
@@ -840,6 +873,12 @@ Orientation Structure of the 5-Dimensional Orthoplex.'' DOI:
 {[}7{]} Kihara, N. ``Bivectorial Classification of Spin Derived from the
 Orientation Structure of the 5-Dimensional Hypercube.'' DOI:
 \href{https://doi.org/10.5281/zenodo.19643358}{10.5281/zenodo.19643358}
+(2026).
+
+{[}W5{]} Kihara, N. ``Complete Spherical Coverage of Central Projection
+in Discrete Space and the Number-Theoretic Necessity of the
+5-Dimensional Background Space.'' DOI:
+\href{https://doi.org/10.5281/zenodo.19624957}{10.5281/zenodo.19624957}
 (2026).
 
 \end{document}
