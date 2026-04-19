@@ -698,7 +698,7 @@ $$E_1 + E_2 = E_1' + E_2' \qquad \square \tag{W15}$$
 
 ### 11.6 Characteristics of Amplitude and Phase Changes by Collision Phase
 
-From the elastic collision formulas (W9)–(W10) and the post-collision amplitude/phase determination formulas (W19)(W14), the following characteristics emerge depending on the collision-instant phase $\phi_i$.
+From the elastic collision formulas (W9)–(W10) and the post-collision amplitude/phase determination formulas (W13)(W14), the following characteristics emerge depending on the collision-instant phase $\phi_i$.
 
 | Collision phase | Position $x_{i,c}$ | Velocity $|v_i|$ | Energy partition | Collision effect |
 |:--|:--|:--|:--|:--|
