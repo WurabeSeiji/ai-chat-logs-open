@@ -59,11 +59,12 @@ Assumption A (physical classification of five axes) from the preceding works [6,
 
 **Assumption B (Physical classification of six axes).** The six axes are classified as follows:
 
-- **Spatial axes** ($x_1, x_2, x_3$): Three axes corresponding to 3-dimensional space directly perceivable by the observer. Sign reversal is not permitted. The three axes are mutually symmetric under the permutation group $S_3$.
+- **Spatial axes** ($x_1, x_2, x_3$): Three axes corresponding to 3-dimensional space directly perceivable by the observer. Coordinate values may take $\pm 1$, but these axes are not subject to sign reversal (parity operation) via bivectors. The three axes are mutually symmetric under the permutation group $S_3$.
 - **Temporal axis** ($x_4 = t$): The axis corresponding to time. Sign reversal $\pm 1$ is possible. The range is finite (2 values).
 - **Scale axis** ($x_5 = R$): The axis corresponding to the curvature radius of space. The range is unbounded, making it the only axis among the six with an unlimited degree of freedom.
 
 **Remark.** In the preceding work [W5], the number-theoretic conditions of central projection in discrete space lead to the discretization $R = \pm n^2 \cdot L_0$ ($n \in \mathbb{N}$, $L_0$ is a unit length). However, all results in this paper hold without this discretization and remain valid when $R$ takes continuous values.
+
 - **Color axis** ($x_6 = Q$): The axis corresponding to internal degrees of freedom. Takes discrete label values $Q \in \{0, r, g, b\}$ (4 values).
 
 ### 2.2 Four Qualitative Differences
@@ -373,6 +374,10 @@ The Higgs boson corresponds to $n = 0$ (spatial axes only), but how spontaneous 
 
 If $tQ$-type and $RQ$-type spin-2 bosons (other than the graviton) exist, their experimental consequences must be clarified.
 
+### 9.6 Geometric Derivation of Electric Charge Values
+
+This paper adopted the approach of reading the sign of electric charge from the orientation signs of spatial axes, and the unit of the charge magnitude (1 vs $1/3$) from the $Q$-axis sector ($Q = 0$ vs $Q \neq 0$) (see Section 4.1 remark). However, the specific charge assignment rules of Table A — namely, that for the same spatial orientation pattern, $Q = 0$ (lepton) yields charge $-1$ while $Q \neq 0$ (quark) yields charge $+2/3$, and for another spatial orientation pattern, $Q = 0$ yields charge $0$ while $Q \neq 0$ yields charge $-1/3$ — have not been derived from a deeper geometric principle. In particular, the asymmetry between $+2/3$ and $-1/3$ is the most prominent open problem of this paper.
+
 ---
 
 ## 10. Conclusion
@@ -389,9 +394,9 @@ From the 6-dimensional framework obtained by adding a sixth axis ($Q$ axis: 4-va
 
 5. **Natural placement of the graviton**: With three non-spatial axes, the $n = 2$ (spin-2 boson) naturally corresponds to the graviton as the $tR$ type. Additionally, $tQ$-type and $RQ$-type spin-2 bosons are newly predicted.
 
-6. **Areal origin of mass**: The signed area of faces containing the $R$ axis determines mass. The $R$ axis is the sole unbounded degree of freedom among the six axes, providing a continuous range for mass.
+6. **Areal origin of mass**: The signed area of faces containing the $R$ axis determines mass. The $R$ axis is the sole unbounded degree of freedom among the six axes, providing an unbounded range for mass.
 
-7. **Coupling strength**: The number of $Q$ channels qualitatively explains the hierarchy of coupling strengths. Coupling constants originate from the state count of the orientation structure, not as free parameters.
+7. **Qualitative classification of forces**: A qualitative classification has been given in which different types of axes are involved in different forces (strong ↔ $Q$ axis, electromagnetic ↔ $R$ axis orientation, weak ↔ $t$ axis, gravity ↔ $t \wedge R$). Quantitative derivation of the coupling constant hierarchy remains a task for future work.
 
 8. **Reproduction of 62 SM + gravity states**: A correspondence has been given for 14 boson states ($H + W^\pm + \gamma + Z + g \times 8 + G$) and 48 fermion states (12 leptons + 36 quarks). Of these, 61 states correspond to the Standard Model and the graviton state corresponds to quantum gravity.
 
