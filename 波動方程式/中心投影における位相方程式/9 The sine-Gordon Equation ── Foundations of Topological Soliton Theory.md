@@ -628,35 +628,33 @@ $$x(t) = A\cos(\omega t + \phi_0) \tag{W2}$$
 
 where $A$ is the amplitude and $\phi_0$ is the initial phase.
 
-### 11.2 Two-Body Configuration
+### 11.2 Two-Body Configuration and Definition of Collision
 
-Two spring-mass systems with different masses $M_1, M_2$ are arranged sharing a collision surface.
-
-$$\text{Wall}—[k]—M_1—[k]—|\;\text{collision surface}\;|—[k]—M_2—[k]—\text{Wall}$$
-
-Each system oscillates independently.
+We consider two independent simple harmonic oscillators with different masses $M_1, M_2$.
 
 $$\ddot{x}_1 + \omega_1^2 x_1 = 0, \qquad \omega_1 = \sqrt{\frac{2k}{M_1}} \tag{W3}$$
 
 $$\ddot{x}_2 + \omega_2^2 x_2 = 0, \qquad \omega_2 = \sqrt{\frac{2k}{M_2}} \tag{W4}$$
 
-When $M_1 \neq M_2$, $\omega_1 \neq \omega_2$, and the two systems have different natural frequencies. The difference in specific gravity of the perfect fluid corresponds to this mass difference $M_1 \neq M_2$.
+When $M_1 \neq M_2$, $\omega_1 \neq \omega_2$, and the two systems oscillate independently. The difference in specific gravity of the perfect fluid corresponds to this mass difference $M_1 \neq M_2$.
+
+**Definition of collision.** In this paper, a "collision" is defined as a mathematical process in which the states $(x_1, \dot{x}_1)$ and $(x_2, \dot{x}_2)$ of the two systems interact via momentum conservation and energy conservation at a given time $t = t_c$, instantaneously transitioning to new states $(x_1, \dot{x}_1')$ and $(x_2, \dot{x}_2')$. Positions $x_i$ do not change due to the collision; only velocities $v_i = \dot{x}_i$ change according to (W7)–(W8).
+
+**Remark.** In this model, a collision is not a geometric description of physical contact but an abstraction: an "instantaneous state transition in which the states of two oscillatory systems are coupled via conservation laws." It replaces the role of the physical contact surface in longitudinal wave collisions in a perfect fluid with a state transformation via conservation laws. The collision time $t_c$ is an input parameter given externally and is not determined from within the model. This allows collisions at arbitrary phases $\phi_1, \phi_2$ to be treated in a unified manner.
 
 ### 11.3 Perfectly Elastic Collision at Arbitrary Phases
 
-When the two point masses come into contact at the collision surface at time $t_c$, the state of each mass is determined by the collision-time phase $\phi_1, \phi_2$.
-
-**Pre-collision state:**
+**Pre-collision state:** The state of each system at time $t_c$ is expressed as follows.
 
 $$x_{1,c} = A_1\cos\phi_1, \qquad v_1 = -A_1\omega_1\sin\phi_1 \tag{W5}$$
 
-$$x_{2,c} = A_2\cos\phi_2, \qquad v_2 = +A_2\omega_2\sin\phi_2 \tag{W6}$$
+$$x_{2,c} = A_2\cos\phi_2, \qquad v_2 = -A_2\omega_2\sin\phi_2 \tag{W6}$$
 
-Here $v_1$ is positive in the rightward direction (toward the collision surface), and $v_2$ is positive in the leftward direction (toward the collision surface).
+Here $\phi_i = \omega_i t_c + \phi_{0,i}$ is the phase of each system at the collision instant, and $A_i$ is the amplitude. The sign of the velocity follows from the natural differentiation of (W3)(W4).
 
 **Conditions for perfectly elastic collision (momentum conservation + energy conservation):**
 
-$$M_1 v_1 + M_2(-v_2) = M_1 v_1' + M_2(-v_2') \tag{W7}$$
+$$M_1 v_1 + M_2 v_2 = M_1 v_1' + M_2 v_2' \tag{W7}$$
 
 $$\frac{1}{2}M_1 v_1^2 + \frac{1}{2}M_2 v_2^2 = \frac{1}{2}M_1 v_1'^2 + \frac{1}{2}M_2 v_2'^2 \tag{W8}$$
 
@@ -698,14 +696,17 @@ Since the collision is instantaneous, the potential energy $k\,x_{i,c}^2$ is unc
 
 $$E_1 + E_2 = E_1' + E_2' \qquad \square \tag{W15}$$
 
-### 11.6 Special Cases
+### 11.6 Characteristics of Amplitude and Phase Changes by Collision Phase
 
-| Collision phase | Position | Velocity | Effect |
-|:--|:--|:--|:--|
-| $\phi_i = 90°$ (passing through center) | $x_{i,c} = 0$ | Maximum $v_i = A_i\omega_i$ | Maximum velocity redistribution, amplitude change only |
-| $\phi_i = 0°$ (endpoint) | Maximum $x_{i,c} = A_i$ | $v_i = 0$ | No collision effect (zero velocity) |
-| $\phi_i = 45°$ | $x_{i,c} = A_i/\sqrt{2}$ | $v_i = A_i\omega_i/\sqrt{2}$ | Energy equally distributed between position and velocity |
-| Arbitrary $\phi_1 \neq \phi_2$ | Asymmetric | Asymmetric | General redistribution of velocity, amplitude, and phase |
+From the elastic collision formulas (W9)–(W10) and the post-collision amplitude/phase determination formulas (W19)(W14), the following characteristics emerge depending on the collision-instant phase $\phi_i$.
+
+| Collision phase | Position $x_{i,c}$ | Velocity $|v_i|$ | Energy partition | Collision effect |
+|:--|:--|:--|:--|:--|
+| $\phi_i = \pi/2$ | $0$ | $A_i\omega_i$ (maximum) | All kinetic energy | Velocity is fully redistributed; only amplitude $A_i$ changes |
+| $\phi_i = 0$ | $A_i$ (maximum) | $0$ | All potential energy | No velocity exchange occurs; state is unchanged before and after |
+| $\phi_i = \pi/4$ | $A_i/\sqrt{2}$ | $A_i\omega_i/\sqrt{2}$ | Equally partitioned | Partial velocity redistribution and phase shift occur |
+
+**Remark.** The "unchanged state" at $\phi_i = 0$ arises because the right-hand sides of (W9)(W10) are determined solely by $v_i$, and $v_i = 0$ yields $v_i' = 0$ as the solution. This does not mean that no collision occurs, but rather that the states with zero velocity, upon being coupled via conservation laws, remain invariant. In the general case $\phi_1 \neq \phi_2$, a nontrivial state transformation necessarily occurs as long as both velocities are not simultaneously zero.
 
 ### 11.7 Comparison with the sine-Gordon Theory
 
@@ -732,9 +733,9 @@ The physical correspondences of the parameters in this model are shown below.
 | Amplitude $A_i$ | Wave amplitude (magnitude of energy) |
 | Phase $\phi_i$ | Wave phase |
 | Angular frequency $\omega_i = \sqrt{2k/M_i}$ | Natural frequency (depends on specific gravity) |
-| Collision surface | Interaction surface of the waves |
+| Collision (state transition) | Instantaneous interaction of waves via conservation laws |
 
-The process in which longitudinal waves in a perfect fluid undergo perfectly elastic collision at the collision surface is completely described by (W1)–(W15). The only assumptions are the two conservation laws of momentum and energy; no additional assumptions of topological constraints, integrability, compactness of space, or integer winding numbers are required.
+The process in which longitudinal waves in a perfect fluid undergo perfectly elastic collision is completely described by (W1)–(W15). The only assumptions are the two conservation laws of momentum and energy; no additional assumptions of topological constraints, integrability, compactness of space, or integer winding numbers are required.
 
 ### 11.9 Equivalence with the Rectangular-Wave Limit
 

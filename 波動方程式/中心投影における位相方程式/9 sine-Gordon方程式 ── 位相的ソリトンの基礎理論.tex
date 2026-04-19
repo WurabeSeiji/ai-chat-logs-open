@@ -1212,42 +1212,49 @@ sine-Gordon方程式のソリトン解が持つ以下の構造的性質は、矩
 
 であり、\(A\) は振幅、\(\phi_0\) は初期位相である。
 
-\subsubsection{11.2 2体系の配置}\label{ux4f53ux7cfbux306eux914dux7f6e}
+\subsubsection{11.2
+2体系の配置と衝突の定義}\label{ux4f53ux7cfbux306eux914dux7f6eux3068ux885dux7a81ux306eux5b9aux7fa9}
 
-異なる質量 \(M_1, M_2\)
-を持つ2つのバネ-質点系を、衝突面を共有して配置する。
-
-\[\text{壁}—[k]—M_1—[k]—|\;\text{衝突面}\;|—[k]—M_2—[k]—\text{壁}\]
-
-各系は独立に単振動する。
+異なる質量 \(M_1, M_2\) を持つ2つの独立な単振動系を考える。
 
 \[\ddot{x}_1 + \omega_1^2 x_1 = 0, \qquad \omega_1 = \sqrt{\frac{2k}{M_1}} \tag{W3}\]
 
 \[\ddot{x}_2 + \omega_2^2 x_2 = 0, \qquad \omega_2 = \sqrt{\frac{2k}{M_2}} \tag{W4}\]
 
 \(M_1 \neq M_2\) のとき \(\omega_1 \neq \omega_2\)
-であり、2つの系は異なる固有振動数を持つ。完全流体の比重差は、この質量差
+であり、2つの系は独立に振動する。完全流体の比重差は、この質量差
 \(M_1 \neq M_2\) に対応する。
+
+\textbf{衝突の定義.} 本稿における「衝突」とは、両系の状態
+\((x_1, \dot{x}_1)\) と \((x_2, \dot{x}_2)\) が、ある時刻 \(t = t_c\)
+において運動量保存則とエネルギー保存則を介して相互作用し、瞬間的に新しい状態
+\((x_1, \dot{x}_1')\) と \((x_2, \dot{x}_2')\)
+に遷移する数学的過程として定義する。位置 \(x_i\)
+は衝突によって変化せず、速度 \(v_i = \dot{x}_i\) のみが (W7)--(W8)
+に従って変化する。
+
+\textbf{注記.}
+本モデルにおいて、衝突は物理的接触の幾何学的記述ではなく、「2つの振動系の状態が保存則を介して結合する瞬間的な状態変換」として抽象化されている。完全流体中の縦波の衝突における物理的接触面の役割を、保存則による状態変換に置き換えたものである。衝突の発生時刻
+\(t_c\)
+は外部から与えられる入力パラメータであり、本モデルの内部からは決定されない。これにより、任意の位相
+\(\phi_1, \phi_2\) における衝突を統一的に扱うことができる。
 
 \subsubsection{11.3
 任意位相での完全弾性衝突}\label{ux4efbux610fux4f4dux76f8ux3067ux306eux5b8cux5168ux5f3eux6027ux885dux7a81}
 
-時刻 \(t_c\)
-に衝突面で2つの質点が接触するとき、各質点の状態は衝突時の位相
-\(\phi_1, \phi_2\) で決定される。
-
-\textbf{衝突直前の状態：}
+\textbf{衝突直前の状態：} 時刻 \(t_c\) における各系の状態を以下で表す。
 
 \[x_{1,c} = A_1\cos\phi_1, \qquad v_1 = -A_1\omega_1\sin\phi_1 \tag{W5}\]
 
-\[x_{2,c} = A_2\cos\phi_2, \qquad v_2 = +A_2\omega_2\sin\phi_2 \tag{W6}\]
+\[x_{2,c} = A_2\cos\phi_2, \qquad v_2 = -A_2\omega_2\sin\phi_2 \tag{W6}\]
 
-ここで \(v_1\) は右向き（衝突面に向かう方向）を正、\(v_2\)
-は左向き（衝突面に向かう方向）を正とする。
+ここで \(\phi_i = \omega_i t_c + \phi_{0,i}\)
+は衝突瞬間における各系の位相、\(A_i\) は振幅である。速度の符号は
+(W3)(W4) の自然な微分から定まる。
 
 \textbf{完全弾性衝突の条件（運動量保存 + エネルギー保存）：}
 
-\[M_1 v_1 + M_2(-v_2) = M_1 v_1' + M_2(-v_2') \tag{W7}\]
+\[M_1 v_1 + M_2 v_2 = M_1 v_1' + M_2 v_2' \tag{W7}\]
 
 \[\frac{1}{2}M_1 v_1^2 + \frac{1}{2}M_2 v_2^2 = \frac{1}{2}M_1 v_1'^2 + \frac{1}{2}M_2 v_2'^2 \tag{W8}\]
 
@@ -1301,38 +1308,52 @@ sine-Gordon方程式のソリトン解が持つ以下の構造的性質は、矩
 
 \[E_1 + E_2 = E_1' + E_2' \qquad \square \tag{W15}\]
 
-\subsubsection{11.6 特殊ケース}\label{ux7279ux6b8aux30b1ux30fcux30b9}
+\subsubsection{11.6
+衝突位相による振幅・位相変化の特徴}\label{ux885dux7a81ux4f4dux76f8ux306bux3088ux308bux632fux5e45ux4f4dux76f8ux5909ux5316ux306eux7279ux5fb4}
+
+(W9)--(W10) の弾性衝突公式と (W19)(W14)
+による衝突後振幅・位相の決定式から、衝突瞬間の位相 \(\phi_i\)
+に応じて以下の特徴が現れる。
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 衝突位相
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-位置
+位置 \(x_{i,c}\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-速度
+速度 \(|v_i|\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-効果
+エネルギー配分
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+衝突の効果
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\(\phi_i = 90°\)（中央通過） & \(x_{i,c} = 0\) & 最大
-\(v_i = A_i\omega_i\) & 最大の速度再配分、振幅変化のみ \\
-\(\phi_i = 0°\)（端点） & 最大 \(x_{i,c} = A_i\) & \(v_i = 0\) &
-衝突効果なし（速度ゼロ） \\
-\(\phi_i = 45°\) & \(x_{i,c} = A_i/\sqrt{2}\) &
-\(v_i = A_i\omega_i/\sqrt{2}\) & エネルギーが位置と速度に等分配 \\
-任意の \(\phi_1 \neq \phi_2\) & 非対称 & 非対称 &
-一般的な速度・振幅・位相の再配分 \\
+\(\phi_i = \pi/2\) & \(0\) & \(A_i\omega_i\)（最大） &
+すべて運動エネルギー & 速度が完全に再配分され、振幅 \(A_i\)
+のみが変化する \\
+\(\phi_i = 0\) & \(A_i\)（最大） & \(0\) & すべて位置エネルギー &
+速度の交換が発生せず、衝突前後で状態は変化しない \\
+\(\phi_i = \pi/4\) & \(A_i/\sqrt{2}\) & \(A_i\omega_i/\sqrt{2}\) &
+位置と運動が等分配 & 速度の部分的再配分と位相のずれが発生する \\
 \end{longtable}
 }
+
+\textbf{注記.} \(\phi_i = 0\)
+において「状態が変化しない」のは、(W9)(W10) の右辺が \(v_i\)
+のみで定まり、\(v_i = 0\) のとき \(v_i' = 0\)
+が解となるためである。これは衝突が発生しないことを意味するのではなく、速度ゼロの状態同士が保存則を介して結合した結果、状態が不変であったことを意味する。一般的な
+\(\phi_1 \neq \phi_2\)
+の場合、両系の速度が同時にゼロでない限り、必ず非自明な状態変換が発生する。
 
 \subsubsection{11.7
 sine-Gordon理論との比較}\label{sine-gordonux7406ux8ad6ux3068ux306eux6bd4ux8f03}
@@ -1386,11 +1407,11 @@ sine-Gordon（§1--10）
 振幅 \(A_i\) & 波の振幅（エネルギーの大きさ） \\
 位相 \(\phi_i\) & 波の位相 \\
 角振動数 \(\omega_i = \sqrt{2k/M_i}\) & 固有振動数（比重に依存） \\
-衝突面 & 波の相互作用面 \\
+衝突（状態変換） & 保存則を介した波の瞬間的相互作用 \\
 \end{longtable}
 }
 
-完全流体中の縦波が衝突面で完全弾性衝突する過程は、(W1)--(W15)
+完全流体中の縦波が完全弾性衝突する過程は、(W1)--(W15)
 により完全に記述される。仮定は運動量保存とエネルギー保存の2つの保存則のみであり、位相的制約、可積分性、空間のコンパクト性、巻き数の整数性などの追加仮定は一切不要である。
 
 \subsubsection{11.9
