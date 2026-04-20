@@ -18,70 +18,186 @@
 
 \begin{document}
 
-\section{6次元超直方体の配向構造から導かれる標準模型粒子の幾何学的分類}\label{ux6b21ux5143ux8d85ux76f4ux65b9ux4f53ux306eux914dux5411ux69cbux9020ux304bux3089ux5c0eux304bux308cux308bux6a19ux6e96ux6a21ux578bux7c92ux5b50ux306eux5e7eux4f55ux5b66ux7684ux5206ux985e}
+\section{6次元超直方体の集合構造とその組合せ論的性質}\label{ux6b21ux5143ux8d85ux76f4ux65b9ux4f53ux306eux96c6ux5408ux69cbux9020ux3068ux305dux306eux7d44ux5408ux305bux8ad6ux7684ux6027ux8cea}
 
-\subsection{── 色荷・質量・力の強さの離散幾何学的定式化
-──}\label{ux8272ux8377ux8ceaux91cfux529bux306eux5f37ux3055ux306eux96e2ux6563ux5e7eux4f55ux5b66ux7684ux5b9aux5f0fux5316}
+\subsection{------ スピン分類・集合の数え上げ・符号付き面積
+------}\label{ux30b9ux30d4ux30f3ux5206ux985eux96c6ux5408ux306eux6570ux3048ux4e0aux3052ux7b26ux53f7ux4ed8ux304dux9762ux7a4d}
 
-\textbf{著者:} 木原 範昭 (WF System Co., Ltd.)
-
-\textbf{日付:} 2026年4月
-
-\textbf{DOI:}
-\href{https://doi.org/10.5281/zenodo.19646652}{10.5281/zenodo.19646652}
+\textbf{著者}: 木原 範昭 (WF System Co., Ltd.) \textbf{日付}: 2026年4月
+\textbf{DOI}: 10.5281/zenodo.19646652
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{0. 本稿の目的}\label{ux672cux7a3fux306eux76eeux7684}
 
-著者の先行研究 {[}7{]}
-において、5次元超直方体の3-cell配向構造から、スピン量子数
-\(s = 0, \frac{1}{2}, 1, \frac{3}{2}, 2, \frac{5}{2}\)
-の6種が双ベクトルとして導出された。しかし、この5次元の枠組みには以下の限界があった。
+本稿は、5 次元超直方体に離散ラベル軸 \(Q\) を追加した 6
+次元構造を定義し、その集合構造から導かれる組合せ論的性質を述べる。
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \textbf{色荷の不在}: クォークの3色を区別する自由度がない
-\item
-  \textbf{クォーク-レプトン区別の不在}:
-  同一配向がクォークとレプトンの両方に対応する
-\item
-  \textbf{ゲージボソンの不足}:
-  スピン1のボソン配向は4状態のみで、グルーオン8色荷状態に不足する
-\item
-  \textbf{グラビトンの位置づけ}: スピン2のボソンが \(n = 2\)
-  を必要とするが、非空間軸が2本しかないため組み合わせが1通りのみであった
-\end{enumerate}
+本体（§1--§9）では、本モデルの数学的構造と、そこから純粋に組合せ論的に導出される帰結のみを主張する。標準模型との対応は
+§10
+で「解釈の一例」として提示するが、これは本論文の主張ではない。モデルの集合構造が標準模型の粒子分類とどのように対応付けうるかを示す一例に過ぎない。
 
-本稿は、5次元に第6軸を追加した6次元の枠組みを用いて、これらの問題を統一的に解決する。追加される第6軸は、空間・時間・曲率とは質的に異なる\textbf{離散的なラベル軸}であり、色荷に相当する内部自由度を幾何学的に導入する。
-
-本稿の全ての結果は、離散幾何学と整数論の命題として述べられる。
+\textbf{本モデルの外部仮定について}: 本稿は 5
+次元超直方体を出発点とする。なぜ 5 次元であるか、なぜ 5 軸のうち 3
+軸を後に「空間軸」として扱うかは、\textbf{本モデルの外部仮定}であり、モデル内部では正当化されない。観測される時空が
+3 次元空間 + 1
+次元時間であるという経験的事実への対応として、この次元設定を採用している。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{1.
-6次元の基本構造}\label{ux6b21ux5143ux306eux57faux672cux69cbux9020}
+\subsection{1. 6
+次元構造の定義}\label{ux6b21ux5143ux69cbux9020ux306eux5b9aux7fa9}
 
 \subsubsection{1.1 定義}\label{ux5b9aux7fa9}
 
-本稿で扱う6次元構造は、5次元超直方体（頂点
-\((\pm 1, \pm 1, \pm 1, \pm 1, \pm 1)\)）に、4値の離散ラベル軸 \(Q\)
-を追加したものである。
+本稿で扱う 6 次元構造は以下で定義される。
 
-5本の幾何学的軸 \((x_1, x_2, x_3, x_4, x_5)\) の各座標は \(\pm 1\)
-を取り、超直方体構造を形成する。第6軸 \(Q\)
-は幾何学的な座標ではなく、各状態に付随する離散的なラベル値
-\(Q \in \{0, r, g, b\}\) を取る。
+\begin{itemize}
+\tightlist
+\item
+  \textbf{幾何学的構造}: 5
+  次元超直方体の組合せ構造（頂点、辺、面、3-cell、4-facet、5-cell 本体）
+\item
+  \textbf{ラベル軸}: 4 値の離散ラベル軸 \(Q \in \{0, r, g, b\}\)
+\end{itemize}
 
-\subsubsection{1.2
-5次元超直方体の要素数（再掲）}\label{ux6b21ux5143ux8d85ux76f4ux65b9ux4f53ux306eux8981ux7d20ux6570ux518dux63b2}
+5 次元超直方体の頂点座標は \((x_1, x_2, x_3, x_4, x_5)\)
+で表記し、各座標は\textbf{任意の実数値をとる}。特定の命題が集合構造において座標値に条件を課す場合は、その命題の中で局所的に宣言する。
+
+第 6 軸 \(Q\)
+は幾何学的な座標ではなく、各状態に付随する離散ラベル値である。値域は
+\(\{0, r, g, b\}\) の 4 値とする。\(Q\)
+軸の追加によって超直方体の組合せ構造（頂点数、辺数、面数など）は変化しない。
+
+ただし、スピンを決定する双ベクトルの分類においては、\(Q\) は他の 5
+軸と同様に 1
+本の軸として向きの数え上げに参加する。すなわち、\(e_t \wedge e_Q\) や
+\(e_R \wedge e_Q\) のような組合せは、幾何学的な 2-face
+ではなく、軸の組合せとして定義される抽象的な双ベクトル対である。
+
+\subsubsection{\texorpdfstring{1.2 \(k\)
+次元超直方体の要素数}{1.2 k 次元超直方体の要素数}}\label{k-ux6b21ux5143ux8d85ux76f4ux65b9ux4f53ux306eux8981ux7d20ux6570}
+
+\(k\) 次元超直方体の \(j\) 次元面（\(j\)-face）の個数を \(f_j(k)\)
+とする。各要素数を低次元から書き下すことで、一般式を読者が検算できる形で提示する。
+
+\textbf{頂点数 \(f_0(k)\)}: 各軸について両端の 2
+状態を区別する組合せ数として
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}ccc@{}}
+\begin{longtable}[]{@{}ccccccc@{}}
 \toprule\noalign{}
-\(k\) & 要素 & 個数 \\
+\(k\) & 0 & 1 & 2 & 3 & 4 & 5 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(f_0(k)\) & 1 & 2 & 4 & 8 & 16 & 32 \\
+\end{longtable}
+}
+
+\[f_0(k) = 2^k\]
+
+\textbf{辺の数 \(f_1(k)\)}: 1 本の軸方向に伸び、残り \((k-1)\)
+本の軸の両端位置で決まる
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ccccccc@{}}
+\toprule\noalign{}
+\(k\) & 0 & 1 & 2 & 3 & 4 & 5 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(f_1(k)\) & 0 & 1 & 4 & 12 & 32 & 80 \\
+\end{longtable}
+}
+
+\[f_1(k) = k \cdot 2^{k-1}\]
+
+検算: \(k=3\) で \(3 \cdot 4 = 12\)（立方体の辺 12 本）、\(k=5\) で
+\(5 \cdot 16 = 80\)。
+
+\textbf{正方形面の数 \(f_2(k)\)}: 2 本の軸で張られる面
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ccccccc@{}}
+\toprule\noalign{}
+\(k\) & 0 & 1 & 2 & 3 & 4 & 5 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(f_2(k)\) & 0 & 0 & 1 & 6 & 24 & 80 \\
+\end{longtable}
+}
+
+\[f_2(k) = \binom{k}{2} \cdot 2^{k-2}\]
+
+検算: \(k=3\) で \(3 \cdot 2 = 6\)（立方体の面 6 枚）、\(k=5\) で
+\(10 \cdot 8 = 80\)。
+
+\textbf{立方体胞（3-cell）の数 \(f_3(k)\)}: 3 本の軸で張られる立方体胞
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ccccccc@{}}
+\toprule\noalign{}
+\(k\) & 0 & 1 & 2 & 3 & 4 & 5 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(f_3(k)\) & 0 & 0 & 0 & 1 & 8 & 40 \\
+\end{longtable}
+}
+
+\[f_3(k) = \binom{k}{3} \cdot 2^{k-3}\]
+
+検算: \(k=4\) で \(4 \cdot 2 = 8\)、\(k=5\) で \(10 \cdot 4 = 40\)。
+
+\textbf{4-facet の数 \(f_4(k)\)}: 4 本の軸で張られる 4 次元セル
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ccccccc@{}}
+\toprule\noalign{}
+\(k\) & 0 & 1 & 2 & 3 & 4 & 5 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(f_4(k)\) & 0 & 0 & 0 & 0 & 1 & 10 \\
+\end{longtable}
+}
+
+\[f_4(k) = \binom{k}{4} \cdot 2^{k-4}\]
+
+検算: \(k=5\) で \(5 \cdot 2 = 10\)。
+
+\textbf{5-cell 本体の数 \(f_5(k)\)}: \(k=5\) の場合
+
+\[f_5(5) = \binom{5}{5} \cdot 2^0 = 1\]
+
+\subsubsection{一般式}\label{ux4e00ux822cux5f0f}
+
+以上をまとめると、\(k\) 次元超直方体の \(j\) 次元面の個数は
+
+\[f_j(k) = \binom{k}{j} \cdot 2^{k-j} \qquad (0 \leq j \leq k)\]
+
+で与えられる。これは、\(k\) 本の軸から \(j\) 本を選んで \(j\)-face
+を張り（\(\binom{k}{j}\) 通り）、残り \((k-j)\)
+本の軸について各両端のどちらに位置するかを指定する（\(2^{k-j}\)
+通り）ことに対応する。
+
+\textbf{検算（オイラー標数）}:
+\(\sum_{j=0}^{k} (-1)^j f_j(k) = (2-1)^k = 1\)
+により、超直方体が可縮空間であることと整合する。
+
+\subsubsection{\texorpdfstring{本稿で用いる値（\(k=5\)）}{本稿で用いる値（k=5）}}\label{ux672cux7a3fux3067ux7528ux3044ux308bux5024k5}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}clc@{}}
+\toprule\noalign{}
+\(j\) & 要素 & \(f_j(5)\) \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -90,449 +206,604 @@
 1 & 辺 & 80 \\
 2 & 正方形面 & 80 \\
 3 & 立方体胞（3-cell） & 40 \\
-4 & 超立方体（4-facet） & 10 \\
+4 & 4-facet & 10 \\
+5 & 5-cell 本体 & 1 \\
 \end{longtable}
 }
 
-これは先行研究 {[}7{]} と同一の幾何学的基盤である。\(Q\)
-軸は超直方体の幾何学的構造を変えず、各状態に追加の量子数を与える。
+\subsubsection{1.3
+軸の対称性と集合符号の定義}\label{ux8ef8ux306eux5bfeux79f0ux6027ux3068ux96c6ux5408ux7b26ux53f7ux306eux5b9aux7fa9}
 
-\subsubsection{1.3 6軸表記}\label{ux8ef8ux8868ux8a18}
+\paragraph{1.3.1 5
+軸の完全対称性}\label{ux8ef8ux306eux5b8cux5168ux5bfeux79f0ux6027}
 
-本稿では、各状態を6成分の記号 \((x, y, z, t, R, Q)\)
-で表記する。最初の5成分は超直方体における位置（固定軸は
-\(\pm 1\)、自由軸は \(0\)）を、第6成分は色ラベルを表す。
+\textbf{命題 1.1（5 軸の完全対称性）}. 5 次元超直方体の 5
+本の幾何学的軸は、組合せ構造上すべて対等である。任意の軸の置換は超直方体の自己同型写像を与え、§1.2
+の要素数 \(f_j(k)\) および後続の幾何学的命題に関して 5
+軸は区別されない。
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\textbf{証明}. \(k\) 次元超直方体の組合せ構造の自己同型群は超八面体群
+\(B_k\) であり、任意の軸置換を含む。したがって 5
+軸は組合せ的に完全対称である。\(\square\)
 
-\subsection{2.
-軸の分類：4種の質的に異なる自由度}\label{ux8ef8ux306eux5206ux985e4ux7a2eux306eux8ceaux7684ux306bux7570ux306aux308bux81eaux7531ux5ea6}
+\paragraph{1.3.2 軸の分類}\label{ux8ef8ux306eux5206ux985e}
 
-\subsubsection{2.1 仮定の拡張}\label{ux4eeeux5b9aux306eux62e1ux5f35}
-
-先行研究 {[}6, 7{]} の仮定A（5軸の物理的分類）を6軸に拡張する。
-
-\textbf{仮定B（6軸の物理的分類）.} 6本の軸を次のように分類する。
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{空間軸}（\(x_1, x_2, x_3\)）：観測者が直接認知できる3次元空間に対応する3軸。座標値は
-  \(\pm 1\)
-  を取りうるが、双ベクトルによる符号反転（パリティ操作）の対象軸ではない。3軸は置換群
-  \(S_3\) のもとで互いに対称である。
-\item
-  \textbf{時間軸}（\(x_4 = t\)）：時間に相当する軸。符号反転 \(\pm 1\)
-  が可能。値域は有限（2値）。
-\item
-  \textbf{スケール軸}（\(x_5 = R\)）：空間の曲率半径に相当する軸。値域は非有界であり、6軸の中で唯一、上限のない自由度を持つ。
-\end{itemize}
-
-\textbf{注記.} 先行研究 {[}W5{]}
-において、離散空間での中心投影の整数論的条件から
-\(R = \pm n^2 \cdot L_0\)（\(n \in \mathbb{N}\), \(L_0\)
-は単位長）の離散化が導かれている。ただし本稿の結果はこの離散化を必要とせず、\(R\)
-が連続値を取る場合にも全て成立する。
+\textbf{定義 1.2（軸の表記ラベル）}. 5 本の軸
+\(x_1, x_2, x_3, x_4, x_5\) に対して以下の表記ラベルを与える。
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{色軸}（\(x_6 = Q\)）：内部自由度に相当する軸。離散ラベル
-  \(Q \in \{0, r, g, b\}\) の4値を取る。
+  \(x_1, x_2, x_3\) を \(x, y, z\) と表記する
+\item
+  \(x_4\) を \(t\) と表記する
+\item
+  \(x_5\) を \(R\) と表記する
 \end{itemize}
 
-\subsubsection{2.2
-4種の質的差異}\label{ux7a2eux306eux8ceaux7684ux5deeux7570}
+命題 1.1 により 5
+軸は組合せ構造上対等であるから、どの軸にどのラベルを付すかは定義の選択に過ぎない。これらのラベルは集合符号の定義（§1.3.3）およびスピンの定義（§2）の表記の前提として用いる。
 
-6本の軸は4つの質的に異なる種類に分類される。
+\textbf{\(x, y, z, t, R\)
+はあくまで表記上のラベルであり、幾何学的軸としての区別を意味しない。}
+物理的解釈（空間・時間・曲率など）を各軸に割り当てる操作は
+§10（解釈の一例）で行うが、これはモデル外部からの解釈であり、§1
+の幾何学的構造とは独立である。
+
+\paragraph{1.3.3
+集合符号の厳密な定義}\label{ux96c6ux5408ux7b26ux53f7ux306eux53b3ux5bc6ux306aux5b9aux7fa9}
+
+各幾何学的軸の成分
+\(x_i\)（\(i = 1, \ldots, 5\)）は、その軸方向の座標値が満たすべき\textbf{範囲制約}を表す記号である。本稿では以下の
+5 種類の記号を用いる。
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}ccccc@{}}
+\begin{longtable}[]{@{}cll@{}}
 \toprule\noalign{}
-種類 & 軸 & 値 & 意味 & 上限 \\
+記号 & 意味 & 座標値の範囲 \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-位置 & \(x, y, z\) & 連続 & 「どこにあるか」 & \(S_3\) 束縛 \\
-向き & \(t\) & \(\pm 1\) & 「どちら向きか」 & 2値 \\
-スケール & \(R\) & 非有界 & 「どれだけ大きいか」 & \textbf{無限} \\
-ラベル & \(Q\) & \(0, r, g, b\) & 「何の種類か」 & 4値 \\
+\(+\) & 正値 & \(x_i > 0\) \\
+\(-\) & 負値 & \(x_i < 0\) \\
+\(0\) & 原点 & \(x_i = 0\) \\
+\(\pm\) & 非零値 & \(x_i \neq 0\)（正または負） \\
+\(*\) & 任意 & \(x_i\) は任意の実数 \\
 \end{longtable}
 }
 
-\textbf{命題 2.1.} 6本の軸のうち、\(R\)
-軸のみが上限のない自由度を持つ。粒子の\textbf{種類}（スピン、色荷、世代）は有限個の離散構造（\(x, y, z, t, Q\)）で決定され、粒子の\textbf{質量}は唯一の無限自由度（\(R\)）で決定される。
+\(Q\) 軸についても同様に、値域を表す記号を用いる。
 
-\subsubsection{2.3
-Q軸がラベルであることの帰結}\label{qux8ef8ux304cux30e9ux30d9ux30ebux3067ux3042ux308bux3053ux3068ux306eux5e30ux7d50}
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2778}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3889}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+記号
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+意味
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(Q\) の値
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(0\) & 色中性 & \(Q = 0\) \\
+\(r, g, b\) & 指定色 & \(Q\) は指定された色ラベル \\
+\(r/g/b\) & 3 色のいずれか & \(Q \in \{r, g, b\}\) \\
+\(\bar{Q}\) & 反色 &
+\(r \leftrightarrow \bar{r}, g \leftrightarrow \bar{g}, b \leftrightarrow \bar{b}, 0 \leftrightarrow 0\) \\
+\(*\) & 任意 & \(Q\) は \(\{0, r, g, b\}\) のいずれか \\
+\end{longtable}
+}
 
-\(Q\) 軸は量（how much）ではなくラベル（which
-kind）である。この性質から以下が直ちに帰結する。
+\textbf{注記}.
+集合符号は座標値そのものではなく、座標値が満たすべき\textbf{条件}を指定する記号である。§1.1
+で述べた通り、本モデルの座標値は任意の実数値をとり得るが、特定の命題や集合構造においては、該当する軸の座標値に上記の範囲制約を課す。
+
+\textbf{例}. 集合 \((+, +, 0, 0, 0, 0)\)
+は、\(x_1 > 0, x_2 > 0, x_3 = 0, x_4 = 0, x_5 = 0, Q = 0\)
+を満たす状態の集合を指す。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. スピンの定義}\label{ux30b9ux30d4ux30f3ux306eux5b9aux7fa9}
+
+\textbf{定義 2.1（スピン）}. 集合 \((x, y, z, t, R, Q)\)
+に対して、\(t, R, Q\) 軸のうち集合符号が \(0\) でない軸の本数を \(n\)
+とする。スピン \(s\) を以下で定義する。
+
+\begin{itemize}
+\tightlist
+\item
+  \(xyz\) 軸のうち 2 本が非零で 1 本が \(0\) のとき:
+  \(s = n + 1/2\)（フェルミオン）
+\item
+  それ以外のとき: \(s = n\)（ボソン）
+\end{itemize}
+
+\(t, R, Q\) は 3 軸であるから、\(n\) のとりうる値は \(0, 1, 2, 3\) の 4
+通りである。したがって、本モデルにおけるスピン \(s\)
+のとりうる値は以下の 8 種となる。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ccc@{}}
+\toprule\noalign{}
+\(n\) & ボソン \(s = n\) & フェルミオン \(s = n + 1/2\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & \(s = 0\) & \(s = 1/2\) \\
+1 & \(s = 1\) & \(s = 3/2\) \\
+2 & \(s = 2\) & \(s = 5/2\) \\
+3 & \(s = 3\) & \(s = 7/2\) \\
+\end{longtable}
+}
+
+\textbf{注記}.
+本定義は本モデル内部の組合せ論的な定義である。ここで「ボソン」「フェルミオン」と呼ぶのは本モデル内の用語であり、物理的なスピン角運動量、統計性、\((-1)^{2s}\)
+変換性などとの対応は §10（解釈の一例）で扱う。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{3. \(Q\)
+ラベル間遷移の数え上げ}{3. Q ラベル間遷移の数え上げ}}\label{q-ux30e9ux30d9ux30ebux9593ux9077ux79fbux306eux6570ux3048ux4e0aux3052}
+
+\(Q\) 軸の 3 つの非零値 \(\{r, g, b\}\) の間の遷移を考える。遷移は
+\((Q_\text{初期}, Q_\text{終期})\) の対で記述され、3 値から 3
+値への遷移の総数は
+
+\[3 \times 3 = 9\]
+
+通りである。
+
+このうち、対角成分の 1 つの線形結合（\(r\bar{r} + g\bar{g} + b\bar{b}\)
+に比例する状態）は、すべての色ラベルに対して同じ作用を持ち、ラベル遷移を媒介しない。この
+1 状態を除いた
+
+\[3 \times 3 - 1 = 8\]
+
+を独立な遷移状態の数とする。物理的命名は §10 で行う。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. スピン 1
+集合の数え上げ}\label{ux30b9ux30d4ux30f3-1-ux96c6ux5408ux306eux6570ux3048ux4e0aux3052}
+
+スピン 1 の集合は定義 2.1 により \(n = 1\)、すなわち \(t, R, Q\)
+軸のうち集合符号が \(0\) でない軸が 1 本であり、\(xyz\) 軸はすべて \(0\)
+の状態である。
+
+非零の軸が \(t, R, Q\)
+のいずれかに応じて、集合の状態数は以下のように分類される。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3200}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3600}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3200}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+非零の軸
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+集合形式
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+状態数
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(t\) & \((0, 0, 0, \pm, 0, 0)\) & 2（符号 \(\pm\) の 2 通り） \\
+\(R\) & \((0, 0, 0, 0, \pm, 0)\) & 2（符号 \(\pm\) の 2 通り） \\
+\(Q\) & \((0, 0, 0, 0, 0, Q_\text{初期} \to Q_\text{終期})\) & 9（§3
+による） \\
+\end{longtable}
+}
+
+\textbf{合計}: \(2 + 2 + 9 = 13\) 状態（うち 1 状態を除く解釈については
+§10 参照）
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. スピン 2
+集合の数え上げ}\label{ux30b9ux30d4ux30f3-2-ux96c6ux5408ux306eux6570ux3048ux4e0aux3052}
+
+スピン 2 の集合は定義 2.1 により \(n = 2\)、すなわち \(t, R, Q\)
+軸のうち集合符号が \(0\) でない軸が 2 本であり、\(xyz\) 軸はすべて \(0\)
+の状態である。
+
+\(t, R, Q\) の 3 軸から 2 軸を選ぶ組合せは \(\binom{3}{2} = 3\)
+通りであり、非零となる 2 軸の組合せに応じて以下のように分類される。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+非零の 2 軸 & 集合形式 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(t, R\) & \((0, 0, 0, \pm, \pm, 0)\) \\
+\(t, Q\) & \((0, 0, 0, \pm, 0, Q)\) \\
+\(R, Q\) & \((0, 0, 0, 0, \pm, Q)\) \\
+\end{longtable}
+}
+
+したがって、本モデルにおけるスピン 2 集合の型は \textbf{3 通り} である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. スピン 3
+集合の数え上げ}\label{ux30b9ux30d4ux30f3-3-ux96c6ux5408ux306eux6570ux3048ux4e0aux3052}
+
+スピン 3 の集合は定義 2.1 により \(n = 3\)、すなわち \(t, R, Q\)
+軸のすべてが非零であり、\(xyz\) 軸はすべて \(0\) の状態である。
+
+\(t, R, Q\) の 3 軸すべてが非零となる組合せは \(\binom{3}{3} = 1\)
+通りである。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+非零の 3 軸 & 集合形式 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(t, R, Q\) & \((0, 0, 0, \pm, \pm, Q)\)（\(Q \neq 0\)） \\
+\end{longtable}
+}
+
+したがって、本モデルにおけるスピン 3 集合の型は \textbf{1 通り} である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7.
+非零軸の符号積}\label{ux975eux96f6ux8ef8ux306eux7b26ux53f7ux7a4d}
+
+\textbf{定義 7.1（符号積）}. ボソン集合において、\(t, R, Q\)
+軸のうち集合符号が \(0\) でない \(n\) 本の軸がそれぞれ \(+\) または
+\(-\) の符号をとるとき、これらの符号の積を\textbf{符号積} \(P(n)\)
+と定義する。
+
+\[P(n) = (-1)^n\]
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}cc@{}}
+\toprule\noalign{}
+\(n\) & \(P(n)\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & \(+1\) \\
+1 & \(-1\) \\
+2 & \(+1\) \\
+3 & \(-1\) \\
+\end{longtable}
+}
+
+\textbf{命題 7.1}. \(P(n)\) は \(n\) の偶奇のみに依存する。\(n\)
+が偶数のとき \(P(n) = +1\)、\(n\) が奇数のとき \(P(n) = -1\) である。
+
+\textbf{注記}. \(n = 0\)（符号反転なし）と \(n = 2\)（二重反転）は同じ
+\(P = +1\) を与えるが、その代数的構造は異なる。\(n = 0\)
+は恒等変換であり、\(n = 2\) は符号反転の自己逆元である。
+
+\(P(n)\) の物理的解釈（力の方向性との対応）は §10（解釈の一例）で扱う。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{8. \(R\)
+軸を含む正方形面の符号付き面積}{8. R 軸を含む正方形面の符号付き面積}}\label{r-ux8ef8ux3092ux542bux3080ux6b63ux65b9ux5f62ux9762ux306eux7b26ux53f7ux4ed8ux304dux9762ux7a4d}
+
+\subsubsection{8.1
+符号付き面積の定義}\label{ux7b26ux53f7ux4ed8ux304dux9762ux7a4dux306eux5b9aux7fa9}
+
+\textbf{定義 8.1（符号付き面積）}. 集合構造 \(\sigma\)
+の\textbf{符号付き面積} \(M(\sigma)\) を、\(R\)
+軸を含む全正方形面の集合符号と面積の積の総和として定義する。
+
+\[M(\sigma) = \sum_{R \text{ 軸を含む正方形面 } f} \mathrm{sgn}(f) \cdot \mathrm{Area}(f)\]
+
+\(M(\sigma)\)
+は本モデルの基本的な保存量である。物理的な解釈（質量との類似性など）は
+§10 で扱う。
+
+\subsubsection{\texorpdfstring{8.2 \(R\)
+軸を含む面の分類}{8.2 R 軸を含む面の分類}}\label{r-ux8ef8ux3092ux542bux3080ux9762ux306eux5206ux985e}
+
+80
+個の正方形面のうち、\(R\)（\(= x_5\)）軸を含む面は以下のように分類される。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llcc@{}}
+\toprule\noalign{}
+面の型 & 双ベクトル & 型数 & 面数 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+空間\(-R\) & \(e_i \wedge e_5\) & 3 & \(3 \times 8 = 24\) \\
+\(t-R\) & \(e_4 \wedge e_5\) & 1 & 8 \\
+\textbf{合計} & & 4 & \textbf{32} \\
+\end{longtable}
+}
+
+\(R\) 軸を含む面は全 80 面中 32 面であり、全体の \(2/5\) を占める。
+
+\subsubsection{\texorpdfstring{8.3 \(M(\sigma) = 0\)
+となる集合の存在}{8.3 M(\textbackslash sigma) = 0 となる集合の存在}}\label{msigma-0-ux3068ux306aux308bux96c6ux5408ux306eux5b58ux5728}
+
+\textbf{命題 8.1}. 集合構造 \(\sigma\)
+の中には、\(M(\sigma) = 0\)（符号付き面積が完全に相殺する）となるものが存在する。
+
+\(M(\sigma) = 0\) となる集合と物理的な対応の解釈は §10 で扱う。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. 本体の結論}\label{ux672cux4f53ux306eux7d50ux8ad6}
+
+本稿では、5 次元超直方体に離散ラベル軸 \(Q\) を追加した 6
+次元構造を定義し、その集合構造から以下の組合せ論的性質を導出した。
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{電荷の量子化}: \(Q\)
-  は離散値のみを取るため、電荷は本質的に量子化されている。連続的な U(1)
-  対称性の帰結としてではなく、軸の離散性そのものとして。
+  \textbf{超直方体の要素数}（§1.2）: \(k\) 次元超直方体の \(j\)
+  次元面の個数 \(f_j(k) = \binom{k}{j} \cdot 2^{k-j}\)。\(k = 5\)
+  の場合、32 頂点、80 辺、80 正方形面、40 立方体胞、10 超直方体。
 \item
-  \textbf{ラベル数の物理的決定}: \(Q\)
-  の値の個数は超直方体の幾何学によって拘束されない。値の個数は物理が要求する数------すなわち、色の自由度の数------によって決定される。
+  \textbf{5 軸の完全対称性}（命題 1.1）: 5
+  本の幾何学的軸は組合せ構造上すべて対等であり、任意の軸置換は超直方体の自己同型写像を与える。
 \item
-  \textbf{力の強さとチャンネル数}: 力の結合強度は、\(Q\)
-  ラベルが提供する相互作用チャンネルの数に比例する（第6節で詳述）。
+  \textbf{軸の表記ラベル}（定義 1.2）: 5 軸に \(x, y, z, t, R\)
+  の表記ラベルを与える。
+\item
+  \textbf{集合符号の厳密な定義}（§1.3.3）: 各軸に対する範囲制約を
+  \(+, -, 0, \pm, *\) の 5 記号で表現する。
+\item
+  \textbf{スピンの定義}（定義 2.1）: 集合 \((x, y, z, t, R, Q)\)
+  からスピン \(s\) を、\(t, R, Q\) 軸の非零本数
+  \(n\)（\(= 0, 1, 2, 3\)）と \(xyz\) 軸の構造に基づいて 8
+  種（\(s = 0, 1/2, 1, 3/2, 2, 5/2, 3, 7/2\)）に分類する。
+\item
+  \textbf{\(Q\) ラベル間遷移の数え上げ}（§3）: 3 色から 3 色への遷移は
+  \(3 \times 3 = 9\) 通り。
+\item
+  \textbf{スピン 1 集合の数え上げ}（§4）: \(t\) 固定 2 状態、\(R\) 固定
+  2 状態、\(Q\) 固定 9 状態、合計 13 状態。
+\item
+  \textbf{スピン 2 集合の 3 型}（§5）: \(tR, tQ, RQ\) の 3 通り。
+\item
+  \textbf{スピン 3 集合の 1 型}（§6）: \(tRQ\) の 1 通り。
+\item
+  \textbf{符号積 \(P(n) = (-1)^n\)}（定義 7.1、命題 7.1）:
+  非零軸の符号の積は \(n\) の偶奇のみに依存する。
+\item
+  \textbf{符号付き面積 \(M(\sigma)\)}（定義 8.1）: \(R\) 軸を含む 32
+  枚の正方形面から定義される本モデルの基本的な保存量。\(M(\sigma) = 0\)
+  となる集合が存在する。
 \end{enumerate}
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{3.
-スピン分類の安定性}\label{ux30b9ux30d4ux30f3ux5206ux985eux306eux5b89ux5b9aux6027}
-
-\subsubsection{3.1
-スピンの導出（再掲）}\label{ux30b9ux30d4ux30f3ux306eux5c0eux51faux518dux63b2}
-
-先行研究 {[}7{]}
-と同様に、スピンは法線双ベクトルに含まれる非空間軸の本数 \(n\)
-で決定される。
-
-双ベクトルは2本の軸で構成されるため、非空間軸の本数は \(n = 0, 1, 2\)
-の3通りに限られる。これは非空間軸が2本でも3本でも変わらない。
-
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}cccc@{}}
-\toprule\noalign{}
-\(n\) & \(C\) の構造 & ボソンスピン & フェルミオンスピン \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-0 & 空間軸のみ反転なし & 0 & 1/2 \\
-1 & 非空間軸1本反転 & 1 & 3/2 \\
-2 & 非空間軸2本反転 & 2 & 5/2 \\
-\end{longtable}
-}
-
-\textbf{命題 3.1（スピンの安定性）.} スピン量子数の種類
-\(s \in \{0, \frac{1}{2}, 1, \frac{3}{2}, 2, \frac{5}{2}\}\)
-は、非空間軸の本数が2本（5次元）から3本（6次元）に増えても変化しない。
-
-\emph{証明.} 双ベクトルは2本の軸で構成される。\(n\)
-は双ベクトルに含まれる非空間軸の本数であるから、\(n \leq 2\)
-である。非空間軸が何本あっても \(n\) の最大値は2を超えない。\(\square\)
-
-\subsubsection{3.2
-型の個数の増加}\label{ux578bux306eux500bux6570ux306eux5897ux52a0}
-
-スピンの種類は不変であるが、各スピンに属する型の個数は増加する。
-
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1458}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1042}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\centering
-スピン
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\(n\)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-5次元の型数
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-6次元の型数
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-増加分の由来
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\(s = 0, \frac{1}{2}\) & 0 & 3 & 3 & なし \\
-\(s = 1, \frac{3}{2}\) & 1 & 6 & \textbf{9} & \(e_i \wedge e_Q\)
-の3型 \\
-\(s = 2, \frac{5}{2}\) & 2 & 1 & \textbf{3} & \(e_t \wedge e_Q\),
-\(e_R \wedge e_Q\) の2型 \\
-\textbf{合計} & & \textbf{10} & \textbf{15} & \(+5\) \\
-\end{longtable}
-}
+これらはすべて本モデルの外部仮定（5 次元超直方体の採用、\(Q\)
+軸の追加）の下で、組合せ論と幾何学から純粋に導出される結果である。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{4.
-色荷の幾何学的導出}\label{ux8272ux8377ux306eux5e7eux4f55ux5b66ux7684ux5c0eux51fa}
+\subsection{10.
+標準模型との対応の解釈例}\label{ux6a19ux6e96ux6a21ux578bux3068ux306eux5bfeux5fdcux306eux89e3ux91c8ux4f8b}
 
-\subsubsection{4.1 Q軸の4値と色}\label{qux8ef8ux306e4ux5024ux3068ux8272}
+\textbf{本節の内容は本論文の主張ではなく、解釈の一例である。本モデルから標準模型を物理的に導出することを試みるものではない。}
+本節では、§1--§9 で定義・導出した 6
+次元構造とその数学的性質が、標準模型の粒子分類とどのように対応付けうるかの一例を示す。
 
-\(Q \in \{0, r, g, b\}\) の4値は、以下の物理的対応を持つ。
+以下の対応は本モデル内部からは正当化されず、\textbf{外部からの解釈の選択}である。将来、別の対応付けが可能になった場合、本節と並列に追加可能である。
+
+\subsubsection{10.1
+物理的ラベルの割り当て}\label{ux7269ux7406ux7684ux30e9ux30d9ux30ebux306eux5272ux308aux5f53ux3066}
+
+§1.3.2 で述べた通り、5
+軸は組合せ構造上すべて対等であるが、標準模型との対応付けにおいては以下のラベルを割り当てる。
+
+\begin{itemize}
+\tightlist
+\item
+  \(x_1, x_2, x_3 \to xyz\): 3 次元空間軸
+\item
+  \(x_4 \to t\): 時間軸
+\item
+  \(x_5 \to R\): 曲率軸（空間の曲率半径に相当）
+\item
+  \(Q\): 色ラベル軸（\(0\) = 色中性、\(r, g, b\) = 色荷）
+\end{itemize}
+
+\subsubsection{10.2
+クォーク/レプトンへの対応}\label{ux30afux30a9ux30fcux30afux30ecux30d7ux30c8ux30f3ux3078ux306eux5bfeux5fdc}
+
+\(Q\) 軸の値によって粒子の分類が以下のように対応する。
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}ccc@{}}
+\begin{longtable}[]{@{}cl@{}}
 \toprule\noalign{}
-\(Q\) 値 & 色荷 & 粒子の種類 \\
+\(Q\) 値 & 対応 \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\(0\) & 色なし（色中性） & レプトン \\
-\(r\) & 赤 & クォーク \\
-\(g\) & 緑 & クォーク \\
-\(b\) & 青 & クォーク \\
+\(0\) & レプトン（色荷なし） \\
+\(r, g, b\) & クォーク（色荷あり） \\
 \end{longtable}
 }
 
-\textbf{命題 4.1（クォーク-レプトン定理）.} \(Q = 0\)
-の状態はレプトン（色荷なし）に、\(Q \in \{r, g, b\}\)
-の状態はクォーク（色荷あり）に対応する。同一の幾何学的配向
-\((x, y, z, t, R)\) に対して、\(Q\)
-の値が4通り存在することにより、各世代のフェルミオンはレプトン1種とクォーク3色に分岐する。
+同一の幾何学的集合 \((x, y, z, t, R)\) に対して、\(Q\) の値が 4
+通り存在することにより、各世代のフェルミオンはレプトン 1 種とクォーク 3
+色に分岐する。
 
-\textbf{注記（電荷と色荷の自由度について）.}
-標準模型において電荷と色荷は直交する独立な量子数である。本稿の枠組みでは、色荷は
-\(Q\) 軸の値（\(0\) vs
-\(\{r, g, b\}\)）で与えられ、電荷の符号は空間軸の配向符号によって区別される（§8
-の表 A 参照：各世代で空間符号 \(+\) と \(-\)
-が荷電粒子と中性粒子を分ける）。さらに、クォークの分数電荷（\(\pm 1/3, \pm 2/3\)）の分母
+\textbf{電荷の対応}:
+電荷の符号は空間軸の集合符号によって区別される。クォークの分数電荷（\(\pm 1/3, \pm 2/3\)）の分母
 3 は、\(Q\)
-軸の非ゼロ値の数（\(|\{r, g, b\}| = 3\)）と一致する。すなわち、レプトン（\(Q = 0\),
-色なし）は電荷単位 1 を持ち、クォーク（\(Q \neq 0\), 3色）は電荷単位
-\(1/3\) を持つ。電荷の完全な導出（特に \(+2/3\) と \(-1/3\)
-の非対称性）は今後の課題である（§9 参照）。
+軸の非零値の数（\(|\{r, g, b\}| = 3\)）と一致する。電荷の完全な導出、特に
+\(+2/3\) と \(-1/3\) の非対称性は今後の課題である（§10.10）。
 
-なお、電荷を独立な第7軸として追加する設計も検討したが、非空間軸が4本に増えると
-\(n = 2\)（スピン2）の型が \(C(4, 2) = 6\) 種に増加し、スピン \(3/2\)
-フェルミオンも4族に拡大するため、超対称性理論と類似の粒子スペクトルを生むことになる。現在の実験的状況（超対称性粒子の未発見）を踏まえ、本稿では電荷を
-\(Q\)
-軸の構造と空間軸の符号から読み取る方針を採る。この設計により、将来超対称性粒子が発見された場合にも、第7軸の追加によって自然に拡張可能である。
+\textbf{第 7 軸の検討}: 電荷を独立な第 7
+軸として追加する設計も検討したが、非空間軸が 4 本に増えると \(n = 2\)
+の型が \(\binom{4}{2} = 6\)
+種に増加し、超対称性理論と類似の粒子スペクトルを生むことになる。現在の実験的状況（超対称性粒子の未発見）を踏まえ、本稿では電荷を
+\(Q\) 軸の構造と空間軸の符号から読み取る方針を採る。
 
-\subsubsection{4.2
-グルーオン8状態の導出}\label{ux30b0ux30ebux30fcux30aaux30f38ux72b6ux614bux306eux5c0eux51fa}
+\subsubsection{10.3 グルーオン 8
+状態への対応}\label{ux30b0ux30ebux30fcux30aaux30f3-8-ux72b6ux614bux3078ux306eux5bfeux5fdc}
 
-グルーオンはスピン1のゲージボソンであり、色荷の遷移を媒介する。\(Q\)
-軸の3つの非ゼロ値 \(\{r, g, b\}\)
-に対して、グルーオンは色-反色の対として表現される。
+§3 で数え上げた \(Q\) ラベル間遷移の 9
+状態のうち、色シングレット（\(r\bar{r} + g\bar{g} + b\bar{b}\)）の 1
+状態を除いた \textbf{8 状態をグルーオン \(g_1, \ldots, g_8\)}
+に対応させる。
 
-\textbf{命題 4.2（グルーオン定理）.} 色ラベル \(\{r, g, b\}\)
-の間の遷移を媒介するゲージボソンの独立な状態数は
+標準模型では、グルーオンの 8 状態は \(\mathrm{SU}(3)\) のリー代数
+\(\mathfrak{su}(3)\) の 8
+次元随伴表現として導出される。本解釈では、同じ数 8 が \(Q\) 軸の 4
+ラベル構造から組合せ論的に出るが、\(\mathrm{SU}(3)\) の非可換構造定数
+\(f^{abc}\) は本モデルからは導出されない。
 
-\[3 \times 3 - 1 = 8\]
+\subsubsection{10.4 ゲージボソン 12
+状態への対応}\label{ux30b2ux30fcux30b8ux30dcux30bdux30f3-12-ux72b6ux614bux3078ux306eux5bfeux5fdc}
 
-である。\(-1\) は色シングレット（\(r\bar{r} + g\bar{g} + b\bar{b}\)
-に比例する状態）が物理的グルーオンに含まれないことによる。
+§4 で数え上げたスピン 1 集合 13 状態のうち、\(Q\) 固定 9
+状態から色シングレット 1 状態を除いた 8 状態と、\(t\) 固定 2 状態、\(R\)
+固定 2 状態を合わせて \textbf{12 状態をゲージボソン} に対応させる。
 
-\emph{証明.} 色の遷移は \(Q_\text{初期} \to Q_\text{終期}\)
-の対で記述される。3色から3色への遷移は \(3^2 = 9\)
-通りあるが、対角成分の線形結合のうち1つ（色シングレット）は全ての色に対して同じ作用を持ち、色の遷移を媒介しない。したがって独立な状態数は
-\(9 - 1 = 8\) である。\(\square\)
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llc@{}}
+\toprule\noalign{}
+固定軸 & 対応 & 状態数 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(t\) & \(W^+, W^-\) & 2 \\
+\(R\) & \(\gamma, Z^0\) & 2 \\
+\(Q\) & \(g_1, \ldots, g_8\) & 8 \\
+\textbf{合計} & & \textbf{12} \\
+\end{longtable}
+}
 
-\textbf{注記.} 標準模型では、グルーオンの8状態は SU(3) のリー代数
-\(\mathfrak{su}(3)\)
-の8次元随伴表現として導出される。本稿では、同じ数8が \(Q\)
-軸の4ラベル構造から純粋に組合せ論的に導出される。SU(3)
-の連続群構造を仮定する必要がない。
+\(W\) ボソンの 2 状態（\(t = +1, -1\)）は荷電の正負に、\(\gamma\) と
+\(Z^0\) は \(R\) 軸の符号による \(M(\sigma)\)
+の有無（\(M(\gamma) = 0, M(Z) \neq 0\)）に対応する。合計 12
+は、標準模型のゲージボソン状態数
+\(\gamma + g \times 8 + W^+ + W^- + Z^0 = 12\) と一致する。
 
-\subsubsection{4.3
-ゲージボソンの完全分類}\label{ux30b2ux30fcux30b8ux30dcux30bdux30f3ux306eux5b8cux5168ux5206ux985e}
+\subsubsection{10.5 スピン 2
+集合の解釈}\label{ux30b9ux30d4ux30f3-2-ux96c6ux5408ux306eux89e3ux91c8}
 
-非空間軸の種類に応じて、スピン1のゲージボソンは以下のように分類される。
+§5 で数え上げたスピン 2 集合の 3 型に対して以下の対応を与える。
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1860}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2326}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2558}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1860}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1395}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2222}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4444}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
 \toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\centering
+\begin{minipage}[b]{\linewidth}\raggedright
+型
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 固定軸
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\(n=1\) 型
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-ボソン配向
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-SM対応
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-個数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+対応
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\(t\) 軸 & 時間型 & \((0,0,0,\pm,0,Q)\) & \(W^+, W^-\) & 2 \\
-\(R\) 軸 & 曲率型 & \((0,0,0,0,\pm,Q)\) & \(\gamma, Z^0\) & 2 \\
-\(Q\) 軸 & 色型 & \((0,0,0,0,0,Q_i \to Q_j)\) & グルーオン
-\(g_1\)--\(g_8\) & 8 \\
-\textbf{合計} & & & & \textbf{12} \\
+\(tR\) 型 & \(t, R\) & \textbf{グラビトン}（標準模型 +
+重力の枠組みにおける対応） \\
+\(tQ\) 型 & \(t, Q\) & 標準模型に対応する既知粒子なし \\
+\(RQ\) 型 & \(R, Q\) & 標準模型に対応する既知粒子なし \\
 \end{longtable}
 }
 
-\(W\) ボソンの2状態（\(t = +1, -1\)）は荷電の正負に、\(\gamma\) と
-\(Z^0\) は \(R\) 軸の符号による質量の有無（\(M(\gamma) = 0\),
-\(M(Z) \neq 0\)）に対応する。グルーオンの8状態は命題4.2による。
+命題 7.1 により、3 型すべてが \(P(2) = +1\) であり、§10.7
+の解釈では引力のみを媒介する。\(tR\)
+型については重力の性質（引力のみ）と整合する。\(tQ\) 型と \(RQ\)
+型は、本モデルの組合せ構造から存在が導出される状態であるが、現在の標準模型には対応物がない。
 
-合計12は、標準模型のゲージボソン状態数（\(\gamma + g \times 8 + W^+ + W^- + Z^0 = 12\)）と一致する。
+\subsubsection{10.6 スピン 3
+集合の解釈}\label{ux30b9ux30d4ux30f3-3-ux96c6ux5408ux306eux89e3ux91c8}
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+§6 で数え上げたスピン 3 集合の 1
+型（\(tRQ\)）は、標準模型に対応する既知粒子が存在しない。
 
-\subsection{5.
-グラビトンとスピン2ボソンの幾何学的位置}\label{ux30b0ux30e9ux30d3ux30c8ux30f3ux3068ux30b9ux30d4ux30f32ux30dcux30bdux30f3ux306eux5e7eux4f55ux5b66ux7684ux4f4dux7f6e}
+\subsubsection{\texorpdfstring{10.7 符号積 \(P(n)\)
+と力の方向性の対応}{10.7 符号積 P(n) と力の方向性の対応}}\label{ux7b26ux53f7ux7a4d-pn-ux3068ux529bux306eux65b9ux5411ux6027ux306eux5bfeux5fdc}
 
-\subsubsection{5.1 非空間軸3本による n=2
-の解決}\label{ux975eux7a7aux9593ux8ef83ux672cux306bux3088ux308b-n2-ux306eux89e3ux6c7a}
+§7 で定義した符号積 \(P(n) = (-1)^n\)
+に対して、以下の物理的解釈を与える。
 
-5次元（非空間軸2本）では、\(n = 2\) の双ベクトルは
-\(e_4 \wedge e_5\)（\(t \wedge R\)）の\textbf{1通り}のみであった。6次元（非空間軸3本：\(t, R, Q\)）では、\(n = 2\)
-は以下の\textbf{3通り}に増加する。
-
-\textbf{注記（\(Q\) 軸の双ベクトルへの参加について）.} \(Q\)
-軸はラベル軸であり、超直方体の幾何学的な面（§6.3
-の80面）には参加しない。しかし、スピンを決定する双ベクトルの分類においては、\(Q\)
-は非空間軸の1本として型の数え上げに参加する。すなわち、\(e_t \wedge e_Q\)
-や \(e_R \wedge e_Q\) は幾何学的な2-face
-ではなく、非空間軸の組合せとして定義される\textbf{抽象的な双ベクトル型}である。
+\begin{itemize}
+\tightlist
+\item
+  \(P(n) = +1\)（\(n\) が偶数）: 力は一方向的（\textbf{引力のみ}）
+\item
+  \(P(n) = -1\)（\(n\) が奇数）:
+  力は双方向的（\textbf{引力・斥力の両方}）
+\end{itemize}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}ccc@{}}
 \toprule\noalign{}
-法線双ベクトル & 固定軸 & \(C\) 行列 \\
+\(n\) & \(P(n)\) & 力の方向性の解釈 \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\(e_t \wedge e_R\) & \(t, R\) & \(\mathrm{diag}(+,+,+,-,-,Q)\) \\
-\(e_t \wedge e_Q\) & \(t, Q\) & \(\mathrm{diag}(+,+,+,-,R,\bar{Q})\) \\
-\(e_R \wedge e_Q\) & \(R, Q\) & \(\mathrm{diag}(+,+,+,t,-,\bar{Q})\) \\
+0 & \(+1\) & 方向なし（スカラー場、\(s = 0\)） \\
+1 & \(-1\) & 引力・斥力両方（\(s = 1\)） \\
+2 & \(+1\) & 引力のみ（\(s = 2\)） \\
+3 & \(-1\) & 引力・斥力両方（\(s = 3\)） \\
 \end{longtable}
 }
 
-\textbf{注記（\(C\) 行列の \(Q\) 成分の記法）.} \(C\)
-行列において、\(Q\) 成分が保存される場合は \(Q\) と記す。\(Q\)
-成分が「反転」される場合は \(\bar{Q}\)
-と記し、これは色ラベルの反色置換（\(r \leftrightarrow \bar{r}\),
-\(g \leftrightarrow \bar{g}\), \(b \leftrightarrow \bar{b}\),
-\(0 \leftrightarrow 0\)）を意味する。
+この解釈の下で、スピン 2 集合の 3 型（\(tR, tQ, RQ\)）はすべて
+\(n = 2\)（偶数）であり引力のみを媒介する。これは重力の性質（引力のみ）と整合する。スピン
+1 の電磁力（\(n = 1\)、引力・斥力両方）とも整合する。
 
-\textbf{命題 5.1.}
-6次元の枠組みにおいて、スピン2のボソンは3つの型を持つ。
+\textbf{注記}. この対応は本モデル内部からは正当化されず、\(P(n)\)
+の偶奇と力の方向性の間の物理的機構は本稿では導出されない。
 
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}cccc@{}}
-\toprule\noalign{}
-型 & 固定軸 & 力の性質 & SM対応 \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\(tR\) 型 & \(t, R\) & 引力のみ (\(n=2\), 偶数) & グラビトン \\
-\(tQ\) 型 & \(t, Q\) & 引力のみ & \textbf{予言} \\
-\(RQ\) 型 & \(R, Q\) & 引力のみ & \textbf{予言} \\
-\end{longtable}
-}
+\subsubsection{\texorpdfstring{10.8 \(R\)
+軸の値域と力の結合強度}{10.8 R 軸の値域と力の結合強度}}\label{r-ux8ef8ux306eux5024ux57dfux3068ux529bux306eux7d50ux5408ux5f37ux5ea6}
 
-グラビトンは \(tR\) 型に自然に対応する。\(tQ\) 型と \(RQ\)
-型は、標準模型に対応物を持たないスピン2ボソンの予言である。
+\textbf{\(R\) 軸の値域}: 先行研究 {[}W5{]}
+において、離散空間での中心投影の整数論的条件から
+\(R = \pm n^2 \cdot L_0\)（\(n \in \mathbb{N}\)、\(L_0\)
+は単位長）の離散化が導かれている。ただし本稿の結果はこの離散化を必要とせず、\(R\)
+が連続値をとる場合にも成立する。\(R\)
+軸の値域を非有界と解釈すると、質量スペクトルの非有界性に対応する。
 
-\subsubsection{5.2
-5次元での問題の解消}\label{ux6b21ux5143ux3067ux306eux554fux984cux306eux89e3ux6d88}
-
-5次元における「グラビトンが4-facet中心に収まらない」問題は、次元の不足に起因していた。6次元では非空間軸が3本あるため、\(n = 2\)
-の双ベクトルが複数存在し、グラビトンに自然な幾何学的位置が与えられる。
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{6.
-第5軸（R軸）による質量の幾何学的導出}\label{ux7b2c5ux8ef8rux8ef8ux306bux3088ux308bux8ceaux91cfux306eux5e7eux4f55ux5b66ux7684ux5c0eux51fa}
-
-\subsubsection{6.1
-R軸の特殊性：唯一の無限自由度}\label{rux8ef8ux306eux7279ux6b8aux6027ux552fux4e00ux306eux7121ux9650ux81eaux7531ux5ea6}
-
-\(R\) 軸は6本の軸の中で唯一、値域が非有界である。
-
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}cc@{}}
-\toprule\noalign{}
-軸 & 取りうる値の数 \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\(x, y, z\) & \(S_3\) 束縛（3世代） \\
-\(t\) & 2 \\
-\(Q\) & 4 \\
-\(R\) & \(\infty\) \\
-\end{longtable}
-}
-
-\subsubsection{6.2 質量と面積}\label{ux8ceaux91cfux3068ux9762ux7a4d}
-
-\(R\) 軸は曲率半径に相当し、次元 \(L\)（長さ）を持つ。\(R\)
-軸を含む正方形面の面積は \(R\) の値に比例するため、質量は \(R\)
-軸を含む面の面積構造によって決定される。
-
-\textbf{定義 6.1.} 配向構造 \(\sigma\) の\textbf{符号付き面積}
-\(M(\sigma)\) を、\(R\)
-軸を含む全正方形面の配向符号と面積の積の総和として定義する。
-
-\[M(\sigma) = \sum_{\text{$R$軸を含む正方形面 } f} \mathrm{sgn}(f) \cdot \mathrm{Area}(f)\]
-
-\subsubsection{6.3
-R軸を含む面の分類}\label{rux8ef8ux3092ux542bux3080ux9762ux306eux5206ux985e}
-
-80個の正方形面のうち、\(R\)（\(= x_5\)）軸を含む面は以下のように分類される。
-
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}ccccc@{}}
-\toprule\noalign{}
-面の型 & 双ベクトル & 型数 & 面数 & 面積のスケール \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-空間-\(R\) & \(e_i \wedge e_5\) & 3 & \(3 \times 8 = 24\) &
-\(L \cdot R\) \\
-\(t\)-\(R\) & \(e_4 \wedge e_5\) & 1 & \(8\) & \(T \cdot R\) \\
-\textbf{合計} & & \textbf{4} & \textbf{32} & \\
-\end{longtable}
-}
-
-\(R\) 軸を含む面は全80面中32面であり、全体の \(\frac{2}{5}\) を占める。
-
-\subsubsection{6.4
-質量ゼロ条件}\label{ux8ceaux91cfux30bcux30edux6761ux4ef6}
-
-\textbf{命題 6.1.} 配向構造 \(\sigma\) において
-\(M(\sigma) = 0\)（符号付き面積が完全に相殺）のとき、その配向は質量ゼロの粒子に対応する。
-
-光子やグルーオンの質量がゼロであることは、対応する配向の符号付き面積が消失する帰結として説明される。
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{7.
-力の結合強度のチャンネル数による決定}\label{ux529bux306eux7d50ux5408ux5f37ux5ea6ux306eux30c1ux30e3ux30f3ux30cdux30ebux6570ux306bux3088ux308bux6c7aux5b9a}
-
-\subsubsection{7.1
-チャンネル数と結合定数}\label{ux30c1ux30e3ux30f3ux30cdux30ebux6570ux3068ux7d50ux5408ux5b9aux6570}
-
-\textbf{命題 7.1（定性的示唆）.}
-力の結合強度は、相互作用に関与する軸の種類とチャンネル数に定性的に関係する可能性がある。
+\textbf{各力と本モデルの軸の対応の解釈}:
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1143}}
-  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2571}}
-  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3143}}
-  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3143}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1053}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2632}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3158}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3158}}@{}}
 \toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\centering
+\begin{minipage}[b]{\linewidth}\raggedright
 力
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 媒介粒子
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 関与する軸
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 結合の特徴
 \end{minipage} \\
 \midrule\noalign{}
@@ -541,332 +812,324 @@ R軸を含む面の分類}\label{rux8ef8ux3092ux542bux3080ux9762ux306eux5206ux98
 \endlastfoot
 強い力 & \(g_1\)--\(g_8\) & \(Q\) 軸（色遷移 8 チャンネル） &
 色荷を持つ粒子間のみ \\
-電磁力 & \(\gamma\) & \(R\) 軸 & 非ゼロ電荷を持つ粒子間（§4
-注記参照） \\
+電磁力 & \(\gamma\) & \(R\) 軸 & 非零電荷を持つ粒子間 \\
 弱い力 & \(W^\pm, Z^0\) & \(t\) 軸 & 全フェルミオン \\
 重力 & \(G\) & \(t \wedge R\)（\(n = 2\)） & 全粒子（\(Q\) 非依存） \\
 \end{longtable}
 }
 
-\textbf{注記.} 標準模型における結合定数はエネルギースケール \(M_Z\)
-付近で \(\alpha_s \approx 0.1\), \(\alpha \approx 1/137\),
+\textbf{注記}. 標準模型における結合定数は \(M_Z\) 付近で
+\(\alpha_s \approx 0.1\), \(\alpha \approx 1/137\),
 \(\alpha_W \approx 1/30\), \(\alpha_G \approx 10^{-39}\)
-であり、強い力・電磁力・弱い力は同程度のオーダーにある。重力のみが極端に弱い。この階層構造の定量的導出は今後の課題である。
+であり、強・電磁・弱は同程度のオーダー、重力のみ極端に弱い。この階層構造の定量的導出は今後の課題である。
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\subsubsection{\texorpdfstring{10.9 \(M(\sigma)\)
+と質量の類似性}{10.9 M(\textbackslash sigma) と質量の類似性}}\label{msigma-ux3068ux8ceaux91cfux306eux985eux4f3cux6027}
 
-\subsection{8.
-標準模型粒子との完全対応表}\label{ux6a19ux6e96ux6a21ux578bux7c92ux5b50ux3068ux306eux5b8cux5168ux5bfeux5fdcux8868}
+§8.1 で定義した符号付き面積 \(M(\sigma)\)
+は、以下の点で粒子の質量と\textbf{類似性}を持つ。
 
-\subsubsection{表A：確認済み粒子 ↔
-6次元配向}\label{ux8868aux78baux8a8dux6e08ux307fux7c92ux5b50-6ux6b21ux5143ux914dux5411}
+\begin{itemize}
+\tightlist
+\item
+  \(M(\sigma) = 0\)
+  の集合は質量ゼロ粒子（光子、グルーオン）に対応する解釈が可能
+\item
+  \(R\) 軸の値域が非有界であることは、質量スペクトルの非有界性に対応する
+\end{itemize}
 
-\paragraph{ボソン}\label{ux30dcux30bdux30f3}
+ただし、本稿では \(M(\sigma)\)
+と質量を同一視することはしない。具体的な質量値の導出は今後の課題である（§10.12）。
+
+\subsubsection{10.10 表 A: 確認済み粒子と 6
+次元集合の対応}\label{ux8868-a-ux78baux8a8dux6e08ux307fux7c92ux5b50ux3068-6-ux6b21ux5143ux96c6ux5408ux306eux5bfeux5fdc}
+
+\textbf{ボソン}:
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0968}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0968}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0806}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.3710}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0806}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1774}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0968}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1579}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1579}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1316}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1053}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1316}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.3158}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 粒子
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 記号
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 \(s\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-配向 \((x,y,z,t,R,Q)\)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+集合 \((x, y, z, t, R, Q)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 \(n\)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-質量(MeV)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-備考
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+質量 (MeV)
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-ヒッグス & \(H^0\) & 0 & \((\pm,0,0,0,0,0)\) 等 & 0 & 125,250 &
-\(Q = 0\), 色中性 \\
-W ボソン & \(W^+\) & 1 & \((0,0,0,+,0,0)\) & 1 & 80,379 & \(t\) 型 \\
-W ボソン & \(W^-\) & 1 & \((0,0,0,-,0,0)\) & 1 & 80,379 & \(t\) 型 \\
-光子 & \(\gamma\) & 1 & \((0,0,0,0,+,0)\) & 1 & 0 & \(R\) 型,
-\(M = 0\) \\
-Z ボソン & \(Z^0\) & 1 & \((0,0,0,0,-,0)\) & 1 & 91,188 & \(R\) 型,
-\(M \neq 0\) \\
-グルーオン & \(g_1\)--\(g_8\) & 1 & \((0,0,0,0,0,Q_i{\to}Q_j)\) & 1 & 0
-& \(Q\) 型, 8色荷遷移 \\
-グラビトン & \(G\) & 2 & \((0,0,0,\pm,\pm,0)\) & 2 & 0 & \(tR\) 型 \\
+ヒッグス & \(H^0\) & 0 & \((\pm, 0, 0, 0, 0, 0)\) 等 & 0 & 125,250 \\
+\(W\) ボソン & \(W^+\) & 1 & \((0, 0, 0, +, 0, 0)\) & 1 & 80,379 \\
+\(W\) ボソン & \(W^-\) & 1 & \((0, 0, 0, -, 0, 0)\) & 1 & 80,379 \\
+光子 & \(\gamma\) & 1 & \((0, 0, 0, 0, +, 0)\) & 1 & 0 \\
+\(Z\) ボソン & \(Z^0\) & 1 & \((0, 0, 0, 0, -, 0)\) & 1 & 91,188 \\
+グルーオン & \(g_1\)--\(g_8\) & 1 & \((0, 0, 0, 0, 0, Q_i \to Q_j)\) & 1
+& 0 \\
+グラビトン & \(G\) & 2 & \((0, 0, 0, \pm, \pm, 0)\) & 2 & 0 \\
 \end{longtable}
 }
 
-\paragraph{\texorpdfstring{フェルミオン：レプトン（\(Q = 0\),
-色中性）}{フェルミオン：レプトン（Q = 0, 色中性）}}\label{ux30d5ux30a7ux30ebux30dfux30aaux30f3ux30ecux30d7ux30c8ux30f3q-0-ux8272ux4e2dux6027}
-
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}llllll@{}}
-\toprule\noalign{}
-粒子 & 記号 & \(s\) & 世代 & 配向 \((x,y,z,t,R,Q)\) & 質量(MeV) \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-電子 & \(e^-\) & 1/2 & 1 & \((+,+,0,0,0,0)\) & 0.511 \\
-電子ν & \(\nu_e\) & 1/2 & 1 & \((+,-,0,0,0,0)\) & \(< 10^{-6}\) \\
-ミューオン & \(\mu^-\) & 1/2 & 2 & \((+,0,+,0,0,0)\) & 105.66 \\
-ミューオンν & \(\nu_\mu\) & 1/2 & 2 & \((+,0,-,0,0,0)\) & \(< 0.17\) \\
-タウ & \(\tau^-\) & 1/2 & 3 & \((0,+,+,0,0,0)\) & 1,776.9 \\
-タウν & \(\nu_\tau\) & 1/2 & 3 & \((0,+,-,0,0,0)\) & \(< 15.5\) \\
-\end{longtable}
-}
-
-反レプトンは空間軸の符号を反転した配向に対応する。
-
-\paragraph{\texorpdfstring{フェルミオン：クォーク（\(Q \in \{r, g, b\}\),
-色荷あり）}{フェルミオン：クォーク（Q \textbackslash in \textbackslash\{r, g, b\textbackslash\}, 色荷あり）}}\label{ux30d5ux30a7ux30ebux30dfux30aaux30f3ux30afux30a9ux30fcux30afq-in-r-g-b-ux8272ux8377ux3042ux308a}
-
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}llllll@{}}
-\toprule\noalign{}
-粒子 & 記号 & \(s\) & 世代 & 配向 \((x,y,z,t,R,Q)\) & 質量(MeV) \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-アップ & \(u\) & 1/2 & 1 & \((+,+,0,0,0,r/g/b)\) & 2.16 \\
-ダウン & \(d\) & 1/2 & 1 & \((+,-,0,0,0,r/g/b)\) & 4.67 \\
-チャーム & \(c\) & 1/2 & 2 & \((+,0,+,0,0,r/g/b)\) & 1,270 \\
-ストレンジ & \(s_q\) & 1/2 & 2 & \((+,0,-,0,0,r/g/b)\) & 93.4 \\
-トップ & \(t_q\) & 1/2 & 3 & \((0,+,+,0,0,r/g/b)\) & 172,760 \\
-ボトム & \(b\) & 1/2 & 3 & \((0,+,-,0,0,r/g/b)\) & 4,180 \\
-\end{longtable}
-}
-
-各クォークは \(Q = r, g, b\)
-の3色状態を持つ。反クォークは空間軸の符号反転かつ \(Q\)
-の反色に対応する。
-
-\paragraph{集計}\label{ux96c6ux8a08}
-
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}cccccc@{}}
-\toprule\noalign{}
-分類 & \(s\) & \(Q\) & 種数 & 状態数 & SM状態数 \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-ヒッグス & 0 & 0 & 1 & 1 & 1 \\
-ゲージボソン(\(t\)型) & 1 & 0 & 2 & 2 & 2 (\(W^\pm\)) \\
-ゲージボソン(\(R\)型) & 1 & 0 & 2 & 2 & 2 (\(\gamma, Z\)) \\
-グルーオン(\(Q\)型) & 1 & 遷移 & 8 & 8 & 8 \\
-グラビトン(\(tR\)型) & 2 & 0 & 1 & 1 & 1 \\
-レプトン & 1/2 & 0 & 6 & 6 & 6 \\
-反レプトン & 1/2 & 0 & 6 & 6 & 6 \\
-クォーク & 1/2 & r,g,b & 6 & 18 & 18 \\
-反クォーク & 1/2 & \(\bar{r},\bar{g},\bar{b}\) & 6 & 18 & 18 \\
-\textbf{合計} & & & & \textbf{62} & \textbf{61 + \(G\)} \\
-\end{longtable}
-}
-
-\textbf{注記.}
-標準模型は61状態（グラビトンを含まない）から成る。グラビトン \(G\)
-は標準模型の要素ではなく、量子重力の仮説的粒子である。本稿の62状態は、標準模型61状態にグラビトン1状態を加えた「SM
-+ 重力」の統一的分類を与える。
-
-\subsubsection{表B：未発見粒子の予言}\label{ux8868bux672aux767aux898bux7c92ux5b50ux306eux4e88ux8a00}
+\textbf{レプトン} (\(Q = 0\)):
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1042}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1042}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1042}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2292}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1250}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1667}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1538}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1538}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1282}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1538}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1026}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.3077}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
-予言名
+粒子
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+記号
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 \(s\)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-B/F
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\(n\)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-配向の特徴
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 世代
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+集合
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+質量 (MeV)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+電子 & \(e^-\) & 1/2 & 1 & \((+, +, 0, 0, 0, 0)\) & 0.511 \\
+電子ニュートリノ & \(\nu_e\) & 1/2 & 1 & \((+, -, 0, 0, 0, 0)\) &
+\(< 10^{-6}\) \\
+ミューオン & \(\mu^-\) & 1/2 & 2 & \((+, 0, +, 0, 0, 0)\) & 105.66 \\
+ミューニュートリノ & \(\nu_\mu\) & 1/2 & 2 & \((+, 0, -, 0, 0, 0)\) &
+\(< 0.17\) \\
+タウ & \(\tau^-\) & 1/2 & 3 & \((0, +, +, 0, 0, 0)\) & 1,776.9 \\
+タウニュートリノ & \(\nu_\tau\) & 1/2 & 3 & \((0, +, -, 0, 0, 0)\) &
+\(< 15.5\) \\
+\end{longtable}
+}
+
+反レプトンは空間軸の符号を反転した集合に対応する。
+
+\textbf{クォーク} (\(Q \in \{r, g, b\}\)):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llccll@{}}
+\toprule\noalign{}
+粒子 & 記号 & \(s\) & 世代 & 集合 & 質量 (MeV) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+アップ & \(u\) & 1/2 & 1 & \((+, +, 0, 0, 0, r/g/b)\) & 2.16 \\
+ダウン & \(d\) & 1/2 & 1 & \((+, -, 0, 0, 0, r/g/b)\) & 4.67 \\
+チャーム & \(c\) & 1/2 & 2 & \((+, 0, +, 0, 0, r/g/b)\) & 1,270 \\
+ストレンジ & \(s\) & 1/2 & 2 & \((+, 0, -, 0, 0, r/g/b)\) & 93.4 \\
+トップ & \(t\) & 1/2 & 3 & \((0, +, +, 0, 0, r/g/b)\) & 172,760 \\
+ボトム & \(b\) & 1/2 & 3 & \((0, +, -, 0, 0, r/g/b)\) & 4,180 \\
+\end{longtable}
+}
+
+各クォークは \(Q = r, g, b\) の 3
+色状態を持つ。反クォークは空間軸の符号反転かつ \(Q\) の反色に対応する。
+
+\textbf{集計（\(s = 0, 1/2, 1, 2\) の SM 対応可能な状態）}:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lcccc@{}}
+\toprule\noalign{}
+分類 & \(s\) & \(Q\) & 本モデル導出数 & SM 対応 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+ヒッグス & 0 & 0 & 1 & 1 \\
+ゲージボソン (\(t\) 型) & 1 & 0 & 2 & \(W^+, W^-\) \\
+ゲージボソン (\(R\) 型) & 1 & 0 & 2 & \(\gamma, Z^0\) \\
+グルーオン (\(Q\) 型) & 1 & 遷移 & 9 & 8（色シングレット 1 を除く） \\
+グラビトン (\(tR\) 型) & 2 & 0 & 1 & \(G\)（SM 外） \\
+レプトン & 1/2 & 0 & 6 & 6 \\
+反レプトン & 1/2 & 0 & 6 & 6 \\
+クォーク & 1/2 & \(r, g, b\) & 18 & 18 \\
+反クォーク & 1/2 & \(\bar{r}, \bar{g}, \bar{b}\) & 18 & 18 \\
+\textbf{小計} & & & \textbf{63} & \textbf{62（61 + G）} \\
+\end{longtable}
+}
+
+（本モデル 63 状態 = SM 対応 62 状態 + 色シングレット 1 状態）。62
+状態は標準模型 61 状態 + グラビトン 1 状態にマッピングされる。残り 1
+状態（\(Q\)
+遷移の色シングレット）は本モデルでは導出されるが、標準模型では独立なゲージボソンに対応しない。
+
+上記に加え、\(s = 3/2, 2, 5/2, 3, 7/2\) の組合せ（表
+B、§10.11）が本モデルから導出されるが、標準模型に対応する既知粒子は存在しない。
+
+\subsubsection{10.11 表 B:
+標準模型に対応物のない組合せ}\label{ux8868-b-ux6a19ux6e96ux6a21ux578bux306bux5bfeux5fdcux7269ux306eux306aux3044ux7d44ux5408ux305b}
+
+本モデルの組合せ構造から導出されるが、標準模型に対応する既知粒子が存在しない状態を以下に列挙する。これらは本モデル内の組合せ論的帰結であり、未発見粒子の存在を主張するものではない。
+
+\textbf{ボソン（\(xyz\) 全軸 \(0\)）}:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1562}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1562}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3125}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+型
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(s\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(n\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+集合形式
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
 状態数
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\(tQ\) 型ボソン & 2 & B & 2 & \(t, Q\) 固定 & --- & 予言 \\
-\(RQ\) 型ボソン & 2 & B & 2 & \(R, Q\) 固定 & --- & 予言 \\
-\(t\) 型フェルミオン & 3/2 & F & 1 & 空間-\(t\) 法線 & 3世代 & 12 ×
-4(\(Q\)) \\
-\(R\) 型フェルミオン & 3/2 & F & 1 & 空間-\(R\) 法線 & 3世代 & 12 ×
-4(\(Q\)) \\
-\(Q\) 型フェルミオン & 3/2 & F & 1 & 空間-\(Q\) 法線 & 3世代 & 12 ×
-4(\(Q\)) \\
-\(tR\) 型フェルミオン & 5/2 & F & 2 & \(t\)-\(R\) 法線 & なし & 4 ×
-4(\(Q\)) \\
-\(tQ\) 型フェルミオン & 5/2 & F & 2 & \(t\)-\(Q\) 法線 & なし & 4 ×
-4(\(Q\)) \\
-\(RQ\) 型フェルミオン & 5/2 & F & 2 & \(R\)-\(Q\) 法線 & なし & 4 ×
-4(\(Q\)) \\
+\(tQ\) 型 & 2 & 2 & \((0, 0, 0, \pm, 0, Q_i \to Q_j)\) &
+\(2 \times 9 = 18\) \\
+\(RQ\) 型 & 2 & 2 & \((0, 0, 0, 0, \pm, Q_i \to Q_j)\) &
+\(2 \times 9 = 18\) \\
+\(tRQ\) 型 & 3 & 3 & \((0, 0, 0, \pm, \pm, Q_i \to Q_j)\) &
+\(4 \times 9 = 36\) \\
 \end{longtable}
 }
 
-\textbf{注記.} \(s = 3/2\) のフェルミオンは3つの族（\(t\) 型、\(R\)
-型、\(Q\)
-型）に分かれ、各族が3世代構造を持つ。超対称性理論のグラビティーノ（1種）と比較して、はるかに豊かな構造を予言する。
-
-\subsubsection{5次元からの改善のまとめ}\label{ux6b21ux5143ux304bux3089ux306eux6539ux5584ux306eux307eux3068ux3081}
+\textbf{フェルミオン（\(xyz\) のうち 2 本非零、1 本 \(0\)）}:
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1714}}
-  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3143}}
-  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3429}}
-  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1714}}@{}}
+\begin{longtable}[]{@{}lcclcc@{}}
 \toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\centering
-問題
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-5次元(W7)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-6次元(本稿)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-状態
-\end{minipage} \\
+型 & \(s\) & \(n\) & 非零の非空間軸 & 空間側パターン数 & \(Q\) 値 \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-色荷 & なし & \(Q \in \{0,r,g,b\}\) & \textbf{解決} \\
-クォーク-レプトン区別 & 不可 & \(Q = 0\) vs \(Q \neq 0\) &
-\textbf{解決} \\
-グルーオン状態数 & 不足（4配向 vs 12状態） & \(3 \times 3 - 1 = 8\) &
-\textbf{解決} \\
-ゲージボソン合計 & 4 & 12 (\(W^{\pm} + \gamma + Z + g \times 8\)) &
-\textbf{解決} \\
-グラビトン & 位置が不明確 & \(tR\) 型, \(n = 2\) & \textbf{解決} \\
-スピン種 & 6 & 6（安定） & \textbf{確認} \\
+\(t\) 型 & 3/2 & 1 & \(t\) & \(3 \times 4 = 12\) & 4 \\
+\(R\) 型 & 3/2 & 1 & \(R\) & 12 & 4 \\
+\(Q\) 型 & 3/2 & 1 & \(Q\)（非零） & 12 & 3 \\
+\(tR\) 型 & 5/2 & 2 & \(t, R\) & 12 & 4 \\
+\(tQ\) 型 & 5/2 & 2 & \(t, Q\) & 12 & 3 \\
+\(RQ\) 型 & 5/2 & 2 & \(R, Q\) & 12 & 3 \\
+\(tRQ\) 型 & 7/2 & 3 & \(t, R, Q\) & 12 & 3 \\
 \end{longtable}
 }
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\textbf{注記}. 空間側パターン数 12 は、零にする軸の選び方
+\(\binom{3}{1} = 3\) 通り × 非零 2 軸の符号 \(2^2 = 4\)
+通りに由来する。\(Q\) 値は \(Q = 0\) を含む場合 4 通り、\(Q\)
+軸が非零の場合は \(\{r, g, b\}\) の 3 通りである。
 
-\subsection{9.
-未解決問題と今後の課題}\label{ux672aux89e3ux6c7aux554fux984cux3068ux4ecaux5f8cux306eux8ab2ux984c}
+\subsubsection{10.12
+解釈例における未解決問題}\label{ux89e3ux91c8ux4f8bux306bux304aux3051ux308bux672aux89e3ux6c7aux554fux984c}
 
-\subsubsection{9.1
-符号付き面積の定量計算}\label{ux7b26ux53f7ux4ed8ux304dux9762ux7a4dux306eux5b9aux91cfux8a08ux7b97}
+以下は本節の解釈の範囲における未解決問題である。
 
-定義6.1の符号付き面積 \(M(\sigma)\)
-を各配向構造について明示的に計算し、既知の粒子質量比と比較することは、本理論の最も直接的な検証手段である。特に以下の質量比の導出が重要である。
+\textbf{10.12.1 \(M(\sigma)\) の定量計算と質量比}
+
+符号付き面積 \(M(\sigma)\)
+を各集合構造について明示的に計算し、既知の粒子質量比と比較することは、本解釈の検証手段である。
 
 \begin{itemize}
 \tightlist
 \item
-  \(m_\mu / m_e \approx 206.8\)：世代間の質量比
+  \(m_\mu / m_e \approx 206.8\): 世代間の質量比
 \item
-  \(m_W / m_Z \approx 0.881\)：ワインバーグ角との関係
+  \(m_W / m_Z \approx 0.881\): ワインバーグ角との関係
 \item
-  \(m_t / m_e \approx 3.4 \times 10^5\)：最大質量比
+  \(m_t / m_e \approx 3.4 \times 10^5\): 最大質量比
 \end{itemize}
 
-\subsubsection{9.2
-ゲージ群の導出}\label{ux30b2ux30fcux30b8ux7fa4ux306eux5c0eux51fa}
+\textbf{10.12.2 ゲージ群の導出}
 
-\(Q\) 軸の4ラベル構造と SU(3)、\(t\) 軸の2値と SU(2)、\(R\)
-軸の連続スケールと U(1)
-の間の対応が示唆されるが、離散構造から連続的ゲージ群への移行の厳密な機構は未証明である。
+\(Q\) 軸の 4 ラベル構造と \(\mathrm{SU}(3)\)、\(t\) 軸の 2 値と
+\(\mathrm{SU}(2)\)、\(R\) 軸の連続スケールと \(\mathrm{U}(1)\)
+の間の対応が示唆されるが、離散構造から連続的ゲージ群への移行の厳密な機構は未証明である。特にグルーオンの個数
+8 は再現できるが、非可換構造定数 \(f^{abc}\) の情報は導出されない。
 
-\subsubsection{9.3
-CKM行列とPMNS行列}\label{ckmux884cux5217ux3068pmnsux884cux5217}
+\textbf{10.12.3 CKM 行列と PMNS 行列}
 
-世代間の混合（CKM行列、PMNS行列）が、\(S_3\)
+世代間の混合（CKM 行列、PMNS 行列）が、\(S_3\)
 対称性の破れとしてどのように導出されるかは未解決である。
 
-\subsubsection{9.4
-ヒッグス機構}\label{ux30d2ux30c3ux30b0ux30b9ux6a5fux69cb}
+\textbf{10.12.4 ヒッグス機構}
 
 ヒッグスボソンは
 \(n = 0\)（空間軸のみ）に対応するが、ヒッグス場による自発的対称性の破れがこの枠組みでどう理解されるかは今後の課題である。
 
-\subsubsection{\texorpdfstring{9.5 \(s = 2\)
-ボソンの追加予言}{9.5 s = 2 ボソンの追加予言}}\label{s-2-ux30dcux30bdux30f3ux306eux8ffdux52a0ux4e88ux8a00}
+\textbf{10.12.5 電荷値の完全な導出}
 
-\(tQ\) 型および \(RQ\)
-型のスピン2ボソン（グラビトン以外）が存在するならば、その実験的帰結を明らかにする必要がある。
+空間軸の集合符号から電荷符号が、\(Q\)
+軸セクターから電荷の絶対値の単位（1 vs 1/3）が読み取れるが、\(+2/3\) と
+\(-1/3\) の非対称性は本解釈の最も目立つ未解決問題である。
 
-\subsubsection{9.6
-電荷値の幾何学的導出}\label{ux96fbux8377ux5024ux306eux5e7eux4f55ux5b66ux7684ux5c0eux51fa}
+\textbf{10.12.6 \(s = 2, 3\) ボソンの追加予言}
 
-本稿では、電荷符号を空間軸の配向符号から、電荷の絶対値の単位（1 vs
-\(1/3\)）を \(Q\) 軸セクター（\(Q = 0\) vs
-\(Q \neq 0\)）から読み取る方針を採った（§4.1 注記参照）。しかし、表 A
-の具体的な電荷割り当て規則------すなわち、同じ空間配向パターンに対して
-\(Q = 0\)（レプトン）では電荷 \(-1\)、\(Q \neq 0\)（クォーク）では電荷
-\(+2/3\) となり、別の空間配向パターンでは \(Q = 0\) で電荷
-\(0\)、\(Q \neq 0\) で電荷 \(-1/3\)
-となる------は、より深い幾何学的原理から導出されていない。特に \(+2/3\)
-と \(-1/3\) の非対称性は、本論文の最も目立つ未解決問題である。
+\(tQ\) 型、\(RQ\) 型のスピン 2 ボソン、および \(tRQ\) 型のスピン 3
+ボソンが存在するならば、その実験的帰結を明らかにする必要がある。
 
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+\subsubsection{10.13
+解釈例の結論}\label{ux89e3ux91c8ux4f8bux306eux7d50ux8ad6}
 
-\subsection{10. 結論}\label{ux7d50ux8ad6}
-
-5次元超直方体に第6軸（\(Q\)
-軸：4値の離散ラベル）を追加した6次元の枠組みから、以下が導出された。
+本節では、§1--§9 で定義・導出した 6
+次元構造の数学的性質を、標準模型の粒子分類と対応付ける一例を示した。
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
+\tightlist
 \item
-  \textbf{スピン分類の安定性}:
-  スピンの種類は5次元と同じ6種（\(s = 0, \frac{1}{2}, 1, \frac{3}{2}, 2, \frac{5}{2}\)）であり、次元の増加に対して安定である。
+  スピン種数
+  8（\(s = 0, 1/2, 1, 3/2, 2, 5/2, 3, 7/2\)）のうち、\(s = 0, 1/2, 1, 2\)
+  の 63 状態のうち 62 状態が標準模型の既知粒子（61 +
+  グラビトン）にマッピング可能（残り 1 状態は色シングレット）
 \item
-  \textbf{色荷の幾何学的導出}: \(Q\) 軸の4ラベル \(\{0, r, g, b\}\)
-  が色荷を与え、\(Q = 0\)（レプトン）と
-  \(Q \neq 0\)（クォーク）を区別する。
+  \(Q\) 軸の 4 値が色荷とレプトン/クォーク分岐に対応
 \item
-  \textbf{グルーオン8状態の導出}: 3色間の遷移 \(3 \times 3 - 1 = 8\)
-  として、SU(3) を仮定せずにグルーオン状態数が決定される。
+  \(Q\) ラベル間遷移 9 通りのうち 8
+  状態がグルーオンに対応（色シングレット 1 状態は対応物なし）
 \item
-  \textbf{ゲージボソン12状態の完全対応}: \(t\) 型（\(W^\pm\)）、\(R\)
-  型（\(\gamma, Z^0\)）、\(Q\)
-  型（\(g_1\)--\(g_8\)）の3族で標準模型の12ゲージボソン状態を過不足なく再現する。
+  スピン 1 集合の 13 状態のうち 12 状態が標準模型のゲージボソンに対応
 \item
-  \textbf{グラビトンの自然な位置}:
-  非空間軸3本の存在により、\(n = 2\)（スピン2ボソン）が\(tR\)
-  型としてグラビトンに対応する。加えて、\(tQ\) 型と \(RQ\)
-  型のスピン2ボソンを新たに予言する。
+  スピン 2 集合の \(tR\) 型がグラビトンに対応。\(tQ\) 型と \(RQ\)
+  型は本モデルから導出されるが標準模型に対応物がない
 \item
-  \textbf{質量の面積的起源}: \(R\)
-  軸を含む面の符号付き面積が質量を決定する。\(R\)
-  軸は6軸中唯一の非有界自由度であり、質量の非有界な値域を与える。
+  スピン 3 集合の \(tRQ\) 型も同様に対応物がない
 \item
-  \textbf{力の定性的分類}: 力ごとに関与する軸の種類が異なる（強い力 ↔
-  \(Q\) 軸、電磁力 ↔ \(R\) 軸配向、弱い力 ↔ \(t\) 軸、重力 ↔
-  \(t \wedge R\)）という定性的分類を与えた。結合定数の定量的階層の導出は今後の課題である。
+  \(s = 3/2, 5/2, 7/2\)
+  のフェルミオン型も組合せ論的に存在するが既知粒子に対応しない（表 B）
 \item
-  \textbf{標準模型+重力の62状態を再現}:
-  ボソン14状態（\(H + W^\pm + \gamma + Z + g \times 8 + G\)）とフェルミオン48状態（レプトン12＋クォーク36）の対応を与えた。うち61状態は標準模型に、グラビトン1状態は量子重力に対応する。
+  \(M(\sigma)\) が粒子質量と類似性を持つ
+\item
+  力ごとの関与軸の種類が結合強度の階層の定性的起源として解釈可能
 \end{enumerate}
 
-6本の座標軸が4つの質的に異なる種類------\textbf{位置}（空間3軸）、\textbf{向き}（時間1軸）、\textbf{スケール}（曲率1軸）、\textbf{ラベル}（色1軸）------に分かれるという構造は、標準模型の自由パラメータの多くが幾何学的帰結であることを示唆している。
+本モデルは標準模型の既知粒子を\textbf{超過}する組合せを導出する。これらの「余剰状態」は本解釈における未解決問題であり、(a)
+未発見粒子の予言、(b) 物理的に実現されない組合せ（選択則の存在）、(c)
+本解釈の限界、のいずれかとして今後の研究で検討される。
+
+具体的な質量値、電荷値、ゲージ群の非可換構造、世代混合行列の導出は今後の課題である（§10.12）。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -882,18 +1145,18 @@ of Matter.'' \emph{Proc. R. Soc. A} 468, 1252 (2012). arXiv: 1108.5151.
 1611.09182 (2016).
 
 {[}4{]} Kaluza, Th. ``Zum Unitätsproblem der Physik.''
-\emph{Sitzungsber. Preuss. Akad. Wiss. Berlin} 966-972 (1921).
+\emph{Sitzungsber. Preuss. Akad. Wiss. Berlin} 966--972 (1921).
 
-{[}5{]} Coxeter, H.S.M. \emph{Regular Polytopes.} Dover (1973).
+{[}5{]} Coxeter, H.S.M. \emph{Regular Polytopes}. Dover (1973).
 
-{[}6{]} Kihara, N. ``Geometric Classification of Spin Derived from the
-Orientation Structure of the 5-Dimensional Orthoplex.'' DOI:
-\href{https://doi.org/10.5281/zenodo.19630972}{10.5281/zenodo.19630972}
-(2026).
-
-{[}7{]} Kihara, N. ``Bivectorial Classification of Spin Derived from the
+{[}6{]} Kihara, N. ``Bivectorial Classification of Spin Derived from the
 Orientation Structure of the 5-Dimensional Hypercube.'' DOI:
 \href{https://doi.org/10.5281/zenodo.19643358}{10.5281/zenodo.19643358}
+(2026).
+
+{[}7{]} Kihara, N. ``Geometric Classification of Spin Derived from the
+Orientation Structure of the 5-Dimensional Orthoplex.'' DOI:
+\href{https://doi.org/10.5281/zenodo.19630972}{10.5281/zenodo.19630972}
 (2026).
 
 {[}W5{]} Kihara, N. ``Complete Spherical Coverage of Central Projection
