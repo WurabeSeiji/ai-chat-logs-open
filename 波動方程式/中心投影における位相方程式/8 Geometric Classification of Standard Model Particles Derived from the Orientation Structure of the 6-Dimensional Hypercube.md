@@ -1,6 +1,6 @@
 # Combinatorial Properties of the Configuration Structure of the 6-Dimensional Hyperrectangle
 
-## —— Spin Classification, Configuration Enumeration, and Signed Area ——
+## —— Spin Classification, Configuration Enumeration, and Sign Product ——
 
 **Author**: Noriaki Kihara (WF System Co., Ltd.)
 **Date**: April 2026
@@ -259,36 +259,6 @@ The physical interpretation of $P(n)$ (correspondence to force directionality) i
 
 ---
 
-## 8. Signed Area of Square Faces Containing the $R$ Axis
-
-### 8.1 Definition of Signed Area
-
-**Definition 8.1 (Signed area)**. The **signed area** $M(\sigma)$ of a configuration structure $\sigma$ is defined as the sum of the products of sign configurations and areas over all square faces containing the $R$ axis.
-
-$$M(\sigma) = \sum_{R\text{-containing square face } f} \mathrm{sgn}(f) \cdot \mathrm{Area}(f)$$
-
-$M(\sigma)$ is a fundamental conserved quantity of this model. Physical interpretation (such as analogy with mass) is treated in §10.
-
-### 8.2 Classification of Faces Containing the $R$ Axis
-
-Among the 80 square faces, the faces containing $R$ ($= x_5$) are classified as follows.
-
-| Face type | Bivector | Number of types | Number of faces |
-|:----------|:---------|:---------------:|:---------------:|
-| Spatial$-R$ | $e_i \wedge e_5$ | 3 | $3 \times 8 = 24$ |
-| $t-R$ | $e_4 \wedge e_5$ | 1 | 8 |
-| **Total** | | 4 | **32** |
-
-The faces containing the $R$ axis are 32 out of 80 total faces, constituting $2/5$ of the total.
-
-### 8.3 Existence of Configurations with $M(\sigma) = 0$
-
-**Proposition 8.1**. Among the configuration structures $\sigma$, there exist those for which $M(\sigma) = 0$ (the signed area completely cancels).
-
-The interpretation of configurations with $M(\sigma) = 0$ and their physical correspondence is treated in §10.
-
----
-
 ## 9. Conclusions of the Main Body
 
 In this paper, we defined a 6-dimensional structure obtained by adding a discrete label axis $Q$ to the 5-dimensional hyperrectangle, and derived the following combinatorial properties from its configuration structure.
@@ -303,7 +273,6 @@ In this paper, we defined a 6-dimensional structure obtained by adding a discret
 8. **3 types of spin-2 configurations** (§5): $tR, tQ, RQ$ — 3 types.
 9. **1 type of spin-3 configurations** (§6): $tRQ$ — 1 type.
 10. **Sign product $P(n) = (-1)^n$** (Definition 7.1, Proposition 7.1): The product of signs of non-zero axes depends only on the parity of $n$.
-11. **Signed area $M(\sigma)$** (Definition 8.1): A fundamental conserved quantity of the model, defined from the 32 square faces containing the $R$ axis. Configurations with $M(\sigma) = 0$ exist.
 
 All of these are results derived purely from combinatorics and geometry under the external assumptions of this model (adoption of the 5-dimensional hyperrectangle, addition of the $Q$ axis).
 
@@ -335,7 +304,7 @@ The classification of particles corresponds to the value of the $Q$ axis as foll
 
 For the same geometric configuration $(x, y, z, t, R)$, the existence of 4 possible values of $Q$ causes each generation of fermions to branch into 1 lepton type and 3 quark colors.
 
-**Charge correspondence**: The sign of electric charge is distinguished by the sign configuration of the spatial axes. The denominator 3 of the fractional quark charges ($\pm 1/3, \pm 2/3$) coincides with the number of non-zero values of the $Q$ axis ($|\{r, g, b\}| = 3$). The complete derivation of charge values, particularly the asymmetry between $+2/3$ and $-1/3$, remains an open problem (§10.10).
+**Charge correspondence**: The sign of electric charge is distinguished by the sign configuration of the spatial axes. The denominator 3 of the fractional quark charges ($\pm 1/3, \pm 2/3$) coincides with the number of non-zero values of the $Q$ axis ($|\{r, g, b\}| = 3$). The complete derivation of charge values, particularly the asymmetry between $+2/3$ and $-1/3$, remains an open problem (§10.9).
 
 **Consideration of a 7th axis**: The design of adding electric charge as an independent 7th axis was also considered, but increasing the number of non-spatial axes to 4 would increase the number of $n = 2$ types to $\binom{4}{2} = 6$, producing a particle spectrum similar to supersymmetric theories. Given the current experimental situation (non-discovery of supersymmetric particles), this paper adopts the approach of reading electric charge from the structure of the $Q$ axis and the signs of the spatial axes.
 
@@ -356,7 +325,7 @@ Of the 13 spin-1 configuration states enumerated in §4, the 8 states obtained b
 | $Q$ | $g_1, \ldots, g_8$ | 8 |
 | **Total** | | **12** |
 
-The 2 states of the $W$ boson ($t = +1, -1$) correspond to the positive and negative charges, while $\gamma$ and $Z^0$ correspond to the presence or absence of $M(\sigma)$ due to the sign of the $R$ axis ($M(\gamma) = 0, M(Z) \neq 0$). The total of 12 matches the Standard Model gauge boson state count $\gamma + g \times 8 + W^+ + W^- + Z^0 = 12$.
+The 2 states of the $W$ boson ($t = +1, -1$) correspond to the positive and negative charges, while $\gamma$ and $Z^0$ correspond to the sign of the $R$ axis ($+$ vs $-$). The total of 12 matches the Standard Model gauge boson state count $\gamma + g \times 8 + W^+ + W^- + Z^0 = 12$.
 
 ### 10.5 Interpretation of Spin-2 Configurations
 
@@ -407,16 +376,7 @@ Under this interpretation, all 3 types of spin-2 configurations ($tR, tQ, RQ$) h
 
 **Remark**. The coupling constants in the Standard Model near $M_Z$ are $\alpha_s \approx 0.1$, $\alpha \approx 1/137$, $\alpha_W \approx 1/30$, $\alpha_G \approx 10^{-39}$; the strong, electromagnetic, and weak forces are of similar order, while gravity alone is extremely weak. The quantitative derivation of this hierarchy is an open problem for future work.
 
-### 10.9 Analogy Between $M(\sigma)$ and Mass
-
-The signed area $M(\sigma)$ defined in §8.1 has the following **analogies** with particle mass.
-
-- Configurations with $M(\sigma) = 0$ can be interpreted as corresponding to massless particles (photon, gluons)
-- The unboundedness of the $R$ axis range corresponds to the unboundedness of the mass spectrum
-
-However, this paper does not identify $M(\sigma)$ with mass. The derivation of specific mass values is an open problem for future work (§10.12).
-
-### 10.10 Table A: Correspondence Between Confirmed Particles and 6-Dimensional Configurations
+### 10.9 Table A: Correspondence Between Confirmed Particles and 6-Dimensional Configurations
 
 **Bosons**:
 
@@ -473,9 +433,9 @@ Each quark has 3 color states $Q = r, g, b$. Anti-quarks correspond to sign-reve
 
 (Model: 63 states = 62 SM-mapped states + 1 color singlet state). Of the 63 states, 62 are mapped to the Standard Model's 61 states + 1 graviton state. The remaining 1 state (the color singlet of the $Q$ transition) is derived by the model but does not correspond to an independent gauge boson in the Standard Model.
 
-In addition, configurations with $s = 3/2, 2, 5/2, 3, 7/2$ (Table B, §10.11) are derived from the model, but no known particles in the Standard Model correspond to them.
+In addition, configurations with $s = 3/2, 2, 5/2, 3, 7/2$ (Table B, §10.10) are derived from the model, but no known particles in the Standard Model correspond to them.
 
-### 10.11 Table B: Configurations Without Standard Model Counterparts
+### 10.10 Table B: Configurations Without Standard Model Counterparts
 
 The following lists states that are derived from the combinatorial structure of this model but have no known particle counterpart in the Standard Model. These are combinatorial consequences within the model and do not assert the existence of undiscovered particles.
 
@@ -501,39 +461,39 @@ The following lists states that are derived from the combinatorial structure of 
 
 **Remark**. The spatial-side pattern count of 12 arises from $\binom{3}{1} = 3$ ways to choose the zero axis × $2^2 = 4$ sign choices for the 2 non-zero axes. The $Q$ values are 4 when $Q = 0$ is included, and 3 ($\{r, g, b\}$) when the $Q$ axis is required to be non-zero.
 
-### 10.12 Open Problems in This Interpretation
+### 10.11 Open Problems in This Interpretation
 
 The following are open problems within the scope of this section's interpretation.
 
-**10.12.1 Quantitative Computation of $M(\sigma)$ and Mass Ratios**
+**10.11.1 Derivation of Mass Ratios**
 
-Explicitly computing the signed area $M(\sigma)$ for each configuration structure and comparing with known particle mass ratios is a means of testing this interpretation.
+Deriving known particle mass ratios from the configuration structure of this model is an open problem for future work.
 
 - $m_\mu / m_e \approx 206.8$: Mass ratio between generations
 - $m_W / m_Z \approx 0.881$: Relation to the Weinberg angle
 - $m_t / m_e \approx 3.4 \times 10^5$: Maximum mass ratio
 
-**10.12.2 Derivation of Gauge Groups**
+**10.11.2 Derivation of Gauge Groups**
 
 A correspondence is suggested between the 4-label structure of the $Q$ axis and $\mathrm{SU}(3)$, the 2 values of the $t$ axis and $\mathrm{SU}(2)$, and the continuous scale of the $R$ axis and $\mathrm{U}(1)$, but the rigorous mechanism for the transition from discrete structure to continuous gauge groups is unproven. In particular, the number of gluons 8 is reproduced, but the information of the non-commutative structure constants $f^{abc}$ is not derived.
 
-**10.12.3 CKM Matrix and PMNS Matrix**
+**10.11.3 CKM Matrix and PMNS Matrix**
 
 How inter-generational mixing (CKM matrix, PMNS matrix) is derived as a breaking of $S_3$ symmetry remains unsolved.
 
-**10.12.4 Higgs Mechanism**
+**10.11.4 Higgs Mechanism**
 
 The Higgs boson corresponds to $n = 0$ (spatial axes only), but how spontaneous symmetry breaking by the Higgs field is understood within this framework is an open problem for future work.
 
-**10.12.5 Complete Derivation of Charge Values**
+**10.11.5 Complete Derivation of Charge Values**
 
-The sign of electric charge can be read from the sign configurations of the spatial axes, and the unit of the absolute value of charge (1 vs 1/3) from the $Q$ axis sector, but the asymmetry between $+2/3$ and $-1/3$ is the most prominent open problem of this interpretation.
+The sign of electric charge can be read from the sign configurations of the spatial axes, and the unit of the absolute value of charge (1 vs 1/3) from the $Q$ axis sector, but the asymmetry between $+2/3$ and $-1/3$ remains the most prominent open problem of this interpretation.
 
-**10.12.6 Additional Predictions of $s = 2, 3$ Bosons**
+**10.11.6 Additional Predictions of $s = 2, 3$ Bosons**
 
 If $tQ$ type and $RQ$ type spin-2 bosons, and the $tRQ$ type spin-3 boson exist, their experimental consequences need to be clarified.
 
-### 10.13 Conclusion of the Interpretation Example
+### 10.12 Conclusion of the Interpretation Example
 
 This section presented an example mapping the mathematical properties of the 6-dimensional structure defined and derived in §1–§9 to the particle classification of the Standard Model.
 
@@ -544,12 +504,11 @@ This section presented an example mapping the mathematical properties of the 6-d
 5. The $tR$ type of spin-2 configurations corresponds to the graviton. The $tQ$ and $RQ$ types are derived from the model but have no Standard Model counterpart
 6. The $tRQ$ type of spin-3 configurations similarly has no counterpart
 7. Fermion types with $s = 3/2, 5/2, 7/2$ also exist combinatorially but do not correspond to known particles (Table B)
-8. $M(\sigma)$ has analogies with particle mass
-9. The types of axes involved in each force can be interpreted as the qualitative origin of the coupling strength hierarchy
+8. The types of axes involved in each force can be interpreted as the qualitative origin of the coupling strength hierarchy
 
 This model derives configurations that **exceed** the known particles of the Standard Model. These "surplus states" are open problems in this interpretation and will be examined in future research as one of the following: (a) predictions of undiscovered particles, (b) combinations not physically realized (existence of selection rules), or (c) limitations of this interpretation.
 
-The derivation of specific mass values, charge values, non-commutative structure of gauge groups, and generation mixing matrices remains an open problem for future work (§10.12).
+The derivation of specific mass values, charge values, non-commutative structure of gauge groups, and generation mixing matrices remains an open problem for future work (§10.11).
 
 ---
 
