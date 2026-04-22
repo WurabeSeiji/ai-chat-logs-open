@@ -1,0 +1,235 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper]{article}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{\texorpdfstring{Construction of \((R, Q)\) Mapping Adopting a
+6-Dimensional
+Hypercube}{Construction of (R, Q) Mapping Adopting a 6-Dimensional Hypercube}}\label{construction-of-r-q-mapping-adopting-a-6-dimensional-hypercube}
+
+\textbf{Author}: Noriaki Kihara\\
+\textbf{Affiliation}: WF System Co., Ltd.\\
+\textbf{ORCID}: 0009-0004-6753-4020\\
+\textbf{Version}: v1.0\\
+\textbf{Date}: April 2026\\
+\textbf{DOI}:
+\href{https://doi.org/10.5281/zenodo.19692853}{10.5281/zenodo.19692853}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+This paper defines an interface connecting the subjective spaces of the
+three-layer structure model of central projection {[}M1{]} with the
+combinatorial structure of a 6-dimensional hypercube {[}W8{]}.
+
+This paper adopts two premises and, under those premises, defines
+terminology and notation. It contains no theorem proofs. The purpose of
+this paper is to provide a common definitional foundation that
+subsequent papers may reference.
+
+\textbf{Keywords}: 6-dimensional hypercube, central projection,
+subjective space, metadata, \((R, Q)\) mapping
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§1 Adopted Premises}\label{adopted-premises}
+
+This paper adopts the following two premises. These are not objects of
+proof in this paper but are axiomatically adopted as the foundation for
+the definitions constructed herein.
+
+\subsubsection{Premise I (Adoption of the 6-Dimensional
+Hypercube)}\label{premise-i-adoption-of-the-6-dimensional-hypercube}
+
+We adopt the 6-dimensional hypercube defined in {[}W8{]} (a
+combinatorial structure with axes \(x, y, z, t, R, Q\)). Here,
+\(x, y, z, t, R\) are five axes taking real values, and
+\(Q \in \{0, 1, 2, 3, 4, 5, 6, 7\}\) is an 8-valued discrete label axis
+with 3-bit encoding \(Q = 4c_1 + 2c_2 + c_3\) (\(c_i \in \{0, 1\}\))
+({[}W8{]} Definitions 1.1, 1.2).
+
+\subsubsection{Premise II (Metadata-Holding
+Capability)}\label{premise-ii-metadata-holding-capability}
+
+A subjective space can hold arbitrary metadata that is numerically
+representable.
+
+\textbf{Remark}: Premise I is an external assumption of this paper and
+does not claim that the 6-dimensional hypercube is derived from the
+geometry of central projection (see {[}W8{]} §1). Premise II does not
+restrict in advance the types of metadata that can be held.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§2 Definitions}\label{definitions}
+
+\subsubsection{Definition 2.1 (Schema and
+Instance)}\label{definition-2.1-schema-and-instance}
+
+The combinatorial structure of the 6-dimensional hypercube adopted in
+Premise I is called the \textbf{schema} \(\mathcal{S}\). For each
+subjective space \(S^n(R_1)\) (\(R_1 > 0\)), the concrete entity
+obtained by assigning \(\mathcal{S}\) is called an \textbf{instance}.
+
+\subsubsection{\texorpdfstring{Definition 2.2 (\((R, Q)\)
+Mapping)}{Definition 2.2 ((R, Q) Mapping)}}\label{definition-2.2-r-q-mapping}
+
+The map that identifies instances is called the \((R, Q)\) mapping and
+is defined as follows:
+
+\[
+\varphi : \mathcal{I} \to \mathbb{R}_{> 0} \times \{0, 1, 2, 3, 4, 5, 6, 7\}
+\]
+
+Here, \(\mathcal{I}\) is the set of instances, and \(\varphi\) assigns
+to each instance a pair consisting of a curvature radius
+\(R_1 \in \mathbb{R}_{> 0}\) and a discrete label
+\(Q \in \{0, 1, \ldots, 7\}\).
+
+\textbf{Remark}: The \(R\) component is identified with the curvature
+radius parameter \(R_1\) of {[}M1{]} §3.1. The \(Q\) component is the
+value of the label axis of {[}W8{]}, held as metadata by virtue of
+Premise II.
+
+\subsubsection{Definition 2.3 (Uniqueness of Schema and Multiplicity of
+Instances)}\label{definition-2.3-uniqueness-of-schema-and-multiplicity-of-instances}
+
+The schema \(\mathcal{S}\) is unique. No restriction is imposed on the
+cardinality of the instance set \(\mathcal{I}\). It is not excluded that
+distinct instances may share the same \((R_1, Q)\) value.
+
+\textbf{Remark}: The discrimination of multiple instances sharing the
+same \((R_1, Q)\) is outside the definitional scope of this paper and is
+deferred to subsequent papers.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§3 Relationship with Prior
+Works}\label{relationship-with-prior-works}
+
+\subsubsection{§3.1 Relationship with the Three-Layer Structure Model
+{[}M1{]}}\label{relationship-with-the-three-layer-structure-model-m1}
+
+The instances in Definition 2.1 of this paper are a concretization of
+the structure permitted by Condition 3 (non-constraint on multiplicity)
+of {[}M1{]} §2. {[}M1{]} sets as a condition that infinitely many
+subjective spaces may coexist at different curvature radii, and this
+paper constructs its definitions within the scope of this condition.
+
+\subsubsection{§3.2 Relationship with the 6-Dimensional Hypercube
+{[}W8{]}}\label{relationship-with-the-6-dimensional-hypercube-w8}
+
+This paper adopts the combinatorial structure of {[}W8{]} as the schema
+\(\mathcal{S}\), but the 62-state enumeration results and the
+interpretation examples of §9 of {[}W8{]} are not included in the
+definitions of this paper. The internal structure of {[}W8{]} is
+referenced independently as the content of the schema.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§4 What This Paper Does Not
+Claim}\label{what-this-paper-does-not-claim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  That the 6-dimensional hypercube is isomorphic to the subjective
+  spaces of central projection.
+\item
+  That the 6-dimensional hypercube is derived from the geometry of
+  central projection.
+\item
+  That the definitions of this paper cannot be constructed with
+  structures other than the 6-dimensional hypercube.
+\item
+  The physical existence of instances.
+\item
+  Physical interpretations of the \((R, Q)\) mapping (such as the micro
+  black hole interpretation).
+\item
+  Methods for discriminating multiple instances sharing the same
+  \((R_1, Q)\).
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+\begin{itemize}
+\tightlist
+\item
+  {[}P1{]}: Noriaki Kihara, Geometric Formulation of Four-Dimensional
+  Spacetime via Central Projection, Zenodo, 2026. DOI:
+  \href{https://doi.org/10.5281/zenodo.19427780}{10.5281/zenodo.19427780}
+\item
+  {[}M1{]}: Noriaki Kihara, Three-Layer Structure Model of Central
+  Projection: Nested Structure of Subjective Spaces via
+  \(R\)--\(R_1\)--\(R_0\) and Middleware Geometry, Zenodo, 2026. DOI:
+  \href{https://doi.org/10.5281/zenodo.19691713}{10.5281/zenodo.19691713}
+\item
+  {[}M2{]}: Noriaki Kihara, Regularity of Central Projection Between
+  Hyperspherical Shells: A Formulation Without Tangent Hyperplanes and
+  Degeneracy at \(R = 0\), Zenodo, 2026. DOI:
+  \href{https://doi.org/10.5281/zenodo.19692192}{10.5281/zenodo.19692192}
+\item
+  {[}W8{]}: Noriaki Kihara, Set Structure and Combinatorial Properties
+  of a 6-Dimensional Hypercube, Zenodo, 2026. DOI:
+  \href{https://doi.org/10.5281/zenodo.19688521}{10.5281/zenodo.19688521}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\emph{v1.0}
+
+\end{document}

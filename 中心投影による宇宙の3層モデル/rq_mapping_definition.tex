@@ -1,0 +1,212 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{\texorpdfstring{6次元超直方体を採用した \((R, Q)\)
+マッピングの構成}{6次元超直方体を採用した (R, Q) マッピングの構成}}\label{ux6b21ux5143ux8d85ux76f4ux65b9ux4f53ux3092ux63a1ux7528ux3057ux305f-r-q-ux30deux30c3ux30d4ux30f3ux30b0ux306eux69cbux6210}
+
+\textbf{著者}: 木原 範昭 (Noriaki Kihara)\\
+\textbf{所属}: WF System Co., Ltd.\\
+\textbf{ORCID}: 0009-0004-6753-4020\\
+\textbf{版}: v1.0\\
+\textbf{日付}: 2026 年 4 月\\
+\textbf{DOI}:
+\href{https://doi.org/10.5281/zenodo.19692853}{10.5281/zenodo.19692853}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+本論文は、中心投影の三層構造モデル {[}M1{]} の主観空間と、6次元超直方体
+{[}W8{]} の組合せ論的構造を接続するためのインターフェースを定義する。
+
+本論文は二つの前提を採用し、それらの前提の下で用語と記法を定義する。定理の証明は含まない。本論文の目的は、後続論文が参照可能な共通の定義基盤を提供することにある。
+
+\textbf{キーワード}: 6次元超直方体, 中心投影, 主観空間, メタ情報,
+\((R, Q)\) マッピング
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§1 採用前提}\label{ux63a1ux7528ux524dux63d0}
+
+本論文は、以下の二つを前提として採用する。これらは本論文の証明対象ではなく、本論文が構築する定義の基盤として公理的に採用するものである。
+
+\subsubsection{前提
+I（6次元超直方体の採用）}\label{ux524dux63d0-i6ux6b21ux5143ux8d85ux76f4ux65b9ux4f53ux306eux63a1ux7528}
+
+{[}W8{]} で定義された6次元超直方体（\(x, y, z, t, R, Q\)
+を軸とする組合せ論的構造）を採用する。ここで \(x, y, z, t, R\)
+は実数値をとる5軸、\(Q \in \{0, 1, 2, 3, 4, 5, 6, 7\}\) は3ビット符号化
+\(Q = 4c_1 + 2c_2 + c_3\)（\(c_i \in \{0, 1\}\)）による8値離散ラベル軸である（{[}W8{]}
+定義 1.1, 1.2）。
+
+\subsubsection{前提
+II（メタ情報保持能力）}\label{ux524dux63d0-iiux30e1ux30bfux60c5ux5831ux4fddux6301ux80fdux529b}
+
+主観空間は、数値表現可能な任意のメタ情報を保持できる。
+
+\textbf{注記}: 前提 I
+は本論文の外部仮定であり、6次元超直方体が中心投影の幾何学から導出されることを主張しない（{[}W8{]}
+§1 参照）。前提 II は保持可能なメタ情報の種類を事前に制限しない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§2 定義}\label{ux5b9aux7fa9}
+
+\subsubsection{定義
+2.1（スキーマとインスタンス）}\label{ux5b9aux7fa9-2.1ux30b9ux30adux30fcux30deux3068ux30a4ux30f3ux30b9ux30bfux30f3ux30b9}
+
+前提 I で採用した6次元超直方体の組合せ論的構造を\textbf{スキーマ}
+\(\mathcal{S}\) と呼ぶ。各主観空間
+\(S^n(R_1)\)（\(R_1 > 0\)）に対し、\(\mathcal{S}\)
+を割り当てた具体的な実体を\textbf{インスタンス}と呼ぶ。
+
+\subsubsection{\texorpdfstring{定義 2.2（\((R, Q)\)
+マッピング）}{定義 2.2（(R, Q) マッピング）}}\label{ux5b9aux7fa9-2.2r-q-ux30deux30c3ux30d4ux30f3ux30b0}
+
+インスタンスを識別する写像を \((R, Q)\)
+マッピングと呼び、次のように定義する:
+
+\[
+\varphi : \mathcal{I} \to \mathbb{R}_{> 0} \times \{0, 1, 2, 3, 4, 5, 6, 7\}
+\]
+
+ここで \(\mathcal{I}\) はインスタンスの集合であり、\(\varphi\)
+は各インスタンスに対し、曲率半径 \(R_1 \in \mathbb{R}_{> 0}\)
+と離散ラベル \(Q \in \{0, 1, \ldots, 7\}\) の組を割り当てる。
+
+\textbf{注記}: \(R\) 成分は {[}M1{]} §3.1 の曲率半径パラメータ \(R_1\)
+と同一視される。\(Q\) 成分は前提 II によりメタ情報として保持される
+{[}W8{]} のラベル軸の値である。
+
+\subsubsection{定義
+2.3（スキーマの一意性とインスタンスの多重性）}\label{ux5b9aux7fa9-2.3ux30b9ux30adux30fcux30deux306eux4e00ux610fux6027ux3068ux30a4ux30f3ux30b9ux30bfux30f3ux30b9ux306eux591aux91cdux6027}
+
+スキーマ \(\mathcal{S}\) は一つである。インスタンスの集合
+\(\mathcal{I}\) の濃度に制限は課さない。異なるインスタンスが同一の
+\((R_1, Q)\) 値を持つことを排除しない。
+
+\textbf{注記}: 同一の \((R_1, Q)\)
+を持つ複数のインスタンスの弁別は、本論文の定義範囲外であり、後続論文に委ねる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§3
+先行論文との関係}\label{ux5148ux884cux8ad6ux6587ux3068ux306eux95a2ux4fc2}
+
+\subsubsection{§3.1 三層構造モデル {[}M1{]}
+との関係}\label{ux4e09ux5c64ux69cbux9020ux30e2ux30c7ux30eb-m1-ux3068ux306eux95a2ux4fc2}
+
+本論文の定義 2.1 におけるインスタンスは、{[}M1{]} §2 条件
+3（多重性に関する非拘束）が許容する構造の具体化である。{[}M1{]}
+は無限個の主観空間が異なる曲率半径で共存しうることを条件として設定しており、本論文はこの条件の枠内で定義を構成する。
+
+\subsubsection{§3.2 6次元超直方体 {[}W8{]}
+との関係}\label{ux6b21ux5143ux8d85ux76f4ux65b9ux4f53-w8-ux3068ux306eux95a2ux4fc2}
+
+本論文はスキーマ \(\mathcal{S}\) として {[}W8{]}
+の組合せ論的構造を採用するが、{[}W8{]} の62状態の数え上げ結果や §9
+の解釈例は、本論文の定義に含まれない。{[}W8{]}
+の内部構造は、スキーマの内容として独立に参照される。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§4
+本論文が主張しないこと}\label{ux672cux8ad6ux6587ux304cux4e3bux5f35ux3057ux306aux3044ux3053ux3068}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  6次元超直方体が中心投影の主観空間と同型であること。
+\item
+  6次元超直方体が中心投影の幾何学から導出されること。
+\item
+  6次元超直方体以外の構造では本論文の定義が構成不可能であること。
+\item
+  インスタンスの物理的実在性。
+\item
+  \((R, Q)\) マッピングの物理的解釈（マイクロブラックホール解釈等）。
+\item
+  同一の \((R_1, Q)\) を持つ複数のインスタンスの弁別方法。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\begin{itemize}
+\tightlist
+\item
+  {[}P1{]}: 木原範昭, 中心投影による4次元空間の幾何学的定式化, Zenodo,
+  2026. DOI:
+  \href{https://doi.org/10.5281/zenodo.19427780}{10.5281/zenodo.19427780}
+\item
+  {[}M1{]}: 木原範昭, 中心投影の三層構造モデル: \(R\)--\(R_1\)--\(R_0\)
+  による主観空間の入れ子構造とミドルウェア的幾何学, Zenodo, 2026. DOI:
+  \href{https://doi.org/10.5281/zenodo.19691713}{10.5281/zenodo.19691713}
+\item
+  {[}M2{]}: 木原範昭, 超球殻間の中心投影の正則性:
+  接超平面を介さない定式化と \(R = 0\) における縮退, Zenodo, 2026. DOI:
+  \href{https://doi.org/10.5281/zenodo.19692192}{10.5281/zenodo.19692192}
+\item
+  {[}W8{]}: 木原範昭, 6次元超直方体の集合構造とその組合せ論的性質,
+  Zenodo, 2026. DOI:
+  \href{https://doi.org/10.5281/zenodo.19688521}{10.5281/zenodo.19688521}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\emph{v1.0}
+
+\end{document}
