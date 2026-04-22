@@ -259,4 +259,5 @@ WF System Co., Ltd. / 大阪大学基礎工学部 卒業
 ORCID: [0009-0004-6753-4020](https://orcid.org/0009-0004-6753-4020)
 
 **統合論文**：[三層構造モデル（R–R₁–R₀）── 基礎論文群の性質をミドルウェア幾何学として統合](https://doi.org/10.5281/zenodo.19691713)
+**正則性証明**：[超球殻間中心投影の正則性 ── R≥0全域での正則性とR=0における縮退](https://doi.org/10.5281/zenodo.19692192)
 **続編**：[位相方程式篇（W1〜W9）── 超直方体の組合せ論から標準模型62状態を導出する](https://zenn.dev/kiharanoriaki/articles/phase-equation-hypercube-particle-classification)
