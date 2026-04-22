@@ -33,13 +33,13 @@
 本稿は、5 次元超直方体に離散ラベル軸 \(Q\) を追加した 6
 次元構造を定義し、その集合構造から導かれる組合せ論的性質を述べる。
 
-本体（§1--§9）では、本モデルの数学的構造と、そこから純粋に組合せ論的に導出される帰結のみを主張する。標準模型との対応は
-§10
+本体（§1--§8）では、本モデルの数学的構造と、そこから純粋に組合せ論的に導出される帰結のみを主張する。標準模型との対応は
+§9
 で「解釈の一例」として提示するが、これは本論文の主張ではない。モデルの集合構造が標準模型の粒子分類とどのように対応付けうるかを示す一例に過ぎない。
 
 \textbf{本モデルの外部仮定について}: 本稿は 5
-次元超直方体を出発点とする。なぜ 5 次元であるか、なぜ 5 軸のうち 3
-軸を後に「空間軸」として扱うかは、\textbf{本モデルの外部仮定}であり、モデル内部では正当化されない。観測される時空が
+次元超直方体を出発点とする。なぜ 5 次元であるか、なぜ 5
+軸のうち特定の軸を後に「空間軸」として扱うかは、\textbf{本モデルの外部仮定}であり、モデル内部では正当化されない。観測される時空が
 3 次元空間 + 1
 次元時間であるという経験的事実への対応として、この次元設定を採用している。
 
@@ -58,7 +58,8 @@
   \textbf{幾何学的構造}: 5
   次元超直方体の組合せ構造（頂点、辺、面、3-cell、4-facet、5-cell 本体）
 \item
-  \textbf{ラベル軸}: 4 値の離散ラベル軸 \(Q \in \{0, r, g, b\}\)
+  \textbf{ラベル軸}: 8 値の離散ラベル軸
+  \(Q \in \{0, 1, 2, 3, 4, 5, 6, 7\}\)
 \end{itemize}
 
 5 次元超直方体の頂点座標は \((x_1, x_2, x_3, x_4, x_5)\)
@@ -66,14 +67,9 @@
 
 第 6 軸 \(Q\)
 は幾何学的な座標ではなく、各状態に付随する離散ラベル値である。値域は
-\(\{0, r, g, b\}\) の 4 値とする。\(Q\)
+\(\{0, 1, 2, 3, 4, 5, 6, 7\}\) の 8 値とする。この 8 値は 3
+ビットの構造を持ち、\(Q = 4c_1 + 2c_2 + c_3\)（\(c_i \in \{0, 1\}\)）として符号化される。\(Q\)
 軸の追加によって超直方体の組合せ構造（頂点数、辺数、面数など）は変化しない。
-
-ただし、スピンを決定する双ベクトルの分類においては、\(Q\) は他の 5
-軸と同様に 1
-本の軸として向きの数え上げに参加する。すなわち、\(e_t \wedge e_Q\) や
-\(e_R \wedge e_Q\) のような組合せは、幾何学的な 2-face
-ではなく、軸の組合せとして定義される抽象的な双ベクトル対である。
 
 \subsubsection{\texorpdfstring{1.2 \(k\)
 次元超直方体の要素数}{1.2 k 次元超直方体の要素数}}\label{k-ux6b21ux5143ux8d85ux76f4ux65b9ux4f53ux306eux8981ux7d20ux6570}
@@ -246,8 +242,8 @@
 
 \textbf{\(x, y, z, t, R\)
 はあくまで表記上のラベルであり、幾何学的軸としての区別を意味しない。}
-物理的解釈（空間・時間・曲率など）を各軸に割り当てる操作は
-§10（解釈の一例）で行うが、これはモデル外部からの解釈であり、§1
+物理的解釈を各軸に割り当てる操作は
+§9（解釈の一例）で行うが、これはモデル外部からの解釈であり、§1
 の幾何学的構造とは独立である。
 
 \paragraph{1.3.3
@@ -277,9 +273,9 @@
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.0720}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1120}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.8160}}@{}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1343}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2090}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.6567}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\centering
 記号
@@ -292,14 +288,18 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\(0\) & 色中性 & \(Q = 0\) \\
-\(r, g, b\) & 指定色 & \(Q\) は指定された色ラベル \\
-\(r/g/b\) & 3 色のいずれか & \(Q \in \{r, g, b\}\) \\
-\(\bar{Q}\) & 反色 &
-\(r \leftrightarrow \bar{r}, g \leftrightarrow \bar{g}, b \leftrightarrow \bar{b}, 0 \leftrightarrow 0\) \\
-\(*\) & 任意 & \(Q\) は \(\{0, r, g, b\}\) のいずれか \\
+\(0\) & 零ラベル & \(Q = 0\) \\
+\(1\)--\(7\) & 指定離散値 & \(Q\) は指定された整数値 \\
+\(\bar{Q}\) & 反ラベル & \(Q \to (Q + 4) \bmod 8\)（\(Q = 0\)
+は不変） \\
+\(*\) & 任意 & \(Q \in \{0, 1, 2, 3, 4, 5, 6, 7\}\) のいずれか \\
 \end{longtable}
 }
+
+\(Q\) の 8 値は 3 ビット構造 \((c_1, c_2, c_3)\) を持つ。\(c_1\)
+ビット（\(Q\) の上位ビット：\(Q \geq 4\) か否か）と \(c_2 c_3\) の 2
+ビット（\(Q \bmod 4\)）は、独立な 2
+つの離散自由度を符号化する。物理的解釈は §9.2 で扱う。
 
 \textbf{注記}.
 集合符号は座標値そのものではなく、座標値が満たすべき\textbf{条件}を指定する記号である。§1.1
@@ -314,21 +314,38 @@
 \subsection{2. スピンの定義}\label{ux30b9ux30d4ux30f3ux306eux5b9aux7fa9}
 
 \textbf{定義 2.1（スピン）}. 集合 \((x, y, z, t, R, Q)\)
-に対して、\(t, R, Q\) 軸のうち集合符号が \(0\) でない軸の本数を \(n\)
-とする。スピン \(s\) を以下で定義する。
+に対して、スピン \(s\) を以下で定義する。
+
+\textbf{フェルミオン/ボソンの判定}: \(xyzt\) の 4 軸のうち、集合符号が
+\(0\) でない軸の本数を \(k\) とする。
 
 \begin{itemize}
 \tightlist
 \item
-  \(xyz\) 軸のうち 2 本が非零で 1 本が \(0\) のとき:
-  \(s = n + 1/2\)（フェルミオン）
+  \(k = 2\) のとき: \textbf{フェルミオン型}
 \item
-  それ以外のとき: \(s = n\)（ボソン）
+  \(k \neq 2\) のとき: \textbf{ボソン型}
 \end{itemize}
 
-\(t, R, Q\) は 3 軸であるから、\(n\) のとりうる値は \(0, 1, 2, 3\) の 4
-通りである。したがって、本モデルにおけるスピン \(s\)
-のとりうる値は以下の 8 種となる。
+\textbf{スピン量子数の決定}: スピンに寄与する軸の本数 \(n\)
+を以下で定める。\(Q\) 軸については、\(Q\)
+ラベル間遷移（§3）のみがスピンに寄与し、静的な \(Q\)
+ラベル値（\(Q \neq 0\) であっても遷移を伴わない場合）は \(n\)
+に算入しない。
+
+\begin{itemize}
+\tightlist
+\item
+  フェルミオン型: \(n\) は \(\{R,\, Q\text{-遷移}\}\)
+  のうち非零の本数。\(s = n + 1/2\)
+\item
+  ボソン型: \(n\) は \(\{t,\, R,\, Q\text{-遷移}\}\)
+  のうち非零の本数。\(s = n\)
+\end{itemize}
+
+\(n\) のとりうる値はフェルミオン型で \(0, 1, 2\)、ボソン型で
+\(0, 1, 2, 3\) であるから、本モデルにおけるスピン \(s\)
+のとりうる値は以下となる。
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}ccc@{}}
@@ -341,52 +358,76 @@
 0 & \(s = 0\) & \(s = 1/2\) \\
 1 & \(s = 1\) & \(s = 3/2\) \\
 2 & \(s = 2\) & \(s = 5/2\) \\
-3 & \(s = 3\) & \(s = 7/2\) \\
+3 & \(s = 3\) & ------ \\
 \end{longtable}
 }
 
-\textbf{注記}.
+\textbf{注記 1}. \(xyzt\) の 4
+軸は初期対称性において完全に対等であり、そのうち 1
+軸が「時間的」として分離する過程は自発的対称性の破れとして解釈される（§9.1）。フェルミオン判定条件
+\(k = 2\) は、4 つの対等な軸から 2 つが非零となる場合に対応し、\(xyz\)
+の 3 軸に限定しない。
+
+\textbf{注記 2}.
 本定義は本モデル内部の組合せ論的な定義である。ここで「ボソン」「フェルミオン」と呼ぶのは本モデル内の用語であり、物理的なスピン角運動量、統計性、\((-1)^{2s}\)
-変換性などとの対応は §10（解釈の一例）で扱う。
+変換性などとの対応は §9（解釈の一例）で扱う。
+
+\textbf{注記 3}. フェルミオン型とボソン型で \(n\)
+に算入する軸が異なる（フェルミオンは \(t\)
+を算入しない）。この非対称性は以下の幾何学的動機に基づく。フェルミオン型では
+\(xyzt\) の 4 軸のうちちょうど 2 本が非零であり、この 2 本の選択がすでに
+\(\binom{4}{2} = 6\) 通りの自由度を持つ。このうち \(t\)
+軸を含む組合せ（3 通り）と含まない組合せ（3 通り）は、\(k = 2\)
+の判定で共に参加済みである。したがって \(t\)
+の自由度はフェルミオン性の決定に消費されており、スピン量子数
+\(s = n + 1/2\) の \(1/2\)
+に反映される。数学的に等価な表記として、\(\{t, R, Q\text{-遷移}\}\)
+の非零本数 \(n'\) を用いて \(s = (n' - 1) + 1/2 = n' - 1/2\)
+とも書ける（\(t\) が非零のフェルミオンの場合
+\(n' = n + 1\)）が、本稿では定義の見通しの良さから上記の非対称形を採用する。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{\texorpdfstring{3. \(Q\)
 ラベル間遷移の数え上げ}{3. Q ラベル間遷移の数え上げ}}\label{q-ux30e9ux30d9ux30ebux9593ux9077ux79fbux306eux6570ux3048ux4e0aux3052}
 
-\(Q\) 軸の 3 つの非零値 \(\{r, g, b\}\) の間の遷移を考える。遷移は
-\((Q_\text{初期}, Q_\text{終期})\) の対で記述され、3 値から 3
-値への遷移の総数は
+\(Q\) 軸の 8 値のうち非零の 7 値 \(\{1, 2, 3, 4, 5, 6, 7\}\)
+の間の遷移を考える。遷移は \((Q_\text{初期}, Q_\text{終期})\)
+の順序対で記述される。
 
-\[3 \times 3 = 9\]
+3 ビット構造 \((c_1, c_2, c_3)\) に基づき、遷移は 2 種に分類される。
 
-通りである。
+\textbf{\(c_2 c_3\) 遷移}: 下位 2 ビット \(c_2 c_3\)
+が変化する遷移。\(c_2 c_3\) の非零値 \(\{01, 10, 11\}\) の 3
+値間の順序対は \(3 \times 3 = 9\) 通りである（対角成分 3 通りを含む）。
 
-このうち、対角成分の 1 つの線形結合（\(r\bar{r} + g\bar{g} + b\bar{b}\)
-に比例する状態）は、すべての色ラベルに対して同じ作用を持ち、ラベル遷移を媒介しない。この
-1 状態を除いた
+\textbf{\(c_1\) 遷移}: 上位ビット \(c_1\)
+のみが変化する遷移。\(c_1 \in \{0, 1\}\) の間の遷移であり、\(c_2 c_3\)
+の各値（\(00, 01, 10, 11\) の 4 通り）に対して \(0 \to 1\) と
+\(1 \to 0\) の 2 方向が存在する。したがって \(c_1\) 遷移は
+\(4 \times 2 = 8\) 通りである。
 
-\[3 \times 3 - 1 = 8\]
-
-を独立な遷移状態の数とする。物理的命名は §10 で行う。
+\textbf{注記}. \(c_2 c_3\) 遷移の 9
+通りから独立な遷移状態を抽出する操作（例えば対角成分の線形結合の除去）は、表現論的な構造に依存するため、本体では行わない。独立状態数の物理的解釈は
+§9.3 で扱う。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{4. スピン 1
 集合の数え上げ}\label{ux30b9ux30d4ux30f3-1-ux96c6ux5408ux306eux6570ux3048ux4e0aux3052}
 
-スピン 1 の集合は定義 2.1 により \(n = 1\)、すなわち \(t, R, Q\)
-軸のうち集合符号が \(0\) でない軸が 1 本であり、\(xyz\) 軸はすべて \(0\)
-の状態である。
+スピン 1 の集合は定義 2.1 により、ボソン型（\(xyzt\) のうち非零軸が
+\(k \neq 2\)）かつ \(n = 1\) の状態である。\(xyzt\) 軸がすべて
+\(0\)（\(k = 0\)）の場合を考える。
 
-非零の軸が \(t, R, Q\)
-のいずれかに応じて、集合の状態数は以下のように分類される。
+\(\{t, R, Q\text{-遷移}\}\) のうち非零が 1
+本の状態は以下のように分類される。
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.0964}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.6024}}
-  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3012}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2105}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5263}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2632}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 非零の軸
@@ -401,37 +442,45 @@
 \endlastfoot
 \(t\) & \((0, 0, 0, \pm, 0, 0)\) & 2（符号 \(\pm\) の 2 通り） \\
 \(R\) & \((0, 0, 0, 0, \pm, 0)\) & 2（符号 \(\pm\) の 2 通り） \\
-\(Q\) & \((0, 0, 0, 0, 0, Q_\text{初期} \to Q_\text{終期})\) & 9（§3
-による） \\
+\(Q\)-遷移（\(c_2 c_3\)） &
+\((0, 0, 0, 0, 0, Q_\text{初期} \to Q_\text{終期})\) & 9（§3 による） \\
+\(Q\)-遷移（\(c_1\)） &
+\((0, 0, 0, 0, 0, Q_\text{初期} \to Q_\text{終期})\) & 8（§3 による） \\
 \end{longtable}
 }
 
-\textbf{合計}: \(2 + 2 + 9 = 13\) 状態（うち 1 状態を除く解釈については
-§10 参照）
+\textbf{合計}: \(t\) 固定 2 状態 + \(R\) 固定 2 状態 + \(c_2 c_3\) 遷移
+9 状態 + \(c_1\) 遷移 8 状態 = \textbf{21 状態}。
+
+\(xyzt\) のうち \(t\) のみ非零（\(k = 1\)）の場合もボソン型であり、\(n\)
+の数え上げにおいて \(t\) が寄与するスピン 1 状態を含む。
+
+\textbf{注記}. \(c_2 c_3\) 遷移 9 状態からの独立状態の抽出（\(9 \to 8\)
+の縮約）、および物理的ゲージボソンとの対応は §9.3--§9.4 で扱う。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{5. スピン 2
 集合の数え上げ}\label{ux30b9ux30d4ux30f3-2-ux96c6ux5408ux306eux6570ux3048ux4e0aux3052}
 
-スピン 2 の集合は定義 2.1 により \(n = 2\)、すなわち \(t, R, Q\)
-軸のうち集合符号が \(0\) でない軸が 2 本であり、\(xyz\) 軸はすべて \(0\)
-の状態である。
+スピン 2 の集合は定義 2.1 によりボソン型かつ \(n = 2\)、すなわち
+\(\{t, R, Q\text{-遷移}\}\) のうち 2 本が非零であり、\(xyzt\) の非零軸数
+\(k \neq 2\) の状態である。
 
-\(t, R, Q\) の 3 軸から 2 軸を選ぶ組合せは \(\binom{3}{2} = 3\)
-通りであり、非零となる 2 軸の組合せに応じて以下のように分類される。
+\(k = 0\)（\(xyzt\) 全軸 \(0\)）の場合、非零となる 2
+要素の組合せは以下の 3 通り。
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}ll@{}}
 \toprule\noalign{}
-非零の 2 軸 & 集合形式 \\
+非零の 2 要素 & 集合形式 \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
 \(t, R\) & \((0, 0, 0, \pm, \pm, 0)\) \\
-\(t, Q\) & \((0, 0, 0, \pm, 0, Q)\) \\
-\(R, Q\) & \((0, 0, 0, 0, \pm, Q)\) \\
+\(t, Q\)-遷移 & \((0, 0, 0, \pm, 0, Q_i \to Q_j)\) \\
+\(R, Q\)-遷移 & \((0, 0, 0, 0, \pm, Q_i \to Q_j)\) \\
 \end{longtable}
 }
 
@@ -442,21 +491,19 @@
 \subsection{6. スピン 3
 集合の数え上げ}\label{ux30b9ux30d4ux30f3-3-ux96c6ux5408ux306eux6570ux3048ux4e0aux3052}
 
-スピン 3 の集合は定義 2.1 により \(n = 3\)、すなわち \(t, R, Q\)
-軸のすべてが非零であり、\(xyz\) 軸はすべて \(0\) の状態である。
-
-\(t, R, Q\) の 3 軸すべてが非零となる組合せは \(\binom{3}{3} = 1\)
-通りである。
+スピン 3 の集合は定義 2.1 によりボソン型かつ \(n = 3\)、すなわち
+\(\{t, R, Q\text{-遷移}\}\) のすべてが非零であり、\(xyzt\) の非零軸数
+\(k \neq 2\) の状態である。
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}ll@{}}
 \toprule\noalign{}
-非零の 3 軸 & 集合形式 \\
+非零の 3 要素 & 集合形式 \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\(t, R, Q\) & \((0, 0, 0, \pm, \pm, Q)\)（\(Q \neq 0\)） \\
+\(t, R, Q\)-遷移 & \((0, 0, 0, \pm, \pm, Q_i \to Q_j)\) \\
 \end{longtable}
 }
 
@@ -467,42 +514,53 @@
 \subsection{7.
 非零軸の符号積}\label{ux975eux96f6ux8ef8ux306eux7b26ux53f7ux7a4d}
 
-\textbf{定義 7.1（符号積）}. ボソン集合において、\(t, R, Q\)
-軸のうち集合符号が \(0\) でない \(n\) 本の軸がそれぞれ \(+\) または
-\(-\) の符号をとるとき、これらの符号の積を\textbf{符号積} \(P(n)\)
-と定義する。
+\textbf{定義 7.1（符号積）}. ボソン集合において、\(t, R\)
+軸のうち集合符号が \(0\) でない軸がそれぞれ \(+\) または \(-\)
+の符号をとるとき、これらの符号の積を\textbf{符号積} \(P\) と定義する。
 
-\[P(n) = (-1)^n\]
+\[P = (-1)^{|\{i \in \{t, R\} : \sigma_i < 0\}|}\]
+
+すなわち、\(t, R\) 軸のうち負の符号をとる軸の本数が偶数なら
+\(P = +1\)、奇数なら \(P = -1\) である。
+
+\textbf{命題 7.1（各スピン型の \(P\) の分類）}. 各ボソン型の \(P\)
+のとりうる値は以下の通り。
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}cc@{}}
+\begin{longtable}[]{@{}lll@{}}
 \toprule\noalign{}
-\(n\) & \(P(n)\) \\
+スピン型 & 非零の \(\{t, R\}\) & \(P\) のとりうる値 \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-0 & \(+1\) \\
-1 & \(-1\) \\
-2 & \(+1\) \\
-3 & \(-1\) \\
+\(s = 0\) & なし & \(P = +1\)（一意） \\
+\(s = 1\), \(t\) 型 & \(t\) のみ & \(P = +1\) or \(-1\) \\
+\(s = 1\), \(R\) 型 & \(R\) のみ & \(P = +1\) or \(-1\) \\
+\(s = 1\), \(Q\)-遷移型 & なし & \(P = +1\)（一意） \\
+\(s = 2\), \(tR\) 型 & \(t, R\) 両方 & \(P = +1\) or \(-1\) \\
+\(s = 2\), \(tQ\) 型 & \(t\) のみ & \(P = +1\) or \(-1\) \\
+\(s = 2\), \(RQ\) 型 & \(R\) のみ & \(P = +1\) or \(-1\) \\
+\(s = 3\), \(tRQ\) 型 & \(t, R\) 両方 & \(P = +1\) or \(-1\) \\
 \end{longtable}
 }
 
-\textbf{命題 7.1}. \(P(n)\) は \(n\) の偶奇のみに依存する。\(n\)
-が偶数のとき \(P(n) = +1\)、\(n\) が奇数のとき \(P(n) = -1\) である。
+\textbf{証明}. \(t, R\) がともに零のとき \(P = +1\)（負の軸が 0 本）。1
+本のみ非零のとき \(\sigma_i = \pm\) により \(P = \pm 1\)。2 本非零のとき
+\((+)(+) \to P = +1\), \((+)(-) \to P = -1\), \((-)(+) \to P = -1\),
+\((-)(-) \to P = +1\) の 4 配置が可能で \(P = \pm 1\)。\(\square\)
 
-\textbf{注記}. \(n = 0\)（符号反転なし）と \(n = 2\)（二重反転）は同じ
-\(P = +1\) を与えるが、その代数的構造は異なる。\(n = 0\)
-は恒等変換であり、\(n = 2\) は符号反転の自己逆元である。
+\(P\) の物理的解釈（力の方向性との対応）は §9（解釈の一例）で扱う。
 
-\(P(n)\) の物理的解釈（力の方向性との対応）は §10（解釈の一例）で扱う。
+\textbf{注記}. \(R\) 軸を含む正方形面に対する符号付き面積 \(M(\sigma)\)
+の配向構造と、それに基づく保存量の厳密な定義は、本稿の範囲を超えるため別論文で扱う。\(M(\sigma)\)
+と質量計量の関係についての解釈上の推測は §9.11.1 で述べる。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{9. 本体の結論}\label{ux672cux4f53ux306eux7d50ux8ad6}
+\subsection{8. 本体の結論}\label{ux672cux4f53ux306eux7d50ux8ad6}
 
-本稿では、5 次元超直方体に離散ラベル軸 \(Q\) を追加した 6
+本稿では、5 次元超直方体に 8 値離散ラベル軸 \(Q\) を追加した 6
 次元構造を定義し、その集合構造から以下の組合せ論的性質を導出した。
 
 \begin{enumerate}
@@ -520,25 +578,27 @@
   の表記ラベルを与える。
 \item
   \textbf{集合符号の厳密な定義}（§1.3.3）: 各軸に対する範囲制約を
-  \(+, -, 0, \pm, *\) の 5 記号で表現する。
+  \(+, -, 0, \pm, *\) の 5 記号で表現する。\(Q\) 軸は 8 値（3
+  ビット構造）。
 \item
-  \textbf{スピンの定義}（定義 2.1）: 集合 \((x, y, z, t, R, Q)\)
-  からスピン \(s\) を、\(t, R, Q\) 軸の非零本数
-  \(n\)（\(= 0, 1, 2, 3\)）と \(xyz\) 軸の構造に基づいて 8
-  種（\(s = 0, 1/2, 1, 3/2, 2, 5/2, 3, 7/2\)）に分類する。
+  \textbf{スピンの定義}（定義 2.1）: \(xyzt\) 4 軸の非零本数 \(k\)
+  でフェルミオン型（\(k = 2\)）とボソン型（\(k \neq 2\)）を判定し、\(\{R, Q\text{-遷移}\}\)（フェルミオン型）または
+  \(\{t, R, Q\text{-遷移}\}\)（ボソン型）の非零本数 \(n\) からスピンを
+  \(s = n + 1/2\) または \(s = n\) と定める。
 \item
-  \textbf{\(Q\) ラベル間遷移の数え上げ}（§3）: 3 色から 3 色への遷移は
-  \(3 \times 3 = 9\) 通り。
+  \textbf{\(Q\) ラベル間遷移の数え上げ}（§3）: 3 ビット構造に基づく
+  \(c_2 c_3\) 遷移（9 通り）と \(c_1\) 遷移（8 通り）。
 \item
-  \textbf{スピン 1 集合の数え上げ}（§4）: \(t\) 固定 2 状態、\(R\) 固定
-  2 状態、\(Q\) 固定 9 状態、合計 13 状態。
+  \textbf{スピン 1 集合の数え上げ}（§4）: \(t\) 固定 2 状態 + \(R\) 固定
+  2 状態 + \(c_2 c_3\) 遷移 9 状態 + \(c_1\) 遷移 8 状態 = 21 状態。
 \item
   \textbf{スピン 2 集合の 3 型}（§5）: \(tR, tQ, RQ\) の 3 通り。
 \item
   \textbf{スピン 3 集合の 1 型}（§6）: \(tRQ\) の 1 通り。
 \item
-  \textbf{符号積 \(P(n) = (-1)^n\)}（定義 7.1、命題 7.1）:
-  非零軸の符号の積は \(n\) の偶奇のみに依存する。
+  \textbf{符号積}（定義 7.1、命題 7.1）: \(t, R\) 軸の負の符号の軸数から
+  \(P = (-1)^{|\{i : \sigma_i < 0\}|}\) を定義し、各スピン型ごとに \(P\)
+  のとりうる値（一意 or 両値）を分類する。
 \end{enumerate}
 
 これらはすべて本モデルの外部仮定（5 次元超直方体の採用、\(Q\)
@@ -546,16 +606,16 @@
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{10.
+\subsection{9.
 標準模型との対応の解釈例}\label{ux6a19ux6e96ux6a21ux578bux3068ux306eux5bfeux5fdcux306eux89e3ux91c8ux4f8b}
 
 \textbf{本節の内容は本論文の主張ではなく、解釈の一例である。本モデルから標準模型を物理的に導出することを試みるものではない。}
-本節では、§1--§9 で定義・導出した 6
+本節では、§1--§8 で定義・導出した 6
 次元構造とその数学的性質が、標準模型の粒子分類とどのように対応付けうるかの一例を示す。
 
 以下の対応は本モデル内部からは正当化されず、\textbf{外部からの解釈の選択}である。将来、別の対応付けが可能になった場合、本節と並列に追加可能である。
 
-\subsubsection{10.1
+\subsubsection{9.1
 物理的ラベルの割り当て}\label{ux7269ux7406ux7684ux30e9ux30d9ux30ebux306eux5272ux308aux5f53ux3066}
 
 §1.3.2 で述べた通り、5
@@ -568,65 +628,85 @@
 \item
   \(x_4 \to t\): 時間軸
 \item
-  \(x_5 \to R\): 曲率軸（空間の曲率半径に相当）
+  \(x_5 \to R\): 空間スケール軸（主観座標系と 6
+  次元構造の空間的スケールを結びつける軸）
 \item
-  \(Q\): 色ラベル軸（\(0\) = 色中性、\(r, g, b\) = 色荷）
+  \(Q\): ゲージ対称性軸（\(\mathrm{SU}(3)_C \times \mathrm{SU}(2)_L\)
+  の離散的符号化）
 \end{itemize}
 
-\subsubsection{10.2
-クォーク/レプトンへの対応}\label{ux30afux30a9ux30fcux30afux30ecux30d7ux30c8ux30f3ux3078ux306eux5bfeux5fdc}
+\textbf{\(xyzt\) の初期対称性}: 命題 1.1 により \(xyzt\) の 4
+軸は初期状態において完全に対等である。観測においてこのうち 1
+軸が「時間」として分離する過程は、自発的対称性の破れとして解釈される。この対称性の破れにより、荷電粒子（\(t\)
+軸が非零）と中性粒子（\(t\) 軸が零）の区別が生じる。
 
-\(Q\) 軸の値によって粒子の分類が以下のように対応する。
+\subsubsection{\texorpdfstring{9.2 \(Q\) 軸の 8
+値とゲージ対称性の対応}{9.2 Q 軸の 8 値とゲージ対称性の対応}}\label{q-ux8ef8ux306e-8-ux5024ux3068ux30b2ux30fcux30b8ux5bfeux79f0ux6027ux306eux5bfeux5fdc}
+
+\(Q\) 軸の 8 値は 3 ビット \((c_1, c_2, c_3)\) で構成される。この 3
+ビットは 2 つのゲージ自由度を符号化する。
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}cl@{}}
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0400}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2400}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2133}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3067}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
 \toprule\noalign{}
-\(Q\) 値 & 対応 \\
+\begin{minipage}[b]{\linewidth}\centering
+\(Q\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\((c_1, c_2, c_3)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(c_2 c_3\)（色）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(c_1\)（弱アイソスピン）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+対応
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\(0\) & レプトン（色荷なし） \\
-\(r, g, b\) & クォーク（色荷あり） \\
+0 & (0, 0, 0) & 00（無色） & 0（下） & レプトン（中性） \\
+1 & (0, 0, 1) & 01（色1） & 0（下） & クォーク（下型・色1） \\
+2 & (0, 1, 0) & 10（色2） & 0（下） & クォーク（下型・色2） \\
+3 & (0, 1, 1) & 11（色3） & 0（下） & クォーク（下型・色3） \\
+4 & (1, 0, 0) & 00（無色） & 1（上） & レプトン（荷電） \\
+5 & (1, 0, 1) & 01（色1） & 1（上） & クォーク（上型・色1） \\
+6 & (1, 1, 0) & 10（色2） & 1（上） & クォーク（上型・色2） \\
+7 & (1, 1, 1) & 11（色3） & 1（上） & クォーク（上型・色3） \\
 \end{longtable}
 }
 
-同一の幾何学的集合 \((x, y, z, t, R)\) に対して、\(Q\) の値が 4
-通り存在することにより、各世代のフェルミオンはレプトン 1 種とクォーク 3
-色に分岐する。
+\(c_2 c_3 = 00\) の粒子はレプトン（色荷なし）、\(c_2 c_3 \neq 00\)
+の粒子はクォーク（色荷あり）に対応する。\(c_1\)
+は弱アイソスピンの上下を符号化する。
 
-\textbf{電荷の対応}:
-電荷の符号は空間軸の集合符号によって区別される。クォークの分数電荷（\(\pm 1/3, \pm 2/3\)）の分母
-3 は、\(Q\)
-軸の非零値の数（\(|\{r, g, b\}| = 3\)）と一致する。電荷の完全な導出、特に
-\(+2/3\) と \(-1/3\) の非対称性は今後の課題である（§10.9）。
+反粒子は \(Q \to (Q + 4) \bmod 8\) の変換に対応する（\(c_1\)
+ビットの反転）。さらに空間軸の符号反転を伴う。
 
-\textbf{第 7 軸の検討}: 電荷を独立な第 7
-軸として追加する設計も検討したが、非空間軸が 4 本に増えると \(n = 2\)
-の型が \(\binom{4}{2} = 6\)
-種に増加し、超対称性理論と類似の粒子スペクトルを生むことになる。現在の実験的状況（超対称性粒子の未発見）を踏まえ、本稿では電荷を
-\(Q\) 軸の構造と空間軸の符号から読み取る方針を採る。
-
-\subsubsection{10.3 グルーオン 8
+\subsubsection{9.3 グルーオン 8
 状態への対応}\label{ux30b0ux30ebux30fcux30aaux30f3-8-ux72b6ux614bux3078ux306eux5bfeux5fdc}
 
-§3 で数え上げた \(Q\) ラベル間遷移の 9
-状態のうち、色シングレット（\(r\bar{r} + g\bar{g} + b\bar{b}\)）の 1
-状態を除いた \textbf{8 状態をグルーオン \(g_1, \ldots, g_8\)}
-に対応させる。
+§3 で数え上げた \(c_2 c_3\) 遷移 9 通りのうち、対角成分の 1
+つの線形結合（\(\mathrm{SU}(3)\) における色シングレット
+\(r\bar{r} + g\bar{g} + b\bar{b}\) に比例する状態）を除いた \textbf{8
+独立状態をグルーオン \(g_1, \ldots, g_8\)} に対応させる。
 
-標準模型では、グルーオンの 8 状態は \(\mathrm{SU}(3)\) のリー代数
-\(\mathfrak{su}(3)\) の 8
-次元随伴表現として導出される。本解釈では、同じ数 8 が \(Q\) 軸の 4
-ラベル構造から組合せ論的に出るが、\(\mathrm{SU}(3)\) の非可換構造定数
+この \(9 - 1 = 8\) の縮約は、\(\mathrm{SU}(3)\) のリー代数
+\(\mathfrak{su}(3)\) の随伴表現（\(3 \otimes \bar{3} = 1 \oplus 8\)
+分解）に由来する。本モデルの組合せ論からは 9
+通りの遷移対が導出されるが（§3）、そこから 1 状態を除いて 8
+とする操作は表現論的解釈に依存する。\(\mathrm{SU}(3)\) の非可換構造定数
 \(f^{abc}\) は本モデルからは導出されない。
 
-\subsubsection{10.4 ゲージボソン 12
-状態への対応}\label{ux30b2ux30fcux30b8ux30dcux30bdux30f3-12-ux72b6ux614bux3078ux306eux5bfeux5fdc}
+\subsubsection{9.4
+ゲージボソンへの対応}\label{ux30b2ux30fcux30b8ux30dcux30bdux30f3ux3078ux306eux5bfeux5fdc}
 
-§4 で数え上げたスピン 1 集合 13 状態のうち、\(Q\) 固定 9
-状態から色シングレット 1 状態を除いた 8 状態と、\(t\) 固定 2 状態、\(R\)
-固定 2 状態を合わせて \textbf{12 状態をゲージボソン} に対応させる。
+§4 で数え上げたスピン 1
+集合のうち、標準模型のゲージボソンへの対応を以下に示す。
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}llc@{}}
@@ -638,7 +718,7 @@
 \endlastfoot
 \(t\) & \(W^+, W^-\) & 2 \\
 \(R\) & \(\gamma, Z^0\) & 2 \\
-\(Q\) & \(g_1, \ldots, g_8\) & 8 \\
+\(Q\)（\(c_2 c_3\) 遷移, §9.3） & \(g_1, \ldots, g_8\) & 8 \\
 \textbf{合計} & & \textbf{12} \\
 \end{longtable}
 }
@@ -648,21 +728,25 @@
 は、標準模型のゲージボソン状態数
 \(\gamma + g \times 8 + W^+ + W^- + Z^0 = 12\) と一致する。
 
-\subsubsection{10.5 スピン 2
+\(c_1\) 遷移（§3）の 8 状態は、\(W\)
+ボソンによる弱アイソスピン遷移の別の側面として解釈可能であるが、独立な粒子状態としてのカウントは
+§9.10 で扱う。
+
+\subsubsection{9.5 スピン 2
 集合の解釈}\label{ux30b9ux30d4ux30f3-2-ux96c6ux5408ux306eux89e3ux91c8}
 
 §5 で数え上げたスピン 2 集合の 3 型に対して以下の対応を与える。
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1061}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.0909}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.8030}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1625}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1750}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.6625}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 型
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-固定軸
+固定要素
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 対応
 \end{minipage} \\
@@ -672,77 +756,64 @@
 \endlastfoot
 \(tR\) 型 & \(t, R\) & \textbf{グラビトン}（標準模型 +
 重力の枠組みにおける対応） \\
-\(tQ\) 型 & \(t, Q\) & 標準模型に対応する既知粒子なし \\
-\(RQ\) 型 & \(R, Q\) & 標準模型に対応する既知粒子なし \\
+\(t \cdot Q\)-遷移 型 & \(t, Q\)-遷移 &
+標準模型に対応する既知粒子なし \\
+\(R \cdot Q\)-遷移 型 & \(R, Q\)-遷移 &
+標準模型に対応する既知粒子なし \\
 \end{longtable}
 }
 
-命題 7.1 により、3 型すべてが \(P(2) = +1\) であり、§10.7
-の解釈では引力のみを媒介する。\(tR\)
-型については重力の性質（引力のみ）と整合する。\(tQ\) 型と \(RQ\)
+\(tR\) 型については重力の性質（引力のみ）と整合する。\(tQ\) 型と \(RQ\)
 型は、本モデルの組合せ構造から存在が導出される状態であるが、現在の標準模型には対応物がない。
 
-\subsubsection{10.6 スピン 3
+\subsubsection{9.6 スピン 3
 集合の解釈}\label{ux30b9ux30d4ux30f3-3-ux96c6ux5408ux306eux89e3ux91c8}
 
 §6 で数え上げたスピン 3 集合の 1
-型（\(tRQ\)）は、標準模型に対応する既知粒子が存在しない。
+型（\(tRQ\)-遷移）は、標準模型に対応する既知粒子が存在しない。
 
-\subsubsection{\texorpdfstring{10.7 符号積 \(P(n)\)
-と力の方向性の対応}{10.7 符号積 P(n) と力の方向性の対応}}\label{ux7b26ux53f7ux7a4d-pn-ux3068ux529bux306eux65b9ux5411ux6027ux306eux5bfeux5fdc}
+\subsubsection{9.7
+符号積と力の方向性の対応}\label{ux7b26ux53f7ux7a4dux3068ux529bux306eux65b9ux5411ux6027ux306eux5bfeux5fdc}
 
-§7 で定義した符号積 \(P(n) = (-1)^n\)
-に対して、以下の物理的解釈を与える。
+§7 で定義した符号積 \(P\) に対して、以下の物理的解釈を与える。
 
 \begin{itemize}
 \tightlist
 \item
-  \(P(n) = +1\)（\(n\) が偶数）: 力は一方向的（\textbf{引力のみ}）
+  \(P = +1\): 力は一方向的（\textbf{引力のみ}）
 \item
-  \(P(n) = -1\)（\(n\) が奇数）:
-  力は双方向的（\textbf{引力・斥力の両方}）
+  \(P = -1\): 力は双方向的（\textbf{引力・斥力の両方}）
 \end{itemize}
 
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}ccc@{}}
-\toprule\noalign{}
-\(n\) & \(P(n)\) & 力の方向性の解釈 \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-0 & \(+1\) & 方向なし（スカラー場、\(s = 0\)） \\
-1 & \(-1\) & 引力・斥力両方（\(s = 1\)） \\
-2 & \(+1\) & 引力のみ（\(s = 2\)） \\
-3 & \(-1\) & 引力・斥力両方（\(s = 3\)） \\
-\end{longtable}
-}
+命題 7.1 により、スピン 2 の \(tR\) 型は \(P = +1\) と \(P = -1\)
+の両配置を許容する。\(P = +1\) の配置（\(t, R\)
+が同符号）を重力の媒介と解釈すれば引力のみとなり、重力の性質と整合する。\(P = -1\)
+の配置（\(t, R\) が異符号）が物理的に何に対応するかは未解決であり、(a)
+物理的に実現されない配置、(b)
+未知の現象への対応、のいずれかとして今後の課題である。
 
-この解釈の下で、スピン 2 集合の 3 型（\(tR, tQ, RQ\)）はすべて
-\(n = 2\)（偶数）であり引力のみを媒介する。これは重力の性質（引力のみ）と整合する。スピン
-1 の電磁力（\(n = 1\)、引力・斥力両方）とも整合する。
+同様に、スピン 1 の \(t\) 型・\(R\) 型は \(P = \pm 1\)
+の両配置を許容し、引力・斥力の両方を持つ力（電磁力、弱い力）との整合が得られる。スピン
+1 の \(Q\)-遷移型は
+\(P = +1\)（一意）であり、グルーオンの閉じ込め性との関係が示唆される。
 
-\textbf{注記}. この対応は本モデル内部からは正当化されず、\(P(n)\)
-の偶奇と力の方向性の間の物理的機構は本稿では導出されない。
-
-\subsubsection{\texorpdfstring{10.8 \(R\)
-軸の値域と力の結合強度}{10.8 R 軸の値域と力の結合強度}}\label{r-ux8ef8ux306eux5024ux57dfux3068ux529bux306eux7d50ux5408ux5f37ux5ea6}
+\subsubsection{\texorpdfstring{9.8 \(R\)
+軸の値域と力の結合強度}{9.8 R 軸の値域と力の結合強度}}\label{r-ux8ef8ux306eux5024ux57dfux3068ux529bux306eux7d50ux5408ux5f37ux5ea6}
 
 \textbf{\(R\) 軸の値域}: 先行研究 {[}W5{]}
 において、離散空間での中心投影の整数論的条件から
 \(R = \pm n^2 \cdot L_0\)（\(n \in \mathbb{N}\)、\(L_0\)
-は単位長）の離散化が導かれている。ただし本稿の結果はこの離散化を必要とせず、\(R\)
-が連続値をとる場合にも成立する。\(R\)
-軸の値域を非有界と解釈すると、質量スペクトルの非有界性に対応する。
+は単位長）の離散化が導かれている。\(R\) 軸は主観座標系と 6
+次元構造の空間的スケールを結びつける軸であり、質量スペクトルの非有界性に対応する。
 
 \textbf{各力と本モデルの軸の対応の解釈}:
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.0896}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1791}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.4328}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2985}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.0706}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1412}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.5529}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2353}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 力
@@ -757,21 +828,24 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-強い力 & \(g_1\)--\(g_8\) & \(Q\) 軸（色遷移 8 チャンネル） &
-色荷を持つ粒子間のみ \\
+強い力 & \(g_1\)--\(g_8\) & \(Q\) 軸（\(c_2 c_3\) 色遷移 8 チャンネル,
+§9.3） & 色荷を持つ粒子間のみ \\
+弱い力 & \(W^\pm, Z^0\) & \(t\) 軸 + \(Q\) 軸（\(c_1\) 遷移） &
+全フェルミオン \\
 電磁力 & \(\gamma\) & \(R\) 軸 & 非零電荷を持つ粒子間 \\
-弱い力 & \(W^\pm, Z^0\) & \(t\) 軸 & 全フェルミオン \\
-重力 & \(G\) & \(t \wedge R\)（\(n = 2\)） & 全粒子（\(Q\) 非依存） \\
+重力 & \(G\) & \(t, R\) 2 軸非零（\(n = 2\)） & 全粒子（\(Q\)
+非依存） \\
 \end{longtable}
 }
 
-\textbf{注記}. 標準模型における結合定数は \(M_Z\) 付近で
-\(\alpha_s \approx 0.1\), \(\alpha \approx 1/137\),
-\(\alpha_W \approx 1/30\), \(\alpha_G \approx 10^{-39}\)
-であり、強・電磁・弱は同程度のオーダー、重力のみ極端に弱い。この階層構造の定量的導出は今後の課題である。
-
-\subsubsection{10.9 表 A: 確認済み粒子と 6
+\subsubsection{9.9 表 A: 確認済み粒子と 6
 次元集合の対応}\label{ux8868-a-ux78baux8a8dux6e08ux307fux7c92ux5b50ux3068-6-ux6b21ux5143ux96c6ux5408ux306eux5bfeux5fdc}
+
+本表では粒子のみを示す。反フェルミオンは空間軸の符号反転および
+\(Q \to (Q + 4) \bmod 8\) で得られ、反レプトン 6 + 反クォーク 18 = 24
+状態が対応する。ボソンについては \(W^+/W^-\)
+のように表中で粒子・反粒子の対を明示しており、\(\gamma, Z^0, H^0, G\),
+グルーオンは自己共役である。
 
 \textbf{ボソン}:
 
@@ -801,7 +875,8 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-ヒッグス & \(H^0\) & 0 & \((\pm, 0, 0, 0, 0, 0)\) 等 & 0 & 125,250 \\
+ヒッグス & \(H^0\) & 0 & \(xyzt\) のうち任意の 1 軸が非零 & 0 &
+125,250 \\
 \(W\) ボソン & \(W^+\) & 1 & \((0, 0, 0, +, 0, 0)\) & 1 & 80,379 \\
 \(W\) ボソン & \(W^-\) & 1 & \((0, 0, 0, -, 0, 0)\) & 1 & 80,379 \\
 光子 & \(\gamma\) & 1 & \((0, 0, 0, 0, +, 0)\) & 1 & 0 \\
@@ -812,16 +887,24 @@
 \end{longtable}
 }
 
-\textbf{レプトン} (\(Q = 0\)):
+\textbf{検証}: ヒッグス: \(k = 1\)（ボソン型）、\(n = 0\)、\(s = 0\)
+✓。\(W\): \(k = 1\)（ボソン型）、\(t\) が非零で \(n = 1\)、\(s = 1\)
+✓。光子: \(k = 0\)（ボソン型）、\(R\) が非零で \(n = 1\)、\(s = 1\)
+✓。グルーオン: \(k = 0\)（ボソン型）、\(Q\)-遷移で \(n = 1\)、\(s = 1\)
+✓。グラビトン: \(k = 0\)（ボソン型）、\(t, R\) が非零で
+\(n = 2\)、\(s = 2\) ✓。
+
+\textbf{レプトン}:
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2609}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1449}}
-  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.0725}}
-  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.0725}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2899}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1594}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2400}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1333}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0667}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2800}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1467}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 粒子
@@ -833,6 +916,8 @@
 世代
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 集合
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(Q\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 質量 (MeV)
 \end{minipage} \\
@@ -840,30 +925,54 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-電子 & \(e^-\) & 1/2 & 1 & \((+, +, 0, 0, 0, 0)\) & 0.511 \\
-電子ニュートリノ & \(\nu_e\) & 1/2 & 1 & \((+, -, 0, 0, 0, 0)\) &
+電子 & \(e^-\) & 1/2 & 1 & \((+, 0, 0, +, 0, 4)\) & 4 & 0.511 \\
+電子ニュートリノ & \(\nu_e\) & 1/2 & 1 & \((+, +, 0, 0, 0, 0)\) & 0 &
 \(< 10^{-6}\) \\
-ミューオン & \(\mu^-\) & 1/2 & 2 & \((+, 0, +, 0, 0, 0)\) & 105.66 \\
-ミューニュートリノ & \(\nu_\mu\) & 1/2 & 2 & \((+, 0, -, 0, 0, 0)\) &
-\(< 0.17\) \\
-タウ & \(\tau^-\) & 1/2 & 3 & \((0, +, +, 0, 0, 0)\) & 1,776.9 \\
-タウニュートリノ & \(\nu_\tau\) & 1/2 & 3 & \((0, +, -, 0, 0, 0)\) &
+ミューオン & \(\mu^-\) & 1/2 & 2 & \((0, +, 0, +, 0, 4)\) & 4 &
+105.66 \\
+ミューニュートリノ & \(\nu_\mu\) & 1/2 & 2 & \((0, +, +, 0, 0, 0)\) & 0
+& \(< 0.17\) \\
+タウ & \(\tau^-\) & 1/2 & 3 & \((0, 0, +, +, 0, 4)\) & 4 & 1,776.9 \\
+タウニュートリノ & \(\nu_\tau\) & 1/2 & 3 & \((+, 0, +, 0, 0, 0)\) & 0 &
 \(< 15.5\) \\
 \end{longtable}
 }
 
-反レプトンは空間軸の符号を反転した集合に対応する。
+\textbf{検証}: 電子: \(xyzt\) のうち \(x, t\) が非零で
+\(k = 2\)（フェルミオン型）、\(\{R, Q\text{-遷移}\}\)
+はともに非該当（\(R = 0\)、\(Q = 4\) は静的ラベルで遷移ではない）で
+\(n = 0\)、\(s = 0 + 1/2 = 1/2\) ✓。ニュートリノ: \(x, y\) が非零で
+\(k = 2\)（フェルミオン型）、\(n = 0\)、\(s = 1/2\) ✓。
 
-\textbf{クォーク} (\(Q \in \{r, g, b\}\)):
+\textbf{荷電レプトンの特徴}: \(t\)
+軸が非零であり、\(Q = 4\)（\(c_1 = 1, c_2 c_3 = 00\)、弱アイソスピン上・無色）。ニュートリノは
+\(t = 0\)、\(Q = 0\) であり、\(xyzt\) のうち空間軸 2 本のみが非零。
+
+\textbf{世代の区別}: 荷電レプトンでは非零の空間軸 1 本と \(t\) 軸で
+\(k = 2\) を満たし、ニュートリノでは空間軸 2 本で \(k = 2\)
+を満たす。世代ラベルは非零の空間軸によって決定される（世代 1:
+\(x\)、世代 2: \(y\)、世代 3: \(z\)）。
+
+\textbf{世代対応規則}: 同世代のレプトン doublet \(\{\ell^-_n, \nu_n\}\)
+では、\(\nu_n\) の非零 2 空間軸のうち 1 本が \(\ell^-_n\)
+の非零空間軸と一致する。残り 1
+軸の選択は解釈上の自由度であり、本稿では巡回的割り当て（世代 1:
+\(xy\)、世代 2: \(yz\)、世代 3: \(xz\)）を採用する。
+
+反レプトンは空間軸の符号反転および \(Q \to (Q + 4) \bmod 8\)
+に対応する（\(e^+\): \(Q = 4 \to 0\)）。
+
+\textbf{クォーク}:
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.0690}}
-  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.0862}}
-  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.0862}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.4138}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0667}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0833}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0833}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.3500}}
+  >{\centering\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0833}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1667}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 粒子
@@ -875,6 +984,8 @@
 世代
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 集合
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(Q\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 質量 (MeV)
 \end{minipage} \\
@@ -882,27 +993,42 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-アップ & \(u\) & 1/2 & 1 & \((+, +, 0, 0, 0, r/g/b)\) & 2.16 \\
-ダウン & \(d\) & 1/2 & 1 & \((+, -, 0, 0, 0, r/g/b)\) & 4.67 \\
-チャーム & \(c\) & 1/2 & 2 & \((+, 0, +, 0, 0, r/g/b)\) & 1,270 \\
-ストレンジ & \(s\) & 1/2 & 2 & \((+, 0, -, 0, 0, r/g/b)\) & 93.4 \\
-トップ & \(t\) & 1/2 & 3 & \((0, +, +, 0, 0, r/g/b)\) & 172,760 \\
-ボトム & \(b\) & 1/2 & 3 & \((0, +, -, 0, 0, r/g/b)\) & 4,180 \\
+アップ & \(u\) & 1/2 & 1 & \((+, 0, 0, +, 0, 5/6/7)\) & 5,6,7 & 2.16 \\
+ダウン & \(d\) & 1/2 & 1 & \((+, 0, 0, -, 0, 1/2/3)\) & 1,2,3 & 4.67 \\
+チャーム & \(c\) & 1/2 & 2 & \((0, +, 0, +, 0, 5/6/7)\) & 5,6,7 &
+1,270 \\
+ストレンジ & \(s\) & 1/2 & 2 & \((0, +, 0, -, 0, 1/2/3)\) & 1,2,3 &
+93.4 \\
+トップ & \(t\) & 1/2 & 3 & \((0, 0, +, +, 0, 5/6/7)\) & 5,6,7 &
+172,760 \\
+ボトム & \(b\) & 1/2 & 3 & \((0, 0, +, -, 0, 1/2/3)\) & 1,2,3 & 4,180 \\
 \end{longtable}
 }
 
-各クォークは \(Q = r, g, b\) の 3
-色状態を持つ。反クォークは空間軸の符号反転かつ \(Q\) の反色に対応する。
+\textbf{検証}: アップクォーク: \(xyzt\) のうち \(x, t\) が非零で
+\(k = 2\)（フェルミオン型）、\(Q = 5\) は静的ラベル（遷移ではない）で
+\(n = 0\)、\(s = 0 + 1/2 = 1/2\) ✓。
 
-\textbf{集計（\(s = 0, 1/2, 1, 2\) の SM 対応可能な状態）}:
+\textbf{クォークの特徴}: 全クォークは \(t\)
+軸が非零。上型クォーク（\(u, c, t\)）は \(t > 0\) で
+\(Q \in \{5, 6, 7\}\)（\(c_1 = 1\)、弱アイソスピン上・色あり）。下型クォーク（\(d, s, b\)）は
+\(t < 0\) で
+\(Q \in \{1, 2, 3\}\)（\(c_1 = 0\)、弱アイソスピン下・色あり）。\(t\)
+軸の符号が電荷の符号構造を反映する。
+
+各クォークは \(Q\) の色値（\(c_2 c_3 \in \{01, 10, 11\}\)）の 3
+色状態を持つ。反クォークは空間軸の符号反転かつ \(Q \to (Q + 4) \bmod 8\)
+に対応する。
+
+\textbf{集計}:
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2211}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0526}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2842}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1474}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2947}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2674}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0581}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1860}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1628}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3256}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 分類
@@ -922,38 +1048,38 @@ SM 対応
 ヒッグス & 0 & 0 & 1 & 1 \\
 ゲージボソン (\(t\) 型) & 1 & 0 & 2 & \(W^+, W^-\) \\
 ゲージボソン (\(R\) 型) & 1 & 0 & 2 & \(\gamma, Z^0\) \\
-グルーオン (\(Q\) 型) & 1 & 遷移 & 9 & 8（色シングレット 1 を除く） \\
+グルーオン (\(Q\)-遷移型) & 1 & 遷移 & 8 & \(g_1, \ldots, g_8\) \\
 グラビトン (\(tR\) 型) & 2 & 0 & 1 & \(G\)（SM 外） \\
-レプトン & 1/2 & 0 & 6 & 6 \\
-反レプトン & 1/2 & 0 & 6 & 6 \\
-クォーク & 1/2 & \(r, g, b\) & 18 & 18 \\
-反クォーク & 1/2 & \(\bar{r}, \bar{g}, \bar{b}\) & 18 & 18 \\
-\textbf{小計} & & & \textbf{63} & \textbf{62（61 + G）} \\
+レプトン & 1/2 & 0 or 4 & 6 & 6 \\
+反レプトン & 1/2 & 0 or 4 & 6 & 6 \\
+クォーク & 1/2 & 1,2,3 or 5,6,7 & 18 & 18 \\
+反クォーク & 1/2 & 1,2,3 or 5,6,7 & 18 & 18 \\
+\textbf{小計} & & & \textbf{62} & \textbf{62（61 + G）} \\
 \end{longtable}
 }
 
-（本モデル 63 状態 = SM 対応 62 状態 + 色シングレット 1 状態）。62
-状態は標準模型 61 状態 + グラビトン 1 状態にマッピングされる。残り 1
-状態（\(Q\)
-遷移の色シングレット）は本モデルでは導出されるが、標準模型では独立なゲージボソンに対応しない。
+62 状態は標準模型 61 状態 + グラビトン 1
+状態にマッピングされる。旧モデル（\(Q = 4\)
+値）における色シングレット余剰 1 状態は、\(Q = 8\)
+値への拡張により解消されている。
 
-上記に加え、\(s = 3/2, 2, 5/2, 3, 7/2\) の組合せ（表
-B、§10.10）が本モデルから導出されるが、標準模型に対応する既知粒子は存在しない。
+上記に加え、\(s = 3/2, 2, 5/2, 3\) の組合せ（表
+B、§9.10）が本モデルから導出されるが、標準模型に対応する既知粒子は存在しない。
 
-\subsubsection{10.10 表 B:
+\subsubsection{9.10 表 B:
 標準模型に対応物のない組合せ}\label{ux8868-b-ux6a19ux6e96ux6a21ux578bux306bux5bfeux5fdcux7269ux306eux306aux3044ux7d44ux5408ux305b}
 
 本モデルの組合せ構造から導出されるが、標準模型に対応する既知粒子が存在しない状態を以下に列挙する。これらは本モデル内の組合せ論的帰結であり、未発見粒子の存在を主張するものではない。
 
-\textbf{ボソン（\(xyz\) 全軸 \(0\)）}:
+\textbf{ボソン（\(xyzt\) の非零軸数 \(k \neq 2\)）}:
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1159}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0725}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0725}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.4928}}
-  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2464}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1039}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0649}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.0649}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.5195}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2468}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 型
@@ -971,142 +1097,183 @@ B、§10.10）が本モデルから導出されるが、標準模型に対応す
 \bottomrule\noalign{}
 \endlastfoot
 \(tQ\) 型 & 2 & 2 & \((0, 0, 0, \pm, 0, Q_i \to Q_j)\) &
-\(2 \times 9 = 18\) \\
+\(2 \times N_Q\) \\
 \(RQ\) 型 & 2 & 2 & \((0, 0, 0, 0, \pm, Q_i \to Q_j)\) &
-\(2 \times 9 = 18\) \\
+\(2 \times N_Q\) \\
 \(tRQ\) 型 & 3 & 3 & \((0, 0, 0, \pm, \pm, Q_i \to Q_j)\) &
-\(4 \times 9 = 36\) \\
+\(4 \times N_Q\) \\
 \end{longtable}
 }
 
-\textbf{フェルミオン（\(xyz\) のうち 2 本非零、1 本 \(0\)）}:
+ここで \(N_Q\) は \(Q\) 遷移の状態数であり、\(c_2 c_3\) 遷移 9 状態 +
+\(c_1\) 遷移 8 状態 = 17 通りである（§3）。§9.3 の解釈で \(c_2 c_3\)
+遷移を \(9 \to 8\) に縮約する場合は \(N_Q = 16\) となる。
+
+\textbf{フェルミオン（\(xyzt\) の非零軸数 \(k = 2\)、ただし表 A
+に含まれない組合せ）}:
+
+\(Q = 8\)
+値への拡張により、フェルミオン型の組合せは大幅に増加する。\(xyzt\) から
+2 軸を選ぶ \(\binom{4}{2} = 6\) 通り × 各軸の符号 \(2^2 = 4\) 通り ×
+\(Q\) 値 8 通り = \(6 \times 4 \times 8 = 192\)
+個のフェルミオン状態が存在する。このうち表 A に対応付けられた 48
+状態（レプトン 6 + 反レプトン 6 + クォーク 18 + 反クォーク
+18）を除いた残りが未対応状態である。
+
+高スピンフェルミオン（\(R\) 軸または \(Q\)-遷移が非零で \(n \geq 1\)）:
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1455}}
-  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.0909}}
-  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.0909}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2545}}
-  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.3091}}
-  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1091}}@{}}
+\begin{longtable}[]{@{}lccl@{}}
 \toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-型
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\(s\)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\(n\)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-非零の非空間軸
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-空間側パターン数
-\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
-\(Q\) 値
-\end{minipage} \\
+型 & \(s\) & \(n\) & 非零の追加軸 \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\(t\) 型 & 3/2 & 1 & \(t\) & \(3 \times 4 = 12\) & 4 \\
-\(R\) 型 & 3/2 & 1 & \(R\) & 12 & 4 \\
-\(Q\) 型 & 3/2 & 1 & \(Q\)（非零） & 12 & 3 \\
-\(tR\) 型 & 5/2 & 2 & \(t, R\) & 12 & 4 \\
-\(tQ\) 型 & 5/2 & 2 & \(t, Q\) & 12 & 3 \\
-\(RQ\) 型 & 5/2 & 2 & \(R, Q\) & 12 & 3 \\
-\(tRQ\) 型 & 7/2 & 3 & \(t, R, Q\) & 12 & 3 \\
+\(R\) 型 & 3/2 & 1 & \(R\) \\
+\(Q\)-遷移型 & 3/2 & 1 & \(Q\)（遷移） \\
+\(RQ\) 型 & 5/2 & 2 & \(R, Q\)（遷移） \\
 \end{longtable}
 }
 
-\textbf{注記}. 空間側パターン数 12 は、零にする軸の選び方
-\(\binom{3}{1} = 3\) 通り × 非零 2 軸の符号 \(2^2 = 4\)
-通りに由来する。\(Q\) 値は \(Q = 0\) を含む場合 4 通り、\(Q\)
-軸が非零の場合は \(\{r, g, b\}\) の 3 通りである。
+これらの高スピンフェルミオンは \(xyzt\) の 2 軸が非零に加えて \(R\) や
+\(Q\)-遷移が非零となる状態であり、超対称性理論のパートナー粒子とは異なる起源を持つ。
 
-\subsubsection{10.11
-解釈例における未解決問題}\label{ux89e3ux91c8ux4f8bux306bux304aux3051ux308bux672aux89e3ux6c7aux554fux984c}
+\subsubsection{9.11
+解釈例における新たな構造的帰結と未解決問題}\label{ux89e3ux91c8ux4f8bux306bux304aux3051ux308bux65b0ux305fux306aux69cbux9020ux7684ux5e30ux7d50ux3068ux672aux89e3ux6c7aux554fux984c}
 
-以下は本節の解釈の範囲における未解決問題である。
+\textbf{9.11.1 \(xyzt\) 軸の初期対称性と値の構造}
 
-\textbf{10.11.1 質量比の導出}
+\(xyzt\) の 4
+軸は初期対称性において完全対等であるから、各軸は同種の値（正の整数値）をとることが期待される。ただし、非零軸の本数に応じて
+4 種類の値 \(v_1, v_2, v_3, v_4\)（それぞれ非零軸 1 本、2 本、3 本、4
+本の場合）が存在し、これらは一般に異なる。
 
-本モデルの集合構造から既知の粒子質量比を導出することは今後の課題である。
+構造的に確定しているのは、\(v_1 \neq v_2 \neq v_3 \neq v_4\)
+が許容されるという点のみである。以下はすべて\textbf{解釈上の推測}であり、本モデル内部からは導出されない。
 
-\begin{itemize}
-\tightlist
-\item
-  \(m_\mu / m_e \approx 206.8\): 世代間の質量比
-\item
-  \(m_W / m_Z \approx 0.881\): ワインバーグ角との関係
-\item
-  \(m_t / m_e \approx 3.4 \times 10^5\): 最大質量比
-\end{itemize}
+\textbf{次元解析との関係}: 先行研究 {[}W5{]}
+の中心投影モデルにおいて、空間的長さ \(L\) と質量 \(M\) は
+\(M = L\)（自然単位系）の次元関係を持つ。この関係を本モデルに適用すると、\(xyzt\)
+軸の座標値の絶対値の合計が質量計量 \(M(\sigma)\)
+に関係する可能性がある。すなわち、集合 \(\sigma = (x, y, z, t, R, Q)\)
+に対して
 
-\textbf{10.11.2 ゲージ群の導出}
+\[M(\sigma) \sim \sum_{i \in \{x, y, z, t\}} |x_i|\]
 
-\(Q\) 軸の 4 ラベル構造と \(\mathrm{SU}(3)\)、\(t\) 軸の 2 値と
-\(\mathrm{SU}(2)\)、\(R\) 軸の連続スケールと \(\mathrm{U}(1)\)
-の間の対応が示唆されるが、離散構造から連続的ゲージ群への移行の厳密な機構は未証明である。特にグルーオンの個数
-8 は再現できるが、非可換構造定数 \(f^{abc}\) の情報は導出されない。
+が質量の起源となりうる。ただし、\(R\) 軸（空間スケール軸）および \(Q\)
+軸（ゲージ対称性軸）がこの計量にどのように関与するかは未確定であり、
 
-\textbf{10.11.3 CKM 行列と PMNS 行列}
+\[M(\sigma) \sim f\!\left(\sum |x_i|,\, R,\, Q\right)\]
 
-世代間の混合（CKM 行列、PMNS 行列）が、\(S_3\)
+のような \(R, Q\) を含むより一般的な形式である可能性も排除されない。
+
+\textbf{\(v_1 \gg v_2\) の推測}: ヒッグスボソン（\(k = 1\)、非零軸 1
+本、\(v_1\)）の質量が \(125{,}250\) MeV
+であるのに対し、フェルミオン（\(k = 2\)、非零軸 2
+本、\(v_2\)）の大半は遥かに軽い（電子 \(0.511\) MeV、ニュートリノは
+\(< 10^{-6}\) MeV）。上記の次元解析的推測が正しいならば、\(v_1 \gg v_2\)
+でなければならず、1 軸のみ非零の場合の座標値は 2
+軸非零の場合よりも大幅に大きいことが示唆される。
+
+\textbf{\(k = 3, 4\) の未発見問題との関係}: \(xyzt\) のうち 3 本または 4
+本が非零（\(k = 3, 4\)）の状態は、ボソン型（\(k \neq 2\)）として本モデルから導出されるが、表
+A に対応する既知粒子は存在しない。これらの状態に対応する値 \(v_3, v_4\)
+が極めて小さい（あるいは零に近い）場合、対応する粒子のエネルギースケールが現在の実験的到達範囲を超える可能性がある。逆に
+\(v_3, v_4\)
+が極めて大きい場合は、安定性の問題から物理的に実現されない可能性もある。いずれにせよ、\(k = 3, 4\)
+の状態が未発見であることと \(xyzt\)
+軸の値の構造は密接に関連している可能性がある。
+
+\textbf{9.11.2 \(Q = 0\) 制約と自由粒子}
+
+\(Q = 0\)
+はゲージ対称性軸上で中性であることを意味する。解釈として、\(Q = 0\)
+の粒子のみが自由粒子として観測可能であるという制約が考えられる。これはクォークの閉じ込め（\(Q \neq 0\)
+の粒子は単独で観測されない）の幾何学的起源として解釈可能である。
+
+\textbf{9.11.3 未発見粒子の予言}
+
+\(Q\) 軸の 4 値から 8
+値への拡張により、本モデルから導出される組合せ状態は大幅に増加した。表 A
+の 62 状態を超えるこれらの組合せは、(a) 未発見粒子の予言、(b)
+物理的に実現されない組合せ（選択則の存在）、(c)
+本解釈の限界、のいずれかとして今後の研究で検討される。
+
+特に、高スピンフェルミオン（\(s = 3/2, 5/2\)）および追加ボソン（\(tQ\)
+型、\(RQ\) 型のスピン 2、\(tRQ\) 型のスピン
+3）は、既知粒子に対応物を持たない。
+
+\textbf{9.11.4 質量比の導出}
+
+本モデルの集合構造から既知の粒子質量比を導出することは今後の課題である。§9.11.1
+で述べた \(xyzt\) 軸の 4 種の値 \(v_1, v_2, v_3, v_4\)
+の具体的な比、および \(R\) 軸・\(Q\) 軸の質量計量 \(M(\sigma)\)
+への関与の形式が、この問題の鍵となる可能性がある。特に \(v_1 \gg v_2\)
+の関係（§9.11.1）が確認されれば、ヒッグスボソンとフェルミオンの質量階層に対する幾何学的説明が得られる。
+
+\textbf{9.11.5 ゲージ群の導出}
+
+\(Q\) 軸の 8 値（3 ビット構造）と
+\(\mathrm{SU}(3)_C \times \mathrm{SU}(2)_L\)、\(R\) 軸の連続スケールと
+\(\mathrm{U}(1)_Y\)
+の間の対応が示唆されるが、離散構造から連続的ゲージ群への移行の厳密な機構は未証明である。
+
+\textbf{9.11.6 CKM 行列と PMNS 行列}
+
+世代間の混合（CKM 行列、PMNS 行列）が、\(xyz\) 軸の \(S_3\)
 対称性の破れとしてどのように導出されるかは未解決である。
 
-\textbf{10.11.4 ヒッグス機構}
+\textbf{9.11.7 ヒッグス機構}
 
-ヒッグスボソンは
-\(n = 0\)（空間軸のみ）に対応するが、ヒッグス場による自発的対称性の破れがこの枠組みでどう理解されるかは今後の課題である。
+ヒッグスボソンは \(xyzt\) のうち 1
+軸のみ非零（\(k = 1\)）に対応するが、ヒッグス場による自発的対称性の破れがこの枠組みでどう理解されるかは今後の課題である。
 
-\textbf{10.11.5 電荷値の完全な導出}
+\textbf{9.11.8 電荷値の完全な導出}
 
-空間軸の集合符号から電荷符号が、\(Q\)
-軸セクターから電荷の絶対値の単位（1 vs 1/3）が読み取れるが、\(+2/3\) と
-\(-1/3\) の非対称性は本解釈の最も目立つ未解決問題である。
+\(t\) 軸の符号から電荷の正負が、\(Q\) 軸の \(c_2 c_3\)
+から色荷の有無と電荷の絶対値（1 vs 1/3）が読み取れるが、\(+2/3\) と
+\(-1/3\) の非対称性の完全な導出は今後の課題である。
 
-\textbf{10.11.6 \(s = 2, 3\) ボソンの追加予言}
-
-\(tQ\) 型、\(RQ\) 型のスピン 2 ボソン、および \(tRQ\) 型のスピン 3
-ボソンが存在するならば、その実験的帰結を明らかにする必要がある。
-
-\subsubsection{10.12
+\subsubsection{9.12
 解釈例の結論}\label{ux89e3ux91c8ux4f8bux306eux7d50ux8ad6}
 
-本節では、§1--§9 で定義・導出した 6
+本節では、§1--§8 で定義・導出した 6
 次元構造の数学的性質を、標準模型の粒子分類と対応付ける一例を示した。
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  スピン種数
-  8（\(s = 0, 1/2, 1, 3/2, 2, 5/2, 3, 7/2\)）のうち、\(s = 0, 1/2, 1, 2\)
-  の 63 状態のうち 62 状態が標準模型の既知粒子（61 +
-  グラビトン）にマッピング可能（残り 1 状態は色シングレット）
+  \(Q\) 軸の 8 値（3 ビット構造）が
+  \(\mathrm{SU}(3)_C \times \mathrm{SU}(2)_L\)
+  ゲージ対称性を離散的に符号化する
 \item
-  \(Q\) 軸の 4 値が色荷とレプトン/クォーク分岐に対応
+  \(xyzt\) 4
+  軸の初期対称性から、スピンの定義が自然に導かれる（フェルミオン:
+  \(k = 2\)、ボソン: \(k \neq 2\)）
 \item
-  \(Q\) ラベル間遷移 9 通りのうち 8
-  状態がグルーオンに対応（色シングレット 1 状態は対応物なし）
+  62 状態が標準模型の既知粒子（61 + グラビトン）にマッピング可能
 \item
-  スピン 1 集合の 13 状態のうち 12 状態が標準模型のゲージボソンに対応
+  \(c_2 c_3\) 遷移 9 通りのうち色シングレットを除いた 8
+  状態がグルーオンに対応（\(9 \to 8\) の縮約は \(\mathrm{SU}(3)\)
+  表現論に依存）
 \item
-  スピン 2 集合の \(tR\) 型がグラビトンに対応。\(tQ\) 型と \(RQ\)
-  型は本モデルから導出されるが標準模型に対応物がない
+  スピン 1 集合の 12 状態が標準模型のゲージボソンに対応
 \item
-  スピン 3 集合の \(tRQ\) 型も同様に対応物がない
+  荷電フェルミオンは \(t\) 軸が非零であり、電荷の正負が \(t\)
+  の符号に対応する
 \item
-  \(s = 3/2, 5/2, 7/2\)
-  のフェルミオン型も組合せ論的に存在するが既知粒子に対応しない（表 B）
+  \(Q = 0\) 制約がクォーク閉じ込めの幾何学的起源として解釈可能
 \item
-  力ごとの関与軸の種類が結合強度の階層の定性的起源として解釈可能
+  \(xyzt\) 軸の値の構造（4
+  種の正整数値）が質量階層の起源を含む可能性がある
+\item
+  高スピン状態および \(Q = 8\)
+  値拡張に伴う余剰状態は未発見粒子の予言または選択則の存在を示唆する
 \end{enumerate}
 
-本モデルは標準模型の既知粒子を\textbf{超過}する組合せを導出する。これらの「余剰状態」は本解釈における未解決問題であり、(a)
-未発見粒子の予言、(b) 物理的に実現されない組合せ（選択則の存在）、(c)
-本解釈の限界、のいずれかとして今後の研究で検討される。
-
-具体的な質量値、電荷値、ゲージ群の非可換構造、世代混合行列の導出は今後の課題である（§10.11）。
+具体的な質量値、電荷値、ゲージ群の非可換構造、世代混合行列の導出は今後の課題である（§9.11）。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
