@@ -1,0 +1,835 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  a4paper,11pt]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp}
+\else
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  \setmainfont[]{Times New Roman}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Hiragino Mincho ProN}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Hiragino Mincho ProN}
+  \fi
+\fi
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{%
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath}
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{%
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{%
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none}
+\usepackage{calc}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
+\urlstyle{same}
+\usepackage{hyperref}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{amsthm}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定義}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{注意}
+\newtheorem{observation}[theorem]{観察}
+\begin{document}
+\section{形不変波の相互作用------軸方向変位転送・波束変形・因果の遡及的構成}\label{ux5f62ux4e0dux5909ux6ce2ux306eux76f8ux4e92ux4f5cux7528ux8ef8ux65b9ux5411ux5909ux4f4dux8ee2ux9001ux6ce2ux675fux5909ux5f62ux56e0ux679cux306eux9061ux53caux7684ux69cbux6210}
+
+\textbf{著者}: 木原 範昭 (Noriaki Kihara)\\
+\textbf{所属}: WF System Co., Ltd.\\
+\textbf{ORCID}: 0009-0004-6753-4020\\
+\textbf{版}: v1.0\\
+\textbf{日付}: 2026 年 4 月
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+姉妹論文{[}3{]}で導入した形不変波の3モード分類（方向制約波
+\(\kappa = 2\)、球状波 \(\kappa = 0\)、定常波
+\(\kappa = 1\)）を基盤として、異なるモード間の相互作用を統一的に記述する。相互作用の基本機構は\textbf{軸方向変位転送}------球状波が保持する非ゼロ軸の方向に沿って方向制約波の状態ベクトル
+\((\mathbf{k}, \Delta\mathbf{k})\)
+が変化すること------として定義され、4種の力（電磁気力・弱い力・強い力・重力）はこの同一操作の異なる軸への適用として統一される。定常波（\(\kappa = 1\)）との結合は、方向制約波の伝搬速度比
+\(|k_x / k_t|\) を修正し質量の幾何学的起源を与える。保存量
+\(\int |\psi|^2 \, dV\)
+のもとでのエネルギー転送は波束の振幅と幅を反比例的に変形させ、この変形が「波束の収縮」の力学的記述を与える。\(k_t = 0\)
+の球状波が媒介する相互作用は因果順序を内在せず、相互作用結果から最短測地線経路と波束の局在化が遡及的に構成される。
+
+\textbf{キーワード}: 形不変波, 軸方向変位転送, 波束変形, 質量の起源,
+因果の遡及的構成, 保存則
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§1
+導入と主張範囲}\label{ux5c0eux5165ux3068ux4e3bux5f35ux7bc4ux56f2}
+
+本論文は、姉妹論文{[}1{]}--{[}3{]}で構築した形不変波の枠組みの上で、異なるモードの波の間の相互作用を統一的に記述し、その帰結として質量の起源・力の分類・波束変形・因果構造を幾何学的に導出する。
+
+本論文の主張は以下の5点に限定される:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  全ての相互作用は、球状波の非ゼロ軸に沿った変位転送として統一的に記述される。力の種類の違いは転送される軸の違いのみに帰着する。
+\item
+  定常波（\(\kappa = 1\)）との結合は方向制約波の速度比を修正し、質量の幾何学的起源を与える。
+\item
+  保存量 \(\int |\psi|^2 \, dV\)
+  のもとでのエネルギー転送は波束の形状を決定論的に変形させ、この変形が観測における「波束の収縮」に対応する。
+\item
+  \(k_t = 0\)
+  の球状波が媒介する相互作用は因果順序を内在せず、経路と局在化が結果から遡及的に構成される。
+\item
+  方向制約波間の相互作用の符号（引力 / 斥力）は、\(t\)
+  軸成分の相対符号により幾何学的に決定される。
+\end{enumerate}
+
+以下の要素は \textbf{本論文の主張範囲外} である:
+
+\begin{itemize}
+\tightlist
+\item
+  結合定数の数値的導出（\(\alpha\), \(G_F\), \(\alpha_s\), \(G\)
+  の具体値）
+\item
+  散乱断面積・崩壊幅の定量的計算
+\item
+  繰り込みおよび実行結合定数のスケール依存性
+\item
+  ゲージ群の連続極限における厳密な再構成
+\end{itemize}
+
+\textbf{物理的命名に関する注記}: 本論文では {[}4{]}
+の表Aとの対応を前提として物理的命名（光子、グラビトン、電子、フレーバー、色荷等）を用いるが、これは解釈の便宜のためであり、各命題の幾何学的内実は物理的同定に依存しない。命題はすべて波動ベクトルの成分構造（\(\kappa\),
+\(k_t\), 軸の種類）のみから導かれる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§2
+相互作用の統一的定義}\label{ux76f8ux4e92ux4f5cux7528ux306eux7d71ux4e00ux7684ux5b9aux7fa9}
+
+\subsubsection{§2.1 二層構造}\label{ux4e8cux5c64ux69cbux9020}
+
+{[}2{]}の§8で導入した接束 \(\mathbb{Z}^4 \times \mathbb{Z}^4\)
+において、方向制約波（\(\kappa = 2\)）の状態は:
+
+\[(\mathbf{k},\; \Delta\mathbf{k}) \in \mathbb{Z}^4 \times \mathbb{Z}^4\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathbf{k}\): \textbf{静的ラベル}（波の種類、{[}4{]}の表Aに対応）
+\item
+  \(\Delta\mathbf{k}\): \textbf{動的状態}（エネルギー・運動量に対応）
+\end{itemize}
+
+\subsubsection{§2.2
+軸方向変位転送}\label{ux8ef8ux65b9ux5411ux5909ux4f4dux8ee2ux9001}
+
+\textbf{定義 2.1}（軸方向変位転送）:
+球状波（\(\kappa = 0\)）が方向制約波（\(\kappa = 2\)）と相互作用するとき、方向制約波の状態が以下のように変化する:
+
+\[(\mathbf{k},\; \Delta\mathbf{k}) \;\longrightarrow\; (\mathbf{k} + \delta\mathbf{k},\; \Delta\mathbf{k} + \delta(\Delta\mathbf{k}))\]
+
+ここで変位 \(\delta\mathbf{k}\) と \(\delta(\Delta\mathbf{k})\)
+は以下の条件を満たす:
+
+\textbf{(I1) 軸方向性}: \(\delta\mathbf{k}\) および
+\(\delta(\Delta\mathbf{k})\)
+の非ゼロ成分は、球状波の{[}4{]}表Aにおける非ゼロ軸方向のみに存在する。
+
+\textbf{(I2) 保存則}:
+相互作用に関与する全ての波の接束状態の総和が保存される:
+
+\[\sum_i (\mathbf{k}_i + \Delta\mathbf{k}_i) = \text{const}\]
+
+\textbf{(I3) 波束保存}: 各波の保存量 \(\int |\psi|^2 \, dV\)
+が個別に保存される。
+
+\subsubsection{§2.3
+静的ラベル変化と動的状態変化}\label{ux9759ux7684ux30e9ux30d9ux30ebux5909ux5316ux3068ux52d5ux7684ux72b6ux614bux5909ux5316}
+
+軸方向変位転送は2つの質的に異なる変化を含む:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3438}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1875}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3125}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1562}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+変化の種類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+対象
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+物理的意味
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+例
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\delta\mathbf{k} \neq 0\) & 静的ラベル \(\mathbf{k}\) & 波の種類の変換
+& フレーバー転換、色荷交換 \\
+\(\delta(\Delta\mathbf{k}) \neq 0\) & 動的状態 \(\Delta\mathbf{k}\) &
+エネルギー・運動量の変化 & 散乱、加速 \\
+\end{longtable}
+}
+
+球状波の種類により、どちらが（あるいは両方が）支配的かが決まる。
+
+\subsubsection{§2.4
+4種の力の統一}\label{ux7a2eux306eux529bux306eux7d71ux4e00}
+
+{[}4{]}の表Aにおける球状波の非ゼロ軸構造から、4種の力が同一操作の異なる軸への適用として記述される:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+力
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+球状波
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+非ゼロ軸
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+支配的変化
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+電磁気力 & \(\gamma\; (0,0,0,0,R,0)\) & \(R\) &
+\(\delta(\Delta\mathbf{k})\)（運動量変化） \\
+弱い力 & \(W^{\pm}\; (0,0,0,\pm t,0,0)\) & \(t\) &
+\(\delta\mathbf{k}\)（ラベル変化） \\
+強い力 & \(g\; (0,0,0,0,0,Q_i)\) \({}^{*}\) & \(Q\) &
+\(\delta\mathbf{k}\)（ラベル変化） \\
+重力 & \(G\; (0,0,0,\pm t,\pm R,0)\) & \(t, R\) &
+\(\delta(\Delta\mathbf{k})\)（エネルギー変化） \\
+\end{longtable}
+}
+
+\({}^{*}\) \(\gamma\), \(W^{\pm}\), \(G\) は \(t\) 軸や \(R\)
+軸に静的な非ゼロ成分を持つ球状波であるのに対し、\(g\) は \(Q\)
+軸上の離散ラベル値 \(Q_i\) を持つ球状波が、異なるラベル値 \(Q_j\)
+の波に遷移することで色荷交換を媒介する。すなわち \(g\)
+の「非ゼロ軸」は固定値ではなく \(Q\) ラベルの変化として作用する（§6
+で詳述）。
+
+\textbf{命題 2.1}:
+4種の力はすべて定義2.1の軸方向変位転送として記述され、力の種類の違いは転送される軸の違いのみに帰着する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§3
+質量の起源：定常波との結合}\label{ux8ceaux91cfux306eux8d77ux6e90ux5b9aux5e38ux6ce2ux3068ux306eux7d50ux5408}
+
+\subsubsection{§3.1
+結合の幾何学的構造}\label{ux7d50ux5408ux306eux5e7eux4f55ux5b66ux7684ux69cbux9020}
+
+定常波モード（\(\kappa = 1\),
+{[}3{]}§5）は空間1軸に沿った基底モードとして主観空間 \(S^3\)
+全体を充填する。方向制約波（\(\kappa = 2\)）はこの定常波の背景を通って伝搬する。
+
+方向制約波 \(\mathbf{k} = (k_x, 0, 0, k_t)\) と定常波
+\(\mathbf{k}_H = (k_{H}, 0, 0, 0)\) は、空間 \(x\)
+軸を共有する。この共有軸上で波の位相構造が重なり合い、結合が生じる。
+
+\subsubsection{§3.2
+速度比の修正}\label{ux901fux5ea6ux6bd4ux306eux4feeux6b63}
+
+結合のない方向制約波の伝搬速度は \(v = k_x / k_t\)
+である。定常波との結合は \(x\)
+軸方向の位相構造に影響を与え、実効的な空間成分を修正する:
+
+\[k_x \;\longrightarrow\; k_x^{\text{eff}} = k_x - \delta k_H\]
+
+ここで \(\delta k_H > 0\)
+は定常波との結合強度に比例する。符号が負（減算）となるのは、定常波の背景位相構造が方向制約波の空間位相と逆位相で重なり合い、実効的な空間位相変化を相殺する方向に結合するためである。結合後の伝搬速度は:
+
+\[v^{\text{eff}} = \frac{k_x^{\text{eff}}}{k_t} = \frac{k_x - \delta k_H}{k_t} < \frac{k_x}{k_t} = v\]
+
+速度が減少する --- これが\textbf{質量}の幾何学的起源である。
+
+\textbf{命題 3.1}:
+定常波（\(\kappa = 1\)）との結合は方向制約波の実効的空間成分を減少させ、伝搬速度を
+\(v < c\) に制限する。この速度制限が質量として観測される。
+
+\subsubsection{§3.3
+結合しない波}\label{ux7d50ux5408ux3057ux306aux3044ux6ce2}
+
+球状波（\(\kappa_s = 0\)）は空間成分を持たない。定常波は空間1軸に位相構造を持つが、球状波には共有する空間軸が存在しない。
+
+\textbf{命題 3.2}: \(\kappa_s = 0\)
+の球状波は定常波との結合軸を持たず、\(\delta k_H = 0\) となる。速度は
+\(v = c\) のまま修正されない。
+
+{[}4{]}の表Aにおいて \(\kappa_s = 0\) のゲージボソン（\(\gamma\),
+\(g\)）が質量ゼロであることと整合する。\(W^{\pm}\) と \(Z^0\) は
+\(\kappa_s = 0\)
+であるため命題3.2の空間軸を通じた直接結合は持たないが、\(t\) 軸または
+\(R\)
+軸を通じた間接的な定常波結合機構により質量を獲得しうる。命題3.2は空間軸の直接共有による結合のみを扱っており、\(t\)
+軸や \(R\)
+軸を経由する間接的な結合機構の詳細は本論文の主張範囲外である。
+
+\subsubsection{§3.4 質量階層}\label{ux8ceaux91cfux968eux5c64}
+
+結合強度 \(\delta k_H\)
+は、方向制約波と定常波の空間軸上での重なり積分に依存する。{[}3{]}の§3.3で示した世代構造（空間軸
+\(k_1, k_2, k_3\) の選択）により、3世代の間で重なり積分が異なりうる。
+
+\(S^3\) 上で3つの空間軸は \(\mathrm{SO}(3)\)
+対称性により局所的には等価だが、大域的な定常波モードとの結合においては非等価となりうる。これが世代間の質量差の幾何学的起源を示唆するが、具体的な質量比の導出は本論文の主張範囲外である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§4
+電磁相互作用と散乱}\label{ux96fbux78c1ux76f8ux4e92ux4f5cux7528ux3068ux6563ux4e71}
+
+\subsubsection{§4.1
+光子による変位転送}\label{ux5149ux5b50ux306bux3088ux308bux5909ux4f4dux8ee2ux9001}
+
+光子 \(\gamma = (0, 0, 0, 0, +, 0)\) は \(R\)
+軸に非ゼロ成分を持つ球状波である。\(R\)
+軸は中心投影の径方向に対応し、\(\mathbb{Z}^4\) 上では動的状態
+\(\Delta\mathbf{k}\) の変化として作用する。
+
+方向制約波（電子型）\((k_x, 0, 0, k_t)\) が光子を吸収するとき:
+
+\[\Delta\mathbf{k} \;\longrightarrow\; \Delta\mathbf{k} + \delta(\Delta\mathbf{k})_{\gamma}\]
+
+静的ラベル \(\mathbf{k}\)
+は変化しない（電子は電子のまま）。変化するのは動的状態のみ:
+
+\begin{itemize}
+\tightlist
+\item
+  運動量方向の変化（散乱角）
+\item
+  エネルギーの変化（光子のエネルギー吸収）
+\end{itemize}
+
+\textbf{命題 4.1}:
+光子との相互作用は方向制約波の静的ラベルを保存し、動的状態
+\(\Delta\mathbf{k}\) のみを変化させる。
+
+\subsubsection{§4.2
+方向制約波間の電磁相互作用}\label{ux65b9ux5411ux5236ux7d04ux6ce2ux9593ux306eux96fbux78c1ux76f8ux4e92ux4f5cux7528}
+
+2つの方向制約波 \(\psi_1\), \(\psi_2\)
+間の電磁相互作用は、光子の交換として記述される:
+
+\[\psi_1 \;\xrightarrow{\text{光子放出}}\; \psi_1' + \gamma \;\xrightarrow{\text{光子吸収}}\; \psi_1' + \psi_2'\]
+
+保存則 (I2) より:
+
+\[\Delta\mathbf{k}_1 + \Delta\mathbf{k}_2 = \Delta\mathbf{k}_1' + \Delta\mathbf{k}_2'\]
+
+\subsubsection{§4.3
+相互作用の符号：引力と斥力}\label{ux76f8ux4e92ux4f5cux7528ux306eux7b26ux53f7ux5f15ux529bux3068ux65a5ux529b}
+
+2つの方向制約波の \(t\) 軸成分の相対符号が、相互作用の方向性を決定する。
+
+\(t\) 軸成分 \(k_t\) は{[}4{]}の表Aにおいて荷電構造に対応する。同符号の
+\(k_t\) を持つ2波間の光子交換は斥力的、逆符号の場合は引力的に作用する。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+\(\psi_1\) の \(k_t\) & \(\psi_2\) の \(k_t\) & 符号積 & 相互作用 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(+\) & \(+\) & \(+1\) & 斥力 \\
+\(+\) & \(-\) & \(-1\) & 引力 \\
+\(-\) & \(-\) & \(+1\) & 斥力 \\
+\end{longtable}
+}
+
+\textbf{命題 4.2}: 2つの方向制約波間の電磁相互作用の符号は、\(t\)
+軸成分の相対符号 \(\mathrm{sign}(k_{t,1} \cdot k_{t,2})\)
+により幾何学的に決定される。「同符号 = 斥力、逆符号 =
+引力」という具体的対応は {[}4{]} の表Aにおける \(k_t\)
+と電荷符号の対応に依存する解釈層であり、命題の幾何学的内実は「相対符号が相互作用の方向性を一意に決定する」という点にある。
+
+\subsubsection{§4.4 対消滅}\label{ux5bfeux6d88ux6ec5}
+
+方向制約波とその反粒子は、全成分が逆符号の関係にある（{[}3{]}§6.5の
+\(C\) 変換）:
+
+\[\psi: (k_x, 0, 0, k_t) \quad \longleftrightarrow \quad \bar{\psi}: (-k_x, 0, 0, -k_t)\]
+
+両者が同一格子領域で相互作用するとき、静的ラベルの和がゼロになる:
+
+\[(k_x, 0, 0, k_t) + (-k_x, 0, 0, -k_t) = (0, 0, 0, 0)\]
+
+\(\kappa = 2\) の波の対が \(\kappa = 0\) の状態に移行する。保存則 (I2)
+により、消失した静的ラベルのエネルギーは球状波（光子）として放出される。
+
+\textbf{命題 4.3}: 方向制約波と反方向制約波の対消滅は、\(\kappa = 2\)
+の波対が \(\kappa = 0\)
+の球状波に変換される過程であり、静的ラベルの和がゼロになることで可能となる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§5
+重力相互作用と波束変形}\label{ux91cdux529bux76f8ux4e92ux4f5cux7528ux3068ux6ce2ux675fux5909ux5f62}
+
+\subsubsection{§5.1
+グラビトンによる変位転送}\label{ux30b0ux30e9ux30d3ux30c8ux30f3ux306bux3088ux308bux5909ux4f4dux8ee2ux9001}
+
+グラビトン \(G = (0, 0, 0, \pm t, \pm R, 0)\) は \(t\) 軸と \(R\)
+軸の両方に非ゼロ成分を持つ。条件 (I1) により、変位転送は \(t\) 方向と
+\(R\) 方向の両方に作用する:
+
+\[\delta(\Delta\mathbf{k})_G = (\delta(\Delta k)_t,\; \delta(\Delta k)_R)\]
+
+これはエネルギー（\(t\) 成分）と空間的配置（\(R\)
+成分）の同時変化を意味する。
+
+\subsubsection{§5.2 普遍的結合}\label{ux666eux904dux7684ux7d50ux5408}
+
+{[}3{]}の§8で導入した加速度の記述を再掲する。子空間中心投影の2階微分が加速度を決定する:
+
+\[\Delta^2\mathbf{k}(\mathbf{k}_t) = D^2\pi(\mathbf{k}_t) \cdot \Delta\mathbf{k}_t\]
+
+グラビトンの交換はこの \(\Delta^2\mathbf{k}\)
+の離散的な実現である。グラビトンは動的状態 \(\Delta\mathbf{k}\)
+に作用するため:
+
+\begin{itemize}
+\tightlist
+\item
+  静的ラベル \(\mathbf{k}\) に依存しない（波の種類を問わない）
+\item
+  \(\Delta\mathbf{k} \neq 0\)
+  の全ての波に作用する（エネルギーを持つ全ての波）
+\end{itemize}
+
+\textbf{命題 5.1}: グラビトンとの相互作用は動的状態 \(\Delta\mathbf{k}\)
+にのみ作用し、静的ラベル \(\mathbf{k}\) には作用しない。したがって
+\(\Delta\mathbf{k} \neq 0\)
+の全ての形不変波がグラビトンと結合する（普遍的結合）。
+
+\subsubsection{§5.3 波束変形}\label{ux6ce2ux675fux5909ux5f62}
+
+グラビトンとの相互作用によるエネルギー転送は、波束の形状を変形させる。保存量
+\(\int |\psi|^2 \, dV = E_0\)（{[}1{]}§5, {[}2{]}§5 の
+(C1)）のもとで、波束の振幅 \(A\) と特徴的幅 \(w\) は:
+
+\[A^2 \cdot w^d = E_0 = \text{const} \quad (d = 3: S^3 \text{の空間次元})\]
+
+エネルギーを受け取った波束は:
+
+\[\Delta E > 0 \;\Rightarrow\; A \uparrow,\; w \downarrow \quad (\text{振幅増大・幅縮小})\]
+
+\[\Delta E < 0 \;\Rightarrow\; A \downarrow,\; w \uparrow \quad (\text{振幅減少・幅拡大})\]
+
+\textbf{命題 5.2}: 保存量 \(\int |\psi|^2 \, dV\)
+のもとで、エネルギー転送は波束の振幅と幅を反比例的に変形させる。エネルギー増加は波束の局在化（幅の縮小）を伴う。
+
+\subsubsection{§5.4
+球状波の波束変形}\label{ux7403ux72b6ux6ce2ux306eux6ce2ux675fux5909ux5f62}
+
+球状波（\(\kappa = 0\)）もグラビトンと結合する（命題5.1:
+\(\Delta\mathbf{k} \neq 0\)
+であれば結合）。球状波がエネルギーを受け取ると:
+
+\begin{itemize}
+\tightlist
+\item
+  球面波の振幅が増大し、空間的広がりが縮小する
+\item
+  極限的には球状波が点状に局在化する
+\end{itemize}
+
+これは重力レンズ効果の幾何学的記述に対応する。球状波（光子）が大質量天体の重力場を通過する際、グラビトンとの相互作用により波束が変形し、伝搬経路が曲がる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§6
+強い相互作用と閉じ込め}\label{ux5f37ux3044ux76f8ux4e92ux4f5cux7528ux3068ux9589ux3058ux8fbcux3081}
+
+\subsubsection{\texorpdfstring{§6.1 \(Q\)
+軸遷移}{§6.1 Q 軸遷移}}\label{q-ux8ef8ux9077ux79fb}
+
+グルーオン \(g = (0, 0, 0, 0, 0, Q_i \to Q_j)\) は \(Q\)
+軸上の遷移として定義される。条件 (I1) により、変位転送は \(Q\)
+軸方向のみに作用する:
+
+\[\delta\mathbf{k}_g: \quad Q \;\longrightarrow\; Q'\]
+
+方向制約波の空間成分・時間成分・\(R\)
+成分は変化しない。変化するのは離散ラベル \(Q\) のみである。
+
+\subsubsection{§6.2
+色荷の3ビット構造}\label{ux8272ux8377ux306e3ux30d3ux30c3ux30c8ux69cbux9020}
+
+{[}4{]}の表Aにおいて、\(Q\) は3ビット \((c_1, c_2, c_3)\)
+で符号化される:
+
+\begin{itemize}
+\tightlist
+\item
+  \(c_2 c_3\): 色荷（\(00\) = 色なし、\(01, 10, 11\) = 3色）
+\item
+  \(c_1\): 弱アイソスピン
+\end{itemize}
+
+グルーオンの \(Q\) 遷移は \(c_2 c_3\)
+ビットの変化であり、色荷の交換に対応する。\(c_2 c_3\)
+の3つの非ゼロ値（\(01, 10, 11\)）間の遷移が \(3 \times 3 - 1 = 8\)
+通りの独立なグルーオンを与える。
+
+\subsubsection{§6.3
+閉じ込め条件}\label{ux9589ux3058ux8fbcux3081ux6761ux4ef6}
+
+{[}3{]}の§8で導入した子空間中心投影の枠組みにおいて、独立した主観空間を形成するためには、波の集合が\textbf{色中性}である必要がある。
+
+\textbf{定義 6.1}（色中性条件）: 方向制約波の集合 \(\{\psi_i\}\)
+が色中性であるとは、\(c_2 c_3\) ビットの合成が \((0, 0)\)
+に帰着することである。ここでビットの合成はビットごとの排他的論理和（XOR、\(\mathbb{F}_2\)
+上の加算）として定義される:
+
+\[(a_1, a_2) \oplus (b_1, b_2) = (a_1 \oplus b_1,\; a_2 \oplus b_2) \quad (\oplus: \text{mod}\; 2 \text{ 加算})\]
+
+色中性の実現方法:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+構成 & 色の組合せ & 名称 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+波3つ & \((01) \oplus (10) \oplus (11) = (00)\) & バリオン型 \\
+波2つ & \((c_2 c_3) \oplus (c_2 c_3) = (00)\) & メソン型 \\
+波1つ & \((c_2 c_3) = (00)\) & レプトン型 \\
+\end{longtable}
+}
+
+\textbf{命題 6.1}:
+色中性条件を満たさない方向制約波の集合は、独立した主観空間を形成できず、色中性の集合内に閉じ込められる。
+
+\subsubsection{§6.4 漸近的自由}\label{ux6f38ux8fd1ux7684ux81eaux7531}
+
+色中性の集合内部（共有主観空間の内部）では、子空間中心投影の曲率が小さく、方向制約波はほぼ自由に運動する。集合の境界に近づくと投影曲率が増大し、境界を越えることが不可能になる。
+
+\textbf{命題 6.2}:
+色中性集合の内部は投影曲率が小さく（漸近的自由）、境界では投影曲率が発散する（閉じ込め）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§7
+弱い相互作用とフレーバー転換}\label{ux5f31ux3044ux76f8ux4e92ux4f5cux7528ux3068ux30d5ux30ecux30fcux30d0ux30fcux8ee2ux63db}
+
+\subsubsection{\texorpdfstring{§7.1 \(t\)
+軸変位}{§7.1 t 軸変位}}\label{t-ux8ef8ux5909ux4f4d}
+
+\(W^{\pm} = (0, 0, 0, \pm t, 0, 0)\) は \(t\)
+軸に非ゼロ成分を持つ球状波である。条件 (I1) により:
+
+\[\delta\mathbf{k}_W: \quad k_t \;\longrightarrow\; k_t' = k_t + \delta k_t\]
+
+\(t\) 軸成分の変化は、{[}4{]}の表Aにおいて上型 /
+下型の転換に対応する。同時に \(Q\) 軸の \(c_1\) ビットも変化する。
+
+\subsubsection{§7.2
+フレーバー転換の具体例}\label{ux30d5ux30ecux30fcux30d0ux30fcux8ee2ux63dbux306eux5177ux4f53ux4f8b}
+
+\(W^+\) 吸収による方向制約波の変換:
+
+\[\underbrace{(k_x, 0, 0, -k_t, 0, Q_d)}_{\text{下型}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, 0, +k_t, 0, Q_u)}_{\text{上型}}\]
+
+\(t\) 軸の符号が反転し（\(-k_t \to +k_t\)）、\(Q\) のアイソスピンビット
+\(c_1\) が変化する。
+
+\subsubsection{\texorpdfstring{§7.3 \(k_t \neq 0\) と CP
+破れ}{§7.3 k\_t \textbackslash neq 0 と CP 破れ}}\label{k_t-neq-0-ux3068-cp-ux7834ux308c}
+
+{[}3{]}の命題6.4で示した通り、CP対称性が破れうるのは \(k_t \neq 0\)
+の相互作用に限られる。\(W^{\pm}\) は \(k_t = \pm 1 \neq 0\)
+であり、4種の球状波のうち唯一 \(k_t \neq 0\) を持つ。
+
+\textbf{命題 7.1}: \(t\) 軸に非ゼロ成分を持つ \(W^{\pm}\) のみが CP
+対称性の破れを媒介する。これは \(k_t \neq 0\)
+が時間方向の非対称性を導入することの直接的帰結である。
+
+\subsubsection{§7.4
+カイラリティ選択則}\label{ux30abux30a4ux30e9ux30eaux30c6ux30a3ux9078ux629eux5247}
+
+{[}3{]}の定義6.1で定義したカイラリティ
+\(\chi = \mathrm{sign}(k_{s_0} \cdot k_t)\)（\(k_{s_0}\):
+非ゼロ空間成分）に対して、\(W^{\pm}\) の \(t\)
+軸構造は特定のカイラリティとの結合条件を課す。
+
+\(W^{\pm} = (0, 0, 0, \pm t, 0, 0)\) は \(t\)
+軸のみに位相構造を持つ。方向制約波 \((k_{s_0}, 0, 0, k_t)\)
+との結合は、\(W^{\pm}\) の \(t\) 軸位相と方向制約波の \(t\)
+軸位相が逆符号（\(\mathrm{sign}(k_t) \neq \mathrm{sign}(k_{t,W})\)）のときにのみ成立する。{[}3{]}の定義6.1より
+\(\chi = \mathrm{sign}(k_{s_0} \cdot k_t)\) であるから、この結合条件は
+\(\chi = -1\)（左巻き）に対応する。
+
+\textbf{命題 7.2}: \(W^{\pm}\) との結合はカイラリティ
+\(\chi = -1\)（左巻き）の方向制約波に限られる。右巻き（\(\chi = +1\)）は
+\(W^{\pm}\) と結合しない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§8
+波束変形と因果の遡及的構成}\label{ux6ce2ux675fux5909ux5f62ux3068ux56e0ux679cux306eux9061ux53caux7684ux69cbux6210}
+
+\subsubsection{§8.1
+波束変形の保存則的記述}\label{ux6ce2ux675fux5909ux5f62ux306eux4fddux5b58ux5247ux7684ux8a18ux8ff0}
+
+§5.3で導入した波束変形の機構を一般化する。任意の相互作用において、方向制約波がエネルギーを受け取るとき、保存量
+\(\int |\psi|^2 \, dV = E_0\) のもとで:
+
+\[A_{\text{after}}^2 \cdot w_{\text{after}}^d = A_{\text{before}}^2 \cdot w_{\text{before}}^d = E_0\]
+
+エネルギー密度の集中（\(A\) 増大）は必然的に空間的局在化（\(w\)
+縮小）を伴う。
+
+\subsubsection{§8.2
+「観測」の力学的記述}\label{ux89b3ux6e2cux306eux529bux5b66ux7684ux8a18ux8ff0}
+
+従来の量子力学では「観測による波束の収縮」が公理的に導入される。本枠組みでは:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  方向制約波（\(\kappa = 2\)）が球状波（\(\kappa = 0\)）と相互作用する
+\item
+  エネルギー転送により波束の振幅が増大する
+\item
+  保存則 (I3) により幅が縮小する（局在化）
+\item
+  十分に局在化した波束を「粒子として検出した」と記述する
+\end{enumerate}
+
+「観測」は特別な操作ではなく、相互作用による波束変形の一例に過ぎない。外部の「観測者」は不要であり、波束の変形は保存則に従う決定論的過程である。
+
+\textbf{命題 8.1}:
+波束の収縮は相互作用による保存則的な波束変形であり、「観測」という特別な過程を仮定する必要がない。
+
+\subsubsection{§8.3
+因果の遡及的構成}\label{ux56e0ux679cux306eux9061ux53caux7684ux69cbux6210}
+
+{[}3{]}の命題4.2で示した通り、\(k_t = 0\)
+の球状波は時間反転対称であり因果順序を内在しない。命題8.1の「決定論的」と以下の「遡及的」は矛盾しない。両者は異なる層に属する:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{決定論的}: 保存則 (I2)(I3)
+  は厳密に成立し、波束変形の結果は一意に定まる
+\item
+  \textbf{遡及的}: \(k_t = 0\) により因果順序（「原因 →
+  結果」の時間順序）が内在しないため、どの事象が「原因」でどれが「結果」かは不定
+\end{itemize}
+
+すなわち「保存則は厳密に従うが、因果順序は持たない」という構造が、\(k_t = 0\)
+の時間反転対称性から自然に生じる。この性質と波束変形を合わせると:
+
+\textbf{(R1) 経路の遡及的確定}:
+球状波（\(k_t = 0\)）は全方向に等方的に伝搬する（{[}3{]}命題4.1）。相互作用が成立した結果から見ると、球状波は最短測地線に沿って伝搬した\textbf{ように見える}。因果順序が存在しないため、結果が経路を遡及的に確定する。
+
+\textbf{(R2) 局在化の遡及的確定}:
+波束変形は保存則に従う決定論的過程である（命題8.1）。しかし \(k_t = 0\)
+により因果順序がないため、「相互作用が起きたから局在化した」と「局在化したから相互作用が起きたように見える」は区別不能である。
+
+\textbf{(R3) 最小作用の原理}: (R1) と (R2)
+の統合として、自然法則の変分原理（最小作用の原理）は公理ではなく、\(k_t = 0\)
+の球状波が媒介する相互作用の因果対称性の帰結として導出される。
+
+\textbf{命題 8.2}: \(k_t = 0\) の球状波が媒介する相互作用において、(a)
+伝搬経路の最短性、(b) 波束の局在化、(c)
+変分原理、はすべて因果順序の不在から遡及的に構成される。
+
+\subsubsection{\texorpdfstring{§8.4 \(k_t \neq 0\)
+の場合}{§8.4 k\_t \textbackslash neq 0 の場合}}\label{k_t-neq-0-ux306eux5834ux5408}
+
+\(W^{\pm}\)（\(k_t \neq 0\)）が媒介する相互作用は因果対称ではない。(R1)--(R3)
+は適用されず:
+
+\begin{itemize}
+\tightlist
+\item
+  経路は因果的に確定する（放出が先、吸収が後）
+\item
+  時間反転対称性が破れる
+\item
+  CP 非保存が可能になる（命題7.1）
+\end{itemize}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+球状波の \(k_t\) & 因果順序 & 経路選択 & CP & 対応する力 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(k_t = 0\) & なし & 遡及的（測地線） & 保存 & 電磁気力・強い力 \\
+\(k_t \neq 0\) & あり & 因果的 & 破れうる & 弱い力 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§9 まとめ}\label{ux307eux3068ux3081}
+
+本論文の主要な結果を要約する:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{統一的相互作用機構}:
+  全ての力は球状波の非ゼロ軸に沿った変位転送 (I1)--(I3)
+  として記述され、力の種類は軸の違いのみに帰着する（§2）。
+\item
+  \textbf{質量の起源}:
+  定常波（\(\kappa = 1\)）との結合が方向制約波の速度比 \(|k_x / k_t|\)
+  を減少させ、\(v < c\) として質量を生む。\(\kappa_s = 0\)
+  の球状波は結合軸を持たず質量ゼロ（§3）。
+\item
+  \textbf{電磁散乱と対消滅}: 光子は動的状態 \(\Delta\mathbf{k}\)
+  のみを変化させる。\(t\) 軸成分の相対符号が引力 /
+  斥力を決定する。方向制約波と反波の対消滅は
+  \(\kappa = 2 \to \kappa = 0\) の変換（§4）。
+\item
+  \textbf{重力と波束変形}: グラビトンは \((t, R)\)
+  の両軸に作用し、全ての \(\Delta\mathbf{k} \neq 0\)
+  の波と結合する。保存量のもとでのエネルギー転送は波束の振幅と幅を反比例的に変形させる（§5）。
+\item
+  \textbf{強い力と閉じ込め}: \(Q\)
+  軸遷移（色荷交換）を媒介し、色中性条件が独立な主観空間の形成条件を与える（§6）。
+\item
+  \textbf{弱い力とCP破れ}: \(t\)
+  軸変位（フレーバー転換）を媒介し、\(k_t \neq 0\) が CP
+  破れと左巻きカイラリティ選択則の起源（§7）。
+\item
+  \textbf{波束変形と因果構造}:
+  波束の収縮は保存則的変形であり「観測」は不要。\(k_t = 0\)
+  の球状波が媒介する相互作用は因果対称であり、経路・局在化・変分原理が遡及的に構成される（§8）。
+\end{enumerate}
+
+{[}4{]}の表Aとの対応を以下に示す:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1607}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1607}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.3036}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1071}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+相互作用
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+球状波
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+非ゼロ軸
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+方向制約波への効果
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(k_t\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+因果
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+ヒッグス結合 & 定常波 \(H^0\) & 空間1軸 & \(v\) の減少（質量） & 0 &
+--- \\
+電磁 & \(\gamma\) & \(R\) & \(\Delta\mathbf{k}\) 変化（散乱） & 0 &
+遡及的 \\
+強い & \(g\) & \(Q\) & \(Q\) 変化（色交換） & 0 & 遡及的 \\
+弱い & \(W^{\pm}\) & \(t\) & \(k_t\) 変化（フレーバー転換） & \(\neq 0\)
+& 因果的 \\
+重力 & \(G\) & \(t, R\) & \(\Delta\mathbf{k}\) 変化（加速） & \(\neq 0\)
+& 因果的 \\
+\end{longtable}
+}
+
+本論文の主張はすべて幾何学的事実として記述されており、物理的対応は「接続可能な解釈」として提示される。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+{[}1{]} 木原範昭,
+``閉じた球面上の形不変定常波------次元ごとの安定性と3+1時空の幾何学的必然性,''
+2026.
+
+{[}2{]} 木原範昭,
+``4次元整数格子上の形不変移動波------存在条件・保存構造・自己整合ループ,''
+2026.
+
+{[}3{]} 木原範昭,
+``形不変波の4つのモード------波動ベクトル構造が決定するスピン・カイラリティ・統計,''
+2026.
+
+{[}4{]} 木原範昭, ``6次元超直方体の集合構造とその組合せ論的性質,''
+Zenodo, 2025. DOI: 10.5281/zenodo.19688521.
+
+{[}5{]} 木原範昭, ``中心投影による宇宙の3層モデル,'' Zenodo, 2025. DOI:
+10.5281/zenodo.15083729.
+\end{document}
