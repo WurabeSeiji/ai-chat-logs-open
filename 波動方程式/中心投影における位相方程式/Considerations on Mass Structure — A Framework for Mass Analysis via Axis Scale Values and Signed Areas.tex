@@ -1,0 +1,525 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,11pt]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp}
+\else
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  \setmainfont[]{Times New Roman}
+\fi
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{%
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath}
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{%
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{%
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none}
+\usepackage{calc}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
+\urlstyle{same}
+\usepackage{hyperref}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+\begin{document}
+\section{Considerations on Mass Structure --- A Framework for Mass
+Analysis via Axis Scale Values and Signed
+Areas}\label{considerations-on-mass-structure-a-framework-for-mass-analysis-via-axis-scale-values-and-signed-areas}
+
+\subsection{------ Preliminary Considerations on the Mass Problem of
+{[}4{]} §9.11
+------}\label{preliminary-considerations-on-the-mass-problem-of-4-9.11}
+
+\textbf{Author}: Noriaki Kihara (WF System Co., Ltd.)
+
+DOI: https://doi.org/10.5281/zenodo.19731610
+
+\textbf{Date}: April 2026
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§0 Scope of This Paper}\label{scope-of-this-paper}
+
+In {[}4{]} §9.11, the quantitative derivation of mass ratios was
+identified as an open problem. Prior to a full-scale analysis of this
+problem, the present paper considers what form a mass analysis might
+take when employing the set structure of {[}4{]} and the signed area
+\(M_F\) from Supplementary Lecture 1.
+
+This paper constitutes a preliminary investigation and does not claim to
+derive specific mass formulas or predict mass values. It records
+structural observations obtained during the analysis and confirms that
+the simplest mass formula is quantitatively insufficient.
+
+The mass structure considered herein is positioned as an attempt to
+constrain the functional forms of the rest mass map
+\(f_m^{\text{rest}}: (x, y, z, t, R, Q) \to \mathbb{R}_{\geq 0}\)
+(Definition 9.4 of {[}4{]}) and the curvature energy map
+\(f_m^{\text{curv}}: (x, y, z, t, R, Q, R_1) \to \mathbb{R}_{\geq 0}\)
+(Definition 9.5 of {[}4{]}). Sections §2--§3 examine candidate forms for
+\(f_m^{\text{rest}}\) of fermions, and §5.1 touches upon the relation to
+\(f_m^{\text{curv}}\) of gauge bosons.
+
+\textbf{References}: - {[}3{]} Global Covering of Central Projection in
+Discrete Space and the Number-Theoretic Necessity of Five-Dimensional
+Background Space (W5) - {[}4{]} Set Structure of the Six-Dimensional
+Hyperrectangular Lattice and Its Combinatorial Properties (W8) - {[}5{]}
+Interactions of Shape-Invariant Waves (W11) - {[}S1{]} Formulation of
+Signed Areas --- Derivation of Charge Structure and Consequences of
+Spin-2 Configurations (Supplementary Lecture 1)
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§1 Introduction of Axis Scale
+Values}\label{introduction-of-axis-scale-values}
+
+\subsubsection{1.1 Coordinate Values of Non-Zero
+Axes}\label{coordinate-values-of-non-zero-axes}
+
+By {[}4{]} §1.1 and {[}3{]}, each coordinate axis can take non-zero
+values (either real-valued or integer-valued). By Definition 1.2 of
+{[}S1{]}, the values \(v_i\) of non-zero axes acquire physical meaning
+through the signed area \(M = v_i \cdot v_j\).
+
+The Higgs boson (standing wave, \(\kappa = 1\)) selects the \(z\)-axis
+among the three \(xyz\) spatial axes ({[}4{]} §9.11.7), thereby
+spontaneously breaking \(\mathrm{SO}(3)\) symmetry to
+\(\mathrm{SO}(2)\). As a result, a hierarchy emerges among the scale
+values of the three spatial axes:
+
+\[v_z \gg v_x \approx v_y\]
+
+Here, \(v_z\) is the principal oscillation axis of the Higgs and
+receives direct coupling. \(v_x\) and \(v_y\) receive only indirect
+coupling and are therefore relatively small.
+
+\subsubsection{1.2 Four Types of Scale
+Values}\label{four-types-of-scale-values}
+
+By {[}4{]} §9.11.1, four types of scale values are distinguished
+according to the number \(k\) of non-zero axes among the \(xyzt\) axes:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}clll@{}}
+\toprule\noalign{}
+\(k\) & Type & Non-zero axes & Scale \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & Higgs & \(z\) only & \(v_z\) \\
+2 & Fermion & Combination of 2 axes & \(v_i \cdot v_j\) \\
+3 & Spin-1 boson (partial) & 3 axes & \(v_i \cdot v_j \cdot v_k\) \\
+4 & Spin-2 boson & 4 axes & \(v_x \cdot v_y \cdot v_z \cdot v_t\) \\
+\end{longtable}
+}
+
+This paper focuses on the mass structure for \(k = 2\) (fermions).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§2 Fermion Mass and Axis Scale
+Values}\label{fermion-mass-and-axis-scale-values}
+
+\subsubsection{\texorpdfstring{2.1 Mass of (Spatial, \(t\))-Type
+Fermions}{2.1 Mass of (Spatial, t)-Type Fermions}}\label{mass-of-spatial-t-type-fermions}
+
+Charged leptons and quarks possess 2-faces of the (spatial 1-axis,
+\(t\)) type ({[}4{]} §9.9, Table A). As the simplest assumption, we
+suppose that the mass is proportional to the absolute value of the
+signed area \(|M_F| = |v_{\text{spatial}} \cdot v_t|\):
+
+\[m \propto |v_{\text{spatial}} \cdot v_t|\]
+
+This is the simplest candidate form for \(f_m^{\text{rest}}\) of {[}4{]}
+Definition 9.4, expressed using the two axes \(i, j\) of the fermion
+face as:
+
+\[f_m^{\text{rest}}(\sigma) = C \cdot |v_i \cdot v_j| \qquad (\text{when the fermion face of } \sigma \text{ is of type } (i, j))\]
+
+Below we examine the consequences of this candidate.
+
+For charged leptons (\(Q = 4\), \(c_2 c_3 = 00\)):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}cccl@{}}
+\toprule\noalign{}
+Generation & Spatial axis & Mass & Mass structure \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & \(x\) & \(m_e = 0.511\) MeV & \(\propto v_x \cdot v_t\) \\
+2 & \(y\) & \(m_\mu = 105.66\) MeV & \(\propto v_y \cdot v_t\) \\
+3 & \(z\) & \(m_\tau = 1{,}776.86\) MeV & \(\propto v_z \cdot v_t\) \\
+\end{longtable}
+}
+
+Since \(v_t\) is common to all generations, the inter-generation mass
+ratios equal the spatial axis scale ratios:
+
+\[\frac{m_\tau}{m_e} = \frac{v_z}{v_x} \approx 3{,}477, \qquad \frac{m_\tau}{m_\mu} = \frac{v_z}{v_y} \approx 16.82, \qquad \frac{m_\mu}{m_e} = \frac{v_y}{v_x} \approx 206.8\]
+
+\subsubsection{2.2 Mass of (Spatial, Spatial)-Type
+Fermions}\label{mass-of-spatial-spatial-type-fermions}
+
+Neutrinos possess 2-faces of the (spatial, spatial) type ({[}4{]} §9.9,
+Table A). Under the same assumption:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ccl@{}}
+\toprule\noalign{}
+Flavor & Non-zero axes & Mass structure \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\nu_e\) & \((x, y)\) & \(\propto v_x \cdot v_y\) \\
+\(\nu_\mu\) & \((y, z)\) & \(\propto v_y \cdot v_z\) \\
+\(\nu_\tau\) & \((x, z)\) & \(\propto v_x \cdot v_z\) \\
+\end{longtable}
+}
+
+\subsubsection{2.3 Structural
+Observations}\label{structural-observations}
+
+\textbf{Observation 2.1}. Charged leptons and neutrinos are expressed as
+different combinations of the same three scale values \(v_x, v_y, v_z\).
+Charged leptons are products of \((v_i, v_t)\), while neutrinos are
+products of \((v_i, v_j)\).
+
+\textbf{Observation 2.2}. Once the spatial axis scale ratios
+\(v_x : v_y : v_z\) are determined from the charged lepton masses in
+§2.1, the inter-flavor mass ratios of neutrinos are determined without
+additional parameters:
+
+\[\frac{m_{\nu_\mu}}{m_{\nu_e}} = \frac{v_y \cdot v_z}{v_x \cdot v_y} = \frac{v_z}{v_x} = \frac{m_\tau}{m_e} \approx 3{,}477\]
+
+\[\frac{m_{\nu_\tau}}{m_{\nu_e}} = \frac{v_x \cdot v_z}{v_x \cdot v_y} = \frac{v_z}{v_y} = \frac{m_\tau}{m_\mu} \approx 16.82\]
+
+\[\frac{m_{\nu_\mu}}{m_{\nu_\tau}} = \frac{v_y \cdot v_z}{v_x \cdot v_z} = \frac{v_y}{v_x} = \frac{m_\mu}{m_e} \approx 206.8\]
+
+\textbf{Note}. Here \(m_{\nu_e}, m_{\nu_\mu}, m_{\nu_\tau}\) are the
+geometric masses corresponding to the flavor eigenstates, which are
+related to the experimentally measured mass eigenstates
+\(m_1, m_2, m_3\) through the PMNS matrix. The PMNS matrix itself is
+also constrained by the same \(v_x, v_y, v_z\) structure (see
+Supplementary Lecture 2). The relationship between the experimentally
+observed neutrino mass-squared differences
+(\(\Delta m^2_{21} \approx 7.5 \times 10^{-5}\) eV\(^2\),
+\(|\Delta m^2_{32}| \approx 2.5 \times 10^{-3}\) eV\(^2\)) and the
+inter-flavor ratios in this model depends on the specific form of the
+PMNS matrix and lies beyond the scope of this paper.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§3 Contribution of the Q-Axis to
+Mass}\label{contribution-of-the-q-axis-to-mass}
+
+\subsubsection{3.1 Introduction of Q-Axis
+Coupling}\label{introduction-of-q-axis-coupling}
+
+The masses of quarks (\(c_2 c_3 \neq 00\)) differ from those of charged
+leptons (\(Q = 4\), \(c_2 c_3 = 00\)) despite occupying the same spatial
+axes. As the simplest assumption, the \(Q\)-axis contributes a
+multiplicative factor \(f(Q)\) to the mass:
+
+\[m_{\text{quark}} = f(Q) \cdot v_{\text{spatial}} \cdot v_t\]
+
+This is a candidate form for \(f_m^{\text{rest}}\) that depends on the
+value of the \(Q\)-axis, corresponding to a generalization of §2.1's
+\(f_m^{\text{rest}}(\sigma) = C \cdot |v_i \cdot v_j|\) to
+\(f_m^{\text{rest}}(\sigma) = f(Q) \cdot |v_i \cdot v_j|\). If \(f(Q)\)
+were a single constant across all generations and types, the mass ratio
+between quarks and the corresponding charged leptons would be
+generation-independent.
+
+\subsubsection{3.2 Comparison with Experimental
+Values}\label{comparison-with-experimental-values}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ccc@{}}
+\toprule\noalign{}
+Generation & Up-type: \(m_q / m_\ell\) & Down-type: \(m_q / m_\ell\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+3 & \(m_t / m_\tau = 97.2\) & \(m_b / m_\tau = 2.35\) \\
+2 & \(m_c / m_\mu = 12.0\) & \(m_s / m_\mu = 0.884\) \\
+1 & \(m_u / m_e = 4.23\) & \(m_d / m_e = 9.14\) \\
+\end{longtable}
+}
+
+\textbf{Observation 3.1}. \(f(Q)\) is not a constant. It varies
+significantly across generations and differs between up-type and
+down-type quarks.
+
+\textbf{Observation 3.2}. The generation dependence of \(f(Q)\) exhibits
+regularity: for up-type quarks, \(f\) increases sharply with generation
+(\(4.23 \to 12.0 \to 97.2\)), while for down-type quarks the behavior is
+non-monotonic (\(9.14 \to 0.884 \to 2.35\)).
+
+\textbf{Observation 3.3}. This pattern suggests that \(f(Q)\) depends
+not only on the value of the \(Q\)-axis but also on the spatial axis
+scale \(v_i\) --- that is, \(f = f(Q, v_i)\). The simplest assumption
+that \(f\) is a constant in the mass formula
+\(m = v_i \cdot v_t \cdot f(Q)\) is insufficient, and the functional
+form of the coupling with \(v_i\) constitutes the core of the mass
+problem.
+
+\subsubsection{3.3 Comparison of Inter-Generation Mass Ratios Within
+Sectors}\label{comparison-of-inter-generation-mass-ratios-within-sectors}
+
+As a test of Prediction 1 in §5.2, we compare the inter-generation mass
+ratios within each sector:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lccc@{}}
+\toprule\noalign{}
+Mass ratio & Charged leptons & Up-type quarks & Down-type quarks \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(m_3 / m_1\) & \(3{,}477\) & \(79{,}981\) & \(895\) \\
+\(m_2 / m_1\) & \(206.8\) & \(588\) & \(20.0\) \\
+\(m_3 / m_2\) & \(16.82\) & \(136\) & \(44.8\) \\
+\end{longtable}
+}
+
+\textbf{Observation 3.4}. If \(f(Q)\) were a constant, the three columns
+in each row would be identical, but the experimental values all differ.
+In particular, the fact that \(m_3/m_1\) is \(3{,}477\) for charged
+leptons versus \(79{,}981\) for up-type quarks demonstrates that
+\(f(Q, v_i)\) has a strong nonlinear dependence on \(v_i\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§4 Counting of Free
+Parameters}\label{counting-of-free-parameters}
+
+\subsubsection{4.1 Free Parameters of the Standard
+Model}\label{free-parameters-of-the-standard-model}
+
+According to Paper 4 (W4) of {[}4{]}, the Standard Model contains 19
+free parameters. Among these, those related to mass are:
+
+\begin{itemize}
+\tightlist
+\item
+  Fermion masses: 9 (\(e, \mu, \tau, u, c, t, d, s, b\))
+\item
+  Neutrino masses: experimentally undetermined (at least 2 mass-squared
+  differences)
+\item
+  CKM matrix: 4 (3 angles + 1 phase)
+\item
+  PMNS matrix: 4 (3 angles + 1 phase)
+\item
+  Higgs mass: 1
+\end{itemize}
+
+\subsubsection{4.2 Parameter Structure in This
+Framework}\label{parameter-structure-in-this-framework}
+
+The parameter structure suggested by the present analysis is as follows:
+
+\textbf{Fundamental parameters}: - \(v_x, v_y, v_z\): spatial axis
+scales (3; determinable from charged lepton masses) - \(v_t\): temporal
+axis scale (1; potentially determinable from the relation to the Higgs
+mass)
+
+\textbf{Derived quantities}: - Charged lepton mass ratios: determined
+from \(v_x : v_y : v_z\) (no additional parameters) - Neutrino mass
+ratios: determined from the same \(v_x : v_y : v_z\) (no additional
+parameters) - PMNS mixing angles: qualitatively determined from
+\(v_x, v_y, v_z\) and the Higgs axis selection (Supplementary Lecture 2)
+- CKM mixing angles: same as above
+
+\textbf{Undetermined quantities}: - \(f(Q, v_i)\): functional form of
+the coupling function between the Q-axis and spatial axes (not a
+constant, by §3.2). This corresponds to the problem of determining the
+specific functional form of \(f_m^{\text{rest}}\) (Definition 9.4 of
+{[}4{]})
+
+\textbf{Observation 4.1}. Among the 19 or more parameters related to
+mass, the quantities remaining independent in this framework are: - 2
+spatial axis scale ratios (\(v_y/v_x\), \(v_z/v_x\)) + 1 overall scale -
+The functional form of the Q-axis coupling function \(f(Q, v_i)\)
+
+If the functional form of \(f(Q, v_i)\) is determined, the number of
+free parameters may be substantially reduced. If \(f\) were a constant,
+the count would reduce to 1, but the experimental values in §3.2 rule
+out this simplest case.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§5 Discussion}\label{discussion}
+
+\subsubsection{5.1 Candidate Mass
+Formulas}\label{candidate-mass-formulas}
+
+The results of §3 show that the correct mass formula is not the simple
+product \(m = v_i \cdot v_j\). In {[}5{]} §8, the geometric origin of
+mass is shown to be the modification (\(\delta k_H\)) of the propagation
+velocity ratio \(|k_x / k_t|\) by standing waves (the Higgs). When
+\(\delta k_H\) depends on the \textbf{coupling strength} between the
+spatial axis of the fermion and the \(z\)-axis of the Higgs, the
+coupling strength depends on the relationship between \(v_i\) and
+\(v_z\) (whether they share the same axis, the strength of indirect
+coupling).
+
+The generation-dependent pattern of \(f(Q)\) in §3.2 suggests that this
+coupling strength is a nonlinear function of the spatial axis scale
+\(v_i\), and may serve as a discriminant for the correct mass formula.
+
+Organizing the correspondence with the map functions of Definitions
+9.4--9.5 of {[}4{]}:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\(f_m^{\text{rest}}\)} (rest mass map): the subject of
+  analysis in §2--§3 of this paper. This is the mass originating from
+  coupling with the Higgs standing wave, applied to fermions.
+  \(C \cdot |v_i \cdot v_j|\) from §2.1 is the simplest candidate, and
+  \(f(Q, v_i) \cdot |v_i \cdot v_j|\) from §3.1 is the candidate
+  incorporating \(Q\)-dependence. By §3.2, \(f_m^{\text{rest}}\)
+  contains a non-trivial coupling between the \(Q\)-axis and spatial
+  axes.
+\item
+  \textbf{\(f_m^{\text{curv}}\)} (curvature energy map): applied to
+  gauge bosons such as \(W^{\pm}\) and \(Z^0\). While the mass
+  modification by \(\delta k_H\) from {[}5{]} §8 falls within the scope
+  of \(f_m^{\text{rest}}\), the mass of gauge bosons originates from the
+  acceleration energy due to the curvature radius \(R_1\) of the
+  subjective space ({[}5{]} Supplementary Lecture 4), and corresponds to
+  \(f_m^{\text{curv}}\). The functional form of \(f_m^{\text{curv}}\)
+  lies outside the scope of this paper.
+\end{itemize}
+
+\subsubsection{5.2 Testable Structural
+Predictions}\label{testable-structural-predictions}
+
+There exist predictions that follow directly from the structure of this
+framework, independent of the functional form of the mass formula:
+
+\textbf{Prediction 1}: The inter-generation mass ratios within a given
+sector (same \(Q\) value, same \(t\) sign) are determined solely by the
+spatial axis scale ratios \(v_x : v_y : v_z\). If \(v_x : v_y : v_z\)
+are determined from leptons, one can verify whether the mass ratio
+patterns within each quark sector (heaviest/lightest ratio,
+intermediate/lightest ratio) are identical.
+
+\textbf{Prediction 2}: The inter-flavor mass ratios of neutrinos have a
+specific relationship with the charged lepton mass ratios (Observation
+2.2 of §2.3). This is testable through precision measurements of
+neutrino masses.
+
+\subsubsection{5.3 Limitations of This
+Analysis}\label{limitations-of-this-analysis}
+
+This paper has confirmed the following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The description of masses via axis scale values \(v_x, v_y, v_z, v_t\)
+  imposes strong structural constraints among parameters
+\item
+  The simplest mass formula (\(m \propto v_i \cdot v_j\), \(f(Q)\)
+  constant) is quantitatively insufficient (§3.2, §3.3)
+\item
+  Determining the functional form of the coupling function \(f(Q, v_i)\)
+  between the Q-axis and spatial axes remains an open problem
+\item
+  The mechanism by which \(v_x \neq v_y\)
+  (\(m_\mu / m_e \approx 206.8\)) is not explained by the
+  \(\mathrm{SO}(2)\) residual symmetry alone. The structural origin of
+  the asymmetry between the \(x\) and \(y\) axes --- stated in {[}4{]}
+  §9.11.1 as ``the difference \(m_2 \neq m_1\) cannot be derived within
+  this framework'' --- lies beyond the scope of this paper
+\item
+  The neutrino inter-flavor mass ratios of Observation 2.2 may be
+  verified or falsified by future precision measurements. If falsified,
+  the basic assumption \(m \propto v_i \cdot v_j\) itself would require
+  reconsideration
+\end{enumerate}
+
+These constitute a clarification of the prerequisites for a full-scale
+mass analysis; the concrete derivation of mass values lies outside the
+scope of this paper.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+\begin{itemize}
+\tightlist
+\item
+  {[}3{]} Noriaki Kihara, ``Global Covering of Central Projection in
+  Discrete Space and the Number-Theoretic Necessity of Five-Dimensional
+  Background Space,'' Zenodo preprint, DOI: 10.5281/zenodo.19624957
+  (2026).
+\item
+  {[}4{]} Noriaki Kihara, ``Set Structure of the Six-Dimensional
+  Hyperrectangular Lattice and Its Combinatorial Properties,'' Zenodo
+  preprint, DOI: 10.5281/zenodo.19721125 (2026).
+\item
+  {[}5{]} Noriaki Kihara, ``Interactions of Shape-Invariant Waves ---
+  Axial Displacement Transfer, Wave Packet Deformation, and Retroactive
+  Constitution of Causality,'' Zenodo preprint, DOI:
+  10.5281/zenodo.19721128 (2026).
+\item
+  {[}S1{]} Noriaki Kihara, ``Formulation of Signed Areas --- Derivation
+  of Charge Structure and Consequences of Spin-2 Configurations,''
+  Supplementary Lecture 1 (2026).
+\end{itemize}
+\end{document}

@@ -1,0 +1,656 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  a4paper,11pt]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp}
+\else
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  \setmainfont[]{Times New Roman}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Hiragino Mincho ProN}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Hiragino Mincho ProN}
+  \fi
+\fi
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{%
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath}
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{%
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{%
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none}
+\usepackage{calc}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
+\urlstyle{same}
+\usepackage{hyperref}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{amsthm}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定義}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{注意}
+\newtheorem{observation}[theorem]{観察}
+\begin{document}
+\section{符号付き面積の定式化------電荷構造の導出とスピン2配置の帰結}\label{ux7b26ux53f7ux4ed8ux304dux9762ux7a4dux306eux5b9aux5f0fux5316ux96fbux8377ux69cbux9020ux306eux5c0eux51faux3068ux30b9ux30d4ux30f32ux914dux7f6eux306eux5e30ux7d50}
+
+\subsection{\texorpdfstring{------ {[}4{]} §7 の符号積 \(P\)
+から導かれる3つの帰結
+------}{------ {[}4{]} §7 の符号積 P から導かれる3つの帰結 ------}}\label{ux306eux7b26ux53f7ux7a4d-p-ux304bux3089ux5c0eux304bux308cux308b3ux3064ux306eux5e30ux7d50}
+
+\textbf{著者}: 木原 範昭 (WF System Co., Ltd.)
+
+\textbf{日付}: 2026年4月
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§0 本稿の目的}\label{ux672cux7a3fux306eux76eeux7684}
+
+{[}4{]} §7 注記において、「\(R\) 軸を含む正方形面に対する符号付き面積
+\(M(\sigma)\)
+の配向構造と、それに基づく保存量の厳密な定義は、本稿の範囲を超えるため別論文で扱う」と宣言した。
+
+本稿はこの宣言に応じ、以下の3つの結果を導出する。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  符号付き面積 \(M\) の厳密な定義と、{[}4{]} 命題7.1 の符号積 \(P\)
+  との関係（§1）
+\item
+  フェルミオン面積 \(M_F\) の定義と、反粒子・色荷に関する性質（§2）
+\item
+  スピン2 \(tR\) 型における \(P = -1\) 配置の帰結（§3）
+\end{enumerate}
+
+§1--§3 は {[}4{]} の組合せ論的枠組みの内部で完結する。§4 は {[}4{]} §9
+と同様の立場に立つ解釈例であり、\(M_F\) と電荷量子化の対応を示す。
+
+\textbf{参照論文}: - {[}3{]}
+離散空間における中心投影の全球被覆と5次元背景空間の整数論的必然性（W5）
+- {[}4{]} 6次元超直方体の集合構造とその組合せ論的性質（W8） - {[}5{]}
+形不変波の相互作用（W11）
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§1
+符号付き面積の定義}\label{ux7b26ux53f7ux4ed8ux304dux9762ux7a4dux306eux5b9aux7fa9}
+
+\subsubsection{1.1 2-面}\label{ux9762}
+
+{[}4{]} §1.3.3 の集合符号を用いる。
+
+\textbf{定義 1.1（2-面）}. 6軸 \((x, y, z, t, R, Q)\)
+のうち、ちょうど2軸 \(i, j\)
+が非零符号（\(\sigma_i, \sigma_j \in \{+1, -1\}\)）を持ち、残りの軸がすべて零符号を持つ集合を、軸
+\((i, j)\) がなす \textbf{2-面} と呼ぶ。
+
+\subsubsection{1.2
+符号付き面積}\label{ux7b26ux53f7ux4ed8ux304dux9762ux7a4d}
+
+{[}4{]} §1.1 により、各座標は非零の値 \(v_i, v_j \neq 0\)
+をとりうる（実数値・整数値のいずれでもよい）。
+
+\textbf{定義 1.2（符号付き面積）}. 軸 \((i, j)\)
+がなす2-面に対して、\textbf{符号付き面積} \(M(i, j)\) を以下で定義する:
+
+\[M(i, j) = v_i \cdot v_j\]
+
+\(M\)
+は実数値であり、その\textbf{符号}（配向）と\textbf{絶対値}（面積の大きさ）の2つの情報を持つ:
+
+\[\text{sign}(M) = \text{sign}(v_i) \cdot \text{sign}(v_j) \in \{+1, -1\}\]
+
+\[|M| = |v_i| \cdot |v_j|\]
+
+\(\text{sign}(M) = +1\) を \textbf{正配向}、\(\text{sign}(M) = -1\) を
+\textbf{逆配向} と呼ぶ。\(|v_i|\) と \(|v_j|\)
+の具体的な値は本定義では制約されない。
+
+\textbf{注記}. 符号付き面積の相殺（例: 粒子-反粒子対消滅）において
+\(M + M' = 0\) が成立するためには、\(|M| = |M'|\)
+すなわち軸の絶対値が一致することが必要である。{[}5{]} §5.4
+の反粒子定義（空間軸の符号のみ反転、絶対値は不変）はこの条件を自動的に満たす。
+
+\textbf{命題 1.2（整数格子上の符号付き面積）}. {[}3{]}
+により、離散空間で中心投影の全球被覆を実現する座標は整数格子
+\(\mathbb{Z}^n\) 上の値をとる。このとき非零座標
+\(v_i, v_j \in \mathbb{Z} \setminus \{0\}\) に対して:
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\item
+  \(M(i,j) = v_i \cdot v_j \in \mathbb{Z} \setminus \{0\}\)
+\item
+  \(\text{sign}(M) \in \{+1, -1\}\)
+\end{enumerate}
+
+\emph{証明}. (i) 整数環 \(\mathbb{Z}\)
+は乗法について閉じており（\(a, b \in \mathbb{Z} \implies ab \in \mathbb{Z}\)）、かつ整域である（\(a \neq 0\)
+かつ
+\(b \neq 0 \implies ab \neq 0\)）。\(v_i, v_j \in \mathbb{Z} \setminus \{0\}\)
+より \(M = v_i \cdot v_j \in \mathbb{Z} \setminus \{0\}\)。(ii)
+\(M \neq 0\) より \(\text{sign}(M) \in \{+1, -1\}\) が定まる。
+\(\square\)
+
+\textbf{注記}.
+座標値が実数値をとる連続的な場合にも定義1.2は適用可能であるが、\(\text{sign}(M)\)
+の2値性が保証されるのは \(v_i, v_j \neq 0\)
+の条件のみによる。整数格子上ではこの条件が格子構造から自動的に満たされる。
+
+\subsubsection{\texorpdfstring{1.3 符号積 \(P\)
+との関係}{1.3 符号積 P との関係}}\label{ux7b26ux53f7ux7a4d-p-ux3068ux306eux95a2ux4fc2}
+
+\textbf{命題 1.1}. {[}4{]} 命題7.1 の符号積
+\(P = (-1)^{|\{i \in \{t, R\} : \sigma_i < 0\}|}\) は、\(t\) 軸と \(R\)
+軸がともに非零のとき、\(M(t, R)\) の符号に一致する:
+\(P = \text{sign}(M(t, R))\)。
+
+\emph{証明}. \(\text{sign}(v_t), \text{sign}(v_R) \in \{+1, -1\}\)
+のとき:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\(\text{sign}(v_t)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(\text{sign}(v_R)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+負の本数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(P\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(\text{sign}(M)\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(+\) & \(+\) & 0 & \(+1\) & \(+1\) \\
+\(+\) & \(-\) & 1 & \(-1\) & \(-1\) \\
+\(-\) & \(+\) & 1 & \(-1\) & \(-1\) \\
+\(-\) & \(-\) & 2 & \(+1\) & \(+1\) \\
+\end{longtable}
+}
+
+全4配置で \(P = \text{sign}(M)\) が成立する。\(\square\)
+
+\textbf{注記}. \(t, R\) の一方のみが非零のとき
+\(P = (-1)^{0 \text{ or } 1}\) であり、2-面 \(M(t,R)\)
+は定義されない（1軸では面を構成しない）。このとき \(P\) は
+\(\text{sign}(M)\) の一般化として機能する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§2
+フェルミオン面積}\label{ux30d5ux30a7ux30ebux30dfux30aaux30f3ux9762ux7a4d}
+
+\subsubsection{2.1 定義}\label{ux5b9aux7fa9}
+
+{[}4{]} 定義2.1 により、フェルミオン型は \(xyzt\) 4軸のうちちょうど
+\(k = 2\) 本が非零である。
+
+\textbf{定義 2.1（フェルミオン面積）}. フェルミオンの2本の非零軸
+\((i, j) \subseteq \{x, y, z, t\}\) がなす2-面の符号付き面積
+\(M_F = v_i \cdot v_j\) を \textbf{フェルミオン面積}
+と呼ぶ。その\textbf{配向}は
+\(\text{sign}(M_F) = \text{sign}(v_i) \cdot \text{sign}(v_j) \in \{+1, -1\}\)
+で与えられる。
+
+\subsubsection{2.2 {[}4{]}
+表Aにおけるフェルミオン面積の配向}\label{ux8868aux306bux304aux3051ux308bux30d5ux30a7ux30ebux30dfux30aaux30f3ux9762ux7a4dux306eux914dux5411}
+
+{[}4{]} §9.9 表Aの全フェルミオンについて \(\text{sign}(M_F)\)
+を算出する。各軸の絶対値 \(|v_i|\) は本節の結果に影響しない。
+
+\textbf{荷電レプトン}（非零軸: 空間1軸 + \(t\)
+軸、\(v_t > 0\)、\(Q = 4\)、\(c_1 = 1\)）:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llcc@{}}
+\toprule\noalign{}
+粒子 & 集合 & 非零軸 & \(\text{sign}(M_F)\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(e^-\) & \((+, 0, 0, +, 0, 4)\) & \(x, t\) & \((+)(+)= +1\) \\
+\(\mu^-\) & \((0, +, 0, +, 0, 4)\) & \(y, t\) & \((+)(+)= +1\) \\
+\(\tau^-\) & \((0, 0, +, +, 0, 4)\) & \(z, t\) & \((+)(+)= +1\) \\
+\end{longtable}
+}
+
+\textbf{ニュートリノ}（非零軸: 空間2軸、\(t = 0\)）:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llcc@{}}
+\toprule\noalign{}
+粒子 & 集合 & 非零軸 & \(\text{sign}(M_F)\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\nu_e\) & \((+, +, 0, 0, 0, 0)\) & \(x, y\) & \((+)(+)= +1\) \\
+\(\nu_\mu\) & \((0, +, +, 0, 0, 0)\) & \(y, z\) & \((+)(+)= +1\) \\
+\(\nu_\tau\) & \((+, 0, +, 0, 0, 0)\) & \(x, z\) & \((+)(+)= +1\) \\
+\end{longtable}
+}
+
+\textbf{上型クォーク}（非零軸: 空間1軸 + \(t\)
+軸、\(v_t > 0\)、\(Q \in \{5,6,7\}\)、\(c_1 = 1\)）:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llcc@{}}
+\toprule\noalign{}
+粒子 & 集合 & 非零軸 & \(\text{sign}(M_F)\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(u\) & \((+, 0, 0, +, 0, Q)\) & \(x, t\) & \((+)(+)= +1\) \\
+\(c\) & \((0, +, 0, +, 0, Q)\) & \(y, t\) & \((+)(+)= +1\) \\
+\(t\) & \((0, 0, +, +, 0, Q)\) & \(z, t\) & \((+)(+)= +1\) \\
+\end{longtable}
+}
+
+\textbf{下型クォーク}（非零軸: 空間1軸 + \(t\)
+軸、\(v_t < 0\)、\(Q \in \{1,2,3\}\)、\(c_1 = 0\)）:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llcc@{}}
+\toprule\noalign{}
+粒子 & 集合 & 非零軸 & \(\text{sign}(M_F)\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(d\) & \((+, 0, 0, -, 0, Q)\) & \(x, t\) & \((+)(-)= -1\) \\
+\(s\) & \((0, +, 0, -, 0, Q)\) & \(y, t\) & \((+)(-)= -1\) \\
+\(b\) & \((0, 0, +, -, 0, Q)\) & \(z, t\) & \((+)(-)= -1\) \\
+\end{longtable}
+}
+
+\textbf{まとめ}: 電荷構造を決定するのは \(M_F\)
+の\textbf{配向}（符号）のみであり、絶対値 \(|M_F| = |v_i| \cdot |v_j|\)
+には依存しない。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llcc@{}}
+\toprule\noalign{}
+フェルミオン型 & 非零軸の型 & \(Q\) & \(\text{sign}(M_F)\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+荷電レプトン & (空間, \(t>0\)) & 4 & \(+1\) \\
+ニュートリノ & (空間, 空間) & 0 & \(+1\) \\
+上型クォーク & (空間, \(t>0\)) & 5,6,7 & \(+1\) \\
+下型クォーク & (空間, \(t<0\)) & 1,2,3 & \(-1\) \\
+\end{longtable}
+}
+
+\subsubsection{2.3
+反粒子のフェルミオン面積}\label{ux53cdux7c92ux5b50ux306eux30d5ux30a7ux30ebux30dfux30aaux30f3ux9762ux7a4d}
+
+{[}5{]} §5.4 により、反粒子は空間軸 \((x, y, z)\) の符号が反転し、\(t\)
+軸の符号および \(Q\) 値は不変である。
+
+\textbf{命題 2.1}. フェルミオン面が（空間,
+\(t\)）の組合せである場合、反粒子のフェルミオン面積は粒子と逆符号である:
+\(M_F^{\text{anti}} = -M_F\)。
+
+\emph{証明}. 反粒子では空間軸の値が \(-v_{\text{空間}}\) に反転し、\(t\)
+軸は不変であるから、\(M_F^{\text{anti}} = (-v_{\text{空間}}) \cdot v_t = -(v_{\text{空間}} \cdot v_t) = -M_F\)。
+\(\square\)
+
+\textbf{命題 2.2}. フェルミオン面が（空間,
+空間）の組合せである場合、反粒子のフェルミオン面積は粒子と同一である:
+\(M_F^{\text{anti}} = M_F\)。
+
+\emph{証明}. 反粒子では両空間軸の値がそれぞれ
+\(-v_{\text{空間}_1}, -v_{\text{空間}_2}\)
+に反転するから、\(M_F^{\text{anti}} = (-v_{\text{空間}_1}) \cdot (-v_{\text{空間}_2}) = v_{\text{空間}_1} \cdot v_{\text{空間}_2} = M_F\)。
+\(\square\)
+
+\textbf{系 2.1}. {[}4{]} 表Aのニュートリノ（空間 \(\times\)
+空間、\(\text{sign}(M_F) = +1\)）は、反ニュートリノも
+\(\text{sign}(M_F) = +1\) を持つ。荷電レプトンおよび全クォーク（空間
+\(\times\) \(t\)）は、反粒子で \(M_F\)
+が符号反転する（\(\text{sign}(M_F^{\text{anti}}) = -\text{sign}(M_F)\)）。
+
+\subsubsection{2.4
+色荷とフェルミオン面積の独立性}\label{ux8272ux8377ux3068ux30d5ux30a7ux30ebux30dfux30aaux30f3ux9762ux7a4dux306eux72ecux7acbux6027}
+
+\textbf{命題 2.3}. \(Q\) 軸の値はフェルミオン面積 \(M_F\)
+に影響しない。同じ \(\sigma_{\text{空間}}, \sigma_t\)
+を持つフェルミオンは、\(Q\) の値によらず同一の \(M_F\) を持つ。
+
+\emph{証明}.
+\(\text{sign}(M_F) = \text{sign}(v_i) \cdot \text{sign}(v_j)\) は
+\(xyzt\) 軸の値のみで定まり、定義に \(Q\) は現れない。 \(\square\)
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{§3 スピン2 \(tR\) 型の \(P = -1\)
+配置}{§3 スピン2 tR 型の P = -1 配置}}\label{ux30b9ux30d4ux30f32-tr-ux578bux306e-p--1-ux914dux7f6e}
+
+{[}4{]} 命題7.1 により、スピン2 \(tR\) 型は \(P = +1\) と \(P = -1\)
+の両配置を許容する。{[}4{]} §9.7 では \(P = -1\)
+の物理的対応を未解決としていた。
+
+\textbf{命題 3.1}. スピン2 \(tR\) 型の \(P = -1\) 配置は、\(\sigma_t\)
+と \(\sigma_R\) が異符号であることと同値である。
+
+\emph{証明}. 命題1.1 により
+\(P = \text{sign}(M(t, R)) = \text{sign}(v_t) \cdot \text{sign}(v_R)\)。\(P = -1\)
+⟺ \(\text{sign}(v_t) \cdot \text{sign}(v_R) = -1\) ⟺ \(v_t\) と \(v_R\)
+が異符号。 \(\square\)
+
+\textbf{命題 3.2}. {[}5{]} §4.3 の引力・斥力の符号則（\(t\)
+軸成分の相対符号が同符号ならば引力、異符号ならば斥力）を {[}4{]} §9.5
+のグラビトン解釈に適用すると:
+
+\begin{itemize}
+\tightlist
+\item
+  \(P = +1\)（\(t, R\) 同符号）: \(t\) 成分が単一符号 → 引力のみ
+\item
+  \(P = -1\)（\(t, R\) 異符号）: \(t\) 成分と \(R\) 成分が逆符号 → \(R\)
+  軸方向に斥力的
+\end{itemize}
+
+\emph{証明}. {[}5{]} §4.3 では、方向制約波間の相互作用の符号を
+\(\text{sign}(k_t^{(1)}) \cdot \text{sign}(k_t^{(2)})\)
+で判定する。スピン2 \(tR\) 型の球状波がこの符号則に従うとき、\(P = +1\)
+では両軸が同じ方向性を持ち引力のみとなる。\(P = -1\) では \(R\)
+方向の作用が \(t\)
+方向と逆符号となり、空間スケールに対して斥力的に作用する。 \(\square\)
+
+\textbf{注記}. \(P = -1\) 配置の物理的帰結の解釈は §4.3 で扱う。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§4 解釈例:
+電荷構造の導出}\label{ux89e3ux91c8ux4f8b-ux96fbux8377ux69cbux9020ux306eux5c0eux51fa}
+
+本節は {[}4{]} §9 と同様の位置づけであり、§1--§3
+の組合せ論的結果を標準模型に対応付ける一つの解釈例である。
+
+\subsubsection{\texorpdfstring{4.1 弱アイソスピンの第3成分
+\(I_3\)}{4.1 弱アイソスピンの第3成分 I\_3}}\label{ux5f31ux30a2ux30a4ux30bdux30b9ux30d4ux30f3ux306eux7b2c3ux6210ux5206-i_3}
+
+§2.2 で導入した \(\text{sign}(M_F)\) と {[}4{]} §9.2 の \(c_1\)
+ビット（弱アイソスピン）を用いて、標準模型の弱アイソスピン第3成分
+\(I_3\) を以下のように定義する。
+
+クォーク（\(c_2 c_3 \neq 00\)）では、\(\text{sign}(M_F)\)
+が上型（\(+1\)）と下型（\(-1\)）を直接区別するため、\(I_3 = \text{sign}(M_F)/2\)
+とする。
+
+レプトン（\(c_2 c_3 = 00\)）では、ニュートリノ（\(Q = 0\), 空間
+\(\times\) 空間）と荷電レプトン（\(Q = 4\), 空間 \(\times\)
+\(t\)）がいずれも \(\text{sign}(M_F) = +1\) を持ち、\(\text{sign}(M_F)\)
+のみでは区別できない。\(c_1\) ビットにより \(I_3 = (1 - 2c_1)/2\)
+と定義する。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1379}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+フェルミオン型
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(Q\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(c_1\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(\text{sign}(M_F)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(I_3\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+SM での \(I_3\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+ニュートリノ & \(0\) & \(0\) & \(+1\) & \((1 - 2 \cdot 0)/2 = +1/2\) &
+\(+1/2\) \\
+荷電レプトン & \(4\) & \(1\) & \(+1\) & \((1 - 2 \cdot 1)/2 = -1/2\) &
+\(-1/2\) \\
+上型クォーク & \(5,6,7\) & \(1\) & \(+1\) & \(+1/2\) & \(+1/2\) \\
+下型クォーク & \(1,2,3\) & \(0\) & \(-1\) & \(-1/2\) & \(-1/2\) \\
+\end{longtable}
+}
+
+全フェルミオンについて \(I_3\) が標準模型と一致する。クォークでは
+\(\text{sign}(M_F) = 2c_1 - 1\)
+が成り立つため、\(I_3 = \text{sign}(M_F)/2 = (2c_1 - 1)/2\) はレプトンの
+\((1 - 2c_1)/2\) と符号が逆の関係にある。
+
+\subsubsection{\texorpdfstring{4.2 弱超電荷 \(Y\) の色荷成分 \(c_2 c_3\)
+からの決定}{4.2 弱超電荷 Y の色荷成分 c\_2 c\_3 からの決定}}\label{ux5f31ux8d85ux96fbux8377-y-ux306eux8272ux8377ux6210ux5206-c_2-c_3-ux304bux3089ux306eux6c7aux5b9a}
+
+標準模型の電荷公式（Gell-Mann--西島の関係）:
+
+\[Q_{\text{charge}} = I_3 + \frac{Y}{2}\]
+
+\(Y\) が色荷成分 \(c_2 c_3\) のみに依存すると仮定する:
+\(c_2 c_3 = 00\)（レプトン）のとき
+\(Y = Y_L\)、\(c_2 c_3 \neq 00\)（クォーク）のとき
+\(Y = Y_Q\)。このとき、以下の2条件が \(Y_L, Y_Q\) を一意に決定する。
+
+\textbf{条件 (i): レプトンの電荷が整数}. \(c_2 c_3 = 00\)
+の任意のフェルミオンについて
+\(Q_{\text{charge}} = I_3 + Y_L/2 \in \mathbb{Z}\)
+が成立すること。\(I_3 \in \{+1/2, -1/2\}\) より、\(Y_L\)
+は奇数でなければならない。
+
+\textbf{条件 (ii): 色中性バリオンの電荷が整数}. \(c_2 c_3 \neq 00\)
+の3体色中性系（\(c_2 c_3 = 01, 10, 11\) を各1個）の合計電荷
+\(Q_{\text{baryon}} = \sum_{a=1}^{3}(I_3^{(a)} + Y_Q / 2) \in \mathbb{Z}\)
+が任意の \(I_3^{(a)} \in \{+1/2, -1/2\}\) の組合せで成立すること。
+
+\[Q_{\text{baryon}} = \sum I_3^{(a)} + \frac{3 Y_Q}{2}\]
+
+\(\sum I_3^{(a)} \in \{-3/2, -1/2, +1/2, +3/2\}\)（常に半整数）であるから、\(3 Y_Q / 2\)
+も半整数でなければならない。すなわち
+\(Y_Q = (2n+1)/3\)（\(n \in \mathbb{Z}\)）。
+
+\textbf{最小解の決定}. 条件 (i) で \(|Y_L|\) 最小の奇数は
+\(Y_L = \pm 1\)。荷電レプトンに負電荷を要請すると:
+
+\[Q_{\text{charge}}(e^-) = -\frac{1}{2} + \frac{Y_L}{2} < 0 \implies Y_L < 1\]
+
+よって \(Y_L = -1\)。条件 (ii) で \(|Y_Q|\) 最小の解は \(n = 0\):
+\(Y_Q = 1/3\)。
+
+\textbf{命題 4.1（整数電荷条件からの \(Y\) の一意決定）}.
+\(I_3 \in \{+1/2, -1/2\}\)
+の2値性と、観測可能粒子（レプトンおよび色中性バリオン）の電荷が整数であるという条件から、\(Y\)
+の最小解は:
+
+\[Y_L = -1 \quad (c_2 c_3 = 00), \qquad Y_Q = +\frac{1}{3} \quad (c_2 c_3 \neq 00)\]
+
+に一意に決定される。
+
+\subsubsection{4.3 帰結}\label{ux5e30ux7d50}
+
+\textbf{帰結 1: Gell-Mann--西島公式の再現}. §4.1 の \(I_3\)
+および命題4.1の \(Y\) を代入すると:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1379}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+フェルミオン
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(\text{sign}(M_F)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(I_3\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(Y\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(Q_{\text{charge}} = I_3 + Y/2\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+SM値
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\nu\) & \(+1\) & \(+1/2\) & \(-1\) & \(0\) & \(0\) ✓ \\
+\(e^-\) & \(+1\) & \(-1/2\) & \(-1\) & \(-1\) & \(-1\) ✓ \\
+\(u\) & \(+1\) & \(+1/2\) & \(+1/3\) & \(+2/3\) & \(+2/3\) ✓ \\
+\(d\) & \(-1\) & \(-1/2\) & \(+1/3\) & \(-1/3\) & \(-1/3\) ✓ \\
+\end{longtable}
+}
+
+これは {[}4{]} 定義9.1 の電荷写像 \(f_Q^{\text{charge}}\) と一致する。
+
+\textbf{帰結 2: アノマリー相殺の自動的成立}. 命題4.1の解は:
+
+\[Y_L + 3 Y_Q = -1 + 3 \times \frac{1}{3} = 0\]
+
+を満たす。これは標準模型におけるゲージアノマリー相殺条件に対応する。本枠組みでは、\(c_2 c_3\)
+の構造（1つの色中性状態 \(c_2 c_3 = 00\) + 3つの色荷状態
+\(c_2 c_3 \neq 00\)）と整数電荷条件から代数的に導かれる。
+
+\textbf{帰結 3: 陽子-電子の電荷等量性}. 陽子 \((uud)\) の電荷:
+
+\[Q_p = \sum I_3^{(a)} + \frac{3 Y_Q}{2} = \left(\frac{1}{2} + \frac{1}{2} - \frac{1}{2}\right) + \frac{1}{2} = +1\]
+
+電子の電荷（絶対値）:
+
+\[|Q_e| = \left|I_3(e^-) + \frac{Y_L}{2}\right| = \left|-\frac{1}{2} - \frac{1}{2}\right| = 1\]
+
+\(|Q_p| = |Q_e| = 1\)
+であり、陽子と電子が同じ大きさの電荷を持つ理由は、\(c_2 c_3\)
+の色荷構造（\(1 + 3\) 分類）と \(I_3\)
+の2値性（\(\pm 1/2\)）から代数的に決定される。分数電荷 \(+2/3, -1/3\)
+を基本量として導入する必要はない。
+
+\textbf{帰結 4: スピン2 \(P = -1\) の解釈}. §3 命題3.2
+により、\(P = -1\) のグラビトン配置は \(R\)
+軸方向に斥力的に作用する。{[}4{]} §9.8 において \(R\)
+軸は主観座標系と6次元構造の空間スケールを結びつける軸であるから、\(P = -1\)
+配置は
+\textbf{空間スケールの加速膨張}に対応する可能性がある。これは宇宙論的定数
+\(\Lambda > 0\)（暗黒エネルギー）の幾何学的記述の候補となる。ただし、\(P = -1\)
+配置が物理的に実現されるか否か（選択則の有無）は未解決であり、本稿では帰結の記述にとどめる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§5 本稿の結論}\label{ux672cux7a3fux306eux7d50ux8ad6}
+
+本稿では、{[}4{]} §7 で宣言した符号付き面積 \(M(\sigma)\)
+の定義を与え、以下の3つの結果を導出した。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{符号付き面積 \(M(i,j) = v_i \cdot v_j\)}（定義1.2）は、{[}4{]}
+  命題7.1 の符号積 \(P\) の \(t, R\)
+  両非零の場合への制限に一致する（命題1.1）。
+\item
+  \textbf{フェルミオン面積 \(M_F\)}（定義2.1）は、{[}4{]}
+  表Aの全フェルミオンについて計算可能であり、反粒子による符号反転（命題2.1）、ニュートリノの反粒子不変性（命題2.2）、\(Q\)
+  軸からの独立性（命題2.3）を示した。
+\item
+  \textbf{スピン2 \(P = -1\)} 配置は \(v_t, v_R\)
+  の異符号に対応し、{[}5{]} の符号則から \(R\)
+  軸方向に斥力的であることを導出した（命題3.1, 3.2）。
+\end{enumerate}
+
+解釈例（§4）では: - \(I_3\)（クォーク: \(\text{sign}(M_F)/2\)、レプトン:
+\((1-2c_1)/2\)）が標準模型の弱アイソスピン第3成分に一致すること（§4.1）
+- 整数電荷条件から \(Y_L = -1, Y_Q = +1/3\)
+が一意に決定されること（命題4.1） - アノマリー相殺条件
+\(Y_L + 3Y_Q = 0\) が自動的に成立すること（帰結2） -
+陽子-電子の電荷等量性が \(c_2 c_3\) の \(1+3\)
+構造から導かれること（帰結3）
+
+を示した。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\begin{itemize}
+\tightlist
+\item
+  {[}3{]} 木原 範昭,
+  ``離散空間における中心投影の全球被覆と5次元背景空間の整数論的必然性,''
+  Zenodo preprint, DOI: 10.5281/zenodo.19624957 (2026).
+\item
+  {[}4{]} 木原 範昭, ``6次元超直方体の集合構造とその組合せ論的性質,''
+  Zenodo preprint, DOI: 10.5281/zenodo.19721125 (2026).
+\item
+  {[}5{]} 木原 範昭,
+  ``形不変波の相互作用------軸方向変位転送・波束変形・因果の遡及的構成,''
+  Zenodo preprint, DOI: 10.5281/zenodo.19721128 (2026).
+\end{itemize}
+\end{document}

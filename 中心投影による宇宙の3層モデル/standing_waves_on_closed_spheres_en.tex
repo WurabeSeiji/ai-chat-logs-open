@@ -1,0 +1,722 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,11pt]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp}
+\else
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  \setmainfont[]{Times New Roman}
+\fi
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{%
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath}
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{%
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{%
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none}
+\usepackage{calc}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
+\urlstyle{same}
+\usepackage{hyperref}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+\begin{document}
+\section{Shape-Invariant Standing Waves on Closed Spheres ---
+Dimensional Stability and the Geometric Necessity of 3+1
+Spacetime}\label{shape-invariant-standing-waves-on-closed-spheres-dimensional-stability-and-the-geometric-necessity-of-31-spacetime}
+
+\textbf{Author}: Noriaki Kihara\\
+\textbf{Affiliation}: WF System Co., Ltd.\\
+\textbf{ORCID}: 0009-0004-6753-4020\\
+\textbf{DOI}: https://doi.org/10.5281/zenodo.19731594\\
+\textbf{Version}: v1.0\\
+\textbf{Date}: April 2026
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+We systematically analyze the phase wave equation on closed
+\(n\)-dimensional spheres \(S^n\) from one to four dimensions. We show
+that the phase wave equation is independent of the spatial curvature
+\(R\), and that \(R\) enters only through the standing wave condition
+(the global boundary condition). We demonstrate that the parameter
+description \((\theta_0, \lambda_{\text{base}}, A, N)\) of
+shape-invariant standing waves is preserved across all dimensions, that
+the conserved quantity \(\int |u|^2 \, dV\) carries the identity of the
+wave packet, and that Huygens' principle holds only on odd-dimensional
+spheres and fails on even-dimensional ones. From these facts, we show
+that \textbf{the minimal nontrivial sphere on which shape-invariant
+standing waves can stably exist is \(S^3\) (three-dimensional)}.
+Furthermore, we add an independent argument from the discrete-algebraic
+side via Frobenius' theorem and argue that both the continuous and
+discrete sides necessitate a \textbf{3+1 spacetime structure}.
+
+\textbf{Keywords}: phase wave equation, shape-invariant standing wave,
+closed sphere, Huygens' principle, Frobenius' theorem, 3+1 spacetime
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§1 Introduction and Scope of
+Claims}\label{introduction-and-scope-of-claims}
+
+This paper describes, as purely geometric and number-theoretic facts,
+the dimensional dependence of standing waves of the phase wave equation
+on closed \(n\)-dimensional spheres \(S^n\).
+
+The claims of this paper are limited to the following three points:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The phase wave equation is an operation essentially orthogonal to the
+  spatial curvature \(R\), and \(R\) enters only through the standing
+  wave condition (the commensurability of the circumference of the
+  closed space with the wavelength).
+\item
+  Shape-invariant standing waves that stably preserve their identity as
+  wave packets exist only on odd-dimensional spheres where Huygens'
+  principle holds. The minimal nontrivial dimension is \(S^3\).
+\item
+  By Frobenius' theorem (associative division algebras are limited to
+  \(\mathbb{R}, \mathbb{C}, \mathbb{H}\)), four dimensions are
+  independently necessitated from the discrete-algebraic side, and the
+  \(1+3\) decomposition of the quaternions algebraically embeds the
+  \(3+1\) spacetime structure.
+\end{enumerate}
+
+The following elements are \textbf{outside the scope of this paper}:
+
+\begin{itemize}
+\tightlist
+\item
+  Dynamical stability (eigenvalue analysis under time evolution,
+  convexity of the energy functional)
+\item
+  Rigorous formulation as soliton solutions of nonlinear wave equations
+\item
+  Concrete correspondences with physical spacetime
+\end{itemize}
+
+The object called ``shape-invariant standing wave'' in this paper is
+distinguished from ``soliton,'' which carries dynamical implications.
+``Shape-invariant'' refers solely to the geometric property that the
+amplitude distribution \(|\psi|\) is preserved under parallel transport,
+and ``standing'' refers solely to the property that the nodal structure
+is compatible with the arrangement of the family of spheres.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{§2 Shape-Invariant Standing Waves on a
+Closed String
+(\(S^1\))}{§2 Shape-Invariant Standing Waves on a Closed String (S\^{}1)}}\label{shape-invariant-standing-waves-on-a-closed-string-s1}
+
+\subsubsection{§2.1 Parameter Description}\label{parameter-description}
+
+On a closed string (\(S^1\)) of circumference \(L\), a shape-invariant
+standing wave is completely described by the following four parameters:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\theta_0\): positional phase of the maximum wave height
+\item
+  \(\lambda_{\text{base}}\): fundamental mode wavelength
+\item
+  \(A\): amplitude of the maximum wave height
+\item
+  \(N\): number of modes in the Fourier expansion (truncation order)
+\end{itemize}
+
+Here \(N\) is the parameter controlling the ``roundness/sharpness'' of
+the waveform:
+
+\begin{itemize}
+\tightlist
+\item
+  \(N = 1\): fundamental mode only (pure sinusoidal wave)
+\item
+  \(N\) intermediate: trapezoidal waveform with added odd-order
+  harmonics
+\item
+  \(N \to \infty\): perfect square wave (fully localized pulse)
+\end{itemize}
+
+\subsubsection{§2.2 Standing Wave
+Condition}\label{standing-wave-condition}
+
+The necessary and sufficient condition for a standing wave to exist is:
+
+\[L = k \cdot \lambda_{\text{base}} \quad (k \in \mathbb{Z}_{>0})\]
+
+That is, the circumference of the closed string must be a positive
+integer multiple of the fundamental mode wavelength. Under this
+condition, the permitted wavelengths are automatically discretized to
+\(\lambda_n = L/n\) (\(n = 1, 2, 3, \ldots\)).
+
+\subsubsection{§2.3 Unification of Boundary
+Conditions}\label{unification-of-boundary-conditions}
+
+The phase wave equation requires the string to be closed but does not
+specify the manner of closure. The difference between free-end
+reflection (phase shift \(0\)) and fixed-end reflection (phase shift
+\(\pi\)) can be treated uniformly, via the method of images, as the
+even-parity/odd-parity subspaces of a closed string of length \(2L\).
+The difference in boundary conditions is absorbed into the phase
+selection (\(0\) or \(\pi\)) of the fundamental mode.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{§3 Orthogonality of the Phase Wave Equation
+and Curvature
+\(R\)}{§3 Orthogonality of the Phase Wave Equation and Curvature R}}\label{orthogonality-of-the-phase-wave-equation-and-curvature-r}
+
+\subsubsection{\texorpdfstring{§3.1
+\(R\)-Independence}{§3.1 R-Independence}}\label{r-independence}
+
+The phase wave equation is a local differential equation, and the
+spatial curvature \(R\) (or equivalently \(L = 2\pi R\)) appears nowhere
+in it. \(R\) enters only at \textbf{the level of the global boundary
+condition}, which selects which wavelengths can constitute standing
+waves:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\lambda = L/n\) (\(n\) integer): phase shifts by \(2\pi n\) over one
+  circuit, and a standing wave is established
+\item
+  \(\lambda > L\): phase shifts by less than \(2\pi\) over one circuit,
+  and no standing wave forms
+\item
+  \(\lambda\) incommensurate with \(L\): phase never returns to its
+  original value regardless of the number of circuits, and the
+  trajectory fills the phase space quasi-periodically
+\end{itemize}
+
+In every case the wave equation itself is identical; whether \(R\) is
+small or large, the wave obeys the same equation.
+
+\subsubsection{\texorpdfstring{§3.2 A Posteriori Definition of
+\(R\)}{§3.2 A Posteriori Definition of R}}\label{a-posteriori-definition-of-r}
+
+From this structure, \(R\) is not a quantity within the wave equation
+but rather \textbf{a geometric quantity that can be read off a
+posteriori by surveying the set of standing-wave solutions}:
+
+\[R = \frac{\lambda_{\text{base}}}{2\pi}\]
+
+That is, \(R\) is ``\((2\pi)^{-1}\) times the longest wavelength
+admitted as a standing wave'' --- a derived quantity, not an a priori
+parameter.
+
+\subsubsection{§3.3 Structural
+Orthogonality}\label{structural-orthogonality}
+
+\textbf{This is not a Euclidean approximation.} The phase wave equation
+and the spatial curvature are essentially orthogonal operations, and
+calculations in Euclidean coordinates are exactly correct. Curvature
+\(R\) enters only through the global boundary condition (the
+commensurability of the circumference of the closed space with the
+wavelength) and has no effect whatsoever on the local solutions of the
+wave equation.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{§4 Extension to the Sphere \(S^2\) and
+Antipodal
+Convergence}{§4 Extension to the Sphere S\^{}2 and Antipodal Convergence}}\label{extension-to-the-sphere-s2-and-antipodal-convergence}
+
+\subsubsection{§4.1 Preservation of Parameter
+Structure}\label{preservation-of-parameter-structure}
+
+Shape-invariant standing waves on the sphere \(S^2\) have essentially
+the same parameter structure as on \(S^1\). By the \(\mathrm{SO}(3)\)
+symmetry of \(S^2\), the standing wave condition takes the same form
+regardless of which great circle is chosen:
+
+\[2\pi R = n \cdot \lambda_{\text{base}}\]
+
+The parameters change only in the dimension of the positional phase and
+are exhausted by the four quantities
+\((\theta_0, \lambda_{\text{base}}, A, N)\). The position of the wave
+packet is a completely free parameter and is indistinguishable from
+internal observation.
+
+\subsubsection{§4.2 Antipodal Convergence
+Phenomenon}\label{antipodal-convergence-phenomenon}
+
+On \(S^2\), when the great-circle circumference is not an integer
+multiple of \(\lambda\), a wave packet localized at a single point
+executes the following motion:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Initially: a peak localized at a single point
+\item
+  Expands as a ring-shaped (\(S^1\)) wavefront
+\item
+  Ring reaches maximum near the equator
+\item
+  Contracts toward the antipodal point on the opposite side
+\item
+  Converges again to a single point at the antipodal point
+\item
+  Repeats
+\end{enumerate}
+
+\subsubsection{§4.3 Geometric Dispersion}\label{geometric-dispersion}
+
+The eigenfrequencies of \(S^2\) are \(\omega_l = c\sqrt{l(l+1)}/R\),
+which are \textbf{non-equally spaced}. As a result, the wave packet is
+strictly quasi-periodic rather than periodic, and the shape of the wave
+packet deteriorates with each successive cycle.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{§5 Conserved Quantity
+\(\int |u|^2 \, dV\)}{§5 Conserved Quantity \textbackslash int \textbar u\textbar\^{}2 \textbackslash, dV}}\label{conserved-quantity-int-u2-dv}
+
+\subsubsection{§5.1 Distinction Between Instantaneous Wave Height and
+Conserved
+Quantity}\label{distinction-between-instantaneous-wave-height-and-conserved-quantity}
+
+In a perfectly lossless linear wave equation, the instantaneous wave
+height \(u(x,t)\) itself is not a ``stable quantity'' either locally or
+globally. What is conserved is the following nonlocal integral quantity:
+
+\[\int_{S^n} |u|^2 \, dV = \sum_{l,m} |a_{lm}|^2 = \text{const}\]
+
+The ``identity'' of a wave packet resides not in its instantaneous shape
+but in this squared integral over the entire space.
+
+\subsubsection{§5.2 Structural Isomorphism with the Schrödinger
+Equation}\label{structural-isomorphism-with-the-schruxf6dinger-equation}
+
+This conservation law is structurally isomorphic to
+\(\int |\psi|^2 \, dV = 1\) in the Schrödinger equation of quantum
+mechanics:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Shape-invariant standing wave on a closed sphere
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Schrödinger equation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Field & \(u(x,t)\) (real-valued wave height) & \(\psi(x,t)\) (complex
+amplitude) \\
+Conserved density & \(u^2\) & \(|\psi|^2\) (probability density) \\
+Conserved quantity & \(\int u^2 \, dA\) & \(\int |\psi|^2 \, dV = 1\) \\
+Expansion basis & Spherical harmonics \(Y_{lm}\) & Hamiltonian
+eigenfunctions \\
+\end{longtable}
+}
+
+This isomorphism is not coincidental but a property arising from the
+common mathematical skeleton of ``a linear equation expandable in an
+orthogonal basis''; the distinction between classical and quantum is not
+essential.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{§6 Validity of Huygens' Principle on
+\(S^3\)}{§6 Validity of Huygens' Principle on S\^{}3}}\label{validity-of-huygens-principle-on-s3}
+
+\subsubsection{§6.1 Qualitative Difference Between Odd and Even
+Dimensions}\label{qualitative-difference-between-odd-and-even-dimensions}
+
+The propagation properties of the wave equation differ essentially
+between even and odd spatial dimensions (Hadamard's result):
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Odd dimensions} (\(S^1, S^3, S^5, \ldots\)): strict Huygens'
+  principle holds. A point-source pulse propagates solely as a sharp
+  wavefront, leaving no trailing wake.
+\item
+  \textbf{Even dimensions} (\(S^2, S^4, \ldots\)): Huygens' principle
+  fails. A ``wake'' persists after the wavefront has passed.
+\end{itemize}
+
+\subsubsection{\texorpdfstring{§6.2 Shape-Invariant Standing Waves on
+\(S^3\)}{§6.2 Shape-Invariant Standing Waves on S\^{}3}}\label{shape-invariant-standing-waves-on-s3}
+
+On \(S^3\) (the hyperspherical shell of a perfectly symmetric
+hypersphere in four-dimensional space):
+
+\begin{itemize}
+\tightlist
+\item
+  Conserved quantity: \(\int |u|^2 \, dV\) (\(V = 2\pi^2 R^3\))
+\item
+  Standing wave condition: \(2\pi R = n \cdot \lambda_{\text{base}}\)
+  (\(\mathrm{SO}(4)\) symmetry)
+\item
+  Parameters:
+  \((\theta_0, \phi_0, \psi_0, \lambda_{\text{base}}, A, N)\)
+\end{itemize}
+
+By Huygens' principle, a wave packet localized at a single point
+\textbf{propagates solely as a sharp spherical shell (\(S^2\)-shaped
+wavefront)}, leaving nothing behind. It converges exactly to a single
+point at the antipodal point, where the peak is restored, and then
+expands again as a spherical shell. Compared to the quasi-periodic
+motion with afterglow on \(S^2\), a \textbf{cleaner restoration} is
+achieved on \(S^3\).
+
+\subsubsection{\texorpdfstring{§6.3 Failure of Huygens' Principle on
+\(S^4\)}{§6.3 Failure of Huygens' Principle on S\^{}4}}\label{failure-of-huygens-principle-on-s4}
+
+On \(S^4\), Huygens' principle fails again, and afterglow persists
+behind the wavefront, as on \(S^2\). The clean restoration achieved on
+\(S^3\) is lost.
+
+\subsubsection{§6.4 Alternating Pattern of Dimension and
+Stability}\label{alternating-pattern-of-dimension-and-stability}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1579}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4211}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4211}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Dimension
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Huygens' principle
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Behavior of wave packet
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(S^1\) & (one-dimensional) exact & Phase rotation only, perfectly
+periodic \\
+\(S^2\) & Fails & Antipodal convergence + afterglow, quasi-periodic \\
+\(S^3\) & \textbf{Holds} & Sharp spherical-shell propagation, clean
+restoration \\
+\(S^4\) & Fails & Higher-dimensional analogue of \(S^2\), afterglow
+present \\
+\(S^5\) & \textbf{Holds} & Higher-dimensional analogue of \(S^3\),
+clean \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§7 Conditions for Stable Existence of Shape-Invariant
+Standing
+Waves}\label{conditions-for-stable-existence-of-shape-invariant-standing-waves}
+
+\subsubsection{§7.1 Loss of Wave Packet Identity in Even
+Dimensions}\label{loss-of-wave-packet-identity-in-even-dimensions}
+
+We organize the phenomena occurring in even dimensions (\(S^2, S^4\)):
+
+\begin{itemize}
+\tightlist
+\item
+  The conserved quantity \(\int |u|^2 \, dV\) is exactly conserved
+\item
+  Each individual mode amplitude \(|a_{lm}|\) is also exactly conserved
+\item
+  However, \textbf{the identity as a localized wave packet} is not
+  maintained
+\end{itemize}
+
+Because the eigenfrequencies \(\omega_l\) are arranged in irrational
+ratios, the phases of the individual modes drift independently,
+undergoing quasi-periodic motion in phase space. Under long-time
+averaging, a distribution spread over the entire sphere becomes the
+typical state, with localization partially reviving by occasional
+coincidental phase alignment (Poincaré recurrence). This is consistent
+with the picture of a quasi-periodic dynamical system in the sense of
+KAM theory.
+
+\subsubsection{§7.2 Necessary and Sufficient Conditions for Stable
+Shape-Invariant Standing
+Waves}\label{necessary-and-sufficient-conditions-for-stable-shape-invariant-standing-waves}
+
+The conditions for a shape-invariant standing wave to ``stably exist
+while preserving its identity as a wave packet'' are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Huygens' principle holds}: the wavefront leaves no trailing
+  wake
+\item
+  \textbf{Eigenfrequencies are close to integer ratios}: phase coherence
+  is regenerated
+\end{enumerate}
+
+These are simultaneously satisfied \textbf{only on odd-dimensional
+spheres}.
+
+\subsubsection{§7.3 Minimality}\label{minimality}
+
+\(S^1\) trivially satisfies Huygens' principle, but in one dimension it
+exhibits only the degenerate behavior of phase rotation. The minimal
+dimension that supports nontrivial wave packet formation, restoration,
+and antipodal convergence is \textbf{\(S^3\)}.
+
+\textbf{Proposition}: The minimal dimension \(n\) on which
+shape-invariant standing waves can exist nontrivially and stably on a
+closed \(n\)-dimensional sphere is \(n = 3\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§8 Independent Argument via Frobenius'
+Theorem}\label{independent-argument-via-frobenius-theorem}
+
+\subsubsection{§8.1 Associative Division
+Algebras}\label{associative-division-algebras}
+
+By Frobenius' theorem (1877), the finite-dimensional associative
+division algebras over the real numbers are limited to the following
+three:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathbb{R}\) (real numbers, 1-dimensional)
+\item
+  \(\mathbb{C}\) (complex numbers, 2-dimensional)
+\item
+  \(\mathbb{H}\) (quaternions, 4-dimensional)
+\end{itemize}
+
+No natural division algebra exists in three dimensions. Extending while
+preserving algebraic structure (addition, subtraction, multiplication,
+division, and norm) skips three dimensions and arrives at four.
+
+\subsubsection{\texorpdfstring{§8.2 The \(1+3\) Decomposition of
+Quaternions}{§8.2 The 1+3 Decomposition of Quaternions}}\label{the-13-decomposition-of-quaternions}
+
+A quaternion \(q = a + bi + cj + dk\) decomposes intrinsically within
+the algebraic structure into \(1\) dimension (scalar part \(a\)) \(+ 3\)
+dimensions (vector part \(bi + cj + dk\)). This decomposition is not
+arbitrary but a natural structure demanded by the conjugation, norm, and
+multiplication of quaternions.
+
+\subsubsection{§8.3 Upper Bound: Non-Associativity of
+Octonions}\label{upper-bound-non-associativity-of-octonions}
+
+Extending to the 8-dimensional octonions \(\mathbb{O}\) breaks the
+associative law (Hurwitz's theorem). Since losing associativity makes it
+difficult to describe the composition and interaction of waves, four
+dimensions constitute the maximal dimension for an associative division
+algebra.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§9 Convergence of the Dual
+Argument}\label{convergence-of-the-dual-argument}
+
+\subsubsection{§9.1 Independent Arguments from the Continuous and
+Discrete
+Sides}\label{independent-arguments-from-the-continuous-and-discrete-sides}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Aspect
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Conclusion
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Basis
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Continuous waves (phase wave equation on \(S^n\)) & Three-dimensional
+space is preferred & Huygens' principle in odd dimensions \\
+Discrete algebra (lattice structure) & Four dimensions are necessitated
+& Frobenius' theorem \\
+Synthesis & \textbf{3 + 1 = 4} & \(1+3\) decomposition of quaternions \\
+\end{longtable}
+}
+
+\subsubsection{§9.2 Unified Proposition}\label{unified-proposition}
+
+The ``shape-invariant standing waves stable in odd dimensions'' on the
+continuous side and ``Frobenius' theorem'' on the discrete side, though
+seemingly independent, are two facets of a single requirement:
+\textbf{the minimal spacetime in which stable shape-invariant standing
+waves can exist}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Spatial structure}: a space that geometrically protects the
+  identity of wave packets → odd-dimensional spheres → the minimal
+  nontrivial dimension is \(S^3\) (3-dimensional)
+\item
+  \textbf{Algebraic structure}: interactions of wave packets close
+  within the same category → associative division algebras → the minimal
+  nontrivial dimension is \(\mathbb{H}\) (4-dimensional)
+\item
+  \textbf{Synthesis}: via the \(1+3\) decomposition of quaternions,
+  unified as 3-dimensional space \(+\) 1-dimensional time axis
+\end{enumerate}
+
+\textbf{Theorem (Convergence of the dual argument)}: The minimal closed
+space on which shape-invariant standing waves stably exist and possess
+algebraically closed interactions is \(S^3\), and the minimal structure
+describing this within an associative division algebra is the \(1+3\)
+decomposition of the quaternions \(\mathbb{H}\), namely the \(3+1\)
+spacetime structure.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§10 Orthogonality of the Phase Wave Equation and Spatial
+Curvature}\label{orthogonality-of-the-phase-wave-equation-and-spatial-curvature}
+
+The orthogonality between the phase wave equation and the curvature
+\(R\), demonstrated in §3, is preserved in higher dimensions. For
+\(S^1 \to S^2 \to S^3 \to S^4\) alike:
+
+\begin{itemize}
+\tightlist
+\item
+  The wave equation is a universal equation independent of \(R\)
+\item
+  \(R\) is a geometric quantity determined a posteriori through the
+  standing wave condition
+\item
+  Calculations in Euclidean coordinates are exactly correct (not an
+  approximation)
+\end{itemize}
+
+This orthogonality means that shape-invariant standing waves are
+indifferent to spatial distortion. Waves propagate along geodesics, but
+whether the space is distorted or not has no effect on the local
+solutions of the wave equation.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§11 Summary}\label{summary}
+
+We summarize the main results of this paper:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{\(R\)-independence}: The phase wave equation and the spatial
+  curvature are essentially orthogonal, and \(R\) is a geometric
+  quantity that can be read off a posteriori from the set of
+  standing-wave solutions.
+\item
+  \textbf{Universality of the parameter description}: The parameters
+  \((\theta_0, \lambda_{\text{base}}, A, N)\) of shape-invariant
+  standing waves are described by the same skeleton from \(S^1\) to
+  \(S^n\), with only the dimension of the positional phase varying.
+\item
+  \textbf{Conserved quantity}: The identity of a wave packet is carried
+  not by the instantaneous wave height \(u\) but by the nonlocal squared
+  integral \(\int |u|^2 \, dV\).
+\item
+  \textbf{Dimensional selection via Huygens' principle}: Shape-invariant
+  standing waves can stably exist only on odd-dimensional spheres, and
+  the minimal nontrivial dimension is \(S^3\) (three-dimensional).
+\item
+  \textbf{Convergence of the dual argument}: The continuous side
+  (Huygens' principle) and the discrete side (Frobenius' theorem)
+  independently necessitate the same \(3+1\) spacetime structure.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+\begin{itemize}
+\tightlist
+\item
+  {[}P1{]} Noriaki Kihara, ``Central Projection Between Hyperspheres,''
+  2025.
+\item
+  {[}P2{]} Noriaki Kihara, ``Regularity of Central Projection Between
+  Hyperspherical Shells,'' DOI: 10.5281/zenodo.19692192, 2026.
+\item
+  {[}W8{]} Noriaki Kihara, ``Six-Dimensional Hyperrectangular
+  Parallelepiped and Particle Model,'' 2025.
+\item
+  Hadamard, J., \emph{Lectures on Cauchy's Problem in Linear Partial
+  Differential Equations}, 1923.
+\item
+  Frobenius, G., ``Über lineare Substitutionen und bilineare Formen'',
+  \emph{J. reine angew. Math.}, \textbf{84}, 1--63, 1877.
+\item
+  Hurwitz, A., ``Über die Composition der quadratischen Formen von
+  beliebig vielen Variablen'', \emph{Nachr. Ges. Wiss. Göttingen},
+  309--316, 1898.
+\end{itemize}
+\end{document}

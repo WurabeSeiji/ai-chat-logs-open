@@ -1,0 +1,444 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  a4paper,11pt]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp}
+\else
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  \setmainfont[]{Times New Roman}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Hiragino Mincho ProN}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Hiragino Mincho ProN}
+  \fi
+\fi
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{%
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath}
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{%
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{%
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none}
+\usepackage{calc}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
+\urlstyle{same}
+\usepackage{hyperref}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{amsthm}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定義}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{注意}
+\newtheorem{observation}[theorem]{観察}
+\begin{document}
+\section{自発的対称性の破れの幾何学的必然性------ヒッグス機構の3段階導出}\label{ux81eaux767aux7684ux5bfeux79f0ux6027ux306eux7834ux308cux306eux5e7eux4f55ux5b66ux7684ux5fc5ux7136ux6027ux30d2ux30c3ux30b0ux30b9ux6a5fux69cbux306e3ux6bb5ux968eux5c0eux51fa}
+
+\subsection{------ {[}3{]} §9.11.7 のヒッグス機構問題に対する構造的回答
+------}\label{ux306eux30d2ux30c3ux30b0ux30b9ux6a5fux69cbux554fux984cux306bux5bfeux3059ux308bux69cbux9020ux7684ux56deux7b54}
+
+\textbf{著者}: 木原 範昭 (WF System Co., Ltd.)
+
+\textbf{日付}: 2026年4月
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§0 本稿の目的}\label{ux672cux7a3fux306eux76eeux7684}
+
+{[}3{]} §9.11.7
+において、「ヒッグス場による自発的対称性の破れの力学的機構が本枠組みでどう理解されるかは今後の課題である」と宣言した。
+
+標準模型では、この機構はメキシカンハット型ポテンシャル
+\(V(\phi) = \mu^2 |\phi|^2 + \lambda |\phi|^4\)（\(\mu^2 < 0\)）により説明される。対称な状態
+\(\phi = 0\)
+が不安定であり、場が非零の真空期待値に落ち込むことで対称性が自発的に破れる。
+
+本稿は、本枠組みではこのような外部的なポテンシャルが不要であり、自発的対称性の破れが以下の3段階の\textbf{幾何学的必然の連鎖}として既に導出済みであることを示す。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}cll@{}}
+\toprule\noalign{}
+段階 & 内容 & 導出元 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 4次元時空の必然性 & {[}2{]} \\
+2 & 3+1 分離の必然性 & {[}1{]} \\
+3 & 1次元定常波と軸ラベルの事後性 & {[}4{]} \\
+\end{longtable}
+}
+
+\textbf{参照論文}: - {[}1{]}
+閉じた球面上の形不変定常波------次元ごとの安定性と3+1時空の幾何学的必然性
+- {[}2{]}
+離散空間における中心投影の全球被覆と5次元背景空間の整数論的必然性（W5）,
+DOI: 10.5281/zenodo.19624957 - {[}3{]}
+6次元超直方体の集合構造とその組合せ論的性質（W8）, DOI:
+10.5281/zenodo.19721125 - {[}4{]} 形不変波の4つのモード（W10）, DOI:
+10.5281/zenodo.19709798
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§1 第1段階:
+4次元時空の必然性}\label{ux7b2c1ux6bb5ux968e-4ux6b21ux5143ux6642ux7a7aux306eux5fc5ux7136ux6027}
+
+\subsubsection{1.1 Lagrange
+の四平方定理と全球被覆}\label{lagrange-ux306eux56dbux5e73ux65b9ux5b9aux7406ux3068ux5168ux7403ux88abux8986}
+
+{[}2{]} により、離散整数格子 \(\mathbb{Z}^n\)
+上で中心投影の全球被覆が成立するための必要十分条件は
+\(n = 5\)（背景空間の次元）である。
+
+この結果はLagrangeの四平方定理（任意の正整数は4つの平方数の和で表せる）に依存する。\(n = 4\)
+では全球被覆が保証されず、\(n = 6\)
+以上では冗長である。5次元背景空間から中心投影により得られる主観空間は4次元であり、したがって:
+
+\textbf{命題 1.1}（{[}2{]}）.
+離散整数格子上で中心投影の全球被覆が成立する最小の主観空間は4次元である。
+
+\subsubsection{1.2
+本段階の帰結}\label{ux672cux6bb5ux968eux306eux5e30ux7d50}
+
+4次元時空は幾何学的・数論的な必然であり、先験的な仮定ではない。4つの座標軸
+\(x, y, z, t\)
+が存在する。この段階では4軸は完全に対等であり、「空間」と「時間」の区別はまだ存在しない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§2 第2段階: 3+1
+分離の必然性}\label{ux7b2c2ux6bb5ux968e-31-ux5206ux96e2ux306eux5fc5ux7136ux6027}
+
+\subsubsection{2.1
+閉球面上の定常波の安定条件}\label{ux9589ux7403ux9762ux4e0aux306eux5b9aux5e38ux6ce2ux306eux5b89ux5b9aux6761ux4ef6}
+
+{[}1{]} により、閉じた \(n\) 次元球面 \(S^n\)
+上で形不変定常波が非自明かつ安定に存在できる最小次元は \(n = 3\)
+である。この結果は以下の2条件の組合せから従う:
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\item
+  \textbf{Huygens の原理}:
+  波面が尾を引かず波束の同一性が保護されるのは奇数次元球面のみ
+\item
+  \textbf{非自明性}: \(S^1\)
+  は自明に条件を満たすが、波束の形成・復元・対蹠点収束を伴う非自明な振る舞いは示さない
+\end{enumerate}
+
+\textbf{命題 2.1}（{[}1{]}）. 閉じた \(n\)
+次元球面上で形不変定常波が非自明かつ安定に存在できる最小次元は \(n = 3\)
+である。
+
+\subsubsection{2.2 Frobenius
+の定理による独立論証}\label{frobenius-ux306eux5b9aux7406ux306bux3088ux308bux72ecux7acbux8ad6ux8a3c}
+
+{[}1{]} §8 により、Frobenius の定理（実数体上の有限次元結合的除算代数は
+\(\mathbb{R}, \mathbb{C}, \mathbb{H}\)
+に限られる）から、波の合成・相互作用が代数的に閉じる最大次元は4次元（四元数
+\(\mathbb{H}\)）である。四元数は代数構造内在的に \(1 + 3\)（スカラー部 +
+ベクトル部）に分解される。
+
+\subsubsection{2.3 4次元の 3+1
+分離}\label{ux6b21ux5143ux306e-31-ux5206ux96e2}
+
+命題1.1の4次元時空と命題2.1の \(S^3\) 安定条件を統合すると:
+
+\textbf{命題 2.2}.
+4次元時空において定常波が安定に存在するためには、4軸が3次元空間 +
+1次元時間に分離しなければならない。
+
+\emph{論証}. 4次元の分離方式を網羅的に検証する。
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\item
+  \textbf{4+0（分離なし）}: 4軸が対等のままでは、閉空間は
+  \(S^4\)（4次元球面）である。\(S^4\) は偶数次元であり Huygens
+  の原理が成立しないため、定常波は安定に存在できない（{[}1{]}
+  §6.3）。排除される。
+\item
+  \textbf{2+2 分離}: 4次元を2次元 +
+  2次元に分離した場合、空間的閉部分多様体は \(S^2\) または
+  \(S^1 \times S^1\) である。\(S^2\) は偶数次元であり Huygens
+  の原理が成立しない。\(S^1 \times S^1\) は \(S^1\)
+  の直積であり非自明な波束構造を持たない（{[}1{]}
+  §7.3）。いずれも命題2.1 の \(S^3\) 安定条件を満たさない。排除される。
+\item
+  \textbf{1+3 分離}: 1次元空間 + 3次元時間の場合、空間が \(S^1\)
+  となり非自明な定常波を支持しない（{[}1{]} §7.3）。排除される。
+\item
+  \textbf{3+1 分離}: 3次元空間 + 1次元時間の場合、空間的閉部分多様体は
+  \(S^3\) である。\(S^3\) は奇数次元であり Huygens
+  の原理が成立し、非自明かつ安定な定常波が存在する（命題2.1）。\textbf{唯一の許容される分離方式}である。
+\end{enumerate}
+
+したがって、4次元時空で定常波が安定に存在するための分離方式は 3+1
+に一意に決定される。\(\square\)
+
+\subsubsection{2.4
+本段階の帰結}\label{ux672cux6bb5ux968eux306eux5e30ux7d50-1}
+
+4次元時空の 3+1
+分離は、定常波の安定存在条件から導かれる幾何学的必然である。この段階で
+\(xyz\)（空間3軸）と \(t\)（時間1軸）の区別が確立する。空間3軸
+\(x, y, z\) は \(\mathrm{SO}(3)\) 対称性のもとで完全に対等である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§3 第3段階:
+1次元定常波と軸ラベルの事後性}\label{ux7b2c3ux6bb5ux968e-1ux6b21ux5143ux5b9aux5e38ux6ce2ux3068ux8ef8ux30e9ux30d9ux30ebux306eux4e8bux5f8cux6027}
+
+\subsubsection{3.1 κ=1 の意味}\label{ux3ba1-ux306eux610fux5473}
+
+{[}4{]} §5 により、定常波は
+\(\kappa = 1\)（波動ベクトルの非ゼロ成分が空間1軸のみ）のモードである。ここで
+\(\kappa = 1\) の意味を正確に理解することが決定的に重要である。
+
+\(\kappa = 1\)
+とは、\textbf{空間的に1次元の広がりしか持たない振動モード}のことである。「\(xyz\)
+のうち特定の1軸（たとえば
+\(z\)）を選択した」のではない。\(\mathrm{SO}(3)\)
+対称な3次元空間において、1次元的な振動はどの方向を向いていても物理的に同等である。
+
+\subsubsection{3.2
+軸ラベルの事後性}\label{ux8ef8ux30e9ux30d9ux30ebux306eux4e8bux5f8cux6027}
+
+\textbf{命題 3.1}. \(\kappa = 1\)
+の定常波が存在するとき、振動方向に対応する空間軸を \(z\)
+と呼ぶことは、座標ラベルの事後的な割り当てであり、物理的な軸選択ではない。
+
+\emph{論証}. {[}4{]} §5.2 の命題5.1 により、\(\kappa = 1\) の波は
+\(\mathbf{k} = (k_x, 0, 0, 0)\), \(\mathbf{k} = (0, k_y, 0, 0)\),
+\(\mathbf{k} = (0, 0, k_z, 0)\) のいずれも \(\mathrm{SO}(3)\)
+対称性により同等に存在する。これらは同一の物理状態の異なる座標表現であり、「3つの中からどれを選ぶか」という力学的問題は存在しない。
+
+定常波が存在したあと、その振動方向を事後的に \(z\)
+と名付けるだけである。\(\square\)
+
+\subsubsection{3.3
+なぜ1次元振動なのか}\label{ux306aux305c1ux6b21ux5143ux632fux52d5ux306aux306eux304b}
+
+\(\kappa = 1\) が唯一のスカラー定常モードであることは {[}4{]} §5.4
+命題5.2 で導出されている:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\kappa = 0\): 空間的に自明（定数関数）であり、位相構造を持たない
+\item
+  \(\kappa = 1\): 空間1軸の定常振動。\(\mathrm{SO}(3)\)
+  平均によりスカラー
+\item
+  \(\kappa = 2\): 面の向き（回転構造）を内在し、スカラーではない
+\item
+  \(\kappa \geq 3\): {[}4{]} §3 の安定条件により排除
+\end{itemize}
+
+したがって、空間的に非自明かつスカラーな定常波は \(\kappa = 1\)
+に限られる。2次元・3次元の振動モードが仮に存在しても、そのベースライン（基底モード）は1次元振動に帰着する。
+
+標準模型においてヒッグスボソンがスカラー（スピン0）であることは、本枠組みで
+\(\kappa = 1\)
+が唯一のスカラー定常モードであることに対応する。すなわち「ヒッグス =
+スカラー = \(\kappa = 1\) =
+1次元振動」という対応は、定常波モードの構造から一意的に導かれる。
+
+\subsubsection{3.4
+質量階層の帰結}\label{ux8ceaux91cfux968eux5c64ux306eux5e30ux7d50}
+
+以下の質量階層は {[}3{]} §9.11.7
+で既に記述されているが、本補講の3段階導出を完結させるため要約する。
+
+定常波の振動方向を \(z\) と呼んだ以上:
+
+\begin{itemize}
+\tightlist
+\item
+  \(z\)
+  軸を非零に持つフェルミオン（事後的に「第3世代」）は定常波と空間軸を直接共有し、結合が最大
+  → 最大質量
+\item
+  \(x, y\)
+  軸を非零に持つフェルミオン（事後的に「第1・第2世代」）は定常波と空間軸を共有せず、結合が間接的
+  → 軽い質量
+\end{itemize}
+
+これは {[}3{]} §9.11.7 で記述された世代質量階層 \(m_3 \gg m_{1,2}\)
+そのものである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§4 3段階の統合:
+問題の解消}\label{ux6bb5ux968eux306eux7d71ux5408-ux554fux984cux306eux89e3ux6d88}
+
+\subsubsection{4.1
+自発的対称性の破れの連鎖}\label{ux81eaux767aux7684ux5bfeux79f0ux6027ux306eux7834ux308cux306eux9023ux9396}
+
+{[}3{]} §9.11.7
+が「今後の課題」とした自発的対称性の破れの力学的機構は、以下の3段階の幾何学的必然として既に導出済みである:
+
+\textbf{第1段階}（{[}2{]}）: 離散整数格子の全球被覆条件 →
+\textbf{4次元時空が必然}
+
+\[\text{$\mathbb{Z}^n$ 全球被覆} \implies n_{\text{背景}} = 5 \implies n_{\text{主観}} = 4\]
+
+\textbf{第2段階}（{[}1{]}）: 定常波の安定存在条件 → \textbf{3+1
+分離が必然}
+
+\[\text{$S^n$ 上の安定定常波} \implies n = 3 \implies 4\text{D} = 3 + 1\]
+
+\textbf{第3段階}（{[}4{]}）: スカラー定常波の一意性 →
+\textbf{\(\kappa = 1\) が必然、軸ラベルは事後的}
+
+\[\text{スカラー定常波} \implies \kappa = 1 \implies \text{振動方向を $z$ と呼ぶ}\]
+
+\subsubsection{4.2
+メキシカンハット型ポテンシャルの不要性}\label{ux30e1ux30adux30b7ux30abux30f3ux30cfux30c3ux30c8ux578bux30ddux30c6ux30f3ux30b7ux30e3ux30ebux306eux4e0dux8981ux6027}
+
+\textbf{命題 4.1}.
+本枠組みにおいて、自発的対称性の破れにメキシカンハット型ポテンシャルのような外部的な力学的機構は不要である。
+
+\emph{論証}. 標準模型のヒッグス機構が要請する3つの要素を順に検証する:
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\item
+  \textbf{対称な初期状態の存在}: 第1段階で4軸が対等に存在する。第2段階で
+  \(xyz\) の \(\mathrm{SO}(3)\) 対称性が確立する。✓
+\item
+  \textbf{対称性の破れの発生}: 第3段階で \(\kappa = 1\)
+  の定常波が1次元振動方向を持つ。これは力学的選択ではなく、\(\kappa = 1\)
+  モードの定義そのものである。✓
+\item
+  \textbf{破れ後の物理的帰結（質量階層）}: §3.4 で導出した通り、\(z\)
+  軸共有の有無が結合強度を決定し、\(m_3 \gg m_{1,2}\) が従う。✓
+\end{enumerate}
+
+3要素すべてが幾何学的必然から従い、ポテンシャルの導入を必要としない。\(\square\)
+
+\subsubsection{4.3
+標準模型との対比}\label{ux6a19ux6e96ux6a21ux578bux3068ux306eux5bfeux6bd4}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+要素
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+標準模型
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+本枠組み
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+対称性の破れの原因 & \(V(\phi)\) の \(\mu^2 < 0\) & \(\kappa = 1\)
+の定義（1軸振動） \\
+なぜ対称状態が不安定か & ポテンシャルの形状 & 4D→3+1
+分離が安定条件（{[}1{]}） \\
+真空期待値の起源 & \(\langle\phi\rangle = v \neq 0\) &
+定常波の基底モード（{[}4{]} §5.3） \\
+質量獲得の機構 & 湯川結合 \(y_f \langle\phi\rangle\) &
+共有空間軸での位相結合（{[}3{]} §9.11.7） \\
+任意パラメータ & \(\mu^2, \lambda\) & なし（幾何学的に決定） \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§5 本稿の結論}\label{ux672cux7a3fux306eux7d50ux8ad6}
+
+本稿では、{[}3{]} §9.11.7
+で未解決とされたヒッグス機構の問題に対し、以下の構造的回答を与えた。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{自発的対称性の破れは3段階の幾何学的必然の連鎖}である。第1段階（4次元の必然性、{[}2{]}）、第2段階（3+1
+  分離の必然性、{[}1{]}）、第3段階（\(\kappa = 1\)
+  定常波の軸ラベルの事後性、{[}4{]}）の各段階が既存論文で導出済みであり、外部的な力学的機構を必要としない。
+\item
+  \textbf{\(\kappa = 1\)
+  は「特定の軸を選ぶ」のではなく「1次元的な広がりしか持たない」}という意味である。\(\mathrm{SO}(3)\)
+  対称な空間において、1次元振動の方向は物理的に区別されず、事後的に
+  \(z\) と命名されるだけである。
+\item
+  \textbf{メキシカンハット型ポテンシャルは不要}である。標準模型が
+  \(V(\phi)\)
+  で実現する対称性の破れ・真空期待値・質量獲得の3要素は、すべて幾何学的必然から従う（命題4.1）。
+\end{enumerate}
+
+本補講は質量階層の定性的な方向（\(m_3 \gg m_{1,2}\)）を幾何学的必然から導出したが、具体的な質量比の定量的導出は本稿の範囲外である（「質量構造の考察------軸スケール値と符号付き面積による質量分析の枠組み」参照）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\begin{itemize}
+\tightlist
+\item
+  {[}1{]} 木原 範昭,
+  ``閉じた球面上の形不変定常波------次元ごとの安定性と3+1時空の幾何学的必然性,''
+  2026.
+\item
+  {[}2{]} 木原 範昭,
+  ``離散空間における中心投影の全球被覆と5次元背景空間の整数論的必然性,''
+  Zenodo preprint, DOI: 10.5281/zenodo.19624957 (2026).
+\item
+  {[}3{]} 木原 範昭, ``6次元超直方体の集合構造とその組合せ論的性質,''
+  Zenodo preprint, DOI: 10.5281/zenodo.19721125 (2026).
+\item
+  {[}4{]} 木原 範昭,
+  ``形不変波の4つのモード------波動ベクトル構造が決定するスピン・カイラリティ・統計,''
+  Zenodo preprint, DOI: 10.5281/zenodo.19709798 (2026).
+\end{itemize}
+\end{document}
