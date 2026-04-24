@@ -1,24 +1,72 @@
-\documentclass[a4paper,11pt]{article}
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,11pt]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp}
+\else
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
 \usepackage{lmodern}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{longtable,booktabs,array,calc}
+\ifPDFTeX\else
+  \setmainfont[]{Times New Roman}
+\fi
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{%
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath}
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{%
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{%
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none}
+\usepackage{calc}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
+\urlstyle{same}
 \usepackage{hyperref}
-\usepackage[margin=25mm]{geometry}
-
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{observation}[theorem]{Observation}
-
-\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\newcounter{none}
-
 \begin{document}
-
 \section{Set-Theoretic Structure and Combinatorial Properties of the
 6-Dimensional
 Hypercube}\label{set-theoretic-structure-and-combinatorial-properties-of-the-6-dimensional-hypercube}
@@ -780,6 +828,72 @@ Antiparticles correspond to the transformation \(Q \to (Q + 4) \bmod 8\)
 (inversion of the \(c_1\) bit), accompanied by sign inversion of the
 spatial axes.
 
+\textbf{Scalar mapping functions for the \(Q\) axis}. The following
+mapping functions are defined to extract physical quantity labels from
+the discrete label on the \(Q\) axis. These functions are abstract
+conversion rules for reading the discrete label \(Q\) as scalar values
+used in the Standard Model; they do not assert the existence of any
+physical entity or any underlying dynamical mechanism.
+
+\textbf{Definition 9.1} (Charge mapping \(f_Q^{\text{charge}}\)). Define
+\(f_Q^{\text{charge}}: \{0, 1, \ldots, 7\} \to \mathbb{Q}\) as follows:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}cc@{}}
+\toprule\noalign{}
+\(Q\) & \(f_Q^{\text{charge}}(Q)\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & \(0\) \\
+1,2,3 & \(-1/3\) \\
+4 & \(-1\) \\
+5,6,7 & \(+2/3\) \\
+\end{longtable}
+}
+
+\(f_Q^{\text{charge}}(0) = 0\) corresponds to the state orthogonal to
+the \(Q\) axis (\(c_2 c_3 = 00\), \(c_1 = 0\)), signifying the absence
+of electric charge.
+
+\textbf{Definition 9.2} (Color charge mapping \(f_Q^{\text{color}}\)).
+Define \(f_Q^{\text{color}}: \{0, 1, \ldots, 7\} \to \{0, 1, 2, 3\}\) by
+\(f_Q^{\text{color}}(Q) = Q \bmod 4\) (i.e., the value \(2c_2 + c_3\) of
+\(c_2 c_3\)). \(f_Q^{\text{color}}(Q) = 0\) corresponds to colorless
+(lepton), and \(f_Q^{\text{color}}(Q) \in \{1, 2, 3\}\) corresponds to
+the 3 color charges (quark).
+
+\textbf{Definition 9.3} (Isospin mapping \(f_Q^{\text{iso}}\)). Define
+\(f_Q^{\text{iso}}: \{0, 1, \ldots, 7\} \to \{0, 1\}\) by
+\(f_Q^{\text{iso}}(Q) = c_1 = \lfloor Q / 4 \rfloor\). \(c_1 = 0\)
+corresponds to down-type, and \(c_1 = 1\) corresponds to up-type.
+
+\textbf{Conserved quantity mappings from vectors}. The following mapping
+functions are declared to return conserved quantities from the
+6-dimensional sign vector \((x, y, z, t, R, Q)\) and the curvature
+radius \(R_1\) (\(R_1 \geq 0\)) of the subjective space. These are
+abstract functions expressing the hypothesis that ``some conserved
+quantity should be determined from the sign vector''; the functional
+form is undetermined. They do not assert that concrete function
+definitions are achievable, nor do they presuppose the physical
+existence of corresponding conserved quantities.
+
+\textbf{Definition 9.4} (Rest mass mapping \(f_m^{\text{rest}}\)).
+\(f_m^{\text{rest}}: (x, y, z, t, R, Q) \to \mathbb{R}_{\geq 0}\) is a
+mapping that returns a scalar quantity corresponding to the rest mass
+from the sign vector. \(f_m^{\text{rest}}\) may depend on
+\(f_Q^{\text{charge}}\), \(f_Q^{\text{color}}\), \(f_Q^{\text{iso}}\),
+and the axis scale values \(v_i\).
+
+\textbf{Definition 9.5} (Curvature energy mapping
+\(f_m^{\text{curv}}\)).
+\(f_m^{\text{curv}}: (x, y, z, t, R, Q, R_1) \to \mathbb{R}_{\geq 0}\)
+is a mapping that returns a scalar quantity corresponding to
+curvature-derived energy (acceleration energy) from the sign vector and
+the curvature radius \(R_1\) of the subjective space. When \(R_1 = 0\),
+\(f_m^{\text{curv}} = 0\).
+
 \subsubsection{9.3 Correspondence to the 8 Gluon
 States}\label{correspondence-to-the-8-gluon-states}
 
@@ -995,7 +1109,7 @@ Mass (MeV)
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Higgs & \(H^0\) & 0 & Any 1 axis of \(xyzt\) nonzero & 0 & 125,250 \\
+Higgs & \(H^0\) & 0 & \((0, 0, +, 0, 0, 0)\) & 0 & 125,250 \\
 \(W\) boson & \(W^+\) & 1 & \((0, 0, 0, +, 0, 0)\) & 1 & 80,379 \\
 \(W\) boson & \(W^-\) & 1 & \((0, 0, 0, -, 0, 0)\) & 1 & 80,379 \\
 Photon & \(\gamma\) & 1 & \((0, 0, 0, 0, +, 0)\) & 1 & 0 \\
@@ -1006,13 +1120,22 @@ Graviton & \(G\) & 2 & \((0, 0, 0, \pm, \pm, 0)\) & 2 & 0 \\
 \end{longtable}
 }
 
-\textbf{Verification}: Higgs: \(k = 1\) (bosonic type), \(n = 0\),
-\(s = 0\) \(\checkmark\). \(W\): \(k = 1\) (bosonic type), \(t\) nonzero
-so \(n = 1\), \(s = 1\) \(\checkmark\). Photon: \(k = 0\) (bosonic
-type), \(R\) nonzero so \(n = 1\), \(s = 1\) \(\checkmark\). Gluon:
-\(k = 0\) (bosonic type), \(Q\)-transition so \(n = 1\), \(s = 1\)
-\(\checkmark\). Graviton: \(k = 0\) (bosonic type), \(t, R\) nonzero so
-\(n = 2\), \(s = 2\) \(\checkmark\).
+\textbf{Verification}: Higgs: \(z\) axis only nonzero, \(k = 1\)
+(bosonic type), \(n = 0\), \(s = 0\) \(\checkmark\). \(W\): \(k = 1\)
+(bosonic type), \(t\) nonzero so \(n = 1\), \(s = 1\) \(\checkmark\).
+Photon: \(k = 0\) (bosonic type), \(R\) nonzero so \(n = 1\), \(s = 1\)
+\(\checkmark\). Gluon: \(k = 0\) (bosonic type), \(Q\)-transition so
+\(n = 1\), \(s = 1\) \(\checkmark\). Graviton: \(k = 0\) (bosonic type),
+\(t, R\) nonzero so \(n = 2\), \(s = 2\) \(\checkmark\).
+
+\textbf{Selection of the \(z\) axis for the Higgs}: The nonzero axis of
+the Higgs boson involves an interpretive degree of freedom in choosing 1
+axis from the 4 axes \(xyzt\). For consistency with the generation
+labels (generation 1: \(x\), generation 2: \(y\), generation 3: \(z\)),
+the \(z\) axis (3rd generation) is selected. This choice is consistent
+with the fact that 3rd-generation fermions (top: \(172{,}760\) MeV) have
+the largest mass, provided the coupling strength depends on the overlap
+along shared spatial axes (see §9.11.7).
 
 \textbf{Leptons}:
 
@@ -1305,12 +1428,27 @@ metric is undetermined, and a more general form including \(R, Q\),
 cannot be excluded.
 
 \textbf{Speculation that \(v_1 \gg v_2\)}: While the mass of the Higgs
-boson (\(k = 1\), 1 nonzero axis, \(v_1\)) is \(125{,}250\) MeV, the
-majority of fermions (\(k = 2\), 2 nonzero axes, \(v_2\)) are far
-lighter (electron \(0.511\) MeV, neutrinos \(< 10^{-6}\) MeV). If the
-above dimensional analysis speculation is correct, then \(v_1 \gg v_2\)
-must hold, suggesting that the coordinate value for the case of only 1
-nonzero axis is substantially larger than that for 2 nonzero axes.
+boson (\(k = 1\), \(z\) axis only nonzero, \(v_1\)) is \(125{,}250\)
+MeV, the majority of fermions (\(k = 2\), 2 nonzero axes, \(v_2\)) are
+far lighter (electron \(0.511\) MeV, neutrinos \(< 10^{-6}\) MeV). If
+the above dimensional analysis speculation is correct, then
+\(v_1 \gg v_2\) must hold, suggesting that the coordinate value for the
+case of only 1 nonzero axis is substantially larger than that for 2
+nonzero axes.
+
+\textbf{Inter-generation mass hierarchy}: The assignment of the Higgs
+boson's nonzero axis to \(z\) (the 3rd-generation axis) provides a
+structural indication for the mass differences among generations within
+the \(v_2\) range. 3rd-generation fermions (\(z\) axis nonzero) directly
+share a spatial axis with the Higgs standing wave and therefore have the
+strongest coupling, while 1st-generation (\(x\) axis) and 2nd-generation
+(\(y\) axis) fermions lack a shared axis and are limited to indirect
+coupling. This is consistent with the empirical hierarchy
+\(m_3 \gg m_{1,2}\) (top \(172{,}760\) MeV \(\gg\) charm \(1{,}270\)
+MeV, up \(2.16\) MeV). However, since the \(x\) and \(y\) axes are
+locally equivalent under \(\mathrm{SO}(3)\) symmetry, the difference
+\(m_2 \neq m_1\) cannot be derived within this framework. The
+quantitative derivation of mass ratios remains an open problem.
 
 \textbf{Relation to the problem of undiscovered \(k = 3, 4\) states}:
 States with 3 or 4 nonzero axes among \(xyzt\) (\(k = 3, 4\)) are
@@ -1369,11 +1507,30 @@ continuous gauge groups remains unproven.
 How generation mixing (CKM matrix, PMNS matrix) is derived as the
 breaking of \(S_3\) symmetry of the \(xyz\) axes is an open problem.
 
-\textbf{9.11.7 Higgs mechanism}
+\textbf{9.11.7 Higgs mechanism and generation mass hierarchy}
 
-The Higgs boson corresponds to only 1 nonzero axis among \(xyzt\)
-(\(k = 1\)), but how spontaneous symmetry breaking by the Higgs field is
-understood within this framework is a task for future work.
+The Higgs boson corresponds to only the \(z\) axis being nonzero
+(\(k = 1\), Table A: \((0, 0, +, 0, 0, 0)\)). The \(z\) axis is the
+label axis for the 3rd generation (top, bottom, tau), and this
+assignment has the following consistency:
+
+\begin{itemize}
+\tightlist
+\item
+  Since the coupling strength to the Higgs depends on the overlap along
+  shared spatial axes, 3rd-generation fermions with nonzero \(z\) axis
+  have the strongest coupling and acquire the largest mass (top:
+  \(172{,}760\) MeV).
+\item
+  1st-generation (\(x\) axis) and 2nd-generation (\(y\) axis) fermions
+  do not share the Higgs's primary oscillation axis, resulting in weaker
+  coupling and lighter mass.
+\end{itemize}
+
+How spontaneous symmetry breaking by the Higgs field is understood
+within this framework remains a task for future work, but the selection
+of the \(z\) axis provides a geometric explanation for the
+inter-generation mass hierarchy (\(m_3 \gg m_{1,2}\)).
 
 \textbf{9.11.8 Complete derivation of charge values}
 
@@ -1461,5 +1618,4 @@ in Discrete Space and the Number-Theoretic Necessity of the
 5-Dimensional Background Space.'' DOI:
 \href{https://doi.org/10.5281/zenodo.19624957}{10.5281/zenodo.19624957}
 (2026).
-
 \end{document}

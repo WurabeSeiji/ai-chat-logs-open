@@ -81,7 +81,7 @@
 \textbf{著者}: 木原 範昭 (Noriaki Kihara)\\
 \textbf{所属}: WF System Co., Ltd.\\
 \textbf{ORCID}: 0009-0004-6753-4020\\
-\textbf{版}: v1.0\\
+\textbf{版}: v2.1\\
 \textbf{日付}: 2026 年 4 月
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -92,14 +92,14 @@
 \(\kappa = 2\)、球状波 \(\kappa = 0\)、定常波
 \(\kappa = 1\)）を基盤として、異なるモード間の相互作用を統一的に記述する。相互作用の基本機構は\textbf{軸方向変位転送}------球状波が保持する非ゼロ軸の方向に沿って方向制約波の状態ベクトル
 \((\mathbf{k}, \Delta\mathbf{k})\)
-が変化すること------として定義され、4種の力（電磁気力・弱い力・強い力・重力）はこの同一操作の異なる軸への適用として統一される。定常波（\(\kappa = 1\)）との結合は、方向制約波の伝搬速度比
+が変化すること------として定義される。相互作用を4種の基本頂点（吸収・放出・対消滅・対生成）に分類し、保存則のもとで吸収⇔放出および対消滅⇔対生成が可逆であることを証明する。この統一的枠組みのもとで、4種の力（電磁気力・強い力・弱い力・重力）の各基本頂点を系統的に記述する。定常波（\(\kappa = 1\)）との結合は方向制約波の伝搬速度比
 \(|k_x / k_t|\) を修正し質量の幾何学的起源を与える。保存量
 \(\int |\psi|^2 \, dV\)
 のもとでのエネルギー転送は波束の振幅と幅を反比例的に変形させ、この変形が「波束の収縮」の力学的記述を与える。\(k_t = 0\)
 の球状波が媒介する相互作用は因果順序を内在せず、相互作用結果から最短測地線経路と波束の局在化が遡及的に構成される。
 
-\textbf{キーワード}: 形不変波, 軸方向変位転送, 波束変形, 質量の起源,
-因果の遡及的構成, 保存則
+\textbf{キーワード}: 形不変波, 基本頂点, 軸方向変位転送, 波束変形,
+質量の起源, 因果の遡及的構成, 保存則
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -108,13 +108,15 @@
 
 本論文は、姉妹論文{[}1{]}--{[}3{]}で構築した形不変波の枠組みの上で、異なるモードの波の間の相互作用を統一的に記述し、その帰結として質量の起源・力の分類・波束変形・因果構造を幾何学的に導出する。
 
-本論文の主張は以下の5点に限定される:
+本論文の主張は以下の6点に限定される:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
   全ての相互作用は、球状波の非ゼロ軸に沿った変位転送として統一的に記述される。力の種類の違いは転送される軸の違いのみに帰着する。
+\item
+  相互作用は4種の基本頂点（吸収・放出・対消滅・対生成）に分類され、保存則のもとで吸収⇔放出および対消滅⇔対生成は可逆である。
 \item
   定常波（\(\kappa = 1\)）との結合は方向制約波の速度比を修正し、質量の幾何学的起源を与える。
 \item
@@ -130,6 +132,8 @@
 
 以下の要素は \textbf{本論文の主張範囲外} である:
 
+定量的導出:
+
 \begin{itemize}
 \tightlist
 \item
@@ -141,6 +145,18 @@
   繰り込みおよび実行結合定数のスケール依存性
 \item
   ゲージ群の連続極限における厳密な再構成
+\end{itemize}
+
+特定機構の詳細:
+
+\begin{itemize}
+\tightlist
+\item
+  \(W^{\pm}\)・\(Z^0\)
+  ボソンの質量獲得機構（空間軸を介さない間接的結合の詳細）
+\item
+  第 1・第 2
+  世代フェルミオンの質量獲得機構（定常波の非零軸を直接共有しない場合の間接結合の詳細）
 \end{itemize}
 
 \textbf{物理的命名に関する注記}: 本論文では {[}4{]}
@@ -180,15 +196,20 @@
 
 \textbf{(I1) 軸方向性}: \(\delta\mathbf{k}\) および
 \(\delta(\Delta\mathbf{k})\)
-の非ゼロ成分は、球状波の{[}4{]}表Aにおける非ゼロ軸方向のみに存在する。
+の非ゼロ成分は、球状波の{[}4{]}表Aにおける非ゼロ軸方向のみに存在する。ここで「非ゼロ軸方向」には、\(t\)
+軸・\(R\) 軸の連続的変位に加えて、\(Q\)
+軸上の離散ラベル遷移（\(Q_i \to Q_j\)）を含む。すなわちグルーオンの場合、(I1)
+は変位転送が \(Q\)
+ラベルの変化のみに作用し、他の軸成分を保存することを要請する。
 
 \textbf{(I2) 保存則}:
 相互作用に関与する全ての波の接束状態の総和が保存される:
 
 \[\sum_i (\mathbf{k}_i + \Delta\mathbf{k}_i) = \text{const}\]
 
-\textbf{(I3) 波束保存}: 各波の保存量 \(\int |\psi|^2 \, dV\)
-が個別に保存される。
+\textbf{(I3) 波束保存}: 相互作用の前後で存在する各波の保存量
+\(\int |\psi|^2 \, dV\)
+が個別に保存される。対生成（型D）で新たに生成される波については、生成時に保存量の初期値が設定される。対消滅（型C）で消滅する波については、消滅時にその保存量が他の波に転送される。
 
 \subsubsection{§2.3
 静的ラベル変化と動的状態変化}\label{ux9759ux7684ux30e9ux30d9ux30ebux5909ux5316ux3068ux52d5ux7684ux72b6ux614bux5909ux5316}
@@ -251,9 +272,9 @@
 \endlastfoot
 電磁気力 & \(\gamma\; (0,0,0,0,R,0)\) & \(R\) &
 \(\delta(\Delta\mathbf{k})\)（運動量変化） \\
-弱い力 & \(W^{\pm}\; (0,0,0,\pm t,0,0)\) & \(t\) &
-\(\delta\mathbf{k}\)（ラベル変化） \\
 強い力 & \(g\; (0,0,0,0,0,Q_i)\) \({}^{*}\) & \(Q\) &
+\(\delta\mathbf{k}\)（ラベル変化） \\
+弱い力 & \(W^{\pm}\; (0,0,0,\pm t,0,0)\) & \(t\) &
 \(\delta\mathbf{k}\)（ラベル変化） \\
 重力 & \(G\; (0,0,0,\pm t,\pm R,0)\) & \(t, R\) &
 \(\delta(\Delta\mathbf{k})\)（エネルギー変化） \\
@@ -264,126 +285,181 @@
 軸に静的な非ゼロ成分を持つ球状波であるのに対し、\(g\) は \(Q\)
 軸上の離散ラベル値 \(Q_i\) を持つ球状波が、異なるラベル値 \(Q_j\)
 の波に遷移することで色荷交換を媒介する。すなわち \(g\)
-の「非ゼロ軸」は固定値ではなく \(Q\) ラベルの変化として作用する（§6
+の「非ゼロ軸」は固定値ではなく \(Q\) ラベルの変化として作用する（§5
 で詳述）。
 
 \textbf{命題 2.1}:
 4種の力はすべて定義2.1の軸方向変位転送として記述され、力の種類の違いは転送される軸の違いのみに帰着する。
 
+\subsubsection{\texorpdfstring{§2.5 \(R\)
+軸離散化条件（前提条件）}{§2.5 R 軸離散化条件（前提条件）}}\label{r-ux8ef8ux96e2ux6563ux5316ux6761ux4ef6ux524dux63d0ux6761ux4ef6}
+
+本論文では方向制約波を \(\mathbb{Z}^4\)
+上の整数格子波として扱っている（§2.1）。この枠組みが成立するためには、曲率半径
+\(R\) に整数論的制約が必要となる。
+
+先行研究{[}W5{]}の定理5.2は、4次元主観空間が5次元中心投影のもとで整数値で稠密に正則化されるためには、\(R^2\)（格子定数を単位とする）が正の整数であること（\(R^2 \in \mathbb{Z}_{>0}\)）が必要であることを示した。これはラグランジュの四平方定理に基づく整数論的制約であり、この条件が破れると全ての位相を整数値で閉じさせることができない。
+
+{[}4{]}の§9.8ではこの条件から
+\(R = \pm n^2 \cdot L_0\)（\(n \in \mathbb{N}\)、\(L_0\)
+は格子定数）の離散化が導かれている。すなわち \(R\)
+軸は連続的な実数値ではなく、\textbf{平方数の離散値}のみをとる。
+
+\textbf{(I4) \(R\) 軸離散性の帰結}:
+上記の前提（\(R^2 \in \mathbb{Z}_{>0}\)）のもとで、\(R\) 軸方向の変位
+\(\delta(\Delta k)_R\) が取りうる値は、変位前後の \(R\)
+値がともに平方数条件を満たすという制約を自動的に受ける。すなわち
+\(\delta(\Delta k)_R\) は 2 つの平方数の差
+\(n_1^2 - n_2^2 = (n_1 - n_2)(n_1 + n_2)\) の形に制限される。
+
+この離散化条件が本論文の個別命題にどのように影響するか、特に§4（電磁相互作用における
+\(R\) 軸変位）および§7（重力相互作用における \((t, R)\)
+軸変位）において許容されるエネルギー準位をどう絞り込むか、という具体的帰結は未解明であり、本論文の主張範囲外である。本節は、後続の研究で整数論的制約の帰結を追跡するための予防的参照点として置かれている。離散化条件の詳細は
+{[}W5{]} §5.5 および {[}4{]} §9.8 を参照されたい。
+
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{§3
-質量の起源：定常波との結合}\label{ux8ceaux91cfux306eux8d77ux6e90ux5b9aux5e38ux6ce2ux3068ux306eux7d50ux5408}
+基本頂点の分類と可逆性}\label{ux57faux672cux9802ux70b9ux306eux5206ux985eux3068ux53efux9006ux6027}
 
 \subsubsection{§3.1
-結合の幾何学的構造}\label{ux7d50ux5408ux306eux5e7eux4f55ux5b66ux7684ux69cbux9020}
+4種の基本頂点}\label{ux7a2eux306eux57faux672cux9802ux70b9}
 
-定常波モード（\(\kappa = 1\),
-{[}3{]}§5）は空間1軸に沿った基底モードとして主観空間 \(S^3\)
-全体を充填する。方向制約波（\(\kappa = 2\)）はこの定常波の背景を通って伝搬する。
+相互作用の原始的パターン（基本頂点）を以下の4種に分類する。\(f\)
+は方向制約波（\(\kappa = 2\)）、\(B\) は球状波（\(\kappa = 0\)）を表す。
 
-方向制約波 \(\mathbf{k} = (k_x, 0, 0, k_t)\) と定常波
-\(\mathbf{k}_H = (k_{H}, 0, 0, 0)\) は、空間 \(x\)
-軸を共有する。この共有軸上で波の位相構造が重なり合い、結合が生じる。
+\textbf{型A（吸収）}: \(f + B \longrightarrow f'\)
 
-\subsubsection{§3.2
-速度比の修正}\label{ux901fux5ea6ux6bd4ux306eux4feeux6b63}
+方向制約波 \(f\) が球状波 \(B\) を吸収する。\(B\)
+は独立な波として消滅し、\(B\) が保持していた
+\((\mathbf{k}_B + \Delta\mathbf{k}_B)\) は \(f\) の状態変化に寄与する:
 
-結合のない方向制約波の伝搬速度は \(v = k_x / k_t\)
-である。定常波との結合は \(x\)
-軸方向の位相構造に影響を与え、実効的な空間成分を修正する:
+\[(\mathbf{k}_f + \Delta\mathbf{k}_f) + (\mathbf{k}_B + \Delta\mathbf{k}_B) = (\mathbf{k}_{f'} + \Delta\mathbf{k}_{f'})\]
 
-\[k_x \;\longrightarrow\; k_x^{\text{eff}} = k_x - \delta k_H\]
+\textbf{型B（放出）}: \(f \longrightarrow f' + B\)
 
-ここで \(\delta k_H > 0\)
-は定常波との結合強度に比例する。符号が負（減算）となるのは、定常波の背景位相構造が方向制約波の空間位相と逆位相で重なり合い、実効的な空間位相変化を相殺する方向に結合するためである。結合後の伝搬速度は:
+方向制約波 \(f\) が球状波 \(B\) を放出する。\(B\)
+は新たに独立な波として生成され、\(f\) の状態変化から \(B\) の
+\((\mathbf{k}_B + \Delta\mathbf{k}_B)\) が供給される:
 
-\[v^{\text{eff}} = \frac{k_x^{\text{eff}}}{k_t} = \frac{k_x - \delta k_H}{k_t} < \frac{k_x}{k_t} = v\]
+\[(\mathbf{k}_f + \Delta\mathbf{k}_f) = (\mathbf{k}_{f'} + \Delta\mathbf{k}_{f'}) + (\mathbf{k}_B + \Delta\mathbf{k}_B)\]
 
-速度が減少する --- これが\textbf{質量}の幾何学的起源である。
+\textbf{型C（対消滅）}: \(f + \bar{f} \longrightarrow B(s)\)
 
-\textbf{命題 3.1}:
-定常波（\(\kappa = 1\)）との結合は方向制約波の実効的空間成分を減少させ、伝搬速度を
-\(v < c\) に制限する。この速度制限が質量として観測される。
+方向制約波 \(f\) とその反波 \(\bar{f}\) が消滅し、一つ以上の球状波 \(B\)
+が生成される。静的ラベルの和がゼロになることで可能となる:
 
-\subsubsection{§3.3
-結合しない波}\label{ux7d50ux5408ux3057ux306aux3044ux6ce2}
+\[\mathbf{k}_f + \mathbf{k}_{\bar{f}} = \mathbf{0} \;\Longrightarrow\; \kappa = 2 \to \kappa = 0\]
 
-球状波（\(\kappa_s = 0\)）は空間成分を持たない。定常波は空間1軸に位相構造を持つが、球状波には共有する空間軸が存在しない。
+\textbf{型D（対生成）}: \(B(s) \longrightarrow f + \bar{f}\)
 
-\textbf{命題 3.2}: \(\kappa_s = 0\)
-の球状波は定常波との結合軸を持たず、\(\delta k_H = 0\) となる。速度は
-\(v = c\) のまま修正されない。
+一つ以上の球状波から方向制約波の対 \((f, \bar{f})\)
+が生成される。ゼロから静的ラベルの対 \((\mathbf{k}, -\mathbf{k})\)
+が創出される:
 
-{[}4{]}の表Aにおいて \(\kappa_s = 0\) のゲージボソン（\(\gamma\),
-\(g\)）が質量ゼロであることと整合する。\(W^{\pm}\) と \(Z^0\) は
-\(\kappa_s = 0\)
-であるため命題3.2の空間軸を通じた直接結合は持たないが、\(t\) 軸または
-\(R\)
-軸を通じた間接的な定常波結合機構により質量を獲得しうる。命題3.2は空間軸の直接共有による結合のみを扱っており、\(t\)
-軸や \(R\)
-軸を経由する間接的な結合機構の詳細は本論文の主張範囲外である。
+\[\kappa = 0 \to \kappa = 2 \;\Longleftarrow\; \mathbf{0} \to \mathbf{k}_f + \mathbf{k}_{\bar{f}} = \mathbf{0}\]
 
-\subsubsection{§3.4 質量階層}\label{ux8ceaux91cfux968eux5c64}
+\subsubsection{§3.2 可逆性定理}\label{ux53efux9006ux6027ux5b9aux7406}
 
-結合強度 \(\delta k_H\)
-は、方向制約波と定常波の空間軸上での重なり積分に依存する。{[}3{]}の§3.3で示した世代構造（空間軸
-\(k_1, k_2, k_3\) の選択）により、3世代の間で重なり積分が異なりうる。
+\textbf{命題 3.1}（可逆性）: 条件 (I1)--(I3) を満たす任意の過程
+\(\mathcal{P}\) に対し、時間反転過程 \(\bar{\mathcal{P}}\) も (I1)--(I3)
+を満たす。
 
-\(S^3\) 上で3つの空間軸は \(\mathrm{SO}(3)\)
-対称性により局所的には等価だが、大域的な定常波モードとの結合においては非等価となりうる。これが世代間の質量差の幾何学的起源を示唆するが、具体的な質量比の導出は本論文の主張範囲外である。
+\emph{証明}: (I1) は軸方向の構造的条件であり時間方向に依存しない。(I2)
+は総和の保存であり、初期状態と終状態を交換しても成立する。(I3) は各波の
+\(\int |\psi|^2 \, dV\)
+の保存であり、過程の方向に依存しない。\(\square\)
+
+\textbf{系 3.1}:
+型A（吸収）と型B（放出）は互いの逆過程であり、型C（対消滅）と型D（対生成）は互いの逆過程である。
+
+\textbf{注意 3.1}: \(k_t \neq 0\) の球状波（\(W^{\pm}\),
+\(G\)）が関与する場合、順過程と逆過程はともに許容されるが、\(k_t \neq 0\)
+による時間方向の非対称性のため因果的な時間順序が存在する（§9.5で詳述）。
+
+\subsubsection{§3.3 合成過程}\label{ux5408ux6210ux904eux7a0b}
+
+基本頂点を合成することで、より複雑な相互作用が構成される。
+
+\textbf{交換}: 型B + 型A の合成。\(f_1\) が \(B\) を放出し、\(f_2\) が
+\(B\) を吸収する:
+
+\[f_1 + f_2 \;\xrightarrow{B\text{放出}}\; f_1' + B + f_2 \;\xrightarrow{B\text{吸収}}\; f_1' + f_2'\]
+
+\textbf{散乱}: 型A + 型B の合成。\(f\) が \(B_1\) を吸収し、\(B_2\)
+を放出する:
+
+\[f + B_1 \;\xrightarrow{\text{吸収}}\; f'' \;\xrightarrow{\text{放出}}\; f' + B_2\]
+
+\textbf{命題 3.2}:
+全ての相互作用は、4種の基本頂点（型A--D）の有限回の合成として記述される。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{§4
-電磁相互作用と散乱}\label{ux96fbux78c1ux76f8ux4e92ux4f5cux7528ux3068ux6563ux4e71}
-
-\subsubsection{§4.1
-光子による変位転送}\label{ux5149ux5b50ux306bux3088ux308bux5909ux4f4dux8ee2ux9001}
+\subsection{§4 電磁相互作用}\label{ux96fbux78c1ux76f8ux4e92ux4f5cux7528}
 
 光子 \(\gamma = (0, 0, 0, 0, +, 0)\) は \(R\)
 軸に非ゼロ成分を持つ球状波である。\(R\)
 軸は中心投影の径方向に対応し、\(\mathbb{Z}^4\) 上では動的状態
-\(\Delta\mathbf{k}\) の変化として作用する。
+\(\Delta\mathbf{k}\) の変化として作用する。\(R\) 軸の離散化条件（§2.5,
+(I4)）により、光子を介した \(R\)
+方向の変位転送は離散的な値のみをとる。(I4)
+の帰結の候補として、光子が運ぶエネルギー・運動量には離散的な許容値のみが存在する可能性がある。
+
+\subsubsection{\texorpdfstring{§4.1 吸収:
+\(f + \gamma \to f'\)}{§4.1 吸収: f + \textbackslash gamma \textbackslash to f\textquotesingle{}}}\label{ux5438ux53ce-f-gamma-to-f}
 
 方向制約波（電子型）\((k_x, 0, 0, k_t)\) が光子を吸収するとき:
 
-\[\Delta\mathbf{k} \;\longrightarrow\; \Delta\mathbf{k} + \delta(\Delta\mathbf{k})_{\gamma}\]
+\[(\mathbf{k},\; \Delta\mathbf{k}) + (\mathbf{k}_\gamma,\; \Delta\mathbf{k}_\gamma) \;\longrightarrow\; (\mathbf{k},\; \Delta\mathbf{k} + \delta(\Delta\mathbf{k})_\gamma)\]
 
-静的ラベル \(\mathbf{k}\)
-は変化しない（電子は電子のまま）。変化するのは動的状態のみ:
+光子は独立な波として消滅し、そのエネルギー・運動量が方向制約波の動的状態に転送される。静的ラベル
+\(\mathbf{k}\) は変化しない（電子は電子のまま）。
 
-\begin{itemize}
-\tightlist
-\item
-  運動量方向の変化（散乱角）
-\item
-  エネルギーの変化（光子のエネルギー吸収）
-\end{itemize}
+\subsubsection{\texorpdfstring{§4.2 放出:
+\(f \to f' + \gamma\)}{§4.2 放出: f \textbackslash to f\textquotesingle{} + \textbackslash gamma}}\label{ux653eux51fa-f-to-f-gamma}
+
+命題3.1（可逆性）により、吸収の逆過程として放出が定義される:
+
+\[(\mathbf{k},\; \Delta\mathbf{k}) \;\longrightarrow\; (\mathbf{k},\; \Delta\mathbf{k} - \delta(\Delta\mathbf{k})_\gamma) + (\mathbf{k}_\gamma,\; \delta(\Delta\mathbf{k})_\gamma)\]
+
+方向制約波の動的状態の一部が分離し、新たな光子が独立な波として生成される。静的ラベル
+\(\mathbf{k}\) は保存される。
 
 \textbf{命題 4.1}:
-光子との相互作用は方向制約波の静的ラベルを保存し、動的状態
+光子との相互作用（吸収・放出とも）は方向制約波の静的ラベルを保存し、動的状態
 \(\Delta\mathbf{k}\) のみを変化させる。
 
-\subsubsection{§4.2
-方向制約波間の電磁相互作用}\label{ux65b9ux5411ux5236ux7d04ux6ce2ux9593ux306eux96fbux78c1ux76f8ux4e92ux4f5cux7528}
+\subsubsection{§4.3
+交換と引力・斥力}\label{ux4ea4ux63dbux3068ux5f15ux529bux65a5ux529b}
 
 2つの方向制約波 \(\psi_1\), \(\psi_2\)
-間の電磁相互作用は、光子の交換として記述される:
+間の電磁相互作用は、光子の交換（§3.3）として記述される:
 
-\[\psi_1 \;\xrightarrow{\text{光子放出}}\; \psi_1' + \gamma \;\xrightarrow{\text{光子吸収}}\; \psi_1' + \psi_2'\]
+\[\psi_1 \;\xrightarrow{\gamma\text{放出}}\; \psi_1' + \gamma \;\xrightarrow{\gamma\text{吸収}}\; \psi_1' + \psi_2'\]
 
 保存則 (I2) より:
 
 \[\Delta\mathbf{k}_1 + \Delta\mathbf{k}_2 = \Delta\mathbf{k}_1' + \Delta\mathbf{k}_2'\]
 
-\subsubsection{§4.3
-相互作用の符号：引力と斥力}\label{ux76f8ux4e92ux4f5cux7528ux306eux7b26ux53f7ux5f15ux529bux3068ux65a5ux529b}
+光子交換における \(\delta(\Delta\mathbf{k})_\gamma\) の \(t\)
+軸成分への作用を考える。光子は \(R\)
+軸に非ゼロ成分を持つが（(I1)）、相互作用に関与する2つの方向制約波の
+\(k_{t,1}\), \(k_{t,2}\) の符号が、保存則 (I2)
+のもとで運動量変化の方向を制約する。\(\psi_1\) が光子を放出して
+\(\psi_2\) が吸収する過程では、\(\delta(\Delta\mathbf{k})_\gamma\) は
+\(\psi_1\) から \(\psi_2\) へ転送される。\(k_{t,1}\) と \(k_{t,2}\)
+が同符号の場合、(I2)
+の保存のもとで相対運動量変化は2波を引き離す方向（斥力）に向き、逆符号の場合は引き寄せる方向（引力）に向く。
 
-2つの方向制約波の \(t\) 軸成分の相対符号が、相互作用の方向性を決定する。
+\textbf{具体例}: \(k_{t,1}, k_{t,2}\) がともに正のとき、\(\psi_1\)
+が放出した光子の \(R\) 軸変位 \(\delta(\Delta k)_R\) を \(\psi_2\)
+が吸収すると、(I2) により \(\Delta k_{R,1}\) は \(\delta(\Delta k)_R\)
+だけ減少し \(\Delta k_{R,2}\) は同量増加する。同符号の \(k_t\)
+を持つ2波は中心投影の径方向構造（{[}5{]}
+§5）において同方向の時間発展を持ち、この運動量再分配は空間的に2波を引き離す向きに作用する（斥力）。逆符号の場合、対向的な時間発展により引き寄せる向きに作用する（引力）。
 
-\(t\) 軸成分 \(k_t\) は{[}4{]}の表Aにおいて荷電構造に対応する。同符号の
-\(k_t\) を持つ2波間の光子交換は斥力的、逆符号の場合は引力的に作用する。
+\(t\) 軸成分 \(k_t\) は{[}4{]}の表Aにおいて荷電構造に対応する:
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}llll@{}}
@@ -405,7 +481,8 @@
 引力」という具体的対応は {[}4{]} の表Aにおける \(k_t\)
 と電荷符号の対応に依存する解釈層であり、命題の幾何学的内実は「相対符号が相互作用の方向性を一意に決定する」という点にある。
 
-\subsubsection{§4.4 対消滅}\label{ux5bfeux6d88ux6ec5}
+\subsubsection{\texorpdfstring{§4.4 対消滅:
+\(f + \bar{f} \to \gamma(s)\)}{§4.4 対消滅: f + \textbackslash bar\{f\} \textbackslash to \textbackslash gamma(s)}}\label{ux5bfeux6d88ux6ec5-f-barf-to-gammas}
 
 方向制約波とその反粒子は、全成分が逆符号の関係にある（{[}3{]}§6.5の
 \(C\) 変換）:
@@ -423,88 +500,29 @@
 の波対が \(\kappa = 0\)
 の球状波に変換される過程であり、静的ラベルの和がゼロになることで可能となる。
 
+\subsubsection{\texorpdfstring{§4.5 対生成:
+\(\gamma(s) \to f + \bar{f}\)}{§4.5 対生成: \textbackslash gamma(s) \textbackslash to f + \textbackslash bar\{f\}}}\label{ux5bfeux751fux6210-gammas-to-f-barf}
+
+命題3.1（可逆性）により、対消滅の逆過程として対生成が定義される。球状波のエネルギーから、静的ラベルが
+\((\mathbf{k}, -\mathbf{k})\) の方向制約波の対が生成される:
+
+\[\kappa = 0 \;\longrightarrow\; \kappa = 2:\quad (0, 0, 0, 0) \;\longrightarrow\; (k_x, 0, 0, k_t) + (-k_x, 0, 0, -k_t)\]
+
+保存則 (I2) により、球状波の動的状態 \(\Delta\mathbf{k}_\gamma\)
+が生成された方向制約波の対に分配される。
+
+\textbf{命題 4.4}: 対生成は対消滅の逆過程であり、球状波のエネルギーから
+\(\kappa = 2\)
+の波対が生成される。生成される方向制約波の静的ラベルは反対称
+\((\mathbf{k}, -\mathbf{k})\) に制限される。
+
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{§5
-重力相互作用と波束変形}\label{ux91cdux529bux76f8ux4e92ux4f5cux7528ux3068ux6ce2ux675fux5909ux5f62}
-
-\subsubsection{§5.1
-グラビトンによる変位転送}\label{ux30b0ux30e9ux30d3ux30c8ux30f3ux306bux3088ux308bux5909ux4f4dux8ee2ux9001}
-
-グラビトン \(G = (0, 0, 0, \pm t, \pm R, 0)\) は \(t\) 軸と \(R\)
-軸の両方に非ゼロ成分を持つ。条件 (I1) により、変位転送は \(t\) 方向と
-\(R\) 方向の両方に作用する:
-
-\[\delta(\Delta\mathbf{k})_G = (\delta(\Delta k)_t,\; \delta(\Delta k)_R)\]
-
-これはエネルギー（\(t\) 成分）と空間的配置（\(R\)
-成分）の同時変化を意味する。
-
-\subsubsection{§5.2 普遍的結合}\label{ux666eux904dux7684ux7d50ux5408}
-
-{[}3{]}の§8で導入した加速度の記述を再掲する。子空間中心投影の2階微分が加速度を決定する:
-
-\[\Delta^2\mathbf{k}(\mathbf{k}_t) = D^2\pi(\mathbf{k}_t) \cdot \Delta\mathbf{k}_t\]
-
-グラビトンの交換はこの \(\Delta^2\mathbf{k}\)
-の離散的な実現である。グラビトンは動的状態 \(\Delta\mathbf{k}\)
-に作用するため:
-
-\begin{itemize}
-\tightlist
-\item
-  静的ラベル \(\mathbf{k}\) に依存しない（波の種類を問わない）
-\item
-  \(\Delta\mathbf{k} \neq 0\)
-  の全ての波に作用する（エネルギーを持つ全ての波）
-\end{itemize}
-
-\textbf{命題 5.1}: グラビトンとの相互作用は動的状態 \(\Delta\mathbf{k}\)
-にのみ作用し、静的ラベル \(\mathbf{k}\) には作用しない。したがって
-\(\Delta\mathbf{k} \neq 0\)
-の全ての形不変波がグラビトンと結合する（普遍的結合）。
-
-\subsubsection{§5.3 波束変形}\label{ux6ce2ux675fux5909ux5f62}
-
-グラビトンとの相互作用によるエネルギー転送は、波束の形状を変形させる。保存量
-\(\int |\psi|^2 \, dV = E_0\)（{[}1{]}§5, {[}2{]}§5 の
-(C1)）のもとで、波束の振幅 \(A\) と特徴的幅 \(w\) は:
-
-\[A^2 \cdot w^d = E_0 = \text{const} \quad (d = 3: S^3 \text{の空間次元})\]
-
-エネルギーを受け取った波束は:
-
-\[\Delta E > 0 \;\Rightarrow\; A \uparrow,\; w \downarrow \quad (\text{振幅増大・幅縮小})\]
-
-\[\Delta E < 0 \;\Rightarrow\; A \downarrow,\; w \uparrow \quad (\text{振幅減少・幅拡大})\]
-
-\textbf{命題 5.2}: 保存量 \(\int |\psi|^2 \, dV\)
-のもとで、エネルギー転送は波束の振幅と幅を反比例的に変形させる。エネルギー増加は波束の局在化（幅の縮小）を伴う。
-
-\subsubsection{§5.4
-球状波の波束変形}\label{ux7403ux72b6ux6ce2ux306eux6ce2ux675fux5909ux5f62}
-
-球状波（\(\kappa = 0\)）もグラビトンと結合する（命題5.1:
-\(\Delta\mathbf{k} \neq 0\)
-であれば結合）。球状波がエネルギーを受け取ると:
-
-\begin{itemize}
-\tightlist
-\item
-  球面波の振幅が増大し、空間的広がりが縮小する
-\item
-  極限的には球状波が点状に局在化する
-\end{itemize}
-
-これは重力レンズ効果の幾何学的記述に対応する。球状波（光子）が大質量天体の重力場を通過する際、グラビトンとの相互作用により波束が変形し、伝搬経路が曲がる。
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{§6
 強い相互作用と閉じ込め}\label{ux5f37ux3044ux76f8ux4e92ux4f5cux7528ux3068ux9589ux3058ux8fbcux3081}
 
-\subsubsection{\texorpdfstring{§6.1 \(Q\)
-軸遷移}{§6.1 Q 軸遷移}}\label{q-ux8ef8ux9077ux79fb}
+\subsubsection{\texorpdfstring{§5.1 \(Q\)
+軸遷移と色荷の3ビット構造}{§5.1 Q 軸遷移と色荷の3ビット構造}}\label{q-ux8ef8ux9077ux79fbux3068ux8272ux8377ux306e3ux30d3ux30c3ux30c8ux69cbux9020}
 
 グルーオン \(g = (0, 0, 0, 0, 0, Q_i \to Q_j)\) は \(Q\)
 軸上の遷移として定義される。条件 (I1) により、変位転送は \(Q\)
@@ -514,9 +532,6 @@
 
 方向制約波の空間成分・時間成分・\(R\)
 成分は変化しない。変化するのは離散ラベル \(Q\) のみである。
-
-\subsubsection{§6.2
-色荷の3ビット構造}\label{ux8272ux8377ux306e3ux30d3ux30c3ux30c8ux69cbux9020}
 
 {[}4{]}の表Aにおいて、\(Q\) は3ビット \((c_1, c_2, c_3)\)
 で符号化される:
@@ -534,12 +549,53 @@
 の3つの非ゼロ値（\(01, 10, 11\)）間の遷移が \(3 \times 3 - 1 = 8\)
 通りの独立なグルーオンを与える。
 
-\subsubsection{§6.3
+\subsubsection{\texorpdfstring{§5.2 吸収:
+\(q + g \to q'\)}{§5.2 吸収: q + g \textbackslash to q\textquotesingle{}}}\label{ux5438ux53ce-q-g-to-q}
+
+クォーク型の方向制約波が色荷
+\((c_2 c_3) = (01)\)（赤）を持つとき、グルーオン \(g_{01 \to 10}\)
+を吸収すると:
+
+\[(k_x, 0, 0, k_t, 0, Q_{01}) + g_{01 \to 10} \;\longrightarrow\; (k_x, 0, 0, k_t, 0, Q_{10})\]
+
+グルーオンは独立な波として消滅し、クォークの色荷が赤（\(01\)）から緑（\(10\)）に変化する。空間成分・時間成分・\(R\)
+成分は保存される。
+
+\subsubsection{\texorpdfstring{§5.3 放出:
+\(q \to q' + g\)}{§5.3 放出: q \textbackslash to q\textquotesingle{} + g}}\label{ux653eux51fa-q-to-q-g}
+
+命題3.1（可逆性）により、吸収の逆過程として放出が定義される:
+
+\[(k_x, 0, 0, k_t, 0, Q_{10}) \;\longrightarrow\; (k_x, 0, 0, k_t, 0, Q_{01}) + g_{10 \to 01}\]
+
+クォークの色荷が変化し、その差分を運ぶグルーオンが新たに生成される。
+
+\textbf{命題 5.1}:
+グルーオンとの相互作用（吸収・放出とも）は方向制約波の \(Q\)
+ラベル（色荷）のみを変化させ、空間成分・時間成分・\(R\)
+成分・動的状態は保存する。
+
+\subsubsection{\texorpdfstring{§5.4 対消滅・対生成:
+\(q + \bar{q} \leftrightarrow g(s)\)}{§5.4 対消滅・対生成: q + \textbackslash bar\{q\} \textbackslash leftrightarrow g(s)}}\label{ux5bfeux6d88ux6ec5ux5bfeux751fux6210-q-barq-leftrightarrow-gs}
+
+クォークと反クォークの対は、全成分が逆符号であるだけでなく色荷も反色の関係にある。色荷のビット合成（XOR）がゼロに帰着するとき:
+
+\[(c_2 c_3) \oplus (c_2 c_3) = (00)\]
+
+対消滅が成立し、\(\kappa = 2\) の波対が \(\kappa = 0\)
+のグルーオンに変換される。逆過程（対生成）として、グルーオンのエネルギーからクォーク・反クォーク対が生成される:
+
+\[q(c_2 c_3) + \bar{q}(c_2 c_3) \;\longleftrightarrow\; g(s)\]
+
+\textbf{命題 5.2}:
+色荷のXOR合成がゼロに帰着するクォーク・反クォーク対はグルーオンを介して対消滅・対生成が可能である。
+
+\subsubsection{§5.5
 閉じ込め条件}\label{ux9589ux3058ux8fbcux3081ux6761ux4ef6}
 
 {[}3{]}の§8で導入した子空間中心投影の枠組みにおいて、独立した主観空間を形成するためには、波の集合が\textbf{色中性}である必要がある。
 
-\textbf{定義 6.1}（色中性条件）: 方向制約波の集合 \(\{\psi_i\}\)
+\textbf{定義 5.1}（色中性条件）: 方向制約波の集合 \(\{\psi_i\}\)
 が色中性であるとは、\(c_2 c_3\) ビットの合成が \((0, 0)\)
 に帰着することである。ここでビットの合成はビットごとの排他的論理和（XOR、\(\mathbb{F}_2\)
 上の加算）として定義される:
@@ -562,23 +618,31 @@
 \end{longtable}
 }
 
-\textbf{命題 6.1}:
+\textbf{注意 5.1}: メソン型では、クォークと反クォークが同色
+\((c_2 c_3)\)
+を持つ（§5.4）ため、同色2つのXOR合成が色中性を実現する。標準QCDでは色と反色の対消滅（\(\mathrm{SU}(3)\)
+の
+\(\mathbf{3} \otimes \bar{\mathbf{3}} \supset \mathbf{1}\)）として色中性が記述されるが、本フレームワークでは
+\(\mathbb{F}_2^2\)
+上のXOR代数が対応する。代数構造は異なるが、色中性という結果は同一である。
+
+\textbf{命題 5.3}:
 色中性条件を満たさない方向制約波の集合は、独立した主観空間を形成できず、色中性の集合内に閉じ込められる。
 
-\subsubsection{§6.4 漸近的自由}\label{ux6f38ux8fd1ux7684ux81eaux7531}
+\subsubsection{§5.6 漸近的自由}\label{ux6f38ux8fd1ux7684ux81eaux7531}
 
 色中性の集合内部（共有主観空間の内部）では、子空間中心投影の曲率が小さく、方向制約波はほぼ自由に運動する。集合の境界に近づくと投影曲率が増大し、境界を越えることが不可能になる。
 
-\textbf{命題 6.2}:
+\textbf{命題 5.4}:
 色中性集合の内部は投影曲率が小さく（漸近的自由）、境界では投影曲率が発散する（閉じ込め）。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{§7
+\subsection{§6
 弱い相互作用とフレーバー転換}\label{ux5f31ux3044ux76f8ux4e92ux4f5cux7528ux3068ux30d5ux30ecux30fcux30d0ux30fcux8ee2ux63db}
 
-\subsubsection{\texorpdfstring{§7.1 \(t\)
-軸変位}{§7.1 t 軸変位}}\label{t-ux8ef8ux5909ux4f4d}
+\subsubsection{\texorpdfstring{§6.1 \(t\)
+軸変位}{§6.1 t 軸変位}}\label{t-ux8ef8ux5909ux4f4d}
 
 \(W^{\pm} = (0, 0, 0, \pm t, 0, 0)\) は \(t\)
 軸に非ゼロ成分を持つ球状波である。条件 (I1) により:
@@ -586,65 +650,453 @@
 \[\delta\mathbf{k}_W: \quad k_t \;\longrightarrow\; k_t' = k_t + \delta k_t\]
 
 \(t\) 軸成分の変化は、{[}4{]}の表Aにおいて上型 /
-下型の転換に対応する。同時に \(Q\) 軸の \(c_1\) ビットも変化する。
+下型の転換に対応する。同時に \(Q\) 軸の \(c_1\)
+ビット（弱アイソスピン）も変化する。\(c_1\) と \(\mathrm{sign}(k_t)\)
+は独立な自由度であり、\(W^{\pm}\) は両者を媒介する。\(Q\) 軸の
+\(c_2 c_3\) ビット（色荷）は \(t\) 軸および \(c_1\)
+と直交する独立な自由度であり、\(W^{\pm}\) との相互作用で保存される。
 
-\subsubsection{§7.2
-フレーバー転換の具体例}\label{ux30d5ux30ecux30fcux30d0ux30fcux8ee2ux63dbux306eux5177ux4f53ux4f8b}
+\(W^{\pm}\) の \(t\) 軸変位は、初期・最終状態の \(k_t\)
+がともに非ゼロの場合（クォーク系、§6.2--6.3）は符号反転として作用する。\(k_t = 0\)
+への遷移を含む場合（レプトン系）は \(\kappa = 2\)
+保存に伴う空間軸の再配置が生じる（§6.7）。
+
+\subsubsection{\texorpdfstring{§6.2 吸収:
+\(f + W \to f'\)}{§6.2 吸収: f + W \textbackslash to f\textquotesingle{}}}\label{ux5438ux53ce-f-w-to-f}
 
 \(W^+\) 吸収による方向制約波の変換:
 
 \[\underbrace{(k_x, 0, 0, -k_t, 0, Q_d)}_{\text{下型}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, 0, +k_t, 0, Q_u)}_{\text{上型}}\]
 
-\(t\) 軸の符号が反転し（\(-k_t \to +k_t\)）、\(Q\) のアイソスピンビット
-\(c_1\) が変化する。
+\(W^+\) は独立な波として消滅し、方向制約波の \(t\)
+軸の符号が反転し（\(-k_t \to +k_t\)）、\(c_1\) ビットが \(0 \to 1\)
+に遷移する（\(Q_d \to Q_u\)）。色荷 \(c_2 c_3\) は保存される。
 
-\subsubsection{\texorpdfstring{§7.3 \(k_t \neq 0\) と CP
-破れ}{§7.3 k\_t \textbackslash neq 0 と CP 破れ}}\label{k_t-neq-0-ux3068-cp-ux7834ux308c}
+\subsubsection{\texorpdfstring{§6.3 放出:
+\(f \to f' + W\)}{§6.3 放出: f \textbackslash to f\textquotesingle{} + W}}\label{ux653eux51fa-f-to-f-w}
+
+命題3.1（可逆性）により、吸収の逆過程として放出が定義される:
+
+\[\underbrace{(k_x, 0, 0, +k_t, 0, Q_u)}_{\text{上型}} \;\longrightarrow\; \underbrace{(k_x, 0, 0, -k_t, 0, Q_d)}_{\text{下型}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+}\]
+
+方向制約波のフレーバーが上型から下型に変化し（\(t\)
+軸符号反転、\(c_1: 1 \to 0\)）、\(W^+\)
+が新たに独立な波として生成される。保存則 (I2) により、\(t\)
+軸成分の変化分が \(W^+\) として放出される。
+
+\textbf{\(Q\) 軸の色荷成分と \(t\) 軸の独立性}:
+{[}4{]}の表Aにおいて、\(Q\) 軸は3ビット \((c_1, c_2, c_3)\)
+で符号化され、\(c_1\) は弱アイソスピン、\(c_2 c_3\)
+は色荷を表す（§5.1）。\(c_1\) と \(t\) 軸の符号 \(\mathrm{sign}(k_t)\)
+は独立な自由度であり、\(W^{\pm}\)
+は両者を同時に変化させる（§6.5）。一方、\(c_2 c_3\)（色荷）は \(t\)
+軸および \(c_1\) と直交する独立な自由度であり、(I1)
+は球状波の非ゼロ軸（\(t\)
+軸）に沿った変位転送のみを要請するため、\(W^{\pm}\) との相互作用で色荷
+\(c_2 c_3\) は保存される。
+
+\textbf{命題 6.1}: \(W^{\pm}\)
+との相互作用（吸収・放出とも）は方向制約波の \(t\)
+軸成分（フレーバー）と \(Q\) 軸の \(c_1\)
+ビット（弱アイソスピン）を変化させる。\(Q\) 軸の \(c_2 c_3\)
+ビット（色荷）は \(t\) 軸および \(c_1\)
+と直交する独立な自由度であり、\(W^{\pm}\) との相互作用で保存される。
+
+\subsubsection{\texorpdfstring{§6.4 \(W\)
+崩壊と逆崩壊}{§6.4 W 崩壊と逆崩壊}}\label{w-ux5d29ux58caux3068ux9006ux5d29ux58ca}
+
+\(W^{\pm}\) 自体の崩壊は、対生成（型D）の特殊な場合である:
+
+\[W^+ \;\longrightarrow\; f_u + \bar{f}_d\]
+
+\(W^+\) が消滅し、上型の方向制約波 \(f_u\) と下型の反方向制約波
+\(\bar{f}_d\) が生成される。保存則 (I2) により、\(W^+\) の \(t\)
+軸成分と動的状態が生成された波の対に分配される。
+
+逆過程（逆崩壊）:
+
+\[f_u + \bar{f}_d \;\longrightarrow\; W^+\]
+
+方向制約波と反方向制約波が消滅し、\(W^+\) が生成される。対消滅（型C）の
+\(t\) 軸版に相当する。
+
+\textbf{命題 6.2}: \(W\) 崩壊は型Dの \(t\) 軸版であり、逆崩壊は型Cの
+\(t\) 軸版である。いずれも \(k_t \neq 0\)
+の因果的過程であり、崩壊と逆崩壊は時間的に区別される。
+
+\subsubsection{§6.5
+カイラリティ選択則}\label{ux30abux30a4ux30e9ux30eaux30c6ux30a3ux9078ux629eux5247}
+
+{[}3{]}の定義6.1で定義したカイラリティ
+\(\chi = \mathrm{sign}(k_{s_0} \cdot k_t)\)（\(k_{s_0}\):
+非ゼロ空間成分）に対して、\(W^{\pm}\)
+の結合条件を導出する。{[}4{]}の表Aにおいて、\(Q\) 軸の \(c_1\)
+ビットは弱アイソスピンを符号化しており、\(t\)
+軸とは独立な自由度である。\(W^{\pm}\) は \(t\) 軸の変化と \(c_1\)
+の遷移をそれぞれ媒介する:
+
+\begin{itemize}
+\tightlist
+\item
+  \(W^+\): \(c_1 = 0 \to 1\)（下型 → 上型）
+\item
+  \(W^-\): \(c_1 = 1 \to 0\)（上型 → 下型）
+\end{itemize}
+
+\(c_1\) のアイソスピン符号 \((-1)^{c_1}\)
+を用いて、カイラリティを以下のように再定式化する:
+
+\[\chi = \mathrm{sign}((-1)^{c_1} \cdot k_t)\]
+
+\textbf{\(W^+\) 吸収の場合}:
+\(W^+ + \psi_d \to \psi_u\)。始状態は下型（\(c_1 = 0\), \(k_t < 0\)）:
+
+\[\chi(\psi_d) = \mathrm{sign}((-1)^0 \cdot (-|k_t|)) = \mathrm{sign}((+1) \cdot (-)) = -1\]
+
+\textbf{\(W^-\) 吸収の場合}:
+\(W^- + \psi_u \to \psi_d\)。始状態は上型（\(c_1 = 1\), \(k_t > 0\)）:
+
+\[\chi(\psi_u) = \mathrm{sign}((-1)^1 \cdot (+|k_t|)) = \mathrm{sign}((-1) \cdot (+)) = -1\]
+
+いずれの場合も \(\chi = -1\)（左巻き）が追加仮定なしに導かれる。\(c_1\)
+と \(k_t\) が独立な自由度として \(W^+\) と \(W^-\)
+を区別するため、\(k_{s_0}\) の符号反転を仮定する必要がない。
+
+\textbf{命題 6.3}: \(W^{\pm}\) との結合条件は、始状態のアイソスピン符号
+\((-1)^{c_1}\) と \(k_t\)
+の積の符号で決定される。\(W^+\)（\(c_1: 0 \to 1\)）、\(W^-\)（\(c_1: 1 \to 0\)）のいずれにおいても
+\(\chi = -1\)（左巻き）が成立し、右巻き（\(\chi = +1\)）の方向制約波は
+\(W^{\pm}\) と結合しない。
+
+\subsubsection{§6.6 CP 破れ}\label{cp-ux7834ux308c}
 
 {[}3{]}の命題6.4で示した通り、CP対称性が破れうるのは \(k_t \neq 0\)
 の相互作用に限られる。\(W^{\pm}\) は \(k_t = \pm 1 \neq 0\)
 であり、4種の球状波のうち唯一 \(k_t \neq 0\) を持つ。
 
-\textbf{命題 7.1}: \(t\) 軸に非ゼロ成分を持つ \(W^{\pm}\) のみが CP
+\textbf{命題 6.4}: \(t\) 軸に非ゼロ成分を持つ \(W^{\pm}\) のみが CP
 対称性の破れを媒介する。これは \(k_t \neq 0\)
 が時間方向の非対称性を導入することの直接的帰結である。
 
-\subsubsection{§7.4
-カイラリティ選択則}\label{ux30abux30a4ux30e9ux30eaux30c6ux30a3ux9078ux629eux5247}
+\subsubsection{§6.7
+レプトン系における軸再配置}\label{ux30ecux30d7ux30c8ux30f3ux7cfbux306bux304aux3051ux308bux8ef8ux518dux914dux7f6e}
 
-{[}3{]}の定義6.1で定義したカイラリティ
-\(\chi = \mathrm{sign}(k_{s_0} \cdot k_t)\)（\(k_{s_0}\):
-非ゼロ空間成分）に対して、\(W^{\pm}\) の \(t\)
-軸構造は特定のカイラリティとの結合条件を課す。
+§6.2--6.3 の \(W^{\pm}\) 吸収・放出の記述では、\(k_t\)
+の符号反転（初期・最終状態とも
+\(k_t \neq 0\)）を扱った。これはクォーク系（\(c_2 c_3 \neq 00\)）の典型的な過程である。レプトン系（\(c_2 c_3 = 00\)）では、荷電レプトンとニュートリノの軸構成が質的に異なるため、\(W^{\pm}\)
+の作用は軸再配置を伴う。
 
-\(W^{\pm} = (0, 0, 0, \pm t, 0, 0)\) は \(t\)
-軸のみに位相構造を持つ。方向制約波 \((k_{s_0}, 0, 0, k_t)\)
-との結合は、\(W^{\pm}\) の \(t\) 軸位相と方向制約波の \(t\)
-軸位相が逆符号（\(\mathrm{sign}(k_t) \neq \mathrm{sign}(k_{t,W})\)）のときにのみ成立する。{[}3{]}の定義6.1より
-\(\chi = \mathrm{sign}(k_{s_0} \cdot k_t)\) であるから、この結合条件は
-\(\chi = -1\)（左巻き）に対応する。
+{[}4{]}の表Aにおいて、\(c_2 c_3 = 00\)（色荷なし）のフェルミオン（\(\kappa = 2\)）は以下の2種の軸構成を持つ:
 
-\textbf{命題 7.2}: \(W^{\pm}\) との結合はカイラリティ
-\(\chi = -1\)（左巻き）の方向制約波に限られる。右巻き（\(\chi = +1\)）は
-\(W^{\pm}\) と結合しない。
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1750}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1750}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+種類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+非ゼロ軸
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(k_t\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(c_1\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(Q\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+例
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+荷電レプトン & 空間1軸 + \(t\) & \(\neq 0\) & 1 & 4 &
+\(e^-: (k_x, 0, 0, k_t, 0, 4)\) \\
+ニュートリノ & 空間2軸 & \(= 0\) & 0 & 0 &
+\(\nu: (k_{s_1}, 0, k_{s_2}, 0, 0, 0)\) \\
+\end{longtable}
+}
+
+\(W^+\) 吸収による荷電レプトン→ニュートリノ転換:
+
+\[\underbrace{(k_x, 0, 0, k_t, 0, 4)}_{\substack{\text{荷電レプトン} \\ \kappa = 2:\; (s, t),\; c_1 = 1}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{ニュートリノ} \\ \kappa = 2:\; (s, s),\; c_1 = 0}}\]
+
+この過程は (I1) のみでは完全に記述されない。(I1) は \(W^+\)
+の非ゼロ軸（\(t\) 軸）に沿った変位を要請し、\(k_t \to 0\)
+の遷移を許容する。しかし \(k_t = 0\) への遷移は非ゼロ軸数を
+\(\kappa = 2\) から \(\kappa = 1\) に減少させるため、\(\kappa = 2\)
+の安定性条件（{[}3{]}の定理5.1）が補償的な空間軸の活性化を要求する。
+
+すなわちレプトン系における \(W^{\pm}\)
+の作用は、2つの条件の連立として決定される:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{(I1)}: \(t\) 軸に沿った変位（\(k_t \to 0\) または
+  \(0 \to k_t\)）
+\item
+  \textbf{\(\kappa = 2\) 保存}: フェルミオン条件により、非ゼロ軸数
+  \(\kappa = 2\) が維持される
+\end{enumerate}
+
+逆過程（ニュートリノ→荷電レプトン転換）:
+
+\[\underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{ニュートリノ} \\ \kappa = 2:\; (s, s),\; c_1 = 0}} + \underbrace{(0, 0, 0, -, 0, 0)}_{W^-} \;\longrightarrow\; \underbrace{(k_x, 0, 0, k_t, 0, 4)}_{\substack{\text{荷電レプトン} \\ \kappa = 2:\; (s, t),\; c_1 = 1}}\]
+
+\(W^-\) が \(t\) 軸成分を供給し（\(0 \to k_t\)）、\(\kappa = 2\)
+保存のため空間軸の一つ（\(k_{s_2}\)）が非活性化される。
+
+\textbf{命題 6.5}: \(W^{\pm}\) のレプトン系への作用は、\(t\) 軸変位 (I1)
+と \(\kappa = 2\) 保存の連立として記述される。荷電レプトン（空間1軸 +
+\(t\)）↔ ニュートリノ（空間2軸）の転換は、\(t\)
+軸成分と空間軸成分の交替として \(\kappa = 2\) を保存する。
+
+\textbf{注意 6.1}:
+軸再配置において活性化（または非活性化）される空間軸の選択は、\(\kappa = 2\)
+保存のみからは一意に決定されない。例えば \(e^-: (k_x, 0, 0, k_t, 0, 4)\)
+から \(W^+\) 吸収で生成されるニュートリノは \((k_x, k_y, 0, 0, 0, 0)\)
+と \((k_x, 0, k_z, 0, 0, 0)\) のいずれも \(\kappa = 2\)
+を満たす。この自由度はニュートリノ混合（PMNS行列に対応する構造）の幾何学的起源となりうるが、その解明は本論文の主張範囲外である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§7 重力相互作用}\label{ux91cdux529bux76f8ux4e92ux4f5cux7528}
+
+\subsubsection{§7.1
+グラビトンによる変位転送}\label{ux30b0ux30e9ux30d3ux30c8ux30f3ux306bux3088ux308bux5909ux4f4dux8ee2ux9001}
+
+グラビトン \(G = (0, 0, 0, \pm t, \pm R, 0)\) は \(t\) 軸と \(R\)
+軸の両方に非ゼロ成分を持つ。条件 (I1) により、変位転送は \(t\) 方向と
+\(R\) 方向の両方に作用し、\(R\) 方向については離散化条件
+(I4)（§2.5）に従う:
+
+\[\delta(\Delta\mathbf{k})_G = (\delta(\Delta k)_t,\; \delta(\Delta k)_R)\]
+
+これはエネルギー（\(t\) 成分）と空間的配置（\(R\)
+成分）の同時変化を意味する。(I4) の帰結の候補として、グラビトンが運ぶ
+\(R\)
+方向のエネルギー・運動量にも離散的な許容値のみが存在する可能性がある。
+
+\subsubsection{\texorpdfstring{§7.2 吸収:
+\(f + G \to f'\)}{§7.2 吸収: f + G \textbackslash to f\textquotesingle{}}}\label{ux5438ux53ce-f-g-to-f}
+
+方向制約波がグラビトンを吸収するとき:
+
+\[(\mathbf{k},\; \Delta\mathbf{k}) + (\mathbf{k}_G,\; \Delta\mathbf{k}_G) \;\longrightarrow\; (\mathbf{k},\; \Delta\mathbf{k} + \delta(\Delta\mathbf{k})_G)\]
+
+グラビトンは独立な波として消滅し、そのエネルギー・運動量が方向制約波の動的状態に転送される。\(t\)
+方向と \(R\) 方向の両方が同時に変化する点が、光子（\(R\)
+のみ）との違いである。
+
+\subsubsection{\texorpdfstring{§7.3 放出:
+\(f \to f' + G\)}{§7.3 放出: f \textbackslash to f\textquotesingle{} + G}}\label{ux653eux51fa-f-to-f-g}
+
+命題3.1（可逆性）により、吸収の逆過程として放出が定義される:
+
+\[(\mathbf{k},\; \Delta\mathbf{k}) \;\longrightarrow\; (\mathbf{k},\; \Delta\mathbf{k} - \delta(\Delta\mathbf{k})_G) + (\mathbf{k}_G,\; \delta(\Delta\mathbf{k})_G)\]
+
+方向制約波の動的状態の一部が分離し、新たなグラビトンが独立な波として生成される。
+
+\textbf{命題 7.1}: グラビトンとの相互作用（吸収・放出とも）は動的状態
+\(\Delta\mathbf{k}\) のみを変化させ、静的ラベル \(\mathbf{k}\)
+には作用しない。
+
+\subsubsection{§7.4 普遍的結合}\label{ux666eux904dux7684ux7d50ux5408}
+
+{[}3{]}の§8で導入した加速度の記述を再掲する。子空間中心投影の2階微分が加速度を決定する:
+
+\[\Delta^2\mathbf{k}(\mathbf{k}_t) = D^2\pi(\mathbf{k}_t) \cdot \Delta\mathbf{k}_t\]
+
+グラビトンの交換はこの \(\Delta^2\mathbf{k}\)
+の離散的な実現である。グラビトンは動的状態 \(\Delta\mathbf{k}\)
+に作用するため:
+
+\begin{itemize}
+\tightlist
+\item
+  静的ラベル \(\mathbf{k}\) に依存しない（波の種類を問わない）
+\item
+  \(\Delta\mathbf{k} \neq 0\)
+  の全ての波に作用する（エネルギーを持つ全ての波）
+\end{itemize}
+
+\textbf{命題 7.2}: \(\Delta\mathbf{k} \neq 0\)
+の全ての形不変波がグラビトンと結合する（普遍的結合）。
+
+\textbf{注意 7.1}:
+重力による対消滅（\(f + \bar{f} \to G\)）および対生成（\(G \to f + \bar{f}\)）は保存則
+(I2) のもとで原理的に許容される。しかしグラビトンは \(k_t \neq 0\)
+を持つため因果的な過程であり、かつ結合が動的状態のみを介するため、結合強度は他の力に比べて著しく弱い。これらの過程の定量的評価は本論文の主張範囲外である。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{§8
-波束変形と因果の遡及的構成}\label{ux6ce2ux675fux5909ux5f62ux3068ux56e0ux679cux306eux9061ux53caux7684ux69cbux6210}
+質量の起源：定常波との結合}\label{ux8ceaux91cfux306eux8d77ux6e90ux5b9aux5e38ux6ce2ux3068ux306eux7d50ux5408}
 
 \subsubsection{§8.1
-波束変形の保存則的記述}\label{ux6ce2ux675fux5909ux5f62ux306eux4fddux5b58ux5247ux7684ux8a18ux8ff0}
+結合の幾何学的構造}\label{ux7d50ux5408ux306eux5e7eux4f55ux5b66ux7684ux69cbux9020}
 
-§5.3で導入した波束変形の機構を一般化する。任意の相互作用において、方向制約波がエネルギーを受け取るとき、保存量
-\(\int |\psi|^2 \, dV = E_0\) のもとで:
+定常波モード（\(\kappa = 1\),
+{[}3{]}§5）は空間1軸に沿った基底モードとして主観空間 \(S^3\)
+全体を充填する。方向制約波（\(\kappa = 2\)）はこの定常波の背景を通って伝搬する。
 
-\[A_{\text{after}}^2 \cdot w_{\text{after}}^d = A_{\text{before}}^2 \cdot w_{\text{before}}^d = E_0\]
+\textbf{注意 8.1}: ヒッグス結合は§3の基本頂点分類（\(\kappa = 0\)
+の球状波による型A--D）の対象外である。定常波（\(\kappa = 1\)）は球状波（\(\kappa = 0\)）ではなく、方向制約波との結合は基本頂点を介さず、本節で述べる速度比修正として独立に記述される。
 
-エネルギー密度の集中（\(A\) 増大）は必然的に空間的局在化（\(w\)
-縮小）を伴う。
+{[}4{]}の表Aにおいて、ヒッグスボソンの非零軸は \(z\)
+軸に指定される（\((0, 0, +, 0, 0, 0)\)）。\(z\) 軸は世代ラベルにおいて第
+3 世代に対応する（世代 1: \(x\)、世代 2: \(y\)、世代 3:
+\(z\)、{[}4{]}§9.9）。本論文の§8の結論（世代質量階層の方向）はこの世代番号と空間軸の対応に依存しており、{[}4{]}の表Aでの
+\(H^0\)
+の軸指定と世代ラベルの割り当てが整合的であることを前提とする。この指定により、定常波は
+\(\mathbf{k}_H = (0, 0, k_H, 0)\) と表される。
+
+第 3 世代の方向制約波 \(\mathbf{k} = (0, 0, k_z, k_t)\) と定常波
+\(\mathbf{k}_H = (0, 0, k_H, 0)\) は、空間 \(z\)
+軸を直接共有する。この共有軸上で波の位相構造が重なり合い、最も強い結合が生じる。第
+1 世代（\(\mathbf{k} = (k_x, 0, 0, k_t)\)）および第 2
+世代（\(\mathbf{k} = (0, k_y, 0, k_t)\)）の方向制約波は \(z\)
+軸を共有しないため、定常波との直接結合を持たず、\(S^3\)
+の大域的位相構造を介した間接的結合のみが可能である。
 
 \subsubsection{§8.2
+速度比の修正}\label{ux901fux5ea6ux6bd4ux306eux4feeux6b63}
+
+結合のない方向制約波の伝搬速度は \(v = k_{s_0} / k_t\)（\(k_{s_0}\):
+非ゼロ空間成分）である。定常波との結合は共有空間軸方向の位相構造に影響を与え、実効的な空間成分を修正する:
+
+\[k_{s_0} \;\longrightarrow\; k_{s_0}^{\text{eff}} = k_{s_0} - \delta k_H\]
+
+ここで \(\delta k_H > 0\) は定常波との結合強度に比例する。\(\delta k_H\)
+の符号（実効的空間成分を減少させる方向）は定常波の性質から導かれる。定常波は
+\(\kappa = 1\), \(k_t = 0\)
+であり、時間方向の位相進行を持たない。伝搬位相を持たない波は、伝搬波と同位相で進むことが原理的にできず、結合は空間位相の相殺方向にのみ作用する。さらに定常波は
+\(S^3\)
+全体を充填する基底モード振動であるため、方向制約波は定常波の背景を避けて伝搬することができない。したがって
+\(z\)
+軸を共有する方向制約波に対して、相殺方向の結合が唯一かつ不可避の帰結である。結合後の伝搬速度は:
+
+\[v^{\text{eff}} = \frac{k_{s_0}^{\text{eff}}}{k_t} = \frac{k_{s_0} - \delta k_H}{k_t} < \frac{k_{s_0}}{k_t} = v\]
+
+速度が減少する --- これが\textbf{質量}の幾何学的起源である。
+
+\textbf{命題 8.1}:
+定常波（\(\kappa = 1\)）との結合は方向制約波の実効的空間成分を減少させ、伝搬速度を
+\(v < c\) に制限する。この速度制限が質量として観測される。
+
+\subsubsection{§8.3
+結合しない波}\label{ux7d50ux5408ux3057ux306aux3044ux6ce2}
+
+球状波（\(\kappa_s = 0\)）は空間成分を持たない。定常波は空間1軸に位相構造を持つが、球状波には共有する空間軸が存在しない。
+
+\textbf{命題 8.2}: \(\kappa_s = 0\)
+の球状波は定常波との結合軸を持たず、\(\delta k_H = 0\) となる。速度は
+\(v = c\) のまま修正されない。
+
+{[}4{]}の表Aにおいて \(\kappa_s = 0\) のゲージボソン（\(\gamma\),
+\(g\)）が質量ゼロであることと整合する。\(W^{\pm}\) と \(Z^0\) は
+\(\kappa_s = 0\)
+であるため命題8.2の空間軸を通じた直接結合は持たないが、\(t\) 軸または
+\(R\)
+軸を通じた間接的な定常波結合機構により質量を獲得しうる。命題8.2は空間軸の直接共有による結合のみを扱っており、\(t\)
+軸や \(R\)
+軸を経由する間接的な結合機構の詳細は本論文の主張範囲外である。
+
+\subsubsection{§8.4 質量階層}\label{ux8ceaux91cfux968eux5c64}
+
+結合強度 \(\delta k_H\)
+は、方向制約波と定常波の空間軸上での重なり積分に依存する。§8.1で定常波の非零軸を
+\(z\)（第 3
+世代軸）に指定したことにより、世代間の結合強度の序列が構造的に決定される:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1132}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.1887}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3019}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3962}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+世代
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+方向制約波
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+定常波との軸共有
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+結合強度 \(\delta k_H\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+第 3 & \((0, 0, k_z, k_t)\) & \(z\) 軸を直接共有 & 最大 \\
+第 1・第 2 & \((k_x, 0, 0, k_t)\) / \((0, k_y, 0, k_t)\) &
+共有軸なし（間接結合） & 小（機構未解明） \\
+\end{longtable}
+}
+
+第 3 世代は定常波と空間軸を直接共有するため \(\delta k_H\)
+が最大となり、最大の質量を獲得する。実測においても第 3
+世代が最重（\(m_t \gg m_c \gg m_u\)）であり、この構造予測と整合する。
+
+第 1・第 2 世代は \(z\) 軸を共有しないため、\(S^3\)
+の大域的位相構造を介した間接結合のみが可能である。ただし、\(x\) 軸と
+\(y\) 軸は \(\mathrm{SO}(3)\)
+対称性により局所的に等価であるため、本論文の枠組み内で \(m_2 \neq m_1\)
+の差を導出することはできない。第 1・第 2 世代間の質量差の起源は、この
+\(\mathrm{SO}(3)\)
+対称性を破る追加的機構（間接結合の詳細な構造）に依存するが、その解明は本論文の主張範囲外である（§1参照）。
+
+本論文が構造的に主張するのは「\(m_3 \gg m_{1,2}\)」（第 3 世代が第 1・第
+2 世代に比べて圧倒的に重い）という点のみである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§9
+波束変形と因果の遡及的構成}\label{ux6ce2ux675fux5909ux5f62ux3068ux56e0ux679cux306eux9061ux53caux7684ux69cbux6210}
+
+\subsubsection{§9.1
+波束変形の保存則的記述}\label{ux6ce2ux675fux5909ux5f62ux306eux4fddux5b58ux5247ux7684ux8a18ux8ff0}
+
+§4--§7の相互作用において、方向制約波がエネルギーを受け取るとき、保存量
+\(\int |\psi|^2 \, dV = E_0\)（{[}1{]}§5, {[}2{]}§5 の
+(C1)）のもとで、波束の振幅 \(A\) と特徴的幅 \(w\) は:
+
+\[A^2 \cdot w^d = E_0 = \text{const} \quad (d = 3: S^3 \text{の空間次元})\]
+
+エネルギーを受け取った波束は:
+
+\[\Delta E > 0 \;\Rightarrow\; A \uparrow,\; w \downarrow \quad (\text{振幅増大・幅縮小})\]
+
+\[\Delta E < 0 \;\Rightarrow\; A \downarrow,\; w \uparrow \quad (\text{振幅減少・幅拡大})\]
+
+\textbf{命題 9.1}: 保存量 \(\int |\psi|^2 \, dV\)
+のもとで、エネルギー転送は波束の振幅と幅を反比例的に変形させる。エネルギー増加は波束の局在化（幅の縮小）を伴う。
+
+\subsubsection{§9.2
+球状波の波束変形}\label{ux7403ux72b6ux6ce2ux306eux6ce2ux675fux5909ux5f62}
+
+球状波（\(\kappa = 0\)）もグラビトンと結合する（命題7.2:
+\(\Delta\mathbf{k} \neq 0\)
+であれば結合）。球状波がエネルギーを受け取ると:
+
+\begin{itemize}
+\tightlist
+\item
+  球面波の振幅が増大し、空間的広がりが縮小する
+\item
+  極限的には球状波が点状に局在化する
+\end{itemize}
+
+これは重力レンズ効果の幾何学的記述に対応する。球状波（光子）が大質量天体の重力場を通過する際、グラビトンとの相互作用により波束が変形し、伝搬経路が曲がる。
+
+\subsubsection{§9.3
 「観測」の力学的記述}\label{ux89b3ux6e2cux306eux529bux5b66ux7684ux8a18ux8ff0}
 
 従来の量子力学では「観測による波束の収縮」が公理的に導入される。本枠組みでは:
@@ -657,21 +1109,21 @@
 \item
   エネルギー転送により波束の振幅が増大する
 \item
-  保存則 (I3) により幅が縮小する（局在化）
+  保存則 (I3) および命題 9.1 により幅が縮小する（局在化）
 \item
   十分に局在化した波束を「粒子として検出した」と記述する
 \end{enumerate}
 
 「観測」は特別な操作ではなく、相互作用による波束変形の一例に過ぎない。外部の「観測者」は不要であり、波束の変形は保存則に従う決定論的過程である。
 
-\textbf{命題 8.1}:
+\textbf{命題 9.2}:
 波束の収縮は相互作用による保存則的な波束変形であり、「観測」という特別な過程を仮定する必要がない。
 
-\subsubsection{§8.3
+\subsubsection{§9.4
 因果の遡及的構成}\label{ux56e0ux679cux306eux9061ux53caux7684ux69cbux6210}
 
 {[}3{]}の命題4.2で示した通り、\(k_t = 0\)
-の球状波は時間反転対称であり因果順序を内在しない。命題8.1の「決定論的」と以下の「遡及的」は矛盾しない。両者は異なる層に属する:
+の球状波は時間反転対称であり因果順序を内在しない。命題9.2の「決定論的」と以下の「遡及的」は矛盾しない。両者は異なる層に属する:
 
 \begin{itemize}
 \tightlist
@@ -690,21 +1142,22 @@
 球状波（\(k_t = 0\)）は全方向に等方的に伝搬する（{[}3{]}命題4.1）。相互作用が成立した結果から見ると、球状波は最短測地線に沿って伝搬した\textbf{ように見える}。因果順序が存在しないため、結果が経路を遡及的に確定する。
 
 \textbf{(R2) 局在化の遡及的確定}:
-波束変形は保存則に従う決定論的過程である（命題8.1）。しかし \(k_t = 0\)
+波束変形は保存則に従う決定論的過程である（命題9.2）。しかし \(k_t = 0\)
 により因果順序がないため、「相互作用が起きたから局在化した」と「局在化したから相互作用が起きたように見える」は区別不能である。
 
 \textbf{(R3) 最小作用の原理}: (R1) と (R2)
 の統合として、自然法則の変分原理（最小作用の原理）は公理ではなく、\(k_t = 0\)
 の球状波が媒介する相互作用の因果対称性の帰結として導出される。
 
-\textbf{命題 8.2}: \(k_t = 0\) の球状波が媒介する相互作用において、(a)
+\textbf{命題 9.3}: \(k_t = 0\) の球状波が媒介する相互作用において、(a)
 伝搬経路の最短性、(b) 波束の局在化、(c)
 変分原理、はすべて因果順序の不在から遡及的に構成される。
 
-\subsubsection{\texorpdfstring{§8.4 \(k_t \neq 0\)
-の場合}{§8.4 k\_t \textbackslash neq 0 の場合}}\label{k_t-neq-0-ux306eux5834ux5408}
+\subsubsection{\texorpdfstring{§9.5 \(k_t \neq 0\)
+の場合}{§9.5 k\_t \textbackslash neq 0 の場合}}\label{k_t-neq-0-ux306eux5834ux5408}
 
-\(W^{\pm}\)（\(k_t \neq 0\)）が媒介する相互作用は因果対称ではない。(R1)--(R3)
+\(W^{\pm}\)（\(k_t \neq 0\)）および
+\(G\)（\(k_t \neq 0\)）が媒介する相互作用は因果対称ではない。(R1)--(R3)
 は適用されず:
 
 \begin{itemize}
@@ -714,7 +1167,7 @@
 \item
   時間反転対称性が破れる
 \item
-  CP 非保存が可能になる（命題7.1）
+  CP 非保存が可能になる（命題6.4、\(W^{\pm}\) のみ）
 \end{itemize}
 
 {\def\LTcaptype{none} % do not increment counter
@@ -726,13 +1179,17 @@
 \bottomrule\noalign{}
 \endlastfoot
 \(k_t = 0\) & なし & 遡及的（測地線） & 保存 & 電磁気力・強い力 \\
-\(k_t \neq 0\) & あり & 因果的 & 破れうる & 弱い力 \\
+\(k_t \neq 0\) & あり & 因果的 & 破れうる & 弱い力・重力 \\
 \end{longtable}
 }
 
+§3.2の注意3.1と合わせると: \(k_t = 0\)
+の場合は吸収と放出が時間的に区別不能（§3の可逆性が完全に対称）であり、\(k_t \neq 0\)
+の場合は可逆であっても時間的に区別可能である。
+
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{§9 まとめ}\label{ux307eux3068ux3081}
+\subsection{§10 まとめ}\label{ux307eux3068ux3081}
 
 本論文の主要な結果を要約する:
 
@@ -743,42 +1200,54 @@
   全ての力は球状波の非ゼロ軸に沿った変位転送 (I1)--(I3)
   として記述され、力の種類は軸の違いのみに帰着する（§2）。
 \item
-  \textbf{質量の起源}:
-  定常波（\(\kappa = 1\)）との結合が方向制約波の速度比 \(|k_x / k_t|\)
-  を減少させ、\(v < c\) として質量を生む。\(\kappa_s = 0\)
-  の球状波は結合軸を持たず質量ゼロ（§3）。
+  \textbf{基本頂点と可逆性}:
+  相互作用は4種の基本頂点（吸収・放出・対消滅・対生成）に分類され、保存則のもとで吸収⇔放出、対消滅⇔対生成が可逆である（§3）。
 \item
-  \textbf{電磁散乱と対消滅}: 光子は動的状態 \(\Delta\mathbf{k}\)
-  のみを変化させる。\(t\) 軸成分の相対符号が引力 /
-  斥力を決定する。方向制約波と反波の対消滅は
-  \(\kappa = 2 \to \kappa = 0\) の変換（§4）。
+  \textbf{電磁相互作用}: 光子は \(R\) 軸に作用し、動的状態
+  \(\Delta\mathbf{k}\)
+  のみを変化させる。吸収・放出・交換・対消滅・対生成の全過程が系統的に記述される。\(t\)
+  軸成分の相対符号が引力 / 斥力を決定する（§4）。
 \item
-  \textbf{重力と波束変形}: グラビトンは \((t, R)\)
-  の両軸に作用し、全ての \(\Delta\mathbf{k} \neq 0\)
-  の波と結合する。保存量のもとでのエネルギー転送は波束の振幅と幅を反比例的に変形させる（§5）。
+  \textbf{強い相互作用}: グルーオンは \(Q\)
+  軸遷移を媒介し、色荷を交換する。吸収・放出・対消滅・対生成が系統的に記述される。色中性条件が閉じ込めの起源を与え、集合内部では漸近的自由が成立する（§5）。
 \item
-  \textbf{強い力と閉じ込め}: \(Q\)
-  軸遷移（色荷交換）を媒介し、色中性条件が独立な主観空間の形成条件を与える（§6）。
+  \textbf{弱い相互作用}: \(W^{\pm}\) は \(t\) 軸変位と
+  \(c_1\)（弱アイソスピン）遷移を同時に媒介する。クォーク系では \(k_t\)
+  の符号反転（および
+  \(c_1: 0 \leftrightarrow 1\)）として作用し、レプトン系では \(t\)
+  軸変位と \(\kappa = 2\)
+  保存の連立により荷電レプトン↔ニュートリノの軸再配置が生じる。吸収・放出に加えて
+  \(W\) 崩壊・逆崩壊が型D/Cとして統一される。\(k_t \neq 0\) が CP
+  破れと左巻きカイラリティ選択則の起源を与える（§6）。
 \item
-  \textbf{弱い力とCP破れ}: \(t\)
-  軸変位（フレーバー転換）を媒介し、\(k_t \neq 0\) が CP
-  破れと左巻きカイラリティ選択則の起源（§7）。
+  \textbf{重力相互作用}: グラビトンは \((t, R)\) の両軸に作用し、全ての
+  \(\Delta\mathbf{k} \neq 0\)
+  の波と結合する（普遍的結合）。吸収・放出が系統的に記述される（§7）。
+\item
+  \textbf{質量の起源}: 定常波（\(\kappa = 1\), \(z\)
+  軸）との結合が方向制約波の速度比 \(|k_{s_0} / k_t|\)
+  を減少させ、\(v < c\) として質量を生む。\(z\) 軸を直接共有する第 3
+  世代が最大の結合強度を持ち、世代間質量階層 \(m_3 \gg m_{1,2}\)
+  の起源を与える。\(\kappa_s = 0\)
+  の球状波は結合軸を持たず質量ゼロ（§8）。
 \item
   \textbf{波束変形と因果構造}:
   波束の収縮は保存則的変形であり「観測」は不要。\(k_t = 0\)
-  の球状波が媒介する相互作用は因果対称であり、経路・局在化・変分原理が遡及的に構成される（§8）。
+  の球状波が媒介する相互作用は因果対称であり、経路・局在化・変分原理が遡及的に構成される。\(k_t \neq 0\)
+  の場合は因果的な時間順序を持つ（§9）。
 \end{enumerate}
 
 {[}4{]}の表Aとの対応を以下に示す:
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1607}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1429}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1607}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.3036}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1250}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1071}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1385}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1231}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1385}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.2615}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1077}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0923}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1385}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 相互作用
@@ -792,20 +1261,22 @@
 \(k_t\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 因果
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+基本頂点
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-ヒッグス結合 & 定常波 \(H^0\) & 空間1軸 & \(v\) の減少（質量） & 0 &
---- \\
+ヒッグス結合 & 定常波 \(H^0\) & \(z\) 軸 & \(v\) の減少（質量） & 0 &
+--- & --- \\
 電磁 & \(\gamma\) & \(R\) & \(\Delta\mathbf{k}\) 変化（散乱） & 0 &
-遡及的 \\
-強い & \(g\) & \(Q\) & \(Q\) 変化（色交換） & 0 & 遡及的 \\
+遡及的 & A, B, C, D \\
+強い & \(g\) & \(Q\) & \(Q\) 変化（色交換） & 0 & 遡及的 & A, B, C, D \\
 弱い & \(W^{\pm}\) & \(t\) & \(k_t\) 変化（フレーバー転換） & \(\neq 0\)
-& 因果的 \\
+& 因果的 & A, B, C, D \\
 重力 & \(G\) & \(t, R\) & \(\Delta\mathbf{k}\) 変化（加速） & \(\neq 0\)
-& 因果的 \\
+& 因果的 & A, B \\
 \end{longtable}
 }
 

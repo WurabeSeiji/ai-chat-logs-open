@@ -44,11 +44,6 @@ Details of specific mechanisms:
 - Mass acquisition mechanism for $W^{\pm}$ and $Z^0$ bosons (details of indirect coupling not mediated by spatial axes)
 - Mass acquisition mechanism for 1st- and 2nd-generation fermions (details of indirect coupling when the non-zero axis of the standing wave is not directly shared)
 
-Items adopted as assumptions in this paper, with geometric derivation deferred to subsequent papers:
-
-- Geometric derivation of the sign of $\delta k_H$ (coupling in the cancellation direction; adopted as an assumption in S8.2)
-- Geometric derivation of the $k_{s_0}$ sign reversal in $W^-$ coupling (adopted as an additional assumption in S6.5)
-
 **Note on physical nomenclature**: This paper uses physical names (photon, graviton, electron, flavor, color charge, etc.) assuming correspondence with Table A of [4], but this is for interpretive convenience; the geometric content of each proposition does not depend on the physical identification. All propositions are derived solely from the component structure of wave vectors ($\kappa$, $k_t$, type of axis).
 
 ---
@@ -250,7 +245,7 @@ By conservation law (I2), the dynamic state $\Delta\mathbf{k}_\gamma$ of the sph
 
 ## S5 Strong Interaction and Confinement
 
-### S5.1 $Q$-Axis Transition and the 2-Bit Structure of Color Charge
+### S5.1 $Q$-Axis Transition and the 3-Bit Structure of Color Charge
 
 The gluon $g = (0, 0, 0, 0, 0, Q_i \to Q_j)$ is defined as a transition on the $Q$ axis. By condition (I1), the displacement transfer acts only in the $Q$-axis direction:
 
@@ -258,16 +253,12 @@ $$\delta\mathbf{k}_g: \quad Q \;\longrightarrow\; Q'$$
 
 The spatial, temporal, and $R$ components of the direction-constrained wave do not change. Only the discrete label $Q$ changes.
 
-In Table A of [4], $Q$ is a 4-valued discrete label encoded as 2 bits $(c_2, c_3)$:
+In Table A of [4], $Q$ is encoded as 3 bits $(c_1, c_2, c_3)$:
 
-$$Q = 2c_2 + c_3 \in \{0, 1, 2, 3\} \quad (c_i \in \{0, 1\})$$
+- $c_2 c_3$: Color charge ($00$ = no color, $01, 10, 11$ = three colors)
+- $c_1$: Weak isospin
 
-- $Q = 0$ ($c_2 c_3 = 00$): Zero $Q$-axis component, i.e., orthogonal to the $Q$ axis (no color charge, lepton type)
-- $Q \in \{1, 2, 3\}$ ($c_2 c_3 \in \{01, 10, 11\}$): Three colors of color charge (quark type)
-
-Weak isospin is not encoded in the $Q$ axis but is independently defined as the sign of the $t$ axis ($\mathrm{sign}(k_t)$; see S6). The $Q$ axis and the $t$ axis are mutually orthogonal, independent degrees of freedom.
-
-The $Q$ transition of gluons is a change among non-zero $Q$ values ($\{1, 2, 3\}$), corresponding to color charge exchange. This yields $3 \times 3 - 1 = 8$ independent gluons (the $-1$ corresponds to the exclusion of the $Q = 0$ color-neutral mode).
+The $Q$ transition of gluons is a change of the $c_2 c_3$ bits, corresponding to color charge exchange. The three non-zero values of $c_2 c_3$ ($01, 10, 11$) yield $3 \times 3 - 1 = 8$ independent gluons.
 
 ### S5.2 Absorption: $q + g \to q'$
 
@@ -335,7 +326,7 @@ $W^{\pm} = (0, 0, 0, \pm t, 0, 0)$ is a spherical wave with a non-zero component
 
 $$\delta\mathbf{k}_W: \quad k_t \;\longrightarrow\; k_t' = k_t + \delta k_t$$
 
-The change in the $t$-axis component corresponds to the conversion between up-type ($k_t > 0$) and down-type ($k_t < 0$) in Table A of [4]. Weak isospin is encoded as the sign of the $t$ axis, and $W^{\pm}$ inverts this sign. The $Q$ axis (color charge) is an independent degree of freedom orthogonal to the $t$ axis and does not change under interaction with $W^{\pm}$.
+The change in the $t$-axis component corresponds to the conversion between up-type ($k_t > 0$) and down-type ($k_t < 0$) in Table A of [4]. Simultaneously, the $c_1$ bit (weak isospin) of the $Q$ axis also changes. $c_1$ and $\mathrm{sign}(k_t)$ are independent degrees of freedom, and $W^{\pm}$ mediates both. The $c_2 c_3$ bits (color charge) of the $Q$ axis are independent degrees of freedom orthogonal to the $t$ axis and $c_1$, and are conserved under interactions with $W^{\pm}$.
 
 The $t$-axis displacement by $W^{\pm}$ acts as a sign inversion when $k_t$ is non-zero in both the initial and final states (quark system, S6.2--6.3). When the transition involves $k_t = 0$ (lepton system), axis reconfiguration accompanying $\kappa = 2$ preservation occurs (S6.7).
 
@@ -343,21 +334,21 @@ The $t$-axis displacement by $W^{\pm}$ acts as a sign inversion when $k_t$ is no
 
 Transformation of a direction-constrained wave by $W^+$ absorption:
 
-$$\underbrace{(k_x, 0, 0, -k_t, 0, Q)}_{\text{down-type}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, 0, +k_t, 0, Q)}_{\text{up-type}}$$
+$$\underbrace{(k_x, 0, 0, -k_t, 0, Q_d)}_{\text{down-type}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, 0, +k_t, 0, Q_u)}_{\text{up-type}}$$
 
-$W^+$ ceases to exist as an independent wave, and the sign of the $t$ axis of the direction-constrained wave is inverted ($-k_t \to +k_t$). $Q$ (color charge) is conserved.
+$W^+$ ceases to exist as an independent wave, the sign of the $t$ axis of the direction-constrained wave is inverted ($-k_t \to +k_t$), and the $c_1$ bit transitions $0 \to 1$ ($Q_d \to Q_u$). Color charge $c_2 c_3$ is conserved.
 
 ### S6.3 Emission: $f \to f' + W$
 
 By Proposition 3.1 (reversibility), emission is defined as the reverse process of absorption:
 
-$$\underbrace{(k_x, 0, 0, +k_t, 0, Q)}_{\text{up-type}} \;\longrightarrow\; \underbrace{(k_x, 0, 0, -k_t, 0, Q)}_{\text{down-type}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+}$$
+$$\underbrace{(k_x, 0, 0, +k_t, 0, Q_u)}_{\text{up-type}} \;\longrightarrow\; \underbrace{(k_x, 0, 0, -k_t, 0, Q_d)}_{\text{down-type}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+}$$
 
-The flavor of the direction-constrained wave changes from up-type to down-type, and $W^+$ is newly created as an independent wave. By conservation law (I2), the change in the $t$-axis component is emitted as $W^+$.
+The flavor of the direction-constrained wave changes from up-type to down-type ($t$-axis sign inversion, $c_1: 1 \to 0$), and $W^+$ is newly created as an independent wave. By conservation law (I2), the change in the $t$-axis component is emitted as $W^+$.
 
-**Orthogonality of the $Q$ axis and the $t$ axis**: In the revised version of [4], weak isospin is not encoded in the $Q$ axis but is independently defined as the sign $\mathrm{sign}(k_t)$ of the $t$ axis. The $Q$ axis encodes only color charge as a 2-bit structure (S5.1) and is orthogonal to the $t$ axis. Therefore, interactions with $W^{\pm}$ change only the $t$-axis component, and $Q$ (color charge) is conserved. (I1) requires displacement transfer only along the non-zero axis of the spherical wave (the $t$ axis), and the invariance of the $Q$ axis is a direct consequence of this condition.
+**Independence of $Q$-axis color charge and the $t$ axis**: In Table A of [4], the $Q$ axis is encoded as 3 bits $(c_1, c_2, c_3)$, where $c_1$ represents weak isospin and $c_2 c_3$ represents color charge (S5.1). $c_1$ and the sign of the $t$ axis $\mathrm{sign}(k_t)$ are independent degrees of freedom, and $W^{\pm}$ changes both simultaneously (S6.5). On the other hand, $c_2 c_3$ (color charge) is an independent degree of freedom orthogonal to the $t$ axis and $c_1$, and (I1) requires displacement transfer only along the non-zero axis of the spherical wave (the $t$ axis), so color charge $c_2 c_3$ is conserved under interactions with $W^{\pm}$.
 
-**Proposition 6.1**: Interactions with $W^{\pm}$ (both absorption and emission) change only the $t$-axis component (flavor) of the direction-constrained wave. The $Q$ axis (color charge) is an independent degree of freedom orthogonal to the $t$ axis and is conserved under interactions with $W^{\pm}$.
+**Proposition 6.1**: Interactions with $W^{\pm}$ (both absorption and emission) change the $t$-axis component (flavor) and the $c_1$ bit (weak isospin) of the $Q$ axis of the direction-constrained wave. The $c_2 c_3$ bits (color charge) of the $Q$ axis are independent degrees of freedom orthogonal to the $t$ axis and $c_1$, and are conserved under interactions with $W^{\pm}$.
 
 ### S6.4 $W$ Decay and Inverse Decay
 
@@ -377,29 +368,26 @@ A direction-constrained wave and an anti-direction-constrained wave are annihila
 
 ### S6.5 Chirality Selection Rule
 
-For the chirality $\chi = \mathrm{sign}(k_{s_0} \cdot k_t)$ ($k_{s_0}$: non-zero spatial component) defined in Definition 6.1 of [3], the $t$-axis structure of $W^{\pm}$ imposes a coupling condition with specific chirality.
+For the chirality $\chi = \mathrm{sign}(k_{s_0} \cdot k_t)$ ($k_{s_0}$: non-zero spatial component) defined in Definition 6.1 of [3], we derive the coupling condition of $W^{\pm}$. In Table A of [4], the $c_1$ bit of the $Q$ axis encodes weak isospin and is an independent degree of freedom from the $t$ axis. $W^{\pm}$ mediates the change of the $t$ axis and the transition of $c_1$ respectively:
 
-$W^{\pm} = (0, 0, 0, \pm t, 0, 0)$ has phase structure only on the $t$ axis. We derive the coupling condition by directly computing the chirality of the initial state in each case.
+- $W^+$: $c_1 = 0 \to 1$ (down-type $\to$ up-type)
+- $W^-$: $c_1 = 1 \to 0$ (up-type $\to$ down-type)
 
-**Case of $W^+$ absorption**: $W^+ + \psi_d \to \psi_u$. The initial-state down-type fermion is $\psi_d = (k_{s_0}, 0, 0, -|k_t|)$ ($k_t < 0$). For coupling to occur, the $t$ component of $W^+$ ($+$) and the $t$ component of the direction-constrained wave ($-|k_t|$) must have opposite signs. Therefore, the initial state is restricted to $k_t < 0$. The chirality of the initial state is:
+Using the isospin sign $(-1)^{c_1}$ of $c_1$, chirality is reformulated as:
 
-$$\chi(\psi_d) = \mathrm{sign}(k_{s_0} \cdot k_t) = \mathrm{sign}(k_{s_0} \cdot (-|k_t|)) = -\mathrm{sign}(k_{s_0})$$
+$$\chi = \mathrm{sign}((-1)^{c_1} \cdot k_t)$$
 
-Since $k_{s_0} > 0$ (convention of Table A in [4]), $\chi(\psi_d) = -1$.
+**Case of $W^+$ absorption**: $W^+ + \psi_d \to \psi_u$. The initial state is down-type ($c_1 = 0$, $k_t < 0$):
 
-**Case of $W^-$ absorption**: $W^- + \psi_u \to \psi_d$. The initial-state up-type fermion is $\psi_u = (k_{s_0}, 0, 0, +|k_t|)$ ($k_t > 0$). The condition that the $t$ component of $W^-$ ($-$) and the $t$ component of the direction-constrained wave ($+|k_t|$) have opposite signs is satisfied. The chirality of the initial state is:
+$$\chi(\psi_d) = \mathrm{sign}((-1)^0 \cdot (-|k_t|)) = \mathrm{sign}((+1) \cdot (-)) = -1$$
 
-$$\chi(\psi_u) = \mathrm{sign}(k_{s_0} \cdot k_t) = \mathrm{sign}(k_{s_0} \cdot (+|k_t|)) = \mathrm{sign}(k_{s_0})$$
+**Case of $W^-$ absorption**: $W^- + \psi_u \to \psi_d$. The initial state is up-type ($c_1 = 1$, $k_t > 0$):
 
-If $k_{s_0} > 0$ (convention of Table A in [4]), then $\chi(\psi_u) = +1$ (right-handed), and $\chi = -1$ is not directly derived as in the $W^+$ case.
+$$\chi(\psi_u) = \mathrm{sign}((-1)^1 \cdot (+|k_t|)) = \mathrm{sign}((-1) \cdot (+)) = -1$$
 
-**Additional assumption** ($k_{s_0}$ sign reversal): $W^+$ and $W^-$ form an antisymmetric pair on the $t$ axis ($+t$, $-t$). We assume that, corresponding to this $t$-axis antisymmetry, the wave vectors of the coupling partners are also inverted in the $(k_{s_0}, k_t)$ plane: $W^+$ couples to the region $(k_{s_0} > 0,\; k_t < 0)$, while $W^-$ couples to the region $(k_{s_0} < 0,\; k_t > 0)$. Under this assumption, the coupling partner of $W^-$ is restricted to $k_{s_0} < 0$, yielding:
+In both cases, $\chi = -1$ (left-handed) is derived without additional assumptions. Because $c_1$ and $k_t$ are independent degrees of freedom that distinguish $W^+$ and $W^-$, there is no need to assume sign reversal of $k_{s_0}$.
 
-$$\chi = \mathrm{sign}((-) \cdot (+)) = -1$$
-
-The geometric derivation of this $k_{s_0}$ sign reversal is outside the scope of this paper (see S1).
-
-**Proposition 6.3**: For $W^+$, the opposite-sign condition on $t$-axis phase directly derives that the chirality of the initial state is $\chi = -1$ (left-handed). For $W^-$, $\chi = -1$ likewise holds under the additional assumption of $k_{s_0}$ sign reversal based on $t$-axis antisymmetry. Right-handed ($\chi = +1$) direction-constrained waves do not couple to $W^{\pm}$.
+**Proposition 6.3**: The coupling condition of $W^{\pm}$ is determined by the sign of the product of the isospin sign $(-1)^{c_1}$ of the initial state and $k_t$. For both $W^+$ ($c_1: 0 \to 1$) and $W^-$ ($c_1: 1 \to 0$), $\chi = -1$ (left-handed) holds, and right-handed ($\chi = +1$) direction-constrained waves do not couple to $W^{\pm}$.
 
 ### S6.6 CP Violation
 
@@ -409,18 +397,18 @@ As shown in Proposition 6.4 of [3], CP symmetry can only be violated in interact
 
 ### S6.7 Axis Reconfiguration in the Lepton System
 
-The $W^{\pm}$ absorption and emission described in S6.2--6.3 treated the sign inversion of $k_t$ (where $k_t \neq 0$ in both initial and final states). This is the typical process for the quark system ($Q \neq 0$). In the lepton system ($Q = 0$), the axis configurations of charged leptons and neutrinos differ qualitatively, so the action of $W^{\pm}$ involves axis reconfiguration.
+The $W^{\pm}$ absorption and emission described in S6.2--6.3 treated the sign inversion of $k_t$ (where $k_t \neq 0$ in both initial and final states). This is the typical process for the quark system ($c_2 c_3 \neq 00$). In the lepton system ($c_2 c_3 = 00$), the axis configurations of charged leptons and neutrinos differ qualitatively, so the action of $W^{\pm}$ involves axis reconfiguration.
 
-In Table A of [4], fermions ($\kappa = 2$) with $Q = 0$ (orthogonal to the $Q$ axis) have the following two types of axis configurations:
+In Table A of [4], fermions ($\kappa = 2$) with $c_2 c_3 = 00$ (no color charge) have the following two types of axis configurations:
 
-| Type | Non-zero axes | $k_t$ | Example |
-|------|--------------|-------|---------|
-| Charged lepton | 1 spatial axis + $t$ | $\neq 0$ | $e^-: (k_x, 0, 0, k_t, 0, 0)$ |
-| Neutrino | 2 spatial axes | $= 0$ | $\nu: (k_{s_1}, 0, k_{s_2}, 0, 0, 0)$ |
+| Type | Non-zero axes | $k_t$ | $c_1$ | $Q$ | Example |
+|------|--------------|-------|-------|-----|---------|
+| Charged lepton | 1 spatial axis + $t$ | $\neq 0$ | 1 | 4 | $e^-: (k_x, 0, 0, k_t, 0, 4)$ |
+| Neutrino | 2 spatial axes | $= 0$ | 0 | 0 | $\nu: (k_{s_1}, 0, k_{s_2}, 0, 0, 0)$ |
 
 Charged lepton $\to$ neutrino conversion by $W^+$ absorption:
 
-$$\underbrace{(k_x, 0, 0, k_t, 0, 0)}_{\substack{\text{charged lepton} \\ \kappa = 2:\; (s, t)}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{neutrino} \\ \kappa = 2:\; (s, s)}}$$
+$$\underbrace{(k_x, 0, 0, k_t, 0, 4)}_{\substack{\text{charged lepton} \\ \kappa = 2:\; (s, t),\; c_1 = 1}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{neutrino} \\ \kappa = 2:\; (s, s),\; c_1 = 0}}$$
 
 This process cannot be fully described by (I1) alone. (I1) requires displacement along the non-zero axis of $W^+$ (the $t$ axis) and permits the transition $k_t \to 0$. However, the transition to $k_t = 0$ reduces the number of non-zero axes from $\kappa = 2$ to $\kappa = 1$, so the stability condition for $\kappa = 2$ (Theorem 5.1 of [3]) demands compensatory activation of a spatial axis.
 
@@ -431,13 +419,13 @@ That is, the action of $W^{\pm}$ on the lepton system is determined as the simul
 
 Reverse process (neutrino $\to$ charged lepton conversion):
 
-$$\underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{neutrino} \\ \kappa = 2:\; (s, s)}} + \underbrace{(0, 0, 0, -, 0, 0)}_{W^-} \;\longrightarrow\; \underbrace{(k_x, 0, 0, k_t, 0, 0)}_{\substack{\text{charged lepton} \\ \kappa = 2:\; (s, t)}}$$
+$$\underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{neutrino} \\ \kappa = 2:\; (s, s),\; c_1 = 0}} + \underbrace{(0, 0, 0, -, 0, 0)}_{W^-} \;\longrightarrow\; \underbrace{(k_x, 0, 0, k_t, 0, 4)}_{\substack{\text{charged lepton} \\ \kappa = 2:\; (s, t),\; c_1 = 1}}$$
 
 $W^-$ supplies a $t$-axis component ($0 \to k_t$), and $\kappa = 2$ preservation requires that one of the spatial axes ($k_{s_2}$) becomes deactivated.
 
 **Proposition 6.5**: The action of $W^{\pm}$ on the lepton system is described as the simultaneous satisfaction of $t$-axis displacement (I1) and $\kappa = 2$ preservation. The conversion between charged leptons (1 spatial axis + $t$) and neutrinos (2 spatial axes) preserves $\kappa = 2$ through the interchange of $t$-axis and spatial-axis components.
 
-**Remark 6.1**: The choice of which spatial axis is activated (or deactivated) in the axis reconfiguration is not uniquely determined by $\kappa = 2$ preservation alone. For example, from $e^-: (k_x, 0, 0, k_t)$, a neutrino generated by $W^+$ absorption could be either $(k_x, k_y, 0, 0)$ or $(k_x, 0, k_z, 0)$, both satisfying $\kappa = 2$. This degree of freedom may constitute the geometric origin of neutrino mixing (a structure corresponding to the PMNS matrix), but its elucidation is outside the scope of this paper.
+**Remark 6.1**: The choice of which spatial axis is activated (or deactivated) in the axis reconfiguration is not uniquely determined by $\kappa = 2$ preservation alone. For example, from $e^-: (k_x, 0, 0, k_t, 0, 4)$, a neutrino generated by $W^+$ absorption could be either $(k_x, k_y, 0, 0, 0, 0)$ or $(k_x, 0, k_z, 0, 0, 0)$, both satisfying $\kappa = 2$. This degree of freedom may constitute the geometric origin of neutrino mixing (a structure corresponding to the PMNS matrix), but its elucidation is outside the scope of this paper.
 
 ---
 
@@ -504,7 +492,7 @@ The propagation speed of a direction-constrained wave without coupling is $v = k
 
 $$k_{s_0} \;\longrightarrow\; k_{s_0}^{\text{eff}} = k_{s_0} - \delta k_H$$
 
-where $\delta k_H > 0$ is proportional to the coupling strength with the standing wave. **Sign assumption**: The positivity of $\delta k_H$ (the direction of reducing the effective spatial component) is adopted as an assumption in this paper. The physical motivation is a picture in which the background phase structure of the standing wave overlaps in antiphase with the spatial phase of the direction-constrained wave and couples in the cancellation direction, but the geometric derivation of this sign choice is deferred to a subsequent paper (see S1). The propagation speed after coupling is:
+where $\delta k_H > 0$ is proportional to the coupling strength with the standing wave. The sign of $\delta k_H$ (the direction of reducing the effective spatial component) is derived from the properties of the standing wave. The standing wave has $\kappa = 1$, $k_t = 0$, and possesses no temporal phase propagation. A wave without propagation phase cannot advance in phase with a propagating wave, and coupling can only act in the cancellation direction of the spatial phase. Furthermore, the standing wave fills the entire $S^3$ as a fundamental mode oscillation, so direction-constrained waves cannot propagate while avoiding the standing wave background. Therefore, for direction-constrained waves sharing the $z$ axis, coupling in the cancellation direction is the unique and inevitable consequence. The propagation speed after coupling is:
 
 $$v^{\text{eff}} = \frac{k_{s_0}^{\text{eff}}}{k_t} = \frac{k_{s_0} - \delta k_H}{k_t} < \frac{k_{s_0}}{k_t} = v$$
 
@@ -621,7 +609,7 @@ The main results of this paper are summarized:
 
 4. **Strong interaction**: Gluons mediate $Q$-axis transitions and exchange color charge. Absorption, emission, pair annihilation, pair creation are systematically described. The color neutrality condition provides the origin of confinement, and asymptotic freedom holds inside the set (S5).
 
-5. **Weak interaction**: $W^{\pm}$ mediates $t$-axis displacement (flavor conversion). In the quark system, this acts as a sign inversion of $k_t$; in the lepton system, the simultaneous satisfaction of $t$-axis displacement and $\kappa = 2$ preservation produces axis reconfiguration between charged leptons and neutrinos. In addition to absorption and emission, $W$ decay and inverse decay are unified as Type D/C. $k_t \neq 0$ provides the origin of CP violation and the left-handed chirality selection rule (S6).
+5. **Weak interaction**: $W^{\pm}$ mediates $t$-axis displacement and $c_1$ (weak isospin) transition simultaneously. In the quark system, this acts as a sign inversion of $k_t$ (and $c_1: 0 \leftrightarrow 1$); in the lepton system, the simultaneous satisfaction of $t$-axis displacement and $\kappa = 2$ preservation produces axis reconfiguration between charged leptons and neutrinos. In addition to absorption and emission, $W$ decay and inverse decay are unified as Type D/C. $k_t \neq 0$ provides the origin of CP violation and the left-handed chirality selection rule (S6).
 
 6. **Gravitational interaction**: The graviton acts on both $(t, R)$ axes and couples to all waves with $\Delta\mathbf{k} \neq 0$ (universal coupling). Absorption and emission are systematically described (S7).
 
