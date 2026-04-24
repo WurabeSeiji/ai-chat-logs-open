@@ -31,6 +31,8 @@ The vertex coordinates of the 5-dimensional hypercube are denoted by $(x_1, x_2,
 
 The 6th axis $Q$ is not a geometric coordinate but a discrete label value associated with each state. Its range is the 8 values $\{0, 1, 2, 3, 4, 5, 6, 7\}$. These 8 values possess a 3-bit structure, encoded as $Q = 4c_1 + 2c_2 + c_3$ ($c_i \in \{0, 1\}$). The addition of the $Q$ axis does not change the combinatorial structure (number of vertices, edges, faces, etc.) of the hypercube.
 
+**Open problem**. The choice of $2^3 = 8$ values for the range of the $Q$ axis is an external assumption based on consistency with the Standard Model in §9 (an example of interpretation). While the $\pm 1$ symmetry of central projection suggests that the number of $Q$-axis states should be a power of $2$, an internal derivation of why it is $2^3 = 8$ rather than $2^2 = 4$ or $2^4 = 16$ has not yet been achieved.
+
 ### 1.2 Element Counts of the $k$-Dimensional Hypercube
 
 Let $f_j(k)$ denote the number of $j$-dimensional faces ($j$-faces) of the $k$-dimensional hypercube. We present the element counts starting from low dimensions so that the reader can verify the general formula.
