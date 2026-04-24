@@ -404,7 +404,7 @@ This table shows particles only. Antifermions are obtained by sign inversion of 
 
 | Particle   | Symbol      |  $s$  | Set $(x, y, z, t, R, Q)$       |  $n$  | Mass (MeV) |
 | :--------- | :---------- | :---: | :----------------------------- | :---: | :--------: |
-| Higgs      | $H^0$       |   0   | Any 1 axis of $xyzt$ nonzero   |   0   |  125,250   |
+| Higgs      | $H^0$       |   0   | $(0, 0, +, 0, 0, 0)$           |   0   |  125,250   |
 | $W$ boson  | $W^+$       |   1   | $(0, 0, 0, +, 0, 0)$           |   1   |   80,379   |
 | $W$ boson  | $W^-$       |   1   | $(0, 0, 0, -, 0, 0)$           |   1   |   80,379   |
 | Photon     | $\gamma$    |   1   | $(0, 0, 0, 0, +, 0)$           |   1   |     0      |
@@ -412,7 +412,9 @@ This table shows particles only. Antifermions are obtained by sign inversion of 
 | Gluon      | $g_1$–$g_8$ |   1   | $(0, 0, 0, 0, 0, Q_i \to Q_j)$ |   1   |     0      |
 | Graviton   | $G$         |   2   | $(0, 0, 0, \pm, \pm, 0)$       |   2   |     0      |
 
-**Verification**: Higgs: $k = 1$ (bosonic type), $n = 0$, $s = 0$ $\checkmark$. $W$: $k = 1$ (bosonic type), $t$ nonzero so $n = 1$, $s = 1$ $\checkmark$. Photon: $k = 0$ (bosonic type), $R$ nonzero so $n = 1$, $s = 1$ $\checkmark$. Gluon: $k = 0$ (bosonic type), $Q$-transition so $n = 1$, $s = 1$ $\checkmark$. Graviton: $k = 0$ (bosonic type), $t, R$ nonzero so $n = 2$, $s = 2$ $\checkmark$.
+**Verification**: Higgs: $z$ axis only nonzero, $k = 1$ (bosonic type), $n = 0$, $s = 0$ $\checkmark$. $W$: $k = 1$ (bosonic type), $t$ nonzero so $n = 1$, $s = 1$ $\checkmark$. Photon: $k = 0$ (bosonic type), $R$ nonzero so $n = 1$, $s = 1$ $\checkmark$. Gluon: $k = 0$ (bosonic type), $Q$-transition so $n = 1$, $s = 1$ $\checkmark$. Graviton: $k = 0$ (bosonic type), $t, R$ nonzero so $n = 2$, $s = 2$ $\checkmark$.
+
+**Selection of the $z$ axis for the Higgs**: The nonzero axis of the Higgs boson involves an interpretive degree of freedom in choosing 1 axis from the 4 axes $xyzt$. For consistency with the generation labels (generation 1: $x$, generation 2: $y$, generation 3: $z$), the $z$ axis (3rd generation) is selected. This choice is consistent with the fact that 3rd-generation fermions (top: $172{,}760$ MeV) have the largest mass, provided the coupling strength depends on the overlap along shared spatial axes (see §9.11.7).
 
 **Leptons**:
 
@@ -517,7 +519,9 @@ $$M(\sigma) \sim f\!\left(\sum |x_i|,\, R,\, Q\right)$$
 
 cannot be excluded.
 
-**Speculation that $v_1 \gg v_2$**: While the mass of the Higgs boson ($k = 1$, 1 nonzero axis, $v_1$) is $125{,}250$ MeV, the majority of fermions ($k = 2$, 2 nonzero axes, $v_2$) are far lighter (electron $0.511$ MeV, neutrinos $< 10^{-6}$ MeV). If the above dimensional analysis speculation is correct, then $v_1 \gg v_2$ must hold, suggesting that the coordinate value for the case of only 1 nonzero axis is substantially larger than that for 2 nonzero axes.
+**Speculation that $v_1 \gg v_2$**: While the mass of the Higgs boson ($k = 1$, $z$ axis only nonzero, $v_1$) is $125{,}250$ MeV, the majority of fermions ($k = 2$, 2 nonzero axes, $v_2$) are far lighter (electron $0.511$ MeV, neutrinos $< 10^{-6}$ MeV). If the above dimensional analysis speculation is correct, then $v_1 \gg v_2$ must hold, suggesting that the coordinate value for the case of only 1 nonzero axis is substantially larger than that for 2 nonzero axes.
+
+**Inter-generation mass hierarchy**: The assignment of the Higgs boson's nonzero axis to $z$ (the 3rd-generation axis) provides a structural indication for the mass differences among generations within the $v_2$ range. 3rd-generation fermions ($z$ axis nonzero) directly share a spatial axis with the Higgs standing wave and therefore have the strongest coupling, while 1st-generation ($x$ axis) and 2nd-generation ($y$ axis) fermions lack a shared axis and are limited to indirect coupling. This is consistent with the empirical hierarchy $m_3 \gg m_{1,2}$ (top $172{,}760$ MeV $\gg$ charm $1{,}270$ MeV, up $2.16$ MeV). However, since the $x$ and $y$ axes are locally equivalent under $\mathrm{SO}(3)$ symmetry, the difference $m_2 \neq m_1$ cannot be derived within this framework. The quantitative derivation of mass ratios remains an open problem.
 
 **Relation to the problem of undiscovered $k = 3, 4$ states**: States with 3 or 4 nonzero axes among $xyzt$ ($k = 3, 4$) are derived from this model as bosonic type ($k \neq 2$), but no known particles in Table A correspond to them. If the values $v_3, v_4$ corresponding to these states are extremely small (or near zero), the energy scale of the corresponding particles may exceed the current experimental reach. Conversely, if $v_3, v_4$ are extremely large, the corresponding particles may not be physically realized due to stability issues. In either case, the fact that $k = 3, 4$ states remain undiscovered is likely closely related to the value structure of the $xyzt$ axes.
 
@@ -543,9 +547,14 @@ A correspondence is suggested between the 8 values (3-bit structure) of the $Q$ 
 
 How generation mixing (CKM matrix, PMNS matrix) is derived as the breaking of $S_3$ symmetry of the $xyz$ axes is an open problem.
 
-**9.11.7 Higgs mechanism**
+**9.11.7 Higgs mechanism and generation mass hierarchy**
 
-The Higgs boson corresponds to only 1 nonzero axis among $xyzt$ ($k = 1$), but how spontaneous symmetry breaking by the Higgs field is understood within this framework is a task for future work.
+The Higgs boson corresponds to only the $z$ axis being nonzero ($k = 1$, Table A: $(0, 0, +, 0, 0, 0)$). The $z$ axis is the label axis for the 3rd generation (top, bottom, tau), and this assignment has the following consistency:
+
+- Since the coupling strength to the Higgs depends on the overlap along shared spatial axes, 3rd-generation fermions with nonzero $z$ axis have the strongest coupling and acquire the largest mass (top: $172{,}760$ MeV).
+- 1st-generation ($x$ axis) and 2nd-generation ($y$ axis) fermions do not share the Higgs's primary oscillation axis, resulting in weaker coupling and lighter mass.
+
+How spontaneous symmetry breaking by the Higgs field is understood within this framework remains a task for future work, but the selection of the $z$ axis provides a geometric explanation for the inter-generation mass hierarchy ($m_3 \gg m_{1,2}$).
 
 **9.11.8 Complete derivation of charge values**
 

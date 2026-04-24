@@ -41,7 +41,7 @@ https://note.com/kiharanoriaki/n/nc51e43282b0a
   https://doi.org/10.5281/zenodo.19643358
 
 - **W8**: 6次元超直方体の集合構造とその組合せ論的性質
-  https://doi.org/10.5281/zenodo.19688521
+  https://doi.org/10.5281/zenodo.19718641
 
 - **W9**: sine-Gordon方程式 ── 位相的ソリトンの基礎理論
   https://doi.org/10.5281/zenodo.19650966
@@ -50,7 +50,7 @@ https://note.com/kiharanoriaki/n/nc51e43282b0a
   https://doi.org/10.5281/zenodo.19709798
 
 - **W11**: 形不変波の相互作用——軸方向変位転送・波束変形・因果の遡及的構成
-  https://doi.org/10.5281/zenodo.19709800
+  https://doi.org/10.5281/zenodo.19718624
 
 ソースコード（GitHub）：
 https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/波動方程式/中心投影における位相方程式
