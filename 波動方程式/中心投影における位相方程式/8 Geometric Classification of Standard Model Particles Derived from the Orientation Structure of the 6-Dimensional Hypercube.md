@@ -25,11 +25,11 @@ In the main body (§1–§8), we assert only the mathematical structure of this 
 The 6-dimensional structure treated in this paper is defined as follows.
 
 - **Geometric structure**: The combinatorial structure of the 5-dimensional hypercube (vertices, edges, faces, 3-cells, 4-facets, 5-cell body)
-- **Label axis**: An 8-valued discrete label axis $Q \in \{0, 1, 2, 3, 4, 5, 6, 7\}$
+- **Label axis**: A 4-valued discrete label axis $Q \in \{0, 1, 2, 3\}$
 
 The vertex coordinates of the 5-dimensional hypercube are denoted by $(x_1, x_2, x_3, x_4, x_5)$, where each coordinate **takes arbitrary real values**. When a specific proposition imposes conditions on coordinate values within the set-theoretic structure, such conditions are declared locally within that proposition.
 
-The 6th axis $Q$ is not a geometric coordinate but a discrete label value associated with each state. Its range is the 8 values $\{0, 1, 2, 3, 4, 5, 6, 7\}$. These 8 values possess a 3-bit structure, encoded as $Q = 4c_1 + 2c_2 + c_3$ ($c_i \in \{0, 1\}$). The addition of the $Q$ axis does not change the combinatorial structure (number of vertices, edges, faces, etc.) of the hypercube.
+The 6th axis $Q$ is not a geometric coordinate but a discrete label value associated with each state. Its range is the 4 values $\{0, 1, 2, 3\}$. These 4 values possess a 2-bit structure, encoded as $Q = 2c_2 + c_3$ ($c_2, c_3 \in \{0, 1\}$). $Q = 0$ means the state has zero $Q$-axis component, i.e., is orthogonal to the $Q$ axis. The addition of the $Q$ axis does not change the combinatorial structure (number of vertices, edges, faces, etc.) of the hypercube.
 
 ### 1.2 Element Counts of the $k$-Dimensional Hypercube
 
@@ -144,12 +144,11 @@ For the $Q$ axis, symbols representing the range of values are used similarly.
 
 |   Symbol   | Meaning              | Value of $Q$                                        |
 | :--------: | :------------------- | :-------------------------------------------------- |
-|    $0$     | Zero label           | $Q = 0$                                             |
-|  $1$–$7$   | Specified discrete value | $Q$ is the specified integer value                |
-| $\bar{Q}$  | Anti-label           | $Q \to (Q + 4) \bmod 8$ ($Q = 0$ is invariant)     |
-|    $*$     | Arbitrary            | $Q \in \{0, 1, 2, 3, 4, 5, 6, 7\}$ (any value)    |
+|    $0$     | Zero label (orthogonal to $Q$ axis) | $Q = 0$                               |
+|  $1$–$3$   | Specified discrete value | $Q$ is the specified integer value                |
+|    $*$     | Arbitrary            | $Q \in \{0, 1, 2, 3\}$ (any value)                 |
 
-The 8 values of $Q$ have a 3-bit structure $(c_1, c_2, c_3)$. The $c_1$ bit (the most significant bit of $Q$: whether $Q \geq 4$) and the 2 bits $c_2 c_3$ ($Q \bmod 4$) encode two independent discrete degrees of freedom. The physical interpretation is treated in §9.2.
+The 4 values of $Q$ have a 2-bit structure $(c_2, c_3)$. $Q = 0$ ($c_2 = c_3 = 0$) represents a state with zero $Q$-axis component, orthogonal to the $Q$ axis. The 3 nonzero states ($c_2 c_3 \in \{01, 10, 11\}$) have nonzero $Q$-axis components. The physical interpretation is treated in §9.2.
 
 **Remark**. Set codes are not coordinate values themselves, but symbols specifying the **conditions** that coordinate values must satisfy. As stated in §1.1, coordinate values in this model can take arbitrary real values, but in specific propositions or set-theoretic structures, the range constraints listed above are imposed on the coordinate values of the relevant axes.
 
@@ -190,15 +189,11 @@ The possible values of $n$ are $0, 1, 2$ for the fermionic type and $0, 1, 2, 3$
 
 ## 3. Enumeration of $Q$ Label Transitions
 
-We consider transitions among the 7 nonzero values $\{1, 2, 3, 4, 5, 6, 7\}$ of the 8 values of the $Q$ axis. Transitions are described by ordered pairs $(Q_\text{initial}, Q_\text{final})$.
+We consider transitions among the 3 nonzero values $\{1, 2, 3\}$ of the 4 values of the $Q$ axis. $Q = 0$ represents a state orthogonal to the $Q$ axis and does not participate in transitions on the $Q$ axis. Transitions are described by ordered pairs $(Q_\text{initial}, Q_\text{final})$.
 
-Based on the 3-bit structure $(c_1, c_2, c_3)$, transitions are classified into 2 types.
+Based on the 2-bit structure $(c_2, c_3)$, the ordered pairs among the 3 nonzero values $c_2 c_3 \in \{01, 10, 11\}$ number $3 \times 3 = 9$ (including 3 diagonal elements).
 
-**$c_2 c_3$ transitions**: Transitions in which the lower 2 bits $c_2 c_3$ change. The ordered pairs among the 3 nonzero values $\{01, 10, 11\}$ of $c_2 c_3$ number $3 \times 3 = 9$ (including 3 diagonal elements).
-
-**$c_1$ transitions**: Transitions in which only the most significant bit $c_1$ changes. These are transitions between $c_1 \in \{0, 1\}$, and for each of the 4 values of $c_2 c_3$ ($00, 01, 10, 11$), there exist 2 directions: $0 \to 1$ and $1 \to 0$. Therefore the number of $c_1$ transitions is $4 \times 2 = 8$.
-
-**Remark**. The operation of extracting independent transition states from the 9 $c_2 c_3$ transitions (e.g., removing the linear combination of diagonal elements) depends on representation-theoretic structure and is therefore not performed in the main body. The physical interpretation of the number of independent states is treated in §9.3.
+**Remark**. The operation of extracting independent transition states from the 9 transitions (e.g., removing the linear combination of diagonal elements) depends on representation-theoretic structure and is therefore not performed in the main body. The physical interpretation of the number of independent states is treated in §9.3.
 
 ---
 
@@ -212,14 +207,13 @@ The states with exactly 1 nonzero element among $\{t, R, Q\text{-transition}\}$ 
 | :------------------------ | :------------------------------------------------- | :---------------------------------: |
 | $t$                       | $(0, 0, 0, \pm, 0, 0)$                             | 2 (2 choices of sign $\pm$) |
 | $R$                       | $(0, 0, 0, 0, \pm, 0)$                             | 2 (2 choices of sign $\pm$) |
-| $Q$-transition ($c_2 c_3$) | $(0, 0, 0, 0, 0, Q_\text{initial} \to Q_\text{final})$ |      9 (by §3)       |
-| $Q$-transition ($c_1$)     | $(0, 0, 0, 0, 0, Q_\text{initial} \to Q_\text{final})$ |      8 (by §3)       |
+| $Q$-transition             | $(0, 0, 0, 0, 0, Q_\text{initial} \to Q_\text{final})$ |      9 (by §3)       |
 
-**Total**: $t$-fixed 2 states + $R$-fixed 2 states + $c_2 c_3$ transition 9 states + $c_1$ transition 8 states = **21 states**.
+**Total**: $t$-fixed 2 states + $R$-fixed 2 states + $Q$-transition 9 states = **13 states**.
 
 When only $t$ among $xyzt$ is nonzero ($k = 1$), the state is also bosonic type and includes spin 1 states where $t$ contributes to the count of $n$.
 
-**Remark**. The extraction of independent states from the 9 $c_2 c_3$ transition states (reduction $9 \to 8$) and the correspondence to physical gauge bosons are treated in §9.3–§9.4.
+**Remark**. The extraction of independent states from the 9 $Q$-transition states (reduction $9 \to 8$) and the correspondence to physical gauge bosons are treated in §9.3–§9.4.
 
 ---
 
@@ -282,15 +276,15 @@ The physical interpretation of $P$ (correspondence with the directionality of fo
 
 ## 8. Conclusion of the Main Body
 
-In this paper, we defined a 6-dimensional structure obtained by adding an 8-valued discrete label axis $Q$ to a 5-dimensional hypercube, and derived the following combinatorial properties from its set-theoretic structure.
+In this paper, we defined a 6-dimensional structure obtained by adding a 4-valued discrete label axis $Q$ to a 5-dimensional hypercube, and derived the following combinatorial properties from its set-theoretic structure.
 
 1. **Element counts of the hypercube** (§1.2): The number of $j$-dimensional faces of the $k$-dimensional hypercube is $f_j(k) = \binom{k}{j} \cdot 2^{k-j}$. For $k = 5$: 32 vertices, 80 edges, 80 square faces, 40 cubic cells, 10 hypercubes.
 2. **Complete symmetry of the 5 axes** (Proposition 1.1): The 5 geometric axes are all equivalent in combinatorial structure, and any axis permutation gives an automorphism of the hypercube.
 3. **Notational labels for axes** (Definition 1.2): The notational labels $x, y, z, t, R$ are assigned to the 5 axes.
-4. **Rigorous definition of set codes** (§1.3.3): Range constraints on each axis are expressed using the 5 symbols $+, -, 0, \pm, *$. The $Q$ axis has 8 values (3-bit structure).
+4. **Rigorous definition of set codes** (§1.3.3): Range constraints on each axis are expressed using the 5 symbols $+, -, 0, \pm, *$. The $Q$ axis has 4 values (2-bit structure). $Q = 0$ represents a state orthogonal to the $Q$ axis.
 5. **Definition of spin** (Definition 2.1): The fermionic type ($k = 2$) and bosonic type ($k \neq 2$) are determined by the number $k$ of nonzero axes among the 4 axes $xyzt$, and the spin is defined as $s = n + 1/2$ or $s = n$ from the number $n$ of nonzero elements among $\{R, Q\text{-transition}\}$ (fermionic type) or $\{t, R, Q\text{-transition}\}$ (bosonic type).
-6. **Enumeration of $Q$ label transitions** (§3): $c_2 c_3$ transitions (9 cases) and $c_1$ transitions (8 cases) based on the 3-bit structure.
-7. **Enumeration of spin 1 sets** (§4): $t$-fixed 2 states + $R$-fixed 2 states + $c_2 c_3$ transition 9 states + $c_1$ transition 8 states = 21 states.
+6. **Enumeration of $Q$ label transitions** (§3): Transitions among nonzero $Q$ values $\{1, 2, 3\}$ yield $3 \times 3 = 9$ cases. $Q = 0$ (orthogonal to the $Q$ axis) does not participate in transitions.
+7. **Enumeration of spin 1 sets** (§4): $t$-fixed 2 states + $R$-fixed 2 states + $Q$-transition 9 states = 13 states.
 8. **3 types of spin 2 sets** (§5): $tR, tQ, RQ$ — 3 types.
 9. **1 type of spin 3 sets** (§6): $tRQ$ — 1 type.
 10. **Sign product** (Definition 7.1, Proposition 7.1): The sign product $P = (-1)^{|\{i : \sigma_i < 0\}|}$ is defined from the number of negative-sign axes among $t, R$, and the possible values of $P$ (unique or both values) are classified for each spin type.
@@ -312,34 +306,32 @@ As stated in §1.3.2, the 5 axes are all equivalent in combinatorial structure; 
 - $x_1, x_2, x_3 \to xyz$: 3-dimensional spatial axes
 - $x_4 \to t$: Time axis
 - $x_5 \to R$: Spatial scale axis (an axis connecting the subjective coordinate system with the spatial scale of the 6-dimensional structure)
-- $Q$: Gauge symmetry axis (discrete encoding of $\mathrm{SU}(3)_C \times \mathrm{SU}(2)_L$)
+- $Q$: Color charge axis (discrete encoding of $\mathrm{SU}(3)_C$). $Q = 0$ represents a state orthogonal to the $Q$ axis (no color charge).
 
-**Initial symmetry of $xyzt$**: By Proposition 1.1, the 4 axes $xyzt$ are completely equivalent in the initial state. The process by which one of these axes separates as "time" in observation is interpreted as spontaneous symmetry breaking. This symmetry breaking gives rise to the distinction between charged particles ($t$ axis nonzero) and neutral particles ($t$ axis zero).
+**Initial symmetry of $xyzt$**: By Proposition 1.1, the 4 axes $xyzt$ are completely equivalent in the initial state. The process by which one of these axes separates as "time" in observation is interpreted as spontaneous symmetry breaking. This symmetry breaking causes the sign of the $t$ axis to encode weak isospin up/down ($t > 0$: up-type, $t < 0$: down-type, $t = 0$: neutral).
 
-### 9.2 Correspondence Between the 8 Values of the $Q$ Axis and Gauge Symmetry
+**Initial symmetry of $xyz$ and generations**: The 3 spatial axes $xyz$ are also completely equivalent in the initial state under $\mathrm{SO}(3)$ symmetry. The 3 generations of fermions are indistinguishable under this initial symmetry and all have the same mass. When the Higgs boson takes a nonzero component along 1 of the $xyz$ axes, the $\mathrm{SO}(3)$ symmetry is spontaneously broken, resulting in inter-generation mass differences. In this paper, the axis along which the Higgs takes its nonzero component is denoted post hoc as $z$, and the fermions that couple to the $z$ axis are called "3rd generation." The generation labels (1st, 2nd, 3rd) are concepts determined post hoc as a result of the $\mathrm{SO}(3)$ symmetry breaking and have no meaning in the initial state (see §9.11.7).
 
-The 8 values of the $Q$ axis consist of 3 bits $(c_1, c_2, c_3)$. These 3 bits encode 2 gauge degrees of freedom.
+### 9.2 Correspondence Between the 4 Values of the $Q$ Axis and Color Charge
 
-| $Q$ | $(c_1, c_2, c_3)$ | $c_2 c_3$ (color) | $c_1$ (weak isospin) | Correspondence       |
-| :-: | :----------------: | :----------------: | :-------------------: | :------------------- |
-|  0  |     (0, 0, 0)     |   00 (colorless)   |       0 (down)        | Lepton (neutral)     |
-|  1  |     (0, 0, 1)     |   01 (color 1)     |       0 (down)        | Quark (down-type, color 1) |
-|  2  |     (0, 1, 0)     |   10 (color 2)     |       0 (down)        | Quark (down-type, color 2) |
-|  3  |     (0, 1, 1)     |   11 (color 3)     |       0 (down)        | Quark (down-type, color 3) |
-|  4  |     (1, 0, 0)     |   00 (colorless)   |       1 (up)          | Lepton (charged)     |
-|  5  |     (1, 0, 1)     |   01 (color 1)     |       1 (up)          | Quark (up-type, color 1) |
-|  6  |     (1, 1, 0)     |   10 (color 2)     |       1 (up)          | Quark (up-type, color 2) |
-|  7  |     (1, 1, 1)     |   11 (color 3)     |       1 (up)          | Quark (up-type, color 3) |
+The 4 values of the $Q$ axis consist of 2 bits $(c_2, c_3)$ and encode the $\mathrm{SU}(3)_C$ color charge. Weak isospin up/down is carried by the sign of the $t$ axis, and the $Q$ axis and $t$ axis are completely independent (orthogonal) degrees of freedom.
 
-Particles with $c_2 c_3 = 00$ correspond to leptons (no color charge), and particles with $c_2 c_3 \neq 00$ correspond to quarks (with color charge). $c_1$ encodes the up/down weak isospin.
+| $Q$ | $(c_2, c_3)$ | Color charge           | Correspondence       |
+| :-: | :-----------: | :--------------------- | :------------------- |
+|  0  |    (0, 0)    | Colorless (orthogonal to $Q$ axis) | Lepton, Boson |
+|  1  |    (0, 1)    | Color 1                | Quark (color 1)      |
+|  2  |    (1, 0)    | Color 2                | Quark (color 2)      |
+|  3  |    (1, 1)    | Color 3                | Quark (color 3)      |
 
-Antiparticles correspond to the transformation $Q \to (Q + 4) \bmod 8$ (inversion of the $c_1$ bit), accompanied by sign inversion of the spatial axes.
+Particles with $Q = 0$ are in a state orthogonal to the $Q$ axis and carry no color charge (leptons and all bosons). Particles with $Q \neq 0$ correspond to quarks (with color charge). The distinction of weak isospin is carried by the sign of the $t$ axis ($t > 0$: up-type, $t < 0$: down-type, $t = 0$: neutral).
+
+Antiparticles correspond to sign inversion of the spatial axes ($x, y, z$). The $Q$ value and the sign of the $t$ axis remain unchanged.
 
 ### 9.3 Correspondence to the 8 Gluon States
 
-Of the 9 $c_2 c_3$ transitions enumerated in §3, removing the linear combination of one diagonal element (the state proportional to the color singlet $r\bar{r} + g\bar{g} + b\bar{b}$ in $\mathrm{SU}(3)$), the **8 independent states are mapped to gluons $g_1, \ldots, g_8$**.
+Of the 9 $Q$ transitions enumerated in §3, removing the $Q = 0$ mode (the color-neutral mode orthogonal to the $Q$ axis, corresponding to the color singlet $r\bar{r} + g\bar{g} + b\bar{b}$ in $\mathrm{SU}(3)$), the **8 independent states are mapped to gluons $g_1, \ldots, g_8$**.
 
-This reduction $9 - 1 = 8$ originates from the adjoint representation of the Lie algebra $\mathfrak{su}(3)$ of $\mathrm{SU}(3)$ (the decomposition $3 \otimes \bar{3} = 1 \oplus 8$). While 9 transition pairs are derived from the combinatorics of this model (§3), the operation of removing 1 state to obtain 8 depends on the representation-theoretic interpretation. The non-abelian structure constants $f^{abc}$ of $\mathrm{SU}(3)$ are not derived from this model.
+This reduction $9 - 1 = 8$ is naturally understood from the orthogonality of $Q = 0$. $Q = 0$ is a state orthogonal to the $Q$ axis and does not carry color charge, so it is not counted as an independent gluon. This structure is consistent with the adjoint representation of the Lie algebra $\mathfrak{su}(3)$ of $\mathrm{SU}(3)$ (the decomposition $3 \otimes \bar{3} = 1 \oplus 8$). The non-abelian structure constants $f^{abc}$ of $\mathrm{SU}(3)$ are not derived from this model.
 
 ### 9.4 Correspondence to Gauge Bosons
 
@@ -349,12 +341,10 @@ Among the spin 1 sets enumerated in §4, the correspondence to Standard Model ga
 | :----------------- | :------------------------- | :--------------: |
 | $t$                | $W^+, W^-$                 |        2         |
 | $R$                | $\gamma, Z^0$              |        2         |
-| $Q$ ($c_2 c_3$ transition, §9.3) | $g_1, \ldots, g_8$ |        8         |
+| $Q$-transition (§9.3) | $g_1, \ldots, g_8$      |        8         |
 | **Total**          |                            |      **12**      |
 
-The 2 states of the $W$ boson ($t = +1, -1$) correspond to the positive and negative electric charges, while $\gamma$ and $Z^0$ correspond to the sign of the $R$ axis ($+$ vs $-$). The total of 12 matches the number of gauge boson states in the Standard Model: $\gamma + g \times 8 + W^+ + W^- + Z^0 = 12$.
-
-The 8 states of $c_1$ transitions (§3) can be interpreted as another aspect of weak isospin transitions mediated by $W$ bosons, but their counting as independent particle states is treated in §9.10.
+The 2 states of the $W$ boson ($t = +1, -1$) mediate weak isospin transitions (up-type $\leftrightarrow$ down-type), while $\gamma$ and $Z^0$ correspond to the sign of the $R$ axis ($+$ vs $-$). The total of 12 matches the number of gauge boson states in the Standard Model: $\gamma + g \times 8 + W^+ + W^- + Z^0 = 12$. The fact that the $W$ boson acts only on the $t$ axis and not on the $Q$ axis is consistent with the orthogonality between the $Q$ axis and the $t$ axis.
 
 ### 9.5 Interpretation of Spin 2 Sets
 
@@ -391,14 +381,14 @@ Similarly, the $t$ and $R$ types of spin 1 admit both $P = \pm 1$ configurations
 
 | Force           | Mediator      | Involved axes                                           | Coupling characteristics |
 | :-------------- | :------------ | :------------------------------------------------------ | :----------------------- |
-| Strong force    | $g_1$–$g_8$  | $Q$ axis ($c_2 c_3$ color transitions, 8 channels, §9.3) | Only between particles with color charge |
-| Weak force      | $W^\pm, Z^0$ | $t$ axis + $Q$ axis ($c_1$ transitions)                  | All fermions             |
+| Strong force    | $g_1$–$g_8$  | $Q$ axis (color transitions, 8 channels, §9.3)           | Only between particles with color charge ($Q \neq 0$) |
+| Weak force      | $W^\pm, Z^0$ | $t$ axis (weak isospin transitions)                      | All fermions             |
 | Electromagnetic | $\gamma$      | $R$ axis                                                 | Between particles with nonzero electric charge |
 | Gravity         | $G$           | $t, R$, both axes nonzero ($n = 2$)                      | All particles ($Q$-independent) |
 
 ### 9.9 Table A: Correspondence Between Confirmed Particles and 6-Dimensional Sets
 
-This table shows particles only. Antifermions are obtained by sign inversion of spatial axes and $Q \to (Q + 4) \bmod 8$, yielding 24 states: 6 antileptons + 18 antiquarks. For bosons, particle-antiparticle pairs such as $W^+/W^-$ are explicitly listed in the table; $\gamma, Z^0, H^0, G$, and gluons are self-conjugate.
+This table shows particles only. Antifermions are obtained by sign inversion of spatial axes ($x, y, z$); the $Q$ value and the sign of the $t$ axis remain unchanged. This yields 24 states: 6 antileptons + 18 antiquarks. For bosons, particle-antiparticle pairs such as $W^+/W^-$ are explicitly listed in the table; $\gamma, Z^0, H^0, G$, and gluons are self-conjugate.
 
 **Bosons**:
 
@@ -414,45 +404,45 @@ This table shows particles only. Antifermions are obtained by sign inversion of 
 
 **Verification**: Higgs: $z$ axis only nonzero, $k = 1$ (bosonic type), $n = 0$, $s = 0$ $\checkmark$. $W$: $k = 1$ (bosonic type), $t$ nonzero so $n = 1$, $s = 1$ $\checkmark$. Photon: $k = 0$ (bosonic type), $R$ nonzero so $n = 1$, $s = 1$ $\checkmark$. Gluon: $k = 0$ (bosonic type), $Q$-transition so $n = 1$, $s = 1$ $\checkmark$. Graviton: $k = 0$ (bosonic type), $t, R$ nonzero so $n = 2$, $s = 2$ $\checkmark$.
 
-**Selection of the $z$ axis for the Higgs**: The nonzero axis of the Higgs boson involves an interpretive degree of freedom in choosing 1 axis from the 4 axes $xyzt$. For consistency with the generation labels (generation 1: $x$, generation 2: $y$, generation 3: $z$), the $z$ axis (3rd generation) is selected. This choice is consistent with the fact that 3rd-generation fermions (top: $172{,}760$ MeV) have the largest mass, provided the coupling strength depends on the overlap along shared spatial axes (see §9.11.7).
+**Higgs axis selection and generations**: The nonzero axis of the Higgs boson is chosen from the 3 spatial axes $xyz$. In the initial state, $xyz$ are equivalent under $\mathrm{SO}(3)$ symmetry, so this selection corresponds to spontaneous symmetry breaking (see §9.1). The axis chosen by the Higgs is denoted post hoc as $z$, and the fermions that couple to it are called "3rd generation." Generation labels are determined post hoc as a result of $\mathrm{SO}(3)$ symmetry breaking and have no meaning in the initial state. Empirically, 3rd-generation fermions (top: $172{,}760$ MeV) have the largest mass, consistent with the interpretation that coupling strength depends on the overlap along shared spatial axes (see §9.11.7).
 
 **Leptons**:
 
 | Particle            | Symbol     |  $s$  | Generation | Set                   |  $Q$  | Mass (MeV)  |
 | :------------------ | :--------- | :---: | :--------: | :-------------------- | :---: | :---------- |
-| Electron            | $e^-$      |  1/2  |     1      | $(+, 0, 0, +, 0, 4)$  |   4   | 0.511       |
+| Electron            | $e^-$      |  1/2  |     1      | $(+, 0, 0, -, 0, 0)$  |   0   | 0.511       |
 | Electron neutrino   | $\nu_e$    |  1/2  |     1      | $(+, +, 0, 0, 0, 0)$  |   0   | $< 10^{-6}$ |
-| Muon                | $\mu^-$    |  1/2  |     2      | $(0, +, 0, +, 0, 4)$  |   4   | 105.66      |
+| Muon                | $\mu^-$    |  1/2  |     2      | $(0, +, 0, -, 0, 0)$  |   0   | 105.66      |
 | Muon neutrino       | $\nu_\mu$  |  1/2  |     2      | $(0, +, +, 0, 0, 0)$  |   0   | $< 0.17$    |
-| Tau                 | $\tau^-$   |  1/2  |     3      | $(0, 0, +, +, 0, 4)$  |   4   | 1,776.9     |
+| Tau                 | $\tau^-$   |  1/2  |     3      | $(0, 0, +, -, 0, 0)$  |   0   | 1,776.9     |
 | Tau neutrino        | $\nu_\tau$ |  1/2  |     3      | $(+, 0, +, 0, 0, 0)$  |   0   | $< 15.5$    |
 
-**Verification**: Electron: $x, t$ are nonzero among $xyzt$, so $k = 2$ (fermionic type); $\{R, Q\text{-transition}\}$ are both not applicable ($R = 0$, $Q = 4$ is a static label, not a transition), so $n = 0$, $s = 0 + 1/2 = 1/2$ $\checkmark$. Neutrino: $x, y$ are nonzero, so $k = 2$ (fermionic type), $n = 0$, $s = 1/2$ $\checkmark$.
+**Verification**: Electron: $x, t$ are nonzero among $xyzt$, so $k = 2$ (fermionic type); $\{R, Q\text{-transition}\}$ are both not applicable ($R = 0$, $Q = 0$ is a static state orthogonal to the $Q$ axis, not a transition), so $n = 0$, $s = 0 + 1/2 = 1/2$ $\checkmark$. Neutrino: $x, y$ are nonzero, so $k = 2$ (fermionic type), $n = 0$, $s = 1/2$ $\checkmark$.
 
-**Characteristics of charged leptons**: The $t$ axis is nonzero, with $Q = 4$ ($c_1 = 1, c_2 c_3 = 00$; weak isospin up, colorless). Neutrinos have $t = 0$, $Q = 0$, with only 2 spatial axes among $xyzt$ being nonzero.
+**Characteristics of charged leptons**: The $t$ axis is nonzero ($t < 0$, weak isospin down-type), with $Q = 0$ (orthogonal to the $Q$ axis, colorless). Neutrinos have $t = 0$ (neutral), $Q = 0$, with only 2 spatial axes among $xyzt$ being nonzero.
 
 **Distinction of generations**: For charged leptons, 1 nonzero spatial axis and the $t$ axis satisfy $k = 2$; for neutrinos, 2 spatial axes satisfy $k = 2$. The generation label is determined by the nonzero spatial axes (generation 1: $x$, generation 2: $y$, generation 3: $z$).
 
 **Generation correspondence rule**: In the lepton doublet $\{\ell^-_n, \nu_n\}$ of the same generation, one of the 2 nonzero spatial axes of $\nu_n$ coincides with the nonzero spatial axis of $\ell^-_n$. The choice of the remaining axis is an interpretive degree of freedom; this paper adopts a cyclic assignment (generation 1: $xy$, generation 2: $yz$, generation 3: $xz$).
 
-Antileptons correspond to sign inversion of spatial axes and $Q \to (Q + 4) \bmod 8$ ($e^+$: $Q = 4 \to 0$).
+Antileptons correspond to sign inversion of spatial axes ($x, y, z$). The $Q$ value and the sign of the $t$ axis remain unchanged ($e^+$: $(-, 0, 0, -, 0, 0)$).
 
 **Quarks**:
 
 | Particle | Symbol |  $s$  | Generation | Set                         |  $Q$  | Mass (MeV) |
 | :------- | :----- | :---: | :--------: | :-------------------------- | :---: | :--------- |
-| Up       | $u$    |  1/2  |     1      | $(+, 0, 0, +, 0, 5/6/7)$   | 5,6,7 | 2.16       |
+| Up       | $u$    |  1/2  |     1      | $(+, 0, 0, +, 0, 1/2/3)$   | 1,2,3 | 2.16       |
 | Down     | $d$    |  1/2  |     1      | $(+, 0, 0, -, 0, 1/2/3)$   | 1,2,3 | 4.67       |
-| Charm    | $c$    |  1/2  |     2      | $(0, +, 0, +, 0, 5/6/7)$   | 5,6,7 | 1,270      |
+| Charm    | $c$    |  1/2  |     2      | $(0, +, 0, +, 0, 1/2/3)$   | 1,2,3 | 1,270      |
 | Strange  | $s$    |  1/2  |     2      | $(0, +, 0, -, 0, 1/2/3)$   | 1,2,3 | 93.4       |
-| Top      | $t$    |  1/2  |     3      | $(0, 0, +, +, 0, 5/6/7)$   | 5,6,7 | 172,760    |
+| Top      | $t$    |  1/2  |     3      | $(0, 0, +, +, 0, 1/2/3)$   | 1,2,3 | 172,760    |
 | Bottom   | $b$    |  1/2  |     3      | $(0, 0, +, -, 0, 1/2/3)$   | 1,2,3 | 4,180      |
 
-**Verification**: Up quark: $x, t$ are nonzero among $xyzt$, so $k = 2$ (fermionic type); $Q = 5$ is a static label (not a transition), so $n = 0$, $s = 0 + 1/2 = 1/2$ $\checkmark$.
+**Verification**: Up quark: $x, t$ are nonzero among $xyzt$, so $k = 2$ (fermionic type); $Q = 1$ is a static label (not a transition), so $n = 0$, $s = 0 + 1/2 = 1/2$ $\checkmark$.
 
-**Characteristics of quarks**: All quarks have the $t$ axis nonzero. Up-type quarks ($u, c, t$) have $t > 0$ with $Q \in \{5, 6, 7\}$ ($c_1 = 1$; weak isospin up, colored). Down-type quarks ($d, s, b$) have $t < 0$ with $Q \in \{1, 2, 3\}$ ($c_1 = 0$; weak isospin down, colored). The sign of the $t$ axis reflects the sign structure of the electric charge.
+**Characteristics of quarks**: All quarks have the $t$ axis nonzero, with $Q \in \{1, 2, 3\}$ (colored). Up-type quarks ($u, c, t$) have $t > 0$ (weak isospin up-type). Down-type quarks ($d, s, b$) have $t < 0$ (weak isospin down-type). The sign of the $t$ axis reflects the weak isospin up/down and the sign structure of the electric charge.
 
-Each quark has 3 color states corresponding to the color values of $Q$ ($c_2 c_3 \in \{01, 10, 11\}$). Antiquarks correspond to sign inversion of spatial axes and $Q \to (Q + 4) \bmod 8$.
+Each quark has 3 color states corresponding to the color values of $Q$ ($c_2 c_3 \in \{01, 10, 11\}$). Antiquarks correspond to sign inversion of spatial axes ($x, y, z$). The $Q$ value and the sign of the $t$ axis remain unchanged.
 
 **Summary**:
 
@@ -463,13 +453,13 @@ Each quark has 3 color states corresponding to the color values of $Q$ ($c_2 c_3
 | Gauge boson ($R$ type)           |   1   |        0         |              2               |           $\gamma, Z^0$               |
 | Gluon ($Q$-transition type)     |   1   |    Transition    |              8               |         $g_1, \ldots, g_8$            |
 | Graviton ($tR$ type)            |   2   |        0         |              1               |          $G$ (beyond SM)              |
-| Lepton                           |  1/2  |     0 or 4       |              6               |                   6                   |
-| Antilepton                       |  1/2  |     0 or 4       |              6               |                   6                   |
-| Quark                            |  1/2  | 1,2,3 or 5,6,7   |             18               |                  18                   |
-| Antiquark                        |  1/2  | 1,2,3 or 5,6,7   |             18               |                  18                   |
+| Lepton                           |  1/2  |        0         |              6               |                   6                   |
+| Antilepton                       |  1/2  |        0         |              6               |                   6                   |
+| Quark                            |  1/2  |      1,2,3       |             18               |                  18                   |
+| Antiquark                        |  1/2  |      1,2,3       |             18               |                  18                   |
 | **Subtotal**                     |       |                  |           **62**             |          **62 (61 + G)**              |
 
-The 62 states map to 61 Standard Model states + 1 graviton. The excess color singlet state in the previous model ($Q = 4$ values) has been resolved by the extension to $Q = 8$ values.
+The 62 states map to 61 Standard Model states + 1 graviton. The 4-value (2-bit) structure of the $Q$ axis naturally realizes the separation between $Q = 0$ (colorless states orthogonal to the $Q$ axis) and $Q \in \{1, 2, 3\}$ (3 color states).
 
 In addition to the above, combinations with $s = 3/2, 2, 5/2, 3$ (Table B, §9.10) are derived from this model, but no known particles in the Standard Model correspond to them.
 
@@ -485,11 +475,11 @@ Listed below are the states derived from the combinatorial structure of this mod
 | $RQ$ type |   2   |   2   | $(0, 0, 0, 0, \pm, Q_i \to Q_j)$         | $2 \times N_Q$ |
 | $tRQ$ type|   3   |   3   | $(0, 0, 0, \pm, \pm, Q_i \to Q_j)$       | $4 \times N_Q$ |
 
-Here $N_Q$ is the number of $Q$ transition states: $c_2 c_3$ transition 9 states + $c_1$ transition 8 states = 17 (§3). Under the interpretation of §9.3 where $c_2 c_3$ transitions are reduced $9 \to 8$, $N_Q = 16$.
+Here $N_Q$ is the number of $Q$ transition states: transitions among the 3 nonzero $Q$ values $\{1, 2, 3\}$ yield $3 \times 3 = 9$ cases (§3). Under the interpretation of §9.3 where the color singlet is removed, $N_Q = 8$.
 
 **Fermions (number of nonzero axes among $xyzt$: $k = 2$, excluding combinations included in Table A)**:
 
-With the extension to $Q = 8$ values, the number of fermionic-type combinations increases substantially. Choosing 2 axes from $xyzt$: $\binom{4}{2} = 6$ ways $\times$ signs of each axis $2^2 = 4$ ways $\times$ 8 $Q$ values $= 6 \times 4 \times 8 = 192$ fermionic states exist. Of these, the 48 states mapped in Table A (6 leptons + 6 antileptons + 18 quarks + 18 antiquarks) are subtracted, leaving the remainder as unassigned states.
+Choosing 2 axes from $xyzt$: $\binom{4}{2} = 6$ ways $\times$ signs of each axis $2^2 = 4$ ways $\times$ 4 $Q$ values $= 6 \times 4 \times 4 = 96$ fermionic states exist. Of these, the 48 states mapped in Table A (6 leptons + 6 antileptons + 18 quarks + 18 antiquarks) are subtracted, leaving the remainder as unassigned states.
 
 Higher-spin fermions (with $R$ axis or $Q$-transition nonzero, $n \geq 1$):
 
@@ -513,7 +503,7 @@ What is structurally established is only that $v_1 \neq v_2 \neq v_3 \neq v_4$ i
 
 $$M(\sigma) \sim \sum_{i \in \{x, y, z, t\}} |x_i|$$
 
-may serve as the origin of mass. However, how the $R$ axis (spatial scale axis) and $Q$ axis (gauge symmetry axis) contribute to this metric is undetermined, and a more general form including $R, Q$,
+may serve as the origin of mass. However, how the $R$ axis (spatial scale axis) and $Q$ axis (color charge axis) contribute to this metric is undetermined, and a more general form including $R, Q$,
 
 $$M(\sigma) \sim f\!\left(\sum |x_i|,\, R,\, Q\right)$$
 
@@ -521,17 +511,17 @@ cannot be excluded.
 
 **Speculation that $v_1 \gg v_2$**: While the mass of the Higgs boson ($k = 1$, $z$ axis only nonzero, $v_1$) is $125{,}250$ MeV, the majority of fermions ($k = 2$, 2 nonzero axes, $v_2$) are far lighter (electron $0.511$ MeV, neutrinos $< 10^{-6}$ MeV). If the above dimensional analysis speculation is correct, then $v_1 \gg v_2$ must hold, suggesting that the coordinate value for the case of only 1 nonzero axis is substantially larger than that for 2 nonzero axes.
 
-**Inter-generation mass hierarchy**: The assignment of the Higgs boson's nonzero axis to $z$ (the 3rd-generation axis) provides a structural indication for the mass differences among generations within the $v_2$ range. 3rd-generation fermions ($z$ axis nonzero) directly share a spatial axis with the Higgs standing wave and therefore have the strongest coupling, while 1st-generation ($x$ axis) and 2nd-generation ($y$ axis) fermions lack a shared axis and are limited to indirect coupling. This is consistent with the empirical hierarchy $m_3 \gg m_{1,2}$ (top $172{,}760$ MeV $\gg$ charm $1{,}270$ MeV, up $2.16$ MeV). However, since the $x$ and $y$ axes are locally equivalent under $\mathrm{SO}(3)$ symmetry, the difference $m_2 \neq m_1$ cannot be derived within this framework. The quantitative derivation of mass ratios remains an open problem.
+**Inter-generation mass hierarchy**: When the Higgs boson takes a nonzero component along 1 of the $xyz$ axes, the $\mathrm{SO}(3)$ symmetry is spontaneously broken, and the fermions coupling to that axis acquire the largest mass. This "chosen axis" is denoted post hoc as $z$, and the fermions coupling to it are called "3rd generation" (see §9.1). The remaining 2 axes ($x$, $y$), corresponding to the 1st and 2nd generations, do not share the Higgs's primary oscillation axis and are limited to indirect coupling, resulting in lighter mass. This is consistent with the empirical hierarchy $m_3 \gg m_{1,2}$ (top $172{,}760$ MeV $\gg$ charm $1{,}270$ MeV, up $2.16$ MeV). However, since the $x$ and $y$ axes are locally equivalent under $\mathrm{SO}(3)$ symmetry, the difference $m_2 \neq m_1$ cannot be derived within this framework. The quantitative derivation of mass ratios remains an open problem.
 
 **Relation to the problem of undiscovered $k = 3, 4$ states**: States with 3 or 4 nonzero axes among $xyzt$ ($k = 3, 4$) are derived from this model as bosonic type ($k \neq 2$), but no known particles in Table A correspond to them. If the values $v_3, v_4$ corresponding to these states are extremely small (or near zero), the energy scale of the corresponding particles may exceed the current experimental reach. Conversely, if $v_3, v_4$ are extremely large, the corresponding particles may not be physically realized due to stability issues. In either case, the fact that $k = 3, 4$ states remain undiscovered is likely closely related to the value structure of the $xyzt$ axes.
 
 **9.11.2 The $Q = 0$ constraint and free particles**
 
-$Q = 0$ signifies neutrality on the gauge symmetry axis. As an interpretation, the constraint that only particles with $Q = 0$ are observable as free particles is conceivable. This can be interpreted as the geometric origin of quark confinement (particles with $Q \neq 0$ are not observed individually).
+$Q = 0$ represents a state orthogonal to the $Q$ axis, carrying no color charge. As an interpretation, the constraint that only particles with $Q = 0$ are observable as free particles is conceivable. This can be interpreted as the geometric origin of quark confinement (particles with $Q \neq 0$ are not observed individually).
 
 **9.11.3 Predictions of undiscovered particles**
 
-With the extension of the $Q$ axis from 4 to 8 values, the number of combinatorial states derived from this model has increased substantially. These combinations beyond the 62 states of Table A are to be examined in future research as either (a) predictions of undiscovered particles, (b) physically unrealized combinations (existence of selection rules), or (c) limitations of this interpretation.
+The combinatorial states derived from this model that exceed the 62 states of Table A are to be examined in future research as either (a) predictions of undiscovered particles, (b) physically unrealized combinations (existence of selection rules), or (c) limitations of this interpretation.
 
 In particular, higher-spin fermions ($s = 3/2, 5/2$) and additional bosons ($tQ$ type, $RQ$ type spin 2; $tRQ$ type spin 3) have no counterparts among known particles.
 
@@ -541,7 +531,7 @@ Deriving the known particle mass ratios from the set-theoretic structure of this
 
 **9.11.5 Derivation of gauge groups**
 
-A correspondence is suggested between the 8 values (3-bit structure) of the $Q$ axis and $\mathrm{SU}(3)_C \times \mathrm{SU}(2)_L$, and between the continuous scale of the $R$ axis and $\mathrm{U}(1)_Y$, but the rigorous mechanism for the transition from discrete structure to continuous gauge groups remains unproven.
+A correspondence is suggested between the 4 values (2-bit structure) of the $Q$ axis and $\mathrm{SU}(3)_C$, between the sign of the $t$ axis and $\mathrm{SU}(2)_L$, and between the continuous scale of the $R$ axis and $\mathrm{U}(1)_Y$, but the rigorous mechanism for the transition from discrete structure to continuous gauge groups remains unproven.
 
 **9.11.6 CKM matrix and PMNS matrix**
 
@@ -549,12 +539,14 @@ How generation mixing (CKM matrix, PMNS matrix) is derived as the breaking of $S
 
 **9.11.7 Higgs mechanism and generation mass hierarchy**
 
-The Higgs boson corresponds to only the $z$ axis being nonzero ($k = 1$, Table A: $(0, 0, +, 0, 0, 0)$). The $z$ axis is the label axis for the 3rd generation (top, bottom, tau), and this assignment has the following consistency:
+The Higgs boson takes a nonzero component along 1 of the 3 spatial axes $xyz$ ($k = 1$, Table A: $(0, 0, +, 0, 0, 0)$). As stated in §9.1, in the initial state $xyz$ are completely equivalent under $\mathrm{SO}(3)$ symmetry, so the choice of axis is a post hoc selection resulting from spontaneous symmetry breaking. In this paper, the axis chosen by the Higgs is denoted $z$.
 
-- Since the coupling strength to the Higgs depends on the overlap along shared spatial axes, 3rd-generation fermions with nonzero $z$ axis have the strongest coupling and acquire the largest mass (top: $172{,}760$ MeV).
-- 1st-generation ($x$ axis) and 2nd-generation ($y$ axis) fermions do not share the Higgs's primary oscillation axis, resulting in weaker coupling and lighter mass.
+The Higgs's selection of the $z$ axis yields:
 
-How spontaneous symmetry breaking by the Higgs field is understood within this framework remains a task for future work, but the selection of the $z$ axis provides a geometric explanation for the inter-generation mass hierarchy ($m_3 \gg m_{1,2}$).
+- Fermions with nonzero $z$ axis have the strongest coupling to the Higgs and acquire the largest mass (called "3rd generation"; empirically, top: $172{,}760$ MeV, etc.)
+- Fermions with nonzero $x$ or $y$ axis do not share the Higgs's primary oscillation axis, resulting in weaker coupling and lighter mass (1st and 2nd generations)
+
+In this way, generation labels and the mass hierarchy $m_3 \gg m_{1,2}$ emerge post hoc as a result of the spontaneous breaking of the initial symmetry. The dynamical mechanism of spontaneous symmetry breaking by the Higgs field within this framework remains a task for future work.
 
 **9.11.8 Complete derivation of charge values**
 
@@ -564,15 +556,15 @@ The sign of the electric charge can be read from the sign of the $t$ axis, and t
 
 This section presented one example of mapping the mathematical properties of the 6-dimensional structure defined and derived in §1–§8 to the particle classification of the Standard Model.
 
-1. The 8 values (3-bit structure) of the $Q$ axis discretely encode the $\mathrm{SU}(3)_C \times \mathrm{SU}(2)_L$ gauge symmetry.
+1. The 4 values (2-bit structure) of the $Q$ axis discretely encode the $\mathrm{SU}(3)_C$ color charge, and the sign of the $t$ axis encodes the $\mathrm{SU}(2)_L$ weak isospin. The $Q$ axis and $t$ axis are completely independent (orthogonal) degrees of freedom.
 2. From the initial symmetry of the 4 axes $xyzt$, the definition of spin arises naturally (fermion: $k = 2$; boson: $k \neq 2$).
 3. 62 states can be mapped to known particles of the Standard Model (61 + graviton).
-4. Of the 9 $c_2 c_3$ transitions, the 8 states remaining after removing the color singlet correspond to gluons (the reduction $9 \to 8$ depends on $\mathrm{SU}(3)$ representation theory).
+4. Of the 9 $Q$ transitions, the 8 states remaining after removing the $Q = 0$ mode (color singlet orthogonal to the $Q$ axis) correspond to gluons (the reduction $9 \to 8$ depends on $\mathrm{SU}(3)$ representation theory).
 5. The 12 states of spin 1 sets correspond to the gauge bosons of the Standard Model.
-6. Charged fermions have the $t$ axis nonzero, and the sign of the electric charge corresponds to the sign of $t$.
-7. The $Q = 0$ constraint can be interpreted as the geometric origin of quark confinement.
+6. Charged fermions have the $t$ axis nonzero, and the sign of $t$ reflects the weak isospin up/down (up-type: $t > 0$, down-type: $t < 0$).
+7. The $Q = 0$ constraint (state orthogonal to the $Q$ axis) can be interpreted as the geometric origin of quark confinement.
 8. The value structure of the $xyzt$ axes (4 types of positive integer values) may contain the origin of the mass hierarchy.
-9. Higher-spin states and surplus states accompanying the extension to $Q = 8$ values suggest either predictions of undiscovered particles or the existence of selection rules.
+9. Higher-spin states and combinatorial surplus states suggest either predictions of undiscovered particles or the existence of selection rules.
 
 The derivation of specific mass values, charge values, the non-abelian structure of gauge groups, and generation mixing matrices are tasks for future work (§9.11).
 
