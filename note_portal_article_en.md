@@ -1,4 +1,4 @@
-# From the Necessity of 5 Dimensions to 62 Particles and Four Forces — A Guide to All 37 Papers on the Central Projection Framework
+# From the Necessity of 5 Dimensions to 62 Particles and Four Forces — A Guide to All 36 Papers on the Central Projection Framework
 
 ## Purpose of This Article
 
@@ -146,8 +146,8 @@ Re-derives the same classification using the hypercube (32 vertices) and proves 
 
 ### Part IV: Derivation of 62 Standard Model States (W8) ★ Core Result
 
-**W8**: Set Structure of the 6-Dimensional Hypercube and Its Combinatorial Properties (v9)
-https://doi.org/10.5281/zenodo.19748174
+**W8**: Set Structure of the 6-Dimensional Hypercube and Its Combinatorial Properties (v10)
+https://doi.org/10.5281/zenodo.19762134
 **The central achievement of this series.** From a 6-dimensional structure — a 5D hypercube augmented with an 8-valued discrete label axis Q — 62 states are derived without using any physics terminology.
 
 ```
@@ -176,7 +176,7 @@ https://doi.org/10.5281/zenodo.19709798
 Classifies shape-invariant waves into 3 stable modes by the number of nonzero wave-vector components. Derives the geometric origin of the Pauli exclusion principle.
 
 **W11**: Interactions of Shape-Invariant Waves — Axial Displacement Transfer, Wave-Packet Deformation, and Retroactive Construction of Causality
-https://doi.org/10.5281/zenodo.19731275
+https://doi.org/10.5281/zenodo.19763463
 Uniformly describes the four forces via axial displacement transfer. Formalizes the geometric origin of mass.
 
 ```
@@ -210,7 +210,7 @@ Formalizes existence conditions and conserved quantities for shape-invariant tra
 Individual responses to open problems in W8 and W11.
 
 **Supplement 1**: Formulation of Signed Area — Derivation of Charge Structure and Consequences of Spin-2 Configurations
-https://doi.org/10.5281/zenodo.19731600
+https://doi.org/10.5281/zenodo.19763471
 Derives charge structure and the uniqueness of the graviton from the sign product P in W8 §7.
 
 **Supplement 2**: Geometric Structure of Generation Mixing — Qualitative Derivation of CKM and PMNS Matrices
@@ -226,7 +226,7 @@ https://doi.org/10.5281/zenodo.19731608
 **Retracted**: In W8 v10, the sign vectors of W±/Z⁰ were reassigned to have spatial axes, so all massive bosons are now unified under Higgs coupling. The premise of this supplement (zero spatial component → Higgs non-involvement) no longer holds.
 
 **Discussion**: Mass Structure Analysis — Framework for Mass Analysis via Axis Scale Values and Signed Areas
-https://doi.org/10.5281/zenodo.19731610
+https://doi.org/10.5281/zenodo.19763476
 Analysis of the geometric framework for mass hierarchy.
 
 **Discussion**: Relationship Between the 6-Dimensional Hypercube and Central Projection
@@ -248,7 +248,7 @@ https://doi.org/10.5281/zenodo.19692192
 Proves regularity of direct projection between spherical shells.
 
 **M3**: Construction of (R,Q) Mapping Using the 6-Dimensional Hypercube
-https://doi.org/10.5281/zenodo.19692853
+https://doi.org/10.5281/zenodo.19763466
 Defines the mapping combining a continuous R-axis with a discrete Q-axis.
 
 ---

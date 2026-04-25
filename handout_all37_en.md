@@ -1,4 +1,4 @@
-# Central Projection Framework: Overview of All 37 Papers
+# Central Projection Framework: Overview of All 36 Papers
 
 **Author:** Noriaki Kihara  
 **Affiliation:** WF System Co., Ltd. / Osaka University, Faculty of Engineering Science (B.Eng.)  
@@ -76,9 +76,9 @@ The correspondence with the SM in W8 §9 is "one possible interpretation," not a
 |-------|-----|
 | Paper 1 (foundation) | [10.5281/zenodo.19427780](https://doi.org/10.5281/zenodo.19427780) |
 | W5 (5 dimensions) | [10.5281/zenodo.19624957](https://doi.org/10.5281/zenodo.19624957) |
-| W8 (62 states) | [10.5281/zenodo.19748174](https://doi.org/10.5281/zenodo.19748174) |
+| W8 (62 states) | [10.5281/zenodo.19762134](https://doi.org/10.5281/zenodo.19762134) |
 | W10 (4 modes) | [10.5281/zenodo.19709798](https://doi.org/10.5281/zenodo.19709798) |
-| W11 (4 forces) | [10.5281/zenodo.19731275](https://doi.org/10.5281/zenodo.19731275) |
+| W11 (4 forces) | [10.5281/zenodo.19763463](https://doi.org/10.5281/zenodo.19763463) |
 
 ---
 

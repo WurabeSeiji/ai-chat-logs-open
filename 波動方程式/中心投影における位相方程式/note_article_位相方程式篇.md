@@ -41,7 +41,7 @@ https://note.com/kiharanoriaki/n/nc51e43282b0a
   https://doi.org/10.5281/zenodo.19643358
 
 - **W8**: 6次元超直方体の集合構造とその組合せ論的性質
-  https://doi.org/10.5281/zenodo.19748174
+  https://doi.org/10.5281/zenodo.19762134
 
 - **W9**: sine-Gordon方程式 ── 位相的ソリトンの基礎理論
   https://doi.org/10.5281/zenodo.19650966
@@ -50,7 +50,7 @@ https://note.com/kiharanoriaki/n/nc51e43282b0a
   https://doi.org/10.5281/zenodo.19709798
 
 - **W11**: 形不変波の相互作用——軸方向変位転送・波束変形・因果の遡及的構成
-  https://doi.org/10.5281/zenodo.19731275
+  https://doi.org/10.5281/zenodo.19763463
 
 ### 姉妹論文（W10・W11の基盤）
 
@@ -63,7 +63,7 @@ https://note.com/kiharanoriaki/n/nc51e43282b0a
 ### 補講・考察
 
 - **補講1**: 符号付き面積の定式化——電荷構造の導出とスピン2配置の帰結
-  https://doi.org/10.5281/zenodo.19731600
+  https://doi.org/10.5281/zenodo.19763471
 
 - **補講2**: 世代混合の幾何学的構造——CKM行列とPMNS行列の定性的導出
   https://doi.org/10.5281/zenodo.19731602
@@ -76,7 +76,7 @@ https://note.com/kiharanoriaki/n/nc51e43282b0a
   **撤回**: W8 v10 にて W±/Z⁰ の符号ベクトルが空間軸を持つ割り当てに改訂され、全質量付きボソンがヒッグス結合（Type I）で統一的に説明されるため、本補講の前提（空間成分ゼロ→ヒッグス非関与）は成立しない。
 
 - 質量構造の考察——軸スケール値と符号付き面積による質量分析の枠組み
-  https://doi.org/10.5281/zenodo.19731610
+  https://doi.org/10.5281/zenodo.19763476
 
 - 6次元超直方体と中心投影との関係性の考察
   https://doi.org/10.5281/zenodo.19731614
