@@ -4,7 +4,7 @@
 
 This article is a **comprehensive guide** to a series of studies that, starting solely from the geometric properties of central projection, arrive at a classification of the 62 particles appearing in the Standard Model of particle physics and a unified description of the four fundamental forces.
 
-All 37 papers are published as preprints on Zenodo (PDF, LaTeX, and Markdown in both Japanese and English).
+All 36 papers are published as preprints on Zenodo (PDF, LaTeX, and Markdown in both Japanese and English). Supplement 4 has been retracted.
 
 GitHub: https://github.com/WurabeSeiji/ai-chat-logs-open
 
@@ -221,9 +221,9 @@ Qualitatively derives the hierarchical structure of CKM and PMNS matrices from S
 https://doi.org/10.5281/zenodo.19731606
 Derives the Higgs mechanism in three stages: standing-wave vacuum structure → scale separation → mass generation.
 
-**Supplement 4**: Mass Structure of Gauge Bosons — Higgs Non-Involvement Indicated by Sign Vectors
+~~**Supplement 4**: Mass Structure of Gauge Bosons — Higgs Non-Involvement Indicated by Sign Vectors~~
 https://doi.org/10.5281/zenodo.19731608
-Shows that W±/Z⁰ masses arise from standing-wave coupling, not requiring the standard Higgs mechanism.
+**Retracted**: In W8 v10, the sign vectors of W±/Z⁰ were reassigned to have spatial axes, so all massive bosons are now unified under Higgs coupling. The premise of this supplement (zero spatial component → Higgs non-involvement) no longer holds.
 
 **Discussion**: Mass Structure Analysis — Framework for Mass Analysis via Axis Scale Values and Signed Areas
 https://doi.org/10.5281/zenodo.19731610
@@ -290,7 +290,7 @@ How this framework differs from existing theoretical approaches.
 
 ## Open Problems
 
-**Quantitative derivation of mass values**: The geometric origin of mass has been shown qualitatively (W11, Supplements 3 & 4, mass discussion), but derivation of specific numerical values remains unachieved.
+**Quantitative derivation of mass values**: The geometric origin of mass has been shown qualitatively (W11, Supplement 3, mass discussion), but derivation of specific numerical values remains unachieved.
 
 **Internal derivation of the Q-axis 8 values**: The reason the Q-axis has 2³=8 states is an external assumption based on consistency with the Standard Model; why not 2²=4 or 2⁴=16 has not been derived (W8 §1.1).
 
