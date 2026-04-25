@@ -111,6 +111,13 @@
 - 荷電レプトンQ=4→Q=0、クォークc₂c₃表記→Q∈{1,2,4}に更新
 - 新DOI: [10.5281/zenodo.19763476](https://doi.org/10.5281/zenodo.19763476)
 
+**note・ハンドアウト・Zenn記事更新**:
+- note_portal_article (JA/EN): タイトル37→36論文、W8/W11/M3/補講1/質量考察のDOI更新
+- note_article_位相方程式篇: W8/W11/補講1/質量考察のDOI更新
+- handout_all37 (JA/EN): タイトル37→36論文、W8/W11のDOI更新、tex/PDF再生成
+- Zenn gnomonic記事: M3のDOI更新
+- Zenn phase-equation記事: W8（19731230→19762134）/W11/M3/補講1/質量考察のDOI更新
+
 ---
 
 ### 2026-04-25: W8 v10 Q軸RGBリエンコーディング・補講4撤回
