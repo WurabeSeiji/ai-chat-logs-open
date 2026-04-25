@@ -98,13 +98,13 @@ By [4] Definition 2.1, fermion types have exactly $k = 2$ of the four $xyzt$ axe
 
 We compute $\text{sign}(M_F)$ for all fermions in [4] §9.9 Table A. The absolute values $|v_i|$ of each axis do not affect the results of this section.
 
-**Charged leptons** (nonzero axes: 1 spatial axis + $t$-axis, $v_t > 0$, $Q = 4$, $c_1 = 1$):
+**Charged leptons** (nonzero axes: 1 spatial axis + $t$-axis, $k_t < 0$ (down-type), $Q = 0$):
 
 | Particle | Set | Nonzero axes | $\text{sign}(M_F)$ |
 |:---|:---|:---:|:---:|
-| $e^-$ | $(+, 0, 0, +, 0, 4)$ | $x, t$ | $(+)(+)= +1$ |
-| $\mu^-$ | $(0, +, 0, +, 0, 4)$ | $y, t$ | $(+)(+)= +1$ |
-| $\tau^-$ | $(0, 0, +, +, 0, 4)$ | $z, t$ | $(+)(+)= +1$ |
+| $e^-$ | $(+, 0, 0, -, 0, 0)$ | $x, t$ | $(+)(-)= -1$ |
+| $\mu^-$ | $(0, +, 0, -, 0, 0)$ | $y, t$ | $(+)(-)= -1$ |
+| $\tau^-$ | $(0, 0, +, -, 0, 0)$ | $z, t$ | $(+)(-)= -1$ |
 
 **Neutrinos** (nonzero axes: 2 spatial axes, $t = 0$):
 
@@ -114,7 +114,7 @@ We compute $\text{sign}(M_F)$ for all fermions in [4] §9.9 Table A. The absolut
 | $\nu_\mu$ | $(0, +, +, 0, 0, 0)$ | $y, z$ | $(+)(+)= +1$ |
 | $\nu_\tau$ | $(+, 0, +, 0, 0, 0)$ | $x, z$ | $(+)(+)= +1$ |
 
-**Up-type quarks** (nonzero axes: 1 spatial axis + $t$-axis, $v_t > 0$, $Q \in \{5,6,7\}$, $c_1 = 1$):
+**Up-type quarks** (nonzero axes: 1 spatial axis + $t$-axis, $k_t > 0$ (up-type), $Q \in \{1, 2, 4\}$):
 
 | Particle | Set | Nonzero axes | $\text{sign}(M_F)$ |
 |:---|:---|:---:|:---:|
@@ -122,7 +122,7 @@ We compute $\text{sign}(M_F)$ for all fermions in [4] §9.9 Table A. The absolut
 | $c$ | $(0, +, 0, +, 0, Q)$ | $y, t$ | $(+)(+)= +1$ |
 | $t$ | $(0, 0, +, +, 0, Q)$ | $z, t$ | $(+)(+)= +1$ |
 
-**Down-type quarks** (nonzero axes: 1 spatial axis + $t$-axis, $v_t < 0$, $Q \in \{1,2,3\}$, $c_1 = 0$):
+**Down-type quarks** (nonzero axes: 1 spatial axis + $t$-axis, $k_t < 0$ (down-type), $Q \in \{1, 2, 4\}$):
 
 | Particle | Set | Nonzero axes | $\text{sign}(M_F)$ |
 |:---|:---|:---:|:---:|
@@ -134,24 +134,24 @@ We compute $\text{sign}(M_F)$ for all fermions in [4] §9.9 Table A. The absolut
 
 | Fermion type | Type of nonzero axes | $Q$ | $\text{sign}(M_F)$ |
 |:---|:---|:---:|:---:|
-| Charged lepton | (spatial, $t>0$) | 4 | $+1$ |
 | Neutrino | (spatial, spatial) | 0 | $+1$ |
-| Up-type quark | (spatial, $t>0$) | 5,6,7 | $+1$ |
-| Down-type quark | (spatial, $t<0$) | 1,2,3 | $-1$ |
+| Charged lepton | (spatial, $t<0$) | 0 | $-1$ |
+| Up-type quark | (spatial, $t>0$) | 1,2,4 | $+1$ |
+| Down-type quark | (spatial, $t<0$) | 1,2,4 | $-1$ |
 
 ### 2.3 Fermion Area of Antiparticles
 
-By [5] §5.4, for antiparticles the signs of the spatial axes $(x, y, z)$ are inverted, while the sign of the $t$-axis and the $Q$ value remain unchanged.
+By [4] §9.1, for antiparticles the signs of both the spatial axes $(x, y, z)$ and the $t$-axis are inverted, and all $Q$ bits are inverted ($(R,G,B) \to (\bar{R},\bar{G},\bar{B})$).
 
-**Proposition 2.1**. When the fermion face consists of a (spatial, $t$) combination, the fermion area of the antiparticle has the opposite sign to that of the particle: $M_F^{\text{anti}} = -M_F$.
+**Proposition 2.1**. When the fermion face consists of a (spatial, $t$) combination, the fermion area of the antiparticle is identical to that of the particle: $M_F^{\text{anti}} = M_F$.
 
-*Proof*. For the antiparticle, the spatial axis value is inverted to $-v_{\text{spatial}}$, while the $t$-axis remains unchanged. Therefore, $M_F^{\text{anti}} = (-v_{\text{spatial}}) \cdot v_t = -(v_{\text{spatial}} \cdot v_t) = -M_F$. $\square$
+*Proof*. For the antiparticle, the spatial axis value is inverted to $-v_{\text{spatial}}$ and the $t$-axis value is inverted to $-v_t$. Therefore, $M_F^{\text{anti}} = (-v_{\text{spatial}}) \cdot (-v_t) = v_{\text{spatial}} \cdot v_t = M_F$. $\square$
 
 **Proposition 2.2**. When the fermion face consists of a (spatial, spatial) combination, the fermion area of the antiparticle is identical to that of the particle: $M_F^{\text{anti}} = M_F$.
 
 *Proof*. For the antiparticle, both spatial axis values are inverted to $-v_{\text{spatial}_1}, -v_{\text{spatial}_2}$. Therefore, $M_F^{\text{anti}} = (-v_{\text{spatial}_1}) \cdot (-v_{\text{spatial}_2}) = v_{\text{spatial}_1} \cdot v_{\text{spatial}_2} = M_F$. $\square$
 
-**Corollary 2.1**. Neutrinos in [4] Table A (spatial $\times$ spatial, $\text{sign}(M_F) = +1$) have antineutrinos that also possess $\text{sign}(M_F) = +1$. For charged leptons and all quarks (spatial $\times$ $t$), the antiparticle has $M_F$ with inverted sign ($\text{sign}(M_F^{\text{anti}}) = -\text{sign}(M_F)$).
+**Corollary 2.1**. For all fermion types, $M_F^{\text{anti}} = M_F$ holds. The fermion area is invariant under the antiparticle transformation.
 
 ### 2.4 Independence of Color Charge and Fermion Area
 
@@ -186,32 +186,32 @@ This section has the same status as [4] §9; it is an interpretive example that 
 
 ### 4.1 Third Component of Weak Isospin $I_3$
 
-Using the $\text{sign}(M_F)$ introduced in §2.2 and the $c_1$ bit (weak isospin) from [4] §9.2, we define the third component of weak isospin $I_3$ of the Standard Model as follows.
+Using the $\text{sign}(M_F)$ introduced in §2.2, we define the third component of weak isospin $I_3$ of the Standard Model as follows.
 
-For quarks ($c_2 c_3 \neq 00$), since $\text{sign}(M_F)$ directly distinguishes up-type ($+1$) from down-type ($-1$), we set $I_3 = \text{sign}(M_F)/2$.
+In [4] §9.1, weak isospin is encoded by the sign of the $t$-axis ($k_t > 0$: up-type, $k_t < 0$: down-type). Since charged leptons are down-type ($k_t < 0$), they have $\text{sign}(M_F) = -1$, and $\text{sign}(M_F)$ directly distinguishes up-type ($+1$) from down-type ($-1$) for all fermions.
 
-For leptons ($c_2 c_3 = 00$), neutrinos ($Q = 0$, spatial $\times$ spatial) and charged leptons ($Q = 4$, spatial $\times$ $t$) both have $\text{sign}(M_F) = +1$ and cannot be distinguished by $\text{sign}(M_F)$ alone. We define $I_3 = (1 - 2c_1)/2$ using the $c_1$ bit.
+$$I_3 = \frac{\text{sign}(M_F)}{2}$$
 
-| Fermion type | $Q$ | $c_1$ | $\text{sign}(M_F)$ | $I_3$ | SM $I_3$ |
-|:---|:---:|:---:|:---:|:---:|:---:|
-| Neutrino | $0$ | $0$ | $+1$ | $(1 - 2 \cdot 0)/2 = +1/2$ | $+1/2$ |
-| Charged lepton | $4$ | $1$ | $+1$ | $(1 - 2 \cdot 1)/2 = -1/2$ | $-1/2$ |
-| Up-type quark | $5,6,7$ | $1$ | $+1$ | $+1/2$ | $+1/2$ |
-| Down-type quark | $1,2,3$ | $0$ | $-1$ | $-1/2$ | $-1/2$ |
+| Fermion type | $Q$ | $\text{sign}(M_F)$ | $I_3$ | SM $I_3$ |
+|:---|:---:|:---:|:---:|:---:|
+| Neutrino | $0$ | $+1$ | $+1/2$ | $+1/2$ |
+| Charged lepton | $0$ | $-1$ | $-1/2$ | $-1/2$ |
+| Up-type quark | $1,2,4$ | $+1$ | $+1/2$ | $+1/2$ |
+| Down-type quark | $1,2,4$ | $-1$ | $-1/2$ | $-1/2$ |
 
-The value of $I_3$ agrees with the Standard Model for all fermions. For quarks, $\text{sign}(M_F) = 2c_1 - 1$ holds, so $I_3 = \text{sign}(M_F)/2 = (2c_1 - 1)/2$ has the opposite sign relation to $(1 - 2c_1)/2$ for leptons.
+The value of $I_3 = \text{sign}(M_F)/2$ agrees with the Standard Model for all fermions. Since isospin is encoded by the $t$-axis sign, a single unified formula applies to both quarks and leptons.
 
-### 4.2 Determination of Weak Hypercharge $Y$ from Color Charge Components $c_2 c_3$
+### 4.2 Determination of Weak Hypercharge $Y$ from the $Q$ Value
 
 The Standard Model charge formula (Gell-Mann–Nishijima relation):
 
 $$Q_{\text{charge}} = I_3 + \frac{Y}{2}$$
 
-Assume that $Y$ depends only on the color charge components $c_2 c_3$: $Y = Y_L$ when $c_2 c_3 = 00$ (leptons), and $Y = Y_Q$ when $c_2 c_3 \neq 00$ (quarks). Then the following two conditions uniquely determine $Y_L, Y_Q$.
+Assume that $Y$ depends only on the lepton/quark classification: $Y = Y_L$ when $Q = 0$ (leptons, set-bit count 0), and $Y = Y_Q$ when $Q \in \{1,2,4\}$ (quarks, set-bit count 1). Then the following two conditions uniquely determine $Y_L, Y_Q$.
 
-**Condition (i): Integer charges for leptons**. For any fermion with $c_2 c_3 = 00$, $Q_{\text{charge}} = I_3 + Y_L/2 \in \mathbb{Z}$ must hold. Since $I_3 \in \{+1/2, -1/2\}$, $Y_L$ must be odd.
+**Condition (i): Integer charges for leptons**. For any fermion with $Q = 0$, $Q_{\text{charge}} = I_3 + Y_L/2 \in \mathbb{Z}$ must hold. Since $I_3 \in \{+1/2, -1/2\}$, $Y_L$ must be odd.
 
-**Condition (ii): Integer charges for color-neutral baryons**. The total charge of a three-body color-neutral system ($c_2 c_3 = 01, 10, 11$, one each) with $c_2 c_3 \neq 00$, $Q_{\text{baryon}} = \sum_{a=1}^{3}(I_3^{(a)} + Y_Q / 2) \in \mathbb{Z}$, must hold for any combination of $I_3^{(a)} \in \{+1/2, -1/2\}$.
+**Condition (ii): Integer charges for color-neutral baryons**. The total charge of a three-body color-neutral system (three single-bit colors $Q = 1, 2, 4$, one each), $Q_{\text{baryon}} = \sum_{a=1}^{3}(I_3^{(a)} + Y_Q / 2) \in \mathbb{Z}$, must hold for any combination of $I_3^{(a)} \in \{+1/2, -1/2\}$.
 
 $$Q_{\text{baryon}} = \sum I_3^{(a)} + \frac{3 Y_Q}{2}$$
 
@@ -225,7 +225,7 @@ Hence $Y_L = -1$. From condition (ii), the solution with smallest $|Y_Q|$ is $n 
 
 **Proposition 4.1 (Unique determination of $Y$ from integer charge conditions)**. From the two-valuedness of $I_3 \in \{+1/2, -1/2\}$ and the condition that charges of observable particles (leptons and color-neutral baryons) are integers, the minimal solution for $Y$ is uniquely determined as:
 
-$$Y_L = -1 \quad (c_2 c_3 = 00), \qquad Y_Q = +\frac{1}{3} \quad (c_2 c_3 \neq 00)$$
+$$Y_L = -1 \quad (Q = 0), \qquad Y_Q = +\frac{1}{3} \quad (Q \in \{1,2,4\})$$
 
 ### 4.3 Consequences
 
@@ -234,7 +234,7 @@ $$Y_L = -1 \quad (c_2 c_3 = 00), \qquad Y_Q = +\frac{1}{3} \quad (c_2 c_3 \neq 0
 | Fermion | $\text{sign}(M_F)$ | $I_3$ | $Y$ | $Q_{\text{charge}} = I_3 + Y/2$ | SM value |
 |:---|:---:|:---:|:---:|:---:|:---:|
 | $\nu$ | $+1$ | $+1/2$ | $-1$ | $0$ | $0$ ✓ |
-| $e^-$ | $+1$ | $-1/2$ | $-1$ | $-1$ | $-1$ ✓ |
+| $e^-$ | $-1$ | $-1/2$ | $-1$ | $-1$ | $-1$ ✓ |
 | $u$ | $+1$ | $+1/2$ | $+1/3$ | $+2/3$ | $+2/3$ ✓ |
 | $d$ | $-1$ | $-1/2$ | $+1/3$ | $-1/3$ | $-1/3$ ✓ |
 
@@ -244,7 +244,7 @@ This is consistent with the charge map $f_Q^{\text{charge}}$ of [4] Definition 9
 
 $$Y_L + 3 Y_Q = -1 + 3 \times \frac{1}{3} = 0$$
 
-This corresponds to the gauge anomaly cancellation condition in the Standard Model. In this framework, it is derived algebraically from the structure of $c_2 c_3$ (one color-neutral state $c_2 c_3 = 00$ + three color charge states $c_2 c_3 \neq 00$) and the integer charge condition.
+This corresponds to the gauge anomaly cancellation condition in the Standard Model. In this framework, it is derived algebraically from the set-bit count structure of $Q$ (one color-neutral state $Q = 0$ + three color charge states $Q \in \{1,2,4\}$) and the integer charge condition.
 
 **Consequence 3: Charge equality of proton and electron**. The charge of the proton $(uud)$:
 
@@ -254,7 +254,7 @@ The charge (absolute value) of the electron:
 
 $$|Q_e| = \left|I_3(e^-) + \frac{Y_L}{2}\right| = \left|-\frac{1}{2} - \frac{1}{2}\right| = 1$$
 
-$|Q_p| = |Q_e| = 1$; the reason that the proton and electron carry charges of equal magnitude is determined algebraically from the color charge structure of $c_2 c_3$ ($1 + 3$ classification) and the two-valuedness of $I_3$ ($\pm 1/2$). There is no need to introduce fractional charges $+2/3, -1/3$ as fundamental quantities.
+$|Q_p| = |Q_e| = 1$; the reason that the proton and electron carry charges of equal magnitude is determined algebraically from the set-bit count structure of $Q$ ($1 + 3$ classification: 1 lepton state + 3 quark colors) and the two-valuedness of $I_3$ ($\pm 1/2$). There is no need to introduce fractional charges $+2/3, -1/3$ as fundamental quantities.
 
 **Consequence 4: Interpretation of spin-2 $P = -1$**. By Proposition 3.2 of §3, the graviton configuration with $P = -1$ acts repulsively along the $R$-axis direction. Since the $R$-axis in [4] §9.8 is the axis that links the subjective coordinate system to the spatial scale of the six-dimensional structure, the $P = -1$ configuration may correspond to **accelerating expansion of the spatial scale**. This is a candidate for the geometric description of the cosmological constant $\Lambda > 0$ (dark energy). However, whether the $P = -1$ configuration is physically realized (existence of selection rules) remains an open question, and this paper limits itself to stating the consequence.
 
@@ -265,14 +265,14 @@ $|Q_p| = |Q_e| = 1$; the reason that the proton and electron carry charges of eq
 In this paper, we provided the definition of the signed area $M(\sigma)$ declared in [4] §7 and derived the following three results.
 
 1. The **signed area $M(i,j) = v_i \cdot v_j$** (Definition 1.2) coincides with the restriction of the sign product $P$ of [4] Proposition 7.1 to the case where both $t$ and $R$ are nonzero (Proposition 1.1).
-2. The **fermion area $M_F$** (Definition 2.1) is computable for all fermions in [4] Table A, and we demonstrated sign inversion under antiparticles (Proposition 2.1), invariance of neutrino antiparticles (Proposition 2.2), and independence from the $Q$-axis (Proposition 2.3).
+2. The **fermion area $M_F$** (Definition 2.1) is computable for all fermions in [4] Table A, and we demonstrated invariance under the antiparticle transformation for all fermion types (Propositions 2.1, 2.2), and independence from the $Q$-axis (Proposition 2.3).
 3. The **spin-2 $P = -1$** configuration corresponds to opposite signs of $v_t, v_R$, and from the sign rule of [5], it was derived to be repulsive along the $R$-axis direction (Propositions 3.1, 3.2).
 
 In the interpretive example (§4):
-- $I_3$ (quarks: $\text{sign}(M_F)/2$; leptons: $(1-2c_1)/2$) agrees with the third component of weak isospin in the Standard Model (§4.1)
+- $I_3 = \text{sign}(M_F)/2$ agrees uniformly with the third component of weak isospin in the Standard Model for all fermions (§4.1)
 - The integer charge condition uniquely determines $Y_L = -1, Y_Q = +1/3$ (Proposition 4.1)
 - The anomaly cancellation condition $Y_L + 3Y_Q = 0$ is automatically satisfied (Consequence 2)
-- The charge equality of the proton and electron is derived from the $1+3$ structure of $c_2 c_3$ (Consequence 3)
+- The charge equality of the proton and electron is derived from the $1+3$ set-bit count structure of $Q$ (Consequence 3)
 
 were demonstrated.
 

@@ -67,7 +67,7 @@ $$f_m^{\text{rest}}(\sigma) = C \cdot |v_i \cdot v_j| \qquad (\text{when the fer
 
 Below we examine the consequences of this candidate.
 
-For charged leptons ($Q = 4$, $c_2 c_3 = 00$):
+For charged leptons ($Q = 0$):
 
 | Generation | Spatial axis | Mass | Mass structure |
 |:---:|:---:|:---:|:---|
@@ -109,7 +109,7 @@ $$\frac{m_{\nu_\mu}}{m_{\nu_\tau}} = \frac{v_y \cdot v_z}{v_x \cdot v_z} = \frac
 
 ### 3.1 Introduction of Q-Axis Coupling
 
-The masses of quarks ($c_2 c_3 \neq 00$) differ from those of charged leptons ($Q = 4$, $c_2 c_3 = 00$) despite occupying the same spatial axes. As the simplest assumption, the $Q$-axis contributes a multiplicative factor $f(Q)$ to the mass:
+The masses of quarks ($Q \in \{1, 2, 4\}$) differ from those of charged leptons ($Q = 0$) despite occupying the same spatial axes. As the simplest assumption, the $Q$-axis contributes a multiplicative factor $f(Q)$ to the mass:
 
 $$m_{\text{quark}} = f(Q) \cdot v_{\text{spatial}} \cdot v_t$$
 

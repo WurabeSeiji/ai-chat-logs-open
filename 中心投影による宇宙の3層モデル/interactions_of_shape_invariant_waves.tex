@@ -533,32 +533,36 @@
 方向制約波の空間成分・時間成分・\(R\)
 成分は変化しない。変化するのは離散ラベル \(Q\) のみである。
 
-{[}4{]}の表Aにおいて、\(Q\) は3ビット \((c_1, c_2, c_3)\)
-で符号化される:
+{[}4{]}の表Aにおいて、\(Q\) は3ビット \((R, G, B)\)
+で符号化され、\(Q = 4R + 2G + B\) である:
 
 \begin{itemize}
 \tightlist
 \item
-  \(c_2 c_3\): 色荷（\(00\) = 色なし、\(01, 10, 11\) = 3色）
+  \((R, G, B)\): 色荷。シングルビット値 \(Q \in \{1, 2, 4\}\)（すなわち
+  \((0,0,1), (0,1,0), (1,0,0)\)）が3色に対応する。\(Q = 0\)（\((0,0,0)\)）は色なし（レプトン）。
 \item
-  \(c_1\): 弱アイソスピン
+  弱アイソスピンは \(t\) 軸の符号で符号化される（\(k_t > 0\):
+  上型、\(k_t < 0\): 下型。{[}4{]}§9.1参照）。
 \end{itemize}
 
-グルーオンの \(Q\) 遷移は \(c_2 c_3\)
-ビットの変化であり、色荷の交換に対応する。\(c_2 c_3\)
-の3つの非ゼロ値（\(01, 10, 11\)）間の遷移が \(3 \times 3 - 1 = 8\)
+グルーオンの \(Q\)
+遷移はシングルビット色ラベル間の変化であり、色荷の交換に対応する。3つの色
+\(R, G, B\)（\(Q \in \{4, 2, 1\}\)）間の遷移が \(3 \times 3 - 1 = 8\)
 通りの独立なグルーオンを与える。
 
 \subsubsection{\texorpdfstring{§5.2 吸収:
 \(q + g \to q'\)}{§5.2 吸収: q + g \textbackslash to q\textquotesingle{}}}\label{ux5438ux53ce-q-g-to-q}
 
-クォーク型の方向制約波が色荷
-\((c_2 c_3) = (01)\)（赤）を持つとき、グルーオン \(g_{01 \to 10}\)
+クォーク型の方向制約波が色 \(B\)（\(Q = 1\),
+\((R,G,B) = (0,0,1)\)）を持つとき、グルーオン \(g_{B \to G}\)
 を吸収すると:
 
-\[(k_x, 0, 0, k_t, 0, Q_{01}) + g_{01 \to 10} \;\longrightarrow\; (k_x, 0, 0, k_t, 0, Q_{10})\]
+\[(k_x, 0, 0, k_t, 0, Q_1) + g_{B \to G} \;\longrightarrow\; (k_x, 0, 0, k_t, 0, Q_2)\]
 
-グルーオンは独立な波として消滅し、クォークの色荷が赤（\(01\)）から緑（\(10\)）に変化する。空間成分・時間成分・\(R\)
+グルーオンは独立な波として消滅し、クォークの色荷が
+\(B\)（\(Q = 1\)）から
+\(G\)（\(Q = 2\)）に変化する。空間成分・時間成分・\(R\)
 成分は保存される。
 
 \subsubsection{\texorpdfstring{§5.3 放出:
@@ -566,7 +570,7 @@
 
 命題3.1（可逆性）により、吸収の逆過程として放出が定義される:
 
-\[(k_x, 0, 0, k_t, 0, Q_{10}) \;\longrightarrow\; (k_x, 0, 0, k_t, 0, Q_{01}) + g_{10 \to 01}\]
+\[(k_x, 0, 0, k_t, 0, Q_2) \;\longrightarrow\; (k_x, 0, 0, k_t, 0, Q_1) + g_{G \to B}\]
 
 クォークの色荷が変化し、その差分を運ぶグルーオンが新たに生成される。
 
@@ -578,17 +582,20 @@
 \subsubsection{\texorpdfstring{§5.4 対消滅・対生成:
 \(q + \bar{q} \leftrightarrow g(s)\)}{§5.4 対消滅・対生成: q + \textbackslash bar\{q\} \textbackslash leftrightarrow g(s)}}\label{ux5bfeux6d88ux6ec5ux5bfeux751fux6210-q-barq-leftrightarrow-gs}
 
-クォークと反クォークの対は、全成分が逆符号であるだけでなく色荷も反色の関係にある。色荷のビット合成（XOR）がゼロに帰着するとき:
+クォークと反クォークの対は、全成分が逆符号であるだけでなく色荷も反色の関係にある。反粒子では全
+\(Q\)
+ビットが反転するため（\((R,G,B) \to (\bar{R},\bar{G},\bar{B})\)）、クォーク（シングルビット色、\(Q \in \{1,2,4\}\)）の反粒子はダブルビット色（\(Q \in \{6,5,3\}\)）を持つ。色荷のビット合成（XOR）が色中性に帰着するとき:
 
-\[(c_2 c_3) \oplus (c_2 c_3) = (00)\]
+\[(R,G,B) \oplus (\bar{R},\bar{G},\bar{B}) = (1,1,1)\]
 
-対消滅が成立し、\(\kappa = 2\) の波対が \(\kappa = 0\)
+すなわち \(Q \oplus \bar{Q} = 7\) となり色中性が成立する。対消滅により
+\(\kappa = 2\) の波対が \(\kappa = 0\)
 のグルーオンに変換される。逆過程（対生成）として、グルーオンのエネルギーからクォーク・反クォーク対が生成される:
 
-\[q(c_2 c_3) + \bar{q}(c_2 c_3) \;\longleftrightarrow\; g(s)\]
+\[q(Q) + \bar{q}(\bar{Q}) \;\longleftrightarrow\; g(s) \quad (\bar{Q} = 7 - Q)\]
 
-\textbf{命題 5.2}:
-色荷のXOR合成がゼロに帰着するクォーク・反クォーク対はグルーオンを介して対消滅・対生成が可能である。
+\textbf{命題 5.2}: 色荷のXOR合成が
+\((1,1,1)\)（\(Q_{\mathrm{XOR}} = 7\)）に帰着するクォーク・反クォーク対はグルーオンを介して対消滅・対生成が可能である。
 
 \subsubsection{§5.5
 閉じ込め条件}\label{ux9589ux3058ux8fbcux3081ux6761ux4ef6}
@@ -596,34 +603,49 @@
 {[}3{]}の§8で導入した子空間中心投影の枠組みにおいて、独立した主観空間を形成するためには、波の集合が\textbf{色中性}である必要がある。
 
 \textbf{定義 5.1}（色中性条件）: 方向制約波の集合 \(\{\psi_i\}\)
-が色中性であるとは、\(c_2 c_3\) ビットの合成が \((0, 0)\)
-に帰着することである。ここでビットの合成はビットごとの排他的論理和（XOR、\(\mathbb{F}_2\)
+が色中性であるとは、\((R,G,B)\) ビットのXOR合成が
+\((0,0,0)\)（\(Q = 0\)）または
+\((1,1,1)\)（\(Q = 7\)）に帰着することである。ここでビットの合成はビットごとの排他的論理和（XOR、\(\mathbb{F}_2\)
 上の加算）として定義される:
 
-\[(a_1, a_2) \oplus (b_1, b_2) = (a_1 \oplus b_1,\; a_2 \oplus b_2) \quad (\oplus: \text{mod}\; 2 \text{ 加算})\]
+\[(a_1, a_2, a_3) \oplus (b_1, b_2, b_3) = (a_1 \oplus b_1,\; a_2 \oplus b_2,\; a_3 \oplus b_3) \quad (\oplus: \text{mod}\; 2 \text{ 加算})\]
+
+\(Q = 0\)（レプトン）と
+\(Q = 7\)（反レプトン）はいずれも色中性であり、全ビットが揃った状態（全0または全1）が色中性の条件となる。
 
 色中性の実現方法:
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}lll@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2727}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4545}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2727}}@{}}
 \toprule\noalign{}
-構成 & 色の組合せ & 名称 \\
+\begin{minipage}[b]{\linewidth}\raggedright
+構成
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+色の組合せ
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+名称
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-波3つ & \((01) \oplus (10) \oplus (11) = (00)\) & バリオン型 \\
-波2つ & \((c_2 c_3) \oplus (c_2 c_3) = (00)\) & メソン型 \\
-波1つ & \((c_2 c_3) = (00)\) & レプトン型 \\
+波3つ & \((0,0,1) \oplus (0,1,0) \oplus (1,0,0) = (1,1,1)\) &
+バリオン型（\(Q_{\mathrm{XOR}} = 7\)） \\
+波2つ & \((R,G,B) \oplus (\bar{R},\bar{G},\bar{B}) = (1,1,1)\) &
+メソン型（\(Q_{\mathrm{XOR}} = 7\)） \\
+波1つ & \((R,G,B) = (0,0,0)\) & レプトン型（\(Q = 0\)） \\
 \end{longtable}
 }
 
-\textbf{注意 5.1}: メソン型では、クォークと反クォークが同色
-\((c_2 c_3)\)
-を持つ（§5.4）ため、同色2つのXOR合成が色中性を実現する。標準QCDでは色と反色の対消滅（\(\mathrm{SU}(3)\)
-の
+\textbf{注意 5.1}:
+メソン型では、クォーク（シングルビット色、\(Q \in \{1,2,4\}\)）と反クォーク（ダブルビット反色、\(Q \in \{6,5,3\}\)）のXOR合成が
+\((1,1,1)\)（\(Q_{\mathrm{XOR}} = 7\)）となり色中性を実現する。バリオン型でも3色のXOR合成が同じく
+\((1,1,1)\) となる。標準QCDでは色と反色の対消滅（\(\mathrm{SU}(3)\) の
 \(\mathbf{3} \otimes \bar{\mathbf{3}} \supset \mathbf{1}\)）として色中性が記述されるが、本フレームワークでは
-\(\mathbb{F}_2^2\)
+\(\mathbb{F}_2^3\)
 上のXOR代数が対応する。代数構造は異なるが、色中性という結果は同一である。
 
 \textbf{命題 5.3}:
@@ -650,11 +672,12 @@
 \[\delta\mathbf{k}_W: \quad k_t \;\longrightarrow\; k_t' = k_t + \delta k_t\]
 
 \(t\) 軸成分の変化は、{[}4{]}の表Aにおいて上型 /
-下型の転換に対応する。同時に \(Q\) 軸の \(c_1\)
-ビット（弱アイソスピン）も変化する。\(c_1\) と \(\mathrm{sign}(k_t)\)
-は独立な自由度であり、\(W^{\pm}\) は両者を媒介する。\(Q\) 軸の
-\(c_2 c_3\) ビット（色荷）は \(t\) 軸および \(c_1\)
-と直交する独立な自由度であり、\(W^{\pm}\) との相互作用で保存される。
+下型の転換に対応する。新しい符号化では弱アイソスピンは \(t\)
+軸の符号そのものによって符号化される（\(k_t > 0\): 上型、\(k_t < 0\):
+下型。{[}4{]}§9.1参照）。したがって \(W^{\pm}\) は \(t\)
+軸符号の反転を媒介することで、アイソスピン遷移を直接実現する。\(Q\) 軸の
+\((R,G,B)\) ビット（色荷）は \(t\)
+軸と直交する独立な自由度であり、\(W^{\pm}\) との相互作用で保存される。
 
 \(W^{\pm}\) の \(t\) 軸変位は、初期・最終状態の \(k_t\)
 がともに非ゼロの場合（クォーク系、§6.2--6.3）は符号反転として作用する。\(k_t = 0\)
@@ -666,41 +689,39 @@
 
 \(W^+\) 吸収による方向制約波の変換:
 
-\[\underbrace{(k_x, 0, 0, -k_t, 0, Q_d)}_{\text{下型}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, 0, +k_t, 0, Q_u)}_{\text{上型}}\]
+\[\underbrace{(k_x, 0, 0, -k_t, 0, Q)}_{\text{下型}(k_t < 0)} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, 0, +k_t, 0, Q)}_{\text{上型}(k_t > 0)}\]
 
 \(W^+\) は独立な波として消滅し、方向制約波の \(t\)
-軸の符号が反転し（\(-k_t \to +k_t\)）、\(c_1\) ビットが \(0 \to 1\)
-に遷移する（\(Q_d \to Q_u\)）。色荷 \(c_2 c_3\) は保存される。
+軸の符号が反転する（\(k_t < 0 \to k_t > 0\)、すなわち下型→上型）。色荷
+\((R,G,B)\) は保存される。
 
 \subsubsection{\texorpdfstring{§6.3 放出:
 \(f \to f' + W\)}{§6.3 放出: f \textbackslash to f\textquotesingle{} + W}}\label{ux653eux51fa-f-to-f-w}
 
 命題3.1（可逆性）により、吸収の逆過程として放出が定義される:
 
-\[\underbrace{(k_x, 0, 0, +k_t, 0, Q_u)}_{\text{上型}} \;\longrightarrow\; \underbrace{(k_x, 0, 0, -k_t, 0, Q_d)}_{\text{下型}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+}\]
+\[\underbrace{(k_x, 0, 0, +k_t, 0, Q)}_{\text{上型}(k_t > 0)} \;\longrightarrow\; \underbrace{(k_x, 0, 0, -k_t, 0, Q)}_{\text{下型}(k_t < 0)} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+}\]
 
-方向制約波のフレーバーが上型から下型に変化し（\(t\)
-軸符号反転、\(c_1: 1 \to 0\)）、\(W^+\)
+方向制約波のフレーバーが上型から下型に変化し（\(t\) 軸符号反転:
+\(k_t > 0 \to k_t < 0\)）、\(W^+\)
 が新たに独立な波として生成される。保存則 (I2) により、\(t\)
 軸成分の変化分が \(W^+\) として放出される。
 
-\textbf{\(Q\) 軸の色荷成分と \(t\) 軸の独立性}:
-{[}4{]}の表Aにおいて、\(Q\) 軸は3ビット \((c_1, c_2, c_3)\)
-で符号化され、\(c_1\) は弱アイソスピン、\(c_2 c_3\)
-は色荷を表す（§5.1）。\(c_1\) と \(t\) 軸の符号 \(\mathrm{sign}(k_t)\)
-は独立な自由度であり、\(W^{\pm}\)
-は両者を同時に変化させる（§6.5）。一方、\(c_2 c_3\)（色荷）は \(t\)
-軸および \(c_1\) と直交する独立な自由度であり、(I1)
-は球状波の非ゼロ軸（\(t\)
+\textbf{\(Q\) 軸の色荷と \(t\) 軸の関係}: {[}4{]}の表Aにおいて、\(Q\)
+軸は3ビット \((R, G, B)\)
+で符号化され、色荷を表す（§5.1）。弱アイソスピンは \(t\) 軸の符号
+\(\mathrm{sign}(k_t)\) で直接符号化される（{[}4{]}§9.1）。\(W^{\pm}\) は
+\(t\)
+軸符号の反転を媒介し、それによりアイソスピン遷移が実現される。一方、\((R,G,B)\)（色荷）は
+\(t\) 軸と直交する独立な自由度であり、(I1) は球状波の非ゼロ軸（\(t\)
 軸）に沿った変位転送のみを要請するため、\(W^{\pm}\) との相互作用で色荷
-\(c_2 c_3\) は保存される。
+\((R,G,B)\) は保存される。
 
 \textbf{命題 6.1}: \(W^{\pm}\)
 との相互作用（吸収・放出とも）は方向制約波の \(t\)
-軸成分（フレーバー）と \(Q\) 軸の \(c_1\)
-ビット（弱アイソスピン）を変化させる。\(Q\) 軸の \(c_2 c_3\)
-ビット（色荷）は \(t\) 軸および \(c_1\)
-と直交する独立な自由度であり、\(W^{\pm}\) との相互作用で保存される。
+軸符号を反転させ、アイソスピン遷移（上型↔下型）を媒介する。\(Q\) 軸の
+\((R,G,B)\) ビット（色荷）は \(t\)
+軸と直交する独立な自由度であり、\(W^{\pm}\) との相互作用で保存される。
 
 \subsubsection{\texorpdfstring{§6.4 \(W\)
 崩壊と逆崩壊}{§6.4 W 崩壊と逆崩壊}}\label{w-ux5d29ux58caux3068ux9006ux5d29ux58ca}
@@ -730,42 +751,48 @@
 {[}3{]}の定義6.1で定義したカイラリティ
 \(\chi = \mathrm{sign}(k_{s_0} \cdot k_t)\)（\(k_{s_0}\):
 非ゼロ空間成分）に対して、\(W^{\pm}\)
-の結合条件を導出する。{[}4{]}の表Aにおいて、\(Q\) 軸の \(c_1\)
-ビットは弱アイソスピンを符号化しており、\(t\)
-軸とは独立な自由度である。\(W^{\pm}\) は \(t\) 軸の変化と \(c_1\)
-の遷移をそれぞれ媒介する:
+の結合条件を導出する。新しい符号化では弱アイソスピンは \(t\)
+軸の符号そのもので符号化される（\(k_t > 0\): 上型、\(k_t < 0\):
+下型）。\(W^{\pm}\) は \(t\) 軸符号の反転を媒介する:
 
 \begin{itemize}
 \tightlist
 \item
-  \(W^+\): \(c_1 = 0 \to 1\)（下型 → 上型）
+  \(W^+\): \(k_t < 0 \to k_t > 0\)（下型 → 上型）
 \item
-  \(W^-\): \(c_1 = 1 \to 0\)（上型 → 下型）
+  \(W^-\): \(k_t > 0 \to k_t < 0\)（上型 → 下型）
 \end{itemize}
 
-\(c_1\) のアイソスピン符号 \((-1)^{c_1}\)
-を用いて、カイラリティを以下のように再定式化する:
+アイソスピンが \(\mathrm{sign}(k_t)\)
+そのもので符号化されるため、アイソスピン符号は \(-\mathrm{sign}(k_t)\)
+と書ける（\(k_t > 0\) の上型では \(-1\)、\(k_t < 0\) の下型では
+\(+1\)）。カイラリティはこの符号と \(k_t\) の積で決定される:
 
-\[\chi = \mathrm{sign}((-1)^{c_1} \cdot k_t)\]
+\[\chi = \mathrm{sign}(-\mathrm{sign}(k_t) \cdot k_t) = \mathrm{sign}(-|k_t|) = -1\]
+
+すなわち、アイソスピンと \(t\) 軸符号が統合されたことにより、\(W^{\pm}\)
+と結合する全てのフェルミオンのカイラリティは恒等的に
+\(\chi = -1\)（左巻き）となる。これは追加仮定なしに成立する幾何学的帰結である。
 
 \textbf{\(W^+\) 吸収の場合}:
-\(W^+ + \psi_d \to \psi_u\)。始状態は下型（\(c_1 = 0\), \(k_t < 0\)）:
+\(W^+ + \psi_d \to \psi_u\)。始状態は下型（\(k_t < 0\)）:
 
-\[\chi(\psi_d) = \mathrm{sign}((-1)^0 \cdot (-|k_t|)) = \mathrm{sign}((+1) \cdot (-)) = -1\]
+\[\chi(\psi_d) = \mathrm{sign}(-\mathrm{sign}(k_t) \cdot k_t) = \mathrm{sign}(-(-1) \cdot (-|k_t|)) = \mathrm{sign}(-|k_t|) = -1\]
 
 \textbf{\(W^-\) 吸収の場合}:
-\(W^- + \psi_u \to \psi_d\)。始状態は上型（\(c_1 = 1\), \(k_t > 0\)）:
+\(W^- + \psi_u \to \psi_d\)。始状態は上型（\(k_t > 0\)）:
 
-\[\chi(\psi_u) = \mathrm{sign}((-1)^1 \cdot (+|k_t|)) = \mathrm{sign}((-1) \cdot (+)) = -1\]
+\[\chi(\psi_u) = \mathrm{sign}(-\mathrm{sign}(k_t) \cdot k_t) = \mathrm{sign}(-(+1) \cdot (+|k_t|)) = \mathrm{sign}(-|k_t|) = -1\]
 
-いずれの場合も \(\chi = -1\)（左巻き）が追加仮定なしに導かれる。\(c_1\)
-と \(k_t\) が独立な自由度として \(W^+\) と \(W^-\)
-を区別するため、\(k_{s_0}\) の符号反転を仮定する必要がない。
+いずれの場合も \(\chi = -1\)（左巻き）が恒等的に成立する。アイソスピンが
+\(\mathrm{sign}(k_t)\) そのもので符号化されることにより、\(W^{\pm}\)
+と結合するフェルミオンの左巻き性は幾何学的に自明な帰結となる。
 
-\textbf{命題 6.3}: \(W^{\pm}\) との結合条件は、始状態のアイソスピン符号
-\((-1)^{c_1}\) と \(k_t\)
-の積の符号で決定される。\(W^+\)（\(c_1: 0 \to 1\)）、\(W^-\)（\(c_1: 1 \to 0\)）のいずれにおいても
-\(\chi = -1\)（左巻き）が成立し、右巻き（\(\chi = +1\)）の方向制約波は
+\textbf{命題 6.3}: アイソスピンが \(t\)
+軸符号で符号化される枠組みにおいて、\(W^{\pm}\)
+と結合するフェルミオンのカイラリティは
+\(\chi = \mathrm{sign}(-\mathrm{sign}(k_t) \cdot k_t) = -1\)
+として恒等的に左巻きとなる。右巻き（\(\chi = +1\)）の方向制約波は
 \(W^{\pm}\) と結合しない。
 
 \subsubsection{§6.6 CP 破れ}\label{cp-ux7834ux308c}
@@ -783,19 +810,18 @@
 
 §6.2--6.3 の \(W^{\pm}\) 吸収・放出の記述では、\(k_t\)
 の符号反転（初期・最終状態とも
-\(k_t \neq 0\)）を扱った。これはクォーク系（\(c_2 c_3 \neq 00\)）の典型的な過程である。レプトン系（\(c_2 c_3 = 00\)）では、荷電レプトンとニュートリノの軸構成が質的に異なるため、\(W^{\pm}\)
+\(k_t \neq 0\)）を扱った。これはクォーク系（\((R,G,B) \neq (0,0,0)\)、\(Q \neq 0\)）の典型的な過程である。レプトン系（\((R,G,B) = (0,0,0)\)、\(Q = 0\)）では、荷電レプトンとニュートリノの軸構成が質的に異なるため、\(W^{\pm}\)
 の作用は軸再配置を伴う。
 
-{[}4{]}の表Aにおいて、\(c_2 c_3 = 00\)（色荷なし）のフェルミオン（\(\kappa = 2\)）は以下の2種の軸構成を持つ:
+{[}4{]}の表Aにおいて、\(Q = 0\)（色荷なし）のフェルミオン（\(\kappa = 2\)）は以下の2種の軸構成を持つ:
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2250}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1750}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1750}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1250}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1500}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1818}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2727}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2121}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1515}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1818}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 種類
@@ -803,8 +829,6 @@
 非ゼロ軸
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 \(k_t\)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\(c_1\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 \(Q\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -814,16 +838,16 @@
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-荷電レプトン & 空間1軸 + \(t\) & \(\neq 0\) & 1 & 4 &
-\(e^-: (k_x, 0, 0, k_t, 0, 4)\) \\
-ニュートリノ & 空間2軸 & \(= 0\) & 0 & 0 &
+荷電レプトン & 空間1軸 + \(t\) & \(\neq 0\)（下型: \(k_t < 0\)） & 0 &
+\(e^-: (k_x, 0, 0, k_t, 0, 0)\) \\
+ニュートリノ & 空間2軸 & \(= 0\) & 0 &
 \(\nu: (k_{s_1}, 0, k_{s_2}, 0, 0, 0)\) \\
 \end{longtable}
 }
 
 \(W^+\) 吸収による荷電レプトン→ニュートリノ転換:
 
-\[\underbrace{(k_x, 0, 0, k_t, 0, 4)}_{\substack{\text{荷電レプトン} \\ \kappa = 2:\; (s, t),\; c_1 = 1}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{ニュートリノ} \\ \kappa = 2:\; (s, s),\; c_1 = 0}}\]
+\[\underbrace{(k_x, 0, 0, k_t, 0, 0)}_{\substack{\text{荷電レプトン} \\ \kappa = 2:\; (s, t),\; k_t < 0}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{ニュートリノ} \\ \kappa = 2:\; (s, s),\; k_t = 0}}\]
 
 この過程は (I1) のみでは完全に記述されない。(I1) は \(W^+\)
 の非ゼロ軸（\(t\) 軸）に沿った変位を要請し、\(k_t \to 0\)
@@ -847,9 +871,10 @@
 
 逆過程（ニュートリノ→荷電レプトン転換）:
 
-\[\underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{ニュートリノ} \\ \kappa = 2:\; (s, s),\; c_1 = 0}} + \underbrace{(0, 0, 0, -, 0, 0)}_{W^-} \;\longrightarrow\; \underbrace{(k_x, 0, 0, k_t, 0, 4)}_{\substack{\text{荷電レプトン} \\ \kappa = 2:\; (s, t),\; c_1 = 1}}\]
+\[\underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{ニュートリノ} \\ \kappa = 2:\; (s, s),\; k_t = 0}} + \underbrace{(0, 0, 0, -, 0, 0)}_{W^-} \;\longrightarrow\; \underbrace{(k_x, 0, 0, k_t, 0, 0)}_{\substack{\text{荷電レプトン} \\ \kappa = 2:\; (s, t),\; k_t < 0}}\]
 
-\(W^-\) が \(t\) 軸成分を供給し（\(0 \to k_t\)）、\(\kappa = 2\)
+\(W^-\) が \(t\)
+軸成分を供給し（\(0 \to k_t < 0\)、下型）、\(\kappa = 2\)
 保存のため空間軸の一つ（\(k_{s_2}\)）が非活性化される。
 
 \textbf{命題 6.5}: \(W^{\pm}\) のレプトン系への作用は、\(t\) 軸変位 (I1)
@@ -859,7 +884,7 @@
 
 \textbf{注意 6.1}:
 軸再配置において活性化（または非活性化）される空間軸の選択は、\(\kappa = 2\)
-保存のみからは一意に決定されない。例えば \(e^-: (k_x, 0, 0, k_t, 0, 4)\)
+保存のみからは一意に決定されない。例えば \(e^-: (k_x, 0, 0, k_t, 0, 0)\)
 から \(W^+\) 吸収で生成されるニュートリノは \((k_x, k_y, 0, 0, 0, 0)\)
 と \((k_x, 0, k_z, 0, 0, 0)\) のいずれも \(\kappa = 2\)
 を満たす。この自由度はニュートリノ混合（PMNS行列に対応する構造）の幾何学的起源となりうるが、その解明は本論文の主張範囲外である。
@@ -1211,14 +1236,15 @@
   \textbf{強い相互作用}: グルーオンは \(Q\)
   軸遷移を媒介し、色荷を交換する。吸収・放出・対消滅・対生成が系統的に記述される。色中性条件が閉じ込めの起源を与え、集合内部では漸近的自由が成立する（§5）。
 \item
-  \textbf{弱い相互作用}: \(W^{\pm}\) は \(t\) 軸変位と
-  \(c_1\)（弱アイソスピン）遷移を同時に媒介する。クォーク系では \(k_t\)
-  の符号反転（および
-  \(c_1: 0 \leftrightarrow 1\)）として作用し、レプトン系では \(t\)
-  軸変位と \(\kappa = 2\)
+  \textbf{弱い相互作用}: \(W^{\pm}\) は \(t\)
+  軸符号の反転を媒介し、アイソスピン遷移（上型↔下型）を直接実現する。クォーク系では
+  \(k_t\) の符号反転として作用し、レプトン系では \(t\) 軸変位と
+  \(\kappa = 2\)
   保存の連立により荷電レプトン↔ニュートリノの軸再配置が生じる。吸収・放出に加えて
   \(W\) 崩壊・逆崩壊が型D/Cとして統一される。\(k_t \neq 0\) が CP
-  破れと左巻きカイラリティ選択則の起源を与える（§6）。
+  破れの起源を与え、アイソスピンが \(\mathrm{sign}(k_t)\)
+  で符号化されることから左巻きカイラリティ \(\chi = -1\)
+  が恒等的に成立する（§6）。
 \item
   \textbf{重力相互作用}: グラビトンは \((t, R)\) の両軸に作用し、全ての
   \(\Delta\mathbf{k} \neq 0\)

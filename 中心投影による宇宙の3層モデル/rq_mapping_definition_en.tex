@@ -2,56 +2,71 @@
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \documentclass[
-  a4paper]{article}
+  a4paper,11pt]{article}
 \usepackage{xcolor}
-\usepackage[margin=2.5cm]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb}
+\usepackage{graphicx}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
+  \usepackage{textcomp}
+\else
+  \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
 \usepackage{lmodern}
 \ifPDFTeX\else
-  % xetex/luatex font selection
+  \setmainfont[]{Times New Roman}
 \fi
-% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
+\IfFileExists{microtype.sty}{%
   \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+  \UseMicrotypeSet[protrusion]{basicmath}
 }{}
 \makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
+\@ifundefined{KOMAClassName}{%
   \IfFileExists{parskip.sty}{%
     \usepackage{parskip}
-  }{% else
+  }{%
     \setlength{\parindent}{0pt}
     \setlength{\parskip}{6pt plus 2pt minus 1pt}}
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\setlength{\emergencystretch}{3em} % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none}
+\usepackage{calc}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \usepackage{bookmark}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
 \urlstyle{same}
+\usepackage{hyperref}
 \hypersetup{
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
-
-\author{}
-\date{}
-
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
 \begin{document}
-
 \section{\texorpdfstring{Construction of \((R, Q)\) Mapping Adopting a
 6-Dimensional
 Hypercube}{Construction of (R, Q) Mapping Adopting a 6-Dimensional Hypercube}}\label{construction-of-r-q-mapping-adopting-a-6-dimensional-hypercube}
@@ -95,7 +110,7 @@ We adopt the 6-dimensional hypercube defined in {[}W8{]} (a
 combinatorial structure with axes \(x, y, z, t, R, Q\)). Here,
 \(x, y, z, t, R\) are five axes taking real values, and
 \(Q \in \{0, 1, 2, 3, 4, 5, 6, 7\}\) is an 8-valued discrete label axis
-with 3-bit encoding \(Q = 4c_1 + 2c_2 + c_3\) (\(c_i \in \{0, 1\}\))
+with 3-bit encoding \(Q = 4R + 2G + B\) (\(R, G, B \in \{0, 1\}\))
 ({[}W8{]} Definitions 1.1, 1.2).
 
 \subsubsection{Premise II (Metadata-Holding
@@ -231,5 +246,4 @@ Claim}\label{what-this-paper-does-not-claim}
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \emph{v1.0}
-
 \end{document}

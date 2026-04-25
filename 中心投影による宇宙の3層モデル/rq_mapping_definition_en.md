@@ -25,7 +25,7 @@ This paper adopts the following two premises. These are not objects of proof in 
 
 ### Premise I (Adoption of the 6-Dimensional Hypercube)
 
-We adopt the 6-dimensional hypercube defined in [W8] (a combinatorial structure with axes $x, y, z, t, R, Q$). Here, $x, y, z, t, R$ are five axes taking real values, and $Q \in \{0, 1, 2, 3, 4, 5, 6, 7\}$ is an 8-valued discrete label axis with 3-bit encoding $Q = 4c_1 + 2c_2 + c_3$ ($c_i \in \{0, 1\}$) ([W8] Definitions 1.1, 1.2).
+We adopt the 6-dimensional hypercube defined in [W8] (a combinatorial structure with axes $x, y, z, t, R, Q$). Here, $x, y, z, t, R$ are five axes taking real values, and $Q \in \{0, 1, 2, 3, 4, 5, 6, 7\}$ is an 8-valued discrete label axis with 3-bit encoding $Q = 4R + 2G + B$ ($R, G, B \in \{0, 1\}$) ([W8] Definitions 1.1, 1.2).
 
 ### Premise II (Metadata-Holding Capability)
 

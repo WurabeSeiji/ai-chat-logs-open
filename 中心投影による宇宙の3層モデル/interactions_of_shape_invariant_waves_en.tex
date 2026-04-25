@@ -631,32 +631,39 @@ transfer acts only in the \(Q\)-axis direction:
 The spatial, temporal, and \(R\) components of the direction-constrained
 wave do not change. Only the discrete label \(Q\) changes.
 
-In Table A of {[}4{]}, \(Q\) is encoded as 3 bits \((c_1, c_2, c_3)\):
+In Table A of {[}4{]}, \(Q\) is encoded as 3 bits \((R, G, B)\) with
+\(Q = 4R + 2G + B\):
 
 \begin{itemize}
 \tightlist
 \item
-  \(c_2 c_3\): Color charge (\(00\) = no color, \(01, 10, 11\) = three
-  colors)
+  Each of \(R, G, B\) is a single-bit value (0 or 1).
 \item
-  \(c_1\): Weak isospin
+  The three single-bit \(Q\) values \(\{1, 2, 4\}\) --- i.e.,
+  \((0,0,1) = B\), \((0,1,0) = G\), \((1,0,0) = R\) --- represent the
+  three colors.
+\item
+  \(Q = 0\) (all bits zero) corresponds to a lepton (no color charge).
+\item
+  Weak isospin is encoded by the sign of the \(t\) axis: \(k_t > 0\) =
+  up-type, \(k_t < 0\) = down-type.
 \end{itemize}
 
-The \(Q\) transition of gluons is a change of the \(c_2 c_3\) bits,
-corresponding to color charge exchange. The three non-zero values of
-\(c_2 c_3\) (\(01, 10, 11\)) yield \(3 \times 3 - 1 = 8\) independent
+The \(Q\) transition of gluons is a change of the \((R, G, B)\) bits,
+corresponding to color charge exchange. The three single-bit color
+values (\(Q \in \{1, 2, 4\}\)) yield \(3 \times 3 - 1 = 8\) independent
 gluons.
 
 \subsubsection{\texorpdfstring{S5.2 Absorption:
 \(q + g \to q'\)}{S5.2 Absorption: q + g \textbackslash to q\textquotesingle{}}}\label{s5.2-absorption-q-g-to-q}
 
-When a quark-type direction-constrained wave with color charge
-\((c_2 c_3) = (01)\) (red) absorbs gluon \(g_{01 \to 10}\):
+When a quark-type direction-constrained wave with color \(Q = 1\) (i.e.,
+\((R,G,B) = (0,0,1) = B\)) absorbs gluon \(g_{B \to G}\):
 
-\[(k_x, 0, 0, k_t, 0, Q_{01}) + g_{01 \to 10} \;\longrightarrow\; (k_x, 0, 0, k_t, 0, Q_{10})\]
+\[(k_x, 0, 0, k_t, 0, Q_{1}) + g_{B \to G} \;\longrightarrow\; (k_x, 0, 0, k_t, 0, Q_{2})\]
 
-The gluon ceases to exist as an independent wave, and the color charge
-of the quark changes from red (\(01\)) to green (\(10\)). The spatial,
+The gluon ceases to exist as an independent wave, and the color of the
+quark changes from \(B\) (\(Q = 1\)) to \(G\) (\(Q = 2\)). The spatial,
 temporal, and \(R\) components are conserved.
 
 \subsubsection{\texorpdfstring{S5.3 Emission:
@@ -665,37 +672,38 @@ temporal, and \(R\) components are conserved.
 By Proposition 3.1 (reversibility), emission is defined as the reverse
 process of absorption:
 
-\[(k_x, 0, 0, k_t, 0, Q_{10}) \;\longrightarrow\; (k_x, 0, 0, k_t, 0, Q_{01}) + g_{10 \to 01}\]
+\[(k_x, 0, 0, k_t, 0, Q_{2}) \;\longrightarrow\; (k_x, 0, 0, k_t, 0, Q_{1}) + g_{G \to B}\]
 
-The color charge of the quark changes, and a gluon carrying the
-difference is newly created.
+The color of the quark changes, and a gluon carrying the difference is
+newly created.
 
 \textbf{Proposition 5.1}: Interactions with gluons (both absorption and
-emission) change only the \(Q\) label (color charge) of the
+emission) change only the \(Q\) label (color) of the
 direction-constrained wave, preserving the spatial, temporal, \(R\)
 components, and dynamic state.
 
 \subsubsection{\texorpdfstring{S5.4 Pair Annihilation and Pair Creation:
 \(q + \bar{q} \leftrightarrow g(s)\)}{S5.4 Pair Annihilation and Pair Creation: q + \textbackslash bar\{q\} \textbackslash leftrightarrow g(s)}}\label{s5.4-pair-annihilation-and-pair-creation-q-barq-leftrightarrow-gs}
 
-In a quark-antiquark pair, the spatial axes (\(x, y, z\)) have inverted
-signs, while the \(Q\) value (color charge) and the sign of the \(t\)
-axis remain unchanged ({[}4{]} S9.9). Therefore, the antiquark carries
-the same color charge \((c_2 c_3)\) as the corresponding quark, and the
-bitwise composition (XOR) of color charges reduces to zero:
+In a quark-antiquark pair, the spatial axes and \(t\)-axis signs are
+inverted, and all \(Q\) bits are also inverted:
+\((R, G, B) \to (\bar{R}, \bar{G}, \bar{B})\) ({[}4{]} S9.9). Therefore,
+the antiquark of a quark with \(Q = 1\) (i.e., \((0,0,1) = B\)) has
+\(Q = 6\) (i.e., \((1,1,0)\)), and the bitwise composition (XOR) yields:
 
-\[(c_2 c_3) \oplus (c_2 c_3) = (00)\]
+\[(0,0,1) \oplus (1,1,0) = (1,1,1) = Q = 7\]
 
-Pair annihilation occurs, and the \(\kappa = 2\) wave pair is converted
-to \(\kappa = 0\) gluons. As the reverse process (pair creation), a
-quark-antiquark pair with the same color \((c_2 c_3)\) is generated from
-gluon energy:
+The XOR composition of a quark-antiquark pair always yields
+\((1,1,1) = Q = 7\), which is color-neutral. Pair annihilation occurs,
+and the \(\kappa = 2\) wave pair is converted to \(\kappa = 0\) gluons.
+As the reverse process (pair creation), a quark-antiquark pair is
+generated from gluon energy:
 
-\[q(c_2 c_3) + \bar{q}(c_2 c_3) \;\longleftrightarrow\; g(s)\]
+\[q(Q_i) + \bar{q}(Q_{7-i}) \;\longleftrightarrow\; g(s)\]
 
-\textbf{Proposition 5.2}: Quark-antiquark pairs carrying the same color
-charge can undergo pair annihilation and pair creation via gluons, as
-the XOR composition of their color charges reduces to zero.
+\textbf{Proposition 5.2}: Quark-antiquark pairs undergo pair
+annihilation and pair creation via gluons, as the XOR composition of
+their \((R, G, B)\) bits yields \((1,1,1) = Q = 7\) (color-neutral).
 
 \subsubsection{S5.5 Confinement
 Condition}\label{s5.5-confinement-condition}
@@ -706,35 +714,50 @@ waves must be \textbf{color-neutral}.
 
 \textbf{Definition 5.1} (Color neutrality condition): A set
 \(\{\psi_i\}\) of direction-constrained waves is color-neutral if the
-composition of \(c_2 c_3\) bits reduces to \((0, 0)\). Here, bit
-composition is defined as bitwise exclusive OR (XOR, addition over
-\(\mathbb{F}_2\)):
+XOR composition of their \((R, G, B)\) bits yields either \((0, 0, 0)\)
+(\(Q = 0\)) or \((1, 1, 1)\) (\(Q = 7\)). Here, bit composition is
+defined as bitwise exclusive OR (XOR, addition over \(\mathbb{F}_2\)):
 
-\[(a_1, a_2) \oplus (b_1, b_2) = (a_1 \oplus b_1,\; a_2 \oplus b_2) \quad (\oplus: \text{mod}\; 2 \text{ addition})\]
+\[(a_1, a_2, a_3) \oplus (b_1, b_2, b_3) = (a_1 \oplus b_1,\; a_2 \oplus b_2,\; a_3 \oplus b_3) \quad (\oplus: \text{mod}\; 2 \text{ addition})\]
 
 Realizations of color neutrality:
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}lll@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3684}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4737}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1579}}@{}}
 \toprule\noalign{}
-Configuration & Color combination & Name \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Configuration
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Color combination
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Name
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-3 waves & \((01) \oplus (10) \oplus (11) = (00)\) & Baryon type \\
-2 waves & \((c_2 c_3) \oplus (c_2 c_3) = (00)\) & Meson type \\
-1 wave & \((c_2 c_3) = (00)\) & Lepton type \\
+3 quarks & \((0,0,1) \oplus (0,1,0) \oplus (1,0,0) = (1,1,1) = Q{=}7\) &
+Baryon type \\
+quark + antiquark & e.g.~\((0,0,1) \oplus (1,1,0) = (1,1,1) = Q{=}7\) &
+Meson type \\
+1 wave & \(Q = 0\) (lepton) or \(Q = 7\) (antilepton) & Lepton type \\
 \end{longtable}
 }
 
-\textbf{Remark 5.1}: In the meson type, the quark and antiquark carry
-the same color \((c_2 c_3)\) (S5.4), so color neutrality is achieved by
-the XOR composition of two identical colors. In standard QCD, color
-neutrality is described as the annihilation of color and anti-color
-(\(\mathrm{SU}(3)\):
+\textbf{Remark 5.1}: In the meson type, the antiquark carries the
+bit-inverted color of the quark (S5.4), so the XOR composition of a
+quark with \(Q_i\) and its antiquark with \(Q_{7-i}\) always yields
+\((1,1,1) = Q = 7\). In the baryon type, three quarks carrying the three
+distinct single-bit colors \(Q \in \{1, 2, 4\}\) (i.e., \(B\), \(G\),
+\(R\)) compose via XOR to \((1,1,1) = Q = 7\). In both cases, the
+color-neutral state corresponds to \(Q = 7\) (all bits set). In standard
+QCD, color neutrality is described as the annihilation of color and
+anti-color (\(\mathrm{SU}(3)\):
 \(\mathbf{3} \otimes \bar{\mathbf{3}} \supset \mathbf{1}\)), whereas in
-this framework, XOR algebra over \(\mathbb{F}_2^2\) provides the
+this framework, XOR algebra over \(\mathbb{F}_2^3\) provides the
 corresponding operation. The algebraic structures differ, but the result
 -- color neutrality -- is identical.
 
@@ -769,12 +792,12 @@ component on the \(t\) axis. By condition (I1):
 
 The change in the \(t\)-axis component corresponds to the conversion
 between up-type (\(k_t > 0\)) and down-type (\(k_t < 0\)) in Table A of
-{[}4{]}. Simultaneously, the \(c_1\) bit (weak isospin) of the \(Q\)
-axis also changes. \(c_1\) and \(\mathrm{sign}(k_t)\) are independent
-degrees of freedom, and \(W^{\pm}\) mediates both. The \(c_2 c_3\) bits
-(color charge) of the \(Q\) axis are independent degrees of freedom
-orthogonal to the \(t\) axis and \(c_1\), and are conserved under
-interactions with \(W^{\pm}\).
+{[}4{]}. In the new encoding, weak isospin is directly encoded by
+\(\mathrm{sign}(k_t)\), so \(W^{\pm}\) mediates the isospin transition
+by flipping the sign of \(k_t\). The \((R, G, B)\) bits of the \(Q\)
+axis encode color charge and are independent degrees of freedom
+orthogonal to the \(t\) axis, and are conserved under interactions with
+\(W^{\pm}\).
 
 The \(t\)-axis displacement by \(W^{\pm}\) acts as a sign inversion when
 \(k_t\) is non-zero in both the initial and final states (quark system,
@@ -787,12 +810,13 @@ axis reconfiguration accompanying \(\kappa = 2\) preservation occurs
 
 Transformation of a direction-constrained wave by \(W^+\) absorption:
 
-\[\underbrace{(k_x, 0, 0, -k_t, 0, Q_d)}_{\text{down-type}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, 0, +k_t, 0, Q_u)}_{\text{up-type}}\]
+\[\underbrace{(k_x, 0, 0, -|k_t|, 0, Q)}_{\text{down-type}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, 0, +|k_t|, 0, Q)}_{\text{up-type}}\]
 
-\(W^+\) ceases to exist as an independent wave, the sign of the \(t\)
-axis of the direction-constrained wave is inverted (\(-k_t \to +k_t\)),
-and the \(c_1\) bit transitions \(0 \to 1\) (\(Q_d \to Q_u\)). Color
-charge \(c_2 c_3\) is conserved.
+\(W^+\) ceases to exist as an independent wave, and the sign of the
+\(t\) axis of the direction-constrained wave is inverted
+(\(-|k_t| \to +|k_t|\)), effecting the isospin transition from down-type
+to up-type. The \(Q\) value (color charge encoded by \((R, G, B)\)) is
+conserved.
 
 \subsubsection{\texorpdfstring{S6.3 Emission:
 \(f \to f' + W\)}{S6.3 Emission: f \textbackslash to f\textquotesingle{} + W}}\label{s6.3-emission-f-to-f-w}
@@ -800,31 +824,31 @@ charge \(c_2 c_3\) is conserved.
 By Proposition 3.1 (reversibility), emission is defined as the reverse
 process of absorption:
 
-\[\underbrace{(k_x, 0, 0, +k_t, 0, Q_u)}_{\text{up-type}} \;\longrightarrow\; \underbrace{(k_x, 0, 0, -k_t, 0, Q_d)}_{\text{down-type}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+}\]
+\[\underbrace{(k_x, 0, 0, +|k_t|, 0, Q)}_{\text{up-type}} \;\longrightarrow\; \underbrace{(k_x, 0, 0, -|k_t|, 0, Q)}_{\text{down-type}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+}\]
 
 The flavor of the direction-constrained wave changes from up-type to
-down-type (\(t\)-axis sign inversion, \(c_1: 1 \to 0\)), and \(W^+\) is
-newly created as an independent wave. By conservation law (I2), the
-change in the \(t\)-axis component is emitted as \(W^+\).
+down-type (\(t\)-axis sign inversion: \(+|k_t| \to -|k_t|\)), and
+\(W^+\) is newly created as an independent wave. By conservation law
+(I2), the change in the \(t\)-axis component is emitted as \(W^+\).
 
 \textbf{Independence of \(Q\)-axis color charge and the \(t\) axis}: In
-Table A of {[}4{]}, the \(Q\) axis is encoded as 3 bits
-\((c_1, c_2, c_3)\), where \(c_1\) represents weak isospin and
-\(c_2 c_3\) represents color charge (S5.1). \(c_1\) and the sign of the
-\(t\) axis \(\mathrm{sign}(k_t)\) are independent degrees of freedom,
-and \(W^{\pm}\) changes both simultaneously (S6.5). On the other hand,
-\(c_2 c_3\) (color charge) is an independent degree of freedom
-orthogonal to the \(t\) axis and \(c_1\), and (I1) requires displacement
-transfer only along the non-zero axis of the spherical wave (the \(t\)
-axis), so color charge \(c_2 c_3\) is conserved under interactions with
-\(W^{\pm}\).
+Table A of {[}4{]}, the \(Q\) axis is encoded as 3 bits \((R, G, B)\),
+where color charge is encoded by \((R, G, B)\) (S5.1) and weak isospin
+is encoded by \(\mathrm{sign}(k_t)\). Since isospin is carried entirely
+by the \(t\) axis, \(W^{\pm}\) mediates isospin transitions by flipping
+\(\mathrm{sign}(k_t)\), without acting on \(Q\). (I1) requires
+displacement transfer only along the non-zero axis of the spherical wave
+(the \(t\) axis), so the color charge \((R, G, B)\) is conserved under
+interactions with \(W^{\pm}\).
 
 \textbf{Proposition 6.1}: Interactions with \(W^{\pm}\) (both absorption
-and emission) change the \(t\)-axis component (flavor) and the \(c_1\)
-bit (weak isospin) of the \(Q\) axis of the direction-constrained wave.
-The \(c_2 c_3\) bits (color charge) of the \(Q\) axis are independent
-degrees of freedom orthogonal to the \(t\) axis and \(c_1\), and are
-conserved under interactions with \(W^{\pm}\).
+and emission) change the \(t\)-axis component (flavor and isospin) of
+the direction-constrained wave. Isospin is encoded by
+\(\mathrm{sign}(k_t)\), and \(W^{\pm}\) mediates the transition
+\(k_t > 0 \leftrightarrow k_t < 0\). The \((R, G, B)\) bits (color
+charge) of the \(Q\) axis are independent degrees of freedom orthogonal
+to the \(t\) axis, and are conserved under interactions with
+\(W^{\pm}\).
 
 \subsubsection{\texorpdfstring{S6.4 \(W\) Decay and Inverse
 Decay}{S6.4 W Decay and Inverse Decay}}\label{s6.4-w-decay-and-inverse-decay}
@@ -857,46 +881,50 @@ Rule}\label{s6.5-chirality-selection-rule}
 
 For the chirality \(\chi = \mathrm{sign}(k_{s_0} \cdot k_t)\)
 (\(k_{s_0}\): non-zero spatial component) defined in Definition 6.1 of
-{[}3{]}, we derive the coupling condition of \(W^{\pm}\). In Table A of
-{[}4{]}, the \(c_1\) bit of the \(Q\) axis encodes weak isospin and is
-an independent degree of freedom from the \(t\) axis. \(W^{\pm}\)
-mediates the change of the \(t\) axis and the transition of \(c_1\)
-respectively:
+{[}3{]}, we derive the coupling condition of \(W^{\pm}\). In the new
+encoding, weak isospin is directly encoded by \(\mathrm{sign}(k_t)\):
+\(k_t > 0\) = up-type, \(k_t < 0\) = down-type. \(W^{\pm}\) mediates the
+\(t\)-axis sign flip:
 
 \begin{itemize}
 \tightlist
 \item
-  \(W^+\): \(c_1 = 0 \to 1\) (down-type \(\to\) up-type)
+  \(W^+\): down \(\to\) up (\(k_t\): negative \(\to\) positive)
 \item
-  \(W^-\): \(c_1 = 1 \to 0\) (up-type \(\to\) down-type)
+  \(W^-\): up \(\to\) down (\(k_t\): positive \(\to\) negative)
 \end{itemize}
 
-Using the isospin sign \((-1)^{c_1}\) of \(c_1\), chirality is
-reformulated as:
+Since isospin is encoded by \(\mathrm{sign}(k_t)\) directly, the isospin
+sign factor is \(-\mathrm{sign}(k_t)\) (\(-1\) for up-type \(k_t > 0\),
+\(+1\) for down-type \(k_t < 0\)). Chirality is determined by the
+product of this sign and \(k_t\):
 
-\[\chi = \mathrm{sign}((-1)^{c_1} \cdot k_t)\]
+\[\chi = \mathrm{sign}(-\mathrm{sign}(k_t) \cdot k_t) = \mathrm{sign}(-|k_t|) = -1\]
+
+Left-handedness (\(\chi = -1\)) follows identically for all fermions
+that couple to \(W^{\pm}\). Since isospin IS the \(t\)-axis sign, the
+left-handedness of \(W^{\pm}\) coupling is an automatic geometric
+consequence.
 
 \textbf{Case of \(W^+\) absorption}: \(W^+ + \psi_d \to \psi_u\). The
-initial state is down-type (\(c_1 = 0\), \(k_t < 0\)):
+initial state is down-type (\(k_t < 0\)):
 
-\[\chi(\psi_d) = \mathrm{sign}((-1)^0 \cdot (-|k_t|)) = \mathrm{sign}((+1) \cdot (-)) = -1\]
+\[\chi(\psi_d) = \mathrm{sign}(-\mathrm{sign}(-|k_t|) \cdot (-|k_t|)) = \mathrm{sign}(-(-1)(-|k_t|)) = \mathrm{sign}(-|k_t|) = -1\]
 
 \textbf{Case of \(W^-\) absorption}: \(W^- + \psi_u \to \psi_d\). The
-initial state is up-type (\(c_1 = 1\), \(k_t > 0\)):
+initial state is up-type (\(k_t > 0\)):
 
-\[\chi(\psi_u) = \mathrm{sign}((-1)^1 \cdot (+|k_t|)) = \mathrm{sign}((-1) \cdot (+)) = -1\]
+\[\chi(\psi_u) = \mathrm{sign}(-\mathrm{sign}(+|k_t|) \cdot (+|k_t|)) = \mathrm{sign}(-(+1)(+|k_t|)) = \mathrm{sign}(-|k_t|) = -1\]
 
-In both cases, \(\chi = -1\) (left-handed) is derived without additional
-assumptions. Because \(c_1\) and \(k_t\) are independent degrees of
-freedom that distinguish \(W^+\) and \(W^-\), there is no need to assume
-sign reversal of \(k_{s_0}\).
+In both cases, \(\chi = -1\) (left-handed) is derived identically and
+automatically.
 
-\textbf{Proposition 6.3}: The coupling condition of \(W^{\pm}\) is
-determined by the sign of the product of the isospin sign \((-1)^{c_1}\)
-of the initial state and \(k_t\). For both \(W^+\) (\(c_1: 0 \to 1\))
-and \(W^-\) (\(c_1: 1 \to 0\)), \(\chi = -1\) (left-handed) holds, and
-right-handed (\(\chi = +1\)) direction-constrained waves do not couple
-to \(W^{\pm}\).
+\textbf{Proposition 6.3}: Since isospin is encoded by
+\(\mathrm{sign}(k_t)\), the chirality of \(W^{\pm}\)-coupled fermions
+simplifies to \(\chi = \mathrm{sign}(-|k_t|) = -1\) identically.
+Left-handedness of \(W^{\pm}\) coupling follows automatically from the
+\(t\)-axis encoding of isospin, and right-handed (\(\chi = +1\))
+direction-constrained waves do not couple to \(W^{\pm}\).
 
 \subsubsection{S6.6 CP Violation}\label{s6.6-cp-violation}
 
@@ -915,21 +943,21 @@ System}\label{s6.7-axis-reconfiguration-in-the-lepton-system}
 The \(W^{\pm}\) absorption and emission described in S6.2--6.3 treated
 the sign inversion of \(k_t\) (where \(k_t \neq 0\) in both initial and
 final states). This is the typical process for the quark system
-(\(c_2 c_3 \neq 00\)). In the lepton system (\(c_2 c_3 = 00\)), the axis
-configurations of charged leptons and neutrinos differ qualitatively, so
-the action of \(W^{\pm}\) involves axis reconfiguration.
+(\(Q \in \{1, 2, 4\}\), i.e., colored). In the lepton system
+(\(Q = 0\)), the axis configurations of charged leptons and neutrinos
+differ qualitatively, so the action of \(W^{\pm}\) involves axis
+reconfiguration.
 
-In Table A of {[}4{]}, fermions (\(\kappa = 2\)) with \(c_2 c_3 = 00\)
-(no color charge) have the following two types of axis configurations:
+In Table A of {[}4{]}, fermions (\(\kappa = 2\)) with \(Q = 0\) (no
+color charge) have the following two types of axis configurations:
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1250}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2917}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1458}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1458}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1042}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1875}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1463}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.3415}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1707}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1220}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2195}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Type
@@ -937,8 +965,6 @@ Type
 Non-zero axes
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 \(k_t\)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\(c_1\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 \(Q\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -948,16 +974,16 @@ Example
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Charged lepton & 1 spatial axis + \(t\) & \(\neq 0\) & 1 & 4 &
-\(e^-: (k_x, 0, 0, k_t, 0, 4)\) \\
-Neutrino & 2 spatial axes & \(= 0\) & 0 & 0 &
+Charged lepton & 1 spatial axis + \(t\) & \(\neq 0\) & 0 &
+\(e^-: (k_x, 0, 0, k_t, 0, 0)\) \\
+Neutrino & 2 spatial axes & \(= 0\) & 0 &
 \(\nu: (k_{s_1}, 0, k_{s_2}, 0, 0, 0)\) \\
 \end{longtable}
 }
 
 Charged lepton \(\to\) neutrino conversion by \(W^+\) absorption:
 
-\[\underbrace{(k_x, 0, 0, k_t, 0, 4)}_{\substack{\text{charged lepton} \\ \kappa = 2:\; (s, t),\; c_1 = 1}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{neutrino} \\ \kappa = 2:\; (s, s),\; c_1 = 0}}\]
+\[\underbrace{(k_x, 0, 0, k_t, 0, 0)}_{\substack{\text{charged lepton} \\ \kappa = 2:\; (s, t)}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{neutrino} \\ \kappa = 2:\; (s, s)}}\]
 
 This process cannot be fully described by (I1) alone. (I1) requires
 displacement along the non-zero axis of \(W^+\) (the \(t\) axis) and
@@ -982,7 +1008,7 @@ the simultaneous satisfaction of two conditions:
 
 Reverse process (neutrino \(\to\) charged lepton conversion):
 
-\[\underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{neutrino} \\ \kappa = 2:\; (s, s),\; c_1 = 0}} + \underbrace{(0, 0, 0, -, 0, 0)}_{W^-} \;\longrightarrow\; \underbrace{(k_x, 0, 0, k_t, 0, 4)}_{\substack{\text{charged lepton} \\ \kappa = 2:\; (s, t),\; c_1 = 1}}\]
+\[\underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{neutrino} \\ \kappa = 2:\; (s, s)}} + \underbrace{(0, 0, 0, -, 0, 0)}_{W^-} \;\longrightarrow\; \underbrace{(k_x, 0, 0, k_t, 0, 0)}_{\substack{\text{charged lepton} \\ \kappa = 2:\; (s, t)}}\]
 
 \(W^-\) supplies a \(t\)-axis component (\(0 \to k_t\)), and
 \(\kappa = 2\) preservation requires that one of the spatial axes
@@ -998,7 +1024,7 @@ spatial-axis components.
 \textbf{Remark 6.1}: The choice of which spatial axis is activated (or
 deactivated) in the axis reconfiguration is not uniquely determined by
 \(\kappa = 2\) preservation alone. For example, from
-\(e^-: (k_x, 0, 0, k_t, 0, 4)\), a neutrino generated by \(W^+\)
+\(e^-: (k_x, 0, 0, k_t, 0, 0)\), a neutrino generated by \(W^+\)
 absorption could be either \((k_x, k_y, 0, 0, 0, 0)\) or
 \((k_x, 0, k_z, 0, 0, 0)\), both satisfying \(\kappa = 2\). This degree
 of freedom may constitute the geometric origin of neutrino mixing (a
@@ -1447,16 +1473,16 @@ The main results of this paper are summarized:
   provides the origin of confinement, and asymptotic freedom holds
   inside the set (S5).
 \item
-  \textbf{Weak interaction}: \(W^{\pm}\) mediates \(t\)-axis
-  displacement and \(c_1\) (weak isospin) transition simultaneously. In
-  the quark system, this acts as a sign inversion of \(k_t\) (and
-  \(c_1: 0 \leftrightarrow 1\)); in the lepton system, the simultaneous
-  satisfaction of \(t\)-axis displacement and \(\kappa = 2\)
-  preservation produces axis reconfiguration between charged leptons and
-  neutrinos. In addition to absorption and emission, \(W\) decay and
-  inverse decay are unified as Type D/C. \(k_t \neq 0\) provides the
-  origin of CP violation and the left-handed chirality selection rule
-  (S6).
+  \textbf{Weak interaction}: \(W^{\pm}\) mediates \(t\)-axis sign flip
+  (isospin transition: \(k_t > 0 \leftrightarrow k_t < 0\)). In the
+  quark system, this acts as a sign inversion of \(k_t\); in the lepton
+  system, the simultaneous satisfaction of \(t\)-axis displacement and
+  \(\kappa = 2\) preservation produces axis reconfiguration between
+  charged leptons and neutrinos. In addition to absorption and emission,
+  \(W\) decay and inverse decay are unified as Type D/C. \(k_t \neq 0\)
+  provides the origin of CP violation. The left-handed chirality
+  selection rule (\(\chi = -1\)) follows automatically from the
+  \(t\)-axis encoding of isospin (S6).
 \item
   \textbf{Gravitational interaction}: The graviton acts on both
   \((t, R)\) axes and couples to all waves with

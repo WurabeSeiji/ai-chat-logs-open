@@ -1,57 +1,81 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
 \documentclass[
-  a4paper]{ltjsarticle}
+  a4paper,11pt]{ltjsarticle}
 \usepackage{xcolor}
-\usepackage[margin=2.5cm]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb}
+\usepackage{graphicx}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
+  \usepackage{textcomp}
+\else
+  \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
 \usepackage{lmodern}
 \ifPDFTeX\else
-  % xetex/luatex font selection
+  \setmainfont[]{Times New Roman}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Hiragino Mincho ProN}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Hiragino Mincho ProN}
+  \fi
 \fi
-% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
+\IfFileExists{microtype.sty}{%
   \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+  \UseMicrotypeSet[protrusion]{basicmath}
 }{}
 \makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
+\@ifundefined{KOMAClassName}{%
   \IfFileExists{parskip.sty}{%
     \usepackage{parskip}
-  }{% else
+  }{%
     \setlength{\parindent}{0pt}
     \setlength{\parskip}{6pt plus 2pt minus 1pt}}
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\setlength{\emergencystretch}{3em} % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none}
+\usepackage{calc}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \usepackage{bookmark}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
 \urlstyle{same}
+\usepackage{hyperref}
 \hypersetup{
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
-
-\author{}
-\date{}
-
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{amsthm}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定義}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{注意}
+\newtheorem{observation}[theorem]{観察}
 \begin{document}
-
 \section{\texorpdfstring{6次元超直方体を採用した \((R, Q)\)
 マッピングの構成}{6次元超直方体を採用した (R, Q) マッピングの構成}}\label{ux6b21ux5143ux8d85ux76f4ux65b9ux4f53ux3092ux63a1ux7528ux3057ux305f-r-q-ux30deux30c3ux30d4ux30f3ux30b0ux306eux69cbux6210}
 
@@ -87,7 +111,7 @@ I（6次元超直方体の採用）}\label{ux524dux63d0-i6ux6b21ux5143ux8d85ux76
 {[}W8{]} で定義された6次元超直方体（\(x, y, z, t, R, Q\)
 を軸とする組合せ論的構造）を採用する。ここで \(x, y, z, t, R\)
 は実数値をとる5軸、\(Q \in \{0, 1, 2, 3, 4, 5, 6, 7\}\) は3ビット符号化
-\(Q = 4c_1 + 2c_2 + c_3\)（\(c_i \in \{0, 1\}\)）による8値離散ラベル軸である（{[}W8{]}
+\(Q = 4R + 2G + B\)（\(R, G, B \in \{0, 1\}\)）による8値離散ラベル軸である（{[}W8{]}
 定義 1.1, 1.2）。
 
 \subsubsection{前提
@@ -208,5 +232,4 @@ II（メタ情報保持能力）}\label{ux524dux63d0-iiux30e1ux30bfux60c5ux5831u
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \emph{v1.0}
-
 \end{document}
