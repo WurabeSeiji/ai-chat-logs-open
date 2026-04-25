@@ -15,7 +15,7 @@ By Lagrange's four-square theorem and projective-geometric conditions, full-sphe
 From a 6-dimensional structure — a 5D hypercube plus an 8-valued discrete label axis Q — 62 states are derived by pure enumeration, without any physics terminology. These correspond to the 61 SM particles + the graviton. (W8)
 
 **Claim 3: Unified description of the four forces**  
-Electromagnetism, the weak force, the strong force, and gravity are all described as the same operation — "axial displacement transfer" — applied to different axes. (W10, W11)
+The 6D axes are classified into position-type {x,y,z,t}, scale-type {R}, and color-type {Q}. Electromagnetism, the weak force, the strong force, and gravity are all described as the same operation — "axial displacement transfer" — applied to different axis types. (W10, W11)
 
 ---
 
@@ -48,14 +48,14 @@ Independent topic. Constructs oscillation, propagation, collision, and wave-pack
 | Quarks + antiparticles | 1/2 | 36 |
 | **Total (SM 61 + graviton)** | | **62** |
 
-## Four Forces and Axis Correspondence
+## Four Forces and Axis-Type Correspondence
 
-| Force | Axial displacement transfer target |
-|-------|-----|
-| Strong | Q-axis (color transition, 8 ch) |
-| Weak | t-axis sign flip (isospin transition) |
-| EM | R-axis |
-| Gravity | t-axis + R-axis (2 axes nonzero) |
+| Force | Boson | Target axis type |
+|-------|-------|------|
+| Strong | g (κ_s=0) | Color-type Q (color transition, 8 ch) |
+| Weak | W± (κ_s=1) | Position + scale-type (t-axis sign flip) |
+| EM | γ (κ_s=0) | Scale-type R |
+| Gravity | G (κ_s=0) | Position + scale-type (Δk change) |
 
 ---
 
