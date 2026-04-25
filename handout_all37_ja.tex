@@ -1,0 +1,155 @@
+% !TEX program = lualatex
+\documentclass[9pt,a4paper]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{top=1.2cm,bottom=1.0cm,left=1.3cm,right=1.3cm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{luatexja-fontspec}
+% QR code as pre-generated PNG image
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+\setlist{nosep,leftmargin=1.0em,topsep=0pt,partopsep=0pt}
+\pagestyle{empty}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{12pt}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries 中心投影フレームワーク：全37論文の概要}\\[2pt]
+{\small 木原 範昭（Noriaki Kihara）\enspace WF System Co., Ltd.\enspace 大阪大学 基礎工学部 卒業\enspace ORCID: \href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020}}
+\end{center}
+
+\vspace{-1pt}
+\hrule height 0.7pt
+\vspace{4pt}
+
+%% ── 3つの主張 ──
+\begin{tcolorbox}[colback=gray!7,colframe=gray!55,boxrule=0.4pt,arc=2pt,left=4pt,right=4pt,top=2pt,bottom=2pt]
+{\small
+\textbf{主張 1：5次元背景空間の整数論的必然性}\enspace
+ラグランジュの四平方定理と射影幾何的条件から、離散空間で全球被覆が成立するには5次元が必然。「3空間$+$1時間」は整数論から導かれる。{\scriptsize（W5）}\\[2pt]
+\textbf{主張 2：標準模型62状態の組合せ論的導出}\enspace
+5次元超直方体に8値離散ラベル軸$Q$を追加した6次元構造から、物理用語を一切使わず62状態を導出。標準模型61粒子$+$重力子に対応。{\scriptsize（W8）}\\[2pt]
+\textbf{主張 3：4つの力の統一的記述}\enspace
+電磁気力・弱い力・強い力・重力が「軸方向変位転送」という同一操作の異なる軸への適用として統一的に記述される。{\scriptsize（W10, W11）}}
+\end{tcolorbox}
+
+\vspace{2pt}
+
+%% ── 2段組 ──
+\begin{multicols}{2}
+\small
+
+\textbf{I. 基礎シリーズ（論文1〜10）}\enspace
+中心投影の幾何学的性質のみからde~Sitter時空との等価性、4つの対称性、入れ子構造、SdS厳密解を導出。4次元が安定条件を満たす最小次元であること、1対3の非対称性から時間軸の起源を導出。
+
+\smallskip
+\textbf{II. 位相方程式篇（W1〜W11＋S1・S2＋補講6本）}\enspace
+超直方体の組合せ構造を導入。W5で5次元の必然性を証明、W6--7でスピン分類、\textbf{W8で62状態を導出}、W10--11で形不変波と4つの力の統一。補講でCKM/PMNS行列、ヒッグス、質量構造を考察。
+
+\smallskip
+\textbf{III. 統合論文（M1〜M3）}\enspace
+基礎シリーズ（連続幾何学）と位相方程式篇（離散組合せ論）を接続。3つの曲率半径$R, R_0, R_1$による入れ子構造を定式化。
+
+\smallskip
+\textbf{IV. ディレイ回路（5論文）}\enspace
+独立テーマ。「情報の遅延伝達」のみから振動・伝播・衝突・波束の収縮を構成。
+
+\vspace{6pt}
+\textbf{62状態の内訳}
+
+\vspace{1pt}
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}lrr@{}}
+\toprule
+状態 & スピン & 個数 \\
+\midrule
+ヒッグス & 0 & 1 \\
+$W^+$, $W^-$ & 1\,($t$型) & 2 \\
+光子, $Z$ & 1\,($R$型) & 2 \\
+グルーオン & 1\,($Q$遷移型) & 8 \\
+グラビトン & 2\,($tR$型) & 1 \\
+レプトン＋反粒子 & 1/2 & 12 \\
+クォーク＋反粒子 & 1/2 & 36 \\
+\midrule
+\multicolumn{2}{@{}l}{合計（標準模型61＋重力子）} & \textbf{62} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\columnbreak
+
+\textbf{4つの力と軸の対応}
+
+\vspace{1pt}
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}ll@{}}
+\toprule
+力 & 軸方向変位転送の対象 \\
+\midrule
+強い力 & $Q$軸（色遷移、8ch） \\
+弱い力 & $t$軸$+Q$軸（$c_1$遷移） \\
+電磁力 & $R$軸 \\
+重力 & $t$軸$+R$軸（2軸非零） \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{6pt}
+\textbf{本研究が主張しないこと}
+
+\vspace{1pt}
+\begin{itemize}[topsep=1pt]
+\item 標準模型を物理的に「導出」したこと
+\item 質量値・結合定数・混合行列の数値の導出
+\item 未発見粒子の予言
+\item ゲージ群の連続極限における厳密な再構成
+\end{itemize}
+
+\vspace{1pt}
+{\footnotesize W8\,\S9の標準模型との対応は「解釈の一例」であり、本論文の主張ではない。}
+
+\vspace{6pt}
+\textbf{主要論文のDOI}
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}ll@{}}
+論文1（基礎） & \href{https://doi.org/10.5281/zenodo.19427780}{10.5281/zenodo.19427780} \\
+W5（5次元） & \href{https://doi.org/10.5281/zenodo.19624957}{10.5281/zenodo.19624957} \\
+W8（62状態） & \href{https://doi.org/10.5281/zenodo.19748174}{10.5281/zenodo.19748174} \\
+W10（4モード） & \href{https://doi.org/10.5281/zenodo.19709798}{10.5281/zenodo.19709798} \\
+W11（4つの力） & \href{https://doi.org/10.5281/zenodo.19731275}{10.5281/zenodo.19731275} \\
+\end{tabular}
+}
+
+\end{multicols}
+
+\vspace{0pt}
+\hrule height 0.4pt
+\vspace{3pt}
+
+%% ── QRコード + フッタ ──
+\begin{center}
+\begin{minipage}[c]{1.8cm}
+\includegraphics[height=1.7cm]{qr_portal.png}
+\end{minipage}
+\hspace{6pt}
+\begin{minipage}[c]{13cm}
+{\footnotesize\textbf{全論文の詳細解説・DOIリンク一覧}\enspace \url{https://note.com/kiharanoriaki/n/nc1619291b690}}\\[1pt]
+{\footnotesize\textbf{ソースコード（GitHub）}\enspace \url{https://github.com/WurabeSeiji/ai-chat-logs-open}}\\[1pt]
+{\scriptsize 全論文のPDF・LaTeX・MarkdownはZenodoに公開済み（日英対訳）}
+\end{minipage}
+\end{center}
+
+\end{document}
