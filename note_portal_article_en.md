@@ -41,7 +41,7 @@ By Lagrange's four-square theorem and the projective-geometric conditions of cen
 From a 6-dimensional structure — a 5D hypercube augmented with an 8-valued discrete label axis Q — 62 states are derived by pure enumeration, without using any physics terminology (W8). These 62 states have a structure that can be mapped to the 61 Standard Model particles + the graviton.
 
 **3. Unified description of the four forces**
-Through mode classification of shape-invariant waves (W10) and their interactions (W11), the four forces — electromagnetism, the weak force, the strong force, and gravity — are uniformly described as the same operation, "axial displacement transfer," applied to different axes.
+Through mode classification of shape-invariant waves (W10) and their interactions (W11), the four forces — electromagnetism, the weak force, the strong force, and gravity — are uniformly described as the same operation, "axial displacement transfer," applied to different **axis types** (position-type, scale-type, color-type).
 
 ---
 
@@ -177,16 +177,17 @@ Classifies shape-invariant waves into 3 stable modes by the number of nonzero wa
 
 **W11**: Interactions of Shape-Invariant Waves — Axial Displacement Transfer, Wave-Packet Deformation, and Retroactive Construction of Causality
 https://doi.org/10.5281/zenodo.19763463
-Uniformly describes the four forces via axial displacement transfer. Formalizes the geometric origin of mass.
+Classifies the 6D axes into position-type {x,y,z,t}, scale-type {R}, and color-type {Q}, introducing "axis-type symmetry" where a boson acts on all axes within each type where it has a nonzero component. Uniformly describes the four forces and formalizes the geometric origin of mass.
 
 ```
-Four forces and axis correspondence:
-  Strong force  → Q-axis (RGB color transition, 8 channels)
-  Weak force    → t-axis sign flip (isospin transition)
-  EM force      → R-axis
-  Gravity       → t-axis + R-axis (2 axes nonzero)
+Four forces and axis-type correspondence:
+  Strong force  → color-type Q-axis (RGB color transition, 8 channels)
+  Weak force    → position-type + scale-type (fermion t-axis sign flip)
+  EM force      → scale-type R-axis
+  Gravity       → position-type + scale-type (dynamic state Δk change)
 
 All are the same operation: "axial displacement transfer"
+γ, g, G are spherical waves (κ_s=0); W±, Z⁰ are localized carriers (κ_s=1)
 ```
 
 ---

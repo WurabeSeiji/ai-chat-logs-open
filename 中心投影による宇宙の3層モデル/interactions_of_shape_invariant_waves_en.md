@@ -3,15 +3,15 @@
 **Author**: Noriaki Kihara  
 **Affiliation**: WF System Co., Ltd.  
 **ORCID**: 0009-0004-6753-4020  
-**Version**: v2.1  
+**Version**: v3.0  
 **Date**: April 2026  
-**DOI**: 10.5281/zenodo.19709800
+**DOI**: 10.5281/zenodo.19767187
 
 ---
 
 ## Abstract
 
-Building on the three-mode classification of shape-invariant waves introduced in the companion paper [3] (direction-constrained waves $\kappa = 2$, spherical waves $\kappa = 0$, standing waves $\kappa = 1$), we provide a unified description of interactions between different modes. The fundamental mechanism of interaction is defined as **axis-directional displacement transfer** -- the change of a direction-constrained wave's state vector $(\mathbf{k}, \Delta\mathbf{k})$ along the direction of the non-zero axis carried by a spherical wave. Interactions are classified into four fundamental vertex types (absorption, emission, pair annihilation, pair creation), and we prove that under conservation laws, absorption $\Leftrightarrow$ emission and pair annihilation $\Leftrightarrow$ pair creation are reversible. Within this unified framework, we systematically describe all fundamental vertices for the four forces (electromagnetism, strong force, weak force, gravity). Coupling with a standing wave ($\kappa = 1$) modifies the propagation speed ratio $|k_x / k_t|$ of a direction-constrained wave, providing a geometric origin for mass. Under the conserved quantity $\int |\psi|^2 \, dV$, energy transfer deforms the amplitude and width of a wave packet inversely, and this deformation gives a dynamical description of "wave packet collapse." Interactions mediated by spherical waves with $k_t = 0$ carry no intrinsic causal ordering, and the shortest geodesic path and the localization of the wave packet are retroactively constructed from the interaction outcome.
+Building on the three-mode classification of shape-invariant waves introduced in the companion paper [3] (direction-constrained waves $\kappa = 2$, spherical waves $\kappa = 0$, standing waves $\kappa = 1$), we provide a unified description of interactions between different modes. In this paper, $W^{\pm}$ and $Z^0$ are assigned $\kappa_s = 1$, extending gauge boson modes into two subclasses: **spherical gauge bosons** ($\kappa_s = 0$: $\gamma$, $g$, $G$) and **localized carrier waves** ($\kappa_s = 1$: $W^{\pm}$, $Z^0$). The fundamental mechanism of interaction is defined as **axis-directional displacement transfer** -- the change of a direction-constrained wave's state vector $(\mathbf{k}, \Delta\mathbf{k})$ along the direction of the non-zero axis type carried by a gauge boson. Interactions are classified into four fundamental vertex types (absorption, emission, pair annihilation, pair creation), and we prove that under conservation laws, absorption $\Leftrightarrow$ emission and pair annihilation $\Leftrightarrow$ pair creation are reversible. Within this unified framework, we systematically describe all fundamental vertices for the four forces (electromagnetism, strong force, weak force, gravity). Coupling with a standing wave ($\kappa = 1$) modifies the propagation speed ratio $|k_x / k_t|$ of a direction-constrained wave, providing a geometric origin for mass. Under the conserved quantity $\int |\psi|^2 \, dV$, energy transfer deforms the amplitude and width of a wave packet inversely, and this deformation gives a dynamical description of "wave packet collapse." Interactions mediated by gauge bosons with $k_t = 0$ carry no intrinsic causal ordering, and the shortest geodesic path and the localization of the wave packet are retroactively constructed from the interaction outcome.
 
 **Keywords**: shape-invariant wave, fundamental vertex, axis-directional displacement transfer, wave packet deformation, origin of mass, retroactive construction of causality, conservation law
 
@@ -23,7 +23,7 @@ This paper provides a unified description of interactions between waves of diffe
 
 The claims of this paper are limited to the following six points:
 
-1. All interactions are described uniformly as displacement transfer along the non-zero axes of spherical waves. The difference among types of force reduces solely to the difference in the axis along which the transfer occurs.
+1. All interactions are described uniformly as displacement transfer along the non-zero axis types of gauge bosons. The difference among types of force reduces solely to the difference in the axis type along which the transfer occurs.
 2. Interactions are classified into four fundamental vertex types (absorption, emission, pair annihilation, pair creation), and under conservation laws, absorption $\Leftrightarrow$ emission and pair annihilation $\Leftrightarrow$ pair creation are reversible.
 3. Coupling with a standing wave ($\kappa = 1$) modifies the speed ratio of a direction-constrained wave, providing a geometric origin for mass.
 4. Under the conserved quantity $\int |\psi|^2 \, dV$, energy transfer deterministically deforms the shape of a wave packet, and this deformation corresponds to "wave packet collapse" in observation.
@@ -41,7 +41,7 @@ Quantitative derivations:
 
 Details of specific mechanisms:
 
-- Mass acquisition mechanism for $W^{\pm}$ and $Z^0$ bosons (details of indirect coupling not mediated by spatial axes)
+- Mass acquisition mechanism for $W^{\pm}$ and $Z^0$ bosons ($\kappa_s = 1$; quantitative evaluation of indirect coupling via spatial axes)
 - Mass acquisition mechanism for 1st- and 2nd-generation fermions (details of indirect coupling when the non-zero axis of the standing wave is not directly shared)
 
 **Note on physical nomenclature**: This paper uses physical names (photon, graviton, electron, flavor, color charge, etc.) assuming correspondence with Table A of [4], but this is for interpretive convenience; the geometric content of each proposition does not depend on the physical identification. All propositions are derived solely from the component structure of wave vectors ($\kappa$, $k_t$, type of axis).
@@ -61,13 +61,21 @@ $$(\mathbf{k},\; \Delta\mathbf{k}) \in \mathbb{Z}^4 \times \mathbb{Z}^4$$
 
 ### S2.2 Axis-Directional Displacement Transfer
 
-**Definition 2.1** (Axis-directional displacement transfer): When a spherical wave ($\kappa = 0$) interacts with a direction-constrained wave ($\kappa = 2$), the state of the direction-constrained wave changes as follows:
+**Terminology note**: $W^{\pm}$ ($x$-axis) and $Z^0$ ($y$-axis) have $\kappa_s = 1$. Accordingly, gauge boson modes are divided into two subclasses: **spherical gauge bosons** ($\kappa_s = 0$: $\gamma$, $g$, $G$) and **localized carrier waves** ($\kappa_s = 1$: $W^{\pm}$, $Z^0$). In this paper, "gauge boson" is used as the collective term encompassing both subclasses.
+
+**Definition 2.1** (Axis-directional displacement transfer): When a gauge boson interacts with a direction-constrained wave ($\kappa = 2$), the state of the direction-constrained wave changes as follows:
 
 $$(\mathbf{k},\; \Delta\mathbf{k}) \;\longrightarrow\; (\mathbf{k} + \delta\mathbf{k},\; \Delta\mathbf{k} + \delta(\Delta\mathbf{k}))$$
 
 where the displacements $\delta\mathbf{k}$ and $\delta(\Delta\mathbf{k})$ satisfy the following conditions:
 
-**(I1) Axiality**: The non-zero components of $\delta\mathbf{k}$ and $\delta(\Delta\mathbf{k})$ exist only along the non-zero axis directions in Table A of [4] for the spherical wave. Here, "non-zero axis directions" includes not only continuous displacements along the $t$ and $R$ axes but also discrete label transitions on the $Q$ axis ($Q_i \to Q_j$). That is, for gluons, (I1) requires that the displacement transfer acts only on the $Q$ label change, preserving all other axis components.
+**(I1) Axis-type symmetry**: The 6D axes $\{x, y, z, t, R, Q\}$ are classified into three **axis types**:
+
+- **Position type** $\{x, y, z, t\}$: combinatorially symmetric axes arising from the hypercube structure of [4]. The distinction between spatial axes $\{x, y, z\}$ and the temporal axis $\{t\}$ arises from the geometry of central projection, not from the combinatorial structure itself.
+- **Scale type** $\{R\}$: the radial axis of the central projection.
+- **Color type** $\{Q\}$: the discrete label axis encoding color charge as 3 bits $(R, G, B)$.
+
+Displacement acts on **all axes within the type** where the gauge boson has a non-zero component. That is, the non-zero components of $\delta\mathbf{k}$ and $\delta(\Delta\mathbf{k})$ exist only along the axis types in which the gauge boson has non-zero axes. "Non-zero axis directions" includes not only continuous displacements along the $t$ and $R$ axes but also discrete label transitions on the $Q$ axis ($Q_i \to Q_j$). For gluons, (I1) requires that the displacement transfer acts only on the $Q$ label change, preserving all other axis components. For gauge bosons with position-type axes ($W^{\pm}$, $Z^0$, $G$), (I1) permits action on all position-type axes including $t$.
 
 **(I2) Conservation law**: The total sum of tangent bundle states of all waves involved in the interaction is conserved:
 
@@ -84,22 +92,22 @@ Axis-directional displacement transfer encompasses two qualitatively different t
 | $\delta\mathbf{k} \neq 0$ | Static label $\mathbf{k}$ | Conversion of wave type | Flavor conversion, color charge exchange |
 | $\delta(\Delta\mathbf{k}) \neq 0$ | Dynamic state $\Delta\mathbf{k}$ | Change in energy-momentum | Scattering, acceleration |
 
-The type of spherical wave determines which (or both) is dominant.
+The type of gauge boson determines which (or both) is dominant.
 
 ### S2.4 Unification of the Four Forces
 
-From the non-zero axis structure of spherical waves in Table A of [4], the four forces are described as applications of the same operation to different axes:
+From the non-zero axis structure of gauge bosons in Table A of [4], the four forces are described as applications of the same operation to different axis types:
 
 | Force | Spherical wave | Non-zero axis | Dominant change |
 |-------|---------------|--------------|-----------------|
 | Electromagnetism | $\gamma\; (0,0,0,0,R,0)$ | $R$ | $\delta(\Delta\mathbf{k})$ (momentum change) |
 | Strong force | $g\; (0,0,0,0,0,Q_i)$ ${}^{*}$ | $Q$ | $\delta\mathbf{k}$ (label change) |
-| Weak force | $W^{\pm}\; (0,0,0,\pm t,0,0)$ | $t$ | $\delta\mathbf{k}$ (label change) |
+| Weak force | $W^{\pm}\; (\pm,0,0,0,+,0)$ | $x, R$ (position + scale type) | $\delta\mathbf{k}$ (label change) |
 | Gravity | $G\; (0,0,0,\pm t,\pm R,0)$ | $t, R$ | $\delta(\Delta\mathbf{k})$ (energy change) |
 
-${}^{*}$ Whereas $\gamma$, $W^{\pm}$, and $G$ are spherical waves with static non-zero components on the $t$ or $R$ axes, $g$ mediates color charge exchange through a spherical wave with discrete label value $Q_i$ on the $Q$ axis transitioning to a different label value $Q_j$. That is, the "non-zero axis" of $g$ acts not as a fixed value but as a change in the $Q$ label (detailed in S5).
+${}^{*}$ Whereas $\gamma$ and $G$ are spherical gauge bosons with static non-zero components on the $R$ or $(t, R)$ axes, and $W^{\pm}$ is a localized carrier wave with non-zero components on the $x$ and $R$ axes (position type + scale type), $g$ mediates color charge exchange through a discrete label value $Q_i$ on the $Q$ axis transitioning to a different label value $Q_j$. That is, the "non-zero axis" of $g$ acts not as a fixed value but as a change in the $Q$ label (detailed in S5). $W^{\pm}$ has a position-type axis ($x$), so by (I1) axis-type symmetry, it can act on all position-type axes including $t$.
 
-**Proposition 2.1**: All four forces are described as axis-directional displacement transfer per Definition 2.1, and the difference among types of force reduces solely to the difference in the axis along which the transfer occurs.
+**Proposition 2.1**: All four forces are described as axis-directional displacement transfer per Definition 2.1, and the difference among types of force reduces solely to the difference in the axis type along which the transfer occurs.
 
 ### S2.5 $R$-Axis Discretization Condition (Prerequisite)
 
@@ -153,7 +161,7 @@ $$\kappa = 0 \to \kappa = 2 \;\Longleftarrow\; \mathbf{0} \to \mathbf{k}_f + \ma
 
 **Corollary 3.1**: Type A (absorption) and Type B (emission) are reverse processes of each other, and Type C (pair annihilation) and Type D (pair creation) are reverse processes of each other.
 
-**Remark 3.1**: When spherical waves with $k_t \neq 0$ ($W^{\pm}$, $G$) are involved, both the forward and reverse processes are permitted, but due to the temporal asymmetry introduced by $k_t \neq 0$, a causal temporal ordering exists (detailed in S9.5).
+**Remark 3.1**: When the interaction changes a fermion's $t$-axis sign ($W^{\pm}$) or the gauge boson has $k_t \neq 0$ ($G$), both the forward and reverse processes are permitted, but due to the $t$-axis involvement, a causal temporal ordering exists (detailed in S9.5).
 
 ### S3.3 Composite Processes
 
@@ -322,21 +330,23 @@ Inside a color-neutral set (inside the shared subjective space), the curvature o
 
 ## S6 Weak Interaction and Flavor Conversion
 
-### S6.1 $t$-Axis Displacement
+### S6.1 Isospin Transition via Position-Type Axis
 
-$W^{\pm} = (0, 0, 0, \pm t, 0, 0)$ is a spherical wave with a non-zero component on the $t$ axis. By condition (I1):
+$W^{\pm}$ has the sign vector $W^+ = (+, 0, 0, 0, +, 0)$, $W^- = (-, 0, 0, 0, +, 0)$, where the $x$-axis sign encodes electric charge. $W^{\pm}$ itself has no $t$-component, but by (I1) axis-type symmetry, a gauge boson with a position-type axis ($x$) can act on **all position-type axes** including $t$.
 
-$$\delta\mathbf{k}_W: \quad k_t \;\longrightarrow\; k_t' = k_t + \delta k_t$$
+The physical effect is the flip of the fermion's $t$-axis sign (isospin transition):
 
-The change in the $t$-axis component corresponds to the conversion between up-type ($k_t > 0$) and down-type ($k_t < 0$) in Table A of [4]. In the new encoding, weak isospin is directly encoded by $\mathrm{sign}(k_t)$, so $W^{\pm}$ mediates the isospin transition by flipping the sign of $k_t$. The $(R, G, B)$ bits of the $Q$ axis encode color charge and are independent degrees of freedom orthogonal to the $t$ axis, and are conserved under interactions with $W^{\pm}$.
+$$\delta\mathbf{k}_W: \quad k_t \;\longrightarrow\; k_t' = -k_t$$
 
-The $t$-axis displacement by $W^{\pm}$ acts as a sign inversion when $k_t$ is non-zero in both the initial and final states (quark system, S6.2--6.3). When the transition involves $k_t = 0$ (lepton system), axis reconfiguration accompanying $\kappa = 2$ preservation occurs (S6.7).
+This corresponds to the conversion between up-type ($k_t > 0$) and down-type ($k_t < 0$) in Table A of [4]. In the new encoding, weak isospin is directly encoded by $\mathrm{sign}(k_t)$, so $W^{\pm}$ mediates the isospin transition by flipping the sign of $k_t$. The $(R, G, B)$ bits of the $Q$ axis encode color charge. Since $Q$ is a **color-type** axis, and $W^{\pm}$ has no color-type component, color charge is conserved under interactions with $W^{\pm}$.
+
+The $t$-axis sign flip by $W^{\pm}$ acts as a sign inversion when $k_t$ is non-zero in both the initial and final states (quark system, S6.2--6.3). When the transition involves $k_t = 0$ (lepton system), axis reconfiguration accompanying $\kappa = 2$ preservation occurs (S6.7).
 
 ### S6.2 Absorption: $f + W \to f'$
 
 Transformation of a direction-constrained wave by $W^+$ absorption:
 
-$$\underbrace{(k_x, 0, 0, -|k_t|, 0, Q)}_{\text{down-type}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, 0, +|k_t|, 0, Q)}_{\text{up-type}}$$
+$$\underbrace{(k_x, 0, 0, -|k_t|, 0, Q)}_{\text{down-type}} + \underbrace{(+, 0, 0, 0, +, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, 0, +|k_t|, 0, Q)}_{\text{up-type}}$$
 
 $W^+$ ceases to exist as an independent wave, and the sign of the $t$ axis of the direction-constrained wave is inverted ($-|k_t| \to +|k_t|$), effecting the isospin transition from down-type to up-type. The $Q$ value (color charge encoded by $(R, G, B)$) is conserved.
 
@@ -344,13 +354,13 @@ $W^+$ ceases to exist as an independent wave, and the sign of the $t$ axis of th
 
 By Proposition 3.1 (reversibility), emission is defined as the reverse process of absorption:
 
-$$\underbrace{(k_x, 0, 0, +|k_t|, 0, Q)}_{\text{up-type}} \;\longrightarrow\; \underbrace{(k_x, 0, 0, -|k_t|, 0, Q)}_{\text{down-type}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+}$$
+$$\underbrace{(k_x, 0, 0, +|k_t|, 0, Q)}_{\text{up-type}} \;\longrightarrow\; \underbrace{(k_x, 0, 0, -|k_t|, 0, Q)}_{\text{down-type}} + \underbrace{(+, 0, 0, 0, +, 0)}_{W^+}$$
 
 The flavor of the direction-constrained wave changes from up-type to down-type ($t$-axis sign inversion: $+|k_t| \to -|k_t|$), and $W^+$ is newly created as an independent wave. By conservation law (I2), the change in the $t$-axis component is emitted as $W^+$.
 
-**Independence of $Q$-axis color charge and the $t$ axis**: In Table A of [4], the $Q$ axis is encoded as 3 bits $(R, G, B)$, where color charge is encoded by $(R, G, B)$ (S5.1) and weak isospin is encoded by $\mathrm{sign}(k_t)$. Since isospin is carried entirely by the $t$ axis, $W^{\pm}$ mediates isospin transitions by flipping $\mathrm{sign}(k_t)$, without acting on $Q$. (I1) requires displacement transfer only along the non-zero axis of the spherical wave (the $t$ axis), so the color charge $(R, G, B)$ is conserved under interactions with $W^{\pm}$.
+**Independence of $Q$-axis color charge and the position-type axis**: In Table A of [4], the $Q$ axis is encoded as 3 bits $(R, G, B)$, where color charge is encoded by $(R, G, B)$ (S5.1) and weak isospin is encoded by $\mathrm{sign}(k_t)$. Since isospin is carried entirely by the $t$ axis (a position-type axis), $W^{\pm}$ mediates isospin transitions by flipping $\mathrm{sign}(k_t)$ via (I1) axis-type symmetry. Since $Q$ is a color-type axis and $W^{\pm}$ has no color-type component, color charge $(R, G, B)$ is conserved under interactions with $W^{\pm}$.
 
-**Proposition 6.1**: Interactions with $W^{\pm}$ (both absorption and emission) change the $t$-axis component (flavor and isospin) of the direction-constrained wave. Isospin is encoded by $\mathrm{sign}(k_t)$, and $W^{\pm}$ mediates the transition $k_t > 0 \leftrightarrow k_t < 0$. The $(R, G, B)$ bits (color charge) of the $Q$ axis are independent degrees of freedom orthogonal to the $t$ axis, and are conserved under interactions with $W^{\pm}$.
+**Proposition 6.1**: Interactions with $W^{\pm}$ (both absorption and emission) change the $t$-axis component (flavor and isospin) of the direction-constrained wave via (I1) position-type axis symmetry. $W^{\pm}$ has a position-type axis ($x$) and therefore can act on all position-type axes including $t$, mediating the transition $k_t > 0 \leftrightarrow k_t < 0$. The $(R, G, B)$ bits (color charge) of the $Q$ axis belong to the color type and are conserved under interactions with $W^{\pm}$.
 
 ### S6.4 $W$ Decay and Inverse Decay
 
@@ -366,11 +376,11 @@ $$f_u + \bar{f}_d \;\longrightarrow\; W^+$$
 
 A direction-constrained wave and an anti-direction-constrained wave are annihilated, and $W^+$ is created. This corresponds to the $t$-axis version of pair annihilation (Type C).
 
-**Proposition 6.2**: $W$ decay is the $t$-axis version of Type D, and inverse decay is the $t$-axis version of Type C. Both are causal processes with $k_t \neq 0$, and decay and inverse decay are temporally distinguishable.
+**Proposition 6.2**: $W$ decay is the $t$-axis version of Type D, and inverse decay is the $t$-axis version of Type C. Since the fermion's $k_t \neq 0$ changes in the process, causal time ordering exists, and decay and inverse decay are temporally distinguishable.
 
 ### S6.5 Chirality Selection Rule
 
-For the chirality $\chi = \mathrm{sign}(k_{s_0} \cdot k_t)$ ($k_{s_0}$: non-zero spatial component) defined in Definition 6.1 of [3], we derive the coupling condition of $W^{\pm}$. In the new encoding, weak isospin is directly encoded by $\mathrm{sign}(k_t)$: $k_t > 0$ = up-type, $k_t < 0$ = down-type. $W^{\pm}$ mediates the $t$-axis sign flip:
+For the chirality $\chi = \mathrm{sign}(k_{s_0} \cdot k_t)$ ($k_{s_0}$: non-zero spatial component) defined in Definition 6.1 of [3], we derive the coupling condition of $W^{\pm}$. In the new encoding, weak isospin is directly encoded by $\mathrm{sign}(k_t)$: $k_t > 0$ = up-type, $k_t < 0$ = down-type. $W^{\pm}$ mediates the $t$-axis sign flip via (I1) position-type axis symmetry:
 
 - $W^+$: down $\to$ up ($k_t$: negative $\to$ positive)
 - $W^-$: up $\to$ down ($k_t$: positive $\to$ negative)
@@ -395,9 +405,9 @@ In both cases, $\chi = -1$ (left-handed) is derived identically and automaticall
 
 ### S6.6 CP Violation
 
-As shown in Proposition 6.4 of [3], CP symmetry can only be violated in interactions with $k_t \neq 0$. $W^{\pm}$ has $k_t = \pm 1 \neq 0$ and is the only one among the four types of spherical waves with $k_t \neq 0$.
+As shown in Proposition 6.4 of [3], CP symmetry can only be violated when the interaction involves the $t$ axis. The condition for CP violation is that the interaction **changes the fermion's $t$-axis sign**: $W^{\pm}$ is the only gauge boson that flips the fermion's $k_t$ (via (I1) position-type axis symmetry). The photon $\gamma$ and gluon $g$ lack position-type axes entirely ($\gamma$ has only scale type $R$; $g$ has only color type $Q$), so they cannot act on the $t$ axis. The graviton $G$ has $k_t \neq 0$, but by Proposition 7.1, $G$ acts only on the dynamic state $\Delta\mathbf{k}$, not on the static label $\mathbf{k}$; the fermion's $t$-axis sign (part of $\mathbf{k}$) is therefore unchanged by gravity.
 
-**Proposition 6.4**: Only $W^{\pm}$, which has a non-zero component on the $t$ axis, mediates CP symmetry violation. This is a direct consequence of $k_t \neq 0$ introducing temporal asymmetry.
+**Proposition 6.4**: Only $W^{\pm}$ mediates CP symmetry violation, because it is the only gauge boson that changes the fermion's $t$-axis sign. This is a direct consequence of $W^{\pm}$ being the unique gauge boson with a position-type axis that acts on the static label $\mathbf{k}$ (including $k_t$).
 
 ### S6.7 Axis Reconfiguration in the Lepton System
 
@@ -412,18 +422,18 @@ In Table A of [4], fermions ($\kappa = 2$) with $Q = 0$ (no color charge) have t
 
 Charged lepton $\to$ neutrino conversion by $W^+$ absorption:
 
-$$\underbrace{(k_x, 0, 0, k_t, 0, 0)}_{\substack{\text{charged lepton} \\ \kappa = 2:\; (s, t)}} + \underbrace{(0, 0, 0, +, 0, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{neutrino} \\ \kappa = 2:\; (s, s)}}$$
+$$\underbrace{(k_x, 0, 0, k_t, 0, 0)}_{\substack{\text{charged lepton} \\ \kappa = 2:\; (s, t)}} + \underbrace{(+, 0, 0, 0, +, 0)}_{W^+} \;\longrightarrow\; \underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{neutrino} \\ \kappa = 2:\; (s, s)}}$$
 
-This process cannot be fully described by (I1) alone. (I1) requires displacement along the non-zero axis of $W^+$ (the $t$ axis) and permits the transition $k_t \to 0$. However, the transition to $k_t = 0$ reduces the number of non-zero axes from $\kappa = 2$ to $\kappa = 1$, so the stability condition for $\kappa = 2$ (Theorem 5.1 of [3]) demands compensatory activation of a spatial axis.
+This process cannot be fully described by (I1) alone. (I1) axis-type symmetry permits $W^{\pm}$ (which has a position-type axis) to act on all position-type axes including $t$, allowing the transition $k_t \to 0$. However, the transition to $k_t = 0$ reduces the number of non-zero axes from $\kappa = 2$ to $\kappa = 1$, so the stability condition for $\kappa = 2$ (Theorem 5.1 of [3]) demands compensatory activation of a spatial axis.
 
 That is, the action of $W^{\pm}$ on the lepton system is determined as the simultaneous satisfaction of two conditions:
 
-1. **(I1)**: Displacement along the $t$ axis ($k_t \to 0$ or $0 \to k_t$)
+1. **(I1)**: Position-type axis symmetry permits $W^{\pm}$ to act on $t$ ($k_t \to 0$ or $0 \to k_t$)
 2. **$\kappa = 2$ preservation**: The fermion condition maintains the number of non-zero axes at $\kappa = 2$
 
 Reverse process (neutrino $\to$ charged lepton conversion):
 
-$$\underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{neutrino} \\ \kappa = 2:\; (s, s)}} + \underbrace{(0, 0, 0, -, 0, 0)}_{W^-} \;\longrightarrow\; \underbrace{(k_x, 0, 0, k_t, 0, 0)}_{\substack{\text{charged lepton} \\ \kappa = 2:\; (s, t)}}$$
+$$\underbrace{(k_x, 0, k_{s_2}, 0, 0, 0)}_{\substack{\text{neutrino} \\ \kappa = 2:\; (s, s)}} + \underbrace{(-, 0, 0, 0, +, 0)}_{W^-} \;\longrightarrow\; \underbrace{(k_x, 0, 0, k_t, 0, 0)}_{\substack{\text{charged lepton} \\ \kappa = 2:\; (s, t)}}$$
 
 $W^-$ supplies a $t$-axis component ($0 \to k_t$), and $\kappa = 2$ preservation requires that one of the spatial axes ($k_{s_2}$) becomes deactivated.
 
@@ -506,11 +516,11 @@ The speed decreases -- this is the **geometric origin of mass**.
 
 ### S8.3 Waves That Do Not Couple
 
-Spherical waves ($\kappa_s = 0$) have no spatial components. The standing wave has phase structure along one spatial axis, but spherical waves have no spatial axis to share.
+Spherical gauge bosons ($\kappa_s = 0$: $\gamma$, $g$, $G$) have no spatial components. The standing wave has phase structure along one spatial axis, but spherical gauge bosons have no spatial axis to share.
 
-**Proposition 8.2**: Spherical waves with $\kappa_s = 0$ have no coupling axis with the standing wave, yielding $\delta k_H = 0$. The speed remains $v = c$ without modification.
+**Proposition 8.2**: Spherical gauge bosons with $\kappa_s = 0$ ($\gamma$, $g$, $G$) have no coupling axis with the standing wave, yielding $\delta k_H = 0$. The speed remains $v = c$ without modification.
 
-This is consistent with the gauge bosons with $\kappa_s = 0$ ($\gamma$, $g$) having zero mass in Table A of [4]. $W^{\pm}$ and $Z^0$ have $\kappa_s = 0$ and therefore lack direct coupling through spatial axes as described by Proposition 8.2, but they may acquire mass through an indirect standing wave coupling mechanism via the $t$ or $R$ axis. Proposition 8.2 addresses only coupling through direct spatial axis sharing; the details of indirect coupling mechanisms via the $t$ or $R$ axis are outside the scope of this paper.
+This is consistent with $\gamma$, $g$, and $G$ having zero mass in Table A of [4]. $W^{\pm}$ and $Z^0$, on the other hand, have $\kappa_s = 1$ (localized carrier waves) and therefore possess spatial axes ($x$ for $W^{\pm}$, $y$ for $Z^0$). They can couple to the standing wave through these spatial axes via indirect coupling, analogous to the mechanism for 1st- and 2nd-generation fermions. Quantitative evaluation of this indirect coupling is outside the scope of this paper.
 
 ### S8.4 Mass Hierarchy
 
@@ -586,18 +596,19 @@ That is, the structure "conservation laws are strictly followed, but causal orde
 
 ### S9.5 The Case of $k_t \neq 0$
 
-Interactions mediated by $W^{\pm}$ ($k_t \neq 0$) and $G$ ($k_t \neq 0$) are not causally symmetric. (R1)--(R3) do not apply:
+When the interaction changes the fermion's $t$-axis sign ($W^{\pm}$) or the gauge boson has $k_t \neq 0$ ($G$), the process is not causally symmetric. (R1)--(R3) do not apply:
 
 - The path is causally determined (emission first, absorption later)
 - Time-reversal symmetry is broken
 - CP non-conservation becomes possible (Proposition 6.4, $W^{\pm}$ only)
 
-| $k_t$ of spherical wave | Causal ordering | Path selection | CP | Corresponding force |
-|------------------------|----------------|---------------|-----|-------------------|
-| $k_t = 0$ | None | Retroactive (geodesic) | Conserved | Electromagnetism, strong force |
-| $k_t \neq 0$ | Present | Causal | May be violated | Weak force, gravity |
+| Condition | Causal ordering | Path selection | CP | Corresponding force |
+|-----------|----------------|---------------|-----|-------------------|
+| Fermion $k_t$ unchanged AND boson $k_t = 0$ | None | Retroactive (geodesic) | Conserved | Electromagnetism, strong force |
+| Fermion $k_t$ changes ($W^{\pm}$) | Present | Causal | May be violated | Weak force |
+| Boson $k_t \neq 0$ ($G$) | Present | Causal | Conserved | Gravity |
 
-Combined with Remark 3.1 of S3.2: when $k_t = 0$, absorption and emission are temporally indistinguishable (the reversibility of S3 is completely symmetric), whereas when $k_t \neq 0$, even though they are reversible, they are temporally distinguishable.
+Combined with Remark 3.1 of S3.2: when neither the fermion's $k_t$ changes nor the boson has $k_t \neq 0$, absorption and emission are temporally indistinguishable (the reversibility of S3 is completely symmetric), whereas when the $t$ axis is involved (either through fermion $k_t$ change or boson $k_t \neq 0$), even though they are reversible, they are temporally distinguishable.
 
 ---
 
@@ -605,7 +616,7 @@ Combined with Remark 3.1 of S3.2: when $k_t = 0$, absorption and emission are te
 
 The main results of this paper are summarized:
 
-1. **Unified interaction mechanism**: All forces are described as displacement transfer (I1)--(I3) along non-zero axes of spherical waves, and the type of force reduces solely to the difference in axes (S2).
+1. **Unified interaction mechanism**: All forces are described as displacement transfer (I1)--(I3) along non-zero axis types of gauge bosons, and the type of force reduces solely to the difference in axis types (S2).
 
 2. **Fundamental vertices and reversibility**: Interactions are classified into four fundamental vertex types (absorption, emission, pair annihilation, pair creation), and under conservation laws, absorption $\Leftrightarrow$ emission and pair annihilation $\Leftrightarrow$ pair creation are reversible (S3).
 
@@ -613,23 +624,23 @@ The main results of this paper are summarized:
 
 4. **Strong interaction**: Gluons mediate $Q$-axis transitions and exchange color charge. Absorption, emission, pair annihilation, pair creation are systematically described. The color neutrality condition provides the origin of confinement, and asymptotic freedom holds inside the set (S5).
 
-5. **Weak interaction**: $W^{\pm}$ mediates $t$-axis sign flip (isospin transition: $k_t > 0 \leftrightarrow k_t < 0$). In the quark system, this acts as a sign inversion of $k_t$; in the lepton system, the simultaneous satisfaction of $t$-axis displacement and $\kappa = 2$ preservation produces axis reconfiguration between charged leptons and neutrinos. In addition to absorption and emission, $W$ decay and inverse decay are unified as Type D/C. $k_t \neq 0$ provides the origin of CP violation. The left-handed chirality selection rule ($\chi = -1$) follows automatically from the $t$-axis encoding of isospin (S6).
+5. **Weak interaction**: $W^{\pm} = (\pm, 0, 0, 0, +, 0)$ has a position-type axis ($x$), and by (I1) axis-type symmetry acts on all position-type axes including $t$, mediating the $t$-axis sign flip (isospin transition: $k_t > 0 \leftrightarrow k_t < 0$). In the quark system, this acts as a sign inversion of $k_t$; in the lepton system, the simultaneous satisfaction of $t$-axis displacement and $\kappa = 2$ preservation produces axis reconfiguration between charged leptons and neutrinos. In addition to absorption and emission, $W$ decay and inverse decay are unified as Type D/C. The fermion's $k_t$ flip provides the origin of CP violation ($W^{\pm}$ is the only gauge boson that changes the fermion's $t$-axis sign). The left-handed chirality selection rule ($\chi = -1$) follows automatically from the $t$-axis encoding of isospin (S6).
 
 6. **Gravitational interaction**: The graviton acts on both $(t, R)$ axes and couples to all waves with $\Delta\mathbf{k} \neq 0$ (universal coupling). Absorption and emission are systematically described (S7).
 
-7. **Origin of mass**: Coupling with the standing wave ($\kappa = 1$, $z$ axis) reduces the speed ratio $|k_{s_0} / k_t|$ of direction-constrained waves, producing mass as $v < c$. The 3rd generation, which directly shares the $z$ axis, has the strongest coupling strength, providing the origin of the inter-generation mass hierarchy $m_3 \gg m_{1,2}$. Spherical waves with $\kappa_s = 0$ lack a coupling axis and have zero mass (S8).
+7. **Origin of mass**: Coupling with the standing wave ($\kappa = 1$, $z$ axis) reduces the speed ratio $|k_{s_0} / k_t|$ of direction-constrained waves, producing mass as $v < c$. The 3rd generation, which directly shares the $z$ axis, has the strongest coupling strength, providing the origin of the inter-generation mass hierarchy $m_3 \gg m_{1,2}$. Spherical gauge bosons with $\kappa_s = 0$ ($\gamma$, $g$, $G$) lack a coupling axis and remain massless. $W^{\pm}$ and $Z^0$ ($\kappa_s = 1$) possess spatial axes and can gain mass via indirect coupling (S8).
 
-8. **Wave packet deformation and causal structure**: Wave packet collapse is a conservation-law-governed deformation and "observation" is unnecessary. Interactions mediated by spherical waves with $k_t = 0$ are causally symmetric, and the path, localization, and variational principle are retroactively constructed. The case $k_t \neq 0$ has causal temporal ordering (S9).
+8. **Wave packet deformation and causal structure**: Wave packet collapse is a conservation-law-governed deformation and "observation" is unnecessary. Interactions where the $t$ axis is not involved (fermion $k_t$ unchanged AND boson $k_t = 0$) are causally symmetric, and the path, localization, and variational principle are retroactively constructed. When the $t$ axis is involved (fermion $k_t$ changes or boson $k_t \neq 0$), causal temporal ordering exists (S9).
 
 The correspondence with Table A of [4] is shown below:
 
-| Interaction | Spherical wave | Non-zero axis | Effect on direction-constrained wave | $k_t$ | Causality | Fundamental vertices |
-|------------|---------------|--------------|-------------------------------------|-------|-----------|---------------------|
-| Higgs coupling | Standing wave $H^0$ | $z$ axis | Decrease in $v$ (mass) | 0 | -- | -- |
-| Electromagnetic | $\gamma$ | $R$ | $\Delta\mathbf{k}$ change (scattering) | 0 | Retroactive | A, B, C, D |
-| Strong | $g$ | $Q$ | $Q$ change (color exchange) | 0 | Retroactive | A, B, C, D |
-| Weak | $W^{\pm}$ | $t$ | $k_t$ change (flavor conversion) | $\neq 0$ | Causal | A, B, C, D |
-| Gravity | $G$ | $t, R$ | $\Delta\mathbf{k}$ change (acceleration) | $\neq 0$ | Causal | A, B |
+| Interaction | Gauge boson | Sign vector | Non-zero axis type | Effect on direction-constrained wave | $t$-axis involvement | Causality | Vertices |
+|------------|------------|-------------|-------------------|-------------------------------------|---------------------|-----------|----------|
+| Higgs coupling | $H^0$ ($\kappa=1$) | $(0,0,+,0,0,0)$ | position | Decrease in $v$ (mass) | None | -- | -- |
+| Electromagnetic | $\gamma$ ($\kappa_s=0$) | $(0,0,0,0,+,0)$ | scale | $\Delta\mathbf{k}$ change (scattering) | None | Retroactive | A, B, C, D |
+| Strong | $g$ ($\kappa_s=0$) | $(0,0,0,0,0,Q_i)$ | color | $Q$ change (color exchange) | None | Retroactive | A, B, C, D |
+| Weak | $W^{\pm}$ ($\kappa_s=1$) | $(\pm,0,0,0,+,0)$ | position + scale | Fermion $k_t$ flip (flavor conversion) | Fermion $k_t$ changes | Causal | A, B, C, D |
+| Gravity | $G$ ($\kappa_s=0$) | $(0,0,0,\pm,\pm,0)$ | position + scale | $\Delta\mathbf{k}$ change (acceleration) | Boson $k_t \neq 0$ | Causal | A, B |
 
 All claims in this paper are stated as geometric facts, and the physical correspondences are presented as "connectable interpretations."
 
