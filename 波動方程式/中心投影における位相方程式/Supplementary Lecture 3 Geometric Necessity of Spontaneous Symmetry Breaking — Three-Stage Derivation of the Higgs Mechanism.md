@@ -29,7 +29,7 @@ This paper demonstrates that within our framework, such an external potential is
 **Referenced papers**:
 - [1] Shape-Invariant Standing Waves on Closed Spheres — Stability by Dimension and the Geometric Necessity of 3+1 Spacetime
 - [2] Full Spherical Coverage of Central Projection in Discrete Spaces and the Number-Theoretic Necessity of a 5-Dimensional Background Space (W5), DOI: 10.5281/zenodo.19624957
-- [3] Set Structure and Combinatorial Properties of 6-Dimensional Hypercuboids (W8), DOI: 10.5281/zenodo.19721125
+- [3] Set Structure and Combinatorial Properties of 6-Dimensional Hypercuboids (W8), DOI: 10.5281/zenodo.19762134
 - [4] Four Modes of Shape-Invariant Waves (W10), DOI: 10.5281/zenodo.19709798
 
 ---
@@ -194,5 +194,5 @@ This supplementary lecture has derived the qualitative direction of the mass hie
 
 - [1] Noriaki Kihara, "Shape-Invariant Standing Waves on Closed Spheres — Stability by Dimension and the Geometric Necessity of 3+1 Spacetime," 2026.
 - [2] Noriaki Kihara, "Full Spherical Coverage of Central Projection in Discrete Spaces and the Number-Theoretic Necessity of a 5-Dimensional Background Space," Zenodo preprint, DOI: 10.5281/zenodo.19624957 (2026).
-- [3] Noriaki Kihara, "Set Structure and Combinatorial Properties of 6-Dimensional Hypercuboids," Zenodo preprint, DOI: 10.5281/zenodo.19721125 (2026).
+- [3] Noriaki Kihara, "Set Structure and Combinatorial Properties of 6-Dimensional Hypercuboids," Zenodo preprint, DOI: 10.5281/zenodo.19762134 (2026).
 - [4] Noriaki Kihara, "Four Modes of Shape-Invariant Waves — Spin, Chirality, and Statistics Determined by Wave-Vector Structure," Zenodo preprint, DOI: 10.5281/zenodo.19709798 (2026).

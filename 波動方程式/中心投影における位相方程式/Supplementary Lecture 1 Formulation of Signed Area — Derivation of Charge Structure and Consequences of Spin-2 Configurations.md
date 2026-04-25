@@ -281,5 +281,5 @@ were demonstrated.
 ## References
 
 - [3] N. Kihara, "Full Spherical Coverage of Central Projection in Discrete Space and the Number-Theoretic Necessity of Five-Dimensional Background Space," Zenodo preprint, DOI: 10.5281/zenodo.19624957 (2026).
-- [4] N. Kihara, "Set Structure of the Six-Dimensional Hyperrectangle and Its Combinatorial Properties," Zenodo preprint, DOI: 10.5281/zenodo.19721125 (2026).
-- [5] N. Kihara, "Interactions of Shape-Invariant Waves — Axial Displacement Transfer, Wave Packet Deformation, and Retroactive Construction of Causality," Zenodo preprint, DOI: 10.5281/zenodo.19721128 (2026).
+- [4] N. Kihara, "Set Structure of the Six-Dimensional Hyperrectangle and Its Combinatorial Properties," Zenodo preprint, DOI: 10.5281/zenodo.19762134 (2026).
+- [5] N. Kihara, "Interactions of Shape-Invariant Waves — Axial Displacement Transfer, Wave Packet Deformation, and Retroactive Construction of Causality," Zenodo preprint, DOI: 10.5281/zenodo.19763463 (2026).

@@ -7,21 +7,20 @@
 \usepackage{xcolor}
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb}
-\usepackage{graphicx}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp}
-\else
-  \usepackage{unicode-math}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
 \usepackage{lmodern}
 \ifPDFTeX\else
-  \setmainfont[]{Times New Roman}
+  % xetex/luatex font selection
   \ifXeTeX
     \usepackage{xeCJK}
     \setCJKmainfont[]{Hiragino Mincho ProN}
@@ -31,51 +30,48 @@
     \setmainjfont[]{Hiragino Mincho ProN}
   \fi
 \fi
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{%
+\IfFileExists{microtype.sty}{% use microtype if available
   \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
 \makeatletter
-\@ifundefined{KOMAClassName}{%
+\@ifundefined{KOMAClassName}{% if non-KOMA class
   \IfFileExists{parskip.sty}{%
     \usepackage{parskip}
-  }{%
+  }{% else
     \setlength{\parindent}{0pt}
     \setlength{\parskip}{6pt plus 2pt minus 1pt}}
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{longtable,booktabs,array}
-\newcounter{none}
-\usepackage{calc}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
+% Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \usepackage{bookmark}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
-\usepackage{hyperref}
 \hypersetup{
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
-\setlength{\emergencystretch}{3em}
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\usepackage{amsthm}
-\newtheorem{theorem}{定理}[section]
-\newtheorem{proposition}[theorem]{命題}
-\newtheorem{lemma}[theorem]{補題}
-\newtheorem{corollary}[theorem]{系}
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{定義}
-\theoremstyle{remark}
-\newtheorem{remark}[theorem]{注意}
-\newtheorem{observation}[theorem]{観察}
+
+\author{}
+\date{}
+
 \begin{document}
+
 \section{符号付き面積の定式化------電荷構造の導出とスピン2配置の帰結}\label{ux7b26ux53f7ux4ed8ux304dux9762ux7a4dux306eux5b9aux5f0fux5316ux96fbux8377ux69cbux9020ux306eux5c0eux51faux3068ux30b9ux30d4ux30f32ux914dux7f6eux306eux5e30ux7d50}
 
 \subsection{\texorpdfstring{------ {[}4{]} §7 の符号積 \(P\)
@@ -625,10 +621,11 @@ SM値
   Zenodo preprint, DOI: 10.5281/zenodo.19624957 (2026).
 \item
   {[}4{]} 木原 範昭, ``6次元超直方体の集合構造とその組合せ論的性質,''
-  Zenodo preprint, DOI: 10.5281/zenodo.19721125 (2026).
+  Zenodo preprint, DOI: 10.5281/zenodo.19762134 (2026).
 \item
   {[}5{]} 木原 範昭,
   ``形不変波の相互作用------軸方向変位転送・波束変形・因果の遡及的構成,''
-  Zenodo preprint, DOI: 10.5281/zenodo.19721128 (2026).
+  Zenodo preprint, DOI: 10.5281/zenodo.19763463 (2026).
 \end{itemize}
+
 \end{document}

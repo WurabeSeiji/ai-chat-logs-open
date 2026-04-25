@@ -62,7 +62,7 @@ The symmetry is broken as $\mathrm{SO}(3) \to \mathrm{SO}(2)$, where the $z$ axi
 
 (iii) The CKM matrix is diagonally dominant.
 
-*Argument*. The weak interaction mediated by $W^{\pm}$ is an isospin transition ([5] §6), which flips the $t$-axis sign of the fermion and converts up-type quarks into down-type quarks. Since each generation of quarks occupies only one spatial axis, inter-generation transitions involve changing the spatial axis.
+*Argument*. The weak interaction mediated by $W^{\pm}$ is an isospin transition ([5] §6), which acts on all position-type axes via the axis-type symmetry, flipping the $t$-axis sign of the fermion and converting up-type quarks into down-type quarks. Since each generation of quarks occupies only one spatial axis, inter-generation transitions involve changing the spatial axis.
 
 Due to the Higgs $z$-axis selection, fermions on the $z$ axis (third generation) have a mass scale significantly different from those on other axes. The deviation between mass eigenstates and flavor eigenstates (mixing angle) depends on the coupling strength between axes, which is inversely proportional to the mass difference.
 
@@ -176,5 +176,5 @@ The derivation of specific numerical values of the mixing angles remains as an o
 
 ## References
 
-- [4] Noriaki Kihara, "Set Structure and Combinatorial Properties of the 6-Dimensional Hyperrectangle," Zenodo preprint, DOI: 10.5281/zenodo.19721125 (2026).
-- [5] Noriaki Kihara, "Interactions of Shape-Invariant Waves — Axial Displacement Transfer, Wave Packet Deformation, and Retroactive Constitution of Causality," Zenodo preprint, DOI: 10.5281/zenodo.19721128 (2026).
+- [4] Noriaki Kihara, "Set Structure and Combinatorial Properties of the 6-Dimensional Hyperrectangle," Zenodo preprint, DOI: 10.5281/zenodo.19762134 (2026).
+- [5] Noriaki Kihara, "Interactions of Shape-Invariant Waves — Axial Displacement Transfer, Wave Packet Deformation, and Retroactive Constitution of Causality," Zenodo preprint, DOI: 10.5281/zenodo.19763463 (2026).

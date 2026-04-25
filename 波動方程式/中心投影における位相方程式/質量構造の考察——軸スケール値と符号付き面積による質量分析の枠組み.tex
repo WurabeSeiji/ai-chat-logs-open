@@ -7,20 +7,20 @@
 \usepackage{xcolor}
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb}
-\usepackage{graphicx}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp}
-\else
-  \usepackage{unicode-math}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
 \usepackage{lmodern}
 \ifPDFTeX\else
+  % xetex/luatex font selection
   \setmainfont[]{Times New Roman}
   \ifXeTeX
     \usepackage{xeCJK}
@@ -31,51 +31,48 @@
     \setmainjfont[]{Hiragino Mincho ProN}
   \fi
 \fi
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{%
+\IfFileExists{microtype.sty}{% use microtype if available
   \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
 \makeatletter
-\@ifundefined{KOMAClassName}{%
+\@ifundefined{KOMAClassName}{% if non-KOMA class
   \IfFileExists{parskip.sty}{%
     \usepackage{parskip}
-  }{%
+  }{% else
     \setlength{\parindent}{0pt}
     \setlength{\parskip}{6pt plus 2pt minus 1pt}}
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{longtable,booktabs,array}
-\newcounter{none}
-\usepackage{calc}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
+% Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \usepackage{bookmark}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
-\usepackage{hyperref}
 \hypersetup{
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
-\setlength{\emergencystretch}{3em}
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\usepackage{amsthm}
-\newtheorem{theorem}{定理}[section]
-\newtheorem{proposition}[theorem]{命題}
-\newtheorem{lemma}[theorem]{補題}
-\newtheorem{corollary}[theorem]{系}
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{定義}
-\theoremstyle{remark}
-\newtheorem{remark}[theorem]{注意}
-\newtheorem{observation}[theorem]{観察}
+
+\author{}
+\date{}
+
 \begin{document}
+
 \section{質量構造の考察------軸スケール値と符号付き面積による質量分析の枠組み}\label{ux8ceaux91cfux69cbux9020ux306eux8003ux5bdfux8ef8ux30b9ux30b1ux30fcux30ebux5024ux3068ux7b26ux53f7ux4ed8ux304dux9762ux7a4dux306bux3088ux308bux8ceaux91cfux5206ux6790ux306eux67a0ux7d44ux307f}
 
 \subsection{------ {[}4{]} §9.11 の質量問題に対する予備的考察
@@ -102,8 +99,9 @@
 および定義9.5 の曲率エネルギー写像
 \(f_m^{\text{curv}}: (x, y, z, t, R, Q, R_1) \to \mathbb{R}_{\geq 0}\)
 の関数形を制約する試みとして位置づけられる。§2--§3 はフェルミオンの
-\(f_m^{\text{rest}}\) の候補形式を検討し、§5.1 はゲージボソンの
-\(f_m^{\text{curv}}\) との関連に触れる。
+\(f_m^{\text{rest}}\) の候補形式を検討し、§5.1
+はゲージボソンの質量機構との関連に触れ、§5.3 は {[}4{]} v10
+によるゲージボソンの空間軸指定がもたらす過剰決定を分析する。
 
 \textbf{参照論文}: - {[}3{]}
 離散空間における中心投影の全球被覆と5次元背景空間の整数論的必然性（W5）
@@ -406,12 +404,10 @@ Q軸結合関数 \(f(Q, v_i)\) の関数形
   軸と空間軸の非自明な結合を含む。
 \item
   \textbf{\(f_m^{\text{curv}}\)}（曲率エネルギー写像）: \(W^{\pm}, Z^0\)
-  等のゲージボソンに適用される。{[}5{]} §8 の \(\delta k_H\)
-  による質量修正は \(f_m^{\text{rest}}\)
-  の範疇であるが、ゲージボソンの質量は主観空間の曲率半径 \(R_1\)
-  に由来する加速度エネルギーであり（{[}5{]}
-  補講4）、\(f_m^{\text{curv}}\) に対応する。\(f_m^{\text{curv}}\)
-  の関数形は本稿の範囲外である。
+  等のゲージボソンに適用されうる。ただし {[}5{]} v6 により
+  \(W^{\pm}, Z^0\) は
+  \(\kappa_s = 1\)（空間軸成分あり）であるため、フェルミオンと同様に定常波との直接結合（\(f_m^{\text{rest}}\)）を通じた質量獲得が可能である。\(f_m^{\text{curv}}\)
+  が追加的に寄与するか否かは本稿の範囲外である。
 \end{itemize}
 
 \subsubsection{5.2
@@ -429,6 +425,208 @@ Q軸結合関数 \(f(Q, v_i)\) の関数形
 の観察2.2）を持つ。ニュートリノ質量の精密測定により検証可能である。
 
 \subsubsection{5.3
+ゲージボソンの軸指定と同一軸上の過剰決定}\label{ux30b2ux30fcux30b8ux30dcux30bdux30f3ux306eux8ef8ux6307ux5b9aux3068ux540cux4e00ux8ef8ux4e0aux306eux904eux5270ux6c7aux5b9a}
+
+{[}4{]} v10
+において、ゲージボソンの符号ベクトルが空間軸を含む形に改訂された。{[}5{]}
+v6 により \(W^{\pm}\), \(Z^0\) は
+\(\kappa_s = 1\)（空間軸成分あり）となり、定常波 \(H^0\)（\(z\)
+軸）との直接的な空間軸結合を通じて質量を獲得する（{[}5{]} §8）。
+
+\textbf{ボソンの軸指定}（{[}4{]} v10 表A）:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}clcc@{}}
+\toprule\noalign{}
+粒子 & 符号ベクトル \((x, y, z, t, R, Q)\) & \(\kappa_s\) &
+占有空間軸 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(W^+\) & \((+, 0, 0, 0, +, 0)\) & 1 & \(x\) \\
+\(W^-\) & \((-, 0, 0, 0, +, 0)\) & 1 & \(x\) \\
+\(Z^0\) & \((0, \pm, 0, 0, +, 0)\) & 1 & \(y\) \\
+\(\gamma\) & \((0, 0, 0, 0, +, 0)\) & 0 & --- \\
+\(H^0\) & \((0, 0, +, 0, 0, 0)\) & 1 & \(z\) \\
+\end{longtable}
+}
+
+世代ラベル（世代1: \(x\)、世代2: \(y\)、世代3: \(z\); {[}4{]}
+§9.9）と同じ空間軸上にゲージボソンが指定されている。これにより、同一空間軸上にフェルミオンとボソンの計測質量が同時に存在する。
+
+\paragraph{5.3.1
+同一軸上の質量対}\label{ux540cux4e00ux8ef8ux4e0aux306eux8ceaux91cfux5bfe}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1852}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1852}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1481}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1852}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1481}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+空間軸
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+荷電レプトン
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+質量 (MeV)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+ボソン
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+質量 (MeV)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(m_B / m_\ell\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(x\) & \(e\) & \(0.511\) & \(W^{\pm}\) & \(80{,}379\) &
+\(157{,}297\) \\
+\(y\) & \(\mu\) & \(105.66\) & \(Z^0\) & \(91{,}188\) & \(863\) \\
+\(z\) & \(\tau\) & \(1{,}776.86\) & \(H^0\) & \(125{,}250\) &
+\(70.5\) \\
+\end{longtable}
+}
+
+\textbf{注記}: \(H^0\) は定常波そのものであり、\(W^{\pm}\), \(Z^0\)
+のように定常波との結合を通じて質量を獲得するのではない。\(z\)
+軸の比較は参考値として記載する。
+
+クォークを含めると、各軸に最大4個の独立な計測質量が存在する:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+空間軸
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+荷電レプトン
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+上型クォーク
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+下型クォーク
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+ボソン
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(x\) & \(m_e = 0.511\) & \(m_u = 2.16\) & \(m_d = 4.67\) &
+\(m_W = 80{,}379\) \\
+\(y\) & \(m_\mu = 105.66\) & \(m_c = 1{,}270\) & \(m_s = 93.4\) &
+\(m_Z = 91{,}188\) \\
+\(z\) & \(m_\tau = 1{,}776.86\) & \(m_t = 172{,}690\) &
+\(m_b = 4{,}180\) & \(m_H = 125{,}250\) \\
+\end{longtable}
+}
+
+\textbf{観察 5.1}.
+各空間軸に対して4個の独立な質量計測値が存在し、系が過剰決定される。§2
+では荷電レプトン質量のみから \(v_x : v_y : v_z\)
+を決定したが、他の3セクターの質量値は同じ \(v_x, v_y, v_z\)
+に対する独立な制約として作用する。
+
+\paragraph{5.3.2
+同軸比率の構造分析}\label{ux540cux8ef8ux6bd4ux7387ux306eux69cbux9020ux5206ux6790}
+
+§2 の枠組みを拡張し、ボソンの質量を以下の形で記述する:
+
+\[m_\ell = g_\ell(v_i) \cdot v_t, \qquad m_B = g_B(v_i) \cdot v_R\]
+
+ここで \(g_\ell\), \(g_B\) はそれぞれフェルミオンとボソンの \(H^0\)
+との結合関数（\(v_i\) は占有空間軸のスケール値）。この仮定のもとで:
+
+\[\frac{m_B}{m_\ell} = \frac{g_B(v_i)}{g_\ell(v_i)} \cdot \frac{v_R}{v_t}\]
+
+もし \(g_B = g_\ell\)（結合関数が粒子の種類に依存しない）ならば:
+
+\[\frac{m_W}{m_e} = \frac{m_Z}{m_\mu} = \frac{v_R}{v_t}\]
+
+しかし実測値は \(157{,}297 \neq 863\) であり、\(g_B \neq g_\ell\)
+であるか、質量公式の構造が上記より複雑であることが判明する。
+
+\paragraph{5.3.3
+交差比率による制約}\label{ux4ea4ux5deeux6bd4ux7387ux306bux3088ux308bux5236ux7d04}
+
+\(v_R, v_t\) を消去する交差比率を構成する:
+
+\[\mathcal{R} \equiv \frac{m_W \cdot m_\mu}{m_Z \cdot m_e} = \frac{g_B(v_x) \cdot v_R \cdot g_\ell(v_y) \cdot v_t}{g_B(v_y) \cdot v_R \cdot g_\ell(v_x) \cdot v_t} = \frac{g_B(v_x) \cdot g_\ell(v_y)}{g_B(v_y) \cdot g_\ell(v_x)}\]
+
+もし \(g_B(v) / g_\ell(v)\) が \(v\) に依存しない定数ならば
+\(\mathcal{R} = 1\) となるはずである。実測値:
+
+\[\mathcal{R} = \frac{80{,}379 \times 105.66}{91{,}188 \times 0.511} = \frac{8{,}493{,}669}{46{,}597} = 182.3\]
+
+\(\mathcal{R} = 182.3 \gg 1\) は、\(g_B / g_\ell\) が \(v_i\)
+に対して強い依存性を持つことを示す。
+
+\paragraph{5.3.4
+同軸内クォーク・ボソン比率}\label{ux540cux8ef8ux5185ux30afux30a9ux30fcux30afux30dcux30bdux30f3ux6bd4ux7387}
+
+クォークの質量比も同一軸上のボソンと対にして検討できる:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}crrr@{}}
+\toprule\noalign{}
+空間軸 & \(m_B / m_u\) & \(m_B / m_d\) & \(m_B / m_\ell\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(x\) & \(37{,}213\) & \(17{,}211\) & \(157{,}297\) \\
+\(y\) & \(71.8\) & \(976\) & \(863\) \\
+\(z\) & \(0.725\) & \(30.0\) & \(70.5\) \\
+\end{longtable}
+}
+
+\textbf{観察 5.2}. 同一セクター（上型/下型/レプトン）内であっても比率
+\(m_B / m_f\) は軸間で大きく変動する。特に上型クォークの
+\(m_t / m_H = 1.38\)（\(z\)
+軸）はトップクォークとヒッグスがほぼ同一の質量スケールにあることを示す。これは標準模型においてトップクォークのユカワ結合定数
+\(y_t \approx 1\) として知られる事実の幾何学的反映である可能性がある。
+
+\paragraph{5.3.5
+同軸比率からの制約のまとめ}\label{ux540cux8ef8ux6bd4ux7387ux304bux3089ux306eux5236ux7d04ux306eux307eux3068ux3081}
+
+\textbf{観察 5.3}. W8 v10 によるゲージボソンの空間軸指定は、§2--§3
+のフェルミオン質量分析に以下の新たな制約を追加する:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{\(v_R / v_t\) の制約}:
+  仮に結合関数がフェルミオンとボソンで同型であれば、\(m_W / m_e = v_R / v_t\)
+  から \(v_R / v_t\) が決定される。\(g_B \neq g_\ell\)
+  の場合でも、\(m_W / m_e\) と \(m_Z / m_\mu\)
+  の比（\(= 182.3\)）が結合関数比の軸依存性を制約する
+\item
+  \textbf{結合関数の非線形性}: 同軸比率 \(m_B / m_\ell\) が \(x, y, z\)
+  軸間で \(157{,}297 : 863 : 70.5\) と急減少することは、結合関数が
+  \(v_i\) に対して強い非線形依存性（\(v_i\) が大きいほど
+  \(m_B / m_\ell\) が小さい）を持つことを示す。これは §3.2 の
+  \(f(Q, v_i)\) の世代依存性と同種の非線形性である
+\item
+  \textbf{過剰決定}:
+  各空間軸に4セクター（レプトン・上型・下型・ボソン）の計測質量が存在するため、3つの軸スケール値
+  \(v_x, v_y, v_z\) と結合関数の関数形に対して \(3 \times 4 = 12\)
+  個の制約が課される。これは \(f_m^{\text{rest}}\)（{[}4{]}
+  定義9.4）の関数形を具体的に制約するのに十分な情報量である可能性がある
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{5.4
 本考察の限界}\label{ux672cux8003ux5bdfux306eux9650ux754c}
 
 本稿は以下を確認した:
@@ -453,6 +651,13 @@ Q軸結合関数 \(f(Q, v_i)\) の関数形
   観察2.2
   のニュートリノフレーバー間質量比は、将来の精密測定により検証または反証される可能性がある。反証された場合、\(m \propto v_i \cdot v_j\)
   という基本仮定そのものの再検討が必要になる
+\item
+  {[}4{]} v10
+  によるゲージボソンの空間軸指定（§5.3）は、各空間軸に4セクターの計測質量をもたらし、系を過剰決定する。同軸比率
+  \(m_B / m_\ell\) の軸間変動（\(157{,}297 : 863 : 70.5\)）と交差比率
+  \(\mathcal{R} = 182.3\)
+  は結合関数の関数形に対する新たな制約であり、\(f_m^{\text{rest}}\)
+  の具体的決定への道筋を開く可能性がある
 \end{enumerate}
 
 これらは本格的な質量分析の前提条件の整理であり、質量値の具体的な導出は本稿の範囲外である。
@@ -469,14 +674,15 @@ Q軸結合関数 \(f(Q, v_i)\) の関数形
   Zenodo preprint, DOI: 10.5281/zenodo.19624957 (2026).
 \item
   {[}4{]} 木原 範昭, ``6次元超直方体の集合構造とその組合せ論的性質,''
-  Zenodo preprint, DOI: 10.5281/zenodo.19721125 (2026).
+  Zenodo preprint, DOI: 10.5281/zenodo.19762134 (2026).
 \item
   {[}5{]} 木原 範昭,
   ``形不変波の相互作用------軸方向変位転送・波束変形・因果の遡及的構成,''
-  Zenodo preprint, DOI: 10.5281/zenodo.19721128 (2026).
+  Zenodo preprint, DOI: 10.5281/zenodo.19763463 (2026).
 \item
   {[}S1{]} 木原 範昭,
   ``符号付き面積の定式化------電荷構造の導出とスピン2配置の帰結,'' 補講1
   (2026).
 \end{itemize}
+
 \end{document}

@@ -6,67 +6,63 @@
 \usepackage{xcolor}
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb}
-\usepackage{graphicx}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp}
-\else
-  \usepackage{unicode-math}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
 \usepackage{lmodern}
 \ifPDFTeX\else
-  \setmainfont[]{Times New Roman}
+  % xetex/luatex font selection
 \fi
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{%
+\IfFileExists{microtype.sty}{% use microtype if available
   \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
 \makeatletter
-\@ifundefined{KOMAClassName}{%
+\@ifundefined{KOMAClassName}{% if non-KOMA class
   \IfFileExists{parskip.sty}{%
     \usepackage{parskip}
-  }{%
+  }{% else
     \setlength{\parindent}{0pt}
     \setlength{\parskip}{6pt plus 2pt minus 1pt}}
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{longtable,booktabs,array}
-\newcounter{none}
-\usepackage{calc}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
 \makeatletter
 \patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
 \makeatother
+% Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \usepackage{bookmark}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
-\usepackage{hyperref}
 \hypersetup{
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
-\setlength{\emergencystretch}{3em}
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\usepackage{amsthm}
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\theoremstyle{remark}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{observation}[theorem]{Observation}
+
+\author{}
+\date{}
+
 \begin{document}
+
 \section{Geometric Necessity of Spontaneous Symmetry Breaking ---
 Three-Stage Derivation of the Higgs
 Mechanism}\label{geometric-necessity-of-spontaneous-symmetry-breaking-three-stage-derivation-of-the-higgs-mechanism}
@@ -132,7 +128,7 @@ Closed Spheres --- Stability by Dimension and the Geometric Necessity of
 Discrete Spaces and the Number-Theoretic Necessity of a 5-Dimensional
 Background Space (W5), DOI: 10.5281/zenodo.19624957 - {[}3{]} Set
 Structure and Combinatorial Properties of 6-Dimensional Hypercuboids
-(W8), DOI: 10.5281/zenodo.19721125 - {[}4{]} Four Modes of
+(W8), DOI: 10.5281/zenodo.19762134 - {[}4{]} Four Modes of
 Shape-Invariant Waves (W10), DOI: 10.5281/zenodo.19709798
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -501,10 +497,11 @@ Analysis via Axis Scale Values and Signed Areas'').
 \item
   {[}3{]} Noriaki Kihara, ``Set Structure and Combinatorial Properties
   of 6-Dimensional Hypercuboids,'' Zenodo preprint, DOI:
-  10.5281/zenodo.19721125 (2026).
+  10.5281/zenodo.19762134 (2026).
 \item
   {[}4{]} Noriaki Kihara, ``Four Modes of Shape-Invariant Waves ---
   Spin, Chirality, and Statistics Determined by Wave-Vector Structure,''
   Zenodo preprint, DOI: 10.5281/zenodo.19709798 (2026).
 \end{itemize}
+
 \end{document}
