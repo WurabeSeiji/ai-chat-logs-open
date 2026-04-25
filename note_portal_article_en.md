@@ -181,8 +181,8 @@ Uniformly describes the four forces via axial displacement transfer. Formalizes 
 
 ```
 Four forces and axis correspondence:
-  Strong force  → Q-axis (c₂c₃ color transition, 8 channels)
-  Weak force    → t-axis + Q-axis (c₁ transition)
+  Strong force  → Q-axis (RGB color transition, 8 channels)
+  Weak force    → t-axis sign flip (isospin transition)
   EM force      → R-axis
   Gravity       → t-axis + R-axis (2 axes nonzero)
 

@@ -53,7 +53,7 @@ Independent topic. Constructs oscillation, propagation, collision, and wave-pack
 | Force | Axial displacement transfer target |
 |-------|-----|
 | Strong | Q-axis (color transition, 8 ch) |
-| Weak | t-axis + Q-axis (c₁ transition) |
+| Weak | t-axis sign flip (isospin transition) |
 | EM | R-axis |
 | Gravity | t-axis + R-axis (2 axes nonzero) |
 
