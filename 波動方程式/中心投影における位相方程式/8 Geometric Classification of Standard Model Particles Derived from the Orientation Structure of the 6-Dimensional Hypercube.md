@@ -370,14 +370,15 @@ This reduction $9 - 1 = 8$ originates from the adjoint representation of the Lie
 
 Among the spin 1 sets enumerated in §4, the correspondence to Standard Model gauge bosons is shown below.
 
-| Fixed axis         | Correspondence             | Number of states |
-| :----------------- | :------------------------- | :--------------: |
-| $t$                | $W^+, W^-$                 |        2         |
-| $R$                | $\gamma, Z^0$              |        2         |
-| $Q$ ($c_2 c_3$ transition, §9.3) | $g_1, \ldots, g_8$ |        8         |
-| **Total**          |                            |      **12**      |
+| Spin source ($n = 1$)            | Spatial axis | Correspondence             | Number of states |
+| :------------------------------- | :----------- | :------------------------- | :--------------: |
+| $R$                              | $x$          | $W^+, W^-$                 |        2         |
+| $R$                              | $y$          | $Z^0$                      |        1         |
+| $R$                              | None         | $\gamma$                   |        1         |
+| $Q$ ($c_2 c_3$ transition, §9.3) | None         | $g_1, \ldots, g_8$         |        8         |
+| **Total**                        |              |                            |      **12**      |
 
-The 2 states of the $W$ boson ($t = +1, -1$) correspond to the positive and negative electric charges, while $\gamma$ and $Z^0$ correspond to the sign of the $R$ axis ($+$ vs $-$). The total of 12 matches the number of gauge boson states in the Standard Model: $\gamma + g \times 8 + W^+ + W^- + Z^0 = 12$.
+The 2 states of the $W$ boson correspond to the sign of the $x$ axis ($+$ vs $-$), representing positive and negative electric charges. Both $Z^0$ and $\gamma$ have the $R$ axis as their spin source, but $Z^0$ possesses a spatial axis ($y$) and acquires mass through Higgs coupling, while $\gamma$ has no spatial axis and is massless (§9.11.7). The total of 12 matches the number of gauge boson states in the Standard Model: $\gamma + g \times 8 + W^+ + W^- + Z^0 = 12$.
 
 The 8 states of $c_1$ transitions (§3) can be interpreted as another aspect of weak isospin transitions mediated by $W$ bosons, but their counting as independent particle states is treated in §9.10.
 
@@ -406,7 +407,7 @@ The following physical interpretation is assigned to the sign product $P$ define
 
 By Proposition 7.1, the $tR$ type of spin 2 admits both $P = +1$ and $P = -1$ configurations. Interpreting the $P = +1$ configuration (same sign for $t, R$) as mediating gravity yields attraction only, which is consistent with the properties of gravity. What the $P = -1$ configuration (opposite signs for $t, R$) corresponds to physically is unresolved, and remains as a future problem: either (a) a configuration not physically realized, or (b) a correspondence to an unknown phenomenon.
 
-Similarly, the $t$ and $R$ types of spin 1 admit both $P = \pm 1$ configurations, consistent with forces having both attraction and repulsion (electromagnetic force, weak force). The $Q$-transition type of spin 1 has $P = +1$ (unique), suggesting a relationship with the confinement property of gluons.
+The electroweak bosons ($W^\pm, Z^0, \gamma$) in Table A all have $R > 0, t = 0$, yielding $P = +1$ uniformly. The directionality of forces (attraction and repulsion) is determined by the charge signs of the interacting fermions, not by the sign product of the mediating boson. The $Q$-transition type of spin 1 has $P = +1$ (unique), suggesting a relationship with the confinement property of gluons.
 
 ### 9.8 Range of the $R$ Axis and Coupling Strength of Forces
 
@@ -414,12 +415,14 @@ Similarly, the $t$ and $R$ types of spin 1 admit both $P = \pm 1$ configurations
 
 **Interpretation of the correspondence between each force and the axes of this model**:
 
-| Force           | Mediator      | Involved axes                                           | Coupling characteristics |
-| :-------------- | :------------ | :------------------------------------------------------ | :----------------------- |
-| Strong force    | $g_1$–$g_8$  | $Q$ axis ($c_2 c_3$ color transitions, 8 channels, §9.3) | Only between particles with color charge |
-| Weak force      | $W^\pm, Z^0$ | $t$ axis + $Q$ axis ($c_1$ transitions)                  | All fermions             |
-| Electromagnetic | $\gamma$      | $R$ axis                                                 | Between particles with nonzero electric charge |
-| Gravity         | $G$           | $t, R$, both axes nonzero ($n = 2$)                      | All particles ($Q$-independent) |
+| Force           | Mediator      | Nonzero axes of boson                                     | Coupling characteristics                    |
+| :-------------- | :------------ | :-------------------------------------------------------- | :------------------------------------------ |
+| Strong force    | $g_1$–$g_8$  | $Q$ axis ($c_2 c_3$ color transitions, 8 channels, §9.3)  | Only between particles with color charge    |
+| Weak force      | $W^\pm, Z^0$ | Spatial axis ($x / y$) + $R$ axis                          | All fermions (including $c_1$ transitions)  |
+| Electromagnetic | $\gamma$      | $R$ axis                                                   | Between particles with nonzero electric charge |
+| Gravity         | $G$           | $t, R$, both axes nonzero ($n = 2$)                        | All particles ($Q$-independent)             |
+
+The transition mechanism of the weak force is the $c_1$ bit flip (isospin transition) on the fermion side in the $Q$ axis; the spatial axis ($x$) of $W^\pm$ itself encodes the sign of the electric charge.
 
 ### 9.9 Table A: Correspondence Between Confirmed Particles and 6-Dimensional Sets
 
@@ -430,16 +433,16 @@ This table shows particles only. Antifermions are obtained by sign inversion of 
 | Particle   | Symbol      |  $s$  | Set $(x, y, z, t, R, Q)$       |  $n$  | Mass (MeV) |
 | :--------- | :---------- | :---: | :----------------------------- | :---: | :--------: |
 | Higgs      | $H^0$       |   0   | $(0, 0, +, 0, 0, 0)$           |   0   |  125,250   |
-| $W$ boson  | $W^+$       |   1   | $(0, 0, 0, +, 0, 0)$           |   1   |   80,379   |
-| $W$ boson  | $W^-$       |   1   | $(0, 0, 0, -, 0, 0)$           |   1   |   80,379   |
+| $W$ boson  | $W^+$       |   1   | $(+, 0, 0, 0, +, 0)$           |   1   |   80,379   |
+| $W$ boson  | $W^-$       |   1   | $(-, 0, 0, 0, +, 0)$           |   1   |   80,379   |
 | Photon     | $\gamma$    |   1   | $(0, 0, 0, 0, +, 0)$           |   1   |     0      |
-| $Z$ boson  | $Z^0$       |   1   | $(0, 0, 0, 0, -, 0)$           |   1   |   91,188   |
+| $Z$ boson  | $Z^0$       |   1   | $(0, +, 0, 0, +, 0)$           |   1   |   91,188   |
 | Gluon      | $g_1$–$g_8$ |   1   | $(0, 0, 0, 0, 0, Q_i \to Q_j)$ |   1   |     0      |
 | Graviton   | $G$         |   2   | $(0, 0, 0, \pm, \pm, 0)$       |   2   |     0      |
 
-**Verification**: Higgs: $z$ axis only nonzero, $k = 1$ (bosonic type), $n = 0$, $s = 0$ $\checkmark$. $W$: $k = 1$ (bosonic type), $t$ nonzero so $n = 1$, $s = 1$ $\checkmark$. Photon: $k = 0$ (bosonic type), $R$ nonzero so $n = 1$, $s = 1$ $\checkmark$. Gluon: $k = 0$ (bosonic type), $Q$-transition so $n = 1$, $s = 1$ $\checkmark$. Graviton: $k = 0$ (bosonic type), $t, R$ nonzero so $n = 2$, $s = 2$ $\checkmark$.
+**Verification**: Higgs: $z$ axis only nonzero, $k = 1$ (bosonic type), $n = 0$, $s = 0$ $\checkmark$. $W$: $x$ axis nonzero so $k = 1$ (bosonic type), $R$ nonzero so $n = 1$, $s = 1$ $\checkmark$. $Z$: $y$ axis nonzero so $k = 1$ (bosonic type), $R$ nonzero so $n = 1$, $s = 1$ $\checkmark$. Photon: $k = 0$ (bosonic type), $R$ nonzero so $n = 1$, $s = 1$ $\checkmark$. Gluon: $k = 0$ (bosonic type), $Q$-transition so $n = 1$, $s = 1$ $\checkmark$. Graviton: $t$ nonzero so $k = 1$ (bosonic type), $t, R$ nonzero so $n = 2$, $s = 2$ $\checkmark$.
 
-**Selection of the $z$ axis for the Higgs**: The nonzero axis of the Higgs boson involves an interpretive degree of freedom in choosing 1 axis from the 4 axes $xyzt$. For consistency with the generation labels (generation 1: $x$, generation 2: $y$, generation 3: $z$), the $z$ axis (3rd generation) is selected. This choice is consistent with the fact that 3rd-generation fermions (top: $172{,}760$ MeV) have the largest mass, provided the coupling strength depends on the overlap along shared spatial axes (see §9.11.7).
+**Electroweak bosons and spatial axes**: The 3 spatial axes $x, y, z$ are in one-to-one correspondence with the 3 massive electroweak bosons: $W^\pm$ ($x$ axis, generation 1), $Z^0$ ($y$ axis, generation 2), $H^0$ ($z$ axis, generation 3). Assigning the Higgs to the $z$ axis (3rd generation) is consistent with the fact that 3rd-generation fermions (top: $172{,}760$ MeV) have the largest mass, provided the coupling strength depends on the overlap along shared spatial axes (see §9.11.7). The photon $\gamma$ has no spatial axis and is massless; the presence or absence of a spatial axis structurally determines whether a boson has mass.
 
 **Leptons**:
 
@@ -484,8 +487,8 @@ Each quark has 3 color states corresponding to the color values of $Q$ ($c_2 c_3
 | Classification                   |  $s$  |       $Q$        | States derived in this model |           SM correspondence           |
 | :------------------------------- | :---: | :--------------: | :--------------------------: | :-----------------------------------: |
 | Higgs                            |   0   |        0         |              1               |                   1                   |
-| Gauge boson ($t$ type)           |   1   |        0         |              2               |             $W^+, W^-$                |
-| Gauge boson ($R$ type)           |   1   |        0         |              2               |           $\gamma, Z^0$               |
+| Electroweak boson (spatial $+R$ type) |   1   |        0         |              3               |       $W^+, W^-, Z^0$                 |
+| Photon ($R$ type)                     |   1   |        0         |              1               |            $\gamma$                    |
 | Gluon ($Q$-transition type)     |   1   |    Transition    |              8               |         $g_1, \ldots, g_8$            |
 | Graviton ($tR$ type)            |   2   |        0         |              1               |          $G$ (beyond SM)              |
 | Lepton                           |  1/2  |     0 or 4       |              6               |                   6                   |
@@ -544,7 +547,7 @@ $$M(\sigma) \sim f\!\left(\sum |x_i|,\, R,\, Q\right)$$
 
 cannot be excluded.
 
-**Speculation that $v_1 \gg v_2$**: While the mass of the Higgs boson ($k = 1$, $z$ axis only nonzero, $v_1$) is $125{,}250$ MeV, the majority of fermions ($k = 2$, 2 nonzero axes, $v_2$) are far lighter (electron $0.511$ MeV, neutrinos $< 10^{-6}$ MeV). If the above dimensional analysis speculation is correct, then $v_1 \gg v_2$ must hold, suggesting that the coordinate value for the case of only 1 nonzero axis is substantially larger than that for 2 nonzero axes.
+**Speculation that $v_1 \gg v_2$**: The $k = 1$ bosons ($H^0$: $z$ axis, $W^\pm$: $x$ axis, $Z^0$: $y$ axis) all have masses in the $80$–$125$ GeV range, while the majority of fermions ($k = 2$, 2 nonzero axes, $v_2$) are far lighter (electron $0.511$ MeV, neutrinos $< 10^{-6}$ MeV). If the above dimensional analysis speculation is correct, then $v_1 \gg v_2$ must hold, suggesting that the coordinate value for the case of only 1 nonzero axis is substantially larger than that for 2 nonzero axes. The fact that all $k = 1$ bosons have masses of the same order ($80$–$125$ GeV) is consistent with the assumption that $v_1$ is approximately constant regardless of which spatial axis is selected.
 
 **Inter-generation mass hierarchy**: The assignment of the Higgs boson's nonzero axis to $z$ (the 3rd-generation axis) provides a structural indication for the mass differences among generations within the $v_2$ range. 3rd-generation fermions ($z$ axis nonzero) directly share a spatial axis with the Higgs standing wave and therefore have the strongest coupling, while 1st-generation ($x$ axis) and 2nd-generation ($y$ axis) fermions lack a shared axis and are limited to indirect coupling. This is consistent with the empirical hierarchy $m_3 \gg m_{1,2}$ (top $172{,}760$ MeV $\gg$ charm $1{,}270$ MeV, up $2.16$ MeV). However, since the $x$ and $y$ axes are locally equivalent under $\mathrm{SO}(3)$ symmetry, the difference $m_2 \neq m_1$ cannot be derived within this framework. The quantitative derivation of mass ratios remains an open problem.
 
@@ -572,12 +575,18 @@ A correspondence is suggested between the 8 values (3-bit structure) of the $Q$ 
 
 How generation mixing (CKM matrix, PMNS matrix) is derived as the breaking of $S_3$ symmetry of the $xyz$ axes is an open problem.
 
-**9.11.7 Higgs mechanism and generation mass hierarchy**
+**9.11.7 Higgs mechanism and unified description of mass hierarchy**
 
 The Higgs boson corresponds to only the $z$ axis being nonzero ($k = 1$, Table A: $(0, 0, +, 0, 0, 0)$). The $z$ axis is the label axis for the 3rd generation (top, bottom, tau), and this assignment has the following consistency:
 
 - Since the coupling strength to the Higgs depends on the overlap along shared spatial axes, 3rd-generation fermions with nonzero $z$ axis have the strongest coupling and acquire the largest mass (top: $172{,}760$ MeV).
 - 1st-generation ($x$ axis) and 2nd-generation ($y$ axis) fermions do not share the Higgs's primary oscillation axis, resulting in weaker coupling and lighter mass.
+
+**Mass hierarchy of electroweak bosons**: The same mechanism applies to gauge bosons. In Table A, $W^\pm$ ($x$ axis), $Z^0$ ($y$ axis), and $H^0$ ($z$ axis) each possess one spatial axis, and the mass hierarchy
+
+$$m_W \,(80.4\,\text{GeV}) \approx m_Z \,(91.2\,\text{GeV}) < m_H \,(125.3\,\text{GeV})$$
+
+exhibits the same structure as the fermion generation mass hierarchy $m_1 \approx m_2 < m_3$. The photon $\gamma$ has no spatial axis ($k = 0$) and, having no coupling to the Higgs, is massless. That is, **the presence or absence of a spatial axis determines the presence or absence of Higgs coupling, and the generation label of the spatial axis determines the magnitude of the mass** — a single principle provides a unified description of the mass structure of both fermions and bosons.
 
 How spontaneous symmetry breaking by the Higgs field is understood within this framework remains a task for future work, but the selection of the $z$ axis provides a geometric explanation for the inter-generation mass hierarchy ($m_3 \gg m_{1,2}$).
 
