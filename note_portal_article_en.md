@@ -90,9 +90,9 @@ Organizes the geometric properties that emerge at each dimension.
 https://doi.org/10.5281/zenodo.19533299
 Describes the bridging of geodesics between parent and child subjective spaces in nested structures.
 
-**Paper 8**: Diameter of the Circumscribed Hypersphere of a Unit-Volume 4-Dimensional Hypercuboid
-https://doi.org/10.5281/zenodo.19533313
-Derives the special status of n=4 from two assumptions — discreteness and stability — via volume conservation.
+**Paper 8 (Rev.2)**: Diameter of the Circumscribed Hypersphere of a Unit-Volume 4-Dimensional Hypercuboid
+https://doi.org/10.5281/zenodo.19834940 (v2; v1: https://doi.org/10.5281/zenodo.19533313 )
+Derives the special status of n=4 from two assumptions — discreteness and stability — via volume conservation. Rev.2 reformulates §4 as dense packing of unit cubes into a 4D ball (packing density ρ(k) → 1) and connects to the Lagrange–Jacobi four-square number-theoretic structure.
 
 **Paper 9**: Schwarzschild–de Sitter Exact Solution in the Central Projection Framework
 https://doi.org/10.5281/zenodo.19538098

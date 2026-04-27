@@ -22,7 +22,7 @@ The 6D axes are classified into position-type {x,y,z,t}, scale-type {R}, and col
 ## Research Structure
 
 **I. Foundation Series (Papers 1–10)**  
-From the geometric properties of central projection alone: equivalence with de Sitter spacetime, four symmetries, nested structure, and the SdS exact solution. Derives that n=4 is the minimal stable dimension and that the 1-vs-3 asymmetry gives rise to the time axis.
+From the geometric properties of central projection alone: equivalence with de Sitter spacetime, four symmetries, nested structure, and the SdS exact solution. Paper 8 Rev.2 formalizes dense packing of unit cubes into a 4D ball; via packing density $\rho(k) \to 1$ and the Lagrange–Jacobi four-square structure, $n=4$ is shown to be the minimal stable dimension, and the 1-vs-3 asymmetry gives rise to the time axis.
 
 **II. Phase Equation Series (W1–W11 + S1·S2 + 6 supplements)**  
 Introduces the combinatorial structure of hypercubes. W5 proves the necessity of 5 dimensions; W6–7 derive spin classification; **W8 derives 62 states**; W10–11 classify shape-invariant wave modes and unify the four forces. Supplements address CKM/PMNS matrices, the Higgs mechanism, and mass structure.
