@@ -67,8 +67,8 @@
 **タイトル（日本語）**：微細構造定数の幾何学的恒等式：4次元単位球の体積とその充填不足から（論文7：α 恒等式）  
 **タイトル（英語）**：A Geometric Identity for the Fine-Structure Constant: From the 4D Unit Ball Volume and its Cube-Packing Deficit (Paper 7: α-Identity)  
 **内容：** 半径 $R=3$ の4次元球への単位立方体完全包含数 $N(1) = 137$（直接計数）と、4次元単位球の体積 $V_4(1) = \pi^2/2$ から構成される自己整合二次方程式 $\frac{\pi^2}{2}\alpha^2 + 137\alpha - 1 = 0$ の正根として、微細構造定数 $\alpha$ を 0.02\% 精度で予言する。$\alpha^{-1} = N(1) + V_4(1)\cdot\alpha$ という形が摂動展開 $1 = 137\alpha + V_4(1)\alpha^2$ に等価で、tree-level (inside) + 自己エネルギー補正 (outside) の構造を持つ。論文3・4 への自己参照を最低限に抑え self-contained に再導出。Eddington 系の素朴な整数論との決定的差異（自己整合方程式・幾何学的派生・摂動展開類比・機構候補）を明示。残差 0.03\% と機構の第一原理導出を主要開問題として残す。  
-**Concept DOI：** （Zenodo 公開時に割当）  
-**v1 Version DOI：** （Zenodo 公開時に割当）
+**Concept DOI：** https://doi.org/10.5281/zenodo.19869266  
+**v1 Version DOI：** https://doi.org/10.5281/zenodo.19869267
 
 ---
 
@@ -211,7 +211,7 @@
 
 | 日付 | 内容 |
 |---|---|
-| 2026-04-29 | 論文7（α 恒等式）v1 ドラフト作成：$N(1) = 137$ と $V_4(1) = \pi^2/2$ から構成される自己整合二次方程式 $\frac{\pi^2}{2}\alpha^2 + 137\alpha - 1 = 0$ の正根として、$\alpha = 0.0072984$（観測値と 0.02\% 一致）を予言。日英 md/tex/pdf を生成、self-contained に記述（論文3・4 への参照は最低限）。Zenodo 公開は別途実施予定。|
+| 2026-04-29 | 論文7（α 恒等式）v1 公開：Zenodo に deposit 19869267 で公開（Concept DOI: 19869266、v1 Version DOI: 19869267、6ファイル）。$N(1) = 137$ と $V_4(1) = \pi^2/2$ から構成される自己整合二次方程式 $\frac{\pi^2}{2}\alpha^2 + 137\alpha - 1 = 0$ の正根として、$\alpha = 0.0072984$（観測値と 0.02\% 一致）を予言。日英 md/tex/pdf 各3ファイル、self-contained 記述。|
 | 2026-04-28 | SNS 公開：Facebook 日英両版を投稿（[BH Thermodynamics Programme: 6 Papers Published] / [BH熱力学プログラム 6篇公開]）。X (Twitter) は @NoriakiKihara で日本語版（ブラックホールは「上位時空構造の射影」かもしれない）を投稿。各投稿で note 記事（日英）の URL を参照、ハッシュタグは #BlackHoles #TheoreticalPhysics（EN）／ #ブラックホール #理論物理学（JA）|
 | 2026-04-28 | 論文1〜6 v2 公開：参考文献を一論文ごとに精査・整理（自己論文への参照ゼロ）。外部参照ファイル（note 日英・Zenn・handout 日英・README）を Version DOI から **Concept DOI** に統一（84箇所置換）。これにより今後の新版公開時に派生ファイルの修正が永久に不要となる運用に移行。Zenodo に v2 公開（DOI: 19839393, 19839394, 19839395, 19839396, 19839397, 19839400、各6ファイル） |
 | 2026-04-28 | note 記事 (日英) を Concept DOI 化（n4524006ef175・n916eac778c1c を手動更新済み） |

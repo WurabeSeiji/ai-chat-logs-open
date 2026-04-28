@@ -3,7 +3,8 @@
 **Author**: Noriaki Kihara (WF System Co., Ltd.)
 **ORCID**: [0009-0004-6753-4020](https://orcid.org/0009-0004-6753-4020)
 **Date**: April 2026
-**DOI**: (to be assigned by Zenodo upon publication)
+**Concept DOI (always resolves to the latest version)**: [10.5281/zenodo.19869266](https://doi.org/10.5281/zenodo.19869266)
+**v1 Version DOI**: [10.5281/zenodo.19869267](https://doi.org/10.5281/zenodo.19869267)
 
 ---
 

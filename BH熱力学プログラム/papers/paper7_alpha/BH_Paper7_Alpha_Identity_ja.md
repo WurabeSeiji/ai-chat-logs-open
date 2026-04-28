@@ -3,7 +3,8 @@
 **著者**：木原 範昭（WF System Co., Ltd.）
 **ORCID**：[0009-0004-6753-4020](https://orcid.org/0009-0004-6753-4020)
 **日付**：2026年4月
-**DOI**：（公開時にZenodoで割当）
+**Concept DOI（最新版に自動転送）**：[10.5281/zenodo.19869266](https://doi.org/10.5281/zenodo.19869266)
+**v1 Version DOI**：[10.5281/zenodo.19869267](https://doi.org/10.5281/zenodo.19869267)
 
 ---
 
