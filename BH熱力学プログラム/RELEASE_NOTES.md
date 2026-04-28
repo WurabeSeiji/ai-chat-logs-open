@@ -1,0 +1,200 @@
+# リリースノート — BH熱力学プログラム
+
+## 論文シリーズ
+
+本フォルダは、中心投影と離散性という最小限の仮定から、4+1次元 Tangherlini ブラックホール熱力学を再構成する6篇の研究プログラムを収録する。ホログラフィー原理・AdS/CFT 対応・特定の量子重力プログラム（LQG/CDT/弦理論）を仮定しない独立な経路で、Bekenstein–Hawking エントロピーの $R^3$ スケーリング、Hawking 温度・蒸発寿命、漸近係数 $c = 8/(3\pi)$ を導出する。自己引用ゼロ。
+
+外部参照は **Concept DOI**（常に最新版に自動転送）を使用する方針。Version DOI は各バージョン固有で、論文ソース内のヘッダーで版を明記するために使用する。
+
+---
+
+### 論文1：俯瞰・仮説提示
+
+**タイトル（日本語）**：ブラックホール熱力学の上位時空構造からの写像としての再解釈：仮説駆動型研究プログラム（論文1：俯瞰・仮説提示）  
+**タイトル（英語）**：Black Hole Thermodynamics as Projection from a Higher Spacetime Structure: A Hypothesis-Driven Research Programme (Paper 1: Overview and Hypotheses)  
+**内容：** 業界共有の3前提（A: BH エントロピーは幾何学的、B: 蒸発は地平面局在、C: 時空は Planck スケールで離散）から、仮説1（射影仮説）と仮説2（離散ドリフト仮説）を抽出。5姉妹論文での検証構造を予告し、予期される批判（4+1 次元位置づけ、ホログラフィー非仮定、定量的導出の延期、検証可能性）に応答する。本論文は研究プログラムの定義であり熱力学を導出しない。  
+**Concept DOI：** https://doi.org/10.5281/zenodo.19837587  
+**v1 Version DOI：** https://doi.org/10.5281/zenodo.19837588  
+**v2 Version DOI（最新）：** https://doi.org/10.5281/zenodo.19839393
+
+### 論文2：中心投影の数学的基盤
+
+**タイトル（日本語）**：$S^4$ からのグノモン投影と4次元主観座標図上の誘導計量の Schwarzschild 様の形（論文2：射影の数学的基盤）  
+**タイトル（英語）**：Gnomonic Projection from $S^4$ and the Schwarzschild-like Form of the Induced Metric on a Four-Dimensional Subjective Chart (Paper 2: Mathematical Foundations of the Projection)  
+**内容：** $S^4(R) \subset \mathbb{R}^5$ から4次元接超平面へのグノモン投影を構成し、誘導計量 $g_{\mu\nu} = (R^2/\ell^2)(\delta_{\mu\nu} - x_\mu x_\nu/\ell^2)$ が4次元真空 Einstein 方程式 $G_{\mu\nu} + (3/R^2)g_{\mu\nu} = 0$（正の宇宙項 $\Lambda = 3/R^2$）を満たすことを示す。Lorentz 連続化で de Sitter 計量、質量パラメータ導入で Schwarzschild–de Sitter 形に。4+1次元 Schwarzschild–Tangherlini 計量との構造的類似性を比較。  
+**Concept DOI：** https://doi.org/10.5281/zenodo.19837589  
+**v1 Version DOI：** https://doi.org/10.5281/zenodo.19837590  
+**v2 Version DOI（最新）：** https://doi.org/10.5281/zenodo.19839394
+
+### 論文3：4次元球の単位立方体充填
+
+**タイトル（日本語）**：4次元球の離散構造：単位立方体充填と漸近的体積不足 $\Delta(R)$（論文3：離散性の数学的基盤）  
+**タイトル（英語）**：Discrete Structure of a Four-Dimensional Ball: Unit-Cube Packing and the Asymptotic Volume Deficit $\Delta(R)$ (Paper 3: Mathematical Foundations of Discreteness)  
+**内容：** 半径 $R = 2k+1$ の4次元球への、整数中心の単位立方体の完全包含充填条件 $\sum (|x_i|+1/2)^2 \le R^2$ を厳密に定式化。$N(k)$ を $k = 0, \ldots, 60$ で正確計算（$N(60) = 1{,}028{,}515{,}513$）。包除原理から $\Delta(R) = (16\pi/3) R^3 - 6\pi R^2 + O(R)$ を導出、漸近係数 $c = 8/(3\pi) \approx 0.84883$ は数値多項式フィットで 0.024% 一致。Lagrange–Jacobi 四平方表現数 $r_4(N) = 8\sigma(N)$ との数論的接続を確立。  
+**Concept DOI：** https://doi.org/10.5281/zenodo.19837591  
+**v1 Version DOI：** https://doi.org/10.5281/zenodo.19837592  
+**v2 Version DOI（最新）：** https://doi.org/10.5281/zenodo.19839395
+
+### 論文4：エントロピー対応
+
+**タイトル（日本語）**：格子体積不足と Tangherlini Bekenstein–Hawking エントロピーの定量的対応（論文4：エントロピー対応）  
+**タイトル（英語）**：A Quantitative Correspondence between the Lattice Volume Deficit and the Tangherlini Bekenstein–Hawking Entropy (Paper 4: Entropy Correspondence)  
+**内容：** 論文3 の体積不足 $\Delta(R)$ を Planck 単位の自由度として解釈し、4+1次元 Schwarzschild–Tangherlini ブラックホールの Bekenstein–Hawking エントロピー $S_{BH} = (\pi^2/2) r_h^3$ と比較。両者は $R^3$ スケーリングで一致し、地平面半径 $r_h$ を主観空間曲率半径 $R$ と同定したとき、漸近比 $\Delta(R)/S_{BH} \to 32/(3\pi) \approx 3.397$（自由パラメータ非依存の幾何学的定数）。  
+**Concept DOI：** https://doi.org/10.5281/zenodo.19837593  
+**v1 Version DOI：** https://doi.org/10.5281/zenodo.19837594  
+**v2 Version DOI（最新）：** https://doi.org/10.5281/zenodo.19839396
+
+### 論文5：動的接続と Tangherlini 蒸発
+
+**タイトル（日本語）**：曲率半径の自己整合的決定と Tangherlini 蒸発スケーリングの回復（論文5：動力学的接続）  
+**タイトル（英語）**：Self-consistent Determination of the Curvature Radius and Recovery of the Tangherlini Evaporation Scaling (Paper 5: Dynamical Connection)  
+**内容：** Friedmann 類似の関係 $E_{\mathrm{total}} \propto R^2$ から質量 $M$ のブラックホールに対し $R \propto M^{1/2}$、Hawking 温度 $T_H \propto M^{-1/2}$、寿命 $\tau \propto M^{3/2}$、蒸発レート $dM/dt \propto -M^{-1/2}$ を導出（4+1 Tangherlini と完全一致）。プログラム要旨で残課題とされていた「指数 $n=3/2$ vs $n=-1$ の不一致」が3+1 と 4+1 規約の混同であったことを §5.1 で明示。真の未解決問題は 4+1 → 3+1 削減機構にシフト。  
+**Concept DOI：** https://doi.org/10.5281/zenodo.19837595  
+**v1 Version DOI：** https://doi.org/10.5281/zenodo.19837596  
+**v2 Version DOI（最新）：** https://doi.org/10.5281/zenodo.19839397
+
+### 論文6：統合と 4+1 → 3+1 削減を主要未解決問題として
+
+**タイトル（日本語）**：統合と 4+1 から 3+1 への削減を主要未解決問題として（論文6：統合）  
+**タイトル（英語）**：Synthesis and the 4+1 to 3+1 Reduction as the Principal Open Problem (Paper 6: Synthesis)  
+**内容：** 5姉妹論文の結果を統合し、主要未解決問題を「プログラムが確立した 4+1 次元 BH 熱力学が観測 3+1 次元熱力学にどう削減するか」として精密に表明。3つの候補機構を検討：(A) Kaluza–Klein コンパクト化（単独不可）、(B) Randall–Sundrum/ADD ブレーン局在化（実行可能性あり）、(C) dS-CFT 様ホログラフィー射影（思索的）。プログラムの方法論的美徳（未解決問題の鋭さ・量子重力理論からの独立性・数学的内容の独立な価値）を述べて締めくくる。  
+**Concept DOI：** https://doi.org/10.5281/zenodo.19837597  
+**v1 Version DOI：** https://doi.org/10.5281/zenodo.19837598  
+**v2 Version DOI（最新）：** https://doi.org/10.5281/zenodo.19839400
+
+---
+
+## 主要結果（数値・定数）
+
+- 充填数 $N(k)$：$k=0..60$ で正確計算済み（$N(60) = 1{,}028{,}515{,}513$）
+- 漸近係数：$c = 8/(3\pi) \approx 0.84883$（包除原理から閉形式導出、数値で 0.024% 以内一致）
+- 副主要項：$\Delta(R) = (16\pi/3) R^3 - 6\pi R^2 + O(R)$
+- エントロピー比：$\Delta(R)/S_{BH} \to 32/(3\pi) \approx 3.397$
+- スケーリング全項目：$R \propto M^{1/2}$, $T_H \propto M^{-1/2}$, $\tau \propto M^{3/2}$, $dM/dt \propto -M^{-1/2}$（4+1 Tangherlini と完全一致）
+
+---
+
+## 公開記事・ハンドアウト
+
+| 媒体 | 言語 | URL |
+|---|:-:|---|
+| Zenn 記事（技術解説） | JA | https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection |
+| note 記事（一般向け） | JA | https://note.com/kiharanoriaki/n/n4524006ef175 |
+| note 記事（一般向け） | EN | https://note.com/kiharanoriaki/n/n916eac778c1c |
+| ハンドアウト（A4 1ページ） | JA | [`../handout_bh_thermodynamics_ja.pdf`](../handout_bh_thermodynamics_ja.pdf) |
+| ハンドアウト（A4 1ページ） | EN | [`../handout_bh_thermodynamics_en.pdf`](../handout_bh_thermodynamics_en.pdf) |
+
+外部参照は全て Concept DOI を使用しているため、今後の v3, v4, ... 公開時も DOI 修正は不要。
+
+---
+
+## 著者情報
+
+**著者**：木原 範昭（Noriaki Kihara）  
+**所属**：WF System Co., Ltd. / 大阪大学基礎工学部（卒業）  
+**ORCID**：[0009-0004-6753-4020](https://orcid.org/0009-0004-6753-4020)  
+**ライセンス**：CC BY 4.0
+
+---
+
+## 収録ファイル一覧
+
+### 論文1：俯瞰・仮説提示
+
+| ファイル名 | 説明 |
+|---|---|
+| `papers/paper1_overview/BH_Paper1_Overview_Hypotheses_ja.md` | Markdown（日本語版、v2）|
+| `papers/paper1_overview/BH_Paper1_Overview_Hypotheses_ja.tex` | LaTeXソース（日本語版、v2）|
+| `papers/paper1_overview/BH_Paper1_Overview_Hypotheses_ja.pdf` | PDF（日本語版、v2）|
+| `papers/paper1_overview/BH_Paper1_Overview_Hypotheses_en.md` | Markdown（英語版、v2）|
+| `papers/paper1_overview/BH_Paper1_Overview_Hypotheses_en.tex` | LaTeXソース（英語版、v2）|
+| `papers/paper1_overview/BH_Paper1_Overview_Hypotheses_en.pdf` | PDF（英語版、v2）|
+
+### 論文2：中心投影の数学的基盤
+
+| ファイル名 | 説明 |
+|---|---|
+| `papers/paper2_projection/BH_Paper2_Gnomonic_Projection_ja.md` | Markdown（日本語版、v2）|
+| `papers/paper2_projection/BH_Paper2_Gnomonic_Projection_ja.tex` | LaTeXソース（日本語版、v2）|
+| `papers/paper2_projection/BH_Paper2_Gnomonic_Projection_ja.pdf` | PDF（日本語版、v2）|
+| `papers/paper2_projection/BH_Paper2_Gnomonic_Projection_en.md` | Markdown（英語版、v2）|
+| `papers/paper2_projection/BH_Paper2_Gnomonic_Projection_en.tex` | LaTeXソース（英語版、v2）|
+| `papers/paper2_projection/BH_Paper2_Gnomonic_Projection_en.pdf` | PDF（英語版、v2）|
+
+### 論文3：4次元球の単位立方体充填
+
+| ファイル名 | 説明 |
+|---|---|
+| `papers/paper3_packing/BH_Paper3_Packing_VolumeDeficit_ja.md` | Markdown（日本語版、v2）|
+| `papers/paper3_packing/BH_Paper3_Packing_VolumeDeficit_ja.tex` | LaTeXソース（日本語版、v2）|
+| `papers/paper3_packing/BH_Paper3_Packing_VolumeDeficit_ja.pdf` | PDF（日本語版、v2）|
+| `papers/paper3_packing/BH_Paper3_Packing_VolumeDeficit_en.md` | Markdown（英語版、v2）|
+| `papers/paper3_packing/BH_Paper3_Packing_VolumeDeficit_en.tex` | LaTeXソース（英語版、v2）|
+| `papers/paper3_packing/BH_Paper3_Packing_VolumeDeficit_en.pdf` | PDF（英語版、v2）|
+
+### 論文4：エントロピー対応
+
+| ファイル名 | 説明 |
+|---|---|
+| `papers/paper4_entropy/BH_Paper4_Entropy_Correspondence_ja.md` | Markdown（日本語版、v2）|
+| `papers/paper4_entropy/BH_Paper4_Entropy_Correspondence_ja.tex` | LaTeXソース（日本語版、v2）|
+| `papers/paper4_entropy/BH_Paper4_Entropy_Correspondence_ja.pdf` | PDF（日本語版、v2）|
+| `papers/paper4_entropy/BH_Paper4_Entropy_Correspondence_en.md` | Markdown（英語版、v2）|
+| `papers/paper4_entropy/BH_Paper4_Entropy_Correspondence_en.tex` | LaTeXソース（英語版、v2）|
+| `papers/paper4_entropy/BH_Paper4_Entropy_Correspondence_en.pdf` | PDF（英語版、v2）|
+
+### 論文5：動的接続と Tangherlini 蒸発
+
+| ファイル名 | 説明 |
+|---|---|
+| `papers/paper5_dynamics/BH_Paper5_Dynamics_Tangherlini_ja.md` | Markdown（日本語版、v2）|
+| `papers/paper5_dynamics/BH_Paper5_Dynamics_Tangherlini_ja.tex` | LaTeXソース（日本語版、v2）|
+| `papers/paper5_dynamics/BH_Paper5_Dynamics_Tangherlini_ja.pdf` | PDF（日本語版、v2）|
+| `papers/paper5_dynamics/BH_Paper5_Dynamics_Tangherlini_en.md` | Markdown（英語版、v2）|
+| `papers/paper5_dynamics/BH_Paper5_Dynamics_Tangherlini_en.tex` | LaTeXソース（英語版、v2）|
+| `papers/paper5_dynamics/BH_Paper5_Dynamics_Tangherlini_en.pdf` | PDF（英語版、v2）|
+
+### 論文6：統合と 4+1 → 3+1 削減
+
+| ファイル名 | 説明 |
+|---|---|
+| `papers/paper6_synthesis/BH_Paper6_Synthesis_3plus1Reduction_ja.md` | Markdown（日本語版、v2）|
+| `papers/paper6_synthesis/BH_Paper6_Synthesis_3plus1Reduction_ja.tex` | LaTeXソース（日本語版、v2）|
+| `papers/paper6_synthesis/BH_Paper6_Synthesis_3plus1Reduction_ja.pdf` | PDF（日本語版、v2）|
+| `papers/paper6_synthesis/BH_Paper6_Synthesis_3plus1Reduction_en.md` | Markdown（英語版、v2）|
+| `papers/paper6_synthesis/BH_Paper6_Synthesis_3plus1Reduction_en.tex` | LaTeXソース（英語版、v2）|
+| `papers/paper6_synthesis/BH_Paper6_Synthesis_3plus1Reduction_en.pdf` | PDF（英語版、v2）|
+
+### 計算コード・数学レポート
+
+| ファイル名 | 説明 |
+|---|---|
+| `computations/packing_numerical.py` | $N(k)$ の対称性付き厳密列挙 |
+| `computations/asymptotic_fit.py` | $\Delta(R)$ の多項式最小二乗フィット |
+| `computations/jacobi_verification.py` | Jacobi 四平方接続の数値検証 |
+| `computations/results/N_table_k0_60.tsv` | $N(k)$ ($k = 0, \ldots, 60$) の正確データ |
+| `computations/results/math_report.md` | 漸近係数 $c = 8/(3\pi)$ の理論的決定の数学レポート |
+
+### 戦略・記録ノート
+
+| ファイル名 | 説明 |
+|---|---|
+| `notes/strategy.md` | 戦略原則・進捗管理・参考データ |
+| `notes/correspondence_record.md` | 査読・引用・対応の記録テンプレート |
+
+---
+
+## 変更履歴
+
+| 日付 | 内容 |
+|---|---|
+| 2026-04-28 | 論文1〜6 v2 公開：参考文献を一論文ごとに精査・整理（自己論文への参照ゼロ）。外部参照ファイル（note 日英・Zenn・handout 日英・README）を Version DOI から **Concept DOI** に統一（84箇所置換）。これにより今後の新版公開時に派生ファイルの修正が永久に不要となる運用に移行。Zenodo に v2 公開（DOI: 19839393, 19839394, 19839395, 19839396, 19839397, 19839400、各6ファイル） |
+| 2026-04-28 | note 記事 (日英) を Concept DOI 化（n4524006ef175・n916eac778c1c を手動更新済み） |
+| 2026-04-28 | ハンドアウト日英 (md/tex/pdf) を作成。note 日英記事への QR コードを各言語版に配置 |
+| 2026-04-28 | Zenn 記事 [bh-thermodynamics-projection](https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection) を articles/ 直下に配置・公開 |
+| 2026-04-28 | note 記事 (日英) 初版公開：n4524006ef175 (JA)、n916eac778c1c (EN) |
+| 2026-04-28 | 論文1〜6 v1 公開：Zenodo 初版公開（DOI: 19837588, 19837590, 19837592, 19837594, 19837596, 19837598、各6ファイル）。日英対訳の md/tex/pdf を生成・アップロード・公開 |
+| 2026-04-28 | 全6篇の本文試案を日英両言語で執筆完了（論文1：6章別ファイル、論文2〜6：draft_full） |
+| 2026-04-28 | 論文5 §5.1 で重要な発見：プログラム要旨の「指数 $n=3/2$ vs $n=-1$ の不一致」が3+1 と 4+1 規約の混同であることを明示。4+1 次元では完全一致、真の未解決問題は 4+1 → 3+1 削減機構へシフト |
+| 2026-04-28 | 数値計算：$N(k)$ を $k = 0, \ldots, 60$ まで正確計算（B_4 対称性活用、40秒）。漸近係数 $c = 8/(3\pi) \approx 0.84883$ を包除原理から導出、数値で 0.024% 一致確認 |
+| 2026-04-28 | フォルダ構造作成、戦略原則確定、研究プログラム開始 |
