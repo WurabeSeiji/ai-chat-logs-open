@@ -83,6 +83,9 @@
 | note 記事（一般向け） | EN | https://note.com/kiharanoriaki/n/n916eac778c1c |
 | ハンドアウト（A4 1ページ） | JA | [`../handout_bh_thermodynamics_ja.pdf`](../handout_bh_thermodynamics_ja.pdf) |
 | ハンドアウト（A4 1ページ） | EN | [`../handout_bh_thermodynamics_en.pdf`](../handout_bh_thermodynamics_en.pdf) |
+| Facebook 投稿 | JA | 個人タイムライン（2026-04-28、note JA 記事リンク）|
+| Facebook 投稿 | EN | 個人タイムライン（2026-04-28、note EN 記事リンク）|
+| X (Twitter) 投稿 | JA | [@NoriakiKihara](https://x.com/NoriakiKihara)（2026-04-28、note JA 記事リンク）|
 
 外部参照は全て Concept DOI を使用しているため、今後の v3, v4, ... 公開時も DOI 修正は不要。
 
@@ -188,6 +191,7 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-04-28 | SNS 公開：Facebook 日英両版を投稿（[BH Thermodynamics Programme: 6 Papers Published] / [BH熱力学プログラム 6篇公開]）。X (Twitter) は @NoriakiKihara で日本語版（ブラックホールは「上位時空構造の射影」かもしれない）を投稿。各投稿で note 記事（日英）の URL を参照、ハッシュタグは #BlackHoles #TheoreticalPhysics（EN）／ #ブラックホール #理論物理学（JA）|
 | 2026-04-28 | 論文1〜6 v2 公開：参考文献を一論文ごとに精査・整理（自己論文への参照ゼロ）。外部参照ファイル（note 日英・Zenn・handout 日英・README）を Version DOI から **Concept DOI** に統一（84箇所置換）。これにより今後の新版公開時に派生ファイルの修正が永久に不要となる運用に移行。Zenodo に v2 公開（DOI: 19839393, 19839394, 19839395, 19839396, 19839397, 19839400、各6ファイル） |
 | 2026-04-28 | note 記事 (日英) を Concept DOI 化（n4524006ef175・n916eac778c1c を手動更新済み） |
 | 2026-04-28 | ハンドアウト日英 (md/tex/pdf) を作成。note 日英記事への QR コードを各言語版に配置 |
