@@ -20,12 +20,12 @@ published: true
 
 | # | タイトル | DOI |
 |---|---------|-----|
-| 1 | 俯瞰・仮説提示 | [10.5281/zenodo.19837588](https://doi.org/10.5281/zenodo.19837588) |
-| 2 | $S^4$ からのグノモン投影と Schwarzschild 様計量 | [10.5281/zenodo.19837590](https://doi.org/10.5281/zenodo.19837590) |
-| 3 | 4次元球の単位立方体充填と $\Delta(R)$ の漸近解析 | [10.5281/zenodo.19837592](https://doi.org/10.5281/zenodo.19837592) |
-| 4 | $\Delta(R)$ と Tangherlini Bekenstein–Hawking エントロピーの対応 | [10.5281/zenodo.19837594](https://doi.org/10.5281/zenodo.19837594) |
-| 5 | 曲率半径の自己整合的決定と Tangherlini 蒸発スケーリング | [10.5281/zenodo.19837596](https://doi.org/10.5281/zenodo.19837596) |
-| 6 | 統合と 4+1 → 3+1 削減を主要未解決問題として | [10.5281/zenodo.19837598](https://doi.org/10.5281/zenodo.19837598) |
+| 1 | 俯瞰・仮説提示 | [10.5281/zenodo.19837587](https://doi.org/10.5281/zenodo.19837587) |
+| 2 | $S^4$ からのグノモン投影と Schwarzschild 様計量 | [10.5281/zenodo.19837589](https://doi.org/10.5281/zenodo.19837589) |
+| 3 | 4次元球の単位立方体充填と $\Delta(R)$ の漸近解析 | [10.5281/zenodo.19837591](https://doi.org/10.5281/zenodo.19837591) |
+| 4 | $\Delta(R)$ と Tangherlini Bekenstein–Hawking エントロピーの対応 | [10.5281/zenodo.19837593](https://doi.org/10.5281/zenodo.19837593) |
+| 5 | 曲率半径の自己整合的決定と Tangherlini 蒸発スケーリング | [10.5281/zenodo.19837595](https://doi.org/10.5281/zenodo.19837595) |
+| 6 | 統合と 4+1 → 3+1 削減を主要未解決問題として | [10.5281/zenodo.19837597](https://doi.org/10.5281/zenodo.19837597) |
 
 ---
 

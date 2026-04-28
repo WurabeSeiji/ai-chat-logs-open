@@ -202,11 +202,12 @@ $$\Delta(R) = \frac{16\pi}{3}\, R^3 - 6\pi\, R^2 + 4R - 1 + O(R^{-1})$$
 
 ---
 
-## 参考文献（選定、**後で検討**）
+## 参考文献
 
-- C. F. Gauss, *Disquisitiones Arithmeticae* (1801).
-- J.-L. Lagrange, "Démonstration d'un théorème d'arithmétique," *Nouv. Mém. Acad. Berlin* (1770).
-- C. G. J. Jacobi, *Fundamenta Nova Theoriae Functionum Ellipticarum* (1829).
-- K. Mahler, *Lectures on Diophantine Approximations* (1961).
-- G. H. Hardy and E. M. Wright, *An Introduction to the Theory of Numbers*, 第6版 (Oxford, 2008).
-- M. N. Huxley, *Area, Lattice Points, and Exponential Sums* (Oxford, 1996).
+1. C. F. Gauss, *Disquisitiones Arithmeticae*, Leipzig (1801).
+2. J.-L. Lagrange, "Démonstration d'un théorème d'arithmétique," *Nouv. Mém. Acad. Roy. Sci. Belles-Lettres Berlin*, 123–133 (1770).
+3. C. G. J. Jacobi, *Fundamenta Nova Theoriae Functionum Ellipticarum*, Königsberg (1829).
+4. G. H. Hardy, E. M. Wright, *An Introduction to the Theory of Numbers*, 第6版, Oxford University Press (2008).
+5. I. Niven, H. S. Zuckerman, H. L. Montgomery, *An Introduction to the Theory of Numbers*, 第5版, Wiley (1991).
+6. M. N. Huxley, *Area, Lattice Points, and Exponential Sums*, Oxford University Press (1996).
+7. F. Fricker, *Einführung in die Gitterpunktlehre*, Birkhäuser (1982).

@@ -189,9 +189,13 @@ The principal contribution of this paper is the self-consistency argument that f
 
 ---
 
-## References (selected, 後で検討)
+## References
 
-- F. R. Tangherlini, *Nuovo Cimento* 27, 636 (1963).
-- R. C. Myers and M. J. Perry, *Annals Phys.* 172, 304 (1986).
-- L. Randall and R. Sundrum, *Phys. Rev. Lett.* 83, 3370 (1999).
-- N. Arkani-Hamed, S. Dimopoulos, and G. Dvali, *Phys. Lett. B* 429, 263 (1998).
+1. T. Kaluza, "Zum Unitätsproblem der Physik," *Sitzungsber. Preuss. Akad. Wiss.*, 966–972 (1921).
+2. A. Friedmann, "Über die Krümmung des Raumes," *Z. Phys.* **10**, 377 (1922).
+3. O. Klein, "Quantentheorie und fünfdimensionale Relativitätstheorie," *Z. Phys.* **37**, 895 (1926).
+4. F. R. Tangherlini, "Schwarzschild Field in $n$ Dimensions and the Dimensionality of Space Problem," *Nuovo Cimento* **27**, 636 (1963).
+5. S. W. Hawking, "Particle Creation by Black Holes," *Comm. Math. Phys.* **43**, 199 (1975).
+6. R. C. Myers, M. J. Perry, "Black Holes in Higher Dimensional Spacetimes," *Annals Phys.* **172**, 304 (1986).
+7. N. Arkani-Hamed, S. Dimopoulos, G. Dvali, "The Hierarchy Problem and New Dimensions at a Millimeter," *Phys. Lett. B* **429**, 263 (1998).
+8. L. Randall, R. Sundrum, "A Large Mass Hierarchy from a Small Extra Dimension," *Phys. Rev. Lett.* **83**, 3370 (1999).

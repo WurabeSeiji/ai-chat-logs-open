@@ -17,22 +17,22 @@ GitHub: https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/BH熱力学�
 ## The Six Papers
 
 - **Paper 1: Overview and Hypotheses**
-  https://doi.org/10.5281/zenodo.19837588
+  https://doi.org/10.5281/zenodo.19837587
 
 - **Paper 2: Mathematical Foundations of Central Projection**
-  https://doi.org/10.5281/zenodo.19837590
+  https://doi.org/10.5281/zenodo.19837589
 
 - **Paper 3: Unit-Cube Packing in a 4D Ball**
-  https://doi.org/10.5281/zenodo.19837592
+  https://doi.org/10.5281/zenodo.19837591
 
 - **Paper 4: Entropy Correspondence**
-  https://doi.org/10.5281/zenodo.19837594
+  https://doi.org/10.5281/zenodo.19837593
 
 - **Paper 5: Dynamical Connection and Tangherlini Evaporation**
-  https://doi.org/10.5281/zenodo.19837596
+  https://doi.org/10.5281/zenodo.19837595
 
 - **Paper 6: Synthesis and the 4+1 → 3+1 Reduction Problem**
-  https://doi.org/10.5281/zenodo.19837598
+  https://doi.org/10.5281/zenodo.19837597
 
 ---
 

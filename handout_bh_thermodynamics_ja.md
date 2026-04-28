@@ -42,12 +42,12 @@ $\Delta(R)$ と4+1 Bekenstein–Hawking エントロピーの定数比 $32/(3\pi
 
 | 論文 | DOI |
 |------|-----|
-| 1（俯瞰）  | [10.5281/zenodo.19837588](https://doi.org/10.5281/zenodo.19837588) |
-| 2（射影） | [10.5281/zenodo.19837590](https://doi.org/10.5281/zenodo.19837590) |
-| 3（充填） | [10.5281/zenodo.19837592](https://doi.org/10.5281/zenodo.19837592) |
-| 4（エントロピー） | [10.5281/zenodo.19837594](https://doi.org/10.5281/zenodo.19837594) |
-| 5（動力学） | [10.5281/zenodo.19837596](https://doi.org/10.5281/zenodo.19837596) |
-| 6（統合） | [10.5281/zenodo.19837598](https://doi.org/10.5281/zenodo.19837598) |
+| 1（俯瞰）  | [10.5281/zenodo.19837587](https://doi.org/10.5281/zenodo.19837587) |
+| 2（射影） | [10.5281/zenodo.19837589](https://doi.org/10.5281/zenodo.19837589) |
+| 3（充填） | [10.5281/zenodo.19837591](https://doi.org/10.5281/zenodo.19837591) |
+| 4（エントロピー） | [10.5281/zenodo.19837593](https://doi.org/10.5281/zenodo.19837593) |
+| 5（動力学） | [10.5281/zenodo.19837595](https://doi.org/10.5281/zenodo.19837595) |
+| 6（統合） | [10.5281/zenodo.19837597](https://doi.org/10.5281/zenodo.19837597) |
 
 ## 4+1 Tangherlini との対応
 

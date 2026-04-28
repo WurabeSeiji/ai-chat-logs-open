@@ -42,12 +42,12 @@ The principal open problem — how the 4+1-dimensional results reduce to observe
 
 | Paper | DOI |
 |-------|-----|
-| 1 (Overview)  | [10.5281/zenodo.19837588](https://doi.org/10.5281/zenodo.19837588) |
-| 2 (Projection) | [10.5281/zenodo.19837590](https://doi.org/10.5281/zenodo.19837590) |
-| 3 (Packing) | [10.5281/zenodo.19837592](https://doi.org/10.5281/zenodo.19837592) |
-| 4 (Entropy) | [10.5281/zenodo.19837594](https://doi.org/10.5281/zenodo.19837594) |
-| 5 (Dynamics) | [10.5281/zenodo.19837596](https://doi.org/10.5281/zenodo.19837596) |
-| 6 (Synthesis) | [10.5281/zenodo.19837598](https://doi.org/10.5281/zenodo.19837598) |
+| 1 (Overview)  | [10.5281/zenodo.19837587](https://doi.org/10.5281/zenodo.19837587) |
+| 2 (Projection) | [10.5281/zenodo.19837589](https://doi.org/10.5281/zenodo.19837589) |
+| 3 (Packing) | [10.5281/zenodo.19837591](https://doi.org/10.5281/zenodo.19837591) |
+| 4 (Entropy) | [10.5281/zenodo.19837593](https://doi.org/10.5281/zenodo.19837593) |
+| 5 (Dynamics) | [10.5281/zenodo.19837595](https://doi.org/10.5281/zenodo.19837595) |
+| 6 (Synthesis) | [10.5281/zenodo.19837597](https://doi.org/10.5281/zenodo.19837597) |
 
 ## Correspondence with 4+1 Tangherlini
 

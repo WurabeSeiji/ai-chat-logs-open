@@ -195,8 +195,11 @@ $S^4(R)$ の4次元接超平面上のグノモン投影計量を導出し、Riem
 
 **後で検討**：中心投影計量に対する $\Gamma^\rho_{\mu\nu}$ の完全閉形式表現。
 
-## 参考文献（選定、**後で検討**）
+## 参考文献
 
-- F. R. Tangherlini, "Schwarzschild Field in $n$ Dimensions and the Dimensionality of Space Problem," *Nuovo Cimento* 27, 636 (1963).
-- R. C. Myers and M. J. Perry, "Black Holes in Higher Dimensional Spacetimes," *Annals Phys.* 172, 304 (1986).
-- F. Kottler, "Über die physikalischen Grundlagen der Einsteinschen Gravitationstheorie," *Annalen der Physik* 56, 401 (1918).
+1. K. Schwarzschild, "Über das Gravitationsfeld eines Massenpunktes nach der Einsteinschen Theorie," *Sitzungsber. Preuss. Akad. Wiss.*, 189–196 (1916).
+2. F. Kottler, "Über die physikalischen Grundlagen der Einsteinschen Gravitationstheorie," *Annalen der Physik* **56**, 401 (1918).
+3. F. R. Tangherlini, "Schwarzschild Field in $n$ Dimensions and the Dimensionality of Space Problem," *Nuovo Cimento* **27**, 636 (1963).
+4. J. D. Bekenstein, "Black Holes and Entropy," *Phys. Rev. D* **7**, 2333 (1973).
+5. S. W. Hawking, "Particle Creation by Black Holes," *Comm. Math. Phys.* **43**, 199 (1975).
+6. R. C. Myers, M. J. Perry, "Black Holes in Higher Dimensional Spacetimes," *Annals Phys.* **172**, 304 (1986).

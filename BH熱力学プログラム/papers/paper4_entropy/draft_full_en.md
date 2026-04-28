@@ -153,9 +153,10 @@ The dynamical determination of $R$ from the matter content of the four-dimension
 
 ---
 
-## References (selected, 後で検討)
+## References
 
-- J. D. Bekenstein, "Black Holes and Entropy," *Phys. Rev. D* 7, 2333 (1973).
-- S. W. Hawking, "Particle Creation by Black Holes," *Comm. Math. Phys.* 43, 199 (1975).
-- F. R. Tangherlini, "Schwarzschild Field in $n$ Dimensions and the Dimensionality of Space Problem," *Nuovo Cimento* 27, 636 (1963).
-- R. C. Myers and M. J. Perry, "Black Holes in Higher Dimensional Spacetimes," *Annals Phys.* 172, 304 (1986).
+1. J. D. Bekenstein, "Black Holes and Entropy," *Phys. Rev. D* **7**, 2333 (1973).
+2. J. M. Bardeen, B. Carter, S. W. Hawking, "The Four Laws of Black Hole Mechanics," *Comm. Math. Phys.* **31**, 161 (1973).
+3. S. W. Hawking, "Particle Creation by Black Holes," *Comm. Math. Phys.* **43**, 199 (1975).
+4. F. R. Tangherlini, "Schwarzschild Field in $n$ Dimensions and the Dimensionality of Space Problem," *Nuovo Cimento* **27**, 636 (1963).
+5. R. C. Myers, M. J. Perry, "Black Holes in Higher Dimensional Spacetimes," *Annals Phys.* **172**, 304 (1986).
