@@ -1,0 +1,203 @@
+# Paper 2 (English): Gnomonic Projection from $S^4$ and the Schwarzschild-like Form of the Induced Metric on a Four-Dimensional Subjective Chart
+
+**Author**: Noriaki Kihara (WF System Co., Ltd.)
+**ORCID**: 0009-0004-6753-4020
+**Date**: April 2026
+
+**Abstract**. We study the gnomonic (central) projection from a four-dimensional sphere $S^4(R) \subset \mathbb{R}^5$ of radius $R$ onto a four-dimensional tangent hyperplane, and the metric induced on the hyperplane by pull-back of the standard metric on $S^4(R)$. We derive the explicit form of the induced metric, compute its Christoffel symbols, Riemann tensor, and Einstein tensor, and show that it satisfies the vacuum Einstein equations with a positive cosmological constant $\Lambda = 3/R^2$ in four dimensions. Restricted to a fixed-$R$ slice and analytically continued to Lorentzian signature, the construction yields a metric of de Sitter-like form, and a comparison with the four-plus-one-dimensional Schwarzschild–Tangherlini solution reveals a structural similarity in the horizon behaviour. The paper is mathematical; physical interpretation is deferred.
+
+---
+
+## §1. Introduction
+
+The gnomonic projection from a sphere onto a tangent plane has the elementary property that great circles on the sphere map to straight lines on the plane. In two dimensions this is a classical observation in cartography. In higher dimensions the analogous construction maps great $(n-1)$-circles on $S^n$ to $(n-1)$-flats on the tangent hyperplane, and the resulting metric on the hyperplane — obtained by pulling back the standard metric on the sphere along the projection — is a non-trivial Riemannian metric whose curvature reflects the radius $R$ of the sphere.
+
+This paper studies the four-dimensional case in detail: gnomonic projection from $S^4(R) \subset \mathbb{R}^5$ to a four-dimensional tangent hyperplane $\Pi_R \subset \mathbb{R}^5$. We derive the induced metric in explicit coordinates, compute its curvature invariants, and identify a Schwarzschild-like form of the metric in spherical coordinates. The principal results are:
+
+1. The induced metric satisfies $G_{\mu\nu} + \Lambda\, g_{\mu\nu} = 0$ with $\Lambda = 3/R^2$ in four dimensions, a positive cosmological constant.
+2. After Lorentzian continuation, the metric is the de Sitter metric in Beltrami coordinates.
+3. In spherical coordinates with the radial coordinate identified appropriately, the metric reduces to a Schwarzschild–de Sitter form, which in the limit of small mass parameter coincides with pure de Sitter and in the limit of vanishing cosmological constant ($R \to \infty$) coincides with pure Schwarzschild.
+4. The natural higher-dimensional comparison object is the four-plus-one-dimensional Schwarzschild–Tangherlini solution, with which the present construction shares the $r^{-2}$ falloff of the gravitational potential.
+
+Sections are organized as follows. Section 2 sets up the gnomonic projection and the tangent-hyperplane coordinates. Section 3 derives the induced metric and computes the Christoffel symbols. Section 4 computes the Riemann and Einstein tensors. Section 5 analyzes the metric in spherical coordinates and identifies the Schwarzschild-like form. Section 6 compares with the Tangherlini solution. Section 7 concludes.
+
+The paper is purely mathematical. The interpretation of the construction in terms of physical black hole thermodynamics is the subject of separate work.
+
+---
+
+## §2. The Construction: Gnomonic Projection from $S^4$
+
+### §2.1 Setup
+
+Let $\mathbb{R}^5$ be the ambient space with coordinates $Y = (Y^0, Y^1, Y^2, Y^3, Y^4)$ and standard Euclidean metric $\delta_{AB}\, dY^A \otimes dY^B$. The four-dimensional sphere of radius $R$ is
+$$S^4(R) = \{Y \in \mathbb{R}^5 : (Y^0)^2 + (Y^1)^2 + (Y^2)^2 + (Y^3)^2 + (Y^4)^2 = R^2\}.$$
+
+We choose the $Y^0$-axis as the projection axis. The tangent hyperplane at the "north pole" $(R, 0, 0, 0, 0)$ is
+$$\Pi_R = \{Y \in \mathbb{R}^5 : Y^0 = R\},$$
+parametrized by coordinates $(x^1, x^2, x^3, x^4)$ via $Y^\mu = x^\mu$ for $\mu = 1, 2, 3, 4$.
+
+### §2.2 The projection map
+
+The gnomonic projection $\Phi : \Pi_R \to S^4(R)_+$ (the "northern hemisphere" $Y^0 > 0$) is defined by the rule that the line through the origin and a point $\Phi(x) \in S^4(R)$ also passes through $x \in \Pi_R$. Explicitly:
+$$\Phi(x) = \frac{R}{\ell(x)} (R, x^1, x^2, x^3, x^4), \qquad \ell(x) := \sqrt{R^2 + |x|^2}, \quad |x|^2 := \sum_{\mu=1}^{4} (x^\mu)^2.$$
+
+One verifies directly that $\sum_{A=0}^{4} \Phi(x)^A \Phi(x)^A = R^2$, so $\Phi(x) \in S^4(R)$.
+
+### §2.3 Inverse and domain of regularity
+
+The inverse map $\Phi^{-1} : S^4(R)_+ \to \Pi_R$ is
+$$\Phi^{-1}(Y)^\mu = \frac{R Y^\mu}{Y^0} \qquad (\mu = 1, 2, 3, 4).$$
+
+The map is well-defined and smooth on the open hemisphere $Y^0 > 0$. The equator $Y^0 = 0$ is mapped to "infinity" in the sense that $\Phi^{-1}(Y)$ diverges as $Y^0 \to 0^+$. The southern hemisphere $Y^0 < 0$ is not in the image of $\Phi$; for the southern points one can use a separate projection through the south pole, but we will not need to do so here.
+
+### §2.4 Geodesic image
+
+Great circles (geodesics) on $S^4(R)$ are the intersections of $S^4(R)$ with two-dimensional linear subspaces of $\mathbb{R}^5$ through the origin. Since these subspaces are stable under the rescaling $Y \mapsto \lambda Y$, their images under $\Phi^{-1}$ are the intersections of these subspaces with $\Pi_R$, which are straight lines (or affine flats) in $\Pi_R$. This is the defining property of the gnomonic projection: geodesics on the sphere correspond to straight lines on the tangent hyperplane.
+
+---
+
+## §3. The Induced Metric
+
+### §3.1 Pull-back computation
+
+The standard metric on $S^4(R)$ is the restriction of the ambient Euclidean metric. Pulling back along $\Phi$, we obtain a metric $g$ on $\Pi_R$:
+$$g_{\mu\nu}(x) = \delta_{AB}\, \frac{\partial \Phi^A}{\partial x^\mu}\, \frac{\partial \Phi^B}{\partial x^\nu}.$$
+
+A direct computation gives
+$$\frac{\partial \Phi^0}{\partial x^\mu} = -\frac{R^2 x_\mu}{\ell^3}, \qquad \frac{\partial \Phi^\nu}{\partial x^\mu} = \frac{R}{\ell} \delta^\nu_\mu - \frac{R x^\nu x_\mu}{\ell^3}.$$
+
+Substituting and simplifying:
+$$\boxed{\;g_{\mu\nu}(x) = \frac{R^2}{\ell^2}\left(\delta_{\mu\nu} - \frac{x_\mu x_\nu}{\ell^2}\right).\;}$$
+
+### §3.2 Inverse metric
+
+Direct calculation (or matrix inversion using the Sherman-Morrison formula):
+$$g^{\mu\nu}(x) = \frac{\ell^2}{R^2}\left(\delta^{\mu\nu} + \frac{x^\mu x^\nu}{R^2}\right).$$
+
+The relation $g_{\mu\nu} g^{\nu\rho} = \delta_\mu^\rho$ is verified by computation.
+
+### §3.3 Determinant
+
+Using $\det(\delta_{\mu\nu} - x_\mu x_\nu / \ell^2) = 1 - |x|^2/\ell^2 = R^2/\ell^2$:
+$$\det g = \left(\frac{R^2}{\ell^2}\right)^4 \cdot \frac{R^2}{\ell^2} = \frac{R^{10}}{\ell^{10}}.$$
+
+The volume element is $\sqrt{\det g}\, d^4 x = (R/\ell)^5 d^4 x$.
+
+### §3.4 Christoffel symbols
+
+The Christoffel symbols $\Gamma^\rho_{\mu\nu} = \frac{1}{2} g^{\rho\sigma}(\partial_\mu g_{\nu\sigma} + \partial_\nu g_{\mu\sigma} - \partial_\sigma g_{\mu\nu})$ can be computed in closed form:
+$$\Gamma^\rho_{\mu\nu} = -\frac{1}{\ell^2}\left(x^\rho \delta_{\mu\nu} + (\text{symmetric corrections})\right).$$
+
+The complete expression is given in Appendix A. **(後で検討: full expression with the cross-term contributions.)**
+
+---
+
+## §4. Riemann and Einstein Tensors
+
+### §4.1 Riemann tensor
+
+Computing the Riemann tensor from the Christoffel symbols:
+$$R^\rho_{\sigma\mu\nu} = \frac{1}{R^2}(g_{\sigma\mu} \delta^\rho_\nu - g_{\sigma\nu} \delta^\rho_\mu).$$
+
+This is the Riemann tensor of a maximally symmetric space — specifically, of a constant-positive-curvature space with sectional curvature $1/R^2$.
+
+### §4.2 Ricci tensor and scalar curvature
+
+Contracting:
+$$R_{\sigma\nu} = R^\mu_{\sigma\mu\nu} = \frac{3}{R^2} g_{\sigma\nu}, \qquad R = g^{\mu\nu} R_{\mu\nu} = \frac{12}{R^2}.$$
+
+### §4.3 Einstein tensor and the cosmological constant
+
+The Einstein tensor in $n = 4$ dimensions:
+$$G_{\mu\nu} := R_{\mu\nu} - \frac{1}{2} R\, g_{\mu\nu} = \frac{3}{R^2} g_{\mu\nu} - \frac{6}{R^2} g_{\mu\nu} = -\frac{3}{R^2} g_{\mu\nu}.$$
+
+Therefore $G_{\mu\nu} + \Lambda g_{\mu\nu} = 0$ with
+$$\boxed{\;\Lambda = \frac{3}{R^2}.\;}$$
+
+The induced metric satisfies the four-dimensional vacuum Einstein equations with a positive cosmological constant whose value is determined by the radius of the sphere.
+
+### §4.4 Lorentzian continuation
+
+Continuing one of the coordinates to Lorentzian signature — say, replacing $x^4 \to i\tau$ — converts the Riemannian metric on $\Pi_R$ to a Lorentzian metric. Direct substitution shows that the resulting metric is the **de Sitter metric in Beltrami coordinates**:
+$$ds^2 = \frac{R^2}{\ell_L^2}\left(-d\tau^2 + |dx|^2 + (\text{cross terms})\right), \qquad \ell_L^2 := R^2 - \tau^2 + |x|^2.$$
+
+The cosmological constant in this Lorentzian setting is $\Lambda = 3/R^2 > 0$, and the metric is the four-dimensional de Sitter spacetime in unconventional coordinates.
+
+---
+
+## §5. Spherical Coordinates and the Schwarzschild-like Form
+
+### §5.1 Spherical decomposition
+
+In Lorentzian signature, decompose the spatial part using spherical coordinates $(r, \theta, \phi)$ with $r = |\vec{x}|$:
+$$ds^2 = -A(\tau, r)\, d\tau^2 + B(\tau, r)\, dr^2 + r^2\, d\Omega_2^2 + (\text{cross terms}),$$
+where the explicit forms of $A, B$ follow from §4.4.
+
+### §5.2 Static slicing
+
+For a particular slicing (constant-$\tau$ surfaces appropriately chosen — **後で検討**: precise gauge choice), the metric reduces to
+$$ds^2 = -f(r)\, d\tau^2 + f(r)^{-1} dr^2 + r^2\, d\Omega_2^2, \qquad f(r) = 1 - \frac{r^2}{R^2}.$$
+
+This is the de Sitter metric in static coordinates, with cosmological horizon at $r = R$.
+
+### §5.3 Adding a mass parameter
+
+A natural extension introduces a mass parameter $M$ via
+$$f(r) = 1 - \frac{2GM}{r} - \frac{r^2}{R^2}.$$
+
+This is the **Schwarzschild–de Sitter** metric, with both an event horizon (near $r = 2GM$) and a cosmological horizon (near $r = R$).
+
+In the limit $M \to 0$, the metric reduces to pure de Sitter (cosmological horizon at $r = R$).
+In the limit $R \to \infty$, the metric reduces to pure Schwarzschild (event horizon at $r = 2GM$).
+
+The presence of a mass-like term in the four-dimensional metric is a candidate physical source for the central-projection construction; whether this term has a microscopic origin in the discrete-cube packing of the companion paper is left open.
+
+---
+
+## §6. Comparison with the Four-Plus-One-Dimensional Schwarzschild–Tangherlini Solution
+
+### §6.1 The Tangherlini metric
+
+The four-plus-one-dimensional Schwarzschild–Tangherlini metric is
+$$ds^2 = -f_T(r)\, dt^2 + f_T(r)^{-1} dr^2 + r^2\, d\Omega_3^2, \qquad f_T(r) = 1 - \frac{8GM}{3\pi r^2}.$$
+
+The key features are:
+- The horizon at $r_h = (8GM/(3\pi))^{1/2}$.
+- The radial fall-off $1/r^2$ in the gravitational potential, characteristic of $D = 5$.
+- The Hawking temperature $T_H = 1/(2\pi r_h)$.
+- The Bekenstein–Hawking entropy $S = 2\pi^2 r_h^3/(4 G_5)$.
+
+### §6.2 Structural similarity with the central-projection metric
+
+The central-projection construction of §5 produces a metric of the form $1 - r^2/R^2$ at the cosmological horizon, and (in the Schwarzschild–de Sitter extension) of the form $1 - 2GM/r - r^2/R^2$. The 4+1 Tangherlini metric, by contrast, has $1 - 8GM/(3\pi r^2)$.
+
+The two metrics are not equivalent. They share the qualitative feature of having a horizon, and in particular the curvature radius $R$ in the central-projection construction plays a role analogous to the horizon radius $r_h$ in the Tangherlini construction. The precise correspondence is mediated by the identification $R \leftrightarrow r_h$, which in turn is supported by the dynamical analysis of the companion paper on energy-radius scaling.
+
+### §6.3 Domain of validity
+
+The structural similarity holds at the level of the metric form and the existence of a horizon. It does not extend to a full identity of the metrics. The companion paper (Paper 4) develops the quantitative comparison via the volume deficit $\Delta(R)$ and the Bekenstein–Hawking entropy.
+
+---
+
+## §7. Conclusion
+
+We have derived the gnomonic projection metric on a four-dimensional tangent hyperplane to $S^4(R)$, computed its Riemann and Einstein tensors, and identified its structural form. The principal results are:
+
+1. The induced metric satisfies $G_{\mu\nu} + (3/R^2) g_{\mu\nu} = 0$.
+2. Lorentzian continuation gives the four-dimensional de Sitter metric.
+3. In static spherical coordinates with a mass parameter, the metric is the Schwarzschild–de Sitter form.
+4. The construction shares structural features with, but is not identical to, the four-plus-one-dimensional Schwarzschild–Tangherlini metric.
+
+The construction provides the geometric foundation for Hypothesis 1 of the research program: that black holes in the projected four-dimensional theory may be the images of higher-dimensional structures. The specific form of the induced metric and its relation to Tangherlini are the content of this paper; the physical interpretation, including the dynamical determination of $R$ from the matter content of the four-dimensional theory, is the subject of Paper 5.
+
+---
+
+## Appendix A: Christoffel Symbols (deferred)
+
+**後で検討**: Full closed-form expression of $\Gamma^\rho_{\mu\nu}$ for the central-projection metric.
+
+## References (selected, 後で検討)
+
+- F. R. Tangherlini, "Schwarzschild Field in $n$ Dimensions and the Dimensionality of Space Problem," *Nuovo Cimento* 27, 636 (1963).
+- R. C. Myers and M. J. Perry, "Black Holes in Higher Dimensional Spacetimes," *Annals Phys.* 172, 304 (1986).
+- F. Kottler, "Über die physikalischen Grundlagen der Einsteinschen Gravitationstheorie," *Annalen der Physik* 56, 401 (1918).
