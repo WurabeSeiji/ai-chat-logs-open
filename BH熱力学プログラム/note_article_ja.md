@@ -188,4 +188,8 @@ Friedmann 類似の議論から、質量 $M$ のブラックホールで $E_{\ma
 
 ---
 
-**Zenn 記事**（より技術的な解説）：[ブラックホール熱力学を「上位時空構造の射影」として再構成する](https://zenn.dev/kiharanoriaki/articles/bh-thermodynamics-projection)
+**Zenn 記事**（より技術的な解説）：[ブラックホール熱力学を「上位時空構造の射影」として再構成する](https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection)
+
+---
+
+#ブラックホール #BH熱力学 #中心投影 #グノモン投影 #Tangherlini #ホログラフィー #Bekenstein #Hawking輻射 #高次元重力 #整数論 #Lagrange四平方定理 #Jacobi四平方定理 #deSitter #4次元球 #格子点問題 #包除原理 #数理物理学 #理論物理学 #量子重力 #プレプリント #Zenodo

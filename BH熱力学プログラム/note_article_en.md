@@ -188,4 +188,8 @@ This programme is presented as an independent path of inquiry, but it sits along
 
 ---
 
-**Zenn article (more technical exposition)**: [Black Hole Thermodynamics as Projection from a Higher Spacetime Structure](https://zenn.dev/kiharanoriaki/articles/bh-thermodynamics-projection)
+**Zenn article (more technical exposition)**: [Black Hole Thermodynamics as Projection from a Higher Spacetime Structure](https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection)
+
+---
+
+#BlackHoleThermodynamics #CentralProjection #GnomonicProjection #Tangherlini #Holography #BekensteinHawkingEntropy #HawkingRadiation #HigherDimensionalGravity #NumberTheory #LagrangeFourSquareTheorem #JacobiFourSquareTheorem #deSitter #FourDimensionalBall #LatticePointProblem #InclusionExclusion #MathematicalPhysics #TheoreticalPhysics #QuantumGravity #Preprint #Zenodo
