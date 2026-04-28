@@ -201,7 +201,9 @@ This programme is presented as an independent path of inquiry, but it sits along
 
 ---
 
-**Zenn article (more technical exposition)**: [Black Hole Thermodynamics as Projection from a Higher Spacetime Structure](https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection)
+**Japanese note article**: https://note.com/kiharanoriaki/n/n4524006ef175
+
+**Zenn article (more technical exposition)**: https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection
 
 ---
 

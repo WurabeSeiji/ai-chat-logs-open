@@ -19,6 +19,16 @@
 
 各 deposit には日英対訳の md/tex/pdf 計6ファイルを収録。CC BY 4.0。
 
+## 公開記事・ハンドアウト
+
+| 媒体 | 言語 | URL |
+|---|:-:|---|
+| Zenn 記事（技術解説） | JA | https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection |
+| note 記事（一般向け） | JA | https://note.com/kiharanoriaki/n/n4524006ef175 |
+| note 記事（一般向け） | EN | https://note.com/kiharanoriaki/n/n916eac778c1c |
+| ハンドアウト（A4 1ページ） | JA | [handout_bh_thermodynamics_ja.pdf](../handout_bh_thermodynamics_ja.pdf) |
+| ハンドアウト（A4 1ページ） | EN | [handout_bh_thermodynamics_en.pdf](../handout_bh_thermodynamics_en.pdf) |
+
 ---
 
 ## プログラム構成

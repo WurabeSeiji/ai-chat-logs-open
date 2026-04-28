@@ -213,5 +213,8 @@ $$R \propto M^{1/2}, \quad T_H \propto M^{-1/2}, \quad \tau \propto M^{3/2}, \qu
 **著者**：木原 範昭（Noriaki Kihara）
 WF System Co., Ltd. ／ ORCID: [0009-0004-6753-4020](https://orcid.org/0009-0004-6753-4020)
 
-**先行プログラム**：[中心投影による空間の幾何学的定式化（10論文）](https://zenn.dev/kiharanoriaki/articles/gnomonic-projection-spacetime-geometry)
-**並行プログラム**：[位相方程式篇（W1〜W11）── 標準模型62状態の組合せ論的導出](https://zenn.dev/kiharanoriaki/articles/phase-equation-hypercube-particle-classification)
+**note 記事（日本語）**：https://note.com/kiharanoriaki/n/n4524006ef175
+**note 記事（英語）**：https://note.com/kiharanoriaki/n/n916eac778c1c
+
+**先行プログラム**：[中心投影による空間の幾何学的定式化（10論文）](https://zenn.dev/noriaki_kihara/articles/gnomonic-projection-spacetime-geometry)
+**並行プログラム**：[位相方程式篇（W1〜W11）── 標準模型62状態の組合せ論的導出](https://zenn.dev/noriaki_kihara/articles/phase-equation-hypercube-particle-classification)
