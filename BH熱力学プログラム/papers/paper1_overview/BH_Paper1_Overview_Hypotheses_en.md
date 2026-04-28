@@ -3,7 +3,7 @@
 **Author**: Noriaki Kihara (WF System Co., Ltd.)
 **ORCID**: [0009-0004-6753-4020](https://orcid.org/0009-0004-6753-4020)
 **Date**: April 2026
-**DOI**: [10.5281/zenodo.19837588](https://doi.org/10.5281/zenodo.19837588)
+**DOI**: [10.5281/zenodo.19839393](https://doi.org/10.5281/zenodo.19839393)
 
 ---
 
@@ -313,3 +313,24 @@ Second, the absence of any holographic input is also deliberate. The program is 
 Third, the methodology — stating premises explicitly, deriving consequences rigorously, identifying discrepancies precisely — is intended to make the program useful regardless of whether one accepts its hypotheses. A reader who rejects the hypotheses still obtains a self-contained mathematical and combinatorial framework whose outputs may have interest in their own right.
 
 The development of the program in the companion papers begins, in Paper 2, with the geometric construction.
+
+---
+
+## References
+
+1. K. Schwarzschild, "Über das Gravitationsfeld eines Massenpunktes nach der Einsteinschen Theorie," *Sitzungsber. Preuss. Akad. Wiss.*, 189–196 (1916).
+2. J. D. Bekenstein, "Black Holes and Entropy," *Phys. Rev. D* **7**, 2333 (1973).
+3. J. M. Bardeen, B. Carter, S. W. Hawking, "The Four Laws of Black Hole Mechanics," *Comm. Math. Phys.* **31**, 161 (1973).
+4. S. W. Hawking, "Particle Creation by Black Holes," *Comm. Math. Phys.* **43**, 199 (1975).
+5. G. 't Hooft, "Dimensional Reduction in Quantum Gravity," arXiv:gr-qc/9310026 (1993).
+6. L. Susskind, "The World as a Hologram," *J. Math. Phys.* **36**, 6377 (1995).
+7. J. Maldacena, "The Large-$N$ Limit of Superconformal Field Theories and Supergravity," *Adv. Theor. Math. Phys.* **2**, 231 (1998).
+8. F. R. Tangherlini, "Schwarzschild Field in $n$ Dimensions and the Dimensionality of Space Problem," *Nuovo Cimento* **27**, 636 (1963).
+9. R. C. Myers, M. J. Perry, "Black Holes in Higher Dimensional Spacetimes," *Annals Phys.* **172**, 304 (1986).
+10. C. Rovelli, *Quantum Gravity*, Cambridge University Press (2004).
+11. J. Ambjørn, J. Jurkiewicz, R. Loll, "Emergence of a 4D World from Causal Quantum Gravity," *Phys. Rev. Lett.* **93**, 131301 (2004).
+12. L. Bombelli, J. Lee, D. Meyer, R. D. Sorkin, "Space-time as a Causal Set," *Phys. Rev. Lett.* **59**, 521 (1987).
+13. J.-L. Lagrange, "Démonstration d'un théorème d'arithmétique," *Nouv. Mém. Acad. Roy. Sci. Belles-Lettres Berlin*, 123–133 (1770).
+14. C. G. J. Jacobi, *Fundamenta Nova Theoriae Functionum Ellipticarum*, Königsberg (1829).
+15. L. Randall, R. Sundrum, "A Large Mass Hierarchy from a Small Extra Dimension," *Phys. Rev. Lett.* **83**, 3370 (1999).
+16. N. Arkani-Hamed, S. Dimopoulos, G. Dvali, "The Hierarchy Problem and New Dimensions at a Millimeter," *Phys. Lett. B* **429**, 263 (1998).

@@ -3,7 +3,7 @@
 **Author**: Noriaki Kihara (WF System Co., Ltd.)
 **ORCID**: [0009-0004-6753-4020](https://orcid.org/0009-0004-6753-4020)
 **Date**: April 2026
-**DOI**: [10.5281/zenodo.19837598](https://doi.org/10.5281/zenodo.19837598)
+**DOI**: [10.5281/zenodo.19839400](https://doi.org/10.5281/zenodo.19839400)
 
 ---
 
@@ -149,11 +149,15 @@ The program, as presented in these six papers, is complete as a unit. Whether it
 
 ---
 
-## References (selected, 後で検討)
+## References
 
-(In addition to those cited in Papers 1–5):
-- L. Randall and R. Sundrum, "A large mass hierarchy from a small extra dimension," *Phys. Rev. Lett.* 83, 3370 (1999).
-- N. Arkani-Hamed, S. Dimopoulos, and G. Dvali, "The hierarchy problem and new dimensions at a millimeter," *Phys. Lett. B* 429, 263 (1998).
-- A. Strominger, "The dS/CFT correspondence," *JHEP* 0110, 034 (2001).
-- A. Chamblin, S. W. Hawking, and H. S. Reall, "Brane-world black holes," *Phys. Rev. D* 61, 065007 (2000).
-- R. Emparan and H. S. Reall, "Black holes in higher dimensions," *Living Rev. Rel.* 11, 6 (2008).
+1. T. Kaluza, "Zum Unitätsproblem der Physik," *Sitzungsber. Preuss. Akad. Wiss.*, 966–972 (1921).
+2. O. Klein, "Quantentheorie und fünfdimensionale Relativitätstheorie," *Z. Phys.* **37**, 895 (1926).
+3. F. R. Tangherlini, "Schwarzschild Field in $n$ Dimensions and the Dimensionality of Space Problem," *Nuovo Cimento* **27**, 636 (1963).
+4. R. C. Myers, M. J. Perry, "Black Holes in Higher Dimensional Spacetimes," *Annals Phys.* **172**, 304 (1986).
+5. J. Maldacena, "The Large-$N$ Limit of Superconformal Field Theories and Supergravity," *Adv. Theor. Math. Phys.* **2**, 231 (1998).
+6. N. Arkani-Hamed, S. Dimopoulos, G. Dvali, "The Hierarchy Problem and New Dimensions at a Millimeter," *Phys. Lett. B* **429**, 263 (1998).
+7. L. Randall, R. Sundrum, "A Large Mass Hierarchy from a Small Extra Dimension," *Phys. Rev. Lett.* **83**, 3370 (1999).
+8. A. Chamblin, S. W. Hawking, H. S. Reall, "Brane-world Black Holes," *Phys. Rev. D* **61**, 065007 (2000).
+9. A. Strominger, "The dS/CFT Correspondence," *JHEP* **0110**, 034 (2001).
+10. R. Emparan, H. S. Reall, "Black Holes in Higher Dimensions," *Living Rev. Rel.* **11**, 6 (2008).
