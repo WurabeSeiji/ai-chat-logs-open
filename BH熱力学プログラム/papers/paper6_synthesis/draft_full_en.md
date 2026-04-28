@@ -1,0 +1,156 @@
+# Paper 6 (English): Synthesis and the 4+1 to 3+1 Reduction as the Principal Open Problem
+
+**Working title**: A Unified Picture from Central Projection and Discreteness, with the Reduction to 3+1 Dimensions as the Principal Open Problem
+
+**Author**: Noriaki Kihara (WF System Co., Ltd.)
+**ORCID**: 0009-0004-6753-4020
+**Date**: April 2026
+
+**Abstract**. We synthesize the results of the five companion papers and identify the principal open problem of the program: how the 4+1-dimensional black hole thermodynamics established by the program (with lifetime $\tau \propto M^{3/2}$) reduces to the observed 3+1-dimensional thermodynamics (with $\tau \propto M^3$). We discuss three candidate mechanisms — Kaluza–Klein compactification, brane localization à la Randall–Sundrum/ADD, and a holographic-style projection — and propose a programme of further investigation. The paper contains no new theorems; its purpose is to crystallize what has and has not been established, and to point toward the next stage.
+
+---
+
+## §1. Introduction
+
+The program presented in Papers 1 through 5 establishes a self-consistent geometric and combinatorial framework for black hole thermodynamics in 4+1 dimensions. From the two hypotheses of Paper 1 — the projection hypothesis and the discrete drift hypothesis — together with the geometric construction of Paper 2 and the combinatorial result of Paper 3, the program derives:
+
+- A Schwarzschild–de Sitter-form metric on a four-dimensional subjective chart.
+- An asymptotic constant $c = 8/(3\pi)$ for the volume deficit $\Delta(R)$.
+- A correspondence with the 4+1-dimensional Tangherlini Bekenstein–Hawking entropy with ratio $\Delta(R)/S_{BH} \to 32/(3\pi)$.
+- The Tangherlini scaling laws $R \propto M^{1/2}$, $T_H \propto M^{-1/2}$, $\tau \propto M^{3/2}$, $dM/dt \propto -M^{-1/2}$.
+
+The successes are concentrated in 4+1 dimensions. The principal open problem, identified in Paper 5 §5, is the relation between this 4+1 structure and the 3+1 physics of observable black holes. We devote this final paper to that problem.
+
+---
+
+## §2. Synthesis: From Hypotheses to Results
+
+The two hypotheses of Paper 1 are partially supported by the companion papers:
+
+**Hypothesis 1 (Projection Hypothesis):** A black hole in the four-dimensional theory is the projected image of a higher-dimensional structure.
+
+- Paper 2 constructs the gnomonic projection from $S^4(R) \subset \mathbb{R}^5$ and derives the induced four-dimensional metric. The metric satisfies $G_{\mu\nu} + (3/R^2) g_{\mu\nu} = 0$ and, in the Schwarzschild–de Sitter extension with a mass parameter, exhibits horizon structure. The projection thus has, at the level of the metric, the right form to support the hypothesis.
+- Paper 4 shows that the geometric quantity $\Delta(R)$ (a property of the projection) has the right $R^3$ scaling to match the 4+1 Bekenstein–Hawking entropy.
+- Paper 5 shows that the curvature radius $R$ — the geometric scale of the projection — is determined self-consistently from the matter content via $E_{\mathrm{total}} \propto R^2$, giving $R \propto M^{1/2}$ as in 4+1 Tangherlini.
+
+**Hypothesis 2 (Discrete Drift Hypothesis):** Hawking evaporation corresponds to the drift of discrete units across a higher-dimensional region's boundary.
+
+- Paper 3 establishes the combinatorial framework — unit-cube packing in a four-dimensional ball — and computes the asymptotic volume deficit $\Delta(R) \sim (16\pi/3) R^3$ with leading constant $c = 8/(3\pi)$.
+- Paper 4 identifies $\Delta(R)$ as the candidate "discrete drift entropy."
+- Paper 5 derives the evaporation dynamics from the scaling of $R$ with $M$, recovering the Tangherlini lifetime $\tau \propto M^{3/2}$.
+
+The hypotheses are supported at the level of scaling and structural form. They are **not** supported at the level of:
+
+- An identification of $\Delta(R)$ with a microstate count (the constant ratio $32/(3\pi)$ remains unexplained at the microscopic level).
+- A complete derivation of the discrete drift mechanism (the program assumes that discrete units drift across boundaries; it does not derive this from first principles).
+- A reduction to physical 3+1-dimensional black hole physics (the principal open problem).
+
+---
+
+## §3. The Mathematical–Physical Bridge
+
+The program operates in two registers. Papers 2 and 3 are mathematical — theorems and proofs about the central projection and the lattice-packing problem. Papers 4 and 5 are physical — they take the mathematical structures and ask whether they correspond to features of black hole thermodynamics.
+
+The bridge between the two registers is the identification of the geometric quantity $R$ with the physical quantity $r_h$. This identification is not a mathematical theorem; it is a hypothesis. It is supported by the agreement of the resulting scaling laws with Tangherlini, which is a non-trivial check, but it is not derived from first principles.
+
+The strength of the bridge is therefore the strength of the hypothesis. If one accepts the hypothesis, the entire framework is internally consistent and reproduces a substantial body of established results in 4+1-dimensional black hole physics. If one rejects the hypothesis, the mathematical content of Papers 2 and 3 still stands, but its physical interpretation is open.
+
+---
+
+## §4. The Principal Open Problem: Reduction to 3+1 Dimensions
+
+### §4.1 Statement of the problem
+
+The 4+1-dimensional Tangherlini results recovered by the program are:
+
+- $r_h \propto M^{1/2}$
+- $T_H \propto M^{-1/2}$
+- $\tau \propto M^{3/2}$
+
+The 3+1-dimensional Schwarzschild results are:
+
+- $r_s \propto M$
+- $T_H \propto M^{-1}$
+- $\tau \propto M^3$
+
+These are not quantitatively reconcilable without an additional mechanism. The program, as it stands, describes 4+1-dimensional black holes; it does not describe 3+1-dimensional black holes.
+
+If the program is to make contact with observable physics, this gap must be bridged. The problem is precisely formulated:
+
+> **Open Problem.** Identify a mechanism by which the 4+1-dimensional thermodynamics of the central-projection construction reduces to the 3+1-dimensional thermodynamics of physical black holes, with quantitative agreement at the level of the mass–temperature relation, the entropy formula, and the evaporation lifetime.
+
+### §4.2 Candidate mechanism A: Kaluza–Klein compactification
+
+If one of the four spatial dimensions is compact at a scale $\ell$ much smaller than $r_h$, the black hole horizon wraps around the compact direction, and the effective 3+1-dimensional theory has thermodynamics that may differ from the 4+1 case.
+
+In Kaluza–Klein theory, the 4+1-dimensional Schwarzschild–Tangherlini black hole reduces, for $r_h \ll \ell$ ("small black holes"), to a 4+1-dimensional black string wrapping the compact direction; for $r_h \gg \ell$ ("large black holes"), it reduces to a 3+1-dimensional Schwarzschild black hole with effective Newton constant $G_4 = G_5/\ell$.
+
+In the latter regime, the 3+1 thermodynamics is recovered. The transition between regimes occurs at $r_h \sim \ell$, the compactification scale.
+
+For the central-projection construction to produce 3+1 thermodynamics for astrophysical black holes, $\ell$ must be larger than the Schwarzschild radius of those black holes — which would require $\ell > r_s \sim$ km, easily ruled out by observational bounds.
+
+Conversely, $\ell$ small (Planck scale) would give 4+1 thermodynamics for all macroscopic black holes, contradicting the 3+1 observed behaviour.
+
+**This mechanism does not, by itself, resolve the discrepancy.**
+
+### §4.3 Candidate mechanism B: Brane localization (Randall–Sundrum / ADD)
+
+In Randall–Sundrum-type models, our 3+1-dimensional spacetime is a brane embedded in a higher-dimensional bulk. Matter is localized on the brane while gravity propagates in the bulk. Black holes on the brane have a 3+1-dimensional event horizon but bulk gravitational effects.
+
+Such models can produce a hierarchy where:
+- Large (astrophysical) black holes are well-approximated by 3+1 Schwarzschild.
+- Small black holes ($r_h \lesssim$ AdS radius) deviate, becoming bulk-dominated and showing 4+1-like thermodynamics.
+
+This mechanism could in principle accommodate the central-projection construction: the 4+1 results would apply to small (Planck-scale) black holes, while the 3+1 results recover for large black holes. The transition scale would be set by the AdS or compactification radius.
+
+For this to be a viable mechanism in the central-projection program, the relation between the curvature radius $R$ of the projection and the compactification scale would need to be made precise. **後で検討**.
+
+### §4.4 Candidate mechanism C: Holographic-style projection
+
+A more speculative mechanism: the 4+1 central-projection structure is a "bulk" description, and the observable 3+1 physics is its boundary projection in the holographic sense. In this picture:
+
+- 4+1 dimensions: $(x, y, z, t, R)$ with the Tangherlini-like dynamics.
+- 3+1 dimensions: the boundary of the central-projection structure at fixed $R$ (or asymptotic $R$), with thermodynamics derived from the 4+1 bulk via a holographic dictionary.
+
+The challenge is to specify the holographic dictionary. Standard AdS/CFT does not directly apply because the central-projection metric is not asymptotically AdS; it is a Schwarzschild-de Sitter form with cosmological horizon. A de Sitter / dS-CFT holography would be the analogous framework, but dS-CFT is itself less developed than AdS/CFT and lacks a fully accepted formulation.
+
+This mechanism would also place the central-projection program in dialogue with the holographic principle, which the program initially declined to invoke. The dialogue would be on equal terms: not asserting holography, but exploring how the central-projection picture might be related to it.
+
+### §4.5 What the open problem requires
+
+To resolve the open problem requires:
+
+1. A quantitative specification of the mechanism (Kaluza–Klein, brane localization, or holographic projection — or some other).
+2. Derivation of the 3+1 mass–temperature, mass–lifetime, and entropy–area relations from this mechanism applied to the central-projection construction.
+3. Comparison with the standard 3+1 Schwarzschild–Hawking results, with quantitative agreement (or with explicit identification of any residual discrepancies).
+
+None of these are accomplished by the current program. The problem is identified, the candidate mechanisms are listed, and the further investigation is left for future work.
+
+---
+
+## §5. Conclusion
+
+The program in five companion papers establishes a self-contained framework for 4+1-dimensional black hole thermodynamics from minimal geometric and combinatorial assumptions. The successes are real: the asymptotic constant $c = 8/(3\pi)$, the entropy ratio $\Delta(R)/S_{BH} \to 32/(3\pi)$, and the Tangherlini scaling laws are all derived without invoking holography, AdS/CFT, or any specific quantum gravity programme.
+
+The principal open problem is the reduction from 4+1 to 3+1 dimensions. The program does not solve it; it identifies it precisely and offers candidate mechanisms whose detailed development is left for future work.
+
+We close with three observations.
+
+First, the program has the methodological virtue that its open problems are sharp. Where the program agrees with established results, it agrees quantitatively. Where it does not agree, the disagreement is in a specific quantitative form (the 4+1 vs 3+1 thermodynamics) that future work can attempt to address. There is no vague gesture toward "more research needed"; there is a specific question.
+
+Second, the program does not require any additional input from quantum field theory, quantum gravity, or the standard Hawking computation. Its 4+1 thermodynamics is derived from the geometric construction of Paper 2 and the combinatorial result of Paper 3, with the Bekenstein–Hawking entropy formula as the only external input (and only in Paper 4 for comparison purposes).
+
+Third, the program's value, regardless of whether the open problem is eventually resolved, is in the precision of the mathematical content. Papers 2 and 3 are independent mathematical results; they can be evaluated on their own terms. Paper 3, in particular, contributes a new asymptotic determination — $c = 8/(3\pi)$ for the volume deficit — that has interest within number theory and discrete geometry, independent of any black hole interpretation.
+
+The program, as presented in these six papers, is complete as a unit. Whether it leads to further developments — including a resolution of the 4+1 to 3+1 problem — is a question for future work.
+
+---
+
+## References (selected, 後で検討)
+
+(In addition to those cited in Papers 1–5):
+- L. Randall and R. Sundrum, "A large mass hierarchy from a small extra dimension," *Phys. Rev. Lett.* 83, 3370 (1999).
+- N. Arkani-Hamed, S. Dimopoulos, and G. Dvali, "The hierarchy problem and new dimensions at a millimeter," *Phys. Lett. B* 429, 263 (1998).
+- A. Strominger, "The dS/CFT correspondence," *JHEP* 0110, 034 (2001).
+- A. Chamblin, S. W. Hawking, and H. S. Reall, "Brane-world black holes," *Phys. Rev. D* 61, 065007 (2000).
+- R. Emparan and H. S. Reall, "Black holes in higher dimensions," *Living Rev. Rel.* 11, 6 (2008).
