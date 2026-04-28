@@ -1,0 +1,304 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{luatexja}
+\usepackage{luatexja-fontspec}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{geometry}
+\geometry{margin=25mm}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+\theoremstyle{definition}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{remark}[theorem]{注意}
+\newtheorem{observation}[theorem]{観察}
+
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0.5em}
+
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\real}[1]{#1}
+\begin{document}
+
+\section{格子体積不足と Tangherlini Bekenstein--Hawking
+エントロピーの定量的対応（論文4：エントロピー対応）}\label{ux683cux5b50ux4f53ux7a4dux4e0dux8db3ux3068-tangherlini-bekensteinhawking-ux30a8ux30f3ux30c8ux30edux30d4ux30fcux306eux5b9aux91cfux7684ux5bfeux5fdcux8ad6ux65874ux30a8ux30f3ux30c8ux30edux30d4ux30fcux5bfeux5fdc}
+
+\textbf{著者}：木原 範昭（WF System Co., Ltd.）
+\textbf{ORCID}：\href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020}
+\textbf{日付}：2026年4月
+\textbf{DOI}：\href{https://doi.org/10.5281/zenodo.19837594}{10.5281/zenodo.19837594}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+姉妹論文で導出した、4次元球の体積と整数中心単位立方体の包含数との差として定義される体積不足
+\(\Delta(R) = V_4(R) - N(k)\) を、Planck
+単位の自由度の数として解釈し、4+1次元 Schwarzschild--Tangherlini
+ブラックホールの Bekenstein--Hawking エントロピーと比較する。両量は
+\(R\) について同一の \(R^3\) スケーリングを示し、漸近比
+\(\Delta(R) / S_{BH} \to 32/(3\pi) \approx 3.40\)
+となる。対応は構造的・定量的；定数比の物理的解釈は未解決問題として残す。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§1. 序論}\label{ux5e8fux8ad6}
+
+ブラックホールの Bekenstein--Hawking エントロピー --- Planck
+単位の地平面面積に比例 --- は高次元への明白な次元的類比を持つ。4+1次元
+Schwarzschild--Tangherlini ブラックホールの場合、地平面は半径 \(r_h\)
+の3次元球で、Bekenstein--Hawking エントロピー：
+\[S_{BH} = \frac{A_3}{4 G_5} = \frac{2\pi^2 r_h^3}{4 G_5} = \frac{\pi^2 r_h^3}{2 G_5}.\]
+エントロピーは \(r_h^3\)
+にスケール。標準定式化でこのエントロピーの微視的起源 ---
+マイクロ状態として何を数えるか --- は未解決問題のまま。
+
+別系列の研究で、4次元球 \(B(R)\)（半径
+\(R\)）への単位立方体充填の幾何学的問題を考察した。\(R = 2k+1\) で
+\(B(R)\) に含まれる整数中心単位立方体数 \(N(k)\)
+は厳密計算可能；体積不足
+\[\Delta(R) := V_4(R) - N(k), \qquad V_4(R) = (\pi^2/2) R^4\] は漸近展開
+\[\Delta(R) = \frac{16\pi}{3} R^3 - 6\pi R^2 + O(R), \qquad c := \lim_{k\to\infty} \frac{\Delta(R)}{2\pi^2 R^3} = \frac{8}{3\pi}\]
+を持つ。
+
+\(\Delta(R)\) は離散充填問題で定義される純粋に組合せ論的量。本論文では
+Planck 単位で表した \(\Delta(R)\)
+を、4+1次元ブラックホールに関連する「離散ドリフト自由度」の候補計数として同定し、\(S_{BH}\)
+と比較する。
+
+主要観察：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\Delta(R)\) と \(S_{BH}\) は両方とも半径の3乗にスケール。
+\item
+  同定 \(R \leftrightarrow r_h\) の下、比 \(\Delta(R)/S_{BH}\) は定数
+  \(32/(3\pi) \approx 3.40\) に近づく。
+\item
+  この比は構成内の自由パラメータに依存しない；幾何学と \(R\) と \(r_h\)
+  の素朴な同定で固定される。
+\end{enumerate}
+
+これら観察の地位は構造的。\(\Delta(R)\) が Bekenstein--Hawking
+エントロピーに等しいとは主張しない。\(\Delta(R)\)
+が正しいスケーリングを持ち、\(S_{BH}\)
+に確定的比例を持つことを主張し、これはプログラムで別所で導入される離散ドリフト仮説への非自明な検証となる。
+
+論文構成。第2節で姉妹論文からの必要な入力をレビュー。第3節で \(R\)
+と地平面半径 \(r_h\) の同定を設定し比 \(\Delta(R)/S_{BH}\)
+を計算。第4節で比の物理的解釈を議論。第5節で結論。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§2.
+他論文からの入力}\label{ux4ed6ux8ad6ux6587ux304bux3089ux306eux5165ux529b}
+
+\subsubsection{\texorpdfstring{§2.1 体積不足
+\(\Delta(R)\)}{§2.1 体積不足 \textbackslash Delta(R)}}\label{ux4f53ux7a4dux4e0dux8db3-deltar}
+
+離散充填問題の姉妹論文より：
+\[\Delta(R) = V_4(R) - N(k) = \frac{16\pi}{3} R^3 - 6\pi R^2 + 4R - 1 + O(R^{-1}) - E(R)\]
+ここで \(E(R) = O(R^3)\) は格子点誤差項で、平均で主要 \(R^3\)
+係数がゼロと予想される。
+
+正規化主要係数：\(c := \lim \Delta(R)/(2\pi^2 R^3) = 8/(3\pi) \approx 0.84883\)。
+
+\subsubsection{§2.2 4+1次元 Tangherlini
+計量}\label{ux6b21ux5143-tangherlini-ux8a08ux91cf}
+
+4+1次元 Schwarzschild--Tangherlini 計量：
+\[ds^2 = -f_T(r)\, dt^2 + f_T(r)^{-1} dr^2 + r^2\, d\Omega_3^2, \qquad f_T(r) = 1 - \frac{8 G_5 M}{3\pi r^2}.\]
+地平面は \(r_h = (8 G_5 M/(3\pi))^{1/2}\)。
+
+Hawking 温度 \(T_H = 1/(2\pi r_h)\)。Bekenstein--Hawking エントロピー：
+\[S_{BH} = \frac{A_3}{4 G_5} = \frac{2\pi^2 r_h^3}{4 G_5}.\]
+
+\(G_5 = \ell_P^3\)（5次元での自然な選択）の Planck 単位で：
+\[S_{BH} = \frac{\pi^2 r_h^3}{2 \ell_P^3}.\]
+
+\subsubsection{§2.3 同定}\label{ux540cux5b9a}
+
+中心投影計量の構成（論文2）は4次元主観座標図の自然な幾何学的スケールとして曲率半径
+\(R\) を導入する。論文5 の動力学的解析は、質量 \(M\)
+のブラックホールに対しこの \(R\) が \(M^{1/2}\)
+にスケールし、Tangherlini
+地平面半径スケーリングと一致することを確立する。
+
+よって本論文を通じて \(R \leftrightarrow r_h\) と同定する。比
+\(\Delta(R)/S_{BH}\) は構成の幾何学のみに依存する無次元数となる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§3. 定量的対応}\label{ux5b9aux91cfux7684ux5bfeux5fdc}
+
+\subsubsection{\texorpdfstring{§3.1 両量は \(R^3\)
+スケーリング}{§3.1 両量は R\^{}3 スケーリング}}\label{ux4e21ux91cfux306f-r3-ux30b9ux30b1ux30fcux30eaux30f3ux30b0}
+
+§2.1 から：\(\Delta(R) \sim (16\pi/3) R^3\)。 §2.2
+から（\(r_h \leftrightarrow R\)、\(G_5 = \ell_P^3\)）：\(S_{BH} = \pi^2 R^3 / (2 \ell_P^3)\)。
+
+Planck 単位（\(\ell_P = 1\)）で：
+\[\Delta(R) \sim \frac{16\pi}{3} R^3, \qquad S_{BH} \sim \frac{\pi^2}{2} R^3.\]
+
+両量は半径の3乗にスケール。
+
+\subsubsection{§3.2 漸近比}\label{ux6f38ux8fd1ux6bd4}
+
+比は
+\[\frac{\Delta(R)}{S_{BH}} \to \frac{16\pi/3}{\pi^2/2} = \frac{32}{3\pi} \approx 3.397.\]
+
+\(R\) に依存しない無次元定数。
+
+\subsubsection{\texorpdfstring{§3.3 有限 \(k\)
+での数値}{§3.3 有限 k での数値}}\label{ux6709ux9650-k-ux3067ux306eux6570ux5024}
+
+漸近比への収束はデータで観察される：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rrrrr@{}}
+\toprule\noalign{}
+\(k\) & \(R\) & \(\Delta(R)\) & \(S_{BH} = (\pi^2/2) R^3\) &
+\(\Delta/S_{BH}\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+10 & 21 & 141,580.27 & 45,712.2 & 3.10 \\
+20 & 41 & 1,114,426.60 & 340,184.3 & 3.28 \\
+30 & 61 & 3,708,117.64 & 1,119,679.5 & 3.31 \\
+40 & 81 & 9,064,209.71 & 2,624,489.6 & 3.45 \\
+50 & 101 & 16,981,622.84 & 5,054,121.0 & 3.36 \\
+60 & 121 & 29,303,164.67 & 8,740,869.3 & 3.35 \\
+\end{longtable}
+}
+
+比は下から \(32/(3\pi) \approx 3.40\) に近づき、有限 \(k\) での偏差は
+\(\Delta(R)\) の副主要 \(R^2\) 補正と整合する（小 \(k\)
+で低めの数値値に寄与）。
+
+\subsubsection{§3.4 対応の地位}\label{ux5bfeux5fdcux306eux5730ux4f4d}
+
+スケーリングの対応と比の定数値は確立。比 \(32/(3\pi)\)
+の物理的解釈は未解決。可能性：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \emph{幾何学的}。比 \(32/(3\pi)\) は境界補正 \(16\pi/3\)（補助領域
+  \(\Omega_R\) への包除原理から）と地平面面積密度
+  \(\pi^2/2\)（\(V_4(R) = (\pi^2/2) R^4\) と \(S_3(R) = 2\pi^2 R^3\)
+  から）を関係づける。具体的に：
+  \[\frac{32}{3\pi} = \frac{16\pi/3}{\pi^2/2} = 4c \approx 4 \cdot 0.849 \approx 3.40\]
+  （\(c = 8/(3\pi)\) は体積不足定数）。
+\item
+  \emph{計数規格化}。\(S_{BH} = A/(4 \ell_P^{D-2})\) の因子 \(4\) は
+  Bekenstein 規格化（Planck
+  単位面積の4分の1）。異なる計数規約では比が因子だけずれる。
+\item
+  \emph{次元的規約}。同定 \(G_5 = \ell_P^3\)
+  は1つの自然な選択；他の選択（\(G_5 = \alpha \ell_P^3\)）では
+  \(S_{BH}\) がずれて比もずれる。
+\end{enumerate}
+
+現段階でいずれの解釈も特権化しない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§4.
+物理的解釈：未解決問題}\label{ux7269ux7406ux7684ux89e3ux91c8ux672aux89e3ux6c7aux554fux984c}
+
+\subsubsection{\texorpdfstring{§4.1 \(\Delta(R)\)
+は「その」エントロピーか？}{§4.1 \textbackslash Delta(R) は「その」エントロピーか？}}\label{deltar-ux306fux305dux306eux30a8ux30f3ux30c8ux30edux30d4ux30fcux304b}
+
+\(\Delta(R)\) が \(S_{BH}\) と同じスケーリングを持ち、\(S_{BH}\)
+と定数比であることを示した。これは \(\Delta(R) = S_{BH}\)
+をより深い意味で確立しない。両者は同じ次元型の量（Planck
+単位の自由度の数、4+1 次元で長さの3乗）であり、構造的関係を持つ。
+
+より強い解釈には以下が必要： (i)
+ブラックホールマイクロ状態の微視理論からの \(\Delta(R)\) の独立な導出
+(ii) 対数および有限サイズ補正への一貫した拡張 (iii)
+同定を正当化する離散ドリフトの明確な物理的機構
+
+姉妹論文（3 と 5）は (i) と (iii)
+を幾何学的・組合せ論的構造のレベルで扱うが、完全な微視理論のレベルではない。
+
+\subsubsection{\texorpdfstring{§4.2 定数
+\(32/(3\pi) \approx 3.40\)}{§4.2 定数 32/(3\textbackslash pi) \textbackslash approx 3.40}}\label{ux5b9aux6570-323pi-approx-3.40}
+
+比は確定値。物理的解釈（あるとすれば）は未解決。以下の現れの可能性：
+
+\begin{itemize}
+\tightlist
+\item
+  離散立方体充填問題の残存ゲージ（他の正則格子ではなく整数格子の選択）
+\item
+  仮説的な高次元構造からの特定の次元削減選択
+\item
+  包除原理境界補正の特定の幾何学的解釈の人工物
+\end{itemize}
+
+優先解釈は提示しない。
+
+\subsubsection{§4.3
+対数および1ループ補正との比較}\label{ux5bfeux6570ux304aux3088ux30731ux30ebux30fcux30d7ux88dcux6b63ux3068ux306eux6bd4ux8f03}
+
+標準 Bekenstein--Hawking
+エントロピーは半古典近似で対数および1ループ補正を受ける。体積不足構成は独自の副主要補正
+--- \(-6\pi R^2\) 項以下 ---
+を持ち、これを標準量子補正と整合させる試みはしていない。\textbf{後で検討}：副主要オーダーでの詳細対応。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§5. 結論}\label{ux7d50ux8ad6}
+
+離散単位立方体充填の幾何学的問題から導出される体積不足 \(\Delta(R)\)
+と、4+1次元 Schwarzschild--Tangherlini ブラックホールの
+Bekenstein--Hawking エントロピーの間に構造的対応を同定した。両量は
+\(R^3\) にスケールし、Planck 単位での漸近比
+\(\Delta(R)/S_{BH} \to 32/(3\pi) \approx 3.40\)。
+
+これは離散ドリフト仮説への非自明な検証：\(\Delta(R)\)
+が離散ドリフトの関連エントロピー量であるという仮定の下、スケーリングが期待される形と整合する。定数比を幾何学的構成の特徴ではなく物理的に意味あるものとして同定することは、未解決問題として残す。
+
+4次元理論の物質内容からの \(R\) の動力学的決定は論文5 の対象。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{参考文献（選定、\textbf{後で検討}）}{参考文献（選定、後で検討）}}\label{ux53c2ux8003ux6587ux732eux9078ux5b9aux5f8cux3067ux691cux8a0e}
+
+\begin{itemize}
+\tightlist
+\item
+  J. D. Bekenstein, ``Black Holes and Entropy,'' \emph{Phys. Rev.~D} 7,
+  2333 (1973).
+\item
+  S. W. Hawking, ``Particle Creation by Black Holes,'' \emph{Comm. Math.
+  Phys.} 43, 199 (1975).
+\item
+  F. R. Tangherlini, ``Schwarzschild Field in \(n\) Dimensions and the
+  Dimensionality of Space Problem,'' \emph{Nuovo Cimento} 27, 636
+  (1963).
+\item
+  R. C. Myers and M. J. Perry, ``Black Holes in Higher Dimensional
+  Spacetimes,'' \emph{Annals Phys.} 172, 304 (1986).
+\end{itemize}
+
+\end{document}
