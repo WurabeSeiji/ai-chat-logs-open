@@ -234,6 +234,7 @@ Whether this reflects geometric necessity or numerical coincidence is unresolved
 - **Paper PDF / LaTeX / Markdown (CC BY 4.0, JA/EN bilingual)**: https://zenodo.org/records/19869267
 - **Concept DOI**: https://doi.org/10.5281/zenodo.19869266
 - **Technical exposition (Zenn, JA)**: https://zenn.dev/noriaki_kihara/articles/alpha-identity-4d-geometry
+- **Japanese note article**: https://note.com/kiharanoriaki/n/n19cc13927c51
 - **GitHub source**: https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/BH%E7%86%B1%E5%8A%9B%E5%AD%A6%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0/papers/paper7_alpha
 
 ### Related Programmes

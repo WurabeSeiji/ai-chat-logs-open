@@ -286,4 +286,6 @@ WF System Co., Ltd. ／ ORCID: [0009-0004-6753-4020](https://orcid.org/0009-0004
 **論文 DOI（Concept）**：https://doi.org/10.5281/zenodo.19869266
 **論文 DOI（v1）**：https://doi.org/10.5281/zenodo.19869267
 **Zenodo ページ**：https://zenodo.org/records/19869267
+**note 記事（日本語、一般向け）**：https://note.com/kiharanoriaki/n/n19cc13927c51
+**note 記事（英語、一般向け）**：https://note.com/kiharanoriaki/n/n01d98237ddae
 **GitHub**：https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/BH%E7%86%B1%E5%8A%9B%E5%AD%A6%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0/papers/paper7_alpha
