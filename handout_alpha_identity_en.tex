@@ -1,0 +1,161 @@
+% !TEX program = pdflatex
+\documentclass[9pt,a4paper]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{top=1.2cm,bottom=1.0cm,left=1.3cm,right=1.3cm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+\setlist{nosep,leftmargin=1.0em,topsep=0pt,partopsep=0pt}
+\pagestyle{empty}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{12pt}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries A Geometric Identity for the Fine-Structure Constant $\alpha$:\\ From the 4D Unit Ball Volume and its Cube-Packing Deficit}\\[2pt]
+{\small Noriaki Kihara\enspace WF System Co., Ltd.\enspace Osaka University, Faculty of Engineering Science (B.Eng.)\enspace ORCID: \href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020}}
+\end{center}
+
+\vspace{-1pt}
+\hrule height 0.7pt
+\vspace{4pt}
+
+\begin{tcolorbox}[colback=gray!7,colframe=gray!55,boxrule=0.4pt,arc=2pt,left=4pt,right=4pt,top=2pt,bottom=2pt]
+{\small
+\textbf{Main Result: a self-consistent algebraic identity predicts $\alpha$ to 0.02\%}\enspace
+Two elementary 4D geometric quantities --- $N(1) = 137$ (the count of integer-centred unit cubes fully contained in a 4D ball of radius 3, by direct enumeration) and $V_4(1) = \pi^2/2$ (the 4D unit ball volume by standard formula) --- satisfy the self-consistent equation
+\[ \alpha^{-1} = N(1) + V_4(1)\,\alpha = 137 + \tfrac{\pi^2}{2}\alpha \quad\Longleftrightarrow\quad \tfrac{\pi^2}{2}\alpha^2 + 137\alpha - 1 = 0 \]
+whose positive root $\alpha = 0.0072984$ matches the CODATA 2018 observed value $0.0072974$ with relative error $1.4\times 10^{-4}$ (\textbf{0.02\%}).\\[2pt]
+\textbf{Decisive differences from the Eddington trap}\enspace
+(1) Not pure integer-fitting; a \textbf{self-consistent equation containing $\alpha$ itself}. (2) Both the integer 137 and the correction coefficient $\pi^2/2$ are \textbf{derived directly and independently from 4D geometry} (not borrowed). (3) The perturbation expansion $1 = 137\alpha + V_4(1)\alpha^2$ is structurally analogous to QFT renormalisation. (4) Candidate physical mechanisms are proposed from independent thought-experiment work.\\[2pt]
+\textbf{Caveat}\enspace
+This paper does not claim a first-principles derivation of $\alpha$. What is presented is an observed numerical structure. Whether that reflects geometric necessity or numerical coincidence is left as an open problem.}
+\end{tcolorbox}
+
+\vspace{2pt}
+
+\begin{multicols}{2}
+\small
+
+\textbf{$N(1) = 137$: direct enumeration}\enspace
+The condition $\sum_i (|c_i|+1/2)^2 \le 9$ for an integer-centred unit cube to be fully contained in the 4D ball of radius $R=3$. Enumerating by absolute-value patterns $(s_1,\ldots,s_4)$:
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}lr@{}}
+\toprule
+Pattern & Cube count \\
+\midrule
+$(0,0,0,0)$ & 1 \\
+$(1,0,0,0)$ & 8 \\
+$(1,1,0,0)$ & 24 \\
+$(1,1,1,0)$ & 32 \\
+$(1,1,1,1)$ & 16 \\
+$(2,0,0,0)$ & 8 \\
+$(2,1,0,0)$ & 48 \\
+\midrule
+Total & \textbf{137} \\
+\bottomrule
+\end{tabular}
+}
+
+\smallskip
+$(2,1,1,0)$ and beyond fail $\sum s_i^2 + \sum s_i \le 8$. Fully verifiable by hand.
+
+\smallskip
+\textbf{$V_4(1) = \pi^2/2$: standard formula}\enspace
+$V_n(R) = \pi^{n/2}/\Gamma(n/2+1) \cdot R^n$ at $n=4, R=1$: $V_4(1) = \pi^2/\Gamma(3) = \pi^2/2 \approx 4.9348$. Coincides with the Planck-unit 4+1D BH entropy $S_{BH}(1) = \pi^2/2$ (cross-reference).
+
+\smallskip
+\textbf{Perturbative structure}\enspace
+The equivalent form $1 = 137\alpha + (\pi^2/2)\alpha^2$ is a power expansion in $\alpha$: tree-level $137\alpha$ + first-order correction $V_4(1)\alpha^2$ summing to unity. Analogous to QFT renormalisation.
+
+\smallskip
+\textbf{Inside / outside decomposition}\enspace
+The R=3 ball has volume $V_4(3) = 81\pi^2/2 \approx 399.72$. Of this, 137 cubes occupy the interior (34\%); the boundary gap is \textbf{66\%}. Boundary-dominated.
+\begin{itemize}[topsep=1pt]
+\item $137\alpha$: inside, 137 geometric contact points
+\item $V_4(1)\alpha^2$: outside, boundary self-energy correction
+\end{itemize}
+
+\columnbreak
+
+\textbf{Numerical reproduction (calculator-level)}
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}ll@{}}
+\toprule
+$V_4(1) = \pi^2/2$ & $= 4.9348022$ \\
+$N(1)$ & $= 137$ \\
+$D = 137^2 + 2\pi^2$ & $= 18788.7392$ \\
+$\sqrt{D}$ & $= 137.07203$ \\
+$\alpha = (\sqrt{D}-137)/\pi^2$ & $= 0.0072984$ \\
+$\alpha^{-1}$ predicted & $= 137.0360$ \\
+$\alpha^{-1}$ observed & $= 137.035999\ldots$ \\
+relative error & $\sim 3 \times 10^{-4}$ \\
+\bottomrule
+\end{tabular}
+}
+
+\smallskip
+\textbf{Candidate mechanisms}
+\begin{itemize}[topsep=1pt]
+\item A: vacuum polarisation (QED virtual pairs)
+\item B: boundary-mode self-correlation
+\item C: beat coupling with longitudinal Higgs
+\end{itemize}
+Not exclusive; possibly facets of the same phenomenon.
+
+\smallskip
+\textbf{Open problems}
+\begin{itemize}[topsep=1pt]
+\item Geometric identification of the 0.03\% residual
+\item Why $N(1)$ corresponds to the electron (R=3 privilege)
+\item First-principles derivation of mechanism
+\item Generation mass hierarchy is out of scope
+\end{itemize}
+
+\smallskip
+\textbf{What this paper does \emph{not} claim}
+\begin{itemize}[topsep=1pt]
+\item First-principles derivation of $\alpha$
+\item Physical spacetime is 4+1-dimensional
+\item Replacement for Eddington-style predictions
+\item New observable signatures
+\end{itemize}
+
+\smallskip
+\textbf{Paper DOIs}\enspace
+{\scriptsize Concept: \href{https://doi.org/10.5281/zenodo.19869266}{10.5281/zenodo.19869266}\\
+v1: \href{https://doi.org/10.5281/zenodo.19869267}{10.5281/zenodo.19869267}}
+
+\end{multicols}
+
+\vspace{0pt}
+\hrule height 0.4pt
+\vspace{3pt}
+
+\begin{center}
+\begin{minipage}[c]{1.8cm}
+\includegraphics[height=1.7cm]{qr_alpha_identity_en.png}
+\end{minipage}
+\hspace{6pt}
+\begin{minipage}[c]{13cm}
+{\footnotesize\textbf{Zenodo (Paper PDF, LaTeX, MD, JA/EN bilingual)}\enspace \url{https://zenodo.org/records/19869267}}\\[1pt]
+{\footnotesize\textbf{Zenn article (Japanese, technical exposition)}\enspace \url{https://zenn.dev/noriaki_kihara/articles/alpha-identity-4d-geometry}}\\[1pt]
+{\footnotesize\textbf{Source code (GitHub)}\enspace \url{https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/BH熱力学プログラム/papers/paper7_alpha}}\\[1pt]
+{\scriptsize Related programme: BH Thermodynamics Programme (six core papers)\enspace \href{https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection}{Zenn} / \href{https://note.com/kiharanoriaki/n/n916eac778c1c}{note EN}}
+\end{minipage}
+\end{center}
+
+\end{document}

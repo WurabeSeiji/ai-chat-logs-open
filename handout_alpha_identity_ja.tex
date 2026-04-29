@@ -1,0 +1,162 @@
+% !TEX program = lualatex
+\documentclass[9pt,a4paper]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{top=1.2cm,bottom=1.0cm,left=1.3cm,right=1.3cm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{luatexja-fontspec}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+\setlist{nosep,leftmargin=1.0em,topsep=0pt,partopsep=0pt}
+\pagestyle{empty}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{12pt}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries 微細構造定数 $\alpha$ の幾何学的恒等式：4次元単位球と充填不足から}\\[2pt]
+{\small 木原 範昭（Noriaki Kihara）\enspace WF System Co., Ltd.\enspace 大阪大学 基礎工学部 卒業\enspace ORCID: \href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020}}
+\end{center}
+
+\vspace{-1pt}
+\hrule height 0.7pt
+\vspace{4pt}
+
+\begin{tcolorbox}[colback=gray!7,colframe=gray!55,boxrule=0.4pt,arc=2pt,left=4pt,right=4pt,top=2pt,bottom=2pt]
+{\small
+\textbf{主結果：自己整合代数恒等式が $\alpha$ を 0.02\% 予言}\enspace
+4次元単位球の二つの初等的幾何学量 — $N(1) = 137$（半径3の4次元球への単位立方体完全包含数、直接計数）と $V_4(1) = \pi^2/2$（4次元単位球体積、標準公式）— が満たす自己整合方程式
+\[ \alpha^{-1} = N(1) + V_4(1)\,\alpha = 137 + \tfrac{\pi^2}{2}\alpha \quad\Longleftrightarrow\quad \tfrac{\pi^2}{2}\alpha^2 + 137\alpha - 1 = 0 \]
+の正根 $\alpha = 0.0072984$ は CODATA 2018 観測値 $0.0072974$ と相対誤差 $1.4\times 10^{-4}$（\textbf{0.02\%}）で一致。\\[2pt]
+\textbf{Eddington 罠との決定的差異}\enspace
+(1) 整数のみで当てる単一の数式ではなく、$\alpha$ 自身を含む\textbf{自己整合方程式}。(2) 整数 137 と補正係数 $\pi^2/2$ の\textbf{両方が独立な4次元幾何学から直接派生}（外部から借りない）。(3) 摂動展開 $1 = 137\alpha + V_4(1)\alpha^2$ が QFT の繰り込み構造と類比的。(4) 物理機構候補が独立な思考実験から提示済み。\\[2pt]
+\textbf{留保}\enspace
+本論文は $\alpha$ の第一原理導出を主張しない。提示するのは観察された数値構造であり、それが幾何学的必然か数値的偶然かは未解決問題として残す。}
+\end{tcolorbox}
+
+\vspace{2pt}
+
+\begin{multicols}{2}
+\small
+
+\textbf{$N(1) = 137$ の直接計数}\enspace
+半径 $R=3$ の4次元球内に整数中心の単位立方体が完全包含される条件 $\sum_i (|c_i|+1/2)^2 \le 9$ を中心の絶対値パターン $(s_1,\ldots,s_4)$ で列挙：
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}lr@{}}
+\toprule
+パターン & 立方体数 \\
+\midrule
+$(0,0,0,0)$ & 1 \\
+$(1,0,0,0)$ & 8 \\
+$(1,1,0,0)$ & 24 \\
+$(1,1,1,0)$ & 32 \\
+$(1,1,1,1)$ & 16 \\
+$(2,0,0,0)$ & 8 \\
+$(2,1,0,0)$ & 48 \\
+\midrule
+合計 & \textbf{137} \\
+\bottomrule
+\end{tabular}
+}
+
+\smallskip
+$(2,1,1,0)$ 以降は不等式 $\sum s_i^2 + \sum s_i \le 8$ を満たさず除外。完全に手計算可能。
+
+\smallskip
+\textbf{$V_4(1) = \pi^2/2$ の標準公式}\enspace
+$V_n(R) = \pi^{n/2}/\Gamma(n/2+1) \cdot R^n$ で $n=4, R=1$：$V_4(1) = \pi^2/\Gamma(3) = \pi^2/2 \approx 4.9348$。Planck 単位の4+1次元 BH エントロピー $S_{BH}(1) = \pi^2/2$ と一致（参考）。
+
+\smallskip
+\textbf{摂動展開構造}\enspace
+等価形 $1 = 137\alpha + (\pi^2/2)\alpha^2$ は $\alpha$ の冪展開：tree-level $137\alpha$ と一階補正 $V_4(1)\alpha^2$ が単位に等しい。QFT の繰り込み構造と類比的。
+
+\smallskip
+\textbf{inside / outside 分解}\enspace
+半径3の系は $V_4(3) = 81\pi^2/2 \approx 399.72$。うち 137 個の立方体が占める内部 34\%、境界の隙間が \textbf{66\%}。境界が支配的。
+\begin{itemize}[topsep=1pt]
+\item $137\alpha$：inside 137 個の幾何学的接点
+\item $V_4(1)\alpha^2$：outside 境界自由度の自己エネルギー補正
+\end{itemize}
+
+\columnbreak
+
+\textbf{数値検証（電卓レベル）}
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}ll@{}}
+\toprule
+$V_4(1) = \pi^2/2$ & $= 4.9348022$ \\
+$N(1)$ & $= 137$ \\
+$D = 137^2 + 2\pi^2$ & $= 18788.7392$ \\
+$\sqrt{D}$ & $= 137.07203$ \\
+$\alpha = (\sqrt{D}-137)/\pi^2$ & $= 0.0072984$ \\
+$\alpha^{-1}$（予言値） & $= 137.0360$ \\
+$\alpha^{-1}$（観測値）& $= 137.035999\ldots$ \\
+相対誤差 & $\sim 3 \times 10^{-4}$ \\
+\bottomrule
+\end{tabular}
+}
+
+\smallskip
+\textbf{機構候補}
+\begin{itemize}[topsep=1pt]
+\item A：真空偏極（QED 仮想対）
+\item B：境界自由度の自己相関
+\item C：ヒッグス縦波とのビート結合
+\end{itemize}
+排他的でなく、同一現象の異なる側面の可能性。
+
+\smallskip
+\textbf{開問題}
+\begin{itemize}[topsep=1pt]
+\item 残差 0.03\% の幾何学的同定
+\item R=3 の特権性（なぜ $N(1)$ が電子か）
+\item 機構の第一原理導出
+\item 世代質量階層は射程外
+\end{itemize}
+
+\smallskip
+\textbf{本論文が主張しないこと}
+\begin{itemize}[topsep=1pt]
+\item $\alpha$ の第一原理導出
+\item 物理時空が 4+1次元
+\item Eddington 系の置き換え
+\item 観測可能な新シグネチャ
+\end{itemize}
+
+\smallskip
+\textbf{論文 DOI}\enspace
+{\scriptsize Concept: \href{https://doi.org/10.5281/zenodo.19869266}{10.5281/zenodo.19869266}\\
+v1: \href{https://doi.org/10.5281/zenodo.19869267}{10.5281/zenodo.19869267}}
+
+\end{multicols}
+
+\vspace{0pt}
+\hrule height 0.4pt
+\vspace{3pt}
+
+\begin{center}
+\begin{minipage}[c]{1.8cm}
+\includegraphics[height=1.7cm]{qr_alpha_identity_ja.png}
+\end{minipage}
+\hspace{6pt}
+\begin{minipage}[c]{13cm}
+{\footnotesize\textbf{Zenn 記事（解説）}\enspace \url{https://zenn.dev/noriaki_kihara/articles/alpha-identity-4d-geometry}}\\[1pt]
+{\footnotesize\textbf{Zenodo（論文 PDF・LaTeX・MD、日英対訳）}\enspace \url{https://zenodo.org/records/19869267}}\\[1pt]
+{\footnotesize\textbf{ソースコード（GitHub）}\enspace \url{https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/BH熱力学プログラム/papers/paper7_alpha}}\\[1pt]
+{\scriptsize 関連プログラム：BH熱力学プログラム（中核6篇）\enspace \href{https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection}{Zenn} ／ \href{https://note.com/kiharanoriaki/n/n4524006ef175}{note JA}}
+\end{minipage}
+\end{center}
+
+\end{document}
