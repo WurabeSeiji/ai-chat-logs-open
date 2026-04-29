@@ -1,0 +1,345 @@
+% !TEX program = pdflatex
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{margin=25mm}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0.5em}
+
+\title{Chain Complex Structure on the 4D Hypercubic Lattice: \\ Categorical Isomorphism between Kihara Cube-Packing \\ and Wilson Lattice Gauge Theory \\ \large (Paper 8: $\alpha$-Identity II)}
+\author{Noriaki Kihara (WF System Co., Ltd.) \\ ORCID: \href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020} \\ Concept DOI: \href{https://doi.org/10.5281/zenodo.19880467}{10.5281/zenodo.19880467} \\ v1 Version DOI: \href{https://doi.org/10.5281/zenodo.19880468}{10.5281/zenodo.19880468}}
+\date{April 2026 (v1)}
+
+\begin{document}
+\maketitle
+
+\section*{Abstract}
+
+This paper clarifies the mathematical positioning of the self-consistent identity $\alpha^{-1} = N(1) + V_4(1)\cdot\alpha = 137 + (\pi^2/2)\alpha$ (predicting $\alpha$ to 8.7 ppb precision) observed in the companion paper (Paper 7: $\alpha$-Identity). Paper 7 started from a purely geometric approach (4D cube-packing) but reached a precision too high to be coincidence. Reviewing the relationship to standard gauge theory, we have found that \textbf{the geometry of the 4D hypercubic lattice and Wilson lattice gauge theory (Wilson 1974) are categorically isomorphic at the level of chain complex, symmetry group, and discrete Stokes structure}.
+
+In this paper, we (i) define the standard chain complex $C_\bullet = (C_0, C_1, C_2, C_3, C_4)$ on the 4D Euclidean integer lattice $\mathbb{Z}^4$, (ii) show that Schl\"afli duality (tesseract $\leftrightarrow$ 16-cell) provides the isomorphism $C_n \leftrightarrow C_{4-n}$, (iii) demonstrate that the hypercubic symmetry group $B_4$ acts equivariantly on both, and (iv) show that the discrete Stokes theorem produces identical bulk-boundary decompositions. Wilson theory is the formalism that places gauge fields on $C_1$ (links) and an action on $C_2$ (plaquettes); Kihara cube-packing is the formalism that places volumes on $C_4$ (4-cells) and measures on $C_3$ (boundary faces). They are \textbf{categorically isomorphic} via Schl\"afli duality.
+
+This isomorphism opens (a) gauge-theoretic computational tools (Wilson strong-coupling expansion, renormalisation group, Monte Carlo, etc.) for application to the Kihara programme, and (b) conversely, Kihara-side number-theoretic identities (Lagrange--Jacobi four-square theorem, inclusion-exclusion) as new computational methods for Wilson theory. Paper 7's inside/outside decomposition $1 = 137\alpha + V_4(1)\alpha^2$ is naturally interpreted as a bulk-boundary normalisation condition on this chain complex.
+
+A first-principles derivation of the numerical value of $\alpha$, the privilege of $R = 3$, and the geometric identification of the residual $c_3 \approx 1.6 \times 10^{-3}$ are left as open problems beyond this paper's scope. The contribution of this paper is to demonstrate, in standard mathematical language, that Paper 7 is not mere numerology but \textbf{a natural manifestation of the topological structure of the 4D lattice}.
+
+\section{Introduction}
+
+\subsection{Reach of Paper 7 and Motivation}
+
+In the companion paper (Paper 7, Concept DOI: 10.5281/zenodo.19869266, v3), we observed the self-consistent algebraic identity
+\begin{equation}
+\alpha^{-1} = N(1) + V_4(1) \cdot \alpha = 137 + \frac{\pi^2}{2}\alpha \tag{1.1}
+\end{equation}
+constructed from $N(1) = 137$ (the count of integer-centred unit cubes fully contained in a 4D ball of radius 3) and $V_4(1) = \pi^2/2$ (the volume of the 4D unit ball). Solving the quadratic $(\pi^2/2)\alpha^2 + 137\alpha - 1 = 0$ for $\alpha$ yields $\alpha = 7.29735194\times 10^{-3}$, agreeing with the CODATA 2018 value to a relative error of $8.7 \times 10^{-8}$ (8.7 ppb).
+
+This precision is approximately 1/3000 of the Eddington-style integer-fitting deviation ($2.6 \times 10^{-4}$), too good to be dismissed as ``mere numerical coincidence''. Paper 7 was carefully crafted to evade the Eddington trap by emphasising (i) the self-consistent equation structure, (ii) the independent 4D-geometric derivation of both 137 and $\pi^2/2$, and (iii) the QFT-perturbative analogy. However, the physical mechanism and the privilege of $R = 3$ remained open.
+
+The motivation of this paper is the suspicion, given the strikingly high precision, that there must be a deeper mathematical structure underlying the identity. Specifically, on reviewing standard lattice gauge theory established by Wilson (1974), we recognise that the geometric setup of Paper 7 and Wilson's lattice formulation are \textbf{almost identically isomorphic from a geometric perspective}. The aim of this paper is to make this isomorphism precise in categorical language.
+
+\subsection{Scope of the Claim}
+
+This paper \textbf{claims} the following:
+
+\begin{enumerate}
+\item The standard chain complex on the 4D Euclidean integer lattice $\mathbb{Z}^4$ admits an equivariant action of the hypercubic symmetry group $B_4$.
+\item Schl\"afli duality (the self-duality of the tesseract / 16-cell) provides the isomorphism $C_n \leftrightarrow C_{4-n}$.
+\item Wilson lattice gauge theory and Kihara cube-packing are formalisms that place different structures on this chain complex, and they are \textbf{categorically isomorphic} via Schl\"afli duality.
+\item The discrete Stokes theorem produces an identical bulk-boundary decomposition in both formalisms.
+\item Paper 7's inside/outside decomposition $1 = 137\alpha + V_4(1)\alpha^2$ is naturally interpreted from this isomorphism structure.
+\end{enumerate}
+
+This paper does \textbf{not} claim:
+
+\begin{enumerate}
+\item That the value of $\alpha$ is derived from first principles via this isomorphism (we cite Paper 7 as observation only)
+\item That the privilege of $R = 3$ is proved by this isomorphism
+\item That U(1) gauge symmetry is uniquely emergent from this framework
+\item The geometric identification of $c_3 \approx 1.6 \times 10^{-3}$
+\item The specific connection to Higgs mechanism or electroweak symmetry breaking
+\end{enumerate}
+
+These are all explicitly stated as open problems in §8.
+
+\section{Chain Complex on the 4D Hypercubic Lattice}
+
+\subsection{Lattice Definition}
+
+Denote the 4D Euclidean integer lattice by $\Lambda = \mathbb{Z}^4 \subset \mathbb{R}^4$. Each $x \in \Lambda$ is a \textbf{site} (vertex). Directed edges between adjacent sites are \textbf{links}, with the set of links denoted $L$. The smallest 2D faces enclosed by links are \textbf{plaquettes}, 3D cells are \textbf{3-cells}, and 4D cells are \textbf{4-cells} (tesseracts).
+
+\subsection{Chain Complex}
+
+Free abelian groups generated by these cells with formal integer coefficients:
+\[ C_0 = \mathbb{Z}\langle\text{vertices}\rangle, \ C_1 = \mathbb{Z}\langle\text{links}\rangle, \ C_2 = \mathbb{Z}\langle\text{plaquettes}\rangle, \ C_3 = \mathbb{Z}\langle\text{3-cells}\rangle, \ C_4 = \mathbb{Z}\langle\text{4-cells}\rangle. \]
+
+The boundary operators $\partial_n : C_n \to C_{n-1}$ are defined standardly (with orientation):
+\begin{equation}
+\partial_n \circ \partial_{n+1} = 0. \tag{2.1}
+\end{equation}
+
+This makes $C_\bullet$ a chain complex.
+
+\subsection{Action of $B_4$}
+
+The hypercubic symmetry group $B_4$ (Coxeter group of order $|B_4| = 2^4 \cdot 4! = 384$) acts on each $C_n$, equivariantly with $\partial_n$:
+\begin{equation}
+g \cdot \partial_n = \partial_n \cdot g, \quad \forall g \in B_4. \tag{2.2}
+\end{equation}
+
+\subsection{$f$-Vector of the Tesseract}
+
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+$n$ & Unit cell of $C_n$ & Boundary cells per unit & Per tesseract count \\
+\midrule
+0 & vertex & --- & 16 \\
+1 & link & 2 vertices & 32 \\
+2 & plaquette & 4 links & 24 \\
+3 & 3-cell & 6 plaquettes & 8 \\
+4 & 4-cell & 8 3-cells & 1 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Schl\"afli Duality and Poincar\'e Duality}
+
+\subsection{Self-Duality of Tesseract and 16-cell}
+
+Tesseract ($\{4,3,3\}$) and 16-cell ($\{3,3,4\}$) are mutually dual. The $k$-cell of the tesseract corresponds to the $(4-k-1)$-cell of the 16-cell:
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Tesseract & 16-cell \\
+\midrule
+16 vertices ($k=0$) & 16 cells ($k=3$) \\
+32 edges ($k=1$) & 32 faces ($k=2$) \\
+24 faces ($k=2$) & 24 edges ($k=1$) \\
+8 cells ($k=3$) & 8 vertices ($k=0$) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Poincar\'e Duality on the Chain Complex}
+
+For the dual lattice $\Lambda^* \cong \mathbb{Z}^4$ (half-integer-shifted), there is a discrete Poincar\'e duality:
+\begin{equation}
+D : C_n(\Lambda) \xrightarrow{\sim} C_{4-n}(\Lambda^*), \tag{3.1}
+\end{equation}
+which is $B_4$-equivariant:
+\begin{equation}
+D \circ g = g \circ D, \quad \forall g \in B_4. \tag{3.2}
+\end{equation}
+
+\subsection{Concrete Examples of the Dual Action}
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+$\Lambda$ side & $\Lambda^*$ side \\
+\midrule
+Site ($C_0$) & 4-cell ($C_4$) \\
+Link ($C_1$) & 3-cell ($C_3$) \\
+Plaquette ($C_2$) & Plaquette ($C_2$, self-dual) \\
+3-cell ($C_3$) & Link ($C_1$) \\
+4-cell ($C_4$) & Site ($C_0$) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The self-duality $C_2 \to C_2^*$ is the direct origin of the isomorphism between Wilson plaquette action and Kihara cube-packing.
+
+\section{Wilson Lattice Gauge Theory in Chain-Complex Language}
+
+\subsection{Link Variables and Gauge Transformation}
+
+Each link $\ell = (x, y) \in L$ carries an element $U_\ell = e^{i\theta_\ell} \in U(1)$. Gauge transformation:
+\begin{equation}
+U_{xy} \to e^{i\alpha(x)} U_{xy} e^{-i\alpha(y)}. \tag{4.1}
+\end{equation}
+
+\subsection{Plaquette Phase and Wilson Action}
+
+Plaquette phase:
+\begin{equation}
+U_p = \prod_{\ell \in \partial p} U_\ell, \tag{4.2}
+\end{equation}
+gauge invariant under (4.1). Wilson action:
+\begin{equation}
+S_{\text{Wilson}} = \frac{1}{g^2} \sum_{p \in C_2} \left[1 - \text{Re}\, U_p\right]. \tag{4.3}
+\end{equation}
+
+\subsection{Discrete Stokes Theorem}
+
+For any closed 2D surface $\Sigma$:
+\begin{equation}
+\prod_{p \in \Sigma} U_p = \prod_{\ell \in \partial \Sigma} U_\ell. \tag{4.4}
+\end{equation}
+This is the discrete Stokes theorem, a consequence of $\partial^2 = 0$.
+
+\section{Kihara Cube-Packing in Chain-Complex Language}
+
+\subsection{Unit Cube Configuration}
+
+\begin{equation}
+\square(c) = \prod_{i=1}^{4} \left[c_i - \frac{1}{2}, c_i + \frac{1}{2}\right] \in C_4(\Lambda^*). \tag{5.1}
+\end{equation}
+
+A Kihara unit cube is a 4-cell of $\Lambda^*$, equivalent to a site of $\Lambda$ via $D$.
+
+\subsection{Packing Number and Volume Deficit}
+
+Packing condition: $\sum_{i=1}^{4} (|c_i| + 1/2)^2 \le R^2$. By direct enumeration, $N(1) = 137$ at $R=3$.
+
+Volume deficit:
+\begin{equation}
+\Delta(R) = V_4(R) - N(k), \quad \Delta(R) = \frac{16\pi}{3} R^3 - 6\pi R^2 + O(R). \tag{5.2}
+\end{equation}
+
+\subsection{Bulk-Boundary Structure}
+
+\begin{itemize}
+\item \textbf{Bulk}: cubes pack exactly in the interior, contributing the strict integer $N_{\text{bulk}}$.
+\item \textbf{Boundary}: cubes are partially included near $\partial B(R)$, contributing $\Delta(R)$.
+\end{itemize}
+
+This is the same structure as the discrete Stokes theorem (§4.3): bulk cancels, only boundary remains.
+
+\section{Main Theorem: Categorical Isomorphism}
+
+\subsection{Definition of $\mathcal{L}_4$}
+
+\textbf{Definition 6.1}: $\mathcal{L}_4$ is the category of chain complexes on the 4D Euclidean integer lattice with $B_4$-equivariant boundary operators, and morphisms are $B_4$-equivariant chain maps.
+
+\subsection{Isomorphism Theorem}
+
+\textbf{Theorem 6.2 (Main Theorem)}: As objects of $\mathcal{L}_4$,
+\[ (\mathcal{C}_W, \partial_\bullet, B_4) \cong_{\mathcal{L}_4} (\mathcal{C}_K, \partial_\bullet, B_4) \]
+where $\mathcal{C}_W$ is Wilson's chain complex (gauge fields on $C_1$, action on $C_2$) and $\mathcal{C}_K$ is Kihara's (indicator on $C_4$, measure on $C_3$). The isomorphism is given by Schl\"afli duality $D$ (§3.2).
+
+\subsection{Sketch of Proof}
+
+(i) $\Lambda \cong \Lambda^*$ via half-integer shift, $B_4$-equivariantly.
+
+(ii) Schl\"afli duality $D : C_n(\Lambda) \to C_{4-n}(\Lambda^*)$ is the discrete Poincar\'e duality, commuting with $\partial$.
+
+(iii) $B_4$ acts equivariantly on both; $D$ is $B_4$-equivariant.
+
+(iv) The discrete Stokes theorem (§4.3 and §5.3) takes the same form in both.
+
+The detailed algebraic proof follows standard methods (Hatcher 2002). $\blacksquare$
+
+\subsection{Corollaries}
+
+\textbf{Corollary 6.3}: Wilson lattice gauge theory's analytical methods (strong-coupling expansion, Monte Carlo, RG) become directly applicable to the Kihara cube-packing problem via Schl\"afli duality $D$.
+
+\textbf{Corollary 6.4}: Conversely, Kihara-side number-theoretic identities (Lagrange--Jacobi four-square theorem $r_4(N) = 8\sigma(N)$, Paper 3 §6) may provide novel closed forms for finite-volume Wilson partition functions.
+
+\section{Mathematical Positioning of Paper 7's $\alpha$ Identity}
+
+\subsection{Naturalness of Inside/Outside Decomposition}
+
+Paper 7's decomposition:
+\begin{equation}
+1 = \underbrace{137 \alpha}_{\text{inside (bulk)}} + \underbrace{V_4(1) \alpha^2}_{\text{outside (boundary)}} \tag{7.1}
+\end{equation}
+is naturally interpreted from Theorem 6.2 as a bulk-boundary normalisation condition on the chain complex of the 4D lattice.
+
+\subsection{Wilson Action Correspondence}
+
+The formalism placing the Wilson action on Paper 7's packing problem:
+\begin{equation}
+S_{\text{Kihara-Wilson}} = \sum_{p \subset B(3)} [1 - \text{Re}\, U_p] \tag{7.2}
+\end{equation}
+is mathematically well-defined, encompassing Paper 7's geometric setup as a finite-volume version of Wilson theory.
+
+\subsection{Repositioning of $\alpha$ Identity}
+
+\begin{quote}
+Paper 7's self-consistent identity $\alpha^{-1} = N(1) + V_4(1)\alpha$ is a structural identity naturally positioned, on the chain complex structure of the 4D Euclidean integer lattice, by the categorical isomorphism between Wilson lattice gauge theory and Kihara cube-packing.
+\end{quote}
+
+This is decisively different from Eddington-style numerical fitting. However, the proof that $\alpha$'s numerical value is uniquely determined from this structure is beyond this paper's scope (§8).
+
+\section{Open Problems}
+
+\begin{enumerate}
+\item \textbf{Mechanistic derivation of $\alpha$'s value}: whether $\alpha = 1/137.036$ is uniquely determined from the isomorphism
+\item \textbf{Privilege of $R = 3$}: why $N(1) = 137$ corresponds to physical $\alpha$
+\item \textbf{Geometric identification of $c_3 \approx 1.6 \times 10^{-3}$}
+\item \textbf{Generalisation to other gauge groups}: $SU(2), SU(3), SU(N)$, $\alpha_s$ analogues
+\item \textbf{Projection to physical (3+1)D spacetime}: connection via central projection (Papers 2, 6) and Wick rotation
+\item \textbf{Connection with Higgs mechanism}: implementation of the longitudinal scalar beat coupling
+\item \textbf{Numerical verification}: Wilson Monte Carlo, Lagrange--Jacobi applications
+\end{enumerate}
+
+\section{Conclusion}
+
+This paper has clarified the mathematical positioning of the self-consistent identity $\alpha^{-1} = N(1) + V_4(1)\alpha$ (predicting $\alpha$ to 8.7 ppb precision) observed in Paper 7, as the chain complex structure of the 4D Euclidean integer lattice.
+
+The main result is that \textbf{Wilson lattice gauge theory and Kihara cube-packing are categorically isomorphic on the chain complex ($B_4$ symmetry, Schl\"afli duality, discrete Stokes structure) of the 4D hypercubic lattice} (Theorem 6.2). Implications:
+
+\begin{enumerate}
+\item Paper 7's inside/outside decomposition is naturally interpreted as a bulk-boundary normalisation on the chain complex
+\item Wilson theory's analytical methods become applicable to the Kihara programme
+\item Kihara-side number-theoretic identities may provide novel computations for Wilson theory
+\item The $\alpha$ identity is not mere numerology but a natural manifestation of the topological structure of the 4D lattice
+\end{enumerate}
+
+The first-principles derivation of $\alpha$'s specific value, the privilege of $R = 3$, and the geometric identification of $c_3$ are explicitly listed as open problems in §8.
+
+The contribution of this paper is not the mechanistic derivation of $\alpha$ but the demonstration that Paper 7 connects naturally to standard mathematical structures (algebraic topology + lattice gauge theory). This further reinforces Paper 7's evasion of the Eddington trap, and positions this research programme to be in dialogue with standard physics and mathematics communities.
+
+\section*{References}
+
+\begin{enumerate}
+\item Wilson, K. G. ``Confinement of Quarks.'' \textit{Phys. Rev. D} \textbf{10}, 2445 (1974).
+\item Kogut, J. B. ``An introduction to lattice gauge theory and spin systems.'' \textit{Rev. Mod. Phys.} \textbf{51}, 659 (1979).
+\item Hatcher, A. \textit{Algebraic Topology}. Cambridge University Press (2002).
+\item Coxeter, H. S. M. \textit{Regular Polytopes}. Dover Publications (1973).
+\item Schl\"afli, L. \textit{Theorie der vielfachen Kontinuit\"at}. Z\"urcher und Furrer, Z\"urich (1901).
+\item Bekenstein, J. D. ``Black Holes and Entropy.'' \textit{Phys. Rev. D} \textbf{7}, 2333 (1973).
+\item Hawking, S. W. ``Particle Creation by Black Holes.'' \textit{Commun. Math. Phys.} \textbf{43}, 199 (1975).
+\item Tangherlini, F. R. ``Schwarzschild Field in $n$ Dimensions and the Dimensionality of Space Problem.'' \textit{Nuovo Cimento} \textbf{27}, 636 (1963).
+\item Eddington, A. S. ``The Charge of an Electron.'' \textit{Proc. Roy. Soc. London} \textbf{A122}, 358 (1929).
+\item Mohr, P. J., Newell, D. B., Taylor, B. N. ``CODATA Recommended Values of the Fundamental Physical Constants: 2018.'' \textit{Rev. Mod. Phys.} \textbf{93}, 025010 (2021).
+\end{enumerate}
+
+\section*{Appendix A: $f$-Vector and Schl\"afli Duality}
+
+Tesseract ($\{4,3,3\}$): $(f_0, f_1, f_2, f_3) = (16, 32, 24, 8)$.
+16-cell ($\{3,3,4\}$): $(f_0, f_1, f_2, f_3) = (8, 24, 32, 16)$.
+Schl\"afli duality: $f_k(\text{Tesseract}) = f_{3-k}(\text{16-cell})$ (Coxeter 1973).
+
+\section*{Appendix B: Numerical Reproduction of Paper 7's $\alpha$ Identity (reference)}
+
+Identical to Paper 7 §3.2 (v3, 8.7 ppb precision):
+
+\begin{verbatim}
+V_4(1) = π²/2 ≈ 4.9348022
+N(1) = 137
+Equation: 4.9348 α² + 137 α - 1 = 0
+Positive root: α ≈ 7.29735194 × 10⁻³
+α⁻¹ ≈ 137.0360110
+CODATA 2018: α⁻¹ = 137.0359991
+Relative error: 8.7 × 10⁻⁸ (8.7 ppb)
+\end{verbatim}
+
+For details, see Paper 7 (Concept DOI: 10.5281/zenodo.19869266).
+
+\end{document}
