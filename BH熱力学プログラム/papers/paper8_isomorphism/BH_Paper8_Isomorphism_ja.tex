@@ -21,18 +21,18 @@
 \setlength{\parindent}{1em}
 \setlength{\parskip}{0.5em}
 
-\title{4次元超立方格子上の鎖複体構造：\\Kihara 充填と Wilson 格子ゲージ理論の圏論的同型\\（論文8：$\alpha$ 恒等式 II）}
-\author{木原 範昭（WF System Co., Ltd.）\\ ORCID: \href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020} \\ Concept DOI: \href{https://doi.org/10.5281/zenodo.19880467}{10.5281/zenodo.19880467} \\ v1 Version DOI: \href{https://doi.org/10.5281/zenodo.19880468}{10.5281/zenodo.19880468}}
-\date{2026年4月（v1）}
+\title{4次元超立方格子上の鎖複体構造：\\Kihara 充填と Wilson 格子ゲージ理論の構造的対応\\（論文8：$\alpha$ 恒等式 II）}
+\author{木原 範昭（WF System Co., Ltd.）\\ ORCID: \href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020} \\ Concept DOI: \href{https://doi.org/10.5281/zenodo.19880467}{10.5281/zenodo.19880467} \\ v2 Version DOI（最新、構造的対応への格下げ・§6・§7 補強）: \href{https://doi.org/10.5281/zenodo.19881119}{10.5281/zenodo.19881119}}
+\date{2026年4月（v2）}
 
 \begin{document}
 \maketitle
 
 \section*{要旨}
 
-本論文は、姉妹論文（論文7：$\alpha$ 恒等式）で観察された自己整合恒等式 $\alpha^{-1} = N(1) + V_4(1)\cdot\alpha = 137 + (\pi^2/2)\alpha$（$\alpha$ を 8.7 ppb 精度で予言）の数学的位置づけを明らかにする。論文7 は4次元充填問題という純粋幾何学的アプローチから出発したが、その精度が偶然とは思えないほど高いため、標準的なゲージ理論との関係を見直したところ、\textbf{4次元超立方格子の幾何学と Wilson 格子ゲージ理論（Wilson 1974）が、鎖複体・対称群・離散 Stokes 構造のレベルで圏論的に同型である}ことが判明した。
+本論文は、姉妹論文（論文7：$\alpha$ 恒等式）で観察された自己整合恒等式 $\alpha^{-1} = N(1) + V_4(1)\cdot\alpha = 137 + (\pi^2/2)\alpha$（$\alpha$ を 8.7 ppb 精度で予言）の数学的位置づけを明らかにする。論文7 は4次元充填問題という純粋幾何学的アプローチから出発したが、その精度が偶然とは思えないほど高いため、標準的なゲージ理論との関係を見直したところ、\textbf{4次元超立方格子の幾何学と Wilson 格子ゲージ理論（Wilson 1974）が、鎖複体・対称群・離散 Stokes 構造のレベルで鎖複体として構造的に同型である}ことが判明した。
 
-本論文では、(i) 4次元 Euclidean 整数格子 $\mathbb{Z}^4$ 上の標準的な鎖複体 $C_\bullet = (C_0, C_1, C_2, C_3, C_4)$ を定義し、(ii) Schläfli 双対（テッセラクト ↔ 16-cell）が $C_n \leftrightarrow C_{4-n}$ の同型を与え、(iii) 超立方対称群 $B_4$ が両者に同変的に作用し、(iv) 離散 Stokes の定理が両者で同一の bulk-boundary 分解を生成することを示す。Wilson 理論は $C_1$（リンク）にゲージ場、$C_2$（プラケット）に作用を載せる formalism であり、Kihara 充填は $C_4$（4-cell）に体積、$C_3$（境界面）に測度を載せる formalism である。両者は Schläfli 双対を介して\textbf{圏論的に同型}である。
+本論文では、(i) 4次元 Euclidean 整数格子 $\mathbb{Z}^4$ 上の標準的な鎖複体 $C_\bullet = (C_0, C_1, C_2, C_3, C_4)$ を定義し、(ii) Schläfli 双対（テッセラクト ↔ 16-cell）が $C_n \leftrightarrow C_{4-n}$ の同型を与え、(iii) 超立方対称群 $B_4$ が両者に同変的に作用し、(iv) 離散 Stokes の定理が両者で同一の bulk-boundary 分解を生成することを示す。Wilson 理論は $C_1$（リンク）にゲージ場、$C_2$（プラケット）に作用を載せる formalism であり、Kihara 充填は $C_4$（4-cell）に体積、$C_3$（境界面）に測度を載せる formalism である。両者は Schläfli 双対を介して\textbf{鎖複体として構造的に同型}である。
 
 この同型により、(a) ゲージ理論側の解法技術（Wilson 強結合展開、繰り込み群、モンテカルロ等）が Kihara プログラムに適用可能となり、(b) 逆に Kihara 側の数論的恒等式（Lagrange--Jacobi 四平方定理、包除原理）が Wilson 理論の新規計算手法を提供しうる。論文7 の inside/outside 分解 $1 = 137\alpha + V_4(1)\alpha^2$ は、この鎖複体上の bulk-boundary 規格化条件として自然に解釈される。
 
@@ -59,7 +59,7 @@ $\alpha$ の数値的値そのものの第一原理導出（論文7 の観察を
 \begin{enumerate}
 \item 4次元 Euclidean 整数格子 $\mathbb{Z}^4$ 上の標準的な鎖複体に、超立方対称群 $B_4$ が同変的に作用する。
 \item Schläfli 双対（テッセラクトと 16-cell の自己双対性）が $C_n \leftrightarrow C_{4-n}$ の同型を与える。
-\item Wilson 格子ゲージ理論と Kihara 充填は、この鎖複体上で異なる「載せ方」をした formalism であり、Schläfli 双対を介して\textbf{圏論的に同型}である。
+\item Wilson 格子ゲージ理論と Kihara 充填は、この鎖複体上で異なる「載せ方」をした formalism であり、Schläfli 双対を介して\textbf{鎖複体として構造的に同型}である。
 \item 離散 Stokes の定理が両者で同一の bulk-boundary 分解を生成する。
 \item 論文7 の inside/outside 分解 $1 = 137\alpha + V_4(1)\alpha^2$ は、この同型構造から自然に解釈される。
 \end{enumerate}
@@ -78,7 +78,7 @@ $\alpha$ の数値的値そのものの第一原理導出（論文7 の観察を
 
 \subsection{論文構成}
 
-§2 で4次元超立方格子の鎖複体を標準的に定義する。§3 で Schläfli 双対と Poincaré 双対を述べる。§4 で Wilson 格子ゲージ理論を鎖複体的に記述する。§5 で Kihara 充填を同様に記述する。§6 で主定理（圏論的同型）を述べる。§7 で論文7 の $\alpha$ 恒等式の数学的位置づけを論ずる。§8 で開問題を、§9 で結論を述べる。
+§2 で4次元超立方格子の鎖複体を標準的に定義する。§3 で Schläfli 双対と Poincaré 双対を述べる。§4 で Wilson 格子ゲージ理論を鎖複体的に記述する。§5 で Kihara 充填を同様に記述する。§6 で主定理（構造的同型）を述べる。§7 で論文7 の $\alpha$ 恒等式の数学的位置づけを論ずる。§8 で開問題を、§9 で結論を述べる。
 
 \section{4次元超立方格子の鎖複体}
 
@@ -275,7 +275,7 @@ S_{\text{Wilson}} = \frac{1}{g^2} \sum_{p \in C_2} \left[1 - \text{Re}\, U_p\rig
 
 これは離散 Stokes の定理（§4.5）と同じ構造：bulk が完全に cancel し、境界の寄与だけが残る。
 
-\section{主定理：圏論的同型}
+\section{主定理：構造的対応定理}
 
 \subsection{圏 $\mathcal{L}_4$ の定義}
 
@@ -351,7 +351,7 @@ S_{\text{Kihara-Wilson}} = \sum_{p \subset B(3)} [1 - \text{Re}\, U_p] \tag{7.2}
 以上を総合し、論文7 の $\alpha$ 恒等式は次のように位置づけられる：
 
 \begin{quote}
-論文7 の自己整合恒等式 $\alpha^{-1} = N(1) + V_4(1)\alpha$ は、4次元 Euclidean 整数格子の鎖複体構造（Schläfli 双対、$B_4$ 対称性、離散 Stokes）の上で、Wilson 格子ゲージ理論と Kihara 充填の圏論的同型から自然に位置づけられる構造的恒等式である。
+論文7 の自己整合恒等式 $\alpha^{-1} = N(1) + V_4(1)\alpha$ は、4次元 Euclidean 整数格子の鎖複体構造（Schläfli 双対、$B_4$ 対称性、離散 Stokes）の上で、Wilson 格子ゲージ理論と Kihara 充填の構造的同型から自然に位置づけられる構造的恒等式である。
 \end{quote}
 
 これは Eddington 系の素朴な数値合わせとは決定的に異なる。ただし、$\alpha$ の数値が\textbf{この構造から第一原理的に決定される}ことの証明は本論文の射程外であり、§8 の open problem として残す。
@@ -374,7 +374,7 @@ S_{\text{Kihara-Wilson}} = \sum_{p \subset B(3)} [1 - \text{Re}\, U_p] \tag{7.2}
 
 本論文は、論文7 で観察された自己整合恒等式 $\alpha^{-1} = N(1) + V_4(1)\alpha$（$\alpha$ を 8.7 ppb 精度で予言）の数学的位置づけを、4次元 Euclidean 整数格子の鎖複体構造として明らかにした。
 
-主結果は、\textbf{Wilson 格子ゲージ理論と Kihara 充填問題が、4次元超立方格子の鎖複体（$B_4$ 対称性、Schläfli 双対、離散 Stokes 構造）の上で圏論的に同型}である（定理 6.2）ことであり、これにより：
+主結果は、\textbf{Wilson 格子ゲージ理論と Kihara 充填問題が、4次元超立方格子の鎖複体（$B_4$ 対称性、Schläfli 双対、離散 Stokes 構造）の上で鎖複体として構造的に同型}である（定理 6.2）ことであり、これにより：
 
 \begin{enumerate}
 \item 論文7 の inside/outside 分解は鎖複体上の bulk-boundary 規格化として自然に解釈される

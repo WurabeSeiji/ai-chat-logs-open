@@ -1,18 +1,19 @@
-# Chain Complex Structure on the 4D Hypercubic Lattice: Categorical Isomorphism between Kihara Cube-Packing and Wilson Lattice Gauge Theory (Paper 8: α-Identity II)
+# Chain Complex Structure on the 4D Hypercubic Lattice: Structural Correspondence between Kihara Cube-Packing and Wilson Lattice Gauge Theory (Paper 8: α-Identity II)
 
 **Author**: Noriaki Kihara (WF System Co., Ltd.)
 **ORCID**: [0009-0004-6753-4020](https://orcid.org/0009-0004-6753-4020)
 **Date**: April 2026
 **Concept DOI (always resolves to the latest version)**: [10.5281/zenodo.19880467](https://doi.org/10.5281/zenodo.19880467)
 **v1 Version DOI**: [10.5281/zenodo.19880468](https://doi.org/10.5281/zenodo.19880468)
+**v2 Version DOI (latest, retitled to "Structural Correspondence", strengthened §6 and §7)**: [10.5281/zenodo.19881119](https://doi.org/10.5281/zenodo.19881119)
 
 ---
 
 ## Abstract
 
-This paper clarifies the mathematical positioning of the self-consistent identity $\alpha^{-1} = N(1) + V_4(1)\cdot\alpha = 137 + (\pi^2/2)\alpha$ (predicting α to 8.7 ppb precision) observed in the companion paper (Paper 7: α-Identity). Paper 7 started from a purely geometric approach (4D cube-packing) but reached a precision too high to be coincidence. Reviewing the relationship to standard gauge theory, we have found that **the geometry of the 4D hypercubic lattice and Wilson lattice gauge theory (Wilson 1974) are categorically isomorphic at the level of chain complex, symmetry group, and discrete Stokes structure**.
+This paper clarifies the mathematical positioning of the self-consistent identity $\alpha^{-1} = N(1) + V_4(1)\cdot\alpha = 137 + (\pi^2/2)\alpha$ (predicting α to 8.7 ppb precision) observed in the companion paper (Paper 7: α-Identity). Paper 7 started from a purely geometric approach (4D cube-packing) but reached a precision too high to be coincidence. Reviewing the relationship to standard gauge theory, we have found that **the geometry of the 4D hypercubic lattice and Wilson lattice gauge theory (Wilson 1974) are structurally isomorphic as chain complexes at the level of chain complex, symmetry group, and discrete Stokes structure**.
 
-In this paper, we (i) define the standard chain complex $C_\bullet = (C_0, C_1, C_2, C_3, C_4)$ on the 4D Euclidean integer lattice $\mathbb{Z}^4$, (ii) show that Schläfli duality (tesseract ↔ 16-cell) provides the isomorphism $C_n \leftrightarrow C_{4-n}$, (iii) demonstrate that the hypercubic symmetry group $B_4$ acts equivariantly on both, and (iv) show that the discrete Stokes theorem produces identical bulk-boundary decompositions. Wilson theory is the formalism that places gauge fields on $C_1$ (links) and an action on $C_2$ (plaquettes); Kihara cube-packing is the formalism that places volumes on $C_4$ (4-cells) and measures on $C_3$ (boundary faces). They are **categorically isomorphic** via Schläfli duality.
+In this paper, we (i) define the standard chain complex $C_\bullet = (C_0, C_1, C_2, C_3, C_4)$ on the 4D Euclidean integer lattice $\mathbb{Z}^4$, (ii) show that Schläfli duality (tesseract ↔ 16-cell) provides the isomorphism $C_n \leftrightarrow C_{4-n}$, (iii) demonstrate that the hypercubic symmetry group $B_4$ acts equivariantly on both, and (iv) show that the discrete Stokes theorem produces identical bulk-boundary decompositions. Wilson theory is the formalism that places gauge fields on $C_1$ (links) and an action on $C_2$ (plaquettes); Kihara cube-packing is the formalism that places volumes on $C_4$ (4-cells) and measures on $C_3$ (boundary faces). They are **structurally isomorphic as chain complexes** via Schläfli duality.
 
 This isomorphism opens (a) gauge-theoretic computational tools (Wilson strong-coupling expansion, renormalisation group, Monte Carlo, etc.) for application to the Kihara programme, and (b) conversely, Kihara-side number-theoretic identities (Lagrange–Jacobi four-square theorem, inclusion-exclusion) as new computational methods for Wilson theory. Paper 7's inside/outside decomposition $1 = 137\alpha + V_4(1)\alpha^2$ is naturally interpreted as a bulk-boundary normalisation condition on this chain complex.
 
@@ -30,7 +31,9 @@ constructed from $N(1) = 137$ (the count of integer-centred unit cubes fully con
 
 This precision is approximately 1/3000 of the Eddington-style integer-fitting deviation ($2.6 \times 10^{-4}$), too good to be dismissed as "mere numerical coincidence". Paper 7 was carefully crafted to evade the Eddington trap by emphasising (i) the self-consistent equation structure, (ii) the independent 4D-geometric derivation of both 137 and $\pi^2/2$, and (iii) the QFT-perturbative analogy. However, the physical mechanism and the privilege of $R = 3$ remained open.
 
-The motivation of this paper is the suspicion, given the strikingly high precision, that there must be a deeper mathematical structure underlying the identity. Specifically, on reviewing standard lattice gauge theory established by Wilson (1974), we recognise that the geometric setup of Paper 7 and Wilson's lattice formulation are **almost identically isomorphic from a geometric perspective**. The aim of this paper is to make this isomorphism precise in categorical language.
+The motivation of this paper is the suspicion, given the strikingly high precision, that there must be a deeper mathematical structure underlying the identity. Specifically, on reviewing standard lattice gauge theory established by Wilson (1974), we recognise that the geometric setup of Paper 7 and Wilson's lattice formulation are **almost identically isomorphic from a geometric perspective**. The aim of this paper is to make this structural correspondence precise.
+
+**Terminological caveat (v2 correction)**: v1 used the term "categorical isomorphism", but what we actually prove is **structural isomorphism as chain complexes on the 4D Euclidean integer lattice**, not a full deployment of categorical machinery (functors, natural transformations, equivalence of categories, adjunctions). v2 therefore uses "structural correspondence" / "structural isomorphism" as primary terms. This revision follows the legitimate point raised by Grok (xAI) in its v1 review.
 
 ### §1.2 Scope of the Claim
 
@@ -38,7 +41,7 @@ This paper **claims** the following:
 
 1. The standard chain complex on the 4D Euclidean integer lattice $\mathbb{Z}^4$ admits an equivariant action of the hypercubic symmetry group $B_4$.
 2. Schläfli duality (the self-duality of the tesseract / 16-cell) provides the isomorphism $C_n \leftrightarrow C_{4-n}$.
-3. Wilson lattice gauge theory and Kihara cube-packing are formalisms that place different structures on this chain complex, and they are **categorically isomorphic** via Schläfli duality.
+3. Wilson lattice gauge theory and Kihara cube-packing are formalisms that place different structures on this chain complex, and they are **structurally isomorphic as chain complexes** via Schläfli duality.
 4. The discrete Stokes theorem produces an identical bulk-boundary decomposition in both formalisms.
 5. Paper 7's inside/outside decomposition $1 = 137\alpha + V_4(1)\alpha^2$ is naturally interpreted from this isomorphism structure.
 
@@ -54,7 +57,7 @@ These are all explicitly stated as open problems in §8.
 
 ### §1.3 Paper Structure
 
-§2 defines the chain complex of the 4D hypercubic lattice in standard form. §3 describes Schläfli duality and Poincaré duality. §4 expresses Wilson lattice gauge theory in chain-complex language. §5 does the same for Kihara cube-packing. §6 states the main theorem (categorical isomorphism). §7 discusses the mathematical positioning of Paper 7's α identity. §8 lists open problems. §9 concludes.
+§2 defines the chain complex of the 4D hypercubic lattice in standard form. §3 describes Schläfli duality and Poincaré duality. §4 expresses Wilson lattice gauge theory in chain-complex language. §5 does the same for Kihara cube-packing. §6 states the main theorem (structural correspondence). §7 discusses the mathematical positioning of Paper 7's α identity. §8 lists open problems. §9 concludes.
 
 This paper is written self-contained: the mathematical content of §2–§6 is accessible without reading Wilson 1974 or Paper 7.
 
@@ -234,7 +237,7 @@ This is the same structure as the discrete Stokes theorem (§4.6): bulk cancels 
 
 ---
 
-## §6. Main Theorem: Categorical Isomorphism
+## §6. Main Theorem: Structural Correspondence Theorem
 
 ### §6.1 Definition of the Category $\mathcal{L}_4$
 
@@ -263,15 +266,21 @@ $$ D : \mathcal{C}_W \xrightarrow{\sim} \mathcal{C}_K $$
 
 ### §6.3 Sketch of Proof
 
-(i) **Lattice isomorphism**: $\Lambda$ and $\Lambda^*$ are related by half-integer shift, $B_4$-equivariantly.
+(i) **Lattice isomorphism**: $\Lambda$ and $\Lambda^*$ are related by half-integer shift $\Lambda^* = \Lambda + (1/2, 1/2, 1/2, 1/2)$. They are isomorphic under translation, and $B_4$ axis reflections / permutations act equivariantly on both.
 
-(ii) **Chain complex isomorphism**: Schläfli duality $D : C_n(\Lambda) \to C_{4-n}(\Lambda^*)$ is the standard discrete Poincaré duality, commuting with $\partial$ (cap product structure).
+(ii) **Chain complex isomorphism (concrete construction)**: For each $n$-cell $\sigma$ of $\Lambda$, construct the dual $(4-n)$-cell $D(\sigma)$ of $\Lambda^*$ as follows:
+- $C_0(\Lambda) \to C_4(\Lambda^*)$: vertex $x \in \Lambda$ corresponds to the unique 4-cell of $\Lambda^*$ enclosing $x$, namely $\square^*(x) = \prod_i [x_i - 1/2, x_i + 1/2]$.
+- $C_1(\Lambda) \to C_3(\Lambda^*)$: edge $(x, y)$ corresponds to the 3-cell shared by the dual 4-cells of $x$ and $y$ (with orientation).
+- $C_2(\Lambda) \to C_2(\Lambda^*)$: plaquette $p$ corresponds to the $\Lambda^*$ plaquette orthogonal to $p$ (the common 2D face of the four dual 4-cells around $p$). This is the **self-duality** $C_2 \to C_2$.
+- $C_3(\Lambda) \to C_1(\Lambda^*)$ and $C_4(\Lambda) \to C_0(\Lambda^*)$ similarly.
 
-(iii) **Symmetry preservation**: $B_4$ acts equivariantly on both, and $D$ is $B_4$-equivariant.
+(iii) **Commutativity with boundary operator**: $D \circ \partial_n = \partial_{4-n+1} \circ D$ (with sign) follows from the standard property of cap products. Concretely: for a plaquette $p \in C_2(\Lambda)$, the dual of its boundary $\partial p$ (4 links) and the boundary of its dual $D(p) \in C_2(\Lambda^*)$ (4 dual links) coincide via shared 3-cell structures between adjacent 4-cells.
 
-(iv) **Bulk-boundary structure preservation**: The discrete Stokes theorem (§4.6 and §5.5) takes the same form in both.
+(iv) **Symmetry preservation**: $B_4$ generators (axis reflection $x_i \to -x_i$, axis permutation $x_i \leftrightarrow x_j$) act in the same way on both lattices, and commute with $D$: $D \circ g = g \circ D$.
 
-The detailed algebraic proof is constructed by standard methods of algebraic topology textbooks (Hatcher 2002), and is omitted. $\blacksquare$
+(v) **Preservation of bulk-boundary structure**: Comparing (4.5) with (5.3), Wilson's bulk cancellation $\sum_p \to \oint_{\partial}$ and Kihara's bulk packing $V_4(R) - N(k) = \Delta(\partial B(R))$ are expressed as the same discrete Stokes structure via $D$.
+
+By the above, $\mathcal{C}_W$ and $\mathcal{C}_K$ are isomorphic as objects of $\mathcal{L}_4$. Detailed algebraic computations follow standard algebraic topology (Hatcher 2002, §3.3 on Poincaré duality). $\blacksquare$
 
 ### §6.4 Corollaries: Bidirectional Tool Borrowing
 
@@ -292,12 +301,28 @@ These corollaries imply that the research programme based on Papers 7 and 8 can 
 The inside/outside decomposition observed in Paper 7 §4:
 $$ 1 = \underbrace{137 \alpha}_{\text{inside (bulk)}} + \underbrace{V_4(1) \alpha^2}_{\text{outside (boundary)}} \tag{7.1} $$
 
-is naturally interpreted from the isomorphism theorem of §6:
+is naturally interpreted from the structural correspondence theorem of §6. Concrete correspondences:
 
-- $137 \alpha$: tree-level contribution of bulk (interior 137 cells of $C_4$)
-- $V_4(1) \alpha^2$: self-energy correction of boundary ($C_3$ measure, 4D unit ball)
+**Chain-complex reading of the first term $137 \alpha$**:
+- $137 = N(1)$ is the count of basis elements of $C_4(\Lambda^*) \cap B(3)$ (number of 4-cells in the radius-3 ball)
+- For each 4-cell $\square \in C_4(\Lambda^*) \cap B(3)$, $D(\square) \in C_0(\Lambda)$ (vertex of $\Lambda$) is the dual
+- On the Wilson side, each vertex carries one gauge degree of freedom (phase freedom), contributing at coupling $\alpha$
+- Therefore $137 \alpha$ is interpreted as "tree-level coupling contribution of 137 bulk degrees of freedom"
 
-That is, Paper 7's self-consistent identity is re-read chain-complex-theoretically as a **bulk-boundary normalisation condition on the chain complex of the 4D lattice**.
+**Chain-complex reading of the second term $V_4(1) \alpha^2$**:
+- $V_4(1) = \pi^2/2$ is the volume measure of the unit 4D ball
+- As a measure on $C_3$ (boundary 3-cells), this describes the partial truncation of cubes near $\partial B(R)$
+- On the Wilson side, the self-energy of $C_2$ plaquettes (self-dual $D: C_2 \to C_2$) contributes at $\alpha^2$ order
+- The unit ball volume $V_4(1)$ measures the strength with which each boundary degree of freedom couples within its "unit influence region"
+- Therefore $V_4(1) \alpha^2$ is interpreted as "self-energy correction of boundary degrees of freedom (one-loop equivalent)"
+
+**Total normalisation $1 = $ bulk + boundary**:
+- By the discrete Stokes theorem (§4.6 and §5.5), bulk interior contributions cancel completely, leaving only the residual boundary contributions
+- The total normalisation $1 = 137\alpha + V_4(1)\alpha^2$ reads as a **completeness relation** on the chain complex of the 4D lattice
+
+That is, Paper 7's self-consistent identity is re-read chain-complex-theoretically as a **bulk-boundary normalisation condition on the chain complex of the 4D lattice**, naturally following from the structural correspondence between Wilson action and Kihara packing.
+
+**Important caveat**: The above correspondence is **structural / formal**, and does not imply that the value of $\alpha$ is **uniquely determined** by this structure. The mechanistic derivation of why the Wilson coupling $g$ corresponds to Kihara geometry such that $\alpha = 1/137.036$ is beyond the scope of this paper (§8.1).
 
 ### §7.2 Correspondence with Wilson Action
 
@@ -313,7 +338,7 @@ The topological duality (Schläfli duality between tesseract and 16-cell) introd
 
 Combining the above, Paper 7's α identity is positioned as follows:
 
-> **Paper 7's self-consistent identity $\alpha^{-1} = N(1) + V_4(1)\alpha$ is a structural identity naturally positioned, on the chain complex structure (Schläfli duality, $B_4$ symmetry, discrete Stokes) of the 4D Euclidean integer lattice, by the categorical isomorphism between Wilson lattice gauge theory and Kihara cube-packing.**
+> **Paper 7's self-consistent identity $\alpha^{-1} = N(1) + V_4(1)\alpha$ is a structural identity naturally positioned, on the chain complex structure (Schläfli duality, $B_4$ symmetry, discrete Stokes) of the 4D Euclidean integer lattice, by the structural correspondence between Wilson lattice gauge theory and Kihara cube-packing.**
 
 This is decisively different from Eddington-style naive numerical fitting:
 
@@ -357,7 +382,7 @@ Computer implementation of this isomorphism, with Wilson Monte Carlo to back-cal
 
 This paper has clarified the mathematical positioning of the self-consistent identity $\alpha^{-1} = N(1) + V_4(1)\alpha$ (predicting α to 8.7 ppb precision) observed in Paper 7, as the chain complex structure of the 4D Euclidean integer lattice.
 
-The main result is that **Wilson lattice gauge theory and Kihara cube-packing are categorically isomorphic on the chain complex ($B_4$ symmetry, Schläfli duality, discrete Stokes structure) of the 4D hypercubic lattice** (Theorem 6.2), implying:
+The main result is that **Wilson lattice gauge theory and Kihara cube-packing are structurally isomorphic as chain complexes on the chain complex ($B_4$ symmetry, Schläfli duality, discrete Stokes structure) of the 4D hypercubic lattice** (Theorem 6.2), implying:
 
 1. Paper 7's inside/outside decomposition is naturally interpreted as a bulk-boundary normalisation on the chain complex.
 2. Wilson theory's analytical methods become applicable to the Kihara programme.

@@ -78,7 +78,8 @@
 **タイトル（英語）**：Chain Complex Structure on the 4D Hypercubic Lattice: Categorical Isomorphism between Kihara Cube-Packing and Wilson Lattice Gauge Theory (Paper 8: α-Identity II)  
 **内容：** 論文7 の α 恒等式の数学的位置づけを明らかにする。4次元 Euclidean 整数格子 $\mathbb{Z}^4$ 上の鎖複体に超立方対称群 $B_4$ が同変的に作用し、Schläfli 双対（テッセラクト ↔ 16-cell）が $C_n \leftrightarrow C_{4-n}$ の同型を与える。**主定理（Theorem 6.2）**：Wilson 格子ゲージ理論（$C_1$ にゲージ場、$C_2$ に作用）と Kihara 充填（$C_4$ に体積、$C_3$ に境界測度）は Schläfli 双対を介して**圏論的に同型**である。離散 Stokes の定理が両者で同一の bulk-boundary 分解を生成。論文7 の inside/outside 分解 $1 = 137\alpha + V_4(1)\alpha^2$ は鎖複体上の bulk-boundary 規格化として自然に解釈される。系として、両プログラムの解析手法（Wilson 強結合展開・モンテカルロ ↔ Lagrange–Jacobi 四平方定理・包除原理）が双方向に流用可能。α の数値の機構的派生・R=3 の特権性・残差 $c_3$ の幾何学的同定は open problem として §8 に明示。  
 **Concept DOI：** https://doi.org/10.5281/zenodo.19880467  
-**v1 Version DOI：** https://doi.org/10.5281/zenodo.19880468
+**v1 Version DOI：** https://doi.org/10.5281/zenodo.19880468  
+**v2 Version DOI（最新、タイトルを「構造的対応」に格下げ、§6・§7 補強）：** https://doi.org/10.5281/zenodo.19881119
 
 ---
 
@@ -235,6 +236,7 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-04-29 | 論文8（α 恒等式 II）v2 公開：Grok（xAI）v1 査読の正当な指摘（「圏論的同型」が看板倒れ・証明不足）を踏まえ、(1) タイトル「圏論的同型」→「**構造的対応**」に格下げ、(2) 用語修正（圏論的→構造的）、(3) §6.3 証明にSchläfli 双対 $D$ の具体的構成を追加（$C_0\to C_4$、$C_1\to C_3$、$C_2\to C_2$ 自己双対の明示）、(4) §7.1 bulk-boundary 対応の数学的説明を補強。Grok の「より大胆に（R/Q/GR/6D 拡張）」は誤読リスクのため不採用。論文7 と同じ慎重さを継承。Zenodo に v2 公開（v2 Version DOI: 10.5281/zenodo.19881119、deposit 19881119、Concept DOI 19880467 不変）。日英 md/tex/pdf 全6ファイル更新。 |
 | 2026-04-29 | 論文8（α 恒等式 II：圏論的同型）v1 公開：論文7 の α 恒等式の数学的位置づけを明らかにする。**主定理：4次元超立方格子の鎖複体上で、Wilson 格子ゲージ理論と Kihara 充填が Schläfli 双対 $D$ を介して圏論的に同型**である。$B_4$ 対称性、離散 Stokes の定理、Poincaré 双対の組み合わせで証明可能。論文7 の inside/outside 分解は鎖複体上の bulk-boundary 規格化として自然に解釈される。系として双方向の道具流用が可能になる（Wilson 強結合展開 ↔ Lagrange–Jacobi 四平方定理）。Concept DOI: 10.5281/zenodo.19880467、v1 Version DOI: 10.5281/zenodo.19880468。日英 md/tex/pdf 全6ファイルを Zenodo に公開、Zenn 専用記事 articles/alpha-isomorphism-lattice-gauge.md を新規作成。Eddington 罠回避の姿勢は論文7 と同じ慎重さで継承、α の機構的派生は open problem として明示。|
 | 2026-04-29 | 論文7（α 恒等式）v3 公開：**精度を 8.7 ppb に訂正**。Grok（xAI）による外部高精度検証で、v1/v2 の「相対誤差 1.4×10⁻⁴（0.02%）」が α の4桁丸め（7.2984×10⁻³）による過小評価と判明。実際の精度は **8.7×10⁻⁸（8.7 ppb）で 1600倍高い**。要旨・§3.2 数値検証表・§6.1 残差解析・§7 結論・付録を全面訂正。残差 6.3×10⁻¹⁰ の起源は α³ オーダーの幾何学的補正（係数 c₃ ≈ 1.6×10⁻³）として再分析。Zenodo に v3 公開（v3 Version DOI: 10.5281/zenodo.19876200、deposit 19876200）。日英 md/tex/pdf 全6ファイル更新。ハンドアウト・Zenn 記事・note 記事の精度記述も同期更新。|
 | 2026-04-29 | 論文7（α 恒等式）v2 公開：§6.5「トポロジカル双対性と接続点解釈（今後の展望）」を追加。次元不整合（$N(1)$ 個数 vs $V_4(1)$ 体積）の懸念に対し、4次元超立方体と 16-cell の Schläfli 双対性で 137 を双対格子の頂点数（接続点）として読み替え、QED ファインマン頂点規則との構造対応・スピンネットワーク／LQG との親和性を示唆。Zenodo に v2 として公開（v2 Version DOI: 10.5281/zenodo.19875074、deposit 19875074、Concept DOI 19869266 不変）。日英 md/tex/pdf 全6ファイルを上書きアップロード。|
