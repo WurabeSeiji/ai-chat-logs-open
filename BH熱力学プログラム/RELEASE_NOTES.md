@@ -96,6 +96,20 @@
 | Facebook 投稿 | EN | 個人タイムライン（2026-04-28、note EN 記事リンク）|
 | X (Twitter) 投稿 | JA | [@NoriakiKihara](https://x.com/NoriakiKihara)（2026-04-28、note JA 記事リンク）|
 
+### 論文7（α 恒等式、独立公開セット）
+
+| 媒体 | 言語 | URL |
+|---|:-:|---|
+| Zenn 記事（技術解説） | JA | https://zenn.dev/noriaki_kihara/articles/alpha-identity-4d-geometry |
+| note 記事（一般向け） | JA | https://note.com/kiharanoriaki/n/n19cc13927c51 |
+| note 記事（一般向け） | EN | https://note.com/kiharanoriaki/n/n01d98237ddae |
+| ハンドアウト（A4 1ページ） | JA | [`../handout_alpha_identity_ja.pdf`](../handout_alpha_identity_ja.pdf) |
+| ハンドアウト（A4 1ページ） | EN | [`../handout_alpha_identity_en.pdf`](../handout_alpha_identity_en.pdf) |
+| Facebook 投稿 | JA | 個人タイムライン（2026-04-29、note JA 記事リンク）|
+| Facebook 投稿 | EN | 個人タイムライン（2026-04-29、note EN 記事リンク）|
+| X (Twitter) 投稿 | JA | [@NoriakiKihara](https://x.com/NoriakiKihara)（2026-04-29、note JA 記事リンク）|
+| X (Twitter) 投稿 | EN | [@NoriakiKihara](https://x.com/NoriakiKihara)（2026-04-29、note EN 記事リンク）|
+
 外部参照は全て Concept DOI を使用しているため、今後の v3, v4, ... 公開時も DOI 修正は不要。
 
 ---
@@ -211,6 +225,7 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-04-29 | 論文7（α 恒等式）SNS 公開：Facebook 日英両版を投稿（[Predicting the Fine-Structure Constant α to 0.02% from 4D Geometry: A Self-Consistent Identity] / [微細構造定数 α を4次元の幾何学から 0.02% で予言する自己整合恒等式]）。X (Twitter) は @NoriakiKihara で日英両版を投稿（α⁻¹ = 137 + (π²/2)·α、note 記事 URL とハッシュタグ付き）。各投稿で note 記事（日英）の URL を参照、ハッシュタグは #FineStructureConstant #137 #TheoreticalPhysics（EN）／ #微細構造定数 #137 #理論物理学（JA）。|
 | 2026-04-29 | 論文7（α 恒等式）note 記事公開：日本語版 https://note.com/kiharanoriaki/n/n19cc13927c51、英語版 https://note.com/kiharanoriaki/n/n01d98237ddae。これに伴い、ハンドアウト QR コードを Zenn/Zenodo から note 記事へ更新、ハンドアウト本文・Zenn 記事・note 記事相互の URL クロスリンクを完了。|
 | 2026-04-29 | 論文7（α 恒等式）独立公開セット完成：(1) Zenn 専用記事 `articles/alpha-identity-4d-geometry.md` 作成、(2) note 記事ドラフト（日英、`papers/paper7_alpha/note_article_{ja,en}.md`、note.com への手動公開待ち）、(3) 専用ハンドアウト `handout_alpha_identity_{ja,en}.{tex,pdf}` 作成（A4 1ページ、QR コード付き）、(4) 既存 BH Zenn 記事の第III部を独立記事への誘導に置換。BH プログラム本体（中核6篇）と完全に独立した公開セットとして整備。|
 | 2026-04-29 | 論文7（α 恒等式）v1 公開：Zenodo に deposit 19869267 で公開（Concept DOI: 19869266、v1 Version DOI: 19869267、6ファイル）。$N(1) = 137$ と $V_4(1) = \pi^2/2$ から構成される自己整合二次方程式 $\frac{\pi^2}{2}\alpha^2 + 137\alpha - 1 = 0$ の正根として、$\alpha = 0.0072984$（観測値と 0.02\% 一致）を予言。日英 md/tex/pdf 各3ファイル、self-contained 記述。|
