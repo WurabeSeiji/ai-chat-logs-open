@@ -248,3 +248,7 @@ This identity is positioned as an addendum to a broader research programme:
 
 **Author**: Noriaki Kihara
 WF System Co., Ltd. / ORCID: 0009-0004-6753-4020
+
+---
+
+#FineStructureConstant #137 #Alpha #Eddington #FourDimensionalGeometry #InclusionExclusion #SelfConsistentEquation #PerturbativeExpansion #ParticlePhysics #TheoreticalPhysics #MathematicalPhysics #QED #VacuumPolarization #Soliton #Geometry #NumberTheory #LatticePointProblem #PhysicalConstants #BlackHoleThermodynamics #Preprint #Zenodo
