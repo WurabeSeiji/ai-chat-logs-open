@@ -5,7 +5,8 @@
 **Date**: April 2026
 **Concept DOI (always resolves to the latest version)**: [10.5281/zenodo.19869266](https://doi.org/10.5281/zenodo.19869266)
 **v1 Version DOI**: [10.5281/zenodo.19869267](https://doi.org/10.5281/zenodo.19869267)
-**v2 Version DOI (latest, adds §6.5 duality outlook)**: [10.5281/zenodo.19875074](https://doi.org/10.5281/zenodo.19875074)
+**v2 Version DOI (adds §6.5 duality outlook)**: [10.5281/zenodo.19875074](https://doi.org/10.5281/zenodo.19875074)
+**v3 Version DOI (latest, precision corrected to 8.7 ppb)**: [10.5281/zenodo.19876200](https://doi.org/10.5281/zenodo.19876200)
 
 ---
 
@@ -15,7 +16,7 @@ Let $N(1)$ denote the count of integer-centred unit cubes fully contained in the
 $$ \alpha^{-1} \stackrel{?}{=} N(1) + V_4(1) \cdot \alpha $$
 is a self-consistent quadratic equation
 $$ \tfrac{\pi^2}{2}\alpha^2 + 137 \alpha - 1 = 0 $$
-whose positive root is $\alpha = 0.0072989\ldots$, agreeing with the observed value $\alpha_{\text{obs}} = 7.2973525\times 10^{-3}$ to a relative accuracy of $2.1 \times 10^{-4}$ (0.02\%). In this paper we (i) re-derive $N(1) = 137$ and $V_4(1) = \pi^2/2$ by elementary calculation, (ii) verify the numerical validity of the identity, and (iii) propose a structural reading as "tree-level coupling on the inside (packed cubes) plus self-energy correction on the outside (boundary gap)". Whether the identity reflects geometric necessity or numerical coincidence is left as an open problem.
+whose positive root is $\alpha = 7.29735194\ldots \times 10^{-3}$, agreeing with the observed value $\alpha_{\text{obs}} = 7.2973525693 \times 10^{-3}$ (CODATA 2018) to a relative accuracy of $8.7 \times 10^{-8}$ (about **8.7 ppb**, with $\alpha^{-1}$ matching to seven significant digits). In this paper we (i) re-derive $N(1) = 137$ and $V_4(1) = \pi^2/2$ by elementary calculation, (ii) verify the numerical validity of the identity, and (iii) propose a structural reading as "tree-level coupling on the inside (packed cubes) plus self-energy correction on the outside (boundary gap)". Whether the identity reflects geometric necessity or numerical coincidence is left as an open problem.
 
 ---
 
@@ -25,7 +26,7 @@ The fine-structure constant $\alpha = e^2/(4\pi\varepsilon_0 \hbar c) \approx 1/
 
 This paper observes that a problem in 4-dimensional geometry, motivated independently, satisfies a self-consistent equation that reproduces both the integer part 137 and the fractional part 0.036 of $\alpha^{-1}$ using only **parameters that cannot be externally tuned**.
 
-Specifically, from two elementary facts—(i) the classical problem of packing integer-centred unit cubes in a 4D ball (a natural generalisation of the Gauss circle problem to 4D), and (ii) the volume formula for the 4D ball—an algebraic identity emerges that predicts $\alpha^{-1}$ to 0.02\% accuracy.
+Specifically, from two elementary facts—(i) the classical problem of packing integer-centred unit cubes in a 4D ball (a natural generalisation of the Gauss circle problem to 4D), and (ii) the volume formula for the 4D ball—an algebraic identity emerges that predicts $\alpha$ to **ppb (parts per billion) accuracy**.
 
 This paper does not propose a number-theoretic "single integer fit" but expresses $\alpha$ as the **solution of a self-consistent equation**. Since the correction term $V_4(1) \cdot \alpha$ contains $\alpha$ itself, the identity has the structure of a perturbation expansion
 $$ 1 = 137 \alpha + V_4(1) \alpha^2, $$
@@ -106,25 +107,27 @@ $$ \frac{\pi^2}{2}\alpha^2 + 137 \alpha - 1 = 0. $$
 ### §3.2 Solution and Numerical Verification
 
 Positive root of (2):
-$$ \alpha = \frac{-137 + \sqrt{137^2 + 2\pi^2}}{\pi^2} = \frac{-137 + \sqrt{18788.7392\ldots}}{9.8696044\ldots}. $$
+$$ \alpha = \frac{-137 + \sqrt{137^2 + 2\pi^2}}{\pi^2}. $$
 
-Numerical evaluation:
-$$ \sqrt{18788.7392} = 137.0720224\ldots $$
-$$ \alpha = \frac{0.0720224}{9.8696044} = 7.29836\times 10^{-3}. $$
+50-digit high-precision evaluation (mpmath):
+$$ \sqrt{18788.7392088022\ldots} = 137.07202197677751\ldots $$
+$$ \alpha = \frac{0.07202197677751\ldots}{9.86960440108936\ldots} = 7.29735193535903\ldots \times 10^{-3}. $$
 
 Reciprocal:
-$$ \alpha^{-1} = 137.0360\ldots $$
+$$ \alpha^{-1} = 137.03601098838876\ldots $$
 
 Observed value (CODATA 2018):
 $$ \alpha_{\text{obs}} = 7.2973525693(11) \times 10^{-3}, \qquad \alpha_{\text{obs}}^{-1} = 137.035999084(21). $$
 
-| Quantity | Predicted | Observed | Relative error |
+| Quantity | Predicted (high precision) | Observed | Relative error |
 |---|---|---|---|
-| $\alpha$ | $7.2984 \times 10^{-3}$ | $7.2974 \times 10^{-3}$ | $1.4 \times 10^{-4}$ |
-| $\alpha^{-1}$ | $137.0360$ | $137.0360$ | $\sim 3 \times 10^{-7}$ (! integer part exact) |
-| $\alpha^{-1} - 137$ | $0.03601$ | $0.03600$ | $3.1 \times 10^{-4}$ |
+| $\alpha$ | $7.29735194 \times 10^{-3}$ | $7.29735257 \times 10^{-3}$ | $\mathbf{8.7 \times 10^{-8}}$ |
+| $\alpha^{-1}$ | $137.03601099$ | $137.03599908$ | $8.7 \times 10^{-8}$ |
+| $\alpha^{-1} - 137$ | $0.03601099$ | $0.03599908$ | $3.3 \times 10^{-4}$ |
 
-The integer 137 matches exactly; the fractional 0.036 agrees to within **0.03\%**. As $\alpha$ itself, prediction matches observation to **0.02\%**.
+The integer 137 matches exactly. As $\alpha$ itself, the prediction matches observation to **8.7 ppb** (parts per billion, $\approx 8.7 \times 10^{-8}$); $\alpha^{-1}$ matches to four decimal places (137.0360).
+
+**Note**: Previous paper versions v1/v2 reported "relative error $1.4 \times 10^{-4}$ (0.02%)", which was an under-estimation due to coarse 4-digit rounding ($\alpha \approx 7.2984 \times 10^{-3}$). v3 corrects this following high-precision external verification by Grok (xAI).
 
 ### §3.3 Equivalent Forms
 
@@ -217,11 +220,13 @@ These are not exclusive; they may represent different facets of the same phenome
 
 ## §6. Open Problems and the Residual
 
-### §6.1 The 0.03\% Residual
+### §6.1 The 8.7 ppb Residual
 
-As shown in §3.2, identity (1) predicts $\alpha^{-1}$ to 0.03\% accuracy. Since experimental precision is $\sim 10^{-10}$, the 0.03\% residual is clearly significant. Candidate origins:
+As shown in §3.2, identity (1) predicts $\alpha$ to **$8.7 \times 10^{-8}$ (8.7 ppb)** accuracy. Since experimental precision is $\sim 10^{-10}$, the residual is three orders of magnitude above experimental noise and clearly significant. At the same time, this is approximately **1/3000** of the Eddington-style integer-fitting deviation ($\alpha^{-1} \to 137$ exactly, deviation $2.6 \times 10^{-4}$): a strikingly precise agreement.
 
-1. **Higher-order corrections**: an extension to $1 = 137\alpha + V_4(1)\alpha^2 + c_3 \alpha^3 + \cdots$. Reverse-fitting from observed $\alpha$ gives $c_3 \approx 1.4$, but no geometric identification yet.
+Candidate origins of the residual:
+
+1. **Higher-order corrections**: extension to $1 = 137\alpha + V_4(1)\alpha^2 + c_3 \alpha^3 + \cdots$. Reverse-fitting from observed $\alpha$ gives residual $\sim 6 \times 10^{-10}$, divided by $\alpha^3 \approx 3.9 \times 10^{-7}$, yielding $c_3 \approx 1.6 \times 10^{-3}$. This is far smaller than $V_4(1) \approx 4.93$ and does not directly correspond to an obvious geometric quantity such as $\pi^2/2$. **Geometric identification of $c_3$ remains open**.
 
 2. **Corrections to $V_4(1)$**: the basic quantity may itself need higher-order $\pi$-corrections (e.g. $\pi^2/2 \to \pi^2/2 + \delta$).
 
@@ -229,7 +234,7 @@ As shown in §3.2, identity (1) predicts $\alpha^{-1}$ to 0.03\% accuracy. Since
 
 4. **Different mechanism**: identity (1) is approximate; the true equation has a different form.
 
-Quantitatively, the residual is $|0.0360104 - 0.0359991| = 1.13 \times 10^{-5}$. Compared to $V_4(1) \cdot \alpha = 0.036$, the relative residual is $\sim 3 \times 10^{-4}$. This is at the level of one further power of $\alpha$ but larger than $V_4(1) \cdot \alpha^3 \sim 10^{-7}$, suggesting a missing intermediate geometric term.
+Quantitatively, the residual is $|\alpha_{\text{pred}} - \alpha_{\text{obs}}| \approx 6.3 \times 10^{-10}$. This is three orders of magnitude smaller than $V_4(1) \cdot \alpha^3 \approx 1.9 \times 10^{-6}$, but larger than $V_4(1) \cdot \alpha^4 \approx 1.4 \times 10^{-8}$. This suggests **an $\alpha^3$-order geometric correction with a coefficient much smaller than $V_4(1)$**.
 
 ### §6.2 The Privilege of $R = 3$
 
@@ -285,7 +290,7 @@ Even so, the fact that each term of the identity parallels the canonical structu
 
 From two elementary geometric quantities—$N(1) = 137$, the count of integer-centred unit cubes fully contained in a 4D ball of radius 3, and $V_4(1) = \pi^2/2$, the volume of the 4D unit ball—a self-consistent algebraic equation
 $$ \alpha^{-1} = N(1) + V_4(1) \cdot \alpha $$
-is constructed whose solution predicts the observed fine-structure constant to 0.02\% accuracy.
+is constructed whose solution predicts the observed fine-structure constant to **8.7 ppb ($\sim 8.7 \times 10^{-8}$)** accuracy. This is approximately 1/3000 the deviation of Eddington-style integer-fitting: a strikingly precise agreement.
 
 This identity is:
 
@@ -293,7 +298,7 @@ This identity is:
 2. **Structurally**: of perturbative form $1 = 137\alpha + V_4(1)\alpha^2$, analogous to renormalisation in QFT.
 3. **Physically**: readable as inside (137 packed cubes) / outside (66\% boundary) decomposition (§4), with multiple candidate mechanisms (§5).
 
-Whether the identity reflects geometric necessity or a mechanism-specific coincidence is unresolved. The contribution of this paper is not a verdict but the presentation of a self-consistent equation, built from 4D geometric quantities not borrowed from elsewhere, that agrees with observation to 0.02\%.
+Whether the identity reflects geometric necessity or a mechanism-specific coincidence is unresolved. The contribution of this paper is not a verdict but the presentation of a self-consistent equation, built from 4D geometric quantities not borrowed from elsewhere, that agrees with observation to 8.7 ppb.
 
 ---
 
@@ -308,16 +313,38 @@ Whether the identity reflects geometric necessity or a mechanism-specific coinci
 
 ---
 
-## Appendix: Numerical Reproduction (calculator-friendly)
+## Appendix: Numerical Reproduction
 
-1. $V_4(1) = \pi^2/2 = 9.8696044/2 = 4.9348022$
+### A.1 Calculator-level (4-digit rounding)
+
+1. $V_4(1) = \pi^2/2 \approx 4.9348$
 2. $N(1) = 137$
-3. Quadratic $4.9348022\, \alpha^2 + 137\, \alpha - 1 = 0$
-4. Discriminant $D = 137^2 + 4 \times 4.9348022 = 18769 + 19.7392 = 18788.7392$
-5. $\sqrt{D} = 137.07203$
-6. $\alpha = (137.07203 - 137) / (2 \times 4.9348022) = 0.07203 / 9.8696044 = 7.29836 \times 10^{-3}$
-7. $\alpha^{-1} = 137.0360$
-8. CODATA 2018: $\alpha^{-1} = 137.035999\ldots$
-9. Agreement: relative error $\sim 3 \times 10^{-4}$
+3. Quadratic $4.9348\, \alpha^2 + 137\, \alpha - 1 = 0$
+4. Discriminant $D = 137^2 + 4 \times 4.9348 \approx 18788.7$
+5. $\sqrt{D} \approx 137.072$
+6. $\alpha \approx 0.0072974$
+7. $\alpha^{-1} \approx 137.036$ (matches observation to 4 digits)
 
-The main claim of this paper is fully verifiable on a calculator.
+### A.2 High precision (Python / mpmath, 50 digits)
+
+```python
+from mpmath import mp, mpf, pi, sqrt
+mp.dps = 50
+
+V4 = pi**2 / 2          # 4.9348022005446793094172454999380755676568497036204
+N1 = mpf(137)
+disc = N1**2 + 4 * V4   # 18788.739208802178717237668981999752302270627398814
+sqrt_disc = sqrt(disc)  # 137.07202197677751743057523907144419105450522908974
+alpha = (-N1 + sqrt_disc) / (2 * V4)
+                        # 0.0072973519353590299272569788872011757597089129229091
+alpha_inv = 1 / alpha   # 137.03601098838875871528761953572209552725261454479
+```
+
+CODATA 2018: $\alpha = 7.2973525693 \times 10^{-3}$, $\alpha^{-1} = 137.035999084$
+
+| Quantity | High-precision predicted | CODATA 2018 | Relative error |
+|---|---|---|---|
+| $\alpha$ | $7.29735194 \times 10^{-3}$ | $7.29735257 \times 10^{-3}$ | $\mathbf{8.7 \times 10^{-8}}$ (8.7 ppb) |
+| $\alpha^{-1}$ | 137.03601099 | 137.03599908 | $8.7 \times 10^{-8}$ |
+
+The main claim is reproducible at calculator level (approximate) and trivially extensible to high precision in any computational environment.

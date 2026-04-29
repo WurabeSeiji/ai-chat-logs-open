@@ -69,7 +69,8 @@
 **内容：** 半径 $R=3$ の4次元球への単位立方体完全包含数 $N(1) = 137$（直接計数）と、4次元単位球の体積 $V_4(1) = \pi^2/2$ から構成される自己整合二次方程式 $\frac{\pi^2}{2}\alpha^2 + 137\alpha - 1 = 0$ の正根として、微細構造定数 $\alpha$ を 0.02\% 精度で予言する。$\alpha^{-1} = N(1) + V_4(1)\cdot\alpha$ という形が摂動展開 $1 = 137\alpha + V_4(1)\alpha^2$ に等価で、tree-level (inside) + 自己エネルギー補正 (outside) の構造を持つ。論文3・4 への自己参照を最低限に抑え self-contained に再導出。Eddington 系の素朴な整数論との決定的差異（自己整合方程式・幾何学的派生・摂動展開類比・機構候補）を明示。残差 0.03\% と機構の第一原理導出を主要開問題として残す。  
 **Concept DOI：** https://doi.org/10.5281/zenodo.19869266  
 **v1 Version DOI：** https://doi.org/10.5281/zenodo.19869267  
-**v2 Version DOI（最新、§6.5 双対性節を追加）：** https://doi.org/10.5281/zenodo.19875074
+**v2 Version DOI（§6.5 双対性節を追加）：** https://doi.org/10.5281/zenodo.19875074  
+**v3 Version DOI（最新、精度を 8.7 ppb に訂正）：** https://doi.org/10.5281/zenodo.19876200
 
 ---
 
@@ -80,7 +81,7 @@
 - 副主要項：$\Delta(R) = (16\pi/3) R^3 - 6\pi R^2 + O(R)$
 - エントロピー比：$\Delta(R)/S_{BH} \to 32/(3\pi) \approx 3.397$
 - スケーリング全項目：$R \propto M^{1/2}$, $T_H \propto M^{-1/2}$, $\tau \propto M^{3/2}$, $dM/dt \propto -M^{-1/2}$（4+1 Tangherlini と完全一致）
-- α 恒等式（論文7）：$\alpha^{-1} = N(1) + V_4(1)\cdot\alpha = 137 + (\pi^2/2)\alpha$、自己整合二次方程式の正根として $\alpha = 0.0072984$、観測 0.0072974 と相対誤差 $1.4 \times 10^{-4}$（0.02\%）
+- α 恒等式（論文7）：$\alpha^{-1} = N(1) + V_4(1)\cdot\alpha = 137 + (\pi^2/2)\alpha$、自己整合二次方程式の正根として $\alpha = 7.29735194 \times 10^{-3}$、観測 $7.29735257 \times 10^{-3}$ と相対誤差 $\mathbf{8.7 \times 10^{-8}}$（**8.7 ppb**、Eddington のズレの約 1/3000、v3 で訂正）
 
 ---
 
@@ -226,6 +227,7 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-04-29 | 論文7（α 恒等式）v3 公開：**精度を 8.7 ppb に訂正**。Grok（xAI）による外部高精度検証で、v1/v2 の「相対誤差 1.4×10⁻⁴（0.02%）」が α の4桁丸め（7.2984×10⁻³）による過小評価と判明。実際の精度は **8.7×10⁻⁸（8.7 ppb）で 1600倍高い**。要旨・§3.2 数値検証表・§6.1 残差解析・§7 結論・付録を全面訂正。残差 6.3×10⁻¹⁰ の起源は α³ オーダーの幾何学的補正（係数 c₃ ≈ 1.6×10⁻³）として再分析。Zenodo に v3 公開（v3 Version DOI: 10.5281/zenodo.19876200、deposit 19876200）。日英 md/tex/pdf 全6ファイル更新。ハンドアウト・Zenn 記事・note 記事の精度記述も同期更新。|
 | 2026-04-29 | 論文7（α 恒等式）v2 公開：§6.5「トポロジカル双対性と接続点解釈（今後の展望）」を追加。次元不整合（$N(1)$ 個数 vs $V_4(1)$ 体積）の懸念に対し、4次元超立方体と 16-cell の Schläfli 双対性で 137 を双対格子の頂点数（接続点）として読み替え、QED ファインマン頂点規則との構造対応・スピンネットワーク／LQG との親和性を示唆。Zenodo に v2 として公開（v2 Version DOI: 10.5281/zenodo.19875074、deposit 19875074、Concept DOI 19869266 不変）。日英 md/tex/pdf 全6ファイルを上書きアップロード。|
 | 2026-04-29 | 論文7（α 恒等式）SNS 公開：Facebook 日英両版を投稿（[Predicting the Fine-Structure Constant α to 0.02% from 4D Geometry: A Self-Consistent Identity] / [微細構造定数 α を4次元の幾何学から 0.02% で予言する自己整合恒等式]）。X (Twitter) は @NoriakiKihara で日英両版を投稿（α⁻¹ = 137 + (π²/2)·α、note 記事 URL とハッシュタグ付き）。各投稿で note 記事（日英）の URL を参照、ハッシュタグは #FineStructureConstant #137 #TheoreticalPhysics（EN）／ #微細構造定数 #137 #理論物理学（JA）。|
 | 2026-04-29 | 論文7（α 恒等式）note 記事公開：日本語版 https://note.com/kiharanoriaki/n/n19cc13927c51、英語版 https://note.com/kiharanoriaki/n/n01d98237ddae。これに伴い、ハンドアウト QR コードを Zenn/Zenodo から note 記事へ更新、ハンドアウト本文・Zenn 記事・note 記事相互の URL クロスリンクを完了。|

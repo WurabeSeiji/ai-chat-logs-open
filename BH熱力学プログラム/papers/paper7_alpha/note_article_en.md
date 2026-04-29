@@ -1,4 +1,4 @@
-# Predicting the Fine-Structure Constant α to 0.02% from 4D Geometry: A Self-Consistent Identity
+# Predicting the Fine-Structure Constant α to 8.7 ppb from 4D Geometry: A Self-Consistent Identity
 
 ## A 100-Year Mystery, the Eddington Trap, and Where This Article Stands
 
@@ -38,16 +38,18 @@ Solving for α gives a self-consistent quadratic:
 (π²/2) α² + 137 α - 1 = 0
 ```
 
-Positive root:
+Positive root (high precision):
 
 ```
-α = 0.0072984
-α⁻¹ = 137.0360
+α   ≈ 7.29735194 × 10⁻³
+α⁻¹ ≈ 137.0360110
 ```
 
-The CODATA 2018 recommended value is α⁻¹ = 137.035999..., agreeing with the prediction to a relative accuracy of 1.4 × 10⁻⁴ (**0.02% precision**).
+The CODATA 2018 value is α = 7.29735257 × 10⁻³ (α⁻¹ = 137.035999...), agreeing with the prediction to a relative accuracy of **8.7 × 10⁻⁸ (about 8.7 ppb)** — approximately **1/3000** the deviation of Eddington-style integer-fitting (2.6 × 10⁻⁴).
 
-The integer 137 matches exactly; the fractional 0.036 agrees to within 0.03%.
+The integer 137 matches exactly, and α⁻¹ matches to four decimal places (137.0360).
+
+> **Correction note**: v1 of this article reported "relative error 1.4 × 10⁻⁴ (0.02% precision)", which was an under-estimation due to coarse 4-digit rounding (α ≈ 7.2984 × 10⁻³). High-precision external verification by Grok (xAI) revealed the actual precision to be **about 1600× better at 8.7 ppb**. This article has been corrected in line with paper v3.
 
 ---
 
@@ -178,7 +180,7 @@ These are not exclusive; they may represent different facets of the same phenome
 
 The identity is not perfect. Outstanding questions:
 
-- **0.03% residual**: small discrepancy between prediction and observation. Geometric identification of an α³-order correction is needed
+- **8.7 ppb residual**: small discrepancy between prediction and observation (~ 6 × 10⁻¹⁰). Geometric identification of an α³-order correction (coefficient c₃ ≈ 1.6 × 10⁻³) is needed
 - **Privilege of R=3**: why does N(1)=137 (not N(2)=1545 or N(3)=7281) correspond to the electron?
 - **Mechanism derivation**: which of the three candidates dominates, with quantitative evaluation
 - **Generation hierarchy**: α is generation-universal, so this identity does not address the (m_e, m_μ, m_τ) mass ratios
@@ -190,14 +192,15 @@ The identity is not perfect. Outstanding questions:
 The identity can be reproduced entirely by hand and a calculator, using §2 of the paper:
 
 ```
-V₄(1) = π² / 2 = 9.8696044 / 2 = 4.9348022
+V₄(1) = π² / 2 ≈ 4.9348022
 N(1) = 137
-Equation: 4.9348022 α² + 137 α - 1 = 0
-Discriminant: D = 18769 + 19.7392 = 18788.7392
-√D = 137.07203
-α = (137.07203 - 137) / (2 × 4.9348022) = 0.0072984
-α⁻¹ = 137.0360
-Observed: 137.035999...
+Equation: 4.9348 α² + 137 α - 1 = 0
+Discriminant: D = 137² + 2π² ≈ 18788.7392
+√D ≈ 137.0720220 (high precision)
+α ≈ 7.29735194 × 10⁻³ (high precision)
+α⁻¹ ≈ 137.0360110
+Observed (CODATA 2018): α⁻¹ = 137.0359991
+Relative error: 8.7 × 10⁻⁸ (8.7 ppb)
 ```
 
 ---
@@ -209,13 +212,13 @@ From two elementary 4D geometric quantities:
 - N(1) = 137 (packing count, direct enumeration)
 - V₄(1) = π²/2 (standard volume formula)
 
-a self-consistent algebraic equation α⁻¹ = N(1) + V₄(1)α can be constructed, whose solution agrees with observed α to 0.02% precision. This identity is:
+a self-consistent algebraic equation α⁻¹ = N(1) + V₄(1)α can be constructed, whose solution agrees with observed α to **8.7 ppb (~ 8.7 × 10⁻⁸)** precision — approximately 1/3000 the deviation of Eddington-style integer-fitting (2.6 × 10⁻⁴). This identity is:
 
 - Mathematically: fully verifiable by hand
 - Structurally: of perturbative form 1 = 137α + (π²/2)α²
 - Physically: readable as inside/outside decomposition with candidate mechanisms
 
-Whether this reflects geometric necessity or numerical coincidence is unresolved. The contribution of this article is not a verdict but the **observation** of a self-consistent equation, built from 4D geometric quantities not borrowed from elsewhere, that agrees with observation to 0.02%.
+Whether this reflects geometric necessity or numerical coincidence is unresolved. The contribution of this article is not a verdict but the **observation** of a self-consistent equation, built from 4D geometric quantities not borrowed from elsewhere, that agrees with observation to 8.7 ppb.
 
 ---
 
@@ -225,7 +228,7 @@ Whether this reflects geometric necessity or numerical coincidence is unresolved
 - That physical spacetime is 4+1-dimensional
 - A replacement for Eddington-style predictions
 - New observable signatures
-- A mechanistic explanation of the 0.03% residual (left as an open problem)
+- A mechanistic explanation of the 8.7 ppb residual (left as an open problem)
 
 ---
 
