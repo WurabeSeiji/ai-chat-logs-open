@@ -130,6 +130,10 @@
 | note 記事（一般向け） | EN | https://note.com/kiharanoriaki/n/n9c37c6f99a0a |
 | ハンドアウト（A4 1ページ） | JA | [`../handout_alpha_isomorphism_ja.pdf`](../handout_alpha_isomorphism_ja.pdf) |
 | ハンドアウト（A4 1ページ） | EN | [`../handout_alpha_isomorphism_en.pdf`](../handout_alpha_isomorphism_en.pdf) |
+| Facebook 投稿 | JA | 個人タイムライン（2026-04-29、note JA 記事リンク）|
+| Facebook 投稿 | EN | 個人タイムライン（2026-04-29、note EN 記事リンク）|
+| X (Twitter) 投稿 | JA | [@NoriakiKihara](https://x.com/NoriakiKihara)（2026-04-29、note JA 記事リンク）|
+| X (Twitter) 投稿 | EN | [@NoriakiKihara](https://x.com/NoriakiKihara)（2026-04-29、note EN 記事リンク）|
 
 外部参照は全て Concept DOI を使用しているため、今後の v3, v4, ... 公開時も DOI 修正は不要。
 
@@ -246,6 +250,7 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-04-29 | 論文8（α 恒等式 II）SNS 公開：Facebook 日英両版を投稿（[The α-identity is mathematically isomorphic to standard Wilson lattice gauge theory] / [α 恒等式は、Wilson 標準格子ゲージ理論と数学的に同型]）。X (Twitter) は @NoriakiKihara で日英両版を投稿（α⁻¹ = 137 + (π²/2)α、note 記事 URL とハッシュタグ付き、X 字数制限内に圧縮）。各投稿で note 記事（日英、n87df7a4977e7／n9c37c6f99a0a）の URL を参照、ハッシュタグは #FineStructureConstant #137 #Wilson #LatticeGauge #ChainComplex（EN）／ #微細構造定数 #137 #格子ゲージ理論 #構造的対応 #鎖複体（JA）。論文8 独立公開セット（Zenodo + Zenn + note + ハンドアウト + Facebook + X）完了。 |
 | 2026-04-29 | 論文8（α 恒等式 II）独立公開セット完成：(1) note 記事（日英）公開（https://note.com/kiharanoriaki/n/n87df7a4977e7、https://note.com/kiharanoriaki/n/n9c37c6f99a0a）、(2) note レンダリング制約（表・LaTeX 数式・「」入り太字 NG）に従い再作成、(3) 論文8 専用ハンドアウト `handout_alpha_isomorphism_{ja,en}.{tex,pdf}` を作成（A4 1ページ、QR コード付き）、(4) ハンドアウト QR は note 記事を指す。論文7 と並行する独立公開セットとして整備完了（Zenodo 論文 v2 + Zenn + note + ハンドアウト）。論文8 は単なる補強ではなく、論文7 の幾何学的恒等式を Wilson 標準理論と数学的に同型な構造として位置づける、研究プログラムの数学的基盤を根本的に強化する観察。 |
 | 2026-04-29 | 論文8（α 恒等式 II）v2 公開：Grok（xAI）v1 査読の正当な指摘（「圏論的同型」が看板倒れ・証明不足）を踏まえ、(1) タイトル「圏論的同型」→「**構造的対応**」に格下げ、(2) 用語修正（圏論的→構造的）、(3) §6.3 証明にSchläfli 双対 $D$ の具体的構成を追加（$C_0\to C_4$、$C_1\to C_3$、$C_2\to C_2$ 自己双対の明示）、(4) §7.1 bulk-boundary 対応の数学的説明を補強。Grok の「より大胆に（R/Q/GR/6D 拡張）」は誤読リスクのため不採用。論文7 と同じ慎重さを継承。Zenodo に v2 公開（v2 Version DOI: 10.5281/zenodo.19881119、deposit 19881119、Concept DOI 19880467 不変）。日英 md/tex/pdf 全6ファイル更新。 |
 | 2026-04-29 | 論文8（α 恒等式 II：圏論的同型）v1 公開：論文7 の α 恒等式の数学的位置づけを明らかにする。**主定理：4次元超立方格子の鎖複体上で、Wilson 格子ゲージ理論と Kihara 充填が Schläfli 双対 $D$ を介して圏論的に同型**である。$B_4$ 対称性、離散 Stokes の定理、Poincaré 双対の組み合わせで証明可能。論文7 の inside/outside 分解は鎖複体上の bulk-boundary 規格化として自然に解釈される。系として双方向の道具流用が可能になる（Wilson 強結合展開 ↔ Lagrange–Jacobi 四平方定理）。Concept DOI: 10.5281/zenodo.19880467、v1 Version DOI: 10.5281/zenodo.19880468。日英 md/tex/pdf 全6ファイルを Zenodo に公開、Zenn 専用記事 articles/alpha-isomorphism-lattice-gauge.md を新規作成。Eddington 罠回避の姿勢は論文7 と同じ慎重さで継承、α の機構的派生は open problem として明示。|
