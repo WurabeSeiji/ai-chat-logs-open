@@ -5,6 +5,7 @@
 **Date**: April 2026
 **Concept DOI (always resolves to the latest version)**: [10.5281/zenodo.19869266](https://doi.org/10.5281/zenodo.19869266)
 **v1 Version DOI**: [10.5281/zenodo.19869267](https://doi.org/10.5281/zenodo.19869267)
+**v2 Version DOI (latest, adds §6.5 duality outlook)**: [10.5281/zenodo.19875074](https://doi.org/10.5281/zenodo.19875074)
 
 ---
 
@@ -253,6 +254,30 @@ As mentioned in §1, Eddington-style number theory failed by attempting to fit $
 4. Candidate physical mechanisms are proposed from a thought experiment (§5)
 
 These are decisive differences from Eddington. Yet whether the identity itself reflects geometric necessity or numerical coincidence remains an open question. This paper does not adjudicate, only presents the observed structure.
+
+### §6.5 Topological Duality and Node Interpretation (Future Outlook)
+
+The identity (1) combines a discrete count $N(1)$ and a continuous volume $V_4(1)$. At first glance these have different dimensions: $N(1)$ is a dimensionless count, while $V_4(1)$ formally carries dimension $[L^4]$. This section sketches an alternative reading that addresses this mismatch through the Schläfli duality between the 4-dimensional hypercube (tesseract) and the 4-dimensional cross-polytope (16-cell).
+
+**Re-reading via duality.** Each cell (3-volume element) of the tesseract corresponds to a vertex of its dual ($f_k$(tesseract) $= f_{4-k}$(16-cell)). The 137 unit cubes inscribed in the radius-3 4D ball can therefore be re-read on the dual lattice as **137 vertices (interaction nodes)**. Under this interpretation $N(1)$ becomes a purely dimensionless topological quantity, and the dimension-mismatch concern dissolves.
+
+**Correspondence with QED vertex factors.** In quantum field theory, Feynman rules attach a factor of $\sqrt{\alpha}$ to each interaction vertex of an amplitude (and $\alpha$ to each vertex of a probability). Reading the perturbative form $1 = 137\alpha + V_4(1)\alpha^2$ in this light yields a structural correspondence:
+
+| Term | Standard QFT reading | Dual-model reading |
+|---|---|---|
+| $137\alpha$ | tree-level vertex contribution (vertex × $\alpha$) | coupling at 137 nodes of the dual lattice |
+| $V_4(1)\alpha^2$ | one-loop correction (two-vertex path) | boundary self-correlation, two-node loop |
+| Total = 1 | unitarity / normalisation | normalisation of the interaction graph |
+
+If $V_4(1)$ is likewise re-interpreted as a discrete information measure (boundary-lattice node density, or a count of spin-network states in the LQG sense), the identity becomes a fully dimensionless "normalisation condition for an interaction graph".
+
+**Caveats.** This duality reading is a **motivational argument**, not a rigorous derivation of QED Feynman rules from the 4D packing problem. Concretely unresolved:
+
+- What physical interaction process the 137 dual vertices represent
+- The structure of the "lines" (propagators) connecting these nodes
+- The relationship between the implied UV cutoff $\Lambda$ (estimated $\sim 0.6$ MeV from §5.1 Candidate A) and the dual-lattice spacing
+
+Even so, the fact that each term of the identity parallels the canonical structure of perturbative QFT (Feynman vertex rules) provides indirect circumstantial support for a geometric origin of $\alpha$. Affinity with spin networks (LQG) and lattice gauge theory may elevate the identity from a numerical coincidence to a starting point of a programme that **reconstructs interaction theory from discrete structure**.
 
 ---
 

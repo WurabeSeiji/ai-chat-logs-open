@@ -68,7 +68,8 @@
 **タイトル（英語）**：A Geometric Identity for the Fine-Structure Constant: From the 4D Unit Ball Volume and its Cube-Packing Deficit (Paper 7: α-Identity)  
 **内容：** 半径 $R=3$ の4次元球への単位立方体完全包含数 $N(1) = 137$（直接計数）と、4次元単位球の体積 $V_4(1) = \pi^2/2$ から構成される自己整合二次方程式 $\frac{\pi^2}{2}\alpha^2 + 137\alpha - 1 = 0$ の正根として、微細構造定数 $\alpha$ を 0.02\% 精度で予言する。$\alpha^{-1} = N(1) + V_4(1)\cdot\alpha$ という形が摂動展開 $1 = 137\alpha + V_4(1)\alpha^2$ に等価で、tree-level (inside) + 自己エネルギー補正 (outside) の構造を持つ。論文3・4 への自己参照を最低限に抑え self-contained に再導出。Eddington 系の素朴な整数論との決定的差異（自己整合方程式・幾何学的派生・摂動展開類比・機構候補）を明示。残差 0.03\% と機構の第一原理導出を主要開問題として残す。  
 **Concept DOI：** https://doi.org/10.5281/zenodo.19869266  
-**v1 Version DOI：** https://doi.org/10.5281/zenodo.19869267
+**v1 Version DOI：** https://doi.org/10.5281/zenodo.19869267  
+**v2 Version DOI（最新、§6.5 双対性節を追加）：** https://doi.org/10.5281/zenodo.19875074
 
 ---
 
@@ -225,6 +226,7 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-04-29 | 論文7（α 恒等式）v2 公開：§6.5「トポロジカル双対性と接続点解釈（今後の展望）」を追加。次元不整合（$N(1)$ 個数 vs $V_4(1)$ 体積）の懸念に対し、4次元超立方体と 16-cell の Schläfli 双対性で 137 を双対格子の頂点数（接続点）として読み替え、QED ファインマン頂点規則との構造対応・スピンネットワーク／LQG との親和性を示唆。Zenodo に v2 として公開（v2 Version DOI: 10.5281/zenodo.19875074、deposit 19875074、Concept DOI 19869266 不変）。日英 md/tex/pdf 全6ファイルを上書きアップロード。|
 | 2026-04-29 | 論文7（α 恒等式）SNS 公開：Facebook 日英両版を投稿（[Predicting the Fine-Structure Constant α to 0.02% from 4D Geometry: A Self-Consistent Identity] / [微細構造定数 α を4次元の幾何学から 0.02% で予言する自己整合恒等式]）。X (Twitter) は @NoriakiKihara で日英両版を投稿（α⁻¹ = 137 + (π²/2)·α、note 記事 URL とハッシュタグ付き）。各投稿で note 記事（日英）の URL を参照、ハッシュタグは #FineStructureConstant #137 #TheoreticalPhysics（EN）／ #微細構造定数 #137 #理論物理学（JA）。|
 | 2026-04-29 | 論文7（α 恒等式）note 記事公開：日本語版 https://note.com/kiharanoriaki/n/n19cc13927c51、英語版 https://note.com/kiharanoriaki/n/n01d98237ddae。これに伴い、ハンドアウト QR コードを Zenn/Zenodo から note 記事へ更新、ハンドアウト本文・Zenn 記事・note 記事相互の URL クロスリンクを完了。|
 | 2026-04-29 | 論文7（α 恒等式）独立公開セット完成：(1) Zenn 専用記事 `articles/alpha-identity-4d-geometry.md` 作成、(2) note 記事ドラフト（日英、`papers/paper7_alpha/note_article_{ja,en}.md`、note.com への手動公開待ち）、(3) 専用ハンドアウト `handout_alpha_identity_{ja,en}.{tex,pdf}` 作成（A4 1ページ、QR コード付き）、(4) 既存 BH Zenn 記事の第III部を独立記事への誘導に置換。BH プログラム本体（中核6篇）と完全に独立した公開セットとして整備。|
