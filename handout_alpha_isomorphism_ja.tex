@@ -1,0 +1,179 @@
+% !TEX program = lualatex
+\documentclass[9pt,a4paper]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{top=1.2cm,bottom=1.0cm,left=1.3cm,right=1.3cm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{luatexja-fontspec}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+\setlist{nosep,leftmargin=1.0em,topsep=0pt,partopsep=0pt}
+\pagestyle{empty}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{12pt}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries 4次元超立方格子上の鎖複体構造：Kihara 充填と Wilson 格子ゲージ理論の構造的対応}\\[2pt]
+{\small 木原 範昭（Noriaki Kihara）\enspace WF System Co., Ltd.\enspace 大阪大学 基礎工学部 卒業\enspace ORCID: \href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020}\enspace 論文8（$\alpha$ 恒等式 II、v2）}
+\end{center}
+
+\vspace{-1pt}
+\hrule height 0.7pt
+\vspace{4pt}
+
+\begin{tcolorbox}[colback=gray!7,colframe=gray!55,boxrule=0.4pt,arc=2pt,left=4pt,right=4pt,top=2pt,bottom=2pt]
+{\small
+\textbf{主結果：論文7 の $\alpha$ 恒等式は Wilson 標準格子ゲージ理論と数学的に同型}\enspace
+姉妹論文（論文7）で観察した自己整合恒等式
+\[ \alpha^{-1} = 137 + \tfrac{\pi^2}{2}\alpha \quad (\text{8.7 ppb 精度}) \]
+は単なる数値偶然ではなく、4次元 Euclidean 整数格子 $\mathbb{Z}^4$ の鎖複体構造の上で、Kenneth Wilson が1974年に確立した\textbf{標準格子ゲージ理論}と、\textbf{鎖複体として構造的に同型}である。Schl\"afli 双対（テッセラクト $\leftrightarrow$ 16-cell の自己双対）+ 超立方対称群 $B_4$ + 離散 Stokes の定理が同型の根拠。\\[2pt]
+\textbf{論文7 の inside/outside 分解の鎖複体的読み替え}\enspace
+$1 = 137\alpha + V_4(1)\alpha^2$ は鎖複体上の bulk-boundary 規格化条件。$137\alpha$ は $C_4$ 内部充填（137 セル）の tree-level 寄与、$V_4(1)\alpha^2$ は $C_3$ 境界自由度の自己エネルギー補正。これは QFT 摂動展開（renormalisation）と完全に同じ構造。\\[2pt]
+\textbf{Eddington 罠からの完全脱却}\enspace
+論文7 の $\alpha$ 恒等式は\textbf{numerology の一種ではなく、4次元格子のトポロジカル構造の自然な現れ}。Wilson 標準理論と同じ数学的言語で記述可能で、査読耐性が劇的に向上。}
+\end{tcolorbox}
+
+\vspace{2pt}
+
+\begin{multicols}{2}
+\small
+
+\textbf{4次元超立方格子の鎖複体}\enspace
+$\mathbb{Z}^4$ 上に標準的な階層構造：
+\begin{itemize}[topsep=1pt]
+\item $C_0$（頂点）/ $C_1$（リンク）/ $C_2$（プラケット）
+\item $C_3$（3-cell）/ $C_4$（4-cell：テッセラクト）
+\item 超立方対称群 $B_4$（位数 384）が同変的に作用
+\end{itemize}
+
+\smallskip
+\textbf{二つの formalism の対応}\enspace
+
+\textit{Wilson 格子ゲージ理論}：
+\begin{itemize}[topsep=1pt]
+\item リンク $C_1$ にゲージ場 $U_\ell \in U(1)$
+\item プラケット $C_2$ に作用 $S_p$
+\item Wilson loop でゲージ不変量を構成
+\end{itemize}
+
+\textit{Kihara 充填（論文7・3）}：
+\begin{itemize}[topsep=1pt]
+\item 4-cell $C_4$ に単位立方体（$N(1)=137$ at $R=3$）
+\item 体積不足 $\Delta(R) = V_4(R) - N(k) \sim R^3$
+\item 境界 3-cell $C_3$ に体積測度
+\end{itemize}
+
+\smallskip
+\textbf{Schl\"afli 双対 $D$ で結ばれる}\enspace
+
+テッセラクト $\{4,3,3\}$ と 16-cell $\{3,3,4\}$ は自己双対：$f_k(\text{Tess}) = f_{3-k}(\text{16-cell})$。
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}ll@{}}
+\toprule
+$\Lambda$ 側 & $\Lambda^*$ 側 \\
+\midrule
+$C_0$ サイト & $C_4$ 4-cell \\
+$C_1$ リンク & $C_3$ 3-cell \\
+$C_2$ プラケット & $C_2$ プラケット（自己双対） \\
+$C_3$ 3-cell & $C_1$ リンク \\
+$C_4$ 4-cell & $C_0$ サイト \\
+\bottomrule
+\end{tabular}
+}
+
+\smallskip
+\textbf{両者は同じ計算をしている}\enspace
+\textbf{離散 Stokes の定理}（$\partial^2=0$）：
+\begin{itemize}[topsep=1pt]
+\item Wilson：プラケット和 $\to$ 境界 Wilson loop（内部辺は逆向きで打ち消し）
+\item Kihara：bulk 充填 $\to$ 境界 $\Delta(R)$（内部立方体は共有面で打ち消し）
+\end{itemize}
+全く別の動機の二つのアプローチが、同じ数学（Poincar\'e 双対 + $B_4$ 対称性 + Stokes）に到達した。
+
+\columnbreak
+
+\textbf{主定理（構造的対応定理）}\enspace
+\begin{quote}\footnotesize
+$\mathcal{C}_W$（Wilson 配置）と $\mathcal{C}_K$（Kihara 配置）は、$B_4$-同変 chain map $D$（Schl\"afli 双対）を介して、4次元 Euclidean 格子上の鎖複体として構造的に同型である。
+\end{quote}
+
+\smallskip
+\textbf{帰結：双方向の道具流用}\enspace
+
+\textit{Wilson $\to$ Kihara}：
+\begin{itemize}[topsep=1pt]
+\item Wilson 強結合展開 $\to c_3$ の幾何学的同定
+\item モンテカルロ $\to N(k)$ 数値検証
+\item RG $\to$ 連続極限の系統解析
+\end{itemize}
+
+\textit{Kihara $\to$ Wilson}：
+\begin{itemize}[topsep=1pt]
+\item Lagrange--Jacobi 四平方定理 $r_4(N) = 8\sigma(N)$ $\to$ partition function の閉形式
+\item 包除原理 $\to$ プラケット和の解析評価
+\item 中心投影（論文2）$\to$ Wick 回転の幾何学的派生
+\end{itemize}
+
+\smallskip
+\textbf{Eddington 系との差異（強化版）}
+\begin{itemize}[topsep=1pt]
+\item 標準物理との関係：孤立 $\to$ \textbf{Wilson と同型}
+\item 解析手法：専用 $\to$ \textbf{Wilson の道具が直接使える}
+\item 査読耐性：根拠なし $\to$ \textbf{標準数学（algebraic topology）の言葉}
+\end{itemize}
+
+\smallskip
+\textbf{開問題（論文7・8 共通）}
+\begin{itemize}[topsep=1pt]
+\item $\alpha$ の数値の機構的派生
+\item R=3 の特権性
+\item 残差 $c_3 \approx 1.6\times 10^{-3}$ の幾何学的同定
+\item 他のゲージ群（SU(2), SU(3)）への一般化
+\item 物理時空（3+1次元）への射影
+\end{itemize}
+
+\smallskip
+\textbf{論文 DOI（v2、最新）}\enspace
+{\scriptsize Concept: \href{https://doi.org/10.5281/zenodo.19880467}{10.5281/zenodo.19880467}\\
+v2: \href{https://doi.org/10.5281/zenodo.19881119}{10.5281/zenodo.19881119}}
+
+\smallskip
+\textbf{本論文が主張しないこと}
+\begin{itemize}[topsep=1pt]
+\item $\alpha$ の値が同型から第一原理導出されること
+\item U(1) ゲージ対称性の一意創発
+\item 圏論本来の道具（函手・自然変換等）の本格展開
+\end{itemize}
+
+\end{multicols}
+
+\vspace{0pt}
+\hrule height 0.4pt
+\vspace{3pt}
+
+\begin{center}
+\begin{minipage}[c]{1.8cm}
+\includegraphics[height=1.7cm]{qr_alpha_isomorphism_ja.png}
+\end{minipage}
+\hspace{6pt}
+\begin{minipage}[c]{13cm}
+{\footnotesize\textbf{note 記事（日本語）}\enspace \url{https://note.com/kiharanoriaki/n/n87df7a4977e7}}\\[1pt]
+{\footnotesize\textbf{note 記事（英語）}\enspace \url{https://note.com/kiharanoriaki/n/n9c37c6f99a0a}}\\[1pt]
+{\footnotesize\textbf{Zenn 記事（技術解説）}\enspace \url{https://zenn.dev/noriaki_kihara/articles/alpha-isomorphism-lattice-gauge}}\\[1pt]
+{\footnotesize\textbf{Zenodo（論文 PDF・LaTeX・MD、日英対訳）}\enspace \url{https://zenodo.org/records/19881119}}\\[1pt]
+{\scriptsize 関連：論文7（$\alpha$ 恒等式 v3）\enspace \href{https://zenodo.org/records/19876200}{Zenodo} ／ \href{https://note.com/kiharanoriaki/n/n19cc13927c51}{note JA} ／ \href{https://zenn.dev/noriaki_kihara/articles/alpha-identity-4d-geometry}{Zenn}}
+\end{minipage}
+\end{center}
+
+\end{document}
