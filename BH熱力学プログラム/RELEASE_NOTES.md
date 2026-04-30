@@ -250,6 +250,7 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-04-30 | Working Paper v4 公開：付録 A・B・C を追加し誤読耐性を強化（v4 Version DOI: 10.5281/zenodo.19904714、Concept DOI 19902677 不変）。付録 A：戦略的公開設計の観察（公開済論文の積み上げ構造を表で記載）、付録 B：$R\to 0$ 極限での観察（観察のみ、主張ではないと明示）、付録 C：本稿が論文化されていない理由（独立研究者のリソース制約・トンデモ理論扱い回避）。トーンは「観察」「open question」を明示し形式的主張を避ける。ChatGPT との別ルート思考実験から得た補強。8 ファイル（md/tex/pdf/html × JA/EN）すべて再生成。 |
 | 2026-04-30 | Working Paper v3 公開：PDF を JA/EN 両言語追加し、標準公開ワークフロー（md/tex/pdf/html × JA/EN = 8 ファイル）完備（v3 Version DOI: 10.5281/zenodo.19904028、Concept DOI 19902677 不変）。PDF は Chrome headless mode で MathJax レンダリング済 HTML から生成（pandoc+lualatex は対話形式 md の数式記法調整が必要だったため迂回）。国際的な学術アーカイブ要件をすべて満たす形に到達。 |
 | 2026-04-30 | Working Paper v2 公開：JA/EN bilingual edition（v2 Version DOI: 10.5281/zenodo.19903783、Concept DOI 19902677 不変）。v1 (JA md+HTML のみ) に対し、英語版 md・LaTeX ソース（JA/EN）・HTML（JA/EN）を追加し計 6 ファイル構成。これまでの公開済論文（論文 7・8 等）と同じ JA/EN bilingual ワークフローに統一。PDF 生成は対話形式の md における数式記法調整が必要なため v3 以降に持ち越し。 |
 | 2026-04-30 | Working Paper「6次元符号化 xyztRQ の再検討──次論文化に向けた思考実験ノート」を Zenodo 公開（Concept DOI: 10.5281/zenodo.19902677、v1: 19902678）。論文 7・8 を出発点として、6 次元符号ベクトル xyztRQ の構造を AI 計算助手との対話で再検討した思考実験の記録。5 つの核心的気づき：(1) R 成分≠R' 曲率半径、(2) Q 軸も R' に寄与、(3) δt が本質、(4) xyztRQ 全て位相、(5) 6D Wilson 拡張＝量子重力＋大統一の枠組み。形式的論文ではなく予備的整理として公開し、独立研究者として思考の到達日付を公的にタイムスタンプ確保（後続研究との独立性確認・優先権リスク回避のため）。「思考実験ノート」と明示し crackpot 扱いを回避しつつ、内容の優先権を確立。 |

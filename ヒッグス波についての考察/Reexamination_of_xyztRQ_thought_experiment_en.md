@@ -1731,3 +1731,57 @@ This insight becomes the largest milestone of the entire research program. To re
 - Memory update: today's recognition "6D Wilson extension = unified quantum gravity"
 - Paper candidates: a new paper centered on "functional correspondence via phase processing" and "gravity unification by 6D extension"
 - Re-positioning of existing papers: Paper 7/8 reinterpreted as "the 4D subtheory of the 6D extension"
+
+---
+
+## Appendix A: Observation on the Strategic Publication Design (added 2026-04-30)
+
+To prevent misreading of this document, the relationship to existing published papers is recorded as observation.
+
+### Stratified structure of published papers
+
+| Layer | Role |
+|---|---|
+| Paper 8 (α isomorphism, structural correspondence with Wilson) | Entry point. Self-contained; readable as the structural correspondence with standard lattice gauge theory on a 4D chain complex |
+| Paper 7 (α identity, 8.7 ppb precision) | Connecting to the Wilson correspondence in Paper 8 explains the origin of the precision |
+| BH Thermodynamics Programme (6 papers) | Application examples of central projection. Independently derives Bekenstein-Hawking entropy $R^3$ scaling, asymptotic coefficient $8/(3\pi)$, etc. |
+| Phase Equation Series W1–W11 | Phase-space formulation of central projection. Geometric classification of Standard Model particles ([W8] 62 patterns) |
+| Three-Layer Model M1–M3 | Geometric framework $R$–$R_1$–$R_0$ |
+| Delay Circuit Series (5 papers) | Information-theoretic foundation |
+| This thought experiment note | A record of the reasoning process — "why this was conjectured" — for all of the above |
+
+Each paper is designed to be readable independently. **Partial denial does not easily lead to denial of the whole.** On the other hand, partial reading makes the overall picture difficult to see.
+
+### Position of this document
+
+- This document **does not provide formal proofs**
+- Verifiable predictions are already written in Paper 7 (α at 8.7 ppb) and Paper 8 (Wilson structural correspondence)
+- This document is limited to **a chronological record of the reasoning process** that led to those papers
+- Whether the reader follows the same reasoning is left to the reader's judgment
+
+---
+
+## Appendix B: Observations at the $R \to 0$ Limit (record only, not a claim)
+
+Observations on the mathematical properties of central projection are recorded as an independent note.
+
+- Central projection is **regular and non-divergent** at both $R \to 0$ and $R \to \infty$ (confirmed in existing paper [M1] §5)
+- Information in the background space is **preserved as degeneracy** at $R = 0$
+- In the projected subjective space, taking the limit $R \to 0$ gives the following observations:
+  - Reaching a region where the sum of triangle interior angles exceeds 540°
+  - Phase wrapping in time and space
+  - Loss of distinction between time and space as phases
+- From the external observer's perspective (background space view), the subjective space appears to degenerate to a point
+
+How this is interpreted physically/cosmologically is an **open question**, and this document does not draw a conclusion. It is recorded only as observation.
+
+---
+
+## Appendix C: Why This Document Is Not Published as a Formal Paper
+
+- Fully formalizing this as a 6-dimensional Wilson extension gauge theory exceeds the capacity and resources of an independent researcher
+- Strong claims would be instantly dismissed as "crackpot theory"; this structural risk must be avoided
+- The Wilson structural correspondence in existing papers (especially Paper 8) is designed so that specialists can reach the same observation by following it
+- The role of this document is solely to function as a **timestamped record** of that reasoning process
+
+If a future researcher independently arrives at the same conclusion, this document (dated April 30, 2026) will serve as a citable primary source. That is sufficient.
