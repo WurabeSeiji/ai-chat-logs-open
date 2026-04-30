@@ -8,7 +8,9 @@
 **ライセンス**: CC BY 4.0
 **Concept DOI**: [10.5281/zenodo.19902677](https://doi.org/10.5281/zenodo.19902677)
 **v1 Version DOI**: [10.5281/zenodo.19902678](https://doi.org/10.5281/zenodo.19902678)
-**Zenodo Record**: <https://zenodo.org/records/19902678>
+**v2 Version DOI（最新）**: [10.5281/zenodo.19903783](https://doi.org/10.5281/zenodo.19903783)
+**Zenodo Record**: <https://zenodo.org/records/19903783>
+**英語版**: [Reexamination_of_xyztRQ_thought_experiment_en.md](Reexamination_of_xyztRQ_thought_experiment_en.md)
 
 ---
 
