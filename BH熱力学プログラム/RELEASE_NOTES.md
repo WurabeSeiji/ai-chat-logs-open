@@ -250,6 +250,7 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-04-30 | Working Paper v3 公開：PDF を JA/EN 両言語追加し、標準公開ワークフロー（md/tex/pdf/html × JA/EN = 8 ファイル）完備（v3 Version DOI: 10.5281/zenodo.19904028、Concept DOI 19902677 不変）。PDF は Chrome headless mode で MathJax レンダリング済 HTML から生成（pandoc+lualatex は対話形式 md の数式記法調整が必要だったため迂回）。国際的な学術アーカイブ要件をすべて満たす形に到達。 |
 | 2026-04-30 | Working Paper v2 公開：JA/EN bilingual edition（v2 Version DOI: 10.5281/zenodo.19903783、Concept DOI 19902677 不変）。v1 (JA md+HTML のみ) に対し、英語版 md・LaTeX ソース（JA/EN）・HTML（JA/EN）を追加し計 6 ファイル構成。これまでの公開済論文（論文 7・8 等）と同じ JA/EN bilingual ワークフローに統一。PDF 生成は対話形式の md における数式記法調整が必要なため v3 以降に持ち越し。 |
 | 2026-04-30 | Working Paper「6次元符号化 xyztRQ の再検討──次論文化に向けた思考実験ノート」を Zenodo 公開（Concept DOI: 10.5281/zenodo.19902677、v1: 19902678）。論文 7・8 を出発点として、6 次元符号ベクトル xyztRQ の構造を AI 計算助手との対話で再検討した思考実験の記録。5 つの核心的気づき：(1) R 成分≠R' 曲率半径、(2) Q 軸も R' に寄与、(3) δt が本質、(4) xyztRQ 全て位相、(5) 6D Wilson 拡張＝量子重力＋大統一の枠組み。形式的論文ではなく予備的整理として公開し、独立研究者として思考の到達日付を公的にタイムスタンプ確保（後続研究との独立性確認・優先権リスク回避のため）。「思考実験ノート」と明示し crackpot 扱いを回避しつつ、内容の優先権を確立。 |
 | 2026-04-29 | 論文8（α 恒等式 II）SNS 公開：Facebook 日英両版を投稿（[The α-identity is mathematically isomorphic to standard Wilson lattice gauge theory] / [α 恒等式は、Wilson 標準格子ゲージ理論と数学的に同型]）。X (Twitter) は @NoriakiKihara で日英両版を投稿（α⁻¹ = 137 + (π²/2)α、note 記事 URL とハッシュタグ付き、X 字数制限内に圧縮）。各投稿で note 記事（日英、n87df7a4977e7／n9c37c6f99a0a）の URL を参照、ハッシュタグは #FineStructureConstant #137 #Wilson #LatticeGauge #ChainComplex（EN）／ #微細構造定数 #137 #格子ゲージ理論 #構造的対応 #鎖複体（JA）。論文8 独立公開セット（Zenodo + Zenn + note + ハンドアウト + Facebook + X）完了。 |
