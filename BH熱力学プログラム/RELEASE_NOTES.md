@@ -250,6 +250,7 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-04-30 | Working Paper 独立公開セット完成：(1) note 記事（日英）公開（https://note.com/kiharanoriaki/n/nc75457ca96f7、https://note.com/kiharanoriaki/n/n39fecf32607f）、(2) Zenn 専用記事 articles/rethinking-xyztRQ-thought-experiment.md 作成（観察ベースのトーンで5観察を要約、関連 Zenn 記事への双方向リンク完備）。Working Paper の独立公開セットとして整備完了（Zenodo v4 + Zenn + note 日英）。論文 7・8 と同じパターンの公開ワークフローに統一。 |
 | 2026-04-30 | Working Paper v4 公開：付録 A・B・C を追加し誤読耐性を強化（v4 Version DOI: 10.5281/zenodo.19904714、Concept DOI 19902677 不変）。付録 A：戦略的公開設計の観察（公開済論文の積み上げ構造を表で記載）、付録 B：$R\to 0$ 極限での観察（観察のみ、主張ではないと明示）、付録 C：本稿が論文化されていない理由（独立研究者のリソース制約・トンデモ理論扱い回避）。トーンは「観察」「open question」を明示し形式的主張を避ける。ChatGPT との別ルート思考実験から得た補強。8 ファイル（md/tex/pdf/html × JA/EN）すべて再生成。 |
 | 2026-04-30 | Working Paper v3 公開：PDF を JA/EN 両言語追加し、標準公開ワークフロー（md/tex/pdf/html × JA/EN = 8 ファイル）完備（v3 Version DOI: 10.5281/zenodo.19904028、Concept DOI 19902677 不変）。PDF は Chrome headless mode で MathJax レンダリング済 HTML から生成（pandoc+lualatex は対話形式 md の数式記法調整が必要だったため迂回）。国際的な学術アーカイブ要件をすべて満たす形に到達。 |
 | 2026-04-30 | Working Paper v2 公開：JA/EN bilingual edition（v2 Version DOI: 10.5281/zenodo.19903783、Concept DOI 19902677 不変）。v1 (JA md+HTML のみ) に対し、英語版 md・LaTeX ソース（JA/EN）・HTML（JA/EN）を追加し計 6 ファイル構成。これまでの公開済論文（論文 7・8 等）と同じ JA/EN bilingual ワークフローに統一。PDF 生成は対話形式の md における数式記法調整が必要なため v3 以降に持ち越し。 |
