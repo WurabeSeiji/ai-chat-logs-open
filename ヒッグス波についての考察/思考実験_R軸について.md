@@ -7,10 +7,13 @@
 **日付**: 2026 年 4 月 30 日
 **ライセンス**: CC BY 4.0
 **Concept DOI**: [10.5281/zenodo.19902677](https://doi.org/10.5281/zenodo.19902677)
-**v1 Version DOI**: [10.5281/zenodo.19902678](https://doi.org/10.5281/zenodo.19902678)
-**v2 Version DOI（最新）**: [10.5281/zenodo.19903783](https://doi.org/10.5281/zenodo.19903783)
-**Zenodo Record**: <https://zenodo.org/records/19903783>
-**英語版**: [Reexamination_of_xyztRQ_thought_experiment_en.md](Reexamination_of_xyztRQ_thought_experiment_en.md)
+**v1 Version DOI**: [10.5281/zenodo.19902678](https://doi.org/10.5281/zenodo.19902678)（JA md+HTML）
+**v2 Version DOI**: [10.5281/zenodo.19903783](https://doi.org/10.5281/zenodo.19903783)（JA/EN md+tex+html）
+**v3 Version DOI（最新）**: [10.5281/zenodo.19904028](https://doi.org/10.5281/zenodo.19904028)（JA/EN md+tex+pdf+html、計8ファイル）
+**Zenodo Record**: <https://zenodo.org/records/19904028>
+**英語版 md**: [Reexamination_of_xyztRQ_thought_experiment_en.md](Reexamination_of_xyztRQ_thought_experiment_en.md)
+**PDF（日本語）**: [思考実験_R軸について.pdf](思考実験_R軸について.pdf)
+**PDF（英語）**: [Reexamination_of_xyztRQ_thought_experiment_en.pdf](Reexamination_of_xyztRQ_thought_experiment_en.pdf)
 
 ---
 
