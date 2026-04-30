@@ -135,6 +135,20 @@
 | X (Twitter) 投稿 | JA | [@NoriakiKihara](https://x.com/NoriakiKihara)（2026-04-29、note JA 記事リンク）|
 | X (Twitter) 投稿 | EN | [@NoriakiKihara](https://x.com/NoriakiKihara)（2026-04-29、note EN 記事リンク）|
 
+### Working Paper（6次元符号化 xyztRQ の再検討、独立公開セット）
+
+| 媒体 | 言語 | URL |
+|---|:-:|---|
+| Zenodo (v4、最新) | JA/EN bilingual | https://zenodo.org/records/19904714 |
+| Zenodo (Concept DOI) | — | https://doi.org/10.5281/zenodo.19902677 |
+| Zenn 記事（技術解説） | JA | https://zenn.dev/noriaki_kihara/articles/rethinking-xyztRQ-thought-experiment |
+| note 記事（一般向け） | JA | https://note.com/kiharanoriaki/n/nc75457ca96f7 |
+| note 記事（一般向け） | EN | https://note.com/kiharanoriaki/n/n39fecf32607f |
+| Facebook 投稿 | JA | 個人タイムライン（2026-04-30、note JA 記事リンク）|
+| Facebook 投稿 | EN | 個人タイムライン（2026-04-30、note EN 記事リンク）|
+| X (Twitter) 投稿 | JA | [@NoriakiKihara](https://x.com/NoriakiKihara)（2026-04-30、note JA 記事リンク）|
+| X (Twitter) 投稿 | EN | [@NoriakiKihara](https://x.com/NoriakiKihara)（2026-04-30、note EN 記事リンク）|
+
 外部参照は全て Concept DOI を使用しているため、今後の v3, v4, ... 公開時も DOI 修正は不要。
 
 ---
@@ -250,6 +264,7 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-04-30 | **Working Paper SNS 公開・全作業完了**：Facebook 日英両版を投稿（「6次元符号化 xyztRQ の再検討──思考実験ノートを Zenodo に公開」「Reexamining the 6-Dimensional Sign Vector xyztRQ: A Thought Experiment Note」、5観察を箇条書き、コメント欄に note/Zenn/Zenodo の URL）、X (Twitter) は @NoriakiKihara で日英両版を投稿（圧縮版、5観察の省略形と note URL）。「形式的論文ではない」「観察であり証明ではない」を明示し、トンデモ扱いを予防。**これにて2026年4月の一連の作業（中心投影フレームワーク37論文＋BH熱力学プログラム8論文＋Working Paper思考実験ノート）が完了**。Working Paper 独立公開セット（Zenodo v4 + Zenn + note 日英 + Facebook 日英 + X 日英）整備完了。 |
 | 2026-04-30 | Working Paper 独立公開セット完成：(1) note 記事（日英）公開（https://note.com/kiharanoriaki/n/nc75457ca96f7、https://note.com/kiharanoriaki/n/n39fecf32607f）、(2) Zenn 専用記事 articles/rethinking-xyztRQ-thought-experiment.md 作成（観察ベースのトーンで5観察を要約、関連 Zenn 記事への双方向リンク完備）。Working Paper の独立公開セットとして整備完了（Zenodo v4 + Zenn + note 日英）。論文 7・8 と同じパターンの公開ワークフローに統一。 |
 | 2026-04-30 | Working Paper v4 公開：付録 A・B・C を追加し誤読耐性を強化（v4 Version DOI: 10.5281/zenodo.19904714、Concept DOI 19902677 不変）。付録 A：戦略的公開設計の観察（公開済論文の積み上げ構造を表で記載）、付録 B：$R\to 0$ 極限での観察（観察のみ、主張ではないと明示）、付録 C：本稿が論文化されていない理由（独立研究者のリソース制約・トンデモ理論扱い回避）。トーンは「観察」「open question」を明示し形式的主張を避ける。ChatGPT との別ルート思考実験から得た補強。8 ファイル（md/tex/pdf/html × JA/EN）すべて再生成。 |
 | 2026-04-30 | Working Paper v3 公開：PDF を JA/EN 両言語追加し、標準公開ワークフロー（md/tex/pdf/html × JA/EN = 8 ファイル）完備（v3 Version DOI: 10.5281/zenodo.19904028、Concept DOI 19902677 不変）。PDF は Chrome headless mode で MathJax レンダリング済 HTML から生成（pandoc+lualatex は対話形式 md の数式記法調整が必要だったため迂回）。国際的な学術アーカイブ要件をすべて満たす形に到達。 |
