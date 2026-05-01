@@ -149,7 +149,16 @@
 | X (Twitter) 投稿 | JA | [@NoriakiKihara](https://x.com/NoriakiKihara)（2026-04-30、note JA 記事リンク）|
 | X (Twitter) 投稿 | EN | [@NoriakiKihara](https://x.com/NoriakiKihara)（2026-04-30、note EN 記事リンク）|
 
-外部参照は全て Concept DOI を使用しているため、今後の v3, v4, ... 公開時も DOI 修正は不要。
+### 論文 7 補講（α 恒等式の二次補正項に関する幾何学的観察、独立公開セット）
+
+| 媒体 | 言語 | URL |
+|---|:-:|---|
+| Zenodo (v1、最新) | JA/EN bilingual | https://zenodo.org/records/19933730 |
+| Zenodo (Concept DOI) | — | https://doi.org/10.5281/zenodo.19933729 |
+| note 記事（一般向け） | JA | https://note.com/kiharanoriaki/n/ne1dc24c07455 |
+| note 記事（一般向け） | EN | https://note.com/kiharanoriaki/n/n268fa839f6c4 |
+
+外部参照は全て Concept DOI を使用しているため、今後の v2, v3, ... 公開時も DOI 修正は不要。
 
 ---
 
@@ -264,6 +273,7 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-05-01 | 論文7 補講 note 記事公開：日本語版 https://note.com/kiharanoriaki/n/ne1dc24c07455、英語版 https://note.com/kiharanoriaki/n/n268fa839f6c4。観察論文と明示し、5 観察を箇条書きで提示。論文 7・8、Working Paper、Zenn 記事への双方向リンク完備。論文 7 補講 独立公開セット（Zenodo v1 + note 日英）整備完了。 |
 | 2026-05-01 | **論文7 補講（α 恒等式の二次補正項に関する幾何学的観察）v1 公開**：Concept DOI: 10.5281/zenodo.19933729、v1 Version DOI: 10.5281/zenodo.19933730。論文7 の残差 8.7 ppb の幾何学的解釈を**観察論文**として提示。核心：(1) π²/2 を $A_{S^3}/(4R^3)$ として読む解釈の提示、(2) $G(R) = (16\pi/3)R^3 - (3\pi^2/4 + 9\pi/2)R^2 + O(R)$ の漸近展開の厳密導出（球面積分 $\int_{S^3}\tau d\Omega = 16\pi/3$、$\int_{S^3}\tau^2 d\Omega = \pi^2/2 + 3\pi$）、(3) 第二項係数 $-(3\pi^2/4 + 9\pi/2) \approx -21.539$ が解析的に負、(4) 数値検証で R² 係数 ≈ -20 vs 理論 -21.539 の整合、(5) 観測残差 δ ≈ 0.001619 との符号・桁一致。**観察論文と明示**し、δ の完全導出は open question として残す。論文7 の主張は本補講に依存せず、論文7・8 の防御線を巻き添えにしない設計。日英 md/tex/pdf 全 6 ファイル Zenodo 公開。 |
 | 2026-04-30 | **Working Paper SNS 公開・全作業完了**：Facebook 日英両版を投稿（「6次元符号化 xyztRQ の再検討──思考実験ノートを Zenodo に公開」「Reexamining the 6-Dimensional Sign Vector xyztRQ: A Thought Experiment Note」、5観察を箇条書き、コメント欄に note/Zenn/Zenodo の URL）、X (Twitter) は @NoriakiKihara で日英両版を投稿（圧縮版、5観察の省略形と note URL）。「形式的論文ではない」「観察であり証明ではない」を明示し、トンデモ扱いを予防。**これにて2026年4月の一連の作業（中心投影フレームワーク37論文＋BH熱力学プログラム8論文＋Working Paper思考実験ノート）が完了**。Working Paper 独立公開セット（Zenodo v4 + Zenn + note 日英 + Facebook 日英 + X 日英）整備完了。 |
 | 2026-04-30 | Working Paper 独立公開セット完成：(1) note 記事（日英）公開（https://note.com/kiharanoriaki/n/nc75457ca96f7、https://note.com/kiharanoriaki/n/n39fecf32607f）、(2) Zenn 専用記事 articles/rethinking-xyztRQ-thought-experiment.md 作成（観察ベースのトーンで5観察を要約、関連 Zenn 記事への双方向リンク完備）。Working Paper の独立公開セットとして整備完了（Zenodo v4 + Zenn + note 日英）。論文 7・8 と同じパターンの公開ワークフローに統一。 |
