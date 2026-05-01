@@ -9,6 +9,8 @@
 **Concept DOI**: [10.5281/zenodo.19933729](https://doi.org/10.5281/zenodo.19933729)
 **v1 Version DOI**: [10.5281/zenodo.19933730](https://doi.org/10.5281/zenodo.19933730)
 **Zenodo page**: https://zenodo.org/records/19933730
+**Note article (Japanese)**: <https://note.com/kiharanoriaki/n/ne1dc24c07455>
+**Note article (English)**: <https://note.com/kiharanoriaki/n/n268fa839f6c4>
 
 ---
 

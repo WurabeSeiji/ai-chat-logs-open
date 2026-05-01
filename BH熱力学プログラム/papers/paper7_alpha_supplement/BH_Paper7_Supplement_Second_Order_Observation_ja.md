@@ -9,6 +9,8 @@
 **Concept DOI**：[10.5281/zenodo.19933729](https://doi.org/10.5281/zenodo.19933729)
 **v1 Version DOI**：[10.5281/zenodo.19933730](https://doi.org/10.5281/zenodo.19933730)
 **Zenodo ページ**：https://zenodo.org/records/19933730
+**note 記事（日本語）**：<https://note.com/kiharanoriaki/n/ne1dc24c07455>
+**note 記事（英語）**：<https://note.com/kiharanoriaki/n/n268fa839f6c4>
 
 ---
 
