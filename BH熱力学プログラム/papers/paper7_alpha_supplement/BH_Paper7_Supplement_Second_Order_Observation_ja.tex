@@ -1,0 +1,868 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{BH 熱力学プログラム 論文 7 補講：α
+恒等式の二次補正項に関する幾何学的観察}\label{bh-ux71b1ux529bux5b66ux30d7ux30edux30b0ux30e9ux30e0-ux8ad6ux6587-7-ux88dcux8b1bux3b1-ux6052ux7b49ux5f0fux306eux4e8cux6b21ux88dcux6b63ux9805ux306bux95a2ux3059ux308bux5e7eux4f55ux5b66ux7684ux89b3ux5bdf}
+
+\textbf{著者}：木原 範昭（Noriaki Kihara） \textbf{所属}：WF System Co.,
+Ltd.
+\textbf{ORCID}：\href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020}
+\textbf{版}：v1（草稿） \textbf{日付}：2026 年 5 月 1 日
+\textbf{ライセンス}：CC BY 4.0
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{本稿の性格}\label{ux672cux7a3fux306eux6027ux683c}
+
+\textbf{本稿は観察論文であり、証明論文ではない。}
+
+論文 7 {[}BH7{]} の α 恒等式 \(\alpha^{-1} = 137 + (\pi^2/2)\alpha\)
+に現れる係数 \(\pi^2/2\) と、観測値との残差 8.7 ppb
+について、ひとつの幾何学的解釈の枠組みを提示する。
+
+本稿は以下を主張しない：
+
+\begin{itemize}
+\tightlist
+\item
+  \(\pi^2/2\) がこの幾何学的解釈以外を許容しないこと
+\item
+  残差 8.7 ppb が本稿の解釈で完全に導出されること
+\item
+  他の解釈の可能性を排除すること
+\item
+  論文 7 の主張を「証明」「強化」「拡張」すること
+\end{itemize}
+
+本稿が提示するのは、ひとつの読み方である。同じ数式と数値が他の読み方を許容する可能性は否定しない。
+
+論文 7 の主張は、本稿に依存しない。論文 7
+が観察した数値的事実（\(\alpha^{-1} = 137 + (\pi^2/2)\alpha\) が 8.7 ppb
+精度で成立する）は、本稿の解釈の採否によらず変わらない。
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+論文 7 {[}BH7{]} において、4
+次元球の単位立方体充填を用いた幾何学的恒等式
+
+\[\alpha^{-1} = 137 + \frac{\pi^2}{2}\alpha\]
+
+が、観測値 \(\alpha^{-1} = 137.035999177\) と相対誤差 8.7
+ppb（\(8.7 \times 10^{-8}\)）で一致することが報告された。本稿はこの式の構造に対する\textbf{ひとつの幾何学的解釈}を提供する。具体的には：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\pi^2/2\) を「単位球体積 \(V_4(1)\)」ではなく「4 次元球境界 \(S^3\)
+  の測度の正規化核 \(A_{S^3}(R)/(4R^3)\)」として読みうること（§2）。
+\item
+  この読み方の下で、4 次元球の超立方体被覆の体積欠損 \(G(R)\) が漸近展開
+  \[G(R) = \frac{16\pi}{3}R^3 - \left(\frac{3\pi^2}{4} + \frac{9\pi}{2}\right)R^2 + O(R)\]
+  を持つこと（§3）。
+\item
+  この展開において、第二項の係数が解析的に\textbf{負}であること（§4）。
+\item
+  数値実験（R = 50〜300）でこの展開が整合すること（§5）。
+\item
+  観測残差から逆算される補正値 \(\delta \approx 0.001619\)
+  の桁・オーダーが、上記の幾何学的構造と整合すること（§6）。
+\end{enumerate}
+
+本稿は \(\delta\) の完全導出を提供しない。第 5 項は観察に留まり、\(R^2\)
+欠損項を α 方程式の係数項へ変換する正規化規則は open question
+として残る（§7）。
+
+\subsection{§1 序論}\label{ux5e8fux8ad6}
+
+\subsubsection{1.1 論文 7
+の文脈}\label{ux8ad6ux6587-7-ux306eux6587ux8108}
+
+論文 7 {[}BH7{]} は、4 次元 Euclidean
+整数格子上の単位超立方体充填を考え、半径 \(R = 3\) の 4
+次元球に完全内包されるセル数 \(N(1) = 137\) と、4 次元単位球体積
+\(V_4(1) = \pi^2/2\) から構成される自己整合恒等式
+
+\[\alpha^{-1} = 137 + \frac{\pi^2}{2}\alpha \tag{1.1}\]
+
+を提示した。この方程式の正根は \(\alpha = 7.29735194 \times 10^{-3}\)
+を与え、CODATA 2022 値 \(\alpha = 7.2973525693 \times 10^{-3}\)
+と相対誤差 \(8.7 \times 10^{-8}\)（8.7 ppb）で一致する。
+
+\subsubsection{1.2 残差問題}\label{ux6b8bux5deeux554fux984c}
+
+論文 7 では、残差 \(6.3 \times 10^{-10}\) の起源を α³
+オーダーの幾何学的補正項（係数
+\(c_3 \approx 1.6 \times 10^{-3}\)）として open problem に置いた。
+
+\subsubsection{1.3
+想定される疑念}\label{ux60f3ux5b9aux3055ux308cux308bux7591ux5ff5}
+
+論文 7 の構造に対しては、次のような疑念が想定されうる：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{疑念 A}：「\(\pi^2/2\)
+  を単位球体積として導入したのは、観測値と合うように後付けで選ばれたのではないか」
+\item
+  \textbf{疑念 B}：「残差の幾何学的起源が示されない以上、係数
+  \(\pi^2/2\) は数値合わせの可能性を排除できない」
+\end{itemize}
+
+本稿はこれらの疑念に対する\textbf{部分的応答}を提供する。本稿は完全な反駁ではなく、ひとつの幾何学的観点が論文
+7 の構造と整合することの観察である。
+
+\subsubsection{1.4 本稿の構成}\label{ux672cux7a3fux306eux69cbux6210}
+
+§2 で \(\pi^2/2\) の代替的解釈（境界測度の正規化核として）を提示する。§3
+で 4 次元球の超立方体被覆の体積欠損 \(G(R)\) の漸近展開を導出する。§4
+で第二項の符号が解析的に負になることを示す。§5
+で数値実験との整合を確認する。§6
+で観測残差との関係を観察として記録する。§7 で本稿の限界と open question
+を明示する。§8 で論文 7 への含意を整理する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{§2 \(\pi^2/2\)
+のもうひとつの幾何学的読み方}{§2 \textbackslash pi\^{}2/2 のもうひとつの幾何学的読み方}}\label{pi22-ux306eux3082ux3046ux3072ux3068ux3064ux306eux5e7eux4f55ux5b66ux7684ux8aadux307fux65b9}
+
+\subsubsection{2.1
+二つの解釈の数値的等価性}\label{ux4e8cux3064ux306eux89e3ux91c8ux306eux6570ux5024ux7684ux7b49ux4fa1ux6027}
+
+\(\pi^2/2\) は、4 次元単位球の体積として論文 7 で導入された：
+
+\[V_4(R) = \frac{\pi^2}{2}R^4, \quad V_4(1) = \frac{\pi^2}{2}. \tag{2.1}\]
+
+しかし \(\pi^2/2\) は 4 次元球境界 \(S^3\)
+の測度から、別の経路でも自然に現れる：
+
+\[A_{S^3}(R) = \frac{d}{dR}V_4(R) = 2\pi^2 R^3. \tag{2.2}\]
+
+これを \(4R^3\) で正規化すると、
+
+\[\frac{A_{S^3}(R)}{4R^3} = \frac{2\pi^2 R^3}{4R^3} = \frac{\pi^2}{2}. \tag{2.3}\]
+
+数値としては \(V_4(1) = A_{S^3}(R)/(4R^3) = \pi^2/2\) で、両者は等しい。
+
+\subsubsection{2.2
+解釈としての違い}\label{ux89e3ux91c8ux3068ux3057ux3066ux306eux9055ux3044}
+
+数値が等しくても、二つの読み方は \textbf{物理的・幾何学的意味が異なる}：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+読み方
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+意味
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+スケール依存性
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(V_4(1)\) & 単位 4 次元球の体積 & 「単位」という選択あり \\
+\(A_{S^3}(R)/(4R^3)\) & 4 次元球境界の測度を \(R^3\) で正規化した核 &
+\textbf{R に依らない}（任意の R で同値） \\
+\end{longtable}
+}
+
+第二の読み方は、特定の R を指定しない。任意の R に対して同じ値
+\(\pi^2/2\)
+を与える。これは\textbf{スケール不変な幾何学的核}としての性質を持つ。
+
+\subsubsection{2.3
+本稿が提案する読み方}\label{ux672cux7a3fux304cux63d0ux6848ux3059ux308bux8aadux307fux65b9}
+
+本稿は、論文 7 の式 (1.1) における \(\pi^2/2\) を、
+
+\begin{quote}
+\textbf{「単位 4 次元球の体積」ではなく「4 次元球境界 \(S^3\) の測度を
+\(R^3\) 正規化した核」と読むことが可能である}
+\end{quote}
+
+という\textbf{ひとつの解釈}として提示する。
+
+ただし注意すべきこと：
+
+\begin{itemize}
+\tightlist
+\item
+  これは「より正しい」解釈ではない（数値が同じである以上、どちらが正解かは数学的には決められない）
+\item
+  単に「\(\pi^2/2\) が単位を恣意的に選ぶことなく、R
+  に依らないスケール不変な量として現れる」という観察を提供する
+\item
+  この読み方で論文 7 の構造を再解釈すると、§3
+  以下に続く展開が自然に得られる
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{§3 \(G(R)\)
+の漸近展開}{§3 G(R) の漸近展開}}\label{gr-ux306eux6f38ux8fd1ux5c55ux958b}
+
+論文 7 の構造をこの解釈の枠組みで分析するため、4
+次元球と超立方体格子の幾何学的不整合を定量化する。
+
+\subsubsection{3.1
+体積欠損の定義}\label{ux4f53ux7a4dux6b20ux640dux306eux5b9aux7fa9}
+
+4 次元 Euclidean 整数格子 \(\mathbb{Z}^4\)
+上に、各格子点を中心とする辺長 1 の単位超立方体セルを配置する。半径
+\(R\) の 4 次元球 \(B_R\) に完全内包されるセル数を
+\(N_{\text{full}}(R)\) とする。
+
+体積欠損 \(G(R)\) を次のように定義する：
+
+\[G(R) := V_4(R) - N_{\text{full}}(R) = \frac{\pi^2}{2}R^4 - N_{\text{full}}(R). \tag{3.1}\]
+
+これは「球体積から完全内包セル体積を引いた残量」であり、球面付近で部分的に切られるセルの寄与に対応する。
+
+\subsubsection{3.2
+超立方体支持関数}\label{ux8d85ux7acbux65b9ux4f53ux652fux6301ux95a2ux6570}
+
+球面上の単位法線 \(u = (u_1, u_2, u_3, u_4) \in S^3\)
+に対する単位超立方体の外向き支持関数を
+
+\[\tau(u) = \frac{1}{2}\sum_{i=1}^{4} |u_i| \tag{3.2}\]
+
+と定義する。これは方向 \(u\) に対する超立方体の「外向き突出量」を表す。
+
+\subsubsection{3.3 球面積分}\label{ux7403ux9762ux7a4dux5206}
+
+漸近展開の係数を計算するため、\(S^3\) 上の二つの基本積分を導入する。
+
+\paragraph{\texorpdfstring{補題
+3.1：\(\int_{S^3} \tau(u) \, d\Omega = 16\pi/3\)}{補題 3.1：\textbackslash int\_\{S\^{}3\} \textbackslash tau(u) \textbackslash, d\textbackslash Omega = 16\textbackslash pi/3}}\label{ux88dcux984c-3.1int_s3-tauu-domega-16pi3}
+
+\textbf{証明}：\(\tau(u) = (1/2)\sum_{i=1}^4 |u_i|\) の対称性から、
+
+\[\int_{S^3} \tau(u) \, d\Omega = 2 \int_{S^3} |u_1| \, d\Omega.\]
+
+\(S^3\) を \(u_1 = \cos\theta\)、\(\theta \in [0, \pi]\)
+で球座標化する。\(S^3\) の体積要素は
+\(\sin^2\theta \, d\theta \, d\Omega_{S^2}\) であり、\(S^2\) の表面積は
+\(4\pi\)。よって
+
+\[\int_{S^3} |u_1| \, d\Omega = 4\pi \int_0^\pi |\cos\theta| \sin^2\theta \, d\theta = 8\pi \int_0^{\pi/2} \cos\theta \sin^2\theta \, d\theta = \frac{8\pi}{3}.\]
+
+したがって \(\int_{S^3} \tau \, d\Omega = 2 \cdot 8\pi/3 = 16\pi/3\)。
+\(\square\)
+
+\paragraph{\texorpdfstring{補題
+3.2：\(\int_{S^3} \tau(u)^2 \, d\Omega = \pi^2/2 + 3\pi\)}{補題 3.2：\textbackslash int\_\{S\^{}3\} \textbackslash tau(u)\^{}2 \textbackslash, d\textbackslash Omega = \textbackslash pi\^{}2/2 + 3\textbackslash pi}}\label{ux88dcux984c-3.2int_s3-tauu2-domega-pi22-3pi}
+
+\textbf{証明}：\(\tau^2 = (1/4)(\sum |u_i|)^2 = (1/4)[\sum u_i^2 + 2\sum_{i<j} |u_i||u_j|]\)。
+
+第一項：\(\sum_{i=1}^4 u_i^2 = 1\)（単位球面の定義）。\(S^3\) の表面積は
+\(2\pi^2\) なので、
+
+\[\int_{S^3} \sum_i u_i^2 \, d\Omega = 2\pi^2.\]
+
+第二項：対称性から、すべての \(i \neq j\) ペア（6 通り）の
+\(\int |u_i||u_j| \, d\Omega\) は等しい。\(S^3\) を
+\(u_1 = \cos\theta_1\)、\(u_2 = \sin\theta_1 \cos\theta_2\)、\(u_3 = \sin\theta_1 \sin\theta_2 \cos\theta_3\)、\(u_4 = \sin\theta_1 \sin\theta_2 \sin\theta_3\)
+でパラメータ化（体積要素
+\(\sin^2\theta_1 \sin\theta_2 \, d\theta_1 d\theta_2 d\theta_3\)）すると、
+
+\[\int_{S^3} |u_1||u_2| \, d\Omega = 2\pi \cdot \int_0^\pi |\cos\theta_1| \sin^3\theta_1 \, d\theta_1 \cdot \int_0^\pi |\cos\theta_2| \sin\theta_2 \, d\theta_2.\]
+
+\(\int_0^\pi |\cos\theta_1| \sin^3\theta_1 \, d\theta_1 = 2 \int_0^{\pi/2} \cos\theta_1 \sin^3\theta_1 \, d\theta_1 = 1/2\)。
+
+\(\int_0^\pi |\cos\theta_2| \sin\theta_2 \, d\theta_2 = 2 \int_0^{\pi/2} \cos\theta_2 \sin\theta_2 \, d\theta_2 = 1\)。
+
+よって
+\(\int_{S^3} |u_1||u_2| \, d\Omega = 2\pi \cdot 1/2 \cdot 1 = \pi\)。
+
+したがって \(\sum_{i<j} \int |u_i||u_j| \, d\Omega = 6\pi\)、
+
+\[\int_{S^3} \tau^2 \, d\Omega = \frac{1}{4}[2\pi^2 + 2 \cdot 6\pi] = \frac{\pi^2}{2} + 3\pi. \quad \square\]
+
+\subsubsection{\texorpdfstring{3.4 \(G(R)\)
+の漸近展開}{3.4 G(R) の漸近展開}}\label{gr-ux306eux6f38ux8fd1ux5c55ux958b-1}
+
+球面 \(\partial B_R\) 上の方向 \(u\) で、超立方体セルが球面から内向きに
+\(\tau(u)\) だけ削られる近似を採る。これにより半径 \(R\) が方向 \(u\)
+で実効的に \(R - \tau(u)\) となる。
+
+\[G(R) \approx \frac{1}{4}\int_{S^3}\left[R^4 - (R - \tau(u))^4\right] d\Omega. \tag{3.3}\]
+
+ここで係数 \(1/4\) は \(V_4(R) = \pi^2 R^4/2\) と
+\(A_{S^3}(R) = 2\pi^2 R^3\)
+の関係から導かれる正規化（\(dV/dR = A_{S^3}/4 \cdot\) 球面平均）。
+
+二項展開：
+
+\[R^4 - (R - \tau)^4 = 4R^3 \tau - 6R^2 \tau^2 + 4R \tau^3 - \tau^4.\]
+
+\(\int_{S^3}\) を取り \(1/4\) を乗じて：
+
+\[G(R) = R^3 \int_{S^3}\tau \, d\Omega - \frac{3}{2}R^2 \int_{S^3}\tau^2 \, d\Omega + R \int_{S^3}\tau^3 \, d\Omega - \frac{1}{4}\int_{S^3}\tau^4 \, d\Omega.\]
+
+補題 3.1 と 3.2 を代入して：
+
+\[\boxed{G(R) = \frac{16\pi}{3}R^3 - \left(\frac{3\pi^2}{4} + \frac{9\pi}{2}\right)R^2 + O(R).} \tag{3.4}\]
+
+\subsubsection{3.5 主項の意味}\label{ux4e3bux9805ux306eux610fux5473}
+
+第一項 \((16\pi/3)R^3\) は、4 次元球境界 \(S^3\) の表面積 \(2\pi^2 R^3\)
+に対し、超立方体の平均境界厚みを掛けた量である。これは「連続球の境界層の主寄与」として標準的な解釈を持つ。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§4
+第二項の符号についての観察}\label{ux7b2cux4e8cux9805ux306eux7b26ux53f7ux306bux3064ux3044ux3066ux306eux89b3ux5bdf}
+
+\subsubsection{4.1 符号の解析}\label{ux7b26ux53f7ux306eux89e3ux6790}
+
+(3.4) の第二項の係数は、
+
+\[-\left(\frac{3\pi^2}{4} + \frac{9\pi}{2}\right) \approx -7.402 - 14.137 = -21.539. \tag{4.1}\]
+
+これは負の値である。一般に、\(\int_{S^3}\tau^2 \, d\Omega > 0\)
+であり、\(-3/2\)
+の係数が前にかかるため、\textbf{この項は本稿の解釈の枠組みでは必然的に負となる}。
+
+\subsubsection{4.2 解釈}\label{ux89e3ux91c8}
+
+「球境界が超立方体構造で内側から削られる」という近似モデルを採用した場合、
+
+\begin{itemize}
+\tightlist
+\item
+  第一項（\(R^3\)）：連続球境界の主寄与
+\item
+  第二項（\(R^2\)）：境界の「削れ込み」の二次効果
+\end{itemize}
+
+この第二項の負号は、\textbf{この近似モデルの下で}、連続球近似が体積欠損を主項のみで見積もると過大評価することを意味する。
+
+ただし注意：
+
+\begin{itemize}
+\tightlist
+\item
+  これは「球と超立方体の不整合の本質的な性質」と読みうる
+\item
+  しかし「論文 7 の \(\pi^2/2\)
+  がこの解釈の下でしか説明できない」と主張するものではない
+\item
+  別の近似モデルや別の幾何学的構成からも、同様の漸近展開が得られる可能性は排除しない
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§5 数値検証}\label{ux6570ux5024ux691cux8a3c}
+
+\subsubsection{5.1
+数値実験の設定}\label{ux6570ux5024ux5b9fux9a13ux306eux8a2dux5b9a}
+
+整数 \(R \in \{50, 100, 200, 300\}\) について、以下を計算する：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(N_{\text{full}}(R)\)：\(\sum_{i=1}^4 (n_i + \epsilon_i)^2 \le R^2 \, (\forall \epsilon_i \in \{\pm 1/2\})\)
+  を満たす整数中心 \(n \in \mathbb{Z}^4\) の個数。
+\item
+  \(V_4(R) = \pi^2 R^4/2\)。
+\item
+  \(G(R) = V_4(R) - N_{\text{full}}(R)\)。
+\item
+  \(G(R)/R^3\)（主項に対する正規化値）。
+\item
+  \([G(R) - (16\pi/3)R^3]/R^2\)（主項を除いた後の二次項係数）。
+\end{enumerate}
+
+実装は Python（numpy + integer enumeration）で行う。コードは付録 A
+に示す。
+
+\subsubsection{5.2 結果}\label{ux7d50ux679c}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+\(R\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+充填率 \(N_{\text{full}}/V_4\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(G(R)/R^3\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\([G(R) - (16\pi/3)R^3]/R^2\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+50 & 0.9339 & 16.3130 & \(-22.11\) \\
+100 & 0.9665 & 16.5529 & \(-20.22\) \\
+200 & 0.9831 & 16.6595 & \(-19.13\) \\
+300 & 0.9887 & 16.6838 & \(-21.42\) \\
+\end{longtable}
+}
+
+理論値： - \(G(R)/R^3 \to 16\pi/3 \approx 16.755\) - 第二項係数
+\(\to -(3\pi^2/4 + 9\pi/2) \approx -21.539\)
+
+\subsubsection{5.3 観察}\label{ux89b3ux5bdf}
+
+\begin{itemize}
+\tightlist
+\item
+  \(G(R)/R^3\) は \(R\) の増大とともに \(16\pi/3\) に漸近する。
+\item
+  第二項係数は \(-20\) から \(-22\) の範囲で揺らぎつつ、理論値
+  \(-21.539\) の周辺に分布する。
+\item
+  揺らぎの幅は離散格子の有限サイズ効果と整合する。
+\end{itemize}
+
+数値実験は (3.4)
+の漸近展開と整合する。これは観察事実である。ただし整合性は「この解釈が正しい」ことを示すのではなく、「この解釈が数値的に矛盾を含まない」ことを示すに留まる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§6
+観測残差との関係}\label{ux89b3ux6e2cux6b8bux5deeux3068ux306eux95a2ux4fc2}
+
+\subsubsection{6.1
+観測値からの逆算}\label{ux89b3ux6e2cux5024ux304bux3089ux306eux9006ux7b97}
+
+論文 7 の式 (1.1) に補正項 \(\delta\) を導入する：
+
+\[\alpha^{-1} = 137 + \left(\frac{\pi^2}{2} - \delta\right)\alpha. \tag{6.1}\]
+
+CODATA 2022 値 \(\alpha^{-1} = 137.035999177\) から逆算すると、
+
+\[\delta = \frac{\pi^2}{2} - \alpha^{-1}(\alpha^{-1} - 137) \approx 0.001619. \tag{6.2}\]
+
+\subsubsection{6.2
+桁・オーダーの整合性}\label{ux6841ux30aaux30fcux30c0ux30fcux306eux6574ux5408ux6027}
+
+(3.4) の第二項は \(R^2\) オーダーの幾何学的補正である。一方 (6.2) の
+\(\delta\) は次元なし係数で、α 方程式の係数項に直接乗る量である。
+
+両者を直接対応させるには、\(R^2\) 欠損項を「α
+方程式の係数項」へ変換する正規化規則が必要となる（§7
+で議論）。この規則は本稿では定式化していない。
+
+しかし以下の観察は記録できる：
+
+\begin{itemize}
+\tightlist
+\item
+  (3.4) の第二項の係数 \(-21.539\) は \textbf{負} である。
+\item
+  (6.2) の \(\delta\) も \(\pi^2/2\) から \textbf{減算} される量である。
+\item
+  両者の符号は整合する。
+\item
+  桁としては、\(\delta/(\pi^2/2) \approx 3.3 \times 10^{-4}\)
+  であり、これは超立方体格子の離散補正としては自然なオーダー範囲（\(10^{-3}\)
+  程度）に収まる。
+\end{itemize}
+
+\subsubsection{6.3
+限定的な主張}\label{ux9650ux5b9aux7684ux306aux4e3bux5f35}
+
+本稿は以下を主張する：
+
+\begin{itemize}
+\tightlist
+\item
+  \(\delta\) の \textbf{符号と桁} が、§3〜§4
+  の幾何学的構造と矛盾しない。
+\end{itemize}
+
+本稿は以下を主張しない：
+
+\begin{itemize}
+\tightlist
+\item
+  \(\delta = 0.001619\) という具体値が幾何学から導出されたこと。
+\item
+  完全な数値導出。
+\item
+  この解釈以外の枠組みで \(\delta\) が説明できないこと。
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§7 本稿の限界と Open
+Question}\label{ux672cux7a3fux306eux9650ux754cux3068-open-question}
+
+\subsubsection{7.1 未定式化}\label{ux672aux5b9aux5f0fux5316}
+
+本稿に明確なギャップがある：
+
+\textbf{ギャップ G1}：\(R^2\) 欠損項を α 方程式の係数項 \(\delta\)
+へ変換する正規化規則が定式化されていない。
+
+(3.4) の第二項は \(R^2\) オーダーの体積補正であり、§6 の \(\delta\) は α
+方程式の次元なし係数である。両者を結びつけるには、
+
+\begin{itemize}
+\tightlist
+\item
+  \(R = 3\) という特定スケール（論文 7 で 137
+  が出るスケール）での体積補正と
+\item
+  α 方程式の自己整合性条件
+\end{itemize}
+
+の間の写像規則が必要となる。本稿はこの規則を提示していない。
+
+\subsubsection{7.2 高次補正}\label{ux9ad8ux6b21ux88dcux6b63}
+
+(3.4)
+の第三項以降（\(O(R)\)、\(O(1)\)）は本稿では計算していない。完全な漸近展開は、
+
+\[G(R) = \frac{16\pi}{3}R^3 - \left(\frac{3\pi^2}{4} + \frac{9\pi}{2}\right)R^2 + c_1 R + c_0 + o(1)\]
+
+の形を取り、\(c_1, c_0\)
+も解析的に計算可能であるが、これらの寄与の評価は本稿の範囲を超える。
+
+\subsubsection{7.3
+他の解釈の可能性}\label{ux4ed6ux306eux89e3ux91c8ux306eux53efux80fdux6027}
+
+本稿は \textbf{ひとつの幾何学的解釈}
+のみを提示する。同じ数値が別の幾何学的構造（例：4 次元正軸体充填、4
+次元根系格子など）からも自然に出る可能性は排除されない。
+
+特に、論文 8 {[}BH8{]} で示された Wilson
+標準格子ゲージ理論との構造的対応の枠組みでも、同様の補正項が別の経路から得られる可能性がある。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§8 論文 7
+への含意}\label{ux8ad6ux6587-7-ux3078ux306eux542bux610f}
+
+\subsubsection{8.1
+補強としての位置づけ}\label{ux88dcux5f37ux3068ux3057ux3066ux306eux4f4dux7f6eux3065ux3051}
+
+本稿の貢献は限定的である。本稿は論文 7 の：
+
+\begin{itemize}
+\tightlist
+\item
+  8.7 ppb 精度の数値的事実を \textbf{増減させない}
+\item
+  \(\pi^2/2\) という係数の選択を
+  \textbf{正当化することはできない}（同じ数値の別の読み方を提示するだけ）
+\item
+  残差問題を \textbf{解決しない}（\(\delta\) の完全導出を提供しない）
+\end{itemize}
+
+しかし以下は提供する：
+
+\begin{itemize}
+\tightlist
+\item
+  \(\pi^2/2\)
+  がスケール不変な境界測度核として読みうる、という幾何学的観点
+\item
+  その観点の下で、残差の符号と桁が解釈可能であるという観察
+\item
+  論文 7 への疑念（§1.3 の疑念 A・B）への部分的応答
+\end{itemize}
+
+\subsubsection{8.2
+防御線への影響}\label{ux9632ux5fa1ux7ddaux3078ux306eux5f71ux97ff}
+
+本稿は論文 7 の主張に \textbf{依存しない}：
+
+\begin{itemize}
+\tightlist
+\item
+  論文 7 の 8.7 ppb 観察は、本稿の解釈の採否によらず変わらない
+\item
+  本稿が部分的に否認されても、論文 7 は影響を受けない
+\item
+  本稿は補強の試みであり、論文 7 の論理的基盤を変更するものではない
+\end{itemize}
+
+\subsubsection{8.3
+後続研究への問題提起}\label{ux5f8cux7d9aux7814ux7a76ux3078ux306eux554fux984cux63d0ux8d77}
+
+本稿が提起する問題：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ギャップ G1（§7.1）の解決：\(R^2\) 欠損項を α
+  方程式へ変換する規則の定式化
+\item
+  高次項（\(c_1, c_0\)）の解析的計算
+\item
+  他の幾何学的構造（4 次元正軸体、根系格子など）からの同型な補正項導出
+\item
+  Wilson 構造的対応 {[}BH8{]} の枠組みでの再解釈
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§9 結語}\label{ux7d50ux8a9e}
+
+本稿は、論文 7 {[}BH7{]} の α 恒等式
+\(\alpha^{-1} = 137 + (\pi^2/2)\alpha\) に現れる \(\pi^2/2\)
+について、ひとつの幾何学的解釈を提供した：
+
+\begin{quote}
+\textbf{\(\pi^2/2\) を 4 次元球境界 \(S^3\) の測度の正規化核
+\(A_{S^3}(R)/(4R^3)\) として読むと、論文 7
+の構造はスケール不変な解釈を許容する。}
+\end{quote}
+
+この解釈の下で、4 次元球の超立方体被覆の体積欠損 \(G(R)\) は
+
+\[G(R) = \frac{16\pi}{3}R^3 - \left(\frac{3\pi^2}{4} + \frac{9\pi}{2}\right)R^2 + O(R)\]
+
+と展開され、第二項の係数は本稿の近似モデルの下で必然的に負となる。これは観測残差から逆算される
+\(\delta \approx 0.001619\) の符号と桁に整合する。
+
+しかし本稿は：
+
+\begin{itemize}
+\tightlist
+\item
+  証明論文ではなく観察論文である
+\item
+  \(\delta\) の完全導出を提供しない
+\item
+  他の解釈の可能性を排除しない
+\item
+  論文 7 の主張を変更しない
+\end{itemize}
+
+本稿の貢献は、論文 7
+の構造に対するひとつの幾何学的観点の提示と、その観点が数値的に矛盾を含まないことの観察に限定される。
+
+100 年後の研究者が、論文 7
+の構造に対してより完全な幾何学的説明を提供したとき、本稿はその過渡的観察として参照されうる。それで十分である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{付録
+A：数値実験の実装}\label{ux4ed8ux9332-aux6570ux5024ux5b9fux9a13ux306eux5b9fux88c5}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+
+\KeywordTok{def}\NormalTok{ count\_full\_cells\_4d(R):}
+    \CommentTok{"""半径 R の 4 次元球に完全内包される単位超立方体セル数を数える"""}
+\NormalTok{    R\_sq }\OperatorTok{=}\NormalTok{ R }\OperatorTok{*}\NormalTok{ R}
+\NormalTok{    count }\OperatorTok{=} \DecValTok{0}
+\NormalTok{    R\_int }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(R) }\OperatorTok{+} \DecValTok{1}
+    \ControlFlowTok{for}\NormalTok{ n1 }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\OperatorTok{{-}}\NormalTok{R\_int, R\_int }\OperatorTok{+} \DecValTok{1}\NormalTok{):}
+        \ControlFlowTok{for}\NormalTok{ n2 }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\OperatorTok{{-}}\NormalTok{R\_int, R\_int }\OperatorTok{+} \DecValTok{1}\NormalTok{):}
+            \ControlFlowTok{for}\NormalTok{ n3 }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\OperatorTok{{-}}\NormalTok{R\_int, R\_int }\OperatorTok{+} \DecValTok{1}\NormalTok{):}
+                \ControlFlowTok{for}\NormalTok{ n4 }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\OperatorTok{{-}}\NormalTok{R\_int, R\_int }\OperatorTok{+} \DecValTok{1}\NormalTok{):}
+                    \CommentTok{\# 8 頂点のうち最も遠いものが球内にあるか}
+\NormalTok{                    max\_d\_sq }\OperatorTok{=} \DecValTok{0}
+                    \ControlFlowTok{for}\NormalTok{ s1 }\KeywordTok{in}\NormalTok{ [}\OperatorTok{{-}}\FloatTok{0.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{]:}
+                        \ControlFlowTok{for}\NormalTok{ s2 }\KeywordTok{in}\NormalTok{ [}\OperatorTok{{-}}\FloatTok{0.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{]:}
+                            \ControlFlowTok{for}\NormalTok{ s3 }\KeywordTok{in}\NormalTok{ [}\OperatorTok{{-}}\FloatTok{0.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{]:}
+                                \ControlFlowTok{for}\NormalTok{ s4 }\KeywordTok{in}\NormalTok{ [}\OperatorTok{{-}}\FloatTok{0.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{]:}
+\NormalTok{                                    d\_sq }\OperatorTok{=}\NormalTok{ (n1 }\OperatorTok{+}\NormalTok{ s1)}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\NormalTok{ (n2 }\OperatorTok{+}\NormalTok{ s2)}\OperatorTok{**}\DecValTok{2} \OperatorTok{+} \OperatorTok{\textbackslash{}}
+\NormalTok{                                           (n3 }\OperatorTok{+}\NormalTok{ s3)}\OperatorTok{**}\DecValTok{2} \OperatorTok{+}\NormalTok{ (n4 }\OperatorTok{+}\NormalTok{ s4)}\OperatorTok{**}\DecValTok{2}
+                                    \ControlFlowTok{if}\NormalTok{ d\_sq }\OperatorTok{\textgreater{}}\NormalTok{ max\_d\_sq:}
+\NormalTok{                                        max\_d\_sq }\OperatorTok{=}\NormalTok{ d\_sq}
+                    \ControlFlowTok{if}\NormalTok{ max\_d\_sq }\OperatorTok{\textless{}=}\NormalTok{ R\_sq:}
+\NormalTok{                        count }\OperatorTok{+=} \DecValTok{1}
+    \ControlFlowTok{return}\NormalTok{ count}
+
+\KeywordTok{def}\NormalTok{ G\_R(R):}
+    \CommentTok{"""体積欠損 G(R) を計算"""}
+\NormalTok{    V\_4 }\OperatorTok{=}\NormalTok{ (np.pi}\OperatorTok{**}\DecValTok{2} \OperatorTok{/} \DecValTok{2}\NormalTok{) }\OperatorTok{*}\NormalTok{ R}\OperatorTok{**}\DecValTok{4}
+\NormalTok{    N\_full }\OperatorTok{=}\NormalTok{ count\_full\_cells\_4d(R)}
+    \ControlFlowTok{return}\NormalTok{ V\_4 }\OperatorTok{{-}}\NormalTok{ N\_full}
+
+\CommentTok{\# 実行例}
+\ControlFlowTok{for}\NormalTok{ R }\KeywordTok{in}\NormalTok{ [}\DecValTok{50}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{300}\NormalTok{]:}
+\NormalTok{    g }\OperatorTok{=}\NormalTok{ G\_R(R)}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"R=}\SpecialCharTok{\{}\NormalTok{R}\SpecialCharTok{\}}\SpecialStringTok{: G(R)/R\^{}3 = }\SpecialCharTok{\{}\NormalTok{g}\OperatorTok{/}\NormalTok{R}\OperatorTok{**}\DecValTok{3}\SpecialCharTok{:.4f\}}\SpecialStringTok{, "}
+          \SpecialStringTok{f"[G(R) {-} 16π/3·R³]/R² = }\SpecialCharTok{\{}\NormalTok{(g }\OperatorTok{{-}}\NormalTok{ (}\DecValTok{16}\OperatorTok{*}\NormalTok{np.pi}\OperatorTok{/}\DecValTok{3}\NormalTok{)}\OperatorTok{*}\NormalTok{R}\OperatorTok{**}\DecValTok{3}\NormalTok{)}\OperatorTok{/}\NormalTok{R}\OperatorTok{**}\DecValTok{2}\SpecialCharTok{:.2f\}}\SpecialStringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+注：上記は概念的実装。\(R = 300\) では
+\(4 \cdot 600^4 \approx 5 \times 10^{11}\)
+ループとなり実用的でない。実装は球内側の検査領域を最適化するか、Monte
+Carlo 推定を用いる必要がある。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{付録
+B：球面積分の詳細}\label{ux4ed8ux9332-bux7403ux9762ux7a4dux5206ux306eux8a73ux7d30}
+
+§3 の補題で用いた球面積分の詳細導出は、本文で完結している。再掲：
+
+\subsubsection{\texorpdfstring{B.1
+\(\int_{S^3} |u_1| \, d\Omega = 8\pi/3\)}{B.1 \textbackslash int\_\{S\^{}3\} \textbar u\_1\textbar{} \textbackslash, d\textbackslash Omega = 8\textbackslash pi/3}}\label{b.1-int_s3-u_1-domega-8pi3}
+
+\(S^3\) の体積要素を \(u_1 = \cos\theta_1\) パラメータで
+\(\sin^2\theta_1 \cdot d\theta_1 \cdot 4\pi\)（\(S^2\)
+表面積）と書ける。
+
+\[\int_{S^3} |u_1| \, d\Omega = 4\pi \int_0^\pi |\cos\theta| \sin^2\theta \, d\theta = 8\pi \int_0^{\pi/2} \cos\theta \sin^2\theta \, d\theta = \frac{8\pi}{3}.\]
+
+\subsubsection{\texorpdfstring{B.2
+\(\int_{S^3} |u_1 u_2| \, d\Omega = \pi\)}{B.2 \textbackslash int\_\{S\^{}3\} \textbar u\_1 u\_2\textbar{} \textbackslash, d\textbackslash Omega = \textbackslash pi}}\label{b.2-int_s3-u_1-u_2-domega-pi}
+
+\(u_1 = \cos\theta_1\)、\(u_2 = \sin\theta_1 \cos\theta_2\) として、
+
+\[\int |u_1 u_2| \, d\Omega = 2\pi \int_0^\pi |\cos\theta_1| \sin^3\theta_1 \, d\theta_1 \cdot \int_0^\pi |\cos\theta_2| \sin\theta_2 \, d\theta_2 = 2\pi \cdot \frac{1}{2} \cdot 1 = \pi.\]
+
+\subsubsection{\texorpdfstring{B.3
+\(\int_{S^3} u_i^2 \, d\Omega = \pi^2/2\)}{B.3 \textbackslash int\_\{S\^{}3\} u\_i\^{}2 \textbackslash, d\textbackslash Omega = \textbackslash pi\^{}2/2}}\label{b.3-int_s3-u_i2-domega-pi22}
+
+対称性から
+\(\int u_i^2 = (1/4) \int \sum_j u_j^2 = (1/4) \cdot \text{Vol}(S^3) = (1/4) \cdot 2\pi^2 = \pi^2/2\)。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参照文献}\label{ux53c2ux7167ux6587ux732e}
+
+\begin{itemize}
+\tightlist
+\item
+  {[}BH7{]} Kihara, N., \emph{A Geometric Identity for the
+  Fine-Structure Constant: From the 4D Unit Ball Volume and its
+  Cube-Packing Deficit}, Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.19869266}{10.5281/zenodo.19869266}
+  (2026).
+\item
+  {[}BH8{]} Kihara, N., \emph{Chain Complex Structure on the 4D
+  Hypercubic Lattice: Structural Correspondence between Kihara
+  Cube-Packing and Wilson Lattice Gauge Theory}, Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.19880467}{10.5281/zenodo.19880467}
+  (2026).
+\item
+  {[}Wilson74{]} Wilson, K. G., \emph{Confinement of quarks}, Phys.
+  Rev.~D 10, 2445 (1974).
+\item
+  {[}CODATA22{]} CODATA Recommended Values of the Fundamental Physical
+  Constants: 2022.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+著者：木原 範昭（Noriaki Kihara） WF System Co., Ltd.~/ ORCID:
+\href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020} 論文
+DOI（取得予定）：未取得 ライセンス：CC BY 4.0
+
+\end{document}
