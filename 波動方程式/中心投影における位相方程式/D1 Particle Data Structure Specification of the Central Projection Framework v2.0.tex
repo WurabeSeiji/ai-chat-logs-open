@@ -1,0 +1,1044 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{longtable,booktabs,array}
+\usepackage{hyperref}
+\usepackage[margin=25mm]{geometry}
+\setmainfont{Latin Modern Roman}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\newcounter{none}
+
+
+\begin{document}
+
+
+\section{D1 v2.0: Particle Data Structure Specification of the Central
+Projection Framework --- Frequency Interpretation and Dynamics
+Extension}\label{d1-v2.0-particle-data-structure-specification-of-the-central-projection-framework-frequency-interpretation-and-dynamics-extension}
+
+\textbf{Author}: Noriaki Kihara \textbf{Affiliation}: WF System Co.,
+Ltd. \textbf{ORCID}: 0009-0004-6753-4020 \textbf{Version}: v2.0
+\textbf{Date}: May 2026 \textbf{DOI}:
+\href{https://doi.org/10.5281/zenodo.19941250}{10.5281/zenodo.19941250}
+\textbf{Predecessor}: v1.0 (April 2026, unpublished)
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§0 Position of This Paper}\label{position-of-this-paper}
+
+This paper is a design specification, not a mathematical proof. It
+explicitly defines, as a typed-integer-arithmetic specification, the
+particle data structures that have been implicitly assumed in the
+preceding paper series {[}W1{]}--{[}W11{]}, {[}M1{]}--{[}M3{]},
+supplementary lectures {[}Sup1{]}--{[}Sup4{]}, and the thought
+experiment {[}TE\_Raxis{]}.
+
+\subsubsection{Major Revisions from
+v1.0}\label{major-revisions-from-v1.0}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Reinterpret σ.k\_xyzt as ``vibrational frequencies of each
+  axis''} rather than ``wave numbers / acceleration'' (§1.4)
+\item
+  \textbf{Add δV (phase displacement) and δδt (processing-period change)
+  to the Particle structure} (§5)
+\item
+  \textbf{Introduce the Mesh structure to separate longitudinal modes
+  (Higgs, gravitational waves) from Particles} (§7)
+\item
+  \textbf{Eliminate special status of t-axis, fully preserving 6-axis
+  symmetry} (§3, §6)
+\end{enumerate}
+
+The data type system (int256-based) and integer-arithmetic principles
+(no division, no square root, no trigonometric functions) remain
+unchanged from v1.0.
+
+\subsubsection{Claims of This Paper}\label{claims-of-this-paper}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The boundedness of the universe and the discreteness at the Planck
+  scale together permit all phase quantities to be represented as
+  256-bit signed integers (§1).
+\item
+  The \([L^{-1}]\) dimension of the xyzt axes is naturally interpreted
+  as ``vibrational frequency along each axis in phase space,'' fully
+  preserving 6-axis symmetry (§3).
+\item
+  The complete state of a particle can be described by 5 fields:
+  \texttt{SignVector} (identity label) + \texttt{OneDWave{[}κ{]}} (phase
+  state) + \texttt{δV} (phase displacement) + \texttt{δt,\ δδt}
+  (processing period and acceleration) (§5).
+\item
+  Longitudinal modes such as the Higgs should be represented not as
+  Particles but as vibrations of the \texttt{Mesh}, allowing unified
+  treatment of mass generation, gravitational waves, and cosmological
+  vibrations (§7).
+\item
+  All operations close under integer addition and multiplication,
+  requiring no division, square root, or trigonometric functions (§6).
+\end{enumerate}
+
+\subsubsection{Out of Scope}\label{out-of-scope}
+
+\begin{itemize}
+\tightlist
+\item
+  Dynamical formulation of operation rules (physical meaning of phase
+  evolution, concrete forms of interactions) --- deferred to a separate
+  paper (D2).
+\item
+  Numerical derivation of specific physical quantities.
+\item
+  Hardware implementation details.
+\item
+  Mathematical proofs of theorems.
+\end{itemize}
+
+\subsubsection{Referenced Papers}\label{referenced-papers}
+
+\begin{itemize}
+\tightlist
+\item
+  {[}W3{]} Structural Requirements for a Theory of Everything (DOI:
+  10.5281/zenodo.19601592)
+\item
+  {[}W8{]} Combinatorial Structure of the 6-Dimensional Hyperrectangle
+  (DOI: 10.5281/zenodo.19762134)
+\item
+  {[}W9{]} sine-Gordon Equation --- Foundation of Topological Solitons
+  (DOI: 10.5281/zenodo.19650966)
+\item
+  {[}W10{]} Four Modes of Shape-Invariant Waves (DOI:
+  10.5281/zenodo.19709798)
+\item
+  {[}W11{]} Interactions of Shape-Invariant Waves (DOI:
+  10.5281/zenodo.19763463)
+\item
+  {[}M1{]} Three-Layer Model of Central Projection: R--R₁--R₀ (DOI:
+  10.5281/zenodo.19691713)
+\item
+  {[}TE\_Raxis{]} Reexamination of the 6-Dimensional Sign Vector xyztRQ
+  (DOI: 10.5281/zenodo.19904714)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§1 int256 Boundedness and Dimensional
+Interpretation}\label{int256-boundedness-and-dimensional-interpretation}
+
+\subsubsection{§1.1 Basis for Boundedness Requirement (unchanged from
+v1.0)}\label{basis-for-boundedness-requirement-unchanged-from-v1.0}
+
+{[}W3{]} requires boundedness as a structural condition for any theory
+of everything. In the three-layer structure \(R\)--\(R_1\)--\(R_0\) of
+{[}M1{]}, the maximum curvature radius \(R_0\) is finite. Combined with
+discreteness at the Planck scale, this yields an upper bound on the bits
+needed to represent all phase quantities.
+
+\subsubsection{§1.2 Required Number of
+Bits}\label{required-number-of-bits}
+
+\textbf{Spatial axis}: From the observable universe diameter
+\(D \approx 1.892 \times 10^{27}\) m and Planck length
+\(l_P = 1.616 \times 10^{-35}\) m,
+
+\[n_{\text{space}} = D / l_P \approx 1.171 \times 10^{62}, \quad b_{\text{space}} = 207 \text{ bits}\]
+
+\textbf{Time axis}: From cosmic time \(T \approx 8.710 \times 10^{17}\)
+s and Planck time \(t_P = 5.391 \times 10^{-44}\) s,
+
+\[n_{\text{time}} = T / t_P \approx 1.616 \times 10^{61}, \quad b_{\text{time}} = 204 \text{ bits}\]
+
+\textbf{Conclusion}: 256-bit signed integers leave 14-digit margin in
+space and 15-digit margin in time.
+
+\subsubsection{§1.3 Natural Units and
+Dimensions}\label{natural-units-and-dimensions}
+
+Under \(c = 1\), \(G = 1\) (geometrized units; \(\hbar\) is not
+adopted),
+
+\[[L] = [T] = [M], \quad [L^{-1}] = [M^{-1}]\]
+
+\subsubsection{§1.4 Frequency Interpretation (Core Revision in
+v2.0)}\label{frequency-interpretation-core-revision-in-v2.0}
+
+In v1.0, the \([L^{-1}]\) dimension of the xyzt axes was interpreted
+ambiguously as ``wave number'' or ``acceleration.'' In v2.0, this is
+unified as \textbf{``vibrational frequency along each axis''} as the
+natural interpretation in phase space.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Quantity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Dimension
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+v1.0 Interpretation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{v2.0 Interpretation}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+σ.k\_x, k\_y, k\_z & \([L^{-1}]\) & spatial wave number / acceleration &
+\textbf{vibrational frequency of each spatial axis} \\
+σ.k\_t & \([L^{-1}]\) & temporal frequency & \textbf{vibrational
+frequency of t-axis} (equal to others) \\
+σ.R & \([L]=[M]\) & curvature radius & \textbf{scale quantity /
+corresponding period} (dual) \\
+σ.Q & \([1]\) & internal symmetry & internal symmetry (unchanged) \\
+δt & \([L]=[M]\) & proper time step & \textbf{processing step period}
+(not ``time'') \\
+δδt & \([L]=[M]\) & (not in v1.0) & \textbf{change in processing period}
+(acceleration effect) \\
+\end{longtable}
+}
+
+\subsubsection{§1.5 Advantages of the Frequency
+Interpretation}\label{advantages-of-the-frequency-interpretation}
+
+\textbf{(1) Complete preservation of 6-axis symmetry}: All four
+position-type axes (xyzt) carry independent vibrational modes; the
+t-axis is on equal footing with the others.
+
+\textbf{(2) Elimination of continuum-mechanical concepts}:
+``Acceleration'' is a continuum concept (second time derivative of
+position) that does not fit naturally into discrete integer arithmetic.
+``Vibrational frequency'' is the natural discrete quantity in phase
+space.
+
+\textbf{(3) Clear separation of acceleration effects}: Acceleration-like
+effects (gravitational fields, inertial frame influences) are
+represented by the change δδt of the processing period, structurally
+separated from the particle's intrinsic frequency σ.k.
+
+\textbf{(4) Frequency × period = phase}: \(\sigma.k \cdot \delta t\)
+becomes a dimensionless phase increment (\([L^{-1}] \cdot [L] = [1]\)),
+making the phase evolution rule type-consistent.
+
+\textbf{(5) Automatic inclusion of special relativity}: The dispersion
+relation
+\(\sigma.k_t^2 = \sigma.k_x^2 + \sigma.k_y^2 + \sigma.k_z^2 + m^2\) can
+be naturally written as integer relations among frequencies.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§2 Definition of Meta Types}\label{definition-of-meta-types}
+
+\subsubsection{§2.1 Scalar Types (unchanged from
+v1.0)}\label{scalar-types-unchanged-from-v1.0}
+
+\begin{verbatim}
+Type         Dimension  Range                     Use
+L256         [L]=[M]    |v| ≤ 2^255 - 1          length / time / mass / period
+Linv256      [L⁻¹]      |v| ≤ 2^255 - 1          frequency / inverse scale
+Scalar256    [1]        |v| ≤ 2^255 - 1          dimensionless
+FullPhase    [1]        0 ≤ v ≤ P                0–720°
+CyclePhase   [1]        0 ≤ v ≤ P/2              0–360° (position phase)
+DeltaPhase   [1]        -P/2 ≤ v ≤ P/2           ±360° (phase displacement)
+SpinPhase    [1]        v ∈ {0, P/4, P/2, P}     {0, 180, 360, 720}°
+\end{verbatim}
+
+Phase constant \(P = \lfloor (2^{255}-1)/720 \rfloor \times 720\).
+
+\subsubsection{§2.2 Axis Component Types (renamed and reinterpreted in
+v2.0)}\label{axis-component-types-renamed-and-reinterpreted-in-v2.0}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Base
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Dimension
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Physical Meaning (v2.0)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{SpatialFreq} \textless: Linv256 & int256 & \([L^{-1}]\) &
+vibrational frequency of x, y, z axes \\
+\texttt{TemporalFreq} \textless: Linv256 & int256 & \([L^{-1}]\) &
+vibrational frequency of t-axis (equal to others) \\
+\texttt{CurvatureR} \textless: L256 & int256 & \([L]\) & scale / period
+(signed square number) \\
+\texttt{ColorQ} \textless: Scalar256 & int256 & \([1]\) & internal
+symmetry label (finite group) \\
+\texttt{DeltaT} \textless: L256 & int256 & \([L]\) & processing step
+period \\
+\end{longtable}
+}
+
+\textbf{Renaming from v1.0}: \texttt{SpatialK} → \texttt{SpatialFreq},
+\texttt{TemporalK} → \texttt{TemporalFreq}. The type system itself is
+unchanged; only the interpretation is clarified.
+
+\subsubsection{§2.3 Operation Rules (unchanged from
+v1.0)}\label{operation-rules-unchanged-from-v1.0}
+
+\textbf{Addition}: Only between same types (CyclePhase + DeltaPhase =
+CyclePhase, etc.).
+
+\textbf{Multiplication}: - \texttt{L256\ ×\ L256\ →\ L2\_256} \([L^2]\)
+- \texttt{Linv256\ ×\ Linv256\ →\ Linv2\_256} \([L^{-2}]\) -
+\texttt{Linv256\ ×\ L256\ →\ Scalar256} \([1]\) (dimensionless)
+
+\textbf{Division}: Not used.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§3 Definition of SignVector (Frequency Interpretation
+Version)}\label{definition-of-signvector-frequency-interpretation-version}
+
+\subsubsection{§3.1 Structure}\label{structure}
+
+\begin{verbatim}
+SignVector = (
+    x : SpatialFreq,    -- frequency of x-axis vibration [L⁻¹]
+    y : SpatialFreq,    -- frequency of y-axis vibration
+    z : SpatialFreq,    -- frequency of z-axis vibration
+    t : TemporalFreq,   -- frequency of t-axis vibration [L⁻¹] (equal to others)
+    R : CurvatureR,     -- scale quantity / period [L]
+    Q : ColorQ,         -- internal symmetry label [1]
+)
+\end{verbatim}
+
+\subsubsection{§3.2 Physical Meaning}\label{physical-meaning}
+
+Each σ component represents either a ``vibrational frequency along the
+corresponding axis'' or a ``scale quantity'':
+
+\begin{itemize}
+\tightlist
+\item
+  σ.k\_axis = 0: the axis does not vibrate (no structure in that
+  direction)
+\item
+  σ.k\_axis ≠ 0: the axis vibrates at frequency
+  \textbar k\_axis\textbar{}
+\item
+  sign(k\_axis): direction of phase rotation (+ for clockwise, − for
+  counterclockwise)
+\item
+  \textbar k\_axis\textbar: magnitude of vibrational frequency (discrete
+  integer value)
+\end{itemize}
+
+\subsubsection{§3.3 Invariants}\label{invariants}
+
+The values of SignVector change in interaction events, but specific
+combinations define stable modes:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\kappa_s = |\{i \in \{x,y,z\} : k_i \neq 0\}|\) --- number of
+  non-zero spatial axes
+\item
+  \(\kappa_t = (1 \text{ if } k_t \neq 0 \text{ else } 0)\) --- non-zero
+  indicator for t-axis
+\item
+  \(\kappa = \kappa_s + \kappa_t \in \{0, 1, 2\}\) --- {[}W10{]}
+  Proposition 2.1: \(\kappa \geq 3\) is unstable
+\end{itemize}
+
+\subsubsection{§3.4 Dispersion Relation}\label{dispersion-relation}
+
+The mass-shell condition is directly expressed as an integer relation
+among frequencies:
+
+\[\sigma.k_t^2 = \sigma.k_x^2 + \sigma.k_y^2 + \sigma.k_z^2 + m^2\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(m = 0\) (photon, gluon): \(k_t^2 = k_x^2 + k_y^2 + k_z^2\)
+\item
+  \(m \neq 0\) (massive particle): the square root of the difference
+  corresponds to mass
+\end{itemize}
+
+This automatically incorporates special relativity into the framework.
+
+\subsubsection{§3.5 Correspondence with {[}W8{]} Table A (continued from
+v1.0)}\label{correspondence-with-w8-table-a-continued-from-v1.0}
+
+The sign patterns \(\{+, -, 0\}^6\) in {[}W8{]} Table A correspond to
+the signs of SignVector. Integer values (axis scale values) correspond
+to \(v_i\) in {[}Mass Structure{]} §1.
+
+Representative particles:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Particle
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Set \((x,y,z,t,R,Q)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\kappa\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Classification
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Photon \(\gamma\) & \((0,0,0,0,+,0)\) & 0 & gauge boson (free, spherical
+wave) \\
+Gluon \(g\) & \((0,0,0,0,0,Q_i \to Q_j)\) & 0 & gauge boson \\
+Higgs \(H\) & \((0,0,+,0,0,0)\) & 1 & scalar (longitudinal
+interpretation in §7) \\
+\(W^+\) & \((+,0,0,0,+,0)\) & 1 & gauge boson \\
+\(Z^0\) & \((0,+,0,0,+,0)\) & 1 & gauge boson \\
+Graviton & \((0,0,0,\pm,\pm,0)\) & 1 & tensor boson \\
+Electron \(e^-\) & \((+,0,0,+,0,0)\) & 2 & fermion \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§4 Definition of OneDWave}\label{definition-of-onedwave}
+
+\subsubsection{§4.1 Structure (unchanged from
+v1.0)}\label{structure-unchanged-from-v1.0}
+
+\begin{verbatim}
+OneDWave = (
+    θ₀ : CyclePhase,   -- position phase [1]   (S1 §2.1, W9 §8.2)
+    A  : Scalar256,     -- amplitude [1]        (S1 §2.1, W9 §8.2)
+    ℓ  : DeltaPhase,    -- spread phase [1]     (W9 §8.3)
+)
+\end{verbatim}
+
+\subsubsection{§4.2 Physical Meaning}\label{physical-meaning-1}
+
+Each particle has one OneDWave per non-zero position-type axis (at most
+\(\kappa\)). Each OneDWave holds the current phase state of vibration in
+that axis direction.
+
+\begin{itemize}
+\tightlist
+\item
+  \(\theta_0\): current phase of vibration (free parameter, evolves over
+  time)
+\item
+  \(A\): amplitude (free parameter)
+\item
+  \(\ell\): spatial extent of localization (dependent on SignVector,
+  {[}W9{]} §8.3)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§5 Definition of Particle (δV and δδt added in
+v2.0)}\label{definition-of-particle-ux3b4v-and-ux3b4ux3b4t-added-in-v2.0}
+
+\subsubsection{§5.1 Structure}\label{structure-1}
+
+\begin{verbatim}
+Particle = (
+    σ   : SignVector,    -- identity (vibrational frequencies of each axis)
+    V   : OneDWave[κ],   -- current phase state of each non-zero position-type axis
+    δV  : OneDWave[κ],   -- phase displacement per processing step (added in v2.0)
+    δt  : DeltaT,         -- current processing step period
+    δδt : DeltaT,         -- change in processing period (added in v2.0, ≈ acceleration)
+)
+\end{verbatim}
+
+\subsubsection{§5.2 Physical Meaning of Each
+Field}\label{physical-meaning-of-each-field}
+
+\paragraph{\texorpdfstring{\texttt{σ\ :\ SignVector}}{σ : SignVector}}\label{ux3c3-signvector}
+
+The particle's identity. Specifies frequencies of vibration in each
+axis. Values change in interaction events (formulated as annihilation +
+creation, but as a data structure σ is updated).
+
+\paragraph{\texorpdfstring{\texttt{V\ :\ OneDWave{[}κ{]}}}{V : OneDWave{[}κ{]}}}\label{v-onedwaveux3ba}
+
+Current phase state of each non-zero position-type axis. Array length
+\(\kappa\) equals the number of non-zero position-type axes in
+SignVector (\(\leq 2\)). Each V{[}j{]} holds the (position phase,
+amplitude, spread) of vibration in the corresponding axis.
+
+Index correspondence:
+
+\begin{verbatim}
+σ.k_x ≠ 0  ⇒  V contains wave_x
+σ.k_y ≠ 0  ⇒  V contains wave_y
+σ.k_z ≠ 0  ⇒  V contains wave_z
+σ.k_t ≠ 0  ⇒  V contains wave_t
+\end{verbatim}
+
+\paragraph{\texorpdfstring{\texttt{δV\ :\ OneDWave{[}κ{]}} (added in
+v2.0)}{δV : OneDWave{[}κ{]} (added in v2.0)}}\label{ux3b4v-onedwaveux3ba-added-in-v2.0}
+
+A difference structure isomorphic to V. Holds how V changes in one
+processing step:
+
+\begin{verbatim}
+δV[j] = (
+    Δθ₀ : DeltaPhase,    -- phase displacement
+    ΔA  : Scalar256,      -- amplitude displacement
+    Δℓ  : DeltaPhase,     -- spread displacement
+)
+\end{verbatim}
+
+For free particles, δV{[}j{]}.Δθ₀ can be computed from σ:
+
+\[\delta V[j].\Delta\theta_0 = \sigma.k_{a(j)} \cdot \delta t\]
+
+However, in interaction events δV may change independently.
+
+\paragraph{\texorpdfstring{\texttt{δt\ :\ DeltaT}}{δt : DeltaT}}\label{ux3b4t-deltat}
+
+\textbf{Processing step period} (NOT time). A universal computation
+counter.
+
+\begin{itemize}
+\tightlist
+\item
+  \(\delta t > 0\): forward operation (causal forward direction)
+\item
+  \(\delta t < 0\): reverse operation (guarantees reversibility)
+\item
+  \(\delta t = 0\): at rest
+\end{itemize}
+
+What is observed as ``time'' is the accumulation of V{[}t-axis{]}.θ₀,
+not δt itself (see §6.4).
+
+\paragraph{\texorpdfstring{\texttt{δδt\ :\ DeltaT} (added in
+v2.0)}{δδt : DeltaT (added in v2.0)}}\label{ux3b4ux3b4t-deltat-added-in-v2.0}
+
+\textbf{Change in processing period} (acceleration equivalent).
+Determined by background R(r) or interactions:
+
+\begin{verbatim}
+1-step update: δt += δδt
+\end{verbatim}
+
+Physical interpretation:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\delta\delta t = 0\): free particle (constant processing period)
+\item
+  \(\delta\delta t > 0\): processing period elongates (clock slows down
+  in gravity / acceleration)
+\item
+  \(\delta\delta t < 0\): processing period shortens (rising
+  gravitational potential, etc.)
+\end{itemize}
+
+\subsubsection{§5.3 Hierarchy Closes at
+δδt}\label{hierarchy-closes-at-ux3b4ux3b4t}
+
+Because the basic laws of physics close at second order in time
+(Newtonian mechanics, GR, quantum mechanics), no higher-order structure
+(δδδt, etc.) is needed. \textbf{The 5 fields (σ, V, δV, δt, δδt) form a
+complete representation for dynamics.}
+
+\subsubsection{§5.4 Memory Footprint}\label{memory-footprint}
+
+\begin{verbatim}
+σ      : 6 × 256 = 1,536 bit
+V      : κ × 3 × 256 ≤ 1,536 bit (κ ≤ 2)
+δV     : κ × 3 × 256 ≤ 1,536 bit
+δt     : 256 bit
+δδt    : 256 bit
+Total  ≤ 5,120 bit = 640 byte / particle
+\end{verbatim}
+
+This is increased from v1.0's 224--416 byte, but still extremely small
+for a complete description of any particle in the universe.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§6 Operation Rules}\label{operation-rules}
+
+\subsubsection{§6.1 Basic: 1-Step Update}\label{basic-1-step-update}
+
+For each non-zero position-type axis \(j\):
+
+\[\delta V[j].\Delta\theta_0 \leftarrow \sigma.k_{a(j)} \cdot \delta t\]
+
+\[V[j].\theta_0 \mathrel{+}= \delta V[j].\Delta\theta_0\]
+
+Then update the processing period itself:
+
+\[\delta t \mathrel{+}= \delta\delta t\]
+
+\subsubsection{§6.2 Type Consistency
+Check}\label{type-consistency-check}
+
+\begin{verbatim}
+σ.k_axis · δt : SpatialFreq × DeltaT 
+              = Linv256 × L256 
+              = Scalar256 [1]                ✓
+
+V[j].θ₀ + δV[j].Δθ₀ : CyclePhase + DeltaPhase 
+                    = CyclePhase [1] (mod P/2)  ✓
+
+δt + δδt : DeltaT + DeltaT 
+         = DeltaT [L]                       ✓
+\end{verbatim}
+
+\subsubsection{§6.3 Polarization and Multi-Axis Phase
+Difference}\label{polarization-and-multi-axis-phase-difference}
+
+For particles with multiple non-zero axes (e.g., a polarized directional
+photon):
+
+\begin{verbatim}
+σ_polarized_light = (+k_x, +k_y, 0, 0, +R_γ, 0)
+V = [wave_x, wave_y]
+\end{verbatim}
+
+Polarization phase difference:
+
+\[\Delta\varphi = V[0].\theta_0 - V[1].\theta_0 \in \text{CyclePhase}\]
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Polarization State & \(\Delta\varphi\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Linear (in-phase) & \(0\) \\
+Linear (anti-phase) & \(P/4 = 180°\) \\
+Circular (left) & \(+P/8 = +90°\) \\
+Circular (right) & \(-P/8 = -90°\) \\
+Elliptical & any integer value \\
+\end{longtable}
+}
+
+All exactly representable as int256 integers (integer multiples of
+\(15°\) correspond to integer multiples of \(P/48\) without error).
+
+\subsubsection{§6.4 Treatment of Time: δt is a Processing Step, Time is
+V{[}t{]}.θ₀}\label{treatment-of-time-ux3b4t-is-a-processing-step-time-is-vt.ux3b8ux2080}
+
+\textbf{Important principle}: δt is not time but a universal processing
+step. What is observed as time is the accumulation of V{[}t-axis{]}.θ₀
+for each particle.
+
+Electron example (σ.k\_t ≠ 0):
+
+\begin{verbatim}
+σ_electron = (+k_x, 0, 0, +k_t, 0, 0)
+V = [wave_x, wave_t]
+1-step:
+  δV[0].Δθ₀ = σ.k_x · δt    -- x-axis phase displacement (momentum equivalent)
+  δV[1].Δθ₀ = σ.k_t · δt    -- t-axis phase displacement (electron's proper time progress)
+  V[0].θ₀ += δV[0].Δθ₀
+  V[1].θ₀ += δV[1].Δθ₀       -- "time experienced by electron"
+  δt += δδt                    -- update processing period (δδt ≠ 0 in gravity)
+\end{verbatim}
+
+Photon example (σ.k\_t = 0):
+
+\begin{verbatim}
+σ_photon = (+k_x, +k_y, 0, 0, +R_γ, 0)
+V = [wave_x, wave_y]      -- no t-axis component
+δV = [δwave_x, δwave_y]
+-- because σ.k_t = 0, no t-axis OneDWave exists in V
+-- consequence: zero proper time of photon is structurally guaranteed
+\end{verbatim}
+
+\subsubsection{§6.5 Acceleration Effect (Background
+Coupling)}\label{acceleration-effect-background-coupling}
+
+δδt is determined by the background R(r) or by interactions. The
+concrete decision rule is defined in a separate paper (D2).
+
+Qualitatively:
+
+\begin{itemize}
+\tightlist
+\item
+  In a gravitational field:
+  \(\delta\delta t = f(R_{\text{background}}, \sigma)\) --- background
+  curvature modulates processing period
+\item
+  Result: σ.k · δt changes → frequency shift / time delay / polarization
+  phase rotation
+\end{itemize}
+
+All of these are expressed as phase evolution by integer arithmetic.
+
+\subsubsection{§6.6 Operations Not Required (same as
+v1.0)}\label{operations-not-required-same-as-v1.0}
+
+The following operations are not required in this specification:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Division}: \(R/R_1\) is converted to \(R \cdot R_1^{-1}\) as
+  multiplication
+\item
+  \textbf{Square root}: a continuum concept; in discrete systems,
+  integer values directly determine physical quantities
+\item
+  \textbf{Trigonometric functions}: tools of continuum sine-Gordon;
+  replaceable by discrete modulation tables
+\item
+  \textbf{Floating-point arithmetic}: all fields are int256, no rounding
+  error structurally arises
+\end{enumerate}
+
+Where cos/sin would be needed (e.g., longitudinal mode modulation),
+discrete modulation tables (lookup tables) of finite resolution are
+used.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§7 Introduction of the Mesh Structure (added in
+v2.0)}\label{introduction-of-the-mesh-structure-added-in-v2.0}
+
+\subsubsection{§7.1 Separation of Longitudinal
+Modes}\label{separation-of-longitudinal-modes}
+
+In the interpretation of {[}W8{]} Table A, the Higgs
+(\(\sigma_H = (0, 0, +k_z, 0, 0, 0)\)) differs from other spin-1 bosons
+in having \(\sigma.R = 0\) and \(\text{spin} = 0\). Structurally it is
+natural to treat the Higgs not as a ``transverse particle vibrating
+position phase'' but as a \textbf{``longitudinal vibration of the mesh
+itself.''}
+
+Similarly, the graviton (gravitational waves) can be interpreted as
+longitudinal-like vibration of the spacetime metric --- a vibrational
+mode of the Mesh.
+
+Treating these longitudinal modes as Particles strains the data
+structure (OneDWave is essentially a type for phase rotation and cannot
+directly represent axial expansion-contraction). This paper introduces a
+\textbf{Mesh structure to manage longitudinal modes separately from
+Particles}.
+
+\subsubsection{§7.2 Structure of Mesh}\label{structure-of-mesh}
+
+\begin{verbatim}
+Mesh = (
+    -- background scale
+    R_0           : L256,             -- central length of central projection (background)
+    
+    -- longitudinal modes
+    H_xyz_inphase : OneDWave,         -- xyz in-phase expansion-contraction = Higgs
+    H_xy_anti     : OneDWave,         -- xy anti-phase = gravitational wave + polarization
+    H_xy_quarter  : OneDWave,         -- xy 90° phase = gravitational wave × polarization
+    H_yz_anti     : OneDWave,         -- yz anti-phase = other gravitational wave polarizations
+    H_xz_anti     : OneDWave,         -- xz anti-phase = other gravitational wave polarizations
+    
+    -- displacements of longitudinal modes
+    δH_xyz_inphase : OneDWave,
+    δH_xy_anti     : OneDWave,
+    δH_xy_quarter  : OneDWave,
+    δH_yz_anti     : OneDWave,
+    δH_xz_anti     : OneDWave,
+    
+    -- global processing step
+    δt_mesh       : DeltaT,
+    δδt_mesh      : DeltaT,
+)
+\end{verbatim}
+
+\subsubsection{§7.3 Physical Identification of Longitudinal
+Modes}\label{physical-identification-of-longitudinal-modes}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Mode
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Vibration Pattern
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Physical Identification
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Spin
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+H\_xyz\_inphase & xyz axes in-phase expansion-contraction & Higgs
+(scalar) & 0 \\
+H\_xy\_anti & x stretches while y compresses (anti-phase) &
+gravitational wave + polarization & 2 \\
+H\_xy\_quarter & xy 90° phase rotation & gravitational wave ×
+polarization & 2 \\
+H\_yz\_anti & yz anti-phase & gravitational wave (other polarization) &
+2 \\
+H\_xz\_anti & xz anti-phase & gravitational wave (other polarization) &
+2 \\
+\end{longtable}
+}
+
+\textbf{Higgs = spherically symmetric in-phase longitudinal vibration of
+xyz axes}: the choice of z-axis in W8 is a representative notation; the
+essence is a 3-axis symmetric longitudinal vibration.
+
+\textbf{Two polarizations of gravitational waves (+, ×)}: correspond to
+H\_xy\_anti and H\_xy\_quarter (and other axis selections give other
+polarizations).
+
+\subsubsection{§7.4 Coupling between Mesh and
+Particle}\label{coupling-between-mesh-and-particle}
+
+The vibrational frequency σ.k of a particle is effectively modulated by
+the state of the Mesh. Mass generation and frequency shifts are
+expressed as this modulation.
+
+Effective frequency:
+
+\[\sigma.k_{\text{effective}}(particle, mesh) = \sigma.k(particle) \cdot \text{mod}(mesh)\]
+
+\[\text{mod}(mesh) = 1 + \alpha_H \cdot \text{disc-cos}(H_{\text{xyz\_inphase}}.\theta_0) + \cdots\]
+
+Here \texttt{disc-cos} is a finite-resolution discrete modulation table
+(e.g., 12 stages at 30° intervals) substituting for the continuous
+trigonometric function.
+
+\subsubsection{§7.5 Dynamics}\label{dynamics}
+
+Mesh update:
+
+\begin{verbatim}
+For each longitudinal mode H_*:
+    δH_*.Δθ₀ ← (intrinsic frequency) · δt_mesh
+    H_*.θ₀  += δH_*.Δθ₀
+δt_mesh += δδt_mesh
+\end{verbatim}
+
+Particle update (subordinate to Mesh):
+
+\begin{verbatim}
+For each particle p:
+    For each non-zero axis j:
+        δV[j].Δθ₀ ← σ.k_effective(p, mesh) · δt
+        V[j].θ₀  += δV[j].Δθ₀
+    δt += δδt
+\end{verbatim}
+
+\subsubsection{§7.6 Memory Footprint}\label{memory-footprint-1}
+
+\begin{verbatim}
+R_0    : 256 bit
+H_*    : 5 × 3 × 256 = 3,840 bit
+δH_*   : 5 × 3 × 256 = 3,840 bit
+δt_mesh, δδt_mesh : 2 × 256 = 512 bit
+Total  = 8,448 bit = 1,056 byte / entire universe
+\end{verbatim}
+
+About 1 KB for the entire universe. For \(N\) particles, total memory is
+\(640N + 1056\) byte.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§8 Verification of W3 Structural Requirements (updated in
+v2.0)}\label{verification-of-w3-structural-requirements-updated-in-v2.0}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+W3 Requirement
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Satisfied
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Basis
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Boundedness & ✓ & int256 represents all phase quantities (§1) \\
+Discreteness & ✓ & all fields are integer types (§2--§5) \\
+Information conservation & ✓ & δt \textless{} 0 enables reverse
+operation (§5.2) \\
+Avoidance of zero division & ✓ & division not used (§6.6) \\
+Closure under integer arithmetic & ✓ & only addition/multiplication; cos
+via discrete modulation table (§7.4) \\
+\textbf{6-axis symmetry} & \textbf{✓ (v2.0)} & frequency interpretation
+makes all axes equivalent (§1.4, §3) \\
+\textbf{Transverse-longitudinal separation} & \textbf{✓ (v2.0)} &
+Particle vs Mesh (§7) \\
+\textbf{Natural representation of acceleration} & \textbf{✓ (v2.0)} &
+δδt is explicit (§5.2) \\
+Non-privileging of time & \textbf{✓ (v2.0)} & t equal to other axes;
+time is V{[}t{]}.θ₀ (§6.4) \\
+Finite representability & ✓ & ≤ 640 byte per particle, +1 KB for whole
+universe (§5.4, §7.6) \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§9 Incompatibilities with
+v1.0}\label{incompatibilities-with-v1.0}
+
+\subsubsection{§9.1 Changes in
+Interpretation}\label{changes-in-interpretation}
+
+\begin{itemize}
+\tightlist
+\item
+  σ.k unified from ``wave number / acceleration'' to ``vibrational
+  frequency''
+\item
+  δt clarified from ``proper time step'' to ``processing step period''
+\item
+  ``Time'' is a derived quantity appearing as V{[}t-axis{]}.θ₀
+\end{itemize}
+
+\subsubsection{§9.2 Structural Extension}\label{structural-extension}
+
+\begin{itemize}
+\tightlist
+\item
+  δV and δδt added to Particle (v1.0's Particle is included as a subset)
+\item
+  Mesh structure newly introduced (not present in v1.0)
+\end{itemize}
+
+\subsubsection{§9.3 Compatibility with {[}W8{]} Table
+A}\label{compatibility-with-w8-table-a}
+
+The 62-particle classification of {[}W8{]} Table A remains valid in
+v2.0. However, the Higgs, instead of being counted as a Particle, is
+\textbf{counted as an excitation of the Mesh's H\_xyz\_inphase mode} ---
+an interpretive update. The total count (61 SM states + 1 graviton = 62)
+is unchanged (only the counting interpretation is updated).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§10 Conclusion}\label{conclusion}
+
+Essence of v2.0:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{xyzt are frequencies} (natural interpretation in phase space)
+\item
+  \textbf{6 axes are completely symmetric} (4 position-type + R + Q)
+\item
+  \textbf{Transverse (Particle) and longitudinal (Mesh) are separated}
+\item
+  \textbf{Acceleration is δδt} (change in processing period)
+\item
+  \textbf{Time is V{[}t{]}.θ₀} (a position phase, advancing per
+  particle)
+\item
+  \textbf{All operations close under int256 integer arithmetic}
+\end{itemize}
+
+With this structure, the dynamics rules (D2, separate paper) can
+describe:
+
+\begin{itemize}
+\tightlist
+\item
+  Gravitational time dilation, polarization rotation (free motion +
+  background coupling)
+\item
+  Higgs mechanism (coupling to Mesh's H\_xyz\_inphase)
+\item
+  Gravitational wave emission (excitation of Mesh's H\_xy\_anti)
+\item
+  Coulomb 2-body problem (inter-particle interaction)
+\end{itemize}
+
+all within the same framework.
+
+This paper is a design specification; these dynamical applications are
+deferred to separate papers.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+\begin{itemize}
+\tightlist
+\item
+  {[}W3{]} Kihara, N. ``Structural Requirements for a Theory of
+  Everything.'' DOI: 10.5281/zenodo.19601592 (2026).
+\item
+  {[}W8{]} Kihara, N. ``Combinatorial Structure of the 6-Dimensional
+  Hyperrectangle.'' DOI: 10.5281/zenodo.19762134 (2026).
+\item
+  {[}W9{]} Kihara, N. ``sine-Gordon Equation --- Foundation of
+  Topological Solitons.'' DOI: 10.5281/zenodo.19650966 (2026).
+\item
+  {[}W10{]} Kihara, N. ``Four Modes of Shape-Invariant Waves.'' DOI:
+  10.5281/zenodo.19709798 (2026).
+\item
+  {[}W11{]} Kihara, N. ``Interactions of Shape-Invariant Waves.'' DOI:
+  10.5281/zenodo.19763463 (2026).
+\item
+  {[}M1{]} Kihara, N. ``Three-Layer Model of Central Projection:
+  R--R₁--R₀.'' DOI: 10.5281/zenodo.19691713 (2026).
+\item
+  {[}TE\_Raxis{]} Kihara, N. ``Reexamination of the 6-Dimensional Sign
+  Vector xyztRQ.'' DOI: 10.5281/zenodo.19904714 (2026).
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Author}: Noriaki Kihara \textbf{ORCID}:
+\href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020}
+\textbf{License}: CC BY 4.0
+
+\end{document}
