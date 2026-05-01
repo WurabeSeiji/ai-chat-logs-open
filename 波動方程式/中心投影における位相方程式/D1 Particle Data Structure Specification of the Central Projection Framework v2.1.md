@@ -1,12 +1,14 @@
-# D1 v2.0: Particle Data Structure Specification of the Central Projection Framework — Frequency Interpretation and Dynamics Extension
+# D1 v2.1: Particle Data Structure Specification of the Central Projection Framework — Frequency Interpretation and Dynamics Extension (Revised)
 
 **Author**: Noriaki Kihara
 **Affiliation**: WF System Co., Ltd.
 **ORCID**: 0009-0004-6753-4020
-**Version**: v2.0
+**Version**: v2.1
 **Date**: May 2026
-**DOI**: [10.5281/zenodo.19941250](https://doi.org/10.5281/zenodo.19941250)
-**Predecessor**: v1.0 (April 2026, unpublished)
+**DOI (v2.1)**: [10.5281/zenodo.19944488](https://doi.org/10.5281/zenodo.19944488)
+**DOI (v2.0)**: [10.5281/zenodo.19941250](https://doi.org/10.5281/zenodo.19941250)
+**Concept DOI**: [10.5281/zenodo.19941249](https://doi.org/10.5281/zenodo.19941249) (always points to latest)
+**Predecessor**: v1.0 (April 2026, unpublished) / v2.0 (May 2026 published)
 
 ---
 
@@ -14,10 +16,22 @@
 
 This paper is a design specification, not a mathematical proof. It explicitly defines, as a typed-integer-arithmetic specification, the particle data structures that have been implicitly assumed in the preceding paper series [W1]–[W11], [M1]–[M3], supplementary lectures [Sup1]–[Sup4], and the thought experiment [TE_Raxis].
 
-### Major Revisions from v1.0
+### Revisions from v2.0 (v2.1)
+
+**Removal of `δδt` field**: The `δδt : DeltaT` field added to the Particle structure in v2.0 (processing-period change, acceleration equivalent) is **removed** in v2.1. Reasons:
+
+1. **Reversibility violation**: A `step(p)` containing `δt += δδt` does not return to its original state when δt's sign is reversed (violates the information conservation requirement of [W3]).
+2. **Inconsistency with conservation laws**: Changing δt for a single particle without external interaction means the proper time changes ex nihilo, implicitly breaking energy and momentum conservation.
+3. **GR free-particle principle**: A free particle follows a geodesic, and acceleration effects must arise from external forces (interactions). The basic operation for a single particle should not handle acceleration.
+
+All acceleration effects are represented **within interaction processing (between particles or between particle and Mesh)** as changes in σ or δt that satisfy conservation laws. See the separate paper D2 ("Specification of Dynamics Rules of the Central Projection Framework," in preparation).
+
+The corrected Particle structure has **4 fields** `(σ, V, δV, δt)` (§5). The corresponding `δδt_mesh` is also removed from the Mesh structure (§7).
+
+### Major Revisions from v1.0 (introduced in v2.0, continued in v2.1)
 
 1. **Reinterpret σ.k_xyzt as "vibrational frequencies of each axis"** rather than "wave numbers / acceleration" (§1.4)
-2. **Add δV (phase displacement) and δδt (processing-period change) to the Particle structure** (§5)
+2. **Add δV (phase displacement) to the Particle structure** (§5). ~v2.0 also added δδt, but this was removed in v2.1.~
 3. **Introduce the Mesh structure to separate longitudinal modes (Higgs, gravitational waves) from Particles** (§7)
 4. **Eliminate special status of t-axis, fully preserving 6-axis symmetry** (§3, §6)
 
@@ -27,9 +41,10 @@ The data type system (int256-based) and integer-arithmetic principles (no divisi
 
 1. The boundedness of the universe and the discreteness at the Planck scale together permit all phase quantities to be represented as 256-bit signed integers (§1).
 2. The $[L^{-1}]$ dimension of the xyzt axes is naturally interpreted as "vibrational frequency along each axis in phase space," fully preserving 6-axis symmetry (§3).
-3. The complete state of a particle can be described by 5 fields: `SignVector` (identity label) + `OneDWave[κ]` (phase state) + `δV` (phase displacement) + `δt, δδt` (processing period and acceleration) (§5).
+3. The complete state of a particle can be described by 4 fields: `SignVector` (identity label) + `OneDWave[κ]` (phase state) + `δV` (phase displacement) + `δt` (processing period) (§5).
 4. Longitudinal modes such as the Higgs should be represented not as Particles but as vibrations of the `Mesh`, allowing unified treatment of mass generation, gravitational waves, and cosmological vibrations (§7).
 5. All operations close under integer addition and multiplication, requiring no division, square root, or trigonometric functions (§6).
+6. The basic operation `step(p)` (which only updates V) satisfies all five operational principles: time-reversal symmetry, conservation-law consistency, null transparency, type integrity, and INPUT/OUTPUT exchangeability (§6).
 
 ### Out of Scope
 
@@ -78,14 +93,14 @@ $$[L] = [T] = [M], \quad [L^{-1}] = [M^{-1}]$$
 
 In v1.0, the $[L^{-1}]$ dimension of the xyzt axes was interpreted ambiguously as "wave number" or "acceleration." In v2.0, this is unified as **"vibrational frequency along each axis"** as the natural interpretation in phase space.
 
-| Quantity | Dimension | v1.0 Interpretation | **v2.0 Interpretation** |
+| Quantity | Dimension | v1.0 Interpretation | **v2.1 Interpretation** |
 |---|---|---|---|
 | σ.k_x, k_y, k_z | $[L^{-1}]$ | spatial wave number / acceleration | **vibrational frequency of each spatial axis** |
 | σ.k_t | $[L^{-1}]$ | temporal frequency | **vibrational frequency of t-axis** (equal to others) |
 | σ.R | $[L]=[M]$ | curvature radius | **scale quantity / corresponding period** (dual) |
 | σ.Q | $[1]$ | internal symmetry | internal symmetry (unchanged) |
 | δt | $[L]=[M]$ | proper time step | **processing step period** (not "time") |
-| δδt | $[L]=[M]$ | (not in v1.0) | **change in processing period** (acceleration effect) |
+| ~δδt~ | ~$[L]=[M]$~ | ~(not in v1.0)~ | ~added in v2.0, removed in v2.1 (violates conservation/reversibility)~ |
 
 ### §1.5 Advantages of the Frequency Interpretation
 
@@ -93,7 +108,7 @@ In v1.0, the $[L^{-1}]$ dimension of the xyzt axes was interpreted ambiguously a
 
 **(2) Elimination of continuum-mechanical concepts**: "Acceleration" is a continuum concept (second time derivative of position) that does not fit naturally into discrete integer arithmetic. "Vibrational frequency" is the natural discrete quantity in phase space.
 
-**(3) Clear separation of acceleration effects**: Acceleration-like effects (gravitational fields, inertial frame influences) are represented by the change δδt of the processing period, structurally separated from the particle's intrinsic frequency σ.k.
+**(3) Acceleration handled as interaction**: Acceleration-like effects (gravitational fields, inertial frame influences) are not represented for a single particle but **entirely as interaction processing** (between particles or between particle and Mesh), where σ or δt change in a conservation-consistent manner. This is consistent with the GR free-particle principle (free particles follow geodesics). See the separate paper D2.
 
 **(4) Frequency × period = phase**: $\sigma.k \cdot \delta t$ becomes a dimensionless phase increment ($[L^{-1}] \cdot [L] = [1]$), making the phase evolution rule type-consistent.
 
@@ -226,7 +241,7 @@ Each particle has one OneDWave per non-zero position-type axis (at most $\kappa$
 
 ---
 
-## §5 Definition of Particle (δV and δδt added in v2.0)
+## §5 Definition of Particle (v2.1: 4-field structure)
 
 ### §5.1 Structure
 
@@ -236,9 +251,10 @@ Particle = (
     V   : OneDWave[κ],   -- current phase state of each non-zero position-type axis
     δV  : OneDWave[κ],   -- phase displacement per processing step (added in v2.0)
     δt  : DeltaT,         -- current processing step period
-    δδt : DeltaT,         -- change in processing period (added in v2.0, ≈ acceleration)
 )
 ```
+
+**Change from v2.0**: The `δδt : DeltaT` field is removed (5 fields → 4 fields). See §0 for reasons.
 
 ### §5.2 Physical Meaning of Each Field
 
@@ -287,52 +303,62 @@ However, in interaction events δV may change independently.
 
 What is observed as "time" is the accumulation of V[t-axis].θ₀, not δt itself (see §6.4).
 
-#### `δδt : DeltaT` (added in v2.0)
+#### ~`δδt : DeltaT` (removed in v2.1)~
 
-**Change in processing period** (acceleration equivalent). Determined by background R(r) or interactions:
+The Particle structure included a `δδt` field in v2.0, but this is removed in v2.1. Reasons:
 
-```
-1-step update: δt += δδt
-```
+- **Reversibility violation**: Executing `δt += δδt` in `step(p)` does not return to the original state when δt's sign is reversed
+- **Conservation-law violation**: Single-particle δt change implies energy/momentum change ex nihilo, inconsistent with conservation laws
+- **GR free-particle principle**: Acceleration effects must arise from external forces (interactions); the basic operation for a free particle should not handle them
 
-Physical interpretation:
+Acceleration effects are represented in the interaction processing (between particles or between particle and Mesh) of §3 onward, where σ or δt change in a conservation-consistent manner. See the separate paper D2.
 
-- $\delta\delta t = 0$: free particle (constant processing period)
-- $\delta\delta t > 0$: processing period elongates (clock slows down in gravity / acceleration)
-- $\delta\delta t < 0$: processing period shortens (rising gravitational potential, etc.)
+### §5.3 Free Particle Dynamics Close with δV
 
-### §5.3 Hierarchy Closes at δδt
+Although the second-order closure of physical laws (Newtonian mechanics, GR, QM) initially suggested that δδt was needed, in v2.1:
 
-Because the basic laws of physics close at second order in time (Newtonian mechanics, GR, quantum mechanics), no higher-order structure (δδδt, etc.) is needed. **The 5 fields (σ, V, δV, δt, δδt) form a complete representation for dynamics.**
+- Free particles undergo only uniform geodesic motion (GR principle)
+- Acceleration is the result of interaction
+- The basic operation for a single particle is **only the update of phase velocity (δV) and current phase (V)**
 
-### §5.4 Memory Footprint
+Therefore, **4 fields (σ, V, δV, δt) form a complete representation for free particles.**
+
+### §5.4 Memory Footprint (v2.1)
 
 ```
 σ      : 6 × 256 = 1,536 bit
 V      : κ × 3 × 256 ≤ 1,536 bit (κ ≤ 2)
 δV     : κ × 3 × 256 ≤ 1,536 bit
 δt     : 256 bit
-δδt    : 256 bit
-Total  ≤ 5,120 bit = 640 byte / particle
+Total  ≤ 4,864 bit = 608 byte / particle
 ```
 
-This is increased from v1.0's 224–416 byte, but still extremely small for a complete description of any particle in the universe.
+A 32-byte reduction from v2.0's 640 byte (removal of δδt field). Still extremely small compared to v1.0's 224–416 byte (which lacked δV).
 
 ---
 
 ## §6 Operation Rules
 
-### §6.1 Basic: 1-Step Update
+### §6.1 Basic: 1-Step Update (v2.1)
+
+The basic operation `step(p)` consists of only one operation:
+
+```
+function step(p : Particle | null) → Particle | null:
+    if p == null:
+        return null
+    for j in range(p.κ):
+        p.V[j].θ₀ += p.σ.k_{a(j)} · p.δt
+    return p
+```
 
 For each non-zero position-type axis $j$:
 
-$$\delta V[j].\Delta\theta_0 \leftarrow \sigma.k_{a(j)} \cdot \delta t$$
+$$V[j].\theta_0 \mathrel{+}= \sigma.k_{a(j)} \cdot \delta t$$
 
-$$V[j].\theta_0 \mathrel{+}= \delta V[j].\Delta\theta_0$$
+That is all. `σ`, `δV`, and `δt` are not updated by `step(p)`.
 
-Then update the processing period itself:
-
-$$\delta t \mathrel{+}= \delta\delta t$$
+**Change from v2.0**: v2.0 included `δt += δδt`, but this is removed in v2.1 (see §5.2).
 
 ### §6.2 Type Consistency Check
 
@@ -341,12 +367,27 @@ $$\delta t \mathrel{+}= \delta\delta t$$
               = Linv256 × L256 
               = Scalar256 [1]                ✓
 
-V[j].θ₀ + δV[j].Δθ₀ : CyclePhase + DeltaPhase 
-                    = CyclePhase [1] (mod P/2)  ✓
-
-δt + δδt : DeltaT + DeltaT 
-         = DeltaT [L]                       ✓
+V[j].θ₀ + (σ.k · δt) : CyclePhase + Scalar256 
+                     = CyclePhase [1] (mod P/2)  ✓
 ```
+
+### §6.2.1 Compliance with the Five Operational Principles (v2.1)
+
+`step(p)` satisfies all five basic operational principles:
+
+1. **Null transparency**: explicitly handled at the function's start ✓
+2. **In-place update**: V[j].θ₀ updated directly, no new Particle generated ✓
+3. **Type integrity**: complies with D1 §2.3 rules (see §6.2) ✓
+4. **INPUT/OUTPUT exchangeability**: function has symmetric read/write structure ✓
+5. **Time-reversal reversibility**: complete reversal by sign-flipping δt:
+
+```
+First call (δt = +δt₀):  V → V + σ.k · δt₀
+Sign-flip δt (δt → -δt₀)
+Second call (δt = -δt₀): V → V + σ.k · δt₀ + σ.k · (-δt₀) = V  ✓
+```
+
+This structurally guarantees the information-conservation requirement of [W3].
 
 ### §6.3 Polarization and Multi-Axis Phase Difference
 
@@ -381,11 +422,8 @@ Electron example (σ.k_t ≠ 0):
 σ_electron = (+k_x, 0, 0, +k_t, 0, 0)
 V = [wave_x, wave_t]
 1-step:
-  δV[0].Δθ₀ = σ.k_x · δt    -- x-axis phase displacement (momentum equivalent)
-  δV[1].Δθ₀ = σ.k_t · δt    -- t-axis phase displacement (electron's proper time progress)
-  V[0].θ₀ += δV[0].Δθ₀
-  V[1].θ₀ += δV[1].Δθ₀       -- "time experienced by electron"
-  δt += δδt                    -- update processing period (δδt ≠ 0 in gravity)
+  V[0].θ₀ += σ.k_x · δt   -- x-axis phase advances (momentum equivalent)
+  V[1].θ₀ += σ.k_t · δt   -- t-axis phase advances ("time experienced by electron")
 ```
 
 Photon example (σ.k_t = 0):
@@ -393,21 +431,18 @@ Photon example (σ.k_t = 0):
 ```
 σ_photon = (+k_x, +k_y, 0, 0, +R_γ, 0)
 V = [wave_x, wave_y]      -- no t-axis component
-δV = [δwave_x, δwave_y]
 -- because σ.k_t = 0, no t-axis OneDWave exists in V
 -- consequence: zero proper time of photon is structurally guaranteed
 ```
 
-### §6.5 Acceleration Effect (Background Coupling)
+### §6.5 Acceleration Effects Are Handled in Interaction Processing (v2.1)
 
-δδt is determined by the background R(r) or by interactions. The concrete decision rule is defined in a separate paper (D2).
+In v2.0 we stated "δδt is determined by the background R(r) or by interactions," but in v2.1:
 
-Qualitatively:
+- **Acceleration effects cannot be handled in the basic single-particle operation** (violates conservation laws and reversibility, see §5.2)
+- **All acceleration effects are realized in interaction processing** (where σ or δt are exchanged between particles or with the Mesh)
 
-- In a gravitational field: $\delta\delta t = f(R_{\text{background}}, \sigma)$ — background curvature modulates processing period
-- Result: σ.k · δt changes → frequency shift / time delay / polarization phase rotation
-
-All of these are expressed as phase evolution by integer arithmetic.
+The concrete interaction rules are defined in the separate paper D2. Gravitational time dilation, polarization rotation, and frequency shifts are all expressed as the cumulative result of interaction events that satisfy conservation laws.
 
 ### §6.6 Operations Not Required (same as v1.0)
 
@@ -432,108 +467,113 @@ Similarly, the graviton (gravitational waves) can be interpreted as longitudinal
 
 Treating these longitudinal modes as Particles strains the data structure (OneDWave is essentially a type for phase rotation and cannot directly represent axial expansion-contraction). This paper introduces a **Mesh structure to manage longitudinal modes separately from Particles**.
 
-### §7.2 Structure of Mesh
+### §7.2 Structure of Mesh (v2.1)
 
 ```
 Mesh = (
     -- background scale
     R_0           : L256,             -- central length of central projection (background)
     
-    -- longitudinal modes
-    H_xyz_inphase : OneDWave,         -- xyz in-phase expansion-contraction = Higgs
+    -- single-axis longitudinal modes (spin 0, SO(3) symmetry breaking)
+    H_x           : OneDWave,         -- x-axis longitudinal
+    H_y           : OneDWave,         -- y-axis longitudinal
+    H_z           : OneDWave,         -- z-axis longitudinal = Higgs
+    H_t           : OneDWave,         -- t-axis longitudinal
+    
+    -- multi-axis longitudinal modes (spin 2, gravitational wave polarizations)
     H_xy_anti     : OneDWave,         -- xy anti-phase = gravitational wave + polarization
     H_xy_quarter  : OneDWave,         -- xy 90° phase = gravitational wave × polarization
-    H_yz_anti     : OneDWave,         -- yz anti-phase = other gravitational wave polarizations
-    H_xz_anti     : OneDWave,         -- xz anti-phase = other gravitational wave polarizations
+    H_yz_anti     : OneDWave,         -- yz anti-phase
+    H_xz_anti     : OneDWave,         -- xz anti-phase
     
     -- displacements of longitudinal modes
-    δH_xyz_inphase : OneDWave,
-    δH_xy_anti     : OneDWave,
-    δH_xy_quarter  : OneDWave,
-    δH_yz_anti     : OneDWave,
-    δH_xz_anti     : OneDWave,
+    δH_x, δH_y, δH_z, δH_t            : OneDWave,
+    δH_xy_anti, δH_xy_quarter         : OneDWave,
+    δH_yz_anti, δH_xz_anti            : OneDWave,
     
     -- global processing step
     δt_mesh       : DeltaT,
-    δδt_mesh      : DeltaT,
 )
 ```
+
+**Changes from v2.0**:
+
+- Removed `H_xyz_inphase` (xyz in-phase) and replaced with axis-specific single-axis modes `H_x, H_y, H_z, H_t` (the xyz-isotropic interpretation cannot explain the Higgs's generational mass hierarchy; see [W11] §8.5)
+- The Higgs is positioned as `H_z` (z-axis longitudinal mode)
+- Removed `δδt_mesh` (same reason as Particle: reversibility and conservation)
 
 ### §7.3 Physical Identification of Longitudinal Modes
 
 | Mode | Vibration Pattern | Physical Identification | Spin |
 |---|---|---|---|
-| H_xyz_inphase | xyz axes in-phase expansion-contraction | Higgs (scalar) | 0 |
+| H_z | z-axis longitudinal (SO(3) breaking) | **Higgs** | 0 |
+| H_x, H_y, H_t | each-axis longitudinal | physical identification undetermined (candidates) | 0 |
 | H_xy_anti | x stretches while y compresses (anti-phase) | gravitational wave + polarization | 2 |
 | H_xy_quarter | xy 90° phase rotation | gravitational wave × polarization | 2 |
 | H_yz_anti | yz anti-phase | gravitational wave (other polarization) | 2 |
 | H_xz_anti | xz anti-phase | gravitational wave (other polarization) | 2 |
 
-**Higgs = spherically symmetric in-phase longitudinal vibration of xyz axes**: the choice of z-axis in W8 is a representative notation; the essence is a 3-axis symmetric longitudinal vibration.
+**Higgs = z-axis longitudinal mode (H_z)**: The z-axis selection in W8 Table A's $\sigma_H = (0, 0, +k_z, 0, 0, 0)$ is preserved as the direction of SO(3) symmetry breaking. Third-generation fermions sharing the z-axis have the strongest coupling and acquire the largest mass (consistent with [W11] §8).
 
-**Two polarizations of gravitational waves (+, ×)**: correspond to H_xy_anti and H_xy_quarter (and other axis selections give other polarizations).
+**Two polarizations of gravitational waves (+, ×)**: expressed as multi-axis longitudinal modes (H_xy_anti, H_xy_quarter, etc.). SO(3) symmetry is preserved.
 
-### §7.4 Coupling between Mesh and Particle
+### §7.4 Coupling between Mesh and Particle (v2.1)
 
-The vibrational frequency σ.k of a particle is effectively modulated by the state of the Mesh. Mass generation and frequency shifts are expressed as this modulation.
+The vibrational frequency σ.k of a particle is effectively modulated by the state of the Mesh. Mass generation and frequency shifts are expressed as interactions through this modulation (details in the separate paper D2).
 
-Effective frequency:
+Effective frequency (mass generation example):
 
-$$\sigma.k_{\text{effective}}(particle, mesh) = \sigma.k(particle) \cdot \text{mod}(mesh)$$
+$$\sigma.k_{\text{effective}}(particle, mesh) = \sigma.k(particle) - \delta k_H(\text{Mesh.H\_z VEV})$$
 
-$$\text{mod}(mesh) = 1 + \alpha_H \cdot \text{disc-cos}(H_{\text{xyz\_inphase}}.\theta_0) + \cdots$$
+Third-generation fermions sharing the z-axis couple most strongly with the H_z VEV and acquire the largest mass (consistent with [W11] §8).
 
-Here `disc-cos` is a finite-resolution discrete modulation table (e.g., 12 stages at 30° intervals) substituting for the continuous trigonometric function.
-
-### §7.5 Dynamics
+### §7.5 Dynamics (v2.1: basic operation is step only)
 
 Mesh update:
 
 ```
 For each longitudinal mode H_*:
-    δH_*.Δθ₀ ← (intrinsic frequency) · δt_mesh
-    H_*.θ₀  += δH_*.Δθ₀
-δt_mesh += δδt_mesh
+    H_*.θ₀ += (intrinsic frequency) · δt_mesh
 ```
 
-Particle update (subordinate to Mesh):
+Particle update (independent of Mesh, basic operation is `step(p)` only):
 
 ```
 For each particle p:
-    For each non-zero axis j:
-        δV[j].Δθ₀ ← σ.k_effective(p, mesh) · δt
-        V[j].θ₀  += δV[j].Δθ₀
-    δt += δδt
+    step(p)   -- as in §6.1, V only is updated
 ```
 
-### §7.6 Memory Footprint
+The Mesh-Particle coupling (mass generation, gravitational waves, etc.) is not realized within single-particle `step(p)`, but in interaction processing (defined in D2) where σ or δt are changed.
+
+### §7.6 Memory Footprint (v2.1)
 
 ```
 R_0    : 256 bit
-H_*    : 5 × 3 × 256 = 3,840 bit
-δH_*   : 5 × 3 × 256 = 3,840 bit
-δt_mesh, δδt_mesh : 2 × 256 = 512 bit
-Total  = 8,448 bit = 1,056 byte / entire universe
+H_*    : 8 × 3 × 256 = 6,144 bit  -- 4 single-axis + 4 multi-axis = 8 modes
+δH_*   : 8 × 3 × 256 = 6,144 bit
+δt_mesh : 256 bit
+Total  = 12,800 bit = 1,600 byte / entire universe
 ```
 
-About 1 KB for the entire universe. For $N$ particles, total memory is $640N + 1056$ byte.
+About 1.6 KB for the entire universe. The total memory for $N$ particles is $608N + 1600$ byte (a 32-byte reduction per particle from v2.0).
 
 ---
 
-## §8 Verification of W3 Structural Requirements (updated in v2.0)
+## §8 Verification of W3 Structural Requirements (v2.1)
 
 | W3 Requirement | Satisfied | Basis |
 |---|---|---|
 | Boundedness | ✓ | int256 represents all phase quantities (§1) |
 | Discreteness | ✓ | all fields are integer types (§2–§5) |
-| Information conservation | ✓ | δt < 0 enables reverse operation (§5.2) |
+| **Information conservation (time-reversal reversibility)** | **✓ (rigorous in v2.1)** | step(p) is fully reversed by sign-flipping δt (§6.2.1) |
 | Avoidance of zero division | ✓ | division not used (§6.6) |
 | Closure under integer arithmetic | ✓ | only addition/multiplication; cos via discrete modulation table (§7.4) |
-| **6-axis symmetry** | **✓ (v2.0)** | frequency interpretation makes all axes equivalent (§1.4, §3) |
-| **Transverse-longitudinal separation** | **✓ (v2.0)** | Particle vs Mesh (§7) |
-| **Natural representation of acceleration** | **✓ (v2.0)** | δδt is explicit (§5.2) |
-| Non-privileging of time | **✓ (v2.0)** | t equal to other axes; time is V[t].θ₀ (§6.4) |
-| Finite representability | ✓ | ≤ 640 byte per particle, +1 KB for whole universe (§5.4, §7.6) |
+| **6-axis symmetry** | **✓ (v2.0+)** | frequency interpretation makes all axes equivalent (§1.4, §3) |
+| **Transverse-longitudinal separation** | **✓ (v2.0+)** | Particle vs Mesh (§7) |
+| **Structural conservation laws** | **✓ (rigorous in v2.1)** | step(p) does not change σ or δt; conservation is automatic |
+| Non-privileging of time | ✓ | t equal to other axes; time is V[t].θ₀ (§6.4) |
+| **All five operational principles satisfied** | **✓ (v2.1)** | null transparency, in-place, type integrity, exchangeability, reversibility (§6.2.1) |
+| Finite representability | ✓ | ≤ 608 byte per particle, +1.6 KB for whole universe (§5.4, §7.6) |
 
 ---
 
@@ -545,36 +585,44 @@ About 1 KB for the entire universe. For $N$ particles, total memory is $640N + 1
 - δt clarified from "proper time step" to "processing step period"
 - "Time" is a derived quantity appearing as V[t-axis].θ₀
 
-### §9.2 Structural Extension
+### §9.2 Structural Extension and Refinement
 
-- δV and δδt added to Particle (v1.0's Particle is included as a subset)
+**Added in v2.0** (continued in v2.1):
+
+- δV added to Particle (v1.0's Particle is included as a subset)
 - Mesh structure newly introduced (not present in v1.0)
+
+**Added in v2.0 and removed in v2.1**:
+
+- Particle's `δδt` field (removed for conservation/reversibility violations)
+- Mesh's `δδt_mesh` field (same reason)
+- Mesh's `H_xyz_inphase` mode (cannot explain observed generational mass hierarchy; replaced with axis-specific modes such as `H_z`)
 
 ### §9.3 Compatibility with [W8] Table A
 
-The 62-particle classification of [W8] Table A remains valid in v2.0. However, the Higgs, instead of being counted as a Particle, is **counted as an excitation of the Mesh's H_xyz_inphase mode** — an interpretive update. The total count (61 SM states + 1 graviton = 62) is unchanged (only the counting interpretation is updated).
+The 62-particle classification of [W8] Table A remains valid in v2.1. The Higgs is positioned as an **excitation of the Mesh's H_z mode** (the H_xyz_inphase proposed in v2.0 has been corrected in v2.1, consistent with [W11] §8.5). The total count (61 SM states + 1 graviton = 62) is unchanged.
 
 ---
 
 ## §10 Conclusion
 
-Essence of v2.0:
+Essence of v2.1:
 
 - **xyzt are frequencies** (natural interpretation in phase space)
 - **6 axes are completely symmetric** (4 position-type + R + Q)
 - **Transverse (Particle) and longitudinal (Mesh) are separated**
-- **Acceleration is δδt** (change in processing period)
+- **Basic operation step(p) updates only V** (satisfies all 5 principles; acceleration effects are separated into interaction processing)
 - **Time is V[t].θ₀** (a position phase, advancing per particle)
 - **All operations close under int256 integer arithmetic**
 
 With this structure, the dynamics rules (D2, separate paper) can describe:
 
-- Gravitational time dilation, polarization rotation (free motion + background coupling)
-- Higgs mechanism (coupling to Mesh's H_xyz_inphase)
-- Gravitational wave emission (excitation of Mesh's H_xy_anti)
+- Gravitational time dilation, polarization rotation (particle-Mesh interaction)
+- Higgs mechanism (Mesh.H_z VEV coupling to particle's σ.k_z)
+- Gravitational wave emission (excitation of Mesh.H_xy_anti mode)
 - Coulomb 2-body problem (inter-particle interaction)
 
-all within the same framework.
+all within the same framework. All acceleration effects are realized within interaction processing in a manner that respects conservation laws and reversibility.
 
 This paper is a design specification; these dynamical applications are deferred to separate papers.
 
