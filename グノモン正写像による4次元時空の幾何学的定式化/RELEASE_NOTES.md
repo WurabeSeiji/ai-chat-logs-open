@@ -25,6 +25,14 @@
 **内容：** 論文2の対称性II（軸の対等性）と対称性IV（主観座標系の変換可能性）から、複数の主観空間の同時構成可能性、内部観測者の取得情報の限界、軸の役割の交換と観測の相対性を導出。物理的解釈は行わず幾何学的命題に限定。  
 **DOI：** https://doi.org/10.5281/zenodo.19435162
 
+### 中心投影合成演算（CP-Comp、純粋代数論文、2026-05-07 公開）
+
+**タイトル（日本語）**：中心投影の合成演算と合成曲率半径の閉形式 ── 1 回の中心投影と球面上の可換切断による高次元削減の代数的定式化  
+**タイトル（英語）**：Composition of Central Projection and the Closed Form of the Composite Curvature Radius — An Algebraic Formulation of High-Dimensional Reduction via One Central Projection and Commutative Cuts on the Sphere  
+**内容：** 中心投影による次元削減の代数的基礎を、純粋代数論文として独立に定式化。第一段階（真の中心投影 π : ℝⁿ → Sⁿ⁻¹(r₁)、1 回限り）と第二段階（球面上での可換な軸切断 σ_S）の本質的差異を明示。合成曲率半径の閉形式 r_final² = r₁² − Σ(x_i*)² を導出し、軸切断操作がアーベル半群を成すことを証明。物理的解釈・特定の次元の必然性は明示的に out of scope とし、x₁..xₙ 抽象表記で統一。論文体系全体の「**反論不可能な代数的基礎**」として機能する基幹論文。  
+**Concept DOI**：[10.5281/zenodo.20060728](https://doi.org/10.5281/zenodo.20060728)  
+**v1 DOI**：[10.5281/zenodo.20060729](https://doi.org/10.5281/zenodo.20060729)
+
 ### 論文4〜8（サブフォルダに収録）
 
 論文4〜8は `主観空間曲率半径の極限と次元追加・各次元の構図/` フォルダに収録。詳細は同フォルダの [RELEASE_NOTES.md](主観空間曲率半径の極限と次元追加・各次元の構図/RELEASE_NOTES.md) を参照。
@@ -86,6 +94,32 @@
 ---
 
 ## 更新履歴
+
+### 2026-05-07: 中心投影合成演算（CP-Comp）論文 新規公開
+
+**新規論文公開**：純粋代数論文として論文体系の代数的基礎を独立に定式化。
+
+- **タイトル**：中心投影の合成演算と合成曲率半径の閉形式 ── 1 回の中心投影と球面上の可換切断による高次元削減の代数的定式化
+- **Concept DOI**：[10.5281/zenodo.20060728](https://doi.org/10.5281/zenodo.20060728)
+- **v1 DOI**：[10.5281/zenodo.20060729](https://doi.org/10.5281/zenodo.20060729)
+
+**核心結果**：
+- 第一段階（中心投影 π : ℝⁿ → Sⁿ⁻¹(r₁)、1 回限り）と第二段階（球面上での可換な軸切断 σ_S）の本質的差異の明確化
+- ピタゴラス的閉形式 r_final² = r₁² − Σ_{i ∈ S}(x_i*)² の導出
+- 軸切断操作 {σ_S} がアーベル半群を成すことの証明
+- 残存座標の不変性（系2）と合成切断の可逆性（系3）の証明
+
+**戦略的意図**：
+- xyztRQ や物理応用の具体名を**完全に排除**し、x₁, ..., xₙ 抽象表記に統一
+- 引用は最小限（Snyder 1987 / Howie 1995 / 論文1）の3件のみ
+- 論文体系全体に「反論不可能な代数的基礎」を提供
+- 8/1 シグマサロン発表で論文 7・8 の前段として提示する基幹論文
+
+**公開先（4 プラットフォーム同時）**：
+- Zenodo：https://zenodo.org/records/20060729 （md/tex/pdf × 日英 = 6 ファイル）
+- note 日本語：https://note.com/kiharanoriaki/n/n1bd7b7446ac4
+- note 英語：https://note.com/kiharanoriaki/n/ne867c5c7c569
+- Zenn：articles/central-projection-composition.md（git push で自動公開）
 
 ### 2026-04-26: W11 v6 軸型対称性による構造改訂
 
@@ -318,6 +352,19 @@
 
 ## 収録ファイル一覧
 
+### 中心投影合成演算（CP-Comp、2026-05-07）
+
+| ファイル名 | 説明 |
+|---|---|
+| `central_projection_composition_jp.md` | Markdown（日本語版） |
+| `central_projection_composition_jp.tex` | LaTeXソース（日本語版） |
+| `central_projection_composition_jp.pdf` | PDF（日本語版） |
+| `central_projection_composition_en.md` | Markdown（英語版） |
+| `central_projection_composition_en.tex` | LaTeXソース（英語版） |
+| `central_projection_composition_en.pdf` | PDF（英語版） |
+| `note_article_中心投影合成演算.md` | note 記事本文（日本語版） |
+| `note_article_central_projection_composition_en.md` | note 記事本文（英語版） |
+
 ### 論文1：基礎定式化
 
 | ファイル名 | 説明 |
@@ -384,6 +431,7 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-05-07 | 中心投影合成演算（CP-Comp）論文 v1 新規公開。純粋代数論文として論文体系の代数的基礎を独立に定式化。Concept DOI: [10.5281/zenodo.20060728](https://doi.org/10.5281/zenodo.20060728)、v1 DOI: [10.5281/zenodo.20060729](https://doi.org/10.5281/zenodo.20060729)。第一段階（中心投影 π : ℝⁿ → Sⁿ⁻¹(r₁)、1 回限り）と第二段階（球面上での可換な軸切断 σ_S）の本質的差異を明示、ピタゴラス的閉形式 r_final² = r₁² − Σ(x_i*)² を導出、アーベル半群構造を確立。xyztRQ など物理応用記号を完全排除し x₁..xₙ 抽象表記で統一、引用は 3 件のみ（Snyder 1987 / Howie 1995 / 論文1）。Zenodo + note JA + note EN + Zenn の 4 プラットフォーム同時公開。日英 md/tex/pdf 全 6 ファイル + note 記事日英 2 ファイル + Zenn 記事 1 ファイル |
 | 2026-04-28 | 論文8（Rev.2）：§4を「半径 R=2k+1 の4次元球への単位立方体の稠密充填」として全面再定式化。初版v1の充填率定数 2/π²≈0.2026 → Rev.2 で k→∞ で1に漸近収束する数列 N(k)（1, 137, 1545, 7281, …）を導出。命題5.1（角の立方体16個が球面上に厳密に内接）の証明、Lagrange–Jacobi 四平方和 r₄(N)=8σ(N) を§5.3に追加。§7以降は (2k+1)⁴ → N(k) の置換のみで論証構造を保持。Zenodo新バージョン公開（DOI: 10.5281/zenodo.19834940、Concept DOI: 10.5281/zenodo.19533312、各6ファイル）。Zenn記事・note日英・ハンドアウト日英（md/tex/pdf）にRev.2反映 |
 | 2026-04-23 | 位相方程式篇 W10・W11公開：W10「形不変波の4つのモード」（DOI: 10.5281/zenodo.19709798）、W11「形不変波の相互作用」（DOI: 10.5281/zenodo.19709800）。Zenodo公開済み。note記事をW1〜W11に拡張、Academia.edu PDFアップロード、Zenn記事に第VI部追加 |
 | 2026-04-22 | 位相方程式篇 一般公開：note記事「超直方体の組合せ論から標準模型の62粒子を導出する」公開（https://note.com/kiharanoriaki/n/na95064891249）、Facebook投稿、X（@NoriakiKihara）投稿。Zenn新記事「位相方程式篇（W1〜W9）」公開済み。Academia.edu W3〜W9 PDFアップロード済み |
