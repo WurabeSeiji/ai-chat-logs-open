@@ -1,0 +1,727 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{luatexja}
+\usepackage{luatexja-fontspec}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{geometry}
+\geometry{a4paper, margin=25mm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=blue, linkcolor=blue, citecolor=blue}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage{calc}
+\usepackage{etoolbox}
+
+% Theorem environments (Japanese)
+\newtheorem{theorem}{定理}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定義}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{注意}
+\newtheorem{observation}[theorem]{観察}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Pandoc requirements
+\providecommand{\pandocbounded}[1]{#1}
+\setlength{\emergencystretch}{3em}
+
+\title{中心投影の合成演算と合成曲率半径の閉形式}
+\date{1
+回の中心投影と球面上の可換切断による高次元削減の代数的定式化 \\[1ex] 2026-05}
+\author{木原 範昭（Noriaki Kihara） \\ \small WF System Co.,
+Ltd. \\ \small ORCID: 0009-0004-6753-4020}
+
+\begin{document}
+\maketitle
+
+\section{概要}\label{ux6982ux8981}
+
+n 次元ユークリッド空間から d
+次元目標空間への中心投影による次元削減は、しばしば「複数軸での順次中心投影の合成」として記述される。本論文はこの記述が一般に不正確であることを指摘し、正しい定式化を与える。
+
+主結果は以下の通り：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{第一段階}：ユークリッド背景 ℝⁿ から半径 r₁ の (n−1) 次元球面
+  Sⁿ⁻¹(r₁) への\textbf{中心投影は 1
+  回限り}である。これが真の意味での次元削減写像である。
+\item
+  \textbf{第二段階以降}：既に球面 Sⁿ⁻¹(r₁)
+  上にある点に対する「軸方向操作」は、中心投影ではなく\textbf{球面上の同時刻面切断}である。これは曲率半径のみを変化させる操作で、ユークリッド背景座標との直接の関係は持たない。
+\item
+  \textbf{可換性}：球面上の異なる軸での切断操作は完全に\textbf{可換}である。
+\item
+  \textbf{合成曲率半径の閉形式}：軸の集合 S = \{i₁, \ldots, i\_k\} ⊆
+  \{1, \ldots, n\} で順次切断を行った後の最終球面半径は
+\end{itemize}
+
+\[
+r_{\rm final}^{2} \;=\; r_{1}^{2} \;-\; \sum_{j=1}^{k}\bigl(x_{i_j}^{*}\bigr)^{2}
+\]
+
+ここで x\_\{i\_j\}* は \textbf{1 回目の中心投影直後の球面上での軸
+x\_\{i\_j\} 成分の値}である。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{代数構造}：軸切断操作 \{σ\_i\} はアーベル半群を成し、合成 σ\_S
+  は軸の部分集合 S にのみ依存する。
+\end{itemize}
+
+これにより、任意の n 次元から d \textless{} n
+次元への削減が、軸選択の組合せに対する閉じた演算として統一的に記述される。
+
+公開情報：
+
+\begin{itemize}
+\tightlist
+\item
+  DOI（Concept、最新版に自動転送）：\href{https://doi.org/10.5281/zenodo.20060728}{10.5281/zenodo.20060728}
+\item
+  DOI（v1）：\href{https://doi.org/10.5281/zenodo.20060729}{10.5281/zenodo.20060729}
+\item
+  ライセンス：CC BY 4.0
+\item
+  形式：md / tex / pdf × 日英 = 6 ファイル
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{1. 序論}\label{ux5e8fux8ad6}
+
+\subsection{1.1 動機}\label{ux52d5ux6a5f}
+
+中心投影（central projection、放射射影、gnomonic
+projection）は、ユークリッド空間の点を球面または接平面に放射状に投影する古典的な幾何学的操作である
+{[}1{]}。
+
+n 次元ユークリッド空間から d 次元目標空間（d \textless{}
+n）への次元削減を実現するために、k = n − d
+個の軸を選んで順次中心投影を施す、という記述がなされることがある
+{[}3{]}。例えば次のような記述である：
+
+\begin{quote}
+「n 次元空間において軸 x\_\{i₁\}, x\_\{i₂\}, \ldots, x\_\{i\_k\}
+を選び、それぞれの軸方向に順次中心投影を施して n − k
+次元空間に削減する」
+\end{quote}
+
+しかしこの記述には、操作の意味が複数の解釈を許す曖昧さがある。具体的には、1
+回目の操作と 2
+回目以降の操作が\textbf{本質的に異なる種類の写像}である、という事実が見過ごされやすい。
+
+\subsection{1.2
+本論文の目的}\label{ux672cux8ad6ux6587ux306eux76eeux7684}
+
+本論文の目的は次の三点である：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  中心投影の合成における 1 回目と 2 回目以降の本質的差異を明確にする
+\item
+  2
+  回目以降の正しい操作は「球面上での同時刻面切断」であり、これが可換であることを示す
+\item
+  合成曲率半径の閉形式を導出し、軸切断操作の代数構造（アーベル半群）を確立する
+\end{enumerate}
+
+\subsection{1.3
+本論文が扱わないこと}\label{ux672cux8ad6ux6587ux304cux6271ux308fux306aux3044ux3053ux3068}
+
+本論文は純粋に幾何学的な代数構造の論文である。次の事項は扱わない：
+
+\begin{itemize}
+\tightlist
+\item
+  軸 x\_i
+  の物理的解釈（時空、観測者、ゲージ、相対論などにおける具体的な意味）
+\item
+  軸選択 S の物理的意味
+\item
+  特定の次元 (n, d) の物理的必然性
+\item
+  ユークリッド以外の背景（擬リーマン計量、曲がった多様体など）への一般化
+\end{itemize}
+
+これらは本論文の代数的結果を前提として、別途検討される問題である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{2.
+中心投影と切断操作の定式化}\label{ux4e2dux5fc3ux6295ux5f71ux3068ux5207ux65adux64cdux4f5cux306eux5b9aux5f0fux5316}
+
+\subsection{2.1 中心投影
+π：ユークリッド背景から球面へ}\label{ux4e2dux5fc3ux6295ux5f71-ux3c0ux30e6ux30fcux30afux30eaux30c3ux30c9ux80ccux666fux304bux3089ux7403ux9762ux3078}
+
+n 次元ユークリッド空間 ℝⁿ の点 P = (x₁, \ldots, xₙ)（P ≠ 0）を、原点 O
+を中心とする半径 r₁ の (n−1) 次元球面：
+
+\[
+S^{n-1}(r_1) \;:=\; \bigl\{X \in \mathbb{R}^{n} \;\big|\; \lVert X\rVert = r_1\bigr\}
+\]
+
+に放射状に写す写像：
+
+\[
+\pi(P) \;=\; \frac{r_1}{\lVert P\rVert} P
+\]
+
+を\textbf{中心投影}と呼ぶ。これは ℝⁿ ∖ \{O\} から Sⁿ⁻¹(r₁) への
+well-defined な写像である。
+
+中心投影 π は次の性質を持つ：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{(P1) 像の制約}：‖π(P)‖ = r₁（任意の P に対して）
+\item
+  \textbf{(P2) 方向の保存}：π(P) は P と同じ放射方向を持つ
+\item
+  \textbf{(P3) 像の次元}：像 π(P) は (n−1) 次元多様体 Sⁿ⁻¹(r₁) 上の点
+\end{itemize}
+
+\subsection{2.2
+球面上の点の軸成分}\label{ux7403ux9762ux4e0aux306eux70b9ux306eux8ef8ux6210ux5206}
+
+中心投影後の点 P' = π(P) ∈ Sⁿ⁻¹(r₁) は、ℝⁿ の n 個の座標成分を持つ：
+
+\[
+P' \;=\; (x_1', x_2', \ldots, x_n'), \qquad x_i' \;=\; \frac{r_1}{\lVert P\rVert} x_i
+\]
+
+軸 x\_i に対応する成分 x\_i' を、\textbf{球面上での軸 x\_i
+成分}と呼び、以下では x\_i* と記す：
+
+\[
+x_i^{*} \;:=\; \frac{r_1}{\lVert P\rVert} x_i
+\]
+
+これは P が決まれば一意に定まる量である。
+
+\subsection{2.3 球面上の同時刻面切断
+σ\_i}\label{ux7403ux9762ux4e0aux306eux540cux6642ux523bux9762ux5207ux65ad-ux3c3_i}
+
+球面 Sⁿ⁻¹(r) 上の点 X の軸 x\_i 成分を c
+に固定する操作を考える。すなわち、超平面 Σ\_i(c) := \{X ∈ ℝⁿ \textbar{}
+x\_i = c\} と球面 Sⁿ⁻¹(r) の交わり：
+
+\[
+S^{n-1}(r) \cap \Sigma_i(c) \;=\; \bigl\{X \;\big|\; \lVert X\rVert = r,\; x_i = c\bigr\}
+\]
+
+を取る。\textbar c\textbar{} ≤ r のとき、この交わりは半径
+
+\[
+r' \;=\; \sqrt{r^{2} - c^{2}}
+\]
+
+の (n−2) 次元球面に同型である。これを軸 x\_i を除いた (n−1)
+次元空間の中の球面 Sⁿ⁻²(r') と同一視する。
+
+この操作を \textbf{軸 x\_i での切断} と呼び、σ\_i で表す：
+
+\[
+\sigma_{i}: S^{n-1}(r) \;\longrightarrow\; S^{n-2}(r'), \qquad r' = \sqrt{r^{2} - c^{2}}
+\]
+
+ここで c は固定された値であり、本論文では \textbf{1
+回目の中心投影直後の球面上での軸 x\_i 成分 x\_i*} を c として採用する。
+
+\subsection{2.4
+中心投影と切断の本質的差異}\label{ux4e2dux5fc3ux6295ux5f71ux3068ux5207ux65adux306eux672cux8ceaux7684ux5deeux7570}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+性質 & 中心投影 π & 切断 σ\_i \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+入力 & ユークリッド背景 ℝⁿ の点 & 球面 Sⁿ⁻¹(r) 上の点 \\
+出力 & 球面 Sⁿ⁻¹(r₁) 上の点 & 球面 Sⁿ⁻²(r') 上の点 \\
+次元削減 & n → (n−1) 多様体 & (n−1) → (n−2) 多様体 \\
+半径 & r₁（与えられる） & r' = √(r² − c²)（決まる） \\
+ユークリッド背景への参照 & 直接 & なし（球面内在的） \\
+\end{longtable}
+}
+
+中心投影は「ユークリッド背景から曲面への写像」であり、切断は「曲面上の幾何学的操作」である。両者は同じ「次元削減操作」と呼ばれることがあるが、\textbf{本質的に異なる種類の写像}である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{3.
+切断操作の可換性}\label{ux5207ux65adux64cdux4f5cux306eux53efux63dbux6027}
+
+\subsection{3.1
+主定理：可換性}\label{ux4e3bux5b9aux7406ux53efux63dbux6027}
+
+\textbf{定理 1（切断の可換性）}：球面 Sⁿ⁻¹(r) 上の異なる二軸 x\_i,
+x\_j（i ≠ j）に対する切断操作 σ\_i, σ\_j は可換である：
+
+\[
+\sigma_j \circ \sigma_i \;=\; \sigma_i \circ \sigma_j
+\]
+
+\textbf{証明}：σ\_i の作用は、点 X = (x₁, \ldots, xₙ) ∈ Sⁿ⁻¹(r)
+に対して：
+
+\begin{itemize}
+\tightlist
+\item
+  軸 x\_i の成分を c\_i に固定（c\_i = x\_i*）
+\item
+  結果として残る (n−1) 次元空間の点は X から軸 x\_i を除いたもの
+\item
+  残った点は球面 Sⁿ⁻²(r') 上にある、ここで r' = √(r² − c\_i²)
+\end{itemize}
+
+軸 x\_j の成分 c\_j は、切断 σ\_i によって\textbf{変化しない}（軸 x\_i
+を除く操作なので、他軸の値はそのまま）。
+
+順序 1：σ\_j ∘ σ\_i の場合、
+
+\begin{itemize}
+\tightlist
+\item
+  σ\_i で半径が r → √(r² − c\_i²) になり、軸 x\_i が消える
+\item
+  σ\_j で半径が √(r² − c\_i²) → √(r² − c\_i² − c\_j²) になり、軸 x\_j
+  が消える
+\item
+  最終半径：√(r² − c\_i² − c\_j²)
+\end{itemize}
+
+順序 2：σ\_i ∘ σ\_j の場合、
+
+\begin{itemize}
+\tightlist
+\item
+  σ\_j で半径が r → √(r² − c\_j²) になり、軸 x\_j が消える
+\item
+  σ\_i で半径が √(r² − c\_j²) → √(r² − c\_j² − c\_i²) になり、軸 x\_i
+  が消える
+\item
+  最終半径：√(r² − c\_j² − c\_i²) = √(r² − c\_i² − c\_j²)
+\end{itemize}
+
+両者は同じ半径を持ち、残る座標成分も同じ（軸 x\_i と軸 x\_j
+両方が消えた残り）。よって写像として一致する。∎
+
+\subsection{3.2 一般化：k
+軸切断の可換性}\label{ux4e00ux822cux5316k-ux8ef8ux5207ux65adux306eux53efux63dbux6027}
+
+\textbf{系 1（k 軸切断の可換性）}：互いに異なる k 個の軸 x\_\{i\_1\},
+\ldots, x\_\{i\_k\} に対する切断 σ\_\{i\_1\}, \ldots, σ\_\{i\_k\}
+は、任意の順列に対して同じ写像を与える：
+
+\[
+\sigma_{i_{\tau(1)}} \circ \sigma_{i_{\tau(2)}} \circ \cdots \circ \sigma_{i_{\tau(k)}} \;=\; \sigma_{i_1} \circ \sigma_{i_2} \circ \cdots \circ \sigma_{i_k}
+\]
+
+ここで τ は \{1, \ldots, k\} の任意の順列である。
+
+\textbf{証明}：定理 1 より任意の隣接二要素は交換可能であり、置換群 S\_k
+は隣接互換で生成される。∎
+
+\subsection{3.3
+軸の集合による合成切断}\label{ux8ef8ux306eux96c6ux5408ux306bux3088ux308bux5408ux6210ux5207ux65ad}
+
+\textbf{定義 2（合成切断）}：軸の集合 S = \{i₁, \ldots, i\_k\} ⊆ \{1,
+\ldots, n\} に対する合成切断 σ\_S を：
+
+\[
+\sigma_S \;:=\; \sigma_{i_1} \circ \sigma_{i_2} \circ \cdots \circ \sigma_{i_k}
+\]
+
+として定義する。系 1 より、これは順序によらず S のみによって決まる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{4.
+合成曲率半径の閉形式}\label{ux5408ux6210ux66f2ux7387ux534aux5f84ux306eux9589ux5f62ux5f0f}
+
+\subsection{4.1
+主定理：合成曲率半径}\label{ux4e3bux5b9aux7406ux5408ux6210ux66f2ux7387ux534aux5f84}
+
+\textbf{定理 2（合成曲率半径）}：1 回目の中心投影で半径 r₁ の球面
+Sⁿ⁻¹(r₁) に投影された後、軸の集合 S = \{i₁, \ldots, i\_k\} で合成切断
+σ\_S を施した後の最終球面半径は：
+
+\[
+\boxed{\;r_{\rm final}^{2} \;=\; r_{1}^{2} \;-\; \sum_{j=1}^{k}\bigl(x_{i_j}^{*}\bigr)^{2}\;}
+\]
+
+ここで x\_\{i\_j\}* は 1 回目の中心投影直後の球面上での軸 x\_\{i\_j\}
+成分である。
+
+\textbf{証明}：定理 1（または系 1）の証明過程で、各切断によって r² は
+(x\_\{i\_j\}*)² だけ減少することが示されている。これを k 回繰り返すと：
+
+\[
+r_{\rm final}^{2} \;=\; r_{1}^{2} - (x_{i_1}^{*})^{2} - (x_{i_2}^{*})^{2} - \cdots - (x_{i_k}^{*})^{2}
+\]
+
+順序によらないので閉形式として上記が成立する。∎
+
+\subsection{4.2
+ピタゴラス的構造}\label{ux30d4ux30bfux30b4ux30e9ux30b9ux7684ux69cbux9020}
+
+合成曲率半径の式は、各切断軸の寄与が \textbf{(x\_\{i\_j\}*)² の和}
+として入る形をしている。これはピタゴラスの定理の高次元版に他ならない。
+
+具体的には、原点を中心とする球面 Sⁿ⁻¹(r₁) 上の点 P = (x₁, \ldots, xₙ)
+について、
+
+\[
+r_1^{2} \;=\; \sum_{i=1}^{n} x_i^{2}
+\]
+
+である。軸の集合 S で切断すると、軸 x\_\{i\_j\} 成分 (x\_\{i\_j\}*)
+が球面の半径から「差し引かれる」形になり、残る (n−k)
+個の軸成分が新しい球面の半径を構成する：
+
+\[
+r_{\rm final}^{2} \;=\; \sum_{i \notin S} x_i^{2} \;=\; r_1^{2} - \sum_{i \in S} (x_i^{*})^{2}
+\]
+
+これは「球面上の点の座標成分が、軸の集合による直交分解として独立に寄与する」ことを意味する。
+
+\subsection{4.3
+残存座標の不変性}\label{ux6b8bux5b58ux5ea7ux6a19ux306eux4e0dux5909ux6027}
+
+\textbf{系 2（残存座標の不変性）}：軸の集合 S で合成切断を施しても、S
+に含まれない軸の座標成分は変化しない。すなわち：
+
+\[
+\bigl(\sigma_S(P)\bigr)_i \;=\; x_i \qquad \text{for all } i \notin S
+\]
+
+\textbf{証明}：各切断 σ\_i は軸 x\_i
+の成分を消す操作であり、他軸の成分には触れない。よって S 全体での合成
+σ\_S を施しても、S に含まれない軸の成分は不変である。∎
+
+\subsection{4.4
+合成切断の可逆性}\label{ux5408ux6210ux5207ux65adux306eux53efux9006ux6027}
+
+\textbf{系 3（可逆性）}：合成切断 σ\_S は、切断軸の値の集合 \{x\_i*\}（i
+∈ S）と、切断後の球面 S\^{}\{n−\textbar S\textbar−1\}(r\_final) 上の像点
+σ\_S(P) とから、切断前の球面 Sⁿ⁻¹(r₁) 上の点 P
+を一意に復元する逆写像が存在する。
+
+\textbf{証明}：切断後の像点 σ\_S(P) は (n − \textbar S\textbar)
+個の座標成分を持ち、そのいずれも系 2
+により切断前の値そのままである。切断軸の値 x\_i*（i ∈
+S）も保存されている。よって元の球面 Sⁿ⁻¹(r₁) 上の点 P の n
+個の座標成分はすべて復元可能である。半径は定理 2 により r₁² = r\_final²
++ Σ(x\_i*)² として一意に定まる。∎
+
+\textbf{特に}、k = n − 1（最終球面が 0 次元、すなわち 1
+次元数直線上の二点）に縮退する場合でも、本系は成立する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{5.
+代数構造：アーベル半群}\label{ux4ee3ux6570ux69cbux9020ux30a2ux30fcux30d9ux30ebux534aux7fa4}
+
+\subsection{5.1
+集合演算による合成}\label{ux96c6ux5408ux6f14ux7b97ux306bux3088ux308bux5408ux6210}
+
+\textbf{定理 3（集合演算による合成）}：軸の集合 S, T ⊆ \{1, \ldots, n\}
+に対して、S ∩ T = ∅ ならば：
+
+\[
+\sigma_{S \cup T} \;=\; \sigma_S \circ \sigma_T
+\]
+
+\textbf{証明}：定義から、両辺はいずれも S ∪ T
+のすべての軸での切断の合成となる。系 1
+より順序によらないため、両辺は等しい。∎
+
+\subsection{5.2 半群の構造}\label{ux534aux7fa4ux306eux69cbux9020}
+
+軸切断操作の集合 \{σ\_S \textbar{} S ⊆ \{1, \ldots, n\}\}
+は次の構造を持つ：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{演算}：合成 ∘
+\item
+  \textbf{可換性}：σ\_S ∘ σ\_T = σ\_T ∘ σ\_S（S ∩ T = ∅ のとき）
+\item
+  \textbf{結合則}：(σ\_S ∘ σ\_T) ∘ σ\_U = σ\_S ∘ (σ\_T ∘ σ\_U)（S, T, U
+  互いに素）
+\item
+  \textbf{単位元}：σ\_∅ = id（恒等写像）
+\end{itemize}
+
+これは部分集合の合併演算（互いに素な場合）に同型な\textbf{アーベル半群}
+{[}2{]}
+の構造である。逆元は存在しない（次元を増やす逆操作が定義されていない）ので、群ではなく半群である。
+
+\subsection{5.3
+全体構造の統合}\label{ux5168ux4f53ux69cbux9020ux306eux7d71ux5408}
+
+n 次元ユークリッド空間から d 次元最終空間への削減全体は：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{第一段階（中心投影）}：π: ℝⁿ → Sⁿ⁻¹(r₁)、1 回限り
+\item
+  \textbf{第二段階（合成切断）}：σ\_S: Sⁿ⁻¹(r₁) →
+  Sᵈ⁻¹(r\_final)、\textbar S\textbar{} = n − d 個の軸
+\end{enumerate}
+
+合成された全体写像は：
+
+\[
+\Phi_{S} \;=\; \sigma_S \circ \pi \;:\; \mathbb{R}^{n} \setminus \{O\} \;\longrightarrow\; S^{d-1}(r_{\rm final})
+\]
+
+最終半径は r\_final² = r₁² − Σ\_\{i ∈ S\}(x\_i*)²
+として閉形式で計算可能である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{6. 数値検証}\label{ux6570ux5024ux691cux8a3c}
+
+\subsection{6.1 7 次元 → 5
+次元の例}\label{ux6b21ux5143-5-ux6b21ux5143ux306eux4f8b}
+
+7 次元ユークリッド点 P = (1, 2, 3, 4, 10, 5, 3) について、r₁ = 10
+で中心投影し、その後 2 軸（x₅, x₆）で合成切断する。
+
+\textbf{中心投影}：
+
+‖P‖ = √(1 + 4 + 9 + 16 + 100 + 25 + 9) = √164 ≈ 12.806
+
+中心投影後：P' = (10/√164) · P ≈ (0.781, 1.562, 2.343, 3.123, 7.809,
+3.904, 2.343)
+
+軸 x₅ 成分：x\_5* ≈ 3.904（元の値 5 に r₁/‖P‖ を掛けたもの）
+
+軸 x₆ 成分：x\_6* ≈ 2.343（元の値 3 に r₁/‖P‖ を掛けたもの）
+
+\textbf{合成切断}：
+
+順序 A（x₅ → x₆）：
+
+\begin{itemize}
+\tightlist
+\item
+  軸 x₅ 切断後の半径：√(10² − 3.904²) = √(100 − 15.244) ≈ √84.756 ≈
+  9.206
+\item
+  軸 x₆ 切断後の半径：√(9.206² − 2.343²) = √(84.756 − 5.488) ≈ √79.268 ≈
+  8.903
+\end{itemize}
+
+順序 B（x₆ → x₅）：
+
+\begin{itemize}
+\tightlist
+\item
+  軸 x₆ 切断後の半径：√(10² − 2.343²) = √(100 − 5.488) ≈ √94.512 ≈ 9.722
+\item
+  軸 x₅ 切断後の半径：√(9.722² − 3.904²) = √(94.512 − 15.244) ≈ √79.268
+  ≈ 8.903
+\end{itemize}
+
+両順序で最終半径 r\_final ≈ 8.903 と一致する。
+
+\textbf{閉形式による検算}：
+
+\[
+r_{\rm final}^{2} \;=\; r_{1}^{2} - (x_5^{*})^{2} - (x_6^{*})^{2} \;=\; 100 - 15.244 - 5.488 \;=\; 79.268
+\]
+
+\[
+r_{\rm final} \;=\; \sqrt{79.268} \;\approx\; 8.903
+\]
+
+順序 A、順序 B、閉形式すべてが一致する。
+
+\subsection{6.2
+残存座標の不変性の確認}\label{ux6b8bux5b58ux5ea7ux6a19ux306eux4e0dux5909ux6027ux306eux78baux8a8d}
+
+合成切断後の最終点 5 次元成分：
+
+\[
+(0.781, 1.562, 2.343, 3.123, 7.809)
+\]
+
+これは中心投影直後 P' の最初の 5
+成分そのものであり、切断操作によって変化していない。系 2 を確認する。
+
+\subsection{6.3
+可逆性の確認}\label{ux53efux9006ux6027ux306eux78baux8a8d}
+
+切断後の 5 次元成分 (0.781, 1.562, 2.343, 3.123, 7.809) と、切断軸の値
+x\_5* = 3.904、x\_6* = 2.343 を用いて、切断前の球面 S⁶(r₁ = 10)
+上の点を復元する：
+
+\[
+P' \;=\; (0.781, 1.562, 2.343, 3.123, 7.809, 3.904, 2.343)
+\]
+
+これは元の P' そのものであり、‖P'‖ = 10 = r₁ も復元される。系 3
+を確認する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{7.
+既存記述との整合性}\label{ux65e2ux5b58ux8a18ux8ff0ux3068ux306eux6574ux5408ux6027}
+
+\subsection{7.1
+「複数軸での順次中心投影」の解釈}\label{ux8907ux6570ux8ef8ux3067ux306eux9806ux6b21ux4e2dux5fc3ux6295ux5f71ux306eux89e3ux91c8}
+
+n 次元から d
+次元への削減を「複数の軸で順次中心投影する」と記述する場合、本論文の定式化では次のように解釈される：
+
+\begin{itemize}
+\tightlist
+\item
+  「1 回目の中心投影」：実際にユークリッド背景から球面への中心投影 π
+\item
+  「2 回目以降の中心投影」：球面上での切断操作 σ\_i
+\end{itemize}
+
+両者を区別せず「中心投影」と呼ぶことは可能だが、その場合：
+
+\begin{itemize}
+\tightlist
+\item
+  1 回目：ℝⁿ → Sⁿ⁻¹(r₁)、真の次元削減
+\item
+  2 回目以降：Sᵐ(r) → Sᵐ⁻¹(r')、球面間の次元削減
+\end{itemize}
+
+という二段階構造が暗黙に想定されていることに注意が必要である。
+
+\subsection{7.2
+順序依存性に関する注意}\label{ux9806ux5e8fux4f9dux5b58ux6027ux306bux95a2ux3059ux308bux6ce8ux610f}
+
+ユークリッド背景での「軸 x\_i で投影」を「全座標を x\_i
+で割る」と単純に解釈すると、複数軸での合成は順序依存となる場合がある。具体的には、軸
+x\_i で投影した後の球面上の点を、再びユークリッド背景の点として扱って軸
+x\_j で投影しようとすると、操作の意味が曖昧になる。
+
+本論文の枠組みでは、1 回目の中心投影後は「球面上の点」として扱い、2
+回目以降は球面上の切断 σ\_j
+を適用する。この区別により、合成は完全に可換となる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{8. 結論}\label{ux7d50ux8ad6}
+
+本論文は次を確立した：
+
+\begin{itemize}
+\tightlist
+\item
+  中心投影による次元削減は、本質的に \textbf{1 回の真の中心投影 +
+  球面上での k 回の切断操作}として構成される
+\item
+  球面上の切断操作は完全に\textbf{可換}であり、軸の集合に対する閉じた合成演算
+  σ\_S が定義される
+\item
+  合成曲率半径は閉形式
+\end{itemize}
+
+\[
+r_{\rm final}^{2} \;=\; r_{1}^{2} - \sum_{i \in S}(x_i^{*})^{2}
+\]
+
+として与えられ、ピタゴラス的な直交分解構造を持つ -
+切断操作の集合はアーベル半群を成す -
+残存座標は切断操作によって不変である -
+合成切断は、切断軸の値と切断後の像点から元の球面上の点を一意に復元できる、すなわち\textbf{可逆である}
+
+これらの代数的構造は、高次元から低次元への削減を扱う各種の幾何学的・物理学的枠組みにおける基礎言語として機能する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{9. 残された問題}\label{ux6b8bux3055ux308cux305fux554fux984c}
+
+本論文は純粋に幾何学的な代数構造の論文である。次の問題は本論文の射程外であり、別途検討される：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{物理的解釈}：軸 x\_i の物理的意味、特定の (n, d)
+  の必然性、観測者との関係
+\item
+  \textbf{逆操作の代数構造}：可逆性（系
+  3）は写像レベルで存在するが、これを切断操作の集合の代数構造として群構造に拡張するか、あるいは半群のままにとどめるかは選択の問題である
+\item
+  \textbf{非ユークリッド背景}：擬リーマン計量や曲がった背景多様体での同様の構造
+\item
+  \textbf{群論的拡張}：軸選択を変える変換（連続的な軸の取り方）の群論的構造（古典的な変換群との対応）
+\item
+  \textbf{連続的な切断値}：本論文では切断値 c を 1
+  回目の中心投影直後の球面成分 x\_i* に固定したが、より一般の c
+  に対する切断の代数構造
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+{[}1{]} Snyder, J.P. (1987). \emph{Map Projections---A Working Manual}.
+U.S. Geological Survey Professional Paper 1395, U.S. Government Printing
+Office, Washington, D.C.
+（中心投影を含む地図投影の現代的標準教科書。本論文 §1.1, §2.1
+で中心投影の古典的定義の出典として参照。）
+
+{[}2{]} Howie, J.M. (1995). \emph{Fundamentals of Semigroup Theory}.
+London Mathematical Society Monographs, New Series, Vol. 12, Oxford
+University Press. （半群理論の標準教科書。本論文 §5
+のアーベル半群構造の出典として参照。）
+
+{[}3{]} Kihara, N. (2026). 中心投影による4次元空間の幾何学的定式化.
+Zenodo. DOI:
+\href{https://doi.org/10.5281/zenodo.19427780}{10.5281/zenodo.19427780}.
+（中心投影フレームワークの基礎論文。本論文 §1.1
+で批判対象としている「複数軸での順次中心投影」という informal
+な記述の出典の一つ。本論文の代数的結果は、上記参照論文における応用文脈とは独立に成立する。）
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{著者情報}\label{ux8457ux8005ux60c5ux5831}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{著者}：木原 範昭（Noriaki Kihara）
+\item
+  \textbf{所属}：WF System Co., Ltd.~／ 大阪大学基礎工学部 卒業（1983）
+\item
+  \textbf{ORCID}：\href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020}
+\item
+  \textbf{ライセンス}：CC BY 4.0
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{注記}：本論文は中心投影による次元削減の代数的基礎を独立に与える論文である。本論文の代数的結果は、具体的な次元・軸選択・物理的解釈に依存せず、これらを必要とする任意の応用に対して普遍的な基盤を提供する。具体的な応用は別論文で展開される。
+
+\end{document}
