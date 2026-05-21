@@ -253,6 +253,15 @@ print(f"α⁻¹ = {alpha_inv:.6f}")  # 137.036010
 - **位相方程式篇（W1〜W11）**：[Zenn 記事](https://zenn.dev/noriaki_kihara/articles/phase-equation-hypercube-particle-classification)
 - **中心投影による空間の幾何学的定式化（10論文）**：[Zenn 記事](https://zenn.dev/noriaki_kihara/articles/gnomonic-projection-spacetime-geometry)
 
+### α 恒等式 3 部作
+
+本恒等式（論文 7）を起点に、α の幾何学的起源を 3 層で位置付ける論文群が発展しています：
+
+- **論文 7（本稿）**：$\alpha^{-1} = 137 + (\pi^2/2)\alpha$ の発見 ─ **代数的観察**
+- [**論文 8**（Wilson 同型性）](https://zenn.dev/noriaki_kihara/articles/alpha-isomorphism-lattice-gauge) ─ Schläfli 双対 + B₄ 同変性による構造的対応 ─ **数学的対応**
+- [**論文 9**（2D 面振動モードによる物理的解釈）](https://zenn.dev/noriaki_kihara/articles/paper9-2d-mode-drift) ─ α=面積次元から 2D 面モードを選別し、$(\pi^2/2)\alpha$ をゼロ点振動の集団寄与として読む ─ **物理的内容**
+- [**論文 7 補講**（α 二次補正の幾何学的観察）](https://zenn.dev/noriaki_kihara/articles/paper7-supplement-second-order-observation) ─ 残差 8.7 ppb の幾何学的解釈
+
 ---
 
 ## 結論

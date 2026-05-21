@@ -216,12 +216,14 @@ $$\delta = \frac{\pi^2}{2} - \alpha^{-1}(\alpha^{-1} - 137) \approx 0.001619$$
 - **論文 7**（α 恒等式、8.7 ppb 精度）：https://doi.org/10.5281/zenodo.19869266
 - **論文 8**（α 同型、Wilson 構造的対応）：https://doi.org/10.5281/zenodo.19880467
 - **本補講**（α 二次補正の幾何学的観察）：https://doi.org/10.5281/zenodo.19933729
+- **論文 9**（2D 面振動モードによる物理的解釈）：https://doi.org/10.5281/zenodo.20319436
 - **Working Paper**（思考実験ノート、6D 拡張の含意）：https://doi.org/10.5281/zenodo.19902677
 
 ### Zenn 関連記事
 
 - [α 恒等式（論文 7）](https://zenn.dev/noriaki_kihara/articles/alpha-identity-4d-geometry)
 - [α 同型（論文 8、Wilson との圏論的同型）](https://zenn.dev/noriaki_kihara/articles/alpha-isomorphism-lattice-gauge)
+- [論文 9（2D 面振動モードによる物理的解釈）](https://zenn.dev/noriaki_kihara/articles/paper9-2d-mode-drift)
 - [BH 熱力学プログラム（中核 6 篇）](https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection)
 - [Working Paper（6D 拡張の思考実験）](https://zenn.dev/noriaki_kihara/articles/rethinking-xyztRQ-thought-experiment)
 - [中心投影フレームワーク（10 論文）](https://zenn.dev/noriaki_kihara/articles/gnomonic-projection-spacetime-geometry)
@@ -231,6 +233,8 @@ $$\delta = \frac{\pi^2}{2} - \alpha^{-1}(\alpha^{-1} - 137) \approx 0.001619$$
 
 - [α 二次補正の幾何学的観察（日本語）](https://note.com/kiharanoriaki/n/ne1dc24c07455)
 - [Paper 7 Supplement on Second-Order Observation (English)](https://note.com/kiharanoriaki/n/n268fa839f6c4)
+- [論文 9：2D 面振動モードによる物理的解釈（日本語）](https://note.com/kiharanoriaki/n/nd7ae96120b66)
+- [Paper 9: Physical Interpretation via 2D Surface Vibration Modes (English)](https://note.com/kiharanoriaki/n/nf9b18cb9a254)
 
 ---
 

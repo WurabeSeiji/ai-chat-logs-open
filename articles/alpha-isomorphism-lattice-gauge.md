@@ -199,7 +199,17 @@ V_4(R) = N(k) + Δ(R)
 ## 関連プログラム
 
 - **論文7：α 恒等式**（自己整合恒等式の発見、8.7 ppb 精度）：[Zenn 記事](https://zenn.dev/noriaki_kihara/articles/alpha-identity-4d-geometry)
+- **論文 9：2D 面振動モードによる物理的解釈**（本論文の構造的対応の物理的内容）：[Zenn 記事](https://zenn.dev/noriaki_kihara/articles/paper9-2d-mode-drift)
+- **論文 7 補講：α 二次補正の幾何学的観察**：[Zenn 記事](https://zenn.dev/noriaki_kihara/articles/paper7-supplement-second-order-observation)
 - **BH熱力学プログラム（中核6篇）**：[Zenn 記事](https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection)
+
+### α 恒等式 3 部作の位置付け
+
+- **論文 7**：$\alpha^{-1} = 137 + (\pi^2/2)\alpha$ の発見 ─ 代数的観察
+- **論文 8（本稿）**：Schläfli 双対 + B₄ 同変性による構造的対応 ─ **数学的対応**
+- **論文 9**：α=面積次元 → 2D 面モード選別 → $(\pi^2/2)\alpha$ をプラケット作用と読む ─ **物理的内容**
+
+本稿の Wilson 同型性は、論文 9 において **物理的に位置付け** られます：W7 自己整合方程式は Wilson 格子ゲージ理論のプラケット作用構造の、4D 球幾何上での具体化として読める、というのが論文 9 の核心です。
 
 ---
 
