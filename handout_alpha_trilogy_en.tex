@@ -1,0 +1,317 @@
+% !TEX program = pdflatex
+\documentclass[9pt,a4paper]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{top=1.0cm,bottom=0.9cm,left=1.2cm,right=1.2cm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+\setlist{nosep,leftmargin=1.0em,topsep=0pt,partopsep=0pt}
+\pagestyle{empty}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{12pt}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Geometric Origin of the Fine-Structure Constant $\alpha$\\ --- Trilogy (Papers 7, 8, 9)}\\[2pt]
+{\small Noriaki Kihara\enspace WF System Co., Ltd.\enspace Osaka University, Faculty of Engineering Science (B.Eng.)\enspace ORCID: \href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020}}
+\end{center}
+
+\vspace{-1pt}
+\hrule height 0.7pt
+\vspace{4pt}
+
+\begin{tcolorbox}[colback=gray!7,colframe=gray!55,boxrule=0.4pt,arc=2pt,left=4pt,right=4pt,top=2pt,bottom=2pt]
+{\small
+\textbf{Overview of the trilogy: Observation $\to$ Structure $\to$ Physical Content}\enspace
+Two elementary geometric quantities of the 4D unit ball satisfy the self-consistent equation
+\[ \alpha^{-1} = 137 + \tfrac{\pi^2}{2}\alpha \quad\Longleftrightarrow\quad \tfrac{\pi^2}{2}\alpha^2 + 137\alpha - 1 = 0 \]
+whose positive root agrees with the CODATA value at \textbf{8.7 ppb} precision (about 1/3000 of Eddington-style integer fitting deviation). This trilogy positions its geometric origin in three layers:\\[1pt]
+$\bullet$ \textbf{Paper 7 (Algebraic observation)}: discovery of the identity and establishment of numerical precision\\
+$\bullet$ \textbf{Paper 8 (Mathematical correspondence)}: \textbf{structural isomorphism} with Wilson standard lattice gauge theory on the 4D chain complex\\
+$\bullet$ \textbf{Paper 9 (Physical content)}: from the area dimensionality of $\alpha$, only 2D face vibration modes contribute. $\pi^2/2$ is their position phase space measure, and $(\pi^2/2)\alpha$ is the collective zero-point contribution. Physically isomorphic to Wilson plaquette action.\\[1pt]
+\textbf{Common caveat}\enspace Neither paper claims a first-principles derivation of $\alpha$. Paper 9's scope is only the Thomson limit $\alpha^{-1}(Q^2 \to 0)$; the high-energy running is deferred to standard QED as future work.}
+\end{tcolorbox}
+
+\vspace{2pt}
+
+\begin{multicols}{2}
+\small
+
+\textbf{\large Paper 7: $\alpha$ Identity (Algebraic Observation)}
+
+\smallskip
+\textbf{Direct counting of $N(1) = 137$}\enspace
+Unit cubes centered on integer points fully contained in the 4-ball of radius $R = 3$, enumerated by absolute-value patterns $(s_1,\ldots,s_4)$ satisfying $\sum_i (|c_i|+1/2)^2 \le 9$:
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}lr@{\hspace{1em}}lr@{}}
+\toprule
+Pattern & Count & Pattern & Count \\
+\midrule
+$(0,0,0,0)$ & 1 & $(1,1,1,1)$ & 16 \\
+$(1,0,0,0)$ & 8 & $(2,0,0,0)$ & 8 \\
+$(1,1,0,0)$ & 24 & $(2,1,0,0)$ & 48 \\
+$(1,1,1,0)$ & 32 & Total & \textbf{137} \\
+\bottomrule
+\end{tabular}
+}
+
+\smallskip
+\textbf{$V_4(1) = \pi^2/2$ standard formula}\enspace
+$V_n(R) = \pi^{n/2}/\Gamma(n/2+1) \cdot R^n$ with $n=4, R=1$ gives $V_4(1) = \pi^2/2 \approx 4.9348$.
+
+\smallskip
+\textbf{Numerical verification (pocket calculator)}
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}ll@{}}
+\toprule
+$V_4(1) = \pi^2/2$ & $\approx 4.9348022$ \\
+$N(1)$ & $= 137$ \\
+$D = 137^2 + 2\pi^2$ & $\approx 18788.7392$ \\
+$\alpha$ (high precision) & $\approx 7.29735194 \times 10^{-3}$ \\
+$\alpha^{-1}$ (predicted) & $\approx 137.0360110$ \\
+$\alpha^{-1}$ (CODATA 2018) & $= 137.0359991\ldots$ \\
+Relative error & $\mathbf{8.7 \times 10^{-8}}$ \\
+\bottomrule
+\end{tabular}
+}
+
+\smallskip
+\textbf{Differences from the Eddington trap}\enspace
+(1) Not a single integer-fitting formula but a \textbf{self-consistent equation} including $\alpha$ itself. (2) Both $137$ and $\pi^2/2$ are \textbf{directly derived from independent 4D geometry}. (3) The perturbative form $1 = 137\alpha + V_4(1)\alpha^2$ is analogous to QFT renormalisation structure.
+
+\smallskip
+\textbf{DOI}\enspace
+{\scriptsize Concept: \href{https://doi.org/10.5281/zenodo.19869266}{10.5281/zenodo.19869266}\enspace v3: \href{https://doi.org/10.5281/zenodo.19876200}{10.5281/zenodo.19876200}}
+
+\columnbreak
+
+\textbf{\large Paper 8: Wilson Isomorphism (Mathematical Correspondence)}
+
+\smallskip
+\textbf{Chain complex on $\mathbb{Z}^4$}\enspace
+Standard hierarchy:
+\begin{itemize}[topsep=1pt]
+\item $C_0$ vertex / $C_1$ link / $C_2$ plaquette
+\item $C_3$ 3-cell / $C_4$ 4-cell (tesseract)
+\item Hypercubic symmetry group $B_4$ (order 384) acts equivariantly
+\end{itemize}
+
+\smallskip
+\textbf{Schl\"afli duality connects the two formalisms}\enspace
+Tesseract $\{4,3,3\}$ and 16-cell $\{3,3,4\}$ are self-dual:
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}ll@{}}
+\toprule
+$\Lambda$ side (Wilson) & $\Lambda^*$ side (Kihara) \\
+\midrule
+$C_1$ link (gauge field $U_\ell$) & $C_3$ 3-cell \\
+$C_2$ plaquette (action) & $C_2$ plaquette (self-dual) \\
+$C_4$ 4-cell & $C_0$ site (packing center) \\
+\bottomrule
+\end{tabular}
+}
+
+\smallskip
+\textbf{Discrete Stokes ($\partial^2=0$) common to both}:
+\begin{itemize}[topsep=1pt]
+\item Wilson: plaquette sum $\to$ boundary Wilson loop
+\item Kihara: bulk packing $\to$ boundary $\Delta(R)$
+\end{itemize}
+
+\smallskip
+\textbf{Main theorem (Structural correspondence)}\enspace
+{\footnotesize Wilson configuration $\mathcal{C}_W$ and Kihara configuration $\mathcal{C}_K$ are \textbf{structurally isomorphic as chain complexes} on the 4D Euclidean lattice via a $B_4$-equivariant chain map $D$ (Schl\"afli duality).}
+
+\smallskip
+\textbf{Chain-complex reading of inside/outside decomposition}\enspace
+$1 = 137\alpha + V_4(1)\alpha^2$ is the bulk-boundary normalisation:
+\begin{itemize}[topsep=1pt]
+\item $137\alpha$: $C_4$ bulk (137 cells) tree-level
+\item $V_4(1)\alpha^2$: $C_3$ boundary self-energy correction
+\end{itemize}
+
+\smallskip
+\textbf{Consequence: Bidirectional tool sharing}\enspace
+Wilson strong-coupling expansion $\leftrightarrow$ inclusion-exclusion, Monte Carlo $\leftrightarrow$ numerical verification, RG $\leftrightarrow$ continuum limit, Lagrange--Jacobi $r_4(N)=8\sigma(N)$ $\leftrightarrow$ partition function.
+
+\smallskip
+\textbf{DOI}\enspace
+{\scriptsize Concept: \href{https://doi.org/10.5281/zenodo.19880467}{10.5281/zenodo.19880467}\enspace v2: \href{https://doi.org/10.5281/zenodo.19881119}{10.5281/zenodo.19881119}}
+
+\end{multicols}
+
+\newpage
+
+\begin{center}
+{\large\bfseries Paper 9: Physical Interpretation via 2D Surface Vibration Modes (Physical Content)}
+\end{center}
+
+\vspace{2pt}
+
+\begin{tcolorbox}[colback=gray!7,colframe=gray!55,boxrule=0.4pt,arc=2pt,left=4pt,right=4pt,top=2pt,bottom=2pt]
+{\small
+\textbf{Core: $\pi^2/2$ is read not as $V_4(1)$ but as the position phase space measure of 2D face modes}\enspace
+Although $\alpha$ is dimensionless, since $\sigma_T \propto \alpha^2$, it is physically \textbf{area-dimensional}. Therefore, among 4D space vibration modes, only \textbf{2D face modes} can contribute to $\alpha$ under isotropic averaging (0D/1D/3D/4D vanish by directional cancellation; 2D area is scalar and survives). The integral of position degrees of freedom for placing 2D faces of 137 hypercubes in the 4D unit ball is
+\[ \int_{B_4(1)} dV = \frac{\pi^2}{2} \]
+which coincides numerically with $V_4(1)$. The collective zero-point vibration $\tfrac{1}{2}\hbar\omega$ of each 2D face mode produces the $(\pi^2/2)\alpha \approx 0.036$ drift. This has \textbf{identical structure} to Wilson plaquette action (physical content of Paper 8 isomorphism).}
+\end{tcolorbox}
+
+\vspace{2pt}
+
+\begin{multicols}{2}
+\small
+
+\textbf{Dimensional analysis of $\alpha$}\enspace
+Quantities through which $\alpha$ participates physically appear as $\alpha^2$:
+\begin{itemize}[topsep=1pt]
+\item Thomson: $\sigma_T = (8\pi/3) r_e^2 \propto \alpha^2 \cdot (\text{length})^2$
+\item Rutherford: $d\sigma/d\Omega \propto \alpha^2 \cdot (\text{length})^2$
+\item Classical electron radius: $r_e = \alpha \cdot \hbar/(mc)$
+\end{itemize}
+$\therefore$ $\alpha$ is a ``geometric square root of area''---a quantity coupling to 2D structures.
+
+\smallskip
+\textbf{Dimensional selection of vibration modes}\enspace
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}llc@{}}
+\toprule
+Dim. & Property & Avg. result \\
+\midrule
+0D vertex & vector position & zero \\
+1D edge & has direction & zero \\
+\textbf{2D face} & \textbf{scalar quantity} & \textbf{survives} \\
+3D solid & pseudoscalar & zero \\
+4D 4-cell & pseudoscalar & zero \\
+\bottomrule
+\end{tabular}
+}
+
+\smallskip
+\textbf{Reading the physical meaning of $\pi^2/2$}
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}ll@{}}
+\toprule
+Old (W7) & 4D unit ball volume $V_4(1)$ \\
+\textbf{New (W9)} & \textbf{2D face mode position phase space measure} \\
+\bottomrule
+\end{tabular}
+}
+
+\smallskip
+The two are numerically identical but physically different. Since $\alpha$ couples to 2D face modes, the volume of their position phase space necessarily appears as the geometric coefficient of the coupling.
+
+\columnbreak
+
+\textbf{Correspondence with Wilson plaquette action (physicalised)}
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}ll@{}}
+\toprule
+Wilson lattice & W7 self-consistency (W9 reading) \\
+\midrule
+$\beta = 1/g^2$ & $\alpha^{-1}$ \\
+plaquette (2-form) & 2D face vibration mode \\
+plaquette count $\sum_p$ & $\pi^2/2$ (position phase space) \\
+$\beta \sum_p \text{Re tr}(U_p)$ & $(\pi^2/2)\alpha$ \\
+Cell (4D hard core) & 137 \\
+Total action & $\alpha^{-1} = 137 + (\pi^2/2)\alpha$ \\
+\bottomrule
+\end{tabular}
+}
+
+\smallskip
+\textbf{Consequence: physical content of W8 isomorphism}\enspace
+The W7 self-consistent equation is the \textbf{realisation} of the plaquette action structure of Wilson lattice gauge theory on the 4D ball geometry.
+
+\smallskip
+\textbf{Scope and limitations}\enspace
+This paper addresses only $\alpha^{-1}(Q^2 \to 0) = 137.036$ (Thomson limit). The running to $\alpha^{-1}(M_Z) \approx 127.95$ is left to standard QED:
+\begin{itemize}[topsep=1pt]
+\item Layer 1: 137 (integer, geometric invariant, Paper 6)
+\item Layer 2: $(\pi^2/2)\alpha \approx 0.036$ (\textbf{this paper})
+\item Layer 3: $\Delta\alpha_{SM}(Q^2)$ (standard QED)
+\end{itemize}
+
+\smallskip
+\textbf{Theoretical lower bound on observed $\alpha$}\enspace
+2D face mode zero-point vibrations have finite distribution width from the uncertainty principle. $\alpha$ is not a sharp point but the center of a distribution.
+
+\smallskip
+\textbf{DOI}\enspace
+{\scriptsize Concept: \href{https://doi.org/10.5281/zenodo.20319436}{10.5281/zenodo.20319436}\enspace v1: \href{https://doi.org/10.5281/zenodo.20319437}{10.5281/zenodo.20319437}}
+
+\end{multicols}
+
+\vspace{2pt}
+\hrule height 0.4pt
+\vspace{3pt}
+
+\textbf{\small Common open problems (trilogy)}\enspace
+{\footnotesize $\bullet$ Geometric identification of the 8.7 ppb residual ($\alpha^3$-order correction; partially observed in Paper 7 Supplement, Concept DOI \href{https://doi.org/10.5281/zenodo.19933729}{10.5281/zenodo.19933729})\enspace
+$\bullet$ Privileged role of R=3 (why $N(1)$ corresponds to electron)\enspace
+$\bullet$ First-principles derivation of mechanism candidates (vacuum polarisation / boundary degrees / Higgs longitudinal mode)\enspace
+$\bullet$ Geometric reformulation of high-energy running (Paper 9 §8, future task)\enspace
+$\bullet$ Generalisation to other gauge groups (SU(2), SU(3))\enspace
+$\bullet$ Projection to physical (3+1)-dim spacetime\enspace
+$\bullet$ Generational mass hierarchy out of scope}
+
+\smallskip
+\textbf{\small What the trilogy does NOT claim (common)}\enspace
+{\footnotesize First-principles derivation of $\alpha$ / 4+1-dim physical spacetime / replacement of Eddington-style predictions / new observable signatures / independent derivation of $\alpha(M_Z)$ running (deferred to standard QED)}
+
+\vspace{3pt}
+\hrule height 0.4pt
+\vspace{3pt}
+
+\begin{center}
+{\footnotesize\textbf{Zenodo $\cdot$ note $\cdot$ Zenn Resources}}
+\end{center}
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}lll@{}}
+\toprule
+& Paper 7 ($\alpha$ identity) & Paper 9 (2D mode interpretation) \\
+\midrule
+note JA & \href{https://note.com/kiharanoriaki/n/n19cc13927c51}{n19cc13927c51} & \href{https://note.com/kiharanoriaki/n/nd7ae96120b66}{nd7ae96120b66} \\
+note EN & \href{https://note.com/kiharanoriaki/n/n01d98237ddae}{n01d98237ddae} & \href{https://note.com/kiharanoriaki/n/nf9b18cb9a254}{nf9b18cb9a254} \\
+Zenn article & \href{https://zenn.dev/noriaki_kihara/articles/alpha-identity-4d-geometry}{alpha-identity-4d-geometry} & \href{https://zenn.dev/noriaki_kihara/articles/paper9-2d-mode-drift}{paper9-2d-mode-drift} \\
+\midrule
+& Paper 8 (Wilson isomorphism) & Paper 7 Supplement (2nd-order) \\
+\midrule
+note JA & \href{https://note.com/kiharanoriaki/n/n87df7a4977e7}{n87df7a4977e7} & \href{https://note.com/kiharanoriaki/n/ne1dc24c07455}{ne1dc24c07455} \\
+note EN & \href{https://note.com/kiharanoriaki/n/n9c37c6f99a0a}{n9c37c6f99a0a} & \href{https://note.com/kiharanoriaki/n/n268fa839f6c4}{n268fa839f6c4} \\
+Zenn article & \href{https://zenn.dev/noriaki_kihara/articles/alpha-isomorphism-lattice-gauge}{alpha-isomorphism-lattice-gauge} & \href{https://zenn.dev/noriaki_kihara/articles/paper7-supplement-second-order-observation}{paper7-supplement-second-order-observation} \\
+\bottomrule
+\end{tabular}
+}
+
+\vspace{3pt}
+{\footnotesize\textbf{Source code (GitHub)}\enspace
+\url{https://github.com/WurabeSeiji/ai-chat-logs-open}\\[1pt]
+\textbf{Related programs}\enspace
+BH Thermodynamics Program (core 6 papers): \href{https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection}{Zenn}\enspace
+Phase Equation Series (W1--W11): \href{https://zenn.dev/noriaki_kihara/articles/phase-equation-hypercube-particle-classification}{Zenn}\enspace
+Working Paper (6D extension): \href{https://doi.org/10.5281/zenodo.19902677}{Zenodo}}
+
+\end{document}

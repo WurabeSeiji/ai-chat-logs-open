@@ -1,0 +1,318 @@
+% !TEX program = lualatex
+\documentclass[9pt,a4paper]{ltjsarticle}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{top=1.0cm,bottom=0.9cm,left=1.2cm,right=1.2cm}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{luatexja-fontspec}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+\setlist{nosep,leftmargin=1.0em,topsep=0pt,partopsep=0pt}
+\pagestyle{empty}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{12pt}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries 微細構造定数 $\alpha$ の幾何学的起源 ── 3 部作（論文 7・8・9）}\\[2pt]
+{\small 木原 範昭（Noriaki Kihara）\enspace WF System Co., Ltd.\enspace 大阪大学 基礎工学部 卒業\enspace ORCID: \href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020}}
+\end{center}
+
+\vspace{-1pt}
+\hrule height 0.7pt
+\vspace{4pt}
+
+\begin{tcolorbox}[colback=gray!7,colframe=gray!55,boxrule=0.4pt,arc=2pt,left=4pt,right=4pt,top=2pt,bottom=2pt]
+{\small
+\textbf{3 部作の全体像：観察 $\to$ 構造 $\to$ 物理的内容}\enspace
+4次元単位球の二つの初等的幾何学量から構成される自己整合方程式
+\[ \alpha^{-1} = 137 + \tfrac{\pi^2}{2}\alpha \quad\Longleftrightarrow\quad \tfrac{\pi^2}{2}\alpha^2 + 137\alpha - 1 = 0 \]
+の正根が CODATA 観測値と \textbf{8.7 ppb} で一致する（Eddington 整数当てのズレの約 1/3000）。本 3 部作はこの幾何学的起源を 3 層で位置付ける：\\[1pt]
+$\bullet$ \textbf{論文 7（代数的観察）}：恒等式の発見と数値精度の確立\\
+$\bullet$ \textbf{論文 8（数学的対応）}：4D 鎖複体上で Wilson 標準格子ゲージ理論と \textbf{構造的同型}\\
+$\bullet$ \textbf{論文 9（物理的内容）}：$\alpha$ の面積次元性から 2D 面振動モードのみが寄与すると選別。$\pi^2/2$ はその位置位相空間測度、$(\pi^2/2)\alpha$ はゼロ点振動の集団的寄与。Wilson プラケット作用と物理的に同型。\\[1pt]
+\textbf{留保（共通）}\enspace 3 部作はいずれも $\alpha$ の第一原理導出を主張しない。論文 9 の射程は Thomson 極限 $\alpha^{-1}(Q^2 \to 0)$ のみで、高エネルギー running は標準 QED に委譲し将来課題として残す。}
+\end{tcolorbox}
+
+\vspace{2pt}
+
+\begin{multicols}{2}
+\small
+
+\textbf{\large 論文 7：$\alpha$ 恒等式（代数的観察）}
+
+\smallskip
+\textbf{$N(1) = 137$ の直接計数}\enspace
+半径 $R=3$ の4次元球内に整数中心の単位立方体が完全包含される条件 $\sum_i (|c_i|+1/2)^2 \le 9$ を中心の絶対値パターン $(s_1,\ldots,s_4)$ で列挙：
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}lr@{\hspace{1em}}lr@{}}
+\toprule
+パターン & 個数 & パターン & 個数 \\
+\midrule
+$(0,0,0,0)$ & 1 & $(1,1,1,1)$ & 16 \\
+$(1,0,0,0)$ & 8 & $(2,0,0,0)$ & 8 \\
+$(1,1,0,0)$ & 24 & $(2,1,0,0)$ & 48 \\
+$(1,1,1,0)$ & 32 & 合計 & \textbf{137} \\
+\bottomrule
+\end{tabular}
+}
+
+\smallskip
+\textbf{$V_4(1) = \pi^2/2$ の標準公式}\enspace
+$V_n(R) = \pi^{n/2}/\Gamma(n/2+1) \cdot R^n$ で $n=4, R=1$ から $V_4(1) = \pi^2/2 \approx 4.9348$。
+
+\smallskip
+\textbf{数値検証（電卓レベル）}
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}ll@{}}
+\toprule
+$V_4(1) = \pi^2/2$ & $\approx 4.9348022$ \\
+$N(1)$ & $= 137$ \\
+$D = 137^2 + 2\pi^2$ & $\approx 18788.7392$ \\
+$\alpha$（高精度） & $\approx 7.29735194 \times 10^{-3}$ \\
+$\alpha^{-1}$（予言） & $\approx 137.0360110$ \\
+$\alpha^{-1}$（CODATA 2018）& $= 137.0359991\ldots$ \\
+相対誤差 & $\mathbf{8.7 \times 10^{-8}}$ \\
+\bottomrule
+\end{tabular}
+}
+
+\smallskip
+\textbf{Eddington 罠との差異}\enspace
+(1) 整数当ての単一式ではなく、$\alpha$ 自身を含む\textbf{自己整合方程式}。(2) $137$ と $\pi^2/2$ が\textbf{独立な4次元幾何学から直接派生}。(3) 摂動展開 $1 = 137\alpha + V_4(1)\alpha^2$ が QFT 繰り込み構造と類比的。
+
+\smallskip
+\textbf{DOI}\enspace
+{\scriptsize Concept: \href{https://doi.org/10.5281/zenodo.19869266}{10.5281/zenodo.19869266}\enspace v3: \href{https://doi.org/10.5281/zenodo.19876200}{10.5281/zenodo.19876200}}
+
+\columnbreak
+
+\textbf{\large 論文 8：Wilson 同型性（数学的対応）}
+
+\smallskip
+\textbf{4D 超立方格子の鎖複体}\enspace
+$\mathbb{Z}^4$ 上に標準的階層：
+\begin{itemize}[topsep=1pt]
+\item $C_0$ 頂点 / $C_1$ リンク / $C_2$ プラケット
+\item $C_3$ 3-cell / $C_4$ 4-cell（テッセラクト）
+\item 超立方対称群 $B_4$（位数 384）が同変的に作用
+\end{itemize}
+
+\smallskip
+\textbf{Schl\"afli 双対が結ぶ二つの formalism}\enspace
+テッセラクト $\{4,3,3\}$ と 16-cell $\{3,3,4\}$ は自己双対：
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}ll@{}}
+\toprule
+$\Lambda$ 側（Wilson） & $\Lambda^*$ 側（Kihara） \\
+\midrule
+$C_1$ リンク（ゲージ場 $U_\ell$） & $C_3$ 3-cell \\
+$C_2$ プラケット（作用） & $C_2$ プラケット（自己双対） \\
+$C_4$ 4-cell & $C_0$ サイト（充填中心） \\
+\bottomrule
+\end{tabular}
+}
+
+\smallskip
+\textbf{離散 Stokes の定理（$\partial^2=0$）が両者共通}：
+\begin{itemize}[topsep=1pt]
+\item Wilson：プラケット和 $\to$ 境界 Wilson loop
+\item Kihara：bulk 充填 $\to$ 境界 $\Delta(R)$
+\end{itemize}
+
+\smallskip
+\textbf{主定理（構造的対応）}\enspace
+{\footnotesize Wilson 配置 $\mathcal{C}_W$ と Kihara 配置 $\mathcal{C}_K$ は、$B_4$-同変 chain map $D$（Schl\"afli 双対）を介して、4次元 Euclidean 格子上の鎖複体として\textbf{構造的に同型}である。}
+
+\smallskip
+\textbf{inside/outside 分解の鎖複体的読み替え}\enspace
+$1 = 137\alpha + V_4(1)\alpha^2$ は bulk-boundary 規格化条件：
+\begin{itemize}[topsep=1pt]
+\item $137\alpha$：$C_4$ bulk（137 セル）の tree-level
+\item $V_4(1)\alpha^2$：$C_3$ 境界自由度の補正
+\end{itemize}
+
+\smallskip
+\textbf{帰結：双方向の道具流用}\enspace
+Wilson 強結合展開 $\leftrightarrow$ 包除原理、モンテカルロ $\leftrightarrow$ 数値検証、RG $\leftrightarrow$ 連続極限、Lagrange--Jacobi $r_4(N)=8\sigma(N)$ $\leftrightarrow$ partition function。
+
+\smallskip
+\textbf{DOI}\enspace
+{\scriptsize Concept: \href{https://doi.org/10.5281/zenodo.19880467}{10.5281/zenodo.19880467}\enspace v2: \href{https://doi.org/10.5281/zenodo.19881119}{10.5281/zenodo.19881119}}
+
+\end{multicols}
+
+\newpage
+
+\begin{center}
+{\large\bfseries 論文 9：2D 面振動モードによる物理的解釈（物理的内容）}
+\end{center}
+
+\vspace{2pt}
+
+\begin{tcolorbox}[colback=gray!7,colframe=gray!55,boxrule=0.4pt,arc=2pt,left=4pt,right=4pt,top=2pt,bottom=2pt]
+{\small
+\textbf{核心：$\pi^2/2$ は $V_4(1)$ ではなく、2D 面モードの位置位相空間測度として読む}\enspace
+$\alpha$ は dimensionless だが、$\sigma_T \propto \alpha^2$ より物理的に\textbf{面積次元}を持つ。したがって 4D 空間の振動モードのうち、等方平均下で $\alpha$ に寄与しうるのは\textbf{2D 面モードのみ}（0D/1D/3D/4D は方向性により平均ゼロ、2D 面積はスカラー量で生き残る）。137 個の超立方体の 2D 面を 4D 単位球内に配置できる位置自由度の積分が
+\[ \int_{B_4(1)} dV = \frac{\pi^2}{2} \]
+で、これは数値的に $V_4(1)$ と一致する。各 2D 面モードのゼロ点振動 $\tfrac{1}{2}\hbar\omega$ の集団的寄与が $(\pi^2/2)\alpha \approx 0.036$ ドリフトを生む。これは Wilson 格子ゲージ理論のプラケット作用と\textbf{同一構造}（論文 8 同型性の物理的内容）。}
+\end{tcolorbox}
+
+\vspace{2pt}
+
+\begin{multicols}{2}
+\small
+
+\textbf{$\alpha$ の dimensional analysis}\enspace
+$\alpha$ が物理的に関与する量は $\alpha^2$ として現れる：
+\begin{itemize}[topsep=1pt]
+\item Thomson 散乱：$\sigma_T = (8\pi/3) r_e^2 \propto \alpha^2 \cdot$(長さ)$^2$
+\item Rutherford 散乱：$d\sigma/d\Omega \propto \alpha^2 \cdot$(長さ)$^2$
+\item 古典電子半径：$r_e = \alpha \cdot \hbar/(mc)$
+\end{itemize}
+$\therefore$ $\alpha$ は「面積の幾何学的平方根」、2D 構造に結合する量。
+
+\smallskip
+\textbf{振動モードの次元別選別}\enspace
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}llc@{}}
+\toprule
+次元 & 性質 & 平均化結果 \\
+\midrule
+0D 頂点 & ベクトル位置 & ゼロ \\
+1D 辺 & 方向を持つ & ゼロ \\
+\textbf{2D 面} & \textbf{スカラー量} & \textbf{生存} \\
+3D 立体 & 擬スカラー & ゼロ \\
+4D 4-胞 & 擬スカラー & ゼロ \\
+\bottomrule
+\end{tabular}
+}
+
+\smallskip
+\textbf{$\pi^2/2$ の物理的解釈の読み替え}
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}ll@{}}
+\toprule
+旧（W7） & 4D 単位球体積 $V_4(1)$ \\
+\textbf{新（W9）} & \textbf{2D 面モードの位置位相空間測度} \\
+\bottomrule
+\end{tabular}
+}
+
+\smallskip
+両者は数値的に同一だが物理的意味は異なる。$\alpha$ が 2D 面モードに結合する以上、その位置位相空間体積が結合定数の幾何学的係数として現れる必然性が明確化。
+
+\columnbreak
+
+\textbf{Wilson プラケット作用との対応（物理化）}
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}ll@{}}
+\toprule
+Wilson 格子 & W7 自己整合（W9 解釈） \\
+\midrule
+$\beta = 1/g^2$ & $\alpha^{-1}$ \\
+プラケット（2-form） & 2D 面振動モード \\
+プラケット数 $\sum_p$ & $\pi^2/2$（位置位相空間） \\
+$\beta \sum_p \text{Re tr}(U_p)$ & $(\pi^2/2)\alpha$ \\
+Cell（4D hard core） & 137 \\
+全作用 & $\alpha^{-1} = 137 + (\pi^2/2)\alpha$ \\
+\bottomrule
+\end{tabular}
+}
+
+\smallskip
+\textbf{帰結：W8 同型性の物理的内容}\enspace
+W7 自己整合方程式は、Wilson 格子ゲージ理論のプラケット作用構造の、4D 球幾何上での\textbf{具体化}である。
+
+\smallskip
+\textbf{Scope と限界}\enspace
+本論文は $\alpha^{-1}(Q^2 \to 0) = 137.036$（Thomson 極限）のみ。$\alpha^{-1}(M_Z) \approx 127.95$ への running は標準 QED に委譲：
+\begin{itemize}[topsep=1pt]
+\item 階層 1：137（整数、幾何不変、論文 6）
+\item 階層 2：$(\pi^2/2)\alpha \approx 0.036$（\textbf{本論文}）
+\item 階層 3：$\Delta\alpha_{SM}(Q^2)$（標準 QED）
+\end{itemize}
+
+\smallskip
+\textbf{観測される $\alpha$ の理論的下限幅}\enspace
+2D 面モードのゼロ点振動は不確定性原理から有限の分布幅を持つ。$\alpha$ は鋭い点ではなく分布の中心値。
+
+\smallskip
+\textbf{DOI}\enspace
+{\scriptsize Concept: \href{https://doi.org/10.5281/zenodo.20319436}{10.5281/zenodo.20319436}\enspace v1: \href{https://doi.org/10.5281/zenodo.20319437}{10.5281/zenodo.20319437}}
+
+\end{multicols}
+
+\vspace{2pt}
+\hrule height 0.4pt
+\vspace{3pt}
+
+\textbf{\small 3 部作共通の開問題}\enspace
+{\footnotesize $\bullet$ 残差 8.7 ppb の幾何学的同定（$\alpha^3$ オーダー補正、論文 7 補講で部分的観察、Concept DOI \href{https://doi.org/10.5281/zenodo.19933729}{10.5281/zenodo.19933729}）\enspace
+$\bullet$ R=3 の特権性（なぜ $N(1)$ が電子か）\enspace
+$\bullet$ 機構候補（真空偏極／境界自由度／ヒッグス縦波）の第一原理導出\enspace
+$\bullet$ 高エネルギー running の幾何学的再定式化（論文 9 §8、将来課題）\enspace
+$\bullet$ 他のゲージ群（SU(2), SU(3)）への一般化\enspace
+$\bullet$ 物理時空（3+1次元）への射影\enspace
+$\bullet$ 世代質量階層は射程外}
+
+\smallskip
+\textbf{\small 3 部作が主張しないこと（共通）}\enspace
+{\footnotesize $\alpha$ の第一原理導出／物理時空が 4+1 次元であること／Eddington 系の置き換え／観測可能な新シグネチャ／$\alpha(M_Z)$ running の独立導出（標準 QED に委譲）}
+
+\vspace{3pt}
+\hrule height 0.4pt
+\vspace{3pt}
+
+\begin{center}
+{\footnotesize\textbf{Zenodo・note・Zenn リソース}}
+\end{center}
+
+\vspace{1pt}
+{\footnotesize
+\begin{tabular}{@{}lll@{}}
+\toprule
+& 論文 7（$\alpha$ 恒等式） & 論文 9（2D 面モード解釈） \\
+\midrule
+note 日本語 & \href{https://note.com/kiharanoriaki/n/n19cc13927c51}{n19cc13927c51} & \href{https://note.com/kiharanoriaki/n/nd7ae96120b66}{nd7ae96120b66} \\
+note 英語 & \href{https://note.com/kiharanoriaki/n/n01d98237ddae}{n01d98237ddae} & \href{https://note.com/kiharanoriaki/n/nf9b18cb9a254}{nf9b18cb9a254} \\
+Zenn 記事 & \href{https://zenn.dev/noriaki_kihara/articles/alpha-identity-4d-geometry}{alpha-identity-4d-geometry} & \href{https://zenn.dev/noriaki_kihara/articles/paper9-2d-mode-drift}{paper9-2d-mode-drift} \\
+\midrule
+& 論文 8（Wilson 同型） & 論文 7 補講（二次補正） \\
+\midrule
+note 日本語 & \href{https://note.com/kiharanoriaki/n/n87df7a4977e7}{n87df7a4977e7} & \href{https://note.com/kiharanoriaki/n/ne1dc24c07455}{ne1dc24c07455} \\
+note 英語 & \href{https://note.com/kiharanoriaki/n/n9c37c6f99a0a}{n9c37c6f99a0a} & \href{https://note.com/kiharanoriaki/n/n268fa839f6c4}{n268fa839f6c4} \\
+Zenn 記事 & \href{https://zenn.dev/noriaki_kihara/articles/alpha-isomorphism-lattice-gauge}{alpha-isomorphism-lattice-gauge} & \href{https://zenn.dev/noriaki_kihara/articles/paper7-supplement-second-order-observation}{paper7-supplement-second-order-observation} \\
+\bottomrule
+\end{tabular}
+}
+
+\vspace{3pt}
+{\footnotesize\textbf{ソースコード（GitHub）}\enspace
+\url{https://github.com/WurabeSeiji/ai-chat-logs-open}\\[1pt]
+\textbf{関連プログラム}\enspace
+BH 熱力学プログラム（中核 6 篇）：\href{https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection}{Zenn}\enspace
+位相方程式篇（W1〜W11）：\href{https://zenn.dev/noriaki_kihara/articles/phase-equation-hypercube-particle-classification}{Zenn}\enspace
+Working Paper（6D 拡張）：\href{https://doi.org/10.5281/zenodo.19902677}{Zenodo}}
+
+\end{document}
