@@ -1,0 +1,849 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \ifLuaTeX
+    \usepackage[hiragino-pron]{luatexja-preset}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{BH 熱力学プログラム 論文 9：α 自己整合方程式における 0.036
+ドリフトの幾何学的起源}\label{bh-ux71b1ux529bux5b66ux30d7ux30edux30b0ux30e9ux30e0-ux8ad6ux6587-9ux3b1-ux81eaux5df1ux6574ux5408ux65b9ux7a0bux5f0fux306bux304aux3051ux308b-0.036-ux30c9ux30eaux30d5ux30c8ux306eux5e7eux4f55ux5b66ux7684ux8d77ux6e90}
+
+\subsection{― 4 次元超球内の 2
+次元面振動モードによる物理的解釈}\label{ux6b21ux5143ux8d85ux7403ux5185ux306e-2-ux6b21ux5143ux9762ux632fux52d5ux30e2ux30fcux30c9ux306bux3088ux308bux7269ux7406ux7684ux89e3ux91c8}
+
+\textbf{著者}：木原 範昭（Noriaki Kihara） \textbf{所属}：WF System Co.,
+Ltd.
+\textbf{ORCID}：\href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020}
+\textbf{版}：v1 \textbf{日付}：2026 年 5 月 20 日
+\textbf{ライセンス}：CC BY 4.0 \textbf{Concept
+DOI}：\href{https://doi.org/10.5281/zenodo.20319436}{10.5281/zenodo.20319436}
+\textbf{v1 Version
+DOI}：\href{https://doi.org/10.5281/zenodo.20319437}{10.5281/zenodo.20319437}
+\textbf{Zenodo ページ}：https://zenodo.org/records/20319437
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{本稿の性格}\label{ux672cux7a3fux306eux6027ux683c}
+
+\textbf{本稿は観察論文・解釈論文であり、第一原理証明論文ではない。}
+
+論文 7 {[}BH7{]} の α 恒等式 \(\alpha^{-1} = 137 + (\pi^2/2)\alpha\)
+における係数 \(\pi^2/2\)
+の物理的起源について、標準量子論の不確定性原理と振動モードの次元解析に基づくひとつの解釈を提示する。
+
+本稿は以下を主張しない：
+
+\begin{itemize}
+\tightlist
+\item
+  \(\pi^2/2\) がこの解釈以外を許容しないこと
+\item
+  観測値 \(\alpha^{-1} = 137.035999...\)
+  の高精度残差が本稿の解釈で完全に導出されること
+\item
+  他の解釈の可能性を排除すること
+\item
+  論文 7 の主張を「証明」「強化」「拡張」すること
+\end{itemize}
+
+本稿が提示するのは、ひとつの読み方である。論文 7
+の主張は本稿に依存しない。論文 7
+が観察した数値的事実（\(\alpha^{-1} = 137 + (\pi^2/2)\alpha\) が 8.7 ppb
+精度で成立する）は、本稿の解釈の採否によらず変わらない。
+
+\subsection{Scope}\label{scope}
+
+本稿の射程：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{対象}：\(\alpha^{-1}(Q^2 \to 0) = 137.036\)（Thomson
+  極限における α の幾何学的起源）
+\item
+  \textbf{方法}：標準量子論の不確定性原理＋ 4D
+  空間内の振動モードの次元解析
+\item
+  \textbf{結論}：0.036 ドリフトは 2D
+  面振動モードのゼロ点期待値として解釈可能
+\end{itemize}
+
+本稿は \textbf{以下を扱わない}：
+
+\begin{itemize}
+\tightlist
+\item
+  α の高エネルギー running（\(\alpha^{-1}(M_Z) \approx 127.95\)
+  への流れ）
+\item
+  標準モデルの lepton/quark ループによる真空偏極の幾何学的再導出
+\item
+  結合定数の統一（α と α\_s, α\_w 等の関係）
+\item
+  重力との接続
+\end{itemize}
+
+これらは標準モデルの真空偏極理論で既によく記述されており、本稿の幾何学的解釈はその
+\textbf{境界条件（Q² = 0 での値）}
+に物理的起源を与える立場をとる。これらの高エネルギー側の幾何学的再定式化は将来課題（§8）として残す。
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+論文 7 {[}BH7{]} において、4
+次元球の単位立方体充填を用いた自己整合方程式
+
+\[\alpha^{-1} = 137 + \frac{\pi^2}{2}\alpha\]
+
+が、観測値 \(\alpha^{-1}(0) = 137.035999084\) と相対誤差 8.7 ppb
+で一致することが報告された。本稿は、この式の構造について以下の物理的解釈を提示する：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{α は dimensionless
+  だが、物理的寄与は面積次元の量を通じて現れる}（§2）：散乱断面積
+  \(\sigma_T \propto \alpha^2\) より、α の物理的役割は面積を介する。
+\item
+  \textbf{4D 空間の振動モードを次元別に分類すると、等方平均下で α
+  に寄与しうるのは 2D 面モードのみ}（§3）：0D/1D/3D/4D
+  モードは方向性を持ち平均化で消えるが、2D 面積はスカラー量として残る。
+\item
+  \textbf{137 個の超立方体の 2D 面が 4D
+  単位球内に分布した位置位相空間の測度は \(\int_{B_4(1)} dV = \pi^2/2\)
+  である}（§4）：これは数値的に \(V_4(1)\)
+  と一致するが、本稿の解釈では「2D 面の位置自由度の積分」として読む。
+\item
+  \textbf{W7 自己整合方程式 \(\alpha^{-1} = 137 + (\pi^2/2)\alpha\)
+  は、137 個の超立方体の 2D
+  面モードのゼロ点振動による自己整合的補正として解釈できる}（§5）。
+\item
+  \textbf{この構造は Wilson
+  格子ゲージ理論のプラケット作用と同一}（§6）：論文 8 {[}BH8{]}
+  で示された同型性が幾何学的レベルで具体化される。
+\item
+  \textbf{α の観測値には、2D
+  モード分布の幅に由来する理論的下限が存在}（§7）。
+\end{enumerate}
+
+本稿の解釈は標準量子論の枠組み内で完結し、新たな仮定（離散時空、複素整数格子等）を必要としない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§1 導入}\label{ux5c0eux5165}
+
+論文 7 {[}BH7{]} は、4 次元球 \(B_4(R=3)\) に内接する 137 個の単位 4
+次元立方体（テセラクト）と、4 次元単位球の体積 \(V_4(1) = \pi^2/2\)
+を用いて、α の自己整合方程式
+
+\[\alpha^{-1} = N(1) + V_4(1)\alpha = 137 + \frac{\pi^2}{2}\alpha\]
+
+を提示した。この方程式は観測値 \(\alpha^{-1}(0) = 137.035999084(21)\) と
+8.7 ppb の精度で一致する。
+
+この自己整合方程式の構造には、以下の未解決問題があった：
+
+\textbf{問題 1}：\(\pi^2/2\) がなぜ α の係数として現れるか - 数値的には
+\(V_4(1)\) と一致するが、なぜ 4D
+単位球の体積が登場するのか物理的に不明確 -
+単なる数学的同一性なのか、物理的意味があるのか
+
+\textbf{問題 2}：0.036 ドリフトの幾何学的起源 - 137
+という整数が出る幾何学的構造（W6 論文）は明確 -
+しかし「0.036」の起源は自己整合方程式の閉包としてのみ説明されていた
+
+\textbf{問題 3}：W8 {[}BH8{]} で示された Wilson
+格子ゲージ理論との同型性の物理的内容 - 構造的対応は確立 -
+しかし対応の物理的内容（なぜそうなるか）は未解明
+
+本稿は、これらの問題に対し以下の解釈を提示する：
+
+\begin{quote}
+\textbf{α
+は物理的に面積次元の量（\(\sigma \propto \alpha^2\)）であり、4D
+空間の振動モードのうち α に寄与しうるのは 2D 面モードのみ。137
+個の超立方体の 2D 面振動モードの位置位相空間測度が \(\pi^2/2\)
+を与え、これが W7 自己整合方程式の係数構造を物理的に説明する。}
+\end{quote}
+
+この解釈は標準量子論の不確定性原理を出発点とし、新たな仮定を必要としない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§2 α
+の次元解析と面積次元性}\label{ux3b1-ux306eux6b21ux5143ux89e3ux6790ux3068ux9762ux7a4dux6b21ux5143ux6027}
+
+\subsubsection{2.1 α 自身は
+dimensionless}\label{ux3b1-ux81eaux8eabux306f-dimensionless}
+
+微細構造定数 α は SI 単位系で
+
+\[\alpha = \frac{e^2}{4\pi\epsilon_0 \hbar c} \approx 7.297 \times 10^{-3}\]
+
+として定義され、dimensionless である。
+
+\subsubsection{2.2 物理的寄与は α²
+を通じて現れる}\label{ux7269ux7406ux7684ux5bc4ux4e0eux306f-ux3b1uxb2-ux3092ux901aux3058ux3066ux73feux308cux308b}
+
+しかし α が物理的に関与する量は、多くの場合 \(\alpha^2\) で現れる：
+
+\textbf{Thomson 散乱断面積}：
+\[\sigma_T = \frac{8\pi}{3} r_e^2 = \frac{8\pi}{3} \left(\alpha \cdot \frac{\hbar}{mc}\right)^2 \propto \alpha^2 \cdot [\text{長さ}]^2\]
+
+\textbf{Rutherford 散乱微分断面積}：
+\[\frac{d\sigma}{d\Omega} \propto \alpha^2 \cdot [\text{長さ}]^2\]
+
+\textbf{Bohr 半径}：
+\[a_0 = \frac{\hbar}{\alpha mc} \propto \alpha^{-1} \cdot [\text{長さ}]\]
+
+\textbf{古典電子半径}：
+\[r_e = \alpha \cdot \frac{\hbar}{mc} \propto \alpha \cdot [\text{長さ}]\]
+
+すなわち、α は \textbf{断面積（面積次元）} と直結する量である。
+
+\subsubsection{2.3 4D
+空間内の幾何学的構造との対応}\label{d-ux7a7aux9593ux5185ux306eux5e7eux4f55ux5b66ux7684ux69cbux9020ux3068ux306eux5bfeux5fdc}
+
+4D 空間内で α が結合する自然な幾何学的構造を考えると：
+
+\begin{itemize}
+\tightlist
+\item
+  σ（断面積）∝ α² ∝ 面積
+\item
+  → α は \textbf{2 次元的な構造}に結合する量
+\end{itemize}
+
+これは Wilson 格子ゲージ理論において、ゲージ結合定数がプラケット（2D
+面、2-form）の作用係数として現れることと整合する。
+
+\subsubsection{2.4
+本稿の出発点}\label{ux672cux7a3fux306eux51faux767aux70b9}
+
+以上より：
+
+\begin{quote}
+\textbf{α への寄与を 4D 空間の振動モードから考える場合、α
+の面積次元性により、寄与しうるのは「2
+次元的な面積を持つ振動モード」に限定される。}
+\end{quote}
+
+これが本稿の核心的観察である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§3 4D
+空間内の振動モードの次元別分類}\label{d-ux7a7aux9593ux5185ux306eux632fux52d5ux30e2ux30fcux30c9ux306eux6b21ux5143ux5225ux5206ux985e}
+
+\subsubsection{3.1 137 個の超立方体と外接
+4-球面の振動モード}\label{ux500bux306eux8d85ux7acbux65b9ux4f53ux3068ux5916ux63a5-4-ux7403ux9762ux306eux632fux52d5ux30e2ux30fcux30c9}
+
+論文 7 で扱う系： - 半径 \(R = 3\) の 4 次元球 \(B_4(3)\) -
+その内部に充填された 137 個の単位 4 次元立方体（テセラクト）
+
+この系には、以下の振動モードが存在する：
+
+\textbf{テセラクト 1 個あたりの内部構造}：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+構造要素 & 個数 & 振動モード数（独立な） \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+頂点（0-cell） & 16 & 16 × 4 = 64 方向 \\
+辺（1-cell） & 32 & 伸縮 32、横振動 等 \\
+面（2-cell、正方形） & 24 & 膨らみ、捻じれ \\
+立体（3-cell、立方体） & 8 & 体積振動 \\
+4-胞（4-cell、テセラクト全体） & 1 & 全体呼吸モード \\
+\end{longtable}
+}
+
+\textbf{137 個全体}： - 各構造要素の振動が 137 倍 -
+隣接立方体間の相互作用モード - 全体としてのフォノン的スペクトル
+
+\textbf{外接 4-球面 \(S^3\)（半径 3）}：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4324}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5676}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+モード
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+説明
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+動径方向呼吸 & R = 3 の振動 \\
+球面調和 \(Y_{\ell m n}\) on \(S^3\) &
+角度方向の振動（\(\ell = 0, 1, 2, \ldots\)） \\
+4 軸方向の歪み & 球 → 楕円体変形 \\
+\end{longtable}
+}
+
+\subsubsection{3.2
+等方平均下での生存条件}\label{ux7b49ux65b9ux5e73ux5747ux4e0bux3067ux306eux751fux5b58ux6761ux4ef6}
+
+これらのモードのうち、α への寄与を考える際に重要なのは
+\textbf{等方平均下での生存条件} である。
+
+α は dimensionless かつスカラーであり、SO(4) 対称性下で不変。したがって
+α への寄与は、\textbf{等方平均（4
+軸方向の平均化）下でゼロにならないモード}に限定される。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1301}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5285}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3415}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+モード次元
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+数学的性質
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+等方平均の結果
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0D（点） & ベクトル位置の揺らぎ & \textbf{ゼロ}（並進対称性） \\
+1D（線分） & 方向を持つ &
+\textbf{ゼロ}（線対称性、向きが反転すると相殺） \\
+\textbf{2D（面）} & \textbf{面積（向きを持たないスカラー量）} &
+\textbf{生き残る} \\
+3D（体積、有向） & 体積要素 \(dV = dx \wedge dy \wedge dz\)
+は擬スカラー（向きを持つ） & \textbf{ゼロ}（向き反転で符号反転） \\
+4D（4-体積） & 4-体積要素は擬スカラー & \textbf{ゼロ} \\
+\end{longtable}
+}
+
+\textbf{鍵となる事実}：\textbf{面積はスカラー量}であり、面の向きを反転しても面積は不変。一方、長さ・体積（有向な体積要素）は向きを反転すると符号が変わる。
+
+\subsubsection{3.3 選別原理}\label{ux9078ux5225ux539fux7406}
+
+以上より：
+
+\begin{quote}
+\textbf{4D 空間内の振動モードのうち、等方平均下で α
+に有意な寄与を与えうるのは 2D 面モードのみである。}
+\end{quote}
+
+これは α の面積次元性（§2）と整合する。
+
+\subsubsection{3.4 Wilson
+格子ゲージ理論との整合}\label{wilson-ux683cux5b50ux30b2ux30fcux30b8ux7406ux8ad6ux3068ux306eux6574ux5408}
+
+この結論は Wilson 格子ゲージ理論における \textbf{2-form
+ゲージ場（プラケット作用）} の構造と一致する：
+
+\begin{itemize}
+\tightlist
+\item
+  0-form（スカラー場）：ゲージ不変な点的構造
+\item
+  1-form（ベクトルポテンシャル \(A_\mu\)）：ゲージ依存
+\item
+  \textbf{2-form（場の強度 \(F_{\mu\nu}\)）：ゲージ不変、プラケット作用
+  \(S = \beta \sum_p \text{Re}\,\text{tr}(U_p)\)}
+\item
+  3-form, 4-form：高次の構造
+\end{itemize}
+
+α が「面に結合する」ことは、Wilson 形式での標準的事実である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§4 137 個の超立方体の 2D
+面モード位置位相空間}\label{ux500bux306eux8d85ux7acbux65b9ux4f53ux306e-2d-ux9762ux30e2ux30fcux30c9ux4f4dux7f6eux4f4dux76f8ux7a7aux9593}
+
+\subsubsection{4.1 2D
+面モードの位置自由度}\label{d-ux9762ux30e2ux30fcux30c9ux306eux4f4dux7f6eux81eaux7531ux5ea6}
+
+2D 面振動モードを完全に指定するには、以下が必要：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{位置}：4 次元球 \(B_4(R=3)\) 内のどこに 2D 面があるか
+\item
+  \textbf{方向}：4 次元空間内の 6 個の
+  2-平面方向（\(\binom{4}{2} = 6\)）のうちどれか
+\item
+  \textbf{振幅}：振動の励起度
+\end{itemize}
+
+\subsubsection{4.2
+位置自由度の積分}\label{ux4f4dux7f6eux81eaux7531ux5ea6ux306eux7a4dux5206}
+
+固定された方向と振幅に対して、2D 面の位置自由度を 4
+次元単位球（スケール正規化済み）内で積分すると：
+
+\[\text{2D 面の位置位相空間} = \int_{B_4(1)} dV = \frac{\pi^2}{2}\]
+
+これは数値的に \textbf{\(V_4(1) = \pi^2/2\)} と一致する。
+
+\subsubsection{4.3
+本稿の解釈：物理的意味の読み替え}\label{ux672cux7a3fux306eux89e3ux91c8ux7269ux7406ux7684ux610fux5473ux306eux8aadux307fux66ffux3048}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.2297}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.7703}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+解釈
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\pi^2/2\) の物理的意味
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+旧解釈（W7 論文） & 4 次元単位球の体積 \(V_4(1)\) \\
+\textbf{本稿の解釈} & \textbf{2D 面モードを 4D
+単位球内に配置できる位置自由度の測度} \\
+\end{longtable}
+}
+
+両者は
+\textbf{数値的に同一だが、物理的意味は異なる}。本稿の解釈の下では、\(\pi^2/2\)
+は α の係数として現れる必然性を持つ：α が 2D
+面モードに結合する以上、その位置位相空間体積が結合定数の幾何学的係数として現れる。
+
+\subsubsection{4.4
+方向と振幅の寄与}\label{ux65b9ux5411ux3068ux632fux5e45ux306eux5bc4ux4e0e}
+
+2D 面の方向（6 個の
+2-平面）の寄与は、組み合わせ的因子として別途現れうる。本稿では位置積分のみを主要因子として扱い、方向因子は数値的に効くとしても
+\(O(1)\) の補正と見なす。
+
+振幅は α 自身（励起確率振幅）として現れる：
+
+\[\text{2D 面モードの集団的寄与} = \underbrace{\frac{\pi^2}{2}}_{\text{位置位相空間}} \times \underbrace{\alpha}_{\text{各面の振幅}} = \frac{\pi^2}{2} \alpha\]
+
+これが W7 自己整合方程式における α の係数項を物理的に説明する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§5 W7
+自己整合方程式の物理的解釈}\label{w7-ux81eaux5df1ux6574ux5408ux65b9ux7a0bux5f0fux306eux7269ux7406ux7684ux89e3ux91c8}
+
+\subsubsection{5.1
+方程式の構造}\label{ux65b9ux7a0bux5f0fux306eux69cbux9020}
+
+論文 7 {[}BH7{]} の自己整合方程式：
+
+\[\alpha^{-1} = 137 + \frac{\pi^2}{2}\alpha\]
+
+\subsubsection{5.2
+本稿の解釈による各項}\label{ux672cux7a3fux306eux89e3ux91c8ux306bux3088ux308bux5404ux9805}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1304}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3354}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5342}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+項
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+数学的内容
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+物理的解釈（本稿）
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{137} & 4D 球 \(B_4(3)\) に内接する単位立方体充填数 &
+\textbf{全振動モードが基底状態（最低エネルギー）にある場合の寄与}：4D ℤ⁴
+格子の整数論的事実 \\
+\textbf{\(\pi^2/2\)} & \(V_4(1)\)、または本稿の解釈では 2D
+面モード位置位相空間 & \textbf{137 個の超立方体の 2D 面モードを 4D
+単位球内に配置できる位置自由度} \\
+\textbf{α}（係数項の） & 結合定数 & \textbf{各 2D 面モードの励起振幅} \\
+\textbf{\((\pi^2/2)\alpha\)} & 0.036（数値的に） & \textbf{2D
+面モードのゼロ点振動の集団的寄与}（標準量子論の不確定性原理から） \\
+\end{longtable}
+}
+
+\subsubsection{5.3
+標準量子論の不確定性原理との接続}\label{ux6a19ux6e96ux91cfux5b50ux8ad6ux306eux4e0dux78baux5b9aux6027ux539fux7406ux3068ux306eux63a5ux7d9a}
+
+各 2D 面モードは、調和振動子近似下で以下のゼロ点エネルギーを持つ：
+
+\[E_{\text{zero-point}}^{(i)} = \frac{1}{2}\hbar\omega_i\]
+
+ここで \(\omega_i\) は i 番目の 2D 面モードの固有振動数。
+
+全 2D 面モードの集団的寄与は：
+
+\[\sum_i \frac{1}{2}\hbar\omega_i = (\text{位置位相空間測度}) \times (\text{振幅密度}) = \frac{\pi^2}{2} \cdot \alpha\]
+
+ここで右辺の α は、各モードの平均励起振幅が自己整合的に α
+自身に等しくなる、という自己整合条件を表す。
+
+\subsubsection{5.4 自己整合性}\label{ux81eaux5df1ux6574ux5408ux6027}
+
+α が 2D 面モードの振幅であり、かつ 2D 面モードのゼロ点寄与が α⁻¹
+に補正を与えるという構造から、自己整合方程式
+
+\[\alpha^{-1} = 137 + \frac{\pi^2}{2}\alpha \quad \Leftrightarrow \quad \frac{\pi^2}{2}\alpha^2 + 137\alpha - 1 = 0\]
+
+が自然に導かれる。
+
+\subsubsection{5.5 数値的一致}\label{ux6570ux5024ux7684ux4e00ux81f4}
+
+この方程式の正根：
+
+\[\alpha^{-1} = 137.036010988\ldots\]
+
+CODATA 2018 値 \(\alpha^{-1}(0) = 137.035999084(21)\) との相対誤差は
+\textbf{8.7 ppb}。これは論文 7
+で既に観察された事実であり、本稿の解釈はこの数値的一致を説明する
+\textbf{物理的フレームワーク}を提供する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§6 Wilson
+格子ゲージ理論との同型性の強化}\label{wilson-ux683cux5b50ux30b2ux30fcux30b8ux7406ux8ad6ux3068ux306eux540cux578bux6027ux306eux5f37ux5316}
+
+論文 8 {[}BH8{]} は、W7 自己整合方程式と Wilson 格子ゲージ理論の間に
+Schläfli 双対と B\_4 同変性に基づく構造的対応があることを示した。本稿の
+2D 面モード解釈により、この対応の \textbf{物理的内容}が明確化される。
+
+\subsubsection{6.1 対応関係}\label{ux5bfeux5fdcux95a2ux4fc2}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5978}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4022}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Wilson 格子ゲージ理論
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+W7 自己整合（本稿の解釈）
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+結合定数 \(\beta = 1/g^2\) & \(\alpha^{-1}\) \\
+プラケット（2-form 構造） & 2D 面振動モード \\
+プラケット数 \(\sum_p\) & \(\pi^2/2\)（2D 面の位置位相空間測度） \\
+プラケット作用 \(\beta \sum_p \text{Re}\,\text{tr}(U_p)\) &
+\((\pi^2/2)\alpha\) \\
+Cell（4D の Hard core） & 137（単位立方体充填数） \\
+全作用 & \(\alpha^{-1} = 137 + (\pi^2/2)\alpha\) \\
+\end{longtable}
+}
+
+\subsubsection{6.2
+物理的内容の明確化}\label{ux7269ux7406ux7684ux5185ux5bb9ux306eux660eux78baux5316}
+
+論文 8 の同型性は
+\textbf{構造的対応}として確立されていたが、本稿により：
+
+\begin{quote}
+\textbf{W7 自己整合方程式は、Wilson
+格子ゲージ理論のプラケット作用構造の、4D 球幾何上での具体化である。}
+\end{quote}
+
+として \textbf{物理的に位置付け} られる。
+
+\subsubsection{6.3 含意}\label{ux542bux610f}
+
+これにより： - W7 と W8
+の対応が「数学的同型」から「物理的同型」へと格上げ - α が「2D
+面に結合する」という Wilson 形式の自然な解釈と一致 - 標準 QFT
+の真空偏極を \textbf{幾何学的に再構成}するロードマップが見える
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§7 α
+の観測値の理論的下限幅}\label{ux3b1-ux306eux89b3ux6e2cux5024ux306eux7406ux8ad6ux7684ux4e0bux9650ux5e45}
+
+\subsubsection{7.1
+ゼロ点振動の分布幅}\label{ux30bcux30edux70b9ux632fux52d5ux306eux5206ux5e03ux5e45}
+
+各 2D
+面モードのゼロ点振動は、標準量子論の不確定性原理から有限の分布幅を持つ：
+
+\[\Delta n_i^{\text{zero}} = \frac{1}{2}\]
+
+（光子数演算子のゼロ点ゆらぎ）
+
+\subsubsection{7.2 α への伝播}\label{ux3b1-ux3078ux306eux4f1dux64ad}
+
+全 2D 面モードの集団的寄与に対するゆらぎは：
+
+\[(\Delta \alpha^{-1})^2 \approx \sum_i \left(\frac{\partial \alpha^{-1}}{\partial n_i}\right)^2 (\Delta n_i)^2\]
+
+具体的な計算は本稿の射程外（モード固有振動数の決定が必要）だが、構造的には：
+
+\begin{quote}
+\textbf{α の観測値には、2D
+面モード分布の幅に由来する理論的下限が存在する。}
+\end{quote}
+
+\subsubsection{7.3 CODATA
+実測値との対応}\label{codata-ux5b9fux6e2cux5024ux3068ux306eux5bfeux5fdc}
+
+\[\alpha^{-1}(0) = 137.035999084(21)\]
+
+CODATA の不確定性 \((21) \approx 2.1 \times 10^{-8}\)
+は実験精度であり、本稿の理論的下限がこれよりさらに小さいかどうかは、モード振動数のさらなる検討を要する。
+
+\subsubsection{7.4 含意}\label{ux542bux610f-1}
+
+本稿の解釈により： - α は「鋭い点」ではなく「分布の中心値」 - 観測される
+8.7 ppb のずれ（W7）は、モード寄与の高次補正の余地 -
+将来の精密測定で本稿の理論的下限が観測可能になる可能性
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§8
+残された問題：高エネルギーへの拡張}\label{ux6b8bux3055ux308cux305fux554fux984cux9ad8ux30a8ux30cdux30ebux30aeux30fcux3078ux306eux62e1ux5f35}
+
+本稿の解釈は \textbf{Thomson 極限 \(\alpha^{-1}(Q^2 \to 0) = 137.036\)
+のみを扱う}。
+
+\subsubsection{8.1 標準 QED における α の
+running}\label{ux6a19ux6e96-qed-ux306bux304aux3051ux308b-ux3b1-ux306e-running}
+
+標準モデルでは、α はエネルギースケール \(Q^2\) に依存して走る：
+
+\begin{itemize}
+\tightlist
+\item
+  \(\alpha^{-1}(0) = 137.036\)（Thomson 極限）
+\item
+  \(\alpha^{-1}(M_Z^2) \approx 127.95\)（Z ボソン質量スケール）
+\item
+  差分 \(\approx 9.08\) 単位は、lepton/quark loop
+  による真空偏極で説明される
+\end{itemize}
+
+この running は標準 QED の精密測定で
+\textbf{十分よく記述}されており、本稿は競合しない。
+
+\subsubsection{8.2 本稿の立場}\label{ux672cux7a3fux306eux7acbux5834}
+
+本稿の幾何学的解釈は、α の \textbf{境界条件 \(Q^2 = 0\)
+での値}に物理的起源を与える。 running は標準 QED に委譲する。
+
+両者は階層的に補完：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+階層 & 内容 & 担当 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 137（整数、幾何不変） & 論文 6 {[}BH6{]}：充填の整数論 \\
+2 & \((\pi^2/2)\alpha \approx 0.036\) & \textbf{本論文：2D 面モード} \\
+3 & \(\Delta\alpha_{SM}(Q^2)\) & 標準 QED 真空偏極 \\
+\end{longtable}
+}
+
+\subsubsection{8.3 将来課題}\label{ux5c06ux6765ux8ab2ux984c}
+
+階層 3（標準 QED の真空偏極）と本稿の幾何学的解釈との関係は、以下の open
+questions を残す：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{高エネルギーで活性化される追加モード}：3D, 4D
+  振動モードが高エネルギーで α への寄与を始める可能性
+\item
+  \textbf{SM ループの幾何学的対応物}：electron loop, muon loop, quark
+  loop の各々が、特定の幾何学的モードに対応するか
+\item
+  \textbf{\(\alpha^{-1}(M_Z) \approx 128\)
+  の幾何学的導出}：本稿の框架を高エネルギーに拡張できるか
+\item
+  \textbf{GUT スケールでの α の挙動}：grand unification scale
+  での結合定数の幾何学的予言
+\end{enumerate}
+
+これらの幾何学的再定式化は将来研究の課題である。\textbf{本稿の主張（Thomson
+極限の幾何学的起源）は、running の機構が何であれ独立に成立する}。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{§9 結論}\label{ux7d50ux8ad6}
+
+本稿は、論文 7 {[}BH7{]} の α 自己整合方程式
+\(\alpha^{-1} = 137 + (\pi^2/2)\alpha\)
+の物理的解釈として、以下を提示した：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{α は dimensionless
+  だが物理的に面積次元の量}（\(\sigma \propto \alpha^2\)）
+\item
+  \textbf{4D 空間の振動モードのうち、等方平均下で α に寄与しうるのは 2D
+  面モードのみ}
+\item
+  \textbf{137 個の超立方体の 2D 面が 4D
+  単位球内に分布した位置位相空間の測度 = \(\pi^2/2\)}
+\item
+  \textbf{W7 自己整合方程式は 2D
+  面モードのゼロ点振動の自己整合的寄与として解釈可能}
+\item
+  \textbf{この構造は Wilson 格子ゲージ理論のプラケット作用と同一}（W8
+  同型性の物理的内容）
+\item
+  \textbf{観測される α には 2D モード分布幅に由来する理論的下限が存在}
+\end{enumerate}
+
+本稿の解釈は標準量子論の不確定性原理の枠内で完結し、新たな仮定（離散時空、追加次元等）を必要としない。
+
+\textbf{本稿の射程}は α の Thomson 極限のみ。高エネルギーへの running
+は標準 QED に委譲し、その幾何学的再定式化は将来課題（§8）として残す。
+
+\subsubsection{本稿の position}\label{ux672cux7a3fux306e-position}
+
+論文 7 {[}BH7{]}、論文 8 {[}BH8{]}、本論文の三者の関係：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2564}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.5641}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1795}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+論文
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+担当領域
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+BH7（α 恒等式） & \(\alpha^{-1} = 137 + (\pi^2/2)\alpha\) の発見 &
+代数的観察 \\
+BH8（Wilson 同型性） & 構造的対応の証明 & 数学的対応 \\
+\textbf{本論文（BH9）} & \textbf{2D 面モードによる物理的解釈} &
+\textbf{物理的内容} \\
+\end{longtable}
+}
+
+この 3 部作により、α の幾何学的起源は \textbf{観察 → 構造 →
+物理的内容}の 3 層で位置付けられる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+{[}BH6{]} Kihara, N. (2026). \emph{Synthesis and the 4+1 to 3+1
+Reduction}. Zenodo. Concept DOI: 10.5281/zenodo.19837597.
+
+{[}BH7{]} Kihara, N. (2026). \emph{A Geometric Identity for the
+Fine-Structure Constant: From the 4D Unit Ball Volume and its
+Cube-Packing Deficit}. Zenodo. Concept DOI: 10.5281/zenodo.19869266.
+
+{[}BH8{]} Kihara, N. (2026). \emph{Chain Complex Structure on the 4D
+Hypercubic Lattice: Structural Correspondence between Kihara
+Cube-Packing and Wilson Lattice Gauge Theory}. Zenodo. Concept DOI:
+10.5281/zenodo.19880467.
+
+{[}BH7-Supp{]} Kihara, N. (2026). \emph{論文 7 補講：α
+恒等式の二次補正項に関する幾何学的観察}. Zenodo. Concept DOI:
+10.5281/zenodo.19933729.
+
+{[}Wilson1974{]} Wilson, K. G. (1974). \emph{Confinement of quarks}.
+Phys. Rev.~D \textbf{10}, 2445.
+
+{[}CODATA2018{]} Tiesinga, E. et al.~(2021). \emph{CODATA Recommended
+Values of the Fundamental Physical Constants: 2018}. Rev.~Mod. Phys.
+\textbf{93}, 025010.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{改訂履歴}\label{ux6539ux8a02ux5c65ux6b74}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{v1（2026 年 5 月 20 日）}：初版
+\end{itemize}
+
+\end{document}

@@ -81,6 +81,14 @@
 **v1 Version DOI：** https://doi.org/10.5281/zenodo.19880468  
 **v2 Version DOI（最新、タイトルを「構造的対応」に格下げ、§6・§7 補強）：** https://doi.org/10.5281/zenodo.19881119
 
+### 論文9：α 自己整合方程式における 0.036 ドリフトの幾何学的起源（2D 面振動モード）
+
+**タイトル（日本語）**：α 自己整合方程式における 0.036 ドリフトの幾何学的起源 ― 4 次元超球内の 2 次元面振動モードによる物理的解釈（論文9）  
+**タイトル（英語）**：Geometric Origin of the 0.036 Drift in the α Self-Consistency Equation: Physical Interpretation via 2D Surface Vibration Modes in a 4D Hyperball (Paper 9)  
+**内容：** 論文7 の自己整合方程式 $\alpha^{-1} = 137 + (\pi^2/2)\alpha$ における係数 $\pi^2/2$ の**物理的起源**を、標準量子論の不確定性原理＋振動モードの次元解析で説明する**観察論文**。核心：(1) α は dimensionless だが $\sigma \propto \alpha^2$ より物理的に面積次元、(2) 4D 振動モード（0D/1D/2D/3D/4D）のうち等方平均下で生き残るのは **2D 面モードのみ**（面積はスカラー量）、(3) 137 個の超立方体の 2D 面の位置位相空間測度 $\int_{B_4(1)} dV = \pi^2/2$ は数値的に $V_4(1)$ と一致するが「2D 面位置自由度の積分」として読む、(4) W7 自己整合方程式は 2D 面ゼロ点振動の自己整合的寄与として解釈可能、(5) 構造は Wilson 格子ゲージ理論プラケット作用と同一（論文 8 同型性の物理的内容を具現化）、(6) α 観測値には 2D モード分布幅由来の理論的下限が存在。**Scope**：Thomson 極限 α⁻¹(Q²→0)=137.036 のみ。α⁻¹(M_Z)≈127.95 への高エネルギー running は標準 QED に委譲し将来課題として明示（§8）。新たな仮定（離散時空・複素整数格子等）を持ち込まず標準量子論の枠内で完結。論文 7・8 への影響は補足的（既存主張に依存せず独立に成立）。**3 部作 BH7 → BH8 → BH9 で α の幾何学的起源を「観察 → 構造 → 物理的内容」の 3 層で位置付け**。  
+**Concept DOI：** https://doi.org/10.5281/zenodo.20319436  
+**v1 Version DOI：** https://doi.org/10.5281/zenodo.20319437
+
 ---
 
 ## 主要結果（数値・定数）
@@ -251,6 +259,17 @@
 | `papers/paper7_alpha/BH_Paper7_Alpha_Identity_en.tex` | LaTeXソース（英語版、v1 ドラフト）|
 | `papers/paper7_alpha/BH_Paper7_Alpha_Identity_en.pdf` | PDF（英語版、v1 ドラフト）|
 
+### 論文9：α 自己整合方程式における 0.036 ドリフトの幾何学的起源（2D 面振動モード）
+
+| ファイル名 | 説明 |
+|---|---|
+| `papers/paper9_2d_mode_drift/BH_Paper9_2D_Mode_Drift_ja.md` | Markdown（日本語版、v1）|
+| `papers/paper9_2d_mode_drift/BH_Paper9_2D_Mode_Drift_ja.tex` | LaTeXソース（日本語版、v1）|
+| `papers/paper9_2d_mode_drift/BH_Paper9_2D_Mode_Drift_ja.pdf` | PDF（日本語版、v1、12 ページ）|
+| `papers/paper9_2d_mode_drift/BH_Paper9_2D_Mode_Drift_en.md` | Markdown（英語版、v1）|
+| `papers/paper9_2d_mode_drift/BH_Paper9_2D_Mode_Drift_en.tex` | LaTeXソース（英語版、v1）|
+| `papers/paper9_2d_mode_drift/BH_Paper9_2D_Mode_Drift_en.pdf` | PDF（英語版、v1、11 ページ）|
+
 ### 計算コード・数学レポート
 
 | ファイル名 | 説明 |
@@ -274,6 +293,7 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-05-20 | **論文9（α 自己整合方程式における 0.036 ドリフトの幾何学的起源：4 次元超球内の 2 次元面振動モードによる物理的解釈）v1 公開**：Concept DOI: 10.5281/zenodo.20319436、v1 Version DOI: 10.5281/zenodo.20319437。論文 7 の自己整合方程式 $\alpha^{-1} = 137 + (\pi^2/2)\alpha$ における係数 $\pi^2/2$ の物理的起源を**標準量子論の不確定性原理＋振動モードの次元解析**で説明。核心：(1) α は dimensionless だが $\sigma \propto \alpha^2$ より物理的に面積次元、(2) 4D 振動モード（0D/1D/2D/3D/4D）のうち等方平均下で生き残るのは **2D 面モードのみ**（面積はスカラー量）、(3) 137 個の超立方体の 2D 面の位置位相空間測度 $\int_{B_4(1)} dV = \pi^2/2$ は数値的に $V_4(1)$ と一致するが「2D 面位置自由度の積分」と読む、(4) W7 自己整合方程式は 2D 面ゼロ点振動の集団寄与として解釈可能、(5) 構造は Wilson 格子ゲージ理論プラケット作用と同一（論文 8 同型性の物理的内容）、(6) α 観測値には 2D モード分布幅由来の理論的下限が存在。**観察論文と明示**し、新たな仮定（離散時空・複素整数格子等）を持ち込まない。**Scope**：Thomson 極限 α⁻¹(Q²→0)=137.036 のみ。α⁻¹(M_Z)≈127.95 への高エネルギー running は標準 QED に委譲し将来課題（§8）として残す。論文 7・8 への影響は補足的（既存主張に依存せず独立に成立）。日英 md/tex/pdf 全 6 ファイル Zenodo 公開。3 部作 BH7→BH8→BH9 で α の幾何学的起源を「観察 → 構造 → 物理的内容」の 3 層で位置付け。 |
 | 2026-05-01 | 論文7 補講 Zenn 記事作成・note URL 反映：(1) Zenn 専用記事 articles/paper7-supplement-second-order-observation.md 作成（観察論文のトーンで 5 観察を要約、LaTeX 数式と表形式を活用、関連 Zenn 記事への双方向リンク完備）、(2) note 日英 URL を各メタファイルに反映。論文 7 補講 独立公開セット（Zenodo v1 + Zenn + note 日英）整備完了。Facebook/X はテクニカル過ぎるため省略。 |
 | 2026-05-01 | 論文7 補講 note 記事公開：日本語版 https://note.com/kiharanoriaki/n/ne1dc24c07455、英語版 https://note.com/kiharanoriaki/n/n268fa839f6c4。観察論文と明示し、5 観察を箇条書きで提示。論文 7・8、Working Paper、Zenn 記事への双方向リンク完備。 |
 | 2026-05-01 | **論文7 補講（α 恒等式の二次補正項に関する幾何学的観察）v1 公開**：Concept DOI: 10.5281/zenodo.19933729、v1 Version DOI: 10.5281/zenodo.19933730。論文7 の残差 8.7 ppb の幾何学的解釈を**観察論文**として提示。核心：(1) π²/2 を $A_{S^3}/(4R^3)$ として読む解釈の提示、(2) $G(R) = (16\pi/3)R^3 - (3\pi^2/4 + 9\pi/2)R^2 + O(R)$ の漸近展開の厳密導出（球面積分 $\int_{S^3}\tau d\Omega = 16\pi/3$、$\int_{S^3}\tau^2 d\Omega = \pi^2/2 + 3\pi$）、(3) 第二項係数 $-(3\pi^2/4 + 9\pi/2) \approx -21.539$ が解析的に負、(4) 数値検証で R² 係数 ≈ -20 vs 理論 -21.539 の整合、(5) 観測残差 δ ≈ 0.001619 との符号・桁一致。**観察論文と明示**し、δ の完全導出は open question として残す。論文7 の主張は本補講に依存せず、論文7・8 の防御線を巻き添えにしない設計。日英 md/tex/pdf 全 6 ファイル Zenodo 公開。 |
