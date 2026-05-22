@@ -1,98 +1,124 @@
 @echo off
 REM ============================================
-REM Claude Code memory -> Google Drive åŒæœŸã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ— (Windows ç‰ˆ)
+REM Claude Code memory -> Google Drive “¯ŠúƒZƒbƒgƒAƒbƒv (Windows ”Å)
 REM
-REM ç›®çš„:
-REM   - è¤‡æ•°ãƒžã‚·ãƒ³ã® Claude Code é–“ã§ memory ã‚’å…±æœ‰
-REM   - Claude.ai (ãƒ–ãƒ©ã‚¦ã‚¶/ãƒ¢ãƒã‚¤ãƒ«) ã‹ã‚‰ã‚‚å‚ç…§å¯èƒ½ã«ã™ã‚‹
+REM –Ú“I:
+REM   - •¡”ƒ}ƒVƒ“‚Ì Claude Code ŠÔ‚Å memory ‚ð‹¤—L
+REM   - Claude.ai (ƒuƒ‰ƒEƒU/ƒ‚ƒoƒCƒ‹) ‚©‚ç‚àŽQÆ‰Â”\‚É‚·‚é
 REM
-REM å‹•ä½œ:
-REM   %USERPROFILE%\.claude\projects\<id>\memory\  (å®Ÿä½“)
-REM   -> Google Drive ä¸Šã«ç§»å‹•
-REM   -> å…ƒã®å ´æ‰€ã«ã¯ directory symlink ã‚’æ®‹ã™
+REM “®ì:
+REM   %USERPROFILE%\.claude\projects\<id>\memory\  (ŽÀ‘Ì)
+REM   -> Google Drive ã‚ÉˆÚ“®
+REM   -> Œ³‚ÌêŠ‚É‚Í directory symlink ‚ðŽc‚·
 REM
-REM æ—¢ã« symlink ã«ãªã£ã¦ã„ã‚‹ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ã‚¹ã‚­ãƒƒãƒ— (å†å®Ÿè¡Œå®‰å…¨)
+REM Šù‚É symlink ‚É‚È‚Á‚Ä‚¢‚éƒvƒƒWƒFƒNƒg‚ÍƒXƒLƒbƒv (ÄŽÀsˆÀ‘S)
 REM ============================================
 
 setlocal enabledelayedexpansion
-chcp 65001 >nul 2>&1
+REM chcp ‚ÍŽÀs‚µ‚È‚¢ (CP932 console ‚Æ CP932 ƒtƒ@ƒCƒ‹‚Å“ˆê)
 
 REM ============================================
-REM è¨­å®š - ç’°å¢ƒã«åˆã‚ã›ã¦å¤‰æ›´ã—ã¦ãã ã•ã„
+REM ŠÇ—ŽÒŒ ŒÀƒ`ƒFƒbƒN (mklink /D ‚É•K{)
+REM Google Drive ‚ª Stream ƒ‚[ƒh‚Ìê‡ /J ƒtƒH[ƒ‹ƒoƒbƒN•s‰Â‚Ì‚½‚ß /D ˆê‘ð
+REM ============================================
+net session >nul 2>&1
+if errorlevel 1 (
+    echo.
+    echo ===============================================
+    echo   [NG] ŠÇ—ŽÒŒ ŒÀ‚ÅŽÀs‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ
+    echo ===============================================
+    echo.
+    echo   ‚±‚ÌƒXƒNƒŠƒvƒg‚Í mklink /D ^(directory symlink^) ‚ðŽg—p‚·‚é‚½‚ßA
+    echo   ŠÇ—ŽÒŒ ŒÀ‚ª•K—v‚Å‚·B
+    echo.
+    echo   ‘Îˆ•û–@:
+    echo     1. ƒGƒNƒXƒvƒ[ƒ‰‚Å setup-memory-sync.bat ‚ð‰EƒNƒŠƒbƒN
+    echo     2. uŠÇ—ŽÒ‚Æ‚µ‚ÄŽÀsv‚ð‘I‘ð
+    echo.
+    echo   ¦ Google Drive ‚ª Stream ƒ‚[ƒh‚Ìê‡Ajunction ^(/J^) ‚Ö‚Ì
+    echo      ƒtƒH[ƒ‹ƒoƒbƒN‚ªu‘Î‰ž‚µ‚Ä‚¢‚È‚¢ƒlƒbƒgƒ[ƒNƒpƒXvƒGƒ‰[‚Å
+    echo      Ž¸”s‚·‚é‚½‚ßA–{ƒXƒNƒŠƒvƒg‚Å‚Í /D ˆê‘ð‚Æ‚µ‚Ä‚¢‚Ü‚·B
+    echo.
+    pause
+    exit /b 1
+)
+
+REM ============================================
+REM Ý’è - ŠÂ‹«‚É‡‚í‚¹‚Ä•ÏX‚µ‚Ä‚­‚¾‚³‚¢
 REM ============================================
 
-REM Google Drive ã®ãƒ­ãƒ¼ã‚«ãƒ«ãƒ‘ã‚¹ (Mirror ãƒ¢ãƒ¼ãƒ‰å‰æ)
-REM ä¾‹: G:\ãƒžã‚¤ãƒ‰ãƒ©ã‚¤ãƒ–\OneDrive\ClaudeCode\memory
-REM ä¾‹: %USERPROFILE%\Google Drive\ãƒžã‚¤ãƒ‰ãƒ©ã‚¤ãƒ–\OneDrive\ClaudeCode\memory
-set "GDRIVE_TARGET=G:\ãƒžã‚¤ãƒ‰ãƒ©ã‚¤ãƒ–\OneDrive\ClaudeCode\memory"
+REM Google Drive ‚Ìƒ[ƒJƒ‹ƒpƒX (Mirror ƒ‚[ƒh‘O’ñ)
+REM —á: G:\ƒ}ƒCƒhƒ‰ƒCƒu\OneDrive\ClaudeCode\memory
+REM —á: %USERPROFILE%\Google Drive\ƒ}ƒCƒhƒ‰ƒCƒu\OneDrive\ClaudeCode\memory
+set "GDRIVE_TARGET=G:\ƒ}ƒCƒhƒ‰ƒCƒu\OneDrive\ClaudeCode\memory"
 
-REM Claude Code projects ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª (é€šå¸¸ã¯ %USERPROFILE%\.claude\projects)
+REM Claude Code projects ƒfƒBƒŒƒNƒgƒŠ (’Êí‚Í %USERPROFILE%\.claude\projects)
 set "LOCAL_PROJECTS=%USERPROFILE%\.claude\projects"
 
 REM ============================================
 
 echo.
 echo ===============================================
-echo   Claude Code memory =^> Google Drive åŒæœŸã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ— (Windows)
+echo   Claude Code memory =^> Google Drive “¯ŠúƒZƒbƒgƒAƒbƒv (Windows)
 echo ===============================================
 echo.
 
-echo [1/6] è¨­å®šç¢ºèª
+echo [1/6] Ý’èŠm”F
 echo   GDRIVE_TARGET : %GDRIVE_TARGET%
 echo   LOCAL_PROJECTS: %LOCAL_PROJECTS%
 echo.
 
-REM ===== Step 2: è¦ªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªå­˜åœ¨ç¢ºèª =====
-echo [2/6] Google Drive ãƒžã‚¦ãƒ³ãƒˆç¢ºèª
+REM ===== Step 2: eƒfƒBƒŒƒNƒgƒŠ‘¶ÝŠm”F =====
+echo [2/6] Google Drive ƒ}ƒEƒ“ƒgŠm”F
 for %%i in ("%GDRIVE_TARGET%") do set "GDRIVE_PARENT=%%~dpi"
 if not exist "%GDRIVE_PARENT%" (
-    echo   [NG] Google Drive è¦ªãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“:
+    echo   [NG] Google Drive eƒfƒBƒŒƒNƒgƒŠ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ:
     echo        %GDRIVE_PARENT%
-    echo        Google Drive for desktop ãŒèµ·å‹•ã—ã€Mirror ãƒ¢ãƒ¼ãƒ‰ã§ãƒžã‚¦ãƒ³ãƒˆã•ã‚Œã¦ã„ã‚‹ã‹ç¢ºèªã—ã¦ãã ã•ã„
+    echo        Google Drive for desktop ‚ª‹N“®‚µAMirror ƒ‚[ƒh‚Åƒ}ƒEƒ“ƒg‚³‚ê‚Ä‚¢‚é‚©Šm”F‚µ‚Ä‚­‚¾‚³‚¢
     pause
     exit /b 1
 )
 echo   [OK] %GDRIVE_PARENT%
 echo.
 
-REM ===== Step 3: LOCAL_PROJECTS å­˜åœ¨ç¢ºèª =====
-echo [3/6] %%USERPROFILE%%\.claude\projects å­˜åœ¨ç¢ºèª
+REM ===== Step 3: LOCAL_PROJECTS ‘¶ÝŠm”F =====
+echo [3/6] %%USERPROFILE%%\.claude\projects ‘¶ÝŠm”F
 if not exist "%LOCAL_PROJECTS%" (
-    echo   [NG] %LOCAL_PROJECTS% ãŒå­˜åœ¨ã—ã¾ã›ã‚“
-    echo        Claude Code ãŒä¸€åº¦ã‚‚èµ·å‹•ã—ã¦ã„ãªã„å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™
+    echo   [NG] %LOCAL_PROJECTS% ‚ª‘¶Ý‚µ‚Ü‚¹‚ñ
+    echo        Claude Code ‚ªˆê“x‚à‹N“®‚µ‚Ä‚¢‚È‚¢‰Â”\«‚ª‚ ‚è‚Ü‚·
     pause
     exit /b 1
 )
 echo   [OK] %LOCAL_PROJECTS%
 echo.
 
-REM ===== Step 4: Claude Code ãƒ—ãƒ­ã‚»ã‚¹ç¢ºèª =====
-echo [4/6] Claude Code é–¢é€£ãƒ—ãƒ­ã‚»ã‚¹ã®ç¢ºèª
+REM ===== Step 4: Claude Code ƒvƒƒZƒXŠm”F =====
+echo [4/6] Claude Code ŠÖ˜AƒvƒƒZƒX‚ÌŠm”F
 set CLAUDE_RUNNING=0
 tasklist /FI "IMAGENAME eq node.exe" 2>nul | findstr /i "node.exe" >nul && set CLAUDE_RUNNING=1
 tasklist /FI "IMAGENAME eq Code.exe" 2>nul | findstr /i "Code.exe" >nul && set CLAUDE_RUNNING=1
 tasklist /FI "IMAGENAME eq claude.exe" 2>nul | findstr /i "claude.exe" >nul && set CLAUDE_RUNNING=1
 
 if %CLAUDE_RUNNING% equ 1 (
-    echo   [!!] node.exe / Code.exe / claude.exe ãŒå‹•ä½œä¸­ã®å¯èƒ½æ€§
-    echo        VSCode ã¨å…¨ Claude Code ã‚»ãƒƒã‚·ãƒ§ãƒ³ã‚’çµ‚äº†ã—ã¦ã‹ã‚‰ç¶šè¡Œã™ã‚‹ã“ã¨ã‚’æŽ¨å¥¨ã—ã¾ã™
-    set /p CONTINUE="   ã“ã®ã¾ã¾ç¶šè¡Œã—ã¾ã™ã‹? (y/N): "
+    echo   [!!] node.exe / Code.exe / claude.exe ‚ª“®ì’†‚Ì‰Â”\«
+    echo        VSCode ‚Æ‘S Claude Code ƒZƒbƒVƒ‡ƒ“‚ðI—¹‚µ‚Ä‚©‚ç‘±s‚·‚é‚±‚Æ‚ð„§‚µ‚Ü‚·
+    set /p CONTINUE="   ‚±‚Ì‚Ü‚Ü‘±s‚µ‚Ü‚·‚©? (y/N): "
     if /i not "!CONTINUE!"=="y" (
-        echo   ä¸­æ­¢ã—ã¾ã—ãŸ
+        echo   ’†Ž~‚µ‚Ü‚µ‚½
         pause
         exit /b 1
     )
 ) else (
-    echo   [OK] Claude Code é–¢é€£ãƒ—ãƒ­ã‚»ã‚¹è¦‹å½“ãŸã‚‰ãš
+    echo   [OK] Claude Code ŠÖ˜AƒvƒƒZƒXŒ©“–‚½‚ç‚¸
 )
 echo.
 
-REM ===== Step 5: ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªä½œæˆ =====
-echo [5/6] Google Drive å´ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªä½œæˆ
+REM ===== Step 5: ƒ^[ƒQƒbƒgƒfƒBƒŒƒNƒgƒŠì¬ =====
+echo [5/6] Google Drive ‘¤ƒ^[ƒQƒbƒgƒfƒBƒŒƒNƒgƒŠì¬
 if not exist "%GDRIVE_TARGET%" (
     mkdir "%GDRIVE_TARGET%"
     if errorlevel 1 (
-        echo   [NG] mkdir å¤±æ•—
+        echo   [NG] mkdir Ž¸”s
         pause
         exit /b 1
     )
@@ -100,8 +126,8 @@ if not exist "%GDRIVE_TARGET%" (
 echo   [OK] %GDRIVE_TARGET%
 echo.
 
-REM ===== Step 6: å„ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã® memory ã‚’ç§»å‹•ã—ã¦ symlink åŒ– =====
-echo [6/6] å„ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã® memory\ ã‚’ç§»å‹•ãƒ»symlink åŒ–
+REM ===== Step 6: ŠeƒvƒƒWƒFƒNƒg‚Ì memory ‚ðˆÚ“®‚µ‚Ä symlink ‰» =====
+echo [6/6] ŠeƒvƒƒWƒFƒNƒg‚Ì memory\ ‚ðˆÚ“®Esymlink ‰»
 set MOVED=0
 set SKIPPED_LINK=0
 set SKIPPED_NOMEM=0
@@ -113,42 +139,41 @@ for /d %%P in ("%LOCAL_PROJECTS%\*") do (
     set "SRC=%%P\memory"
     set "DST=%GDRIVE_TARGET%\!PROJ_NAME!"
 
-    REM æ—¢ã« symlink/junction ã‹åˆ¤å®š (dir ã®å‡ºåŠ›ã« <SYMLINKD> or <JUNCTION> ãŒå«ã¾ã‚Œã‚‹ã‹)
+    REM Šù‚É symlink/junction ‚©”»’è (dir ‚Ìo—Í‚É <SYMLINKD> or <JUNCTION> ‚ªŠÜ‚Ü‚ê‚é‚©)
     set IS_LINK=0
     dir /AL "%%P" 2>nul | findstr /i "memory" >nul && set IS_LINK=1
 
     if !IS_LINK! equ 1 (
-        echo   [SKIP] æ—¢ã« symlink/junction: !PROJ_NAME!
+        echo   [SKIP] Šù‚É symlink/junction: !PROJ_NAME!
         set /a SKIPPED_LINK+=1
     ) else if not exist "!SRC!" (
-        echo   [SKIP] memory ãªã—: !PROJ_NAME!
+        echo   [SKIP] memory ‚È‚µ: !PROJ_NAME!
         set /a SKIPPED_NOMEM+=1
     ) else if exist "!DST!" (
-        echo   [ERROR] ç§»å‹•å…ˆã«æ—¢ã«ã‚ã‚Š: !DST!
-        echo           æ‰‹å‹•ã§ç¢ºèªã—ã¦ãã ã•ã„ã€‚ã‚¹ã‚­ãƒƒãƒ—ã—ã¾ã™ã€‚
+        echo   [ERROR] ˆÚ“®æ‚ÉŠù‚É‚ ‚è: !DST!
+        echo           Žè“®‚ÅŠm”F‚µ‚Ä‚­‚¾‚³‚¢BƒXƒLƒbƒv‚µ‚Ü‚·B
         set /a ERRORS+=1
     ) else (
         echo   [MOVE] !PROJ_NAME!
-        move "!SRC!" "!DST!" >nul
-        if errorlevel 1 (
-            echo     [NG] move å¤±æ•—
+        REM cmd ‚Ì move ‚ÍƒNƒƒXƒhƒ‰ƒCƒu‚ÌƒfƒBƒŒƒNƒgƒŠˆÚ“®‚ðˆµ‚¦‚È‚¢‚½‚ß robocopy /MOVE ‚ðŽg—p
+        REM robocopy ‚Ì errorlevel: 0-7 ‚Í¬Œ÷ (ŒxŠÜ‚Þ)A8 ˆÈã‚ª^‚ÌƒGƒ‰[
+        robocopy "!SRC!" "!DST!" /E /MOVE /NFL /NDL /NJH /NJS /NC /NS /NP >nul
+        if errorlevel 8 (
+            echo     [NG] robocopy Ž¸”s ^(errorlevel=!errorlevel!^)
             set /a ERRORS+=1
         ) else (
-            REM å…ˆã« /D (directory symlink) ã‚’è©¦ã™ã€‚å¤±æ•—ã—ãŸã‚‰ /J (junction) ã«ãƒ•ã‚©ãƒ¼ãƒ«ãƒãƒƒã‚¯
+            REM mklink /D (directory symlink) ‚Ì‚ÝŽg—p
+            REM Stream ƒ‚[ƒh‚Å‚Í /J (junction) ‚ªƒtƒH[ƒ‹ƒoƒbƒN‚Å‚«‚È‚¢‚½‚ß /D ˆê‘ð
+            REM –`“ª‚ÅŠÇ—ŽÒŒ ŒÀƒ`ƒFƒbƒNÏ‚Ý‚Ì‚½‚ßA’Êí‚Í‚±‚±‚Å¬Œ÷‚·‚é
             mklink /D "!SRC!" "!DST!" >nul 2>&1
             if errorlevel 1 (
-                echo     /D å¤±æ•— ^(ç®¡ç†è€…æ¨©é™ã¾ãŸã¯ Developer Mode æœªè¨­å®š?^)ã€/J ^(junction^) ã§å†è©¦è¡Œ...
-                mklink /J "!SRC!" "!DST!" >nul 2>&1
-                if errorlevel 1 (
-                    echo     [NG] mklink /J ã‚‚å¤±æ•—ã€‚æ‰‹å‹•å¾©æ—§ã—ã¦ãã ã•ã„:
-                    echo          move "!DST!" "!SRC!"
-                    set /a ERRORS+=1
-                ) else (
-                    echo     [OK] junction ä½œæˆ
-                    set /a MOVED+=1
-                )
+                echo     [NG] mklink /D Ž¸”sBƒf[ƒ^‚Í Google Drive ‘¤‚ÉˆÚ“®Ï‚Ý:
+                echo          !DST!
+                echo          Žè“®•œ‹ŒƒRƒ}ƒ“ƒh:
+                echo            robocopy "!DST!" "!SRC!" /E /MOVE /NFL /NDL /NJH /NJS /NC /NS /NP
+                set /a ERRORS+=1
             ) else (
-                echo     [OK] symlink ä½œæˆ
+                echo     [OK] symlink ì¬
                 set /a MOVED+=1
             )
         )
@@ -156,30 +181,30 @@ for /d %%P in ("%LOCAL_PROJECTS%\*") do (
 )
 
 echo.
-echo   é›†è¨ˆ: ç§»å‹• !MOVED! / æ—¢ symlink !SKIPPED_LINK! / memory ç„¡ !SKIPPED_NOMEM! / ã‚¨ãƒ©ãƒ¼ !ERRORS!
+echo   WŒv: ˆÚ“® !MOVED! / Šù symlink !SKIPPED_LINK! / memory –³ !SKIPPED_NOMEM! / ƒGƒ‰[ !ERRORS!
 echo.
 
-REM ===== æ¤œè¨¼ =====
-echo --- ãƒ­ãƒ¼ã‚«ãƒ«å´ (symlink/junction ç¢ºèª) ---
+REM ===== ŒŸØ =====
+echo --- ƒ[ƒJƒ‹‘¤ (symlink/junction Šm”F) ---
 dir /AL "%LOCAL_PROJECTS%" >nul 2>&1
 for /d %%P in ("%LOCAL_PROJECTS%\*") do (
     dir "%%P" /AL 2>nul | findstr /i "memory" 2>nul
 )
 echo.
-echo --- Google Drive å´ ---
+echo --- Google Drive ‘¤ ---
 dir /B "%GDRIVE_TARGET%" 2>nul
 echo.
 
 echo ===============================================
 if !ERRORS! equ 0 (
-    echo   [OK] ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—å®Œäº†
+    echo   [OK] ƒZƒbƒgƒAƒbƒvŠ®—¹
     echo.
-    echo   æ¬¡ã®ã‚¹ãƒ†ãƒƒãƒ—:
-    echo     1. VSCode ã‚’å†èµ·å‹•
-    echo     2. ã“ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’é–‹ã„ã¦ Claude Code ãŒæ­£å¸¸èµ·å‹•ã™ã‚‹ã‹ç¢ºèª
-    echo     3. Google Drive for desktop ã¯ã€ŒãƒŸãƒ©ãƒ¼ãƒªãƒ³ã‚°ã€ãƒ¢ãƒ¼ãƒ‰æŽ¨å¥¨
+    echo   ŽŸ‚ÌƒXƒeƒbƒv:
+    echo     1. VSCode ‚ðÄ‹N“®
+    echo     2. ‚±‚ÌƒvƒƒWƒFƒNƒg‚ðŠJ‚¢‚Ä Claude Code ‚ª³í‹N“®‚·‚é‚©Šm”F
+    echo     3. Google Drive for desktop ‚Íuƒ~ƒ‰[ƒŠƒ“ƒOvƒ‚[ƒh„§
 ) else (
-    echo   [!!] ã‚¨ãƒ©ãƒ¼ãŒ !ERRORS! ä»¶ã‚ã‚Šã¾ã™ã€‚ä¸Šè¨˜ãƒ­ã‚°ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚
+    echo   [!!] ƒGƒ‰[‚ª !ERRORS! Œ‚ ‚è‚Ü‚·Bã‹LƒƒO‚ðŠm”F‚µ‚Ä‚­‚¾‚³‚¢B
 )
 echo ===============================================
 echo.
