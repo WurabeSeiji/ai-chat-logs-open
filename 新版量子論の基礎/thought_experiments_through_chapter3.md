@@ -3,9 +3,11 @@
 ## ——From the Identification Wall in Measurement to the Algebra of Observables
 
 **Author**: Noriaki Kihara, WF System Co., Ltd., ORCID: [0009-0004-6753-4020](https://orcid.org/0009-0004-6753-4020)
-**Version**: v1.0
+**Version**: v2.0
 **Date**: May 2026
-**DOI**: [10.5281/zenodo.20391523](https://doi.org/10.5281/zenodo.20391523)
+**Concept DOI**: [10.5281/zenodo.20391522](https://doi.org/10.5281/zenodo.20391522)
+**v2 DOI**: [10.5281/zenodo.20392427](https://doi.org/10.5281/zenodo.20392427)
+**v1 DOI**: [10.5281/zenodo.20391523](https://doi.org/10.5281/zenodo.20391523)
 **License**: CC BY 4.0
 
 ### Abstract
@@ -51,6 +53,8 @@ The region *L* < Δ is not "buried in measurement error"; it is a region in whic
 > When a measure based on distance is used to measure distance, measurement at scales below the measure's spacing Δ is **undefined** prior to any invocation of the uncertainty principle. Δ functions not as a resolution but as the threshold of individuation.
 >
 > Within the range *L* ≥ Δ, arbitrary precision is attainable by repeated measurement regardless of the absolute value of Δ.
+
+The present argument is related to but independent of the discussions of minimum length at the Planck scale in quantum gravity [10]; it holds in general for any measure based on the concept of distance.
 
 ---
 
@@ -124,7 +128,7 @@ $$\Delta x \cdot \Delta k \geq \frac{1}{2}.$$
 
 In this form, Planck's constant ℏ disappears from both sides. What remains is a mathematical inequality of Fourier transforms concerning the product of position and wavenumber.
 
-Planck's constant ℏ functions as a dimensional conversion factor connecting the unit of position (m) and the unit of momentum (kg·m/s).
+Planck's constant ℏ functions as a dimensional conversion factor connecting the unit of position (m) and the unit of momentum (kg·m/s). A similar view that treats Planck's constant not as an observable quantity but as a convention of human unit-choice has been proposed by Ralston [8].
 
 Qualitatively:
 
@@ -220,6 +224,8 @@ In a complex Hilbert space:
 >
 > A physical quantity is a projection of a wave packet. The wave packet exists as an area element in phase space, and the area is conserved as the product of projections.
 
+The area-element picture of the present paper is consistent with de Gosson's *quantum blobs* [9] — the smallest phase-space units saturating the Robertson–Schrödinger inequality, measured by symplectic capacity (which has the dimension of area). The present paper can be regarded as a reading of Chapter 1 of Shimizu's textbook that reconstructs this mathematically heavy symplectic-geometric framework in the intuitive form of thought experiments. Related geometrical formulations include the Kähler-geometric formulation on projective Hilbert space [11] and the algebraic approach in which the algebra of observables is taken as primary [12].
+
 ---
 
 ## Summary
@@ -255,3 +261,13 @@ The present thought experiments were progressively organized through dialogue wi
 [6] Robertson, H. P. (1929) "The Uncertainty Principle," *Physical Review* **34**, 163–164.
 
 [7] Heisenberg, W. (1927) "Über den anschaulichen Inhalt der quantentheoretischen Kinematik und Mechanik," *Zeitschrift für Physik* **43**, 172–198.
+
+[8] Ralston, J. P. (2020) "Quantum Theory without Planck's Constant," *International Journal of Quantum Foundations* **6**(3), 1–43. Originally arXiv:1203.5557 (2012).
+
+[9] de Gosson, M. A. (2013) "Quantum Blobs," *Foundations of Physics* **43**, 440–457.
+
+[10] Garay, L. J. (1995) "Quantum Gravity and Minimum Length," *International Journal of Modern Physics A* **10**, 145–166. arXiv:gr-qc/9403008.
+
+[11] Ashtekar, A. and Schilling, T. A. (1999) "Geometrical Formulation of Quantum Mechanics," in *On Einstein's Path: Essays in Honor of Engelbert Schücking* (ed. A. Harvey), Springer, pp. 23–65. arXiv:gr-qc/9706069.
+
+[12] Slavnov, D. A. (2007) "Algebraic Quantum Theory," *Physics of Particles and Nuclei* **38**, 147–176.
