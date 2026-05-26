@@ -1,0 +1,578 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{Thought Experiments through the First Three Chapters of
+``Foundations of Quantum
+Theory''}\label{thought-experiments-through-the-first-three-chapters-of-foundations-of-quantum-theory}
+
+\subsection{------From the Identification Wall in Measurement to the
+Algebra of
+Observables}\label{from-the-identification-wall-in-measurement-to-the-algebra-of-observables}
+
+\textbf{Author}: Noriaki Kihara, WF System Co., Ltd., ORCID:
+\href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020}
+\textbf{Version}: v1.0 \textbf{Date}: May 2026 \textbf{DOI}:
+\href{https://doi.org/10.5281/zenodo.20391523}{10.5281/zenodo.20391523}
+\textbf{License}: CC BY 4.0
+
+\subsubsection{Abstract}\label{abstract}
+
+Against the background of the framework of complex Hilbert spaces,
+observables, and measurement developed in Chapters 1 to 3 of Akira
+Shimizu's \emph{New Edition: Foundations of Quantum Theory} {[}1{]},
+this paper organizes five stepwise thought experiments to unify the
+treatment of measurement precision, the uncertainty relation, wave
+packets, quantum correlations, and the algebra of observables. The
+starting point is the ``identification wall'' of classical measurement
+theory, and the destination is the algebraic picture in which ``physical
+quantities satisfying an uncertainty relation are different projections
+extracted from the same wave packet.'' The present paper does not
+contradict the mathematical system of standard quantum theory; rather,
+it offers one reading that supplements its conceptual outlook.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Thought Experiment I: The Identification Wall in
+Measurement}\label{thought-experiment-i-the-identification-wall-in-measurement}
+
+\subsubsection{Setting}\label{setting}
+
+Suppose a physical quantity \emph{A} takes real values. We measure the
+distance \emph{L} between two points \emph{A}₁ and \emph{A}₂ using a
+measure based on the concept of distance, which returns only discrete
+values with a minimum spacing of Δ.
+
+At each measurement, one of the two adjacent lattice points \{\emph{k}Δ,
+(\emph{k}+1)Δ\} bracketing the true value is returned with probability
+depending on the position \emph{r} of the true value within the cell:
+
+P(up) = \emph{r}/Δ, P(down) = 1 − \emph{r}/Δ
+
+(position-dependent dithering).
+
+\subsubsection{Behavior of the N-fold
+Average}\label{behavior-of-the-n-fold-average}
+
+When \emph{A}₁ = \emph{A}₂, the single-shot distance \emph{D} = ε₂ − ε₁
+takes values \{−Δ, 0, +Δ\} with probabilities \{1/4, 1/2, 1/4\}.
+
+\begin{itemize}
+\tightlist
+\item
+  E{[}\emph{D}{]} = 0
+\item
+  Var{[}\emph{D}{]} = Δ²/2
+\item
+  Standard deviation of the N-fold average: σ\_N = Δ/√(2N)
+\end{itemize}
+
+As N → ∞, σ\_N → 0, and L̂\_N → \emph{L} with probability 1.
+
+\subsubsection{Condition for
+Distinguishability}\label{condition-for-distinguishability}
+
+For \emph{A}₁ and \emph{A}₂ to be recognized as two distinct objects,
+the two must belong to different Δ cells. If they fall within the same
+cell, the measure cannot distinguish ``one point or two,'' and the
+quantity ``distance between two points'' cannot be constituted.
+
+Therefore the condition for the problem of measuring \emph{L} to be
+well-posed is
+
+\emph{L} ≥ Δ.
+
+The region \emph{L} \textless{} Δ is not ``buried in measurement
+error''; it is a region in which the very concept of ``two points'' is
+not defined.
+
+\subsubsection{Conclusion}\label{conclusion}
+
+\begin{quote}
+When a measure based on distance is used to measure distance,
+measurement at scales below the measure's spacing Δ is
+\textbf{undefined} prior to any invocation of the uncertainty principle.
+Δ functions not as a resolution but as the threshold of individuation.
+
+Within the range \emph{L} ≥ Δ, arbitrary precision is attainable by
+repeated measurement regardless of the absolute value of Δ.
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Thought Experiment II: The Locus of
+Fluctuation}\label{thought-experiment-ii-the-locus-of-fluctuation}
+
+\subsubsection{Setting}\label{setting-1}
+
+Consider the reverse situation. The measure has infinite precision and
+returns its input value unchanged. The physical quantity \emph{A}
+itself, however, fluctuates about its true value \emph{A'} according to
+
+\emph{A}\_i = \emph{A'} + ξ\_i, ξ\_i \textasciitilde{} Uniform{[}−Δ/2,
++Δ/2{]}.
+
+We assume \emph{L} \textgreater{} Δ.
+
+\subsubsection{N-fold Average}\label{n-fold-average}
+
+\begin{itemize}
+\tightlist
+\item
+  E{[}L̂\_N{]} = \emph{A'}
+\item
+  Var{[}\emph{L}\_i{]} = Δ²/12
+\item
+  σ\_N = Δ/√(12N) → 0
+\end{itemize}
+
+\subsubsection{Comparison with Thought Experiment
+I}\label{comparison-with-thought-experiment-i}
+
+Instantiating both cases with true value 7.7 and spacing Δ = 1, each
+yields the same empirical distribution: out of 100 measurements, roughly
+30 return 7 and 70 return 8, with the average converging to 7.7.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Fluctuation on the measure side
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Fluctuation on the quantity side
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Single-shot output space & Discrete \{\emph{k}Δ, (\emph{k}+1)Δ\} &
+Continuous \\
+Probability distribution & Position-dependent Bernoulli & Additive
+uniform \\
+N → ∞ convergence target & True value & True value \\
+Distinguishability from observed data & Impossible & \\
+\end{longtable}
+}
+
+\subsubsection{Two-sided Fluctuation}\label{two-sided-fluctuation}
+
+When fluctuations ξ (width δ) on the quantity side and η (width σ) on
+the measure side coexist independently:
+
+\begin{itemize}
+\tightlist
+\item
+  Observed value: \emph{L}\_i = \emph{A'} + ξ\_i + η\_i
+\item
+  σ\_N = √(Var{[}ξ{]} + Var{[}η{]}) / √N → 0
+\end{itemize}
+
+The 1/√N decay persists, but separating δ and σ from a single observed
+series requires additional assumptions external to the observation
+(independent calibration of the measure, time-series decomposition,
+prior knowledge of distribution shapes, etc.).
+
+\subsubsection{Conclusion}\label{conclusion-1}
+
+\begin{quote}
+Defining the observed fluctuation magnitude as Δ\_obs, one cannot
+determine from observed data alone whether it originates from the
+quantization width of the measure, from the fluctuation of the quantity
+itself, or from a combination of both.
+
+Rather than ``convergence to the objective true value,'' the precise
+statement is ``convergence to the effective true value defined by the
+observer,'' and the 1/√N decay applies rigorously in this sense.
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Thought Experiment III: Wavelength Representation of
+Momentum and the Uncertainty
+Relation}\label{thought-experiment-iii-wavelength-representation-of-momentum-and-the-uncertainty-relation}
+
+\subsubsection{Setting}\label{setting-2}
+
+We extend the object of Thought Experiment II to a quantum-theoretic
+wave packet. For position \emph{x}, consider the center value \emph{x}₁
+and the spread δ\emph{x} of the wave packet. Here ``center value'' is
+merely a label of the packet distribution; we do not take the position
+that there exists an objective true value external to observation.
+
+Similarly for momentum \emph{p}, consider the center value \emph{p}₁ and
+the spread δ\emph{p}.
+
+\subsubsection{Rewriting via Wavelength}\label{rewriting-via-wavelength}
+
+From the de Broglie relation {[}2{]}:
+
+\[p = \frac{h}{\lambda} = \hbar k, \quad k = \frac{2\pi}{\lambda}\]
+
+the momentum fluctuation is
+
+\[\delta p = \frac{h}{\lambda^2}\delta\lambda = \hbar \, \delta k.\]
+
+Rewriting the uncertainty relation Δ\emph{x}Δ\emph{p} ≥ ℏ/2 {[}7{]} in
+terms of the wavenumber:
+
+\[\Delta x \cdot \Delta k \geq \frac{1}{2}.\]
+
+\subsubsection{Observation}\label{observation}
+
+In this form, Planck's constant ℏ disappears from both sides. What
+remains is a mathematical inequality of Fourier transforms concerning
+the product of position and wavenumber.
+
+Planck's constant ℏ functions as a dimensional conversion factor
+connecting the unit of position (m) and the unit of momentum (kg·m/s).
+
+Qualitatively:
+
+\begin{itemize}
+\tightlist
+\item
+  Pinning position precisely ⟺ narrowing the position wave packet ⟺
+  broadening the wavelength distribution ⟺ making momentum vague
+\item
+  Pinning momentum precisely ⟺ narrowing the wavelength to one ⟺
+  spreading over all of space ⟺ making position vague
+\end{itemize}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Packet form & Spatial spread & Wavelength distribution \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Delta function & δ\emph{x} = 0 & All wavelengths \\
+Rectangular pulse & Finite & sinc function \\
+Pure sine wave & All of space & Single wavelength \\
+\end{longtable}
+}
+
+\subsubsection{Conclusion}\label{conclusion-2}
+
+\begin{quote}
+In the wavenumber representation, the position--momentum uncertainty
+relation becomes Δ\emph{x}Δ\emph{k} ≥ 1/2, described as a lower bound on
+the product of conjugate quantities in Fourier transforms. Planck's
+constant appears as a dimensional conversion factor.
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Thought Experiment IV: Quantum Correlations as a Composite
+Wave
+Packet}\label{thought-experiment-iv-quantum-correlations-as-a-composite-wave-packet}
+
+\subsubsection{Setting}\label{setting-3}
+
+Consider a state localized in two spatial regions \emph{A} and \emph{B}
+with correlations mediated by a shared conserved quantity (momentum,
+energy, etc.). In standard descriptions, this system is treated as a
+``two-particle entangled state'' {[}3, 4, 5{]}.
+
+We attempt to describe this instead as ``a state in which a single
+composite wave packet is localized in two regions in space.''
+
+\subsubsection{String Analogy}\label{string-analogy}
+
+When a long, taut string undergoing baseline vibration has one end
+suddenly fixed, a soliton-like deformation appears at the opposite end.
+This is a result of the entire string obeying conservation laws as a
+single system; no information has propagated from one end to the other.
+
+\subsubsection{Geometry of the Composite Wave
+Packet}\label{geometry-of-the-composite-wave-packet}
+
+\begin{itemize}
+\tightlist
+\item
+  The composite wave packet occupies one area element in phase space
+\item
+  In configuration space it has localized peaks in two regions \emph{A}
+  and \emph{B}
+\item
+  A local interaction occurs on the \emph{A} side, contracting
+  Δ\emph{x}\_A
+\item
+  Due to area conservation (the lower bound of the Robertson inequality
+  {[}6{]}), the conjugate Δ\emph{p}\_A broadens
+\item
+  To satisfy the conserved quantities of the entire composite packet,
+  the spread of the wave packet on the \emph{B} side also undergoes
+  geometric deformation
+\end{itemize}
+
+In this description, no information transfer from \emph{A} to \emph{B}
+is introduced. The observed correlation is a geometric consequence of a
+local update to one wave packet being reflected throughout via the
+conservation laws.
+
+\subsubsection{The True Nature of the Conserved
+Quantity}\label{the-true-nature-of-the-conserved-quantity}
+
+What is conserved in the composite system is not individual wavelengths
+or positions, but the product of the spreads of conjugate physical
+quantities (an area element in phase space):
+
+\[\Delta x \cdot \Delta p \geq \frac{\hbar}{2}, \quad \Delta A \cdot \Delta B \geq \frac{1}{2}\left|\langle [A,B] \rangle\right|.\]
+
+The left side has the dimension of area; the inequality means a lower
+bound on the area.
+
+\subsubsection{Conclusion}\label{conclusion-3}
+
+\begin{quote}
+Quantum correlations are describable as ``a state in which one composite
+wave packet is localized across multiple regions in space.'' The
+observed correlations are geometric consequences of conservation laws
+acting on the entire packet, and this description does not require
+information transfer between spatially separated systems.
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Thought Experiment V: The Algebra of
+Observables}\label{thought-experiment-v-the-algebra-of-observables}
+
+\subsubsection{Setting}\label{setting-4}
+
+We list several pairs of physical quantities that satisfy the
+uncertainty relation Δ\emph{A}Δ\emph{B} ≥
+\textbar⟨{[}\emph{A},\emph{B}{]}⟩\textbar/2:
+
+\begin{itemize}
+\tightlist
+\item
+  Position \emph{x} ↔ momentum \emph{p}
+\item
+  Spin \emph{S}\_x ↔ \emph{S}\_y ↔ \emph{S}\_z
+\item
+  Polarization (H/V ↔ D/A ↔ R/L)
+\item
+  Angular momentum \emph{L}\_x ↔ \emph{L}\_y ↔ \emph{L}\_z
+\item
+  Energy ↔ time
+\end{itemize}
+
+All of these share a common structure.
+
+\subsubsection{Common Structure}\label{common-structure}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Pair of quantities
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Shared structure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Role of distinct operators
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\emph{x} ↔ \emph{p} & Area element in phase space & Direct coordinate ↔
+Fourier coordinate \\
+\emph{S}\_x ↔ \emph{S}\_y ↔ \emph{S}\_z & Area element in spin phase
+space & Projection onto distinct axes \\
+Polarization basis & Area element of polarization plane & Projection
+onto distinct bases \\
+\emph{L}\_x ↔ \emph{L}\_y ↔ \emph{L}\_z & Angular-momentum phase space &
+Projection onto distinct axes \\
+\emph{E} ↔ \emph{t} & Energy--time phase space & Distinct
+representations \\
+\end{longtable}
+}
+
+\subsubsection{Unified Picture}\label{unified-picture}
+
+In a complex Hilbert space:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Formal object
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Geometric interpretation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Eigenvector \textbar ψ⟩ & Wave packet (one area element in phase
+space) \\
+Operator Â & Projection extracting a real value from the area element \\
+Eigenvalue \emph{a} & Result of the projection \\
+Non-commutativity {[}Â, B̂{]} ≠ 0 & Two projections viewing the same area
+element from different directions \\
+\end{longtable}
+}
+
+\subsubsection{Conclusion}\label{conclusion-4}
+
+\begin{quote}
+Physical quantities satisfying an uncertainty relation are described as
+distinct projections of the same wave packet (eigenvector). The product
+of non-commuting projections is bounded below by the area element of the
+wave packet (Robertson inequality).
+
+A physical quantity is a projection of a wave packet. The wave packet
+exists as an area element in phase space, and the area is conserved as
+the product of projections.
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Summary}\label{summary}
+
+Through the five thought experiments, the following structure emerged:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{The identification wall} (I) --- Δ is not a resolution but a
+  threshold of individuation. \emph{L} ≥ Δ is a prerequisite for
+  distance measurement.
+\item
+  \textbf{Indistinguishability of the locus of fluctuation} (II) --- Δ
+  on the measure side and Δ on the quantity side cannot be distinguished
+  from observed data.
+\item
+  \textbf{Uncertainty relation in the wavenumber representation} (III)
+  --- Δ\emph{x}Δ\emph{k} ≥ 1/2 is a mathematical fact of Fourier
+  transforms. ℏ appears as a unit conversion factor.
+\item
+  \textbf{Quantum correlations as a composite wave packet} (IV) ---
+  Described as the spatial division of a single wave packet, the
+  correlations between spatially separated systems can be explained
+  without assuming information transfer.
+\item
+  \textbf{The algebra of observables} (V) --- Physical quantities
+  satisfying an uncertainty relation are distinct projections of the
+  same wave packet. The area element in phase space is the conserved
+  quantity.
+\end{enumerate}
+
+These are consistent with the framework of complex Hilbert spaces,
+observables, and measurement introduced in Chapters 1 to 3 of Shimizu's
+\emph{New Edition: Foundations of Quantum Theory}, and present one
+reading that provides a conceptual outlook on quantum theory. The
+present paper does not modify the mathematical predictions of standard
+quantum theory; it confines itself to offering a geometric
+interpretation of each concept.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Acknowledgment}\label{acknowledgment}
+
+The present thought experiments were progressively organized through
+dialogue with AI. Verbatim records including the trial-and-error process
+are publicly available in the ai-chat-logs-open repository
+(\texttt{新版量子論の基礎/思考実験(6)*}, \texttt{思考実験(7)*}).
+
+\subsection{References}\label{references}
+
+{[}1{]} Shimizu, A. \emph{New Edition: Foundations of Quantum Theory ---
+For an Easy Understanding of Its Essence} (in Japanese), Saiensu-sha,
+2003.
+
+{[}2{]} de Broglie, L. (1924) \emph{Recherches sur la théorie des
+Quanta}, doctoral thesis, Faculté des Sciences de Paris.
+
+{[}3{]} Einstein, A., Podolsky, B., Rosen, N. (1935) ``Can
+Quantum-Mechanical Description of Physical Reality Be Considered
+Complete?'' \emph{Physical Review} \textbf{47}, 777--780.
+
+{[}4{]} Schrödinger, E. (1935) ``Discussion of Probability Relations
+Between Separated Systems,'' \emph{Mathematical Proceedings of the
+Cambridge Philosophical Society} \textbf{31}, 555--563.
+
+{[}5{]} Bell, J. S. (1964) ``On the Einstein-Podolsky-Rosen Paradox,''
+\emph{Physics Physique Физика} \textbf{1}, 195--200.
+
+{[}6{]} Robertson, H. P. (1929) ``The Uncertainty Principle,''
+\emph{Physical Review} \textbf{34}, 163--164.
+
+{[}7{]} Heisenberg, W. (1927) ``Über den anschaulichen Inhalt der
+quantentheoretischen Kinematik und Mechanik,'' \emph{Zeitschrift für
+Physik} \textbf{43}, 172--198.
+
+\end{document}

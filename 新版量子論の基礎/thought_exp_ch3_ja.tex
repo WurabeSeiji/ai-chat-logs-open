@@ -1,0 +1,476 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{新版量子論の基礎
+第3章までの思考実験}\label{ux65b0ux7248ux91cfux5b50ux8ad6ux306eux57faux790e-ux7b2c3ux7ae0ux307eux3067ux306eux601dux8003ux5b9fux9a13}
+
+\subsection{------測定の識別の壁から観測量の代数まで}\label{ux6e2cux5b9aux306eux8b58ux5225ux306eux58c1ux304bux3089ux89b3ux6e2cux91cfux306eux4ee3ux6570ux307eux3067}
+
+\textbf{著者}: 木原 矩明 (Noriaki Kihara), WF System Co., Ltd., ORCID:
+\href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020}
+\textbf{Version}: v1.0 \textbf{Date}: 2026年5月 \textbf{DOI}:
+\href{https://doi.org/10.5281/zenodo.20391523}{10.5281/zenodo.20391523}
+\textbf{License}: CC BY 4.0
+
+\subsubsection{要旨}\label{ux8981ux65e8}
+
+清水明『新版量子論の基礎』{[}1{]}
+第1章〜第3章で展開される複素ヒルベルト空間・観測量・測定の枠組みを背景に、5つの段階的な思考実験を通じて、測定精度、不確定性関係、波束、量子相関、観測量の代数を統一的に整理する。出発点は古典的な計量論における「識別の壁」であり、到達点は「不確定性関係を持つ物理量は同一の波束を異なる射影で取り出している」という観測量の代数的描像である。本稿は標準的な量子論の数学的体系と矛盾せず、その概念的見通しを補う一つの読み方を提示するものである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{思考実験
+I：計量における識別の壁}\label{ux601dux8003ux5b9fux9a13-iux8a08ux91cfux306bux304aux3051ux308bux8b58ux5225ux306eux58c1}
+
+\subsubsection{設定}\label{ux8a2dux5b9a}
+
+物理量 A が実数値を取るとする。距離概念に基づくメジャー（最小刻み Δ
+の離散値しか返さない）を用い、2点 A₁, A₂ の間の距離 L を測定する。
+
+各測定で、物理量の真値が属するΔ区間の隣接2格子点 \{kΔ, (k+1)Δ\}
+のうち1つが、真値の区間内位置 r に応じた確率
+
+P(上) = r/Δ, P(下) = 1 − r/Δ
+
+で返るものとする（位置依存ディザリング）。
+
+\subsubsection{N回平均の挙動}\label{nux56deux5e73ux5747ux306eux6319ux52d5}
+
+A₁ = A₂ のとき、単回測定の距離 D = ε₂ − ε₁ は値 \{−Δ, 0, +Δ\} を確率
+\{1/4, 1/2, 1/4\} で取る。
+
+\begin{itemize}
+\tightlist
+\item
+  E{[}D{]} = 0
+\item
+  Var{[}D{]} = Δ²/2
+\item
+  N回平均の標準偏差 σ\_N = Δ/√(2N)
+\end{itemize}
+
+N → ∞ で σ\_N → 0、L̂\_N → L に確率1で収束する。
+
+\subsubsection{識別可能性の条件}\label{ux8b58ux5225ux53efux80fdux6027ux306eux6761ux4ef6}
+
+A₁ と A₂
+を2つの異なる対象として認識するには、両者が異なるΔセルに属している必要がある。同じセル内にあれば、メジャーにとって「点1個か2個か」が判別不能であり、「2点間距離」という量が立ち上がらない。
+
+したがって距離 L を測る問題が成立する条件は
+
+L ≥ Δ
+
+である。L \textless{} Δ
+の領域は「測定誤差で埋もれている」のではなく、「2点」という概念が定義されていない領域である。
+
+\subsubsection{帰結}\label{ux5e30ux7d50}
+
+\begin{quote}
+距離概念を用いるメジャーで距離を測る場合、メジャーの刻み Δ
+以下の計量は、不確定性関係を持ち出す以前に\textbf{測定が定義不能}である。Δ
+は分解能ではなく、個体化（individuation）の閾値として働く。
+
+L ≥ Δ を満たす範囲では、Δ
+の絶対値に関わらず無限回測定で任意精度に到達する。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{思考実験
+II：揺らぎの所在}\label{ux601dux8003ux5b9fux9a13-iiux63faux3089ux304eux306eux6240ux5728}
+
+\subsubsection{設定}\label{ux8a2dux5b9a-1}
+
+逆の状況を考える。メジャーは無限精度を持ち、入力値をそのまま返す。一方、物理量
+A 自身が真値 A' に対して
+
+A\_i = A' + ξ\_i, ξ\_i \textasciitilde{} Uniform{[}−Δ/2, +Δ/2{]}
+
+の形で揺らぐとする。L \textgreater{} Δ を仮定。
+
+\subsubsection{N回平均}\label{nux56deux5e73ux5747}
+
+\begin{itemize}
+\tightlist
+\item
+  E{[}L̂\_N{]} = A'
+\item
+  Var{[}L\_i{]} = Δ²/12
+\item
+  σ\_N = Δ/√(12N) → 0
+\end{itemize}
+
+\subsubsection{思考実験 I
+との対比}\label{ux601dux8003ux5b9fux9a13-i-ux3068ux306eux5bfeux6bd4}
+
+両ケースを真値 7.7、刻み Δ = 1 で具体化すると、いずれも「100回測れば 7
+が約30回、8 が約70回返り、平均 7.7
+に収束する」という同一の経験分布を生む。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& 揺らぎがメジャー側 & 揺らぎが物理量側 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+単回出力空間 & 離散 \{kΔ, (k+1)Δ\} & 連続 \\
+確率分布 & 位置依存ベルヌーイ & 一様分布の加法 \\
+N→∞ 収束先 & 真値 & 真値 \\
+観測データからの区別 & 不可能 & \\
+\end{longtable}
+}
+
+\subsubsection{両側揺らぎ}\label{ux4e21ux5074ux63faux3089ux304e}
+
+物理量側の揺らぎ ξ（広がり δ）とメジャー側の揺らぎ η（広がり
+σ）が独立に共存する一般化された場合：
+
+\begin{itemize}
+\tightlist
+\item
+  観測値 L\_i = A' + ξ\_i + η\_i
+\item
+  σ\_N = √(Var{[}ξ{]} + Var{[}η{]}) / √N → 0
+\end{itemize}
+
+1/√N 減衰は維持されるが、δ と σ
+を観測値1系列から分離するには、観測の外側にある追加仮定（メジャーの独立校正、時系列分解、分布形の事前知識など）が必要となる。
+
+\subsubsection{帰結}\label{ux5e30ux7d50-1}
+
+\begin{quote}
+観測される揺らぎの大きさを Δ\_obs
+と定義すれば、それがメジャーの量子化幅から来るのか、物理量自身の揺らぎから来るのか、両者の合成かは、観測データだけからは決定できない。
+
+「客観的真値への収束」ではなく、「観測者が定義した実効的真値への収束」として
+1/√N 減衰は厳密に言明できる。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{思考実験
+III：運動量の波長表現と不確定性関係}\label{ux601dux8003ux5b9fux9a13-iiiux904bux52d5ux91cfux306eux6ce2ux9577ux8868ux73feux3068ux4e0dux78baux5b9aux6027ux95a2ux4fc2}
+
+\subsubsection{設定}\label{ux8a2dux5b9a-2}
+
+思考実験 II の対象を量子論的な波束に拡張する。位置 x
+について、波束の中央値 x₁ と広がり δx
+を考える。ここで「中央値」は波束分布のラベルであり、観測の外側に客観的真値があるとする立場には立たない。
+
+運動量 p についても同様に、波束の中央値 p₁ と広がり δp を考える。
+
+\subsubsection{波長による書き換え}\label{ux6ce2ux9577ux306bux3088ux308bux66f8ux304dux63dbux3048}
+
+ド・ブロイ関係 {[}2{]}：
+
+\[p = \frac{h}{\lambda} = \hbar k, \quad k = \frac{2\pi}{\lambda}\]
+
+から、運動量の揺らぎは
+
+\[\delta p = \frac{h}{\lambda^2}\delta\lambda = \hbar \, \delta k\]
+
+不確定性関係 ΔxΔp ≥ ℏ/2 {[}7{]} を波数で書き換えると：
+
+\[\Delta x \cdot \Delta k \geq \frac{1}{2}\]
+
+\subsubsection{観察}\label{ux89b3ux5bdf}
+
+この形式では、不等式の両辺からプランク定数 ℏ
+が消える。残るのは位置と波数の積に関するフーリエ変換の数学的不等式である。
+
+プランク定数 ℏ
+は、位置の単位（m）と運動量の単位（kg·m/s）を結ぶ次元的な換算係数として機能している。
+
+定性的には：
+
+\begin{itemize}
+\tightlist
+\item
+  位置を正確に決める ⟺ 位置波束を狭める ⟺ 波長分布が広がる ⟺
+  運動量が曖昧になる
+\item
+  運動量を正確に決める ⟺ 波長を1つに絞る ⟺ 空間全体に広がる ⟺
+  位置が曖昧になる
+\end{itemize}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+波束の形 & 空間広がり & 波長分布 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+デルタ関数 & δx = 0 & 全波長を含む \\
+矩形パルス & 有限 & sinc 関数 \\
+純粋正弦波 & 空間全体 & 単一波長 \\
+\end{longtable}
+}
+
+\subsubsection{帰結}\label{ux5e30ux7d50-2}
+
+\begin{quote}
+位置と運動量の不確定性関係は、波数表現において ΔxΔk ≥ 1/2
+となり、フーリエ変換における共役量の積の下限として記述される。プランク定数は次元換算の係数として現れる。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{思考実験
+IV：複合波束としての量子相関}\label{ux601dux8003ux5b9fux9a13-ivux8907ux5408ux6ce2ux675fux3068ux3057ux3066ux306eux91cfux5b50ux76f8ux95a2}
+
+\subsubsection{設定}\label{ux8a2dux5b9a-3}
+
+2つの空間領域 A, B
+に局在し、共通の保存量（運動量、エネルギー等）を介して相関を持つ状態を考える。標準的には「2粒子のもつれ状態」として記述される系である
+{[}3, 4, 5{]}。
+
+これを「1つの複合波束が空間内の2領域に局在する状態」として記述することを試みる。
+
+\subsubsection{弦の比喩}\label{ux5f26ux306eux6bd4ux55a9}
+
+長く張られた弦がベースライン振動をしている状態で、片端を突然固定すると、反対端にソリトン的な変形が現れる。これは弦全体が1つの系として保存則に従う結果であり、片端から反対端へ情報が伝播したわけではない。
+
+\subsubsection{複合波束の幾何学}\label{ux8907ux5408ux6ce2ux675fux306eux5e7eux4f55ux5b66}
+
+\begin{itemize}
+\tightlist
+\item
+  複合波束は位相空間内で1つの面積要素を占める
+\item
+  空間内では2領域 A, B に局在ピークを持つ
+\item
+  A 側で局所的相互作用が起こり、Δx\_A が縮む
+\item
+  面積保存（Robertson 不等式 {[}6{]} の下限）のため、共役な Δp\_A
+  が広がる
+\item
+  複合波束全体の保存量を満たすために、B
+  側の波束の広がりも幾何学的に変形する
+\end{itemize}
+
+この記述において、A から B
+への情報伝達は導入されていない。観測される相関は、1つの波束の局所更新が保存則を介して全体に反映された幾何学的帰結である。
+
+\subsubsection{保存量の正体}\label{ux4fddux5b58ux91cfux306eux6b63ux4f53}
+
+複合系で保存されているのは、個別の波長や位置ではなく、共役物理量の広がりの積（位相空間内の面積要素）である：
+
+\[\Delta x \cdot \Delta p \geq \frac{\hbar}{2}, \quad \Delta A \cdot \Delta B \geq \frac{1}{2}\left|\langle [A,B] \rangle\right|\]
+
+左辺は面積次元を持ち、不等号は面積の下限を意味する。
+
+\subsubsection{帰結}\label{ux5e30ux7d50-3}
+
+\begin{quote}
+量子相関は「1つの複合波束が空間内で複数領域に局在する」状態として記述可能である。観測される相関は波束全体の保存則の幾何学的帰結であり、本記述は空間的に隔たった2系の間の情報伝達を必要としない。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{思考実験
+V：観測量の代数}\label{ux601dux8003ux5b9fux9a13-vux89b3ux6e2cux91cfux306eux4ee3ux6570}
+
+\subsubsection{設定}\label{ux8a2dux5b9a-4}
+
+不確定性関係 ΔAΔB ≥ \textbar⟨{[}A,B{]}⟩\textbar/2
+を持つ物理量の対をいくつか並べる：
+
+\begin{itemize}
+\tightlist
+\item
+  位置 x ↔ 運動量 p
+\item
+  スピン Sx ↔ Sy ↔ Sz
+\item
+  偏光（H/V ↔ D/A ↔ R/L）
+\item
+  角運動量 Lx ↔ Ly ↔ Lz
+\item
+  エネルギー ↔ 時間
+\end{itemize}
+
+これらすべてが共通の構造を持つ。
+
+\subsubsection{共通構造}\label{ux5171ux901aux69cbux9020}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+物理量の対 & 共有する構造 & 異なる演算子の役割 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+x ↔ p & 位相空間内の面積要素 & 直接座標 ↔ Fourier座標 \\
+Sx ↔ Sy ↔ Sz & スピン位相空間の面積要素 & 異なる軸への射影 \\
+偏光基底 & 偏光面の面積要素 & 異なる基底への射影 \\
+Lx ↔ Ly ↔ Lz & 角運動量位相空間 & 異なる軸への射影 \\
+E ↔ t & エネルギー-時間位相空間 & 異なる表示 \\
+\end{longtable}
+}
+
+\subsubsection{統一描像}\label{ux7d71ux4e00ux63cfux50cf}
+
+複素ヒルベルト空間において：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+形式的対象
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+幾何学的解釈
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+固有ベクトル \textbar ψ⟩ & 波束（位相空間内の1つの面積要素） \\
+演算子 Â & 面積要素から実数値を取り出す射影 \\
+固有値 a & 射影の結果 \\
+非可換性 {[}Â, B̂{]} ≠ 0 &
+2つの射影が同じ面積要素を異なる方向から見ている \\
+\end{longtable}
+}
+
+\subsubsection{帰結}\label{ux5e30ux7d50-4}
+
+\begin{quote}
+不確定性関係を持つ物理量は、同一の波束（固有ベクトル）の異なる射影として記述される。非可換な射影同士の積は、波束の面積要素を下限として持つ（Robertson
+不等式）。
+
+物理量とは波束の射影である。波束は位相空間内の面積要素として実在し、面積は射影の積として保存される。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{まとめ}\label{ux307eux3068ux3081}
+
+5つの思考実験を通じて以下の構造が現れた：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{識別の壁}（I）--- Δ は分解能ではなく個体化の閾値。L ≥ Δ
+  が距離測定の前提
+\item
+  \textbf{揺らぎの所在の区別不能性}（II）--- メジャー側の Δ と物理量側の
+  Δ は、観測データから区別できない
+\item
+  \textbf{波数表現の不確定性関係}（III）--- ΔxΔk ≥ 1/2
+  はフーリエ変換の数学的事実。ℏ は単位換算係数として現れる
+\item
+  \textbf{複合波束としての量子相関}（IV）---
+  1つの波束の空間的分割として記述すれば、空間的に分離した系の間の情報伝達を仮定せずに相関が説明できる
+\item
+  \textbf{観測量の代数}（V）---
+  不確定性関係を持つ物理量は同一の波束の異なる射影。位相空間内の面積要素が保存量
+\end{enumerate}
+
+これらは清水『新版量子論の基礎』第1章〜第3章で導入される複素ヒルベルト空間・観測量・測定の枠組みと整合し、その上で量子論の概念的見通しを与える一つの読み方を提示する。本稿は標準的な量子論の数学的予言を変更せず、各概念の幾何学的解釈を提示するに留まる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{謝辞}\label{ux8b1dux8f9e}
+
+本思考実験は AI 対話を通じて段階的に整理された。試行錯誤の過程を含む
+verbatim 記録は ai-chat-logs-open
+リポジトリ（\texttt{新版量子論の基礎/思考実験(6)*},
+\texttt{思考実験(7)*}）にて公開されている。
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+{[}1{]} 清水明『新版
+量子論の基礎------その本質のやさしい理解のために』サイエンス社, 2003.
+
+{[}2{]} de Broglie, L. (1924) \emph{Recherches sur la théorie des
+Quanta}, Thèse de doctorat, Faculté des Sciences de Paris.
+
+{[}3{]} Einstein, A., Podolsky, B., Rosen, N. (1935) ``Can
+Quantum-Mechanical Description of Physical Reality Be Considered
+Complete?'' \emph{Physical Review} \textbf{47}, 777--780.
+
+{[}4{]} Schrödinger, E. (1935) ``Discussion of Probability Relations
+Between Separated Systems'' \emph{Mathematical Proceedings of the
+Cambridge Philosophical Society} \textbf{31}, 555--563.
+
+{[}5{]} Bell, J. S. (1964) ``On the Einstein-Podolsky-Rosen Paradox''
+\emph{Physics Physique Физика} \textbf{1}, 195--200.
+
+{[}6{]} Robertson, H. P. (1929) ``The Uncertainty Principle''
+\emph{Physical Review} \textbf{34}, 163--164.
+
+{[}7{]} Heisenberg, W. (1927) ``Über den anschaulichen Inhalt der
+quantentheoretischen Kinematik und Mechanik'' \emph{Zeitschrift für
+Physik} \textbf{43}, 172--198.
+
+\end{document}

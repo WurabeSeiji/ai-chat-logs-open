@@ -18,12 +18,15 @@ published: true
 
 GitHub リポジトリ [ai-chat-logs-open](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/新版量子論の基礎) に以下を公開：
 
-### 1. 観察論文（本体）
+### 1. 観察論文（本体）— Zenodo DOI 取得済
 
 整理された5段階の思考実験を学術論文形式で記述。
 
-- **日本語版**: [新版量子論の基礎_第3章までの思考実験.md](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/新版量子論の基礎/新版量子論の基礎_第3章までの思考実験.md)
-- **英語版**: [thought_experiments_through_chapter3.md](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/新版量子論の基礎/thought_experiments_through_chapter3.md)
+- **Zenodo Record**: <https://zenodo.org/records/20391523>
+- **DOI**: [10.5281/zenodo.20391523](https://doi.org/10.5281/zenodo.20391523)
+- **形式**: md / tex / pdf × ja / en の 6 ファイル、CC BY 4.0
+- GitHub 日本語版: [新版量子論の基礎_第3章までの思考実験.md](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/新版量子論の基礎/新版量子論の基礎_第3章までの思考実験.md)
+- GitHub 英語版: [thought_experiments_through_chapter3.md](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/新版量子論の基礎/thought_experiments_through_chapter3.md)
 
 ### 2. 思考実験(6)：物理量の測定と揺らぎ
 

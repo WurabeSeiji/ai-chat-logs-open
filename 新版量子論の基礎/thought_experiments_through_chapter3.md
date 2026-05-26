@@ -2,6 +2,12 @@
 
 ## ——From the Identification Wall in Measurement to the Algebra of Observables
 
+**Author**: Noriaki Kihara, WF System Co., Ltd., ORCID: [0009-0004-6753-4020](https://orcid.org/0009-0004-6753-4020)
+**Version**: v1.0
+**Date**: May 2026
+**DOI**: [10.5281/zenodo.20391523](https://doi.org/10.5281/zenodo.20391523)
+**License**: CC BY 4.0
+
 ### Abstract
 
 Against the background of the framework of complex Hilbert spaces, observables, and measurement developed in Chapters 1 to 3 of Akira Shimizu's *New Edition: Foundations of Quantum Theory* [1], this paper organizes five stepwise thought experiments to unify the treatment of measurement precision, the uncertainty relation, wave packets, quantum correlations, and the algebra of observables. The starting point is the "identification wall" of classical measurement theory, and the destination is the algebraic picture in which "physical quantities satisfying an uncertainty relation are different projections extracted from the same wave packet." The present paper does not contradict the mathematical system of standard quantum theory; rather, it offers one reading that supplements its conceptual outlook.
