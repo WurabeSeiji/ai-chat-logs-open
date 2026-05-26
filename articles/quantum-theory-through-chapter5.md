@@ -30,6 +30,8 @@ GitHub リポジトリ [ai-chat-logs-open](https://github.com/WurabeSeiji/ai-cha
 - **形式**: md / tex / pdf × ja / en の 6 ファイル、CC BY 4.0
 - GitHub 日本語版: [新版量子論の基礎_第5章までの思考実験.md](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/新版量子論の基礎/新版量子論の基礎_第5章までの思考実験.md)
 - GitHub 英語版: [thought_experiments_through_chapter5.md](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/新版量子論の基礎/thought_experiments_through_chapter5.md)
+- note 日本語記事: <https://note.com/kiharanoriaki/n/n8ffc8e2c9123>
+- note 英語記事: <https://note.com/kiharanoriaki/n/ncaf7e51ecc2b>
 
 ### 2. 思考実験(8)：物理量は実数なのか
 
