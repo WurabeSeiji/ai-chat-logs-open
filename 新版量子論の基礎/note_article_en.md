@@ -146,3 +146,7 @@ Purchase links:
 Comments and questions are welcome via the note comment section or Zenodo's comment function.
 
 Author: Noriaki Kihara, WF System Co., Ltd., ORCID: 0009-0004-6753-4020
+
+---
+
+#QuantumTheory #QuantumMechanics #ShimizuTextbook #FoundationsOfQuantumTheory #UncertaintyPrinciple #AlgebraOfObservables #ThoughtExperiment #QuantumEntanglement #WavePacket #PhaseSpace #FourierTransform #RobertsonInequality #HilbertSpace #deBroglieRelation #TheoreticalPhysics #MathematicalPhysics #Physics #ReadingNote #Textbook #Zenodo #Preprint #WorkingPaper #IndependentResearcher #AIDialogue
