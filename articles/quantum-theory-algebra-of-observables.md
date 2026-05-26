@@ -27,6 +27,8 @@ GitHub リポジトリ [ai-chat-logs-open](https://github.com/WurabeSeiji/ai-cha
 - **形式**: md / tex / pdf × ja / en の 6 ファイル、CC BY 4.0
 - GitHub 日本語版: [新版量子論の基礎_第3章までの思考実験.md](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/新版量子論の基礎/新版量子論の基礎_第3章までの思考実験.md)
 - GitHub 英語版: [thought_experiments_through_chapter3.md](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/新版量子論の基礎/thought_experiments_through_chapter3.md)
+- note 日本語記事: <https://note.com/kiharanoriaki/n/n2410d4863565>
+- note 英語記事: <https://note.com/kiharanoriaki/n/nbfc40cb3cfa3>
 
 ### 2. 思考実験(6)：物理量の測定と揺らぎ
 

@@ -106,6 +106,7 @@ The GitHub repository ai-chat-logs-open contains both verbatim records of the th
 
 - GitHub: https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/新版量子論の基礎
 - Zenn article (integrated introduction of three papers, in Japanese): https://zenn.dev/noriaki_kihara/articles/quantum-theory-algebra-of-observables
+- Japanese note article: https://note.com/kiharanoriaki/n/n2410d4863565
 
 Companion papers (Central Projection Framework):
 

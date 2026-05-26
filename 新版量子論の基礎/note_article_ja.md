@@ -104,6 +104,7 @@ GitHubリポジトリ ai-chat-logs-open に、本思考実験の verbatim 記録
 
 - GitHub：https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/新版量子論の基礎
 - Zenn記事（3論文の統合紹介）：https://zenn.dev/noriaki_kihara/articles/quantum-theory-algebra-of-observables
+- 英語版 note 記事：https://note.com/kiharanoriaki/n/nbfc40cb3cfa3
 
 姉妹論文（中心投影フレームワーク）：
 
