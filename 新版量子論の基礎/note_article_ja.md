@@ -142,7 +142,7 @@ GitHubリポジトリ ai-chat-logs-open に、本思考実験の verbatim 記録
 
 ご質問・ご意見はnoteのコメント欄またはZenodoのコメント機能でお寄せください。
 
-著者：木原 矩明 / Noriaki Kihara, WF System Co., Ltd. / ORCID: 0009-0004-6753-4020
+著者：木原 範昭 / Noriaki Kihara, WF System Co., Ltd. / ORCID: 0009-0004-6753-4020
 
 ---
 
