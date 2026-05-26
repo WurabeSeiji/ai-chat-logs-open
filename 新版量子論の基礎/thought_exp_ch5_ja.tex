@@ -1,0 +1,1179 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{新版量子論の基礎
+第5章までの思考実験}\label{ux65b0ux7248ux91cfux5b50ux8ad6ux306eux57faux790e-ux7b2c5ux7ae0ux307eux3067ux306eux601dux8003ux5b9fux9a13}
+
+\subsection{------測定の識別の壁から矩形位相エネルギー窓まで}\label{ux6e2cux5b9aux306eux8b58ux5225ux306eux58c1ux304bux3089ux77e9ux5f62ux4f4dux76f8ux30a8ux30cdux30ebux30aeux30fcux7a93ux307eux3067}
+
+\textbf{著者}: 木原 範昭 (Noriaki Kihara), WF System Co., Ltd., ORCID:
+\href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020}
+\textbf{Version}: v1.0（AI 査読複数ラウンド統合反映：Gemini × 1、Grok ×
+1、ChatGPT × 2） \textbf{Date}: 2026年5月 \textbf{Concept DOI}:
+\href{https://doi.org/10.5281/zenodo.20398526}{10.5281/zenodo.20398526}
+\textbf{v1 DOI}:
+\href{https://doi.org/10.5281/zenodo.20398527}{10.5281/zenodo.20398527}
+\textbf{前稿}：『新版量子論の基礎 第3章までの思考実験』v3.0.1（Concept
+DOI:
+\href{https://doi.org/10.5281/zenodo.20391522}{10.5281/zenodo.20391522}、v3
+DOI:
+\href{https://doi.org/10.5281/zenodo.20393018}{10.5281/zenodo.20393018}）
+\textbf{License}: CC BY 4.0
+
+\subsubsection{要旨}\label{ux8981ux65e8}
+
+清水明『新版量子論の基礎』{[}1{]}
+第1章〜第5章で展開される、複素ヒルベルト空間・観測量・測定・不確定性関係・1次元空間を運動する粒子・箱型ポテンシャル・トンネル効果の枠組みを背景に、7つの段階的な思考実験を通じて、測定精度、不確定性関係、波束、量子相関、観測量の代数、物理量の存在論、粒子の有限幅構造を統一的に整理する。前稿（第3章までの思考実験
+v3.0.1）の5つの思考実験を継承し、第4〜5章相当の領域として、物理量の複素位相空間上での表現（思考実験
+VI）と、粒子を中心位相と有限幅を持つ矩形位相エネルギー窓として読み替える描像（思考実験
+VII）を追加する。出発点は古典的な計量論における「識別の壁」であり、到達点は「粒子は中心位置位相と有限幅を持つ矩形位相エネルギー窓であり、観測される波形はその
+Fourier
+低次部分和（観測帯域でローパスされた像）として現れる」という存在論的読み替えである。本稿の核となる読みは、位相空間内の不変量を
+de Gosson 量子ブロブ {[}9{]}
+に代表されるシンプレクティック容量として位置づける半古典的・幾何学的解釈である。本稿は標準量子論の数学的予言を変更するものではなく、少なくとも第1〜5章で扱われる1次元量子力学・測定・不確定性・箱型ポテンシャルの範囲において、既存の計算形式と両立する概念的読み替えを提示する。Lorentz
+共変性・場の局所性・正値性・ユニタリ性・散乱振幅・スピン統計・ゲージ対称性・粒子生成消滅など第1〜5章の枠を超える領域については、本稿の読み替えがそのまま整合的に拡張できるかは独立の課題として留保する。Born
+則を否定するものではなく、位置位相窓 \(P_x(\theta)\)
+を確率密度ではなく形状関数として扱い、観測系がこの形状関数を検出基底に対応する波動関数として読む段階で、標準量子論の内積規則
+\(p(a) = |\langle \varphi_a | \psi \rangle|^2\)
+を通じて確率密度が現れるものとする。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{思考実験
+I：計量における識別の壁}\label{ux601dux8003ux5b9fux9a13-iux8a08ux91cfux306bux304aux3051ux308bux8b58ux5225ux306eux58c1}
+
+\subsubsection{設定}\label{ux8a2dux5b9a}
+
+物理量 A が実数値を取るとする。距離概念に基づくメジャー（最小刻み Δ
+の離散値しか返さない）を用い、2点 A₁, A₂ の間の距離 L を測定する。
+
+各測定で、物理量の真値が属するΔ区間の隣接2格子点 \{kΔ, (k+1)Δ\}
+のうち1つが、真値の区間内位置 r に応じた確率
+
+P(上) = r/Δ, P(下) = 1 − r/Δ
+
+で返るものとする（位置依存ディザリング）。
+
+\subsubsection{N回平均の挙動}\label{nux56deux5e73ux5747ux306eux6319ux52d5}
+
+A₁ = A₂ のとき、単回測定の距離 D = ε₂ − ε₁ は値 \{−Δ, 0, +Δ\}
+を取る。真値のセル内位置を q = r/Δ ∈ {[}0, 1{]} とすると、一般には：
+
+\begin{itemize}
+\tightlist
+\item
+  P(D = +Δ) = q(1−q)
+\item
+  P(D = −Δ) = q(1−q)
+\item
+  P(D = 0) = q² + (1−q)²
+\end{itemize}
+
+したがって E{[}D{]} = 0、Var{[}D{]} = 2q(1−q)Δ²、σ\_D = √(2q(1−q))·Δ。
+
+特に対称位置 q = 1/2 では確率分布は \{1/4, 1/2, 1/4\} となり、Var{[}D{]}
+= Δ²/2、σ\_N = Δ/√(2N)。
+
+N → ∞ で σ\_N → 0、L̂\_N → L に確率1で収束する。
+
+\subsubsection{識別可能性の条件}\label{ux8b58ux5225ux53efux80fdux6027ux306eux6761ux4ef6}
+
+A₁ と A₂
+を2つの異なる対象として認識するには、両者が異なるΔセルに属している必要がある。同じセル内にあれば、メジャーにとって「点1個か2個か」が判別不能であり、「2点間距離」という量が立ち上がらない。
+
+したがって距離 L を測る問題が成立する条件は
+
+L ≥ Δ
+
+である。L \textless{} Δ
+の領域は「測定誤差で埋もれている」のではなく、「2点」という概念が定義されていない領域である。
+
+\subsubsection{帰結}\label{ux5e30ux7d50}
+
+\begin{quote}
+距離概念を用いるメジャーで距離を測る場合、メジャーの刻み Δ
+以下の計量は、不確定性関係を持ち出す以前に\textbf{測定が定義不能}である。Δ
+は分解能ではなく、個体化（individuation）の閾値として働く。
+
+L ≥ Δ を満たす範囲では、Δ
+の絶対値に関わらず無限回測定で任意精度に到達する。
+\end{quote}
+
+本議論は距離概念に基づくメジャー一般について成立する論点であり、量子重力における
+Planck スケールの最小長の議論 {[}10{]}
+とは構造的アナロジーがあるが独立に位置づけられる。
+
+\textbf{認識論的限界と存在論的限界の関係}：上記の「定義不能」は、Δ
+未満の距離が\textbf{実在として存在しない}（空間が離散化されている）という存在論的主張ではなく、Δ
+刻みのメジャーで構成される観測系の内部から見れば\textbf{認識論的に区別不能であり、その観測系の内部では存在論的に同一として扱う以外に操作的意味がない}、という認識論的限界が幾何学的限界として現れる領域の主張である。すなわち本稿の立場は、認識論と存在論を独立に並立させるのではなく、観測系の内部で構成可能な区別の限界がそのまま幾何学的な個体化の限界となる、という認識論主導の幾何学である。この見方では「実在の空間が離散か連続か」という外在的な問いには立ち入らない。
+
+\textbf{より厳密には}：「Δ未満では2点が存在しない」という存在論的表現ではなく、「Δ刻みのメジャーが構成する観測代数において、2点を識別する射影演算子が存在しない」と述べる方が量子測定理論との接続として適切である。本議論は
+POVM・Kraus
+演算子による一般化された測定の枠組みと整合させることができ、粗視化測定の特殊例として位置づけられる。
+
+なお、外部から A₁, A₂
+が別対象として事前にラベル付けされている場合には、反復測定によりサブセル精度の平均差を推定しうる（位置依存ディザリングによる
+N→∞
+収束）。本稿でいう「定義不能」とは、観測系内部で2対象を個体化する操作が存在しない場合を指す。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{思考実験
+II：揺らぎの所在}\label{ux601dux8003ux5b9fux9a13-iiux63faux3089ux304eux306eux6240ux5728}
+
+\subsubsection{設定}\label{ux8a2dux5b9a-1}
+
+逆の状況を考える。メジャーは無限精度を持ち、入力値をそのまま返す。一方、物理量
+A 自身が真値 A' に対して
+
+A\_i = A' + ξ\_i, ξ\_i \textasciitilde{} Uniform{[}−Δ/2, +Δ/2{]}
+
+の形で揺らぐとする。L \textgreater{} Δ を仮定。
+
+\subsubsection{N回平均}\label{nux56deux5e73ux5747}
+
+\begin{itemize}
+\tightlist
+\item
+  E{[}L̂\_N{]} = A'
+\item
+  Var{[}L\_i{]} = Δ²/12
+\item
+  σ\_N = Δ/√(12N) → 0
+\end{itemize}
+
+\subsubsection{思考実験 I
+との対比}\label{ux601dux8003ux5b9fux9a13-i-ux3068ux306eux5bfeux6bd4}
+
+両ケースを真値 7.7、刻み Δ = 1 で具体化すると、いずれも「100回測れば 7
+が約30回、8 が約70回返り、平均 7.7
+に収束する」という同一の経験分布を生む。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+& 揺らぎがメジャー側 & 揺らぎが物理量側 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+単回出力空間 & 離散 \{kΔ, (k+1)Δ\} & 連続 \\
+確率分布 & 位置依存ベルヌーイ & 一様分布の加法 \\
+N→∞ 収束先 & 真値 & 真値 \\
+観測データからの区別 & 不可能 & \\
+\end{longtable}
+}
+
+\subsubsection{両側揺らぎ}\label{ux4e21ux5074ux63faux3089ux304e}
+
+物理量側の揺らぎ ξ（広がり δ）とメジャー側の揺らぎ η（広がり
+σ）が独立に共存する一般化された場合：
+
+\begin{itemize}
+\tightlist
+\item
+  観測値 L\_i = A' + ξ\_i + η\_i
+\item
+  σ\_N = √(Var{[}ξ{]} + Var{[}η{]}) / √N → 0
+\end{itemize}
+
+1/√N 減衰は維持されるが、δ と σ
+を観測値1系列から分離するには、観測の外側にある追加仮定（メジャーの独立校正、時系列分解、分布形の事前知識など）が必要となる。
+
+\subsubsection{帰結}\label{ux5e30ux7d50-1}
+
+\begin{quote}
+観測される揺らぎの大きさを Δ\_obs
+と定義すれば、それがメジャーの量子化幅から来るのか、物理量自身の揺らぎから来るのか、両者の合成かは、観測データだけからは決定できない。
+
+「客観的真値への収束」ではなく、「観測者が定義した実効的真値への収束」として
+1/√N 減衰は厳密に言明できる。
+\end{quote}
+
+\textbf{より厳密には}：「観測データだけからは決定できない」とは「単一観測系列・単一測定設定・事前校正なしの条件下で」を意味する。装置ハミルトニアンが既知である場合、量子開放系のデコヒーレンス理論を介して系側揺らぎと環境（測定器）側揺らぎを理論的に区別することは可能である。本稿の主張は、観測データ単独からの不可識別性であり、観測者の知識状態に依存する認識論的側面（QBism
+的解釈）と接続される。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{思考実験
+III：運動量の波長表現と不確定性関係}\label{ux601dux8003ux5b9fux9a13-iiiux904bux52d5ux91cfux306eux6ce2ux9577ux8868ux73feux3068ux4e0dux78baux5b9aux6027ux95a2ux4fc2}
+
+\subsubsection{設定}\label{ux8a2dux5b9a-2}
+
+思考実験 II の対象を量子論的な波束に拡張する。位置 x
+について、波束の中心位置（期待値 ⟨x⟩）x₁ と広がり δx
+を考える。ここで「中心位置」は波束分布のラベルであり、観測の外側に客観的真値があるとする立場には立たない。
+
+運動量 p についても同様に、波束の中心位置（期待値 ⟨p⟩）p₁ と広がり δp
+を考える。
+
+\subsubsection{波長による書き換え}\label{ux6ce2ux9577ux306bux3088ux308bux66f8ux304dux63dbux3048}
+
+ド・ブロイ関係 {[}2{]}：
+
+\[p = \frac{h}{\lambda} = \hbar k, \quad k = \frac{2\pi}{\lambda}\]
+
+から、運動量の揺らぎは
+
+\[|\delta p| = \frac{h}{\lambda^2}|\delta\lambda| = \hbar \, |\delta k|\]
+
+（微分関係 dp/dλ = −h/λ² の符号は揺らぎ幅としては絶対値を扱う）
+
+不確定性関係 ΔxΔp ≥ ℏ/2 {[}7{]} を波数で書き換えると：
+
+\[\Delta x \cdot \Delta k \geq \frac{1}{2}\]
+
+\subsubsection{観察}\label{ux89b3ux5bdf}
+
+この形式では、不等式の両辺からプランク定数 ℏ
+が消える。残るのは位置と波数の積に関するフーリエ変換の数学的不等式である。
+
+プランク定数 ℏ
+は、位置の単位（m）と運動量の単位（kg·m/s）を結ぶ次元的な換算係数として機能している。プランク定数を観測量としてではなく人間の単位選択の慣習として捉える同様の視点は
+Ralston {[}8{]} によっても提示されている。
+
+定性的には：
+
+\begin{itemize}
+\tightlist
+\item
+  位置を正確に決める ⟺ 位置波束を狭める ⟺ 波長分布が広がる ⟺
+  運動量が曖昧になる
+\item
+  運動量を正確に決める ⟺ 波長を1つに絞る ⟺ 空間全体に広がる ⟺
+  位置が曖昧になる
+\end{itemize}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+波束の形 & 空間広がり & 波長分布 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+デルタ関数 & δx = 0 & 全波長を含む \\
+矩形パルス & 有限 & sinc 関数 \\
+純粋正弦波 & 空間全体 & 単一波長 \\
+\end{longtable}
+}
+
+\subsubsection{帰結}\label{ux5e30ux7d50-2}
+
+\begin{quote}
+位置と運動量の不確定性関係は、波数表現において ΔxΔk ≥ 1/2
+となり、フーリエ変換における共役量の積の下限として記述される。プランク定数は次元換算の係数として現れる。
+\end{quote}
+
+\textbf{より厳密には}：ℏ は正準交換関係 {[}x, p{]} = iℏ
+に現れる作用量子であり、自然単位系で ℏ = 1
+と置けるという事実とは独立に物理的内容を持つ。本稿の主張は、波数表示への移行が正準交換関係を
+{[}x, k{]} = i
+に書き換え、不確定性関係を波数共役の幾何学的不等式として読み直せるという、書き換えの事実に限定される。「ℏ
+が消える」とは記述の見かけから消えるという意味であり、量子作用としての ℏ
+の物理的役割を否定するものではない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{思考実験
+IV：複合波束としての量子相関}\label{ux601dux8003ux5b9fux9a13-ivux8907ux5408ux6ce2ux675fux3068ux3057ux3066ux306eux91cfux5b50ux76f8ux95a2}
+
+\subsubsection{設定}\label{ux8a2dux5b9a-3}
+
+2つの空間領域 A, B
+に局在し、共通の保存量（運動量、エネルギー等）を介して相関を持つ状態を考える。標準的には「2粒子のもつれ状態」として記述される系である
+{[}3, 4, 5{]}。
+
+これを「1つの複合波束が空間内の2領域に局在する状態」として記述することを試みる。
+
+\subsubsection{弦の比喩}\label{ux5f26ux306eux6bd4ux55a9}
+
+長く張られた弦がベースライン振動をしている状態で、片端を突然固定すると、反対端にソリトン的な変形が現れる。これは弦全体が1つの系として保存則に従う結果であり、片端から反対端へ情報が伝播したわけではない。
+
+\subsubsection{複合波束の幾何学}\label{ux8907ux5408ux6ce2ux675fux306eux5e7eux4f55ux5b66}
+
+\begin{itemize}
+\tightlist
+\item
+  複合波束は位相空間内で1つの面積要素を占める
+\item
+  空間内では2領域 A, B に局在ピークを持つ
+\item
+  A 側で局所的相互作用が起こり、Δx\_A が縮む
+\item
+  Robertson 不等式 {[}6{]} および Robertson--Schrödinger
+  型の共分散制約により、A
+  側の射影方向で広がりが縮小されると、共役方向または共分散成分に補償的な変化が生じ、Δp\_A
+  が広がる
+\item
+  複合波束全体のシンプレクティック容量による幾何学的制約を満たすために、B
+  側の波束の広がりも幾何学的に変形する
+\end{itemize}
+
+ただし、ここでいう B 側の変形とは、A
+側の測定結果で条件付けた事後状態の記述における変化であり、B
+側単独の未条件付き縮約密度行列が A
+側の局所操作によって変化することを意味しない。この区別により標準量子論の
+no-signalling 定理と整合する。
+
+この記述において、A から B
+への情報伝達は導入されていない。観測される相関は、全体系の状態と保存量・対称性・シンプレクティック容量制約を反映した幾何学的帰結である。
+
+\subsubsection{幾何学的不変量の正体}\label{ux5e7eux4f55ux5b66ux7684ux4e0dux5909ux91cfux306eux6b63ux4f53}
+
+複合系の幾何学を制約しているのは、個別の波長や位置ではなく、共役物理量の広がりの積（位相空間内の面積要素）が形成する\textbf{シンプレクティック容量}である：
+
+\[\Delta x \cdot \Delta p \geq \frac{\hbar}{2}, \quad \Delta A \cdot \Delta B \geq \frac{1}{2}\left|\langle [A,B] \rangle\right|\]
+
+左辺は面積次元を持ち、不等号は面積の下限を意味する。これは ΔxΔp
+の単純な保存則ではなく、正準変換のもとで不変なシンプレクティック容量による幾何学的制約として理解される。
+
+なお厳密には、多自由度系ではシンプレクティック容量は単純な全位相空間体積や各成分の不確定性積の積として定義されるのではなく、正準2平面への射影に関するシンプレクティック不変量として定義される（Gromov
+の非圧搾定理 {[}15{]}）。本稿では本質を伝える直観的影として ΔxΔp
+型の面積要素を用いている。
+
+\subsubsection{帰結}\label{ux5e30ux7d50-3}
+
+\begin{quote}
+量子相関は、「1つの複合状態を空間内の複数領域への射影として読む」幾何学的描像で理解できる。観測される相関は、全体系の状態、保存量・対称性、およびシンプレクティック容量制約を反映した幾何学的帰結であり、本記述は空間的に隔たった2系の間の情報伝達を必要としない。
+\end{quote}
+
+\textbf{より厳密には}：本稿の複合波束描像は、標準量子論におけるテンソル積ヒルベルト空間上の一状態ベクトルを、位相空間の幾何学的直観で読む試みである。弦のソリトンアナロジーは保存則の幾何学的構造の直観的提示であり、Bell
+不等式違反の量的予測、たとえば CHSH 不等式における最大違反
+2√2（Tsirelson
+bound）等の完全な再導出ではない。これらの量的予測は古典波動アナロジーから独立に、量子論の代数構造から導出される。本記述が「情報伝達を必要としない」点は標準量子論の
+no-signalling
+定理（密度演算子の部分トレース、局所操作の不変性）と整合する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{思考実験
+V：観測量の代数}\label{ux601dux8003ux5b9fux9a13-vux89b3ux6e2cux91cfux306eux4ee3ux6570}
+
+\textbf{メタファーの有効範囲についての前置き}：本節では「波束」「面積要素」「射影」という直観的な語を用いるが、これは位置・運動量系（無限次元・連続スペクトル）における純粋状態の半古典的・幾何学的解釈として有効な比喩である。スピン系・有限次元系では、波束を「射影ヒルベルト空間上の点・状態方向」として、面積要素を「射影演算子の作る非可換代数の幾何学」として読み替える必要がある。各思考実験末尾の「より厳密には」セクションで、各表現の厳密な数学的対応を補足する。
+
+\subsubsection{設定}\label{ux8a2dux5b9a-4}
+
+不確定性関係 ΔAΔB ≥ \textbar⟨{[}A,B{]}⟩\textbar/2
+を持つ物理量の対をいくつか並べる：
+
+\begin{itemize}
+\tightlist
+\item
+  位置 x ↔ 運動量 p
+\item
+  スピン Sx ↔ Sy ↔ Sz
+\item
+  偏光（H/V ↔ D/A ↔ R/L）
+\item
+  角運動量 Lx ↔ Ly ↔ Lz
+\item
+  エネルギー ↔
+  時間（注：エネルギー-時間不確定性は、時間が通常の量子力学では自己共役な演算子として定義されないため、位置-運動量やスピン成分間の
+  Robertson 型不確定性とは数学的地位が異なる）
+\end{itemize}
+
+これらすべてが共通の構造を持つ。
+
+\subsubsection{共通構造}\label{ux5171ux901aux69cbux9020}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+物理量の対 & 共有する構造 & 異なる演算子の役割 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+x ↔ p & 位相空間内の面積要素 & 直接座標 ↔ Fourier座標 \\
+Sx ↔ Sy ↔ Sz & スピン位相空間の面積要素 & 異なる軸への射影 \\
+偏光基底 & 偏光面の面積要素 & 異なる基底への射影 \\
+Lx ↔ Ly ↔ Lz & 角運動量位相空間 & 異なる軸への射影 \\
+E ↔ t & エネルギー-時間位相空間 & 異なる表示 \\
+\end{longtable}
+}
+
+\subsubsection{統一描像}\label{ux7d71ux4e00ux63cfux50cf}
+
+複素ヒルベルト空間において：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+形式的対象
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+幾何学的解釈
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+固有ベクトル \textbar ψ⟩ & 波束（位相空間内の1つの面積要素） \\
+演算子 Â & 面積要素から実数値を取り出す射影 \\
+固有値 a & 射影の結果 \\
+非可換性 {[}Â, B̂{]} ≠ 0 &
+2つの射影が同じ面積要素を異なる方向から見ている \\
+\end{longtable}
+}
+
+\subsubsection{帰結}\label{ux5e30ux7d50-4}
+
+\begin{quote}
+不確定性関係を持つ物理量は、同一の波束（固有ベクトル）の異なる射影として記述される。非可換な射影同士の積は、波束の面積要素を下限として持つ（Robertson
+不等式）。
+
+本稿の幾何学的読みでは、物理量は状態から実数値分布を取り出す観測量として理解され、その値は測定基底またはスペクトル射影を通じて得られる。波束は半古典的位相空間表示では面積要素として解釈され、その広がりは
+Robertson--Schrödinger
+型の共分散制約およびシンプレクティック容量によって制限される。観測量の射影は独立に任意の値を取るのではなく、同一状態の幾何学的不変量のもとで相関している。
+\end{quote}
+
+本稿の面積要素の描像は、de Gosson {[}9{]}
+の量子ブロブ（Robertson--Schrödinger
+の最小不確定性に対応し、シンプレクティック容量、すなわち正準2平面における面積型の不変量として測定される位相空間の最小単位）の議論と整合する。本稿は数学的に重い同氏のシンプレクティック幾何学の枠組みを、思考実験という直観的形式で清水教科書第1章の読み方として再構成したものとして位置づけられる。関連する幾何学的定式化として、射影ヒルベルト空間の
+Kähler 構造による Ashtekar--Schilling の定式化
+{[}11{]}、および観測量の代数を一次的に扱う代数的アプローチ {[}12{]}
+がある。
+
+\textbf{より厳密には}：「演算子＝射影」は projection operator
+という特殊な概念との混同を招くため、観測量は自己共役作用素（self-adjoint
+operator）であり、射影測定の場合にはスペクトル射影を通じて値が取り出される、と表現するのが適切である（一般化された測定では
+POVM）。「固有ベクトル＝波束」は位置・運動量系で有効な比喩であり、スピン系・有限次元系では「状態方向、射影ヒルベルト空間上の点」として解釈すべきである。本稿の位相空間面積要素の描像は半古典的・幾何学的解釈であり、純粋にヒルベルト空間で展開する厳密な定式化は
+Weyl 量子化、Wigner 関数 {[}13{]}、Moyal 括弧 {[}14{]}、geometric
+quantization の枠組みで与えられる。
+
+なお、Robertson 不等式そのものは下限条件であり、無限次元 Hilbert
+空間における位置・運動量の (Δx)(Δp)
+には一般的な絶対上限は存在しない（自由粒子の Gaussian wave packet では
+Δx
+は時間とともに増大しうる）。ただし有限次元系・有界観測量・状態依存の文脈では、近年
+reverse uncertainty relation
+として上限型の不確定性関係が研究されている。本稿の幾何学的不変量の主張は、ΔxΔp
+の単純な保存則ではなく、正準変換に対するシンプレクティック容量の不変性（de
+Gosson の量子ブロブ {[}9{]}）として読むのが最も正確である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{思考実験 VI：物理量は実数なのか ---
+複素位相空間上の量としての物理量}\label{ux601dux8003ux5b9fux9a13-viux7269ux7406ux91cfux306fux5b9fux6570ux306aux306eux304b-ux8907ux7d20ux4f4dux76f8ux7a7aux9593ux4e0aux306eux91cfux3068ux3057ux3066ux306eux7269ux7406ux91cf}
+
+\subsubsection{用語注：「複素位相空間」について}\label{ux7528ux8a9eux6ce8ux8907ux7d20ux4f4dux76f8ux7a7aux9593ux306bux3064ux3044ux3066}
+
+本稿でいう「複素位相空間」は厳密な一つの標準用語ではなく、複素 Hilbert
+空間 \(\mathcal{H}\)、射影 Hilbert 空間 \(\mathbb{P}(\mathcal{H})\) の
+Kähler 構造、Wigner--Moyal 位相空間、および位相因子 \(e^{i\theta}\)
+に共通して現れる\textbf{複素位相構造を総称する作業用語}である。文脈によって指し示す厳密な数学的対象は異なるが、いずれも「実数射影の背後に複素位相構造を持つ」という共通の構造を捉えるための便宜的呼称として用いる。
+
+\subsubsection{設定}\label{ux8a2dux5b9a-5}
+
+思考実験 I〜V
+を通じて、観測量は同一波束の異なる射影として記述できるという代数的描像に到達した。ここで問いを反転する：射影される前の物理量の実体とは何か。観測される値が実数であるという事実は、物理量の基礎構造が実数体上に閉じていることを意味するか。
+
+\subsubsection{三段の仮定}\label{ux4e09ux6bb5ux306eux4eeeux5b9a}
+
+本節では以下を仮定する。
+
+\textbf{仮定
+1}：観測される物理量は実数値である。しかしこれは観測操作の出力型に関する制約であり、物理量を生成する基礎構造が実数体上に閉じていることを意味しない。波動関数が複素数であり観測確率が実数であるように、観測されるものが実数であっても、その背後の生成構造が複素であることを許容する。
+
+\textbf{仮定
+2}：物理の基本量は複素数値の位相空間上の量として定義される。実数の観測値は、その複素位相構造の実数射影（実部、絶対値、汎関数値など）として現れる：
+
+\[
+\mathcal{L} = \mathcal{L}(z, \bar{z}), \quad L_{\mathrm{obs}} = F(\mathcal{L}, \bar{\mathcal{L}}) \in \mathbb{R}
+\]
+
+\textbf{仮定
+3}：物理的に安定な値は連続的な任意値ではなく、系全体で位相が閉じる条件（位相閉包条件）を満たす離散値として選択される。一次元的にはこれは
+\(L = n\lambda/2\) という定常波条件、位相空間的には作用積分
+\(\oint p\,dq = 2\pi\hbar(n + \mu/4)\) の Bohr--Sommerfeld / EBK
+量子化条件 {[}16{]}、より一般には幾何学的量子化の積分条件
+\([\omega]/(2\pi\hbar) \in H^2(M, \mathbb{Z})\)
+に対応する。境界・転回点では \(\pi/2\) 単位の Maslov 位相補正が現れる。
+
+\subsubsection{位置位相の複素表現}\label{ux4f4dux7f6eux4f4dux76f8ux306eux8907ux7d20ux8868ux73fe}
+
+位置 \(x\) を位相 \(\theta_x = kx\) として表すと、中心位置 \(x_0\)
+は中心位相 \(\theta_x = kx_0\) に、位置の広がり \(\Delta x\) は位相幅
+\(\Delta\theta_x = k\Delta x\) に対応する。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={位置位相の複素表現と位相空間像}]{figures/phase_position_wavepacket.png}}
+\caption{位置位相の複素表現と位相空間像}
+\end{figure}
+
+\textbf{図
+VI-1}：位置位相の複素表現と位相空間像。左パネルは複素平面上で、中心位相
+\(\theta_x = 180°\) とその周囲の角度幅 \(\pm\Delta\theta_x = 60°\)
+を示す。\(\Delta\theta_x\)
+は半径方向の広がりではなく、角度方向の広がりである。右パネルは同じ構造を位相軸
+\(\theta\)
+上の波束として示したもので、\(\mathrm{Re}\,\psi(\theta) = A(\theta)\cos(k(\theta-\theta_x)+\theta_x)\)
+の実部を太線、包絡線 \(\pm A(\theta)\) を破線で描いている。両者は
+\(\theta_x = kx_0,\ \Delta\theta_x = k\Delta x\) の対応で結ばれる。
+
+\subsubsection{既存理論との接続}\label{ux65e2ux5b58ux7406ux8ad6ux3068ux306eux63a5ux7d9a}
+
+このモデルは既存の量子幾何との接続を持つ：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{量子幾何テンソル}
+  {[}18{]}：\(Q_{ij} = g_{ij} + (i/2)\Omega_{ij}\)
+  の実部が距離（Provost--Vallée / Fubini--Study 計量）、虚部が Berry
+  曲率（シンプレクティック構造・非可換性）
+\item
+  \textbf{複素 Hilbert 空間と射影空間} {[}11{]}：物理状態は ray
+  として扱われ、射影空間 \(\mathbb{P}(\mathcal{H})\) は自然に Kähler
+  多様体となる
+\item
+  \textbf{Wigner--Moyal 形式 {[}13,
+  14{]}}：位相空間上の擬確率分布として量子論を記述
+\item
+  \textbf{非エルミート量子論 / PT 対称量子論}
+  {[}19{]}：観測量の自己共役性を基礎公理とせず、適切な内積と metric
+  operator により実観測値を回収
+\item
+  \textbf{Ralston (2020)
+  {[}8{]}}：プランク定数を観測量ではなく単位選択の慣習として扱う
+\end{itemize}
+
+\subsubsection{帰結}\label{ux5e30ux7d50-5}
+
+\begin{quote}
+物理量の実態は、実数直線上の単一値ではなく、複素位相空間上の位相閉包構造として読める。この仮定下では、不確定性・干渉・エンタングルメント・量子化条件は、別々の現象ではなく、同一構造を異なる観測射影で見たものとして統一的に理解される。
+\end{quote}
+
+\textbf{より厳密には}：本仮説は新規予測理論ではなく、既存量子論の存在論的・概念的再解釈である。標準量子論の数学的予言は変更されない。複素構造を実体側に置いたとき破綻するのは、観測量の自己共役性を基礎公理とする標準測定論、reflection
+positivity を持たない複素時間 QFT、ユニタリ S
+行列を回収できない複素化標準模型などである
+{[}20{]}。これらは「複素構造そのものが悪い」のではなく、実観測量への射影規則・正値性・ユニタリ性を別途回収する必要があることを示す。Renou
+ら（2021）{[}21{]}
+による実数版量子論と複素版量子論の実験的区別の研究は、複素構造の物理的必要性を実験で問う方向性を示している。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{思考実験 VII：粒子は矩形位相エネルギー窓か ---
+1次元粒子と箱型ポテンシャルの読み替え}\label{ux601dux8003ux5b9fux9a13-viiux7c92ux5b50ux306fux77e9ux5f62ux4f4dux76f8ux30a8ux30cdux30ebux30aeux30fcux7a93ux304b-1ux6b21ux5143ux7c92ux5b50ux3068ux7bb1ux578bux30ddux30c6ux30f3ux30b7ux30e3ux30ebux306eux8aadux307fux66ffux3048}
+
+\subsubsection{設定}\label{ux8a2dux5b9a-6}
+
+清水『新版量子論の基礎』第5章（および同様の1次元量子力学教科書）で扱われる1次元空間を運動する粒子・井戸型ポテンシャル・箱型ポテンシャル・トンネル効果の定式化を、外部条件下の粒子の挙動ではなく、粒子そのものの基礎像として読み替える思考実験を行う。
+
+\subsubsection{矩形位相窓としての位置位相}\label{ux77e9ux5f62ux4f4dux76f8ux7a93ux3068ux3057ux3066ux306eux4f4dux7f6eux4f4dux76f8}
+
+思考実験 VI
+で位置位相は複素位相空間上の量として導入された。さらに具体的な形を与えるため、位置位相を矩形位相窓として置く：
+
+\[
+R_x(\theta) = \begin{cases}
+1, & |\theta - \theta_x| \leq \dfrac{\Delta\theta_x}{2}, \\
+0, & |\theta - \theta_x| > \dfrac{\Delta\theta_x}{2}.
+\end{cases}
+\]
+
+ここで \(\theta_x\) は中心位相、\(\Delta\theta_x\)
+は窓の全幅である。\(|\theta - \theta_x| \leq \Delta\theta_x/2\)
+の領域で値 1、それ以外で値 0
+を取る。これが粒子／位置位相の\textbf{本体}である。
+
+\subsubsection{観測像としての Fourier
+部分和}\label{ux89b3ux6e2cux50cfux3068ux3057ux3066ux306e-fourier-ux90e8ux5206ux548c}
+
+矩形位相窓 \(R_x(\theta)\) を周期 \(2\pi\) の Fourier
+級数に展開し、観測帯域でのローパス演算子 \(L_\Lambda\) を「第 \(N\)
+高調波で打ち切る操作」と定義する。観測像は
+
+\[
+P_x^{\mathrm{obs}}(\theta) = L_\Lambda[R_x(\theta)] = S_N(\theta) = \frac{a_0}{2} + \sum_{n=1}^{N} a_n \cos\bigl(n(\theta - \theta_x)\bigr)
+\]
+
+ここで Fourier 係数は（中心 \(\theta_x\) 周りでの偶関数展開）
+
+\[
+a_0 = \frac{\Delta\theta_x}{\pi}, \quad a_n = \frac{2}{n\pi}\sin\!\left(\frac{n\Delta\theta_x}{2}\right) \quad (n \geq 1)
+\]
+
+である。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={矩形位相窓の本体と Fourier 部分和}]{figures/phase_window_body_and_observation.png}}
+\caption{矩形位相窓の本体と Fourier 部分和}
+\end{figure}
+
+\textbf{図 VII-1}：矩形位相窓の本体 \(R_x(\theta)\)（左）と、その
+Fourier 部分和としての観測像
+\(S_N(\theta)\)（右）。左パネルは本来形である矩形位相窓
+\(R_x(\theta)\)（中心 \(\theta_x = 180°\)、全幅
+\(\Delta\theta_x = 120°\)）を示す。右パネルは Fourier 級数を第 \(N\)
+次まで打ち切った部分和 \(S_N(\theta)\) を \(N = 1, 3, 7\)
+で示す。\(\Delta\theta_x = 120° = 2\pi/3\) の場合、\(a_0/2 = 1/3\)（duty
+cycle）、\(a_1 \approx +0.55\)、\(a_2 \approx +0.28\)、\(a_3 = 0\)（\(\sin(n\pi/3)\)
+の零点）、\(a_4 \approx -0.14\)、\(a_5 \approx -0.11\)、\(a_7 \approx +0.08\)。ローパス演算子
+\(L_\Lambda\) は Fourier 級数を第 \(N\)
+高調波で打ち切る操作に相当し、\(N\)
+が大きくなるにつれ部分和は矩形へ収束する（不連続点では Gibbs
+型のリンギングが残る）。最低次 \(S_1\) は、DC 項 \(a_0/2 = 1/3\)
+と第1余弦高調波 \(a_1\cos(\theta-\theta_x)\) からなる。
+
+厳密には、矩形窓を帯域制限した観測像を扱う場合、Fourier
+部分和だけでなく、時間幅と帯域幅の同時集中を最適化する Slepian--Pollak
+{[}31{]} および Landau--Pollak {[}32{]}
+の扁長回転楕円体波動関数（prolate spheroidal wave functions,
+PSWF）が自然に現れる。さらに Hardy {[}33{]} によれば、関数 \(\psi\)
+とその Fourier 変換 \(\widehat{\psi}\)
+の双方が同時に高速減衰することは不可能である。したがって厳密な意味での矩形本体は観測時に必然的に帯域制限された有効波形としてしか見えない。本稿の
+Fourier 部分和 \(S_N(\theta)\)
+は、これらの厳密な枠組みに対する直観的・初等的近似として位置づける。
+
+\subsubsection{粒子の定義（定義的仮説）}\label{ux7c92ux5b50ux306eux5b9aux7fa9ux5b9aux7fa9ux7684ux4eeeux8aac}
+
+粒子を以下のように再定義する：
+
+\begin{quote}
+\textbf{粒子 = 中心位相 \(\theta_x\) と有限幅 \(\Delta\theta_x\)
+を持つ矩形位相エネルギー窓}
+\end{quote}
+
+ただしこれは現段階では\textbf{定義的仮説}である。\(R_x(\theta)\)
+がなぜ安定するのか、幅 \(\Delta\theta_x\)
+がどのような動力学から決まるのか、エネルギー密度 \(E_0\)
+がなぜ載るのか、観測される散乱・束縛エネルギーが実験値とどう一致するかは、本稿の範囲では導出されていない。これらは
+Skyrme {[}23{]}・MIT バッグ {[}24{]}・Friedberg--Lee--Sirlin
+{[}25{]}・Q-ball {[}26{]}
+等の系譜が具体的なラグランジアンから導出してきた問いであり、本稿の矩形窓は同じ問いに対する別の出発点を提示するに留まる。
+
+エネルギー密度を矩形窓上に載せるなら：
+
+\[
+E_x(\theta) = E_0 R_x(\theta) = \begin{cases}
+E_0, & |\theta - \theta_x| \leq \dfrac{\Delta\theta_x}{2}, \\
+0,   & |\theta - \theta_x| > \dfrac{\Delta\theta_x}{2}.
+\end{cases}
+\]
+
+\textbf{エネルギー密度 \(E_0\)
+の幾何学的解釈}：標準量子論ではエネルギーはハミルトニアンと結びつき、時間発展（位相回転）の生成子として導入される。本稿の静的な空間的エネルギー密度
+\(E_x(\theta)\)
+は、ハミルトニアン的なエネルギーそのものではなく、位相窓上での作用積分密度として読むのが整合的である：矩形窓
+\(R_x(\theta)\) 上での総作用は
+\(S = \oint E_x(\theta)\, d\theta = E_0\,\Delta\theta_x\)
+となり、これが思考実験 VI で導入した Bohr--Sommerfeld / EBK 量子化条件
+\(\oint p\, dq = 2\pi\hbar(n + \mu/4)\) {[}16{]}{[}17{]}
+と整合する位相閉包条件を与える。すなわち \(E_0\)
+は時間発展の生成子としてのエネルギーではなく、矩形窓を1つの量子状態として位相閉包させるための作用密度の表現である。シュレディンガー方程式による時間発展との整合は、本稿の範囲を超え、続編課題（観測像
+\(S_N(\theta)\)
+への帯域制限演算子と時間発展演算子の交換性）として留保する。
+
+この読み替えにより：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+標準的な見方
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+本稿の読み替え
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+粒子は点的対象 & 粒子は有限幅の矩形位相エネルギー構造 \\
+波動関数 \(\psi(x)\) が粒子状態を表す &
+観測波形は矩形窓に観測帯域制限がかかった Fourier 部分和 \\
+\(\lvert\psi(x)\rvert^2\) が確率密度 &
+位置位相幅そのものが観測幅を持つ。\(P_x(\theta)\)
+は確率密度ではなく形状関数 \\
+不確定性は非可換性・測定分散から生じる & 不確定性 \(\Delta\theta_x\)
+は粒子の定義に内在 \\
+確率密度の積分は 1 & 形状関数の規格化条件は
+\(P_x(\theta_x)=1,\ P_x(\theta_x\pm\Delta\theta_x/2)=0\) \\
+\end{longtable}
+}
+
+\subsubsection{存在論的反転}\label{ux5b58ux5728ux8ad6ux7684ux53cdux8ee2}
+
+本稿の中心的主張は、以下の存在論的反転である：
+
+\[
+\boxed{\text{粒子が位置を持つ} \longrightarrow \text{位置位相エネルギーが粒子として現れる}}
+\]
+
+標準的な順序は「粒子 → 位置 → 波動関数 \(\psi(x)\) →
+\(|\psi(x)|^2\)」であるのに対し、本稿の読み替えでは「有限幅の位置位相エネルギー窓
+→ 粒子 → 観測波形」となる。
+
+\subsubsection{粒子同士の相互作用：重なり指標}\label{ux7c92ux5b50ux540cux58ebux306eux76f8ux4e92ux4f5cux7528ux91cdux306aux308aux6307ux6a19}
+
+2粒子 1, 2
+を矩形位相エネルギー窓として置くと、窓同士の重なり領域を表す指標として
+
+\[
+I_{12}(\theta) = R_1(\theta) \cdot R_2(\theta)
+\]
+
+を導入する。\textbf{これは相互作用そのものではなく、相互作用が発生しうる重なり領域を示す指標である}。実際の相互作用エネルギーは、位相差・エネルギー密度・結合定数を含む汎関数として別途定義する必要がある。指標
+\(I_{12}(\theta)\) の値が 0
+か非ゼロかにより、相互作用が発生しうる領域について以下の対応がつく：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+重なり状態 & 期待される物理的帰結（相互作用核の候補） \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+重なりなし & 非相互作用 \\
+重なりあり・位相整合 & 引力・束縛状態（複合粒子の形成）の候補 \\
+重なりあり・位相不整合 & 反発・排他の候補 \\
+境界接続 & トンネル効果・しみ出しの候補 \\
+\end{longtable}
+}
+
+標準理論で別々に扱われる干渉・トンネル・散乱・束縛・反発を、有限幅位相エネルギー窓同士の接続・重なり・位相整合という同一の幾何構造から統一的に表現する自然な候補が得られる。実際の相互作用エネルギー・散乱断面積・束縛エネルギーの定量的導出は本稿の範囲を超え、続編課題として位置づける。
+
+\subsubsection{箱型ポテンシャルとの対応}\label{ux7bb1ux578bux30ddux30c6ux30f3ux30b7ux30e3ux30ebux3068ux306eux5bfeux5fdc}
+
+清水教科書第5章で扱われる1次元粒子のポテンシャル問題は、無限井戸と有限箱型障壁の二系統に分けられる：
+
+\[
+V_{\mathrm{well}}(x) = \begin{cases}
+0 & 0 < x < L, \\
+\infty & \text{otherwise},
+\end{cases}
+\qquad
+V_{\mathrm{barrier}}(x) = \begin{cases}
+V_0 & 0 < x < L, \\
+0 & \text{otherwise}.
+\end{cases}
+\]
+
+\textbf{無限井戸}では境界条件 \(\psi(0) = \psi(L) = 0\) により定常波
+\(\psi_n(x) = \sin(n\pi x / L)\)
+が生じる。本稿の読み替えでは、これは矩形位相エネルギー窓に観測帯域制限を入れたときの定常波モードとして現れる。
+
+\textbf{有限箱型障壁}では境界接続により反射・透過・トンネル効果が生じる。本稿の読み替えでは、トンネル効果は「点粒子が壁を抜ける謎」ではなく「有限幅の位相エネルギー構造が境界条件を通じて外側に接続される現象」として読める。
+
+両者に共通する構造は「有限幅領域と境界条件」であり、本稿の矩形位相エネルギー窓描像はこの共通構造に注目する。
+
+\subsubsection{帰結}\label{ux5e30ux7d50-6}
+
+\begin{quote}
+粒子とは点的対象ではなく、中心位相 \(\theta_x\) と有限幅
+\(\Delta\theta_x\)
+を持つ矩形位相エネルギー構造である。観測される波動性は、その矩形本体が観測帯域でローパスされた（Fourier
+級数を低次で打ち切った）有効波形である。「粒子が位置を持つ」ではなく「位置位相エネルギーが粒子として現れる」という存在論的反転が、本セクションの核心である。
+\end{quote}
+
+\textbf{より厳密には}：本稿は Born
+則を否定するものではない。むしろ、位置位相窓 \(P_x(\theta)\)
+を確率密度ではなく形状関数として扱い、観測系がこの形状関数を検出基底
+\(\{|\varphi_a\rangle\}\) に対応する波動関数 \(\psi(x)\)
+として読む段階で、標準量子論の内積規則
+
+\[
+p(a) = \lvert\langle \varphi_a \mid \psi \rangle\rvert^2
+\]
+
+を通じて確率密度が現れるものとする。すなわち本稿の存在論的階層は「矩形位相エネルギー窓
+\(R_x(\theta)\)（本体）→ Fourier 低次部分和 \(S_N(\theta)\)（観測波形）→
+検出基底への内積射影による確率分布」という三段構成であり、Born
+則は最後の射影段階に局在化される。「矩形ソリトン定常波」という語は、厳密な可積分系のソリトン解ではなく、有限幅を持ち形を保つ位相エネルギー構造を直観的に呼ぶための便宜的用語である。標準量子論の波動関数・確率密度・散乱断面積・スペクトル等の計算結果は、本稿の読み替えのもとでも有効理論として残る。本セクションがラディカルなのは標準理論の数式を変えるためではなく、粒子・位置・波動関数の存在論的読みを置き換えるためである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{まとめ}\label{ux307eux3068ux3081}
+
+7 つの思考実験を通じて以下の構造が現れた：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{識別の壁}（I）--- Δ は分解能ではなく個体化の閾値。L ≥ Δ
+  が距離測定の前提
+\item
+  \textbf{揺らぎの所在の区別不能性}（II）--- メジャー側の Δ と物理量側の
+  Δ は、観測データから区別できない
+\item
+  \textbf{波数表現の不確定性関係}（III）--- ΔxΔk ≥ 1/2
+  はフーリエ変換の数学的事実。ℏ は単位換算係数として現れる
+\item
+  \textbf{複合波束としての量子相関}（IV）---
+  1つの波束の空間的分割として記述すれば、空間的に分離した系の間の情報伝達を仮定せずに相関が説明できる
+\item
+  \textbf{観測量の代数}（V）---
+  不確定性関係を持つ物理量は同一の波束の異なる射影。位相空間内の面積要素（シンプレクティック容量）が幾何学的不変量として制約を与える
+\item
+  \textbf{物理量の複素位相空間表現}（VI）---
+  観測値は実数射影、物理量の実体は複素位相空間上の位相閉包構造として読める。不確定性・干渉・エンタングルメント・量子化は同一構造の異なる射影
+\item
+  \textbf{粒子と箱型ポテンシャル}（VII）---
+  粒子は中心位相と有限幅を持つ矩形位相エネルギー窓、観測波形は Fourier
+  低次部分和。粒子同士の相互作用は、窓の重なり領域
+  \(I_{12}(\theta) = R_1(\theta) R_2(\theta)\)
+  を相互作用核の候補として読むことで、幾何学的に記述する入口が得られる。「粒子が位置を持つ」から「位置位相エネルギーが粒子として現れる」への存在論的反転
+\end{enumerate}
+
+これらは清水『新版量子論の基礎』第1章〜第5章で導入される複素ヒルベルト空間・観測量・測定・不確定性関係・1次元粒子・箱型ポテンシャルの枠組みと整合し、その上で量子論の概念的見通しを与える一つの読み方を提示する。本稿は標準量子論の数学的予言を変更するものではなく、少なくとも第1〜5章で扱われる範囲において既存の計算形式と両立する概念的読み替えを提示するに留まる。第1〜5章の枠を超える領域への拡張可能性は独立の課題として留保する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{関連研究}\label{ux95a2ux9023ux7814ux7a76}
+
+本稿の中心的な読み替え------「粒子は点的対象ではなく、中心位相
+\(\theta_x\) と有限幅 \(\Delta\theta_x\)
+を持つ矩形位相エネルギー窓であり、観測波形はその Fourier
+低次部分和として現れる」------は、量子論の代替的描像を求める長い系譜と部分的に共鳴する。本稿は新規の数学的予言を提示するものではないが、以下の先行研究との位置関係を明示しておくことは、概念的整理として有用と考える。
+
+\subsubsection{(1) de Broglie 二重解理論・Madelung 水力学・Bohm
+パイロット波}\label{de-broglie-ux4e8cux91cdux89e3ux7406ux8ad6madelung-ux6c34ux529bux5b66bohm-ux30d1ux30a4ux30edux30c3ux30c8ux6ce2}
+
+de Broglie {[}2{]}
+による初期の物質波仮説は、粒子を時空内の安定な特異波（singular wave /
+soliton）として読む試みを含んでおり、いわゆる「二重解理論」(double-solution
+program) として現代まで継承されている {[}22{]}。並行して Madelung
+{[}29{]}
+は波動関数を流体密度と速度場として読み替える水力学的形式を与え、Bohm
+{[}30{]} はこれを「パイロット波 +
+粒子」の二元的描像として完成させた。本稿の「矩形位相エネルギー窓」は、確率波と物質的構造の二元性を読み替える点で、これらの系譜と方向を共有する。ただし本稿は具体的な非線形方程式の解や隠れた変数を提示するものではなく、清水教科書の枠組みの上での存在論的な読み替えに留まる。
+
+\subsubsection{(2) Skyrme モデル・MIT
+バッグモデル・非トポロジカルソリトン}\label{skyrme-ux30e2ux30c7ux30ebmit-ux30d0ux30c3ux30b0ux30e2ux30c7ux30ebux975eux30c8ux30ddux30edux30b8ux30abux30ebux30bdux30eaux30c8ux30f3}
+
+粒子を「場の有限領域に局在した安定構造」として読む系譜には、Skyrme
+による非線形場の理論 {[}23{]}、Chodos らによる MIT バッグモデル
+{[}24{]}、Friedberg--Lee--Sirlin および Coleman
+による非トポロジカルソリトン・Q-ball 理論 {[}25{]}{[}26{]}
+がある。これらは強い相互作用やスカラー場理論の文脈で具体的なラグランジアンから粒子の有限幅構造を導出する。本稿の矩形位相窓は、これらの試みと「粒子＝有限領域の場構造」という直観を共有する一方、相互作用
+\(R_1(\theta) \cdot R_2(\theta)\)
+を位相空間上の重なりとして読む点で、より幾何学的・形式的なレベルで提示されている。
+
+\subsubsection{(3) Gabor 変換・扁長回転楕円体波動関数・Hardy
+定理}\label{gabor-ux5909ux63dbux6241ux9577ux56deux8ee2ux6955ux5186ux4f53ux6ce2ux52d5ux95a2ux6570hardy-ux5b9aux7406}
+
+矩形位相窓を観測帯域でローパスする操作は、信号処理における Gabor 変換
+{[}36{]} および時間--周波数局在化の枠組み {[}27{]}
+と数学的に並行する。特に Slepian--Pollak {[}31{]} および Landau--Pollak
+{[}32{]} による扁長回転楕円体波動関数（prolate spheroidal wave
+functions, PSWF）は、「時間領域で矩形窓に最も集中し、かつ帯域 \(N\)
+で制限される関数族」を厳密に与えるものであり、本稿の「矩形本体
+\(R_x(\theta)\) + Fourier 低次部分和
+\(S_N(\theta)\)」描像のちょうど厳密な数学的対応物に当たる。さらに Hardy
+{[}33{]} は、関数 \(\psi\) とその Fourier 変換 \(\widehat{\psi}\)
+の双方が同時に高速減衰することは不可能であることを厳密に示しており、これは本稿が「矩形本体は観測時に必然的に帯域制限された有効波形としてしか見えない」と読むことの数学的根拠を与える。
+
+\subsubsection{(4)
+コヒーレント状態（中心位相と有限幅を持つ最小不確定性波束）}\label{ux30b3ux30d2ux30fcux30ecux30f3ux30c8ux72b6ux614bux4e2dux5fc3ux4f4dux76f8ux3068ux6709ux9650ux5e45ux3092ux6301ux3064ux6700ux5c0fux4e0dux78baux5b9aux6027ux6ce2ux675f}
+
+「中心位相と有限幅を持つ位相空間構造」の最も古典的な量子論的実現は、Schrödinger
+{[}34{]} が調和振動子の文脈で導入し、Glauber {[}35{]}
+が量子光学の文脈で系統的に定式化したコヒーレント状態である。コヒーレント状態は最小不確定性
+\(\Delta x \Delta p = \hbar/2\) を達成する Gaussian
+波束として、位相空間上で「中心 \((x_0, p_0)\)
+と有限幅」を持つ標準的な量子状態を与える。本稿の矩形位相エネルギー窓は、形状を
+Gaussian から矩形に置き換え、観測像を Fourier
+低次部分和として読む点で、コヒーレント状態のラディカル化と読むこともできる。両者は「位相空間内の局在化された量子構造」という直観を共有する。
+
+\subsubsection{(5) de Gosson
+量子ブロブとシンプレクティック容量}\label{de-gosson-ux91cfux5b50ux30d6ux30edux30d6ux3068ux30b7ux30f3ux30d7ux30ecux30afux30c6ux30a3ux30c3ux30afux5bb9ux91cf}
+
+本稿の中心的不変量である位相空間面積要素は、de Gosson の量子ブロブ
+{[}9{]} および Gromov {[}15{]}
+の非圧縮定理に由来するシンプレクティック容量と直接対応する。de
+Gosson--Luef {[}28{]}
+は、不確定性関係の幾何学的内容をシンプレクティック容量として精密化しており、本稿の読み替えはこの幾何学的枠組みと整合する。
+
+\subsubsection{本稿の位置づけ}\label{ux672cux7a3fux306eux4f4dux7f6eux3065ux3051}
+
+これらの先行研究との関係において本稿の位置は次のように整理できる：本稿は新規の力学方程式や具体的なラグランジアンを提示するものではなく、清水教科書第1章〜第5章の数学的枠組みを変更せずに、その上で「粒子」「位置」「波動関数」の存在論的読みを置き換える試みである。上記
+(1)--(5)
+の各系譜が独立に到達した「粒子＝有限幅構造」「観測＝帯域制限」「最小不確定性波束」「位相空間面積＝量子不変量」という直観が、清水テキストの初等的な枠組みの上で同時に現れることを示すことが、本稿の主たる寄与である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{今後の課題}\label{ux4ecaux5f8cux306eux8ab2ux984c}
+
+本稿の思考実験を本格的な数学的定式化に発展させるには、以下の経路が考えられる：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{POVM・粗視化測定として思考実験 I, II を定式化}：Kraus
+  演算子と一般化測定の枠組みで識別の壁と揺らぎ所在の区別不能性を厳密に扱う。装置ハミルトニアン既知の場合のデコヒーレンス理論との関係を明示する
+\item
+  \textbf{Fourier 解析・Robertson 不等式として思考実験 III
+  を定式化}：位置・波数の共役関係を Plancherel 定理から導出し、ℏ
+  の作用次元としての役割を明確にする
+\item
+  \textbf{テンソル積空間・部分トレース・no-signalling 定理として思考実験
+  IV を定式化}：複合波束描像を密度演算子の reduced state
+  の幾何学として精密化し、CHSH 不等式における最大違反 2√2（Tsirelson
+  bound）を量的に導出する
+\item
+  \textbf{C*-代数 / von Neumann 代数 / 幾何学的量子力学として思考実験 V
+  を定式化}：観測量代数の自己完結的記述と、射影ヒルベルト空間の Kähler
+  多様体構造による幾何学的量子力学 {[}11{]} との対応を明示する
+\item
+  \textbf{de Gosson 量子ブロブ {[}9{]} / Wigner 関数 {[}13{]} / Moyal
+  括弧 {[}14{]} との対応関係の明示}：シンプレクティック容量、Wigner
+  擬確率分布、Moyal 星積による位相空間量子力学への接続
+\item
+  \textbf{複素位相空間モデル（思考実験
+  VI）の数学的厳密化}：Wigner--Moyal 形式・deformation
+  quantization・Kähler 量子力学との対応を具体的に与え、Renou ら {[}21{]}
+  による実数版量子論との実験的区別との関係を整理する
+\item
+  \textbf{矩形位相エネルギー窓モデル（思考実験
+  VII）の定式化}：粒子の有限幅構造と Fourier
+  部分和観測像の関係を密度演算子・スペクトル分解の言葉で精密化する。粒子同士の相互作用
+  \(R_1(\theta)\cdot R_2(\theta)\)
+  の重なり領域モデルから散乱断面積・束縛エネルギー・トンネル透過率を導出可能か検討する
+\end{enumerate}
+
+これらは本稿の観察的枠組みを超える研究プログラムであり、続編論文として独立に扱うべき課題である。
+
+\textbf{優先順位の見通し}：上記のうち、最も自然な続編候補は (1)
+POVM・粗視化測定としての思考実験 I・II の定式化、(5) de Gosson
+量子ブロブとの対応関係の明示、および (7)
+矩形位相エネルギー窓モデルの定式化である。(1)
+は標準的な量子測定理論に直接接続する形で本稿の出発点を厳密化でき、(5)
+は本稿の中核的描像（位相空間面積要素）を既存のシンプレクティック幾何学の枠組みに位置づける。(7)
+は最も新しい主張である粒子の有限幅構造を、密度演算子・スペクトル分解で精密化する道を開く。これらを基礎にして
+(2)(3)(4)(6) は順次拡張可能と見込まれる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{謝辞}\label{ux8b1dux8f9e}
+
+本思考実験は AI 対話を通じて段階的に整理された。試行錯誤の過程を含む
+verbatim 記録は ai-chat-logs-open
+リポジトリ（\texttt{新版量子論の基礎/思考実験(6)*}、\texttt{思考実験(7)*}、\texttt{思考実験(8)*}、\texttt{思考実験(9)*}）にて公開されている。本稿に挿入された図は、AI
+対話で生成されたプロンプトに基づき Claude Code で実装・出力された
+Python/matplotlib
+スクリプトの出力である（\texttt{figures/phase\_position\_wavepacket.py}、\texttt{figures/phase\_window\_body\_and\_observation.py}）。
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+{[}1{]} 清水明『新版
+量子論の基礎------その本質のやさしい理解のために』サイエンス社, 2003.
+
+{[}2{]} de Broglie, L. (1924) \emph{Recherches sur la théorie des
+Quanta}, Thèse de doctorat, Faculté des Sciences de Paris.
+
+{[}3{]} Einstein, A., Podolsky, B., Rosen, N. (1935) ``Can
+Quantum-Mechanical Description of Physical Reality Be Considered
+Complete?'' \emph{Physical Review} \textbf{47}, 777--780.
+
+{[}4{]} Schrödinger, E. (1935) ``Discussion of Probability Relations
+Between Separated Systems'' \emph{Mathematical Proceedings of the
+Cambridge Philosophical Society} \textbf{31}, 555--563.
+
+{[}5{]} Bell, J. S. (1964) ``On the Einstein-Podolsky-Rosen Paradox''
+\emph{Physics Physique Физика} \textbf{1}, 195--200.
+
+{[}6{]} Robertson, H. P. (1929) ``The Uncertainty Principle''
+\emph{Physical Review} \textbf{34}, 163--164.
+
+{[}7{]} Heisenberg, W. (1927) ``Über den anschaulichen Inhalt der
+quantentheoretischen Kinematik und Mechanik'' \emph{Zeitschrift für
+Physik} \textbf{43}, 172--198.
+
+{[}8{]} Ralston, J. P. (2020) ``Quantum Theory without Planck's
+Constant'' \emph{International Journal of Quantum Foundations}
+\textbf{6}(3), 1--43. arXiv:1203.5557 (2012).
+
+{[}9{]} de Gosson, M. A. (2013) ``Quantum Blobs'' \emph{Foundations of
+Physics} \textbf{43}, 440--457. arXiv:1106.5468.
+
+{[}10{]} Garay, L. J. (1995) ``Quantum Gravity and Minimum Length''
+\emph{International Journal of Modern Physics A} \textbf{10}, 145--166.
+arXiv:gr-qc/9403008.
+
+{[}11{]} Ashtekar, A. and Schilling, T. A. (1999) ``Geometrical
+Formulation of Quantum Mechanics'' in \emph{On Einstein's Path: Essays
+in Honor of Engelbert Schücking} (Ed. A. Harvey), Springer, pp.~23--65.
+arXiv:gr-qc/9706069.
+
+{[}12{]} Slavnov, D. A. (2007) ``Algebraic Quantum Theory''
+\emph{Physics of Particles and Nuclei} \textbf{38}, 147--176.
+
+{[}13{]} Wigner, E. P. (1932) ``On the Quantum Correction for
+Thermodynamic Equilibrium'' \emph{Physical Review} \textbf{40},
+749--759.
+
+{[}14{]} Moyal, J. E. (1949) ``Quantum Mechanics as a Statistical
+Theory'' \emph{Mathematical Proceedings of the Cambridge Philosophical
+Society} \textbf{45}, 99--124.
+
+{[}15{]} Gromov, M. (1985) ``Pseudo Holomorphic Curves in Symplectic
+Manifolds'' \emph{Inventiones Mathematicae} \textbf{82}, 307--347.
+
+{[}16{]} Maslov, V. P., Fedoriuk, M. V. (1981) \emph{Semi-Classical
+Approximation in Quantum Mechanics}, D. Reidel Publishing Company.
+
+{[}17{]} Bohr, N. (1913) ``On the Constitution of Atoms and Molecules''
+\emph{Philosophical Magazine} \textbf{26}, 1--25; Sommerfeld, A. (1916)
+``Zur Quantentheorie der Spektrallinien'' \emph{Annalen der Physik}
+\textbf{51}, 1--94.
+
+{[}18{]} Provost, J. P., Vallée, G. (1980) ``Riemannian Structure on
+Manifolds of Quantum States'' \emph{Communications in Mathematical
+Physics} \textbf{76}, 289--301.
+
+{[}19{]} Bender, C. M. (2007) ``Making Sense of Non-Hermitian
+Hamiltonians'' \emph{Reports on Progress in Physics} \textbf{70},
+947--1018.
+
+{[}20{]} Kontsevich, M., Segal, G. (2021) ``Wick Rotation and the
+Positivity of Energy in Quantum Field Theory'' \emph{Quarterly Journal
+of Mathematics} \textbf{72}(1-2), 673--699.
+
+{[}21{]} Renou, M.-O., Trillo, D., Weilenmann, M., Le, T. P., Tavakoli,
+A., Gisin, N., Acín, A., Navascués, M. (2021) ``Quantum Theory Based on
+Real Numbers Can Be Experimentally Falsified'' \emph{Nature}
+\textbf{600}, 625--629.
+
+{[}22{]} Colin, S., Durt, T., Willox, R. (2017) ``L. de Broglie's double
+solution program: 90 years later'' \emph{Annales de la Fondation Louis
+de Broglie} \textbf{42}, 19--71. arXiv:1703.06158.
+
+{[}23{]} Skyrme, T. H. R. (1961) ``A Non-Linear Field Theory''
+\emph{Proceedings of the Royal Society of London A} \textbf{260},
+127--138.
+
+{[}24{]} Chodos, A., Jaffe, R. L., Johnson, K., Thorn, C. B., Weisskopf,
+V. F. (1974) ``New extended model of hadrons'' \emph{Physical Review D}
+\textbf{9}, 3471--3495.
+
+{[}25{]} Friedberg, R., Lee, T. D., Sirlin, A. (1976) ``Class of
+scalar-field soliton solutions in three space dimensions''
+\emph{Physical Review D} \textbf{13}, 2739--2761.
+
+{[}26{]} Coleman, S. (1985) ``Q-balls'' \emph{Nuclear Physics B}
+\textbf{262}, 263--283.
+
+{[}27{]} Daubechies, I. (1992) \emph{Ten Lectures on Wavelets}, CBMS-NSF
+Regional Conference Series in Applied Mathematics, Vol. 61, SIAM.
+
+{[}28{]} de Gosson, M., Luef, F. (2009) ``Symplectic capacities and the
+geometry of uncertainty: The irruption of symplectic topology in
+classical and quantum mechanics'' \emph{Physics Reports} \textbf{484},
+131--179.
+
+{[}29{]} Madelung, E. (1927) ``Quantentheorie in hydrodynamischer Form''
+\emph{Zeitschrift für Physik} \textbf{40}, 322--326.
+
+{[}30{]} Bohm, D. (1952) ``A suggested interpretation of the quantum
+theory in terms of `hidden' variables. I \& II'' \emph{Physical Review}
+\textbf{85}, 166--179; 180--193.
+
+{[}31{]} Slepian, D., Pollak, H. O. (1961) ``Prolate spheroidal wave
+functions, Fourier analysis and uncertainty---I'' \emph{Bell System
+Technical Journal} \textbf{40}, 43--63.
+
+{[}32{]} Landau, H. J., Pollak, H. O. (1961) ``Prolate spheroidal wave
+functions, Fourier analysis and uncertainty---II'' \emph{Bell System
+Technical Journal} \textbf{40}, 65--84.
+
+{[}33{]} Hardy, G. H. (1933) ``A theorem concerning Fourier transforms''
+\emph{Journal of the London Mathematical Society} \textbf{8}, 227--231.
+
+{[}34{]} Schrödinger, E. (1926) ``Der stetige Übergang von der Mikro-
+zur Makromechanik'' \emph{Die Naturwissenschaften} \textbf{14},
+664--666.
+
+{[}35{]} Glauber, R. J. (1963) ``Coherent and incoherent states of the
+radiation field'' \emph{Physical Review} \textbf{131}, 2766--2788.
+
+{[}36{]} Gabor, D. (1946) ``Theory of communication'' \emph{Journal of
+the Institution of Electrical Engineers} \textbf{93}, 429--457.
+
+\end{document}
