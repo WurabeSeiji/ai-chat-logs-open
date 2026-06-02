@@ -90,9 +90,9 @@
 
 \textbf{Concept
 DOI（最新版に自動転送）}：\href{https://doi.org/10.5281/zenodo.20462569}{10.5281/zenodo.20462569}
-\textbf{v3.1 Version
-DOI}：\href{https://doi.org/10.5281/zenodo.20462570}{10.5281/zenodo.20462570}
-\textbf{Zenodo ページ}：\url{https://zenodo.org/records/20462570}
+\textbf{v3.2 Version
+DOI}：\href{https://doi.org/10.5281/zenodo.20500187}{10.5281/zenodo.20500187}
+\textbf{Zenodo ページ}：\url{https://zenodo.org/records/20500187}
 
 \section{本ノートの性格}\label{ux672cux30ceux30fcux30c8ux306eux6027ux683c}
 
@@ -156,7 +156,7 @@ Zenodo プレプリント}として公開する。
 
 本ノートは、これら既存の中心投影が、より広い定義域を持つ球面投影
 \(\sigma_R\) の\textbf{接超平面 \(\Pi_R\)
-への制限}として特徴付けられることを示す（補題 3.1）。
+への制限}として特徴付けられることを示す（補題 3.2）。
 
 なお、{[}1{]} における「中心投影」\(\Phi_R: \Pi_R \to S^n(R)\)
 は、古典地図学における gnomonic
@@ -303,7 +303,7 @@ radial projection を併記する。
 
 \subsection{2.5 微分構造}\label{ux5faeux5206ux69cbux9020}
 
-\textbf{命題 2.4（微分の核）}：各
+\textbf{命題 2.4（微分の核と像）}：各
 \(x \in \mathbb{R}^{n+1} \setminus \{0\}\) における \(\sigma_R\) の微分
 \(D\sigma_R|_x: \mathbb{R}^{n+1} \to T_{\sigma_R(x)} S^n(R)\) は
 
@@ -322,10 +322,12 @@ radial projection を併記する。
 における球面 \(S^n(R)\) の接空間は \(x\) の直交補空間 \(x^\perp\)
 に等しい）。
 
-\textbf{証明}：\(\sigma_R(x) = R \|x\|^{-1} x\) を \(x\)
-について微分すると
+\textbf{証明}：\(\|x\|^{-1}\) の方向 \(v\) に沿った微分が
+\(-\|x\|^{-3}(x \cdot v)\)
+であることを用いて、\(\sigma_R(x) = R \|x\|^{-1} x\) を方向 \(v\)
+に微分すると
 
-\[D\sigma_R|_x(v) = R \cdot \frac{d}{dx}(\|x\|^{-1}) \cdot x + R \|x\|^{-1} v = -R \|x\|^{-3} (x \cdot v) x + R \|x\|^{-1} v\]
+\[D\sigma_R|_x(v) = R \big(-\|x\|^{-3} (x \cdot v)\big) x + R \|x\|^{-1} v = -R \|x\|^{-3} (x \cdot v) x + R \|x\|^{-1} v\]
 
 これを整理すると (2.2)。核について、\(D\sigma_R|_x(v) = 0\) とすると
 
@@ -341,7 +343,14 @@ radial projection を併記する。
 \[v - \frac{x \cdot v}{\|x\|^2} x = \lambda x - \frac{\lambda \|x\|^2}{\|x\|^2} x = 0\]
 
 なので \(D\sigma_R|_x(v) = 0\)。ゆえに
-\(\ker D\sigma_R|_x = \mathrm{span}\{x\}\)。\(\square\)
+\(\ker D\sigma_R|_x = \mathrm{span}\{x\}\)。
+
+像について、任意の \(v\) に対し
+\(x \cdot D\sigma_R|_x(v) = \frac{R}{\|x\|}\left(x \cdot v - \frac{x \cdot v}{\|x\|^2}\|x\|^2\right) = 0\)
+であるから
+\(\mathrm{Im}(D\sigma_R|_x) \subseteq x^\perp\)。階数・退化次数定理より
+\(\dim \mathrm{Im}(D\sigma_R|_x) = (n+1) - \dim \ker D\sigma_R|_x = n = \dim x^\perp\)
+なので、\(\mathrm{Im}(D\sigma_R|_x) = x^\perp = T_{\sigma_R(x)} S^n(R)\)。\(\square\)
 
 これにより、\textbf{動径方向は微分の核に正確に対応し、接方向のみが球面に写る}という球面投影の微分幾何学的構造が明確化される。
 
@@ -351,7 +360,7 @@ radial projection を併記する。
 \textbf{命題 2.5（角度の保存）}：任意の
 \(x, y \in \mathbb{R}^{n+1} \setminus \{0\}\) に対し
 
-\[\angle(\sigma_R(x), \sigma_R(y)) = \angle(x, y) \tag{2.4}\]
+\[\angle(\sigma_R(x), \sigma_R(y)) = \angle(x, y) \tag{2.5}\]
 
 ここで \(\angle(\cdot, \cdot)\) はベクトル間の非有向角度。
 
@@ -510,7 +519,8 @@ gnomonic projection（心射図法）は逆向き（球面 →
 像 & \(S^n(R)\)（全球面） & \(S^n_+(R)\)（\textbf{開上半球面のみ}） \\
 単射性 & \textbf{非単射}（半直線を 1 点に潰す） &
 \textbf{単射}（微分同相） \\
-動径方向 & 核に含まれる（命題 2.4） & 自由（定義域に動径方向ない） \\
+動径方向 & 核に含まれる（命題 2.4） &
+核の方向が定義域の接空間に含まれない（横断的） \\
 \end{longtable}
 }
 
@@ -574,7 +584,7 @@ gnomonic projection（心射図法）は逆向き（球面 →
   \(\mathbb{R}^{n+1} \setminus \{0\}\) から \(S^n(R)\) への \(C^\infty\)
   級レトラクションとして明示的に定義した（定義 2.1、命題 2.1）。
 \item
-  冪等性、変形レトラクト構造、商空間表示、微分の核、角度保存、スケール不変性を初等的に整理した（命題
+  冪等性、変形レトラクト構造、商空間表示、微分の核と像、角度保存、スケール不変性を初等的に整理した（命題
   2.2 〜 2.6）。
 \item
   中心投影 \(\Phi_R\) は球面投影 \(\sigma_R\) を接超平面 \(\Pi_R\)
@@ -732,6 +742,32 @@ ORCID：\href{https://orcid.org/0009-0004-6753-4020}{0009-0004-6753-4020}
     \(\mathrm{Im}(D\sigma_R|_x) = x^\perp = T_{\sigma_R(x)} S^n(R)\)
     を追記（式 2.4）。沈め込み構造をより明示的にし、\(\sigma_R(x)\)
     における球面の接空間が動径方向の直交補空間と一致することを明記。
+  \end{itemize}
+\item
+  \textbf{v3.2（2026-06-02 校正・推敲）}：査読指摘の校正・推敲を反映：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    式番号の重複を解消：命題 2.5（角度保存）の式を (2.4) から
+    \textbf{(2.5)} に振り直し（命題 2.4 の像の式 (2.4)
+    と衝突していた）。
+  \item
+    §1.2 の相互参照を「補題 3.1」から正しい「\textbf{補題 3.2}」に修正。
+  \item
+    命題 2.4 の証明に\textbf{像 \(\mathrm{Im} = x^\perp\)
+    の論証}（\(x \cdot D\sigma_R|_x(v) = 0\)
+    と階数・退化次数定理）を追記。従来は核のみで像の根拠が欠けていた。
+  \item
+    命題 2.4
+    の見出しを「微分の核」から「\textbf{微分の核と像}」に変更（内容に整合）。§4.1
+    第2項も同様に更新。
+  \item
+    §3.4 表の \(\Phi_R\)
+    動径方向の欄を「定義域に動径方向ない」から「\textbf{核の方向が定義域の接空間に含まれない（横断的）}」に厳密化。
+  \item
+    命題 2.4 証明冒頭の微分を、曖昧な \(\frac{d}{dx}\)
+    表記から「\textbf{方向 \(v\) に沿った微分}」へ明確化。
   \end{itemize}
 \end{itemize}
 

@@ -92,9 +92,9 @@ Projection}
 
 \textbf{Concept DOI (auto-redirects to the latest version)}:
 \href{https://doi.org/10.5281/zenodo.20462569}{10.5281/zenodo.20462569}
-\textbf{v3.1 Version DOI}:
-\href{https://doi.org/10.5281/zenodo.20462570}{10.5281/zenodo.20462570}
-\textbf{Zenodo page}: \url{https://zenodo.org/records/20462570}
+\textbf{v3.2 Version DOI}:
+\href{https://doi.org/10.5281/zenodo.20500187}{10.5281/zenodo.20500187}
+\textbf{Zenodo page}: \url{https://zenodo.org/records/20500187}
 
 \section{Character of This Note}\label{character-of-this-note}
 
@@ -337,7 +337,7 @@ completely discarded}.
 
 \subsection{2.5 Differential Structure}\label{differential-structure}
 
-\textbf{Proposition 2.4 (Kernel of the differential).} At each
+\textbf{Proposition 2.4 (Kernel and image of the differential).} At each
 \(x \in \mathbb{R}^{n+1} \setminus \{0\}\), the differential
 \(D\sigma_R|_x: \mathbb{R}^{n+1} \to T_{\sigma_R(x)} S^n(R)\) of
 \(\sigma_R\) is
@@ -357,10 +357,11 @@ namely the \(x\)-direction (the radial direction). The map
 tangent space of \(S^n(R)\) at \(\sigma_R(x)\) equals the orthogonal
 complement \(x^\perp\) of \(x\)).
 
-\textbf{Proof.} Differentiating \(\sigma_R(x) = R \|x\|^{-1} x\) with
-respect to \(x\) gives
+\textbf{Proof.} Using that the directional derivative of \(\|x\|^{-1}\)
+along \(v\) equals \(-\|x\|^{-3}(x \cdot v)\), differentiating
+\(\sigma_R(x) = R \|x\|^{-1} x\) along \(v\) gives
 
-\[D\sigma_R|_x(v) = R \cdot \frac{d}{dx}(\|x\|^{-1}) \cdot x + R \|x\|^{-1} v = -R \|x\|^{-3} (x \cdot v) x + R \|x\|^{-1} v,\]
+\[D\sigma_R|_x(v) = R \big(-\|x\|^{-3} (x \cdot v)\big) x + R \|x\|^{-1} v = -R \|x\|^{-3} (x \cdot v) x + R \|x\|^{-1} v,\]
 
 which rearranges to (2.2). For the kernel, setting
 \(D\sigma_R|_x(v) = 0\) yields
@@ -377,7 +378,15 @@ so \(v\) is a scalar multiple of \(x\). Conversely, if
 \[v - \frac{x \cdot v}{\|x\|^2} x = \lambda x - \frac{\lambda \|x\|^2}{\|x\|^2} x = 0,\]
 
 so \(D\sigma_R|_x(v) = 0\). Therefore
-\(\ker D\sigma_R|_x = \mathrm{span}\{x\}\). \(\square\)
+\(\ker D\sigma_R|_x = \mathrm{span}\{x\}\).
+
+For the image, for any \(v\) we have
+\(x \cdot D\sigma_R|_x(v) = \frac{R}{\|x\|}\left(x \cdot v - \frac{x \cdot v}{\|x\|^2}\|x\|^2\right) = 0\),
+so \(\mathrm{Im}(D\sigma_R|_x) \subseteq x^\perp\). By the rank--nullity
+theorem,
+\(\dim \mathrm{Im}(D\sigma_R|_x) = (n+1) - \dim \ker D\sigma_R|_x = n = \dim x^\perp\),
+hence \(\mathrm{Im}(D\sigma_R|_x) = x^\perp = T_{\sigma_R(x)} S^n(R)\).
+\(\square\)
 
 This clarifies the differential-geometric structure of the radial
 projection: \textbf{the radial direction corresponds exactly to the
@@ -390,7 +399,7 @@ Vectors}\label{preservation-of-angles-between-vectors}
 \textbf{Proposition 2.5 (Preservation of angles).} For any
 \(x, y \in \mathbb{R}^{n+1} \setminus \{0\}\),
 
-\[\angle(\sigma_R(x), \sigma_R(y)) = \angle(x, y) \tag{2.4}\]
+\[\angle(\sigma_R(x), \sigma_R(y)) = \angle(x, y) \tag{2.5}\]
 
 where \(\angle(\cdot, \cdot)\) denotes the unoriented angle between
 vectors.
@@ -556,8 +565,9 @@ Image & \(S^n(R)\) (whole sphere) & \(S^n_+(R)\) (\textbf{open upper
 hemisphere only}) \\
 Injectivity & \textbf{Non-injective} (each ray collapses to a point) &
 \textbf{Injective} (diffeomorphism) \\
-Radial direction & Contained in the kernel (Proposition 2.4) & Free (no
-radial direction in the domain) \\
+Radial direction & Contained in the kernel (Proposition 2.4) & The
+kernel direction is not contained in the domain's tangent space
+(transversal) \\
 \end{longtable}
 }
 
@@ -632,7 +642,7 @@ Note}\label{main-results-of-this-note}
   Proposition 2.1).
 \item
   We have organized at an elementary level its idempotency, deformation
-  retract structure, quotient-space description, kernel of the
+  retract structure, quotient-space description, kernel and image of the
   differential, angle preservation, and scale invariance (Propositions
   2.2--2.6).
 \item
@@ -810,6 +820,39 @@ License: CC BY 4.0
     (equation (2.4)). This makes the submersion structure more explicit
     and records that the tangent space of the sphere at \(\sigma_R(x)\)
     equals the orthogonal complement of the radial direction.
+  \end{itemize}
+\item
+  \textbf{v3.2 (2026-06-02, copy-editing)}: reflected copy-editing and
+  polishing comments from peer review:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Resolved a duplicate equation number: the angle-preservation
+    identity in Proposition 2.5 was renumbered from (2.4) to
+    \textbf{(2.5)} (it had collided with the image equation (2.4) of
+    Proposition 2.4).
+  \item
+    The cross-reference in §1.2 was already correct (``Lemma 3.2'');
+    verified consistent with §3.3 and §4.1.
+  \item
+    Added to the proof of Proposition 2.4 the \textbf{argument for the
+    image \(\mathrm{Im} = x^\perp\)} (via
+    \(x \cdot D\sigma_R|_x(v) = 0\) and the rank--nullity theorem);
+    previously only the kernel was justified.
+  \item
+    Renamed the heading of Proposition 2.4 from ``Kernel of the
+    differential'' to ``\textbf{Kernel and image of the differential}''
+    (consistent with its content); §4.1 item 2 updated likewise.
+  \item
+    Tightened the \(\Phi_R\) ``radial direction'' cell of the §3.4 table
+    from ``no radial direction in the domain'' to ``\textbf{the kernel
+    direction is not contained in the domain's tangent space
+    (transversal)}''.
+  \item
+    Clarified the opening of the Proposition 2.4 proof: replaced the
+    ambiguous \(\frac{d}{dx}\) notation with a \textbf{directional
+    derivative along \(v\)}.
   \end{itemize}
 \end{itemize}
 

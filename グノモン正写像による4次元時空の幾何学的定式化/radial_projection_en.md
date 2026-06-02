@@ -6,14 +6,14 @@ affiliation: WF System Co., Ltd.
 orcid: 0009-0004-6753-4020
 license: CC BY 4.0
 date: 2026-05
-version: v3.1
+version: v3.2
 concept_doi: 10.5281/zenodo.20462569
-version_doi: 10.5281/zenodo.20462570
+version_doi: 10.5281/zenodo.20500187
 ---
 
 **Concept DOI (auto-redirects to the latest version)**: [10.5281/zenodo.20462569](https://doi.org/10.5281/zenodo.20462569)
-**v3.1 Version DOI**: [10.5281/zenodo.20462570](https://doi.org/10.5281/zenodo.20462570)
-**Zenodo page**: <https://zenodo.org/records/20462570>
+**v3.2 Version DOI**: [10.5281/zenodo.20500187](https://doi.org/10.5281/zenodo.20500187)
+**Zenodo page**: <https://zenodo.org/records/20500187>
 
 # Character of This Note
 
@@ -132,7 +132,7 @@ This is a structural restatement of Proposition 2.1(iii); the quotient structure
 
 ## 2.5 Differential Structure
 
-**Proposition 2.4 (Kernel of the differential).** At each $x \in \mathbb{R}^{n+1} \setminus \{0\}$, the differential $D\sigma_R|_x: \mathbb{R}^{n+1} \to T_{\sigma_R(x)} S^n(R)$ of $\sigma_R$ is
+**Proposition 2.4 (Kernel and image of the differential).** At each $x \in \mathbb{R}^{n+1} \setminus \{0\}$, the differential $D\sigma_R|_x: \mathbb{R}^{n+1} \to T_{\sigma_R(x)} S^n(R)$ of $\sigma_R$ is
 
 $$D\sigma_R|_x (v) = \frac{R}{\|x\|}\left(v - \frac{x \cdot v}{\|x\|^2} x\right) \tag{2.2}$$
 
@@ -146,9 +146,9 @@ $$\mathrm{Im}(D\sigma_R|_x) = x^\perp = T_{\sigma_R(x)} S^n(R) \tag{2.4}$$
 
 (since $\sigma_R(x)$ is a positive scalar multiple of $x$, the tangent space of $S^n(R)$ at $\sigma_R(x)$ equals the orthogonal complement $x^\perp$ of $x$).
 
-**Proof.** Differentiating $\sigma_R(x) = R \|x\|^{-1} x$ with respect to $x$ gives
+**Proof.** Using that the directional derivative of $\|x\|^{-1}$ along $v$ equals $-\|x\|^{-3}(x \cdot v)$, differentiating $\sigma_R(x) = R \|x\|^{-1} x$ along $v$ gives
 
-$$D\sigma_R|_x(v) = R \cdot \frac{d}{dx}(\|x\|^{-1}) \cdot x + R \|x\|^{-1} v = -R \|x\|^{-3} (x \cdot v) x + R \|x\|^{-1} v,$$
+$$D\sigma_R|_x(v) = R \big(-\|x\|^{-3} (x \cdot v)\big) x + R \|x\|^{-1} v = -R \|x\|^{-3} (x \cdot v) x + R \|x\|^{-1} v,$$
 
 which rearranges to (2.2). For the kernel, setting $D\sigma_R|_x(v) = 0$ yields
 
@@ -162,7 +162,9 @@ so $v$ is a scalar multiple of $x$. Conversely, if $v = \lambda x$, then
 
 $$v - \frac{x \cdot v}{\|x\|^2} x = \lambda x - \frac{\lambda \|x\|^2}{\|x\|^2} x = 0,$$
 
-so $D\sigma_R|_x(v) = 0$. Therefore $\ker D\sigma_R|_x = \mathrm{span}\{x\}$. $\square$
+so $D\sigma_R|_x(v) = 0$. Therefore $\ker D\sigma_R|_x = \mathrm{span}\{x\}$.
+
+For the image, for any $v$ we have $x \cdot D\sigma_R|_x(v) = \frac{R}{\|x\|}\left(x \cdot v - \frac{x \cdot v}{\|x\|^2}\|x\|^2\right) = 0$, so $\mathrm{Im}(D\sigma_R|_x) \subseteq x^\perp$. By the rank–nullity theorem, $\dim \mathrm{Im}(D\sigma_R|_x) = (n+1) - \dim \ker D\sigma_R|_x = n = \dim x^\perp$, hence $\mathrm{Im}(D\sigma_R|_x) = x^\perp = T_{\sigma_R(x)} S^n(R)$. $\square$
 
 This clarifies the differential-geometric structure of the radial projection: **the radial direction corresponds exactly to the kernel of the differential, and only the tangential directions are mapped onto the sphere**.
 
@@ -170,7 +172,7 @@ This clarifies the differential-geometric structure of the radial projection: **
 
 **Proposition 2.5 (Preservation of angles).** For any $x, y \in \mathbb{R}^{n+1} \setminus \{0\}$,
 
-$$\angle(\sigma_R(x), \sigma_R(y)) = \angle(x, y) \tag{2.4}$$
+$$\angle(\sigma_R(x), \sigma_R(y)) = \angle(x, y) \tag{2.5}$$
 
 where $\angle(\cdot, \cdot)$ denotes the unoriented angle between vectors.
 
@@ -247,7 +249,7 @@ $$\Phi_R = \sigma_R \big|_{\Pi_R}: \Pi_R \to S^n_+(R). \tag{3.3}$$
 | Domain | $\mathbb{R}^{n+1} \setminus \{0\}$ | $\Pi_R$ (tangent hyperplane, isomorphic to $\mathbb{R}^n$) |
 | Image | $S^n(R)$ (whole sphere) | $S^n_+(R)$ (**open upper hemisphere only**) |
 | Injectivity | **Non-injective** (each ray collapses to a point) | **Injective** (diffeomorphism) |
-| Radial direction | Contained in the kernel (Proposition 2.4) | Free (no radial direction in the domain) |
+| Radial direction | Contained in the kernel (Proposition 2.4) | The kernel direction is not contained in the domain's tangent space (transversal) |
 
 This contrast is the **core** of the present note. The radial projection extends the domain to all of $\mathbb{R}^{n+1} \setminus \{0\}$ at the cost of losing injectivity. The central projection, on the other hand, retains injectivity and the rich geometric structure (induced metric, curvature, etc.) but its domain is restricted to $\Pi_R$ and its image to $S^n_+(R)$.
 
@@ -270,7 +272,7 @@ The semigroup structure, commutativity, and closed form of the composite curvatu
 ## 4.1 Main Results of This Note
 
 1. We have explicitly defined the radial projection $\sigma_R(x) = (R/\|x\|) x$ as a $C^\infty$ retraction from $\mathbb{R}^{n+1} \setminus \{0\}$ onto $S^n(R)$ (Definition 2.1, Proposition 2.1).
-2. We have organized at an elementary level its idempotency, deformation retract structure, quotient-space description, kernel of the differential, angle preservation, and scale invariance (Propositions 2.2–2.6).
+2. We have organized at an elementary level its idempotency, deformation retract structure, quotient-space description, kernel and image of the differential, angle preservation, and scale invariance (Propositions 2.2–2.6).
 3. The central projection $\Phi_R$ is equal to the restriction of the radial projection $\sigma_R$ to the tangent hyperplane $\Pi_R$, its image is the **open upper hemisphere $S^n_+(R)$**, and $\Phi_R$ is a diffeomorphism (Definition 3.1, Proposition 3.1, Lemma 3.2).
 4. The contrast between the non-injectivity of $\sigma_R$ and the injectivity of $\Phi_R$ has been collected in §3.4.
 
@@ -337,3 +339,10 @@ License: CC BY 4.0
   - The caption of Fig. 2 was supplemented with "for $n=1$ this is $y = R$, and in general it is $x_{n+1} = R$ as in (3.1)" (per Gemini's second-round comment).
 - **v3.1 (2026-05-30, minor revision)**: reflected the minor comments from Claude.ai's second-round review of v2:
   - Added to Proposition 2.4 the image of the differential $\mathrm{Im}(D\sigma_R|_x) = x^\perp = T_{\sigma_R(x)} S^n(R)$ (equation (2.4)). This makes the submersion structure more explicit and records that the tangent space of the sphere at $\sigma_R(x)$ equals the orthogonal complement of the radial direction.
+- **v3.2 (2026-06-02, copy-editing)**: reflected copy-editing and polishing comments from peer review:
+  - Resolved a duplicate equation number: the angle-preservation identity in Proposition 2.5 was renumbered from (2.4) to **(2.5)** (it had collided with the image equation (2.4) of Proposition 2.4).
+  - The cross-reference in §1.2 was already correct ("Lemma 3.2"); verified consistent with §3.3 and §4.1.
+  - Added to the proof of Proposition 2.4 the **argument for the image $\mathrm{Im} = x^\perp$** (via $x \cdot D\sigma_R|_x(v) = 0$ and the rank–nullity theorem); previously only the kernel was justified.
+  - Renamed the heading of Proposition 2.4 from "Kernel of the differential" to "**Kernel and image of the differential**" (consistent with its content); §4.1 item 2 updated likewise.
+  - Tightened the $\Phi_R$ "radial direction" cell of the §3.4 table from "no radial direction in the domain" to "**the kernel direction is not contained in the domain's tangent space (transversal)**".
+  - Clarified the opening of the Proposition 2.4 proof: replaced the ambiguous $\frac{d}{dx}$ notation with a **directional derivative along $v$**.
