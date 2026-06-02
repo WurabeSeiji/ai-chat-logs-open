@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ψ(t) = r·e^(−γt)·e^(−iEt) — 円柱と円錐</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600&family=JetBrains+Mono:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  :root{
+    --bg:#070a0f;
+    --panel:rgba(13,19,28,0.82);
+    --line:rgba(120,200,255,0.14);
+    --cyan:#2ee6d6;
+    --cyanDim:#1a8c86;
+    --amber:#ff8a3c;
+    --amberDim:#a8541f;
+    --ink:#cfe6f2;
+    --inkDim:#6f8aa0;
+    --grid:rgba(90,150,200,0.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;overflow:hidden;background:var(--bg);}
+  body{
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  #app{position:fixed;inset:0;}
+  canvas{display:block;}
+
+  .hud{position:absolute;pointer-events:none;}
+
+  /* title */
+  .title{
+    top:22px;left:26px;
+    pointer-events:none;
+  }
+  .title h1{
+    font-family:'Chakra Petch',sans-serif;
+    font-weight:600;
+    letter-spacing:0.06em;
+    font-size:15px;
+    color:var(--ink);
+    text-transform:uppercase;
+  }
+  .title .eq{
+    font-family:'JetBrains Mono',monospace;
+    font-size:20px;
+    margin-top:8px;
+    color:var(--cyan);
+    letter-spacing:0.02em;
+  }
+  .title .sub{
+    font-size:12px;color:var(--inkDim);margin-top:6px;max-width:330px;line-height:1.6;
+  }
+
+  /* control panel */
+  .panel{
+    pointer-events:auto;
+    top:22px;right:22px;
+    width:296px;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:18px 18px 16px;
+    backdrop-filter:blur(12px);
+    box-shadow:0 18px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+  .panel h2{
+    font-family:'Chakra Petch',sans-serif;
+    font-size:11px;font-weight:600;letter-spacing:0.18em;
+    color:var(--inkDim);text-transform:uppercase;margin-bottom:14px;
+  }
+  .ctrl{margin-bottom:16px;}
+  .ctrl .row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px;}
+  .ctrl label{font-size:13px;font-weight:500;}
+  .ctrl label .desc{display:block;font-size:10.5px;color:var(--inkDim);font-weight:400;margin-top:1px;}
+  .ctrl .val{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--cyan);}
+  input[type=range]{
+    -webkit-appearance:none;appearance:none;width:100%;height:3px;border-radius:3px;
+    background:linear-gradient(90deg,var(--cyanDim),rgba(120,200,255,0.12));outline:none;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;appearance:none;width:15px;height:15px;border-radius:50%;
+    background:var(--cyan);cursor:pointer;border:2px solid #07101a;
+    box-shadow:0 0 10px rgba(46,230,214,0.6);
+  }
+  input[type=range]::-moz-range-thumb{
+    width:15px;height:15px;border-radius:50%;background:var(--cyan);cursor:pointer;
+    border:2px solid #07101a;box-shadow:0 0 10px rgba(46,230,214,0.6);
+  }
+  .gamma input[type=range]{background:linear-gradient(90deg,var(--amberDim),rgba(255,138,60,0.12));}
+  .gamma input[type=range]::-webkit-slider-thumb{background:var(--amber);box-shadow:0 0 10px rgba(255,138,60,0.6);}
+  .gamma input[type=range]::-moz-range-thumb{background:var(--amber);box-shadow:0 0 10px rgba(255,138,60,0.6);}
+  .gamma .val{color:var(--amber);}
+
+  .verdict{
+    margin-top:4px;padding:11px 13px;border-radius:10px;
+    border:1px solid var(--line);
+    background:rgba(46,230,214,0.06);
+    transition:all .25s ease;
+  }
+  .verdict .tag{
+    font-family:'Chakra Petch',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.04em;
+    display:flex;align-items:center;gap:8px;
+  }
+  .verdict .tag .dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);}
+  .verdict .note{font-size:11px;color:var(--inkDim);margin-top:6px;line-height:1.55;}
+  .verdict .norm{font-family:'JetBrains Mono',monospace;font-size:12px;margin-top:9px;color:var(--ink);}
+  .verdict .norm b{color:var(--cyan);}
+
+  .verdict.decay{background:rgba(255,138,60,0.06);}
+  .verdict.decay .tag .dot{background:var(--amber);box-shadow:0 0 8px var(--amber);}
+  .verdict.decay .norm b{color:var(--amber);}
+
+  .btnrow{display:flex;gap:8px;margin-top:14px;}
+  .btn{
+    flex:1;pointer-events:auto;cursor:pointer;
+    font-family:'Chakra Petch',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;
+    text-transform:uppercase;color:var(--inkDim);
+    background:rgba(120,200,255,0.05);border:1px solid var(--line);border-radius:8px;
+    padding:9px 0;text-align:center;transition:all .15s;
+  }
+  .btn:hover{color:var(--ink);border-color:rgba(120,200,255,0.3);}
+  .btn.active{color:var(--cyan);border-color:var(--cyanDim);background:rgba(46,230,214,0.08);}
+
+  /* legend */
+  .legend{
+    bottom:20px;left:26px;font-size:11px;color:var(--inkDim);line-height:1.9;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .legend .k{display:inline-block;width:22px;height:3px;border-radius:2px;vertical-align:middle;margin-right:8px;}
+  .hint{
+    bottom:20px;right:24px;font-size:10.5px;color:var(--inkDim);text-align:right;line-height:1.7;
+    font-family:'JetBrains Mono',monospace;
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<div class="hud title">
+  <h1>State helix — cylinder vs cone</h1>
+  <div class="eq">ψ(t) = r·e<sup>−γt</sup>·e<sup>−iEt</sup></div>
+  <div class="sub">時間軸 t に直交させた (Re, Im) 平面の回転。エルミート（γ=0）なら半径一定の<b style="color:var(--cyan)">円柱</b>、複素エネルギー（γ&gt;0）なら半径が縮む<b style="color:var(--amber)">円錐</b>。</div>
+</div>
+
+<div class="hud panel">
+  <h2>Parameters</h2>
+
+  <div class="ctrl">
+    <div class="row">
+      <label>E — エネルギー<span class="desc">巻きの角速度（位相回転）</span></label>
+      <span class="val" id="vE">1.50</span>
+    </div>
+    <input type="range" id="sE" min="0.4" max="3.0" step="0.01" value="1.5">
+  </div>
+
+  <div class="ctrl gamma">
+    <div class="row">
+      <label>γ — 減衰率<span class="desc">虚エネルギー成分 / 確率の漏れ</span></label>
+      <span class="val" id="vG">0.000</span>
+    </div>
+    <input type="range" id="sG" min="0" max="0.30" step="0.001" value="0">
+  </div>
+
+  <div class="verdict" id="verdict">
+    <div class="tag"><span class="dot"></span><span id="vtag">ユニタリ（確率保存）</span></div>
+    <div class="note" id="vnote">螺旋は円柱に張りつき、半径＝振幅が一定。U†U=I が成り立つ純粋回転。</div>
+    <div class="norm" id="vnorm">|ψ(t)|² = <b>1.000</b> &nbsp;(t における確率)</div>
+  </div>
+
+  <div class="btnrow">
+    <div class="btn active" id="bPlay">⏸ Pause</div>
+    <div class="btn" id="bReset">↺ View</div>
+  </div>
+</div>
+
+<div class="hud legend">
+  <div><span class="k" style="background:var(--cyan)"></span>ψ(t) の軌跡（状態ベクトル先端）</div>
+  <div><span class="k" style="background:rgba(120,200,255,0.4)"></span>床面への射影 = 位相子（2D回転）</div>
+  <div><span class="k" style="background:rgba(180,210,230,0.5)"></span>回転面 / 包絡面（円柱・円錐）</div>
+</div>
+
+<div class="hud hint">ドラッグ：回転 ・ ホイール：ズーム<br>右ドラッグ：パン</div>
+
+<script>
+(function(){
+  const container = document.getElementById('app');
+
+  // ---------- scene ----------
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x070a0f);
+  scene.fog = new THREE.FogExp2(0x070a0f, 0.018);
+
+  const camera = new THREE.PerspectiveCamera(48, window.innerWidth/window.innerHeight, 0.1, 400);
+
+  const renderer = new THREE.WebGLRenderer({antialias:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  container.appendChild(renderer.domElement);
+
+  scene.add(new THREE.AmbientLight(0x9fc8e0, 0.55));
+  const key = new THREE.PointLight(0xbfe8ff, 1.1, 200); key.position.set(18,26,22); scene.add(key);
+  const rim = new THREE.PointLight(0xff8a3c, 0.45, 200); rim.position.set(-20,8,-14); scene.add(rim);
+
+  // ---------- params ----------
+  const R0 = 2.6;        // base radius (amplitude at t=0)
+  const TMAX = 14;       // time extent (vertical, Y)
+  let   E = 1.5;
+  let   G = 0.0;
+  let   tNow = 0;
+  let   playing = true;
+
+  const COL_CYAN = new THREE.Color(0x2ee6d6);
+  const COL_AMBER = new THREE.Color(0xff8a3c);
+
+  // helper: radius / position at parameter t (t along +Y)
+  function radiusAt(t){ return R0 * Math.exp(-G * t); }
+  function pointAt(t){
+    const r = radiusAt(t);
+    return new THREE.Vector3(r*Math.cos(E*t), t, -r*Math.sin(E*t)); // X=Re, Y=t, Z=Im
+  }
+
+  // mix color cyan->amber by gamma
+  function stateColor(){
+    const f = Math.min(G/0.18, 1);
+    return COL_CYAN.clone().lerp(COL_AMBER, f);
+  }
+
+  const root = new THREE.Group();
+  root.position.y = -TMAX/2;   // center the figure
+  scene.add(root);
+
+  // ---------- ground grid (Re-Im plane at t=0) ----------
+  const grid = new THREE.GridHelper(20, 20, 0x2a4356, 0x16242f);
+  grid.position.y = 0;
+  root.add(grid);
+
+  // ---------- axes ----------
+  function makeAxis(dir, len, color){
+    const mat = new THREE.LineBasicMaterial({color});
+    const g = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,0), dir.clone().multiplyScalar(len)]);
+    return new THREE.Line(g, mat);
+  }
+  const axes = new THREE.Group();
+  axes.add(makeAxis(new THREE.Vector3(1,0,0), R0*1.7, 0x4a7a92));  // Re (X)
+  axes.add(makeAxis(new THREE.Vector3(0,0,-1), R0*1.7, 0x4a7a92)); // Im (-Z)
+  axes.add(makeAxis(new THREE.Vector3(0,1,0), TMAX*1.04, 0x6f8aa0)); // t (Y)
+  root.add(axes);
+
+  function labelSprite(text, color){
+    const c = document.createElement('canvas'); c.width=256; c.height=128;
+    const ctx = c.getContext('2d');
+    ctx.fillStyle = color; ctx.font = 'italic 600 84px "JetBrains Mono", monospace';
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText(text,128,64);
+    const tex = new THREE.CanvasTexture(c); tex.anisotropy=4;
+    const spr = new THREE.Sprite(new THREE.SpriteMaterial({map:tex, transparent:true, depthWrite:false}));
+    spr.scale.set(2.2,1.1,1);
+    return spr;
+  }
+  const lblRe = labelSprite('Re','#7fb4cc'); lblRe.position.set(R0*1.9,0,0); root.add(lblRe);
+  const lblIm = labelSprite('Im','#7fb4cc'); lblIm.position.set(0,0,-R0*1.9); root.add(lblIm);
+  const lblT  = labelSprite('t','#a9c4d6');  lblT.position.set(0,TMAX*1.1,0); root.add(lblT);
+
+  // ---------- revolution surface (cylinder / cone shell) ----------
+  let shell, shellWire;
+  function buildShell(){
+    if(shell){ root.remove(shell); shell.geometry.dispose(); shell.material.dispose(); }
+    if(shellWire){ root.remove(shellWire); shellWire.geometry.dispose(); shellWire.material.dispose(); }
+    const pts = [];
+    const N = 60;
+    for(let i=0;i<=N;i++){
+      const t = (i/N)*TMAX;
+      pts.push(new THREE.Vector2(radiusAt(t), t));
+    }
+    const geo = new THREE.LatheGeometry(pts, 64);
+    const col = stateColor();
+    shell = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({
+      color:col, transparent:true, opacity:0.07, side:THREE.DoubleSide, depthWrite:false
+    }));
+    root.add(shell);
+    shellWire = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({
+      color:col, wireframe:true, transparent:true, opacity:0.10, depthWrite:false
+    }));
+    root.add(shellWire);
+  }
+
+  // ---------- helix tube (the trajectory of ψ) ----------
+  let tube;
+  class HelixCurve extends THREE.Curve{
+    getPoint(u){ return pointAt(u*TMAX); }
+  }
+  function buildHelix(){
+    if(tube){ root.remove(tube); tube.geometry.dispose(); tube.material.dispose(); }
+    const curve = new HelixCurve();
+    const geo = new THREE.TubeGeometry(curve, 600, 0.07, 12, false);
+    const col = stateColor();
+    tube = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({
+      color:col, emissive:col, emissiveIntensity:0.65, metalness:0.2, roughness:0.4
+    }));
+    root.add(tube);
+  }
+
+  // ---------- floor projection (phasor: circle / inward spiral) ----------
+  let proj;
+  function buildProjection(){
+    if(proj){ root.remove(proj); proj.geometry.dispose(); proj.material.dispose(); }
+    const pts=[];
+    const N=600;
+    for(let i=0;i<=N;i++){
+      const t=(i/N)*TMAX;
+      const r=radiusAt(t);
+      pts.push(new THREE.Vector3(r*Math.cos(E*t), 0.01, -r*Math.sin(E*t)));
+    }
+    const geo=new THREE.BufferGeometry().setFromPoints(pts);
+    proj=new THREE.Line(geo, new THREE.LineBasicMaterial({
+      color:0x78c8ff, transparent:true, opacity:0.45
+    }));
+    root.add(proj);
+  }
+
+  // ---------- moving markers (state vector tip + projection + guide) ----------
+  const tipMat = new THREE.MeshStandardMaterial({color:0xffffff, emissive:0xddfaff, emissiveIntensity:0.9});
+  const tip = new THREE.Mesh(new THREE.SphereGeometry(0.22,20,20), tipMat); root.add(tip);
+
+  const footMat = new THREE.MeshBasicMaterial({color:0x9fd4ff});
+  const foot = new THREE.Mesh(new THREE.SphereGeometry(0.13,16,16), footMat); root.add(foot);
+
+  let guide, radial;
+  function makeDynLine(color,opacity){
+    const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(),new THREE.Vector3()]);
+    return new THREE.Line(g, new THREE.LineBasicMaterial({color, transparent:true, opacity}));
+  }
+  guide = makeDynLine(0xaad6ff,0.5);  root.add(guide);   // vertical: t lift
+  radial = makeDynLine(0xffffff,0.6); root.add(radial);  // from t-axis to tip (the amplitude)
+
+  function setLine(line, a, b){
+    const arr = line.geometry.attributes.position.array;
+    arr[0]=a.x;arr[1]=a.y;arr[2]=a.z; arr[3]=b.x;arr[4]=b.y;arr[5]=b.z;
+    line.geometry.attributes.position.needsUpdate=true;
+  }
+
+  function updateMarkers(){
+    const p = pointAt(tNow);
+    tip.position.copy(p);
+    foot.position.set(p.x,0.01,p.z);
+    setLine(guide, foot.position, p);                       // shows t = height
+    setLine(radial, new THREE.Vector3(0,tNow,0), p);        // shows radius = |ψ|
+    const c = stateColor();
+    tipMat.emissive.copy(c);
+  }
+
+  function rebuildAll(){ buildShell(); buildHelix(); buildProjection(); updateMarkers(); }
+  rebuildAll();
+
+  // ---------- custom orbit controls ----------
+  const ctrl = {az:0.7, pol:1.15, dist:30, tx:0, ty:0};
+  function applyCam(){
+    const d=ctrl.dist;
+    const x=d*Math.sin(ctrl.pol)*Math.cos(ctrl.az);
+    const y=d*Math.cos(ctrl.pol);
+    const z=d*Math.sin(ctrl.pol)*Math.sin(ctrl.az);
+    camera.position.set(x+ctrl.tx, y+ctrl.ty, z);
+    camera.lookAt(ctrl.tx, ctrl.ty, 0);
+  }
+  applyCam();
+  let drag=null, lx=0, ly=0;
+  const el=renderer.domElement;
+  el.addEventListener('mousedown',e=>{drag=e.button===2?'pan':'rot';lx=e.clientX;ly=e.clientY;e.preventDefault();});
+  window.addEventListener('mouseup',()=>drag=null);
+  window.addEventListener('mousemove',e=>{
+    if(!drag)return;
+    const dx=e.clientX-lx, dy=e.clientY-ly; lx=e.clientX; ly=e.clientY;
+    if(drag==='rot'){
+      ctrl.az+=dx*0.006; ctrl.pol=Math.max(0.15,Math.min(Math.PI-0.15,ctrl.pol-dy*0.006));
+    }else{
+      ctrl.tx-=dx*0.03; ctrl.ty+=dy*0.03;
+    }
+    applyCam();
+  });
+  el.addEventListener('wheel',e=>{
+    ctrl.dist=Math.max(10,Math.min(80,ctrl.dist+e.deltaY*0.02)); applyCam(); e.preventDefault();
+  },{passive:false});
+  el.addEventListener('contextmenu',e=>e.preventDefault());
+  // touch
+  let lastTouch=null;
+  el.addEventListener('touchstart',e=>{if(e.touches.length===1){lastTouch={x:e.touches[0].clientX,y:e.touches[0].clientY};}},{passive:false});
+  el.addEventListener('touchmove',e=>{
+    if(e.touches.length===1&&lastTouch){
+      const dx=e.touches[0].clientX-lastTouch.x, dy=e.touches[0].clientY-lastTouch.y;
+      ctrl.az+=dx*0.006; ctrl.pol=Math.max(0.15,Math.min(Math.PI-0.15,ctrl.pol-dy*0.006));
+      lastTouch={x:e.touches[0].clientX,y:e.touches[0].clientY}; applyCam(); e.preventDefault();
+    }
+  },{passive:false});
+
+  // ---------- UI ----------
+  const vE=document.getElementById('vE'), vG=document.getElementById('vG');
+  const sE=document.getElementById('sE'), sG=document.getElementById('sG');
+  const verdict=document.getElementById('verdict'), vtag=document.getElementById('vtag'),
+        vnote=document.getElementById('vnote'), vnorm=document.getElementById('vnorm');
+
+  function refreshVerdict(){
+    if(G<1e-4){
+      verdict.classList.remove('decay');
+      vtag.textContent='ユニタリ（確率保存）';
+      vnote.textContent='螺旋は円柱に張りつき、半径＝振幅が一定。U†U=I が成り立つ純粋回転。';
+    }else{
+      verdict.classList.add('decay');
+      vtag.textContent='非ユニタリ（確率の崩壊）';
+      vnote.textContent='半径が e^(−γt) で縮み、螺旋は円錐へ巻き込まれる。U†U≠I で確率が漏れる。';
+    }
+  }
+  sE.addEventListener('input',()=>{E=parseFloat(sE.value);vE.textContent=E.toFixed(2);buildHelix();buildProjection();updateMarkers();});
+  sG.addEventListener('input',()=>{G=parseFloat(sG.value);vG.textContent=G.toFixed(3);rebuildAll();refreshVerdict();});
+
+  const bPlay=document.getElementById('bPlay'), bReset=document.getElementById('bReset');
+  bPlay.addEventListener('click',()=>{
+    playing=!playing;
+    bPlay.textContent=playing?'⏸ Pause':'▶ Play';
+    bPlay.classList.toggle('active',playing);
+  });
+  bReset.addEventListener('click',()=>{ctrl.az=0.7;ctrl.pol=1.15;ctrl.dist=30;ctrl.tx=0;ctrl.ty=0;applyCam();});
+
+  // ---------- animate ----------
+  function animate(){
+    requestAnimationFrame(animate);
+    if(playing){
+      tNow += 0.05;
+      if(tNow>TMAX) tNow=0;
+      updateMarkers();
+      const norm = Math.exp(-2*G*tNow);
+      vnorm.innerHTML='|ψ('+tNow.toFixed(1)+')|² = <b>'+norm.toFixed(3)+'</b> &nbsp;(t における確率)';
+    }
+    root.rotation.y += 0.0;
+    renderer.render(scene,camera);
+  }
+  animate();
+
+  window.addEventListener('resize',()=>{
+    camera.aspect=window.innerWidth/window.innerHeight; camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth,window.innerHeight);
+  });
+})();
+</script>
+</body>
+</html>
