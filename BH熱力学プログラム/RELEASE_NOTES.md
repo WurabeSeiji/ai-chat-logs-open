@@ -89,6 +89,22 @@
 **Concept DOI：** https://doi.org/10.5281/zenodo.20319436  
 **v1 Version DOI：** https://doi.org/10.5281/zenodo.20319437
 
+### 論文10：信号論・制御理論と量子力学・量子光学・開放量子系の構造的対応関係
+
+**タイトル（日本語）**：信号論・制御理論と量子力学・量子光学・開放量子系の構造的対応関係に関する観察  
+**タイトル（英語）**：An Observation on the Structural Correspondences between Signal/Control Theory and Quantum Mechanics, Quantum Optics, and Open Quantum Systems  
+**内容：** 信号論・制御理論と量子論の間に文献上すでに存在する **10 個の構造的対応関係**を並置・分類した**観察論文**。厳密同一性（不確定性原理／Wigner-Ville・Wigner 分布／Jones ベクトル・qubit／SVD・Schmidt 分解）、条件付き厳密同型（パラキシャル・Schrödinger 方程式）、強い構造的対応（サンプリング・位相空間自由度）、構造的並行性（状態空間・Hilbert 描像／可観測性・CSCO／Kalman フィルタ・量子フィルタリング／デフェージング・位相雑音）に限界とともに三段階分類。新解釈・新定理・新予言を一切行わず、引用は両領域の古典原論文・標準教科書のみ。自己引用ゼロ。4 AI 査読（Claude.ai/ChatGPT/Gemini/Grok）を v1〜v6 で経て公開。  
+**Concept DOI：** https://doi.org/10.5281/zenodo.20521598  
+**v1.0 Version DOI（本文 v6 相当）：** https://doi.org/10.5281/zenodo.20521599
+
+### 論文11：位相空間の面積としての保存量と不確定性
+
+**タイトル（日本語）**：位相空間の面積としての保存量と不確定性——シンプレクティック対称性・Wick 回転・Stone の定理の統一的視点  
+**タイトル（英語）**：Conserved Quantities and Uncertainty as Phase-Space Area: A Unified Viewpoint of Symplectic Symmetry, Wick Rotation, and Stone's Theorem  
+**内容：** 位相空間（シンプレクティック）面積という一視点で、Heisenberg–Gabor 不確定性・Robertson 不等式・$\mathrm{Sp}(2,\mathbb{R})\cong\mathrm{SU}(1,1)$ 対称性・Stone の定理・Wick 回転を並べ直して観察する**観察論文**。(i) 作用 $\oint p\,dq$ と不確定性が同じシンプレクティック面積を単位として測られ、ゼロ点 $\tfrac12$ が Robertson の床・Maslov 指数・SU(1,1) 最低重みにメタプレクティック表現の三断面として現れること、(ii) ブースト＝非コンパクト部分群＝スクイーズ（$v/c=\tanh\eta$）、(iii) Wick 回転の $i$ と双曲（符号 $-$）構造を Stone の反自己共役生成子の言葉で**再読**でき標準理論と観測上等価であること、を記録。標準量子論・特殊相対論を修正せず、計量符号・$i$・複素構造を導出しない。図2点入り。4 AI ＋ α/β 二視点査読を v1〜v10 で経て公開。  
+**Concept DOI：** https://doi.org/10.5281/zenodo.20521566  
+**v1.0 Version DOI（本文 v10 相当）：** https://doi.org/10.5281/zenodo.20521567
+
 ---
 
 ## 主要結果（数値・定数）
@@ -293,6 +309,8 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-06-03 | **論文11（位相空間の面積としての保存量と不確定性——シンプレクティック対称性・Wick 回転・Stone の定理の統一的視点）v1.0 公開**：Concept DOI: 10.5281/zenodo.20521566、v1.0 Version DOI: 10.5281/zenodo.20521567。位相空間（シンプレクティック）面積という一視点で Heisenberg–Gabor 不確定性・Robertson 不等式・$\mathrm{Sp}(2,\mathbb{R})\cong\mathrm{SU}(1,1)$・Stone の定理・Wick 回転を並べ直す**観察論文**。(i) $\oint p\,dq$ と不確定性が同じシンプレクティック面積単位で測られ ½ がメタプレクティック表現の三断面として現れること、(ii) ブースト＝非コンパクト部分群＝スクイーズ（$v/c=\tanh\eta$）、(iii) Wick の $i$ と双曲（符号 $-$）構造を Stone の反自己共役生成子で**再読**でき標準理論と観測上等価であることを記録。標準量子論・特殊相対論を修正せず、計量符号・$i$・複素構造を導出しない。図2点入り。4 AI（Claude.ai/ChatGPT/Gemini/Grok）＋ α/β 二視点査読を v1〜v10 で経て公開。日英 md/tex/pdf＋図2点＝8ファイル Zenodo 公開。 |
+| 2026-06-03 | **論文10（信号論・制御理論と量子力学・量子光学・開放量子系の構造的対応関係に関する観察）v1.0 公開**：Concept DOI: 10.5281/zenodo.20521598、v1.0 Version DOI: 10.5281/zenodo.20521599。両領域に文献上すでに存在する **10 個の構造的対応関係**を三段階（厳密同一性5／条件付き厳密同型・強い対応1／構造的並行性4）に分類した**観察論文**。不確定性原理・Wigner-Ville/Wigner 分布・パラキシャル/Schrödinger 方程式・サンプリング/位相空間自由度・状態空間/Hilbert 描像・可観測性/CSCO・Kalman/量子フィルタリング・Jones/qubit・デフェージング/位相雑音・SVD/Schmidt 分解を限界とともに並置。新解釈・新定理・新予言なし、引用は古典原論文・標準教科書のみ、自己引用ゼロ。4 AI 査読を v1〜v6 で経て公開（必須修正：v4 結語の分類矛盾、v6 §2.3 屈折率↔ポテンシャル符号）。日英 md/tex/pdf＝6ファイル Zenodo 公開。 |
 | 2026-05-21 | 論文9 独立公開セット拡充：(1) note 記事公開（日本語版 https://note.com/kiharanoriaki/n/nd7ae96120b66、英語版 https://note.com/kiharanoriaki/n/nf9b18cb9a254）、(2) Zenn 専用記事 `articles/paper9-2d-mode-drift.md` 新規作成（観察論文のトーン、Wilson プラケット作用対応の表・3 部作 BH7→BH8→BH9 の位置付け・Scope 明示・関連リソース完備）、(3) 関連 Zenn 記事（論文 7・論文 8・論文 7 補講）に論文 9 へのクロスリンク追加。論文 9 独立公開セット（Zenodo v1 + note 日英 + Zenn）整備完了。 |
 | 2026-05-20 | **論文9（α 自己整合方程式における 0.036 ドリフトの幾何学的起源：4 次元超球内の 2 次元面振動モードによる物理的解釈）v1 公開**：Concept DOI: 10.5281/zenodo.20319436、v1 Version DOI: 10.5281/zenodo.20319437。論文 7 の自己整合方程式 $\alpha^{-1} = 137 + (\pi^2/2)\alpha$ における係数 $\pi^2/2$ の物理的起源を**標準量子論の不確定性原理＋振動モードの次元解析**で説明。核心：(1) α は dimensionless だが $\sigma \propto \alpha^2$ より物理的に面積次元、(2) 4D 振動モード（0D/1D/2D/3D/4D）のうち等方平均下で生き残るのは **2D 面モードのみ**（面積はスカラー量）、(3) 137 個の超立方体の 2D 面の位置位相空間測度 $\int_{B_4(1)} dV = \pi^2/2$ は数値的に $V_4(1)$ と一致するが「2D 面位置自由度の積分」と読む、(4) W7 自己整合方程式は 2D 面ゼロ点振動の集団寄与として解釈可能、(5) 構造は Wilson 格子ゲージ理論プラケット作用と同一（論文 8 同型性の物理的内容）、(6) α 観測値には 2D モード分布幅由来の理論的下限が存在。**観察論文と明示**し、新たな仮定（離散時空・複素整数格子等）を持ち込まない。**Scope**：Thomson 極限 α⁻¹(Q²→0)=137.036 のみ。α⁻¹(M_Z)≈127.95 への高エネルギー running は標準 QED に委譲し将来課題（§8）として残す。論文 7・8 への影響は補足的（既存主張に依存せず独立に成立）。日英 md/tex/pdf 全 6 ファイル Zenodo 公開。3 部作 BH7→BH8→BH9 で α の幾何学的起源を「観察 → 構造 → 物理的内容」の 3 層で位置付け。 |
 | 2026-05-01 | 論文7 補講 Zenn 記事作成・note URL 反映：(1) Zenn 専用記事 articles/paper7-supplement-second-order-observation.md 作成（観察論文のトーンで 5 観察を要約、LaTeX 数式と表形式を活用、関連 Zenn 記事への双方向リンク完備）、(2) note 日英 URL を各メタファイルに反映。論文 7 補講 独立公開セット（Zenodo v1 + Zenn + note 日英）整備完了。Facebook/X はテクニカル過ぎるため省略。 |
