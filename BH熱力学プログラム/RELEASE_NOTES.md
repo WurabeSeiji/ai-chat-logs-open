@@ -105,6 +105,14 @@
 **Concept DOI：** https://doi.org/10.5281/zenodo.20521566  
 **v1.0 Version DOI（本文 v10 相当）：** https://doi.org/10.5281/zenodo.20521567
 
+### 論文12：あるモデル粒子をめぐる思考実験——位相面積の床から次元の許容条件へ
+
+**タイトル（日本語）**：あるモデル粒子をめぐる思考実験——位相面積の床から次元の許容条件へ  
+**タイトル（英語）**：A Thought Experiment on a Model Particle — From the Phase-Area Floor to the Admissibility Condition for Dimension  
+**内容：** 位相面を一枚内在させた抽象的なモデル粒子を仮定し、出自の異なる二つの既知の数学——Robertson の不確定性の床（位相空間に面積ゼロの点状状態が存在しない、連続的制約）と Hurwitz–Frobenius のノルム付き多元体の次元系列 $1,2,4,8$（離散的制約）——を「位相面積」という一視点で並置観察する**観察論文（思考実験）**。連続の床と離散の環がともに次元 4 を指すように見える構造的符合を記録。議論を三層（第一層＝確立した数学／第二層＝振動自由度を時空四軸へ接続して読む**著者の対応仮説**／第三層＝「次元数もまた不確定性を負う」§7 の推測）に明示分割。§6.3 では標準量子論の対称性（ユニタリ性・可逆性・非可換性・結合性）を時空四軸の合成代数へ**移して読む操作それ自体が証明されない仮定である**ことを本文で引き受け、独立に効くのは非可換性と結合性の二条件のみと明示。状態空間が複素数体 $\mathbb{C}$ であることは標準どおり継承し、四元数 $\mathbb{H}$ と結びつくのは時空四軸の合成代数。標準量子論・特殊相対論を修正せず、時空次元 3+1 の導出も計量符号の導入も行わない（符号は今後の課題として明示的に外す）。3 AI 査読（Claude.ai/ChatGPT/Grok）を経て、循環・飛躍を自己批判として本文に明示。同著者 [10]（位相面積の枠組み）[11]（信号論・制御理論との対応）を前提参照。  
+**Concept DOI：** https://doi.org/10.5281/zenodo.20528511  
+**v1.0 Version DOI：** https://doi.org/10.5281/zenodo.20528512
+
 ---
 
 ## 主要結果（数値・定数）
@@ -210,6 +218,14 @@
 | Facebook 投稿 | EN | 個人タイムライン（2026-06-03、note EN 記事リンク）|
 | X (Twitter) 投稿 | JA | [@NoriakiKihara](https://x.com/NoriakiKihara)（2026-06-03、note JA 記事リンク）|
 | X (Twitter) 投稿 | EN | [@NoriakiKihara](https://x.com/NoriakiKihara)（2026-06-03、note EN 記事リンク）|
+
+### 論文12（あるモデル粒子をめぐる思考実験——位相面積の床から次元の許容条件へ、独立公開セット）
+
+| 媒体 | 言語 | URL |
+|---|:-:|---|
+| Zenodo (v1.0、最新) | JA/EN | https://zenodo.org/records/20528512 |
+| Zenodo (Concept DOI) | — | https://doi.org/10.5281/zenodo.20528511 |
+| Zenn 記事（技術解説） | JA | https://zenn.dev/noriaki_kihara/articles/model-particle-dimension |
 
 外部参照は全て Concept DOI を使用しているため、今後の v2, v3, ... 公開時も DOI 修正は不要。
 
@@ -337,6 +353,7 @@
 
 | 日付 | 内容 |
 |---|---|
+| 2026-06-03 | **論文12（あるモデル粒子をめぐる思考実験——位相面積の床から次元の許容条件へ）v1.0 公開**：Concept DOI: 10.5281/zenodo.20528511、v1.0 Version DOI: 10.5281/zenodo.20528512。位相面を一枚内在させたモデル粒子を仮定し、Robertson の不確定性の床（連続）と Hurwitz–Frobenius のノルム付き多元体次元系列 $1,2,4,8$（離散）を「位相面積」一視点で並置観察する**観察論文（思考実験）**。連続の床と離散の環がともに次元 4 を指す符合を記録。議論を三層（確立した数学／著者の対応仮説＝振動自由度を時空四軸へ接続して読む部分／§7 推測）に明示分割し、§6.3 で「標準量子論の対称性を時空四軸の合成代数へ移して読む操作それ自体が証明されない仮定」と本文で引き受け、独立に効くのは非可換性・結合性の二条件のみと明示。状態空間は複素数体 $\mathbb{C}$ のまま継承、四元数 $\mathbb{H}$ は時空四軸の合成代数に適用。標準量子論・特殊相対論を修正せず、時空次元 3+1 の導出も計量符号導入も行わない。3 AI 査読（Claude.ai/ChatGPT/Grok）反映、循環・飛躍を自己批判として本文明示。同著者 [10][11] を前提参照。日英 md/tex/pdf＝6ファイル Zenodo 公開。Zenn 記事 `articles/model-particle-dimension.md` 公開。 |
 | 2026-06-03 | 論文10・論文11 独立公開セット拡充（note/Facebook/Zenn）：(1) note 記事（日英）を各論文フォルダに作成・公開（note レンダリング制約に従い LaTeX 不使用・Unicode 数式・全角字下げ・「」太字回避、末尾ハッシュタグ付与）。論文11：日本語 https://note.com/kiharanoriaki/n/nc18b32d1e27e 、英語 https://note.com/kiharanoriaki/n/n1f942c4ae5fd 。論文10：日本語 https://note.com/kiharanoriaki/n/n6ad7686c6b08 、英語 https://note.com/kiharanoriaki/n/n6b292c7f640c 。(2) Zenn 専用記事 `articles/signal-control-quantum-correspondences.md`（論文10）・`articles/phase-space-area-symplectic-uncertainty.md`（論文11）を作成・公開。(3) Facebook 個人タイムラインに日英投稿（note 記事リンク、観察論文トーン、論文11 は計量符号・$i$・複素構造を導出しない旨を明示するステルス枠組み維持）。(4) X (@NoriakiKihara) に日英投稿（note 記事リンク、簡素版＝タイトル＋3段階分類／面積一視点の要点に圧縮）。論文10・論文11 独立公開セット（Zenodo v1.0 + Zenn + note 日英 + Facebook 日英 + X 日英）整備完了。 |
 | 2026-06-03 | **論文11（位相空間の面積としての保存量と不確定性——シンプレクティック対称性・Wick 回転・Stone の定理の統一的視点）v1.0 公開**：Concept DOI: 10.5281/zenodo.20521566、v1.0 Version DOI: 10.5281/zenodo.20521567。位相空間（シンプレクティック）面積という一視点で Heisenberg–Gabor 不確定性・Robertson 不等式・$\mathrm{Sp}(2,\mathbb{R})\cong\mathrm{SU}(1,1)$・Stone の定理・Wick 回転を並べ直す**観察論文**。(i) $\oint p\,dq$ と不確定性が同じシンプレクティック面積単位で測られ ½ がメタプレクティック表現の三断面として現れること、(ii) ブースト＝非コンパクト部分群＝スクイーズ（$v/c=\tanh\eta$）、(iii) Wick の $i$ と双曲（符号 $-$）構造を Stone の反自己共役生成子で**再読**でき標準理論と観測上等価であることを記録。標準量子論・特殊相対論を修正せず、計量符号・$i$・複素構造を導出しない。図2点入り。4 AI（Claude.ai/ChatGPT/Gemini/Grok）＋ α/β 二視点査読を v1〜v10 で経て公開。日英 md/tex/pdf＋図2点＝8ファイル Zenodo 公開。 |
 | 2026-06-03 | **論文10（信号論・制御理論と量子力学・量子光学・開放量子系の構造的対応関係に関する観察）v1.0 公開**：Concept DOI: 10.5281/zenodo.20521598、v1.0 Version DOI: 10.5281/zenodo.20521599。両領域に文献上すでに存在する **10 個の構造的対応関係**を三段階（厳密同一性5／条件付き厳密同型・強い対応1／構造的並行性4）に分類した**観察論文**。不確定性原理・Wigner-Ville/Wigner 分布・パラキシャル/Schrödinger 方程式・サンプリング/位相空間自由度・状態空間/Hilbert 描像・可観測性/CSCO・Kalman/量子フィルタリング・Jones/qubit・デフェージング/位相雑音・SVD/Schmidt 分解を限界とともに並置。新解釈・新定理・新予言なし、引用は古典原論文・標準教科書のみ、自己引用ゼロ。4 AI 査読を v1〜v6 で経て公開（必須修正：v4 結語の分類矛盾、v6 §2.3 屈折率↔ポテンシャル符号）。日英 md/tex/pdf＝6ファイル Zenodo 公開。 |
