@@ -190,8 +190,8 @@
 | Zenodo (v1.0、最新) | JA/EN | https://zenodo.org/records/20521599 |
 | Zenodo (Concept DOI) | — | https://doi.org/10.5281/zenodo.20521598 |
 | Zenn 記事（技術解説） | JA | https://zenn.dev/noriaki_kihara/articles/signal-control-quantum-correspondences |
-| note 記事（一般向け） | JA | （未取得・要 URL） |
-| note 記事（一般向け） | EN | （未取得・要 URL） |
+| note 記事（一般向け） | JA | https://note.com/kiharanoriaki/n/n6ad7686c6b08 |
+| note 記事（一般向け） | EN | https://note.com/kiharanoriaki/n/n6b292c7f640c |
 | Facebook 投稿 | JA | 個人タイムライン（2026-06-03、note JA 記事リンク）|
 | Facebook 投稿 | EN | 個人タイムライン（2026-06-03、note EN 記事リンク）|
 
@@ -333,7 +333,7 @@
 
 | 日付 | 内容 |
 |---|---|
-| 2026-06-03 | 論文10・論文11 独立公開セット拡充（note/Facebook/Zenn）：(1) note 記事（日英）を各論文フォルダに作成・公開（note レンダリング制約に従い LaTeX 不使用・Unicode 数式・全角字下げ・「」太字回避、末尾ハッシュタグ付与）。論文11：日本語 https://note.com/kiharanoriaki/n/nc18b32d1e27e 、英語 https://note.com/kiharanoriaki/n/n1f942c4ae5fd 。論文10：note URL は別途記録予定。(2) Zenn 専用記事 `articles/signal-control-quantum-correspondences.md`（論文10）・`articles/phase-space-area-symplectic-uncertainty.md`（論文11）を作成・公開。(3) Facebook 個人タイムラインに日英投稿（note 記事リンク、観察論文トーン、論文11 は計量符号・$i$・複素構造を導出しない旨を明示するステルス枠組み維持）。論文10・論文11 独立公開セット（Zenodo v1.0 + Zenn + note 日英 + Facebook 日英）整備完了。 |
+| 2026-06-03 | 論文10・論文11 独立公開セット拡充（note/Facebook/Zenn）：(1) note 記事（日英）を各論文フォルダに作成・公開（note レンダリング制約に従い LaTeX 不使用・Unicode 数式・全角字下げ・「」太字回避、末尾ハッシュタグ付与）。論文11：日本語 https://note.com/kiharanoriaki/n/nc18b32d1e27e 、英語 https://note.com/kiharanoriaki/n/n1f942c4ae5fd 。論文10：日本語 https://note.com/kiharanoriaki/n/n6ad7686c6b08 、英語 https://note.com/kiharanoriaki/n/n6b292c7f640c 。(2) Zenn 専用記事 `articles/signal-control-quantum-correspondences.md`（論文10）・`articles/phase-space-area-symplectic-uncertainty.md`（論文11）を作成・公開。(3) Facebook 個人タイムラインに日英投稿（note 記事リンク、観察論文トーン、論文11 は計量符号・$i$・複素構造を導出しない旨を明示するステルス枠組み維持）。論文10・論文11 独立公開セット（Zenodo v1.0 + Zenn + note 日英 + Facebook 日英）整備完了。 |
 | 2026-06-03 | **論文11（位相空間の面積としての保存量と不確定性——シンプレクティック対称性・Wick 回転・Stone の定理の統一的視点）v1.0 公開**：Concept DOI: 10.5281/zenodo.20521566、v1.0 Version DOI: 10.5281/zenodo.20521567。位相空間（シンプレクティック）面積という一視点で Heisenberg–Gabor 不確定性・Robertson 不等式・$\mathrm{Sp}(2,\mathbb{R})\cong\mathrm{SU}(1,1)$・Stone の定理・Wick 回転を並べ直す**観察論文**。(i) $\oint p\,dq$ と不確定性が同じシンプレクティック面積単位で測られ ½ がメタプレクティック表現の三断面として現れること、(ii) ブースト＝非コンパクト部分群＝スクイーズ（$v/c=\tanh\eta$）、(iii) Wick の $i$ と双曲（符号 $-$）構造を Stone の反自己共役生成子で**再読**でき標準理論と観測上等価であることを記録。標準量子論・特殊相対論を修正せず、計量符号・$i$・複素構造を導出しない。図2点入り。4 AI（Claude.ai/ChatGPT/Gemini/Grok）＋ α/β 二視点査読を v1〜v10 で経て公開。日英 md/tex/pdf＋図2点＝8ファイル Zenodo 公開。 |
 | 2026-06-03 | **論文10（信号論・制御理論と量子力学・量子光学・開放量子系の構造的対応関係に関する観察）v1.0 公開**：Concept DOI: 10.5281/zenodo.20521598、v1.0 Version DOI: 10.5281/zenodo.20521599。両領域に文献上すでに存在する **10 個の構造的対応関係**を三段階（厳密同一性5／条件付き厳密同型・強い対応1／構造的並行性4）に分類した**観察論文**。不確定性原理・Wigner-Ville/Wigner 分布・パラキシャル/Schrödinger 方程式・サンプリング/位相空間自由度・状態空間/Hilbert 描像・可観測性/CSCO・Kalman/量子フィルタリング・Jones/qubit・デフェージング/位相雑音・SVD/Schmidt 分解を限界とともに並置。新解釈・新定理・新予言なし、引用は古典原論文・標準教科書のみ、自己引用ゼロ。4 AI 査読を v1〜v6 で経て公開（必須修正：v4 結語の分類矛盾、v6 §2.3 屈折率↔ポテンシャル符号）。日英 md/tex/pdf＝6ファイル Zenodo 公開。 |
 | 2026-05-21 | 論文9 独立公開セット拡充：(1) note 記事公開（日本語版 https://note.com/kiharanoriaki/n/nd7ae96120b66、英語版 https://note.com/kiharanoriaki/n/nf9b18cb9a254）、(2) Zenn 専用記事 `articles/paper9-2d-mode-drift.md` 新規作成（観察論文のトーン、Wilson プラケット作用対応の表・3 部作 BH7→BH8→BH9 の位置付け・Scope 明示・関連リソース完備）、(3) 関連 Zenn 記事（論文 7・論文 8・論文 7 補講）に論文 9 へのクロスリンク追加。論文 9 独立公開セット（Zenodo v1 + note 日英 + Zenn）整備完了。 |
