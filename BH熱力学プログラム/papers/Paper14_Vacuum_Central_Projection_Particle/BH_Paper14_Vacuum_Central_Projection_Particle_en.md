@@ -1,0 +1,288 @@
+# Central Projection of a Vacuum Universe and Particle-like States with a Spread Phase (Observational Note, Draft)
+
+**Author**: Noriaki Kihara
+**Affiliation**: WF System Co., Ltd. / Faculty of Engineering Science, Osaka University (graduate)
+**ORCID**: [0009-0004-6753-4020](https://orcid.org/0009-0004-6753-4020)
+**Version**: v1.0 (publication candidate, not peer-reviewed)
+**Date**: June 2026
+**License**: CC BY 4.0
+**Concept DOI**: [10.5281/zenodo.20543044](https://doi.org/10.5281/zenodo.20543044)
+**Version DOI (v1.0)**: [10.5281/zenodo.20543045](https://doi.org/10.5281/zenodo.20543045)
+
+---
+
+## Character of this note
+
+**This is an observational note in the form of a thought experiment. It is not a proof paper or a claim paper.**
+
+This note is a sequel to the preceding note [1] (the fifth frequency and composite curvature). Whereas the preceding note observed that imposing a sum-to-zero conservation condition on four equal-footing frequencies makes a fifth direction $\nu_5$ appear formally, and developed the central projection with that as radius together with the composite curvature radius, the present note observes—as an extension of the same single thought experiment—that phase-bearing particle-like states (phase-bearing local modes) can be placed on the subjective geometry produced by that central projection, and that the spread carried by such a particle can be characterized in the language of frequency.
+
+This note does not modify standard quantum theory, general relativity, or special relativity. It proposes no new physical theory, proves no new mathematical theorem, and changes no observable prediction. What it does is to re-arrange and observe, from the single viewpoint of a particle-like state, known geometric structures—dimensional reduction by central projection [2,3], standard facts of spherical and Riemannian geometry [4,5], and the fifth frequency / composite radius of the preceding note [1].
+
+This note does not assert any of the following:
+
+- any change to the mathematical predictions of the Standard Model, quantum theory, or relativity;
+- identification of a particle-like state with a concrete particle such as an electron, photon, or quark;
+- derivation of spin, statistics, gauge structure, or interactions;
+- any judgment of the stability of a local mode (equations of motion, energy functional, perturbative stability, etc.);
+- definition of an absolute position phase for a single particle;
+- endowing the post-projection 4-dimensional subjective geometry with a Lorentzian metric, causal structure, or physical spacetime;
+- prediction of values of new physical constants or the cosmological constant, or any new observable prediction;
+- proof of any new mathematical theorem.
+
+Evaluation and interpretation are left to the reader.
+
+---
+
+## Abstract
+
+Taking an exterior-free vacuum universe as a single intrinsic geometric system, we observe that particle-like states with a spread phase (phase-bearing local modes) can be placed on the subjective geometry produced by its central projection. Starting from the fifth frequency $\nu_5$ and composite radius $R_{\mathrm U}=1/\nu_5$ introduced in the preceding note [1], and from the central projection [2,3], we observe the following. (i) We define the post-projection subjective geometry as the homogeneous 4-sphere $S^4(R_{\mathrm U})$ in $\mathbb{R}^5$ (sectional curvature $1/R_{\mathrm U}^2$), and regard the central projection as a gnomonic chart covering one hemisphere. We do not endow it with a Lorentzian metric or causal structure, and do not call it physical spacetime. (ii) Since this geometry is homogeneous, with no origin and no reference axis, no absolute position phase is defined for a single particle. (iii) A particle-like state is represented minimally by $P_a=(\boldsymbol{\nu}_a,\,R_a)$ as a phase-bearing local mode on this geometry. (iv) Under the model convention that reads a frequency as the winding number of phase and reads the spread as an effective diameter, the spread (full width) of a particle is read as twice the curvature radius, $W_a=2R_a=2/\nu_{R,a}$, and the spread frequency coincides with the curvature frequency ($\nu_w=\nu_{R,a}$). The scope is limited to defining the single-particle geometric stage; the relative phase, interference, and statistics of multiple particles are deferred to a subsequent note.
+
+---
+
+## §1 Basic assumptions
+
+First, consider a vacuum universe with no exterior space.
+
+Ordinary intuition tends to imagine the universe as a small region inside some exterior space. Here, however, we assume no such exterior space. There is no space outside the universe. Hence the early universe has no position or size measured from outside.
+
+Then the vacuum universe is not an object with external coordinates, but is defined only as an intrinsic geometric structure.
+
+We represent its minimal model by an intrinsic frequency vector
+
+$$\boldsymbol{\nu}=(\nu_1,\nu_2,\nu_3,\nu_4)$$
+
+and the composite radius determined from it,
+
+$$\nu_5^2=\nu_1^2+\nu_2^2+\nu_3^2+\nu_4^2$$
+
+(preceding note [1]).
+
+Here $\nu_i$ is not an ordinary wavelength or a coordinate on an external space, but a discrete, formal frequency parameter describing the intrinsic geometric system. In this note we treat $\nu_i$ as a formal (dimensionless) parameter carrying no external dimension of time or length ($[T^{-1}]$ or $[L]$). Consequently $x_i=1/\nu_i$ and the composite radius $R_{\mathrm U}$ determined from it also carry no real length in external units; they have meaning only as intrinsic scale ratios of the system.
+
+Corresponding to the composite radius, we define the system-wide central-projection radius
+
+$$R_{\mathrm U}=\frac{1}{\nu_5}.$$
+
+The subscript U indicates that this is a quantity of the system (the vacuum universe) as a whole, to be distinguished from the per-particle local radius $R_a$ (§4) introduced later.
+
+---
+
+## §2 Central projection
+
+On this intrinsic geometric system we define a central projection [2,3].
+
+For geometric computation, set the coordinates of each axis to
+
+$$x_i=\frac{1}{\nu_i}\qquad(i=1,2,3,4,5).$$
+
+This does not mean a physical wavelength or a real coordinate on an external space; it is merely an auxiliary coordinate for formulating the central projection.
+
+The fifth component is generated by the same rule from $\nu_5$, which determines the composite radius:
+
+$$x_5=\frac{1}{\nu_5}=R_{\mathrm U}.$$
+
+Thus the point
+
+$$x=\left(\frac{1}{\nu_1},\ \frac{1}{\nu_2},\ \frac{1}{\nu_3},\ \frac{1}{\nu_4},\ \frac{1}{\nu_5}\right)$$
+
+has all five components determined by the single rule $x_i=1/\nu_i$. For this point we define the central projection onto the 4-sphere $S^4(R_{\mathrm U})$ of radius $R_{\mathrm U}$ in $\mathbb{R}^5$ as
+
+$$x'=\frac{R_{\mathrm U}}{|x|}\,x,\qquad |x|=\sqrt{\textstyle\sum_{i=1}^{5}x_i^2}.$$
+
+(see [2,3]). Since $x_5=R_{\mathrm U}$ is fixed system-wide, the source point always lies on the hyperplane $x_5=R_{\mathrm U}$. This is the hyperplane tangent to $S^4(R_{\mathrm U})$ at the north pole $N=(0,0,0,0,R_{\mathrm U})$, and the central projection from the origin (the sphere's center) is precisely the gnomonic projection (here used as a Beltrami-type projective chart) [2,3]. Its image is exactly the open hemisphere on the side of the point of tangency ($x'_5>0$); moving over all admissible parameters, the image never exceeds this single hemisphere.
+
+Here $\nu_i$ is treated not as an ordinary positive frequency but as a formal parameter carrying a sign or phase direction. Consequently the auxiliary coordinate $x_i=1/\nu_i$ may take both positive and negative values on the local chart, covering the whole tangent hyperplane (the whole hemisphere). If $\nu_i$ were restricted to positive values, the image of the gnomonic chart would be restricted not to the whole hemisphere but to a sub-region of it (the positive-octant side).
+
+Accordingly, in this note we define the subjective geometry not as "the image of the map" (a hemisphere) but as the manifold $S^4(R_{\mathrm U})$ itself. The above gnomonic projection is positioned as one coordinate chart covering this manifold (a projective patch over one hemisphere). In gnomonic projection, straight lines on the tangent hyperplane map to great circles (geodesics) on the sphere—this is the defining property of a projective chart, and it connects directly to the discussion of $\sigma_R$ in the preceding group of notes [2,3]. Note that gnomonic projection is not an isometry. Moreover, since a single gnomonic chart covers only one hemisphere of $S^4(R_{\mathrm U})$ rather than the whole sphere, an atlas of several such charts is needed to treat the whole sphere. In this note we take the stance that global statements (homogeneity, absence of absolute position, etc.) are made on the manifold $S^4(R_{\mathrm U})$, while explicit coordinate computations are carried out on a single chart.
+
+The auxiliary coordinate $x_i=1/\nu_i$ introduced here does not invert the metric of $\boldsymbol{\nu}$ space as it stands. Hence the Euclidean norm in $\boldsymbol{\nu}$ space and the Euclidean norm in $x$ space are not identified. In particular, the fifth coordinate $x_5=1/\nu_5=R_{\mathrm U}$ does not in general equal $\sqrt{x_1^2+x_2^2+x_3^2+x_4^2}$. In this note we use $x_i$ only as an auxiliary coordinate for describing the central projection.
+
+By this construction, a subjective manifold $S^4(R_{\mathrm U})$ is determined from the intrinsic geometric system. The subjective geometry here is not a background space given from outside, but an intrinsic manifold defined by the construction of the central projection. On it we adopt, as a model choice, the round (standard) metric induced by the auxiliary embedding $\mathbb{R}^5\supset S^4(R_{\mathrm U})$.
+
+---
+
+## §3 The post-projection subjective geometry
+
+The subjective geometry $S^4(R_{\mathrm U})$ is the 4-sphere of radius $R_{\mathrm U}$ in $\mathbb{R}^5$, and its intrinsic dimension is 4. In this note we adopt, as a model, the round (standard) metric induced by the auxiliary embedding (§2).
+
+In this subjective geometry, for a sufficiently small geodesic triangle, the sum of the interior angles exceeds 180 degrees (the angular excess is positive). This shows that this intrinsic geometry has positive sectional curvature. Read as the standard spherical geometry [4] of radius $R_{\mathrm U}$, the sectional curvature is $1/R_{\mathrm U}^2$.
+
+We do not introduce a Lorentzian metric or causal structure on this 4-dimensional structure [5]. Hence what this note treats is not physical spacetime itself, but a positively curved 4-dimensional subjective geometry at a stage prior to a spacetime interpretation. The emergence of the metric signature and the time direction is left to the sum-to-zero framework of the preceding note [1], and is not entered into here. $S^4(R_{\mathrm U})$ may be regarded as the constant-curvature space corresponding to the Euclideanization of the Lorentzian de Sitter space $dS_4$ (sectional curvature $+1/R_{\mathrm U}^2$), consistent with this note's policy of introducing no causal structure.
+
+On the other hand, the direction of the axis that produces this curvature—i.e., the direction appearing outside the sphere in the auxiliary embedding representation—cannot be known from inside the system (this note does not assume an exterior space as real; this is merely a direction in the auxiliary embedding representation). The curvature is symmetric in all four directions, and there is no special direction.
+
+As a manifold, $S^4(R_{\mathrm U})$ is a homogeneous space (the rotation group $O(5)$ acts transitively on points), and has no distinguished origin or reference axis. The north pole $N$ and the equator that appear in the gnomonic chart of §2 are artifacts specific to that chart, not properties of the manifold itself. Therefore no absolute position is defined on $S^4(R_{\mathrm U})$. Position is not a quantity given by external coordinates; it has meaning only as a relation between local modes (a coordinate-invariant quantity such as geodesic distance) (§6). In this note we do not define a position phase for a single local mode.
+
+A particle-like state is then not a point placed in an external space, but a local mode with a spread phase appearing on the centrally projected subjective geometry (the meaning of "spread phase" is fixed in §4 and §5).
+
+---
+
+## §4 Definition of a particle-like state
+
+In this note we do not assume a particle in advance as a physical entity.
+
+A particle-like state is defined as the following geometric object:
+
+$$\text{particle-like state}\ :=\ \text{a local mode with a spread phase appearing on the post-projection subjective geometry}.$$
+
+Here a "local mode" does not mean an eigenmode whose stability has been determined. The judgment of stability (equations of motion, energy functional, perturbative stability, etc.) is not made in this note and is deferred to a subsequent note. This note merely defines the geometric stage on which such local modes are placed.
+
+Moreover, "phase-bearing" here does not mean an absolute position phase on the subjective geometry. The phase that this note treats for a single particle-like state is the intrinsic periodic structure corresponding to the spread $W_a$, i.e. the spread phase (§5). The absolute position phase $\phi_a$ is not defined for a single particle (§6).
+
+Here a local mode means a local configuration supported (with support) on $S^4(R_{\mathrm U})$; its origin is left open, and it is characterized by the intrinsic frequency $\boldsymbol{\nu}_a$ and the curvature radius $R_a$. In this note we do not fix this configuration as any specific mathematical entity such as a local deformation of the metric or a wave packet of a field. The identification of what it is on the subjective geometry (a wave packet of a scalar field, a local deformation of the curvature, etc.) is deferred, together with the introduction of dynamics, to a subsequent note.
+
+In this note we treat only a single particle-like state. In this case we do not define an absolute position phase for the particle-like state. In this note's setting, which assumes no exterior space, position is not a quantity given by external coordinates; it has meaning only as a relation between several particle-like states.
+
+Therefore the particle-like state treated in this note is represented minimally by
+
+$$P_a=(\boldsymbol{\nu}_a,\ R_a),$$
+
+where $\boldsymbol{\nu}_a$ is the intrinsic frequency structure and $R_a$ is the composite radius (local projection radius) of the particle-like state. $R_a$ is a per-particle quantity, to be distinguished from the system-wide projection radius $R_{\mathrm U}$ of §1 (the two do not in general coincide).
+
+The position phase $\phi_a$ and the relative phase $\Delta\phi_{ab}$ become definable only when at least two particle-like states $P_a,P_b$ exist. This note does not enter into that formulation (§6).
+
+At this stage, however, we do not identify this with a concrete particle such as an electron, photon, or quark. What this note observes is limited to the geometric structure that a phase-bearing local state can be placed by the central projection of a vacuum universe.
+
+---
+
+## §5 Spread phase and the size of a particle (model convention)
+
+Up to the previous section, a particle-like state was defined as a phase-bearing local mode on the subjective geometry. In this section we characterize the "spread" carried by this local mode in the language of frequency. This is an observation applying the viewpoint of frequency $\nu$—which the preceding note [1] adopted as its basic quantity of description—to the size of a particle. **What follows is not a derivation but a model convention adopted in this note.**
+
+First we fix one convention for the correspondence between phase and frequency. In this note we read the frequency $\nu$ as the number of times the phase makes one full turn (360 degrees, $2\pi$); that is,
+
+$$\nu=1\ \longleftrightarrow\ \text{phase }360^\circ\,(=2\pi).$$
+
+This convention serves to associate phase and frequency directly, without going through wavelength. If wavelength is used as the intermediary, the coefficient wavers depending on whether $1/\lambda$ or $2\pi/\lambda$ is called the frequency; hence this note takes the winding number of phase as basic.
+
+Furthermore, the "spread" of a particle in this note denotes not the arc length on the phase circle but the **effective diameter** occupied by the phase mode. That is, we read the geometric quantity corresponding to one full turn of phase not as the circumference $2\pi R_a$ but as the effective width from center to both ends, $2R_a$. This is a model convention of this note, not an identification with the ordinary circumference $2\pi R_a$. There are two reasons for adopting this reading. First, to express a particle-like state as a centrally symmetric occupied range, the full width from center to both ends is the natural measure. Second, taking the arc length (circumference) would introduce a factor $2\pi$, and we wish to avoid a coefficient stacked on top of this note's framework, which treats the phase as a winding number ($\nu=1\leftrightarrow360^\circ$). Under this convention we associate the spread (full width) of a particle with one full turn of phase, and its half (from center to an end) with a half turn, and we write the frequency accompanying this spread as $\nu_w$.
+
+On the other hand, writing the frequency in the composite-radius (curvature) direction of the particle-like state as $\nu_{R,a}$, by the same rule as in §1 and §4 we have
+
+$$R_a=\frac{1}{\nu_{R,a}}.$$
+
+In this note's convention, the curvature radius $R_a$ is associated with the effective radius (a half turn) of the phase circle.
+
+Here $\nu_w$ was originally introduced as an independent quantity, the frequency accompanying the spread. In this note we place a model identification regarding the pulsation of the spread and the pulsation in the curvature direction as **one and the same intrinsic vibration**. That is, not as an equality by definition but as an assumption that the two vibrations are the same,
+
+$$\boxed{\ \nu_w=\nu_{R,a}\ }$$
+
+is set. Hereafter we do not retain $\nu_w$ as an independent quantity but unify on $\nu_{R,a}$. Then, from the relation between the curvature radius $R_a$ (effective radius) and the full width of the spread (effective diameter),
+
+$$\boxed{\ W_a\equiv(\text{spread of the particle; full width})=2R_a=\frac{2}{\nu_{R,a}}\ }$$
+
+can be read off. That is, in this note we take the curvature radius $R_a$ to be half the particle's spread (the effective radius), and the full width of the spread to be its effective diameter $2R_a$. This is merely a re-reading between radius and diameter at the same frequency $\nu_{R,a}$, and no independent degree of freedom other than the factor 2 enters between the two.
+
+This convention assigns an effective spread to the particle-like state. A particle is neither a point nor a region on a background space, but a phase mode of spread $W_a=2R_a=2/\nu_{R,a}$ whose effective radius is the curvature radius $R_a$. The larger the curvature frequency $\nu_{R,a}$, the smaller the spread; the smaller $\nu_{R,a}$, the larger the spread. If $R_a$ is interpreted as a length on the geodesic scale of the subjective geometry $S^4(R_{\mathrm U})$, its upper bound is naturally given by the geodesic extent of $S^4(R_{\mathrm U})$ (for example, the antipodal distance $\pi R_{\mathrm U}$). If $R_a$ is assumed to have this global scale as an upper bound, then in the limit where $\nu_{R,a}$ takes its minimal value the spread of the particle approaches the scale of the whole subjective geometry. However, in this note we leave it undetermined whether this upper bound is imposed as a model convention, and confine ourselves to noting the possibility.
+
+This section stops here. When several particles with a spread exist, how their relative positions are converted into frequency, and the interference, the discretization of placement, and the statistical structure that then appear, require treating the relative phase and go beyond the single-particle framework. These are made the subject of a subsequent note; in this note we confine ourselves to observing, up to the single-particle model convention that a particle has the spread $W_a=2R_a$.
+
+---
+
+## §6 One-particle universe and many-particle universe
+
+When there is only one particle-like state, the only things that can be defined are the intrinsic frequency structure $\boldsymbol{\nu}_a$ and the spread $W_a=2R_a$. Here $W_a$ is not a "region in which it is placed" but an intrinsic scale (effective diameter) of the particle-like state. Position is not defined, because there is no counterpart to measure it against. In a one-particle universe, no absolute position phase exists. That it has a spread but no position is, on a homogeneous space, rather a natural consequence.
+
+Only when several particle-like states
+
+$$P_a,\quad P_b$$
+
+exist does the relative phase between them
+
+$$\Delta\phi_{ab}$$
+
+come into question. This relative phase is a candidate quantity for formulating distance, direction, and relations in the subjective geometry. Since the system has no origin and no reference axis, absolute position is not defined, and only the relations between particles carry physical meaning.
+
+However, on the curved subjective geometry, a simple subtraction of phases is not in general coordinate-invariant. To define the relative phase / relative position globally and coordinate-invariantly requires additional formulation such as the choice of local chart, gauge fixing, and parallel transport. This note does not carry out that formulation. The relative phase, relative position, interference, discretization of placement, and statistical structure in a many-particle system are made the subject of a subsequent note.
+
+Therefore in this note we confine ourselves to reading space not as an external container in which particles are placed, but as the relations among several phase-bearing local states.
+
+---
+
+## §7 Relation between the vacuum universe and the particle-like state
+
+The vacuum universe is a single intrinsic geometric system with no exterior. Its central projection makes the subjective geometry appear.
+
+A particle-like state is a phase-bearing local mode appearing on that subjective geometry.
+
+Hence a particle-like state is not placed directly in the original constituting geometric space, nor is it brought into the vacuum universe from an exterior space.
+
+Rather, a particle-like state appears within the map
+
+$$\text{central projection of the vacuum universe}\ \rightarrow\ \text{subjective geometry}\ \rightarrow\ \text{phase-bearing local mode}.$$
+
+In this sense, a particle-like state is a local mode appearing on the map structure that holds between the pre-projection geometry and the post-projection subjective geometry.
+
+---
+
+## §8 What this note does not treat
+
+This note does not treat the following:
+
+- judgment of the stability of a local mode (equations of motion, energy functional, perturbative stability);
+- definition of an absolute position phase for a single particle;
+- endowing the post-projection geometry with a Lorentzian metric, causal structure, or physical spacetime;
+- the origin of spin, bosonic / fermionic character;
+- gauge particles, electromagnetic interaction, gravitational interaction;
+- composite particles, quarks, generation structure, the Higgs field;
+- modification of the Standard Model, new observable predictions;
+- conversion of the relative position between several particles into frequency, interference, and statistical structure.
+
+These are extension topics that could be examined if the geometric structure of a post-projection phase-bearing particle-like state were further developed. At the present stage, however, they go beyond the scope of this note.
+
+---
+
+## §9 Scope of the claims of this note
+
+The claims of this note are limited to the following range.
+
+First, an exterior-free vacuum universe can be posited as a single intrinsic geometric system.
+
+Second, a central projection can be defined on that intrinsic geometric system.
+
+Third, the central projection determines the subjective geometry as the homogeneous 4-sphere $S^4(R_{\mathrm U})$ in $\mathbb{R}^5$ (sectional curvature $1/R_{\mathrm U}^2$), and gives a gnomonic chart covering one hemisphere of it. An atlas of several charts is required to treat the whole sphere. No Lorentzian metric or causal structure is introduced here.
+
+Fourth, a particle-like local mode can be placed on that subjective geometry.
+
+Fifth, this particle-like state is observed not as a point in an external space but as a phase-bearing local mode on the centrally projected subjective geometry, minimally as $P_a=(\boldsymbol{\nu}_a,R_a)$.
+
+Sixth, under the model convention that reads a frequency as the winding number of phase and the spread as an effective diameter, the spread (full width) of a particle-like state can be read as twice the curvature radius, $W_a=2R_a=2/\nu_{R,a}$, and the spread frequency coincides with the curvature frequency ($\nu_w=\nu_{R,a}$).
+
+Seventh, an absolute position phase is not defined for a single particle, and a relative phase comes into question only for two or more particle-like states. Its formulation is not carried out in this note.
+
+---
+
+## Summary
+
+The central observation of this note can be summarized in one sentence.
+
+> We observe a particle not as a point-like object placed in an external space, but as a local mode with a spread phase appearing on the subjective geometry produced by the central projection of an exterior-free vacuum geometric system.
+
+At this stage, this note does not attempt to complete a theory of particles. What it does is to define the geometric stage on which a particle-like state appears, and to set the convention characterizing the spread carried by such a particle in terms of frequency.
+
+That is, it presents, as an observational note, the map structure
+
+$$\text{vacuum universe}\ \rightarrow\ \text{central projection}\ \rightarrow\ \text{subjective geometry}\ \rightarrow\ \text{phase-bearing particle-like state (spread }W_a=2R_a\text{)}.$$
+
+---
+
+## References
+
+[1] N. Kihara (2026). *A thought experiment on a model particle (continued)—the fifth frequency and composite curvature seen from the sum-to-zero condition*. Observational note (same author; preceding note). Concept DOI: [10.5281/zenodo.20535894](https://doi.org/10.5281/zenodo.20535894).
+
+[2] N. Kihara (2026). *Definition of the spherical projection $\sigma_R$ (radial projection)—the foundational map of the central-projection series*. Observational note (same author). Concept DOI: [10.5281/zenodo.20462569](https://doi.org/10.5281/zenodo.20462569).
+
+[3] N. Kihara (2026). *A geometric formulation of 4-dimensional space by central projection*. Observational note (same author). Concept DOI: [10.5281/zenodo.19427780](https://doi.org/10.5281/zenodo.19427780).
+
+[4] M. P. do Carmo (1992). *Riemannian Geometry*. Birkhäuser. (spherical geometry, sectional curvature, angular excess of geodesic triangles)
+
+[5] B. O'Neill (1983). *Semi-Riemannian Geometry, with Applications to Relativity*. Academic Press. (distinction between Riemannian and Lorentzian geometry, causal structure)
+
+(Note: external references use the Concept DOI.)
+
+---
+
+## Revision history
+
+- **v1.0 (2026-06)**: Publication candidate. Reflecting a sixth round of external review, the subjective geometry is defined as the manifold $S^4(R_{\mathrm U})$ itself (not as the hemispherical image of the map), with the central projection positioned as a gnomonic chart covering one hemisphere; homogeneity ($O(5)$ transitivity) and the absence of absolute position thereby follow as properties of the manifold (the north pole and equator are chart artifacts). Also: commitment to the round metric stated as a model choice (gnomonic is not an isometry); correspondence to the Euclideanization of $dS_4$ noted; $\nu_i$ treated as a dimensionless formal parameter carrying a sign/phase direction; $\nu_w=\nu_{R,a}$ clarified as a model identification rather than a definition, unifying on $\nu_{R,a}$; $R_a$ interpreted as a geodesic-scale length on $S^4(R_{\mathrm U})$; carrier of the local mode (a configuration supported on $S^4$) stated; need for an atlas to cover the whole sphere stated; standard geometry references [4,5] added. (Translated from the Japanese v1.0; see the Japanese version for the full revision history.)
