@@ -1,0 +1,244 @@
+# A Thought Experiment on a Model Particle (Continued) — The Fifth Frequency and the Composite Curvature Radius Seen from a Zero-Sum Condition
+
+**Author**: Noriaki Kihara
+**Affiliation**: WF System Co., Ltd. / Faculty of Engineering Science, Osaka University (graduate)
+**ORCID**: [0009-0004-6753-4020](https://orcid.org/0009-0004-6753-4020)
+**Version**: v1 (stealth draft)
+**Date**: June 2026
+**License**: CC BY 4.0
+**Concept DOI**: [10.5281/zenodo.20535894](https://doi.org/10.5281/zenodo.20535894)
+**Version DOI (v1.0)**: [10.5281/zenodo.20535895](https://doi.org/10.5281/zenodo.20535895)
+
+---
+
+## Character of this paper
+
+**This is an observational paper, written in the form of a thought experiment. It is neither a proof paper nor a claim paper.**
+
+This paper is a sequel to the previous paper [14] (*A Thought Experiment on a Model Particle — From the Floor of Phase-Space Area to the Admissibility Condition on Dimension*). Where the previous paper observed, starting from the floor that forbids a point (the absence of a zero-area state in phase space), the conditions under which the number of intrinsic oscillatory degrees of freedom is admitted to be four, this paper observes — as an extension of the same single thought experiment — that when energy accompanies those four, imposing a zero-sum conservation-type condition makes a fifth direction appear formally, and then carries this through the central projection that takes this fifth direction as its radius, and the composite curvature radius obtained by a subsequent cut along another axis.
+
+This paper does not modify standard quantum theory, general relativity, or special relativity. It proposes no new physical theory. It proves no new mathematical theorem. It changes no observable prediction. What this paper does is to lay out and observe, from the single viewpoint of frequency as the basic quantity, known structures — that the four-momentum is a single vector that does not distinguish energy from momentum (special and general relativity [10]); the Robertson uncertainty floor [2]; the algebraic structure of dimensional reduction by central projection [19].
+
+This paper does not claim the following:
+
+- Any change to the mathematical predictions of standard quantum theory, general relativity, or special relativity
+- A physical derivation of spacetime dimension, metric signature, or Minkowski structure
+- The ontological claim that mass, energy, time, and momentum are not physical entities (as noted below, this paper treats how to derive these descriptively, and does not deny their reality)
+- Identification of the fifth frequency with rest mass (it observes only the coincidence of structure)
+- Prediction of values of new physical or cosmological constants
+- Proof of any new mathematical theorem
+- Metaphysical claims about the origin of the universe or the nature of time
+
+Evaluation and interpretation are left to the reader.
+
+---
+
+## Declaration of the basic metric — what this paper takes as fundamental
+
+We make explicit at the outset one choice that runs through the whole paper. This is the premise of every section that follows.
+
+**This paper takes the basic metric (the basic degree of freedom) of the description to be the frequency $\nu$.** Quantities such as time, momentum, and energy are treated not as basic degrees of freedom independent of $\nu$, but as dependent quantities derived from $\nu$. This is a descriptive choice; it is not a claim that time, momentum, or energy are not physical entities. That they function as physical entities is as in standard physics, and this paper does not contradict that. The restriction here is only a choice of what to take as basic in organizing the description.
+
+The reason for this choice is that the word "time" is polysemous in physics. Time as the parameter measuring the development of a state, and time as the coordinate axis in the metric, coincide under flat spacetime and time-translation symmetry, but in general their identity is not obvious (the "problem of time" in general relativity). If this paper placed time in the basic vocabulary, this polysemy would slip in unnoticed, with the danger of treating an unproved identification as if it were proved. To avoid this, this paper unifies the basic vocabulary into $\nu$, and introduces time-like quantities only as derivatives of $\nu$.
+
+This declaration, and the connection from oscillatory degrees of freedom to spacetime structure in the latter half of this paper (§3 onward), are, as in the previous paper [14], **the author's correspondence hypothesis**, not a derivation from standard theory. We take established mathematics (conservation laws, the Robertson floor [2], the composition operation of central projections [19], the dimension series of division algebras) as the first layer, and the part that connects these to oscillatory degrees of freedom (the formulation by central projection) as the second layer (correspondence hypothesis). Please read what follows under this two-layer distinction.
+
+---
+
+## Abstract
+
+The previous paper [14] observed that the number of intrinsic oscillatory degrees of freedom is admitted to be four. This paper follows, as an extension of the thought experiment, what happens when energy accompanies those four.
+
+First, at the stage where the four frequencies are on an equal footing, energy and momentum are not distinguished. In general and special relativity the four-momentum $p^\mu=(E,\boldsymbol{p})$ is the four components of a single vector, and the separation of energy from momentum is a consequence of the observer's choice of time axis. At the equal-footing stage of the four, an "energy-equivalent quantity" exists as the whole four-vector (and its invariant), but is undifferentiated as a particular single component.
+
+Second, in a system with neither background spacetime nor an absolute scale, when this energy is on the positive side, imposing a zero-sum conservation-type condition makes a direction that cancels it appear formally (this is not a derivation from standard theory). Since there is no canceling partner among the four, the fifth direction $\nu_5$ carries the negative part. One then obtains $\nu_1^2+\nu_2^2+\nu_3^2+\nu_4^2-\nu_5^2=0$. This is a light-cone null condition of signature $(+,+,+,+,-)$, and is the same quadratic form as the mass shell $E^2=\boldsymbol{p}^2+m^2$ seen from four dimensions (this paper does not identify $\nu_5$ with mass. Read against the standard four-dimensional mass shell, the isolated axis $\nu_5$ sits at the energy-like position and the mass-term position is occupied by one of the four — we observe only this coincidence of structure). $\nu_5$ is not an independent degree of freedom but a dependent quantity determined by the four (a composite radius), and bears the floor $\tfrac12$ of indeterminacy just as the four do.
+
+Third, we formulate the central projection that takes the fifth direction $\nu_5$ as its radius (the first stage). Taking each axis value to be the reciprocal of the frequency $1/\nu_i$ and the fifth component to be $R=1/\nu_5$, we apply central projection onto a sphere of radius $R$. We then formulate a cut on the sphere along another axis (the second stage), and show that the composite curvature radius after the cut is given by the closed form $r_{\rm final}^2=R^2-\sum_{k\in S}x_k'^2$, the sum of squares of the remaining coordinates. These are geometric-algebraic computations that follow strictly the composition operation of central projections [19], and carry no interpretive or observational claim.
+
+This paper makes no new claim, and confines itself to juxtaposing and observing these structures within a single thought experiment. The origin of the sign structure, the correspondence between $\nu_5$ and rest mass, and the physical interpretation of projection and cut are explicitly set aside as future tasks.
+
+---
+
+## §1 Confirmation of the starting point — what the previous paper reached
+
+We carry over what the previous paper [14] reached. The intrinsic oscillatory degrees of freedom are admitted to be four under the floor that forbids a point ($\sqrt{\det\Sigma}\ge\tfrac12$ [4], the absence of a zero-area state) and the discrete condition that the composition of axes closes (the minimal dimension satisfying divisibility, non-commutativity, and associativity, the quaternions $\mathbb{H}$). To each of the four frequencies $\nu_1,\nu_2,\nu_3,\nu_4$ hangs a corresponding dependent quantity (a momentum-like component).
+
+We restate this conclusion in one paragraph. The Robertson uncertainty [2] imposes a minimal area in phase space that cannot be squeezed away — the floor $\sqrt{\det\Sigma}\ge\tfrac12$, de Gosson's quantum blob [4]. Because of this floor, a state cannot collapse to a point and must possess an intrinsic oscillatory degree of freedom. Furthermore, the minimal dimension in which the composition of those oscillation axes closes (satisfying divisibility, non-commutativity, associativity) is, among the dimension series of division algebras $1,2,4,8$, the quaternions $\mathbb{H}$ (dimension four). From these two — the inevitability of oscillation due to the floor, and the closure of axis composition by $\mathbb{H}$ — the number of intrinsic oscillatory degrees of freedom is admitted to be four. This paper takes these equal-footing four as its starting point.
+
+The previous paper there obtained a "formal four-component quantity" lining up the four dependent quantities, but, holding that its becoming a physical four-momentum requires a separate introduction of the Minkowski metric, set aside the sign structure. This paper restarts one step before that set-aside part — from where and how energy appears among the four components.
+
+As observed in §4.2 of the previous paper, the ratio of two axes $k=\nu_2/\nu_1$ separates the isotropic ($k=1$) from the anisotropic ($k\neq1$). At $k=1$ no privileged axis that could be called a spatial direction has yet stood up, and the four are on an equal footing. The starting point of this paper is this equal-footing stage of the four.
+
+---
+
+## §2 Energy and the undifferentiated four-momentum
+
+### 2.1 In a local inertial frame, energy and momentum are unified as components of the four-momentum
+
+In special relativity and in the local inertial frames of general relativity, the four-momentum $p^\mu=(E/c,\boldsymbol{p})$ is a single four-vector, and energy $E$ and momentum $\boldsymbol{p}$ are not separate quantities but four components of the same vector. Their separation is relative to the observer. The energy for an observer with four-velocity $u^\mu$ is given by the projection $E=p^\mu u_\mu$, and the momentum is the three components orthogonal to it. Changing the observer (boosting) changes the apportionment of the same $p^\mu$ into energy and momentum components. This is a standard fact, not something this paper states anew.
+
+### 2.2 What can be said at the equal-footing stage of the four
+
+If this paper's four frequencies correspond to the four-momentum, then at the stage where which is the time component (energy) is undifferentiated, what can be said is limited. Namely: that four equal-footing components (a single vector, the four-momentum) exist, and that the observer-independent invariant magnitude $p^\mu p_\mu$ of that vector exists — these two.
+
+Hence the answer to "does an energy-equivalent quantity exist?" is affirmative in two senses. It exists as the whole four-vector, and it exists as an invariant. But if "energy" is meant as the particular single time component, that awaits the observer's choice of time axis. In the former sense it exists at the equal-footing stage of the four; in the latter sense it is not yet differentiated. When this paper hereafter says "energy exists," it means the former (the four-vector and its invariant). To emphasize: at the equal-footing stage of the four, the particular single component "energy" is not yet differentiated, and its differentiation awaits the stages from §3 onward.
+
+Here the declaration of the basic metric takes effect. Energy is the dependent quantity of the frequency in the time direction, and momentum is the dependent quantity of the frequency in the spatial directions — $E=h\nu$ and $\boldsymbol{p}=h\boldsymbol{k}$ are not separate relations but the four components of the single structure "a dependent quantity attaches to a frequency." That the distinction of energy from momentum is relative to the observer's choice of time axis is another way of saying that which single frequency is read as the time direction is undifferentiated.
+
+---
+
+## §3 A particle that exists out of nothing, and the conservation condition
+
+### 3.1 The zero-sum condition
+
+Suppose one model particle exists in empty space. There is no background and no energy source outside (this paper's system has neither background spacetime nor an absolute scale). Nevertheless, the energy of §2 exists.
+
+Here, as the thought experiment of this paper, we impose the conservation-type condition that the whole quadratic form vanishes. This is not a Noether conservation law derived from time-translation symmetry, but a condition imposed formally on this system, which has neither background nor scale (it is not a derivation from standard theory). As long as the components accompanying the four frequencies (components of the four-momentum) are on the positive side, the quadratic form's sum will not vanish without a negative contribution canceling them.
+
+There is no canceling partner among the four (the four are on an equal footing and on the same side). Therefore, to satisfy this conservation-type condition, it suffices that the fifth direction outside the four carry a negative contribution. If the fifth direction's contribution is negative, it cancels the positive of the four, and the quadratic form's sum vanishes. This is not a derivation from standard theory but a fifth component that appears formally when the conservation-type condition is imposed — this paper adopts this reading as a thought experiment.
+
+### 3.2 The negative sign of the fifth direction (called the imaginary direction for convenience)
+
+The fifth direction carrying this negative contribution does not appear as an additional axis of observed real space. The negative contribution is borne as the negative sign of the quadratic form — the minus sign of the signature $(+,+,+,+,-)$. One may write this as "$\nu_5$ is imaginary," but that is a convenient rephrasing of the metric sign; it does not mean making $\nu_5$ a complex number (complexifying the coordinate) or deriving a physically unobservable real direction. This paper treats the minus sign as a sign, and refers to the fifth direction, for convenience only, as the imaginary direction or the R direction (corresponding to the curvature-radius direction; see §4.4–§5). This reading is consistent, at the level of signs, with the reading of an "unobserved direction" in the previous paper [14] and in the author's [15].
+
+---
+
+## §4 The fifth frequency $\nu_5$
+
+### 4.1 The four-square sum and the null condition
+
+Here $\nu_i$ is not an ordinary frequency itself, but a formal variable obtained by normalizing each component of the four-momentum to a frequency dimension (the time component as $E\to E/h$, the spatial components as $p\to pc/h$, so that $c$ enters on the momentum side; declaration of the basic metric). Writing the zero-sum condition in terms of the squares of this formal variable,
+
+$$\nu_1^2+\nu_2^2+\nu_3^2+\nu_4^2-\nu_5^2=0$$
+
+that is,
+
+$$\nu_5^2=\nu_1^2+\nu_2^2+\nu_3^2+\nu_4^2,\qquad \nu_5=\sqrt{\nu_1^2+\nu_2^2+\nu_3^2+\nu_4^2}.$$
+
+$\nu_5$ is not an independent degree of freedom but a dependent quantity determined by the four. This is a restatement of the conservation-type condition imposed in this paper (§3), and is the same form as the author's composite radius $R=\sqrt{\sum R_k^2}$ (the composition of spherical projections over several axes).
+
+This expression has three faces. First, it is the zero-sum conservation condition imposed in this paper (§3). Second, it is the light-cone null condition in five-dimensional Minkowski space of signature $(+,+,+,+,-)$ (the four of the same sign, $\nu_5$ the isolated axis of the opposite sign). Third, seen from the four-dimensional side, the image obtained by freezing one of the four becomes the same quadratic form (up to an overall sign) as the mass shell $E^2-\boldsymbol{p}^2=m^2$. Taking the term-by-term correspondence precisely, the isolated axis $\nu_5$ corresponds to the position of the isolated term $E^2$ of the standard mass shell, and the position of the mass term $m^2$ is occupied by one of the frozen four (if one places the isolated axis $\nu_5$ at the mass term, then under the signature count $(4,1)$ one gets, not a shell, but a four-variable sphere $S^3$, and the correspondence breaks). This agrees with the Kaluza–Klein-type reading of §4.2 — one of the four appears as mass in lower dimension. The three physical descriptions are folded into a single null condition.
+
+**The origin of the sign structure is set aside.** The three faces above are observations of an arithmetic "coincidence of form" that does not depend on words. The assignment of referents — which axis corresponds to mass, energy, or time — is undifferentiated in this system, which has no background, and this paper does not commit to it (the correspondence above is merely an as-if positional correspondence drawn toward the standard four-dimensional mass shell). Moreover, the mechanism by which one of the four acquires a negative sign relative to the other three and transitions to the ordinary mass-shell signature $(+,-,-,-)$ (the origin of the sign structure, from Euclidean to Minkowski) is not derived in this paper and is set aside as a future task.
+
+**Limitation of the claim.** That this section connects $\nu^2$ with energy and momentum is an observation of a structural coincidence of the quadratic form — that the same form appears — and is not a claim that $\nu^2$ is the physical entity of energy and momentum. This paper does not enter the question "why is $\nu^2$ energy." What it observes is only the coincidence of form: that the conservation condition, the light-cone null condition, and the mass shell are folded into a single quadratic form (in accordance with the declaration of the basic metric, energy and momentum are treated as dependent quantities derived from $\nu$).
+
+### 4.2 No identification with mass
+
+We state the second and third faces precisely. That $\nu_5^2=\sum\nu_k^2$ is a massless null condition in five dimensions, and becomes the same form as a mass shell seen from four dimensions, is a coincidence of structure. One can read the correspondence (the same form as the Kaluza–Klein-type [16] mechanism) by which a higher-dimensional null (massless) appears as mass in lower dimension, by the amount of momentum in the extra direction.
+
+But this paper does not identify $\nu_5$ with rest mass. As organized in §4.1, when one reads the five-dimensional null condition of signature $(+,+,+,+,-)$ toward the form of the standard four-dimensional mass shell, the $\nu_5$ with the isolated sign appears at the isolated-term (energy-like) position, and the mass-term position is occupied by one of the four that is frozen/cut. Therefore what this paper observes is not the correspondence "$\nu_5$ is itself mass," but the coincidence of structure that, reading the higher-dimensional null condition from the lower-dimensional side, a mass-shell-type quadratic form appears. To claim that $\nu_5$ is mass would require confirming that $\nu_5$ also satisfies the other properties of mass (inertia, gravitational source, a Lorentz-invariant rest quantity), which this paper does not do, confining itself to observing the coincidence of structure.
+
+### 4.3 $\nu_5$ also bears a floor
+
+$\nu_5$ is a dependent quantity determined by the four. Since each of the four bears the floor $\tfrac12$ and cannot be fixed to a definite integer, the square root of their sum of squares, $\nu_5$, also bears an irreducible fractional part and cannot be fixed to a definite integer. That is, the indeterminacy of $\nu_5$ is exhausted by the part that propagates from the fluctuations of the four through the square root of the sum of squares; it does not add an independent floor to $\nu_5$ separately (it does not mean adding an independent degree of freedom). The structure "integer $n$ + irreducible fractional part $\tfrac12$" of the previous paper [14] extends to the fifth direction through this propagation.
+
+### 4.4 First stage of the R-axis ($\nu_5$ direction) central projection
+
+We formulate the first stage of the central projection that takes the fifth direction $\nu_5$ as its radius. This section treats only a single central projection on the R axis, and performs no cut on another axis (such as $t=1/\nu_4$).
+
+**A note on the definition.** In this section we **define** the coordinate value of each axis to be the reciprocal of the corresponding frequency, $x_i:=1/\nu_i$. This is merely a choice of coordinates (a notational definition) for writing the central projection geometrically; it is not a claim that $x_i=1/\nu_i$ is a physical image (a real quantity such as a length or wavelength). All operations from this section onward are geometric-algebraic computations under this definition.
+
+**Coordinates.** Taking each axis value to be the reciprocal of the corresponding frequency, and the fifth component to be $R=1/\nu_5$, we take the five-dimensional point
+
+$$x = \left(\frac{1}{\nu_1},\ \frac{1}{\nu_2},\ \frac{1}{\nu_3},\ \frac{1}{\nu_4},\ R\right),\qquad R=\frac{1}{\nu_5}.$$
+
+Here $\nu_5$ satisfies the conservation-type condition of §4.1, $\nu_1^2+\nu_2^2+\nu_3^2+\nu_4^2=\nu_5^2$.
+
+**Norm.**
+
+$$|x| = \sqrt{\frac{1}{\nu_1^2}+\frac{1}{\nu_2^2}+\frac{1}{\nu_3^2}+\frac{1}{\nu_4^2}+R^2} = \sqrt{\sum_{i=1}^{4}\frac{1}{\nu_i^2}+\frac{1}{\nu_5^2}}.$$
+
+**Central projection.** We apply the central projection onto the sphere of radius $R$ centered at the origin,
+
+$$x' = \frac{R}{|x|}\,x.$$
+
+Putting the scale factor $\lambda := R/|x|$, each component is
+
+$$x_i' = \lambda\,x_i = \frac{R}{|x|}\cdot\frac{1}{\nu_i}\quad(i=1,2,3,4),\qquad R' = \lambda\,R = \frac{R^2}{|x|}.$$
+
+**Frequencies after projection.** By $\nu_i'=1/x_i'$, $\nu_5'=1/R'$,
+
+$$\nu_i' = \frac{|x|}{R}\,\nu_i\quad(i=1,2,3,4),\qquad \nu_5' = \frac{1}{R'} = \frac{|x|}{R^2} = \frac{|x|}{R}\,\nu_5.$$
+
+That is, for all $i=1,\dots,5$,
+
+$$\nu_i' = \frac{|x|}{R}\,\nu_i.$$
+
+Writing the scale factor $|x|/R$ in terms of $\nu$, $|x|/R = |x|\,\nu_5 = \sqrt{1+\nu_5^2\sum_{j=1}^{4}\nu_j^{-2}}$, and therefore
+
+$$\nu_i' = \nu_i\sqrt{1+\nu_5^2\sum_{j=1}^{4}\frac{1}{\nu_j^2}}\qquad(i=1,\dots,5),$$
+
+by which each component of the projected point $x'=(1/\nu_1',\,1/\nu_2',\,1/\nu_3',\,1/\nu_4',\,R')$ is formulated.
+
+**Check of $R'$ (a point on the R axis).** At the point $x=(0,0,0,0,R)$ on the central axis of the projection, $|x|=R$, and
+
+$$x' = \frac{R}{|x|}\,x = \frac{R}{R}\,x = x,\qquad R' = \frac{R^2}{|x|} = \frac{R^2}{R} = R.$$
+
+That is, on the R axis $R'=R$, and the radial component does not change under projection.
+
+---
+
+## §5 Projection along an arbitrary axis — the second stage, the cut
+
+This section formulates the second stage following the first stage of §4.4 (the R-axis central projection). The central projection is performed once only, and the operation on a subsequent axis is a cut $\sigma$ on the sphere ([19]). As a concrete example we compute the cut along the axis $x_4=1/\nu_4$, and give the general form for an arbitrary axis. This section is confined to geometric-algebraic computation.
+
+**Starting point.** After the first stage of §4.4, the point lies on the sphere $S^4(R)$ of radius $R=1/\nu_5$:
+
+$$x'=\frac{R}{|x|}\,x=(x_1',x_2',x_3',x_4',x_5'),\qquad |x'|=R.$$
+
+Here $x_i'=\dfrac{R}{|x|}\cdot\dfrac{1}{\nu_i}$ ($i=1,2,3,4$), $x_5'=R'=\dfrac{R^2}{|x|}$. Since the point is on the sphere,
+
+$$x_1'^2+x_2'^2+x_3'^2+x_4'^2+x_5'^2=R^2. \tag{5.1}$$
+
+**Cut $\sigma_{x_4}$ along the axis $x_4$.** Fix the $x_4$ component of a point on the sphere $S^4(R)$ to its value $c=x_4'$ on the sphere. The intersection of the hyperplane $\{x_4=c\}$ with $S^4(R)$ is isomorphic to the sphere $S^3(r'')$ of radius $r''$ with the $x_4$ axis removed,
+
+$$r''=\sqrt{R^2-c^2}=\sqrt{R^2-x_4'^{\,2}}.$$
+
+The remaining coordinates $x_1',x_2',x_3',x_5'$, other than the $x_4$ axis removed by the cut, do not change.
+
+**Closed form.** From (5.1), $R^2-x_4'^{\,2}=x_1'^2+x_2'^2+x_3'^2+x_5'^2$, and therefore
+
+$$r''^{\,2}=R^2-x_4'^{\,2}=x_1'^2+x_2'^2+x_3'^2+x_5'^2. \tag{5.2}$$
+
+That is, the radius after the cut is the square root of the sum of squares of the remaining coordinates.
+
+**Expression in terms of frequencies.** By $x_4'=\dfrac{R}{|x|\,\nu_4}=\dfrac{1}{\nu_4'}$ ($\nu_4'=\dfrac{|x|}{R}\nu_4$, §4.4),
+
+$$r''^{\,2}=R^2-\frac{R^2}{|x|^2\nu_4^2}=R^2\left(1-\frac{1}{|x|^2\nu_4^2}\right).$$
+
+The frequencies of the remaining axes $\nu_1'',\nu_2'',\nu_3''$ equal the first-stage values $\nu_1',\nu_2',\nu_3'$ (and $x_5'=R'$ is also unchanged); the $\nu_4$ axis is removed by the cut.
+
+**General form for an arbitrary axis / multiple axes.** A cut along an arbitrary axis $x_k$ ($k\in\{1,2,3,4\}$) is of the same form,
+
+$$r''^{\,2}=R^2-x_k'^{\,2}=\sum_{i\neq k}x_i'^{\,2},$$
+
+and cutting successively along a set $S$ of several axes gives, independently of the order,
+
+$$r_{\rm final}^{\,2}=R^2-\sum_{k\in S}x_k'^{\,2} \tag{5.3}$$
+
+([19], Theorem 2). This is the computational method for projection along an arbitrary axis (first stage = central projection; second stage onward = cut). Note that $r_{\rm final}$ is geometrically the radius of the sphere after the cut; this paper calls it (at the layer of the correspondence hypothesis) the composite curvature radius, no more than that. It does not claim a physical or spacetime curvature.
+
+---
+
+## References
+
+[2] H. P. Robertson (1929). *The uncertainty principle*. Phys. Rev. **34**, 163.
+[4] M. de Gosson (2013). *Quantum blobs*. Found. Phys. **43**, 440.
+[10] C. W. Misner, K. S. Thorne, J. A. Wheeler (1973). *Gravitation*. Freeman. (Four-momentum; observer relativity of energy and momentum.)
+[14] N. Kihara (2026). *A Thought Experiment on a Model Particle — From the Floor of Phase-Space Area to the Admissibility Condition on Dimension*. Observational paper (same author; previous paper).
+[15] N. Kihara (2026). Same-author paper on the complex hyperbolic structure $\mathrm{CH}^2$ / $\mathrm{SU}(2,1)$ and the composite curvature.
+[16] T. Kaluza (1921); O. Klein (1926). (The form of the mechanism by which a higher-dimensional null appears as mass in lower dimension.)
+[19] N. Kihara (2026). *The Composition Operation of Central Projections and the Closed Form of the Composite Curvature Radius*. Observational paper (same author). Concept DOI: 10.5281/zenodo.20060728.
+
+(Note: reference numbers are kept consistent with the numbering scheme of the previous paper [14]. The formal DOIs and bibliographic details of [14][15] will be fixed upon publication.)
+
+---
+
+Author: Noriaki Kihara / WF System Co., Ltd. / ORCID [0009-0004-6753-4020](https://orcid.org/0009-0004-6753-4020) / CC BY 4.0
+
+---
+
+## Revision history
+
+- **v1 (2026-06)**: First edition (stealth draft). Sequel to the previous paper [14]. The declaration of the basic metric (taking the basic degree of freedom to be the frequency $\nu$, and treating time, momentum, and energy as dependent quantities derived from $\nu$; physical reality is not denied, and there is no contradiction with standard physics) is placed at the outset. (§1) Restart from what the previous paper reached (the equal-footing four frequencies). (§2) Energy and momentum are undifferentiated as components of the four-vector, the separation being observer-relative (standard general relativity [10]). (§3) In a system with neither background nor scale, imposing a zero-sum conservation-type condition makes the fifth, negative direction appear formally; it is, at the level of signs, the imaginary direction (the minus sign of the metric signature). (§4) That $\nu_1^2+\nu_2^2+\nu_3^2+\nu_4^2-\nu_5^2=0$ has three faces — the conservation condition, the light-cone null condition, and a mass-shell-type quadratic form. The isolated axis $\nu_5$ is at the energy-like position; mass is one of the four. $\nu_5$ is a dependent quantity determined by the four (a composite radius); no identification with mass; $\nu_5$ also bears the floor $\tfrac12$. (§4.4) The first stage of the central projection taking the fifth direction $\nu_5$ as its radius is formulated with the coordinates $x=(1/\nu_1,\dots,1/\nu_4,R)$, $R=1/\nu_5$, and $R'=R$ is checked on the R axis. (§5) The cut on the sphere along the subsequent axis $x_4=1/\nu_4$ (the second stage) is formulated, and the radius after the cut is shown to be given by the closed form $r_{\rm final}^2=R^2-\sum_{k\in S}x_k'^2$, the sum of squares of the remaining coordinates (consistent with the composition operation of central projections [19]). The two-layer distinction (established mathematics / correspondence hypothesis) is declared at the outset. In this version the former §5 (self-reference and stability of standing waves), the former §6 (composite curvature), the former §7 (the polysemy of time), and the former §8 were removed, narrowing to the geometric-algebraic formulations of §4.4 and §5.
