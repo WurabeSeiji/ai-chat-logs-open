@@ -1,7 +1,7 @@
 # Central & Spherical Projection: Geometry, the Multi-Axis Model, and a Glance at a Physical Stage (Observational Note)
 
 **Noriaki Kihara** / WF System Co., Ltd. / Faculty of Engineering Science, Osaka University (graduate)
-ORCID 0009-0004-6753-4020 / CC BY 4.0 / 2026-06
+ORCID 0009-0004-6753-4020 / Contact: kihara.noriaki@gmail.com / CC BY 4.0 / 2026-06
 
 > **Observational note.** No new geometric theorem is claimed. A classical map (radial projection) is organized, and the structures appearing on it are observed. No physical derivation is made.
 
