@@ -1,0 +1,143 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  9pt,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=14mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setlength{\parskip}{2pt}\setlength{\parindent}{0pt}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{中心投影・球面投影の幾何 ──
+多軸モデルと、その物理的舞台への一瞥（観察ノート）}\label{ux4e2dux5fc3ux6295ux5f71ux7403ux9762ux6295ux5f71ux306eux5e7eux4f55-ux591aux8ef8ux30e2ux30c7ux30ebux3068ux305dux306eux7269ux7406ux7684ux821eux53f0ux3078ux306eux4e00ux77a5ux89b3ux5bdfux30ceux30fcux30c8}
+
+\textbf{木原 範昭}（Noriaki Kihara）／ WF System Co., Ltd.／ 大阪大学
+基礎工学部 卒 ORCID 0009-0004-6753-4020 ／ CC BY 4.0 ／ 2026-06
+
+\begin{quote}
+\textbf{観察ノート。} 新規の幾何学的定理は主張しない。古典的写像（radial
+projection）を整理し、その上に現れる構造を観察する。物理的導出は行わない。
+\end{quote}
+
+\subsection{\texorpdfstring{1. 球面投影 \(\sigma_R\)（radial
+projection）}{1. 球面投影 \textbackslash sigma\_R（radial projection）}}\label{ux7403ux9762ux6295ux5f71-sigma_rradial-projection}
+
+\[\sigma_R:\mathbb{R}^{n+1}\setminus\{0\}\to S^n(R),\qquad \sigma_R(x)=\frac{R}{\|x\|}\,x\]
+
+\begin{itemize}
+\tightlist
+\item
+  位相幾何の \textbf{radial projection}（Hatcher \emph{Algebraic
+  Topology} Ch.0 の変形レトラクト）と同一。\(C^\infty\)
+  レトラクションで冪等 \(\sigma_R\circ\sigma_R=\sigma_R\)。
+\item
+  商空間
+  \((\mathbb{R}^{n+1}\setminus\{0\})/\mathbb{R}_{>0}\cong S^n(R)\)。微分の核
+  \(=\) 動径方向 \(\mathrm{span}\{x\}\)、像
+  \(=x^{\perp}=T_{\sigma_R(x)}S^n(R)\)（階数 \(n\)
+  の沈め込み）。角度保存、半径スケールに対する方向不変。
+\end{itemize}
+
+\subsection{\texorpdfstring{2. 中心投影 \(\Phi_R\)（gnomonic ＝
+球面投影の接平面への制限）}{2. 中心投影 \textbackslash Phi\_R（gnomonic ＝ 球面投影の接平面への制限）}}\label{ux4e2dux5fc3ux6295ux5f71-phi_rgnomonic-ux7403ux9762ux6295ux5f71ux306eux63a5ux5e73ux9762ux3078ux306eux5236ux9650}
+
+北極で接する接超平面 \(\Pi_R=\{x_{n+1}=R\}\cong\mathbb{R}^n\) への制限：
+
+\[\Phi_R=\sigma_R\big|_{\Pi_R}:\ \Pi_R\ \xrightarrow{\ \sim\ }\ S^n_+(R)\quad(\text{開上半球面・微分同相})\]
+
+\begin{itemize}
+\tightlist
+\item
+  引き戻し計量
+  \(g_{\mu\nu}=\dfrac{R^2}{\ell^2}\!\left(\delta_{\mu\nu}-\dfrac{x_\mu x_\nu}{\ell^2}\right)\)（\(\ell=\sqrt{R^2+|x|^2}\)）は
+  \(G_{\mu\nu}+\Lambda g_{\mu\nu}=0\)（\(\Lambda=\tfrac{(n-1)(n-2)}{2R^2}\)）を満たし、\textbf{de
+  Sitter 空間の Beltrami 座標と内在的に一致}。\(R\to\infty\)
+  で平坦（Minkowski）に退化。
+\item
+  \textbf{核心}：\(\sigma_R\)（非単射・全球）と
+  \(\Phi_R\)（単射・開上半球のみ）の対比。
+\end{itemize}
+
+\subsection{3. 多軸モデル}\label{ux591aux8ef8ux30e2ux30c7ux30eb}
+
+背景 \(\mathbb{R}^{n+1}\) の \(n+1\)
+本の軸のどれを投影中心に選んでも、計量・曲率テンソルの構造は同一（\textbf{軸の対等性}）。\(n+1\)
+通りの主観空間が同時に立ち、相互変換は
+\(T_{A\to B}=\Phi_B^{-1}\circ\Phi_A\)。観測者の立場により「投影中心軸（直接アクセス不可）」と「主観座標軸」の役割が交換される。
+
+\subsection{4.
+物理的舞台への一瞥（観察のみ）}\label{ux7269ux7406ux7684ux821eux53f0ux3078ux306eux4e00ux77a5ux89b3ux5bdfux306eux307f}
+
+外部を持たない真空（内在幾何系）の中心投影として、等質な4次元球面
+\(S^4(R_{\mathrm U})\)（断面曲率 \(1/R_{\mathrm U}^2\)、\(dS_4\)
+のユークリッド版）を取ると、その上に「広がり位相を持つ局所モード（粒子様状態）」\(P_a=(\boldsymbol{\nu}_a,R_a)\)、広がり
+\(W_a=2R_a\)
+を置けることが観察される。ローレンツ計量・因果構造・物理的導出は主張しない。［Paper
+14］
+
+\subsection{参考（Concept DOI）}\label{ux53c2ux8003concept-doi}
+
+\begin{itemize}
+\tightlist
+\item
+  球面投影 \(\sigma_R\)
+  の定義（基礎写像）：\href{https://doi.org/10.5281/zenodo.20462569}{10.5281/zenodo.20462569}
+\item
+  中心投影による4次元空間の幾何学的定式化：\href{https://doi.org/10.5281/zenodo.19427780}{10.5281/zenodo.19427780}
+\item
+  中心投影の合成演算（多軸・合成曲率半径の閉形式）：\href{https://doi.org/10.5281/zenodo.20060728}{10.5281/zenodo.20060728}
+\item
+  ［Paper
+  14］真空宇宙の中心投影と、広がり位相を持つ粒子様状態：\href{https://doi.org/10.5281/zenodo.20543044}{10.5281/zenodo.20543044}
+\end{itemize}
+
+GitHub: github.com/WurabeSeiji/ai-chat-logs-open ／ 全文は Zenodo
+に公開（日英対訳・CC BY 4.0）
+
+\end{document}
