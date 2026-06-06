@@ -6,14 +6,14 @@ affiliation: WF System Co., Ltd.
 orcid: 0009-0004-6753-4020
 license: CC BY 4.0
 date: 2026-05
-version: v3.3 (English draft, unpublished)
+version: v3.3
 concept_doi: 10.5281/zenodo.20462569
-version_doi: 10.5281/zenodo.20500187
+version_doi: 10.5281/zenodo.20567347
 ---
 
 **Concept DOI (auto-redirects to the latest version)**: [10.5281/zenodo.20462569](https://doi.org/10.5281/zenodo.20462569)
-**v3.2 Version DOI**: [10.5281/zenodo.20500187](https://doi.org/10.5281/zenodo.20500187)
-**Zenodo page**: <https://zenodo.org/records/20500187>
+**v3.3 Version DOI**: [10.5281/zenodo.20567347](https://doi.org/10.5281/zenodo.20567347)
+**Zenodo page**: <https://zenodo.org/records/20567347>
 
 # Character of This Note
 
@@ -353,7 +353,7 @@ License: CC BY 4.0
   - The caption of Fig. 2 was supplemented with "for $n=1$ this is $y = R$, and in general it is $x_{n+1} = R$ as in (3.1)" (per Gemini's second-round comment).
 - **v3.1 (2026-05-30, minor revision)**: reflected the minor comments from Claude.ai's second-round review of v2:
   - Added to Proposition 2.4 the image of the differential $\mathrm{Im}(D\sigma_R|_x) = x^\perp = T_{\sigma_R(x)} S^n(R)$ (equation (2.4)). This makes the submersion structure more explicit and records that the tangent space of the sphere at $\sigma_R(x)$ equals the orthogonal complement of the radial direction.
-- **v3.3 (2026-06-06, content addition; English draft)**: added a new §2.8 "A Distortion Invisible for a Single Point, Manifest for Several Points" (Observation 2.7, Fig. 4). In a purely geometric register, it makes explicit that $\sigma_R$ preserves angles (Proposition 2.5) and directions (Proposition 2.6) while failing to preserve distances (spacings): for a single point the action is indistinguishable from a scale transformation and the distortion cannot be observed, whereas an equally-spaced sequence on the tangent hyperplane $\Pi_R$ maps to a non-equally-spaced sequence on the sphere (crowding toward the edge), so the distortion becomes manifest only as a relation between points. Added Fig. 4 (a two-panel single-point vs. several-points comparison). Physical interpretation (curvature, spacetime, motion) remains outside the scope (§1.3, §4.3) and is deferred to [1], [2]. §4.1 main results updated to include Observation 2.7. **This version is the English-side draft; LaTeX/PDF regeneration, RELEASE_NOTES, and a new Zenodo version are to be reflected separately.**
+- **v3.3 (2026-06-06, content addition; English draft)**: added a new §2.8 "A Distortion Invisible for a Single Point, Manifest for Several Points" (Observation 2.7, Fig. 4). In a purely geometric register, it makes explicit that $\sigma_R$ preserves angles (Proposition 2.5) and directions (Proposition 2.6) while failing to preserve distances (spacings): for a single point the action is indistinguishable from a scale transformation and the distortion cannot be observed, whereas an equally-spaced sequence on the tangent hyperplane $\Pi_R$ maps to a non-equally-spaced sequence on the sphere (crowding toward the edge), so the distortion becomes manifest only as a relation between points. Added Fig. 4 (a two-panel single-point vs. several-points comparison). Physical interpretation (curvature, spacetime, motion) remains outside the scope (§1.3, §4.3) and is deferred to [1], [2]. §4.1 main results updated to include Observation 2.7. **Japanese/English md, tex, and pdf were regenerated, and the note was published as a new Zenodo version preserving the Concept DOI (10.5281/zenodo.20462569); Version DOI: 10.5281/zenodo.20567347.**
 - **v3.2 (2026-06-02, copy-editing)**: reflected copy-editing and polishing comments from peer review:
   - Resolved a duplicate equation number: the angle-preservation identity in Proposition 2.5 was renumbered from (2.4) to **(2.5)** (it had collided with the image equation (2.4) of Proposition 2.4).
   - The cross-reference in §1.2 was already correct ("Lemma 3.2"); verified consistent with §3.3 and §4.1.
