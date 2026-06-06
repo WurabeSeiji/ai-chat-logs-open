@@ -565,7 +565,7 @@ $k$ が奇数のときも同じ結果が成り立つ。
 したがって
 $$\mathcal{I}_{\Omega_M}(M, \Gamma_{df}) = \int_{[X]^{\mathrm{vir}}} 1 = (-1)^{\dim X} \chi(X) = \chi(X, \mu).$$
 
-> 〔木原メモ〕**滑らかな場合**：障害束＝接束の双対 → 仮想計数＝$(-1)^{\dim X}\chi(X)$。標準形 $x_1 x_2+\cdots$ のミルナーファイバーに**自由 $S^1$ 作用**があるので $\chi(F_0)=0$、ゆえ $\mu=(-1)^{\dim X}$（符号だけ）。**Behrend 函数 $\mu$ はスキーム $X$ に内在的（埋め込み $M,f$ に依らない）**＝定理 4.2 の核心。あなたの「不変量は内在的で、外部の埋め込みに依存しない」と完全に同じ主張。
+> 〔木原メモ〕**滑らかな場合**：障害束＝接束の双対 → 仮想計数＝$(-1)^{\dim X}\chi(X)$。標準形 $x_1 x_2+\cdots$ のミルナーファイバーに**自由 $S^1$ 作用**があるので $\chi(F_0)=0$、ゆえ $\mu=(-1)^{\dim X}$（符号だけ）。**Behrend 函数 $\mu$ はスキーム $X$ に内在的（埋め込み $M,f$ に依らない）**＝定理 4.2 の核心。あなたの「不変量は内在的で、外部の埋め込みに依存しない」という志向と構造的に響く（対象は別系統）。
 
 **EN.** **Additive nature of $\#^{\mathrm{virt}}(X)$.** The singular Gauß-Bonnet theorem can be stitched together to give rise to an obstruction theory, dual to the deformation theory. For any scheme $Y$ with an obstruction theory, we have
 $$\#^{\mathrm{virt}}(Y) = \int_{[Y]^{\mathrm{vir}}} 1 = \chi(Y, \mu_Y).$$
@@ -654,7 +654,7 @@ $$\sum_{n=0}^\infty \#^{\mathrm{virt}}(\mathrm{Hilb}^n(\mathbb{C}^3)) t^n = \pro
 これは（符号を除いて）**3 次元分割（3D partitions）の母関数**である。
 $$\sum_{n=0}^\infty \#\{n \text{ の 3 次元分割}\} t^n = \prod_{m=1}^\infty \left(\frac{1}{1 - t^m}\right)^m.$$
 
-> 〔木原メモ〕**ここが講演とあなたの研究の最接近点**。$\mathrm{Hilb}^n(\mathbb{C}^3)$＝**3 つの可換行列 $[A,B]=0$ ＋生成ベクトル**＝ポテンシャル $\mathrm{tr}([A,B]C)$ の臨界軌跡。その仮想計数の母関数が $\prod_m (1-(-t)^m)^{-m}$＝**3 次元ヤング図形（plane partition）の母関数**（MacMahon）。**$\mathbb{C}^3$ 上の点の数え上げ＝立方体の箱積み＝格子点計数**。あなたの「離散格子・整数配列・箱の積み上げ」と**文字通り同じ組合せ対象**。可換条件 $[A,B]C$ のトレース＝あなたの「位相配列の整合条件」と構造的に響く。
+> 〔木原メモ〕**ここが講演とあなたの研究の最接近点**。$\mathrm{Hilb}^n(\mathbb{C}^3)$＝**3 つの可換行列 $[A,B]=0$ ＋生成ベクトル**＝ポテンシャル $\mathrm{tr}([A,B]C)$ の臨界軌跡。その仮想計数の母関数が $\prod_m (1-(-t)^m)^{-m}$＝**3 次元ヤング図形（plane partition）の母関数**（MacMahon）。**$\mathbb{C}^3$ 上の点の数え上げ＝立方体の箱積み＝格子点計数**。あなたの「離散格子・整数配列・箱の積み上げ」と**組合せ対象として近い**（plane partition＝箱積み）。ただし Behrend の格子は $\mathbb{C}^3$ 上の点配置で、あなたの $\mathbb{Z}^4/D_4$ とは別系統＝同一視はしない。可換条件 $[A,B]C$ のトレース＝あなたの「位相配列の整合条件」と構造的に響く。
 
 ---
 
@@ -873,7 +873,7 @@ $\mathscr{A}$ における乗法を射影 $\mathrm{tr} : \mathscr{A} \to \mathsc
 $$\mathscr{A} \otimes_{\mathscr{O}_X} \mathscr{A} \to \mathscr{O}_X(-4) = \omega_X,\qquad a \otimes b \mapsto \mathrm{tr}(ab)$$
 を定義する。この対は、$t^{\vec{k}} t^{4-\vec{k}} = t^{4-\vec{k}} t^{\vec{k}}$ のとき、かつそのときに限り対称で、それは $\binom{1}{1}$ が $N$ の固有ベクトルのとき、かつそのときに限り起こる。
 
-> 〔木原メモ〕**CY 条件が「$\binom{1}{1}$ が歪対称行列 $N$ の固有ベクトル」という離散的・代数的条件に翻訳される**（Kanazawa）。$\mathscr{A}$ の階数分解 $1+121+381+121+1=625=5^4$＝**Veronese 基底の組合せ計数**（$\sum k_i=5$, $0\le k_i\le4$）。トレース対 $\mathrm{tr}(ab):\mathscr{A}\otimes\mathscr{A}\to\omega_X$ の対称性＝Frobenius／CY の本質。あなたの「対称双線形形式・トレース・$\mathbb{F}_5$ 上の組合せ」と全面的に同型。
+> 〔木原メモ〕**CY 条件が「$\binom{1}{1}$ が歪対称行列 $N$ の固有ベクトル」という離散的・代数的条件に翻訳される**（Kanazawa）。$\mathscr{A}$ の階数分解 $1+121+381+121+1=625=5^4$＝**Veronese 基底の組合せ計数**（$\sum k_i=5$, $0\le k_i\le4$）。トレース対 $\mathrm{tr}(ab):\mathscr{A}\otimes\mathscr{A}\to\omega_X$ の対称性＝Frobenius／CY の本質。あなたの「対称双線形形式・トレース・離散組合せ」と構造的に類似（ただし Behrend は $\mathbb{F}_5$ 上、あなたは $\mathbb{Z}^4/D_4$＝格子は別物。同一視はしない）。
 
 ### 定義 7.2（Frobenius 代数の層）・定理 7.3（Liu）・量子クインティックのミラー
 
@@ -952,7 +952,7 @@ $$Z_{Y|P}(t) = Z_{\mathbb{C}^3|0}(t) = M(-t),$$
 ここで $M(t) = \prod_{m=1}^\infty \frac{1}{(1 - t^m)^m}$ は**MacMahon 関数**。最終的に
 $$Z_Y(t) = M(-t)^{-200}.$$
 
-> 〔木原メモ〕**可換クインティックの DT 母関数 $Z_Y(t)=M(-t)^{-200}$**：$M(t)=\prod(1-t^m)^{-m}$＝MacMahon 関数＝3D 分割の母関数、指数 $-200=\chi(Y)$。**大域は局所（点状＝$\mathbb{C}^3$ の原点での 3D 分割）の $\chi(Y)$ 乗**——§5 の構図の完成形。点状ヒルベルトスキームの芽が $\mathbb{C}^3$ のそれと一致＝**局所普遍性**。あなたの「局所の離散計数（箱積み）を $\chi$ 乗で大域に持ち上げる」と完全一致。
+> 〔木原メモ〕**可換クインティックの DT 母関数 $Z_Y(t)=M(-t)^{-200}$**：$M(t)=\prod(1-t^m)^{-m}$＝MacMahon 関数＝3D 分割の母関数、指数 $-200=\chi(Y)$。**大域は局所（点状＝$\mathbb{C}^3$ の原点での 3D 分割）の $\chi(Y)$ 乗**——§5 の構図の完成形。点状ヒルベルトスキームの芽が $\mathbb{C}^3$ のそれと一致＝**局所普遍性**。あなたの「局所の離散計数（箱積み）を $\chi$ 乗で大域に持ち上げる」発想と構造的に類似。
 
 **EN.** **Computation of $Z_Q(t)$.** We will now indicate how to compute
 $$Z_Q(t) = \sum_n \chi(\mathrm{Hilb}^n(X, \mathscr{A}), \nu) t^n.$$
@@ -977,7 +977,7 @@ $$A_0 = \mathbb{C}[u_1, \dots, u_4]/(u_1^5 + \dots + u_4^5 = -1),\qquad u_i u_j 
 $$DT(\mathrm{Hilb}^1(X, \mathscr{A})) = 50$$
 を証明する。
 
-> 〔木原メモ〕**$50$ が再登場**——§2 の Fermat の「50 鉛筆束」と同じ数が、非可換側では「**50 個の点加群**」として出る（$\binom{5}{2}=10$ 点 × 5 個 $S_0,\dots,S_4$）。非可換性（$u_iu_j=q^{\bar n_{ij}}u_ju_i$）が「**高々一つの $u_i$ だけ非零**」を強制＝離散的選択則。$\mathbb{F}_5$ 上の歪対称行列 $\bar N$、$\bar N\mathbf 1=0$。あなたの「交換関係が許容状態を離散選択に絞る」と完全同型。
+> 〔木原メモ〕**$50$ が再登場**——§2 の Fermat の「50 鉛筆束」と同じ数が、非可換側では「**50 個の点加群**」として出る（$\binom{5}{2}=10$ 点 × 5 個 $S_0,\dots,S_4$）。非可換性（$u_iu_j=q^{\bar n_{ij}}u_ju_i$）が「**高々一つの $u_i$ だけ非零**」を強制＝離散的選択則。$\mathbb{F}_5$ 上の歪対称行列 $\bar N$、$\bar N\mathbf 1=0$。あなたの「交換関係が許容状態を離散選択に絞る」と構造的に類似（ただし Behrend は $\mathbb{F}_5$ 上の話で、あなたの $\mathbb{Z}^4/D_4$ とは別格子。同一視はしない）。
 
 **EN.** Consider $\mathscr{A}$ near $P = (1 : -1 : 0 : 0 : 0)$. From general principles we would expect that (assuming all simple $\mathscr{A}$-modules at $P$ are point modules), that
 $$\mathrm{Germ}(\mathrm{Hilb}^n(\mathscr{A}|P), \mathrm{Hilb}^n(\mathscr{A})) \cong \mathrm{Germ}\left(\prod_{|\vec{d}|=n} M^s(Q, \vec{d}, v)|0, \prod_{|\vec{d}|=n} M^s(Q, \vec{d}, v)\right),$$
