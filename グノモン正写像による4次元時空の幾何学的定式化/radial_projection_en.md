@@ -6,7 +6,7 @@ affiliation: WF System Co., Ltd.
 orcid: 0009-0004-6753-4020
 license: CC BY 4.0
 date: 2026-05
-version: v3.2
+version: v3.3 (English draft, unpublished)
 concept_doi: 10.5281/zenodo.20462569
 version_doi: 10.5281/zenodo.20500187
 ---
@@ -200,6 +200,20 @@ That is, in the radial projection **the directional component is invariant under
 
 **Fig. 3**: Invariance of direction under radius rescaling in the radial projection (Proposition 2.6). For both radii $R=3$ (black circle) and $R=5$ (purple circle), the images of $A, B, C$ lie on the same radial rays. Consequently the angles $\theta_A, \theta_B, \theta_C$ that each point makes with the positive $x$-axis are preserved independently of $R$.
 
+## 2.8 A Distortion Invisible for a Single Point, Manifest for Several Points
+
+Propositions 2.5 (angle preservation) and 2.6 (invariance of direction under radius rescaling) state that $\sigma_R$ preserves the direction of each point, while Propositions 2.3 and 2.4 state that the radial information is completely discarded. Combining these, we obtain the following elementary observation about the character of the distortion induced by $\sigma_R$.
+
+**Observation 2.7 (Relational nature of the distortion).** Focusing on a single point $x$ alone, $\sigma_R(x) = (R/\|x\|)\,x$ merely normalizes $x$ to radius $R$ along the same positive ray (Proposition 2.6), and its action is indistinguishable from a scale transformation. That $\sigma_R$ does **not** preserve distances (spacings) **cannot be observed from the image of a single point**.
+
+By contrast, focusing on several distinct points $x_1, \ldots, x_m$, each point is normalized by a **different factor $R/\|x_i\|$** according to its own norm, so the spacings (arc length or chord length) between the images $\sigma_R(x_i)$ on the sphere do not, in general, agree with the Euclidean spacings between the original points. In particular, a sequence of points **equally spaced** on the tangent hyperplane $\Pi_R$ is mapped by $\sigma_R$ ($= \Phi_R$, Lemma 3.2) to a **non-equally-spaced** sequence on the sphere (Fig. 4). That is, the distortion of $\sigma_R$ is not an attribute of a single point; **it becomes manifest only as a relation (relative configuration, spacing) between points.**
+
+This is an elementary, visualizable manifestation of the fact that $\sigma_R$ preserves angles (Proposition 2.5) and directions (Proposition 2.6) while failing to preserve distances. The aspect of formulating this spacing distortion as an induced metric or curvature lies outside the scope of this note (§1.3, §4.3) and is treated in the separate papers [1], [2].
+
+![Fig. 4 Radial Projection (spacing distortion)](fig4_radial_projection_spacing.png)
+
+**Fig. 4**: Relational nature of the distortion in the radial projection ($n=1$, $R=3$). (Left) A single point $x$: its image $\sigma_R(x)$ lies on the same radial ray, and the action is indistinguishable from a scale transformation. (Right) A sequence of points $P_0, \ldots, P_6$ equally spaced on the tangent hyperplane $\Pi_R$ is mapped to a non-equally-spaced sequence $P_0', \ldots, P_6'$ on the sphere (the larger the angle—toward the edge—the more they crowd together). The distortion becomes manifest only as the spacing between points.
+
 ---
 
 # §3 Relation to the Central Projection
@@ -272,7 +286,7 @@ The semigroup structure, commutativity, and closed form of the composite curvatu
 ## 4.1 Main Results of This Note
 
 1. We have explicitly defined the radial projection $\sigma_R(x) = (R/\|x\|) x$ as a $C^\infty$ retraction from $\mathbb{R}^{n+1} \setminus \{0\}$ onto $S^n(R)$ (Definition 2.1, Proposition 2.1).
-2. We have organized at an elementary level its idempotency, deformation retract structure, quotient-space description, kernel and image of the differential, angle preservation, and scale invariance (Propositions 2.2–2.6).
+2. We have organized at an elementary level its idempotency, deformation retract structure, quotient-space description, kernel and image of the differential, angle preservation, and scale invariance (Propositions 2.2–2.6). Furthermore, we made explicit, as an observation, the relational property that the distortion of $\sigma_R$ does not appear for a single point but becomes manifest only as the spacing between several points (Observation 2.7, Fig. 4).
 3. The central projection $\Phi_R$ is equal to the restriction of the radial projection $\sigma_R$ to the tangent hyperplane $\Pi_R$, its image is the **open upper hemisphere $S^n_+(R)$**, and $\Phi_R$ is a diffeomorphism (Definition 3.1, Proposition 3.1, Lemma 3.2).
 4. The contrast between the non-injectivity of $\sigma_R$ and the injectivity of $\Phi_R$ has been collected in §3.4.
 
@@ -339,6 +353,7 @@ License: CC BY 4.0
   - The caption of Fig. 2 was supplemented with "for $n=1$ this is $y = R$, and in general it is $x_{n+1} = R$ as in (3.1)" (per Gemini's second-round comment).
 - **v3.1 (2026-05-30, minor revision)**: reflected the minor comments from Claude.ai's second-round review of v2:
   - Added to Proposition 2.4 the image of the differential $\mathrm{Im}(D\sigma_R|_x) = x^\perp = T_{\sigma_R(x)} S^n(R)$ (equation (2.4)). This makes the submersion structure more explicit and records that the tangent space of the sphere at $\sigma_R(x)$ equals the orthogonal complement of the radial direction.
+- **v3.3 (2026-06-06, content addition; English draft)**: added a new §2.8 "A Distortion Invisible for a Single Point, Manifest for Several Points" (Observation 2.7, Fig. 4). In a purely geometric register, it makes explicit that $\sigma_R$ preserves angles (Proposition 2.5) and directions (Proposition 2.6) while failing to preserve distances (spacings): for a single point the action is indistinguishable from a scale transformation and the distortion cannot be observed, whereas an equally-spaced sequence on the tangent hyperplane $\Pi_R$ maps to a non-equally-spaced sequence on the sphere (crowding toward the edge), so the distortion becomes manifest only as a relation between points. Added Fig. 4 (a two-panel single-point vs. several-points comparison). Physical interpretation (curvature, spacetime, motion) remains outside the scope (§1.3, §4.3) and is deferred to [1], [2]. §4.1 main results updated to include Observation 2.7. **This version is the English-side draft; LaTeX/PDF regeneration, RELEASE_NOTES, and a new Zenodo version are to be reflected separately.**
 - **v3.2 (2026-06-02, copy-editing)**: reflected copy-editing and polishing comments from peer review:
   - Resolved a duplicate equation number: the angle-preservation identity in Proposition 2.5 was renumbered from (2.4) to **(2.5)** (it had collided with the image equation (2.4) of Proposition 2.4).
   - The cross-reference in §1.2 was already correct ("Lemma 3.2"); verified consistent with §3.3 and §4.1.
