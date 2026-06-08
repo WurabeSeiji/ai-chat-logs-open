@@ -16,6 +16,11 @@ Publication details:
 - Concept DOI: https://doi.org/10.5281/zenodo.20588038
 - Version DOI: https://doi.org/10.5281/zenodo.20588039
 
+- Paper 3 (supplement to Paper 1): Closed Four-Degree-of-Freedom Structure and Its Correspondence with 4-Dimensional Lattice Counting (v0.2)
+- Zenodo: https://zenodo.org/records/20589262
+- Concept DOI: https://doi.org/10.5281/zenodo.20589261
+- Version DOI: https://doi.org/10.5281/zenodo.20589262
+
 - License: CC BY 4.0
 - Format: md / tex / pdf in Japanese and English, plus figures / CSV
 
@@ -114,7 +119,17 @@ Replacing the full-inscription indicator with a weight function Wδ having thick
 
 However, this work derives neither the value of the uncertainty width δ nor the explicit form of Wδ. It only defines the counting formalism.
 
-## 6. Positioning
+## 6. Supplement (Paper 3): correspondence between the 5-component constraint and the 4D lattice counting
+
+The 5-component sum-of-squares constraint of Paper 1, Σ xₙ² = R², defines a 4-dimensional hypersphere S⁴_R (a closed object with four degrees of freedom) inside a 5-dimensional space. The counting of Paper 2, on the other hand, is carried out inside the 4-dimensional ball B⁴_R (Σ uᵢ² ≤ R²). Paper 3 is a short supplement that organizes this "5-component constraint → four DOF → 4D lattice counting" correspondence, with no physical interpretation added.
+
+There is a single point. For a point that already satisfies the constraint (‖λ‖ = Λ), applying the spherical projection of the same radius, Π_R(y) = R·y/‖y‖, gives
+
+　λ′ = Λ·λ/‖λ‖ = λ,　ν′ = ν
+
+i.e. the identity map. So this spherical projection is not an operation that changes values, but merely a geometric rephrasing that reads a constraint-satisfying point as a point on a closed four-DOF structure of constant radius. Geodesic cell partitions on S⁴_R and area-based partitions are not treated in this supplement and are left to future work.
+
+## 7. Positioning
 
 - A consistent counting that simultaneously discretizes the frequency and wavelength spaces and satisfies the reciprocal duality is left to future work (the papers define only the single-space counting).
 - The four degrees of freedom, p = −q, and N₀(3) = 137 are observations; no identification with physical quantities or physical constants is claimed.
@@ -129,4 +144,4 @@ Zenn article (more technical, with rendered formulas): https://zenn.dev/noriaki_
 
 ---
 
-#WavelengthSpace #FrequencySpace #ReciprocalDuality #FourierAnalysis #LogarithmicRepresentation #SignReversalSymmetry #4DLattice #LatticePointProblem #GeometryOfNumbers #UnitCellCounting #SumOfFourSquares #Geometry #MathematicalPhysics #TheoreticalPhysics #ObservationalPaper #ThoughtExperiment #Preprint #Zenodo
+#WavelengthSpace #FrequencySpace #ReciprocalDuality #FourierAnalysis #LogarithmicRepresentation #SignReversalSymmetry #4DLattice #LatticePointProblem #GeometryOfNumbers #UnitCellCounting #SumOfFourSquares #SphericalProjection #Geometry #MathematicalPhysics #TheoreticalPhysics #ObservationalPaper #ThoughtExperiment #Preprint #Zenodo
