@@ -84,8 +84,8 @@ Closed Four-Degree-of-Freedom Structure and Its Correspondence with 4-Dimensiona
 ## 公開先リンク
 
 - **Zenn（技術解説・数式表示あり）**: https://zenn.dev/noriaki_kihara/articles/wavelength-frequency-dual-geometry
-- **note（日本語版、図1・2付き）**: https://note.com/kiharanoriaki/n/n08aeb3c4e8ae ＜2026-06-08 公開＞
-- **note（英語版、図1・2付き）**: https://note.com/kiharanoriaki/n/nf2b3e4392ea1 ＜2026-06-08 公開＞
+- **note（日本語版、図1・2付き）**: https://note.com/kiharanoriaki/n/n08aeb3c4e8ae ＜2026-06-08 公開、論文3 追補節を追加（web確認済・「球面投影」表記）＞
+- **note（英語版、図1・2付き）**: https://note.com/kiharanoriaki/n/nf2b3e4392ea1 ＜2026-06-08 公開、論文3 追補節を追加（web確認済・radial projection 反映、#RadialProjection）＞
 - **Facebook（日本語版、カバー図＋コメントに note URL 誘導）**: ＜2026-06-08 公開＞（投稿原稿 `facebook_article_ja.md`）
 - **Facebook（英語版、カバー図＋コメントに note URL 誘導）**: ＜2026-06-08 公開＞（投稿原稿 `facebook_article_en.md`）
 - **X / Twitter（@NoriakiKihara、日本語版・英語版、note URL＋ハッシュタグ）**: ＜2026-06-08 公開＞（投稿原稿 `x_post.md`、note OGPカバー図が自動表示）
@@ -107,3 +107,4 @@ Closed Four-Degree-of-Freedom Structure and Its Correspondence with 4-Dimensiona
 - X / Twitter 用 日英ポスト（note URL＋ハッシュタグ、280字制限内）を作成し、**@NoriakiKihara で日本語版・英語版とも公開**（note OGPカバー図が自動表示）。
 - **論文3 v0.2（論文1の追補）を初版公開**（Concept DOI 10.5281/zenodo.20589261、Version DOI 10.5281/zenodo.20589262、論文1へ `isSupplementTo`）。数式を `$`/`$$` に統一、日英 md/tex/pdf をアップロード。Zenn 記事に追補節を追加。
 - **論文3 を v0.3 に改訂**：英語の投影語を `spherical projection` → **`radial projection`** に訂正（既存 σ_R 論文の用語に統一。日本語は「球面投影」のまま）。`newversion` で Concept DOI 10.5281/zenodo.20589261 を維持したまま新 Version DOI **10.5281/zenodo.20589515** を発番。ファイル名を `v0_3` に更新し、Zenn・note 日英・RELEASE_NOTES の DOI/版を更新。旧 v0.2（20589262）はバージョンとして残置。note は日英へ追補節を追加済（FB・X は据え置き）。
+- **note 日英の論文3 追補節を公開（web 実読で確認）**：日本語＝「球面投影」、英語＝`radial projection`／`#RadialProjection` を反映済。**要対応**：公開された両 note 本文の論文3 Version DOI が旧 v0.2（`10.5281/zenodo.20589262`）のままのため、最新 v0.3（`10.5281/zenodo.20589515`）または Concept DOI（`10.5281/zenodo.20589261`）への差し替えが望ましい。特に英語版はリンク先 v0.2 PDF が `spherical projection` のままで本文（radial projection）と食い違う。
