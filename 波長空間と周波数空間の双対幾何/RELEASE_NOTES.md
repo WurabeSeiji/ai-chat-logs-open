@@ -57,27 +57,27 @@ Radius Sweep of Fully-Inscribed Unit-Cell Counts on a 4-Dimensional Lattice: An 
 
 ---
 
-## 論文3：閉じた4自由度構造と4次元格子数え上げの対応（v0.2、論文1の追補）
+## 論文3：閉じた4自由度構造と4次元格子数え上げの対応（v0.3、論文1の追補）
 
 Closed Four-Degree-of-Freedom Structure and Its Correspondence with 4-Dimensional Lattice Counting: A Geometric Organization from the 5-Component Sum-of-Squares Constraint to the Unit-Cell Counting Region
 
 - **Concept DOI**: 10.5281/zenodo.20589261
-- **Version DOI (v0.2)**: 10.5281/zenodo.20589262
-- **Zenodo deposit**: 20589262
+- **Version DOI (v0.3)**: 10.5281/zenodo.20589515
+- **Zenodo deposit**: 20589515
 - **公開日**: 2026-06-08
 - **ライセンス**: CC BY 4.0
 - **関連**: 論文1（10.5281/zenodo.20588037）を `isSupplementTo` で関連付け
 
 ### 収録ファイル（6点）
-- `paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2.md`（日本語）
-- `paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2_en.md`（英語）
-- `paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2.tex` / `.pdf`（日本語）
-- `paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2_en.tex` / `.pdf`（英語）
+- `paper3_closed_4d_structure_and_lattice_counting_supplement_v0_3.md`（日本語）
+- `paper3_closed_4d_structure_and_lattice_counting_supplement_v0_3_en.md`（英語）
+- `paper3_closed_4d_structure_and_lattice_counting_supplement_v0_3.tex` / `.pdf`（日本語）
+- `paper3_closed_4d_structure_and_lattice_counting_supplement_v0_3_en.tex` / `.pdf`（英語）
 
 ### 内容
 - 論文1の5成分二乗和制約 $\sum_{n=1}^{5}x_n^2=R^2$ は5次元中の4次元超球面 $S^4_R$（4自由度）を定義し、論文2の数え上げは4次元球体 $B^4_R$ の内部で行う、という対応を物理解釈なしに整理。
 - 球面投影 $\Pi_R(y)=R\,y/\|y\|$ は、制約を満たす点（$\|\lambda\|=\Lambda$）に対して恒等写像 $\lambda'=\lambda$, $\nu'=\nu$。投影は値の変換ではなく、制約点を半径一定の閉じた4自由度構造上の点として読む幾何学的記述。
-- 用語は「球面投影」に統一（v0.2）。$S^4_R$ 上の測地的分割・物理対応は対象外（今後の課題）。
+- 用語は日本語「球面投影」／英語 radial projection（既存 σ_R 用語）に統一（v0.3 で英語を訂正）。$S^4_R$ 上の測地的分割・物理対応は対象外（今後の課題）。
 
 ---
 
@@ -105,4 +105,5 @@ Closed Four-Degree-of-Freedom Structure and Its Correspondence with 4-Dimensiona
 - note 用 日英記事（図1・2付き・ハッシュタグ）を作成。**note 日本語版**（https://note.com/kiharanoriaki/n/n08aeb3c4e8ae ）・**note 英語版**（https://note.com/kiharanoriaki/n/nf2b3e4392ea1 ）を公開。
 - Facebook 用 日英記事（タイトル→コメント誘導→概要→ハッシュタグ構成、コメントに note URL）を作成し、**日本語版・英語版とも公開**（カバー図付き）。
 - X / Twitter 用 日英ポスト（note URL＋ハッシュタグ、280字制限内）を作成し、**@NoriakiKihara で日本語版・英語版とも公開**（note OGPカバー図が自動表示）。
-- **論文3 v0.2（論文1の追補）を初版公開**（Concept DOI 10.5281/zenodo.20589261、Version DOI 10.5281/zenodo.20589262、論文1へ `isSupplementTo`）。数式を `$`/`$$` に統一、用語を「球面投影」に統一、日英 md/tex/pdf をアップロード。Zenn 記事に追補節を追加（FB・X・note は当面据え置き、note は後日追補予定）。
+- **論文3 v0.2（論文1の追補）を初版公開**（Concept DOI 10.5281/zenodo.20589261、Version DOI 10.5281/zenodo.20589262、論文1へ `isSupplementTo`）。数式を `$`/`$$` に統一、日英 md/tex/pdf をアップロード。Zenn 記事に追補節を追加。
+- **論文3 を v0.3 に改訂**：英語の投影語を `spherical projection` → **`radial projection`** に訂正（既存 σ_R 論文の用語に統一。日本語は「球面投影」のまま）。`newversion` で Concept DOI 10.5281/zenodo.20589261 を維持したまま新 Version DOI **10.5281/zenodo.20589515** を発番。ファイル名を `v0_3` に更新し、Zenn・note 日英・RELEASE_NOTES の DOI/版を更新。旧 v0.2（20589262）はバージョンとして残置。note は日英へ追補節を追加済（FB・X は据え置き）。

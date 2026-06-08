@@ -4,9 +4,9 @@
 **Author**: Noriaki Kihara  
 **Affiliation**: WF System Co., Ltd.  
 **ORCID**: 0009-0004-6753-4020  
-**Version**: v0.2  
+**Version**: v0.3  
 **Date**: June 2026  
-**DOI (this version)**: 10.5281/zenodo.20589262  
+**DOI (this version)**: 10.5281/zenodo.20589515  
 **Concept DOI**: 10.5281/zenodo.20589261  
 **Paper 1 (supplemented)**: 10.5281/zenodo.20588037  
 **License**: CC BY 4.0
@@ -39,7 +39,7 @@ At first sight, the 5-component sum-of-squares constraint of Paper 1 defines a 4
 
 The point of this paper is simple. The 5-component sum-of-squares constraint defines a closed object with four degrees of freedom. To actually carry out lattice-cell counting, those four degrees of freedom are treated as a 4-dimensional coordinate region. Hence the counting of Paper 2 does not count the values of $\lambda_n$ or $\nu_n$ themselves as physical quantities; it counts the number of 4-dimensional lattice cells corresponding to the closed four-degree-of-freedom structure of radius $\Lambda$ or $\mathcal{N}$.
 
-Moreover, for a point that already satisfies the sum-of-squares constraint, a spherical projection onto the sphere of the same radius leaves the value unchanged. That is, in the wavelength space
+Moreover, for a point that already satisfies the sum-of-squares constraint, a radial projection onto the sphere of the same radius leaves the value unchanged. That is, in the wavelength space
 
 $$
 \lambda'=\Lambda\frac{\lambda}{\|\lambda\|}=\lambda
@@ -57,7 +57,7 @@ Using this fact, we confirm that the projection is not a transformation of value
 
 ## Keywords
 
-5-component sum-of-squares constraint, four degrees of freedom, 4-dimensional lattice, unit-cell counting, spherical projection, wavelength space, frequency space, observational model
+5-component sum-of-squares constraint, four degrees of freedom, 4-dimensional lattice, unit-cell counting, radial projection, wavelength space, frequency space, observational model
 
 ---
 
@@ -259,9 +259,9 @@ Here too we do not interpret $\Lambda$ or $\mathcal{N}$ as physical quantities. 
 
 ---
 
-## 6. Viewed as a Spherical Projection
+## 6. Viewed as a Radial Projection
 
-As a general form of spherical projection, the map that sends an arbitrary nonzero vector
+As a general form of radial projection, the map that sends an arbitrary nonzero vector
 
 $$
 y\in\mathbb{R}^5,\qquad y\ne0
@@ -273,7 +273,7 @@ $$
 \Pi_R(y)=R\frac{y}{\|y\|} .
 $$
 
-This map is a spherical projection that moves a point onto the sphere of radius $R$ while preserving the direction seen from the origin.
+This map is a radial projection that moves a point onto the sphere of radius $R$ while preserving the direction seen from the origin.
 
 In this paper we consider the same form of projection for the wavelength space and the frequency space.
 
@@ -357,7 +357,7 @@ $$
 
 and the values themselves are invariant.
 
-Therefore the spherical projection in this paper is a geometric description for reading a 5-component vector that satisfies the sum-of-squares constraint as a point on a closed four-degree-of-freedom structure of constant radius. It is not a transformation of values, but a description that makes explicit the arrangement of constraint-satisfying points.
+Therefore the radial projection in this paper is a geometric description for reading a 5-component vector that satisfies the sum-of-squares constraint as a point on a closed four-degree-of-freedom structure of constant radius. It is not a transformation of values, but a description that makes explicit the arrangement of constraint-satisfying points.
 
 ## 7. Connection with Paper 2
 
@@ -474,7 +474,7 @@ $$
 N_0(\mathcal{N}) .
 $$
 
-Moreover, the spherical projection of the same radius applied to a point already satisfying the sum-of-squares constraint is the identity map,
+Moreover, the radial projection of the same radius applied to a point already satisfying the sum-of-squares constraint is the identity map,
 
 $$
 \lambda'=\lambda,\qquad
@@ -499,4 +499,4 @@ Therefore the projection in this paper is not an operation that transforms value
 
 ## Note
 
-The references are listed not as physical grounds for this paper but as general background on spherical projection, spherical geometry, and coordinatization. The claim of this paper is limited to making explicit the geometric correspondence between the 5-component sum-of-squares constraint and the 4-dimensional lattice counting; it is not a physical theory.
+The references are listed not as physical grounds for this paper but as general background on radial projection, spherical geometry, and coordinatization. The claim of this paper is limited to making explicit the geometric correspondence between the 5-component sum-of-squares constraint and the 4-dimensional lattice counting; it is not a physical theory.

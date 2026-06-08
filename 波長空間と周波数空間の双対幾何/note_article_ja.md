@@ -16,10 +16,10 @@
 - Concept DOI：https://doi.org/10.5281/zenodo.20588038
 - Version DOI：https://doi.org/10.5281/zenodo.20588039
 
-- 論文3（論文1の追補）：閉じた4自由度構造と4次元格子数え上げの対応（v0.2）
-- Zenodoページ：https://zenodo.org/records/20589262
+- 論文3（論文1の追補）：閉じた4自由度構造と4次元格子数え上げの対応（v0.3）
+- Zenodoページ：https://zenodo.org/records/20589515
 - Concept DOI：https://doi.org/10.5281/zenodo.20589261
-- Version DOI：https://doi.org/10.5281/zenodo.20589262
+- Version DOI：https://doi.org/10.5281/zenodo.20589515
 
 - ライセンス：CC BY 4.0
 - 形式：md / tex / pdf × 日英 ＋ 図（日英）／CSV

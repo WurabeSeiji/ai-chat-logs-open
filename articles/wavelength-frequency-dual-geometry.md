@@ -24,9 +24,9 @@ published: true
 
 **論文3（論文1の追補）：閉じた4自由度構造と4次元格子数え上げの対応**
 
-- **Zenodo（日英 md/tex/pdf、計6ファイル）**: https://zenodo.org/records/20589262
+- **Zenodo（日英 md/tex/pdf、計6ファイル）**: https://zenodo.org/records/20589515
 - **Concept DOI**: [10.5281/zenodo.20589261](https://doi.org/10.5281/zenodo.20589261)
-- **Version DOI (v0.2)**: [10.5281/zenodo.20589262](https://doi.org/10.5281/zenodo.20589262)
+- **Version DOI (v0.3)**: [10.5281/zenodo.20589515](https://doi.org/10.5281/zenodo.20589515)
 
 **本稿は時空・質量・エネルギー・運動量などの物理的実体を導出しません。** ここでの $\lambda_n$, $\nu_n$ は双対幾何を記述するためのモデル変数で、$\nu_n$ を標準物理の時間周波数・エネルギー・運動量と同一視しません。新しい予言も定理も提出せず、すべて幾何学的・位相的構造の観察に留めます。評価・解釈は読者に委ねます。
 
