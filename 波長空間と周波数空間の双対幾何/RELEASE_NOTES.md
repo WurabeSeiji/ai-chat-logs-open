@@ -64,6 +64,7 @@ Radius Sweep of Fully-Inscribed Unit-Cell Counts on a 4-Dimensional Lattice: An 
 - **note（英語版、図1・2付き）**: https://note.com/kiharanoriaki/n/nf2b3e4392ea1 ＜2026-06-08 公開＞
 - **Facebook（日本語版、カバー図＋コメントに note URL 誘導）**: ＜2026-06-08 公開＞（投稿原稿 `facebook_article_ja.md`）
 - **Facebook（英語版、カバー図＋コメントに note URL 誘導）**: ＜2026-06-08 公開＞（投稿原稿 `facebook_article_en.md`）
+- **X / Twitter（@NoriakiKihara、日本語版・英語版、note URL＋ハッシュタグ）**: ＜2026-06-08 公開＞（投稿原稿 `x_post.md`、note OGPカバー図が自動表示）
 
 ---
 
@@ -79,3 +80,4 @@ Radius Sweep of Fully-Inscribed Unit-Cell Counts on a 4-Dimensional Lattice: An 
 - Zenn 紹介記事を公開（`articles/wavelength-frequency-dual-geometry.md`）。
 - note 用 日英記事（図1・2付き・ハッシュタグ）を作成。**note 日本語版**（https://note.com/kiharanoriaki/n/n08aeb3c4e8ae ）・**note 英語版**（https://note.com/kiharanoriaki/n/nf2b3e4392ea1 ）を公開。
 - Facebook 用 日英記事（タイトル→コメント誘導→概要→ハッシュタグ構成、コメントに note URL）を作成し、**日本語版・英語版とも公開**（カバー図付き）。
+- X / Twitter 用 日英ポスト（note URL＋ハッシュタグ、280字制限内）を作成し、**@NoriakiKihara で日本語版・英語版とも公開**（note OGPカバー図が自動表示）。
