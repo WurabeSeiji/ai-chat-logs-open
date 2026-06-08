@@ -1,0 +1,648 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{論文3：閉じた4自由度構造と4次元格子数え上げの対応}\label{ux8ad6ux65873ux9589ux3058ux305f4ux81eaux7531ux5ea6ux69cbux9020ux30684ux6b21ux5143ux683cux5b50ux6570ux3048ux4e0aux3052ux306eux5bfeux5fdc}
+
+\subsection{5成分二乗和制約から単位セル数え上げ領域への幾何学的整理}\label{ux6210ux5206ux4e8cux4e57ux548cux5236ux7d04ux304bux3089ux5358ux4f4dux30bbux30ebux6570ux3048ux4e0aux3052ux9818ux57dfux3078ux306eux5e7eux4f55ux5b66ux7684ux6574ux7406}
+
+\textbf{著者}: 木原 範昭 (Noriaki Kihara)\\
+\textbf{所属}: WF System Co., Ltd.\\
+\textbf{ORCID}: 0009-0004-6753-4020\\
+\textbf{版}: v0.2\\
+\textbf{日付}: 2026 年 6 月\\
+\textbf{DOI（本版）}: 10.5281/zenodo.20589262\\
+\textbf{Concept DOI}: 10.5281/zenodo.20589261\\
+\textbf{論文1（被追補）}: 10.5281/zenodo.20588037\\
+\textbf{ライセンス}: CC BY 4.0
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+論文1では、波長空間または周波数空間において、5成分の二乗和一定条件
+
+\[
+\sum_{n=1}^{5}x_n^2=R^2
+\]
+
+を置くことで、4自由度を持つ閉じた幾何構造が現れることを観察した。論文2では、一辺1の4次元単位セルが、半径
+\(R\) の4次元球体領域に完全に内接する個数
+
+\[
+N_0(R)
+=
+\#\left\{
+k\in\mathbb{Z}^4
+\mid
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2
+\le R^2
+\right\}
+\]
+
+を数えた。
+
+一見すると、論文1の5成分二乗和制約は5次元空間内の4次元超球面を定義しているのに対し、論文2の数え上げは4次元球体領域の内部セル数え上げである。本稿は、この対応を物理的解釈なしに整理する短い追補である。
+
+本稿の要点は単純である。5成分二乗和制約は、4自由度を持つ閉じた対象を定義する。一方、実際に格子セル数え上げを行うためには、その4自由度を4次元座標領域として扱う。したがって、論文2の数え上げは、\(\lambda_n\)
+や \(\nu_n\) の値そのものを物理量として数えているのではなく、半径
+\(\Lambda\) または \(\mathcal{N}\)
+の閉じた4自由度構造に対応する4次元格子セル数を数えている。
+
+また、すでに二乗和制約を満たす点に対して、同じ半径の球面への球面投影を考えると、投影後の値は変わらない。すなわち、波長空間では
+
+\[
+\lambda'=\Lambda\frac{\lambda}{\|\lambda\|}=\lambda
+\]
+
+であり、周波数空間では
+
+\[
+\nu'=\mathcal{N}\frac{\nu}{\|\nu\|}=\nu
+\]
+
+である。本稿では、この事実を用いて、投影は値の変換ではなく、二乗和制約を満たす点を半径一定の閉じた4自由度構造上の点として読むための幾何学的記述であることを確認する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{キーワード}\label{ux30adux30fcux30efux30fcux30c9}
+
+5成分二乗和制約、4自由度、4次元格子、単位セル数え上げ、球面投影、波長空間、周波数空間、観察モデル
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 目的}\label{ux76eeux7684}
+
+論文1では、波長空間または周波数空間において、5成分の二乗和一定条件を置いた。
+
+波長空間では、
+
+\[
+\sum_{n=1}^{5}\lambda_n^2=\Lambda^2
+\]
+
+であり、周波数空間では、
+
+\[
+\sum_{n=1}^{5}\nu_n^2=\mathcal{N}^2
+\]
+
+である。
+
+これらは、それぞれ5成分空間における4自由度の閉じた制約を与える。
+
+一方、論文2では、一辺1の4次元単位セルが半径 \(R\)
+の4次元球体領域に完全に内接する個数を数えた。
+
+本稿の目的は、この二つを接続する際に必要となる幾何学的整理を、できるだけ簡潔に明示することである。
+
+本稿では、物理的な時空、質量、エネルギー、運動量、重力、物理定数との接続を扱わない。扱うのは、あくまで以下の対応である。
+
+\[
+\text{5成分二乗和制約}
+\quad\longrightarrow\quad
+\text{4自由度構造}
+\quad\longrightarrow\quad
+\text{4次元格子セル数え上げ}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2.
+5成分二乗和制約}\label{ux6210ux5206ux4e8cux4e57ux548cux5236ux7d04}
+
+一般に、5成分ベクトル
+
+\[
+x=(x_1,x_2,x_3,x_4,x_5)\in\mathbb{R}^5
+\]
+
+に対して、
+
+\[
+\sum_{n=1}^{5}x_n^2=R^2
+\]
+
+を課すと、半径 \(R\) の4次元超球面
+
+\[
+S^4_R
+=
+\left\{
+x\in\mathbb{R}^5
+\mid
+\sum_{n=1}^{5}x_n^2=R^2
+\right\}
+\]
+
+が定義される。
+
+これは5成分空間の中にあるが、制約が1本あるため、自由度は4である。
+
+本稿では、この対象を物理的な空間とは解釈しない。単に、5成分二乗和制約が定める4自由度の閉じた幾何構造として扱う。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3.
+数え上げ用の4次元領域}\label{ux6570ux3048ux4e0aux3052ux7528ux306e4ux6b21ux5143ux9818ux57df}
+
+論文2で数えたのは、4次元格子
+
+\[
+\mathbb{Z}^4
+\]
+
+上の単位セルである。
+
+ここで用いた領域は、
+
+\[
+B^4_R
+=
+\left\{
+u\in\mathbb{R}^4
+\mid
+\sum_{i=1}^{4}u_i^2\le R^2
+\right\}
+\]
+
+である。
+
+これは4次元球体領域であり、単位セルが完全に内接するかどうかを判定するための数え上げ領域である。
+
+一辺1の単位4セルの中心を
+
+\[
+k=(k_1,k_2,k_3,k_4)\in\mathbb{Z}^4
+\]
+
+とすると、そのセルが \(B^4_R\) に完全に内接する条件は、
+
+\[
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2
+\le R^2
+\]
+
+である。
+
+したがって、完全内接セル数は
+
+\[
+N_0(R)
+=
+\#\left\{
+k\in\mathbb{Z}^4
+\mid
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2
+\le R^2
+\right\}
+\]
+
+である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4.
+なぜ4次元球体領域を使うのか}\label{ux306aux305c4ux6b21ux5143ux7403ux4f53ux9818ux57dfux3092ux4f7fux3046ux306eux304b}
+
+5成分二乗和制約は \(S^4_R\) を定義する。一方、格子数え上げは \(B^4_R\)
+の内部で行われる。
+
+これは矛盾ではない。
+
+\(S^4_R\)
+は4自由度を持つ閉じた対象であり、実際に格子セル数え上げを行うためには、その4自由度を4次元の数え上げ領域として扱う必要がある。
+
+そこで、数え上げ用の領域として
+
+\[
+B^4_R
+=
+\left\{
+u\in\mathbb{R}^4
+\mid
+\sum_{i=1}^{4}u_i^2\le R^2
+\right\}
+\]
+
+を用いる。
+
+この操作は、\(\lambda_n\) や \(\nu_n\)
+の値がそのまま4次元球体内部の物理座標になることを意味しない。論文2で数えているのは、4自由度を持つ制約構造に対して導入された4次元格子インデックス、または単位セルの個数である。
+
+すなわち、論文2の数え上げは
+
+\[
+\text{半径 }R\text{ の閉じた4自由度構造}
+\]
+
+に対する
+
+\[
+\text{4次元単位セル数え上げ}
+\]
+
+として読む。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+波長空間と周波数空間での読み替え}\label{ux6ce2ux9577ux7a7aux9593ux3068ux5468ux6ce2ux6570ux7a7aux9593ux3067ux306eux8aadux307fux66ffux3048}
+
+波長空間では、半径は
+
+\[
+R=\Lambda
+\]
+
+である。したがって、波長空間側の完全内接セル数は
+
+\[
+N_0(\Lambda)
+\]
+
+として書ける。
+
+周波数空間では、半径は
+
+\[
+R=\mathcal{N}
+\]
+
+である。したがって、周波数空間側の完全内接セル数は
+
+\[
+N_0(\mathcal{N})
+\]
+
+として書ける。
+
+すなわち、
+
+\[
+R=\Lambda
+\quad\Rightarrow\quad
+N_0(R)=N_0(\Lambda)
+\]
+
+\[
+R=\mathcal{N}
+\quad\Rightarrow\quad
+N_0(R)=N_0(\mathcal{N})
+\]
+
+である。
+
+ここでも、\(\Lambda\) や \(\mathcal{N}\)
+を物理量として解釈しない。それらは、波長空間または周波数空間における二乗和制約の半径である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6.
+球面投影として見た場合}\label{ux7403ux9762ux6295ux5f71ux3068ux3057ux3066ux898bux305fux5834ux5408}
+
+球面投影の一般形として、任意の非零ベクトル
+
+\[
+y\in\mathbb{R}^5,\qquad y\ne0
+\]
+
+を半径 \(R\) の球面へ写す写像を
+
+\[
+\Pi_R(y)=R\frac{y}{\|y\|}
+\]
+
+と書ける。
+
+この写像は、原点から見た方向を保ったまま、半径 \(R\)
+の球面上へ点を移す球面投影である。
+
+本稿では、波長空間と周波数空間について、それぞれ同じ形式の投影を考える。
+
+波長空間では、
+
+\[
+\lambda'=\Pi_\Lambda(\lambda)
+=
+\Lambda\frac{\lambda}{\|\lambda\|}
+\]
+
+である。
+
+周波数空間では、
+
+\[
+\nu'=\Pi_{\mathcal{N}}(\nu)
+=
+\mathcal{N}\frac{\nu}{\|\nu\|}
+\]
+
+である。
+
+ここで重要なのは、論文1の設定では、\(\lambda\) および \(\nu\)
+はすでに二乗和制約
+
+\[
+\sum_{n=1}^{5}\lambda_n^2=\Lambda^2,
+\qquad
+\sum_{n=1}^{5}\nu_n^2=\mathcal{N}^2
+\]
+
+を満たしていることである。
+
+したがって、
+
+\[
+\|\lambda\|=\Lambda,
+\qquad
+\|\nu\|=\mathcal{N}
+\]
+
+である。
+
+このため、波長空間では
+
+\[
+\lambda'
+=
+\Lambda\frac{\lambda}{\|\lambda\|}
+=
+\Lambda\frac{\lambda}{\Lambda}
+=
+\lambda
+\]
+
+となる。
+
+すなわち、
+
+\[
+\boxed{\lambda'=\lambda}
+\]
+
+である。
+
+同様に、周波数空間では
+
+\[
+\nu'
+=
+\mathcal{N}\frac{\nu}{\|\nu\|}
+=
+\mathcal{N}\frac{\nu}{\mathcal{N}}
+=
+\nu
+\]
+
+となる。
+
+すなわち、
+
+\[
+\boxed{\nu'=\nu}
+\]
+
+である。
+
+従って、すでに二乗和制約を満たす点に対して、同じ半径の球面への投影を行っても、成分値は変わらない。
+
+この点は、本稿の整理において重要である。すなわち、本稿における投影は、\(\lambda\)
+や \(\nu\) の値を別の値へ変換する操作ではない。投影後の値は、
+
+\[
+\lambda\to\lambda'=\lambda,
+\qquad
+\nu\to\nu'=\nu
+\]
+
+であり、値そのものは不変である。
+
+したがって、本稿でいう球面投影は、二乗和制約を満たす5成分ベクトルを、半径一定の閉じた4自由度構造上の点として読むための幾何学的記述である。これは値の変換ではなく、制約を満たす点の配置を明示するための記述である。
+
+\subsection{7.
+論文2との接続}\label{ux8ad6ux65872ux3068ux306eux63a5ux7d9a}
+
+論文2の数え上げは、
+
+\[
+N_0(R)
+=
+\#\left\{
+k\in\mathbb{Z}^4
+\mid
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2
+\le R^2
+\right\}
+\]
+
+である。
+
+本稿の整理により、この \(R\) は、波長空間側では
+\(\Lambda\)、周波数空間側では \(\mathcal{N}\) と読むことができる。
+
+したがって、論文2の数え上げは、
+
+\[
+N_0(\Lambda)
+\]
+
+または
+
+\[
+N_0(\mathcal{N})
+\]
+
+として、波長空間または周波数空間における4自由度構造の単位セル数え上げに対応する。
+
+ただし、これは物理的な空間や物理量の数え上げではない。あくまで、二乗和制約を持つ双対幾何に対する格子セル数え上げである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8.
+本稿の位置づけ}\label{ux672cux7a3fux306eux4f4dux7f6eux3065ux3051}
+
+本稿は、論文1と論文2の間の接続を明示するための追補である。
+
+論文1は、波長空間と周波数空間の逆数双対および二乗和制約を扱った。
+
+論文2は、4次元格子上の単位セル完全内接数を半径スイープで数えた。
+
+本稿は、その間にある
+
+\[
+5成分二乗和制約
+\quad\longrightarrow\quad
+4自由度構造
+\quad\longrightarrow\quad
+4次元格子数え上げ
+\]
+
+という対応を、物理的解釈なしに整理した。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. 限界}\label{ux9650ux754c}
+
+本稿では、以下を扱わない。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(S^4_R\) 上の測地的なセル分割\\
+\item
+  表面積または測地距離に基づく格子分割\\
+\item
+  物理的時空との対応\\
+\item
+  エネルギー、運動量、質量、重力などとの対応\\
+\item
+  物理定数との対応\\
+\item
+  不確定性幅 \(\delta\) の導出
+\end{enumerate}
+
+本稿は、単に、5成分二乗和制約で現れる4自由度構造を、4次元格子数え上げ領域として扱うための幾何学的整理である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. 結論}\label{ux7d50ux8ad6}
+
+本稿では、論文1の5成分二乗和制約と、論文2の4次元格子数え上げとの対応を整理した。
+
+5成分二乗和制約
+
+\[
+\sum_{n=1}^{5}x_n^2=R^2
+\]
+
+は、4自由度を持つ閉じた幾何構造を定義する。
+
+一方、実際の格子数え上げでは、その4自由度を4次元球体領域
+
+\[
+B^4_R
+=
+\left\{
+u\in\mathbb{R}^4
+\mid
+\sum_{i=1}^{4}u_i^2\le R^2
+\right\}
+\]
+
+として扱い、単位4セルの完全内接数
+
+\[
+N_0(R)
+\]
+
+を数える。
+
+波長空間では \(R=\Lambda\)、周波数空間では \(R=\mathcal{N}\)
+と読めるため、論文2の数え上げは
+
+\[
+N_0(\Lambda)
+\]
+
+または
+
+\[
+N_0(\mathcal{N})
+\]
+
+として利用できる。
+
+また、すでに二乗和制約を満たす点に対する同半径の球面投影は恒等写像であり、
+
+\[
+\lambda'=\lambda,\qquad
+\nu'=\nu
+\]
+
+である。
+
+したがって、本稿でいう投影は、値を変換する操作ではなく、二乗和制約を満たす点を、閉じた4自由度構造上の点として読むための幾何学的記述である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Snyder, J. P. (1987). \emph{Map Projections---A Working Manual}. U.S.
+  Geological Survey Professional Paper 1395. U.S. Government Printing
+  Office.
+\item
+  Haines, L. M. (2024). Stereographic Projections for Designs on the
+  Sphere. \emph{arXiv:2401.05931}.
+\item
+  Coxeter, H. S. M. (1969). \emph{Introduction to Geometry} (2nd ed.).
+  Wiley.
+\item
+  do Carmo, M. P. (1976). \emph{Differential Geometry of Curves and
+  Surfaces}. Prentice-Hall.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{付記}\label{ux4ed8ux8a18}
+
+参考文献は、本稿の物理的根拠ではなく、球面投影、球面幾何、座標化の一般的背景として挙げたものである。本稿の主張は、物理理論ではなく、5成分二乗和制約と4次元格子数え上げの間の幾何学的対応を明示することに限られる。
+
+\end{document}
