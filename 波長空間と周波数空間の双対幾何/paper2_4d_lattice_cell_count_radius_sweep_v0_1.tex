@@ -1,0 +1,601 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{論文2：4次元格子における単位セル完全内接数の半径スイープ}\label{ux8ad6ux658724ux6b21ux5143ux683cux5b50ux306bux304aux3051ux308bux5358ux4f4dux30bbux30ebux5b8cux5168ux5185ux63a5ux6570ux306eux534aux5f84ux30b9ux30a4ux30fcux30d7}
+
+\subsection{半径0.5から10.0までの数え上げ表と再現可能な定式化}\label{ux534aux5f840.5ux304bux308910.0ux307eux3067ux306eux6570ux3048ux4e0aux3052ux8868ux3068ux518dux73feux53efux80fdux306aux5b9aux5f0fux5316}
+
+\textbf{著者}: 木原 範昭 (Noriaki Kihara)\\
+\textbf{所属}: WF System Co., Ltd.\\
+\textbf{ORCID}: 0009-0004-6753-4020\\
+\textbf{版}: v0.1\\
+\textbf{日付}: 2026 年 6 月\\
+\textbf{DOI（本版）}: 10.5281/zenodo.20588039\\
+\textbf{Concept DOI}: 10.5281/zenodo.20588038\\
+\textbf{ライセンス}: CC BY 4.0
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+本稿では、4次元整数格子上に配置された一辺1の4次元単位セルが、半径 \(R\)
+の4次元超球体に完全に内接する個数を数える。対象は純粋な幾何学的・整数格子的な数え上げ問題であり、物理定数との対応は扱わない。
+
+単位セルの中心を
+
+\[
+k=(k_1,k_2,k_3,k_4)\in\mathbb{Z}^4
+\]
+
+とし、各方向の半幅を \(1/2\) とする。この単位セルが半径 \(R\)
+の4次元超球体に完全に内接する条件は、
+
+\[
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2
+\le R^2
+\]
+
+である。
+
+この条件を満たす格子点数を
+
+\[
+N_0(R)
+=
+\#\left\{
+k\in\mathbb{Z}^4
+\mid
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2
+\le R^2
+\right\}
+\]
+
+と定義する。
+
+本稿では、半径 \(R=0.5,1.0,1.5,\ldots,10.0\) について \(N_0(R)\)
+を計算し、外接球体の直径
+\(2R\)、および実際に積み上げられたセル集合の対角線長 \(2\rho(R)\)
+を表に示す。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 目的}\label{ux76eeux7684}
+
+論文1では、波長空間または周波数空間に4次元格子を選ぶと、二乗和条件が単位セルの数え上げ問題として定式化できることを示した。
+
+本稿では、その数え上げを実際に行う。
+
+ここで扱うのは、物理理論ではなく、以下の純粋な幾何学的問題である。
+
+\begin{quote}
+4次元整数格子上の一辺1の単位4セルのうち、半径 \(R\)
+の4次元超球体に完全に内接するものは何個あるか。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. 基本定義}\label{ux57faux672cux5b9aux7fa9}
+
+4次元整数格子を
+
+\[
+\mathbb{Z}^4
+\]
+
+とする。
+
+各格子点
+
+\[
+k=(k_1,k_2,k_3,k_4)
+\]
+
+に、一辺1の4次元単位セルを対応させる。
+
+セル中心が \(k\) にあるとき、そのセル内の各点 \(x_i\) は
+
+\[
+k_i-\frac12\le x_i\le k_i+\frac12
+\]
+
+を満たす。
+
+このセルの原点から最も遠い頂点までの二乗距離は
+
+\[
+r_{\max}(k)^2
+=
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2
+\]
+
+である。
+
+したがって、このセルが半径 \(R\) の4次元超球体に完全に内接する条件は、
+
+\[
+r_{\max}(k)^2\le R^2
+\]
+
+すなわち
+
+\[
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2
+\le R^2
+\]
+
+である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3.
+完全内接セル数}\label{ux5b8cux5168ux5185ux63a5ux30bbux30ebux6570}
+
+完全内接セル数を
+
+\[
+N_0(R)
+=
+\#\left\{
+k\in\mathbb{Z}^4
+\mid
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2
+\le R^2
+\right\}
+\]
+
+と定義する。
+
+両辺を4倍すると、
+
+\[
+\sum_{i=1}^{4}
+(2|k_i|+1)^2
+\le
+(2R)^2
+\]
+
+である。
+
+したがって、この問題は4つの正の奇数平方和に関する整数不等式としても表せる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4.
+積み上げ対角線長}\label{ux7a4dux307fux4e0aux3052ux5bfeux89d2ux7ddaux9577}
+
+半径 \(R\) において内接するセル集合を
+
+\[
+K_R=
+\left\{
+k\in\mathbb{Z}^4
+\mid
+r_{\max}(k)\le R
+\right\}
+\]
+
+とする。
+
+この集合に含まれるセルの中で、原点から最も遠い頂点までの距離を
+
+\[
+\rho(R)
+=
+\max_{k\in K_R} r_{\max}(k)
+\]
+
+と定義する。
+
+ただし、\(K_R\) が空集合の場合は
+
+\[
+\rho(R)=0
+\]
+
+とする。
+
+このとき、積み上げられたセル集合の中心対称な最大対角線長を
+
+\[
+L(R)=2\rho(R)
+\]
+
+と定義する。
+
+外接球体の直径は
+
+\[
+D(R)=2R
+\]
+
+である。
+
+したがって、常に
+
+\[
+L(R)\le D(R)
+\]
+
+である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+半径スイープ結果}\label{ux534aux5f84ux30b9ux30a4ux30fcux30d7ux7d50ux679c}
+
+半径 \(R=0.5\) から \(10.0\) まで、0.5刻みで計算した結果を表1に示す。
+
+\textbf{表1. 4次元単位セル完全内接数の半径スイープ}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1146}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2500}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2708}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1979}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+外接球半径 R
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+直径 2R
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+完全内接セル数 N0(R)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+積み上げ対角線長 2ρ(R)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+半径余白 R−ρ(R)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0.5 & 1 & 0 & 0 & 0.5 \\
+1 & 2 & 1 & 2 & 0 \\
+1.5 & 3 & 1 & 2 & 0.5 \\
+2 & 4 & 9 & 3.4641 & 0.267949 \\
+2.5 & 5 & 33 & 4.47214 & 0.263932 \\
+3 & 6 & 137 & 6 & 0 \\
+3.5 & 7 & 233 & 6.63325 & 0.183375 \\
+4 & 8 & 473 & 7.74597 & 0.127017 \\
+4.5 & 9 & 809 & 8.7178 & 0.141101 \\
+5 & 10 & 1545 & 10 & 0 \\
+5.5 & 11 & 2233 & 10.7703 & 0.114835 \\
+6 & 12 & 3457 & 11.8322 & 0.0839202 \\
+6.5 & 13 & 5001 & 12.8062 & 0.0968758 \\
+7 & 14 & 7281 & 14 & 0 \\
+7.5 & 15 & 9489 & 14.8324 & 0.0838015 \\
+8 & 16 & 12833 & 15.8745 & 0.0627461 \\
+8.5 & 17 & 16657 & 16.8523 & 0.0738502 \\
+9 & 18 & 22409 & 18 & 0 \\
+9.5 & 19 & 27233 & 18.868 & 0.0660189 \\
+10 & 20 & 34569 & 19.8997 & 0.0501256 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. 基本確認値}\label{ux57faux672cux78baux8a8dux5024}
+
+表1から、整数半径について最初の値を抜き出すと、
+
+\[
+N_0(1)=1,
+\]
+
+\[
+N_0(2)=9,
+\]
+
+\[
+N_0(3)=137,
+\]
+
+\[
+N_0(4)=473,
+\]
+
+\[
+N_0(5)=1545
+\]
+
+である。
+
+特に、
+
+\[
+N_0(3)=137
+\]
+
+は、半径3の4次元超球体に、一辺1の単位4セルが完全に内接する個数として得られる。
+
+この137は、物理定数との対応を仮定して導入されたものではなく、4次元整数格子、半径3、単位セル、完全内接条件から得られる純粋な数え上げ結果である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{7. \(R=3\)
+の分解}{7. R=3 の分解}}\label{r3-ux306eux5206ux89e3}
+
+\(R=3\) の場合、条件は
+
+\[
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2
+\le 9
+\]
+
+である。
+
+両辺を4倍すると、
+
+\[
+\sum_{i=1}^{4}
+(2|k_i|+1)^2
+\le 36
+\]
+
+となる。
+
+この範囲で可能な奇数平方和の殻は、
+
+\[
+4,\;12,\;20,\;28,\;36
+\]
+
+である。
+
+殻ごとの個数は、
+
+\[
+4:1,\quad
+12:8,\quad
+20:24,\quad
+28:40,\quad
+36:64
+\]
+
+である。
+
+したがって、
+
+\[
+1+8+24+40+64=137
+\]
+
+である。
+
+なお、\(28\) の殻は、\((3,3,3,1)\) 型と \((5,1,1,1)\)
+型を合わせた個数である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8.
+再現用アルゴリズム}\label{ux518dux73feux7528ux30a2ux30ebux30b4ux30eaux30baux30e0}
+
+以下の擬似コードにより、表1は再現できる。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ count\_cells(R):}
+\NormalTok{    count }\OperatorTok{=} \DecValTok{0}
+\NormalTok{    max\_s }\OperatorTok{=} \DecValTok{0}
+\NormalTok{    max\_abs }\OperatorTok{=}\NormalTok{ floor(R }\OperatorTok{{-}} \FloatTok{0.5}\NormalTok{) }\OperatorTok{+} \DecValTok{1}
+
+    \ControlFlowTok{for}\NormalTok{ k1 }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\OperatorTok{{-}}\NormalTok{max\_abs, max\_abs }\OperatorTok{+} \DecValTok{1}\NormalTok{):}
+      \ControlFlowTok{for}\NormalTok{ k2 }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\OperatorTok{{-}}\NormalTok{max\_abs, max\_abs }\OperatorTok{+} \DecValTok{1}\NormalTok{):}
+        \ControlFlowTok{for}\NormalTok{ k3 }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\OperatorTok{{-}}\NormalTok{max\_abs, max\_abs }\OperatorTok{+} \DecValTok{1}\NormalTok{):}
+          \ControlFlowTok{for}\NormalTok{ k4 }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\OperatorTok{{-}}\NormalTok{max\_abs, max\_abs }\OperatorTok{+} \DecValTok{1}\NormalTok{):}
+\NormalTok{            s }\OperatorTok{=} \BuiltInTok{sum}\NormalTok{((}\BuiltInTok{abs}\NormalTok{(ki) }\OperatorTok{+} \FloatTok{0.5}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \ControlFlowTok{for}\NormalTok{ ki }\KeywordTok{in}\NormalTok{ [k1,k2,k3,k4])}
+            \ControlFlowTok{if}\NormalTok{ s }\OperatorTok{\textless{}=}\NormalTok{ R}\OperatorTok{**}\DecValTok{2}\NormalTok{:}
+\NormalTok{                count }\OperatorTok{+=} \DecValTok{1}
+\NormalTok{                max\_s }\OperatorTok{=} \BuiltInTok{max}\NormalTok{(max\_s, s)}
+
+\NormalTok{    rho }\OperatorTok{=}\NormalTok{ sqrt(max\_s) }\ControlFlowTok{if}\NormalTok{ count }\OperatorTok{\textgreater{}} \DecValTok{0} \ControlFlowTok{else} \DecValTok{0}
+\NormalTok{    diagonal }\OperatorTok{=} \DecValTok{2} \OperatorTok{*}\NormalTok{ rho}
+    \ControlFlowTok{return}\NormalTok{ count, rho, diagonal}
+\end{Highlighting}
+\end{Shaded}
+
+この計算は、各セルの最遠頂点が半径 \(R\)
+の球内にあるかどうかだけを判定している。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9.
+不確定性を含まないことについて}\label{ux4e0dux78baux5b9aux6027ux3092ux542bux307eux306aux3044ux3053ux3068ux306bux3064ux3044ux3066}
+
+本稿では、境界近傍セルの重み付き寄与や、不確定性幅 \(\delta\)
+を含む有効数え上げは扱わない。
+
+すなわち、本稿で計算しているのは
+
+\[
+\delta=0
+\]
+
+の完全内接数え上げである。
+
+不確定性付き数え上げを行う場合は、指示関数を重み関数
+
+\[
+W_\delta(x)
+\]
+
+に置き換える必要がある。しかし、その \(\delta\)
+の値や関数形をどのように決定するかは未定義であり、本稿のスコープ外である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. 結論}\label{ux7d50ux8ad6}
+
+本稿では、4次元整数格子上の一辺1の単位4セルが、半径 \(R\)
+の4次元超球体に完全に内接する個数を、半径 \(0.5\) から \(10.0\)
+まで0.5刻みで計算した。
+
+完全内接セル数は、
+
+\[
+N_0(R)
+=
+\#\left\{
+k\in\mathbb{Z}^4
+\mid
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2
+\le R^2
+\right\}
+\]
+
+により定義される。
+
+この数え上げは純粋に幾何学的・整数格子的なものであり、物理定数との対応を主張しない。
+
+特に、
+
+\[
+N_0(1)=1,\qquad
+N_0(2)=9,\qquad
+N_0(3)=137
+\]
+
+が得られる。
+
+本稿の結果は、波長空間または周波数空間を4次元格子として選んだ場合の二乗和制約が、具体的な単位セル数え上げ問題として扱えることを示す基礎資料である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{付録A：CSVファイル}\label{ux4ed8ux9332acsvux30d5ux30a1ux30a4ux30eb}
+
+本稿の表1は、同梱ファイル
+
+\texttt{paper2\_radius\_sweep\_R\_0\_5\_to\_10\_step\_0\_5.csv}
+
+としても保存している。
+
+列の意味は次の通りである。
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{R}：外接球体の半径
+\item
+  \texttt{sphere\_diameter\_2R}：外接球体の直径 \(2R\)
+\item
+  \texttt{full\_inclusion\_cell\_count\_N0}：完全内接セル数 \(N_0(R)\)
+\item
+  \texttt{stack\_vertex\_radius}：積み上げセル集合の最大頂点半径
+  \(\rho(R)\)
+\item
+  \texttt{stack\_diagonal\_length}：積み上げ対角線長 \(2\rho(R)\)
+\item
+  \texttt{unused\_margin\_R\_minus\_stack\_radius}：半径方向の余白
+  \(R-\rho(R)\)
+\item
+  \texttt{shells\_S\_counts}：殻 \(S=\sum_i(2|k_i|+1)^2\) ごとの個数
+\end{itemize}
+
+\end{document}

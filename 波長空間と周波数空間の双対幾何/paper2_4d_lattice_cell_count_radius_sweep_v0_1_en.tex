@@ -1,0 +1,585 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{Paper 2: Radius Sweep of Fully-Inscribed Unit-Cell Counts on a
+4-Dimensional
+Lattice}\label{paper-2-radius-sweep-of-fully-inscribed-unit-cell-counts-on-a-4-dimensional-lattice}
+
+\subsection{An Enumeration Table from Radius 0.5 to 10.0 and a
+Reproducible
+Formulation}\label{an-enumeration-table-from-radius-0.5-to-10.0-and-a-reproducible-formulation}
+
+\textbf{Author}: Noriaki Kihara\\
+\textbf{Affiliation}: WF System Co., Ltd.\\
+\textbf{ORCID}: 0009-0004-6753-4020\\
+\textbf{Version}: v0.1\\
+\textbf{Date}: June 2026\\
+\textbf{DOI (this version)}: 10.5281/zenodo.20588039\\
+\textbf{Concept DOI}: 10.5281/zenodo.20588038\\
+\textbf{License}: CC BY 4.0
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+In this paper we count the number of 4-dimensional unit cells of side 1,
+placed on a 4-dimensional integer lattice, that are fully inscribed in a
+4-dimensional hyperball of radius \(R\). The object is a purely
+geometric / integer-lattice counting problem, and we do not treat any
+correspondence with physical constants.
+
+Taking the center of a unit cell to be
+
+\[
+k=(k_1,k_2,k_3,k_4)\in\mathbb{Z}^4 ,
+\]
+
+with half-width \(1/2\) in each direction, the condition that this unit
+cell be fully inscribed in the hyperball of radius \(R\) is
+
+\[
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2
+\le R^2 .
+\]
+
+We define the number of lattice points satisfying this condition as
+
+\[
+N_0(R)
+=
+\#\left\{
+k\in\mathbb{Z}^4
+\mid
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2
+\le R^2
+\right\} .
+\]
+
+In this paper we compute \(N_0(R)\) for radii
+\(R=0.5,1.0,1.5,\ldots,10.0\), and tabulate the diameter \(2R\) of the
+circumscribing ball and the diagonal length \(2\rho(R)\) of the actually
+stacked cell set.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Purpose}\label{purpose}
+
+In Paper 1 we showed that choosing a 4-dimensional lattice in the
+wavelength space or the frequency space turns the sum-of-squares
+condition into a unit-cell counting problem.
+
+In this paper we actually carry out that counting.
+
+What we treat here is not a physical theory but the following purely
+geometric problem.
+
+\begin{quote}
+Among the unit 4-cells of side 1 on the 4-dimensional integer lattice,
+how many are fully inscribed in the 4-dimensional hyperball of radius
+\(R\)?
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Basic Definitions}\label{basic-definitions}
+
+Let the 4-dimensional integer lattice be
+
+\[
+\mathbb{Z}^4 .
+\]
+
+To each lattice point
+
+\[
+k=(k_1,k_2,k_3,k_4)
+\]
+
+associate a 4-dimensional unit cell of side 1.
+
+When the cell center is at \(k\), each point \(x_i\) inside the cell
+satisfies
+
+\[
+k_i-\frac12\le x_i\le k_i+\frac12 .
+\]
+
+The squared distance from the origin to the farthest vertex of this cell
+is
+
+\[
+r_{\max}(k)^2
+=
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2 .
+\]
+
+Hence the condition that this cell be fully inscribed in the hyperball
+of radius \(R\) is
+
+\[
+r_{\max}(k)^2\le R^2 ,
+\]
+
+that is,
+
+\[
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2
+\le R^2 .
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. Fully-Inscribed Cell
+Count}\label{fully-inscribed-cell-count}
+
+We define the fully-inscribed cell count as
+
+\[
+N_0(R)
+=
+\#\left\{
+k\in\mathbb{Z}^4
+\mid
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2
+\le R^2
+\right\} .
+\]
+
+Multiplying both sides by 4,
+
+\[
+\sum_{i=1}^{4}
+(2|k_i|+1)^2
+\le
+(2R)^2 .
+\]
+
+Hence this problem can also be expressed as an integer inequality on a
+sum of four positive odd squares.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. Stacked Diagonal Length}\label{stacked-diagonal-length}
+
+Let the set of cells inscribed at radius \(R\) be
+
+\[
+K_R=
+\left\{
+k\in\mathbb{Z}^4
+\mid
+r_{\max}(k)\le R
+\right\} .
+\]
+
+Among the cells in this set, define the distance from the origin to the
+farthest vertex as
+
+\[
+\rho(R)
+=
+\max_{k\in K_R} r_{\max}(k) .
+\]
+
+If \(K_R\) is empty, we set
+
+\[
+\rho(R)=0 .
+\]
+
+The centrally symmetric maximal diagonal length of the stacked cell set
+is then defined as
+
+\[
+L(R)=2\rho(R) ,
+\]
+
+and the diameter of the circumscribing ball is
+
+\[
+D(R)=2R .
+\]
+
+Hence always
+
+\[
+L(R)\le D(R) .
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Radius Sweep Results}\label{radius-sweep-results}
+
+Table 1 shows the results computed from radius \(R=0.5\) to \(10.0\) in
+steps of \(0.5\).
+
+\textbf{Table 1. Radius sweep of fully-inscribed unit-cell counts on the
+4-dimensional lattice}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+Circumscribing radius R
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Diameter 2R
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Fully-inscribed cell count N0(R)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Stacked diagonal \(2\rho(R)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Radial margin \(R-\rho(R)\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0.5 & 1 & 0 & 0 & 0.5 \\
+1 & 2 & 1 & 2 & 0 \\
+1.5 & 3 & 1 & 2 & 0.5 \\
+2 & 4 & 9 & 3.4641 & 0.267949 \\
+2.5 & 5 & 33 & 4.47214 & 0.263932 \\
+3 & 6 & 137 & 6 & 0 \\
+3.5 & 7 & 233 & 6.63325 & 0.183375 \\
+4 & 8 & 473 & 7.74597 & 0.127017 \\
+4.5 & 9 & 809 & 8.7178 & 0.141101 \\
+5 & 10 & 1545 & 10 & 0 \\
+5.5 & 11 & 2233 & 10.7703 & 0.114835 \\
+6 & 12 & 3457 & 11.8322 & 0.0839202 \\
+6.5 & 13 & 5001 & 12.8062 & 0.0968758 \\
+7 & 14 & 7281 & 14 & 0 \\
+7.5 & 15 & 9489 & 14.8324 & 0.0838015 \\
+8 & 16 & 12833 & 15.8745 & 0.0627461 \\
+8.5 & 17 & 16657 & 16.8523 & 0.0738502 \\
+9 & 18 & 22409 & 18 & 0 \\
+9.5 & 19 & 27233 & 18.868 & 0.0660189 \\
+10 & 20 & 34569 & 19.8997 & 0.0501256 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Basic Check Values}\label{basic-check-values}
+
+Extracting from Table 1 the first values at integer radius,
+
+\[
+N_0(1)=1,
+\]
+
+\[
+N_0(2)=9,
+\]
+
+\[
+N_0(3)=137,
+\]
+
+\[
+N_0(4)=473,
+\]
+
+\[
+N_0(5)=1545 .
+\]
+
+In particular,
+
+\[
+N_0(3)=137
+\]
+
+is obtained as the number of unit 4-cells of side 1 fully inscribed in
+the 4-dimensional hyperball of radius 3.
+
+This 137 is not introduced under any assumed correspondence with a
+physical constant; it is a pure counting result obtained from the
+4-dimensional integer lattice, radius 3, the unit cell, and the
+full-inscription condition.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{7. Decomposition at
+\(R=3\)}{7. Decomposition at R=3}}\label{decomposition-at-r3}
+
+For \(R=3\), the condition is
+
+\[
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2
+\le 9 .
+\]
+
+Multiplying both sides by 4,
+
+\[
+\sum_{i=1}^{4}
+(2|k_i|+1)^2
+\le 36 .
+\]
+
+The possible shells of sums of odd squares in this range are
+
+\[
+4,\;12,\;20,\;28,\;36 .
+\]
+
+The counts per shell are
+
+\[
+4:1,\quad
+12:8,\quad
+20:24,\quad
+28:40,\quad
+36:64 .
+\]
+
+Hence
+
+\[
+1+8+24+40+64=137 .
+\]
+
+Note that the shell \(28\) is the combined count of the \((3,3,3,1)\)
+type and the \((5,1,1,1)\) type.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. Reproduction Algorithm}\label{reproduction-algorithm}
+
+Table 1 can be reproduced by the following pseudocode.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ count\_cells(R):}
+\NormalTok{    count }\OperatorTok{=} \DecValTok{0}
+\NormalTok{    max\_s }\OperatorTok{=} \DecValTok{0}
+\NormalTok{    max\_abs }\OperatorTok{=}\NormalTok{ floor(R }\OperatorTok{{-}} \FloatTok{0.5}\NormalTok{) }\OperatorTok{+} \DecValTok{1}
+
+    \ControlFlowTok{for}\NormalTok{ k1 }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\OperatorTok{{-}}\NormalTok{max\_abs, max\_abs }\OperatorTok{+} \DecValTok{1}\NormalTok{):}
+      \ControlFlowTok{for}\NormalTok{ k2 }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\OperatorTok{{-}}\NormalTok{max\_abs, max\_abs }\OperatorTok{+} \DecValTok{1}\NormalTok{):}
+        \ControlFlowTok{for}\NormalTok{ k3 }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\OperatorTok{{-}}\NormalTok{max\_abs, max\_abs }\OperatorTok{+} \DecValTok{1}\NormalTok{):}
+          \ControlFlowTok{for}\NormalTok{ k4 }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\OperatorTok{{-}}\NormalTok{max\_abs, max\_abs }\OperatorTok{+} \DecValTok{1}\NormalTok{):}
+\NormalTok{            s }\OperatorTok{=} \BuiltInTok{sum}\NormalTok{((}\BuiltInTok{abs}\NormalTok{(ki) }\OperatorTok{+} \FloatTok{0.5}\NormalTok{)}\OperatorTok{**}\DecValTok{2} \ControlFlowTok{for}\NormalTok{ ki }\KeywordTok{in}\NormalTok{ [k1,k2,k3,k4])}
+            \ControlFlowTok{if}\NormalTok{ s }\OperatorTok{\textless{}=}\NormalTok{ R}\OperatorTok{**}\DecValTok{2}\NormalTok{:}
+\NormalTok{                count }\OperatorTok{+=} \DecValTok{1}
+\NormalTok{                max\_s }\OperatorTok{=} \BuiltInTok{max}\NormalTok{(max\_s, s)}
+
+\NormalTok{    rho }\OperatorTok{=}\NormalTok{ sqrt(max\_s) }\ControlFlowTok{if}\NormalTok{ count }\OperatorTok{\textgreater{}} \DecValTok{0} \ControlFlowTok{else} \DecValTok{0}
+\NormalTok{    diagonal }\OperatorTok{=} \DecValTok{2} \OperatorTok{*}\NormalTok{ rho}
+    \ControlFlowTok{return}\NormalTok{ count, rho, diagonal}
+\end{Highlighting}
+\end{Shaded}
+
+This computation merely judges, for each cell, whether its farthest
+vertex lies within the ball of radius \(R\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. On the Absence of
+Uncertainty}\label{on-the-absence-of-uncertainty}
+
+This paper does not treat the weighted contribution of near-boundary
+cells or the effective counting including the uncertainty width
+\(\delta\).
+
+That is, what is computed in this paper is the fully-inscribed counting
+at
+
+\[
+\delta=0 .
+\]
+
+To perform counting with uncertainty, the indicator function must be
+replaced by a weight function
+
+\[
+W_\delta(x) .
+\]
+
+However, how to determine the value of \(\delta\) or the form of that
+function is undefined and outside the scope of this paper.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. Conclusion}\label{conclusion}
+
+In this paper we computed, from radius \(0.5\) to \(10.0\) in steps of
+\(0.5\), the number of unit 4-cells of side 1 on the 4-dimensional
+integer lattice that are fully inscribed in the 4-dimensional hyperball
+of radius \(R\).
+
+The fully-inscribed cell count is defined by
+
+\[
+N_0(R)
+=
+\#\left\{
+k\in\mathbb{Z}^4
+\mid
+\sum_{i=1}^{4}
+\left(|k_i|+\frac12\right)^2
+\le R^2
+\right\} .
+\]
+
+This counting is purely geometric / integer-lattice in nature and
+asserts no correspondence with physical constants.
+
+In particular,
+
+\[
+N_0(1)=1,\qquad
+N_0(2)=9,\qquad
+N_0(3)=137
+\]
+
+are obtained.
+
+The results of this paper provide a basic reference showing that the
+sum-of-squares constraint, when the wavelength space or the frequency
+space is chosen as a 4-dimensional lattice, can be treated as a concrete
+unit-cell counting problem.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Appendix A: CSV File}\label{appendix-a-csv-file}
+
+Table 1 of this paper is also saved as the accompanying file
+
+\texttt{paper2\_radius\_sweep\_R\_0\_5\_to\_10\_step\_0\_5.csv}.
+
+The meaning of the columns is as follows.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{R}: radius of the circumscribing ball
+\item
+  \texttt{sphere\_diameter\_2R}: diameter \(2R\) of the circumscribing
+  ball
+\item
+  \texttt{full\_inclusion\_cell\_count\_N0}: fully-inscribed cell count
+  \(N_0(R)\)
+\item
+  \texttt{stack\_vertex\_radius}: maximal vertex radius \(\rho(R)\) of
+  the stacked cell set
+\item
+  \texttt{stack\_diagonal\_length}: stacked diagonal length \(2\rho(R)\)
+\item
+  \texttt{unused\_margin\_R\_minus\_stack\_radius}: radial margin
+  \(R-\rho(R)\)
+\item
+  \texttt{shells\_S\_counts}: count per shell \(S=\sum_i(2|k_i|+1)^2\)
+\end{itemize}
+
+\end{document}
