@@ -111,9 +111,9 @@ Formulation}\label{an-enumeration-table-from-radius-0.5-to-10.0-and-a-reproducib
 \textbf{Author}: Noriaki Kihara\\
 \textbf{Affiliation}: WF System Co., Ltd.\\
 \textbf{ORCID}: 0009-0004-6753-4020\\
-\textbf{Version}: v0.1\\
+\textbf{Version}: v0.2\\
 \textbf{Date}: June 2026\\
-\textbf{DOI (this version)}: 10.5281/zenodo.20588039\\
+\textbf{DOI (this version)}: 10.5281/zenodo.20607574\\
 \textbf{Concept DOI}: 10.5281/zenodo.20588038\\
 \textbf{License}: CC BY 4.0
 
@@ -314,19 +314,64 @@ L(R)\le D(R) .
 
 \subsection{5. Radius Sweep Results}\label{radius-sweep-results}
 
+\subsubsection{5.1 Definitions of Volume, Filling Ratio, and
+Gap}\label{definitions-of-volume-filling-ratio-and-gap}
+
+In addition to the fully-inscribed cell count \(N_0(R)\), we define the
+following quantities in order to evaluate the degree of filling relative
+to the surrounding hyperball.
+
+The volume of the surrounding 4-dimensional hyperball of radius \(R\) is
+
+\[
+V_0(R)=\frac{\pi^2}{2}R^4 .
+\]
+
+Since each fully-inscribed unit 4-cell has volume \(1^4=1\), the total
+volume of the stacked cells is equal to the fully-inscribed cell count:
+
+\[
+V_1(R)=N_0(R)\cdot 1^4=N_0(R) .
+\]
+
+The filling ratio is therefore defined as
+
+\[
+\mathrm{fill}(R)=\frac{V_1(R)}{V_0(R)}=\frac{2\,N_0(R)}{\pi^2 R^4}.
+\]
+
+The filling ratio is always \(\mathrm{fill}(R)<1.0\). Over a finite
+radius sweep it may show local increases and decreases, while for large
+\(R\) it tends toward \(1.0\).
+
+The unfilled part of the surrounding hyperball volume is defined as the
+gap:
+
+\[
+\mathrm{gap}(R)=V_0(R)-V_1(R)=\frac{\pi^2}{2}R^4-N_0(R)\ (>0).
+\]
+
+\subsubsection{5.2 Sweep Results}\label{sweep-results}
+
 Table 1 shows the results computed from radius \(R=0.5\) to \(10.0\) in
-steps of \(0.5\).
+steps of \(0.5\), with \(R=100,\,1000,\,10000\) also included. The
+values of \(N_0(R)\), \(2\rho(R)\), \(\mathrm{fill}(R)\), and
+\(\mathrm{gap}(R)\) are exact consequences of integer arithmetic, with
+the check values \(N_0(1{:}5)=1,9,137,473,1545\). The computational
+procedure is given in Appendix B.
 
 \textbf{Table 1. Radius sweep of fully-inscribed unit-cell counts on the
-4-dimensional lattice}
+4-dimensional lattice, including filling ratio and gap}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedleft
 Circumscribing radius R
@@ -338,33 +383,50 @@ Fully-inscribed cell count N0(R)
 Stacked diagonal \(2\rho(R)\)
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
 Radial margin \(R-\rho(R)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Filling ratio V1/V0
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Gap V0-V1
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-0.5 & 1 & 0 & 0 & 0.5 \\
-1 & 2 & 1 & 2 & 0 \\
-1.5 & 3 & 1 & 2 & 0.5 \\
-2 & 4 & 9 & 3.4641 & 0.267949 \\
-2.5 & 5 & 33 & 4.47214 & 0.263932 \\
-3 & 6 & 137 & 6 & 0 \\
-3.5 & 7 & 233 & 6.63325 & 0.183375 \\
-4 & 8 & 473 & 7.74597 & 0.127017 \\
-4.5 & 9 & 809 & 8.7178 & 0.141101 \\
-5 & 10 & 1545 & 10 & 0 \\
-5.5 & 11 & 2233 & 10.7703 & 0.114835 \\
-6 & 12 & 3457 & 11.8322 & 0.0839202 \\
-6.5 & 13 & 5001 & 12.8062 & 0.0968758 \\
-7 & 14 & 7281 & 14 & 0 \\
-7.5 & 15 & 9489 & 14.8324 & 0.0838015 \\
-8 & 16 & 12833 & 15.8745 & 0.0627461 \\
-8.5 & 17 & 16657 & 16.8523 & 0.0738502 \\
-9 & 18 & 22409 & 18 & 0 \\
-9.5 & 19 & 27233 & 18.868 & 0.0660189 \\
-10 & 20 & 34569 & 19.8997 & 0.0501256 \\
+0.5 & 1 & 0 & 0 & 0.5 & 0.00000000 & 0.3 \\
+1 & 2 & 1 & 2 & 0 & 0.20264237 & 3.9 \\
+1.5 & 3 & 1 & 2 & 0.5 & 0.04002812 & 24.0 \\
+2 & 4 & 9 & 3.4641 & 0.267949 & 0.11398633 & 70.0 \\
+2.5 & 5 & 33 & 4.47214 & 0.263932 & 0.17119227 & 159.8 \\
+3 & 6 & 137 & 6 & 0 & 0.34274079 & 262.7 \\
+3.5 & 7 & 233 & 6.63325 & 0.183375 & 0.31464004 & 507.5 \\
+4 & 8 & 473 & 7.74597 & 0.127017 & 0.37441344 & 790.3 \\
+4.5 & 9 & 809 & 8.7178 & 0.141101 & 0.39978704 & 1,214.6 \\
+5 & 10 & 1545 & 10 & 0 & 0.50093193 & 1,539.3 \\
+5.5 & 11 & 2233 & 10.7703 & 0.114835 & 0.49450219 & 2,282.7 \\
+6 & 12 & 3457 & 11.8322 & 0.0839202 & 0.54053601 & 2,938.5 \\
+6.5 & 13 & 5001 & 12.8062 & 0.0968758 & 0.56771933 & 3,807.9 \\
+7 & 14 & 7281 & 14 & 0 & 0.61451024 & 4,567.5 \\
+7.5 & 15 & 9489 & 14.8324 & 0.0838015 & 0.60772296 & 6,125.0 \\
+8 & 16 & 12833 & 15.8745 & 0.0627461 & 0.63489001 & 7,379.9 \\
+8.5 & 17 & 16657 & 16.8523 & 0.0738502 & 0.64662328 & 9,103.0 \\
+9 & 18 & 22409 & 18 & 0 & 0.69212206 & 9,968.2 \\
+9.5 & 19 & 27233 & 18.868 & 0.0660189 & 0.67753435 & 12,961.3 \\
+10 & 20 & 34569 & 19.8997 & 0.0501256 & 0.70051440 & 14,779.0 \\
+100 & 200 & 476927289 & 199.99 & 0.005 & 0.96645675 & 16,552,931.1 \\
+1000 & 2000 & 4918072576937 & 2000 & 0 & 0.99660987 &
+16,729,623,607.7 \\
+10000 & 20000 & 49331268889291561 & 20000 & 0 & 0.99966051 &
+16,753,116,155,232.0 \\
 \end{longtable}
 }
+
+The filling ratio shows local increases and decreases, while for large
+\(R\) it tends toward \(1.0\). On the other hand, the gap corresponds to
+the boundary layer of the 4-dimensional hyperball. The leading scale of
+the boundary-layer volume is proportional to the surface area of the
+4-dimensional ball. Therefore the leading order of the gap grows as
+\(R^3\). The asymptotic constant and the detailed lattice oscillations
+are left for separate analysis.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -581,5 +643,33 @@ The meaning of the columns is as follows.
 \item
   \texttt{shells\_S\_counts}: count per shell \(S=\sum_i(2|k_i|+1)^2\)
 \end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Appendix B: Filling-Ratio and Gap Calculation
+Program}\label{appendix-b-filling-ratio-and-gap-calculation-program}
+
+The values of \(N_0(R)\), \(2\rho(R)\), the filling ratio \(V_1/V_0\),
+and the gap \(V_0-V_1\) in Table 1 can be reproduced exactly by the
+accompanying Python script
+
+\texttt{paper2\_count\_fill\_gap.py}.
+
+The naive quadruple loop in Section 8 has computational complexity
+\(O(R^4)\) and becomes impractical for \(R=100\) and above. Therefore
+the script rewrites the full-inscription condition as the integerized
+positive odd-square condition
+
+\[
+\sum_{i=1}^{4}(2|k_i|+1)^2\le(2R)^2,
+\]
+
+constructs the one-axis odd-square distribution, convolves it into a
+two-axis distribution \(g_2\), and then evaluates \(N_0(R)\) by
+cumulative sums in roughly \(O(R^2)\). The value of \(2\rho(R)\) is
+obtained by a two-pointer search over the keys of \(g_2\). All
+computations are performed using integer arithmetic; the values up to
+\(R=10000\) are exact rather than approximate. As a checksum, the script
+internally confirms \(N_0(1{:}5)=1,9,137,473,1545\).
 
 \end{document}

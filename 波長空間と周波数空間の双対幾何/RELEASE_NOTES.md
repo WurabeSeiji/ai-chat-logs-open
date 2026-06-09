@@ -13,7 +13,7 @@ Dual Geometry of Wavelength Space and Frequency Space: A Geometric and Topologic
 - **Zenodo deposit**: 20588037
 - **公開日**: 2026-06-08
 - **ライセンス**: CC BY 4.0
-- **関連**: 論文2（10.5281/zenodo.20588039）を `isSupplementedBy` で関連付け
+- **関連**: 論文2（Concept DOI 10.5281/zenodo.20588038）を `isSupplementedBy` で関連付け
 
 ### 収録ファイル（10点）
 - `paper1_wavelength_frequency_dual_geometry_v0_3.md`（日本語）
@@ -32,16 +32,16 @@ Dual Geometry of Wavelength Space and Frequency Space: A Geometric and Topologic
 
 ---
 
-## 論文2：4次元格子における単位セル完全内接数の半径スイープ（v0.1）
+## 論文2：4次元格子における単位セル完全内接数の半径スイープ（v0.2）
 
 Radius Sweep of Fully-Inscribed Unit-Cell Counts on a 4-Dimensional Lattice: An Enumeration Table from R = 0.5 to 10.0 with a Reproducible Formulation
 
 - **Concept DOI**: 10.5281/zenodo.20588038
-- **Version DOI (v0.1)**: 10.5281/zenodo.20588039
-- **Zenodo deposit**: 20588039
-- **公開日**: 2026-06-08
+- **Version DOI (v0.2)**: 10.5281/zenodo.20607574
+- **Zenodo deposit**: 20607574
+- **公開日**: 2026-06-09
 - **ライセンス**: CC BY 4.0
-- **関連**: 論文1（10.5281/zenodo.20588037）を `isSupplementTo` で関連付け
+- **関連**: 論文1（Concept DOI 10.5281/zenodo.20588036）を `isSupplementTo` で関連付け
 
 ### 収録ファイル（7点）
 - `paper2_4d_lattice_cell_count_radius_sweep_v0_1.md`（日本語）
@@ -53,6 +53,7 @@ Radius Sweep of Fully-Inscribed Unit-Cell Counts on a 4-Dimensional Lattice: An 
 ### 内容
 - 4次元整数格子上の一辺1の単位セルが半径 $R$ の4次元超球体に完全内接する個数 $N_0(R)$ を $R=0.5$〜$10.0$（0.5刻み）で数え上げ。
 - 完全内接条件 $\sum_{i=1}^{4}(|k_i|+\tfrac12)^2\le R^2$。再現用擬似コードとCSVを同梱。
+- v0.2では充填率 $V_1/V_0$ とギャップ $V_0-V_1$ を表1へ追加し、$R=100,1000,10000$ の検算値を追加。充填率は有限スイープで局所的な増減を伴うが大きな $R$ で1.0へ近づくこと、ギャップ主項は境界層体積として $R^3$ オーダで拡大することを明記。
 - $N_0(1)=1$, $N_0(2)=9$, $N_0(3)=137$。$R=3$ の137は殻分解 $1+8+24+40+64$ により得られる純粋な数え上げ結果（物理定数との対応は主張しない）。
 
 ---
@@ -93,6 +94,9 @@ Closed Four-Degree-of-Freedom Structure and Its Correspondence with 4-Dimensiona
 ---
 
 ## 変更履歴
+
+### 2026-06-09
+- **論文2を v0.2 に改訂公開**：`newversion` により Concept DOI 10.5281/zenodo.20588038 を維持したまま、新 Version DOI **10.5281/zenodo.20607574** を発番・公開。充填率・ギャップ列を表1に追加し、$R=100,1000,10000$ の厳密計算値と `paper2_count_fill_gap.py` による再現手順を追記。ギャップ主項が4次元境界層体積として $R^3$ オーダで拡大する説明を追加。
 
 ### 2026-06-08
 - 新シリーズ「波長空間と周波数空間の双対幾何」を開始。
