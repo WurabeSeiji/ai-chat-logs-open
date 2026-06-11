@@ -82,6 +82,35 @@ Closed Four-Degree-of-Freedom Structure and Its Correspondence with 4-Dimensiona
 
 ---
 
+## 論文4：逆数双対セルの分裂と階層的状態構造（v1.0）
+
+Paper 4: Splitting of Reciprocal Dual Cells and Hierarchical State Structure — A Minimal Observational Model of Internal State Capacity, Volume Gap, and Duality Breaking from νλ=1
+
+- **Concept DOI**: 10.5281/zenodo.20638962
+- **Version DOI (v1.0)**: 10.5281/zenodo.20638963
+- **Zenodo deposit**: 20638963
+- **公開日**: 2026-06-11
+- **ライセンス**: CC BY 4.0
+- **関連**: 論文1〜3（Concept DOI 10.5281/zenodo.20588036 / 10.5281/zenodo.20588038 / 10.5281/zenodo.20589261）を `continues` で関連付け
+
+### 収録ファイル（9点）
+- `paper4_reciprocal_dual_cell_decomposition_hierarchical_vacuum_ja_v1_0.md`（日本語）
+- `paper4_reciprocal_dual_cell_decomposition_hierarchical_vacuum_en_v1_0.md`（英語）
+- `paper4_reciprocal_dual_cell_decomposition_hierarchical_vacuum_ja_v1_0.tex` / `.pdf`（日本語）
+- `paper4_reciprocal_dual_cell_decomposition_hierarchical_vacuum_en_v1_0.tex` / `.pdf`（英語）
+- 図（SVG、日英共通）: `figure_paper4_1_reciprocal_dual_shell_growth.svg` / `figure_paper4_2_radial_projection_curved_state_space.svg` / `figure_paper4_3_hierarchical_curved_state_spaces.svg`
+
+### 内容
+- 逆数双対条件 $\lambda_n\nu_n=1$ ＋最小共役幅 $\delta_{\min}$ の存在可能性から、状態を点ではなく最小共役セルとして扱い、論文1〜3（双対幾何・4次元格子数え上げ・閉じた4自由度構造）をひとつの最小観察モデルとして再構成。
+- 合成周波数半径 $R^2=\sum_n\nu_n^2$ は内部周波数成分から定まるエネルギー様スケールとして読む。$R=1$（最小共役セル）、$R=2$（第一隣接8状態）、$R=3$（追加128状態の大規模内部状態殻）。$N_0(1)=1, N_0(2)=9, N_0(3)=137$。
+- 充填率 $\eta(R)$ は漸近的に増加傾向を示す一方、体積ギャップ $\Delta V(R)=V_4(R)-N_0(R)$ は境界層（$2\pi^2R^3$）由来の $R^3$ オーダで増大。
+- $R^2$ 保存の分裂 $R^2=\sum_a R'^2_a$ では、体積ギャップ指標に限り高 $R$ 単一状態より有限 $R'$ 状態群への分解の方が整合的に見える場合がある（例：$\Delta V(2)\approx69.96$ vs $4\Delta V(1)\approx15.74$）。
+- 分裂後、$\nu$ 側＝高密度内部状態、$\lambda$ 側＝希薄な外延として役割分化（自発的対称性破れに「類似した」役割分化、同一視はしない）。中心投影と接続した曲率付き状態空間の自己相似的階層 $R\to\{R'_a\}\to\{R''_{a,b}\}$。
+- 図3点：$R=3$ 137セルモデルの厳密断面（4D→3D→2D）、接平面→半球面の厳密逆中心投影、$R=20/R'=6/R''=2$ 階層球配置。再現用 Python コードを付録Bに同梱。
+- 主張範囲を§10で明示：標準物理の修正・導出はせず、137 を微細構造定数と同一視しない（観察モデルとしての免責を維持）。
+
+---
+
 ## 公開先リンク
 
 - **Zenn（技術解説・数式表示あり）**: https://zenn.dev/noriaki_kihara/articles/wavelength-frequency-dual-geometry
@@ -94,6 +123,9 @@ Closed Four-Degree-of-Freedom Structure and Its Correspondence with 4-Dimensiona
 ---
 
 ## 変更履歴
+
+### 2026-06-11
+- **論文4 v1.0 を初版公開**（Concept DOI 10.5281/zenodo.20638962、Version DOI **10.5281/zenodo.20638963**、deposit 20638963）。逆数双対条件 $\nu\lambda=1$ ＋最小共役幅から、内部状態容量（1/9/137）・体積ギャップ・有限 $R'$ 分裂・双対性破れ・曲率付き自己相似階層を同一観察モデルで連鎖的に読む論文。論文1〜3の Concept DOI へ `continues` で関連付け。日英 md/tex/pdf＋図3点（SVG）の計9ファイルをアップロード。図は SVG→PDF（rsvg-convert）変換のうえ tex に埋め込み。Zenn 用記事ドラフト `zenn_article_paper4_ja.md` を作成（未投稿）。
 
 ### 2026-06-09
 - **論文2を v0.2 に改訂公開**：`newversion` により Concept DOI 10.5281/zenodo.20588038 を維持したまま、新 Version DOI **10.5281/zenodo.20607574** を発番・公開。充填率・ギャップ列を表1に追加し、$R=100,1000,10000$ の厳密計算値と `paper2_count_fill_gap.py` による再現手順を追記。ギャップ主項が4次元境界層体積として $R^3$ オーダで拡大する説明を追加。
