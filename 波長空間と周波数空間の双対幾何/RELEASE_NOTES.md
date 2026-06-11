@@ -249,6 +249,7 @@ The Twin Minimal Space Model
 ## 変更履歴
 
 ### 2026-06-11
+- **X / Twitter 用シリーズ完結ポスト v2（日本語版）を作成**：`x_post_v2.md`（未投稿）。note 日本語版 URL＋ハッシュタグ、280ウェイト制限内（短縮版併記）。OGP で note バナーが自動表示される想定。
 - **Facebook 用シリーズ完結記事 v2（日英）を作成、日本語版を公開**：`facebook_article_ja_v2.md` / `facebook_article_en_v2.md`。日英とも 2026-06-11 公開（コメント欄に note v2 の URL を掲示）。タイトル→「詳細はコメント参照：」→概要3段落→免責→ハッシュタグの構成、コメント欄用に note v2 日英 URL を付記。カバー画像はバナー `note_banner_series_ja/en.png` を流用可。
 - **note シリーズ完結記事（日本語版・英語版）を公開**：日本語版 https://note.com/kiharanoriaki/n/nd6a788866947 ／英語版 https://note.com/kiharanoriaki/n/ne161bb2bf44a 。あわせて note ヘッダー用バナー `note_banner_series_ja.png` / `note_banner_series_en.png`（各 1920×1006、約1.91:1、ダークテーマの双子配置3D描画＋タイトル）を作成。
 - **note 用シリーズ完結記事 v2（日英）を作成**：`note_article_ja_v2.md` / `note_article_en_v2.md`（未投稿）。三つの仮定→論文1〜4の基礎→論文5〜12の定理連鎖→ハイライト→全12本の Concept DOI 一覧→立ち位置、の全体説明構成。添付図3点（双子配置3D断面・三帯構造・両端点定理、PNG）。note レンダリング制約（表・LaTeX数式・かぎ括弧入り太字の不使用）に準拠。
