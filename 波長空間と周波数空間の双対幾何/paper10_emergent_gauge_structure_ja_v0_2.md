@@ -5,10 +5,10 @@
 著者: 木原 範昭 (Noriaki Kihara)
 所属: WF System Co., Ltd.
 ORCID: 0009-0004-6753-4020
-版: v0.2（草稿・査読反映）
+版: v0.2
 日付: 2026 年 6 月
-DOI（本版）: 未付与
-Concept DOI: 未付与
+DOI（本版）: 10.5281/zenodo.20640465
+Concept DOI: 10.5281/zenodo.20640464
 ライセンス: CC BY 4.0
 
 * * *
@@ -185,11 +185,11 @@ $$
 
 [1] 木原 範昭, 論文4, v1.0, 2026. Concept DOI: 10.5281/zenodo.20638962.
 
-[2] 木原 範昭, 論文6, v0.2, 2026.
+[2] 木原 範昭, 論文6, v0.2, 2026. Concept DOI: 10.5281/zenodo.20640456.
 
-[3] 木原 範昭, 論文7, v0.2, 2026.
+[3] 木原 範昭, 論文7, v0.2, 2026. Concept DOI: 10.5281/zenodo.20640458.
 
-[4] 木原 範昭, 論文9, v0.2, 2026.
+[4] 木原 範昭, 論文9, v0.2, 2026. Concept DOI: 10.5281/zenodo.20640462.
 
 [5] K. G. Wilson, "Confinement of quarks," Physical Review D 10 (1974), 2445–2459.
 

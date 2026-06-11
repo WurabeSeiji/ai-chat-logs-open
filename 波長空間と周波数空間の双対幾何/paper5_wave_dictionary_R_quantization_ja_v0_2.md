@@ -5,10 +5,10 @@
 著者: 木原 範昭 (Noriaki Kihara)
 所属: WF System Co., Ltd.
 ORCID: 0009-0004-6753-4020
-版: v0.2（草稿・査読反映）
+版: v0.2
 日付: 2026 年 6 月
-DOI（本版）: 未付与
-Concept DOI: 未付与
+DOI（本版）: 10.5281/zenodo.20640455
+Concept DOI: 10.5281/zenodo.20640454
 ライセンス: CC BY 4.0
 
 * * *

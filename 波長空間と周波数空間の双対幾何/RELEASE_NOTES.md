@@ -122,9 +122,130 @@ Paper 4: Splitting of Reciprocal Dual Cells and Hierarchical State Structure —
 
 ---
 
+## 論文5：セル＝定在波辞書と半径の量子化（v0.2）
+
+The Cell–Standing-Wave Dictionary and the Quantization of the Radius
+
+- **Concept DOI**: 10.5281/zenodo.20640454
+- **Version DOI (v0.2)**: 10.5281/zenodo.20640455
+- **Zenodo deposit**: 20640455
+- **公開日**: 2026-06-11
+- **ライセンス**: CC BY 4.0
+- **関連**: 論文1〜4の Concept DOI へ `continues` で関連付け
+- **収録ファイル**: 日英 md / tex / pdf ＋ 図3点（計9ファイル）
+- **内容**: 辞書定理（格子数え上げ＝零点つき実定在波計数の厳密一致）、零点量子の同定、16π/3＝有効境界の Weyl 不足量、例外なし分裂定理、R² の分類定理（単一状態＝奇数整数）、137/105 境界臨界性の解消。
+
+---
+
+## 論文6：保存則・記録・時間様構造（v0.2）
+
+Conservation Laws, Records, and Time-like Structure
+
+- **Concept DOI**: 10.5281/zenodo.20640456
+- **Version DOI (v0.2)**: 10.5281/zenodo.20640457
+- **Zenodo deposit**: 20640457
+- **公開日**: 2026-06-11
+- **ライセンス**: CC BY 4.0
+- **関連**: 論文1・4・5の Concept DOI へ `continues` で関連付け
+- **収録ファイル**: 日英 md / tex / pdf ＋ 図3点（計9ファイル）
+- **内容**: 凍結定理（非対称1ビット＝時間様構造の存在条件）、B₄ ゲージと殻微細構造、1+3 極分解、階層相対性、記録定理、ヌル構造とブースト不変な最小面積。
+
+---
+
+## 論文7：配置統計と関係的読み出し（v0.2）
+
+Configuration Statistics and Relational Readout
+
+- **Concept DOI**: 10.5281/zenodo.20640458
+- **Version DOI (v0.2)**: 10.5281/zenodo.20640459
+- **Zenodo deposit**: 20640459
+- **公開日**: 2026-06-11
+- **ライセンス**: CC BY 4.0
+- **関連**: 論文2・4・5・6の Concept DOI へ `continues` で関連付け
+- **収録ファイル**: 日英 md / tex / pdf ＋ 図3点（計9ファイル）
+- **内容**: 配置読みからの排他統計の導出、安定種 {1,3,5}・崩壊敷居 s=7、s=9 の一意分岐比 192:56、閉塞効果、関係クラスのホログラフィック読み出しと単位記録十分性定理。
+
+---
+
+## 論文8：二つの会計 — 凝縮・内部膨張・面積法則（v0.2）
+
+Two Accountings: Condensation, Internal Expansion, and the Area Law
+
+- **Concept DOI**: 10.5281/zenodo.20640460
+- **Version DOI (v0.2)**: 10.5281/zenodo.20640461
+- **Zenodo deposit**: 20640461
+- **公開日**: 2026-06-11
+- **ライセンス**: CC BY 4.0
+- **関連**: 論文4・5・6・7の Concept DOI へ `continues` で関連付け
+- **収録ファイル**: 日英 md / tex / pdf ＋ 図3点（計9ファイル）
+- **内容**: 共有曲率会計による分裂定理の反転（凝縮最適性）、Jeans 型閾値 w*∝S^(-1/2)、内部膨張則 a∝t^(1/2)、剛体タイル化と貯水池としての真空。
+
+---
+
+## 論文9：論理波と半波長検閲（v0.2）
+
+Logic Waves and Half-Wavelength Censorship
+
+- **Concept DOI**: 10.5281/zenodo.20640462
+- **Version DOI (v0.2)**: 10.5281/zenodo.20640463
+- **Zenodo deposit**: 20640463
+- **公開日**: 2026-06-11
+- **ライセンス**: CC BY 4.0
+- **関連**: 論文4・5・6・7の Concept DOI へ `continues` で関連付け
+- **収録ファイル**: 日英 md / tex / pdf ＋ 図3点（計9ファイル）
+- **内容**: 奇数倍音梯子＝系譜、振幅なし＝整合条件、非調和シフトの厳密限界 1/2 と運動学的安定化、干渉閉合テストの三帯構造、存在上限（s≥25/49）と階層化の強制。
+
+---
+
+## 論文10：創発ゲージ構造（v0.2）
+
+Emergent Gauge Structure
+
+- **Concept DOI**: 10.5281/zenodo.20640464
+- **Version DOI (v0.2)**: 10.5281/zenodo.20640465
+- **Zenodo deposit**: 20640465
+- **公開日**: 2026-06-11
+- **ライセンス**: CC BY 4.0
+- **関連**: 論文4・6・7・9の Concept DOI へ `continues` で関連付け
+- **収録ファイル**: 日英 md / tex / pdf ＋ 図3点（計9ファイル）
+- **内容**: 接続の運動学的一意性、ホロノミー π/2＝測地面積、arccos(4/5) の無限位数、SO(4) の強制（結晶学的制限）、スピン持ち上げと励起次数 ε、β=0 の運動学的デフォルト。
+
+---
+
+## 論文11：次元の必然性（v0.2）
+
+The Necessity of Dimension
+
+- **Concept DOI**: 10.5281/zenodo.20640466
+- **Version DOI (v0.2)**: 10.5281/zenodo.20640467
+- **Zenodo deposit**: 20640467
+- **公開日**: 2026-06-11
+- **ライセンス**: CC BY 4.0
+- **関連**: 論文4・5・6・9の Concept DOI へ `continues` で関連付け
+- **収録ファイル**: 日英 md / tex / pdf ＋ 図2点（計8ファイル）
+- **内容**: 両端点定理（生存区間 [0,4]、飽和は両端のみ）、mod 8 選択定理（奇数整数ラベルは d=4 のみ）、四脚定理（離散・有界無境界・正曲率）、自己双対種子による挟み撃ち。
+
+---
+
+## 論文12：双子最小空間モデル（v0.2）
+
+The Twin Minimal Space Model
+
+- **Concept DOI**: 10.5281/zenodo.20640468
+- **Version DOI (v0.2)**: 10.5281/zenodo.20640469
+- **Zenodo deposit**: 20640469
+- **公開日**: 2026-06-11
+- **ライセンス**: CC BY 4.0
+- **関連**: 論文4〜11の Concept DOI へ `continues` で関連付け
+- **収録ファイル**: 日英 md / tex / pdf ＋ 図4点（計10ファイル）
+- **内容**: 安定種の外部像（三帳簿・最小不確定性波束）、パリティ強制対生成と mod 4 分離スペクトル、測定＝追記（無→有）と測度分岐、もつれのレイヤ解消と無信号性、頂点の1単位不足と隠れ二軸 R/Q、移送原理。
+
+---
+
 ## 変更履歴
 
 ### 2026-06-11
+- **論文5〜12（v0.2）を一斉初版公開**：補遺2〜41 の定理群を依存順 8 篇（5 辞書と量子化／6 保存則・記録・時間／7 配置統計／8 二つの会計／9 論理波と検閲／10 創発ゲージ構造／11 次元の必然性／12 双子最小空間モデル）に再編。4 AI 査読（軽微修正で公開可、必須4件＋推奨2件＋追加2件を反映）。全篇に厳密計算図（計24点、英語ラベル、模式図なし、生成スクリプト `generate_paper_figures.py` 同梱）。日英 md/tex/pdf＋図 PNG を各レコードへアップロードし、`continues` でシリーズ連結。シリーズ内相互参照はすべて Concept DOI 記載済み。
 - **論文4 v1.0 を初版公開**（Concept DOI 10.5281/zenodo.20638962、Version DOI **10.5281/zenodo.20638963**、deposit 20638963）。逆数双対条件 $\nu\lambda=1$ ＋最小共役幅から、内部状態容量（1/9/137）・体積ギャップ・有限 $R'$ 分裂・双対性破れ・曲率付き自己相似階層を同一観察モデルで連鎖的に読む論文。論文1〜3の Concept DOI へ `continues` で関連付け。日英 md/tex/pdf＋図3点（SVG）の計9ファイルをアップロード。図は SVG→PDF（rsvg-convert）変換のうえ tex に埋め込み。Zenn 用記事ドラフト `zenn_article_paper4_ja.md` を作成（未投稿）。
 
 ### 2026-06-09

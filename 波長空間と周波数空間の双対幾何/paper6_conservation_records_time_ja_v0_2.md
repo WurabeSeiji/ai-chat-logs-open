@@ -5,10 +5,10 @@
 著者: 木原 範昭 (Noriaki Kihara)
 所属: WF System Co., Ltd.
 ORCID: 0009-0004-6753-4020
-版: v0.2（草稿・査読反映）
+版: v0.2
 日付: 2026 年 6 月
-DOI（本版）: 未付与
-Concept DOI: 未付与
+DOI（本版）: 10.5281/zenodo.20640457
+Concept DOI: 10.5281/zenodo.20640456
 ライセンス: CC BY 4.0
 
 * * *
@@ -214,7 +214,7 @@ $\Sigma\lambda^2$ 非保存の数値確認は奇数 $s\le15$ の全整合分割6
 
 [2] 木原 範昭, 論文4, v1.0, 2026. Concept DOI: 10.5281/zenodo.20638962.
 
-[3] 木原 範昭, 「論文5：セル＝定在波辞書と半径の量子化」, v0.2, 2026.
+[3] 木原 範昭, 「論文5：セル＝定在波辞書と半径の量子化」, v0.2, 2026. Concept DOI: 10.5281/zenodo.20640454.
 
 [4] E. Noether, "Invariante Variationsprobleme," Nachr. Königl. Ges. Wiss. Göttingen (1918), 235–257.
 
