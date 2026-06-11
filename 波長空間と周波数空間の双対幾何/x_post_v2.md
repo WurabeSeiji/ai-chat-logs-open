@@ -20,17 +20,11 @@
 
 # X / Twitter 用ポスト v2（シリーズ完結、英語版）
 
-The Dual Geometry series is complete: from three assumptions (νλ=1, zero point 1/2, one asymmetric bit), how much of what looks quantum and spacetime-like follows as theorems? Exclusion, stable species {1,3,5}, d=4, measurement as append. 12 papers on Zenodo.
+The Dual Geometry series is complete: from three assumptions (νλ=1, zero point 1/2, one asymmetric bit), how much of what looks quantum and spacetime-like follows as theorems? 12 papers on Zenodo.
 
 Details: https://note.com/kiharanoriaki/n/ne161bb2bf44a
 
 #QuantumMechanics #Spacetime #Zenodo
 
 ----- 文字数メモ -----
-本文245字＋URL（23換算）＋タグ37字＝約278/280。超過する場合の短縮版：
-
-The Dual Geometry series is complete: from three assumptions (νλ=1, zero point 1/2, one asymmetric bit), how much of what looks quantum and spacetime-like follows as theorems? 12 papers on Zenodo.
-
-Details: https://note.com/kiharanoriaki/n/ne161bb2bf44a
-
-#QuantumMechanics #Spacetime #Zenodo
+本文＋タグ＋URL（23換算）＝約270/280ウェイト（実測で制限内を確認済み）。note 英語版の OGP バナーが自動表示される。
