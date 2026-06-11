@@ -5,7 +5,7 @@
 著者: 木原 範昭 (Noriaki Kihara)
 所属: WF System Co., Ltd.
 ORCID: 0009-0004-6753-4020
-版: v0.1（草稿）
+版: v0.2（草稿・査読反映）
 日付: 2026 年 6 月
 DOI（本版）: 未付与
 Concept DOI: 未付与
@@ -200,11 +200,11 @@ $$
 
 [1] 木原 範昭, 論文4, v1.0, 2026. Concept DOI: 10.5281/zenodo.20638962.
 
-[2] 木原 範昭, 論文5, v0.1, 2026.
+[2] 木原 範昭, 論文5, v0.2, 2026.
 
-[3] 木原 範昭, 論文6, v0.1, 2026.
+[3] 木原 範昭, 論文6, v0.2, 2026.
 
-[4] 木原 範昭, 論文7, v0.1, 2026.
+[4] 木原 範昭, 論文7, v0.2, 2026.
 
 [5] J. H. Jeans, "The stability of a spherical nebula," Philosophical Transactions of the Royal Society A 199 (1902), 1–53.
 

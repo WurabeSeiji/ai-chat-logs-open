@@ -5,7 +5,7 @@
 著者: 木原 範昭 (Noriaki Kihara)
 所属: WF System Co., Ltd.
 ORCID: 0009-0004-6753-4020
-版: v0.1（草稿）
+版: v0.2（草稿・査読反映）
 日付: 2026 年 6 月
 DOI（本版）: 未付与
 Concept DOI: 未付与
@@ -206,11 +206,11 @@ $d=4$ は本モデルにおいて、(i) 安定性（検閲天井、上から）�
 
 [1] 木原 範昭, 論文4, v1.0, 2026. Concept DOI: 10.5281/zenodo.20638962.
 
-[2] 木原 範昭, 論文5, v0.1, 2026.
+[2] 木原 範昭, 論文5, v0.2, 2026.
 
-[3] 木原 範昭, 論文6, v0.1, 2026.
+[3] 木原 範昭, 論文6, v0.2, 2026.
 
-[4] 木原 範昭, 論文9, v0.1, 2026.
+[4] 木原 範昭, 論文9, v0.2, 2026.
 
 [5] P. Ehrenfest, "In what way does it become manifest in the fundamental laws of physics that space has three dimensions?," Proceedings of the Amsterdam Academy 20 (1917), 200–209.
 
