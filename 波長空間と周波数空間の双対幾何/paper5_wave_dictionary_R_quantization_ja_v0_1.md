@@ -130,6 +130,11 @@ $$
 
 $16\pi/3=16.7552$ へ単調収束する。
 
+![Figure 1. Convergence of the volume-gap coefficient and effective Weyl boundary terms](figure_paper5_1_weyl_gap_convergence.png)
+
+**図1. 体積ギャップ係数の収束（左：厳密 $N_0$ による $\Delta V/R^3\to16\pi/3$、右：4境界系のフィット済み $R^3$ 係数）。零点シフトは Dirichlet 単位箱のちょうど2倍の有効境界を生む。**
+
+
 ### 4.2 零点シフト＝有効境界
 
 不足量 $(\pi^2/2)R^4-N(R)$ を $aR^3$ でフィット（$R=50$–$320$）すると：
@@ -187,9 +192,19 @@ $n$ 個の奇数の和は $n\pmod 2$ に合同であるから、$R^2=\sum_a R_a'
 
 干渉波の整合条件と積み上げの数え上げは、独立な説明ではなく、**前者が後者の分裂定理から例外を除去する正にその条件**であった。
 
+![Figure 2. Exception-free splitting theorem under coherence](figure_paper5_3_splitting_theorem.png)
+
+**図2. 例外なし分裂定理：無制限分割では4つの違反（$s=15,17,21,23$）が存在するが、整合（全奇数）分割では全消去される（$s\le25$ 全数）。**
+
+
 ### 6.4 自己相似スペクトル
 
 整合ラベル $m$ における断片の内部容量 $N_0(\sqrt m)$ は $m=1,3,5,7,9,\ldots$ に対し $1,9,33,73,137,\ldots$ であり、代表値スペクトルと容量列は**全階層で同一**である。論文4 §9.3 の自己相似的階層は、ラベル集合のレベルで厳密化される。
+
+![Figure 3. Rigid tiling of the energy axis by odd labels](figure_paper5_2_rigid_tiling.png)
+
+**図3. 剛体タイル化：$N_0(\sqrt s)$ のジャンプは奇数 $s$ でのみ生起し、各奇数ラベルが幅ちょうど2の窓を所有する。**
+
 
 * * *
 
