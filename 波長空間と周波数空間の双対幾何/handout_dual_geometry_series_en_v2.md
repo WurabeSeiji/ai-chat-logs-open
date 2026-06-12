@@ -4,7 +4,7 @@
 
 ## In one page
 
-Three assumptions — **νλ=1 (one relation), the zero point ½ (one constant), one asymmetric bit** — plus two operating principles (configuration reading; the record principle). From this inventory alone, the series tests how far quantum-looking and spacetime-looking structures follow **as theorems**, in a discrete system that is machine-checkable at every step. Sixteen papers plus a survey, bilingual Japanese/English, published on Zenodo. **No physical identification is made** (the central thesis: a different map with the same results).
+Three assumptions — **$\nu\lambda=1$ (one relation), the zero point ½ (one constant), one asymmetric bit** — plus two operating principles (configuration reading; the record principle). From this inventory alone, the series tests how far quantum-looking and spacetime-looking structures follow **as theorems**, in a discrete system that is machine-checkable at every step. Sixteen papers plus a survey, bilingual Japanese/English, published on Zenodo. **No physical identification is made** (the central thesis: a different map with the same results).
 
 ## Series map
 
@@ -17,13 +17,13 @@ Three assumptions — **νλ=1 (one relation), the zero point ½ (one constant),
 
 ## Main results of the sequel (published 2026-06-12)
 
-**Paper 13 — Position Had Never Been Read**: discrete position = the wave's sign sector (zero additions to the state space). Space = the Pontryagin dual of the conserved-quantity lattice (its three symmetries are theorems of duality). Three readout strata **11⊂13⊂21** (intensity-only fringes lose about half the information in principle). Clock targets = **all odd integers — proven via Gauss's triangular-number theorem**. t is a derived quantity (no independent inverse map).
+**Paper 13 — Position Had Never Been Read**: discrete position = the wave's sign sector (zero additions to the state space). Space = the Pontryagin dual of the conserved-quantity lattice (its three symmetries are theorems of duality). Three readout strata **$11\subset13\subset21$** (intensity-only fringes lose about half the information in principle). Clock targets = **all odd integers — proven via Gauss's triangular-number theorem**. t is a derived quantity (no independent inverse map).
 
 **Paper 14 — Time Direction and the Stage of Amplitudes**: choosing a time direction = choosing a complex structure (exactly 16 lattice-compatible structures, a single $B_4$ orbit). The transport phase is derived and lands in **$Z_4$ without exception**. Symmetrization postulate → **canonical-convention theorem** (a consequence of set structure).
 
 **Paper 15 — Projection onto xyztRQ**: explicit forward and inverse maps, state → (x,y,z,t,R,Q), built as a five-stage operation; **round trip 500/500; commutes with the conservation laws** (charge-like parity = a theorem of support arithmetic: 39.2% of raw combinations are violation candidates, yet zero violations among contributing paths). Velocity exists only in the sequence of records.
 
-**Paper 16 — The Rigorous Reduction of the Measure Problem**: **no aggregation rule is selected.** The historical proximity 0.0007 = an artifact of two-outcome compression (with three outcomes the divergence jumps three orders). Interference granularity is not a convention: the mirror parent yields **W=0 (exact) ∧ W′=768 (exact)**. The remaining freedom reduces to **granularity × one event bit × conditioning**, with a table of adjudication experiments installed inside the model. The Born rule = "an effective law to merge with in the appropriate limit" (triple criterion: convergence, suppression, prediction).
+**Paper 16 — The Rigorous Reduction of the Measure Problem**: **no aggregation rule is selected.** The historical proximity 0.0007 = an artifact of two-outcome compression (with three outcomes the divergence jumps three orders). Interference granularity is not a convention: the mirror parent yields **$W=0$ (exact) $\wedge$ $W'=768$ (exact)**. The remaining freedom reduces to **granularity × one event bit × conditioning**, with a table of adjudication experiments installed inside the model. The Born rule = "an effective law to merge with in the appropriate limit" (triple criterion: convergence, suppression, prediction).
 
 ![The readout hierarchy 11 in 13 in 21](./paper13_fig2_readout_layers.png)
 
@@ -33,7 +33,7 @@ Three assumptions — **νλ=1 (one relation), the zero point ½ (one constant),
 
 ![Granularity is not a convention; the four-value lock](./paper16_fig3_granularity.png)
 
-▲ Top to bottom: the readout hierarchy (intensity 11 ⊂ line-position 13 ⊂ branch channels 21 = complete separation; Paper 13) / transport phases landing on Z4 (all 196 paths, zero exceptions; Paper 14) / the mirror cancellation W=0 with W'>0 and the four-value lock (Paper 16). All figures are exact computations.
+**Top to bottom**: the readout hierarchy (intensity 11 $\subset$ line-position 13 $\subset$ branch channels 21 = complete separation; Paper 13) / transport phases landing exactly on $Z_4$ (all 196 paths, zero exceptions; Paper 14) / **the xyztRQ space at a glance** (3D arrangement, world lines with tick $1/R$, the $(R,Q)$ ledger plane, the constraint surface $R^2=s$ with virtual $\pm1$; Paper 15) / the mirror cancellation $W=0\wedge W'>0$ and the four-value lock (Paper 16). All figures are exact computations.
 
 ## The survey: the axiom exchange balance
 
@@ -53,10 +53,10 @@ Every claim is supported by exhaustive verification, exact identities, and machi
 
 ## Access
 
-- **Papers 1–16**: Zenodo Concept DOIs 10.5281/zenodo.20588036 – 20665699 (full list in 論文一覧.md)
+- **Papers 1–16**: Zenodo Concept DOIs 10.5281/zenodo.20588036 – 20665699 (full list in the paper index, Ronbun-Ichiran.md, in the series folder)
 - **Survey**: 10.5281/zenodo.20666132
 - **Repository snapshot** (permanent archive of everything): 10.5281/zenodo.20666114
-- **Repository** (84 supplements, all scripts, review records, indexes): https://github.com/WurabeSeiji/ai-chat-logs-open (folder: 波長空間と周波数空間の双対幾何)
+- **Repository** (84 supplements, all scripts, review records, indexes): https://github.com/WurabeSeiji/ai-chat-logs-open (series folder: "Dual Geometry of Wavelength and Frequency Spaces" — Japanese folder name; identifiable as the only series folder)
 
 ## Standing (restated)
 
