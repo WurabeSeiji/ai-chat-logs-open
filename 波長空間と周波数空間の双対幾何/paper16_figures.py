@@ -42,14 +42,14 @@ plt.tight_layout(); plt.savefig('paper16_fig2_divergence.png',dpi=150); plt.clos
 
 # fig3: 粒度の物理 (鏡像親) + 四値ロック
 fig,ax=plt.subplots(1,2,figsize=(12.5,4.4))
-groups=['m=2 (s=7)\nA','m=2\nmirror B','m=3 (s=13)\nA','m=3\nmirror B']
-Wch=[52,32,9216,0]; Wcf=[36,16,768,768]
-xx=np.arange(4)
+groups=['m=2 (s=7)\nA','m=2\nmirror B','m=3 (s=13)\nA','m=3\nmirror B','m=4 (s=21)\nA ch(5,7,9)','m=4\nmirror B ch(5,7,9)']
+Wch=[52,32,9216,0,147456,0]; Wcf=[36,16,768,768,3072,3072]
+xx=np.arange(6)
 b1=ax[0].bar(xx-0.2,Wch,0.4,label='W (channel-consistent)')
 b2=ax[0].bar(xx+0.2,Wcf,0.4,label="W' (configuration granularity)")
-ax[0].set_yscale('symlog'); ax[0].set_xticks(xx); ax[0].set_xticklabels(groups,fontsize=8)
-for b,v in zip(list(b1)+list(b2),Wch+Wcf): ax[0].text(b.get_x()+b.get_width()/2,max(v,1)*1.2,str(v),ha='center',fontsize=8)
-ax[0].set_title("(a) Granularity has physical content:\nthe mirror parent at m=3 has W=0 yet W'=768=W'(A) exactly\n(and the effect is NOT scale-free: m=2 violates both)")
+ax[0].set_yscale('symlog'); ax[0].set_xticks(xx); ax[0].set_xticklabels(groups,fontsize=7)
+for b,v in zip(list(b1)+list(b2),Wch+Wcf): ax[0].text(b.get_x()+b.get_width()/2,max(v,1)*1.2,str(v),ha='center',fontsize=7)
+ax[0].set_title("(a) Granularity is not a convention: mirror cancellation W=0 with W'>0\nfull at m=3; per-CHANNEL at m=4 (ch (5,7,9)); absent at m=2.\nW' mirror-equality holds for ALL channels at m>=3 (suppl. 84)")
 ax[0].legend(fontsize=8)
 sizes=[12,12,6,6]
 lbl=['ratio 0 (χ=−i)','ratio ∞ (χ=+i)','ratio +1 (A-only)','ratio −1 (B-only)']
