@@ -108,7 +108,7 @@ Of the six coordinates xyztRQ, only $xyz$ plus the event count are free. The che
 
 **(ii) A theorem (which could have failed, and is proven)**:
 
-> **Theorem 8 (charge-like parity selection rule)**: if a transport coefficient is nonzero, $\varepsilon$ is multiplicatively conserved. Proof: $C_c\neq0$ requires the target $v_p=n_a+n_b$ (with $n$ on the coefficient support, $|n_{a,j}|=|v_{a,j}|$), and integer-sum parity gives $|v_{p,j}|\equiv|v_{a,j}|+|v_{b,j}|\pmod 2$ per axis; summing over axes, $\varepsilon(v_p)=\varepsilon(v_a)\varepsilon(v_b)$. Applying this to both stages, $\varepsilon_{\rm parent}=\prod\varepsilon_{\rm daughters}$. ∎
+> **Theorem 8 (charge-like parity selection rule; the general-lemma form is canonical as Paper 14, Appendix A-3 — this theorem is its selection-rule expression)**: if a transport coefficient is nonzero, $\varepsilon$ is multiplicatively conserved. Proof: $C_c\neq0$ requires the target $v_p=n_a+n_b$ (with $n$ on the coefficient support, $|n_{a,j}|=|v_{a,j}|$), and integer-sum parity gives $|v_{p,j}|\equiv|v_{a,j}|+|v_{b,j}|\pmod 2$ per axis; summing over axes, $\varepsilon(v_p)=\varepsilon(v_a)\varepsilon(v_b)$. Applying this to both stages, $\varepsilon_{\rm parent}=\prod\varepsilon_{\rm daughters}$. ∎
 
 Machine confirmation: zero violations over all 118,944 contributing paths. Control: among raw cell combinations (s=13, 11.4 million) **39.2% violate ε** — violating candidates abound on the support, and the readout dictionary annihilates their amplitudes exactly. Charge-like conservation appears neither as a postulate nor as an empirical selection effect, but as a **theorem of parity arithmetic on the support**.
 
