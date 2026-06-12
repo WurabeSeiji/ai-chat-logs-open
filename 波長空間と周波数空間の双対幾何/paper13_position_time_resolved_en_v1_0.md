@@ -3,6 +3,8 @@
 **Author**: Noriaki Kihara
 **Date**: June 12, 2026
 **Version**: v1.0 (final; v0.2 incorporated the 14 points of the first review [major revision], v1.0 the points R1–R5 of the second review [accept with minor conditions])
+**DOI (this version)**: 10.5281/zenodo.20665634 / **Concept DOI**: 10.5281/zenodo.20665633
+**License**: CC BY 4.0
 **Series**: Dual Geometry of Wavelength Space and Frequency Space (Paper 13, sequel to Papers 1–12)
 
 ---

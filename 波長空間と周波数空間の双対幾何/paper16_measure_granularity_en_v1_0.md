@@ -3,6 +3,8 @@
 **Author**: Noriaki Kihara
 **Date**: June 12, 2026
 **Version**: v1.0 (final; v0.2 incorporated the 6 mandatory points of the first review [major revision; the entrance examination — "report of the selection problem, not a pre-emption of the selection" — was passed], v1.0 the points R1–R6 of the second review [accept with minor conditions])
+**DOI (this version)**: 10.5281/zenodo.20665700 / **Concept DOI**: 10.5281/zenodo.20665699
+**License**: CC BY 4.0
 **Series**: Dual Geometry of Wavelength Space and Frequency Space (Paper 16, sequel to Papers 1–15)
 
 ---

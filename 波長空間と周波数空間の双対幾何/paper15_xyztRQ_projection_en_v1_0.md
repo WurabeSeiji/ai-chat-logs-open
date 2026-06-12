@@ -3,6 +3,8 @@
 **Author**: Noriaki Kihara
 **Date**: June 12, 2026
 **Version**: v1.0 (final; v0.2 incorporated the 14 referee points of the claude.ai review, v1.0 the 3 residual points of the second-round review (accept))
+**DOI (this version)**: 10.5281/zenodo.20665689 / **Concept DOI**: 10.5281/zenodo.20665688
+**License**: CC BY 4.0
 **Series**: Dual Geometry of Wavelength Space and Frequency Space (sequel to Papers 1–14)
 **Note**: originally reviewed and accepted as "Paper 13"; renumbered to **Paper 15** upon insertion of the new Papers 13 (position and time resolved) and 14 (time direction and the amplitude stage) — the only content change is the redirection of citations. The numbering is independent of other series.
 
