@@ -1,16 +1,16 @@
-# Paper 13: Projection onto xyztRQ — Construction and Machine Verification of the Map and Inverse Map from the Discrete Dual System to Spacetime Coordinates
+# Paper 15: Projection onto xyztRQ — Construction and Machine Verification of the Map and Inverse Map from the Discrete Dual System to Spacetime Coordinates
 
 **Author**: Noriaki Kihara
 **Date**: June 12, 2026
 **Version**: v1.0 (final; v0.2 incorporated the 14 referee points of the claude.ai review, v1.0 the 3 residual points of the second-round review (accept))
-**Series**: Dual Geometry of Wavelength Space and Frequency Space (sequel to Papers 1–12)
-**Note**: This is Paper 13 of the present series; the numbering is independent of any "Paper 13" in other series (central-projection / model-particle line).
+**Series**: Dual Geometry of Wavelength Space and Frequency Space (sequel to Papers 1–14)
+**Note**: originally reviewed and accepted as "Paper 13"; renumbered to **Paper 15** upon insertion of the new Papers 13 (position and time resolved) and 14 (time direction and the amplitude stage) — the only content change is the redirection of citations. The numbering is independent of other series.
 
 ---
 
 ## Abstract
 
-From the state data of the discrete dual system constructed in Papers 1–12 (three axioms — reciprocal duality νλ=1, zero point ½, asymmetric single bit — plus the operating principles of configuration reading and the record principle), we construct an **explicit projection and inverse projection** onto the spacetime coordinates $(x,y,z,t)$ and the ledger coordinates $(R,Q)$, and machine-verify every stage. Main results: (1) **Spatial coordinates** are given by a mixed-radix $[4;k,k,\dots]$ quarter-digit expansion ($k$ = the odd genealogy ratio); the digits are read from the phase classes (Z₄) of the transcription lines of the record by peeling decode. The only genealogy for which the readout closes within the digital alphabet of the record is the **ternary one ($k{=}3$)** (information count $2\,\mathrm{bit}\ge\log_2 k$). (2) **Time is a derived quantity**: $\nu_t=\sqrt{s}$ (the norm clock), $t=\sum 1/\nu_t$ (event accumulation). It has no independent inverse map — not a defect, but the map-level realization of the theorem (Paper 12, Supplement 48) that $t$ is not a fundamental degree of freedom. (3) **R and Q require no map**: $R=\sqrt{s}$ and $Q=\varepsilon$ are B₄ invariants shared by all markings, and the image of the projection lies on the constraint surface $\Sigma=\{R^2=s,\ Q=\varepsilon\}$ (codimension 2) — the formal statement of "subjective 4D within six background axes." (4) **Inverse map**: space is constructively invertible (rounding loss below the censorship quantum; composite round trip 500/500), time admits only event counting, R/Q are constraints. (5) **Compatibility with conservation laws**: the value of $s$ read from the record alone is additive across decays (60/60 — a check that could have failed), and the multiplicative conservation of the charge-like $Q$ is a **theorem of parity arithmetic on the support** (Theorem 8), enforced mechanically by transport: 39.2% of raw cell combinations violate ε, yet zero of the amplitude-carrying paths do. (6) **4D lift**: product waves possess no pure-axis lines (sum/difference lines only), and the simultaneous half-wave shift of an even number of active axes is an identity of the state — the readout decodes exactly to that quotient (4-axis exhaustive: 32 classes, one-to-one), while parity-mixed composites break the degeneracy completely (all 256 configurations uniquely decoded). (7) **Kinematics**: uniform motion is a mixed-radix odometer of the position digits; the amplitude spectrum, wavelength content, R, and Q do not evolve in time (deviation $10^{-15}$) — only the phase evolves, linearly, and its rotation rate is the velocity (exactly $f\cdot v$). **Velocity exists nowhere in a single record; it exists only in the sequence of records.** This paper does not claim a re-derivation of standard theory. No physical identification is made.
+From the state data of the discrete dual system constructed in Papers 1–12 (three axioms — reciprocal duality νλ=1, zero point ½, asymmetric single bit — plus the operating principles of configuration reading and the record principle), we construct an **explicit projection and inverse projection** onto the spacetime coordinates $(x,y,z,t)$ and the ledger coordinates $(R,Q)$, and machine-verify every stage. Main results: (1) **Spatial coordinates** are given by a mixed-radix $[4;k,k,\dots]$ quarter-digit expansion ($k$ = the odd genealogy ratio); the digits are read from the phase classes (Z₄) of the transcription lines of the record by peeling decode. The only genealogy for which the readout closes within the digital alphabet of the record is the **ternary one ($k{=}3$)** (information count $2\,\mathrm{bit}\ge\log_2 k$). (2) **Time is a derived quantity**: $\nu_t=\sqrt{s}$ (the norm clock), $t=\sum 1/\nu_t$ (event accumulation). It has no independent inverse map — not a defect, but the map-level realization of the theorem (Paper 13, Theorem 6) that $t$ is not a fundamental degree of freedom. (3) **R and Q require no map**: $R=\sqrt{s}$ and $Q=\varepsilon$ are B₄ invariants shared by all markings, and the image of the projection lies on the constraint surface $\Sigma=\{R^2=s,\ Q=\varepsilon\}$ (codimension 2) — the formal statement of "subjective 4D within six background axes." (4) **Inverse map**: space is constructively invertible (rounding loss below the censorship quantum; composite round trip 500/500), time admits only event counting, R/Q are constraints. (5) **Compatibility with conservation laws**: the value of $s$ read from the record alone is additive across decays (60/60 — a check that could have failed), and the multiplicative conservation of the charge-like $Q$ is a **theorem of parity arithmetic on the support** (Theorem 8), enforced mechanically by transport: 39.2% of raw cell combinations violate ε, yet zero of the amplitude-carrying paths do. (6) **4D lift**: product waves possess no pure-axis lines (sum/difference lines only), and the simultaneous half-wave shift of an even number of active axes is an identity of the state — the readout decodes exactly to that quotient (4-axis exhaustive: 32 classes, one-to-one), while parity-mixed composites break the degeneracy completely (all 256 configurations uniquely decoded). (7) **Kinematics**: uniform motion is a mixed-radix odometer of the position digits; the amplitude spectrum, wavelength content, R, and Q do not evolve in time (deviation $10^{-15}$) — only the phase evolves, linearly, and its rotation rate is the velocity (exactly $f\cdot v$). **Velocity exists nowhere in a single record; it exists only in the sequence of records.** This paper does not claim a re-derivation of standard theory. No physical identification is made.
 
 ---
 
@@ -18,7 +18,7 @@ From the state data of the discrete dual system constructed in Papers 1–12 (th
 
 ### 1.1 The question
 
-Papers 1–12 constructed a discrete system from the reciprocal duality $\nu\lambda=1$, the zero point ½, and a single asymmetric bit, and showed that position (Paper 12, Suppl. 43), time (Suppl. 48), and the stage for amplitudes (Suppl. 49–52) are handled by the existing inventory alone. What remained was the **map itself**:
+Papers 1–12 constructed a discrete system from the reciprocal duality $\nu\lambda=1$, the zero point ½, and a single asymmetric bit, and showed that position (Paper 13, Theorems 1–2), time (Suppl. 48), and the stage for amplitudes (Suppl. 49–52) are handled by the existing inventory alone. What remained was the **map itself**:
 
 > Can the state data of the system be mapped to, and inverted from, the standard physical coordinates $(x,y,z,t)$ and the ledger coordinates $(R,Q)$ as an **actual operation**?
 
@@ -34,7 +34,7 @@ We do not claim (i) a re-derivation of standard theory, (ii) a construction of c
 
 ## 2. Preliminaries (minimal recap)
 
-State data: occupied cells $k\in\mathbb{Z}^4$ (configuration reading: the state *is* the set of occupied cells = the wave itself), branch (cos/sin) and sign per level, the genealogy chain (odd-ratio nesting $k_\ell$, Paper 9), and the ledger $s=\sum_i(|k_i|+\tfrac12)^2$, $\varepsilon=(-1)^{\Sigma|k_i|}$. The record: the hologram $I=\Psi^2$ — its physical content is the **line coefficients (relational data)**; the position-space picture is their Pontryagin-dual chart (space = the character group of the conserved-charge lattice; Paper 12, Suppl. 43). Gauge data of the chart: the marking $u$ (choice of the time-read axis; 16 choices forming a single B₄ orbit) and the **per-axis orientations** $Z_2^{\,4}$ (choice of positive branch direction — the position-reading counterpart of the orientation fixing in Suppl. 51). These are held fixed below.
+State data: occupied cells $k\in\mathbb{Z}^4$ (configuration reading: the state *is* the set of occupied cells = the wave itself), branch (cos/sin) and sign per level, the genealogy chain (odd-ratio nesting $k_\ell$, Paper 9), and the ledger $s=\sum_i(|k_i|+\tfrac12)^2$, $\varepsilon=(-1)^{\Sigma|k_i|}$. The record: the hologram $I=\Psi^2$ — its physical content is the **line coefficients (relational data)**; the position-space picture is their Pontryagin-dual chart (space = the character group of the conserved-charge lattice; Paper 13, Theorems 1–2). Gauge data of the chart: the marking $u$ (choice of the time-read axis; 16 choices forming a single B₄ orbit (Paper 14, Theorem 2)) and the **per-axis orientations** $Z_2^{\,4}$ (choice of positive branch direction — the position-reading counterpart of the orientation fixing of Paper 14, §3). These are held fixed below.
 
 **Emphasis**: a particle does not "remember" its state. Position = the phase offsets of its wave; R = the norm of its wavelength content; Q = the parity of its content — all are aspects that *constitute* the state. The only memory in the system is the record; every readout in this paper takes the record alone as input.
 
@@ -120,7 +120,7 @@ Machine confirmation: zero violations over all 118,944 contributing paths. Contr
 
 Continuous $x$ → (D4 rounding) → digits → **actual construction of the state** (full combs, three levels) → (§5 forward map) → digits, $\hat x$: over 500 random points, **complete digit agreement 500/500**, maximum error 0.0277 ≤ bound 0.0417.
 
-$t$: no independent inverse exists — $\nu_t$ is derived from the spatial configuration (the realization of the theorem of Suppl. 48; D2 is its implementation). This is consistent with the principle that "t merely appears to have been selected by observation" (the all-axes-symmetric principle). $R,Q$: six-tuples violating the constraints lie outside the image (= the invisible directions).
+$t$: no independent inverse exists — $\nu_t$ is derived from the spatial configuration (the realization of the theorem of Paper 13 (Theorem 6); D2 is its implementation). This is consistent with the principle that "t merely appears to have been selected by observation" (the all-axes-symmetric principle). $R,Q$: six-tuples violating the constraints lie outside the image (= the invisible directions).
 
 ## 9. Condition matrix and robustness
 
@@ -151,10 +151,10 @@ The two are distinct verifications: a rigidly drifting hierarchical composite le
 
 ## 11. Figures
 
-- **Figure 1** (`paper13_fig1_readout.png`): the readout in both spaces — transcription lines in frequency space (odd lines only), superposed combs in position space, fragments on the constraint surface in xyztRQ space, condition-matrix results
-- **Figure 2** (`paper13_fig2_xyztRQ.png`): xyztRQ space — the $(x,y,R)$ 3D arrangement (positions machine-decoded), world lines (tick spacing $1/R$, branching at decay), the $(R,Q)$ ledger plane, the constraint surface $R^2=s$ with virtual ±1
-- **Figure 3** (`paper13_fig3_conservation.png`): conservation — spectra before/after the decay $9\to(5,1,3)$, the $R^2$ ledger (virtual +1 borrowing), the ε control (39.2% vs 0), verification summary
-- **Figure 4** (`paper13_fig4_uniform_motion.png`): uniform motion — the x–t world line, the spacetime record (rigid drift, O2), spectral invariance, linear phase rotation
+- **Figure 1** (`paper15_fig1_readout.png`): the readout in both spaces — transcription lines in frequency space (odd lines only), superposed combs in position space, fragments on the constraint surface in xyztRQ space, condition-matrix results
+- **Figure 2** (`paper15_fig2_xyztRQ.png`): xyztRQ space — the $(x,y,R)$ 3D arrangement (positions machine-decoded), world lines (tick spacing $1/R$, branching at decay), the $(R,Q)$ ledger plane, the constraint surface $R^2=s$ with virtual ±1
+- **Figure 3** (`paper15_fig3_conservation.png`): conservation — spectra before/after the decay $9\to(5,1,3)$, the $R^2$ ledger (virtual +1 borrowing), the ε control (39.2% vs 0), verification summary
+- **Figure 4** (`paper15_fig4_uniform_motion.png`): uniform motion — the x–t world line, the spacetime record (rigid drift, O2), spectral invariance, linear phase rotation
 
 All figures are exact computations (no schematic drawings).
 
@@ -179,7 +179,7 @@ All figures are exact computations (no schematic drawings).
 | Full combs, peeling | 36/36, err 3.4e-15 | exhaustive | supplement63_full_comb_collision_test.py |
 | Even drop | leakage 2e-15 | exhaustive (cutoff 81) | same |
 | 2-axis diagonal quotient, parity mixing | 16/16, 8 classes, 144, 16/16 | exhaustive | supplement64_4d_product_wave_test.py |
-| **4-axis full check** | 32 classes one-to-one, **256/256** | exhaustive | paper13_appendix_4axis_check.py |
+| **4-axis full check** | 32 classes one-to-one, **256/256** | exhaustive | paper15_appendix_4axis_check.py |
 | Composite round trip (inverse) | 500/500 | random | supplement62_inverse_roundtrip_test.py |
 | Bookkeeping consistency (R² additivity, ±1) | 118,944/118,944 | exhaustive (true by construction, §7-i) | supplement65_conservation_tests.py |
 | Theorem 8 (ε selection rule), machine confirmation | 118,944/118,944; control 39.2%→0 | exhaustive + theorem | supplement65_controls.py |
@@ -190,6 +190,6 @@ All figures are exact computations (no schematic drawings).
 
 ---
 
-**Acknowledgments / history**: the verification of this paper was carried out under the two-party independent verification protocol of Claude Code (local machine verification) and claude.ai (independent re-computation and review). Source material: Supplements 62–67 (June 12, 2026). v0.2: 14 referee points incorporated (review with independent re-implementation reproducing all computational claims); v1.0: 3 residual points of the second-round review (accept).
+**Acknowledgments / history**: the verification of this paper was carried out under the two-party independent verification protocol of Claude Code (local machine verification) and claude.ai (independent re-computation and review). Source material: Supplements 62–67 (June 12, 2026); foundational theorems now in Papers 13–14. v0.2: 14 referee points incorporated (review with independent re-implementation reproducing all computational claims); v1.0: 3 residual points of the second-round review (accept).
 
 No physical identification is made.
