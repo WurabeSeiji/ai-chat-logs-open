@@ -44,9 +44,13 @@ This paper closes the distance between "it should be possible" and "formulated a
 
 Uniform motion is mapped as well. The absolute spectrum does not evolve; only the phase does — **velocity exists nowhere in a single record; it exists only in the sequence of records.**
 
-![Figure 3: the map of uniform motion](./paper15_fig4_uniform_motion.png)
+![Figure 3: the xyztRQ space at a glance](./paper15_fig2_xyztRQ.png)
 
-▲ Figure 3: uniform motion (Paper 15). Top left: decoded positions lie on an exact straight world line. Top right: the comb drifts rigidly through the spacetime record. Bottom left: the amplitude spectrum does not evolve (four snapshots coincide; deviation 1e-15). Bottom right: only the phase moves, and its rotation rate is the velocity itself — velocity exists nowhere in a single record, only in the sequence of records.
+▲ Figure 3: the xyztRQ space (Paper 15). Top left: machine-decoded positions on the (x, y, R) arrangement (red circles Q=+1, blue squares Q=−1). Top right: world lines — the clock ticks at 1/R, branching at a decay event into three lines, each with its own rate. Bottom left: the (R, Q) ledger plane (the allowed rungs are discrete; decays conserve the sum of R² and the product of Q exactly). Bottom right: every recorded state lies exactly on the constraint surface R²=s; only virtual steps leave it, by exactly ±1, returning at the next record. Of the six coordinates only position is free — a one-picture summary of R and t being derived quantities.
+
+![Figure 4: the map of uniform motion](./paper15_fig4_uniform_motion.png)
+
+▲ Figure 4: uniform motion (Paper 15). Top left: decoded positions lie on an exact straight world line. Top right: the comb drifts rigidly through the spacetime record. Bottom left: the amplitude spectrum does not evolve (four snapshots coincide; deviation 1e-15). Bottom right: only the phase moves, and its rotation rate is the velocity itself — velocity exists nowhere in a single record, only in the sequence of records.
 
 ## Paper 16: The Rigorous Reduction of the Measure Problem
 
@@ -56,9 +60,9 @@ A sample of the findings: the historical proximity once read as "close to a meas
 
 Conclusion: the remaining freedom of aggregation reduces to a finite decision structure — **interference granularity × one event-structure bit × conditioning** — and the adjudication between candidates stands as a **table of experiments computable inside the model**. The Born rule is placed in the status of "an effective law to be merged with in the appropriate limit," with the triple acceptance criterion of convergence, suppression, and prediction.
 
-![Figure 4: interference granularity is not a convention](./paper16_fig3_granularity.png)
+![Figure 5: interference granularity is not a convention](./paper16_fig3_granularity.png)
 
-▲ Figure 4: the non-conventionality of interference granularity (Paper 16). Left: the mirror parent vanishes exactly (W=0) under channel-consistent aggregation, yet decays perfectly normally at configuration granularity (W′=768) — an exact example where the same amplitudes live or die by the bundling alone; absent at m=2, per-channel at m=4. Right: the "four-value lock" fixing the occurrence condition (36 configurations, zero exceptions).
+▲ Figure 5: the non-conventionality of interference granularity (Paper 16). Left: the mirror parent vanishes exactly (W=0) under channel-consistent aggregation, yet decays perfectly normally at configuration granularity (W′=768) — an exact example where the same amplitudes live or die by the bundling alone; absent at m=2, per-channel at m=4. Right: the "four-value lock" fixing the occurrence condition (36 configurations, zero exceptions).
 
 ## The Survey: From One Relation, One Constant, and One Bit
 

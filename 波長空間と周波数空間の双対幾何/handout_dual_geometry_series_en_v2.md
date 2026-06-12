@@ -29,6 +29,8 @@ Three assumptions — **νλ=1 (one relation), the zero point ½ (one constant),
 
 ![Transport phases land exactly on Z4](./paper14_fig1_eta_z4.png)
 
+![The xyztRQ space at a glance](./paper15_fig2_xyztRQ.png)
+
 ![Granularity is not a convention; the four-value lock](./paper16_fig3_granularity.png)
 
 ▲ Top to bottom: the readout hierarchy (intensity 11 ⊂ line-position 13 ⊂ branch channels 21 = complete separation; Paper 13) / transport phases landing on Z4 (all 196 paths, zero exceptions; Paper 14) / the mirror cancellation W=0 with W'>0 and the four-value lock (Paper 16). All figures are exact computations.
