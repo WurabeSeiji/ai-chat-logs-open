@@ -251,7 +251,7 @@ The Twin Minimal Space Model
 ## 変更履歴
 
 ### 2026-06-12
-- **note 記事(日本語版・続報)を公開**:「位置は読まれていなかった── 双対幾何シリーズ続報:論文13〜16と総説を一斉公開」 https://note.com/kiharanoriaki/n/nefcd306c9016 。原稿 `note_article_ja_v3.md`、添付図5点(図1 符号セクター/図2 Z₄着地/図3 xyztRQ 空間/図4 等速運動/図5 粒度と四値ロック — 全て実計算図の流用)。英語版(`note_article_en_v3.md`)は未投稿。
+- **note 記事(続報・日英)を公開**:日本語版「位置は読まれていなかった── 双対幾何シリーズ続報:論文13〜16と総説を一斉公開」 https://note.com/kiharanoriaki/n/nefcd306c9016 ／英語版 https://note.com/kiharanoriaki/n/n6d8ab15ea24c 。原稿 `note_article_ja_v3.md` / `note_article_en_v3.md`、添付図5点(図1 符号セクター/図2 Z₄着地/図3 xyztRQ 空間/図4 等速運動/図5 粒度と四値ロック — 全て実計算図の流用)。
 - **シリーズハンズアウト v2(日英)を確定**:`handout_dual_geometry_series_ja_v2.pdf` / `_en_v2.pdf`(md/tex 同梱)。全16論文+総説の一枚もの(シリーズ地図・続報主結果・公理の交換収支表・アクセス)+実計算図4点(読み出し三層/Z₄着地/xyztRQ 全体像/粒度と四値ロック)。EN 版は記号の数式化・日本語ローマ字化・float[H] 固定まで査読往復2回を経て確定。
 - **リポジトリ・スナップショットを Zenodo 公開**:論文13〜16 公開直後の時点(コミット 6fae9b56)を凍結 — Concept DOI **10.5281/zenodo.20666114**(Version 20666115)。内容:論文1〜16 の全ソース(日英 md/tex/pdf・実計算図)・補遺1〜84(検証スクリプト同梱)・査読記録(各2ラウンド+チェックリスト)・索引2点、339MB。全16論文へ isSupplementTo で連結。総説の恒久引用先。
 - **総説 v1.0(日英)を公開準備完了**:「関係ひとつ・定数ひとつ・1ビットから — 標準理論への辞書と公理の交換収支」。出典 DOI 全確定(§5 全「公」化)・スナップショット DOI 記入済み・引用地図の機械照合済み。**公開済み** — Concept DOI **10.5281/zenodo.20666132**(Version 20666133)。日英 md/tex/pdf 計6ファイル、全16論文へ reviews・スナップショットへ isSupplementedBy で連結。公開作業完了時点の固定参照(コミット 0e96abb2)を本文に併記。
