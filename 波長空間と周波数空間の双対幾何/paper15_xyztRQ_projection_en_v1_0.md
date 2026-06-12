@@ -18,7 +18,7 @@ From the state data of the discrete dual system constructed in Papers 1–12 (th
 
 ### 1.1 The question
 
-Papers 1–12 constructed a discrete system from the reciprocal duality $\nu\lambda=1$, the zero point ½, and a single asymmetric bit, and showed that position (Paper 13, Theorems 1–2), time (Suppl. 48), and the stage for amplitudes (Suppl. 49–52) are handled by the existing inventory alone. What remained was the **map itself**:
+Papers 1–12 constructed a discrete system from the reciprocal duality $\nu\lambda=1$, the zero point ½, and a single asymmetric bit, and showed that position (Paper 13, Theorem 1 and Definition 2 / Theorems 2a–2b), time (Paper 13, Theorems 5–6), and the stage for amplitudes (Paper 14, Theorems 1–3) are handled by the existing inventory alone. What remained was the **map itself**:
 
 > Can the state data of the system be mapped to, and inverted from, the standard physical coordinates $(x,y,z,t)$ and the ledger coordinates $(R,Q)$ as an **actual operation**?
 
