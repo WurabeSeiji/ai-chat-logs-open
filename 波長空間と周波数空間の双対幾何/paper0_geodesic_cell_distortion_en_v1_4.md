@@ -2,9 +2,9 @@
 
 **Author**: Noriaki Kihara
 **Affiliation**: WF System Co., Ltd. / ORCID: 0009-0004-6753-4020
-**DOI**: Version 10.5281/zenodo.20680270 (this version) / Concept 10.5281/zenodo.20680269 (cite this; always resolves to the latest version)
-**Zenodo**: https://zenodo.org/records/20680270
-**Version**: v1.3 (v1.2 with five exact-computation figures inserted [A: circle→segment / B: circle→3D band→unfold / C: angle excess / E: curvature meter / F: dimensional staircase]. All figures are exact computations, no schematics. Two-party verification protocol.)
+**DOI**: Version 10.5281/zenodo.20684135 (this version) / Concept 10.5281/zenodo.20680269 (cite this; always resolves to the latest version)
+**Zenodo**: https://zenodo.org/records/20684135
+**Version**: v1.4 (v1.3 plus a prior-work paragraph in §4.6 [differentiation from spectral dimension, Böröczky, Schläfli] with external references, a one-sentence Schläfli positioning of the existence threshold in §1, and a fix of the Appendix A math typesetting to proper LaTeX. v1.3 inserted five exact-computation figures into v1.2. All figures are exact computations, no schematics. Two-party verification protocol.)
 **Position**: This is the Foundations volume, **Paper 0**; its correction target is the flat counting of Papers 1–2 (§5). Adding the Paper 0 row to 論文一覧.md / the survey references, and the cross-link with Paper 1, are handled separately as publication management (after this paper is finalized).
 **Seven viewpoints**: edge (1), vertex angle (2), area (3), volume (4), inverse curvature (4.5), dimensional ambiguity and conjugate quantity (4.6), dimensional emergence and the d=4 lock (4.7). All numbers are reproducible with the bundled script; all 6 verification items pass.
 **Series**: The dual geometry of wavelength space and frequency space (Foundations volume, Paper 0)
@@ -40,7 +40,7 @@ Embed S^d(R) of radius R (constant curvature K=1/R²) standardly into (d+1)-dime
 
   R ≥ $R^{*}_{d}$ = 1/(2 arcsin(1/√d)):  $R^{*}_{2}$=2/π≈0.6366, $R^{*}_{3}$≈0.8124, $R^{*}_{4}$=3/π≈0.9549, $R^{*}_{5}$≈1.0784.    (2)
 
-Below $R^{*}_{d}$, a regular geodesic cell of edge length 1 **does not exist** (in the canonical construction) (at R=0.5 all of d≥2 vanish; at R=1.0, d=5 vanishes).
+Below $R^{*}_{d}$, a regular geodesic cell of edge length 1 **does not exist** (in the canonical construction) (at R=0.5 all of d≥2 vanish; at R=1.0, d=5 vanishes). This existence threshold is the edge-normalized (to 1) counterpart of the classical fact that the existence of regular polytopes on the sphere is constrained by a Schläfli-type inequality (an angle-defect condition) [Coxeter 1973].
 
 ![figA](paper0_figA_1d_reference.png)
 
@@ -222,7 +222,7 @@ The round-trip check (R→θ→inverted R) agrees to machine precision for both 
 
 Solving §1's existence condition d·sin²(1/2R) ≤ 1 **for dimension** gives the **maximum dimension** in which a regular geodesic cell of edge length 1 fits at a given curvature radius R:
 
-  d_max(R) = ⌊1/sin²(1/2R)⌋ = ⌊csc²(1/2R)⌋ ≈ 4R² (large-R asymptotics), R ≥ 1/π.    (10)
+  $d_{\max}(R) = \lfloor 1/\sin^2(1/2R)\rfloor = \lfloor \csc^2(1/2R)\rfloor \approx 4R^2$ (large-R asymptotics), $R \ge 1/\pi$.    (10)
 
 That is, **dimension is bounded from above by curvature**. The allowed dimensions lie in the range {1, 2, …, d_max(R)} and are not uniquely determined — **for a given R, dimension has ambiguity**.
 
@@ -262,6 +262,10 @@ That is, **each spatial dimension consumes κ from the unit curvature budget, an
 ### Implication for the series (explicit scope)
 
 The R at which this series operates is small (R=1–3 or so). There, by (10), d_max=4–36, and **dimension 4 is just one value geometrically allowed; geometry alone does not fix d=4**. The fixing to d=4 is due to the arithmetic mechanism of Paper 11 ({1,2,4,8}∩squares), which is a separate axis from the geometric ambiguity here. What this paper shows is the fact, complementary to Paper 11, that "geometry gives dimension a ceiling and an ambiguity, but does not select a particular dimension." **A full connection to the discrete system (a formulation of a dimensional uncertainty relation) is outside the scope of this paper and is left as an observation.**
+
+### Relation to prior work (differentiation)
+
+The idea that dimension need not be unique and can depend on scale is not itself new. The **spectral dimension** measured by diffusion is known to flow from ∼2 at short distances to ∼4 at long distances in quantum gravity (causal dynamical triangulations, asymptotic safety, loop quantum gravity) [Carlip 2017; Ambjørn–Jurkiewicz–Loll 2005], and dimensional regularization and fractal dimension are of the same family. In a constant-curvature space, the closest precedent for a **curvature-radius-dependent geometric bound** is the **Böröczky packing-density upper bound** [Böröczky 1978]. This paper differs in three respects: (i) the source of the ceiling is not diffusion or density but a **discrete existence condition** d·sin²(1/2R)≤1 — "do integer-many regular geodesic cells of edge 1 fit?" (the existence threshold $R^{*}_{d}$ belongs to the lineage of the Schläfli-type existence condition for regular spherical polytopes [Coxeter 1973]); (ii) this takes the form of a **conjugate quantity of dimension** κ=sin²(1/2R) with a capacity relation d·κ≤1, lying on the same saturation-of-a-conserved-budget pattern as νλ=1 and Σν²=𝒩²; (iii) the geometric ceiling and the censorship ceiling of Paper 11 are **two independent mechanisms that critically coincide at d=4** (§4.7). "Why four dimensions" has long been argued in many ways [Ehrenfest 1917; Tegmark 1997], but the claim of this paper lies in the **specificity of this chain**, not in advancing "dimensional ambiguity" in general as a new concept.
 
 ## 4.7 Emergence of dimension from zero and stabilization at d=4 (observation)
 
@@ -368,3 +372,14 @@ Let $f(y)=R(y,w)/\sqrt{|y|^2+w^2}$ and $r=\sqrt{|y|^2+w^2}$. Then $\partial f/\p
 7. Angle→curvature inversion (curvature meter): negative curvature cos θ=+tanh²(1/2R) confirmed in the hyperboloid model; the round-trip check agrees to machine precision for both positive and negative curvature. Hyperbolic has no existence threshold (w²=R²+d t²>0 always, machine-confirmed).
 
 **Acknowledgments / procedure**: v0.1 was drafted as a formulation skeleton by claude.ai. The fixing of the analytic formulas, the four tables, the closed form of the coefficient c_d, the dimension-independence of angle/area, and the existence threshold are due to independent computation by Claude Code (two-party verification protocol). The script `paper0_geodesic_cell_distortion.py` is bundled. No physical identification is made.
+
+## References (external)
+
+In-series works are cited directly in the text (as the Spherical-projection note, Papers 1/5/9/11, etc.). The external works referenced as adjacent prior work (mathematical and conceptual background, not a physical basis for the claims) are:
+
+- [Carlip 2017] S. Carlip, *Dimension and dimensional reduction in quantum gravity*, Classical and Quantum Gravity **34**, 193001 (2017).
+- [Ambjørn–Jurkiewicz–Loll 2005] J. Ambjørn, J. Jurkiewicz, R. Loll, *Spectral dimension of the universe*, Physical Review Letters **95**, 171301 (2005).
+- [Böröczky 1978] K. Böröczky, *Packing of spheres in spaces of constant curvature*, Acta Mathematica Academiae Scientiarum Hungaricae **32**, 243–261 (1978).
+- [Coxeter 1973] H. S. M. Coxeter, *Regular Polytopes*, 3rd ed., Dover (1973).
+- [Ehrenfest 1917] P. Ehrenfest, *In what way does it become manifest in the fundamental laws of physics that space has three dimensions?*, Proceedings of the Amsterdam Academy **20**, 200–209 (1917).
+- [Tegmark 1997] M. Tegmark, *On the dimensionality of spacetime*, Classical and Quantum Gravity **14**, L69–L75 (1997).

@@ -90,10 +90,13 @@
 
 \textbf{著者}: 木原範昭(Noriaki Kihara) \textbf{所属}: WF System Co.,
 Ltd.~/ ORCID: 0009-0004-6753-4020 \textbf{DOI}: Version
-10.5281/zenodo.20680270（本版）/ Concept
+10.5281/zenodo.20684135（本版）/ Concept
 10.5281/zenodo.20680269（外部参照用・最新版へ自動転送） \textbf{Zenodo}:
-https://zenodo.org/records/20680270 \textbf{版}: v1.3(v1.2
-に実計算図5点{[}A:円周→線分／B:円周→3D帯→展開／C:角超過／E:曲率計／F:次元階段{]}を挿入。図は全て厳密計算、模式図なし。二者検算プロトコル)
+https://zenodo.org/records/20684135 \textbf{版}: v1.4(v1.3 に §4.6
+の先行研究段落{[}スペクトル次元・Böröczky・Schläfli
+との差別化{]}と外部参考文献を追加、§1 に存在閾値の Schläfli
+的位置づけを一文、付録A の数式組版を正式 LaTeX に修正。v1.3 は v1.2
+に実計算図5点を挿入。図は全て厳密計算、模式図なし。二者検算プロトコル)
 \textbf{位置づけ}:本稿は基礎篇・\textbf{論文0}であり、補正対象は論文1〜2
 の平坦数え上げ(§5)。論文一覧.md・総説参考文献への論文0 行の追加と論文1
 との相互リンクは出版管理として別途行う(本稿確定後)。
@@ -178,7 +181,9 @@ R ≥ \(R^{*}_{d}\) = 1/(2 arcsin(1/√d)): \(R^{*}_{2}\)=2/π≈0.6366,
 
 \(R^{*}_{d}\) 未満では辺長 1
 の正則測地セルは(正準構成では)\textbf{存在しない}(R=0.5 で d≥2
-全消失、R=1.0 で d=5 消失)。
+全消失、R=1.0 で d=5 消失)。この存在閾値は、球面上の正多胞体の存在が
+Schläfli 的不等式(角欠損条件)で制約されるという古典的事実 {[}Coxeter
+1973{]} の、辺長を 1 に正規化した版にあたる。
 
 \includegraphics[width=0.88\linewidth,height=\textheight,keepaspectratio]{paper0_figA_1d_reference.png}
 
@@ -503,9 +508,8 @@ sinh\(^{2}\)(1/2R)) であり、根号内は常に正------\textbf{辺長 1
 を\textbf{次元について解く}と、与えられた曲率半径 R で辺長 1
 の正則測地セルが収まる\textbf{最大次元}が出る:
 
-d\_max(R) = \$\lfloor\(1/sin\)\^{}\{2\}\((1/2R)\)\rfloor\$ =
-\(\lfloor\)csc\(^{2}\)(1/2R)\(\rfloor\) ≈ 4R\(^{2}\)(大 R 漸近)、R ≥
-1/π. (10)
+\(d_{\max}(R) = \lfloor 1/\sin^2(1/2R)\rfloor = \lfloor \csc^2(1/2R)\rfloor \approx 4R^2\)（大
+R 漸近）、\(R \ge 1/\pi\). (10)
 
 つまり\textbf{次元は曲率によって上から抑えられている}。許される次元は
 \{1, 2, \ldots, d\_max(R)\}
@@ -604,6 +608,26 @@ d\_max=4〜36 であり、\textbf{次元 4
 に固定されない}。d=4 への固定は論文11
 の算術的機構(\{1,2,4,8\}∩平方数)によるものであって、本稿の幾何学的曖昧さとは別軸である。本稿が示すのは「幾何は次元に天井と曖昧さを与えるが、特定の次元は選ばない」という、論文11
 と相補的な事実である。\textbf{離散系への本格的な接続(次元の不確定性関係の定式化)は本稿の範囲外とし、観察の提示にとどめる。}
+
+\subsubsection{先行研究との関係(差別化)}\label{ux5148ux884cux7814ux7a76ux3068ux306eux95a2ux4fc2ux5deeux5225ux5316}
+
+「次元が一意でなくスケールに依存しうる」という着想自体は新しくない。拡散で測る\textbf{スペクトル次元}は量子重力(因果的動的三角分割・漸近安全性・ループ量子重力)で短距離
+∼2・長距離 ∼4 と流れることが知られ {[}Carlip 2017;
+Ambjørn--Jurkiewicz--Loll
+2005{]}、次元正則化やフラクタル次元も同系である。定曲率空間で\textbf{曲率半径が幾何的限界を半径依存で与える}という点では、\textbf{Böröczky
+のパッキング密度上界} {[}Böröczky 1978{]}
+が最も近い先例である。本稿が異なるのは三点:(i)
+天井の源泉が拡散・密度ではなく「辺長 1
+の正則測地セルが整数個収まるか」という\textbf{離散的存在条件}
+d·sin\(^{2}\)(1/2R)≤1 であること(存在閾値 R*\_d は球面正多胞体の
+Schläfli 的存在条件 {[}Coxeter 1973{]} の系譜に属する)、(ii)
+これが\textbf{次元の共役量} κ=sin\(^{2}\)(1/2R) と容量関係 d·κ≤1
+として、νλ=1・Σν\(^{2}\)=\(\mathcal{N}\)\(^{2}\)
+と同型の保存予算飽和に乗ること、(iii) 幾何天井と論文11
+の検閲天井という\textbf{独立2機構が d=4
+で臨界一致}すること(§4.7)。すなわち「なぜ4次元か」の議論は古くから多い
+{[}Ehrenfest 1917; Tegmark 1997{]}
+が、本稿の主張は\textbf{この連鎖の具体性}にあり、「次元の曖昧さ」一般を新概念として主張するものではない。
 
 \subsection{4.7 ゼロ次元からの次元創発と d=4
 での安定化(観察)}\label{ux30bcux30edux6b21ux5143ux304bux3089ux306eux6b21ux5143ux5275ux767aux3068-d4-ux3067ux306eux5b89ux5b9aux5316ux89b3ux5bdf}
@@ -901,5 +925,38 @@ d\_max(R)↑ と検閲 4 固定)の合成}で、ゼロ次元から次元が創�
 の独立計算による(二者検算プロトコル)。スクリプト
 \texttt{paper0\_geodesic\_cell\_distortion.py}
 同梱。物理的同一視は行わない。
+
+\subsection{参考文献(外部)}\label{ux53c2ux8003ux6587ux732eux5916ux90e8}
+
+シリーズ内文献は本文中で(球面投影編・論文1・5・9・11
+等として)直接参照する。本稿で隣接領域の先行研究として参照する外部文献は以下のとおり(数理的・概念的背景であり、本稿の主張の物理的根拠ではない)。
+
+\begin{itemize}
+\tightlist
+\item
+  {[}Carlip 2017{]} S. Carlip, \emph{Dimension and dimensional reduction
+  in quantum gravity}, Classical and Quantum Gravity \textbf{34}, 193001
+  (2017).
+\item
+  {[}Ambjørn--Jurkiewicz--Loll 2005{]} J. Ambjørn, J. Jurkiewicz, R.
+  Loll, \emph{Spectral dimension of the universe}, Physical Review
+  Letters \textbf{95}, 171301 (2005).
+\item
+  {[}Böröczky 1978{]} K. Böröczky, \emph{Packing of spheres in spaces of
+  constant curvature}, Acta Mathematica Academiae Scientiarum Hungaricae
+  \textbf{32}, 243--261 (1978).
+\item
+  {[}Coxeter 1973{]} H. S. M. Coxeter, \emph{Regular Polytopes}, 3rd
+  ed., Dover (1973).
+\item
+  {[}Ehrenfest 1917{]} P. Ehrenfest, \emph{In what way does it become
+  manifest in the fundamental laws of physics that space has three
+  dimensions?}, Proceedings of the Amsterdam Academy \textbf{20},
+  200--209 (1917).
+\item
+  {[}Tegmark 1997{]} M. Tegmark, \emph{On the dimensionality of
+  spacetime}, Classical and Quantum Gravity \textbf{14}, L69--L75
+  (1997).
+\end{itemize}
 
 \end{document}

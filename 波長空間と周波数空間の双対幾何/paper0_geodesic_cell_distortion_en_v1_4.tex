@@ -92,16 +92,18 @@ Volume}\label{paper-0-distortion-of-the-geodesic-unit-cell-in-positively-curved-
 
 \textbf{Author}: Noriaki Kihara \textbf{Affiliation}: WF System Co.,
 Ltd.~/ ORCID: 0009-0004-6753-4020 \textbf{DOI}: Version
-10.5281/zenodo.20680270 (this version) / Concept 10.5281/zenodo.20680269
+10.5281/zenodo.20684135 (this version) / Concept 10.5281/zenodo.20680269
 (cite this; always resolves to the latest version) \textbf{Zenodo}:
-https://zenodo.org/records/20680270 \textbf{Version}: v1.3 (v1.2 with
-five exact-computation figures inserted {[}A: circle→segment / B:
-circle→3D band→unfold / C: angle excess / E: curvature meter / F:
-dimensional staircase{]}. All figures are exact computations, no
-schematics. Two-party verification protocol.) \textbf{Position}: This is
-the Foundations volume, \textbf{Paper 0}; its correction target is the
-flat counting of Papers 1--2 (§5). Adding the Paper 0 row to 論文一覧.md
-/ the survey references, and the cross-link with Paper 1, are handled
+https://zenodo.org/records/20684135 \textbf{Version}: v1.4 (v1.3 plus a
+prior-work paragraph in §4.6 {[}differentiation from spectral dimension,
+Böröczky, Schläfli{]} with external references, a one-sentence Schläfli
+positioning of the existence threshold in §1, and a fix of the Appendix
+A math typesetting to proper LaTeX. v1.3 inserted five exact-computation
+figures into v1.2. All figures are exact computations, no schematics.
+Two-party verification protocol.) \textbf{Position}: This is the
+Foundations volume, \textbf{Paper 0}; its correction target is the flat
+counting of Papers 1--2 (§5). Adding the Paper 0 row to 論文一覧.md /
+the survey references, and the cross-link with Paper 1, are handled
 separately as publication management (after this paper is finalized).
 \textbf{Seven viewpoints}: edge (1), vertex angle (2), area (3), volume
 (4), inverse curvature (4.5), dimensional ambiguity and conjugate
@@ -214,7 +216,10 @@ R ≥ \(R^{*}_{d}\) = 1/(2 arcsin(1/√d)): \(R^{*}_{2}\)=2/π≈0.6366,
 
 Below \(R^{*}_{d}\), a regular geodesic cell of edge length 1
 \textbf{does not exist} (in the canonical construction) (at R=0.5 all of
-d≥2 vanish; at R=1.0, d=5 vanishes).
+d≥2 vanish; at R=1.0, d=5 vanishes). This existence threshold is the
+edge-normalized (to 1) counterpart of the classical fact that the
+existence of regular polytopes on the sphere is constrained by a
+Schläfli-type inequality (an angle-defect condition) {[}Coxeter 1973{]}.
 
 \includegraphics[width=0.88\linewidth,height=\textheight,keepaspectratio]{paper0_figA_1d_reference.png}
 
@@ -597,9 +602,8 @@ Solving §1's existence condition d·sin\(^{2}\)(1/2R) ≤ 1 \textbf{for
 dimension} gives the \textbf{maximum dimension} in which a regular
 geodesic cell of edge length 1 fits at a given curvature radius R:
 
-d\_max(R) = \$\lfloor\(1/sin\)\^{}\{2\}\((1/2R)\)\rfloor\$ =
-\(\lfloor\)csc\(^{2}\)(1/2R)\(\rfloor\) ≈ 4R\(^{2}\) (large-R
-asymptotics), R ≥ 1/π. (10)
+\(d_{\max}(R) = \lfloor 1/\sin^2(1/2R)\rfloor = \lfloor \csc^2(1/2R)\rfloor \approx 4R^2\)
+(large-R asymptotics), \(R \ge 1/\pi\). (10)
 
 That is, \textbf{dimension is bounded from above by curvature}. The
 allowed dimensions lie in the range \{1, 2, \ldots, d\_max(R)\} and are
@@ -715,6 +719,34 @@ but does not select a particular dimension.'' \textbf{A full connection
 to the discrete system (a formulation of a dimensional uncertainty
 relation) is outside the scope of this paper and is left as an
 observation.}
+
+\subsubsection{Relation to prior work
+(differentiation)}\label{relation-to-prior-work-differentiation}
+
+The idea that dimension need not be unique and can depend on scale is
+not itself new. The \textbf{spectral dimension} measured by diffusion is
+known to flow from ∼2 at short distances to ∼4 at long distances in
+quantum gravity (causal dynamical triangulations, asymptotic safety,
+loop quantum gravity) {[}Carlip 2017; Ambjørn--Jurkiewicz--Loll 2005{]},
+and dimensional regularization and fractal dimension are of the same
+family. In a constant-curvature space, the closest precedent for a
+\textbf{curvature-radius-dependent geometric bound} is the
+\textbf{Böröczky packing-density upper bound} {[}Böröczky 1978{]}. This
+paper differs in three respects: (i) the source of the ceiling is not
+diffusion or density but a \textbf{discrete existence condition}
+d·sin\(^{2}\)(1/2R)≤1 --- ``do integer-many regular geodesic cells of
+edge 1 fit?'' (the existence threshold \(R^{*}_{d}\) belongs to the
+lineage of the Schläfli-type existence condition for regular spherical
+polytopes {[}Coxeter 1973{]}); (ii) this takes the form of a
+\textbf{conjugate quantity of dimension} κ=sin\(^{2}\)(1/2R) with a
+capacity relation d·κ≤1, lying on the same
+saturation-of-a-conserved-budget pattern as νλ=1 and
+Σν\(^{2}\)=\(\mathcal{N}\)\(^{2}\); (iii) the geometric ceiling and the
+censorship ceiling of Paper 11 are \textbf{two independent mechanisms
+that critically coincide at d=4} (§4.7). ``Why four dimensions'' has
+long been argued in many ways {[}Ehrenfest 1917; Tegmark 1997{]}, but
+the claim of this paper lies in the \textbf{specificity of this chain},
+not in advancing ``dimensional ambiguity'' in general as a new concept.
 
 \subsection{4.7 Emergence of dimension from zero and stabilization at
 d=4
@@ -1080,5 +1112,40 @@ dimension-independence of angle/area, and the existence threshold are
 due to independent computation by Claude Code (two-party verification
 protocol). The script \texttt{paper0\_geodesic\_cell\_distortion.py} is
 bundled. No physical identification is made.
+
+\subsection{References (external)}\label{references-external}
+
+In-series works are cited directly in the text (as the
+Spherical-projection note, Papers 1/5/9/11, etc.). The external works
+referenced as adjacent prior work (mathematical and conceptual
+background, not a physical basis for the claims) are:
+
+\begin{itemize}
+\tightlist
+\item
+  {[}Carlip 2017{]} S. Carlip, \emph{Dimension and dimensional reduction
+  in quantum gravity}, Classical and Quantum Gravity \textbf{34}, 193001
+  (2017).
+\item
+  {[}Ambjørn--Jurkiewicz--Loll 2005{]} J. Ambjørn, J. Jurkiewicz, R.
+  Loll, \emph{Spectral dimension of the universe}, Physical Review
+  Letters \textbf{95}, 171301 (2005).
+\item
+  {[}Böröczky 1978{]} K. Böröczky, \emph{Packing of spheres in spaces of
+  constant curvature}, Acta Mathematica Academiae Scientiarum Hungaricae
+  \textbf{32}, 243--261 (1978).
+\item
+  {[}Coxeter 1973{]} H. S. M. Coxeter, \emph{Regular Polytopes}, 3rd
+  ed., Dover (1973).
+\item
+  {[}Ehrenfest 1917{]} P. Ehrenfest, \emph{In what way does it become
+  manifest in the fundamental laws of physics that space has three
+  dimensions?}, Proceedings of the Amsterdam Academy \textbf{20},
+  200--209 (1917).
+\item
+  {[}Tegmark 1997{]} M. Tegmark, \emph{On the dimensionality of
+  spacetime}, Classical and Quantum Gravity \textbf{14}, L69--L75
+  (1997).
+\end{itemize}
 
 \end{document}

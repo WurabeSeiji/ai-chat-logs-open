@@ -4,31 +4,32 @@
 
 ---
 
-## 論文0（基礎篇）：正曲率定曲率空間における測地的単位セルの歪み（v1.3）
+## 論文0（基礎篇）：正曲率定曲率空間における測地的単位セルの歪み（v1.4）
 
 Distortion of the Geodesic Unit Cell in Positively-Curved Constant-Curvature Space — Exact Evaluation of Edge, Angle, Area, and Volume
 
 - **Concept DOI**: 10.5281/zenodo.20680269（外部参照用・最新版へ自動転送）
-- **Version DOI (v1.3)**: 10.5281/zenodo.20680270
-- **Zenodo deposit**: 20680270 / record https://zenodo.org/record/20680270
-- **公開日**: 2026-06-13
+- **Version DOI (v1.4, 最新)**: 10.5281/zenodo.20684135
+- **旧 Version DOI (v1.3)**: 10.5281/zenodo.20680270
+- **Zenodo deposit**: 20684135 / record https://zenodo.org/record/20684135
+- **公開日**: 2026-06-13（v1.3）／ 2026-06-14（v1.4）
 - **ライセンス**: CC BY 4.0
-- **関連**: 論文1（Concept DOI 10.5281/zenodo.20588036）を `isSupplementTo`、球面投影 σ_R 基礎写像（10.5281/zenodo.20462569）を `references`
+- **関連**: 論文1（10.5281/zenodo.20588036）を `isSupplementTo`、球面投影 σ_R 基礎写像（10.5281/zenodo.20462569）・論文5（20640454）・論文9（20640462）・論文11（20640466）を `references`
 
 平坦数え上げ（論文1〜2）が取り込まなかった曲率歪みを、純粋な微分幾何の基礎計算として画定。頂点角 cos θ=−tan²(1/2R) と 2-面積は次元独立、体積のみ次元依存で小角係数 c_d=d(d−1)/12、存在閾値 R\*_d、角度→曲率の逆算（曲率計）、幾何天井 d_max≈4R² と検閲天井4の合成による d=4 ロック。d=1 は内在的平坦（歪みゼロ）で、シリーズの per-axis 1次元論理波が曲率厳密である幾何的根拠（論文9「曲率整合」）を与える。物理的同一視なし。
 
 ### 収録ファイル（14点）
-- `paper0_geodesic_cell_distortion_ja_v1_3.{md,tex,pdf}`（日本語）
-- `paper0_geodesic_cell_distortion_en_v1_3.{md,tex,pdf}`（英語）
+- `paper0_geodesic_cell_distortion_ja_v1_4.{md,tex,pdf}`（日本語）
+- `paper0_geodesic_cell_distortion_en_v1_4.{md,tex,pdf}`（英語）
 - 図5点 `paper0_fig{A,B,C,E,F}_*.png`（すべて厳密計算）
 - 検算/作図スクリプト `paper0_geodesic_cell_distortion.py` / `paper0_figures.py` / `paper0_figures_spec_v2.py`
 
-### 査読・組版
-- claude.ai 査読で図入り v1.3 を採録水準と判定（全5図が本文数値と整合）。図中タイトルを Fig.E/Fig.F に統一。
-- 表示数式の太字を解除し R\* 記法を数式 $R^{*}$ へ置換（リテラル `**` 解消）。二者検算プロトコル。
+### 改訂履歴
+- **v1.4 (2026-06-14)**: §4.6 に先行研究段落（スペクトル次元 [Carlip 2017; Ambjørn–Jurkiewicz–Loll 2005]・Böröczky パッキング限界 [Böröczky 1978]・Schläfli [Coxeter 1973] との差別化、なぜ4次元 [Ehrenfest 1917; Tegmark 1997]）と外部参考文献を追加。§1 に存在閾値の Schläfli 的位置づけを一文。付録A の数式組版を正式 LaTeX に修正。formula (10) の数式境界バグ（`$`直後数字で pandoc が閉じない問題）を修正。related_identifiers に論文5/9/11 を追加。
+- **v1.3 (2026-06-13)**: 実計算図5点を挿入（図中タイトル Fig.E/Fig.F 統一）。表示数式の太字を解除し R\* 記法を数式 $R^{*}$ へ置換（リテラル `**` 解消）。claude.ai 査読で採録水準と判定（全5図が本文数値と整合）。二者検算プロトコル。
 
 ### Zenn 記事
-- [geodesic-cell-distortion-foundations](https://zenn.dev/noriaki_kihara/articles/geodesic-cell-distortion-foundations)
+- [geodesic-cell-distortion-foundations](https://zenn.dev/noriaki_kihara/articles/geodesic-cell-distortion-foundations)（Concept DOI 参照のため版改訂で変更不要）
 
 ---
 
