@@ -201,3 +201,22 @@ def inversion_demo():
             ok &= abs(Rb-R)<1e-6
     print(f"  全往復一致: {ok}")
 inversion_demo()
+
+# ============ §4.6 次元の曖昧さと次元の共役量 ============
+def dmax(R):
+    if R < 1/np.pi: return None
+    return int(np.floor(1.0/np.sin(1/(2*R))**2))
+def dimension_ambiguity():
+    print("\n"+"="*72)
+    print("§4.6 次元の天井 d_max(R)=⌊1/sin²(1/2R)⌋ と ±½ による次元の曖昧さ")
+    print(f"{'R':>6} | {'κ=sin²(1/2R)':>12} | {'d_max(R-½)':>10} | {'d_max(R)':>9} | {'d_max(R+½)':>10} | {'相対幅Δd/d':>10}")
+    for R in [0.5,0.7,1.0,1.5,2.0,3.0,5.0,10.0]:
+        k=np.sin(1/(2*R))**2; dm=dmax(R)
+        dl=dmax(R-0.5); dp=dmax(R+0.5)
+        rel=(dp-(dl if dl else 1))/dm
+        print(f"{R:>6} | {k:>12.6f} | {str(dl) if dl else '—':>10} | {dm:>9} | {dp:>10} | {rel:>10.3f}")
+    print("\n  容量共役 d·κ≤1（予算1）、飽和 d·κ=1 が天井 R*_d。残容量 1−dκ=(w/R)²。κ≈K/4。")
+    for d in (2,3,4,5):
+        Rs=1/(2*np.arcsin(1/np.sqrt(d)))
+        print(f"    d={d}: R*={Rs:.5f} で d·κ={d*np.sin(1/(2*Rs))**2:.8f}（飽和）")
+dimension_ambiguity()
