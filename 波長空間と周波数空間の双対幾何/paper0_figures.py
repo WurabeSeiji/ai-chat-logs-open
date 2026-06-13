@@ -116,3 +116,57 @@ ax.set_xlabel('curvature radius R (grows with expansion a∝√t)'); ax.set_ylab
 ax.set_ylim(0,7); ax.set_title('Fig.4  Two ceilings → dimensional staircase: emerge from 0, lock at d=4',fontsize=9)
 ax.legend(fontsize=7.5,loc='upper left'); plt.tight_layout(); plt.savefig('paper0_fig4_staircase.png',dpi=150); plt.close()
 print("figures: fig1 angle / fig2 homogeneity / fig3 curvature-meter / fig4 staircase")
+# -*- coding: utf-8 -*-
+import numpy as np
+import matplotlib; matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+fig=plt.figure(figsize=(13,5.6))
+R=1.0; t=R*np.sin(1/(2*R)); w=R*np.sqrt(1-2*np.sin(1/(2*R))**2)
+
+# ===== 左: 中心投影 σ_R の機構（z=y=0 断面, xR平面）=====
+axL=fig.add_subplot(1,2,1)
+ph=np.linspace(-1.1,1.1,200)
+axL.plot(R*np.sin(ph),R*np.cos(ph),'gray',lw=1.0)               # 球面（円弧）
+axL.plot(0,0,'ko',ms=5); axL.annotate('center O',(0,0),textcoords='offset points',xytext=(6,-12),fontsize=8)
+# 接平面（極での水平線, 高さ R）
+xp=np.linspace(-1.0,1.0,2); axL.plot(xp,[R,R],'k-',lw=1.0)
+axL.annotate('tangent plane Π_R\n(flat-counting view)',(-1.0,R),textcoords='offset points',xytext=(2,10),fontsize=7.5)
+# 球面上に等間隔の測地点（各弧=単位辺 角1/R）と、中心投影での接平面像
+angles=np.arange(-3,4)*(1.0/R)   # 単位測地辺ごと
+for a in angles:
+    P=R*np.array([np.sin(a),np.cos(a)])
+    # 中心からの射線を接平面 y=R へ
+    if np.cos(a)>0.2:
+        s=R/(R*np.cos(a)); xpl=R*np.sin(a)*s
+        axL.plot([0,xpl],[0,R],color='tab:orange',lw=0.6,alpha=0.7)
+        axL.plot([P[0]],[P[1]],'bo',ms=4)
+        axL.plot([xpl],[R],'ks',ms=4)
+# 単位セル（球面の1弧 と その平坦像）を強調
+a0,a1=-0.5/R,0.5/R
+P0=R*np.array([np.sin(a0),np.cos(a0)]); P1=R*np.array([np.sin(a1),np.cos(a1)])
+arc=np.array([R*np.array([np.sin(a),np.cos(a)]) for a in np.linspace(a0,a1,30)])
+axL.plot(arc[:,0],arc[:,1],'b-',lw=3)
+x0=R*np.sin(a0)/np.cos(a0); x1=R*np.sin(a1)/np.cos(a1)
+axL.plot([x0,x1],[R,R],'k-',lw=3)
+axL.annotate('geodesic unit edge\n(length 1, on sphere)',(arc[8,0],arc[8,1]),textcoords='offset points',xytext=(-30,-34),fontsize=7,color='b',arrowprops=dict(arrowstyle='->',color='b',lw=0.5))
+axL.annotate('flat shadow (length 2t≈0.96)',((x0+x1)/2,R),textcoords='offset points',xytext=(20,16),fontsize=7,arrowprops=dict(arrowstyle='->',lw=0.5))
+axL.set_aspect('equal'); axL.set_title('(a) Central/radial projection σ_R (cross-section z=y=0):\nequal geodesic edges on the sphere → unequal flat shadows.\nThe distortion is the gap between blue (sphere) and black (plane).',fontsize=8.5)
+axL.set_xlabel('x'); axL.set_ylabel('R-axis'); axL.set_xlim(-1.2,1.2); axL.set_ylim(-0.15,1.32)
+
+# ===== 右: 2次元的帰結 = 測地正方形の角超過（3D, R=1）=====
+axR=fig.add_subplot(1,2,2,projection='3d')
+verts=np.array([[ t, t,w],[-t, t,w],[-t,-t,w],[ t,-t,w]])
+def proj(p): return R*p/np.linalg.norm(p)
+u=np.linspace(0,2*np.pi,60); vv=np.linspace(0,np.pi/2.2,30)
+xs=R*np.outer(np.cos(u),np.sin(vv)); ys=R*np.outer(np.sin(u),np.sin(vv)); zs=R*np.outer(np.ones_like(u),np.cos(vv))
+axR.plot_surface(xs,ys,zs,alpha=0.10,color='gray',linewidth=0)
+for i in range(4):
+    a,b=verts[i],verts[(i+1)%4]
+    seg=np.array([proj(a+(b-a)*s) for s in np.linspace(0,1,40)])
+    axR.plot(seg[:,0],seg[:,1],seg[:,2],'b-',lw=2.3)
+fl=np.vstack([verts,verts[0]]); axR.plot(fl[:,0],fl[:,1],fl[:,2],'k--',lw=1.0,alpha=0.75)
+sv=np.array([proj(v) for v in verts]); axR.scatter(sv[:,0],sv[:,1],sv[:,2],c='red',s=28)
+axR.set_title('(b) Its 2-D consequence on S²(R=1):\nflat square (dashed, 90°) → geodesic square (blue),\nvertex angle 107.36° > 90°, edge length still 1',fontsize=8.5)
+axR.set_box_aspect((1,1,0.8)); axR.view_init(elev=40,azim=35); axR.set_axis_off()
+plt.tight_layout(); plt.savefig('paper0_fig1_projection_and_excess.png',dpi=150); plt.close()
+print("fig1 (2-panel: central projection + angle excess) written")
