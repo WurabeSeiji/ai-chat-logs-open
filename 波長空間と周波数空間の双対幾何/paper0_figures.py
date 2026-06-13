@@ -99,7 +99,7 @@ for th,kind in [(84,'neg'),(96,'pos'),(107.36431,'pos')]:
     ax.plot(th,K,'ks',ms=5); ax.annotate(f'{th}°→K={K:+.3f}',(th,K),textcoords='offset points',xytext=(5,-12),fontsize=7)
 ax.axhline(0,color='gray',lw=0.5); ax.axvline(90,color='gray',lw=0.5,ls=':')
 ax.set_xlabel('measured vertex angle θ [deg]'); ax.set_ylabel('curvature K = ±1/R²')
-ax.set_title('Fig.3  Curvature meter: one local angle → sign and magnitude of K\n(dimension-universal; cos θ=−tan²(1/2R) [K>0], +tanh²(1/2R) [K<0])',fontsize=9)
+ax.set_title('Fig.E  Curvature meter: one local angle → sign and magnitude of K\n(dimension-universal; cos θ=−tan²(1/2R) [K>0], +tanh²(1/2R) [K<0])',fontsize=9)
 ax.legend(fontsize=8); plt.tight_layout(); plt.savefig('paper0_figE_curvature_meter.png',dpi=150); plt.close()
 
 # ===== 図4: 二つの天井と次元の階段 =====
@@ -115,7 +115,7 @@ for d,Rstar in [(2,2/np.pi),(3,1/(2*np.arcsin(1/np.sqrt(3)))),(4,3/np.pi)]:
     ax.axvline(Rstar,color='gray',lw=0.5,ls=':'); ax.annotate(f'd={d}\nR*={Rstar:.3f}',(Rstar,d-0.5),fontsize=7)
 ax.annotate('climb → LOCK at 4', (1.8,4.15),fontsize=9,color='crimson')
 ax.set_xlabel('curvature radius R (grows with expansion a∝√t)'); ax.set_ylabel('dimension d')
-ax.set_ylim(0,7); ax.set_title('Fig.4  Two ceilings → dimensional staircase: emerge from 0, lock at d=4',fontsize=9)
+ax.set_ylim(0,7); ax.set_title('Fig.F  Two ceilings → dimensional staircase: emerge from 0, lock at d=4',fontsize=9)
 ax.legend(fontsize=7.5,loc='upper left'); plt.tight_layout(); plt.savefig('paper0_figF_staircase.png',dpi=150); plt.close()
 print("figures: fig1 angle / fig2 homogeneity / fig3 curvature-meter / fig4 staircase")
 # -*- coding: utf-8 -*-
