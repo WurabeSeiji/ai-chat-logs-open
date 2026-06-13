@@ -4,6 +4,34 @@
 
 ---
 
+## 論文0（基礎篇）：正曲率定曲率空間における測地的単位セルの歪み（v1.3）
+
+Distortion of the Geodesic Unit Cell in Positively-Curved Constant-Curvature Space — Exact Evaluation of Edge, Angle, Area, and Volume
+
+- **Concept DOI**: 10.5281/zenodo.20680269（外部参照用・最新版へ自動転送）
+- **Version DOI (v1.3)**: 10.5281/zenodo.20680270
+- **Zenodo deposit**: 20680270 / record https://zenodo.org/record/20680270
+- **公開日**: 2026-06-13
+- **ライセンス**: CC BY 4.0
+- **関連**: 論文1（Concept DOI 10.5281/zenodo.20588036）を `isSupplementTo`、球面投影 σ_R 基礎写像（10.5281/zenodo.20462569）を `references`
+
+平坦数え上げ（論文1〜2）が取り込まなかった曲率歪みを、純粋な微分幾何の基礎計算として画定。頂点角 cos θ=−tan²(1/2R) と 2-面積は次元独立、体積のみ次元依存で小角係数 c_d=d(d−1)/12、存在閾値 R\*_d、角度→曲率の逆算（曲率計）、幾何天井 d_max≈4R² と検閲天井4の合成による d=4 ロック。d=1 は内在的平坦（歪みゼロ）で、シリーズの per-axis 1次元論理波が曲率厳密である幾何的根拠（論文9「曲率整合」）を与える。物理的同一視なし。
+
+### 収録ファイル（14点）
+- `paper0_geodesic_cell_distortion_ja_v1_3.{md,tex,pdf}`（日本語）
+- `paper0_geodesic_cell_distortion_en_v1_3.{md,tex,pdf}`（英語）
+- 図5点 `paper0_fig{A,B,C,E,F}_*.png`（すべて厳密計算）
+- 検算/作図スクリプト `paper0_geodesic_cell_distortion.py` / `paper0_figures.py` / `paper0_figures_spec_v2.py`
+
+### 査読・組版
+- claude.ai 査読で図入り v1.3 を採録水準と判定（全5図が本文数値と整合）。図中タイトルを Fig.E/Fig.F に統一。
+- 表示数式の太字を解除し R\* 記法を数式 $R^{*}$ へ置換（リテラル `**` 解消）。二者検算プロトコル。
+
+### Zenn 記事
+- [geodesic-cell-distortion-foundations](https://zenn.dev/noriaki_kihara/articles/geodesic-cell-distortion-foundations)
+
+---
+
 ## 論文1：波長空間と周波数空間の双対幾何（v0.3）
 
 Dual Geometry of Wavelength Space and Frequency Space: A Geometric and Topological Observational Model of Reciprocal Conditions, Logarithmic Representation, and Uncertainty-Weighted Counting

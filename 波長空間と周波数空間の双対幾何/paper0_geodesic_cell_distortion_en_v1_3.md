@@ -2,6 +2,8 @@
 
 **Author**: Noriaki Kihara
 **Affiliation**: WF System Co., Ltd. / ORCID: 0009-0004-6753-4020
+**DOI**: Version 10.5281/zenodo.20680270 (this version) / Concept 10.5281/zenodo.20680269 (cite this; always resolves to the latest version)
+**Zenodo**: https://zenodo.org/records/20680270
 **Version**: v1.3 (v1.2 with five exact-computation figures inserted [A: circle→segment / B: circle→3D band→unfold / C: angle excess / E: curvature meter / F: dimensional staircase]. All figures are exact computations, no schematics. Two-party verification protocol.)
 **Position**: This is the Foundations volume, **Paper 0**; its correction target is the flat counting of Papers 1–2 (§5). Adding the Paper 0 row to 論文一覧.md / the survey references, and the cross-link with Paper 1, are handled separately as publication management (after this paper is finalized).
 **Seven viewpoints**: edge (1), vertex angle (2), area (3), volume (4), inverse curvature (4.5), dimensional ambiguity and conjugate quantity (4.6), dimensional emergence and the d=4 lock (4.7). All numbers are reproducible with the bundled script; all 6 verification items pass.
