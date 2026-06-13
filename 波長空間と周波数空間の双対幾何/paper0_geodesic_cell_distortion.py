@@ -131,3 +131,43 @@ def verify_cd_closedform():
         print(f"  d={d}: 数値 c_d={cd_num:.6f}  閉形式 d(d-1)/12={cd_cf:.6f}  一致={abs(cd_num-cd_cf)<1e-3}")
 if __name__=="__main__":
     verify_cd_closedform()
+
+# ============ 観点別の4表（一辺/角度/面積/体積）============
+def exists(R,d,a=1.0):
+    return d*np.sin(a/(2*R))**2 <= 1.0
+def face_angle_deg(R):       # 頂点角[度]（次元独立: cosθ=-tan²(1/2R)）
+    return np.degrees(np.arccos(-np.tan(1/(2*R))**2))
+def viewpoint_tables():
+    Rlist=[round(0.5+0.5*i,1) for i in range(20)]+[100.0,1000.0,10000.0]
+    npts_d={2:80,3:48,4:32,5:24}
+    def cell(v): return f"{v:.7f}" if v is not None else "  n/a   "
+    print("\n"+"="*72)
+    print("【表1】一辺の長さ（1-content）— 全 d・全 R で 1.000000（不変）")
+    print("【表2】頂点角 θ[度]（直角=90°の歪み）— d=2..5 で同値、n/a=存在閾値未満")
+    print(f"{'R':>8} | {'d=1':>8} | {'d=2':>9} | {'d=3':>9} | {'d=4':>9} | {'d=5':>9}")
+    for R in Rlist:
+        th=face_angle_deg(R)
+        cols=[]
+        for d in (2,3,4,5):
+            cols.append(f"{th:.5f}" if exists(R,d) else "  n/a  ")
+        print(f"{R:>8} | {'—(辺のみ)':>8} | {cols[0]:>9} | {cols[1]:>9} | {cols[2]:>9} | {cols[3]:>9}")
+    print("\n  直角からの超過 Δθ=θ-90°[度]（d非依存・正曲率で正）:")
+    for R in (1.0,1.5,2.0,3.0,5.0,10.0,100.0):
+        if exists(R,2): print(f"    R={R:>7}: Δθ={face_angle_deg(R)-90:.6f}°")
+    print("\n"+"="*72)
+    print("【表3】2-面の面積 A（2-content）— d=2..5 で同値（等質性）、n/a=存在閾値未満")
+    print(f"{'R':>8} | {'d=1':>8} | {'d=2':>11} | {'d=3':>11} | {'d=4':>11} | {'d=5':>11}")
+    for R in Rlist:
+        A=volume_box_integral(R,2,80) if exists(R,2) else None
+        cols=[cell(A if exists(R,d) else None) for d in (2,3,4,5)]
+        print(f"{R:>8} | {'—':>8} | {cols[0]:>11} | {cols[1]:>11} | {cols[2]:>11} | {cols[3]:>11}")
+    print("\n"+"="*72)
+    print("【表4】体積 V_d（d-content）— 次元で真に異なる唯一の量、c_d=d(d-1)/12")
+    print(f"{'R':>8} | {'d=1':>6} | {'d=2':>11} | {'d=3':>11} | {'d=4':>11} | {'d=5':>11}")
+    for R in Rlist:
+        cols=[]
+        for d in (2,3,4,5):
+            V=volume_box_integral(R,d,npts_d[d]) if exists(R,d) else None
+            cols.append(cell(V))
+        print(f"{R:>8} | {'1.000000':>6} | {cols[0]:>11} | {cols[1]:>11} | {cols[2]:>11} | {cols[3]:>11}")
+viewpoint_tables()
