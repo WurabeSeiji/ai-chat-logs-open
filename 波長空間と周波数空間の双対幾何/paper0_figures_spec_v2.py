@@ -88,20 +88,12 @@ th1,A1=draw_geo_square(axc[1],1.0,'(b) R=1 (strong, for visibility): angle 107.3
 fig.suptitle('Fig.C  Geodesic unit square: edges are geodesics, yet interior angle > 90 deg (grows as R shrinks)',fontsize=10)
 plt.tight_layout(); plt.savefig('paper0_figC_angle_excess.png',dpi=150); plt.close()
 
-# ===== 図D: c_d 棒グラフ =====
-fig,ax=plt.subplots(figsize=(6,4))
-ds=[1,2,3,4,5]; cd=[d*(d-1)/12 for d in ds]
-bars=ax.bar(ds,cd,color=['gray','tab:blue','tab:blue','tab:red','tab:blue'])
-for d,c in zip(ds,cd): ax.text(d,c+0.03,f'{c:.4f}' if c>0 else '0',ha='center',fontsize=8)
-ax.set_xlabel('dimension d'); ax.set_ylabel('curvature-excess coefficient c_d')
-ax.set_title('Fig.D  c_d = d(d−1)/12: zero at d=1 (1D logic wave curvature-exact),\npositive only for d≥2 (distortion in coupled geometry)',fontsize=9)
-ax.set_xticks(ds); plt.tight_layout(); plt.savefig('paper0_figD_cd.png',dpi=150); plt.close()
+
 
 print("=== 検算照合（作図に使った厳密値 vs 仕様書）===")
 print(f"図A 点間 π/2 = {np.pi/2:.7f}, 線分長 2πR = {2*np.pi*R:.7f}（修正: 円を1点で切って開く=全周。仕様書の3πは半周で12点が入らない不整合）")
 print(f"図B 膨らみ高 h = {hmax:.7f} (仕様 0.1022225)  一致={abs(hmax-0.1022225)<1e-6}")
 print(f"図C R=3: θ = {th3:.5f}° (仕様 91.62171), 面積 = {A3:.7f} (仕様 1.0189503) / R=1: θ = {th1:.5f}°, 面積 = {A1:.5f}")
-print(f"図D c_d = {cd} (仕様 [0,1/6,1/2,1,5/3] for d=1..5)")
 # -*- coding: utf-8 -*-
 import numpy as np
 import matplotlib; matplotlib.use('Agg')
