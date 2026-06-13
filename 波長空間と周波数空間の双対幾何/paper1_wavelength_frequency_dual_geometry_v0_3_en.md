@@ -161,6 +161,8 @@ $$
 
 This shows that in a one-dimensional system the degrees of freedom essentially vanish and there is almost no room for redistribution among components. That is, a one-dimensional system formally possesses a solution, but has almost no margin for expressing a closed dual geometry or an observational thickness.
 
+We note that the flat (Euclidean-norm) treatment of this one-dimensional structure is **curvature-exact**, not an approximation. The Foundations volume of this series, Paper 0 [5], gives an exact evaluation of the distortion of a unit cell placed, with preserved geodesic length, in a positively-curved constant-curvature space of curvature radius $R$, and shows that the $d=1$ geodesic cell is intrinsically flat (edge, vertex angle, area, and volume all have zero distortion, independent of $R$). Curvature distortion appears only in $d\ge2$ geodesic cells that couple several axes, with $1/R^2$ as its leading coefficient. As long as the counting from this paper onward rests on a per-axis one-dimensional structure, Paper 0 provides the geometric foundation that demarcates the range in which this flat treatment is exactly valid.
+
 ---
 
 ## 4. Multicomponent Systems and the Emergence of Four Degrees of Freedom
@@ -530,6 +532,8 @@ Third, the 4-dimensional lattice cell counting at the end of this paper belongs 
 
 Fourth, the sum-of-squares condition on the 4-dimensional lattice is formally close to the representation number of a sum of four squares. However, what this paper treats is an inequality condition based on sums of positive odd squares, and it does not directly apply Jacobi's four-square theorem [4].
 
+Fifth, the Foundations volume of this series, Paper 0 [5], demarcates, as an elementary differential-geometry computation, the range within which the flat treatment presupposed by this paper's counting (§8) is exactly valid. By Paper 0, curvature distortion appears only in $d\ge2$ coupled geometry with $1/R^2$ as its leading coefficient, and is zero at $d=1$. Since the unit-cell counting of this paper is an integer count on a flat lattice (each cell of hypervolume 1), not a measure on a curved surface, Paper 0 provides the geometric ground that this flat treatment lies in the curvature-exact region. The leading curvature correction for a reinterpretation into multi-dimensional geodesic cells (a mean-field estimate) is demarcated in Paper 0 §5; this does not imply that the current content of this paper is curvature-deficient.
+
 ---
 
 ## 10. Limitations and Future Work
@@ -621,6 +625,8 @@ is a necessary condition.
 3. Aliev, I., & Henk, M. (2023). Minkowski's successive minima in convex and discrete geometry. *Communications in Mathematics*, 31(2), 35–59.
 
 4. Hirschhorn, M. D. (1987). A simple proof of Jacobi's four-square theorem. *Proceedings of the American Mathematical Society*, 101(3), 436–438.
+
+5. Kihara, N. (2026). Paper 0: Distortion of the Geodesic Unit Cell in Positively-Curved Constant-Curvature Space — Exact Evaluation of Edge, Angle, Area, and Volume. *Zenodo*. Concept DOI: 10.5281/zenodo.20680269.
 
 ---
 

@@ -355,7 +355,7 @@ We do not claim: any physical identification / measure, probability, amplitude (
 
 ## Appendix A: Derivation of the Jacobian (volume formula (3))
 
-f(y)=R(y,w)/√(|y|²+w²), r=√(|y|²+w²). ∂f/∂y_j=(R/r)[e_j^{(d+1)} − (y,w)y_j/r²]. Gram matrix G=J^TJ: G_ij=(R/r)²[δ_ij − y_i y_j/r²], det G=R^{2d}w²/r^{2d+2}. √det G=R^d w/(|y|²+w²)^{(d+1)/2} is the integrand of (3). The area of the 2-face is of the same type, √det = R²m/(y₁²+y₂²+m²)^{3/2} (m²=R²−2t², d-independent) → §2 (5). ∎
+Let $f(y)=R(y,w)/\sqrt{|y|^2+w^2}$ and $r=\sqrt{|y|^2+w^2}$. Then $\partial f/\partial y_j=(R/r)\,[\,e_j^{(d+1)} - (y,w)\,y_j/r^2\,]$. The Gram matrix $G=J^{T}J$ is $G_{ij}=(R/r)^2[\,\delta_{ij} - y_i y_j/r^2\,]$, with $\det G=R^{2d}w^2/r^{2d+2}$. Hence $\sqrt{\det G}=R^{d}w/(|y|^2+w^2)^{(d+1)/2}$ is the integrand of (3). The area of the 2-face is of the same type, $\sqrt{\det}=R^2 m/(y_1^2+y_2^2+m^2)^{3/2}$ (with $m^2=R^2-2t^2$, $d$-independent), giving §2 (5). $\blacksquare$
 
 ## Appendix B: Verification items (all pass)
 
