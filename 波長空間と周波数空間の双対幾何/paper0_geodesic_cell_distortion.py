@@ -220,3 +220,18 @@ def dimension_ambiguity():
         Rs=1/(2*np.arcsin(1/np.sqrt(d)))
         print(f"    d={d}: R*={Rs:.5f} で d·κ={d*np.sin(1/(2*Rs))**2:.8f}（飽和）")
 dimension_ambiguity()
+
+# ============ §4.7 次元の階段（二つの天井による創発と d=4 ロック）============
+def dimensional_staircase():
+    def dm(R): return 0 if R<1/np.pi else int(np.floor(1.0/np.sin(1/(2*R))**2+1e-9))
+    def dist(d): return (np.sqrt(d)-1)**2/2
+    print("\n"+"="*72)
+    print("§4.7 次元の階段: 幾何天井 d_max(R)（上昇）∧ 検閲天井 4（固定, 論文11）")
+    print(f"  検閲歪み (√d−1)²/2: d=4 で {dist(4):.3f}=½（臨界・等号）, d=5 で {dist(5):.3f}>½（検閲）")
+    print(f"{'R':>7} | {'幾何天井':>7} | {'安定次元=min(·,4)':>16} | 状態")
+    for R in [0.30,0.5,0.7,0.85,1.0,1.5,5.0,100.0]:
+        g=dm(R); st=min(g,4)
+        tag="前幾何(点)" if g==0 else ("climbing" if g<4 else "d=4 ロック")
+        print(f"{R:>7} | {g:>7} | {st:>16} | {tag}")
+    print("  創発閾値: d=k 出現 ⟺ R≥1/(2 arcsin(1/√k))。d=4 は R≥3/π≈0.955 で出現しロック。")
+dimensional_staircase()
