@@ -30,15 +30,15 @@ Embed S^d(R) of radius R (constant curvature K=1/R²) standardly into (d+1)-dime
 
 **Canonical construction of the regular geodesic hypercube**: place the center at the north pole and arrange symmetrically the 2^d vertices of a regular geodesic d-cube of edge length a=1. Vertex v_σ=(t σ₁,…,t σ_d, w) (σ∈{±1}^d, |v_σ|=R gives d t²+w²=R²). From the condition that the geodesic distance between adjacent vertices be 1, R·arccos(1−2t²/R²)=1,
 
-  **t = R sin(1/2R) (d-independent),  w = R√(1 − d sin²(1/2R)) (d-dependent)**.    (1)
+  t = R sin(1/2R) (d-independent),  w = R√(1 − d sin²(1/2R)) (d-dependent).    (1)
 
 **The edge length is exactly 1 by construction** (invariant for all d, all R).
 
 **Existence threshold**: w² ≥ 0, i.e. d sin²(1/2R) ≤ 1.
 
-  **R ≥ R*_d = 1/(2 arcsin(1/√d))**:  R*₂=2/π≈0.6366, R*₃≈0.8124, R*₄=3/π≈0.9549, R*₅≈1.0784.    (2)
+  R ≥ $R^{*}_{d}$ = 1/(2 arcsin(1/√d)):  $R^{*}_{2}$=2/π≈0.6366, $R^{*}_{3}$≈0.8124, $R^{*}_{4}$=3/π≈0.9549, $R^{*}_{5}$≈1.0784.    (2)
 
-Below R*_d, a regular geodesic cell of edge length 1 **does not exist** (in the canonical construction) (at R=0.5 all of d≥2 vanish; at R=1.0, d=5 vanishes).
+Below $R^{*}_{d}$, a regular geodesic cell of edge length 1 **does not exist** (in the canonical construction) (at R=0.5 all of d≥2 vanish; at R=1.0, d=5 vanishes).
 
 ![figA](paper0_figA_1d_reference.png)
 
@@ -48,21 +48,21 @@ Below R*_d, a regular geodesic cell of edge length 1 **does not exist** (in the 
 
 **Volume (d-content)**: mapping the flat box of the vertex convex hull by σ_R, the Jacobian closes (§A),
 
-  **V_d(R) = ∫_{[−t,t]^d} R^d w / (|y|² + w²)^{(d+1)/2} dy**.    (3)
+  V_d(R) = ∫_{[−t,t]^d} R^d w / (|y|² + w²)^{(d+1)/2} dy.    (3)
 
 As R→∞, V_d→1. For d=2 this matches the Gauss–Bonnet area to machine precision (difference ≤ 4×10⁻¹⁴).
 
 **Vertex angle (distortion of the right angle) — dimension-independent**: applying Napier's rule to the spherical right triangle of center, edge midpoint, and vertex and putting it in closed form, the angle θ between the two edges meeting at a vertex is
 
-  **cos θ(R) = −tan²(1/2R)**,  i.e. θ(R) = arccos(−tan²(1/2R)).    (4)
+  cos θ(R) = −tan²(1/2R),  i.e. θ(R) = arccos(−tan²(1/2R)).    (4)
 
 d does not appear in this formula. Numerical computation from tangent vectors also confirms exact agreement for d=2–5. Flat limit θ→90° ✓; positive curvature gives θ>90° ✓. (Equivalent form sin(θ/2)=1/(√2 cos(1/2R)). Consistent with Gauss–Bonnet.)
 
 **Area of the 2-face (2-content) — dimension-independent**: the 2-face is a geodesic square of edge length 1, and by the **homogeneity** of the sphere (congruent geodesic squares at any position have the same area), its area is the same inside a hypercube of any dimension:
 
-  **A(R) = V₂(R) = R²(4θ_rad − 2π)**  (equal for all d, machine-confirmed).    (5)
+  A(R) = V₂(R) = R²(4θ_rad − 2π)  (equal for all d, machine-confirmed).    (5)
 
-> **Organizing the viewpoints (the focus of this version)**: the edge (1-content), the vertex angle, and the area of the 2-face (2-content) are all **intrinsic quantities of dimension ≤2 and do not depend on dimension**. Dimension d acts only on (i) the **domain of existence** (R*_d rises with d) and (ii) the **volume (d-content)**.
+> **Organizing the viewpoints (the focus of this version)**: the edge (1-content), the vertex angle, and the area of the 2-face (2-content) are all **intrinsic quantities of dimension ≤2 and do not depend on dimension**. Dimension d acts only on (i) the **domain of existence** ($R^{*}_{d}$ rises with d) and (ii) the **volume (d-content)**.
 
 ![figB](paper0_figB_band_unfold.png)
 
@@ -72,7 +72,7 @@ d does not appear in this formula. Numerical computation from tangent vectors al
 
 Expanding (3) in 1/R, for all dimensions
 
-  **V_d(R) = 1 + c_d/R² + O(1/R⁴),  c_d = d(d−1)/12 = C(d,2)/6**.    (6)
+  V_d(R) = 1 + c_d/R² + O(1/R⁴),  c_d = d(d−1)/12 = C(d,2)/6.    (6)
 
 Machine verification (R=10⁴): for d=2–6, 1/6, 1/2, 1, 5/3, 5/2 — all in exact agreement with d(d−1)/12. **Interpretation**: the volume excess of a d-cube is the **sum of the area excesses of each of its C(d,2) coordinate 2-planes (each 1/6=c₂)**. The area excess 1/6 is the "atom"; the volume is a linear combination of them (the trace of the curvature 2-form). This is the quantitative form of §2's "area is dimension-independent, volume alone is dimension-dependent."
 
@@ -174,9 +174,9 @@ In §2 the vertex angle is the dimension-independent quantity cos θ=−tan²(1/
 
 As the analytic continuation of the sphere (positive curvature K=+1/R²), in hyperbolic space (negative curvature K=−1/R²) sin→sinh, and from a tangent-vector computation in the hyperboloid model (Minkowski metric)
 
-  **cos θ(R) = +tanh²(1/2R)** (negative curvature, θ < 90°, dimension-independent for all d, machine-confirmed).    (8)
+  cos θ(R) = +tanh²(1/2R) (negative curvature, θ < 90°, dimension-independent for all d, machine-confirmed).    (8)
 
-**Positive–negative asymmetry (remark A)**: in hyperbolic space t=R sinh(1/2R), w=R√(1+d sinh²(1/2R)), and the radicand is always positive — **a cell of edge length 1 has no existence threshold and is constructible for all R, all d** (machine-confirmed). This contrasts with positive curvature, where at R*_d=1/(2 arcsin(1/√d)) the cell reaches the equator and vanishes (§1 (2)). The negative-curvature table (θ=84°→R=1.49 etc.) is defined everywhere under this thresholdlessness.
+**Positive–negative asymmetry (remark A)**: in hyperbolic space t=R sinh(1/2R), w=R√(1+d sinh²(1/2R)), and the radicand is always positive — **a cell of edge length 1 has no existence threshold and is constructible for all R, all d** (machine-confirmed). This contrasts with positive curvature, where at $R^{*}_{d}$=1/(2 arcsin(1/√d)) the cell reaches the equator and vanishes (§1 (2)). The negative-curvature table (θ=84°→R=1.49 etc.) is defined everywhere under this thresholdlessness.
 
 Placed alongside positive curvature (4), **the sign of the vertex angle determines the sign of curvature**:
 
@@ -192,8 +192,8 @@ That is, **if the angle is less than 90°, the curvature is negative**. The sign
 
 Normalizing the edge to unit a=1, from the measured vertex angle θ the curvature and radius are uniquely recovered:
 
-  **θ > 90°:  R = 1/(2 arctan√(−cos θ)),  K = +1/R²**
-  **θ < 90°:  R = 1/(2 artanh√(+cos θ)),  K = −1/R²**    (9)
+  θ > 90°:  R = 1/(2 arctan√(−cos θ)),  K = +1/R²
+  θ < 90°:  R = 1/(2 artanh√(+cos θ)),  K = −1/R²    (9)
 
 The round-trip check (R→θ→inverted R) agrees to machine precision for both positive and negative curvature, R=1.5–100. Numerical examples of the inversion:
 
@@ -220,7 +220,7 @@ The round-trip check (R→θ→inverted R) agrees to machine precision for both 
 
 Solving §1's existence condition d·sin²(1/2R) ≤ 1 **for dimension** gives the **maximum dimension** in which a regular geodesic cell of edge length 1 fits at a given curvature radius R:
 
-  **d_max(R) = ⌊1/sin²(1/2R)⌋ = ⌊csc²(1/2R)⌋ ≈ 4R²** (large-R asymptotics), R ≥ 1/π.    (10)
+  d_max(R) = ⌊1/sin²(1/2R)⌋ = ⌊csc²(1/2R)⌋ ≈ 4R² (large-R asymptotics), R ≥ 1/π.    (10)
 
 That is, **dimension is bounded from above by curvature**. The allowed dimensions lie in the range {1, 2, …, d_max(R)} and are not uniquely determined — **for a given R, dimension has ambiguity**.
 
@@ -245,13 +245,13 @@ Propagating the uncertainty ±½ in R (§6), the ceiling d_max itself acquires a
 
 ### Candidate for the conjugate quantity of dimension
 
-(10) can be written as the capacity relation **d·κ ≤ 1** (κ ≡ sin²(1/2R), budget 1). Saturation d·κ=1 is exactly the ceiling R*_d (10-digit agreement confirmed for d=2–5). The remaining capacity is geometrically
+(10) can be written as the capacity relation **d·κ ≤ 1** (κ ≡ sin²(1/2R), budget 1). Saturation d·κ=1 is exactly the ceiling $R^{*}_{d}$ (10-digit agreement confirmed for d=2–5). The remaining capacity is geometrically
 
-  **1 − d·κ = (w/R)²** (the cosine² of the polar colatitude of the cell center; 0 when the vertices reach the equator).
+  1 − d·κ = (w/R)² (the cosine² of the polar colatitude of the cell center; 0 when the vertices reach the equator).
 
 That is, **each spatial dimension consumes κ from the unit curvature budget, and reaches the dimensional ceiling when the budget is exhausted**. In the large-R asymptotics κ ≈ 1/(4R²) = K/4 (K=1/R² is curvature), and
 
-  **d × (K/4) ≲ 1,  i.e.  dimension ≲ 4/curvature**.
+  d × (K/4) ≲ 1,  i.e.  dimension ≲ 4/curvature.
 
 (Bridge: K=1/R² so 4/K=4R². Thus "d_max≈4R² (large R, top of §4.6)" and "d·(K/4)≲1" are two notations for the same relation.)
 
@@ -278,11 +278,11 @@ The dimension that can exist stably is the smaller of the two ceilings, **d_stab
 |---|---|---|---|
 | R < 1/π≈0.318 | 0 | 0 | pre-geometric (point) |
 | [1/π, 2/π) | 1 | 1 | d=1 |
-| [2/π, R*₃)≈[0.637, 0.812) | 2 | 2 | d=2 |
-| [R*₃, 3/π)≈[0.812, 0.955) | 3 | 3 | d=3 |
+| [2/π, $R^{*}_{3}$)≈[0.637, 0.812) | 2 | 2 | d=2 |
+| [$R^{*}_{3}$, 3/π)≈[0.812, 0.955) | 3 | 3 | d=3 |
 | **R ≥ 3/π≈0.955** | 4, 9, 16, … (rising) | **4 (lock)** | **censorship caps at 4** |
 
-The emergence threshold of each dimension is exactly the R*_d=1/(2 arcsin(1/√d)) of §1 (2): d=k emerges geometrically at R≥R*_k.
+The emergence threshold of each dimension is exactly the $R^{*}_{d}$=1/(2 arcsin(1/√d)) of §1 (2): d=k emerges geometrically at R≥$R^{*}_{k}$.
 
 ### The narrative: climb, then lock at 4
 
@@ -335,7 +335,7 @@ The distortion of §3–4 (c_d>0) appears only in **true geodesic cells at d≥2
 
 The flat count of Paper 2 assigned hypervolume 1 to each cell. Estimating the leading term of the curvature correction in a **mean-field approximation** (the approximation that assigns a uniform factor V₄(R) to all cells),
 
-  **ΔN(R) ≈ N₀(R)·(V₄(R) − 1) = N₀(R)/R² + O(1/R⁴)** (mean field).    (11)
+  ΔN(R) ≈ N₀(R)·(V₄(R) − 1) = N₀(R)/R² + O(1/R⁴) (mean field).    (11)
 
 The smaller R, the larger the 1/R² effect; it vanishes as R→∞. At R=3, V₄=1.1220 (about 12% excess).
 
@@ -347,7 +347,7 @@ Each quantity is evaluated over [R−½, R+½]. Example for d=4 (V₄): at R=2, 
 
 ## 7. Scope of claims
 
-We claim: (1) distortion does not arise at d=1 and arises at d≥2 with 1/R² as the leading coefficient; (2) the geodesic edge length is invariant (1) for all dimensions, all R; (3) **the vertex angle and the 2-face area are dimension-independent** (intrinsic 2-dimensional quantities, cos θ=−tan²(1/2R), A=V₂); (4) **the volume alone is dimension-dependent**, with closed-form coefficient c_d=d(d−1)/12 (= the sum of the area excesses of C(d,2) 2-planes); (5) dimension d acts not on value but also on the domain of existence (R*_d); (6) the excess (11) is the leading term of the curvature correction of the flat count for the reinterpretation into multi-dimensional geodesic cells (mean field, §5); (7) **the per-axis 1-dimensional logic wave (Papers 5/9) is curvature-exact because d=1 (zero distortion, any R)** — the geometric ground (§4.8) for Paper 9 §2.3 "curvature consistency." The series avoids the seat of distortion d≥2 by construction; (7′) **the sign and magnitude of curvature can be inverted from the angle dimension-universally** (curvature meter, §4.5): θ>90°⟹K>0, θ<90°⟹K<0. The direction (marking) is unknowable but the value K is knowable from a local angle; (8) **dimension has a ceiling d_max(R)=⌊csc²(1/2R)⌋≈4R² and an ambiguity**, and the relative ambiguity under ±½ grows at small R (§4.6). The candidate conjugate quantity of dimension is the per-axis curvature load κ=sin²(1/2R)≈K/4 (d·κ≤1, an observation); (9) **the composition of the two ceilings (geometric d_max(R)↑ and censorship fixed 4)** yields a staircase in which dimension emerges from zero and locks at d=4 (§4.7, an observation).
+We claim: (1) distortion does not arise at d=1 and arises at d≥2 with 1/R² as the leading coefficient; (2) the geodesic edge length is invariant (1) for all dimensions, all R; (3) **the vertex angle and the 2-face area are dimension-independent** (intrinsic 2-dimensional quantities, cos θ=−tan²(1/2R), A=V₂); (4) **the volume alone is dimension-dependent**, with closed-form coefficient c_d=d(d−1)/12 (= the sum of the area excesses of C(d,2) 2-planes); (5) dimension d acts not on value but also on the domain of existence ($R^{*}_{d}$); (6) the excess (11) is the leading term of the curvature correction of the flat count for the reinterpretation into multi-dimensional geodesic cells (mean field, §5); (7) **the per-axis 1-dimensional logic wave (Papers 5/9) is curvature-exact because d=1 (zero distortion, any R)** — the geometric ground (§4.8) for Paper 9 §2.3 "curvature consistency." The series avoids the seat of distortion d≥2 by construction; (7′) **the sign and magnitude of curvature can be inverted from the angle dimension-universally** (curvature meter, §4.5): θ>90°⟹K>0, θ<90°⟹K<0. The direction (marking) is unknowable but the value K is knowable from a local angle; (8) **dimension has a ceiling d_max(R)=⌊csc²(1/2R)⌋≈4R² and an ambiguity**, and the relative ambiguity under ±½ grows at small R (§4.6). The candidate conjugate quantity of dimension is the per-axis curvature load κ=sin²(1/2R)≈K/4 (d·κ≤1, an observation); (9) **the composition of the two ceilings (geometric d_max(R)↑ and censorship fixed 4)** yields a staircase in which dimension emerges from zero and locks at d=4 (§4.7, an observation).
 
 We do not claim: any physical identification / measure, probability, amplitude (none exist in this paper).
 
@@ -361,7 +361,7 @@ f(y)=R(y,w)/√(|y|²+w²), r=√(|y|²+w²). ∂f/∂y_j=(R/r)[e_j^{(d+1)} − 
 2. Volume coefficient: c_d=d(d−1)/12 (machine-precision agreement for d=2–6).
 3. Angle dimension-independence: cos θ=−tan²(1/2R), tangent-vector numerics agree exactly for d=2–5.
 4. Area dimension-independence: 2-face area=V₂ (agreement for d=2–5).
-5. Limit: agreement with the flat value to 10⁻⁸ at R=10⁴. Existence threshold R*_d=1/(2 arcsin(1/√d)).
+5. Limit: agreement with the flat value to 10⁻⁸ at R=10⁴. Existence threshold $R^{*}_{d}$=1/(2 arcsin(1/√d)).
 6. ±½ spread: evaluated and listed for all quantities.
 7. Angle→curvature inversion (curvature meter): negative curvature cos θ=+tanh²(1/2R) confirmed in the hyperboloid model; the round-trip check agrees to machine precision for both positive and negative curvature. Hyperbolic has no existence threshold (w²=R²+d t²>0 always, machine-confirmed).
 
