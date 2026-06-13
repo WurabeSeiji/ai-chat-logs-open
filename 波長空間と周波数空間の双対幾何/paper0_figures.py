@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 論文0 図版（全て実計算・模式図なし）
+# 採用5図: 図A/B/C=paper0_figures_spec_v2.py, 図E(曲率計)/図F(階段)=本スクリプト。
+# 旧 fig1/fig2/fig1b は不採用(/tmp 退避)。
 import numpy as np
 import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -32,7 +34,7 @@ ax.scatter(sv[:,0],sv[:,1],sv[:,2],c='red',s=30)
 ax.text(0,0,R*1.06,'flat square: angle 90°, edge 1 (dashed)',fontsize=8,ha='center')
 ax.set_title('Fig.1  Geodesic unit square on S²(R=1):\nedges are geodesics, vertex angle = 107.36° > 90°, edge length = 1 (exact)',fontsize=9)
 ax.set_box_aspect((1,1,0.8)); ax.view_init(elev=38,azim=35); ax.set_axis_off()
-plt.tight_layout(); plt.savefig('paper0_fig1_angle_excess.png',dpi=150); plt.close()
+plt.tight_layout(); plt.savefig('/tmp/_deprecated_fig1_angle.png',dpi=150); plt.close()
 
 # ===== 図2: 等質性（左=紙上の偽の非等方 / 右=真の不変量一定）=====
 fig,ax=plt.subplots(1,2,figsize=(12.5,5.0))
@@ -82,7 +84,7 @@ ax[1].set_xlabel('χ = geodesic distance of cell center from pole (position)')
 ax[1].set_ylabel('vertex angle θ [deg]',color='b'); ax2.set_ylabel('area A',color='g')
 ax[1].set_title('(b) Measured invariants vs position: exactly flat\n→ distortion is homogeneous (no special point); R=1.5',fontsize=9)
 ax[1].legend(loc='center left',fontsize=7); ax2.legend(loc='center right',fontsize=7)
-plt.tight_layout(); plt.savefig('paper0_fig2_homogeneity.png',dpi=150); plt.close()
+plt.tight_layout(); plt.savefig('/tmp/_deprecated_fig2_homog.png',dpi=150); plt.close()
 
 # ===== 図3: 曲率計 θ↔K =====
 fig,ax=plt.subplots(figsize=(7,5))
@@ -98,7 +100,7 @@ for th,kind in [(84,'neg'),(96,'pos'),(107.36431,'pos')]:
 ax.axhline(0,color='gray',lw=0.5); ax.axvline(90,color='gray',lw=0.5,ls=':')
 ax.set_xlabel('measured vertex angle θ [deg]'); ax.set_ylabel('curvature K = ±1/R²')
 ax.set_title('Fig.3  Curvature meter: one local angle → sign and magnitude of K\n(dimension-universal; cos θ=−tan²(1/2R) [K>0], +tanh²(1/2R) [K<0])',fontsize=9)
-ax.legend(fontsize=8); plt.tight_layout(); plt.savefig('paper0_fig3_curvature_meter.png',dpi=150); plt.close()
+ax.legend(fontsize=8); plt.tight_layout(); plt.savefig('paper0_figE_curvature_meter.png',dpi=150); plt.close()
 
 # ===== 図4: 二つの天井と次元の階段 =====
 fig,ax=plt.subplots(figsize=(7.5,5))
@@ -114,7 +116,7 @@ for d,Rstar in [(2,2/np.pi),(3,1/(2*np.arcsin(1/np.sqrt(3)))),(4,3/np.pi)]:
 ax.annotate('climb → LOCK at 4', (1.8,4.15),fontsize=9,color='crimson')
 ax.set_xlabel('curvature radius R (grows with expansion a∝√t)'); ax.set_ylabel('dimension d')
 ax.set_ylim(0,7); ax.set_title('Fig.4  Two ceilings → dimensional staircase: emerge from 0, lock at d=4',fontsize=9)
-ax.legend(fontsize=7.5,loc='upper left'); plt.tight_layout(); plt.savefig('paper0_fig4_staircase.png',dpi=150); plt.close()
+ax.legend(fontsize=7.5,loc='upper left'); plt.tight_layout(); plt.savefig('paper0_figF_staircase.png',dpi=150); plt.close()
 print("figures: fig1 angle / fig2 homogeneity / fig3 curvature-meter / fig4 staircase")
 # -*- coding: utf-8 -*-
 import numpy as np
@@ -168,5 +170,5 @@ fl=np.vstack([verts,verts[0]]); axR.plot(fl[:,0],fl[:,1],fl[:,2],'k--',lw=1.0,al
 sv=np.array([proj(v) for v in verts]); axR.scatter(sv[:,0],sv[:,1],sv[:,2],c='red',s=28)
 axR.set_title('(b) Its 2-D consequence on S²(R=1):\nflat square (dashed, 90°) → geodesic square (blue),\nvertex angle 107.36° > 90°, edge length still 1',fontsize=8.5)
 axR.set_box_aspect((1,1,0.8)); axR.view_init(elev=40,azim=35); axR.set_axis_off()
-plt.tight_layout(); plt.savefig('paper0_fig1_projection_and_excess.png',dpi=150); plt.close()
+plt.tight_layout(); plt.savefig('/tmp/_deprecated_fig1_proj.png',dpi=150); plt.close()
 print("fig1 (2-panel: central projection + angle excess) written")
