@@ -6,21 +6,34 @@ import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 R=3.0
 
-# ===== 図A: 1+1次元 円周→線分（等間隔保存）=====
-fig,ax=plt.subplots(1,2,figsize=(12,4.6))
-ph=np.linspace(0,2*np.pi,300); ax[0].plot(R*np.cos(ph),R*np.sin(ph),'k-',lw=1.2)
+# ===== 図A: 1+1次元 円周→線分（等間隔保存、両パネル同一スケール）=====
+# 横並びでなく縦並びにし、x軸スケールを厳密一致させる（弧長=線分間隔が目で一致するように）
+fig=plt.figure(figsize=(11,7.2))
+ax_c=fig.add_subplot(2,1,1)   # 円（上）
+ax_l=fig.add_subplot(2,1,2)   # 線分（下）, x軸は測地距離で円と同尺
+ph=np.linspace(0,2*np.pi,400); ax_c.plot(R*np.cos(ph),R*np.sin(ph),'k-',lw=1.2)
 ks=np.arange(12); pts=np.array([[R*np.cos(np.deg2rad(30*k)),R*np.sin(np.deg2rad(30*k))] for k in ks])
-ax[0].scatter(pts[:,0],pts[:,1],c='black',s=36,zorder=3)
-ax[0].annotate('arc π/2',(R*np.cos(np.deg2rad(15)),R*np.sin(np.deg2rad(15))),textcoords='offset points',xytext=(8,4),fontsize=8)
-ax[0].plot(R*np.cos(np.pi),R*np.sin(np.pi),'rx',ms=10,mew=2); ax[0].annotate('cut at 180°',(-R,0),textcoords='offset points',xytext=(-10,10),fontsize=8,color='r')
-ax[0].set_aspect('equal'); ax[0].set_title('(left) circle S¹(R=3): 12 points at 30° (geodesic spacing π/2)',fontsize=9); ax[0].set_xlabel('x'); ax[0].set_ylabel('y')
-L=2*np.pi*R; xseg=np.array([np.pi/2*k for k in range(12)])  # 等間隔 π/2、全周 2πR=6π
-ax[1].plot([0,L],[0,0],'k-',lw=1.2); ax[1].scatter(xseg,np.zeros_like(xseg),c='black',s=36,zorder=3)
-ax[1].annotate('spacing π/2 (unchanged)',(np.pi/2*1.5,0),textcoords='offset points',xytext=(-30,14),fontsize=8)
-ax[1].annotate('length = circumference 2πR = 6π ≈ 18.85',(L*0.5,0),textcoords='offset points',xytext=(-50,-20),fontsize=8)
-ax[1].set_ylim(-1,1); ax[1].set_yticks([]); ax[1].set_xlabel('geodesic distance (unrolled)')
-ax[1].set_title('(right) unrolled segment: spacing stays π/2 → 1D does not distort',fontsize=9)
-fig.suptitle('Fig.A  The 1+1D map (R=3): geodesic-length-preserving → reference image (zero distortion)',fontsize=10)
+ax_c.scatter(pts[:,0],pts[:,1],c='black',s=40,zorder=3)
+for k in ks:  # 各点に弧長目盛り（測地距離 = R*角）を添える
+    pass
+ax_c.annotate('arc length π/2 between neighbors',(R*np.cos(np.deg2rad(15)),R*np.sin(np.deg2rad(15))),textcoords='offset points',xytext=(8,4),fontsize=8)
+ax_c.plot(R*np.cos(np.pi),R*np.sin(np.pi),'rx',ms=11,mew=2); ax_c.annotate('cut here (180°)',(-R,0),textcoords='offset points',xytext=(-8,12),fontsize=8,color='r')
+ax_c.set_aspect('equal'); ax_c.set_title('(top) circle S¹(R=3): 12 points at 30° (geodesic arc π/2 between neighbors)',fontsize=9)
+ax_c.set_xlabel('x'); ax_c.set_ylabel('y')
+# 線分: 測地距離を横軸に。点間隔 π/2、全長 2πR=6π。x軸範囲を [−R, 6π−R] 等にして弧長尺を円と揃える
+xseg=np.array([np.pi/2*k for k in range(12)])
+ax_l.plot([xseg[0],xseg[-1]+np.pi/2],[0,0],'k-',lw=1.2)
+ax_l.scatter(xseg,np.zeros_like(xseg),c='black',s=40,zorder=3)
+# 各区間に弧長 π/2 の寸法線
+for k in range(11):
+    ax_l.annotate('',(xseg[k+1],0.35),(xseg[k],0.35),arrowprops=dict(arrowstyle='<->',lw=0.6,color='tab:blue'))
+ax_l.annotate('each gap = π/2 ≈ 1.571 (identical to the arc length above)',(xseg[3],0.45),fontsize=8,color='tab:blue')
+ax_l.annotate('total length = circumference 2πR = 6π ≈ 18.85',(xseg[5],-0.5),fontsize=8)
+ax_l.set_ylim(-1.0,1.0); ax_l.set_yticks([])
+ax_l.set_xlabel('geodesic distance along the unrolled line (same length scale as the circle radius axis)')
+ax_l.set_title('(bottom) unrolled to a straight line: every gap is exactly π/2 — spacing is unchanged, NOT shrunk',fontsize=9)
+ax_l.set_aspect('equal')   # ★ 円と同じ等積スケール → 間隔が目で厳密一致
+fig.suptitle('Fig.A  The 1+1D map (R=3): geodesic-length-preserving — spacing is invariant (reference, zero distortion)',fontsize=10)
 plt.tight_layout(); plt.savefig('paper0_figA_1d_reference.png',dpi=150); plt.close()
 
 # ===== 図B: 2+1次元 展開図（平面図+側面図, かまぼこ膨らみ）=====
