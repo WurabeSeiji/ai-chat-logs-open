@@ -171,3 +171,33 @@ def viewpoint_tables():
             cols.append(cell(V))
         print(f"{R:>8} | {'1.000000':>6} | {cols[0]:>11} | {cols[1]:>11} | {cols[2]:>11} | {cols[3]:>11}")
 viewpoint_tables()
+
+# ============ §4.5 角度からの曲率逆算（内部観測者の曲率計）============
+def curvature_from_angle(theta_deg):
+    """頂点角θ[度]から曲率Kと半径Rを符号つきで逆算（次元非依存・a=1）。"""
+    c=np.cos(np.radians(theta_deg))
+    if abs(c)<1e-15: return 0.0, np.inf, "flat"
+    if c<0:   # θ>90°: 正曲率 cosθ=-tan²(1/2R)
+        h=np.arctan(np.sqrt(-c)); R=1/(2*h); return +1/R**2, R, "positive(spherical)"
+    else:     # θ<90°: 負曲率 cosθ=+tanh²(1/2R)
+        h=np.arctanh(np.sqrt(c)); R=1/(2*h); return -1/R**2, R, "negative(hyperbolic)"
+def angle_from_R(R, sign):
+    if sign>0: return np.degrees(np.arccos(-np.tan(1/(2*R))**2))
+    else:      return np.degrees(np.arccos(+np.tanh(1/(2*R))**2))
+def inversion_demo():
+    print("\n"+"="*72)
+    print("§4.5 曲率計: 測定した頂点角 θ → 曲率 K（符号つき）と半径 R")
+    print(f"{'θ[度]':>10} | {'符号':>6} | {'K':>12} | {'R':>10} | 種別")
+    for th in (84.0,88.0,89.5,90.0,90.5,92.0,96.0,107.36431):
+        K,R,kind=curvature_from_angle(th)
+        sgn="負" if K<0 else ("零" if K==0 else "正")
+        Rs=f"{R:.5f}" if np.isfinite(R) else "∞"
+        print(f"{th:>10} | {sgn:>6} | {K:>+12.6f} | {Rs:>10} | {kind}")
+    print("\n往復検算（R→θ→逆算R, 正/負 両曲率）:")
+    ok=True
+    for sign in (+1,-1):
+        for R in (1.5,3.0,10.0,100.0):
+            th=angle_from_R(R,sign); K,Rb,_=curvature_from_angle(th)
+            ok &= abs(Rb-R)<1e-6
+    print(f"  全往復一致: {ok}")
+inversion_demo()
