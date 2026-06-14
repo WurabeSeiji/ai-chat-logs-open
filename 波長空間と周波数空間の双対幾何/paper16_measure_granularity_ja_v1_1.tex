@@ -5,7 +5,7 @@
 \documentclass[
 ]{ltjsarticle}
 \usepackage{xcolor}
-\usepackage[margin=22mm]{geometry}
+\usepackage[margin=20mm]{geometry}
 \usepackage{amsmath,amssymb}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usepackage{iftex}
@@ -49,21 +49,6 @@
 % Allow footnotes in longtable head/foot
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
-\usepackage{graphicx}
-\makeatletter
-\newsavebox\pandoc@box
-\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
-  \sbox\pandoc@box{#1}%
-  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
-  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
-  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
-  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
-  \else\usebox{\pandoc@box}%
-  \fi%
-}
-% Set default figure placement to htbp
-\def\fps@figure{htbp}
-\makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -87,11 +72,13 @@
 干渉粒度・イベント構造・条件付けへの有限分解}\label{ux8ad6ux658716ux6e2cux5ea6ux554fux984cux306eux53b3ux5bc6ux306aux7e2eux7d04-ux5e72ux6e09ux7c92ux5ea6ux30a4ux30d9ux30f3ux30c8ux69cbux9020ux6761ux4ef6ux4ed8ux3051ux3078ux306eux6709ux9650ux5206ux89e3}
 
 \textbf{著者}: 木原範昭 \textbf{作成}: 2026年6月12日 \textbf{版}:
-v1.0(確定版。v0.2=第1回査読{[}中改訂{]}反映、v1.0=第2回査読{[}採録・軽微修正条件付き{]}の
-R1〜R6 を反映) \textbf{DOI(本版)}: 10.5281/zenodo.20665700 /
-\textbf{Concept DOI}: 10.5281/zenodo.20665699 \textbf{ライセンス}: CC BY
-4.0 \textbf{シリーズ}: 波長空間と周波数空間の双対幾何(論文1〜15
-の続編、第16篇)
+v1.1(v1.0 に §12
+観察追記{[}集計一意化問題と集合選択問題の対応候補の発見・検討{]}＋外部参考文献を追加。経緯の透明性のための追記であり、§1.2
+の方針・本文の結果は不変。v1.0=第2回査読{[}採録・軽微修正条件付き{]}R1〜R6
+反映、v0.2=第1回査読{[}中改訂{]}反映) \textbf{DOI(本版)}:
+10.5281/zenodo.20686057 / \textbf{Concept DOI}: 10.5281/zenodo.20665699
+\textbf{ライセンス}: CC BY 4.0 \textbf{シリーズ}:
+波長空間と周波数空間の双対幾何(論文1〜15 の続編、第16篇)
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -122,7 +109,7 @@ s=11 で乖離は 0.24 へ\textbf{3桁跳躍}する。(2)
 \textbf{総括(主定理)}:集計規則の残る自由度は\textbf{干渉粒度 ×
 イベント構造1ビット ×
 枝チャネル条件付け}の有限な決定構造に縮約され、候補間の判定は\textbf{モデル内部で計算可能な実験}(判定表
-§9)として立っている。付録に、この線で証明済みの相殺定理群(η²
+§9)として立っている。付録に、この線で証明済みの相殺定理群(η\(^{2}\)
 等分布の対合 σ**・A1 シェル対合・B2
 トーサー残差×因数分解・鏡像反転補題と指標和還元)を、監査済みの範囲限定つきで収める。Born
 則は本縮約の下で「然るべき極限で合流すべき有効則」の地位に置かれ、合格基準は\textbf{収束・抑制(統計的検閲
@@ -266,8 +253,8 @@ W:記録で区別可能な終配置を跨いでコヒーレント)と配置粒�
 双子の結合振幅は親対の相対配置に強く依存する(完全相殺対を含む)。検査の三層区別(査読
 \#4):\textbf{クラス内一定(s=9 セクターA
 23対・全9クラス・例外ゼロ)は①構成により真}である --- 不変量クラスは
-B₄×swap
-軌道の厳密な分類(補遺76/77)であり、一定性は計算機械の同変性の帰結で反証力を持たない(整合性確認)。\textbf{落ちえた検査(③)=本節の牙}はこちらである:クラスのうち
+B\(_{4}\)×swap
+軌道の厳密な分類(補遺76/77)であり、一定性は計算機械の同変性の帰結で反証力を持たない(整合性確認)。\textbf{落ちえた検査(③)＝本節の核心}はこちらである:クラスのうち
 dot=±1 の対は\textbf{強度縞では区別できないのに P(X) が異なる}(0.972 vs
 0.994 --- 等しいこともできた)。よって測度は読み出し三層 11⊂13⊂21(論文13
 定理3)の\textbf{層1〜2
@@ -360,9 +347,10 @@ W=0∧W′\textgreater0/イベント構造:0.98361 vs 0.98263・結合振幅の�
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-1 & パリティ仮説:m 奇 ⟺ \(S_+=S_-\) & 鏡像相殺の発生条件 & \textbf{m=4
-実行済み(補遺84):支持} --- \(S_+-S_-\neq0\)、ただしチャネル (5,7,9) は偶
-m でも相殺(単位はチャネル別指標和に細分)。\textbf{W′ の鏡像同値は m≥3
+1 & パリティ仮説:m 奇 \(\Longleftrightarrow\) \(S_+=S_-\) &
+鏡像相殺の発生条件 & \textbf{m=4 実行済み(補遺84):支持} ---
+\(S_+-S_-\neq0\)、ただしチャネル (5,7,9) は偶 m
+でも相殺(単位はチャネル別指標和に細分)。\textbf{W′ の鏡像同値は m≥3
 で一般的}(全チャネル厳密一致)。m=5@s31 が残(Born 負荷点) \\
 2 & 候補測度の大 s 相互収束(\(\Delta/\Delta'\) 系列の延長、粒度別) &
 測度選択が「深い離散領域のみ」で効くか「全域」で効くか & 未実行 \\
@@ -410,6 +398,39 @@ Born の類似物は定理になる。
   物理的同一視は行わない。
 \end{enumerate}
 
+\subsection{12.
+観察追記(v1.1):集計一意化問題と集合選択問題の対応候補}\label{ux89b3ux5bdfux8ffdux8a18v1.1ux96c6ux8a08ux4e00ux610fux5316ux554fux984cux3068ux96c6ux5408ux9078ux629eux554fux984cux306eux5bfeux5fdcux5019ux88dc}
+
+v1.0(前版)の時点では気づいていなかったが、その後に先行研究を発見して内容を検討したところ、§10
+で Born
+接続として残した未解決の問い------「記録原理(枝チャネル層)が集計規則を一意化するか」------が、量子力学基礎論で半世紀にわたり扱われてきた\textbf{集合選択問題(set
+selection
+problem)}と同種の課題に起因している可能性に気づいた。経緯の透明性のため、この発見と検討の事実を観察として追記する(同定の正否は現時点で保留)。
+
+\begin{itemize}
+\tightlist
+\item
+  §10 の「記録原理が集計を一意化すれば Born
+  の類似物は定理になる」は、構造として、記録・準古典性が好ましい歴史集合を選ぶという
+  Gell-Mann--Hartle の構想 {[}2,3{]}
+  と同型に見える。対応先は整合的/デコヒーレント歴史の枠組み {[}1,4{]}
+  と、その物理的基盤であるデコヒーレンス・einselection {[}5{]} である。
+\item
+  その一般的障害は、整合性条件が確率を割り当てる基準を与えるものの一意の歴史集合を選ばないという\textbf{集合選択問題}
+  {[}6,7{]}
+  にあたる可能性がある。これが正しければ、本論文の集計一意化は本論文に固有の困難ではなく、約30年未解決の既知の問題に対応していることになる。
+\item
+  一方、本論文がこの非一意性を有限の決定構造(干渉粒度 ×
+  イベント構造1ビット ×
+  条件付け、§5--9)に縮約し、候補間の判別をモデル内部の判定実験として立てている点は、抽象的非一意性で止まる一般論と異なって見える。これが実質的前進か離散・有限設定の産物かは、本論文では判定しない。
+\end{itemize}
+
+\textbf{留保}:この同定は未検証の観察であり、表層的類似にすぎない可能性、対応のどこかが破れている可能性を排除しない。また記録原理は標準量子力学でも必ずしも成り立たない例が知られる(witness
+が存在しても情報転写なしに干渉が消える例
+{[}8{]})。詳細な対応表・限界・全参照は補遺85(GitHub)に記録した。本追記は
+§1.2 の方針(集計規則の選定をしない/Born
+則を導出しない)を一切変更せず、本文の全結果も不変である。物理的同一視は行わない。
+
 \subsection{図}\label{ux56f3}
 
 \begin{itemize}
@@ -417,18 +438,14 @@ Born の類似物は定理になる。
 \item
   \textbf{図1}(\texttt{paper16\_fig1\_compression.png}): 二結果圧縮 ---
   s=9(2結果・Δ=0.00068)と s=11(3結果・Δ=0.24136)の結合分布
+\item
+  \textbf{図2}(\texttt{paper16\_fig2\_divergence.png}): 乖離の地形 ---
+  Δ(s) 全親型系列と配置粒度 Δ′(セクター依存の縮退)
+\item
+  \textbf{図3}(\texttt{paper16\_fig3\_granularity.png}): 粒度の非規約性
+  --- 鏡像相殺の m 系列(m=2 不成立/m=3 全体/m=4 はチャネル (5,7,9)
+  単体)と W′ 鏡像同値(m≥3);四値ロック 12+12+6+6 と重み対 384=384
 \end{itemize}
-
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{paper16_fig1_compression.png}
-- \textbf{図2}(\texttt{paper16\_fig2\_divergence.png}): 乖離の地形 ---
-Δ(s) 全親型系列と配置粒度 Δ′(セクター依存の縮退)
-
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{paper16_fig2_divergence.png}
-- \textbf{図3}(\texttt{paper16\_fig3\_granularity.png}): 粒度の非規約性
---- 鏡像相殺の m 系列(m=2 不成立/m=3 全体/m=4 はチャネル (5,7,9) 単体)と
-W′ 鏡像同値(m≥3);四値ロック 12+12+6+6 と重み対 384=384
-
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{paper16_fig3_granularity.png}
 
 全図は機械検証済み数値の提示(模式図なし)。
 
@@ -461,7 +478,7 @@ graded 規約幅 & ③ & s=9/11/13 & 全数 \\
 鏡像親 W=0∧W′=768 / m=2,4 & ③ & m=1〜4 & 全数 \\
 クラス一定性 & \textbf{①(同変性の帰結 --- 整合性確認)} & 23対×全9クラス
 & 全数 \\
-縞クラステスト(層3要求) & \textbf{③(本節の牙)} & dot=±1 不等 & 全数 \\
+縞クラステスト(層3要求) & \textbf{③(本節の核心)} & dot=±1 不等 & 全数 \\
 2×2表(A\_seq 含む) & ③ & 完成 & 全数/掃引 \\
 相殺定理群(σ**・A1・B2) & ②(対合構成=証明) & s=9 水準 & 全数+対合 \\
 鏡像反転補題・指標和還元 & ②(3行算術=証明) & 394経路 反例0 & 全数 \\
@@ -472,12 +489,50 @@ graded 規約幅 & ③ & s=9/11/13 & 全数 \\
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
+\subsection{参考文献(外部)}\label{ux53c2ux8003ux6587ux732eux5916ux90e8}
+
+本シリーズは外部文献を引用しない方針だが、本追記(§12)は先行研究の発見経緯を誠実に記録する性格上、隣接領域の最小限の外部参照を持つ(概念的背景であり、本論文の縮約結果の根拠ではない)。全文献は補遺85
+を参照。
+
+\begin{itemize}
+\tightlist
+\item
+  {[}1{]} R. B. Griffiths, ``Consistent histories and the interpretation
+  of quantum mechanics,'' \emph{J. Stat. Phys.} \textbf{36}, 219 (1984).
+\item
+  {[}2{]} M. Gell-Mann, J. B. Hartle, ``Quantum mechanics in the light
+  of quantum cosmology,'' in \emph{Complexity, Entropy, and the Physics
+  of Information}, ed.~W. H. Zurek (Addison-Wesley, 1990).
+\item
+  {[}3{]} M. Gell-Mann, J. B. Hartle, ``Classical equations for quantum
+  systems,'' \emph{Phys. Rev.~D} \textbf{47}, 3345 (1993).
+\item
+  {[}4{]} R. Omnès, \emph{The Interpretation of Quantum Mechanics}
+  (Princeton Univ. Press, 1994).
+\item
+  {[}5{]} W. H. Zurek, ``Decoherence, einselection, and the quantum
+  origins of the classical,'' \emph{Rev.~Mod. Phys.} \textbf{75}, 715
+  (2003).
+\item
+  {[}6{]} F. Dowker, A. Kent, ``On the consistent histories approach to
+  quantum mechanics,'' \emph{J. Stat. Phys.} \textbf{82}, 1575 (1996).
+\item
+  {[}7{]} A. Kent, ``Consistent sets yield contrary inferences in
+  quantum theory,'' \emph{Phys. Rev.~Lett.} \textbf{78}, 2874 (1997).
+\item
+  {[}8{]} C. S. Lent, ``Blind witnesses quench quantum interference
+  without transfer of which-path information,'' \emph{Entropy}
+  \textbf{22}, 776 (2020).
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
 \textbf{謝辞・履歴}: 検証は Claude Code(ローカル機械検証)と
 claude.ai(独立検算・複数命題の提案と相互訂正)の二者独立検算プロトコルによる。素材:補遺68〜84(2026-06-12;補遺83=四値ロック検証記録、補遺84=m=4/ι
 実行)。v0.2:第1回査読 \#1〜\#6
 反映。v1.0:第2回査読(採録・軽微条件付き)R1〜R6 反映 --- 補遺84
 結果の本文・図3への伝播、定理6(iii)
-の非自明化、圧縮補題、分布幅、用語注記。本論文の探究では予言の反証(スケール自由性)・説明の訂正(σ₀定数性)・定義の照合(縞三層)が二者間で計7回往復した
+の非自明化、圧縮補題、分布幅、用語注記。本論文の探究では予言の反証(スケール自由性)・説明の訂正(σ\(_{0}\)定数性)・定義の照合(縞三層)が二者間で計7回往復した
 --- 縮約の信頼性はこの相互訂正の履歴に依拠する。
 
 物理的同一視は行わない。

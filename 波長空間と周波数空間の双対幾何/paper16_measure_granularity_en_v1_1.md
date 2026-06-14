@@ -2,8 +2,8 @@
 
 **Author**: Noriaki Kihara
 **Date**: June 12, 2026
-**Version**: v1.0 (final; v0.2 incorporated the 6 mandatory points of the first review [major revision; the entrance examination — "report of the selection problem, not a pre-emption of the selection" — was passed], v1.0 the points R1–R6 of the second review [accept with minor conditions])
-**DOI (this version)**: 10.5281/zenodo.20665700 / **Concept DOI**: 10.5281/zenodo.20665699
+**Version**: v1.1 (adds §12, an observational addendum [discovery and examination of a candidate correspondence between the unicization problem and the set selection problem] plus external references, to v1.0. A transparency addendum; the policy of §1.2 and all results in the body are unchanged. v1.0 = points R1–R6 of the second review; v0.2 = the first review.)
+**DOI (this version)**: 10.5281/zenodo.20686057 / **Concept DOI**: 10.5281/zenodo.20665699
 **License**: CC BY 4.0
 **Series**: Dual Geometry of Wavelength Space and Frequency Space (Paper 16, sequel to Papers 1–15)
 
@@ -60,7 +60,7 @@ The mirror parent decays perfectly normally at configuration granularity; only t
 
 **Terminology note**: the "A/B" of mirror pairs in this paper (parents $\pm m$) and the "A/B" holonomy classes of Paper 14, §5 are **distinct** — beware when reading both.
 
-The joint amplitude of twins depends strongly on the relative configuration of the parent pair (including completely cancelling pairs). The three-stratum discipline (review #4): **class-constancy (s=9 sector A, 23 pairs, all 9 classes, zero exceptions) is ① true by construction** — the invariant classes are the exact orbit classification (B₄×swap), so constancy follows from the equivariance of the machinery and has no refutation power (a consistency check). **The check that could have failed (③) — the fang of this section — is this**: pairs with dot=±1, indistinguishable by intensity fringes, have **different** P(X) (0.972 vs 0.994 — they could have been equal). Hence the measure cannot be supported on strata 1–2 of the readout hierarchy 11⊂13⊂21 (Paper 13, Theorem 3) and **requires stratum 3 (branch channels)**. The principle "interference granularity = record distinguishability" holds only with the stratum made explicit. The floor (pairs with disjoint axis supports = the configuration-granularity value 0.96644) is also ③: it agreed with the granularity audit independently.
+The joint amplitude of twins depends strongly on the relative configuration of the parent pair (including completely cancelling pairs). The three-stratum discipline (review #4): **class-constancy (s=9 sector A, 23 pairs, all 9 classes, zero exceptions) is ① true by construction** — the invariant classes are the exact orbit classification (B₄×swap), so constancy follows from the equivariance of the machinery and has no refutation power (a consistency check). **The check that could have failed (③) — the crux of this section — is this**: pairs with dot=±1, indistinguishable by intensity fringes, have **different** P(X) (0.972 vs 0.994 — they could have been equal). Hence the measure cannot be supported on strata 1–2 of the readout hierarchy 11⊂13⊂21 (Paper 13, Theorem 3) and **requires stratum 3 (branch channels)**. The principle "interference granularity = record distinguishability" holds only with the stratum made explicit. The floor (pairs with disjoint axis supports = the configuration-granularity value 0.96644) is also ③: it agreed with the granularity audit independently.
 
 ## 7. Event structure: exactly one bit
 
@@ -103,6 +103,16 @@ Under this reduction, the Born rule is not "an exact target to reproduce" but an
 4. The four-value lock and the weight pairing are exhaustive facts at m=3 (the proof is in progress along decision-table item 3).
 5. No physical identification is made.
 
+## 12. Observational addendum (v1.1): a candidate correspondence with the set selection problem
+
+We had not noticed this at the time of v1.0 (the previous version), but having since found and examined prior work, we noticed that the open question left in §10 as the connection to Born — "does the record principle (the branch-channel stratum) make the aggregation rule unique?" — may originate from the same kind of issue as the **set selection problem**, treated for half a century in the foundations of quantum mechanics. For transparency about how this came about, we record the fact of this discovery and examination as an observation (whether the identification is a correct reading is left open for now).
+
+- §10's "if the record principle makes aggregation unique, the analog of Born becomes a theorem" appears structurally isomorphic to the Gell-Mann–Hartle program [2,3], in which records / quasiclassicality select a preferred set of histories. The correspondents are the consistent / decoherent histories framework [1,4] and its physical basis, decoherence and einselection [5].
+- Its general obstacle may be the **set selection problem** [6,7]: the consistency condition gives a criterion for assigning probabilities but does not select a unique set of histories. If correct, this paper's unicization is not a difficulty peculiar to this paper but faces a problem known to be unsolved for about thirty years.
+- On the other hand, that this paper reduces this non-uniqueness to a finite decision structure (interference granularity × event-structure one bit × conditioning, §5–9) and sets up the discrimination between candidates as a decision experiment internal to the model appears different from the general discussion, which stops at abstract non-uniqueness. Whether this is substantive progress or an artifact of the discrete, finite setting is not judged in this paper.
+
+**Caveat**: this identification is an unverified observation; we do not exclude that it is merely a superficial resemblance, or that the correspondence breaks somewhere. The record principle does not necessarily hold even in standard quantum mechanics (an example where interference vanishes without transfer of which-path information despite the presence of witnesses [8]). The detailed correspondence table, limits, and full references are recorded in Supplement 85 (GitHub). This addendum changes neither the policy of §1.2 (no selection of the aggregation rule / no derivation of Born) nor any result in the body. No physical identification is made.
+
 ## Figures
 
 - **Figure 1** (`paper16_fig1_compression.png`): two-outcome compression — joint distributions at s=9 (2 outcomes, Δ=0.00068) and s=11 (3 outcomes, Δ=0.24136)
@@ -121,11 +131,26 @@ All figures are presentations of machine-verified values (no schematics).
 | Graded convention width | ③ | s=9/11/13 | exhaustive | same |
 | Mirror parent W=0∧W′ / m=2,4 | ③ | m=1–4 | exhaustive | supplement75/79/84 scripts |
 | Class constancy | **① (consequence of equivariance — consistency check)** | 23 pairs × 9 classes | exhaustive | supplement75_granularity_execution.py |
-| Fringe-class test (stratum-3 requirement) | **③ (the fang)** | dot=±1 inequality | exhaustive | suppl. 75/77 |
+| Fringe-class test (stratum-3 requirement) | **③ (the crux)** | dot=±1 inequality | exhaustive | suppl. 75/77 |
 | 2×2 table (incl. A_seq) | ③ | complete | exhaustive / sweep | supplement75_granularity_execution.py |
 | Cancellation theorems (σ\*\*, A1, B2) | ② (involution constructions = proofs) | s=9 level | exhaustive + involutions | supplement69/70/71 scripts |
 | Mirror-flip lemma, indicator-sum reduction | ② (three-line arithmetic) | 394 paths, 0 exceptions | exhaustive | supplement81_mirror_lemma_check.py |
 | Four-value lock, weight pairing | ③ (ι is upgrading it toward ②) | 36 configs, 0 exceptions; 384=384 | exhaustive | suppl. 83 (verification record), suppl. 84 (ι) |
+
+---
+
+## References (external)
+
+This series's policy is not to cite external literature; this addendum (§12), by its nature of honestly recording how the prior work was found, carries a minimal set of external references for the adjacent area (conceptual background, not a basis for the reduction results of this paper). See Supplement 85 for the full list.
+
+- [1] R. B. Griffiths, "Consistent histories and the interpretation of quantum mechanics," *J. Stat. Phys.* **36**, 219 (1984).
+- [2] M. Gell-Mann, J. B. Hartle, "Quantum mechanics in the light of quantum cosmology," in *Complexity, Entropy, and the Physics of Information*, ed. W. H. Zurek (Addison-Wesley, 1990).
+- [3] M. Gell-Mann, J. B. Hartle, "Classical equations for quantum systems," *Phys. Rev. D* **47**, 3345 (1993).
+- [4] R. Omnès, *The Interpretation of Quantum Mechanics* (Princeton Univ. Press, 1994).
+- [5] W. H. Zurek, "Decoherence, einselection, and the quantum origins of the classical," *Rev. Mod. Phys.* **75**, 715 (2003).
+- [6] F. Dowker, A. Kent, "On the consistent histories approach to quantum mechanics," *J. Stat. Phys.* **82**, 1575 (1996).
+- [7] A. Kent, "Consistent sets yield contrary inferences in quantum theory," *Phys. Rev. Lett.* **78**, 2874 (1997).
+- [8] C. S. Lent, "Blind witnesses quench quantum interference without transfer of which-path information," *Entropy* **22**, 776 (2020).
 
 ---
 
