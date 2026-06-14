@@ -4,6 +4,20 @@
 
 ---
 
+## 論文0.5（基礎篇・定義論文）：変位記録の仕組みの考察（v0.1）
+
+A Study of the Displacement-Record Mechanism — Recording of Displacement by Interference of ν Oscillation and the Complex Plane, and the Composition of Two ±1/2 (±1)
+
+- **Concept DOI**: 10.5281/zenodo.20689793（外部参照用・最新版へ自動転送）
+- **Version DOI (v0.1, 最新)**: 10.5281/zenodo.20689794
+- **Zenodo deposit**: 20689794 / record https://zenodo.org/record/20689794
+- **公開日**: 2026-06-14
+- **ライセンス**: CC BY 4.0
+- **関連**: 論文0（10.5281/zenodo.20680269）を `isPartOf`、論文13（20665633）・論文14（20665661）・論文9（20640462）・Page–Wootters（10.1103/PhysRevD.27.2885）・Hartle（arXiv:1608.04145）を `references`
+- **内容**: 定義論文。「記録／帳簿／台帳」を追加公理ゼロで **変位記録** と定義。φ＝巻き数の進行読み（反射縮退＝符号セクター・同周波前提）、二つの ±1/2 の合成を区間演算で（≤±1 は無公理／＝±1 は端点到達性、三角分布は用いない）、区別不能＝2自由度→1自由度の射影。時間の矢は導出しない（Page–Wootters 同型、Hartle は標語共有・非実装）。**既存論文の帳簿/台帳 呼称整理のアンカー**。英日2言語・検算スクリプト・厳密計算図 同梱。Claude Code × claude.ai 二者検算（指摘1→4＝提出可判定）
+
+---
+
 ## 論文0（基礎篇）：正曲率定曲率空間における測地的単位セルの歪み（v1.4）
 
 Distortion of the Geodesic Unit Cell in Positively-Curved Constant-Curvature Space — Exact Evaluation of Edge, Angle, Area, and Volume
