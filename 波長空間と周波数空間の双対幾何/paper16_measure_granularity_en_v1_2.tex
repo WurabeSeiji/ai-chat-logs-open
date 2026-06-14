@@ -1,7 +1,6 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 \documentclass[
 ]{ltjsarticle}
 \usepackage{xcolor}
@@ -52,15 +51,32 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{newunicodechar}
+\usepackage{amssymb}
+% --- subscripts ---
+\newunicodechar{₀}{\ensuremath{_{0}}}\newunicodechar{₁}{\ensuremath{_{1}}}\newunicodechar{₂}{\ensuremath{_{2}}}
+\newunicodechar{₃}{\ensuremath{_{3}}}\newunicodechar{₄}{\ensuremath{_{4}}}\newunicodechar{₅}{\ensuremath{_{5}}}
+\newunicodechar{₆}{\ensuremath{_{6}}}\newunicodechar{₇}{\ensuremath{_{7}}}\newunicodechar{₈}{\ensuremath{_{8}}}
+\newunicodechar{₉}{\ensuremath{_{9}}}\newunicodechar{₊}{\ensuremath{_{+}}}\newunicodechar{₋}{\ensuremath{_{-}}}
+\newunicodechar{ᵢ}{\ensuremath{_{i}}}\newunicodechar{ⱼ}{\ensuremath{_{j}}}\newunicodechar{ₙ}{\ensuremath{_{n}}}
+% --- superscripts ---
+\newunicodechar{⁰}{\ensuremath{^{0}}}\newunicodechar{¹}{\ensuremath{^{1}}}\newunicodechar{²}{\ensuremath{^{2}}}
+\newunicodechar{³}{\ensuremath{^{3}}}\newunicodechar{⁴}{\ensuremath{^{4}}}\newunicodechar{⁵}{\ensuremath{^{5}}}
+\newunicodechar{⁶}{\ensuremath{^{6}}}\newunicodechar{⁷}{\ensuremath{^{7}}}\newunicodechar{⁸}{\ensuremath{^{8}}}
+\newunicodechar{⁹}{\ensuremath{^{9}}}\newunicodechar{⁻}{\ensuremath{^{-}}}\newunicodechar{⁺}{\ensuremath{^{+}}}
+% --- brackets / sets / symbols ---
+\newunicodechar{⌊}{\ensuremath{\lfloor}}\newunicodechar{⌋}{\ensuremath{\rfloor}}
+\newunicodechar{⌈}{\ensuremath{\lceil}}\newunicodechar{⌉}{\ensuremath{\rceil}}
+\newunicodechar{𝒩}{\ensuremath{\mathcal{N}}}
+\newunicodechar{∎}{\ensuremath{\blacksquare}}
+\newunicodechar{✗}{\ensuremath{\times}}\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{⟹}{\ensuremath{\Longrightarrow}}\newunicodechar{⟸}{\ensuremath{\Longleftarrow}}
+\newunicodechar{⟺}{\ensuremath{\Longleftrightarrow}}\newunicodechar{↪}{\ensuremath{\hookrightarrow}}
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  colorlinks=true,
-  linkcolor={Maroon},
-  filecolor={Maroon},
-  citecolor={Blue},
-  urlcolor={Blue},
+  hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
 \author{}
@@ -73,15 +89,17 @@ Decomposition into Interference Granularity, Event Structure, and
 Conditioning}\label{paper-16-an-exact-reduction-of-the-measure-problem-finite-decomposition-into-interference-granularity-event-structure-and-conditioning}
 
 \textbf{Author}: Noriaki Kihara \textbf{Date}: June 12, 2026
-\textbf{Version}: v1.1 (adds §12, an observational addendum {[}discovery
+\textbf{Version}: v1.2 (adds §12, an observational addendum {[}discovery
 and examination of a candidate correspondence between the unicization
 problem and the set selection problem{]} plus external references, to
 v1.0. A transparency addendum; the policy of §1.2 and all results in the
 body are unchanged. v1.0 = points R1--R6 of the second review; v0.2 =
-the first review.) \textbf{DOI (this version)}: 10.5281/zenodo.20686057
-/ \textbf{Concept DOI}: 10.5281/zenodo.20665699 \textbf{License}: CC BY
-4.0 \textbf{Series}: Dual Geometry of Wavelength Space and Frequency
-Space (Paper 16, sequel to Papers 1--15)
+the first review. v1.2 = nomenclature unified {[}bookkeeping →
+accounting, consistent with Paper 0.5 §4{]} plus PDF glyph typesetting
+fix; body content and results unchanged.) \textbf{DOI (this version)}:
+10.5281/zenodo.20690373 / \textbf{Concept DOI}: 10.5281/zenodo.20665699
+\textbf{License}: CC BY 4.0 \textbf{Series}: Dual Geometry of Wavelength
+Space and Frequency Space (Paper 16, sequel to Papers 1--15)
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -257,7 +275,7 @@ granularity}\label{theorem-3-the-non-conventionality-of-interference-granularity
 
 \textbf{Internal definition (convention)}: in this series a
 ``convention'' is a choice of presentation that does not change the
-bookkeeping values (e.g., the diagonal and branch treatments --- the
+accounting values (e.g., the diagonal and branch treatments --- the
 granularity audit of Paper 14, Theorem 5). The choice between the
 channel-consistent sum (historical W: coherent across
 record-distinguishable final configurations) and configuration
@@ -314,13 +332,13 @@ configuration of the parent pair (including completely cancelling
 pairs). The three-stratum discipline (review \#4):
 \textbf{class-constancy (s=9 sector A, 23 pairs, all 9 classes, zero
 exceptions) is ① true by construction} --- the invariant classes are the
-exact orbit classification (B\(_{4}\)×swap), so constancy follows from
-the equivariance of the machinery and has no refutation power (a
-consistency check). \textbf{The check that could have failed (③) --- the
-crux of this section --- is this}: pairs with dot=±1, indistinguishable
-by intensity fringes, have \textbf{different} P(X) (0.972 vs 0.994 ---
-they could have been equal). Hence the measure cannot be supported on
-strata 1--2 of the readout hierarchy 11⊂13⊂21 (Paper 13, Theorem 3) and
+exact orbit classification (B₄×swap), so constancy follows from the
+equivariance of the machinery and has no refutation power (a consistency
+check). \textbf{The check that could have failed (③) --- the crux of
+this section --- is this}: pairs with dot=±1, indistinguishable by
+intensity fringes, have \textbf{different} P(X) (0.972 vs 0.994 --- they
+could have been equal). Hence the measure cannot be supported on strata
+1--2 of the readout hierarchy 11⊂13⊂21 (Paper 13, Theorem 3) and
 \textbf{requires stratum 3 (branch channels)}. The principle
 ``interference granularity = record distinguishability'' holds only with
 the stratum made explicit. The floor (pairs with disjoint axis supports
@@ -429,12 +447,12 @@ Status
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-1 & Parity hypothesis: m odd \(\Longleftrightarrow\) \(S_+=S_-\) & the
-occurrence condition of mirror cancellation & \textbf{m=4 executed
-(Suppl. 84): supported} --- \(S_+-S_-\neq0\); however channel (5,7,9)
-cancels even at even m (the unit refines to per-channel indicator sums).
-\textbf{W′ mirror-equality is generic for m≥3} (all channels exact).
-m=5@s31 remains (the Born load-bearing point) \\
+1 & Parity hypothesis: m odd ⟺ \(S_+=S_-\) & the occurrence condition of
+mirror cancellation & \textbf{m=4 executed (Suppl. 84): supported} ---
+\(S_+-S_-\neq0\); however channel (5,7,9) cancels even at even m (the
+unit refines to per-channel indicator sums). \textbf{W′ mirror-equality
+is generic for m≥3} (all channels exact). m=5@s31 remains (the Born
+load-bearing point) \\
 2 & Mutual convergence of candidates at large s (\(\Delta/\Delta'\)
 series, per granularity) & whether measure selection matters only in the
 deep discrete regime or everywhere & open \\
@@ -671,13 +689,13 @@ proposal and mutual correction of several propositions). Source
 material: Supplements 68--84 (June 12, 2026; suppl. 83 = the
 four-value-lock verification record, suppl. 84 = the m=4 and ι
 executions). In the course of this line, predictions were refuted
-(scale-freeness), explanations corrected (σ\(_{0}\) constancy), and
-definitions reconciled (the three fringe strata) across seven exchanges
-between the two parties --- the reliability of the reduction rests on
-this history of mutual correction. v0.2: 6 mandatory points of the first
-review. v1.0: points R1--R6 of the second review --- propagation of
-Supplement 84 into §5 and Fig. 3, the non-trivialized Theorem 6(iii),
-the compression lemma, distribution ranges, terminology note.
+(scale-freeness), explanations corrected (σ₀ constancy), and definitions
+reconciled (the three fringe strata) across seven exchanges between the
+two parties --- the reliability of the reduction rests on this history
+of mutual correction. v0.2: 6 mandatory points of the first review.
+v1.0: points R1--R6 of the second review --- propagation of Supplement
+84 into §5 and Fig. 3, the non-trivialized Theorem 6(iii), the
+compression lemma, distribution ranges, terminology note.
 
 No physical identification is made.
 

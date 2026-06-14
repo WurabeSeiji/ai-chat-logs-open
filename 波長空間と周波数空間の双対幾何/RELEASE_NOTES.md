@@ -32,6 +32,9 @@ A Study of the Displacement-Record Mechanism — Recording of Displacement by In
 | 13 位置は読まれていなかった | v1.2 | 10.5281/zenodo.20690213 | 10.5281/zenodo.20665633 |
 | 14 時間方向と振幅の舞台 | v1.2 | 10.5281/zenodo.20690214 | 10.5281/zenodo.20665661 |
 | 15 xyztRQ への射影 | v1.2 | 10.5281/zenodo.20690216 | 10.5281/zenodo.20665688 |
+| 16 測度問題の厳密な縮約 | v1.2 | 10.5281/zenodo.20690373 | 10.5281/zenodo.20665699 |
+
+（論文16 は当初 benign と判断し保留したが、唯一「簿記」が1箇所だけ残るのは不自然なため、簿記→勘定 に統一＋グリフ整備して v1.2 に再版。旧 v1.1=20686057）
 
 呼称対応の正本は論文0.5（Concept DOI 10.5281/zenodo.20689793）§4。ja/en 両版・tex・PDF を更新済み。
 

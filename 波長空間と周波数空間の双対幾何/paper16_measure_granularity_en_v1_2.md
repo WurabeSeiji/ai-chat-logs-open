@@ -2,8 +2,8 @@
 
 **Author**: Noriaki Kihara
 **Date**: June 12, 2026
-**Version**: v1.1 (adds §12, an observational addendum [discovery and examination of a candidate correspondence between the unicization problem and the set selection problem] plus external references, to v1.0. A transparency addendum; the policy of §1.2 and all results in the body are unchanged. v1.0 = points R1–R6 of the second review; v0.2 = the first review.)
-**DOI (this version)**: 10.5281/zenodo.20686057 / **Concept DOI**: 10.5281/zenodo.20665699
+**Version**: v1.2 (adds §12, an observational addendum [discovery and examination of a candidate correspondence between the unicization problem and the set selection problem] plus external references, to v1.0. A transparency addendum; the policy of §1.2 and all results in the body are unchanged. v1.0 = points R1–R6 of the second review; v0.2 = the first review. v1.2 = nomenclature unified [bookkeeping → accounting, consistent with Paper 0.5 §4] plus PDF glyph typesetting fix; body content and results unchanged.)
+**DOI (this version)**: 10.5281/zenodo.20690373 / **Concept DOI**: 10.5281/zenodo.20665699
 **License**: CC BY 4.0
 **Series**: Dual Geometry of Wavelength Space and Frequency Space (Paper 16, sequel to Papers 1–15)
 
@@ -47,7 +47,7 @@ Anchors (s=9), all exactly reproduced: sequential 396/403, batch 60/61, derived 
 
 ## 5. Theorem 3: the non-conventionality of interference granularity
 
-**Internal definition (convention)**: in this series a "convention" is a choice of presentation that does not change the bookkeeping values (e.g., the diagonal and branch treatments — the granularity audit of Paper 14, Theorem 5). The choice between the channel-consistent sum (historical W: coherent across record-distinguishable final configurations) and configuration granularity (W′: square per configuration) is **not** a convention in this sense — it splits values algebraically (Fig. 3a):
+**Internal definition (convention)**: in this series a "convention" is a choice of presentation that does not change the accounting values (e.g., the diagonal and branch treatments — the granularity audit of Paper 14, Theorem 5). The choice between the channel-consistent sum (historical W: coherent across record-distinguishable final configurations) and configuration granularity (W′: square per configuration) is **not** a convention in this sense — it splits values algebraically (Fig. 3a):
 
 | Parent | W (channel-consistent) | W′ (configuration granularity) |
 |---|---|---|
