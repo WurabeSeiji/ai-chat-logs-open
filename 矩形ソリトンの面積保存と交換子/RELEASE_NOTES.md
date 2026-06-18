@@ -57,6 +57,20 @@
 **Zenodo レコード**：https://zenodo.org/record/20741713
 **形式**：md / tex / pdf × 日英 + 図 4 点（SVG）= 10 ファイル
 
+### 補遺：揺らぎの和ゼロから不確定性へ
+
+**タイトル（日本語）**：補遺：揺らぎの和ゼロから不確定性へ ── 半ビットの配分としての不確定性関係
+**タイトル（英語）**：Appendix: From the Sum-Zero of Fluctuations to Uncertainty — The Uncertainty Relation as the Allocation of a Half-Bit
+**公開日**：2026-06-18
+**位置づけ**：論文7改訂版 §6.3 の補遺（`isSupplementTo`）。
+
+**内容：** 観測量空間の不確定性関係（積一定）が、基本量 N 空間の揺らぎの和ゼロ Δ_a+Δ_b=0 から導出されることを、導出の向き（和ゼロ＝定義、積一定＝帰結）を明示して展開。保たれるのは観測量の積 a·b=2^K であって揺らぎの積 δ_a·δ_b ではないこと、固定半ビット（既約な床＋符号反相関）と連続 squeeze（双曲線トレードオフ、±1/2 はその最小単位）は別側面であることを明記。±1/2 は措定、不確定性は Bell の意味ではない。
+
+**Concept DOI（全版）**：[10.5281/zenodo.20742277](https://doi.org/10.5281/zenodo.20742277)
+**v1 DOI（本版）**：[10.5281/zenodo.20742278](https://doi.org/10.5281/zenodo.20742278)
+**Zenodo レコード**：https://zenodo.org/record/20742278
+**形式**：md / tex / pdf × 日英 + 図 2 点（SVG）= 8 ファイル
+
 ---
 
 ## 構築ノート（Zenodo 未公開・本フォルダ内）
