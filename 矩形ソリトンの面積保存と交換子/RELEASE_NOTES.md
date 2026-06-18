@@ -29,6 +29,20 @@
 **Zenn 記事**：[対数によるスケールの平坦写像と、スケール・量子化の分離](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/articles/scale-log-map-quantization-separation.md)
 **形式**：md / tex / pdf × 日英 = 6 ファイル
 
+### トイモデル（マジックコイン）：無名性の限界と隠れた変数の否定の視覚化
+
+**タイトル（日本語）**：マジックコインのトイモデル ── 無名性の限界（0・1・2）と隠れた変数の否定を視覚化する
+**タイトル（英語）**：A Magic-Coin Toy Model — Visualizing the Limit of Anonymity (0, 1, 2) and the Denial of Hidden Variables
+**公開日**：2026-06-18
+**位置づけ**：論文7改訂版 §0.5 の補遺（`isSupplementTo`）。数式の前に本質を体感する直感的な入口。
+
+**内容：** 半透明コップ＋デジタル秤（系の外＝加法的な総量）と、各コインのカメラ映像を映す CRT モニター（系の中＝無名の一人称視点、カメラは自分を映せず他のみ）を用いた卓上マジック。4 シーン（0/10/20/30g）で、0 と null の区別不能、1 と 0 の区別不能、2 での差異成立、2 と 2 以上の区別不能（少しズラしたズル＝ダブルエッジによる隠れた変数の否定）を視覚化。末尾に「このモデルの限界」（モニター＝一人称視点／秤は総量スカラーで枚数化には同一性仮定が要る／Bell の意味の no-hidden-variables ではない／§0.5 の一部／物理同定なし）を明記。
+
+**Concept DOI（全版）**：[10.5281/zenodo.20741264](https://doi.org/10.5281/zenodo.20741264)
+**v1 DOI（本版）**：[10.5281/zenodo.20741265](https://doi.org/10.5281/zenodo.20741265)
+**Zenodo レコード**：https://zenodo.org/record/20741265
+**形式**：md / tex / pdf × 日英 + 図 4 点 = 10 ファイル
+
 ---
 
 ## 構築ノート（Zenodo 未公開・本フォルダ内）
