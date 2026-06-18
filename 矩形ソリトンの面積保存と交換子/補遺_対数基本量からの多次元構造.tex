@@ -1,0 +1,223 @@
+\documentclass[11pt]{ltjsarticle}
+\usepackage{luatexja-fontspec}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=22mm]{geometry}
+\usepackage{graphicx}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,keepaspectratio}
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\pandocbounded}[1]{#1}
+\providecommand{\real}[1]{#1}
+\newcounter{none}
+\begin{document}
+\section{補遺：対数基本量からの多次元構造の立ち上がりについて}\label{ux88dcux907aux5bfeux6570ux57faux672cux91cfux304bux3089ux306eux591aux6b21ux5143ux69cbux9020ux306eux7acbux3061ux4e0aux304cux308aux306bux3064ux3044ux3066}
+
+\subsection{------加法的恒等式が定める超平面の次元に関する形式的観察}\label{ux52a0ux6cd5ux7684ux6052ux7b49ux5f0fux304cux5b9aux3081ux308bux8d85ux5e73ux9762ux306eux6b21ux5143ux306bux95a2ux3059ux308bux5f62ux5f0fux7684ux89b3ux5bdf}
+
+\textbf{著者：} 木原 範昭（ORCID: 0009-0004-6753-4020） \textbf{日付：}
+2026年6月18日 \textbf{DOI（本版）：} 10.5281/zenodo.20741713 ／
+\textbf{Concept DOI（全版）：} 10.5281/zenodo.20741712 ／
+\textbf{Zenodo:} https://zenodo.org/records/20741713 \textbf{関連論文：}
+「高い対称性の極限におけるスケールの対数写像とスケール・量子化の分離について」§3・§5・§7（Concept
+DOI:
+\href{https://doi.org/10.5281/zenodo.20740841}{10.5281/zenodo.20740841}）
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{趣旨}\label{ux8da3ux65e8}
+
+関連論文は、高い対称性と無名性という強い拘束の下で構造が立ち上がる、と述べた。しかし本文中では、その「立ち上がる構造」を具体的な形で示していない。本補遺は、その不足を補うための\textbf{形式的観察}である。
+
+すなわち、基本量 N=log\textsubscript{2}ν
+という最小の出発点と、共役関係の加法的恒等式のみから、変数の数を増やすと多次元の超平面構造が形式的に立ち上がること------これを、例として変数を四つまで増やして示す。
+
+\textbf{本補遺が主張しないこと（先に明示する）：}
+
+\begin{itemize}
+\tightlist
+\item
+  これが物理の時空・次元と接続すること。一切主張しない。
+\item
+  四次元が特別であること、四次元で安定すること。主張しない。四は単なる例示であり、それ以上の意味を持たせない。なぜ特定の次元かを問えば議論は急速に難解になるため、本補遺はそこに踏み込まない。
+\item
+  次元創発の機構であること。主張しない。
+\end{itemize}
+
+本補遺はあくまで「最小の対数構造から、変数の数に応じて多次元の超平面が形式的に導出されうる」という、構造の例示に留まる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 出発点：基本量
+N（一変数）}\label{ux51faux767aux70b9ux57faux672cux91cf-nux4e00ux5909ux6570}
+
+関連論文 §4 の通り、基本量を二乗量の対数として導入する：
+
+\[N \equiv \tfrac{1}{2}\log_2(\nu^2) = \log_2\nu .\]
+
+ν=2\textsuperscript{n} のとき N=n（整数）。N は一本の軸（整数全体
+$\mathbb{Z}$）として現れる。これは見かけ上、一次元の構造である。
+
+本補遺の問いは、この基本量を複数（n
+個）置いたとき、変数の本数に応じてより高い次元の超平面構造が形式的に立ち上がるか、である。多次元性は「一本の軸から無から湧く」のではなく、置いた変数の本数
+n から来る------この点を先に明示しておく。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2.
+加法的恒等式が定める超平面}\label{ux52a0ux6cd5ux7684ux6052ux7b49ux5f0fux304cux5b9aux3081ux308bux8d85ux5e73ux9762}
+
+関連論文 §5 の通り、共役関係 νλ=k に底 2 の対数を取ると、積が和になる：
+
+\[\nu\lambda=k \;\xrightarrow{\ \log_2\ }\; N_\nu + N_\lambda = K \quad(K\equiv\log_2 k).\]
+
+ここで一般化する。基本量を n 個 \(N_1, N_2, \dots, N_n\)
+とり、その和が一定値 K に保たれるとする：
+
+\[\sum_{i=1}^{n} N_i = K .\]
+
+これは n 個の変数に対する一本の一次方程式であり、n 次元の座標空間
+\((N_1,\dots,N_n)\) の中で、\textbf{(n−1) 次元の超平面}を定める。
+
+すなわち、加法的恒等式は、変数の数 n に応じて (n−1)
+次元の平坦な構造（超平面）を立ち上げる。以下、n=2,3,4 を具体的に見る。
+
+\textbf{公理系内の位置づけ（重要）：}
+変数を複数（n≥3）立てること自体は、関連論文 §2
+の公理2「系の中で区別できるのは 2 まで」を超える操作であり、§3
+の\textbf{次元生成（有界化による離散モード番号 n
+の発生＝無名性の破れ）を前提とする}。すなわち本補遺は、無名性が破れて次元が立ち上がった後の領域で、加法的恒等式が
+(n−1)
+次元の超平面を定めることを示すものである。§3（次元の生成）と本補遺（n
+変数 → (n−1) 次元超平面）は、上流・下流の関係にある。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3.
+n=2：直線（一次元）}\label{n2ux76f4ux7ddaux4e00ux6b21ux5143}
+
+二変数 \(N_1, N_2\) の和が一定：
+
+\[N_1 + N_2 = K .\]
+
+これは \((N_1, N_2)\) 平面における、傾き −1
+の\textbf{直線}である（一次元）。共役対の和が一定、という関係が、平面内の一本の直線として現れる（図1）。
+
+\begin{figure}
+\centering
+\pandocbounded{\includesvg[keepaspectratio]{figure1_n2_line.pdf}}
+\caption{図1：n=2。加法的恒等式 N\textsubscript{1}+N\textsubscript{2}=K が定める傾き −1 の直線（1
+次元）}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4.
+n=3：平面（二次元）}\label{n3ux5e73ux9762ux4e8cux6b21ux5143}
+
+三変数 \(N_1, N_2, N_3\) の和が一定：
+
+\[N_1 + N_2 + N_3 = K .\]
+
+これは三次元座標空間 \((N_1, N_2, N_3)\)
+における\textbf{平面}である（二次元）。三つの軸の正領域では、この平面は三角形の領域として現れる（図2）。
+
+\begin{figure}
+\centering
+\pandocbounded{\includesvg[keepaspectratio]{figure2_n3_plane.pdf}}
+\caption{図2：n=3。加法的恒等式 N\textsubscript{1}+N\textsubscript{2}+N\textsubscript{3}=K が定める平面（2
+次元）。正領域は三角形（2-単体）}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+n=4：三次元超平面（三次元）}\label{n4ux4e09ux6b21ux5143ux8d85ux5e73ux9762ux4e09ux6b21ux5143}
+
+四変数 \(N_1, N_2, N_3, N_4\) の和が一定：
+
+\[N_1 + N_2 + N_3 + N_4 = K .\]
+
+これは四次元座標空間における\textbf{三次元超平面}である。四次元は直接には描けないため、三次元への射影として示す。四つの軸の正領域では、この超平面は四面体（単体）の領域として現れる（図3・図4）。
+
+\begin{figure}
+\centering
+\pandocbounded{\includesvg[keepaspectratio]{figure3_n4_hyperplane.pdf}}
+\caption{図3：n=4。加法的恒等式 N\textsubscript{1}+N\textsubscript{2}+N\textsubscript{3}+N\textsubscript{4}=K が定める三次元超平面（3
+次元）。正領域は四面体（3-単体）、頂点は4軸の切片}
+\end{figure}
+
+ここで変数を四つまで増やしたのは、単なる例示である。四という数に特別な意味は与えない。変数をさらに増やせば、同じ仕方で
+(n−1) 次元の超平面が立ち上がる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. まとめ}\label{ux307eux3068ux3081}
+
+最小の対数基本量 N=log\textsubscript{2}ν と、加法的恒等式 ΣN\textsubscript{i}=K のみから、変数の数 n
+に応じて次の構造が形式的に立ち上がる：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+変数の数 n & 加法的恒等式 & 立ち上がる構造 & 次元 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & （単一の軸） & 軸 & 1 \\
+2 & N\textsubscript{1}+N\textsubscript{2}=K & 直線 & 1 \\
+3 & N\textsubscript{1}+N\textsubscript{2}+N\textsubscript{3}=K & 平面 & 2 \\
+4 & N\textsubscript{1}+N\textsubscript{2}+N\textsubscript{3}+N\textsubscript{4}=K & 三次元超平面 & 3 \\
+n & ΣN\textsubscript{i}=K & 超平面 & n−1 \\
+\end{longtable}
+}
+
+\begin{figure}
+\centering
+\pandocbounded{\includesvg[keepaspectratio]{figure4_summary.pdf}}
+\caption{図4：n=1（軸）→ n=2（直線）→ n=3（平面）→
+n=4（四面体）。加法的恒等式 ΣN\textsubscript{i}=K が定める超平面の次元は、変数の本数 n
+に応じて (n−1) と立ち上がる}
+\end{figure}
+
+基本量 N=log\textsubscript{2}ν を複数（n 個）置き、その和を一定に保つ加法的恒等式 ΣN\textsubscript{i}=K
+のみから、変数の本数 n に応じて (n−1)
+次元の超平面が形式的に立ち上がる。多次元性は一本の軸から湧くのではなく、置いた変数の本数から来る。これが、関連論文が「構造が立ち上がる」と述べたことの、最小の具体例である。
+
+これらの超平面はいずれも平坦（曲率を持たない）である。これは関連論文 §7
+の「対数写像が二乗和を平坦な一乗和（超平面）に写す」という観察と整合する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. 限界}\label{ux9650ux754c}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{四は単なる例示である。}
+  変数を四つまで増やしたことに、特別な意味はない。四次元が安定する・特別である、といった主張は一切しない。なぜ特定の次元かという問いには、本補遺は踏み込まない（踏み込めば議論は急速に難解になる）。
+\item
+  \textbf{物理的接続を主張しない。}
+  立ち上がる超平面が、物理の時空・次元・幾何と接続することは、主張しない。本補遺は純粋に形式的な構造の例示であり、物理理論との同型は扱わない。
+\item
+  \textbf{全対称による縮約は扱わない。} 全対称（全 N\textsubscript{i}
+  が等しい）の下で超平面が一点（対角線上）に縮約することは、それ自体が別の議論を要するため、本補遺では扱わない（別補遺に委ねる）。本補遺は超平面が立ち上がることのみを示す。
+\item
+  \textbf{これは導出の可能性の例示であって、必然性の証明ではない。}
+  「多次元構造が立ち上がりうる」ことを一例で示すに留まり、「立ち上がらねばならない」ことは示さない。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\emph{本補遺は、関連論文の主張（強い拘束下で構造が立ち上がる）に対する形式的な例示であり、物理的接続・特定次元の必然性・安定性のいずれについても確定的主張を含まない。}
+\end{document}

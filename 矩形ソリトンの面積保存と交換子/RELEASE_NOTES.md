@@ -43,6 +43,20 @@
 **Zenodo レコード**：https://zenodo.org/record/20741265
 **形式**：md / tex / pdf × 日英 + 図 4 点 = 10 ファイル
 
+### 補遺：対数基本量からの多次元構造
+
+**タイトル（日本語）**：補遺：対数基本量からの多次元構造の立ち上がりについて ── 加法的恒等式が定める超平面の次元に関する形式的観察
+**タイトル（英語）**：Appendix: On the Emergence of Multidimensional Structure from the Logarithmic Fundamental Quantity — A Formal Observation on the Dimension of the Hyperplane Defined by the Additive Identity
+**公開日**：2026-06-18
+**位置づけ**：論文7改訂版 §3・§5・§7 の補遺（`isSupplementTo`）。「立ち上がる構造」を示さなかった本文を、最小の具体例で埋める形式的観察。
+
+**内容：** 基本量を複数（n 個）置き、その和を一定に保つ加法的恒等式 ΣNᵢ=K が、n 次元空間の中で (n−1) 次元の超平面を定めることを、n=2（直線）・n=3（平面＝三角形）・n=4（三次元超平面＝四面体）と図示。多次元性は一本の軸からではなく変数の本数 n から来ること、n≥3 は §3 の次元生成（無名性の破れ）を前提とすることを明記。物理的接続・特定次元の必然性・全対称下の縮約は扱わない（形式的例示のみ）。
+
+**Concept DOI（全版）**：[10.5281/zenodo.20741712](https://doi.org/10.5281/zenodo.20741712)
+**v1 DOI（本版）**：[10.5281/zenodo.20741713](https://doi.org/10.5281/zenodo.20741713)
+**Zenodo レコード**：https://zenodo.org/record/20741713
+**形式**：md / tex / pdf × 日英 + 図 4 点（SVG）= 10 ファイル
+
 ---
 
 ## 構築ノート（Zenodo 未公開・本フォルダ内）
