@@ -1,14 +1,24 @@
 \documentclass[11pt]{ltjsarticle}
 \usepackage{luatexja-fontspec}
 \usepackage{amsmath,amssymb}
-\usepackage[margin=25mm]{geometry}
+\usepackage[margin=22mm]{geometry}
+\usepackage{graphicx}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc}
 \usepackage{xcolor}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,keepaspectratio}
 \setcounter{secnumdepth}{0}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.5em}
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\pandocbounded}[1]{#1}
+\providecommand{\real}[1]{#1}
+\newcounter{none}
 \begin{document}
 \section{On the Logarithmic Map of Scale and the Separation of Scale and
 Quantization in a High-Symmetry
@@ -19,10 +29,12 @@ System
 (Revised)}\label{a-limited-verification-report-from-a-minimal-axiom-system-revised}
 
 \textbf{Author:} Noriaki Kihara (ORCID: 0009-0004-6753-4020)
-\textbf{Date:} 18 June 2026 (revised) \textbf{DOI (this version):}
-10.5281/zenodo.20740842 \textbf{Concept DOI (all versions):}
-10.5281/zenodo.20740841 \textbf{Zenodo:}
-https://zenodo.org/records/20740842
+\textbf{Date:} 18 June 2026 (revised) \textbf{DOI (this version, v2):}
+10.5281/zenodo.20742386 (v1: 10.5281/zenodo.20740842) \textbf{Concept
+DOI (all versions):} 10.5281/zenodo.20740841 \textbf{Zenodo:}
+https://zenodo.org/records/20742386 \textbf{v2 revision (2026-06-18):}
+wording fix in §6.3 (what is preserved is the product of observables,
+not the product of fluctuations); added a list of related supplements.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -496,14 +508,18 @@ conservation of the sum N\_a+N\_b=K, and the fluctuations satisfy
 
 \[k = ab = 2^{(N_a+N_b)+(\Delta_a+\Delta_b)} = 2^{K+0} = 2^K \quad(\text{constant})\]
 
-is obtained, and the product of the observable fluctuations is constant
-(the lower bound of minimal uncertainty). That is, the uncertainty
-relation in the observable space (constant product) is derived from the
-sum-zero of the fluctuations in N-space. The minimal unit of
-uncertainty, 1/2, corresponds to the posited half-bit ±1/2. Note that a
-single fluctuation ±1/2 and the product of two fluctuations δ\textsubscript{1}δ\textsubscript{2}=1/2
-(Axiom 4) are not the same quantity; they are placed in correspondence
-as quantities belonging to the same ω (area) side.
+is obtained, and the product of the observables ab is held constant
+under fluctuations (the lower bound of minimal uncertainty). That is,
+the uncertainty relation in the observable space (constant product) is
+derived from the sum-zero of the fluctuations in N-space. Note that what
+is preserved is the product of the observables ab, not the product of
+the fluctuations δ\textsubscript{1}δ\textsubscript{2} (the latter depends on the allocation and is not
+constant; see the appendix ``From the Sum-Zero of Fluctuations to
+Uncertainty''). The minimal unit of uncertainty, 1/2, corresponds to the
+posited half-bit ±1/2. Note that a single fluctuation ±1/2 and the
+product of two fluctuations δ\textsubscript{1}δ\textsubscript{2}=1/2 (Axiom 4) are not the same
+quantity; they are placed in correspondence as quantities belonging to
+the same ω (area) side.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -712,6 +728,37 @@ it is a logarithmization of scale. It is neither a rehash of Weyl nor a
 claim to treat curvature. Extension to curvature is left as future work.
 No generalization is claimed. The possibility that it is a special case
 of a known framework is not excluded either.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Supplements}\label{supplements}
+
+This report has appendices that concretize points compressed in the main
+text and the ``arising structure.'' All are \texttt{isSupplementTo} this
+report.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{A Magic-Coin Toy Model} --- visualizes the limit of anonymity
+  (0, 1, 2) and the denial of hidden variables of §0.5 as a tabletop
+  magic. Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.20741264}{10.5281/zenodo.20741264}
+\item
+  \textbf{Multidimensional Structure from the Logarithmic Fundamental
+  Quantity} --- §3, §5, §7. Exhibits the (n−1)-dimensional hyperplane
+  defined by the additive identity ΣN\textsubscript{i}=K (the minimal example of the
+  ``arising structure''). Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.20741712}{10.5281/zenodo.20741712}
+\item
+  \textbf{From the Sum-Zero of Fluctuations to Uncertainty} --- §6.3.
+  Makes explicit the direction in which the constant product of
+  observables is derived from the sum-zero in N-space (what is preserved
+  is the product of observables, not the product of fluctuations).
+  Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.20742277}{10.5281/zenodo.20742277}
+\end{enumerate}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 

@@ -3,9 +3,10 @@
 
 **Author:** Noriaki Kihara (ORCID: 0009-0004-6753-4020)
 **Date:** 18 June 2026 (revised)
-**DOI (this version):** 10.5281/zenodo.20740842
+**DOI (this version, v2):** 10.5281/zenodo.20742386 (v1: 10.5281/zenodo.20740842)
 **Concept DOI (all versions):** 10.5281/zenodo.20740841
-**Zenodo:** https://zenodo.org/records/20740842
+**Zenodo:** https://zenodo.org/records/20742386
+**v2 revision (2026-06-18):** wording fix in §6.3 (what is preserved is the product of observables, not the product of fluctuations); added a list of related supplements.
 
 ---
 
@@ -186,7 +187,7 @@ $$\boxed{\ \Delta_a + \Delta_b = 0\ }$$
 
 $$k = ab = 2^{(N_a+N_b)+(\Delta_a+\Delta_b)} = 2^{K+0} = 2^K \quad(\text{constant})$$
 
-is obtained, and the product of the observable fluctuations is constant (the lower bound of minimal uncertainty). That is, the uncertainty relation in the observable space (constant product) is derived from the sum-zero of the fluctuations in N-space. The minimal unit of uncertainty, 1/2, corresponds to the posited half-bit ±1/2. Note that a single fluctuation ±1/2 and the product of two fluctuations δ₁δ₂=1/2 (Axiom 4) are not the same quantity; they are placed in correspondence as quantities belonging to the same ω (area) side.
+is obtained, and the product of the observables ab is held constant under fluctuations (the lower bound of minimal uncertainty). That is, the uncertainty relation in the observable space (constant product) is derived from the sum-zero of the fluctuations in N-space. Note that what is preserved is the product of the observables ab, not the product of the fluctuations δ₁δ₂ (the latter depends on the allocation and is not constant; see the appendix "From the Sum-Zero of Fluctuations to Uncertainty"). The minimal unit of uncertainty, 1/2, corresponds to the posited half-bit ±1/2. Note that a single fluctuation ±1/2 and the product of two fluctuations δ₁δ₂=1/2 (Axiom 4) are not the same quantity; they are placed in correspondence as quantities belonging to the same ω (area) side.
 
 ---
 
@@ -264,6 +265,16 @@ $$R \to e^{-2\sigma}\left(R - 6\,\Box\sigma - 6\,g^{\mu\nu}\partial_\mu\sigma\,\
 so the curvature information remains as derivative terms of the rescaling function σ. That is, even after flattening, the curvature does not entirely vanish. Conformal flatness always holds locally in two dimensions but not for general metrics in higher dimensions.
 
 From a starting point different from these known frameworks — only a few axioms — this report presents the structure that, in a limited regime, a quantity representing scale (not a curvature tensor) is mapped onto a flat structure leaving no derivative terms, and quantization (ω) is preserved invariant under the map. What this report treats differs in scope from the Weyl transformation, which rescales a curvature tensor: it is a logarithmization of scale. It is neither a rehash of Weyl nor a claim to treat curvature. Extension to curvature is left as future work. No generalization is claimed. The possibility that it is a special case of a known framework is not excluded either.
+
+---
+
+## Supplements
+
+This report has appendices that concretize points compressed in the main text and the "arising structure." All are `isSupplementTo` this report.
+
+1. **A Magic-Coin Toy Model** — visualizes the limit of anonymity (0, 1, 2) and the denial of hidden variables of §0.5 as a tabletop magic. Concept DOI: [10.5281/zenodo.20741264](https://doi.org/10.5281/zenodo.20741264)
+2. **Multidimensional Structure from the Logarithmic Fundamental Quantity** — §3, §5, §7. Exhibits the (n−1)-dimensional hyperplane defined by the additive identity ΣNᵢ=K (the minimal example of the "arising structure"). Concept DOI: [10.5281/zenodo.20741712](https://doi.org/10.5281/zenodo.20741712)
+3. **From the Sum-Zero of Fluctuations to Uncertainty** — §6.3. Makes explicit the direction in which the constant product of observables is derived from the sum-zero in N-space (what is preserved is the product of observables, not the product of fluctuations). Concept DOI: [10.5281/zenodo.20742277](https://doi.org/10.5281/zenodo.20742277)
 
 ---
 

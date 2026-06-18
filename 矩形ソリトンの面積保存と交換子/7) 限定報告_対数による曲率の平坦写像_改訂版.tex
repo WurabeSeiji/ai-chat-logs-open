@@ -1,23 +1,36 @@
 \documentclass[11pt]{ltjsarticle}
 \usepackage{luatexja-fontspec}
 \usepackage{amsmath,amssymb}
-\usepackage[margin=25mm]{geometry}
+\usepackage[margin=22mm]{geometry}
+\usepackage{graphicx}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc}
 \usepackage{xcolor}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,keepaspectratio}
 \setcounter{secnumdepth}{0}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.5em}
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\pandocbounded}[1]{#1}
+\providecommand{\real}[1]{#1}
+\newcounter{none}
 \begin{document}
 \section{高い対称性の極限におけるスケールの対数写像とスケール・量子化の分離について}\label{ux9ad8ux3044ux5bfeux79f0ux6027ux306eux6975ux9650ux306bux304aux3051ux308bux30b9ux30b1ux30fcux30ebux306eux5bfeux6570ux5199ux50cfux3068ux30b9ux30b1ux30fcux30ebux91cfux5b50ux5316ux306eux5206ux96e2ux306bux3064ux3044ux3066}
 
 \subsection{------最小公理系からの限定的検証報告（改訂版）}\label{ux6700ux5c0fux516cux7406ux7cfbux304bux3089ux306eux9650ux5b9aux7684ux691cux8a3cux5831ux544aux6539ux8a02ux7248}
 
 \textbf{著者：} 木原 範昭（ORCID: 0009-0004-6753-4020） \textbf{日付：}
-2026年6月18日（改訂版） \textbf{DOI（本版）：} 10.5281/zenodo.20740842
-\textbf{Concept DOI（全版）：} 10.5281/zenodo.20740841 \textbf{Zenodo:}
-https://zenodo.org/records/20740842
+2026年6月18日（改訂版） \textbf{DOI（本版 v2）：}
+10.5281/zenodo.20742386 （v1: 10.5281/zenodo.20740842） \textbf{Concept
+DOI（全版）：} 10.5281/zenodo.20740841 \textbf{Zenodo:}
+https://zenodo.org/records/20742386 \textbf{v2 改訂（2026-06-18）：}
+§6.3
+の文言訂正（保たれるのは観測量の積であり揺らぎの積ではない）、関連補遺一覧を追加。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -346,9 +359,12 @@ N\_a+N\_b=K を満たし、揺らぎは
 
 \[k = ab = 2^{(N_a+N_b)+(\Delta_a+\Delta_b)} = 2^{K+0} = 2^K \quad(\text{一定})\]
 
-が導かれ、観測量の揺らぎの積は一定（最小不確定の下限）となる。すなわち、観測量空間における不確定性関係（積一定）は、N
-空間における揺らぎの和ゼロから導出される。不確定性の最小単位 1/2
-は、措定された半ビット ±1/2 に対応する。なお単一のゆらぎ ±1/2
+が導かれ、観測量の積 ab
+は揺らぎの下でも一定（最小不確定の下限）に保たれる。すなわち、観測量空間における不確定性関係（積一定）は、N
+空間における揺らぎの和ゼロから導出される。なお保たれるのは観測量の積 ab
+であって、揺らぎの積 δ\textsubscript{1}δ\textsubscript{2}
+ではない（後者は配分に依存し一定にならない。詳細は補遺「揺らぎの和ゼロから不確定性へ」）。不確定性の最小単位
+1/2 は、措定された半ビット ±1/2 に対応する。なお単一のゆらぎ ±1/2
 と、二つのゆらぎの積 δ\textsubscript{1}δ\textsubscript{2}=1/2（公理4）は同一の量ではなく、同じ
 ω（面積）側に属する量として対応づけられる。
 
@@ -510,6 +526,33 @@ Weyl 再スケールの下で不変ではなく、曲率スカラーは
 本報告は、これらの既存枠組みとは異なる出発点------ごく少数の公理のみ------から、ある限定された極限において、スケールを表す量（曲率テンソルではない）が微分項を残さず平坦な構造に写像され、かつ量子化（ω）がその写像で不変に保たれる、という構造を提示するものである。本稿が扱うのは曲率テンソルを再スケールする
 Weyl 変換とは射程が異なり、スケールの対数化である。Weyl
 の焼き直しでもなければ、曲率を扱うという主張でもない。曲率への拡張は今後の課題とする。一般化は主張しない。既知枠組みの特殊例である可能性も排除しない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{関連補遺一覧（Supplements）}\label{ux95a2ux9023ux88dcux907aux4e00ux89a7supplements}
+
+本報告には、本文で圧縮した点や「立ち上がる構造」を具体化する補遺がある。いずれも本報告への
+\texttt{isSupplementTo}。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{マジックコインのトイモデル} ── §0.5
+  の無名性の限界（0・1・2）と隠れた変数の否定を卓上マジックで視覚化。Concept
+  DOI:
+  \href{https://doi.org/10.5281/zenodo.20741264}{10.5281/zenodo.20741264}
+\item
+  \textbf{対数基本量からの多次元構造} ── §3・§5・§7。加法的恒等式 ΣN\textsubscript{i}=K
+  が定める (n−1) 次元超平面を例示（「立ち上がる構造」の最小例）。Concept
+  DOI:
+  \href{https://doi.org/10.5281/zenodo.20741712}{10.5281/zenodo.20741712}
+\item
+  \textbf{揺らぎの和ゼロから不確定性へ} ── §6.3。観測量の積一定が N
+  空間の和ゼロから導出される向きを明示（保たれるのは観測量の積であり揺らぎの積ではない）。Concept
+  DOI:
+  \href{https://doi.org/10.5281/zenodo.20742277}{10.5281/zenodo.20742277}
+\end{enumerate}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 

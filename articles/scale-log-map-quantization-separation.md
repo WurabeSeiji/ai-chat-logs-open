@@ -11,8 +11,8 @@ published: true
 共役な二量の関係 $\nu\lambda=k$（$\nu$ が大きくなれば $\lambda$ が小さくなる、硬いシーソー）への素朴な疑問から出発した限定報告を Zenodo に公開しました。
 
 - **Concept DOI（全版）**: https://doi.org/10.5281/zenodo.20740841
-- **v1 DOI（本版）**: https://doi.org/10.5281/zenodo.20740842
-- **Zenodo レコード**: https://zenodo.org/record/20740842
+- **v2 DOI（本版）**: https://doi.org/10.5281/zenodo.20742386 （v1: https://doi.org/10.5281/zenodo.20740842）
+- **Zenodo レコード**: https://zenodo.org/record/20742386
 - **GitHub**: https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/矩形ソリトンの面積保存と交換子
 
 本稿は「新しい一般的事実の発見」を主張するものではありません。極めて高い対称性と無名性を要求する**限定された極限**での検証結果を、誇張せず記録するものです。

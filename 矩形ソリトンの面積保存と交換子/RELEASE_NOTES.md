@@ -24,10 +24,11 @@
 - $g/\omega$ 分離の「分離」を operational に定義（正準変換の主張ではないと留保）
 
 **Concept DOI（全版）**：[10.5281/zenodo.20740841](https://doi.org/10.5281/zenodo.20740841)
-**v1 DOI（本版）**：[10.5281/zenodo.20740842](https://doi.org/10.5281/zenodo.20740842)
-**Zenodo レコード**：https://zenodo.org/record/20740842
+**v2 DOI（本版）**：[10.5281/zenodo.20742386](https://doi.org/10.5281/zenodo.20742386)（v1: [10.5281/zenodo.20740842](https://doi.org/10.5281/zenodo.20740842)）
+**Zenodo レコード**：https://zenodo.org/record/20742386
 **Zenn 記事**：[対数によるスケールの平坦写像と、スケール・量子化の分離](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/articles/scale-log-map-quantization-separation.md)
 **形式**：md / tex / pdf × 日英 = 6 ファイル
+**v2 改訂（2026-06-18）**：§6.3 の文言訂正（保たれるのは観測量の積 ab であって揺らぎの積 δ₁δ₂ ではない）、および関連補遺一覧（トイモデル／多次元構造／和ゼロ→不確定性）を本文に追加。Concept DOI 維持の newversion。
 
 ### トイモデル（マジックコイン）：無名性の限界と隠れた変数の否定の視覚化
 
