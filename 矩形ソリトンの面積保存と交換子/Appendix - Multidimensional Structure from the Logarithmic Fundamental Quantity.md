@@ -3,9 +3,9 @@
 
 **Author:** Noriaki Kihara (ORCID: 0009-0004-6753-4020)
 **Date:** 18 June 2026
-**DOI (this version):** 10.5281/zenodo.20741713
+**DOI (this version, v2):** 10.5281/zenodo.20746812 (v1: 10.5281/zenodo.20741713)
 **Concept DOI (all versions):** 10.5281/zenodo.20741712
-**Zenodo:** https://zenodo.org/records/20741713
+**Zenodo:** https://zenodo.org/records/20746812
 **Related paper:** "On the Logarithmic Map of Scale and the Separation of Scale and Quantization in a High-Symmetry Limit," §3, §5, §7 (Concept DOI: [10.5281/zenodo.20740841](https://doi.org/10.5281/zenodo.20740841))
 
 ---
@@ -110,7 +110,9 @@ From the minimal logarithmic fundamental quantity N=log₂ν and the additive id
 
 Placing the fundamental quantity N=log₂ν in several copies (n of them) and, from the additive identity ΣNᵢ=K that holds their sum constant alone, an (n−1)-dimensional hyperplane arises formally according to the number n of variables. The multidimensionality does not spring from a single axis; it comes from the number of variables placed. This is the minimal concrete example of what the related paper meant by "structure arises."
 
-These hyperplanes are all flat (carry no curvature). This is consistent with the observation in §7 of the related paper that "the logarithmic map sends the sum of squares to a flat linear sum (a hyperplane)."
+These hyperplanes are all flat (carry no curvature). This is consistent with the observation in §7 of the related paper that "the logarithmic map sends the additive identity ΣNᵢ=K to a flat hyperplane," and **it holds in any dimension without requiring full symmetry**.
+
+**Canonicalization and the privileged scale (see the appendix "The maps (ν, δ) ↔ (N, Δ)"):** separating the conserved quantity as a privileged scale C=k^{1/n}, the hyperplane ΣNᵢ=K can be written as the normalized shape ΣN̂ᵢ=0 (N̂ᵢ=log₂(νᵢ/C)). Only C is passed through unchanged (a privileged coordinate), and the map is fully invertible (the individual values and fluctuations are recovered exactly). Each figure shows the shape space after C has been separated; the scale C is to be read as a privileged coordinate attached separately to the figure.
 
 ---
 
@@ -120,9 +122,7 @@ These hyperplanes are all flat (carry no curvature). This is consistent with the
 
 2. **No physical connection is claimed.** It is not claimed that the arising hyperplane connects to physical spacetime / dimensions / geometry. This appendix is a purely formal illustration of structure and does not address isomorphism with a physical theory.
 
-3. **Contraction by full symmetry is not treated.** That under full symmetry (all Nᵢ equal) the hyperplane contracts to a single point (on the diagonal) requires a separate discussion of its own and is not treated here (it is left to a separate appendix). This appendix shows only that the hyperplane arises.
-
-4. **This is an illustration of possibility, not a proof of necessity.** It only shows by one example that "a multidimensional structure can arise," and does not show that it "must arise."
+3. **This is an illustration of possibility, not a proof of necessity.** It only shows by one example that "a multidimensional structure can arise," and does not show that it "must arise."
 
 ---
 

@@ -3,10 +3,10 @@
 
 **Author:** Noriaki Kihara (ORCID: 0009-0004-6753-4020)
 **Date:** 18 June 2026 (revised)
-**DOI (this version, v3):** 10.5281/zenodo.20743142 (v1: 10.5281/zenodo.20740842; v2: 10.5281/zenodo.20742386)
+**DOI (this version, v4):** 10.5281/zenodo.20746811 (v1: 10.5281/zenodo.20740842; v2: 10.5281/zenodo.20742386; v3: 10.5281/zenodo.20743142)
 **Concept DOI (all versions):** 10.5281/zenodo.20740841
-**Zenodo:** https://zenodo.org/records/20743142
-**Revision history (2026-06-18):** v2 = wording fix in §6.3 (what is preserved is the product of observables, not the product of fluctuations) + added a list of related supplements (3). v3 = expanded the supplements list to 6 (added complex structure, g/ω separation, discreteness).
+**Zenodo:** https://zenodo.org/records/20746811
+**Revision history (2026-06-18):** v2 = wording fix in §6.3 (what is preserved is the product of observables, not the product of fluctuations) + added a list of related supplements (3). v3 = expanded the supplements list to 6 (added complex structure, g/ω separation, discreteness). v4 = §7 reframed to canonicalization (privileged-scale separation, fully invertible, no full symmetry required; removed full-symmetry-dependent wording), added the forward / inverse map formalization, and expanded the supplements list to 7 (added the map appendix (ν,δ)↔(N,Δ)).
 
 ---
 
@@ -20,7 +20,7 @@ This report does not claim the "discovery" of a new general fact. Because it sta
 
 This report begins with a naive question about the conjugate relation of two quantities, νλ=k (a quantity read off by an observer). This rigid relation alone generates no structure. As the only crevice through which structure can enter, we posit that the integer-valued ν carries an intrinsic fluctuation, and that the system possesses high anonymity and high symmetry. In a limited regime requiring extremely high symmetry and anonymity, we report a **result within a limited scope**: a squared quantity representing scale can be mapped, through a logarithmic connection, onto a flat additive structure (a flat hyperplane).
 
-Introducing the fundamental quantity as the logarithm of a squared quantity, N=log₂ν, the conjugate relation νλ=k becomes an additive identity N_ν+N_λ=K, and the sum of squares Σν²=R² (the g side) representing scale is mapped, in the self-dual fixed point (k=1) and the fully symmetric limit, onto a flat linear sum ΣN=K. What matters is that, while this logarithmic map flattens scale (the sum of squares, g) and removes it as a gauge, the fluctuation Δ (the product / area / ω) remains invariant on that flat surface. That is, the map **separates scale from quantization**: scale resides in g and is flattenable, whereas quantization resides in ω and is invariant under the map. Here R is the scale (magnitude) of the system, and is neither a curvature tensor nor the radius of a sphere.
+Introducing the fundamental quantity as the logarithm of a squared quantity, N=log₂ν, the conjugate relation νλ=k becomes an additive identity ΣNᵢ=K, which is a flat hyperplane in any dimension. By canonicalization (separating the conserved quantity as a privileged scale C and taking the normalized shape N̂=log₂(ν/C)), the map ν↔N is fully invertible: both the individual values and the fluctuation δ are recovered exactly (full symmetry is not required). What matters is that, while this logarithmic map factors scale (g) out as a privileged, separable coordinate, the fluctuation Δ (the product / area / ω) remains invariant. That is, the map **separates scale (g) from quantization (ω)**. The exact formalization of the forward / inverse maps is given in the appendix "The maps (ν, δ) ↔ (N, Δ)." Here R / C is the scale (magnitude) of the system, and is neither a curvature tensor nor the radius of a sphere.
 
 This report treats the magnitude of the fluctuation, ±1/2, as a **posit, not a derivation** (reasons in §6). Whether the result remains a special case of known frameworks (Weyl transformation, conformal flatness, etc.) cannot be determined here, and an exhaustive search for counterexamples has not been carried out. The purpose of this report is confined to recording this limited structure.
 
@@ -199,38 +199,34 @@ is obtained, and the product of the observables ab is held constant under fluctu
 
 [Exterior (observer)] The conserved quantity of Axiom 5 (an interior invariant) appears to the observer as the sum of squares Σν²=R² (g, scale R), and this is the conservation law representing scale. The conjugate relation νλ=k is a product (nonlinear). In the N-space via the logarithm, this relation is reversed. νλ=k is additive (N_ν+N_λ=K, §5), i.e., a flat hyperplane, whereas the sum of squares Σν² is in general a sum of exponentials Σ2^{2N_n} and is not linearized in N.
 
-### 7.2 Flattening in the high-symmetry, anonymity limit
+### 7.2 Flattening by canonicalization (no full symmetry required; fully invertible)
 
-[Interior] Consider the fully symmetric limit (every axis can come to the right-hand side, i.e., all ν_n² are equal). This limit reduces to all ν_n² taking the same value v (the number of axes effectively contracts to 2; this is also a reprise of the binarity of Axiom 2). Then Σν²=(number of axes)·v, and the logarithm can act on the sum:
+[Exterior (observer)] The conjugate (product) relation becomes, under the logarithm, the additive identity: ΣNᵢ=K for n variables (§5). This is a **flat hyperplane** in n-dimensional space, and it **holds in any dimension and does not require full symmetry (that all ν_n be equal)**.
 
-$$\log_2\!\left(\sum\nu^2\right) = \log_2(\text{number of axes}) + \log_2 v.$$
+**Canonicalization:** separate the conserved quantity as a privileged scale C=k^{1/n} (=2^{K/n}) and take the normalized shape N̂ᵢ=log₂(νᵢ/C) (ΣN̂ᵢ=0). The map ν↔N is then **fully invertible**: both the individual νᵢ and the fluctuation δ are recovered exactly. The privileged scale C is the sole coordinate passed through unchanged; every other quantity is mapped by the same logarithm. The exact formalization of the forward map N̂ᵢ=log₂(νᵢ/C) and inverse map νᵢ=C·2^{N̂ᵢ}, the conserved quantities, and the handling of the privileged scale, are given in the appendix "The maps (ν, δ) ↔ (N, Δ): recovery of values and conserved quantities."
 
-That is, the sum of squares representing scale is mapped onto a flat linear additive relation:
-
-$$\sum\nu^2 = R^2 \;\xrightarrow{\ \log_2,\ \text{full symmetry}\ }\; N + \tfrac12\log_2(\text{number of axes}) = N_R \quad(\text{an identity; flat}).$$
-
-The source of scale is the square (power), and the logarithm linearizes the power. Furthermore, since this system is scale-invariant, scale dependence is flattened as a straight line along the translation. In this limit, the non-uniform terms corresponding to the derivative terms left by the Weyl transformation (§9) vanish under the assumption of full symmetry (spatial uniformity).
-
-However, the fully symmetric limit, as the price of making the flattening hold exactly, almost exhausts the degrees of freedom on the g side. That is, the substance of the flattening of §7.2 in itself is thin. The substance of this report's claim lies not in the flattening itself but in the g/ω separation of the next section §7.3 — that even when g degenerates to a single value, ω (quantization) remains.
+Flattening means **factoring scale (g) out as a privileged, separable coordinate, leaving the rest as a flat additive structure**. It discards no information (fully invertible) and requires no full symmetry. Furthermore, since the system is scale-invariant, scale dependence is flattened as a straight line along the translation.
 
 ### 7.3 The heart of the map: separation of scale (g) and quantization (ω)
 
-This is the heart of the report. The flattening above does not "throw away the scale information."
+This is the heart of the report. The flattening does not "throw away the scale information"; it factors scale out as a privileged coordinate.
 
-[Exterior (observer)] The conserved quantity of Axiom 5 appears to the observer as the sum of squares Σν², i.e., distance / metric g (the real part of the complex inner product introduced later), the side of the Born norm / normalization. The logarithmic map acts on this g side and, in the fully symmetric limit, folds it into a flat coordinate. The g side carries scale but not quantization. Scale resides wholly in g and is flattenable (removable as a gauge).
+[Exterior (observer)] Scale (g) — appearing to the observer as the sum of squares Σν² (distance / metric, the Born-norm side), and in canonicalization as the privileged scale C — can be **separated and factored out as a flat coordinate (gauge)** by the logarithmic map. The g side carries scale but not quantization.
 
-[Interior] On the other hand, the fluctuation Δ = δ₁δ₂=1/2 (Axiom 4) is area / the symplectic form ω (the imaginary part of the complex inner product), the side that carries quantization. This ω is not crushed by the logarithmic map and remains, on the flat N-surface, as the invariant half-bit ±1/2. Even when g (the mean / scale) degenerates to a single value v in the fully symmetric limit, ω (the fluctuation Δ) does not degenerate.
+[Interior] On the other hand, the fluctuation Δ = δ₁δ₂=1/2 (Axiom 4) is area / the symplectic form ω (the imaginary part of the complex inner product), the side that carries quantization. Note that δ is mapped to Δ by the same map as ν (appendix "The maps (ν, δ) ↔ (N, Δ)"), but **Δ=±1/2 is scale-invariant**, so after the privileged scale C is separated it persists on the flat surface as an invariant. This is what "ω remains invariant" means.
 
-That is, the logarithmic map is a **map that separates scale (g, gauge) from quantization (ω, area, invariant)**. Here "separation" means, operationally, that the map flattens g (scale, sum of squares) while leaving ω (the product δ₁δ₂) invariant. This is not a claim that it is a canonical transformation strictly preserving the symplectic form (that rigorization is future work). It pushes scale into the flat surface and gauges it away, while purifying quantization as an invariant on that flat surface. This is the substance of "even when flattened in the fully symmetric limit, the physics does not vanish" — the physics (quantization) was, from the start, not in g (the mean) but resided in ω (the fluctuation Δ).
+That is, the logarithmic map **separates scale (g, gauge, separable) from quantization (ω, area, invariant)**. Scale can be factored out as a privileged coordinate (discard it and a scale-invariant structure remains); quantization resides invariantly in that structure. **This separation requires no full symmetry; it holds in any dimension, on a fully invertible map.** The physics (quantization) was, from the start, not in g (scale) but resided in ω (the fluctuation Δ). Here "separation" means, operationally, that the map carries both ν and δ, but separates g out as a privileged scale while ω (Δ) remains invariant because Δ is scale-invariant; it is not a claim that it is a canonical transformation strictly preserving the symplectic form (that rigorization is future work).
 
 ### 7.4 Structure of the map
 
-[Exterior (observer)] In the self-dual fixed point k=1 and the fully symmetric, anonymity limit:
+[Exterior (observer)] The map has the following structure (the self-dual fixed point k=1 may be taken as reference; full symmetry is not required):
 
-- the scale-bearing system in the observable space (ν-space) (sum of squares Σν², scale R, the g side)
-- is mapped, via the logarithmic connection, onto a flat hyperplane in N-space (the affine structure of the linear sum ΣN=K),
-- and is exactly restored to the observable space by the inverse map ν=2^N.
+- the scale-bearing system in the observable space (ν-space)
+- is separated, via the logarithmic map, into the privileged scale C and the normalized shape N̂ (a flat hyperplane ΣN̂=0),
+- and the individual values are **exactly restored** by the inverse map νᵢ=C·2^{N̂ᵢ}=2^{Nᵢ} (fully invertible).
 - And the fluctuation Δ (the ω side) is preserved invariant before and after the map.
+
+The exact formalization of the forward map N̂ᵢ=log₂(νᵢ/C) and inverse map νᵢ=C·2^{N̂ᵢ}, with the conserved quantities and the handling of the privileged scale, is given in the appendix "The maps (ν, δ) ↔ (N, Δ): recovery of values and conserved quantities."
 
 **Note (the complex structure as a consequence of real two-ness):** [Interior / Exterior] Reinterpreting ν₁, ν₂ as a radius ν and a phase θ gives ν₁=ν cosθ, ν₂=ν sinθ, and the two are geometrically isomorphic to the polar representation of z=ν e^{iθ}. The sum of squares ν²=ν₁²+ν₂²=|z|² corresponds to the real part g, the area of the fluctuation δ₁δ₂=1/2 to the imaginary part ω, and the cos↔sin rotation to the complex structure J. Complex numbers are not placed in the axioms; the complex structure arises as a consequence of real two-ness (the "2" of Axiom 2) and the sum of squares (Axiom 5).
 
@@ -240,7 +236,7 @@ That is, the logarithmic map is a **map that separates scale (g, gauge) from qua
 
 The scope of this result is strictly limited.
 
-1. **The result is a special solution, not a general one.** It holds only at k=1 (the self-dual fixed point) and in the fully symmetric, anonymity limit. Leaving this limit (k≠1, non-uniform, asymmetric), the non-uniform terms that vanished in §7.2 (corresponding to the derivative terms of the Weyl transformation) generally revive, and the flattening does not hold.
+1. **Scope of the result.** The flattening of the additive structure ΣNᵢ=K and the full invertibility of the map (canonicalization: privileged-scale separation, forward / inverse maps) hold in any dimension and for any k (no full symmetry required). What lies outside the scope is the extension to a curvature tensor (item 5 below) and the linearization of the sum of squares Σν² itself (in N-space it is in general a sum of exponentials Σ2^{2N} and is not linearized, §7.1).
 
 2. **±1/2 is a posit and has not been derived.** As in §6.2, this system has no basis on which to construct the concept of a standard deviation. Every computation deriving ±1/2 smuggles in a hidden premise. Note that the main result of this report (the g/ω separation of §7.3) presupposes this posit ±1/2. If the posit fails, the conclusion changes.
 
@@ -278,6 +274,7 @@ This report has appendices that concretize points compressed in the main text an
 4. **The Complex Structure is a Consequence, Not a Posit** — §4, §7.4. Without positing the imaginary unit i, the complex structure follows from two real components and the rotation (the 90-degree rotation J, J²=−1). Concept DOI: [10.5281/zenodo.20742984](https://doi.org/10.5281/zenodo.20742984)
 5. **The Logarithmic Map Separates Scale and Quantization** — §7.3 (the core of this report). Flattening is not a loss of information but a separation of g (scale, flattened) and ω (quantization, invariant). Concept DOI: [10.5281/zenodo.20742988](https://doi.org/10.5281/zenodo.20742988)
 6. **Discreteness Arises Not from an Outer Bound but from Nodes** — §3. Discreteness arises intrinsically from the nodes generated by Axiom 2 (binarity), not from boundedness (avoiding the circularity of borrowing the string's boundary condition). Concept DOI: [10.5281/zenodo.20742990](https://doi.org/10.5281/zenodo.20742990)
+7. **The maps (ν, δ) ↔ (N, Δ): recovery of values and conserved quantities** — §5, §7. Rigorous formalization of the forward map N̂=log₂(ν/C) and inverse map ν=C·2^{N̂}, the conserved quantities, the privileged scale C, and full invertibility (both the individual values and δ are recovered exactly). DOI: [10.5281/zenodo.20746818](https://doi.org/10.5281/zenodo.20746818)
 
 ---
 
