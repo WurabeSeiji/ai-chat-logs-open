@@ -1,0 +1,123 @@
+# Appendix: The Logarithmic Map Separates Scale and Quantization
+## — g is Flattened, ω Remains Invariant
+
+**Author:** Noriaki Kihara (ORCID: 0009-0004-6753-4020)
+**Date:** 18 June 2026
+**DOI (this version):** 10.5281/zenodo.20742989
+**Concept DOI (all versions):** 10.5281/zenodo.20742988
+**Zenodo:** https://zenodo.org/records/20742989
+**Related paper:** "On the Logarithmic Map of Scale and the Separation of Scale and Quantization in a High-Symmetry Limit," §7.3 (Concept DOI: [10.5281/zenodo.20740841](https://doi.org/10.5281/zenodo.20740841))
+
+---
+
+## Purpose
+
+This appendix develops independently the core of the related paper, §7.3 ("The heart of the map: separation of scale (g) and quantization (ω)"). It adds no new claim; its aim is to make explicit the most easily misread point — that **flattening by the logarithmic map is not "throwing away information" but separating scale (g) and quantization (ω)**.
+
+Ordinarily, flattening in a symmetric limit is read as "structure vanishes / becomes trivial." Indeed, as stated in §7.2 of the parent paper, the fully symmetric limit, as the price of making flattening hold, almost exhausts the degrees of freedom on the g side. That the physics (quantization) nonetheless does not vanish is because quantization resided from the start not in g (the mean, scale) but in ω (the fluctuation, area). The logarithmic map acts on g and flattens it, and does not act on ω, leaving it invariant. This is the separation.
+
+This appendix is not a rigorous proof but an explication of the structure of §7.3 of the parent paper. The magnitude of the fluctuation ±1/2 is a posit (parent paper §6.2). No physical identification is made. "Separation" here is meant only operationally, and includes no claim of a canonical transformation strictly preserving the symplectic form (its rigorization is future work).
+
+---
+
+## 1. The two quantities: g and ω
+
+This system has two independent real conserved quantities (parent paper, Axioms 4 and 5; and the appendix "The Complex Structure is a Consequence, Not a Posit"). The two correspond to the real and imaginary parts of the complex inner product ⟨·,·⟩=g+iω.
+
+**g (real part, distance, scale):** the sum of squares
+
+$$g = \sum \nu_n^2 = R^2.$$
+
+This appears to the observer as the scale R (the size, distance, metric of the system), the side of normalization (the Born norm). It is the invariant of SO(2) — the rotation preserving the sum of squares.
+
+**ω (imaginary part, area, quantization):** the product of fluctuations
+
+$$\omega = \delta_1\delta_2 = \tfrac{1}{2}.$$
+
+This is an area / symplectic form, the side carrying quantization. It is related to SO(1,1) — the hyperbolic, product-preserving transformation.
+
+By the note of the parent paper, g and ω are independent quantities, mutually underivable. One carries scale (a continuous magnitude), the other quantization (the discrete minimal unit).
+
+---
+
+## 2. The logarithmic map acts on g
+
+Introduce the fundamental quantity as the logarithm of a squared quantity, N=log₂ν (parent paper §4). This map acts on the g side.
+
+g is the sum of squares Σν². In the fully symmetric limit (all ν_n² equal to a value v, parent paper §7.2),
+
+$$g = \sum\nu_n^2 = (\text{number of axes})\cdot v,$$
+
+so the logarithm can act on the sum:
+
+$$\log_2 g = \log_2(\text{number of axes}) + \log_2 v.$$
+
+That is, g (the sum of squares, scale, the curved quantity) is folded under the logarithm into a flat additive relation N+½log₂(number of axes)=N_R (parent paper §7.2). The source of scale is the square (power), and the logarithm linearizes the power.
+
+**g can be removed as a gauge.** In the fully symmetric limit g degenerates to a single value v. Scale (size) is folded into the logarithmic coordinate and absorbed as the choice of the flat coordinate (a gauge). After flattening, no structure carrying quantization remains on the g side — because g carried scale and never carried quantization.
+
+---
+
+## 3. The logarithmic map does not act on ω
+
+On the other hand, ω is not crushed by the logarithmic map.
+
+ω is the product of fluctuations δ₁δ₂=1/2 (or the half-bit Δ=±1/2; the appendix "From the Sum-Zero of Fluctuations to Uncertainty"). This is an area — a quantity spanned by two axes — a different kind of quantity from the sum of squares (the length of one axis). The logarithm linearizes the sum of squares (distance, g), but the area (ω) is outside its action.
+
+Concretely, even when g degenerates to a single value v in the fully symmetric limit, the fluctuation Δ=±1/2 does not degenerate. The degeneration of g is "all ν_n² are equal," which is the degeneration of the mean (scale). The fluctuation (the ±1/2 allocation around the mean) does not vanish even when the mean becomes a single value. The degree of freedom of which member of the conjugate pair the half-bit is allocated to (Δ_a+Δ_b=0, sum-zero) is preserved independently of the degeneration of g.
+
+**ω remains as an invariant on the flat surface.** Before and after the logarithmic map, ω — the area / half-bit — is invariant. On the flat N-surface, ω remains in a purified form as the minimal unit of quantization.
+
+---
+
+## 4. The structure of the separation
+
+From the above, the logarithmic map separates the two quantities.
+
+| Quantity | What it carries | Under the logarithmic map |
+|---|---|---|
+| g (sum of squares, distance, real part) | scale (continuous magnitude) | flattened (removable as a gauge) |
+| ω (product, area, imaginary part) | quantization (discrete minimal unit) | remains invariant |
+
+**The operational meaning of "separation":** "to separate" means that the map flattens g (scale, sum of squares) while keeping ω (product, area) invariant. g and ω are the real and imaginary parts of the complex inner product g+iω, and the logarithmic map acts on this real part and does not act on the imaginary part (Figure 1).
+
+![Figure 1: g/ω separation by the logarithmic map. The curved scale g (sum of squares) in ν-space is flattened in N-space and degenerates to a point (gauge). On the other hand, the quantization ω (the half-bit ±1/2) remains invariant under the map. Flattening is not a loss of information but a separation of g and ω.](fig4_g_omega_separation.svg)
+
+**The substance of "the physics does not vanish even when flattened":** in the fully symmetric limit, flattening makes g (scale) degenerate to a single value. That quantization (ω) nonetheless remains is because quantization resided from the start not in g (the mean, scale) but in ω (the fluctuation, area). Flattening folds g but does not fold ω. Hence, even when scale is removed, quantization remains.
+
+This separation is a consequence of quantization (ω) being a conserved quantity independent of, and distinct from, scale (g). Scale is pushed into the flat surface and gauged away, and quantization is purified as an invariant on that flat surface — this is the work of the logarithmic map.
+
+---
+
+## 5. Summary of the structure
+
+For the complex inner product g+iω, the logarithmic map N=log₂ν:
+
+- **acts on the real part g (sum of squares, scale) and flattens it in the fully symmetric limit (a gauge);**
+- **does not act on the imaginary part ω (product, quantization), and leaves it as an invariant on the flat surface.**
+
+Flattening is not a loss of information but a separation of two quantities. Scale (g) carries a continuous magnitude and is flattenable; quantization (ω) carries the discrete minimal unit and is invariant under the map. That the two are independent (the parent paper's note: the mutual underivability of Axioms 4 and 5) is the ground for this separation.
+
+This is the heart of the parent paper — even when flattened in a high-symmetry limit, quantization does not vanish, because quantization resides not in the side that is flattened (g, scale) but in the side that remains invariant (ω, area).
+
+---
+
+## 6. Limitations (reading notes)
+
+This appendix makes explicit the structure of §7.3 of the parent paper and adds no new claim.
+
+1. **"Separation" is meant only operationally.** It means the map flattens g and keeps ω invariant. It includes no claim of a canonical transformation strictly preserving the symplectic form. That rigorization (a proof that the map is a canonical transformation) is future work.
+
+2. **±1/2 is a posit.** As in §6.2 of the parent paper, the minimal unit of ω, ±1/2, is a posit, not a derivation, and the separation of this appendix presupposes this posit.
+
+3. **The difference from known frameworks is uncompared.** Whether the g/ω separation of this appendix differs from or agrees with known Kähler geometry (the structure in which a metric g and a symplectic form ω are tied by a complex structure) or conformal flatness has not been rigorously compared. As in the limitation §8.4 of the parent paper, whether this result remains a special case of known frameworks cannot be determined.
+
+4. **Holds only in a limited regime.** As in §8.1 of the parent paper, the flattening (on the g side) holds only in the k=1, fully symmetric, anonymity limit. Leaving this limit, the flattening does not hold. The separation of this appendix is also a statement within this limit.
+
+5. **No physical identification is made.** The physical names of g (scale) and ω (quantization) are anonymous labels, and this appendix makes no identification with a particular physical quantity.
+
+---
+
+## Reference
+
+- Kihara, N. "On the Logarithmic Map of Scale and the Separation of Scale and Quantization in a High-Symmetry Limit — A Limited Verification Report from a Minimal Axiom System," §7.2, §7.3, §8.1, §8.4, Axioms 4 and 5. Concept DOI: [10.5281/zenodo.20740841](https://doi.org/10.5281/zenodo.20740841).

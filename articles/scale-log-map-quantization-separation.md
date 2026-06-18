@@ -11,8 +11,8 @@ published: true
 共役な二量の関係 $\nu\lambda=k$（$\nu$ が大きくなれば $\lambda$ が小さくなる、硬いシーソー）への素朴な疑問から出発した限定報告を Zenodo に公開しました。
 
 - **Concept DOI（全版）**: https://doi.org/10.5281/zenodo.20740841
-- **v2 DOI（本版）**: https://doi.org/10.5281/zenodo.20742386 （v1: https://doi.org/10.5281/zenodo.20740842）
-- **Zenodo レコード**: https://zenodo.org/record/20742386
+- **v3 DOI（本版）**: https://doi.org/10.5281/zenodo.20743142 （v1: https://doi.org/10.5281/zenodo.20740842 ／ v2: https://doi.org/10.5281/zenodo.20742386）
+- **Zenodo レコード**: https://zenodo.org/record/20743142
 - **GitHub**: https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/矩形ソリトンの面積保存と交換子
 
 本稿は「新しい一般的事実の発見」を主張するものではありません。極めて高い対称性と無名性を要求する**限定された極限**での検証結果を、誇張せず記録するものです。
@@ -144,3 +144,37 @@ $$
 **観測量空間**：保存関係は双曲線 $a\cdot b=2^K$。一方を締めれば他方が広がる。N 空間の直線（和ゼロ）の対数逆写像。
 
 保たれるのは**観測量の積 $a\cdot b$** であって揺らぎの積 $\delta_a\delta_b$ ではないこと、固定半ビット（既約な床＋符号反相関）と連続 squeeze（双曲線のトレードオフ）は別側面で ±1/2 はその最小単位であること、を本文で明記しています。±1/2 は措定、不確定性も Bell の意味ではありません。
+
+## 補遺4：複素構造は措定でなく帰結である（§4）
+
+虚数単位 $i$ を公理に置かず、二つの実成分と回転から複素構造が立ち上がることを示した補遺です。
+
+- **Concept DOI**: https://doi.org/10.5281/zenodo.20742984 ／ **v1**: https://doi.org/10.5281/zenodo.20742985
+
+$z=\nu_1+i\nu_2=\nu e^{i\theta}$ で、$|z|^2=\nu_1^2+\nu_2^2=g$（実部）、面積 $\omega=\delta_1\delta_2$（虚部）。$i$ は**二軸を結ぶ 90 度回転 $J$ の符牒**で、$J^2=-1$（90度回転を2回＝−1倍）が $i^2=-1$ になります。独立な2軸だけでは実平面 $\mathbb{R}^2$、回転 $J$ を加えて初めて複素平面 $\mathbb{C}$。複素数が2次元なのは「無名性の限界＝2」の反映です。
+
+![複素構造](https://github.com/WurabeSeiji/ai-chat-logs-open/raw/main/矩形ソリトンの面積保存と交換子/fig3_complex_from_two_real.png)
+
+## 補遺5：対数写像はスケールと量子化を分離する（§7.3・親論文の核）
+
+親論文の核心。対称極限での平坦化は「情報の喪失」ではなく**スケール（g）と量子化（ω）の分離**であることを示した補遺です。
+
+- **Concept DOI**: https://doi.org/10.5281/zenodo.20742988 ／ **v1**: https://doi.org/10.5281/zenodo.20742989
+
+対数写像は実部 $g=\sum\nu^2$（スケール）に作用して平坦化し（gauge）、虚部 $\omega=\delta_1\delta_2=1/2$（量子化・半ビット）には作用せず不変に残す。$g$ が一値に縮退しても $\omega$ は残る——量子化は初めから平均（g）でなく揺らぎ（ω）に宿るから。「分離」は operational な意味（正準変換の主張ではない）。
+
+![g/ω分離](https://github.com/WurabeSeiji/ai-chat-logs-open/raw/main/矩形ソリトンの面積保存と交換子/fig4_g_omega_separation.png)
+
+## 補遺6：離散性は外枠でなく節から生じる（§3）
+
+離散性が有界性（外枠）でなく、公理2（二値）が生む**節**から内在的に出ることを示した補遺です。
+
+- **Concept DOI**: https://doi.org/10.5281/zenodo.20742990 ／ **v1**: https://doi.org/10.5281/zenodo.20742991
+
+二値（+/−）は符号の切り替わり点＝**節**を必ず生む。節は点だから離散、無名性で整数個、閉性（一周で + に戻る）で偶数個。「有界だから離散」は弦の境界条件を借りる循環で、本補遺はそれを避け、節を二値から内在的に導きます。
+
+![節と離散](https://github.com/WurabeSeiji/ai-chat-logs-open/raw/main/矩形ソリトンの面積保存と交換子/fig5_nodes_on_closed_loop.png)
+
+---
+
+以上の6補遺で、当初の優先順位（存在論／次元／不確定性／複素構造／g・ω分離／離散性）をすべて埋めました。いずれも親論文へ `isSupplementTo`、親論文 v3 の「関連補遺一覧」からも参照されています。
