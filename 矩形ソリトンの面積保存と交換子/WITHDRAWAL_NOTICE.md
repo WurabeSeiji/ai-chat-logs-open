@@ -1,0 +1,33 @@
+# Withdrawal Notice / 撤回告知
+
+**Author:** Noriaki Kihara  
+**ORCID:** 0009-0004-6753-4020  
+**Date:** 2026-06-19
+
+---
+
+## English
+
+This notice withdraws the files previously uploaded to the Zenodo record to which this notice is attached.
+
+The author has determined that the attached record should no longer be used as a citable or referential version of the work. The withdrawal is made in order to prevent further circulation of files whose formulation and presentation no longer reflect the author's current position.
+
+Because Zenodo records with assigned DOI are persistent and the previously uploaded files cannot be physically removed from the public record by the author, this notice is provided as the replacement file for the record.
+
+Readers should treat the previous files in the same Zenodo record as withdrawn by the author.
+
+This notice does not assert that the record never existed. It states that the author no longer endorses the previously uploaded files as a valid version for citation, reuse, or interpretation.
+
+---
+
+## 日本語
+
+本告知は、この告知ファイルが添付された Zenodo レコードに過去アップロードされたファイルを、著者判断により撤回するものである。
+
+著者は、当該レコードを今後引用・参照すべき版として扱うべきではないと判断した。撤回の理由は、過去にアップロードされたファイルの定式化および表現が、著者の現在の見解を反映しなくなったためである。
+
+Zenodo の DOI 付き公開レコードは永続的に保存され、過去アップロード済みのファイルを著者側から物理的に削除できない。そのため、本告知を当該レコードの置換ファイルとして提示する。
+
+読者は、この告知が添付された Zenodo レコード内の過去ファイルを、著者により撤回されたものとして扱うこと。
+
+本告知は、当該レコードの存在自体を否定するものではない。過去アップロード済みファイルを、今後の引用・再利用・解釈の有効版として著者が支持しないことを明示するものである。
