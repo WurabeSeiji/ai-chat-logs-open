@@ -73,6 +73,13 @@ Linear Simplexification by Square-Quantity Readout and a Dimension-wise Organiza
 - 日本語: [平方数で読むと、曲がった平方和が直線になる ── 曲率歪みと平方量読出しの整理](https://note.com/kiharanoriaki/n/n879eac8f6cb2)
 - English: [Reading by Squares: When a Curved Sum of Squares Becomes a Straight Line](https://note.com/kiharanoriaki/n/n1f41301fdf49)
 
+### SNS 投稿
+
+- Facebook 日本語投稿: 個人タイムライン（2026-06-22、本文2行目「詳細はコメント参照」、コメントに日本語 note URL、図添付）
+- Facebook English post: personal timeline (2026-06-22, second line "See the comment for details", English note URL in comment, figure attached)
+- X 日本語投稿: [@NoriakiKihara](https://x.com/NoriakiKihara)（2026-06-22、日本語 note URL、図添付）
+- X English post: [@NoriakiKihara](https://x.com/NoriakiKihara) (2026-06-22, English note URL, figure attached)
+
 ---
 
 ## 研究記録
