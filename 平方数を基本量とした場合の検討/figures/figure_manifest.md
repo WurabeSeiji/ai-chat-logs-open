@@ -52,3 +52,21 @@ python3 make_square_quantity_figures.py
 ```
 
 from this folder.
+
+---
+
+# Odd-Harmonic Localization Figure
+
+Belongs to a separate short paper, `paper_odd_harmonic_localization_ja_v0_1.md`.
+
+## Figure 1 (odd-harmonic paper)
+
+- Files: `fig01_odd_harmonic_localization.png`, `fig01_odd_harmonic_localization.svg`
+- Role: normalized squared amplitude of the equal-amplitude odd-harmonic sum
+  `S_N(phi) = sum_{m=0}^{(N-1)/2} cos((2m+1) phi) = sin((N+1) phi) / (2 sin phi)`
+  for `N = 99, 999, 9999`, showing the central peak narrowing as `1/N`.
+- Caption: Localization of the equal-amplitude odd-harmonic sum.
+- Rebuild: `python3 make_odd_harmonic_figure.py`
+- Provenance: supersedes the original hand-made figure kept at
+  `source_originals/chatgpt_original_odd_harmonic_figure.png` (which was
+  mislabeled "図2"; the regenerated figure is the canonical "図1").
