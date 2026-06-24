@@ -82,14 +82,14 @@ Linear Simplexification by Square-Quantity Readout and a Dimension-wise Organiza
 
 ---
 
-## 論文2：半波長位相区間における一定振幅奇数倍音和の孤立ピーク波とその局在性に関する観察（v0.3）
+## 論文2：半波長位相区間における一定振幅奇数倍音和の孤立ピーク波とその局在性に関する観察（v0.4）
 
 An Observation on the Isolated Peak Wave of a Constant-Amplitude Odd-Harmonic Sum on a Half-Wavelength Phase Interval and Its Localization
 
 - **Concept DOI**: 10.5281/zenodo.20833096（外部参照用・最新版へ自動転送）
-- **Version DOI (v0.3, 最新)**: 10.5281/zenodo.20833097
-- **Zenodo deposit**: 20833097 / record https://zenodo.org/records/20833097
-- **公開日**: 2026-06-25
+- **Version DOI (v0.4, 最新)**: 10.5281/zenodo.20834424
+- **Zenodo deposit**: 20834424 / record https://zenodo.org/records/20834424（旧 v0.3: 20833097）
+- **公開日**: 2026-06-25（v0.3 公開 → 同日 v0.4 改訂公開）
 - **ライセンス**: CC BY 4.0
 - **位置づけ**: 観察・整理論文。半波長区間 $[-\pi/2,\pi/2]$ 上で一定振幅の奇数倍音を余弦で重ね合わせると、中央に主ピークをもち両端で零となる「孤立ピーク波」が形成されること、その局在幅が $1/(N+1)$ で縮むこと、指定した局在幅から必要な最高倍音次数を逆算する式を、初等的なフーリエ和の性質として整理する。物理的解釈は与えない。
 
@@ -109,11 +109,12 @@ An Observation on the Isolated Peak Wave of a Constant-Amplitude Odd-Harmonic Su
 - 一定振幅奇数倍音和 $S_N(\varphi)=\sum_{m=0}^{(N-1)/2}\cos((2m+1)\varphi)$ を定義し、等差数列の余弦和の公式から閉形式 $S_N(\varphi)=\sin((N+1)\varphi)/(2\sin\varphi)$ を独立に導出（ディリクレ核を前提としない）。
 - 拡大変数 $u=(N+1)\varphi$ を固定して中央主ピーク近傍を見ると、ピーク値で規格化した形が $N$ によらない普遍関数 $\sin u/u$ に近づくことを段階的に導出（分母 $2\sin\varphi$ が $2\sin(u/(N+1))$ へ書き換わり、小角展開とピーク値規格化で $N$ 依存が相殺する筋を明示）。
 - 規格化二乗振幅 $\widehat{I}_N\approx(\sin u/u)^2$、中央主ピークの横幅が $1/(N+1)$ で縮小。
-- $k$-局在半幅 $\Delta_k$ と許容レベル $k$ から必要な最高奇数倍音次数を逆算する数値解代入法と近似閉形式 $u_k\approx\pi/(1+\sqrt{k})$ を提示。
+- $k$-局在半幅 $\Delta_k$ を「中心から離れて二度と $k$ を超えなくなる**最後の交点**（サイドローブ包絡線が $k$ に落ちきる外縁）」と定義し、特性値を $(\sin u/u)^2=k$ の**最大根** $u_k^{\mathrm{out}}$（$k=0.01$ で $8.4232$、$k=0.001$ で $30.151$）として必要な最高奇数倍音次数を逆算する数値解代入法と、包絡線上界 $u_k^{\mathrm{out}}\lesssim1/\sqrt{k}$ による安全側の近似閉形式 $N\approx1/(\pi\sqrt{k}\,\Delta_k)-1$ を提示。
 - 付録Aはスケール比の算術例にすぎず、物理的実在・物理過程を主張しない（ボーア半径は任意の小スケールの一例）。
 
 ### 改訂履歴
 
+- **v0.4 (2026-06-25)**: §2.4 の局在半幅 $\Delta_k$ の定義を、主ローブが最初に $k$ を切る点（誤）から、**サイドローブ込みで二度と $k$ を超えなくなる最後の交点**（正）へ修正。厳密逆算の特性値を主ローブの最初の根（$u\in(0,\pi)$）から $(\sin u/u)^2=k$ の最大根 $u_k^{\mathrm{out}}$ へ、近似式を $u_k\approx\pi/(1+\sqrt{k})$ から包絡線上界 $u_k^{\mathrm{out}}\lesssim1/\sqrt{k}$（$N\approx1/(\pi\sqrt{k}\,\Delta_k)-1$、安全側）へ変更。表と付録Aの数値を最後の交点基準に全面差し替え（$k=0.01$ で $\Delta$ が約2.95倍、$N=99$ で $0.908\%\to2.682\%$）。日英 md/tex/pdf 再生成。
 - **v0.3 (2026-06-24 整理 → 2026-06-25 公開)**: §2.3 を新設し閉形式から $\sin u/u$ 近似への導出を $u=(N+1)\varphi$ 固定の極限として補強。用語を「中央主ピーク」に統一、孤立ピーク波の定義文を追加、局在幅を $1/(N+1)$ に整合、式番号を (2.1)–(2.16) の正規連番に振り直し。図1（孤立ピーク波）の本文埋め込みを追加。
 
 ### Zenn 記事

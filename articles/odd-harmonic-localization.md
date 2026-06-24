@@ -9,7 +9,7 @@ published: true
 新しい観察・整理論文を公開しました。
 
 - **Concept DOI**: https://doi.org/10.5281/zenodo.20833096
-- **Version DOI**: https://doi.org/10.5281/zenodo.20833097
+- **Version DOI (v0.4)**: https://doi.org/10.5281/zenodo.20834424
 - **GitHub**: https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/平方数を基本量とした場合の検討
 
 本稿の対象は、半波長の位相区間 $\varphi\in[-\pi/2,\pi/2]$ 上で、一定振幅の奇数倍音だけを余弦で重ね合わせた波
@@ -64,13 +64,15 @@ $$
 
 ## 局在幅から必要倍音次数を逆算する
 
-規格化二乗振幅が初めて許容レベル $k$ に下がる位置を $k$-局在半幅 $\Delta_k$ とすると、$g(u)=\sin u/u$ の単調性から $u_k=g^{-1}(\sqrt{k})$ が一意に決まり、必要な最高奇数倍音次数は
+ここで局在半幅 $\Delta_k$ は、中心から離れて規格化二乗振幅が**もう許容レベル $k$ を超えなくなる外縁＝最後の交点**として定義します。$\widehat{I}_N$ は主ローブの外にサイドローブを伴うので、主ローブが最初に $k$ を切る位置よりはるかに外側まで $k$ を上回りえます。$\Delta_k$ はそのサイドローブ包絡線が $k$ に落ちきる位置です。
+
+最後の交点は $(\sin u/u)^2=k$ の**最大根** $u_k^{\mathrm{out}}$（$k$ のみで決まる定数。$k=0.01$ で $8.4232$、$k=0.001$ で $30.151$）に対応し、必要な最高奇数倍音次数は
 
 $$
-N\ \ge\ \frac{u_k}{\pi\,\Delta_k}-1
+N\ \ge\ \frac{u_k^{\mathrm{out}}}{\pi\,\Delta_k}-1
 $$
 
-で逆算できます（数値解代入法）。小さな $k$ では近似閉形式 $u_k\approx\pi/(1+\sqrt{k})$ も成り立ちます。
+で逆算できます（数値解代入法）。サイドローブ包絡線 $\widehat{I}_N\le 1/((N+1)\sin\varphi)^2$ から得られる安全側の近似閉形式 $N\approx 1/(\pi\sqrt{k}\,\Delta_k)-1$（包絡線上界 $u_k^{\mathrm{out}}\lesssim 1/\sqrt{k}$ による、$k=0.01$ で約+19%）も与えます。
 
 ## 本稿の位置づけ
 

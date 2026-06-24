@@ -3,10 +3,10 @@
 **Subtitle**: Taking the fundamental domain to be the half-wavelength $[-\pi/2,\pi/2]$, the constant-amplitude odd-harmonic sum becomes an isolated peak wave with a peak at the center, and the localization width of its squared amplitude shrinks as $1/(N+1)$ (the reciprocal of the highest odd-harmonic order $N$ plus one; for large $N$, essentially the reciprocal of the highest harmonic order). A formula for the required highest harmonic order, inverted from a prescribed localization width, is also given.
 
 **Author**: Noriaki Kihara  
-**Version**: v0.3  
-**Date**: 2026-06-24  
-**DOI**: Version 10.5281/zenodo.20833097 (this version) / Concept 10.5281/zenodo.20833096 (cite this; always resolves to the latest version)  
-**Zenodo**: https://zenodo.org/records/20833097  
+**Version**: v0.4  
+**Date**: 2026-06-25  
+**DOI**: Version 10.5281/zenodo.20834424 (this version) / Concept 10.5281/zenodo.20833096 (cite this; always resolves to the latest version)  
+**Zenodo**: https://zenodo.org/records/20834424  
 **Position**: First draft as an observational and organizing paper. It records, as an elementary property of Fourier sums, that superposing constant-amplitude odd harmonics on a half-wavelength phase interval produces a waveform with a peak at the center (here called an "isolated peak wave"). It does not derive physical laws, assert observational facts, or give any particular physical interpretation.
 
 ---
@@ -148,82 +148,94 @@ Figure 2 shows ($N=99,\ 999,\ 9999$) together. The horizontal axis is varied by 
 
 ### 2.4 Required highest harmonic order $N_{\min}(\Delta_k,\,k)$ from a prescribed localization width
 
-We show how to solve "how high must the highest odd-harmonic order $N$ be taken to squeeze the central main peak to a prescribed thinness."
+We show how to solve "how high must the highest odd-harmonic order $N$ be taken so that the normalized squared amplitude is held at or below a tolerance level $k$ outside a given phase." The key point is that $\widehat{I}_N$ has sidelobes (secondary maxima) outside the central main lobe, so the sidelobes can exceed $k$ far beyond the position where the main lobe first drops through $k$ (the main-peak half-width of §2.3). Here $\Delta_k$ is defined not as the main-lobe half-width but as the **outermost edge, including sidelobes, beyond which $k$ is never exceeded again.**
 
-Use the normalized phase $x=\varphi/\pi\in[-\tfrac12,\tfrac12]$, taking the full width $\pi$ of the half-wavelength interval as $1$. For a tolerance level $k\ (0<k<1)$, define the **$k$-localization half-width** $\Delta_k$ as the positive position at which the normalized squared amplitude first drops to $k$ or below,
+Use the normalized phase $x=\varphi/\pi\in[-\tfrac12,\tfrac12]$, taking the full width $\pi$ of the half-wavelength interval as $1$. For a tolerance level $k\ (0<k<1)$, define the **$k$-localization half-width** $\Delta_k$ as the outermost position at which the normalized squared amplitude exceeds $k$, i.e. the largest solution of $\widehat{I}_N(\pi x)=k$,
 
 $$
-\Delta_k=\min\{\,x>0:\ \widehat{I}_N(\pi x)\le k\,\}
+\Delta_k=\max\{\,x\in(0,\tfrac12]:\ \widehat{I}_N(\pi x)=k\,\}
+\qquad(\text{for}\ x>\Delta_k,\ \widehat{I}_N(\pi x)\le k)
 \tag{2.10}
 $$
 
-For large $N$, by Eq. (2.9) of §2.3, $$\widehat{I}_N(\varphi)\approx(\sin u/u)^2\qquad(u=(N+1)\varphi)$$ so $\widehat{I}_N$ first drops to $k$ when $u$ reaches the first positive root $u_k$ of
+This is "the boundary phase, away from the center, beyond which $\widehat{I}_N$ no longer exceeds $k$": not the first descent of the main lobe, but the **last crossing**.
+
+For large $N$, by Eq. (2.9) of §2.3, $$\widehat{I}_N(\varphi)\approx(\sin u/u)^2\qquad(u=(N+1)\varphi)$$ so $\widehat{I}_N$ last exceeds $k$ when $u$ reaches the **largest positive root** $u_k^{\mathrm{out}}$ of
 
 $$
-\Big(\frac{\sin u_k}{u_k}\Big)^2=k
+\Big(\frac{\sin u_k^{\mathrm{out}}}{u_k^{\mathrm{out}}}\Big)^2=k
 \tag{2.11}
 $$
 
-with $0<u_k<\pi$, i.e. at $\varphi=u_k/(N+1)$.
+i.e. at $\varphi=u_k^{\mathrm{out}}/(N+1)$. Here $u_k^{\mathrm{out}}$ is the root on the descending flank of the outermost sidelobe exceeding $k$, a constant determined by the tolerance level $k$ alone ($u_k^{\mathrm{out}}=8.423204$ for $k=0.01$ and $30.151382$ for $k=0.001$; by contrast the first descent of the main lobe lies in $u\in(0,\pi)$, only $2.852342$ for $k=0.01$ and $3.045147$ for $k=0.001$). Since $g(u)=\sin u/u$ is monotone only on $[0,\pi]$ and oscillates in the sidelobe region, $u_k^{\mathrm{out}}$ is not given by a single inverse function but is the largest root, found numerically.
 
-Here $u_k$ is a **specific value** of $u=(N+1)\varphi$, namely the point at which the left-hand side of Eq. (2.11) drops to the level $k$, and is a constant determined by the tolerance level $k$ alone. Since $g(u)=\sin u/u$ decreases monotonically from $1$ to $0$ on $[0,\pi]$, it has an inverse, and $u_k$ is given uniquely by that inverse:
+A closed-form upper bound follows from the sidelobe envelope. Since $|\sin((N+1)\varphi)|\le1$,
 
 $$
-u_k=g^{-1}\!\big(\sqrt{k}\big),\qquad g(u)=\frac{\sin u}{u}\ \ (0\le u\le\pi).
+\widehat{I}_N(\varphi)=\frac{\sin^2\!\big((N+1)\varphi\big)}{\big((N+1)\sin\varphi\big)^2}
+\ \le\ \frac{1}{\big((N+1)\sin\varphi\big)^2},
+\qquad
+\Big(\frac{\sin u}{u}\Big)^2\le\frac{1}{u^2}
 \tag{2.12}
 $$
 
-However, Eq. (2.11) is a transcendental equation, and $u_k$ cannot be written in closed form with elementary functions. In practice one uses the numerical solution (table below), but for small $k$ the approximate closed form
+and this envelope decreases monotonically on $(0,\pi/2]$, reaching $k$ at $u=1/\sqrt{k}$. Hence $u_k^{\mathrm{out}}<1/\sqrt{k}$, and using the envelope for $\Delta_k$ is **conservative** (an over-estimate that guarantees $\widehat{I}_N\le k$). For small $k$ the approximate closed form
 
 $$
-u_k\approx\frac{\pi}{1+\sqrt{k}}
+u_k^{\mathrm{out}}\approx\frac{1}{\sqrt{k}},\qquad\text{i.e.}\quad
+\sin(\pi\Delta_k)\approx\frac{1}{(N+1)\sqrt{k}}
 \tag{2.13}
 $$
 
-holds (a first-order approximation setting $u_k=\pi-\delta$ and $\sin\delta\approx\delta$; the relative error is below $0.15\%$ for $k\le 0.01$ and below $0.01\%$ for $k\le 0.001$. By construction the accuracy worsens as $k$ grows: about $3\%$ at $k=0.1$ and about $30\%$ at $k=0.5$).
+holds (the relative slack is $\sim(\pi/2)\sqrt{k}$: about $19\%$ at $k=0.01$, about $4.9\%$ at $k=0.001$, improving as $k$ decreases, and always on the safe side — over-estimating $N$).
 
-From the condition $u_k/(N+1)\le \pi\Delta_k$ that the localization half-width be within $\Delta_k$,
+From the condition $u_k^{\mathrm{out}}/(N+1)\le \pi\Delta_k$ that the localization half-width be within $\Delta_k$,
 
 $$
-N\ \ge\ \frac{u_k}{\pi\,\Delta_k}-1
+N\ \ge\ \frac{u_k^{\mathrm{out}}}{\pi\,\Delta_k}-1
 \tag{2.14}
 $$
 
-We distinguish two inversion methods. First, the method that uses the $u_k$ obtained by solving Eq. (2.11) numerically is called here the **numerical-substitution method**. It is defined by the single expression
+The form is the same as in the main-lobe case, $N=u^{\ast}/(\pi\Delta_k)-1$, but the essential change is that the characteristic value passes from the main lobe's $u_k\approx\pi$ to the envelope / last-crossing value $u_k^{\mathrm{out}}$ (about $8.42$ for $k=0.01$, about $30.2$ for $k=0.001$).
+
+We distinguish two inversion methods. First, the method that uses the largest root $u_k^{\mathrm{out}}$ obtained by solving Eq. (2.11) numerically is called here the **numerical-substitution method**. It is defined by the single expression
 
 $$
 \begin{aligned}
 N_{\mathrm{cont}}^{(\mathrm{num})}(\Delta_k,k)
-&:=\frac{u_k}{\pi\,\Delta_k}-1,
+&:=\frac{u_k^{\mathrm{out}}}{\pi\,\Delta_k}-1,
 \qquad
-\Big(\frac{\sin u_k}{u_k}\Big)^2=k,\quad 0<u_k<\pi,\\
+\Big(\frac{\sin u_k^{\mathrm{out}}}{u_k^{\mathrm{out}}}\Big)^2=k,\quad u_k^{\mathrm{out}}=\text{largest positive root},\\
 N_{\min}^{(\mathrm{num})}(\Delta_k,k)
 &:=\min\Big\{\,N\in 2\mathbb{Z}_{\ge 0}+1:\ N\ge N_{\mathrm{cont}}^{(\mathrm{num})}(\Delta_k,k)\,\Big\}.
 \end{aligned}
 \tag{2.15}
 $$
 
-Here $N_{\mathrm{cont}}^{(\mathrm{num})}$ is the continuous threshold before imposing the odd-integer condition, and $N_{\min}^{(\mathrm{num})}$ is the smallest odd integer at least as large. This inversion formula uses the numerical solution of Eq. (2.11) directly, without replacing $u_k$ by elementary functions.
+Here $N_{\mathrm{cont}}^{(\mathrm{num})}$ is the continuous threshold before imposing the odd-integer condition, and $N_{\min}^{(\mathrm{num})}$ is the smallest odd integer at least as large. This inversion formula uses the numerical solution (largest root) of Eq. (2.11) directly, without replacing $u_k^{\mathrm{out}}$ by elementary functions.
 
-As a comparison example, substituting the approximation (2.13) to eliminate $u_k$ yields the **approximate closed form**
+Second, substituting the envelope approximation (2.13) to eliminate $u_k^{\mathrm{out}}$ yields the **approximate closed form**
 
 $$
 N_{\mathrm{cont}}^{(\mathrm{app})}(\Delta_k,k)
-:=\frac{1}{(1+\sqrt{k})\,\Delta_k}-1
+:=\frac{1}{\sqrt{k}\,\sin(\pi\Delta_k)}-1
+\ \approx\ \frac{1}{\pi\sqrt{k}\,\Delta_k}-1
 \tag{2.16}
 $$
 
-(using $u_k\approx\pi/(1+\sqrt k)$; $\Delta_k$ is the normalized half-width with full width $\pi$ taken as $1$). However, Eq. (2.16) is an estimate stemming from the approximation of $u_k$, and since the numerical-substitution method (2.15) is fast enough in practice, there is no advantage to using the less accurate (2.16).
+Eq. (2.16) is a **conservative over-estimate** stemming from the envelope upper bound (about $+19\%$ at $k=0.01$, about $+4.9\%$ at $k=0.001$, improving for small $k$), useful as a simple closed form when one wants to rigorously guarantee $\widehat{I}_N\le k$. For the exact required order, use the numerical-substitution method (2.15).
 
-Adding $N=99999,\ 999999$ to the $N=99,\ 999,\ 9999$ used in Figures 1 and 2, and taking the half-width $\Delta_{0.01}$ at $k=0.01$ as input, the numerical-substitution method (2.15) and the approximate closed form (2.16) compare as follows:
+Adding $N=99999,\ 999999$ to the $N=99,\ 999,\ 9999$ used in Figures 1 and 2, and taking the localization half-width $\Delta_{0.01}$ at $k=0.01$ (the last crossing, evaluated from the exact $\widehat{I}_N$) as input, the numerical-substitution method (2.15) and the approximate closed form (2.16) compare as follows:
 
-| Original highest odd-harmonic order $N$ | $\Delta_{0.01}$ (closed-form evaluation equivalent to the direct sum, percent) | $N_{\mathrm{cont}}^{(\mathrm{num})}$ (Eq. (2.15)) | $N_{\min}^{(\mathrm{num})}$ (Eq. (2.15)) | $N_{\mathrm{cont}}^{(\mathrm{app})}$ (Eq. (2.16)) |
+| Original highest odd-harmonic order $N$ | $\Delta_{0.01}$ (last crossing, exact evaluation, percent) | $N_{\mathrm{cont}}^{(\mathrm{num})}$ (Eq. (2.15)) | $N_{\min}^{(\mathrm{num})}$ (Eq. (2.15)) | $N_{\mathrm{cont}}^{(\mathrm{app})}$ (Eq. (2.16)) |
 |---:|---:|---:|---:|---:|
-| $99$ | $0.907940255\%$ | $98.998719$ | $99$ | $99.126732$ |
-| $999$ | $0.0907928740\%$ | $998.999872$ | $999$ | $1000.280022$ |
-| $9999$ | $0.00907928625\%$ | $9998.999987$ | $9999$ | $10011.801492$ |
-| $99999$ | $0.000907928624\%$ | $99998.999999$ | $99999$ | $100127.015052$ |
-| $999999$ | $0.0000907928624\%$ | $999998.9999999$ | $999999$ | $1001279.150532$ |
+| $99$ | $2.6816849\%$ | $98.981512$ | $99$ | $117.838252$ |
+| $999$ | $0.2681194\%$ | $998.998149$ | $999$ | $1186.208552$ |
+| $9999$ | $0.0268119\%$ | $9998.999815$ | $9999$ | $11870.968289$ |
+| $99999$ | $0.0026812\%$ | $99998.999981$ | $99999$ | $118718.671164$ |
+| $999999$ | $0.0002681\%$ | $999998.999998$ | $999999$ | $1187195.710468$ |
+
+The numerical-substitution method (2.15) recovers the original $N$ almost exactly (the slight undershoot at $N=99$ is because the last crossing lies outside the main lobe, where $\varphi$ is larger, so the small-angle error of the $\sin u/u$ approximation is larger than for the main-lobe half-width; it disappears as $N$ grows). The approximate closed form (2.16) is consistently about $1.19\times$ ($+19\%$) larger, i.e. on the safe side.
 
 
 ---
@@ -256,7 +268,7 @@ we obtained the following results.
 
 **(5) Inverse formula for the required harmonic order**
 
-- Solve for $N$ from a target localization half-width $\Delta_k$ and tolerance level $k$ (numerical-substitution method, Eq. (2.15)).
+- Solve for $N$ from a target localization half-width $\Delta_k$ (the **last crossing** beyond which $k$ is never exceeded again — the outer edge where the sidelobe envelope finally falls to $k$, lying outside the main-lobe half-width) and tolerance level $k$. The characteristic value is the last crossing $u_k^{\mathrm{out}}$ (the largest root of $(\sin u/u)^2=k$), with $N=u_k^{\mathrm{out}}/(\pi\Delta_k)-1$ (numerical-substitution method, Eq. (2.15)). A conservative approximate closed form $N\approx1/(\pi\sqrt{k}\,\Delta_k)-1$ from the envelope upper bound $u_k^{\mathrm{out}}\lesssim1/\sqrt{k}$ (Eq. (2.16)) is also given.
 
 All of these are elementary properties of Fourier sums, and no physical interpretation is given.
 
@@ -280,11 +292,11 @@ Numerical example (target half-width $=a_0$, $k=1\%$, computed by Eq. (2.15)):
 
 | Half-wavelength $L$ | $L$ [m] | $L/a_0$ | $\Delta_k=a_0/L$ | $N_{\mathrm{cont}}^{(\mathrm{num})}$ |
 |---|---:|---:|---:|---:|
-| $1$ light-year | $9.46\times10^{15}$ | $1.79\times10^{26}$ | $5.59\times10^{-27}$ | $\sim 1.6\times10^{26}$ |
-| Radius of the observable universe | $4.4\times10^{26}$ | $8.3\times10^{36}$ | $1.2\times10^{-37}$ | $\sim 7.5\times10^{36}$ |
-| $2\times10^{11}$ light-years | $1.89\times10^{27}$ | $3.58\times10^{37}$ | $2.79\times10^{-38}$ | $\sim 3.2\times10^{37}$ |
+| $1$ light-year | $9.46\times10^{15}$ | $1.79\times10^{26}$ | $5.59\times10^{-27}$ | $\sim 4.8\times10^{26}$ |
+| Radius of the observable universe | $4.4\times10^{26}$ | $8.3\times10^{36}$ | $1.2\times10^{-37}$ | $\sim 2.2\times10^{37}$ |
+| $2\times10^{11}$ light-years | $1.89\times10^{27}$ | $3.58\times10^{37}$ | $2.79\times10^{-38}$ | $\sim 9.6\times10^{37}$ |
 
-For example, at $L=2\times10^{11}$ light-years (merely an image of the size of the universe including unobservable regions), target half-width $=$ Bohr radius, and $k=1\%$, the normalized half-width is $\Delta_k=a_0/L\approx2.79\times10^{-38}$, and the continuous value of Eq. (2.15) is $N_{\mathrm{cont}}^{(\mathrm{num})}\approx3.2\times10^{37}$. The required order $N$ is proportional to the half-wavelength $L$ and inversely proportional to the target half-width.
+For example, at $L=2\times10^{11}$ light-years (merely an image of the size of the universe including unobservable regions), target half-width $=$ Bohr radius, and $k=1\%$, the normalized half-width is $\Delta_k=a_0/L\approx2.79\times10^{-38}$, and, using the $k=0.01$ last crossing $u_k^{\mathrm{out}}=8.423204$, the continuous value of Eq. (2.15) is $N_{\mathrm{cont}}^{(\mathrm{num})}\approx9.6\times10^{37}$. The required order $N$ is proportional to the half-wavelength $L$ and inversely proportional to the target half-width.
 
 To repeat, this appendix is an arithmetic application of the numerical-substitution method (Eq. (2.15)) to given scale ratios, and does not claim physical reality or any physical process.
 
