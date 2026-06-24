@@ -1,0 +1,583 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{半波長位相区間における一定振幅奇数倍音和の孤立ピーク波とその局在性に関する観察}\label{ux534aux6ce2ux9577ux4f4dux76f8ux533aux9593ux306bux304aux3051ux308bux4e00ux5b9aux632fux5e45ux5947ux6570ux500dux97f3ux548cux306eux5b64ux7acbux30d4ux30fcux30afux6ce2ux3068ux305dux306eux5c40ux5728ux6027ux306bux95a2ux3059ux308bux89b3ux5bdf}
+
+\textbf{副題}: 基本領域を半波長 \([-\pi/2,\pi/2]\)
+にとると、一定振幅の奇数倍音和は中央に主ピークをもつ孤立ピーク波となり、その二乗振幅の局在幅は
+\(1/(N+1)\)（最高奇数倍音次数 \(N\) に \(1\) を加えた数の逆数、大 \(N\)
+で実質的に最高倍音次数の逆数）で縮小する。指定した局在幅から必要な最高倍音次数を逆算する式も与える。
+
+\textbf{著者}: 木原範昭 (Noriaki Kihara)\\
+\textbf{版}: v0.3\\
+\textbf{日付}: 2026-06-24\\
+\textbf{DOI}: Version 10.5281/zenodo.20833097（本版）/ Concept
+10.5281/zenodo.20833096（外部参照用・最新版へ自動転送）\\
+\textbf{Zenodo}: https://zenodo.org/records/20833097\\
+\textbf{位置づけ}:
+観察・整理論文としての初稿。半波長の位相区間上で一定振幅の奇数倍音を重ね合わせると、中央に主ピークをもつ波形（本稿で「孤立ピーク波」と呼ぶ）が形成されることを、初等的なフーリエ和の性質として記録する。物理法則の導出や観測事実の主張は行わず、特定の物理的解釈も与えない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+本稿では、半波長の位相区間 \(\varphi\in[-\pi/2,\pi/2]\)
+上で一定振幅の奇数倍音を重ね合わせた波について、それが中央に主ピークをもつ孤立ピーク波となることと、その局在幅と最高倍音次数の関係を観察する。対象とする波は
+
+\[
+S_N(\varphi)=\sum_{m=0}^{(N-1)/2}\cos\!\big((2m+1)\varphi\big)
+\]
+
+で定義される。ここで \(N\) は最高奇数倍音次数（\(N\)
+は奇数）であり、和には \(1,3,5,\dots,N\) の \((N+1)/2\)
+個の項が含まれる。
+
+本稿は、この性質を半波長位相区間における奇数倍音重ね合わせの数学的観察として記録するにとどめ、物理的解釈は与えない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. はじめに}\label{ux306fux3058ux3081ux306b}
+
+フーリエ解析において、高次倍音の導入が波形の局所構造を形成することは広く知られている。本稿では振幅を一定とした奇数倍音のみを対象とし、それが半波長区間の中央に作る孤立ピーク波とその局在性を観察する。
+
+奇数倍音のみを等振幅で重ね合わせた本稿の波は、(a)
+中心をピークにするため正弦ではなく余弦 \(\cos\!\big((2m+1)\varphi\big)\)
+を用い、(b) 係数を一定振幅 \(1\)
+にそろえる。本稿では、このように中央に卓越した主ピークをもち、半波長区間の両端で零となる波形を、便宜上「孤立ピーク波」と呼ぶ。
+
+記法と公式は標準的な解析学のテキスト {[}1{]} に従う。
+
+なお、本稿での式 (2.3)
+の閉形式はディリクレ核の特殊な場合として書くこともできるが、本稿の目的はディリクレ核の理論的性質を論じることではなく、半波長位相区間上の一定振幅奇数倍音和から直接出発し、その局在形状と局在幅のスケーリング、および必要倍音次数の逆算式を整理することにある。そのため以下ではディリクレ核を前提とせず、対象の波を独立に導出して議論する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2.
+定義と基本領域}\label{ux5b9aux7fa9ux3068ux57faux672cux9818ux57df}
+
+\subsubsection{2.1 波の定義}\label{ux6ce2ux306eux5b9aux7fa9}
+
+変数 \(\varphi\in[-\pi/2,\pi/2]\) で、波の振幅 \(S_N(\varphi)\) を、
+
+\[
+S_N(\varphi)=\sum_{m=0}^{(N-1)/2}\cos\!\big((2m+1)\varphi\big)
+\tag{2.1}
+\]
+
+と定義する。ここで \(N\) は最高奇数倍音次数で、\(N\) は奇数とする。
+
+振幅 \(S_N(\varphi)\)
+は正負の値を取るため、非負の量として観察量に二乗振幅
+
+\[
+I_N(\varphi)=\big|S_N(\varphi)\big|^2=S_N(\varphi)^2
+\tag{2.2}
+\]
+
+を用いる。
+
+この二乗振幅 \(I_N\) を半波長区間上で最大値 \(1\)
+に規格化した波形を図1に示す（\(N=99,\ 999,\ 9999\)）。中央に主ピークをもち両端で零となる孤立ピーク波の形状が確認でき、最高倍音次数
+\(N\) が大きいほど中央主ピークが細くなる。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図1}]{figures/fig01_odd_harmonic_localization.png}}
+\caption{図1}
+\end{figure}
+
+\textbf{図1}:
+孤立ピーク波（一定振幅奇数倍音和の規格化二乗振幅、\(N=99,\ 999,\ 9999\)）
+
+\subsubsection{2.2 余弦和}\label{ux4f59ux5f26ux548c}
+
+等差数列 \(a+md\)（\(a=\varphi,\ d=2\varphi\)）の余弦和の公式 {[}1{]}
+から、
+
+\[
+S_N(\varphi)=\sum_{m=0}^{(N-1)/2}\cos\!\big((2m+1)\varphi\big)
+=\frac{\sin\!\big((N+1)\varphi\big)}{2\sin\varphi}
+\tag{2.3}
+\]
+
+を得る。式 (2.3)
+はこの先の議論で繰り返し用いる厳密な恒等式である（\(\varphi=0\)
+では右辺を \(\lim_{\varphi\to0}\) で読み、後述の \(S_N(0)=(N+1)/2\)
+を与える）。
+
+\subsubsection{\texorpdfstring{2.3 中央主ピーク近傍の \(\sin u/u\)
+近似}{2.3 中央主ピーク近傍の \textbackslash sin u/u 近似}}\label{ux4e2dux592eux4e3bux30d4ux30fcux30afux8fd1ux508dux306e-sin-uu-ux8fd1ux4f3c}
+
+ここで、後の局在幅の議論（§2.4）で用いる近似形を、式 (2.3)
+から段階を踏んで導く。狙いは「拡大変数 \(u=(N+1)\varphi\)
+を固定して中央主ピーク近傍を見ると、ピーク値で規格化した \(S_N\)
+の形が、\(N\) によらない普遍関数 \(\sin u/u\)
+に近づく」ことを示すことである。
+
+\textbf{ステップ1（ピーク近傍の拡大変数）.}
+中央主ピーク（\(\varphi=0\)）のまわりだけを観察するため、ピークの幅に合わせて引き伸ばした変数
+
+\[
+u=(N+1)\varphi,\qquad\text{すなわち}\quad \varphi=\frac{u}{N+1}
+\tag{2.4}
+\]
+
+を導入する。\(N\)
+を大きくしてもピークの中身を一定の解像度で見続けるための拡大鏡であり、\(u=O(1)\)
+の範囲が中央主ピーク近傍に対応する。これを式 (2.3)
+に代入すると、分子の偏角 \((N+1)\varphi\) がちょうど \(u\) になり、
+
+\[
+S_N(\varphi)=\frac{\sin\!\big((N+1)\varphi\big)}{2\sin\varphi}
+=\frac{\sin u}{2\,\sin\!\big(u/(N+1)\big)}
+\tag{2.5}
+\]
+
+となる。ここまでは厳密で、近似は入っていない。分母の \(2\sin\varphi\)
+は消えたのではなく、\(2\sin\!\big(u/(N+1)\big)\) に書き換わっている。
+
+\textbf{ステップ2（分母の小角展開）.} 中央主ピーク近傍 \(u=O(1)\)
+を保ったまま \(N\to\infty\) とすると、分母の偏角 \(u/(N+1)\)
+は限りなく小さくなる。小角展開 \(\sin\theta=\theta+O(\theta^3)\) を
+\(\theta=u/(N+1)\) に適用して
+
+\[
+\sin\!\Big(\frac{u}{N+1}\Big)=\frac{u}{N+1}+O\!\Big(\frac{u^3}{(N+1)^3}\Big)
+\tag{2.6}
+\]
+
+を得る。\(u=O(1)\)（中央主ピーク近傍）では誤差は
+\(O\!\big((N+1)^{-3}\big)\) である。これを式 (2.5) の分母に代入すると
+
+\[
+S_N(\varphi)\approx\frac{\sin u}{2\,\dfrac{u}{N+1}}
+=\frac{N+1}{2}\cdot\frac{\sin u}{u}
+\tag{2.7}
+\]
+
+となる。\(N\) 依存はすべて前因子 \(\tfrac{N+1}{2}\) に集まり、\(u\)
+依存部分は \(\sin u/u\) という \(N\) によらない普遍形に分離した。
+
+\textbf{ステップ3（ピーク値による規格化）.} ピーク値は \(u\to0\) で
+\(\sin u/u\to1\) より
+
+\[
+S_N(0)=\frac{N+1}{2}
+\tag{2.8}
+\]
+
+である（式 (2.1) の各余弦が \(\varphi=0\) で \(1\)、項数 \((N+1)/2\)
+からも直接従う）。波の高さそのものではなく形だけを比較するため、ピーク値で割った\textbf{規格化振幅}と\textbf{規格化二乗振幅}を
+
+\[
+\widehat{S}_N(\varphi):=\frac{S_N(\varphi)}{S_N(0)},
+\qquad
+\widehat{I}_N(\varphi):=\frac{I_N(\varphi)}{I_N(0)}=\widehat{S}_N(\varphi)^2
+\]
+
+で定義する（図2・図1の縦軸の規格化、および式 (2.10) 以降で用いる
+\(\widehat{I}_N\) はこの量である）。式 (2.7) を式 (2.8) で割ると前因子
+\(\tfrac{N+1}{2}\) がちょうど相殺し、
+
+\[
+\widehat{S}_N(\varphi)\approx\frac{\sin u}{u},
+\qquad
+\widehat{I}_N(\varphi)=\widehat{S}_N(\varphi)^2\approx\Big(\frac{\sin u}{u}\Big)^2
+\qquad(u=(N+1)\varphi)
+\tag{2.9}
+\]
+
+を得る。これが式 (2.10) 以降で用いる近似形である。要点は、(i) 拡大変数
+\(u=(N+1)\varphi\) により中央主ピークを固定解像度で見ること、(ii)
+その下で分母 \(2\sin\varphi\) が \(2u/(N+1)\) に化けること、(iii)
+ピーク値 \(\tfrac{N+1}{2}\) で規格化すると \(N\)
+依存が完全に落ちること、の三点である。あわせて、規格化前の局在幅が
+\(\varphi\sim u/(N+1)\)、すなわち \(1/(N+1)\) で縮むことも (2.4)
+から読み取れる。
+
+図2では、（\(N=99,\ 999,\ 9999\)） を同時にしめす。 横軸を
+\(\pm10\%,\ \pm1\%,\ \pm0.1\%\) と \(\times 10\) ずつ変えている。
+縦軸は三パネル共通で、\(|S_N(\varphi)|^2\) を最大値 \(1.0\)
+に規格化している。 この図は、中央主ピークの幅が \(1/(N+1)\)
+の横軸スケールで変わることを視覚的に確認するためのものである。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図2}]{figures/fig02_odd_harmonic_scaling.png}}
+\caption{図2}
+\end{figure}
+
+\textbf{図2}: 局在幅の \(1/(N+1)\) スケーリング
+
+\subsubsection{\texorpdfstring{2.4 指定した局在幅から必要な最高倍音次数
+\(N_{\min}(\Delta_k,\,k)\)}{2.4 指定した局在幅から必要な最高倍音次数 N\_\{\textbackslash min\}(\textbackslash Delta\_k,\textbackslash,k)}}\label{ux6307ux5b9aux3057ux305fux5c40ux5728ux5e45ux304bux3089ux5fc5ux8981ux306aux6700ux9ad8ux500dux97f3ux6b21ux6570-n_mindelta_kk}
+
+「中央主ピークを指定した細さに絞るには最高奇数倍音次数 \(N\)
+をどれだけ高くとればよいか」の解法をしめす。
+
+半波長区間の全幅 \(\pi\) を \(1\) とする規格化位相
+\(x=\varphi/\pi\in[-\tfrac12,\tfrac12]\) を用いる。許容レベル
+\(k\ (0<k<1)\) に対する \textbf{\(k\)-局在半幅} \(\Delta_k\)
+を、規格化二乗振幅が初めて \(k\) 以下となる正の位置
+
+\[
+\Delta_k=\min\{\,x>0:\ \widehat{I}_N(\pi x)\le k\,\}
+\tag{2.10}
+\]
+
+で定義する。
+
+大 \(N\) では §2.3 の式 (2.9) より
+\[\widehat{I}_N(\varphi)\approx(\sin u/u)^2\qquad(u=(N+1)\varphi)\]
+であるから、\(\widehat{I}_N\) が初めて \(k\) に下がるのは \(u\) が
+
+\[
+\Big(\frac{\sin u_k}{u_k}\Big)^2=k
+\tag{2.11}
+\]
+
+の（\(0<u_k<\pi\)）の最初の正解 \(u_k\) に達したとき、すなわち
+\(\varphi=u_k/(N+1)\) である。
+
+ここで \(u_k\) は、\(u=(N+1)\varphi\) の\textbf{特定の値}、すなわち式
+(2.11)の左辺がレベル \(k\) に下がる点であって、許容レベル \(k\)
+のみで決まる定数である。\(g(u)=\sin u/u\) は \([0,\pi]\) で \(1\) から
+\(0\) へ単調減少するので逆関数をもち、\(u_k\)
+はその逆関数で一意に与えられる：
+
+\[
+u_k=g^{-1}\!\big(\sqrt{k}\big),\qquad g(u)=\frac{\sin u}{u}\ \ (0\le u\le\pi).
+\tag{2.12}
+\]
+
+ただし式 (2.11) は超越方程式であり、\(u_k\)
+を初等関数で閉じた形に書くことはできない。実用上は数値解（後掲の表）を用いればよいが、小さな
+\(k\) では近似閉形式
+
+\[
+u_k\approx\frac{\pi}{1+\sqrt{k}}
+\tag{2.13}
+\]
+
+が成り立つ（\(u_k=\pi-\delta\) とおき \(\sin\delta\approx\delta\)
+とした一次近似。相対誤差は \(k\le 0.01\) で \(0.15\%\)
+未満、\(k\le 0.001\) では \(0.01\%\) 未満。導出上 \(k\)
+が大きいほど精度は落ち、\(k=0.1\) で約 \(3\%\)、\(k=0.5\) で約 \(30\%\)
+となる）。
+
+局在半幅を \(\Delta_k\) 以下に収める条件 \(u_k/(N+1)\le \pi\Delta_k\)
+から
+
+\[
+N\ \ge\ \frac{u_k}{\pi\,\Delta_k}-1
+\tag{2.14}
+\]
+
+を得る。
+
+ここで二つの逆算方法を区別する。第一に、式 (2.11) を数値的に解いて得た
+\(u_k\) をそのまま用いる方法を、本稿では \textbf{数値解代入法}
+と呼ぶ。数値解代入法は次の一つの式で定義する：
+
+\[
+\begin{aligned}
+N_{\mathrm{cont}}^{(\mathrm{num})}(\Delta_k,k)
+&:=\frac{u_k}{\pi\,\Delta_k}-1,
+\qquad
+\Big(\frac{\sin u_k}{u_k}\Big)^2=k,\quad 0<u_k<\pi,\\
+N_{\min}^{(\mathrm{num})}(\Delta_k,k)
+&:=\min\Big\{\,N\in 2\mathbb{Z}_{\ge 0}+1:\ N\ge N_{\mathrm{cont}}^{(\mathrm{num})}(\Delta_k,k)\,\Big\}.
+\end{aligned}
+\tag{2.15}
+\]
+
+ここで \(N_{\mathrm{cont}}^{(\mathrm{num})}\)
+は奇数条件を課す前の連続的なしきい値であり、\(N_{\min}^{(\mathrm{num})}\)
+はそれ以上の最小の奇数である。これは \(u_k\) を初等関数で置き換えず、式
+(2.11) の数値解をそのまま用いる逆算式である。
+
+比較用の算出例として、近似 (2.13) を代入して \(u_k\) を消去した
+\textbf{近似閉形式}
+
+\[
+N_{\mathrm{cont}}^{(\mathrm{app})}(\Delta_k,k)
+:=\frac{1}{(1+\sqrt{k})\,\Delta_k}-1
+\tag{2.16}
+\]
+
+が得られる（\(u_k\approx\pi/(1+\sqrt k)\) による。\(\Delta_k\) は全幅
+\(\pi\) を \(1\) とした規格化半幅）。ただし式 (2.16) は \(u_k\)
+の近似に由来する概算であり、数値解代入法 (2.15)
+も実用上充分高速で、精度の劣る(2.16)を用いる利点はない。
+
+図1・図2で用いた \(N=99,\ 999,\ 9999\) に、さらに \(N=99999,\ 999999\)
+を加え、\(k=0.01\) の半幅 \(\Delta_{0.01}\) を入力として、数値解代入法
+(2.15) と近似閉形式 (2.16) を比較すると次のとおりである：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+元の最高奇数倍音次数 \(N\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(\Delta_{0.01}\)（直接和と同値な閉形式評価、百分率）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(N_{\mathrm{cont}}^{(\mathrm{num})}\)（式 (2.15)）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(N_{\min}^{(\mathrm{num})}\)（式 (2.15)）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(N_{\mathrm{cont}}^{(\mathrm{app})}\)（式 (2.16)）
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(99\) & \(0.907940255\%\) & \(98.998719\) & \(99\) & \(99.126732\) \\
+\(999\) & \(0.0907928740\%\) & \(998.999872\) & \(999\) &
+\(1000.280022\) \\
+\(9999\) & \(0.00907928625\%\) & \(9998.999987\) & \(9999\) &
+\(10011.801492\) \\
+\(99999\) & \(0.000907928624\%\) & \(99998.999999\) & \(99999\) &
+\(100127.015052\) \\
+\(999999\) & \(0.0000907928624\%\) & \(999998.9999999\) & \(999999\) &
+\(1001279.150532\) \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. 結論}\label{ux7d50ux8ad6}
+
+半波長位相区間 \(\varphi\in[-\pi/2,\pi/2]\) 上の一定振幅奇数倍音和
+
+\[
+S_N(\varphi)=\sum_{m=0}^{(N-1)/2}\cos\!\big((2m+1)\varphi\big)
+\]
+
+について、次の各結果を得た。
+
+\textbf{(1) 孤立ピーク波の形成}
+
+\begin{itemize}
+\tightlist
+\item
+  \(S_N\) は中央に主ピーク \(S_N(0)=(N+1)/2\)
+  をもち両端で零となる「孤立ピーク波」である。
+\end{itemize}
+
+\textbf{(2) 二乗振幅の周期と基本領域}
+
+\begin{itemize}
+\tightlist
+\item
+  二乗振幅 \(I_N=|S_N|^2\) は周期 \(\pi\) をもち、半波長区間
+  \([-\pi/2,\pi/2]\) がその基本領域となる。
+\end{itemize}
+
+\textbf{(3) 余弦和}
+
+\begin{itemize}
+\tightlist
+\item
+  等差数列の余弦和の公式（式
+  (2.3)）より、\(S_N(\varphi)=\sin\!\big((N+1)\varphi\big)/(2\sin\varphi)\)。
+\end{itemize}
+
+\textbf{(4) 中央主ピーク近傍の規格化形}
+
+\begin{itemize}
+\tightlist
+\item
+  拡大変数 \(u=(N+1)\varphi\) を用いると、大 \(N\) において規格化振幅は
+  \(\widehat{S}_N(\varphi)\approx \sin u/u\)、規格化二乗振幅は
+  \(\widehat{I}_N(\varphi)\approx(\sin u/u)^2\) となる（式
+  (2.9)）。同時に、中央主ピークの横方向の幅は \(1/(N+1)\)
+  のスケールで縮小する。
+\end{itemize}
+
+\textbf{(5) 必要倍音次数の逆算式}
+
+\begin{itemize}
+\tightlist
+\item
+  目標の局在半幅 \(\Delta_k\) と許容レベル \(k\) から \(N\)
+  を解く（数値解代入法、式 (2.15)）。
+\end{itemize}
+
+以上はいずれも初等的なフーリエ和の性質であり、物理的解釈は与えない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+{[}1{]}
+高木貞治『解析概論』改訂第3版、岩波書店、1961年（フーリエ級数の章：三角級数、余弦和の閉じた形、ディリクレ核、矩形波の展開）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{付録A:
+スケール試算例（数値例。物理的主張ではない）}\label{ux4ed8ux9332a-ux30b9ux30b1ux30fcux30ebux8a66ux7b97ux4f8bux6570ux5024ux4f8bux7269ux7406ux7684ux4e3bux5f35ux3067ux306fux306aux3044}
+
+以下は、数値解代入法 \textbf{式 (2.15)}
+の到達範囲を示すための\textbf{数値例}にすぎない。特定の物理系や物理的対応を主張するものではない。
+
+半波長区間の全幅をある大きな長さ
+\(L\)（これを半波長とみなす）に対応させ、中央の孤立ピーク波を、任意の小さな長さスケールの例として便宜上用いるボーア半径
+\(a_0\approx5.29\times10^{-11}\,\mathrm{m}\)
+のオーダの半幅に絞ることを考える（ボーア半径は具体的な小スケールの一例にすぎず、特定の物理対象を指すものではない）。このとき、半波長区間（全幅
+\(\pi\)）が物理長 \(L\) に対応するので、規格化半幅は \(\Delta_k=a_0/L\)
+である。
+
+各行について、\(k=0.01\) と \(\Delta_k=a_0/L\) を式 (2.15) に代入して
+\(N_{\mathrm{cont}}^{(\mathrm{num})}\)
+を計算する。必要な最高奇数倍音次数を整数として出す場合も、(2.15)
+に従い、\(N_{\mathrm{cont}}^{(\mathrm{num})}\) 以上の最小の奇数
+\(N_{\min}^{(\mathrm{num})}\) を選ぶ。
+
+数値例（目標半幅 \(=a_0\)、\(k=1\%\)、式 (2.15) による計算）：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1579}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2105}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2105}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2105}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2105}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+半波長 \(L\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(L\) {[}m{]}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(L/a_0\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(\Delta_k=a_0/L\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(N_{\mathrm{cont}}^{(\mathrm{num})}\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(1\) 光年 & \(9.46\times10^{15}\) & \(1.79\times10^{26}\) &
+\(5.59\times10^{-27}\) & \(\sim 1.6\times10^{26}\) \\
+観測可能な宇宙の半径 & \(4.4\times10^{26}\) & \(8.3\times10^{36}\) &
+\(1.2\times10^{-37}\) & \(\sim 7.5\times10^{36}\) \\
+\(2000\) 億光年（\(2\times10^{11}\) 光年） & \(1.89\times10^{27}\) &
+\(3.58\times10^{37}\) & \(2.79\times10^{-38}\) &
+\(\sim 3.2\times10^{37}\) \\
+\end{longtable}
+}
+
+たとえば \(L=2000\) 億光年（\(2\times10^{11}\)
+光年。観測できない領域も含めた宇宙の大きさのイメージにすぎない）・目標半幅
+\(=\) ボーア半径・\(k=1\%\) では、規格化半幅は
+\(\Delta_k=a_0/L\approx2.79\times10^{-38}\) であり、式 (2.15) の連続値は
+\(N_{\mathrm{cont}}^{(\mathrm{num})}\approx3.2\times10^{37}\)
+となる。必要次数 \(N\) は半波長 \(L\) に比例し、目標半幅に反比例する。
+
+繰り返すが、本付録は与えられたスケール比に対する数値解代入法（式
+(2.15)）の算術的な適用例であって、物理的実在や物理過程を主張するものではない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{付録B:
+図の再現}\label{ux4ed8ux9332b-ux56f3ux306eux518dux73fe}
+
+図1は \texttt{figures/make\_odd\_harmonic\_figure.py}、図2は
+\texttt{figures/make\_odd\_harmonic\_scaling\_figure.py}
+により生成される（出力:
+\texttt{figures/fig01\_odd\_harmonic\_localization.png} /
+\texttt{.svg}、\texttt{figures/fig02\_odd\_harmonic\_scaling.png} /
+\texttt{.svg}）。いずれも半波長区間 \(\varphi\in[-\pi/2,\pi/2]\)（横軸
+\(100\%=180^\circ\)、\(\pm50\%\leftrightarrow\pm90^\circ\)）上で、振幅
+\(S_N\) を評価し二乗して最大値で \(1.0\)
+に規格化した量を描く。図2は横軸を \(N=99,\ 999,\ 9999\) に対して
+\(\pm10\%,\ \pm1\%,\ \pm0.1\%\)（\(\times 10\)
+ずつ）にとった三パネルである。各スクリプトは各 \(N\) について式 (2.1)
+の直接和と式 (2.3) の閉形式が機械精度（最大絶対差
+\(\lesssim 10^{-9}\)）で一致することを検証してから描画する。
+
+\end{document}

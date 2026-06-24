@@ -82,6 +82,46 @@ Linear Simplexification by Square-Quantity Readout and a Dimension-wise Organiza
 
 ---
 
+## 論文2：半波長位相区間における一定振幅奇数倍音和の孤立ピーク波とその局在性に関する観察（v0.3）
+
+An Observation on the Isolated Peak Wave of a Constant-Amplitude Odd-Harmonic Sum on a Half-Wavelength Phase Interval and Its Localization
+
+- **Concept DOI**: 10.5281/zenodo.20833096（外部参照用・最新版へ自動転送）
+- **Version DOI (v0.3, 最新)**: 10.5281/zenodo.20833097
+- **Zenodo deposit**: 20833097 / record https://zenodo.org/records/20833097
+- **公開日**: 2026-06-25
+- **ライセンス**: CC BY 4.0
+- **位置づけ**: 観察・整理論文。半波長区間 $[-\pi/2,\pi/2]$ 上で一定振幅の奇数倍音を余弦で重ね合わせると、中央に主ピークをもち両端で零となる「孤立ピーク波」が形成されること、その局在幅が $1/(N+1)$ で縮むこと、指定した局在幅から必要な最高倍音次数を逆算する式を、初等的なフーリエ和の性質として整理する。物理的解釈は与えない。
+
+### 収録ファイル
+
+- `paper_odd_harmonic_localization_ja_v0_1.md`（日本語）
+- `paper_odd_harmonic_localization_en_v0_1.md`（英語）
+- `paper_odd_harmonic_localization_ja_v0_1.tex` / `.pdf`（日本語）
+- `paper_odd_harmonic_localization_en_v0_1.tex` / `.pdf`（英語）
+- 図2点（PNG/SVG、英語ラベル）
+  - `figures/fig01_odd_harmonic_localization.{png,svg}`（孤立ピーク波）
+  - `figures/fig02_odd_harmonic_scaling.{png,svg}`（局在幅の $1/(N+1)$ スケーリング）
+- 作図スクリプト `figures/make_odd_harmonic_figure.py` / `figures/make_odd_harmonic_scaling_figure.py`
+
+### 内容
+
+- 一定振幅奇数倍音和 $S_N(\varphi)=\sum_{m=0}^{(N-1)/2}\cos((2m+1)\varphi)$ を定義し、等差数列の余弦和の公式から閉形式 $S_N(\varphi)=\sin((N+1)\varphi)/(2\sin\varphi)$ を独立に導出（ディリクレ核を前提としない）。
+- 拡大変数 $u=(N+1)\varphi$ を固定して中央主ピーク近傍を見ると、ピーク値で規格化した形が $N$ によらない普遍関数 $\sin u/u$ に近づくことを段階的に導出（分母 $2\sin\varphi$ が $2\sin(u/(N+1))$ へ書き換わり、小角展開とピーク値規格化で $N$ 依存が相殺する筋を明示）。
+- 規格化二乗振幅 $\widehat{I}_N\approx(\sin u/u)^2$、中央主ピークの横幅が $1/(N+1)$ で縮小。
+- $k$-局在半幅 $\Delta_k$ と許容レベル $k$ から必要な最高奇数倍音次数を逆算する数値解代入法と近似閉形式 $u_k\approx\pi/(1+\sqrt{k})$ を提示。
+- 付録Aはスケール比の算術例にすぎず、物理的実在・物理過程を主張しない（ボーア半径は任意の小スケールの一例）。
+
+### 改訂履歴
+
+- **v0.3 (2026-06-24 整理 → 2026-06-25 公開)**: §2.3 を新設し閉形式から $\sin u/u$ 近似への導出を $u=(N+1)\varphi$ 固定の極限として補強。用語を「中央主ピーク」に統一、孤立ピーク波の定義文を追加、局在幅を $1/(N+1)$ に整合、式番号を (2.1)–(2.16) の正規連番に振り直し。図1（孤立ピーク波）の本文埋め込みを追加。
+
+### Zenn 記事
+
+- [odd-harmonic-localization](https://zenn.dev/noriaki_kihara/articles/odd-harmonic-localization)
+
+---
+
 ## 研究記録
 
 初期の思考実験・分割ログ・査読応答は、研究過程のタイムスタンプとして同フォルダに保存している。正式論文の主張範囲は `paper_square_quantity_readout_ja_v0_1.md` / `paper_square_quantity_readout_en_v0_1.md` を正とする。
