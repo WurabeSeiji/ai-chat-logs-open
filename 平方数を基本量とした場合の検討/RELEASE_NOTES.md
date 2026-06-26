@@ -123,6 +123,41 @@ An Observation on the Isolated Peak Wave of a Constant-Amplitude Odd-Harmonic Su
 
 ---
 
+## 論文3：半波長奇数倍音孤立ピーク波の二コピー共通相対位相重ね合わせにおける波形不変性とコントラスト則の観察（v0.1）
+
+Waveform Invariance and a Contrast Law for the Two-Copy Common-Relative-Phase Superposition of a Half-Wavelength Odd-Harmonic Isolated Peak Wave
+
+- **Concept DOI**: 10.5281/zenodo.20923461（外部参照用・最新版へ自動転送）
+- **Version DOI (v0.1, 最新)**: 10.5281/zenodo.20923462
+- **Zenodo deposit**: 20923462 / record https://zenodo.org/records/20923462
+- **公開日**: 2026-06-26
+- **ライセンス**: CC BY 4.0
+- **位置づけ**: 観察・整理論文。論文2の孤立ピーク波 $S_N$ の二つのコピーに、全倍音へ共通の相対位相 $\pm\alpha$ を与えて重ね合わせると、波積の三角恒等式から $\psi_\alpha=2\cos\alpha\cdot S_N$、$I_\alpha=4\cos^2\alpha\cdot I_N$ が厳密に成り立つ。これより (i) 規格化波形は相対位相に不変（単一コピーと一致）、(ii) 相対位相は二乗振幅を $\cos^2\alpha$ 倍するコントラスト因子としてのみ現れる、の二点を初等的なフーリエ和と三角恒等式の観察として記録する。物理的解釈は与えない。
+
+### 収録ファイル
+
+- `paper_relative_phase_contrast_ja_v0_1.md`（日本語）
+- `paper_relative_phase_contrast_en_v0_1.md`（英語）
+- `paper_relative_phase_contrast_ja_v0_1.tex` / `.pdf`（日本語）
+- `paper_relative_phase_contrast_en_v0_1.tex` / `.pdf`（英語）
+- 図2点（PNG、英語ラベル）
+  - `coherent_self_interference_odd_modes.png`（奇数倍音と孤立ピーク波への合成）
+  - `two_source_coherent_interference_corrected_v4_hires.png`（二コピー重ね合わせ、規格化波形が単一コピーと一致）
+
+### 内容
+
+- 二コピー重ね合わせ $\psi_\alpha=\sum[\cos((2m+1)\varphi-\alpha)+\cos((2m+1)\varphi+\alpha)]$ に和積の恒等式 $\cos(n\varphi-\alpha)+\cos(n\varphi+\alpha)=2\cos(n\varphi)\cos\alpha$ を適用し、$\psi_\alpha=2\cos\alpha\cdot S_N$ を厳密に導出。
+- 波形不変性：規格化波形 $\widehat{I}_\alpha=\widehat{I}_N$ は相対位相に依存せず、形・両端 $\pm\pi/2$ の零・主ピーク近傍の局在幅が不変。
+- コントラスト則：ピーク二乗振幅 $I_\alpha(0)=(N+1)^2\cos^2\alpha$、同相基準で比 $\cos^2\alpha$。$\alpha=0$ で最大、$\alpha=\pi/2$ で零。
+- 具体例（$N=9$、$\alpha=15^\circ$）：$I_0(0)=100$、$I_\alpha(0)\approx 93.30$、$\cos^2 15^\circ\approx 0.9330$。
+- 自己引用なし。外部引用は高木『解析概論』1件のみ。
+
+### Zenn 記事
+
+- [relative-phase-waveform-invariance](https://zenn.dev/noriaki_kihara/articles/relative-phase-waveform-invariance)
+
+---
+
 ## 研究記録
 
 初期の思考実験・分割ログ・査読応答は、研究過程のタイムスタンプとして同フォルダに保存している。正式論文の主張範囲は `paper_square_quantity_readout_ja_v0_1.md` / `paper_square_quantity_readout_en_v0_1.md` を正とする。
