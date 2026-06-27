@@ -4,6 +4,9 @@
 （査読対話ノート由来。本稿は確立物理の主張ではなく、数学的観察に一前提を加えたときの厳密な帰結の整理である。）
 
 バージョン v0.1（2026-06-27）
+DOI (Version): 10.5281/zenodo.20965527
+DOI (Concept): 10.5281/zenodo.20965526
+Zenodo: https://zenodo.org/records/20965527
 
 ---
 
@@ -241,7 +244,7 @@ $\psi_{\rm base}$ が複素なら畳み込み結果も複素となり、二乗�
 ## 付録 A:核の恒等式の `sympy` 出力
 
 ```
-I_m(phi0) = ∫_{-π/2}^{π/2} cos((2m+1)(phi0−phi)) cos(phi) dphi
+I_m(phi0) = int_{-pi/2}^{pi/2} cos((2m+1)(phi0-phi)) cos(phi) dphi
   m=0:  pi*cos(phi0)/2
   m=1:  0
   m=2:  0
@@ -271,7 +274,7 @@ python3 born_fig.py                    # 図3 (born_from_localization.png/svg, 4
 ## 参考文献
 
 [1] M. Born, "Zur Quantenmechanik der Stoßvorgänge," *Z. Phys.* **37**, 863 (1926).
-[2] 木原 範昭, 「半波長位相区間における一定振幅奇数倍音和の孤立ピーク波」, Zenodo, v0.4 (2026-06-25), DOI: 10.5281/zenodo.20833097.
+[2] 木原 範昭, 「半波長位相区間における一定振幅奇数倍音和の孤立ピーク波とその局在性に関する観察」, Zenodo, v0.4 (2026-06-25), Concept DOI: 10.5281/zenodo.20833096.
 [3] A. M. Gleason, "Measures on the closed subspaces of a Hilbert space," *J. Math. Mech.* **6**, 885 (1957).
 [4] W. H. Zurek, "Probabilities from entanglement, Born's rule $p_k=|\psi_k|^2$ from envariance," *Phys. Rev. A* **71**, 052105 (2005).
 [5] D. Bohm, "A Suggested Interpretation of the Quantum Theory in Terms of 'Hidden' Variables. I, II," *Phys. Rev.* **85**, 166, 180 (1952).

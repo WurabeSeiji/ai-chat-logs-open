@@ -158,6 +158,48 @@ Waveform Invariance and a Contrast Law for the Two-Copy Common-Relative-Phase Su
 
 ---
 
+## 論文4：局在奇数倍音波の再生核性によるボルン分布の形の導出（v0.1）
+
+Deriving the Form of the Born Distribution from the Reproducing-Kernel Property of a Localized Odd-Harmonic Wave: Reducing the Remaining Postulates to the Squaring Rule and Randomness
+
+- **Concept DOI**: 10.5281/zenodo.20965526（外部参照用・最新版へ自動転送）
+- **Version DOI (v0.1, 最新)**: 10.5281/zenodo.20965527
+- **Zenodo deposit**: 20965527 / record https://zenodo.org/records/20965527
+- **公開日**: 2026-06-27
+- **ライセンス**: CC BY 4.0
+- **自己参照**: 論文2「半波長位相区間における一定振幅奇数倍音和の孤立ピーク波とその局在性に関する観察」（Concept DOI 10.5281/zenodo.20833096）を `isSupplementTo` で参照
+- **位置づけ**: 観察・整理論文。論文2の孤立ピーク波 $S_N$ を「観測の局在核」とみなし、(i) 観測＝局在核による位相差畳み込み＋二乗、(ii) 有限 $N$ 打ち切り、の二前提を置くと、$S_N$ の切り詰め再生核性により観測分布の**形**がベース波の $|\psi_{\rm base}|^2$（ボルン分布）に厳密一致することを示す。導出するのは「形」のみで、二乗則（振幅→確率）・確率解釈・ランダム性の起源は公準として残す。「ボルン則の導出」「測定問題の解決」は主張しない。
+
+### 収録ファイル（claude/ サブフォルダ）
+
+- `paper_born_from_localization_ja_v0_1.md` / `.tex` / `.pdf`（日本語、11 ページ）
+- `paper_born_from_localization_en_v0_1.md` / `.tex` / `.pdf`（英語、13 ページ）
+- 検証コード `born_from_localization.py`（sympy 記号＋数値＋複素拡張＋否定対照、機械精度再現）
+- 図3点（PNG/SVG、英語ラベル）＋作図スクリプト
+  - 図1 核の性質 `born_localization_kernel.{png,svg}`（`born_fig2.py`）
+  - 図2 機構 `born_mechanism.{png,svg}`（`born_mechanism.py`）
+  - 図3 再生の検証（4パネル）`born_from_localization.{png,svg}`（`born_fig.py`）
+- 査読対話ノート `instruction_paper_born_claudecode.md` / `born_from_localization_review_iris.md` / `questions_to_claudeai_born_paper.md` / `answers_q1_q6_iris.md`
+
+### 内容
+
+- 区間 $[-\pi/2,\pi/2]$ 上で奇数倍音余弦が直交することから、$S_N=\sum_{m}\cos((2m+1)\varphi)$ は係数 1 の**切り詰め再生核**（ディリクレ核／RKHS の古典的事実）。新規性は恒等式ではなく〈論文2の物理的局在波＝再生核＝観測モデル〉という**写像**にある。
+- 核の恒等式 $\int_{-\pi/2}^{\pi/2}\cos((2m+1)(\varphi_0-\varphi))\cos\varphi\,d\varphi=\frac{\pi}{2}\cos\varphi_0\,\delta_{m,0}$ から、$(S_N*\cos)(\varphi_0)=\frac{\pi}{2}\cos\varphi_0$、二乗で $\frac{\pi^2}{4}\cos^2\varphi_0$ が全奇 $N$ で厳密（端効果なし・境界含め点ごとに厳密）。
+- 複素拡張：シフト核は複素奇数倍音基底の再生核で $(S_N*e^{ik\cdot})(\varphi_0)=\frac{\pi}{2}e^{ik\varphi_0}$。複素ベースで $|Z|^2=\mathrm{Re}^2+\mathrm{Im}^2$ の**真のモジュラス**（$\ne Z^2$）に到達。
+- 否定対照：包絡読みは $1/\sin^2$ 発散・非可積分で確率になりえない。射影＋二乗が一意の操作化。
+- 循環性への回答（§3.1）：歪まないのは等振幅のとき**だけ**（一般核は $c_m\to a_mc_m$ と歪む）。恒等写像は仮定でなく論文2の物理的局在波が再生核に一致するという事実の帰結。残す公準は二乗のべきのみ。
+- Gleason／Zurek／決定理論的導出（二乗則そのものを導く）との対比で射程を明確化。
+
+### 改訂履歴
+
+- **v0.1 (2026-06-27)**: 初版公開。Claude Code 査読（ディリクレ核/RKHS の位置づけ明示、循環性への正面回答 §3.1、「フラクタル」→「局在核」、抄録の射程下方修正＋バンド条件明記）と機構図（図2）追加を反映。日英 md/tex/pdf＋検証コード＋図3点を Zenodo に収録（計13ファイル）。
+
+### Zenn 記事
+
+- [born-form-from-localized-kernel](https://zenn.dev/noriaki_kihara/articles/born-form-from-localized-kernel)
+
+---
+
 ## 研究記録
 
 初期の思考実験・分割ログ・査読応答は、研究過程のタイムスタンプとして同フォルダに保存している。正式論文の主張範囲は `paper_square_quantity_readout_ja_v0_1.md` / `paper_square_quantity_readout_en_v0_1.md` を正とする。
