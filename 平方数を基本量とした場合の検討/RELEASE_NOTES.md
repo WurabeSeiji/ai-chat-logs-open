@@ -200,6 +200,45 @@ Deriving the Form of the Born Distribution from the Reproducing-Kernel Property 
 
 ---
 
+## 論文5：観測者–系ビートの等分布によるボルン統計の創発（予想論文、v0.2）
+
+Emergence of Born Statistics from the Equidistribution of the Observer–System Beat: A Conjecture on the Localized-Kernel Model
+
+- **Concept DOI**: 10.5281/zenodo.20967081（外部参照用・最新版へ自動転送）
+- **Version DOI (v0.2, 最新)**: 10.5281/zenodo.20967082
+- **Zenodo deposit**: 20967082 / record https://zenodo.org/records/20967082
+- **公開日**: 2026-06-27
+- **ライセンス**: CC BY 4.0
+- **自己参照**: 論文4「局在奇数倍音波の再生核性によるボルン分布の形の導出」（Concept DOI 10.5281/zenodo.20965526）を `isSupplementTo` で参照
+- **性格**: **予想（予言）論文**（証明論文でも観察論文でもない）。論文4が公準として残した「ランダム性の起源」に対する機構の候補を提示。二者査読（アイリス＋Claude Code）を経て v0.2。
+- **位置づけ**: 走査変数 $\varphi_0$ は観測器の位相であり、観測器が有限振動数 $\psi$ をもつ物理対象ゆえ絶対参照が存在しない（主観空間の前提）。測定列は相対位相（ビート）$(\nu-\psi)t$ を走査し、無理比のとき等分布する（Weyl）。**(I) 条件付き証明済みの核**＝再生核性（論文4）＋ Weyl 等分布で位置分解強度プロファイルの形が $|\psi_{\rm base}|^2$ に一致（等分布の仮定 O1 の下で）。**(II) 予想の橋**＝強度→単発クリック確率（閾値検出に委ね導出しない）。「ボルン則の導出」「測定問題の解決」は主張しない。
+
+### 収録ファイル（claude/ サブフォルダ）
+
+- `paper_born_beat_conjecture_ja_v0_2.md` / `.tex` / `.pdf`（日本語、10 ページ）
+- `paper_born_beat_conjecture_en_v0_2.md` / `.tex` / `.pdf`（英語、12 ページ）
+- `paper_born_beat_conjecture_ja_v0_1.md`（初稿、研究過程の記録）
+- 検証コード `born_beat_conjecture.py`（Weyl 等分布／再生核の実畳み込み両ケース／役割分離(D)／反証バッテリー(E)、機械精度）
+
+### 内容
+
+- **役割分担の三分離**：等分布（Weyl）＝一様測度の供給（偏りなし）／$|\psi|^2$ の形＝再生核の決定論的読み／強度→クリック＝橋（予想）。「Weyl だけで二乗の偏りが出る」という混同を排除（§5(D) で数値裏取り：等分布した $\varphi_0$ のヒストグラムは平坦 $1.0\times10^{-5}$）。
+- **両ケース厳密導出**：局在入力 → 尖った出力／広がり入力 $\cos\varphi$ → 広がった出力 $\cos^2$ が同一再生核から出る（出力差＝入力差のみ）。実畳み込みで機械精度確認（$\le1.8\times10^{-15}$）、バンド条件（cos 全N／多モード N≥5）も明示。
+- **反証バッテリー（§5 E）**：広がり入力が尖らない・局在入力が尖る・Weyl 単独は平坦・両ケースは同一恒等式、の四条件をすべてクリア（整合性の積極的証拠）。
+- **先行研究の交点**：Khrennikov PCSFT ＋ 閾値検出（系譜A）／任意関数の方法 Poincaré–Feintzeig（系譜B）。固有の寄与＝等分布する高速変数のヘテロダイン同定＋再生核による形の厳密性。
+- **反証可能な予言**：有限 $N$（離散格子）での $O(1/N)\sim\ell/R$ 補正＝ボルン則からの測定可能な逸脱。
+- §5(D) の橋 MC は橋を**仮定した整合性デモ**であって導出・検証ではないことを明示し、核（証明済み）vs 橋（予想）の地位分離を維持。
+
+### 改訂履歴
+
+- **v0.2 (2026-06-27)**: 二者査読反映で初版公開。両ケース導出・§3(I) 役割分担の書き直し・反証バッテリー・バンド条件・「条件付き証明済み」統一・fd 自己引用削除・文献検証（arXiv:2409.16457「Lynnx」は単名表記と確認）・§5(D) 橋MCの地位明示。日英 md/tex/pdf＋検証コードを Zenodo に収録（計7ファイル）。
+
+### Zenn 記事
+
+- [born-beat-conjecture](https://zenn.dev/noriaki_kihara/articles/born-beat-conjecture)
+
+---
+
 ## 研究記録
 
 初期の思考実験・分割ログ・査読応答は、研究過程のタイムスタンプとして同フォルダに保存している。正式論文の主張範囲は `paper_square_quantity_readout_ja_v0_1.md` / `paper_square_quantity_readout_en_v0_1.md` を正とする。
