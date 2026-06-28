@@ -4,7 +4,6 @@
 \documentclass[
 ]{ltjsarticle}
 \usepackage{xcolor}
-\usepackage[margin=20mm]{geometry}
 \usepackage{amsmath,amssymb}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usepackage{iftex}
@@ -66,6 +65,22 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{newunicodechar}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{⟨}{\ensuremath{\langle}}
+\newunicodechar{⟩}{\ensuremath{\rangle}}
+\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
+\newunicodechar{⟹}{\ensuremath{\Longrightarrow}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{∼}{\ensuremath{\sim}}
+\newunicodechar{≤}{\ensuremath{\le}}
+\newunicodechar{≥}{\ensuremath{\ge}}
+\newunicodechar{≠}{\ensuremath{\ne}}
+\newunicodechar{∫}{\ensuremath{\int}}
+\newunicodechar{−}{\ensuremath{-}}
+\newunicodechar{✗}{\ensuremath{\times}}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
@@ -86,13 +101,18 @@
 で実質的に最高倍音次数の逆数）で縮小する。指定した局在幅から必要な最高倍音次数を逆算する式も与える。
 
 \textbf{著者}: 木原範昭 (Noriaki Kihara)\\
-\textbf{版}: v0.4\\
-\textbf{日付}: 2026-06-25\\
-\textbf{DOI}: Version 10.5281/zenodo.20834424（本版）/ Concept
+\textbf{版}: v0.5\\
+\textbf{日付}: 2026-06-28\\
+\textbf{DOI}: Version 10.5281/zenodo.20981890（本版 v0.5）/ Concept
 10.5281/zenodo.20833096（外部参照用・最新版へ自動転送）\\
-\textbf{Zenodo}: https://zenodo.org/records/20834424\\
+\textbf{Zenodo}: https://zenodo.org/records/20981890\\
 \textbf{位置づけ}:
-観察・整理論文としての初稿。半波長の位相区間上で一定振幅の奇数倍音を重ね合わせると、中央に主ピークをもつ波形（本稿で「孤立ピーク波」と呼ぶ）が形成されることを、初等的なフーリエ和の性質として記録する。物理法則の導出や観測事実の主張は行わず、特定の物理的解釈も与えない。
+観察・整理論文としての初稿。半波長の位相区間上で一定振幅の奇数倍音を重ね合わせると、中央に主ピークをもつ波形（本稿で「孤立ピーク波」と呼ぶ）が形成されることを、初等的なフーリエ和の性質として記録する。物理法則の導出や観測事実の主張は行わず、特定の物理的解釈も与えない。\\
+\textbf{改訂 (v0.5, 2026-06-28)}: スケール不変性の注記（§2.5）と結論 (6)
+を追加し、\(\nu=1,\ \lambda=1\)
+が相対正規化（絶対スケールを想定しない）であること、奇数倍音は波形を変えるのみで基本振動数
+\(\nu=1\)・基本波長 \(\lambda=1\)
+を変えないことを明示した。主張・数式・既存結果は不変（観察の明文化のみ）。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -462,6 +482,24 @@ N_{\mathrm{cont}}^{(\mathrm{app})}(\Delta_k,k)
 が大きいほど解消する）。近似閉形式 (2.16) は一貫して約 \(1.19\)
 倍（\(+19\%\)）大きく、安全側に振れている。
 
+\subsubsection{2.5
+正規化とスケール不変性（注記）}\label{ux6b63ux898fux5316ux3068ux30b9ux30b1ux30fcux30ebux4e0dux5909ux6027ux6ce8ux8a18}
+
+本稿の波 \(S_N(\varphi)\) は無次元の位相変数 \(\varphi\)
+のみで定義され、次元をもつ定数を含まない。したがって振動数・波長は絶対的な大きさをもたず、\(\nu=1,\ \lambda=1\)
+は基準として選んだ相対的な正規化（ゲージ）にすぎない。奇数倍音
+\(\nu=3,5,\dots,N\)（対応する波長
+\(\lambda=1/3,1/5,\dots\)）は、この基準 \(\nu=1\)
+に対する整数比として導入される。これら高次倍音は中央主ピークの\textbf{形状}（\(\lambda=1\)
+に対する相対的な局在の鋭さ
+\(1/(N+1)\)）を変えるだけであり、波そのものの基本振動数
+\(\nu=1\)・基本波長 \(\lambda=1\)
+は変わらない。実際、奇数倍音はすべて基本 \(\nu=1\)
+の整数倍であり、\(\gcd(1,3,\dots,N)=1\) ゆえ合成波の基本周期は \(\nu=1\)
+のそれと一致する（結論(2)
+の周期構造の言い換えにすぎない）。以降の量はすべてこの相対正規化のもとで述べ、特定の絶対スケールを想定しない。\(\nu,\lambda\)
+がスケール不変であることは、式に次元定数が現れないことから直ちに従う観察であって、証明を要する命題ではない。
+
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{3. 結論}\label{ux7d50ux8ad6}
@@ -527,6 +565,18 @@ S_N(\varphi)=\sum_{m=0}^{(N-1)/2}\cos\!\big((2m+1)\varphi\big)
   (2.15)）。包絡線上界 \(u_k^{\mathrm{out}}\lesssim1/\sqrt{k}\)
   による安全側の近似閉形式 \(N\approx1/(\pi\sqrt{k}\,\Delta_k)-1\)（式
   (2.16)）も与える。
+\end{itemize}
+
+\textbf{(6) 正規化とスケール不変性}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\nu=1,\ \lambda=1\)
+  は相対正規化（ゲージ）であり絶対スケールを想定しない。奇数倍音は中央主ピークの形状（\(\lambda=1\)
+  に対する相対的な局在の鋭さ
+  \(1/(N+1)\)）を変えるのみで、波そのものの基本振動数
+  \(\nu=1\)・基本波長 \(\lambda=1\) を変えない（§2.5）。
 \end{itemize}
 
 以上はいずれも初等的なフーリエ和の性質であり、物理的解釈は与えない。

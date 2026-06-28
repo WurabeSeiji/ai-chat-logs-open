@@ -3,11 +3,12 @@
 **Subtitle**: Taking the fundamental domain to be the half-wavelength $[-\pi/2,\pi/2]$, the constant-amplitude odd-harmonic sum becomes an isolated peak wave with a peak at the center, and the localization width of its squared amplitude shrinks as $1/(N+1)$ (the reciprocal of the highest odd-harmonic order $N$ plus one; for large $N$, essentially the reciprocal of the highest harmonic order). A formula for the required highest harmonic order, inverted from a prescribed localization width, is also given.
 
 **Author**: Noriaki Kihara  
-**Version**: v0.4  
-**Date**: 2026-06-25  
-**DOI**: Version 10.5281/zenodo.20834424 (this version) / Concept 10.5281/zenodo.20833096 (cite this; always resolves to the latest version)  
-**Zenodo**: https://zenodo.org/records/20834424  
-**Position**: First draft as an observational and organizing paper. It records, as an elementary property of Fourier sums, that superposing constant-amplitude odd harmonics on a half-wavelength phase interval produces a waveform with a peak at the center (here called an "isolated peak wave"). It does not derive physical laws, assert observational facts, or give any particular physical interpretation.
+**Version**: v0.5  
+**Date**: 2026-06-28  
+**DOI**: Version 10.5281/zenodo.20981890 (this version, v0.5) / Concept 10.5281/zenodo.20833096 (cite this; always resolves to the latest version)  
+**Zenodo**: https://zenodo.org/records/20981890  
+**Position**: First draft as an observational and organizing paper. It records, as an elementary property of Fourier sums, that superposing constant-amplitude odd harmonics on a half-wavelength phase interval produces a waveform with a peak at the center (here called an "isolated peak wave"). It does not derive physical laws, assert observational facts, or give any particular physical interpretation.  
+**Revision (v0.5, 2026-06-28)**: Added a remark on scale invariance (§2.5) and conclusion (6), making explicit that $\nu=1,\ \lambda=1$ is a relative normalization (no absolute scale is assumed) and that the odd harmonics only change the waveform, leaving the wave's fundamental frequency $\nu=1$ and fundamental wavelength $\lambda=1$ unchanged. Claims, equations, and existing results are unchanged (an explicit statement of the observation only).
 
 ---
 
@@ -237,6 +238,10 @@ Adding $N=99999,\ 999999$ to the $N=99,\ 999,\ 9999$ used in Figures 1 and 2, an
 
 The numerical-substitution method (2.15) recovers the original $N$ almost exactly (the slight undershoot at $N=99$ is because the last crossing lies outside the main lobe, where $\varphi$ is larger, so the small-angle error of the $\sin u/u$ approximation is larger than for the main-lobe half-width; it disappears as $N$ grows). The approximate closed form (2.16) is consistently about $1.19\times$ ($+19\%$) larger, i.e. on the safe side.
 
+### 2.5 Normalization and scale invariance (remark)
+
+The wave $S_N(\varphi)$ of this paper is defined solely in terms of the dimensionless phase variable $\varphi$ and contains no dimensional constant. Hence frequency and wavelength have no absolute magnitude: $\nu=1,\ \lambda=1$ is merely a relative normalization (gauge) chosen as the reference. The odd harmonics $\nu=3,5,\dots,N$ (with corresponding wavelengths $\lambda=1/3,1/5,\dots$) are introduced as integer ratios relative to this reference $\nu=1$. These higher harmonics only change the **shape** of the central main peak (the localization sharpness $1/(N+1)$ relative to $\lambda=1$); the wave's own fundamental frequency $\nu=1$ and fundamental wavelength $\lambda=1$ are unchanged. Indeed, all odd harmonics are integer multiples of the fundamental $\nu=1$, and since $\gcd(1,3,\dots,N)=1$ the fundamental period of the composite wave coincides with that of $\nu=1$ (merely a restatement of the period structure of Conclusion (2)). All quantities hereafter are stated under this relative normalization, assuming no particular absolute scale. That $\nu,\lambda$ are scale-invariant follows immediately from the absence of any dimensional constant in the formulas; it is an observation, not a proposition requiring proof.
+
 
 ---
 
@@ -269,6 +274,10 @@ we obtained the following results.
 **(5) Inverse formula for the required harmonic order**
 
 - Solve for $N$ from a target localization half-width $\Delta_k$ (the **last crossing** beyond which $k$ is never exceeded again — the outer edge where the sidelobe envelope finally falls to $k$, lying outside the main-lobe half-width) and tolerance level $k$. The characteristic value is the last crossing $u_k^{\mathrm{out}}$ (the largest root of $(\sin u/u)^2=k$), with $N=u_k^{\mathrm{out}}/(\pi\Delta_k)-1$ (numerical-substitution method, Eq. (2.15)). A conservative approximate closed form $N\approx1/(\pi\sqrt{k}\,\Delta_k)-1$ from the envelope upper bound $u_k^{\mathrm{out}}\lesssim1/\sqrt{k}$ (Eq. (2.16)) is also given.
+
+**(6) Normalization and scale invariance**
+
+- $\nu=1,\ \lambda=1$ is a relative normalization (gauge) and assumes no absolute scale. The odd harmonics only change the shape of the central main peak (the relative localization sharpness $1/(N+1)$); they do not change the wave's own fundamental frequency $\nu=1$ or fundamental wavelength $\lambda=1$ (§2.5).
 
 All of these are elementary properties of Fourier sums, and no physical interpretation is given.
 
