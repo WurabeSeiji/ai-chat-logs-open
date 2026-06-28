@@ -1,0 +1,152 @@
+# A Survey of Related Prior Work for the Observer–System Beat Conjecture — Its Relation to Prior Programs and the Locus of the Testable Regime (Supplement)
+
+**Subtitle**: A record of a post-publication literature survey. Related prior work that may be relevant is cited only where necessary; the connection to the preceding paper is left as future work.
+
+**Noriaki Kihara**
+(This is a **supplement** to the preceding paper [1]. It is not a claim of established physics and contains no new derivation or physical claim. After the publication of [1], we surveyed prior work that may be related to its mechanism, and this records the result. Whether the cited works connect logically to the conjecture of [1] is undetermined and is **future work**. This supplement does not claim that they support the conjecture of [1]; it cites only the necessary parts within the range where relevance is plausible, and organizes the possible relations.)
+
+Version v0.1 (2026-06-28)
+DOI (Version): 10.5281/zenodo.20985750 (this version, v0.1)
+DOI (Concept): 10.5281/zenodo.20985749 (for external reference; auto-redirects to the latest version)
+Zenodo: https://zenodo.org/records/20985750
+
+---
+
+## Abstract
+
+The preceding paper [1] (hereafter "the beat conjecture") proposed, as a candidate mechanism for the "origin of randomness" left as a postulate by the localized-kernel paper [2], that the observer–system relative phase (beat/heterodyne) equidistributes (Weyl) when the frequency ratio is irrational; combined with the reproducing-kernel property, the shape of the position-resolved intensity profile coincides with $|\psi_{\rm base}|^2$ (the core), distinguished from the transition from intensity to single clicks (the bridge). In v0.4 the preceding paper does **not** claim the finite-$N$ $O(1/N)$ correction as a measurable deviation; it positions the beat mechanism as one facet of indeterminacy and adopts the hypothesis that a more fundamental indeterminacy may prevent the very realization of a fully coherent (strictly integer-ratio) observation — such a mechanism may exist (its existence is not asserted) — so that, if it does, the Born rule of standard physics holds **more strongly** [1].
+
+This supplement records a literature survey carried out after the publication of the beat conjecture. There are two conclusions. First, **no prior work that proposes, tests, or observes the central mechanism of the beat conjecture (the emergence of Born statistics from the system–observer frequency beat plus irrational-ratio Weyl equidistribution, and a Born-rule deviation in the coherent/commensurate regime) in the same form was found within the scope surveyed**. Second, there nonetheless exist several prior programs that may **share the problem-consciousness** "to derive the Born rule from a deterministic substrate and threshold detection as an emergent/approximate rule," and the beat conjecture may be related to them. This supplement organizes these into (1) prior programs that may share the problem-consciousness and (2) work of a different direction, and additionally records that the precision-spectroscopy (atomic-clock) domain that could test the beat conjecture has not, within the range surveyed, performed the discriminating measurement (a measurement of single-shot projection statistics as a function of the commensurability of the relative phase). None of the citations claims identity of mechanism.
+
+---
+
+## 1. Introduction: motivation and place of this supplement
+
+The beat conjecture [1] is a conjecture (prediction) paper, not a claim of established physics. After its publication, in order to locate it accurately within the lineages of existing research, we surveyed prior work that may be related.
+
+This work has two purposes. First, to secure honesty: presenting a new framework without grounding it in the existing literature would mislead the scope of the claim. Second, to carve out the originality of the conjecture (if any) accurately, as a difference from the known lineages.
+
+This supplement merely records the result of the survey and does **not** claim the following.
+
+- It does not claim that the cited prior work supports the beat conjecture.
+- It does not claim that the cited prior work is the same mechanism as the beat conjecture.
+- It does not claim that any experiment has tested the beat conjecture.
+
+Citations are limited to the necessary parts where relevance is plausible. For works already cited by [1] (such as [6][8]), the content is re-checked in this supplement and the possible relation to the conjecture is re-organized.
+
+---
+
+## 2. Method and scope of the survey
+
+The survey centered on four areas: (i) foundational attempts to derive the Born rule from a deterministic substrate, classical fields, and threshold detection; (ii) tests of the Born rule using a coherent local oscillator; (iii) the behavior of quantum projection noise (QPN) near the lock point in atomic clocks and the presence/absence of non-entanglement sub-QPN anomalies; and (iv) the application of the method of arbitrary functions to the Born rule. Each candidate work was checked against the primary source (published version or arXiv original).
+
+This survey is not exhaustive. A finite number of works were checked, and the conclusion "no such prior work exists" is a statement about the range surveyed, not a proof of absence across the whole literature.
+
+---
+
+## 3. Prior programs that may be related (same problem-consciousness)
+
+There exist several programs that seek to derive the Born rule, not as a basic postulate, but as an emergent/approximate rule from a deeper deterministic layer and the detection process. These may **share the problem-consciousness** with the beat conjecture. On the other hand, whether the elements of the beat conjecture — the beat, irrational-ratio equidistribution, and a commensurability-dependent deviation — connect to these as a mechanism is, at present, undetermined and is future work.
+
+### 3.1 Emergence of the Born rule from classical fields + threshold detection (La Cour–Williamson)
+
+La Cour and Williamson [3] (*Quantum* 4, 350, 2020) showed, in the context of quantum optics, that several phenomena thought to be quantum can be reproduced using only classical fields, a deterministic detection model of "intensity threshold detectors," and a QED vacuum assumed real (not virtual). The picture is that the quantum–classical boundary is reproduced simply by applying standard conventions of data analysis to discrete detection events.
+
+The problem-consciousness (the emergence of the Born rule from a deterministic substrate + threshold detection) may be close to the beat conjecture. Whether the conjecture's logic of identifying the origin of randomness with the observer–system frequency beat connects to this work is not judged in this supplement and is left as future work.
+
+### 3.2 Prequantum classical statistical field theory (PCSFT, Khrennikov)
+
+Khrennikov's prequantum classical statistical field theory (PCSFT) [4] (*Phys. Lett. A* 372, 6588, 2008; related: [5]) regards quantum particles as symbolic representations of "prequantum random fields," and claims that the probabilities arising when classical random fields interact with threshold detectors agree with the Born rule **only approximately**. The Born rule emerges from PCSFT as an approximate theory, and as a consequence a **deviation from the Born rule is predicted**.
+
+PCSFT is a framework already cited by the beat conjecture [1] as lineage A ([1] §6.1), and may be closest in spirit to this conjecture in regarding "the Born rule as an approximation to a deterministic substrate, with a predicted deviation." Two points are added. First, whether the deviation predicted by PCSFT connects to the beat conjecture in a form dependent on the observer–system phase coherence or commensurability is, at present, undetermined and is future work. Second, since the early triple-slit experiments that Khrennikov referenced in [4] as corroboration of the deviation, high-precision Sorkin-type tests have detected no significant deviation from the Born rule (see §4.1). That is, the central prediction of PCSFT is at present not experimentally confirmed, and this supplement does not treat it as supporting evidence.
+
+### 3.3 The method of arbitrary functions (Feintzeig et al.)
+
+Bonds, Burson, Feintzeig et al. [6] (arXiv:2409.16457, 2024) applied the "method of arbitrary functions" — treating a dynamical parameter as a random variable with an arbitrary initial distribution — to unitary Schrödinger dynamics, and showed that the Born-rule probabilities appear as universal limiting behavior in the joint long-time and small-$\hbar$ limit. This is a framework cited by the beat conjecture [1] as lineage B ([1] §4, §6.2).
+
+The conjecture may be related to [6] in that it identifies the "equidistributing dynamical parameter" that [6] places abstractly with the observer–system heterodyne relative phase. [6] itself, within the range checked in this supplement, contains no experimental proposal or prediction of a Born-rule deviation. Whether the two connect as a mechanism is future work.
+
+### 3.4 Common points and differences (summary)
+
+The three programs of §3.1–3.3 may all share with the beat conjecture the problem-consciousness "to derive the Born rule from a deterministic/classical substrate and the detection process as an emergent/approximate rule." On the other hand, whether the elements of the beat conjecture — the observer–system frequency beat, irrational-ratio Weyl equidistribution, and a qualitative break of the Born rule in the coherent/commensurate regime — connect to these as a mechanism is not judged in this supplement and is left as future work. The very fact that several independent routes may be heading toward the same question, "the Born rule may not be a basic postulate," is itself worth recording.
+
+---
+
+## 4. Possible relation to work of a different direction
+
+### 4.1 A Born-rule test using a coherent local oscillator (Conlon et al.)
+
+Conlon et al. [7] (*New J. Phys.* 26, 053003, 2024) tested the Born rule (third-order / Sorkin interference) and the complexity of Hilbert space using a three-arm interferometer with coherent states of light and homodyne detection. The results — Sorkin parameter $\kappa = 0.002 \pm 0.004$ and Peres parameter $F = 1.0000 \pm 0.0003$ — are consistent with standard quantum mechanics (no deviation from the Born rule was detected).
+
+This is, within the range surveyed, one of the few Born-rule tests that actually use a coherent local oscillator (homodyne), and may be related to the beat conjecture. Its measured object is higher-order (Sorkin) interference; whether it connects to the discriminant of the beat conjecture [1] — how the single-shot projection statistics at a fixed observer–system relative phase depend on the commensurability (rational/irrational) — is not judged in this supplement and is future work. We record that a Born-rule test using a coherent LO already exists, and that, within the range surveyed, it does not include a measurement in the discriminating regime of this conjecture.
+
+### 4.2 A deterministic substrate but a stance reluctant about Born-rule deviation ('t Hooft)
+
+'t Hooft's cellular-automaton interpretation [8] (Springer, *Fundamental Theories of Physics* 185, 2016) regards quantum mechanics as a tool for treating a fundamental deterministic system. This is an adjacent lineage already cited by the beat conjecture [1] ([1] §6.3).
+
+'t Hooft's framework, while placing a deterministic substrate, is said to be reluctant about reproducible deviations from the Born rule (it tends to keep the Born rule as a map of the relative probabilities of ontic states). Given that the preceding paper v0.4 [1] adopts the stance that "a more fundamental indeterminacy may prevent a fully coherent observation from being realized (the existence of such a mechanism is a hypothesis, not asserted), and if so the Born rule of standard physics holds more strongly," the beat conjecture (v0.4) and 't Hooft are — for different reasons — close in conclusion, in that neither positively asserts an observable deviation from the Born rule. PCSFT (§3.2), which predicts an observable deviation, differs in direction from both on this point. We record that within the same problem-consciousness of a "deterministic substrate" there are such gradations.
+
+---
+
+## 5. The locus of the testable regime: precision spectroscopy has not performed the discriminating measurement
+
+The beat conjecture [1] is operationally grounded in the Ramsey metrology of atomic clocks (the relative phase $\varphi_0=(\nu_{\rm atom}-\nu_{\rm LO})\,T$ of the observer = local oscillator and the atom, read by heterodyne). Hence atomic clocks are the most natural testbed for this conjecture. This section records the result of checking whether that literature performs the measurement needed for the discrimination.
+
+In the standard noise description of atomic clocks, quantum projection noise (QPN) is treated as an **irreducible binomial noise floor** arising from the probabilistic nature of measurement (Born-type projection) [9] (Itano et al., *Phys. Rev. A* 47, 3554, 1993; for a review, [10] Ludlow et al., *Rev. Mod. Phys.* 87, 637, 2015). In actual machines, no anomaly is reported in which sub-QPN / non-binomial single-shot statistics appear near the lock point. Even in configurations that partially raise the atom–LO coherence by long interrogation or dead-time removal ([11] Schioppo et al., *Nature Photonics* 11, 48, 2017; [12] Al-Masoudi et al., *Phys. Rev. A* 92, 063814, 2015), performance is governed by the QPN floor and no anomaly is seen.
+
+Demonstrations below the QPN / standard quantum limit are all **deliberately created by spin squeezing (entanglement)** and certified by entanglement witnesses such as the Wineland parameter (e.g., [13] Malia et al., *Phys. Rev. Lett.* 125, 043202, 2020). This supplement treats these neither as corroboration nor as a counter-example of the beat conjecture. The non-squeezing constraints of atomic clocks (the Dick effect, laser phase noise, the coherence-time limit) are also described as classical noise ([14] Schulte et al., *Nat. Commun.* 11, 5955, 2020).
+
+The point is this. Atomic clocks are routinely operated under the conditions of on-resonance, phase-locked LO, and projective readout — just short of the discriminating regime of the beat conjecture — but the measurement needed for the discrimination (taking the statistics of the single-shot excited fraction at a fixed atom–LO relative phase and looking for non-binomial structure as a function of commensurability (rational/irrational)) is, within the range of literature surveyed, not performed in any of them. Normal operation is effectively in the equidistributed regime (the irrational side) due to dither and noise, where the predictions of the beat conjecture and of standard quantum mechanics coincide. The fixed-coherence regime where the two diverge is, being unnecessary for clock-making, not entered. This is not concealment but a consequence of the measurement protocol structurally not entering this regime.
+
+The preceding paper v0.4 [1] does not claim this $O(1/N)$ correction as a measurable deviation; it adopts the hypothesis that a more fundamental indeterminacy may prevent the very realization of a fully coherent (strictly integer-ratio) observation — such a mechanism may exist (its existence is not asserted) — so that, if it does, the Born rule of standard physics holds more strongly. The fact this supplement confirmed — "no anomaly is reported near the lock point / the measurement needed for the discrimination is not performed" — does not contradict this stance (the non-observation of the deviation is consistent with the preceding paper's expectation). We record having checked the presence/absence of the discriminating measurement.
+
+---
+
+## 6. Summary: the connection is future work
+
+This supplement recorded a literature survey carried out after the publication of the beat conjecture [1].
+
+- No prior work that proposes, tests, or observes the central mechanism of the beat conjecture (the emergence of Born statistics from the system–observer beat plus irrational-ratio Weyl equidistribution, a deviation in the coherent/commensurate regime) in the same form was found within the scope surveyed.
+- On the other hand, there exist prior programs that may share the problem-consciousness "to derive the Born rule from a deterministic substrate + threshold detection as an emergent/approximate rule" (La Cour–Williamson [3], Khrennikov PCSFT [4,5], the method of arbitrary functions [6]). The beat conjecture may be related to these, but whether it connects as a mechanism is future work.
+- A Born-rule test using a coherent LO (Conlon et al. [7]) already exists. It is a null Sorkin higher-order interference test, and whether it connects to a measurement in the discriminating regime of this conjecture is future work.
+- Atomic clocks are the natural testbed of this conjecture, but the measurement needed for the discrimination (the commensurability dependence of single-shot projection statistics at a fixed relative phase) is, within the range surveyed, not performed; the prediction is not refuted but untested.
+
+Whether these prior works connect logically to the beat conjecture, and whether the discriminating measurement actually shows a deviation, are both **future work**. This supplement cites only the necessary parts where relevance is plausible and merely touches on the possible relation. The status of the beat conjecture (a conjecture; the core conditionally proven, the bridge unproven, single-shot-ness, the exponent 2, and the scale attribution unsolved [1]) is unchanged by this supplement.
+
+---
+
+## References
+
+[1] N. Kihara, "Emergence of Born Statistics from the Equidistribution of the Observer–System Beat — A Conjecture on the Localized-Kernel Model," Zenodo, v0.4 (2026-06-28), Version DOI: 10.5281/zenodo.20985736 / Concept DOI: 10.5281/zenodo.20967081. (The subject of this supplement = the preceding paper.)
+
+[2] N. Kihara, "Deriving the Form of the Born Distribution from the Reproducing-Kernel Property of a Localized Odd-Harmonic Wave," Zenodo, Concept DOI: 10.5281/zenodo.20965526.
+
+[3] B. R. La Cour and M. C. Williamson, "Emergence of the Born rule in quantum optics," *Quantum* **4**, 350 (2020). DOI: 10.22331/q-2020-10-26-350.
+
+[4] A. Khrennikov, "Detection model based on representation of quantum particles by classical random fields: Born's rule and beyond," *Phys. Lett. A* **372**, 6588–6592 (2008). DOI: 10.1016/j.physleta.2008.09.027.
+
+[5] A. Khrennikov, "Towards violation of Born's rule: description of a simple experiment," *AIP Conf. Proc.* **1327**, 387–393 (2011). DOI: 10.1063/1.3578726.
+
+[6] L. Bonds, B. Burson, K. Cicchella, B. H. Feintzeig, Lynnx, A. Yusaini, "Quantum Probability via the Method of Arbitrary Functions," arXiv:2409.16457 (2024).
+
+[7] L. O. Conlon, A. Walsh, Y. Hua, O. Thearle, T. Vogl, F. Eilenberger, P. K. Lam, S. M. Assad, "Testing the postulates of quantum mechanics with coherent states of light and homodyne detection," *New J. Phys.* **26**, 053003 (2024). DOI: 10.1088/1367-2630/ad3f1a.
+
+[8] G. 't Hooft, *The Cellular Automaton Interpretation of Quantum Mechanics*, Fundamental Theories of Physics **185** (Springer, 2016). DOI: 10.1007/978-3-319-41285-6.
+
+[9] W. M. Itano, J. C. Bergquist, J. J. Bollinger, J. M. Gilligan, D. J. Heinzen, F. L. Moore, M. G. Raizen, D. J. Wineland, "Quantum projection noise: Population fluctuations in two-level systems," *Phys. Rev. A* **47**, 3554 (1993). DOI: 10.1103/PhysRevA.47.3554.
+
+[10] A. D. Ludlow, M. M. Boyd, J. Ye, E. Peik, P. O. Schmidt, "Optical atomic clocks," *Rev. Mod. Phys.* **87**, 637 (2015). DOI: 10.1103/RevModPhys.87.637.
+
+[11] M. Schioppo, R. C. Brown, W. F. McGrew, N. Hinkley, et al., "Ultrastable optical clock with two cold-atom ensembles," *Nature Photonics* **11**, 48–52 (2017). DOI: 10.1038/nphoton.2016.231.
+
+[12] A. Al-Masoudi, S. Dörscher, S. Häfner, U. Sterr, C. Lisdat, "Noise and instability of an optical lattice clock," *Phys. Rev. A* **92**, 063814 (2015). DOI: 10.1103/PhysRevA.92.063814.
+
+[13] B. K. Malia, J. Martínez-Rincón, Y. Wu, O. Hosten, M. A. Kasevich, "Free space Ramsey spectroscopy in rubidium with noise below the quantum projection limit," *Phys. Rev. Lett.* **125**, 043202 (2020). DOI: 10.1103/PhysRevLett.125.043202.
+
+[14] M. Schulte, C. Lisdat, P. O. Schmidt, U. Sterr, K. Hammerer, "Prospects and challenges for squeezing-enhanced optical atomic clocks," *Nat. Commun.* **11**, 5955 (2020). DOI: 10.1038/s41467-020-19403-7.
+
+[15] H. Weyl, "Über die Gleichverteilung von Zahlen mod. Eins," *Math. Ann.* **77**, 313–352 (1916). DOI: 10.1007/BF01475864.
+
+---
+
+*(This supplement records a literature survey carried out after the publication of the preceding paper [1]. It claims neither identity of mechanism nor experimental confirmation, and merely touches on the possible relation within the range where relevance is plausible. The logical connection to the preceding paper, and the execution of the discriminating measurement, are left as future work.)*

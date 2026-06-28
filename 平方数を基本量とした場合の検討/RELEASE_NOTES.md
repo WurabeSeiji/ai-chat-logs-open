@@ -201,13 +201,13 @@ Deriving the Form of the Born Distribution from the Reproducing-Kernel Property 
 
 ---
 
-## 論文5：観測者–系ビートの等分布によるボルン統計の創発（予想論文、v0.2）
+## 論文5：観測者–系ビートの等分布によるボルン統計の創発（予想論文、v0.4）
 
 Emergence of Born Statistics from the Equidistribution of the Observer–System Beat: A Conjecture on the Localized-Kernel Model
 
 - **Concept DOI**: 10.5281/zenodo.20967081（外部参照用・最新版へ自動転送）
-- **Version DOI (v0.3, 最新)**: 10.5281/zenodo.20981910
-- **Zenodo deposit**: 20981910 / record https://zenodo.org/records/20981910（旧 v0.2: 20967082）
+- **Version DOI (v0.4, 最新)**: 10.5281/zenodo.20985736
+- **Zenodo deposit**: 20985736 / record https://zenodo.org/records/20985736（旧 v0.3: 20981910／v0.2: 20967082）
 - **公開日**: 2026-06-27
 - **ライセンス**: CC BY 4.0
 - **自己参照**: 論文4「局在奇数倍音波の再生核性によるボルン分布の形の導出」（Concept DOI 10.5281/zenodo.20965526）を `isSupplementTo` で参照
@@ -216,8 +216,8 @@ Emergence of Born Statistics from the Equidistribution of the Observer–System 
 
 ### 収録ファイル（claude/ サブフォルダ）
 
-- `paper_born_beat_conjecture_ja_v0_2.md` / `.tex` / `.pdf`（日本語、10 ページ）
-- `paper_born_beat_conjecture_en_v0_2.md` / `.tex` / `.pdf`（英語、12 ページ）
+- `paper_born_beat_conjecture_ja_v0_2.md` / `.tex` / `.pdf`（日本語、v0.4、12 ページ）
+- `paper_born_beat_conjecture_en_v0_2.md` / `.tex` / `.pdf`（英語、v0.4、14 ページ）
 - `paper_born_beat_conjecture_ja_v0_1.md`（初稿、研究過程の記録）
 - 検証コード `born_beat_conjecture.py`（Weyl 等分布／再生核の実畳み込み両ケース／役割分離(D)／反証バッテリー(E)、機械精度）
 
@@ -227,17 +227,27 @@ Emergence of Born Statistics from the Equidistribution of the Observer–System 
 - **両ケース厳密導出**：局在入力 → 尖った出力／広がり入力 $\cos\varphi$ → 広がった出力 $\cos^2$ が同一再生核から出る（出力差＝入力差のみ）。実畳み込みで機械精度確認（$\le1.8\times10^{-15}$）、バンド条件（cos 全N／多モード N≥5）も明示。
 - **反証バッテリー（§5 E）**：広がり入力が尖らない・局在入力が尖る・Weyl 単独は平坦・両ケースは同一恒等式、の四条件をすべてクリア（整合性の積極的証拠）。
 - **先行研究の交点**：Khrennikov PCSFT ＋ 閾値検出（系譜A）／任意関数の方法 Poincaré–Feintzeig（系譜B）。固有の寄与＝等分布する高速変数のヘテロダイン同定＋再生核による形の厳密性。
-- **反証可能な予言**：有限 $N$（離散格子）での $O(1/N)\sim\ell/R$ 補正＝ボルン則からの測定可能な逸脱。
+- **有限 $N$ 補正の位置づけ（v0.4 で訂正）**：有限 $N$（離散格子）では形式的に $O(1/N)\sim\ell/R$ 補正が現れうるが、これを測定可能な逸脱とは主張しない。ビート機構は不確定性の一面であって根源ではなく、より根源的な不確定性が完全コヒーレント（厳密な整数比）な観測の実現を妨げるような機構が存在する可能性がある（仮説・存在は主張しない）。もしそれがあれば標準理論のボルン則がより強く成立し、補正の非観測も本予想と整合（反証ではない）。§8 に未解決 O5 を追加。
 - §5(D) の橋 MC は橋を**仮定した整合性デモ**であって導出・検証ではないことを明示し、核（証明済み）vs 橋（予想）の地位分離を維持。
 
 ### 改訂履歴
 
+- **v0.4 (2026-06-28)**: 予言の射程を訂正。$O(1/N)$ 補正を「測定可能な逸脱／反証可能な予言」とする従来表現（§7・要旨・§9）を撤回。ビート機構を不確定性の**一面**と位置づけ、より根源的な不確定性が完全コヒーレント（厳密な整数比）な観測の実現を妨げる機構の**存在可能性（仮説・存在は主張しない）**を置き、もしあれば標準理論のボルン則が**より強く成立する**という立場に。非観測は反証でない。§8 に未解決 O5 追加。機構・数式・数値は不変。Version DOI 10.5281/zenodo.20985736（Concept 20967081 維持）。日英 md/tex/pdf 再生成。
 - **v0.3 (2026-06-28)**: (1) §7 の「勾配エネルギー $\sum\nu^2$ が有限化」というエネルギー発散を示唆する句を削除（反証可能予言の本体＝$O(1/N)$ 再生補正は不変）。(2) §2 末尾に「振動数の一致は自明」を明示（局在波は奇数倍音で波形を彫られても基本振動数 $\nu=1$ は不変＝スケール不変）し、点1（自明な振動数一致＋非自明な波形再現＝再生核）と点2（非自明な揺らぎ＝ビート）の役割分担を鮮明化。(3) 「ビートは一様サンプリングのみを与え、$|\psi|^2$ の偏りは再生核＋橋から来る」役割分担を §9 結論にも明示。主張・結論・数式は不変。日英 md/tex/pdf 再生成。
 - **v0.2 (2026-06-27)**: 二者査読反映で初版公開。両ケース導出・§3(I) 役割分担の書き直し・反証バッテリー・バンド条件・「条件付き証明済み」統一・fd 自己引用削除・文献検証（arXiv:2409.16457「Lynnx」は単名表記と確認）・§5(D) 橋MCの地位明示。日英 md/tex/pdf＋検証コードを Zenodo に収録（計7ファイル）。
 
+### 補遺（関連先行研究調査、2026-06-28 公開）
+
+ビート予想 v0.4 公開後の事後文献調査の記録。中核機構（ビート＋無理比 Weyl 等分布によるボルン統計創発）を同形で提案・検証・観測した先行研究は調査範囲で見当たらず、一方「ボルン則を決定論的基層＋閾値検出から創発／近似として導く」問題意識を共有しうる査読済プログラム（La Cour–Williamson *Quantum* 2020／Khrennikov PCSFT／任意関数の方法）と、別方向の研究（Conlon ら *New J. Phys.* 2024 のコヒーレント LO Born 検定＝null／'t Hooft）を関連可能性で整理。原子時計は自然な testbed だが判別測定（固定相対位相での単発射影統計の整合比依存）は確認範囲で未実施。接続は今後の課題。機構の同一性は主張しない。
+
+- ファイル（claude/ サブフォルダ）：`paper_born_beat_supplement_ja_v0_1.md` / `.tex` / `.pdf`（日本語、7 ページ）、`paper_born_beat_supplement_en_v0_1.md` / `.tex` / `.pdf`（英語、8 ページ）
+- **Concept DOI**: 10.5281/zenodo.20985749（外部参照用・最新版へ自動転送）
+- **Version DOI (v0.1, 最新)**: 10.5281/zenodo.20985750 / record https://zenodo.org/records/20985750
+- **関連**: `isSupplementTo` 10.5281/zenodo.20967081（ビート予想 Concept DOI）
+
 ### Zenn 記事
 
-- [born-beat-conjecture](https://zenn.dev/noriaki_kihara/articles/born-beat-conjecture)
+- [born-beat-conjecture](https://zenn.dev/noriaki_kihara/articles/born-beat-conjecture)（v0.4＋補遺を追記）
 
 ---
 
