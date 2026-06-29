@@ -68,6 +68,12 @@ A Thought Experiment on Double-Slit Interference from a Localized Odd-Harmonic S
 - 日本語: https://note.com/kiharanoriaki/n/n65be6bf06c9b （ドラフト：`note_doubleslit_ja.md`）
 - English: https://note.com/kiharanoriaki/n/n701e9d57d7bb （ドラフト：`note_doubleslit_en.md`）
 
+### SNS 投稿（2026-06-29、カバー画像＋コメント/本文に note URL）
+
+- X 日本語: https://x.com/NoriakiKihara/status/2071605862423253221
+- X English: https://x.com/NoriakiKihara/status/2071606647538209193
+- Facebook 日本語・English: 個人タイムライン（2行目「詳細はコメント参照／See the comment for details」、コメントに note URL、カバー画像添付）
+
 ---
 
 ## 引用方針
