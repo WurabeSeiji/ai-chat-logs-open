@@ -63,6 +63,11 @@ A Thought Experiment on Double-Slit Interference from a Localized Odd-Harmonic S
 
 - [double-slit-localized-source-fragility](https://zenn.dev/noriaki_kihara/articles/double-slit-localized-source-fragility)（論文1・論文2 をまとめて紹介）
 
+### note 記事（一般向け、図2枚・正直な但し書き付き）
+
+- 日本語: https://note.com/kiharanoriaki/n/n65be6bf06c9b （ドラフト：`note_doubleslit_ja.md`）
+- English: https://note.com/kiharanoriaki/n/n701e9d57d7bb （ドラフト：`note_doubleslit_en.md`）
+
 ---
 
 ## 引用方針

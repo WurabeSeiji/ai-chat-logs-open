@@ -116,3 +116,4 @@
 - 1本目（位置ゆらぎと縞ずれの押し出し）: https://doi.org/10.5281/zenodo.21035808
 - 2本目（局在波の干渉・整列条件・もろさ）: https://doi.org/10.5281/zenodo.21035831
 - 図と計算コード一式（GitHub）: https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/平方数を基本量とした場合の検討/simplified_double_slit
+- English version of this note: https://note.com/kiharanoriaki/n/n701e9d57d7bb
