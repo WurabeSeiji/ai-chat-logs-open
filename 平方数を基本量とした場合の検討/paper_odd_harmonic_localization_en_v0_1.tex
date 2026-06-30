@@ -65,22 +65,6 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\usepackage{newunicodechar}
-\newunicodechar{→}{\ensuremath{\rightarrow}}
-\newunicodechar{⟨}{\ensuremath{\langle}}
-\newunicodechar{⟩}{\ensuremath{\rangle}}
-\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
-\newunicodechar{⟹}{\ensuremath{\Longrightarrow}}
-\newunicodechar{×}{\ensuremath{\times}}
-\newunicodechar{≈}{\ensuremath{\approx}}
-\newunicodechar{∼}{\ensuremath{\sim}}
-\newunicodechar{≤}{\ensuremath{\le}}
-\newunicodechar{≥}{\ensuremath{\ge}}
-\newunicodechar{≠}{\ensuremath{\ne}}
-\newunicodechar{∫}{\ensuremath{\int}}
-\newunicodechar{−}{\ensuremath{-}}
-\newunicodechar{✗}{\ensuremath{\times}}
-\newunicodechar{✓}{\ensuremath{\checkmark}}
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
@@ -108,18 +92,25 @@ formula for the required highest harmonic order, inverted from a
 prescribed localization width, is also given.
 
 \textbf{Author}: Noriaki Kihara\\
-\textbf{Version}: v0.5\\
-\textbf{Date}: 2026-06-28\\
-\textbf{DOI}: Version 10.5281/zenodo.20981890 (this version, v0.5) /
-Concept 10.5281/zenodo.20833096 (cite this; always resolves to the
-latest version)\\
-\textbf{Zenodo}: https://zenodo.org/records/20981890\\
+\textbf{Version}: v0.6\\
+\textbf{Date}: 2026-07-01\\
+\textbf{DOI}: Version 10.5281/zenodo.21073985 (this version, v0.6) /
+v0.5: 10.5281/zenodo.20981890 / Concept 10.5281/zenodo.20833096 (cite
+this; always resolves to the latest version)\\
+\textbf{Zenodo}: https://zenodo.org/records/21073985\\
 \textbf{Position}: First draft as an observational and organizing paper.
 It records, as an elementary property of Fourier sums, that superposing
 constant-amplitude odd harmonics on a half-wavelength phase interval
 produces a waveform with a peak at the center (here called an ``isolated
 peak wave''). It does not derive physical laws, assert observational
 facts, or give any particular physical interpretation.\\
+\textbf{Revision (v0.6, 2026-07-01)}: Added Appendix C
+(gradient-energy-preserving normalization). It records that, by
+multiplying by the coefficient \(a_K=\sqrt{3/(K(4K^2-1))}\), the
+spatial-derivative energy of the standard Hamiltonian can be kept equal
+to the \(N=1\) baseline wave however much the highest odd-harmonic order
+\(N\) is increased (§2--§3 are unchanged, being scale-invariant shape
+properties).\\
 \textbf{Revision (v0.5, 2026-06-28)}: Added a remark on scale invariance
 (§2.5) and conclusion (6), making explicit that \(\nu=1,\ \lambda=1\) is
 a relative normalization (no absolute scale is assumed) and that the odd
@@ -748,5 +739,62 @@ panels with the horizontal axis taken as \(\pm10\%,\ \pm1\%,\ \pm0.1\%\)
 verifies that, for each \(N\), the direct sum of Eq. (2.1) and the
 closed form of Eq. (2.3) agree to machine precision (maximum absolute
 difference \(\lesssim 10^{-9}\)) before plotting.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Appendix C: Gradient-energy-preserving
+normalization}\label{appendix-c-gradient-energy-preserving-normalization}
+
+This appendix does not claim physical reality or any energy process; it
+records the normalization obtained when one adopts, as a conserved
+quantity, the quadratic form isomorphic to the spatial-derivative term
+of the standard free-particle Hamiltonian.
+
+In the main text the isolated peak wave was normalized by its peak value
+(\(\widehat{S}_N=S_N/S_N(0)\), Eq. (2.8)). As an alternative
+normalization, we give one that keeps the \textbf{spatial-derivative
+energy} corresponding to the standard free-particle Hamiltonian
+\(\hat H=-\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2}\),
+
+\[
+\mathcal{E}[\psi]=\int_0^{2\pi}\Big|\frac{d\psi}{d\varphi}\Big|^2 d\varphi,
+\]
+
+equal to that of the baseline wave \(\psi_1=\cos\varphi\)
+(\(\mathcal{E}[\cos\varphi]=\int_0^{2\pi}\sin^2\varphi\,d\varphi=\pi\)).
+For the highest odd-harmonic order \(N\) and the number of terms
+\(K=(N+1)/2\), set
+
+\[
+\psi_N(\varphi)=a_K\sum_{m=0}^{K-1}\cos\!\big((2m+1)\varphi\big)
+=a_K\,\frac{\sin\!\big((N+1)\varphi\big)}{2\sin\varphi},
+\qquad
+a_K=\sqrt{\frac{3}{K(4K^2-1)}}.
+\]
+
+From the orthogonality of the odd-harmonic cosines and the sum of odd
+squares
+
+\[
+\sum_{m=0}^{K-1}(2m+1)^2=\frac{K(4K^2-1)}{3},
+\]
+
+one obtains
+
+\[
+\mathcal{E}[\psi_N]=\pi\,a_K^2\sum_{m=0}^{K-1}(2m+1)^2=\pi
+\qquad(\text{for all odd }N)
+\]
+
+(\(K=1\) gives \(a_1=1\), \(\psi_1=\cos\varphi\)). That is, by
+multiplying by the coefficient \(a_K\), the gradient energy is kept
+equal to that of the \(N=1\) baseline wave no matter how many odd
+harmonics are added.
+
+The results of §2--§3 (the localization width \(1/(N+1)\), the
+normalized form \(\sin u/u\), etc.) depend only on the \textbf{shape} of
+the waveform and are scale-invariant, so replacing the peak
+normalization by this gradient-energy-preserving normalization leaves
+them unchanged.
 
 \end{document}

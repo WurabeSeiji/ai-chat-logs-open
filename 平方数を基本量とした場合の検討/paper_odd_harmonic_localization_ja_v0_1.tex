@@ -65,22 +65,6 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\usepackage{newunicodechar}
-\newunicodechar{→}{\ensuremath{\rightarrow}}
-\newunicodechar{⟨}{\ensuremath{\langle}}
-\newunicodechar{⟩}{\ensuremath{\rangle}}
-\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
-\newunicodechar{⟹}{\ensuremath{\Longrightarrow}}
-\newunicodechar{×}{\ensuremath{\times}}
-\newunicodechar{≈}{\ensuremath{\approx}}
-\newunicodechar{∼}{\ensuremath{\sim}}
-\newunicodechar{≤}{\ensuremath{\le}}
-\newunicodechar{≥}{\ensuremath{\ge}}
-\newunicodechar{≠}{\ensuremath{\ne}}
-\newunicodechar{∫}{\ensuremath{\int}}
-\newunicodechar{−}{\ensuremath{-}}
-\newunicodechar{✗}{\ensuremath{\times}}
-\newunicodechar{✓}{\ensuremath{\checkmark}}
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
@@ -101,13 +85,20 @@
 で実質的に最高倍音次数の逆数）で縮小する。指定した局在幅から必要な最高倍音次数を逆算する式も与える。
 
 \textbf{著者}: 木原範昭 (Noriaki Kihara)\\
-\textbf{版}: v0.5\\
-\textbf{日付}: 2026-06-28\\
-\textbf{DOI}: Version 10.5281/zenodo.20981890（本版 v0.5）/ Concept
+\textbf{版}: v0.6\\
+\textbf{日付}: 2026-07-01\\
+\textbf{DOI}: Version 10.5281/zenodo.21073985（本版 v0.6）／ v0.5:
+10.5281/zenodo.20981890 / Concept
 10.5281/zenodo.20833096（外部参照用・最新版へ自動転送）\\
-\textbf{Zenodo}: https://zenodo.org/records/20981890\\
+\textbf{Zenodo}: https://zenodo.org/records/21073985\\
 \textbf{位置づけ}:
 観察・整理論文としての初稿。半波長の位相区間上で一定振幅の奇数倍音を重ね合わせると、中央に主ピークをもつ波形（本稿で「孤立ピーク波」と呼ぶ）が形成されることを、初等的なフーリエ和の性質として記録する。物理法則の導出や観測事実の主張は行わず、特定の物理的解釈も与えない。\\
+\textbf{改訂 (v0.6, 2026-07-01)}:
+付録C（勾配エネルギー保存正規化）を追加。係数
+\(a_K=\sqrt{3/(K(4K^2-1))}\) を掛けることで、最高奇数倍音次数 \(N\)
+を増やしても標準ハミルトニアンの空間微分エネルギーを \(N=1\)
+の基準波と同じに保てることを記録（本文 §2--§3
+はスケール不変な形の性質ゆえ不変）。\\
 \textbf{改訂 (v0.5, 2026-06-28)}: スケール不変性の注記（§2.5）と結論 (6)
 を追加し、\(\nu=1,\ \lambda=1\)
 が相対正規化（絶対スケールを想定しない）であること、奇数倍音は波形を変えるのみで基本振動数
@@ -673,5 +664,52 @@ S_N(\varphi)=\sum_{m=0}^{(N-1)/2}\cos\!\big((2m+1)\varphi\big)
 ずつ）にとった三パネルである。各スクリプトは各 \(N\) について式 (2.1)
 の直接和と式 (2.3) の閉形式が機械精度（最大絶対差
 \(\lesssim 10^{-9}\)）で一致することを検証してから描画する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{付録C:
+勾配エネルギー保存正規化}\label{ux4ed8ux9332c-ux52feux914dux30a8ux30cdux30ebux30aeux30fcux4fddux5b58ux6b63ux898fux5316}
+
+本付録は、物理的実在やエネルギー過程を主張するものではなく、標準自由粒子ハミルトニアンの空間微分項と同型の二次形式を保存量として採用した場合の正規化を記録するものである。
+
+本文では孤立ピーク波をピーク値で規格化した（\(\widehat{S}_N=S_N/S_N(0)\)、式
+(2.8)）。別の正規化として、標準自由粒子ハミルトニアン
+\(\hat H=-\dfrac{\hbar^2}{2m}\dfrac{d^2}{dx^2}\)
+に対応する\textbf{空間微分エネルギー}
+
+\[
+\mathcal{E}[\psi]=\int_0^{2\pi}\Big|\frac{d\psi}{d\varphi}\Big|^2 d\varphi
+\]
+
+を、基準波
+\(\psi_1=\cos\varphi\)（\(\mathcal{E}[\cos\varphi]=\int_0^{2\pi}\sin^2\varphi\,d\varphi=\pi\)）と等しく保つ正規化を与える。最高奇数倍音次数
+\(N\)、項数 \(K=(N+1)/2\) に対し
+
+\[
+\psi_N(\varphi)=a_K\sum_{m=0}^{K-1}\cos\!\big((2m+1)\varphi\big)
+=a_K\,\frac{\sin\!\big((N+1)\varphi\big)}{2\sin\varphi},
+\qquad
+a_K=\sqrt{\frac{3}{K(4K^2-1)}}
+\]
+
+と置く。奇数倍音余弦の直交性と奇数平方和
+
+\[
+\sum_{m=0}^{K-1}(2m+1)^2=\frac{K(4K^2-1)}{3}
+\]
+
+から
+
+\[
+\mathcal{E}[\psi_N]=\pi\,a_K^2\sum_{m=0}^{K-1}(2m+1)^2=\pi
+\qquad(\text{すべての奇数 }N)
+\]
+
+となる（\(K=1\) で \(a_1=1\)、\(\psi_1=\cos\varphi\)
+に一致）。すなわち、係数 \(a_K\) を掛けることで、\(N\)
+をいくら増やしても勾配エネルギーは \(N=1\) の基準波と同じ値に保たれる。
+
+本文 §2--§3 の結果（局在幅 \(1/(N+1)\)、規格化形 \(\sin u/u\)
+など）は波形の\textbf{形}のみに依存しスケール不変であるため、ピーク正規化をこの勾配エネルギー保存正規化に置き換えても変わらない。
 
 \end{document}
