@@ -4,6 +4,8 @@
 **著者**: 木原 範昭 (Noriaki Kihara)
 **版**: v0.3（日本語ドラフト）
 **日付**: 2026年7月
+**DOI**: [10.5281/zenodo.21109903](https://doi.org/10.5281/zenodo.21109903)（この版）／ Concept DOI: [10.5281/zenodo.21109902](https://doi.org/10.5281/zenodo.21109902)
+**Zenodo**: https://zenodo.org/records/21109903
 
 ---
 
