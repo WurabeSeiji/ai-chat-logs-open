@@ -81,3 +81,5 @@ Zenodo に日本語版・英語版を公開しました。
 
 ――――
 （本稿は「平方量読出し」シリーズの第四篇です。数式つきの正式版は上記 Zenodo、および Zenn 記事 https://zenn.dev/noriaki_kihara/articles/complex-norm-square-readout をご覧ください。）
+
+#複素数 #数学 #物理学 #理論物理学 #量子力学 #ピタゴラスの定理 #線形代数 #相対性理論 #時空 #Wick回転 #独立研究 #Zenodo #サイエンス
