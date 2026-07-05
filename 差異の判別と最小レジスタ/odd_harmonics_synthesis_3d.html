@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奇数倍音 Z₁+Z₃+Z₅ の合成 — 脈動螺旋と局在波</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  :root{
+    --bg:#0a0e1a; --panel:#111827ee; --ink:#dbe4f0; --dim:#7c8aa0;
+    --c1:#4dd8ff; --c3:#7a9bff; --c5:#c98aff;
+    --cW:#ff7ab0; --cSum:#f5f07a; --cRho:#6dff9e; --line:#2a3550;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;overflow:hidden;background:var(--bg);
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;color:var(--ink)}
+  #scene{position:absolute;inset:0}
+  #panel{
+    position:absolute;top:16px;left:16px;width:312px;max-height:calc(100% - 32px);
+    overflow-y:auto;background:var(--panel);backdrop-filter:blur(8px);
+    border:1px solid var(--line);border-radius:10px;padding:18px 18px 14px;
+  }
+  h1{font-size:15px;font-weight:700;letter-spacing:.05em;margin-bottom:2px}
+  .sub{font-size:11px;color:var(--dim);margin-bottom:14px;font-family:Georgia,serif;font-style:italic}
+  .row{display:flex;align-items:center;gap:9px;padding:6px 8px;border-radius:7px;
+    cursor:pointer;user-select:none;transition:background .15s;margin-bottom:2px}
+  .row:hover{background:#ffffff0d}
+  .row .sw{width:26px;height:4px;border-radius:2px;flex-shrink:0}
+  .row .lbl{font-size:12.5px;line-height:1.35}
+  .row .lbl small{display:block;color:var(--dim);font-size:10.5px}
+  .row.off{opacity:.35}
+  .formula{font-family:Georgia,"Times New Roman",serif;font-size:13px}
+  hr{border:none;border-top:1px solid var(--line);margin:11px 0}
+  .slider-label{display:flex;justify-content:space-between;font-size:11px;color:var(--dim);margin-bottom:4px}
+  .slider-label b{color:var(--ink);font-family:Georgia,serif;font-size:12.5px}
+  input[type=range]{width:100%;accent-color:var(--cW)}
+  button{
+    width:100%;margin-top:10px;padding:8px;border-radius:7px;border:1px solid var(--line);
+    background:#1a2540;color:var(--ink);font-size:12px;cursor:pointer;letter-spacing:.05em
+  }
+  button:hover{background:#243257}
+  #readout{
+    margin-top:12px;padding:10px;background:#0d1322;border-radius:7px;
+    border:1px solid var(--line);font-family:Georgia,serif;font-size:12px;line-height:1.9
+  }
+  #readout .k{color:var(--dim);font-size:10.5px}
+  .note{margin-top:10px;font-size:10.5px;color:var(--dim);line-height:1.65}
+  #hint{position:absolute;bottom:14px;right:18px;font-size:11px;color:var(--dim);pointer-events:none}
+  @media (max-width:560px){#panel{width:calc(100% - 24px);left:12px;top:12px;max-height:55%}}
+</style>
+</head>
+<body>
+<div id="scene"></div>
+
+<div id="panel">
+  <h1>奇数倍音の合成 Z₁ + Z₃ + Z₅</h1>
+  <div class="sub">W(θ) = (1 + 2cos 2θ)·e<sup>i3θ</sup> — the pulsating helix</div>
+
+  <div class="row" data-k="Z1">
+    <div class="sw" style="background:var(--c1)"></div>
+    <div class="lbl formula">Z₁ = e<sup>iθ</sup><small>巻き数 1 の螺旋</small></div>
+  </div>
+  <div class="row" data-k="Z3">
+    <div class="sw" style="background:var(--c3)"></div>
+    <div class="lbl formula">Z₃ = e<sup>i3θ</sup><small>巻き数 3 の螺旋</small></div>
+  </div>
+  <div class="row" data-k="Z5">
+    <div class="sw" style="background:var(--c5)"></div>
+    <div class="lbl formula">Z₅ = e<sup>i5θ</sup><small>巻き数 5 の螺旋</small></div>
+  </div>
+  <div class="row" data-k="W">
+    <div class="sw" style="background:var(--cW)"></div>
+    <div class="lbl formula">W = Z₁+Z₃+Z₅<small>脈動螺旋 — 半径 |1+2cos 2θ| で巻き数 3</small></div>
+  </div>
+  <div class="row" data-k="Sum">
+    <div class="sw" style="background:var(--cSum)"></div>
+    <div class="lbl formula">W + W̄ = 2Σcos nθ<small>局在波 sin 6θ / sin θ — 実平面への射影</small></div>
+  </div>
+  <div class="row" data-k="Rho">
+    <div class="sw" style="background:var(--cRho)"></div>
+    <div class="lbl formula">Σ ZₙZ̄ₙ = 3<small>Parseval 直線 — モード毎の零射影の総和</small></div>
+  </div>
+  <div class="row" data-k="Vec">
+    <div class="sw" style="background:linear-gradient(90deg,var(--c1),var(--c3),var(--c5))"></div>
+    <div class="lbl">断面ベクトル（周転円）<small>Z₁→Z₃→Z₅ を連結した合成の様子</small></div>
+  </div>
+
+  <hr>
+  <div class="slider-label"><span>断面位置</span><b>θ = <span id="thetaVal">0.00</span> rad</b></div>
+  <input type="range" id="theta" min="0" max="12.566" step="0.005" value="0.42">
+  <button id="play">▶ θ を回す</button>
+
+  <div id="readout">
+    <span class="k">断面での値</span><br>
+    <span style="color:var(--cW)">|W|</span> = <span id="absW"></span>&nbsp;&nbsp;
+    <span style="color:var(--cSum)">W+W̄</span> = <span id="sumV"></span><br>
+    <span style="color:var(--cW)">|W|²</span> = <span id="intV"></span>&nbsp;&nbsp;
+    <span style="color:var(--cRho)">Σ|Zₙ|²</span> = 3.00（θ非依存）
+  </div>
+
+  <div class="note">
+    三本の螺旋は各々一定半径だが、合成 W は半径が 1+2cos 2θ で脈動し、
+    符号反転（節）を通過する。実平面への射影 W+W̄ は θ = 0, π に鋭く局在。
+    各モードの ZₙZ̄ₙ = 1 は依然 θ を零射影するが、
+    合成強度 |W|² は交差項が θ を部分的に運ぶ——ここが単一モードとの決定的な差。
+  </div>
+</div>
+
+<div id="hint">ドラッグで回転 / ホイールでズーム</div>
+
+<script>
+(function(){
+  const THETA_MAX = 4*Math.PI;
+  const S = 0.42; // Re/Im 表示スケール（最大振幅6を画面に収める）
+  const container = document.getElementById('scene');
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0a0e1a);
+  scene.fog = new THREE.Fog(0x0a0e1a, 20, 44);
+
+  const camera = new THREE.PerspectiveCamera(50, innerWidth/innerHeight, 0.1, 100);
+  const renderer = new THREE.WebGLRenderer({antialias:true});
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  container.appendChild(renderer.domElement);
+
+  const X0 = -THETA_MAX/2;
+  const P = (th, re, im) => new THREE.Vector3(X0 + th, re*S, im*S);
+
+  // 複素値
+  const modeRe = (n,th)=>Math.cos(n*th), modeIm=(n,th)=>Math.sin(n*th);
+  const Wre = th => modeRe(1,th)+modeRe(3,th)+modeRe(5,th);
+  const Wim = th => modeIm(1,th)+modeIm(3,th)+modeIm(5,th);
+
+  // カメラ
+  let camTheta = 0.85, camPhi = 1.2, camDist = 13;
+  const target = new THREE.Vector3(0, 0.25, 0);
+  function updateCam(){
+    camera.position.set(
+      target.x + camDist*Math.sin(camPhi)*Math.cos(camTheta),
+      target.y + camDist*Math.cos(camPhi),
+      target.z + camDist*Math.sin(camPhi)*Math.sin(camTheta));
+    camera.lookAt(target);
+  }
+  updateCam();
+  let dragging=false, px=0, py=0;
+  const dom = renderer.domElement;
+  dom.addEventListener('pointerdown', e=>{dragging=true;px=e.clientX;py=e.clientY;});
+  addEventListener('pointerup', ()=>dragging=false);
+  addEventListener('pointermove', e=>{
+    if(!dragging) return;
+    camTheta += (e.clientX-px)*0.006;
+    camPhi = Math.min(Math.PI-0.15, Math.max(0.15, camPhi-(e.clientY-py)*0.006));
+    px=e.clientX; py=e.clientY; updateCam();
+  });
+  dom.addEventListener('wheel', e=>{
+    e.preventDefault();
+    camDist = Math.min(32, Math.max(5, camDist + e.deltaY*0.01));
+    updateCam();
+  },{passive:false});
+
+  // 軸
+  const axes = new THREE.Group();
+  function axisLine(a,b,color,op){
+    const g = new THREE.BufferGeometry().setFromPoints([a,b]);
+    return new THREE.Line(g, new THREE.LineBasicMaterial({color, transparent:true, opacity:op}));
+  }
+  axes.add(axisLine(P(-0.6,0,0), P(THETA_MAX+0.8,0,0), 0x50607f, 0.9));
+  axes.add(axisLine(new THREE.Vector3(X0,-6.4*S,0), new THREE.Vector3(X0,6.4*S,0), 0x50607f, 0.9));
+  axes.add(axisLine(new THREE.Vector3(X0,0,-3.6*S), new THREE.Vector3(X0,0,3.6*S), 0x50607f, 0.9));
+  const plane = new THREE.Mesh(new THREE.PlaneGeometry(THETA_MAX+1.4, 13*S),
+    new THREE.MeshBasicMaterial({color:0x1a2440, transparent:true, opacity:0.26, side:THREE.DoubleSide}));
+  plane.position.set(X0+THETA_MAX/2, 0, 0);
+  axes.add(plane);
+  const tickMat = new THREE.LineBasicMaterial({color:0x3a4a6f});
+  for(let k=1;k<=4;k++){
+    const g = new THREE.BufferGeometry().setFromPoints([P(k*Math.PI,-0.25,0),P(k*Math.PI,0.25,0)]);
+    axes.add(new THREE.Line(g, tickMat));
+  }
+  scene.add(axes);
+
+  function label(text,pos,color='#7c8aa0',size=26){
+    const c = document.createElement('canvas'); c.width=256; c.height=64;
+    const ctx = c.getContext('2d');
+    ctx.font = `italic ${size}px Georgia`;
+    ctx.fillStyle = color; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText(text,128,32);
+    const t = new THREE.CanvasTexture(c);
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({map:t, transparent:true, depthWrite:false}));
+    s.scale.set(1.8,0.45,1); s.position.copy(pos);
+    return s;
+  }
+  scene.add(label('θ', P(THETA_MAX+1.15,0,0)));
+  scene.add(label('Re', new THREE.Vector3(X0, 6.9*S, 0)));
+  scene.add(label('Im', new THREE.Vector3(X0, 0, 4.0*S)));
+  scene.add(label('π', P(Math.PI,-0.85,0), '#5a6a8f', 22));
+  scene.add(label('2π', P(2*Math.PI,-0.85,0), '#5a6a8f', 22));
+  scene.add(label('3π', P(3*Math.PI,-0.85,0), '#5a6a8f', 22));
+  scene.add(label('4π', P(4*Math.PI,-0.85,0), '#5a6a8f', 22));
+
+  // 曲線
+  function tubeFrom(fn, color, radius=0.028, N=800, opacity=1){
+    const pts = [];
+    for(let i=0;i<=N;i++) pts.push(fn(THETA_MAX*i/N));
+    const curve = new THREE.CatmullRomCurve3(pts);
+    const geo = new THREE.TubeGeometry(curve, N, radius, 8, false);
+    const mat = new THREE.MeshBasicMaterial({color, transparent:opacity<1, opacity});
+    return new THREE.Mesh(geo, mat);
+  }
+  const objZ1 = tubeFrom(th=>P(th, modeRe(1,th), modeIm(1,th)), 0x4dd8ff, 0.022, 600, 0.55);
+  const objZ3 = tubeFrom(th=>P(th, modeRe(3,th), modeIm(3,th)), 0x7a9bff, 0.022, 900, 0.55);
+  const objZ5 = tubeFrom(th=>P(th, modeRe(5,th), modeIm(5,th)), 0xc98aff, 0.022, 1200, 0.55);
+  const objW  = tubeFrom(th=>P(th, Wre(th), Wim(th)), 0xff7ab0, 0.04, 1400);
+  const objSum= tubeFrom(th=>P(th, 2*Wre(th), 0), 0xf5f07a, 0.045, 1200);
+  const objRho= tubeFrom(th=>P(th, 3, 0), 0x6dff9e, 0.04, 100);
+  scene.add(objZ1, objZ3, objZ5, objW, objSum, objRho);
+  scene.add(label('W', P(0.18, 3.6, 0.6), '#ff7ab0'));
+  scene.add(label('W+W̄', P(THETA_MAX*0.5, 6.9, 0), '#f5f07a'));
+  scene.add(label('Σ|Zₙ|² = 3', P(THETA_MAX*0.9, 3.75, 0), '#6dff9e'));
+
+  // 断面（周転円ベクトル: Z1 → +Z3 → +Z5 チェーン）
+  const cross = new THREE.Group();
+  const discPlane = new THREE.Mesh(new THREE.PlaneGeometry(13*S, 7.4*S),
+    new THREE.MeshBasicMaterial({color:0x18213a, transparent:true, opacity:0.32, side:THREE.DoubleSide}));
+  discPlane.rotation.y = Math.PI/2;
+  cross.add(discPlane);
+
+  function chainArrow(color){
+    return new THREE.ArrowHelper(new THREE.Vector3(0,1,0), new THREE.Vector3(0,0,0), 1, color, 0.12, 0.07);
+  }
+  const a1 = chainArrow(0x4dd8ff), a3 = chainArrow(0x7a9bff), a5 = chainArrow(0xc98aff);
+  const aW = chainArrow(0xff7ab0), aS = chainArrow(0xf5f07a);
+  cross.add(a1,a3,a5,aW,aS);
+  const cancelMat = new THREE.LineDashedMaterial({color:0x8899bb, dashSize:0.07, gapSize:0.05, transparent:true, opacity:0.75});
+  let cancelLine = new THREE.Line(new THREE.BufferGeometry(), cancelMat);
+  cross.add(cancelLine);
+  function dot(color){ return new THREE.Mesh(new THREE.SphereGeometry(0.06,16,16), new THREE.MeshBasicMaterial({color})); }
+  const dSum = dot(0xf5f07a), dW = dot(0xff7ab0);
+  scene.add(cross, dSum, dW);
+
+  const objMap = {Z1:objZ1, Z3:objZ3, Z5:objZ5, W:objW, Sum:objSum, Rho:objRho, Vec:cross};
+  const extra = {Sum:dSum, W:dW};
+  document.querySelectorAll('.row').forEach(row=>{
+    row.addEventListener('click', ()=>{
+      const k = row.dataset.k;
+      const vis = !objMap[k].visible;
+      objMap[k].visible = vis;
+      if(extra[k]) extra[k].visible = vis;
+      row.classList.toggle('off', !vis);
+    });
+  });
+
+  function setArrow(a, from, to){
+    const d = new THREE.Vector3().subVectors(to, from);
+    const len = d.length();
+    a.visible = len > 0.015;
+    if(a.visible){
+      a.position.copy(from);
+      a.setDirection(d.normalize());
+      a.setLength(len, Math.min(0.13, len*0.35), Math.min(0.08, len*0.22));
+    }
+  }
+
+  const slider = document.getElementById('theta');
+  const el = id=>document.getElementById(id);
+  function setCross(th){
+    const x = X0 + th;
+    cross.position.set(x,0,0);
+    // チェーン: 原点 → Z1 → Z1+Z3 → Z1+Z3+Z5 = W（断面ローカル座標: y=Re*S, z=Im*S）
+    const p0 = new THREE.Vector3(0,0,0);
+    const p1 = new THREE.Vector3(0, modeRe(1,th)*S, modeIm(1,th)*S);
+    const p2 = new THREE.Vector3(0, (modeRe(1,th)+modeRe(3,th))*S, (modeIm(1,th)+modeIm(3,th))*S);
+    const p3 = new THREE.Vector3(0, Wre(th)*S, Wim(th)*S);
+    setArrow(a1, p0, p1); setArrow(a3, p1, p2); setArrow(a5, p2, p3);
+    setArrow(aW, p0, p3);
+    const sum = 2*Wre(th);
+    setArrow(aS, p0, new THREE.Vector3(0, sum*S, 0));
+    // W と W̄（鏡像）の相殺線
+    cancelLine.geometry.dispose();
+    cancelLine.geometry = new THREE.BufferGeometry().setFromPoints([
+      p3, new THREE.Vector3(0, Wre(th)*S, -Wim(th)*S)]);
+    cancelLine.computeLineDistances();
+    dW.position.set(x, Wre(th)*S, Wim(th)*S);
+    dSum.position.set(x, sum*S, 0);
+    const absW = Math.hypot(Wre(th), Wim(th));
+    el('thetaVal').textContent = th.toFixed(2);
+    el('absW').textContent = absW.toFixed(2);
+    el('sumV').textContent = sum.toFixed(2);
+    el('intV').textContent = (absW*absW).toFixed(2);
+  }
+  slider.addEventListener('input', ()=>{ playing=false; playBtn.textContent='▶ θ を回す'; setCross(+slider.value); });
+
+  let playing = false;
+  const playBtn = document.getElementById('play');
+  playBtn.addEventListener('click', ()=>{
+    playing = !playing;
+    playBtn.textContent = playing ? '❚❚ 停止' : '▶ θ を回す';
+  });
+
+  setCross(+slider.value);
+
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function tick(){
+    requestAnimationFrame(tick);
+    if(playing && !reduceMotion){
+      let th = +slider.value + 0.012;
+      if(th > THETA_MAX) th = 0;
+      slider.value = th;
+      setCross(th);
+    }
+    renderer.render(scene, camera);
+  }
+  tick();
+
+  addEventListener('resize', ()=>{
+    camera.aspect = innerWidth/innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+  });
+})();
+</script>
+</body>
+</html>

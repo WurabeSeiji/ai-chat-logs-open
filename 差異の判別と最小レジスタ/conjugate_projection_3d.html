@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>共役複素数の自己干渉 — 螺旋と射影の幾何</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  :root{
+    --bg:#0a0e1a; --panel:#111827ee; --ink:#dbe4f0; --dim:#7c8aa0;
+    --cZ:#4dd8ff; --cZb:#ff9e4d; --cSum:#f5f07a; --cRho:#6dff9e; --line:#2a3550;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;overflow:hidden;background:var(--bg);
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;color:var(--ink)}
+  #scene{position:absolute;inset:0}
+  #panel{
+    position:absolute;top:16px;left:16px;width:300px;max-height:calc(100% - 32px);
+    overflow-y:auto;background:var(--panel);backdrop-filter:blur(8px);
+    border:1px solid var(--line);border-radius:10px;padding:18px 18px 14px;
+  }
+  h1{font-size:15px;font-weight:700;letter-spacing:.06em;margin-bottom:2px}
+  .sub{font-size:11px;color:var(--dim);margin-bottom:14px;font-family:Georgia,serif;font-style:italic}
+  .row{display:flex;align-items:center;gap:9px;padding:7px 8px;border-radius:7px;
+    cursor:pointer;user-select:none;transition:background .15s;margin-bottom:2px}
+  .row:hover{background:#ffffff0d}
+  .row .sw{width:26px;height:4px;border-radius:2px;flex-shrink:0}
+  .row .lbl{font-size:12.5px;line-height:1.35}
+  .row .lbl small{display:block;color:var(--dim);font-size:10.5px}
+  .row.off{opacity:.35}
+  .formula{font-family:Georgia,"Times New Roman",serif;font-size:13px}
+  hr{border:none;border-top:1px solid var(--line);margin:12px 0}
+  .slider-wrap{margin:4px 0 2px}
+  .slider-label{display:flex;justify-content:space-between;font-size:11px;color:var(--dim);margin-bottom:4px}
+  .slider-label b{color:var(--ink);font-family:Georgia,serif;font-size:12.5px}
+  input[type=range]{width:100%;accent-color:var(--cZ)}
+  button{
+    width:100%;margin-top:10px;padding:8px;border-radius:7px;border:1px solid var(--line);
+    background:#1a2540;color:var(--ink);font-size:12px;cursor:pointer;letter-spacing:.05em
+  }
+  button:hover{background:#243257}
+  #readout{
+    margin-top:12px;padding:10px;background:#0d1322;border-radius:7px;
+    border:1px solid var(--line);font-family:Georgia,serif;font-size:12px;line-height:1.9
+  }
+  #readout .k{color:var(--dim);font-size:10.5px;font-family:inherit}
+  .note{margin-top:10px;font-size:10.5px;color:var(--dim);line-height:1.6}
+  #hint{position:absolute;bottom:14px;right:18px;font-size:11px;color:var(--dim);pointer-events:none}
+  @media (max-width:560px){#panel{width:calc(100% - 24px);left:12px;top:12px;max-height:52%}}
+</style>
+</head>
+<body>
+<div id="scene"></div>
+
+<div id="panel">
+  <h1>共役複素数の自己干渉</h1>
+  <div class="sub">helix, mirror helix, and what survives projection</div>
+
+  <div class="row" data-k="Z">
+    <div class="sw" style="background:var(--cZ)"></div>
+    <div class="lbl formula">Z = ρe<sup>iθ</sup><small>右巻き螺旋 — θ を完全保持（恒等射影）</small></div>
+  </div>
+  <div class="row" data-k="Zb">
+    <div class="sw" style="background:var(--cZb)"></div>
+    <div class="lbl formula">Z̄ = ρe<sup>−iθ</sup><small>左巻き螺旋 — 鏡像（巻き数の符号が逆）</small></div>
+  </div>
+  <div class="row" data-k="Sum">
+    <div class="sw" style="background:var(--cSum)"></div>
+    <div class="lbl formula">Z + Z̄ = 2ρcos θ<small>実平面へ潰れた余弦波（部分射影・符号喪失）</small></div>
+  </div>
+  <div class="row" data-k="Rho">
+    <div class="sw" style="background:var(--cRho)"></div>
+    <div class="lbl formula">ZZ̄ = ρ²<small>直線 — θ の情報が零（零射影・保存量）</small></div>
+  </div>
+  <div class="row" data-k="Vec">
+    <div class="sw" style="background:linear-gradient(90deg,var(--cZ),var(--cZb))"></div>
+    <div class="lbl">断面ベクトル<small>θ 断面での Z, Z̄ と虚部相殺の様子</small></div>
+  </div>
+
+  <hr>
+  <div class="slider-wrap">
+    <div class="slider-label"><span>断面位置</span><b>θ = <span id="thetaVal">0.00</span> rad</b></div>
+    <input type="range" id="theta" min="0" max="12.566" step="0.01" value="1.05">
+  </div>
+  <button id="play">▶ θ を回す</button>
+
+  <div id="readout">
+    <span class="k">断面での値</span><br>
+    <span style="color:var(--cZ)">Im Z</span> = <span id="imZ"></span>&nbsp;&nbsp;
+    <span style="color:var(--cZb)">Im Z̄</span> = <span id="imZb"></span><br>
+    <span style="color:var(--cSum)">Z+Z̄</span> = <span id="sumV"></span>&nbsp;&nbsp;
+    <span style="color:var(--cRho)">ZZ̄</span> = <span id="rhoV"></span>
+  </div>
+
+  <div class="note">
+    虚部は常に等大逆符号で相殺。和は実軸平面（黄）に落ち、θ の符号を失う。
+    積は θ を代数的に消去し、緑の直線には位相の痕跡が一切残らない。
+    保存（ρ²）と喪失（θ）は同じ積演算の表裏。
+  </div>
+</div>
+
+<div id="hint">ドラッグで回転 / ホイールでズーム</div>
+
+<script>
+(function(){
+  const RHO = 1.0, THETA_MAX = 4*Math.PI;
+  const container = document.getElementById('scene');
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0a0e1a);
+  scene.fog = new THREE.Fog(0x0a0e1a, 18, 40);
+
+  const camera = new THREE.PerspectiveCamera(50, innerWidth/innerHeight, 0.1, 100);
+  const renderer = new THREE.WebGLRenderer({antialias:true});
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  container.appendChild(renderer.domElement);
+
+  // --- 座標系: x = θ軸, y = Re, z = Im ---
+  const X0 = -THETA_MAX/2; // 中央寄せオフセット
+  const P = (th, re, im) => new THREE.Vector3(X0 + th, re, im);
+
+  // ---- カメラ軌道（手動オービット）----
+  let camTheta = 0.9, camPhi = 1.25, camDist = 12;
+  const target = new THREE.Vector3(0, 0.3, 0);
+  function updateCam(){
+    camera.position.set(
+      target.x + camDist*Math.sin(camPhi)*Math.cos(camTheta),
+      target.y + camDist*Math.cos(camPhi),
+      target.z + camDist*Math.sin(camPhi)*Math.sin(camTheta));
+    camera.lookAt(target);
+  }
+  updateCam();
+  let dragging=false, px=0, py=0;
+  const dom = renderer.domElement;
+  dom.addEventListener('pointerdown', e=>{dragging=true;px=e.clientX;py=e.clientY;});
+  addEventListener('pointerup', ()=>dragging=false);
+  addEventListener('pointermove', e=>{
+    if(!dragging) return;
+    camTheta += (e.clientX-px)*0.006;
+    camPhi = Math.min(Math.PI-0.15, Math.max(0.15, camPhi - (e.clientY-py)*0.006));
+    px=e.clientX; py=e.clientY; updateCam();
+  });
+  dom.addEventListener('wheel', e=>{
+    e.preventDefault();
+    camDist = Math.min(30, Math.max(5, camDist + e.deltaY*0.01));
+    updateCam();
+  },{passive:false});
+
+  // ---- 軸 ----
+  const axes = new THREE.Group();
+  function axisLine(a, b, color, op){
+    const g = new THREE.BufferGeometry().setFromPoints([a,b]);
+    return new THREE.Line(g, new THREE.LineBasicMaterial({color, transparent:true, opacity:op}));
+  }
+  axes.add(axisLine(P(-0.6,0,0), P(THETA_MAX+0.8,0,0), 0x50607f, 0.9)); // θ軸
+  axes.add(axisLine(new THREE.Vector3(X0,-2.6,0), new THREE.Vector3(X0,2.6,0), 0x50607f, 0.9)); // Re
+  axes.add(axisLine(new THREE.Vector3(X0,0,-1.9), new THREE.Vector3(X0,0,1.9), 0x50607f, 0.9)); // Im
+  // 実平面 (Im=0) をうっすら
+  const planeG = new THREE.PlaneGeometry(THETA_MAX+1.4, 5.2);
+  const plane = new THREE.Mesh(planeG, new THREE.MeshBasicMaterial({
+    color:0x1a2440, transparent:true, opacity:0.28, side:THREE.DoubleSide}));
+  plane.rotation.x = Math.PI/2; // xy平面(z=0)へ
+  plane.position.set(X0 + THETA_MAX/2, 0, 0);
+  plane.rotation.set(0,0,0); // PlaneGeometryはxy平面: z=0 = 実平面。そのままでOK
+  axes.add(plane);
+
+  // π目盛り
+  const tickMat = new THREE.LineBasicMaterial({color:0x3a4a6f});
+  for(let k=1;k<=4;k++){
+    const th = k*Math.PI;
+    const g = new THREE.BufferGeometry().setFromPoints([P(th,-0.1,0),P(th,0.1,0)]);
+    axes.add(new THREE.Line(g, tickMat));
+  }
+  scene.add(axes);
+
+  // ---- 軸ラベル（スプライト）----
+  function label(text, pos, color='#7c8aa0', size=26){
+    const c = document.createElement('canvas'); c.width=256; c.height=64;
+    const ctx = c.getContext('2d');
+    ctx.font = `italic ${size}px Georgia`;
+    ctx.fillStyle = color; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText(text, 128, 32);
+    const t = new THREE.CanvasTexture(c);
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({map:t, transparent:true, depthWrite:false}));
+    s.scale.set(1.8, 0.45, 1); s.position.copy(pos);
+    return s;
+  }
+  scene.add(label('θ', P(THETA_MAX+1.15, 0, 0)));
+  scene.add(label('Re', new THREE.Vector3(X0, 2.85, 0)));
+  scene.add(label('Im', new THREE.Vector3(X0, 0, 2.15)));
+  scene.add(label('2π', P(2*Math.PI, -0.42, 0), '#5a6a8f', 22));
+  scene.add(label('4π', P(4*Math.PI, -0.42, 0), '#5a6a8f', 22));
+
+  // ---- 曲線生成 ----
+  function tubeFrom(fn, color, radius=0.035, N=400){
+    const pts = [];
+    for(let i=0;i<=N;i++){ pts.push(fn(THETA_MAX*i/N)); }
+    const curve = new THREE.CatmullRomCurve3(pts);
+    const geo = new THREE.TubeGeometry(curve, N, radius, 8, false);
+    const mat = new THREE.MeshBasicMaterial({color});
+    return new THREE.Mesh(geo, mat);
+  }
+  const objZ   = tubeFrom(th=>P(th,  RHO*Math.cos(th),  RHO*Math.sin(th)), 0x4dd8ff);
+  const objZb  = tubeFrom(th=>P(th,  RHO*Math.cos(th), -RHO*Math.sin(th)), 0xff9e4d);
+  const objSum = tubeFrom(th=>P(th, 2*RHO*Math.cos(th), 0), 0xf5f07a, 0.042);
+  const objRho = tubeFrom(th=>P(th, RHO*RHO, 0), 0x6dff9e, 0.042);
+  scene.add(objZ, objZb, objSum, objRho);
+  scene.add(label('Z', P(0.35, RHO*1.45, 0.2), '#4dd8ff'));
+  scene.add(label('Z̄', P(0.35, RHO*1.05, -1.25), '#ff9e4d'));
+  scene.add(label('Z+Z̄', P(THETA_MAX*0.985, 2*RHO*Math.cos(THETA_MAX)+0.5, 0), '#f5f07a'));
+  scene.add(label('ZZ̄ = ρ²', P(THETA_MAX*0.97, RHO*RHO+0.38, 0), '#6dff9e'));
+
+  // ---- 断面グループ（ベクトル表示）----
+  const cross = new THREE.Group();
+  const ringG = new THREE.RingGeometry(0.96,1.0,64);
+  const ring = new THREE.Mesh(ringG, new THREE.MeshBasicMaterial({
+    color:0x39496e, side:THREE.DoubleSide, transparent:true, opacity:0.85}));
+  ring.rotation.y = Math.PI/2;
+  cross.add(ring);
+  const discPlane = new THREE.Mesh(new THREE.PlaneGeometry(4.6,3.6),
+    new THREE.MeshBasicMaterial({color:0x18213a, transparent:true, opacity:0.32, side:THREE.DoubleSide}));
+  discPlane.rotation.y = Math.PI/2;
+  cross.add(discPlane);
+
+  function arrow(color){
+    return new THREE.ArrowHelper(new THREE.Vector3(0,1,0), new THREE.Vector3(0,0,0), 1, color, 0.16, 0.09);
+  }
+  const arrZ = arrow(0x4dd8ff), arrZb = arrow(0xff9e4d), arrSum = arrow(0xf5f07a);
+  cross.add(arrZ, arrZb, arrSum);
+  // 虚部相殺の点線
+  const cancelMat = new THREE.LineDashedMaterial({color:0x8899bb, dashSize:0.08, gapSize:0.06, transparent:true, opacity:0.8});
+  let cancelLine = new THREE.Line(new THREE.BufferGeometry(), cancelMat);
+  cross.add(cancelLine);
+  // 動点マーカー
+  function dot(color){ return new THREE.Mesh(new THREE.SphereGeometry(0.07,16,16), new THREE.MeshBasicMaterial({color})); }
+  const dSum = dot(0xf5f07a), dRho = dot(0x6dff9e);
+  scene.add(cross, dSum, dRho);
+
+  // ---- 表示トグル ----
+  const objMap = {Z:objZ, Zb:objZb, Sum:objSum, Rho:objRho, Vec:cross};
+  const extra = {Sum:dSum, Rho:dRho};
+  document.querySelectorAll('.row').forEach(row=>{
+    row.addEventListener('click', ()=>{
+      const k = row.dataset.k;
+      const vis = !objMap[k].visible;
+      objMap[k].visible = vis;
+      if(extra[k]) extra[k].visible = vis;
+      row.classList.toggle('off', !vis);
+    });
+  });
+
+  // ---- 断面更新 ----
+  const slider = document.getElementById('theta');
+  const el = id=>document.getElementById(id);
+  function setCross(th){
+    const re = RHO*Math.cos(th), im = RHO*Math.sin(th);
+    const x = X0 + th;
+    cross.position.set(x,0,0);
+    arrZ.setDirection(new THREE.Vector3(0,re,im).normalize());
+    arrZ.setLength(Math.max(RHO,0.001),0.16,0.09);
+    arrZb.setDirection(new THREE.Vector3(0,re,-im).normalize());
+    arrZb.setLength(Math.max(RHO,0.001),0.16,0.09);
+    const sum = 2*re;
+    const sl = Math.abs(sum);
+    arrSum.visible = sl>0.02;
+    if(arrSum.visible){
+      arrSum.setDirection(new THREE.Vector3(0,Math.sign(sum),0));
+      arrSum.setLength(sl,0.16,0.09);
+    }
+    cancelLine.geometry.dispose();
+    cancelLine.geometry = new THREE.BufferGeometry().setFromPoints([
+      new THREE.Vector3(0,re,im), new THREE.Vector3(0,re,-im)]);
+    cancelLine.computeLineDistances();
+    dSum.position.set(x, sum, 0);
+    dRho.position.set(x, RHO*RHO, 0);
+    el('thetaVal').textContent = th.toFixed(2);
+    el('imZ').textContent  = (im>=0?'+':'')+im.toFixed(2);
+    el('imZb').textContent = (-im>=0?'+':'')+(-im).toFixed(2);
+    el('sumV').textContent = sum.toFixed(2);
+    el('rhoV').textContent = (RHO*RHO).toFixed(2) + '（θ非依存）';
+  }
+  slider.addEventListener('input', ()=>{ playing=false; playBtn.textContent='▶ θ を回す'; setCross(+slider.value); });
+
+  // ---- 再生 ----
+  let playing = false;
+  const playBtn = document.getElementById('play');
+  playBtn.addEventListener('click', ()=>{
+    playing = !playing;
+    playBtn.textContent = playing ? '❚❚ 停止' : '▶ θ を回す';
+  });
+
+  setCross(+slider.value);
+
+  // ---- ループ ----
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function tick(){
+    requestAnimationFrame(tick);
+    if(playing && !reduceMotion){
+      let th = +slider.value + 0.016;
+      if(th > THETA_MAX) th = 0;
+      slider.value = th;
+      setCross(th);
+    }
+    renderer.render(scene, camera);
+  }
+  tick();
+
+  addEventListener('resize', ()=>{
+    camera.aspect = innerWidth/innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth, innerHeight);
+  });
+})();
+</script>
+</body>
+</html>
