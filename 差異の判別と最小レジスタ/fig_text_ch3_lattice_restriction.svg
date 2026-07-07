@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="330" viewBox="0 0 960 330" role="img" aria-labelledby="title desc">
+  <title id="title">Crystallographic restriction for integer cell rotations</title>
+  <desc id="desc">Square lattice rotations by 90 degrees preserve integer lattice points, square lattice rotations by 45 degrees leave the integer lattice, and hexagonal Eisenstein lattice rotations by 60 degrees preserve lattice points.</desc>
+  <defs>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#059669"/>
+    </marker>
+    <clipPath id="clip-square-ok">
+      <rect x="40" y="70" width="260" height="190" rx="8"/>
+    </clipPath>
+    <clipPath id="clip-square-ng">
+      <rect x="350" y="70" width="260" height="190" rx="8"/>
+    </clipPath>
+    <clipPath id="clip-hex-ok">
+      <rect x="660" y="70" width="260" height="190" rx="8"/>
+    </clipPath>
+    <style>
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.4; }
+      .grid { stroke: #d8dee9; stroke-width: 1; }
+      .hexgrid { stroke: #d8dee9; stroke-width: 1; }
+      .axis { stroke: #334155; stroke-width: 1.4; }
+      .vec-blue { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrow-blue); }
+      .vec-red { stroke: #dc2626; stroke-width: 3; fill: none; marker-end: url(#arrow-red); }
+      .vec-green { stroke: #059669; stroke-width: 3; fill: none; marker-end: url(#arrow-green); }
+      .arc-blue { stroke: #2563eb; stroke-width: 2.3; fill: none; marker-end: url(#arrow-blue); }
+      .arc-red { stroke: #dc2626; stroke-width: 2.3; fill: none; marker-end: url(#arrow-red); stroke-dasharray: 5 4; }
+      .arc-green { stroke: #059669; stroke-width: 2.3; fill: none; marker-end: url(#arrow-green); }
+      .dot { fill: #111827; }
+      .hit { fill: #ecfdf5; stroke: #059669; stroke-width: 2; }
+      .miss { fill: #fff7ed; stroke: #dc2626; stroke-width: 2; }
+      .cross { stroke: #dc2626; stroke-width: 2.2; stroke-linecap: round; }
+      .title { font: 700 16px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .label { font: 13px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #334155; }
+      .small { font: 12px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #475569; }
+      .ok { fill: #047857; font-weight: 700; }
+      .ng { fill: #b91c1c; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect width="960" height="330" fill="#ffffff"/>
+  <text x="480" y="28" text-anchor="middle" class="title">Integer lattices allow only rotations that send lattice points to lattice points</text>
+
+  <rect x="40" y="70" width="260" height="190" rx="8" class="panel"/>
+  <rect x="350" y="70" width="260" height="190" rx="8" class="panel"/>
+  <rect x="660" y="70" width="260" height="190" rx="8" class="panel"/>
+
+  <text x="170" y="57" text-anchor="middle" class="title">Square lattice: 90 deg</text>
+  <text x="480" y="57" text-anchor="middle" class="title">Square lattice: 45 deg</text>
+  <text x="790" y="57" text-anchor="middle" class="title">Hex lattice: 60 deg</text>
+
+  <g clip-path="url(#clip-square-ok)">
+    <g class="grid">
+      <line x1="50" y1="90" x2="290" y2="90"/>
+      <line x1="50" y1="130" x2="290" y2="130"/>
+      <line x1="50" y1="170" x2="290" y2="170"/>
+      <line x1="50" y1="210" x2="290" y2="210"/>
+      <line x1="50" y1="250" x2="290" y2="250"/>
+      <line x1="50" y1="80" x2="50" y2="260"/>
+      <line x1="90" y1="80" x2="90" y2="260"/>
+      <line x1="130" y1="80" x2="130" y2="260"/>
+      <line x1="170" y1="80" x2="170" y2="260"/>
+      <line x1="210" y1="80" x2="210" y2="260"/>
+      <line x1="250" y1="80" x2="250" y2="260"/>
+      <line x1="290" y1="80" x2="290" y2="260"/>
+    </g>
+  </g>
+  <line x1="170" y1="170" x2="250" y2="170" class="vec-blue"/>
+  <line x1="170" y1="170" x2="170" y2="90" class="vec-green"/>
+  <path d="M 240 170 A 70 70 0 0 0 170 100" class="arc-blue"/>
+  <circle cx="170" cy="170" r="4" class="dot"/>
+  <circle cx="170" cy="90" r="7" class="hit"/>
+  <text x="170" y="283" text-anchor="middle" class="label"><tspan class="ok">OK</tspan>: (1,0) -> (0,1)</text>
+  <text x="170" y="303" text-anchor="middle" class="small">Gaussian / Z[i] / Z4</text>
+
+  <g clip-path="url(#clip-square-ng)">
+    <g class="grid">
+      <line x1="360" y1="90" x2="600" y2="90"/>
+      <line x1="360" y1="130" x2="600" y2="130"/>
+      <line x1="360" y1="170" x2="600" y2="170"/>
+      <line x1="360" y1="210" x2="600" y2="210"/>
+      <line x1="360" y1="250" x2="600" y2="250"/>
+      <line x1="360" y1="80" x2="360" y2="260"/>
+      <line x1="400" y1="80" x2="400" y2="260"/>
+      <line x1="440" y1="80" x2="440" y2="260"/>
+      <line x1="480" y1="80" x2="480" y2="260"/>
+      <line x1="520" y1="80" x2="520" y2="260"/>
+      <line x1="560" y1="80" x2="560" y2="260"/>
+      <line x1="600" y1="80" x2="600" y2="260"/>
+    </g>
+  </g>
+  <line x1="480" y1="170" x2="560" y2="170" class="vec-blue"/>
+  <path d="M 552 170 A 72 72 0 0 0 536.6 113.4" class="arc-red"/>
+  <line x1="480" y1="170" x2="536.6" y2="113.4" class="vec-red"/>
+  <circle cx="480" cy="170" r="4" class="dot"/>
+  <circle cx="536.6" cy="113.4" r="7" class="miss"/>
+  <line x1="530.6" y1="107.4" x2="542.6" y2="119.4" class="cross"/>
+  <line x1="542.6" y1="107.4" x2="530.6" y2="119.4" class="cross"/>
+  <text x="480" y="283" text-anchor="middle" class="label"><tspan class="ng">NG</tspan>: (1,0) -> (1/sqrt(2),1/sqrt(2))</text>
+  <text x="480" y="303" text-anchor="middle" class="small">requires irrational coefficients</text>
+
+  <g clip-path="url(#clip-hex-ok)">
+    <g class="hexgrid">
+      <line x1="660" y1="85" x2="920" y2="85"/>
+      <line x1="660" y1="120" x2="920" y2="120"/>
+      <line x1="660" y1="155" x2="920" y2="155"/>
+      <line x1="660" y1="190" x2="920" y2="190"/>
+      <line x1="660" y1="225" x2="920" y2="225"/>
+      <line x1="660" y1="260" x2="920" y2="260"/>
+      <line x1="638" y1="262" x2="790" y2="0"/>
+      <line x1="678" y1="262" x2="830" y2="0"/>
+      <line x1="718" y1="262" x2="870" y2="0"/>
+      <line x1="758" y1="262" x2="910" y2="0"/>
+      <line x1="798" y1="262" x2="950" y2="0"/>
+      <line x1="838" y1="262" x2="990" y2="0"/>
+      <line x1="638" y1="78" x2="790" y2="340"/>
+      <line x1="678" y1="78" x2="830" y2="340"/>
+      <line x1="718" y1="78" x2="870" y2="340"/>
+      <line x1="758" y1="78" x2="910" y2="340"/>
+      <line x1="798" y1="78" x2="950" y2="340"/>
+      <line x1="838" y1="78" x2="990" y2="340"/>
+    </g>
+  </g>
+  <line x1="790" y1="170" x2="870" y2="170" class="vec-blue"/>
+  <line x1="790" y1="170" x2="830" y2="100.7" class="vec-green"/>
+  <path d="M 860 170 A 70 70 0 0 0 825 109.4" class="arc-green"/>
+  <circle cx="790" cy="170" r="4" class="dot"/>
+  <circle cx="830" cy="100.7" r="7" class="hit"/>
+  <text x="790" y="283" text-anchor="middle" class="label"><tspan class="ok">OK</tspan>: 60 deg permutes six directions</text>
+  <text x="790" y="303" text-anchor="middle" class="small">Eisenstein / Z[omega] / Z6</text>
+</svg>
