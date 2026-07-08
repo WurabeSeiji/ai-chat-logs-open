@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1040" height="520" viewBox="0 0 1040 520" role="img" aria-labelledby="title desc">
-  <title id="title">Aliasing as a sampled wheel</title>
-  <desc id="desc">A wheel rotating 11 turns per second sampled by a 10 frame per second camera appears to advance only one tenth of a turn per frame.</desc>
+  <title id="title">折り返しとして見えるワゴンホイール効果</title>
+  <desc id="desc">11回転/秒の点を10フレーム/秒のカメラで撮ると、1フレームごとに1/10周だけ進む低い回転として記録される。</desc>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
@@ -26,24 +26,24 @@
   </defs>
 
   <rect width="1040" height="520" class="bg"/>
-  <text x="520" y="34" text-anchor="middle" class="title">Aliasing: the camera keeps only the remainder</text>
+  <text x="520" y="34" text-anchor="middle" class="title">折り返し：カメラは「余り」だけを記録する</text>
 
   <rect x="34" y="64" width="604" height="398" rx="10" class="panel"/>
   <rect x="668" y="64" width="338" height="398" rx="10" class="panel"/>
 
-  <text x="336" y="94" text-anchor="middle" class="title">10 frames/sec camera, 11 turns/sec wheel</text>
-  <text x="837" y="94" text-anchor="middle" class="title">integer turns fold away</text>
+  <text x="336" y="94" text-anchor="middle" class="title">10枚/秒のカメラで、11回転/秒の点を撮る</text>
+  <text x="837" y="94" text-anchor="middle" class="title">整数周ぶんは同じ位置に畳まれる</text>
 
   <line x1="92" y1="386" x2="580" y2="386" class="axis"/>
-  <text x="336" y="420" text-anchor="middle" class="small">time samples: each frame is 0.1 sec apart</text>
+  <text x="336" y="420" text-anchor="middle" class="small">時間サンプル：各フレームは 0.1 秒おき</text>
 
   <g transform="translate(130,222)">
     <circle r="50" class="wheel"/>
     <line x1="-36" y1="0" x2="36" y2="0" class="spoke"/>
     <line x1="0" y1="-36" x2="0" y2="36" class="spoke"/>
     <line x1="0" y1="0" x2="0" y2="-44" class="mark"/>
-    <text x="0" y="76" text-anchor="middle" class="label">frame 0</text>
-    <text x="0" y="94" text-anchor="middle" class="small">0 deg</text>
+    <text x="0" y="76" text-anchor="middle" class="label">フレーム 0</text>
+    <text x="0" y="94" text-anchor="middle" class="small">0°</text>
   </g>
   <g transform="translate(264,222) rotate(36)">
     <circle r="50" class="wheel"/>
@@ -51,8 +51,8 @@
     <line x1="0" y1="-36" x2="0" y2="36" class="spoke"/>
     <line x1="0" y1="0" x2="0" y2="-44" class="mark"/>
   </g>
-  <text x="264" y="298" text-anchor="middle" class="label">frame 1</text>
-  <text x="264" y="316" text-anchor="middle" class="small">+36 deg seen</text>
+  <text x="264" y="298" text-anchor="middle" class="label">フレーム 1</text>
+  <text x="264" y="316" text-anchor="middle" class="small">+36° に見える</text>
 
   <g transform="translate(398,222) rotate(72)">
     <circle r="50" class="wheel"/>
@@ -60,8 +60,8 @@
     <line x1="0" y1="-36" x2="0" y2="36" class="spoke"/>
     <line x1="0" y1="0" x2="0" y2="-44" class="mark"/>
   </g>
-  <text x="398" y="298" text-anchor="middle" class="label">frame 2</text>
-  <text x="398" y="316" text-anchor="middle" class="small">+72 deg seen</text>
+  <text x="398" y="298" text-anchor="middle" class="label">フレーム 2</text>
+  <text x="398" y="316" text-anchor="middle" class="small">+72° に見える</text>
 
   <g transform="translate(532,222) rotate(108)">
     <circle r="50" class="wheel"/>
@@ -69,24 +69,24 @@
     <line x1="0" y1="-36" x2="0" y2="36" class="spoke"/>
     <line x1="0" y1="0" x2="0" y2="-44" class="mark"/>
   </g>
-  <text x="532" y="298" text-anchor="middle" class="label">frame 3</text>
-  <text x="532" y="316" text-anchor="middle" class="small">+108 deg seen</text>
+  <text x="532" y="298" text-anchor="middle" class="label">フレーム 3</text>
+  <text x="532" y="316" text-anchor="middle" class="small">+108° に見える</text>
 
   <path d="M 178 222 C 203 182, 221 182, 246 222" class="resid"/>
   <path d="M 312 222 C 337 182, 355 182, 380 222" class="resid"/>
   <path d="M 446 222 C 471 182, 489 182, 514 222" class="resid"/>
-  <text x="336" y="144" text-anchor="middle" class="small">actual advance per frame = 1 full turn + 36 deg</text>
-  <text x="336" y="164" text-anchor="middle" class="red">the full turn looks identical; only the 36 deg remainder remains</text>
+  <text x="336" y="144" text-anchor="middle" class="small">実際の進み：1フレームごとに 1周 + 36°</text>
+  <text x="336" y="164" text-anchor="middle" class="red">1周ぶんは同じ位置に戻るので、余りの36°だけが残る</text>
 
   <rect x="706" y="132" width="262" height="94" rx="8" class="soft"/>
   <text x="837" y="164" text-anchor="middle" class="em">11 / 10 = 1 + 1/10</text>
-  <text x="837" y="190" text-anchor="middle" class="small">1 turn per frame folds to same position</text>
-  <text x="837" y="210" text-anchor="middle" class="blue">remainder 1/10 turn/frame is recorded</text>
+  <text x="837" y="190" text-anchor="middle" class="small">1周/フレームは同じ位置に戻る</text>
+  <text x="837" y="210" text-anchor="middle" class="blue">余り 1/10 周/フレームが記録される</text>
 
   <rect x="706" y="254" width="262" height="112" rx="8" class="soft"/>
-  <text x="837" y="286" text-anchor="middle" class="em">camera readout</text>
-  <text x="837" y="314" text-anchor="middle" class="small">fast 11 turns/sec</text>
+  <text x="837" y="286" text-anchor="middle" class="em">カメラの読出し</text>
+  <text x="837" y="314" text-anchor="middle" class="small">本当は 11回転/秒</text>
   <path d="M 765 334 L 908 334" class="arrow"/>
-  <text x="837" y="360" text-anchor="middle" class="red">appears as slow 1 turn/sec</text>
-  <text x="837" y="394" text-anchor="middle" class="small">not disappearance, but folding to a representative</text>
+  <text x="837" y="360" text-anchor="middle" class="red">1回転/秒に見える</text>
+  <text x="837" y="394" text-anchor="middle" class="small">消滅ではなく、代表値への畳み込み</text>
 </svg>
