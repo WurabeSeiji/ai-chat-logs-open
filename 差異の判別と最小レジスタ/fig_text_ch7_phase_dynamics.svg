@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">第7章 図1 位相表現の台帳動力学チャート</title>
+  <desc id="desc">R軸を曲率半径側、円周方向をr方向として読む位相表現の図。Rが大きい領域では曲率が小さく、局所的にユークリッド近似できる。Rが小さい領域は第3巻の対象として示す。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#273043"/>
+    </marker>
+    <marker id="blueArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#1f6f8b"/>
+    </marker>
+    <marker id="redArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#b43d3d"/>
+    </marker>
+    <style>
+      text { font-family: "Hiragino Sans", "Yu Gothic", "Noto Sans CJK JP", sans-serif; fill: #273043; }
+      .small { font-size: 23px; }
+      .mid { font-size: 28px; font-weight: 600; }
+      .title { font-size: 34px; font-weight: 700; }
+      .note { font-size: 21px; fill: #4d5666; }
+      .axis { stroke: #273043; stroke-width: 4; }
+      .guide { stroke: #8492a6; stroke-width: 3; stroke-dasharray: 9 9; fill: none; }
+      .largeArc { stroke: #1f6f8b; stroke-width: 8; fill: none; }
+      .smallArc { stroke: #b43d3d; stroke-width: 7; fill: none; }
+      .tangent { stroke: #30475e; stroke-width: 4; stroke-dasharray: 10 10; }
+      .panel { fill: #ffffff; stroke: #d7dce2; stroke-width: 2; rx: 8; }
+      .soft { fill: #eef7fa; stroke: #c8e7ef; stroke-width: 2; rx: 8; }
+      .warm { fill: #fff2ef; stroke: #f0c7bd; stroke-width: 2; rx: 8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="760" fill="#fbfaf6"/>
+
+  <text x="64" y="58" class="title">位相表現の台帳動力学チャート</text>
+  <text x="64" y="92" class="note">中心と円周は、物理空間の埋め込みではなく、R欄とr欄を読むための補助図である。</text>
+
+  <line x1="150" y1="670" x2="150" y2="126" class="axis" marker-end="url(#arrow)"/>
+  <text x="92" y="123" class="mid">R軸</text>
+  <text x="184" y="158" class="small">曲率半径・内部スケール</text>
+  <text x="184" y="195" class="small">曲率 κ = 1/R</text>
+
+  <line x1="150" y1="670" x2="1065" y2="670" class="axis" marker-end="url(#arrow)"/>
+  <text x="1032" y="646" class="mid">r</text>
+  <text x="740" y="646" class="small">円周方向・位相差の読出し</text>
+
+  <path d="M 252 448 Q 612 286 980 448" class="largeArc"/>
+  <path d="M 590 310 Q 648 340 704 397" stroke="#1f6f8b" stroke-width="5" fill="none" marker-end="url(#blueArrow)"/>
+  <line x1="333" y1="405" x2="902" y2="405" class="tangent"/>
+  <text x="520" y="385" class="small">局所接線面</text>
+
+  <rect x="700" y="184" width="397" height="132" class="soft"/>
+  <text x="724" y="223" class="mid">R が十分大きい領域</text>
+  <text x="724" y="262" class="small">κ = 1/R ≈ 0</text>
+  <text x="724" y="298" class="small">r方向は局所的にユークリッド近似</text>
+
+  <path d="M 260 604 Q 328 496 430 569" class="smallArc"/>
+  <path d="M 354 521 Q 389 530 417 558" stroke="#b43d3d" stroke-width="5" fill="none" marker-end="url(#redArrow)"/>
+  <rect x="432" y="506" width="332" height="118" class="warm"/>
+  <text x="456" y="545" class="mid">R が小さい領域</text>
+  <text x="456" y="584" class="small">曲率が大きい読みになる</text>
+  <text x="456" y="616" class="small">本巻では扱わず、第3巻へ送る</text>
+
+  <path d="M 612 286 Q 566 540 520 706" class="guide"/>
+  <circle cx="520" cy="706" r="7" fill="#8492a6"/>
+  <text x="547" y="705" class="note">仮想中心（図の補助線）</text>
+  <text x="547" y="733" class="note">物理空間の原点ではない</text>
+
+  <rect x="64" y="236" width="360" height="154" class="panel"/>
+  <text x="89" y="276" class="mid">読み方</text>
+  <text x="89" y="315" class="small">R: 曲率半径側の台帳欄</text>
+  <text x="89" y="352" class="small">r: 位相差を読む円周方向</text>
+  <text x="89" y="382" class="note">ここでは局所近似だけを使う。</text>
+
+  <rect x="64" y="430" width="360" height="118" class="panel"/>
+  <text x="89" y="469" class="mid">本章の範囲</text>
+  <text x="89" y="508" class="small">対象領域の大きさに比べて</text>
+  <text x="89" y="540" class="small">R が十分大きい場合を扱う。</text>
+</svg>
