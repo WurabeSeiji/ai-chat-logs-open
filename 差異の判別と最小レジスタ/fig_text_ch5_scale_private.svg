@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="420" viewBox="0 0 1040 420" role="img" aria-labelledby="title desc">
+  <title id="title">Private scale of closed systems</title>
+  <desc id="desc">Two closed systems each have a private master counter and scale. Only the ratio of masters is observable between systems, through a conversion ledger.</desc>
+  <defs>
+    <marker id="arrow-slate" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/>
+    </marker>
+    <style>
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; }
+      .systemA { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; }
+      .systemB { fill: #ecfdf5; stroke: #059669; stroke-width: 2; }
+      .inner { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.3; }
+      .tickA { stroke: #2563eb; stroke-width: 2; }
+      .tickB { stroke: #059669; stroke-width: 2; }
+      .bridge { stroke: #334155; stroke-width: 3; fill: none; marker-end: url(#arrow-slate); }
+      .bridge2 { stroke: #334155; stroke-width: 3; fill: none; marker-end: url(#arrow-slate); }
+      .noabs { stroke: #dc2626; stroke-width: 2.4; fill: none; marker-end: url(#arrow-red); stroke-dasharray: 7 5; }
+      .title { font: 700 18px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .label { font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #334155; }
+      .small { font: 12px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #475569; }
+      .formula { font: 700 16px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .blue { fill: #1d4ed8; font-weight: 700; }
+      .green { fill: #047857; font-weight: 700; }
+      .red { fill: #b91c1c; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect width="1040" height="420" fill="#ffffff"/>
+  <text x="520" y="32" text-anchor="middle" class="title">Closed systems own their scales; comparisons read only ratios</text>
+
+  <rect x="40" y="66" width="960" height="310" rx="12" class="panel"/>
+
+  <circle cx="240" cy="215" r="118" class="systemA"/>
+  <circle cx="800" cy="215" r="118" class="systemB"/>
+  <circle cx="240" cy="215" r="72" class="inner"/>
+  <circle cx="800" cy="215" r="72" class="inner"/>
+
+  <text x="240" y="112" text-anchor="middle" class="title">system A</text>
+  <text x="800" y="112" text-anchor="middle" class="title">system B</text>
+  <text x="240" y="205" text-anchor="middle" class="formula"><tspan class="blue">nu_A</tspan></text>
+  <text x="240" y="230" text-anchor="middle" class="small">private master</text>
+  <text x="800" y="205" text-anchor="middle" class="formula"><tspan class="green">nu_B</tspan></text>
+  <text x="800" y="230" text-anchor="middle" class="small">private master</text>
+
+  <g>
+    <line x1="240" y1="97" x2="240" y2="125" class="tickA"/>
+    <line x1="323" y1="132" x2="303" y2="152" class="tickA"/>
+    <line x1="358" y1="215" x2="330" y2="215" class="tickA"/>
+    <line x1="323" y1="298" x2="303" y2="278" class="tickA"/>
+    <line x1="240" y1="333" x2="240" y2="305" class="tickA"/>
+    <line x1="157" y1="298" x2="177" y2="278" class="tickA"/>
+    <line x1="122" y1="215" x2="150" y2="215" class="tickA"/>
+    <line x1="157" y1="132" x2="177" y2="152" class="tickA"/>
+  </g>
+
+  <g>
+    <line x1="800" y1="97" x2="800" y2="125" class="tickB"/>
+    <line x1="870" y1="120" x2="854" y2="145" class="tickB"/>
+    <line x1="912" y1="181" x2="884" y2="190" class="tickB"/>
+    <line x1="904" y1="252" x2="877" y2="242" class="tickB"/>
+    <line x1="849" y1="319" x2="834" y2="294" class="tickB"/>
+    <line x1="776" y1="330" x2="782" y2="302" class="tickB"/>
+    <line x1="708" y1="291" x2="730" y2="273" class="tickB"/>
+    <line x1="683" y1="219" x2="711" y2="217" class="tickB"/>
+    <line x1="707" y1="148" x2="729" y2="166" class="tickB"/>
+  </g>
+
+  <path d="M 362 205 C 430 150 610 150 678 205" class="bridge"/>
+  <path d="M 678 230 C 610 286 430 286 362 230" class="bridge2"/>
+  <text x="520" y="147" text-anchor="middle" class="formula">observable: nu_B / nu_A</text>
+  <text x="520" y="300" text-anchor="middle" class="label">conversion ledger / scale comparison</text>
+  <text x="520" y="325" text-anchor="middle" class="small">absolute scale is not read from either system alone</text>
+
+  <path d="M 520 86 C 478 86 456 108 456 132" class="noabs"/>
+  <path d="M 520 86 C 562 86 584 108 584 132" class="noabs"/>
+  <text x="520" y="79" text-anchor="middle" class="label"><tspan class="red">no outside master</tspan></text>
+</svg>

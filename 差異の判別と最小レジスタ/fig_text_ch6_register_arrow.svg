@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="520" viewBox="0 0 1040 520" role="img" aria-labelledby="title desc">
+  <title id="title">Register as a non-injective readout</title>
+  <desc id="desc">A non-injective readout maps many states into one record. A chain of such readouts gives a depth direction, read as the arrow of time.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <style>
+      .bg { fill: #ffffff; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.4; }
+      .soft { fill: #f8fafc; stroke: #e2e8f0; stroke-width: 1; }
+      .state { fill: #dbeafe; stroke: #2563eb; stroke-width: 1.7; }
+      .record { fill: #dcfce7; stroke: #059669; stroke-width: 1.7; }
+      .fiber { fill: #fee2e2; stroke: #dc2626; stroke-width: 1.6; }
+      .arrow { stroke: #334155; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+      .thin { stroke: #64748b; stroke-width: 1.2; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #dc2626; stroke-width: 2; fill: none; stroke-dasharray: 6 5; marker-end: url(#arrow); }
+      .title { font: 700 18px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #0f172a; }
+      .label { font: 14px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #334155; }
+      .small { font: 12px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #475569; }
+      .em { font-weight: 700; fill: #0f172a; }
+      .red { fill: #b91c1c; font-weight: 700; }
+      .green { fill: #047857; font-weight: 700; }
+      .blue { fill: #1d4ed8; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect width="1040" height="520" class="bg"/>
+  <text x="520" y="34" text-anchor="middle" class="title">A register is a non-injective readout: records have an arrow</text>
+
+  <rect x="34" y="64" width="464" height="400" rx="10" class="panel"/>
+  <rect x="542" y="64" width="464" height="400" rx="10" class="panel"/>
+
+  <text x="266" y="94" text-anchor="middle" class="title">many states -> one record</text>
+  <text x="774" y="94" text-anchor="middle" class="title">readout chain -> depth</text>
+
+  <rect x="72" y="120" width="166" height="244" rx="8" class="soft"/>
+  <text x="155" y="145" text-anchor="middle" class="label">state space X</text>
+  <circle cx="128" cy="190" r="18" class="state"/>
+  <circle cx="180" cy="190" r="18" class="state"/>
+  <circle cx="128" cy="250" r="18" class="state"/>
+  <circle cx="180" cy="250" r="18" class="state"/>
+  <circle cx="154" cy="310" r="18" class="state"/>
+  <text x="128" y="195" text-anchor="middle" class="small">x1</text>
+  <text x="180" y="195" text-anchor="middle" class="small">x2</text>
+  <text x="128" y="255" text-anchor="middle" class="small">x3</text>
+  <text x="180" y="255" text-anchor="middle" class="small">x4</text>
+  <text x="154" y="315" text-anchor="middle" class="small">x5</text>
+
+  <rect x="326" y="150" width="118" height="184" rx="8" class="soft"/>
+  <text x="385" y="175" text-anchor="middle" class="label">record Y</text>
+  <circle cx="385" cy="235" r="26" class="record"/>
+  <text x="385" y="240" text-anchor="middle" class="small">y</text>
+  <circle cx="385" cy="295" r="18" class="record"/>
+  <text x="385" y="300" text-anchor="middle" class="small">y'</text>
+
+  <path d="M 199 190 C 250 185, 295 200, 357 226" class="arrow"/>
+  <path d="M 199 250 C 255 250, 302 242, 357 235" class="arrow"/>
+  <path d="M 172 310 C 250 318, 305 280, 358 247" class="arrow"/>
+  <path d="M 238 235 C 275 215, 316 210, 358 230" class="dash"/>
+  <text x="284" y="214" text-anchor="middle" class="red">fiber f^-1(y)</text>
+  <text x="259" y="386" text-anchor="middle" class="small">input determines record; record does not determine a unique input</text>
+
+  <rect x="582" y="132" width="110" height="74" rx="9" class="state"/>
+  <rect x="714" y="132" width="110" height="74" rx="9" class="record"/>
+  <rect x="846" y="132" width="110" height="74" rx="9" class="record"/>
+  <text x="637" y="164" text-anchor="middle" class="label">state</text>
+  <text x="637" y="184" text-anchor="middle" class="small">X0</text>
+  <text x="769" y="164" text-anchor="middle" class="label">record</text>
+  <text x="769" y="184" text-anchor="middle" class="small">X1</text>
+  <text x="901" y="164" text-anchor="middle" class="label">record</text>
+  <text x="901" y="184" text-anchor="middle" class="small">X2</text>
+  <path d="M 692 169 L 714 169" class="arrow"/>
+  <path d="M 824 169 L 846 169" class="arrow"/>
+  <text x="703" y="151" text-anchor="middle" class="small">f1</text>
+  <text x="835" y="151" text-anchor="middle" class="small">f2</text>
+
+  <path d="M 640 250 C 696 308, 772 324, 900 292" class="thin"/>
+  <path d="M 900 292 C 802 380, 710 382, 630 330" class="dash"/>
+  <text x="770" y="264" text-anchor="middle" class="green">record direction</text>
+  <text x="775" y="362" text-anchor="middle" class="red">reverse is a fiber, not a unique path</text>
+
+  <line x1="622" y1="414" x2="926" y2="414" stroke="#334155" stroke-width="2.4" marker-end="url(#arrow)"/>
+  <text x="626" y="438" class="small">depth 0</text>
+  <text x="764" y="438" text-anchor="middle" class="small">depth 1</text>
+  <text x="924" y="438" text-anchor="end" class="small">depth 2</text>
+  <text x="774" y="405" text-anchor="middle" class="em">arrow of time = depth of readout chain</text>
+</svg>
