@@ -4,6 +4,8 @@
 **Date:** 2026-07-10  
 **Author:** Noriaki Kihara  
 **Status:** Constructive experimental paper  
+**Version DOI:** 10.5281/zenodo.21291020  
+**Concept DOI:** 10.5281/zenodo.21291018  
 
 ---
 

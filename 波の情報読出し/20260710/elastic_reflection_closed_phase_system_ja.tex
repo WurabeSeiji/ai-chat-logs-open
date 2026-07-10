@@ -1,0 +1,1310 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmonofont[]{DejaVuSansMono.ttf}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{背景空間を仮定しない閉じた位相系におけるフェルミオン的二局所波の完全弾性反射の構成実験}\label{ux80ccux666fux7a7aux9593ux3092ux4eeeux5b9aux3057ux306aux3044ux9589ux3058ux305fux4f4dux76f8ux7cfbux306bux304aux3051ux308bux30d5ux30a7ux30ebux30dfux30aaux30f3ux7684ux4e8cux5c40ux6240ux6ce2ux306eux5b8cux5168ux5f3eux6027ux53cdux5c04ux306eux69cbux6210ux5b9fux9a13}
+
+\textbf{副題:}
+無名等振幅複合波モデルにおける有限解像度相互作用セルと内部観測\\
+\textbf{日付:} 2026-07-10\\
+\textbf{著者:} 木原 範昭\\
+\textbf{位置づけ:} 構成実験論文\\
+\textbf{Version DOI:} 10.5281/zenodo.21291020\\
+\textbf{Concept DOI:} 10.5281/zenodo.21291018
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+本稿では、無名性、全正符号ゼロ閉鎖、非自明存在、無名等振幅複合波、および正規化等振幅奇数倍音局在波を出発点として、背景空間を先験的に仮定しない閉じた位相系において、フェルミオン的核を持つ識別可能な二つの局所波の完全弾性反射に相当する有限解像度保存写像を構成し、数値的に検査した。
+
+局所波 \texttt{A,B}
+は、空間位相、時間位相、進行方向読出し量、代表振幅、および内部識別位相
+\texttt{η} 上の識別振動モードを持つ。観測機 \texttt{C}
+は十分大きな代表振幅容量を持つ重い局所波として扱い、\texttt{A,B}
+近傍に有効曲率半径を与える準静的な読出し基準として実装した。衝突は一点イベントではなく、空間位相および時間位相の有限解像度セルへの侵入として定義した。相互作用セル内では、進行方向読出し量を反転させる一方、識別振動、代表振幅、フェルミオン的核、および補償付き二乗閉鎖を保存する写像を適用した。
+
+最小実験、識別振動頑健性、観測機容量、セル解像度、反射/通過/ラベル交換の対照実験、非対称条件、観測擾乱、複数回衝突、および識別位相
+\texttt{η}
+の読出し解像度を検査した。その結果、反射写像は通過写像およびラベル交換写像から区別され、8回の反復衝突においても方向反転、識別振動、代表振幅、閉鎖残差が保存された。また、観測機不足、セル飛越し、時間セル不一致、識別振動漏れ、\texttt{η}
+読出しエイリアスが破綻条件として分離された。
+
+本結果は、標準的なフェルミ粒子散乱、S行列散乱理論、または標準量子測定過程の導出を主張するものではない。一方で、閉じた位相関係、局在波、内部識別振動、および内部観測だけから、識別可能な二局所波の完全弾性反射に相当する反復可能な保存写像を構成できることを示す数値的構成実験である。
+
+\textbf{キーワード:}
+無名等振幅複合波、全正符号ゼロ閉鎖、有限解像度セル、フェルミオン的局所波、識別振動、完全弾性反射、内部観測
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 序論}\label{ux5e8fux8ad6}
+
+標準的な粒子散乱では、背景空間、漸近状態、相互作用ポテンシャル、散乱振幅などが理論構成の中心に置かれる。本稿では、この標準構成を採用しない。かわりに、閉じた位相系の内部において、局在波、識別振動、観測機、有限解像度セルを構成し、二つの局所波が互いに完全弾性反射したと読める保存写像が作れるかを調べる。
+
+本稿の問いは次である。
+
+\begin{quote}
+背景空間を先験的に置かず、閉じた位相系の内部だけで、識別可能な二つのフェルミオン的局所波の完全弾性反射と、その観測前後での識別を構成できるか。
+\end{quote}
+
+この問いに対して、本稿では次の構成を与える。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  無名性と全正符号ゼロ閉鎖を第一原理層に置く。
+\item
+  無名等振幅複合波を局所波の基本構造とする。
+\item
+  空間位相・時間位相の局在を、外部窓関数ではなく正規化等振幅奇数倍音によって構成する。
+\item
+  二局所波 \texttt{A,B} に、内部識別位相 \texttt{η}
+  上の異なる識別振動を持たせる。
+\item
+  重い観測機 \texttt{C}
+  を、背景空間ではなく準静的な曲率半径生成器および読出し基準として扱う。
+\item
+  衝突を一点イベントではなく、有限解像度セル前後の可逆写像として定義する。
+\item
+  反射写像を、通過写像およびラベル交換写像から区別する。
+\end{enumerate}
+
+外部文献は、本稿の導出根拠ではなく、標準的文脈との違いを明確にするための座標軸として最小限に用いる。フェルミオン・排他性の標準的背景については
+Pauli {[}Pauli1925{]} および Dirac
+{[}Dirac1926{]}、標準散乱理論の代表的定式化については Lippmann and
+Schwinger
+{[}LippmannSchwinger1950{]}、相関的・関係的な観測理解の近傍文脈として
+Rovelli {[}Rovelli1996{]}、有限サンプリングとエイリアスの文脈として
+Shannon {[}Shannon1949{]} を参照する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2.
+本稿で主張しないこと}\label{ux672cux7a3fux3067ux4e3bux5f35ux3057ux306aux3044ux3053ux3068}
+
+本稿は、以下を主張しない。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+主張しないこと
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+理由
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+標準的なフェルミ粒子散乱の導出 &
+本稿はポテンシャル散乱、S行列、漸近状態を用いない \\
+標準量子力学の測定過程の導出 &
+観測は本公理系内の相関読出しとして定義する \\
+実在粒子の物理衝突断面積の計算 &
+断面積、実験単位、標準ハミルトニアンを導入しない \\
+標準波動方程式における微分エネルギー保存 &
+保存量は公理1に基づく補償付き二乗閉鎖である \\
+衝突瞬間という一点イベントの直接観測 &
+衝突は有限解像度セル前後の写像として扱う \\
+\end{longtable}
+}
+
+本稿の主張は、少数公理から閉じた位相系内部の保存写像を構成できるか、という構成可能性に限定される。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. 基本公理系}\label{ux57faux672cux516cux7406ux7cfb}
+
+本稿の実験は、無名等振幅複合波モデル 基本公理系 v3 に基づく。
+
+\subsubsection{3.1 無名性}\label{ux7121ux540dux6027}
+
+基本成分に、個別名、特権軸、特権符号、特権型を与えない。添字は便宜上のラベルであり、成分の固有名ではない。
+
+\subsubsection{3.2
+全正符号ゼロ閉鎖}\label{ux5168ux6b63ux7b26ux53f7ux30bcux30edux9589ux9396}
+
+閉鎖条件を次で与える。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_\{n=1\}\^{}\{N\}x\_n\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+これは共役ノルム
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_n |x\_n|\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+ではない。閉鎖に用いるのは \texttt{x\_n\ \textbackslash{}bar\{x\}\_n}
+ではなく、\texttt{x\_n\^{}2} 型の二乗レジストリである。
+
+\subsubsection{3.3 非自明存在}\label{ux975eux81eaux660eux5b58ux5728}
+
+全成分ゼロ解だけを閉鎖系としない。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}exists n,\textbackslash{}quad x\_n\textbackslash{}neq 0}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{3.4
+補償位相による閉鎖}\label{ux88dcux511fux4f4dux76f8ux306bux3088ux308bux9589ux9396}
+
+実験実装では、各波係数 \texttt{x\_n} に対して補償位相 \texttt{i\ x\_n}
+を持たせる。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_n\^{}2+(i x\_n)\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+これにより、各成分対の二乗和はゼロとなる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. 局在波の構成}\label{ux5c40ux5728ux6ce2ux306eux69cbux6210}
+
+\subsubsection{4.1
+正規化等振幅奇数倍音局在波}\label{ux6b63ux898fux5316ux7b49ux632fux5e45ux5947ux6570ux500dux97f3ux5c40ux5728ux6ce2}
+
+最高奇数倍音次数を \texttt{N\_h=2K-1}
+とする。正規化等振幅奇数倍音局在波を次で定義する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S\_\{N\_h\}(u)=\textbackslash{}frac\{1\}\{K\}\textbackslash{}sum\_\{m=0\}\^{}\{K{-}1\}\textbackslash{}cos((2m+1)u)}
+\end{Highlighting}
+\end{Shaded}
+
+これは次の閉形式でも書ける。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S\_\{N\_h\}(u)=\textbackslash{}frac\{\textbackslash{}sin((N\_h+1)u)\}\{(N\_h+1)\textbackslash{}sin u\}}
+\end{Highlighting}
+\end{Shaded}
+
+中央位相 \texttt{u=0} では、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S\_\{N\_h\}(0)=1}
+\end{Highlighting}
+\end{Shaded}
+
+であるため、代表振幅 \texttt{A} を持つ波形
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{N\_h\}(u)=A S\_\{N\_h\}(u)}
+\end{Highlighting}
+\end{Shaded}
+
+は、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{N\_h\}(0)=A}
+\end{Highlighting}
+\end{Shaded}
+
+を満たす。したがって、最高奇数倍音次数を増やしても、同相整列時の代表振幅は発散しない。
+
+\subsubsection{4.2
+空間・時間局在波}\label{ux7a7aux9593ux6642ux9593ux5c40ux5728ux6ce2}
+
+空間位相を \texttt{χ}、時間位相を \texttt{τ} とする。局所波 \texttt{P}
+は次で与える。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P(\textbackslash{}chi,\textbackslash{}tau)}
+\NormalTok{=}
+\NormalTok{A\_P}
+\NormalTok{S\_\{N\_\{h,\textbackslash{}chi\}\^{}\{P\}\}(\textbackslash{}chi{-}\textbackslash{}chi\_P)}
+\NormalTok{S\_\{N\_\{h,\textbackslash{}tau\}\^{}\{P\}\}(\textbackslash{}tau{-}\textbackslash{}tau\_P)}
+\NormalTok{e\^{}\{i\textbackslash{}phi\_P\}}
+\end{Highlighting}
+\end{Shaded}
+
+局在は外部窓関数ではなく、奇数倍音構造そのものによって作る。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+識別振動とフェルミオン的核}\label{ux8b58ux5225ux632fux52d5ux3068ux30d5ux30a7ux30ebux30dfux30aaux30f3ux7684ux6838}
+
+\subsubsection{5.1
+フェルミオン的核}\label{ux30d5ux30a7ux30ebux30dfux30aaux30f3ux7684ux6838}
+
+二成分逆相構造をフェルミオン的核として読む。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{N=2,\textbackslash{}qquad \textbackslash{}Delta\_\{12\}=\textbackslash{}pi}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e\^{}\{i\textbackslash{}theta\_1\}+e\^{}\{i\textbackslash{}theta\_2\}=0}
+\end{Highlighting}
+\end{Shaded}
+
+本稿では、この構造を標準的な反対称多粒子波動関数そのものとは同一視しない。フェルミオン的とは、内部に逆相核を持つ局所波の作業的分類である。
+
+\subsubsection{\texorpdfstring{5.2 内部識別位相
+\texttt{η}}{5.2 内部識別位相 η}}\label{ux5185ux90e8ux8b58ux5225ux4f4dux76f8-ux3b7}
+
+局所波 \texttt{A,B} を単なる変数名で区別しないため、内部識別位相
+\texttt{η} を導入する。
+
+識別振動を次で表す。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{D\_\{m\_P\}(\textbackslash{}eta)=e\^{}\{i m\_P\textbackslash{}eta\}}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{A} と \texttt{B} は異なる識別振動モードを持つ。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m\_A\textbackslash{}neq m\_B}
+\end{Highlighting}
+\end{Shaded}
+
+最小実装では、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m\_A=1,\textbackslash{}qquad m\_B=2}
+\end{Highlighting}
+\end{Shaded}
+
+とした。
+
+\subsubsection{5.3
+識別振動を含む局所波}\label{ux8b58ux5225ux632fux52d5ux3092ux542bux3080ux5c40ux6240ux6ce2}
+
+識別位相を含む局所波は次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P(\textbackslash{}chi,\textbackslash{}tau,\textbackslash{}eta)}
+\NormalTok{=}
+\NormalTok{A\_P}
+\NormalTok{S\_\{N\_\{h,\textbackslash{}chi\}\^{}\{P\}\}(\textbackslash{}chi{-}\textbackslash{}chi\_P)}
+\NormalTok{S\_\{N\_\{h,\textbackslash{}tau\}\^{}\{P\}\}(\textbackslash{}tau{-}\textbackslash{}tau\_P)}
+\NormalTok{D\_\{m\_P\}(\textbackslash{}eta)}
+\NormalTok{e\^{}\{i\textbackslash{}phi\_P\}}
+\end{Highlighting}
+\end{Shaded}
+
+この式により、識別子は外部から貼り付けた名前ではなく、波形に内蔵された内部振動モードとして扱われる。
+
+\subsubsection{5.4
+識別振動の読出し}\label{ux8b58ux5225ux632fux52d5ux306eux8aadux51faux3057}
+
+読出しモード \texttt{m} に対する参照波を次で与える。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{D\_\{\textbackslash{}mathrm\{read\},m\}(\textbackslash{}eta)=e\^{}\{{-}im\textbackslash{}eta\}}
+\end{Highlighting}
+\end{Shaded}
+
+識別読出し相関は次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{O\_\{P,m\}\^{}\{(j)\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{1\}\{(2\textbackslash{}pi)\^{}3\}}
+\NormalTok{\textbackslash{}int\_\{{-}\textbackslash{}pi\}\^{}\{\textbackslash{}pi\}}
+\NormalTok{\textbackslash{}int\_\{{-}\textbackslash{}pi\}\^{}\{\textbackslash{}pi\}}
+\NormalTok{\textbackslash{}int\_\{{-}\textbackslash{}pi\}\^{}\{\textbackslash{}pi\}}
+\NormalTok{P(\textbackslash{}chi,\textbackslash{}tau,\textbackslash{}eta)}
+\NormalTok{C\_\{\textbackslash{}mathrm\{read\},P\}\^{}\{(j)\}(\textbackslash{}chi,\textbackslash{}tau)}
+\NormalTok{D\_\{\textbackslash{}mathrm\{read\},m\}(\textbackslash{}eta)}
+\NormalTok{d\textbackslash{}chi d\textbackslash{}tau d\textbackslash{}eta}
+\end{Highlighting}
+\end{Shaded}
+
+識別モードは、\texttt{\textbar{}O\_\{P,m\}\^{}\{(j)\}\textbar{}}
+が最大となる \texttt{m} として読まれる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. 観測機 C
+と相対位相読出し}\label{ux89b3ux6e2cux6a5f-c-ux3068ux76f8ux5bfeux4f4dux76f8ux8aadux51faux3057}
+
+\subsubsection{6.1 重い観測機}\label{ux91cdux3044ux89b3ux6e2cux6a5f}
+
+全体系は \texttt{A,B,C} から成る閉鎖系として扱う。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_A x\_n\^{}2+\textbackslash{}sum\_B x\_n\^{}2+\textbackslash{}sum\_C x\_n\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+観測機 \texttt{C} は十分に重く、曲率半径生成器として読む。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R\_C\^{}2={-}\textbackslash{}sum\_C x\_n\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+したがって、\texttt{A,B} 近傍では、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_A x\_n\^{}2+\textbackslash{}sum\_B x\_n\^{}2=R\_C\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+と読む。
+
+\subsubsection{6.2
+相対位相読出し用参照波}\label{ux76f8ux5bfeux4f4dux76f8ux8aadux51faux3057ux7528ux53c2ux7167ux6ce2}
+
+観測機本体 \texttt{C\^{}\{(j)\}} と相対位相読出し用の逆位相参照波
+\texttt{C\_\{\textbackslash{}rm\ read\}\^{}\{(j)\}} を区別する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{C\_\{\textbackslash{}rm read\}\^{}\{(j)\}(\textbackslash{}chi,\textbackslash{}tau)}
+\NormalTok{=}
+\NormalTok{A\_C}
+\NormalTok{S\_\{N\_\{h,\textbackslash{}chi\}\^{}\{C\}\}(\textbackslash{}chi{-}\textbackslash{}chi\_C\^{}\{(j)\})}
+\NormalTok{S\_\{N\_\{h,\textbackslash{}tau\}\^{}\{C\}\}(\textbackslash{}tau{-}\textbackslash{}tau\_C\^{}\{(j)\})}
+\NormalTok{e\^{}\{{-}i\textbackslash{}phi\_C\}}
+\end{Highlighting}
+\end{Shaded}
+
+このとき、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P(\textbackslash{}chi,\textbackslash{}tau)C\_\{\textbackslash{}rm read\}\^{}\{(j)\}(\textbackslash{}chi,\textbackslash{}tau)}
+\NormalTok{\textbackslash{}propto e\^{}\{i(\textbackslash{}phi\_P{-}\textbackslash{}phi\_C)\}}
+\end{Highlighting}
+\end{Shaded}
+
+となり、外部基準との相対位相を読む。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7.
+有限解像度相互作用セルと反射写像}\label{ux6709ux9650ux89e3ux50cfux5ea6ux76f8ux4e92ux4f5cux7528ux30bbux30ebux3068ux53cdux5c04ux5199ux50cf}
+
+\subsubsection{7.1
+有限解像度セル}\label{ux6709ux9650ux89e3ux50cfux5ea6ux30bbux30eb}
+
+衝突は一点イベントではなく、有限解像度セルへの侵入として定義する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{|\textbackslash{}chi\_A{-}\textbackslash{}chi\_B|\textless{}\textbackslash{}epsilon\_\textbackslash{}chi\^{}\{AB\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{|\textbackslash{}tau\_A{-}\textbackslash{}tau\_B|\textless{}\textbackslash{}epsilon\_\textbackslash{}tau\^{}\{AB\}}
+\end{Highlighting}
+\end{Shaded}
+
+セル幅は、奇数倍音局在波の中央ピークから最初の零点までの幅で固定する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}epsilon\_\textbackslash{}chi\^{}\{AB\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{\textbackslash{}pi\}}
+\NormalTok{\{\textbackslash{}min(N\_\{h,\textbackslash{}chi\}\^{}\{A\},N\_\{h,\textbackslash{}chi\}\^{}\{B\})+1\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}epsilon\_\textbackslash{}tau\^{}\{AB\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{\textbackslash{}pi\}}
+\NormalTok{\{\textbackslash{}min(N\_\{h,\textbackslash{}tau\}\^{}\{A\},N\_\{h,\textbackslash{}tau\}\^{}\{B\})+1\}}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{7.2
+計算順序パラメータ}\label{ux8a08ux7b97ux9806ux5e8fux30d1ux30e9ux30e1ux30fcux30bf}
+
+数値実装では、計算順序パラメータ \texttt{s} を導入する。\texttt{s}
+は計算手続きの順序であり、読出し時間位相 \texttt{τ} そのものではない。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s\textbackslash{}neq \textbackslash{}tau}
+\end{Highlighting}
+\end{Shaded}
+
+位置位相更新は次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}chi\_A(s+\textbackslash{}Delta s)=\textbackslash{}chi\_A(s)+q\_A(s)v\_\textbackslash{}chi\textbackslash{}Delta s}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}chi\_B(s+\textbackslash{}Delta s)=\textbackslash{}chi\_B(s)+q\_B(s)v\_\textbackslash{}chi\textbackslash{}Delta s}
+\end{Highlighting}
+\end{Shaded}
+
+時間位相更新は次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}tau\_A(s+\textbackslash{}Delta s)=\textbackslash{}tau\_A(s)+\textbackslash{}omega\_A\textbackslash{}Delta s}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}tau\_B(s+\textbackslash{}Delta s)=\textbackslash{}tau\_B(s)+\textbackslash{}omega\_B\textbackslash{}Delta s}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{7.3
+完全弾性反射写像}\label{ux5b8cux5168ux5f3eux6027ux53cdux5c04ux5199ux50cf}
+
+有限解像度セル内で、次の写像を適用する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}mathcal C:}
+\NormalTok{(A\textquotesingle{},B\textquotesingle{},C\textquotesingle{})\textbackslash{}mapsto(A\textquotesingle{}\textquotesingle{},B\textquotesingle{}\textquotesingle{},C\textquotesingle{}\textquotesingle{})}
+\end{Highlighting}
+\end{Shaded}
+
+進行方向読出し量は反転する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{q\_A\textquotesingle{}\textquotesingle{}={-}q\_A\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{q\_B\textquotesingle{}\textquotesingle{}={-}q\_B\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+一方で、識別振動、代表振幅、フェルミオン的核は保存する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m\_A\textquotesingle{}\textquotesingle{}=m\_A\textquotesingle{},\textbackslash{}qquad m\_B\textquotesingle{}\textquotesingle{}=m\_B\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A\_A\textquotesingle{}\textquotesingle{}=A\_A\textquotesingle{},\textbackslash{}qquad A\_B\textquotesingle{}\textquotesingle{}=A\_B\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+写像は二回適用で元に戻る。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}mathcal C\^{}2=\textbackslash{}mathrm\{id\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8.
+数値実験の構成}\label{ux6570ux5024ux5b9fux9a13ux306eux69cbux6210}
+
+\subsubsection{8.1
+基本パラメータ}\label{ux57faux672cux30d1ux30e9ux30e1ux30fcux30bf}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrl@{}}
+\toprule\noalign{}
+量 & 値 & 意味 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{A\_A} & \texttt{1} & 局所波 A の代表振幅 \\
+\texttt{A\_B} & \texttt{1} & 局所波 B の代表振幅 \\
+\texttt{A\_C} & \texttt{1000} & 観測機 C の代表振幅 \\
+\texttt{N\_\{h,chi\}\^{}A} & \texttt{99} & A
+の空間方向最高奇数倍音次数 \\
+\texttt{N\_\{h,chi\}\^{}B} & \texttt{99} & B
+の空間方向最高奇数倍音次数 \\
+\texttt{N\_\{h,chi\}\^{}C} & \texttt{999} & C
+の空間方向最高奇数倍音次数 \\
+\texttt{N\_\{h,tau\}\^{}A} & \texttt{99} & A
+の時間方向最高奇数倍音次数 \\
+\texttt{N\_\{h,tau\}\^{}B} & \texttt{99} & B
+の時間方向最高奇数倍音次数 \\
+\texttt{N\_\{h,tau\}\^{}C} & \texttt{999} & C
+の時間方向最高奇数倍音次数 \\
+\texttt{chi\_A\^{}\{(0)\}} & \texttt{-0.2} & A の初期位置位相 \\
+\texttt{chi\_B\^{}\{(0)\}} & \texttt{+0.2} & B の初期位置位相 \\
+\texttt{tau\_A\^{}\{(0)\},tau\_B\^{}\{(0)\}} & \texttt{-0.2,-0.2} & A,B
+の初期時間位相 \\
+\texttt{q\_A\^{}\{(0)\},q\_B\^{}\{(0)\}} & \texttt{+1,-1} &
+初期進行方向読出し量 \\
+\texttt{m\_A,m\_B} & \texttt{1,2} & 内部識別振動モード \\
+\texttt{delta\_s} & \texttt{0.01} & 計算順序刻み \\
+\end{longtable}
+}
+
+\subsubsection{8.2 実験群}\label{ux5b9fux9a13ux7fa4}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rll@{}}
+\toprule\noalign{}
+No. & 実験 & 目的 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 基本完全弾性衝突 & 最小条件で写像が成立するか \\
+2 & 識別振動頑健性 & 識別モード混合への耐性 \\
+3 & 観測機 C 条件 & C の重さ条件 \\
+4 & セル解像度 & 刻み幅と有限セル幅の関係 \\
+5 & 反射/通過 対照実験 & 通過・ラベル交換との区別 \\
+6 & 非対称条件 & 振幅差・倍音差・時間差への耐性 \\
+7 & 観測擾乱 & 観測による位相擾乱の影響 \\
+8 & 複数回衝突 & 反復保存性 \\
+9 & \texttt{η} 読出し解像度 & 識別振動のエイリアス条件 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. 結果}\label{ux7d50ux679c}
+
+\subsubsection{9.1
+基本完全弾性衝突}\label{ux57faux672cux5b8cux5168ux5f3eux6027ux885dux7a81}
+
+最小実験では、\texttt{A,B}
+は衝突セルに到達し、進行方向読出し量が反転し、識別振動と代表振幅が保存された。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+項目 & 結果 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+衝突セル到達ステップ & \texttt{19} \\
+最終ステップ & \texttt{40} \\
+\texttt{q\_A,q\_B} 反転 & \texttt{true,true} \\
+\texttt{m\_A,m\_B} 保存 & \texttt{true,true} \\
+ラベル交換 & \texttt{false} \\
+クロストーク & \texttt{false} \\
+補償付き二乗閉鎖残差 & \texttt{0.0} \\
+全体判定 & \texttt{true} \\
+\end{longtable}
+}
+
+\textbf{図1. 基本衝突における軌道と進行方向読出し量}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={基本衝突軌道}]{elastic_collision_simulation_result_v1/elastic_collision_trajectory_v1.png}}
+\caption{基本衝突軌道}
+\end{figure}
+
+\textbf{図2. 識別振動モードの読出し}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={識別振動読出し}]{elastic_collision_simulation_result_v1/elastic_collision_identification_modes_v1.png}}
+\caption{識別振動読出し}
+\end{figure}
+
+\subsubsection{9.2
+識別振動頑健性}\label{ux8b58ux5225ux632fux52d5ux9811ux5065ux6027}
+
+識別振動に漏れを入れた場合、漏れ率が小さい範囲では識別モードは保存された。漏れ率が上昇すると、純度条件が破綻した。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+項目 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+総ケース数 & \texttt{36} \\
+有効ケース数 & \texttt{20} \\
+無効ケース数 & \texttt{16} \\
+最初の破綻漏れ率 & \texttt{0.35} \\
+\end{longtable}
+}
+
+\textbf{図3. 識別振動純度}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={識別振動純度}]{elastic_collision_label_robustness_result_v1/label_robustness_purity_v1.png}}
+\caption{識別振動純度}
+\end{figure}
+
+\textbf{図4. 識別振動保存判定}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={識別振動保存判定}]{elastic_collision_label_robustness_result_v1/label_robustness_detection_v1.png}}
+\caption{識別振動保存判定}
+\end{figure}
+
+\subsubsection{9.3 観測機 C
+の重さ条件}\label{ux89b3ux6e2cux6a5f-c-ux306eux91cdux3055ux6761ux4ef6}
+
+観測機 \texttt{C} の代表振幅容量が小さい場合、準静的条件が破綻した。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+項目 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+総ケース数 & \texttt{13} \\
+有効ケース数 & \texttt{7} \\
+無効ケース数 & \texttt{6} \\
+最初に成立する \texttt{A\_C} & \texttt{20} \\
+\end{longtable}
+}
+
+\textbf{図5. 観測機条件量}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={観測機条件}]{elastic_collision_observer_sweep_result_v1/observer_sweep_conditions_v1.png}}
+\caption{観測機条件}
+\end{figure}
+
+\textbf{図6. 観測機容量による有効性}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={観測機有効性}]{elastic_collision_observer_sweep_result_v1/observer_sweep_validity_v1.png}}
+\caption{観測機有効性}
+\end{figure}
+
+\subsubsection{9.4
+セル解像度と時間刻み}\label{ux30bbux30ebux89e3ux50cfux5ea6ux3068ux6642ux9593ux523bux307f}
+
+更新刻みが有限セル幅より粗い場合、衝突セルを飛び越えることがある。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+項目 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+総ケース数 & \texttt{60} \\
+有効ケース数 & \texttt{57} \\
+無効ケース数 & \texttt{3} \\
+off-grid 有効ケース数 & \texttt{27} \\
+off-grid 無効ケース数 & \texttt{3} \\
+\end{longtable}
+}
+
+\textbf{図7. サンプリング条件}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={サンプリング条件}]{elastic_collision_cell_resolution_sweep_result_v1/cell_resolution_sampling_condition_v1.png}}
+\caption{サンプリング条件}
+\end{figure}
+
+\textbf{図8. off-grid 条件での有効性}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={off-grid 有効性}]{elastic_collision_cell_resolution_sweep_result_v1/cell_resolution_validity_d0_0_203_v1.png}}
+\caption{off-grid 有効性}
+\end{figure}
+
+\subsubsection{9.5
+反射・通過・ラベル交換の対照実験}\label{ux53cdux5c04ux901aux904eux30e9ux30d9ux30ebux4ea4ux63dbux306eux5bfeux7167ux5b9fux9a13}
+
+反射写像、通過写像、ラベル交換写像を比較した。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+写像 & 成立判定 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+reflection & 成立 \\
+transmission & 不成立 \\
+label\_exchange\_reflection & 不成立 \\
+transmission\_with\_label\_exchange & 不成立 \\
+\end{longtable}
+}
+
+反射写像だけが、進行方向反転と識別振動保存を同時に満たした。
+
+\textbf{図9. 対照写像の軌道}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={対照写像軌道}]{elastic_collision_control_maps_result_v1/control_maps_trajectories_v1.png}}
+\caption{対照写像軌道}
+\end{figure}
+
+\textbf{図10. 対照写像の判定}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={対照写像判定}]{elastic_collision_control_maps_result_v1/control_maps_verdict_v1.png}}
+\caption{対照写像判定}
+\end{figure}
+
+\subsubsection{9.6 非対称条件}\label{ux975eux5bfeux79f0ux6761ux4ef6}
+
+振幅差や倍音次数差だけでは写像は破綻しなかった。主な破綻要因は、空間セルと時間セルの同時成立が崩れることであった。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+項目 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+総ケース数 & \texttt{10} \\
+有効ケース数 & \texttt{7} \\
+無効ケース数 & \texttt{3} \\
+\end{longtable}
+}
+
+\textbf{図11. 非対称条件におけるセルギャップ}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={非対称セルギャップ}]{elastic_collision_asymmetry_sweep_result_v1/asymmetry_sweep_cell_gaps_v1.png}}
+\caption{非対称セルギャップ}
+\end{figure}
+
+\textbf{図12. 非対称条件の判定}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={非対称判定}]{elastic_collision_asymmetry_sweep_result_v1/asymmetry_sweep_verdict_v1.png}}
+\caption{非対称判定}
+\end{figure}
+
+\subsubsection{9.7 観測擾乱}\label{ux89b3ux6e2cux64feux4e71}
+
+観測擾乱が \texttt{C}
+の局在幅を超えると観測モデルとしては破綻する。ただし AB
+セル条件を満たす限り、衝突写像自体は成立しうる。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+項目 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+総ケース数 & \texttt{8} \\
+観測モデル有効ケース数 & \texttt{5} \\
+衝突写像有効ケース数 & \texttt{7} \\
+無効ケース数 & \texttt{3} \\
+\end{longtable}
+}
+
+\textbf{図13. 観測擾乱閾値}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={観測擾乱閾値}]{elastic_collision_observation_perturbation_result_v1/observation_perturbation_thresholds_v1.png}}
+\caption{観測擾乱閾値}
+\end{figure}
+
+\textbf{図14. 観測擾乱判定}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={観測擾乱判定}]{elastic_collision_observation_perturbation_result_v1/observation_perturbation_verdict_v1.png}}
+\caption{観測擾乱判定}
+\end{figure}
+
+\subsubsection{9.8 複数回衝突}\label{ux8907ux6570ux56deux885dux7a81}
+
+閉じた区間内で壁反射を許し、AB 衝突を複数回繰り返した。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+項目 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+目標 AB 衝突数 & \texttt{8} \\
+実 AB 衝突数 & \texttt{8} \\
+壁反射数 & \texttt{14} \\
+識別モード全保存 & \texttt{true} \\
+各衝突での \texttt{q} 反転 & \texttt{true} \\
+代表振幅保存 & \texttt{true} \\
+閉鎖保存 & \texttt{true} \\
+全体判定 & \texttt{true} \\
+\end{longtable}
+}
+
+\textbf{図15. 複数回衝突の軌道}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={複数回衝突軌道}]{elastic_collision_multi_collision_result_v1/multi_collision_trajectory_v1.png}}
+\caption{複数回衝突軌道}
+\end{figure}
+
+\textbf{図16. 複数回衝突における閉鎖残差}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={複数回閉鎖残差}]{elastic_collision_multi_collision_result_v1/multi_collision_closure_v1.png}}
+\caption{複数回閉鎖残差}
+\end{figure}
+
+\subsubsection{\texorpdfstring{9.9 \texttt{η}
+識別振動の読出し解像度}{9.9 η 識別振動の読出し解像度}}\label{ux3b7-ux8b58ux5225ux632fux52d5ux306eux8aadux51faux3057ux89e3ux50cfux5ea6}
+
+内部識別振動を有限サンプルで読む場合、モード差がサンプル数の倍数になるとエイリアスが起きる。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+項目 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+総ケース数 & \texttt{88} \\
+有効ケース数 & \texttt{59} \\
+無効ケース数 & \texttt{29} \\
+エイリアスケース数 & \texttt{29} \\
+非エイリアス失敗数 & \texttt{0} \\
+全モードペアが成立する最小 \texttt{η} サンプル数 & \texttt{64} \\
+\end{longtable}
+}
+
+無効ケースはすべて \texttt{η}
+読出しエイリアスであった。これは衝突写像自体の破綻ではなく、識別振動読出しの解像度不足である。
+
+\textbf{図17. \texttt{η} 読出し解像度の有効性}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={eta有効性}]{elastic_collision_eta_resolution_sweep_result_v1/eta_resolution_validity_v1.png}}
+\caption{eta有効性}
+\end{figure}
+
+\textbf{図18. \texttt{η} 識別純度}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={eta純度}]{elastic_collision_eta_resolution_sweep_result_v1/eta_resolution_purity_v1.png}}
+\caption{eta純度}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. 考察}\label{ux8003ux5bdf}
+
+\subsubsection{10.1
+反射と通過の区別}\label{ux53cdux5c04ux3068ux901aux904eux306eux533aux5225}
+
+位置軌道だけを見ると、反射と通過はしばしば区別しにくい。本稿では、識別振動
+\texttt{m\_A,m\_B} と進行方向読出し量 \texttt{q\_A,q\_B}
+を同時に追跡した。
+
+その結果、通過写像やラベル交換写像は、位置だけでは反射に似た読出しを作れても、進行方向反転または識別振動保存の条件で排除された。
+
+したがって、本稿の反射判定は単なる軌道の見かけではなく、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{識別振動を持った局所波そのものが反転方向へ押し出される}
+\end{Highlighting}
+\end{Shaded}
+
+という条件を含む。
+
+\subsubsection{10.2
+背景空間なしの局所相互作用}\label{ux80ccux666fux7a7aux9593ux306aux3057ux306eux5c40ux6240ux76f8ux4e92ux4f5cux7528}
+
+本稿では、背景空間を先に置かない。位置は外部空間座標ではなく、観測機との相対位相読出しとして扱われる。
+
+重い観測機 \texttt{C} は、第三体として完全に動的に解かれるのではなく、AB
+近傍に有効曲率半径を与える準静的基準として吸収される。これにより、閉鎖系内部から局所線形近似を作る。
+
+本稿で用いる \texttt{χ} および \texttt{τ}
+は、局所波が配置される先験的な物理時空座標ではない。これらは閉じた位相系における空間位相および時間位相の読出し変数であり、観測機との相対位相から位置的・時間的順序を表現するための計算領域である。したがって、本稿が背景空間を仮定しないと述べるとき、位相関係を記述するパラメータ領域まで否定するのではなく、粒子や観測機とは独立して存在する外在的な時空舞台を出発点に置かないことを意味する。
+
+\subsubsection{10.3
+保存量の性質}\label{ux4fddux5b58ux91cfux306eux6027ux8cea}
+
+本稿で保存される量は、標準波動方程式の微分エネルギーではない。保存の基礎は、全正符号ゼロ閉鎖に基づく補償付き二乗レジストリである。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_n x\_n\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+各成分に \texttt{x\_n} と \texttt{i\ x\_n} を持たせることで、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_n\^{}2+(i x\_n)\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+が成り立つ。複数回衝突実験では、この閉鎖残差が反復衝突後もゼロに保たれた。
+
+したがって、閉鎖残差ゼロは、数値シミュレーションによって閉鎖則が偶発的に発見されたことを意味しない。これは、定義された補償付き二乗閉鎖構造が、衝突写像および反復更新の下でも失われずに保存されたことの確認である。
+
+\subsubsection{10.4
+破綻条件の意味}\label{ux7834ux7dbbux6761ux4ef6ux306eux610fux5473}
+
+本モデルは、すべての条件で成功するわけではない。観測機が軽すぎる場合、セルを飛び越える場合、空間セルと時間セルが同時に成立しない場合、識別振動が混合しすぎる場合、または
+\texttt{η} 読出しでエイリアスが起きる場合、写像または観測は破綻する。
+
+これは、本構成が任意に成功する恣意的模型ではなく、明確な成立条件と失敗条件を持つことを意味する。
+
+\subsubsection{10.5
+反転写像の位置づけ}\label{ux53cdux8ee2ux5199ux50cfux306eux4f4dux7f6eux3065ux3051}
+
+本稿で方向反転写像そのものは、有限解像度相互作用セルにおける構成規則として与えられており、第一原理のみからその形が一意に導出されたものではない。本実験が示すのは、この反転規則が、識別振動、代表振幅、フェルミオン的核、内部観測、および補償付き二乗閉鎖と両立し、通過写像やラベル交換写像から区別可能な反復保存写像を構成することである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{11.
+成立条件と破綻条件}\label{ux6210ux7acbux6761ux4ef6ux3068ux7834ux7dbbux6761ux4ef6}
+
+\subsubsection{11.1 成立条件}\label{ux6210ux7acbux6761ux4ef6}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+条件 & 内容 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+有限セル到達 & \texttt{A,B} が空間セル・時間セルを同時に満たす \\
+更新刻み & \texttt{delta\_s} がセル幅を飛び越えない \\
+観測機条件 & \texttt{C} が十分重く、準静的曲率半径生成器として扱える \\
+識別振動 & \texttt{m\_A,m\_B} が読出し解像度で分離可能 \\
+識別純度 & 漏れ率が支配モードを反転させない \\
+反射写像 & \texttt{q\_A,q\_B} が反転し、\texttt{m\_A,m\_B}
+と代表振幅が保存される \\
+閉鎖 & 補償付き二乗レジストリで残差がゼロになる \\
+\end{longtable}
+}
+
+\subsubsection{11.2 破綻条件}\label{ux7834ux7dbbux6761ux4ef6}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+破綻条件 & 実験での現れ方 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+観測機が軽すぎる & \texttt{A\_C\ \textless{}\ 20} で準静的条件が破綻 \\
+更新刻みが粗い & off-grid かつ高解像度セルで衝突セル未到達 \\
+時間セル不一致 & 空間的には接近しても相互作用セルに入らない \\
+観測擾乱が大きい & C 幅超過で観測モデル破綻、AB セル超過で写像破綻 \\
+識別振動漏れ & 漏れ率上昇で純度条件が破綻 \\
+\texttt{η} エイリアス & モード差がサンプル数の倍数になると識別不能 \\
+通過・ラベル交換 & \texttt{q} 反転または識別モード保存条件で排除 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{12. 結論}\label{ux7d50ux8ad6}
+
+本稿では、無名性、全正符号ゼロ閉鎖、非自明存在、無名等振幅複合波、および正規化等振幅奇数倍音局在という少数の作業公理・定義から出発し、背景空間を先験的に仮定しない閉じた位相系において、識別可能な二つのフェルミオン的局所波の完全弾性反射に相当する有限解像度保存写像を構成した。
+
+二局所波は、内部識別位相上の異なる振動モードを持ち、有限解像度相互作用セルへの侵入時に進行方向読出し量を反転させる一方、識別振動、代表振幅、およびフェルミオン的核を保存した。重い観測機による空間・時間・識別位相相関読出しを用いることで、反射写像を通過写像およびラベル交換写像から区別できた。
+
+また、観測機の代表振幅容量、更新刻み、時間セル整合性、識別振動の純度、識別位相方向のサンプリング解像度に対して、成立条件および破綻条件が得られた。複数回衝突においても、方向反転、識別振動、代表振幅、および補償付き二乗閉鎖は保存された。
+
+本結果は、標準的なフェルミ粒子散乱または量子測定過程の導出を意味しない。一方で、背景空間を外部舞台として置かず、閉じた位相関係、局在波、内部識別振動、および内部観測から、識別可能な二局所波の完全弾性反射に相当する反復可能な保存写像を構成できることを示す数値的構成実験である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{謝辞}\label{ux8b1dux8f9e}
+
+本稿は、2026-07-10 に作成された無名等振幅複合波モデル 基本公理系
+v3、完全弾性衝突シミュレーション仕様書
+v1、および完全弾性衝突シミュレーション実験結果 v1 に基づく。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsubsection{内部文書}\label{ux5185ux90e8ux6587ux66f8}
+
+{[}KiharaAxioms2026{]} 木原範昭,
+\href{基本公理系.md}{無名等振幅複合波モデル 基本公理系 v3}, 2026-07-10.
+
+{[}KiharaSpec2026{]} 木原範昭,
+\href{完全弾性衝突シミュレーション仕様書\%20v1.md}{完全弾性衝突シミュレーション仕様書
+v1}, 2026-07-10.
+
+{[}KiharaResults2026{]} 木原範昭,
+\href{完全弾性衝突シミュレーション実験結果\%20v1.md}{完全弾性衝突シミュレーション実験結果
+v1}, 2026-07-10.
+
+\subsubsection{外部文献}\label{ux5916ux90e8ux6587ux732e}
+
+{[}Pauli1925{]} W. Pauli, ``Über den Zusammenhang des Abschlusses der
+Elektronengruppen im Atom mit der Komplexstruktur der Spektren,''
+\emph{Zeitschrift für Physik}, 31, 765-783, 1925.
+
+{[}Dirac1926{]} P. A. M. Dirac, ``On the Theory of Quantum Mechanics,''
+\emph{Proceedings of the Royal Society of London. Series A}, 112,
+661-677, 1926.
+
+{[}LippmannSchwinger1950{]} B. A. Lippmann and J. Schwinger,
+``Variational Principles for Scattering Processes. I,'' \emph{Physical
+Review}, 79, 469-480, 1950.
+
+{[}Rovelli1996{]} C. Rovelli, ``Relational Quantum Mechanics,''
+\emph{International Journal of Theoretical Physics}, 35, 1637-1678,
+1996. arXiv:quant-ph/9609002.
+
+{[}Shannon1949{]} C. E. Shannon, ``Communication in the Presence of
+Noise,'' \emph{Proceedings of the IRE}, 37(1), 10-21, 1949.
+
+{[}Noether1918{]} E. Noether, ``Invariante Variationsprobleme,''
+\emph{Nachrichten von der Gesellschaft der Wissenschaften zu Göttingen,
+Mathematisch-Physikalische Klasse}, 235-257, 1918. English translation:
+``Invariant Variation Problems.''
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{付録A.
+実験結果ファイル一覧}\label{ux4ed8ux9332a.-ux5b9fux9a13ux7d50ux679cux30d5ux30a1ux30a4ux30ebux4e00ux89a7}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+実験
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+レポート
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+結果JSON
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+基本完全弾性衝突 &
+\href{elastic_collision_simulation_result_v1/elastic_collision_report_v1.md}{report}
+&
+\href{elastic_collision_simulation_result_v1/elastic_collision_result_v1.json}{json} \\
+識別振動頑健性 &
+\href{elastic_collision_label_robustness_result_v1/label_robustness_report_v1.md}{report}
+&
+\href{elastic_collision_label_robustness_result_v1/label_robustness_result_v1.json}{json} \\
+観測機 C 条件 &
+\href{elastic_collision_observer_sweep_result_v1/observer_sweep_report_v1.md}{report}
+&
+\href{elastic_collision_observer_sweep_result_v1/observer_sweep_result_v1.json}{json} \\
+セル解像度 &
+\href{elastic_collision_cell_resolution_sweep_result_v1/cell_resolution_sweep_report_v1.md}{report}
+&
+\href{elastic_collision_cell_resolution_sweep_result_v1/cell_resolution_sweep_result_v1.json}{json} \\
+対照写像 &
+\href{elastic_collision_control_maps_result_v1/control_maps_report_v1.md}{report}
+&
+\href{elastic_collision_control_maps_result_v1/control_maps_result_v1.json}{json} \\
+非対称条件 &
+\href{elastic_collision_asymmetry_sweep_result_v1/asymmetry_sweep_report_v1.md}{report}
+&
+\href{elastic_collision_asymmetry_sweep_result_v1/asymmetry_sweep_result_v1.json}{json} \\
+観測擾乱 &
+\href{elastic_collision_observation_perturbation_result_v1/observation_perturbation_report_v1.md}{report}
+&
+\href{elastic_collision_observation_perturbation_result_v1/observation_perturbation_result_v1.json}{json} \\
+複数回衝突 &
+\href{elastic_collision_multi_collision_result_v1/multi_collision_report_v1.md}{report}
+&
+\href{elastic_collision_multi_collision_result_v1/multi_collision_result_v1.json}{json} \\
+\texttt{η} 解像度 &
+\href{elastic_collision_eta_resolution_sweep_result_v1/eta_resolution_sweep_report_v1.md}{report}
+&
+\href{elastic_collision_eta_resolution_sweep_result_v1/eta_resolution_sweep_result_v1.json}{json} \\
+\end{longtable}
+}
+
+\end{document}
