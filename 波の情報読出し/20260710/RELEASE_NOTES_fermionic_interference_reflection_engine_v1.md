@@ -92,4 +92,10 @@ The confirmed result is that the direct direction-reversal rule of the preceding
 
 ## Publication Status
 
-Local publication artifacts have been generated. Zenodo DOI reservation, upload, publication, and git commit/push remain pending because the current Codex execution environment could not obtain the required elevated filesystem/network permissions.
+Publication has been completed.
+
+- Zenodo version DOI: https://doi.org/10.5281/zenodo.21295480
+- Zenodo concept DOI: https://doi.org/10.5281/zenodo.21295479
+- Zenodo record: https://zenodo.org/records/21295480
+- GitHub final commit: `dd65658e`
+- Zenn article source: `articles/fermionic-interference-reflection-engine.md`
