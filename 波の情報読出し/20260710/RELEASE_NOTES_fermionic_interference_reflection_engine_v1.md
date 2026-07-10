@@ -3,9 +3,9 @@
 **Date:** 2026-07-10  
 **Author:** Noriaki Kihara  
 **Repository:** `ai-chat-logs-open`  
-**Zenodo Version DOI:** pending  
-**Zenodo Concept DOI:** pending  
-**Zenodo Record:** pending  
+**Zenodo Version DOI:** 10.5281/zenodo.21295480  
+**Zenodo Concept DOI:** 10.5281/zenodo.21295479  
+**Zenodo Record:** https://zenodo.org/records/21295480  
 **Zenn Article:** `articles/fermionic-interference-reflection-engine.md`  
 
 ---

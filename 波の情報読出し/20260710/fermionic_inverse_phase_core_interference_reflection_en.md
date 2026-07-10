@@ -4,8 +4,8 @@
 **Date:** 2026-07-10  
 **Author:** Noriaki Kihara  
 **Status:** Additional paper / executed numerical experiment  
-**Version DOI:** pending  
-**Concept DOI:** pending  
+**Version DOI:** 10.5281/zenodo.21295480  
+**Concept DOI:** 10.5281/zenodo.21295479  
 
 ---
 

@@ -3,7 +3,7 @@ title: "完全弾性反射の q 反転規則を、フェルミオン的交換干
 emoji: "🌊"
 type: "idea"
 topics: ["physics", "simulation", "zenodo", "quantum"]
-published: false
+published: true
 ---
 
 前回の構成実験では、背景空間を前提にせず、閉じた位相系の内部で二つの識別可能なフェルミオン的局所波 `A,B` と観測機 `C` を構成し、完全弾性反射に相当する保存写像を実行しました。
@@ -18,8 +18,8 @@ q \mapsto -q
 
 論文本体:
 
-- Version DOI: pending
-- Concept DOI: pending
+- Version DOI: https://doi.org/10.5281/zenodo.21295480
+- Concept DOI: https://doi.org/10.5281/zenodo.21295479
 - GitHub: https://github.com/WurabeSeiji/ai-chat-logs-open
 
 ## 何を置き換えたか
