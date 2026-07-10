@@ -6,7 +6,8 @@
 **Zenodo Version DOI:** 10.5281/zenodo.21291020  
 **Zenodo Concept DOI:** 10.5281/zenodo.21291018  
 **Zenodo Record:** https://zenodo.org/records/21291020  
-**Zenn Article:** `articles/elastic-reflection-closed-phase-system.md`
+**Zenn Article:** `articles/elastic-reflection-closed-phase-system.md`  
+**note Article (JA):** https://note.com/kiharanoriaki/n/n15451632027b  
 
 ---
 
@@ -18,7 +19,7 @@ This release publishes the constructive experiment paper:
 
 The work constructs and numerically tests a finite-resolution conservative reflection map for two identifiable fermionic local waves in a closed phase system, without assuming an external background space as the starting point.
 
-The release includes the Japanese and English main papers, supporting axiom/specification/result documents, generated TeX/PDF files, figures, JSON/CSV result files, and simulation scripts.
+The release includes the Japanese and English main papers, supporting axiom/specification/result documents, generated TeX/PDF files, figures, JSON/CSV result files, simulation scripts, and the Japanese note article source.
 
 ---
 
@@ -35,6 +36,7 @@ The release includes the Japanese and English main papers, supporting axiom/spec
 | `basic_axiom_system_v3_en.md` / `基本公理系.md` | Axiom-system references |
 | `elastic_collision_simulation_spec_v1_en.md` / `完全弾性衝突シミュレーション仕様書 v1.md` | Simulation specification |
 | `elastic_collision_simulation_experiment_results_v1_en.md` / `完全弾性衝突シミュレーション実験結果 v1.md` | Integrated result report |
+| `note_article_elastic_reflection_closed_phase_system_ja.md` | Japanese note article source |
 | `elastic_reflection_closed_phase_system_publication_bundle_v1.zip` | Reproducibility bundle |
 
 ---
