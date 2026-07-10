@@ -8,6 +8,11 @@
 **Zenodo Record:** https://zenodo.org/records/21291020  
 **Zenn Article:** `articles/elastic-reflection-closed-phase-system.md`  
 **note Article (JA):** https://note.com/kiharanoriaki/n/n15451632027b  
+**note Article (EN):** https://note.com/kiharanoriaki/n/n5a009a2735e7  
+**Facebook Post (JA):** https://www.facebook.com/kihara.noriaki/posts/pfbid0axK38naCxEU2PRipEEWDy1FiJdhrSWjSSp4Ew8WgPDuVw9xRHPNEzVfz9J1N4A5Xl  
+**Facebook Post (EN):** https://www.facebook.com/kihara.noriaki/posts/pfbid02WZXKajsqdiH8YGoHGodTnnugoW6t2a4tta8QiojW8fzVCi2CanJXbEK9kehVUDcpl  
+**X Post (JA):** https://x.com/NoriakiKihara/status/2075516987598659779  
+**X Post (EN):** https://x.com/NoriakiKihara/status/2075517594346618886  
 
 ---
 
@@ -19,7 +24,7 @@ This release publishes the constructive experiment paper:
 
 The work constructs and numerically tests a finite-resolution conservative reflection map for two identifiable fermionic local waves in a closed phase system, without assuming an external background space as the starting point.
 
-The release includes the Japanese and English main papers, supporting axiom/specification/result documents, generated TeX/PDF files, figures, JSON/CSV result files, simulation scripts, and the Japanese note article source.
+The release includes the Japanese and English main papers, supporting axiom/specification/result documents, generated TeX/PDF files, figures, JSON/CSV result files, simulation scripts, and the Japanese/English note article sources.
 
 ---
 
@@ -37,6 +42,7 @@ The release includes the Japanese and English main papers, supporting axiom/spec
 | `elastic_collision_simulation_spec_v1_en.md` / `完全弾性衝突シミュレーション仕様書 v1.md` | Simulation specification |
 | `elastic_collision_simulation_experiment_results_v1_en.md` / `完全弾性衝突シミュレーション実験結果 v1.md` | Integrated result report |
 | `note_article_elastic_reflection_closed_phase_system_ja.md` | Japanese note article source |
+| `note_article_elastic_reflection_closed_phase_system_en.md` | English note article source |
 | `elastic_reflection_closed_phase_system_publication_bundle_v1.zip` | Reproducibility bundle |
 
 ---
