@@ -1,0 +1,84 @@
+<svg width="900" height="620" viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/>
+    </marker>
+    <radialGradient id="cgrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#dbeafe"/>
+      <stop offset="100%" stop-color="#93c5fd"/>
+    </radialGradient>
+    <radialGradient id="agrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fee2e2"/>
+      <stop offset="100%" stop-color="#fca5a5"/>
+    </radialGradient>
+    <radialGradient id="bgrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#dcfce7"/>
+      <stop offset="100%" stop-color="#86efac"/>
+    </radialGradient>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="620" fill="#fafafa"/>
+
+  <!-- Center -->
+  <circle cx="450" cy="330" r="4" fill="#111"/>
+  <text x="462" y="334" font-size="16" fill="#111">O: common projection center</text>
+
+  <!-- Curvature circle -->
+  <circle cx="450" cy="330" r="230" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="640" y="150" font-size="16" fill="#475569">curvature circle / phase shell</text>
+  <text x="635" y="172" font-size="15" fill="#475569">R(C)² = -Σ[C] x(n)²</text>
+
+  <!-- Observer C -->
+  <circle cx="450" cy="100" r="42" fill="url(#cgrad)" stroke="#2563eb" stroke-width="3"/>
+  <text x="434" y="96" font-size="22" font-weight="bold" fill="#1e3a8a">C</text>
+  <text x="380" y="58" font-size="14" fill="#1e3a8a">heavy observer wave</text>
+  <text x="377" y="76" font-size="13" fill="#1e3a8a">A(C) &gt;&gt; A(A), A(B)</text>
+
+  <!-- A and B -->
+  <circle cx="322" cy="205" r="30" fill="url(#agrad)" stroke="#dc2626" stroke-width="3"/>
+  <text x="313" y="212" font-size="22" font-weight="bold" fill="#7f1d1d">A</text>
+  <circle cx="578" cy="205" r="30" fill="url(#bgrad)" stroke="#16a34a" stroke-width="3"/>
+  <text x="570" y="212" font-size="22" font-weight="bold" fill="#14532d">B</text>
+
+  <!-- Radial projection lines -->
+  <line x1="450" y1="330" x2="322" y2="205" stroke="#64748b" stroke-width="1.7"/>
+  <line x1="450" y1="330" x2="578" y2="205" stroke="#64748b" stroke-width="1.7"/>
+  <line x1="450" y1="330" x2="450" y2="100" stroke="#64748b" stroke-width="1.7"/>
+
+  <!-- Local AB tangent line -->
+  <line x1="270" y1="245" x2="630" y2="245" stroke="#111827" stroke-width="2" stroke-dasharray="5 5"/>
+  <text x="332" y="270" font-size="15" fill="#111827">local linear patch near A,B: ell(AB) &lt;&lt; R(C)</text>
+
+  <!-- q arrows -->
+  <line x1="360" y1="205" x2="420" y2="205" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="368" y="190" font-size="14" fill="#7f1d1d">q(A)=+1</text>
+  <line x1="540" y1="205" x2="480" y2="205" stroke="#16a34a" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="494" y="190" font-size="14" fill="#14532d">q(B)=-1</text>
+
+  <!-- phase labels -->
+  <path d="M 450 330 A 95 95 0 0 1 382 262" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <text x="360" y="285" font-size="14" fill="#7f1d1d">χ(A)</text>
+  <path d="M 450 330 A 95 95 0 0 0 518 262" fill="none" stroke="#22c55e" stroke-width="2"/>
+  <text x="522" y="285" font-size="14" fill="#14532d">χ(B)</text>
+  <path d="M 450 330 A 125 125 0 0 1 450 205" fill="none" stroke="#2563eb" stroke-width="2"/>
+  <text x="462" y="250" font-size="14" fill="#1e3a8a">χ(C)</text>
+
+  <!-- wave packets icons -->
+  <path d="M 295 235 C 300 220, 305 220, 310 235 S 320 250, 325 235 S 335 220, 340 235 S 350 250, 355 235" fill="none" stroke="#991b1b" stroke-width="2"/>
+  <path d="M 550 235 C 555 220, 560 220, 565 235 S 575 250, 580 235 S 590 220, 595 235 S 605 250, 610 235" fill="none" stroke="#166534" stroke-width="2"/>
+  <path d="M 404 137 C 410 120, 416 120, 422 137 S 434 154, 440 137 S 452 120, 458 137 S 470 154, 476 137 S 488 120, 494 137" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+
+  <!-- time phase box -->
+  <rect x="54" y="430" width="340" height="138" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="74" y="462" font-size="17" font-weight="bold" fill="#0f172a">time-localized odd-harmonic readout</text>
+  <text x="74" y="490" font-size="15" fill="#334155">C(χ,τ) = A(C) Sχ(χ-χ(C))</text>
+  <text x="74" y="518" font-size="15" fill="#334155">Sτ(τ-τ(C)) exp(iφ(C)); no external window.</text>
+  <text x="74" y="546" font-size="15" fill="#334155">τ(C) is read by temporal odd-harmonic localization.</text>
+
+  <!-- closure box -->
+  <rect x="506" y="430" width="340" height="138" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="526" y="462" font-size="17" font-weight="bold" fill="#0f172a">closure and curvature</text>
+  <text x="526" y="490" font-size="15" fill="#334155">Σ[A] x(n)² + Σ[B] x(n)² + Σ[C] x(n)² = 0</text>
+  <text x="526" y="518" font-size="15" fill="#334155">R(C)² = -Σ[C] x(n)²</text>
+  <text x="526" y="546" font-size="15" fill="#334155">A,B are simulated in a local linear patch.</text>
+</svg>
