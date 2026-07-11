@@ -1054,11 +1054,14 @@ abc_multigauge_readout_integration_summary_result_v1/
 
 1. 木原範昭「無名等振幅複合波モデル 基本公理系 v2」2026-07-10.
 2. 木原範昭「全正符号ゼロ閉鎖の読出し多重性に関する定義補足」2026-07-11.
-3. 木原範昭「背景空間を仮定しない閉じた位相系におけるフェルミオン的二局所波の完全弾性反射の構成実験」2026.
+3. 木原範昭「背景空間を仮定しない閉じた位相系におけるフェルミオン的二局所波の完全弾性反射の構成実験」Version DOI: `10.5281/zenodo.21291020`, Concept DOI: `10.5281/zenodo.21291018`, 2026.
 4. 木原範昭「フェルミオン的逆相核による完全反射写像の干渉構成」Version DOI: `10.5281/zenodo.21295480`, Concept DOI: `10.5281/zenodo.21295479`, 2026.
 5. 木原範昭「曲率付き閉鎖定常波による曲率繰り込みと完全反射安定性」Version DOI: `10.5281/zenodo.21304040`, Concept DOI: `10.5281/zenodo.21304039`, 2026.
 
 ## 外部参考文献
 
-6. S. Pancharatnam, “Generalized theory of interference, and its applications,” *Proceedings of the Indian Academy of Sciences A*, 44, 247–262, 1956.
-7. M. V. Berry, “Quantal phase factors accompanying adiabatic changes,” *Proceedings of the Royal Society of London A*, 392, 45–57, 1984. DOI: `10.1098/rspa.1984.0023`.
+外部参考文献は、本稿の導出根拠ではなく、保存則・干渉位相・幾何位相に関する標準的背景を示すために最小限に用いる。
+
+6. E. Noether, “Invariante Variationsprobleme,” *Nachrichten von der Gesellschaft der Wissenschaften zu Göttingen, Mathematisch-Physikalische Klasse*, 235–257, 1918.
+7. S. Pancharatnam, “Generalized theory of interference, and its applications,” *Proceedings of the Indian Academy of Sciences A*, 44, 247–262, 1956.
+8. M. V. Berry, “Quantal phase factors accompanying adiabatic changes,” *Proceedings of the Royal Society of London A*, 392, 45–57, 1984. DOI: `10.1098/rspa.1984.0023`.
