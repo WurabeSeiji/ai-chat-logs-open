@@ -1,0 +1,129 @@
+{
+  "experiment": "abc_baseline_stationary_wave_c_mediated_response_preliminary_v1",
+  "params": {
+    "chi_A0": -0.25,
+    "chi_B0": 0.25,
+    "R_A": 1.0,
+    "R_B": 1.5625,
+    "R_C": 100.0,
+    "step_count": 48,
+    "delta_s": 1.0,
+    "epsilon_to_C": 1e-06,
+    "epsilon_C_return": 0.001,
+    "memory_decay": 0.92,
+    "h_chi": 0.0005,
+    "gauge_std_tol": 1e-14,
+    "zero_motion_tol": 1e-14,
+    "nonzero_effect_floor": 1e-12,
+    "balance_tol": 1e-12,
+    "attraction_tol": 1e-12
+  },
+  "gauges": [
+    {
+      "name": "g0",
+      "delta_chi": 0.0,
+      "phase_bias": 0.0,
+      "gain": 1.0
+    },
+    {
+      "name": "g_chi_plus",
+      "delta_chi": 0.0005,
+      "phase_bias": 0.0,
+      "gain": 1.0
+    },
+    {
+      "name": "g_chi_minus",
+      "delta_chi": -0.0005,
+      "phase_bias": 0.0,
+      "gain": 1.0
+    },
+    {
+      "name": "g_phase_plus",
+      "delta_chi": 0.0,
+      "phase_bias": 0.11,
+      "gain": 1.0
+    },
+    {
+      "name": "g_phase_minus",
+      "delta_chi": 0.0,
+      "phase_bias": -0.13,
+      "gain": 1.0
+    },
+    {
+      "name": "g_gain_high",
+      "delta_chi": 0.0,
+      "phase_bias": 0.0,
+      "gain": 1.2
+    },
+    {
+      "name": "g_gain_low",
+      "delta_chi": 0.0,
+      "phase_bias": 0.0,
+      "gain": 0.8
+    }
+  ],
+  "phase_summaries": [
+    {
+      "phase": "phase2_c_deformation_only",
+      "case": "A_B_to_C_no_return",
+      "purpose": "A/BがCを歪ませるがCからA/Bへ戻さない",
+      "max_delta_A_abs": 2.836548826074295e-20,
+      "max_delta_B_abs": 2.836548826074295e-20,
+      "max_acc_A_abs": 0.0,
+      "max_acc_B_abs": 0.0,
+      "max_delta_chi_std": 6.414265819555404e-19,
+      "initial_distance_AB_abs": 0.5,
+      "final_distance_AB_abs": 0.5,
+      "distance_change": 0.0,
+      "R_weighted_delta_balance_final": -7.268656366815381e-20,
+      "R_weighted_acceleration_balance_max": 0.0,
+      "valid": true
+    },
+    {
+      "phase": "phase3_c_return_frozen",
+      "case": "C_return_without_reembedding",
+      "purpose": "Cからの瞬間応答を読むが次ステップへ戻入しない",
+      "max_delta_A_abs": 1.7825161307551725e-10,
+      "max_delta_B_abs": 1.1408103241485042e-10,
+      "max_acc_A_abs": 0.0,
+      "max_acc_B_abs": 0.0,
+      "max_delta_chi_std": 6.414265819373954e-19,
+      "initial_distance_AB_abs": 0.5,
+      "final_distance_AB_abs": 0.5,
+      "distance_change": 0.0,
+      "R_weighted_delta_balance_final": -7.268653177414249e-20,
+      "R_weighted_acceleration_balance_max": 0.0,
+      "valid": true
+    },
+    {
+      "phase": "phase3_c_return_persistent",
+      "case": "C_return_with_persistent_reembedding",
+      "purpose": "C残渣を保持して次ステップへ戻入する",
+      "max_delta_A_abs": 8.179551975640347e-08,
+      "max_delta_B_abs": 5.234913264414473e-08,
+      "max_acc_A_abs": 1.5087216506023456e-10,
+      "max_acc_B_abs": 9.655818563855004e-11,
+      "max_delta_chi_std": 6.414269100766159e-19,
+      "initial_distance_AB_abs": 0.5,
+      "final_distance_AB_abs": 0.49999986585534767,
+      "distance_change": -1.3414465233063666e-07,
+      "R_weighted_delta_balance_final": -7.26727798964588e-20,
+      "R_weighted_acceleration_balance_max": 4.011825970882184e-23,
+      "valid": true
+    }
+  ],
+  "aggregate_verdict": {
+    "phase2_c_deformation_only_valid": true,
+    "phase3_c_return_frozen_valid": true,
+    "phase3_c_return_persistent_valid": true,
+    "single_gauge_only_used": false,
+    "c_mediated_response_preliminary_valid": true,
+    "max_phase2_C_memory_abs": 3.5873847375164163e-06,
+    "max_frozen_C_memory_abs": 2.923326454903677e-07,
+    "max_persistent_C_memory_abs": 3.5873841187439837e-06,
+    "persistent_distance_change": -1.3414465233063666e-07,
+    "persistent_R_delta_balance": -7.26727798964588e-20,
+    "persistent_R_acceleration_balance_max": 4.011825970882184e-23,
+    "gauge_count": 7
+  }
+}

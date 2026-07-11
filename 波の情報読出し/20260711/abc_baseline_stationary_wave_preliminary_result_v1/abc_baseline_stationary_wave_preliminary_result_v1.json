@@ -1,0 +1,679 @@
+{
+  "experiment": "abc_baseline_stationary_wave_preliminary_v1",
+  "params": {
+    "chi_A0": -0.25,
+    "chi_B0": 0.25,
+    "chi_C0": 0.0,
+    "tau0": 0.0,
+    "A_A": 1.0,
+    "A_B": 1.25,
+    "A_C": 10.0,
+    "R_A": 1.0,
+    "R_B": 1.5625,
+    "R_C": 100.0,
+    "step_count": 25,
+    "delta_s": 1.0,
+    "h_chi": 0.0005,
+    "h_tau": 0.0005,
+    "drift_tol": 1e-14,
+    "acceleration_tol": 1e-14,
+    "q_closed_tol": 1e-24,
+    "q_reduction_factor_min": 10000000000.0,
+    "gauge_std_tol": 1e-14,
+    "seed_preservation_tol": 1e-14
+  },
+  "gauge_count": 9,
+  "gauges": [
+    {
+      "name": "g0",
+      "delta_chi": 0.0,
+      "delta_tau": 0.0,
+      "phase_bias": 0.0,
+      "gain": 1.0,
+      "nh_c": 33
+    },
+    {
+      "name": "g_chi_plus",
+      "delta_chi": 0.0005,
+      "delta_tau": 0.0,
+      "phase_bias": 0.0,
+      "gain": 1.0,
+      "nh_c": 33
+    },
+    {
+      "name": "g_chi_minus",
+      "delta_chi": -0.0005,
+      "delta_tau": 0.0,
+      "phase_bias": 0.0,
+      "gain": 1.0,
+      "nh_c": 33
+    },
+    {
+      "name": "g_tau_plus",
+      "delta_chi": 0.0,
+      "delta_tau": 0.0005,
+      "phase_bias": 0.0,
+      "gain": 1.0,
+      "nh_c": 33
+    },
+    {
+      "name": "g_tau_minus",
+      "delta_chi": 0.0,
+      "delta_tau": -0.0005,
+      "phase_bias": 0.0,
+      "gain": 1.0,
+      "nh_c": 33
+    },
+    {
+      "name": "g_phase_plus",
+      "delta_chi": 0.0,
+      "delta_tau": 0.0,
+      "phase_bias": 0.17,
+      "gain": 1.0,
+      "nh_c": 33
+    },
+    {
+      "name": "g_phase_minus",
+      "delta_chi": 0.0,
+      "delta_tau": 0.0,
+      "phase_bias": -0.23,
+      "gain": 1.0,
+      "nh_c": 33
+    },
+    {
+      "name": "g_gain_high",
+      "delta_chi": 0.0,
+      "delta_tau": 0.0,
+      "phase_bias": 0.0,
+      "gain": 1.25,
+      "nh_c": 33
+    },
+    {
+      "name": "g_width_high",
+      "delta_chi": 0.0,
+      "delta_tau": 0.0,
+      "phase_bias": 0.0,
+      "gain": 1.0,
+      "nh_c": 65
+    }
+  ],
+  "phase_summaries": [
+    {
+      "phase": "phase0_no_coupling",
+      "purpose": "無結合条件で実装ドリフトがないことを確認する",
+      "max_delta_chi_abs": 0.0,
+      "max_acceleration_abs": 0.0,
+      "max_delta_chi_std": 0.0,
+      "valid": true
+    },
+    {
+      "phase": "phase1_readout_only",
+      "purpose": "Cで読むだけでは位置位相加速度が作られないことを確認する",
+      "max_delta_chi_abs": 0.0,
+      "max_acceleration_abs": 0.0,
+      "max_delta_chi_std": 0.0,
+      "valid": true
+    }
+  ],
+  "c_stability_summaries": [
+    {
+      "k_max": 1,
+      "max_center_error": 0.0,
+      "valid": true
+    },
+    {
+      "k_max": 3,
+      "max_center_error": 0.0,
+      "valid": true
+    },
+    {
+      "k_max": 5,
+      "max_center_error": 0.0,
+      "valid": true
+    },
+    {
+      "k_max": 9,
+      "max_center_error": 0.0,
+      "valid": true
+    },
+    {
+      "k_max": 17,
+      "max_center_error": 0.0,
+      "valid": true
+    },
+    {
+      "k_max": 33,
+      "max_center_error": 0.0,
+      "valid": true
+    },
+    {
+      "k_max": 65,
+      "max_center_error": 0.0,
+      "valid": true
+    },
+    {
+      "k_max": 129,
+      "max_center_error": 0.0,
+      "valid": true
+    }
+  ],
+  "closure_summaries": [
+    {
+      "phase": "closure_reselection_control",
+      "case": "amplitude_only_A",
+      "target_particle": "A",
+      "amplitude_eps": 2e-06,
+      "phase_seed": 0.0,
+      "Q_raw_abs": 4.000004000115675e-06,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "delta_chi_closed": 0.0,
+      "delta_chi_gauge_mean": 0.0,
+      "delta_chi_gauge_std": 0.0,
+      "seed_preservation_error": 0.0,
+      "gauge_count": 9,
+      "valid": true
+    },
+    {
+      "phase": "closure_reselection_control",
+      "case": "phase_seed_A",
+      "target_particle": "A",
+      "amplitude_eps": 2e-06,
+      "phase_seed": 3e-08,
+      "Q_raw_abs": 4.000453976226206e-06,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "delta_chi_closed": 3.00000000119649e-08,
+      "delta_chi_gauge_mean": 3.0000000015048854e-08,
+      "delta_chi_gauge_std": 1.5725135741676946e-17,
+      "seed_preservation_error": 1.1964902862783528e-17,
+      "gauge_count": 9,
+      "valid": true
+    },
+    {
+      "phase": "closure_reselection_control",
+      "case": "phase_seed_B",
+      "target_particle": "B",
+      "amplitude_eps": -1e-06,
+      "phase_seed": -2e-08,
+      "Q_raw_abs": 3.1256233744244042e-06,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "delta_chi_closed": -1.9999999989472886e-08,
+      "delta_chi_gauge_mean": -1.9999999986388932e-08,
+      "delta_chi_gauge_std": 8.722735881576652e-18,
+      "seed_preservation_error": 1.0527114065656107e-17,
+      "gauge_count": 9,
+      "valid": true
+    }
+  ],
+  "q_rows": [
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 0,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 1,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 2,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 3,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 4,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 5,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 6,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 7,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 8,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 9,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 10,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 11,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 12,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 13,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 14,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 15,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 16,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 17,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 18,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 19,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 20,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 21,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 22,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 23,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase0_no_coupling",
+      "case": "no_coupling",
+      "step": 24,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 0,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 1,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 2,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 3,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 4,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 5,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 6,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 7,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 8,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 9,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 10,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 11,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 12,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 13,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 14,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 15,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 16,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 17,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 18,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 19,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 20,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 21,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 22,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 23,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    },
+    {
+      "phase": "phase1_readout_only",
+      "case": "readout_no_feedback",
+      "step": 24,
+      "Q_raw_abs": 0.0,
+      "Q_closed_abs": 0.0,
+      "Q_reduction_ratio": Infinity,
+      "closure_operation": "none"
+    }
+  ],
+  "aggregate_verdict": {
+    "phase0_no_coupling_valid": true,
+    "phase1_readout_only_valid": true,
+    "c_baseline_stability_valid": true,
+    "closure_reselection_control_valid": true,
+    "single_gauge_only_used": false,
+    "preliminary_experiment_valid": true,
+    "max_phase0_delta_chi_abs": 0.0,
+    "max_phase1_delta_chi_abs": 0.0,
+    "max_phase0_acceleration_abs": 0.0,
+    "max_phase1_acceleration_abs": 0.0,
+    "max_c_center_error": 0.0,
+    "max_closure_Q_raw_abs": 4.000453976226206e-06,
+    "max_closure_Q_closed_abs": 0.0,
+    "max_seed_preservation_error": 1.1964902862783528e-17,
+    "gauge_count": 9
+  }
+}
