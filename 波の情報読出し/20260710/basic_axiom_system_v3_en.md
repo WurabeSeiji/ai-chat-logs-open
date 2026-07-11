@@ -1,10 +1,26 @@
-# Anonymous Equal-Amplitude Composite-Wave Model: Basic Axiom System v3
+# Anonymous Equal-Amplitude Composite-Wave Model: Basic Axiom System v3 Interpretation Note
 
 **Date:** 2026-07-10  
 **Author:** Noriaki Kihara  
-**Status:** Working axiom system  
+**Status:** Interpretation and working note for Basic Axiom System v3
 
-This document does not claim connectivity to standard theory. Its purpose is to construct an internally low-contradiction working axiom system from a small number of axioms: anonymity, all-positive-sign zero closure, and nontrivial existence.
+This document cites the definition paper "Anonymous Equal-Amplitude Composite-Wave Model: Basic Axiom System v3" and records the present interpretation, development, and working explanations of that axiom system.
+
+The canonical axiom definition is placed in the following definition paper:
+
+```text
+anonymous_equal_amplitude_composite_wave_model_basic_axiom_system_v3_pure_definition_en.md
+```
+
+The interpretations, explanations, working hypotheses, and readout examples in this document may be extended or revised.
+
+However, a change in interpretation is not a rejection of the axioms.
+
+If an error, omission, or required change is found in the axioms themselves, the canonical axiom system must be explicitly revised rather than being reinterpreted inside this note.
+
+Thus this document is not the axiom system itself. It is the current interpretation layer for Basic Axiom System v3.
+
+In v3, anonymity is extended beyond basic components, physical quantities, and observables to theory names, formulation names, and readout-logic names. In other words, the names gravity, Coulomb force, mass, charge, energy, two-body, three-body, and similar labels must not be used as reasons to change equations, readout rules, or projection rules at the first-principle layer. Physical names are labels assigned after readout results have been obtained from the same axioms.
 
 ---
 
@@ -34,6 +50,112 @@ x_1^2+x_2^2-x_3^2=0
 
 is not adopted at the first-principle layer, because `x_3` alone becomes the negative-sign axis.
 
+## Axiom 0+: Formulation Anonymity
+
+Classification: Axiom
+
+At the first-principle layer, theory names, formulation names, and readout-logic names are not assigned intrinsic names.
+
+Equations, projections, or readout rules at the first-principle layer must not be changed on the basis of physical names, object names, interaction names, or existing theory classifications.
+
+Forbidden:
+
+```text
+adopting a circular-motion equation because it is called gravity
+adopting a hyperbolic equation because it is called Coulomb force
+erasing signs because it is called mass
+preserving signs because it is called charge
+moving a component to a time axis because it is called energy
+using a different closure equation because the target is a two-body system
+using a different closure equation because the target is a three-body system
+using a special readout rule because the target is an ABC system
+choosing a right-hand-side representation to obtain a desired physical name
+```
+
+At the first-principle layer, only the same closure condition,
+
+```math
+\sum_n x_n^2=0
+```
+
+and readout operations, symmetry breaking, gauge stability, sign preservation, sign erasure, phase-branch selection, and closure target sets defined in advance for that same closure condition are allowed.
+
+The following order is forbidden:
+
+```text
+call it gravity
+therefore adopt an R-type readout
+therefore erase signs
+```
+
+Likewise, the following order is forbidden:
+
+```text
+call it Coulomb force
+therefore adopt a Q-type readout
+therefore preserve signs
+```
+
+The correct order is:
+
+```text
+place the same all-positive-sign zero closure
+define the readout operation first
+define symmetry breaking first
+define sign preservation or sign erasure first
+confirm gauge stability
+assign working names after readout
+```
+
+Here `R`, `Q`, and `E` are not first-principle names. They are working names assigned to readout results obtained from the same closure condition.
+
+In particular, an already defined `R_read` must not be changed into another definition because one wishes to read gravity.
+
+What is allowed is to apply the same `R_read` to a single closed wave, a pair composite closed wave, or a whole-system closed wave, and to read differences in the target set as:
+
+```text
+R_A
+R_{AB}
+R_{ABC}
+```
+
+Likewise, the distinction between a two-body and a three-body system is treated as a difference in closure target set, not as a physical-name-based change in equation.
+
+For example, the following are allowed because the target sets differ:
+
+```math
+Q(A)=0
+```
+
+```math
+Q(A+B)=0
+```
+
+```math
+Q(A+B+C)=0
+```
+
+However, each `Q` must have the same form:
+
+```math
+Q(P)=\sum_n p_n^2
+```
+
+Different readouts may be obtained from different target sets. Changing the definition of `Q` itself to obtain a desired physical name is not allowed.
+
+Therefore, formulation anonymity extends Axiom 0, component anonymity, to the level of theoretical construction.
+
+This axiom requires:
+
+```text
+closure equation before physical name
+readout operation before classification name
+symmetry breaking before theory name
+gauge stability before interpretation name
+```
+
+Physical names, classification names, theory names, and interpretation names are not first principles. They are names assigned after readout.
+
 ## Axiom 1: All-Positive-Sign Zero Closure
 
 Classification: Axiom
@@ -55,6 +177,28 @@ All coefficient signs are the same positive sign. This is not the conjugate norm
 ```
 
 is not the intended closure. The closure uses `x_n^2`, not `x_n\bar{x}_n`.
+
+Axiom 1 is the closure condition for a state in which the left-hand side of the closure sum has become stationary or stable.
+
+It does not deny the existence of a quasi-stationary or metastable state between an external influence, interaction, observation, or readout re-embedding that changes the closure sum and the later return to stationarity or stability.
+
+Therefore, in a quasi-stationary state, the following temporary nonzero closure residual is allowed:
+
+```math
+\sum_n x_n^2\neq0
+```
+
+However, in a state treated as stationary closure or stable closure,
+
+```math
+\sum_n x_n^2=0
+```
+
+holds.
+
+Thus, later papers may treat closure recovery processes, metastable transitions, or closure residuals immediately after observation without rejecting Axiom 1.
+
+Axiom 1 itself defines the closure condition after stationarization, not the quasi-stationary process.
 
 ## Axiom 2: Nontrivial Existence
 
