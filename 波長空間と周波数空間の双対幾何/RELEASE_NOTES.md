@@ -42,32 +42,34 @@ A Study of the Displacement-Record Mechanism — Recording of Displacement by In
 
 ---
 
-## 論文0（基礎篇）：正曲率定曲率空間における測地的単位セルの歪み（v1.4）
+## 論文0（基礎篇）：正曲率定曲率空間における測地的単位セルの歪み（v1.5）
 
 Distortion of the Geodesic Unit Cell in Positively-Curved Constant-Curvature Space — Exact Evaluation of Edge, Angle, Area, and Volume
 
 - **Concept DOI**: 10.5281/zenodo.20680269（外部参照用・最新版へ自動転送）
-- **Version DOI (v1.4, 最新)**: 10.5281/zenodo.20684135
+- **Version DOI (v1.5, 最新)**: 10.5281/zenodo.21303433
+- **旧 Version DOI (v1.4)**: 10.5281/zenodo.20684135
 - **旧 Version DOI (v1.3)**: 10.5281/zenodo.20680270
-- **Zenodo deposit**: 20684135 / record https://zenodo.org/record/20684135
-- **公開日**: 2026-06-13（v1.3）／ 2026-06-14（v1.4）
+- **Zenodo deposit**: 21303433 / record https://zenodo.org/record/21303433
+- **公開日**: 2026-06-13（v1.3）／ 2026-06-14（v1.4）／ 2026-07-11（v1.5）
 - **ライセンス**: CC BY 4.0
 - **関連**: 論文1（10.5281/zenodo.20588036）を `isSupplementTo`、球面投影 σ_R 基礎写像（10.5281/zenodo.20462569）・論文5（20640454）・論文9（20640462）・論文11（20640466）を `references`
 
-平坦数え上げ（論文1〜2）が取り込まなかった曲率歪みを、純粋な微分幾何の基礎計算として画定。頂点角 cos θ=−tan²(1/2R) と 2-面積は次元独立、体積のみ次元依存で小角係数 c_d=d(d−1)/12、存在閾値 R\*_d、角度→曲率の逆算（曲率計）、幾何天井 d_max≈4R² と検閲天井4の合成による d=4 ロック。d=1 は内在的平坦（歪みゼロ）で、シリーズの per-axis 1次元論理波が曲率厳密である幾何的根拠（論文9「曲率整合」）を与える。物理的同一視なし。
+平坦数え上げ（論文1〜2）が取り込まなかった曲率歪みを、純粋な微分幾何の基礎計算として画定。頂点角 cos θ=−tan²(1/2R) と 2-面積は次元独立、体積のみ次元依存で小角係数 c_d=d(d−1)/12、存在閾値 R\*_d、角度→曲率の逆算（曲率計）、幾何天井 d_max≈4R² と検閲天井4の合成による d=4 ロック。d=1 は内在的平坦（歪みゼロ）で、シリーズの per-axis 1次元論理波が曲率厳密である幾何的根拠（論文9「曲率整合」）を与える。v1.5 では、補正係数を局所読出しセルへ参照する場合の適用条件として、曲率をセル内で一定の実数スカラーとみなす局所定曲率化を明示し、曲率勾配・方向依存・接続・ホロノミー・複素位相接続を範囲外とした。物理的同一視なし。
 
 ### 収録ファイル（14点）
-- `paper0_geodesic_cell_distortion_ja_v1_4.{md,tex,pdf}`（日本語）
-- `paper0_geodesic_cell_distortion_en_v1_4.{md,tex,pdf}`（英語）
+- `paper0_geodesic_cell_distortion_ja_v1_5.{md,tex,pdf}`（日本語）
+- `paper0_geodesic_cell_distortion_en_v1_5.{md,tex,pdf}`（英語）
 - 図5点 `paper0_fig{A,B,C,E,F}_*.png`（すべて厳密計算）
 - 検算/作図スクリプト `paper0_geodesic_cell_distortion.py` / `paper0_figures.py` / `paper0_figures_spec_v2.py`
 
 ### 改訂履歴
+- **v1.5 (2026-07-11)**: §7.1 を追加。補正係数を一般の局所読出しセルへ参照する場合の適用条件として、曲率をセル内で一定の実数スカラー $K=1/R^2$ とみなす局所定曲率化を明示。局所平坦化ではないこと、曲率勾配・位置依存曲率・曲率テンソルの方向依存・接続の非可換性・ホロノミー・複素位相接続、および面積/体積補正係数の位相空間・波動位相への直接移送は本稿から導かれないことを明記。内容・結果・図は不変。
 - **v1.4 (2026-06-14)**: §4.6 に先行研究段落（スペクトル次元 [Carlip 2017; Ambjørn–Jurkiewicz–Loll 2005]・Böröczky パッキング限界 [Böröczky 1978]・Schläfli [Coxeter 1973] との差別化、なぜ4次元 [Ehrenfest 1917; Tegmark 1997]）と外部参考文献を追加。§1 に存在閾値の Schläfli 的位置づけを一文。付録A の数式組版を正式 LaTeX に修正。formula (10) の数式境界バグ（`$`直後数字で pandoc が閉じない問題）を修正。related_identifiers に論文5/9/11 を追加。
 - **v1.3 (2026-06-13)**: 実計算図5点を挿入（図中タイトル Fig.E/Fig.F 統一）。表示数式の太字を解除し R\* 記法を数式 $R^{*}$ へ置換（リテラル `**` 解消）。claude.ai 査読で採録水準と判定（全5図が本文数値と整合）。二者検算プロトコル。
 
 ### Zenn 記事
-- [geodesic-cell-distortion-foundations](https://zenn.dev/noriaki_kihara/articles/geodesic-cell-distortion-foundations)（Concept DOI 参照のため版改訂で変更不要）
+- [geodesic-cell-distortion-foundations](https://zenn.dev/noriaki_kihara/articles/geodesic-cell-distortion-foundations)（v1.5 補足を追記。Concept DOI 参照は維持）
 
 ---
 
