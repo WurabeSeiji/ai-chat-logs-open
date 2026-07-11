@@ -7,6 +7,12 @@
 **Zenodo Concept DOI:** 10.5281/zenodo.21304039
 **Zenodo Record:** https://zenodo.org/records/21304040
 **Zenn Article:** `articles/curved-closure-stationary-wave.md`
+**note Japanese Article:** https://note.com/kiharanoriaki/n/n2389460836cf
+**note English Article:** https://note.com/kiharanoriaki/n/nda3623c44423
+**Facebook Japanese Post:** https://www.facebook.com/kihara.noriaki/posts/pfbid037wN39hUdgVY7bVCb6BWkFK86pYqDedPgVxaCxtJbWGk479ZqyVoc9XggvRPLmstwl
+**Facebook English Post:** https://www.facebook.com/kihara.noriaki/posts/pfbid02QieNB6aGk3TyRkcreL2z14w62WEFdRbenP47gHuzMoPd4aS7VDPzazbuNJhEGBo4l
+**X Japanese Post:** https://x.com/NoriakiKihara/status/2075801193281106375
+**X English Post:** https://x.com/NoriakiKihara/status/2075802233153998999
 
 ---
 
@@ -41,6 +47,8 @@ The paper tests how odd-harmonic complex waves satisfying the all-positive zero 
 | `curved_closure_stationary_wave_zenodo_published_record_v1.json` | Zenodo published record response without token |
 | `curved_closure_stationary_wave_publication_bundle_v1.zip` | Reproducibility bundle |
 | `articles/curved-closure-stationary-wave.md` | Zenn article source |
+| `note_article_curved_closure_stationary_wave_ja.md` | note Japanese article source |
+| `note_article_curved_closure_stationary_wave_en.md` | note English article source |
 
 ---
 
@@ -95,3 +103,9 @@ Publication has been completed.
 - Zenodo concept DOI: https://doi.org/10.5281/zenodo.21304039
 - Zenodo record: https://zenodo.org/records/21304040
 - Zenn article source: `articles/curved-closure-stationary-wave.md`
+- note Japanese article: https://note.com/kiharanoriaki/n/n2389460836cf
+- note English article: https://note.com/kiharanoriaki/n/nda3623c44423
+- Facebook Japanese post: https://www.facebook.com/kihara.noriaki/posts/pfbid037wN39hUdgVY7bVCb6BWkFK86pYqDedPgVxaCxtJbWGk479ZqyVoc9XggvRPLmstwl
+- Facebook English post: https://www.facebook.com/kihara.noriaki/posts/pfbid02QieNB6aGk3TyRkcreL2z14w62WEFdRbenP47gHuzMoPd4aS7VDPzazbuNJhEGBo4l
+- X Japanese post: https://x.com/NoriakiKihara/status/2075801193281106375
+- X English post: https://x.com/NoriakiKihara/status/2075802233153998999

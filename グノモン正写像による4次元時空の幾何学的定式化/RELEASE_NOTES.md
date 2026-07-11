@@ -114,6 +114,12 @@
 - **Concept DOI**：[10.5281/zenodo.21304039](https://doi.org/10.5281/zenodo.21304039)
 - **v1 DOI**：[10.5281/zenodo.21304040](https://doi.org/10.5281/zenodo.21304040)
 - **Zenn**：`articles/curved-closure-stationary-wave.md`
+- **note 日本語**：[n2389460836cf](https://note.com/kiharanoriaki/n/n2389460836cf)
+- **note 英語**：[nda3623c44423](https://note.com/kiharanoriaki/n/nda3623c44423)
+- **Facebook 日本語**：[pfbid037wN39hUdgVY7bVCb6BWkFK86pYqDedPgVxaCxtJbWGk479ZqyVoc9XggvRPLmstwl](https://www.facebook.com/kihara.noriaki/posts/pfbid037wN39hUdgVY7bVCb6BWkFK86pYqDedPgVxaCxtJbWGk479ZqyVoc9XggvRPLmstwl)
+- **Facebook 英語**：[pfbid02QieNB6aGk3TyRkcreL2z14w62WEFdRbenP47gHuzMoPd4aS7VDPzazbuNJhEGBo4l](https://www.facebook.com/kihara.noriaki/posts/pfbid02QieNB6aGk3TyRkcreL2z14w62WEFdRbenP47gHuzMoPd4aS7VDPzazbuNJhEGBo4l)
+- **X 日本語**：[2075801193281106375](https://x.com/NoriakiKihara/status/2075801193281106375)
+- **X 英語**：[2075802233153998999](https://x.com/NoriakiKihara/status/2075802233153998999)
 
 **核心結果**：
 - 曲率相対位相漏れは過渡状態で閉鎖残差と通過漏れとして現れる
