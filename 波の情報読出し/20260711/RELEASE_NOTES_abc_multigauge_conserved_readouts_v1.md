@@ -8,6 +8,11 @@
 **Zenodo Record:** https://zenodo.org/records/21308050
 **Zenn Article:** `articles/abc-multigauge-conserved-readouts.md`
 **note Japanese Article:** https://note.com/kiharanoriaki/n/nd5d3777a6e48
+**note English Article:** https://note.com/kiharanoriaki/n/nd10d4b8d627d
+**Facebook Japanese Post:** https://www.facebook.com/kihara.noriaki/posts/pfbid02ujTqp1HVzQLNA8xyzv9vARuzUmtx2c47kjHBk6aKVVTanFZAMm69BhR9GU6e6ryAl
+**Facebook English Post:** https://www.facebook.com/kihara.noriaki/posts/pfbid02PAsfWWBXcyKm5cciEusyKZWacz9ey1yjwpyMoPX5YFvi52AVYmLjhmBYHtRGchjzl
+**X Japanese Post:** https://x.com/NoriakiKihara/status/2075898071238791620
+**X English Post:** https://x.com/NoriakiKihara/status/2075898711432106276
 
 ---
 
@@ -40,6 +45,7 @@ The paper reconstructs `p_read`, `E_read`, and `R_read` from multiple gauges, di
 | `abc_multigauge_conserved_readouts_publication_bundle_v1.zip` | Reproducibility bundle |
 | `articles/abc-multigauge-conserved-readouts.md` | Zenn article source |
 | `note_article_abc_multigauge_conserved_readouts_ja.md` | note Japanese article source |
+| `note_article_abc_multigauge_conserved_readouts_en.md` | note English article source |
 
 ---
 
@@ -102,6 +108,11 @@ Publication has been completed.
 - Zenodo record: https://zenodo.org/records/21308050
 - Zenn article source: `articles/abc-multigauge-conserved-readouts.md`
 - note Japanese article: https://note.com/kiharanoriaki/n/nd5d3777a6e48
+- note English article: https://note.com/kiharanoriaki/n/nd10d4b8d627d
+- Facebook Japanese post: https://www.facebook.com/kihara.noriaki/posts/pfbid02ujTqp1HVzQLNA8xyzv9vARuzUmtx2c47kjHBk6aKVVTanFZAMm69BhR9GU6e6ryAl
+- Facebook English post: https://www.facebook.com/kihara.noriaki/posts/pfbid02PAsfWWBXcyKm5cciEusyKZWacz9ey1yjwpyMoPX5YFvi52AVYmLjhmBYHtRGchjzl
+- X Japanese post: https://x.com/NoriakiKihara/status/2075898071238791620
+- X English post: https://x.com/NoriakiKihara/status/2075898711432106276
 
 Zenodo uploaded files:
 
