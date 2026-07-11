@@ -7,6 +7,7 @@
 **Zenodo Concept DOI:** 10.5281/zenodo.21308049
 **Zenodo Record:** https://zenodo.org/records/21308050
 **Zenn Article:** `articles/abc-multigauge-conserved-readouts.md`
+**note Japanese Article:** https://note.com/kiharanoriaki/n/nd5d3777a6e48
 
 ---
 
@@ -38,6 +39,7 @@ The paper reconstructs `p_read`, `E_read`, and `R_read` from multiple gauges, di
 | `abc_multigauge_conserved_readouts_zenodo_published_record_v1.json` | Zenodo published record response without token |
 | `abc_multigauge_conserved_readouts_publication_bundle_v1.zip` | Reproducibility bundle |
 | `articles/abc-multigauge-conserved-readouts.md` | Zenn article source |
+| `note_article_abc_multigauge_conserved_readouts_ja.md` | note Japanese article source |
 
 ---
 
@@ -99,6 +101,7 @@ Publication has been completed.
 - Zenodo concept DOI: https://doi.org/10.5281/zenodo.21308049
 - Zenodo record: https://zenodo.org/records/21308050
 - Zenn article source: `articles/abc-multigauge-conserved-readouts.md`
+- note Japanese article: https://note.com/kiharanoriaki/n/nd5d3777a6e48
 
 Zenodo uploaded files:
 
