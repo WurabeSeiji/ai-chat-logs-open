@@ -1,0 +1,1743 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmonofont[]{DejaVuSansMono.ttf}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{Construction Experiment of Multigauge Interference Readout
+Conserved Quantities in an ABC Closed Phase
+System}\label{construction-experiment-of-multigauge-interference-readout-conserved-quantities-in-an-abc-closed-phase-system}
+
+\textbf{Subtitle:} Numerical construction of mass-like, momentum-like,
+and energy-like quantities using \texttt{p\_read}, \texttt{E\_read},
+\texttt{R\_read}, and \texttt{R*p}, \texttt{R*p\^{}2} conserving maps\\
+\textbf{Date:} 2026-07-11\\
+\textbf{Author:} Noriaki Kihara\\
+\textbf{Position:} Additional paper in the Wave Information Readout
+series\\
+\textbf{Version DOI:} 10.5281/zenodo.21308050\\
+\textbf{Concept DOI:} 10.5281/zenodo.21308049
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+This paper numerically tests whether conserved readouts corresponding to
+mass-like, momentum-like, and energy-like quantities can be constructed
+from multigauge interference in an ABC closed phase system that does not
+assume background coordinates in advance.
+
+In this series, the variables \texttt{chi} and \texttt{tau}, which
+correspond to space and time, have been treated not as external
+spacetime coordinates but as readout quantities from a closed phase
+system. This paper extends the same policy to mass-like, momentum-like,
+and energy-like quantities.
+
+For an ABC system consisting of local waves \texttt{A}, \texttt{B}, and
+an internal observer wave \texttt{C}, a single gauge value is not
+accepted as a measurement. Instead, interference correlations are
+acquired from multiple readout gauges. The correlation gradient in the
+spatial phase direction is read as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_read}
+\end{Highlighting}
+\end{Shaded}
+
+the correlation gradient in the temporal phase direction is read as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{E\_read}
+\end{Highlighting}
+\end{Shaded}
+
+and the amplitude-square residual that remains stable across multiple
+gauges is read as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R\_read}
+\end{Highlighting}
+\end{Shaded}
+
+The quantities \texttt{p,E,R} in this paper are not standard physical
+momentum, energy, and mass themselves. They are multigauge interference
+readout quantities internal to the closed phase system. The purpose of
+this paper is not to claim identity with standard quantities, but to
+test whether readout structures that behave like conserved quantities
+can be constructed inside the ABC closed phase system.
+
+In the single ABC collision, \texttt{p,E,R} were reconstructed from
+multiple gauges with maximum errors \texttt{2.5202062658991053e-14},
+\texttt{2.2315482794965646e-14}, and \texttt{4.440892098500626e-16},
+respectively. Across eight repeated collisions, \texttt{p} reversal,
+\texttt{E,R} preservation, label-mode preservation, and compensated
+closure were maintained.
+
+Under asymmetric \texttt{R} conditions, the simple
+\texttt{q\ -\textgreater{}\ -q} reversal was detected to break
+\texttt{R*p} conservation. A generalized collision map conserving
+\texttt{R\_A\ p\_A\ +\ R\_B\ p\_B} and
+\texttt{R\_A\ p\_A\^{}2\ +\ R\_B\ p\_B\^{}2} was therefore constructed.
+Across eight asymmetric amplitude cases, conservation was confirmed with
+maximum \texttt{R*p} error \texttt{2.3803181647963356e-13} and maximum
+\texttt{R*p\^{}2} error \texttt{1.4086509736443986e-12}.
+
+Additional verification covered nine non-unit and asymmetric initial
+phase-gradient cases, four repeated-collision cases, readout-noise
+robustness, and an extreme \texttt{R}-ratio sweep from
+\texttt{R\_B/R\_A=0.015625} to \texttt{64.0}. The integration summary
+reported all nine experiments as \texttt{valid}, and no judgment used
+single-gauge-only measurement.
+
+Within the numerical constructive scope of this paper, the ABC closed
+phase system therefore supports mass-like, momentum-like, and
+energy-like conserved readouts constructed consistently through
+multigauge interference.
+
+\textbf{Keywords:} multigauge interference readout, ABC closed phase
+system, all-positive zero closure, mass-like readout, momentum-like
+readout, energy-like readout, generalized elastic collision,
+\texttt{R*p} conservation, \texttt{R*p\^{}2} conservation
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Introduction}\label{introduction}
+
+\subsubsection{1.1 Background}\label{background}
+
+This series adopts namelessness, all-positive zero closure, and
+non-trivial existence as its basic axioms. The central closure condition
+is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_n x\_n\^{}2=0.}
+\end{Highlighting}
+\end{Shaded}
+
+This condition is not the conjugate norm
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_n |x\_n|\^{}2.}
+\end{Highlighting}
+\end{Shaded}
+
+Each component is squared directly, and all terms are summed with
+positive signs.
+
+The preceding definitional supplement, ``Definitional Supplement on
+Readout Multiplicity of the All-Positive Zero Closure,'' kept Axiom 1
+unchanged and organized how the same closure condition can have multiple
+readout representations. When a radial representation is read as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a\^{}2+b\^{}2=\textbackslash{}rho\^{}2,}
+\end{Highlighting}
+\end{Shaded}
+
+the first-principle layer does not introduce an externally negative
+metric expression
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a\^{}2+b\^{}2{-}\textbackslash{}rho\^{}2=0.}
+\end{Highlighting}
+\end{Shaded}
+
+Instead, it reads the relation as an all-positive zero-closure
+representation:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a\^{}2+b\^{}2+(i\textbackslash{}rho)\^{}2=0.}
+\end{Highlighting}
+\end{Shaded}
+
+Thus quantities that appear as radius, time, mass, energy, or momentum
+are not placed first as axes with intrinsic names. They are treated as
+readout representations.
+
+\subsubsection{1.2 Question}\label{question}
+
+The question of this paper is:
+
+\begin{quote}
+In an ABC closed phase system without assuming background coordinates in
+advance, can conserved readouts that look like mass-like, momentum-like,
+and energy-like quantities be constructed from multigauge interference?
+\end{quote}
+
+The important point is that a single gauge value is not accepted as a
+measurement.
+
+Just as readouts corresponding to \texttt{chi} and \texttt{tau} were
+constructed from interference correlations, readouts corresponding to
+\texttt{p,E,R} must also be reconstructed from multiple reference waves,
+multiple readout windows, and multiple gauges.
+
+\subsubsection{1.3 Minimal Claim}\label{minimal-claim}
+
+This paper limits its claim to the following scope.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Reconstruct \texttt{p\_read}, \texttt{E\_read}, and \texttt{R\_read}
+  from multigauge interference inside an ABC closed phase system.
+\item
+  Confirm that symmetric collision reverses \texttt{p\_read} while
+  preserving \texttt{E\_read} and \texttt{R\_read}.
+\item
+  Detect that simple reversal breaks \texttt{R*p} conservation under
+  asymmetric \texttt{R} conditions.
+\item
+  Construct a generalized collision map conserving \texttt{R*p} and
+  \texttt{R*p\^{}2}.
+\item
+  Verify whether readout conservation is maintained under repeated
+  collisions, readout-gauge changes, readout noise, and extreme
+  \texttt{R} ratios.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. What This Paper Does Not
+Claim}\label{what-this-paper-does-not-claim}
+
+This paper does not claim the following.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Not claimed
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Reason
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Derivation of standard momentum, standard energy, or standard mass &
+\texttt{p,E,R} are readout quantities internal to the closed phase
+system \\
+Complete re-derivation of standard mechanics & A correspondence map must
+be constructed separately \\
+Quantitative prediction of real particle collisions & This is a
+numerical constructive experiment on an internal phase model \\
+General impossibility of single-gauge measurement & This paper requires
+multigauge interference readout as its measurement condition \\
+Internal interference generation of the \texttt{R}-weighted generalized
+map & This paper constructs the map from conservation conditions and
+verifies it by multigauge readout \\
+Treating \texttt{R} as a primitive mass axis & \texttt{R} is a readout
+name for the stable residual remaining across multiple gauges \\
+Assumption of background spacetime coordinates & \texttt{chi,tau} are
+readout variables internal to the phase system \\
+Measurement validity under arbitrary noise & The noise test is limited
+to a controlled comparison of zero-mean gauge fluctuations and common
+bias \\
+Generalized collision validity under arbitrary conditions & The
+verification range is limited to the numerical conditions of this
+paper \\
+\end{longtable}
+}
+
+The claim of this paper is that a readout structure that behaves like
+conserved quantities can be constructed from multigauge interference
+inside an ABC closed phase system.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. Basic Structure}\label{basic-structure}
+
+\subsubsection{3.1 All-Positive Zero
+Closure}\label{all-positive-zero-closure}
+
+Axiom 1 of the basic axiom system v2 is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Q(x)=\textbackslash{}sum\_n x\_n\^{}2=0.}
+\end{Highlighting}
+\end{Shaded}
+
+This is not a condition that first introduces an external negative-sign
+metric.
+
+For the minimal compensating pair
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A,\textbackslash{}qquad iA,}
+\end{Highlighting}
+\end{Shaded}
+
+one obtains
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A\^{}2+(iA)\^{}2=0.}
+\end{Highlighting}
+\end{Shaded}
+
+The negative sign is not an external coefficient. It arises from the
+square of the internal phase:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{i\^{}2={-}1.}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{3.2 Readout Multiplicity}\label{readout-multiplicity}
+
+The same closure condition
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_n x\_n\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+can have multiple representations under local readout.
+
+For example, if a local representation reads
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a\^{}2+b\^{}2+(i\textbackslash{}rho)\^{}2=0,}
+\end{Highlighting}
+\end{Shaded}
+
+then \texttt{a,b,rho} are not intrinsically different kinds of
+components at the first-principle layer. They are labels assigned by a
+readout window, a reference wave, or a projection.
+
+The same applies to \texttt{p,E,R} in this paper.
+
+\texttt{p} is not momentum itself. It is a correlation-gradient readout
+in the spatial phase direction.
+
+\texttt{E} is not energy itself. It is a correlation-gradient readout in
+the temporal phase direction.
+
+\texttt{R} is not mass itself. It is an amplitude-square readout that
+remains stable across multiple gauges.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. ABC Closed Phase System}\label{abc-closed-phase-system}
+
+\subsubsection{4.1 Local Waves A and B}\label{local-waves-a-and-b}
+
+The local waves \texttt{A,B} have spatial phase \texttt{chi}, temporal
+phase \texttt{tau}, internal label phase \texttt{eta}, representative
+amplitude, and internal label modes.
+
+The phase centers of \texttt{A,B} are denoted by \texttt{chi\_A,chi\_B},
+and their temporal phase centers by \texttt{tau\_A,tau\_B}.
+
+The internal label modes are
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m\_A=1,}
+\NormalTok{m\_B=2.}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{4.2 Observer Wave C}\label{observer-wave-c}
+
+The observer wave \texttt{C} is not an external observer.
+
+It is a reference wave inside the same closed phase system and is used
+to read interference correlations with local waves \texttt{A,B}.
+
+Each gauge changes the readout center, readout width, phase shift,
+reference-wave gain, and related settings.
+
+\subsubsection{4.3 Single Gauge Values Are Not
+Measurements}\label{single-gauge-values-are-not-measurements}
+
+This paper does not treat a numerical value obtained from a single gauge
+as a completed measurement.
+
+Measurement requires that the same readout quantity be reconstructed
+across multiple gauges.
+
+The measurement target is therefore not an individual gauge value, but a
+quantity that remains stable across a gauge family.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Multigauge Interference
+Readout}\label{multigauge-interference-readout}
+
+\subsubsection{5.1 Spatial Phase-Gradient
+Readout}\label{spatial-phase-gradient-readout}
+
+For a small displacement \texttt{h\_chi}, the interference correlation
+in the spatial phase direction is read as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_\{\textbackslash{}mathrm\{read\}\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{\textbackslash{}arg\textbackslash{}left(O(\textbackslash{}chi+h\_\textbackslash{}chi)/O(\textbackslash{}chi{-}h\_\textbackslash{}chi)\textbackslash{}right)\}}
+\NormalTok{\{2h\_\textbackslash{}chi\}.}
+\end{Highlighting}
+\end{Shaded}
+
+This is not standard momentum itself. It is a correlation gradient in
+the spatial phase direction.
+
+\subsubsection{5.2 Temporal Phase-Gradient
+Readout}\label{temporal-phase-gradient-readout}
+
+For a small displacement \texttt{h\_tau}, the interference correlation
+in the temporal phase direction is read as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{E\_\{\textbackslash{}mathrm\{read\}\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{\textbackslash{}arg\textbackslash{}left(O(\textbackslash{}tau+h\_\textbackslash{}tau)/O(\textbackslash{}tau{-}h\_\textbackslash{}tau)\textbackslash{}right)\}}
+\NormalTok{\{2h\_\textbackslash{}tau\}.}
+\end{Highlighting}
+\end{Shaded}
+
+This is not standard energy itself. It is a correlation gradient in the
+temporal phase direction.
+
+\subsubsection{5.3 R Readout}\label{r-readout}
+
+The readout amplitude is calibrated for each gauge and read as an
+amplitude square:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R\_\{\textbackslash{}mathrm\{read\}\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}gamma\_g A\_\{\textbackslash{}mathrm\{read\}\}\^{}2.}
+\end{Highlighting}
+\end{Shaded}
+
+Here \texttt{gamma\_g} is the readout gain of the gauge.
+
+\texttt{R\_read} is required to remain stable when multiple gauges are
+varied.
+
+\subsubsection{5.4 t/R Separation}\label{tr-separation}
+
+\texttt{t} and \texttt{R} are not named axes assumed in advance.
+
+A component read as strongly varying and continuous is labeled
+\texttt{t}, while a component read as weakly varying and stable is
+labeled \texttt{R}.
+
+This paper uses the working indicator
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}frac\{\textbackslash{}operatorname\{Var\}(R\_\{\textbackslash{}mathrm\{read\}\})\}}
+\NormalTok{\{\textbackslash{}operatorname\{Var\}(t\_\{\textbackslash{}mathrm\{read\}\})\}}
+\end{Highlighting}
+\end{Shaded}
+
+to evaluate \texttt{t/R} separation.
+
+When this ratio is sufficiently small, \texttt{R} can be treated as a
+stable readout separated from temporal variation.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Basic Readout in Symmetric ABC
+Collision}\label{basic-readout-in-symmetric-abc-collision}
+
+\subsubsection{6.1 Single Collision}\label{single-collision}
+
+The first experiment uses the equal-amplitude condition
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A\_A=A\_B=1}
+\end{Highlighting}
+\end{Shaded}
+
+and performs a single ABC collision.
+
+The execution script is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_interference\_readout\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+The results were:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+Quantity & Value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{p\_max\_abs\_error} & \texttt{2.5202062658991053e-14} \\
+\texttt{E\_max\_abs\_error} & \texttt{2.2315482794965646e-14} \\
+\texttt{R\_max\_abs\_error} & \texttt{4.440892098500626e-16} \\
+\texttt{p\_reflection\_error\_A} & \texttt{3.3306690738754696e-16} \\
+\texttt{p\_reflection\_error\_B} & \texttt{3.3306690738754696e-16} \\
+\texttt{E\_preservation\_error\_A} & \texttt{0.0} \\
+\texttt{E\_preservation\_error\_B} & \texttt{0.0} \\
+\texttt{R\_preservation\_error\_A} & \texttt{0.0} \\
+\texttt{R\_preservation\_error\_B} & \texttt{0.0} \\
+\texttt{separation\_ratio\_time} & \texttt{3.6838616474030686e-30} \\
+\end{longtable}
+}
+
+The verdict was:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{multigauge\_measurement\_valid: true}
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{6.2 Multiple Collisions}\label{multiple-collisions}
+
+The same readout mechanism was then applied to eight AB collisions.
+
+The execution script is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_interference\_readout\_multi\_collision\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+The results were:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+Quantity & Value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{ab\_collision\_count} & \texttt{8} \\
+\texttt{wall\_reflection\_count} & \texttt{7} \\
+\texttt{p\_max\_abs\_error} & \texttt{2.5202062658991053e-14} \\
+\texttt{E\_max\_abs\_error} & \texttt{3.341771304121721e-13} \\
+\texttt{R\_max\_abs\_error} & \texttt{5.639932965095795e-14} \\
+\texttt{max\_p\_reflection\_error} & \texttt{4.440892098500626e-16} \\
+\texttt{max\_E\_preservation\_error} & \texttt{0.0} \\
+\texttt{max\_R\_preservation\_error} & \texttt{0.0} \\
+\texttt{separation\_ratio\_time} & \texttt{2.7083289874897587e-28} \\
+\end{longtable}
+}
+
+The verdict was:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{multi\_collision\_multigauge\_valid: true}
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{6.3 Readout-Gauge
+Robustness}\label{readout-gauge-robustness}
+
+Readout robustness was tested with five gauge families, varying readout
+centers, widths, phases, and gains across a total of 130 gauges.
+
+The execution script is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_interference\_readout\_robustness\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+The results were:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+Quantity & Value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{case\_count} & \texttt{5} \\
+\texttt{total\_gauge\_count} & \texttt{130} \\
+\texttt{max\_p\_abs\_error\_all\_cases} &
+\texttt{3.0331293032759277e-13} \\
+\texttt{max\_E\_abs\_error\_all\_cases} &
+\texttt{3.0331293032759277e-13} \\
+\texttt{max\_R\_abs\_error\_all\_cases} &
+\texttt{1.5765166949677223e-14} \\
+\texttt{max\_R\_gauge\_std\_all\_cases} &
+\texttt{5.288392122597181e-15} \\
+\texttt{max\_separation\_ratio\_time\_all\_cases} &
+\texttt{1.3338999651354898e-27} \\
+\end{longtable}
+}
+
+The verdict was:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{robustness\_sweep\_valid: true}
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. Failure Diagnosis of Simple Reversal Under Asymmetric
+R}\label{failure-diagnosis-of-simple-reversal-under-asymmetric-r}
+
+\subsubsection{7.1 Problem Setting}\label{problem-setting}
+
+Under equal-amplitude conditions, the simple reversal
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_A {-}\textgreater{} {-}p\_A}
+\NormalTok{p\_B {-}\textgreater{} {-}p\_B}
+\end{Highlighting}
+\end{Shaded}
+
+for \texttt{p\_A=+1}, \texttt{p\_B=-1} works as a reflection readout.
+
+However, when \texttt{R\_A} and \texttt{R\_B} differ, the same simple
+reversal does not necessarily preserve
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R\_A p\_A+R\_B p\_B.}
+\end{Highlighting}
+\end{Shaded}
+
+Therefore, under asymmetric \texttt{R} conditions, one must diagnose
+whether simple reversal breaks the conserved readout.
+
+\subsubsection{7.2 Results}\label{results}
+
+The execution script is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_interference\_readout\_asymmetric\_amplitude\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+The results were:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+Quantity & Value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{case\_count} & \texttt{8} \\
+\texttt{asymmetric\_case\_count} & \texttt{7} \\
+\texttt{individual\_multigauge\_valid\_all\_cases} & \texttt{true} \\
+\texttt{weighted\_energy\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{R\_total\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{equal\_case\_weighted\_momentum\_preserved} & \texttt{true} \\
+\texttt{asymmetric\_cases\_detect\_weighted\_momentum\_failure} &
+\texttt{true} \\
+\texttt{max\_weighted\_p\_collision\_error} &
+\texttt{16.000000000000036} \\
+\end{longtable}
+}
+
+These results detect that, under asymmetric \texttt{R} conditions,
+simple reversal breaks \texttt{R*p} conservation.
+
+This is not a failure of the model. It is a diagnostic showing that the
+generalized map in the next section is required.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. R-Weighted Generalized Collision
+Map}\label{r-weighted-generalized-collision-map}
+
+\subsubsection{8.1 Conservation
+Conditions}\label{conservation-conditions}
+
+Under asymmetric \texttt{R} conditions, the conserved readouts are
+required to be
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P\_R}
+\NormalTok{=}
+\NormalTok{R\_Ap\_A+R\_Bp\_B}
+\end{Highlighting}
+\end{Shaded}
+
+and
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{K\_R}
+\NormalTok{=}
+\NormalTok{R\_Ap\_A\^{}2+R\_Bp\_B\^{}2.}
+\end{Highlighting}
+\end{Shaded}
+
+Here \texttt{P\_R} is a momentum-like readout, and \texttt{K\_R} is a
+conserved readout of squared phase gradient.
+
+They are not identified with standard physical momentum or energy.
+
+\subsubsection{8.2 Map}\label{map}
+
+The map that preserves \texttt{P\_R} and \texttt{K\_R} while reversing
+the relative phase gradient is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_A\textquotesingle{}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{R\_A{-}R\_B\}\{R\_A+R\_B\}p\_A}
+\NormalTok{+}
+\NormalTok{\textbackslash{}frac\{2R\_B\}\{R\_A+R\_B\}p\_B}
+\end{Highlighting}
+\end{Shaded}
+
+and
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_B\textquotesingle{}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{2R\_A\}\{R\_A+R\_B\}p\_A}
+\NormalTok{+}
+\NormalTok{\textbackslash{}frac\{R\_B{-}R\_A\}\{R\_A+R\_B\}p\_B.}
+\end{Highlighting}
+\end{Shaded}
+
+This map does not substitute result values such as \texttt{R,T}. It is a
+local map used to verify whether the conservation relations hold for
+\texttt{R\_read} and \texttt{p\_read} read from multigauge interference.
+
+What is confirmed in this paper is that this
+conservation-condition-based local map preserves \texttt{R*p} and
+\texttt{R*p\^{}2} on the multigauge interference readouts. Whether this
+map itself is internally generated by an exchange-interference mechanism
+remains a subsequent question connecting to the preceding paper.
+
+\subsubsection{8.3 Verification}\label{verification}
+
+The execution script is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_readout\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+Eight amplitude conditions were verified.
+
+The results were:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+Quantity & Value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{case\_count} & \texttt{8} \\
+\texttt{individual\_readout\_valid\_all\_cases} & \texttt{true} \\
+\texttt{generalized\_P\_R\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{generalized\_K\_R\_phase\_preserved\_all\_cases} &
+\texttt{true} \\
+\texttt{E\_tau\_R\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{R\_total\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{max\_P\_R\_conservation\_error} &
+\texttt{2.3803181647963356e-13} \\
+\texttt{max\_K\_R\_phase\_conservation\_error} &
+\texttt{1.4086509736443986e-12} \\
+\end{longtable}
+}
+
+The verdict was:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generalized\_elastic\_collision\_readout\_valid: true}
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. Non-Unit and Asymmetric Phase-Gradient
+Sweep}\label{non-unit-and-asymmetric-phase-gradient-sweep}
+
+\subsubsection{9.1 Purpose}\label{purpose}
+
+The preceding section mainly used \texttt{p\_A=+1}, \texttt{p\_B=-1}.
+
+This section uses non-unit and asymmetric initial phase gradients and
+includes both head-on and same-direction catch-up collision conditions.
+
+\subsubsection{9.2 Results}\label{results-1}
+
+The execution script is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_velocity\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+Nine initial conditions were verified.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+Quantity & Value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{case\_count} & \texttt{9} \\
+\texttt{collision\_reached\_all\_cases} & \texttt{true} \\
+\texttt{P\_R\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{K\_R\_phase\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{relative\_gradient\_flipped\_all\_cases} & \texttt{true} \\
+\texttt{E\_tau\_R\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{R\_total\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{max\_P\_R\_conservation\_error} &
+\texttt{2.8910207561239076e-13} \\
+\texttt{max\_K\_R\_phase\_conservation\_error} &
+\texttt{1.5258905250448151e-12} \\
+\texttt{max\_relative\_flip\_error} & \texttt{1.2434497875801753e-14} \\
+\end{longtable}
+}
+
+The verdict was:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{velocity\_sweep\_generalized\_collision\_valid: true}
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. Multiple Collisions of the Generalized
+Map}\label{multiple-collisions-of-the-generalized-map}
+
+\subsubsection{10.1 Purpose}\label{purpose-1}
+
+This section tests whether the generalized collision map that holds for
+a single collision remains valid under repetition.
+
+Wall reflection is an auxiliary condition used only to make the
+particles encounter each other again. Conservation is judged only
+immediately before and after each AB collision.
+
+\subsubsection{10.2 Results}\label{results-2}
+
+The execution script is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_multi\_collision\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+Four conditions were executed, each with six AB collisions.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+Quantity & Value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{case\_count} & \texttt{4} \\
+\texttt{max\_ab\_collision\_count} & \texttt{6} \\
+\texttt{max\_wall\_reflection\_count} & \texttt{8} \\
+\texttt{P\_R\_preserved\_each\_collision\_all\_cases} & \texttt{true} \\
+\texttt{K\_R\_preserved\_each\_collision\_all\_cases} & \texttt{true} \\
+\texttt{relative\_flip\_each\_collision\_all\_cases} & \texttt{true} \\
+\texttt{E\_tau\_R\_preserved\_each\_collision\_all\_cases} &
+\texttt{true} \\
+\texttt{R\_preserved\_each\_collision\_all\_cases} & \texttt{true} \\
+\texttt{max\_P\_R\_error} & \texttt{3.552713678800501e-14} \\
+\texttt{max\_K\_R\_error} & \texttt{1.056932319443149e-13} \\
+\texttt{max\_relative\_flip\_error} & \texttt{2.220446049250313e-14} \\
+\end{longtable}
+}
+
+The verdict was:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generalized\_multi\_collision\_valid: true}
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{11. Readout-Noise
+Robustness}\label{readout-noise-robustness}
+
+\subsubsection{11.1 Purpose}\label{purpose-2}
+
+Measurement requires multigauge interference rather than a single gauge
+value.
+
+Therefore, if the readout side fluctuates, zero-mean gauge fluctuations
+should be averaged out, while common bias across all gauges should be
+detected.
+
+This section adds deterministic pseudo-noise to readout rows after state
+simulation.
+
+This does not claim measurement validity under arbitrary noise. It is a
+controlled experiment testing whether zero-mean gauge fluctuations are
+canceled by multigauge averaging and whether common gauge bias is
+detected.
+
+\subsubsection{11.2 Results}\label{results-3}
+
+The execution script is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_noise\_robustness\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+Four cases, two noise modes, and six noise levels were tested.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+Quantity & Value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{case\_count} & \texttt{4} \\
+\texttt{noise\_mode\_count} & \texttt{2} \\
+\texttt{noise\_level\_count} & \texttt{6} \\
+\texttt{max\_gauge\_count} & \texttt{116} \\
+\texttt{zero\_mean\_multigauge\_valid\_all} & \texttt{true} \\
+\texttt{common\_bias\_detection\_floor} & \texttt{1e-10} \\
+\texttt{common\_bias\_detected\_all\_above\_floor} & \texttt{true} \\
+\texttt{zero\_mean\_max\_p\_mean\_abs\_error} &
+\texttt{1.4477308241112041e-13} \\
+\texttt{zero\_mean\_max\_R\_mean\_abs\_error} &
+\texttt{3.552713678800501e-14} \\
+\texttt{zero\_mean\_max\_K\_R\_error} &
+\texttt{8.322231792590173e-13} \\
+\end{longtable}
+}
+
+The verdict was:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{noise\_robustness\_valid: true}
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{12. Extreme R-Ratio Sweep}\label{extreme-r-ratio-sweep}
+
+\subsubsection{12.1 Purpose}\label{purpose-3}
+
+If \texttt{R\_read} behaves as a mass-like quantity, conserved readouts
+must be checked under strongly asymmetric \texttt{R} ratios.
+
+This section sweeps from
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R\_B/R\_A = 0.015625}
+\end{Highlighting}
+\end{Shaded}
+
+to
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R\_B/R\_A = 64.0.}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{12.2 Results}\label{results-4}
+
+The execution script is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_extreme\_R\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+The results were:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+Quantity & Value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{case\_count} & \texttt{12} \\
+\texttt{max\_R\_dynamic\_range} & \texttt{64.0} \\
+\texttt{min\_R\_ratio\_B\_over\_A} & \texttt{0.015625} \\
+\texttt{max\_R\_ratio\_B\_over\_A} & \texttt{64.0} \\
+\texttt{P\_R\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{K\_R\_phase\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{relative\_gradient\_flipped\_all\_cases} & \texttt{true} \\
+\texttt{max\_P\_R\_conservation\_error} &
+\texttt{6.465938895416912e-13} \\
+\texttt{max\_K\_R\_phase\_conservation\_error} &
+\texttt{1.2789769243681803e-12} \\
+\texttt{max\_relative\_flip\_error} & \texttt{2.6867397195928788e-14} \\
+\end{longtable}
+}
+
+The verdict was:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{extreme\_R\_sweep\_valid: true}
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{13. Integration Summary}\label{integration-summary}
+
+Nine experiments were integrated.
+
+The execution script is:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_readout\_integration\_summary\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+The integrated verdict was:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{experiment\_count: 9}
+\NormalTok{all\_experiments\_valid: true}
+\NormalTok{single\_gauge\_only\_used\_any: false}
+\NormalTok{integration\_summary\_valid: true}
+\end{Highlighting}
+\end{Shaded}
+
+The experiment list is:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Experiment
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Purpose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Valid
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{single\_collision\_multigauge\_readout} & Read \texttt{p/E/R} by
+multigauge interference in a single ABC collision & \texttt{true} \\
+\texttt{multi\_collision\_multigauge\_readout} & Maintain \texttt{p/E/R}
+readout across repeated symmetric ABC collisions & \texttt{true} \\
+\texttt{readout\_robustness\_sweep} & Test stable \texttt{p/E/R}
+reconstruction across readout-gauge configurations & \texttt{true} \\
+\texttt{asymmetric\_amplitude\_diagnostic} & Detect that simple reversal
+breaks conservation under asymmetric R & \texttt{true} \\
+\texttt{generalized\_elastic\_collision\_readout} & Read a generalized
+map conserving \texttt{R*p} and \texttt{R*p\^{}2} under asymmetric R &
+\texttt{true} \\
+\texttt{generalized\_velocity\_sweep} & Verify the generalized map under
+non-unit and asymmetric phase gradients & \texttt{true} \\
+\texttt{generalized\_multi\_collision} & Repeatedly apply the
+generalized map to multiple AB collisions & \texttt{true} \\
+\texttt{generalized\_noise\_robustness} & Confirm cancellation of
+zero-mean readout noise and detection of common bias & \texttt{true} \\
+\texttt{generalized\_extreme\_R\_sweep} & Test the generalized map and
+readout under extreme R ratios & \texttt{true} \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{14. Evaluation}\label{evaluation}
+
+The results are classified in the style of the exploratory physicist
+role.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Target
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Classification
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Verdict
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{p\_read} is reconstructed from multigauge interference &
+Numerically constructed consequence & Retained \\
+\texttt{E\_read} is reconstructed from multigauge interference &
+Numerically constructed consequence & Retained \\
+\texttt{R\_read} is read as a stable residual across multiple gauges &
+Numerically constructed consequence & Retained \\
+Symmetric collision reverses \texttt{p} and preserves \texttt{E,R} &
+Numerically constructed consequence & Retained \\
+Under asymmetric R, simple reversal breaks \texttt{R*p} conservation &
+Numerically constructed consequence & Retained \\
+The \texttt{R*p}, \texttt{R*p\^{}2} conserving map holds under
+asymmetric R & Numerically constructed consequence & Retained \\
+Zero-mean readout-noise components are averaged out by multigauge
+averaging & Numerically constructed consequence & Retained \\
+Common readout bias is detected & Numerically constructed consequence &
+Retained \\
+Identity with standard mass, standard momentum, and standard energy &
+Correspondence-map task & Not claimed \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{15. Discussion}\label{discussion}
+
+\subsubsection{15.1 Mass, Momentum, and Energy Are Not Placed
+First}\label{mass-momentum-and-energy-are-not-placed-first}
+
+This paper does not place mass, momentum, and energy first.
+
+The starting point is the closed phase system, local waves, observer
+wave, gauge family, and interference correlation.
+
+From these, the quantities
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_read}
+\NormalTok{E\_read}
+\NormalTok{R\_read}
+\end{Highlighting}
+\end{Shaded}
+
+are read.
+
+Thus the order of the paper is not
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Assume mass, momentum, and energy.}
+\end{Highlighting}
+\end{Shaded}
+
+Instead, it is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Test whether conserved quantities behaving as mass{-}like, momentum{-}like, and energy{-}like readouts emerge from interference readout.}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{15.2 R Is Difficult to
+Measure}\label{r-is-difficult-to-measure}
+
+\texttt{p\_read} is a spatial phase gradient and is relatively easy to
+read through sign reversal or relative-gradient reversal.
+
+\texttt{E\_read} is a temporal phase-direction gradient and can be read
+by changing temporal windows.
+
+In contrast, \texttt{R\_read} is a stable residual.
+
+It is stable precisely because its variation is small. For the same
+reason, it is difficult to measure.
+
+The \texttt{t/R} separation in this paper is a working indicator used to
+test this point numerically.
+
+\subsubsection{15.3 A Single Gauge Is Not
+Enough}\label{a-single-gauge-is-not-enough}
+
+All experiments in this paper reported
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+This is important.
+
+This result does not prove the general impossibility of single-gauge
+measurement. It shows that, when the measurement condition is set as
+multigauge interference reconstruction, that condition alone
+consistently reads \texttt{p,E,R} and \texttt{R}-weighted conserved
+quantities.
+
+\texttt{p,E,R} are not quantities directly visible as single local
+values. They are quantities stably reconstructed through multiple
+gauges.
+
+Therefore, mass-like, momentum-like, and energy-like readouts must be
+treated as multigauge interference reconstructions rather than
+single-gauge measurements.
+
+\subsubsection{15.4 From Simple Reversal to a Generalized Conservation
+Map}\label{from-simple-reversal-to-a-generalized-conservation-map}
+
+Under equal-amplitude conditions, simple direction reversal appears
+conservative.
+
+Under asymmetric \texttt{R} conditions, however, simple reversal breaks
+\texttt{R*p} conservation.
+
+This break is not a failure of the model. Rather, if \texttt{R} is read
+mass-like, it diagnoses the need to generalize the conservation map to
+an \texttt{R}-weighted one.
+
+This paper confirmed that the generalized map preserves \texttt{R*p} and
+\texttt{R*p\^{}2}.
+
+The generalized map here is a local map constructed from conservation
+conditions. The result of this paper is therefore the construction and
+verification of a readout map that behaves conservatively under
+asymmetric \texttt{R} conditions. Its internal interference generation
+is separated as the next question.
+
+\subsubsection{15.5 Connection to Standard Theory Is the Next
+Task}\label{connection-to-standard-theory-is-the-next-task}
+
+This construction does not directly derive standard physical momentum,
+energy, or mass.
+
+However, the following structure was obtained:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Spatial phase gradient {-}\textgreater{} momentum{-}like readout}
+\NormalTok{Temporal phase gradient {-}\textgreater{} energy{-}like readout}
+\NormalTok{Stable amplitude{-}square residual {-}\textgreater{} mass{-}like readout}
+\NormalTok{R*p conservation {-}\textgreater{} relation that looks like momentum{-}like conservation}
+\NormalTok{R*p\^{}2 conservation {-}\textgreater{} relation that looks like squared{-}quantity conservation}
+\end{Highlighting}
+\end{Shaded}
+
+Therefore, the readout-side foundation for constructing a correspondence
+map to standard theory has been obtained.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{16. Conclusion}\label{conclusion}
+
+This paper numerically tested whether conserved readouts corresponding
+to mass-like, momentum-like, and energy-like quantities can be
+constructed from multigauge interference in an ABC closed phase system.
+
+In a single ABC collision, \texttt{p\_read}, \texttt{E\_read}, and
+\texttt{R\_read} were reconstructed from multiple gauges. \texttt{p} was
+reversed, and \texttt{E,R} were preserved. The maximum readout errors
+were \texttt{2.5202062658991053e-14} for \texttt{p},
+\texttt{2.2315482794965646e-14} for \texttt{E}, and
+\texttt{4.440892098500626e-16} for \texttt{R}.
+
+Across eight repeated symmetric collisions, \texttt{p} reversal,
+\texttt{E,R} preservation, internal label-mode preservation, and
+compensated closure were maintained.
+
+Under asymmetric \texttt{R} conditions, simple
+\texttt{q\ -\textgreater{}\ -q} reversal was detected to break
+\texttt{R*p} conservation. A generalized collision map conserving
+\texttt{R*p} and \texttt{R*p\^{}2} was then constructed. Across eight
+asymmetric amplitude cases, conservation was confirmed with maximum
+\texttt{R*p} error \texttt{2.3803181647963356e-13} and maximum
+\texttt{R*p\^{}2} error \texttt{1.4086509736443986e-12}.
+
+Additional verification covered non-unit and asymmetric initial phase
+gradients, same-direction catch-up collisions, multiple collisions,
+readout noise, and extreme \texttt{R}-ratio sweeps. The integration
+summary reported all nine experiments as \texttt{valid}, with no
+single-gauge-only judgment.
+
+Within the numerical constructive scope of this paper, the ABC closed
+phase system consistently constructs conserved readouts corresponding to
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_read}
+\NormalTok{E\_read}
+\NormalTok{R\_read}
+\NormalTok{R*p}
+\NormalTok{R*p\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+through multigauge interference.
+
+This is not an identification with standard physical quantities. It is,
+however, a numerical construction for treating mass-like, momentum-like,
+and energy-like quantities as conserved readouts from a closed phase
+system rather than as primitive external entities.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Appendix A. Executed Programs and
+Outputs}\label{appendix-a.-executed-programs-and-outputs}
+
+\subsection{A.1 Single ABC Multigauge
+Readout}\label{a.1-single-abc-multigauge-readout}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_interference\_readout\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_interference\_readout\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+Main files:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+File
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Report &
+\href{abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_report_v1.md}{abc\_multigauge\_interference\_readout\_report\_v1.md} \\
+JSON &
+\href{abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_result_v1.json}{abc\_multigauge\_interference\_readout\_result\_v1.json} \\
+Gauge CSV &
+\href{abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_gauge_sweep_v1.csv}{abc\_multigauge\_interference\_readout\_gauge\_sweep\_v1.csv} \\
+p/E/R figure &
+\href{abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_invariants_v1.png}{abc\_multigauge\_interference\_readout\_invariants\_v1.png} \\
+t/R separation figure &
+\href{abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_tr_separation_v1.png}{abc\_multigauge\_interference\_readout\_tr\_separation\_v1.png} \\
+\end{longtable}
+}
+
+\subsection{A.2 Symmetric Multiple
+Collisions}\label{a.2-symmetric-multiple-collisions}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_interference\_readout\_multi\_collision\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_interference\_readout\_multi\_collision\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{A.3 Readout-Gauge
+Robustness}\label{a.3-readout-gauge-robustness}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_interference\_readout\_robustness\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_interference\_readout\_robustness\_sweep\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{A.4 Asymmetric Amplitude
+Diagnostic}\label{a.4-asymmetric-amplitude-diagnostic}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_interference\_readout\_asymmetric\_amplitude\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_interference\_readout\_asymmetric\_amplitude\_sweep\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{A.5 Generalized Elastic Collision
+Map}\label{a.5-generalized-elastic-collision-map}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_readout\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_readout\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{A.6 Asymmetric Velocity
+Sweep}\label{a.6-asymmetric-velocity-sweep}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_velocity\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_velocity\_sweep\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{A.7 Generalized Multiple
+Collisions}\label{a.7-generalized-multiple-collisions}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_multi\_collision\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_multi\_collision\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{A.8 Readout-Noise
+Robustness}\label{a.8-readout-noise-robustness}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_noise\_robustness\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_noise\_robustness\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{A.9 Extreme R-Ratio Sweep}\label{a.9-extreme-r-ratio-sweep}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_extreme\_R\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_extreme\_R\_sweep\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{A.10 Integration Summary}\label{a.10-integration-summary}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_readout\_integration\_summary\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+Output:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_readout\_integration\_summary\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Appendix B. Executed Verification
+Notes}\label{appendix-b.-executed-verification-notes}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+File
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Definitional supplement &
+\href{全正符号ゼロ閉鎖の読出し多重性に関する定義補足.md}{全正符号ゼロ閉鎖の読出し多重性に関する定義補足.md} \\
+Specification policy &
+\href{現在チャットメモ_多ゲージ干渉読出し仕様方針.md}{現在チャットメモ\_多ゲージ干渉読出し仕様方針.md} \\
+Single readout verification &
+\href{ABC完全弾性衝突における多ゲージ干渉読出し数値検証メモ_v1.md}{ABC完全弾性衝突における多ゲージ干渉読出し数値検証メモ\_v1.md} \\
+Symmetric repeated collision &
+\href{ABC多ゲージ干渉読出しの複数回衝突検証メモ_v1.md}{ABC多ゲージ干渉読出しの複数回衝突検証メモ\_v1.md} \\
+Readout-gauge robustness &
+\href{ABC多ゲージ干渉読出しの読出し器頑健性スイープ検証メモ_v1.md}{ABC多ゲージ干渉読出しの読出し器頑健性スイープ検証メモ\_v1.md} \\
+Asymmetric amplitude diagnostic &
+\href{ABC多ゲージ干渉読出しの非対称振幅診断スイープ検証メモ_v1.md}{ABC多ゲージ干渉読出しの非対称振幅診断スイープ検証メモ\_v1.md} \\
+Generalized map &
+\href{ABC多ゲージ干渉読出しによる一般化弾性衝突写像検証メモ_v1.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突写像検証メモ\_v1.md} \\
+Asymmetric velocity &
+\href{ABC多ゲージ干渉読出しによる一般化弾性衝突の非対称速度スイープ検証メモ_v1.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突の非対称速度スイープ検証メモ\_v1.md} \\
+Generalized multiple collision &
+\href{ABC多ゲージ干渉読出しによる一般化弾性衝突の複数回衝突検証メモ_v1.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突の複数回衝突検証メモ\_v1.md} \\
+Noise robustness &
+\href{ABC多ゲージ干渉読出しによる一般化弾性衝突の読出しノイズ頑健性検証メモ_v1.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突の読出しノイズ頑健性検証メモ\_v1.md} \\
+Extreme R ratio &
+\href{ABC多ゲージ干渉読出しによる一般化弾性衝突の極端R比スイープ検証メモ_v1.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突の極端R比スイープ検証メモ\_v1.md} \\
+Integration summary &
+\href{ABC多ゲージ干渉読出し実験群の統合サマリー_v1.md}{ABC多ゲージ干渉読出し実験群の統合サマリー\_v1.md} \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{References}\label{references}
+
+\subsection{Self-Citations}\label{self-citations}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Noriaki Kihara, ``Basic Axiom System v2 of the Nameless
+  Equal-Amplitude Composite Wave Model,'' 2026-07-10.
+\item
+  Noriaki Kihara, ``Definitional Supplement on Readout Multiplicity of
+  the All-Positive Zero Closure,'' 2026-07-11.
+\item
+  Noriaki Kihara, ``Construction Experiment of Complete Elastic
+  Reflection of Fermionic Bilocal Waves in a Closed Phase System Without
+  Assuming Background Space,'' Version DOI:
+  \texttt{10.5281/zenodo.21291020}, Concept DOI:
+  \texttt{10.5281/zenodo.21291018}, 2026.
+\item
+  Noriaki Kihara, ``Interference Construction of a Perfect Reflection
+  Map from a Fermionic Inverse-Phase Core,'' Version DOI:
+  \texttt{10.5281/zenodo.21295480}, Concept DOI:
+  \texttt{10.5281/zenodo.21295479}, 2026.
+\item
+  Noriaki Kihara, ``Curvature Renormalization and Perfect-Reflection
+  Stability by Curved Closed Stationary Waves,'' Version DOI:
+  \texttt{10.5281/zenodo.21304040}, Concept DOI:
+  \texttt{10.5281/zenodo.21304039}, 2026.
+\end{enumerate}
+
+\subsection{External References}\label{external-references}
+
+External references are used only as minimal background for conservation
+laws, interference phase, and geometric phase. They are not used as
+derivational grounds for this paper.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  E. Noether, ``Invariante Variationsprobleme,'' \emph{Nachrichten von
+  der Gesellschaft der Wissenschaften zu Göttingen,
+  Mathematisch-Physikalische Klasse}, 235-257, 1918.
+\item
+  S. Pancharatnam, ``Generalized theory of interference, and its
+  applications,'' \emph{Proceedings of the Indian Academy of Sciences
+  A}, 44, 247-262, 1956.
+\item
+  M. V. Berry, ``Quantal phase factors accompanying adiabatic changes,''
+  \emph{Proceedings of the Royal Society of London A}, 392, 45-57, 1984.
+  DOI: \texttt{10.1098/rspa.1984.0023}.
+\end{enumerate}
+
+\end{document}

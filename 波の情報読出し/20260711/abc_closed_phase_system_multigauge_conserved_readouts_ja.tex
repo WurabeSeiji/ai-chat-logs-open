@@ -1,0 +1,1707 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{HaranoAjiMincho-Regular.otf}
+  \setmonofont[]{DejaVuSansMono.ttf}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{ABC閉鎖位相系における多ゲージ干渉読出し保存量の構成実験}\label{abcux9589ux9396ux4f4dux76f8ux7cfbux306bux304aux3051ux308bux591aux30b2ux30fcux30b8ux5e72ux6e09ux8aadux51faux3057ux4fddux5b58ux91cfux306eux69cbux6210ux5b9fux9a13}
+
+\textbf{副題:} \texttt{p\_read}, \texttt{E\_read}, \texttt{R\_read} と
+\texttt{R*p}, \texttt{R*p\^{}2}
+保存写像による質量的・運動量的・エネルギー的量の数値構成\\
+\textbf{日付:} 2026-07-11\\
+\textbf{著者:} 木原 範昭\\
+\textbf{位置づけ:} 波の情報読出しシリーズ・追加論文\\
+\textbf{Version DOI:} 10.5281/zenodo.21308050\\
+\textbf{Concept DOI:} 10.5281/zenodo.21308049
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+本稿では、背景座標を先験的に仮定しない ABC
+閉鎖位相系において、質量的量、運動量的量、エネルギー的量に相当する保存読出しが、多ゲージ干渉から構成できるかを数値的に検証した。
+
+本シリーズでは、空間・時間に相当する \texttt{χ,τ}
+を外部時空座標ではなく、閉じた位相系からの読出し量として扱ってきた。本稿では同じ方針を、質量的量、運動量的量、エネルギー的量へ拡張する。
+
+局所波 \texttt{A,B} と観測機 \texttt{C} からなる ABC
+系に対して、単一ゲージ値を測定値とはみなさず、複数の読出しゲージから干渉相関を取得する。空間位相方向の相関勾配を
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_read}
+\end{Highlighting}
+\end{Shaded}
+
+時間位相方向の相関勾配を
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{E\_read}
+\end{Highlighting}
+\end{Shaded}
+
+複数ゲージで安定して残る振幅二乗残差を
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R\_read}
+\end{Highlighting}
+\end{Shaded}
+
+として読む。
+
+本稿でいう \texttt{p,E,R}
+は、標準物理の運動量、エネルギー、質量そのものではない。閉鎖位相系内の多ゲージ干渉読出し量である。本稿の目的は、それらが標準量と同一であることを主張することではなく、保存量に見える読出し構造が
+ABC 閉鎖位相系内に構成できるかを調べることである。
+
+実行結果では、単回 ABC 衝突において \texttt{p,E,R}
+が多ゲージから再構成され、最大誤差はそれぞれ
+\texttt{2.5202062658991053e-14}, \texttt{2.2315482794965646e-14},
+\texttt{4.440892098500626e-16} であった。8回の反復衝突でも \texttt{p}
+反転、\texttt{E,R} 保存、識別振動保存、補償付き閉鎖が維持された。
+
+非対称 \texttt{R} 条件では、単純な \texttt{q\ -\textgreater{}\ -q}
+反転が \texttt{R*p}
+保存を破ることが検出された。そこで、\texttt{R\_A\ p\_A\ +\ R\_B\ p\_B}
+および \texttt{R\_A\ p\_A\^{}2\ +\ R\_B\ p\_B\^{}2}
+を保存する一般化衝突写像を構成した。8種類の非対称振幅ケースでは、最大
+\texttt{R*p} 保存誤差 \texttt{2.3803181647963356e-13}、最大
+\texttt{R*p\^{}2} 保存誤差 \texttt{1.4086509736443986e-12}
+で保存が確認された。
+
+さらに、9種類の非単位・非対称初期位相勾配、4種類の複数回衝突ケース、読出しノイズ頑健性、\texttt{R\_B/R\_A=0.015625}
+から \texttt{64.0} までの極端 \texttt{R}
+比スイープを実行した。統合サマリーでは9本の実験すべてが \texttt{valid}
+となり、単一ゲージのみの判定は一つも用いなかった。
+
+以上により、本稿の数値構成範囲では、ABC
+閉鎖位相系から、質量的・運動量的・エネルギー的量に見える保存読出しを、多ゲージ干渉により構成できることが確認された。
+
+\textbf{キーワード:}
+多ゲージ干渉読出し、ABC閉鎖位相系、全正符号ゼロ閉鎖、質量的読出し、運動量的読出し、エネルギー的読出し、一般化弾性衝突、\texttt{R*p}
+保存、\texttt{R*p\^{}2} 保存
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 序論}\label{ux5e8fux8ad6}
+
+\subsubsection{1.1 背景}\label{ux80ccux666f}
+
+本シリーズでは、無名性、全正符号ゼロ閉鎖、非自明存在を基本公理として採用している。中心となる閉鎖条件は、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_n x\_n\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+この閉鎖条件は、共役ノルム
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_n |x\_n|\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+ではない。各成分をそのまま二乗し、全正符号で総和する閉鎖条件である。
+
+前段階の「全正符号ゼロ閉鎖の読出し多重性に関する定義補足」では、この公理1を変更せず、同じ閉鎖条件が複数の読出し表示を持つことを整理した。半径的表示を
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a\^{}2+b\^{}2=\textbackslash{}rho\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+として読む場合も、第一原理層では外部負符号付きの
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a\^{}2+b\^{}2{-}\textbackslash{}rho\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+を置かない。全正符号ゼロ閉鎖の表示として、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a\^{}2+b\^{}2+(i\textbackslash{}rho)\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+と読む。
+
+したがって、半径、時間、質量、エネルギー、運動量に見える量も、第一原理的に固有名を持つ軸として先に置くのではなく、読出し表示として扱う。
+
+\subsubsection{1.2 本稿の問い}\label{ux672cux7a3fux306eux554fux3044}
+
+本稿の問いは次である。
+
+\begin{quote}
+背景座標を先験的に仮定しない ABC
+閉鎖位相系において、質量的量、運動量的量、エネルギー的量に見える保存読出しを、多ゲージ干渉から構成できるか。
+\end{quote}
+
+ここで重要なのは、単一ゲージ値を測定値とみなさないことである。
+
+\texttt{χ,τ}
+に相当する読出しが干渉相関から構成されたのと同様に、\texttt{p,E,R}
+に相当する読出しも、複数の参照波、複数の読出し窓、複数のゲージから再構成されなければならない。
+
+\subsubsection{1.3
+本稿の最小主張}\label{ux672cux7a3fux306eux6700ux5c0fux4e3bux5f35}
+
+本稿の主張は、次の範囲に限定する。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ABC 閉鎖位相系内で、\texttt{p\_read}, \texttt{E\_read},
+  \texttt{R\_read} を多ゲージ干渉から再構成する。
+\item
+  対称衝突では、\texttt{p\_read} が反転し、\texttt{E\_read},
+  \texttt{R\_read} が保存されることを確認する。
+\item
+  非対称 \texttt{R} 条件では、単純反転が \texttt{R*p}
+  保存を破ることを検出する。
+\item
+  \texttt{R*p} と \texttt{R*p\^{}2} を保存する一般化衝突写像を構成する。
+\item
+  反復衝突、読出し器変更、読出しノイズ、極端 \texttt{R}
+  比に対して、読出し保存が維持されるかを検証する。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2.
+本稿で主張しないこと}\label{ux672cux7a3fux3067ux4e3bux5f35ux3057ux306aux3044ux3053ux3068}
+
+本稿は、次を主張しない。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+主張しないこと
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+理由
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+標準運動量・標準エネルギー・標準質量の導出 & 本稿の \texttt{p,E,R}
+は閉鎖位相系内の読出し量である \\
+標準力学の完全な再導出 & 対応写像は別途構成が必要である \\
+実在粒子衝突の定量予言 & 本稿は内部位相モデル上の数値構成実験である \\
+単一ゲージ測定の一般不可能性の証明 &
+本稿では測定成立条件として多ゲージ干渉読出しを要求する \\
+\texttt{R} 重み付き一般化写像の内部干渉生成 &
+本稿では保存条件から写像を構成し、多ゲージ読出しで検証する \\
+\texttt{R} を先験的な質量軸とすること & \texttt{R}
+は複数ゲージで安定して残る読出し名である \\
+背景時空座標の仮定 & \texttt{χ,τ} は位相系内の読出し変数である \\
+任意ノイズ条件での読出し成立 &
+本稿のノイズ検証はゼロ平均ゲージ揺らぎと共通バイアスの制御比較に限る \\
+任意条件での一般化衝突成立 & 検証範囲は本稿の数値条件に限る \\
+\end{longtable}
+}
+
+本稿の主張は、ABC
+閉鎖位相系内で、保存量に見える読出し構造を多ゲージ干渉から構成したことである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. 基本構造}\label{ux57faux672cux69cbux9020}
+
+\subsubsection{3.1
+全正符号ゼロ閉鎖}\label{ux5168ux6b63ux7b26ux53f7ux30bcux30edux9589ux9396}
+
+基本公理系 v2 の公理1は、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Q(x)=\textbackslash{}sum\_n x\_n\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+これは、外部の負符号計量を先に置く条件ではない。
+
+最小補償対
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A,\textbackslash{}qquad iA}
+\end{Highlighting}
+\end{Shaded}
+
+では、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A\^{}2+(iA)\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+となる。
+
+負符号は外部係数ではなく、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{i\^{}2={-}1}
+\end{Highlighting}
+\end{Shaded}
+
+という内部位相の二乗から現れる。
+
+\subsubsection{3.2
+読出し多重性}\label{ux8aadux51faux3057ux591aux91cdux6027}
+
+同じ閉鎖条件
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_n x\_n\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+は、局所読出しにおいて複数の表示を持つ。
+
+例えば、局所表示で
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a\^{}2+b\^{}2+(i\textbackslash{}rho)\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+と読める場合、\texttt{a,b,\textbackslash{}rho}
+は第一原理的に異なる種類の成分ではない。ある読出し窓、ある参照波、ある射影において便宜的に付けたラベルである。
+
+本稿の \texttt{p,E,R} も同様である。
+
+\texttt{p}
+は運動量そのものではなく、空間位相方向の相関勾配読出しである。
+
+\texttt{E}
+はエネルギーそのものではなく、時間位相方向の相関勾配読出しである。
+
+\texttt{R}
+は質量そのものではなく、複数ゲージで安定して残る振幅二乗読出しである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. ABC閉鎖位相系}\label{abcux9589ux9396ux4f4dux76f8ux7cfb}
+
+\subsubsection{4.1 局所波 A, B}\label{ux5c40ux6240ux6ce2-a-b}
+
+局所波 \texttt{A,B} は、空間位相 \texttt{χ}、時間位相
+\texttt{τ}、内部識別位相
+\texttt{η}、代表振幅、および内部識別モードを持つ。
+
+本稿では、\texttt{A,B} の位相中心を \texttt{χ\_A,χ\_B}、時間位相中心を
+\texttt{τ\_A,τ\_B} とする。
+
+内部識別モードは、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m\_A=1,}
+\NormalTok{m\_B=2}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+\subsubsection{4.2 観測機 C}\label{ux89b3ux6e2cux6a5f-c}
+
+観測機 \texttt{C} は、外部観測者ではない。
+
+同じ閉鎖位相系内にある参照波であり、局所波 \texttt{A,B}
+との干渉相関を読むために用いる。
+
+各ゲージは、読出し中心、読出し幅、位相シフト、参照波利得などを変える。
+
+\subsubsection{4.3
+単一ゲージ値を測定値としない}\label{ux5358ux4e00ux30b2ux30fcux30b8ux5024ux3092ux6e2cux5b9aux5024ux3068ux3057ux306aux3044}
+
+本稿では、単一ゲージで得られた数値を測定成立とはみなさない。
+
+測定成立には、複数ゲージに対して同じ読出し量が再構成されることを要求する。
+
+したがって、測定対象は、個々のゲージ値ではなく、ゲージ群を通じて安定に残る量である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+多ゲージ干渉読出し}\label{ux591aux30b2ux30fcux30b8ux5e72ux6e09ux8aadux51faux3057}
+
+\subsubsection{5.1
+空間位相勾配読出し}\label{ux7a7aux9593ux4f4dux76f8ux52feux914dux8aadux51faux3057}
+
+空間位相方向の干渉相関を、微小変位 \texttt{h\_χ} に対して
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_\{\textbackslash{}mathrm\{read\}\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{\textbackslash{}arg\textbackslash{}left(O(\textbackslash{}chi+h\_\textbackslash{}chi)/O(\textbackslash{}chi{-}h\_\textbackslash{}chi)\textbackslash{}right)\}}
+\NormalTok{\{2h\_\textbackslash{}chi\}}
+\end{Highlighting}
+\end{Shaded}
+
+として読む。
+
+これは標準運動量そのものではない。空間位相方向の相関勾配である。
+
+\subsubsection{5.2
+時間位相勾配読出し}\label{ux6642ux9593ux4f4dux76f8ux52feux914dux8aadux51faux3057}
+
+時間位相方向の干渉相関を、微小変位 \texttt{h\_τ} に対して
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{E\_\{\textbackslash{}mathrm\{read\}\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{\textbackslash{}arg\textbackslash{}left(O(\textbackslash{}tau+h\_\textbackslash{}tau)/O(\textbackslash{}tau{-}h\_\textbackslash{}tau)\textbackslash{}right)\}}
+\NormalTok{\{2h\_\textbackslash{}tau\}}
+\end{Highlighting}
+\end{Shaded}
+
+として読む。
+
+これは標準エネルギーそのものではない。時間位相方向の相関勾配である。
+
+\subsubsection{5.3 R読出し}\label{rux8aadux51faux3057}
+
+読出し振幅をゲージごとに較正し、振幅二乗として
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R\_\{\textbackslash{}mathrm\{read\}\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}gamma\_g A\_\{\textbackslash{}mathrm\{read\}\}\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+を読む。
+
+ここで \texttt{γ\_g} はゲージ側の読出し利得である。
+
+\texttt{R\_read}
+は、複数ゲージを変えても安定して残る量であることを要求する。
+
+\subsubsection{5.4 t/R分離}\label{trux5206ux96e2}
+
+\texttt{t} と \texttt{R} は先験的に名前付きの別軸ではない。
+
+変動が大きく連続的に読まれる成分を \texttt{t}
+と読み、変動が小さく安定に残る成分を \texttt{R} と読む。
+
+本稿では、作業的に
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}frac\{\textbackslash{}operatorname\{Var\}(R\_\{\textbackslash{}mathrm\{read\}\})\}}
+\NormalTok{\{\textbackslash{}operatorname\{Var\}(t\_\{\textbackslash{}mathrm\{read\}\})\}}
+\end{Highlighting}
+\end{Shaded}
+
+を用いて、\texttt{t/R} 分離を評価する。
+
+この比が十分小さいとき、\texttt{R}
+は時間的変動から分離された安定読出しとして扱える。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6.
+対称ABC衝突における基礎読出し}\label{ux5bfeux79f0abcux885dux7a81ux306bux304aux3051ux308bux57faux790eux8aadux51faux3057}
+
+\subsubsection{6.1 単回衝突}\label{ux5358ux56deux885dux7a81}
+
+まず、等振幅条件
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A\_A=A\_B=1}
+\end{Highlighting}
+\end{Shaded}
+
+で、単回 ABC 衝突を実行した。
+
+実行スクリプトは次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_interference\_readout\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+結果は次であった。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+量 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{p\_max\_abs\_error} & \texttt{2.5202062658991053e-14} \\
+\texttt{E\_max\_abs\_error} & \texttt{2.2315482794965646e-14} \\
+\texttt{R\_max\_abs\_error} & \texttt{4.440892098500626e-16} \\
+\texttt{p\_reflection\_error\_A} & \texttt{3.3306690738754696e-16} \\
+\texttt{p\_reflection\_error\_B} & \texttt{3.3306690738754696e-16} \\
+\texttt{E\_preservation\_error\_A} & \texttt{0.0} \\
+\texttt{E\_preservation\_error\_B} & \texttt{0.0} \\
+\texttt{R\_preservation\_error\_A} & \texttt{0.0} \\
+\texttt{R\_preservation\_error\_B} & \texttt{0.0} \\
+\texttt{separation\_ratio\_time} & \texttt{3.6838616474030686e-30} \\
+\end{longtable}
+}
+
+判定は次であった。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{multigauge\_measurement\_valid: true}
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{6.2 複数回衝突}\label{ux8907ux6570ux56deux885dux7a81}
+
+次に、同じ読出し器を8回の AB 衝突へ適用した。
+
+実行スクリプトは次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_interference\_readout\_multi\_collision\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+結果は次であった。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+量 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{ab\_collision\_count} & \texttt{8} \\
+\texttt{wall\_reflection\_count} & \texttt{7} \\
+\texttt{p\_max\_abs\_error} & \texttt{2.5202062658991053e-14} \\
+\texttt{E\_max\_abs\_error} & \texttt{3.341771304121721e-13} \\
+\texttt{R\_max\_abs\_error} & \texttt{5.639932965095795e-14} \\
+\texttt{max\_p\_reflection\_error} & \texttt{4.440892098500626e-16} \\
+\texttt{max\_E\_preservation\_error} & \texttt{0.0} \\
+\texttt{max\_R\_preservation\_error} & \texttt{0.0} \\
+\texttt{separation\_ratio\_time} & \texttt{2.7083289874897587e-28} \\
+\end{longtable}
+}
+
+判定は次であった。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{multi\_collision\_multigauge\_valid: true}
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{6.3
+読出し器構成の頑健性}\label{ux8aadux51faux3057ux5668ux69cbux6210ux306eux9811ux5065ux6027}
+
+読出しゲージの中心、幅、位相、利得を変えた5種類のゲージ群を用い、合計130ゲージで読出し器頑健性を検査した。
+
+実行スクリプトは次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_interference\_readout\_robustness\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+結果は次であった。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+量 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{case\_count} & \texttt{5} \\
+\texttt{total\_gauge\_count} & \texttt{130} \\
+\texttt{max\_p\_abs\_error\_all\_cases} &
+\texttt{3.0331293032759277e-13} \\
+\texttt{max\_E\_abs\_error\_all\_cases} &
+\texttt{3.0331293032759277e-13} \\
+\texttt{max\_R\_abs\_error\_all\_cases} &
+\texttt{1.5765166949677223e-14} \\
+\texttt{max\_R\_gauge\_std\_all\_cases} &
+\texttt{5.288392122597181e-15} \\
+\texttt{max\_separation\_ratio\_time\_all\_cases} &
+\texttt{1.3338999651354898e-27} \\
+\end{longtable}
+}
+
+判定は次であった。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{robustness\_sweep\_valid: true}
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7.
+非対称Rにおける単純反転の破綻診断}\label{ux975eux5bfeux79f0rux306bux304aux3051ux308bux5358ux7d14ux53cdux8ee2ux306eux7834ux7dbbux8a3aux65ad}
+
+\subsubsection{7.1 問題設定}\label{ux554fux984cux8a2dux5b9a}
+
+等振幅条件では、\texttt{p\_A=+1}, \texttt{p\_B=-1} の単純反転
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_A {-}\textgreater{} {-}p\_A}
+\NormalTok{p\_B {-}\textgreater{} {-}p\_B}
+\end{Highlighting}
+\end{Shaded}
+
+は、反射読出しとして成立する。
+
+しかし、\texttt{R\_A} と \texttt{R\_B} が異なる場合、同じ単純反転が
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R\_A p\_A+R\_B p\_B}
+\end{Highlighting}
+\end{Shaded}
+
+を保存するとは限らない。
+
+したがって、非対称 \texttt{R}
+条件では、単純反転が保存読出しを破るかを診断する必要がある。
+
+\subsubsection{7.2 実行結果}\label{ux5b9fux884cux7d50ux679c}
+
+実行スクリプトは次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_interference\_readout\_asymmetric\_amplitude\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+結果は次であった。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+量 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{case\_count} & \texttt{8} \\
+\texttt{asymmetric\_case\_count} & \texttt{7} \\
+\texttt{individual\_multigauge\_valid\_all\_cases} & \texttt{true} \\
+\texttt{weighted\_energy\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{R\_total\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{equal\_case\_weighted\_momentum\_preserved} & \texttt{true} \\
+\texttt{asymmetric\_cases\_detect\_weighted\_momentum\_failure} &
+\texttt{true} \\
+\texttt{max\_weighted\_p\_collision\_error} &
+\texttt{16.000000000000036} \\
+\end{longtable}
+}
+
+この結果により、非対称 \texttt{R} 条件では、単純反転が \texttt{R*p}
+保存を破ることが検出された。
+
+これは破綻ではなく、次の一般化写像が必要であることを示す診断である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8.
+R重み付き一般化衝突写像}\label{rux91cdux307fux4ed8ux304dux4e00ux822cux5316ux885dux7a81ux5199ux50cf}
+
+\subsubsection{8.1 保存条件}\label{ux4fddux5b58ux6761ux4ef6}
+
+非対称 \texttt{R} 条件では、保存読出しとして次を要求する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P\_R}
+\NormalTok{=}
+\NormalTok{R\_Ap\_A+R\_Bp\_B}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{K\_R}
+\NormalTok{=}
+\NormalTok{R\_Ap\_A\^{}2+R\_Bp\_B\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+ここで \texttt{P\_R} は運動量的読出し、\texttt{K\_R}
+は位相勾配二乗の保存読出しである。
+
+標準物理の運動量・エネルギーと同一視しない。
+
+\subsubsection{8.2 写像}\label{ux5199ux50cf}
+
+\texttt{P\_R} と \texttt{K\_R} を保存し、相対位相勾配を反転する写像を、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_A\textquotesingle{}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{R\_A{-}R\_B\}\{R\_A+R\_B\}p\_A}
+\NormalTok{+}
+\NormalTok{\textbackslash{}frac\{2R\_B\}\{R\_A+R\_B\}p\_B}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_B\textquotesingle{}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{2R\_A\}\{R\_A+R\_B\}p\_A}
+\NormalTok{+}
+\NormalTok{\textbackslash{}frac\{R\_B{-}R\_A\}\{R\_A+R\_B\}p\_B}
+\end{Highlighting}
+\end{Shaded}
+
+とする。
+
+この写像は、結果値として \texttt{R,T}
+を代入するものではない。多ゲージ干渉から読まれた \texttt{R\_read} と
+\texttt{p\_read}
+に対して、保存関係が成立するかを確認するための局所写像である。
+
+本稿で確認する対象は、保存条件から構成したこの局所写像が、多ゲージ干渉読出し上で
+\texttt{R*p} と \texttt{R*p\^{}2}
+を保存することである。この写像そのものが交換干渉機構から内部自動生成されるかは、前稿との接続として残る後続課題である。
+
+\subsubsection{8.3
+一般化写像の検証}\label{ux4e00ux822cux5316ux5199ux50cfux306eux691cux8a3c}
+
+実行スクリプトは次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_readout\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+8種類の振幅条件で検証した。
+
+結果は次であった。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+量 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{case\_count} & \texttt{8} \\
+\texttt{individual\_readout\_valid\_all\_cases} & \texttt{true} \\
+\texttt{generalized\_P\_R\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{generalized\_K\_R\_phase\_preserved\_all\_cases} &
+\texttt{true} \\
+\texttt{E\_tau\_R\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{R\_total\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{max\_P\_R\_conservation\_error} &
+\texttt{2.3803181647963356e-13} \\
+\texttt{max\_K\_R\_phase\_conservation\_error} &
+\texttt{1.4086509736443986e-12} \\
+\end{longtable}
+}
+
+判定は次であった。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generalized\_elastic\_collision\_readout\_valid: true}
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9.
+非単位・非対称位相勾配スイープ}\label{ux975eux5358ux4f4dux975eux5bfeux79f0ux4f4dux76f8ux52feux914dux30b9ux30a4ux30fcux30d7}
+
+\subsubsection{9.1 目的}\label{ux76eeux7684}
+
+前節では、主に \texttt{p\_A=+1}, \texttt{p\_B=-1} を基準とした。
+
+本節では、初期位相勾配を非単位・非対称にし、対向衝突だけでなく同方向追いつき条件も含めて検証する。
+
+\subsubsection{9.2 実行結果}\label{ux5b9fux884cux7d50ux679c-1}
+
+実行スクリプトは次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_velocity\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+9種類の初期条件を検証した。
+
+結果は次であった。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+量 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{case\_count} & \texttt{9} \\
+\texttt{collision\_reached\_all\_cases} & \texttt{true} \\
+\texttt{P\_R\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{K\_R\_phase\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{relative\_gradient\_flipped\_all\_cases} & \texttt{true} \\
+\texttt{E\_tau\_R\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{R\_total\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{max\_P\_R\_conservation\_error} &
+\texttt{2.8910207561239076e-13} \\
+\texttt{max\_K\_R\_phase\_conservation\_error} &
+\texttt{1.5258905250448151e-12} \\
+\texttt{max\_relative\_flip\_error} & \texttt{1.2434497875801753e-14} \\
+\end{longtable}
+}
+
+判定は次であった。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{velocity\_sweep\_generalized\_collision\_valid: true}
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10.
+一般化写像の複数回衝突}\label{ux4e00ux822cux5316ux5199ux50cfux306eux8907ux6570ux56deux885dux7a81}
+
+\subsubsection{10.1 目的}\label{ux76eeux7684-1}
+
+単回で成立した一般化衝突写像が、反復過程でも維持されるかを確認した。
+
+壁反射は粒子を再遭遇させるための補助条件であり、保存判定は各 AB
+衝突の直前直後に限定した。
+
+\subsubsection{10.2 実行結果}\label{ux5b9fux884cux7d50ux679c-2}
+
+実行スクリプトは次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_multi\_collision\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+4種類の条件で、各6回の AB 衝突を実行した。
+
+結果は次であった。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+量 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{case\_count} & \texttt{4} \\
+\texttt{max\_ab\_collision\_count} & \texttt{6} \\
+\texttt{max\_wall\_reflection\_count} & \texttt{8} \\
+\texttt{P\_R\_preserved\_each\_collision\_all\_cases} & \texttt{true} \\
+\texttt{K\_R\_preserved\_each\_collision\_all\_cases} & \texttt{true} \\
+\texttt{relative\_flip\_each\_collision\_all\_cases} & \texttt{true} \\
+\texttt{E\_tau\_R\_preserved\_each\_collision\_all\_cases} &
+\texttt{true} \\
+\texttt{R\_preserved\_each\_collision\_all\_cases} & \texttt{true} \\
+\texttt{max\_P\_R\_error} & \texttt{3.552713678800501e-14} \\
+\texttt{max\_K\_R\_error} & \texttt{1.056932319443149e-13} \\
+\texttt{max\_relative\_flip\_error} & \texttt{2.220446049250313e-14} \\
+\end{longtable}
+}
+
+判定は次であった。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generalized\_multi\_collision\_valid: true}
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{11.
+読出しノイズ頑健性}\label{ux8aadux51faux3057ux30ceux30a4ux30baux9811ux5065ux6027}
+
+\subsubsection{11.1 目的}\label{ux76eeux7684-2}
+
+測定成立には、単一ゲージ値ではなく多ゲージ干渉が必要である。
+
+したがって、読出し器側の揺らぎがある場合、ゼロ平均ゲージ揺らぎは相殺され、全ゲージ共通のバイアスは検出される必要がある。
+
+本節では、状態シミュレーション後の読出し行に決定論的擬似ノイズを加えた。
+
+これは任意ノイズ下での測定成立を主張するものではない。ゼロ平均のゲージ揺らぎが多ゲージ平均で相殺され、全ゲージ共通バイアスが検出されるかを調べる制御実験である。
+
+\subsubsection{11.2 実行結果}\label{ux5b9fux884cux7d50ux679c-3}
+
+実行スクリプトは次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_noise\_robustness\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+4ケース、2種類のノイズモード、6段階のノイズレベルで検証した。
+
+結果は次であった。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+量 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{case\_count} & \texttt{4} \\
+\texttt{noise\_mode\_count} & \texttt{2} \\
+\texttt{noise\_level\_count} & \texttt{6} \\
+\texttt{max\_gauge\_count} & \texttt{116} \\
+\texttt{zero\_mean\_multigauge\_valid\_all} & \texttt{true} \\
+\texttt{common\_bias\_detection\_floor} & \texttt{1e-10} \\
+\texttt{common\_bias\_detected\_all\_above\_floor} & \texttt{true} \\
+\texttt{zero\_mean\_max\_p\_mean\_abs\_error} &
+\texttt{1.4477308241112041e-13} \\
+\texttt{zero\_mean\_max\_R\_mean\_abs\_error} &
+\texttt{3.552713678800501e-14} \\
+\texttt{zero\_mean\_max\_K\_R\_error} &
+\texttt{8.322231792590173e-13} \\
+\end{longtable}
+}
+
+判定は次であった。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{noise\_robustness\_valid: true}
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{12.
+極端R比スイープ}\label{ux6975ux7aefrux6bd4ux30b9ux30a4ux30fcux30d7}
+
+\subsubsection{12.1 目的}\label{ux76eeux7684-3}
+
+\texttt{R\_read} が質量的量に見える場合、\texttt{R}
+比が大きく非対称な条件でも保存読出しが維持されるかを調べる必要がある。
+
+本節では、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R\_B/R\_A = 0.015625}
+\end{Highlighting}
+\end{Shaded}
+
+から
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R\_B/R\_A = 64.0}
+\end{Highlighting}
+\end{Shaded}
+
+まで掃引した。
+
+\subsubsection{12.2 実行結果}\label{ux5b9fux884cux7d50ux679c-4}
+
+実行スクリプトは次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_extreme\_R\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+結果は次であった。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+量 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{case\_count} & \texttt{12} \\
+\texttt{max\_R\_dynamic\_range} & \texttt{64.0} \\
+\texttt{min\_R\_ratio\_B\_over\_A} & \texttt{0.015625} \\
+\texttt{max\_R\_ratio\_B\_over\_A} & \texttt{64.0} \\
+\texttt{P\_R\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{K\_R\_phase\_preserved\_all\_cases} & \texttt{true} \\
+\texttt{relative\_gradient\_flipped\_all\_cases} & \texttt{true} \\
+\texttt{max\_P\_R\_conservation\_error} &
+\texttt{6.465938895416912e-13} \\
+\texttt{max\_K\_R\_phase\_conservation\_error} &
+\texttt{1.2789769243681803e-12} \\
+\texttt{max\_relative\_flip\_error} & \texttt{2.6867397195928788e-14} \\
+\end{longtable}
+}
+
+判定は次であった。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{extreme\_R\_sweep\_valid: true}
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{13.
+統合サマリー}\label{ux7d71ux5408ux30b5ux30deux30eaux30fc}
+
+9本の実験を統合した。
+
+実行スクリプトは次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_abc\_multigauge\_readout\_integration\_summary\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+統合判定は次であった。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{experiment\_count: 9}
+\NormalTok{all\_experiments\_valid: true}
+\NormalTok{single\_gauge\_only\_used\_any: false}
+\NormalTok{integration\_summary\_valid: true}
+\end{Highlighting}
+\end{Shaded}
+
+実験一覧は次である。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+実験
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+目的
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+valid
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{single\_collision\_multigauge\_readout} & 単回ABC衝突で
+\texttt{p/E/R} を多ゲージ干渉読出しする & \texttt{true} \\
+\texttt{multi\_collision\_multigauge\_readout} & 対称ABC衝突の反復で
+\texttt{p/E/R} 読出しを維持する & \texttt{true} \\
+\texttt{readout\_robustness\_sweep} & 複数の読出し器構成で
+\texttt{p/E/R} 再構成が安定する & \texttt{true} \\
+\texttt{asymmetric\_amplitude\_diagnostic} &
+非対称Rで単純反転が保存を破ることを検出する & \texttt{true} \\
+\texttt{generalized\_elastic\_collision\_readout} & 非対称Rで
+\texttt{R*p} と \texttt{R*p\^{}2} を保存する一般化写像を読む &
+\texttt{true} \\
+\texttt{generalized\_velocity\_sweep} &
+非単位・非対称位相勾配でも一般化写像が成立する & \texttt{true} \\
+\texttt{generalized\_multi\_collision} &
+一般化写像を複数回AB衝突へ反復適用する & \texttt{true} \\
+\texttt{generalized\_noise\_robustness} &
+ゼロ平均読出しノイズの相殺と共通バイアス検出を確認する &
+\texttt{true} \\
+\texttt{generalized\_extreme\_R\_sweep} &
+極端なR比でも一般化写像と読出しが維持されるか調べる & \texttt{true} \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{14. 評価}\label{ux8a55ux4fa1}
+
+本稿の結果を、探究型物理学者ロールの分類で整理する。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+対象
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+分類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+判定
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{p\_read} が多ゲージ干渉から再構成される & 数値構成済み帰結 &
+保持 \\
+\texttt{E\_read} が多ゲージ干渉から再構成される & 数値構成済み帰結 &
+保持 \\
+\texttt{R\_read} が複数ゲージで安定残差として読まれる & 数値構成済み帰結
+& 保持 \\
+対称衝突で \texttt{p} 反転、\texttt{E,R} 保存が成り立つ &
+数値構成済み帰結 & 保持 \\
+非対称Rで単純反転が \texttt{R*p} 保存を破る & 数値構成済み帰結 & 保持 \\
+\texttt{R*p}, \texttt{R*p\^{}2} 保存写像が非対称Rで成立する &
+数値構成済み帰結 & 保持 \\
+読出しノイズのゼロ平均成分が多ゲージ平均で相殺される & 数値構成済み帰結
+& 保持 \\
+共通読出しバイアスが検出される & 数値構成済み帰結 & 保持 \\
+標準質量・標準運動量・標準エネルギーとの同一視 & 対応写像の課題 &
+未主張 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{15. 考察}\label{ux8003ux5bdf}
+
+\subsubsection{15.1
+質量・運動量・エネルギーを先に置かない}\label{ux8ceaux91cfux904bux52d5ux91cfux30a8ux30cdux30ebux30aeux30fcux3092ux5148ux306bux7f6eux304bux306aux3044}
+
+本稿では、質量、運動量、エネルギーを先に置かない。
+
+先に置くのは、閉鎖位相系、局所波、観測機、ゲージ群、干渉相関である。
+
+そこから、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_read}
+\NormalTok{E\_read}
+\NormalTok{R\_read}
+\end{Highlighting}
+\end{Shaded}
+
+が読まれる。
+
+したがって、本稿の順序は、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{質量・運動量・エネルギーを仮定する}
+\end{Highlighting}
+\end{Shaded}
+
+ではなく、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{干渉読出しから、質量的・運動量的・エネルギー的に振る舞う保存量が出るかを調べる}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+\subsubsection{15.2
+Rは測りにくい}\label{rux306fux6e2cux308aux306bux304fux3044}
+
+\texttt{p\_read}
+は空間位相勾配であり、符号反転や相対勾配反転として比較的読みやすい。
+
+\texttt{E\_read}
+は時間位相方向の勾配であり、時間窓を変えた相関から読める。
+
+一方、\texttt{R\_read} は安定残差である。
+
+これは、変動が小さいからこそ安定している。しかし、変動が小さいために測りにくい。
+
+本稿の \texttt{t/R}
+分離は、この点を数値的に確認するための作業指標である。
+
+\subsubsection{15.3
+単一ゲージでは足りない}\label{ux5358ux4e00ux30b2ux30fcux30b8ux3067ux306fux8db3ux308aux306aux3044}
+
+本稿の全実験で、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{single\_gauge\_only\_used: false}
+\end{Highlighting}
+\end{Shaded}
+
+であった。
+
+これは重要である。
+
+この結果は、単一ゲージ測定の一般不可能性を証明したという意味ではない。本稿の測定成立条件を、多ゲージ干渉再構成として置いたとき、その条件だけで
+\texttt{p,E,R} および \texttt{R}
+重み付き保存量が一貫して読めることを示す。
+
+\texttt{p,E,R}
+は、単一の局所値として直接見える量ではない。複数ゲージを通じて安定に再構成される量である。
+
+したがって、質量的量、運動量的量、エネルギー的量の読出しは、単一ゲージ測定ではなく、多ゲージ干渉再構成として扱う必要がある。
+
+\subsubsection{15.4
+単純反転から一般化保存写像へ}\label{ux5358ux7d14ux53cdux8ee2ux304bux3089ux4e00ux822cux5316ux4fddux5b58ux5199ux50cfux3078}
+
+等振幅条件では、単純な方向反転が保存的に見える。
+
+しかし、非対称 \texttt{R} 条件では、単純反転は \texttt{R*p} 保存を破る。
+
+この破れは、モデルの破綻ではない。むしろ、\texttt{R}
+が質量的に読まれるなら、保存写像を \texttt{R}
+重み付きに一般化する必要があることを示す診断である。
+
+本稿では、その一般化写像が \texttt{R*p} と \texttt{R*p\^{}2}
+を保存することを確認した。
+
+ここでの一般化写像は、保存条件から構成した局所写像である。したがって、本稿の成果は、非対称
+\texttt{R}
+条件で保存的に振る舞う読出し写像を構成し検証したことであり、その写像の内部干渉生成は次段階の問いとして分ける。
+
+\subsubsection{15.5
+標準理論との接続は次の課題である}\label{ux6a19ux6e96ux7406ux8ad6ux3068ux306eux63a5ux7d9aux306fux6b21ux306eux8ab2ux984cux3067ux3042ux308b}
+
+本稿の構成は、標準物理の運動量・エネルギー・質量を直接導出するものではない。
+
+しかし、次の構造は得られた。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{空間位相勾配 {-}\textgreater{} 運動量的読出し}
+\NormalTok{時間位相勾配 {-}\textgreater{} エネルギー的読出し}
+\NormalTok{安定振幅二乗残差 {-}\textgreater{} 質量的読出し}
+\NormalTok{R*p 保存 {-}\textgreater{} 運動量的保存に見える関係}
+\NormalTok{R*p\^{}2 保存 {-}\textgreater{} 二乗量保存に見える関係}
+\end{Highlighting}
+\end{Shaded}
+
+したがって、標準理論との対応写像を構成するための読出し側の土台は得られた。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{16. 結論}\label{ux7d50ux8ad6}
+
+本稿では、ABC
+閉鎖位相系において、質量的量、運動量的量、エネルギー的量に相当する保存読出しが、多ゲージ干渉から構成できるかを数値的に検証した。
+
+単回 ABC 衝突では、\texttt{p\_read}, \texttt{E\_read}, \texttt{R\_read}
+が複数ゲージから再構成され、\texttt{p} は反転し、\texttt{E,R}
+は保存された。最大読出し誤差は、\texttt{p} で
+\texttt{2.5202062658991053e-14}、\texttt{E} で
+\texttt{2.2315482794965646e-14}、\texttt{R} で
+\texttt{4.440892098500626e-16} であった。
+
+8回の対称反復衝突でも、\texttt{p} 反転、\texttt{E,R}
+保存、識別振動保存、補償付き閉鎖が保たれた。
+
+非対称 \texttt{R} 条件では、単純な \texttt{q\ -\textgreater{}\ -q}
+反転が \texttt{R*p}
+保存を破ることが検出された。これを受けて、\texttt{R*p} と
+\texttt{R*p\^{}2}
+を保存する一般化衝突写像を構成した。8種類の非対称振幅ケースでは、最大
+\texttt{R*p} 保存誤差 \texttt{2.3803181647963356e-13}、最大
+\texttt{R*p\^{}2} 保存誤差 \texttt{1.4086509736443986e-12}
+で保存が確認された。
+
+さらに、非単位・非対称初期位相勾配、同方向追いつき衝突、複数回衝突、読出しノイズ、極端
+\texttt{R} 比スイープを実行した。統合サマリーでは、9本の実験すべてが
+\texttt{valid} となり、単一ゲージのみの判定は一つも用いなかった。
+
+以上により、本稿の数値構成範囲では、ABC 閉鎖位相系から、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_read}
+\NormalTok{E\_read}
+\NormalTok{R\_read}
+\NormalTok{R*p}
+\NormalTok{R*p\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+に相当する保存読出しを、多ゲージ干渉により一貫して構成できることが確認された。
+
+これは標準物理量との同一視ではない。しかし、質量的量、運動量的量、エネルギー的量を、先験的な実体量ではなく、閉鎖位相系からの保存読出しとして扱うための数値構成を与える。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{付録A.
+実行済みプログラムと出力}\label{ux4ed8ux9332a.-ux5b9fux884cux6e08ux307fux30d7ux30edux30b0ux30e9ux30e0ux3068ux51faux529b}
+
+\subsection{A.1
+単回ABC多ゲージ読出し}\label{a.1-ux5358ux56deabcux591aux30b2ux30fcux30b8ux8aadux51faux3057}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_interference\_readout\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+出力:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_interference\_readout\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+主要ファイル:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+種類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ファイル
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+レポート &
+\href{abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_report_v1.md}{abc\_multigauge\_interference\_readout\_report\_v1.md} \\
+JSON &
+\href{abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_result_v1.json}{abc\_multigauge\_interference\_readout\_result\_v1.json} \\
+gauge CSV &
+\href{abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_gauge_sweep_v1.csv}{abc\_multigauge\_interference\_readout\_gauge\_sweep\_v1.csv} \\
+p/E/R 図 &
+\href{abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_invariants_v1.png}{abc\_multigauge\_interference\_readout\_invariants\_v1.png} \\
+t/R 分離図 &
+\href{abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_tr_separation_v1.png}{abc\_multigauge\_interference\_readout\_tr\_separation\_v1.png} \\
+\end{longtable}
+}
+
+\subsection{A.2
+対称複数回衝突}\label{a.2-ux5bfeux79f0ux8907ux6570ux56deux885dux7a81}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_interference\_readout\_multi\_collision\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+出力:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_interference\_readout\_multi\_collision\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+主要ファイル:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+種類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ファイル
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+レポート &
+\href{abc_multigauge_interference_readout_multi_collision_result_v1/abc_multigauge_interference_readout_multi_collision_report_v1.md}{abc\_multigauge\_interference\_readout\_multi\_collision\_report\_v1.md} \\
+JSON &
+\href{abc_multigauge_interference_readout_multi_collision_result_v1/abc_multigauge_interference_readout_multi_collision_result_v1.json}{abc\_multigauge\_interference\_readout\_multi\_collision\_result\_v1.json} \\
+衝突読出し CSV &
+\href{abc_multigauge_interference_readout_multi_collision_result_v1/abc_multigauge_interference_readout_multi_collision_readouts_v1.csv}{abc\_multigauge\_interference\_readout\_multi\_collision\_readouts\_v1.csv} \\
+\end{longtable}
+}
+
+\subsection{A.3
+読出し器頑健性}\label{a.3-ux8aadux51faux3057ux5668ux9811ux5065ux6027}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_interference\_readout\_robustness\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+出力:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_interference\_readout\_robustness\_sweep\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{A.4
+非対称振幅診断}\label{a.4-ux975eux5bfeux79f0ux632fux5e45ux8a3aux65ad}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_interference\_readout\_asymmetric\_amplitude\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+出力:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_interference\_readout\_asymmetric\_amplitude\_sweep\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{A.5
+一般化弾性衝突写像}\label{a.5-ux4e00ux822cux5316ux5f3eux6027ux885dux7a81ux5199ux50cf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_readout\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+出力:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_readout\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{A.6
+非対称速度スイープ}\label{a.6-ux975eux5bfeux79f0ux901fux5ea6ux30b9ux30a4ux30fcux30d7}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_velocity\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+出力:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_velocity\_sweep\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{A.7
+一般化複数回衝突}\label{a.7-ux4e00ux822cux5316ux8907ux6570ux56deux885dux7a81}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_multi\_collision\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+出力:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_multi\_collision\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{A.8
+読出しノイズ頑健性}\label{a.8-ux8aadux51faux3057ux30ceux30a4ux30baux9811ux5065ux6027}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_noise\_robustness\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+出力:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_noise\_robustness\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{A.9
+極端R比スイープ}\label{a.9-ux6975ux7aefrux6bd4ux30b9ux30a4ux30fcux30d7}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_extreme\_R\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+出力:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_extreme\_R\_sweep\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{A.10
+統合サマリー}\label{a.10-ux7d71ux5408ux30b5ux30deux30eaux30fc}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_abc\_multigauge\_readout\_integration\_summary\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+出力:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{abc\_multigauge\_readout\_integration\_summary\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{付録B.
+実行済み検証メモ}\label{ux4ed8ux9332b.-ux5b9fux884cux6e08ux307fux691cux8a3cux30e1ux30e2}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+種類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ファイル
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+定義補足 &
+\href{全正符号ゼロ閉鎖の読出し多重性に関する定義補足.md}{全正符号ゼロ閉鎖の読出し多重性に関する定義補足.md} \\
+仕様方針 &
+\href{現在チャットメモ_多ゲージ干渉読出し仕様方針.md}{現在チャットメモ\_多ゲージ干渉読出し仕様方針.md} \\
+単回検証 &
+\href{ABC完全弾性衝突における多ゲージ干渉読出し数値検証メモ_v1.md}{ABC完全弾性衝突における多ゲージ干渉読出し数値検証メモ\_v1.md} \\
+対称複数回衝突 &
+\href{ABC多ゲージ干渉読出しの複数回衝突検証メモ_v1.md}{ABC多ゲージ干渉読出しの複数回衝突検証メモ\_v1.md} \\
+読出し器頑健性 &
+\href{ABC多ゲージ干渉読出しの読出し器頑健性スイープ検証メモ_v1.md}{ABC多ゲージ干渉読出しの読出し器頑健性スイープ検証メモ\_v1.md} \\
+非対称振幅診断 &
+\href{ABC多ゲージ干渉読出しの非対称振幅診断スイープ検証メモ_v1.md}{ABC多ゲージ干渉読出しの非対称振幅診断スイープ検証メモ\_v1.md} \\
+一般化写像 &
+\href{ABC多ゲージ干渉読出しによる一般化弾性衝突写像検証メモ_v1.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突写像検証メモ\_v1.md} \\
+非対称速度 &
+\href{ABC多ゲージ干渉読出しによる一般化弾性衝突の非対称速度スイープ検証メモ_v1.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突の非対称速度スイープ検証メモ\_v1.md} \\
+一般化複数回 &
+\href{ABC多ゲージ干渉読出しによる一般化弾性衝突の複数回衝突検証メモ_v1.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突の複数回衝突検証メモ\_v1.md} \\
+ノイズ頑健性 &
+\href{ABC多ゲージ干渉読出しによる一般化弾性衝突の読出しノイズ頑健性検証メモ_v1.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突の読出しノイズ頑健性検証メモ\_v1.md} \\
+極端R比 &
+\href{ABC多ゲージ干渉読出しによる一般化弾性衝突の極端R比スイープ検証メモ_v1.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突の極端R比スイープ検証メモ\_v1.md} \\
+統合サマリー &
+\href{ABC多ゲージ干渉読出し実験群の統合サマリー_v1.md}{ABC多ゲージ干渉読出し実験群の統合サマリー\_v1.md} \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsection{自己引用}\label{ux81eaux5df1ux5f15ux7528}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  木原範昭「無名等振幅複合波モデル 基本公理系 v2」2026-07-10.
+\item
+  木原範昭「全正符号ゼロ閉鎖の読出し多重性に関する定義補足」2026-07-11.
+\item
+  木原範昭「背景空間を仮定しない閉じた位相系におけるフェルミオン的二局所波の完全弾性反射の構成実験」Version
+  DOI: \texttt{10.5281/zenodo.21291020}, Concept DOI:
+  \texttt{10.5281/zenodo.21291018}, 2026.
+\item
+  木原範昭「フェルミオン的逆相核による完全反射写像の干渉構成」Version
+  DOI: \texttt{10.5281/zenodo.21295480}, Concept DOI:
+  \texttt{10.5281/zenodo.21295479}, 2026.
+\item
+  木原範昭「曲率付き閉鎖定常波による曲率繰り込みと完全反射安定性」Version
+  DOI: \texttt{10.5281/zenodo.21304040}, Concept DOI:
+  \texttt{10.5281/zenodo.21304039}, 2026.
+\end{enumerate}
+
+\subsection{外部参考文献}\label{ux5916ux90e8ux53c2ux8003ux6587ux732e}
+
+外部参考文献は、本稿の導出根拠ではなく、保存則・干渉位相・幾何位相に関する標準的背景を示すために最小限に用いる。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  E. Noether, ``Invariante Variationsprobleme,'' \emph{Nachrichten von
+  der Gesellschaft der Wissenschaften zu Göttingen,
+  Mathematisch-Physikalische Klasse}, 235--257, 1918.
+\item
+  S. Pancharatnam, ``Generalized theory of interference, and its
+  applications,'' \emph{Proceedings of the Indian Academy of Sciences
+  A}, 44, 247--262, 1956.
+\item
+  M. V. Berry, ``Quantal phase factors accompanying adiabatic changes,''
+  \emph{Proceedings of the Royal Society of London A}, 392, 45--57,
+  1984. DOI: \texttt{10.1098/rspa.1984.0023}.
+\end{enumerate}
+
+\end{document}
