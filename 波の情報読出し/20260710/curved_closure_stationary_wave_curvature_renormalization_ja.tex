@@ -1,0 +1,1088 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{HaranoAjiMincho-Regular.otf}
+  \setmonofont[]{DejaVuSansMono.ttf}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{曲率付き閉鎖定常波による曲率繰り込みと完全反射安定性}\label{ux66f2ux7387ux4ed8ux304dux9589ux9396ux5b9aux5e38ux6ce2ux306bux3088ux308bux66f2ux7387ux7e70ux308aux8fbcux307fux3068ux5b8cux5168ux53cdux5c04ux5b89ux5b9aux6027}
+
+\textbf{副題:} 全正符号ゼロ閉鎖 \texttt{Σx\_n\^{}2=0}
+による曲率相対位相漏れの検出・再選別・交換干渉反射回復の数値構成実験\\
+\textbf{日付:} 2026-07-11\\
+\textbf{著者:} 木原 範昭\\
+\textbf{位置づけ:} 波の情報読出しシリーズ・追加論文\\
+\textbf{Version DOI:} 10.5281/zenodo.21304040 \textbf{Concept DOI:}
+10.5281/zenodo.21304039
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+本稿では、本論文系の基本公理系で公理1として採用している全正符号ゼロ閉鎖
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Q(x)=\textbackslash{}sum\_n x\_n\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+を満たす奇数倍音複素波が、曲率付き局所セルにおいてどのように安定化されるかを数値構成した。
+
+この閉鎖条件は、本稿の曲率検証のために新たに導入する仮定ではない。無名性、全正符号ゼロ閉鎖、非自明存在からなる既存の基本公理系において、非自明な複素位相波の存在条件として先に置かれていた公理である。本稿は、その公理1を曲率付き局所セルおよび交換干渉反射へ適用した数値構成実験である。
+
+前稿では、フェルミオン的内部逆相核から交換干渉写像を構成し、外部の
+\texttt{q\ -\textgreater{}\ -q}
+命令を用いずに完全弾性反射に相当する方向反転出力を得た。本稿では、その交換干渉写像が曲率相対位相漏れを受けたとき、完全反射が破れるか、また閉鎖定常波への再選別によって回復するかを調べる。
+
+曲率効果そのものを実在時空の曲率として定量予言するのではなく、局所セルにおける曲率由来の相対位相漏れを
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}delta\_\{K,m\}}
+\end{Highlighting}
+\end{Shaded}
+
+としてモデル化する。閉鎖ペア
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_m,\textbackslash{}qquad ix\_m}
+\end{Highlighting}
+\end{Shaded}
+
+に相対位相漏れが入ると、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_m\^{}2+\textbackslash{}left(e\^{}\{i\textbackslash{}delta\_\{K,m\}\}ix\_m\textbackslash{}right)\^{}2}
+\NormalTok{=}
+\NormalTok{x\_m\^{}2\textbackslash{}left(1{-}e\^{}\{i2\textbackslash{}delta\_\{K,m\}\}\textbackslash{}right)}
+\end{Highlighting}
+\end{Shaded}
+
+となり、一般に閉鎖残差が出る。一方、内部位相再選別
+\texttt{\textbackslash{}beta\_\{K,m\}} により、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}delta\_\{K,m\}+\textbackslash{}beta\_\{K,m\}=0}
+\end{Highlighting}
+\end{Shaded}
+
+が満たされると、閉鎖条件は回復する。
+
+最小実験では、曲率相対位相漏れを受けた過渡状態で閉鎖ペア RMS
+\texttt{1.2319416790092972e-02}、通過漏れ
+\texttt{1.1503183254481797e-01}
+が発生した。内部位相再選別後の定常状態では、閉鎖ペア RMS は
+\texttt{9.4283259783636047e-19}、通過漏れは \texttt{0.0} となった。
+
+広範囲検証では、8種類の曲率相対位相モデルと、\texttt{none},
+\texttt{constant}, \texttt{linear}, \texttt{affine}, \texttt{quadratic},
+\texttt{cubic}, \texttt{full}
+の7種類の補正自由度を比較した。最大曲率相対位相 \texttt{1.2}
+に対して、無補正では最大通過漏れ \texttt{1.6202719613622976e-01}
+が残り、\texttt{full} 補正では閉鎖ペア RMS
+\texttt{7.8949412793793227e-19}、通過漏れ \texttt{0.0} へ回復した。
+
+さらに、片側入射の局所交換干渉写像へ残留曲率位相を戻した統合検証では、無補正で最大動的通過漏れ
+\texttt{1.6202719613622971e-01} が発生し、\texttt{full}
+補正では最大動的通過漏れ \texttt{1.6608667989341789e-19}
+まで低下した。動的散乱は二チャンネル期待式と最大誤差
+\texttt{5.551115123125783e-17} で一致し、ノルム最大誤差は
+\texttt{4.440892098500626e-16} であった。
+
+以上により、本稿の数値構成範囲では、曲率の影響は存在しないのではなく、過渡状態では閉鎖残差および通過漏れとして現れる。しかし、系が
+\texttt{Σx\_n\^{}2=0}
+を満たす閉鎖定常波へ再選別されると、曲率相対位相漏れは内部位相へ吸収され、完全反射読出しは回復する。
+
+\textbf{キーワード:}
+全正符号ゼロ閉鎖、曲率付き閉鎖定常波、曲率繰り込み、奇数倍音、交換干渉、完全反射、局所定曲率セル、内部位相再選別
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 序論}\label{ux5e8fux8ad6}
+
+\subsubsection{1.1 背景}\label{ux80ccux666f}
+
+本シリーズでは、無名性、全正符号ゼロ閉鎖、非自明存在を基本公理として採用している。特に、全正符号ゼロ閉鎖は基本公理系
+v2
+の公理1であり、本稿のために追加された補助仮定ではない。中心となる閉鎖条件は、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_n x\_n\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+これは共役ノルム
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_n |x\_n|\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+ではない。各成分をそのまま二乗し、全正符号で総和する閉鎖条件である。
+
+この条件は、最小二成分では、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A\^{}2+(iA)\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+として、外部の負符号係数を使わずに符号反転を内部生成する。したがって、複素位相は装飾ではなく、非自明閉鎖のために必要な位相代数として現れる。
+
+前稿「フェルミオン的逆相核による完全反射写像の干渉構成」では、内部逆相核と交換二経路の干渉から局所交換干渉写像を構成し、外部の
+\texttt{q\ -\textgreater{}\ -q}
+命令を用いずに完全反射に相当する方向反転読出しを生成した。
+
+本稿では、この交換干渉反射が曲率付き局所セルに置かれたとき、曲率相対位相漏れを受けても安定に回復するかを検討する。
+
+\subsubsection{1.2 本稿の問い}\label{ux672cux7a3fux306eux554fux3044}
+
+本稿の問いは次である。
+
+\begin{quote}
+曲率付き局所セルで曲率相対位相漏れが生じたとき、全正符号ゼロ閉鎖
+\texttt{Σx\_n\^{}2=0}
+は、その漏れを検出し、閉鎖定常波への内部位相再選別によって完全反射読出しを回復できるか。
+\end{quote}
+
+ここで重要なのは、曲率の影響を最初から無視しないことである。むしろ本稿では、曲率相対位相漏れが入ると閉鎖残差および通過漏れが出ることを確認し、その後、閉鎖定常波への再選別によってそれらが消えるかを調べる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2.
+本稿で主張しないこと}\label{ux672cux7a3fux3067ux4e3bux5f35ux3057ux306aux3044ux3053ux3068}
+
+本稿は、次を主張しない。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+主張しないこと
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+理由
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+実在時空の曲率効果の定量予言 &
+標準的な時空計量、場の方程式、実験単位系を用いない \\
+曲率が常に観測不能であること &
+過渡状態では閉鎖残差と通過漏れが発生する \\
+曲率相対位相 \texttt{δ\_K} の唯一の物理式 &
+本稿では検証用の局所相対位相モデルとして置く \\
+標準量子論または一般相対論の導出 &
+本稿は内部公理系上の数値構成実験である \\
+連続ハミルトニアンの導出 &
+本稿は局所写像および閉鎖定常波の存在条件を扱う \\
+\end{longtable}
+}
+
+本稿の主張は、\texttt{Σx\_n\^{}2=0}
+を満たす閉鎖定常波が、曲率相対位相漏れを検出し、内部位相再選別によって交換干渉反射読出しを回復する最小数値構成である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3.
+基本公理と閉鎖零錐}\label{ux57faux672cux516cux7406ux3068ux9589ux9396ux96f6ux9310}
+
+\subsubsection{3.1
+全正符号ゼロ閉鎖}\label{ux5168ux6b63ux7b26ux53f7ux30bcux30edux9589ux9396}
+
+本節では、基本公理系 v2
+の公理1を再掲する。本稿はこの公理を出発点として用いるが、本稿の曲率繰り込みを成立させるためにここで都合よく導入するものではない。
+
+公理1は、閉鎖条件を
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Q(x)=\textbackslash{}sum\_\{n=1\}\^{}N x\_n\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+と置く。
+
+閉鎖状態全体を、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}mathcal N}
+\NormalTok{=}
+\NormalTok{\textbackslash{}\{x\textbackslash{}mid Q(x)=0\textbackslash{}\}}
+\end{Highlighting}
+\end{Shaded}
+
+と書く。
+
+\texttt{\textbackslash{}mathcal\ N}
+は、共役ノルムがゼロである集合ではない。全正符号二乗和がゼロになる複素閉鎖零錐である。
+
+\subsubsection{3.2 閉鎖ペア}\label{ux9589ux9396ux30daux30a2}
+
+最小閉鎖ペアを、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_m,}
+\NormalTok{\textbackslash{}qquad}
+\NormalTok{ix\_m}
+\end{Highlighting}
+\end{Shaded}
+
+とする。
+
+このとき、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_m\^{}2+(ix\_m)\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+奇数倍音複素波では、\texttt{m} を倍音ラベルとし、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{h\_m=2m+1}
+\end{Highlighting}
+\end{Shaded}
+
+を用いる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4.
+曲率付き局所セルと相対位相漏れ}\label{ux66f2ux7387ux4ed8ux304dux5c40ux6240ux30bbux30ebux3068ux76f8ux5bfeux4f4dux76f8ux6f0fux308c}
+
+\subsubsection{4.1
+曲率作用の二分類}\label{ux66f2ux7387ux4f5cux7528ux306eux4e8cux5206ux985e}
+
+曲率作用を二つに分ける。
+
+第一は、共通因子型である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_m\textbackslash{}mapsto g\_\{K,m\}x\_m,}
+\NormalTok{\textbackslash{}qquad}
+\NormalTok{ix\_m\textbackslash{}mapsto g\_\{K,m\}ix\_m}
+\end{Highlighting}
+\end{Shaded}
+
+この場合、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(g\_\{K,m\}x\_m)\^{}2+(g\_\{K,m\}ix\_m)\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+であり、閉鎖ペアは保存される。
+
+第二は、相対位相型である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_m\textbackslash{}mapsto x\_m,}
+\NormalTok{\textbackslash{}qquad}
+\NormalTok{ix\_m\textbackslash{}mapsto e\^{}\{i\textbackslash{}delta\_\{K,m\}\}ix\_m}
+\end{Highlighting}
+\end{Shaded}
+
+この場合、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_m\^{}2+(e\^{}\{i\textbackslash{}delta\_\{K,m\}\}ix\_m)\^{}2}
+\NormalTok{=}
+\NormalTok{x\_m\^{}2\textbackslash{}left(1{-}e\^{}\{i2\textbackslash{}delta\_\{K,m\}\}\textbackslash{}right)}
+\end{Highlighting}
+\end{Shaded}
+
+となり、一般に閉鎖残差が発生する。
+
+\subsubsection{4.2 閉鎖定常波}\label{ux9589ux9396ux5b9aux5e38ux6ce2}
+
+曲率付き局所セルで安定に残る波を、閉鎖定常波 \texttt{x\_K} と呼ぶ。
+
+これは、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Q(x\_K)=0}
+\end{Highlighting}
+\end{Shaded}
+
+かつ、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}mathcal U\_K x\_K=e\^{}\{i\textbackslash{}alpha\_K\}x\_K}
+\end{Highlighting}
+\end{Shaded}
+
+を満たす状態である。
+
+ここで \texttt{\textbackslash{}mathcal\ U\_K}
+は曲率付き局所セルを通過した後の局所発展写像であり、\texttt{e\^{}\{i\textbackslash{}alpha\_K\}}
+は外部読出しで消える共通位相である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+曲率相対位相の内部再選別}\label{ux66f2ux7387ux76f8ux5bfeux4f4dux76f8ux306eux5185ux90e8ux518dux9078ux5225}
+
+相対位相漏れ \texttt{\textbackslash{}delta\_\{K,m\}}
+に対し、内部位相再選別 \texttt{\textbackslash{}beta\_\{K,m\}}
+を導入する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}delta\_\{K,m\}+\textbackslash{}beta\_\{K,m\}=0}
+\end{Highlighting}
+\end{Shaded}
+
+が成立するなら、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e\^{}\{i(\textbackslash{}delta\_\{K,m\}+\textbackslash{}beta\_\{K,m\})\}=1}
+\end{Highlighting}
+\end{Shaded}
+
+となり、閉鎖ペアは回復する。
+
+したがって、曲率相対位相漏れは消えるのではない。閉鎖定常波として存在可能な内部位相配置へ再選別される。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6.
+交換干渉反射との接続}\label{ux4ea4ux63dbux5e72ux6e09ux53cdux5c04ux3068ux306eux63a5ux7d9a}
+
+前稿の交換干渉反射では、有効位相を、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_\{\textbackslash{}mathrm\{eff\}\}=\textbackslash{}Delta\_F}
+\end{Highlighting}
+\end{Shaded}
+
+とし、純粋逆相核 \texttt{\textbackslash{}Delta\_F=\textbackslash{}pi}
+で完全反射が得られた。
+
+本稿では、曲率相対位相漏れを含めて、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_\{\textbackslash{}mathrm\{eff\},m\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}Delta\_F+\textbackslash{}delta\_\{K,m\}+\textbackslash{}beta\_\{K,m\}}
+\end{Highlighting}
+\end{Shaded}
+
+とする。
+
+完全反射条件は、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_\{\textbackslash{}mathrm\{eff\},m\}=\textbackslash{}pi}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+曲率相対位相漏れが補正されない場合、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_\{\textbackslash{}mathrm\{eff\},m\}=\textbackslash{}pi+\textbackslash{}delta\_\{K,m\}}
+\end{Highlighting}
+\end{Shaded}
+
+となり、通過漏れが出る。
+
+一方、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}beta\_\{K,m\}={-}\textbackslash{}delta\_\{K,m\}}
+\end{Highlighting}
+\end{Shaded}
+
+が成立すれば、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_\{\textbackslash{}mathrm\{eff\},m\}=\textbackslash{}pi}
+\end{Highlighting}
+\end{Shaded}
+
+が回復し、完全反射読出しが戻る。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. 数値実験}\label{ux6570ux5024ux5b9fux9a13}
+
+\subsubsection{7.1
+実験1:最小閉鎖定常波検証}\label{ux5b9fux9a131ux6700ux5c0fux9589ux9396ux5b9aux5e38ux6ce2ux691cux8a3c}
+
+実行スクリプトは次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_curved\_closure\_stationary\_wave\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+出力先は次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{curved\_closure\_stationary\_wave\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+曲率相対位相漏れを、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}delta\_\{K,m\}=\textbackslash{}kappa h\_m}
+\end{Highlighting}
+\end{Shaded}
+
+として与えた。
+
+最大 \texttt{\textbackslash{}kappa=0.012}、最大曲率位相
+\texttt{1.1879999999999999} に対して、次が得られた。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrr@{}}
+\toprule\noalign{}
+状態 & 閉鎖ペア RMS & 通過漏れ \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+flat & \texttt{0.0000000000000000e+00} &
+\texttt{0.0000000000000000e+00} \\
+conformal & \texttt{9.4283259783636047e-19} &
+\texttt{0.0000000000000000e+00} \\
+transient & \texttt{1.2319416790092972e-02} &
+\texttt{1.1503183254481797e-01} \\
+stationary & \texttt{9.4283259783636047e-19} &
+\texttt{0.0000000000000000e+00} \\
+\end{longtable}
+}
+
+緩和列では、最終閉鎖ペア RMS
+\texttt{2.0285753500943141e-09}、最終通過漏れ
+\texttt{2.4915322496409796e-15} となった。
+
+判定はすべて \texttt{true} であった。
+
+\subsubsection{7.2
+実験2:広範囲曲率位相モデル掃引}\label{ux5b9fux9a132ux5e83ux7bc4ux56f2ux66f2ux7387ux4f4dux76f8ux30e2ux30c7ux30ebux6383ux5f15}
+
+実行スクリプトは次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_curved\_closure\_stationary\_wave\_broad\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+出力先は次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{curved\_closure\_stationary\_wave\_broad\_sweep\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+曲率相対位相モデルを次の8種類とした。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{linear}
+\NormalTok{quadratic\_area}
+\NormalTok{cubic\_high}
+\NormalTok{quartic\_edge}
+\NormalTok{alternating\_linear}
+\NormalTok{sinusoidal\_loop}
+\NormalTok{mixed\_smooth}
+\NormalTok{rippled\_random\_like}
+\end{Highlighting}
+\end{Shaded}
+
+内部補正自由度を次の7種類とした。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{none}
+\NormalTok{constant}
+\NormalTok{linear}
+\NormalTok{affine}
+\NormalTok{quadratic}
+\NormalTok{cubic}
+\NormalTok{full}
+\end{Highlighting}
+\end{Shaded}
+
+最大曲率相対位相 \texttt{1.2} における補正別集計は次である。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+補正
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+最大閉鎖ペア RMS
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+最大通過漏れ
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+最大残留位相
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+none & \texttt{1.3992789770439718e-02} & \texttt{1.6202719613622976e-01}
+& \texttt{1.2000000000000000e+00} \\
+constant & \texttt{1.2323357129304359e-02} &
+\texttt{1.1632365832184562e-01} & \texttt{1.1885985027360557e+00} \\
+linear & \texttt{1.2317721991993871e-02} &
+\texttt{1.1624067781252551e-01} & \texttt{1.2122605013795469e+00} \\
+affine & \texttt{1.2315221532542749e-02} &
+\texttt{1.1619972192010980e-01} & \texttt{1.2235371932078578e+00} \\
+quadratic & \texttt{1.2300337923101595e-02} &
+\texttt{1.1598359742226144e-01} & \texttt{1.2740926312051919e+00} \\
+cubic & \texttt{1.2278927640523116e-02} &
+\texttt{1.1567739316276086e-01} & \texttt{1.3311608455010591e+00} \\
+full & \texttt{7.8949412793793227e-19} & \texttt{0.0000000000000000e+00}
+& \texttt{0.0000000000000000e+00} \\
+\end{longtable}
+}
+
+共通因子型曲率は全掃引で閉鎖を保存し、無補正では非自明な曲率漏れが検出された。\texttt{full}
+補正では全位相モデルで閉鎖と完全反射が回復した。限定補正ではモデル依存の残差が残った。
+
+\subsubsection{7.3
+実験3:片側入射散乱への統合検証}\label{ux5b9fux9a133ux7247ux5074ux5165ux5c04ux6563ux4e71ux3078ux306eux7d71ux5408ux691cux8a3c}
+
+実行スクリプトは次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{run\_curved\_closure\_scattering\_integration\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+出力先は次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{curved\_closure\_scattering\_integration\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+実験2で得た残留曲率相対位相を、片側入射の局所交換干渉写像へ戻した。
+
+補正別集計は次である。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+補正
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+最大動的通過漏れ
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+最大閉鎖ペア RMS
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+最大期待式誤差
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+none & \texttt{1.6202719613622971e-01} & \texttt{1.3992789770439718e-02}
+& \texttt{5.5511151231257827e-17} \\
+constant & \texttt{1.1632365832184560e-01} &
+\texttt{1.2323357129304359e-02} & \texttt{1.3877787807814457e-17} \\
+linear & \texttt{1.1624067781252549e-01} &
+\texttt{1.2317721991993871e-02} & \texttt{1.3877787807814457e-17} \\
+affine & \texttt{1.1619972192010980e-01} &
+\texttt{1.2315221532542749e-02} & \texttt{1.0408340855860843e-17} \\
+quadratic & \texttt{1.1598359742226147e-01} &
+\texttt{1.2300337923101595e-02} & \texttt{2.7755575615628914e-17} \\
+cubic & \texttt{1.1567739316276089e-01} &
+\texttt{1.2278927640523116e-02} & \texttt{2.7755575615628914e-17} \\
+full & \texttt{1.6608667989341789e-19} & \texttt{7.8949412793793227e-19}
+& \texttt{1.6608667989341789e-19} \\
+\end{longtable}
+}
+
+動的散乱は二チャンネル期待式と最大誤差 \texttt{5.551115123125783e-17}
+で一致し、ノルム最大誤差は \texttt{4.440892098500626e-16} であった。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. 結果の分類}\label{ux7d50ux679cux306eux5206ux985e}
+
+本稿の結果を、探究型物理学者ロールの分類で整理する。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+対象
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+分類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+判定
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{Σx\_n\^{}2=0} が非自明複素閉鎖を要求する & 導出済み帰結 &
+保持 \\
+曲率相対位相漏れが閉鎖残差を生む & 数値構成済み帰結 & 保持 \\
+共通因子型曲率作用は閉鎖を破らない & 数値構成済み帰結 & 保持 \\
+内部位相再選別が閉鎖を回復する & 数値構成済み帰結 & 保持 \\
+内部位相再選別が完全反射を回復する & 数値構成済み帰結 & 保持 \\
+実在時空の局所平坦性がこの構造で説明される & 既存理論との接続課題 &
+未主張 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. 考察}\label{ux8003ux5bdf}
+
+\subsubsection{9.1
+曲率は消えていない}\label{ux66f2ux7387ux306fux6d88ux3048ux3066ux3044ux306aux3044}
+
+本稿の結果は、「曲率の影響がない」ことを示すものではない。
+
+むしろ、曲率相対位相漏れを入れた過渡状態では、閉鎖残差と通過漏れが明確に発生する。
+
+したがって、曲率効果は検出可能である。
+
+\subsubsection{9.2
+閉鎖定常波が曲率を内部へ吸収する}\label{ux9589ux9396ux5b9aux5e38ux6ce2ux304cux66f2ux7387ux3092ux5185ux90e8ux3078ux5438ux53ceux3059ux308b}
+
+重要なのは、曲率相対位相漏れを受けた後、系が閉鎖定常波として再選別される場合である。
+
+このとき、内部位相補正 \texttt{\textbackslash{}beta\_\{K,m\}} により、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}delta\_\{K,m\}+\textbackslash{}beta\_\{K,m\}=0}
+\end{Highlighting}
+\end{Shaded}
+
+が満たされると、閉鎖残差と通過漏れが消える。
+
+これは、曲率が存在しないという意味ではない。曲率相対位相が、安定に存在できる閉鎖定常波の内部位相構成へ繰り込まれるという意味である。
+
+\subsubsection{9.3
+局所平坦性との関係}\label{ux5c40ux6240ux5e73ux5766ux6027ux3068ux306eux95a2ux4fc2}
+
+標準的な局所平坦近似では、十分小さい領域で曲率効果を無視する。
+
+本稿の構成は異なる。
+
+曲率効果を一度入れ、閉鎖条件が破れることを確認し、その後、閉鎖定常波として再選別された状態で曲率残差が読出しから消えることを確認した。
+
+したがって、本稿の内部公理系では、局所平坦的に見える読出しは、曲率を無視した結果ではなく、曲率込みで閉じる定常干渉モードだけが安定に読まれる結果として解釈できる。
+
+これは標準理論との同一視ではない。対応写像を構成するための作業仮説である。
+
+\subsubsection{9.4
+完全弾性反射との接続}\label{ux5b8cux5168ux5f3eux6027ux53cdux5c04ux3068ux306eux63a5ux7d9a}
+
+前稿で構成した完全反射写像は、内部逆相核によって、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_F=\textbackslash{}pi}
+\end{Highlighting}
+\end{Shaded}
+
+を与える交換干渉写像であった。
+
+本稿では、曲率相対位相漏れを入れると、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_\{\textbackslash{}mathrm\{eff\},m\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}pi+\textbackslash{}delta\_\{K,m\}+\textbackslash{}beta\_\{K,m\}}
+\end{Highlighting}
+\end{Shaded}
+
+となる。
+
+無補正では \texttt{\textbackslash{}delta\_\{K,m\}}
+が残り、通過漏れが出る。\texttt{full} 補正では
+\texttt{\textbackslash{}beta\_\{K,m\}=-\textbackslash{}delta\_\{K,m\}}
+となり、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_\{\textbackslash{}mathrm\{eff\},m\}=\textbackslash{}pi}
+\end{Highlighting}
+\end{Shaded}
+
+が回復する。
+
+このとき、片側入射散乱でも \texttt{R=1,T=0} が回復した。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. 結論}\label{ux7d50ux8ad6}
+
+本稿では、全正符号ゼロ閉鎖 \texttt{Σx\_n\^{}2=0}
+を満たす奇数倍音複素波が、曲率付き局所セルにおいてどのように安定化されるかを数値構成した。
+
+最小実験では、曲率相対位相漏れを受けた過渡状態で閉鎖ペア RMS
+\texttt{1.2319416790092972e-02}、通過漏れ
+\texttt{1.1503183254481797e-01}
+が発生した。内部位相再選別後の定常状態では、閉鎖ペア RMS
+\texttt{9.4283259783636047e-19}、通過漏れ \texttt{0.0} へ回復した。
+
+広範囲検証では、8種類の曲率相対位相モデルと7種類の補正自由度を比較した。無補正では最大通過漏れ
+\texttt{1.6202719613622976e-01} が残り、\texttt{full} 補正では閉鎖ペア
+RMS \texttt{7.8949412793793227e-19}、通過漏れ \texttt{0.0} へ回復した。
+
+さらに、片側入射の局所交換干渉写像へ曲率残留位相を戻す統合検証では、無補正で最大動的通過漏れ
+\texttt{1.6202719613622971e-01} が発生し、\texttt{full}
+補正では最大動的通過漏れ \texttt{1.6608667989341789e-19} まで低下した。
+
+以上により、本稿の数値構成範囲では、曲率の影響は無視されていない。曲率相対位相漏れは過渡状態で閉鎖残差および通過漏れとして現れる。しかし、系が
+\texttt{Σx\_n\^{}2=0}
+を満たす閉鎖定常波へ再選別されると、曲率相対位相漏れは内部位相構成へ吸収され、交換干渉による完全反射読出しが回復する。
+
+したがって、\texttt{Σx\_n\^{}2=0}
+は単なる保存条件ではなく、非自明複素波の存在条件、曲率相対位相漏れの検出条件、閉鎖定常波への再選別条件、および完全反射読出しの安定条件として働く。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{付録A.
+実行済みプログラムと出力}\label{ux4ed8ux9332a.-ux5b9fux884cux6e08ux307fux30d7ux30edux30b0ux30e9ux30e0ux3068ux51faux529b}
+
+\subsection{A.1 最小検証}\label{a.1-ux6700ux5c0fux691cux8a3c}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_curved\_closure\_stationary\_wave\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+出力:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{curved\_closure\_stationary\_wave\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+主要ファイル:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+種類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ファイル
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+レポート &
+\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_report_v1.md}{curved\_closure\_stationary\_wave\_report\_v1.md} \\
+JSON &
+\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_result_v1.json}{curved\_closure\_stationary\_wave\_result\_v1.json} \\
+sweep CSV &
+\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_sweep_v1.csv}{curved\_closure\_stationary\_wave\_sweep\_v1.csv} \\
+relaxation CSV &
+\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_relaxation_v1.csv}{curved\_closure\_stationary\_wave\_relaxation\_v1.csv} \\
+sweep 図 &
+\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_sweep_v1.png}{curved\_closure\_stationary\_wave\_sweep\_v1.png} \\
+relaxation 図 &
+\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_relaxation_v1.png}{curved\_closure\_stationary\_wave\_relaxation\_v1.png} \\
+\end{longtable}
+}
+
+\subsection{A.2 広範囲検証}\label{a.2-ux5e83ux7bc4ux56f2ux691cux8a3c}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_curved\_closure\_stationary\_wave\_broad\_sweep\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+出力:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{curved\_closure\_stationary\_wave\_broad\_sweep\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+主要ファイル:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+種類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ファイル
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+レポート &
+\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_report_v1.md}{curved\_closure\_stationary\_wave\_broad\_report\_v1.md} \\
+JSON &
+\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_sweep_result_v1.json}{curved\_closure\_stationary\_wave\_broad\_sweep\_result\_v1.json} \\
+sweep CSV &
+\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_sweep_v1.csv}{curved\_closure\_stationary\_wave\_broad\_sweep\_v1.csv} \\
+control CSV &
+\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_conformal_control_v1.csv}{curved\_closure\_stationary\_wave\_broad\_conformal\_control\_v1.csv} \\
+aggregate 図 &
+\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_aggregate_v1.png}{curved\_closure\_stationary\_wave\_broad\_aggregate\_v1.png} \\
+closure heatmap &
+\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_closure_heatmap_v1.png}{curved\_closure\_stationary\_wave\_broad\_closure\_heatmap\_v1.png} \\
+leakage heatmap &
+\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_leakage_heatmap_v1.png}{curved\_closure\_stationary\_wave\_broad\_leakage\_heatmap\_v1.png} \\
+\end{longtable}
+}
+
+\subsection{A.3
+片側入射散乱統合検証}\label{a.3-ux7247ux5074ux5165ux5c04ux6563ux4e71ux7d71ux5408ux691cux8a3c}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_curved\_closure\_scattering\_integration\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+出力:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{curved\_closure\_scattering\_integration\_result\_v1/}
+\end{Highlighting}
+\end{Shaded}
+
+主要ファイル:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+種類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ファイル
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+レポート &
+\href{curved_closure_scattering_integration_result_v1/curved_closure_scattering_integration_report_v1.md}{curved\_closure\_scattering\_integration\_report\_v1.md} \\
+JSON &
+\href{curved_closure_scattering_integration_result_v1/curved_closure_scattering_integration_result_v1.json}{curved\_closure\_scattering\_integration\_result\_v1.json} \\
+CSV &
+\href{curved_closure_scattering_integration_result_v1/curved_closure_scattering_integration_v1.csv}{curved\_closure\_scattering\_integration\_v1.csv} \\
+図 &
+\href{curved_closure_scattering_integration_result_v1/curved_closure_scattering_integration_v1.png}{curved\_closure\_scattering\_integration\_v1.png} \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsection{自己引用}\label{ux81eaux5df1ux5f15ux7528}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  木原範昭「無名等振幅複合波モデル 基本公理系 v2」2026-07-10.
+\item
+  木原範昭「論文0:正曲率定曲率空間における測地的単位セルの歪み ---
+  一辺・角・面積・体積の厳密評価」Version DOI:
+  \texttt{10.5281/zenodo.21303433}, Concept DOI:
+  \texttt{10.5281/zenodo.20680269}, 2026.
+\item
+  木原範昭「フェルミオン的逆相核による完全反射写像の干渉構成」Version
+  DOI: \texttt{10.5281/zenodo.21295480}, Concept DOI:
+  \texttt{10.5281/zenodo.21295479}, 2026.
+\end{enumerate}
+
+\subsection{外部参考文献}\label{ux5916ux90e8ux53c2ux8003ux6587ux732e}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  H. S. M. Coxeter, \emph{Regular Polytopes}, 3rd ed., Dover, 1973.
+\item
+  S. Pancharatnam, ``Generalized theory of interference, and its
+  applications,'' \emph{Proceedings of the Indian Academy of Sciences
+  A}, 44, 247--262, 1956.
+\item
+  M. V. Berry, ``Quantal phase factors accompanying adiabatic changes,''
+  \emph{Proceedings of the Royal Society of London A}, 392, 45--57,
+  1984. DOI: \texttt{10.1098/rspa.1984.0023}.
+\end{enumerate}
+
+\end{document}
