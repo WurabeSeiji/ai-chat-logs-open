@@ -1,0 +1,133 @@
+{
+  "experiment": "abc_baseline_stationary_wave_g1_time_gradient_preliminary_v1",
+  "params": {
+    "step_count": 48,
+    "delta_s": 1.0,
+    "chi_A0": -0.25,
+    "chi_B0": 0.25,
+    "R_A": 1.0,
+    "R_B": 1.5625,
+    "epsilon_to_C": 1e-06,
+    "epsilon_C_return": 0.001,
+    "epsilon_r2_pressure": 8e-07,
+    "epsilon_r3_direct": 5e-07,
+    "memory_decay_C": 0.92,
+    "memory_decay_R": 0.9,
+    "q_raw_gain": 0.001,
+    "subwinding_residual": -0.0125,
+    "balance_tol": 1e-12,
+    "gauge_std_tol": 1e-14,
+    "additivity_tol": 5e-08,
+    "residual_tol": 5e-08,
+    "effect_floor": 1e-12
+  },
+  "case_summaries": [
+    {
+      "label": "C_mediated_only_persistent",
+      "mode": "single_C_memory_time_gradient",
+      "expected": "match",
+      "row_count": 92,
+      "max_actual_Ra_abs": 1.5087216506023456e-10,
+      "max_predicted_minus_partial_chi_E_abs": 1.5087216506023461e-10,
+      "max_g1_balance_error_abs": 4.3658818912747546e-23,
+      "sign_match_ratio": 1.0,
+      "first_sign_break_step": null,
+      "valid": true
+    },
+    {
+      "label": "C_mediated_only_reset",
+      "mode": "single_C_memory_time_gradient",
+      "expected": "match",
+      "row_count": 92,
+      "max_actual_Ra_abs": 9.538881387839005e-20,
+      "max_predicted_minus_partial_chi_E_abs": 9.538449639909526e-20,
+      "max_g1_balance_error_abs": 4.3820397328424214e-24,
+      "sign_match_ratio": 1.0,
+      "first_sign_break_step": null,
+      "valid": true
+    },
+    {
+      "label": "R2_only_control",
+      "mode": "reaction_control_without_C_memory",
+      "expected": "reject",
+      "row_count": 92,
+      "max_actual_Ra_abs": 1.8943201400821984e-07,
+      "max_predicted_minus_partial_chi_E_abs": 0.0,
+      "max_g1_balance_error_abs": 1.8943201400821984e-07,
+      "sign_match_ratio": 0.0,
+      "first_sign_break_step": 1,
+      "valid": true
+    },
+    {
+      "label": "R3_only_control",
+      "mode": "reaction_control_without_C_memory",
+      "expected": "reject",
+      "row_count": 92,
+      "max_actual_Ra_abs": 1.183949010058143e-07,
+      "max_predicted_minus_partial_chi_E_abs": 0.0,
+      "max_g1_balance_error_abs": 1.183949010058143e-07,
+      "sign_match_ratio": 0.0,
+      "first_sign_break_step": 1,
+      "valid": true
+    },
+    {
+      "label": "combined_minus_R2_R3_residual",
+      "mode": "combined_minus_R2_R3_residual",
+      "expected": "match",
+      "row_count": 92,
+      "max_actual_Ra_abs": 1.502986489806105e-10,
+      "max_predicted_minus_partial_chi_E_abs": 1.5087273853441775e-10,
+      "max_g1_balance_error_abs": 1.9677154423536674e-11,
+      "sign_match_ratio": 0.5869565217391305,
+      "first_sign_break_step": 28,
+      "valid": false
+    },
+    {
+      "label": "combined_minus_R2_R3_residual_early_window",
+      "mode": "combined_minus_R2_R3_residual_steps_1_to_16",
+      "expected": "match",
+      "row_count": 32,
+      "max_actual_Ra_abs": 1.502986489806105e-10,
+      "max_predicted_minus_partial_chi_E_abs": 1.5087273853441775e-10,
+      "max_g1_balance_error_abs": 1.1270077814154828e-11,
+      "sign_match_ratio": 1.0,
+      "first_sign_break_step": null,
+      "valid": true
+    },
+    {
+      "label": "combined_minus_R2_R3_residual_mirrored",
+      "mode": "combined_minus_R2_R3_residual",
+      "expected": "match",
+      "row_count": 92,
+      "max_actual_Ra_abs": 1.5029864898110185e-10,
+      "max_predicted_minus_partial_chi_E_abs": 1.5087273853441775e-10,
+      "max_g1_balance_error_abs": 1.967715446588832e-11,
+      "sign_match_ratio": 0.5869565217391305,
+      "first_sign_break_step": 28,
+      "valid": false
+    },
+    {
+      "label": "combined_minus_R2_R3_residual_mirrored_early_window",
+      "mode": "combined_minus_R2_R3_residual_steps_1_to_16",
+      "expected": "match",
+      "row_count": 32,
+      "max_actual_Ra_abs": 1.5029864898110185e-10,
+      "max_predicted_minus_partial_chi_E_abs": 1.5087273853441775e-10,
+      "max_g1_balance_error_abs": 1.1270077819237025e-11,
+      "sign_match_ratio": 1.0,
+      "first_sign_break_step": null,
+      "valid": true
+    }
+  ],
+  "aggregate_verdict": {
+    "case_count": 8,
+    "all_cases_valid": false,
+    "single_gauge_only_used": false,
+    "g1_time_gradient_preliminary_valid": false,
+    "max_match_error": 1.967715446588832e-11,
+    "min_match_sign_ratio": 0.5869565217391305,
+    "reaction_controls_rejected": true,
+    "early_window_residual_valid": true,
+    "full_window_residual_valid": false
+  }
+}
