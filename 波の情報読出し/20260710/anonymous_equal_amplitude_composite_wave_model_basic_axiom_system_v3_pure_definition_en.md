@@ -3,8 +3,8 @@
 **Date:** 2026-07-12  
 **Author:** Noriaki Kihara  
 **Status:** Definition paper  
-**Version DOI:** pending  
-**Concept DOI:** pending  
+**Version DOI:** 10.5281/zenodo.21315736
+**Concept DOI:** 10.5281/zenodo.21315735
 
 ---
 

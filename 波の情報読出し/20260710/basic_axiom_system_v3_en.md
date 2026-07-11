@@ -3,6 +3,8 @@
 **Date:** 2026-07-10  
 **Author:** Noriaki Kihara  
 **Status:** Interpretation and working note for Basic Axiom System v3
+**Version DOI:** 10.5281/zenodo.21315736
+**Concept DOI:** 10.5281/zenodo.21315735
 
 This document cites the definition paper "Anonymous Equal-Amplitude Composite-Wave Model: Basic Axiom System v3" and records the present interpretation, development, and working explanations of that axiom system.
 
