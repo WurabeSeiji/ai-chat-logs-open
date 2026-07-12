@@ -1,0 +1,1007 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=24mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{ABC閉鎖位相系における独立計量Cと関係性補償分解距離指数予備実験総括
+v1}\label{abcux9589ux9396ux4f4dux76f8ux7cfbux306bux304aux3051ux308bux72ecux7acbux8a08ux91cfcux3068ux95a2ux4fc2ux6027ux88dcux511fux5206ux89e3ux8dddux96e2ux6307ux6570ux4e88ux5099ux5b9fux9a13ux7dcfux62ec-v1}
+
+\textbf{日付:} 2026-07-12\\
+\textbf{著者:} 木原 範昭\\
+\textbf{位置づけ:} 波の情報読出しシリーズ・ABC距離指数予備実験群の総括\\
+\textbf{Version DOI:} 10.5281/zenodo.21318701\\
+\textbf{Concept DOI:} 10.5281/zenodo.21318700
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{0. 結論}\label{ux7d50ux8ad6}
+
+本総括は、AB二体系で距離指数を独立計量できなかったことを受け、第三波
+\texttt{C} を導入したABC閉鎖位相系の予備実験群をまとめる。
+
+対象は次である。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  独立計量CによるAB関係補償の距離指数読出し予備実験
+\item
+  独立計量Cの配置対照距離指数予備実験
+\item
+  関係性補償分解距離指数予備実験
+\end{enumerate}
+
+結論は次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{AB二体問題で残された距離指数判定のために、}
+\NormalTok{測定機Cを同じ閉鎖位相系の中に置いた。}
+
+\NormalTok{このABC三体系でも、加速度様に見えるAB関係補償は読める。}
+
+\NormalTok{しかし、その読出しが位置位相差に対して}
+\NormalTok{逆比例または逆二乗比例で変化することは観測できなかった。}
+\end{Highlighting}
+\end{Shaded}
+
+ゲージ有効ケースでは、主に
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alpha ≈ {-}1}
+\end{Highlighting}
+\end{Shaded}
+
+が回収された。
+
+本実験群では、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{I\_AB(L) ∝ L\^{}\{{-}alpha\}}
+\end{Highlighting}
+\end{Shaded}
+
+として分類しているため、\texttt{alpha≈-1} は
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{I\_AB(L) ∝ L}
+\end{Highlighting}
+\end{Shaded}
+
+すなわち比例型を意味する。
+
+これは、本質的にこの実験が、局在した粒子を模倣した二つの局在波による一次元的な調和振動モデルであるためだと解釈する。
+
+このモデルでは、相対距離の変動による影響を受けない、または受けたとしても観測できない。
+
+特に、Cは独立計量ゲージとして導入されたが、C自身も閉鎖位相系の一部であるため、絶対外部ゲージにはならない。
+
+したがって、Cを入れても、現在のモデルの範囲では比例型が保たれた。
+
+これは逆二乗の一般否定ではない。
+
+否定されたのは、より狭く、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{現在の一次元的AB調和モデルと C 計量ゲージだけで、}
+\NormalTok{逆比例型または逆二乗型が native に現れる。}
+\end{Highlighting}
+\end{Shaded}
+
+という主張である。
+
+当初、三次元または四次元へ位置位相自由度を増やす実験も検討した。
+
+しかし、同じ局在波二体調和モデルを用いる限り、任意の高次元配置も測地線断面または二次元断面へ投影すると、本実験と同じ構造に戻る。
+
+したがって、この段階では、三次元・四次元拡張を実施しても距離指数読出しが変わる効果は見込みにくいと判断した。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 実験一覧}\label{ux5b9fux9a13ux4e00ux89a7}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3077}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2308}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2308}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2308}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+No.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+実験
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+目的
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+主結果
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & Cゲージ有効窓検査 & \texttt{C} がAB距離指数を読む独立計量になれるか
+& 有効窓あり \\
+2 & C配置対照 & 対称・非対称・位相反転で指数が変わるか &
+比例型が保たれた \\
+3 & 関係性補償分解 & \texttt{f\_AB}, \texttt{f\_AC}, \texttt{f\_BC},
+\texttt{f\_ABC} を分ける & 分離規則を支持 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2.
+独立計量Cによる距離指数読出し}\label{ux72ecux7acbux8a08ux91cfcux306bux3088ux308bux8dddux96e2ux6307ux6570ux8aadux51faux3057}
+
+\subsubsection{2.1 実験の意味}\label{ux5b9fux9a13ux306eux610fux5473}
+
+AB二体だけでは、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{相対距離が変化した}
+\end{Highlighting}
+\end{Shaded}
+
+ことは読めても、その変化が比例型、逆比例型、逆二乗型のどれであるかを測る独立ゲージがなかった。
+
+そこで第三波 \texttt{C}
+を置き、ABの位置変化量と時間位相変化量を読む計量ゲージとして機能するかを検査した。
+
+ただし、次は実装していない。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1/L\_AB}
+\NormalTok{1/L\_AB\^{}2}
+\NormalTok{1/A\_chi\_tau}
+\NormalTok{F = G m\_A m\_B / L\_AB\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+したがって、逆比例型または逆二乗型が出る場合は、実装で作ったものではなく、Cゲージ読出しの結果でなければならない。
+
+\subsubsection{2.2 主結果}\label{ux4e3bux7d50ux679c}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+量 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{config\_count} & \texttt{160} \\
+\texttt{gauge\_valid\_count} & \texttt{41} \\
+\texttt{resolution\_valid\_count} & \texttt{60} \\
+\texttt{clock\_valid\_count} & \texttt{100} \\
+\texttt{disturbance\_valid\_count} & \texttt{101} \\
+\texttt{inverse\_like\_alpha1\_count} & \texttt{0} \\
+\texttt{inverse\_square\_like\_alpha2\_count} & \texttt{0} \\
+\texttt{proportional\_like\_alpha\_minus1\_count} & \texttt{41} \\
+\texttt{alpha\_min} & \texttt{-1.0000000000000002} \\
+\texttt{alpha\_max} & \texttt{-0.9569628567496087} \\
+\end{longtable}
+}
+
+関係性時間ごとの分類は次であった。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+時間候補 & 分類 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{tau\_ABC} & \texttt{proportional\_like\_alpha\_minus1\ =\ 41} \\
+\texttt{tau\_AB} & \texttt{other\ =\ 41} \\
+\texttt{tau\_AC} & \texttt{proportional\_like\_alpha\_minus1\ =\ 41} \\
+\texttt{tau\_BC} & \texttt{proportional\_like\_alpha\_minus1\ =\ 41} \\
+\end{longtable}
+}
+
+\texttt{tau\_AB} は \texttt{tau\_ABC} から最大で約 \texttt{0.659}
+ずれた。
+
+したがって、距離指数を読むには、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{何を時間として読むか}
+\end{Highlighting}
+\end{Shaded}
+
+を明示する必要がある。
+
+\subsubsection{2.3
+Cゲージ有効窓}\label{cux30b2ux30fcux30b8ux6709ux52b9ux7a93}
+
+本実験では、\texttt{R\_C} を C の計量セル密度にも対応させた。
+
+すなわち、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R\_C が小さい}
+\NormalTok{= C の振動数が低い}
+\NormalTok{= C の波長が長い}
+\NormalTok{= C のセル間隔が広い}
+\end{Highlighting}
+\end{Shaded}
+
+として扱った。
+
+このため、\texttt{R\_C} が小さすぎると、C
+はABの位置変化量を複数セルで読めない。
+
+一方、\texttt{R\_C} が大きくなると分解能は上がるが、C由来の関係性
+\texttt{f\_AC}, \texttt{f\_BC}, \texttt{f\_ABC} がAB主読出しを汚染する。
+
+したがって、Cには
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{粗すぎず、強すぎない}
+\end{Highlighting}
+\end{Shaded}
+
+有効窓がある。
+
+\subsubsection{2.4 図}\label{ux56f3}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Cゲージ適格性
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+alpha 候補
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\pandocbounded{\includegraphics[keepaspectratio]{abc_c_gauge_ab_distance_exponent_preliminary_result_v1/abc_c_gauge_ab_distance_exponent_gauge_eligibility_map_v1.png}}
+&
+\pandocbounded{\includegraphics[keepaspectratio]{abc_c_gauge_ab_distance_exponent_preliminary_result_v1/abc_c_gauge_ab_distance_exponent_alpha_candidates_v1.png}} \\
+\end{longtable}
+}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+参照曲線
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+フィルタ診断
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\pandocbounded{\includegraphics[keepaspectratio]{abc_c_gauge_ab_distance_exponent_preliminary_result_v1/abc_c_gauge_ab_distance_exponent_reference_curve_v1.png}}
+&
+\pandocbounded{\includegraphics[keepaspectratio]{abc_c_gauge_ab_distance_exponent_preliminary_result_v1/abc_c_gauge_ab_distance_exponent_validity_filters_v1.png}} \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3.
+独立計量Cの配置対照}\label{ux72ecux7acbux8a08ux91cfcux306eux914dux7f6eux5bfeux7167}
+
+\subsubsection{3.1 実験の意味}\label{ux5b9fux9a13ux306eux610fux5473-1}
+
+第三波 \texttt{C} は外部観測器ではなく、閉鎖位相系の一部である。
+
+したがって、Cを置くと同時に、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f\_AC}
+\NormalTok{f\_BC}
+\NormalTok{f\_ABC}
+\end{Highlighting}
+\end{Shaded}
+
+が生成される。
+
+そこでC配置を変え、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{距離指数が変わるのか}
+\NormalTok{C由来の汚染としてゲージ有効窓が狭くなるだけなのか}
+\end{Highlighting}
+\end{Shaded}
+
+を検査した。
+
+\subsubsection{3.2 C配置モード}\label{cux914dux7f6eux30e2ux30fcux30c9}
+
+比較した配置は次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{symmetric}
+\NormalTok{symmetric\_pi\_flip}
+\NormalTok{a\_side\_small}
+\NormalTok{b\_side\_small}
+\NormalTok{a\_side\_large}
+\NormalTok{b\_side\_large}
+\NormalTok{a\_side\_large\_pi\_flip}
+\NormalTok{b\_side\_large\_pi\_flip}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{3.3 主結果}\label{ux4e3bux7d50ux679c-1}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+量 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{config\_count} & \texttt{160} \\
+\texttt{gauge\_valid\_count} & \texttt{70} \\
+\texttt{gauge\_valid\_position\_pair\_count} & \texttt{23} \\
+\texttt{max\_pair\_abs\_alpha\_difference} &
+\texttt{0.11776992863447344} \\
+\texttt{tau\_ABC} の主分類 &
+\texttt{proportional\_like\_alpha\_minus1\ =\ 70} \\
+\end{longtable}
+}
+
+C配置ごとのゲージ有効数は次であった。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+C配置 & 有効数 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{symmetric} & \texttt{12} \\
+\texttt{symmetric\_pi\_flip} & \texttt{12} \\
+\texttt{a\_side\_small} & \texttt{11} \\
+\texttt{b\_side\_small} & \texttt{11} \\
+\texttt{a\_side\_large} & \texttt{6} \\
+\texttt{b\_side\_large} & \texttt{6} \\
+\texttt{a\_side\_large\_pi\_flip} & \texttt{6} \\
+\texttt{b\_side\_large\_pi\_flip} & \texttt{6} \\
+\end{longtable}
+}
+
+大きな非対称C配置では、有効数が減った。
+
+これは、新しい安定な距離指数が出たというより、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f\_AC, f\_BC の偏りが C ゲージの有効条件を狭めた}
+\end{Highlighting}
+\end{Shaded}
+
+と読む方が安全である。
+
+\subsubsection{3.4 図}\label{ux56f3-1}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+C配置ごとの有効数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+C配置ごとの alpha
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\pandocbounded{\includegraphics[keepaspectratio]{abc_c_gauge_ab_distance_exponent_c_position_control_preliminary_result_v1/abc_c_gauge_c_position_valid_counts_v1.png}}
+&
+\pandocbounded{\includegraphics[keepaspectratio]{abc_c_gauge_ab_distance_exponent_c_position_control_preliminary_result_v1/abc_c_gauge_c_position_alpha_candidates_v1.png}} \\
+\end{longtable}
+}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 0\tabcolsep) * \real{1.0000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+A側/B側対称性
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\pandocbounded{\includegraphics[keepaspectratio]{abc_c_gauge_ab_distance_exponent_c_position_control_preliminary_result_v1/abc_c_gauge_c_position_pair_symmetry_v1.png}} \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4.
+関係性補償分解}\label{ux95a2ux4fc2ux6027ux88dcux511fux5206ux89e3}
+
+\subsubsection{4.1 実験の意味}\label{ux5b9fux9a13ux306eux610fux5473-2}
+
+ABC三体系では、関係性は少なくとも次の四つに分かれる。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f\_AB}
+\NormalTok{f\_AC}
+\NormalTok{f\_BC}
+\NormalTok{f\_ABC}
+\end{Highlighting}
+\end{Shaded}
+
+このうち、主対象は \texttt{f\_AB} である。
+
+\texttt{f\_AC}, \texttt{f\_BC} はC由来の二体関係性である。
+
+\texttt{f\_ABC} はABC全体系の共通関係性である。
+
+本実験では、次の分離を検査した。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{代表時間: tau\_ABC}
+\NormalTok{円周方向候補: f\_AB, f\_AC, f\_BC}
+\NormalTok{共通モード・中心方向候補: f\_ABC}
+\end{Highlighting}
+\end{Shaded}
+
+特に重要なのは、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f\_ABC を代表時間として使う。}
+\NormalTok{f\_ABC を AB 円周方向へ直接足さない。}
+\end{Highlighting}
+\end{Shaded}
+
+という規律である。
+
+\subsubsection{4.2 主結果}\label{ux4e3bux7d50ux679c-2}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+量 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{config\_count} & \texttt{240} \\
+\texttt{decomposition\_valid\_count} & \texttt{180} \\
+\texttt{AB\_dominant\_valid\_count} & \texttt{48} \\
+\texttt{non\_AB\_dominant\_count} & \texttt{132} \\
+\texttt{inverse\_or\_inverse\_square\_in\_AB\_dominant\_count} &
+\texttt{0} \\
+\end{longtable}
+}
+
+AB主導ケースでの \texttt{tau\_ABC} 距離指数分類は次であった。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{proportional\_like\_alpha\_minus1: 48}
+\end{Highlighting}
+\end{Shaded}
+
+native な \texttt{f\_AB} の分類は次であった。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{proportional\_like\_alpha\_minus1: 180}
+\end{Highlighting}
+\end{Shaded}
+
+Cバイアス項とC非対称項は、主に
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{constant\_like\_alpha0}
+\end{Highlighting}
+\end{Shaded}
+
+として読まれた。
+
+これは、C由来の射影バイアスが、AB距離 \texttt{L\_AB}
+に対して安定な逆数・逆二乗項として現れたわけではないことを示す。
+
+\subsubsection{4.3
+f\_ABC直足し対照}\label{f_abcux76f4ux8db3ux3057ux5bfeux7167}
+
+\texttt{f\_ABC} をAB円周方向へ直接足した誤注入対照では、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{other: 63}
+\NormalTok{proportional\_like\_alpha\_minus1: 117}
+\end{Highlighting}
+\end{Shaded}
+
+となった。
+
+これは、\texttt{f\_ABC}
+をAB円周方向の原因項として足すと、読出し分類が濁ることを示す。
+
+したがって、現段階では、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f\_ABC は代表時間 tau\_ABC として使う。}
+\NormalTok{f\_ABC は AB 円周方向へ直接足さない。}
+\end{Highlighting}
+\end{Shaded}
+
+という分離が妥当である。
+
+これは \texttt{f\_ABC} を無視するという意味ではない。
+
+\texttt{f\_ABC} は全体系の共通モードまたは中心方向補償として記録する。
+
+\subsubsection{4.4 図}\label{ux56f3-2}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+分解有効数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ペア alpha
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\pandocbounded{\includegraphics[keepaspectratio]{abc_c_gauge_relation_decomposition_preliminary_result_v1/abc_c_gauge_relation_decomposition_valid_counts_v1.png}}
+&
+\pandocbounded{\includegraphics[keepaspectratio]{abc_c_gauge_relation_decomposition_preliminary_result_v1/abc_c_gauge_relation_decomposition_pair_alpha_v1.png}} \\
+\end{longtable}
+}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+native / pair 比較
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+C汚染診断
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\pandocbounded{\includegraphics[keepaspectratio]{abc_c_gauge_relation_decomposition_preliminary_result_v1/abc_c_gauge_relation_decomposition_native_vs_pair_alpha_v1.png}}
+&
+\pandocbounded{\includegraphics[keepaspectratio]{abc_c_gauge_relation_decomposition_preliminary_result_v1/abc_c_gauge_relation_decomposition_contamination_v1.png}} \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. 総合判定}\label{ux7dcfux5408ux5224ux5b9a}
+
+\subsubsection{5.1
+成立したこと}\label{ux6210ux7acbux3057ux305fux3053ux3068}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+項目 & 判定 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Cゲージに有効窓がある & 成立 \\
+小さすぎる \texttt{R\_C} ではセルが粗すぎる & 確認 \\
+強すぎる・偏ったCはゲージ汚染になる & 確認 \\
+\texttt{tau\_ABC} を代表時間として読む規律 & 支持 \\
+\texttt{tau\_AB}, \texttt{tau\_AC}, \texttt{tau\_BC}
+を補助診断として記録する必要 & 確認 \\
+\texttt{f\_AB}, \texttt{f\_AC}, \texttt{f\_BC}, \texttt{f\_ABC} の分離 &
+支持 \\
+\texttt{f\_ABC} を円周方向へ直足ししない規律 & 支持 \\
+\end{longtable}
+}
+
+\subsubsection{5.2
+成立していないこと}\label{ux6210ux7acbux3057ux3066ux3044ux306aux3044ux3053ux3068}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+項目 & 判定 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Cゲージだけで逆比例型が出る & 未検出 \\
+Cゲージだけで逆二乗型が出る & 未検出 \\
+C配置変更だけで指数則が変わる & 未検出 \\
+C由来項がAB距離に対する逆数・逆二乗項になる & 未検出 \\
+現在の最小AB調和モデルが標準重力型になる & 未成立 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. 解釈}\label{ux89e3ux91c8}
+
+本実験群の最も重要な帰結は、次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ABC三体系へ戻しても、現在の最小モデルは比例型として読まれる。}
+\end{Highlighting}
+\end{Shaded}
+
+これは消極的な失敗ではない。
+
+AB二体系で得られた加速度様読出しを、独立計量Cで読み直しても、逆比例型または逆二乗型へは変換されなかったという境界条件である。
+
+AB二体系では独立ゲージが足りなかった。
+
+ABC三体系では独立計量Cを入れたが、C自身が閉鎖位相系の一部であるため、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f\_AC}
+\NormalTok{f\_BC}
+\NormalTok{f\_ABC}
+\end{Highlighting}
+\end{Shaded}
+
+が発生する。
+
+これらを分離しても、AB主導ケースでは比例型が保たれた。
+
+したがって、現モデルは本質的に、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{一次元的な相対位相変位モデル}
+\end{Highlighting}
+\end{Shaded}
+
+として振る舞っている。
+
+その範囲では、逆比例型・逆二乗型は自然には出てこない。
+
+この結果から、距離指数問題は、単にCを追加すれば解ける問題ではないことが分かる。
+
+Cを強くすれば計量分解能は上がるが、\texttt{f\_AC}, \texttt{f\_BC},
+\texttt{f\_ABC} による汚染が増える。
+
+Cを弱くすれば汚染は減るが、位置位相差の変化を読むセル分解能が不足する。
+
+したがって、Cゲージには有効窓があるが、その有効窓は、現在の一次元的調和モデルを逆二乗型へ変換する機構ではなかった。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7.
+保留された問題}\label{ux4fddux7559ux3055ux308cux305fux554fux984c}
+
+\subsubsection{7.1
+逆二乗は一般否定されていない}\label{ux9006ux4e8cux4e57ux306fux4e00ux822cux5426ux5b9aux3055ux308cux3066ux3044ux306aux3044}
+
+本実験で否定されたのは、次の狭い主張である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{現在の最小AB調和モデルに C ゲージと関係性分解を足せば、}
+\NormalTok{native に逆比例または逆二乗が出る。}
+\end{Highlighting}
+\end{Shaded}
+
+この主張は支持されなかった。
+
+しかし、閉鎖位相系一般に逆二乗型が存在しないとは言えない。
+
+\subsubsection{7.2
+三次元・四次元拡張を実施しなかった理由}\label{ux4e09ux6b21ux5143ux56dbux6b21ux5143ux62e1ux5f35ux3092ux5b9fux65bdux3057ux306aux304bux3063ux305fux7406ux7531}
+
+逆二乗型を標準的に説明するには、面積スイープまたは球殻スイープのような構造が必要に見える。
+
+そのため、三次元または四次元へ位置位相自由度を増やす実験も検討した。
+
+しかし、現在の実験系は、局在した二つの波が相対位相方向に調和振動するモデルである。
+
+この構造を高次元化しても、測地線断面または二次元断面へ投影すれば、結局は本実験と同じ二体調和読出しへ戻る。
+
+したがって、このモデルのまま三次元・四次元へ拡張しても、逆比例型または逆二乗型が新たに出る効果は見込みにくい。
+
+この判断により、本系列では高次元拡張実験を実施しなかった。
+
+\subsubsection{7.3
+円形波・球面波の扱いと二重スリット論文からの限定的接続}\label{ux5186ux5f62ux6ce2ux7403ux9762ux6ce2ux306eux6271ux3044ux3068ux4e8cux91cdux30b9ux30eaux30c3ux30c8ux8ad6ux6587ux304bux3089ux306eux9650ux5b9aux7684ux63a5ux7d9a}
+
+しかし、本シリーズの観測原理では、観測できるのは局在波であり、観念的な広がった円形波をそのまま実在として置くことはできない。
+
+円形波または球殻状に広がる波を仮定すれば、面積スイープや逆二乗型を作ることは容易に見える。
+
+しかし、その波は空間方向にも時間方向にも大きく広がっており、位置位相と時間位相をどの局所読出しで測るのかが不明確になる。
+
+したがって、現時点では、円形波・球殻波モデルは、実験できないから退けるのではなく、観測原理に対して過剰な実在仮定を含む可能性があるため保留する。
+
+ここで二重スリット思考実験シリーズを参照する場合、引用できる範囲は限定する。
+
+同系列の第一論文は、静止した単一波長点光源に位置揺らぎ \texttt{P(y)}
+を与えたとき、各試行の遠方場干渉縞は同形のまま幾何学的経路差だけシフトし、反復試行で読んだ縞シフト量分布が
+\texttt{P(y)} の押し出しになることを示した。
+
+具体例として \texttt{P(y)=cos\^{}2} を置いた場合、近軸の線形写像では
+\texttt{cos\^{}2}
+型が保存され、非近軸のずれは数パーセントの幾何非線形として現れる。
+
+ただし、同論文が扱うのは、各試行で縞シフト量を読む観測モードであり、多数試行の強度を一枚に積算する可視度低下モードとは別である。
+
+同系列の第二論文は、この押し出し読出しを局在奇数倍音光源へ拡張した。
+
+そこでは、局在奇数倍音光源が形を保って二重スリット遠方場へ出るには整列条件が必要であり、位置揺らぎ下では
+off-axis 散乱により形の保存が脆くなる。
+
+また、単一波長 \texttt{N=1}
+はこの脆さを持たず、第一論文の結果と機械精度で一致する特別な場合として確認された。
+
+したがって、二重スリット論文から本稿へ正しく持ち込める示唆は、次に限られる。
+
+この観点から見ると、広がった確率波または球面波を直接実在として置くよりも、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{局在波の多数回観測}
+\NormalTok{初期位置または位相の揺らぎ}
+\NormalTok{その揺らぎの観測側への押し出し}
+\end{Highlighting}
+\end{Shaded}
+
+によって、広がった統計像または面積分布のように見える可能性を検討する方が、本系列の観測原理に近い、という研究方針である。
+
+これは二重スリット論文で直接証明された命題ではない。
+
+二重スリット論文が示したのは、あくまで、位置揺らぎ分布が縞シフト量分布へ押し出されること、および局在光源へ拡張すると形保存に整列条件と脆さが加わることである。
+
+したがって、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{広がった波を仮定する}
+\end{Highlighting}
+\end{Shaded}
+
+のではなく、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{局在波の多数回・多数初期条件読出しが、統計的に面積広がりとして見えるか}
+\end{Highlighting}
+\end{Shaded}
+
+を別系列で検討する必要がある。
+
+この問題は、本実験系列の範囲を超えるため、ここでは保留する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8.
+本系列の閉じ方}\label{ux672cux7cfbux5217ux306eux9589ux3058ux65b9}
+
+本系列は、次を成果として閉じるのが妥当である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{AB二体では、調和読出しと chi{-}tau 面積は読める。}
+\NormalTok{しかし、距離指数を独立計量するゲージが足りない。}
+
+\NormalTok{ABC三体では、Cゲージと関係性分解を導入できる。}
+\NormalTok{しかし、現在の最小モデルでは比例型が保たれ、}
+\NormalTok{逆比例型・逆二乗型は native には現れない。}
+
+\NormalTok{したがって、逆二乗問題は、}
+\NormalTok{この一次元的閉鎖位相モデルの単純な延長ではなく、}
+\NormalTok{観測統計、面積読出し、局在波集合、ならびに初期揺らぎの押し出し写像の問題として再設計する必要がある。}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsection{自己引用}\label{ux81eaux5df1ux5f15ux7528}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  木原範昭「無名等振幅複合波モデル基本公理系 v4」Version DOI:
+  \texttt{10.5281/zenodo.21316620}, Concept DOI:
+  \texttt{10.5281/zenodo.21315735}, 2026.
+\item
+  木原範昭「ABC閉鎖位相系における多ゲージ干渉読出し保存量の構成実験」Version
+  DOI: \texttt{10.5281/zenodo.21308050}, Concept DOI:
+  \texttt{10.5281/zenodo.21308049}, 2026.
+\item
+  木原範昭「AB二体閉鎖位相系における調和読出しとc=1面積スイープ予備実験総括
+  v1」Version DOI: \texttt{10.5281/zenodo.21318697}, Concept DOI:
+  \texttt{10.5281/zenodo.21318696}, 2026.
+\item
+  木原範昭,
+  \href{ABC閉鎖位相系における独立計量CによるAB関係補償の距離指数読出し実験仕様書\%20v1.md}{ABC閉鎖位相系における独立計量CによるAB関係補償の距離指数読出し実験仕様書
+  v1.md}, 2026.
+\item
+  木原範昭,
+  \href{閉鎖複素位相波における自己項の内部閉鎖とN体外部読出し分離に関する定義補足.md}{閉鎖複素位相波における自己項の内部閉鎖とN体外部読出し分離に関する定義補足.md},
+  2026.
+\item
+  木原範昭「位置揺らぎを持つ光源による二重スリット干渉の思考実験 ―
+  光源位置分布の縞シフト量分布への押し出し（形の保存）」Version DOI:
+  \texttt{10.5281/zenodo.21035809}, Concept DOI:
+  \texttt{10.5281/zenodo.21035808}, 2026.
+\item
+  木原範昭「局在奇数倍音光源による二重スリット干渉の思考実験 ―
+  形の保存は条件付きで脆く、単一波長 N=1
+  が頑健な特別な場合であること」Version DOI:
+  \texttt{10.5281/zenodo.21035831}, Concept DOI:
+  \texttt{10.5281/zenodo.21035830}, 2026.
+\end{enumerate}
+
+\subsection{外部参考文献}\label{ux5916ux90e8ux53c2ux8003ux6587ux732e}
+
+外部参考文献は、本稿の導出根拠ではなく、距離法則、相対論的時間、位相読出しに関する標準的背景を示すために最小限に用いる。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  Isaac Newton, \emph{Philosophiae Naturalis Principia Mathematica},
+  1687.
+\item
+  Albert Einstein, ``Die Grundlage der allgemeinen
+  Relativitaetstheorie'', \emph{Annalen der Physik} 49, 769-822, 1916.
+  DOI: \texttt{10.1002/andp.19163540702}.
+\item
+  Y. Aharonov and D. Bohm, ``Significance of electromagnetic potentials
+  in the quantum theory'', \emph{Physical Review} 115, 485-491, 1959.
+  DOI: \texttt{10.1103/PhysRev.115.485}.
+\end{enumerate}
+
+\end{document}
