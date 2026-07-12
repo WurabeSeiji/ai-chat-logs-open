@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1250" viewBox="0 0 1800 1250">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 1 1 L 9 6 L 1 11" fill="none" stroke="#1f2a35" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 1 1 L 9 6 L 1 11" fill="none" stroke="#16637a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-slate" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 1 1 L 9 6 L 1 11" fill="none" stroke="#40566b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .bg { fill: #fbfaf7; }
+      .ink {
+        fill: #17202a;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans CJK JP", "Arial Unicode MS", Arial, sans-serif;
+      }
+      .title { font-size: 44px; font-weight: 700; letter-spacing: 0; }
+      .subtitle { font-size: 22px; fill: #52606d; }
+      .eq { font-size: 29px; }
+      .body { font-size: 21px; fill: #344250; }
+      .small { font-size: 18px; fill: #5c6874; }
+      .label { font-size: 24px; fill: #25313d; }
+      .math { font-size: 28px; font-weight: 700; }
+      .sub { font-size: 65%; baseline-shift: sub; }
+      .box { fill: #ffffff; stroke: #c8d1da; stroke-width: 1.8; rx: 8; }
+      .soft { fill: #f4f8fb; stroke: #b8c8d8; stroke-width: 1.6; rx: 8; }
+      .warn { fill: #fffaf1; stroke: #d6a24a; stroke-width: 1.6; rx: 8; }
+      .axis { stroke: #344250; stroke-width: 2.2; marker-end: url(#arrow); }
+      .axis-neg { stroke: #344250; stroke-width: 2.2; }
+      .circle { fill: none; stroke: #8fa0ae; stroke-width: 2.4; }
+      .guide { fill: none; stroke: #b7c1ca; stroke-width: 1.8; stroke-dasharray: 8 8; }
+      .radial { fill: none; stroke: #40566b; stroke-width: 3.2; marker-end: url(#arrow-slate); }
+      .arc { fill: none; stroke: #16637a; stroke-width: 3.2; marker-end: url(#arrow-blue); }
+      .minor { fill: none; stroke: #b7c1ca; stroke-width: 1.2; }
+      .point-a { fill: #0f6c81; stroke: #fbfaf7; stroke-width: 4; }
+      .point-b { fill: #b45a3c; stroke: #fbfaf7; stroke-width: 4; }
+      .point-o { fill: #17202a; stroke: #fbfaf7; stroke-width: 3; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1800" height="1250"/>
+
+  <text class="ink title" x="80" y="78">AB二体合成閉鎖における f<tspan class="sub">AB</tspan> 読出し幾何図</text>
+  <text class="ink subtitle" x="82" y="116">中心方向補償と円周方向読出しを、同じ AB 合成補償読出し f<tspan class="sub">AB</tspan> として表示する</text>
+
+  <rect class="box" x="80" y="150" width="650" height="168"/>
+  <text class="ink eq" x="110" y="202">A² + B² + (i R<tspan class="sub">AB</tspan>)² = 0</text>
+  <text class="ink eq" x="110" y="250">A² + B² = R<tspan class="sub">AB</tspan>²</text>
+  <text class="ink body" x="110" y="292">R<tspan class="sub">AB</tspan>: AB 二体合成閉鎖から読まれる半径的量</text>
+
+  <rect class="soft" x="780" y="150" width="940" height="168"/>
+  <text class="ink body" x="812" y="198">図示規則</text>
+  <text class="ink small" x="812" y="234">1. A と B は同じ合成閉鎖系 O<tspan class="sub">AB</tspan> の住民として読む。</text>
+  <text class="ink small" x="812" y="266">2. 投影軸方向は内在座標系では方向として判別しない。</text>
+  <text class="ink small" x="812" y="298">3. 個別の f<tspan class="sub">A</tspan>, f<tspan class="sub">B</tspan> を置かず、同一の f<tspan class="sub">AB</tspan> を二つの表示へ投影する。</text>
+
+  <!-- Diagram constants: O=(900,710), R=340, A=(730,1004.45), B=(1070,1004.45), bottom=(900,1050). -->
+
+  <!-- Coordinate readout axes -->
+  <line class="axis-neg" x1="390" y1="710" x2="900" y2="710"/>
+  <line class="axis" x1="900" y1="710" x2="1430" y2="710"/>
+  <line class="axis-neg" x1="900" y1="1110" x2="900" y2="710"/>
+  <line class="axis" x1="900" y1="710" x2="900" y2="352"/>
+  <text class="ink label" x="1450" y="718">x / 0°</text>
+  <text class="ink label" x="850" y="342">y / 90°</text>
+  <text class="ink label" x="300" y="718">180°</text>
+  <text class="ink label" x="916" y="1132">270°</text>
+
+  <text class="ink small" x="1130" y="610">軸と位相目盛は読図用の補助表示であり、</text>
+  <text class="ink small" x="1130" y="638">絶対背景座標の存在を仮定しない。</text>
+
+  <!-- AB composite circle -->
+  <circle class="circle" cx="900" cy="710" r="340"/>
+  <circle class="point-o" cx="900" cy="710" r="8"/>
+  <text class="ink math" x="918" y="724">O<tspan class="sub">AB</tspan></text>
+  <text class="ink label" x="1248" y="592">R<tspan class="sub">AB</tspan></text>
+
+  <!-- Auxiliary radial lines -->
+  <line class="guide" x1="900" y1="710" x2="730" y2="1004.45"/>
+  <line class="guide" x1="900" y1="710" x2="1070" y2="1004.45"/>
+  <line class="minor" x1="730" y1="1004.45" x2="1070" y2="1004.45"/>
+
+  <!-- Points -->
+  <circle class="point-a" cx="730" cy="1004.45" r="16"/>
+  <circle class="point-b" cx="1070" cy="1004.45" r="16"/>
+  <text class="ink math" x="672" y="1044">A</text>
+  <text class="ink math" x="1092" y="1044">B</text>
+  <text class="ink small" x="708" y="952">theta<tspan class="sub">A</tspan></text>
+  <text class="ink small" x="1046" y="952">theta<tspan class="sub">B</tspan></text>
+
+  <!-- Exact inward radial vectors: along AO and BO -->
+  <path class="radial" d="M 742 983.67 L 877.5 748.97"/>
+  <path class="radial" d="M 1058 983.67 L 922.5 748.97"/>
+  <text class="ink math" x="760" y="858" fill="#40566b">f<tspan class="sub">AB</tspan></text>
+  <text class="ink math" x="1000" y="858" fill="#40566b">f<tspan class="sub">AB</tspan></text>
+  <text class="ink small" x="1150" y="824">中心方向補償</text>
+  <text class="ink small" x="1150" y="852">投影軸方向 / i方向読出し</text>
+
+  <!-- Exact circular readout arcs on R_AB: A->270 and B->270 -->
+  <path class="arc" d="M 730 1004.45 A 340 340 0 0 0 900 1050"/>
+  <path class="arc" d="M 1070 1004.45 A 340 340 0 0 1 900 1050"/>
+  <text class="ink math" x="792" y="1045" fill="#16637a">f<tspan class="sub">AB</tspan></text>
+  <text class="ink math" x="972" y="1045" fill="#16637a">f<tspan class="sub">AB</tspan></text>
+  <text class="ink small" x="1150" y="935">円周方向へ投影された読出し</text>
+  <text class="ink small" x="1150" y="963">同一 f<tspan class="sub">AB</tspan> の表示</text>
+
+  <!-- Unlabeled two-arc relative phase -->
+  <path class="minor" d="M 832 925 A 118 118 0 0 1 900 898"/>
+  <path class="minor" d="M 968 925 A 118 118 0 0 0 900 898"/>
+  <text class="ink small" x="785" y="888">ラベルなし二弧相対位相</text>
+
+  <!-- Local readout directions -->
+  <line class="minor" x1="615" y1="1115" x2="730" y2="1004.45"/>
+  <line class="minor" x1="1185" y1="1115" x2="1070" y2="1004.45"/>
+  <text class="ink small" x="500" y="1146">A側の局所読出し方向</text>
+  <text class="ink small" x="1116" y="1146">B側の局所読出し方向</text>
+
+  <rect class="warn" x="80" y="365" width="575" height="170"/>
+  <text class="ink body" x="112" y="414">明示的に置かないもの</text>
+  <text class="ink small" x="112" y="456">A が B から受ける固有の f<tspan class="sub">B</tspan></text>
+  <text class="ink small" x="112" y="488">B が A から受ける固有の f<tspan class="sub">A</tspan></text>
+  <line x1="108" y1="436" x2="460" y2="500" stroke="#b9322d" stroke-width="3.2"/>
+  <text class="ink small" x="112" y="522">A由来/B由来の別名を第一原理層へ持ち込まない。</text>
+
+  <rect class="box" x="1188" y="365" width="532" height="190"/>
+  <text class="ink body" x="1220" y="414">図の主張</text>
+  <text class="ink small" x="1220" y="454">中心方向の補償読出し: f<tspan class="sub">AB</tspan></text>
+  <text class="ink small" x="1220" y="486">円周方向の投影読出し: f<tspan class="sub">AB</tspan></text>
+  <text class="ink small" x="1220" y="528">これは一次方向の同一視ではなく、投影軸縮退と</text>
+  <text class="ink small" x="1220" y="558">二乗読出しを介した同一性である。</text>
+</svg>
