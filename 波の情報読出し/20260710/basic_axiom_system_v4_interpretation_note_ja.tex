@@ -1,0 +1,542 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{無名等振幅複合波モデル基本公理系 v4
+解釈メモ}\label{ux7121ux540dux7b49ux632fux5e45ux8907ux5408ux6ce2ux30e2ux30c7ux30ebux57faux672cux516cux7406ux7cfb-v4-ux89e3ux91c8ux30e1ux30e2}
+
+\textbf{日付:} 2026-07-12\\
+\textbf{著者:} 木原 範昭\\
+\textbf{位置づけ:} 基本公理系 v4 の解釈・作業メモ \textbf{Version DOI:}
+10.5281/zenodo.21316620 \textbf{Concept DOI:} 10.5281/zenodo.21315735
+
+本稿は、定義論文「無名等振幅複合波モデル基本公理系
+v4」を自己引用し、その現時点での解釈、展開、作業用の説明を記録するメモである。
+
+正本となる公理定義は、次の定義論文に置く。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{無名等振幅複合波モデル基本公理系v4\_純化定義論文.md}
+\end{Highlighting}
+\end{Shaded}
+
+本稿の解釈、説明、作業仮説、読出し例は、今後拡張または変更される可能性がある。
+
+ただし、解釈の変更は公理の否定ではない。
+
+公理そのものに誤り、欠落、または変更の必要が発見された場合には、解釈メモを修正して公理を読み替えるのではなく、正本の公理系を明示的に改訂する。
+
+したがって、本稿は公理そのものではなく、公理系 v4
+に対する現時点の解釈層である。
+
+v4
+では、無名性の対象を基本成分、物理量、観測量に限らず、理論名、定式名、読出し論理名にも拡張する。すなわち、重力、クーロン力、質量、電荷、エネルギー、二体、三体などの名前を理由に、第一原理層の方程式、読出し規則、射影規則を変更してはならない。物理名は、同一公理から導かれた読出し結果に後から与えられるラベルである。
+
+さらに v4
+では、投影法における内在座標系の投影軸方向が、内在住民から方向として判別できない場合の扱いを公理化する。投影軸方向の値は消去せず、内在座標系では虚数方向の補償成分として保持し、二乗読出しを通じて観測可能な補償量として読む。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 0\tabcolsep) * \real{0.0556}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\# 1. 第一原理 \#\# 公理0：無名性 分類: 公理
+基本成分に、個別名、特権軸、特権符号、特権型を与えない。 添字 \(n\)
+は便宜上のラベルであり、成分の固有名ではない。 禁止:
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\# 2. 第一原理からの帰結 \#\# 帰結1：実数正定値成分の不足 分類:
+導出済み帰結 \(
+x_n\in\mathbb{R}
+\Rightarrow
+x_n^2\ge0
+\) ゆえに、 \(
+\sum_n x_n^2=0
+\Rightarrow
+x_n=0\quad\forall n
+\) 公理0、1、2を同時に満たすには、実数正定値成分だけでは足りない。 \#\#
+帰結2：符号反転の内部生成 分類: 導出済み帰結
+外部係数としての負符号は公理0に反する。
+閉鎖に必要な符号反転は、成分の二乗から出る。 最小二成分解: \(
+x_1=A,\qquad x_2=iA
+\) \(
+x_1^2+x_2^2=A^2+(iA)^2=A^2-A^2=0
+\) \(
+i^2=-1
+\) 負符号は特権係数ではなく、位相二乗である。 \#\#
+帰結3：位相代数の必要性 分類: 導出済み帰結
+非自明閉鎖には、二乗で符号反転を内部生成する同一位相代数が必要である。
+\(
+x_n=r_n e^{i\phi_n}
+\) \(
+x_n^2=r_n^2e^{i2\phi_n}
+\) 閉鎖条件: \(
+\sum_{n=1}^{N}r_n^2e^{i2\phi_n}=0
+\) 等振幅条件 \(r_n=r\) では、 \(
+\sum_{n=1}^{N}e^{i2\phi_n}=0
+\) 複素位相型はその最小実装である。 \#\# 帰結4：型無名性 分類:
+導出済み帰結 一成分だけを複素型にすることは公理0に反する。 したがって、
+\(
+x_n\in\mathbb{C}\quad\forall n
+\) または、全成分に同一の位相代数型を与える。 \#\# 帰結5：90度位相差
+分類: 導出済み帰結 \(
+A^2+(iA)^2=0
+\) 90度位相差は全正符号ゼロ閉鎖の最小二成分構造である。 \\
+\end{longtable}
+}
+
+\section{3.
+無名等振幅複合波}\label{ux7121ux540dux7b49ux632fux5e45ux8907ux5408ux6ce2}
+
+\subsection{公理4：無名等振幅複合波}\label{ux516cux74064ux7121ux540dux7b49ux632fux5e45ux8907ux5408ux6ce2}
+
+分類: 公理 \[
+\Psi_N=\frac{A_0}{N}\sum_{k=1}^{N}e^{i\theta_k}
+\] \[
+|\psi_k|=\frac{A_0}{N}
+\] 成分振幅で個体識別しない。
+無名な基本成分は振幅差によって識別されないため、複合波の基本実装では全成分を等振幅とする。
+規格化条件: 同相整列時、 \[
+\max|\Psi_N|=A_0
+\] よって規格化は、 \[
+\Psi_N=\frac{A_0}{N}\sum_{k=1}^{N}e^{i\theta_k}
+\] 保存されるのは外部読出し可能な最大合成振幅である。 \#\#
+公理5：個別位相不可読 分類: 公理 \[
+\theta_k\rightarrow\theta_k+\alpha
+\] は内部構造を変えない。 絶対位相は内在観測量ではない。 \#\#
+公理6：位相差読出し 分類: 公理 \[
+\Delta_{ij}=\theta_i-\theta_j
+\] 読出し可能なペアチャンネル数: \[
+\binom{N}{2}=\frac{N(N-1)}{2}
+\] これは自由度数ではなく、位相差関係数である。 \#\# 公理7：系同一視
+分類: 公理 \[
+(N,A_0,\{\Delta_{ij}\})
+\] が同じ二系は同一視する。 \#\# 公理8：合成位相射影 分類: 公理 \[
+S_N=\sum_k e^{i\theta_k}
+\] \[
+\Psi_N=\frac{A_0}{N}S_N
+\] \[
+\Theta_N=\arg\Psi_N
+\] \(\Theta_N\) は \(\Psi_N\neq0\) のとき定義される外部射影位相である。
+\(\Psi_N=0\) でも内部位相差ネットワークは存在する。 \#\#
+公理9：反転対称性非要請 分類: 公理 複合波は反転対称性を要求されない。
+\#\# 帰結6：反転対称性は特殊条件 分類: 公理9からの導出済み帰結
+
+反転対称性は特殊条件である。
+
+\[
+\Psi(-x)=\Psi(x)
+\]
+
+一般には反転非対称配置を許す。
+
+\[
+\Psi(-x)\neq\Psi(x)
+\]
+
+\subsection{反転対称波は、正逆位相進行が等重みに対応した特殊配置である。}\label{ux53cdux8ee2ux5bfeux79f0ux6ce2ux306fux6b63ux9006ux4f4dux76f8ux9032ux884cux304cux7b49ux91cdux307fux306bux5bfeux5fdcux3057ux305fux7279ux6b8aux914dux7f6eux3067ux3042ux308b}
+
+\section{4. 外部読出し}\label{ux5916ux90e8ux8aadux51faux3057}
+
+\subsection{公理10：外部軸応答}\label{ux516cux740610ux5916ux90e8ux8ef8ux5fdcux7b54}
+
+分類: 公理候補 外部軸を \[
+M_\alpha=e^{i\alpha}
+\] とする。 \[
+Y(\alpha)=\frac{A_0}{N}\sum_{k=1}^{N}e^{i(\theta_k-\alpha)}
+=e^{-i\alpha}\Psi_N
+\] 連続応答: \[
+S_N(\alpha)=\operatorname{Re}\left[\frac{1}{N}\sum_{k=1}^{N}e^{i(\theta_k-\alpha)}\right]
+\] 二値応答: \[
+S_N(\alpha)=\operatorname{sgn}\operatorname{Re}\left[\frac{1}{N}\sum_{k=1}^{N}e^{i(\theta_k-\alpha)}\right]
+\] スピン的情報は外部軸との相関読出しで定義される。 \#\#
+公理11：外部読出し位相 分類: 公理候補 \[
+\Delta\phi_\mu=\phi_\mu^{(\Psi)}-\phi_\mu^{(M)}
+\] \[
+\mu=x,y,z,t
+\] 位置的、時間的、スピン的読出しは、外部基準との相対位相である。 \#\#
+公理12：位置位相読出し 分類: 公理候補 \[
+x,y,z
+\]
+は複合波の内在ラベルではなく、外部空間読出し波との相対位相から再構成される。
+ここでの位置表記は便宜上の読み替えであり、物理的位置量との接続を証明しない。
+\#\# 公理13：時間位相読出し 分類: 公理候補 \[
+\phi_t\equiv\omega t_{\mathrm{read}}\pmod{2\pi}
+\] 時間は外部周波数基準との相対位相読出しである。 ここでの
+\(t_{\mathrm{read}}\)
+は先験的な絶対時刻ではなく、時間位相読出しから再構成される便宜的パラメータである。
+\#\# 公理14：被覆位相 分類: 公理候補 読出し系が巻数を保存する場合、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{2π 周期読出し}
+\NormalTok{4π 周期読出し}
+\NormalTok{巻数差読出し}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{を区別する。}\label{ux3092ux533aux5225ux3059ux308b}
+
+\section{5.
+観測位相離散性}\label{ux89b3ux6e2cux4f4dux76f8ux96e2ux6563ux6027}
+
+\subsection{公理15：観測位相離散性}\label{ux516cux740615ux89b3ux6e2cux4f4dux76f8ux96e2ux6563ux6027}
+
+分類: 公理候補
+観測値として固定される位相は閉路条件または巻数で離散化される。 \[
+\sum_{\mathrm{cycle}}\Delta\phi=2\pi m,\qquad m\in\mathbb{Z}
+\] \[
+W=\frac{1}{2\pi}\oint d\phi,\qquad W\in\mathbb{Z}
+\] 読出しセル形式: \[
+\phi_{\mathrm{obs}}=m\epsilon_\phi,\qquad m\in\mathbb{Z}
+\] 位相面積候補: \[
+Q_\phi=\sum_{i<j}\sin^2\frac{\Delta_{ij}}{2}
+\] \#\# 読出し例：有界閉鎖 分類: 実装例 閉じた読出し系では、 \[
+kL=2\pi m
+\] \[
+k=\frac{2\pi m}{L}
+\] 観測可能な位相変化は巻数として整数化される。
+第一原理層での閉鎖形式は公理1である。 --- \# 6. 波形・局在・観測 \#\#
+作業公理A：状態波形 分類: 作業仮説 \[
+A(\theta)=\sum_n A_n\cos(n\theta+\phi_n)
+\] \[
+Z(\theta)=\sum_n r_n e^{i(n\theta+\phi_n)}
+\] 状態は階層波形である。 \#\# 定義A1：正規化等振幅奇数倍音局在波 分類:
+定義 最高奇数倍音次数を \[
+N_h=2K-1
+\] とする。 このとき、正規化等振幅奇数倍音局在波を \[
+S_{N_h}(u)=\frac{1}{K}\sum_{m=0}^{K-1}\cos((2m+1)u)
+\] と定義する。 複素表示では、 \[
+Z_{N_h}(u)=\frac{1}{K}\sum_{m=0}^{K-1}e^{i(2m+1)u}
+\] と書く。 代表振幅 \(A\) を持つ局在波は、 \[
+\Psi_{N_h}(u)=A S_{N_h}(u)
+\] または \[
+\Psi_{N_h}(u)=A Z_{N_h}(u)
+\] で与える。 各奇数倍音成分の振幅は \[
+\frac{A}{K}
+\] であり、成分数 \(K\) の逆数で正規化される。
+この正規化により、最高奇数倍音次数 \(N_h\)
+を増大させても、同相整列時の代表振幅は \(A\) に保たれる。 \#\#
+定理A1：正規化等振幅奇数倍音局在波の代表振幅保存 分類: 導出済み定理
+正規化等振幅奇数倍音局在波 \[
+S_{N_h}(u)=\frac{1}{K}\sum_{m=0}^{K-1}\cos((2m+1)u)
+\] を考える。 中央位相 \(u=0\) では、 \[
+\cos((2m+1)0)=1
+\] である。 したがって、 \[
+S_{N_h}(0)=\frac{1}{K}\sum_{m=0}^{K-1}1=1
+\] となる。 代表振幅 \(A\) を掛けた波形 \[
+\Psi_{N_h}(u)=A S_{N_h}(u)
+\] について、 \[
+\Psi_{N_h}(0)=A
+\] である。 したがって、最高奇数倍音次数 \(N_h\)
+を増大させても、正規化係数 \(1/K\) により、合成ピークの代表振幅は常に
+\(A\) に保存される。 \#\# 定理A2：最高奇数倍音次数と局在幅 分類:
+導出済み定理 親系のベース波長を \[
+\lambda_0
+\] とする。 ここで \(N_h\)
+は奇数倍音の本数ではなく、親系ベース波に対する最高奇数倍音の倍率である。
+奇数倍音成分数は \[
+K=\frac{N_h+1}{2}
+\] である。 最高奇数倍音次数を \(N_h\)
+とすると、最高倍音に対応する波長は概念的に \[
+\lambda_{N_h}=\frac{\lambda_0}{N_h}
+\] である。
+したがって、正規化等振幅奇数倍音合成により得られる局在幅は、概算として
+\[
+\Delta x_{N_h}\sim\frac{\lambda_0}{N_h}
+\] または半波長基準では、 \[
+\Delta x_{N_h}\sim\frac{\lambda_0}{2N_h}
+\] で与えられる。
+局在幅の正確な係数は、主ローブ幅、半値幅、または最初の零点間幅のどれを採用するかに依存する。
+本稿では、必要次数の設計見積りとして、 \[
+\Delta x_{N_h}\propto\frac{\lambda_0}{N_h}
+\] を用いる。 したがって、親系のベース波長 \(\lambda_0\) から局所幅
+\(\Delta x\) の局在を得るために必要な最高奇数倍音次数は、 \[
+N_{h,\rm req}\sim\frac{\lambda_0}{\Delta x}
+\] である。 実装では、\(N_{h,\rm req}\) 以上の奇数次数を取る。
+時間方向についても、親系のベース周期を \[
+T_0
+\] とし、時間局在幅を \[
+\Delta t
+\] とすれば、 \[
+N_{h,\rm req}^{(t)}\sim\frac{T_0}{\Delta t}
+\] である。 \#\# 帰結A1：空間・時間局在の同一構成 分類: 導出済み帰結
+正規化等振幅奇数倍音局在波は、空間位相方向だけでなく、時間位相方向にも同じ形式で適用できる。
+空間位相を \(\chi\)、時間位相を \(\tau\)
+とすると、空間・時間の双方に局在する局所波は、 \[
+\Psi(\chi,\tau)=A S_{N_{h,\chi}}(\chi-\chi_0)S_{N_{h,\tau}}(\tau-\tau_0)e^{i\phi}
+\] と書ける。 ここで、 \[
+\chi_0
+\] は位置位相、 \[
+\tau_0
+\] は時間位相、 \[
+N_{h,\chi}
+\] は空間方向の最高奇数倍音次数、 \[
+N_{h,\tau}
+\] は時間方向の最高奇数倍音次数である。
+この形式により、外部から不可視の時間窓関数を導入せず、波形自身の奇数倍音構造によって空間局在および時間局在を表現する。
+\#\# 注意A1：保存される量 分類: 注意
+本公理系で正規化等振幅奇数倍音局在波により保存されるのは、代表振幅 \(A\)
+および、公理1の全正符号ゼロ閉鎖に従う二乗レジストリである。
+各奇数倍音成分の振幅を \[
+\frac{A}{K}
+\] に正規化することで、同相整列時の合成代表振幅は \[
+A
+\] に保たれる。 したがって、最高奇数倍音次数 \(N_h\)
+を増大させても、同相整列時の代表振幅は発散しない。
+本稿では、保存量の基礎を \[
+\sum_n x_n^2=0
+\] に置く。 これは共役ノルム型の保存量 \[
+\sum_n |x_n|^2
+\] ではなく、高次倍音次数に外部重みを付けた保存量でもない。
+高次倍音による局在は、代表振幅 \(A\)
+を保存したまま、位相構造を細分化する操作として扱う。
+したがって、本稿において最高奇数倍音次数を増大させる操作は、保存量を外部から増加させる操作ではなく、公理1の閉鎖条件の内部で、同一代表振幅を持つ位相構造を細分化する操作である。
+\#\# 作業公理B：局在 分類: 作業仮説
+局在は、低次ベース波に対する高次奇数倍音成分の位相整列として表される。
+本稿では、局在を外部窓関数として導入しない。
+局在は、正規化等振幅奇数倍音局在波 \[
+S_{N_h}(u)=\frac{1}{K}\sum_{m=0}^{K-1}\cos((2m+1)u)
+\] またはその複素表示 \[
+Z_{N_h}(u)=\frac{1}{K}\sum_{m=0}^{K-1}e^{i(2m+1)u}
+\] によって構成される。 最高奇数倍音次数 \(N_h\)
+が大きいほど、局在幅は小さくなる。 親系のベース波長を
+\(\lambda_0\)、必要な局在幅を \(\Delta x\)
+とすれば、必要な最高奇数倍音次数は概算で \[
+N_{h,\rm req}\sim\frac{\lambda_0}{\Delta x}
+\] である。 同様に、時間方向のベース周期を \(T_0\)、時間局在幅を
+\(\Delta t\) とすれば、 \[
+N_{h,\rm req}^{(t)}\sim\frac{T_0}{\Delta t}
+\] である。
+したがって、親系のベース波長またはベース周期が非常に大きい場合、局所的な空間・時間局在を構成するには、極めて大きな最高奇数倍音次数
+\(N_h\) が必要となる。 \#\# 作業公理C：結合入口 分類: 作業仮説
+相互作用の入口は低次ベース位相の整合である。 \#\# 作業公理D：観測写像
+分類: 作業仮説 \[
+s_\alpha=\mathrm{Loc}\left[\int A(\theta)M_\alpha(\theta)d\theta\right]
+\] \(\mathrm{Loc}\) は相関振幅から安定局在出力を作る写像である。
+ここでの観測は本公理系内の独自定義であり、標準理論の観測との接続を主張しない。
+\#\# 作業公理E：相関強度二乗 分類: 作業仮説 \[
+P(\alpha)=\frac{|C_\alpha|^2}{\sum_\beta |C_\beta|^2}
+\] この式は、本公理系における相関読出し強度の規格化である。 \#\#
+作業公理F：低次ベース同期共有 分類: 作業仮説 \[
+\theta_A-\theta_B=\Delta
+\]
+低次ベース同期共有とは、二つの波形が低次ベース位相差を共有する状態である。
+\#\# 作業公理G：同期復調不能化 分類: 作業仮説 \[
+V(t)=\left|\sum_n w_n e^{i\epsilon_n(t)}\right|
+\] 位相揺らぎ平均: \[
+V(t)=\left|\sum_n w_n e^{-\frac12\sigma_n^2(t)}\right|
+\]
+同期復調不能化とは、位相揺らぎにより高次まで含む相関読出しが安定出力を作れなくなる状態である。
+\#\# 作業公理H：階層性 分類: 作業仮説 閉じた波動系は、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{低次ベースモード}
+\NormalTok{+ 高次局在モード}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{の階層である。}\label{ux306eux968eux5c64ux3067ux3042ux308b}
+
+\section{7.
+読出し・記憶・複素表示}\label{ux8aadux51faux3057ux8a18ux61b6ux8907ux7d20ux8868ux793a}
+
+\subsection{I/Q 読出し}\label{iq-ux8aadux51faux3057}
+
+分類: 理論的知見 \[
+z=a+ib
+\] \[
+a=r\cos\theta,\qquad b=r\sin\theta
+\] 同一物理量の90度位相差波源として読む。 \[
+u=r\cos\theta+r\sin\theta
+=\sqrt2 r\cos\left(\theta-\frac{\pi}{4}\right)
+\] 複素表示は現在値と90度位相遅延成分の最小メモリである。 \#\#
+倍音情報読出し 分類: 理論的知見 \[
+Z(\theta)=\sum_n r_n e^{i(n\theta+\phi_n)}
+\] 読出し写像: \[
+P(Z)=\operatorname{Re}(Z)+\operatorname{Im}(Z)
+\] \[
+P(Z)=\sum_n \sqrt2 r_n
+\cos\left(n\theta+\phi_n-\frac{\pi}{4}\right)
+\] 次数は保存され、読出し位相は45度移動する。 \#\# 保存量側と読出し側
+分類: 理論的知見 \[
+z\bar z=a^2+b^2
+\] は共役ノルムである。 \[
+z^2=a^2-b^2+2iab
+\] は干渉位相を保持する。 公理1で用いるのは \(z\bar z\) ではなく \(z^2\)
+型である。 \#\# 二乗レジストリ 分類: 作業仮説 内部レジストリ: \[
+\mathcal{A}_0=\sum_k A_k^2
+\] 外部標準強度: \[
+a_0=\sum_k |A_k|^2=\sum_k A_k\bar A_k
+\] \(\mathcal{A}_0\) は干渉位相を保持する。\\
+\(a_0\) は共役により干渉位相を消す。 --- \# 8. 統計分類 \#\# ペア位相差
+分類: 定義 \[
+\Delta_{ij}=\theta_i-\theta_j
+\] \[
+\binom{N}{2}=\frac{N(N-1)}{2}
+\] ペア合成: \[
+\psi_i+\psi_j
+=2A\cos\frac{\Delta_{ij}}{2}e^{i(\theta_i+\theta_j)/2}
+\] ペア干渉強度: \[
+I_{ij}=4A^2\cos^2\frac{\Delta_{ij}}{2}
+\] \#\# 重なり度 分類: 定義 \[
+R_N=\left|\frac{A_0}{N}\sum_{k=1}^{N}e^{i\theta_k}\right|
+\] \[
+\rho_N=\frac{R_N}{A_0}
+=\frac{1}{N}\left|\sum_{k=1}^{N}e^{i\theta_k}\right|
+\] \[
+0\le\rho_N\le1
+\] \#\# フェルミオン度 分類: 定義 \[
+F_N=
+\frac{2}{N(N-1)}
+\sum_{i<j}\sin^2\frac{\Delta_{ij}}{2}
+\] \[
+B_N=1-F_N
+\] \[
+B_N=
+\frac{2}{N(N-1)}
+\sum_{i<j}\cos^2\frac{\Delta_{ij}}{2}
+\] 重なり度との関係: \[
+F_N=\frac{N}{2(N-1)}(1-\rho_N^2)
+\] したがって、 \[
+\rho_N=0\Rightarrow F_N=\frac{N}{2(N-1)}
+\] \(B_N\) はペア同相度である。 分類:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{F\_N=0：ボソン的}
+\NormalTok{N=2, F\_N=1：純粋フェルミオン的}
+\NormalTok{0\textless{}F\_N\textless{}1：エルミオン的}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{ボソン的複合波}\label{ux30dcux30bdux30f3ux7684ux8907ux5408ux6ce2}
+
+分類: 定義 \[
+\theta_1=\theta_2=\cdots=\theta_N
+\] \[
+F_N=0,\qquad B_N=1,\qquad \rho_N=1,\qquad R_N=A_0
+\] \#\# 純粋フェルミオン的複合波 分類: 定義 \[
+N=2,\qquad \Delta_{12}=\pi
+\] \[
+e^{i\theta_1}+e^{i\theta_2}=0
+\] \[
+F_2=1,\qquad \rho_2=0,\qquad R_2=0
+\] 三成分以上では全ペア逆相条件は成立しない。 \[
+\Delta_{12}=\pi,\quad \Delta_{23}=\pi
+\Rightarrow
+\Delta_{13}=2\pi\equiv0
+\] \#\# エルミオン的複合波 分類: 定義 \[
+0<F_N<1
+\] を主条件とする。 外部合成振幅が非ゼロの部分集合: \[
+0<\rho_N<1
+\] \[
+\rho_N=0\not\Rightarrow F_N=1
+\] 外部合成振幅ゼロと純粋二体逆相性は同一ではない。
+
+\end{document}
