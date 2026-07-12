@@ -28,6 +28,19 @@ The second paper introduces the third wave `C` as an internal metric gauge and d
 
 ---
 
+## Outreach Articles
+
+| Platform | Article | URL | Source |
+|---|---|---|---|
+| note | 加速度は、背景座標なしに読めるのか | https://note.com/kiharanoriaki/n/nad8429959a8a | `note_article_acceleration_readout_summaries_ja.md` |
+| note | Can acceleration be read without background coordinates? | https://note.com/kiharanoriaki/n/n511a9b0c5787 | `note_article_acceleration_readout_summaries_en.md` |
+| Facebook | Japanese announcement post | https://www.facebook.com/kihara.noriaki/posts/pfbid0X8WMXdz97UQJ52RVn8vhBGZ3csdGMWErtENuJ5UTJjXPkwg4KDymKVjp9SCgpc2fl | n/a |
+| Facebook | English announcement post | https://www.facebook.com/kihara.noriaki/posts/pfbid023soJnEh8JH6xWV56saBgg7ga1eK5fQKrUkPP4SJpihH2gsEEngtfe68mMfdWPgwxl | n/a |
+| X | Japanese announcement post | https://x.com/NoriakiKihara/status/2076233675663135076 | n/a |
+| X | English announcement post | https://x.com/NoriakiKihara/status/2076235144579678595 | n/a |
+
+---
+
 ## Primary Outputs
 
 ### AB Summary
@@ -131,3 +144,11 @@ Publication has been completed.
 - Zenn article sources:
   - `articles/ab-two-body-harmonic-readout.md`
   - `articles/abc-c-gauge-distance-exponent.md`
+- Japanese note article: https://note.com/kiharanoriaki/n/nad8429959a8a
+- Japanese note source: `note_article_acceleration_readout_summaries_ja.md`
+- English note article: https://note.com/kiharanoriaki/n/n511a9b0c5787
+- English note source: `note_article_acceleration_readout_summaries_en.md`
+- Japanese Facebook announcement: https://www.facebook.com/kihara.noriaki/posts/pfbid0X8WMXdz97UQJ52RVn8vhBGZ3csdGMWErtENuJ5UTJjXPkwg4KDymKVjp9SCgpc2fl
+- English Facebook announcement: https://www.facebook.com/kihara.noriaki/posts/pfbid023soJnEh8JH6xWV56saBgg7ga1eK5fQKrUkPP4SJpihH2gsEEngtfe68mMfdWPgwxl
+- Japanese X announcement: https://x.com/NoriakiKihara/status/2076233675663135076
+- English X announcement: https://x.com/NoriakiKihara/status/2076235144579678595
