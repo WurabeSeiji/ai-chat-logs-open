@@ -400,3 +400,21 @@ C の読出し窓の再定義
 
 を分けて検査する。
 
+---
+
+# 参考文献
+
+## 自己引用
+
+1. 木原範昭「無名等振幅複合波モデル基本公理系 v4」Version DOI: `10.5281/zenodo.21316620`, Concept DOI: `10.5281/zenodo.21315735`, 2026.
+2. 木原範昭「ABC閉鎖位相系における多ゲージ干渉読出し保存量の構成実験」Version DOI: `10.5281/zenodo.21308050`, Concept DOI: `10.5281/zenodo.21308049`, 2026.
+3. 木原範昭, [ABC閉鎖位相系における独立計量CによるAB関係補償の距離指数読出し実験仕様書 v1.md](ABC閉鎖位相系における独立計量CによるAB関係補償の距離指数読出し実験仕様書%20v1.md), 2026.
+4. 木原範昭, [AB二体閉鎖位相系におけるラベルなし二弧相対位相と調和読出しに関する定義補足.md](AB二体閉鎖位相系におけるラベルなし二弧相対位相と調和読出しに関する定義補足.md), 2026.
+5. 木原範昭, [閉鎖複素位相波における自己項の内部閉鎖とN体外部読出し分離に関する定義補足.md](閉鎖複素位相波における自己項の内部閉鎖とN体外部読出し分離に関する定義補足.md), 2026.
+
+## 外部参考文献
+
+6. Isaac Newton, *Philosophiae Naturalis Principia Mathematica*, 1687.
+7. Albert Einstein, "Die Grundlage der allgemeinen Relativitaetstheorie", *Annalen der Physik* 49, 769-822, 1916. DOI: `10.1002/andp.19163540702`.
+8. Max Born, "Zur Quantenmechanik der Stossvorgaenge", *Zeitschrift fuer Physik* 37, 863-867, 1926. DOI: `10.1007/BF01397477`.
+9. Y. Aharonov and D. Bohm, "Significance of electromagnetic potentials in the quantum theory", *Physical Review* 115, 485-491, 1959. DOI: `10.1103/PhysRev.115.485`.

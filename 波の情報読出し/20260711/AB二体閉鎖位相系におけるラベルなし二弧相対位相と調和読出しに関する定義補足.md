@@ -784,7 +784,13 @@ f_AB = f_AB
 
 ## 自己引用
 
-1. 木原範昭, [無名等振幅複合波モデル基本公理系v4_純化定義論文.md](../20260710/無名等振幅複合波モデル基本公理系v4_純化定義論文.md), 2026.
+1. 木原範昭「無名等振幅複合波モデル基本公理系 v4」Version DOI: `10.5281/zenodo.21316620`, Concept DOI: `10.5281/zenodo.21315735`, 2026.
 2. 木原範昭, [基本公理系 v4.md](../20260710/基本公理系%20v4.md), 2026.
 3. 木原範昭, [全正符号ゼロ閉鎖の読出し多重性に関する定義補足.md](全正符号ゼロ閉鎖の読出し多重性に関する定義補足.md), 2026.
 4. 木原範昭, [閉鎖複素位相波における自己項の内部閉鎖とN体外部読出し分離に関する定義補足.md](閉鎖複素位相波における自己項の内部閉鎖とN体外部読出し分離に関する定義補足.md), 2026.
+5. 木原範昭「フェルミオン的逆相核による完全反射写像の干渉構成」Version DOI: `10.5281/zenodo.21295480`, Concept DOI: `10.5281/zenodo.21295479`, 2026.
+
+## 外部参考文献
+
+6. Max Born, "Zur Quantenmechanik der Stossvorgaenge", *Zeitschrift fuer Physik* 37, 863-867, 1926. DOI: `10.1007/BF01397477`.
+7. Y. Aharonov and D. Bohm, "Significance of electromagnetic potentials in the quantum theory", *Physical Review* 115, 485-491, 1959. DOI: `10.1103/PhysRev.115.485`.

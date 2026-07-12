@@ -440,7 +440,14 @@ P_i <- {P_j | j ≠ i}
 
 ## 自己引用
 
-1. 木原範昭「全正符号ゼロ閉鎖の読出し多重性に関する定義補足」2026-07-11.
-2. 木原範昭「ABC閉鎖位相系における多ゲージ干渉読出し保存量の構成実験」2026-07-11.
-3. 木原範昭「曲率付き閉鎖定常波による曲率繰り込みと完全反射安定性」Version DOI: `10.5281/zenodo.21304040`, Concept DOI: `10.5281/zenodo.21304039`, 2026.
-4. 木原範昭「フェルミオン的逆相核による完全反射写像の干渉構成」Version DOI: `10.5281/zenodo.21295480`, Concept DOI: `10.5281/zenodo.21295479`, 2026.
+1. 木原範昭「無名等振幅複合波モデル基本公理系 v4」Version DOI: `10.5281/zenodo.21316620`, Concept DOI: `10.5281/zenodo.21315735`, 2026.
+2. 木原範昭「全正符号ゼロ閉鎖の読出し多重性に関する定義補足」2026-07-11.
+3. 木原範昭「ABC閉鎖位相系における多ゲージ干渉読出し保存量の構成実験」Version DOI: `10.5281/zenodo.21308050`, Concept DOI: `10.5281/zenodo.21308049`, 2026.
+4. 木原範昭「曲率付き閉鎖定常波による曲率繰り込みと完全反射安定性」Version DOI: `10.5281/zenodo.21304040`, Concept DOI: `10.5281/zenodo.21304039`, 2026.
+5. 木原範昭「フェルミオン的逆相核による完全反射写像の干渉構成」Version DOI: `10.5281/zenodo.21295480`, Concept DOI: `10.5281/zenodo.21295479`, 2026.
+
+## 外部参考文献
+
+6. Albert Einstein, "Die Grundlage der allgemeinen Relativitaetstheorie", *Annalen der Physik* 49, 769-822, 1916. DOI: `10.1002/andp.19163540702`.
+7. P. A. M. Dirac, "Classical theory of radiating electrons", *Proceedings of the Royal Society of London. Series A* 167, 148-169, 1938. DOI: `10.1098/rspa.1938.0124`.
+8. C. W. Misner, K. S. Thorne, and J. A. Wheeler, *Gravitation*, W. H. Freeman, 1973.
