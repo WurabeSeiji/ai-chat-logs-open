@@ -17,6 +17,11 @@ Release date: 2026-07-13
 - Japanese: https://note.com/kiharanoriaki/n/nbc6649e30af3
 - English: https://note.com/kiharanoriaki/n/n7c59e0a3b13d
 
+## Facebook
+
+- Japanese: https://www.facebook.com/kihara.noriaki/posts/pfbid0Kc2ppLtkQ9caCk97a1YDRPpBBXTdxJUYiAUXA4PYJD7UswnjnkKLWA6zcFS1gGd9l
+- English: https://www.facebook.com/kihara.noriaki/posts/pfbid0bu2ZfGFhRXQtKpXsnU2jTemvzJYUz9GmwjNGBMwKELh4YxbjHx6nz7EACJ6V7jaFl
+
 ## Main Paper
 
 - `交換干渉散乱行列フェルミオン的衝突における加速度基底と局在性交換予備実験総括 v1.md`
