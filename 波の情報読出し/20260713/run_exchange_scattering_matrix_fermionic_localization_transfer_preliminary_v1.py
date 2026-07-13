@@ -105,6 +105,15 @@ def reshape_state(params: Params, v: np.ndarray) -> np.ndarray:
     return v.reshape(params.chi_grid_n, params.eta_grid_n)
 
 
+def chi_density(params: Params, v: np.ndarray) -> np.ndarray:
+    psi = reshape_state(params, v)
+    rho = np.sum(np.abs(psi) ** 2, axis=1)
+    total = float(np.sum(rho))
+    if total <= 0.0:
+        raise ValueError("zero chi density")
+    return rho / total
+
+
 def inner(v: np.ndarray, w: np.ndarray) -> complex:
     return complex(np.vdot(v, w))
 
@@ -908,6 +917,71 @@ def recursive_sweep_summary(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     return sorted(summaries, key=lambda row: float(row["R"]))
 
 
+def recursive_snapshot_states(
+    params: Params,
+    r_value: float,
+    collisions: Iterable[int],
+    n_a: int = 1,
+    n_b: int = 63,
+) -> Dict[int, Dict[str, Any]]:
+    targets = set(int(collision) for collision in collisions)
+    delta_f = delta_from_reflection_rate(r_value)
+    t, r, T, R = scattering_coefficients(delta_f)
+    hair_enabled = True
+    a = make_state(params, n_a, params.q_A, params.m_A, hair_enabled, params.A_A)
+    b = make_state(params, n_b, params.q_B, params.m_B, hair_enabled, params.A_B)
+    initial_a = a.copy()
+    initial_b = b.copy()
+    out: Dict[int, Dict[str, Any]] = {}
+    for collision_index in range(max(targets) + 1):
+        if collision_index in targets:
+            a_metrics = recursive_state_metrics(
+                params,
+                "snapshot",
+                f"R{int(round(r_value * 100)):03d}",
+                delta_f,
+                T,
+                R,
+                n_a,
+                n_b,
+                hair_enabled,
+                collision_index,
+                "A_channel",
+                a,
+                initial_a,
+                initial_b,
+            )
+            b_metrics = recursive_state_metrics(
+                params,
+                "snapshot",
+                f"R{int(round(r_value * 100)):03d}",
+                delta_f,
+                T,
+                R,
+                n_a,
+                n_b,
+                hair_enabled,
+                collision_index,
+                "B_channel",
+                b,
+                initial_a,
+                initial_b,
+            )
+            out[collision_index] = {
+                "A_channel": a_metrics,
+                "B_channel": b_metrics,
+                "rho_A": chi_density(params, a),
+                "rho_B": chi_density(params, b),
+            }
+        if collision_index >= max(targets):
+            break
+        a_next = normalize(r * a + t * b)
+        b_next = normalize(t * a + r * b)
+        a = a_next
+        b = b_next
+    return out
+
+
 def compute_verdict(params: Params, rows: List[Dict[str, Any]]) -> Dict[str, Any]:
     stage0 = [
         row
@@ -1222,6 +1296,56 @@ def make_plots(rows: List[Dict[str, Any]]) -> Dict[str, str]:
         plt.close(fig)
         outputs["recursive_R_sweep_plot"] = path.name
 
+    chi, _ = make_grids(Params())
+    x = chi / math.pi
+    snapshot_specs = [
+        ("R=0 transmission endpoint", 0.0, 1),
+        ("R=0.70 intermediate scattering", 0.70, 42),
+        ("R=1 reflection endpoint", 1.0, 1),
+    ]
+    fig, axes = plt.subplots(len(snapshot_specs), 2, figsize=(12, 9), sharex=True, constrained_layout=True)
+    for row_index, (label, r_value, event_collision) in enumerate(snapshot_specs):
+        snapshots = recursive_snapshot_states(Params(), r_value, [0, event_collision])
+        for col_index, collision_index in enumerate([0, event_collision]):
+            ax = axes[row_index][col_index]
+            snap = snapshots[collision_index]
+            a_metrics = snap["A_channel"]
+            b_metrics = snap["B_channel"]
+            rho_a = snap["rho_A"] / np.max(snap["rho_A"])
+            rho_b = snap["rho_B"] / np.max(snap["rho_B"])
+            ax.plot(x, rho_a, label=f"A L={a_metrics['L']:.3g}, N={a_metrics['N_eff']:.3g}")
+            ax.plot(x, rho_b, label=f"B L={b_metrics['L']:.3g}, N={b_metrics['N_eff']:.3g}")
+            ax.set_title(f"{label}, collision={collision_index}")
+            ax.set_ylabel("rho_chi / max")
+            ax.legend(fontsize=8)
+    for ax in axes[-1]:
+        ax.set_xlabel("chi / pi")
+    path = OUT_DIR / "exchange_scattering_matrix_waveform_localization_snapshots_v1.png"
+    fig.savefig(path, dpi=160)
+    plt.close(fig)
+    outputs["waveform_localization_snapshots_plot"] = path.name
+
+    evolution_collisions = [0, 1, 2, 3, 5, 10, 20, 42]
+    snapshots = recursive_snapshot_states(Params(), 0.70, evolution_collisions)
+    fig, axes = plt.subplots(4, 2, figsize=(12, 12), sharex=True, sharey=True, constrained_layout=True)
+    for ax, collision_index in zip(axes.flatten(), evolution_collisions):
+        snap = snapshots[collision_index]
+        a_metrics = snap["A_channel"]
+        b_metrics = snap["B_channel"]
+        rho_a = snap["rho_A"] / np.max(snap["rho_A"])
+        rho_b = snap["rho_B"] / np.max(snap["rho_B"])
+        ax.plot(x, rho_a, label=f"A L={a_metrics['L']:.3g}, N={a_metrics['N_eff']:.3g}")
+        ax.plot(x, rho_b, label=f"B L={b_metrics['L']:.3g}, N={b_metrics['N_eff']:.3g}")
+        ax.set_title(f"R=0.70, collision={collision_index}")
+        ax.set_ylabel("rho_chi / max")
+        ax.legend(fontsize=7)
+    for ax in axes[-1]:
+        ax.set_xlabel("chi / pi")
+    path = OUT_DIR / "exchange_scattering_matrix_R070_waveform_evolution_v1.png"
+    fig.savefig(path, dpi=160)
+    plt.close(fig)
+    outputs["R070_waveform_evolution_plot"] = path.name
+
     return outputs
 
 
@@ -1439,6 +1563,22 @@ V2 散乱行列基準で、加速度基底、低奇数倍音底、片側高次�
 
 ![recursive R sweep]({outputs['recursive_R_sweep_plot']})
 
+## 波形局在スナップショット
+
+`chi` 方向の縮約密度 `rho_chi` を、各線の最大値で振幅正規化し、完全透過端点、中間散乱、完全反射端点で比較した。
+
+完全透過端点 `R=0` と完全反射端点 `R=1` では、低次数波形と高次数波形の差が保存される。
+
+中間散乱 `R=0.70` では、衝突回 `42` で両チャネルの `L` と `N_eff` が近接する。
+
+![waveform localization snapshots]({outputs['waveform_localization_snapshots_plot']})
+
+## R=0.70 波形局在化の再帰発展
+
+中間散乱 `R=0.70` について、衝突回 `0,1,2,3,5,10,20,42` の `rho_chi / max` を図化した。
+
+![R070 waveform evolution]({outputs['R070_waveform_evolution_plot']})
+
 ## 奇数倍音底
 
 完全反射 `Delta_F=pi` で `N` を下げ、`N_min` を読む。
@@ -1465,6 +1605,8 @@ plus_out  = t A_trans + r B_ref
 | 片側高次倍音図 | `{outputs['one_side_high_harmonic_plot']}` |
 | 再帰局在性図 | `{outputs['recursive_localization_transfer_plot']}` |
 | 再帰Rスイープ図 | `{outputs['recursive_R_sweep_plot']}` |
+| 波形局在スナップショット図 | `{outputs['waveform_localization_snapshots_plot']}` |
+| R=0.70 波形発展図 | `{outputs['R070_waveform_evolution_plot']}` |
 | report | `{outputs['report']}` |
 """
 

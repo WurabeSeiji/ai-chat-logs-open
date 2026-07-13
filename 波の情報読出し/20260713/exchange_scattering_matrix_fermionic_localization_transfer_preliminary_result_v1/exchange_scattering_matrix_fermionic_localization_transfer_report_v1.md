@@ -198,6 +198,22 @@ V2 散乱行列基準で、加速度基底、低奇数倍音底、片側高次�
 
 ![recursive R sweep](exchange_scattering_matrix_recursive_R_sweep_v1.png)
 
+## 波形局在スナップショット
+
+`chi` 方向の縮約密度 `rho_chi` を、各線の最大値で振幅正規化し、完全透過端点、中間散乱、完全反射端点で比較した。
+
+完全透過端点 `R=0` と完全反射端点 `R=1` では、低次数波形と高次数波形の差が保存される。
+
+中間散乱 `R=0.70` では、衝突回 `42` で両チャネルの `L` と `N_eff` が近接する。
+
+![waveform localization snapshots](exchange_scattering_matrix_waveform_localization_snapshots_v1.png)
+
+## R=0.70 波形局在化の再帰発展
+
+中間散乱 `R=0.70` について、衝突回 `0,1,2,3,5,10,20,42` の `rho_chi / max` を図化した。
+
+![R070 waveform evolution](exchange_scattering_matrix_R070_waveform_evolution_v1.png)
+
 ## 奇数倍音底
 
 完全反射 `Delta_F=pi` で `N` を下げ、`N_min` を読む。
@@ -224,4 +240,6 @@ plus_out  = t A_trans + r B_ref
 | 片側高次倍音図 | `exchange_scattering_matrix_one_side_high_harmonic_v1.png` |
 | 再帰局在性図 | `exchange_scattering_matrix_recursive_localization_transfer_v1.png` |
 | 再帰Rスイープ図 | `exchange_scattering_matrix_recursive_R_sweep_v1.png` |
+| 波形局在スナップショット図 | `exchange_scattering_matrix_waveform_localization_snapshots_v1.png` |
+| R=0.70 波形発展図 | `exchange_scattering_matrix_R070_waveform_evolution_v1.png` |
 | report | `exchange_scattering_matrix_fermionic_localization_transfer_report_v1.md` |
