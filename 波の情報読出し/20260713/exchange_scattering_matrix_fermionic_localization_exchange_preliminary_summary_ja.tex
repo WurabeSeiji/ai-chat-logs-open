@@ -1,0 +1,777 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  xelatex,
+  ja=standard]{bxjsarticle}
+\usepackage{xcolor}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{Hiragino Mincho ProN}
+  \setsansfont[]{Hiragino Kaku Gothic ProN}
+  \setmonofont[]{Menlo}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Hiragino Mincho ProN}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Hiragino Mincho ProN}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{交換干渉散乱行列フェルミオン的衝突における加速度基底と局在性交換予備実験総括
+v1}\label{ux4ea4ux63dbux5e72ux6e09ux6563ux4e71ux884cux5217ux30d5ux30a7ux30ebux30dfux30aaux30f3ux7684ux885dux7a81ux306bux304aux3051ux308bux52a0ux901fux5ea6ux57faux5e95ux3068ux5c40ux5728ux6027ux4ea4ux63dbux4e88ux5099ux5b9fux9a13ux7dcfux62ec-v1}
+
+\textbf{副題:}
+加速度様読出しを保持した片側高次倍音再帰散乱における局在性再配分\\
+\textbf{日付:} 2026-07-13\\
+\textbf{著者:} 木原 範昭\\
+\textbf{位置づけ:} 波の情報読出しシリーズ・予備実験総括\\
+\textbf{Version DOI:} 10.5281/zenodo.21333768\\
+\textbf{Concept DOI:} 10.5281/zenodo.21333766
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+本稿は、V2 系列で確立した交換干渉散乱行列版フェルミオン型反跳写像を、AB
+二体加速度様読出しの基底上に置き、低奇数倍音底、観測停止、名前の毛除去、片側高次倍音条件、再帰散乱、反射率掃引を実施した予備実験を総括する。
+
+加速度 V2 基底は成立した。奇数倍音底は、名前の毛あり・なしの双方で
+\texttt{N=1} であった。観測停止対照では、局在性指標 \texttt{L} の差分は
+\texttt{0.0} であった。
+
+片側高次倍音条件 \texttt{N\_A=1}, \texttt{N\_B=63}
+を再帰散乱に投入した結果、完全透過端点 \texttt{R=0} と完全反射端点
+\texttt{R=1}
+では、低次数波形と高次数波形の差が保存された。一方、中間散乱
+\texttt{0\textless{}R\textless{}1} では、局在性 \texttt{L}
+と有効倍音次数 \texttt{N\_eff} が周期的に交換された。
+
+反射率掃引では、\texttt{R=0.70} において \texttt{L} 差最小
+\texttt{2.48676e-05}、その時の \texttt{N\_eff} 差 \texttt{0.153386}
+が得られた。これは、片側高次倍音条件で、両チャネルの局在性指標と有効倍音次数が近接する再帰点として記録される。
+
+本実験の範囲では、定常収束は観測されなかった。観測されたのは、散逸を含まない二チャネル散乱行列による局在性の周期的交換である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 実験の目的}\label{ux5b9fux9a13ux306eux76eeux7684}
+
+本実験の目的は、次の一点である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{加速度様読出しを壊さないフェルミオン型反跳写像の上で、}
+\NormalTok{片側高次倍音が相手側チャネルの局在性読出しへ移るかを読む。}
+\end{Highlighting}
+\end{Shaded}
+
+ここでいう局在性は、外部空間に置いた粒子位置ではない。閉鎖位相系内で構成した
+\texttt{chi}
+方向密度、倍音分布、有効倍音次数、局在性指標から読む量である。
+
+読出し対象は、散乱行列出射チャネル上の次の量である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{L}
+\NormalTok{N\_eff}
+\NormalTok{rho\_chi}
+\NormalTok{expected\_origin\_A}
+\NormalTok{expected\_origin\_B}
+\end{Highlighting}
+\end{Shaded}
+
+これらの量が、散乱行列の出射チャネル上でどう再配分されるかを記録する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. 基底写像}\label{ux57faux5e95ux5199ux50cf}
+
+交換干渉位相 \texttt{Delta\_F} から、透過振幅 \texttt{t} と反射振幅
+\texttt{r} を定義する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t\_\textbackslash{}Delta}
+\NormalTok{=}
+\NormalTok{e\^{}\{i\textbackslash{}Delta\_F/2\}}
+\NormalTok{\textbackslash{}cos\textbackslash{}frac\{\textbackslash{}Delta\_F\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{r\_\textbackslash{}Delta}
+\NormalTok{=}
+\NormalTok{{-}i e\^{}\{i\textbackslash{}Delta\_F/2\}}
+\NormalTok{\textbackslash{}sin\textbackslash{}frac\{\textbackslash{}Delta\_F\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
+
+反射率と透過率は、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R=|r\_\textbackslash{}Delta|\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{T=|t\_\textbackslash{}Delta|\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+で読む。
+
+本実験の二チャネル出力は次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{minus\_out = r A\_ref + t B\_trans}
+\NormalTok{plus\_out  = t A\_trans + r B\_ref}
+\end{Highlighting}
+\end{Shaded}
+
+再帰実験では、出射チャネルを次回入力へ渡す。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A\_\{k+1\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}operatorname\{norm\}}
+\NormalTok{\textbackslash{}left(}
+\NormalTok{r A\_k + t B\_k}
+\NormalTok{\textbackslash{}right)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B\_\{k+1\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}operatorname\{norm\}}
+\NormalTok{\textbackslash{}left(}
+\NormalTok{t A\_k + r B\_k}
+\NormalTok{\textbackslash{}right)}
+\end{Highlighting}
+\end{Shaded}
+
+この再帰写像は、散逸項を含まない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. 加速度 V2 基底}\label{ux52a0ux901fux5ea6-v2-ux57faux5e95}
+
+本実験は、AB 二体加速度 V2 の結果を基底として読む。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+量 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+fermionic\_reflection\_rate & \texttt{1.0} \\
+fermionic\_transmission\_rate & \texttt{3.749399456654644e-33} \\
+fermionic\_q\_out\_factor & \texttt{-1.0} \\
+max\_Q\_closed\_abs & \texttt{0.0} \\
+label\_free\_pass\_vs\_fermionic\_match\_all\_cases & \texttt{true} \\
+fermionic\_regular\_cell\_harmonic\_consistent\_nonstrong\_modes &
+\texttt{true} \\
+fermionic\_c1\_area\_sweep\_detected\_all\_cases & \texttt{true} \\
+\end{longtable}
+}
+
+したがって、散乱行列版フェルミオン型反跳写像は、加速度様読出しの基底を保持する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. 低奇数倍音底}\label{ux4f4eux5947ux6570ux500dux97f3ux5e95}
+
+完全反射 \texttt{Delta\_F=pi} で奇数倍音次数 \texttt{N} を下げた。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+条件 & 底 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+名前の毛あり & \texttt{N=1} \\
+名前の毛なし & \texttt{N=1} \\
+\end{longtable}
+}
+
+\texttt{N=1} でも、方向読出しと内在読出しは破綻しなかった。
+
+代表値は次である。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1290}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0968}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1290}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1290}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1290}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1290}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1290}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1290}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+N
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+hair
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p\_chi
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+d\_q
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+chi中心セル質量
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+chi\_peak\_contrast
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+L
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+名前毛総量
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & true & \texttt{-1} & \texttt{4.44089e-16} & \texttt{0.5} &
+\texttt{2} & \texttt{0.000183105} & \texttt{1} \\
+1 & false & \texttt{-1} & \texttt{8.88178e-16} & \texttt{0.5} &
+\texttt{2} & \texttt{0.000183105} & \texttt{0} \\
+\end{longtable}
+}
+
+この結果から、本実験条件での読出し底を \texttt{N=1} と読む。
+
+本実験条件では、奇数倍音を増やす効果は、情報の有無ではなく、主に
+\texttt{chi} 方向密度の鋭さとして現れた。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={low N}]{exchange_scattering_matrix_fermionic_localization_transfer_preliminary_result_v1/exchange_scattering_matrix_low_n_bottom_v1.png}}
+\caption{low N}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+片側高次倍音条件}\label{ux7247ux5074ux9ad8ux6b21ux500dux97f3ux6761ux4ef6}
+
+底 \texttt{N\_A=1} を基準とし、片側だけ高次倍音を持つ条件を調べた。
+
+代表条件は次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{N\_A = 1}
+\NormalTok{N\_B = 63}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{R=0.55}, \texttt{T=0.45} の一回散乱では、出射チャネルに A
+起因成分と B 起因成分の配分が残った。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1111}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+channel
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+R
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+T
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+N\_eff
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+L
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+origin\_A
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+origin\_B
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+minus\_out & \texttt{0.55} & \texttt{0.45} & \texttt{14.95} &
+\texttt{0.00135002} & \texttt{0.55} & \texttt{0.45} \\
+plus\_out & \texttt{0.55} & \texttt{0.45} & \texttt{18.05} &
+\texttt{0.0018526} & \texttt{0.45} & \texttt{0.55} \\
+\end{longtable}
+}
+
+片側高次倍音は、一回散乱の段階で出射チャネルへ配分される。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={one side high harmonic}]{exchange_scattering_matrix_fermionic_localization_transfer_preliminary_result_v1/exchange_scattering_matrix_one_side_high_harmonic_v1.png}}
+\caption{one side high harmonic}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6.
+再帰片側高次倍音}\label{ux518dux5e30ux7247ux5074ux9ad8ux6b21ux500dux97f3}
+
+出射チャネルを次回入力へ渡し、128 回まで再帰散乱を行った。
+
+\texttt{R=0.55}, \texttt{T=0.45} の代表結果は次である。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rrrrr@{}}
+\toprule\noalign{}
+collision & A: L & A: N\_eff & B: L & B: N\_eff \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & \texttt{0.000183105} & \texttt{1} & \texttt{0.00520897} &
+\texttt{32} \\
+16 & \texttt{0.00167148} & \texttt{16.9941} & \texttt{0.00151127} &
+\texttt{16.0059} \\
+32 & \texttt{0.00519937} & \texttt{31.9685} & \texttt{0.000183722} &
+\texttt{1.0315} \\
+64 & \texttt{0.000185626} & \texttt{1.12587} & \texttt{0.00517067} &
+\texttt{31.8741} \\
+128 & \texttt{0.000194012} & \texttt{1.50145} & \texttt{0.00505728} &
+\texttt{31.4985} \\
+\end{longtable}
+}
+
+局在性と有効倍音次数は、定常値へ収束しなかった。
+
+再帰写像は、低次数側と高次数側を周期的に交換した。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={recursive localization transfer}]{exchange_scattering_matrix_fermionic_localization_transfer_preliminary_result_v1/exchange_scattering_matrix_recursive_localization_transfer_v1.png}}
+\caption{recursive localization transfer}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. 反射率掃引}\label{ux53cdux5c04ux7387ux6383ux5f15}
+
+\texttt{N\_A=1}, \texttt{N\_B=63} の条件で、反射率 \texttt{R}
+を掃引した。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rrrrr@{}}
+\toprule\noalign{}
+R & T & L差最小 & L差最小衝突回 & N\_eff差 at L差最小 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 1 & \texttt{0.00502586} & \texttt{1} & \texttt{31} \\
+0.51 & 0.49 & \texttt{5.37371e-05} & \texttt{78} & \texttt{0.331455} \\
+0.55 & 0.45 & \texttt{0.000114791} & \texttt{110} & \texttt{0.708042} \\
+0.6 & 0.4 & \texttt{0.000185909} & \texttt{125} & \texttt{1.1467} \\
+0.7 & 0.3 & \texttt{2.48676e-05} & \texttt{42} & \texttt{0.153386} \\
+0.9 & 0.1 & \texttt{8.21216e-05} & \texttt{61} & \texttt{0.506534} \\
+1 & \texttt{3.7494e-33} & \texttt{0.00502586} & \texttt{126} &
+\texttt{31} \\
+\end{longtable}
+}
+
+完全透過端点 \texttt{R=0} では、低次数波形と高次数波形の差は保存された。
+
+完全反射端点 \texttt{R=1} でも、低次数波形と高次数波形の差は保存された。
+
+中間散乱 \texttt{0\textless{}R\textless{}1} では、\texttt{L} と
+\texttt{N\_eff} の差が小さくなる再帰点が現れた。
+
+本掃引では、\texttt{R=0.70} が最小の \texttt{L} 差を与えた。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={recursive R sweep}]{exchange_scattering_matrix_fermionic_localization_transfer_preliminary_result_v1/exchange_scattering_matrix_recursive_R_sweep_v1.png}}
+\caption{recursive R sweep}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8.
+波形局在スナップショット}\label{ux6ce2ux5f62ux5c40ux5728ux30b9ux30caux30c3ux30d7ux30b7ux30e7ux30c3ux30c8}
+
+\texttt{chi} 方向の縮約密度を、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}rho\_\textbackslash{}chi}
+\NormalTok{=}
+\NormalTok{\textbackslash{}sum\_\textbackslash{}eta |\textbackslash{}psi(\textbackslash{}chi,\textbackslash{}eta)|\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+として読み、図示では各線を最大値 \texttt{1} に振幅正規化した。
+
+図では、完全透過端点 \texttt{R=0}、中間散乱
+\texttt{R=0.70}、完全反射端点 \texttt{R=1} を比較する。
+
+\texttt{R=0} では、固定チャネル上では A/B
+が入れ替わる。ただし、低次数波形と高次数波形の差そのものは保存される。
+
+\texttt{R=1}
+では、固定チャネル上でも低次数波形と高次数波形の差が保存される。
+
+\texttt{R=0.70} では、衝突回 \texttt{42}
+で両チャネルの局在性指標が近接する。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1304}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+条件
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+collision
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+A: L
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+A: N\_eff
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+B: L
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+B: N\_eff
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+R=0 & 0 & \texttt{0.000183105} & \texttt{1} & \texttt{0.00520897} &
+\texttt{32} \\
+R=0 & 1 & \texttt{0.00520897} & \texttt{32} & \texttt{0.000183105} &
+\texttt{1} \\
+R=0.70 & 0 & \texttt{0.000183105} & \texttt{1} & \texttt{0.00520897} &
+\texttt{32} \\
+R=0.70 & 42 & \texttt{0.0016027127797281328} &
+\texttt{16.576692758470564} & \texttt{0.0015778452089655066} &
+\texttt{16.42330724152941} \\
+R=1 & 0 & \texttt{0.000183105} & \texttt{1} & \texttt{0.00520897} &
+\texttt{32} \\
+R=1 & 1 & \texttt{0.000183105} & \texttt{1} & \texttt{0.00520897} &
+\texttt{32} \\
+\end{longtable}
+}
+
+この図は、局在性再配分が端点では起こらず、中間散乱で現れることを、振幅正規化した密度波形として記録する。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={waveform localization snapshots}]{exchange_scattering_matrix_fermionic_localization_transfer_preliminary_result_v1/exchange_scattering_matrix_waveform_localization_snapshots_v1.png}}
+\caption{waveform localization snapshots}
+\end{figure}
+
+\subsubsection{8.1 R=0.70
+における局在性交換過程}\label{r0.70-ux306bux304aux3051ux308bux5c40ux5728ux6027ux4ea4ux63dbux904eux7a0b}
+
+\texttt{R=0.70} について、衝突回 \texttt{0,1,2,3,5,10,20,42} の
+\texttt{rho\_chi\ /\ max} を図化した。
+
+\texttt{collision=42} では、A/B の \texttt{L} と \texttt{N\_eff}
+が近接し、二つの波形の局在性指標が近づく。
+
+図から読める過程は、単調な局在化ではなく、局在性の交換振動である。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5714}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4286}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+collision
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+図から読める状態
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & A は低次ベース波形、B は高次局在波形で開始する。 \\
+1 & A 側に高次成分が入り、A の波形ピークが鋭くなる。 \\
+2,3 & A は高局在側へ寄り、B は低次ベース波形に近い鈍い形へ寄る。 \\
+5,10 & A は再び鈍り、B 側に高局在形が戻る。 \\
+42 & A/B の有効次数が \texttt{16.6} と \texttt{16.4}
+まで近接し、両者の局在性指標が近接する。 \\
+\end{longtable}
+}
+
+この図からは、片側に置いた高次局在形が一回で単純平均されるのではなく、中間散乱の再帰作用によって
+AB 間を往復する様子が読める。\texttt{collision=42} 近傍の有効次数は初期
+B の \texttt{N\_eff=32}
+より低いが、振幅正規化した波形表示では低次ベース波だけではない尖った形が残る。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={R070 waveform evolution}]{exchange_scattering_matrix_fermionic_localization_transfer_preliminary_result_v1/exchange_scattering_matrix_R070_waveform_evolution_v1.png}}
+\caption{R070 waveform evolution}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. 観測停止対照}\label{ux89b3ux6e2cux505cux6b62ux5bfeux7167}
+
+観測あり/なしの対照では、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{observation\_stop\_max\_L\_delta = 0.0}
+\end{Highlighting}
+\end{Shaded}
+
+であった。
+
+観測あり/なしの条件で、局在性指標 \texttt{L} は同じ値として記録された。
+
+本実験の再帰写像に、読出し波強度に依存する散逸項は入っていない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. 結論}\label{ux7d50ux8ad6}
+
+本実験で得られた帰結は次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1. 加速度 V2 基底は保持された。}
+\NormalTok{2. 奇数倍音底は N=1 であった。}
+\NormalTok{3. 名前の毛を除去しても、N=1 の底は変わらなかった。}
+\NormalTok{4. 完全透過 R=0 では、局在性差は保存された。}
+\NormalTok{5. 完全反射 R=1 でも、局在性差は保存された。}
+\NormalTok{6. 中間散乱 0\textless{}R\textless{}1 では、局在性 L と有効倍音次数 N\_eff が再帰的に交換された。}
+\NormalTok{7. R=0.70 では、衝突回 42 において A/B の L と N\_eff が近接した。}
+\NormalTok{8. 本実験の範囲では、定常収束ではなく周期的交換が観測された。}
+\end{Highlighting}
+\end{Shaded}
+
+したがって、フェルミオン型反跳写像における局在性再配分は、完全透過端点または完全反射端点ではなく、反射成分と透過成分の両方を持つ中間散乱で現れる。
+
+これは、波形局在性の変化を交換干渉散乱行列の内部出射チャネルから検査するための実験基底である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{11. 出力}\label{ux51faux529b}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+種別
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ファイル
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+実行スクリプト &
+\texttt{run\_exchange\_scattering\_matrix\_fermionic\_localization\_transfer\_preliminary\_v1.py} \\
+JSON &
+\texttt{exchange\_scattering\_matrix\_fermionic\_localization\_transfer\_preliminary\_result\_v1/exchange\_scattering\_matrix\_fermionic\_localization\_transfer\_preliminary\_result\_v1.json} \\
+CSV &
+\texttt{exchange\_scattering\_matrix\_fermionic\_localization\_transfer\_preliminary\_result\_v1/exchange\_scattering\_matrix\_fermionic\_localization\_transfer\_rows\_v1.csv} \\
+検証メモ &
+\texttt{交換干渉散乱行列フェルミオン的衝突における加速度基底・低奇数倍音底・片側高次倍音予備実験検証メモ\_v1.md} \\
+低奇数倍音底図 &
+\texttt{exchange\_scattering\_matrix\_fermionic\_localization\_transfer\_preliminary\_result\_v1/exchange\_scattering\_matrix\_low\_n\_bottom\_v1.png} \\
+片側高次倍音図 &
+\texttt{exchange\_scattering\_matrix\_fermionic\_localization\_transfer\_preliminary\_result\_v1/exchange\_scattering\_matrix\_one\_side\_high\_harmonic\_v1.png} \\
+波形局在スナップショット図 &
+\texttt{exchange\_scattering\_matrix\_fermionic\_localization\_transfer\_preliminary\_result\_v1/exchange\_scattering\_matrix\_waveform\_localization\_snapshots\_v1.png} \\
+R=0.70 波形発展図 &
+\texttt{exchange\_scattering\_matrix\_fermionic\_localization\_transfer\_preliminary\_result\_v1/exchange\_scattering\_matrix\_R070\_waveform\_evolution\_v1.png} \\
+再帰Rスイープ図 &
+\texttt{exchange\_scattering\_matrix\_fermionic\_localization\_transfer\_preliminary\_result\_v1/exchange\_scattering\_matrix\_recursive\_R\_sweep\_v1.png} \\
+再帰局在性図 &
+\texttt{exchange\_scattering\_matrix\_fermionic\_localization\_transfer\_preliminary\_result\_v1/exchange\_scattering\_matrix\_recursive\_localization\_transfer\_v1.png} \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsection{自己引用}\label{ux81eaux5df1ux5f15ux7528}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  木原範昭「無名等振幅複合波モデル基本公理系 v4」Version DOI:
+  \texttt{10.5281/zenodo.21316620}, Concept DOI:
+  \texttt{10.5281/zenodo.21315735}, 2026.
+\item
+  木原範昭「背景空間を仮定しない閉じた位相系におけるフェルミオン的二局所波の完全弾性反射の構成実験」Version
+  DOI: \texttt{10.5281/zenodo.21332866}, Concept DOI:
+  \texttt{10.5281/zenodo.21291018}, 2026.
+\item
+  木原範昭「フェルミオン的逆相核による完全反射写像の干渉構成」Version
+  DOI: \texttt{10.5281/zenodo.21332867}, Concept DOI:
+  \texttt{10.5281/zenodo.21295479}, 2026.
+\item
+  木原範昭「曲率付き閉鎖定常波による曲率繰り込みと完全反射安定性」Version
+  DOI: \texttt{10.5281/zenodo.21332874}, Concept DOI:
+  \texttt{10.5281/zenodo.21304039}, 2026.
+\item
+  木原範昭「ABC閉鎖位相系における多ゲージ干渉読出し保存量の構成実験」Version
+  DOI: \texttt{10.5281/zenodo.21332875}, Concept DOI:
+  \texttt{10.5281/zenodo.21308049}, 2026.
+\item
+  木原範昭「AB二体閉鎖位相系における調和読出しとc=1面積スイープ予備実験総括」Version
+  DOI: \texttt{10.5281/zenodo.21332876}, Concept DOI:
+  \texttt{10.5281/zenodo.21318696}, 2026.
+\end{enumerate}
+
+\subsection{外部参考文献}\label{ux5916ux90e8ux53c2ux8003ux6587ux732e}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Max Born, ``Zur Quantenmechanik der Stossvorgaenge'',
+  \emph{Zeitschrift fuer Physik} 37, 863-867, 1926. DOI:
+  \texttt{10.1007/BF01397477}.
+\item
+  S. Pancharatnam, ``Generalized theory of interference, and its
+  applications'', \emph{Proceedings of the Indian Academy of Sciences
+  A}, 44, 247-262, 1956.
+\item
+  B. A. Lippmann and J. Schwinger, ``Variational Principles for
+  Scattering Processes. I'', \emph{Physical Review}, 79, 469-480, 1950.
+\end{enumerate}
+
+\end{document}

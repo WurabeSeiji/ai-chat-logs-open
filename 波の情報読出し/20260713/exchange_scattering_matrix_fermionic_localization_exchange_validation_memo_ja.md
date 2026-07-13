@@ -1,0 +1,245 @@
+# 交換干渉散乱行列フェルミオン的衝突 予備実験検証メモ v1
+
+## 実行条件
+
+V2 散乱行列基準で、加速度基底、低奇数倍音底、片側高次倍音条件を実行した。
+
+## 判定
+
+| 項目 | 結果 |
+|---|---:|
+| Stage 0 完全反射基底確認 | `true` |
+| Stage 0 p 反転 | `true` |
+| Stage 0 d_q | `true` |
+| Stage 0 ノルム | `true` |
+| Stage 0 名前毛読出し | `true` |
+| 加速度V2基底読込 | `true` |
+| 加速度V2基底 | `true` |
+| 奇数倍音底 hairあり | `1` |
+| 奇数倍音底 hairなし | `1` |
+| 底 hairあり 名前毛 | `true` |
+| 底 hairなし 名前毛除去 | `true` |
+| hairなし 名前毛総量最大 | `0.0` |
+| 底 hairあり chi中心セル質量最小 | `0.5000000000000006` |
+| 底 hairなし chi中心セル質量最小 | `0.5000000000000009` |
+| 片側高次倍音条件記録 | `true` |
+| 観測停止対照 | `true` |
+| 観測停止 L 最大差分 | `0.0` |
+| Stage5 対照群比較 | `true` |
+| 再帰片側高次倍音 | `true` |
+| 再帰 R055 L_A 初期 | `0.00018310546875000033` |
+| 再帰 R055 L_A 最終 | `0.00019401234913165018` |
+| 再帰 R055 L_B 初期 | `0.005208969116210969` |
+| 再帰 R055 L_B 最終 | `0.005057280950929966` |
+| 再帰 R055 L差 初期 | `0.005025863647460969` |
+| 再帰 R055 L差 最終 | `0.004863268601798316` |
+| 再帰 R055 L差 最小 | `0.0001147909967020317` |
+| 再帰 R055 L差 最小衝突回 | `110` |
+| 再帰 R055 N_eff差 初期 | `30.99999999999997` |
+| 再帰 R055 N_eff差 最終 | `29.997098455289837` |
+| 再帰 R055 末尾区間開始 | `104` |
+| 再帰 R055 末尾 L差 最小 | `0.0001147909967020317` |
+| 再帰 R055 末尾 L差 最大 | `0.005018339883503786` |
+| 再帰 R055 末尾 N_eff差 最小 | `0.7080416715166642` |
+| 再帰 R055 末尾 N_eff差 最大 | `30.953592715793327` |
+| 再帰 R/T スイープ | `true` |
+
+## 加速度V2基底
+
+| 量 | 値 |
+|---|---:|
+| loaded | `true` |
+| acceleration_base_ok | `true` |
+| fermionic_reflection_rate | `1.0` |
+| fermionic_transmission_rate | `3.749399456654644e-33` |
+| fermionic_q_out_factor | `-1.0` |
+| max_Q_closed_abs | `0.0` |
+| label_free_pass_vs_fermionic_match_all_cases | `True` |
+| fermionic_regular_cell_harmonic_consistent_nonstrong_modes | `True` |
+| fermionic_c1_area_sweep_detected_all_cases | `True` |
+
+## Stage 0
+
+| model | channel | delta_f | R | T | p_chi | p_target | d_q | chi_center_cell_mass | P_m_A | P_m_B | name_l1_error | name_ok |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| fermionic_scattering_complete_reflection | minus_out | 3.14159 | 1 | 3.7494e-33 | -1 | -1.0 | 2.88658e-15 | 0.45152 | 1 | 3.64078e-33 | 1.08623e-34 | True |
+| fermionic_scattering_complete_reflection | plus_out | 3.14159 | 1 | 3.7494e-33 | 1 | 1.0 | 1.34337e-14 | 0.45152 | 1.00001e-32 | 1 | 6.25074e-33 | True |
+| bosonic_scattering_transmission | minus_out | 0 | 0 | 1 | -1 | nan | 2 | 0.45152 | 9.75594e-33 | 1 | 9.75594e-33 | True |
+| bosonic_scattering_transmission | plus_out | 0 | 0 | 1 | 1 | nan | 2 | 0.45152 | 1 | 2.64382e-33 | 2.64382e-33 | True |
+| partial_scattering_half | minus_out | 1.5708 | 0.5 | 0.5 | -1 | nan | 1 | 0.45152 | 0.5 | 0.5 | 1.33227e-15 | True |
+| partial_scattering_half | plus_out | 1.5708 | 0.5 | 0.5 | 1 | nan | 1 | 0.45152 | 0.5 | 0.5 | 1.38778e-15 | True |
+| partial_scattering_R055 | minus_out | 1.67096 | 0.55 | 0.45 | -1 | nan | 0.9 | 0.45152 | 0.55 | 0.45 | 1.44329e-15 | True |
+| partial_scattering_R055 | plus_out | 1.67096 | 0.55 | 0.45 | 1 | nan | 0.9 | 0.45152 | 0.45 | 0.55 | 1.72085e-15 | True |
+
+![stage0](exchange_scattering_matrix_stage0_diagnostics_v1.png)
+
+## 低奇数倍音底と内在読出し
+
+| N | hair_enabled | p_chi | d_q | chi_center_cell_mass | chi_peak_contrast | L | P_m_A | P_m_B | name_hair_total | name_l1_error | name_ok |
+|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| 63 | True | -1 | 2.88658e-15 | 0.45152 | 64 | 0.00520897 | 1 | 3.64078e-33 | 1 | 1.08623e-34 | True |
+| 15 | True | -1 | 2.88658e-15 | 0.452064 | 16 | 0.00130463 | 1 | 3.96113e-33 | 1 | 2.11734e-34 | True |
+| 7 | True | -1 | 1.11022e-15 | 0.454039 | 8 | 0.000656128 | 1 | 4.79591e-33 | 1 | 1.04651e-33 | True |
+| 3 | True | -1 | 7.77156e-16 | 0.462207 | 4 | 0.000335693 | 1 | 3.89538e-33 | 1 | 1.45983e-34 | True |
+| 1 | True | -1 | 4.44089e-16 | 0.5 | 2 | 0.000183105 | 1 | 4.22098e-33 | 1 | 4.71582e-34 | True |
+| 63 | False | -1 | 7.54952e-15 | 0.45152 | 64 | 0.00520897 | 0 | 0 | 0 | nan | False |
+| 15 | False | -1 | 1.11022e-15 | 0.452064 | 16 | 0.00130463 | 0 | 0 | 0 | nan | False |
+| 7 | False | -1 | 3.10862e-15 | 0.454039 | 8 | 0.000656128 | 0 | 0 | 0 | nan | False |
+| 3 | False | -1 | 3.21965e-15 | 0.462207 | 4 | 0.000335693 | 0 | 0 | 0 | nan | False |
+| 1 | False | -1 | 8.88178e-16 | 0.5 | 2 | 0.000183105 | 0 | 0 | 0 | nan | False |
+
+## 片側高次倍音条件
+
+| channel | N_A | N_B | R | T | N_eff | L | expected_origin_A | expected_origin_B |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| minus_out | 3 | 63 | 0.55 | 0.45 | 15.5 | 0.00163032 | 0.55 | 0.45 |
+| plus_out | 3 | 63 | 0.55 | 0.45 | 18.5 | 0.00211765 | 0.45 | 0.55 |
+| minus_out | 7 | 63 | 0.55 | 0.45 | 16.6 | 0.00218044 | 0.55 | 0.45 |
+| plus_out | 7 | 63 | 0.55 | 0.45 | 19.4 | 0.00263572 | 0.45 | 0.55 |
+| minus_out | 15 | 63 | 0.55 | 0.45 | 18.8 | 0.00322256 | 0.55 | 0.45 |
+| plus_out | 15 | 63 | 0.55 | 0.45 | 21.2 | 0.00361299 | 0.45 | 0.55 |
+| minus_out | 3 | 31 | 0.55 | 0.45 | 8.3 | 0.00109366 | 0.55 | 0.45 |
+| plus_out | 3 | 31 | 0.55 | 0.45 | 9.7 | 0.00132064 | 0.45 | 0.55 |
+
+![one side high harmonic](exchange_scattering_matrix_one_side_high_harmonic_v1.png)
+
+## 観測停止対照
+
+観測あり/なしを診断対照として記録した。
+
+| N | hair_enabled | readout_enabled | p_chi | L | d_q | name_hair_total | name_ok |
+|---:|---|---|---:|---:|---:|---:|---|
+| 63 | True | True | -1 | 0.00520897 | 2.88658e-15 | 1 | True |
+| 3 | True | True | -1 | 0.000335693 | 7.77156e-16 | 1 | True |
+| 1 | True | True | -1 | 0.000183105 | 4.44089e-16 | 1 | True |
+| 63 | True | False | -1 | 0.00520897 | 2.88658e-15 | 1 | True |
+| 3 | True | False | -1 | 0.000335693 | 7.77156e-16 | 1 | True |
+| 1 | True | False | -1 | 0.000183105 | 4.44089e-16 | 1 | True |
+| 63 | False | True | -1 | 0.00520897 | 7.54952e-15 | 0 | False |
+| 3 | False | True | -1 | 0.000335693 | 3.21965e-15 | 0 | False |
+| 1 | False | True | -1 | 0.000183105 | 8.88178e-16 | 0 | False |
+| 63 | False | False | -1 | 0.00520897 | 7.54952e-15 | 0 | False |
+| 3 | False | False | -1 | 0.000335693 | 3.21965e-15 | 0 | False |
+| 1 | False | False | -1 | 0.000183105 | 8.88178e-16 | 0 | False |
+
+## Stage5 対照群比較
+
+片側高次倍音条件で、散乱行列版と圧縮表示対照を比較した。
+
+| model | N_A | N_B | channel | R | T | N_eff | L | expected_origin_A | expected_origin_B |
+|---|---:|---:|---|---:|---:|---:|---:|---:|---:|
+| fermionic_scattering_complete_reflection | 3 | 63 | minus_out | 1 | 3.7494e-33 | 2 | 0.000335693 | 1 | 3.7494e-33 |
+| bosonic_scattering_transmission | 3 | 63 | minus_out | 0 | 1 | 32 | 0.00520897 | 0 | 1 |
+| partial_scattering_R055 | 3 | 63 | minus_out | 0.55 | 0.45 | 15.5 | 0.00163032 | 0.55 | 0.45 |
+| compressed_reflection | 3 | 63 | minus_out | 1 | 0 | 2 | 0.000335693 | 1 | 0 |
+| simple_reflection | 3 | 63 | minus_out | 1 | 0 | 2 | 0.000335693 | 1 | 0 |
+| compressed_transmission | 3 | 63 | minus_out | 0 | 1 | 32 | 0.00520897 | 0 | 1 |
+| fermionic_scattering_complete_reflection | 7 | 63 | minus_out | 1 | 3.7494e-33 | 4 | 0.000656128 | 1 | 3.7494e-33 |
+| bosonic_scattering_transmission | 7 | 63 | minus_out | 0 | 1 | 32 | 0.00520897 | 0 | 1 |
+| partial_scattering_R055 | 7 | 63 | minus_out | 0.55 | 0.45 | 16.6 | 0.00218044 | 0.55 | 0.45 |
+| compressed_reflection | 7 | 63 | minus_out | 1 | 0 | 4 | 0.000656128 | 1 | 0 |
+| simple_reflection | 7 | 63 | minus_out | 1 | 0 | 4 | 0.000656128 | 1 | 0 |
+| compressed_transmission | 7 | 63 | minus_out | 0 | 1 | 32 | 0.00520897 | 0 | 1 |
+
+## 再帰片側高次倍音
+
+出射チャネルを次回入力へ渡し、複数回の散乱で `L` と `N_eff` を読む。
+
+| collision | channel | L | N_eff | chi_center_cell_mass | origin_A | origin_B | P_m_A | P_m_B |
+|---:|---|---:|---:|---:|---:|---:|---:|---:|
+| 0 | A_channel | 0.000183105 | 1 | 0.035121 | 1 | 7.90884e-35 | 1 | 2.47788e-33 |
+| 0 | B_channel | 0.00520897 | 32 | 0.45152 | 7.90884e-35 | 1 | 9.75594e-33 | 1 |
+| 1 | A_channel | 0.00135002 | 14.95 | 0.222501 | 0.55 | 0.45 | 0.55 | 0.45 |
+| 1 | B_channel | 0.0018526 | 18.05 | 0.26414 | 0.45 | 0.55 | 0.45 | 0.55 |
+| 2 | A_channel | 0.00511492 | 31.69 | 0.447356 | 0.01 | 0.99 | 0.01 | 0.99 |
+| 2 | B_channel | 0.000189575 | 1.31 | 0.039285 | 0.99 | 0.01 | 0.99 | 0.01 |
+| 4 | A_channel | 0.000213909 | 2.2276 | 0.0516104 | 0.9604 | 0.0396 | 0.9604 | 0.0396 |
+| 4 | B_channel | 0.00484172 | 30.7724 | 0.435031 | 0.0396 | 0.9604 | 0.0396 | 0.9604 |
+| 8 | A_channel | 0.00037716 | 5.71595 | 0.0984667 | 0.847873 | 0.152127 | 0.847873 | 0.152127 |
+| 8 | B_channel | 0.00387388 | 27.2841 | 0.388174 | 0.152127 | 0.847873 | 0.152127 | 0.847873 |
+| 12 | A_channel | 0.000828075 | 10.9125 | 0.168268 | 0.680242 | 0.319758 | 0.680242 | 0.319758 |
+| 12 | B_channel | 0.00263982 | 22.0875 | 0.318373 | 0.319758 | 0.680242 | 0.319758 | 0.680242 |
+| 16 | A_channel | 0.00167148 | 16.9941 | 0.249957 | 0.484061 | 0.515939 | 0.484061 | 0.515939 |
+| 16 | B_channel | 0.00151127 | 16.0059 | 0.236684 | 0.515939 | 0.484061 | 0.515939 | 0.484061 |
+| 20 | A_channel | 0.00283795 | 22.9974 | 0.330596 | 0.290405 | 0.709595 | 0.290405 | 0.709595 |
+| 20 | B_channel | 0.000731166 | 10.0026 | 0.156046 | 0.709595 | 0.290405 | 0.709595 | 0.290405 |
+| 24 | A_channel | 0.00405577 | 27.9716 | 0.397409 | 0.129949 | 0.870051 | 0.129949 | 0.870051 |
+| 24 | B_channel | 0.000336121 | 5.02842 | 0.0892317 | 0.870051 | 0.129949 | 0.870051 | 0.129949 |
+| 32 | A_channel | 0.00519937 | 31.9685 | 0.451097 | 0.00101614 | 0.998984 | 0.00101614 | 0.998984 |
+| 32 | B_channel | 0.000183722 | 1.0315 | 0.0355441 | 0.998984 | 0.00101614 | 0.998984 | 0.00101614 |
+| 48 | A_channel | 0.00136035 | 15.0197 | 0.223437 | 0.547751 | 0.452249 | 0.547751 | 0.452249 |
+| 48 | B_channel | 0.00184033 | 17.9803 | 0.263204 | 0.452249 | 0.547751 | 0.452249 | 0.547751 |
+| 64 | A_channel | 0.000185626 | 1.12587 | 0.0368117 | 0.99594 | 0.00406045 | 0.99594 | 0.00406045 |
+| 64 | B_channel | 0.00517067 | 31.8741 | 0.449829 | 0.00406045 | 0.99594 | 0.00406045 | 0.99594 |
+| 80 | A_channel | 0.00201701 | 18.9604 | 0.27637 | 0.420631 | 0.579369 | 0.420631 | 0.579369 |
+| 80 | B_channel | 0.00121922 | 14.0396 | 0.210271 | 0.579369 | 0.420631 | 0.579369 | 0.420631 |
+| 96 | A_channel | 0.00512316 | 31.7173 | 0.447722 | 0.00912053 | 0.990879 | 0.00912053 | 0.990879 |
+| 96 | B_channel | 0.000188971 | 1.28274 | 0.0389188 | 0.990879 | 0.00912053 | 0.990879 | 0.00912053 |
+| 112 | A_channel | 0.00108824 | 13.0694 | 0.19724 | 0.610664 | 0.389336 | 0.610664 | 0.389336 |
+| 112 | B_channel | 0.0022006 | 19.9306 | 0.289401 | 0.389336 | 0.610664 | 0.389336 | 0.610664 |
+| 128 | A_channel | 0.000194012 | 1.50145 | 0.0418566 | 0.983824 | 0.0161758 | 0.983824 | 0.0161758 |
+| 128 | B_channel | 0.00505728 | 31.4985 | 0.444784 | 0.0161758 | 0.983824 | 0.0161758 | 0.983824 |
+
+![recursive localization transfer](exchange_scattering_matrix_recursive_localization_transfer_v1.png)
+
+## 再帰 R/T スイープ
+
+`N_A=1`, `N_B=63` の片側高次倍音条件で、反射率 `R` を変えて再帰散乱を実行した。
+
+| R | T | L差最小 | L差最小衝突回 | N_eff差 at L差最小 | 末尾L差最小 | 末尾L差最大 | 末尾N_eff差最小 | 末尾N_eff差最大 |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 0 | 1 | 0.00502586 | 1 | 31 | 0.00502586 | 0.00502586 | 31 | 31 |
+| 0.51 | 0.49 | 5.37371e-05 | 78 | 0.331455 | 0.00245063 | 0.00433802 | 15.1157 | 26.7573 |
+| 0.55 | 0.45 | 0.000114791 | 110 | 0.708042 | 0.000114791 | 0.00501834 | 0.708042 | 30.9536 |
+| 0.6 | 0.4 | 0.000185909 | 125 | 1.1467 | 0.000185909 | 0.00502584 | 1.1467 | 30.9999 |
+| 0.7 | 0.3 | 2.48676e-05 | 42 | 0.153386 | 7.46003e-05 | 0.00501669 | 0.460142 | 30.9434 |
+| 0.9 | 0.1 | 8.21216e-05 | 61 | 0.506534 | 0.000117466 | 0.00502318 | 0.72454 | 30.9834 |
+| 1 | 3.7494e-33 | 0.00502586 | 126 | 31 | 0.00502586 | 0.00502586 | 31 | 31 |
+
+![recursive R sweep](exchange_scattering_matrix_recursive_R_sweep_v1.png)
+
+## 波形局在スナップショット
+
+`chi` 方向の縮約密度 `rho_chi` を、各線の最大値で振幅正規化し、完全透過端点、中間散乱、完全反射端点で比較した。
+
+完全透過端点 `R=0` と完全反射端点 `R=1` では、低次数波形と高次数波形の差が保存される。
+
+中間散乱 `R=0.70` では、衝突回 `42` で両チャネルの `L` と `N_eff` が近接する。
+
+![waveform localization snapshots](exchange_scattering_matrix_waveform_localization_snapshots_v1.png)
+
+## R=0.70 波形局在化の再帰発展
+
+中間散乱 `R=0.70` について、衝突回 `0,1,2,3,5,10,20,42` の `rho_chi / max` を図化した。
+
+![R070 waveform evolution](exchange_scattering_matrix_R070_waveform_evolution_v1.png)
+
+## 奇数倍音底
+
+完全反射 `Delta_F=pi` で `N` を下げ、`N_min` を読む。
+
+![low N](exchange_scattering_matrix_low_n_bottom_v1.png)
+
+## 二チャネル出力
+
+```text
+minus_out = r A_ref + t B_trans
+plus_out  = t A_trans + r B_ref
+```
+
+上記の二チャネル出力から `L` と `H(n)` を読む。
+
+## 出力
+
+| 種別 | ファイル |
+|---|---|
+| JSON | `exchange_scattering_matrix_fermionic_localization_transfer_preliminary_result_v1.json` |
+| CSV | `exchange_scattering_matrix_fermionic_localization_transfer_rows_v1.csv` |
+| Stage0 図 | `exchange_scattering_matrix_stage0_diagnostics_v1.png` |
+| 低N図 | `exchange_scattering_matrix_low_n_bottom_v1.png` |
+| 片側高次倍音図 | `exchange_scattering_matrix_one_side_high_harmonic_v1.png` |
+| 再帰局在性図 | `exchange_scattering_matrix_recursive_localization_transfer_v1.png` |
+| 再帰Rスイープ図 | `exchange_scattering_matrix_recursive_R_sweep_v1.png` |
+| 波形局在スナップショット図 | `exchange_scattering_matrix_waveform_localization_snapshots_v1.png` |
+| R=0.70 波形発展図 | `exchange_scattering_matrix_R070_waveform_evolution_v1.png` |
+| report | `exchange_scattering_matrix_fermionic_localization_transfer_report_v1.md` |
