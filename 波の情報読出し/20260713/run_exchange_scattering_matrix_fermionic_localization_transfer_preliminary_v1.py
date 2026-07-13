@@ -14,6 +14,12 @@ import numpy as np
 BASE_DIR = Path(__file__).resolve().parent
 OUT_DIR = BASE_DIR / "exchange_scattering_matrix_fermionic_localization_transfer_preliminary_result_v1"
 OUT_DIR.mkdir(exist_ok=True)
+ACCELERATION_BASE_PATH = (
+    BASE_DIR.parent
+    / "20260711"
+    / "ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v2"
+    / "ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v2.json"
+)
 
 MPL_DIR = OUT_DIR / ".matplotlib"
 MPL_DIR.mkdir(exist_ok=True)
@@ -43,8 +49,10 @@ class Params:
     delta_f_boson: float = 0.0
     delta_f_half: float = math.pi / 2.0
     p_tol: float = 1.0e-2
-    copy_distance_tol: float = 1.0e-2
+    d_q_tol: float = 1.0e-2
+    name_tol: float = 1.0e-8
     norm_tol: float = 1.0e-10
+    recursive_collision_count: int = 128
 
 
 def odd_harmonic_kernel(u: np.ndarray, nh: int) -> np.ndarray:
@@ -64,6 +72,10 @@ def normalize(v: np.ndarray) -> np.ndarray:
     if norm <= 0.0:
         raise ValueError("zero norm state")
     return v / norm
+
+
+def wrap_angle(value: np.ndarray | float) -> np.ndarray | float:
+    return (value + math.pi) % (2.0 * math.pi) - math.pi
 
 
 def make_grids(params: Params) -> Tuple[np.ndarray, np.ndarray]:
@@ -241,6 +253,58 @@ def localization(vector: np.ndarray) -> float:
     return float(np.sum(prob**2))
 
 
+def chi_position_metrics(params: Params, vector: np.ndarray, n_chi: int) -> Dict[str, float]:
+    denom = norm2(vector)
+    if denom <= 0.0:
+        return {
+            "chi_peak": float("nan"),
+            "chi_peak_abs_error": float("nan"),
+            "chi_peak_contrast": float("nan"),
+            "chi_center_cell_mass": float("nan"),
+            "chi_effective_cell_count": float("nan"),
+        }
+    chi, _ = make_grids(params)
+    arr = reshape_state(params, vector)
+    prob_chi = np.sum(np.abs(arr) ** 2, axis=1) / denom
+    peak_index = int(np.argmax(prob_chi))
+    chi_peak = float(chi[peak_index])
+    mean_cell = 1.0 / float(params.chi_grid_n)
+    peak_contrast = float(prob_chi[peak_index] / mean_cell)
+    delta = np.asarray(wrap_angle(chi - params.chi_center), dtype=float)
+    cell_half_width = math.pi / float(n_chi + 1)
+    center_cell_mass = float(np.sum(prob_chi[np.abs(delta) <= cell_half_width]))
+    entropy = -float(np.sum([p * math.log(max(float(p), 1.0e-300)) for p in prob_chi]))
+    return {
+        "chi_peak": chi_peak,
+        "chi_peak_abs_error": abs(float(wrap_angle(chi_peak - params.chi_center))),
+        "chi_peak_contrast": peak_contrast,
+        "chi_center_cell_mass": center_cell_mass,
+        "chi_effective_cell_count": float(math.exp(entropy)),
+    }
+
+
+def name_readout_metrics(
+    params: Params,
+    p_m_a: float,
+    p_m_b: float,
+    expected_origin_A: float,
+    expected_origin_B: float,
+    hair_enabled: bool,
+) -> Dict[str, Any]:
+    if not hair_enabled:
+        return {
+            "name_hair_total": float(p_m_a + p_m_b),
+            "name_readout_l1_error": float("nan"),
+            "name_readout_ok": False,
+        }
+    error = abs(float(p_m_a) - float(expected_origin_A)) + abs(float(p_m_b) - float(expected_origin_B))
+    return {
+        "name_hair_total": float(p_m_a + p_m_b),
+        "name_readout_l1_error": error,
+        "name_readout_ok": bool(error <= params.name_tol),
+    }
+
+
 def channel_metrics(
     params: Params,
     stage: str,
@@ -252,7 +316,6 @@ def channel_metrics(
     channel: str,
     vector: np.ndarray,
     p_target: float | None,
-    copy_target: np.ndarray | None,
     expected_origin_A: float,
     expected_origin_B: float,
     T: float,
@@ -263,9 +326,16 @@ def channel_metrics(
     h = harmonic_distribution(params, vector)
     n_eff, n_eff_2 = effective_n(h)
     eta = eta_distribution(params, vector, [params.m_A, params.m_B])
+    p_m_a = eta.get(params.m_A, 0.0)
+    p_m_b = eta.get(params.m_B, 0.0)
+    chi_metrics = chi_position_metrics(params, vector, max(n_a, n_b))
+    name_metrics = name_readout_metrics(params, p_m_a, p_m_b, expected_origin_A, expected_origin_B, hair_enabled)
     p = pure_expect_p(params, vector)
-    copy_d = normalized_distance(vector, copy_target) if copy_target is not None else float("nan")
     p_abs_error = abs(p - p_target) if p_target is not None else float("nan")
+    compressed_q_A = params.q_A * (T - R)
+    compressed_q_B = params.q_B * (T - R)
+    compressed_q_channel = compressed_q_A if channel == "minus_out" else compressed_q_B
+    d_q = abs(p - compressed_q_channel) / (abs(p) + 1.0e-12)
     return {
         "stage": stage,
         "model": model,
@@ -280,18 +350,88 @@ def channel_metrics(
         "p_chi": p,
         "p_target": p_target if p_target is not None else float("nan"),
         "p_abs_error": p_abs_error,
-        "copy_distance_d": copy_d,
+        "d_q": d_q,
         "L": localization(vector),
+        **chi_metrics,
         "N_eff": n_eff,
         "N_eff_2": n_eff_2,
-        "P_m_A": eta.get(params.m_A, 0.0),
-        "P_m_B": eta.get(params.m_B, 0.0),
+        "P_m_A": p_m_a,
+        "P_m_B": p_m_b,
+        **name_metrics,
         "expected_origin_A": expected_origin_A,
         "expected_origin_B": expected_origin_B,
         "readout_enabled": readout_enabled,
         "control_family": control_family,
-        "compressed_q_A": params.q_A * (T - R),
-        "compressed_q_B": params.q_B * (T - R),
+        "compressed_q_A": compressed_q_A,
+        "compressed_q_B": compressed_q_B,
+        "compressed_q_channel": compressed_q_channel,
+    }
+
+
+def projection_weight(vector: np.ndarray, basis: np.ndarray) -> float:
+    denom = norm2(vector)
+    base_denom = norm2(basis)
+    if denom <= 0.0 or base_denom <= 0.0:
+        return float("nan")
+    v = vector / math.sqrt(denom)
+    b = basis / math.sqrt(base_denom)
+    return float(abs(inner(b, v)) ** 2)
+
+
+def recursive_state_metrics(
+    params: Params,
+    stage: str,
+    model: str,
+    delta_f: float,
+    T: float,
+    R: float,
+    n_a_initial: int,
+    n_b_initial: int,
+    hair_enabled: bool,
+    collision_index: int,
+    channel: str,
+    vector: np.ndarray,
+    initial_a: np.ndarray,
+    initial_b: np.ndarray,
+) -> Dict[str, Any]:
+    h = harmonic_distribution(params, vector)
+    n_eff, n_eff_2 = effective_n(h)
+    eta = eta_distribution(params, vector, [params.m_A, params.m_B])
+    p_m_a = eta.get(params.m_A, 0.0)
+    p_m_b = eta.get(params.m_B, 0.0)
+    chi_metrics = chi_position_metrics(params, vector, max(n_a_initial, n_b_initial))
+    return {
+        "stage": stage,
+        "model": model,
+        "delta_f": delta_f,
+        "T": T,
+        "R": R,
+        "channel": channel,
+        "N_A": n_a_initial,
+        "N_B": n_b_initial,
+        "hair_enabled": hair_enabled,
+        "collision_index": collision_index,
+        "norm": norm2(vector),
+        "p_chi": pure_expect_p(params, vector),
+        "p_target": float("nan"),
+        "p_abs_error": float("nan"),
+        "d_q": float("nan"),
+        "L": localization(vector),
+        **chi_metrics,
+        "N_eff": n_eff,
+        "N_eff_2": n_eff_2,
+        "P_m_A": p_m_a,
+        "P_m_B": p_m_b,
+        "name_hair_total": float(p_m_a + p_m_b),
+        "name_readout_l1_error": float("nan"),
+        "name_readout_ok": bool(hair_enabled and (p_m_a + p_m_b) > 0.0),
+        "expected_origin_A": projection_weight(vector, initial_a),
+        "expected_origin_B": projection_weight(vector, initial_b),
+        "readout_enabled": True,
+        "control_family": "recursive_scattering_matrix",
+        "compressed_q_A": float("nan"),
+        "compressed_q_B": float("nan"),
+        "compressed_q_channel": float("nan"),
     }
 
 
@@ -307,7 +447,7 @@ def rows_for_case(
     n_a: int,
     n_b: int,
     hair_enabled: bool,
-    copy_targets: bool,
+    compressed_targets: bool,
     readout_enabled: bool = True,
 ) -> List[Dict[str, Any]]:
     out = scattering_outputs(params, n_a, n_b, hair_enabled, delta_f)
@@ -325,8 +465,7 @@ def rows_for_case(
             hair_enabled,
             "minus_out",
             out["out_minus"],
-            -params.q_A if copy_targets else None,
-            out["a_ref"] if copy_targets else None,
+            -params.q_A if compressed_targets else None,
             expected_origin_A=R,
             expected_origin_B=T,
             T=T,
@@ -346,8 +485,7 @@ def rows_for_case(
             hair_enabled,
             "plus_out",
             out["out_plus"],
-            -params.q_B if copy_targets else None,
-            out["b_ref"] if copy_targets else None,
+            -params.q_B if compressed_targets else None,
             expected_origin_A=T,
             expected_origin_B=R,
             T=T,
@@ -359,7 +497,7 @@ def rows_for_case(
     return rows
 
 
-def rows_for_copy_control(
+def rows_for_compressed_control(
     params: Params,
     stage: str,
     model: str,
@@ -373,14 +511,14 @@ def rows_for_copy_control(
     b_trans = make_state(params, n_b, params.q_B, params.m_B, hair_enabled, params.A_B)
     b_ref = make_state(params, n_b, -params.q_B, params.m_B, hair_enabled, params.A_B)
 
-    if mode in {"copy_reflection", "simple_reflection"}:
+    if mode in {"compressed_reflection", "simple_reflection"}:
         minus = a_ref
         plus = b_ref
         expected_minus = (1.0, 0.0)
         expected_plus = (0.0, 1.0)
         T = 0.0
         R = 1.0
-    elif mode == "copy_transmission":
+    elif mode == "compressed_transmission":
         minus = b_trans
         plus = a_trans
         expected_minus = (0.0, 1.0)
@@ -388,7 +526,7 @@ def rows_for_copy_control(
         T = 1.0
         R = 0.0
     else:
-        raise ValueError(f"unknown copy control mode: {mode}")
+        raise ValueError(f"unknown compressed control mode: {mode}")
 
     return [
         channel_metrics(
@@ -402,13 +540,12 @@ def rows_for_copy_control(
             "minus_out",
             minus,
             None,
-            None,
             expected_origin_A=expected_minus[0],
             expected_origin_B=expected_minus[1],
             T=T,
             R=R,
             readout_enabled=True,
-            control_family="copy_control",
+            control_family="compressed_control",
         ),
         channel_metrics(
             params,
@@ -421,13 +558,12 @@ def rows_for_copy_control(
             "plus_out",
             plus,
             None,
-            None,
             expected_origin_A=expected_plus[0],
             expected_origin_B=expected_plus[1],
             T=T,
             R=R,
             readout_enabled=True,
-            control_family="copy_control",
+            control_family="compressed_control",
         ),
     ]
 
@@ -445,13 +581,13 @@ def stage0_rows(params: Params) -> List[Dict[str, Any]]:
         rows.extend(
             rows_for_case(
                 params,
-                "stage0_old_condition_reproduction",
+                "stage0_full_reflection_base",
                 model,
                 delta_f,
                 n,
                 n,
                 True,
-                copy_targets=(model == "fermionic_scattering_complete_reflection"),
+                compressed_targets=(model == "fermionic_scattering_complete_reflection"),
             )
         )
     return rows
@@ -464,13 +600,13 @@ def low_n_rows(params: Params) -> List[Dict[str, Any]]:
             rows.extend(
                 rows_for_case(
                     params,
-                    "stage1_low_localization_bottom",
+                    "stage1_odd_harmonic_bottom",
                     "fermionic_scattering_complete_reflection",
                     params.delta_f_fermion,
                     n,
                     n,
                     hair_enabled,
-                    copy_targets=True,
+                    compressed_targets=True,
                 )
             )
     return rows
@@ -490,14 +626,14 @@ def observation_stop_rows(params: Params) -> List[Dict[str, Any]]:
                         n,
                         n,
                         hair_enabled,
-                        copy_targets=True,
+                        compressed_targets=True,
                         readout_enabled=readout_enabled,
                     )
                 )
     return rows
 
 
-def asymmetric_transfer_rows(params: Params) -> List[Dict[str, Any]]:
+def one_side_high_harmonic_rows(params: Params) -> List[Dict[str, Any]]:
     rows: List[Dict[str, Any]] = []
     pairs = [(3, 63), (7, 63), (15, 63), (3, 31)]
     cases = [
@@ -512,13 +648,13 @@ def asymmetric_transfer_rows(params: Params) -> List[Dict[str, Any]]:
                 rows.extend(
                     rows_for_case(
                         params,
-                        "stage2_asymmetric_harmonic_transfer",
+                        "stage4_one_side_high_harmonic",
                         model,
                         delta_f,
                         n_a,
                         n_b,
                         hair_enabled,
-                        copy_targets=False,
+                        compressed_targets=False,
                     )
                 )
     return rows
@@ -532,7 +668,7 @@ def control_comparison_rows(params: Params) -> List[Dict[str, Any]]:
         model_delta("bosonic_scattering_transmission", params.delta_f_boson),
         model_delta("partial_scattering_R055", 2.0 * math.asin(math.sqrt(0.55))),
     ]
-    copy_cases = ["copy_reflection", "simple_reflection", "copy_transmission"]
+    compressed_cases = ["compressed_reflection", "simple_reflection", "compressed_transmission"]
     for hair_enabled in [True, False]:
         for n_a, n_b in pairs:
             for model, delta_f in scattering_cases:
@@ -545,12 +681,12 @@ def control_comparison_rows(params: Params) -> List[Dict[str, Any]]:
                         n_a,
                         n_b,
                         hair_enabled,
-                        copy_targets=False,
+                        compressed_targets=False,
                     )
                 )
-            for model in copy_cases:
+            for model in compressed_cases:
                 rows.extend(
-                    rows_for_copy_control(
+                    rows_for_compressed_control(
                         params,
                         "stage5_control_group_comparison",
                         model,
@@ -563,25 +699,139 @@ def control_comparison_rows(params: Params) -> List[Dict[str, Any]]:
     return rows
 
 
+def recursive_transfer_rows(params: Params) -> List[Dict[str, Any]]:
+    rows: List[Dict[str, Any]] = []
+    pairs = [(1, 63), (63, 1), (1, 31), (31, 1)]
+    cases = [
+        model_delta("fermionic_scattering_complete_reflection", params.delta_f_fermion),
+        model_delta("bosonic_scattering_transmission", params.delta_f_boson),
+        model_delta("partial_scattering_half", params.delta_f_half),
+        model_delta("partial_scattering_R055", 2.0 * math.asin(math.sqrt(0.55))),
+    ]
+    hair_enabled = True
+    for n_a, n_b in pairs:
+        for model, delta_f in cases:
+            t, r, T, R = scattering_coefficients(delta_f)
+            a = make_state(params, n_a, params.q_A, params.m_A, hair_enabled, params.A_A)
+            b = make_state(params, n_b, params.q_B, params.m_B, hair_enabled, params.A_B)
+            initial_a = a.copy()
+            initial_b = b.copy()
+            for collision_index in range(params.recursive_collision_count + 1):
+                rows.append(
+                    recursive_state_metrics(
+                        params,
+                        "stage6_recursive_one_side_high_harmonic",
+                        model,
+                        delta_f,
+                        T,
+                        R,
+                        n_a,
+                        n_b,
+                        hair_enabled,
+                        collision_index,
+                        "A_channel",
+                        a,
+                        initial_a,
+                        initial_b,
+                    )
+                )
+                rows.append(
+                    recursive_state_metrics(
+                        params,
+                        "stage6_recursive_one_side_high_harmonic",
+                        model,
+                        delta_f,
+                        T,
+                        R,
+                        n_a,
+                        n_b,
+                        hair_enabled,
+                        collision_index,
+                        "B_channel",
+                        b,
+                        initial_a,
+                        initial_b,
+                    )
+                )
+                if collision_index >= params.recursive_collision_count:
+                    break
+                a_next = normalize(r * a + t * b)
+                b_next = normalize(t * a + r * b)
+                a = a_next
+                b = b_next
+    return rows
+
+
+def rows_by_collision(rows: List[Dict[str, Any]]) -> Dict[int, Dict[str, Dict[str, Any]]]:
+    grouped: Dict[int, Dict[str, Dict[str, Any]]] = {}
+    for row in rows:
+        grouped.setdefault(int(row["collision_index"]), {})[str(row["channel"])] = row
+    return grouped
+
+
+def recursive_pair_summary(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
+    grouped = rows_by_collision(rows)
+    first = grouped[min(grouped)]
+    last = grouped[max(grouped)]
+    gaps = []
+    for collision_index, by_channel in grouped.items():
+        if "A_channel" in by_channel and "B_channel" in by_channel:
+            l_gap = abs(float(by_channel["A_channel"]["L"]) - float(by_channel["B_channel"]["L"]))
+            n_gap = abs(float(by_channel["A_channel"]["N_eff"]) - float(by_channel["B_channel"]["N_eff"]))
+            gaps.append((l_gap, n_gap, collision_index))
+    min_l_gap, min_n_gap, min_gap_collision = min(gaps, key=lambda item: item[0]) if gaps else (float("nan"), float("nan"), None)
+    max_collision = max(grouped)
+    tail_from = max(0, max_collision - 24)
+    tail_gaps = [(l_gap, n_gap, collision_index) for l_gap, n_gap, collision_index in gaps if collision_index >= tail_from]
+    tail_l_values = [item[0] for item in tail_gaps]
+    tail_n_values = [item[1] for item in tail_gaps]
+    return {
+        "L_A_initial": float(first["A_channel"]["L"]),
+        "L_B_initial": float(first["B_channel"]["L"]),
+        "L_A_final": float(last["A_channel"]["L"]),
+        "L_B_final": float(last["B_channel"]["L"]),
+        "N_eff_A_initial": float(first["A_channel"]["N_eff"]),
+        "N_eff_B_initial": float(first["B_channel"]["N_eff"]),
+        "N_eff_A_final": float(last["A_channel"]["N_eff"]),
+        "N_eff_B_final": float(last["B_channel"]["N_eff"]),
+        "L_gap_initial": abs(float(first["A_channel"]["L"]) - float(first["B_channel"]["L"])),
+        "L_gap_final": abs(float(last["A_channel"]["L"]) - float(last["B_channel"]["L"])),
+        "L_gap_min": float(min_l_gap),
+        "N_eff_gap_initial": abs(float(first["A_channel"]["N_eff"]) - float(first["B_channel"]["N_eff"])),
+        "N_eff_gap_final": abs(float(last["A_channel"]["N_eff"]) - float(last["B_channel"]["N_eff"])),
+        "N_eff_gap_at_L_gap_min": float(min_n_gap),
+        "L_gap_min_collision": min_gap_collision,
+        "tail_from_collision": tail_from,
+        "tail_L_gap_min": min(tail_l_values) if tail_l_values else float("nan"),
+        "tail_L_gap_max": max(tail_l_values) if tail_l_values else float("nan"),
+        "tail_N_eff_gap_min": min(tail_n_values) if tail_n_values else float("nan"),
+        "tail_N_eff_gap_max": max(tail_n_values) if tail_n_values else float("nan"),
+        "A_localization_increased": bool(float(last["A_channel"]["L"]) > float(first["A_channel"]["L"])),
+        "B_localization_decreased": bool(float(last["B_channel"]["L"]) < float(first["B_channel"]["L"])),
+    }
+
+
 def compute_verdict(params: Params, rows: List[Dict[str, Any]]) -> Dict[str, Any]:
     stage0 = [
         row
         for row in rows
-        if row["stage"] == "stage0_old_condition_reproduction"
+        if row["stage"] == "stage0_full_reflection_base"
         and row["model"] == "fermionic_scattering_complete_reflection"
     ]
     stage0_p_ok = all(float(row["p_abs_error"]) <= params.p_tol for row in stage0)
-    stage0_copy_ok = all(float(row["copy_distance_d"]) <= params.copy_distance_tol for row in stage0)
+    stage0_d_q_ok = all(float(row["d_q"]) <= params.d_q_tol for row in stage0)
     stage0_norm_ok = all(abs(float(row["norm"]) - 1.0) <= params.norm_tol for row in stage0)
+    stage0_name_ok = all(bool(row["name_readout_ok"]) for row in stage0 if bool(row["hair_enabled"]))
 
-    low = [row for row in rows if row["stage"] == "stage1_low_localization_bottom"]
+    low = [row for row in rows if row["stage"] == "stage1_odd_harmonic_bottom"]
     good_ns = sorted(
         {
             int(row["N_A"])
             for row in low
             if bool(row["hair_enabled"])
             and float(row["p_abs_error"]) <= params.p_tol
-            and float(row["copy_distance_d"]) <= params.copy_distance_tol
+            and float(row["d_q"]) <= params.d_q_tol
+            and bool(row["name_readout_ok"])
         }
     )
     good_ns_no_hair = sorted(
@@ -590,13 +840,25 @@ def compute_verdict(params: Params, rows: List[Dict[str, Any]]) -> Dict[str, Any
             for row in low
             if not bool(row["hair_enabled"])
             and float(row["p_abs_error"]) <= params.p_tol
-            and float(row["copy_distance_d"]) <= params.copy_distance_tol
+            and float(row["d_q"]) <= params.d_q_tol
+            and float(row["name_hair_total"]) <= params.name_tol
         }
     )
+    bottom_with_hair = min(good_ns) if good_ns else None
+    bottom_without_hair = min(good_ns_no_hair) if good_ns_no_hair else None
+    low_with_hair_bottom_rows = [
+        row for row in low if bottom_with_hair is not None and int(row["N_A"]) == bottom_with_hair and bool(row["hair_enabled"])
+    ]
+    low_without_hair_bottom_rows = [
+        row for row in low if bottom_without_hair is not None and int(row["N_A"]) == bottom_without_hair and not bool(row["hair_enabled"])
+    ]
+    name_hair_removed_total_max = max(
+        [float(row["name_hair_total"]) for row in low if not bool(row["hair_enabled"])] or [float("nan")]
+    )
 
-    asym = [row for row in rows if row["stage"] == "stage2_asymmetric_harmonic_transfer"]
-    partial = [row for row in asym if row["model"] == "partial_scattering_R055"]
-    transfer_seen = any(
+    one_side = [row for row in rows if row["stage"] == "stage4_one_side_high_harmonic"]
+    partial = [row for row in one_side if row["model"] == "partial_scattering_R055"]
+    one_side_recorded = any(
         0.0 < float(row["expected_origin_A"]) < 1.0 and 0.0 < float(row["expected_origin_B"]) < 1.0
         for row in partial
     )
@@ -624,19 +886,64 @@ def compute_verdict(params: Params, rows: List[Dict[str, Any]]) -> Dict[str, Any
     controls = [row for row in rows if row["stage"] == "stage5_control_group_comparison"]
     control_models = sorted({row["model"] for row in controls})
 
+    recursive = [row for row in rows if row["stage"] == "stage6_recursive_one_side_high_harmonic"]
+    recursive_main = [
+        row
+        for row in recursive
+        if row["model"] == "partial_scattering_R055"
+        and int(row["N_A"]) == 1
+        and int(row["N_B"]) == 63
+    ]
+    recursive_summary = recursive_pair_summary(recursive_main) if recursive_main else {}
+
     return {
-        "stage0_reproduced": bool(stage0_p_ok and stage0_copy_ok and stage0_norm_ok),
+        "stage0_reproduced": bool(stage0_p_ok and stage0_d_q_ok and stage0_norm_ok),
         "stage0_p_reflection_ok": bool(stage0_p_ok),
-        "stage0_copy_distance_small": bool(stage0_copy_ok),
+        "stage0_d_q_small": bool(stage0_d_q_ok),
         "stage0_norm_ok": bool(stage0_norm_ok),
-        "low_localization_bottom_with_hair": min(good_ns) if good_ns else None,
-        "low_localization_bottom_without_hair": min(good_ns_no_hair) if good_ns_no_hair else None,
-        "asymmetric_partial_transfer_recorded": bool(transfer_seen),
+        "stage0_name_readout_ok": bool(stage0_name_ok),
+        "odd_harmonic_bottom_with_hair": bottom_with_hair,
+        "odd_harmonic_bottom_without_hair": bottom_without_hair,
+        "bottom_with_hair_name_readout_ok": bool(
+            low_with_hair_bottom_rows and all(bool(row["name_readout_ok"]) for row in low_with_hair_bottom_rows)
+        ),
+        "bottom_without_hair_name_removed": bool(
+            low_without_hair_bottom_rows and all(float(row["name_hair_total"]) <= params.name_tol for row in low_without_hair_bottom_rows)
+        ),
+        "name_hair_removed_total_max": name_hair_removed_total_max,
+        "bottom_with_hair_chi_center_cell_mass_min": min(
+            [float(row["chi_center_cell_mass"]) for row in low_with_hair_bottom_rows] or [float("nan")]
+        ),
+        "bottom_without_hair_chi_center_cell_mass_min": min(
+            [float(row["chi_center_cell_mass"]) for row in low_without_hair_bottom_rows] or [float("nan")]
+        ),
+        "one_side_high_harmonic_recorded": bool(one_side_recorded),
         "observation_stop_executed": obs_executed,
         "observation_stop_max_L_delta": max(obs_deltas) if obs_deltas else None,
-        "observation_stop_note": "No damping model is included; on/off rows verify that diagnostic readout does not alter the scattering-matrix output.",
         "stage5_control_comparison_executed": bool(controls),
         "stage5_control_models": control_models,
+        "recursive_one_side_high_harmonic_executed": bool(recursive),
+        "recursive_partial_R055_L_A_initial": recursive_summary.get("L_A_initial"),
+        "recursive_partial_R055_L_A_final": recursive_summary.get("L_A_final"),
+        "recursive_partial_R055_L_B_initial": recursive_summary.get("L_B_initial"),
+        "recursive_partial_R055_L_B_final": recursive_summary.get("L_B_final"),
+        "recursive_partial_R055_L_gap_initial": recursive_summary.get("L_gap_initial"),
+        "recursive_partial_R055_L_gap_final": recursive_summary.get("L_gap_final"),
+        "recursive_partial_R055_L_gap_min": recursive_summary.get("L_gap_min"),
+        "recursive_partial_R055_L_gap_min_collision": recursive_summary.get("L_gap_min_collision"),
+        "recursive_partial_R055_N_eff_A_initial": recursive_summary.get("N_eff_A_initial"),
+        "recursive_partial_R055_N_eff_A_final": recursive_summary.get("N_eff_A_final"),
+        "recursive_partial_R055_N_eff_B_initial": recursive_summary.get("N_eff_B_initial"),
+        "recursive_partial_R055_N_eff_B_final": recursive_summary.get("N_eff_B_final"),
+        "recursive_partial_R055_N_eff_gap_initial": recursive_summary.get("N_eff_gap_initial"),
+        "recursive_partial_R055_N_eff_gap_final": recursive_summary.get("N_eff_gap_final"),
+        "recursive_partial_R055_tail_from_collision": recursive_summary.get("tail_from_collision"),
+        "recursive_partial_R055_tail_L_gap_min": recursive_summary.get("tail_L_gap_min"),
+        "recursive_partial_R055_tail_L_gap_max": recursive_summary.get("tail_L_gap_max"),
+        "recursive_partial_R055_tail_N_eff_gap_min": recursive_summary.get("tail_N_eff_gap_min"),
+        "recursive_partial_R055_tail_N_eff_gap_max": recursive_summary.get("tail_N_eff_gap_max"),
+        "recursive_partial_R055_A_localization_increased": recursive_summary.get("A_localization_increased"),
+        "recursive_partial_R055_B_localization_decreased": recursive_summary.get("B_localization_decreased"),
     }
 
 
@@ -644,11 +951,16 @@ def write_csv(path: Path, rows: List[Dict[str, Any]]) -> None:
     if not rows:
         path.write_text("", encoding="utf-8")
         return
-    keys = list(rows[0].keys())
+    keys: List[str] = []
+    for row in rows:
+        for key in row.keys():
+            if key not in keys:
+                keys.append(key)
     with path.open("w", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=keys)
         writer.writeheader()
-        writer.writerows(rows)
+        for row in rows:
+            writer.writerow({key: row.get(key, "") for key in keys})
 
 
 def clean_value(value: Any) -> Any:
@@ -663,38 +975,80 @@ def serialise_rows(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     return [{key: clean_value(value) for key, value in row.items()} for row in rows]
 
 
+def load_acceleration_base() -> Dict[str, Any]:
+    if not ACCELERATION_BASE_PATH.exists():
+        return {
+            "path": str(ACCELERATION_BASE_PATH),
+            "loaded": False,
+            "acceleration_base_ok": False,
+            "verdict": {},
+        }
+    data = json.loads(ACCELERATION_BASE_PATH.read_text(encoding="utf-8"))
+    verdict = data.get("aggregate_verdict", {})
+    ok = bool(
+        abs(float(verdict.get("fermionic_reflection_rate", float("nan"))) - 1.0) <= 1.0e-12
+        and abs(float(verdict.get("fermionic_transmission_rate", float("nan")))) <= 1.0e-20
+        and abs(float(verdict.get("fermionic_q_out_factor", float("nan"))) + 1.0) <= 1.0e-12
+        and abs(float(verdict.get("max_Q_closed_abs", float("nan")))) <= 1.0e-12
+        and bool(verdict.get("label_free_pass_vs_fermionic_match_all_cases", False))
+        and bool(verdict.get("fermionic_regular_cell_harmonic_consistent_nonstrong_modes", False))
+        and bool(verdict.get("fermionic_c1_area_sweep_detected_all_cases", False))
+    )
+    keys = [
+        "fermionic_reflection_rate",
+        "fermionic_transmission_rate",
+        "fermionic_q_out_factor",
+        "max_Q_closed_abs",
+        "label_free_pass_vs_fermionic_match_all_cases",
+        "fermionic_regular_cell_harmonic_consistent_nonstrong_modes",
+        "fermionic_c1_area_sweep_detected_all_cases",
+        "fermionic_c1_readout_off_max_epsilon_c_abs",
+    ]
+    return {
+        "path": str(ACCELERATION_BASE_PATH),
+        "loaded": True,
+        "acceleration_base_ok": ok,
+        "verdict": {key: verdict.get(key) for key in keys},
+    }
+
+
+def attach_acceleration_base(rows: List[Dict[str, Any]], acceleration_base_ok: bool) -> None:
+    for row in rows:
+        row["acceleration_base_ok"] = bool(acceleration_base_ok)
+
+
 def make_plots(rows: List[Dict[str, Any]]) -> Dict[str, str]:
     outputs: Dict[str, str] = {}
 
-    stage0 = [row for row in rows if row["stage"] == "stage0_old_condition_reproduction"]
+    stage0 = [row for row in rows if row["stage"] == "stage0_full_reflection_base"]
     labels = [f"{row['model']}\n{row['channel']}" for row in stage0]
     p_values = [float(row["p_chi"]) for row in stage0]
-    copy_values = [0.0 if math.isnan(float(row["copy_distance_d"])) else float(row["copy_distance_d"]) for row in stage0]
+    d_q_values = [0.0 if math.isnan(float(row["d_q"])) else float(row["d_q"]) for row in stage0]
     fig, axes = plt.subplots(2, 1, figsize=(12, 8), constrained_layout=True)
     axes[0].bar(labels, p_values)
     axes[0].axhline(-1.0, color="black", linestyle="--", linewidth=1)
     axes[0].axhline(1.0, color="black", linestyle=":", linewidth=1)
     axes[0].set_ylabel("p_chi")
     axes[0].set_title("Stage 0 scattering-matrix direction readout")
-    axes[1].bar(labels, copy_values)
-    axes[1].set_ylabel("copy distance to full reflection")
+    axes[1].bar(labels, d_q_values)
+    axes[1].set_ylabel("d_q")
     axes[1].tick_params(axis="x", rotation=80)
     path = OUT_DIR / "exchange_scattering_matrix_stage0_diagnostics_v1.png"
     fig.savefig(path, dpi=160)
     plt.close(fig)
     outputs["stage0_plot"] = path.name
 
-    low = [row for row in rows if row["stage"] == "stage1_low_localization_bottom"]
+    low = [row for row in rows if row["stage"] == "stage1_odd_harmonic_bottom"]
     fig, ax = plt.subplots(figsize=(9, 5), constrained_layout=True)
     for hair_enabled, marker in [(True, "o"), (False, "s")]:
         subset = [row for row in low if bool(row["hair_enabled"]) == hair_enabled and row["channel"] == "minus_out"]
         subset = sorted(subset, key=lambda row: int(row["N_A"]))
-        ax.plot([int(row["N_A"]) for row in subset], [float(row["copy_distance_d"]) for row in subset], marker=marker, label=f"hair={hair_enabled}")
+        ax.plot([int(row["N_A"]) for row in subset], [float(row["d_q"]) for row in subset], marker=marker, label=f"hair={hair_enabled}")
     ax.set_xscale("log", base=2)
     ax.invert_xaxis()
     ax.set_xlabel("N")
-    ax.set_ylabel("copy distance d")
-    ax.set_title("Low-localization bottom, minus channel")
+    ax.set_ylabel("d_q")
+    ax.set_title("Odd-harmonic bottom, minus channel")
     ax.legend()
     path = OUT_DIR / "exchange_scattering_matrix_low_n_bottom_v1.png"
     fig.savefig(path, dpi=160)
@@ -704,7 +1058,7 @@ def make_plots(rows: List[Dict[str, Any]]) -> Dict[str, str]:
     asym = [
         row
         for row in rows
-        if row["stage"] == "stage2_asymmetric_harmonic_transfer"
+        if row["stage"] == "stage4_one_side_high_harmonic"
         and row["hair_enabled"] is True
         and row["channel"] == "minus_out"
     ]
@@ -715,10 +1069,38 @@ def make_plots(rows: List[Dict[str, Any]]) -> Dict[str, str]:
     ax.set_ylabel("N_eff")
     ax.set_title("Asymmetric harmonic transfer, hair enabled, minus channel")
     ax.tick_params(axis="x", rotation=80)
-    path = OUT_DIR / "exchange_scattering_matrix_asymmetric_transfer_v1.png"
+    path = OUT_DIR / "exchange_scattering_matrix_one_side_high_harmonic_v1.png"
     fig.savefig(path, dpi=160)
     plt.close(fig)
-    outputs["asymmetric_transfer_plot"] = path.name
+    outputs["one_side_high_harmonic_plot"] = path.name
+
+    recursive = [
+        row
+        for row in rows
+        if row["stage"] == "stage6_recursive_one_side_high_harmonic"
+        and row["model"] == "partial_scattering_R055"
+        and int(row["N_A"]) == 1
+        and int(row["N_B"]) == 63
+    ]
+    if recursive:
+        fig, axes = plt.subplots(2, 1, figsize=(10, 8), constrained_layout=True)
+        for channel, marker in [("A_channel", "o"), ("B_channel", "s")]:
+            subset = [row for row in recursive if row["channel"] == channel]
+            subset = sorted(subset, key=lambda row: int(row["collision_index"]))
+            x = [int(row["collision_index"]) for row in subset]
+            axes[0].plot(x, [float(row["L"]) for row in subset], marker=marker, label=channel)
+            axes[1].plot(x, [float(row["N_eff"]) for row in subset], marker=marker, label=channel)
+        axes[0].set_ylabel("L")
+        axes[0].set_title("Recursive one-side high harmonic: localization")
+        axes[0].legend()
+        axes[1].set_xlabel("collision index")
+        axes[1].set_ylabel("N_eff")
+        axes[1].set_title("Recursive one-side high harmonic: N_eff")
+        axes[1].legend()
+        path = OUT_DIR / "exchange_scattering_matrix_recursive_localization_transfer_v1.png"
+        fig.savefig(path, dpi=160)
+        plt.close(fig)
+        outputs["recursive_localization_transfer_plot"] = path.name
 
     return outputs
 
@@ -727,19 +1109,35 @@ def build_report(result: Dict[str, Any]) -> str:
     verdict = result["verdict"]
     outputs = result["outputs"]
     rows = result["rows"]
+    acceleration_base = result["acceleration_base"]
 
-    stage0_rows = [row for row in rows if row["stage"] == "stage0_old_condition_reproduction"]
+    stage0_rows = [row for row in rows if row["stage"] == "stage0_full_reflection_base"]
     stage0_table = "\n".join(
-        "| {model} | {channel} | {delta_f:.6g} | {R:.6g} | {T:.6g} | {p_chi:.6g} | {p_target} | {copy_distance_d} | {P_m_A:.6g} | {P_m_B:.6g} |".format(
+        "| {model} | {channel} | {delta_f:.6g} | {R:.6g} | {T:.6g} | {p_chi:.6g} | {p_target} | {d_q:.6g} | {chi_center_cell_mass:.6g} | {P_m_A:.6g} | {P_m_B:.6g} | {name_readout_l1_error:.6g} | {name_readout_ok} |".format(
             **row
         )
         for row in stage0_rows
     )
 
+    low_rows = [
+        row
+        for row in rows
+        if row["stage"] == "stage1_odd_harmonic_bottom"
+        and row["channel"] == "minus_out"
+        and int(row["N_A"]) in {63, 15, 7, 3, 1}
+    ]
+    low_rows = sorted(low_rows, key=lambda row: (not bool(row["hair_enabled"]), -int(row["N_A"])))
+    low_table = "\n".join(
+        "| {N_A} | {hair_enabled} | {p_chi:.6g} | {d_q:.6g} | {chi_center_cell_mass:.6g} | {chi_peak_contrast:.6g} | {L:.6g} | {P_m_A:.6g} | {P_m_B:.6g} | {name_hair_total:.6g} | {name_readout_l1_error:.6g} | {name_readout_ok} |".format(
+            **row
+        )
+        for row in low_rows
+    )
+
     partial_rows = [
         row
         for row in rows
-        if row["stage"] == "stage2_asymmetric_harmonic_transfer"
+        if row["stage"] == "stage4_one_side_high_harmonic"
         and row["model"] == "partial_scattering_R055"
         and row["hair_enabled"] is True
     ][:8]
@@ -758,7 +1156,7 @@ def build_report(result: Dict[str, Any]) -> str:
         and int(row["N_A"]) in {63, 3, 1}
     ][:12]
     obs_table = "\n".join(
-        "| {N_A} | {hair_enabled} | {readout_enabled} | {p_chi:.6g} | {L:.6g} | {copy_distance_d:.6g} |".format(
+        "| {N_A} | {hair_enabled} | {readout_enabled} | {p_chi:.6g} | {L:.6g} | {d_q:.6g} | {name_hair_total:.6g} | {name_readout_ok} |".format(
             **row
         )
         for row in obs_rows
@@ -780,91 +1178,144 @@ def build_report(result: Dict[str, Any]) -> str:
         for row in control_rows
     )
 
+    recursive_rows = [
+        row
+        for row in rows
+        if row["stage"] == "stage6_recursive_one_side_high_harmonic"
+        and row["model"] == "partial_scattering_R055"
+        and int(row["N_A"]) == 1
+        and int(row["N_B"]) == 63
+        and int(row["collision_index"]) in {0, 1, 2, 4, 8, 12, 16, 20, 24, 32, 48, 64, 80, 96, 112, 128}
+    ]
+    recursive_rows = sorted(recursive_rows, key=lambda row: (int(row["collision_index"]), str(row["channel"])))
+    recursive_table = "\n".join(
+        "| {collision_index} | {channel} | {L:.6g} | {N_eff:.6g} | {chi_center_cell_mass:.6g} | {expected_origin_A:.6g} | {expected_origin_B:.6g} | {P_m_A:.6g} | {P_m_B:.6g} |".format(
+            **row
+        )
+        for row in recursive_rows
+    )
+
     return f"""# 交換干渉散乱行列フェルミオン的衝突 予備実験検証メモ v1
 
-## 目的
+## 実行条件
 
-20260713 の準備論文を散乱行列版へ修正したため、予備実験を同じ方針で実行し直した。
-
-本実験では、線形重ね合わせ `A+B` から直接 `A',B'` を復元するのではなく、交換干渉位相から反射振幅 `r` と透過振幅 `t` を計算し、分離された入射チャネルへ二チャネル散乱行列として作用させた。
+V2 散乱行列基準で、加速度基底、低奇数倍音底、片側高次倍音条件を実行した。
 
 ## 判定
 
 | 項目 | 結果 |
 |---|---:|
-| Stage 0 旧完全反射条件再現 | `{str(verdict['stage0_reproduced']).lower()}` |
+| Stage 0 完全反射基底確認 | `{str(verdict['stage0_reproduced']).lower()}` |
 | Stage 0 p 反転 | `{str(verdict['stage0_p_reflection_ok']).lower()}` |
-| Stage 0 保存コピー距離 | `{str(verdict['stage0_copy_distance_small']).lower()}` |
+| Stage 0 d_q | `{str(verdict['stage0_d_q_small']).lower()}` |
 | Stage 0 ノルム | `{str(verdict['stage0_norm_ok']).lower()}` |
-| 低局在性底 hairあり | `{verdict['low_localization_bottom_with_hair']}` |
-| 低局在性底 hairなし | `{verdict['low_localization_bottom_without_hair']}` |
-| 非対称次数の部分移乗記録 | `{str(verdict['asymmetric_partial_transfer_recorded']).lower()}` |
+| Stage 0 名前毛読出し | `{str(verdict['stage0_name_readout_ok']).lower()}` |
+| 加速度V2基底読込 | `{str(verdict['acceleration_base_loaded']).lower()}` |
+| 加速度V2基底 | `{str(verdict['acceleration_base_ok']).lower()}` |
+| 奇数倍音底 hairあり | `{verdict['odd_harmonic_bottom_with_hair']}` |
+| 奇数倍音底 hairなし | `{verdict['odd_harmonic_bottom_without_hair']}` |
+| 底 hairあり 名前毛 | `{str(verdict['bottom_with_hair_name_readout_ok']).lower()}` |
+| 底 hairなし 名前毛除去 | `{str(verdict['bottom_without_hair_name_removed']).lower()}` |
+| hairなし 名前毛総量最大 | `{verdict['name_hair_removed_total_max']}` |
+| 底 hairあり chi中心セル質量最小 | `{verdict['bottom_with_hair_chi_center_cell_mass_min']}` |
+| 底 hairなし chi中心セル質量最小 | `{verdict['bottom_without_hair_chi_center_cell_mass_min']}` |
+| 片側高次倍音条件記録 | `{str(verdict['one_side_high_harmonic_recorded']).lower()}` |
 | 観測停止対照 | `{str(verdict['observation_stop_executed']).lower()}` |
 | 観測停止 L 最大差分 | `{verdict['observation_stop_max_L_delta']}` |
 | Stage5 対照群比較 | `{str(verdict['stage5_control_comparison_executed']).lower()}` |
+| 再帰片側高次倍音 | `{str(verdict['recursive_one_side_high_harmonic_executed']).lower()}` |
+| 再帰 R055 L_A 初期 | `{verdict['recursive_partial_R055_L_A_initial']}` |
+| 再帰 R055 L_A 最終 | `{verdict['recursive_partial_R055_L_A_final']}` |
+| 再帰 R055 L_B 初期 | `{verdict['recursive_partial_R055_L_B_initial']}` |
+| 再帰 R055 L_B 最終 | `{verdict['recursive_partial_R055_L_B_final']}` |
+| 再帰 R055 L差 初期 | `{verdict['recursive_partial_R055_L_gap_initial']}` |
+| 再帰 R055 L差 最終 | `{verdict['recursive_partial_R055_L_gap_final']}` |
+| 再帰 R055 L差 最小 | `{verdict['recursive_partial_R055_L_gap_min']}` |
+| 再帰 R055 L差 最小衝突回 | `{verdict['recursive_partial_R055_L_gap_min_collision']}` |
+| 再帰 R055 N_eff差 初期 | `{verdict['recursive_partial_R055_N_eff_gap_initial']}` |
+| 再帰 R055 N_eff差 最終 | `{verdict['recursive_partial_R055_N_eff_gap_final']}` |
+| 再帰 R055 末尾区間開始 | `{verdict['recursive_partial_R055_tail_from_collision']}` |
+| 再帰 R055 末尾 L差 最小 | `{verdict['recursive_partial_R055_tail_L_gap_min']}` |
+| 再帰 R055 末尾 L差 最大 | `{verdict['recursive_partial_R055_tail_L_gap_max']}` |
+| 再帰 R055 末尾 N_eff差 最小 | `{verdict['recursive_partial_R055_tail_N_eff_gap_min']}` |
+| 再帰 R055 末尾 N_eff差 最大 | `{verdict['recursive_partial_R055_tail_N_eff_gap_max']}` |
+
+## 加速度V2基底
+
+| 量 | 値 |
+|---|---:|
+| loaded | `{str(acceleration_base['loaded']).lower()}` |
+| acceleration_base_ok | `{str(acceleration_base['acceleration_base_ok']).lower()}` |
+| fermionic_reflection_rate | `{acceleration_base['verdict'].get('fermionic_reflection_rate')}` |
+| fermionic_transmission_rate | `{acceleration_base['verdict'].get('fermionic_transmission_rate')}` |
+| fermionic_q_out_factor | `{acceleration_base['verdict'].get('fermionic_q_out_factor')}` |
+| max_Q_closed_abs | `{acceleration_base['verdict'].get('max_Q_closed_abs')}` |
+| label_free_pass_vs_fermionic_match_all_cases | `{acceleration_base['verdict'].get('label_free_pass_vs_fermionic_match_all_cases')}` |
+| fermionic_regular_cell_harmonic_consistent_nonstrong_modes | `{acceleration_base['verdict'].get('fermionic_regular_cell_harmonic_consistent_nonstrong_modes')}` |
+| fermionic_c1_area_sweep_detected_all_cases | `{acceleration_base['verdict'].get('fermionic_c1_area_sweep_detected_all_cases')}` |
 
 ## Stage 0
 
-| model | channel | delta_f | R | T | p_chi | p_target | copy_distance_d | P_m_A | P_m_B |
-|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| model | channel | delta_f | R | T | p_chi | p_target | d_q | chi_center_cell_mass | P_m_A | P_m_B | name_l1_error | name_ok |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
 {stage0_table}
 
 ![stage0]({outputs['stage0_plot']})
 
-## 非対称次数の部分移乗例
+## 低奇数倍音底と内在読出し
+
+| N | hair_enabled | p_chi | d_q | chi_center_cell_mass | chi_peak_contrast | L | P_m_A | P_m_B | name_hair_total | name_l1_error | name_ok |
+|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
+{low_table}
+
+## 片側高次倍音条件
 
 | channel | N_A | N_B | R | T | N_eff | L | expected_origin_A | expected_origin_B |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 {partial_table}
 
-![asymmetric transfer]({outputs['asymmetric_transfer_plot']})
+![one side high harmonic]({outputs['one_side_high_harmonic_plot']})
 
 ## 観測停止対照
 
-本スクリプトでは読出し波による減衰モデルを入れていない。
+観測あり/なしを診断対照として記録した。
 
-そのため、観測あり/なしは散乱行列出力を変えない診断対照として記録した。
-
-| N | hair_enabled | readout_enabled | p_chi | L | copy_distance_d |
-|---:|---|---|---:|---:|---:|
+| N | hair_enabled | readout_enabled | p_chi | L | d_q | name_hair_total | name_ok |
+|---:|---|---|---:|---:|---:|---:|---|
 {obs_table}
 
 ## Stage5 対照群比較
 
-非対称次数条件で、散乱行列版と保存コピー型対照を比較した。
+片側高次倍音条件で、散乱行列版と圧縮表示対照を比較した。
 
 | model | N_A | N_B | channel | R | T | N_eff | L | expected_origin_A | expected_origin_B |
 |---|---:|---:|---|---:|---:|---:|---:|---:|---:|
 {control_table}
 
-## 低局在性底
+## 再帰片側高次倍音
 
-散乱行列版では、完全反射 `Delta_F=pi` の場合、低い `N` でも反射コピー条件は保たれた。
+出射チャネルを次回入力へ渡し、複数回の散乱で `L` と `N_eff` を読む。
+
+| collision | channel | L | N_eff | chi_center_cell_mass | origin_A | origin_B | P_m_A | P_m_B |
+|---:|---|---:|---:|---:|---:|---:|---:|---:|
+{recursive_table}
+
+![recursive localization transfer]({outputs['recursive_localization_transfer_plot']})
+
+## 奇数倍音底
+
+完全反射 `Delta_F=pi` で `N` を下げ、`N_min` を読む。
 
 ![low N]({outputs['low_n_plot']})
 
-## 解釈
-
-今回の結果は、前回の静的な縮約密度版とは異なる。
-
-前回は `A+B` 型の交換合成から縮約密度を作ったため、二つの出射チャネルを復元できなかった。
-
-今回の散乱行列版では、反射振幅 `r` と透過振幅 `t` を用いて、
+## 二チャネル出力
 
 ```text
 minus_out = r A_ref + t B_trans
 plus_out  = t A_trans + r B_ref
 ```
 
-を明示的に保持した。
-
-このため、完全反射では旧保存コピー反射条件を再現し、部分反射では A 起因成分と B 起因成分の混合を出射チャネル上に残せた。
-
-## 注意
-
-本実験では、観測停止による減衰差はまだ扱っていない。
-
-散乱行列写像は衝突セル内の局所写像であり、読出し波による包絡減衰モデルを別に入れていないためである。
+上記の二チャネル出力から `L` と `H(n)` を読む。
 
 ## 出力
 
@@ -874,20 +1325,26 @@ plus_out  = t A_trans + r B_ref
 | CSV | `{outputs['csv']}` |
 | Stage0 図 | `{outputs['stage0_plot']}` |
 | 低N図 | `{outputs['low_n_plot']}` |
-| 非対称次数図 | `{outputs['asymmetric_transfer_plot']}` |
+| 片側高次倍音図 | `{outputs['one_side_high_harmonic_plot']}` |
+| 再帰局在性図 | `{outputs['recursive_localization_transfer_plot']}` |
 | report | `{outputs['report']}` |
 """
 
 
 def run() -> Dict[str, Any]:
     params = Params()
+    acceleration_base = load_acceleration_base()
     rows: List[Dict[str, Any]] = []
     rows.extend(stage0_rows(params))
     rows.extend(low_n_rows(params))
     rows.extend(observation_stop_rows(params))
-    rows.extend(asymmetric_transfer_rows(params))
+    rows.extend(one_side_high_harmonic_rows(params))
     rows.extend(control_comparison_rows(params))
+    rows.extend(recursive_transfer_rows(params))
+    attach_acceleration_base(rows, bool(acceleration_base["acceleration_base_ok"]))
     verdict = compute_verdict(params, rows)
+    verdict["acceleration_base_loaded"] = bool(acceleration_base["loaded"])
+    verdict["acceleration_base_ok"] = bool(acceleration_base["acceleration_base_ok"])
 
     outputs = {
         "json": "exchange_scattering_matrix_fermionic_localization_transfer_preliminary_result_v1.json",
@@ -899,6 +1356,7 @@ def run() -> Dict[str, Any]:
     result: Dict[str, Any] = {
         "experiment": "exchange_scattering_matrix_fermionic_localization_transfer_preliminary_v1",
         "params": asdict(params),
+        "acceleration_base": acceleration_base,
         "verdict": verdict,
         "rows": serialise_rows(rows),
         "outputs": outputs,
@@ -906,9 +1364,9 @@ def run() -> Dict[str, Any]:
 
     write_csv(OUT_DIR / outputs["csv"], rows)
     (OUT_DIR / outputs["json"]).write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
-    report = build_report({"verdict": verdict, "outputs": outputs, "rows": rows})
+    report = build_report({"verdict": verdict, "outputs": outputs, "rows": rows, "acceleration_base": acceleration_base})
     (OUT_DIR / outputs["report"]).write_text(report, encoding="utf-8")
-    (BASE_DIR / "交換干渉散乱行列フェルミオン的衝突における低局在性・倍音移乗予備実験検証メモ_v1.md").write_text(
+    (BASE_DIR / "交換干渉散乱行列フェルミオン的衝突における加速度基底・低奇数倍音底・片側高次倍音予備実験検証メモ_v1.md").write_text(
         report,
         encoding="utf-8",
     )
