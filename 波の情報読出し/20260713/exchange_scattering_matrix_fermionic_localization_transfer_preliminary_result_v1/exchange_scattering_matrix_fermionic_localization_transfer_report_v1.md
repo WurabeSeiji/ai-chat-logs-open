@@ -42,6 +42,7 @@ V2 散乱行列基準で、加速度基底、低奇数倍音底、片側高次�
 | 再帰 R055 末尾 L差 最大 | `0.005018339883503786` |
 | 再帰 R055 末尾 N_eff差 最小 | `0.7080416715166642` |
 | 再帰 R055 末尾 N_eff差 最大 | `30.953592715793327` |
+| 再帰 R/T スイープ | `true` |
 
 ## 加速度V2基底
 
@@ -181,6 +182,22 @@ V2 散乱行列基準で、加速度基底、低奇数倍音底、片側高次�
 
 ![recursive localization transfer](exchange_scattering_matrix_recursive_localization_transfer_v1.png)
 
+## 再帰 R/T スイープ
+
+`N_A=1`, `N_B=63` の片側高次倍音条件で、反射率 `R` を変えて再帰散乱を実行した。
+
+| R | T | L差最小 | L差最小衝突回 | N_eff差 at L差最小 | 末尾L差最小 | 末尾L差最大 | 末尾N_eff差最小 | 末尾N_eff差最大 |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 0 | 1 | 0.00502586 | 1 | 31 | 0.00502586 | 0.00502586 | 31 | 31 |
+| 0.51 | 0.49 | 5.37371e-05 | 78 | 0.331455 | 0.00245063 | 0.00433802 | 15.1157 | 26.7573 |
+| 0.55 | 0.45 | 0.000114791 | 110 | 0.708042 | 0.000114791 | 0.00501834 | 0.708042 | 30.9536 |
+| 0.6 | 0.4 | 0.000185909 | 125 | 1.1467 | 0.000185909 | 0.00502584 | 1.1467 | 30.9999 |
+| 0.7 | 0.3 | 2.48676e-05 | 42 | 0.153386 | 7.46003e-05 | 0.00501669 | 0.460142 | 30.9434 |
+| 0.9 | 0.1 | 8.21216e-05 | 61 | 0.506534 | 0.000117466 | 0.00502318 | 0.72454 | 30.9834 |
+| 1 | 3.7494e-33 | 0.00502586 | 126 | 31 | 0.00502586 | 0.00502586 | 31 | 31 |
+
+![recursive R sweep](exchange_scattering_matrix_recursive_R_sweep_v1.png)
+
 ## 奇数倍音底
 
 完全反射 `Delta_F=pi` で `N` を下げ、`N_min` を読む。
@@ -206,4 +223,5 @@ plus_out  = t A_trans + r B_ref
 | 低N図 | `exchange_scattering_matrix_low_n_bottom_v1.png` |
 | 片側高次倍音図 | `exchange_scattering_matrix_one_side_high_harmonic_v1.png` |
 | 再帰局在性図 | `exchange_scattering_matrix_recursive_localization_transfer_v1.png` |
+| 再帰Rスイープ図 | `exchange_scattering_matrix_recursive_R_sweep_v1.png` |
 | report | `exchange_scattering_matrix_fermionic_localization_transfer_report_v1.md` |

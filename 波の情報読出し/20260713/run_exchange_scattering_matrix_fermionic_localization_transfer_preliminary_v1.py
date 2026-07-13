@@ -53,6 +53,7 @@ class Params:
     name_tol: float = 1.0e-8
     norm_tol: float = 1.0e-10
     recursive_collision_count: int = 128
+    r_sweep_values: Tuple[float, ...] = (0.00, 0.51, 0.55, 0.60, 0.70, 0.90, 1.00)
 
 
 def odd_harmonic_kernel(u: np.ndarray, nh: int) -> np.ndarray:
@@ -125,6 +126,12 @@ def scattering_coefficients(delta_f: float) -> Tuple[complex, complex, float, fl
     t = np.exp(0.5j * delta_f) * math.cos(0.5 * delta_f)
     r = -1j * np.exp(0.5j * delta_f) * math.sin(0.5 * delta_f)
     return complex(t), complex(r), float(abs(t) ** 2), float(abs(r) ** 2)
+
+
+def delta_from_reflection_rate(r_value: float) -> float:
+    if r_value < 0.0 or r_value > 1.0:
+        raise ValueError(f"reflection rate must be in [0, 1]: {r_value}")
+    return 2.0 * math.asin(math.sqrt(r_value))
 
 
 def scattering_outputs(
@@ -762,6 +769,65 @@ def recursive_transfer_rows(params: Params) -> List[Dict[str, Any]]:
     return rows
 
 
+def recursive_r_sweep_rows(params: Params) -> List[Dict[str, Any]]:
+    rows: List[Dict[str, Any]] = []
+    n_a = 1
+    n_b = params.high_n
+    hair_enabled = True
+    for r_value in params.r_sweep_values:
+        delta_f = delta_from_reflection_rate(r_value)
+        model = f"recursive_scattering_R{int(round(r_value * 100)):03d}"
+        t, r, T, R = scattering_coefficients(delta_f)
+        a = make_state(params, n_a, params.q_A, params.m_A, hair_enabled, params.A_A)
+        b = make_state(params, n_b, params.q_B, params.m_B, hair_enabled, params.A_B)
+        initial_a = a.copy()
+        initial_b = b.copy()
+        for collision_index in range(params.recursive_collision_count + 1):
+            rows.append(
+                recursive_state_metrics(
+                    params,
+                    "stage7_recursive_R_sweep",
+                    model,
+                    delta_f,
+                    T,
+                    R,
+                    n_a,
+                    n_b,
+                    hair_enabled,
+                    collision_index,
+                    "A_channel",
+                    a,
+                    initial_a,
+                    initial_b,
+                )
+            )
+            rows.append(
+                recursive_state_metrics(
+                    params,
+                    "stage7_recursive_R_sweep",
+                    model,
+                    delta_f,
+                    T,
+                    R,
+                    n_a,
+                    n_b,
+                    hair_enabled,
+                    collision_index,
+                    "B_channel",
+                    b,
+                    initial_a,
+                    initial_b,
+                )
+            )
+            if collision_index >= params.recursive_collision_count:
+                break
+            a_next = normalize(r * a + t * b)
+            b_next = normalize(t * a + r * b)
+            a = a_next
+            b = b_next
+    return rows
+
+
 def rows_by_collision(rows: List[Dict[str, Any]]) -> Dict[int, Dict[str, Dict[str, Any]]]:
     grouped: Dict[int, Dict[str, Dict[str, Any]]] = {}
     for row in rows:
@@ -809,6 +875,37 @@ def recursive_pair_summary(rows: List[Dict[str, Any]]) -> Dict[str, Any]:
         "A_localization_increased": bool(float(last["A_channel"]["L"]) > float(first["A_channel"]["L"])),
         "B_localization_decreased": bool(float(last["B_channel"]["L"]) < float(first["B_channel"]["L"])),
     }
+
+
+def recursive_sweep_summary(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    sweep_rows = [row for row in rows if row["stage"] == "stage7_recursive_R_sweep"]
+    summaries: List[Dict[str, Any]] = []
+    for model in sorted({str(row["model"]) for row in sweep_rows}):
+        model_rows = [row for row in sweep_rows if row["model"] == model]
+        if not model_rows:
+            continue
+        summary = recursive_pair_summary(model_rows)
+        first = model_rows[0]
+        summaries.append(
+            {
+                "model": model,
+                "R": float(first["R"]),
+                "T": float(first["T"]),
+                "L_gap_initial": summary["L_gap_initial"],
+                "L_gap_final": summary["L_gap_final"],
+                "L_gap_min": summary["L_gap_min"],
+                "L_gap_min_collision": summary["L_gap_min_collision"],
+                "N_eff_gap_initial": summary["N_eff_gap_initial"],
+                "N_eff_gap_final": summary["N_eff_gap_final"],
+                "N_eff_gap_at_L_gap_min": summary["N_eff_gap_at_L_gap_min"],
+                "tail_from_collision": summary["tail_from_collision"],
+                "tail_L_gap_min": summary["tail_L_gap_min"],
+                "tail_L_gap_max": summary["tail_L_gap_max"],
+                "tail_N_eff_gap_min": summary["tail_N_eff_gap_min"],
+                "tail_N_eff_gap_max": summary["tail_N_eff_gap_max"],
+            }
+        )
+    return sorted(summaries, key=lambda row: float(row["R"]))
 
 
 def compute_verdict(params: Params, rows: List[Dict[str, Any]]) -> Dict[str, Any]:
@@ -895,6 +992,7 @@ def compute_verdict(params: Params, rows: List[Dict[str, Any]]) -> Dict[str, Any
         and int(row["N_B"]) == 63
     ]
     recursive_summary = recursive_pair_summary(recursive_main) if recursive_main else {}
+    r_sweep_summary = recursive_sweep_summary(rows)
 
     return {
         "stage0_reproduced": bool(stage0_p_ok and stage0_d_q_ok and stage0_norm_ok),
@@ -944,6 +1042,8 @@ def compute_verdict(params: Params, rows: List[Dict[str, Any]]) -> Dict[str, Any
         "recursive_partial_R055_tail_N_eff_gap_max": recursive_summary.get("tail_N_eff_gap_max"),
         "recursive_partial_R055_A_localization_increased": recursive_summary.get("A_localization_increased"),
         "recursive_partial_R055_B_localization_decreased": recursive_summary.get("B_localization_decreased"),
+        "recursive_R_sweep_executed": bool(r_sweep_summary),
+        "recursive_R_sweep": r_sweep_summary,
     }
 
 
@@ -1102,6 +1202,26 @@ def make_plots(rows: List[Dict[str, Any]]) -> Dict[str, str]:
         plt.close(fig)
         outputs["recursive_localization_transfer_plot"] = path.name
 
+    r_sweep_summary = recursive_sweep_summary(rows)
+    if r_sweep_summary:
+        fig, axes = plt.subplots(2, 1, figsize=(9, 8), constrained_layout=True)
+        x = [float(row["R"]) for row in r_sweep_summary]
+        axes[0].plot(x, [float(row["L_gap_min"]) for row in r_sweep_summary], marker="o", label="min L gap")
+        axes[0].plot(x, [float(row["tail_L_gap_max"]) for row in r_sweep_summary], marker="s", label="tail max L gap")
+        axes[0].set_ylabel("L gap")
+        axes[0].set_title("Recursive R sweep: localization gap")
+        axes[0].legend()
+        axes[1].plot(x, [float(row["N_eff_gap_at_L_gap_min"]) for row in r_sweep_summary], marker="o", label="N_eff gap at min L gap")
+        axes[1].plot(x, [float(row["tail_N_eff_gap_max"]) for row in r_sweep_summary], marker="s", label="tail max N_eff gap")
+        axes[1].set_xlabel("R")
+        axes[1].set_ylabel("N_eff gap")
+        axes[1].set_title("Recursive R sweep: effective harmonic gap")
+        axes[1].legend()
+        path = OUT_DIR / "exchange_scattering_matrix_recursive_R_sweep_v1.png"
+        fig.savefig(path, dpi=160)
+        plt.close(fig)
+        outputs["recursive_R_sweep_plot"] = path.name
+
     return outputs
 
 
@@ -1194,6 +1314,12 @@ def build_report(result: Dict[str, Any]) -> str:
         )
         for row in recursive_rows
     )
+    r_sweep_table = "\n".join(
+        "| {R:.6g} | {T:.6g} | {L_gap_min:.6g} | {L_gap_min_collision} | {N_eff_gap_at_L_gap_min:.6g} | {tail_L_gap_min:.6g} | {tail_L_gap_max:.6g} | {tail_N_eff_gap_min:.6g} | {tail_N_eff_gap_max:.6g} |".format(
+            **row
+        )
+        for row in verdict["recursive_R_sweep"]
+    )
 
     return f"""# 交換干渉散乱行列フェルミオン的衝突 予備実験検証メモ v1
 
@@ -1239,6 +1365,7 @@ V2 散乱行列基準で、加速度基底、低奇数倍音底、片側高次�
 | 再帰 R055 末尾 L差 最大 | `{verdict['recursive_partial_R055_tail_L_gap_max']}` |
 | 再帰 R055 末尾 N_eff差 最小 | `{verdict['recursive_partial_R055_tail_N_eff_gap_min']}` |
 | 再帰 R055 末尾 N_eff差 最大 | `{verdict['recursive_partial_R055_tail_N_eff_gap_max']}` |
+| 再帰 R/T スイープ | `{str(verdict['recursive_R_sweep_executed']).lower()}` |
 
 ## 加速度V2基底
 
@@ -1302,6 +1429,16 @@ V2 散乱行列基準で、加速度基底、低奇数倍音底、片側高次�
 
 ![recursive localization transfer]({outputs['recursive_localization_transfer_plot']})
 
+## 再帰 R/T スイープ
+
+`N_A=1`, `N_B=63` の片側高次倍音条件で、反射率 `R` を変えて再帰散乱を実行した。
+
+| R | T | L差最小 | L差最小衝突回 | N_eff差 at L差最小 | 末尾L差最小 | 末尾L差最大 | 末尾N_eff差最小 | 末尾N_eff差最大 |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+{r_sweep_table}
+
+![recursive R sweep]({outputs['recursive_R_sweep_plot']})
+
 ## 奇数倍音底
 
 完全反射 `Delta_F=pi` で `N` を下げ、`N_min` を読む。
@@ -1327,6 +1464,7 @@ plus_out  = t A_trans + r B_ref
 | 低N図 | `{outputs['low_n_plot']}` |
 | 片側高次倍音図 | `{outputs['one_side_high_harmonic_plot']}` |
 | 再帰局在性図 | `{outputs['recursive_localization_transfer_plot']}` |
+| 再帰Rスイープ図 | `{outputs['recursive_R_sweep_plot']}` |
 | report | `{outputs['report']}` |
 """
 
@@ -1341,6 +1479,7 @@ def run() -> Dict[str, Any]:
     rows.extend(one_side_high_harmonic_rows(params))
     rows.extend(control_comparison_rows(params))
     rows.extend(recursive_transfer_rows(params))
+    rows.extend(recursive_r_sweep_rows(params))
     attach_acceleration_base(rows, bool(acceleration_base["acceleration_base_ok"]))
     verdict = compute_verdict(params, rows)
     verdict["acceleration_base_loaded"] = bool(acceleration_base["loaded"])
