@@ -1,11 +1,12 @@
-# Release Notes: Curved Closed Stationary Wave Curvature Renormalization v1
+# Release Notes: Curved Closed Stationary Wave Curvature Renormalization v1/v2
 
 **Date:** 2026-07-11
 **Author:** Noriaki Kihara
 **Repository:** `ai-chat-logs-open`
-**Zenodo Version DOI:** 10.5281/zenodo.21304040
+**Latest Zenodo Version DOI:** 10.5281/zenodo.21332874
 **Zenodo Concept DOI:** 10.5281/zenodo.21304039
-**Zenodo Record:** https://zenodo.org/records/21304040
+**Latest Zenodo Record:** https://zenodo.org/records/21332874
+**Previous v1 Version DOI:** 10.5281/zenodo.21304040
 **Zenn Article:** `articles/curved-closure-stationary-wave.md`
 **note Japanese Article:** https://note.com/kiharanoriaki/n/n2389460836cf
 **note English Article:** https://note.com/kiharanoriaki/n/nda3623c44423
@@ -26,26 +27,36 @@ The paper tests how odd-harmonic complex waves satisfying the all-positive zero 
 
 ---
 
+## v2 Update
+
+V2 recalculates the experiment series after changing the formula for the fermion-like reflection map.
+
+The Concept DOI is maintained. The V2 Version DOI is `10.5281/zenodo.21332874`.
+
+The Japanese/English Markdown, TeX/PDF, numerical outputs, and reproducibility bundle were updated to the V2 outputs.
+
+---
+
 ## Primary Outputs
 
 | File | Role |
 |---|---|
-| `曲率付き閉鎖定常波による曲率繰り込みと完全反射安定性.md` | Japanese main paper |
+| `曲率付き閉鎖定常波による曲率繰り込みと完全反射安定性 v2.md` | Japanese main paper |
 | `curved_closure_stationary_wave_curvature_renormalization_en.md` | English main paper |
 | `curved_closure_stationary_wave_curvature_renormalization_ja.tex` | Japanese TeX source |
 | `curved_closure_stationary_wave_curvature_renormalization_ja.pdf` | Japanese PDF |
 | `curved_closure_stationary_wave_curvature_renormalization_en.tex` | English TeX source |
 | `curved_closure_stationary_wave_curvature_renormalization_en.pdf` | English PDF |
-| `run_curved_closure_stationary_wave_v1.py` | Minimal closed stationary wave experiment |
-| `run_curved_closure_stationary_wave_broad_sweep_v1.py` | Broad curvature phase model sweep |
-| `run_curved_closure_scattering_integration_v1.py` | One-sided scattering integration experiment |
-| `curved_closure_stationary_wave_result_v1/` | Minimal experiment outputs |
-| `curved_closure_stationary_wave_broad_sweep_result_v1/` | Broad sweep outputs |
-| `curved_closure_scattering_integration_result_v1/` | Integrated scattering outputs |
-| `curved_closure_stationary_wave_zenodo_metadata_v1.json` | Zenodo metadata without token |
-| `curved_closure_stationary_wave_zenodo_deposit_v1.json` | Zenodo deposit response without token |
-| `curved_closure_stationary_wave_zenodo_published_record_v1.json` | Zenodo published record response without token |
-| `curved_closure_stationary_wave_publication_bundle_v1.zip` | Reproducibility bundle |
+| `run_curved_closure_stationary_wave_v2.py` | Minimal closed stationary wave experiment |
+| `run_curved_closure_stationary_wave_broad_sweep_v2.py` | Broad curvature phase model sweep |
+| `run_curved_closure_scattering_integration_v2.py` | One-sided scattering integration experiment |
+| `curved_closure_stationary_wave_result_v2/` | Minimal experiment outputs |
+| `curved_closure_stationary_wave_broad_sweep_result_v2/` | Broad sweep outputs |
+| `curved_closure_scattering_integration_result_v2/` | Integrated scattering outputs |
+| `curved_closure_stationary_wave_zenodo_deposit_v2.json` | Zenodo metadata without token |
+| `curved_closure_stationary_wave_zenodo_deposit_v2.json` | Zenodo deposit response without token |
+| `curved_closure_stationary_wave_zenodo_published_record_v2.json` | Zenodo published record response without token |
+| `curved_closure_stationary_wave_publication_bundle_v2.zip` | Reproducibility bundle |
 | `articles/curved-closure-stationary-wave.md` | Zenn article source |
 | `note_article_curved_closure_stationary_wave_ja.md` | note Japanese article source |
 | `note_article_curved_closure_stationary_wave_en.md` | note English article source |
@@ -99,9 +110,9 @@ The confirmed result is internal to the paper series: under the basic axiom `Sig
 
 Publication has been completed.
 
-- Zenodo version DOI: https://doi.org/10.5281/zenodo.21304040
+- Zenodo version DOI: https://doi.org/10.5281/zenodo.21332874
 - Zenodo concept DOI: https://doi.org/10.5281/zenodo.21304039
-- Zenodo record: https://zenodo.org/records/21304040
+- Zenodo record: https://zenodo.org/records/21332874
 - Zenn article source: `articles/curved-closure-stationary-wave.md`
 - note Japanese article: https://note.com/kiharanoriaki/n/n2389460836cf
 - note English article: https://note.com/kiharanoriaki/n/nda3623c44423

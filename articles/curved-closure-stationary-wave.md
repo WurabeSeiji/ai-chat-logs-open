@@ -16,9 +16,13 @@ published: true
 
 論文本体:
 
-- Version DOI: https://doi.org/10.5281/zenodo.21304040
+- Version DOI: https://doi.org/10.5281/zenodo.21332874
 - Concept DOI: https://doi.org/10.5281/zenodo.21304039
 - GitHub: https://github.com/WurabeSeiji/ai-chat-logs-open
+
+## v2更新
+
+2026-07-13に、フェルミオン的反射写像の計算式更新に合わせて再計算した v2 を公開しました。曲率漏れと閉鎖定常波への再選別という本稿の結論は維持されています。
 
 ## 何を調べたか
 

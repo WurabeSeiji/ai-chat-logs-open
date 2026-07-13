@@ -10,9 +10,13 @@ published: true
 
 論文本体:
 
-- Version DOI: https://doi.org/10.5281/zenodo.21308050
+- Version DOI: https://doi.org/10.5281/zenodo.21332875
 - Concept DOI: https://doi.org/10.5281/zenodo.21308049
 - GitHub: https://github.com/WurabeSeiji/ai-chat-logs-open
+
+## v2更新
+
+2026-07-13に、フェルミオン的反射写像の計算式更新に合わせて再計算した v2 を公開しました。多ゲージ干渉から `p,E,R` を読む本稿の主要結果は維持されています。
 
 ## 問い
 

@@ -18,9 +18,13 @@ q \mapsto -q
 
 論文本体:
 
-- Version DOI: https://doi.org/10.5281/zenodo.21295480
+- Version DOI: https://doi.org/10.5281/zenodo.21332867
 - Concept DOI: https://doi.org/10.5281/zenodo.21295479
 - GitHub: https://github.com/WurabeSeiji/ai-chat-logs-open
+
+## v2更新
+
+2026-07-13に、反射・透過振幅を二チャネル散乱行列として作用させる計算式で再計算した v2 を公開しました。完全反射極限の読出しは維持され、本文・図・TeX/PDF・bundle を v2 に更新しています。
 
 ## 何を置き換えたか
 

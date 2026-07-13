@@ -3,6 +3,7 @@
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{space}{xeCJK}
 \documentclass[
+  a4paper,
 ]{article}
 \usepackage{xcolor}
 \usepackage[margin=24mm]{geometry}
@@ -21,7 +22,6 @@
 \usepackage{lmodern}
 \ifPDFTeX\else
   % xetex/luatex font selection
-  \setmainfont[]{HaranoAjiMincho-Regular.otf}
   \setmonofont[]{DejaVuSansMono.ttf}
   \ifXeTeX
     \usepackage{xeCJK}
@@ -112,15 +112,19 @@
 
 \begin{document}
 
-\section{曲率付き閉鎖定常波による曲率繰り込みと完全反射安定性}\label{ux66f2ux7387ux4ed8ux304dux9589ux9396ux5b9aux5e38ux6ce2ux306bux3088ux308bux66f2ux7387ux7e70ux308aux8fbcux307fux3068ux5b8cux5168ux53cdux5c04ux5b89ux5b9aux6027}
+\section{曲率付き閉鎖定常波による曲率繰り込みと完全反射安定性
+v2}\label{ux66f2ux7387ux4ed8ux304dux9589ux9396ux5b9aux5e38ux6ce2ux306bux3088ux308bux66f2ux7387ux7e70ux308aux8fbcux307fux3068ux5b8cux5168ux53cdux5c04ux5b89ux5b9aux6027-v2}
 
 \textbf{副題:} 全正符号ゼロ閉鎖 \texttt{Σx\_n\^{}2=0}
 による曲率相対位相漏れの検出・再選別・交換干渉反射回復の数値構成実験\\
 \textbf{日付:} 2026-07-11\\
 \textbf{著者:} 木原 範昭\\
 \textbf{位置づけ:} 波の情報読出しシリーズ・追加論文\\
-\textbf{Version DOI:} 10.5281/zenodo.21304040 \textbf{Concept DOI:}
+\textbf{Version DOI:} 10.5281/zenodo.21332874 \textbf{Concept DOI:}
 10.5281/zenodo.21304039
+
+フェルミオン様反射の計算式を変更したため、同一条件で再計算した V2
+とする。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -195,7 +199,7 @@
 
 さらに、片側入射の局所交換干渉写像へ残留曲率位相を戻した統合検証では、無補正で最大動的通過漏れ
 \texttt{1.6202719613622971e-01} が発生し、\texttt{full}
-補正では最大動的通過漏れ \texttt{1.6608667989341789e-19}
+補正では最大動的通過漏れ \texttt{1.6608667985580024e-19}
 まで低下した。動的散乱は二チャンネル期待式と最大誤差
 \texttt{5.551115123125783e-17} で一致し、ノルム最大誤差は
 \texttt{4.440892098500626e-16} であった。
@@ -552,7 +556,7 @@ v2
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_curved\_closure\_stationary\_wave\_v1.py}
+\NormalTok{run\_curved\_closure\_stationary\_wave\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -560,7 +564,7 @@ v2
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{curved\_closure\_stationary\_wave\_result\_v1/}
+\NormalTok{curved\_closure\_stationary\_wave\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -575,7 +579,7 @@ v2
 として与えた。
 
 最大 \texttt{\textbackslash{}kappa=0.012}、最大曲率位相
-\texttt{1.1879999999999999} に対して、次が得られた。
+\texttt{1.1879999999999999e+00} に対して、次が得られた。
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}lrr@{}}
@@ -609,7 +613,7 @@ stationary & \texttt{9.4283259783636047e-19} &
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_curved\_closure\_stationary\_wave\_broad\_sweep\_v1.py}
+\NormalTok{run\_curved\_closure\_stationary\_wave\_broad\_sweep\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -617,7 +621,7 @@ stationary & \texttt{9.4283259783636047e-19} &
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{curved\_closure\_stationary\_wave\_broad\_sweep\_result\_v1/}
+\NormalTok{curved\_closure\_stationary\_wave\_broad\_sweep\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -699,7 +703,7 @@ full & \texttt{7.8949412793793227e-19} & \texttt{0.0000000000000000e+00}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_curved\_closure\_scattering\_integration\_v1.py}
+\NormalTok{run\_curved\_closure\_scattering\_integration\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -707,7 +711,7 @@ full & \texttt{7.8949412793793227e-19} & \texttt{0.0000000000000000e+00}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{curved\_closure\_scattering\_integration\_result\_v1/}
+\NormalTok{curved\_closure\_scattering\_integration\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -741,14 +745,14 @@ constant & \texttt{1.1632365832184560e-01} &
 \texttt{1.2323357129304359e-02} & \texttt{1.3877787807814457e-17} \\
 linear & \texttt{1.1624067781252549e-01} &
 \texttt{1.2317721991993871e-02} & \texttt{1.3877787807814457e-17} \\
-affine & \texttt{1.1619972192010980e-01} &
-\texttt{1.2315221532542749e-02} & \texttt{1.0408340855860843e-17} \\
-quadratic & \texttt{1.1598359742226147e-01} &
-\texttt{1.2300337923101595e-02} & \texttt{2.7755575615628914e-17} \\
+affine & \texttt{1.1619972192010981e-01} &
+\texttt{1.2315221532542749e-02} & \texttt{1.3877787807814457e-17} \\
+quadratic & \texttt{1.1598359742226148e-01} &
+\texttt{1.2300337923101595e-02} & \texttt{4.1633363423443370e-17} \\
 cubic & \texttt{1.1567739316276089e-01} &
 \texttt{1.2278927640523116e-02} & \texttt{2.7755575615628914e-17} \\
-full & \texttt{1.6608667989341789e-19} & \texttt{7.8949412793793227e-19}
-& \texttt{1.6608667989341789e-19} \\
+full & \texttt{1.6608667985580024e-19} & \texttt{7.8949412793793227e-19}
+& \texttt{1.6608667985580024e-19} \\
 \end{longtable}
 }
 
@@ -891,7 +895,7 @@ RMS \texttt{7.8949412793793227e-19}、通過漏れ \texttt{0.0} へ回復した�
 
 さらに、片側入射の局所交換干渉写像へ曲率残留位相を戻す統合検証では、無補正で最大動的通過漏れ
 \texttt{1.6202719613622971e-01} が発生し、\texttt{full}
-補正では最大動的通過漏れ \texttt{1.6608667989341789e-19} まで低下した。
+補正では最大動的通過漏れ \texttt{1.6608667985580024e-19} まで低下した。
 
 以上により、本稿の数値構成範囲では、曲率の影響は無視されていない。曲率相対位相漏れは過渡状態で閉鎖残差および通過漏れとして現れる。しかし、系が
 \texttt{Σx\_n\^{}2=0}
@@ -909,7 +913,7 @@ RMS \texttt{7.8949412793793227e-19}、通過漏れ \texttt{0.0} へ回復した�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_curved\_closure\_stationary\_wave\_v1.py}
+\NormalTok{python3 run\_curved\_closure\_stationary\_wave\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -917,7 +921,7 @@ RMS \texttt{7.8949412793793227e-19}、通過漏れ \texttt{0.0} へ回復した�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{curved\_closure\_stationary\_wave\_result\_v1/}
+\NormalTok{curved\_closure\_stationary\_wave\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -938,17 +942,17 @@ RMS \texttt{7.8949412793793227e-19}、通過漏れ \texttt{0.0} へ回復した�
 \bottomrule\noalign{}
 \endlastfoot
 レポート &
-\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_report_v1.md}{curved\_closure\_stationary\_wave\_report\_v1.md} \\
+\href{curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_report_v2.md}{curved\_closure\_stationary\_wave\_report\_v2.md} \\
 JSON &
-\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_result_v1.json}{curved\_closure\_stationary\_wave\_result\_v1.json} \\
+\href{curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_result_v2.json}{curved\_closure\_stationary\_wave\_result\_v2.json} \\
 sweep CSV &
-\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_sweep_v1.csv}{curved\_closure\_stationary\_wave\_sweep\_v1.csv} \\
+\href{curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_sweep_v2.csv}{curved\_closure\_stationary\_wave\_sweep\_v2.csv} \\
 relaxation CSV &
-\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_relaxation_v1.csv}{curved\_closure\_stationary\_wave\_relaxation\_v1.csv} \\
+\href{curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_relaxation_v2.csv}{curved\_closure\_stationary\_wave\_relaxation\_v2.csv} \\
 sweep 図 &
-\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_sweep_v1.png}{curved\_closure\_stationary\_wave\_sweep\_v1.png} \\
+\href{curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_sweep_v2.png}{curved\_closure\_stationary\_wave\_sweep\_v2.png} \\
 relaxation 図 &
-\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_relaxation_v1.png}{curved\_closure\_stationary\_wave\_relaxation\_v1.png} \\
+\href{curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_relaxation_v2.png}{curved\_closure\_stationary\_wave\_relaxation\_v2.png} \\
 \end{longtable}
 }
 
@@ -956,7 +960,7 @@ relaxation 図 &
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_curved\_closure\_stationary\_wave\_broad\_sweep\_v1.py}
+\NormalTok{python3 run\_curved\_closure\_stationary\_wave\_broad\_sweep\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -964,7 +968,7 @@ relaxation 図 &
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{curved\_closure\_stationary\_wave\_broad\_sweep\_result\_v1/}
+\NormalTok{curved\_closure\_stationary\_wave\_broad\_sweep\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -985,19 +989,19 @@ relaxation 図 &
 \bottomrule\noalign{}
 \endlastfoot
 レポート &
-\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_report_v1.md}{curved\_closure\_stationary\_wave\_broad\_report\_v1.md} \\
+\href{curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_report_v2.md}{curved\_closure\_stationary\_wave\_broad\_report\_v2.md} \\
 JSON &
-\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_sweep_result_v1.json}{curved\_closure\_stationary\_wave\_broad\_sweep\_result\_v1.json} \\
+\href{curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_sweep_result_v2.json}{curved\_closure\_stationary\_wave\_broad\_sweep\_result\_v2.json} \\
 sweep CSV &
-\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_sweep_v1.csv}{curved\_closure\_stationary\_wave\_broad\_sweep\_v1.csv} \\
+\href{curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_sweep_v2.csv}{curved\_closure\_stationary\_wave\_broad\_sweep\_v2.csv} \\
 control CSV &
-\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_conformal_control_v1.csv}{curved\_closure\_stationary\_wave\_broad\_conformal\_control\_v1.csv} \\
+\href{curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_conformal_control_v2.csv}{curved\_closure\_stationary\_wave\_broad\_conformal\_control\_v2.csv} \\
 aggregate 図 &
-\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_aggregate_v1.png}{curved\_closure\_stationary\_wave\_broad\_aggregate\_v1.png} \\
+\href{curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_aggregate_v2.png}{curved\_closure\_stationary\_wave\_broad\_aggregate\_v2.png} \\
 closure heatmap &
-\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_closure_heatmap_v1.png}{curved\_closure\_stationary\_wave\_broad\_closure\_heatmap\_v1.png} \\
+\href{curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_closure_heatmap_v2.png}{curved\_closure\_stationary\_wave\_broad\_closure\_heatmap\_v2.png} \\
 leakage heatmap &
-\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_leakage_heatmap_v1.png}{curved\_closure\_stationary\_wave\_broad\_leakage\_heatmap\_v1.png} \\
+\href{curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_leakage_heatmap_v2.png}{curved\_closure\_stationary\_wave\_broad\_leakage\_heatmap\_v2.png} \\
 \end{longtable}
 }
 
@@ -1006,7 +1010,7 @@ leakage heatmap &
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_curved\_closure\_scattering\_integration\_v1.py}
+\NormalTok{python3 run\_curved\_closure\_scattering\_integration\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1014,7 +1018,7 @@ leakage heatmap &
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{curved\_closure\_scattering\_integration\_result\_v1/}
+\NormalTok{curved\_closure\_scattering\_integration\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1035,13 +1039,13 @@ leakage heatmap &
 \bottomrule\noalign{}
 \endlastfoot
 レポート &
-\href{curved_closure_scattering_integration_result_v1/curved_closure_scattering_integration_report_v1.md}{curved\_closure\_scattering\_integration\_report\_v1.md} \\
+\href{curved_closure_scattering_integration_result_v2/curved_closure_scattering_integration_report_v2.md}{curved\_closure\_scattering\_integration\_report\_v2.md} \\
 JSON &
-\href{curved_closure_scattering_integration_result_v1/curved_closure_scattering_integration_result_v1.json}{curved\_closure\_scattering\_integration\_result\_v1.json} \\
+\href{curved_closure_scattering_integration_result_v2/curved_closure_scattering_integration_result_v2.json}{curved\_closure\_scattering\_integration\_result\_v2.json} \\
 CSV &
-\href{curved_closure_scattering_integration_result_v1/curved_closure_scattering_integration_v1.csv}{curved\_closure\_scattering\_integration\_v1.csv} \\
+\href{curved_closure_scattering_integration_result_v2/curved_closure_scattering_integration_v2.csv}{curved\_closure\_scattering\_integration\_v2.csv} \\
 図 &
-\href{curved_closure_scattering_integration_result_v1/curved_closure_scattering_integration_v1.png}{curved\_closure\_scattering\_integration\_v1.png} \\
+\href{curved_closure_scattering_integration_result_v2/curved_closure_scattering_integration_v2.png}{curved\_closure\_scattering\_integration\_v2.png} \\
 \end{longtable}
 }
 
@@ -1063,7 +1067,7 @@ CSV &
   \texttt{10.5281/zenodo.20680269}, 2026.
 \item
   木原範昭「フェルミオン的逆相核による完全反射写像の干渉構成」Version
-  DOI: \texttt{10.5281/zenodo.21295480}, Concept DOI:
+  DOI: \texttt{10.5281/zenodo.21332867}, Concept DOI:
   \texttt{10.5281/zenodo.21295479}, 2026.
 \end{enumerate}
 

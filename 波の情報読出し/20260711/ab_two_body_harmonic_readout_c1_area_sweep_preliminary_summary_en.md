@@ -1,23 +1,26 @@
-# Preliminary Summary of Harmonic Readout and c=1 Area Sweep in an AB Two-Body Closed Phase System
+# Preliminary Summary of Harmonic Readout and c=1 Area Sweep in an AB Two-Body Closed Phase System v2
 
 **Date:** 2026-07-12
 **Author:** Noriaki Kihara
 **Position:** Summary of the AB two-body preliminary experiment group in the Wave Information Readout series
-**Version DOI:** 10.5281/zenodo.21318697
+**Version DOI:** 10.5281/zenodo.21332876
 **Concept DOI:** 10.5281/zenodo.21318696
+
+V2 adds an AB two-body acceleration-readout protocol with a fermion-like recoil map while keeping the scope and claims of the original summary unchanged.
 
 ---
 
 ## Abstract
 
-This summary consolidates six preliminary experiments performed on an AB two-body closed phase system:
+This summary consolidates six preliminary experiments performed on an AB two-body closed phase system. V2 adds a seventh protocol that incorporates a fermion-like recoil map into the same AB acceleration-readout frame:
 
 1. one-angle circumferential phase harmonic readout,
 2. parameter sweep of the one-angle circumferential phase harmonic readout,
 3. internal `c=1` calibration and `chi-tau` area sweep,
 4. parameter sweep of the internal `c=1` calibration,
 5. inverse-area compensation diagnosis in the `chi-tau` plane, and
-6. extended sweep for native inverse-area readout.
+6. extended sweep for native inverse-area readout, and
+7. fermion-like recoil harmonic readout protocol.
 
 The preceding ABC multigauge interference readout paper showed that, in a minimal ABC closed phase system that does not place a background space first, the measuring device itself can be defined as a complex phase wave inside the same system, and mass-like, momentum-like, and energy-like conserved readouts can be constructed from interference.
 
@@ -53,6 +56,7 @@ Thus, the determination of the distance exponent remains a task for a separate A
 | 4 | `c=1` parameter sweep | Test whether `c=1` is sufficient for area formation | Not sufficient |
 | 5 | Inverse-area compensation diagnosis | Test whether `1/A_chi_tau` remains natively on the closure-compensation side | Not detected |
 | 6 | Native inverse-area extended sweep | Search broad conditions for `alpha≈2` | Not detected natively |
+| 7 | V2 fermion-like recoil protocol | Re-test acceleration-like readout with a recoil map near the AB center | `q_out_factor=-1`; harmonic readout and `chi-tau` surface maintained |
 
 ---
 
@@ -337,9 +341,114 @@ However, it has not yet been read natively.
 
 ---
 
-## 8. Overall Judgment
+## 8. V2 Addition: Harmonic Readout with a Fermion-Like Recoil Map
 
-### 8.1 Established
+### 8.1 Purpose
+
+In the V1 one-angle harmonic readout, the relative phase development of the AB pair was read continuously, and Protocol F/B degeneracy was confirmed under label-free readout.
+
+V2 keeps this context unchanged and adds a fermion-like recoil map at the central interaction region.
+
+The question tested here is whether the acceleration-like harmonic readout from the AB two-body relation `f_AB` can still be evaluated in the same form when the central interaction is read as a recoil-type event.
+
+This section does not test:
+
+```text
+AB asymmetrization
+low-localization limit
+instantaneous contraction
+harmonic transfer
+localization transfer
+```
+
+Those questions belong to a separate wave-packet focusing experiment line.
+
+The present V2 only adds a fermion-like recoil protocol to the current AB two-body acceleration-readout assumptions, in addition to the transmission-type central readout.
+
+### 8.2 Recoil Map
+
+Let the right-moving and left-moving incident channels be
+
+```math
+\Psi^{\mathrm{in}}
+=
+\begin{pmatrix}
+\psi_+^{\mathrm{in}}\\
+\psi_-^{\mathrm{in}}
+\end{pmatrix}.
+```
+
+Let `Delta_F` be the fermion-like exchange phase. Define the transmission and reflection amplitudes by
+
+```math
+t_\Delta
+=
+e^{i\Delta_F/2}
+\cos\frac{\Delta_F}{2}
+```
+
+```math
+r_\Delta
+=
+-i e^{i\Delta_F/2}
+\sin\frac{\Delta_F}{2}.
+```
+
+The two-channel scattering matrix is
+
+```math
+S_\Delta
+=
+\begin{pmatrix}
+t_\Delta & r_\Delta\\
+r_\Delta & t_\Delta
+\end{pmatrix},
+```
+
+and the outgoing channels are read as
+
+```math
+\Psi^{\mathrm{out}}
+=
+S_\Delta
+\Psi^{\mathrm{in}}.
+```
+
+For the complete-recoil condition,
+
+```math
+\Delta_F=\pi,
+```
+
+we obtain
+
+```math
+|r_\Delta|^2=1,
+\qquad
+|t_\Delta|^2=0.
+```
+
+In this limit the readout factor becomes
+
+```text
+q_out_factor = T - R = -1.
+```
+
+### 8.3 Result
+
+The V2 protocol preserved the same harmonic-readout frame.
+
+```text
+q_out_factor = -1
+```
+
+The AB harmonic readout remained evaluable in the same form, and the `chi-tau` surface used in the area sweep was maintained.
+
+This result does not add a claim of immediate contraction, harmonic transfer, or localization transfer. It only confirms that the acceleration-like AB readout survives when the central interaction is represented as a fermion-like recoil map.
+
+## 9. Overall Judgment
+
+### 9.1 Established
 
 | Item | Judgment |
 |---|---|
@@ -351,7 +460,7 @@ However, it has not yet been read natively.
 | Confirm `c=1` as a candidate necessary condition | Established |
 | Post-processed `1/A_chi_tau` shows `alpha≈2` | Established |
 
-### 8.2 Not Established
+### 9.2 Not Established
 
 | Item | Judgment |
 |---|---|
@@ -364,7 +473,7 @@ However, it has not yet been read natively.
 
 ---
 
-## 9. Interpretation
+## 10. Interpretation
 
 The main achievements of the AB two-body system are the following two points:
 
@@ -444,7 +553,7 @@ and whether f_AB, f_AC, and f_BC can be separated as circumferential-direction c
 ## Self-References
 
 1. Noriaki Kihara, "Basic Axiom System of the Nameless Equal-Amplitude Composite Wave Model v4", Version DOI: `10.5281/zenodo.21316620`, Concept DOI: `10.5281/zenodo.21315735`, 2026.
-2. Noriaki Kihara, "Construction Experiment of Multigauge Interference Readout Conserved Quantities in an ABC Closed Phase System", Version DOI: `10.5281/zenodo.21308050`, Concept DOI: `10.5281/zenodo.21308049`, 2026.
+2. Noriaki Kihara, "Construction Experiment of Multigauge Interference Readout Conserved Quantities in an ABC Closed Phase System", Version DOI: `10.5281/zenodo.21332875`, Concept DOI: `10.5281/zenodo.21308049`, 2026.
 3. Noriaki Kihara, [Definitional Supplement on Label-Free Two-Arc Relative Phase and Harmonic Readout in an AB Two-Body Closed Phase System](AB二体閉鎖位相系におけるラベルなし二弧相対位相と調和読出しに関する定義補足.md), 2026.
 4. Noriaki Kihara, [Experiment Specification for One-Angle Circumferential Phase Harmonic Readout in an AB Two-Body Closed Phase System v1](AB二体閉鎖位相系における一角度円周位相調和読出し実験仕様書%20v1.md), 2026.
 5. Noriaki Kihara, [Experiment Specification for c=1 Internal Calibration and Spatial-Phase/Temporal-Phase Area Sweep Readout in an AB Two-Body Closed Phase System v1](AB二体閉鎖位相系におけるc=1内部較正と空間位相・時間位相面積スイープ読出し実験仕様書%20v1.md), 2026.

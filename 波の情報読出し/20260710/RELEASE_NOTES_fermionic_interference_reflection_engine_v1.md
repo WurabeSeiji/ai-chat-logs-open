@@ -1,11 +1,12 @@
-# Release Notes: Fermionic Interference Reflection Engine v1
+# Release Notes: Fermionic Interference Reflection Engine v1/v2
 
 **Date:** 2026-07-10  
 **Author:** Noriaki Kihara  
 **Repository:** `ai-chat-logs-open`  
-**Zenodo Version DOI:** 10.5281/zenodo.21295480  
+**Latest Zenodo Version DOI:** 10.5281/zenodo.21332867  
 **Zenodo Concept DOI:** 10.5281/zenodo.21295479  
-**Zenodo Record:** https://zenodo.org/records/21295480  
+**Latest Zenodo Record:** https://zenodo.org/records/21332867  
+**Previous v1 Version DOI:** 10.5281/zenodo.21295480  
 **Zenn Article:** `articles/fermionic-interference-reflection-engine.md`  
 
 ---
@@ -22,20 +23,30 @@ The preceding paper established the full AB/C closed-phase-system architecture. 
 
 ---
 
+## v2 Update
+
+V2 recalculates the experiment with the reflection and transmission amplitudes acting as a two-channel scattering matrix on the incident channels.
+
+The Concept DOI is maintained. The V2 Version DOI is `10.5281/zenodo.21332867`.
+
+The Japanese/English Markdown, TeX/PDF, numerical outputs, and reproducibility bundle were updated to the V2 outputs.
+
+---
+
 ## Primary Outputs
 
 | File | Role |
 |---|---|
-| `フェルミオン的逆相核による完全反射写像の干渉構成.md` | Japanese main paper |
+| `フェルミオン的逆相核による完全反射写像の干渉構成 v2.md` | Japanese main paper |
 | `fermionic_inverse_phase_core_interference_reflection_en.md` | English main paper |
 | `fermionic_interference_reflection_engine_ja.tex` | Japanese TeX source |
 | `fermionic_interference_reflection_engine_ja.pdf` | Japanese PDF |
 | `fermionic_interference_reflection_engine_en.tex` | English TeX source |
 | `fermionic_interference_reflection_engine_en.pdf` | English PDF |
-| `run_fermionic_interference_reflection_v1.py` | Executed numerical experiment script |
-| `fermionic_interference_reflection_result_v1/` | JSON, CSV, plots, and execution report |
-| `fermionic_interference_reflection_engine_zenodo_metadata_v1.json` | Zenodo metadata draft without token |
-| `fermionic_interference_reflection_engine_publication_bundle_v1.zip` | Reproducibility bundle |
+| `run_fermionic_interference_reflection_v2.py` | Executed numerical experiment script |
+| `fermionic_interference_reflection_result_v2/` | JSON, CSV, plots, and execution report |
+| `fermionic_interference_reflection_engine_zenodo_deposit_v2.json` | Zenodo metadata draft without token |
+| `fermionic_interference_reflection_engine_publication_bundle_v2.zip` | Reproducibility bundle |
 | `articles/fermionic-interference-reflection-engine.md` | Zenn article draft |
 
 ---
@@ -94,8 +105,8 @@ The confirmed result is that the direct direction-reversal rule of the preceding
 
 Publication has been completed.
 
-- Zenodo version DOI: https://doi.org/10.5281/zenodo.21295480
+- Zenodo version DOI: https://doi.org/10.5281/zenodo.21332867
 - Zenodo concept DOI: https://doi.org/10.5281/zenodo.21295479
-- Zenodo record: https://zenodo.org/records/21295480
-- GitHub final commit: `dd65658e`
+- Zenodo record: https://zenodo.org/records/21332867
+- GitHub final commit: recorded in the v2 publication commit
 - Zenn article source: `articles/fermionic-interference-reflection-engine.md`

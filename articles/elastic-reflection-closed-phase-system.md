@@ -10,9 +10,13 @@ published: true
 
 論文本体:
 
-- Version DOI: https://doi.org/10.5281/zenodo.21291020
+- Version DOI: https://doi.org/10.5281/zenodo.21332866
 - Concept DOI: https://doi.org/10.5281/zenodo.21291018
 - GitHub: https://github.com/WurabeSeiji/ai-chat-logs-open
+
+## v2更新
+
+2026-07-13に、フェルミオン様反射写像の計算式を更新して同一条件を再計算した v2 を公開しました。図・数値・再現用 bundle を v2 に差し替えています。主張の骨格は v1 から変更していません。
 
 ## 何をしたか
 

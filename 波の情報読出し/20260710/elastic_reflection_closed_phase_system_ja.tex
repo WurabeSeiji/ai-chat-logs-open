@@ -127,15 +127,19 @@
 
 \begin{document}
 
-\section{背景空間を仮定しない閉じた位相系におけるフェルミオン的二局所波の完全弾性反射の構成実験}\label{ux80ccux666fux7a7aux9593ux3092ux4eeeux5b9aux3057ux306aux3044ux9589ux3058ux305fux4f4dux76f8ux7cfbux306bux304aux3051ux308bux30d5ux30a7ux30ebux30dfux30aaux30f3ux7684ux4e8cux5c40ux6240ux6ce2ux306eux5b8cux5168ux5f3eux6027ux53cdux5c04ux306eux69cbux6210ux5b9fux9a13}
+\section{背景空間を仮定しない閉じた位相系におけるフェルミオン的二局所波の完全弾性反射の構成実験
+v2}\label{ux80ccux666fux7a7aux9593ux3092ux4eeeux5b9aux3057ux306aux3044ux9589ux3058ux305fux4f4dux76f8ux7cfbux306bux304aux3051ux308bux30d5ux30a7ux30ebux30dfux30aaux30f3ux7684ux4e8cux5c40ux6240ux6ce2ux306eux5b8cux5168ux5f3eux6027ux53cdux5c04ux306eux69cbux6210ux5b9fux9a13-v2}
 
 \textbf{副題:}
 無名等振幅複合波モデルにおける有限解像度相互作用セルと内部観測\\
 \textbf{日付:} 2026-07-10\\
 \textbf{著者:} 木原 範昭\\
 \textbf{位置づけ:} 構成実験論文\\
-\textbf{Version DOI:} 10.5281/zenodo.21291020\\
-\textbf{Concept DOI:} 10.5281/zenodo.21291018
+\textbf{Version DOI:} 10.5281/zenodo.21332866 \textbf{Concept DOI:}
+10.5281/zenodo.21291018
+
+フェルミオン様反射の計算式を変更したため、同一条件で再計算した V2
+とする。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -624,17 +628,39 @@ Shannon {[}Shannon1949{]} を参照する。
 \end{Highlighting}
 \end{Shaded}
 
-進行方向読出し量は反転する。
+フェルミオン様反射の散乱係数を次で与える。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{q\_A\textquotesingle{}\textquotesingle{}={-}q\_A\textquotesingle{}}
+\NormalTok{t=e\^{}\{i\textbackslash{}Delta\_F/2\}\textbackslash{}cos\textbackslash{}frac\{\textbackslash{}Delta\_F\}\{2\}}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{q\_B\textquotesingle{}\textquotesingle{}={-}q\_B\textquotesingle{}}
+\NormalTok{r={-}i e\^{}\{i\textbackslash{}Delta\_F/2\}\textbackslash{}sin\textbackslash{}frac\{\textbackslash{}Delta\_F\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
+
+完全反射では、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_F=\textbackslash{}pi,\textbackslash{}qquad |r|\^{}2=1,\textbackslash{}qquad |t|\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+である。出力チャネルを次で与える。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A\_{-}\textquotesingle{}\textquotesingle{}=rA\_\{\textbackslash{}mathrm\{ref\}\}\textquotesingle{}+tB\_\{\textbackslash{}mathrm\{trans\}\}\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B\_+\textquotesingle{}\textquotesingle{}=tA\_\{\textbackslash{}mathrm\{trans\}\}\textquotesingle{}+rB\_\{\textbackslash{}mathrm\{ref\}\}\textquotesingle{}}
 \end{Highlighting}
 \end{Shaded}
 
@@ -757,7 +783,7 @@ No. & 実験 & 目的 \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={基本衝突軌道}]{elastic_collision_simulation_result_v1/elastic_collision_trajectory_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={基本衝突軌道}]{elastic_collision_simulation_result_v2/elastic_collision_trajectory_v2.png}}
 \caption{基本衝突軌道}
 \end{figure}
 
@@ -765,7 +791,7 @@ No. & 実験 & 目的 \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={識別振動読出し}]{elastic_collision_simulation_result_v1/elastic_collision_identification_modes_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={識別振動読出し}]{elastic_collision_simulation_result_v2/elastic_collision_identification_modes_v2.png}}
 \caption{識別振動読出し}
 \end{figure}
 
@@ -793,7 +819,7 @@ No. & 実験 & 目的 \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={識別振動純度}]{elastic_collision_label_robustness_result_v1/label_robustness_purity_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={識別振動純度}]{elastic_collision_label_robustness_result_v2/label_robustness_purity_v2.png}}
 \caption{識別振動純度}
 \end{figure}
 
@@ -801,7 +827,7 @@ No. & 実験 & 目的 \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={識別振動保存判定}]{elastic_collision_label_robustness_result_v1/label_robustness_detection_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={識別振動保存判定}]{elastic_collision_label_robustness_result_v2/label_robustness_detection_v2.png}}
 \caption{識別振動保存判定}
 \end{figure}
 
@@ -829,7 +855,7 @@ No. & 実験 & 目的 \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={観測機条件}]{elastic_collision_observer_sweep_result_v1/observer_sweep_conditions_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={観測機条件}]{elastic_collision_observer_sweep_result_v2/observer_sweep_conditions_v2.png}}
 \caption{観測機条件}
 \end{figure}
 
@@ -837,7 +863,7 @@ No. & 実験 & 目的 \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={観測機有効性}]{elastic_collision_observer_sweep_result_v1/observer_sweep_validity_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={観測機有効性}]{elastic_collision_observer_sweep_result_v2/observer_sweep_validity_v2.png}}
 \caption{観測機有効性}
 \end{figure}
 
@@ -866,7 +892,7 @@ off-grid 無効ケース数 & \texttt{3} \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={サンプリング条件}]{elastic_collision_cell_resolution_sweep_result_v1/cell_resolution_sampling_condition_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={サンプリング条件}]{elastic_collision_cell_resolution_sweep_result_v2/cell_resolution_sampling_condition_v2.png}}
 \caption{サンプリング条件}
 \end{figure}
 
@@ -874,7 +900,7 @@ off-grid 無効ケース数 & \texttt{3} \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={off-grid 有効性}]{elastic_collision_cell_resolution_sweep_result_v1/cell_resolution_validity_d0_0_203_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={off-grid 有効性}]{elastic_collision_cell_resolution_sweep_result_v2/cell_resolution_validity_d0_0_203_v2.png}}
 \caption{off-grid 有効性}
 \end{figure}
 
@@ -904,7 +930,7 @@ transmission\_with\_label\_exchange & 不成立 \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={対照写像軌道}]{elastic_collision_control_maps_result_v1/control_maps_trajectories_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={対照写像軌道}]{elastic_collision_control_maps_result_v2/control_maps_trajectories_v2.png}}
 \caption{対照写像軌道}
 \end{figure}
 
@@ -912,7 +938,7 @@ transmission\_with\_label\_exchange & 不成立 \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={対照写像判定}]{elastic_collision_control_maps_result_v1/control_maps_verdict_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={対照写像判定}]{elastic_collision_control_maps_result_v2/control_maps_verdict_v2.png}}
 \caption{対照写像判定}
 \end{figure}
 
@@ -938,7 +964,7 @@ transmission\_with\_label\_exchange & 不成立 \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={非対称セルギャップ}]{elastic_collision_asymmetry_sweep_result_v1/asymmetry_sweep_cell_gaps_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={非対称セルギャップ}]{elastic_collision_asymmetry_sweep_result_v2/asymmetry_sweep_cell_gaps_v2.png}}
 \caption{非対称セルギャップ}
 \end{figure}
 
@@ -946,7 +972,7 @@ transmission\_with\_label\_exchange & 不成立 \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={非対称判定}]{elastic_collision_asymmetry_sweep_result_v1/asymmetry_sweep_verdict_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={非対称判定}]{elastic_collision_asymmetry_sweep_result_v2/asymmetry_sweep_verdict_v2.png}}
 \caption{非対称判定}
 \end{figure}
 
@@ -975,7 +1001,7 @@ transmission\_with\_label\_exchange & 不成立 \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={観測擾乱閾値}]{elastic_collision_observation_perturbation_result_v1/observation_perturbation_thresholds_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={観測擾乱閾値}]{elastic_collision_observation_perturbation_result_v2/observation_perturbation_thresholds_v2.png}}
 \caption{観測擾乱閾値}
 \end{figure}
 
@@ -983,7 +1009,7 @@ transmission\_with\_label\_exchange & 不成立 \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={観測擾乱判定}]{elastic_collision_observation_perturbation_result_v1/observation_perturbation_verdict_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={観測擾乱判定}]{elastic_collision_observation_perturbation_result_v2/observation_perturbation_verdict_v2.png}}
 \caption{観測擾乱判定}
 \end{figure}
 
@@ -1014,7 +1040,7 @@ transmission\_with\_label\_exchange & 不成立 \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={複数回衝突軌道}]{elastic_collision_multi_collision_result_v1/multi_collision_trajectory_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={複数回衝突軌道}]{elastic_collision_multi_collision_result_v2/multi_collision_trajectory_v2.png}}
 \caption{複数回衝突軌道}
 \end{figure}
 
@@ -1022,7 +1048,7 @@ transmission\_with\_label\_exchange & 不成立 \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={複数回閉鎖残差}]{elastic_collision_multi_collision_result_v1/multi_collision_closure_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={複数回閉鎖残差}]{elastic_collision_multi_collision_result_v2/multi_collision_closure_v2.png}}
 \caption{複数回閉鎖残差}
 \end{figure}
 
@@ -1055,7 +1081,7 @@ transmission\_with\_label\_exchange & 不成立 \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={eta有効性}]{elastic_collision_eta_resolution_sweep_result_v1/eta_resolution_validity_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={eta有効性}]{elastic_collision_eta_resolution_sweep_result_v2/eta_resolution_validity_v2.png}}
 \caption{eta有効性}
 \end{figure}
 
@@ -1063,7 +1089,7 @@ transmission\_with\_label\_exchange & 不成立 \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={eta純度}]{elastic_collision_eta_resolution_sweep_result_v1/eta_resolution_purity_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={eta純度}]{elastic_collision_eta_resolution_sweep_result_v2/eta_resolution_purity_v2.png}}
 \caption{eta純度}
 \end{figure}
 
@@ -1269,41 +1295,41 @@ Mathematisch-Physikalische Klasse}, 235-257, 1918. English translation:
 \bottomrule\noalign{}
 \endlastfoot
 基本完全弾性衝突 &
-\href{elastic_collision_simulation_result_v1/elastic_collision_report_v1.md}{report}
+\href{elastic_collision_simulation_result_v2/elastic_collision_report_v2.md}{report}
 &
-\href{elastic_collision_simulation_result_v1/elastic_collision_result_v1.json}{json} \\
+\href{elastic_collision_simulation_result_v2/elastic_collision_result_v2.json}{json} \\
 識別振動頑健性 &
-\href{elastic_collision_label_robustness_result_v1/label_robustness_report_v1.md}{report}
+\href{elastic_collision_label_robustness_result_v2/label_robustness_report_v2.md}{report}
 &
-\href{elastic_collision_label_robustness_result_v1/label_robustness_result_v1.json}{json} \\
+\href{elastic_collision_label_robustness_result_v2/label_robustness_result_v2.json}{json} \\
 観測機 C 条件 &
-\href{elastic_collision_observer_sweep_result_v1/observer_sweep_report_v1.md}{report}
+\href{elastic_collision_observer_sweep_result_v2/observer_sweep_report_v2.md}{report}
 &
-\href{elastic_collision_observer_sweep_result_v1/observer_sweep_result_v1.json}{json} \\
+\href{elastic_collision_observer_sweep_result_v2/observer_sweep_result_v2.json}{json} \\
 セル解像度 &
-\href{elastic_collision_cell_resolution_sweep_result_v1/cell_resolution_sweep_report_v1.md}{report}
+\href{elastic_collision_cell_resolution_sweep_result_v2/cell_resolution_sweep_report_v2.md}{report}
 &
-\href{elastic_collision_cell_resolution_sweep_result_v1/cell_resolution_sweep_result_v1.json}{json} \\
+\href{elastic_collision_cell_resolution_sweep_result_v2/cell_resolution_sweep_result_v2.json}{json} \\
 対照写像 &
-\href{elastic_collision_control_maps_result_v1/control_maps_report_v1.md}{report}
+\href{elastic_collision_control_maps_result_v2/control_maps_report_v2.md}{report}
 &
-\href{elastic_collision_control_maps_result_v1/control_maps_result_v1.json}{json} \\
+\href{elastic_collision_control_maps_result_v2/control_maps_result_v2.json}{json} \\
 非対称条件 &
-\href{elastic_collision_asymmetry_sweep_result_v1/asymmetry_sweep_report_v1.md}{report}
+\href{elastic_collision_asymmetry_sweep_result_v2/asymmetry_sweep_report_v2.md}{report}
 &
-\href{elastic_collision_asymmetry_sweep_result_v1/asymmetry_sweep_result_v1.json}{json} \\
+\href{elastic_collision_asymmetry_sweep_result_v2/asymmetry_sweep_result_v2.json}{json} \\
 観測擾乱 &
-\href{elastic_collision_observation_perturbation_result_v1/observation_perturbation_report_v1.md}{report}
+\href{elastic_collision_observation_perturbation_result_v2/observation_perturbation_report_v2.md}{report}
 &
-\href{elastic_collision_observation_perturbation_result_v1/observation_perturbation_result_v1.json}{json} \\
+\href{elastic_collision_observation_perturbation_result_v2/observation_perturbation_result_v2.json}{json} \\
 複数回衝突 &
-\href{elastic_collision_multi_collision_result_v1/multi_collision_report_v1.md}{report}
+\href{elastic_collision_multi_collision_result_v2/multi_collision_report_v2.md}{report}
 &
-\href{elastic_collision_multi_collision_result_v1/multi_collision_result_v1.json}{json} \\
+\href{elastic_collision_multi_collision_result_v2/multi_collision_result_v2.json}{json} \\
 \texttt{η} 解像度 &
-\href{elastic_collision_eta_resolution_sweep_result_v1/eta_resolution_sweep_report_v1.md}{report}
+\href{elastic_collision_eta_resolution_sweep_result_v2/eta_resolution_sweep_report_v2.md}{report}
 &
-\href{elastic_collision_eta_resolution_sweep_result_v1/eta_resolution_sweep_result_v1.json}{json} \\
+\href{elastic_collision_eta_resolution_sweep_result_v2/eta_resolution_sweep_result_v2.json}{json} \\
 \end{longtable}
 }
 

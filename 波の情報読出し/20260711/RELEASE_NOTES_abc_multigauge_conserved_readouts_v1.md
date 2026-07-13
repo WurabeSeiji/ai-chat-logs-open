@@ -1,11 +1,12 @@
-# Release Notes: ABC Multigauge Conserved Readouts v1
+# Release Notes: ABC Multigauge Conserved Readouts v1/v2
 
 **Date:** 2026-07-11
 **Author:** Noriaki Kihara
 **Repository:** `ai-chat-logs-open`
-**Zenodo Version DOI:** 10.5281/zenodo.21308050
+**Latest Zenodo Version DOI:** 10.5281/zenodo.21332875
 **Zenodo Concept DOI:** 10.5281/zenodo.21308049
-**Zenodo Record:** https://zenodo.org/records/21308050
+**Latest Zenodo Record:** https://zenodo.org/records/21332875
+**Previous v1 Version DOI:** 10.5281/zenodo.21308050
 **Zenn Article:** `articles/abc-multigauge-conserved-readouts.md`
 **note Japanese Article:** https://note.com/kiharanoriaki/n/nd5d3777a6e48
 **note English Article:** https://note.com/kiharanoriaki/n/nd10d4b8d627d
@@ -28,21 +29,31 @@ The paper reconstructs `p_read`, `E_read`, and `R_read` from multiple gauges, di
 
 ---
 
+## v2 Update
+
+V2 recalculates the experiment series after changing the formula for the fermion-like reflection map.
+
+The Concept DOI is maintained. The V2 Version DOI is `10.5281/zenodo.21332875`.
+
+The Japanese/English Markdown, TeX/PDF, numerical outputs, and reproducibility bundle were updated to the V2 outputs.
+
+---
+
 ## Primary Outputs
 
 | File | Role |
 |---|---|
-| `ABC閉鎖位相系における多ゲージ干渉読出し保存量の構成実験.md` | Japanese main paper |
+| `ABC閉鎖位相系における多ゲージ干渉読出し保存量の構成実験 v2.md` | Japanese main paper |
 | `abc_closed_phase_system_multigauge_conserved_readouts_en.md` | English main paper |
 | `abc_closed_phase_system_multigauge_conserved_readouts_ja.tex` | Japanese TeX source |
 | `abc_closed_phase_system_multigauge_conserved_readouts_ja.pdf` | Japanese PDF |
 | `abc_closed_phase_system_multigauge_conserved_readouts_en.tex` | English TeX source |
 | `abc_closed_phase_system_multigauge_conserved_readouts_en.pdf` | English PDF |
-| `abc_multigauge_conserved_readouts_zenodo_metadata_v1.json` | Zenodo metadata without token |
-| `abc_multigauge_conserved_readouts_zenodo_deposit_v1.json` | Zenodo draft deposit response without token |
-| `abc_multigauge_conserved_readouts_zenodo_uploads_v1.json` | Zenodo upload result summary without token |
-| `abc_multigauge_conserved_readouts_zenodo_published_record_v1.json` | Zenodo published record response without token |
-| `abc_multigauge_conserved_readouts_publication_bundle_v1.zip` | Reproducibility bundle |
+| `abc_multigauge_conserved_readouts_zenodo_deposit_v2.json` | Zenodo metadata without token |
+| `abc_multigauge_conserved_readouts_zenodo_deposit_v2.json` | Zenodo draft deposit response without token |
+| `abc_multigauge_conserved_readouts_zenodo_uploads_v2.json` | Zenodo upload result summary without token |
+| `abc_multigauge_conserved_readouts_zenodo_published_record_v2.json` | Zenodo published record response without token |
+| `abc_multigauge_conserved_readouts_publication_bundle_v2.zip` | Reproducibility bundle |
 | `articles/abc-multigauge-conserved-readouts.md` | Zenn article source |
 | `note_article_abc_multigauge_conserved_readouts_ja.md` | note Japanese article source |
 | `note_article_abc_multigauge_conserved_readouts_en.md` | note English article source |
@@ -103,9 +114,9 @@ The correspondence map from these readout quantities to standard physical quanti
 
 Publication has been completed.
 
-- Zenodo version DOI: https://doi.org/10.5281/zenodo.21308050
+- Zenodo version DOI: https://doi.org/10.5281/zenodo.21332875
 - Zenodo concept DOI: https://doi.org/10.5281/zenodo.21308049
-- Zenodo record: https://zenodo.org/records/21308050
+- Zenodo record: https://zenodo.org/records/21332875
 - Zenn article source: `articles/abc-multigauge-conserved-readouts.md`
 - note Japanese article: https://note.com/kiharanoriaki/n/nd5d3777a6e48
 - note English article: https://note.com/kiharanoriaki/n/nd10d4b8d627d
@@ -116,11 +127,11 @@ Publication has been completed.
 
 Zenodo uploaded files:
 
-1. `ABC閉鎖位相系における多ゲージ干渉読出し保存量の構成実験.md`
+1. `ABC閉鎖位相系における多ゲージ干渉読出し保存量の構成実験 v2.md`
 2. `abc_closed_phase_system_multigauge_conserved_readouts_en.md`
 3. `abc_closed_phase_system_multigauge_conserved_readouts_ja.tex`
 4. `abc_closed_phase_system_multigauge_conserved_readouts_ja.pdf`
 5. `abc_closed_phase_system_multigauge_conserved_readouts_en.tex`
 6. `abc_closed_phase_system_multigauge_conserved_readouts_en.pdf`
-7. `abc_multigauge_conserved_readouts_zenodo_metadata_v1.json`
-8. `abc_multigauge_conserved_readouts_publication_bundle_v1.zip`
+7. `abc_multigauge_conserved_readouts_zenodo_deposit_v2.json`
+8. `abc_multigauge_conserved_readouts_publication_bundle_v2.zip`

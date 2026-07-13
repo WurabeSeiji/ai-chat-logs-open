@@ -1,11 +1,13 @@
-# Constructive Experiment on Elastic Reflection of Two Fermionic Local Waves in a Closed Phase System Without Assuming Background Space
+# Constructive Experiment on Elastic Reflection of Two Fermionic Local Waves in a Closed Phase System Without Assuming Background Space v2
 
 **Subtitle:** Finite-Resolution Interaction Cells and Internal Observation in the Anonymous Equal-Amplitude Composite-Wave Model  
 **Date:** 2026-07-10  
 **Author:** Noriaki Kihara  
 **Status:** Constructive experimental paper  
-**Version DOI:** 10.5281/zenodo.21291020  
+**Version DOI:** 10.5281/zenodo.21332866  
 **Concept DOI:** 10.5281/zenodo.21291018  
+
+V2 recalculates the same conditions after changing the formula for the fermion-like reflection map.
 
 ---
 
@@ -354,14 +356,30 @@ Inside the finite-resolution cell, apply the map
 (A',B',C')\mapsto(A'',B'',C'').
 ```
 
-The direction readout is reversed:
+The fermion-like reflection coefficients are given by
 
 ```math
-q_A''=-q_A'
+t=e^{i\Delta_F/2}\cosrac{\Delta_F}{2}
 ```
 
 ```math
-q_B''=-q_B'
+r=-i e^{i\Delta_F/2}\sinrac{\Delta_F}{2}
+```
+
+In the complete-reflection case,
+
+```math
+\Delta_F=\pi,\qquad |r|^2=1,\qquad |t|^2=0
+```
+
+The output channels are defined as
+
+```math
+A_-''=rA_{\mathrm{ref}}'+tB_{\mathrm{trans}}'
+```
+
+```math
+B_+''=tA_{\mathrm{trans}}'+rB_{\mathrm{ref}}'.
 ```
 
 while identification oscillation, representative amplitude, and fermionic core are preserved:
@@ -439,11 +457,11 @@ In the minimal experiment, `A` and `B` reached the collision cell, direction rea
 
 **Figure 1. Trajectories and direction readouts in the basic collision**
 
-![Basic collision trajectory](elastic_collision_simulation_result_v1/elastic_collision_trajectory_v1.png)
+![Basic collision trajectory](elastic_collision_simulation_result_v2/elastic_collision_trajectory_v2.png)
 
 **Figure 2. Readout of identification oscillation modes**
 
-![Identification mode readout](elastic_collision_simulation_result_v1/elastic_collision_identification_modes_v1.png)
+![Identification mode readout](elastic_collision_simulation_result_v2/elastic_collision_identification_modes_v2.png)
 
 ### 9.2 Robustness of Identification Oscillation
 
@@ -458,11 +476,11 @@ When leakage was introduced into the identification oscillation, the identificat
 
 **Figure 3. Identification oscillation purity**
 
-![Identification purity](elastic_collision_label_robustness_result_v1/label_robustness_purity_v1.png)
+![Identification purity](elastic_collision_label_robustness_result_v2/label_robustness_purity_v2.png)
 
 **Figure 4. Identification preservation verdict**
 
-![Identification preservation verdict](elastic_collision_label_robustness_result_v1/label_robustness_detection_v1.png)
+![Identification preservation verdict](elastic_collision_label_robustness_result_v2/label_robustness_detection_v2.png)
 
 ### 9.3 Heaviness Condition of Observer C
 
@@ -477,11 +495,11 @@ When the representative-amplitude capacity of observer `C` was too small, the qu
 
 **Figure 5. Observer condition quantities**
 
-![Observer conditions](elastic_collision_observer_sweep_result_v1/observer_sweep_conditions_v1.png)
+![Observer conditions](elastic_collision_observer_sweep_result_v2/observer_sweep_conditions_v2.png)
 
 **Figure 6. Validity by observer capacity**
 
-![Observer validity](elastic_collision_observer_sweep_result_v1/observer_sweep_validity_v1.png)
+![Observer validity](elastic_collision_observer_sweep_result_v2/observer_sweep_validity_v2.png)
 
 ### 9.4 Cell Resolution and Time Step
 
@@ -497,11 +515,11 @@ When the update step was coarser than the finite cell width, the collision cell 
 
 **Figure 7. Sampling condition**
 
-![Sampling condition](elastic_collision_cell_resolution_sweep_result_v1/cell_resolution_sampling_condition_v1.png)
+![Sampling condition](elastic_collision_cell_resolution_sweep_result_v2/cell_resolution_sampling_condition_v2.png)
 
 **Figure 8. Validity under off-grid conditions**
 
-![Off-grid validity](elastic_collision_cell_resolution_sweep_result_v1/cell_resolution_validity_d0_0_203_v1.png)
+![Off-grid validity](elastic_collision_cell_resolution_sweep_result_v2/cell_resolution_validity_d0_0_203_v2.png)
 
 ### 9.5 Control Experiments: Reflection, Transmission, and Label Exchange
 
@@ -518,11 +536,11 @@ Only the reflection map simultaneously satisfied direction reversal and preserva
 
 **Figure 9. Control-map trajectories**
 
-![Control map trajectories](elastic_collision_control_maps_result_v1/control_maps_trajectories_v1.png)
+![Control map trajectories](elastic_collision_control_maps_result_v2/control_maps_trajectories_v2.png)
 
 **Figure 10. Control-map verdicts**
 
-![Control map verdicts](elastic_collision_control_maps_result_v1/control_maps_verdict_v1.png)
+![Control map verdicts](elastic_collision_control_maps_result_v2/control_maps_verdict_v2.png)
 
 ### 9.6 Asymmetric Conditions
 
@@ -536,11 +554,11 @@ Amplitude differences and harmonic-order differences alone did not break the map
 
 **Figure 11. Cell gaps under asymmetric conditions**
 
-![Asymmetric cell gaps](elastic_collision_asymmetry_sweep_result_v1/asymmetry_sweep_cell_gaps_v1.png)
+![Asymmetric cell gaps](elastic_collision_asymmetry_sweep_result_v2/asymmetry_sweep_cell_gaps_v2.png)
 
 **Figure 12. Asymmetry verdicts**
 
-![Asymmetry verdicts](elastic_collision_asymmetry_sweep_result_v1/asymmetry_sweep_verdict_v1.png)
+![Asymmetry verdicts](elastic_collision_asymmetry_sweep_result_v2/asymmetry_sweep_verdict_v2.png)
 
 ### 9.7 Observation Perturbation
 
@@ -555,11 +573,11 @@ When observation perturbation exceeded the localization width of `C`, the observ
 
 **Figure 13. Observation perturbation thresholds**
 
-![Observation perturbation thresholds](elastic_collision_observation_perturbation_result_v1/observation_perturbation_thresholds_v1.png)
+![Observation perturbation thresholds](elastic_collision_observation_perturbation_result_v2/observation_perturbation_thresholds_v2.png)
 
 **Figure 14. Observation perturbation verdicts**
 
-![Observation perturbation verdicts](elastic_collision_observation_perturbation_result_v1/observation_perturbation_verdict_v1.png)
+![Observation perturbation verdicts](elastic_collision_observation_perturbation_result_v2/observation_perturbation_verdict_v2.png)
 
 ### 9.8 Multiple Collisions
 
@@ -578,11 +596,11 @@ Within a closed interval, wall reflections were allowed and AB collisions were r
 
 **Figure 15. Trajectories in repeated collisions**
 
-![Multiple collision trajectory](elastic_collision_multi_collision_result_v1/multi_collision_trajectory_v1.png)
+![Multiple collision trajectory](elastic_collision_multi_collision_result_v2/multi_collision_trajectory_v2.png)
 
 **Figure 16. Closure residual in repeated collisions**
 
-![Multiple collision closure residual](elastic_collision_multi_collision_result_v1/multi_collision_closure_v1.png)
+![Multiple collision closure residual](elastic_collision_multi_collision_result_v2/multi_collision_closure_v2.png)
 
 ### 9.9 Readout Resolution of `η` Identification Oscillation
 
@@ -601,11 +619,11 @@ All invalid cases were due to `η` readout aliasing. This is not a failure of th
 
 **Figure 17. Validity of `η` readout resolution**
 
-![Eta validity](elastic_collision_eta_resolution_sweep_result_v1/eta_resolution_validity_v1.png)
+![Eta validity](elastic_collision_eta_resolution_sweep_result_v2/eta_resolution_validity_v2.png)
 
 **Figure 18. `η` identification purity**
 
-![Eta purity](elastic_collision_eta_resolution_sweep_result_v1/eta_resolution_purity_v1.png)
+![Eta purity](elastic_collision_eta_resolution_sweep_result_v2/eta_resolution_purity_v2.png)
 
 ---
 
@@ -737,12 +755,12 @@ This paper is based on the Anonymous Equal-Amplitude Composite-Wave Model Basic 
 
 | Experiment | Report | Result JSON |
 |---|---|---|
-| Basic complete elastic collision | [report](elastic_collision_simulation_result_v1/elastic_collision_report_v1.md) | [json](elastic_collision_simulation_result_v1/elastic_collision_result_v1.json) |
-| Robustness of identification oscillation | [report](elastic_collision_label_robustness_result_v1/label_robustness_report_v1.md) | [json](elastic_collision_label_robustness_result_v1/label_robustness_result_v1.json) |
-| Observer C condition | [report](elastic_collision_observer_sweep_result_v1/observer_sweep_report_v1.md) | [json](elastic_collision_observer_sweep_result_v1/observer_sweep_result_v1.json) |
-| Cell resolution | [report](elastic_collision_cell_resolution_sweep_result_v1/cell_resolution_sweep_report_v1.md) | [json](elastic_collision_cell_resolution_sweep_result_v1/cell_resolution_sweep_result_v1.json) |
-| Control maps | [report](elastic_collision_control_maps_result_v1/control_maps_report_v1.md) | [json](elastic_collision_control_maps_result_v1/control_maps_result_v1.json) |
-| Asymmetric conditions | [report](elastic_collision_asymmetry_sweep_result_v1/asymmetry_sweep_report_v1.md) | [json](elastic_collision_asymmetry_sweep_result_v1/asymmetry_sweep_result_v1.json) |
-| Observation perturbation | [report](elastic_collision_observation_perturbation_result_v1/observation_perturbation_report_v1.md) | [json](elastic_collision_observation_perturbation_result_v1/observation_perturbation_result_v1.json) |
-| Multiple collisions | [report](elastic_collision_multi_collision_result_v1/multi_collision_report_v1.md) | [json](elastic_collision_multi_collision_result_v1/multi_collision_result_v1.json) |
-| `η` resolution | [report](elastic_collision_eta_resolution_sweep_result_v1/eta_resolution_sweep_report_v1.md) | [json](elastic_collision_eta_resolution_sweep_result_v1/eta_resolution_sweep_result_v1.json) |
+| Basic complete elastic collision | [report](elastic_collision_simulation_result_v2/elastic_collision_report_v2.md) | [json](elastic_collision_simulation_result_v2/elastic_collision_result_v2.json) |
+| Robustness of identification oscillation | [report](elastic_collision_label_robustness_result_v2/label_robustness_report_v2.md) | [json](elastic_collision_label_robustness_result_v2/label_robustness_result_v2.json) |
+| Observer C condition | [report](elastic_collision_observer_sweep_result_v2/observer_sweep_report_v2.md) | [json](elastic_collision_observer_sweep_result_v2/observer_sweep_result_v2.json) |
+| Cell resolution | [report](elastic_collision_cell_resolution_sweep_result_v2/cell_resolution_sweep_report_v2.md) | [json](elastic_collision_cell_resolution_sweep_result_v2/cell_resolution_sweep_result_v2.json) |
+| Control maps | [report](elastic_collision_control_maps_result_v2/control_maps_report_v2.md) | [json](elastic_collision_control_maps_result_v2/control_maps_result_v2.json) |
+| Asymmetric conditions | [report](elastic_collision_asymmetry_sweep_result_v2/asymmetry_sweep_report_v2.md) | [json](elastic_collision_asymmetry_sweep_result_v2/asymmetry_sweep_result_v2.json) |
+| Observation perturbation | [report](elastic_collision_observation_perturbation_result_v2/observation_perturbation_report_v2.md) | [json](elastic_collision_observation_perturbation_result_v2/observation_perturbation_result_v2.json) |
+| Multiple collisions | [report](elastic_collision_multi_collision_result_v2/multi_collision_report_v2.md) | [json](elastic_collision_multi_collision_result_v2/multi_collision_result_v2.json) |
+| `η` resolution | [report](elastic_collision_eta_resolution_sweep_result_v2/eta_resolution_sweep_report_v2.md) | [json](elastic_collision_eta_resolution_sweep_result_v2/eta_resolution_sweep_result_v2.json) |

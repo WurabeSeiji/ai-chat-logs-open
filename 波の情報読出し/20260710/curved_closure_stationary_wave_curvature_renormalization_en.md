@@ -1,11 +1,13 @@
-# Curvature Renormalization and Perfect-Reflection Stability by Curved Closed Stationary Waves
+# Curvature Renormalization and Perfect-Reflection Stability by Curved Closed Stationary Waves v2
 
 **Subtitle:** Numerical constructive experiment on the detection, re-selection, and exchange-interference reflection recovery of curvature-induced relative phase leakage under the all-positive zero closure `Σx_n^2=0`
 **Date:** 2026-07-11
 **Author:** Noriaki Kihara
 **Position:** Additional paper in the Wave Information Readout series
-**Version DOI:** 10.5281/zenodo.21304040
+**Version DOI:** 10.5281/zenodo.21332874
 **Concept DOI:** 10.5281/zenodo.21304039
+
+V2 recalculates the same conditions after changing the formula for the fermion-like reflection map.
 
 ---
 
@@ -55,7 +57,7 @@ In the minimal experiment, the transient state with curvature-induced relative p
 
 In the broad verification, eight curvature-relative-phase models were tested against seven correction freedoms: `none`, `constant`, `linear`, `affine`, `quadratic`, `cubic`, and `full`. At maximum curvature relative phase `1.2`, the uncorrected case left maximum transmission leakage `1.6202719613622976e-01`, whereas the `full` correction recovered closure-pair RMS `7.8949412793793227e-19` and transmission leakage `0.0`.
 
-In the integrated one-sided scattering verification, the residual curvature phase obtained from the broad sweep was returned to the local exchange-interference map. The uncorrected case produced maximum dynamic transmission leakage `1.6202719613622971e-01`, whereas the `full` correction reduced it to `1.6608667989341789e-19`. The dynamic scattering matched the two-channel expectation with maximum error `5.551115123125783e-17`, and the maximum norm error was `4.440892098500626e-16`.
+In the integrated one-sided scattering verification, the residual curvature phase obtained from the broad sweep was returned to the local exchange-interference map. The uncorrected case produced maximum dynamic transmission leakage `1.6202719613622971e-01`, whereas the `full` correction reduced it to `1.6608667985580024e-19`. The dynamic scattering matched the two-channel expectation with maximum error `5.551115123125783e-17`, and the maximum norm error was `4.440892098500626e-16`.
 
 Within the numerical constructive scope of this paper, curvature effects are therefore not absent. They appear in transient states as closure residuals and transmission leakage. However, once the system is re-selected into a closed stationary wave satisfying `Σx_n^2=0`, the curvature-induced relative phase leakage is absorbed into the internal phase configuration, and the complete-reflection readout is recovered.
 
@@ -304,13 +306,13 @@ is recovered, and the complete-reflection readout returns.
 The executed script is:
 
 ```text
-run_curved_closure_stationary_wave_v1.py
+run_curved_closure_stationary_wave_v2.py
 ```
 
 The output directory is:
 
 ```text
-curved_closure_stationary_wave_result_v1/
+curved_closure_stationary_wave_result_v2/
 ```
 
 The curvature relative phase leakage is set as
@@ -337,13 +339,13 @@ All verdict flags were `true`.
 The executed script is:
 
 ```text
-run_curved_closure_stationary_wave_broad_sweep_v1.py
+run_curved_closure_stationary_wave_broad_sweep_v2.py
 ```
 
 The output directory is:
 
 ```text
-curved_closure_stationary_wave_broad_sweep_result_v1/
+curved_closure_stationary_wave_broad_sweep_result_v2/
 ```
 
 The eight curvature relative phase models were:
@@ -390,13 +392,13 @@ Common-factor curvature preserved closure throughout the sweep. Without correcti
 The executed script is:
 
 ```text
-run_curved_closure_scattering_integration_v1.py
+run_curved_closure_scattering_integration_v2.py
 ```
 
 The output directory is:
 
 ```text
-curved_closure_scattering_integration_result_v1/
+curved_closure_scattering_integration_result_v2/
 ```
 
 The residual curvature relative phases from Experiment 2 were returned to the local exchange-interference map for one-sided incident scattering.
@@ -411,7 +413,7 @@ The correction-wise aggregate was:
 | affine | `1.1619972192010980e-01` | `1.2315221532542749e-02` | `1.0408340855860843e-17` |
 | quadratic | `1.1598359742226147e-01` | `1.2300337923101595e-02` | `2.7755575615628914e-17` |
 | cubic | `1.1567739316276089e-01` | `1.2278927640523116e-02` | `2.7755575615628914e-17` |
-| full | `1.6608667989341789e-19` | `7.8949412793793227e-19` | `1.6608667989341789e-19` |
+| full | `1.6608667985580024e-19` | `7.8949412793793227e-19` | `1.6608667985580024e-19` |
 
 The dynamic scattering matched the two-channel expectation with maximum error `5.551115123125783e-17`, and the maximum norm error was `4.440892098500626e-16`.
 
@@ -504,7 +506,7 @@ In the minimal experiment, the transient state with curvature-induced relative p
 
 In the broad verification, eight curvature relative phase models and seven correction freedoms were compared. Without correction, maximum transmission leakage `1.6202719613622976e-01` remained. Under `full` correction, closure-pair RMS `7.8949412793793227e-19` and transmission leakage `0.0` were recovered.
 
-In the integrated one-sided local exchange-interference scattering verification, the uncorrected case produced maximum dynamic transmission leakage `1.6202719613622971e-01`, while the `full` correction reduced maximum dynamic transmission leakage to `1.6608667989341789e-19`.
+In the integrated one-sided local exchange-interference scattering verification, the uncorrected case produced maximum dynamic transmission leakage `1.6202719613622971e-01`, while the `full` correction reduced maximum dynamic transmission leakage to `1.6608667985580024e-19`.
 
 Therefore, within the numerical constructive scope of this paper, curvature effects are not ignored. Curvature-induced relative phase leakage appears in transient states as closure residuals and transmission leakage. However, once the system is re-selected into a closed stationary wave satisfying `Σx_n^2=0`, the curvature-induced relative phase leakage is absorbed into the internal phase configuration, and the complete-reflection readout by exchange interference is recovered.
 
@@ -517,70 +519,70 @@ Thus `Σx_n^2=0` functions not merely as a conservation condition, but as an exi
 ## A.1 Minimal Verification
 
 ```text
-python3 run_curved_closure_stationary_wave_v1.py
+python3 run_curved_closure_stationary_wave_v2.py
 ```
 
 Output:
 
 ```text
-curved_closure_stationary_wave_result_v1/
+curved_closure_stationary_wave_result_v2/
 ```
 
 Main files:
 
 | Type | File |
 |---|---|
-| Report | [curved_closure_stationary_wave_report_v1.md](curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_report_v1.md) |
-| JSON | [curved_closure_stationary_wave_result_v1.json](curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_result_v1.json) |
-| sweep CSV | [curved_closure_stationary_wave_sweep_v1.csv](curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_sweep_v1.csv) |
-| relaxation CSV | [curved_closure_stationary_wave_relaxation_v1.csv](curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_relaxation_v1.csv) |
-| sweep figure | [curved_closure_stationary_wave_sweep_v1.png](curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_sweep_v1.png) |
-| relaxation figure | [curved_closure_stationary_wave_relaxation_v1.png](curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_relaxation_v1.png) |
+| Report | [curved_closure_stationary_wave_report_v2.md](curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_report_v2.md) |
+| JSON | [curved_closure_stationary_wave_result_v2.json](curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_result_v2.json) |
+| sweep CSV | [curved_closure_stationary_wave_sweep_v2.csv](curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_sweep_v2.csv) |
+| relaxation CSV | [curved_closure_stationary_wave_relaxation_v2.csv](curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_relaxation_v2.csv) |
+| sweep figure | [curved_closure_stationary_wave_sweep_v2.png](curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_sweep_v2.png) |
+| relaxation figure | [curved_closure_stationary_wave_relaxation_v2.png](curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_relaxation_v2.png) |
 
 ## A.2 Broad Verification
 
 ```text
-python3 run_curved_closure_stationary_wave_broad_sweep_v1.py
+python3 run_curved_closure_stationary_wave_broad_sweep_v2.py
 ```
 
 Output:
 
 ```text
-curved_closure_stationary_wave_broad_sweep_result_v1/
+curved_closure_stationary_wave_broad_sweep_result_v2/
 ```
 
 Main files:
 
 | Type | File |
 |---|---|
-| Report | [curved_closure_stationary_wave_broad_report_v1.md](curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_report_v1.md) |
-| JSON | [curved_closure_stationary_wave_broad_sweep_result_v1.json](curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_sweep_result_v1.json) |
-| sweep CSV | [curved_closure_stationary_wave_broad_sweep_v1.csv](curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_sweep_v1.csv) |
-| control CSV | [curved_closure_stationary_wave_broad_conformal_control_v1.csv](curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_conformal_control_v1.csv) |
-| aggregate figure | [curved_closure_stationary_wave_broad_aggregate_v1.png](curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_aggregate_v1.png) |
-| closure heatmap | [curved_closure_stationary_wave_broad_closure_heatmap_v1.png](curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_closure_heatmap_v1.png) |
-| leakage heatmap | [curved_closure_stationary_wave_broad_leakage_heatmap_v1.png](curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_leakage_heatmap_v1.png) |
+| Report | [curved_closure_stationary_wave_broad_report_v2.md](curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_report_v2.md) |
+| JSON | [curved_closure_stationary_wave_broad_sweep_result_v2.json](curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_sweep_result_v2.json) |
+| sweep CSV | [curved_closure_stationary_wave_broad_sweep_v2.csv](curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_sweep_v2.csv) |
+| control CSV | [curved_closure_stationary_wave_broad_conformal_control_v2.csv](curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_conformal_control_v2.csv) |
+| aggregate figure | [curved_closure_stationary_wave_broad_aggregate_v2.png](curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_aggregate_v2.png) |
+| closure heatmap | [curved_closure_stationary_wave_broad_closure_heatmap_v2.png](curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_closure_heatmap_v2.png) |
+| leakage heatmap | [curved_closure_stationary_wave_broad_leakage_heatmap_v2.png](curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_leakage_heatmap_v2.png) |
 
 ## A.3 One-Sided Scattering Integration
 
 ```text
-python3 run_curved_closure_scattering_integration_v1.py
+python3 run_curved_closure_scattering_integration_v2.py
 ```
 
 Output:
 
 ```text
-curved_closure_scattering_integration_result_v1/
+curved_closure_scattering_integration_result_v2/
 ```
 
 Main files:
 
 | Type | File |
 |---|---|
-| Report | [curved_closure_scattering_integration_report_v1.md](curved_closure_scattering_integration_result_v1/curved_closure_scattering_integration_report_v1.md) |
-| JSON | [curved_closure_scattering_integration_result_v1.json](curved_closure_scattering_integration_result_v1/curved_closure_scattering_integration_result_v1.json) |
-| CSV | [curved_closure_scattering_integration_v1.csv](curved_closure_scattering_integration_result_v1/curved_closure_scattering_integration_v1.csv) |
-| Figure | [curved_closure_scattering_integration_v1.png](curved_closure_scattering_integration_result_v1/curved_closure_scattering_integration_v1.png) |
+| Report | [curved_closure_scattering_integration_report_v2.md](curved_closure_scattering_integration_result_v2/curved_closure_scattering_integration_report_v2.md) |
+| JSON | [curved_closure_scattering_integration_result_v2.json](curved_closure_scattering_integration_result_v2/curved_closure_scattering_integration_result_v2.json) |
+| CSV | [curved_closure_scattering_integration_v2.csv](curved_closure_scattering_integration_result_v2/curved_closure_scattering_integration_v2.csv) |
+| Figure | [curved_closure_scattering_integration_v2.png](curved_closure_scattering_integration_result_v2/curved_closure_scattering_integration_v2.png) |
 
 ---
 
@@ -590,7 +592,7 @@ Main files:
 
 1. Noriaki Kihara, "Basic Axiom System v2 for the Nameless Equal-Amplitude Composite Wave Model," 2026-07-10.
 2. Noriaki Kihara, "Paper 0: Distortion of the Geodesic Unit Cell in Positively-Curved Constant-Curvature Space — Exact Evaluation of Edge, Angle, Area, and Volume," Version DOI: `10.5281/zenodo.21303433`, Concept DOI: `10.5281/zenodo.20680269`, 2026.
-3. Noriaki Kihara, "Interference Construction of a Perfect Reflection Map from a Fermionic Inverse-Phase Core," Version DOI: `10.5281/zenodo.21295480`, Concept DOI: `10.5281/zenodo.21295479`, 2026.
+3. Noriaki Kihara, "Interference Construction of a Perfect Reflection Map from a Fermionic Inverse-Phase Core," Version DOI: `10.5281/zenodo.21332867`, Concept DOI: `10.5281/zenodo.21295479`, 2026.
 
 ## External References
 

@@ -1,7 +1,9 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
 \documentclass[
+  a4paper,
 ]{article}
 \usepackage{xcolor}
 \usepackage[margin=24mm]{geometry}
@@ -20,6 +22,15 @@
 \usepackage{lmodern}
 \ifPDFTeX\else
   % xetex/luatex font selection
+  \setmonofont[]{DejaVuSansMono.ttf}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -117,13 +128,13 @@
 \begin{document}
 
 \section{AB二体閉鎖位相系における調和読出しとc=1面積スイープ予備実験総括
-v1}\label{abux4e8cux4f53ux9589ux9396ux4f4dux76f8ux7cfbux306bux304aux3051ux308bux8abfux548cux8aadux51faux3057ux3068c1ux9762ux7a4dux30b9ux30a4ux30fcux30d7ux4e88ux5099ux5b9fux9a13ux7dcfux62ec-v1}
+v2}\label{abux4e8cux4f53ux9589ux9396ux4f4dux76f8ux7cfbux306bux304aux3051ux308bux8abfux548cux8aadux51faux3057ux3068c1ux9762ux7a4dux30b9ux30a4ux30fcux30d7ux4e88ux5099ux5b9fux9a13ux7dcfux62ec-v2}
 
-\textbf{日付:} 2026-07-12\\
-\textbf{著者:} 木原 範昭\\
-\textbf{位置づけ:} 波の情報読出しシリーズ・AB二体予備実験群の総括\\
-\textbf{Version DOI:} 10.5281/zenodo.21318697\\
-\textbf{Concept DOI:} 10.5281/zenodo.21318696
+\textbf{日付:} 2026-07-12 \textbf{著者:} 木原 範昭 \textbf{位置づけ:}
+波の情報読出しシリーズ・AB二体予備実験群の総括 \textbf{Version DOI:}
+10.5281/zenodo.21332876 \textbf{Concept DOI:} 10.5281/zenodo.21318696
+
+V2では、フェルミオン型反跳写像を組み込んだAB二体加速度読出しプロトコルを追加する。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -147,6 +158,12 @@ v1}\label{abux4e8cux4f53ux9589ux9396ux4f4dux76f8ux7cfbux306bux304aux3051ux308bux
 \item
   \texttt{chi-tau} ネイティブ逆面積拡張スイープ
 \end{enumerate}
+
+V2では、上記の文脈と主張を変えず、同じAB二体加速度読出しにフェルミオン型反跳写像を組み込む追加プロトコルを置く。
+
+この追加プロトコルは、波束の即時収縮、AB非対称化、倍音移乗、局在性移乗を検査するものではない。
+
+目的は、現在のAB二体調和読出しの仮定範囲で、中心近傍の相互作用を通過型ではなくフェルミオン型反跳型として扱った場合にも、加速度様読出しが同じ実験枠で評価できるかを確認することである。
 
 結論は次である。
 
@@ -231,6 +248,9 @@ No.
 未検出 \\
 6 & native 逆面積拡張スイープ & 広い条件で \texttt{alpha≈2} が出るか &
 native では未検出 \\
+7 & V2フェルミオン型反跳プロトコル &
+AB中心近傍に反跳写像を入れて加速度様読出しを再検査 &
+\texttt{q\_out\_factor=-1}; 調和読出しと \texttt{chi-tau} 面を維持 \\
 \end{longtable}
 }
 
@@ -327,9 +347,9 @@ AB二体幾何
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{AB二体問題の図化_fAB_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{AB二体問題の図化_fAB_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_observation_summary_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_observation_summary_v1.png} \\
 \end{longtable}
 }
 
@@ -347,9 +367,9 @@ AB二体幾何
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_harmonic_state_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_harmonic_state_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_readout_leak_response_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_readout_leak_response_v1.png} \\
 \end{longtable}
 }
 
@@ -367,9 +387,9 @@ Protocol 縮退
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_protocol_degeneracy_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_protocol_degeneracy_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_phase_difference_scaling_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_phase_difference_scaling_v1.png} \\
 \end{longtable}
 }
 
@@ -420,9 +440,9 @@ Protocol 縮退
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_parameter_sweep_preliminary_result_v1/ab_two_body_one_angle_parameter_sweep_leak_f_error_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_parameter_sweep_preliminary_result_v1/ab_two_body_one_angle_parameter_sweep_leak_f_error_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_parameter_sweep_preliminary_result_v1/ab_two_body_one_angle_parameter_sweep_leak_decay_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_parameter_sweep_preliminary_result_v1/ab_two_body_one_angle_parameter_sweep_leak_decay_v1.png} \\
 \end{longtable}
 }
 
@@ -440,9 +460,9 @@ Protocol 縮退
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_parameter_sweep_preliminary_result_v1/ab_two_body_one_angle_parameter_sweep_period_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_parameter_sweep_preliminary_result_v1/ab_two_body_one_angle_parameter_sweep_period_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_parameter_sweep_preliminary_result_v1/ab_two_body_one_angle_parameter_sweep_selected_series_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_parameter_sweep_preliminary_result_v1/ab_two_body_one_angle_parameter_sweep_selected_series_v1.png} \\
 \end{longtable}
 }
 
@@ -529,9 +549,9 @@ c=1内部較正とchi-tau面積スイープ}\label{c1ux5185ux90e8ux8f03ux6b63ux3
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_chi_tau_surface_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_chi_tau_surface_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_area_sweep_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_area_sweep_v1.png} \\
 \end{longtable}
 }
 
@@ -549,9 +569,9 @@ c=1内部較正とchi-tau面積スイープ}\label{c1ux5185ux90e8ux8f03ux6b63ux3
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_error_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_error_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_power_candidate_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_power_candidate_v1.png} \\
 \end{longtable}
 }
 
@@ -566,7 +586,7 @@ c=1内部較正とchi-tau面積スイープ}\label{c1ux5185ux90e8ux8f03ux6b63ux3
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_readout_leak_v1.png}} \\
+\includegraphics[width=0.65\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_readout_leak_v1.png} \\
 \end{longtable}
 }
 
@@ -623,9 +643,9 @@ c 誤差 heatmap
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_parameter_sweep_preliminary_result_v1/ab_two_body_c1_parameter_sweep_c_error_heatmap_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_parameter_sweep_preliminary_result_v1/ab_two_body_c1_parameter_sweep_c_error_heatmap_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_parameter_sweep_preliminary_result_v1/ab_two_body_c1_parameter_sweep_area_heatmap_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_parameter_sweep_preliminary_result_v1/ab_two_body_c1_parameter_sweep_area_heatmap_v1.png} \\
 \end{longtable}
 }
 
@@ -643,9 +663,9 @@ c 誤差 heatmap
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_parameter_sweep_preliminary_result_v1/ab_two_body_c1_parameter_sweep_phase_response_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_parameter_sweep_preliminary_result_v1/ab_two_body_c1_parameter_sweep_phase_response_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_parameter_sweep_preliminary_result_v1/ab_two_body_c1_parameter_sweep_readout_leak_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_parameter_sweep_preliminary_result_v1/ab_two_body_c1_parameter_sweep_readout_leak_v1.png} \\
 \end{longtable}
 }
 
@@ -713,9 +733,9 @@ native 候補
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_chi_tau_inverse_area_compensation_diagnostic_preliminary_result_v1/ab_two_body_chi_tau_inverse_area_constructed_control_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_chi_tau_inverse_area_compensation_diagnostic_preliminary_result_v1/ab_two_body_chi_tau_inverse_area_constructed_control_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_chi_tau_inverse_area_compensation_diagnostic_preliminary_result_v1/ab_two_body_chi_tau_inverse_area_native_candidates_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_chi_tau_inverse_area_compensation_diagnostic_preliminary_result_v1/ab_two_body_chi_tau_inverse_area_native_candidates_v1.png} \\
 \end{longtable}
 }
 
@@ -730,7 +750,7 @@ alpha 比較
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_chi_tau_inverse_area_compensation_diagnostic_preliminary_result_v1/ab_two_body_chi_tau_inverse_area_alpha_comparison_v1.png}} \\
+\includegraphics[width=0.65\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_chi_tau_inverse_area_compensation_diagnostic_preliminary_result_v1/ab_two_body_chi_tau_inverse_area_alpha_comparison_v1.png} \\
 \end{longtable}
 }
 
@@ -795,23 +815,341 @@ alpha scan
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_chi_tau_native_inverse_area_extended_sweep_preliminary_result_v1/ab_two_body_native_inverse_area_extended_reference_curves_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_chi_tau_native_inverse_area_extended_sweep_preliminary_result_v1/ab_two_body_native_inverse_area_extended_reference_curves_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_chi_tau_native_inverse_area_extended_sweep_preliminary_result_v1/ab_two_body_native_inverse_area_extended_alpha_scan_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_chi_tau_native_inverse_area_extended_sweep_preliminary_result_v1/ab_two_body_native_inverse_area_extended_alpha_scan_v1.png} \\
 \end{longtable}
 }
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{8. 総合判定}\label{ux7dcfux5408ux5224ux5b9a}
+\subsection{8. V2追加:
+フェルミオン型反跳を組み込んだ調和読出し}\label{v2ux8ffdux52a0-ux30d5ux30a7ux30ebux30dfux30aaux30f3ux578bux53cdux8df3ux3092ux7d44ux307fux8fbcux3093ux3060ux8abfux548cux8aadux51faux3057}
 
-\subsubsection{8.1
+\subsubsection{8.1 目的}\label{ux76eeux7684-1}
+
+V1の一角度調和読出しでは、AB二体の相対位相発展を連続的に読み、ラベルなし読出しとして
+Protocol F/B が縮退することを確認した。
+
+V2では、この文脈を変えず、中心近傍の相互作用にフェルミオン型反跳写像を組み込む。
+
+ここで検査するのは、反跳写像を入れた場合にも、AB二体関係 \texttt{f\_AB}
+から加速度様に見える調和読出しを同じ形式で評価できるかである。
+
+本節では、次を扱わない。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ABの非対称化}
+\NormalTok{低局在性極限}
+\NormalTok{即時収縮}
+\NormalTok{倍音移乗}
+\NormalTok{局在性移乗}
+\end{Highlighting}
+\end{Shaded}
+
+これらは、別系列の波束集束実験で扱う。
+
+本V2では、あくまで現在のAB二体加速度読出しの仮定範囲で、通過型の中心読出しに加えて、フェルミオン型反跳プロトコルを追加する。
+
+\subsubsection{8.2 反跳写像}\label{ux53cdux8df3ux5199ux50cf}
+
+右向き入射チャネルと左向き入射チャネルを、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\^{}\{\textbackslash{}mathrm\{in\}\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}begin\{pmatrix\}}
+\NormalTok{\textbackslash{}psi\_+\^{}\{\textbackslash{}mathrm\{in\}\}\textbackslash{}\textbackslash{}}
+\NormalTok{\textbackslash{}psi\_{-}\^{}\{\textbackslash{}mathrm\{in\}\}}
+\NormalTok{\textbackslash{}end\{pmatrix\}}
+\end{Highlighting}
+\end{Shaded}
+
+とする。
+
+フェルミオン型交換位相を \texttt{Delta\_F} とし、透過振幅と反射振幅を、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t\_\textbackslash{}Delta}
+\NormalTok{=}
+\NormalTok{e\^{}\{i\textbackslash{}Delta\_F/2\}}
+\NormalTok{\textbackslash{}cos\textbackslash{}frac\{\textbackslash{}Delta\_F\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{r\_\textbackslash{}Delta}
+\NormalTok{=}
+\NormalTok{{-}i e\^{}\{i\textbackslash{}Delta\_F/2\}}
+\NormalTok{\textbackslash{}sin\textbackslash{}frac\{\textbackslash{}Delta\_F\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
+
+と定義する。
+
+二チャネル散乱行列は、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S\_\textbackslash{}Delta}
+\NormalTok{=}
+\NormalTok{\textbackslash{}begin\{pmatrix\}}
+\NormalTok{t\_\textbackslash{}Delta \& r\_\textbackslash{}Delta\textbackslash{}\textbackslash{}}
+\NormalTok{r\_\textbackslash{}Delta \& t\_\textbackslash{}Delta}
+\NormalTok{\textbackslash{}end\{pmatrix\}}
+\end{Highlighting}
+\end{Shaded}
+
+であり、出射チャネルを、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\^{}\{\textbackslash{}mathrm\{out\}\}}
+\NormalTok{=}
+\NormalTok{S\_\textbackslash{}Delta}
+\NormalTok{\textbackslash{}Psi\^{}\{\textbackslash{}mathrm\{in\}\}}
+\end{Highlighting}
+\end{Shaded}
+
+として読む。
+
+すなわち、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}psi\_+\^{}\{\textbackslash{}mathrm\{out\}\}}
+\NormalTok{=}
+\NormalTok{t\_\textbackslash{}Delta \textbackslash{}psi\_+\^{}\{\textbackslash{}mathrm\{in\}\}}
+\NormalTok{+}
+\NormalTok{r\_\textbackslash{}Delta \textbackslash{}psi\_{-}\^{}\{\textbackslash{}mathrm\{in\}\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}psi\_{-}\^{}\{\textbackslash{}mathrm\{out\}\}}
+\NormalTok{=}
+\NormalTok{r\_\textbackslash{}Delta \textbackslash{}psi\_+\^{}\{\textbackslash{}mathrm\{in\}\}}
+\NormalTok{+}
+\NormalTok{t\_\textbackslash{}Delta \textbackslash{}psi\_{-}\^{}\{\textbackslash{}mathrm\{in\}\}}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+完全反跳条件では、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_F=\textbackslash{}pi}
+\end{Highlighting}
+\end{Shaded}
+
+であり、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{透過振幅 t\_Delta = 0}
+\NormalTok{反射振幅 r\_Delta = 1}
+\end{Highlighting}
+\end{Shaded}
+
+に相当する。
+
+このとき、出射チャネルは入射チャネルの交換として読まれる。
+
+\subsubsection{8.3
+実験前の判定基準}\label{ux5b9fux9a13ux524dux306eux5224ux5b9aux57faux6e96}
+
+V2追加プロトコルでは、少なくとも次を確認する。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+項目
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+判定対象
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+反跳後の閉鎖残差 & \texttt{Q\_closed} が破綻しないこと \\
+調和読出し & \texttt{D\_AB}, \texttt{V\_AB}, \texttt{f\_AB}
+の調和構造が維持されること \\
+読出し漏れ応答 & 読出し停止時と強読出し時の差がV1と同じ規律を持つこと \\
+Protocol比較 &
+通過型・表示反跳型・フェルミオン型反跳型の差分が記録されること \\
+\texttt{chi-tau} 面 & 独立 \texttt{tau\_read}
+による面積読出しを壊さないこと \\
+\end{longtable}
+}
+
+\subsubsection{8.4 主結果}\label{ux4e3bux7d50ux679c-6}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4286}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5714}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+量
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+値
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{harmonic\_case\_count} & \texttt{48} \\
+\texttt{c1\_case\_count} & \texttt{144} \\
+\texttt{scattering\_protocol\_count} & \texttt{3} \\
+\texttt{fermionic\_delta\_f} & \texttt{3.141592653589793} \\
+\texttt{fermionic\_reflection\_rate} & \texttt{1.0} \\
+\texttt{fermionic\_transmission\_rate} &
+\texttt{3.749399456654644e-33} \\
+\texttt{fermionic\_q\_out\_factor} & \texttt{-1.0} \\
+\texttt{max\_Q\_closed\_abs} & \texttt{0.0} \\
+\texttt{fermionic\_regular\_cell\_harmonic\_consistent\_nonstrong\_modes}
+& \texttt{True} \\
+\texttt{fermionic\_strong\_readout\_perturbs\_harmonic\_projection} &
+\texttt{True} \\
+\texttt{fermionic\_max\_f\_AB\_projection\_error\_regular\_nonstrong} &
+\texttt{2.2756072064285173e-6} \\
+\texttt{fermionic\_max\_f\_AB\_projection\_error\_regular\_strong} &
+\texttt{9.072436576166722e-6} \\
+\texttt{fermionic\_reflection\_event\_cell\_count\_total} &
+\texttt{720} \\
+\texttt{label\_free\_pass\_vs\_fermionic\_match\_all\_cases} &
+\texttt{True} \\
+\texttt{label\_free\_display\_vs\_fermionic\_match\_all\_cases} &
+\texttt{True} \\
+\texttt{readout\_off\_decay\_max\_abs} &
+\texttt{4.4544900995234305e-18} \\
+\texttt{readout\_strong\_decay\_min\_abs} &
+\texttt{4.0004000533409075e-4} \\
+\texttt{fermionic\_tau\_disabled\_max\_area} & \texttt{0.0} \\
+\texttt{fermionic\_tau\_locked\_max\_area} & \texttt{0.0} \\
+\texttt{fermionic\_tau\_independent\_min\_area} &
+\texttt{0.00375268307733001} \\
+\texttt{fermionic\_c1\_readout\_off\_max\_epsilon\_c\_abs} &
+\texttt{2.3314683517128287e-15} \\
+\texttt{fermionic\_c1\_area\_sweep\_detected\_all\_cases} &
+\texttt{True} \\
+\texttt{tau\_is\_step\_used\_any} & \texttt{False} \\
+\texttt{external\_c\_used\_any} & \texttt{False} \\
+\texttt{f\_A\_or\_f\_B\_used\_any} & \texttt{False} \\
+\end{longtable}
+}
+
+結果は次のように読める。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{フェルミオン型反跳写像は、}
+\NormalTok{Delta\_F = pi において R=1, T≈0, q\_out\_factor={-}1 を与えた。}
+\end{Highlighting}
+\end{Shaded}
+
+また、フェルミオン型反跳は座標の折返し表示ではなく、出射チャネル交換として実装した。
+
+そのため、ラベルなし読出し \texttt{D\_AB}, \texttt{V\_AB}
+は、V1の通過型読出しと一致した。
+
+これは、V1で確認した Protocol F/B 縮退と整合する。
+
+一方で、表示上だけ折り返す \texttt{display\_reflection}
+も対照として記録した。
+
+この表示反跳とフェルミオン型反跳も、ラベルなし \texttt{D\_AB},
+\texttt{V\_AB} では一致した。
+
+調和読出しについては、V1と同じく、非 \texttt{readout\_strong}
+条件では射影整合性が保たれた。
+
+強読出しでは射影歪みが出たが、これはV1の読出し波摂動と同じ性質であり、反跳写像固有の破綻ではない。
+
+\texttt{chi-tau} 面についても、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tau disabled: 面積なし}
+\NormalTok{tau locked: 面積なし}
+\NormalTok{tau independent c1: 面積あり}
+\end{Highlighting}
+\end{Shaded}
+
+が維持された。
+
+したがって、フェルミオン型反跳写像をAB二体加速度読出しへ組み込んでも、現在の仮定範囲では、加速度様調和読出しと
+\texttt{chi-tau} 面積読出しは壊れない。
+
+\subsubsection{8.5 図}\label{ux56f3-2}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Protocol 比較
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+チャネル状態
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v2/ab_two_body_fermionic_reflection_protocol_comparison_v2.png}
+&
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v2/ab_two_body_fermionic_reflection_channel_state_v2.png} \\
+\end{longtable}
+}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+読出し減衰
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\texttt{chi-tau} 経路
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v2/ab_two_body_fermionic_reflection_readout_decay_v2.png}
+&
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v2/ab_two_body_fermionic_reflection_c1_chi_tau_v2.png} \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. 総合判定}\label{ux7dcfux5408ux5224ux5b9a}
+
+\subsubsection{9.1
 成立したこと}\label{ux6210ux7acbux3057ux305fux3053ux3068}
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
 \toprule\noalign{}
-項目 & 判定 \\
+\begin{minipage}[b]{\linewidth}\raggedright
+項目
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+判定
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -823,10 +1161,15 @@ Protocol F/B のラベルなし縮退を確認 & 成立 \\
 独立 \texttt{tau\_read} により \texttt{chi-tau} 面積を読む & 成立 \\
 \texttt{c=1} が必要条件候補であることを確認 & 成立 \\
 後処理 \texttt{1/A\_chi\_tau} が \texttt{alpha≈2} を示す & 成立 \\
+フェルミオン型反跳写像で \texttt{q\_out\_factor=-1} を読む & 成立 \\
+フェルミオン型反跳を入れてもラベルなし \texttt{D\_AB}, \texttt{V\_AB}
+がV1と一致 & 成立 \\
+フェルミオン型反跳を入れても独立 \texttt{tau\_read} の \texttt{chi-tau}
+面が維持される & 成立 \\
 \end{longtable}
 }
 
-\subsubsection{8.2
+\subsubsection{9.2
 成立していないこと}\label{ux6210ux7acbux3057ux3066ux3044ux306aux3044ux3053ux3068}
 
 {\def\LTcaptype{none} % do not increment counter
@@ -848,7 +1191,7 @@ native な逆二乗型読出し & 未検出 \\
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{9. 解釈}\label{ux89e3ux91c8}
+\subsection{10. 解釈}\label{ux89e3ux91c8}
 
 AB二体系の最大の成果は、次の二点である。
 
@@ -906,9 +1249,16 @@ AB二体の中では、A と B は互いを通じてしか読めない。
 \end{Highlighting}
 \end{Shaded}
 
+V2追加プロトコルでは、中心近傍にフェルミオン型反跳写像を入れても、この判定は変わらなかった。
+
+反跳写像は \texttt{q\_out\_factor=-1} として読めたが、ラベルなし
+\texttt{D\_AB}, \texttt{V\_AB} はV1の通過型読出しと一致した。
+
+これは、AB二体の無名読出しでは、反跳型と通過型が同じ相対読出しとして縮退するというV1の結果を、散乱行列版の反跳写像でも確認したことを意味する。
+
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{10.
+\subsection{11.
 次の実験への接続}\label{ux6b21ux306eux5b9fux9a13ux3078ux306eux63a5ux7d9a}
 
 この総括から導かれる次の段階は、ABC三体系である。
@@ -955,7 +1305,7 @@ AB二体の中では、A と B は互いを通じてしか読めない。
   \texttt{10.5281/zenodo.21315735}, 2026.
 \item
   木原範昭「ABC閉鎖位相系における多ゲージ干渉読出し保存量の構成実験」Version
-  DOI: \texttt{10.5281/zenodo.21308050}, Concept DOI:
+  DOI: \texttt{10.5281/zenodo.21332875}, Concept DOI:
   \texttt{10.5281/zenodo.21308049}, 2026.
 \item
   木原範昭,

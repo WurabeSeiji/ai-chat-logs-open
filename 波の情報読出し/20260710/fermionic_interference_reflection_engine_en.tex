@@ -1,7 +1,9 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
 \documentclass[
+  a4paper,
 ]{article}
 \usepackage{xcolor}
 \usepackage[margin=24mm]{geometry}
@@ -21,6 +23,14 @@
 \ifPDFTeX\else
   % xetex/luatex font selection
   \setmonofont[]{DejaVuSansMono.ttf}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -118,8 +128,8 @@
 \begin{document}
 
 \section{Interference Construction of a Perfect Reflection Map from a
-Fermionic Inverse-Phase
-Core}\label{interference-construction-of-a-perfect-reflection-map-from-a-fermionic-inverse-phase-core}
+Fermionic Inverse-Phase Core
+v2}\label{interference-construction-of-a-perfect-reflection-map-from-a-fermionic-inverse-phase-core-v2}
 
 \textbf{Subtitle:} A numerical constructive experiment on direction
 reversal from exchange-path interference cancellation and a
@@ -127,19 +137,23 @@ relative-phase node\\
 \textbf{Date:} 2026-07-10\\
 \textbf{Author:} Noriaki Kihara\\
 \textbf{Status:} Additional paper / executed numerical experiment\\
-\textbf{Version DOI:} 10.5281/zenodo.21295480\\
+\textbf{Version DOI:} 10.5281/zenodo.21332867\\
 \textbf{Concept DOI:} 10.5281/zenodo.21295479
+
+V2 recalculates the same conditions after changing the formula for the
+fermion-like reflection map.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{Abstract}\label{abstract}
 
 This paper executes a constructive experiment asking whether the
-direction-reversal map introduced in the preceding paper, "Constructive
+direction-reversal map introduced in the preceding paper, ``Constructive
 Experiment on Elastic Reflection of Two Fermionic Local Waves in a
-Closed Phase System Without Assuming Background Space," can be generated
-without an external conditional branch, from a fermionic internal
-inverse-phase core and wave interference between two exchange paths.
+Closed Phase System Without Assuming Background Space,'' can be
+generated without an external conditional branch, from a fermionic
+internal inverse-phase core and wave interference between two exchange
+paths.
 
 The local waves \texttt{A} and \texttt{B} carry spatial phase
 \texttt{χ}, temporal phase \texttt{τ}, internal identification phase
@@ -151,19 +165,27 @@ transferred to the exchange path as its relative phase.
 
 The generalized two-path superposition is
 
-\[\Psi_{\Delta}(1,2)
-=
-\frac{1}{\sqrt2}
-\left[
-P_A(1)P_B(2)
-+
-e^{i\Delta_F}P_A(2)P_B(1)
-\right].\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}Delta\}(1,2)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{1\}\{\textbackslash{}sqrt2\}}
+\NormalTok{\textbackslash{}left[}
+\NormalTok{P\_A(1)P\_B(2)}
+\NormalTok{+}
+\NormalTok{e\^{}\{i\textbackslash{}Delta\_F\}P\_A(2)P\_B(1)}
+\NormalTok{\textbackslash{}right].}
+\end{Highlighting}
+\end{Shaded}
 
 At the complete-overlap point \texttt{1=2}, the two paths cancel exactly
 when \texttt{Δ\_F=π}:
 
-\[\Psi_{\pi}(1,1)=0.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}pi\}(1,1)=0.}
+\end{Highlighting}
+\end{Shaded}
 
 In the numerical execution, the initial state is a single localized wave
 packet incident from the left. No external direction-reversal
@@ -174,17 +196,17 @@ difference of the internal inverse-phase core is transferred only to the
 odd channel, and the wave is recombined.
 
 The results were as follows. For \texttt{Δ\_F=0}, the reflection and
-transmission rates were \texttt{1.8261693781071190e-19} and
-\texttt{1.0000000000000002}. For \texttt{Δ\_F=π/2}, both reflection and
+transmission rates were \texttt{1.8261693486616611e-19} and
+\texttt{1.0000000000000004}. For \texttt{Δ\_F=π/2}, both reflection and
 transmission were \texttt{0.5}. For \texttt{Δ\_F=π}, the reflection and
-transmission rates were \texttt{1.0000000000000002} and
-\texttt{1.7939211291143336e-19}. Over the phase sweep,
+transmission rates were \texttt{1.0000000000000004} and
+\texttt{1.7939211304199106e-19}. Over the phase sweep,
 \texttt{R(Δ\_F)=sin\^{}2(Δ\_F/2)} and \texttt{T(Δ\_F)=cos\^{}2(Δ\_F/2)}
 were reproduced with maximum error \texttt{5.551115123125783e-16}, and
 the maximum norm error was \texttt{6.661338147750939e-16}. The local
 exchange-interference map satisfied reversibility with relative error
-\texttt{4.8214412843789535e-11} for \texttt{U(π)\^{}2} and maximum
-relative error \texttt{1.4547631339456792e-16} for
+\texttt{4.8214412843768590e-11} for \texttt{U(π)\^{}2} and maximum
+relative error \texttt{2.2454514008125022e-16} for
 \texttt{U(Δ\_F)U(-Δ\_F)}. The maximum compensated square-closure
 residual was \texttt{1.2143074258005e-17}. The internal identification
 oscillations \texttt{m\_A} and \texttt{m\_B} were preserved by
@@ -196,7 +218,7 @@ finite-resolution cell, anonymous equal-amplitude composite wave
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{1. Introduction}\label{1-introduction}
+\subsection{1. Introduction}\label{introduction}
 
 The preceding paper constructed a conservative finite-resolution map in
 which two identifiable fermionic local waves undergo complete elastic
@@ -205,9 +227,13 @@ space a priori.
 
 In that construction, the interaction cell applied the map
 
-\[q_A\mapsto -q_A,
-\qquad
-q_B\mapsto -q_B.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{q\_A\textbackslash{}mapsto {-}q\_A,}
+\NormalTok{\textbackslash{}qquad}
+\NormalTok{q\_B\textbackslash{}mapsto {-}q\_B.}
+\end{Highlighting}
+\end{Shaded}
 
 The rule was verified to be compatible with localization, identification
 oscillations, observation, closure, and reversibility. The present paper
@@ -240,21 +266,27 @@ and internal observation.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{2. Claims Not Made in This
-Paper}\label{2-claims-not-made-in-this-paper}
+Paper}\label{claims-not-made-in-this-paper}
 
 This paper does not claim the following.
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
 \toprule\noalign{}
-Claim not made & Reason \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Claim not made
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Reason
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
 A derivation of standard fermion scattering & No standard Hamiltonian,
 S-matrix, or scattering cross section is used \\
-A derivation of the Pauli exclusion principle itself & "Fermionic" is
+A derivation of the Pauli exclusion principle itself & ``Fermionic'' is
 used as an operational classification for a local wave with an internal
 inverse-phase core \\
 That node formation alone necessarily implies reflection in general &
@@ -273,20 +305,24 @@ internally generates a reflection map.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{3. Basic Structure}\label{3-basic-structure}
+\subsection{3. Basic Structure}\label{basic-structure}
 
-\subsubsection{3.1 Local Wave}\label{31-local-wave}
+\subsubsection{3.1 Local Wave}\label{local-wave}
 
 A local wave \texttt{P} on spatial phase \texttt{χ}, temporal phase
 \texttt{τ}, and internal identification phase \texttt{η} is written as
 
-\[P(\chi,\tau,\eta)
-=
-A_P
-S_{N_{h,\chi}^{P}}(\chi-\chi_P)
-S_{N_{h,\tau}^{P}}(\tau-\tau_P)
-e^{im_P\eta}
-e^{i\phi_P}.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P(\textbackslash{}chi,\textbackslash{}tau,\textbackslash{}eta)}
+\NormalTok{=}
+\NormalTok{A\_P}
+\NormalTok{S\_\{N\_\{h,\textbackslash{}chi\}\^{}\{P\}\}(\textbackslash{}chi{-}\textbackslash{}chi\_P)}
+\NormalTok{S\_\{N\_\{h,\textbackslash{}tau\}\^{}\{P\}\}(\textbackslash{}tau{-}\textbackslash{}tau\_P)}
+\NormalTok{e\^{}\{im\_P\textbackslash{}eta\}}
+\NormalTok{e\^{}\{i\textbackslash{}phi\_P\}.}
+\end{Highlighting}
+\end{Shaded}
 
 Here:
 
@@ -304,80 +340,116 @@ Here:
 \end{itemize}
 
 \subsubsection{3.2 Normalized Equal-Amplitude Odd-Harmonic Localized
-Wave}\label{32-normalized-equal-amplitude-odd-harmonic-localized-wave}
+Wave}\label{normalized-equal-amplitude-odd-harmonic-localized-wave}
 
-\[S_{N_h}(u)
-=
-\frac{1}{K}
-\sum_{m=0}^{K-1}
-\cos((2m+1)u),
-\qquad
-N_h=2K-1.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S\_\{N\_h\}(u)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{1\}\{K\}}
+\NormalTok{\textbackslash{}sum\_\{m=0\}\^{}\{K{-}1\}}
+\NormalTok{\textbackslash{}cos((2m+1)u),}
+\NormalTok{\textbackslash{}qquad}
+\NormalTok{N\_h=2K{-}1.}
+\end{Highlighting}
+\end{Shaded}
 
 Its closed form is
 
-\[S_{N_h}(u)
-=
-\frac{\sin((N_h+1)u)}{(N_h+1)\sin u}.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S\_\{N\_h\}(u)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{\textbackslash{}sin((N\_h+1)u)\}\{(N\_h+1)\textbackslash{}sin u\}.}
+\end{Highlighting}
+\end{Shaded}
 
 \subsubsection{3.3 Fermionic Internal Inverse-Phase
-Core}\label{33-fermionic-internal-inverse-phase-core}
+Core}\label{fermionic-internal-inverse-phase-core}
 
 The two-component internal core is written as
 
-\[F_P
-=
-\frac{1}{\sqrt2}
-\left(
-e^{i\theta_{P,1}},
-e^{i\theta_{P,2}}
-\right),\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{F\_P}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{1\}\{\textbackslash{}sqrt2\}}
+\NormalTok{\textbackslash{}left(}
+\NormalTok{e\^{}\{i\textbackslash{}theta\_\{P,1\}\},}
+\NormalTok{e\^{}\{i\textbackslash{}theta\_\{P,2\}\}}
+\NormalTok{\textbackslash{}right),}
+\end{Highlighting}
+\end{Shaded}
 
 and its internal phase difference is
 
-\[\Delta_F
-=
-\theta_{P,2}-\theta_{P,1}.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_F}
+\NormalTok{=}
+\NormalTok{\textbackslash{}theta\_\{P,2\}{-}\textbackslash{}theta\_\{P,1\}.}
+\end{Highlighting}
+\end{Shaded}
 
 A pure fermionic inverse-phase core is
 
-\[\Delta_F=\pi.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_F=\textbackslash{}pi.}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{4. Direct Path and Exchange
-Path}\label{4-direct-path-and-exchange-path}
+Path}\label{direct-path-and-exchange-path}
 
 Let the full arguments of the local waves be
 
-\[1=(\chi_1,\tau_1,\eta_1),
-\qquad
-2=(\chi_2,\tau_2,\eta_2).\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1=(\textbackslash{}chi\_1,\textbackslash{}tau\_1,\textbackslash{}eta\_1),}
+\NormalTok{\textbackslash{}qquad}
+\NormalTok{2=(\textbackslash{}chi\_2,\textbackslash{}tau\_2,\textbackslash{}eta\_2).}
+\end{Highlighting}
+\end{Shaded}
 
 The direct path is
 
-\[\Psi_{\mathrm{direct}}(1,2)
-=
-P_A(1)P_B(2),\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}mathrm\{direct\}\}(1,2)}
+\NormalTok{=}
+\NormalTok{P\_A(1)P\_B(2),}
+\end{Highlighting}
+\end{Shaded}
 
 and the exchange path is
 
-\[\Psi_{\mathrm{exchange}}(1,2)
-=
-P_A(2)P_B(1).\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}mathrm\{exchange\}\}(1,2)}
+\NormalTok{=}
+\NormalTok{P\_A(2)P\_B(1).}
+\end{Highlighting}
+\end{Shaded}
 
 The superposed wave, obtained by transferring the internal inverse-phase
 core to the relative phase of the exchange path, is
 
-\[\Psi_{\Delta}(1,2)
-=
-\frac{1}{\sqrt2}
-\left[
-\Psi_{\mathrm{direct}}(1,2)
-+
-e^{i\Delta_F}
-\Psi_{\mathrm{exchange}}(1,2)
-\right].\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}Delta\}(1,2)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{1\}\{\textbackslash{}sqrt2\}}
+\NormalTok{\textbackslash{}left[}
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}mathrm\{direct\}\}(1,2)}
+\NormalTok{+}
+\NormalTok{e\^{}\{i\textbackslash{}Delta\_F\}}
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}mathrm\{exchange\}\}(1,2)}
+\NormalTok{\textbackslash{}right].}
+\end{Highlighting}
+\end{Shaded}
 
 This is not an external judgment selecting an operation. The internal
 phase difference \texttt{Δ\_F} directly determines the interference
@@ -386,47 +458,75 @@ phase of the exchange path.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{5. Node Formation at Complete
-Overlap}\label{5-node-formation-at-complete-overlap}
+Overlap}\label{node-formation-at-complete-overlap}
 
 At the complete-overlap point \texttt{1=2}, the direct and exchange
 paths have the same amplitude:
 
-\[\Psi_{\mathrm{direct}}(1,1)
-=
-\Psi_{\mathrm{exchange}}(1,1).\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}mathrm\{direct\}\}(1,1)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}mathrm\{exchange\}\}(1,1).}
+\end{Highlighting}
+\end{Shaded}
 
 Therefore
 
-\[\Psi_{\Delta}(1,1)
-=
-\frac{P_A(1)P_B(1)}{\sqrt2}
-\left(1+e^{i\Delta_F}\right).\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}Delta\}(1,1)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{P\_A(1)P\_B(1)\}\{\textbackslash{}sqrt2\}}
+\NormalTok{\textbackslash{}left(1+e\^{}\{i\textbackslash{}Delta\_F\}\textbackslash{}right).}
+\end{Highlighting}
+\end{Shaded}
 
-\subsubsection{5.1 In-Phase Core}\label{51-in-phase-core}
+\subsubsection{5.1 In-Phase Core}\label{in-phase-core}
 
 If
 
-\[\Delta_F=0,\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_F=0,}
+\end{Highlighting}
+\end{Shaded}
 
 then
 
-\[1+e^{i\Delta_F}=2,\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1+e\^{}\{i\textbackslash{}Delta\_F\}=2,}
+\end{Highlighting}
+\end{Shaded}
 
 and the overlap component remains.
 
-\subsubsection{5.2 Inverse-Phase Core}\label{52-inverse-phase-core}
+\subsubsection{5.2 Inverse-Phase Core}\label{inverse-phase-core}
 
 If
 
-\[\Delta_F=\pi,\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_F=\textbackslash{}pi,}
+\end{Highlighting}
+\end{Shaded}
 
 then
 
-\[1+e^{i\pi}=0,\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1+e\^{}\{i\textbackslash{}pi\}=0,}
+\end{Highlighting}
+\end{Shaded}
 
 and therefore
 
-\[\Psi_{\pi}(1,1)=0.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}pi\}(1,1)=0.}
+\end{Highlighting}
+\end{Shaded}
 
 This zero is not an external shield or potential barrier. It is a node
 generated by complete destructive interference between the two exchange
@@ -435,27 +535,47 @@ paths.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{6. Relative Phase and Exchange
-Antisymmetry}\label{6-relative-phase-and-exchange-antisymmetry}
+Antisymmetry}\label{relative-phase-and-exchange-antisymmetry}
 
 The relative spatial phase of the two local waves is
 
-\[\rho=\chi_A-\chi_B.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}rho=\textbackslash{}chi\_A{-}\textbackslash{}chi\_B.}
+\end{Highlighting}
+\end{Shaded}
 
 Exchange of the two particles corresponds to
 
-\[A\leftrightarrow B,\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A\textbackslash{}leftrightarrow B,}
+\end{Highlighting}
+\end{Shaded}
 
 and therefore to
 
-\[\rho\mapsto-\rho.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}rho\textbackslash{}mapsto{-}\textbackslash{}rho.}
+\end{Highlighting}
+\end{Shaded}
 
 When exchange antisymmetry appears in the relative-phase channel,
 
-\[\Psi_F(-\rho)=-\Psi_F(\rho),\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_F({-}\textbackslash{}rho)={-}\textbackslash{}Psi\_F(\textbackslash{}rho),}
+\end{Highlighting}
+\end{Shaded}
 
 and hence
 
-\[\Psi_F(0)=0.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_F(0)=0.}
+\end{Highlighting}
+\end{Shaded}
 
 The numerical experiment checks whether this node blocks the
 transmission component from \texttt{ρ\textless{}0} to
@@ -464,18 +584,22 @@ transmission component from \texttt{ρ\textless{}0} to
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{7. Transmission Flow and Reflection
-Flow}\label{7-transmission-flow-and-reflection-flow}
+Flow}\label{transmission-flow-and-reflection-flow}
 
 As an operational measure of wave flow in the relative-phase direction,
 define
 
-\[J_\rho
-=
-\operatorname{Im}
-\left(
-\Psi^*
-\frac{\partial\Psi}{\partial\rho}
-\right).\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{J\_\textbackslash{}rho}
+\NormalTok{=}
+\NormalTok{\textbackslash{}operatorname\{Im\}}
+\NormalTok{\textbackslash{}left(}
+\NormalTok{\textbackslash{}Psi\^{}*}
+\NormalTok{\textbackslash{}frac\{\textbackslash{}partial\textbackslash{}Psi\}\{\textbackslash{}partial\textbackslash{}rho\}}
+\NormalTok{\textbackslash{}right).}
+\end{Highlighting}
+\end{Shaded}
 
 This quantity is not identified with the standard probability current of
 quantum mechanics. It is used as a numerical indicator for complex
@@ -484,11 +608,19 @@ waveform flow along the relative-phase coordinate.
 The experiment checks whether, under the fermionic inverse-phase
 condition,
 
-\[\Psi_F(0)=0\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_F(0)=0}
+\end{Highlighting}
+\end{Shaded}
 
 and
 
-\[J_\rho(0)=0\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{J\_\textbackslash{}rho(0)=0}
+\end{Highlighting}
+\end{Shaded}
 
 hold, and whether the transmission component to the opposite side
 disappears.
@@ -496,51 +628,71 @@ disappears.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{8. Direction-Reversal Map Generated by
-Interference}\label{8-direction-reversal-map-generated-by-interference}
+Interference}\label{direction-reversal-map-generated-by-interference}
 
 Let the direction components be
 
-\[\mathbf a
-=
-\begin{pmatrix}
-a_+\\
-a_-
-\end{pmatrix}.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}mathbf a}
+\NormalTok{=}
+\NormalTok{\textbackslash{}begin\{pmatrix\}}
+\NormalTok{a\_+\textbackslash{}\textbackslash{}}
+\NormalTok{a\_{-}}
+\NormalTok{\textbackslash{}end\{pmatrix\}.}
+\end{Highlighting}
+\end{Shaded}
 
 The transformation to symmetric and antisymmetric channels is
 
-\[H
-=
-\frac{1}{\sqrt2}
-\begin{pmatrix}
-1&1\\
-1&-1
-\end{pmatrix}.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{H}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{1\}\{\textbackslash{}sqrt2\}}
+\NormalTok{\textbackslash{}begin\{pmatrix\}}
+\NormalTok{1\&1\textbackslash{}\textbackslash{}}
+\NormalTok{1\&{-}1}
+\NormalTok{\textbackslash{}end\{pmatrix\}.}
+\end{Highlighting}
+\end{Shaded}
 
 If the internal phase difference between the two exchange paths is
 applied to the antisymmetric channel, the resulting map is
 
-\[U(\Delta_F)
-=
-H
-\begin{pmatrix}
-1&0\\
-0&e^{i\Delta_F}
-\end{pmatrix}
-H.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{U(\textbackslash{}Delta\_F)}
+\NormalTok{=}
+\NormalTok{H}
+\NormalTok{\textbackslash{}begin\{pmatrix\}}
+\NormalTok{1\&0\textbackslash{}\textbackslash{}}
+\NormalTok{0\&e\^{}\{i\textbackslash{}Delta\_F\}}
+\NormalTok{\textbackslash{}end\{pmatrix\}}
+\NormalTok{H.}
+\end{Highlighting}
+\end{Shaded}
 
 For \texttt{Δ\_F=π},
 
-\[U(\pi)
-=
-\begin{pmatrix}
-0&1\\
-1&0
-\end{pmatrix},\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{U(\textbackslash{}pi)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}begin\{pmatrix\}}
+\NormalTok{0\&1\textbackslash{}\textbackslash{}}
+\NormalTok{1\&0}
+\NormalTok{\textbackslash{}end\{pmatrix\},}
+\end{Highlighting}
+\end{Shaded}
 
 which gives
 
-\[|+\rangle\leftrightarrow|-\rangle.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{|+\textbackslash{}rangle\textbackslash{}leftrightarrow|{-}\textbackslash{}rangle.}
+\end{Highlighting}
+\end{Shaded}
 
 In the implementation, reflection and transmission rates are not
 directly substituted as result values. Instead, a single-sided incident
@@ -550,14 +702,23 @@ from the final waveform.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{9. Numerical Experiment}\label{9-numerical-experiment}
+\subsection{9. Numerical Experiment}\label{numerical-experiment}
 
-\subsubsection{9.1 Basic Conditions}\label{91-basic-conditions}
+\subsubsection{9.1 Basic Conditions}\label{basic-conditions}
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}lrl@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}@{}}
 \toprule\noalign{}
-Quantity & Basic value & Meaning \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Quantity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Basic value
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Meaning
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -580,16 +741,27 @@ One-sided packet center & \texttt{ρ=-40} & Single incident packet from
 the left toward the origin \\
 One-sided packet wavenumber & \texttt{k\_0=5.0} & Phase flow of the
 incident direction \\
-Interaction window & center ` & ρ \\
+Interaction window & center \texttt{\textbar{}ρ\textbar{}\textless{}25},
+transition \texttt{25\textless{}\textbar{}ρ\textbar{}\textless{}35} &
+Local exchange-interference channel \\
 \end{longtable}
 }
 
-\subsubsection{9.2 Experiment Groups}\label{92-experiment-groups}
+\subsubsection{9.2 Experiment Groups}\label{experiment-groups}
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}rll@{}}
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}@{}}
 \toprule\noalign{}
-No. & Experiment & Purpose \\
+\begin{minipage}[b]{\linewidth}\raggedleft
+No.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Experiment
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Purpose
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -621,7 +793,7 @@ The execution script is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_fermionic\_interference\_reflection\_v1.py}
+\NormalTok{run\_fermionic\_interference\_reflection\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -629,15 +801,15 @@ The output directory is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{fermionic\_interference\_reflection\_result\_v1/}
+\NormalTok{fermionic\_interference\_reflection\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{10. Results}\label{10-results}
+\subsection{10. Results}\label{results}
 
-\subsubsection{10.1 Overall Verdict}\label{101-overall-verdict}
+\subsubsection{10.1 Overall Verdict}\label{overall-verdict}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}lr@{}}
@@ -669,7 +841,7 @@ Minimal mechanism verdict & \texttt{true} \\
 
 \subsubsection{10.2 Local Exchange-Interference Reflection from
 One-Sided
-Incidence}\label{102-local-exchange-interference-reflection-from-one-sided-incidence}
+Incidence}\label{local-exchange-interference-reflection-from-one-sided-incidence}
 
 The initial state was a single localized wave packet placed only on the
 left side. No mirror-image initial condition was used. The packet was
@@ -681,7 +853,11 @@ This implementation is a local-map method. A waveform propagated into
 the interaction region is acted on once by the even-odd channel phase
 map corresponding to
 
-\[U(\Delta_F)=H\operatorname{diag}(1,e^{i\Delta_F})H\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{U(\textbackslash{}Delta\_F)=H\textbackslash{}operatorname\{diag\}(1,e\^{}\{i\textbackslash{}Delta\_F\})H}
+\end{Highlighting}
+\end{Shaded}
 
 inside the local window, and is then freely propagated again. It is not
 a continuous integration of an interaction Hamiltonian
@@ -695,29 +871,33 @@ Quantity & Value \\
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Initial left-side probability & \texttt{1.0000000000000002e+00} \\
+Initial left-side probability & \texttt{1.0000000000000004e+00} \\
 Initial right-side probability & \texttt{2.4303500961591473e-89} \\
 Reflection rate at \texttt{Delta\_F=0} &
-\texttt{1.8261693781071190e-19} \\
+\texttt{1.8261693486616611e-19} \\
 Transmission rate at \texttt{Delta\_F=0} &
-\texttt{1.0000000000000002e+00} \\
+\texttt{1.0000000000000004e+00} \\
 Reflection rate at \texttt{Delta\_F=pi/2} &
-\texttt{5.0000000000000011e-01} \\
+\texttt{5.0000000000000000e-01} \\
 Transmission rate at \texttt{Delta\_F=pi/2} &
-\texttt{5.0000000000000011e-01} \\
+\texttt{5.0000000000000000e-01} \\
 Reflection rate at \texttt{Delta\_F=pi} &
-\texttt{1.0000000000000002e+00} \\
+\texttt{1.0000000000000004e+00} \\
 Transmission rate at \texttt{Delta\_F=pi} &
-\texttt{1.7939211291143336e-19} \\
+\texttt{1.7939211304199106e-19} \\
 Maximum phase-sweep error & \texttt{5.5511151231257827e-16} \\
 Maximum norm error & \texttt{6.6613381477509392e-16} \\
 \end{longtable}
 }
 
-\pandocbounded{\includegraphics[keepaspectratio,alt={One-sided scattering}]{fermionic_interference_reflection_result_v1/fermionic_interference_single_sided_scattering_v1.png}}
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={One-sided scattering}]{fermionic_interference_reflection_result_v2/fermionic_interference_single_sided_scattering_v2.png}}
+\caption{One-sided scattering}
+\end{figure}
 
 \subsubsection{10.3 Exchange-Interference
-Node}\label{103-exchange-interference-node}
+Node}\label{exchange-interference-node}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}lr@{}}
@@ -737,10 +917,14 @@ Without exchange path, \texttt{Delta\_F=pi} &
 \end{longtable}
 }
 
-\pandocbounded{\includegraphics[keepaspectratio,alt={Exchange-interference phase sweep}]{fermionic_interference_reflection_result_v1/fermionic_interference_phase_sweep_v1.png}}
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Exchange-interference phase sweep}]{fermionic_interference_reflection_result_v2/fermionic_interference_phase_sweep_v2.png}}
+\caption{Exchange-interference phase sweep}
+\end{figure}
 
 \subsubsection{10.4 Auxiliary Readout of an Odd-Function
-Node}\label{104-auxiliary-readout-of-an-odd-function-node}
+Node}\label{auxiliary-readout-of-an-odd-function-node}
 
 As an auxiliary check separate from the one-sided scattering test, a
 relative-phase wave with an odd-function node corresponding to the
@@ -749,9 +933,15 @@ It confirms that a wave with such a node can be read as a reflected wave
 on a half-line.
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}lr@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4286}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5714}}@{}}
 \toprule\noalign{}
-Quantity & Value \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Quantity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Value
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -769,10 +959,14 @@ Maximum node current of the odd-node wave &
 \end{longtable}
 }
 
-\pandocbounded{\includegraphics[keepaspectratio,alt={Relative dynamics}]{fermionic_interference_reflection_result_v1/fermionic_interference_relative_dynamics_v1.png}}
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Relative dynamics}]{fermionic_interference_reflection_result_v2/fermionic_interference_relative_dynamics_v2.png}}
+\caption{Relative dynamics}
+\end{figure}
 
 \subsubsection{10.5 Identification Oscillation
-Readout}\label{105-identification-oscillation-readout}
+Readout}\label{identification-oscillation-readout}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}lr@{}}
@@ -798,7 +992,7 @@ fermionic inverse-phase core, while A/B identification is read through
 \texttt{η} correlation.
 
 \subsubsection{10.6 Reversibility and Compensated Square
-Closure}\label{106-reversibility-and-compensated-square-closure}
+Closure}\label{reversibility-and-compensated-square-closure}
 
 The local exchange-interference map was applied twice to check whether
 the waveform returned to itself. In addition, each sampled coefficient
@@ -806,17 +1000,23 @@ the waveform returned to itself. In addition, each sampled coefficient
 compensated square closure was evaluated at the main stages.
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}lr@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4286}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5714}}@{}}
 \toprule\noalign{}
-Quantity & Value \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Quantity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Value
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
 Relative error of \texttt{U(pi)\^{}2} &
-\texttt{4.8214412843789535e-11} \\
+\texttt{4.8214412843768590e-11} \\
 Maximum relative error of \texttt{U(delta)U(-delta)} &
-\texttt{1.4547631339456792e-16} \\
+\texttt{2.2454514008125022e-16} \\
 Maximum compensated square-closure residual &
 \texttt{1.2143074258005000e-17} \\
 \end{longtable}
@@ -828,7 +1028,7 @@ remains inside the verdict threshold \texttt{1e-10}. The
 \texttt{U(delta)U(-delta)} sweep remains at machine precision.
 
 \subsubsection{10.7 AB/C Interaction-Cell
-Replacement}\label{107-abc-interaction-cell-replacement}
+Replacement}\label{abc-interaction-cell-replacement}
 
 The previous AB/C complete elastic collision simulation used a direct
 cell-level \texttt{q} reversal. In the replacement test, that
@@ -842,13 +1042,19 @@ exchange-interference map:
 \end{Highlighting}
 \end{Shaded}
 
-For \texttt{Δ\_F=π}, the values used were \texttt{R=1.0000000000000002}
-and \texttt{T=1.7939211291143336e-19}.
+For \texttt{Δ\_F=π}, the values used were \texttt{R=1.0000000000000004}
+and \texttt{T=1.7939211304199106e-19}.
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}lr@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4286}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5714}}@{}}
 \toprule\noalign{}
-Item & Value \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Item
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Value
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -857,60 +1063,84 @@ AB/C replacement valid & \texttt{true} \\
 collision\_cell\_reached & \texttt{true} \\
 post\_collision\_completed & \texttt{true} \\
 \texttt{q\_A} before/after & \texttt{1.0000000000000000e+00} /
-\texttt{-1.0000000000000002e+00} \\
+\texttt{-1.0000000000000004e+00} \\
 \texttt{q\_B} before/after & \texttt{-1.0000000000000000e+00} /
-\texttt{1.0000000000000002e+00} \\
+\texttt{1.0000000000000004e+00} \\
 label A initial/final & \texttt{1} / \texttt{1} \\
 label B initial/final & \texttt{2} / \texttt{2} \\
 \end{longtable}
 }
 
-\pandocbounded{\includegraphics[keepaspectratio,alt={AB/C cell replacement}]{fermionic_interference_reflection_result_v1/fermionic_interference_ab_c_replacement_v1.png}}
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={AB/C cell replacement}]{fermionic_interference_reflection_result_v2/fermionic_interference_ab_c_replacement_v2.png}}
+\caption{AB/C cell replacement}
+\end{figure}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{11. Evaluation Quantities}\label{11-evaluation-quantities}
+\subsection{11. Evaluation Quantities}\label{evaluation-quantities}
 
-\subsubsection{11.1 Transmission Rate}\label{111-transmission-rate}
+\subsubsection{11.1 Transmission Rate}\label{transmission-rate}
 
-\[T
-=
-\frac{I_{\mathrm{trans}}}
-{I_{\mathrm{trans}}+I_{\mathrm{refl}}}.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{T}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{I\_\{\textbackslash{}mathrm\{trans\}\}\}}
+\NormalTok{\{I\_\{\textbackslash{}mathrm\{trans\}\}+I\_\{\textbackslash{}mathrm\{refl\}\}\}.}
+\end{Highlighting}
+\end{Shaded}
 
-\subsubsection{11.2 Reflection Rate}\label{112-reflection-rate}
+\subsubsection{11.2 Reflection Rate}\label{reflection-rate}
 
-\[R
-=
-\frac{I_{\mathrm{refl}}}
-{I_{\mathrm{trans}}+I_{\mathrm{refl}}}.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{I\_\{\textbackslash{}mathrm\{refl\}\}\}}
+\NormalTok{\{I\_\{\textbackslash{}mathrm\{trans\}\}+I\_\{\textbackslash{}mathrm\{refl\}\}\}.}
+\end{Highlighting}
+\end{Shaded}
 
 \subsubsection{11.3 Identification-Mode
-Readout}\label{113-identification-mode-readout}
+Readout}\label{identification-mode-readout}
 
-\[O_{P,m}^{(j)}
-=
-\frac{1}{(2\pi)^3}
-\iiint
-P
-C_{\mathrm{read},P}^{(j)}
-e^{-im\eta}
-\,d\chi d\tau d\eta.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{O\_\{P,m\}\^{}\{(j)\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{1\}\{(2\textbackslash{}pi)\^{}3\}}
+\NormalTok{\textbackslash{}iiint}
+\NormalTok{P}
+\NormalTok{C\_\{\textbackslash{}mathrm\{read\},P\}\^{}\{(j)\}}
+\NormalTok{e\^{}\{{-}im\textbackslash{}eta\}}
+\NormalTok{\textbackslash{},d\textbackslash{}chi d\textbackslash{}tau d\textbackslash{}eta.}
+\end{Highlighting}
+\end{Shaded}
 
 \subsubsection{11.4 Expected Phase
-Dependence}\label{114-expected-phase-dependence}
+Dependence}\label{expected-phase-dependence}
 
 For an ideal two-channel interference map,
 
-\[R(\Delta_F)
-=
-\sin^2\frac{\Delta_F}{2},\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R(\textbackslash{}Delta\_F)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}sin\^{}2\textbackslash{}frac\{\textbackslash{}Delta\_F\}\{2\},}
+\end{Highlighting}
+\end{Shaded}
 
 and
 
-\[T(\Delta_F)
-=
-\cos^2\frac{\Delta_F}{2}\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{T(\textbackslash{}Delta\_F)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}cos\^{}2\textbackslash{}frac\{\textbackslash{}Delta\_F\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
 
 are obtained analytically.
 
@@ -922,25 +1152,33 @@ internal phase transfer, and recombination, and then measures
 implemented local exchange-interference map matches the analytic
 two-channel map.
 
-\subsubsection{11.5 Closure Residual}\label{115-closure-residual}
+\subsubsection{11.5 Closure Residual}\label{closure-residual}
 
-\[\mathcal R_{\mathrm{closure}}
-=
-\left|
-\sum_n x_n^2
-\right|.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}mathcal R\_\{\textbackslash{}mathrm\{closure\}\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}left|}
+\NormalTok{\textbackslash{}sum\_n x\_n\^{}2}
+\NormalTok{\textbackslash{}right|.}
+\end{Highlighting}
+\end{Shaded}
 
-\subsubsection{11.6 Reversibility}\label{116-reversibility}
+\subsubsection{11.6 Reversibility}\label{reversibility}
 
 When the reflection-interference process is applied twice,
 
-\[\mathcal U_F^2\approx I\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}mathcal U\_F\^{}2\textbackslash{}approx I}
+\end{Highlighting}
+\end{Shaded}
 
 is evaluated numerically.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{12. Success Conditions}\label{12-success-conditions}
+\subsection{12. Success Conditions}\label{success-conditions}
 
 For the minimal execution in this paper, the construction is judged to
 generate the reflection map internally when the following hold.
@@ -987,12 +1225,18 @@ generate the reflection map internally when the following hold.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{13. Failure Conditions}\label{13-failure-conditions}
+\subsection{13. Failure Conditions}\label{failure-conditions}
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
 \toprule\noalign{}
-Failure condition & Meaning \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Failure condition
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Meaning
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -1016,15 +1260,19 @@ condition is insufficient \\
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{14. Discussion}\label{14-discussion}
+\subsection{14. Discussion}\label{discussion}
 
 \subsubsection{14.1 Operation Selection Is Not a
-Judgment}\label{141-operation-selection-is-not-a-judgment}
+Judgment}\label{operation-selection-is-not-a-judgment}
 
 In this construction, a local wave does not recognize itself as a
 fermion and then choose an operation.
 
-\[\Delta_F\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_F}
+\end{Highlighting}
+\end{Shaded}
 
 appears directly as the relative phase of the exchange path and
 determines the interference result.
@@ -1034,7 +1282,7 @@ selection rule for connectable phase channels.
 
 \subsubsection{\texorpdfstring{14.2 No External \texttt{π/2} Adjustment
 Is
-Required}{14.2 No External π/2 Adjustment Is Required}}\label{142-no-external-ux3c02-adjustment-is-required}
+Required}{14.2 No External π/2 Adjustment Is Required}}\label{no-external-ux3c02-adjustment-is-required}
 
 If the complete inversion matrix is written as a two-state rotation, a
 \texttt{π/2} angle appears. In this construction, that integrated angle
@@ -1042,14 +1290,22 @@ is not supplied externally.
 
 The direct cause is the complete cancellation of the two exchange paths:
 
-\[1+e^{i\pi}=0.\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1+e\^{}\{i\textbackslash{}pi\}=0.}
+\end{Highlighting}
+\end{Shaded}
 
 \subsubsection{14.3 Reflection Generation from One-Sided
-Incidence}\label{143-reflection-generation-from-one-sided-incidence}
+Incidence}\label{reflection-generation-from-one-sided-incidence}
 
 The condition
 
-\[\Psi_F(0)=0\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_F(0)=0}
+\end{Highlighting}
+\end{Shaded}
 
 alone is not enough to confirm reflection generation. Therefore, this
 paper does not begin by placing an odd-function wave. Instead, the
@@ -1075,7 +1331,7 @@ generated by the local exchange-interference map in the interaction
 region, not by a mirror structure in the initial condition.
 
 \subsubsection{14.4 The Implementation Is a Local-Map
-Method}\label{144-the-implementation-is-a-local-map-method}
+Method}\label{the-implementation-is-a-local-map-method}
 
 This implementation does not integrate an interaction Hamiltonian
 \texttt{H\_int(ρ,Δ\_F)} continuously in time. The computational order
@@ -1097,7 +1353,7 @@ phase of the internal inverse-phase core.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{15. Conclusion}\label{15-conclusion}
+\subsection{15. Conclusion}\label{conclusion}
 
 This paper executed a minimal mechanism that internally generates the
 direction-reversal map previously introduced as a construction rule
@@ -1113,19 +1369,19 @@ exchange path left \texttt{4.9999999999999994e-01}. Thus, node formation
 was generated by exchange-path interference.
 
 For one-sided incident local exchange-interference scattering,
-\texttt{Δ\_F=0} gave reflection \texttt{1.8261693781071190e-19} and
-transmission \texttt{1.0000000000000002}. \texttt{Δ\_F=π/2} gave
+\texttt{Δ\_F=0} gave reflection \texttt{1.8261693486616611e-19} and
+transmission \texttt{1.0000000000000004}. \texttt{Δ\_F=π/2} gave
 reflection and transmission both equal to \texttt{0.5}. \texttt{Δ\_F=π}
-gave reflection \texttt{1.0000000000000002} and transmission
-\texttt{1.7939211291143336e-19}. Over the phase sweep,
+gave reflection \texttt{1.0000000000000004} and transmission
+\texttt{1.7939211304199106e-19}. Over the phase sweep,
 \texttt{R(Δ\_F)=sin\^{}2(Δ\_F/2)} and \texttt{T(Δ\_F)=cos\^{}2(Δ\_F/2)}
 held with maximum error \texttt{5.551115123125783e-16}; the maximum norm
 error was \texttt{6.661338147750939e-16}.
 
 For reversibility of the local exchange-interference map, the relative
-error of \texttt{U(π)\^{}2} was \texttt{4.8214412843789535e-11}, and the
+error of \texttt{U(π)\^{}2} was \texttt{4.8214412843768590e-11}, and the
 maximum relative error of \texttt{U(Δ\_F)U(-Δ\_F)} was
-\texttt{1.4547631339456792e-16}. The maximum compensated square-closure
+\texttt{2.2454514008125022e-16}. The maximum compensated square-closure
 residual was \texttt{1.2143074258005e-17}.
 
 Finally, in the interaction cell of the previous AB/C complete elastic
@@ -1133,8 +1389,8 @@ collision simulation, the direct \texttt{q} reversal instruction was not
 used. The direction readout was generated as \texttt{q\_out=q\_in*(T-R)}
 from \texttt{R,T} obtained by the local exchange-interference map. In
 this replacement integration test, \texttt{q\_A} changed from
-\texttt{1.0} to \texttt{-1.0000000000000002}, \texttt{q\_B} changed from
-\texttt{-1.0} to \texttt{1.0000000000000002}, and the identification
+\texttt{1.0} to \texttt{-1.0000000000000004}, \texttt{q\_B} changed from
+\texttt{-1.0} to \texttt{1.0000000000000004}, and the identification
 oscillations \texttt{m\_A=1} and \texttt{m\_B=2} were preserved from
 initial to final readout.
 
@@ -1149,13 +1405,13 @@ identification-oscillation readout.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \section{Appendix A. Executed Program and
-Outputs}\label{appendix-a-executed-program-and-outputs}
+Outputs}\label{appendix-a.-executed-program-and-outputs}
 
 The program used in this execution is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_fermionic\_interference\_reflection\_v1.py}
+\NormalTok{run\_fermionic\_interference\_reflection\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1163,42 +1419,48 @@ The output directory is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{fermionic\_interference\_reflection\_result\_v1/}
+\NormalTok{fermionic\_interference\_reflection\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
 The main outputs are:
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
 \toprule\noalign{}
-Type & File \\
+\begin{minipage}[b]{\linewidth}\raggedright
+Type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+File
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
 Execution report &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_reflection_report_v1.md}{fermionic\_interference\_reflection\_report\_v1.md} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_reflection_report_v2.md}{fermionic\_interference\_reflection\_report\_v2.md} \\
 Result JSON &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_reflection_result_v1.json}{fermionic\_interference\_reflection\_result\_v1.json} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_reflection_result_v2.json}{fermionic\_interference\_reflection\_result\_v2.json} \\
 Phase-sweep CSV &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_phase_sweep_v1.csv}{fermionic\_interference\_phase\_sweep\_v1.csv} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_phase_sweep_v2.csv}{fermionic\_interference\_phase\_sweep\_v2.csv} \\
 Relative-dynamics CSV &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_relative_dynamics_v1.csv}{fermionic\_interference\_relative\_dynamics\_v1.csv} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_relative_dynamics_v2.csv}{fermionic\_interference\_relative\_dynamics\_v2.csv} \\
 One-sided scattering CSV &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_single_sided_scattering_v1.csv}{fermionic\_interference\_single\_sided\_scattering\_v1.csv} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_single_sided_scattering_v2.csv}{fermionic\_interference\_single\_sided\_scattering\_v2.csv} \\
 Reversibility CSV &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_reversibility_sweep_v1.csv}{fermionic\_interference\_reversibility\_sweep\_v1.csv} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_reversibility_sweep_v2.csv}{fermionic\_interference\_reversibility\_sweep\_v2.csv} \\
 AB/C replacement CSV &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_ab_c_replacement_timeline_v1.csv}{fermionic\_interference\_ab\_c\_replacement\_timeline\_v1.csv} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_ab_c_replacement_timeline_v2.csv}{fermionic\_interference\_ab\_c\_replacement\_timeline\_v2.csv} \\
 Exchange-interference node figure &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_phase_sweep_v1.png}{fermionic\_interference\_phase\_sweep\_v1.png} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_phase_sweep_v2.png}{fermionic\_interference\_phase\_sweep\_v2.png} \\
 Relative-dynamics figure &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_relative_dynamics_v1.png}{fermionic\_interference\_relative\_dynamics\_v1.png} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_relative_dynamics_v2.png}{fermionic\_interference\_relative\_dynamics\_v2.png} \\
 One-sided scattering figure &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_single_sided_scattering_v1.png}{fermionic\_interference\_single\_sided\_scattering\_v1.png} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_single_sided_scattering_v2.png}{fermionic\_interference\_single\_sided\_scattering\_v2.png} \\
 AB/C replacement figure &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_ab_c_replacement_v1.png}{fermionic\_interference\_ab\_c\_replacement\_v1.png} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_ab_c_replacement_v2.png}{fermionic\_interference\_ab\_c\_replacement\_v2.png} \\
 \end{longtable}
 }
 
@@ -1206,7 +1468,7 @@ The execution command is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_fermionic\_interference\_reflection\_v1.py}
+\NormalTok{python3 run\_fermionic\_interference\_reflection\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1238,7 +1500,7 @@ substitution. The verdict in the result JSON is:
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \section{Appendix B. Treatment of the Earlier
-Draft}\label{appendix-b-treatment-of-the-earlier-draft}
+Draft}\label{appendix-b.-treatment-of-the-earlier-draft}
 
 The earlier program draft generated by ChatGPT is not used for the
 verdict in this paper. Its \texttt{exchange\_coordinates()} operation

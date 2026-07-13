@@ -1,11 +1,13 @@
-# Interference Construction of a Perfect Reflection Map from a Fermionic Inverse-Phase Core
+# Interference Construction of a Perfect Reflection Map from a Fermionic Inverse-Phase Core v2
 
 **Subtitle:** A numerical constructive experiment on direction reversal from exchange-path interference cancellation and a relative-phase node  
 **Date:** 2026-07-10  
 **Author:** Noriaki Kihara  
 **Status:** Additional paper / executed numerical experiment  
-**Version DOI:** 10.5281/zenodo.21295480  
+**Version DOI:** 10.5281/zenodo.21332867  
 **Concept DOI:** 10.5281/zenodo.21295479  
+
+V2 recalculates the same conditions after changing the formula for the fermion-like reflection map.
 
 ---
 
@@ -36,7 +38,7 @@ At the complete-overlap point `1=2`, the two paths cancel exactly when `Δ_F=π`
 
 In the numerical execution, the initial state is a single localized wave packet incident from the left. No external direction-reversal instruction, mirror-image initial condition, or reflecting boundary condition is used. In the interaction region, the direct and exchange paths are decomposed into even and odd interference channels, the phase difference of the internal inverse-phase core is transferred only to the odd channel, and the wave is recombined.
 
-The results were as follows. For `Δ_F=0`, the reflection and transmission rates were `1.8261693781071190e-19` and `1.0000000000000002`. For `Δ_F=π/2`, both reflection and transmission were `0.5`. For `Δ_F=π`, the reflection and transmission rates were `1.0000000000000002` and `1.7939211291143336e-19`. Over the phase sweep, `R(Δ_F)=sin^2(Δ_F/2)` and `T(Δ_F)=cos^2(Δ_F/2)` were reproduced with maximum error `5.551115123125783e-16`, and the maximum norm error was `6.661338147750939e-16`. The local exchange-interference map satisfied reversibility with relative error `4.8214412843789535e-11` for `U(π)^2` and maximum relative error `1.4547631339456792e-16` for `U(Δ_F)U(-Δ_F)`. The maximum compensated square-closure residual was `1.2143074258005e-17`. The internal identification oscillations `m_A` and `m_B` were preserved by correlation readout.
+The results were as follows. For `Δ_F=0`, the reflection and transmission rates were `1.8261693486616611e-19` and `1.0000000000000004`. For `Δ_F=π/2`, both reflection and transmission were `0.5`. For `Δ_F=π`, the reflection and transmission rates were `1.0000000000000004` and `1.7939211304199106e-19`. Over the phase sweep, `R(Δ_F)=sin^2(Δ_F/2)` and `T(Δ_F)=cos^2(Δ_F/2)` were reproduced with maximum error `5.551115123125783e-16`, and the maximum norm error was `6.661338147750939e-16`. The local exchange-interference map satisfied reversibility with relative error `4.8214412843768590e-11` for `U(π)^2` and maximum relative error `2.2454514008125022e-16` for `U(Δ_F)U(-Δ_F)`. The maximum compensated square-closure residual was `1.2143074258005e-17`. The internal identification oscillations `m_A` and `m_B` were preserved by correlation readout.
 
 **Keywords:** fermionic inverse-phase core, exchange interference, relative-phase node, perfect reflection, internal observation, finite-resolution cell, anonymous equal-amplitude composite wave
 
@@ -425,13 +427,13 @@ In the implementation, reflection and transmission rates are not directly substi
 The execution script is:
 
 ```text
-run_fermionic_interference_reflection_v1.py
+run_fermionic_interference_reflection_v2.py
 ```
 
 The output directory is:
 
 ```text
-fermionic_interference_reflection_result_v1/
+fermionic_interference_reflection_result_v2/
 ```
 
 ---
@@ -474,18 +476,18 @@ inside the local window, and is then freely propagated again. It is not a contin
 
 | Quantity | Value |
 |---|---:|
-| Initial left-side probability | `1.0000000000000002e+00` |
+| Initial left-side probability | `1.0000000000000004e+00` |
 | Initial right-side probability | `2.4303500961591473e-89` |
-| Reflection rate at `Delta_F=0` | `1.8261693781071190e-19` |
-| Transmission rate at `Delta_F=0` | `1.0000000000000002e+00` |
-| Reflection rate at `Delta_F=pi/2` | `5.0000000000000011e-01` |
-| Transmission rate at `Delta_F=pi/2` | `5.0000000000000011e-01` |
-| Reflection rate at `Delta_F=pi` | `1.0000000000000002e+00` |
-| Transmission rate at `Delta_F=pi` | `1.7939211291143336e-19` |
+| Reflection rate at `Delta_F=0` | `1.8261693486616611e-19` |
+| Transmission rate at `Delta_F=0` | `1.0000000000000004e+00` |
+| Reflection rate at `Delta_F=pi/2` | `5.0000000000000000e-01` |
+| Transmission rate at `Delta_F=pi/2` | `5.0000000000000000e-01` |
+| Reflection rate at `Delta_F=pi` | `1.0000000000000004e+00` |
+| Transmission rate at `Delta_F=pi` | `1.7939211304199106e-19` |
 | Maximum phase-sweep error | `5.5511151231257827e-16` |
 | Maximum norm error | `6.6613381477509392e-16` |
 
-![One-sided scattering](fermionic_interference_reflection_result_v1/fermionic_interference_single_sided_scattering_v1.png)
+![One-sided scattering](fermionic_interference_reflection_result_v2/fermionic_interference_single_sided_scattering_v2.png)
 
 ### 10.3 Exchange-Interference Node
 
@@ -496,7 +498,7 @@ inside the local window, and is then freely propagated again. It is not a contin
 | With exchange path, `Delta_F=pi` | `7.4987989133092880e-33` |
 | Without exchange path, `Delta_F=pi` | `4.9999999999999994e-01` |
 
-![Exchange-interference phase sweep](fermionic_interference_reflection_result_v1/fermionic_interference_phase_sweep_v1.png)
+![Exchange-interference phase sweep](fermionic_interference_reflection_result_v2/fermionic_interference_phase_sweep_v2.png)
 
 ### 10.4 Auxiliary Readout of an Odd-Function Node
 
@@ -510,7 +512,7 @@ As an auxiliary check separate from the one-sided scattering test, a relative-ph
 | Maximum node amplitude of the odd-node wave | `3.0038078125523204e-17` |
 | Maximum node current of the odd-node wave | `3.7549762132062191e-17` |
 
-![Relative dynamics](fermionic_interference_reflection_result_v1/fermionic_interference_relative_dynamics_v1.png)
+![Relative dynamics](fermionic_interference_reflection_result_v2/fermionic_interference_relative_dynamics_v2.png)
 
 ### 10.5 Identification Oscillation Readout
 
@@ -529,8 +531,8 @@ The local exchange-interference map was applied twice to check whether the wavef
 
 | Quantity | Value |
 |---|---:|
-| Relative error of `U(pi)^2` | `4.8214412843789535e-11` |
-| Maximum relative error of `U(delta)U(-delta)` | `1.4547631339456792e-16` |
+| Relative error of `U(pi)^2` | `4.8214412843768590e-11` |
+| Maximum relative error of `U(delta)U(-delta)` | `2.2454514008125022e-16` |
 | Maximum compensated square-closure residual | `1.2143074258005000e-17` |
 
 The `U(pi)^2` error comes from numerical effects in the implementation, including the local window and interpolation, and remains inside the verdict threshold `1e-10`. The `U(delta)U(-delta)` sweep remains at machine precision.
@@ -543,19 +545,19 @@ The previous AB/C complete elastic collision simulation used a direct cell-level
 q_out = q_in * (T - R)
 ```
 
-For `Δ_F=π`, the values used were `R=1.0000000000000002` and `T=1.7939211291143336e-19`.
+For `Δ_F=π`, the values used were `R=1.0000000000000004` and `T=1.7939211304199106e-19`.
 
 | Item | Value |
 |---|---:|
 | AB/C replacement valid | `true` |
 | collision_cell_reached | `true` |
 | post_collision_completed | `true` |
-| `q_A` before/after | `1.0000000000000000e+00` / `-1.0000000000000002e+00` |
-| `q_B` before/after | `-1.0000000000000000e+00` / `1.0000000000000002e+00` |
+| `q_A` before/after | `1.0000000000000000e+00` / `-1.0000000000000004e+00` |
+| `q_B` before/after | `-1.0000000000000000e+00` / `1.0000000000000004e+00` |
 | label A initial/final | `1` / `1` |
 | label B initial/final | `2` / `2` |
 
-![AB/C cell replacement](fermionic_interference_reflection_result_v1/fermionic_interference_ab_c_replacement_v1.png)
+![AB/C cell replacement](fermionic_interference_reflection_result_v2/fermionic_interference_ab_c_replacement_v2.png)
 
 ---
 
@@ -736,11 +738,11 @@ This paper executed a minimal mechanism that internally generates the direction-
 
 When the internal phase difference `Δ_F` is transferred as the relative phase between the direct and exchange paths, the waveform at the complete-overlap point becomes exactly zero under the pure fermionic condition `Δ_F=π`. The execution gave diagonal relative norm `7.4987989133092880e-33` at `Δ_F=π`, while removing the exchange path left `4.9999999999999994e-01`. Thus, node formation was generated by exchange-path interference.
 
-For one-sided incident local exchange-interference scattering, `Δ_F=0` gave reflection `1.8261693781071190e-19` and transmission `1.0000000000000002`. `Δ_F=π/2` gave reflection and transmission both equal to `0.5`. `Δ_F=π` gave reflection `1.0000000000000002` and transmission `1.7939211291143336e-19`. Over the phase sweep, `R(Δ_F)=sin^2(Δ_F/2)` and `T(Δ_F)=cos^2(Δ_F/2)` held with maximum error `5.551115123125783e-16`; the maximum norm error was `6.661338147750939e-16`.
+For one-sided incident local exchange-interference scattering, `Δ_F=0` gave reflection `1.8261693486616611e-19` and transmission `1.0000000000000004`. `Δ_F=π/2` gave reflection and transmission both equal to `0.5`. `Δ_F=π` gave reflection `1.0000000000000004` and transmission `1.7939211304199106e-19`. Over the phase sweep, `R(Δ_F)=sin^2(Δ_F/2)` and `T(Δ_F)=cos^2(Δ_F/2)` held with maximum error `5.551115123125783e-16`; the maximum norm error was `6.661338147750939e-16`.
 
-For reversibility of the local exchange-interference map, the relative error of `U(π)^2` was `4.8214412843789535e-11`, and the maximum relative error of `U(Δ_F)U(-Δ_F)` was `1.4547631339456792e-16`. The maximum compensated square-closure residual was `1.2143074258005e-17`.
+For reversibility of the local exchange-interference map, the relative error of `U(π)^2` was `4.8214412843768590e-11`, and the maximum relative error of `U(Δ_F)U(-Δ_F)` was `2.2454514008125022e-16`. The maximum compensated square-closure residual was `1.2143074258005e-17`.
 
-Finally, in the interaction cell of the previous AB/C complete elastic collision simulation, the direct `q` reversal instruction was not used. The direction readout was generated as `q_out=q_in*(T-R)` from `R,T` obtained by the local exchange-interference map. In this replacement integration test, `q_A` changed from `1.0` to `-1.0000000000000002`, `q_B` changed from `-1.0` to `1.0000000000000002`, and the identification oscillations `m_A=1` and `m_B=2` were preserved from initial to final readout.
+Finally, in the interaction cell of the previous AB/C complete elastic collision simulation, the direct `q` reversal instruction was not used. The direction readout was generated as `q_out=q_in*(T-R)` from `R,T` obtained by the local exchange-interference map. In this replacement integration test, `q_A` changed from `1.0` to `-1.0000000000000004`, `q_B` changed from `-1.0` to `1.0000000000000004`, and the identification oscillations `m_A=1` and `m_B=2` were preserved from initial to final readout.
 
 Therefore, without an external conditional branch, artificial `q=-q` instruction, mirror-image initial condition, or reflecting boundary condition, the construction generates the direction-reversal output corresponding to complete elastic reflection from an internal inverse-phase core, localized-wave overlap, exchange paths, even-odd interference channels, local phase transfer, and identification-oscillation readout.
 
@@ -751,35 +753,35 @@ Therefore, without an external conditional branch, artificial `q=-q` instruction
 The program used in this execution is:
 
 ```text
-run_fermionic_interference_reflection_v1.py
+run_fermionic_interference_reflection_v2.py
 ```
 
 The output directory is:
 
 ```text
-fermionic_interference_reflection_result_v1/
+fermionic_interference_reflection_result_v2/
 ```
 
 The main outputs are:
 
 | Type | File |
 |---|---|
-| Execution report | [fermionic_interference_reflection_report_v1.md](fermionic_interference_reflection_result_v1/fermionic_interference_reflection_report_v1.md) |
-| Result JSON | [fermionic_interference_reflection_result_v1.json](fermionic_interference_reflection_result_v1/fermionic_interference_reflection_result_v1.json) |
-| Phase-sweep CSV | [fermionic_interference_phase_sweep_v1.csv](fermionic_interference_reflection_result_v1/fermionic_interference_phase_sweep_v1.csv) |
-| Relative-dynamics CSV | [fermionic_interference_relative_dynamics_v1.csv](fermionic_interference_reflection_result_v1/fermionic_interference_relative_dynamics_v1.csv) |
-| One-sided scattering CSV | [fermionic_interference_single_sided_scattering_v1.csv](fermionic_interference_reflection_result_v1/fermionic_interference_single_sided_scattering_v1.csv) |
-| Reversibility CSV | [fermionic_interference_reversibility_sweep_v1.csv](fermionic_interference_reflection_result_v1/fermionic_interference_reversibility_sweep_v1.csv) |
-| AB/C replacement CSV | [fermionic_interference_ab_c_replacement_timeline_v1.csv](fermionic_interference_reflection_result_v1/fermionic_interference_ab_c_replacement_timeline_v1.csv) |
-| Exchange-interference node figure | [fermionic_interference_phase_sweep_v1.png](fermionic_interference_reflection_result_v1/fermionic_interference_phase_sweep_v1.png) |
-| Relative-dynamics figure | [fermionic_interference_relative_dynamics_v1.png](fermionic_interference_reflection_result_v1/fermionic_interference_relative_dynamics_v1.png) |
-| One-sided scattering figure | [fermionic_interference_single_sided_scattering_v1.png](fermionic_interference_reflection_result_v1/fermionic_interference_single_sided_scattering_v1.png) |
-| AB/C replacement figure | [fermionic_interference_ab_c_replacement_v1.png](fermionic_interference_reflection_result_v1/fermionic_interference_ab_c_replacement_v1.png) |
+| Execution report | [fermionic_interference_reflection_report_v2.md](fermionic_interference_reflection_result_v2/fermionic_interference_reflection_report_v2.md) |
+| Result JSON | [fermionic_interference_reflection_result_v2.json](fermionic_interference_reflection_result_v2/fermionic_interference_reflection_result_v2.json) |
+| Phase-sweep CSV | [fermionic_interference_phase_sweep_v2.csv](fermionic_interference_reflection_result_v2/fermionic_interference_phase_sweep_v2.csv) |
+| Relative-dynamics CSV | [fermionic_interference_relative_dynamics_v2.csv](fermionic_interference_reflection_result_v2/fermionic_interference_relative_dynamics_v2.csv) |
+| One-sided scattering CSV | [fermionic_interference_single_sided_scattering_v2.csv](fermionic_interference_reflection_result_v2/fermionic_interference_single_sided_scattering_v2.csv) |
+| Reversibility CSV | [fermionic_interference_reversibility_sweep_v2.csv](fermionic_interference_reflection_result_v2/fermionic_interference_reversibility_sweep_v2.csv) |
+| AB/C replacement CSV | [fermionic_interference_ab_c_replacement_timeline_v2.csv](fermionic_interference_reflection_result_v2/fermionic_interference_ab_c_replacement_timeline_v2.csv) |
+| Exchange-interference node figure | [fermionic_interference_phase_sweep_v2.png](fermionic_interference_reflection_result_v2/fermionic_interference_phase_sweep_v2.png) |
+| Relative-dynamics figure | [fermionic_interference_relative_dynamics_v2.png](fermionic_interference_reflection_result_v2/fermionic_interference_relative_dynamics_v2.png) |
+| One-sided scattering figure | [fermionic_interference_single_sided_scattering_v2.png](fermionic_interference_reflection_result_v2/fermionic_interference_single_sided_scattering_v2.png) |
+| AB/C replacement figure | [fermionic_interference_ab_c_replacement_v2.png](fermionic_interference_reflection_result_v2/fermionic_interference_ab_c_replacement_v2.png) |
 
 The execution command is:
 
 ```text
-python3 run_fermionic_interference_reflection_v1.py
+python3 run_fermionic_interference_reflection_v2.py
 ```
 
 This implementation does not use external direction-reversal substitution. The verdict in the result JSON is:

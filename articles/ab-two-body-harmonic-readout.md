@@ -10,9 +10,13 @@ AB二体閉鎖位相系における、調和読出しと `c=1` 面積スイー�
 
 論文本体:
 
-- Version DOI: https://doi.org/10.5281/zenodo.21318697
+- Version DOI: https://doi.org/10.5281/zenodo.21332876
 - Concept DOI: https://doi.org/10.5281/zenodo.21318696
 - GitHub: https://github.com/WurabeSeiji/ai-chat-logs-open
+
+## v2更新
+
+2026-07-13に、AB中心相互作用へフェルミオン様反跳写像を追加した v2 を公開しました。加速度様の調和読出しと `chi-tau` 面が保たれることを確認しています。
 
 ## 何を試したか
 

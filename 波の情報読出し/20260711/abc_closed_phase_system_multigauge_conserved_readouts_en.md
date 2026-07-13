@@ -1,11 +1,13 @@
-# Construction Experiment of Multigauge Interference Readout Conserved Quantities in an ABC Closed Phase System
+# Construction Experiment of Multigauge Interference Readout Conserved Quantities in an ABC Closed Phase System v2
 
 **Subtitle:** Numerical construction of mass-like, momentum-like, and energy-like quantities using `p_read`, `E_read`, `R_read`, and `R*p`, `R*p^2` conserving maps
 **Date:** 2026-07-11
 **Author:** Noriaki Kihara
 **Position:** Additional paper in the Wave Information Readout series
-**Version DOI:** 10.5281/zenodo.21308050
+**Version DOI:** 10.5281/zenodo.21332875
 **Concept DOI:** 10.5281/zenodo.21308049
+
+V2 recalculates the same conditions after changing the formula for the fermion-like reflection map.
 
 ---
 
@@ -294,7 +296,7 @@ and performs a single ABC collision.
 The execution script is:
 
 ```text
-run_abc_multigauge_interference_readout_v1.py
+run_abc_multigauge_interference_readout_v2.py
 ```
 
 The results were:
@@ -326,7 +328,7 @@ The same readout mechanism was then applied to eight AB collisions.
 The execution script is:
 
 ```text
-run_abc_multigauge_interference_readout_multi_collision_v1.py
+run_abc_multigauge_interference_readout_multi_collision_v2.py
 ```
 
 The results were:
@@ -357,7 +359,7 @@ Readout robustness was tested with five gauge families, varying readout centers,
 The execution script is:
 
 ```text
-run_abc_multigauge_interference_readout_robustness_sweep_v1.py
+run_abc_multigauge_interference_readout_robustness_sweep_v2.py
 ```
 
 The results were:
@@ -407,7 +409,7 @@ Therefore, under asymmetric `R` conditions, one must diagnose whether simple rev
 The execution script is:
 
 ```text
-run_abc_multigauge_interference_readout_asymmetric_amplitude_sweep_v1.py
+run_abc_multigauge_interference_readout_asymmetric_amplitude_sweep_v2.py
 ```
 
 The results were:
@@ -484,7 +486,7 @@ What is confirmed in this paper is that this conservation-condition-based local 
 The execution script is:
 
 ```text
-run_abc_multigauge_generalized_elastic_collision_readout_v1.py
+run_abc_multigauge_generalized_elastic_collision_readout_v2.py
 ```
 
 Eight amplitude conditions were verified.
@@ -524,7 +526,7 @@ This section uses non-unit and asymmetric initial phase gradients and includes b
 The execution script is:
 
 ```text
-run_abc_multigauge_generalized_elastic_collision_velocity_sweep_v1.py
+run_abc_multigauge_generalized_elastic_collision_velocity_sweep_v2.py
 ```
 
 Nine initial conditions were verified.
@@ -564,7 +566,7 @@ Wall reflection is an auxiliary condition used only to make the particles encoun
 The execution script is:
 
 ```text
-run_abc_multigauge_generalized_elastic_collision_multi_collision_v1.py
+run_abc_multigauge_generalized_elastic_collision_multi_collision_v2.py
 ```
 
 Four conditions were executed, each with six AB collisions.
@@ -609,7 +611,7 @@ This does not claim measurement validity under arbitrary noise. It is a controll
 The execution script is:
 
 ```text
-run_abc_multigauge_generalized_elastic_collision_noise_robustness_v1.py
+run_abc_multigauge_generalized_elastic_collision_noise_robustness_v2.py
 ```
 
 Four cases, two noise modes, and six noise levels were tested.
@@ -659,7 +661,7 @@ R_B/R_A = 64.0.
 The execution script is:
 
 ```text
-run_abc_multigauge_generalized_elastic_collision_extreme_R_sweep_v1.py
+run_abc_multigauge_generalized_elastic_collision_extreme_R_sweep_v2.py
 ```
 
 The results were:
@@ -693,7 +695,7 @@ Nine experiments were integrated.
 The execution script is:
 
 ```text
-run_abc_multigauge_readout_integration_summary_v1.py
+run_abc_multigauge_readout_integration_summary_v2.py
 ```
 
 The integrated verdict was:
@@ -860,131 +862,131 @@ This is not an identification with standard physical quantities. It is, however,
 ## A.1 Single ABC Multigauge Readout
 
 ```text
-python3 run_abc_multigauge_interference_readout_v1.py
+python3 run_abc_multigauge_interference_readout_v2.py
 ```
 
 Output:
 
 ```text
-abc_multigauge_interference_readout_result_v1/
+abc_multigauge_interference_readout_result_v2/
 ```
 
 Main files:
 
 | Type | File |
 |---|---|
-| Report | [abc_multigauge_interference_readout_report_v1.md](abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_report_v1.md) |
-| JSON | [abc_multigauge_interference_readout_result_v1.json](abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_result_v1.json) |
-| Gauge CSV | [abc_multigauge_interference_readout_gauge_sweep_v1.csv](abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_gauge_sweep_v1.csv) |
-| p/E/R figure | [abc_multigauge_interference_readout_invariants_v1.png](abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_invariants_v1.png) |
-| t/R separation figure | [abc_multigauge_interference_readout_tr_separation_v1.png](abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_tr_separation_v1.png) |
+| Report | [abc_multigauge_interference_readout_report_v2.md](abc_multigauge_interference_readout_result_v2/abc_multigauge_interference_readout_report_v2.md) |
+| JSON | [abc_multigauge_interference_readout_result_v2.json](abc_multigauge_interference_readout_result_v2/abc_multigauge_interference_readout_result_v2.json) |
+| Gauge CSV | [abc_multigauge_interference_readout_gauge_sweep_v2.csv](abc_multigauge_interference_readout_result_v2/abc_multigauge_interference_readout_gauge_sweep_v2.csv) |
+| p/E/R figure | [abc_multigauge_interference_readout_invariants_v2.png](abc_multigauge_interference_readout_result_v2/abc_multigauge_interference_readout_invariants_v2.png) |
+| t/R separation figure | [abc_multigauge_interference_readout_tr_separation_v2.png](abc_multigauge_interference_readout_result_v2/abc_multigauge_interference_readout_tr_separation_v2.png) |
 
 ## A.2 Symmetric Multiple Collisions
 
 ```text
-python3 run_abc_multigauge_interference_readout_multi_collision_v1.py
+python3 run_abc_multigauge_interference_readout_multi_collision_v2.py
 ```
 
 Output:
 
 ```text
-abc_multigauge_interference_readout_multi_collision_result_v1/
+abc_multigauge_interference_readout_multi_collision_result_v2/
 ```
 
 ## A.3 Readout-Gauge Robustness
 
 ```text
-python3 run_abc_multigauge_interference_readout_robustness_sweep_v1.py
+python3 run_abc_multigauge_interference_readout_robustness_sweep_v2.py
 ```
 
 Output:
 
 ```text
-abc_multigauge_interference_readout_robustness_sweep_result_v1/
+abc_multigauge_interference_readout_robustness_sweep_result_v2/
 ```
 
 ## A.4 Asymmetric Amplitude Diagnostic
 
 ```text
-python3 run_abc_multigauge_interference_readout_asymmetric_amplitude_sweep_v1.py
+python3 run_abc_multigauge_interference_readout_asymmetric_amplitude_sweep_v2.py
 ```
 
 Output:
 
 ```text
-abc_multigauge_interference_readout_asymmetric_amplitude_sweep_result_v1/
+abc_multigauge_interference_readout_asymmetric_amplitude_sweep_result_v2/
 ```
 
 ## A.5 Generalized Elastic Collision Map
 
 ```text
-python3 run_abc_multigauge_generalized_elastic_collision_readout_v1.py
+python3 run_abc_multigauge_generalized_elastic_collision_readout_v2.py
 ```
 
 Output:
 
 ```text
-abc_multigauge_generalized_elastic_collision_readout_result_v1/
+abc_multigauge_generalized_elastic_collision_readout_result_v2/
 ```
 
 ## A.6 Asymmetric Velocity Sweep
 
 ```text
-python3 run_abc_multigauge_generalized_elastic_collision_velocity_sweep_v1.py
+python3 run_abc_multigauge_generalized_elastic_collision_velocity_sweep_v2.py
 ```
 
 Output:
 
 ```text
-abc_multigauge_generalized_elastic_collision_velocity_sweep_result_v1/
+abc_multigauge_generalized_elastic_collision_velocity_sweep_result_v2/
 ```
 
 ## A.7 Generalized Multiple Collisions
 
 ```text
-python3 run_abc_multigauge_generalized_elastic_collision_multi_collision_v1.py
+python3 run_abc_multigauge_generalized_elastic_collision_multi_collision_v2.py
 ```
 
 Output:
 
 ```text
-abc_multigauge_generalized_elastic_collision_multi_collision_result_v1/
+abc_multigauge_generalized_elastic_collision_multi_collision_result_v2/
 ```
 
 ## A.8 Readout-Noise Robustness
 
 ```text
-python3 run_abc_multigauge_generalized_elastic_collision_noise_robustness_v1.py
+python3 run_abc_multigauge_generalized_elastic_collision_noise_robustness_v2.py
 ```
 
 Output:
 
 ```text
-abc_multigauge_generalized_elastic_collision_noise_robustness_result_v1/
+abc_multigauge_generalized_elastic_collision_noise_robustness_result_v2/
 ```
 
 ## A.9 Extreme R-Ratio Sweep
 
 ```text
-python3 run_abc_multigauge_generalized_elastic_collision_extreme_R_sweep_v1.py
+python3 run_abc_multigauge_generalized_elastic_collision_extreme_R_sweep_v2.py
 ```
 
 Output:
 
 ```text
-abc_multigauge_generalized_elastic_collision_extreme_R_sweep_result_v1/
+abc_multigauge_generalized_elastic_collision_extreme_R_sweep_result_v2/
 ```
 
 ## A.10 Integration Summary
 
 ```text
-python3 run_abc_multigauge_readout_integration_summary_v1.py
+python3 run_abc_multigauge_readout_integration_summary_v2.py
 ```
 
 Output:
 
 ```text
-abc_multigauge_readout_integration_summary_result_v1/
+abc_multigauge_readout_integration_summary_result_v2/
 ```
 
 ---
@@ -995,16 +997,16 @@ abc_multigauge_readout_integration_summary_result_v1/
 |---|---|
 | Definitional supplement | [全正符号ゼロ閉鎖の読出し多重性に関する定義補足.md](全正符号ゼロ閉鎖の読出し多重性に関する定義補足.md) |
 | Specification policy | [現在チャットメモ_多ゲージ干渉読出し仕様方針.md](現在チャットメモ_多ゲージ干渉読出し仕様方針.md) |
-| Single readout verification | [ABC完全弾性衝突における多ゲージ干渉読出し数値検証メモ_v1.md](ABC完全弾性衝突における多ゲージ干渉読出し数値検証メモ_v1.md) |
-| Symmetric repeated collision | [ABC多ゲージ干渉読出しの複数回衝突検証メモ_v1.md](ABC多ゲージ干渉読出しの複数回衝突検証メモ_v1.md) |
-| Readout-gauge robustness | [ABC多ゲージ干渉読出しの読出し器頑健性スイープ検証メモ_v1.md](ABC多ゲージ干渉読出しの読出し器頑健性スイープ検証メモ_v1.md) |
-| Asymmetric amplitude diagnostic | [ABC多ゲージ干渉読出しの非対称振幅診断スイープ検証メモ_v1.md](ABC多ゲージ干渉読出しの非対称振幅診断スイープ検証メモ_v1.md) |
-| Generalized map | [ABC多ゲージ干渉読出しによる一般化弾性衝突写像検証メモ_v1.md](ABC多ゲージ干渉読出しによる一般化弾性衝突写像検証メモ_v1.md) |
-| Asymmetric velocity | [ABC多ゲージ干渉読出しによる一般化弾性衝突の非対称速度スイープ検証メモ_v1.md](ABC多ゲージ干渉読出しによる一般化弾性衝突の非対称速度スイープ検証メモ_v1.md) |
-| Generalized multiple collision | [ABC多ゲージ干渉読出しによる一般化弾性衝突の複数回衝突検証メモ_v1.md](ABC多ゲージ干渉読出しによる一般化弾性衝突の複数回衝突検証メモ_v1.md) |
-| Noise robustness | [ABC多ゲージ干渉読出しによる一般化弾性衝突の読出しノイズ頑健性検証メモ_v1.md](ABC多ゲージ干渉読出しによる一般化弾性衝突の読出しノイズ頑健性検証メモ_v1.md) |
-| Extreme R ratio | [ABC多ゲージ干渉読出しによる一般化弾性衝突の極端R比スイープ検証メモ_v1.md](ABC多ゲージ干渉読出しによる一般化弾性衝突の極端R比スイープ検証メモ_v1.md) |
-| Integration summary | [ABC多ゲージ干渉読出し実験群の統合サマリー_v1.md](ABC多ゲージ干渉読出し実験群の統合サマリー_v1.md) |
+| Single readout verification | [ABC完全弾性衝突における多ゲージ干渉読出し数値検証メモ_v2.md](ABC完全弾性衝突における多ゲージ干渉読出し数値検証メモ_v2.md) |
+| Symmetric repeated collision | [ABC多ゲージ干渉読出しの複数回衝突検証メモ_v2.md](ABC多ゲージ干渉読出しの複数回衝突検証メモ_v2.md) |
+| Readout-gauge robustness | [ABC多ゲージ干渉読出しの読出し器頑健性スイープ検証メモ_v2.md](ABC多ゲージ干渉読出しの読出し器頑健性スイープ検証メモ_v2.md) |
+| Asymmetric amplitude diagnostic | [ABC多ゲージ干渉読出しの非対称振幅診断スイープ検証メモ_v2.md](ABC多ゲージ干渉読出しの非対称振幅診断スイープ検証メモ_v2.md) |
+| Generalized map | [ABC多ゲージ干渉読出しによる一般化弾性衝突写像検証メモ_v2.md](ABC多ゲージ干渉読出しによる一般化弾性衝突写像検証メモ_v2.md) |
+| Asymmetric velocity | [ABC多ゲージ干渉読出しによる一般化弾性衝突の非対称速度スイープ検証メモ_v2.md](ABC多ゲージ干渉読出しによる一般化弾性衝突の非対称速度スイープ検証メモ_v2.md) |
+| Generalized multiple collision | [ABC多ゲージ干渉読出しによる一般化弾性衝突の複数回衝突検証メモ_v2.md](ABC多ゲージ干渉読出しによる一般化弾性衝突の複数回衝突検証メモ_v2.md) |
+| Noise robustness | [ABC多ゲージ干渉読出しによる一般化弾性衝突の読出しノイズ頑健性検証メモ_v2.md](ABC多ゲージ干渉読出しによる一般化弾性衝突の読出しノイズ頑健性検証メモ_v2.md) |
+| Extreme R ratio | [ABC多ゲージ干渉読出しによる一般化弾性衝突の極端R比スイープ検証メモ_v2.md](ABC多ゲージ干渉読出しによる一般化弾性衝突の極端R比スイープ検証メモ_v2.md) |
+| Integration summary | [ABC多ゲージ干渉読出し実験群の統合サマリー_v2.md](ABC多ゲージ干渉読出し実験群の統合サマリー_v2.md) |
 
 ---
 
@@ -1014,9 +1016,9 @@ abc_multigauge_readout_integration_summary_result_v1/
 
 1. Noriaki Kihara, "Basic Axiom System v2 of the Nameless Equal-Amplitude Composite Wave Model," 2026-07-10.
 2. Noriaki Kihara, "Definitional Supplement on Readout Multiplicity of the All-Positive Zero Closure," 2026-07-11.
-3. Noriaki Kihara, "Construction Experiment of Complete Elastic Reflection of Fermionic Bilocal Waves in a Closed Phase System Without Assuming Background Space," Version DOI: `10.5281/zenodo.21291020`, Concept DOI: `10.5281/zenodo.21291018`, 2026.
-4. Noriaki Kihara, "Interference Construction of a Perfect Reflection Map from a Fermionic Inverse-Phase Core," Version DOI: `10.5281/zenodo.21295480`, Concept DOI: `10.5281/zenodo.21295479`, 2026.
-5. Noriaki Kihara, "Curvature Renormalization and Perfect-Reflection Stability by Curved Closed Stationary Waves," Version DOI: `10.5281/zenodo.21304040`, Concept DOI: `10.5281/zenodo.21304039`, 2026.
+3. Noriaki Kihara, "Construction Experiment of Complete Elastic Reflection of Fermionic Bilocal Waves in a Closed Phase System Without Assuming Background Space," Version DOI: `10.5281/zenodo.21332866`, Concept DOI: `10.5281/zenodo.21291018`, 2026.
+4. Noriaki Kihara, "Interference Construction of a Perfect Reflection Map from a Fermionic Inverse-Phase Core," Version DOI: `10.5281/zenodo.21332867`, Concept DOI: `10.5281/zenodo.21295479`, 2026.
+5. Noriaki Kihara, "Curvature Renormalization and Perfect-Reflection Stability by Curved Closed Stationary Waves," Version DOI: `10.5281/zenodo.21332874`, Concept DOI: `10.5281/zenodo.21304039`, 2026.
 
 ## External References
 

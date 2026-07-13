@@ -1,10 +1,12 @@
-# AB二体閉鎖位相系における調和読出しとc=1面積スイープ予備実験総括 v1
+# AB二体閉鎖位相系における調和読出しとc=1面積スイープ予備実験総括 v2
 
 **日付:** 2026-07-12
 **著者:** 木原 範昭
 **位置づけ:** 波の情報読出しシリーズ・AB二体予備実験群の総括
-**Version DOI:** 10.5281/zenodo.21318697
+**Version DOI:** 10.5281/zenodo.21332876
 **Concept DOI:** 10.5281/zenodo.21318696
+
+V2では、フェルミオン型反跳写像を組み込んだAB二体加速度読出しプロトコルを追加する。
 
 ---
 
@@ -18,6 +20,12 @@
 4. `c=1` 内部較正パラメータスイープ
 5. `chi-tau` 面積逆数補償診断
 6. `chi-tau` ネイティブ逆面積拡張スイープ
+
+V2では、上記の文脈と主張を変えず、同じAB二体加速度読出しにフェルミオン型反跳写像を組み込む追加プロトコルを置く。
+
+この追加プロトコルは、波束の即時収縮、AB非対称化、倍音移乗、局在性移乗を検査するものではない。
+
+目的は、現在のAB二体調和読出しの仮定範囲で、中心近傍の相互作用を通過型ではなくフェルミオン型反跳型として扱った場合にも、加速度様読出しが同じ実験枠で評価できるかを確認することである。
 
 結論は次である。
 
@@ -72,6 +80,7 @@ L_AB
 | 4 | `c=1` パラメータスイープ | `c=1` が面積成立の十分条件か | 十分条件ではない |
 | 5 | 逆面積補償診断 | `1/A_chi_tau` が native に出るか | 未検出 |
 | 6 | native 逆面積拡張スイープ | 広い条件で `alpha≈2` が出るか | native では未検出 |
+| 7 | V2フェルミオン型反跳プロトコル | AB中心近傍に反跳写像を入れて加速度様読出しを再検査 | `q_out_factor=-1`; 調和読出しと `chi-tau` 面を維持 |
 
 ---
 
@@ -362,9 +371,212 @@ native inverse-area scaling は未検出
 
 ---
 
-## 8. 総合判定
+## 8. V2追加: フェルミオン型反跳を組み込んだ調和読出し
 
-### 8.1 成立したこと
+### 8.1 目的
+
+V1の一角度調和読出しでは、AB二体の相対位相発展を連続的に読み、ラベルなし読出しとして Protocol F/B が縮退することを確認した。
+
+V2では、この文脈を変えず、中心近傍の相互作用にフェルミオン型反跳写像を組み込む。
+
+ここで検査するのは、反跳写像を入れた場合にも、AB二体関係 `f_AB` から加速度様に見える調和読出しを同じ形式で評価できるかである。
+
+本節では、次を扱わない。
+
+```text
+ABの非対称化
+低局在性極限
+即時収縮
+倍音移乗
+局在性移乗
+```
+
+これらは、別系列の波束集束実験で扱う。
+
+本V2では、あくまで現在のAB二体加速度読出しの仮定範囲で、通過型の中心読出しに加えて、フェルミオン型反跳プロトコルを追加する。
+
+### 8.2 反跳写像
+
+右向き入射チャネルと左向き入射チャネルを、
+
+```math
+\Psi^{\mathrm{in}}
+=
+\begin{pmatrix}
+\psi_+^{\mathrm{in}}\\
+\psi_-^{\mathrm{in}}
+\end{pmatrix}
+```
+
+とする。
+
+フェルミオン型交換位相を `Delta_F` とし、透過振幅と反射振幅を、
+
+```math
+t_\Delta
+=
+e^{i\Delta_F/2}
+\cos\frac{\Delta_F}{2}
+```
+
+```math
+r_\Delta
+=
+-i e^{i\Delta_F/2}
+\sin\frac{\Delta_F}{2}
+```
+
+と定義する。
+
+二チャネル散乱行列は、
+
+```math
+S_\Delta
+=
+\begin{pmatrix}
+t_\Delta & r_\Delta\\
+r_\Delta & t_\Delta
+\end{pmatrix}
+```
+
+であり、出射チャネルを、
+
+```math
+\Psi^{\mathrm{out}}
+=
+S_\Delta
+\Psi^{\mathrm{in}}
+```
+
+として読む。
+
+すなわち、
+
+```math
+\psi_+^{\mathrm{out}}
+=
+t_\Delta \psi_+^{\mathrm{in}}
++
+r_\Delta \psi_-^{\mathrm{in}}
+```
+
+```math
+\psi_-^{\mathrm{out}}
+=
+r_\Delta \psi_+^{\mathrm{in}}
++
+t_\Delta \psi_-^{\mathrm{in}}
+```
+
+である。
+
+完全反跳条件では、
+
+```math
+\Delta_F=\pi
+```
+
+であり、
+
+```text
+透過振幅 t_Delta = 0
+反射振幅 r_Delta = 1
+```
+
+に相当する。
+
+このとき、出射チャネルは入射チャネルの交換として読まれる。
+
+### 8.3 実験前の判定基準
+
+V2追加プロトコルでは、少なくとも次を確認する。
+
+| 項目 | 判定対象 |
+|---|---|
+| 反跳後の閉鎖残差 | `Q_closed` が破綻しないこと |
+| 調和読出し | `D_AB`, `V_AB`, `f_AB` の調和構造が維持されること |
+| 読出し漏れ応答 | 読出し停止時と強読出し時の差がV1と同じ規律を持つこと |
+| Protocol比較 | 通過型・表示反跳型・フェルミオン型反跳型の差分が記録されること |
+| `chi-tau` 面 | 独立 `tau_read` による面積読出しを壊さないこと |
+
+### 8.4 主結果
+
+| 量 | 値 |
+|---|---:|
+| `harmonic_case_count` | `48` |
+| `c1_case_count` | `144` |
+| `scattering_protocol_count` | `3` |
+| `fermionic_delta_f` | `3.141592653589793` |
+| `fermionic_reflection_rate` | `1.0` |
+| `fermionic_transmission_rate` | `3.749399456654644e-33` |
+| `fermionic_q_out_factor` | `-1.0` |
+| `max_Q_closed_abs` | `0.0` |
+| `fermionic_regular_cell_harmonic_consistent_nonstrong_modes` | `True` |
+| `fermionic_strong_readout_perturbs_harmonic_projection` | `True` |
+| `fermionic_max_f_AB_projection_error_regular_nonstrong` | `2.2756072064285173e-6` |
+| `fermionic_max_f_AB_projection_error_regular_strong` | `9.072436576166722e-6` |
+| `fermionic_reflection_event_cell_count_total` | `720` |
+| `label_free_pass_vs_fermionic_match_all_cases` | `True` |
+| `label_free_display_vs_fermionic_match_all_cases` | `True` |
+| `readout_off_decay_max_abs` | `4.4544900995234305e-18` |
+| `readout_strong_decay_min_abs` | `4.0004000533409075e-4` |
+| `fermionic_tau_disabled_max_area` | `0.0` |
+| `fermionic_tau_locked_max_area` | `0.0` |
+| `fermionic_tau_independent_min_area` | `0.00375268307733001` |
+| `fermionic_c1_readout_off_max_epsilon_c_abs` | `2.3314683517128287e-15` |
+| `fermionic_c1_area_sweep_detected_all_cases` | `True` |
+| `tau_is_step_used_any` | `False` |
+| `external_c_used_any` | `False` |
+| `f_A_or_f_B_used_any` | `False` |
+
+結果は次のように読める。
+
+```text
+フェルミオン型反跳写像は、
+Delta_F = pi において R=1, T≈0, q_out_factor=-1 を与えた。
+```
+
+また、フェルミオン型反跳は座標の折返し表示ではなく、出射チャネル交換として実装した。
+
+そのため、ラベルなし読出し `D_AB`, `V_AB` は、V1の通過型読出しと一致した。
+
+これは、V1で確認した Protocol F/B 縮退と整合する。
+
+一方で、表示上だけ折り返す `display_reflection` も対照として記録した。
+
+この表示反跳とフェルミオン型反跳も、ラベルなし `D_AB`, `V_AB` では一致した。
+
+調和読出しについては、V1と同じく、非 `readout_strong` 条件では射影整合性が保たれた。
+
+強読出しでは射影歪みが出たが、これはV1の読出し波摂動と同じ性質であり、反跳写像固有の破綻ではない。
+
+`chi-tau` 面についても、
+
+```text
+tau disabled: 面積なし
+tau locked: 面積なし
+tau independent c1: 面積あり
+```
+
+が維持された。
+
+したがって、フェルミオン型反跳写像をAB二体加速度読出しへ組み込んでも、現在の仮定範囲では、加速度様調和読出しと `chi-tau` 面積読出しは壊れない。
+
+### 8.5 図
+
+| Protocol 比較 | チャネル状態 |
+|---|---|
+| <img src="ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v2/ab_two_body_fermionic_reflection_protocol_comparison_v2.png" width="520"> | <img src="ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v2/ab_two_body_fermionic_reflection_channel_state_v2.png" width="520"> |
+
+| 読出し減衰 | `chi-tau` 経路 |
+|---|---|
+| <img src="ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v2/ab_two_body_fermionic_reflection_readout_decay_v2.png" width="520"> | <img src="ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v2/ab_two_body_fermionic_reflection_c1_chi_tau_v2.png" width="520"> |
+
+---
+
+## 9. 総合判定
+
+### 9.1 成立したこと
 
 | 項目 | 判定 |
 |---|---|
@@ -375,8 +587,11 @@ native inverse-area scaling は未検出
 | 独立 `tau_read` により `chi-tau` 面積を読む | 成立 |
 | `c=1` が必要条件候補であることを確認 | 成立 |
 | 後処理 `1/A_chi_tau` が `alpha≈2` を示す | 成立 |
+| フェルミオン型反跳写像で `q_out_factor=-1` を読む | 成立 |
+| フェルミオン型反跳を入れてもラベルなし `D_AB`, `V_AB` がV1と一致 | 成立 |
+| フェルミオン型反跳を入れても独立 `tau_read` の `chi-tau` 面が維持される | 成立 |
 
-### 8.2 成立していないこと
+### 9.2 成立していないこと
 
 | 項目 | 判定 |
 |---|---|
@@ -389,7 +604,7 @@ native inverse-area scaling は未検出
 
 ---
 
-## 9. 解釈
+## 10. 解釈
 
 AB二体系の最大の成果は、次の二点である。
 
@@ -439,9 +654,15 @@ AB二体の中では、A と B は互いを通じてしか読めない。
 距離指数読出しは、AB二体だけでは判別不能である。
 ```
 
+V2追加プロトコルでは、中心近傍にフェルミオン型反跳写像を入れても、この判定は変わらなかった。
+
+反跳写像は `q_out_factor=-1` として読めたが、ラベルなし `D_AB`, `V_AB` はV1の通過型読出しと一致した。
+
+これは、AB二体の無名読出しでは、反跳型と通過型が同じ相対読出しとして縮退するというV1の結果を、散乱行列版の反跳写像でも確認したことを意味する。
+
 ---
 
-## 10. 次の実験への接続
+## 11. 次の実験への接続
 
 この総括から導かれる次の段階は、ABC三体系である。
 
@@ -475,7 +696,7 @@ f_AB, f_AC, f_BC を円周方向候補として分離できるか
 ## 自己引用
 
 1. 木原範昭「無名等振幅複合波モデル基本公理系 v4」Version DOI: `10.5281/zenodo.21316620`, Concept DOI: `10.5281/zenodo.21315735`, 2026.
-2. 木原範昭「ABC閉鎖位相系における多ゲージ干渉読出し保存量の構成実験」Version DOI: `10.5281/zenodo.21308050`, Concept DOI: `10.5281/zenodo.21308049`, 2026.
+2. 木原範昭「ABC閉鎖位相系における多ゲージ干渉読出し保存量の構成実験」Version DOI: `10.5281/zenodo.21332875`, Concept DOI: `10.5281/zenodo.21308049`, 2026.
 3. 木原範昭, [AB二体閉鎖位相系におけるラベルなし二弧相対位相と調和読出しに関する定義補足.md](AB二体閉鎖位相系におけるラベルなし二弧相対位相と調和読出しに関する定義補足.md), 2026.
 4. 木原範昭, [AB二体閉鎖位相系における一角度円周位相調和読出し実験仕様書 v1.md](AB二体閉鎖位相系における一角度円周位相調和読出し実験仕様書%20v1.md), 2026.
 5. 木原範昭, [AB二体閉鎖位相系におけるc=1内部較正と空間位相・時間位相面積スイープ読出し実験仕様書 v1.md](AB二体閉鎖位相系におけるc=1内部較正と空間位相・時間位相面積スイープ読出し実験仕様書%20v1.md), 2026.

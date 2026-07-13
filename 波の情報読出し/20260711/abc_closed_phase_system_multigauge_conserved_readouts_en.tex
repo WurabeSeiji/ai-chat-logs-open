@@ -3,6 +3,7 @@
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{space}{xeCJK}
 \documentclass[
+  a4paper,
 ]{article}
 \usepackage{xcolor}
 \usepackage[margin=24mm]{geometry}
@@ -25,6 +26,10 @@
   \ifXeTeX
     \usepackage{xeCJK}
     \setCJKmainfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{HaranoAjiMincho-Regular.otf}
   \fi
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
@@ -108,18 +113,19 @@
 \begin{document}
 
 \section{Construction Experiment of Multigauge Interference Readout
-Conserved Quantities in an ABC Closed Phase
-System}\label{construction-experiment-of-multigauge-interference-readout-conserved-quantities-in-an-abc-closed-phase-system}
+Conserved Quantities in an ABC Closed Phase System
+v2}\label{construction-experiment-of-multigauge-interference-readout-conserved-quantities-in-an-abc-closed-phase-system-v2}
 
 \textbf{Subtitle:} Numerical construction of mass-like, momentum-like,
 and energy-like quantities using \texttt{p\_read}, \texttt{E\_read},
-\texttt{R\_read}, and \texttt{R*p}, \texttt{R*p\^{}2} conserving maps\\
-\textbf{Date:} 2026-07-11\\
-\textbf{Author:} Noriaki Kihara\\
+\texttt{R\_read}, and \texttt{R*p}, \texttt{R*p\^{}2} conserving maps
+\textbf{Date:} 2026-07-11 \textbf{Author:} Noriaki Kihara
 \textbf{Position:} Additional paper in the Wave Information Readout
-series\\
-\textbf{Version DOI:} 10.5281/zenodo.21308050\\
-\textbf{Concept DOI:} 10.5281/zenodo.21308049
+series \textbf{Version DOI:} 10.5281/zenodo.21332875 \textbf{Concept
+DOI:} 10.5281/zenodo.21308049
+
+V2 recalculates the same conditions after changing the formula for the
+fermion-like reflection map.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -582,7 +588,7 @@ The execution script is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_abc\_multigauge\_interference\_readout\_v1.py}
+\NormalTok{run\_abc\_multigauge\_interference\_readout\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -626,7 +632,7 @@ The execution script is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_abc\_multigauge\_interference\_readout\_multi\_collision\_v1.py}
+\NormalTok{run\_abc\_multigauge\_interference\_readout\_multi\_collision\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -671,7 +677,7 @@ The execution script is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_abc\_multigauge\_interference\_readout\_robustness\_sweep\_v1.py}
+\NormalTok{run\_abc\_multigauge\_interference\_readout\_robustness\_sweep\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -745,7 +751,7 @@ The execution script is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_abc\_multigauge\_interference\_readout\_asymmetric\_amplitude\_sweep\_v1.py}
+\NormalTok{run\_abc\_multigauge\_interference\_readout\_asymmetric\_amplitude\_sweep\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -855,7 +861,7 @@ The execution script is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_readout\_v1.py}
+\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_readout\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -912,7 +918,7 @@ The execution script is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_velocity\_sweep\_v1.py}
+\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_velocity\_sweep\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -970,7 +976,7 @@ The execution script is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_multi\_collision\_v1.py}
+\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_multi\_collision\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1036,7 +1042,7 @@ The execution script is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_noise\_robustness\_v1.py}
+\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_noise\_robustness\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1106,7 +1112,7 @@ The execution script is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_extreme\_R\_sweep\_v1.py}
+\NormalTok{run\_abc\_multigauge\_generalized\_elastic\_collision\_extreme\_R\_sweep\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1154,7 +1160,7 @@ The execution script is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_abc\_multigauge\_readout\_integration\_summary\_v1.py}
+\NormalTok{run\_abc\_multigauge\_readout\_integration\_summary\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1445,7 +1451,7 @@ Readout}\label{a.1-single-abc-multigauge-readout}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_abc\_multigauge\_interference\_readout\_v1.py}
+\NormalTok{python3 run\_abc\_multigauge\_interference\_readout\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1453,7 +1459,7 @@ Output:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{abc\_multigauge\_interference\_readout\_result\_v1/}
+\NormalTok{abc\_multigauge\_interference\_readout\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1474,15 +1480,15 @@ File
 \bottomrule\noalign{}
 \endlastfoot
 Report &
-\href{abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_report_v1.md}{abc\_multigauge\_interference\_readout\_report\_v1.md} \\
+\href{abc_multigauge_interference_readout_result_v2/abc_multigauge_interference_readout_report_v2.md}{abc\_multigauge\_interference\_readout\_report\_v2.md} \\
 JSON &
-\href{abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_result_v1.json}{abc\_multigauge\_interference\_readout\_result\_v1.json} \\
+\href{abc_multigauge_interference_readout_result_v2/abc_multigauge_interference_readout_result_v2.json}{abc\_multigauge\_interference\_readout\_result\_v2.json} \\
 Gauge CSV &
-\href{abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_gauge_sweep_v1.csv}{abc\_multigauge\_interference\_readout\_gauge\_sweep\_v1.csv} \\
+\href{abc_multigauge_interference_readout_result_v2/abc_multigauge_interference_readout_gauge_sweep_v2.csv}{abc\_multigauge\_interference\_readout\_gauge\_sweep\_v2.csv} \\
 p/E/R figure &
-\href{abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_invariants_v1.png}{abc\_multigauge\_interference\_readout\_invariants\_v1.png} \\
+\href{abc_multigauge_interference_readout_result_v2/abc_multigauge_interference_readout_invariants_v2.png}{abc\_multigauge\_interference\_readout\_invariants\_v2.png} \\
 t/R separation figure &
-\href{abc_multigauge_interference_readout_result_v1/abc_multigauge_interference_readout_tr_separation_v1.png}{abc\_multigauge\_interference\_readout\_tr\_separation\_v1.png} \\
+\href{abc_multigauge_interference_readout_result_v2/abc_multigauge_interference_readout_tr_separation_v2.png}{abc\_multigauge\_interference\_readout\_tr\_separation\_v2.png} \\
 \end{longtable}
 }
 
@@ -1491,7 +1497,7 @@ Collisions}\label{a.2-symmetric-multiple-collisions}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_abc\_multigauge\_interference\_readout\_multi\_collision\_v1.py}
+\NormalTok{python3 run\_abc\_multigauge\_interference\_readout\_multi\_collision\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1499,7 +1505,7 @@ Output:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{abc\_multigauge\_interference\_readout\_multi\_collision\_result\_v1/}
+\NormalTok{abc\_multigauge\_interference\_readout\_multi\_collision\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1508,7 +1514,7 @@ Robustness}\label{a.3-readout-gauge-robustness}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_abc\_multigauge\_interference\_readout\_robustness\_sweep\_v1.py}
+\NormalTok{python3 run\_abc\_multigauge\_interference\_readout\_robustness\_sweep\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1516,7 +1522,7 @@ Output:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{abc\_multigauge\_interference\_readout\_robustness\_sweep\_result\_v1/}
+\NormalTok{abc\_multigauge\_interference\_readout\_robustness\_sweep\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1525,7 +1531,7 @@ Diagnostic}\label{a.4-asymmetric-amplitude-diagnostic}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_abc\_multigauge\_interference\_readout\_asymmetric\_amplitude\_sweep\_v1.py}
+\NormalTok{python3 run\_abc\_multigauge\_interference\_readout\_asymmetric\_amplitude\_sweep\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1533,7 +1539,7 @@ Output:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{abc\_multigauge\_interference\_readout\_asymmetric\_amplitude\_sweep\_result\_v1/}
+\NormalTok{abc\_multigauge\_interference\_readout\_asymmetric\_amplitude\_sweep\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1542,7 +1548,7 @@ Map}\label{a.5-generalized-elastic-collision-map}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_readout\_v1.py}
+\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_readout\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1550,7 +1556,7 @@ Output:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_readout\_result\_v1/}
+\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_readout\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1559,7 +1565,7 @@ Sweep}\label{a.6-asymmetric-velocity-sweep}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_velocity\_sweep\_v1.py}
+\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_velocity\_sweep\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1567,7 +1573,7 @@ Output:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_velocity\_sweep\_result\_v1/}
+\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_velocity\_sweep\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1576,7 +1582,7 @@ Collisions}\label{a.7-generalized-multiple-collisions}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_multi\_collision\_v1.py}
+\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_multi\_collision\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1584,7 +1590,7 @@ Output:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_multi\_collision\_result\_v1/}
+\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_multi\_collision\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1593,7 +1599,7 @@ Robustness}\label{a.8-readout-noise-robustness}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_noise\_robustness\_v1.py}
+\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_noise\_robustness\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1601,7 +1607,7 @@ Output:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_noise\_robustness\_result\_v1/}
+\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_noise\_robustness\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1609,7 +1615,7 @@ Output:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_extreme\_R\_sweep\_v1.py}
+\NormalTok{python3 run\_abc\_multigauge\_generalized\_elastic\_collision\_extreme\_R\_sweep\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1617,7 +1623,7 @@ Output:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_extreme\_R\_sweep\_result\_v1/}
+\NormalTok{abc\_multigauge\_generalized\_elastic\_collision\_extreme\_R\_sweep\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1625,7 +1631,7 @@ Output:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_abc\_multigauge\_readout\_integration\_summary\_v1.py}
+\NormalTok{python3 run\_abc\_multigauge\_readout\_integration\_summary\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1633,7 +1639,7 @@ Output:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{abc\_multigauge\_readout\_integration\_summary\_result\_v1/}
+\NormalTok{abc\_multigauge\_readout\_integration\_summary\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1661,25 +1667,25 @@ Definitional supplement &
 Specification policy &
 \href{現在チャットメモ_多ゲージ干渉読出し仕様方針.md}{現在チャットメモ\_多ゲージ干渉読出し仕様方針.md} \\
 Single readout verification &
-\href{ABC完全弾性衝突における多ゲージ干渉読出し数値検証メモ_v1.md}{ABC完全弾性衝突における多ゲージ干渉読出し数値検証メモ\_v1.md} \\
+\href{ABC完全弾性衝突における多ゲージ干渉読出し数値検証メモ_v2.md}{ABC完全弾性衝突における多ゲージ干渉読出し数値検証メモ\_v2.md} \\
 Symmetric repeated collision &
-\href{ABC多ゲージ干渉読出しの複数回衝突検証メモ_v1.md}{ABC多ゲージ干渉読出しの複数回衝突検証メモ\_v1.md} \\
+\href{ABC多ゲージ干渉読出しの複数回衝突検証メモ_v2.md}{ABC多ゲージ干渉読出しの複数回衝突検証メモ\_v2.md} \\
 Readout-gauge robustness &
-\href{ABC多ゲージ干渉読出しの読出し器頑健性スイープ検証メモ_v1.md}{ABC多ゲージ干渉読出しの読出し器頑健性スイープ検証メモ\_v1.md} \\
+\href{ABC多ゲージ干渉読出しの読出し器頑健性スイープ検証メモ_v2.md}{ABC多ゲージ干渉読出しの読出し器頑健性スイープ検証メモ\_v2.md} \\
 Asymmetric amplitude diagnostic &
-\href{ABC多ゲージ干渉読出しの非対称振幅診断スイープ検証メモ_v1.md}{ABC多ゲージ干渉読出しの非対称振幅診断スイープ検証メモ\_v1.md} \\
+\href{ABC多ゲージ干渉読出しの非対称振幅診断スイープ検証メモ_v2.md}{ABC多ゲージ干渉読出しの非対称振幅診断スイープ検証メモ\_v2.md} \\
 Generalized map &
-\href{ABC多ゲージ干渉読出しによる一般化弾性衝突写像検証メモ_v1.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突写像検証メモ\_v1.md} \\
+\href{ABC多ゲージ干渉読出しによる一般化弾性衝突写像検証メモ_v2.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突写像検証メモ\_v2.md} \\
 Asymmetric velocity &
-\href{ABC多ゲージ干渉読出しによる一般化弾性衝突の非対称速度スイープ検証メモ_v1.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突の非対称速度スイープ検証メモ\_v1.md} \\
+\href{ABC多ゲージ干渉読出しによる一般化弾性衝突の非対称速度スイープ検証メモ_v2.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突の非対称速度スイープ検証メモ\_v2.md} \\
 Generalized multiple collision &
-\href{ABC多ゲージ干渉読出しによる一般化弾性衝突の複数回衝突検証メモ_v1.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突の複数回衝突検証メモ\_v1.md} \\
+\href{ABC多ゲージ干渉読出しによる一般化弾性衝突の複数回衝突検証メモ_v2.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突の複数回衝突検証メモ\_v2.md} \\
 Noise robustness &
-\href{ABC多ゲージ干渉読出しによる一般化弾性衝突の読出しノイズ頑健性検証メモ_v1.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突の読出しノイズ頑健性検証メモ\_v1.md} \\
+\href{ABC多ゲージ干渉読出しによる一般化弾性衝突の読出しノイズ頑健性検証メモ_v2.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突の読出しノイズ頑健性検証メモ\_v2.md} \\
 Extreme R ratio &
-\href{ABC多ゲージ干渉読出しによる一般化弾性衝突の極端R比スイープ検証メモ_v1.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突の極端R比スイープ検証メモ\_v1.md} \\
+\href{ABC多ゲージ干渉読出しによる一般化弾性衝突の極端R比スイープ検証メモ_v2.md}{ABC多ゲージ干渉読出しによる一般化弾性衝突の極端R比スイープ検証メモ\_v2.md} \\
 Integration summary &
-\href{ABC多ゲージ干渉読出し実験群の統合サマリー_v1.md}{ABC多ゲージ干渉読出し実験群の統合サマリー\_v1.md} \\
+\href{ABC多ゲージ干渉読出し実験群の統合サマリー_v2.md}{ABC多ゲージ干渉読出し実験群の統合サマリー\_v2.md} \\
 \end{longtable}
 }
 
@@ -1702,17 +1708,17 @@ Integration summary &
   Noriaki Kihara, ``Construction Experiment of Complete Elastic
   Reflection of Fermionic Bilocal Waves in a Closed Phase System Without
   Assuming Background Space,'' Version DOI:
-  \texttt{10.5281/zenodo.21291020}, Concept DOI:
+  \texttt{10.5281/zenodo.21332866}, Concept DOI:
   \texttt{10.5281/zenodo.21291018}, 2026.
 \item
   Noriaki Kihara, ``Interference Construction of a Perfect Reflection
   Map from a Fermionic Inverse-Phase Core,'' Version DOI:
-  \texttt{10.5281/zenodo.21295480}, Concept DOI:
+  \texttt{10.5281/zenodo.21332867}, Concept DOI:
   \texttt{10.5281/zenodo.21295479}, 2026.
 \item
   Noriaki Kihara, ``Curvature Renormalization and Perfect-Reflection
   Stability by Curved Closed Stationary Waves,'' Version DOI:
-  \texttt{10.5281/zenodo.21304040}, Concept DOI:
+  \texttt{10.5281/zenodo.21332874}, Concept DOI:
   \texttt{10.5281/zenodo.21304039}, 2026.
 \end{enumerate}
 

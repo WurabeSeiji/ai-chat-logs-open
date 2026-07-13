@@ -1,7 +1,9 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
 \documentclass[
+  a4paper,
 ]{article}
 \usepackage{xcolor}
 \usepackage[margin=24mm]{geometry}
@@ -20,6 +22,15 @@
 \usepackage{lmodern}
 \ifPDFTeX\else
   % xetex/luatex font selection
+  \setmonofont[]{DejaVuSansMono.ttf}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -117,22 +128,26 @@
 \begin{document}
 
 \section{Preliminary Summary of Harmonic Readout and c=1 Area Sweep in
-an AB Two-Body Closed Phase
-System}\label{preliminary-summary-of-harmonic-readout-and-c1-area-sweep-in-an-ab-two-body-closed-phase-system}
+an AB Two-Body Closed Phase System
+v2}\label{preliminary-summary-of-harmonic-readout-and-c1-area-sweep-in-an-ab-two-body-closed-phase-system-v2}
 
-\textbf{Date:} 2026-07-12\\
-\textbf{Author:} Noriaki Kihara\\
+\textbf{Date:} 2026-07-12 \textbf{Author:} Noriaki Kihara
 \textbf{Position:} Summary of the AB two-body preliminary experiment
-group in the Wave Information Readout series\\
-\textbf{Version DOI:} 10.5281/zenodo.21318697\\
-\textbf{Concept DOI:} 10.5281/zenodo.21318696
+group in the Wave Information Readout series \textbf{Version DOI:}
+10.5281/zenodo.21332876 \textbf{Concept DOI:} 10.5281/zenodo.21318696
+
+V2 adds an AB two-body acceleration-readout protocol with a fermion-like
+recoil map while keeping the scope and claims of the original summary
+unchanged.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{Abstract}\label{abstract}
 
 This summary consolidates six preliminary experiments performed on an AB
-two-body closed phase system:
+two-body closed phase system. V2 adds a seventh protocol that
+incorporates a fermion-like recoil map into the same AB
+acceleration-readout frame:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -149,7 +164,9 @@ two-body closed phase system:
 \item
   inverse-area compensation diagnosis in the \texttt{chi-tau} plane, and
 \item
-  extended sweep for native inverse-area readout.
+  extended sweep for native inverse-area readout, and
+\item
+  fermion-like recoil harmonic readout protocol.
 \end{enumerate}
 
 The preceding ABC multigauge interference readout paper showed that, in
@@ -239,6 +256,9 @@ sufficient for area formation & Not sufficient \\
 & Not detected \\
 6 & Native inverse-area extended sweep & Search broad conditions for
 \texttt{alpha≈2} & Not detected natively \\
+7 & V2 fermion-like recoil protocol & Re-test acceleration-like readout
+with a recoil map near the AB center & \texttt{q\_out\_factor=-1};
+harmonic readout and \texttt{chi-tau} surface maintained \\
 \end{longtable}
 }
 
@@ -341,9 +361,9 @@ Main observation summary
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{AB二体問題の図化_fAB_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{AB二体問題の図化_fAB_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_observation_summary_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_observation_summary_v1.png} \\
 \end{longtable}
 }
 
@@ -361,9 +381,9 @@ Readout leak response
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_harmonic_state_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_harmonic_state_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_readout_leak_response_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_readout_leak_response_v1.png} \\
 \end{longtable}
 }
 
@@ -381,9 +401,9 @@ Phase-difference scaling
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_protocol_degeneracy_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_protocol_degeneracy_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_phase_difference_scaling_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_observation_figures_v1/ab_two_body_one_angle_phase_difference_scaling_v1.png} \\
 \end{longtable}
 }
 
@@ -435,9 +455,9 @@ Leakage and decay
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_parameter_sweep_preliminary_result_v1/ab_two_body_one_angle_parameter_sweep_leak_f_error_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_parameter_sweep_preliminary_result_v1/ab_two_body_one_angle_parameter_sweep_leak_f_error_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_parameter_sweep_preliminary_result_v1/ab_two_body_one_angle_parameter_sweep_leak_decay_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_parameter_sweep_preliminary_result_v1/ab_two_body_one_angle_parameter_sweep_leak_decay_v1.png} \\
 \end{longtable}
 }
 
@@ -455,9 +475,9 @@ Selected time series
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_parameter_sweep_preliminary_result_v1/ab_two_body_one_angle_parameter_sweep_period_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_parameter_sweep_preliminary_result_v1/ab_two_body_one_angle_parameter_sweep_period_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_one_angle_harmonic_readout_parameter_sweep_preliminary_result_v1/ab_two_body_one_angle_parameter_sweep_selected_series_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_one_angle_harmonic_readout_parameter_sweep_preliminary_result_v1/ab_two_body_one_angle_parameter_sweep_selected_series_v1.png} \\
 \end{longtable}
 }
 
@@ -545,9 +565,9 @@ Area sweep
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_chi_tau_surface_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_chi_tau_surface_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_area_sweep_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_area_sweep_v1.png} \\
 \end{longtable}
 }
 
@@ -565,9 +585,9 @@ Power candidates
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_error_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_error_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_power_candidate_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_power_candidate_v1.png} \\
 \end{longtable}
 }
 
@@ -582,7 +602,7 @@ Readout leakage
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_readout_leak_v1.png}} \\
+\includegraphics[width=0.65\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_chi_tau_area_sweep_preliminary_result_v1/ab_two_body_c1_internal_calibration_readout_leak_v1.png} \\
 \end{longtable}
 }
 
@@ -639,9 +659,9 @@ Area heatmap
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_parameter_sweep_preliminary_result_v1/ab_two_body_c1_parameter_sweep_c_error_heatmap_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_parameter_sweep_preliminary_result_v1/ab_two_body_c1_parameter_sweep_c_error_heatmap_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_parameter_sweep_preliminary_result_v1/ab_two_body_c1_parameter_sweep_area_heatmap_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_parameter_sweep_preliminary_result_v1/ab_two_body_c1_parameter_sweep_area_heatmap_v1.png} \\
 \end{longtable}
 }
 
@@ -659,9 +679,9 @@ Readout leakage
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_parameter_sweep_preliminary_result_v1/ab_two_body_c1_parameter_sweep_phase_response_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_parameter_sweep_preliminary_result_v1/ab_two_body_c1_parameter_sweep_phase_response_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_c1_internal_calibration_parameter_sweep_preliminary_result_v1/ab_two_body_c1_parameter_sweep_readout_leak_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_c1_internal_calibration_parameter_sweep_preliminary_result_v1/ab_two_body_c1_parameter_sweep_readout_leak_v1.png} \\
 \end{longtable}
 }
 
@@ -732,9 +752,9 @@ Native candidates
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_chi_tau_inverse_area_compensation_diagnostic_preliminary_result_v1/ab_two_body_chi_tau_inverse_area_constructed_control_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_chi_tau_inverse_area_compensation_diagnostic_preliminary_result_v1/ab_two_body_chi_tau_inverse_area_constructed_control_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_chi_tau_inverse_area_compensation_diagnostic_preliminary_result_v1/ab_two_body_chi_tau_inverse_area_native_candidates_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_chi_tau_inverse_area_compensation_diagnostic_preliminary_result_v1/ab_two_body_chi_tau_inverse_area_native_candidates_v1.png} \\
 \end{longtable}
 }
 
@@ -749,7 +769,7 @@ Alpha comparison
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_chi_tau_inverse_area_compensation_diagnostic_preliminary_result_v1/ab_two_body_chi_tau_inverse_area_alpha_comparison_v1.png}} \\
+\includegraphics[width=0.65\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_chi_tau_inverse_area_compensation_diagnostic_preliminary_result_v1/ab_two_body_chi_tau_inverse_area_alpha_comparison_v1.png} \\
 \end{longtable}
 }
 
@@ -813,17 +833,157 @@ Alpha scan
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_chi_tau_native_inverse_area_extended_sweep_preliminary_result_v1/ab_two_body_native_inverse_area_extended_reference_curves_v1.png}}
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_chi_tau_native_inverse_area_extended_sweep_preliminary_result_v1/ab_two_body_native_inverse_area_extended_reference_curves_v1.png}
 &
-\pandocbounded{\includegraphics[keepaspectratio]{ab_two_body_chi_tau_native_inverse_area_extended_sweep_preliminary_result_v1/ab_two_body_native_inverse_area_extended_alpha_scan_v1.png}} \\
+\includegraphics[width=0.45\linewidth,height=\textheight,keepaspectratio,alt={figure}]{ab_two_body_chi_tau_native_inverse_area_extended_sweep_preliminary_result_v1/ab_two_body_native_inverse_area_extended_alpha_scan_v1.png} \\
 \end{longtable}
 }
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{8. Overall Judgment}\label{overall-judgment}
+\subsection{8. V2 Addition: Harmonic Readout with a Fermion-Like Recoil
+Map}\label{v2-addition-harmonic-readout-with-a-fermion-like-recoil-map}
 
-\subsubsection{8.1 Established}\label{established}
+\subsubsection{8.1 Purpose}\label{purpose-1}
+
+In the V1 one-angle harmonic readout, the relative phase development of
+the AB pair was read continuously, and Protocol F/B degeneracy was
+confirmed under label-free readout.
+
+V2 keeps this context unchanged and adds a fermion-like recoil map at
+the central interaction region.
+
+The question tested here is whether the acceleration-like harmonic
+readout from the AB two-body relation \texttt{f\_AB} can still be
+evaluated in the same form when the central interaction is read as a
+recoil-type event.
+
+This section does not test:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{AB asymmetrization}
+\NormalTok{low{-}localization limit}
+\NormalTok{instantaneous contraction}
+\NormalTok{harmonic transfer}
+\NormalTok{localization transfer}
+\end{Highlighting}
+\end{Shaded}
+
+Those questions belong to a separate wave-packet focusing experiment
+line.
+
+The present V2 only adds a fermion-like recoil protocol to the current
+AB two-body acceleration-readout assumptions, in addition to the
+transmission-type central readout.
+
+\subsubsection{8.2 Recoil Map}\label{recoil-map}
+
+Let the right-moving and left-moving incident channels be
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\^{}\{\textbackslash{}mathrm\{in\}\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}begin\{pmatrix\}}
+\NormalTok{\textbackslash{}psi\_+\^{}\{\textbackslash{}mathrm\{in\}\}\textbackslash{}\textbackslash{}}
+\NormalTok{\textbackslash{}psi\_{-}\^{}\{\textbackslash{}mathrm\{in\}\}}
+\NormalTok{\textbackslash{}end\{pmatrix\}.}
+\end{Highlighting}
+\end{Shaded}
+
+Let \texttt{Delta\_F} be the fermion-like exchange phase. Define the
+transmission and reflection amplitudes by
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t\_\textbackslash{}Delta}
+\NormalTok{=}
+\NormalTok{e\^{}\{i\textbackslash{}Delta\_F/2\}}
+\NormalTok{\textbackslash{}cos\textbackslash{}frac\{\textbackslash{}Delta\_F\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{r\_\textbackslash{}Delta}
+\NormalTok{=}
+\NormalTok{{-}i e\^{}\{i\textbackslash{}Delta\_F/2\}}
+\NormalTok{\textbackslash{}sin\textbackslash{}frac\{\textbackslash{}Delta\_F\}\{2\}.}
+\end{Highlighting}
+\end{Shaded}
+
+The two-channel scattering matrix is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S\_\textbackslash{}Delta}
+\NormalTok{=}
+\NormalTok{\textbackslash{}begin\{pmatrix\}}
+\NormalTok{t\_\textbackslash{}Delta \& r\_\textbackslash{}Delta\textbackslash{}\textbackslash{}}
+\NormalTok{r\_\textbackslash{}Delta \& t\_\textbackslash{}Delta}
+\NormalTok{\textbackslash{}end\{pmatrix\},}
+\end{Highlighting}
+\end{Shaded}
+
+and the outgoing channels are read as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\^{}\{\textbackslash{}mathrm\{out\}\}}
+\NormalTok{=}
+\NormalTok{S\_\textbackslash{}Delta}
+\NormalTok{\textbackslash{}Psi\^{}\{\textbackslash{}mathrm\{in\}\}.}
+\end{Highlighting}
+\end{Shaded}
+
+For the complete-recoil condition,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_F=\textbackslash{}pi,}
+\end{Highlighting}
+\end{Shaded}
+
+we obtain
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{|r\_\textbackslash{}Delta|\^{}2=1,}
+\NormalTok{\textbackslash{}qquad}
+\NormalTok{|t\_\textbackslash{}Delta|\^{}2=0.}
+\end{Highlighting}
+\end{Shaded}
+
+In this limit the readout factor becomes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{q\_out\_factor = T {-} R = {-}1.}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{8.3 Result}\label{result}
+
+The V2 protocol preserved the same harmonic-readout frame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{q\_out\_factor = {-}1}
+\end{Highlighting}
+\end{Shaded}
+
+The AB harmonic readout remained evaluable in the same form, and the
+\texttt{chi-tau} surface used in the area sweep was maintained.
+
+This result does not add a claim of immediate contraction, harmonic
+transfer, or localization transfer. It only confirms that the
+acceleration-like AB readout survives when the central interaction is
+represented as a fermion-like recoil map.
+
+\subsection{9. Overall Judgment}\label{overall-judgment}
+
+\subsubsection{9.1 Established}\label{established}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -853,7 +1013,7 @@ Established \\
 \end{longtable}
 }
 
-\subsubsection{8.2 Not Established}\label{not-established}
+\subsubsection{9.2 Not Established}\label{not-established}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -883,7 +1043,7 @@ Correspondence to standard gravity & Not established \\
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{9. Interpretation}\label{interpretation}
+\subsection{10. Interpretation}\label{interpretation}
 
 The main achievements of the AB two-body system are the following two
 points:
@@ -995,7 +1155,7 @@ Therefore, the ABC experiment must test:
 \item
   Noriaki Kihara, ``Construction Experiment of Multigauge Interference
   Readout Conserved Quantities in an ABC Closed Phase System'', Version
-  DOI: \texttt{10.5281/zenodo.21308050}, Concept DOI:
+  DOI: \texttt{10.5281/zenodo.21332875}, Concept DOI:
   \texttt{10.5281/zenodo.21308049}, 2026.
 \item
   Noriaki Kihara,

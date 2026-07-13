@@ -1,6 +1,7 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
 \documentclass[
   a4paper,
 ]{article}
@@ -22,6 +23,14 @@
 \ifPDFTeX\else
   % xetex/luatex font selection
   \setmonofont[]{DejaVuSansMono.ttf}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -119,16 +128,19 @@
 \begin{document}
 
 \section{Constructive Experiment on Elastic Reflection of Two Fermionic
-Local Waves in a Closed Phase System Without Assuming Background
-Space}\label{constructive-experiment-on-elastic-reflection-of-two-fermionic-local-waves-in-a-closed-phase-system-without-assuming-background-space}
+Local Waves in a Closed Phase System Without Assuming Background Space
+v2}\label{constructive-experiment-on-elastic-reflection-of-two-fermionic-local-waves-in-a-closed-phase-system-without-assuming-background-space-v2}
 
 \textbf{Subtitle:} Finite-Resolution Interaction Cells and Internal
 Observation in the Anonymous Equal-Amplitude Composite-Wave Model\\
 \textbf{Date:} 2026-07-10\\
 \textbf{Author:} Noriaki Kihara\\
 \textbf{Status:} Constructive experimental paper\\
-\textbf{Version DOI:} 10.5281/zenodo.21291020\\
+\textbf{Version DOI:} 10.5281/zenodo.21332866\\
 \textbf{Concept DOI:} 10.5281/zenodo.21291018
+
+V2 recalculates the same conditions after changing the formula for the
+fermion-like reflection map.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -680,17 +692,39 @@ Inside the finite-resolution cell, apply the map
 \end{Highlighting}
 \end{Shaded}
 
-The direction readout is reversed:
+The fermion-like reflection coefficients are given by
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{q\_A\textquotesingle{}\textquotesingle{}={-}q\_A\textquotesingle{}}
+\NormalTok{t=e\^{}\{i\textbackslash{}Delta\_F/2\}\textbackslash{}cosrac\{\textbackslash{}Delta\_F\}\{2\}}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{q\_B\textquotesingle{}\textquotesingle{}={-}q\_B\textquotesingle{}}
+\NormalTok{r={-}i e\^{}\{i\textbackslash{}Delta\_F/2\}\textbackslash{}sinrac\{\textbackslash{}Delta\_F\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
+
+In the complete-reflection case,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_F=\textbackslash{}pi,\textbackslash{}qquad |r|\^{}2=1,\textbackslash{}qquad |t|\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+The output channels are defined as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A\_{-}\textquotesingle{}\textquotesingle{}=rA\_\{\textbackslash{}mathrm\{ref\}\}\textquotesingle{}+tB\_\{\textbackslash{}mathrm\{trans\}\}\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B\_+\textquotesingle{}\textquotesingle{}=tA\_\{\textbackslash{}mathrm\{trans\}\}\textquotesingle{}+rB\_\{\textbackslash{}mathrm\{ref\}\}\textquotesingle{}.}
 \end{Highlighting}
 \end{Shaded}
 
@@ -843,7 +877,7 @@ collision}
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Basic collision trajectory}]{elastic_collision_simulation_result_v1/elastic_collision_trajectory_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Basic collision trajectory}]{elastic_collision_simulation_result_v2/elastic_collision_trajectory_v2.png}}
 \caption{Basic collision trajectory}
 \end{figure}
 
@@ -851,7 +885,7 @@ collision}
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Identification mode readout}]{elastic_collision_simulation_result_v1/elastic_collision_identification_modes_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Identification mode readout}]{elastic_collision_simulation_result_v2/elastic_collision_identification_modes_v2.png}}
 \caption{Identification mode readout}
 \end{figure}
 
@@ -881,7 +915,7 @@ First failing leakage rate & \texttt{0.35} \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Identification purity}]{elastic_collision_label_robustness_result_v1/label_robustness_purity_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Identification purity}]{elastic_collision_label_robustness_result_v2/label_robustness_purity_v2.png}}
 \caption{Identification purity}
 \end{figure}
 
@@ -889,7 +923,7 @@ First failing leakage rate & \texttt{0.35} \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Identification preservation verdict}]{elastic_collision_label_robustness_result_v1/label_robustness_detection_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Identification preservation verdict}]{elastic_collision_label_robustness_result_v2/label_robustness_detection_v2.png}}
 \caption{Identification preservation verdict}
 \end{figure}
 
@@ -918,7 +952,7 @@ First valid \texttt{A\_C} & \texttt{20} \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Observer conditions}]{elastic_collision_observer_sweep_result_v1/observer_sweep_conditions_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Observer conditions}]{elastic_collision_observer_sweep_result_v2/observer_sweep_conditions_v2.png}}
 \caption{Observer conditions}
 \end{figure}
 
@@ -926,7 +960,7 @@ First valid \texttt{A\_C} & \texttt{20} \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Observer validity}]{elastic_collision_observer_sweep_result_v1/observer_sweep_validity_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Observer validity}]{elastic_collision_observer_sweep_result_v2/observer_sweep_validity_v2.png}}
 \caption{Observer validity}
 \end{figure}
 
@@ -956,7 +990,7 @@ Off-grid invalid cases & \texttt{3} \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Sampling condition}]{elastic_collision_cell_resolution_sweep_result_v1/cell_resolution_sampling_condition_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Sampling condition}]{elastic_collision_cell_resolution_sweep_result_v2/cell_resolution_sampling_condition_v2.png}}
 \caption{Sampling condition}
 \end{figure}
 
@@ -964,7 +998,7 @@ Off-grid invalid cases & \texttt{3} \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Off-grid validity}]{elastic_collision_cell_resolution_sweep_result_v1/cell_resolution_validity_d0_0_203_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Off-grid validity}]{elastic_collision_cell_resolution_sweep_result_v2/cell_resolution_validity_d0_0_203_v2.png}}
 \caption{Off-grid validity}
 \end{figure}
 
@@ -996,7 +1030,7 @@ preservation of identification oscillations.
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Control map trajectories}]{elastic_collision_control_maps_result_v1/control_maps_trajectories_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Control map trajectories}]{elastic_collision_control_maps_result_v2/control_maps_trajectories_v2.png}}
 \caption{Control map trajectories}
 \end{figure}
 
@@ -1004,7 +1038,7 @@ preservation of identification oscillations.
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Control map verdicts}]{elastic_collision_control_maps_result_v1/control_maps_verdict_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Control map verdicts}]{elastic_collision_control_maps_result_v2/control_maps_verdict_v2.png}}
 \caption{Control map verdicts}
 \end{figure}
 
@@ -1032,7 +1066,7 @@ Invalid cases & \texttt{3} \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Asymmetric cell gaps}]{elastic_collision_asymmetry_sweep_result_v1/asymmetry_sweep_cell_gaps_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Asymmetric cell gaps}]{elastic_collision_asymmetry_sweep_result_v2/asymmetry_sweep_cell_gaps_v2.png}}
 \caption{Asymmetric cell gaps}
 \end{figure}
 
@@ -1040,7 +1074,7 @@ Invalid cases & \texttt{3} \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Asymmetry verdicts}]{elastic_collision_asymmetry_sweep_result_v1/asymmetry_sweep_verdict_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Asymmetry verdicts}]{elastic_collision_asymmetry_sweep_result_v2/asymmetry_sweep_verdict_v2.png}}
 \caption{Asymmetry verdicts}
 \end{figure}
 
@@ -1070,7 +1104,7 @@ Invalid cases & \texttt{3} \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Observation perturbation thresholds}]{elastic_collision_observation_perturbation_result_v1/observation_perturbation_thresholds_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Observation perturbation thresholds}]{elastic_collision_observation_perturbation_result_v2/observation_perturbation_thresholds_v2.png}}
 \caption{Observation perturbation thresholds}
 \end{figure}
 
@@ -1078,7 +1112,7 @@ Invalid cases & \texttt{3} \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Observation perturbation verdicts}]{elastic_collision_observation_perturbation_result_v1/observation_perturbation_verdict_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Observation perturbation verdicts}]{elastic_collision_observation_perturbation_result_v2/observation_perturbation_verdict_v2.png}}
 \caption{Observation perturbation verdicts}
 \end{figure}
 
@@ -1110,7 +1144,7 @@ Overall verdict & \texttt{true} \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Multiple collision trajectory}]{elastic_collision_multi_collision_result_v1/multi_collision_trajectory_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Multiple collision trajectory}]{elastic_collision_multi_collision_result_v2/multi_collision_trajectory_v2.png}}
 \caption{Multiple collision trajectory}
 \end{figure}
 
@@ -1118,7 +1152,7 @@ Overall verdict & \texttt{true} \\
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Multiple collision closure residual}]{elastic_collision_multi_collision_result_v1/multi_collision_closure_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Multiple collision closure residual}]{elastic_collision_multi_collision_result_v2/multi_collision_closure_v2.png}}
 \caption{Multiple collision closure residual}
 \end{figure}
 
@@ -1156,7 +1190,7 @@ for the identification oscillation.
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Eta validity}]{elastic_collision_eta_resolution_sweep_result_v1/eta_resolution_validity_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Eta validity}]{elastic_collision_eta_resolution_sweep_result_v2/eta_resolution_validity_v2.png}}
 \caption{Eta validity}
 \end{figure}
 
@@ -1164,7 +1198,7 @@ for the identification oscillation.
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={Eta purity}]{elastic_collision_eta_resolution_sweep_result_v1/eta_resolution_purity_v1.png}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={Eta purity}]{elastic_collision_eta_resolution_sweep_result_v2/eta_resolution_purity_v2.png}}
 \caption{Eta purity}
 \end{figure}
 
@@ -1445,41 +1479,41 @@ Result JSON
 \bottomrule\noalign{}
 \endlastfoot
 Basic complete elastic collision &
-\href{elastic_collision_simulation_result_v1/elastic_collision_report_v1.md}{report}
+\href{elastic_collision_simulation_result_v2/elastic_collision_report_v2.md}{report}
 &
-\href{elastic_collision_simulation_result_v1/elastic_collision_result_v1.json}{json} \\
+\href{elastic_collision_simulation_result_v2/elastic_collision_result_v2.json}{json} \\
 Robustness of identification oscillation &
-\href{elastic_collision_label_robustness_result_v1/label_robustness_report_v1.md}{report}
+\href{elastic_collision_label_robustness_result_v2/label_robustness_report_v2.md}{report}
 &
-\href{elastic_collision_label_robustness_result_v1/label_robustness_result_v1.json}{json} \\
+\href{elastic_collision_label_robustness_result_v2/label_robustness_result_v2.json}{json} \\
 Observer C condition &
-\href{elastic_collision_observer_sweep_result_v1/observer_sweep_report_v1.md}{report}
+\href{elastic_collision_observer_sweep_result_v2/observer_sweep_report_v2.md}{report}
 &
-\href{elastic_collision_observer_sweep_result_v1/observer_sweep_result_v1.json}{json} \\
+\href{elastic_collision_observer_sweep_result_v2/observer_sweep_result_v2.json}{json} \\
 Cell resolution &
-\href{elastic_collision_cell_resolution_sweep_result_v1/cell_resolution_sweep_report_v1.md}{report}
+\href{elastic_collision_cell_resolution_sweep_result_v2/cell_resolution_sweep_report_v2.md}{report}
 &
-\href{elastic_collision_cell_resolution_sweep_result_v1/cell_resolution_sweep_result_v1.json}{json} \\
+\href{elastic_collision_cell_resolution_sweep_result_v2/cell_resolution_sweep_result_v2.json}{json} \\
 Control maps &
-\href{elastic_collision_control_maps_result_v1/control_maps_report_v1.md}{report}
+\href{elastic_collision_control_maps_result_v2/control_maps_report_v2.md}{report}
 &
-\href{elastic_collision_control_maps_result_v1/control_maps_result_v1.json}{json} \\
+\href{elastic_collision_control_maps_result_v2/control_maps_result_v2.json}{json} \\
 Asymmetric conditions &
-\href{elastic_collision_asymmetry_sweep_result_v1/asymmetry_sweep_report_v1.md}{report}
+\href{elastic_collision_asymmetry_sweep_result_v2/asymmetry_sweep_report_v2.md}{report}
 &
-\href{elastic_collision_asymmetry_sweep_result_v1/asymmetry_sweep_result_v1.json}{json} \\
+\href{elastic_collision_asymmetry_sweep_result_v2/asymmetry_sweep_result_v2.json}{json} \\
 Observation perturbation &
-\href{elastic_collision_observation_perturbation_result_v1/observation_perturbation_report_v1.md}{report}
+\href{elastic_collision_observation_perturbation_result_v2/observation_perturbation_report_v2.md}{report}
 &
-\href{elastic_collision_observation_perturbation_result_v1/observation_perturbation_result_v1.json}{json} \\
+\href{elastic_collision_observation_perturbation_result_v2/observation_perturbation_result_v2.json}{json} \\
 Multiple collisions &
-\href{elastic_collision_multi_collision_result_v1/multi_collision_report_v1.md}{report}
+\href{elastic_collision_multi_collision_result_v2/multi_collision_report_v2.md}{report}
 &
-\href{elastic_collision_multi_collision_result_v1/multi_collision_result_v1.json}{json} \\
+\href{elastic_collision_multi_collision_result_v2/multi_collision_result_v2.json}{json} \\
 \texttt{η} resolution &
-\href{elastic_collision_eta_resolution_sweep_result_v1/eta_resolution_sweep_report_v1.md}{report}
+\href{elastic_collision_eta_resolution_sweep_result_v2/eta_resolution_sweep_report_v2.md}{report}
 &
-\href{elastic_collision_eta_resolution_sweep_result_v1/eta_resolution_sweep_result_v1.json}{json} \\
+\href{elastic_collision_eta_resolution_sweep_result_v2/eta_resolution_sweep_result_v2.json}{json} \\
 \end{longtable}
 }
 

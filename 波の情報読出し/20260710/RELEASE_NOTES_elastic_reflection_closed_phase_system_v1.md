@@ -1,11 +1,12 @@
-# Release Notes: Elastic Reflection in a Closed Phase System v1
+# Release Notes: Elastic Reflection in a Closed Phase System v1/v2
 
 **Date:** 2026-07-10  
 **Author:** Noriaki Kihara  
 **Repository:** `ai-chat-logs-open`  
-**Zenodo Version DOI:** 10.5281/zenodo.21291020  
+**Latest Zenodo Version DOI:** 10.5281/zenodo.21332866  
 **Zenodo Concept DOI:** 10.5281/zenodo.21291018  
-**Zenodo Record:** https://zenodo.org/records/21291020  
+**Latest Zenodo Record:** https://zenodo.org/records/21332866  
+**Previous v1 Version DOI:** 10.5281/zenodo.21291020  
 **Zenn Article:** `articles/elastic-reflection-closed-phase-system.md`  
 **note Article (JA):** https://note.com/kiharanoriaki/n/n15451632027b  
 **note Article (EN):** https://note.com/kiharanoriaki/n/n5a009a2735e7  
@@ -28,11 +29,21 @@ The release includes the Japanese and English main papers, supporting axiom/spec
 
 ---
 
+## v2 Update
+
+V2 recalculates the same experiment series after changing the formula for the fermion-like reflection map.
+
+The Concept DOI is maintained. The V2 Version DOI is `10.5281/zenodo.21332866`.
+
+The Japanese/English Markdown, TeX/PDF, result figures, scripts, and reproducibility bundle were updated to the V2 outputs.
+
+---
+
 ## Primary Outputs
 
 | File | Role |
 |---|---|
-| `背景空間を仮定しない閉じた位相系におけるフェルミオン的二局所波の完全弾性反射の構成実験.md` | Japanese main paper |
+| `背景空間を仮定しない閉じた位相系におけるフェルミオン的二局所波の完全弾性反射の構成実験 v2.md` | Japanese main paper |
 | `constructive_experiment_elastic_reflection_closed_phase_system_en.md` | English main paper |
 | `elastic_reflection_closed_phase_system_ja.tex` | Japanese TeX source |
 | `elastic_reflection_closed_phase_system_ja.pdf` | Japanese PDF |
@@ -43,7 +54,7 @@ The release includes the Japanese and English main papers, supporting axiom/spec
 | `elastic_collision_simulation_experiment_results_v1_en.md` / `完全弾性衝突シミュレーション実験結果 v1.md` | Integrated result report |
 | `note_article_elastic_reflection_closed_phase_system_ja.md` | Japanese note article source |
 | `note_article_elastic_reflection_closed_phase_system_en.md` | English note article source |
-| `elastic_reflection_closed_phase_system_publication_bundle_v1.zip` | Reproducibility bundle |
+| `elastic_reflection_closed_phase_system_publication_bundle_v2.zip` | Reproducibility bundle |
 
 ---
 

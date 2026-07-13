@@ -3,6 +3,7 @@
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{space}{xeCJK}
 \documentclass[
+  a4paper,
 ]{article}
 \usepackage{xcolor}
 \usepackage[margin=24mm]{geometry}
@@ -21,7 +22,6 @@
 \usepackage{lmodern}
 \ifPDFTeX\else
   % xetex/luatex font selection
-  \setmainfont[]{HaranoAjiMincho-Regular.otf}
   \setmonofont[]{DejaVuSansMono.ttf}
   \ifXeTeX
     \usepackage{xeCJK}
@@ -127,15 +127,19 @@
 
 \begin{document}
 
-\section{フェルミオン的逆相核による完全反射写像の干渉構成}\label{ux30d5ux30a7ux30ebux30dfux30aaux30f3ux7684ux9006ux76f8ux6838ux306bux3088ux308bux5b8cux5168ux53cdux5c04ux5199ux50cfux306eux5e72ux6e09ux69cbux6210}
+\section{フェルミオン的逆相核による完全反射写像の干渉構成
+v2}\label{ux30d5ux30a7ux30ebux30dfux30aaux30f3ux7684ux9006ux76f8ux6838ux306bux3088ux308bux5b8cux5168ux53cdux5c04ux5199ux50cfux306eux5e72ux6e09ux69cbux6210-v2}
 
 \textbf{副題:}
 交換二経路の干渉消去と相対位相節からの方向反転の数値構成実験\\
 \textbf{日付:} 2026-07-10\\
 \textbf{著者:} 木原 範昭\\
 \textbf{位置づけ:} 追加論文・数値実験実行稿\\
-\textbf{Version DOI:} 10.5281/zenodo.21295480\\
-\textbf{Concept DOI:} 10.5281/zenodo.21295479
+\textbf{Version DOI:} 10.5281/zenodo.21332867 \textbf{Concept DOI:}
+10.5281/zenodo.21295479
+
+フェルミオン様反射の計算式を変更したため、同一条件で再計算した V2
+とする。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -152,34 +156,42 @@
 
 一般化された二経路合成
 
-\[\Psi_{\Delta}(1,2)
-=
-\frac{1}{\sqrt2}
-\left[
-P_A(1)P_B(2)
-+
-e^{i\Delta_F}P_A(2)P_B(1)
-\right]\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}Delta\}(1,2)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{1\}\{\textbackslash{}sqrt2\}}
+\NormalTok{\textbackslash{}left[}
+\NormalTok{P\_A(1)P\_B(2)}
+\NormalTok{+}
+\NormalTok{e\^{}\{i\textbackslash{}Delta\_F\}P\_A(2)P\_B(1)}
+\NormalTok{\textbackslash{}right]}
+\end{Highlighting}
+\end{Shaded}
 
 を用いると、完全重なり点 \texttt{1=2} において、\texttt{Δ\_F=π}
 では二経路が完全に干渉消去される。
 
-\[\Psi_{\pi}(1,1)=0\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}pi\}(1,1)=0}
+\end{Highlighting}
+\end{Shaded}
 
 本稿では、左側から入射する単一局在波束を初期状態とし、外部方向反転命令、鏡像初期条件、反射境界条件を用いずに時間発展させた。相互作用領域では、直接経路と交換経路を偶・奇干渉チャンネルへ分解し、内部逆相核の位相差のみを奇チャンネルへ転写して再合成した。
 
 実行結果では、\texttt{Δ\_F=0} で反射率
-\texttt{1.8261693781071190e-19}、通過率
+\texttt{1.8261693486616611e-19}、通過率
 \texttt{1.0000000000000002}、\texttt{Δ\_F=π/2} で反射率・通過率ともに
 \texttt{0.5}、\texttt{Δ\_F=π} で反射率
-\texttt{1.0000000000000002}、通過率 \texttt{1.7939211291143336e-19}
+\texttt{1.0000000000000004}、通過率 \texttt{1.7939211304199106e-19}
 が得られた。位相掃引全体で \texttt{R(Δ\_F)=sin\^{}2(Δ\_F/2)},
 \texttt{T(Δ\_F)=cos\^{}2(Δ\_F/2)} が最大誤差
 \texttt{5.551115123125783e-16} で再現され、ノルム最大誤差は
 \texttt{6.661338147750939e-16} であった。局所交換干渉写像は
 \texttt{U(π)\^{}2} 相対誤差
-\texttt{4.8214412843789535e-11}、\texttt{U(Δ\_F)U(-Δ\_F)} 最大相対誤差
-\texttt{1.4547631339456792e-16}
+\texttt{4.8214412843768590e-11}、\texttt{U(Δ\_F)U(-Δ\_F)} 最大相対誤差
+\texttt{2.2454514008125022e-16}
 で可逆性を満たした。補償付き二乗閉鎖の最大残差は
 \texttt{1.2143074258005e-17} であった。内部識別振動 \texttt{m\_A,m\_B}
 は読出し相関により保存された。
@@ -189,15 +201,19 @@ e^{i\Delta_F}P_A(2)P_B(1)
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{1. 序論}\label{1-ux5e8fux8ad6}
+\subsection{1. 序論}\label{ux5e8fux8ad6}
 
 前論文では、背景空間を先験的に仮定しない閉じた位相系において、識別可能な二つのフェルミオン的局所波が、有限解像度相互作用セル内で完全弾性反射する保存写像を構成した。
 
 前論文の写像は、相互作用セル内で
 
-\[q_A\mapsto -q_A,
-\qquad
-q_B\mapsto -q_B\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{q\_A\textbackslash{}mapsto {-}q\_A,}
+\NormalTok{\textbackslash{}qquad}
+\NormalTok{q\_B\textbackslash{}mapsto {-}q\_B}
+\end{Highlighting}
+\end{Shaded}
 
 を適用する構成規則として与えられていた。
 
@@ -226,14 +242,20 @@ q_B\mapsto -q_B\]
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{2.
-本稿で主張しないこと}\label{2-ux672cux7a3fux3067ux4e3bux5f35ux3057ux306aux3044ux3053ux3068}
+本稿で主張しないこと}\label{ux672cux7a3fux3067ux4e3bux5f35ux3057ux306aux3044ux3053ux3068}
 
 本稿は、以下を主張しない。
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
 \toprule\noalign{}
-主張しないこと & 理由 \\
+\begin{minipage}[b]{\linewidth}\raggedright
+主張しないこと
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+理由
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -255,20 +277,24 @@ q_B\mapsto -q_B\]
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{3. 基本構造}\label{3-ux57faux672cux69cbux9020}
+\subsection{3. 基本構造}\label{ux57faux672cux69cbux9020}
 
-\subsubsection{3.1 局所波}\label{31-ux5c40ux6240ux6ce2}
+\subsubsection{3.1 局所波}\label{ux5c40ux6240ux6ce2}
 
 局所波 \texttt{P} を、空間位相 \texttt{χ}、時間位相
 \texttt{τ}、内部識別位相 \texttt{η} 上で次のように表す。
 
-\[P(\chi,\tau,\eta)
-=
-A_P
-S_{N_{h,\chi}^{P}}(\chi-\chi_P)
-S_{N_{h,\tau}^{P}}(\tau-\tau_P)
-e^{im_P\eta}
-e^{i\phi_P}\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P(\textbackslash{}chi,\textbackslash{}tau,\textbackslash{}eta)}
+\NormalTok{=}
+\NormalTok{A\_P}
+\NormalTok{S\_\{N\_\{h,\textbackslash{}chi\}\^{}\{P\}\}(\textbackslash{}chi{-}\textbackslash{}chi\_P)}
+\NormalTok{S\_\{N\_\{h,\textbackslash{}tau\}\^{}\{P\}\}(\textbackslash{}tau{-}\textbackslash{}tau\_P)}
+\NormalTok{e\^{}\{im\_P\textbackslash{}eta\}}
+\NormalTok{e\^{}\{i\textbackslash{}phi\_P\}}
+\end{Highlighting}
+\end{Shaded}
 
 ここで、
 
@@ -287,89 +313,125 @@ e^{i\phi_P}\]
 である。
 
 \subsubsection{3.2
-正規化等振幅奇数倍音局在波}\label{32-ux6b63ux898fux5316ux7b49ux632fux5e45ux5947ux6570ux500dux97f3ux5c40ux5728ux6ce2}
+正規化等振幅奇数倍音局在波}\label{ux6b63ux898fux5316ux7b49ux632fux5e45ux5947ux6570ux500dux97f3ux5c40ux5728ux6ce2}
 
-\[S_{N_h}(u)
-=
-\frac{1}{K}
-\sum_{m=0}^{K-1}
-\cos((2m+1)u),
-\qquad
-N_h=2K-1\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S\_\{N\_h\}(u)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{1\}\{K\}}
+\NormalTok{\textbackslash{}sum\_\{m=0\}\^{}\{K{-}1\}}
+\NormalTok{\textbackslash{}cos((2m+1)u),}
+\NormalTok{\textbackslash{}qquad}
+\NormalTok{N\_h=2K{-}1}
+\end{Highlighting}
+\end{Shaded}
 
 閉形式は、
 
-\[S_{N_h}(u)
-=
-\frac{\sin((N_h+1)u)}{(N_h+1)\sin u}\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S\_\{N\_h\}(u)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{\textbackslash{}sin((N\_h+1)u)\}\{(N\_h+1)\textbackslash{}sin u\}}
+\end{Highlighting}
+\end{Shaded}
 
 である。
 
 \subsubsection{3.3
-フェルミオン的内部逆相核}\label{33-ux30d5ux30a7ux30ebux30dfux30aaux30f3ux7684ux5185ux90e8ux9006ux76f8ux6838}
+フェルミオン的内部逆相核}\label{ux30d5ux30a7ux30ebux30dfux30aaux30f3ux7684ux5185ux90e8ux9006ux76f8ux6838}
 
 二成分内部核を、
 
-\[F_P
-=
-\frac{1}{\sqrt2}
-\left(
-e^{i\theta_{P,1}},
-e^{i\theta_{P,2}}
-\right)\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{F\_P}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{1\}\{\textbackslash{}sqrt2\}}
+\NormalTok{\textbackslash{}left(}
+\NormalTok{e\^{}\{i\textbackslash{}theta\_\{P,1\}\},}
+\NormalTok{e\^{}\{i\textbackslash{}theta\_\{P,2\}\}}
+\NormalTok{\textbackslash{}right)}
+\end{Highlighting}
+\end{Shaded}
 
 とし、内部位相差を、
 
-\[\Delta_F
-=
-\theta_{P,2}-\theta_{P,1}\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_F}
+\NormalTok{=}
+\NormalTok{\textbackslash{}theta\_\{P,2\}{-}\textbackslash{}theta\_\{P,1\}}
+\end{Highlighting}
+\end{Shaded}
 
 とする。
 
 純粋フェルミオン的逆相核は、
 
-\[\Delta_F=\pi\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_F=\textbackslash{}pi}
+\end{Highlighting}
+\end{Shaded}
 
 である。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{4.
-直接経路と交換経路}\label{4-ux76f4ux63a5ux7d4cux8defux3068ux4ea4ux63dbux7d4cux8def}
+直接経路と交換経路}\label{ux76f4ux63a5ux7d4cux8defux3068ux4ea4ux63dbux7d4cux8def}
 
 局所波 \texttt{A,B} の全引数を、
 
-\[1=(\chi_1,\tau_1,\eta_1),
-\qquad
-2=(\chi_2,\tau_2,\eta_2)\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1=(\textbackslash{}chi\_1,\textbackslash{}tau\_1,\textbackslash{}eta\_1),}
+\NormalTok{\textbackslash{}qquad}
+\NormalTok{2=(\textbackslash{}chi\_2,\textbackslash{}tau\_2,\textbackslash{}eta\_2)}
+\end{Highlighting}
+\end{Shaded}
 
 と書く。
 
 直接経路を、
 
-\[\Psi_{\mathrm{direct}}(1,2)
-=
-P_A(1)P_B(2)\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}mathrm\{direct\}\}(1,2)}
+\NormalTok{=}
+\NormalTok{P\_A(1)P\_B(2)}
+\end{Highlighting}
+\end{Shaded}
 
 交換経路を、
 
-\[\Psi_{\mathrm{exchange}}(1,2)
-=
-P_A(2)P_B(1)\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}mathrm\{exchange\}\}(1,2)}
+\NormalTok{=}
+\NormalTok{P\_A(2)P\_B(1)}
+\end{Highlighting}
+\end{Shaded}
 
 とする。
 
 内部逆相核を交換経路の相対位相として転写した合成波を、
 
-\[\Psi_{\Delta}(1,2)
-=
-\frac{1}{\sqrt2}
-\left[
-\Psi_{\mathrm{direct}}(1,2)
-+
-e^{i\Delta_F}
-\Psi_{\mathrm{exchange}}(1,2)
-\right]\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}Delta\}(1,2)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{1\}\{\textbackslash{}sqrt2\}}
+\NormalTok{\textbackslash{}left[}
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}mathrm\{direct\}\}(1,2)}
+\NormalTok{+}
+\NormalTok{e\^{}\{i\textbackslash{}Delta\_F\}}
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}mathrm\{exchange\}\}(1,2)}
+\NormalTok{\textbackslash{}right]}
+\end{Highlighting}
+\end{Shaded}
 
 と定義する。
 
@@ -379,44 +441,72 @@ e^{i\Delta_F}
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{5.
-重なり点における節形成}\label{5-ux91cdux306aux308aux70b9ux306bux304aux3051ux308bux7bc0ux5f62ux6210}
+重なり点における節形成}\label{ux91cdux306aux308aux70b9ux306bux304aux3051ux308bux7bc0ux5f62ux6210}
 
 完全重なり点 \texttt{1=2} では、直接経路と交換経路は同じ振幅を持つ。
 
-\[\Psi_{\mathrm{direct}}(1,1)
-=
-\Psi_{\mathrm{exchange}}(1,1)\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}mathrm\{direct\}\}(1,1)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}mathrm\{exchange\}\}(1,1)}
+\end{Highlighting}
+\end{Shaded}
 
 したがって、
 
-\[\Psi_{\Delta}(1,1)
-=
-\frac{P_A(1)P_B(1)}{\sqrt2}
-\left(1+e^{i\Delta_F}\right)\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}Delta\}(1,1)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{P\_A(1)P\_B(1)\}\{\textbackslash{}sqrt2\}}
+\NormalTok{\textbackslash{}left(1+e\^{}\{i\textbackslash{}Delta\_F\}\textbackslash{}right)}
+\end{Highlighting}
+\end{Shaded}
 
 となる。
 
-\subsubsection{5.1 同相核}\label{51-ux540cux76f8ux6838}
+\subsubsection{5.1 同相核}\label{ux540cux76f8ux6838}
 
-\[\Delta_F=0\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_F=0}
+\end{Highlighting}
+\end{Shaded}
 
 なら、
 
-\[1+e^{i\Delta_F}=2\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1+e\^{}\{i\textbackslash{}Delta\_F\}=2}
+\end{Highlighting}
+\end{Shaded}
 
 であり、重なり成分は残る。
 
-\subsubsection{5.2 逆相核}\label{52-ux9006ux76f8ux6838}
+\subsubsection{5.2 逆相核}\label{ux9006ux76f8ux6838}
 
-\[\Delta_F=\pi\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_F=\textbackslash{}pi}
+\end{Highlighting}
+\end{Shaded}
 
 なら、
 
-\[1+e^{i\pi}=0\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1+e\^{}\{i\textbackslash{}pi\}=0}
+\end{Highlighting}
+\end{Shaded}
 
 であり、
 
-\[\Psi_{\pi}(1,1)=0\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{\textbackslash{}pi\}(1,1)=0}
+\end{Highlighting}
+\end{Shaded}
 
 となる。
 
@@ -425,31 +515,51 @@ e^{i\Delta_F}
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{6.
-相対位相と交換反対称性}\label{6-ux76f8ux5bfeux4f4dux76f8ux3068ux4ea4ux63dbux53cdux5bfeux79f0ux6027}
+相対位相と交換反対称性}\label{ux76f8ux5bfeux4f4dux76f8ux3068ux4ea4ux63dbux53cdux5bfeux79f0ux6027}
 
 二局所波の相対空間位相を、
 
-\[\rho=\chi_A-\chi_B\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}rho=\textbackslash{}chi\_A{-}\textbackslash{}chi\_B}
+\end{Highlighting}
+\end{Shaded}
 
 とする。
 
 粒子交換は、
 
-\[A\leftrightarrow B\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A\textbackslash{}leftrightarrow B}
+\end{Highlighting}
+\end{Shaded}
 
 に対応し、
 
-\[\rho\mapsto-\rho\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}rho\textbackslash{}mapsto{-}\textbackslash{}rho}
+\end{Highlighting}
+\end{Shaded}
 
 となる。
 
 交換反対称性が相対位相チャンネルに現れる場合、
 
-\[\Psi_F(-\rho)=-\Psi_F(\rho)\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_F({-}\textbackslash{}rho)={-}\textbackslash{}Psi\_F(\textbackslash{}rho)}
+\end{Highlighting}
+\end{Shaded}
 
 であるため、
 
-\[\Psi_F(0)=0\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_F(0)=0}
+\end{Highlighting}
+\end{Shaded}
 
 となる。
 
@@ -459,17 +569,21 @@ e^{i\Delta_F}
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{7.
-通過流と反射流}\label{7-ux901aux904eux6d41ux3068ux53cdux5c04ux6d41}
+通過流と反射流}\label{ux901aux904eux6d41ux3068ux53cdux5c04ux6d41}
 
 相対位相方向の波動流を作業的に、
 
-\[J_\rho
-=
-\operatorname{Im}
-\left(
-\Psi^*
-\frac{\partial\Psi}{\partial\rho}
-\right)\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{J\_\textbackslash{}rho}
+\NormalTok{=}
+\NormalTok{\textbackslash{}operatorname\{Im\}}
+\NormalTok{\textbackslash{}left(}
+\NormalTok{\textbackslash{}Psi\^{}*}
+\NormalTok{\textbackslash{}frac\{\textbackslash{}partial\textbackslash{}Psi\}\{\textbackslash{}partial\textbackslash{}rho\}}
+\NormalTok{\textbackslash{}right)}
+\end{Highlighting}
+\end{Shaded}
 
 と定義する。
 
@@ -477,67 +591,97 @@ e^{i\Delta_F}
 
 フェルミオン的逆相条件で、
 
-\[\Psi_F(0)=0\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_F(0)=0}
+\end{Highlighting}
+\end{Shaded}
 
 かつ、
 
-\[J_\rho(0)=0\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{J\_\textbackslash{}rho(0)=0}
+\end{Highlighting}
+\end{Shaded}
 
 となり、反対側へ抜ける通過成分が消失するかを調べる。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{8.
-干渉による方向反転の生成写像}\label{8-ux5e72ux6e09ux306bux3088ux308bux65b9ux5411ux53cdux8ee2ux306eux751fux6210ux5199ux50cf}
+干渉による方向反転の生成写像}\label{ux5e72ux6e09ux306bux3088ux308bux65b9ux5411ux53cdux8ee2ux306eux751fux6210ux5199ux50cf}
 
 方向成分を、
 
-\[\mathbf a
-=
-\begin{pmatrix}
-a_+\\
-a_-
-\end{pmatrix}\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}mathbf a}
+\NormalTok{=}
+\NormalTok{\textbackslash{}begin\{pmatrix\}}
+\NormalTok{a\_+\textbackslash{}\textbackslash{}}
+\NormalTok{a\_{-}}
+\NormalTok{\textbackslash{}end\{pmatrix\}}
+\end{Highlighting}
+\end{Shaded}
 
 とする。
 
-対称・反対称チャンネルへの変換を、
+フェルミオン様反射の散乱係数を、
 
-\[H
-=
-\frac{1}{\sqrt2}
-\begin{pmatrix}
-1&1\\
-1&-1
-\end{pmatrix}\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t}
+\NormalTok{=}
+\NormalTok{e\^{}\{i\textbackslash{}Delta\_F/2\}\textbackslash{}cos\textbackslash{}left(\textbackslash{}frac\{\textbackslash{}Delta\_F\}\{2\}\textbackslash{}right)}
+\end{Highlighting}
+\end{Shaded}
 
-で表す。
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{r}
+\NormalTok{=}
+\NormalTok{{-}i e\^{}\{i\textbackslash{}Delta\_F/2\}\textbackslash{}sin\textbackslash{}left(\textbackslash{}frac\{\textbackslash{}Delta\_F\}\{2\}\textbackslash{}right)}
+\end{Highlighting}
+\end{Shaded}
 
-交換二経路間の内部位相差を反対称チャンネルへ与えると、
+で与える。
 
-\[U(\Delta_F)
-=
-H
-\begin{pmatrix}
-1&0\\
-0&e^{i\Delta_F}
-\end{pmatrix}
-H\]
+方向二チャンネルの写像を、
 
-となる。
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{U(\textbackslash{}Delta\_F)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}begin\{pmatrix\}}
+\NormalTok{t\&r\textbackslash{}\textbackslash{}}
+\NormalTok{r\&t}
+\NormalTok{\textbackslash{}end\{pmatrix\}}
+\end{Highlighting}
+\end{Shaded}
+
+とする。
 
 \texttt{Δ\_F=π} では、
 
-\[U(\pi)
-=
-\begin{pmatrix}
-0&1\\
-1&0
-\end{pmatrix}\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{U(\textbackslash{}pi)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}begin\{pmatrix\}}
+\NormalTok{0\&1\textbackslash{}\textbackslash{}}
+\NormalTok{1\&0}
+\NormalTok{\textbackslash{}end\{pmatrix\}}
+\end{Highlighting}
+\end{Shaded}
 
 であり、
 
-\[|+\rangle\leftrightarrow|-\rangle\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{|+\textbackslash{}rangle\textbackslash{}leftrightarrow|{-}\textbackslash{}rangle}
+\end{Highlighting}
+\end{Shaded}
 
 が得られる。
 
@@ -546,14 +690,23 @@ H\]
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{9.
-数値実験の実行}\label{9-ux6570ux5024ux5b9fux9a13ux306eux5b9fux884c}
+数値実験の実行}\label{ux6570ux5024ux5b9fux9a13ux306eux5b9fux884c}
 
-\subsubsection{9.1 基本条件}\label{91-ux57faux672cux6761ux4ef6}
+\subsubsection{9.1 基本条件}\label{ux57faux672cux6761ux4ef6}
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}lrl@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}@{}}
 \toprule\noalign{}
-量 & 基本値 & 意味 \\
+\begin{minipage}[b]{\linewidth}\raggedright
+量
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+基本値
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+意味
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -570,16 +723,27 @@ H\]
 \texttt{Δ\_F} & \texttt{0} から \texttt{π} & 内部核位相差 \\
 片側入射波束中心 & \texttt{ρ=-40} & 左側から原点へ向かう単一入射波束 \\
 片側入射波数 & \texttt{k\_0=5.0} & 入射方向の位相流 \\
-相互作用窓 & ` & ρ \\
+相互作用窓 & \texttt{\textbar{}ρ\textbar{}\textless{}25}
+中心、\texttt{25\textless{}\textbar{}ρ\textbar{}\textless{}35} 遷移 &
+局所交換干渉チャンネル \\
 \end{longtable}
 }
 
-\subsubsection{9.2 実験群}\label{92-ux5b9fux9a13ux7fa4}
+\subsubsection{9.2 実験群}\label{ux5b9fux9a13ux7fa4}
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}rll@{}}
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}@{}}
 \toprule\noalign{}
-No. & 実験 & 目的 \\
+\begin{minipage}[b]{\linewidth}\raggedleft
+No.
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+実験
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+目的
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -605,7 +769,7 @@ No. & 実験 & 目的 \\
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_fermionic\_interference\_reflection\_v1.py}
+\NormalTok{run\_fermionic\_interference\_reflection\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -613,15 +777,15 @@ No. & 実験 & 目的 \\
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{fermionic\_interference\_reflection\_result\_v1/}
+\NormalTok{fermionic\_interference\_reflection\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{10. 実行結果}\label{10-ux5b9fux884cux7d50ux679c}
+\subsection{10. 実行結果}\label{ux5b9fux884cux7d50ux679c}
 
-\subsubsection{10.1 全体判定}\label{101-ux5168ux4f53ux5224ux5b9a}
+\subsubsection{10.1 全体判定}\label{ux5168ux4f53ux5224ux5b9a}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}lr@{}}
@@ -652,14 +816,14 @@ AB/C セル差し替え & \texttt{true} \\
 }
 
 \subsubsection{10.2
-片側入射からの局所交換干渉反射}\label{102-ux7247ux5074ux5165ux5c04ux304bux3089ux306eux5c40ux6240ux4ea4ux63dbux5e72ux6e09ux53cdux5c04}
+片側入射からの局所交換干渉反射}\label{ux7247ux5074ux5165ux5c04ux304bux3089ux306eux5c40ux6240ux4ea4ux63dbux5e72ux6e09ux53cdux5c04}
 
 初期状態は左側だけに置いた単一局在波束であり、鏡像初期条件は使っていない。自由伝播で相互作用領域へ到達させ、局所窓内で偶・奇チャンネルに分解し、奇チャンネルへ内部核位相
 \texttt{Delta\_F} だけを与えて再合成した。
 
-本実装は局所写像方式である。自由伝播で相互作用領域へ到達した波束に対し、局所窓内で
-\texttt{U(Δ\_F)=H\ diag(1,e\^{}\{iΔ\_F\})\ H}
-に対応する偶奇チャンネル位相写像を一度適用し、その後ふたたび自由伝播させる。連続ハミルトニアン
+本実装は局所写像方式である。自由伝播で相互作用領域へ到達した波束に対し、局所窓内で散乱係数
+\texttt{t,r}
+による方向二チャンネル写像を一度適用し、その後ふたたび自由伝播させる。連続ハミルトニアン
 \texttt{H\_int(ρ,Δ\_F)} を細かい時間刻みで積分する方式ではない。
 
 {\def\LTcaptype{none} % do not increment counter
@@ -672,21 +836,24 @@ AB/C セル差し替え & \texttt{true} \\
 \endlastfoot
 初期左側確率 & \texttt{1.0000000000000002e+00} \\
 初期右側確率 & \texttt{2.4303500961591473e-89} \\
-\texttt{Delta\_F=0} 反射率 & \texttt{1.8261693781071190e-19} \\
+\texttt{Delta\_F=0} 反射率 & \texttt{1.8261693486616611e-19} \\
 \texttt{Delta\_F=0} 通過率 & \texttt{1.0000000000000002e+00} \\
-\texttt{Delta\_F=pi/2} 反射率 & \texttt{5.0000000000000011e-01} \\
-\texttt{Delta\_F=pi/2} 通過率 & \texttt{5.0000000000000011e-01} \\
-\texttt{Delta\_F=pi} 反射率 & \texttt{1.0000000000000002e+00} \\
-\texttt{Delta\_F=pi} 通過率 & \texttt{1.7939211291143336e-19} \\
+\texttt{Delta\_F=pi/2} 反射率 & \texttt{5.0000000000000000e-01} \\
+\texttt{Delta\_F=pi/2} 通過率 & \texttt{5.0000000000000022e-01} \\
+\texttt{Delta\_F=pi} 反射率 & \texttt{1.0000000000000004e+00} \\
+\texttt{Delta\_F=pi} 通過率 & \texttt{1.7939211304199106e-19} \\
 位相掃引最大誤差 & \texttt{5.5511151231257827e-16} \\
 ノルム最大誤差 & \texttt{6.6613381477509392e-16} \\
 \end{longtable}
 }
 
-\pandocbounded{\includegraphics[keepaspectratio,alt={片側入射散乱}]{fermionic_interference_reflection_result_v1/fermionic_interference_single_sided_scattering_v1.png}}
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={片側入射散乱}]{fermionic_interference_reflection_result_v2/fermionic_interference_single_sided_scattering_v2.png}}
+\caption{片側入射散乱}
+\end{figure}
 
-\subsubsection{10.3
-交換干渉節}\label{103-ux4ea4ux63dbux5e72ux6e09ux7bc0}
+\subsubsection{10.3 交換干渉節}\label{ux4ea4ux63dbux5e72ux6e09ux7bc0}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}lr@{}}
@@ -703,10 +870,14 @@ AB/C セル差し替え & \texttt{true} \\
 \end{longtable}
 }
 
-\pandocbounded{\includegraphics[keepaspectratio,alt={交換干渉位相掃引}]{fermionic_interference_reflection_result_v1/fermionic_interference_phase_sweep_v1.png}}
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={交換干渉位相掃引}]{fermionic_interference_reflection_result_v2/fermionic_interference_phase_sweep_v2.png}}
+\caption{交換干渉位相掃引}
+\end{figure}
 
 \subsubsection{10.4
-奇関数節の補助読出し}\label{104-ux5947ux95a2ux6570ux7bc0ux306eux88dcux52a9ux8aadux51faux3057}
+奇関数節の補助読出し}\label{ux5947ux95a2ux6570ux7bc0ux306eux88dcux52a9ux8aadux51faux3057}
 
 片側入射散乱とは別に、逆相核に対応する奇関数節をあらかじめ持つ相対位相波も補助的に確認した。この確認は主判定ではなく、節を持つ波が半線読出しで反射波として読めることの補助確認である。
 
@@ -726,10 +897,14 @@ AB/C セル差し替え & \texttt{true} \\
 \end{longtable}
 }
 
-\pandocbounded{\includegraphics[keepaspectratio,alt={相対時間発展}]{fermionic_interference_reflection_result_v1/fermionic_interference_relative_dynamics_v1.png}}
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={相対時間発展}]{fermionic_interference_reflection_result_v2/fermionic_interference_relative_dynamics_v2.png}}
+\caption{相対時間発展}
+\end{figure}
 
 \subsubsection{10.5
-識別振動読出し}\label{105-ux8b58ux5225ux632fux52d5ux8aadux51faux3057}
+識別振動読出し}\label{ux8b58ux5225ux632fux52d5ux8aadux51faux3057}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}lr@{}}
@@ -753,7 +928,7 @@ B ターゲット振幅 & \texttt{1.0000000000000000e+00} \\
 の識別は \texttt{η} 相関で読出す。
 
 \subsubsection{10.6
-可逆性と補償付き二乗閉鎖}\label{106-ux53efux9006ux6027ux3068ux88dcux511fux4ed8ux304dux4e8cux4e57ux9589ux9396}
+可逆性と補償付き二乗閉鎖}\label{ux53efux9006ux6027ux3068ux88dcux511fux4ed8ux304dux4e8cux4e57ux9589ux9396}
 
 局所交換干渉写像を二回適用し、波形が元へ戻るかを測定した。また、各サンプル係数
 \texttt{x\_n} に補償対 \texttt{i\ x\_n}
@@ -767,9 +942,9 @@ B ターゲット振幅 & \texttt{1.0000000000000000e+00} \\
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\texttt{U(pi)\^{}2} 相対誤差 & \texttt{4.8214412843789535e-11} \\
+\texttt{U(pi)\^{}2} 相対誤差 & \texttt{4.8214412843768590e-11} \\
 \texttt{U(delta)U(-delta)} 最大相対誤差 &
-\texttt{1.4547631339456792e-16} \\
+\texttt{2.2454514008125022e-16} \\
 補償付き二乗閉鎖 最大残差 & \texttt{1.2143074258005000e-17} \\
 \end{longtable}
 }
@@ -780,7 +955,7 @@ B ターゲット振幅 & \texttt{1.0000000000000000e+00} \\
 は位相掃引全体で機械精度範囲に収まった。
 
 \subsubsection{10.7 AB/C
-相互作用セル差し替え}\label{107-abc-ux76f8ux4e92ux4f5cux7528ux30bbux30ebux5deeux3057ux66ffux3048}
+相互作用セル差し替え}\label{abc-ux76f8ux4e92ux4f5cux7528ux30bbux30ebux5deeux3057ux66ffux3048}
 
 前回の AB/C 完全弾性衝突シミュレーションで用いていたセル内の直接
 \texttt{q} 反転を使わず、局所交換干渉写像から得た反射率 \texttt{R}
@@ -793,13 +968,19 @@ B ターゲット振幅 & \texttt{1.0000000000000000e+00} \\
 \end{Shaded}
 
 として進行方向読出し量を生成した。\texttt{Δ\_F=π} では
-\texttt{R=1.0000000000000002}, \texttt{T=1.7939211291143336e-19}
+\texttt{R=1.0000000000000004}, \texttt{T=1.7939211304199106e-19}
 が用いられた。
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}lr@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4286}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5714}}@{}}
 \toprule\noalign{}
-項目 & 値 \\
+\begin{minipage}[b]{\linewidth}\raggedright
+項目
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+値
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -808,58 +989,82 @@ AB/C 差し替え成立 & \texttt{true} \\
 collision\_cell\_reached & \texttt{true} \\
 post\_collision\_completed & \texttt{true} \\
 \texttt{q\_A} before/after & \texttt{1.0000000000000000e+00} /
-\texttt{-1.0000000000000002e+00} \\
+\texttt{-1.0000000000000004e+00} \\
 \texttt{q\_B} before/after & \texttt{-1.0000000000000000e+00} /
-\texttt{1.0000000000000002e+00} \\
+\texttt{1.0000000000000004e+00} \\
 label A initial/final & \texttt{1} / \texttt{1} \\
 label B initial/final & \texttt{2} / \texttt{2} \\
 \end{longtable}
 }
 
-\pandocbounded{\includegraphics[keepaspectratio,alt={AB/Cセル差し替え}]{fermionic_interference_reflection_result_v1/fermionic_interference_ab_c_replacement_v1.png}}
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={AB/Cセル差し替え}]{fermionic_interference_reflection_result_v2/fermionic_interference_ab_c_replacement_v2.png}}
+\caption{AB/Cセル差し替え}
+\end{figure}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{11. 評価量}\label{11-ux8a55ux4fa1ux91cf}
+\subsection{11. 評価量}\label{ux8a55ux4fa1ux91cf}
 
-\subsubsection{11.1 通過率}\label{111-ux901aux904eux7387}
+\subsubsection{11.1 通過率}\label{ux901aux904eux7387}
 
-\[T
-=
-\frac{I_{\mathrm{trans}}}
-{I_{\mathrm{trans}}+I_{\mathrm{refl}}}\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{T}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{I\_\{\textbackslash{}mathrm\{trans\}\}\}}
+\NormalTok{\{I\_\{\textbackslash{}mathrm\{trans\}\}+I\_\{\textbackslash{}mathrm\{refl\}\}\}}
+\end{Highlighting}
+\end{Shaded}
 
-\subsubsection{11.2 反射率}\label{112-ux53cdux5c04ux7387}
+\subsubsection{11.2 反射率}\label{ux53cdux5c04ux7387}
 
-\[R
-=
-\frac{I_{\mathrm{refl}}}
-{I_{\mathrm{trans}}+I_{\mathrm{refl}}}\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{I\_\{\textbackslash{}mathrm\{refl\}\}\}}
+\NormalTok{\{I\_\{\textbackslash{}mathrm\{trans\}\}+I\_\{\textbackslash{}mathrm\{refl\}\}\}}
+\end{Highlighting}
+\end{Shaded}
 
 \subsubsection{11.3
-識別モード読出し}\label{113-ux8b58ux5225ux30e2ux30fcux30c9ux8aadux51faux3057}
+識別モード読出し}\label{ux8b58ux5225ux30e2ux30fcux30c9ux8aadux51faux3057}
 
-\[O_{P,m}^{(j)}
-=
-\frac{1}{(2\pi)^3}
-\iiint
-P
-C_{\mathrm{read},P}^{(j)}
-e^{-im\eta}
-\,d\chi d\tau d\eta\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{O\_\{P,m\}\^{}\{(j)\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}frac\{1\}\{(2\textbackslash{}pi)\^{}3\}}
+\NormalTok{\textbackslash{}iiint}
+\NormalTok{P}
+\NormalTok{C\_\{\textbackslash{}mathrm\{read\},P\}\^{}\{(j)\}}
+\NormalTok{e\^{}\{{-}im\textbackslash{}eta\}}
+\NormalTok{\textbackslash{},d\textbackslash{}chi d\textbackslash{}tau d\textbackslash{}eta}
+\end{Highlighting}
+\end{Shaded}
 
 \subsubsection{11.4
-期待する位相依存性}\label{114-ux671fux5f85ux3059ux308bux4f4dux76f8ux4f9dux5b58ux6027}
+期待する位相依存性}\label{ux671fux5f85ux3059ux308bux4f4dux76f8ux4f9dux5b58ux6027}
 
 理想的な二チャンネル干渉では、
 
-\[R(\Delta_F)
-=
-\sin^2\frac{\Delta_F}{2}\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R(\textbackslash{}Delta\_F)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}sin\^{}2\textbackslash{}frac\{\textbackslash{}Delta\_F\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
 
-\[T(\Delta_F)
-=
-\cos^2\frac{\Delta_F}{2}\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{T(\textbackslash{}Delta\_F)}
+\NormalTok{=}
+\NormalTok{\textbackslash{}cos\^{}2\textbackslash{}frac\{\textbackslash{}Delta\_F\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
 
 が期待される。
 
@@ -867,25 +1072,33 @@ e^{-im\eta}
 \texttt{R,T}
 を測定する。位相掃引は、実装された局所交換干渉写像が解析的二チャンネル写像と一致することの検証である。
 
-\subsubsection{11.5 閉鎖残差}\label{115-ux9589ux9396ux6b8bux5dee}
+\subsubsection{11.5 閉鎖残差}\label{ux9589ux9396ux6b8bux5dee}
 
-\[\mathcal R_{\mathrm{closure}}
-=
-\left|
-\sum_n x_n^2
-\right|\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}mathcal R\_\{\textbackslash{}mathrm\{closure\}\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}left|}
+\NormalTok{\textbackslash{}sum\_n x\_n\^{}2}
+\NormalTok{\textbackslash{}right|}
+\end{Highlighting}
+\end{Shaded}
 
-\subsubsection{11.6 可逆性}\label{116-ux53efux9006ux6027}
+\subsubsection{11.6 可逆性}\label{ux53efux9006ux6027}
 
 反射干渉過程を二回適用したとき、
 
-\[\mathcal U_F^2\approx I\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}mathcal U\_F\^{}2\textbackslash{}approx I}
+\end{Highlighting}
+\end{Shaded}
 
 となるかを数値的に評価する。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{12. 成功条件}\label{12-ux6210ux529fux6761ux4ef6}
+\subsection{12. 成功条件}\label{ux6210ux529fux6761ux4ef6}
 
 本構成を反射写像の内部生成と判定するため、今回の最小実行では次を要求した。
 
@@ -928,12 +1141,18 @@ e^{-im\eta}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{13. 破綻条件}\label{13-ux7834ux7dbbux6761ux4ef6}
+\subsection{13. 破綻条件}\label{ux7834ux7dbbux6761ux4ef6}
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
 \toprule\noalign{}
-破綻条件 & 意味 \\
+\begin{minipage}[b]{\linewidth}\raggedright
+破綻条件
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+意味
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
@@ -952,35 +1171,47 @@ e^{-im\eta}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{14. 考察}\label{14-ux8003ux5bdf}
+\subsection{14. 考察}\label{ux8003ux5bdf}
 
 \subsubsection{14.1
-演算の選択は判断ではない}\label{141-ux6f14ux7b97ux306eux9078ux629eux306fux5224ux65adux3067ux306fux306aux3044}
+演算の選択は判断ではない}\label{ux6f14ux7b97ux306eux9078ux629eux306fux5224ux65adux3067ux306fux306aux3044}
 
 本構成では、局所波が自分自身をフェルミオンと認識して演算を選択するのではない。
 
-\[\Delta_F\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_F}
+\end{Highlighting}
+\end{Shaded}
 
 が交換経路の相対位相として直接現れ、干渉結果を決める。
 
 したがって、演算選択は外部判断ではなく、結合可能な位相チャンネルの選択則である。
 
 \subsubsection{\texorpdfstring{14.2 \texttt{π/2}
-の外部調整を必要としない}{14.2 π/2 の外部調整を必要としない}}\label{142-ux3c02-ux306eux5916ux90e8ux8abfux6574ux3092ux5fc5ux8981ux3068ux3057ux306aux3044}
+の外部調整を必要としない}{14.2 π/2 の外部調整を必要としない}}\label{ux3c02-ux306eux5916ux90e8ux8abfux6574ux3092ux5fc5ux8981ux3068ux3057ux306aux3044}
 
 完全反転行列を二状態回転として書けば \texttt{π/2}
 が現れるが、本構成ではその積分角を外部から与えない。
 
 直接原因は、
 
-\[1+e^{i\pi}=0\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1+e\^{}\{i\textbackslash{}pi\}=0}
+\end{Highlighting}
+\end{Shaded}
 
 による交換二経路の完全消去である。
 
 \subsubsection{14.3
-片側入射による反射生成}\label{143-ux7247ux5074ux5165ux5c04ux306bux3088ux308bux53cdux5c04ux751fux6210}
+片側入射による反射生成}\label{ux7247ux5074ux5165ux5c04ux306bux3088ux308bux53cdux5c04ux751fux6210}
 
-\[\Psi_F(0)=0\]
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_F(0)=0}
+\end{Highlighting}
+\end{Shaded}
 
 だけでは、反射生成の確認には足りない。そこで本稿では、最初から奇関数波を置くのではなく、左側から入射する単一波束を初期状態とした。
 
@@ -999,7 +1230,7 @@ e^{-im\eta}
 では反射率が1へ変換された。したがって、反射は初期条件の鏡像構造ではなく、相互作用領域での局所交換干渉写像から生成された。
 
 \subsubsection{14.4
-局所写像方式としての本実装}\label{144-ux5c40ux6240ux5199ux50cfux65b9ux5f0fux3068ux3057ux3066ux306eux672cux5b9fux88c5}
+局所写像方式としての本実装}\label{ux5c40ux6240ux5199ux50cfux65b9ux5f0fux3068ux3057ux3066ux306eux672cux5b9fux88c5}
 
 本実装は、相互作用ハミルトニアン \texttt{H\_int(ρ,Δ\_F)}
 を連続時間で積分する方式ではない。計算順序は、
@@ -1019,7 +1250,7 @@ e^{-im\eta}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{15. 結論}\label{15-ux7d50ux8ad6}
+\subsection{15. 結論}\label{ux7d50ux8ad6}
 
 本稿では、前論文で有限解像度相互作用セル内の構成規則として与えた方向反転写像を、フェルミオン的内部逆相核と交換二経路の干渉から内部生成する最小機構として実行した。
 
@@ -1032,18 +1263,18 @@ e^{-im\eta}
 が残った。したがって、節形成は交換二経路干渉によって生成された。
 
 片側入射波束を用いた局所交換干渉散乱では、\texttt{Δ\_F=0} に対して反射率
-\texttt{1.8261693781071190e-19}、通過率 \texttt{1.0000000000000002}
+\texttt{1.8261693486616611e-19}、通過率 \texttt{1.0000000000000002}
 が得られた。\texttt{Δ\_F=π/2} では反射率・通過率ともに
 \texttt{0.5}、\texttt{Δ\_F=π} では反射率
-\texttt{1.0000000000000002}、通過率 \texttt{1.7939211291143336e-19}
+\texttt{1.0000000000000004}、通過率 \texttt{1.7939211304199106e-19}
 が得られた。位相掃引全体で \texttt{R(Δ\_F)=sin\^{}2(Δ\_F/2)},
 \texttt{T(Δ\_F)=cos\^{}2(Δ\_F/2)} が最大誤差
 \texttt{5.551115123125783e-16} で成立し、ノルム最大誤差は
 \texttt{6.661338147750939e-16} であった。
 
 局所交換干渉写像の可逆性については、\texttt{U(π)\^{}2} の相対誤差が
-\texttt{4.8214412843789535e-11}、\texttt{U(Δ\_F)U(-Δ\_F)}
-の最大相対誤差が \texttt{1.4547631339456792e-16}
+\texttt{4.8214412843768590e-11}、\texttt{U(Δ\_F)U(-Δ\_F)}
+の最大相対誤差が \texttt{2.2454514008125022e-16}
 であった。補償付き二乗閉鎖の最大残差は \texttt{1.2143074258005e-17}
 であった。
 
@@ -1052,8 +1283,8 @@ e^{-im\eta}
 反転命令を使わず、局所交換干渉写像から得た \texttt{R,T} により
 \texttt{q\_out=q\_in*(T-R)}
 として進行方向読出し量を生成した。この差し替え統合テストでは、\texttt{q\_A}
-は \texttt{1.0} から \texttt{-1.0000000000000002} へ、\texttt{q\_B} は
-\texttt{-1.0} から \texttt{1.0000000000000002} へ変換され、識別振動
+は \texttt{1.0} から \texttt{-1.0000000000000004} へ、\texttt{q\_B} は
+\texttt{-1.0} から \texttt{1.0000000000000004} へ変換され、識別振動
 \texttt{m\_A=1}, \texttt{m\_B=2} は初期・最終読出しで保存された。
 
 以上により、外部条件分岐、人工的な \texttt{q=-q}
@@ -1062,13 +1293,13 @@ e^{-im\eta}
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \section{付録A.
-実行済みプログラムと出力}\label{ux4ed8ux9332a-ux5b9fux884cux6e08ux307fux30d7ux30edux30b0ux30e9ux30e0ux3068ux51faux529b}
+実行済みプログラムと出力}\label{ux4ed8ux9332a.-ux5b9fux884cux6e08ux307fux30d7ux30edux30b0ux30e9ux30e0ux3068ux51faux529b}
 
 今回の実行に用いたプログラムは次である。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_fermionic\_interference\_reflection\_v1.py}
+\NormalTok{run\_fermionic\_interference\_reflection\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1076,42 +1307,48 @@ e^{-im\eta}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{fermionic\_interference\_reflection\_result\_v1/}
+\NormalTok{fermionic\_interference\_reflection\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
 主要出力は次である。
 
 {\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}ll@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
 \toprule\noalign{}
-種類 & ファイル \\
+\begin{minipage}[b]{\linewidth}\raggedright
+種類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ファイル
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
 実行レポート &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_reflection_report_v1.md}{fermionic\_interference\_reflection\_report\_v1.md} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_reflection_report_v2.md}{fermionic\_interference\_reflection\_report\_v2.md} \\
 結果 JSON &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_reflection_result_v1.json}{fermionic\_interference\_reflection\_result\_v1.json} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_reflection_result_v2.json}{fermionic\_interference\_reflection\_result\_v2.json} \\
 位相掃引 CSV &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_phase_sweep_v1.csv}{fermionic\_interference\_phase\_sweep\_v1.csv} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_phase_sweep_v2.csv}{fermionic\_interference\_phase\_sweep\_v2.csv} \\
 相対時間発展 CSV &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_relative_dynamics_v1.csv}{fermionic\_interference\_relative\_dynamics\_v1.csv} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_relative_dynamics_v2.csv}{fermionic\_interference\_relative\_dynamics\_v2.csv} \\
 片側入射散乱 CSV &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_single_sided_scattering_v1.csv}{fermionic\_interference\_single\_sided\_scattering\_v1.csv} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_single_sided_scattering_v2.csv}{fermionic\_interference\_single\_sided\_scattering\_v2.csv} \\
 可逆性 CSV &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_reversibility_sweep_v1.csv}{fermionic\_interference\_reversibility\_sweep\_v1.csv} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_reversibility_sweep_v2.csv}{fermionic\_interference\_reversibility\_sweep\_v2.csv} \\
 AB/C 差し替え CSV &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_ab_c_replacement_timeline_v1.csv}{fermionic\_interference\_ab\_c\_replacement\_timeline\_v1.csv} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_ab_c_replacement_timeline_v2.csv}{fermionic\_interference\_ab\_c\_replacement\_timeline\_v2.csv} \\
 交換干渉節の図 &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_phase_sweep_v1.png}{fermionic\_interference\_phase\_sweep\_v1.png} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_phase_sweep_v2.png}{fermionic\_interference\_phase\_sweep\_v2.png} \\
 相対時間発展の図 &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_relative_dynamics_v1.png}{fermionic\_interference\_relative\_dynamics\_v1.png} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_relative_dynamics_v2.png}{fermionic\_interference\_relative\_dynamics\_v2.png} \\
 片側入射散乱の図 &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_single_sided_scattering_v1.png}{fermionic\_interference\_single\_sided\_scattering\_v1.png} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_single_sided_scattering_v2.png}{fermionic\_interference\_single\_sided\_scattering\_v2.png} \\
 AB/C 差し替えの図 &
-\href{fermionic_interference_reflection_result_v1/fermionic_interference_ab_c_replacement_v1.png}{fermionic\_interference\_ab\_c\_replacement\_v1.png} \\
+\href{fermionic_interference_reflection_result_v2/fermionic_interference_ab_c_replacement_v2.png}{fermionic\_interference\_ab\_c\_replacement\_v2.png} \\
 \end{longtable}
 }
 
@@ -1119,7 +1356,7 @@ AB/C 差し替えの図 &
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_fermionic\_interference\_reflection\_v1.py}
+\NormalTok{python3 run\_fermionic\_interference\_reflection\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1151,7 +1388,7 @@ AB/C 差し替えの図 &
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \section{付録B.
-旧雛形の扱い}\label{ux4ed8ux9332b-ux65e7ux96dbux5f62ux306eux6271ux3044}
+旧雛形の扱い}\label{ux4ed8ux9332b.-ux65e7ux96dbux5f62ux306eux6271ux3044}
 
 ChatGPT
 が作成した旧プログラム雛形は、今回の判定には使用しない。理由は、旧雛形の

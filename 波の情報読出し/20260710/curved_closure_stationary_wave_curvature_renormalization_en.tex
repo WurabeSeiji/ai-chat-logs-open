@@ -1,7 +1,9 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
 \documentclass[
+  a4paper,
 ]{article}
 \usepackage{xcolor}
 \usepackage[margin=24mm]{geometry}
@@ -21,6 +23,14 @@
 \ifPDFTeX\else
   % xetex/luatex font selection
   \setmonofont[]{DejaVuSansMono.ttf}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{HaranoAjiMincho-Regular.otf}
+  \fi
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -103,19 +113,19 @@
 \begin{document}
 
 \section{Curvature Renormalization and Perfect-Reflection Stability by
-Curved Closed Stationary
-Waves}\label{curvature-renormalization-and-perfect-reflection-stability-by-curved-closed-stationary-waves}
+Curved Closed Stationary Waves
+v2}\label{curvature-renormalization-and-perfect-reflection-stability-by-curved-closed-stationary-waves-v2}
 
 \textbf{Subtitle:} Numerical constructive experiment on the detection,
 re-selection, and exchange-interference reflection recovery of
 curvature-induced relative phase leakage under the all-positive zero
-closure \texttt{Σx\_n\^{}2=0}\\
-\textbf{Date:} 2026-07-11\\
-\textbf{Author:} Noriaki Kihara\\
-\textbf{Position:} Additional paper in the Wave Information Readout
-series\\
-\textbf{Version DOI:} 10.5281/zenodo.21304040 \textbf{Concept DOI:}
-10.5281/zenodo.21304039
+closure \texttt{Σx\_n\^{}2=0} \textbf{Date:} 2026-07-11 \textbf{Author:}
+Noriaki Kihara \textbf{Position:} Additional paper in the Wave
+Information Readout series \textbf{Version DOI:} 10.5281/zenodo.21332874
+\textbf{Concept DOI:} 10.5281/zenodo.21304039
+
+V2 recalculates the same conditions after changing the formula for the
+fermion-like reflection map.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -206,7 +216,7 @@ In the integrated one-sided scattering verification, the residual
 curvature phase obtained from the broad sweep was returned to the local
 exchange-interference map. The uncorrected case produced maximum dynamic
 transmission leakage \texttt{1.6202719613622971e-01}, whereas the
-\texttt{full} correction reduced it to \texttt{1.6608667989341789e-19}.
+\texttt{full} correction reduced it to \texttt{1.6608667985580024e-19}.
 The dynamic scattering matched the two-channel expectation with maximum
 error \texttt{5.551115123125783e-17}, and the maximum norm error was
 \texttt{4.440892098500626e-16}.
@@ -582,7 +592,7 @@ The executed script is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_curved\_closure\_stationary\_wave\_v1.py}
+\NormalTok{run\_curved\_closure\_stationary\_wave\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -590,7 +600,7 @@ The output directory is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{curved\_closure\_stationary\_wave\_result\_v1/}
+\NormalTok{curved\_closure\_stationary\_wave\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -637,7 +647,7 @@ The executed script is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_curved\_closure\_stationary\_wave\_broad\_sweep\_v1.py}
+\NormalTok{run\_curved\_closure\_stationary\_wave\_broad\_sweep\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -645,7 +655,7 @@ The output directory is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{curved\_closure\_stationary\_wave\_broad\_sweep\_result\_v1/}
+\NormalTok{curved\_closure\_stationary\_wave\_broad\_sweep\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -731,7 +741,7 @@ The executed script is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{run\_curved\_closure\_scattering\_integration\_v1.py}
+\NormalTok{run\_curved\_closure\_scattering\_integration\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -739,7 +749,7 @@ The output directory is:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{curved\_closure\_scattering\_integration\_result\_v1/}
+\NormalTok{curved\_closure\_scattering\_integration\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -781,8 +791,8 @@ quadratic & \texttt{1.1598359742226147e-01} &
 \texttt{1.2300337923101595e-02} & \texttt{2.7755575615628914e-17} \\
 cubic & \texttt{1.1567739316276089e-01} &
 \texttt{1.2278927640523116e-02} & \texttt{2.7755575615628914e-17} \\
-full & \texttt{1.6608667989341789e-19} & \texttt{7.8949412793793227e-19}
-& \texttt{1.6608667989341789e-19} \\
+full & \texttt{1.6608667985580024e-19} & \texttt{7.8949412793793227e-19}
+& \texttt{1.6608667985580024e-19} \\
 \end{longtable}
 }
 
@@ -950,7 +960,7 @@ In the integrated one-sided local exchange-interference scattering
 verification, the uncorrected case produced maximum dynamic transmission
 leakage \texttt{1.6202719613622971e-01}, while the \texttt{full}
 correction reduced maximum dynamic transmission leakage to
-\texttt{1.6608667989341789e-19}.
+\texttt{1.6608667985580024e-19}.
 
 Therefore, within the numerical constructive scope of this paper,
 curvature effects are not ignored. Curvature-induced relative phase
@@ -976,7 +986,7 @@ Outputs}\label{appendix-a.-executed-programs-and-outputs}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_curved\_closure\_stationary\_wave\_v1.py}
+\NormalTok{python3 run\_curved\_closure\_stationary\_wave\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -984,7 +994,7 @@ Output:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{curved\_closure\_stationary\_wave\_result\_v1/}
+\NormalTok{curved\_closure\_stationary\_wave\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1005,17 +1015,17 @@ File
 \bottomrule\noalign{}
 \endlastfoot
 Report &
-\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_report_v1.md}{curved\_closure\_stationary\_wave\_report\_v1.md} \\
+\href{curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_report_v2.md}{curved\_closure\_stationary\_wave\_report\_v2.md} \\
 JSON &
-\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_result_v1.json}{curved\_closure\_stationary\_wave\_result\_v1.json} \\
+\href{curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_result_v2.json}{curved\_closure\_stationary\_wave\_result\_v2.json} \\
 sweep CSV &
-\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_sweep_v1.csv}{curved\_closure\_stationary\_wave\_sweep\_v1.csv} \\
+\href{curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_sweep_v2.csv}{curved\_closure\_stationary\_wave\_sweep\_v2.csv} \\
 relaxation CSV &
-\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_relaxation_v1.csv}{curved\_closure\_stationary\_wave\_relaxation\_v1.csv} \\
+\href{curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_relaxation_v2.csv}{curved\_closure\_stationary\_wave\_relaxation\_v2.csv} \\
 sweep figure &
-\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_sweep_v1.png}{curved\_closure\_stationary\_wave\_sweep\_v1.png} \\
+\href{curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_sweep_v2.png}{curved\_closure\_stationary\_wave\_sweep\_v2.png} \\
 relaxation figure &
-\href{curved_closure_stationary_wave_result_v1/curved_closure_stationary_wave_relaxation_v1.png}{curved\_closure\_stationary\_wave\_relaxation\_v1.png} \\
+\href{curved_closure_stationary_wave_result_v2/curved_closure_stationary_wave_relaxation_v2.png}{curved\_closure\_stationary\_wave\_relaxation\_v2.png} \\
 \end{longtable}
 }
 
@@ -1023,7 +1033,7 @@ relaxation figure &
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_curved\_closure\_stationary\_wave\_broad\_sweep\_v1.py}
+\NormalTok{python3 run\_curved\_closure\_stationary\_wave\_broad\_sweep\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1031,7 +1041,7 @@ Output:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{curved\_closure\_stationary\_wave\_broad\_sweep\_result\_v1/}
+\NormalTok{curved\_closure\_stationary\_wave\_broad\_sweep\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1052,19 +1062,19 @@ File
 \bottomrule\noalign{}
 \endlastfoot
 Report &
-\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_report_v1.md}{curved\_closure\_stationary\_wave\_broad\_report\_v1.md} \\
+\href{curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_report_v2.md}{curved\_closure\_stationary\_wave\_broad\_report\_v2.md} \\
 JSON &
-\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_sweep_result_v1.json}{curved\_closure\_stationary\_wave\_broad\_sweep\_result\_v1.json} \\
+\href{curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_sweep_result_v2.json}{curved\_closure\_stationary\_wave\_broad\_sweep\_result\_v2.json} \\
 sweep CSV &
-\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_sweep_v1.csv}{curved\_closure\_stationary\_wave\_broad\_sweep\_v1.csv} \\
+\href{curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_sweep_v2.csv}{curved\_closure\_stationary\_wave\_broad\_sweep\_v2.csv} \\
 control CSV &
-\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_conformal_control_v1.csv}{curved\_closure\_stationary\_wave\_broad\_conformal\_control\_v1.csv} \\
+\href{curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_conformal_control_v2.csv}{curved\_closure\_stationary\_wave\_broad\_conformal\_control\_v2.csv} \\
 aggregate figure &
-\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_aggregate_v1.png}{curved\_closure\_stationary\_wave\_broad\_aggregate\_v1.png} \\
+\href{curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_aggregate_v2.png}{curved\_closure\_stationary\_wave\_broad\_aggregate\_v2.png} \\
 closure heatmap &
-\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_closure_heatmap_v1.png}{curved\_closure\_stationary\_wave\_broad\_closure\_heatmap\_v1.png} \\
+\href{curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_closure_heatmap_v2.png}{curved\_closure\_stationary\_wave\_broad\_closure\_heatmap\_v2.png} \\
 leakage heatmap &
-\href{curved_closure_stationary_wave_broad_sweep_result_v1/curved_closure_stationary_wave_broad_leakage_heatmap_v1.png}{curved\_closure\_stationary\_wave\_broad\_leakage\_heatmap\_v1.png} \\
+\href{curved_closure_stationary_wave_broad_sweep_result_v2/curved_closure_stationary_wave_broad_leakage_heatmap_v2.png}{curved\_closure\_stationary\_wave\_broad\_leakage\_heatmap\_v2.png} \\
 \end{longtable}
 }
 
@@ -1073,7 +1083,7 @@ Integration}\label{a.3-one-sided-scattering-integration}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{python3 run\_curved\_closure\_scattering\_integration\_v1.py}
+\NormalTok{python3 run\_curved\_closure\_scattering\_integration\_v2.py}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1081,7 +1091,7 @@ Output:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{curved\_closure\_scattering\_integration\_result\_v1/}
+\NormalTok{curved\_closure\_scattering\_integration\_result\_v2/}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1102,13 +1112,13 @@ File
 \bottomrule\noalign{}
 \endlastfoot
 Report &
-\href{curved_closure_scattering_integration_result_v1/curved_closure_scattering_integration_report_v1.md}{curved\_closure\_scattering\_integration\_report\_v1.md} \\
+\href{curved_closure_scattering_integration_result_v2/curved_closure_scattering_integration_report_v2.md}{curved\_closure\_scattering\_integration\_report\_v2.md} \\
 JSON &
-\href{curved_closure_scattering_integration_result_v1/curved_closure_scattering_integration_result_v1.json}{curved\_closure\_scattering\_integration\_result\_v1.json} \\
+\href{curved_closure_scattering_integration_result_v2/curved_closure_scattering_integration_result_v2.json}{curved\_closure\_scattering\_integration\_result\_v2.json} \\
 CSV &
-\href{curved_closure_scattering_integration_result_v1/curved_closure_scattering_integration_v1.csv}{curved\_closure\_scattering\_integration\_v1.csv} \\
+\href{curved_closure_scattering_integration_result_v2/curved_closure_scattering_integration_v2.csv}{curved\_closure\_scattering\_integration\_v2.csv} \\
 Figure &
-\href{curved_closure_scattering_integration_result_v1/curved_closure_scattering_integration_v1.png}{curved\_closure\_scattering\_integration\_v1.png} \\
+\href{curved_closure_scattering_integration_result_v2/curved_closure_scattering_integration_v2.png}{curved\_closure\_scattering\_integration\_v2.png} \\
 \end{longtable}
 }
 
@@ -1133,7 +1143,7 @@ Figure &
 \item
   Noriaki Kihara, ``Interference Construction of a Perfect Reflection
   Map from a Fermionic Inverse-Phase Core,'' Version DOI:
-  \texttt{10.5281/zenodo.21295480}, Concept DOI:
+  \texttt{10.5281/zenodo.21332867}, Concept DOI:
   \texttt{10.5281/zenodo.21295479}, 2026.
 \end{enumerate}
 
