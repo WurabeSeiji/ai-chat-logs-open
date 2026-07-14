@@ -5,7 +5,8 @@
 **Concept DOI:** https://doi.org/10.5281/zenodo.21353208  
 **Zenn:** https://zenn.dev/noriaki_kihara/articles/gray-cat-metastable-observation  
 **note (JA):** https://note.com/kiharanoriaki/n/n2901bcd95bba  
-**note (EN):** https://note.com/kiharanoriaki/n/n3350efb4e43c
+**note (EN):** https://note.com/kiharanoriaki/n/n3350efb4e43c  
+**Facebook (JA):** https://www.facebook.com/kihara.noriaki/posts/pfbid0C9LrT5YyihovXsbAKuscjwYKBqGtkB33dWPTd644mHUwMxxfhXzk1fxTzb8Gbcarl
 
 ## v2 Update
 
