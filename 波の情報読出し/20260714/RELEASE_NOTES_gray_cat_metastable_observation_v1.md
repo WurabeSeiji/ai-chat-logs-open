@@ -7,7 +7,9 @@
 **note (JA):** https://note.com/kiharanoriaki/n/n2901bcd95bba  
 **note (EN):** https://note.com/kiharanoriaki/n/n3350efb4e43c  
 **Facebook (JA):** https://www.facebook.com/kihara.noriaki/posts/pfbid0C9LrT5YyihovXsbAKuscjwYKBqGtkB33dWPTd644mHUwMxxfhXzk1fxTzb8Gbcarl  
-**Facebook (EN):** https://www.facebook.com/kihara.noriaki/posts/pfbid02fMRm5Aw5PXdZaLVhwhSj6DqPod344S4Twqa72tNSUCozUiNzL6kH4VaBEmgiPxUMl
+**Facebook (EN):** https://www.facebook.com/kihara.noriaki/posts/pfbid02fMRm5Aw5PXdZaLVhwhSj6DqPod344S4Twqa72tNSUCozUiNzL6kH4VaBEmgiPxUMl  
+**X (JA):** https://x.com/NoriakiKihara/status/2077012751151702481  
+**X (EN):** https://x.com/NoriakiKihara/status/2077013144988528861
 
 ## v2 Update
 
