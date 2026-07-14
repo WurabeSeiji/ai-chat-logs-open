@@ -1,9 +1,9 @@
-# Preliminary Numerical Study of Gray-Cat Metastable Interfaces, Weak C Readout, and Strong D Observation Selection in a Closed Phase System v1
+# Preliminary Numerical Study of Gray-Cat Metastable Interfaces, Weak C Readout, and Strong D Observation Selection in a Closed Phase System v2
 
 **Date:** 2026-07-14  
 **Author:** Noriaki Kihara  
 **Series:** Wave Information Readout / preliminary numerical study of A/B allocation metastability and observation selection in a closed system  
-**Version DOI:** 10.5281/zenodo.21353209  
+**Version DOI:** 10.5281/zenodo.21358203  
 **Concept DOI:** 10.5281/zenodo.21353208
 
 ---

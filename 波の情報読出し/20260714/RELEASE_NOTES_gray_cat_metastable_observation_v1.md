@@ -1,11 +1,18 @@
-# Release Notes: Gray-Cat Metastable Observation v1
+# Release Notes: Gray-Cat Metastable Observation v1/v2
 
 **Date:** 2026-07-14  
-**Version DOI:** https://doi.org/10.5281/zenodo.21353209  
+**Latest Version DOI:** https://doi.org/10.5281/zenodo.21358203  
 **Concept DOI:** https://doi.org/10.5281/zenodo.21353208  
 **Zenn:** https://zenn.dev/noriaki_kihara/articles/gray-cat-metastable-observation  
 **note (JA):** https://note.com/kiharanoriaki/n/n2901bcd95bba  
 **note (EN):** https://note.com/kiharanoriaki/n/n3350efb4e43c
+
+## v2 Update
+
+Updated the English main-paper figure references and PDF so that the English version uses English-labeled figures.
+
+- Version DOI: https://doi.org/10.5281/zenodo.21358203
+- Concept DOI: https://doi.org/10.5281/zenodo.21353208
 
 ## Summary
 
