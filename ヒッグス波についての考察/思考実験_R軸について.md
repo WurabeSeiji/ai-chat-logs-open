@@ -17,7 +17,7 @@
 **PDF（英語）**: [Reexamination_of_xyztRQ_thought_experiment_en.pdf](Reexamination_of_xyztRQ_thought_experiment_en.pdf)
 **note 記事（日本語）**: <https://note.com/kiharanoriaki/n/nc75457ca96f7>
 **note 記事（英語）**: <https://note.com/kiharanoriaki/n/n39fecf32607f>
-**Zenn 記事**: <https://zenn.dev/noriaki_kihara/articles/rethinking-xyztRQ-thought-experiment>
+**Zenn 記事**: <https://zenn.dev/noriaki_kihara/articles/rethinking-xyztrq-thought-experiment>
 
 ---
 

@@ -225,7 +225,7 @@ $$\delta = \frac{\pi^2}{2} - \alpha^{-1}(\alpha^{-1} - 137) \approx 0.001619$$
 - [α 同型（論文 8、Wilson との圏論的同型）](https://zenn.dev/noriaki_kihara/articles/alpha-isomorphism-lattice-gauge)
 - [論文 9（2D 面振動モードによる物理的解釈）](https://zenn.dev/noriaki_kihara/articles/paper9-2d-mode-drift)
 - [BH 熱力学プログラム（中核 6 篇）](https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection)
-- [Working Paper（6D 拡張の思考実験）](https://zenn.dev/noriaki_kihara/articles/rethinking-xyztRQ-thought-experiment)
+- [Working Paper（6D 拡張の思考実験）](https://zenn.dev/noriaki_kihara/articles/rethinking-xyztrq-thought-experiment)
 - [中心投影フレームワーク（10 論文）](https://zenn.dev/noriaki_kihara/articles/gnomonic-projection-spacetime-geometry)
 - [位相方程式篇（W1〜W11）](https://zenn.dev/noriaki_kihara/articles/phase-equation-hypercube-particle-classification)
 

@@ -238,7 +238,7 @@ CODATA 値：α⁻¹(0) = 137.035999084(21)
 ・α 同型（論文 8、Wilson との構造的対応）：https://zenn.dev/noriaki_kihara/articles/alpha-isomorphism-lattice-gauge
 ・論文 7 補講（観察論文）：https://zenn.dev/noriaki_kihara/articles/paper7-supplement-second-order-observation
 ・BH 熱力学プログラム（中核 6 篇）：https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection
-・Working Paper（6D 拡張の思考実験）：https://zenn.dev/noriaki_kihara/articles/rethinking-xyztRQ-thought-experiment
+・Working Paper（6D 拡張の思考実験）：https://zenn.dev/noriaki_kihara/articles/rethinking-xyztrq-thought-experiment
 
 ## 関連 note 記事
 

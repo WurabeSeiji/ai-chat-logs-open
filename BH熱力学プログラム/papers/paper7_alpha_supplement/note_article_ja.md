@@ -200,7 +200,7 @@ CODATA 2022 値 α⁻¹ = 137.035999177 から逆算すると：
 ・α 恒等式（論文 7）：https://zenn.dev/noriaki_kihara/articles/alpha-identity-4d-geometry
 ・α 同型（論文 8、Wilson との圏論的同型）：https://zenn.dev/noriaki_kihara/articles/alpha-isomorphism-lattice-gauge
 ・BH 熱力学プログラム（中核 6 篇）：https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection
-・Working Paper（6D 拡張の思考実験）：https://zenn.dev/noriaki_kihara/articles/rethinking-xyztRQ-thought-experiment
+・Working Paper（6D 拡張の思考実験）：https://zenn.dev/noriaki_kihara/articles/rethinking-xyztrq-thought-experiment
 
 ## 関連 note 記事
 

@@ -122,7 +122,7 @@ $$\Delta x \cdot \Delta k \geq \frac{1}{2}$$
 
 - **論文7（α 8.7 ppb 精度）**: [Zenn 記事](https://zenn.dev/noriaki_kihara/articles/alpha-identity-4d-geometry)
 - **論文8（Wilson 格子ゲージとの構造的対応）**: [Zenn 記事](https://zenn.dev/noriaki_kihara/articles/alpha-isomorphism-lattice-gauge)
-- **6次元符号 xyztRQ 思考実験**: [Zenn 記事](https://zenn.dev/noriaki_kihara/articles/rethinking-xyztRQ-thought-experiment)
+- **6次元符号 xyztRQ 思考実験**: [Zenn 記事](https://zenn.dev/noriaki_kihara/articles/rethinking-xyztrq-thought-experiment)
 
 本思考実験は、これらの定量的・幾何学的論文の概念的背景として位置づけられます。
 

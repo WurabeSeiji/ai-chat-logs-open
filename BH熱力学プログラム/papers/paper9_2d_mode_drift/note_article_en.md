@@ -236,7 +236,7 @@ Under our interpretation:
 - α isomorphism (Paper 8, structural correspondence with Wilson): https://zenn.dev/noriaki_kihara/articles/alpha-isomorphism-lattice-gauge
 - Paper 7 Supplement (observation paper): https://zenn.dev/noriaki_kihara/articles/paper7-supplement-second-order-observation
 - BH Thermodynamics Program (core 6 papers): https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection
-- Working Paper (6D extension thought experiment): https://zenn.dev/noriaki_kihara/articles/rethinking-xyztRQ-thought-experiment
+- Working Paper (6D extension thought experiment): https://zenn.dev/noriaki_kihara/articles/rethinking-xyztrq-thought-experiment
 
 ## Related note Articles
 

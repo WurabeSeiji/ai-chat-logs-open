@@ -200,7 +200,7 @@ Other open questions:
 - α identity (Paper 7): https://zenn.dev/noriaki_kihara/articles/alpha-identity-4d-geometry
 - α isomorphism (Paper 8, Wilson categorical correspondence): https://zenn.dev/noriaki_kihara/articles/alpha-isomorphism-lattice-gauge
 - BH Thermodynamics Programme (six core papers): https://zenn.dev/noriaki_kihara/articles/bh-thermodynamics-projection
-- Working Paper (6D extension thought experiment): https://zenn.dev/noriaki_kihara/articles/rethinking-xyztRQ-thought-experiment
+- Working Paper (6D extension thought experiment): https://zenn.dev/noriaki_kihara/articles/rethinking-xyztrq-thought-experiment
 
 ## Related Note Articles
 

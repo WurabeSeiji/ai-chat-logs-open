@@ -173,7 +173,7 @@
 |---|:-:|---|
 | Zenodo (v4、最新) | JA/EN bilingual | https://zenodo.org/records/19904714 |
 | Zenodo (Concept DOI) | — | https://doi.org/10.5281/zenodo.19902677 |
-| Zenn 記事（技術解説） | JA | https://zenn.dev/noriaki_kihara/articles/rethinking-xyztRQ-thought-experiment |
+| Zenn 記事（技術解説） | JA | https://zenn.dev/noriaki_kihara/articles/rethinking-xyztrq-thought-experiment |
 | note 記事（一般向け） | JA | https://note.com/kiharanoriaki/n/nc75457ca96f7 |
 | note 記事（一般向け） | EN | https://note.com/kiharanoriaki/n/n39fecf32607f |
 | Facebook 投稿 | JA | 個人タイムライン（2026-04-30、note JA 記事リンク）|
@@ -368,7 +368,7 @@
 | 2026-05-01 | 論文7 補講 note 記事公開：日本語版 https://note.com/kiharanoriaki/n/ne1dc24c07455、英語版 https://note.com/kiharanoriaki/n/n268fa839f6c4。観察論文と明示し、5 観察を箇条書きで提示。論文 7・8、Working Paper、Zenn 記事への双方向リンク完備。 |
 | 2026-05-01 | **論文7 補講（α 恒等式の二次補正項に関する幾何学的観察）v1 公開**：Concept DOI: 10.5281/zenodo.19933729、v1 Version DOI: 10.5281/zenodo.19933730。論文7 の残差 8.7 ppb の幾何学的解釈を**観察論文**として提示。核心：(1) π²/2 を $A_{S^3}/(4R^3)$ として読む解釈の提示、(2) $G(R) = (16\pi/3)R^3 - (3\pi^2/4 + 9\pi/2)R^2 + O(R)$ の漸近展開の厳密導出（球面積分 $\int_{S^3}\tau d\Omega = 16\pi/3$、$\int_{S^3}\tau^2 d\Omega = \pi^2/2 + 3\pi$）、(3) 第二項係数 $-(3\pi^2/4 + 9\pi/2) \approx -21.539$ が解析的に負、(4) 数値検証で R² 係数 ≈ -20 vs 理論 -21.539 の整合、(5) 観測残差 δ ≈ 0.001619 との符号・桁一致。**観察論文と明示**し、δ の完全導出は open question として残す。論文7 の主張は本補講に依存せず、論文7・8 の防御線を巻き添えにしない設計。日英 md/tex/pdf 全 6 ファイル Zenodo 公開。 |
 | 2026-04-30 | **Working Paper SNS 公開・全作業完了**：Facebook 日英両版を投稿（「6次元符号化 xyztRQ の再検討──思考実験ノートを Zenodo に公開」「Reexamining the 6-Dimensional Sign Vector xyztRQ: A Thought Experiment Note」、5観察を箇条書き、コメント欄に note/Zenn/Zenodo の URL）、X (Twitter) は @NoriakiKihara で日英両版を投稿（圧縮版、5観察の省略形と note URL）。「形式的論文ではない」「観察であり証明ではない」を明示し、トンデモ扱いを予防。**これにて2026年4月の一連の作業（中心投影フレームワーク37論文＋BH熱力学プログラム8論文＋Working Paper思考実験ノート）が完了**。Working Paper 独立公開セット（Zenodo v4 + Zenn + note 日英 + Facebook 日英 + X 日英）整備完了。 |
-| 2026-04-30 | Working Paper 独立公開セット完成：(1) note 記事（日英）公開（https://note.com/kiharanoriaki/n/nc75457ca96f7、https://note.com/kiharanoriaki/n/n39fecf32607f）、(2) Zenn 専用記事 articles/rethinking-xyztRQ-thought-experiment.md 作成（観察ベースのトーンで5観察を要約、関連 Zenn 記事への双方向リンク完備）。Working Paper の独立公開セットとして整備完了（Zenodo v4 + Zenn + note 日英）。論文 7・8 と同じパターンの公開ワークフローに統一。 |
+| 2026-04-30 | Working Paper 独立公開セット完成：(1) note 記事（日英）公開（https://note.com/kiharanoriaki/n/nc75457ca96f7、https://note.com/kiharanoriaki/n/n39fecf32607f）、(2) Zenn 専用記事 articles/rethinking-xyztrq-thought-experiment.md 作成（観察ベースのトーンで5観察を要約、関連 Zenn 記事への双方向リンク完備）。Working Paper の独立公開セットとして整備完了（Zenodo v4 + Zenn + note 日英）。論文 7・8 と同じパターンの公開ワークフローに統一。 |
 | 2026-04-30 | Working Paper v4 公開：付録 A・B・C を追加し誤読耐性を強化（v4 Version DOI: 10.5281/zenodo.19904714、Concept DOI 19902677 不変）。付録 A：戦略的公開設計の観察（公開済論文の積み上げ構造を表で記載）、付録 B：$R\to 0$ 極限での観察（観察のみ、主張ではないと明示）、付録 C：本稿が論文化されていない理由（独立研究者のリソース制約・トンデモ理論扱い回避）。トーンは「観察」「open question」を明示し形式的主張を避ける。ChatGPT との別ルート思考実験から得た補強。8 ファイル（md/tex/pdf/html × JA/EN）すべて再生成。 |
 | 2026-04-30 | Working Paper v3 公開：PDF を JA/EN 両言語追加し、標準公開ワークフロー（md/tex/pdf/html × JA/EN = 8 ファイル）完備（v3 Version DOI: 10.5281/zenodo.19904028、Concept DOI 19902677 不変）。PDF は Chrome headless mode で MathJax レンダリング済 HTML から生成（pandoc+lualatex は対話形式 md の数式記法調整が必要だったため迂回）。国際的な学術アーカイブ要件をすべて満たす形に到達。 |
 | 2026-04-30 | Working Paper v2 公開：JA/EN bilingual edition（v2 Version DOI: 10.5281/zenodo.19903783、Concept DOI 19902677 不変）。v1 (JA md+HTML のみ) に対し、英語版 md・LaTeX ソース（JA/EN）・HTML（JA/EN）を追加し計 6 ファイル構成。これまでの公開済論文（論文 7・8 等）と同じ JA/EN bilingual ワークフローに統一。PDF 生成は対話形式の md における数式記法調整が必要なため v3 以降に持ち越し。 |
