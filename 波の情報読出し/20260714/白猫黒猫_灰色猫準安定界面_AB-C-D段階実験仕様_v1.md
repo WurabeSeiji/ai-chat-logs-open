@@ -5,8 +5,8 @@
 **著者:** 木原 範昭  
 **位置づけ:** 波の情報読出しシリーズ／巨視的猫型準安定状態の段階実験仕様  
 **対象実装:** Python 数値実験  
-**Version DOI:** pending  
-**Concept DOI:** pending
+**Version DOI:** 10.5281/zenodo.21353209  
+**Concept DOI:** 10.5281/zenodo.21353208
 
 ---
 

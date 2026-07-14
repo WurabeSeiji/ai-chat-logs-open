@@ -3,8 +3,8 @@
 **日付:** 2026-07-14  
 **著者:** 木原 範昭  
 **位置づけ:** 波の情報読出しシリーズ・閉鎖系内A/B配分準安定状態と観測選択の予備実験  
-**Version DOI:** pending  
-**Concept DOI:** pending
+**Version DOI:** 10.5281/zenodo.21353209  
+**Concept DOI:** 10.5281/zenodo.21353208
 
 ---
 

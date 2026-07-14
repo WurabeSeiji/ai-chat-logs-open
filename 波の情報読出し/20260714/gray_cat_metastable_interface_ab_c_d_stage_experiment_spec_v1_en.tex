@@ -1,0 +1,626 @@
+
+\documentclass{article}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setmonofont{Menlo}
+
+\usepackage{amsmath,amssymb,booktabs,longtable,array,calc,graphicx,xcolor,hyperref}
+\usepackage[margin=25mm]{geometry}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\pandocbounded}[1]{\begin{center}\resizebox{0.96\linewidth}{!}{#1}\end{center}}
+\newcounter{none}
+\makeatletter
+\define@key{Gin}{alt}{}
+\makeatother
+
+\begin{document}
+\section{Experimental Specification for the White-Cat, Black-Cat, and
+Gray-Cat Metastable Interface in AB-C-D Stages
+v1}\label{experimental-specification-for-the-white-cat-black-cat-and-gray-cat-metastable-interface-in-ab-c-d-stages-v1}
+
+\textbf{Subtitle:} Closed-system numerical experiment on the AB two-body
+metastable interface, weak C readout, and strong D observation for
+white-cat, black-cat, and gray-cat branching\\
+\textbf{Date:} 2026-07-14\\
+\textbf{Author:} Noriaki Kihara\\
+\textbf{Series:} Wave Information Readout / staged experiment for
+macroscopic cat-like metastable states\\
+\textbf{Target implementation:} Python numerical experiment\\
+\textbf{Version DOI:} 10.5281/zenodo.21353209\\
+\textbf{Concept DOI:} 10.5281/zenodo.21353208
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{0. Summary}\label{summary}
+
+This experiment does not assume in advance that an equal-allocation
+state of the white-cat state \texttt{A} and the black-cat state
+\texttt{B} is merely an unselected superposition.
+
+First, the AB two-body system alone is used to distinguish three phases.
+
+\begin{verbatim}
+gray eigen phase:
+  A/B remains fixed near 0.5/0.5.
+
+gray metastable phase:
+  A/B oscillates weakly near 0.5/0.5 but does not naturally converge to one side.
+
+natural selection phase:
+  A or B is selected even without C or D.
+\end{verbatim}
+
+Then C is added to test whether the metastable state can be read without
+selection. Finally D is added to test whether observation selects either
+A or B.
+
+The first checkpoint is not the action of C or D.
+
+\begin{verbatim}
+The first checkpoint is to find the interface between the gray eigen phase,
+gray metastable phase, and natural selection phase in AB alone.
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Purpose}\label{purpose}
+
+The experiment checks the following stages in order.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Classify the gray eigen phase, gray metastable phase, and natural
+  selection phase in AB alone.
+\item
+  Add C and test whether a gray eigen or metastable state can be read
+  without selection.
+\item
+  Add D and test the conditions under which observation selects A or B.
+\item
+  Confirm whether a gray eigen phase remains gray even under D.
+\item
+  In large-amplitude regions where A/B is already separated, confirm
+  that D agrees with the C readout.
+\end{enumerate}
+
+D is not assumed to always cause collapse.
+
+If a gray cat has already become an eigen state, it does not need to
+fall into white or black under D.
+
+If A/B is already clearly separated, the D result is treated as a
+readout of an already existing A/B branching, not as a selection created
+by D.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. State Variables}\label{state-variables}
+
+At minimum, the following variables are recorded.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+meaning
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{a} & complex amplitude of white-cat A \\
+\texttt{b} & complex amplitude of black-cat B \\
+\texttt{p\_A\ =\ \textbar{}a\textbar{}\^{}2} & white-cat allocation \\
+\texttt{p\_B\ =\ \textbar{}b\textbar{}\^{}2} & black-cat allocation \\
+\texttt{Q\ =\ p\_A\ +\ p\_B} & total A/B amount \\
+\texttt{S\ =\ p\_A\ -\ p\_B} & A/B selection order variable \\
+\texttt{S\_amp} & oscillation amplitude of \texttt{S} \\
+\texttt{S\_drift} & long-time drift of \texttt{S} \\
+\texttt{C\_A,\ C\_B} & A/B readout by C \\
+\texttt{D\_A,\ D\_B} & A/B readout by D \\
+\texttt{L\_A,\ L\_B} & localization of A/B \\
+\texttt{N\_eff\_A,\ N\_eff\_B} & effective harmonic order of A/B \\
+\texttt{E\_total} & total conserved quantity or conservation registry
+quantity \\
+\end{longtable}
+}
+
+The central checks are:
+
+\begin{verbatim}
+whether Q is conserved;
+whether S is fixed, weakly oscillating, or naturally growing;
+whether C and D change the phase classification of S.
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. AB Two-Body Metastable Interface
+Experiment}\label{ab-two-body-metastable-interface-experiment}
+
+\subsection{3.1 Purpose}\label{purpose-1}
+
+The AB system alone is used to test what kind of state the gray cat is.
+
+\begin{verbatim}
+C = off
+D = off
+\end{verbatim}
+
+No observation-induced selection is included at this stage.
+
+\subsection{3.2 Initial State}\label{initial-state}
+
+The reference initial values are
+
+\[
+a_0 = \frac{1}{\sqrt{2}},
+\]
+
+\[
+b_0 = \frac{e^{i\phi_0}}{\sqrt{2}}.
+\]
+
+Then
+
+\[
+Q_0 = |a_0|^2 + |b_0|^2 = 1,
+\]
+
+\[
+S_0 = |a_0|^2 - |b_0|^2 = 0.
+\]
+
+When a small initial bias is inserted,
+
+\[
+p_{A,0} = \frac12 + s_0,
+\]
+
+\[
+p_{B,0} = \frac12 - s_0.
+\]
+
+\subsection{3.3 AB Exchange Map}\label{ab-exchange-map}
+
+The minimal AB exchange map is
+
+\[
+\begin{pmatrix}
+a_{k+1}\\
+b_{k+1}
+\end{pmatrix}
+=
+U_\epsilon
+\begin{pmatrix}
+a_k\\
+b_k
+\end{pmatrix},
+\]
+
+\[
+U_\epsilon
+=
+\begin{pmatrix}
+\cos\epsilon & i\sin\epsilon\\
+i\sin\epsilon & \cos\epsilon
+\end{pmatrix}.
+\]
+
+This map alone gives a simple unitary exchange oscillation.
+
+If needed, a weak restoring term or weak nonlinear term is added to test
+closed-system stability. However, a term that causes one-sided natural
+convergence without C or D is not used for the cat-selection experiment.
+
+\subsection{3.4 Sweep Parameters}\label{sweep-parameters}
+
+At minimum, the following parameters are swept.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+parameter & meaning \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{epsilon} & strength of AB exchange oscillation \\
+\texttt{phi\_0} & initial relative phase \\
+\texttt{s\_0} & small initial A/B bias \\
+\texttt{noise\_amp} & numerical fluctuation or small disturbance \\
+\texttt{K} & number of evolution steps \\
+\end{longtable}
+}
+
+When the gray cat is treated as a harmonic metastable state, the
+amplitude of \texttt{S} is kept small.
+
+The target condition is
+
+\begin{verbatim}
+S_amp < S_gray_limit.
+\end{verbatim}
+
+The initial guide values are:
+
+\begin{verbatim}
+S_gray_limit = 0.05
+S_amp target = about 0.01 to 0.03
+\end{verbatim}
+
+\subsection{3.5 Phase Classification}\label{phase-classification}
+
+The AB two-body results are classified into three phases.
+
+\subsubsection{Gray Eigen Phase}\label{gray-eigen-phase}
+
+\begin{verbatim}
+S_mean ≈ 0
+S_amp -> 0
+S_drift ≈ 0
+Q ≈ 1
+\end{verbatim}
+
+In this case, the equal A/B allocation is treated as a new gray-cat
+eigen state.
+
+\subsubsection{Gray Metastable Phase}\label{gray-metastable-phase}
+
+\begin{verbatim}
+S_mean ≈ 0
+0 < S_amp < S_gray_limit
+S_drift ≈ 0
+Q ≈ 1
+\end{verbatim}
+
+This phase is the main target for the D selection experiment.
+
+\subsubsection{Natural Selection Phase}\label{natural-selection-phase}
+
+\begin{verbatim}
+abs(S) grows without C or D
+S -> +1 or S -> -1
+\end{verbatim}
+
+In this phase, observation-induced selection cannot be claimed.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. C Readout Experiment}\label{c-readout-experiment}
+
+\subsection{4.1 Purpose}\label{purpose-2}
+
+C is added to a gray eigen or gray metastable state found in AB.
+
+\begin{verbatim}
+C = on
+D = off
+\end{verbatim}
+
+C reads the A/B allocation. At this stage, C must not push the system
+into one side.
+
+\subsection{4.2 C Readout Quantities}\label{c-readout-quantities}
+
+C reads:
+
+\[
+C_A \approx p_A,
+\]
+
+\[
+C_B \approx p_B.
+\]
+
+The error is recorded as
+
+\[
+E_C = |C_A-p_A| + |C_B-p_B|.
+\]
+
+\subsection{4.3 C Acceptance Conditions}\label{c-acceptance-conditions}
+
+For the gray metastable phase:
+
+\begin{verbatim}
+E_C < tol_C
+abs(S_afterC - S_beforeC) < epsilon_C
+no selection
+\end{verbatim}
+
+For the gray eigen phase:
+
+\begin{verbatim}
+C_A ≈ 0.5
+C_B ≈ 0.5
+S remains near 0
+\end{verbatim}
+
+For the large-amplitude region, C reads the current A/B bias.
+
+\begin{verbatim}
+C_A > C_B if S > 0
+C_B > C_A if S < 0
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. D Observation Experiment}\label{d-observation-experiment}
+
+\subsection{5.1 Purpose}\label{purpose-3}
+
+D is then added.
+
+\begin{verbatim}
+C = optional
+D = on
+\end{verbatim}
+
+D is a strong observation map used to test whether the system falls into
+either A or B.
+
+The result is classified by state phase.
+
+\subsection{5.2 D in the Gray Eigen
+Phase}\label{d-in-the-gray-eigen-phase}
+
+For the gray eigen phase, the test asks whether the gray state remains
+gray under D.
+
+The expected judgment is:
+
+\begin{verbatim}
+D_A ≈ 0.5
+D_B ≈ 0.5
+S remains near 0
+\end{verbatim}
+
+In this case, not falling into white or black is the result.
+
+\subsection{5.3 D in the Gray Metastable
+Phase}\label{d-in-the-gray-metastable-phase}
+
+For the gray metastable phase, the test asks whether D selects one side.
+
+The judgment is:
+
+\begin{verbatim}
+D_A ≈ 1, D_B ≈ 0
+\end{verbatim}
+
+or
+
+\begin{verbatim}
+D_A ≈ 0, D_B ≈ 1
+\end{verbatim}
+
+If the same fall occurs without D, it is not judged as D-induced
+selection.
+
+\subsection{5.4 D in the Large-Amplitude Separated
+Region}\label{d-in-the-large-amplitude-separated-region}
+
+When A/B is already clearly separated, D only needs to read the current
+A/B bias.
+
+The D readout should agree with the C readout:
+
+\begin{verbatim}
+sign(D_A - D_B) = sign(C_A - C_B)
+\end{verbatim}
+
+If this agreement is obtained, D is judged to have read an already
+existing A/B bias, rather than creating the selection.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Four-Stage Main
+Experiment}\label{four-stage-main-experiment}
+
+\subsection{Stage 1: AB Metastable Interface
+Search}\label{stage-1-ab-metastable-interface-search}
+
+\begin{verbatim}
+C = off
+D = off
+\end{verbatim}
+
+Output:
+
+\begin{verbatim}
+gray eigen phase
+gray metastable phase
+natural selection phase
+\end{verbatim}
+
+\subsection{Stage 2: C Readout
+Confirmation}\label{stage-2-c-readout-confirmation}
+
+\begin{verbatim}
+C = on
+D = off
+\end{verbatim}
+
+Output:
+
+\begin{verbatim}
+C_read_error
+C_induced_bias
+C_selection_triggered
+\end{verbatim}
+
+\subsection{Stage 3: D Observation
+Confirmation}\label{stage-3-d-observation-confirmation}
+
+\begin{verbatim}
+C = off or recorded
+D = on
+\end{verbatim}
+
+Output:
+
+\begin{verbatim}
+D_result
+D_induced_selection
+D_vs_C_agreement
+\end{verbatim}
+
+\subsection{Stage 4: C-D Comparison}\label{stage-4-c-d-comparison}
+
+The same AB initial condition is compared under C readout and D
+observation.
+
+Checks:
+
+\begin{verbatim}
+gray eigen phase:
+  C and D both read 0.5/0.5.
+
+gray metastable phase:
+  C reads but does not select.
+  D is tested for one-sided selection.
+
+large-amplitude separated region:
+  C and D read the same A/B bias.
+  This is not treated as observation-created selection.
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. Acceptance Conditions}\label{acceptance-conditions}
+
+The minimum acceptance conditions are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  AB alone can classify the gray eigen phase, gray metastable phase, and
+  natural selection phase.
+\item
+  In the gray metastable phase, C can read the A/B allocation without
+  selecting one side.
+\item
+  In the gray eigen phase, D does not make the system fall into white or
+  black.
+\item
+  In the gray metastable phase, D-induced selection can be judged by
+  comparison with a no-D control.
+\item
+  In the large-amplitude separated region, D agrees with the C readout.
+\item
+  \texttt{Q} or the total conservation registry remains conserved within
+  tolerance.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. Failure Conditions}\label{failure-conditions}
+
+The experiment does not proceed to later C/D stages if:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  All AB-only conditions naturally fall into selection.
+\item
+  \texttt{Q} is not conserved.
+\item
+  C always causes selection.
+\item
+  C cannot read the A/B allocation.
+\item
+  D/no-D differences cannot be classified.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. Result Fields}\label{result-fields}
+
+\subsection{9.1 Stage 1: AB Metastable Interface
+Search}\label{stage-1-ab-metastable-interface-search-1}
+
+Output:
+
+\begin{verbatim}
+gray_cat_ab_metastable_interface_preliminary_result_v1/
+\end{verbatim}
+
+Result:
+
+\begin{verbatim}
+total_cases = 5600
+gray_eigen = 1248
+gray_metastable = 733
+large_oscillation = 470
+natural_selection = 1070
+unstable_or_drifting = 2079
+\end{verbatim}
+
+\subsection{9.2 Stage 2: C Readout
+Window}\label{stage-2-c-readout-window}
+
+Output:
+
+\begin{verbatim}
+gray_cat_c_readout_window_preliminary_result_v1/
+\end{verbatim}
+
+Result:
+
+\begin{verbatim}
+total_cases = 1080
+C_window_count = 247
+C_informative_window_count = 144
+C_nonzero_backaction_window_count = 114
+\end{verbatim}
+
+\subsection{9.3 Stage 3: D Observation
+Response}\label{stage-3-d-observation-response}
+
+Output:
+
+\begin{verbatim}
+gray_cat_d_observation_response_preliminary_result_v1/
+\end{verbatim}
+
+Result:
+
+\begin{verbatim}
+total_cases = 7056
+D_induced_selection_count = 2016
+gray_kept_eigen = 1062
+white_selected = 1244
+black_selected = 772
+\end{verbatim}
+
+\subsection{9.4 Stage 4: D Selection
+Boundary}\label{stage-4-d-selection-boundary}
+
+Output:
+
+\begin{verbatim}
+gray_cat_d_selection_boundary_preliminary_result_v1/
+\end{verbatim}
+
+Result:
+
+\begin{verbatim}
+boundary_points = 438
+selection_possible_boundary_points = 438
+no_selection_boundary_points = 0
+min_D_gain_overall = 0.0225
+max_min_D_gain_overall = 0.065
+\end{verbatim}
+\end{document}

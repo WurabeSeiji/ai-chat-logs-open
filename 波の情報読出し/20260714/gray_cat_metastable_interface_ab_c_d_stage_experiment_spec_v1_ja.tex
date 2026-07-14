@@ -1,0 +1,650 @@
+
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Times New Roman}
+\setCJKmainfont{Hiragino Sans}
+\setmonofont{Menlo}
+\setCJKmonofont{Hiragino Sans}
+
+\usepackage{amsmath,amssymb,booktabs,longtable,array,calc,graphicx,xcolor,hyperref}
+\usepackage[margin=25mm]{geometry}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\pandocbounded}[1]{\begin{center}\resizebox{0.96\linewidth}{!}{#1}\end{center}}
+\newcounter{none}
+\makeatletter
+\define@key{Gin}{alt}{}
+\makeatother
+
+\begin{document}
+\section{白猫・黒猫・灰色猫準安定界面におけるAB-C-D段階実験仕様
+v1}\label{ux767dux732bux9ed2ux732bux7070ux8272ux732bux6e96ux5b89ux5b9aux754cux9762ux306bux304aux3051ux308bab-c-dux6bb5ux968eux5b9fux9a13ux4ed5ux69d8-v1}
+
+\textbf{副題:}
+AB二体準安定界面、C弱読出し、D強観測による白猫・黒猫・灰色猫分岐の閉鎖系数値実験\\
+\textbf{作成日:} 2026-07-14\\
+\textbf{著者:} 木原 範昭\\
+\textbf{位置づけ:}
+波の情報読出しシリーズ／巨視的猫型準安定状態の段階実験仕様\\
+\textbf{対象実装:} Python 数値実験\\
+\textbf{Version DOI:} 10.5281/zenodo.21353209\\
+\textbf{Concept DOI:} 10.5281/zenodo.21353208
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{0. 実験の要約}\label{ux5b9fux9a13ux306eux8981ux7d04}
+
+本実験は、白猫状態 \texttt{A} と黒猫状態 \texttt{B}
+が等配分近傍にある状態を、直ちに「選択前の重ね合わせ」と仮定しない。
+
+まず、AB二体系だけで次の三相を判別する。
+
+\begin{verbatim}
+灰色猫固有相:
+  A/B = 0.5/0.5 近傍に固定される。
+
+灰色猫準安定相:
+  A/B = 0.5/0.5 近傍で微小振動するが、一方へ自然収束しない。
+
+自然選択相:
+  CもDもないのに、AまたはBへ落ちる。
+\end{verbatim}
+
+その後、Cを置いて準安定状態が読出し可能かを確認し、さらにDを置いて、観測によりABどちらかの状態へ落ちるかを検査する。
+
+本実験の第一関門は、CやDの作用ではない。
+
+\begin{verbatim}
+AB二体だけで、灰色猫固有相・灰色猫準安定相・自然選択相の界面を探すこと。
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 目的}\label{ux76eeux7684}
+
+本実験の目的は、次の段階を順に確認することである。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  AB二体だけで、灰色猫固有相・灰色猫準安定相・自然選択相を分類する。
+\item
+  Cを加えて、灰色猫固有相または準安定相を選択せずに読めるか確認する。
+\item
+  Dを加えて、観測によりA/Bの一方へ落ちる条件を調べる。
+\item
+  灰色猫固有相では、Dを加えても灰色状態が保持されるか確認する。
+\item
+  A/Bが明確に分かれている大振幅領域では、Dの結果がC読出しと一致するか確認する。
+\end{enumerate}
+
+ここで重要なのは、Dが常に収縮を起こすと仮定しないことである。
+
+灰色猫がすでに固有状態として成立しているなら、Dで白猫または黒猫へ落ちる必要はない。
+
+一方、A/Bが明確に分かれる領域では、Dによる結果は、Dが作った選択ではなく、すでに系内に現れているA/B分岐を読んだものとして扱う。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. 状態変数}\label{ux72b6ux614bux5909ux6570}
+
+最低限、次の変数を記録する。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+変数 & 意味 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{a} & 白猫Aの複素振幅 \\
+\texttt{b} & 黒猫Bの複素振幅 \\
+\texttt{p\_A\ =\ \textbar{}a\textbar{}\^{}2} & 白猫配分 \\
+\texttt{p\_B\ =\ \textbar{}b\textbar{}\^{}2} & 黒猫配分 \\
+\texttt{Q\ =\ p\_A\ +\ p\_B} & A/B総量 \\
+\texttt{S\ =\ p\_A\ -\ p\_B} & A/B選択秩序変数 \\
+\texttt{S\_amp} & \texttt{S} の振動振幅 \\
+\texttt{S\_drift} & \texttt{S} の長時間ドリフト \\
+\texttt{C\_A,\ C\_B} & CによるA/B読出し \\
+\texttt{D\_A,\ D\_B} & DによるA/B読出し \\
+\texttt{L\_A,\ L\_B} & A/Bの局在性 \\
+\texttt{N\_eff\_A,\ N\_eff\_B} & A/Bの有効倍音次数 \\
+\texttt{E\_total} & 全保存量または保存レジストリ量 \\
+\end{longtable}
+}
+
+判定の中心は、
+
+\begin{verbatim}
+Q が保存されるか。
+S が固定されるか、微小振動するか、自然成長するか。
+CとDがSの相分類を変えるか。
+\end{verbatim}
+
+である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3.
+AB二体準安定界面実験}\label{abux4e8cux4f53ux6e96ux5b89ux5b9aux754cux9762ux5b9fux9a13}
+
+\subsection{3.1 目的}\label{ux76eeux7684-1}
+
+AB二体だけで、灰色猫がどのような状態として成立するかを調べる。
+
+\begin{verbatim}
+C = off
+D = off
+\end{verbatim}
+
+この段階では、観測による選択を入れない。
+
+\subsection{3.2 初期状態}\label{ux521dux671fux72b6ux614b}
+
+基準初期値は、
+
+\[
+a_0 = \frac{1}{\sqrt{2}}
+\]
+
+\[
+b_0 = \frac{e^{i\phi_0}}{\sqrt{2}}
+\]
+
+である。
+
+このとき、
+
+\[
+Q_0 = |a_0|^2 + |b_0|^2 = 1
+\]
+
+\[
+S_0 = |a_0|^2 - |b_0|^2 = 0
+\]
+
+である。
+
+微小な初期偏りを入れる場合は、
+
+\[
+p_{A,0} = \frac12 + s_0
+\]
+
+\[
+p_{B,0} = \frac12 - s_0
+\]
+
+とする。
+
+\subsection{3.3 AB交換写像}\label{abux4ea4ux63dbux5199ux50cf}
+
+最小のAB交換写像は、
+
+\[
+\begin{pmatrix}
+a_{k+1}\\
+b_{k+1}
+\end{pmatrix}
+=
+U_\epsilon
+\begin{pmatrix}
+a_k\\
+b_k
+\end{pmatrix}
+\]
+
+\[
+U_\epsilon
+=
+\begin{pmatrix}
+\cos\epsilon & i\sin\epsilon\\
+i\sin\epsilon & \cos\epsilon
+\end{pmatrix}
+\]
+
+とする。
+
+この写像だけでは、単純なユニタリ交換振動になる。
+
+必要に応じて、閉鎖系内の安定性を調べるため、弱い復元項または弱い非線形項を追加する。
+
+ただし、Cなし・Dなしで一方へ自然収束する項は、猫型選択実験には使わない。
+
+\subsection{3.4
+掃引パラメータ}\label{ux6383ux5f15ux30d1ux30e9ux30e1ux30fcux30bf}
+
+最低限、次を掃引する。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+パラメータ & 意味 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{epsilon} & AB交換振動の強さ \\
+\texttt{phi\_0} & 初期相対位相 \\
+\texttt{s\_0} & 初期A/B微小偏り \\
+\texttt{noise\_amp} & 数値揺らぎまたは微小外乱 \\
+\texttt{K} & 発展ステップ数 \\
+\end{longtable}
+}
+
+調和振動として灰色猫準安定状態を扱う場合、\texttt{S}
+の振幅は小さく保つ。
+
+目標値は、
+
+\begin{verbatim}
+S_amp < S_gray_limit
+\end{verbatim}
+
+である。
+
+初期値としては、
+
+\begin{verbatim}
+S_gray_limit = 0.05
+S_amp target = 0.01 から 0.03 程度
+\end{verbatim}
+
+を使う。
+
+\subsection{3.5 相分類}\label{ux76f8ux5206ux985e}
+
+AB二体実験の結果は、次の三相に分類する。
+
+\subsubsection{灰色猫固有相}\label{ux7070ux8272ux732bux56faux6709ux76f8}
+
+\begin{verbatim}
+S_mean ≈ 0
+S_amp -> 0
+S_drift ≈ 0
+Q ≈ 1
+\end{verbatim}
+
+この場合、A/B等配分状態は、新しい灰色猫固有状態として扱う。
+
+\subsubsection{灰色猫準安定相}\label{ux7070ux8272ux732bux6e96ux5b89ux5b9aux76f8}
+
+\begin{verbatim}
+S_mean ≈ 0
+0 < S_amp < S_gray_limit
+S_drift ≈ 0
+Q ≈ 1
+\end{verbatim}
+
+この相が、Dによる選択実験の本命領域である。
+
+\subsubsection{自然選択相}\label{ux81eaux7136ux9078ux629eux76f8}
+
+\begin{verbatim}
+abs(S) grows without C or D
+S -> +1 or S -> -1
+\end{verbatim}
+
+この相では、観測による選択を主張できない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. C読出し実験}\label{cux8aadux51faux3057ux5b9fux9a13}
+
+\subsection{4.1 目的}\label{ux76eeux7684-2}
+
+AB二体で得られた灰色猫固有相または灰色猫準安定相に、Cを加える。
+
+\begin{verbatim}
+C = on
+D = off
+\end{verbatim}
+
+Cの目的は、A/B配分を読むことである。
+
+この段階では、CがA/Bの一方へ落としてはならない。
+
+\subsection{4.2 C読出し量}\label{cux8aadux51faux3057ux91cf}
+
+Cは次を読む。
+
+\[
+C_A \approx p_A
+\]
+
+\[
+C_B \approx p_B
+\]
+
+誤差は、
+
+\[
+E_C = |C_A-p_A| + |C_B-p_B|
+\]
+
+で記録する。
+
+\subsection{4.3 C合格条件}\label{cux5408ux683cux6761ux4ef6}
+
+灰色猫準安定相で、
+
+\begin{verbatim}
+E_C < tol_C
+abs(S_afterC - S_beforeC) < epsilon_C
+no selection
+\end{verbatim}
+
+を満たすこと。
+
+灰色猫固有相では、
+
+\begin{verbatim}
+C_A ≈ 0.5
+C_B ≈ 0.5
+S remains near 0
+\end{verbatim}
+
+を満たすこと。
+
+大振幅領域では、Cはその時点のA/B偏りを読む。
+
+\begin{verbatim}
+C_A > C_B if S > 0
+C_B > C_A if S < 0
+\end{verbatim}
+
+を確認する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. D観測実験}\label{dux89b3ux6e2cux5b9fux9a13}
+
+\subsection{5.1 目的}\label{ux76eeux7684-3}
+
+次にDを加える。
+
+\begin{verbatim}
+C = optional
+D = on
+\end{verbatim}
+
+Dは、A/Bの一方へ落ちる観測が起こるかを調べるための強い観測写像である。
+
+ただし、Dによる結果は状態相ごとに分類する。
+
+\subsection{5.2
+灰色猫固有相でのD}\label{ux7070ux8272ux732bux56faux6709ux76f8ux3067ux306ed}
+
+灰色猫固有相では、Dを加えても灰色状態が保持されるかを調べる。
+
+期待される判定は、
+
+\begin{verbatim}
+D_A ≈ 0.5
+D_B ≈ 0.5
+S remains near 0
+\end{verbatim}
+
+である。
+
+この場合、Dで白猫または黒猫へ落ちないことが結果である。
+
+\subsection{5.3
+灰色猫準安定相でのD}\label{ux7070ux8272ux732bux6e96ux5b89ux5b9aux76f8ux3067ux306ed}
+
+灰色猫準安定相では、DがA/Bの一方へ落とすかを調べる。
+
+判定は、
+
+\begin{verbatim}
+D_A ≈ 1, D_B ≈ 0
+\end{verbatim}
+
+または、
+
+\begin{verbatim}
+D_A ≈ 0, D_B ≈ 1
+\end{verbatim}
+
+である。
+
+ただし、Dなしで同じ落下が起こる場合は、Dによる選択とは判定しない。
+
+\subsection{5.4
+大振幅分離領域でのD}\label{ux5927ux632fux5e45ux5206ux96e2ux9818ux57dfux3067ux306ed}
+
+ABの振幅が大きく、A/Bが明確に分かれている領域では、Dはその時点のA/B偏りを読むだけでよい。
+
+この場合、Dの読出しはCの読出しと一致するはずである。
+
+\begin{verbatim}
+sign(D_A - D_B) = sign(C_A - C_B)
+\end{verbatim}
+
+この一致が得られる場合、Dが選択を作ったのではなく、すでに系内に現れているA/B偏りを読んだと判定する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. 四段階本実験}\label{ux56dbux6bb5ux968eux672cux5b9fux9a13}
+
+本実験は、次の四段階で実施する。
+
+\subsection{Stage 1:
+AB準安定界面探索}\label{stage-1-abux6e96ux5b89ux5b9aux754cux9762ux63a2ux7d22}
+
+\begin{verbatim}
+C = off
+D = off
+\end{verbatim}
+
+出力：
+
+\begin{verbatim}
+gray eigen phase
+gray metastable phase
+natural selection phase
+\end{verbatim}
+
+\subsection{Stage 2:
+C読出し確認}\label{stage-2-cux8aadux51faux3057ux78baux8a8d}
+
+\begin{verbatim}
+C = on
+D = off
+\end{verbatim}
+
+出力：
+
+\begin{verbatim}
+C_read_error
+C_induced_bias
+C_selection_triggered
+\end{verbatim}
+
+\subsection{Stage 3: D観測確認}\label{stage-3-dux89b3ux6e2cux78baux8a8d}
+
+\begin{verbatim}
+C = off or recorded
+D = on
+\end{verbatim}
+
+出力：
+
+\begin{verbatim}
+D_result
+D_induced_selection
+D_vs_C_agreement
+\end{verbatim}
+
+\subsection{Stage 4: C-D比較}\label{stage-4-c-dux6bd4ux8f03}
+
+同じAB初期条件に対して、C読出しとD観測を比較する。
+
+確認事項：
+
+\begin{verbatim}
+灰色猫固有相:
+  CもDも 0.5/0.5 を読む。
+
+灰色猫準安定相:
+  Cは読むが選ばない。
+  Dが一方選択を起こすかを判定する。
+
+大振幅分離領域:
+  CとDは同じA/B偏りを読む。
+  観測が作った選択とは扱わない。
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. 合格条件}\label{ux5408ux683cux6761ux4ef6}
+
+本実験の最低合格条件は次である。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  AB二体だけで、灰色猫固有相・灰色猫準安定相・自然選択相を分類できる。
+\item
+  灰色猫準安定相では、CがA/B配分を読めるが、一方選択を起こさない。
+\item
+  灰色猫固有相では、Dを加えても白猫または黒猫へ落ちない。
+\item
+  灰色猫準安定相では、Dによる選択が起こるか、起こらないかをDなし対照と比較して判定できる。
+\item
+  大振幅分離領域では、D結果がC読出しと一致する。
+\item
+  \texttt{Q} または全保存レジストリが許容範囲内で保存される。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. 失敗条件}\label{ux5931ux6557ux6761ux4ef6}
+
+次の場合は、後段のC/D実験へ進まない。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  AB二体だけで全条件が自然選択相へ落ちる。
+\item
+  \texttt{Q} が保存されない。
+\item
+  Cが常に選択を起こす。
+\item
+  CがA/B配分を読めない。
+\item
+  Dなし対照とDあり条件の差が分類できない。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. 実験結果欄}\label{ux5b9fux9a13ux7d50ux679cux6b04}
+
+\subsection{9.1 Stage 1:
+AB準安定界面探索}\label{stage-1-abux6e96ux5b89ux5b9aux754cux9762ux63a2ux7d22-1}
+
+出力:
+
+\begin{verbatim}
+gray_cat_ab_metastable_interface_preliminary_result_v1/
+\end{verbatim}
+
+結果:
+
+\begin{verbatim}
+total_cases = 5600
+gray_eigen = 1248
+gray_metastable = 733
+large_oscillation = 470
+natural_selection = 1070
+unstable_or_drifting = 2079
+\end{verbatim}
+
+AB二体だけで、灰色猫固有相、灰色猫準安定相、大振幅振動相、自然選択相を分離できた。
+
+\subsection{9.2 Stage 2:
+C読出し窓確認}\label{stage-2-cux8aadux51faux3057ux7a93ux78baux8a8d}
+
+出力:
+
+\begin{verbatim}
+gray_cat_c_readout_window_preliminary_result_v1/
+\end{verbatim}
+
+結果:
+
+\begin{verbatim}
+total_cases = 1080
+C_window_count = 247
+C_informative_window_count = 144
+C_nonzero_backaction_window_count = 114
+\end{verbatim}
+
+灰色猫準安定候補に対して、A/B配分を読めるが一方選択を起こさないC読出し窓を確認した。
+
+\subsection{9.3 Stage 3:
+D観測応答}\label{stage-3-dux89b3ux6e2cux5fdcux7b54}
+
+出力:
+
+\begin{verbatim}
+gray_cat_d_observation_response_preliminary_result_v1/
+\end{verbatim}
+
+結果:
+
+\begin{verbatim}
+total_cases = 7056
+D_induced_selection_count = 2016
+gray_kept_eigen = 1062
+white_selected = 1244
+black_selected = 772
+\end{verbatim}
+
+同じD開始状態からDなし対照を並走させ、Dなしでは白猫または黒猫へ落ちない条件で、Dありの場合に選択が起こる領域を確認した。
+
+灰色猫固有相では、強D条件でも灰色状態が保持された。
+
+大振幅分離領域では、D結果がC読出し符号と一致する条件を確認した。
+
+\subsection{9.4 Stage 4:
+D選択境界}\label{stage-4-dux9078ux629eux5883ux754c}
+
+出力:
+
+\begin{verbatim}
+gray_cat_d_selection_boundary_preliminary_result_v1/
+\end{verbatim}
+
+結果:
+
+\begin{verbatim}
+boundary_points = 438
+selection_possible_boundary_points = 438
+no_selection_boundary_points = 0
+min_D_gain_overall = 0.0225
+max_min_D_gain_overall = 0.065
+\end{verbatim}
+
+灰色猫準安定候補に対して、観測開始ステップとD利得の境界表を作成した。
+
+今回の掃引範囲では、対象とした全ての観測開始ステップでD起因選択が可能だった。
+
+候補ごとの最小D利得は二段に分かれた。
+
+\begin{verbatim}
+weak threshold candidate:
+  min_D_gain = 0.0225
+
+strong threshold candidates:
+  min_D_gain = 0.065
+\end{verbatim}
+\end{document}
