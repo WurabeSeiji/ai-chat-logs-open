@@ -3,7 +3,9 @@
 **Date:** 2026-07-14  
 **Version DOI:** https://doi.org/10.5281/zenodo.21353209  
 **Concept DOI:** https://doi.org/10.5281/zenodo.21353208  
-**Zenn:** https://zenn.dev/noriaki_kihara/articles/gray-cat-metastable-observation
+**Zenn:** https://zenn.dev/noriaki_kihara/articles/gray-cat-metastable-observation  
+**note (JA):** https://note.com/kiharanoriaki/n/n2901bcd95bba  
+**note (EN):** https://note.com/kiharanoriaki/n/n3350efb4e43c
 
 ## Summary
 
@@ -42,10 +44,12 @@ Gray eigen phase:
 - `run_gray_cat_d_selection_boundary_preliminary_v1.py`
 - `draw_gray_cat_ab_abc_abcd_state_diagrams_v1.py`
 - `draw_gray_cat_observed_value_transition_figures_v1.py`
+- `draw_gray_cat_note_figures_en_v1.py`
 - `gray_cat_ab_metastable_interface_preliminary_result_v1/`
 - `gray_cat_c_readout_window_preliminary_result_v1/`
 - `gray_cat_d_observation_response_preliminary_result_v1/`
 - `gray_cat_d_selection_boundary_preliminary_result_v1/`
 - `gray_cat_state_transition_figures_v1/`
 - `gray_cat_observed_value_transition_figures_v1/`
-
+- `note_article_gray_cat_metastable_observation_ja.md`
+- `note_article_gray_cat_metastable_observation_en.md`
