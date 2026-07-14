@@ -10,7 +10,7 @@ published: true
 
 論文本体:
 
-- Version DOI: https://doi.org/10.5281/zenodo.21353209
+- Version DOI: https://doi.org/10.5281/zenodo.21358203
 - Concept DOI: https://doi.org/10.5281/zenodo.21353208
 - GitHub: https://github.com/WurabeSeiji/ai-chat-logs-open
 
@@ -45,4 +45,3 @@ AB二体だけで、灰色猫固有相、灰色猫準安定相、自然選択相
 に分かれる、という予備的な数値結果です。
 
 弱く読むことと、強く選択することが、同じ閉鎖系の中で分離して見えた点が今回の要点です。
-
