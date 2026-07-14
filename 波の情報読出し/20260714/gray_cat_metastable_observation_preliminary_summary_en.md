@@ -117,7 +117,7 @@ Stage 4:
 
 The three representative paths are shown below along the AB, ABC, and ABCD stages.
 
-![White, black, and gray cat AB-ABC-ABCD state transition diagram](gray_cat_state_transition_figures_v1/gray_cat_ab_abc_abcd_three_scenarios_v1.png)
+![White, black, and gray cat AB-ABC-ABCD state transition diagram](gray_cat_state_transition_figures_v1/gray_cat_ab_abc_abcd_three_scenarios_en_v1.png)
 
 The upper path shows a metastable white+black mixture prepared in AB, weakly read by C, and selected into white or black by strong D observation.
 
@@ -129,7 +129,7 @@ The lower path shows the case in which C is too strong and selection into white 
 
 The same three paths are also shown using the computed values of `p_A`, `p_B`, and `S`.
 
-![Observed-value transition of white, black, and gray cat states](gray_cat_observed_value_transition_figures_v1/gray_cat_ab_abc_abcd_observed_values_three_scenarios_v1.png)
+![Observed-value transition of white, black, and gray cat states](gray_cat_observed_value_transition_figures_v1/gray_cat_ab_abc_abcd_observed_values_three_scenarios_en_v1.png)
 
 The solid curves are the internal values `p_A` and `p_B`. The dashed curve is the selection order variable mapped to the same vertical axis as
 
@@ -583,4 +583,3 @@ gray metastable phase:
 gray eigen phase:
   gray even under strong observation.
 ```
-
