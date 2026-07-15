@@ -1,18 +1,18 @@
-# Preliminary Summary of Harmonic Readout and c=1 Area Sweep in an AB Two-Body Closed Phase System v2
+# Preliminary Summary of Harmonic Readout and c=1 Area Sweep in an AB Two-Body Closed Phase System v3
 
-**Date:** 2026-07-12
+**Date:** 2026-07-15
 **Author:** Noriaki Kihara
 **Position:** Summary of the AB two-body preliminary experiment group in the Wave Information Readout series
-**Version DOI:** 10.5281/zenodo.21332876
+**Version DOI:** 10.5281/zenodo.21367800
 **Concept DOI:** 10.5281/zenodo.21318696
 
-V2 adds an AB two-body acceleration-readout protocol with a fermion-like recoil map while keeping the scope and claims of the original summary unchanged.
+V3 applies the fermion-like recoil map to `chi_read` as the scattering-matrix factor `q_out_factor`.
 
 ---
 
 ## Abstract
 
-This summary consolidates six preliminary experiments performed on an AB two-body closed phase system. V2 adds a seventh protocol that incorporates a fermion-like recoil map into the same AB acceleration-readout frame:
+This summary consolidates six preliminary experiments performed on an AB two-body closed phase system. V3 keeps the same scope and claims and incorporates a fermion-like recoil map into the same AB acceleration-readout frame:
 
 1. one-angle circumferential phase harmonic readout,
 2. parameter sweep of the one-angle circumferential phase harmonic readout,
@@ -56,7 +56,7 @@ Thus, the determination of the distance exponent remains a task for a separate A
 | 4 | `c=1` parameter sweep | Test whether `c=1` is sufficient for area formation | Not sufficient |
 | 5 | Inverse-area compensation diagnosis | Test whether `1/A_chi_tau` remains natively on the closure-compensation side | Not detected |
 | 6 | Native inverse-area extended sweep | Search broad conditions for `alpha≈2` | Not detected natively |
-| 7 | V2 fermion-like recoil protocol | Re-test acceleration-like readout with a recoil map near the AB center | `q_out_factor=-1`; harmonic readout and `chi-tau` surface maintained |
+| 7 | V3 fermion-like recoil protocol | Re-test acceleration-like readout with a recoil map near the AB center | `q_out_factor=-1` applied to `chi_read`; harmonic readout and `chi-tau` surface maintained |
 
 ---
 
@@ -341,13 +341,22 @@ However, it has not yet been read natively.
 
 ---
 
-## 8. V2 Addition: Harmonic Readout with a Fermion-Like Recoil Map
+## 8. V3 Addition: Harmonic Readout with a Fermion-Like Recoil Map
 
 ### 8.1 Purpose
 
 In the V1 one-angle harmonic readout, the relative phase development of the AB pair was read continuously, and Protocol F/B degeneracy was confirmed under label-free readout.
 
-V2 keeps this context unchanged and adds a fermion-like recoil map at the central interaction region.
+V3 keeps this context unchanged and adds a fermion-like recoil map at the central interaction region.
+
+The implementation change is limited to one readout operation:
+
+```text
+chi_read = q_out_factor * chi_pass
+q_out_factor = T - R
+```
+
+Under the complete-recoil condition, `R=1` and `T≈0`, so `q_out_factor=-1`.
 
 The question tested here is whether the acceleration-like harmonic readout from the AB two-body relation `f_AB` can still be evaluated in the same form when the central interaction is read as a recoil-type event.
 
@@ -363,7 +372,7 @@ localization transfer
 
 Those questions belong to a separate wave-packet focusing experiment line.
 
-The present V2 only adds a fermion-like recoil protocol to the current AB two-body acceleration-readout assumptions, in addition to the transmission-type central readout.
+The present V3 evaluates the fermion-like recoil protocol within the current AB two-body acceleration-readout assumptions, in addition to the transmission-type central readout.
 
 ### 8.2 Recoil Map
 
@@ -436,13 +445,13 @@ q_out_factor = T - R = -1.
 
 ### 8.3 Result
 
-The V2 protocol preserved the same harmonic-readout frame.
+The V3 protocol preserved the same harmonic-readout frame.
 
 ```text
 q_out_factor = -1
 ```
 
-The AB harmonic readout remained evaluable in the same form, and the `chi-tau` surface used in the area sweep was maintained.
+The factor was applied to `chi_read`. The AB harmonic readout remained evaluable in the same form, and the `chi-tau` surface used in the area sweep was maintained.
 
 This result does not add a claim of immediate contraction, harmonic transfer, or localization transfer. It only confirms that the acceleration-like AB readout survives when the central interaction is represented as a fermion-like recoil map.
 

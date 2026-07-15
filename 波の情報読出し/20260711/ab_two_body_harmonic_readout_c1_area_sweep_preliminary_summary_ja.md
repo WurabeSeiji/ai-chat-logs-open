@@ -1,12 +1,12 @@
-# AB二体閉鎖位相系における調和読出しとc=1面積スイープ予備実験総括 v2
+# AB二体閉鎖位相系における調和読出しとc=1面積スイープ予備実験総括 v3
 
-**日付:** 2026-07-12
+**日付:** 2026-07-15
 **著者:** 木原 範昭
 **位置づけ:** 波の情報読出しシリーズ・AB二体予備実験群の総括
-**Version DOI:** 10.5281/zenodo.21332876
+**Version DOI:** 10.5281/zenodo.21367800
 **Concept DOI:** 10.5281/zenodo.21318696
 
-V2では、フェルミオン型反跳写像を組み込んだAB二体加速度読出しプロトコルを追加する。
+V3では、フェルミオン型反跳写像を散乱行列の `q_out_factor` として `chi_read` に作用させる。
 
 ---
 
@@ -21,7 +21,7 @@ V2では、フェルミオン型反跳写像を組み込んだAB二体加速度�
 5. `chi-tau` 面積逆数補償診断
 6. `chi-tau` ネイティブ逆面積拡張スイープ
 
-V2では、上記の文脈と主張を変えず、同じAB二体加速度読出しにフェルミオン型反跳写像を組み込む追加プロトコルを置く。
+V3では、上記の文脈と主張を変えず、同じAB二体加速度読出しにフェルミオン型反跳写像を組み込む。
 
 この追加プロトコルは、波束の即時収縮、AB非対称化、倍音移乗、局在性移乗を検査するものではない。
 
@@ -80,7 +80,7 @@ L_AB
 | 4 | `c=1` パラメータスイープ | `c=1` が面積成立の十分条件か | 十分条件ではない |
 | 5 | 逆面積補償診断 | `1/A_chi_tau` が native に出るか | 未検出 |
 | 6 | native 逆面積拡張スイープ | 広い条件で `alpha≈2` が出るか | native では未検出 |
-| 7 | V2フェルミオン型反跳プロトコル | AB中心近傍に反跳写像を入れて加速度様読出しを再検査 | `q_out_factor=-1`; 調和読出しと `chi-tau` 面を維持 |
+| 7 | V3フェルミオン型反跳プロトコル | AB中心近傍に反跳写像を入れて加速度様読出しを再検査 | `q_out_factor=-1` を `chi_read` に作用; 調和読出しと `chi-tau` 面を維持 |
 
 ---
 
@@ -371,13 +371,22 @@ native inverse-area scaling は未検出
 
 ---
 
-## 8. V2追加: フェルミオン型反跳を組み込んだ調和読出し
+## 8. V3追加: フェルミオン型反跳を組み込んだ調和読出し
 
 ### 8.1 目的
 
 V1の一角度調和読出しでは、AB二体の相対位相発展を連続的に読み、ラベルなし読出しとして Protocol F/B が縮退することを確認した。
 
-V2では、この文脈を変えず、中心近傍の相互作用にフェルミオン型反跳写像を組み込む。
+V3では、この文脈を変えず、中心近傍の相互作用にフェルミオン型反跳写像を組み込む。
+
+ここでの実装上の変更点は一つである。
+
+```text
+chi_read = q_out_factor * chi_pass
+q_out_factor = T - R
+```
+
+完全反跳条件では `R=1`, `T≈0` なので、`q_out_factor=-1` となる。
 
 ここで検査するのは、反跳写像を入れた場合にも、AB二体関係 `f_AB` から加速度様に見える調和読出しを同じ形式で評価できるかである。
 
@@ -393,7 +402,7 @@ ABの非対称化
 
 これらは、別系列の波束集束実験で扱う。
 
-本V2では、あくまで現在のAB二体加速度読出しの仮定範囲で、通過型の中心読出しに加えて、フェルミオン型反跳プロトコルを追加する。
+本V3では、あくまで現在のAB二体加速度読出しの仮定範囲で、通過型の中心読出しに加えて、フェルミオン型反跳プロトコルを評価する。
 
 ### 8.2 反跳写像
 
@@ -489,7 +498,7 @@ t_\Delta \psi_-^{\mathrm{in}}
 
 ### 8.3 実験前の判定基準
 
-V2追加プロトコルでは、少なくとも次を確認する。
+V3追加プロトコルでは、少なくとも次を確認する。
 
 | 項目 | 判定対象 |
 |---|---|
@@ -566,11 +575,11 @@ tau independent c1: 面積あり
 
 | Protocol 比較 | チャネル状態 |
 |---|---|
-| <img src="ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v2/ab_two_body_fermionic_reflection_protocol_comparison_v2.png" width="520"> | <img src="ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v2/ab_two_body_fermionic_reflection_channel_state_v2.png" width="520"> |
+| <img src="ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v3/ab_two_body_fermionic_reflection_protocol_comparison_v3.png" width="520"> | <img src="ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v3/ab_two_body_fermionic_reflection_channel_state_v3.png" width="520"> |
 
 | 読出し減衰 | `chi-tau` 経路 |
 |---|---|
-| <img src="ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v2/ab_two_body_fermionic_reflection_readout_decay_v2.png" width="520"> | <img src="ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v2/ab_two_body_fermionic_reflection_c1_chi_tau_v2.png" width="520"> |
+| <img src="ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v3/ab_two_body_fermionic_reflection_readout_decay_v3.png" width="520"> | <img src="ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v3/ab_two_body_fermionic_reflection_c1_chi_tau_v3.png" width="520"> |
 
 ---
 
@@ -587,7 +596,7 @@ tau independent c1: 面積あり
 | 独立 `tau_read` により `chi-tau` 面積を読む | 成立 |
 | `c=1` が必要条件候補であることを確認 | 成立 |
 | 後処理 `1/A_chi_tau` が `alpha≈2` を示す | 成立 |
-| フェルミオン型反跳写像で `q_out_factor=-1` を読む | 成立 |
+| フェルミオン型反跳写像で `q_out_factor=-1` を `chi_read` に作用させる | 成立 |
 | フェルミオン型反跳を入れてもラベルなし `D_AB`, `V_AB` がV1と一致 | 成立 |
 | フェルミオン型反跳を入れても独立 `tau_read` の `chi-tau` 面が維持される | 成立 |
 
@@ -654,7 +663,7 @@ AB二体の中では、A と B は互いを通じてしか読めない。
 距離指数読出しは、AB二体だけでは判別不能である。
 ```
 
-V2追加プロトコルでは、中心近傍にフェルミオン型反跳写像を入れても、この判定は変わらなかった。
+V3追加プロトコルでは、中心近傍にフェルミオン型反跳写像を入れても、この判定は変わらなかった。
 
 反跳写像は `q_out_factor=-1` として読めたが、ラベルなし `D_AB`, `V_AB` はV1の通過型読出しと一致した。
 

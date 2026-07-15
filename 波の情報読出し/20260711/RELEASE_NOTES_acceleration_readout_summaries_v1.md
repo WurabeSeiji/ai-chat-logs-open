@@ -1,4 +1,4 @@
-# Release Notes: Acceleration Readout Preliminary Summaries v1/v2
+# Release Notes: Acceleration Readout Preliminary Summaries v1/v2/v3
 
 **Date:** 2026-07-12
 **Author:** Noriaki Kihara
@@ -23,7 +23,7 @@ The second paper introduces the third wave `C` as an internal metric gauge and d
 
 | Paper | Version DOI | Concept DOI | Zenodo Record | Zenn |
 |---|---|---|---|---|
-| AB two-body harmonic readout and `c=1` area sweep summary | `10.5281/zenodo.21332876` | `10.5281/zenodo.21318696` | https://zenodo.org/records/21332876 | `articles/ab-two-body-harmonic-readout.md` |
+| AB two-body harmonic readout and `c=1` area sweep summary | `10.5281/zenodo.21367800` | `10.5281/zenodo.21318696` | https://zenodo.org/records/21367800 | `articles/ab-two-body-harmonic-readout.md` |
 | ABC independent metric C and relational decomposition distance-exponent summary | `10.5281/zenodo.21318701` | `10.5281/zenodo.21318700` | https://zenodo.org/records/21318701 | `articles/abc-c-gauge-distance-exponent.md` |
 
 ---
@@ -35,6 +35,18 @@ The AB two-body harmonic readout summary was updated to V2.
 V2 adds a fermion-like recoil protocol to the existing AB acceleration-readout assumptions and confirms that the harmonic readout frame and the `chi-tau` surface remain evaluable.
 
 The AB Concept DOI is maintained. The AB V2 Version DOI is `10.5281/zenodo.21332876`.
+
+The ABC distance-exponent summary remains at v1 in this release note.
+
+---
+
+## v3 Update
+
+The AB two-body harmonic readout summary was updated to V3.
+
+V3 keeps the scope and claims unchanged and applies the fermion-like recoil map to `chi_read` as the scattering-matrix factor `q_out_factor`.
+
+The AB Concept DOI is maintained. The AB V3 Version DOI is `10.5281/zenodo.21367800`.
 
 The ABC distance-exponent summary remains at v1 in this release note.
 
@@ -59,18 +71,18 @@ The ABC distance-exponent summary remains at v1 in this release note.
 
 | File | Role |
 |---|---|
-| `AB二体閉鎖位相系における調和読出しとc=1面積スイープ予備実験総括 v2.md` | Japanese source |
+| `AB二体閉鎖位相系における調和読出しとc=1面積スイープ予備実験総括 v3.md` | Japanese source |
 | `ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_ja.md` | Japanese source with ASCII filename for publication |
 | `ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_en.md` | English source |
 | `ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_ja.tex` | Japanese TeX |
 | `ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_en.tex` | English TeX |
 | `ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_ja.pdf` | Japanese PDF |
 | `ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_en.pdf` | English PDF |
-| `ab_two_body_harmonic_readout_c1_area_sweep_zenodo_deposit_v2.json` | Zenodo metadata |
-| `ab_two_body_harmonic_readout_c1_area_sweep_zenodo_deposit_v2.json` | Zenodo draft deposit response |
-| `ab_two_body_harmonic_readout_c1_area_sweep_zenodo_uploads_v2.json` | Zenodo upload state |
-| `ab_two_body_harmonic_readout_c1_area_sweep_zenodo_published_record_v2.json` | Zenodo published record |
-| `ab_two_body_harmonic_readout_c1_area_sweep_publication_slim_bundle_v2.zip` | Lightweight reproducibility bundle uploaded to Zenodo |
+| `ab_two_body_harmonic_readout_c1_area_sweep_zenodo_metadata_v3.json` | Zenodo metadata |
+| `ab_two_body_harmonic_readout_c1_area_sweep_zenodo_deposit_v3.json` | Zenodo draft deposit response |
+| `ab_two_body_harmonic_readout_c1_area_sweep_zenodo_uploads_v3.json` | Zenodo upload state |
+| `ab_two_body_harmonic_readout_c1_area_sweep_zenodo_published_record_v3.json` | Zenodo published record |
+| `ab_two_body_harmonic_readout_c1_area_sweep_publication_slim_bundle_v3.zip` | Lightweight reproducibility bundle uploaded to Zenodo |
 | `articles/ab-two-body-harmonic-readout.md` | Zenn article source |
 
 ### ABC Summary
@@ -147,8 +159,8 @@ The inverse-square question is therefore deferred to a separate line of work on 
 
 Publication has been completed.
 
-- AB summary Zenodo record: https://zenodo.org/records/21332876
-- AB summary Version DOI: https://doi.org/10.5281/zenodo.21332876
+- AB summary Zenodo record: https://zenodo.org/records/21367800
+- AB summary Version DOI: https://doi.org/10.5281/zenodo.21367800
 - AB summary Concept DOI: https://doi.org/10.5281/zenodo.21318696
 - ABC summary Zenodo record: https://zenodo.org/records/21318701
 - ABC summary Version DOI: https://doi.org/10.5281/zenodo.21318701

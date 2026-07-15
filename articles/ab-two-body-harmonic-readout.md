@@ -10,9 +10,13 @@ AB二体閉鎖位相系における、調和読出しと `c=1` 面積スイー�
 
 論文本体:
 
-- Version DOI: https://doi.org/10.5281/zenodo.21332876
+- Version DOI: https://doi.org/10.5281/zenodo.21367800
 - Concept DOI: https://doi.org/10.5281/zenodo.21318696
 - GitHub: https://github.com/WurabeSeiji/ai-chat-logs-open
+
+## v3更新
+
+2026-07-15に、フェルミオン型反跳写像を散乱行列の `q_out_factor` として `chi_read` に作用させる v3 を公開しました。本文の主張は変えず、AB二体加速度様読出しの枠内で、調和読出しと `chi-tau` 面が維持されることを確認しています。
 
 ## v2更新
 
