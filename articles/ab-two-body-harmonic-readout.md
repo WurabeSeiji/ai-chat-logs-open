@@ -10,9 +10,13 @@ AB二体閉鎖位相系における、調和読出しと `c=1` 面積スイー�
 
 論文本体:
 
-- Version DOI: https://doi.org/10.5281/zenodo.21367800
+- Version DOI: https://doi.org/10.5281/zenodo.21374317
 - Concept DOI: https://doi.org/10.5281/zenodo.21318696
 - GitHub: https://github.com/WurabeSeiji/ai-chat-logs-open
+
+## v4更新
+
+2026-07-15に、フェルミオン型反跳写像を `q_out_factor` 演算子としてではなく、A/B二チャネル散乱行列として入射チャネルへ直接作用させる v4 を公開しました。本文の主張は変えず、ラベルなし `D_AB`, `V_AB` が通過型読出しと一致し、独立 `tau_read` の `chi-tau` 面も維持されることを確認しています。
 
 ## v3更新
 

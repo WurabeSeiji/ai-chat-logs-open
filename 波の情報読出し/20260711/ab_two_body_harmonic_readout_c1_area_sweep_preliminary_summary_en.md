@@ -1,18 +1,18 @@
-# Preliminary Summary of Harmonic Readout and c=1 Area Sweep in an AB Two-Body Closed Phase System v3
+# Preliminary Summary of Harmonic Readout and c=1 Area Sweep in an AB Two-Body Closed Phase System v4
 
 **Date:** 2026-07-15
 **Author:** Noriaki Kihara
 **Position:** Summary of the AB two-body preliminary experiment group in the Wave Information Readout series
-**Version DOI:** 10.5281/zenodo.21367800
+**Version DOI:** 10.5281/zenodo.21374317
 **Concept DOI:** 10.5281/zenodo.21318696
 
-V3 applies the fermion-like recoil map to `chi_read` as the scattering-matrix factor `q_out_factor`.
+V4 implements the fermion-like recoil map as a direct A/B two-channel scattering matrix acting on the incident channels.
 
 ---
 
 ## Abstract
 
-This summary consolidates six preliminary experiments performed on an AB two-body closed phase system. V3 keeps the same scope and claims and incorporates a fermion-like recoil map into the same AB acceleration-readout frame:
+This summary consolidates six preliminary experiments performed on an AB two-body closed phase system. V4 keeps the same scope and claims and incorporates a fermion-like recoil map into the same AB acceleration-readout frame as a direct A/B two-channel scattering action:
 
 1. one-angle circumferential phase harmonic readout,
 2. parameter sweep of the one-angle circumferential phase harmonic readout,
@@ -20,7 +20,7 @@ This summary consolidates six preliminary experiments performed on an AB two-bod
 4. parameter sweep of the internal `c=1` calibration,
 5. inverse-area compensation diagnosis in the `chi-tau` plane, and
 6. extended sweep for native inverse-area readout, and
-7. fermion-like recoil harmonic readout protocol.
+7. direct two-channel fermion-like recoil harmonic readout protocol.
 
 The preceding ABC multigauge interference readout paper showed that, in a minimal ABC closed phase system that does not place a background space first, the measuring device itself can be defined as a complex phase wave inside the same system, and mass-like, momentum-like, and energy-like conserved readouts can be constructed from interference.
 
@@ -56,7 +56,7 @@ Thus, the determination of the distance exponent remains a task for a separate A
 | 4 | `c=1` parameter sweep | Test whether `c=1` is sufficient for area formation | Not sufficient |
 | 5 | Inverse-area compensation diagnosis | Test whether `1/A_chi_tau` remains natively on the closure-compensation side | Not detected |
 | 6 | Native inverse-area extended sweep | Search broad conditions for `alpha≈2` | Not detected natively |
-| 7 | V3 fermion-like recoil protocol | Re-test acceleration-like readout with a recoil map near the AB center | `q_out_factor=-1` applied to `chi_read`; harmonic readout and `chi-tau` surface maintained |
+| 7 | V4 fermion-like recoil protocol | Re-test acceleration-like readout by placing an A/B two-channel scattering matrix near the AB center | `q_out_factor` is not used as an operator; harmonic readout and the `chi-tau` surface are re-read from the outgoing channel difference |
 
 ---
 
@@ -341,24 +341,27 @@ However, it has not yet been read natively.
 
 ---
 
-## 8. V3 Addition: Harmonic Readout with a Fermion-Like Recoil Map
+## 8. V4 Addition: Harmonic Readout with a Fermion-Like Recoil Map
 
 ### 8.1 Purpose
 
 In the V1 one-angle harmonic readout, the relative phase development of the AB pair was read continuously, and Protocol F/B degeneracy was confirmed under label-free readout.
 
-V3 keeps this context unchanged and adds a fermion-like recoil map at the central interaction region.
+V4 keeps this context unchanged and incorporates a fermion-like recoil map near the central interaction region.
 
-The implementation change is limited to one readout operation:
+However, V4 does not use the compressed implementation that multiplies `chi_read` by `q_out_factor`.
+
+Instead, it explicitly defines the A/B incident channels and applies the scattering matrix directly.
 
 ```text
-chi_read = q_out_factor * chi_pass
-q_out_factor = T - R
+psi_A_in =  (chi_pass + i eta_pass) / 2
+psi_B_in = -(chi_pass + i eta_pass) / 2
+Psi_out  = S_Delta Psi_in
+chi_read = Re(psi_A_out - psi_B_out)
+eta_read = Im(psi_A_out - psi_B_out)
 ```
 
-Under the complete-recoil condition, `R=1` and `T≈0`, so `q_out_factor=-1`.
-
-The question tested here is whether the acceleration-like harmonic readout from the AB two-body relation `f_AB` can still be evaluated in the same form when the central interaction is read as a recoil-type event.
+The test is whether the acceleration-like harmonic readout from the AB two-body relation `f_AB` can still be evaluated in the same form when the recoil map is inserted as A/B two-channel scattering.
 
 This section does not test:
 
@@ -372,7 +375,7 @@ localization transfer
 
 Those questions belong to a separate wave-packet focusing experiment line.
 
-The present V3 evaluates the fermion-like recoil protocol within the current AB two-body acceleration-readout assumptions, in addition to the transmission-type central readout.
+The present V4 evaluates the fermion-like recoil protocol within the current AB two-body acceleration-readout assumptions, in addition to the transmission-type central readout.
 
 ### 8.2 Recoil Map
 
@@ -423,37 +426,130 @@ S_\Delta
 \Psi^{\mathrm{in}}.
 ```
 
+That is,
+
+```math
+\psi_+^{\mathrm{out}}
+=
+t_\Delta \psi_+^{\mathrm{in}}
++
+r_\Delta \psi_-^{\mathrm{in}}
+```
+
+```math
+\psi_-^{\mathrm{out}}
+=
+r_\Delta \psi_+^{\mathrm{in}}
++
+t_\Delta \psi_-^{\mathrm{in}}.
+```
+
 For the complete-recoil condition,
 
 ```math
 \Delta_F=\pi,
 ```
 
-we obtain
-
-```math
-|r_\Delta|^2=1,
-\qquad
-|t_\Delta|^2=0.
-```
-
-In this limit the readout factor becomes
+we obtain the equivalent condition
 
 ```text
-q_out_factor = T - R = -1.
+transmission amplitude t_Delta = 0
+reflection amplitude r_Delta = 1
 ```
 
-### 8.3 Result
+In this limit the outgoing channels are read as an exchange of the incident channels.
 
-The V3 protocol preserved the same harmonic-readout frame.
+### 8.3 Pre-Experiment Criteria
+
+The V4 additional protocol checks at least the following items.
+
+| Item | Criterion |
+|---|---|
+| Two-channel scattering | `S_Delta` acts on the A/B incident channels without using `q_out_factor` as an operator |
+| Unitarity | Channel norm error remains within numerical error |
+| Closure residual after recoil | `Q_closed` does not break down |
+| Harmonic readout | The harmonic structure of `D_AB`, `V_AB`, and `f_AB` is maintained |
+| Readout-leak response | The difference between readout-off and strong-readout conditions follows the same discipline as V1 |
+| Protocol comparison | Transmission, display-recoil, and fermion-like recoil protocols are all recorded |
+| `chi-tau` surface | Independent `tau_read` area readout is not broken |
+
+### 8.4 Main Result
+
+| Quantity | Value |
+|---|---:|
+| `harmonic_case_count` | `48` |
+| `c1_case_count` | `144` |
+| `scattering_protocol_count` | `3` |
+| `fermionic_delta_f` | `3.141592653589793` |
+| `fermionic_reflection_rate` | `1.0` |
+| `fermionic_transmission_rate` | `3.749399456654644e-33` |
+| `fermionic_q_out_factor` | `-1.0` |
+| `q_out_factor_applied_any` | `False` |
+| `fermionic_full_two_channel_scattering_used_all_cases` | `True` |
+| `fermionic_max_scattering_unitarity_error` | `4.163336342344337e-17` |
+| `max_Q_closed_abs` | `0.0` |
+| `fermionic_regular_cell_harmonic_consistent_nonstrong_modes` | `True` |
+| `fermionic_strong_readout_perturbs_harmonic_projection` | `True` |
+| `fermionic_max_f_AB_projection_error_regular_nonstrong` | `2.2756072064286935e-6` |
+| `fermionic_max_f_AB_projection_error_regular_strong` | `9.072436576166898e-6` |
+| `fermionic_reflection_event_cell_count_total` | `720` |
+| `label_free_pass_vs_fermionic_match_all_cases` | `True` |
+| `label_free_display_vs_fermionic_match_all_cases` | `True` |
+| `readout_off_decay_max_abs` | `3.818134371020083e-18` |
+| `readout_strong_decay_min_abs` | `4.0004000533409265e-4` |
+| `fermionic_tau_disabled_max_area` | `0.0` |
+| `fermionic_tau_locked_max_area` | `8.881784197001252e-16` |
+| `fermionic_tau_independent_min_area` | `0.00375268307733001` |
+| `fermionic_c1_readout_off_max_epsilon_c_abs` | `2.3314683517128287e-15` |
+| `fermionic_c1_area_sweep_detected_all_cases` | `True` |
+| `tau_is_step_used_any` | `False` |
+| `external_c_used_any` | `False` |
+| `f_A_or_f_B_used_any` | `False` |
+
+The result is read as follows.
 
 ```text
-q_out_factor = -1
+In the complete-recoil limit, q_out_factor=-1 is obtained as a diagnostic quantity.
+However, V4 does not multiply chi_read by q_out_factor as an operator.
 ```
 
-The factor was applied to `chi_read`. The AB harmonic readout remained evaluable in the same form, and the `chi-tau` surface used in the area sweep was maintained.
+V4 acts with the two-channel scattering matrix on the A/B incident channels, and re-reads `chi_read` and `eta_read` from the outgoing channel difference.
 
-This result does not add a claim of immediate contraction, harmonic transfer, or localization transfer. It only confirms that the acceleration-like AB readout survives when the central interaction is represented as a fermion-like recoil map.
+For all fermion-like recoil cases, `full_two_channel_scattering_used=True`, and the maximum unitarity error was `4.16e-17`.
+
+Under that condition, the label-free readouts `D_AB` and `V_AB` matched the V1 transmission-type readout.
+
+This is consistent with the Protocol F/B degeneracy confirmed in V1.
+
+The display-only foldback protocol `display_reflection` was also recorded as a control.
+
+The display-recoil and fermion-like recoil protocols also matched under the label-free `D_AB` and `V_AB` readouts.
+
+For harmonic readout, projection consistency was maintained under non-`readout_strong` conditions, as in V1.
+
+Strong readout produced projection distortion, but this is the same readout-wave perturbation observed in V1 and is not a breakdown specific to the recoil map.
+
+The `chi-tau` surface also maintained the following structure:
+
+```text
+tau disabled: no area
+tau locked: no area
+tau independent c1: area present
+```
+
+Therefore, even when the fermion-like recoil map is incorporated into AB two-body acceleration readout as A/B two-channel scattering, the acceleration-like harmonic readout and the `chi-tau` area readout are not broken within the present assumptions.
+
+### 8.5 Figures
+
+| Protocol comparison | Channel state |
+|---|---|
+| <img src="ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v4/ab_two_body_fermionic_reflection_protocol_comparison_v4.png" width="520"> | <img src="ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v4/ab_two_body_fermionic_reflection_channel_state_v4.png" width="520"> |
+
+| Readout decay | `chi-tau` path |
+|---|---|
+| <img src="ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v4/ab_two_body_fermionic_reflection_readout_decay_v4.png" width="520"> | <img src="ab_two_body_fermionic_reflection_harmonic_readout_preliminary_result_v4/ab_two_body_fermionic_reflection_c1_chi_tau_v4.png" width="520"> |
+
+---
 
 ## 9. Overall Judgment
 
@@ -468,6 +564,11 @@ This result does not add a claim of immediate contraction, harmonic transfer, or
 | Read `chi-tau` area through independent `tau_read` | Established |
 | Confirm `c=1` as a candidate necessary condition | Established |
 | Post-processed `1/A_chi_tau` shows `alpha≈2` | Established |
+| Apply the fermion-like recoil map as an A/B two-channel scattering matrix to the incident channels | Established |
+| Do not use `q_out_factor` as an operator | Established |
+| Keep the two-channel scattering unitarity error within numerical error | Established |
+| Confirm that label-free `D_AB` and `V_AB` match V1 even after introducing fermion-like recoil | Established |
+| Maintain the independent-`tau_read` `chi-tau` surface even after introducing fermion-like recoil | Established |
 
 ### 9.2 Not Established
 
@@ -530,9 +631,17 @@ Acceleration-like readout was confirmed.
 Distance-exponent readout cannot be determined in the AB two-body system alone.
 ```
 
+The V4 additional protocol did not change this judgment.
+
+In the complete-recoil limit, the diagnostic quantity `q_out_factor=-1` was obtained, but V4 does not use it as an operator.
+
+After the A/B two-channel scattering matrix acted on the incident channels, the label-free readouts `D_AB` and `V_AB` matched the V1 transmission-type readout.
+
+This means that the V1 result, in which recoil-type and transmission-type protocols are degenerate under AB two-body nameless readout, was confirmed again using the two-channel scattering-matrix recoil map.
+
 ---
 
-## 10. Connection to the Next Experiment
+## 11. Connection to the Next Experiment
 
 The next stage following this summary is the ABC three-body system.
 
