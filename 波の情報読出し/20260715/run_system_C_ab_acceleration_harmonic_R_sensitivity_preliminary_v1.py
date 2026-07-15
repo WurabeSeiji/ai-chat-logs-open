@@ -703,7 +703,45 @@ def apply_r_axis_marks(ax: Any, x_values: List[float], params: Params) -> None:
     ax.grid(alpha=0.22)
 
 
-def make_projection_penalty_landscape_plot(rows: List[Dict[str, Any]], params: Params, file_stem: str, deep: bool) -> str:
+def annotate_projection_local_minima(
+    ax: Any,
+    plot_rows: List[Dict[str, Any]],
+    projection_values: List[float],
+    peaks: List[Dict[str, Any]],
+) -> None:
+    if not plot_rows or not projection_values:
+        return
+    local_minima = [peak for peak in peaks if "local_min" in str(peak["peak_kind"])][:3]
+    if not local_minima:
+        return
+    x_values = [float(row["R"]) for row in plot_rows]
+    x_min = min(x_values)
+    x_max = max(x_values)
+    y_min, y_max = ax.get_ylim()
+    y_span = max(y_max - y_min, 1.0e-12)
+    label_levels = [0.13, 0.28, 0.43]
+    for i, peak in enumerate(local_minima):
+        r_peak = float(peak["R_peak"])
+        if not (x_min <= r_peak <= x_max):
+            continue
+        nearest_index = min(range(len(x_values)), key=lambda idx: abs(x_values[idx] - r_peak))
+        y_peak = float(projection_values[nearest_index])
+        y_label = y_min + label_levels[i % len(label_levels)] * y_span
+        ax.axvline(r_peak, color="tab:orange", linestyle=":", linewidth=1.0, alpha=0.8)
+        ax.scatter([r_peak], [y_peak], marker="D", color="tab:orange", s=34, zorder=5)
+        ax.annotate(
+            f"R={r_peak:.12f}",
+            xy=(r_peak, y_peak),
+            xytext=(r_peak + 0.0015, y_label),
+            textcoords="data",
+            fontsize=8,
+            color="tab:orange",
+            arrowprops={"arrowstyle": "-", "color": "tab:orange", "lw": 0.8},
+            bbox={"boxstyle": "round,pad=0.18", "fc": "white", "ec": "tab:orange", "alpha": 0.82},
+        )
+
+
+def make_projection_penalty_landscape_plot(rows: List[Dict[str, Any]], peaks: List[Dict[str, Any]], params: Params, file_stem: str, deep: bool) -> str:
     sweep_rows = [row for row in rows if str(row["sweep_region"]) in {"coarse", "fine"}]
     best_projection_row_all = min(sweep_rows, key=lambda row: score_components(row)["projection_penalty"])
     plot_rows = selected_plot_rows(rows, params, deep, [float(best_projection_row_all["R"])])
@@ -730,6 +768,7 @@ def make_projection_penalty_landscape_plot(rows: List[Dict[str, Any]], params: P
         padding = max((y_max - y_min) * 0.08, 1.0e-7)
         ax.set_ylim(y_min - padding, y_max + padding)
     apply_r_axis_marks(ax, x_values, params)
+    annotate_projection_local_minima(ax, plot_rows, projection_values, peaks)
     ax.set_title("System C projection penalty landscape")
     ax.set_xlabel("R")
     ax.set_ylabel("projection penalty\nlower is better")
@@ -961,8 +1000,8 @@ def run(args: argparse.Namespace) -> Dict[str, Any]:
         row["classification_C"] = best[0]["classification_C"]
     if not args.no_plots:
         make_score_plot(condition_rows, rows, peaks, params, file_stem)
-        make_projection_penalty_landscape_plot(rows, params, file_stem, deep=False)
-        make_projection_penalty_landscape_plot(rows, params, file_stem, deep=True)
+        make_projection_penalty_landscape_plot(rows, peaks, params, file_stem, deep=False)
+        make_projection_penalty_landscape_plot(rows, peaks, params, file_stem, deep=True)
         make_peak_zoom_plot(condition_rows, rows, peaks, params, file_stem)
     result = {
         "experiment": "system_C_ab_acceleration_harmonic_R_sensitivity_v1",
