@@ -65,6 +65,12 @@ class Params:
     fine_r_step: float = 0.001
     r137: float = 1.0 - math.sqrt(4.0 * math.pi / 137.035999084)
     r128: float = 1.0 - math.sqrt(4.0 * math.pi / 128.0)
+    complete_r_min: float = 0.600
+    complete_r_max: float = 0.900
+    complete_r_step: float = 0.001
+    refine_half_width: float = 0.001
+    refine_r_step: float = 0.00001
+    refine_top_k: int = 3
     pairs: Tuple[Tuple[int, int], ...] = (
         (1, 1),
         (1, 2),
@@ -88,6 +94,14 @@ class HarmonicCase:
     n_b: int
     packet_a: Tuple[int, ...]
     packet_b: Tuple[int, ...]
+    packet_a_weights: Tuple[float, ...]
+    packet_b_weights: Tuple[float, ...]
+    packet_a_phases: Tuple[float, ...]
+    packet_b_phases: Tuple[float, ...]
+    packet_a_wavelength_scales: Tuple[float, ...]
+    packet_b_wavelength_scales: Tuple[float, ...]
+    packet_a_shift: float
+    packet_b_shift: float
 
     @property
     def packet_a_text(self) -> str:
@@ -98,28 +112,156 @@ class HarmonicCase:
         return packet_text(self.packet_b)
 
     @property
+    def packet_a_weight_text(self) -> str:
+        return float_packet_text(self.packet_a_weights)
+
+    @property
+    def packet_b_weight_text(self) -> str:
+        return float_packet_text(self.packet_b_weights)
+
+    @property
+    def packet_a_phase_text(self) -> str:
+        return float_packet_text(self.packet_a_phases)
+
+    @property
+    def packet_b_phase_text(self) -> str:
+        return float_packet_text(self.packet_b_phases)
+
+    @property
+    def packet_a_wavelength_scale_text(self) -> str:
+        return float_packet_text(self.packet_a_wavelength_scales)
+
+    @property
+    def packet_b_wavelength_scale_text(self) -> str:
+        return float_packet_text(self.packet_b_wavelength_scales)
+
+    @property
+    def packet_a_spec_text(self) -> str:
+        return packet_spec_text(
+            self.packet_a,
+            self.packet_a_weights,
+            self.packet_a_phases,
+            self.packet_a_wavelength_scales,
+            self.packet_a_shift,
+        )
+
+    @property
+    def packet_b_spec_text(self) -> str:
+        return packet_spec_text(
+            self.packet_b,
+            self.packet_b_weights,
+            self.packet_b_phases,
+            self.packet_b_wavelength_scales,
+            self.packet_b_shift,
+        )
+
+    @property
     def case_id(self) -> str:
-        return f"{self.mode}|A={self.packet_a_text}|B={self.packet_b_text}"
+        return f"{self.mode}|A={self.packet_a_spec_text}|B={self.packet_b_spec_text}"
 
 
 def packet_text(packet: Tuple[int, ...]) -> str:
     return ",".join(str(value) for value in packet)
 
 
+def float_packet_text(values: Tuple[float, ...]) -> str:
+    return ",".join(f"{float(value):.12g}" for value in values)
+
+
+def default_weights(packet: Tuple[int, ...]) -> Tuple[float, ...]:
+    return tuple(1.0 for _ in packet)
+
+
+def default_phases(packet: Tuple[int, ...]) -> Tuple[float, ...]:
+    return tuple(0.0 for _ in packet)
+
+
+def default_wavelength_scales(packet: Tuple[int, ...]) -> Tuple[float, ...]:
+    return tuple(1.0 for _ in packet)
+
+
+def packet_spec_text(
+    packet: Tuple[int, ...],
+    weights: Tuple[float, ...],
+    phases: Tuple[float, ...],
+    wavelength_scales: Tuple[float, ...],
+    shift: float,
+) -> str:
+    parts = [packet_text(packet)]
+    if any(abs(float(value) - 1.0) > 1.0e-14 for value in weights):
+        parts.append(f"w={float_packet_text(weights)}")
+    if any(abs(float(value)) > 1.0e-14 for value in phases):
+        parts.append(f"p={float_packet_text(phases)}")
+    if any(abs(float(value) - 1.0) > 1.0e-14 for value in wavelength_scales):
+        parts.append(f"lambda={float_packet_text(wavelength_scales)}")
+    if abs(float(shift)) > 1.0e-14:
+        parts.append(f"s={float(shift):.12g}")
+    return ";".join(parts)
+
+
+def validate_packet_parameters(
+    packet: Tuple[int, ...],
+    weights: Tuple[float, ...],
+    phases: Tuple[float, ...],
+    wavelength_scales: Tuple[float, ...],
+    label: str,
+) -> None:
+    if len(weights) != len(packet):
+        raise ValueError(f"{label} weights length must match packet length")
+    if len(phases) != len(packet):
+        raise ValueError(f"{label} phases length must match packet length")
+    if len(wavelength_scales) != len(packet):
+        raise ValueError(f"{label} wavelength scales length must match packet length")
+    if not any(abs(float(weight)) > 0.0 for weight in weights):
+        raise ValueError(f"{label} weights must contain at least one nonzero value")
+    if any(float(scale) <= 0.0 for scale in wavelength_scales):
+        raise ValueError(f"{label} wavelength scales must be positive")
+
+
 def odd_kernel_case(pair: Tuple[int, int]) -> HarmonicCase:
+    packet_a = (int(pair[0]),)
+    packet_b = (int(pair[1]),)
     return HarmonicCase(
         mode="odd_kernel",
         state_family="odd_kernel",
         n_a=int(pair[0]),
         n_b=int(pair[1]),
-        packet_a=(int(pair[0]),),
-        packet_b=(int(pair[1]),),
+        packet_a=packet_a,
+        packet_b=packet_b,
+        packet_a_weights=default_weights(packet_a),
+        packet_b_weights=default_weights(packet_b),
+        packet_a_phases=default_phases(packet_a),
+        packet_b_phases=default_phases(packet_b),
+        packet_a_wavelength_scales=default_wavelength_scales(packet_a),
+        packet_b_wavelength_scales=default_wavelength_scales(packet_b),
+        packet_a_shift=0.0,
+        packet_b_shift=0.0,
     )
 
 
-def explicit_packet_case(mode: str, packet_a: Tuple[int, ...], packet_b: Tuple[int, ...]) -> HarmonicCase:
+def explicit_packet_case(
+    mode: str,
+    packet_a: Tuple[int, ...],
+    packet_b: Tuple[int, ...],
+    packet_a_weights: Optional[Tuple[float, ...]] = None,
+    packet_b_weights: Optional[Tuple[float, ...]] = None,
+    packet_a_phases: Optional[Tuple[float, ...]] = None,
+    packet_b_phases: Optional[Tuple[float, ...]] = None,
+    packet_a_wavelength_scales: Optional[Tuple[float, ...]] = None,
+    packet_b_wavelength_scales: Optional[Tuple[float, ...]] = None,
+    packet_a_shift: float = 0.0,
+    packet_b_shift: float = 0.0,
+) -> HarmonicCase:
     if not packet_a or not packet_b:
         raise ValueError("harmonic packet must not be empty")
+    weights_a = packet_a_weights if packet_a_weights is not None else default_weights(packet_a)
+    weights_b = packet_b_weights if packet_b_weights is not None else default_weights(packet_b)
+    phases_a = packet_a_phases if packet_a_phases is not None else default_phases(packet_a)
+    phases_b = packet_b_phases if packet_b_phases is not None else default_phases(packet_b)
+    wavelengths_a = packet_a_wavelength_scales if packet_a_wavelength_scales is not None else default_wavelength_scales(packet_a)
+    wavelengths_b = packet_b_wavelength_scales if packet_b_wavelength_scales is not None else default_wavelength_scales(packet_b)
+    validate_packet_parameters(packet_a, weights_a, phases_a, wavelengths_a, "A packet")
+    validate_packet_parameters(packet_b, weights_b, phases_b, wavelengths_b, "B packet")
     return HarmonicCase(
         mode=mode,
         state_family="explicit_packet",
@@ -127,6 +269,14 @@ def explicit_packet_case(mode: str, packet_a: Tuple[int, ...], packet_b: Tuple[i
         n_b=max(packet_b),
         packet_a=tuple(int(value) for value in packet_a),
         packet_b=tuple(int(value) for value in packet_b),
+        packet_a_weights=tuple(float(value) for value in weights_a),
+        packet_b_weights=tuple(float(value) for value in weights_b),
+        packet_a_phases=tuple(float(value) for value in phases_a),
+        packet_b_phases=tuple(float(value) for value in phases_b),
+        packet_a_wavelength_scales=tuple(float(value) for value in wavelengths_a),
+        packet_b_wavelength_scales=tuple(float(value) for value in wavelengths_b),
+        packet_a_shift=float(packet_a_shift),
+        packet_b_shift=float(packet_b_shift),
     )
 
 
@@ -203,6 +353,18 @@ def r_values(params: Params) -> List[float]:
     return sorted({round(float(v), 12) for v in values})
 
 
+def uniform_r_values(start: float, stop: float, step: float) -> List[float]:
+    if step <= 0.0:
+        raise ValueError("R step must be positive")
+    if stop < start:
+        raise ValueError("R stop must be greater than or equal to R start")
+    count = int(math.floor((stop - start) / step + 1.0e-12))
+    values = [round(start + step * i, 12) for i in range(count + 1)]
+    if not values or abs(values[-1] - stop) > step * 0.5:
+        values.append(round(stop, 12))
+    return sorted({float(value) for value in values})
+
+
 def parse_pair_token(token: str) -> Tuple[int, int]:
     normalized = token.strip().replace("x", ":").replace("-", ":")
     parts = normalized.split(":")
@@ -229,6 +391,21 @@ def parse_packet_text(text: str) -> Tuple[int, ...]:
     return tuple(int(token.strip()) for token in text.split(",") if token.strip())
 
 
+def parse_weight_text(text: str) -> Tuple[float, ...]:
+    if not text.strip():
+        return tuple()
+    return tuple(float(token.strip()) for token in text.split(",") if token.strip())
+
+
+def packet_parameter_or_default(values: Optional[str], packet: Tuple[int, ...], default: float) -> Tuple[float, ...]:
+    if values is None:
+        return tuple(float(default) for _ in packet)
+    parsed = parse_weight_text(values)
+    if len(parsed) == 1 and len(packet) > 1:
+        return tuple(float(parsed[0]) for _ in packet)
+    return parsed
+
+
 def selected_pairs_from_args(params: Params, args: argparse.Namespace) -> Tuple[Tuple[int, int], ...]:
     if args.pairs:
         return parse_pairs_text(args.pairs)
@@ -241,7 +418,27 @@ def selected_cases_from_args(params: Params, args: argparse.Namespace) -> Tuple[
     if args.packet_a or args.packet_b:
         packet_a = parse_packet_text(args.packet_a or "1")
         packet_b = parse_packet_text(args.packet_b or "")
-        return (explicit_packet_case("custom_packet", packet_a, packet_b),)
+        packet_a_weights = packet_parameter_or_default(args.packet_a_weights, packet_a, 1.0)
+        packet_b_weights = packet_parameter_or_default(args.packet_b_weights, packet_b, 1.0)
+        packet_a_phases = packet_parameter_or_default(args.packet_a_phases, packet_a, 0.0)
+        packet_b_phases = packet_parameter_or_default(args.packet_b_phases, packet_b, 0.0)
+        packet_a_wavelength_scales = packet_parameter_or_default(args.packet_a_wavelength_scales, packet_a, 1.0)
+        packet_b_wavelength_scales = packet_parameter_or_default(args.packet_b_wavelength_scales, packet_b, 1.0)
+        return (
+            explicit_packet_case(
+                "custom_packet",
+                packet_a,
+                packet_b,
+                packet_a_weights=packet_a_weights,
+                packet_b_weights=packet_b_weights,
+                packet_a_phases=packet_a_phases,
+                packet_b_phases=packet_b_phases,
+                packet_a_wavelength_scales=packet_a_wavelength_scales,
+                packet_b_wavelength_scales=packet_b_wavelength_scales,
+                packet_a_shift=float(args.packet_a_shift),
+                packet_b_shift=float(args.packet_b_shift),
+            ),
+        )
 
     pairs = selected_pairs_from_args(params, args)
     single_cases = tuple(odd_kernel_case(pair) for pair in pairs)
@@ -261,7 +458,15 @@ def selected_cases_from_args(params: Params, args: argparse.Namespace) -> Tuple[
 
 
 def selected_r_values_from_args(params: Params, args: argparse.Namespace) -> List[float]:
-    values = parse_float_list(args.r_values) if args.r_values else r_values(params)
+    if args.r_values:
+        values = parse_float_list(args.r_values)
+    elif args.complete_sweep:
+        start = args.complete_r_min if args.complete_r_min is not None else params.complete_r_min
+        stop = args.complete_r_max if args.complete_r_max is not None else params.complete_r_max
+        step = args.complete_r_step if args.complete_r_step is not None else params.complete_r_step
+        values = uniform_r_values(float(start), float(stop), float(step))
+    else:
+        values = r_values(params)
     if args.r_min is not None:
         values = [value for value in values if value >= args.r_min]
     if args.r_max is not None:
@@ -305,7 +510,7 @@ def cases_slug(cases: Tuple[HarmonicCase, ...]) -> str:
         return safe_slug(f"odd_B{b_values}", max_len=90)
     if len(cases) == 1:
         case = cases[0]
-        return safe_slug(f"{case.mode}_A{case.packet_a_text}_B{case.packet_b_text}", max_len=90)
+        return safe_slug(f"{case.mode}_A{case.packet_a_spec_text}_B{case.packet_b_spec_text}", max_len=90)
     digest_src = "|".join(case.case_id for case in cases)
     digest = hashlib.sha1(digest_src.encode("utf-8")).hexdigest()[:8]
     modes = "-".join(sorted({case.mode for case in cases}))
@@ -318,7 +523,9 @@ def r_values_slug(values: List[float], params: Params) -> str:
         return "Rdefault"
     if len(values) <= 4:
         return safe_slug("R" + "-".join(compact_float(value) for value in values), max_len=90)
-    return safe_slug(f"R{compact_float(min(values))}-{compact_float(max(values))}_n{len(values)}", max_len=90)
+    digest_src = ",".join(f"{float(value):.12g}" for value in values)
+    digest = hashlib.sha1(digest_src.encode("utf-8")).hexdigest()[:8]
+    return safe_slug(f"R{compact_float(min(values))}-{compact_float(max(values))}_n{len(values)}_{digest}", max_len=90)
 
 
 def build_file_stem(cases: Tuple[HarmonicCase, ...], values: List[float], params: Params, run_id: Optional[str], explicit_stem: Optional[str]) -> str:
@@ -343,9 +550,27 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--packet-a", help="custom explicit harmonic packet for A, e.g. 1 or 1,3,5")
     parser.add_argument("--packet-b", help="custom explicit harmonic packet for B, e.g. 1,2,4,6")
+    parser.add_argument("--packet-a-weights", help="comma-separated A harmonic weights; one value is broadcast")
+    parser.add_argument("--packet-b-weights", help="comma-separated B harmonic weights; one value is broadcast")
+    parser.add_argument("--packet-a-phases", help="comma-separated A harmonic phase offsets in radians; one value is broadcast")
+    parser.add_argument("--packet-b-phases", help="comma-separated B harmonic phase offsets in radians; one value is broadcast")
+    parser.add_argument("--packet-a-wavelength-scales", help="comma-separated A wavelength scales; frequency uses n / scale")
+    parser.add_argument("--packet-b-wavelength-scales", help="comma-separated B wavelength scales; frequency uses n / scale")
+    parser.add_argument("--packet-a-shift", type=float, default=0.0, help="A packet translation in chi radians")
+    parser.add_argument("--packet-b-shift", type=float, default=0.0, help="B packet translation in chi radians")
     parser.add_argument("--r-min", type=float, help="minimum R to include")
     parser.add_argument("--r-max", type=float, help="maximum R to include")
     parser.add_argument("--r-values", help="comma-separated explicit R values")
+    parser.add_argument("--complete-sweep", action="store_true", help="use a uniform R sweep without injecting R_137/R_128 probe points")
+    parser.add_argument("--complete-r-min", type=float, help="uniform complete-sweep minimum R")
+    parser.add_argument("--complete-r-max", type=float, help="uniform complete-sweep maximum R")
+    parser.add_argument("--complete-r-step", type=float, help="uniform complete-sweep R step")
+    parser.add_argument("--refine-minima", action="store_true", help="rerun around local minima found in the first sweep")
+    parser.add_argument("--refine-top-k", type=int, help="number of local minima to refine per case")
+    parser.add_argument("--refine-half-width", type=float, help="half width around each local minimum for refined sweep")
+    parser.add_argument("--refine-r-step", type=float, help="R step for refined sweep")
+    parser.add_argument("--fixed-l-norm", type=float, help="fixed normalization denominator for L gap scores")
+    parser.add_argument("--fixed-n-norm", type=float, help="fixed normalization denominator for N_eff gap scores")
     parser.add_argument("--max-collision", type=int, help="override recursive collision count")
     parser.add_argument("--run-id", help="write outputs under the default result directory with this subdirectory name")
     parser.add_argument("--file-stem", help="explicit output file stem")
@@ -365,25 +590,38 @@ def distribution_similarity(a: Dict[int, float], b: Dict[int, float]) -> float:
     return float(max(0.0, min(1.0, np.dot(va, vb) / (na * nb))))
 
 
-def explicit_packet_kernel(source_params: Any, harmonics: Tuple[int, ...]) -> np.ndarray:
+def explicit_packet_kernel(
+    source_params: Any,
+    harmonics: Tuple[int, ...],
+    weights: Tuple[float, ...],
+    phases: Tuple[float, ...],
+    wavelength_scales: Tuple[float, ...],
+    shift: float,
+) -> np.ndarray:
     chi, _ = src.make_grids(source_params)
     u = chi - source_params.chi_center
     kernel = np.zeros_like(chi, dtype=float)
-    for harmonic in harmonics:
-        kernel += np.cos(float(harmonic) * u)
-    return kernel / math.sqrt(float(len(harmonics)))
+    for harmonic, weight, phase, wavelength_scale in zip(harmonics, weights, phases, wavelength_scales):
+        effective_frequency = float(harmonic) / float(wavelength_scale)
+        kernel += float(weight) * np.cos(effective_frequency * (u - shift) + float(phase))
+    norm = math.sqrt(float(sum(float(weight) ** 2 for weight in weights)))
+    return kernel / norm if norm > 0.0 else kernel
 
 
 def make_explicit_packet_state(
     source_params: Any,
     harmonics: Tuple[int, ...],
+    weights: Tuple[float, ...],
+    phases: Tuple[float, ...],
+    wavelength_scales: Tuple[float, ...],
+    shift: float,
     q: float,
     m: int,
     hair_enabled: bool,
     amplitude: float,
 ) -> np.ndarray:
     chi, eta = src.make_grids(source_params)
-    kernel = explicit_packet_kernel(source_params, harmonics)
+    kernel = explicit_packet_kernel(source_params, harmonics, weights, phases, wavelength_scales, shift)
     phase_chi = np.exp(1j * q * source_params.p0 * (chi - source_params.chi_center))
     eta_phase = np.exp(1j * m * eta) if hair_enabled else np.ones_like(eta, dtype=complex)
     psi = (kernel * phase_chi)[:, None] * eta_phase[None, :]
@@ -397,19 +635,27 @@ def make_case_state(source_params: Any, case: HarmonicCase, side: str, hair_enab
         amplitude = source_params.A_A
         n_value = case.n_a
         packet = case.packet_a
+        weights = case.packet_a_weights
+        phases = case.packet_a_phases
+        wavelength_scales = case.packet_a_wavelength_scales
+        shift = case.packet_a_shift
     elif side == "B":
         q = source_params.q_B
         m = source_params.m_B
         amplitude = source_params.A_B
         n_value = case.n_b
         packet = case.packet_b
+        weights = case.packet_b_weights
+        phases = case.packet_b_phases
+        wavelength_scales = case.packet_b_wavelength_scales
+        shift = case.packet_b_shift
     else:
         raise ValueError(f"unknown side: {side}")
 
     if case.state_family == "odd_kernel":
         return src.make_state(source_params, n_value, q, m, hair_enabled, amplitude)
     if case.state_family == "explicit_packet":
-        return make_explicit_packet_state(source_params, packet, q, m, hair_enabled, amplitude)
+        return make_explicit_packet_state(source_params, packet, weights, phases, wavelength_scales, shift, q, m, hair_enabled, amplitude)
     raise ValueError(f"unknown state family: {case.state_family}")
 
 
@@ -442,6 +688,14 @@ def row_for_state(
         "state_family": case.state_family,
         "harmonic_packet_A": case.packet_a_text,
         "harmonic_packet_B": case.packet_b_text,
+        "harmonic_packet_A_weights": case.packet_a_weight_text,
+        "harmonic_packet_B_weights": case.packet_b_weight_text,
+        "harmonic_packet_A_phases": case.packet_a_phase_text,
+        "harmonic_packet_B_phases": case.packet_b_phase_text,
+        "harmonic_packet_A_wavelength_scales": case.packet_a_wavelength_scale_text,
+        "harmonic_packet_B_wavelength_scales": case.packet_b_wavelength_scale_text,
+        "harmonic_packet_A_shift": case.packet_a_shift,
+        "harmonic_packet_B_shift": case.packet_b_shift,
         "N_A": case.n_a,
         "N_B": case.n_b,
         "R_input": r_value,
@@ -541,6 +795,14 @@ def summarize_case(rows: List[Dict[str, Any]], params: Params) -> Dict[str, Any]
         "state_family": str(first_row["state_family"]),
         "harmonic_packet_A": str(first_row["harmonic_packet_A"]),
         "harmonic_packet_B": str(first_row["harmonic_packet_B"]),
+        "harmonic_packet_A_weights": str(first_row["harmonic_packet_A_weights"]),
+        "harmonic_packet_B_weights": str(first_row["harmonic_packet_B_weights"]),
+        "harmonic_packet_A_phases": str(first_row["harmonic_packet_A_phases"]),
+        "harmonic_packet_B_phases": str(first_row["harmonic_packet_B_phases"]),
+        "harmonic_packet_A_wavelength_scales": str(first_row["harmonic_packet_A_wavelength_scales"]),
+        "harmonic_packet_B_wavelength_scales": str(first_row["harmonic_packet_B_wavelength_scales"]),
+        "harmonic_packet_A_shift": float(first_row["harmonic_packet_A_shift"]),
+        "harmonic_packet_B_shift": float(first_row["harmonic_packet_B_shift"]),
         "N_A": n_a,
         "N_B": n_b,
         "pair_kind": pair_kind,
@@ -573,20 +835,37 @@ def normalize_column(rows: List[Dict[str, Any]], key: str) -> Dict[Tuple[str, fl
     return {(str(row["case_id"]), float(row["R"])): float(row[key]) / max_value for row in rows}
 
 
-def add_pair_level_scores(summaries: List[Dict[str, Any]]) -> None:
+def add_pair_level_scores(
+    summaries: List[Dict[str, Any]],
+    fixed_l_norm: Optional[float] = None,
+    fixed_n_norm: Optional[float] = None,
+) -> None:
     by_pair: Dict[str, List[Dict[str, Any]]] = {}
     for row in summaries:
         by_pair.setdefault(str(row["case_id"]), []).append(row)
     for pair_rows in by_pair.values():
-        l_norm = normalize_column(pair_rows, "L_gap_min")
-        n_norm = normalize_column(pair_rows, "N_eff_gap_min")
+        if fixed_l_norm is not None:
+            fixed_l = max(float(fixed_l_norm), 1.0e-300)
+            l_norm = {(str(row["case_id"]), float(row["R"])): float(row["L_gap_min"]) / fixed_l for row in pair_rows}
+        else:
+            l_norm = normalize_column(pair_rows, "L_gap_min")
+        if fixed_n_norm is not None:
+            fixed_n = max(float(fixed_n_norm), 1.0e-300)
+            n_norm = {(str(row["case_id"]), float(row["R"])): float(row["N_eff_gap_min"]) / fixed_n for row in pair_rows}
+        else:
+            n_norm = normalize_column(pair_rows, "N_eff_gap_min")
         for row in pair_rows:
             key = (str(row["case_id"]), float(row["R"]))
             row["joint_R_score"] = l_norm[key] + n_norm[key] + (1.0 - float(row["max_B_to_A_transfer"]))
 
 
-def best_rows_for_pair(summaries: List[Dict[str, Any]], params: Params) -> List[Dict[str, Any]]:
-    add_pair_level_scores(summaries)
+def best_rows_for_pair(
+    summaries: List[Dict[str, Any]],
+    params: Params,
+    fixed_l_norm: Optional[float] = None,
+    fixed_n_norm: Optional[float] = None,
+) -> List[Dict[str, Any]]:
+    add_pair_level_scores(summaries, fixed_l_norm=fixed_l_norm, fixed_n_norm=fixed_n_norm)
     out: List[Dict[str, Any]] = []
     for case_id in sorted({str(row["case_id"]) for row in summaries}):
         all_pair_rows = [row for row in summaries if str(row["case_id"]) == case_id]
@@ -618,6 +897,14 @@ def best_rows_for_pair(summaries: List[Dict[str, Any]], params: Params) -> List[
                 "state_family": str(best_joint["state_family"]),
                 "harmonic_packet_A": str(best_joint["harmonic_packet_A"]),
                 "harmonic_packet_B": str(best_joint["harmonic_packet_B"]),
+                "harmonic_packet_A_weights": str(best_joint["harmonic_packet_A_weights"]),
+                "harmonic_packet_B_weights": str(best_joint["harmonic_packet_B_weights"]),
+                "harmonic_packet_A_phases": str(best_joint["harmonic_packet_A_phases"]),
+                "harmonic_packet_B_phases": str(best_joint["harmonic_packet_B_phases"]),
+                "harmonic_packet_A_wavelength_scales": str(best_joint["harmonic_packet_A_wavelength_scales"]),
+                "harmonic_packet_B_wavelength_scales": str(best_joint["harmonic_packet_B_wavelength_scales"]),
+                "harmonic_packet_A_shift": float(best_joint["harmonic_packet_A_shift"]),
+                "harmonic_packet_B_shift": float(best_joint["harmonic_packet_B_shift"]),
                 "N_A": int(best_joint["N_A"]),
                 "N_B": int(best_joint["N_B"]),
                 "pair_kind": best_joint["pair_kind"],
@@ -643,6 +930,56 @@ def best_rows_for_pair(summaries: List[Dict[str, Any]], params: Params) -> List[
             }
         )
     return out
+
+
+def refined_r_values_from_summaries(
+    summaries: List[Dict[str, Any]],
+    base_values: List[float],
+    half_width: float,
+    step: float,
+    top_k: int,
+    fixed_l_norm: Optional[float] = None,
+    fixed_n_norm: Optional[float] = None,
+) -> List[float]:
+    if half_width <= 0.0:
+        raise ValueError("refine half width must be positive")
+    if step <= 0.0:
+        raise ValueError("refine R step must be positive")
+    if top_k <= 0:
+        raise ValueError("refine top-k must be positive")
+    if not base_values:
+        raise ValueError("base R values must not be empty")
+
+    add_pair_level_scores(summaries, fixed_l_norm=fixed_l_norm, fixed_n_norm=fixed_n_norm)
+    r_min = min(base_values)
+    r_max = max(base_values)
+    values = set(round(float(value), 12) for value in base_values)
+    by_case: Dict[str, List[Dict[str, Any]]] = {}
+    for row in summaries:
+        if not math.isfinite(float(row.get("joint_R_score", float("nan")))):
+            continue
+        if str(row.get("sweep_region")) == "control":
+            continue
+        by_case.setdefault(str(row["case_id"]), []).append(row)
+
+    for rows in by_case.values():
+        ordered = sorted(rows, key=lambda row: float(row["R"]))
+        local_minima: List[Dict[str, Any]] = []
+        for i, row in enumerate(ordered):
+            score = float(row["joint_R_score"])
+            left = float(ordered[i - 1]["joint_R_score"]) if i > 0 else float("inf")
+            right = float(ordered[i + 1]["joint_R_score"]) if i + 1 < len(ordered) else float("inf")
+            if score <= left and score <= right:
+                local_minima.append(row)
+        candidates = local_minima or ordered
+        selected = sorted(candidates, key=lambda row: float(row["joint_R_score"]))[:top_k]
+        for row in selected:
+            center = float(row["R"])
+            start = max(r_min, center - half_width)
+            stop = min(r_max, center + half_width)
+            values.update(round(float(value), 12) for value in uniform_r_values(start, stop, step))
+
+    return sorted(float(value) for value in values)
 
 
 def write_csv(path: Path, rows: List[Dict[str, Any]]) -> None:
@@ -685,7 +1022,12 @@ def make_score_plot(best: List[Dict[str, Any]], summaries: List[Dict[str, Any]],
     return filename
 
 
-def terrain_rows(all_rows: List[Dict[str, Any]], params: Params) -> List[Dict[str, Any]]:
+def terrain_rows(
+    all_rows: List[Dict[str, Any]],
+    params: Params,
+    fixed_l_norm: Optional[float] = None,
+    fixed_n_norm: Optional[float] = None,
+) -> List[Dict[str, Any]]:
     grouped: Dict[Tuple[str, float, int], Dict[str, Dict[str, Any]]] = {}
     for row in all_rows:
         key = (str(row["case_id"]), float(row["R_input"]), int(row["collision"]))
@@ -714,6 +1056,14 @@ def terrain_rows(all_rows: List[Dict[str, Any]], params: Params) -> List[Dict[st
                 "state_family": str(a["state_family"]),
                 "harmonic_packet_A": str(a["harmonic_packet_A"]),
                 "harmonic_packet_B": str(a["harmonic_packet_B"]),
+                "harmonic_packet_A_weights": str(a["harmonic_packet_A_weights"]),
+                "harmonic_packet_B_weights": str(a["harmonic_packet_B_weights"]),
+                "harmonic_packet_A_phases": str(a["harmonic_packet_A_phases"]),
+                "harmonic_packet_B_phases": str(a["harmonic_packet_B_phases"]),
+                "harmonic_packet_A_wavelength_scales": str(a["harmonic_packet_A_wavelength_scales"]),
+                "harmonic_packet_B_wavelength_scales": str(a["harmonic_packet_B_wavelength_scales"]),
+                "harmonic_packet_A_shift": float(a["harmonic_packet_A_shift"]),
+                "harmonic_packet_B_shift": float(a["harmonic_packet_B_shift"]),
                 "N_A": n_a,
                 "N_B": n_b,
                 "pair_kind": "one_side_high_harmonic" if n_a != n_b else "same_harmonic_control",
@@ -737,8 +1087,8 @@ def terrain_rows(all_rows: List[Dict[str, Any]], params: Params) -> List[Dict[st
     for row in out:
         by_pair.setdefault(str(row["case_id"]), []).append(row)
     for rows in by_pair.values():
-        max_l = max([float(row["L_gap"]) for row in rows] or [1.0])
-        max_n = max([float(row["N_eff_gap"]) for row in rows] or [1.0])
+        max_l = float(fixed_l_norm) if fixed_l_norm is not None else max([float(row["L_gap"]) for row in rows] or [1.0])
+        max_n = float(fixed_n_norm) if fixed_n_norm is not None else max([float(row["N_eff_gap"]) for row in rows] or [1.0])
         max_l = max(max_l, 1.0e-300)
         max_n = max(max_n, 1.0e-300)
         for row in rows:
@@ -890,12 +1240,15 @@ def build_report(params: Params, best: List[Dict[str, Any]], outputs: Dict[str, 
         "",
         "## 2. 系統A 判定サマリー",
         "",
-        "| mode | A packet | B packet | N_A | N_B | kind | R*_L | col_L | R*_N | col_N | R*_transfer | col_transfer | R*_joint | col_joint | band5 | band10 | d137 | d128 | coarse R | fine R | control R |",
-        "|---|---|---|---:|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
+        "| mode | A packet | B packet | A weights | B weights | A phases | B phases | A wavelengths | B wavelengths | A shift | B shift | N_A | N_B | kind | R*_L | col_L | R*_N | col_N | R*_transfer | col_transfer | R*_joint | col_joint | band5 | band10 | d137 | d128 | coarse R | fine R | control R |",
+        "|---|---|---|---|---|---|---|---|---|---:|---:|---:|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for row in best:
         lines.append(
-            "| {mode} | {harmonic_packet_A} | {harmonic_packet_B} | {N_A} | {N_B} | {pair_kind} | {R_star_L:.12g} | {collision_at_R_star_L} | "
+            "| {mode} | {harmonic_packet_A} | {harmonic_packet_B} | {harmonic_packet_A_weights} | {harmonic_packet_B_weights} | "
+            "{harmonic_packet_A_phases} | {harmonic_packet_B_phases} | {harmonic_packet_A_wavelength_scales} | {harmonic_packet_B_wavelength_scales} | "
+            "{harmonic_packet_A_shift:.12g} | {harmonic_packet_B_shift:.12g} | "
+            "{N_A} | {N_B} | {pair_kind} | {R_star_L:.12g} | {collision_at_R_star_L} | "
             "{R_star_N:.12g} | {collision_at_R_star_N} | {R_star_transfer:.12g} | {collision_at_R_star_transfer} | "
             "{R_star_joint:.12g} | {collision_at_R_star_joint} | {R_band_width_5:.12g} | {R_band_width_10:.12g} | "
             "{distance_to_R_137:.12g} | {distance_to_R_128:.12g} | {best_coarse_R:.12g} | {best_fine_R:.12g} | {best_control_R:.12g} |".format(**row)
@@ -957,6 +1310,8 @@ def run(
     make_plots: bool = True,
     run_id: Optional[str] = None,
     file_stem: Optional[str] = None,
+    fixed_l_norm: Optional[float] = None,
+    fixed_n_norm: Optional[float] = None,
 ) -> Dict[str, Any]:
     params = Params()
     if max_collision is not None:
@@ -981,7 +1336,7 @@ def run(
             rows = run_case(source_params, metrics, case, r_value, params.recursive_collision_count)
             all_rows.extend(rows)
             summaries.append(summarize_case(rows, params))
-    best = best_rows_for_pair(summaries, params)
+    best = best_rows_for_pair(summaries, params, fixed_l_norm=fixed_l_norm, fixed_n_norm=fixed_n_norm)
     outputs = {
         "rows": f"{resolved_file_stem}_rows_v1.csv",
         "summary": f"{resolved_file_stem}_summary_v1.csv",
@@ -992,7 +1347,7 @@ def run(
     }
     if make_plots:
         outputs["score_plot"] = make_score_plot(best, summaries, resolved_file_stem)
-    terrain = terrain_rows(all_rows, params)
+    terrain = terrain_rows(all_rows, params, fixed_l_norm=fixed_l_norm, fixed_n_norm=fixed_n_norm)
     if make_plots and primary_case_ids(terrain):
         outputs["depth_distribution_overview_plot"] = make_gap_depth_distribution_overview_plot(terrain, params, resolved_file_stem)
         outputs["depth_distribution_deep_plot"] = make_gap_depth_distribution_deep_plot(terrain, params, resolved_file_stem)
@@ -1012,6 +1367,8 @@ def run(
         "best": best,
         "summary": summaries,
         "outputs": outputs,
+        "fixed_l_norm": fixed_l_norm,
+        "fixed_n_norm": fixed_n_norm,
     }
     (OUT_DIR / outputs["json"]).write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
     report = build_report(params, best, outputs)
@@ -1024,24 +1381,86 @@ if __name__ == "__main__":
     cli_params = Params()
     selected_cases = selected_cases_from_args(cli_params, cli_args)
     selected_r = selected_r_values_from_args(cli_params, cli_args)
-    data = run(
-        selected_cases=selected_cases,
-        selected_r_values=selected_r,
-        output_dir=output_dir_from_args(cli_args),
-        max_collision=cli_args.max_collision,
-        make_plots=not cli_args.no_plots,
-        run_id=cli_args.run_id,
-        file_stem=cli_args.file_stem,
-    )
-    print(
-        json.dumps(
-            {
-                "output_dir": data["output_dir"],
-                "file_stem": data["file_stem"],
-                "best": data["best"],
-                "outputs": data["outputs"],
-            },
-            ensure_ascii=False,
-            indent=2,
+    selected_output_dir = output_dir_from_args(cli_args)
+    fixed_l_norm = cli_args.fixed_l_norm
+    fixed_n_norm = cli_args.fixed_n_norm
+    if cli_args.refine_minima:
+        initial_file_stem = f"{cli_args.file_stem}_initial" if cli_args.file_stem else None
+        initial_data = run(
+            selected_cases=selected_cases,
+            selected_r_values=selected_r,
+            output_dir=selected_output_dir,
+            max_collision=cli_args.max_collision,
+            make_plots=not cli_args.no_plots,
+            run_id=cli_args.run_id,
+            file_stem=initial_file_stem,
+            fixed_l_norm=fixed_l_norm,
+            fixed_n_norm=fixed_n_norm,
         )
-    )
+        refine_half_width = cli_args.refine_half_width if cli_args.refine_half_width is not None else cli_params.refine_half_width
+        refine_r_step = cli_args.refine_r_step if cli_args.refine_r_step is not None else cli_params.refine_r_step
+        refine_top_k = cli_args.refine_top_k if cli_args.refine_top_k is not None else cli_params.refine_top_k
+        refined_r = refined_r_values_from_summaries(
+            initial_data["summary"],
+            selected_r,
+            half_width=float(refine_half_width),
+            step=float(refine_r_step),
+            top_k=int(refine_top_k),
+            fixed_l_norm=fixed_l_norm,
+            fixed_n_norm=fixed_n_norm,
+        )
+        data = run(
+            selected_cases=selected_cases,
+            selected_r_values=refined_r,
+            output_dir=selected_output_dir,
+            max_collision=cli_args.max_collision,
+            make_plots=not cli_args.no_plots,
+            run_id=cli_args.run_id,
+            file_stem=cli_args.file_stem,
+            fixed_l_norm=fixed_l_norm,
+            fixed_n_norm=fixed_n_norm,
+        )
+        print(
+            json.dumps(
+                {
+                    "output_dir": data["output_dir"],
+                    "initial_file_stem": initial_data["file_stem"],
+                    "file_stem": data["file_stem"],
+                    "initial_r_count": len(selected_r),
+                    "refined_r_count": len(refined_r),
+                    "refine_half_width": float(refine_half_width),
+                    "refine_r_step": float(refine_r_step),
+                    "refine_top_k": int(refine_top_k),
+                    "fixed_l_norm": fixed_l_norm,
+                    "fixed_n_norm": fixed_n_norm,
+                    "best": data["best"],
+                    "outputs": data["outputs"],
+                },
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
+    else:
+        data = run(
+            selected_cases=selected_cases,
+            selected_r_values=selected_r,
+            output_dir=selected_output_dir,
+            max_collision=cli_args.max_collision,
+            make_plots=not cli_args.no_plots,
+            run_id=cli_args.run_id,
+            file_stem=cli_args.file_stem,
+            fixed_l_norm=fixed_l_norm,
+            fixed_n_norm=fixed_n_norm,
+        )
+        print(
+            json.dumps(
+                {
+                    "output_dir": data["output_dir"],
+                    "file_stem": data["file_stem"],
+                    "best": data["best"],
+                    "outputs": data["outputs"],
+                },
+                ensure_ascii=False,
+                indent=2,
+            )
+        )
