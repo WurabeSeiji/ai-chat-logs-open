@@ -1,0 +1,1142 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{Helvetica}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Hiragino Sans}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Hiragino Sans}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{交換重みG\_R=1-Rの選別と微細構造定数対応候補の数値実験
+v1}\label{ux4ea4ux63dbux91cdux307fg_r1-rux306eux9078ux5225ux3068ux5faeux7d30ux69cbux9020ux5b9aux6570ux5bfeux5fdcux5019ux88dcux306eux6570ux5024ux5b9fux9a13-v1}
+
+\textbf{日付:} 2026-07-15\\
+\textbf{著者:} 木原 範昭\\
+\textbf{位置づけ:} 波の情報読出しシリーズ・交換重み選別実験総括\\
+\textbf{Version DOI:} 10.5281/zenodo.21396761\\
+\textbf{Concept DOI:} 10.5281/zenodo.21396760
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{概要}\label{ux6982ux8981}
+
+本稿では、背景空間を先に置かない閉鎖位相系において、フェルミオン的な交換散乱写像における状態交換の成立度を、代表量
+\texttt{G\_R=1-R}
+として読んだとき、どの条件で鋭く選別されるかを数値実験で調べる。ここで
+\texttt{R}
+は数値実験で掃引する反射係数であり、主に読む量は反射そのものではなく、状態が相手側へ移る交換量である。
+
+本稿の主題は、微細構造定数との一致そのものではなく、少数の公理から構成した閉鎖交換写像が、状態交換の成立度を表す代表重みを自発的に選別するかどうかである。
+
+出発点は二つである。
+
+第一に、系統A、すなわち低局在性・倍音移乗読出し実験では、片側に高次倍音をもつ波と低局在波を交換散乱させると、倍音構造が相手側へ移り、低局在波が局在化する現象が観察された。この実験系は、自己引用
+{[}3{]}, {[}4{]} を母体とし、本稿向けの \texttt{R}
+スイープ仕様を自己引用 {[}7{]}
+として定めたものである。このとき、経験的に \texttt{R=0.70}
+近傍が有効な散乱点として現れた。
+
+第二に、系統B、すなわち白猫黒猫・灰色猫準安定界面実験では、AB二成分の配分状態が灰色準安定相へ入る条件を探索した。この実験系は、自己引用
+{[}5{]} を母体とし、本稿向けの \texttt{R} スイープ仕様を自己引用 {[}8{]}
+として定めたものである。この系でも、\texttt{R}
+による交換散乱を導入すると、灰色準安定相の地形が \texttt{R}
+軸上で鋭い構造を持つ可能性があった。
+
+本稿では、系統Aとして局在性交換モデルを用い、倍音自由度が交換重みの選別に関わるかを調べた。次に、系統Bとして灰色猫準安定界面モデルを用い、\texttt{R}
+を広範囲に掃引し、そこから状態交換の代表量として \texttt{G\_R=1-R}
+の候補帯を読んだ。
+
+その結果、系統Aでは、単色基底のみでは鋭い交換重み集中が現れず、少なくとも一つの追加倍音自由度がある場合に
+\texttt{R=0.697177879...}、すなわち \texttt{G\_R≈0.302822121}
+近傍へ評価点が集中した。この集中は、奇数倍音に限らず、偶数倍音、奇偶混在、位相ずれ、波長ずれ、極小振幅条件に対しても強く保たれた。
+
+系統Bでは、灰色準安定相の評価量を用いて \texttt{R=0.686602902...} から
+\texttt{R=0.702465367...} までを \texttt{Delta\ R=1.0e-7}
+で一様掃引した。候補帯は七つ検出され、最深候補帯は
+\texttt{R=0.697177902556148}
+に現れた。この値は、標準理論側の低エネルギー微細構造定数
+\texttt{alpha(0)} を
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R = 1 {-} sqrt(4 pi alpha)}
+\end{Highlighting}
+\end{Shaded}
+
+で換算した \texttt{R\_low=0.697177879231003} と、v5
+実験系の有効桁数内で一致した。この最深候補帯を \texttt{1/alpha}
+換算すると \texttt{137.036020287643} であり、低エネルギー微細構造定数
+\texttt{1/alpha(0)=137.035999177\ +-\ 0.000000021}
+に対応する。また第二候補帯は \texttt{R=0.688363902556148}
+に現れ、\texttt{1/alpha} 換算で \texttt{129.394062925467}
+となり、Zボソン質量領域の有効結合
+\texttt{1/alpha(M\_Z\^{}2)=128.946\ +-\ 0.015} の近傍に位置した。
+
+本稿は、微細構造定数を導出したとは主張しない。主張するのは、閉鎖位相系の交換散乱写像において、倍音自由度をもつ準安定界面を調べると、標準理論で参照される二つの電磁結合領域に対応する交換重み候補帯が、外部から
+\texttt{alpha} を入れずに現れる、という数値実験事実である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 動機}\label{ux52d5ux6a5f}
+
+\subsubsection{1.1 系統A:
+低局在性・倍音移乗読出し実験}\label{ux7cfbux7d71a-ux4f4eux5c40ux5728ux6027ux500dux97f3ux79fbux4e57ux8aadux51faux3057ux5b9fux9a13}
+
+系統Aは、自己引用 {[}3{]} の実験仕様と自己引用 {[}4{]}
+の予備実験総括で扱った低局在性・倍音移乗読出し実験を母体とする。本稿では、この母体を自己引用
+{[}7{]} の \texttt{R} 近傍斉一スイープ仕様として再利用する。
+
+この実験系では、交換干渉散乱行列を用いて、片側高次倍音をもつAB二体波の反復散乱を調べた。
+
+この実験の中心は、単なる反射ではない。A側を低局在波、B側を高次倍音を含む局在波として置き、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(A\textquotesingle{}, B\textquotesingle{}) = S\_R (A, B)}
+\end{Highlighting}
+\end{Shaded}
+
+を反復することで、B側の倍音分布がA側へ移り、A側の局在度が上がるかを読む。
+
+ここで評価したのは、主に次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{L        : 局在度}
+\NormalTok{N\_eff    : 実効倍音次数}
+\NormalTok{B\_to\_A   : B側初期倍音分布のA側への移乗度}
+\end{Highlighting}
+\end{Shaded}
+
+この実験で、\texttt{R=0.70} 近傍、すなわち \texttt{G\_R≈0.30}
+近傍に局在性交換の有効点が現れた。したがって、第一の問いは次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{倍音自由度は、交換重みG\_Rの選別条件に関係しているか。}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{1.2 系統B:
+白猫黒猫・灰色猫準安定界面実験}\label{ux7cfbux7d71b-ux767dux732bux9ed2ux732bux7070ux8272ux732bux6e96ux5b89ux5b9aux754cux9762ux5b9fux9a13}
+
+系統Bは、自己引用 {[}5{]}
+の白猫黒猫・灰色猫準安定界面実験を母体とする。本稿では、この母体を自己引用
+{[}8{]} の \texttt{R} 近傍スイープ仕様として再利用する。
+
+この実験系では、白猫黒猫・灰色猫準安定界面を、AB二成分の閉鎖系として構成した。
+
+AB配分を複素振幅
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a,\textbackslash{}quad b}
+\end{Highlighting}
+\end{Shaded}
+
+で表し、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p\_A=|a|\^{}2,\textbackslash{}qquad p\_B=|b|\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S=p\_A{-}p\_B}
+\end{Highlighting}
+\end{Shaded}
+
+を読む。
+
+このとき、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S ≈ 0}
+\end{Highlighting}
+\end{Shaded}
+
+であり、かつ完全な固有灰色相ではなく、小さい振幅で揺らぐ状態を灰色準安定相として分類した。
+
+この系へ交換散乱係数 \texttt{R} を導入すると、灰色準安定相がどの交換重み
+\texttt{G\_R=1-R} で現れやすいかを調べられる。第二の問いは次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R≈0.7、すなわち G\_R≈0.3 は単なる調整値か。}
+\NormalTok{それとも灰色準安定界面に固有の反応点か。}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{1.3 本稿の接続}\label{ux672cux7a3fux306eux63a5ux7d9a}
+
+系統Aは、自己引用 {[}3{]}, {[}4{]}, {[}7{]}
+に対応し、倍音自由度と局在性交換を読む。
+
+系統Bは、自己引用 {[}5{]}, {[}8{]}
+に対応し、灰色準安定界面と交換重み地形を読む。
+
+本稿では、この二つを接続する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{系統A [3,4,7]:}
+\NormalTok{  倍音自由度があると、局在性交換の交換重み候補帯が現れる。}
+
+\NormalTok{系統B [5,8]:}
+\NormalTok{  灰色準安定界面で、Rを掃引し、交換重み候補帯を広範囲に読む。}
+\end{Highlighting}
+\end{Shaded}
+
+この接続により、状態交換の代表重み \texttt{G\_R=1-R}
+がどの閉鎖系条件で鋭く選別されるかを調べる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2.
+交換散乱係数Rとalpha換算}\label{ux4ea4ux63dbux6563ux4e71ux4fc2ux6570rux3068alphaux63dbux7b97}
+
+本シリーズでは、交換散乱行列の反射係数を \texttt{R}
+と書く。ただし、本稿の主題は \texttt{R} そのものではない。
+
+本稿の数値実験で評価しているのは、反射振幅でも透過振幅でもなく、交換によって状態がどれだけ相手側へ移るかである。
+
+系統Aでは、B側初期倍音分布がA側へどれだけ移るかを \texttt{B\_to\_A}
+として読む。系統Bでは、AB配分が交換散乱の反復によって灰色準安定界面へ入るかを
+\texttt{gray\_error}, \texttt{gray\_depth} として読む。
+
+したがって、本稿で直接評価している量は、反射側に残る量ではなく、状態交換の成立度である。
+
+そこで、\texttt{R} を掃引座標として用い、そこから
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{G\_R := 1 {-} R}
+\end{Highlighting}
+\end{Shaded}
+
+を、その交換成立度を \texttt{R}
+軸上で比較するための代表交換重みとして採用する。
+
+標準理論側では、有理化自然単位系で電磁結合の無次元振幅を \texttt{e}
+と書くと、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}alpha = \textbackslash{}frac\{e\^{}2\}\{4\textbackslash{}pi\}}
+\end{Highlighting}
+\end{Shaded}
+
+である。したがって、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e = \textbackslash{}sqrt\{4\textbackslash{}pi\textbackslash{}alpha\}}
+\end{Highlighting}
+\end{Shaded}
+
+と読める。
+
+本稿では、交換成立度を表す代表量 \texttt{G\_R}
+を、標準理論側の無次元電磁結合振幅 \texttt{e} と比較する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{G\_R = e}
+\end{Highlighting}
+\end{Shaded}
+
+この対応から、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1 {-} R = \textbackslash{}sqrt\{4\textbackslash{}pi\textbackslash{}alpha\}}
+\end{Highlighting}
+\end{Shaded}
+
+となり、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R = 1 {-} \textbackslash{}sqrt\{4\textbackslash{}pi\textbackslash{}alpha\}.}
+\end{Highlighting}
+\end{Shaded}
+
+この式は、任意に置いた単調写像ではない。実験で直接評価している状態交換の成立度を、\texttt{R}
+軸上の代表量 \texttt{G\_R=1-R} として読み、標準理論側の無次元結合振幅
+\texttt{sqrt(4\ pi\ alpha)} と比較する、という対応仮説に基づく。
+
+ここで、実装上の散乱行列との階層を明確にしておく。
+
+本稿の交換散乱行列の実装では、反射チャネルと交換チャネルの行列振幅を
+\texttt{r,t} とし、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R = |r|\^{}2}
+\NormalTok{T = |t|\^{}2 = 1 {-} R}
+\end{Highlighting}
+\end{Shaded}
+
+として扱う。したがって、行列振幅そのものは
+\texttt{\textbar{}r\textbar{}=sqrt(R)},
+\texttt{\textbar{}t\textbar{}=sqrt(1-R)} である。
+
+本稿は、標準散乱理論の振幅 \texttt{\textbar{}t\textbar{}}
+を、そのまま標準理論側の電磁結合振幅 \texttt{e}
+と同一視しているわけではない。もし \texttt{\textbar{}t\textbar{}=e}
+と置くなら、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sqrt\{1{-}R\}=\textbackslash{}sqrt\{4\textbackslash{}pi\textbackslash{}alpha\}}
+\end{Highlighting}
+\end{Shaded}
+
+となり、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R = 1 {-} 4\textbackslash{}pi\textbackslash{}alpha}
+\end{Highlighting}
+\end{Shaded}
+
+が対応式になる。しかし、本稿で観察された地形は、この
+\texttt{\textbar{}t\textbar{}} 対応ではなく、状態交換の成立度を代表する
+\texttt{G\_R=1-R} の側に鋭く現れる。
+
+ただし、本稿はこの対応そのものを第一原理から導出したとは主張しない。未解決なのは、なぜ閉鎖位相系の交換散乱写像が、行列振幅
+\texttt{\textbar{}t\textbar{}} ではなく、状態交換の代表重み
+\texttt{G\_R=1-R}
+の側で標準理論側の電磁結合振幅に近い値を選び得るのかである。本稿で検証するのは、その対応が数値実験上どこまで鋭く現れるかである。
+
+低エネルギー側の微細構造定数には CODATA 2022 推奨値を用いる。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1/alpha(0) = 137.035999177 ± 0.000000021}
+\NormalTok{R\_low      = 0.697177879231003}
+\end{Highlighting}
+\end{Shaded}
+
+Zボソン質量領域の有効結合には、ハドロン真空偏極を含む評価値を用いる。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1/alpha(M\_Z\^{}2) = 128.946 ± 0.015}
+\NormalTok{R\_MZ           = 0.687822933884774}
+\end{Highlighting}
+\end{Shaded}
+
+本稿で用いる数値実験 v5 は、\texttt{R}
+についておおむね7桁程度の有効精度を持つと見積もる。したがって、低エネルギー側では実験系の7桁を比較限界とし、高エネルギー側では標準理論側の4から5桁級の有効桁数を比較限界とする。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. 系統A {[}3,4,7{]}:
+倍音自由度と局在性交換}\label{ux7cfbux7d71a-347-ux500dux97f3ux81eaux7531ux5ea6ux3068ux5c40ux5728ux6027ux4ea4ux63db}
+
+\subsubsection{3.1 N系列}\label{nux7cfbux5217}
+
+まず、片側倍音条件を直接調べた。
+
+A側を基底波 \texttt{A={[}1{]}} とし、B側を
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B=[1], [2], [3], [5], [15], [63]}
+\end{Highlighting}
+\end{Shaded}
+
+と変えた。
+
+この結果、\texttt{N=1}
+の同次数対照では、交換重みに対して鋭い判定点を持たなかった。一方、\texttt{N\textgreater{}=2}
+の片側倍音条件では、\texttt{R\_star\_L}, \texttt{R\_star\_N},
+\texttt{R\_star\_transfer}, \texttt{R\_star\_joint} が
+\texttt{R=0.697177879128} 近傍へ集中した。これは交換重みとしては
+\texttt{G\_R=1-R≈0.302822121} 近傍を意味する。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={系統A N系列の交換重み地形}]{system_A_localization_exchange_R_sweep_result_v1/odd_kernel_N_1_2_3_5_15_63_gap_depth_distribution_overview_v1.png}}
+\caption{系統A N系列の交換重み地形}
+\end{figure}
+
+\textbf{図1.} 系統AのN系列。単色基底対照では \texttt{R}
+軸上の地形が広がり、片側に追加倍音を置くと \texttt{R\_137}、すなわち
+\texttt{G\_R≈sqrt(4πalpha(0))} 近傍へ評価点が集中する。
+
+代表値は次である。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrl@{}}
+\toprule\noalign{}
+条件 & \texttt{R\_star\_joint} & 読み \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{A={[}1{]},\ B={[}1{]}} & \texttt{0.6} &
+同次数対照。鋭い交換重み集中なし \\
+\texttt{A={[}1{]},\ B={[}2{]}} & \texttt{0.697177879128} &
+追加倍音あり \\
+\texttt{A={[}1{]},\ B={[}3{]}} & \texttt{0.697177879128} &
+追加倍音あり \\
+\texttt{A={[}1{]},\ B={[}5{]}} & \texttt{0.697177879128} &
+追加倍音あり \\
+\texttt{A={[}1{]},\ B={[}15{]}} & \texttt{0.697177879128} &
+追加倍音あり \\
+\texttt{A={[}1{]},\ B={[}63{]}} & \texttt{0.697177879128} &
+追加倍音あり \\
+\end{longtable}
+}
+
+この結果から、重要なのは「奇数倍音」そのものではなく、少なくとも一つの追加倍音自由度が存在することだと読める。
+
+\subsubsection{3.2
+奇数・偶数・混在パケット}\label{ux5947ux6570ux5076ux6570ux6df7ux5728ux30d1ux30b1ux30c3ux30c8}
+
+次に、B側の倍音パケットを変えた。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{even packet:}
+\NormalTok{  B=[1,2,4,6]}
+
+\NormalTok{alternating packet 1:}
+\NormalTok{  B=[1,2,3,4,5]}
+
+\NormalTok{alternating packet 2:}
+\NormalTok{  B=[1,3,4,5,6]}
+\end{Highlighting}
+\end{Shaded}
+
+いずれも \texttt{R\_star\_joint=0.697177879128} へ集中した。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+条件 & \texttt{R\_star\_joint} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+偶数パケット \texttt{B={[}1,2,4,6{]}} & \texttt{0.697177879128} \\
+混在パケット \texttt{B={[}1,2,3,4,5{]}} & \texttt{0.697177879128} \\
+混在パケット \texttt{B={[}1,3,4,5,6{]}} & \texttt{0.697177879128} \\
+\end{longtable}
+}
+
+したがって、この交換重みの集中は奇数倍音の特殊性ではない。
+
+\subsubsection{3.3
+振幅・位相・波長への鈍感性}\label{ux632fux5e45ux4f4dux76f8ux6ce2ux9577ux3078ux306eux920dux611fux6027}
+
+さらに、B側の追加倍音に対し、振幅、位相、波長を変えた。
+
+振幅については、追加倍音の重みを大きく下げても、\texttt{R\_star\_joint}
+は維持された。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rrl@{}}
+\toprule\noalign{}
+追加倍音重み & \texttt{R\_star\_joint} & 読み \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{0.5} & \texttt{0.697177879128} & 維持 \\
+\texttt{0.1} & \texttt{0.697177879128} & 維持 \\
+\texttt{0.001} & \texttt{0.697177879128} & 維持 \\
+\texttt{0.0001} & \texttt{0.697177879128} & 維持 \\
+\texttt{0.000001} & \texttt{0.697177879128} &
+一部指標は揺らぐがjointは維持 \\
+\texttt{0} & \texttt{0.6} & 交換重み集中なし \\
+\end{longtable}
+}
+
+位相を10\%および30\%ずらした場合も、\texttt{R\_star\_joint=0.697177879128}
+を保った。
+
+波長を3\%、10\%、30\%ずらした場合も、同じ \texttt{R\_star\_joint}
+を保った。
+
+この結果は、交換重みの集中が、倍音の振幅値、位相整列、厳密な波長一致だけで決まっているのではないことを示す。
+
+本稿で採用する読みは次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{交換重みの集中に必要なのは、奇数性ではない。}
+\NormalTok{厳密な振幅一致でもない。}
+\NormalTok{厳密な位相一致でもない。}
+\NormalTok{厳密な波長一致でもない。}
+
+\NormalTok{少なくとも一つの追加倍音自由度が存在することが、}
+\NormalTok{局在性交換の交換重み地形を立てる。}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. 系統B {[}5,8{]}:
+灰色猫準安定界面の交換重み地形}\label{ux7cfbux7d71b-58-ux7070ux8272ux732bux6e96ux5b89ux5b9aux754cux9762ux306eux4ea4ux63dbux91cdux307fux5730ux5f62}
+
+系統Bでは、自己引用 {[}5{]}
+の白猫黒猫・灰色猫準安定界面を母体とし、自己引用 {[}8{]} の仕様に従って
+\texttt{R} を掃引し、交換重み地形を読む。
+
+状態は \texttt{S=p\_A-p\_B} により分類する。
+
+灰色準安定相の良さを、次で評価した。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gray\_error = |S\_mean| + |S\_amp {-} S\_amp\_target| + S\_drift + phase\_penalty}
+\NormalTok{gray\_depth = {-}log10(gray\_error)}
+\end{Highlighting}
+\end{Shaded}
+
+ここで、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S\_amp\_target = 0.02}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+初期の広域・局所スイープでは、\texttt{R=0.683}, \texttt{R=0.700},
+\texttt{R=0.697177879128}
+など複数の候補点が現れた。これは、灰色準安定界面が単峰的ではなく、\texttt{R}
+軸上に多峰的な交換重み地形を持つことを示す。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={系統B 初期交換重み地形}]{system_B_gray_cat_metastable_R_sweep_result_v1/system_B_odd_kernel_N_1_2_3_5_15_63_gray_depth_distribution_overview_v1.png}}
+\caption{系統B 初期交換重み地形}
+\end{figure}
+
+\textbf{図2.} 系統Bの初期交換重み地形。灰色準安定界面は単一の \texttt{R}
+だけではなく、複数の局所ピークを持つ。
+
+ただし、この初期実験では \texttt{R}
+範囲が粗く、候補点を過剰に拾う可能性がある。そこで、次に最小化した v5
+実装で、広範囲を同じ刻みで掃引した。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+v5最小実装による全域Rスイープ}\label{v5ux6700ux5c0fux5b9fux88c5ux306bux3088ux308bux5168ux57dfrux30b9ux30a4ux30fcux30d7}
+
+\subsubsection{5.1 実験条件}\label{ux5b9fux9a13ux6761ux4ef6}
+
+v5 実装では、調査目的の余分な出力を削り、\texttt{R}
+を指定したときに灰色準安定深さだけを読む構成へ整理した。
+
+全域スイープ条件は次である。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+項目 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{min\_R} & \texttt{0.68660290255614798} \\
+\texttt{max\_R} & \texttt{0.70246536756843059} \\
+\texttt{delta\_R} & \texttt{0.0000001} \\
+\texttt{n\_R} & \texttt{158625} \\
+\texttt{steps} & \texttt{1024} \\
+\texttt{min\_steps} & \texttt{256} \\
+\texttt{early\_stop\_patience} & \texttt{20} \\
+\texttt{phi\_mode} & \texttt{zero} \\
+\end{longtable}
+}
+
+この範囲は、高エネルギー側の \texttt{R\_MZ} 近傍から、低エネルギー側の
+\texttt{R\_low} を十分に含む。
+
+\subsubsection{5.2 候補帯}\label{ux5019ux88dcux5e2f}
+
+全域スイープでは、候補点を連続帯としてまとめ、七つの候補帯を得た。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+順位
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+R\_start
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+R\_end
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+peak\_R
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+depth
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+normalized depth
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\texttt{1/alpha}換算
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & \texttt{0.697060302556148} & \texttt{0.697625902556148} &
+\texttt{0.697177902556148} & \texttt{9.08320492077} & \texttt{1.000000}
+& \texttt{137.036020287643} \\
+2 & \texttt{0.688146602556148} & \texttt{0.688539502556148} &
+\texttt{0.688363902556148} & \texttt{8.84756342227} & \texttt{0.974057}
+& \texttt{129.394062925467} \\
+3 & \texttt{0.692118902556148} & \texttt{0.692927402556148} &
+\texttt{0.692852802556148} & \texttt{5.84993869466} & \texttt{0.644039}
+& \texttt{133.203841605880} \\
+4 & \texttt{0.701163902556148} & \texttt{0.701587402556148} &
+\texttt{0.701489902556148} & \texttt{5.83931992499} & \texttt{0.642870}
+& \texttt{141.023604736761} \\
+5 & \texttt{0.686752802556148} & \texttt{0.687177802556148} &
+\texttt{0.687009702556148} & \texttt{5.81816843379} & \texttt{0.640541}
+& \texttt{128.276799088738} \\
+6 & \texttt{0.698514602556148} & \texttt{0.699071002556148} &
+\texttt{0.698893702556148} & \texttt{5.74438302514} & \texttt{0.632418}
+& \texttt{138.602220120334} \\
+7 & \texttt{0.692068702556148} & \texttt{0.692108002556148} &
+\texttt{0.692075802556148} & \texttt{4.61388675601} & \texttt{0.507958}
+& \texttt{132.532450378510} \\
+\end{longtable}
+}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={候補帯順位}]{system_B_full_R_sweep_ranked_depth_bar_v1.pdf}}
+\caption{候補帯順位}
+\end{figure}
+
+\textbf{図3.}
+全域スイープで検出された候補帯の順位。候補帯1と候補帯2が深く、他の候補帯は明確に浅い。
+
+\subsubsection{5.3 全域図}\label{ux5168ux57dfux56f3}
+
+全域図では、候補帯1と候補帯2が鋭く立つ。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={全域Rスイープ}]{system_B_full_R_sweep_full_range_depth_v1.pdf}}
+\caption{全域Rスイープ}
+\end{figure}
+
+\textbf{図4.} 全域Rスイープ。候補帯1は低エネルギー \texttt{alpha(0)}
+対応点近傍、候補帯2は高エネルギー有効結合の近傍に位置する。
+
+\subsubsection{5.4 候補帯1}\label{ux5019ux88dcux5e2f1}
+
+候補帯1の代表点は、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R\_peak = 0.697177902556148}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+標準理論側の低エネルギー値から得られる換算値は、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R\_low = 0.697177879231003}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+差は、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Delta R ≈ 2.33e{-}8}
+\end{Highlighting}
+\end{Shaded}
+
+であり、v5 実験系の有効桁数7桁の範囲内で一致する。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={候補帯1詳細}]{system_B_full_R_sweep_band_detail_rank_01_v1.pdf}}
+\caption{候補帯1詳細}
+\end{figure}
+
+\textbf{図5.} 候補帯1の詳細。\texttt{R\_low} 近傍に鋭い深さが現れる。
+
+\subsubsection{5.5 候補帯2}\label{ux5019ux88dcux5e2f2}
+
+候補帯2の代表点は、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R\_peak = 0.688363902556148}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+これを \texttt{1/alpha} に換算すると、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1/alpha = 129.394062925467}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+標準理論側の Z ボソン質量領域の参照値は、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1/alpha(M\_Z\^{}2) = 128.946 ± 0.015}
+\NormalTok{R\_MZ = 0.687822933884774}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+候補帯2は、v5
+実験系の7桁精度では標準値と一致しない。ただし、標準理論側の高エネルギー有効結合の有効桁数が4から5桁級であることを考えると、次の近傍関係にある。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1/alpha での相対差 ≈ 0.35\%}
+\NormalTok{R での相対差       ≈ 0.08\%}
+\end{Highlighting}
+\end{Shaded}
+
+したがって候補帯2は、\texttt{alpha(M\_Z\^{}2)}
+と同一値とは扱わないが、高エネルギー側の接続候補として保持する。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={候補帯2詳細}]{system_B_full_R_sweep_band_detail_rank_02_v1.pdf}}
+\caption{候補帯2詳細}
+\end{figure}
+
+\textbf{図6.}
+候補帯2の詳細。低エネルギー側とは別の深い候補帯として現れる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6.
+低エネルギー近傍・高エネルギー近傍の感度}\label{ux4f4eux30a8ux30cdux30ebux30aeux30fcux8fd1ux508dux9ad8ux30a8ux30cdux30ebux30aeux30fcux8fd1ux508dux306eux611fux5ea6}
+
+低エネルギー側では、標準値近傍の候補帯が安定して現れる。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={低エネルギー標準alpha近傍}]{system_B_low_alpha_R_sensitivity_depth_v1.pdf}}
+\caption{低エネルギー標準alpha近傍}
+\end{figure}
+
+\textbf{図7.} 低エネルギー \texttt{alpha(0)}
+近傍のR感度。候補帯の中心が標準値近傍に留まる。
+
+一方、高エネルギー側では、標準値そのものに固定された鋭い不動点というより、近傍に候補帯が現れる。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={高エネルギー標準alpha近傍}]{system_B_high_alpha_R_sensitivity_depth_v1.pdf}}
+\caption{高エネルギー標準alpha近傍}
+\end{figure}
+
+\textbf{図8.} 高エネルギー \texttt{alpha(M\_Z\^{}2)}
+近傍のR感度。低エネルギー側ほど鋭い固定点ではないが、近傍候補帯が現れる。
+
+中間領域では、標準値に対応する明確な固定点は確認されなかった。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={中間R近傍}]{system_B_mid_R_sensitivity_depth_v1.pdf}}
+\caption{中間R近傍}
+\end{figure}
+
+\textbf{図9.}
+低エネルギー側と高エネルギー側の中間付近。候補帯は中心に強く固定されず、標準的な対応点とは読みにくい。
+
+この比較から、本稿では次のように読む。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{低エネルギー側:}
+\NormalTok{  alpha(0) 対応Rに強い候補帯がある。}
+
+\NormalTok{高エネルギー側:}
+\NormalTok{  alpha(M\_Z\^{}2) 近傍に深い候補帯があるが、同一値とは断定しない。}
+
+\NormalTok{中間領域:}
+\NormalTok{  対応候補は弱い。}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. 考察}\label{ux8003ux5bdf}
+
+\subsubsection{7.1
+なぜ倍音が必要なのか}\label{ux306aux305cux500dux97f3ux304cux5fc5ux8981ux306aux306eux304b}
+
+系統Aの結果では、追加倍音の振幅、位相、波長の詳細には鈍感であった。
+
+しかし、追加倍音が完全にゼロになると \texttt{R\_137}、すなわち
+\texttt{G\_R≈sqrt(4πalpha(0))} 近傍への集中は消えた。
+
+このことは、交換重みの集中が、倍音波形の詳細な形ではなく、追加自由度が存在することそのものに関係している可能性を示す。
+
+言い換えると、閉鎖位相系の交換散乱では、基底波だけの二成分系と、少なくとも一つの追加倍音自由度を持つ系が、同じ反応空間を見ていない可能性がある。
+
+\subsubsection{7.2
+交換重み地形は単一ピークではない}\label{ux4ea4ux63dbux91cdux307fux5730ux5f62ux306fux5358ux4e00ux30d4ux30fcux30afux3067ux306fux306aux3044}
+
+系統Bの全域スイープでは、候補帯は一つではなかった。
+
+候補帯1は低エネルギー \texttt{alpha(0)} と強く対応する。
+
+候補帯2は \texttt{1/alpha≈129.394} に対応し、Zボソン質量領域での有効結合
+\texttt{1/alpha(M\_Z\^{}2)=128.946±0.015} の近傍にある。
+
+残りの候補帯は浅く、現段階では標準理論側の既知値と強く接続しない。
+
+この構造は、\texttt{R≈0.7}、すなわち \texttt{G\_R≈0.3}
+が単なる単点調整値ではなく、閉鎖系の準安定界面における多峰的な交換反応地形の一部であることを示す。
+
+\subsubsection{7.3
+alpha導出ではなく、alpha対応候補である}\label{alphaux5c0eux51faux3067ux306fux306aux304falphaux5bfeux5fdcux5019ux88dcux3067ux3042ux308b}
+
+本稿の実験は、標準理論の微細構造定数を導出するものではない。
+
+本稿の本質は、微細構造定数との一致そのものではなく、少数の公理から構成した閉鎖交換写像が、状態交換の代表重みを自発的に選別することを示した点にある。微細構造定数との対応は、その固有的に現れた交換重みが、現実の電磁結合と関係する可能性を示す観測結果として扱う。
+
+しかし、外部から \texttt{alpha} を入れず、\texttt{R}
+を一様掃引した結果として、低エネルギー \texttt{alpha(0)}
+に対応する交換重み候補帯が最深に現れた。
+
+これは、閉鎖位相系における交換散乱・倍音自由度・準安定界面の組み合わせが、標準理論で観測される電磁結合定数と無関係ではない可能性を示す。
+
+したがって、本稿の結論は次に留める。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{閉鎖位相系の交換散乱における交換重み地形には、}
+\NormalTok{標準理論の低エネルギーalphaおよび高エネルギー有効alphaに}
+\NormalTok{対応し得る候補帯が現れる。}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8.
+本稿で主張しないこと}\label{ux672cux7a3fux3067ux4e3bux5f35ux3057ux306aux3044ux3053ux3068}
+
+本稿では、次を主張しない。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{微細構造定数 alpha を導出した。}
+\NormalTok{標準理論を置き換えた。}
+\NormalTok{候補帯2が alpha(M\_Z\^{}2) と厳密に同一である。}
+\NormalTok{すべてのフェルミオン散乱係数が同じ交換重みへ集中する。}
+\NormalTok{倍音自由度の幾何学的起源を完全に説明した。}
+\end{Highlighting}
+\end{Shaded}
+
+本稿で示したのは、閉鎖位相系の交換散乱実験において、\texttt{alpha}
+対応候補が数値的に現れるという事実である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. 結論}\label{ux7d50ux8ad6}
+
+本稿では、交換散乱係数 \texttt{R}
+を掃引座標として用い、状態交換の代表重み \texttt{G\_R=1-R}
+の選別を、局在性交換モデルと灰色猫準安定界面モデルの二系統から調べた。
+
+系統Aでは、単色基底だけでは鋭い交換重み集中が出ず、少なくとも一つの追加倍音自由度があると、局在性交換の評価点が
+\texttt{R=0.697177879...}、すなわち \texttt{G\_R=1-R≈0.302822121}
+近傍へ集中した。この集中は、奇数倍音、偶数倍音、奇偶混在、振幅低下、位相ずれ、波長ずれに対して強く保たれた。
+
+系統Bでは、灰色猫準安定界面の最小実装 v5
+により、\texttt{R=0.686602902...} から \texttt{R=0.702465367...} までを
+\texttt{Delta\ R=1.0e-7}
+で掃引した。その結果、七つの候補帯が現れ、最深候補帯は
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R = 0.697177902556148}
+\end{Highlighting}
+\end{Shaded}
+
+であった。
+
+これは、CODATA 2022 の低エネルギー微細構造定数を
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R = 1 {-} sqrt(4 pi alpha)}
+\end{Highlighting}
+\end{Shaded}
+
+で換算した
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R\_low = 0.697177879231003}
+\end{Highlighting}
+\end{Shaded}
+
+と、v5 実験系の有効桁数7桁の範囲内で一致する。
+
+第二候補帯は
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R = 0.688363902556148}
+\end{Highlighting}
+\end{Shaded}
+
+であり、\texttt{1/alpha=129.394062925467} に対応する。これは
+\texttt{alpha(M\_Z\^{}2)}
+の標準参照値とは厳密一致しないが、高エネルギー有効結合の近傍候補として保持する。
+
+以上より、閉鎖位相系の交換散乱写像において、倍音自由度をもつ準安定界面を読むと、微細構造定数に対応する状態交換の代表重み候補帯が自発的に現れることが確認された。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参照文献}\label{ux53c2ux7167ux6587ux732e}
+
+\subsubsection{自己引用}\label{ux81eaux5df1ux5f15ux7528}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  木原範昭, \href{../20260710/基本公理系\%20v4.md}{基本公理系 v4}, 2026.
+\item
+  木原範昭,
+  \href{../20260710/フェルミオン的逆相核による完全反射写像の干渉構成\%20v2.md}{フェルミオン的逆相核による完全反射写像の干渉構成
+  v2}, 2026.
+\item
+  木原範昭,
+  \href{../20260713/交換干渉散乱行列フェルミオン的衝突における低局在性・倍音移乗読出し実験仕様書\%20v1.md}{交換干渉散乱行列フェルミオン的衝突における低局在性・倍音移乗読出し実験仕様書
+  v1}, 2026.
+\item
+  木原範昭,
+  \href{../20260713/交換干渉散乱行列フェルミオン的衝突における低局在性・倍音移乗予備実験総括\%20v1.md}{交換干渉散乱行列フェルミオン的衝突における低局在性・倍音移乗予備実験総括
+  v1}, 2026.
+\item
+  木原範昭,
+  \href{../20260714/白猫黒猫灰色猫準安定界面におけるC弱読出しとD強観測選択予備実験総括\%20v1.md}{白猫黒猫灰色猫準安定界面におけるC弱読出しとD強観測選択予備実験総括
+  v1}, 2026.
+\item
+  木原範昭,
+  \href{交換散乱係数R集中実験群_全体計画と評価方法_v1.md}{交換散乱係数R集中実験群
+  全体計画と評価方法 v1}, 2026.
+\item
+  木原範昭,
+  \href{系統A_局在性交換R近傍斉一スイープ実験仕様書_v1.md}{系統A
+  局在性交換R近傍斉一スイープ実験仕様書 v1}, 2026.
+\item
+  木原範昭,
+  \href{系統B_灰色猫準安定界面R近傍スイープ実験仕様書_v1.md}{系統B
+  灰色猫準安定界面R近傍スイープ実験仕様書 v1}, 2026.
+\item
+  木原範昭, \href{標準理論でのα.md}{標準理論でのalpha}, 2026.
+\end{enumerate}
+
+\subsubsection{外部引用}\label{ux5916ux90e8ux5f15ux7528}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{9}
+\tightlist
+\item
+  Peter J. Mohr, David B. Newell, Barry N. Taylor, Eite Tiesinga,
+  ``CODATA Recommended Values of the Fundamental Physical Constants:
+  2022'', arXiv:2409.03787, 2024. https://arxiv.org/abs/2409.03787
+\item
+  National Institute of Standards and Technology, ``Fundamental Physical
+  Constants'', https://physics.nist.gov/constants
+\item
+  Alexander Keshavarzi, Daisuke Nomura, Thomas Teubner, ``The muon g-2
+  and alpha(M\_Z\^{}2): a new data-based analysis'', arXiv:1802.02995,
+  2018. https://arxiv.org/abs/1802.02995
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{付録A.
+再現に用いた主要出力}\label{ux4ed8ux9332a.-ux518dux73feux306bux7528ux3044ux305fux4e3bux8981ux51faux529b}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+種類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ファイル
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+系統A N系列 &
+\texttt{system\_A\_localization\_exchange\_R\_sweep\_result\_v1/odd\_kernel\_N\_1\_2\_3\_5\_15\_63\_report\_v1.md} \\
+系統A 偶数パケット &
+\texttt{system\_A\_localization\_exchange\_R\_sweep\_result\_v1/even\_packet\_A1\_B1\_2\_4\_6\_report\_v1.md} \\
+系統A 混在パケット1 &
+\texttt{system\_A\_localization\_exchange\_R\_sweep\_result\_v1/alternating\_packet\_1\_A1\_B1\_2\_3\_4\_5\_report\_v1.md} \\
+系統A 混在パケット2 &
+\texttt{system\_A\_localization\_exchange\_R\_sweep\_result\_v1/alternating\_packet\_2\_A1\_B1\_3\_4\_5\_6\_report\_v1.md} \\
+系統A 振幅ゼロ対照 &
+\texttt{system\_A\_localization\_exchange\_R\_sweep\_result\_v1/amp000\_B12/system\_A\_amp000\_B12\_custom\_packet\_A1\_B1-2-w-1-0\_Rdefault\_C256\_report\_v1.md} \\
+系統B 全域候補帯 & \texttt{System\ B\ 全域Rスイープ候補帯一覧.md} \\
+系統B 低エネルギー近傍 &
+\texttt{System\ B\ 低エネルギー標準α近傍R感度一覧.md} \\
+系統B 高エネルギー近傍 &
+\texttt{System\ B\ 高エネルギー標準α近傍R感度一覧.md} \\
+系統B 中間領域 & \texttt{System\ B\ 中間R近傍R感度一覧.md} \\
+\end{longtable}
+}
+
+\end{document}
