@@ -18,6 +18,7 @@ import csv
 import json
 import math
 import sys
+import time
 from decimal import Decimal
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
@@ -253,6 +254,8 @@ def run_sweep(args: argparse.Namespace) -> Dict[str, Any]:
 
     r_values = decimal_range(args.min_R, args.max_R, args.delta_R)
     candidate_rows: List[Dict[str, Any]] = []
+    total_loop_count = 0
+    started_at = time.perf_counter()
     for index, r_text in enumerate(r_values, start=1):
         payload = probe_r(
             float(r_text),
@@ -262,6 +265,7 @@ def run_sweep(args: argparse.Namespace) -> Dict[str, Any]:
             args.min_steps,
             args.early_stop_patience,
         )
+        total_loop_count += sum(int(row["stopped_at_step"]) + 1 for row in payload["condition_rows"])
         if stable_fixed_point_candidate(payload):
             candidate_rows.append(candidate_row(payload))
             if args.progress_every > 0:
@@ -283,6 +287,10 @@ def run_sweep(args: argparse.Namespace) -> Dict[str, Any]:
                 file=sys.stderr,
                 flush=True,
             )
+
+    elapsed_sec = time.perf_counter() - started_at
+    average_msec_per_loop = (elapsed_sec * 1000.0 / total_loop_count) if total_loop_count else 0.0
+    average_msec_per_R = (elapsed_sec * 1000.0 / len(r_values)) if r_values else 0.0
 
     args.out_csv.parent.mkdir(parents=True, exist_ok=True)
     fieldnames = [
@@ -307,6 +315,31 @@ def run_sweep(args: argparse.Namespace) -> Dict[str, Any]:
         writer.writeheader()
         writer.writerows(candidate_rows)
 
+    stats_csv = args.out_stats_csv
+    if stats_csv is None:
+        stats_csv = args.out_csv.with_name(f"{args.out_csv.stem}_stats{args.out_csv.suffix}")
+    stats_csv.parent.mkdir(parents=True, exist_ok=True)
+    stats_row = {
+        "min_R": args.min_R,
+        "max_R": args.max_R,
+        "delta_R": args.delta_R,
+        "n_R": len(r_values),
+        "n_candidates": len(candidate_rows),
+        "total_loop_count": total_loop_count,
+        "elapsed_sec": elapsed_sec,
+        "average_msec_per_loop": average_msec_per_loop,
+        "average_msec_per_R": average_msec_per_R,
+        "phi_mode": args.phi_mode,
+        "steps": args.steps,
+        "min_steps": args.min_steps,
+        "early_stop_patience": args.early_stop_patience,
+        "out_csv": str(args.out_csv),
+    }
+    with stats_csv.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=list(stats_row.keys()))
+        writer.writeheader()
+        writer.writerow(stats_row)
+
     return {
         "model": "minimal_system_B_gray_direct_depth_probe_v5_R_sweep",
         "min_R": args.min_R,
@@ -314,7 +347,12 @@ def run_sweep(args: argparse.Namespace) -> Dict[str, Any]:
         "delta_R": args.delta_R,
         "n_R": len(r_values),
         "n_candidates": len(candidate_rows),
+        "total_loop_count": total_loop_count,
+        "elapsed_sec": elapsed_sec,
+        "average_msec_per_loop": average_msec_per_loop,
+        "average_msec_per_R": average_msec_per_R,
         "out_csv": str(args.out_csv),
+        "out_stats_csv": str(stats_csv),
         "candidate_rows": candidate_rows,
         "candidate_rule": "stop_reason == early_stop_no_best_update and min_steps - early_stop_patience <= best_step <= min_steps",
         "phi_mode": args.phi_mode,
@@ -336,6 +374,7 @@ def main() -> None:
     parser.add_argument("--early-stop-patience", type=int, default=0)
     parser.add_argument("--out-json", type=Path)
     parser.add_argument("--out-csv", type=Path)
+    parser.add_argument("--out-stats-csv", type=Path)
     parser.add_argument("--progress-every", type=int, default=0)
     args = parser.parse_args()
 
