@@ -12,6 +12,20 @@ Release date: 2026-07-16
 
 - https://zenn.dev/noriaki_kihara/articles/exchange-weight-alpha-correspondence
 
+## GitHub
+
+- Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
+- Release commit: `3623fef Publish exchange weight alpha correspondence paper`
+- Zenn article source: `articles/exchange-weight-alpha-correspondence.md`
+
+## Publication Status
+
+- Concept DOI was maintained for this research line.
+- Version DOI was assigned and published on Zenodo.
+- Japanese and English Markdown, TeX, and PDF files were generated.
+- The Zenodo upload manifest and upload responses were saved in the release directory.
+- Zenn article source was added and pushed to GitHub.
+
 ## Main Paper
 
 - `交換散乱係数R集中と微細構造定数対応候補の数値実験 v1.md`
@@ -21,6 +35,15 @@ Release date: 2026-07-16
 - `exchange_weight_alpha_correspondence_numerical_experiment_en.tex`
 - `exchange_weight_alpha_correspondence_numerical_experiment_ja.pdf`
 - `exchange_weight_alpha_correspondence_numerical_experiment_en.pdf`
+
+## Build Notes
+
+- PDF generation was performed outside the Google Drive working tree under `/tmp/tex_compile_exchange_weight_alpha`.
+- LuaLaTeX failed in this environment because `luaotfload` could not create a writable font cache.
+- The released PDFs were therefore generated with XeLaTeX.
+- Generated PDFs:
+  - Japanese PDF: 17 pages
+  - English PDF: 18 pages
 
 ## Uploaded Data
 
@@ -42,6 +65,12 @@ Release date: 2026-07-16
 - `run_system_A_localization_exchange_R_sweep_preliminary_v1.py`
 - `run_system_B_gray_cat_metastable_R_sweep_preliminary_v1.py`
 - `run_minimal_system_B_gray_direct_check_v5.py`
+
+## Zenodo Upload Summary
+
+- Main upload: 36 files uploaded successfully.
+- Extra manifest upload: 3 files uploaded successfully.
+- Large intermediate CSV files were not included in the Zenodo upload bundle.
 
 ## Uploaded Figures
 
