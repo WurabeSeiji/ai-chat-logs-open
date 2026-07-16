@@ -14,8 +14,11 @@ It does not generate plots, CSV files, window metrics, or time-series records.
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import math
+import sys
+from decimal import Decimal
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
@@ -189,29 +192,172 @@ def probe_r(
     }
 
 
+def stable_fixed_point_candidate(payload: Dict[str, Any]) -> bool:
+    patience = int(payload["early_stop_patience"])
+    min_steps = int(payload["min_steps"])
+    if patience <= 0 or min_steps <= 0:
+        return False
+    best_step = int(payload["best_step"])
+    return (
+        payload["stop_reason"] == "early_stop_no_best_update"
+        and min_steps - patience <= best_step <= min_steps
+    )
+
+
+def candidate_row(payload: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "R": payload["R"],
+        "R_input_text": payload["R_input_text"],
+        "best_step": payload["best_step"],
+        "best_prefix_gray_error_no_phase": payload["best_prefix_gray_error_no_phase"],
+        "best_prefix_gray_depth_no_phase": payload["best_prefix_gray_depth_no_phase"],
+        "best_condition_id": payload["best_condition_id"],
+        "best_S_mean": payload["best_S_mean"],
+        "best_S_amp": payload["best_S_amp"],
+        "best_S_drift": payload["best_S_drift"],
+        "stopped_at_step": payload["stopped_at_step"],
+        "stop_reason": payload["stop_reason"],
+        "phi_mode": payload["phi_mode"],
+        "steps": payload["steps"],
+        "min_steps": payload["min_steps"],
+        "early_stop_patience": payload["early_stop_patience"],
+    }
+
+
+def decimal_range(min_r: str, max_r: str, delta_r: str) -> List[str]:
+    start = Decimal(min_r)
+    stop = Decimal(max_r)
+    step = Decimal(delta_r)
+    if step <= 0:
+        raise ValueError("--delta-R must be positive")
+    if stop < start:
+        raise ValueError("--max-R must be greater than or equal to --min-R")
+
+    values: List[str] = []
+    current = start
+    guard = 0
+    while current <= stop:
+        values.append(format(current, "f"))
+        current += step
+        guard += 1
+        if guard > 10_000_000:
+            raise RuntimeError("too many R sweep points")
+    return values
+
+
+def run_sweep(args: argparse.Namespace) -> Dict[str, Any]:
+    if args.min_R is None or args.max_R is None or args.delta_R is None:
+        raise ValueError("--min-R, --max-R, and --delta-R must be specified together")
+    if args.out_csv is None:
+        raise ValueError("--out-csv is required for R sweep output")
+
+    r_values = decimal_range(args.min_R, args.max_R, args.delta_R)
+    candidate_rows: List[Dict[str, Any]] = []
+    for index, r_text in enumerate(r_values, start=1):
+        payload = probe_r(
+            float(r_text),
+            r_text,
+            args.steps,
+            args.phi_mode,
+            args.min_steps,
+            args.early_stop_patience,
+        )
+        if stable_fixed_point_candidate(payload):
+            candidate_rows.append(candidate_row(payload))
+            if args.progress_every > 0:
+                print(
+                    "candidate "
+                    f"[{index}/{len(r_values)}] "
+                    f"R={payload['R_input_text']} "
+                    f"depth={payload['best_prefix_gray_depth_no_phase']:.12f} "
+                    f"step={payload['best_step']} "
+                    f"candidates={len(candidate_rows)}",
+                    file=sys.stderr,
+                    flush=True,
+                )
+        if args.progress_every > 0 and index % args.progress_every == 0:
+            print(
+                f"[{index}/{len(r_values)}] "
+                f"R={r_text} "
+                f"candidates={len(candidate_rows)}",
+                file=sys.stderr,
+                flush=True,
+            )
+
+    args.out_csv.parent.mkdir(parents=True, exist_ok=True)
+    fieldnames = [
+        "R",
+        "R_input_text",
+        "best_step",
+        "best_prefix_gray_error_no_phase",
+        "best_prefix_gray_depth_no_phase",
+        "best_condition_id",
+        "best_S_mean",
+        "best_S_amp",
+        "best_S_drift",
+        "stopped_at_step",
+        "stop_reason",
+        "phi_mode",
+        "steps",
+        "min_steps",
+        "early_stop_patience",
+    ]
+    with args.out_csv.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(candidate_rows)
+
+    return {
+        "model": "minimal_system_B_gray_direct_depth_probe_v5_R_sweep",
+        "min_R": args.min_R,
+        "max_R": args.max_R,
+        "delta_R": args.delta_R,
+        "n_R": len(r_values),
+        "n_candidates": len(candidate_rows),
+        "out_csv": str(args.out_csv),
+        "candidate_rows": candidate_rows,
+        "candidate_rule": "stop_reason == early_stop_no_best_update and min_steps - early_stop_patience <= best_step <= min_steps",
+        "phi_mode": args.phi_mode,
+        "steps": args.steps,
+        "min_steps": args.min_steps,
+        "early_stop_patience": args.early_stop_patience,
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--R", type=str, default=DEFAULT_R_TEXT)
+    parser.add_argument("--min-R", dest="min_R", type=str)
+    parser.add_argument("--max-R", dest="max_R", type=str)
+    parser.add_argument("--delta-R", dest="delta_R", type=str)
     parser.add_argument("--steps", type=int, default=DEFAULT_STEPS)
     parser.add_argument("--phi-mode", choices=("both", "zero", "pi"), default="both")
     parser.add_argument("--min-steps", type=int, default=0)
     parser.add_argument("--early-stop-patience", type=int, default=0)
     parser.add_argument("--out-json", type=Path)
+    parser.add_argument("--out-csv", type=Path)
+    parser.add_argument("--progress-every", type=int, default=0)
     args = parser.parse_args()
 
-    r_text = str(args.R)
     if args.min_steps < 0:
         raise ValueError("--min-steps must be non-negative")
     if args.early_stop_patience < 0:
         raise ValueError("--early-stop-patience must be non-negative")
-    payload = probe_r(
-        float(r_text),
-        r_text,
-        args.steps,
-        args.phi_mode,
-        args.min_steps,
-        args.early_stop_patience,
-    )
+    if args.progress_every < 0:
+        raise ValueError("--progress-every must be non-negative")
+
+    if args.min_R is not None or args.max_R is not None or args.delta_R is not None:
+        payload = run_sweep(args)
+    else:
+        r_text = str(args.R)
+        payload = probe_r(
+            float(r_text),
+            r_text,
+            args.steps,
+            args.phi_mode,
+            args.min_steps,
+            args.early_stop_patience,
+        )
     if args.out_json:
         args.out_json.parent.mkdir(parents=True, exist_ok=True)
         args.out_json.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
