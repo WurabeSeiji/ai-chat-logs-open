@@ -12,6 +12,17 @@ Release date: 2026-07-16
 
 - https://zenn.dev/noriaki_kihara/articles/exchange-weight-alpha-correspondence
 
+## Note
+
+- Japanese: https://note.com/kiharanoriaki/n/n7e0b6cd38c55
+- English: https://note.com/kiharanoriaki/n/n66b59a98ed6c
+
+## Social Releases
+
+- Facebook Japanese: https://www.facebook.com/kihara.noriaki/posts/pfbid02emaDGpF9GoDv7EWXF4DHHAjEGWhn8tSGAfkubn7QQUjjtp3x59ctR5H12sM18XB2l
+- Facebook English: https://www.facebook.com/kihara.noriaki/posts/pfbid02zbzZAxGAZN2ndUWayjjsq4gfJfUFma3ZdQXyvKWj1yEYSVeLdqaeJBVaJ2yDALUql
+- X English: https://x.com/NoriakiKihara/status/2077759085622264098
+
 ## GitHub
 
 - Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
