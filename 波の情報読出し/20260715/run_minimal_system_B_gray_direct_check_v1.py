@@ -12,9 +12,11 @@ and the only classification is the gray-state score used by System B.
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import math
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Dict, Iterable, List, Tuple
 
 import numpy as np
@@ -193,6 +195,7 @@ def aggregate_conditions(params: Params, reflection_rate: float) -> Dict[str, An
         "best_S_amp": float(best["S_amp"]),
         "best_S_drift": float(best["S_drift"]),
         "joint_gray_score": joint_gray_score,
+        "condition_rows": rows,
     }
 
 
@@ -206,16 +209,35 @@ def main() -> None:
     parser.add_argument("--alpha-inv", type=float, default=137.035999177)
     parser.add_argument("--use-alpha-r", action="store_true", help="use R = 1 - sqrt(4pi / alpha_inv)")
     parser.add_argument("--steps", type=int, default=4096)
+    parser.add_argument("--out-dir", type=Path, help="write direct summary JSON and 36-condition CSV")
     args = parser.parse_args()
     params = Params(steps=args.steps)
     r_value = alpha_inv_to_r(args.alpha_inv) if args.use_alpha_r or args.R is None else float(args.R)
+    checked = aggregate_conditions(params, r_value)
     payload = {
         "model": "minimal_system_B_gray_direct",
         "steps": params.steps,
         "alpha_inv": args.alpha_inv,
         "R_from_alpha_inv": alpha_inv_to_r(args.alpha_inv),
-        "checked": aggregate_conditions(params, r_value),
+        "checked": checked,
     }
+    if args.out_dir:
+        args.out_dir.mkdir(parents=True, exist_ok=True)
+        condition_rows = checked["condition_rows"]
+        condition_csv = args.out_dir / "minimal_system_B_gray_direct_condition_rows_v1.csv"
+        with condition_csv.open("w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=list(condition_rows[0].keys()))
+            writer.writeheader()
+            writer.writerows(condition_rows)
+        summary_payload = {
+            **payload,
+            "checked": {
+                key: value for key, value in checked.items() if key != "condition_rows"
+            },
+            "condition_rows_csv": str(condition_csv),
+        }
+        summary_json = args.out_dir / "minimal_system_B_gray_direct_summary_v1.json"
+        summary_json.write_text(json.dumps(summary_payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(payload, ensure_ascii=False, indent=2))
 
 
