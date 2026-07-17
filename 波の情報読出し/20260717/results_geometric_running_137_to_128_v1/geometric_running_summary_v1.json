@@ -1,0 +1,125 @@
+{
+  "model": "independent_geometric_running_137_to_128_v1",
+  "independent_of": [
+    "phase4_basin_of_attraction_v1.py",
+    "phase5_eigenvalue_fixed_point_v1.py",
+    "phase6_N_R_derivation_v1.py"
+  ],
+  "geometry": {
+    "dimension": 4,
+    "radius": 3.0,
+    "cell_width": 1.0,
+    "decomposition": {
+      "total": 137,
+      "layers": {
+        "center_1": 1,
+        "inner_8": 8,
+        "outer_128": 128
+      },
+      "outer_antipodal_decomposition": {
+        "pair_count": 64,
+        "oriented_halves": [
+          64,
+          64
+        ]
+      },
+      "patterns": {
+        "0,0,0,0": 1,
+        "0,0,0,1": 8,
+        "0,0,0,2": 8,
+        "0,0,1,1": 24,
+        "0,0,1,2": 48,
+        "0,1,1,1": 32,
+        "1,1,1,1": 16
+      }
+    }
+  },
+  "explicit_model_hypotheses": {
+    "core_visibility": "squared normalized isotropic mutual coherence of core_9 and outer_128",
+    "continuous_visibility": "squared normalized Fourier amplitude of the unit four-ball",
+    "self_consistency": "1/alpha = 128 + 9 W_core + (pi^2/2) alpha W_ball"
+  },
+  "scan": {
+    "q_min": 0.0,
+    "q_max": 40.0,
+    "q_points": 4001
+  },
+  "limits_and_checks": {
+    "inverse_alpha_q0": 137.03601098838874,
+    "paper7_inverse_alpha_expected": 137.03601098838874,
+    "q0_difference": 0.0,
+    "core_visibility_q0": 1.0,
+    "ball_visibility_q0": 1.0,
+    "inverse_alpha_qmax": 128.00162733217957,
+    "core_visibility_qmax": 0.00018081468649439096,
+    "ball_visibility_qmax": 2.835427685159019e-11,
+    "minimum_inverse_alpha": 128.00000000518088,
+    "q_at_minimum_inverse_alpha": 36.44,
+    "maximum_inverse_alpha": 137.03601098838874,
+    "q_at_maximum_inverse_alpha": 0.0,
+    "monotonic_nonincreasing_on_full_scan": false,
+    "cross_amplitude_zeroes": [
+      2.098198884675112,
+      5.369502829501427,
+      6.720743079568774,
+      8.078277470338586,
+      9.683432315498385,
+      10.272414238762352,
+      11.590111273752639,
+      13.771424966157749,
+      16.648158450598313,
+      18.58505718967051,
+      20.81402263259967,
+      22.639340073968974,
+      24.339362391951248,
+      26.02686927561418,
+      27.53222858366144,
+      28.45252514726684,
+      29.833315710388785,
+      31.57013630337401,
+      34.80948650656507,
+      36.44014706997813,
+      38.184888445945205
+    ]
+  },
+  "diagnostic_targets_not_used_to_construct_curve": {
+    "137.035999177": {
+      "crossings": [
+        0.044097532936966444
+      ],
+      "first_crossing": 0.044097532936966444,
+      "nearest_grid_point": {
+        "q": 0.04,
+        "inverse_alpha": 137.03600138910065,
+        "difference": 2.2121006395536824e-06
+      }
+    },
+    "129.394062925467": {
+      "crossings": [
+        2.0631886554838417,
+        2.1394389331548274,
+        4.816488046412535
+      ],
+      "first_crossing": 2.0631886554838417,
+      "nearest_grid_point": {
+        "q": 4.82,
+        "inverse_alpha": 129.37790926097293,
+        "difference": -0.01615366449408384
+      }
+    },
+    "128.946": {
+      "crossings": [
+        2.069731929386981,
+        2.130497493779574,
+        4.916730123370987
+      ],
+      "first_crossing": 2.069731929386981,
+      "nearest_grid_point": {
+        "q": 4.92,
+        "inverse_alpha": 128.93206172078249,
+        "difference": -0.013938279217512672
+      }
+    }
+  },
+  "unfixed_physical_mapping": "q = Q * ell / (hbar c); ell is not set by this experiment"
+}
