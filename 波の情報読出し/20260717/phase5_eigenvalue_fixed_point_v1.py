@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
-"""Phase 5: Eigenvalue and Fixed Point Analysis
+"""DEPRECATED Phase 5 v1 least-squares reconstruction experiment.
 
-Derive the stability conditions from transfer matrix eigenvalues.
-Test whether R_137 and R_128 emerge as natural stable points from first principles.
+This historical implementation reconstructs a rank-deficient 4x4 matrix from
+one trajectory and then applies a 2x2 Floquet trace criterion to it.  Its
+``floquet_discriminant`` is therefore not a stability discriminator for the
+exact exchange map.  It is retained only as provenance.  Use
+``phase5_eigenphase_resonance_v2.py`` for the exact spectrum and root-of-unity
+resonance analysis.
 """
 
 from __future__ import annotations

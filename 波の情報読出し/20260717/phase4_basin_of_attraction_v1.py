@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Phase 4: Basin of Attraction
+"""DEPRECATED Phase 4 v1 endpoint-comparison experiment.
 
-Visualize which initial conditions (φ, s₀) converge to R_137 vs R_128.
-Tests the A↔B symmetry hypothesis.
+This historical implementation keeps R fixed and compares two independently
+evolved endpoints.  It does not measure attraction in R-space, and its
+classifier always returns one of two labels.  It is retained only as provenance.
+Use ``phase4_basin_of_attraction_v2.py`` for the H8-conditional basin analysis.
 """
 
 from __future__ import annotations
