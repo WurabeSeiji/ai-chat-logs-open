@@ -1,0 +1,2087 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  10pt,
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=22mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{Discovery of Finite-Order Resonance in Iterated Exchange
+Scattering}\label{discovery-of-finite-order-resonance-in-iterated-exchange-scattering}
+
+\subsection{Identifying Sharp Peaks near Fine-Structure-Constant Inverse
+Values 137 and 128 with a Reproducible Wave-Packet
+Model}\label{identifying-sharp-peaks-near-fine-structure-constant-inverse-values-137-and-128-with-a-reproducible-wave-packet-model}
+
+\textbf{Version:} English complete manuscript v1.0\\
+\textbf{Date:} July 18, 2026\\
+\textbf{Author:} Noriaki Kihara\\
+\textbf{Series position:} Wave Information Readout series; paper
+identifying the origin of exchange-weight peaks\\
+\textbf{Version DOI:} 10.5281/zenodo.21421367\\
+\textbf{Concept DOI:} 10.5281/zenodo.21421366
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+This study began with the explicit aim of testing whether an
+exchange-scattering model of a closed phase system could explain values
+associated with the low- and high-energy fine-structure constant. In the
+preceding study, the exchange-scattering coefficient \(R\) was swept in
+System A, which reads localization transfer between wave packets, and
+System B, which reads a white-cat/black-cat/gray-cat metastable
+interface. Sharp peaks were observed near the regions corresponding to
+\(\alpha^{-1}\approx137\) and \(\alpha^{-1}\approx128\), but the reason
+why peaks formed at those positions remained unresolved.
+
+This paper reports a reanalysis of the full-range sweep, root-centered
+precision sweeps, operator-eigenvalue analysis, and 50- and 80-digit
+calculations performed to identify the cause. The analysis shows that
+the observed peaks do not arise from the assumed
+electromagnetic-coupling readout alone. They are generated by exact
+recurrence of the two-channel exchange-scattering operator
+
+\[
+U_R=
+\begin{pmatrix}
+r&t\\
+t&r
+\end{pmatrix},
+\]
+
+whose antisymmetric eigenvalue returns to unity after a finite number of
+iterations:
+
+\[
+U_R^n=I.
+\]
+
+The finite-order roots are
+
+\[
+\boxed{
+R_{n,m}=\cos^2\left(\frac{\pi m}{n}\right)
+}.
+\]
+
+The principal low-energy peak is \(R_{124,23}\), and the former
+high-energy principal candidate is \(R_{122,23}\). A separate even-order
+root \(R_{620,117}\) lies near the high-energy value
+\(\alpha^{-1}(M_Z^2)=128.946\pm0.015\) and gives
+
+\[
+N(R_{620,117})
+=\frac{4\pi}{(1-R_{620,117})^2}
+=128.947864735670559.
+\]
+
+Its difference from the quoted value is \(0.0018647\), or
+\(0.1243\sigma\).
+
+The 50-digit calculations produced depths near 52, while the 80-digit
+calculations produced depths from 82 to 83. At an exact finite-order
+root, the residual vanishes in ideal arithmetic, so the depth is
+formally infinite. This is not a divergence of energy or amplitude; it
+means that the resonance line becomes infinitely sharp.
+
+The principal result is not only the analytic root formula. Two
+numerical models originally constructed for different
+purposes---wave-packet localization transfer and observation selection
+at a metastable two-state interface---share the same complex
+exchange-scattering kernel and reproduce operator-intrinsic finite-order
+resonance. Exact recurrence can therefore be tested as an iterated
+wave-packet interaction calculation rather than remaining only an
+abstract operator statement.
+
+After this analysis, a literature search revealed connections to exact
+state-independent Floquet recurrence from cyclotomic spectra, Farey
+organization of resonance diagrams, the decomposition of \(E_8\) into 31
+orthogonal eight-dimensional subspaces, and studies relating exceptional
+algebras to the fine-structure constant. These works did not motivate
+the numerical experiment; they were identified only after the
+finite-order roots had been found.
+
+We initially expected this numerical experiment to explain \(\alpha\).
+What we directly found was a different finite-order resonance phenomenon
+connected to a generally known class of exact recurrences. It remains
+unresolved why such sharp finite-order roots occur near the two physical
+values of \(\alpha^{-1}\). Determining whether this proximity is an
+arithmetic coincidence or follows from four-dimensional discrete
+geometry or another structural necessity is the central task of the next
+stage.
+
+\textbf{Keywords:} fine-structure constant, exchange scattering,
+finite-order resonance, quantum recurrence, Floquet operator,
+wave-packet localization, metastable state, \(E_8\), reproducible
+computation
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{1. Research Motivation}\label{research-motivation}
+
+\subsection{1.1 A Search Deliberately Aimed at the Fine-Structure
+Constant}\label{a-search-deliberately-aimed-at-the-fine-structure-constant}
+
+The motivation of this study must not be obscured. We explicitly
+expected that the exchange-scattering structure of a closed phase system
+might explain a value corresponding to the fine-structure constant.
+
+We define the exchange weight by
+
+\[
+G_R:=1-R
+\]
+
+and assume the correspondence
+
+\[
+G_R=e
+\]
+
+with the electromagnetic coupling amplitude in the standard theory,
+
+\[
+e=\sqrt{4\pi\alpha}.
+\]
+
+This is the correspondence hypothesis of the present study. We further
+define the readout
+
+\[
+N(R):=\alpha^{-1}.
+\]
+
+Since
+
+\[
+(1-R)^2=4\pi\alpha,
+\]
+
+we obtain
+
+\[
+\boxed{
+N(R)=\frac{4\pi}{(1-R)^2}
+}.
+\]
+
+Under this correspondence hypothesis, exchange-scattering coefficients
+can be assigned to the low-energy value
+
+\[
+\alpha^{-1}(0)=137.035999177(21)
+\]
+
+and the high-energy value
+
+\[
+\alpha^{-1}(M_Z^2)=128.946\pm0.015.
+\]
+
+Thus, the region \(R\approx0.7\) was not selected accidentally. We
+examined whether the effective-response region found in the
+localization-transfer and metastable-interface experiments could connect
+to the exchange weight corresponding to the electromagnetic coupling
+amplitude.
+
+\subsection{1.2 System A: Wave-Packet Localization
+Transfer}\label{system-a-wave-packet-localization-transfer}
+
+The first starting point is a localization-exchange model in which an
+exchange-interference scattering matrix acts on wave-packet vectors
+{[}1,2{]}. A is a low-localization wave and B is a localized wave
+containing additional harmonics. We iterate
+
+\[
+\begin{pmatrix}
+A'\\B'
+\end{pmatrix}
+=
+U_R
+\begin{pmatrix}
+A\\B
+\end{pmatrix}.
+\]
+
+The readouts are
+
+\[
+L,\qquad N_{\mathrm{eff}},\qquad B_{\mathrm{to}A},
+\]
+
+where \(L\) is localization, \(N_{\mathrm{eff}}\) is the effective
+harmonic order, and \(B_{\mathrm{to}A}\) measures the transfer of the
+initial B-side harmonic distribution into A.
+
+At the endpoints of complete transmission \(R=0\) and complete
+reflection \(R=1\), the distinction between the low- and high-order
+waves was preserved. Under intermediate scattering, localization and
+harmonic structure were periodically transferred between the two
+channels. In particular, the localization and effective harmonic orders
+of the two channels approached one another near \(R\approx0.70\).
+
+This model was not originally designed to search for exact recurrence.
+It was constructed to numerically investigate an interaction in which a
+wave packet appears to become localized through exchange with another
+wave packet.
+
+\subsection{1.3 System B: White-Cat, Black-Cat, and Gray-Cat Metastable
+Interface}\label{system-b-white-cat-black-cat-and-gray-cat-metastable-interface}
+
+The second starting point is the white-cat/black-cat/gray-cat model,
+which reads the distribution and observation selection of two states A
+and B {[}3{]}. From complex amplitudes \(a\) and \(b\), define
+
+\[
+p_A=|a|^2,\qquad
+p_B=|b|^2,\qquad
+S=p_A-p_B.
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(S\approx+1\): white-cat state A.
+\item
+  \(S\approx-1\): black-cat state B.
+\item
+  \(S\approx0\): gray state.
+\end{itemize}
+
+Among gray states, a state that fluctuates with small amplitude,
+survives a weak C readout, and is selected into A or B by a strong D
+observation is called a gray metastable phase.
+
+This model was likewise not designed from the outset to reproduce the
+fine-structure constant or Floquet recurrence. It was constructed to
+distinguish a readout that does not destroy a metastable mixed state
+from strong observational selection.
+
+\subsection{1.4 The Question Left by the Previous
+Paper}\label{the-question-left-by-the-previous-paper}
+
+The paper of July 15, 2026 {[}4{]} connected Systems A and B through
+their common exchange-scattering coefficient \(R\). It found that:
+
+\begin{itemize}
+\tightlist
+\item
+  with an additional harmonic, the response concentrates in the region
+  corresponding to 137;
+\item
+  the candidate position barely moves when the harmonic type, amplitude,
+  phase, or wavelength is changed; and
+\item
+  the full System B sweep contains deep peaks near the regions read as
+  137 and 128.
+\end{itemize}
+
+The following question, however, remained unresolved:
+
+\begin{quote}
+Why do sharp peaks form at those positions?
+\end{quote}
+
+This paper reports the investigation undertaken to answer that question
+and the resulting identification of the cause.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{2. Computational Model and
+Readout}\label{computational-model-and-readout}
+
+\subsection{2.1 Exchange-Scattering
+Coefficients}\label{exchange-scattering-coefficients}
+
+For a reflection probability \(R\in[0,1]\), define
+
+\[
+\theta(R):=\arcsin\sqrt R.
+\]
+
+The transmission and reflection amplitudes are
+
+\[
+t=e^{i\theta}\cos\theta,
+\qquad
+r=-ie^{i\theta}\sin\theta.
+\]
+
+Therefore,
+
+\[
+|t|^2=1-R,
+\qquad
+|r|^2=R.
+\]
+
+\subsection{2.2 Two-Channel Exchange
+Operator}\label{two-channel-exchange-operator}
+
+One scattering iteration is defined by
+
+\[
+\boxed{
+\begin{pmatrix}
+A_{j+1}\\
+B_{j+1}
+\end{pmatrix}
+=
+U_R
+\begin{pmatrix}
+A_j\\
+B_j
+\end{pmatrix},
+\qquad
+U_R=
+\begin{pmatrix}
+r&t\\
+t&r
+\end{pmatrix}
+}.
+\]
+
+Because the coefficients satisfy
+
+\[
+|r|^2+|t|^2=1,
+\qquad
+r^*t+t^*r=0,
+\]
+
+we have
+
+\[
+U_R^\dagger U_R=I.
+\]
+
+Thus, the exact fixed-\(R\) map is unitary and does not dissipatively
+attract the state norm to a point.
+
+The ``concentration'\,' at a peak in this study is not dissipative
+contraction in state space. It is resonance selection in \(R\)-parameter
+space, where a closed-orbit condition concentrates at particular values.
+The increase of wave-packet localization observed in System A is a
+redistribution of localization by unitary interference, not contraction
+of the total norm.
+
+\subsection{2.3 Initial State of System
+B}\label{initial-state-of-system-b}
+
+Let
+
+\[
+A_0=\sqrt{\frac12+s_0},
+\qquad
+B_0=\sqrt{\frac12-s_0}\,e^{i\phi}.
+\]
+
+The principal sweep uses
+
+\[
+s_0=0.01,\qquad \phi=0.
+\]
+
+The initial population difference is therefore
+
+\[
+S_0=|A_0|^2-|B_0|^2=0.02.
+\]
+
+\subsection{2.4 Gray Error and Depth}\label{gray-error-and-depth}
+
+At each time, define the population difference by
+
+\[
+S_j=
+\frac{|A_j|^2-|B_j|^2}
+{|A_j|^2+|B_j|^2}.
+\]
+
+For a prefix of length \(k\), define
+
+\[
+\overline S_k
+=\frac1k\sum_{j=0}^{k-1}S_j,
+\]
+
+\[
+A_k
+=\frac{\max_{j<k}S_j-\min_{j<k}S_j}{2},
+\]
+
+and
+
+\[
+D_k
+=\left|
+\overline S_{k,\mathrm{second}}
+-\overline S_{k,\mathrm{first}}
+\right|.
+\]
+
+The gray error is
+
+\[
+\varepsilon_k
+=|\overline S_k|
++|A_k-0.02|
++D_k,
+\]
+
+and the depth is
+
+\[
+\boxed{
+d_k=-\log_{10}\varepsilon_k
+}.
+\]
+
+A periodic orbit becomes a deeper peak when its mean approaches zero,
+its amplitude approaches \(0.02\), and the drift between the first and
+second halves approaches zero.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{3. Full-Range Sweep in the Previous
+Study}\label{full-range-sweep-in-the-previous-study}
+
+\subsection{3.1 Sweep Conditions}\label{sweep-conditions}
+
+Using the minimal System B implementation v5, we uniformly swept 158,625
+points over
+
+\[
+R_{\min}=0.68660290255614798,
+\]
+
+\[
+R_{\max}=0.70246536756843059,
+\]
+
+with
+
+\[
+\Delta R=10^{-7}.
+\]
+
+The same scattering update, gray error, and stopping condition were
+applied to every \(R\). The sweep evaluation formula contains neither
+\(\alpha\), 137, 128, nor a finite-order root.
+
+\subsection{3.2 Full-Range Sweep Figure}\label{full-range-sweep-figure}
+
+\pandocbounded{\includegraphics[keepaspectratio]{../20260715/system_B_full_R_sweep_full_range_depth_v1.png}}
+
+\textbf{Figure 1.} Full System B sweep obtained on July 15, 2026. The
+horizontal axis is \(R\), and the vertical axis is depth normalized
+within the candidate bands. The deepest candidate 1 appeared at
+\(R=0.697177902556148\), and candidate 2 appeared at
+\(R=0.688363902556148\).
+
+The full-range figure showed that the response was not a single peak but
+a collection of narrow candidate bands. At that time, candidate 1 was
+read as a peak corresponding to the low-energy value
+\(\alpha^{-1}(0)\approx137\), while candidate 2 was read as a peak near
+the high-energy value \(\alpha^{-1}(M_Z^2)\approx128\).
+
+However, a spacing of \(10^{-7}\) could not determine the true center,
+width, limiting depth, or generating mechanism of each peak.
+
+\subsection{3.3 Original Candidate
+Values}\label{original-candidate-values}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2143}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2857}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2857}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2143}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Candidate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(R\) in the full sweep
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(N(R)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Interpretation at the time
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & 0.697177902556148 & 137.036020287643 & Near low-energy 137 \\
+2 & 0.688363902556148 & 129.394062925467 & Candidate near high-energy
+128 \\
+\end{longtable}
+}
+
+Candidate 2 was not itself \(128.946\). Nevertheless, because it was the
+second principal peak in the same full-range figure, its origin required
+identification.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{4. Root-Centered Precision
+Sweeps}\label{root-centered-precision-sweeps}
+
+\subsection{\texorpdfstring{4.1 Low-Energy Side:
+\(R_{124,23}\)}{4.1 Low-Energy Side: R\_\{124,23\}}}\label{low-energy-side-r_12423}
+
+Candidate 1 from the full sweep was magnified while reducing the spacing
+successively to
+
+\[
+10^{-8},\quad10^{-10},\quad10^{-12}.
+\]
+
+The peak center converged to
+
+\[
+\boxed{
+R_{124,23}
+=\cos^2\left(\frac{23\pi}{124}\right)
+=0.697177927556659290\ldots
+}.
+\]
+
+\pandocbounded{\includegraphics[keepaspectratio]{root_centered_delta1e-12_v1/root_centered_delta1e-12_v1.png}}
+
+\textbf{Figure 2.} A \(\Delta R=10^{-12}\) sweep with \(R_{124,23}\)
+placed on the central grid point. The deepest point, analytic root, and
+central grid point coincide. In double precision, the depth is 14.6586
+and the error is \(2.19\times10^{-15}\).
+
+Reading this root through the correspondence hypothesis
+\(N(R)=4\pi/(1-R)^2\) gives
+
+\[
+N(R_{124,23})
+=137.036042914598545\ldots.
+\]
+
+The CODATA 2022 value is
+
+\[
+\alpha^{-1}(0)=137.035999177(21),
+\]
+
+so the difference is
+
+\[
+4.37376\times10^{-5}.
+\]
+
+The two values are close but not identical.
+
+\subsection{\texorpdfstring{4.2 Former High-Energy Candidate:
+\(R_{122,23}\)}{4.2 Former High-Energy Candidate: R\_\{122,23\}}}\label{former-high-energy-candidate-r_12223}
+
+Candidate 2 was magnified in the same format. Its center is
+
+\[
+\boxed{
+R_{122,23}
+=\cos^2\left(\frac{23\pi}{122}\right)
+=0.688363946817592550\ldots
+}.
+\]
+
+\pandocbounded{\includegraphics[keepaspectratio]{R122_23_root_centered_resolution_comparison_v1/R122_23_root_centered_resolution_comparison_v1.png}}
+
+\textbf{Figure 3.} Comparison of \(\Delta R=10^{-10}\) and \(10^{-12}\)
+sweeps centered on \(R_{122,23}\). At both resolutions, the analytic
+root coincides with the deepest point. The depth is 14.8777 and the
+error is \(1.33\times10^{-15}\).
+
+The corresponding readout is
+
+\[
+N(R_{122,23})
+=129.394099680960693\ldots.
+\]
+
+Thus, the direct identity of the second principal peak previously called
+a candidate near high-energy 128 is the finite-order resonance
+\(R_{122,23}\).
+
+\subsection{\texorpdfstring{4.3 Near the High-Energy Observed Value:
+\(R_{620,117}\)}{4.3 Near the High-Energy Observed Value: R\_\{620,117\}}}\label{near-the-high-energy-observed-value-r_620117}
+
+Higher-order finite-order roots were examined near the \(R\) value
+corresponding to
+
+\[
+\alpha^{-1}(M_Z^2)=128.946\pm0.015.
+\]
+
+This search identified the even-order root
+
+\[
+\boxed{
+R_{620,117}
+=\cos^2\left(\frac{117\pi}{620}\right)
+=0.687825191114145187\ldots
+}.
+\]
+
+\pandocbounded{\includegraphics[keepaspectratio]{high_order_roots_centered_delta1e-12_v1/R620_117_root_centered_delta1e-12_v1.png}}
+
+\textbf{Figure 4.} A \(\Delta R=10^{-12}\) sweep with \(R_{620,117}\) on
+the central grid point. The deepest point is the analytic root itself.
+The depth is 14.9693, the error is \(1.07\times10^{-15}\), and the best
+prefix ends at \(2n-1=1239\).
+
+This root gives
+
+\[
+N(R_{620,117})
+=128.947864735670559\ldots.
+\]
+
+The difference from the observed value is
+
+\[
+128.947864735670559-128.946
+=0.001864735670559,
+\]
+
+and hence
+
+\[
+\frac{0.001864735670559}{0.015}
+=0.1243157,
+\]
+
+or \(0.1243\sigma\).
+
+The previous full-range sweep used at most 1024 steps. The gray metric
+for \(R_{620,117}\) requires
+
+\[
+2n=1240
+\]
+
+samples to read two complete periods. Therefore, this root could not
+appear as a complete peak within the earlier time window. The root near
+the high-energy observed value was found later not only because of
+spatial resolution along \(R\), but also because the iteration length in
+the time direction had been insufficient.
+
+\subsection{\texorpdfstring{4.4 Odd-Order Control:
+\(R_{567,107}\)}{4.4 Odd-Order Control: R\_\{567,107\}}}\label{odd-order-control-r_567107}
+
+In the same observed region,
+
+\[
+R_{567,107}
+=0.687816908934256712\ldots
+\]
+
+gives
+
+\[
+N(R_{567,107})
+=128.941022883719000\ldots.
+\]
+
+However, \(n=567\) is odd, so the discrete orbit does not contain the
+opposite gray-metric extremum \(-0.02\) as a grid point. Thus, even
+though the operator satisfies
+
+\[
+U_R^{567}=I,
+\]
+
+the amplitude readout retains the deficit
+
+\[
+0.01\left(1-\cos\frac{\pi}{567}\right)
+=1.5349792919\times10^{-7}.
+\]
+
+The measured deficit is
+
+\[
+1.5349792966\times10^{-7},
+\]
+
+in agreement with the prediction.
+
+This control shows that finite-order operator recurrence and an
+infinite-depth peak in the selected observable are not synonymous.
+Operator recurrence holds regardless of the parity of \(n\), while the
+present gray-amplitude readout produces a machine-precision peak at even
+fundamental orders.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{5. Multiprecision Calculation and Infinitely Sharp
+Peaks}\label{multiprecision-calculation-and-infinitely-sharp-peaks}
+
+\subsection{5.1 50- and 80-Digit
+Calculations}\label{and-80-digit-calculations}
+
+We placed \(R_{124,23}\) and \(R_{620,117}\) on the central grid point
+and calculated them with 50- and 80-digit arithmetic.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1304}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Root
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Precision
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(\Delta R\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Central depth
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Central error
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Best step
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(R_{124,23}\) & 50 digits & \(10^{-14}\) & 52.7036 &
+\(1.98\times10^{-53}\) & 247 \\
+\(R_{620,117}\) & 50 digits & \(10^{-14}\) & 52.6831 &
+\(2.07\times10^{-53}\) & 1239 \\
+\(R_{124,23}\) & 80 digits & \(10^{-16}\) & 82.1106 &
+\(7.75\times10^{-83}\) & 247 \\
+\(R_{620,117}\) & 80 digits & \(10^{-16}\) & 83.0581 &
+\(8.75\times10^{-84}\) & 1239 \\
+\end{longtable}
+}
+
+\pandocbounded{\includegraphics[keepaspectratio]{two_physical_roots_multiprecision_v1/80digit_delta1e-16_comparison_v1.png}}
+
+\textbf{Figure 5.} An 80-digit multiprecision sweep of \(R_{124,23}\)
+and \(R_{620,117}\). For both roots, the central grid point is the
+deepest point, and the depth exceeds 80 as the arithmetic precision is
+increased.
+
+\subsection{5.2 The Theoretical Limit}\label{the-theoretical-limit}
+
+At a root whose relatively prime representation \((m,n)\) has even
+fundamental order \(n\), reading two complete periods \(2n\) gives
+exactly
+
+\[
+\overline S=0,
+\qquad
+A=0.02,
+\qquad
+D=0.
+\]
+
+Therefore,
+
+\[
+\varepsilon=0,
+\]
+
+and
+
+\[
+d=-\log_{10}\varepsilon
+\longrightarrow+\infty.
+\]
+
+The diverging quantity is gray depth, not wave energy or amplitude. The
+height at the peak center increases with precision while the width
+narrows. A finite-precision measurement or coarse \(R\) sweep can
+therefore miss the peak easily.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{6. Mathematical Origin of the
+Peaks}\label{mathematical-origin-of-the-peaks}
+
+\subsection{6.1 Symmetric and Antisymmetric
+Decomposition}\label{symmetric-and-antisymmetric-decomposition}
+
+Decompose the two-channel state as
+
+\[
+X_j:=\frac{A_j+B_j}{\sqrt2},
+\qquad
+Y_j:=\frac{A_j-B_j}{\sqrt2}.
+\]
+
+The eigenvalues of the exchange operator are
+
+\[
+\lambda_s=r+t=1,
+\]
+
+and
+
+\[
+\lambda_a=r-t=-e^{2i\theta}.
+\]
+
+Therefore,
+
+\[
+X_j=X_0,
+\qquad
+Y_j=\lambda_a^jY_0.
+\]
+
+With the projection operators
+
+\[
+P_s=\frac12
+\begin{pmatrix}
+1&1\\1&1
+\end{pmatrix},
+\qquad
+P_a=\frac12
+\begin{pmatrix}
+1&-1\\-1&1
+\end{pmatrix},
+\]
+
+we obtain
+
+\[
+\boxed{
+U_R^j=P_s+\lambda_a^jP_a
+}.
+\]
+
+\subsection{6.2 Derivation of the Finite-Order
+Roots}\label{derivation-of-the-finite-order-roots}
+
+Let
+
+\[
+R_{n,m}
+=\cos^2\left(\frac{\pi m}{n}\right),
+\qquad
+1\le m<\frac n2,
+\qquad
+\gcd(m,n)=1.
+\]
+
+Then
+
+\[
+\theta
+=\arcsin\sqrt{R_{n,m}}
+=\frac{\pi}{2}-\frac{\pi m}{n},
+\]
+
+so
+
+\[
+\lambda_a
+=-e^{2i\theta}
+=e^{-2\pi i m/n}.
+\]
+
+It follows that
+
+\[
+\lambda_a^n=1
+\]
+
+and
+
+\[
+\boxed{
+U_{R_{n,m}}^n=I
+}.
+\]
+
+This is not a numerical fit. It is an analytic consequence derived
+directly from the scattering coefficients used in the current program.
+
+\subsection{6.3 Closed Form of the System B Time
+Series}\label{closed-form-of-the-system-b-time-series}
+
+The population difference is
+
+\[
+S_j=
+\frac{2\operatorname{Re}
+\left(
+\langle X_0,Y_0\rangle\lambda_a^j
+\right)}
+{\|X_0\|^2+\|Y_0\|^2}.
+\]
+
+Under the principal condition \(\phi=0\) and \(s_0=0.01\),
+
+\[
+\frac{2\langle X_0,Y_0\rangle}
+{\|X_0\|^2+\|Y_0\|^2}
+=0.02,
+\]
+
+and therefore
+
+\[
+\boxed{
+S_j
+=0.02\cos\left[
+j\left(
+\pi+2\arcsin\sqrt R
+\right)
+\right]
+}.
+\]
+
+This equation shows that the iterated scattering in the original program
+and the Chebyshev recurrence used for the multiprecision calculation
+evaluate the same time series.
+
+\subsection{6.4 Low Sensitivity to Initial
+Values}\label{low-sensitivity-to-initial-values}
+
+For a general initial state,
+
+\[
+S_j=C\cos(j\omega+\varphi_0),
+\qquad
+\omega=\arg\lambda_a.
+\]
+
+The amplitude \(C\) and initial phase \(\varphi_0\) depend on the
+initial state. However,
+
+\[
+\omega(R)=\pi+2\arcsin\sqrt R
+\]
+
+is determined by the operator alone. Consequently, changing the initial
+amplitude, initial phase, wave-packet shape, or harmonic content does
+not move
+
+\[
+R_{n,m}.
+\]
+
+What changes is the peak height, background, and visibility.
+
+\subsection{6.5 The Numbers 31, 124, and
+248}\label{the-numbers-31-124-and-248}
+
+At \(R_{124,23}\),
+
+\[
+\lambda_a^{31}=i,
+\qquad
+\lambda_a^{62}=-1,
+\qquad
+\lambda_a^{93}=-i,
+\qquad
+\lambda_a^{124}=1.
+\]
+
+Thus,
+
+\[
+31\times4=124
+\]
+
+is one complete operator period, and
+
+\[
+124\times2=248
+\]
+
+is the number of samples used by the gray metric to read two complete
+periods.
+
+The number 248 was not inserted into the scattering coefficients. It
+appeared as the time window that reads the 124-cycle closed orbit twice.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{7. Program Structure}\label{program-structure}
+
+\subsection{7.1 From Reflection Probability to Complex Scattering
+Amplitudes}\label{from-reflection-probability-to-complex-scattering-amplitudes}
+
+The following excerpt is the core of the minimal System B implementation
+v5:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ scattering\_coefficients(reflection\_rate: }\BuiltInTok{float}\NormalTok{):}
+    \ControlFlowTok{if}\NormalTok{ reflection\_rate }\OperatorTok{\textless{}} \FloatTok{0.0} \KeywordTok{or}\NormalTok{ reflection\_rate }\OperatorTok{\textgreater{}} \FloatTok{1.0}\NormalTok{:}
+        \ControlFlowTok{raise} \PreprocessorTok{ValueError}\NormalTok{(}\StringTok{"reflection rate must be in [0, 1]"}\NormalTok{)}
+
+\NormalTok{    delta\_f }\OperatorTok{=} \FloatTok{2.0} \OperatorTok{*}\NormalTok{ math.asin(math.sqrt(reflection\_rate))}
+\NormalTok{    half\_delta }\OperatorTok{=} \FloatTok{0.5} \OperatorTok{*}\NormalTok{ delta\_f}
+\NormalTok{    phase }\OperatorTok{=} \BuiltInTok{complex}\NormalTok{(math.cos(half\_delta), math.sin(half\_delta))}
+
+\NormalTok{    t }\OperatorTok{=}\NormalTok{ phase }\OperatorTok{*}\NormalTok{ math.cos(half\_delta)}
+\NormalTok{    r }\OperatorTok{=} \OperatorTok{{-}}\OtherTok{1j} \OperatorTok{*}\NormalTok{ phase }\OperatorTok{*}\NormalTok{ math.sin(half\_delta)}
+    \ControlFlowTok{return} \BuiltInTok{complex}\NormalTok{(t), }\BuiltInTok{complex}\NormalTok{(r), }\BuiltInTok{abs}\NormalTok{(t) }\OperatorTok{**} \DecValTok{2}\NormalTok{, }\BuiltInTok{abs}\NormalTok{(r) }\OperatorTok{**} \DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+The only input to this function is \(R\). Neither 137, 128, \(\alpha\),
+\(N(R)\), nor a finite-order root enters the calculation of the
+scattering amplitudes.
+
+Source:\\
+\href{../20260715/run_minimal_system_B_gray_direct_check_v5.py\#L48-L56}{run\_minimal\_system\_B\_gray\_direct\_check\_v5.py}
+
+\subsection{7.2 Scattering Update along the Time
+Direction}\label{scattering-update-along-the-time-direction}
+
+The core operation that generates the peaks is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a, b }\OperatorTok{=}\NormalTok{ normalize\_pair(}
+\NormalTok{    r }\OperatorTok{*}\NormalTok{ a }\OperatorTok{+}\NormalTok{ t }\OperatorTok{*}\NormalTok{ b,}
+\NormalTok{    t }\OperatorTok{*}\NormalTok{ a }\OperatorTok{+}\NormalTok{ r }\OperatorTok{*}\NormalTok{ b,}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The iterative core is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ step }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(steps }\OperatorTok{+} \DecValTok{1}\NormalTok{):}
+\NormalTok{    p\_a }\OperatorTok{=} \BuiltInTok{abs}\NormalTok{(a) }\OperatorTok{**} \DecValTok{2}
+\NormalTok{    p\_b }\OperatorTok{=} \BuiltInTok{abs}\NormalTok{(b) }\OperatorTok{**} \DecValTok{2}
+\NormalTok{    q }\OperatorTok{=}\NormalTok{ p\_a }\OperatorTok{+}\NormalTok{ p\_b}
+\NormalTok{    s\_value }\OperatorTok{=}\NormalTok{ (p\_a }\OperatorTok{{-}}\NormalTok{ p\_b) }\OperatorTok{/}\NormalTok{ q}
+
+    \CommentTok{\# readout of the current state}
+\NormalTok{    prefix\_sums.append(prefix\_sums[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{] }\OperatorTok{+}\NormalTok{ s\_value)}
+
+    \ControlFlowTok{if}\NormalTok{ step }\OperatorTok{\textgreater{}=}\NormalTok{ steps:}
+        \ControlFlowTok{break}
+
+\NormalTok{    a, b }\OperatorTok{=}\NormalTok{ normalize\_pair(}
+\NormalTok{        r }\OperatorTok{*}\NormalTok{ a }\OperatorTok{+}\NormalTok{ t }\OperatorTok{*}\NormalTok{ b,}
+\NormalTok{        t }\OperatorTok{*}\NormalTok{ a }\OperatorTok{+}\NormalTok{ r }\OperatorTok{*}\NormalTok{ b,}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+Source:\\
+\href{../20260715/run_minimal_system_B_gray_direct_check_v5.py\#L81-L136}{run\_minimal\_system\_B\_gray\_direct\_check\_v5.py}
+
+From the second iteration onward, the output \(A',B'\) of the preceding
+scattering event is used as the input to the next application of the
+same scattering map. In the present code, the variable \texttt{step}
+carries the time-development direction.
+
+\subsection{7.3 Gray Error}\label{gray-error}
+
+The evaluation function is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ prefix\_error(prefix\_sums, s\_min, s\_max):}
+\NormalTok{    n }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(prefix\_sums) }\OperatorTok{{-}} \DecValTok{1}
+\NormalTok{    total }\OperatorTok{=}\NormalTok{ prefix\_sums[n]}
+\NormalTok{    s\_mean }\OperatorTok{=}\NormalTok{ total }\OperatorTok{/}\NormalTok{ n}
+\NormalTok{    s\_amp }\OperatorTok{=} \FloatTok{0.5} \OperatorTok{*}\NormalTok{ (s\_max }\OperatorTok{{-}}\NormalTok{ s\_min)}
+
+\NormalTok{    mid }\OperatorTok{=}\NormalTok{ n }\OperatorTok{//} \DecValTok{2}
+\NormalTok{    first\_mean }\OperatorTok{=}\NormalTok{ prefix\_sums[mid] }\OperatorTok{/}\NormalTok{ mid}
+\NormalTok{    second\_mean }\OperatorTok{=}\NormalTok{ (total }\OperatorTok{{-}}\NormalTok{ prefix\_sums[mid]) }\OperatorTok{/}\NormalTok{ (n }\OperatorTok{{-}}\NormalTok{ mid)}
+\NormalTok{    s\_drift }\OperatorTok{=} \BuiltInTok{abs}\NormalTok{(second\_mean }\OperatorTok{{-}}\NormalTok{ first\_mean)}
+
+\NormalTok{    gray\_error }\OperatorTok{=}\NormalTok{ (}
+        \BuiltInTok{abs}\NormalTok{(s\_mean)}
+        \OperatorTok{+} \BuiltInTok{abs}\NormalTok{(s\_amp }\OperatorTok{{-}} \FloatTok{0.02}\NormalTok{)}
+        \OperatorTok{+}\NormalTok{ s\_drift}
+\NormalTok{    )}
+    \ControlFlowTok{return}\NormalTok{ gray\_error, s\_mean, s\_amp, s\_drift}
+\end{Highlighting}
+\end{Shaded}
+
+Source:\\
+\href{../20260715/run_minimal_system_B_gray_direct_check_v5.py\#L63-L78}{run\_minimal\_system\_B\_gray\_direct\_check\_v5.py}
+
+No value 137 or 128 appears here either. The function evaluates only the
+mean, amplitude, and temporal drift of a periodic orbit.
+
+\subsection{7.4 Analytic Eigenvalues and Finite-Order
+Roots}\label{analytic-eigenvalues-and-finite-order-roots}
+
+The following analytic code was added after the numerical peaks had been
+found:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ exact\_eigenvalues(reflection\_rate: }\BuiltInTok{float}\NormalTok{):}
+\NormalTok{    theta }\OperatorTok{=}\NormalTok{ math.asin(math.sqrt(reflection\_rate))}
+\NormalTok{    lambda\_symmetric }\OperatorTok{=} \FloatTok{1.0} \OperatorTok{+} \OtherTok{0.0j}
+\NormalTok{    lambda\_antisymmetric }\OperatorTok{=} \OperatorTok{{-}}\BuiltInTok{complex}\NormalTok{(}
+\NormalTok{        math.cos(}\FloatTok{2.0} \OperatorTok{*}\NormalTok{ theta),}
+\NormalTok{        math.sin(}\FloatTok{2.0} \OperatorTok{*}\NormalTok{ theta),}
+\NormalTok{    )}
+    \ControlFlowTok{return}\NormalTok{ lambda\_symmetric, lambda\_antisymmetric}
+
+
+\KeywordTok{def}\NormalTok{ resonant\_R(period\_n: }\BuiltInTok{int}\NormalTok{, mode\_m: }\BuiltInTok{int}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \BuiltInTok{float}\NormalTok{:}
+    \ControlFlowTok{return}\NormalTok{ math.cos(math.pi }\OperatorTok{*}\NormalTok{ mode\_m }\OperatorTok{/}\NormalTok{ period\_n) }\OperatorTok{**} \DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+Source:\\
+\href{../20260717/phase5_eigenphase_resonance_v2.py\#L74-L103}{phase5\_eigenphase\_resonance\_v2.py}
+
+This code did not insert the roots in order to create the peaks. It was
+written afterward to identify the peaks from the full-range sweep as
+operator-eigenvalue roots.
+
+\subsection{7.5 Closed-Form Multiprecision
+Recurrence}\label{closed-form-multiprecision-recurrence}
+
+Rather than directly evaluating
+
+\[
+S_j=0.02\cos(j\omega),
+\]
+
+the multiprecision calculation used a Chebyshev recurrence to control
+rounding error:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{phase }\OperatorTok{=}\NormalTok{ mp.pi }\OperatorTok{+} \DecValTok{2} \OperatorTok{*}\NormalTok{ mp.asin(mp.sqrt(reflection\_rate))}
+\NormalTok{phase\_cos }\OperatorTok{=}\NormalTok{ mp.cos(phase)}
+
+\NormalTok{cosine\_previous }\OperatorTok{=}\NormalTok{ mp.mpf(}\DecValTok{1}\NormalTok{)}
+\NormalTok{cosine\_current }\OperatorTok{=}\NormalTok{ phase\_cos}
+
+\ControlFlowTok{for}\NormalTok{ sample\_index }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(sample\_count):}
+    \ControlFlowTok{if}\NormalTok{ sample\_index }\OperatorTok{==} \DecValTok{0}\NormalTok{:}
+\NormalTok{        cosine\_value }\OperatorTok{=}\NormalTok{ cosine\_previous}
+    \ControlFlowTok{elif}\NormalTok{ sample\_index }\OperatorTok{==} \DecValTok{1}\NormalTok{:}
+\NormalTok{        cosine\_value }\OperatorTok{=}\NormalTok{ cosine\_current}
+    \ControlFlowTok{else}\NormalTok{:}
+\NormalTok{        cosine\_previous, cosine\_current }\OperatorTok{=}\NormalTok{ (}
+\NormalTok{            cosine\_current,}
+            \DecValTok{2} \OperatorTok{*}\NormalTok{ phase\_cos }\OperatorTok{*}\NormalTok{ cosine\_current }\OperatorTok{{-}}\NormalTok{ cosine\_previous,}
+\NormalTok{        )}
+\NormalTok{        cosine\_value }\OperatorTok{=}\NormalTok{ cosine\_current}
+
+\NormalTok{    s\_value }\OperatorTok{=}\NormalTok{ mp.mpf(}\StringTok{"0.02"}\NormalTok{) }\OperatorTok{*}\NormalTok{ cosine\_value}
+\end{Highlighting}
+\end{Shaded}
+
+Source:\\
+\href{run_two_physical_roots_multiprecision_v1.py\#L64-L106}{run\_two\_physical\_roots\_multiprecision\_v1.py}
+
+This is not a separate model. It is a closed-form calculation of the
+same time series derived from the original two-channel exchange update.
+
+\subsection{7.6 Vector Wave-Packet Update in System
+A}\label{vector-wave-packet-update-in-system-a}
+
+System A applies the same scattering kernel to wave-packet vectors
+rather than scalar amplitudes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ collision }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(max\_collision }\OperatorTok{+} \DecValTok{1}\NormalTok{):}
+\NormalTok{    rows.append(}
+\NormalTok{        row\_for\_state(..., }\StringTok{"A\_channel"}\NormalTok{, a, ...)}
+\NormalTok{    )}
+\NormalTok{    rows.append(}
+\NormalTok{        row\_for\_state(..., }\StringTok{"B\_channel"}\NormalTok{, b, ...)}
+\NormalTok{    )}
+
+    \ControlFlowTok{if}\NormalTok{ collision }\OperatorTok{\textgreater{}=}\NormalTok{ max\_collision:}
+        \ControlFlowTok{break}
+
+\NormalTok{    a\_next }\OperatorTok{=}\NormalTok{ src.normalize(r }\OperatorTok{*}\NormalTok{ a }\OperatorTok{+}\NormalTok{ t }\OperatorTok{*}\NormalTok{ b)}
+\NormalTok{    b\_next }\OperatorTok{=}\NormalTok{ src.normalize(t }\OperatorTok{*}\NormalTok{ a }\OperatorTok{+}\NormalTok{ r }\OperatorTok{*}\NormalTok{ b)}
+\NormalTok{    a, b }\OperatorTok{=}\NormalTok{ a\_next, b\_next}
+\end{Highlighting}
+\end{Shaded}
+
+Source:\\
+\href{../20260715/run_system_A_localization_exchange_R_sweep_preliminary_v1.py\#L718-L737}{run\_system\_A\_localization\_exchange\_R\_sweep\_preliminary\_v1.py}
+
+Systems A and B use different observables, but their time-development
+kernel \(U_R\) is identical.
+
+\subsection{7.7 Collision Trigger and the Scope of Iterated
+Scattering}\label{collision-trigger-and-the-scope-of-iterated-scattering}
+
+The complete interaction separates into two stages:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The A and B wave packets approach within one cell, triggering the
+  first scattering event.
+\item
+  The post-scattering outputs \(A',B'\) are updated into the next cycle
+  of iterated scattering.
+\end{enumerate}
+
+The current System A and System B programs directly implement the second
+stage. They do not implement the trajectories by which wave packets
+approach through space until the first-collision condition is satisfied.
+
+The result of this paper is therefore not a completed model of the
+entire interaction process. It is the identification that \textbf{the
+iterated exchange-scattering kernel after collision onset is sufficient
+to generate finite-order resonance}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{8. Audit for Hidden
+Parameters}\label{audit-for-hidden-parameters}
+
+\subsection{8.1 Classification of the Code
+Series}\label{classification-of-the-code-series}
+
+The existing code contains three distinct classes with different
+purposes.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Code class
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Known 137/128 values
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Role
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Early exploration and comparison code & Included & Compare robustness to
+harmonics and initial conditions at candidate points \\
+Uniform System B v5 sweep & Not included in sweep evaluation & Discover
+candidate peaks from an equally spaced grid \\
+Analytic-root and multiprecision code & Roots explicit & Verify
+agreement between discovered peaks and analytic roots \\
+\end{longtable}
+}
+
+The early System A exploration code and early System B code explicitly
+contained the 137- and 128-corresponding points as fixed probes. Those
+calculations alone are therefore not used as evidence of independent
+discovery.
+
+In contrast, the System B v5 sweep mode generated a Decimal equally
+spaced sequence from command-line minimum, maximum, and spacing
+parameters, and applied the same evaluation function at every point:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{r\_values }\OperatorTok{=}\NormalTok{ decimal\_range(}
+\NormalTok{    args.min\_R,}
+\NormalTok{    args.max\_R,}
+\NormalTok{    args.delta\_R,}
+\NormalTok{)}
+
+\ControlFlowTok{for}\NormalTok{ r\_text }\KeywordTok{in}\NormalTok{ r\_values:}
+\NormalTok{    payload }\OperatorTok{=}\NormalTok{ probe\_r(}
+        \BuiltInTok{float}\NormalTok{(r\_text),}
+\NormalTok{        r\_text,}
+\NormalTok{        args.steps,}
+\NormalTok{        args.phi\_mode,}
+\NormalTok{        args.min\_steps,}
+\NormalTok{        args.early\_stop\_patience,}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+Source:\\
+\href{../20260715/run_minimal_system_B_gray_direct_check_v5.py\#L228-L270}{run\_minimal\_system\_B\_gray\_direct\_check\_v5.py}
+
+A default \(R\) for single-point execution remains in the source, but it
+is not referenced when sweep mode is invoked with \texttt{min-R},
+\texttt{max-R}, and \texttt{delta-R}.
+
+\subsection{8.2 Chronology of Discovery and
+Verification}\label{chronology-of-discovery-and-verification}
+
+The evidential order is:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Observe localization transfer and robustness to harmonics in System A.
+\item
+  Construct the metastable interface in System B.
+\item
+  Perform the full \(R\) sweep with the explicit aim of testing the
+  \(\alpha\) correspondence.
+\item
+  Discover the principal peaks on a \(10^{-7}\) grid.
+\item
+  Perform root-centered precision sweeps.
+\item
+  Find that the peak centers coincide with \(R_{124,23}\) and
+  \(R_{122,23}\).
+\item
+  Derive the general roots \(R_{n,m}\) from the operator eigenvalue.
+\item
+  Identify \(R_{620,117}\) near the high-energy observed value.
+\item
+  Confirm precision-dependent growth of the depth with 50- and 80-digit
+  calculations.
+\item
+  Only then search the literature and recognize connections to exact
+  Floquet recurrence, Farey structure, and \(E_8\).
+\end{enumerate}
+
+This chronology establishes that the peaks were not generated by
+embedding a previously known cyclotomic root or the \(31\times8\)
+structure of \(E_8\) in the numerical code.
+
+\subsection{8.3 Reproduction Conditions}\label{reproduction-conditions}
+
+The conditions of the full-range sweep are preserved in the CSV file
+
+\href{../20260715/minimal_system_B_gray_bugcheck_result_v1/direct_depth_probe_v5_sweep_control/high_to_ext_full_delta1e-7_stats_v5.csv}{high\_to\_ext\_full\_delta1e-7\_stats\_v5.csv}.
+
+The principal parameters are:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+Item & Value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(R_{\min}\) & 0.68660290255614798 \\
+\(R_{\max}\) & 0.70246536756843059 \\
+\(\Delta R\) & \(10^{-7}\) \\
+Number of points & 158,625 \\
+steps & 1024 \\
+min steps & 256 \\
+patience & 20 \\
+phi & 0 \\
+\end{longtable}
+}
+
+The inputs, precision, number of points, raw JSON data, and figures for
+the local and multiprecision sweeps are likewise preserved in their
+result directories.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{9. The Two Physical Models and Resonance
+Visibility}\label{the-two-physical-models-and-resonance-visibility}
+
+\subsection{9.1 Harmonics Do Not Create the Roots; They Make the Roots
+Visible}\label{harmonics-do-not-create-the-roots-they-make-the-roots-visible}
+
+Let the internal degrees of freedom of a wave packet be \(\mathcal H\).
+Where the same exchange law acts on every internal component,
+
+\[
+U_R^{\mathrm{total}}
+=U_R\otimes I_{\mathcal H}.
+\]
+
+The harmonic type, amplitude, phase, and wavelength change the initial
+vector in \(\mathcal H\), but they do not change the two-channel
+eigenvalues
+
+\[
+1,\qquad -e^{2i\theta}.
+\]
+
+Additional harmonics are therefore not the cause that creates the
+finite-order roots. They are degrees of freedom that couple the
+antisymmetric eigensector to localization or population-difference
+observables and thereby make the resonance visible.
+
+The exact conditions under which the resonance does not appear in the
+System B population difference are
+
+\[
+Y_0=0
+\]
+
+or
+
+\[
+\langle X_0,Y_0\rangle=0.
+\]
+
+In these cases, the antisymmetric eigenphase exists in the operator but
+is absent from the selected readout.
+
+\subsection{9.2 Why Different Models Read the Same
+Region}\label{why-different-models-read-the-same-region}
+
+System A reads localization, harmonic order, and transfer ratio through
+
+\[
+\mathcal O_A(U_R^j\Psi_0).
+\]
+
+System B reads the A/B population difference, gray error, and metastable
+depth through
+
+\[
+\mathcal O_B(U_R^j\Psi_0).
+\]
+
+The observation functions differ, but the time-development operator is
+the same. The different physical models respond in the same \(R\) region
+because their common exchange-scattering kernel has the same eigenphase.
+
+This is the point of contact with physics in the present study. We did
+not begin by enumerating abstract cyclotomic roots. Experimental code
+designed to investigate wave-packet localization transfer and metastable
+selection detected the same operator resonance.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{10. Connections to Prior Work Recognized after the
+Discovery}\label{connections-to-prior-work-recognized-after-the-discovery}
+
+\subsection{10.1 Chronology of the Literature
+Search}\label{chronology-of-the-literature-search}
+
+The works discussed below did not guide the full-range sweep or the
+program design. We searched the literature only after identifying
+\(R_{124,23}\), \(R_{122,23}\), and \(R_{620,117}\) through numerical
+calculation and eigenvalue analysis.
+
+This chronology is stated explicitly for two reasons:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  to show that the numerical experiment was not a reproduction obtained
+  by embedding known cyclotomic roots or an \(E_8\) decomposition in the
+  code; and
+\item
+  to distinguish what is known as a general phenomenon from the
+  mathematical model and numerical discovery specific to this study.
+\end{enumerate}
+
+\subsection{10.2 Exact State-Independent Quantum
+Recurrence}\label{exact-state-independent-quantum-recurrence}
+
+Anand et al.~classified exact state-independent recurrence times from
+the cyclotomic spectrum of finite-dimensional Floquet unitary operators
+{[}5{]}. The present relation
+
+\[
+U_R^n=I
+\]
+
+is a concrete two-channel instance connected to this general class of
+exact recurrence.
+
+We therefore do not claim to have discovered the general concept of a
+finite-order unitary operator. The contribution is that a wave-packet
+numerical experiment aimed at the fine-structure constant independently
+reached this structure and detected it in both localization-transfer and
+metastable-interface models.
+
+\subsection{10.3 Farey Sequences and Resonance
+Organization}\label{farey-sequences-and-resonance-organization}
+
+Tomás described the organization of physical resonance diagrams by Farey
+sequences of rational numbers {[}6{]}. The present roots are classified
+by
+
+\[
+\frac{m}{n}.
+\]
+
+Farey adjacency can therefore organize the closely spaced high-order
+roots on the high-energy side. That work, however, does not treat the
+exchange-scattering map, the fine-structure-constant correspondence,
+localization transfer, or the cat model used here.
+
+\subsection{\texorpdfstring{10.4 The \(31\times8\) Structure of
+\(E_8\)}{10.4 The 31\textbackslash times8 Structure of E\_8}}\label{the-31times8-structure-of-e_8}
+
+After obtaining
+
+\[
+124=31\times4,
+\qquad
+248=31\times4\times2,
+\]
+
+we investigated a possible connection to the 248 dimensions of \(E_8\)
+and its decomposition into 31 orthogonal eight-dimensional subspaces.
+
+Thompson and later work treat structures associated with a decomposition
+of \(E_8\) into 31 orthogonal eight-dimensional Cartan subalgebras
+{[}7,8{]}. The \(E_8\) root system also separates into 112 integer-type
+roots and 128 half-integer-type roots {[}9{]}.
+
+These connections were noticed only after the finite-order-root
+discovery of July 18, 2026. The numbers 31, 128, and 248 were not
+selected in advance to tune the iteration count or exchange coefficient.
+
+At present, no explicit map has been constructed from
+
+\[
+31\text{ time sectors}\times
+4\text{ phases}\times
+2\text{ channels}
+\]
+
+to the 31 eight-dimensional subspaces of \(E_8\). The \(E_8\) connection
+is therefore retained as a structural hypothesis.
+
+\subsection{10.5 Exceptional Algebras and the Fine-Structure
+Constant}\label{exceptional-algebras-and-the-fine-structure-constant}
+
+El Naschie proposed a derivation connecting the \(8\times31=248\)
+structure of \(E_8\) to the fine-structure constant {[}10{]}. Singh
+discussed \(1/137\) using octonionic spacetime and an exceptional Jordan
+algebra {[}11{]}.
+
+Neither line of work was the starting point of this study. We
+deliberately searched for the fine-structure constant, but did not use
+\(E_8\) or an exceptional algebra to design the numerical peaks. Their
+relation to the present result was investigated only after obtaining the
+finite-order roots and the \(31\times4\times2\) structure.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{11. Discussion}\label{discussion}
+
+\subsection{11.1 What Did We Discover?}\label{what-did-we-discover}
+
+We initially expected that a closed exchange system could directly
+explain the fine-structure constant.
+
+The numerical experiments did return sharp peaks near 137 and 128. Their
+direct cause, however, was not the assumed electromagnetic-coupling
+correspondence
+
+\[
+G_R=e
+\]
+
+itself. The direct cause is the finite-order exchange resonance
+
+\[
+\lambda_a^n=1.
+\]
+
+Thus, this study has not completed a direct derivation of \(\alpha\). In
+the course of searching for the fine-structure constant, it discovered
+that the iterated exchange-scattering program detects exact finite-order
+recurrence.
+
+Because general exact recurrence is present in prior work, the general
+phenomenon is a rediscovery of a different phenomenon. The following
+points are nevertheless specific to this study:
+
+\begin{itemize}
+\tightlist
+\item
+  it began from a wave-packet localization-transfer model;
+\item
+  it also began from a weak-readout/strong-selection model of two
+  metastable states;
+\item
+  both models share the same exchange-scattering kernel;
+\item
+  multiple even-order roots appear near the physical readout regions 137
+  and 128; and
+\item
+  source code, raw data, full-range figures, local figures, and
+  multiprecision results are preserved in reproducible form.
+\end{itemize}
+
+\subsection{\texorpdfstring{11.2 Why Are the Roots Near
+\(\alpha\)?}{11.2 Why Are the Roots Near \textbackslash alpha?}}\label{why-are-the-roots-near-alpha}
+
+This is the most important question remaining after the result of this
+paper.
+
+On the low-energy side,
+
+\[
+N(R_{124,23})
+=137.036042914598545\ldots
+\]
+
+is close to
+
+\[
+\alpha^{-1}(0)
+=137.035999177(21).
+\]
+
+On the high-energy side,
+
+\[
+N(R_{620,117})
+=128.947864735670559\ldots
+\]
+
+is close to
+
+\[
+\alpha^{-1}(M_Z^2)
+=128.946\pm0.015.
+\]
+
+There are countably infinitely many finite-order roots
+
+\[
+R_{n,m}=\cos^2\left(\frac{\pi m}{n}\right).
+\]
+
+Their arithmetic density can place high-order roots near an arbitrary
+real value and may account for part of the proximity.
+
+However, this study did not merely select arbitrary roots after the
+fact:
+
+\begin{itemize}
+\tightlist
+\item
+  the original full-range sweep produced \(R_{124,23}\) and
+  \(R_{122,23}\) as its principal peaks;
+\item
+  the low-energy root has the short \(31\times4\) temporal structure;
+\item
+  an even root \(R_{620,117}\) with infinite depth under the present
+  gray metric lies near the high-energy observed value; and
+\item
+  different wave-packet models responded to the same exchange-scattering
+  region.
+\end{itemize}
+
+The proximity therefore cannot yet be declared either a mere coincidence
+or a physical necessity.
+
+\subsection{11.3 The Central Open
+Problem}\label{the-central-open-problem}
+
+The central open problem of this paper is stated without ambiguity:
+
+\begin{quote}
+\textbf{We began this search expecting that a closed exchange system
+could explain the fine-structure constant \(\alpha\). Within what has
+been established by the present analysis, however, we did not derive
+\(\alpha\) itself; we merely rediscovered a different finite-order
+resonance phenomenon connected to the general theory of exact
+recurrence. Yet the extremely sharp peaks of that finite-order resonance
+actually occur near the two physical low- and high-energy values of
+\(\alpha^{-1}\). Why this proximity occurs remains unexplained. Is it an
+accidental consequence of arithmetic density, or is it another necessity
+imposed by four-dimensional discrete geometry, \(E_8\)-type symmetry, a
+physical selection rule of exchange scattering, or an
+as-yet-unidentified structure? Distinguishing these alternatives is the
+central task of future work.}
+\end{quote}
+
+The required discriminating calculations are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  enumerate all roots below a fixed maximum order \(n_{\max}\);
+\item
+  calculate how often an even-order root at least as close to the
+  observed value occurs near randomized reference values;
+\item
+  test whether localization, entropy, phase correlation, and transfer
+  observables select the same roots independently of the gray metric;
+\item
+  randomize the initial state, harmonics, and time window to separate
+  root location from visibility;
+\item
+  construct an explicit map connecting the four-dimensional 137-cell
+  count, the 128 outer sector, the \(31\times8\) decomposition, and the
+  exchange operator; and
+\item
+  implement the same \(U_R\) in a physical optical coupler,
+  discrete-time quantum walk, or two-level Floquet system.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{12. Conclusion}\label{conclusion}
+
+This study identified the direct cause of the sharp peaks observed near
+the fine-structure-constant inverse values 137 and 128.
+
+The peaks form where the antisymmetric eigenvalue
+
+\[
+\lambda_a=-e^{2i\arcsin\sqrt R}
+\]
+
+of
+
+\[
+U_R=
+\begin{pmatrix}
+r&t\\t&r
+\end{pmatrix}
+\]
+
+has finite order, namely at
+
+\[
+R_{n,m}
+=\cos^2\left(\frac{\pi m}{n}\right).
+\]
+
+The principal low-energy peak is \(R_{124,23}\), the former high-energy
+principal candidate is \(R_{122,23}\), and \(R_{620,117}\) lies near the
+high-energy observed value.
+
+With 50- and 80-digit arithmetic, the depth increases with numerical
+precision. In ideal arithmetic, the gray error vanishes at an even
+fundamental-order root and the resonance depth becomes infinite.
+
+The result is not the first presentation of general quantum recurrence.
+It is the discovery that a wave-packet numerical experiment deliberately
+aimed at the fine-structure constant detects finite-order roots without
+inserting the known values into its scattering kernel, and that the
+phenomenon can be verified in reproducible localization-transfer and
+metastable two-state models.
+
+The fine-structure constant itself remains unexplained. A new question
+has been isolated: why do extremely sharp finite-order roots occur near
+the two physical values of \(\alpha^{-1}\)?
+
+The next stage is to distinguish
+
+\[
+\text{coincidence}
+\quad\text{from}\quad
+\text{another necessity}.
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{References}\label{references}
+
+\subsection{Self-References}\label{self-references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Noriaki Kihara,
+  \href{../20260713/交換干渉散乱行列フェルミオン的衝突における低局在性・倍音移乗読出し実験仕様書\%20v1.md}{Experimental
+  Specification v1 for Low-Localization and Harmonic-Transfer Readout in
+  Exchange-Interference Scattering-Matrix Fermion-Like Collisions},
+  2026.
+\item
+  Noriaki Kihara,
+  \href{../20260713/exchange_scattering_matrix_fermionic_localization_exchange_preliminary_summary_en.md}{Preliminary
+  Summary of Acceleration-Basis and Localization Exchange in
+  Exchange-Interference Scattering-Matrix Fermion-Like Collisions},
+  Zenodo Concept DOI: 10.5281/zenodo.21333766, 2026.
+\item
+  Noriaki Kihara,
+  \href{../20260714/gray_cat_metastable_observation_preliminary_summary_en.md}{Preliminary
+  Numerical Study of Gray-Cat Metastable Interfaces, Weak C Readout, and
+  Strong D Observation Selection in a Closed Phase System}, Zenodo
+  Concept DOI: 10.5281/zenodo.21353208, 2026.
+\item
+  Noriaki Kihara,
+  \href{../20260715/exchange_weight_alpha_correspondence_numerical_experiment_en.md}{Selection
+  of the State-Exchange Weight \(G_R=1-R\) and Candidate Correspondence
+  with the Fine-Structure Constant: A Numerical Experiment}, Zenodo
+  Concept DOI: 10.5281/zenodo.21396760, 2026.
+\end{enumerate}
+
+\subsection{External References}\label{external-references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Amit Anand, Dinesh Valluri, Jack Davis, and Shohini Ghose, ``Quantum
+  recurrences and the arithmetic of Floquet dynamics,'' \emph{Quantum}
+  \textbf{10}, 2074 (2026).
+  \url{https://doi.org/10.22331/q-2026-04-20-2074}
+\item
+  R. Tomás, ``From Farey sequences to resonance diagrams,''
+  \emph{Physical Review Special Topics---Accelerators and Beams}
+  \textbf{17}, 014001 (2014).
+  \url{https://doi.org/10.1103/PhysRevSTAB.17.014001}
+\item
+  J. G. Thompson, ``A conjugacy theorem for \(E_8\),'' \emph{Journal of
+  Algebra} \textbf{38}, 525--530 (1976).
+  \url{https://doi.org/10.1016/0021-8693(76)90235-0}
+\item
+  Alexander A. Ivanov, ``Geometry of the Thompson group,'' \emph{Journal
+  of Algebra} \textbf{661}, 778--806 (2025).
+  \url{https://doi.org/10.1016/j.jalgebra.2024.08.004}
+\item
+  Rosa Winter and Ronald van Luijk, ``The Action of the Weyl Group on
+  the \(E_8\) Root System,'' \emph{Graphs and Combinatorics}
+  \textbf{37}, 1965--2064 (2021).
+  \url{https://doi.org/10.1007/s00373-021-02315-8}
+\item
+  M. S. El Naschie, ``A derivation of the fine structure constant from
+  the exceptional Lie group hierarchy of the micro cosmos,''
+  \emph{Chaos, Solitons \& Fractals} \textbf{36}, 819--822 (2008).
+  \url{https://doi.org/10.1016/j.chaos.2007.09.020}
+\item
+  Tejinder P. Singh, ``Quantum theory without classical time: octonions,
+  and a theoretical derivation of the fine structure constant 1/137,''
+  \emph{International Journal of Modern Physics D} \textbf{30}, 2142010
+  (2021). \url{https://doi.org/10.1142/S0218271821420104}
+\item
+  Pierre-Philippe Dechant, ``The birth of \(E_8\) out of the spinors of
+  the icosahedron,'' \emph{Proceedings of the Royal Society A}
+  \textbf{472}, 20150504 (2016).
+  \url{https://doi.org/10.1098/rspa.2015.0504}
+\item
+  CODATA 2022, ``The 2022 CODATA Recommended Values of the Fundamental
+  Physical Constants,'' \(\alpha^{-1}(0)=137.035999177(21)\).
+  \url{https://physics.nist.gov/cuu/pdf/wallet_2022.pdf}
+\item
+  Alexander Keshavarzi, Daisuke Nomura, and Thomas Teubner, ``The muon
+  \(g-2\) and \(\alpha(M_Z^2)\): a new data-based analysis,''
+  \emph{Physical Review D} \textbf{101}, 014029 (2020).
+  \url{https://doi.org/10.1103/PhysRevD.101.014029}
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Appendix A. Principal Reproduction
+Files}\label{appendix-a.-principal-reproduction-files}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Content
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+File
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+July 15, 2026 complete paper &
+\href{../20260715/exchange_weight_alpha_correspondence_numerical_experiment_en.md}{Previous
+paper, English} \\
+Full-range sweep statistics &
+\href{../20260715/minimal_system_B_gray_bugcheck_result_v1/direct_depth_probe_v5_sweep_control/high_to_ext_full_delta1e-7_stats_v5.csv}{Full-range
+sweep CSV} \\
+Full-range sweep figure &
+\href{../20260715/system_B_full_R_sweep_full_range_depth_v1.png}{Figure
+1 PNG} \\
+\(R_{124,23}\) local sweep &
+\href{root_centered_delta1e-12_v1/root_centered_delta1e-12_result_v1.md}{Local-sweep
+result} \\
+\(R_{122,23}\) resolution comparison &
+\href{R122_23_root_centered_resolution_comparison_v1/R122_23_root_centered_resolution_comparison_v1.md}{Resolution-comparison
+result} \\
+Higher-order-root comparison &
+\href{high_order_roots_centered_delta1e-12_v1/high_order_roots_centered_delta1e-12_result_v1.md}{Higher-order-root
+result} \\
+Multiprecision result &
+\href{two_physical_roots_multiprecision_v1/two_physical_roots_multiprecision_result_v1.md}{Multiprecision
+result} \\
+Precision-matched ultralocal sweep &
+\href{two_physical_roots_precision_matched_narrow_v1/precision_matched_narrow_result_v1.md}{Ultralocal-sweep
+result} \\
+Minimal System B scattering kernel &
+\href{../20260715/run_minimal_system_B_gray_direct_check_v5.py}{System B
+source} \\
+Eigenvalue and analytic-root code &
+\href{../20260717/phase5_eigenphase_resonance_v2.py}{Eigenvalue-analysis
+source} \\
+Multiprecision code &
+\href{run_two_physical_roots_multiprecision_v1.py}{Multiprecision
+source} \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Appendix B. Classification of
+Claims}\label{appendix-b.-classification-of-claims}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Claim
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Classification
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Unitarity of \(U_R\) & Derived consequence \\
+\(\lambda_s=1,\lambda_a=-e^{2i\theta}\) & Derived consequence \\
+\(R_{n,m}=\cos^2(\pi m/n)\) & Derived consequence \\
+\(U_{R_{n,m}}^n=I\) & Derived consequence \\
+Infinite ideal gray depth at even fundamental-order roots & Derived
+consequence of the present readout \\
+Agreement of the full-range peaks with \(R_{124,23}\) and \(R_{122,23}\)
+& Numerical fact \\
+Proximity of \(R_{620,117}\) to the high-energy observed value &
+Numerical fact \\
+Harmonics control visibility rather than root position & Theoretical
+insight from the operator decomposition \\
+Identity with the \(31\times8\) decomposition of \(E_8\) & Structural
+hypothesis \\
+Necessity of the proximity between finite-order roots and physical
+\(\alpha\) & Not derived; central open problem \\
+\end{longtable}
+}
+
+\end{document}
