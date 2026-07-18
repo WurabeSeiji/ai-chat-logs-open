@@ -1,0 +1,2014 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  a4paper,
+  10pt]{article}
+\usepackage{xcolor}
+\usepackage[margin=22mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{Helvetica}
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Hiragino Mincho ProN}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Hiragino Mincho ProN}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{非自明二乗閉鎖から現れる複素位相構造}\label{ux975eux81eaux660eux4e8cux4e57ux9589ux9396ux304bux3089ux73feux308cux308bux8907ux7d20ux4f4dux76f8ux69cbux9020}
+
+\subsection{有限位数交換系と離散Born型重みへの根源的接続}\label{ux6709ux9650ux4f4dux6570ux4ea4ux63dbux7cfbux3068ux96e2ux6563bornux578bux91cdux307fux3078ux306eux6839ux6e90ux7684ux63a5ux7d9a}
+
+\textbf{版:} 日本語完成稿 v1\\
+\textbf{日付:} 2026年7月18日\\
+\textbf{著者:} 木原 範昭\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Version DOI:} 10.5281/zenodo.21422506\\
+\textbf{Concept DOI:} 10.5281/zenodo.21422505\\
+\textbf{位置づけ:}
+波の情報読出しシリーズ・二乗閉鎖公理からの追加解釈論文
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+本稿は、交換対称な二チャネルユニタリ作用素の有限位数閉包から、離散Born型重み
+
+\[
+R_{n,m}=\cos^2\left(\frac{\pi m}{n}\right),
+\qquad
+1-R_{n,m}=\sin^2\left(\frac{\pi m}{n}\right)
+\]
+
+が得られるという既報の結果に対し、より根源的な解釈を与えることを目的とする。
+
+本稿でいう「閉鎖」は、外界から隔離された熱力学的閉鎖系を意味しない。共役を含まない代数的二次形式
+\(Q_0(x)=\sum_kx_k^2\)
+が非自明にゼロへ閉じるという、\textbf{代数的二乗閉鎖}を意味する。
+
+既報では、交換対称性、ユニタリ性および有限位数条件を標準的な複素線形代数の枠内で扱った。これに対して本稿では、実数体
+\(\mathbb R\) を含む可換体 \(K\) 上で、最小公理として
+
+\[
+\boxed{
+\sum_{k=1}^{N}x_k^2=0,
+\qquad
+(x_1,\ldots,x_N)\neq(0,\ldots,0),
+\qquad
+x_k\in K,
+\qquad
+\mathbb R\subseteq K
+}
+\]
+
+という非自明な二乗閉鎖条件を置く。全成分が実数であれば各項は非負であるため、上式の非自明解は存在しない。したがって、解ベクトル
+\(\mathbf{x}:=(x_1,\ldots,x_N)\) は \(\mathbb R^N\)
+の外にあり、同値に、少なくとも一つの成分が非実数である。二成分最小系
+
+\[
+x^2+y^2=0,
+\qquad x\neq0
+\]
+
+では、
+
+\[
+\left(\frac{y}{x}\right)^2=-1
+\]
+
+となり、平方が \(-1\) となる要素を \(i\) と記せば
+
+\[
+y=\pm ix
+\]
+
+を得る。ここで虚数単位は、位相記述のために外部から導入されたのではなく、非自明な二乗和ゼロを成立させる最小の拡張方向として要請される。
+
+本稿は、この非実方向を四分の一回転として解釈する。さらに、連続性、可逆性および正定値読出し量の保存を追加条件として一般の位相回転へ拡張し、独立に置く交換対称性、有限位数条件
+
+\[
+\zeta^n=1
+\]
+
+および交換対称チャネル射影
+
+\[
+r=\frac{1+\zeta}{2},
+\qquad
+t=\frac{1-\zeta}{2}
+\]
+
+へ接続する。有限位数根 \(\zeta=e^{-2\pi im/n}\)
+に対して、正定値読出しとしての二乗重みを取ると、既報の離散Born型系列が回収される。
+
+本稿の厳密な導出範囲は、非自明な二乗和ゼロが実数だけでは成立せず、最小二成分系に平方根
+\(-1\)
+の方向を要求することまでである。そこから複素位相、交換対称ユニタリ表示およびBorn型重みへ進む部分には、連続性、線形性、可逆性、交換対称性、正定値読出し量の保存、および二乗読出しという追加条件を用いる。したがって本稿はBorn則全体の導出ではなく、非自明二乗閉鎖が要求する非実方向と、既報の有限位数交換定理とを、導出・追加構成・未解決接続に分類して提示する。
+
+\textbf{キーワード:}
+二乗閉鎖、虚数、複素位相、交換対称性、有限位数再帰、Born則、二乗重み、閉鎖系、ユニタリ作用素
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{1.
+研究背景と目的}\label{1-ux7814ux7a76ux80ccux666fux3068ux76eeux7684}
+
+\subsection{1.1 問題の所在}\label{11-ux554fux984cux306eux6240ux5728}
+
+標準量子力学では、状態は複素ベクトルとして表され、時間発展はユニタリ作用素により記述され、観測確率は振幅の絶対値二乗として与えられる。
+
+\[
+P(A)=|\langle A|\psi\rangle|^2
+\]
+
+二状態系では、
+
+\section{\$\$
+\textbar\textbackslash psi\textbackslash rangle}\label{-psirangle}
+
+\textbackslash cos\textbackslash phi,\textbar A\textbackslash rangle +
+e\^{}\{i\textbackslash chi\}\textbackslash sin\textbackslash phi,\textbar B\textbackslash rangle
+\$\$
+
+と書けば、
+
+\[
+P(A)=\cos^2\phi,
+\qquad
+P(B)=\sin^2\phi
+\]
+
+となる。
+
+しかし、複素数、共役、正定値内積、ユニタリ性および絶対値二乗を同時に前提とした後で
+\(\cos^2\)
+形を得ても、その二乗則の根源を説明したことにはならない可能性がある。複素振幅と共役積を採用した時点で、二状態射影が
+\(\cos^2/\sin^2\) となることはほぼ幾何学的に決まっているからである。
+
+一方、既報「反復二チャネル交換系における離散Born型重みの出現」では、Born則を数値探索の目標とせず、波束局在性移乗、準安定二状態、弱読出しおよび強観測選択を扱うモデル群から、有限位数再帰に対応する離散Born型重みが発見された。その中心結果は、交換対称な二チャネルユニタリ作用素が、全体位相を除いて
+
+\[
+U=P_s+\zeta P_a,
+\qquad |\zeta|=1
+\]
+
+と書け、有限位数条件
+
+\[
+U^n=I
+\]
+
+が
+
+\[
+\zeta=e^{-2\pi im/n}
+\]
+
+を選ぶと、チャネル重みが
+
+\section{\$\$
+\textbackslash left\textbar\textbackslash frac\{1+\textbackslash zeta\}\{2\}\textbackslash right\textbar\^{}2}\label{-leftfrac1zeta2right2}
+
+\textbackslash cos\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right) \$\$
+
+となることであった。
+
+この結果は、どの位相およびどの二乗重みが完全再帰として選択されるかを説明する。しかし、なぜ複素位相、共役およびユニタリ性を用いるのかという、さらに前段の問いは残る。
+
+\subsection{1.2 本稿の問い}\label{12-ux672cux7a3fux306eux554fux3044}
+
+本稿が扱う問いは次である。
+
+\begin{quote}
+複素数、共役およびユニタリ性を最初の公理として置かず、非自明な二乗閉鎖条件から、平方根
+\(-1\)
+の方向、位相回転、交換対称有限位数構造および離散Born型重みへの接続をどこまで構成できるか。
+\end{quote}
+
+本稿は、次の四層を区別して検討する。
+
+\[
+\boxed{
+\begin{aligned}
+&\text{非自明二乗閉鎖}
+\Rightarrow
+\text{非実方向}
+&&[\text{導出}]\\
+&\text{非実方向}
++
+\text{連続・可逆・}Q_+\text{保存}
+\longrightarrow
+\text{位相回転と交換表示}
+&&[\text{追加構成}]\\
+&\text{交換対称性}
++
+\text{有限位数}
++
+\text{二乗読出し}
+\Rightarrow
+\text{離散Born型重み}
+&&[\text{条件付き導出}]\\
+&Q_0=0\text{ と交換核の動的接続}
+&&[\text{接続課題C2}]
+\end{aligned}
+}
+\]
+
+\subsection{1.3
+既報との役割分担}\label{13-ux65e2ux5831ux3068ux306eux5f79ux5272ux5206ux62c5}
+
+本稿は、既報の有限位数交換定理を置き換えるものではない。
+
+既報の役割は、標準的な複素線形代数の枠内で、
+
+\[
+[U,X]=0,
+\qquad
+U^\dagger U=I,
+\qquad
+U^n=I
+\]
+
+から離散Born型重みを厳密に導くことである。
+
+本稿の役割は、その前段にある
+
+\[
+\sum_kx_k^2=0
+\]
+
+という非自明閉鎖条件から、なぜ非実方向と位相記述が必要になるのかを示し、既報の数学構造へ根源的な解釈を与えることである。
+
+したがって、二つの論文は次の関係にある。
+
+\[
+\boxed{
+\text{本稿：非実方向の必要性を導出}
+\quad
+\xrightarrow[\text{C2は未解決}]{\text{追加構成}}
+\quad
+\text{既報：有限位数交換から離散Born型重みを導出}
+}
+\]
+
+先に公開した有限位数交換定理は、Concept DOI
+\url{https://doi.org/10.5281/zenodo.21422470} で恒久公開されている。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{2.
+非自明二乗閉鎖公理}\label{2-ux975eux81eaux660eux4e8cux4e57ux9589ux9396ux516cux7406}
+
+\subsection{2.1 公理}\label{21-ux516cux7406}
+
+本稿では、実数体 \(\mathbb R\) を含む可換体 \(K\)
+と、その上の有限個の成分
+
+\[
+x_k\in K,
+\qquad
+\mathbb R\subseteq K
+\qquad(k=1,\ldots,N)
+\]
+
+に対して、次の条件を置く。
+
+\[
+\boxed{
+\sum_{k=1}^{N}x_k^2=0
+}
+\]
+
+ただし、自明解だけを対象としないため、
+
+\[
+\boxed{
+(x_1,\ldots,x_N)\neq(0,\ldots,0)
+}
+\]
+
+を要求する。
+
+本稿ではこれを\textbf{非自明二乗閉鎖条件}と呼ぶ。
+
+既報の第一公理A1は \(K=\mathbb C\)
+としたセクターに対応する。本稿では、複素数体を先に固定したために結論が生じたのではないことを監査するため、出発点を
+\(\mathbb R\subseteq K\) まで戻す。二成分非自明閉鎖から \(K\) 内に平方根
+\(-1\) が生成されることを示した後、最小部分体
+\(\mathbb R(i)\cong\mathbb C\) を回収する。
+
+ここで重要なのは、
+
+\[
+\sum_k|x_k|^2=0
+\]
+
+ではなく、
+
+\[
+\sum_kx_k^2=0
+\]
+
+であることである。前者は複素共役を用いた正定値ノルムであり、非自明解を持たない。後者は共役を含まない代数的二乗和であり、数体系を実数から拡張すれば非自明解を持ち得る。
+
+\subsection{2.2
+実数系における自明性}\label{22-ux5b9fux6570ux7cfbux306bux304aux3051ux308bux81eaux660eux6027}
+
+すべての成分が実数であるとする。
+
+\[
+x_k\in\mathbb R
+\]
+
+このとき、
+
+\[
+x_k^2\ge0
+\]
+
+である。したがって、
+
+\[
+\sum_{k=1}^{N}x_k^2=0
+\]
+
+が成立するためには、すべての項がゼロでなければならない。
+
+\[
+x_1=x_2=\cdots=x_N=0
+\]
+
+よって、次が成立する。
+
+\textbf{命題2.1（実数非自明解の不存在）}\\
+\(N\ge1\) とする。\(x_k\in\mathbb R\) に対して
+
+\[
+\sum_{k=1}^{N}x_k^2=0
+\]
+
+ならば、
+
+\[
+x_k=0
+\qquad(k=1,\ldots,N)
+\]
+
+である。
+
+したがって、非自明二乗閉鎖を要求するなら、解ベクトルは実ベクトル空間
+\(\mathbb R^N\) の外にある。
+
+\[
+\boxed{
+\sum_kx_k^2=0,
+\quad
+(x_1,\ldots,x_N)\neq(0,\ldots,0)
+\quad\Longrightarrow\quad
+\mathbf{x}:=(x_1,\ldots,x_N)\in K^N\setminus\mathbb R^N
+}
+\]
+
+これは、成分表示では
+
+\[
+\boxed{
+\exists j:\ x_j\notin\mathbb R
+}
+\]
+
+と同値である。
+
+\subsection{2.3
+この命題が意味すること}\label{23-ux3053ux306eux547dux984cux304cux610fux5473ux3059ux308bux3053ux3068}
+
+この命題は、拡張体 \(K\)
+全体が複素数体に等しいことまでは要求しない。\(K\)
+は複素数体より大きい拡張体でもよい。
+
+しかし、二成分非自明閉鎖から得る \(i:=y/x\) は \(i^2=-1\)
+を満たすため、\(K\) は部分体
+
+\[
+\mathbb R(i)
+\]
+
+を含む。これは \(\mathbb R\) 上の体として \(\mathbb C\)
+と同型である。したがって、平方根 \(-1\)
+を加える最小の可換体拡張は複素数体であり、非自明二乗閉鎖の解ベクトルは
+\(\mathbb R^N\) の外にある。
+
+つまり、本稿における虚数は、波動関数を便利に記述するために任意に導入されるのではなく、
+
+\begin{quote}
+正の実数二乗だけでは閉じない非自明な二乗和を、ゼロへ閉じるために必要な拡張方向
+\end{quote}
+
+として現れる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{3.
+最小二成分系における虚数方向}\label{3-ux6700ux5c0fux4e8cux6210ux5206ux7cfbux306bux304aux3051ux308bux865aux6570ux65b9ux5411}
+
+\subsection{3.1 二成分閉鎖}\label{31-ux4e8cux6210ux5206ux9589ux9396}
+
+最小の非自明系として、
+
+\[
+x^2+y^2=0
+\]
+
+を考える。
+
+\(x\neq0\) とすれば、
+
+\[
+y^2=-x^2
+\]
+
+であり、
+
+\[
+\left(\frac{y}{x}\right)^2=-1
+\]
+
+となる。
+
+平方が \(-1\) となる要素を \(i\) と書けば、
+
+\[
+i^2=-1
+\]
+
+であり、
+
+\[
+\boxed{
+y=\pm ix
+}
+\]
+
+を得る。
+
+\textbf{命題3.1（最小二成分閉鎖）}\\
+\(x^2+y^2=0\)、\(x\neq0\) を満たす可換体の拡張において、\(y/x\) は
+\(-1\) の平方根である。
+
+この命題には複素共役は含まれていない。
+
+さらに \(K\) が \(\mathbb R\) を含むなら、\(i:=y/x\)
+によって生成される最小部分体は
+
+\[
+\mathbb R(i)\cong\mathbb C
+\]
+
+である。したがって二成分閉鎖では、複素方向は外から与えた位相仮定ではなく、非自明解が生成する最小体拡張として現れる。
+
+\subsection{3.2
+四分の一回転としての解釈}\label{32-ux56dbux5206ux306eux4e00ux56deux8ee2ux3068ux3057ux3066ux306eux89e3ux91c8}
+
+複素平面上で、実軸方向の量 \(x\) に \(i\)
+を掛ける操作は、90度回転に対応する。
+
+\[
+x\longmapsto ix
+\]
+
+したがって、
+
+\[
+y=\pm ix
+\]
+
+は、二成分が同一直線上の正負ではなく、互いに四分の一周期ずれた方向を持つことを意味する。
+
+本稿では、この関係を\textbf{四分の一周期閉鎖位相差}と呼ぶ。
+
+\[
+\Delta\phi=\pm\frac{\pi}{2}
+\]
+
+重要なのは、位相差を先に仮定して二乗閉鎖を作ったのではなく、二乗閉鎖の非自明性から平方根
+\(-1\)
+の方向が要求され、その幾何学的表現として四分の一回転が得られることである。
+
+\subsection{3.3
+符号と対向方向}\label{33-ux7b26ux53f7ux3068ux5bfeux5411ux65b9ux5411}
+
+二つの解
+
+\[
+y=+ix,
+\qquad
+y=-ix
+\]
+
+は、位相回転の向きが反対である。
+
+\[
++\frac{\pi}{2},
+\qquad
+-\frac{\pi}{2}
+\]
+
+この対向性は、後に複素共役として表現される構造と関係する可能性がある。
+
+ただし、本稿ではここから共役演算の一意性を導出したとは主張しない。厳密に得られたのは、平方根
+\(-1\)
+に二つの符号が存在し、互いに反対向きの四分の一周期閉鎖回転を与えることである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{4.
+多成分系における非実方向}\label{4-ux591aux6210ux5206ux7cfbux306bux304aux3051ux308bux975eux5b9fux65b9ux5411}
+
+\subsection{4.1
+一般の閉鎖式}\label{41-ux4e00ux822cux306eux9589ux9396ux5f0f}
+
+一般に、
+
+\[
+\sum_{k=1}^{N}x_k^2=0
+\]
+
+を考える。
+
+少なくとも一つの成分 \(x_j\)
+が非零であるとする。実数成分の二乗は非負なので、実数成分だけでは閉鎖できない。
+
+例えば、\(a,b\in\mathbb R\) として、
+
+\[
+x_1=a,
+\qquad
+x_2=b,
+\qquad
+x_3=i\sqrt{a^2+b^2}
+\]
+
+とすれば、
+
+\[
+a^2+b^2+
+\left(i\sqrt{a^2+b^2}\right)^2
+=0
+\]
+
+となる。
+
+この例は、多数の実二乗登録を、一つの虚数方向の二乗で閉じることが可能であることを示す。
+
+\subsection{4.2
+必要条件と十分条件の区別}\label{42-ux5fc5ux8981ux6761ux4ef6ux3068ux5341ux5206ux6761ux4ef6ux306eux533aux5225}
+
+非自明閉鎖の解ベクトルは \(\mathbb R^N\)
+の外にある。固定した閉鎖座標では、これは少なくとも一つの成分が非実数であることと同値である。
+
+しかし、次のことまでは一般には言えない。
+
+\begin{itemize}
+\tightlist
+\item
+  非実成分が一つだけであること。
+\item
+  非実成分が純虚数であること。
+\item
+  各成分が実成分または純虚成分に分離すること。
+\item
+  複素数体が唯一の可能な拡張であること。
+\end{itemize}
+
+本稿の中心に必要なのは、より弱い命題である。
+
+\[
+\boxed{
+\text{非自明二乗閉鎖の解は }\mathbb R^N\text{ の外にある}
+}
+\]
+
+したがって、位相または回転として表現できる非実自由度を導入する動機が生じる。
+
+\subsection{4.3
+無名性との接続}\label{43-ux7121ux540dux6027ux3068ux306eux63a5ux7d9a}
+
+各成分 \(x_k\)
+に外部的な名前や絶対座標を与えず、系全体の閉鎖条件だけを基本とするなら、成分間の区別は絶対値ではなく、二乗登録の相対的な配分および位相関係として現れる。
+
+この観点では、
+
+\[
+\sum_kx_k^2=0
+\]
+
+は、個々の成分を独立な実体として固定する条件ではなく、全成分が一つの閉じた関係系を構成する条件と読める。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{5.
+二乗閉鎖と正定値読出しの区別}\label{5-ux4e8cux4e57ux9589ux9396ux3068ux6b63ux5b9aux5024ux8aadux51faux3057ux306eux533aux5225}
+
+\subsection{5.1
+二種類の二乗}\label{51-ux4e8cux7a2eux985eux306eux4e8cux4e57}
+
+本稿では、次の二つを明確に区別する。
+
+\subsubsection{閉鎖を定義する二乗}\label{ux9589ux9396ux3092ux5b9aux7fa9ux3059ux308bux4e8cux4e57}
+
+\[
+Q_0(x):=\sum_kx_k^2
+\]
+
+これは共役を含まない。
+
+非自明閉鎖条件は、
+
+\[
+Q_0(x)=0,
+\qquad (x_1,\ldots,x_N)\neq(0,\ldots,0)
+\]
+
+である。
+
+\subsubsection{観測または大きさを読む二乗}\label{ux89b3ux6e2cux307eux305fux306fux5927ux304dux3055ux3092ux8aadux3080ux4e8cux4e57}
+
+複素成分に対して、
+
+\[
+Q_+(x):=\sum_kx_k^*x_k
+=\sum_k|x_k|^2
+\]
+
+を定義する。
+
+これは正定値であり、
+
+\[
+Q_+(x)\ge0
+\]
+
+である。
+
+\subsection{5.2
+閉鎖式とノルム式を混同しない}\label{52-ux9589ux9396ux5f0fux3068ux30ceux30ebux30e0ux5f0fux3092ux6df7ux540cux3057ux306aux3044}
+
+非自明二乗閉鎖は、
+
+\[
+Q_0(x)=0
+\]
+
+であって、
+
+\[
+Q_+(x)=0
+\]
+
+ではない。
+
+非自明状態では通常、
+
+\[
+Q_0(x)=0,
+\qquad
+Q_+(x)>0
+\]
+
+が成立する。
+
+最小二成分例
+
+\[
+(x,y)=(a,ia)
+\]
+
+では、
+
+\[
+Q_0=a^2+(ia)^2=0
+\]
+
+だが、
+
+\[
+Q_+=|a|^2+|ia|^2=2|a|^2>0
+\]
+
+である。
+
+この区別により、二乗和ゼロを「物理量がすべて消滅した状態」と読む必要はない。ゼロになるのは向きを含む代数的閉鎖登録であり、正定値読出し量は非零であり得る。
+
+\subsection{5.3
+共役の位置づけ}\label{53-ux5171ux5f79ux306eux4f4dux7f6eux3065ux3051}
+
+本稿の構成では、共役は虚数方向を成立させるための前提ではない。
+
+虚数方向は、
+
+\[
+x^2+y^2=0
+\]
+
+の非自明性から既に必要となる。
+
+共役は、その後に
+
+\[
+i\longmapsto-i
+\]
+
+として非実方向を反転させ、
+
+\[
+z^*z
+\]
+
+を実数の正定値読出しへ変換する操作として位置づけられる。
+
+したがって、本稿の論理順序は、導出部分と追加する読出し構成を分けて、
+
+\[
+\boxed{
+\text{非自明二乗閉鎖}
+\Rightarrow
+\text{非実方向の必要性}
+\qquad[\text{導出}]
+}
+\]
+
+および、
+
+\[
+\boxed{
+\text{非実方向}
++
+\text{対向反転の定義}
++
+\text{正定値読出しの定義}
+\Rightarrow
+Q_+
+\qquad[\text{追加構成}]
+}
+\]
+
+である。
+
+ただし、非自明閉鎖条件だけから標準複素共役が唯一に決まることは、本稿では証明しない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{6.
+位相回転への一般化}\label{6-ux4f4dux76f8ux56deux8ee2ux3078ux306eux4e00ux822cux5316}
+
+\subsection{6.1
+四分の一周期閉鎖位相から連続位相への追加構成}\label{61-ux56dbux5206ux306eux4e00ux5468ux671fux9589ux9396ux4f4dux76f8ux304bux3089ux9023ux7d9aux4f4dux76f8ux3078ux306eux8ffdux52a0ux69cbux6210}
+
+最小二成分閉鎖は、
+
+\[
+1,
+\qquad
+i
+\]
+
+という四分の一回転関係を要求する。
+
+ここで、連続性、結合性、可逆性および正定値読出し量の保存を追加条件として、この回転を反復可能な連続群へ拡張すると、
+
+\[
+e^{i\phi}
+\]
+
+による位相回転が得られる。
+
+\[
+e^{i\phi}e^{i\psi}=e^{i(\phi+\psi)}
+\]
+
+連続位相群 \(U(1)\)
+は、非自明閉鎖条件だけからの帰結ではない。本稿では追加条件として、
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  回転が連続であること、
+\item
+  合成が結合的であること、
+\item
+  逆変換が存在すること、
+\item
+  正定値読出し量を保存すること、
+\end{enumerate}
+
+を置き、その一パラメータ保存群として単位円位相を採用する。
+
+\subsection{6.2
+実二次元表示}\label{62-ux5b9fux4e8cux6b21ux5143ux8868ux793a}
+
+複素数を用いず、実二次元回転として
+
+\section{\$\$ R(\textbackslash phi)}\label{-rphi}
+
+\textbackslash begin\{pmatrix\}
+\textbackslash cos\textbackslash phi\&-\textbackslash sin\textbackslash phi\textbackslash{}
+\textbackslash sin\textbackslash phi\&\textbackslash cos\textbackslash phi
+\textbackslash end\{pmatrix\} \$\$
+
+と書くこともできる。
+
+このとき、
+
+\[
+R(\phi)^TR(\phi)=I
+\]
+
+であり、実二次元ノルムを保存する。
+
+したがって、複素位相は実二次元回転の圧縮表現とみなせる。
+
+本稿において本質的なのは、虚数記号そのものではなく、
+
+\begin{quote}
+二乗閉鎖が要求する非実方向を、可逆でノルム保存的な回転自由度として拡張すること
+\end{quote}
+
+である。
+
+\subsection{6.3
+有限位数位相}\label{63-ux6709ux9650ux4f4dux6570ux4f4dux76f8}
+
+回転が有限回で初期状態へ戻る条件は、
+
+\[
+R(\phi)^n=I
+\]
+
+または複素表示で、
+
+\[
+\zeta^n=1
+\]
+
+である。
+
+したがって、
+
+\[
+\zeta=e^{-2\pi im/n}
+\]
+
+と書ける。
+
+この整数比位相は、連続位相空間内の離散閉軌道を与える。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{7.
+交換対称二チャネル系への接続}\label{7-ux4ea4ux63dbux5bfeux79f0ux4e8cux30c1ux30e3ux30cdux30ebux7cfbux3078ux306eux63a5ux7d9a}
+
+\subsection{7.1
+二チャネル交換}\label{71-ux4e8cux30c1ux30e3ux30cdux30ebux4ea4ux63db}
+
+A/B二チャネルの交換作用素を、
+
+\[
+X=
+\begin{pmatrix}
+0&1\\
+1&0
+\end{pmatrix}
+\]
+
+とする。
+
+対称および反対称射影は、
+
+\[
+P_s=\frac{I+X}{2},
+\qquad
+P_a=\frac{I-X}{2}
+\]
+
+である。
+
+交換対称な保存写像 \(U\) に、
+
+\[
+[U,X]=0
+\]
+
+を課すと、\(U\) は対称・反対称部分空間を混合しない。
+
+\subsection{7.2
+位相固定表示}\label{72-ux4f4dux76f8ux56faux5b9aux8868ux793a}
+
+正定値読出し量を保存する線形可逆写像としてユニタリ表示を採用すると、全体位相を除いて、
+
+\[
+\boxed{
+U=P_s+\zeta P_a,
+\qquad |\zeta|=1
+}
+\]
+
+と書ける。
+
+ここで、
+
+\begin{itemize}
+\tightlist
+\item
+  対称成分は固定される。
+\item
+  反対称成分だけが位相回転する。
+\end{itemize}
+
+この構造は、非自明二乗閉鎖が要求した非実方向を、二チャネル交換系の反対称自由度へ配置する\textbf{構成仮説}である。
+
+\subsubsection{接続課題C2：二乗閉鎖面の動的非保存}\label{ux63a5ux7d9aux8ab2ux984cc2ux4e8cux4e57ux9589ux9396ux9762ux306eux52d5ux7684ux975eux4fddux5b58}
+
+ここで、非自明二乗閉鎖と交換力学の間に残る接続問題を明示する。二チャネル状態を
+
+\[
+x=(A,B)^T,
+\qquad
+Q_0(x)=x^Tx=A^2+B^2
+\]
+
+と書く。交換核
+
+\[
+U=P_s+\zeta P_a
+\]
+
+に対して、\(P_sP_a=0\)、\(P_s^T=P_s\)、\(P_a^T=P_a\) なので、
+
+\[
+U^TU=P_s+\zeta^2P_a
+\]
+
+である。したがって、
+
+\section{\$\$ \textbackslash boxed\{ Q\_0(Ux)}\label{-boxed-q_0ux}
+
+x\^{}T(P\_s+\textbackslash zeta\^{}2P\_a)x \} \$\$
+
+となる。実際、閉鎖面上の非自明点
+
+\[
+x_0=(1,i)^T,
+\qquad
+Q_0(x_0)=1+i^2=0
+\]
+
+に対して、
+
+\[
+\boxed{
+Q_0(Ux_0)=i(1-\zeta^2)
+}
+\]
+
+である。したがって \(\zeta^2\neq1\) なら、\(Ux_0\)
+は閉鎖面から外れる。また、全状態に対して
+
+\[
+Q_0(Ux)=Q_0(x)
+\]
+
+を満たすのは、この交換核では \(\zeta^2=1\)
+の場合である。したがって、一般の有限位数根を持つ既報の交換核は、非自明二乗閉鎖面
+\(Q_0=0\) 上の自己写像ではない。
+
+本稿は、既報の交換核が \(Q_0=0\)
+を直接保存すると主張しない。閉鎖面を保存する交換写像、閉鎖面への射影規則、または閉鎖条件を保つ拡大状態空間の構成を\textbf{接続課題C2}とする。これは有限位数交換定理の正否とは独立した、第一公理と交換力学を動的に結ぶための未解決課題である。
+
+\subsection{7.3
+チャネル基底への復元}\label{73-ux30c1ux30e3ux30cdux30ebux57faux5e95ux3078ux306eux5fa9ux5143}
+
+A/B基底へ戻すと、
+
+\section{\$\$ U}\label{-u}
+
+\textbackslash frac12 \textbackslash begin\{pmatrix\}
+1+\textbackslash zeta\&1-\textbackslash zeta\textbackslash{}
+1-\textbackslash zeta\&1+\textbackslash zeta
+\textbackslash end\{pmatrix\} \$\$
+
+であり、
+
+\[
+\boxed{
+r=\frac{1+\zeta}{2},
+\qquad
+t=\frac{1-\zeta}{2}
+}
+\]
+
+となる。
+
+この和と差は、固定された対称位相 \(1\) と、回転する反対称位相 \(\zeta\)
+の干渉である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{8.
+有限位数閉包と離散Born型重み}\label{8-ux6709ux9650ux4f4dux6570ux9589ux5305ux3068ux96e2ux6563bornux578bux91cdux307f}
+
+\subsection{8.1
+有限位数条件}\label{81-ux6709ux9650ux4f4dux6570ux6761ux4ef6}
+
+位相固定後の作用素が \(n\) 回で完全再帰する条件は、
+
+\[
+U^n=I
+\]
+
+である。
+
+これは、
+
+\[
+\zeta^n=1
+\]
+
+と同値である。
+
+基本位数を \(n\) とし、\(\gcd(m,n)=1\) とすれば、
+
+\[
+\zeta=e^{-2\pi im/n}
+\]
+
+と書ける。
+
+\subsection{8.2 二乗重み}\label{82-ux4e8cux4e57ux91cdux307f}
+
+A基底入力に対するA/Bチャネル振幅は、
+
+\[
+r_{n,m}=\frac{1+e^{-2\pi im/n}}{2},
+\]
+
+\[
+t_{n,m}=\frac{1-e^{-2\pi im/n}}{2}
+\]
+
+である。
+
+正定値読出しとして絶対値二乗を取ると、
+
+\section{\$\$ \textbar r\_\{n,m\}\textbar\^{}2}\label{-r_nm2}
+
+\section{\textbackslash frac\{1+\textbackslash cos(2\textbackslash pi
+m/n)\}\{2\}}\label{frac1cos2pi-mn2}
+
+\textbackslash cos\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right), \$\$
+
+\section{\$\$ \textbar t\_\{n,m\}\textbar\^{}2}\label{-t_nm2}
+
+\section{\textbackslash frac\{1-\textbackslash cos(2\textbackslash pi
+m/n)\}\{2\}}\label{frac1-cos2pi-mn2}
+
+\textbackslash sin\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right) \$\$
+
+となる。
+
+したがって、
+
+\section{\$\$ \textbackslash boxed\{ R\_\{n,m\}}\label{-boxed-r_nm}
+
+\textbackslash cos\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right) \} \$\$
+
+および、
+
+\section{\$\$ \textbackslash boxed\{ 1-R\_\{n,m\}}\label{-boxed-1-r_nm}
+
+\textbackslash sin\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right) \} \$\$
+
+を得る。
+
+\textbf{定理8.1（追加条件下の有限位数交換重み）}\\
+二チャネル線形写像 \(U\) に対して、次を置く。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(U\) は正定値読出し量 \(Q_+\) を保存する可逆写像である。
+\item
+  \(U\) は交換作用素 \(X\) と可換である。
+\item
+  全体位相を固定し、対称セクターの固有値を \(1\) とする。
+\item
+  \(U^n=I\) であり、反対称セクターの基本位数を \(n\) とする。
+\item
+  A/Bチャネル重みを振幅の正定値二乗読出しで定義する。
+\end{enumerate}
+
+このとき、互いに素な整数 \(m,n\) に対して、
+
+\[
+U=P_s+e^{-2\pi im/n}P_a
+\]
+
+であり、A基底入力のA/Bチャネル重みは、
+
+\[
+\boxed{
+R_{n,m}=\cos^2\left(\frac{\pi m}{n}\right),
+\qquad
+1-R_{n,m}=\sin^2\left(\frac{\pi m}{n}\right)
+}
+\]
+
+となる。
+
+\emph{証明}：条件1--3から \(U=P_s+\zeta P_a\)、\(|\zeta|=1\)
+を得る。条件4から \(\zeta^n=1\)、したがって \(\zeta=e^{-2\pi im/n}\)
+である。A/B基底へ戻すと振幅は \((1\pm\zeta)/2\)
+であり、条件5の正定値二乗読出しにより上式を得る。\(\square\)
+
+この定理は既報の有限位数交換定理を、本稿が単独で読める形に再掲したものである。非自明二乗閉鎖は条件1--5そのものを導出するのではなく、複素位相表示に必要な非実方向を与える。非自明閉鎖面と
+\(U\) の動的接続はC2であり、本定理の前提には含めない。
+
+\subsection{8.3 根源的解釈}\label{83-ux6839ux6e90ux7684ux89e3ux91c8}
+
+既報では、上式は交換対称ユニタリ核の有限位数定理として得られた。
+
+本稿では、そのさらに前段を、
+
+\[
+\boxed{
+\sum_kx_k^2=0
+}
+\]
+
+という非自明閉鎖から解釈する。
+
+したがって、論理系列は一列の無条件含意ではなく、次の四層に分類される。
+
+\[
+\boxed{
+\begin{aligned}
+&\text{非自明二乗閉鎖}
+\Rightarrow
+\text{平方根 }-1\text{ の方向}
+&&[\text{導出}]\\
+&\text{非実方向}
++
+\{\text{連続性・可逆性・}Q_+\text{保存}\}
+\longrightarrow
+U(1)\text{ 位相回転}
+&&[\text{追加構成}]\\
+&U(1)\text{ 位相}
++
+\text{交換対称性}
++
+\text{有限位数}
++
+\text{二乗読出し}
+\Rightarrow
+\text{離散Born型重み}
+&&[\text{条件付き導出}]\\
+&Q_0=0\text{ と交換核 }U\text{ の動的接続}
+&&[\text{接続課題C2}]
+\end{aligned}
+}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{9.
+Born則との位置関係}\label{9-bornux5247ux3068ux306eux4f4dux7f6eux95a2ux4fc2}
+
+\subsection{9.1
+何が説明されたか}\label{91-ux4f55ux304cux8aacux660eux3055ux308cux305fux304b}
+
+本稿と既報を合わせると、次が説明される。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  非自明な二乗和ゼロは、実数だけでは成立しない。〔導出〕
+\item
+  最小二成分閉鎖は、平方が \(-1\) となる方向を要求する。〔導出〕
+\item
+  その方向は四分の一回転として表現できる。〔標準的幾何解釈〕
+\item
+  連続性、可逆性および \(Q_+\)
+  保存を加えて位相回転へ拡張する。〔追加構成〕
+\item
+  交換対称二チャネル系の反対称セクターに位相を配置する。〔構成仮説〕
+\item
+  有限位数条件は位相を整数比へ離散化する。〔条件付き導出〕
+\item
+  A/B基底へ戻した干渉振幅の二乗重みは \(\cos^2/\sin^2\)
+  となる。〔条件付き導出〕
+\end{enumerate}
+
+この意味で、本稿はBorn型重みの前段に、
+
+\[
+\text{非自明二乗閉鎖}
+\]
+
+という根源候補を与える。
+
+\subsection{9.2
+何がまだ説明されていないか}\label{92-ux4f55ux304cux307eux3060ux8aacux660eux3055ux308cux3066ux3044ux306aux3044ux304b}
+
+本稿は、次を証明していない。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  標準量子力学のBorn則全体。
+\item
+  なぜ正定値読出し量を実験頻度と同一視できるか。
+\item
+  単一試行のA/B選択がどのように生じるか。
+\item
+  多数回頻度が \(|r|^2\) と \(|t|^2\) に収束すること。
+\item
+  複素数体が唯一の拡張であること。
+\item
+  標準複素共役が非自明二乗閉鎖だけから一意に導かれること。
+\item
+  ユニタリ群が追加条件なしに一意に導かれること。
+\item
+  任意次元の射影測度。
+\item
+  既報の交換核が非自明二乗閉鎖面 \(Q_0=0\) を保存すること。
+\end{enumerate}
+
+したがって、本稿の結論は、
+
+\begin{quote}
+Born則を完全に導出した
+\end{quote}
+
+ではない。
+
+より正確には、
+
+\begin{quote}
+非自明二乗閉鎖は複素位相構造の必要性を与え、交換対称有限位数系へ接続すると、離散Born型二乗重みが得られる
+\end{quote}
+
+である。
+
+\subsection{9.3
+循環性に対する意味}\label{93-ux5faaux74b0ux6027ux306bux5bfeux3059ux308bux610fux5473}
+
+通常の循環的な説明は、
+
+\[
+\text{複素振幅}
+\rightarrow
+\text{共役積}
+\rightarrow
+\cos^2
+\]
+
+である。
+
+本稿の構成は、
+
+\[
+\text{非自明二乗閉鎖}
+\rightarrow
+\text{虚数方向}
+\rightarrow
+\text{位相回転}
+\rightarrow
+\text{有限閉包}
+\rightarrow
+\text{チャネル振幅}
+\rightarrow
+\text{二乗読出し}
+\]
+
+である。
+
+この構成で入力として残るのは、
+
+\begin{itemize}
+\tightlist
+\item
+  正定値読出し \(Q_+\)、
+\item
+  その読出しをチャネル重みとして採用すること、
+\item
+  その重みを実験頻度へ接続するための追加の物理過程、
+\end{itemize}
+
+である。したがって、本稿は二乗ノルムそのものの起源またはBorn頻度則を導出していない。
+
+一方、本稿が導出または条件付きで決定したのは、
+
+\begin{itemize}
+\tightlist
+\item
+  非自明二乗閉鎖が非実方向を要求すること、
+\item
+  有限位数条件が位相を整数比へ選別すること、
+\item
+  その位相を交換対称なA/B基底へ射影すると離散的な \(\cos^2/\sin^2\)
+  重みになること、
+\end{itemize}
+
+である。したがって、除去された入力は「非実方向を外から与えること」と「閉じる位相角を外から選ぶこと」であり、残された入力は正定値二乗読出しと頻度解釈である。この区別が、本稿の非循環的な導出範囲を正確に定める。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{10.
+閉鎖系仮定の意味}\label{10-ux9589ux9396ux7cfbux4eeeux5b9aux306eux610fux5473}
+
+\subsection{10.1
+「閉鎖」の定義}\label{101-ux9589ux9396ux306eux5b9aux7fa9}
+
+本稿でいう閉鎖は、空間的に外界から完全隔離された物理容器を直ちに意味しない。
+
+最小の意味は、
+
+\[
+\sum_kx_k^2=0
+\]
+
+という関係式が、対象とする成分集合の内部で完結していることである。
+
+したがって、閉鎖とは、
+
+\begin{quote}
+対象とする登録量の総和を評価するために、系外の未定義成分を必要としない
+\end{quote}
+
+という代数的閉鎖である。
+
+\subsection{10.2
+物理的閉鎖との区別}\label{102-ux7269ux7406ux7684ux9589ux9396ux3068ux306eux533aux5225}
+
+代数的閉鎖と、熱力学的・因果的・実験的閉鎖は異なる。
+
+本稿は、現実の量子実験系が完全に外界から隔離されていると主張しない。
+
+むしろ、有限時間・有限自由度の有効モデルにおいて、
+
+\begin{itemize}
+\tightlist
+\item
+  対象チャネル、
+\item
+  観測装置、
+\item
+  環境、
+\end{itemize}
+
+を含めた拡大系を取れば、その内部に閉鎖関係を設定できる可能性を検討する。
+
+\subsection{10.3
+なぜ別論文とするか}\label{103-ux306aux305cux5225ux8ad6ux6587ux3068ux3059ux308bux304b}
+
+既報の有限位数交換定理は、標準的なユニタリ作用素論だけで成立する。
+
+一方、本稿の非自明二乗閉鎖は、数体系と物理的閉鎖の意味に関する根源的仮定を含む。
+
+この二つを一つの論文へ混在させると、有限位数定理の正否と、閉鎖公理の物理的妥当性が混同される。
+
+したがって本稿は、既報を変更せず、追加解釈として独立に提示する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{11.
+反証可能な検証課題}\label{11-ux53cdux8a3cux53efux80fdux306aux691cux8a3cux8ab2ux984c}
+
+\subsection{11.1
+実数表示による再構成}\label{111-ux5b9fux6570ux8868ux793aux306bux3088ux308bux518dux69cbux6210}
+
+複素数記号を一切使わず、実二次元回転だけで、
+
+\[
+\sum_kx_k^2=0
+\]
+
+から交換系の有限位数重みまでを再構成する。
+
+これにより、結果が複素表記の記号操作に依存していないことを確認する。
+
+\subsection{11.2
+保存形式の比較}\label{112-ux4fddux5b58ux5f62ux5f0fux306eux6bd4ux8f03}
+
+次の三条件を比較する。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  共役なし二乗閉鎖 \(Q_0(x)=\sum x_k^2\)。
+\item
+  正定値ノルム \(Q_+(x)=\sum|x_k|^2\)。
+\item
+  不定計量形式 \(Q_G(x)=x^TGx\)。
+\end{enumerate}
+
+どの形式が、既報の交換核と同じ有限位数系列を最小仮定で生成するかを検証する。
+
+\subsection{11.3
+共役写像の一意性}\label{113-ux5171ux5f79ux5199ux50cfux306eux4e00ux610fux6027}
+
+非実方向を反転し、正定値読出しを与える写像について、
+
+\begin{itemize}
+\tightlist
+\item
+  加法性、
+\item
+  乗法順序、
+\item
+  反転性、
+\item
+  実数固定性、
+\end{itemize}
+
+を課したとき、標準複素共役が一意に得られるかを検討する。
+
+\subsection{11.4
+保存群の導出}\label{114-ux4fddux5b58ux7fa4ux306eux5c0eux51fa}
+
+非自明閉鎖集合
+
+\section{\$\$ \textbackslash mathcal C}\label{-mathcal-c}
+
+\textbackslash left\{x\textbackslash neq0\textbackslash mid\textbackslash sum\_kx\_k\^{}2=0\textbackslash right\}
+\$\$
+
+を保存する線形写像群を分類する。
+
+そのうち、追加の正定値読出しを保存する部分群が、どの条件で直交群またはユニタリ群となるかを明確化する。
+
+\subsection{11.5
+頻度則への接続}\label{115-ux983bux5ea6ux5247ux3078ux306eux63a5ux7d9a}
+
+有限位数交換重み
+
+\section{\$\$ R\_\{n,m\}}\label{-r_nm}
+
+\textbackslash cos\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right) \$\$
+
+に対して、観測反作用および位相揺らぎを導入した多数回試行を行い、
+
+\[
+f_A\to R_{n,m},
+\qquad
+f_B\to1-R_{n,m}
+\]
+
+となる条件を調べる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{12. 考察}\label{12-ux8003ux5bdf}
+
+\subsection{12.1
+虚数は閉鎖のための方向である}\label{121-ux865aux6570ux306fux9589ux9396ux306eux305fux3081ux306eux65b9ux5411ux3067ux3042ux308b}
+
+本稿の最も単純な帰結は、
+
+\[
+\sum_kx_k^2=0
+\]
+
+に非自明解を要求すると、実数だけでは不可能であることである。
+
+二成分では、
+
+\[
+y=\pm ix
+\]
+
+が必然的に得られる。
+
+したがって虚数は、実数に対して追加された恣意的な記号ではなく、二乗閉鎖を非自明に成立させるための最小対向方向と解釈できる。
+
+\subsection{12.2
+共役は閉鎖ではなく読出しに属する}\label{122-ux5171ux5f79ux306fux9589ux9396ux3067ux306fux306aux304fux8aadux51faux3057ux306bux5c5eux3059ux308b}
+
+非自明閉鎖式には共役は不要である。
+
+\[
+x^2+y^2=0
+\]
+
+だけで平方根 \(-1\) の方向は要求される。
+
+共役は、その非実方向を反転して、
+
+\[
+z^*z
+\]
+
+という正定値量を読む段階で必要になる。
+
+したがって、
+
+\begin{itemize}
+\tightlist
+\item
+  虚数の必要性、
+\item
+  共役の役割、
+\item
+  Born頻度則、
+\end{itemize}
+
+は異なる問題である。
+
+\subsection{12.3
+二種類の閉包が担う役割}\label{123-ux4e8cux7a2eux985eux306eux9589ux5305ux304cux62c5ux3046ux5f79ux5272}
+
+本稿には二種類の閉包が現れるが、両者の役割は同一ではない。
+
+第一は、
+
+\[
+\sum_kx_k^2=0
+\]
+
+という代数的二乗閉鎖である。
+
+第二は、
+
+\[
+\zeta^n=1
+\]
+
+という位相の有限位数閉包である。
+
+第一の閉包が厳密に要求するのは非実方向である。第二の閉包は、追加構成した位相回転の中から整数比位相を選別する。
+
+その位相を交換対称なA/B基底へ戻した干渉振幅が、
+
+\[
+\frac{1\pm\zeta}{2}
+\]
+
+であり、その正定値二乗読出しが、
+
+\[
+\cos^2\left(\frac{\pi m}{n}\right),
+\qquad
+\sin^2\left(\frac{\pi m}{n}\right)
+\]
+
+となる。
+
+したがって、離散Born型重みを直接導く条件は、
+
+\[
+\boxed{
+\text{位相閉包}
++
+\text{交換射影}
++
+\text{正定値二乗読出し}
+\Rightarrow
+\text{離散Born型重み}
+}
+\]
+
+である。非自明二乗閉鎖は、この導出へ投入される複素位相構造の非実方向を根源づける。しかし、第一の閉鎖面を第二の交換力学が保存することは自動的には従わず、その動的接続はC2として残る。
+
+\subsection{12.4
+導出範囲と追加条件}\label{124-ux5c0eux51faux7bc4ux56f2ux3068ux8ffdux52a0ux6761ux4ef6}
+
+本稿が直接導出した中心結果は、複素数を最初から量子論の公理として置かなくても、非自明二乗閉鎖が実数系を越える方向を必要とすることである。
+
+一方、非自明閉鎖から標準量子力学の全数学を一意に導出したとはしない。
+
+特に、
+
+\begin{itemize}
+\tightlist
+\item
+  複素数体、
+\item
+  標準共役、
+\item
+  正定値内積、
+\item
+  ユニタリ群、
+\item
+  Born頻度則、
+\end{itemize}
+
+の間には、まだ追加条件が必要である。
+
+本稿は、この追加条件を隠さず、導出済み部分と解釈的接続を分離する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{13. 結論}\label{13-ux7d50ux8ad6}
+
+本稿は、非自明二乗閉鎖条件
+
+\[
+\boxed{
+\sum_{k=1}^{N}x_k^2=0,
+\qquad
+(x_1,\ldots,x_N)\neq(0,\ldots,0),
+\qquad
+x_k\in K,
+\quad
+\mathbb R\subseteq K
+}
+\]
+
+を出発点とした。
+
+すべての成分が実数なら、各二乗項は非負であるため、上式は自明解しか持たない。したがって、非自明閉鎖の解ベクトルは
+\(\mathbb R^N\)
+の外にある。固定した閉鎖座標では、これは少なくとも一つの成分が非実数であることと同値である。
+
+最小二成分系では、
+
+\[
+x^2+y^2=0,
+\qquad x\neq0
+\]
+
+から、
+
+\[
+\boxed{
+y=\pm ix
+}
+\]
+
+を得る。この結果には複素共役を用いていない。平方根 \(-1\)
+の方向は、非自明二乗和ゼロを成立させるために要求される。
+
+この非実方向に、連続性、可逆性および正定値読出し量の保存を追加して位相回転へ拡張し、さらに交換対称二チャネル系の反対称モードへ配置する構成を採用すると、
+
+\[
+U=P_s+\zeta P_a
+\]
+
+を得る。有限位数条件
+
+\[
+\zeta^n=1
+\]
+
+は、
+
+\[
+\zeta=e^{-2\pi im/n}
+\]
+
+という離散位相を選ぶ。
+
+A/B基底における干渉振幅は、
+
+\[
+r=\frac{1+\zeta}{2},
+\qquad
+t=\frac{1-\zeta}{2}
+\]
+
+であり、正定値二乗読出しを行うと、
+
+\section{\$\$ \textbackslash boxed\{
+\textbar r\textbar\^{}2}\label{-boxed-r2}
+
+\textbackslash cos\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right) \} \$\$
+
+および、
+
+\section{\$\$ \textbackslash boxed\{
+\textbar t\textbar\^{}2}\label{-boxed-t2}
+
+\textbackslash sin\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right) \} \$\$
+
+を得る。
+
+したがって本稿が示した接続は、導出、追加構成および未解決接続を分離すると、
+
+\[
+\boxed{
+\begin{aligned}
+&\text{非自明二乗閉鎖}
+\Rightarrow
+\text{非実方向}
+&&[\text{導出}]\\
+&\text{非実方向}
++
+\text{連続・可逆・}Q_+\text{保存}
+\longrightarrow
+\text{位相回転}
+&&[\text{追加構成}]\\
+&\text{位相回転}
++
+\text{交換対称性}
++
+\text{有限位数}
++
+\text{二乗読出し}
+\Rightarrow
+\text{離散Born型重み}
+&&[\text{条件付き導出}]\\
+&Q_0=0\text{ と交換核の動的接続}
+&&[\text{接続課題C2}]
+\end{aligned}
+}
+\]
+
+である。
+
+本稿はBorn則全体の導出ではない。厳密に導出されたのは、非自明二乗閉鎖が実数だけでは成立せず、最小二成分系に平方根
+\(-1\)
+の方向を必要とすること、および既報の有限位数交換定理と組み合わせれば離散Born型重みを回収できることである。
+
+共役、正定値読出し、ユニタリ性および頻度則の一意的導出に加え、\(Q_0=0\)
+を保存する交換写像または閉鎖面への射影規則の構成が今後の課題である。しかし、複素位相を最初から量子論固有の道具として置くのではなく、非自明な二乗閉鎖の必要条件として位置づけた点に、本稿の中心的な意味がある。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsection{自己引用}\label{ux81eaux5df1ux5f15ux7528}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  木原範昭,
+  「反復交換散乱における有限位数共鳴の発見――微細構造定数137・128近傍ピークの原因特定と再現可能な波束数理モデル」,
+  Version DOI: 10.5281/zenodo.21421367, Concept DOI:
+  10.5281/zenodo.21421366, 2026.
+\item
+  木原範昭,
+  「閉塞二波交換系における最小非自明137セルの第一原理導出――主候補二点・条件付き双対アトラクターと微細構造定数への対応仮説」v3.0,
+  2026. リポジトリ版:
+  \href{../20260717/20260717_complete_paper_v3.md}{\texttt{20260717\_complete\_paper\_v3.md}}.
+\item
+  木原範昭,
+  「反復二チャネル交換系における離散Born型重みの出現――波束局在性移乗・準安定二状態・観測選択から得られた有限位数回帰則」,
+  Version DOI: 10.5281/zenodo.21422471, Concept DOI:
+  10.5281/zenodo.21422470, 2026.
+\item
+  木原範昭,
+  「交換干渉散乱行列フェルミオン的衝突における低局在性・倍音移乗読出し実験仕様書
+  v1」, 2026.
+\item
+  木原範昭,
+  「交換干渉散乱行列フェルミオン的衝突における加速度基底と局在性交換予備実験総括
+  v1」, Zenodo Concept DOI: 10.5281/zenodo.21333766, 2026.
+\item
+  木原範昭,
+  「白猫黒猫灰色猫準安定界面におけるC弱読出しとD強観測選択予備実験総括
+  v1」, Zenodo Concept DOI: 10.5281/zenodo.21353208, 2026.
+\end{enumerate}
+
+\subsection{外部引用}\label{ux5916ux90e8ux5f15ux7528}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Max Born, ``Zur Quantenmechanik der Stoßvorgänge,'' \emph{Zeitschrift
+  für Physik} \textbf{37}, 863--867 (1926). DOI: 10.1007/BF01397477.
+\item
+  Andrew M. Gleason, ``Measures on the Closed Subspaces of a Hilbert
+  Space,'' \emph{Journal of Mathematics and Mechanics} \textbf{6},
+  885--893 (1957). DOI: 10.1512/iumj.1957.6.56050.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{付録A.
+主張の分類}\label{ux4ed8ux9332a-ux4e3bux5f35ux306eux5206ux985e}
+
+{\def\LTcaptype{none} % do not increment counter
+\small
+\begin{longtable}[]{@{}p{0.54\linewidth}p{0.39\linewidth}@{}}
+\toprule\noalign{}
+主張 & 分類 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\sum_kx_k^2=0\) に非自明解を要求する & 本稿の第一公理 \\
+実数成分だけでは \(\sum_kx_k^2=0\) の非自明解は存在しない &
+導出済み命題 \\
+非自明解ベクトルは \(K^N\setminus\mathbb R^N\) に属する &
+導出済み命題 \\
+固定した閉鎖座標では少なくとも一つの成分が非実数となる &
+上記命題の同値な成分表示 \\
+二成分系 \(x^2+y^2=0\) では \(y/x\) が \(-1\) の平方根となる &
+導出済み命題 \\
+二成分非自明閉鎖が生成する最小部分体は \(\mathbb R(i)\cong\mathbb C\) &
+導出済み帰結 \\
+\(-1\) の平方根を \(i\) と記せば \(y=\pm ix\) & 導出済み帰結 \\
+\(\pm i\) を四分の一回転として読む & 標準的幾何解釈 \\
+非実方向を連続位相群 \(U(1)\) へ拡張する &
+連続性・可逆性・保存性を加えた構成 \\
+非自明二乗閉鎖から標準複素共役が一意に導かれる & 未導出 \\
+非自明二乗閉鎖からユニタリ群が一意に導かれる & 未導出 \\
+交換対称有限位数核が離散Born型重みを与える & 既報で導出済み \\
+既報の交換核が非自明二乗閉鎖面 \(Q_0=0\) を保存する &
+一般には不成立。接続課題C2 \\
+非自明二乗閉鎖が複素位相構造の物理的起源である & 根源的解釈仮説 \\
+離散Born型重みが実験頻度を与える & 未検証 \\
+Born則全体を導出した & 未導出 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{付録B.
+最小導出系列}\label{ux4ed8ux9332b-ux6700ux5c0fux5c0eux51faux7cfbux5217}
+
+\subsection{B.1 非自明閉鎖}\label{b1-ux975eux81eaux660eux9589ux9396}
+
+\[
+\sum_{k=1}^{N}x_k^2=0,
+\qquad
+(x_1,\ldots,x_N)\neq(0,\ldots,0),
+\qquad
+x_k\in K,
+\qquad
+\mathbb R\subseteq K.
+\]
+
+\subsection{B.2
+実数だけでは不可能}\label{b2-ux5b9fux6570ux3060ux3051ux3067ux306fux4e0dux53efux80fd}
+
+\[
+x_k\in\mathbb R
+\quad\Longrightarrow\quad
+x_k^2\ge0.
+\]
+
+したがって、
+
+\[
+\sum_kx_k^2=0
+\quad\Longrightarrow\quad
+x_k=0\ \forall k.
+\]
+
+非自明解なら、まずベクトル表示で、
+
+\[
+\mathbf{x}\in K^N\setminus\mathbb R^N.
+\]
+
+固定した閉鎖座標での同値な成分表示は、
+
+\[
+\exists j:\ x_j\notin\mathbb R
+\]
+
+\subsection{B.3
+二成分最小系}\label{b3-ux4e8cux6210ux5206ux6700ux5c0fux7cfb}
+
+\[
+x^2+y^2=0,
+\qquad x\neq0,
+\]
+
+より、
+
+\[
+\left(\frac{y}{x}\right)^2=-1.
+\]
+
+平方根 \(-1\) を \(i\) と記せば、
+
+\[
+y=\pm ix.
+\]
+
+\subsection{B.4
+追加構成と位相閉包}\label{b4-ux8ffdux52a0ux69cbux6210ux3068ux4f4dux76f8ux9589ux5305}
+
+以下は非自明二乗閉鎖だけからの直接帰結ではない。連続性、可逆性、正定値読出し量の保存および交換対称性を追加し、非実方向を反対称セクターの位相
+\(\zeta\) として表現する。この追加構成に有限位数条件を課すと、
+
+\[
+\zeta^n=1
+\quad\Longrightarrow\quad
+\zeta=e^{-2\pi im/n}.
+\]
+
+\subsection{B.5 交換射影}\label{b5-ux4ea4ux63dbux5c04ux5f71}
+
+\section{\$\$ U=P\_s+\textbackslash zeta P\_a}\label{-up_szeta-p_a}
+
+\textbackslash frac12 \textbackslash begin\{pmatrix\}
+1+\textbackslash zeta\&1-\textbackslash zeta\textbackslash{}
+1-\textbackslash zeta\&1+\textbackslash zeta
+\textbackslash end\{pmatrix\}. \$\$
+
+\subsection{B.6
+離散Born型重み}\label{b6-ux96e2ux6563bornux578bux91cdux307f}
+
+\[
+r=\frac{1+\zeta}{2},
+\qquad
+t=\frac{1-\zeta}{2},
+\]
+
+したがって、
+
+\section{\$\$ \textbackslash boxed\{
+\textbar r\textbar\^{}2}\label{-boxed-r2-1}
+
+\textbackslash cos\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right) \} \$\$
+
+\section{\$\$ \textbackslash boxed\{
+\textbar t\textbar\^{}2}\label{-boxed-t2-1}
+
+\textbackslash sin\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right) \} \$\$
+
+となる。
+
+なお、一般の \(\zeta\) に対して交換核は \(Q_0=0\)
+を保存しない。非自明閉鎖面と交換核の動的接続はC2である。
+
+\end{document}

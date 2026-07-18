@@ -1,0 +1,2063 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+  10pt]{article}
+\usepackage{xcolor}
+\usepackage[margin=22mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{Complex Phase Structure Emerging from Nontrivial Quadratic
+Closure}\label{complex-phase-structure-emerging-from-nontrivial-quadratic-closure}
+
+\subsection{A Foundational Connection to Finite-Order Exchange Systems
+and Discrete Born-Type
+Weights}\label{a-foundational-connection-to-finite-order-exchange-systems-and-discrete-born-type-weights}
+
+\textbf{Version:} English complete manuscript v1\\
+\textbf{Date:} July 18, 2026\\
+\textbf{Author:} Noriaki Kihara\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Version DOI:} 10.5281/zenodo.21422506\\
+\textbf{Concept DOI:} 10.5281/zenodo.21422505\\
+\textbf{Position in the series:} Additional interpretive paper deriving
+from the quadratic-closure axiom in the Wave Information Readout series
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+This paper aims to provide a more foundational interpretation of the
+previously reported result that finite-order closure of an
+exchange-symmetric two-channel unitary operator yields the discrete
+Born-type weights
+
+\[
+R_{n,m}=\cos^2\left(\frac{\pi m}{n}\right),
+\qquad
+1-R_{n,m}=\sin^2\left(\frac{\pi m}{n}\right).
+\]
+
+``Closure'' in this paper does not mean a thermodynamically closed
+system isolated from the outside world. It means \textbf{algebraic
+quadratic closure}: the conjugation-free algebraic quadratic form
+\(Q_0(x)=\sum_kx_k^2\) closes nontrivially to zero.
+
+The preceding paper treated exchange symmetry, unitarity, and the
+finite-order condition within standard complex linear algebra. Here,
+instead, we take as a minimal axiom over a commutative field \(K\)
+containing the real field \(\mathbb R\) the nontrivial quadratic-closure
+condition
+
+\[
+\boxed{
+\sum_{k=1}^{N}x_k^2=0,
+\qquad
+(x_1,\ldots,x_N)\neq(0,\ldots,0),
+\qquad
+x_k\in K,
+\qquad
+\mathbb R\subseteq K
+}.
+\]
+
+If every component were real, each term would be nonnegative and the
+equation would have no nontrivial solution. The solution vector
+\(\mathbf{x}:=(x_1,\ldots,x_N)\) must therefore lie outside
+\(\mathbb R^N\); equivalently, at least one component is nonreal. In the
+minimal two-component system
+
+\[
+x^2+y^2=0,
+\qquad x\neq0,
+\]
+
+we have
+
+\[
+\left(\frac{y}{x}\right)^2=-1.
+\]
+
+Writing an element whose square is \(-1\) as \(i\) gives
+
+\[
+y=\pm ix.
+\]
+
+The imaginary unit is not introduced externally to describe phase; it is
+required as the minimal extension direction that permits a nontrivial
+sum of squares to close to zero.
+
+We interpret this nonreal direction as a quarter turn. With continuity,
+reversibility, and preservation of a positive-definite readout quantity
+added as further conditions, it is extended to a general phase rotation
+and connected to independently imposed exchange symmetry, the
+finite-order condition
+
+\[
+\zeta^n=1,
+\]
+
+and the exchange-symmetric channel projections
+
+\[
+r=\frac{1+\zeta}{2},
+\qquad
+t=\frac{1-\zeta}{2}.
+\]
+
+For the finite-order root \(\zeta=e^{-2\pi im/n}\), taking squared
+weights as a positive-definite readout recovers the previously reported
+discrete Born-type sequence.
+
+The rigorous derivation in this paper extends through the result that a
+nontrivial zero sum of squares cannot be formed from real numbers alone
+and that the minimal two-component system requires a
+square-root-of-minus-one direction. The subsequent progression to
+complex phase, an exchange-symmetric unitary representation, and
+Born-type weights uses additional conditions: continuity, linearity,
+reversibility, exchange symmetry, preservation of a positive-definite
+readout, and squared readout. This paper is therefore not a derivation
+of the complete Born rule. It classifies as derivation, additional
+construction, and unresolved connection the relation between the nonreal
+direction required by nontrivial quadratic closure and the finite-order
+exchange theorem reported previously.
+
+\textbf{Keywords:} quadratic closure, imaginary number, complex phase,
+exchange symmetry, finite-order recurrence, Born rule, squared weight,
+closed system, unitary operator
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{1. Background and Objective}\label{1-background-and-objective}
+
+\subsection{1.1 The Problem}\label{11-the-problem}
+
+In standard quantum mechanics, states are represented as complex
+vectors, time evolution is described by unitary operators, and
+observation probabilities are given by squared amplitude magnitudes:
+
+\[
+P(A)=|\langle A|\psi\rangle|^2.
+\]
+
+For a two-state system,
+
+\section{\$\$
+\textbar\textbackslash psi\textbackslash rangle}\label{-psirangle}
+
+\textbackslash cos\textbackslash phi,\textbar A\textbackslash rangle +
+e\^{}\{i\textbackslash chi\}\textbackslash sin\textbackslash phi,\textbar B\textbackslash rangle,
+\$\$
+
+we have
+
+\[
+P(A)=\cos^2\phi,
+\qquad
+P(B)=\sin^2\phi.
+\]
+
+If complex numbers, conjugation, a positive-definite inner product,
+unitarity, and squared magnitudes are all assumed together before the
+\(\cos^2\) form is obtained, however, the origin of that square law may
+not have been explained. Once complex amplitudes and conjugate products
+have been adopted, two-state projections are already constrained
+geometrically to have a \(\cos^2/\sin^2\) form.
+
+The preceding paper, ``Emergence of Discrete Born-Type Weights in
+Iterated Two-Channel Exchange Systems,'' did not take the Born rule as a
+numerical search target. It discovered discrete Born-type weights
+associated with finite-order recurrence in a model family addressing
+wave-packet localization transfer, metastable two-state dynamics, weak
+readout, and strong-observation selection. Its central result was that,
+up to an overall phase, an exchange-symmetric two-channel unitary
+operator can be written
+
+\[
+U=P_s+\zeta P_a,
+\qquad |\zeta|=1,
+\]
+
+and that when the finite-order condition
+
+\[
+U^n=I
+\]
+
+selects
+
+\[
+\zeta=e^{-2\pi im/n},
+\]
+
+the channel weight is
+
+\section{\$\$
+\textbackslash left\textbar\textbackslash frac\{1+\textbackslash zeta\}\{2\}\textbackslash right\textbar\^{}2}\label{-leftfrac1zeta2right2}
+
+\textbackslash cos\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right). \$\$
+
+That result explains which phases and which squared weights are selected
+by exact recurrence. A more anterior question nevertheless remains: why
+should complex phase, conjugation, and unitarity be used at all?
+
+\subsection{1.2 Question Addressed in This
+Paper}\label{12-question-addressed-in-this-paper}
+
+This paper asks:
+
+\begin{quote}
+Without taking complex numbers, conjugation, and unitarity as the first
+axioms, how far can one construct the connection from a nontrivial
+quadratic-closure condition to a square-root-of-minus-one direction,
+phase rotation, exchange-symmetric finite-order structure, and discrete
+Born-type weights?
+\end{quote}
+
+We distinguish four layers:
+
+\[
+\boxed{
+\begin{gathered}
+\text{nontrivial quadratic closure}
+\Rightarrow\text{nonreal direction}
+\quad[\text{derived}]\\
+\text{nonreal direction}
++\{\text{continuity, reversibility, }Q_+\text{ preservation}\}\\
+\longrightarrow\text{phase rotation and exchange representation}
+\quad[\text{additional construction}]\\
+\text{exchange symmetry}+\text{finite order}+\text{squared readout}\\
+\Rightarrow\text{discrete Born-type weights}
+\quad[\text{conditional derivation}]\\
+Q_0=0\text{ and the dynamical connection to the exchange kernel}\\
+[\text{connection problem C2}]
+\end{gathered}
+}.
+\]
+
+\subsection{1.3 Division of Roles Between the Two
+Papers}\label{13-division-of-roles-between-the-two-papers}
+
+This paper does not replace the preceding finite-order exchange theorem.
+
+The role of the preceding paper is to derive discrete Born-type weights
+rigorously within standard complex linear algebra from
+
+\[
+[U,X]=0,
+\qquad
+U^\dagger U=I,
+\qquad
+U^n=I.
+\]
+
+The role of the present paper is to show why a nonreal direction and
+phase description are required by the preceding nontrivial closure
+condition
+
+\[
+\sum_kx_k^2=0,
+\]
+
+and thereby to give a foundational interpretation of the mathematical
+structure of the preceding paper.
+
+The relation between the papers is thus
+
+\[
+\boxed{
+\begin{gathered}
+\text{this paper: derives the necessity of a nonreal direction}\\
+\xrightarrow[\text{C2 remains unresolved}]{\text{additional construction}}\\
+\text{preceding paper: derives Born-type weights from finite-order exchange}
+\end{gathered}
+}.
+\]
+
+The preceding paper is permanently available at Concept DOI
+\url{https://doi.org/10.5281/zenodo.21422470}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{2. Axiom of Nontrivial Quadratic
+Closure}\label{2-axiom-of-nontrivial-quadratic-closure}
+
+\subsection{2.1 Axiom}\label{21-axiom}
+
+Let \(K\) be a commutative field containing the real field
+\(\mathbb R\), and let there be finitely many components over it,
+
+\[
+x_k\in K,
+\qquad
+\mathbb R\subseteq K
+\qquad(k=1,\ldots,N).
+\]
+
+We impose
+
+\[
+\boxed{
+\sum_{k=1}^{N}x_k^2=0
+}.
+\]
+
+To exclude the trivial solution alone, we also require
+
+\[
+\boxed{
+(x_1,\ldots,x_N)\neq(0,\ldots,0)
+}.
+\]
+
+We call this the \textbf{nontrivial quadratic-closure condition}.
+
+Axiom A1 in the preceding work corresponds to the sector
+\(K=\mathbb C\). Here we return the starting point to
+\(\mathbb R\subseteq K\) in order to audit whether the conclusion arose
+merely because the complex field had been fixed in advance. After
+showing that two-component nontrivial closure generates a square root of
+\(-1\) within \(K\), we recover the minimal subfield
+\(\mathbb R(i)\cong\mathbb C\).
+
+It is essential that the condition is not
+
+\[
+\sum_k|x_k|^2=0,
+\]
+
+but
+
+\[
+\sum_kx_k^2=0.
+\]
+
+The former is a positive-definite norm using complex conjugation and has
+no nontrivial solution. The latter is a conjugation-free algebraic sum
+of squares and may have nontrivial solutions when the number system is
+extended beyond the reals.
+
+\subsection{2.2 Triviality over the
+Reals}\label{22-triviality-over-the-reals}
+
+Suppose every component is real:
+
+\[
+x_k\in\mathbb R.
+\]
+
+Then
+
+\[
+x_k^2\ge0.
+\]
+
+For
+
+\[
+\sum_{k=1}^{N}x_k^2=0
+\]
+
+to hold, every term must therefore vanish:
+
+\[
+x_1=x_2=\cdots=x_N=0.
+\]
+
+\textbf{Proposition 2.1 (absence of nontrivial real solutions).}\\
+Let \(N\ge1\). For \(x_k\in\mathbb R\), if
+
+\[
+\sum_{k=1}^{N}x_k^2=0,
+\]
+
+then
+
+\[
+x_k=0
+\qquad(k=1,\ldots,N).
+\]
+
+Thus, if nontrivial quadratic closure is required, the solution vector
+lies outside the real vector space \(\mathbb R^N\):
+
+\[
+\boxed{
+\sum_kx_k^2=0,
+\quad
+(x_1,\ldots,x_N)\neq(0,\ldots,0)
+\quad\Longrightarrow\quad
+\mathbf{x}:=(x_1,\ldots,x_N)\in K^N\setminus\mathbb R^N
+}.
+\]
+
+In components, this is equivalent to
+
+\[
+\boxed{
+\exists j:\ x_j\notin\mathbb R
+}.
+\]
+
+\subsection{2.3 Meaning of the
+Proposition}\label{23-meaning-of-the-proposition}
+
+The proposition does not require the entire extension field \(K\) to
+equal the complex field. \(K\) may be an extension larger than
+\(\mathbb C\).
+
+The element \(i:=y/x\) obtained from two-component nontrivial closure
+nevertheless satisfies \(i^2=-1\), so \(K\) contains the subfield
+
+\[
+\mathbb R(i).
+\]
+
+As a field over \(\mathbb R\), this is isomorphic to \(\mathbb C\). The
+minimal commutative field extension obtained by adjoining a square root
+of \(-1\) is therefore the complex field, while the solution vector of
+nontrivial quadratic closure lies outside \(\mathbb R^N\).
+
+In this paper, then, an imaginary number is not introduced arbitrarily
+as a convenient notation for a wave function. It appears as
+
+\begin{quote}
+an extension direction required to close to zero a nontrivial sum of
+squares that cannot close using positive real squares alone.
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{3. The Imaginary Direction in the Minimal Two-Component
+System}\label{3-the-imaginary-direction-in-the-minimal-two-component-system}
+
+\subsection{3.1 Two-Component Closure}\label{31-two-component-closure}
+
+Consider the minimal nontrivial system
+
+\[
+x^2+y^2=0.
+\]
+
+If \(x\neq0\), then
+
+\[
+y^2=-x^2,
+\]
+
+and
+
+\[
+\left(\frac{y}{x}\right)^2=-1.
+\]
+
+Writing an element whose square is \(-1\) as \(i\),
+
+\[
+i^2=-1,
+\]
+
+we obtain
+
+\[
+\boxed{
+y=\pm ix
+}.
+\]
+
+\textbf{Proposition 3.1 (minimal two-component closure).}\\
+In a commutative field extension satisfying \(x^2+y^2=0\) with
+\(x\neq0\), the ratio \(y/x\) is a square root of \(-1\).
+
+No complex conjugation occurs in this proposition.
+
+If \(K\) contains \(\mathbb R\), the minimal subfield generated by
+\(i:=y/x\) is
+
+\[
+\mathbb R(i)\cong\mathbb C.
+\]
+
+Thus, in two-component closure the complex direction appears not as an
+externally supplied phase assumption, but as the minimal field extension
+generated by a nontrivial solution.
+
+\subsection{3.2 Interpretation as a Quarter
+Turn}\label{32-interpretation-as-a-quarter-turn}
+
+In the complex plane, multiplication of a quantity \(x\) along the real
+axis by \(i\) corresponds to a 90-degree rotation:
+
+\[
+x\longmapsto ix.
+\]
+
+Therefore,
+
+\[
+y=\pm ix
+\]
+
+means that the two components are not merely positive or negative values
+on the same line; they point in directions displaced by one quarter of a
+cycle.
+
+We call this relation a \textbf{quarter-period closure phase
+difference}:
+
+\[
+\Delta\phi=\pm\frac{\pi}{2}.
+\]
+
+The phase difference was not assumed first to construct quadratic
+closure. Rather, the nontriviality of quadratic closure requires a
+square-root-of-minus-one direction, whose geometric representation is a
+quarter turn.
+
+\subsection{3.3 Sign and Opposite
+Directions}\label{33-sign-and-opposite-directions}
+
+The two solutions
+
+\[
+y=+ix,
+\qquad
+y=-ix
+\]
+
+have opposite directions of phase rotation:
+
+\[
++\frac{\pi}{2},
+\qquad
+-\frac{\pi}{2}.
+\]
+
+This opposition may be related to the structure later represented by
+complex conjugation.
+
+We do not, however, claim to have derived the uniqueness of the
+conjugation operation from this fact. What is rigorously obtained is
+that a square root of \(-1\) has two signs, providing quarter-period
+closure rotations in opposite directions.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{4. Nonreal Directions in a Multicomponent
+System}\label{4-nonreal-directions-in-a-multicomponent-system}
+
+\subsection{4.1 General Closure
+Equation}\label{41-general-closure-equation}
+
+Consider generally
+
+\[
+\sum_{k=1}^{N}x_k^2=0.
+\]
+
+Suppose at least one component \(x_j\) is nonzero. Since the square of a
+real component is nonnegative, closure cannot be achieved using real
+components alone.
+
+For example, for \(a,b\in\mathbb R\), let
+
+\[
+x_1=a,
+\qquad
+x_2=b,
+\qquad
+x_3=i\sqrt{a^2+b^2}.
+\]
+
+Then
+
+\[
+a^2+b^2+
+\left(i\sqrt{a^2+b^2}\right)^2
+=0.
+\]
+
+This example shows that many registered real squares can be closed by
+the square of a single imaginary direction.
+
+\subsection{4.2 Necessary and Sufficient
+Conditions}\label{42-necessary-and-sufficient-conditions}
+
+The solution vector of nontrivial closure lies outside \(\mathbb R^N\).
+In fixed closure coordinates, this is equivalent to at least one
+component being nonreal.
+
+The following stronger statements, however, do not hold in general:
+
+\begin{itemize}
+\tightlist
+\item
+  that there is exactly one nonreal component,
+\item
+  that a nonreal component is purely imaginary,
+\item
+  that each component separates into either a real or purely imaginary
+  component, or
+\item
+  that the complex field is the only possible extension.
+\end{itemize}
+
+The weaker proposition sufficient for this paper is
+
+\[
+\boxed{
+\text{every solution of nontrivial quadratic closure lies outside }\mathbb R^N
+}.
+\]
+
+This motivates the introduction of nonreal degrees of freedom
+representable as phase or rotation.
+
+\subsection{4.3 Connection to
+Unnamedness}\label{43-connection-to-unnamedness}
+
+If no external name or absolute coordinate is assigned to each component
+\(x_k\), and only the closure condition of the entire system is taken as
+fundamental, then distinctions between components appear not as absolute
+values but as relative allocations and phase relations of the registered
+squares.
+
+From this viewpoint,
+
+\[
+\sum_kx_k^2=0
+\]
+
+does not fix individual components as independent entities; it specifies
+that all components constitute a single closed relational system.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{5. Distinguishing Quadratic Closure from Positive-Definite
+Readout}\label{5-distinguishing-quadratic-closure-from-positive-definite-readout}
+
+\subsection{5.1 Two Kinds of Quadratic
+Form}\label{51-two-kinds-of-quadratic-form}
+
+We clearly distinguish the following two forms.
+
+\subsubsection{Quadratic form defining
+closure}\label{quadratic-form-defining-closure}
+
+\[
+Q_0(x):=\sum_kx_k^2.
+\]
+
+It contains no conjugation.
+
+The nontrivial closure condition is
+
+\[
+Q_0(x)=0,
+\qquad (x_1,\ldots,x_N)\neq(0,\ldots,0).
+\]
+
+\subsubsection{Quadratic form for observation or
+magnitude}\label{quadratic-form-for-observation-or-magnitude}
+
+For complex components, define
+
+\[
+Q_+(x):=\sum_kx_k^*x_k
+=\sum_k|x_k|^2.
+\]
+
+This form is positive definite:
+
+\[
+Q_+(x)\ge0.
+\]
+
+\subsection{5.2 Do Not Confuse the Closure Equation with the Norm
+Equation}\label{52-do-not-confuse-the-closure-equation-with-the-norm-equation}
+
+Nontrivial quadratic closure means
+
+\[
+Q_0(x)=0,
+\]
+
+not
+
+\[
+Q_+(x)=0.
+\]
+
+For a nontrivial state, one ordinarily has
+
+\[
+Q_0(x)=0,
+\qquad
+Q_+(x)>0.
+\]
+
+For the minimal two-component example
+
+\[
+(x,y)=(a,ia),
+\]
+
+we have
+
+\[
+Q_0=a^2+(ia)^2=0,
+\]
+
+but
+
+\[
+Q_+=|a|^2+|ia|^2=2|a|^2>0.
+\]
+
+This distinction means that a zero sum of squares need not be read as a
+state in which all physical quantities have vanished. What vanishes is
+the directional algebraic closure register; the positive-definite
+readout may remain nonzero.
+
+\subsection{5.3 Role of Conjugation}\label{53-role-of-conjugation}
+
+In the construction presented here, conjugation is not a prerequisite
+for the imaginary direction to exist.
+
+The imaginary direction is already required by the nontriviality of
+
+\[
+x^2+y^2=0.
+\]
+
+Conjugation is introduced afterward as an operation that reverses the
+nonreal direction,
+
+\[
+i\longmapsto-i,
+\]
+
+and converts
+
+\[
+z^*z
+\]
+
+into a real, positive-definite readout.
+
+Separating the derived part from the added readout construction, the
+logical order is therefore
+
+\[
+\boxed{
+\text{nontrivial quadratic closure}
+\Rightarrow
+\text{necessity of a nonreal direction}
+\qquad[\text{derived}]
+}
+\]
+
+and
+
+\[
+\boxed{
+\begin{gathered}
+\text{nonreal direction}+\text{definition of the opposing reversal}\\
++\text{definition of positive-definite readout}
+\Rightarrow Q_+\\
+[\text{additional construction}]
+\end{gathered}
+}.
+\]
+
+This paper does not prove that the standard complex conjugation is
+uniquely fixed by the nontrivial closure condition alone.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{6. Generalization to Phase
+Rotation}\label{6-generalization-to-phase-rotation}
+
+\subsection{6.1 Additional Construction from a Quarter-Period Closure
+Phase to Continuous
+Phase}\label{61-additional-construction-from-a-quarter-period-closure-phase-to-continuous-phase}
+
+Minimal two-component closure requires the quarter-turn relation
+
+\[
+1,
+\qquad
+i.
+\]
+
+If continuity, associativity, reversibility, and preservation of a
+positive-definite readout are added as conditions and this rotation is
+extended to an iterable continuous group, one obtains phase rotations by
+
+\[
+e^{i\phi}.
+\]
+
+They satisfy
+
+\[
+e^{i\phi}e^{i\psi}=e^{i(\phi+\psi)}.
+\]
+
+The continuous phase group \(U(1)\) is not a consequence of the
+nontrivial closure condition alone. We additionally require
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  continuity of the rotation,
+\item
+  associativity of composition,
+\item
+  existence of an inverse, and
+\item
+  preservation of the positive-definite readout,
+\end{enumerate}
+
+and adopt the unit-circle phase as the resulting one-parameter
+preservation group.
+
+\subsection{6.2 Real Two-Dimensional
+Representation}\label{62-real-two-dimensional-representation}
+
+Without using complex numbers, the same transformation can be written as
+the real two-dimensional rotation
+
+\section{\$\$ R(\textbackslash phi)}\label{-rphi}
+
+\textbackslash begin\{pmatrix\}
+\textbackslash cos\textbackslash phi\&-\textbackslash sin\textbackslash phi\textbackslash{}
+\textbackslash sin\textbackslash phi\&\textbackslash cos\textbackslash phi
+\textbackslash end\{pmatrix\}. \$\$
+
+Then
+
+\[
+R(\phi)^TR(\phi)=I,
+\]
+
+so the real two-dimensional norm is preserved.
+
+Complex phase can therefore be regarded as a compressed representation
+of real two-dimensional rotation.
+
+The essential element in this paper is not the imaginary symbol itself,
+but
+
+\begin{quote}
+extending the nonreal direction required by quadratic closure into a
+reversible, norm-preserving rotational degree of freedom.
+\end{quote}
+
+\subsection{6.3 Finite-Order Phase}\label{63-finite-order-phase}
+
+The condition that the rotation return to its initial state after
+finitely many iterations is
+
+\[
+R(\phi)^n=I,
+\]
+
+or, in complex notation,
+
+\[
+\zeta^n=1.
+\]
+
+Thus,
+
+\[
+\zeta=e^{-2\pi im/n}.
+\]
+
+This integer-ratio phase gives a discrete closed orbit within the
+continuous phase space.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{7. Connection to an Exchange-Symmetric Two-Channel
+System}\label{7-connection-to-an-exchange-symmetric-two-channel-system}
+
+\subsection{7.1 Two-Channel Exchange}\label{71-two-channel-exchange}
+
+Let the exchange operator for the A/B channels be
+
+\[
+X=
+\begin{pmatrix}
+0&1\\
+1&0
+\end{pmatrix}.
+\]
+
+The symmetric and antisymmetric projectors are
+
+\[
+P_s=\frac{I+X}{2},
+\qquad
+P_a=\frac{I-X}{2}.
+\]
+
+Imposing
+
+\[
+[U,X]=0
+\]
+
+on an exchange-symmetric preserving map \(U\) prevents it from mixing
+the symmetric and antisymmetric subspaces.
+
+\subsection{7.2 Phase-Fixed
+Representation}\label{72-phase-fixed-representation}
+
+If a unitary representation is adopted as a linear reversible map
+preserving the positive-definite readout, then, up to an overall phase,
+
+\[
+\boxed{
+U=P_s+\zeta P_a,
+\qquad |\zeta|=1
+}
+\]
+
+can be written.
+
+Here,
+
+\begin{itemize}
+\tightlist
+\item
+  the symmetric component is fixed, and
+\item
+  only the antisymmetric component undergoes phase rotation.
+\end{itemize}
+
+This is a \textbf{constructive hypothesis} placing the nonreal direction
+required by nontrivial quadratic closure in the antisymmetric degree of
+freedom of the two-channel exchange system.
+
+\subsubsection{Connection Problem C2: Dynamical Nonpreservation of the
+Quadratic-Closure
+Surface}\label{connection-problem-c2-dynamical-nonpreservation-of-the-quadratic-closure-surface}
+
+We now state explicitly the connection problem that remains between
+nontrivial quadratic closure and exchange dynamics. Write the
+two-channel state as
+
+\[
+x=(A,B)^T,
+\qquad
+Q_0(x)=x^Tx=A^2+B^2.
+\]
+
+For the exchange kernel
+
+\[
+U=P_s+\zeta P_a,
+\]
+
+the identities \(P_sP_a=0\), \(P_s^T=P_s\), and \(P_a^T=P_a\) give
+
+\[
+U^TU=P_s+\zeta^2P_a.
+\]
+
+Therefore,
+
+\section{\$\$ \textbackslash boxed\{ Q\_0(Ux)}\label{-boxed-q_0ux}
+
+x\^{}T(P\_s+\textbackslash zeta\^{}2P\_a)x \}. \$\$
+
+For the nontrivial point on the closure surface
+
+\[
+x_0=(1,i)^T,
+\qquad
+Q_0(x_0)=1+i^2=0,
+\]
+
+one finds
+
+\[
+\boxed{
+Q_0(Ux_0)=i(1-\zeta^2)
+}.
+\]
+
+Thus, if \(\zeta^2\neq1\), \(Ux_0\) leaves the closure surface.
+Moreover, this exchange kernel satisfies
+
+\[
+Q_0(Ux)=Q_0(x)
+\]
+
+for every state only when \(\zeta^2=1\). The previously reported
+exchange kernel with general finite-order roots is therefore not a
+self-map of the nontrivial quadratic-closure surface \(Q_0=0\).
+
+This paper does not claim that the preceding exchange kernel directly
+preserves \(Q_0=0\). We designate the construction of an exchange map
+preserving the closure surface, a projection rule back onto that
+surface, or an enlarged state space that preserves the closure condition
+as \textbf{connection problem C2}. This is an open problem concerning a
+dynamical connection between the first axiom and exchange dynamics; it
+is independent of the validity of the finite-order exchange theorem
+itself.
+
+\subsection{7.3 Reconstruction in the Channel
+Basis}\label{73-reconstruction-in-the-channel-basis}
+
+Returning to the A/B basis gives
+
+\section{\$\$ U}\label{-u}
+
+\textbackslash frac12 \textbackslash begin\{pmatrix\}
+1+\textbackslash zeta\&1-\textbackslash zeta\textbackslash{}
+1-\textbackslash zeta\&1+\textbackslash zeta
+\textbackslash end\{pmatrix\}, \$\$
+
+and hence
+
+\[
+\boxed{
+r=\frac{1+\zeta}{2},
+\qquad
+t=\frac{1-\zeta}{2}
+}.
+\]
+
+This sum and difference are the interference between the fixed symmetric
+phase \(1\) and the rotating antisymmetric phase \(\zeta\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{8. Finite-Order Closure and Discrete Born-Type
+Weights}\label{8-finite-order-closure-and-discrete-born-type-weights}
+
+\subsection{8.1 Finite-Order Condition}\label{81-finite-order-condition}
+
+After phase fixing, the condition for the operator to recur exactly
+after \(n\) iterations is
+
+\[
+U^n=I.
+\]
+
+This is equivalent to
+
+\[
+\zeta^n=1.
+\]
+
+If \(n\) is the primitive order and \(\gcd(m,n)=1\), then
+
+\[
+\zeta=e^{-2\pi im/n}.
+\]
+
+\subsection{8.2 Squared Weights}\label{82-squared-weights}
+
+For an A-basis input, the A/B channel amplitudes are
+
+\[
+r_{n,m}=\frac{1+e^{-2\pi im/n}}{2},
+\]
+
+\[
+t_{n,m}=\frac{1-e^{-2\pi im/n}}{2}.
+\]
+
+Taking squared magnitudes as a positive-definite readout gives
+
+\section{\$\$ \textbar r\_\{n,m\}\textbar\^{}2}\label{-r_nm2}
+
+\section{\textbackslash frac\{1+\textbackslash cos(2\textbackslash pi
+m/n)\}\{2\}}\label{frac1cos2pi-mn2}
+
+\textbackslash cos\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right), \$\$
+
+\section{\$\$ \textbar t\_\{n,m\}\textbar\^{}2}\label{-t_nm2}
+
+\section{\textbackslash frac\{1-\textbackslash cos(2\textbackslash pi
+m/n)\}\{2\}}\label{frac1-cos2pi-mn2}
+
+\textbackslash sin\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right). \$\$
+
+Therefore,
+
+\section{\$\$ \textbackslash boxed\{ R\_\{n,m\}}\label{-boxed-r_nm}
+
+\textbackslash cos\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right) \} \$\$
+
+and
+
+\section{\$\$ \textbackslash boxed\{ 1-R\_\{n,m\}}\label{-boxed-1-r_nm}
+
+\textbackslash sin\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right) \} \$\$
+
+are obtained.
+
+\textbf{Theorem 8.1 (finite-order exchange weights under additional
+conditions).}\\
+Let \(U\) be a two-channel linear map satisfying the following
+conditions.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(U\) is an invertible map preserving the positive-definite readout
+  \(Q_+\).
+\item
+  \(U\) commutes with the exchange operator \(X\).
+\item
+  The overall phase is fixed so that the eigenvalue of the symmetric
+  sector is \(1\).
+\item
+  \(U^n=I\), and the primitive order of the antisymmetric sector is
+  \(n\).
+\item
+  The A/B channel weights are defined by a positive-definite squared
+  readout of the amplitudes.
+\end{enumerate}
+
+Then, for coprime integers \(m,n\),
+
+\[
+U=P_s+e^{-2\pi im/n}P_a,
+\]
+
+and the A/B channel weights for an A-basis input are
+
+\[
+\boxed{
+R_{n,m}=\cos^2\left(\frac{\pi m}{n}\right),
+\qquad
+1-R_{n,m}=\sin^2\left(\frac{\pi m}{n}\right)
+}.
+\]
+
+\emph{Proof.} Conditions 1--3 give \(U=P_s+\zeta P_a\) with
+\(|\zeta|=1\). Condition 4 gives \(\zeta^n=1\), and hence
+\(\zeta=e^{-2\pi im/n}\). Returning to the A/B basis gives the
+amplitudes \((1\pm\zeta)/2\), and the positive-definite squared readout
+in condition 5 gives the displayed result. \(\square\)
+
+This theorem restates the finite-order exchange theorem of the preceding
+paper so that the present paper can be read independently. Nontrivial
+quadratic closure does not derive conditions 1--5 themselves; it
+supplies the nonreal direction required for the complex-phase
+representation. The dynamical connection between the nontrivial closure
+surface and \(U\) is C2 and is not included among the assumptions of
+this theorem.
+
+\subsection{8.3 Foundational
+Interpretation}\label{83-foundational-interpretation}
+
+The preceding paper obtained the formulas above as a finite-order
+theorem for an exchange-symmetric unitary kernel.
+
+Here we interpret their more anterior stage through nontrivial closure,
+
+\[
+\boxed{
+\sum_kx_k^2=0
+}.
+\]
+
+The logical sequence is therefore not a single chain of unconditional
+implications, but is classified into four layers:
+
+\[
+\boxed{
+\begin{gathered}
+\text{nontrivial quadratic closure}
+\Rightarrow\text{a square-root-of-minus-one direction}
+\quad[\text{derived}]\\
+\text{nonreal direction}
++\{\text{continuity, reversibility, }Q_+\text{ preservation}\}\\
+\longrightarrow U(1)\text{ phase rotation}
+\quad[\text{additional construction}]\\
+U(1)\text{ phase}+\text{exchange symmetry}+\text{finite order}\\
++\text{squared readout}
+\Rightarrow\text{discrete Born-type weights}
+\quad[\text{conditional derivation}]\\
+Q_0=0\text{ and the dynamical connection to the exchange kernel }U\\
+[\text{connection problem C2}]
+\end{gathered}
+}.
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{9. Relation to the Born
+Rule}\label{9-relation-to-the-born-rule}
+
+\subsection{9.1 What Has Been
+Explained}\label{91-what-has-been-explained}
+
+Taken together, this paper and the preceding paper explain the
+following.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  A nontrivial zero sum of squares cannot be formed from real numbers
+  alone. {[}Derived{]}
+\item
+  Minimal two-component closure requires a direction whose square is
+  \(-1\). {[}Derived{]}
+\item
+  This direction can be represented as a quarter turn. {[}Standard
+  geometric interpretation{]}
+\item
+  Continuity, reversibility, and \(Q_+\) preservation extend it to phase
+  rotation. {[}Additional construction{]}
+\item
+  The phase is placed in the antisymmetric sector of an
+  exchange-symmetric two-channel system. {[}Constructive hypothesis{]}
+\item
+  The finite-order condition discretizes the phase to an integer ratio.
+  {[}Conditional derivation{]}
+\item
+  The squared weights of the interference amplitudes returned to the A/B
+  basis are \(\cos^2/\sin^2\). {[}Conditional derivation{]}
+\end{enumerate}
+
+In this sense, the present paper offers
+
+\[
+\text{nontrivial quadratic closure}
+\]
+
+as a candidate root preceding the Born-type weights.
+
+\subsection{9.2 What Has Not Yet Been
+Explained}\label{92-what-has-not-yet-been-explained}
+
+This paper does not prove
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  the complete Born rule of standard quantum mechanics,
+\item
+  why a positive-definite readout can be identified with an experimental
+  frequency,
+\item
+  how single-trial selection into A or B occurs,
+\item
+  convergence of repeated-trial frequencies to \(|r|^2\) and \(|t|^2\),
+\item
+  that the complex field is the unique possible extension,
+\item
+  that standard complex conjugation is uniquely derived from nontrivial
+  quadratic closure alone,
+\item
+  that the unitary group is uniquely derived without additional
+  conditions,
+\item
+  projection measures in arbitrary dimension, or
+\item
+  that the preceding exchange kernel preserves the nontrivial
+  quadratic-closure surface \(Q_0=0\).
+\end{enumerate}
+
+The conclusion is therefore not
+
+\begin{quote}
+The Born rule has been derived completely.
+\end{quote}
+
+More precisely, it is
+
+\begin{quote}
+Nontrivial quadratic closure necessitates complex-phase structure, and
+when connected to an exchange-symmetric finite-order system, it yields
+discrete Born-type squared weights.
+\end{quote}
+
+\subsection{9.3 Significance for
+Circularity}\label{93-significance-for-circularity}
+
+A conventional circular explanation has the form
+
+\[
+\text{complex amplitude}
+\rightarrow
+\text{conjugate product}
+\rightarrow
+\cos^2.
+\]
+
+The construction here is
+
+\[
+\begin{aligned}
+\text{nontrivial quadratic closure}
+&\rightarrow\text{imaginary direction}
+\rightarrow\text{phase rotation}\\
+&\rightarrow\text{finite closure}
+\rightarrow\text{channel amplitude}
+\rightarrow\text{squared readout}.
+\end{aligned}
+\]
+
+The remaining inputs in this construction are
+
+\begin{itemize}
+\tightlist
+\item
+  the positive-definite readout \(Q_+\),
+\item
+  adoption of that readout as the channel weight, and
+\item
+  an additional physical process connecting that weight to experimental
+  frequency.
+\end{itemize}
+
+This paper therefore does not derive the origin of the squared norm
+itself or the Born frequency law.
+
+What it derives, or determines conditionally, is
+
+\begin{itemize}
+\tightlist
+\item
+  that nontrivial quadratic closure requires a nonreal direction,
+\item
+  that the finite-order condition selects integer-ratio phases, and
+\item
+  that projection of those phases onto an exchange-symmetric A/B basis
+  gives discrete \(\cos^2/\sin^2\) weights.
+\end{itemize}
+
+Thus, the inputs removed are the external provision of a nonreal
+direction and the external selection of the phase angle that closes. The
+inputs remaining are positive-definite squared readout and its frequency
+interpretation. This distinction precisely delimits the noncircular part
+of the derivation.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{10. Meaning of the Closed-System
+Assumption}\label{10-meaning-of-the-closed-system-assumption}
+
+\subsection{10.1 Definition of
+``Closure''}\label{101-definition-of-closure}
+
+Closure in this paper does not immediately mean a physical container
+completely isolated in space from the outside world.
+
+Its minimal meaning is that the relation
+
+\[
+\sum_kx_k^2=0
+\]
+
+is complete within the set of components under consideration.
+
+Thus, closure means
+
+\begin{quote}
+algebraic closure in which no undefined component outside the system is
+needed to evaluate the sum of the registered quantities under
+consideration.
+\end{quote}
+
+\subsection{10.2 Distinction from Physical
+Closure}\label{102-distinction-from-physical-closure}
+
+Algebraic closure is different from thermodynamic, causal, or
+experimental closure.
+
+This paper does not claim that a real quantum experiment is completely
+isolated from the outside world.
+
+It considers instead the possibility that an enlarged effective system
+containing, over finite time and finite degrees of freedom,
+
+\begin{itemize}
+\tightlist
+\item
+  the target channels,
+\item
+  the measurement apparatus, and
+\item
+  the environment
+\end{itemize}
+
+may admit an internal closure relation.
+
+\subsection{10.3 Why This Is a Separate
+Paper}\label{103-why-this-is-a-separate-paper}
+
+The finite-order exchange theorem in the preceding paper holds using
+standard unitary-operator theory alone.
+
+Nontrivial quadratic closure in this paper, by contrast, contains
+foundational assumptions about the number system and the meaning of
+physical closure.
+
+Combining the two in one paper would conflate the validity of the
+finite-order theorem with the physical validity of the closure axiom.
+
+This paper therefore leaves the preceding work unchanged and presents
+the foundational argument independently as an additional interpretation.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{11. Falsifiable Tests}\label{11-falsifiable-tests}
+
+\subsection{11.1 Reconstruction in a Real
+Representation}\label{111-reconstruction-in-a-real-representation}
+
+Reconstruct the route from
+
+\[
+\sum_kx_k^2=0
+\]
+
+to the finite-order weights of the exchange system using only real
+two-dimensional rotations and no complex-number notation.
+
+This would confirm that the result does not depend on symbolic
+manipulations specific to complex notation.
+
+\subsection{11.2 Comparison of Preserved
+Forms}\label{112-comparison-of-preserved-forms}
+
+Compare the following three conditions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  the conjugation-free quadratic closure \(Q_0(x)=\sum x_k^2\),
+\item
+  the positive-definite norm \(Q_+(x)=\sum|x_k|^2\), and
+\item
+  the indefinite-metric form \(Q_G(x)=x^TGx\).
+\end{enumerate}
+
+Determine which form generates the same finite-order sequence as the
+preceding exchange kernel under the fewest assumptions.
+
+\subsection{11.3 Uniqueness of the Conjugation
+Map}\label{113-uniqueness-of-the-conjugation-map}
+
+For a map that reverses a nonreal direction and gives a
+positive-definite readout, examine whether standard complex conjugation
+is determined uniquely when one imposes
+
+\begin{itemize}
+\tightlist
+\item
+  additivity,
+\item
+  multiplicative order,
+\item
+  involutivity, and
+\item
+  fixation of real numbers.
+\end{itemize}
+
+\subsection{11.4 Derivation of the Preservation
+Group}\label{114-derivation-of-the-preservation-group}
+
+Classify the linear transformation group preserving the nontrivial
+closure set
+
+\section{\$\$ \textbackslash mathcal C}\label{-mathcal-c}
+
+\textbackslash left\{x\textbackslash neq0\textbackslash mid\textbackslash sum\_kx\_k\^{}2=0\textbackslash right\}.
+\$\$
+
+Then clarify under which conditions the subgroup that also preserves an
+added positive-definite readout becomes an orthogonal or unitary group.
+
+\subsection{11.5 Connection to the Frequency
+Law}\label{115-connection-to-the-frequency-law}
+
+For the finite-order exchange weights
+
+\section{\$\$ R\_\{n,m\}}\label{-r_nm}
+
+\textbackslash cos\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right), \$\$
+
+perform repeated trials with observational backreaction and phase
+fluctuations, and determine the conditions under which
+
+\[
+f_A\to R_{n,m},
+\qquad
+f_B\to1-R_{n,m}.
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{12. Discussion}\label{12-discussion}
+
+\subsection{12.1 Imaginary Numbers as Directions Required for
+Closure}\label{121-imaginary-numbers-as-directions-required-for-closure}
+
+The simplest consequence of this paper is that requiring a nontrivial
+solution of
+
+\[
+\sum_kx_k^2=0
+\]
+
+is impossible using real numbers alone.
+
+For two components, one necessarily obtains
+
+\[
+y=\pm ix.
+\]
+
+An imaginary number can therefore be interpreted not as an arbitrary
+symbol appended to the real numbers, but as the minimal opposing
+direction required to realize quadratic closure nontrivially.
+
+\subsection{12.2 Conjugation Belongs to Readout, Not to
+Closure}\label{122-conjugation-belongs-to-readout-not-to-closure}
+
+The nontrivial closure equation requires no conjugation.
+
+The square-root-of-minus-one direction is already required by
+
+\[
+x^2+y^2=0.
+\]
+
+Conjugation is needed later, when that nonreal direction is reversed to
+read the positive-definite quantity
+
+\[
+z^*z.
+\]
+
+Thus,
+
+\begin{itemize}
+\tightlist
+\item
+  the necessity of imaginary numbers,
+\item
+  the role of conjugation, and
+\item
+  the Born frequency law
+\end{itemize}
+
+are distinct problems.
+
+\subsection{12.3 Roles of the Two Kinds of
+Closure}\label{123-roles-of-the-two-kinds-of-closure}
+
+Two kinds of closure appear in this paper, but they do not have the same
+role.
+
+The first is the algebraic quadratic closure
+
+\[
+\sum_kx_k^2=0.
+\]
+
+The second is the finite-order phase closure
+
+\[
+\zeta^n=1.
+\]
+
+The first closure rigorously requires a nonreal direction. The second
+selects integer-ratio phases from the phase rotations supplied by the
+additional construction.
+
+Returning that phase to the exchange-symmetric A/B basis gives the
+interference amplitudes
+
+\[
+\frac{1\pm\zeta}{2},
+\]
+
+whose positive-definite squared readouts are
+
+\[
+\cos^2\left(\frac{\pi m}{n}\right),
+\qquad
+\sin^2\left(\frac{\pi m}{n}\right).
+\]
+
+The condition that directly derives the discrete Born-type weights is
+therefore
+
+\[
+\boxed{
+\text{phase closure}
++
+\text{exchange projection}
++
+\text{positive-definite squared readout}
+\Rightarrow
+\text{discrete Born-type weights}
+}.
+\]
+
+Nontrivial quadratic closure provides a foundation for the nonreal
+direction of the complex-phase structure entering this derivation. It
+does not automatically follow, however, that the second exchange
+dynamics preserves the first closure surface; that dynamical connection
+remains problem C2.
+
+\subsection{12.4 Scope of Derivation and Additional
+Conditions}\label{124-scope-of-derivation-and-additional-conditions}
+
+The central result derived directly here is that nontrivial quadratic
+closure requires a direction beyond the real number system, even if
+complex numbers are not postulated initially as an axiom of quantum
+theory.
+
+We do not claim to have uniquely derived all the mathematics of standard
+quantum mechanics from nontrivial closure.
+
+In particular, further conditions are still required between
+
+\begin{itemize}
+\tightlist
+\item
+  the complex field,
+\item
+  standard conjugation,
+\item
+  a positive-definite inner product,
+\item
+  the unitary group, and
+\item
+  the Born frequency law.
+\end{itemize}
+
+This paper does not conceal those conditions; it separates the derived
+part from the interpretive connection.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{13. Conclusion}\label{13-conclusion}
+
+This paper began from the nontrivial quadratic-closure condition
+
+\[
+\boxed{
+\sum_{k=1}^{N}x_k^2=0,
+\qquad
+(x_1,\ldots,x_N)\neq(0,\ldots,0),
+\qquad
+x_k\in K,
+\quad
+\mathbb R\subseteq K
+}.
+\]
+
+If every component is real, each squared term is nonnegative, so the
+equation has only the trivial solution. The solution vector of
+nontrivial closure therefore lies outside \(\mathbb R^N\). In fixed
+closure coordinates this is equivalent to at least one component being
+nonreal.
+
+In the minimal two-component system,
+
+\[
+x^2+y^2=0,
+\qquad x\neq0,
+\]
+
+we obtain
+
+\[
+\boxed{
+y=\pm ix
+}.
+\]
+
+No complex conjugation is used in this result. A
+square-root-of-minus-one direction is required to form a nontrivial zero
+sum of squares.
+
+If continuity, reversibility, and preservation of a positive-definite
+readout are added to this nonreal direction to extend it to a phase
+rotation, and the resulting phase is placed in the antisymmetric mode of
+an exchange-symmetric two-channel system, one obtains
+
+\[
+U=P_s+\zeta P_a.
+\]
+
+The finite-order condition
+
+\[
+\zeta^n=1
+\]
+
+selects the discrete phase
+
+\[
+\zeta=e^{-2\pi im/n}.
+\]
+
+The interference amplitudes in the A/B basis are
+
+\[
+r=\frac{1+\zeta}{2},
+\qquad
+t=\frac{1-\zeta}{2},
+\]
+
+and their positive-definite squared readouts are
+
+\section{\$\$ \textbackslash boxed\{
+\textbar r\textbar\^{}2}\label{-boxed-r2}
+
+\textbackslash cos\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right) \} \$\$
+
+and
+
+\section{\$\$ \textbackslash boxed\{
+\textbar t\textbar\^{}2}\label{-boxed-t2}
+
+\textbackslash sin\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right) \}. \$\$
+
+Separating derivation, additional construction, and the unresolved
+connection, the relation established here is
+
+\[
+\boxed{
+\begin{gathered}
+\text{nontrivial quadratic closure}
+\Rightarrow\text{nonreal direction}
+\quad[\text{derived}]\\
+\text{nonreal direction}
++\{\text{continuity, reversibility, }Q_+\text{ preservation}\}\\
+\longrightarrow\text{phase rotation}
+\quad[\text{additional construction}]\\
+\text{phase rotation}+\text{exchange symmetry}+\text{finite order}\\
++\text{squared readout}
+\Rightarrow\text{discrete Born-type weights}
+\quad[\text{conditional derivation}]\\
+Q_0=0\text{ and its dynamical connection to the exchange kernel}\\
+[\text{connection problem C2}]
+\end{gathered}
+}.
+\]
+
+This is not a derivation of the complete Born rule. What has been
+derived rigorously is that nontrivial quadratic closure cannot be
+achieved using real numbers alone, that the minimal two-component system
+requires a square-root-of-minus-one direction, and that combination with
+the preceding finite-order exchange theorem recovers discrete Born-type
+weights.
+
+Future problems include unique derivations of conjugation,
+positive-definite readout, unitarity, and a frequency law, as well as
+construction of an exchange map that preserves \(Q_0=0\) or a projection
+rule onto the closure surface. The central significance of this paper is
+that complex phase is positioned not as a tool specific to quantum
+theory assumed from the beginning, but as a necessary condition for
+nontrivial quadratic closure.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{References}\label{references}
+
+\subsection{Self-Citations}\label{self-citations}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Noriaki Kihara, ``Discovery of Finite-Order Resonances in Iterated
+  Exchange Scattering: Identification of the Origin of Peaks Near the
+  Fine-Structure Values 137 and 128 and a Reproducible Wave-Packet
+  Mathematical Model,'' Version DOI: 10.5281/zenodo.21421367, Concept
+  DOI: 10.5281/zenodo.21421366, 2026.
+\item
+  Noriaki Kihara, ``First-Principles Derivation of the Minimal
+  Nontrivial 137 Cells in a Closed Two-Wave Exchange System: Two
+  Principal Candidates, a Conditional Dual Attractor, and a
+  Correspondence Hypothesis with the Fine-Structure Constant,'' v3.0,
+  2026. Repository version:
+  \href{../20260717/20260717_complete_paper_v3.md}{\texttt{20260717\_complete\_paper\_v3.md}}.
+  {[}Japanese{]}.
+\item
+  Noriaki Kihara, ``Emergence of Discrete Born-Type Weights in Iterated
+  Two-Channel Exchange Systems: A Finite-Order Recurrence Law from
+  Wave-Packet Localization Transfer, Metastable Two-State Dynamics, and
+  Observation Selection,'' Version DOI: 10.5281/zenodo.21422471, Concept
+  DOI: 10.5281/zenodo.21422470, 2026.
+\item
+  Noriaki Kihara, ``Experimental Specification v1 for Low-Localization
+  and Harmonic Transfer Readout in Fermion-Like Collisions Using an
+  Exchange-Interference Scattering Matrix,'' 2026. {[}Japanese{]}.
+\item
+  Noriaki Kihara, ``Preliminary Experimental Summary v1 of the
+  Acceleration Basis and Localization Exchange in Fermion-Like
+  Collisions Using an Exchange-Interference Scattering Matrix,'' Zenodo
+  Concept DOI: 10.5281/zenodo.21333766, 2026. {[}Japanese{]}.
+\item
+  Noriaki Kihara, ``Preliminary Experimental Summary v1 of C Weak
+  Readout and D Strong-Observation Selection at a White-Cat, Black-Cat,
+  and Gray-Cat Metastable Interface,'' Zenodo Concept DOI:
+  10.5281/zenodo.21353208, 2026. {[}Japanese{]}.
+\end{enumerate}
+
+\subsection{External References}\label{external-references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Max Born, ``Zur Quantenmechanik der Stoßvorgänge,'' \emph{Zeitschrift
+  für Physik} \textbf{37}, 863--867 (1926). DOI: 10.1007/BF01397477.
+\item
+  Andrew M. Gleason, ``Measures on the Closed Subspaces of a Hilbert
+  Space,'' \emph{Journal of Mathematics and Mechanics} \textbf{6},
+  885--893 (1957). DOI: 10.1512/iumj.1957.6.56050.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Appendix A. Classification of
+Claims}\label{appendix-a-classification-of-claims}
+
+{\def\LTcaptype{none} % do not increment counter
+\small
+\begin{longtable}[]{@{}p{0.54\linewidth}p{0.39\linewidth}@{}}
+\toprule\noalign{}
+Claim & Classification \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Requiring a nontrivial solution of \(\sum_kx_k^2=0\) & First axiom of
+this paper \\
+No nontrivial solution of \(\sum_kx_k^2=0\) exists using only real
+components & Derived proposition \\
+A nontrivial solution vector belongs to \(K^N\setminus\mathbb R^N\) &
+Derived proposition \\
+In fixed closure coordinates, at least one component is nonreal &
+Equivalent component representation of the preceding proposition \\
+In the two-component system \(x^2+y^2=0\), \(y/x\) is a square root of
+\(-1\) & Derived proposition \\
+The minimal subfield generated by two-component nontrivial closure is
+\(\mathbb R(i)\cong\mathbb C\) & Derived consequence \\
+If a square root of \(-1\) is denoted by \(i\), then \(y=\pm ix\) &
+Derived consequence \\
+Reading \(\pm i\) as a quarter turn & Standard geometric
+interpretation \\
+Extending the nonreal direction to the continuous phase group \(U(1)\) &
+Construction adding continuity, reversibility, and preservation \\
+Standard complex conjugation is uniquely derived from nontrivial
+quadratic closure & Not derived \\
+The unitary group is uniquely derived from nontrivial quadratic closure
+& Not derived \\
+The exchange-symmetric finite-order kernel gives discrete Born-type
+weights & Derived in the preceding paper \\
+The preceding exchange kernel preserves the nontrivial quadratic-closure
+surface \(Q_0=0\) & False in general; connection problem C2 \\
+Nontrivial quadratic closure is the physical origin of complex-phase
+structure & Foundational interpretive hypothesis \\
+Discrete Born-type weights give experimental frequencies & Untested \\
+The complete Born rule has been derived & Not derived \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Appendix B. Minimal Derivation
+Sequence}\label{appendix-b-minimal-derivation-sequence}
+
+\subsection{B.1 Nontrivial Closure}\label{b1-nontrivial-closure}
+
+\[
+\sum_{k=1}^{N}x_k^2=0,
+\qquad
+(x_1,\ldots,x_N)\neq(0,\ldots,0),
+\qquad
+x_k\in K,
+\qquad
+\mathbb R\subseteq K.
+\]
+
+\subsection{B.2 Impossibility Using Real Numbers
+Alone}\label{b2-impossibility-using-real-numbers-alone}
+
+\[
+x_k\in\mathbb R
+\quad\Longrightarrow\quad
+x_k^2\ge0.
+\]
+
+Therefore,
+
+\[
+\sum_kx_k^2=0
+\quad\Longrightarrow\quad
+x_k=0\ \forall k.
+\]
+
+For a nontrivial solution, first in vector notation,
+
+\[
+\mathbf{x}\in K^N\setminus\mathbb R^N.
+\]
+
+The equivalent component representation in fixed closure coordinates is
+
+\[
+\exists j:\ x_j\notin\mathbb R.
+\]
+
+\subsection{B.3 Minimal Two-Component
+System}\label{b3-minimal-two-component-system}
+
+From
+
+\[
+x^2+y^2=0,
+\qquad x\neq0,
+\]
+
+we have
+
+\[
+\left(\frac{y}{x}\right)^2=-1.
+\]
+
+If a square root of \(-1\) is denoted by \(i\),
+
+\[
+y=\pm ix.
+\]
+
+\subsection{B.4 Additional Construction and Phase
+Closure}\label{b4-additional-construction-and-phase-closure}
+
+The following is not a direct consequence of nontrivial quadratic
+closure alone. We add continuity, reversibility, preservation of a
+positive-definite readout, and exchange symmetry, representing the
+nonreal direction as the antisymmetric-sector phase \(\zeta\). Imposing
+finite order on this additional construction gives
+
+\[
+\zeta^n=1
+\quad\Longrightarrow\quad
+\zeta=e^{-2\pi im/n}.
+\]
+
+\subsection{B.5 Exchange Projection}\label{b5-exchange-projection}
+
+\section{\$\$ U=P\_s+\textbackslash zeta P\_a}\label{-up_szeta-p_a}
+
+\textbackslash frac12 \textbackslash begin\{pmatrix\}
+1+\textbackslash zeta\&1-\textbackslash zeta\textbackslash{}
+1-\textbackslash zeta\&1+\textbackslash zeta
+\textbackslash end\{pmatrix\}. \$\$
+
+\subsection{B.6 Discrete Born-Type
+Weights}\label{b6-discrete-born-type-weights}
+
+\[
+r=\frac{1+\zeta}{2},
+\qquad
+t=\frac{1-\zeta}{2},
+\]
+
+and therefore
+
+\section{\$\$ \textbackslash boxed\{
+\textbar r\textbar\^{}2}\label{-boxed-r2-1}
+
+\textbackslash cos\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right) \} \$\$
+
+\section{\$\$ \textbackslash boxed\{
+\textbar t\textbar\^{}2}\label{-boxed-t2-1}
+
+\textbackslash sin\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right) \}. \$\$
+
+\end{document}

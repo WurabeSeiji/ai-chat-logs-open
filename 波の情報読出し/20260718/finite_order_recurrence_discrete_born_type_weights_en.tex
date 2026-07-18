@@ -1,0 +1,2712 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+  10pt]{article}
+\usepackage{xcolor}
+\usepackage[margin=22mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{Emergence of Discrete Born-Type Weights in Iterated Two-Channel
+Exchange
+Systems}\label{emergence-of-discrete-born-type-weights-in-iterated-two-channel-exchange-systems}
+
+\subsection{A Finite-Order Recurrence Law from Wave-Packet Localization
+Transfer, Metastable Two-State Dynamics, and Observation
+Selection}\label{a-finite-order-recurrence-law-from-wave-packet-localization-transfer-metastable-two-state-dynamics-and-observation-selection}
+
+\textbf{Version:} English complete manuscript v1 \textbf{Date:} July 18,
+2026 \textbf{Author:} Noriaki Kihara \textbf{ORCID:} 0009-0004-6753-4020
+\textbf{Version DOI:} 10.5281/zenodo.21422471 \textbf{Concept DOI:}
+10.5281/zenodo.21422470 \textbf{Position in the series:} Independent
+report on finite-order recurrence and Born-type weights in the Wave
+Information Readout series
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+This study was not initiated to reproduce the Born rule or its two-state
+representation, the \(\cos^2\) law. It began with two different
+numerical experiments. System A examined whether iterative exchange
+scattering between a weakly localized wave and a localized wave
+containing higher harmonics could transfer localization and effective
+harmonic structure between two channels, producing behavior resembling
+wave-packet contraction or localization. System B examined two A/B
+states, an intermediate gray metastable state, its retention under weak
+readout, and its selection into A or B under strong observation.
+
+Although the two models were built to address different physical
+questions and used different observation functions, later analysis
+showed that their linear mixing parts, before normalization and
+observation operations, share the same two-channel exchange-scattering
+kernel
+
+\[
+U_R=
+\begin{pmatrix}
+r&t\\
+t&r
+\end{pmatrix}.
+\]
+
+System A applies channel-wise normalization after this linear mixing,
+while the strong D observation in System B applies a separate
+back-action map; the complete update maps of the two systems are
+therefore not assumed to be identical. A full-range sweep of the
+exchange coefficient \(R\) in System B produced extremely sharp peaks at
+particular values. Eigenvalue analysis showed that the peaks arise from
+exact recurrence in which the antisymmetric eigenvalue returns to unity
+after finitely many iterations:
+
+\[
+U_R^n=I.
+\]
+
+We derive this result without depending on the trigonometric
+parameterization of the scattering amplitudes. Exchange symmetry
+determines the symmetric and antisymmetric projectors
+
+\[
+P_s=\frac12
+\begin{pmatrix}
+1&1\\
+1&1
+\end{pmatrix},
+\qquad
+P_a=\frac12
+\begin{pmatrix}
+1&-1\\
+-1&1
+\end{pmatrix}.
+\]
+
+After fixing the global phase so that the symmetric eigenvalue is one,
+an exchange-symmetric unitary operator can be written as
+
+\[
+U=P_s+\zeta P_a,
+\qquad |\zeta|=1.
+\]
+
+When the finite-order condition selects \(\zeta=e^{-2\pi im/n}\), the
+diagonal and off-diagonal amplitudes in the A/B basis are
+
+\[
+r=\frac{1+\zeta}{2},
+\qquad
+t=\frac{1-\zeta}{2}.
+\]
+
+Consequently, for coprime integers \(m,n\), the exchange weight
+satisfying the finite-order condition is
+
+\[
+\boxed{
+R_{n,m}=\cos^2\left(\frac{\pi m}{n}\right)
+}.
+\]
+
+This expression was not obtained by entering a Born-type squared law as
+a search condition or evaluation function. The projector representation
+above also shows that the trigonometric form need not be imposed as an
+independent assumption. The iterative exchange systems modeling
+wave-packet localization transfer, metastable two-state dynamics, weak
+readout, and strong observation selection were constructed first;
+numerical peaks were then found; only afterward was their closed-orbit
+condition analyzed. The result is therefore not a complete derivation of
+the Born rule. It shows that, in a closed two-channel wave system
+exhibiting behavior analogous to phenomena associated with quantum
+measurement, finitely recurrent exchange weights arise endogenously as a
+discrete Born-type \(\cos^2\) series.
+
+The current code represents the unitary scattering amplitudes using
+\(\sin\theta\) and \(\cos\theta\). This is a coordinate representation
+recoverable from the exchange-symmetric projectors \(P_s,P_a\) and the
+eigenvalues \(1,\zeta\), rather than an independent assumption required
+by the central theorem. No angle was prescribed in advance as the one
+that must recur exactly. Instead, the finite-order condition selects the
+discrete Born-angle series
+
+\[
+\phi_{n,m}=\frac{\pi m}{n}.
+\]
+
+The scattering angle used in the implementation is
+\(\theta=\pi/2-\phi_{n,m}\). This distinguishes the exchange-symmetric
+two-channel projection structure from the phase series selected by
+closure: the latter discretizes the admissible weights of the former.
+
+This paper does not focus on numerical correspondences with the
+fine-structure constant, \(E_8\), or any specific physical constant. Its
+central purpose is to report clearly the mathematical structure
+connecting contraction-like localization redistribution, metastable
+superposition, observation selection, finite-order recurrence, and
+Born-type squared weights through a common unperturbed exchange kernel
+\(U\) followed by model-specific normalization, readout, and selection
+maps.
+
+\textbf{Keywords:} Born rule, two-channel exchange, finite-order
+recurrence, wave-packet localization, metastable state, observation
+selection, quantum measurement, unitary operator, discrete phase
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{1. Background and Objective}\label{1-background-and-objective}
+
+\subsection{1.1 The Born Rule and Its Two-State
+Representation}\label{11-the-born-rule-and-its-two-state-representation}
+
+In standard quantum mechanics, the probability of projecting a state
+\(|\psi\rangle\) onto an observation state \(|A\rangle\) is given by the
+Born rule
+
+\[
+P(A)=|\langle A|\psi\rangle|^2
+\]
+
+{[}5,6{]}.
+
+For a two-state system written as
+
+\section{\$\$
+\textbar\textbackslash psi\textbackslash rangle}\label{-psirangle}
+
+\textbackslash cos\textbackslash phi,\textbar A\textbackslash rangle +
+e\^{}\{i\textbackslash chi\}\textbackslash sin\textbackslash phi,\textbar B\textbackslash rangle,
+\$\$
+
+the observation probabilities of the two orthogonal states are
+
+\[
+P(A)=\cos^2\phi,
+\qquad
+P(B)=\sin^2\phi.
+\]
+
+The Born rule is the fundamental rule connecting quantum theory to
+observation results. The present work, however, did not begin as a
+derivation of that rule. The numerical systems were first constructed to
+study wave-packet localization transfer and observation selection in a
+metastable two-state system; they did not contain the \(\cos^2\) law as
+a target function.
+
+\subsection{1.2 Research Question}\label{12-research-question}
+
+The question addressed here is:
+
+\begin{quote}
+In an iterated exchange system that models contraction-like localization
+redistribution, metastable mixing of two A/B states, retention under
+weak readout, and selection under strong observation, can Born-type
+squared weights arise from exchange symmetry, unitarity, and
+finite-order closure without being externally entered as a probability
+axiom?
+\end{quote}
+
+This paper does not seek a uniqueness proof of the general Born rule or
+a complete dynamical derivation of single-trial probabilities. Its
+specific objective is to decompose an already constructed
+exchange-symmetric two-channel unitary operator into symmetric and
+antisymmetric subspaces, derive the endogenous discrete Born-type
+weights
+
+\[
+R_{n,m}=\cos^2\left(\frac{\pi m}{n}\right)
+\]
+
+from its finite-order condition, and state precisely the meaning and
+limits of this result.
+
+\subsection{1.3 The Non-Directed Order of
+Discovery}\label{13-the-non-directed-order-of-discovery}
+
+The chronological order of the discovery is important to its
+interpretation.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  System A was constructed to transfer wave-packet localization and
+  harmonic structure between two channels {[}1,2{]}.
+\item
+  System B was constructed to study two A/B states, a gray metastable
+  state, weak readout, and strong observation selection {[}3{]}.
+\item
+  A local sweep was performed for localization transfer in System A, and
+  a full-range sweep of their common exchange-scattering coefficient
+  \(R\) was performed in System B {[}4{]}.
+\item
+  Extremely sharp peaks were observed in the full-range System B sweep.
+\item
+  Local high-resolution sweeps and multiprecision calculations were
+  performed.
+\item
+  Operator eigenvalues were analyzed, identifying the peaks as
+  finite-order recurrence {[}4{]}.
+\item
+  The finite-order condition was recognized to give the exchange weights
+  \(\cos^2(\pi m/n)\).
+\item
+  Only afterward was this expression reinterpreted physically as
+  isomorphic to the two-state representation of the Born rule.
+\end{enumerate}
+
+Thus, this study did not embed a Born-type \(\cos^2\) law in the code
+and rediscover it in the output. The amplitude structure of unitary
+two-channel scattering was present in the original models, but neither
+the phase angle nor the exchange weight selected for exact recurrence
+was entered in advance. Moreover, this paper removes the trigonometric
+representation itself from the central assumptions and derives
+
+\[
+U=P_s+\zeta P_a,
+\qquad |\zeta|=1
+\]
+
+from exchange symmetry and unitarity. Imposing the finite-order
+condition on this representation makes the \(\cos^2/\sin^2\) weights a
+necessary consequence of interference between the symmetric and
+antisymmetric eigenphases, rather than of a chosen coordinate
+parameterization.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{2. The Two Starting Models}\label{2-the-two-starting-models}
+
+\subsection{2.1 System A: Wave-Packet Localization
+Transfer}\label{21-system-a-wave-packet-localization-transfer}
+
+System A iterates the same exchange scattering between a weakly
+localized wave on side A and a localized wave containing higher
+harmonics on side B {[}1,2{]}.
+
+Let the wave-packet vectors at step \(j\) be \(A_j,B_j\). The linear
+exchange part is
+
+\section{\$\$ \textbackslash begin\{pmatrix\} \textbackslash widetilde
+A\_\{j+1\}\textbackslash{} \textbackslash widetilde B\_\{j+1\}
+\textbackslash end\{pmatrix\}}\label{-beginpmatrix-widetilde-a_j1-widetilde-b_j1-endpmatrix}
+
+U\_R \textbackslash begin\{pmatrix\} A\_j\textbackslash{} B\_j
+\textbackslash end\{pmatrix\}. \$\$
+
+The implemented one-step update in System A is not only this linear
+mixing. If \(\mathcal N(x):=x/\|x\|\) denotes normalization of each
+wave-packet channel, the actual update is
+
+\section{\$\$ \textbackslash boxed\{ F\_R(A,B)}\label{-boxed-f_rab}
+
+\textbackslash left( \textbackslash mathcal N(rA+tB),
+\textbackslash mathcal N(tA+rB) \textbackslash right) \}. \$\$
+
+Thus, \(F_R\) is generally nonlinear. The finite-order theorem in this
+paper applies directly to the pre-normalization linear numerator
+
+\[
+(A,B)\longmapsto(rA+tB,\ tA+rB).
+\]
+
+The localization transfer observed in System A is treated as a property
+of the complete map combining this common linear kernel with
+channel-wise normalization.
+
+Representative observables are
+
+\[
+L,
+\qquad
+N_{\mathrm{eff}},
+\qquad
+B_{\mathrm{to}A},
+\]
+
+where
+
+\begin{itemize}
+\tightlist
+\item
+  \(L\) measures wave-packet localization,
+\item
+  \(N_{\mathrm{eff}}\) is the effective harmonic order, and
+\item
+  \(B_{\mathrm{to}A}\) measures how much of the initial harmonic
+  structure on side B has moved to side A.
+\end{itemize}
+
+At intermediate exchange coefficients, localization and harmonic
+structure transfer periodically between the two channels. If only one
+channel is observed at a selected time, a broad wave packet can appear
+to have changed into a localized wave. This behavior was constructed as
+redistribution of localization by exchange interference, not as
+nonunitary contraction accompanied by disappearance of the norm of the
+total system.
+
+\subsection{2.2 System B: White-Cat, Black-Cat, and Gray-Cat Metastable
+Interface}\label{22-system-b-white-cat-black-cat-and-gray-cat-metastable-interface}
+
+System B defines, from two complex amplitudes \(a,b\),
+
+\[
+p_A=|a|^2,
+\qquad
+p_B=|b|^2,
+\qquad
+S=p_A-p_B
+\]
+
+{[}3{]}.
+
+The states are read as follows.
+
+\begin{itemize}
+\tightlist
+\item
+  \(S\approx+1\): A-dominant, or white-cat, state.
+\item
+  \(S\approx-1\): B-dominant, or black-cat, state.
+\item
+  \(S\approx0\): balanced A/B, or gray, state.
+\end{itemize}
+
+Among gray states, a state that fluctuates periodically with small
+amplitude, remains under weak C readout, and is selected into A or B by
+strong D observation is called a gray metastable phase.
+
+The unperturbed A/B exchange in System B follows \(U_R\). The
+implemented pair normalization is
+
+\section{\$\$ \textbackslash mathcal
+N\_\{AB\}(a,b)}\label{-mathcal-n_abab}
+
+\textbackslash frac\{(a,b)\}\{\textbackslash sqrt\{\textbar a\textbar\^{}2+\textbar b\textbar\^{}2\}\},
+\$\$
+
+which is the identity under exact unitary evolution. The weak C readout
+and strong D observation are separate readout and back-action maps
+applied after the unperturbed exchange. In particular, the D
+implementation explicitly contains nonlinear back-action that updates
+the allocation difference \(S\) as
+
+\section{\$\$ S\_\{j+1\}}\label{-s_j1}
+
+S\_j+g\_D S\_\{D,j\}(1-S\_j\^{}2), \$\$
+
+pushing the state toward either A or B. Strong observation selection
+therefore does not arise from attraction by \(U_R\) alone, but from the
+composition of \(U_R\) with D back-action.
+
+This model was not constructed as a direct solution to the
+quantum-measurement problem. Its purpose was to test whether one
+iterative exchange system could distinguish
+
+\begin{itemize}
+\tightlist
+\item
+  a metastable state intermediate between two states,
+\item
+  a weak readout that does not substantially destroy the state, and
+\item
+  a strong observation that changes the state toward one side.
+\end{itemize}
+
+\subsection{2.3 The Scattering Kernel Shared by the Two
+Models}\label{23-the-scattering-kernel-shared-by-the-two-models}
+
+Later analysis showed that System A and System B, despite their
+different state spaces, normalizations, and observation functions, use
+the same exchange-scattering kernel in the linear mixing stage before
+normalization, readout, and back-action:
+
+\[
+\boxed{
+U_R=
+\begin{pmatrix}
+r&t\\
+t&r
+\end{pmatrix}
+}.
+\]
+
+The complete update structures can be decomposed conceptually as
+
+\[
+\text{System A}:\quad F_R=\mathcal N_A\circ U_R,
+\]
+
+\[
+\text{System B, unperturbed}:\quad U_R,
+\]
+
+\[
+\text{System B, C/D}:\quad
+F_C=\mathcal C\circ U_R,
+\qquad
+F_D=\mathcal D\circ U_R.
+\]
+
+Here \(\mathcal N_A\) is channel-wise normalization, \(\mathcal C\) is
+weak readout and weak back-action, and \(\mathcal D\) is strong
+selection back-action. System A reads localization and internal harmonic
+structure of wave-packet vectors, whereas System B reads the A/B
+allocation difference and metastability of two complex amplitudes.
+
+Therefore, candidate positions of particular \(R\) values common to both
+models originate in the intrinsic structure of the exchange operator,
+while peak visibility, localization transfer, and A/B selection are
+determined by the downstream maps and observation functions. This
+separation between the common kernel that fixes root positions and the
+model-specific maps that visualize or select phenomena is the central
+implementation structure of this paper.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{3. Exchange-Scattering
+Operator}\label{3-exchange-scattering-operator}
+
+\subsection{3.1 Scattering-Coefficient Coordinates Used in the Numerical
+Implementation}\label{31-scattering-coefficient-coordinates-used-in-the-numerical-implementation}
+
+For a reflection weight \(R\in[0,1]\), the implementation defines
+
+\[
+\theta(R):=\arcsin\sqrt R.
+\]
+
+The transmission amplitude \(t\) and reflection amplitude \(r\) are
+
+\[
+t=e^{i\theta}\cos\theta,
+\qquad
+r=-ie^{i\theta}\sin\theta.
+\]
+
+Then
+
+\[
+|t|^2=\cos^2\theta=1-R,
+\]
+
+\[
+|r|^2=\sin^2\theta=R.
+\]
+
+Moreover,
+
+\[
+|r|^2+|t|^2=1,
+\qquad
+r^*t+t^*r=0,
+\]
+
+so that
+
+\[
+U_R^\dagger U_R=I.
+\]
+
+Thus, the linear exchange operator at fixed \(R\) is unitary. This
+trigonometric representation is a convenient coordinate system used in
+the implementation, but it is not an independent axiom needed to obtain
+the \(\cos^2/\sin^2\) series. Sections 4 and 5 reconstruct the same
+coefficient representation using only the projector decomposition of an
+exchange-symmetric unitary operator.
+
+\subsection{3.2 State Norm and
+Localization}\label{32-state-norm-and-localization}
+
+The unitarity of the linear kernel \(U_R\) preserves the norm of the
+complete two-channel state:
+
+\section{\$\$ \textbackslash left\textbar{} U\_R
+\textbackslash begin\{pmatrix\} A\textbackslash B
+\textbackslash end\{pmatrix\}
+\textbackslash right\textbar\^{}2}\label{-left-u_r-beginpmatrix-ab-endpmatrix-right2}
+
+\textbackslash left\textbar{} \textbackslash begin\{pmatrix\}
+A\textbackslash B \textbackslash end\{pmatrix\}
+\textbackslash right\textbar\^{}2. \$\$
+
+Therefore, even if one wave packet appears to localize under the
+pre-normalization linear kernel, this does not mean that the total norm
+disappears or that the state is dissipatively attracted to a point.
+Localization, harmonic structure, or channel allocation is redistributed
+within the conserved total state. Since the complete System A map
+includes channel-wise normalization, this total-norm equation cannot be
+transferred unchanged to the full update; localization transfer must be
+evaluated for \(F_R=\mathcal N_A\circ U_R\).
+
+This distinction is essential when discussing the analogy with
+wave-packet contraction. ``Contraction-like behavior'' in this paper is
+not claimed to be identical to post-measurement state update in standard
+quantum mechanics. It denotes a mathematical analogy in which
+concentration of localization emerges from the composition of a unitary
+exchange kernel, channel-wise normalization, and partial observation.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{4. Symmetric and Antisymmetric
+Eigenmodes}\label{4-symmetric-and-antisymmetric-eigenmodes}
+
+\subsection{4.1 Decomposition into
+Eigenmodes}\label{41-decomposition-into-eigenmodes}
+
+Decompose the two-channel state as
+
+\[
+X_j:=\frac{A_j+B_j}{\sqrt2},
+\qquad
+Y_j:=\frac{A_j-B_j}{\sqrt2}.
+\]
+
+\(X_j\) is symmetric under channel exchange, and \(Y_j\) is
+antisymmetric.
+
+The eigenvalues of the exchange operator are
+
+\[
+\lambda_s=r+t,
+\qquad
+\lambda_a=r-t.
+\]
+
+Substituting the definitions of \(r,t\) gives
+
+\[
+\lambda_s=1,
+\]
+
+\[
+\lambda_a=-e^{2i\theta}.
+\]
+
+Therefore,
+
+\[
+X_j=X_0,
+\qquad
+Y_j=\lambda_a^jY_0.
+\]
+
+\subsection{4.2 Projector
+Representation}\label{42-projector-representation}
+
+Let the channel-exchange operator be
+
+\[
+X=
+\begin{pmatrix}
+0&1\\
+1&0
+\end{pmatrix}
+=P_s-P_a.
+\]
+
+Exchange symmetry is
+
+\[
+[U,X]=0.
+\]
+
+Because the eigenvalues \(+1,-1\) of \(X\) are distinct, any operator
+\(U\) satisfying this commutation relation does not mix the symmetric
+and antisymmetric subspaces.
+
+Define the symmetric and antisymmetric projectors by
+
+\[
+P_s=
+\frac12
+\begin{pmatrix}
+1&1\\
+1&1
+\end{pmatrix},
+\qquad
+P_a=
+\frac12
+\begin{pmatrix}
+1&-1\\
+-1&1
+\end{pmatrix}.
+\]
+
+Then
+
+\[
+P_s+P_a=I,
+\qquad
+P_sP_a=0,
+\]
+
+and
+
+\[
+U=\lambda_sP_s+\lambda_aP_a.
+\]
+
+If \(U\) is unitary,
+
+\[
+|\lambda_s|=|\lambda_a|=1.
+\]
+
+Removing the global phase \(\lambda_s\) by defining
+\(\widetilde U:=\lambda_s^{-1}U\) gives
+
+\[
+\boxed{
+\widetilde U=P_s+\zeta P_a,
+\qquad
+\zeta:=\frac{\lambda_a}{\lambda_s},
+\qquad
+|\zeta|=1
+}.
+\]
+
+In the numerical implementation \(\lambda_s=1\) from the outset, so
+below we write \(\widetilde U\) as \(U_R\). Then
+
+\section{\$\$ U\_R}\label{-u_r}
+
+\section{\textbackslash frac12 \textbackslash begin\{pmatrix\}
+1+\textbackslash zeta\&1-\textbackslash zeta\textbackslash{}
+1-\textbackslash zeta\&1+\textbackslash zeta
+\textbackslash end\{pmatrix\}}\label{frac12-beginpmatrix-1zeta1-zeta-1-zeta1zeta-endpmatrix}
+
+\textbackslash begin\{pmatrix\} r\&t\textbackslash{} t\&r
+\textbackslash end\{pmatrix\}, \$\$
+
+and hence
+
+\[
+\boxed{
+r=\frac{1+\zeta}{2},
+\qquad
+t=\frac{1-\zeta}{2}
+}.
+\]
+
+Thus, without separately assuming a trigonometric form, the exchange
+amplitudes are fixed as the sum and difference of the symmetric
+eigenphase \(1\) and the antisymmetric eigenphase \(\zeta\).
+
+Furthermore,
+
+\[
+\boxed{
+U_R^j=P_s+\zeta^jP_a
+}.
+\]
+
+This expression shows that the apparently complicated time evolution of
+the model consists of only
+
+\begin{itemize}
+\tightlist
+\item
+  a fixed symmetric component, and
+\item
+  an antisymmetric component rotating on the unit circle.
+\end{itemize}
+
+\subsection{4.3 Periodicity of
+Observables}\label{43-periodicity-of-observables}
+
+The allocation difference in System B can generally be written as
+
+\[
+S_j=C\cos(j\omega+\varphi_0),
+\]
+
+where
+
+\[
+\omega=\arg\lambda_a
+\]
+
+is determined by the operator, while \(C\) and \(\varphi_0\) are
+determined by the initial state and observation function.
+
+Changing the initial amplitude, initial phase, internal harmonic
+distribution, or wave-packet shape therefore does not change the
+operator-intrinsic phase-rotation number \(\omega(R)\). What changes is
+how visibly that eigenphase appears in the chosen observable.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{5. Finite-Order Recurrence}\label{5-finite-order-recurrence}
+
+\subsection{5.1 Exact Recurrence
+Condition}\label{51-exact-recurrence-condition}
+
+In the numerical implementation, the symmetric eigenvalue is exactly
+one. The condition under which this phase-fixed iterated exchange system
+restores every initial state after \(n\) iterations is
+
+\[
+U_R^n=I.
+\]
+
+Since the symmetric eigenvalue satisfies
+
+\[
+\lambda_s^n=1,
+\]
+
+the necessary and sufficient condition is
+
+\[
+\lambda_a^n=1
+\]
+
+for the antisymmetric eigenvalue. For a general exchange-symmetric
+\(U\in U(2)\), \(U^n=e^{i\gamma}I\) is projective recurrence up to a
+global phase of the physical state. The equation \(\widetilde U^n=I\)
+for \(\widetilde U=\lambda_s^{-1}U\) is its phase-fixed representation
+used below.
+
+\subsection{5.2 Exchange-Symmetric Finite-Order
+Theorem}\label{52-exchange-symmetric-finite-order-theorem}
+
+\textbf{Theorem 5.1 (Discrete squared weights of an exchange-symmetric
+finite-order map).}\\
+Let a two-channel operator \(U\in U(2)\) satisfy the following
+conditions.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  It commutes with the channel-exchange operator \(X\): \([U,X]=0\).
+\item
+  The global phase is fixed by using \(\widetilde U:=\lambda_s^{-1}U\).
+\item
+  \(\widetilde U\) has a nontrivial fundamental order \(n\ge3\):
+  \(\widetilde U^n=I\).
+\item
+  The antisymmetric eigenphase is \(\zeta=e^{-2\pi i m/n}\) with
+  \(\gcd(m,n)=1\). Since the conjugate pair \(m\) and \(n-m\) gives the
+  same weights, choose \(1\le m<n/2\) as a representative.
+\end{enumerate}
+
+Then
+
+\section{\$\$ \textbackslash widetilde U}\label{-widetilde-u}
+
+\section{P\_s+e\^{}\{-2\textbackslash pi i
+m/n\}P\_a}\label{p_se-2pi-i-mnp_a}
+
+\textbackslash begin\{pmatrix\} r\_\{n,m\}\&t\_\{n,m\}\textbackslash{}
+t\_\{n,m\}\&r\_\{n,m\} \textbackslash end\{pmatrix\}, \$\$
+
+\section{\$\$ r\_\{n,m\}}\label{-r_nm}
+
+\section{\textbackslash frac\{1+e\^{}\{-2\textbackslash pi i
+m/n\}\}\{2\}, \textbackslash qquad
+t\_\{n,m\}}\label{frac1e-2pi-i-mn2-qquad-t_nm}
+
+\textbackslash frac\{1-e\^{}\{-2\textbackslash pi i m/n\}\}\{2\}, \$\$
+
+and the channel weights are
+
+\section{\$\$ \textbackslash boxed\{
+\textbar r\_\{n,m\}\textbar\^{}2}\label{-boxed-r_nm2}
+
+\section{\textbackslash cos\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right), \textbackslash qquad
+\textbar t\_\{n,m\}\textbar\^{}2}\label{cos2leftfracpi-mnright-qquad-t_nm2}
+
+\textbackslash sin\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right) \}. \$\$
+
+\emph{Proof.} The relation \([U,X]=0\) diagonalizes \(U\) on the
+symmetric and antisymmetric eigenspaces of \(X\). After fixing the
+global phase,
+
+\[
+\widetilde U=P_s+\zeta P_a.
+\]
+
+The condition \(\widetilde U^n=I\) gives \(\zeta^n=1\). Since the
+fundamental order is \(n\), write \(\zeta=e^{-2\pi im/n}\) with
+\(\gcd(m,n)=1\). Expanding the projectors in the channel basis gives
+
+\[
+r_{n,m}=\frac{1+\zeta}{2},
+\qquad
+t_{n,m}=\frac{1-\zeta}{2}.
+\]
+
+Therefore,
+
+\section{\$\$ \textbar r\_\{n,m\}\textbar\^{}2}\label{-r_nm2}
+
+\section{\textbackslash frac\{(1+\textbackslash zeta)(1+\textbackslash zeta\^{}*)\}\{4\}}\label{frac1zeta1zeta4}
+
+\section{\textbackslash frac\{1+\textbackslash cos(2\textbackslash pi
+m/n)\}\{2\}}\label{frac1cos2pi-mn2}
+
+\textbackslash cos\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right), \$\$
+
+\section{\$\$ \textbar t\_\{n,m\}\textbar\^{}2}\label{-t_nm2}
+
+\section{\textbackslash frac\{1-\textbackslash cos(2\textbackslash pi
+m/n)\}\{2\}}\label{frac1-cos2pi-mn2}
+
+\textbackslash sin\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right). \textbackslash qquad\textbackslash square
+\$\$
+
+\subsection{5.3 Agreement with the Implementation Coordinates and
+Boundary
+Roots}\label{53-agreement-with-the-implementation-coordinates-and-boundary-roots}
+
+In the implementation coordinates of Section 3,
+
+\[
+\zeta=\lambda_a=-e^{2i\theta}.
+\]
+
+Identifying this with \(e^{-2\pi im/n}\) gives
+
+\section{\$\$ \textbackslash theta}\label{-theta}
+
+\textbackslash frac\{\textbackslash pi\}\{2\}-\textbackslash frac\{\textbackslash pi
+m\}\{n\} \textbackslash pmod\{\textbackslash pi\}, \$\$
+
+and once again
+
+\section{\$\$
+R=\textbar r\textbar\^{}2=\textbackslash sin\^{}2\textbackslash theta}\label{-rr2sin2theta}
+
+\textbackslash cos\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right). \$\$
+
+The trigonometric form is therefore not an input to the theorem. It is
+the implementation coordinate expressing the coefficients obtained from
+the projector decomposition in terms of \(R\).
+
+Theorem 5.1 concerns nontrivial interior roots \(0<R<1\). At the
+boundaries,
+
+\[
+\zeta=1:\quad U=I,\quad R=1,
+\]
+
+\[
+\zeta=-1:\quad U=X,\quad R=0,
+\]
+
+which are the trivial closures of order one and two, respectively.
+
+\subsection{5.4 A Discrete Series inside a Continuous
+Parameter}\label{54-a-discrete-series-inside-a-continuous-parameter}
+
+Formally, \(R\) ranges over the continuous interval
+
+\[
+R\in[0,1].
+\]
+
+The points of exact recurrence, however, are classified by integer pairs
+\((n,m)\):
+
+\section{\$\$ (n,m) \textbackslash longmapsto
+R\_\{n,m\}}\label{-nm-longmapsto-r_nm}
+
+\textbackslash cos\^{}2\textbackslash left(\textbackslash frac\{\textbackslash pi
+m\}\{n\}\textbackslash right). \$\$
+
+Thus, within an apparently continuous exchange system there is a
+countable family of closed orbits labeled by rational phase ratios.
+
+Because rational numbers \(m/n\) are dense in the interval, finite-order
+roots also become dense when arbitrarily high orders are allowed. At
+each root, however,
+
+\[
+U_R^n=I
+\]
+
+holds exactly: the orbit is an exact discrete closed orbit, not an
+approximately periodic one.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{6. Discrete Born-Type
+Weights}\label{6-discrete-born-type-weights}
+
+\subsection{6.1 Formal Isomorphism with Standard Two-State
+Projection}\label{61-formal-isomorphism-with-standard-two-state-projection}
+
+In a standard two-state system,
+
+\section{\$\$
+\textbar\textbackslash psi\textbackslash rangle}\label{-psirangle-1}
+
+\textbackslash cos\textbackslash phi,\textbar A\textbackslash rangle +
+e\^{}\{i\textbackslash chi\}\textbackslash sin\textbackslash phi,\textbar B\textbackslash rangle,
+\$\$
+
+the Born rule gives
+
+\[
+P(A)=\cos^2\phi,
+\qquad
+P(B)=\sin^2\phi.
+\]
+
+Applying the operator studied here to the channel-basis state
+\(|A\rangle=(1,0)^T\) gives
+
+\section{\$\$
+U\_\{n,m\}\textbar A\textbackslash rangle}\label{-u_nmarangle}
+
+r\_\{n,m\}\textbar A\textbackslash rangle+t\_\{n,m\}\textbar B\textbackslash rangle.
+\$\$
+
+Consequently, the two transition weights obtained by projecting the
+output onto the same A/B basis are exactly
+
+\section{\$\$ W\_\{A\textbackslash to A\}}\label{-w_ato-a}
+
+\section{\textbar\textbackslash langle
+A\textbar U\_\{n,m\}\textbar A\textbackslash rangle\textbar\^{}2}\label{langle-au_nmarangle2}
+
+\textbar r\_\{n,m\}\textbar\^{}2, \$\$
+
+\section{\$\$ W\_\{A\textbackslash to B\}}\label{-w_ato-b}
+
+\section{\textbar\textbackslash langle
+B\textbar U\_\{n,m\}\textbar A\textbackslash rangle\textbar\^{}2}\label{langle-bu_nmarangle2}
+
+\textbar t\_\{n,m\}\textbar\^{}2. \$\$
+
+By Theorem 5.1,
+
+\section{\$\$ W\_\{A\textbackslash to A\}(n,m)}\label{-w_ato-anm}
+
+\textbackslash cos\^{}2\textbackslash phi\_\{n,m\}, \$\$
+
+\section{\$\$ W\_\{A\textbackslash to B\}(n,m)}\label{-w_ato-bnm}
+
+\textbackslash sin\^{}2\textbackslash phi\_\{n,m\}, \$\$
+
+where
+
+\[
+\phi_{n,m}:=\frac{\pi m}{n}.
+\]
+
+Thus, the channel-projection weights of a single exchange acting on a
+basis input are
+
+\[
+\boxed{
+W_{A\to A}(n,m)=\cos^2\phi_{n,m},
+\qquad
+W_{A\to B}(n,m)=\sin^2\phi_{n,m}
+}
+\]
+
+and are isomorphic to the standard two-state Born rule. This is not
+merely a visual resemblance between formulas; it is the same operation
+of projecting a complex amplitude onto an observation basis and squaring
+its absolute value.
+
+For a general superposed input \(\alpha|A\rangle+\beta|B\rangle\),
+however, the A-channel output is \(r\alpha+t\beta\), whose weight
+includes an interference term. Therefore, \(R=|r|^2\) is not itself the
+probability of observing A for an arbitrary input state; it is the
+transition weight for remaining in the A channel when the input is the A
+basis state. A separate frequency law is also required to interpret this
+projection weight as an experimental frequency over repeated trials.
+
+\subsection{6.2 What Was Assumed and What
+Emerged}\label{62-what-was-assumed-and-what-emerged}
+
+To evaluate the result precisely, we separate the structures already
+present in the initial definitions from those that emerged only after
+analysis.
+
+\subsubsection{Structures present in the initial
+definitions}\label{structures-present-in-the-initial-definitions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Two-channel complex amplitudes.
+\item
+  A unitary scattering condition.
+\item
+  Exchange symmetry between the A and B channels.
+\item
+  Reading squared amplitude magnitudes in the A/B basis as channel
+  weights.
+\item
+  A trigonometric parametrization of the amplitudes \(r,t\) as numerical
+  implementation coordinates.
+\end{enumerate}
+
+Thus, the structure in which the squared magnitude of a complex
+amplitude becomes a nonnegative channel weight was already part of the
+present model. Theorem 5.1 nevertheless shows that the trigonometric
+parametrization need not be an independent derivational assumption: it
+can be reconstructed from the projector decomposition of an
+exchange-symmetric unitary operator.
+
+\subsubsection{Structures not present in the initial
+definitions}\label{structures-not-present-in-the-initial-definitions}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Which values of \(R\) produce the special peaks.
+\item
+  Which phase angles are selected by exact recurrence.
+\item
+  That the roots are classified by integer pairs \((n,m)\).
+\item
+  That the selected exchange weights form the discrete sequence
+  \(\cos^2(\pi m/n)\).
+\item
+  That the localization-transfer model and the gray-state metastability
+  index connect to finite-order roots of a common linear kernel.
+\end{enumerate}
+
+The nontrivial consequence of this work is therefore not the generation
+of a square law without assumptions, but rather
+
+\[
+\boxed{
+\text{finite-order closure}
+\Rightarrow
+\text{discrete phase sequence}
+\Rightarrow
+\text{discrete Born-type weight sequence}
+}.
+\]
+
+\subsection{6.3 Closure-Selected Weights Preceding a Probability
+Postulate}\label{63-closure-selected-weights-preceding-a-probability-postulate}
+
+Ordinarily, \(\cos^2\phi\) is introduced as a measurement probability.
+
+Here, the same form first appears as
+
+\begin{quote}
+the reflection/transmission weight required for a two-channel exchange
+to close exactly after finitely many iterations.
+\end{quote}
+
+That is, rather than beginning with
+
+\[
+\cos^2 \text{ as a probability},
+\]
+
+we first obtain
+
+\[
+\cos^2 \text{ as a completely recurrent exchange ratio}.
+\]
+
+This order suggests that a Born-type weight may be read not merely as an
+external probability postulate, but as a recurrence condition for a
+closed phase system.
+
+The word ``selection'' here does not mean dynamical attraction. During
+the sweep, \(R\) is not a time-evolving variable; each value of \(R\) is
+fixed while the orbital closure error is evaluated. The finite-order
+roots are therefore not attractors of the form
+
+\[
+R_j\longrightarrow R_{n,m},
+\]
+
+but parameters selected by the closure criterion
+
+\[
+U_R^n=I.
+\]
+
+We call this ``closure selection'' or a ``recurrence-compatible
+weight.'' Dynamical selection between A and B under strong observation
+is a separate mechanism arising from the D backreaction in System B.
+
+\subsection{6.4 The Discrete Sequence and the Continuous Born
+Rule}\label{64-the-discrete-sequence-and-the-continuous-born-rule}
+
+What is obtained directly here is the discrete sequence associated with
+
+\[
+\phi_{n,m}=\frac{\pi m}{n}.
+\]
+
+As \(n\) increases, rational phases become dense in the continuum of
+angles, and hence the set
+
+\[
+\cos^2\left(\frac{\pi m}{n}\right)
+\]
+
+is dense in \([0,1]\).
+
+Density, however, is not equivalent to having physically derived the
+continuous Born rule. To assert a continuous limit as a physical law,
+one must separately establish
+
+\begin{itemize}
+\tightlist
+\item
+  which orders are physically realizable,
+\item
+  how well high-order roots survive noise,
+\item
+  how observation and coherence times select roots, and
+\item
+  whether experimental frequencies converge to the squared weights.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{7. Relation to Wave-Packet-Contraction-Like
+Behavior}\label{7-relation-to-wave-packet-contraction-like-behavior}
+
+\subsection{7.1 Redistribution of Localization Rather Than Nonunitary
+Contraction}\label{71-redistribution-of-localization-rather-than-nonunitary-contraction}
+
+In System A, when one wave packet changes from a weakly localized state
+to a strongly localized state, a partial observation can make the packet
+appear to contract.
+
+The unnormalized exchange kernel \(U_R\) is unitary; when the linear
+update alone is isolated, the total system preserves
+
+\section{\$\$
+\textbar A\_j\textbar\^{}2+\textbar B\_j\textbar\^{}2}\label{-a_j2b_j2}
+
+\textbackslash text\{constant\}. \$\$
+
+The full System A update implemented numerically is, however,
+
+\section{\$\$ F\_R(A,B)}\label{-f_rab}
+
+\textbackslash left( \textbackslash mathcal N(rA+tB),
+\textbackslash mathcal N(tA+rB) \textbackslash right), \$\$
+
+which normalizes each channel separately. Therefore, \(F_R\) itself
+cannot be called a unitary operator.
+
+What occurs at the linear exchange stage is consequently not
+
+\[
+\text{contraction accompanied by loss of the total state},
+\]
+
+but
+
+\[
+\text{redistribution of localization and internal structure within a conserved total state}.
+\]
+
+The localization transfer observed numerically in System A is this
+conservative redistribution as read after channel-wise normalization.
+Whether the finite-order roots are also exact periodic roots of the
+complete nonlinear map \(F_R\) does not follow automatically from the
+theorem for \(U_R\) and is a System-A-specific proposition requiring
+separate verification.
+
+\subsection{7.2 Contraction-Like Appearance Through an Observation
+Section}\label{72-contraction-like-appearance-through-an-observation-section}
+
+If an observer reads only one channel or a particular localization index
+rather than the entire two-channel state, one section of the combined
+orbit of the exchange kernel and normalization may appear as
+
+\begin{itemize}
+\tightlist
+\item
+  a transition from a diffuse to a localized state,
+\item
+  selection from an intermediate state into A or B, or
+\item
+  a sudden reduction in wave-packet width.
+\end{itemize}
+
+The model therefore offers the working hypothesis
+
+\section{\$\$ \textbackslash boxed\{ \textbackslash text\{apparent
+contraction\}}\label{-boxed-textapparent-contraction}
+
+\textbackslash text\{unitary exchange kernel\} +
+\textbackslash text\{localization redistribution\} +
+\textbackslash text\{channel-wise normalization\} +
+\textbackslash text\{restricted observation section\} \}. \$\$
+
+This is not a claim to have reproduced the state-update rule of standard
+quantum measurement. It is, however, a concrete mathematical model
+capable of producing contraction-like observations without postulating
+instantaneous nonunitary contraction as a fundamental operation.
+
+\subsection{7.3 Recurrent Localization Exchange at Finite-Order
+Roots}\label{73-recurrent-localization-exchange-at-finite-order-roots}
+
+When the exchange weight is
+
+\[
+R=R_{n,m},
+\]
+
+the linear kernel \(U_R\) restores every input exactly after \(n\)
+iterations.
+
+Thus, even if localization becomes concentrated in one channel at an
+intermediate stage of the unnormalized linear evolution, that change is
+not irreversible absorption but one phase of a closed orbit. For the
+full System A orbit including channel-wise normalization, the conditions
+under which this closure survives must be distinguished numerically.
+
+This structure allows the following to be treated as phases of a single
+periodic orbit:
+
+\begin{itemize}
+\tightlist
+\item
+  a moment that appears localized,
+\item
+  a moment that becomes delocalized again,
+\item
+  a moment at which A and B are interchanged, and
+\item
+  the moment of exact return to the initial state.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{8. Relation to the White-Cat, Black-Cat, and Gray-Cat
+System}\label{8-relation-to-the-white-cat-black-cat-and-gray-cat-system}
+
+\subsection{8.1 A Metastable Two-State
+System}\label{81-a-metastable-two-state-system}
+
+In System B, the allocation difference
+
+\[
+S_j=|A_j|^2-|B_j|^2
+\]
+
+represents the dominance of the two states A and B.
+
+Because the antisymmetric eigenphase rotates, it generally has the form
+
+\[
+S_j=C\cos(j\omega+\varphi_0).
+\]
+
+The gray state is therefore not merely a static half-and-half mixture of
+A and B; it can be represented as a dynamically metastable state in
+which the A/B allocation difference is exchanged periodically with small
+amplitude.
+
+\subsection{8.2 Weak Readout and Strong-Observation
+Selection}\label{82-weak-readout-and-strong-observation-selection}
+
+A one-step update in System B can be written by separating the
+unperturbed exchange kernel from the observation maps:
+
+\[
+\begin{aligned}
+\Psi_{j+1}^{(C)}
+&=\mathcal C\!\left(U_R\Psi_j^{(C)}\right),\\
+\Psi_{j+1}^{(D)}
+&=\mathcal D\!\left(U_R\Psi_j^{(D)}\right).
+\end{aligned}
+\]
+
+Under weak C readout, the observational action is small and reads the
+allocation difference without substantially changing the iterated orbit.
+Strong D observation has an explicit nonlinear backreaction that uses
+the read value \(S_{D,j}\) to update
+
+\section{\$\$ S\_\{j+1\}}\label{-s_j1-1}
+
+S\_j+g\_D S\_\{D,j\}(1-S\_j\^{}2), \$\$
+
+thereby driving the system toward a state dominated by either A or B.
+The direction and irreversibility of A/B selection therefore do not
+arise from the finite-order kernel \(U_R\) alone; they depend on the
+structure of \(\mathcal D\) and on the coupling strength \(g_D\).
+
+This construction is not a direct implementation of the standard
+theories of weak and strong measurement. It nevertheless distinguishes,
+within the same model,
+
+\begin{itemize}
+\tightlist
+\item
+  a readout that tends to preserve the state, and
+\item
+  a selective operation that changes the state.
+\end{itemize}
+
+Here, \(U_R\) determines the locations of the finite-order roots,
+\(\mathcal C\) reads the gray orbit while disturbing it as little as
+possible, and \(\mathcal D\) selects A or B. This division of roles
+makes it possible to connect recurrence and observation selection
+without confusing them as effects of the same operator.
+
+\subsection{8.3 The Context in Which the Born-Type Weights
+Appeared}\label{83-the-context-in-which-the-born-type-weights-appeared}
+
+It is important that the \(\cos^2\) sequence was not discovered from an
+abstract two-state vector alone.
+
+It emerged while identifying the cause of peaks in numerical experiments
+that evaluated the finite order of the unperturbed exchange kernel in a
+system containing
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  two states A and B,
+\item
+  an intermediate gray metastable state,
+\item
+  preservation under weak readout,
+\item
+  A/B selection by a separately implemented strong-observation
+  backreaction, and
+\item
+  closed orbits with small long-time drift.
+\end{enumerate}
+
+The principal significance of this work is therefore that, in a family
+of mathematical models resembling the physical context in which a
+Born-type square law is ordinarily used, the same form of weight emerges
+from the finite-order condition of the unperturbed kernel, and the C/D
+observation maps can be connected to that same kernel.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{9. Numerical Peaks and Analytic
+Roots}\label{9-numerical-peaks-and-analytic-roots}
+
+\subsection{9.1 Peak Metric}\label{91-peak-metric}
+
+For a time series of length \(k\) in System B, we evaluated
+
+\section{\$\$ \textbackslash overline S\_k}\label{-overline-s_k}
+
+\textbackslash frac1k\textbackslash sum\_\{j=0\}\^{}\{k-1\}S\_j, \$\$
+
+\section{\$\$ A\_k}\label{-a_k}
+
+\textbackslash frac\{\textbackslash max\_\{j\textless k\}S\_j-\textbackslash min\_\{j\textless k\}S\_j\}\{2\},
+\$\$
+
+\section{\$\$ D\_k}\label{-d_k}
+
+\subsection{\textbackslash left\textbar{} \textbackslash overline
+S\_\{k,\textbackslash mathrm\{second\}\}}\label{left-overline-s_kmathrmsecond}
+
+\textbackslash overline S\_\{k,\textbackslash mathrm\{first\}\}
+\textbackslash right\textbar. \$\$
+
+The principal conditions used to confirm the finite-order roots directly
+were the initial relative phase
+
+\[
+\varphi_0=0\ \text{or}\ \pi,
+\]
+
+the code-level initial difference \(s_0=0.01\), and hence the allocation
+difference
+
+\[
+S_0=|a_0|^2-|b_0|^2=0.02,
+\]
+
+with target amplitude \(C=0.02\). Under these conditions, the gray error
+was defined as
+
+\section{\$\$ \textbackslash varepsilon\_k}\label{-varepsilon_k}
+
+\textbar\textbackslash overline S\_k\textbar{} +
+\textbar A\_k-C\textbar{} + D\_k, \$\$
+
+and the depth as
+
+\[
+d_k=-\log_{10}\varepsilon_k.
+\]
+
+This metric does not evaluate agreement with a Born probability. It
+evaluates
+
+\begin{itemize}
+\tightlist
+\item
+  neutrality of the mean,
+\item
+  preservation of the oscillation amplitude, and
+\item
+  absence of drift between the first and second halves.
+\end{itemize}
+
+\subsection{9.2 Even-Order Roots}\label{92-even-order-roots}
+
+Under the principal condition \(\varphi_0=0\) or \(\pi\), the allocation
+difference at a root of Theorem 5.1 is
+
+\section{\$\$ S\_j}\label{-s_j}
+
+C\textbackslash cos\textbackslash left(\textbackslash frac\{2\textbackslash pi
+m\}\{n\}j\textbackslash right), \textbackslash qquad C=0.02. \$\$
+
+If the primitive order \(n\) is even and \(\gcd(m,n)=1\), then \(m\) is
+odd, so the lattice points contain exactly
+
+\[
+S_0=C,
+\qquad
+S_{n/2}=C\cos(\pi m)=-C.
+\]
+
+The sum of the cyclotomic phases over one period is also zero.
+
+Therefore, when two complete periods \(j=0,\ldots,2n-1\), comprising
+\(2n\) samples, are taken, the current gray metric satisfies exactly
+
+\[
+\overline S=0,
+\qquad
+A=C,
+\qquad
+D=0.
+\]
+
+This does not assert that the gray error vanishes for every initial
+state and every evaluation window whenever the order is even. Operator
+recurrence \(U_R^n=I\) is independent of the initial state, but the
+amplitude condition and zero error above are exact results under the
+experimental conditions \(\varphi_0=0\) or \(\pi\), \(S_0=C=0.02\), and
+a two-complete-period sampling window.
+
+Consequently,
+
+\[
+\varepsilon=0,
+\]
+
+and in ideal arithmetic
+
+\[
+d\rightarrow+\infty.
+\]
+
+What diverges is not a physical energy or amplitude but the negative
+logarithm of an error metric for a perfectly periodic orbit.
+Finite-precision calculations display a finite depth because of rounding
+error.
+
+\subsection{9.3 Odd-Order Roots and Observable
+Dependence}\label{93-odd-order-roots-and-observable-dependence}
+
+For an odd primitive order \(n\),
+
+\[
+U_R^n=I
+\]
+
+still holds.
+
+If, however, the finite sampled sequence does not contain both positive
+and negative extrema as lattice points, a small deficit remains in the
+present amplitude estimate.
+
+Therefore,
+
+\[
+\boxed{
+\text{exact operator recurrence}
+\neq
+\text{an infinitely deep peak in a particular observable}
+}.
+\]
+
+This shows the need to distinguish the candidate sequence of Born-type
+weights from how visibly that sequence appears in a particular
+experiment.
+
+\subsection{9.4 The Two Observed Principal
+Peaks}\label{94-the-two-observed-principal-peaks}
+
+The two principal peaks tracked by the full-range and local
+high-precision sweeps coincide with the following roots of Theorem 5.1
+{[}4{]}.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule\noalign{}
+Root & Primitive order \(n\) & \(m\) & \(R_{n,m}=\lvert r\rvert^2\) &
+\(T_{n,m}=\lvert t\rvert^2\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(R_{124,23}\) & 124 & 23 & 0.697177927556659 & 0.302822072443341 \\
+\(R_{122,23}\) & 122 & 23 & 0.688363946817593 & 0.311636053182407 \\
+\end{longtable}
+}
+
+Both have even primitive order and odd \(m=23\). Hence, under the
+principal conditions of §9.2, the positive and negative extrema occur on
+the sampling lattice and the gray error vanishes in ideal arithmetic.
+The sharp peaks observed in the numerical sweeps are finite-precision
+readouts of this even-order cyclotomic recurrence.
+
+What has been identified here is not the fine-structure constant itself,
+but finite-order roots of the exchange operator. The theorem in this
+paper does not explain why these roots lie near physical constants; that
+remains the separate problem retained in the preceding report {[}4{]}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{10. What This Study
+Establishes}\label{10-what-this-study-establishes}
+
+\subsection{10.1 Derived Mathematical
+Consequences}\label{101-derived-mathematical-consequences}
+
+The following statements are derived rigorously in this work.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Up to an overall phase, an exchange-symmetric two-channel unitary
+  operator is represented uniquely as
+\end{enumerate}
+
+\[
+U=P_s+\zeta P_a,
+\qquad |\zeta|=1.
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  The exchange amplitudes in the channel basis are
+\end{enumerate}
+
+\[
+r=\frac{1+\zeta}{2},
+\qquad
+t=\frac{1-\zeta}{2},
+\]
+
+so an independent trigonometric assumption is unnecessary.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\item
+  After the overall phase has been fixed, the exact recurrence condition
+  \(U^n=I\) is equivalent to the antisymmetric eigenphase being an
+  \(n\)th root of unity.
+\item
+  At a nontrivial finite-order root \(\zeta=e^{-2\pi im/n}\), the A/B
+  transition weight from an A-basis input is
+\end{enumerate}
+
+\[
+W_{A\to A}(n,m)=\cos^2\left(\frac{\pi m}{n}\right).
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  The complementary weight is
+\end{enumerate}
+
+\[
+W_{A\to B}(n,m)=\sin^2\left(\frac{\pi m}{n}\right).
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\item
+  As squared magnitudes of amplitude projections onto the A/B basis,
+  these weights use the same mathematical operation and have the same
+  \(\cos^2/\sin^2\) form as the standard two-state Born rule.
+\item
+  This discrete sequence was not obtained by inserting the Born rule as
+  the objective function; it follows from exchange symmetry, unitarity,
+  and finite-order recurrence.
+\item
+  The theorem concerns the common linear kernel \(U\) and does not claim
+  identity with the complete maps containing channel-wise normalization
+  in System A or the C/D backreactions in System B.
+\end{enumerate}
+
+\subsection{10.2 Physical Implications Suggested by the
+Result}\label{102-physical-implications-suggested-by-the-result}
+
+The study suggests the following possibility:
+
+\begin{quote}
+Born-type squared weights can appear as transition weights obtained by
+projecting the finitely recurrent eigenphases of an exchange-symmetric
+closed two-channel wave system onto its channel basis.
+\end{quote}
+
+It further suggests:
+
+\begin{quote}
+Localization concentration that appears as wave-packet contraction can
+be represented as a composition of a unitary exchange kernel,
+redistribution of localization, channel-wise normalization, and a
+restricted observation section. Two-state selection under strong
+observation can be represented as a separate dynamics obtained by
+connecting a nonlinear D backreaction to the same exchange kernel.
+\end{quote}
+
+\subsection{10.3 What This Study Does Not Yet
+Establish}\label{103-what-this-study-does-not-yet-establish}
+
+This paper does not prove
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  the complete Born rule of standard quantum mechanics,
+\item
+  a mechanism generating a probabilistic outcome in a single trial,
+\item
+  convergence of repeated-trial frequencies to \(\cos^2\phi\),
+\item
+  uniqueness of a general projection measure in arbitrary-dimensional
+  Hilbert space,
+\item
+  irreversibility in an actual quantum measurement,
+\item
+  complete dynamics of the observer, environment, or decoherence,
+\item
+  identity between localization transfer in System A and standard
+  wave-function collapse,
+\item
+  exact closure of the complete System A map including channel-wise
+  normalization at the same finite order as the linear kernel, or
+\item
+  unique determination of the same channel weights for a general
+  \(U(2)\) operator without exchange symmetry.
+\end{enumerate}
+
+Accordingly, this paper does not state that it has ``derived the Born
+rule.'' Its claim is instead:
+
+\begin{quote}
+Discrete Born-type weights emerge from finite-order recurrence.
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{11. Relation to the Standard Born
+Rule}\label{11-relation-to-the-standard-born-rule}
+
+\subsection{11.1 Born\textquotesingle s Statistical
+Interpretation}\label{111-borns-statistical-interpretation}
+
+In 1926, Born introduced the statistical interpretation that reads event
+probabilities from the amplitude of the wave function in quantum
+scattering {[}5{]}. In modern notation, for a normalized state
+\(|\psi\rangle\) and projector \(P_A\),
+
+\[
+P(A)=\langle\psi|P_A|\psi\rangle.
+\]
+
+For a pure state and a one-dimensional projection,
+
+\[
+P(A)=|\langle A|\psi\rangle|^2.
+\]
+
+\subsection{11.2 Difference from Gleason\textquotesingle s
+Theorem}\label{112-difference-from-gleasons-theorem}
+
+Gleason\textquotesingle s theorem shows that, in Hilbert spaces of
+dimension three or greater, an additive probability measure on
+orthogonal projections has the density-operator form
+
+\[
+\mu(P)=\operatorname{Tr}(\rho P)
+\]
+
+{[}6{]}. It is a strong result concerning the mathematical uniqueness of
+Born-type measures.
+
+The standard Gleason theorem does not directly include two-dimensional
+Hilbert spaces. Busch, however, obtained a generalized Gleason-type
+result with a density-operator representation by imposing additivity on
+effects, a broader class than projective measurements {[}7{]}. Thus,
+established mathematical frameworks also characterize Born-type measures
+for two-state systems.
+
+The present study does not address that level of generality. It concerns
+an iterated two-channel exchange system and asks
+
+\begin{quote}
+Why are particular squared projection values selected as exchange
+weights capable of finite recurrence?
+\end{quote}
+
+The roles are therefore different:
+
+\begin{itemize}
+\tightlist
+\item
+  Gleason-type results constrain the form of a consistent probability
+  measure.
+\item
+  This work identifies the discrete squared weights selected by the
+  closure condition of an iterated exchange dynamics.
+\end{itemize}
+
+\subsection{11.3 Difference from Other Derivations of the Born
+Rule}\label{113-difference-from-other-derivations-of-the-born-rule}
+
+Zurek\textquotesingle s envariance argument aims to derive
+Schmidt-component probabilities \(p_k\propto|\psi_k|^2\) from
+entanglement symmetry in a composite system {[}8{]}. It directly
+addresses the question of why squared amplitudes should be read as
+probabilities.
+
+The question here is different. Without taking probability as the
+starting concept, we classify the eigenphases satisfying
+
+\[
+U^n=I
+\]
+
+for a single exchange-symmetric two-channel operator and show that its
+channel-projection weights become \(\cos^2/\sin^2\). This paper is
+therefore not an alternative to envariance or Gleason-type measure
+theorems, but presents another mathematical route by which Born-type
+projection weights arise from finite-order recurrence.
+
+\subsection{11.4 Connection to Exact-Recurrence
+Research}\label{114-connection-to-exact-recurrence-research}
+
+Anand et al. classified exact, initial-state-independent recurrence in
+finite-dimensional Floquet systems through the cyclotomic structure of
+unitary spectra {[}9{]}. The condition
+
+\[
+\zeta^n=1
+\]
+
+in this paper is the minimal two-channel realization of such exact
+recurrence. Whereas that preceding work gives an arithmetic
+classification of recurrence times for general Floquet spectra, exchange
+symmetry here fixes the eigenvectors to symmetric and antisymmetric
+modes. Returning their cyclotomic eigenphases to the A/B channel basis
+yields
+
+\section{\$\$ \textbackslash left\textbar{}
+\textbackslash frac\{1\textbackslash pm\textbackslash zeta\}\{2\}
+\textbackslash right\textbar\^{}2}\label{-left-frac1pmzeta2-right2}
+
+\textbackslash cos\^{}2\textbackslash phi,\textbackslash{}
+\textbackslash sin\^{}2\textbackslash phi. \$\$
+
+This mapping from cyclotomic recurrence to channel squared weights is
+the particular focus of the present paper.
+
+\subsection{11.5 Significance of Restricting the Analysis to a Two-State
+System}\label{115-significance-of-restricting-the-analysis-to-a-two-state-system}
+
+Because this is a two-state system, the Born rule is not derived by
+directly applying Gleason\textquotesingle s theorem.
+
+Two-state systems nevertheless form the minimal models of
+
+\begin{itemize}
+\tightlist
+\item
+  interference,
+\item
+  two-level spin,
+\item
+  two-path measurement,
+\item
+  two-mode optics, and
+\item
+  A/B observation selection.
+\end{itemize}
+
+Showing that recurrent exchange weights in this minimal model appear as
+
+\[
+\cos^2\phi,
+\qquad
+\sin^2\phi
+\]
+
+is a result with a clearly delimited domain of validity before any
+extension to a general theory.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{12. Falsifiable Tests}\label{12-falsifiable-tests}
+
+\subsection{\texorpdfstring{12.1 The Exchange-Symmetric Subgroup and
+General
+\(U(2)\)}{12.1 The Exchange-Symmetric Subgroup and General U(2)}}\label{121-the-exchange-symmetric-subgroup-and-general-u2}
+
+Theorem 5.1 rules out the possibility that the \(\cos^2\) form arises
+only from the scattering-coefficient representation of §3. What is
+required is not a particular trigonometric coordinate but the A/B
+exchange symmetry
+
+\[
+[U,X]=0.
+\]
+
+A general two-level unitary operator, including its overall phase, can
+be written as
+
+\section{\$\$ U}\label{-u}
+
+e\^{}\{i\textbackslash alpha\} \textbackslash left(
+\textbackslash cos\textbackslash beta,I
+-i\textbackslash sin\textbackslash beta,\textbackslash boldsymbol
+n\textbackslash cdot\textbackslash boldsymbol\textbackslash sigma
+\textbackslash right), \textbackslash qquad
+\textbar\textbackslash boldsymbol n\textbar=1. \$\$
+
+The finite-order condition quantizes the eigenphase \(\beta\) to a
+rational angle, but the transition weight from the A basis to the B
+basis is
+
+\section{\$\$ \textbar\textbackslash langle
+B\textbar U\textbar A\textbackslash rangle\textbar\^{}2}\label{-langle-buarangle2}
+
+\textbackslash sin\^{}2\textbackslash beta,(n\_x\^{}2+n\_y\^{}2), \$\$
+
+which retains the eigenvector axis \(\boldsymbol n\). Finite order alone
+therefore cannot uniquely fix the general-\(U(2)\) A/B weight to
+\(\sin^2\beta\).
+
+The theorem here applies to the centralizer of the exchange operator
+\(X=\sigma_x\): the case in which \(\boldsymbol n\) is fixed to the
+exchange axis and the symmetric and antisymmetric eigenvectors have
+equal weights relative to the A/B basis. This is not a defect of the
+theorem but the identification of the precise symmetry condition that
+produces the discrete Born-type weights.
+
+A falsifiable next test is to introduce a controlled perturbation with
+\([U,X]\ne0\) and measure whether the peak weights change according to
+the axis factor \(n_x^2+n_y^2\). If they do not, an additional structure
+not explained by the projection mechanism in this paper must be present.
+
+\subsection{12.2 Testing the Frequency
+Law}\label{122-testing-the-frequency-law}
+
+The present result gives closed-orbit weights but does not directly
+generate measurement frequencies.
+
+The next stage must prepare the same A-basis input \(|A\rangle\)
+repeatedly, pass it through the finite-order kernel and an explicit
+measurement/selection map, and measure the A/B output frequencies
+
+\[
+f_{A\to A},
+\qquad
+f_{A\to B},
+\]
+
+testing whether
+
+\[
+f_{A\to A}\rightarrow W_{A\to A}(n,m)=|r_{n,m}|^2,
+\qquad
+f_{A\to B}\rightarrow W_{A\to B}(n,m)=|t_{n,m}|^2.
+\]
+
+If this holds, it will provide a more direct connection between
+finite-order exchange weights and the Born rule as an experimental
+frequency law. For a general superposed input, a frequency law
+containing the interference term in \(r\alpha+t\beta\) must be tested
+separately.
+
+\subsection{12.3 Observational Perturbation and
+Irreversibility}\label{123-observational-perturbation-and-irreversibility}
+
+A fully unitary system is recurrent and is not irreversible in
+principle.
+
+To connect the model to actual observational selection, one must
+introduce
+
+\begin{itemize}
+\tightlist
+\item
+  apparatus degrees of freedom,
+\item
+  environmental degrees of freedom,
+\item
+  phase noise,
+\item
+  channel loss, and
+\item
+  post-readout feedback,
+\end{itemize}
+
+and determine the conditions under which a recurrent orbit becomes
+effectively fixed in either A or B.
+
+\subsection{12.4 Finite-Order Selection Under
+Noise}\label{124-finite-order-selection-under-noise}
+
+Let the displacement from a root be
+
+\[
+R=R_{n,m}+\delta R.
+\]
+
+The resonance width of each finite-order root can be defined by
+measuring the operator residual after \(n\) iterations,
+
+\[
+\mathcal E_n(R)
+:=
+\|U_R^n-I\|.
+\]
+
+One may also introduce per-iteration phase noise
+
+\[
+\theta_j=\theta+\xi_j
+\]
+
+and evaluate the recurrence fidelity of
+
+\[
+U_{j+n-1}\cdots U_j.
+\]
+
+This will distinguish which low-order roots among the mathematically
+dense set are physically robust.
+
+\subsection{12.5 Normalization Audit of System
+A}\label{125-normalization-audit-of-system-a}
+
+The System A implementation contains channel-wise normalization, so its
+complete update map is not the linear operator \(U_R\otimes I\) but a
+state-dependent nonlinear map.
+
+It is therefore necessary to compare three conditions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  no normalization,
+\item
+  joint normalization of the entire two-channel state, and
+\item
+  separate normalization of each channel.
+\end{enumerate}
+
+This comparison must separate the location of the finite-order roots,
+localization transfer, and the visibility of Born-type weights.
+
+Such an audit is required to connect rigorously the finite-order
+structure derived for the common linear kernel to the nonlinear
+wave-packet localization behavior of System A. It has already been
+confirmed that the current implementation uses channel-wise
+normalization. What remains unconfirmed is under which conditions that
+normalization preserves, shifts, or eliminates the finite-order roots of
+the linear kernel.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{13. Discussion}\label{13-discussion}
+
+\subsection{13.1 Principal Insight}\label{131-principal-insight}
+
+The principal insight of this study is that a seemingly continuous wave
+system with a continuous exchange coefficient \(R\) contains exact
+discrete closed orbits classified by integer pairs \((n,m)\), and that
+their weights are fixed directly by exchange symmetry.
+
+Moreover, the exchange weights of these discrete closed orbits are
+
+\[
+R_{n,m}=\cos^2\left(\frac{\pi m}{n}\right).
+\]
+
+Exchange symmetry and unitarity give
+
+\[
+U=P_s+\zeta P_a,
+\]
+
+while finite-order closure gives \(\zeta=e^{-2\pi im/n}\). Hence the
+structure
+
+\[
+\text{discrete phase closure}
+\longrightarrow
+\text{amplitude projection}
+\longrightarrow
+\text{squared weight}
+\]
+
+follows. The \(\cos^2\) form is not a remnant of an assumed scattering
+coordinate; it is the squared interference obtained when the sum and
+difference of two projected eigenphases are returned to the A/B basis.
+
+\subsection{13.2 A Finite-Order Origin of Born-Type
+Weights}\label{132-a-finite-order-origin-of-born-type-weights}
+
+In the Born rule, squared weights are given as observation
+probabilities.
+
+Here, the same squared weights appear as the exchange ratios required to
+return to an identical state after finitely many iterations.
+
+The following proposition is therefore a theorem within this model:
+
+\begin{quote}
+In an exchange-symmetric closed two-channel system, transition weights
+obtained by projecting recurrent cyclotomic eigenphases onto the A/B
+channels form a discrete Born-type squared sequence.
+\end{quote}
+
+In this derivation, probability is not posited initially as an
+unstructured random number. The order is instead
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  a closed phase relation,
+\item
+  an integer ratio permitting finite recurrence,
+\item
+  projection onto the observation basis, and
+\item
+  squaring of the projected component.
+\end{enumerate}
+
+What remains unresolved is the mechanism by which these transition
+weights govern physical repeated-measurement frequencies, not the
+derivation of the discrete squared weights themselves.
+
+\subsection{13.3 A Common Kernel for Contraction, Metastability, and
+Selection}\label{133-a-common-kernel-for-contraction-metastability-and-selection}
+
+Systems A and B were constructed to investigate different phenomena.
+
+After analysis, however,
+
+\begin{itemize}
+\tightlist
+\item
+  concentration of localization that appears as wave-packet contraction,
+\item
+  periodic exchange between the two states A and B,
+\item
+  a gray metastable state,
+\item
+  preservation under weak readout,
+\item
+  selection under strong observation, and
+\item
+  discrete Born-type weights
+\end{itemize}
+
+were all connected to an unperturbed kernel having the same
+decomposition into symmetric and antisymmetric eigenmodes. The complete
+update maps are nevertheless not identical. The localization
+representation in System A adds channel-wise normalization
+\(\mathcal N_A\); weak readout in System B adds \(\mathcal C\); and
+strong-observation selection adds nonlinear backreaction \(\mathcal D\).
+
+This means that phenomena discussed as separate problems in quantum
+measurement can be compared, in the minimal two-channel model, as
+combinations of a ``common exchange-phase kernel'' and distinct
+downstream maps. The important point is that the root location,
+localization representation, weak readout, and strong selection can be
+connected in the same computational model without conflating them as a
+single effect.
+
+\subsection{13.4 Exact Central
+Conclusion}\label{134-exact-central-conclusion}
+
+The exact central conclusion of this paper is:
+
+\begin{quote}
+The common linear kernel of model families independently constructed to
+study wave-packet localization transfer, metastable two-state dynamics,
+weak readout, and strong-observation selection is an exchange-symmetric
+two-channel unitary operator. Finite-order closure of this kernel
+necessarily yields the discrete channel-projection weights
+\(\cos^2(\pi m/n)\) and \(\sin^2(\pi m/n)\) without specifying the Born
+rule as the target of the search.
+\end{quote}
+
+This is not a derivation of the complete Born rule. It does show, by a
+reproducible model and analytic formulas, that discrete Born-type
+squared weights arise from exchange symmetry, unitarity, finite-order
+closure, and channel projection. The frequency law, nonlinear closure of
+System A, and correspondence between D observation and standard
+measurement dynamics are separate next problems, not parts of this
+theorem.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{14. Conclusion}\label{14-conclusion}
+
+This study analyzed two-channel unitary operators commuting with the
+channel-exchange operator \(X\). By exchange symmetry, after fixing the
+overall phase the operator can be written as
+
+\[
+U=P_s+\zeta P_a,
+\qquad |\zeta|=1.
+\]
+
+Returning to the channel basis gives the amplitudes
+
+\[
+r=\frac{1+\zeta}{2},
+\qquad
+t=\frac{1-\zeta}{2}.
+\]
+
+The finite-order condition \(U^n=I\) quantizes the antisymmetric
+eigenphase to
+
+\[
+\zeta=e^{-2\pi im/n},
+\]
+
+and yields the finitely recurrent channel-projection weight
+
+\[
+\boxed{
+|r_{n,m}|^2=\cos^2\left(\frac{\pi m}{n}\right)
+}
+\]
+
+and its complement
+
+\[
+\boxed{
+|t_{n,m}|^2=\sin^2\left(\frac{\pi m}{n}\right)
+}.
+\]
+
+As squared magnitudes of the amplitudes obtained by projecting an
+A-basis input onto the A/B basis, this \(\cos^2/\sin^2\) form has the
+same mathematical structure as the standard two-state Born rule in
+quantum mechanics. The trigonometric form is not an independent
+assumption: it follows from interference between the exchange-symmetric
+projectors \(P_s,P_a\) and a cyclotomic eigenphase.
+
+The important point is that the model was not designed to reproduce this
+form. It began with two numerical models intended to study wave-packet
+localization transfer, contraction-like localization, the
+white-cat/black-cat/gray-cat metastable interface, weak readout, and
+strong-observation selection. Subsequent eigenvalue analysis of the
+observed sharp peaks identified the finite-order roots and discrete
+Born-type weights, which this paper then elevated to an
+exchange-symmetric finite-order theorem independent of the trigonometric
+parametrization.
+
+The roles of the implementation have also been separated. The common
+linear kernel \(U\) determines the root locations;
+\(\mathcal N_A\circ U\), including channel-wise normalization, produces
+the localization representation of System A; and \(\mathcal C\circ U\)
+and \(\mathcal D\circ U\) produce weak readout and strong selection,
+respectively, in System B.
+
+The conclusion of this paper is therefore not a complete derivation of
+the Born rule.
+
+What has been established is the precise mathematical connection
+
+\[
+\boxed{
+\begin{gathered}
+\text{exchange-symmetric unitary kernel}
++\text{cyclotomic finite-order closure}\\
++\text{A/B channel projection}
+\Rightarrow\text{discrete Born-type squared weights}
+\end{gathered}
+}.
+\]
+
+The next stage will examine general \(U(2)\) control experiments that
+break exchange symmetry, reproduction of measurement frequencies,
+inclusion of apparatus and environmental degrees of freedom, selection
+of roots under noise, and an audit of System A under different
+normalization conditions.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{References}\label{references}
+
+\subsection{Self-Citations}\label{self-citations}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Noriaki Kihara, ``Experimental Specification v1 for Low-Localization
+  and Harmonic Transfer Readout in Fermion-Like Collisions Using an
+  Exchange-Interference Scattering Matrix,'' 2026. {[}Japanese{]}.
+\item
+  Noriaki Kihara, ``Preliminary Experimental Summary v1 of the
+  Acceleration Basis and Localization Exchange in Fermion-Like
+  Collisions Using an Exchange-Interference Scattering Matrix,'' Zenodo
+  Concept DOI: 10.5281/zenodo.21333766, 2026. {[}Japanese{]}.
+\item
+  Noriaki Kihara, ``Preliminary Experimental Summary v1 of C Weak
+  Readout and D Strong-Observation Selection at a White-Cat, Black-Cat,
+  and Gray-Cat Metastable Interface,'' Zenodo Concept DOI:
+  10.5281/zenodo.21353208, 2026. {[}Japanese{]}.
+\item
+  Noriaki Kihara, ``Discovery of Finite-Order Resonances in Iterated
+  Exchange Scattering: Identification of the Origin of Peaks Near the
+  Fine-Structure Values 137 and 128 and a Reproducible Wave-Packet
+  Mathematical Model,'' Version DOI: 10.5281/zenodo.21421367, Concept
+  DOI: 10.5281/zenodo.21421366, 2026.
+\end{enumerate}
+
+\subsection{External References}\label{external-references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Max Born, ``Zur Quantenmechanik der Stoßvorgänge,'' \emph{Zeitschrift
+  für Physik} \textbf{37}, 863--867 (1926). DOI: 10.1007/BF01397477.
+\item
+  Andrew M. Gleason, ``Measures on the Closed Subspaces of a Hilbert
+  Space,'' \emph{Journal of Mathematics and Mechanics} \textbf{6},
+  885--893 (1957). DOI: 10.1512/iumj.1957.6.56050.
+\item
+  Paul Busch, ``Quantum States and Generalized Observables: A Simple
+  Proof of Gleason\textquotesingle s Theorem,'' \emph{Physical Review
+  Letters} \textbf{91}, 120403 (2003). DOI:
+  10.1103/PhysRevLett.91.120403.
+\item
+  Wojciech H. Zurek, ``Probabilities from Entanglement:
+  Born\textquotesingle s Rule \(p_k=|\psi_k|^2\) from Envariance,''
+  \emph{Physical Review A} \textbf{71}, 052105 (2005). DOI:
+  10.1103/PhysRevA.71.052105.
+\item
+  Amit Anand, Dinesh Valluri, Jack Davis, and Shohini Ghose, ``Quantum
+  Recurrences and the Arithmetic of Floquet Dynamics,'' \emph{Quantum}
+  \textbf{10}, 2074 (2026). DOI: 10.22331/q-2026-04-20-2074.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Appendix A. Classification of
+Claims}\label{appendix-a-classification-of-claims}
+
+{\def\LTcaptype{none} % do not increment counter
+\small
+\begin{longtable}[]{@{}p{0.54\linewidth}p{0.39\linewidth}@{}}
+\toprule\noalign{}
+Claim & Classification \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Phase-fixed representation \(U=P_s+\zeta P_a\) of an exchange-symmetric
+unitary operator & Derived consequence of Theorem 5.1 \\
+Finite-order condition \(U^n=I\Leftrightarrow\zeta^n=1\) & Derived
+consequence of Theorem 5.1 \\
+\(r=(1+\zeta)/2\), \(t=(1-\zeta)/2\) & Derived from the projector
+decomposition \\
+\(\lvert r_{n,m}\rvert^2=\cos^2(\pi m/n)\) & Derived consequence \\
+\(\lvert t_{n,m}\rvert^2=\sin^2(\pi m/n)\) & Derived consequence \\
+Trigonometric form is recovered as an implementation coordinate rather
+than an independent assumption & Derived consequence \\
+Isomorphism between finite-order weights for a basis input and two-state
+Born projection & Derived comparison \\
+The \(\cos^2\) sequence was not entered as the search target & Fact
+about experimental and development history \\
+Systems A and B share the same unnormalized, unperturbed linear kernel &
+Implementation fact confirmed in source code \\
+System A uses channel-wise normalization and its complete map is
+nonlinear & Implementation fact confirmed in source code \\
+The complete nonlinear map of System A recurs exactly with the same
+order as the linear kernel & Untested \\
+D selection in System B has an explicit nonlinear backreaction &
+Implementation fact confirmed in source code \\
+The gray error vanishes at even-order roots & Derived consequence
+restricted to \(\varphi_0=0\) or \(\pi\), \(S_0=C=0.02\), and \(2n\)
+samples \\
+Infinitely deep peak & Mathematical divergence of the error metric
+\(-\log_{10}\varepsilon\); not an energy divergence \\
+Finite order alone does not determine the same A/B weights for general
+\(U(2)\) & Derived consequence of §12.1 \\
+Contraction-like wave-packet behavior can be represented by the exchange
+kernel, normalization, and partial observation & Mathematical finding
+within the present System A model \\
+Standard quantum-mechanical wave-function collapse has been explained &
+Not derived \\
+The complete Born rule has been derived & Not derived \\
+Repeated-measurement frequencies converge to \(\cos^2\) & Untested \\
+Discrete Born-type channel weights originate from finite-order phase
+closure & Derived for the exchange-symmetric two-channel kernel \\
+The physical Born frequency law originates from finite-order phase
+closure & Physical hypothesis for future testing \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Appendix B. Minimal Reproduction
+Formulas}\label{appendix-b-minimal-reproduction-formulas}
+
+The central result of this paper can be reproduced without assuming a
+trigonometric representation, using only the following formulas.
+
+\subsection{B.1 Exchange-Symmetric
+Projectors}\label{b1-exchange-symmetric-projectors}
+
+\[
+X=
+\begin{pmatrix}
+0&1\\
+1&0
+\end{pmatrix},
+\]
+
+\[
+P_s=\frac{I+X}{2},
+\qquad
+P_a=\frac{I-X}{2}.
+\]
+
+\subsection{B.2 Exchange-Symmetric Unitary
+Operator}\label{b2-exchange-symmetric-unitary-operator}
+
+If
+
+\[
+[U,X]=0,
+\qquad
+U^\dagger U=I,
+\]
+
+then, after fixing the overall phase,
+
+\[
+\boxed{
+U=P_s+\zeta P_a,
+\qquad |\zeta|=1
+}
+\]
+
+can be written.
+
+\subsection{B.3 Finite-Order Condition}\label{b3-finite-order-condition}
+
+For a nontrivial primitive order \(n\ge3\),
+
+\[
+U^n=I
+\quad\Longleftrightarrow\quad
+\zeta^n=1.
+\]
+
+Thus, with \(\gcd(m,n)=1\),
+
+\[
+\zeta=e^{-2\pi im/n}.
+\]
+
+\subsection{B.4 Channel Amplitudes and Squared
+Weights}\label{b4-channel-amplitudes-and-squared-weights}
+
+\section{\$\$ U}\label{-u-1}
+
+\section{\textbackslash frac12 \textbackslash begin\{pmatrix\}
+1+\textbackslash zeta\&1-\textbackslash zeta\textbackslash{}
+1-\textbackslash zeta\&1+\textbackslash zeta
+\textbackslash end\{pmatrix\}}\label{frac12-beginpmatrix-1zeta1-zeta-1-zeta1zeta-endpmatrix-1}
+
+\textbackslash begin\{pmatrix\} r\&t\textbackslash{} t\&r
+\textbackslash end\{pmatrix\}, \$\$
+
+and hence
+
+\[
+r=\frac{1+\zeta}{2},
+\qquad
+t=\frac{1-\zeta}{2}.
+\]
+
+Their squared magnitudes are
+
+\[
+\boxed{
+|r_{n,m}|^2
+=\cos^2\left(\frac{\pi m}{n}\right)
+}
+\]
+
+and
+
+\[
+\boxed{
+|t_{n,m}|^2
+=\sin^2\left(\frac{\pi m}{n}\right)
+}.
+\]
+
+These are the discrete Born-type weights of an exchange-symmetric
+two-channel process that recurs exactly after finitely many iterations.
+
+\subsection{B.5 Recovery of the Numerical Implementation
+Coordinates}\label{b5-recovery-of-the-numerical-implementation-coordinates}
+
+The implementation parametrization
+
+\[
+t=e^{i\theta}\cos\theta,
+\qquad
+r=-ie^{i\theta}\sin\theta
+\]
+
+is a coordinate representation of the same operator obtained by setting
+
+\[
+\zeta=-e^{2i\theta}.
+\]
+
+Indeed, the sum and difference in B.4 give
+
+\section{\$\$
+\textbackslash frac\{1+\textbackslash zeta\}\{2\}}\label{-frac1zeta2}
+
+\section{\textbackslash frac\{1-e\^{}\{2i\textbackslash theta\}\}\{2\}}\label{frac1-e2itheta2}
+
+-ie\^{}\{i\textbackslash theta\}\textbackslash sin\textbackslash theta=r,
+\$\$
+
+\section{\$\$
+\textbackslash frac\{1-\textbackslash zeta\}\{2\}}\label{-frac1-zeta2}
+
+\section{\textbackslash frac\{1+e\^{}\{2i\textbackslash theta\}\}\{2\}}\label{frac1e2itheta2}
+
+e\^{}\{i\textbackslash theta\}\textbackslash cos\textbackslash theta=t.
+\$\$
+
+At a finite-order root,
+
+\section{\$\$ \textbackslash theta}\label{-theta-1}
+
+\textbackslash frac\{\textbackslash pi\}\{2\}-\textbackslash frac\{\textbackslash pi
+m\}\{n\} \textbackslash pmod\textbackslash pi, \$\$
+
+which reproduces the weights in B.4 directly.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Appendix C. Correspondence with the Core
+Implementations}\label{appendix-c-correspondence-with-the-core-implementations}
+
+The core updates are shown here so that readers can verify both that the
+finite-order roots were not inserted into the code as hidden constants
+and that the linear kernel is separated from the downstream maps.
+
+\subsection{C.1 System A: Channel-Wise Normalization After Linear
+Exchange}\label{c1-system-a-channel-wise-normalization-after-linear-exchange}
+
+The iterated update in the
+\href{../20260715/run_system_A_localization_exchange_R_sweep_preliminary_v1.py}{System
+A implementation} is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a\_next }\OperatorTok{=}\NormalTok{ src.normalize(r }\OperatorTok{*}\NormalTok{ a }\OperatorTok{+}\NormalTok{ t }\OperatorTok{*}\NormalTok{ b)}
+\NormalTok{b\_next }\OperatorTok{=}\NormalTok{ src.normalize(t }\OperatorTok{*}\NormalTok{ a }\OperatorTok{+}\NormalTok{ r }\OperatorTok{*}\NormalTok{ b)}
+\NormalTok{a, b }\OperatorTok{=}\NormalTok{ a\_next, b\_next}
+\end{Highlighting}
+\end{Shaded}
+
+This explicitly contains the common linear kernel
+
+\[
+(a,b)\mapsto(ra+tb,\ ta+rb)
+\]
+
+and separate normalization of each output channel. The complete
+localization-transfer map is therefore nonlinear.
+
+\subsection{C.2 System B: Unperturbed Finite-Order
+Kernel}\label{c2-system-b-unperturbed-finite-order-kernel}
+
+The iterated update in the
+\href{../20260715/run_minimal_system_B_gray_direct_check_v5.py}{System B
+direct finite-order test} is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a, b }\OperatorTok{=}\NormalTok{ normalize\_pair(r }\OperatorTok{*}\NormalTok{ a }\OperatorTok{+}\NormalTok{ t }\OperatorTok{*}\NormalTok{ b, t }\OperatorTok{*}\NormalTok{ a }\OperatorTok{+}\NormalTok{ r }\OperatorTok{*}\NormalTok{ b)}
+\end{Highlighting}
+\end{Shaded}
+
+As long as \(U_R\) is unitary and the input pair is normalized, the
+normalization factor in \texttt{normalize\_pair} is one. Thus, the
+iteration that determines the peak locations in this direct test is
+exactly the linear kernel \(U_R\); neither \(R_{124,23}\) nor
+\(R_{122,23}\) is injected into the update equation as a target value.
+
+\subsection{C.3 System B: Nonlinear Backreaction of Strong D
+Observation}\label{c3-system-b-nonlinear-backreaction-of-strong-d-observation}
+
+The
+\href{../20260714/run_gray_cat_d_observation_response_preliminary_v1.py}{strong-D-observation
+implementation} adds the following backreaction after exchange:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s\_next }\OperatorTok{=}\NormalTok{ s }\OperatorTok{+}\NormalTok{ d\_gain }\OperatorTok{*}\NormalTok{ s\_d }\OperatorTok{*}\NormalTok{ (}\FloatTok{1.0} \OperatorTok{{-}}\NormalTok{ s }\OperatorTok{*}\NormalTok{ s)}
+\NormalTok{a\_next }\OperatorTok{=}\NormalTok{ math.sqrt(}\FloatTok{0.5} \OperatorTok{*}\NormalTok{ (}\FloatTok{1.0} \OperatorTok{+}\NormalTok{ s\_next)) }\OperatorTok{*}\NormalTok{ phase\_a}
+\NormalTok{b\_next }\OperatorTok{=}\NormalTok{ math.sqrt(}\FloatTok{0.5} \OperatorTok{*}\NormalTok{ (}\FloatTok{1.0} \OperatorTok{{-}}\NormalTok{ s\_next)) }\OperatorTok{*}\NormalTok{ phase\_b}
+\end{Highlighting}
+\end{Shaded}
+
+The finite-order roots therefore arise from the cyclotomic spectrum of
+\(U_R\), while strong selection into A or B arises from a separate D
+backreaction. The code structure itself implements the
+paper\textquotesingle s two-layer distinction
+
+\[
+\boxed{
+\text{generation of recurrence roots}
+\ne
+\text{state selection under strong observation}
+}.
+\]
+
+\end{document}
