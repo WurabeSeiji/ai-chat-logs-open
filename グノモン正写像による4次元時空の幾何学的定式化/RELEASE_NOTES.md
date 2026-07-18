@@ -114,6 +114,9 @@
 - **Concept DOI**：[10.5281/zenodo.21421366](https://doi.org/10.5281/zenodo.21421366)
 - **v1 DOI**：[10.5281/zenodo.21421367](https://doi.org/10.5281/zenodo.21421367)
 - **Zenn**：[α⁻¹=137・128近傍の鋭いピークは何だったのか](https://zenn.dev/noriaki_kihara/articles/finite-order-resonance-alpha-neighborhood)
+- **note**：[日本語](https://note.com/kiharanoriaki/n/na16b6a4e5ff2) / [英語](https://note.com/kiharanoriaki/n/n2ebe434754e2)
+- **Facebook**：[日本語](https://www.facebook.com/kihara.noriaki/posts/pfbid02TfzuGxsU55sME8F7YJLbbtTx8T1rMRSW26R1pAdDYUjz2RZFPVRjUHCu5QffdG9El) / [英語](https://www.facebook.com/kihara.noriaki/posts/pfbid02ZVtsg22ASq8Y5ddFEJUYuyMMf5Y3s9eRbFSbchijxYmhcRZJ1ejDUBKwEUzkWvCtl)
+- **X**：[日本語](https://x.com/NoriakiKihara/status/2078325801628700835) / [英語](https://x.com/NoriakiKihara/status/2078326215828734270)
 
 **核心結果**：
 - 交換作用素の反対称固有値から、有限位数根 $R_{n,m}=\cos^2(\pi m/n)$ を解析的に導出

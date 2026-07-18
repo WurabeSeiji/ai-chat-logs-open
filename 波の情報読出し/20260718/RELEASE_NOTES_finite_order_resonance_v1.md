@@ -12,12 +12,30 @@ Release date: 2026-07-18
 
 - https://zenn.dev/noriaki_kihara/articles/finite-order-resonance-alpha-neighborhood
 
+## note
+
+- Japanese: https://note.com/kiharanoriaki/n/na16b6a4e5ff2
+- English: https://note.com/kiharanoriaki/n/n2ebe434754e2
+
+## Facebook
+
+- Japanese: https://www.facebook.com/kihara.noriaki/posts/pfbid02TfzuGxsU55sME8F7YJLbbtTx8T1rMRSW26R1pAdDYUjz2RZFPVRjUHCu5QffdG9El
+- English: https://www.facebook.com/kihara.noriaki/posts/pfbid02ZVtsg22ASq8Y5ddFEJUYuyMMf5Y3s9eRbFSbchijxYmhcRZJ1ejDUBKwEUzkWvCtl
+
+## X
+
+- Japanese: https://x.com/NoriakiKihara/status/2078325801628700835
+- English: https://x.com/NoriakiKihara/status/2078326215828734270
+
 ## GitHub
 
 - Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
 - Japanese manuscript: `波の情報読出し/20260718/反復交換散乱における有限位数共鳴の発見_微細構造定数137・128近傍ピークの原因特定と再現可能な波束数理モデル_ja.md`
 - English manuscript: `波の情報読出し/20260718/finite_order_resonance_iterated_exchange_scattering_en.md`
 - Zenn article source: `articles/finite-order-resonance-alpha-neighborhood.md`
+- note article sources: `波の情報読出し/20260718/note_article_finite_order_resonance_alpha_neighborhood_{ja,en}.md`
+- Facebook post sources: `波の情報読出し/20260718/fb_finite_order_resonance_alpha_neighborhood_{ja,en}.md`
+- X post sources: `波の情報読出し/20260718/x_finite_order_resonance_alpha_neighborhood_{ja,en}.md`
 
 ## Main Result
 
