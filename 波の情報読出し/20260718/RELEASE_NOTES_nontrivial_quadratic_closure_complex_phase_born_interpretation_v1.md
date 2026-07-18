@@ -27,6 +27,7 @@ The preceding theorem paper was published first. This release is a separate foun
 ## Facebook
 
 - Japanese: https://www.facebook.com/kihara.noriaki/posts/pfbid02xTby2au4pp2z2urarBygGQvuXCbur2qJRbRGVQJfaeyXFN8BcHFHouEQqB6MyJwGl
+- English: https://www.facebook.com/kihara.noriaki/posts/pfbid0yJe5Nog36KcymPj2jNuVrJP3BGB8uKDCqTFNPdwYmycuJBTzMkKSqZ1TGiC8yRB1l
 
 ## X
 
