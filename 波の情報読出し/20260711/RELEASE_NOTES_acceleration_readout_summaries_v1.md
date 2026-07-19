@@ -77,6 +77,47 @@ The ABC distance-exponent summary remains at v1 in this release note.
 
 ---
 
+## 2026-07-19 Japanese Note Article Update
+
+The published Japanese note article was updated at the same URL:
+
+- Article: 加速度は、背景座標なしに読めるのか
+- URL: https://note.com/kiharanoriaki/n/nad8429959a8a
+- Source: `note_article_acceleration_readout_summaries_ja.md`
+
+The update records the follow-up result that clarified the mechanism by which inverse-square dependence arises and confirmed the inverse-square law under the specific conditions of the reported experiment.
+
+The added explanation connects the future-phase-position acceleration map
+
+```text
+α_n = R |ω_n|²
+```
+
+with the harmonic closure relation
+
+```text
+|ω_n| Δθ_n = Ω
+```
+
+to obtain
+
+```text
+α_n = RΩ² / (Δθ_n)²
+```
+
+The note preserves the original finding that inverse-square dependence did not appear under the earlier amplitude-sweep protocol with fixed harmonic period. The update distinguishes that historical result from the later finding based on the coupled relation between harmonic angular velocity and phase-cell width.
+
+The updated note cites the following follow-up paper:
+
+- Noriaki Kihara, “AB二体閉鎖位相系における未来位相位置加速度写像と調和閉鎖による逆二乗則――既公開加速度実験の再解析と、位相セル幅に対する距離指数の導出,” 2026-07-19.
+- Concept DOI: https://doi.org/10.5281/zenodo.21441081
+- Version DOI: https://doi.org/10.5281/zenodo.21441082
+- Zenodo record: https://zenodo.org/records/21441082
+
+The note article uses plain-text formula blocks because the note publishing platform does not render LaTeX mathematics.
+
+---
+
 ## Primary Outputs
 
 ### AB Summary
