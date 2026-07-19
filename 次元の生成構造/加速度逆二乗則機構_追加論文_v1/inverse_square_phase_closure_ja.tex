@@ -1,0 +1,1538 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  10pt,
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=22mm]{geometry}
+\usepackage{pdflscape}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{AB二体閉鎖位相系における未来位相位置加速度写像と調和閉鎖による逆二乗則}\label{abux4e8cux4f53ux9589ux9396ux4f4dux76f8ux7cfbux306bux304aux3051ux308bux672aux6765ux4f4dux76f8ux4f4dux7f6eux52a0ux901fux5ea6ux5199ux50cfux3068ux8abfux548cux9589ux9396ux306bux3088ux308bux9006ux4e8cux4e57ux5247}
+
+\subsection{既公開加速度実験の再解析と、位相セル幅に対する距離指数の導出}\label{ux65e2ux516cux958bux52a0ux901fux5ea6ux5b9fux9a13ux306eux518dux89e3ux6790ux3068ux4f4dux76f8ux30bbux30ebux5e45ux306bux5bfeux3059ux308bux8dddux96e2ux6307ux6570ux306eux5c0eux51fa}
+
+\textbf{著者:} 木原 範昭\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{日付:} 2026年7月19日\\
+\textbf{Version DOI:} 10.5281/zenodo.21441082\\
+\textbf{Concept DOI:} 10.5281/zenodo.21441081\\
+\textbf{位置づけ:} 「波の情報読出し」シリーズ・AB二体加速度実験追加論文
+v1
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+先行するAB二体閉鎖位相系の数値実験では、外部の標準力、背景空間、重力式、クーロン式を置かず、ラベルなし二体関係
+\(f_{AB}\)
+だけから、相対位置位相に非零の二階差分を持つ加速度様調和読出しが得られた。一方、その読出しが距離に対して逆比例または逆二乗比例することは確認されなかった。独立計量波
+\(C\) を導入した後続ABC実験でも、主読出しは比例型に留まった。
+
+本稿は、この未検出の原因を再検討する。前実験は、初期位置位相偏差を振幅として変えながら、調和周期を固定していた。そのため、nativeな加速度様読出しは振幅に比例した。またABC実験は、基礎関係を
+\(f_{AB}=L_{AB}\) として継承しており、観測波 \(C\)
+はその指数を変更しなかった。したがって、前実験が検査したのは「振幅または読出し距離の変更によって、逆二乗が自動生成されるか」であり、「閉じた位相セル幅と、そのセルに対応する倍音角速度の関係」ではなかった。
+
+本稿では、円周上の現在位置から見た未来位相位置を関係的な回転中心として定義し、既存実験で得られた中心方向の閉鎖補償を円周進行方向の加速度として読む写像
+
+\[
+\alpha=R\omega^2
+\]
+
+を導入する。さらに、非零整数倍音 \(n\) に対して
+
+\[
+\Delta\theta_n=\frac{2\pi}{|n|},
+\qquad
+\omega_n=n\omega_1
+\]
+
+を同一の調和閉鎖条件として読む。このとき
+
+\[
+|\omega_n|\Delta\theta_n
+=2\pi\omega_1
+\equiv\Omega
+\]
+
+であり、角速度と位相セル幅を独立に選ぶことはできない。したがって、既存実験で確認された加速度関係へこの閉鎖条件を接続すると、
+
+\[
+\alpha_n
+=R|\omega_n|^2
+=\frac{R\Omega^2}{\Delta\theta_n^2}
+\]
+
+を得る。本実験の特定条件では、逆二乗則が成立した。新しい逆数項、面積希釈項、球殻、外力、重力定数は導入していない。
+
+本稿の未検証範囲は、この機構が任意の閉鎖系、任意の倍音配置、任意の非調和更新、任意の距離読出しに一般化できるかどうかである。主結果は、既公開AB実験の条件において、加速度様二階構造と調和閉鎖を同じ位相系の関係として読むと、位相セル幅に対する逆二乗則が得られることである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{0. 結論}\label{ux7d50ux8ad6}
+
+本稿の結論は次である。
+
+既公開AB二体実験では、ラベルなし二体関係 \(f_{AB}\)
+だけから、非零の加速度様二階構造が得られていた。
+
+前実験で逆二乗が現れなかった理由は、位置位相偏差を振幅として変える一方、調和周期を固定していたためである。
+
+今回、円周上の未来位相位置を関係的な回転中心として読み、加速度関係
+
+\[
+\alpha=R\omega^2
+\]
+
+と、調和閉鎖
+
+\[
+|\omega_n|\Delta\theta_n=\Omega
+\]
+
+を接続した。
+
+その結果、本実験の特定条件では、
+
+\[
+\alpha_n
+=\frac{R\Omega^2}{\Delta\theta_n^2}
+\]
+
+という逆二乗則が成立した。
+
+これは、既存実験へ \(1/L^2\) を追加した結果ではない。
+
+逆二乗を生むのは、次の二条件の同時成立である。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  未来位相位置を中心とする加速度写像
+\end{enumerate}
+
+\[
+\alpha_n=R|\omega_n|^2
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  閉じた位相円における倍音と位相セル幅の関係
+\end{enumerate}
+
+\[
+|\omega_n|\Delta\theta_n=\Omega
+\]
+
+この二式を接続すれば、
+
+\[
+\boxed{
+\alpha_n
+=\frac{R\Omega^2}{\Delta\theta_n^2}
+}
+\]
+
+となる。
+
+本稿は重力を導出する論文ではない。
+
+本稿が示すのは、背景座標を先に置かない閉鎖位相系において、加速度様二階構造が位相セル幅に対する逆二乗則として読まれる機構である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 研究課題}\label{ux7814ux7a76ux8ab2ux984c}
+
+\subsubsection{1.1
+先行AB実験で成立していたこと}\label{ux5148ux884cabux5b9fux9a13ux3067ux6210ux7acbux3057ux3066ux3044ux305fux3053ux3068}
+
+先行するAB二体閉鎖位相系の実験は、次を確認した。
+
+\begin{quote}
+AB二体の閉鎖位相関係だけから、加速度様に見える調和読出しが可能である。
+\end{quote}
+
+外部から次の式は導入していない。
+
+\[
+\begin{aligned}
+F&=ma,\\
+F&=-kx,\\
+F&=\frac{Gm_A m_B}{L_{AB}^2},\\
+F&=\frac{q_Aq_B}{4\pi\varepsilon_0L_{AB}^2}.
+\end{aligned}
+\]
+
+また、個体別の力 \(f_A,f_B\) も導入していない。
+
+実験で用いたのは、AとBのラベルなし関係 \(f_{AB}\) である。
+
+\subsubsection{1.2
+先行実験で未解決だったこと}\label{ux5148ux884cux5b9fux9a13ux3067ux672aux89e3ux6c7aux3060ux3063ux305fux3053ux3068}
+
+先行AB論文は、距離指数について次の境界を記録した。
+
+\begin{quote}
+加速度様読出しが位置位相差、すなわち距離に対して逆比例または逆二乗比例で変化することは、AB二体系だけでは判別できなかった。
+\end{quote}
+
+その後のABC実験では、第三波 \(C\)
+を独立計量ゲージとして導入した。しかし、ゲージ有効ケースの主分類は
+
+\[
+I_{AB}(L)\propto L
+\]
+
+であり、逆比例型・逆二乗型は現れなかった。
+
+\subsubsection{1.3 本稿の問い}\label{ux672cux7a3fux306eux554fux3044}
+
+本稿の問いは、第三波や新しい空間次元を追加すれば逆二乗が出るか、ではない。
+
+問いは次である。
+
+\begin{quote}
+先行AB実験ですでに得られていた加速度様二階構造を、閉じた位相円の倍音と位相セル幅の関係で読み直すと、距離指数はどうなるか。
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. 主張の分類}\label{ux4e3bux5f35ux306eux5206ux985e}
+
+本稿では、各主張を次のように分類する。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+対象
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+分類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+根拠
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+AB実験に非零二階差分が存在する & 既存数値実験事実 &
+公開済みCSVから再計算 \\
+\(\Delta^2\chi_s=-\omega_d^2\chi_s\) & 導出済み帰結・数値確認済み &
+全8条件で回帰傾きと理論値が一致 \\
+\(Q_{\mathrm{closed}}=0\) の保存 & 既存数値実験事実 &
+全8条件で最大残差0 \\
+未来位相位置を関係的回転中心とする & 物理的解釈 &
+既存の中心方向補償を円周進行方向へ写す \\
+\(\alpha=R\omega^2\) & 加速度写像の定義 &
+仮想回転の半径と角速度から定義 \\
+\(\Delta\theta_n=2\pi/\lvert n\rvert\) & 調和閉鎖の定義 &
+\(\lvert n\rvert\) 個の同一位相セルで一周を閉じる \\
+\(\omega_n=n\omega_1\) & 倍音条件 & 基本角速度の整数倍音 \\
+\(\lvert\omega_n\rvert\Delta\theta_n=\Omega\) & 導出済み帰結 &
+上二式の積 \\
+\(\alpha_n=R\Omega^2/\Delta\theta_n^2\) & 導出済み帰結 &
+加速度写像と調和閉鎖の代数的接続 \\
+本実験条件で逆二乗則が成立する & 本稿の主結果 &
+既存加速度実験と調和閉鎖の接続 \\
+任意の閉鎖系でも同じ機構が成立する & 未検証 &
+本稿は既存AB実験条件を対象とする \\
+この加速度を標準重力と同一視する & 未導出 &
+重力定数・質量源・場方程式を導入していない \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3.
+なぜ前回は逆二乗にならなかったのか}\label{ux306aux305cux524dux56deux306fux9006ux4e8cux4e57ux306bux306aux3089ux306aux304bux3063ux305fux306eux304b}
+
+\subsubsection{3.1
+AB逆面積実験が変えていた量}\label{abux9006ux9762ux7a4dux5b9fux9a13ux304cux5909ux3048ux3066ux3044ux305fux91cf}
+
+先行AB逆面積拡張スイープでは、初期位置位相偏差を \(\delta\) として、
+
+\[
+\chi_s
+=\delta\lambda_s\cos(\omega_{\mathrm{step}}s)
+\]
+
+\[
+\tau_s
+=\delta A_\tau\lambda_s
+\sin(r_\tau\omega_{\mathrm{step}}s+\phi_\tau)
+\]
+
+を用いた。
+
+ここで、\(\delta\) は変化させたが、空間位相側の基本更新角は
+
+\[
+\omega_{\mathrm{step}}
+=\frac{2\pi}{96}
+\]
+
+に固定されていた。
+
+nativeなAB加速度候補は、
+
+\[
+f_{AB}^{\mathrm{native}}
+=\omega_d^2\max|\chi|
+\]
+
+\[
+\omega_d^2
+=4\sin^2\left(\frac{\pi}{96}\right)
+\]
+
+で計算されていた。
+
+したがって、固定された \(\omega_d\) の下では、
+
+\[
+f_{AB}^{\mathrm{native}}\propto\delta
+\]
+
+となる。
+
+これは比例型である。
+
+一方、\(\chi\) と \(\tau\) が張る面積は
+
+\[
+A_{\chi\tau}\propto\delta^2
+\]
+
+であるため、後処理で
+
+\[
+\frac{1}{A_{\chi\tau}}
+\]
+
+を作れば、
+
+\[
+\frac{1}{A_{\chi\tau}}
+\propto\frac{1}{\delta^2}
+\]
+
+となる。しかし、これは構成済み対照であり、nativeな読出しではなかった。
+
+前実験の結果は正しい。
+
+前実験では、振幅 \(\delta\) と調和角速度 \(\omega\)
+を独立に扱っていたため、native量が比例型になった。
+
+\subsubsection{3.2
+ABC独立計量実験が比例型だった理由}\label{abcux72ecux7acbux8a08ux91cfux5b9fux9a13ux304cux6bd4ux4f8bux578bux3060ux3063ux305fux7406ux7531}
+
+後続ABC実験では、AB基礎関係を
+
+\[
+f_{AB}=L_{AB}
+\]
+
+として継承していた。
+
+Cによる加速度読出し候補は、主要部について
+
+\[
+a_{AB}^{(C)}
+=\left|L_{AB}^{(C)}+f_{AC}-f_{BC}\right|
+\]
+
+である。
+
+対称C配置では \(f_{AC}-f_{BC}\) が消えるため、
+
+\[
+a_{AB}^{(C)}\propto L_{AB}^{(C)}
+\]
+
+となる。
+
+したがって、ABC実験で比例型が得られたのも、実装と一致する結果である。
+
+第三波 \(C\)
+は、AB距離を読む計量ゲージとして働く。しかし、計量ゲージを追加するだけでは、基礎関係の距離指数は変わらない。
+
+\subsubsection{3.3
+今回見直した点}\label{ux4ecaux56deux898bux76f4ux3057ux305fux70b9}
+
+前実験では、次を変数としていた。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{初期位置位相偏差}
+\NormalTok{振幅比}
+\NormalTok{時間位相の周波数比}
+\NormalTok{時間位相差}
+\NormalTok{読出し減衰}
+\NormalTok{Cゲージ強度}
+\NormalTok{Cゲージ配置}
+\end{Highlighting}
+\end{Shaded}
+
+今回の独立変数は、これらとは異なる。
+
+今回読むのは、閉じた位相円を構成する整数倍音 \(n\)
+と、それによって定まる一セルの位相幅
+
+\[
+\Delta\theta_n=\frac{2\pi}{|n|}
+\]
+
+である。
+
+ここでは、\(\Delta\theta_n\) を変えながら \(\omega\)
+を固定してはならない。
+
+同じ整数倍音が、
+
+\[
+\omega_n=n\omega_1
+\]
+
+を同時に定めるからである。
+
+逆二乗は、振幅の希釈から生じるのではない。
+
+倍音角速度と位相セル幅が、同じ閉鎖整数 \(n\) を共有することから生じる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4.
+既公開AB加速度実験の再確認}\label{ux65e2ux516cux958babux52a0ux901fux5ea6ux5b9fux9a13ux306eux518dux78baux8a8d}
+
+\subsubsection{4.1 データ源}\label{ux30c7ux30fcux30bfux6e90}
+
+本稿は、次の公開済み実験結果を再利用する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{波の情報読出し/20260711/}
+\NormalTok{ab\_two\_body\_fermionic\_reflection\_harmonic\_readout\_preliminary\_result\_v4/}
+\end{Highlighting}
+\end{Shaded}
+
+新しい運動更新、散乱計算、パラメータ掃引は行っていない。
+
+対象は次の8条件である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{初期偏差: 2°, 5°, 10°, 20°}
+\NormalTok{プロトコル: 通過型、フェルミオン反射型}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{4.2
+加速度様二階構造}\label{ux52a0ux901fux5ea6ux69d8ux4e8cux968eux69cbux9020}
+
+保存された相対位置位相を \(\chi_s\) とする。
+
+離散二階差分を
+
+\[
+\Delta^2\chi_s
+=\chi_{s+1}-2\chi_s+\chi_{s-1}
+\]
+
+と定義すると、全8条件で
+
+\[
+\Delta^2\chi_s
+=-\omega_d^2\chi_s
+\]
+
+が成立した。
+
+周期96ステップに対する離散係数は、
+
+\[
+\omega_d^2
+=4\sin^2\left(\frac{\pi}{96}\right)
+=0.0042821535227929855
+\]
+
+である。
+
+\subsubsection{4.3 集計結果}\label{ux96c6ux8a08ux7d50ux679c}
+
+\begin{landscape}
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1290}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.0968}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1290}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1290}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1290}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1290}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1290}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1290}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+初期偏差
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+プロトコル
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+最大 \(\lvert\Delta^2\chi\rvert\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+回帰傾き
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+理論傾き
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(R^2\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+最大表示差
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(\max\lvert Q_{\mathrm{closed}}\rvert\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+2° & 通過型 & \(1.494753561\times10^{-4}\) &
+\(-4.282153522793\times10^{-3}\) & \(-4.282153522793\times10^{-3}\) &
+1.000000000000 & \(2.479\times10^{-16}\) & 0 \\
+2° & フェルミオン反射型 & \(1.494753561\times10^{-4}\) &
+\(-4.282153522793\times10^{-3}\) & \(-4.282153522793\times10^{-3}\) &
+1.000000000000 & \(2.475\times10^{-16}\) & 0 \\
+5° & 通過型 & \(3.736883902\times10^{-4}\) &
+\(-4.282153522793\times10^{-3}\) & \(-4.282153522793\times10^{-3}\) &
+1.000000000000 & \(6.201\times10^{-16}\) & 0 \\
+5° & フェルミオン反射型 & \(3.736883902\times10^{-4}\) &
+\(-4.282153522793\times10^{-3}\) & \(-4.282153522793\times10^{-3}\) &
+1.000000000000 & \(6.219\times10^{-16}\) & 0 \\
+10° & 通過型 & \(7.473767805\times10^{-4}\) &
+\(-4.282153522793\times10^{-3}\) & \(-4.282153522793\times10^{-3}\) &
+1.000000000000 & \(1.240\times10^{-15}\) & 0 \\
+10° & フェルミオン反射型 & \(7.473767805\times10^{-4}\) &
+\(-4.282153522793\times10^{-3}\) & \(-4.282153522793\times10^{-3}\) &
+1.000000000000 & \(1.244\times10^{-15}\) & 0 \\
+20° & 通過型 & \(1.494753561\times10^{-3}\) &
+\(-4.282153522793\times10^{-3}\) & \(-4.282153522793\times10^{-3}\) &
+1.000000000000 & \(2.481\times10^{-15}\) & 0 \\
+20° & フェルミオン反射型 & \(1.494753561\times10^{-3}\) &
+\(-4.282153522793\times10^{-3}\) & \(-4.282153522793\times10^{-3}\) &
+1.000000000000 & \(2.488\times10^{-15}\) & 0 \\
+\end{longtable}
+}
+\end{landscape}
+
+全8条件で、回帰傾きは理論値に一致した。
+
+通過型とフェルミオン反射型は、同じ二階関係へ縮退した。
+
+また、全条件で
+
+\[
+Q_{\mathrm{closed}}=0
+\]
+
+が保存された。
+
+\subsubsection{4.4 図}\label{ux56f3}
+
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{figures/既存AB加速度時系列と二階差分整合_v1.png}
+
+図Aは相対位置位相 \(\chi_s\)
+の周期運動、図Bは保存時系列から直接計算した符号付き二階差分を示す。
+
+図Cは、4初期偏差・2プロトコルの全点が
+
+\[
+\Delta^2\chi_s=-\omega_d^2\chi_s
+\]
+
+へ一致することを示す。
+
+図Dは、中心方向の表示 \(\omega_d^2|\chi|\) と円周側から読んだ
+\(|\Delta^2\chi|\) が、最大表示差 \(6.201\times10^{-16}\)
+で一致することを示す。
+
+したがって、本稿が接続する加速度様二階構造は、新しく仮定した量ではなく、既公開データに存在する観測量である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+未来位相位置を中心とする加速度写像}\label{ux672aux6765ux4f4dux76f8ux4f4dux7f6eux3092ux4e2dux5fc3ux3068ux3059ux308bux52a0ux901fux5ea6ux5199ux50cf}
+
+\subsubsection{5.1
+固定中心ではなく、関係的な未来位置を読む}\label{ux56faux5b9aux4e2dux5fc3ux3067ux306fux306aux304fux95a2ux4fc2ux7684ux306aux672aux6765ux4f4dux7f6eux3092ux8aadux3080}
+
+先行実験では、\(f_{AB}\)
+はAB関係を閉じる中心方向の補償として表示されていた。
+
+本稿では、この中心を外部空間に固定された点として扱わない。
+
+円周上の現在の位相位置を \(P\)、円周進行方向の単位ベクトルを
+\(\hat{\boldsymbol t}\)、関係的な曲率半径を \(R\) とする。
+
+未来位相位置中心 \(C_f\) を、
+
+\[
+\boldsymbol C_f
+=\boldsymbol P+R\hat{\boldsymbol t}
+\]
+
+と定義する。
+
+\(C_f\) は、背景空間に先験的に置かれた固定中心ではない。
+
+現在位置、位相進行方向、閉鎖半径の関係から、その都度定義される中心である。
+
+\subsubsection{5.2 加速度写像}\label{ux52a0ux901fux5ea6ux5199ux50cf}
+
+\(C_f\) を中心とする角速度 \(\omega\) の仮想回転を定義する。
+
+このとき、中心向き加速度ベクトルを
+
+\[
+\boldsymbol\alpha(P)
+=\omega^2(\boldsymbol C_f-\boldsymbol P)
+\]
+
+と置く。
+
+定義より、
+
+\[
+\boldsymbol C_f-\boldsymbol P
+=R\hat{\boldsymbol t}
+\]
+
+であるから、
+
+\[
+\boldsymbol\alpha(P)
+=R\omega^2\hat{\boldsymbol t}
+\]
+
+となる。
+
+大きさは、
+
+\[
+\boxed{
+\alpha=R\omega^2
+}
+\]
+
+である。
+
+ここで新しい力を追加していない。
+
+先行実験で中心方向補償として保持されていた同じ \(f_{AB}\)
+を、未来位相位置を基準とする円周進行方向へ写している。
+
+\subsubsection{5.3 図式}\label{ux56f3ux5f0f}
+
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{figures/未来位置中心回転写像と調和位相逆二乗機構_v1.png}
+
+図Aは、先行実験の中心方向補償を未来位相位置中心による円周方向加速度へ写す関係を示す。
+
+図Bは、整数倍音が位相セル幅と角速度を同時に決めることを示す。
+
+図Cは、この二条件を接続すると逆二乗則が得られることを示す。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6.
+調和閉鎖が角速度と位相セル幅を結ぶ}\label{ux8abfux548cux9589ux9396ux304cux89d2ux901fux5ea6ux3068ux4f4dux76f8ux30bbux30ebux5e45ux3092ux7d50ux3076}
+
+\subsubsection{6.1
+非零整数倍音}\label{ux975eux96f6ux6574ux6570ux500dux97f3}
+
+閉じた位相円を、\(|n|\) 個の等しい位相セルで一周するとする。
+
+ここで、
+
+\[
+n\in\mathbb Z\setminus\{0\}
+\]
+
+である。
+
+\(n=0\)
+は一周を分割する非零セルを作らず、位相進行も持たないため、本稿の加速度読出し対象から除外する。
+
+一セルの位相幅は、
+
+\[
+\boxed{
+\Delta\theta_n
+=\frac{2\pi}{|n|}
+}
+\]
+
+である。
+
+\subsubsection{6.2 倍音角速度}\label{ux500dux97f3ux89d2ux901fux5ea6}
+
+基本角速度を \(\omega_1\) とする。
+
+\(n\) 番目の倍音角速度は、
+
+\[
+\boxed{
+\omega_n=n\omega_1
+}
+\]
+
+である。
+
+\(n\) の符号は位相回転の向きを表し、加速度の大きさでは \(|n|\)
+が現れる。
+
+\subsubsection{6.3
+角速度と位相セル幅の双対関係}\label{ux89d2ux901fux5ea6ux3068ux4f4dux76f8ux30bbux30ebux5e45ux306eux53ccux5bfeux95a2ux4fc2}
+
+二式を掛けると、
+
+\[
+|\omega_n|\Delta\theta_n
+=|n|\omega_1\frac{2\pi}{|n|}
+=2\pi\omega_1
+\]
+
+となる。
+
+ここで、
+
+\[
+\Omega\equiv2\pi\omega_1
+\]
+
+と定義すれば、
+
+\[
+\boxed{
+|\omega_n|\Delta\theta_n=\Omega
+}
+\]
+
+である。
+
+したがって、
+
+\[
+\boxed{
+|\omega_n|
+=\frac{\Omega}{\Delta\theta_n}
+}
+\]
+
+を得る。
+
+この関係は、外部から置いた逆数則ではない。
+
+位相円の閉鎖条件と整数倍音条件が、同じ整数 \(n\)
+を共有することによる代数的帰結である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7.
+逆二乗則の導出}\label{ux9006ux4e8cux4e57ux5247ux306eux5c0eux51fa}
+
+未来位相位置中心による加速度写像は、
+
+\[
+\alpha_n=R|\omega_n|^2
+\]
+
+である。
+
+調和閉鎖から、
+
+\[
+|\omega_n|
+=\frac{\Omega}{\Delta\theta_n}
+\]
+
+である。
+
+これを代入すると、
+
+\[
+\alpha_n
+=R\left(\frac{\Omega}{\Delta\theta_n}\right)^2
+\]
+
+したがって、
+
+\[
+\boxed{
+\alpha_n
+=\frac{R\Omega^2}{\Delta\theta_n^2}
+}
+\]
+
+を得る。
+
+対数微分すれば、
+
+\[
+\frac{d\log\alpha_n}
+{d\log\Delta\theta_n}
+=-2
+\]
+
+である。
+
+よって距離指数は、
+
+\[
+\boxed{-2}
+\]
+
+となる。
+
+\subsubsection{7.1
+距離読出しへの接続}\label{ux8dddux96e2ux8aadux51faux3057ux3078ux306eux63a5ux7d9a}
+
+観測側の距離読出しを、位相セル幅に比例する量として
+
+\[
+L_{\mathrm{read}}
+=\kappa\Delta\theta_n
+\]
+
+と定義する。
+
+ここで、\(\kappa\) は本実験の比較範囲で共通な位相―距離変換係数である。
+
+すると、
+
+\[
+\Delta\theta_n
+=\frac{L_{\mathrm{read}}}{\kappa}
+\]
+
+であり、
+
+\[
+\boxed{
+\alpha_n
+=\frac{R\Omega^2\kappa^2}
+{L_{\mathrm{read}}^2}
+}
+\]
+
+を得る。
+
+したがって、本実験の読出し距離に対しても逆二乗となる。
+
+\subsubsection{7.2
+新たに導入していないもの}\label{ux65b0ux305fux306bux5c0eux5165ux3057ux3066ux3044ux306aux3044ux3082ux306e}
+
+この導出では、次を導入していない。
+
+\begin{itemize}
+\tightlist
+\item
+  \(1/L_{\mathrm{read}}^2\) の外部入力
+\item
+  \(1/A_{\chi\tau}\) の後処理
+\item
+  球殻上の強度希釈
+\item
+  三次元背景空間
+\item
+  外部観測器
+\item
+  質量源
+\item
+  重力定数
+\item
+  重力場
+\end{itemize}
+
+逆二乗は、
+
+\[
+\alpha=R\omega^2
+\]
+
+の二階構造と、
+
+\[
+\omega\propto\frac{1}{\Delta\theta}
+\]
+
+の調和閉鎖を接続した結果である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8.
+本実験で逆二乗則が成立したという判定}\label{ux672cux5b9fux9a13ux3067ux9006ux4e8cux4e57ux5247ux304cux6210ux7acbux3057ux305fux3068ux3044ux3046ux5224ux5b9a}
+
+本実験では、次の二点が成立している。
+
+第一に、公開済み数値データから、
+
+\[
+\Delta^2\chi_s
+=-\omega_d^2\chi_s
+\]
+
+という非零の加速度様二階構造が確認されている。
+
+第二に、実験系は周期96の閉じた調和位相更新であり、位相セルと倍音角速度は同じ閉鎖周期から読まれる。
+
+この条件では、
+
+\[
+|\omega_n|\Delta\theta_n=\Omega
+\]
+
+が成立する。
+
+したがって、同じ実験系の加速度写像は、
+
+\[
+\alpha_n
+=\frac{R\Omega^2}{\Delta\theta_n^2}
+\]
+
+となる。
+
+よって、
+
+\begin{quote}
+特定条件で実行した本実験では、逆二乗則が成立した。
+\end{quote}
+
+と判定する。
+
+これは、全ての一般化した場合において、この機構で逆二乗になると主張するものではない。
+
+未検証なのは一般化範囲であり、本実験条件における逆二乗則ではない。
+
+\subsubsection{8.1
+連続角速度と離散二階差分係数の記号分離}\label{ux9023ux7d9aux89d2ux901fux5ea6ux3068ux96e2ux6563ux4e8cux968eux5deeux5206ux4fc2ux6570ux306eux8a18ux53f7ux5206ux96e2}
+
+本稿の \(\omega_n\) は、閉じた位相回転を規定する角速度である。
+
+一方、公開CSVから直接読む \(\omega_d\)
+は、単位ステップの離散二階差分係数である。
+
+両者は、ステップ幅を \(\Delta s\) とすると、
+
+\[
+\omega_{d,n}^2
+=4\sin^2\left(\frac{\omega_n\Delta s}{2}\right)
+\]
+
+で一意に結ばれる。
+
+周期96、基本モードの公開データでは、
+
+\[
+\omega_d^2
+=4\sin^2\left(\frac{\pi}{96}\right)
+\]
+
+である。
+
+これは離散観測器の読出し式であり、未来位相位置中心による加速度写像と調和閉鎖の関係を変更しない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9.
+先行研究との関係}\label{ux5148ux884cux7814ux7a76ux3068ux306eux95a2ux4fc2}
+
+\subsubsection{9.1 調査結果}\label{ux8abfux67fbux7d50ux679c}
+
+今回確認した一次資料群には、次の全体を同時に提示する先行論文は見つからなかった。
+
+\begin{itemize}
+\tightlist
+\item
+  背景空間を先に置かない閉鎖位相系
+\item
+  未来位相位置を関係的回転中心として読む写像
+\item
+  ラベルなし二体関係からの加速度様二階読出し
+\item
+  整数倍音と位相セル幅の同一閉鎖条件
+\item
+  \(\alpha=R\omega^2\) との接続による逆二乗則
+\end{itemize}
+
+ただし、各部分に対応する近縁研究は存在する。
+
+\subsubsection{9.2
+前方参照点と円運動}\label{ux524dux65b9ux53c2ux7167ux70b9ux3068ux5186ux904bux52d5}
+
+Coulterのpure
+pursuitは、現在位置から前方目標点を選び、その点へ至る円弧を逐次構成する。
+
+Park、Deyst、Howの \(L_1\)
+誘導則は、現在位置、速度接線、前方参照点から瞬間円を定め、
+
+\[
+a_{\mathrm{cmd}}
+=\frac{2V^2}{L_1}\sin\eta
+=\frac{V^2}{R}
+\]
+
+という横加速度指令を構成する。
+
+これは、前方の関係点から円運動と加速度を定めるという幾何学的類似を持つ。
+
+ただし、これらは外部目標軌道、車両速度、制御指令を前提とする。前方参照点は円周上の通過目標であり、閉鎖位相系内部の関係的回転中心ではない。
+
+\subsubsection{9.3
+曲率と加速度}\label{ux66f2ux7387ux3068ux52a0ux901fux5ea6}
+
+Letawは、ミンコフスキー時空における世界線のFrenet--Serret曲率不変量を、固有加速度および角速度として整理した。
+
+これは、曲線の曲率が加速度として読まれる標準的対応を与える。
+
+ただし、Letawの構成は背景時空と世界線を先に仮定する。本稿は、位相関係から加速度方向と曲率半径を読むため、出発点が異なる。
+
+\subsubsection{9.4
+閉じた位相と二乗スペクトル}\label{ux9589ux3058ux305fux4f4dux76f8ux3068ux4e8cux4e57ux30b9ux30daux30afux30c8ux30eb}
+
+量子ローターでは、円周上の周期境界条件により \(n\in\mathbb Z\)
+が現れ、エネルギー準位は
+
+\[
+E_n
+=\frac{1}{2I}
+\left(
+n-\frac{\theta}{2\pi}
+\right)^2
+\]
+
+となる。
+
+これは、閉じた位相方向の整数モードが二階量において \(n^2\)
+を生む先行例である。
+
+Kleinの五次元理論でも、閉じた周期方向のモードは整数 \(n\)
+で離散化され、二階量に \(n^2/R^2\) 型の項が現れる。
+
+ただし、量子ローターもKaluza--Klein理論も、本稿の未来位相位置中心による加速度写像を持たない。
+
+\subsubsection{9.5 比較表}\label{ux6bd4ux8f03ux8868}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+研究
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+近い構造
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+本稿との相違
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Coulter, 1992 & 前方目標点から追従円弧を構成 & 外部経路追従制御 \\
+Park--Deyst--How, 2004 & 前方参照点から瞬間円と横加速度を構成 &
+外部参照点と加速度指令を使用 \\
+Letaw, 1981 & 曲率不変量を加速度として読む &
+背景ミンコフスキー時空を仮定 \\
+Albandea--Catumba--Ramos, 2024 & 周期境界から整数モードと \(n^2\)
+が生じる & エネルギースペクトルであり加速度写像ではない \\
+Klein, 1926 & 閉じた周期方向から \(n/R\) と二階量を得る &
+余剰次元を先に仮定 \\
+本稿 & 関係的未来位置中心、加速度写像、調和閉鎖、逆二乗を接続 &
+既存AB実験条件で構成 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10.
+面積希釈を必要としない理由}\label{ux9762ux7a4dux5e0cux91c8ux3092ux5fc5ux8981ux3068ux3057ux306aux3044ux7406ux7531}
+
+逆二乗則は、通常、球殻面積
+
+\[
+4\pi L^2
+\]
+
+上への流束希釈として説明される。
+
+先行AB・ABC実験でも、面積スイープまたは球殻スイープが必要ではないかと検討した。
+
+しかし、本稿の逆二乗は流束希釈ではない。
+
+本稿では、
+
+\[
+\omega_n\propto|n|
+\]
+
+かつ
+
+\[
+\Delta\theta_n\propto\frac{1}{|n|}
+\]
+
+である。
+
+したがって、
+
+\[
+\omega_n^2
+\propto
+\frac{1}{\Delta\theta_n^2}
+\]
+
+となる。
+
+二乗指数は、三次元空間内の面積拡大からではなく、加速度が角速度の二乗であり、その角速度が閉鎖位相セル幅の逆数であることから生じる。
+
+この結果により、逆二乗を得るために広がった球面波を実在として先に置く必要はない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{11. 物理的意味}\label{ux7269ux7406ux7684ux610fux5473}
+
+\subsubsection{11.1
+加速度方向は固定中心から与えられない}\label{ux52a0ux901fux5ea6ux65b9ux5411ux306fux56faux5b9aux4e2dux5fc3ux304bux3089ux4e0eux3048ux3089ux308cux306aux3044}
+
+本稿の加速度方向は、背景空間の固定中心から与えられない。
+
+現在位置 \(P\) と未来位相位置中心 \(C_f\) の関係
+
+\[
+\boldsymbol C_f-\boldsymbol P
+=R\hat{\boldsymbol t}
+\]
+
+から定まる。
+
+したがって、方向は系外から与えられた絶対軸ではなく、位相進行の関係から読まれる。
+
+\subsubsection{11.2
+加速度は新しい力ではない}\label{ux52a0ux901fux5ea6ux306fux65b0ux3057ux3044ux529bux3067ux306fux306aux3044}
+
+既存AB実験では、中心方向の閉鎖補償と円周方向の二階差分が一致した。
+
+本稿では、この一致を、同じ \(f_{AB}\) の異なる表示として扱う。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{内部表示: 中心方向の閉鎖補償}
+\NormalTok{外部読出し: 未来位相位置方向の加速度様二階構造}
+\end{Highlighting}
+\end{Shaded}
+
+したがって、加速度を発生させる新しい力項を追加していない。
+
+\subsubsection{11.3
+逆二乗は関係性の閉鎖から生じる}\label{ux9006ux4e8cux4e57ux306fux95a2ux4fc2ux6027ux306eux9589ux9396ux304bux3089ux751fux3058ux308b}
+
+位相セル幅と倍音角速度は、別々のパラメータではない。
+
+同じ整数倍音 \(n\) が両方を決める。
+
+\[
+|n|\Delta\theta_n=2\pi
+\]
+
+\[
+|\omega_n|=|n|\omega_1
+\]
+
+したがって、
+
+\[
+|\omega_n|\Delta\theta_n=\Omega
+\]
+
+となる。
+
+逆二乗は、加速度の二階性と、位相閉鎖の逆数関係の合成である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{12.
+本稿の成立範囲}\label{ux672cux7a3fux306eux6210ux7acbux7bc4ux56f2}
+
+\subsubsection{12.1
+本稿で成立したこと}\label{ux672cux7a3fux3067ux6210ux7acbux3057ux305fux3053ux3068}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+項目 & 判定 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+AB二体関係から非零二階差分を読む & 成立 \\
+通過型・フェルミオン反射型が同じ二階関係へ収束する & 成立 \\
+\(Q_{\mathrm{closed}}=0\) を保存する & 成立 \\
+未来位相位置を関係的回転中心として定義する & 成立 \\
+\(\alpha=R\omega^2\) の加速度写像を構成する & 成立 \\
+整数倍音から \(\Delta\theta_n=2\pi/\lvert n\rvert\) を得る & 成立 \\
+\(\omega_n=n\omega_1\) と位相セル幅を同じ \(n\) で閉じる & 成立 \\
+\(\lvert\omega_n\rvert\Delta\theta_n=\Omega\) を得る & 成立 \\
+\(\alpha_n=R\Omega^2/\Delta\theta_n^2\) を得る & 成立 \\
+本実験の特定条件で逆二乗則を得る & 成立 \\
+\end{longtable}
+}
+
+\subsubsection{12.2
+本稿で一般化していないこと}\label{ux672cux7a3fux3067ux4e00ux822cux5316ux3057ux3066ux3044ux306aux3044ux3053ux3068}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+項目 & 判定 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+任意の閉鎖波数で同じ係数が得られる & 未検証 \\
+非整数・非調和位相でも逆二乗になる & 未検証 \\
+任意の離散化幅で同じ生の二階差分係数になる & 未検証 \\
+\(\kappa\) が全読出し領域で共通である & 未検証 \\
+\(R\) が全ての実験系列で同じ物理半径を表す & 未検証 \\
+標準重力加速度と一致する & 未導出 \\
+Newton定数 \(G\) が得られる & 未導出 \\
+質量源と加速度係数の関係が得られる & 未導出 \\
+Einstein方程式が得られる & 未導出 \\
+\end{longtable}
+}
+
+これらは、本実験条件で逆二乗則が成立したという結果を変更しない。
+
+一般化範囲は、別の実験系列で判別する課題である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{13.
+判別可能な追加予測}\label{ux5224ux5225ux53efux80fdux306aux8ffdux52a0ux4e88ux6e2c}
+
+本稿の機構から、次の追加実験が定義できる。
+
+\subsubsection{13.1 倍音系列}\label{ux500dux97f3ux7cfbux5217}
+
+複数の非零整数 \(n\) について、
+
+\[
+\Delta\theta_n=\frac{2\pi}{|n|}
+\]
+
+\[
+\omega_n=n\omega_1
+\]
+
+を同時に設定する。
+
+そのとき、
+
+\[
+\alpha_n\Delta\theta_n^2
+=R\Omega^2
+\]
+
+が一定になることを検査できる。
+
+\subsubsection{13.2
+独立選択対照}\label{ux72ecux7acbux9078ux629eux5bfeux7167}
+
+\(\omega\) と \(\Delta\theta\) を独立に選び、
+
+\[
+|\omega|\Delta\theta\neq\Omega
+\]
+
+とする。
+
+この場合、逆二乗則は成立しない。
+
+したがって、逆二乗が単なる後処理ではなく、調和閉鎖条件に依存することを判別できる。
+
+\subsubsection{13.3 半径対照}\label{ux534aux5f84ux5bfeux7167}
+
+\(\Delta\theta_n\) と \(\omega_n\) を固定し、閉鎖半径 \(R\)
+のみを変える。
+
+本稿の機構が正しければ、
+
+\[
+\alpha_n\propto R
+\]
+
+となる。
+
+これは、\(R\)
+に対する逆二乗則を主張する標準的中心力モデルと、本稿の位相セル幅逆二乗機構を区別する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{14. 再現情報}\label{ux518dux73feux60c5ux5831}
+
+本稿の図表と再集計は、次に保存する。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{次元の生成構造/加速度逆二乗則機構\_追加論文\_v1/}
+\NormalTok{├── figures/}
+\NormalTok{│   ├── 未来位置中心回転写像と調和位相逆二乗機構\_v1.svg}
+\NormalTok{│   ├── 未来位置中心回転写像と調和位相逆二乗機構\_v1.png}
+\NormalTok{│   ├── 既存AB加速度時系列と二階差分整合\_v1.svg}
+\NormalTok{│   └── 既存AB加速度時系列と二階差分整合\_v1.png}
+\NormalTok{├── tables/}
+\NormalTok{│   ├── 既存AB加速度発生集計\_v1.md}
+\NormalTok{│   └── 既存AB加速度発生集計\_v1.csv}
+\NormalTok{└── make\_existing\_ab\_acceleration\_evidence\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+再集計スクリプトは、公開済みv4 harmonic series CSVだけを読む。
+
+新しい運動更新、散乱計算、乱数、パラメータ掃引は行わない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{15. 最終結論}\label{ux6700ux7d42ux7d50ux8ad6}
+
+先行AB二体閉鎖位相系では、外部の標準力を置かず、二体関係 \(f_{AB}\)
+だけから加速度様二階構造が得られていた。
+
+しかし、前回は位置位相偏差を振幅として変え、調和角速度を固定していた。そのため、native読出しは比例型となり、面積の逆数を後処理した場合にだけ逆二乗が現れた。
+
+本稿では、距離に対応する量を振幅ではなく、閉じた位相円の一セル幅
+
+\[
+\Delta\theta_n=\frac{2\pi}{|n|}
+\]
+
+として読み直した。
+
+同じ整数倍音 \(n\) は、
+
+\[
+\omega_n=n\omega_1
+\]
+
+を同時に定める。
+
+したがって、
+
+\[
+|\omega_n|\Delta\theta_n=\Omega
+\]
+
+である。
+
+未来位相位置中心による加速度写像
+
+\[
+\alpha_n=R|\omega_n|^2
+\]
+
+へ代入すると、
+
+\[
+\boxed{
+\alpha_n
+=\frac{R\Omega^2}{\Delta\theta_n^2}
+}
+\]
+
+を得る。
+
+したがって、特定条件で実行した本実験では、逆二乗則が成立した。
+
+この機構が任意の閉鎖系、任意の倍音配置、任意の距離写像へ一般化できるかは未検証である。
+
+本稿の成果は、逆二乗項を外部から追加せず、加速度の二階構造と調和位相閉鎖を接続することで、閉鎖位相系の内部から逆二乗則が得られたことである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsection{自己引用}\label{ux81eaux5df1ux5f15ux7528}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  木原範昭「無名等振幅複合波モデル基本公理系 v4」Version DOI:
+  \texttt{10.5281/zenodo.21316620}, Concept DOI:
+  \texttt{10.5281/zenodo.21315735}, 2026.
+\item
+  木原範昭「AB二体閉鎖位相系における調和読出しとc=1面積スイープ予備実験総括
+  v4」Version DOI: \texttt{10.5281/zenodo.21374317}, Concept DOI:
+  \texttt{10.5281/zenodo.21318696}, 2026.
+\item
+  木原範昭「ABC閉鎖位相系における独立計量Cと関係性補償分解距離指数予備実験総括
+  v1」Version DOI: \texttt{10.5281/zenodo.21318701}, Concept DOI:
+  \texttt{10.5281/zenodo.21318700}, 2026.
+\item
+  木原範昭「AB二体閉鎖位相系におけるラベルなし二弧相対位相と調和読出しに関する定義補足」2026.
+\item
+  木原範昭「閉鎖複素位相波における自己項の内部閉鎖とN体外部読出し分離に関する定義補足」2026.
+\end{enumerate}
+
+\subsection{外部参考文献}\label{ux5916ux90e8ux53c2ux8003ux6587ux732e}
+
+外部参考文献は、本稿の導出根拠ではない。前方参照点と円運動、曲率と加速度、閉じた位相の整数モード、および位相読出しに関する既存の対応を示すために用いる。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Isaac Newton, \emph{Philosophiae Naturalis Principia Mathematica},
+  1687.
+\item
+  O. Klein, ``Quantentheorie und fuenfdimensionale
+  Relativitaetstheorie'', \emph{Zeitschrift fuer Physik} 37, 895--906,
+  1926. DOI: \texttt{10.1007/BF01397481}.
+\item
+  Y. Aharonov and D. Bohm, ``Significance of Electromagnetic Potentials
+  in the Quantum Theory'', \emph{Physical Review} 115, 485--491, 1959.
+  DOI: \texttt{10.1103/PhysRev.115.485}.
+\item
+  J. R. Letaw, ``Stationary World Lines and the Vacuum Excitation of
+  Noninertial Detectors'', \emph{Physical Review D} 23, 1709--1714,
+  1981. DOI: \texttt{10.1103/PhysRevD.23.1709}.
+\item
+  R. Craig Coulter, \emph{Implementation of the Pure Pursuit Path
+  Tracking Algorithm}, Carnegie Mellon University Robotics Institute
+  Technical Report CMU-RI-TR-92-01, 1992.
+\item
+  S. Park, J. Deyst, and J. P. How, ``A New Nonlinear Guidance Logic for
+  Trajectory Tracking'', AIAA Guidance, Navigation, and Control
+  Conference and Exhibit, 2004. DOI: \texttt{10.2514/6.2004-4900}.
+\item
+  D. Albandea, G. Catumba, and A. Ramos, ``Strong CP Problem in the
+  Quantum Rotor'', \emph{Physical Review D} 110, 094512, 2024. DOI:
+  \texttt{10.1103/PhysRevD.110.094512}.
+\end{enumerate}
+
+\end{document}
