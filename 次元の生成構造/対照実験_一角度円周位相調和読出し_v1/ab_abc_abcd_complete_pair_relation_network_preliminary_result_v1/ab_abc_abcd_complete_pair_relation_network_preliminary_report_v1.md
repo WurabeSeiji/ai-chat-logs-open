@@ -38,11 +38,11 @@ K_ef = adjacency(e,f) sin(theta_f - theta_e)
 
 ## 構成別結果
 
-| system | relation waves | active min | closure error max | amplitude drift max | label covariance max | pass |
-|---|---:|---:|---:|---:|---:|---|
-| AB | 1 | 0 | 0.0000000000000000e+00 | 0.0000000000000000e+00 | 0.0000000000000000e+00 | True |
-| ABC | 3 | 3 | 1.3628177067653198e-13 | 1.6808776592824870e-13 | 1.1775814140367489e-13 | True |
-| ABCD | 6 | 6 | 1.9218001973240896e-13 | 2.4114044094858400e-13 | 1.4608516699761366e-13 | True |
+| system | relation waves | generator rank | nullity | rotation planes | frequencies | kernel drift max | pass |
+|---|---:|---:|---:|---:|---:|---:|---|
+| AB | 1 | 0--0 | 1--1 | 0--0 | 0--0 | 0.0000000000000000e+00 | True |
+| ABC | 3 | 2--2 | 1--1 | 1--1 | 1--1 | 4.0730280738750208e-14 | True |
+| ABCD | 6 | 6--6 | 0--0 | 3--3 | 3--3 | 0.0000000000000000e+00 | True |
 
 ## 統合判定
 
@@ -56,9 +56,22 @@ K_ef = adjacency(e,f) sin(theta_f - theta_e)
 | `ABC_all_three_relation_waves_active_all_trials` | `True` |
 | `AB_single_relation_stationary_all_trials` | `True` |
 | `ABCD_six_relation_directions_present` | `True` |
+| `AB_generator_rank_range` | `[0, 0]` |
+| `ABC_generator_rank_range` | `[2, 2]` |
+| `ABC_generator_nullity_range` | `[1, 1]` |
+| `ABC_rotation_plane_count_range` | `[1, 1]` |
+| `ABC_independent_rotation_frequency_count_range` | `[1, 1]` |
+| `ABC_one_plane_plus_one_normal_all_trials` | `True` |
+| `ABCD_generator_rank_range` | `[6, 6]` |
+| `ABCD_generator_nullity_range` | `[0, 0]` |
+| `ABCD_rotation_plane_count_range` | `[3, 3]` |
+| `ABCD_independent_rotation_frequency_count_range` | `[3, 3]` |
+| `ABCD_unique_invariant_normal_all_trials` | `False` |
 | `max_closure_target_error_abs` | `1.9218001973240896e-13` |
 | `max_hermitian_amplitude_drift` | `2.41140440948584e-13` |
 | `max_label_covariance_error` | `1.4608516699761366e-13` |
+| `max_kernel_projection_drift` | `4.073028073875021e-14` |
+| `max_kernel_projector_label_covariance_error` | `7.591035761743328e-16` |
 | `all_relations_are_physical_waves` | `True` |
 | `observer_C_or_D_used` | `False` |
 | `normalization_applied` | `False` |
@@ -72,14 +85,19 @@ K_ef = adjacency(e,f) sin(theta_f - theta_e)
 
 - ABは一つの関係波だけを持ち、本更新則では連続混合相手がないため定常だった。
 - ABCは `AB`, `BC`, `CA` の三つの物理的関係波を持ち、全試行で三波すべてが変動した。
+- ABC生成子のランクは `2--2`、零空間次元は `1--1` であり、全試行で一回転平面と一不変法線へ分解した。
 - ABCDは六つの物理的関係波を持ち、三軸を超える関係方向が代数的には存在した。
+- ABCD生成子のランクは `6--6`、零空間次元は `0--0`、回転平面数は `3--3` だった。
 - 全構成で `sum_e X_e^2 = R^2` と実数二乗和は数値精度内で保存された。
 - 個体名の置換に対し、生成子、更新行列、軌道は数値精度内で共変だった。
+- 零空間射影は軌道上で数値精度内に保存され、名称置換に対して共変だった。
 
 ## 分類
 
 - ABC三関係波を三軸成分として置くこと: 本実験のモデル定義。
 - ABC三関係波が閉鎖を保存しながら同時に振動できること: 本予備実験の数値結果。
+- ABCの反対称生成子が一回転平面と一意な不変法線を持つこと: 本予備実験の数値結果。
+- 不変法線を物理的な第三空間方向と同一視すること: 本実験では物理的解釈。
 - 三関係波が物理的なXYZ空間と同一であること: 本実験では未導出。
 - ABCDの六関係波から観測可能な三軸を一意選択する機構: 本実験では未解決。
 
@@ -90,5 +108,7 @@ K_ef = adjacency(e,f) sin(theta_f - theta_e)
 - `ab_abc_abcd_complete_pair_relation_network_body_summary_v1.csv`
 - `ab_abc_abcd_complete_pair_relation_network_selected_series_v1.csv`
 - `complete_pair_relation_wave_count_v1.png`
+- `generator_plane_normal_structure_v1.png`
 - `ABC_three_physical_relation_waves_v1.png`
 - `ABC_relation_wave_conservation_v1.png`
+- `ABC_one_plane_one_normal_conservation_v1.png`

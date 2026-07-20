@@ -147,6 +147,46 @@ def cayley_orthogonal_update(generator: np.ndarray, target_period_steps: int) ->
     return np.linalg.solve(identity - cayley_scale * generator, identity + cayley_scale * generator)
 
 
+def generator_spectral_structure(
+    generator: np.ndarray,
+    rank_tol: float,
+) -> Tuple[Dict[str, Any], np.ndarray]:
+    _, singular_values, right_vectors_h = np.linalg.svd(generator, full_matrices=True)
+    scale = max(1.0, float(singular_values[0]) if singular_values.size else 0.0)
+    rank = int(np.sum(singular_values > rank_tol * scale))
+    nullity = int(generator.shape[0] - rank)
+    null_basis = right_vectors_h[rank:].T
+    kernel_projector = null_basis @ null_basis.T
+
+    eigenvalues = np.linalg.eigvals(generator)
+    positive_frequencies = sorted(
+        float(value.imag) for value in eigenvalues if float(value.imag) > rank_tol * scale
+    )
+    distinct_frequencies: List[float] = []
+    for frequency in positive_frequencies:
+        if not distinct_frequencies:
+            distinct_frequencies.append(frequency)
+            continue
+        comparison_scale = max(1.0, abs(frequency), abs(distinct_frequencies[-1]))
+        if abs(frequency - distinct_frequencies[-1]) > rank_tol * comparison_scale:
+            distinct_frequencies.append(frequency)
+
+    structure = {
+        "generator_rank": rank,
+        "generator_nullity": nullity,
+        "rotation_plane_count": rank // 2,
+        "generator_singular_values": ";".join(f"{value:.16e}" for value in singular_values),
+        "positive_generator_frequencies": ";".join(
+            f"{value:.16e}" for value in positive_frequencies
+        ),
+        "independent_rotation_frequency_count": len(distinct_frequencies),
+        "single_rotation_plane": bool(rank == 2),
+        "unique_invariant_normal": bool(nullity == 1),
+        "one_plane_plus_one_normal": bool(rank == 2 and nullity == 1),
+    }
+    return structure, kernel_projector
+
+
 def evolve(initial_state: np.ndarray, update: np.ndarray, step_count: int) -> np.ndarray:
     states = np.empty((step_count + 1, initial_state.size), dtype=complex)
     states[0] = initial_state
@@ -179,8 +219,32 @@ def trial_result(
     adjacency = relation_adjacency(pairs)
     initial_state = initial_closed_relation_state(len(pairs), rng, params)
     generator, raw_generator_norm = relational_generator(initial_state, adjacency)
+    spectral_structure, kernel_projector = generator_spectral_structure(
+        generator,
+        params.invariant_tol,
+    )
     update = cayley_orthogonal_update(generator, params.target_period_steps)
     states = evolve(initial_state, update, params.step_count)
+
+    kernel_states = (
+        states.real @ kernel_projector.T
+        + 1j * (states.imag @ kernel_projector.T)
+    )
+    active_plane_states = states - kernel_states
+    kernel_projection_drifts = np.linalg.norm(kernel_states - kernel_states[0], axis=1)
+    kernel_projection_norm2 = np.sum(np.abs(kernel_states) ** 2, axis=1)
+    active_plane_projection_norm2 = np.sum(np.abs(active_plane_states) ** 2, axis=1)
+    kernel_projection_drift_max = float(np.max(kernel_projection_drifts))
+    kernel_projection_norm2_drift_max = float(
+        np.max(np.abs(kernel_projection_norm2 - kernel_projection_norm2[0]))
+    )
+    active_plane_norm2_drift_max = float(
+        np.max(np.abs(active_plane_projection_norm2 - active_plane_projection_norm2[0]))
+    )
+    kernel_projector_idempotence_error = float(
+        np.linalg.norm(kernel_projector @ kernel_projector - kernel_projector)
+    )
+    kernel_generator_annihilation_error = float(np.linalg.norm(generator @ kernel_projector))
 
     closure_rows = [closure_quantities(state, params.radius_squared) for state in states]
     initial_amplitude_sum = closure_rows[0]["hermitian_amplitude_sum"]
@@ -199,6 +263,10 @@ def trial_result(
     edge_permutation = edge_permutation_matrix(pairs, body_permutation)
     permuted_initial = edge_permutation @ initial_state
     permuted_generator, _ = relational_generator(permuted_initial, adjacency)
+    permuted_spectral_structure, permuted_kernel_projector = generator_spectral_structure(
+        permuted_generator,
+        params.invariant_tol,
+    )
     permuted_update = cayley_orthogonal_update(permuted_generator, params.target_period_steps)
     expected_generator = edge_permutation @ generator @ edge_permutation.T
     expected_update = edge_permutation @ update @ edge_permutation.T
@@ -209,6 +277,18 @@ def trial_result(
     expected_permuted_states = states[:, permutation_source_indices]
     trajectory_covariance_error = float(
         np.max(np.linalg.norm(permuted_states - expected_permuted_states, axis=1))
+    )
+    expected_kernel_projector = edge_permutation @ kernel_projector @ edge_permutation.T
+    kernel_projector_covariance_error = float(
+        np.linalg.norm(permuted_kernel_projector - expected_kernel_projector)
+    )
+    generator_spectrum_covariance_error = float(
+        np.max(
+            np.abs(
+                np.linalg.svd(permuted_generator, compute_uv=False)
+                - np.linalg.svd(generator, compute_uv=False)
+            )
+        )
     )
 
     trial = {
@@ -231,6 +311,16 @@ def trial_result(
         "generator_label_covariance_error": generator_covariance_error,
         "update_label_covariance_error": update_covariance_error,
         "trajectory_label_covariance_error": trajectory_covariance_error,
+        **spectral_structure,
+        "permuted_generator_rank": permuted_spectral_structure["generator_rank"],
+        "permuted_generator_nullity": permuted_spectral_structure["generator_nullity"],
+        "kernel_projection_drift_max": kernel_projection_drift_max,
+        "kernel_projection_norm2_drift_max": kernel_projection_norm2_drift_max,
+        "active_plane_norm2_drift_max": active_plane_norm2_drift_max,
+        "kernel_projector_idempotence_error": kernel_projector_idempotence_error,
+        "kernel_generator_annihilation_error": kernel_generator_annihilation_error,
+        "kernel_projector_label_covariance_error": kernel_projector_covariance_error,
+        "generator_spectrum_label_covariance_error": generator_spectrum_covariance_error,
         "initial_closure_real_E": closure_rows[0]["closure_real_E"],
         "initial_closure_imag_F": closure_rows[0]["closure_imag_F"],
         "initial_hermitian_amplitude_sum": initial_amplitude_sum,
@@ -253,6 +343,19 @@ def trial_result(
                         "relation_imag": float(value.imag),
                         "relation_abs2": float(abs(value) ** 2),
                         "relation_phase_rad": float(np.angle(value)),
+                        "kernel_component_real": float(kernel_states[step, relation_index].real),
+                        "kernel_component_imag": float(kernel_states[step, relation_index].imag),
+                        "active_plane_component_real": float(
+                            active_plane_states[step, relation_index].real
+                        ),
+                        "active_plane_component_imag": float(
+                            active_plane_states[step, relation_index].imag
+                        ),
+                        "kernel_projection_drift_abs": float(kernel_projection_drifts[step]),
+                        "kernel_projection_norm2": float(kernel_projection_norm2[step]),
+                        "active_plane_projection_norm2": float(
+                            active_plane_projection_norm2[step]
+                        ),
                         **closure,
                     }
                 )
@@ -289,6 +392,48 @@ def summarize_body_counts(trials: List[Dict[str, Any]], params: ExperimentParams
             "max_target_period_recurrence_error": max(
                 float(row["target_period_recurrence_error"]) for row in selected
             ),
+            "generator_rank_min": min(int(row["generator_rank"]) for row in selected),
+            "generator_rank_max": max(int(row["generator_rank"]) for row in selected),
+            "generator_nullity_min": min(int(row["generator_nullity"]) for row in selected),
+            "generator_nullity_max": max(int(row["generator_nullity"]) for row in selected),
+            "rotation_plane_count_min": min(int(row["rotation_plane_count"]) for row in selected),
+            "rotation_plane_count_max": max(int(row["rotation_plane_count"]) for row in selected),
+            "independent_rotation_frequency_count_min": min(
+                int(row["independent_rotation_frequency_count"]) for row in selected
+            ),
+            "independent_rotation_frequency_count_max": max(
+                int(row["independent_rotation_frequency_count"]) for row in selected
+            ),
+            "single_rotation_plane_all_trials": bool_all(
+                bool(row["single_rotation_plane"]) for row in selected
+            ),
+            "unique_invariant_normal_all_trials": bool_all(
+                bool(row["unique_invariant_normal"]) for row in selected
+            ),
+            "one_plane_plus_one_normal_all_trials": bool_all(
+                bool(row["one_plane_plus_one_normal"]) for row in selected
+            ),
+            "max_kernel_projection_drift": max(
+                float(row["kernel_projection_drift_max"]) for row in selected
+            ),
+            "max_kernel_projection_norm2_drift": max(
+                float(row["kernel_projection_norm2_drift_max"]) for row in selected
+            ),
+            "max_active_plane_norm2_drift": max(
+                float(row["active_plane_norm2_drift_max"]) for row in selected
+            ),
+            "max_kernel_projector_idempotence_error": max(
+                float(row["kernel_projector_idempotence_error"]) for row in selected
+            ),
+            "max_kernel_generator_annihilation_error": max(
+                float(row["kernel_generator_annihilation_error"]) for row in selected
+            ),
+            "max_kernel_projector_label_covariance_error": max(
+                float(row["kernel_projector_label_covariance_error"]) for row in selected
+            ),
+            "max_generator_spectrum_label_covariance_error": max(
+                float(row["generator_spectrum_label_covariance_error"]) for row in selected
+            ),
             "stationary_all_trials": bool_all(bool(row["stationary_relation_system"]) for row in selected),
             "all_relation_waves_active_all_trials": bool_all(
                 int(row["active_relation_wave_count"]) == expected_relation_count for row in selected
@@ -303,6 +448,13 @@ def summarize_body_counts(trials: List[Dict[str, Any]], params: ExperimentParams
             and summary["max_generator_label_covariance_error"] <= params.covariance_tol
             and summary["max_update_label_covariance_error"] <= params.covariance_tol
             and summary["max_trajectory_label_covariance_error"] <= params.covariance_tol
+            and summary["max_kernel_projection_drift"] <= params.invariant_tol
+            and summary["max_kernel_projection_norm2_drift"] <= params.invariant_tol
+            and summary["max_active_plane_norm2_drift"] <= params.invariant_tol
+            and summary["max_kernel_projector_idempotence_error"] <= params.invariant_tol
+            and summary["max_kernel_generator_annihilation_error"] <= params.invariant_tol
+            and summary["max_kernel_projector_label_covariance_error"] <= params.covariance_tol
+            and summary["max_generator_spectrum_label_covariance_error"] <= params.covariance_tol
             and (
                 (body_count == 2 and summary["stationary_all_trials"])
                 or (body_count >= 3 and summary["all_relation_waves_active_all_trials"])
@@ -333,6 +485,36 @@ def aggregate_verdict(
         "ABCD_six_relation_directions_present": bool(
             abcd["relation_count_min"] == 6 and abcd["relation_count_max"] == 6
         ),
+        "AB_generator_rank_range": [ab["generator_rank_min"], ab["generator_rank_max"]],
+        "ABC_generator_rank_range": [abc["generator_rank_min"], abc["generator_rank_max"]],
+        "ABC_generator_nullity_range": [abc["generator_nullity_min"], abc["generator_nullity_max"]],
+        "ABC_rotation_plane_count_range": [
+            abc["rotation_plane_count_min"],
+            abc["rotation_plane_count_max"],
+        ],
+        "ABC_independent_rotation_frequency_count_range": [
+            abc["independent_rotation_frequency_count_min"],
+            abc["independent_rotation_frequency_count_max"],
+        ],
+        "ABC_one_plane_plus_one_normal_all_trials": abc[
+            "one_plane_plus_one_normal_all_trials"
+        ],
+        "ABCD_generator_rank_range": [abcd["generator_rank_min"], abcd["generator_rank_max"]],
+        "ABCD_generator_nullity_range": [
+            abcd["generator_nullity_min"],
+            abcd["generator_nullity_max"],
+        ],
+        "ABCD_rotation_plane_count_range": [
+            abcd["rotation_plane_count_min"],
+            abcd["rotation_plane_count_max"],
+        ],
+        "ABCD_independent_rotation_frequency_count_range": [
+            abcd["independent_rotation_frequency_count_min"],
+            abcd["independent_rotation_frequency_count_max"],
+        ],
+        "ABCD_unique_invariant_normal_all_trials": abcd[
+            "unique_invariant_normal_all_trials"
+        ],
         "max_closure_target_error_abs": max(
             float(row["max_closure_target_error_abs"]) for row in summaries
         ),
@@ -346,6 +528,12 @@ def aggregate_verdict(
                 float(row["max_trajectory_label_covariance_error"]),
             )
             for row in summaries
+        ),
+        "max_kernel_projection_drift": max(
+            float(row["max_kernel_projection_drift"]) for row in summaries
+        ),
+        "max_kernel_projector_label_covariance_error": max(
+            float(row["max_kernel_projector_label_covariance_error"]) for row in summaries
         ),
         "all_relations_are_physical_waves": True,
         "observer_C_or_D_used": False,
@@ -377,6 +565,56 @@ def make_plots(
     ax.legend(loc="best")
     fig.tight_layout()
     fig.savefig(OUT_DIR / "complete_pair_relation_wave_count_v1.png", dpi=180)
+    plt.close(fig)
+
+    generator_rank_min = [int(row["generator_rank_min"]) for row in summaries]
+    generator_rank_max = [int(row["generator_rank_max"]) for row in summaries]
+    generator_nullity_min = [int(row["generator_nullity_min"]) for row in summaries]
+    generator_nullity_max = [int(row["generator_nullity_max"]) for row in summaries]
+    rotation_plane_min = [int(row["rotation_plane_count_min"]) for row in summaries]
+    rotation_plane_max = [int(row["rotation_plane_count_max"]) for row in summaries]
+    fig, ax = plt.subplots(figsize=(9, 5))
+    ax.errorbar(
+        body_counts,
+        generator_rank_min,
+        yerr=[
+            [0 for _ in body_counts],
+            [upper - lower for lower, upper in zip(generator_rank_min, generator_rank_max)],
+        ],
+        marker="o",
+        capsize=4,
+        label="generator rank",
+    )
+    ax.errorbar(
+        body_counts,
+        generator_nullity_min,
+        yerr=[
+            [0 for _ in body_counts],
+            [upper - lower for lower, upper in zip(generator_nullity_min, generator_nullity_max)],
+        ],
+        marker="s",
+        capsize=4,
+        label="kernel nullity",
+    )
+    ax.errorbar(
+        body_counts,
+        rotation_plane_min,
+        yerr=[
+            [0 for _ in body_counts],
+            [upper - lower for lower, upper in zip(rotation_plane_min, rotation_plane_max)],
+        ],
+        marker="^",
+        capsize=4,
+        label="rotation-plane count",
+    )
+    ax.set_xticks(body_counts)
+    ax.set_xlabel("physical body count")
+    ax.set_ylabel("spectral structure count")
+    ax.set_title("Antisymmetric generator: planes and invariant normals")
+    ax.grid(True, alpha=0.25)
+    ax.legend(loc="best")
+    fig.tight_layout()
+    fig.savefig(OUT_DIR / "generator_plane_normal_structure_v1.png", dpi=180)
     plt.close(fig)
 
     abc_rows = [row for row in selected_series if int(row["body_count"]) == 3]
@@ -425,6 +663,32 @@ def make_plots(
     fig.savefig(OUT_DIR / "ABC_relation_wave_conservation_v1.png", dpi=180)
     plt.close(fig)
 
+    kernel_drift = [float(row["kernel_projection_drift_abs"]) for row in first_relation_rows]
+    kernel_norm2 = [float(row["kernel_projection_norm2"]) for row in first_relation_rows]
+    active_norm2 = [float(row["active_plane_projection_norm2"]) for row in first_relation_rows]
+    kernel_norm2_initial = kernel_norm2[0]
+    active_norm2_initial = active_norm2[0]
+    fig, ax = plt.subplots(figsize=(10, 5))
+    ax.plot(steps, kernel_drift, label="|P0 X(t) - P0 X(0)|")
+    ax.plot(
+        steps,
+        [value - kernel_norm2_initial for value in kernel_norm2],
+        label="kernel norm-squared drift",
+    )
+    ax.plot(
+        steps,
+        [value - active_norm2_initial for value in active_norm2],
+        label="active-plane norm-squared drift",
+    )
+    ax.set_xlabel("step")
+    ax.set_ylabel("projection conservation error")
+    ax.set_title("ABC: one rotation plane plus one invariant normal")
+    ax.grid(True, alpha=0.25)
+    ax.legend(loc="best")
+    fig.tight_layout()
+    fig.savefig(OUT_DIR / "ABC_one_plane_one_normal_conservation_v1.png", dpi=180)
+    plt.close(fig)
+
 
 def write_report(result: Dict[str, Any]) -> None:
     verdict = result["aggregate_verdict"]
@@ -470,21 +734,19 @@ def write_report(result: Dict[str, Any]) -> None:
         "",
         "## 構成別結果",
         "",
-        "| system | relation waves | active min | closure error max | amplitude drift max | label covariance max | pass |",
-        "|---|---:|---:|---:|---:|---:|---|",
+        "| system | relation waves | generator rank | nullity | rotation planes | frequencies | kernel drift max | pass |",
+        "|---|---:|---:|---:|---:|---:|---:|---|",
     ]
     for row in summaries:
         system_name = BODY_LABELS[: int(row["body_count"])]
-        covariance_max = max(
-            float(row["max_generator_label_covariance_error"]),
-            float(row["max_update_label_covariance_error"]),
-            float(row["max_trajectory_label_covariance_error"]),
-        )
         lines.append(
-            f"| {system_name} | {row['relation_count_min']} | {row['active_relation_wave_count_min']} | "
-            f"{row['max_closure_target_error_abs']:.16e} | "
-            f"{row['max_hermitian_amplitude_drift']:.16e} | "
-            f"{covariance_max:.16e} | {row['body_count_test_pass']} |"
+            f"| {system_name} | {row['relation_count_min']} | "
+            f"{row['generator_rank_min']}--{row['generator_rank_max']} | "
+            f"{row['generator_nullity_min']}--{row['generator_nullity_max']} | "
+            f"{row['rotation_plane_count_min']}--{row['rotation_plane_count_max']} | "
+            f"{row['independent_rotation_frequency_count_min']}--"
+            f"{row['independent_rotation_frequency_count_max']} | "
+            f"{row['max_kernel_projection_drift']:.16e} | {row['body_count_test_pass']} |"
         )
 
     lines.extend(["", "## 統合判定", "", "| 量 | 値 |", "|---|---:|"])
@@ -498,14 +760,27 @@ def write_report(result: Dict[str, Any]) -> None:
             "",
             "- ABは一つの関係波だけを持ち、本更新則では連続混合相手がないため定常だった。",
             "- ABCは `AB`, `BC`, `CA` の三つの物理的関係波を持ち、全試行で三波すべてが変動した。",
+            f"- ABC生成子のランクは "
+            f"`{summaries[1]['generator_rank_min']}--{summaries[1]['generator_rank_max']}`、"
+            f"零空間次元は `{summaries[1]['generator_nullity_min']}--"
+            f"{summaries[1]['generator_nullity_max']}` であり、全試行で一回転平面と一不変法線へ分解した。",
             "- ABCDは六つの物理的関係波を持ち、三軸を超える関係方向が代数的には存在した。",
+            f"- ABCD生成子のランクは "
+            f"`{summaries[2]['generator_rank_min']}--{summaries[2]['generator_rank_max']}`、"
+            f"零空間次元は `{summaries[2]['generator_nullity_min']}--"
+            f"{summaries[2]['generator_nullity_max']}`、回転平面数は "
+            f"`{summaries[2]['rotation_plane_count_min']}--"
+            f"{summaries[2]['rotation_plane_count_max']}` だった。",
             "- 全構成で `sum_e X_e^2 = R^2` と実数二乗和は数値精度内で保存された。",
             "- 個体名の置換に対し、生成子、更新行列、軌道は数値精度内で共変だった。",
+            "- 零空間射影は軌道上で数値精度内に保存され、名称置換に対して共変だった。",
             "",
             "## 分類",
             "",
             "- ABC三関係波を三軸成分として置くこと: 本実験のモデル定義。",
             "- ABC三関係波が閉鎖を保存しながら同時に振動できること: 本予備実験の数値結果。",
+            "- ABCの反対称生成子が一回転平面と一意な不変法線を持つこと: 本予備実験の数値結果。",
+            "- 不変法線を物理的な第三空間方向と同一視すること: 本実験では物理的解釈。",
             "- 三関係波が物理的なXYZ空間と同一であること: 本実験では未導出。",
             "- ABCDの六関係波から観測可能な三軸を一意選択する機構: 本実験では未解決。",
             "",
@@ -516,8 +791,10 @@ def write_report(result: Dict[str, Any]) -> None:
             "- `ab_abc_abcd_complete_pair_relation_network_body_summary_v1.csv`",
             "- `ab_abc_abcd_complete_pair_relation_network_selected_series_v1.csv`",
             "- `complete_pair_relation_wave_count_v1.png`",
+            "- `generator_plane_normal_structure_v1.png`",
             "- `ABC_three_physical_relation_waves_v1.png`",
             "- `ABC_relation_wave_conservation_v1.png`",
+            "- `ABC_one_plane_one_normal_conservation_v1.png`",
         ]
     )
     (OUT_DIR / "ab_abc_abcd_complete_pair_relation_network_preliminary_report_v1.md").write_text(
