@@ -105,6 +105,25 @@
 
 ## 更新履歴
 
+### 2026-07-20: 完全二体関係波から読み出されるXYZ三方向 新規公開
+
+**「次元の生成構造」シリーズ第2論文を新規公開**：従来のAB二体の一次元的な位相関係を、ABC三体とABCD四体の完全二体関係波へ拡張した。32試行・各720ステップの数値実験により、ABCでXY回転平面とZ不変法線、ABCDでXYZ三方向と読める三回転平面が現れることを示した。日本語・英語Markdown、TeX/PDF、5図、実験コード、CSV/JSON、再現用ZIPを公開。
+
+- **日本語題**：完全二体関係波から読み出されるXYZ三方向――AB・ABC・ABCD閉鎖系における内部関係方向の増加と空間方向読出しの飽和
+- **英題**：Three XYZ Directions Read from Complete Pairwise Relational Waves: Growth of Internal Relational Directions and Saturation of Spatial-Direction Readout in Closed AB, ABC, and ABCD Systems
+- **Concept DOI**：[10.5281/zenodo.21454789](https://doi.org/10.5281/zenodo.21454789)
+- **v1 DOI**：[10.5281/zenodo.21454790](https://doi.org/10.5281/zenodo.21454790)
+- **Zenodo**：[公開レコード](https://zenodo.org/records/21454790)
+- **Zenn**：[関係波を増やすと空間方向はXYZで飽和する](https://zenn.dev/noriaki_kihara/articles/complete-pair-relational-wave-xyz-readout)
+
+**核心結果**：
+- ABは一関係波・生成子ランク0の定常系
+- ABCは三関係波が全試行で活動し、生成子ランク2・零空間次元1となった。これをXY二軸の位相読出しと、XY平面から定まるZ不変法線と読む
+- ABCDは六関係波・生成子ランク6・零空間次元0となり、三つの回転平面へ分解した。一意に読める空間方向はXYZ三方向であり、残る三内部方向は一意に定まらない
+- 全構成の最大二乗閉鎖誤差 $1.92\times10^{-13}$、最大絶対値二乗和変動 $2.42\times10^{-13}$、最大名称置換共変性誤差 $1.47\times10^{-13}$
+- 状態の逐次正規化、観測減衰、絶対背景軸は使用していない
+- 五体以上の方向数と残余方向の物理軸対応は、直接実験事実ではなく本稿の解釈範囲
+
 ### 2026-07-19: AB二体閉鎖位相系の調和閉鎖による逆二乗則 新規公開
 
 **新規追加論文公開**：既公開AB二体加速度実験を再解析し、未来位相位置を関係的回転中心とする加速度写像と、整数倍音が位相セル幅と角速度を同時に定める調和閉鎖を接続した。特定条件で実行した本実験では、位相セル幅に対する逆二乗則が成立した。日本語・英語Markdown、TeX/PDF、2図、集計表、再集計コード、ソースZIPを公開。

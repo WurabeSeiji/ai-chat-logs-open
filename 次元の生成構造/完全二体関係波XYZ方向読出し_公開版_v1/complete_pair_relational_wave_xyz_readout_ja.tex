@@ -1,0 +1,1471 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\PassOptionsToPackage{space}{xeCJK}
+\documentclass[
+  10pt,
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=22mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \ifXeTeX
+    \usepackage{xeCJK}
+    \setCJKmainfont[]{Hiragino Mincho ProN}
+  \fi
+  \ifLuaTeX
+    \usepackage[]{luatexja-fontspec}
+    \setmainjfont[]{Hiragino Mincho ProN}
+  \fi
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{pdflscape}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{完全二体関係波から読み出されるXYZ三方向}\label{ux5b8cux5168ux4e8cux4f53ux95a2ux4fc2ux6ce2ux304bux3089ux8aadux307fux51faux3055ux308cux308bxyzux4e09ux65b9ux5411}
+
+\subsection{AB・ABC・ABCD閉鎖系における内部関係方向の増加と空間方向読出しの飽和}\label{ababcabcdux9589ux9396ux7cfbux306bux304aux3051ux308bux5185ux90e8ux95a2ux4fc2ux65b9ux5411ux306eux5897ux52a0ux3068ux7a7aux9593ux65b9ux5411ux8aadux51faux3057ux306eux98fdux548c}
+
+\textbf{著者:} 木原 範昭 \textbf{ORCID:} 0009-0004-6753-4020
+\textbf{日付:} 2026年7月20日 \textbf{Version DOI:}
+10.5281/zenodo.21454790 \textbf{Concept DOI:} 10.5281/zenodo.21454789
+\textbf{位置づけ:} 「次元の生成構造」シリーズ・第2論文 v1
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+これまでのAB二体閉鎖位相系では、位相差の関係は \(AB\)
+の一つだけであり、その一次元的な関係から位置読出しや加速度様読出しが可能かを検討してきた。しかし、XY方向、XYZ方向に相当する複数の空間的方向の位相関係は扱っていなかった。本稿では、背景空間の座標軸を先に仮定せず、ABC三体問題およびABCD四体問題の完全二体関係から、XY方向、XYZ方向と読める位相関係を構成できるかを検討する。
+
+\(N\)体から得られる全二体関係の集合を
+
+\[
+\mathcal E_N
+=
+\bigl\{\{i,j\}\mid 1\le i<j\le N\bigr\},
+\qquad
+M=\lvert\mathcal E_N\rvert=\binom{N}{2}
+\]
+
+とし、各関係 \(e\in\mathcal E_N\) に一つの複素関係波 \(X_e\)
+を対応させる。すべての関係波は物理状態の成分であり、CまたはDを観測器として使用しない。状態は
+
+\[
+\sum_{e\in\mathcal E_N}X_e^2=R^2
+\]
+
+を満たすように構成し、端点を共有する二関係だけを結ぶ実反対称生成子と、そのCayley変換による実直交更新で発展させた。
+
+32試行、各720ステップの数値実験では、ABは一つの関係波だけを持ち、生成子ランク0の定常系となった。ABCは
+\(AB,BC,CA\)
+の三つの関係波を持ち、全試行で三波すべてが活動した。内在的にはXYZ三軸方向と読める三方向が生じたが、生成子ランクは2であり、位相関係として実際に読み出せたのはXY二軸だった。残るZ方向はXY面から定まる不変法線であり、独立した位相関係としては読み出されなかった。ABCDは六つの関係波を持ち、全試行で生成子ランク6、零空間次元0、三つの回転平面へ分解した。六つの内部関係方向のうち、一意に空間方向として読めるのはXYZ三方向であり、残る三方向は一意に方向を定められなかった。
+
+全構成を通じた二乗閉鎖誤差は最大
+\(1.92\times10^{-13}\)、絶対値二乗和の変動は最大
+\(2.42\times10^{-13}\)、名称置換共変性の誤差は最大
+\(1.47\times10^{-13}\)
+であった。状態の逐次正規化、観測減衰、絶対背景軸は用いていない。
+
+本稿は、内部の関係方向数と、空間方向として一意に読み出せる方向数を区別する。ABCでは三方向が内在するが、位相関係として読めるのはXY二軸である。ABCDでは六方向が内在するが、空間方向として一意に読めるのはXYZ三軸である。本稿では、五体以上へ関係数を増やしても、増えるのは一意に方向を定められない内部関係であり、空間方向として読める関係はXYZ三方向を超えないと解釈する。残余方向が物理的にどの軸に対応するかは、本稿の対象外である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{0. 結論}\label{ux7d50ux8ad6}
+
+これまでのAB二体問題で扱ってきた位相差の関係は \(AB\)
+の一つだけであり、位置読出しと加速度様読出しはいずれも、この一次元的な関係から構成されていた。本稿は、この構成をABC三体問題とABCD四体問題へ拡張し、複数の空間方向に対応する位相関係を読み出せるかを検討した。
+
+完全二体関係を独立な状態波として数えると、内部の関係方向数は
+
+\[
+M=\binom{N}{2}
+\]
+
+で与えられる。
+
+したがって、
+
+\[
+AB:1,
+\qquad
+ABC:3,
+\qquad
+ABCD:6
+\]
+
+となる。
+
+ABCでは \(AB,BC,CA\)
+の三つの位相関係が生じる。これは内在的にはXYZ三軸方向と読める。しかし、生成子は
+
+\[
+\operatorname{rank}K=2,
+\qquad
+\dim\ker K=1
+\]
+
+となる。このため、位相関係として実際に読み出せるのは、ランク2に対応するXY二軸である。残る一方向は、XY面から定まる不変法線Zであり、独立した位相関係としては読み出されない。
+
+したがってABC関係空間は、
+
+\[
+\boxed{
+\text{一つの回転平面}
+\;\oplus\;
+\text{一つの不変方向}
+}
+\]
+
+へ分かれる。数値実験では三つの関係波がすべて活動しながら、このXY平面・Z法線構造、二乗閉鎖、絶対値二乗和、名称置換共変性が同時に保存された。
+
+ABCDでは六つの位相関係が生じる。生成子は
+
+\[
+\operatorname{rank}K=6,
+\qquad
+\dim\ker K=0
+\]
+
+となり、六方向は三つの回転平面へ分解された。六つの内部関係方向すべてを独立した空間軸として読むことはできず、空間方向として一意に読めるのはXYZ三方向である。残る三方向は一意に方向を定められない。
+
+したがって、本稿の主張は次である。
+
+\[
+\boxed{
+\text{内部の関係方向は増加するが、}
+\quad
+\text{一意に読み出せる空間方向はXYZ三方向で止まる}
+}
+\]
+
+五体以上で完全二体関係数が増えても、それは新しい一意な空間方向を追加しない。本稿では、追加関係を方向が一意に定まらない内部方向と解釈する。残余方向が物理的にどの軸へ対応するかは、本稿の対象外である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 研究課題}\label{ux7814ux7a76ux8ab2ux984c}
+
+\subsubsection{1.1
+背景座標ではなく関係から始める}\label{ux80ccux666fux5ea7ux6a19ux3067ux306fux306aux304fux95a2ux4fc2ux304bux3089ux59cbux3081ux308b}
+
+通常、一次元、二次元、三次元という区別は、あらかじめ与えられた座標軸の本数として記述される。しかし、この記述では、なぜその軸が存在するのかは前提に残る。
+
+本稿では順序を逆にする。
+
+最初に置くのは空間軸ではなく、個体間の関係波だけである。二体ABに対しては関係
+\(AB\) が一つ存在する。三体ABCに対しては関係 \(AB,BC,CA\)
+が三つ存在する。四体ABCDに対しては六つの完全二体関係が存在する。
+
+本稿の問いは次である。
+
+\begin{quote}
+AB一関係からABC三関係、ABCD六関係へ拡張したとき、XY方向およびXYZ方向と読める位相関係をどこまで一意に読み出せるか。
+\end{quote}
+
+\subsubsection{1.2
+先行AB系から残った問い}\label{ux5148ux884cabux7cfbux304bux3089ux6b8bux3063ux305fux554fux3044}
+
+先行AB二体閉鎖位相系では、背景座標を置かず、ラベルなし二体関係 \(AB\)
+から位置読出しと加速度様調和読出しを構成できることが確認されている［2］。
+
+しかしAB二体から得られる位相差の関係は \(AB\)
+の一つだけである。したがって先行実験が扱ったのは一次元的な関係読出しであり、XY方向やXYZ方向に対応する複数の位相関係は扱っていなかった。
+
+したがって本稿では、観測用の第三波を追加するのではなく、ABCおよびABCDの全二体関係を、すべて同格の物理的関係波として追加する。
+
+\subsubsection{1.3
+本稿で判別すること}\label{ux672cux7a3fux3067ux5224ux5225ux3059ux308bux3053ux3068}
+
+本稿では、構成ごとに次を判別する。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  完全二体関係波はいくつ存在するか。
+\item
+  何本の関係波が実際に活動するか。
+\item
+  ABCの三関係からXY二軸とZ法線を読み分けられるか。
+\item
+  ABCDの六関係からXYZ三方向を一意に読み出せるか。
+\item
+  内部関係数が増えたとき、空間方向として読める方向数も増えるか。
+\item
+  二乗閉鎖と絶対値二乗和が保存されるか。
+\item
+  個体名を置換しても結果が共変に移るか。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. 主張の分類}\label{ux4e3bux5f35ux306eux5206ux985e}
+
+本稿では、定義、数学的帰結、数値実験事実、物理的解釈、未導出事項を区別する。無名性と二乗閉鎖の基本的な用法は、先行する基本公理系v4に基づく［1］。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{landscape}
+\begingroup\scriptsize
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+対象
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+分類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+本稿での位置づけ
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+個体名に絶対的な物理的意味を与えない & 第0公理から採用する要請 &
+名称置換共変性として検査 \\
+\(\sum_e X_e^2=R^2\) & 閉鎖条件 & 各ステップで直接計算 \\
+全二体関係を独立な関係波とする & モデル定義 & \(M=\binom{N}{2}\) \\
+端点共有関係だけを結合する & 作業仮説 & 関係グラフの隣接行列で実装 \\
+位相差の正弦から実反対称生成子を作る & 作業仮説 &
+第0・第1公理だけからは未導出 \\
+実反対称生成子が二次元回転ブロックと零空間に分かれる & 数学的帰結 &
+実反対称行列の標準形 \\
+ABCの非零生成子が一回転平面と一次元核を持つ & 数学的帰結 & \(3\times3\)
+実反対称行列のランクは2 \\
+ABCの三関係波が全試行で活動する & 数値実験事実 & 32試行で確認 \\
+ABCD生成子が全試行でランク6となる & 数値実験事実 & 32試行で確認 \\
+ABCのランク2をXY二軸の位相読出しとする & 本稿の空間方向解釈 &
+実際に読み出せる位相関係は二軸 \\
+ABCの一次元核をZ法線とする & 本稿の空間方向解釈 &
+XY面から定まる第三方向 \\
+ABCDの三回転平面をXYZ三方向の読出しとする & 本稿の空間方向解釈 &
+六関係のうち三方向を一意に読む \\
+ABCDの残る三方向 & 本稿の空間方向解釈 &
+一意に方向を定められない内部関係 \\
+五体以上で増える関係方向 & 本稿の一般化解釈 &
+XYZを増やさず、非一意な内部方向を増やす \\
+残余方向が対応する物理軸 & 対象外 & 本稿では同定しない \\
+\end{longtable}
+\endgroup
+\end{landscape}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3.
+完全二体関係波モデル}\label{ux5b8cux5168ux4e8cux4f53ux95a2ux4fc2ux6ce2ux30e2ux30c7ux30eb}
+
+\subsubsection{3.1 関係集合}\label{ux95a2ux4fc2ux96c6ux5408}
+
+\(N\)個の個体を考える。A、B、C、Dという文字は計算上の識別子であり、固有の物理的役割ではない。
+
+全二体関係の集合を
+
+\[
+\mathcal E_N
+=
+\bigl\{\{i,j\}\mid 1\le i<j\le N\bigr\}
+\]
+
+とする。関係数は
+
+\[
+M
+=
+\lvert\mathcal E_N\rvert
+=
+\binom{N}{2}
+=
+\frac{N(N-1)}{2}
+\]
+
+である。
+
+本稿で用いる三構成は、
+
+\[
+\begin{aligned}
+\mathcal E_2&=\{AB\},\\
+\mathcal E_3&=\{AB,BC,CA\},\\
+\mathcal E_4&=\{AB,AC,AD,BC,BD,CD\}
+\end{aligned}
+\]
+
+である。
+
+各関係 \(e\) に一つの複素状態波
+
+\[
+X_e=a_e+i b_e
+\]
+
+を対応させ、全状態を
+
+\[
+X=
+\begin{pmatrix}
+X_{e_1} & X_{e_2} & \cdots & X_{e_M}
+\end{pmatrix}^{\mathsf T}
+\in\mathbb C^M
+\]
+
+と書く。
+
+このとき、関係波 \(AB,BC,CA\)
+などは観測チャネルではない。すべてが同格の物理状態成分である。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={完全二体関係波数}]{figures/complete_pair_relation_wave_count_v1.png}}
+\caption{完全二体関係波数}
+\end{figure}
+
+\subsubsection{3.2
+関係どうしの隣接}\label{ux95a2ux4fc2ux3069ux3046ux3057ux306eux96a3ux63a5}
+
+二つの関係 \(e,f\in\mathcal E_N\)
+が一つの端点を共有するときだけ、それらを隣接とする。
+
+\[
+A_{ef}
+=
+\begin{cases}
+1,
+& e\ne f\ \text{かつ}\ e\cap f\ne\varnothing,\\
+0,
+& \text{それ以外}.
+\end{cases}
+\]
+
+これは、個体を頂点、二体関係を辺とする完全グラフ \(K_N\)
+の線グラフに対応する構成である［3］。
+
+重要なのは、結合が個体名そのものではなく、関係どうしが端点を共有するかどうかだけで決まることである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4.
+二乗閉鎖と初期状態}\label{ux4e8cux4e57ux9589ux9396ux3068ux521dux671fux72b6ux614b}
+
+\subsubsection{4.1 閉鎖条件}\label{ux9589ux9396ux6761ux4ef6}
+
+複素関係波全体に対し、二乗閉鎖を
+
+\[
+q(X)
+=
+X^{\mathsf T}X
+=
+\sum_{e\in\mathcal E_N}X_e^2
+=
+R^2
+\]
+
+とする。
+
+これは零二乗和閉鎖に対して、閉鎖項を
+
+\[
+(iR)^2=-R^2
+\]
+
+と書いた
+
+\[
+\sum_{e\in\mathcal E_N}X_e^2+(iR)^2=0
+\]
+
+の等価な表示である。本稿の数値実験で直接保存対象とするのは、右辺へ移した表示
+\(q(X)=R^2\) である。
+
+\(X_e=a_e+i b_e\) と分解すると、
+
+\[
+q(X)=E+iF
+\]
+
+であり、
+
+\[
+E
+=
+\sum_e\left(a_e^2-b_e^2\right),
+\]
+
+\[
+F
+=
+2\sum_e a_e b_e
+\]
+
+となる。本実験では各ステップで
+
+\[
+E=R^2,
+\qquad
+F=0
+\]
+
+が保たれるかを直接検査した。
+
+比較用の独立な保存量として、絶対値二乗和
+
+\[
+H(X)
+=
+X^\dagger X
+=
+\sum_e\lvert X_e\rvert^2
+=
+\sum_e\left(a_e^2+b_e^2\right)
+\]
+
+も記録した。
+
+\(q(X)\) と \(H(X)\)
+は同じ量ではない。前者は複素二乗の総和であり、後者は各成分の絶対値二乗和である。
+
+\subsubsection{4.2
+初期閉鎖状態}\label{ux521dux671fux9589ux9396ux72b6ux614b}
+
+\(M>1\) の場合、実単位ベクトル \(u,v\in\mathbb R^M\) を
+
+\[
+u^{\mathsf T}u=1,
+\qquad
+v^{\mathsf T}v=1,
+\qquad
+u^{\mathsf T}v=0
+\]
+
+となるように構成し、初期状態を
+
+\[
+X(0)
+=
+\sqrt{R^2+s^2}\,u
++
+i s\,v
+\]
+
+とした。ここで \(s\) は虚部の初期振幅である。
+
+この構成から、
+
+\[
+\begin{aligned}
+X(0)^{\mathsf T}X(0)
+&=
+(R^2+s^2)u^{\mathsf T}u
+-s^2v^{\mathsf T}v
++2is\sqrt{R^2+s^2}\,u^{\mathsf T}v\\
+&=R^2
+\end{aligned}
+\]
+
+が初期値で厳密に成立する。
+
+本実験では
+
+\[
+R^2=1,
+\qquad
+s=0.35
+\]
+
+とした。
+
+ABの \(M=1\) では、
+
+\[
+X_{AB}(0)=R
+\]
+
+とした。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+閉鎖保存生成子}\label{ux9589ux9396ux4fddux5b58ux751fux6210ux5b50}
+
+\subsubsection{5.1
+位相差から作る反対称生成子}\label{ux4f4dux76f8ux5deeux304bux3089ux4f5cux308bux53cdux5bfeux79f0ux751fux6210ux5b50}
+
+初期関係波の位相を
+
+\[
+\theta_e=\arg X_e(0)
+\]
+
+とする。
+
+端点共有関係だけを結ぶ生成子の未規格化形を
+
+\[
+\widetilde K_{ef}
+=
+A_{ef}\sin(\theta_f-\theta_e)
+\]
+
+と置く。
+
+\(A_{ef}=A_{fe}\) かつ
+
+\[
+\sin(\theta_e-\theta_f)
+=
+-\sin(\theta_f-\theta_e)
+\]
+
+であるから、
+
+\[
+\widetilde K^{\mathsf T}
+=
+-\widetilde K
+\]
+
+となる。
+
+非零の場合はスペクトルノルムで割り、
+
+\[
+K
+=
+\frac{\widetilde K}{\lVert\widetilde K\rVert_2}
+\]
+
+とした。
+
+この生成子は、関係共有と位相差だけから構成される。しかし、この具体的な正弦結合則は、先行する基本公理系v4［1］の第0公理と二乗閉鎖だけから導出したものではない。本稿の構成的数値実験で用いる保存的な作業仮説である。
+
+\subsubsection{5.2 Cayley更新}\label{cayleyux66f4ux65b0}
+
+実反対称生成子 \(K\) から、一ステップ更新を
+
+\[
+U
+=
+\left(I-\gamma K\right)^{-1}
+\left(I+\gamma K\right)
+\]
+
+とする。ここで \(\gamma\) は有限更新幅を定める実係数である。
+
+実反対称性 \(K^{\mathsf T}=-K\) により、Cayley変換 \(U\)
+は実直交行列となる［5］。
+
+\[
+U^{\mathsf T}U=I
+\]
+
+状態更新は
+
+\[
+X_{s+1}=UX_s
+\]
+
+とする。
+
+\subsubsection{5.3
+二つの保存量}\label{ux4e8cux3064ux306eux4fddux5b58ux91cf}
+
+\(U\) は実直交行列なので、複素双線形二乗形式は
+
+\[
+\begin{aligned}
+q(X_{s+1})
+&=
+(UX_s)^{\mathsf T}(UX_s)\\
+&=
+X_s^{\mathsf T}U^{\mathsf T}UX_s\\
+&=
+X_s^{\mathsf T}X_s\\
+&=q(X_s)
+\end{aligned}
+\]
+
+と保存される。
+
+同時に、\(U^\dagger=U^{\mathsf T}\) であるため、
+
+\[
+\begin{aligned}
+H(X_{s+1})
+&=
+(UX_s)^\dagger(UX_s)\\
+&=
+X_s^\dagger U^{\mathsf T}UX_s\\
+&=
+X_s^\dagger X_s\\
+&=H(X_s)
+\end{aligned}
+\]
+
+も保存される。
+
+この保存は各ステップで状態を再正規化して得るものではない。更新行列自体の直交性から生じる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6.
+回転平面と空間方向読出し}\label{ux56deux8ee2ux5e73ux9762ux3068ux7a7aux9593ux65b9ux5411ux8aadux51faux3057}
+
+\subsubsection{6.1
+実反対称行列の標準形}\label{ux5b9fux53cdux5bfeux79f0ux884cux5217ux306eux6a19ux6e96ux5f62}
+
+実反対称行列 \(K\in\mathbb R^{M\times M}\) は、適切な実直交行列 \(Q\)
+によって、二次元回転ブロックと零ブロックへ分解できる［4］。
+
+\[
+Q^{\mathsf T}KQ
+=
+\bigoplus_{j=1}^{r}
+\begin{pmatrix}
+0 & -\sigma_j\\
+\sigma_j & 0
+\end{pmatrix}
+\oplus
+0_{M-2r},
+\qquad
+\sigma_j>0
+\]
+
+したがって、
+
+\[
+\operatorname{rank}K=2r
+\]
+
+は必ず偶数であり、
+
+\[
+\dim\ker K=M-2r
+\]
+
+となる。
+
+ここで \(r\) は独立な回転平面の数であり、\(\ker K\)
+は生成子によって動かされない不変方向の集合である。
+
+\subsubsection{6.2 AB}\label{ab}
+
+ABでは \(M=1\) であり、結合相手となる別の関係波がない。
+
+したがって、
+
+\[
+K=(0),
+\qquad
+\operatorname{rank}K=0,
+\qquad
+\dim\ker K=1
+\]
+
+である。
+
+不変方向は一つ存在するが、回転平面が存在しない。よってABだけでは「平面と、その平面に対する法線」という構造は作れない。
+
+\subsubsection{6.3 ABC}\label{abc}
+
+ABCでは
+
+\[
+X=
+\begin{pmatrix}
+X_{AB} & X_{BC} & X_{CA}
+\end{pmatrix}^{\mathsf T}
+\in\mathbb C^3
+\]
+
+である。
+
+非零の \(3\times3\)
+実反対称行列のランクは偶数であり、3を超えない。したがって、
+
+\[
+\operatorname{rank}K=2,
+\qquad
+\dim\ker K=1
+\]
+
+となる。
+
+これは、ABC関係空間が
+
+\[
+\mathbb R^3
+=
+\mathcal P_{\mathrm{rot}}
+\oplus
+\ker K,
+\]
+
+\[
+\dim\mathcal P_{\mathrm{rot}}=2,
+\qquad
+\dim\ker K=1
+\]
+
+へ分かれることを意味する。
+
+つまり、非零の生成子が成立した時点で、三つの関係方向の内部に、一つの回転平面と一つの不変方向が同時に生じる。本稿では、回転平面を位相関係として読み出せるXY二軸、不変方向をXY面から定まるZ法線と読む。ABCはXYZ三方向を内在するが、独立した位相関係として読み出せるのはXY二軸である。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={ABC三関係波}]{figures/ABC_three_physical_relation_waves_v1.png}}
+\caption{ABC三関係波}
+\end{figure}
+
+\subsubsection{6.4 不変射影}\label{ux4e0dux5909ux5c04ux5f71}
+
+\(\ker K\) への直交射影を \(P_0\) とする。
+
+\[
+KP_0=P_0K=0
+\]
+
+であるため、Cayley更新に対して
+
+\[
+UP_0=P_0U=P_0
+\]
+
+となる。したがって、
+
+\[
+P_0X_{s+1}
+=
+P_0UX_s
+=
+P_0X_s
+\]
+
+であり、零空間成分は保存される。
+
+ABCでは \(\ker K\)
+が一次元なので、この保存成分は符号を除いて一意なZ方向を定める。Zは独立した位相関係の読出しではなく、XY面から定まる法線である。
+
+\subsubsection{6.5 ABCD}\label{abcd}
+
+ABCDでは \(M=6\) である。実反対称生成子のランクは
+
+\[
+0,2,4,6
+\]
+
+のいずれかを取り得る。
+
+本実験の32試行ではすべて
+
+\[
+\operatorname{rank}K=6,
+\qquad
+\dim\ker K=0
+\]
+
+となり、
+
+\[
+r=3
+\]
+
+個の回転平面へ分解した。
+
+したがって、ABCDには六つの活動関係方向が存在し、それらは三つの回転平面へ分かれる。本稿では、この三回転平面をXYZ三方向の読出しとする。六つの内部関係方向のうち残る三方向は、それぞれの回転平面内の位相選択に依存し、一意な空間方向としては定まらない。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={生成子の平面・不変方向構造}]{figures/generator_plane_normal_structure_v1.png}}
+\caption{生成子の平面・不変方向構造}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7.
+名称置換共変性}\label{ux540dux79f0ux7f6eux63dbux5171ux5909ux6027}
+
+\subsubsection{7.1 置換作用}\label{ux7f6eux63dbux4f5cux7528}
+
+個体名の置換を \(\pi\) とし、それが関係波空間に誘導する置換行列を
+\(P_\pi\) とする。
+
+状態は
+
+\[
+X'_0=P_\pi X_0
+\]
+
+と移る。
+
+無名性と両立するなら、生成子と更新行列は
+
+\[
+K'=P_\pi K P_\pi^{\mathsf T},
+\]
+
+\[
+U'=P_\pi U P_\pi^{\mathsf T}
+\]
+
+と移り、軌道全体は
+
+\[
+X'_s=P_\pi X_s
+\]
+
+を満たす必要がある。
+
+\subsubsection{7.2
+本稿で検査した意味}\label{ux672cux7a3fux3067ux691cux67fbux3057ux305fux610fux5473}
+
+この検査は、A、B、C、Dの文字を入れ替えても、同じ物理状態が成分順序を変えて表現されるだけであることを確認する。
+
+この検査が確認するのは、本実装が個体名に依存する特権規則を持たず、名称置換に対して同じ物理状態を返すことである。
+
+ABCでは、零空間射影についても
+
+\[
+P'_0
+=
+P_\pi P_0P_\pi^{\mathsf T}
+\]
+
+が数値精度内で成立するかを検査した。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. 数値実験}\label{ux6570ux5024ux5b9fux9a13}
+
+\subsubsection{8.1 条件}\label{ux6761ux4ef6}
+
+数値実験の条件は次である。
+
+{\def\LTcaptype{none} % do not increment counter
+\begingroup\scriptsize
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+項目 & 値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+構成 & AB、ABC、ABCD \\
+試行数 & 各32 \\
+更新ステップ数 & 各720 \\
+\(R^2\) & 1.0 \\
+虚部初期振幅 \(s\) & 0.35 \\
+乱数シード & 20260720 \\
+不変量判定許容差 & \(10^{-10}\) \\
+共変性判定許容差 & \(10^{-10}\) \\
+活動判定分散閾値 & \(10^{-10}\) \\
+状態の逐次正規化 & なし \\
+観測減衰 & なし \\
+観測専用C・D & なし \\
+絶対背景軸 & なし \\
+\end{longtable}
+\endgroup
+}
+
+\subsubsection{8.2
+各ステップの記録量}\label{ux5404ux30b9ux30c6ux30c3ux30d7ux306eux8a18ux9332ux91cf}
+
+各状態 \(X_s\) に対して、少なくとも次を記録した。
+
+\[
+E_s
+=
+\sum_e
+\left[
+(\Re X_{e,s})^2
+-(\Im X_{e,s})^2
+\right],
+\]
+
+\[
+F_s
+=
+2\sum_e
+(\Re X_{e,s})(\Im X_{e,s}),
+\]
+
+\[
+\varepsilon_{q,s}
+=
+\sqrt{(E_s-R^2)^2+F_s^2},
+\]
+
+\[
+H_s
+=
+\sum_e\lvert X_{e,s}\rvert^2.
+\]
+
+また、生成子ランク、零空間次元、回転平面数、独立回転周波数数、各関係波の活動分散、零空間射影の変動、置換後の生成子・更新行列・軌道の共変誤差を計算した。
+
+\subsubsection{8.3 合格条件}\label{ux5408ux683cux6761ux4ef6}
+
+本実験では次を同時に満たすことを要求した。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  二乗閉鎖誤差が許容差以下である。
+\item
+  絶対値二乗和の変動が許容差以下である。
+\item
+  更新行列の直交誤差が許容差以下である。
+\item
+  名称置換後の生成子、更新行列、軌道が共変である。
+\item
+  ABCでは三関係波がすべて活動する。
+\item
+  ABCでは一回転平面と一次元核が存在する。
+\item
+  ABCの零空間射影が保存される。
+\item
+  ABCDでは六関係波の活動と生成子のスペクトル構造を記録する。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. 結果}\label{ux7d50ux679c}
+
+\subsubsection{9.1
+構成別の主要結果}\label{ux69cbux6210ux5225ux306eux4e3bux8981ux7d50ux679c}
+
+{\def\LTcaptype{none} % do not increment counter
+\begingroup\scriptsize
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1111}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+構成
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+関係波数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+活動波数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+生成子ランク
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+零空間次元
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+回転平面数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+独立周波数数
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+AB & 1 & 0 & 0 & 1 & 0 & 0 \\
+ABC & 3 & 3 & 2 & 1 & 1 & 1 \\
+ABCD & 6 & 6 & 6 & 0 & 3 & 3 \\
+\end{longtable}
+\endgroup
+}
+
+表の各値は、各構成32試行のすべてで一致した。
+
+\subsubsection{9.2
+保存量と共変性}\label{ux4fddux5b58ux91cfux3068ux5171ux5909ux6027}
+
+{\def\LTcaptype{none} % do not increment counter
+\begingroup\scriptsize
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1579}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2105}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2105}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2105}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2105}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+構成
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+最大二乗閉鎖誤差
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+最大絶対値二乗和変動
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+最大直交誤差
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+最大軌道置換共変誤差
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+AB & \(0\) & \(0\) & \(0\) & \(0\) \\
+ABC & \(1.3628\times10^{-13}\) & \(1.6809\times10^{-13}\) &
+\(5.0984\times10^{-16}\) & \(1.1776\times10^{-13}\) \\
+ABCD & \(1.9218\times10^{-13}\) & \(2.4114\times10^{-13}\) &
+\(8.7433\times10^{-16}\) & \(1.4609\times10^{-13}\) \\
+\end{longtable}
+\endgroup
+}
+
+全構成を通じた最大値は、
+
+\[
+\max_s\lvert q(X_s)-R^2\rvert
+=
+1.9218001973240896\times10^{-13},
+\]
+
+\[
+\max_s\lvert H(X_s)-H(X_0)\rvert
+=
+2.41140440948584\times10^{-13},
+\]
+
+\[
+\varepsilon_{\mathrm{label,max}}
+=
+1.4608516699761366\times10^{-13}
+\]
+
+であった。
+
+これらは、設定した許容差 \(10^{-10}\) より小さい。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={ABC閉鎖保存}]{figures/ABC_relation_wave_conservation_v1.png}}
+\caption{ABC閉鎖保存}
+\end{figure}
+
+\subsubsection{9.3 ABの結果}\label{abux306eux7d50ux679c}
+
+ABには関係波 \(AB\)
+が一つだけ存在した。端点を共有する別の関係がないため、生成子は零となり、全32試行で状態は定常だった。
+
+これは、一つの関係だけでは関係空間内部の回転を作れないことを示す。
+
+\subsubsection{9.4 ABCの結果}\label{abcux306eux7d50ux679c}
+
+ABCでは \(AB,BC,CA\)
+の三関係波が存在し、全32試行で三波すべてが活動した。したがって、ABC関係空間にはXYZ三軸方向と読める三方向が内在する。
+
+生成子は全試行で
+
+\[
+\operatorname{rank}K=2,
+\qquad
+\dim\ker K=1
+\]
+
+となり、一回転平面と一不変方向へ分解した。ランク2の回転平面が、位相関係として実際に読み出せるXY二軸である。零空間の一方向は、XY面から定まるZ法線であり、独立した位相関係としては読み出されない。
+
+零空間射影の最大変動は
+
+\[
+4.073028073875021\times10^{-14}
+\]
+
+であり、零空間射影ノルム二乗の最大変動は
+
+\[
+4.718447854656915\times10^{-14}
+\]
+
+であった。
+
+活動平面ノルム二乗の最大変動は
+
+\[
+1.34781075189494\times10^{-13}
+\]
+
+であった。
+
+また、零空間射影子の名称置換共変誤差は最大
+
+\[
+7.591035761743328\times10^{-16}
+\]
+
+であった。
+
+したがって、Z法線は特定の名称に固定された方向ではなく、XYの位相関係と生成子から共変に定まる。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={ABC一平面・一不変方向の保存}]{figures/ABC_one_plane_one_normal_conservation_v1.png}}
+\caption{ABC一平面・一不変方向の保存}
+\end{figure}
+
+\subsubsection{9.5 ABCDの結果}\label{abcdux306eux7d50ux679c}
+
+ABCDでは六つの完全二体関係波が存在し、全32試行で六波すべてが活動した。したがってABCD関係空間には、六つの内部関係方向が存在する。
+
+一方、生成子は全試行で
+
+\[
+\operatorname{rank}K=6,
+\qquad
+\dim\ker K=0
+\]
+
+となった。
+
+したがって運動は三つの回転平面へ分解し、三つの独立回転周波数として区別された。本稿では、この三回転平面をXYZ三方向の読出しとする。
+
+六つの内部関係方向のうち、空間方向として一意に読めるのはXYZ三方向である。残る三方向は、それぞれの回転平面内で位相選択に依存するため、一意な空間方向としては定まらない。したがってABCDでは、内部関係方向は六つへ増えるが、読み出せる空間方向はXYZ三方向で止まる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. 考察}\label{ux8003ux5bdf}
+
+\subsubsection{10.1
+ABCが最小構成である理由}\label{abcux304cux6700ux5c0fux69cbux6210ux3067ux3042ux308bux7406ux7531}
+
+ABは関係方向を一つしか持たず、回転平面を作れない。
+
+ABCは三つの完全二体関係を持つ。非零の三次元実反対称生成子は、一つの二次元回転平面と一つの一次元核へ分かれる。
+
+したがってABCは、
+
+\[
+\boxed{
+\text{内在するXYZ三方向}
+=
+\text{読み出されるXY二軸}
++
+\text{XY面から定まるZ法線}
+}
+\]
+
+という構造を持つ最小の完全二体関係系である。
+
+ここで第三方向は、先に置いた絶対軸ではない。三つの関係方向に作用する反対称生成子の零空間として、運動平面との関係から定まる。
+
+\subsubsection{10.2
+「直角」を先に置いていない}\label{ux76f4ux89d2ux3092ux5148ux306bux7f6eux3044ux3066ux3044ux306aux3044}
+
+本モデルは、最初にXYZ直交座標を置いてから回転を定義していない。
+
+先にあるのは、三つの関係波と、それらを混合する反対称生成子である。生成子が作る二次元回転部分空間
+\(\mathcal P_{\mathrm{rot}}\) と、その零空間 \(\ker K\)
+は、実内積に関して直交する。
+
+\[
+\mathcal P_{\mathrm{rot}}
+\perp
+\ker K
+\]
+
+この意味で、直交関係は背景空間の指定としてではなく、関係運動の分解から得られる。本モデルで用いる直交とは、関係波空間の実内積に対する直交である。
+
+\subsubsection{10.3
+内部関係方向数と空間方向読出し数}\label{ux5185ux90e8ux95a2ux4fc2ux65b9ux5411ux6570ux3068ux7a7aux9593ux65b9ux5411ux8aadux51faux3057ux6570}
+
+本稿の結果は、内部に存在する関係方向数と、空間方向として一意に読み出せる方向数が同じではないことを示す。
+
+{\def\LTcaptype{none} % do not increment counter
+\begingroup\scriptsize
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2308}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.3077}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2308}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2308}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+構成
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+内部関係方向数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+位相関係としての読出し
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+空間方向としての読出し
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+AB & 1 & \(AB\) 一関係 & 一次元 \\
+ABC & 3 & XY二軸 & XY二軸と、そこから定まるZ法線 \\
+ABCD & 6 & 三つの回転平面 & XYZ三軸 \\
+\end{longtable}
+\endgroup
+}
+
+ABCでは三関係方向が内在するが、位相関係として読み出せるのはXY二軸である。第三方向ZはXY面から定まる法線であり、独立した位相関係ではない。
+
+ABCDでは六関係方向が内在するが、六本の空間軸が生じるのではない。六方向は三つの回転平面へ分かれ、空間方向として一意に読めるのはXYZ三方向である。残る三方向は一意に方向を定められない。
+
+\subsubsection{10.4
+四体で空間方向がXYZまで読める}\label{ux56dbux4f53ux3067ux7a7aux9593ux65b9ux5411ux304cxyzux307eux3067ux8aadux3081ux308b}
+
+ABでは一つの関係しか読めない。ABCではXY二軸の位相関係を読み、そこからZ法線を定められる。ABCDでは三つの回転平面が成立し、XYZ三方向を空間方向として一意に読める。
+
+したがって、空間方向的なXYZ三方向と読める関係性は、ABCD四体で読み出し可能になる。
+
+\subsubsection{10.5
+五体以上で増えるもの}\label{ux4e94ux4f53ux4ee5ux4e0aux3067ux5897ux3048ux308bux3082ux306e}
+
+五体以上では完全二体関係数
+
+\[
+M=\binom{N}{2}
+\]
+
+がさらに増える。しかし、増加する関係を新しい一意な空間軸として読むことはできない。本稿では、五体以上で増えるのは方向を一意に定められない内部関係であり、空間方向として読める関係はXYZ三方向を超えないと解釈する。
+
+残余方向が物理的にどの軸へ対応するかは、本稿の対象外である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{11.
+本稿の主張範囲}\label{ux672cux7a3fux306eux4e3bux5f35ux7bc4ux56f2}
+
+\subsubsection{11.1
+数値実験で確認した事実}\label{ux6570ux5024ux5b9fux9a13ux3067ux78baux8a8dux3057ux305fux4e8bux5b9f}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  AB・ABC・ABCDの完全二体関係を、観測専用波なしに同格の物理波として実装した。
+\item
+  内部関係方向数は、ABで1、ABCで3、ABCDで6となった。
+\item
+  ABCの三関係波は全32試行で同時に活動し、生成子はランク2、零空間次元1となった。
+\item
+  ABCDの六関係波は全32試行で同時に活動し、生成子はランク6、零空間次元0となり、三つの独立回転周波数を持つ三回転平面へ分解した。
+\item
+  状態は逐次正規化なしで二乗閉鎖と絶対値二乗和を保存した。
+\item
+  生成子、更新行列、軌道、零空間射影は名称置換に対して共変だった。
+\end{enumerate}
+
+\subsubsection{11.2
+本稿が採用する空間方向解釈}\label{ux672cux7a3fux304cux63a1ux7528ux3059ux308bux7a7aux9593ux65b9ux5411ux89e3ux91c8}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ABの一関係を一次元的な位相読出しとする。
+\item
+  ABCのランク2をXY二軸の位相読出しとする。
+\item
+  ABCの一次元核をXY面から定まるZ法線とする。
+\item
+  ABCDの三回転平面をXYZ三方向の読出しとする。
+\item
+  ABCDの残る三方向を、一意に方向を定められない内部関係とする。
+\item
+  五体以上で増える関係方向もXYZを増やさず、一意に方向を定められない内部関係を増やすとする。
+\end{enumerate}
+
+\subsubsection{11.3
+本稿で固定しないもの}\label{ux672cux7a3fux3067ux56faux5b9aux3057ux306aux3044ux3082ux306e}
+
+数値実験の対象はAB、ABC、ABCDである。五体以上について述べるのは、本稿の空間方向解釈を一般化した結果である。
+
+位相差正弦型の反対称生成子は、本稿の保存的な作業仮説である。
+
+一意に空間方向として読まれない残余方向が、物理的にどの軸へ対応するかは本稿で固定しない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{12. 再現可能性}\label{ux518dux73feux53efux80fdux6027}
+
+本稿の数値実験は、次の実プログラムと出力に基づく。
+
+\subsubsection{実行プログラム}\label{ux5b9fux884cux30d7ux30edux30b0ux30e9ux30e0}
+
+\resizebox{\linewidth}{!}{\texttt{次元の生成構造/対照実験\_一角度円周位相調和読出し\_v1/run\_ab\_abc\_abcd\_complete\_pair\_relation\_network\_preliminary\_v1.py}}
+
+\subsubsection{主要出力}\label{ux4e3bux8981ux51faux529b}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{ab\_abc\_abcd\_complete\_pair\_relation\_network\_preliminary\_result\_v1.json}
+\item
+  \texttt{ab\_abc\_abcd\_complete\_pair\_relation\_network\_trial\_summary\_v1.csv}
+\item
+  \texttt{ab\_abc\_abcd\_complete\_pair\_relation\_network\_body\_summary\_v1.csv}
+\item
+  \texttt{ab\_abc\_abcd\_complete\_pair\_relation\_network\_selected\_series\_v1.csv}
+\item
+  \texttt{ab\_abc\_abcd\_complete\_pair\_relation\_network\_preliminary\_report\_v1.md}
+\end{itemize}
+
+これらは次のディレクトリに保存されている。
+
+\resizebox{\linewidth}{!}{\texttt{次元の生成構造/対照実験\_一角度円周位相調和読出し\_v1/ab\_abc\_abcd\_complete\_pair\_relation\_network\_preliminary\_result\_v1/}}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{13. 最終結論}\label{ux6700ux7d42ux7d50ux8ad6}
+
+これまでのAB二体問題では、位相差の関係は \(AB\)
+の一つだけであり、位置読出しと加速度様読出しは一次元的な関係として構成されていた。
+
+本稿ではABC三体問題とABCD四体問題へ拡張し、完全二体関係の位相差から、XY方向およびXYZ方向と読める関係性を構成した。
+
+背景空間の軸を先に置かず、完全二体関係を状態波として置くと、内部関係方向数は
+
+\[
+1\longrightarrow3\longrightarrow6
+\]
+
+と増える。
+
+ABCでは三つの関係波がすべて活動しながら、反対称生成子が
+
+\[
+\text{一回転平面}
+\oplus
+\text{一不変方向}
+\]
+
+へ分解した。したがって、ABCにはXYZ三方向が内在するが、位相関係として読み出せるのはXY二軸である。ZはXY面から定まる法線であり、独立した位相関係としては読み出されない。
+
+ABCDでは六つの関係波が三つの回転平面へ分解した。本稿では、この三回転平面をXYZ三方向の読出しとする。六つの内部関係方向のうち、残る三方向は一意に方向を定められない。
+
+五体以上へ拡張すると内部関係方向数は増えるが、一意に読み出せる空間方向は増えない。増えるのは方向を一意に定められない内部関係である。
+
+したがって、本稿の結論は次である。
+
+\[
+\boxed{
+\text{内部の関係方向は増加するが、}
+\quad
+\text{一意に読み出せる空間方向はXYZ三方向で止まる}
+}
+\]
+
+残余方向が物理的にどの軸へ対応するかは、本稿の対象外である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsubsection{自己引用}\label{ux81eaux5df1ux5f15ux7528}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  木原 範昭「無名等振幅複合波モデル基本公理系 v4」Zenodo, 2026. Version
+  DOI:
+  \href{https://doi.org/10.5281/zenodo.21316620}{10.5281/zenodo.21316620},
+  Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.21315735}{10.5281/zenodo.21315735}.
+\item
+  木原
+  範昭「AB二体閉鎖位相系における調和読出しとc=1面積スイープ予備実験総括
+  v4」Zenodo, 2026. Version DOI:
+  \href{https://doi.org/10.5281/zenodo.21374317}{10.5281/zenodo.21374317},
+  Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.21318696}{10.5281/zenodo.21318696}.
+\end{enumerate}
+
+\subsubsection{外部文献}\label{ux5916ux90e8ux6587ux732e}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Hassler Whitney, ``Congruent Graphs and the Connectivity of Graphs,''
+  \emph{American Journal of Mathematics}, 54(1), 150--168, 1932. DOI:
+  \href{https://doi.org/10.2307/2371086}{10.2307/2371086}.
+\item
+  Milan Vujivčić, Fedor Herbut, and Gradimir Vujivčić, ``Canonical Form
+  for Matrices Under Unitary Congruence Transformations. I:
+  Conjugate-Normal Matrices,'' \emph{SIAM Journal on Applied
+  Mathematics}, 23(2), 225--238, 1972. DOI:
+  \href{https://doi.org/10.1137/0123025}{10.1137/0123025}.
+\item
+  Fasma Diele, Luciano Lopez, and R. Peluso, ``The Cayley Transform in
+  the Numerical Solution of Unitary Differential Systems,''
+  \emph{Advances in Computational Mathematics}, 8(4), 317--334, 1998.
+  DOI:
+  \href{https://doi.org/10.1023/A:1018908700358}{10.1023/A:1018908700358}.
+\end{enumerate}
+
+\end{document}
