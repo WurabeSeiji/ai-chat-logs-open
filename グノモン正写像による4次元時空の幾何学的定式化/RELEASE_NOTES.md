@@ -120,7 +120,8 @@
 - **v2 DOI**：[10.5281/zenodo.21466463](https://doi.org/10.5281/zenodo.21466463)
 - **Zenodo**：[公開レコード](https://zenodo.org/records/21466463)
 - **Zenn**：articles/inverse-square-velocity-feedback-v2.md
-- **note**：[加速度は、背景座標なしに読めるのか（2026-07-21 v2追記を公開）](https://note.com/kiharanoriaki/n/nad8429959a8a)（下書きmd：波の情報読出し/20260711/note_article_acceleration_readout_summaries_ja.md、英語版md同梱）
+- **note**：[加速度は、背景座標なしに読めるのか（2026-07-21 v2追記を公開）](https://note.com/kiharanoriaki/n/nad8429959a8a)（下書きmd：波の情報読出し/20260711/note_article_acceleration_readout_summaries_ja.md）
+- **note（英語版）**：[Can acceleration be read without background coordinates?](https://note.com/kiharanoriaki/n/n511a9b0c5787)（下書きmd：波の情報読出し/20260711/note_article_acceleration_readout_summaries_en.md、英語版図・v3 DOI併記）
 
 **核心結果**：
 - **零次no-go定理**：v1動力学クラスでは $d\omega/d\tau=0$ が定理であり、加速度読出しは角速度にも閉鎖量にも作用できない。「aは存在するのに v=∫a dτ が存在しない」状態の明文化
