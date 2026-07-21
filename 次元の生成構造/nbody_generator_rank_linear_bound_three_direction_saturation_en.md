@@ -1,0 +1,633 @@
+# Linear Upper Bound on Generator Rank and Three-Direction Saturation of Spatial-Direction Readout in N-Body Complete Pairwise Relational Waves
+## Relational waves grow quadratically, rotation modes grow linearly, and uniquely readable spatial directions stop at three
+
+**Author:** Noriaki Kihara<br>
+**ORCID:** 0009-0004-6753-4020<br>
+**Date:** July 21, 2026<br>
+**Version DOI:** 10.5281/zenodo.21465899<br>
+**Concept DOI:** 10.5281/zenodo.21465898<br>
+**Position:** Dimensional Generation Structure series, Paper 3, v1
+
+---
+
+## Abstract
+
+Previous work extended the one-dimensional phase-relation readout of the closed AB two-body phase system [2,3] to complete pairwise relational waves of ABC three-body and ABCD four-body systems, showing that ABC yields one rotation plane with an invariant Z normal and that ABCD yields three rotation planes read as XYZ [4]. This paper extends the construction to general $N$ bodies and shows, by theory and numerical experiment, that three quantities grow at different orders: the number of internal relational waves, the number of rotation modes, and the number of uniquely readable spatial directions.
+
+The number of complete pairwise relational waves grows as $M_N=\binom{N}{2}=O(N^2)$. The phase-difference sine antisymmetric generator $\widetilde K$, however, decomposes exactly into a sum of $N$ antisymmetric matrices of rank at most 2 built from the rows of the incidence matrix,
+
+$$
+\widetilde K=\sum_{k=1}^{N}\left(c_k s_k^{\mathsf T}-s_k c_k^{\mathsf T}\right),
+$$
+
+so that
+
+$$
+\operatorname{rank}K\le 2\min\!\left(N,\left\lfloor\frac{M_N}{2}\right\rfloor\right)=O(N)
+$$
+
+holds for all $N$. For $3\le N\le12$ we further prove that equality holds for almost all initial phases, combining exact rational witness configurations (tan half-angle parametrization, fraction arithmetic) with the measure-zero property of zero sets of real-analytic functions [9]. Finally, for the direction readout that reads a normal from the plane spanned by two independent relational directions, the normal-candidate space has dimension $d-2$ for a display dimension $d$, so the normal is unique up to sign only for $d=3$. Under the present two-body phase-relation readout rule, therefore, even though internal relational waves and internal rotation modes increase with $N$, the uniquely readable spatial directions saturate at three.
+
+In numerical experiments with 32 trials of 720 steps each for $N=3$ to $9$, the maximum squared-closure error was $1.82\times10^{-13}$, the maximum absolute-square-sum drift $2.25\times10^{-13}$, and the maximum relabeling-covariance error $1.12\times10^{-13}$; the residual of the vertex decomposition identity was at most $5.00\times10^{-16}$. The generic rank law held without exception in 2560 trials for $N=3$ to $12$. The multi-dimensional null space reappearing for $N\ge6$ was confirmed directly to be a residual subspace whose projector and squared quantities are unique while no unique internal basis exists. No sequential state renormalization, no observation damping, and no absolute background axes were used.
+
+---
+
+## 0. Conclusions
+
+In the $N$-body complete pairwise relational-wave system, the following three layers grow at different orders.
+
+$$
+\boxed{
+M_N=\binom{N}{2}=O(N^2)
+\quad\longrightarrow\quad
+r\le N=O(N)
+\quad\longrightarrow\quad
+D_{\mathrm{unique}}=3=O(1)
+}
+$$
+
+The first layer is the number of internal relational waves, which grows quadratically.
+
+The second layer is the number of internal rotation modes $r=\frac12\operatorname{rank}K$. By the vertex decomposition theorem, $\operatorname{rank}K\le2\min(N,\lfloor M_N/2\rfloor)$ holds for all $N$, so this layer grows at most linearly. For $3\le N\le12$ we prove rigorously that this bound is attained with equality in general position.
+
+The third layer is the number of uniquely readable spatial directions. The normal-candidate space of a two-relation plane has dimension $d-2$ for display dimension $d$, and sign-free uniqueness holds only for $d=3$. In general $D_{\mathrm{unique}}\le3$; in general position, where two independent and distinguishable relational directions exist, $D_{\mathrm{unique}}=3$. Equality fails for $N=2$ and for degenerate phases at which the generator vanishes. Therefore,
+
+$$
+\boxed{
+\text{under the present two-body phase-relation readout rule,}
+\quad
+\text{the uniquely readable spatial directions saturate at three.}
+}
+$$
+
+For $N\ge6$ the null space reappears; in general position its dimension grows as
+
+$$
+\dim\ker K=M_N-2N=\frac{N(N-5)}{2}=O(N^2).
+$$
+
+This null space is a residual subspace whose projector and squared quantities are uniquely readable while its individual internal directions are not. Added relational waves do not disappear: they are retained in this basis-free internal subspace and as internal phase modes that are not adopted as spatial directions.
+
+These implement the adoption conditions of Axiom 16 of Basic Axiom System v5, namely distinguishability by rotation frequencies and uniqueness of the plane normal [1].
+
+---
+
+## 1. Research Question
+
+### 1.1 The question left open by the preceding paper
+
+The preceding ABCD experiment [4] showed that six complete pairwise relational waves decompose into three rotation planes, giving a structure readable as three XYZ directions. It left open the following question.
+
+> When relational waves are increased to five or more bodies, what is the quantity that increases internally, and where does the quantity that can be uniquely read as spatial directions stop?
+
+Reference [4] offered the interpretation that what increases beyond four bodies are internal relations without uniquely assignable directions, but this was outside its numerical scope and was not established as a theorem. The present paper promotes that interpretation to three theorems: the rank upper bound via vertex decomposition, the generic-position equality, and normal uniqueness.
+
+### 1.2 Rules on the direction of causation
+
+The causal direction of this paper is
+
+$$
+\boxed{
+\text{relational waves and squared closure}
+\longrightarrow
+\text{readout maps}
+\longrightarrow
+\text{uniquely reconstructible directions}
+\longrightarrow
+\text{spatial display}.
+}
+$$
+
+Space does not exist at the outset. Accordingly, this paper does not do any of the following.
+
+1. It does not reinterpret a relational wave $X_{ij}$ as a distance $d_{ij}$ in a background space.
+2. It does not use the embedding rank into a pre-existing Euclidean space as a criterion for the generation of space.
+3. It does not identify the number of rotation planes, the generator rank, or the null-space dimension with the number of spatial axes.
+4. It does not add constraints of external geometric origin at five or more bodies. All relational waves participate in the same single squared closure.
+
+What this paper judges is not the size of the state space but the uniqueness of the readout map.
+
+### 1.3 What this paper discriminates
+
+1. Can the all-$N$ upper bound on generator rank be derived from inside the model?
+2. Does the bound become an equality in general position, and can this be proven rigorously?
+3. In which display dimensions is the normal readout unique?
+4. As what kind of quantity can the null space reappearing at $N\ge6$ be read?
+5. Are the conserved quantities and relabeling covariance maintained after the $N$ extension?
+
+---
+
+## 2. Classification of Claims
+
+This paper distinguishes definitions, mathematical consequences, numerical facts, spatial-direction interpretations, and items left unfixed. The axiomatic basis of anonymity, squared closure, and complete pairwise relational waves is Basic Axiom System v5 [1].
+
+| Item | Classification | Position in this paper |
+|---|---|---|
+| Complete pairwise relational waves as independent state waves | Model definition | Implementation of Axiom 16 of [1]; inherited from [4] |
+| $\sum_e X_e^2+(iR)^2=0$ | Closure condition | Computed directly at every step |
+| Phase-difference sine generator coupling only endpoint-sharing relations | Working hypothesis | Same as [4]; not derived from the axioms |
+| Vertex decomposition $\widetilde K=\sum_k(c_ks_k^{\mathsf T}-s_kc_k^{\mathsf T})$ | Mathematical consequence | Theorem 1; numerical residual $5.00\times10^{-16}$ |
+| $\operatorname{rank}K\le2\min(N,\lfloor M/2\rfloor)$ (all $N$) | Mathematical consequence | Corollary of Theorem 1 |
+| Generic equality ($3\le N\le12$) | Mathematical consequence (computer-assisted proof) | Theorem 2; exact rational witnesses + measure-zero argument |
+| Generic equality (all $N$) | New hypothesis | General witness construction unproven |
+| Normal uniqueness (only $d=3$) | Mathematical consequence | Theorem 3 |
+| Three-direction saturation ($D_{\mathrm{unique}}\le3$, $=3$ in general position) | Consequence of Axiom 16 and Theorem 3 | Section 7; does not follow from generator rank alone |
+| Results of Experiments A–E | Numerical facts | Section 8 |
+| Reading three distinguishable rotation planes as XYZ | Spatial-direction interpretation | Inherited from [4] |
+| Reading residues as internal phase modes and residual subspaces | Spatial-direction interpretation | Consistent with the residue clause of Axiom 16 [1] |
+| Physical axes corresponding to residual directions | Out of scope | Not identified in this paper |
+
+---
+
+## 3. The N-Body Complete Pairwise Relational-Wave Model
+
+### 3.1 Relation set and relational waves
+
+For $N$ anonymous individuals, the set of all pairwise relations is
+
+$$
+\mathcal E_N
+=
+\bigl\{\{i,j\}\mid 1\le i<j\le N\bigr\},
+\qquad
+M=\lvert\mathcal E_N\rvert=\binom{N}{2}.
+$$
+
+To each relation $e$ we assign a complex relational wave $X_e=a_e+ib_e$ and write the full state as $X\in\mathbb C^M$. Relational waves are not observation channels; they are independent physical state components not derived from component waves [1].
+
+The closure condition is
+
+$$
+\sum_{e\in\mathcal E_N}X_e^2+(iR)^2=0,
+\qquad
+\text{transposed form}\quad
+q(X)=X^{\mathsf T}X=R^2.
+$$
+
+As an independent comparison quantity we also record the absolute-square sum $H(X)=X^\dagger X$.
+
+### 3.2 Adjacency and generator
+
+Two relations $e,f$ are adjacent exactly when they share one endpoint:
+
+$$
+A_{ef}
+=
+\begin{cases}
+1,& e\ne f\ \text{and}\ e\cap f\ne\varnothing,\\
+0,& \text{otherwise}.
+\end{cases}
+$$
+
+This is the adjacency matrix of the line graph of the complete graph $K_N$ [5].
+
+From the initial phases $\theta_e=\arg X_e(0)$, the unnormalized generator is
+
+$$
+\widetilde K_{ef}
+=
+A_{ef}\sin(\theta_f-\theta_e).
+$$
+
+It satisfies $\widetilde K^{\mathsf T}=-\widetilde K$; when nonzero it is divided by its spectral norm to give $K$. This phase-difference sine coupling rule is the same conservative working hypothesis as in [4]. The dynamics of this paper uses a fixed generator: the generator is constructed once from the initial phases and kept fixed thereafter.
+
+The one-step update is the real orthogonal matrix given by the Cayley transform
+
+$$
+U=(I-\gamma K)^{-1}(I+\gamma K),
+\qquad
+U^{\mathsf T}U=I
+$$
+
+[7]. Orthogonality preserves $q(X)$ and $H(X)$ without sequential renormalization.
+
+### 3.3 Incidence matrix
+
+Let $B\in\mathbb R^{N\times M}$ be the unsigned incidence matrix with individuals as rows and relations as columns; the column of relation $e=\{i,j\}$ has ones exactly in rows $i,j$. It relates to the line-graph adjacency by
+
+$$
+A=B^{\mathsf T}B-2I_M.
+$$
+
+---
+
+## 4. Vertex Decomposition Theorem
+
+### 4.1 Theorem
+
+> **Theorem 1 (vertex decomposition)**
+>
+> Let $b_k$ be the $k$-th row of $B$ and set
+>
+> $$
+> c_k=(B_{ke}\cos\theta_e)_{e\in\mathcal E_N},
+> \qquad
+> s_k=(B_{ke}\sin\theta_e)_{e\in\mathcal E_N}.
+> $$
+>
+> Then
+>
+> $$
+> \widetilde K=\sum_{k=1}^{N}\left(c_k s_k^{\mathsf T}-s_k c_k^{\mathsf T}\right)
+> $$
+>
+> holds exactly.
+
+**Proof.** By entrywise computation,
+
+$$
+\left(c_k s_k^{\mathsf T}-s_k c_k^{\mathsf T}\right)_{ef}
+=
+B_{ke}B_{kf}\left(\cos\theta_e\sin\theta_f-\sin\theta_e\cos\theta_f\right)
+=
+B_{ke}B_{kf}\sin(\theta_f-\theta_e).
+$$
+
+Summing over $k$, the coefficient is $\sum_kB_{ke}B_{kf}=(B^{\mathsf T}B)_{ef}$. For $e=f$, $\sin0=0$ kills the diagonal. For $e\ne f$, two distinct edges share at most one endpoint, so $(B^{\mathsf T}B)_{ef}=A_{ef}\in\{0,1\}$. Every entry therefore equals $A_{ef}\sin(\theta_f-\theta_e)=\widetilde K_{ef}$. ∎
+
+In the numerical experiments the residual of this identity was at most $5.00\times10^{-16}$ (machine precision) over all configurations and trials.
+
+### 4.2 Linear upper bound on the rank
+
+> **Corollary 1 (rank bound)**
+>
+> For all $N$ and all initial phases,
+>
+> $$
+> \operatorname{rank}K
+> \le
+> 2\min\!\left(N,\left\lfloor\frac{M}{2}\right\rfloor\right).
+> $$
+
+**Proof.** Each term $c_ks_k^{\mathsf T}-s_kc_k^{\mathsf T}$ in Theorem 1 has rank at most 2, so the sum has rank at most $2N$. The bound $\operatorname{rank}K\le M$ is trivial. A real antisymmetric matrix decomposes under an orthogonal transformation into two-dimensional rotation blocks and a zero block, so its rank is even [6]. Combining the three gives the bound. ∎
+
+Corollary 1 shows, from inside the model and without introducing a background space, that while the number of relational waves grows as $O(N^2)$, the dynamical rotational degrees of freedom are at most $O(N)$.
+
+**Remark (why the bound is saturable).** $K_N$ is connected and non-bipartite for $N\ge3$, and the real rank of the unsigned incidence matrix is then $N$ [8]. The $2N$ vectors $\{c_k,s_k\}$ spanning the column space of $\widetilde K$ are thus built from $N$ independent incidence rows, so there is no degeneration on the coefficient side. As shown in the next section, the bound is actually attained in general position.
+
+---
+
+## 5. Generic-Position Rank Theorem
+
+### 5.1 Theorem
+
+> **Theorem 2 (generic equality, $3\le N\le12$)**
+>
+> For each $N$ with $3\le N\le12$, setting $m=\min(N,\lfloor M/2\rfloor)$, for almost all initial phases $\theta\in[0,2\pi)^M$ (all except a set of Lebesgue measure zero),
+>
+> $$
+> \operatorname{rank}K=2m.
+> $$
+
+**Proof.** The upper bound is Corollary 1. For the lower bound, the entries of $\widetilde K$ are
+
+$$
+\sin(\theta_f-\theta_e)
+=
+\sin\theta_f\cos\theta_e-\cos\theta_f\sin\theta_e,
+$$
+
+polynomials in the unit-circle points $(\cos\theta_e,\sin\theta_e)$. Using the tan half-angle parameter $t_e$,
+
+$$
+(\cos\theta_e,\sin\theta_e)
+=
+\left(\frac{1-t_e^2}{1+t_e^2},\ \frac{2t_e}{1+t_e^2}\right),
+$$
+
+the witness configuration $t_e=e$ ($e=1,\dots,M$) makes $\widetilde K$ an exactly rational matrix. Computing its rank exactly by Gaussian elimination in fraction arithmetic yields
+
+$$
+\operatorname{rank}\widetilde K=2m
+$$
+
+for all $3\le N\le12$ (verification program and output in Section 10). Since the computation contains no floating point, this is an existence proof of a witness for each $N$.
+
+Because $\operatorname{rank}\widetilde K=2m$ at the witness, some $2m\times2m$ minor $D(\theta)$ is nonzero there. $D$ is a real-analytic function of $\theta$ and is not identically zero. The zero set of a nontrivial real-analytic function has Lebesgue measure zero [9]. The set of phases with rank below $2m$ is contained in $\{\theta\mid D(\theta)=0\}$ and hence has measure zero. ∎
+
+### 5.2 Generalization to all N
+
+> **New hypothesis (generic equality, all $N$)**
+>
+> For all $N\ge3$, $\operatorname{rank}K=2\min(N,\lfloor M/2\rfloor)$ in general position.
+
+This is proven for $N\le12$ by Theorem 2. A general witness construction for arbitrary $N$ is unproven, and the claim is stated explicitly as a new hypothesis. The same exact rational verification extends mechanically to any individual $N$.
+
+### 5.3 Degenerate configurations
+
+Away from general position the rank can drop. Experiment B confirmed the following.
+
+1. When all phases are equal, or restricted to $\{0,\pi\}$, all $\sin(\theta_f-\theta_e)=0$ and the generator vanishes (rank 0).
+2. With two-valued phases $\{0,0.5\}$, the rank dropped from $10$ to $8$ only at $N=5$. $N=5$ is the critical configuration $M=2N$; this observation is a concrete example showing that the exceptional set of Theorem 2 is not empty.
+
+---
+
+## 6. Normal-Uniqueness Theorem
+
+### 6.1 Definition of a unique direction
+
+A direction is uniquely determined when the following hold.
+
+1. The direction can be reconstructed from relational data alone.
+2. No absolute background axis is referenced.
+3. It transforms covariantly under permutations of individual names.
+4. No additional rule selecting one candidate among many is required.
+
+Uniqueness here is first the uniqueness of a one-dimensional subspace up to sign.
+
+### 6.2 Two-relation plane and normal-candidate space
+
+Let $u,v\in V_d$ be two linearly independent relational directions in a real $d$-dimensional display space, spanning the plane $P=\operatorname{span}\{u,v\}$. With $A_P=\begin{pmatrix}u^{\mathsf T}\\ v^{\mathsf T}\end{pmatrix}$, the normal-candidate space is
+
+$$
+\mathcal N(P)=\ker A_P=P^\perp,
+$$
+
+and its orthogonal projector
+
+$$
+P_\perp=I_d-A_P^{\mathsf T}\left(A_PA_P^{\mathsf T}\right)^{-1}A_P
+$$
+
+is determined by $u,v$ alone, without external axis names.
+
+### 6.3 Theorem
+
+> **Theorem 3 (normal uniqueness)**
+>
+> When a normal direction is reconstructed from the plane spanned by two linearly independent relational directions, without additional background axes or selection rules, the normal is unique up to sign only when the display dimension is
+>
+> $$
+> d=3.
+> $$
+
+**Proof.** Since $\operatorname{rank}A_P=2$, the rank–nullity theorem gives $\dim\mathcal N(P)=d-2$.
+
+For $d=3$, $\dim\mathcal N(P)=1$, and the projector $P_\perp=nn^{\mathsf T}$ built from the normalized normal $n$ is invariant under sign reversal, $(-n)(-n)^{\mathsf T}=nn^{\mathsf T}$; the direction line is unique.
+
+For $d\ge4$, $\dim\mathcal N(P)=d-2\ge2$. The group of orthogonal transformations fixing $u,v$ acts on the normal-candidate space as $O(d-2)$, mixing normal candidates while leaving $P_\perp$ unchanged. The set of unit normal candidates is $S^{d-3}$, and after sign identification $\mathbb{RP}^{d-3}$ — a continuum, in contrast to the single point $\mathbb{RP}^0$ at $d=3$. Relational data do not distinguish elements of this family, so selecting one is incompatible with anonymity. ∎
+
+Even for $d\ge4$, the projector $P_\perp$ and the squared sum of candidate components remain uniquely readable. What cannot be read uniquely are the individual linear directions inside.
+
+---
+
+## 7. Three-Layer Hierarchy and Residual Subspace
+
+### 7.1 Composition of the three layers
+
+Applying Theorem 3 to the internal mode structure given by Theorems 1 and 2 and to the observation selection based on Axiom 16 [1], the $N$-body complete pairwise relational-wave system separates into three layers.
+
+| Layer | Quantity | Order | Basis |
+|---|---|---|---|
+| Internal relational waves | $M_N=\binom{N}{2}$ | $O(N^2)$ | Model definition |
+| Internal rotation modes | $r=\frac12\operatorname{rank}K\le N$ | $O(N)$ | Theorems 1, 2 |
+| Uniquely readable spatial directions | $D_{\mathrm{unique}}\le3$ ($=3$ in general position) | $O(1)$ | Axiom 16 + Theorem 3 |
+
+Three-direction saturation is not a consequence of the generator rank alone. It holds only when the observation selection of Axiom 16 (distinguishability plus normal uniqueness) is connected with Theorem 3. Nor does $D_{\mathrm{unique}}=3$ hold always: it holds in general position where two independent and distinguishable relational directions exist, and equality fails for $N=2$ or for degenerate phases at which the generator vanishes.
+
+The number of rotation planes is not the number of spatial directions. A rotation plane becomes a candidate direction when distinguishable by its independent rotation frequency, but adoption as spatial directions is limited to the three directions satisfying normal uniqueness. When distinguishable rotation planes exceed that range, the excess planes are retained as internal phase modes. This implements the adoption conditions of Axiom 16 of Basic Axiom System v5 [1].
+
+### 7.2 Growth of the residual subspace
+
+In general position, for $N\ge5$,
+
+$$
+\dim\ker K
+=
+M_N-2N
+=
+\frac{N(N-5)}{2}
+$$
+
+(1 for $N=3$; 0 for $N=4,5$). The null space reappears at $N\ge6$ and grows as $O(N^2)$. For large $N$, most of the relational-wave space becomes a residual subspace unmoved by the generator.
+
+The one-dimensional kernel of ABC could be read uniquely as the Z normal [4]. The kernel for $N\ge6$ is multi-dimensional: its orthogonal projector and projection norm are unique, but its internal directions carry an $O(\dim\ker K)$ gauge freedom and cannot be selected uniquely. The residue is therefore read as
+
+$$
+\boxed{
+\text{not unique linear directions, but an internal subspace without a unique basis,}
+}
+$$
+
+consistent with the residue clause of Axiom 16 [1].
+
+### 7.3 What is preserved
+
+What the $N$ extension preserves is not an X, Y, Z with particular names. It is the three-direction structure consisting of two independent relational directions selected from distinguishable rotation planes, and one normal direction uniquely determined by their plane. Under name permutations the relational components composing the three directions move covariantly.
+
+---
+
+## 8. Numerical Experiments
+
+### 8.1 Common conditions
+
+| Item | Value |
+|---|---:|
+| Dynamics | Fixed generator (constructed once from initial phases) |
+| $R^2$ | 1.0 |
+| Imaginary seed amplitude $s$ | 0.35 |
+| Cayley coefficient $\gamma$ | $\tan(\pi/144)$ |
+| Random seed | 20260721 (Experiments B–E: +1 to +4) |
+| Tolerance | $10^{-10}$ |
+| Sequential state renormalization | None |
+| Observation damping | None |
+| Absolute background axes | None |
+
+The initial state is $X(0)=\sqrt{R^2+s^2}\,u+isv$ with real unit vectors $u\perp v$, for which $q(X(0))=R^2$ holds exactly [4].
+
+### 8.2 Experiment A: conservation, covariance, spectral structure for N = 3–9
+
+32 trials of 720 steps each per $N$.
+
+| $N$ | $M$ | rank $K$ | $\dim\ker K$ | Rotation planes | Rank law |
+|---:|---:|---:|---:|---:|---|
+| 3 | 3 | 2 | 1 | 1 | holds |
+| 4 | 6 | 6 | 0 | 3 | holds |
+| 5 | 10 | 10 | 0 | 5 | holds |
+| 6 | 15 | 12 | 3 | 6 | holds |
+| 7 | 21 | 14 | 7 | 7 | holds |
+| 8 | 28 | 16 | 12 | 8 | holds |
+| 9 | 36 | 18 | 18 | 9 | holds |
+
+Ranks and null-space dimensions agreed across all 32 trials for each $N$, all equal to $2\min(N,\lfloor M/2\rfloor)$ and $M-2N$ ($N\ge5$).
+
+| $N$ | Max closure error | Max $H$ drift | Max orthogonality error | Max trajectory covariance error | Vertex decomposition residual | Max kernel projection drift |
+|---:|---:|---:|---:|---:|---:|---:|
+| 3 | $1.44\times10^{-13}$ | $1.78\times10^{-13}$ | $4.44\times10^{-16}$ | $7.62\times10^{-14}$ | $4.44\times10^{-16}$ | $2.81\times10^{-14}$ |
+| 4 | $1.42\times10^{-13}$ | $1.74\times10^{-13}$ | $6.66\times10^{-16}$ | $1.12\times10^{-13}$ | $4.44\times10^{-16}$ | $0$ |
+| 5 | $1.82\times10^{-13}$ | $2.25\times10^{-13}$ | $6.66\times10^{-16}$ | $6.58\times10^{-14}$ | $4.72\times10^{-16}$ | $0$ |
+| 6 | $8.91\times10^{-14}$ | $1.10\times10^{-13}$ | $6.66\times10^{-16}$ | $4.36\times10^{-14}$ | $5.00\times10^{-16}$ | $1.80\times10^{-14}$ |
+| 7 | $1.28\times10^{-13}$ | $1.58\times10^{-13}$ | $8.88\times10^{-16}$ | $4.91\times10^{-14}$ | $5.00\times10^{-16}$ | $2.81\times10^{-14}$ |
+| 8 | $1.27\times10^{-13}$ | $1.55\times10^{-13}$ | $1.33\times10^{-15}$ | $6.42\times10^{-14}$ | $5.00\times10^{-16}$ | $4.60\times10^{-14}$ |
+| 9 | $1.70\times10^{-13}$ | $2.21\times10^{-13}$ | $1.67\times10^{-15}$ | $8.99\times10^{-14}$ | $4.72\times10^{-16}$ | $4.44\times10^{-14}$ |
+
+All configurations and trials stayed below the tolerance $10^{-10}$. The maximum relabeling-covariance error of the generator was $3.33\times10^{-16}$. The null-space component was conserved along the whole trajectory even for the multi-dimensional kernels ($N\ge6$).
+
+![Conservation and covariance](対照実験_一角度円周位相調和読出し_v1/nbody_rank_saturation_preliminary_result_v1/nbody_conservation_errors_v1.png)
+
+### 8.3 Experiment B: generic rank law and degeneracy search
+
+For $N=3$ to $12$ with 256 uniform random-phase trials each (2560 trials in total),
+
+$$
+\operatorname{rank}K=2\min\!\left(N,\left\lfloor\frac{M}{2}\right\rfloor\right)
+$$
+
+held in every trial.
+
+| $N$ | $M$ | Expected rank | Generic observed | Equal phases | $\{0,\pi\}$ phases | Two-valued $\{0,0.5\}$ phases |
+|---:|---:|---:|---:|---:|---:|---:|
+| 3 | 3 | 2 | 2 | 0 | 0 | 2 |
+| 4 | 6 | 6 | 6 | 0 | 0 | 6 |
+| 5 | 10 | 10 | 10 | 0 | 0 | **8** |
+| 6 | 15 | 12 | 12 | 0 | 0 | 12 |
+| 7 | 21 | 14 | 14 | 0 | 0 | 14 |
+| 8 | 28 | 16 | 16 | 0 | 0 | 16 |
+| 9 | 36 | 18 | 18 | 0 | 0 | 18 |
+| 10 | 45 | 20 | 20 | 0 | 0 | 20 |
+| 11 | 55 | 22 | 22 | 0 | 0 | 22 |
+| 12 | 66 | 24 | 24 | 0 | 0 | 24 |
+
+![Three-layer scaling](対照実験_一角度円周位相調和読出し_v1/nbody_rank_saturation_preliminary_result_v1/three_layer_scaling_v1.png)
+
+### 8.4 Exact rational witnesses
+
+For the witness configuration $t_e=e$ of Theorem 2, the rank of $\widetilde K$ was computed exactly by Gaussian elimination in fraction arithmetic. For all $N=3$ to $12$, $\operatorname{rank}\widetilde K=2\min(N,\lfloor M/2\rfloor)$ held exactly. The computation involves no floating point.
+
+### 8.5 Experiment C: demonstration of normal non-uniqueness
+
+For display dimensions $d=3,4,5$ (32 trials each), the normal-candidate space of two independent directions $u,v$ was constructed, and for 64 samples of orthogonal (gauge) transformations inside the candidate space, the projector drift and the maximum angle between candidate normals were measured.
+
+| $d$ | Candidate dim $d-2$ | Projector gauge drift | Max angle between candidate normals | Unique up to sign |
+|---:|---:|---:|---:|---|
+| 3 | 1 | $4.44\times10^{-16}$ | $0.0000^\circ$ | holds |
+| 4 | 2 | $9.99\times10^{-16}$ | $89.9986^\circ$ | fails |
+| 5 | 3 | $1.11\times10^{-15}$ | $89.9998^\circ$ | fails |
+
+For $d=3$ the gauge transformation does not move the candidate normal; for $d\ge4$ the candidate normal moves nearly to orthogonality while the projector stays invariant. This is the numerical counterpart of Theorem 3. $d=4,5$ were not adopted as spaces; they are comparison targets demonstrating non-uniqueness.
+
+![Normal gauge freedom](対照実験_一角度円周位相調和読出し_v1/nbody_rank_saturation_preliminary_result_v1/normal_gauge_freedom_v1.png)
+
+### 8.6 Experiment D: ABCD subsystems of N = 5
+
+For 8 trials at $N=5$, each of the five ABCD subsystems (40 cases in total) had its local generator constructed from the six subsystem relational waves with the same coupling rule. All 40 cases gave local generator rank 6 with three rotation planes — the same structure as the standalone ABCD experiment [4].
+
+Moreover, the unnormalized local generator agreed exactly (maximum difference $0$) with the corresponding principal submatrix of the $N$-body master generator. Because endpoint-sharing adjacency closes within the subsystem, the two agree identically. The two implementations of subsystem readout — principal submatrix or local reconstruction — are therefore the same object, differing only by the constant of spectral normalization.
+
+### 8.7 Experiment E: residual subspace of multi-dimensional kernels
+
+For $N=6$ to $9$ (8 trials each), the kernel projector idempotence error was at most $1.11\times10^{-15}$ and the annihilation error $\lVert KP_0\rVert$ at most $1.81\times10^{-16}$. Kernel dimensions equaled $M-2N$ in every trial.
+
+For two independently chosen orthonormal kernel bases, the projector difference was at most $6.66\times10^{-16}$ — the projector is unique. The angle between the first basis directions was at least $23.5^\circ$ — the internal basis is not unique. This is a direct demonstration that the multi-dimensional kernel is a residual subspace whose projector and squared quantities are readable while its individual directions are not selectable.
+
+![Residual subspace growth](対照実験_一角度円周位相調和読出し_v1/nbody_rank_saturation_preliminary_result_v1/kernel_dimension_growth_v1.png)
+
+---
+
+## 9. Scope of Claims
+
+### 9.1 Mathematical consequences proven
+
+1. Vertex decomposition $\widetilde K=\sum_k(c_ks_k^{\mathsf T}-s_kc_k^{\mathsf T})$ (Theorem 1).
+2. The rank bound $\operatorname{rank}K\le2\min(N,\lfloor M/2\rfloor)$ for all $N$ and phases (Corollary 1).
+3. Generic equality for $3\le N\le12$ (Theorem 2; exact rational witnesses + measure-zero argument).
+4. Sign-free normal uniqueness only for $d=3$ (Theorem 3).
+
+### 9.2 Numerical facts confirmed
+
+1. For $N=3$–$9$, 32 trials × 720 steps, closure, absolute-square sum, orthogonality, and relabeling covariance were maintained within tolerance $10^{-10}$.
+2. The generic rank law held in all 2560 trials for $N=3$–$12$.
+3. Two-valued phases $\{0,0.5\}$ lowered the rank only at the critical configuration $N=5$ ($M=2N$).
+4. All ABCD subsystems of $N=5$ carried the three-rotation-plane structure, and local generators agreed exactly with principal submatrices of the master generator.
+5. For the multi-dimensional kernels at $N\ge6$, projector uniqueness and internal-basis non-uniqueness held simultaneously.
+
+### 9.3 Spatial-direction interpretations adopted
+
+1. Up to three distinguishable rotation planes are read as the XYZ directions (inherited from [4]).
+2. Rotation planes exceeding the uniqueness condition are internal phase modes.
+3. Multi-dimensional kernels are residual subspaces without a unique basis.
+
+### 9.4 What this paper does not fix
+
+1. Generic equality for all $N$ (stated explicitly as a new hypothesis).
+2. The physical axes corresponding to residual subspaces and internal phase modes.
+3. The mechanism by which three-direction structures of different subsystems become phase-locked to the same XYZ under dynamics.
+4. Whether the three-direction ceiling persists when higher-order relations beyond pairwise are added.
+5. Derivation of the phase-difference sine generator itself from the axioms.
+6. Properties of the sequentially reconstructed generator (dynamics rebuilding the generator from current phases at each step). This paper concerns the fixed generator.
+
+---
+
+## 10. Reproducibility
+
+The numerical experiments of this paper are based on the following programs and outputs.
+
+### Programs
+
+- `次元の生成構造/対照実験_一角度円周位相調和読出し_v1/run_nbody_rank_saturation_preliminary_v1.py` (Experiments A–E)
+- `次元の生成構造/対照実験_一角度円周位相調和読出し_v1/run_nbody_exact_rational_witness_v1.py` (exact rational witnesses)
+- `次元の生成構造/対照実験_一角度円周位相調和読出し_v1/make_nbody_rank_saturation_figures_v1.py` (figures)
+
+### Main outputs
+
+- `nbody_rank_saturation_preliminary_result_v1.json`
+- `experiment_a_trials_v1.csv` / `experiment_a_summary_v1.csv`
+- `experiment_b_rank_law_v1.csv`
+- `experiment_c_normal_uniqueness_v1.csv`
+- `experiment_d_subsystems_v1.csv`
+- `experiment_e_kernel_v1.csv`
+- `nbody_exact_rational_witness_v1.json`
+- `nbody_rank_saturation_preliminary_report_v1.md`
+
+These are stored in
+
+`次元の生成構造/対照実験_一角度円周位相調和読出し_v1/nbody_rank_saturation_preliminary_result_v1/`.
+
+---
+
+## 11. Final Conclusions
+
+The $N$-body complete pairwise relational-wave system was constructed without placing background spatial axes first, on the basis of the complete pairwise relational waves and squared closure of Axiom 16, with the phase-difference sine generator as a conservative working hypothesis [1].
+
+The number of internal relational waves grows quadratically as $M_N=\binom{N}{2}$. The generator, however, decomposes exactly into a per-vertex sum of rank-2 antisymmetric matrices built from the incidence rows, giving
+
+$$
+\operatorname{rank}K\le2\min\!\left(N,\left\lfloor\frac{M_N}{2}\right\rfloor\right)
+$$
+
+for all $N$. For $3\le N\le12$, exact rational witness configurations combined with the measure-zero property of zero sets of real-analytic functions prove that the bound is an equality in general position. Rotation modes grow at most linearly.
+
+In the direction readout that reads a normal from a two-relation plane, the normal-candidate space has dimension $d-2$, and sign-free uniqueness holds only for $d=3$. Even when distinguishable rotation planes increase beyond three, the excess planes cannot be adopted as spatial directions and remain internal phase modes. The multi-dimensional kernel reappearing at $N\ge6$ is a residual subspace with a unique projector but no selectable internal basis.
+
+The conclusions of this paper are therefore:
+
+$$
+\boxed{
+\begin{aligned}
+&\text{internal relational waves grow as }O(N^2);\\
+&\text{internal rotation modes do not exceed }O(N);\\
+&\text{under the present two-body phase-relation readout rule, uniquely readable spatial directions saturate at three.}
+\end{aligned}
+}
+$$
+
+Which physical axes the residual subspaces and internal phase modes correspond to is outside the scope of this paper.
+
+---
+
+## References
+
+### Self-citations
+
+1. Noriaki Kihara, "Anonymous Equal-Amplitude Composite-Wave Model: Basic Axiom System v5," Zenodo, 2026. Version DOI: [10.5281/zenodo.21465429](https://doi.org/10.5281/zenodo.21465429), Concept DOI: [10.5281/zenodo.21315735](https://doi.org/10.5281/zenodo.21315735).
+2. Noriaki Kihara, "Harmonic Readout and c=1 Area-Sweep Preliminary Experiments in the Closed AB Two-Body Phase System, v4," Zenodo, 2026. Version DOI: [10.5281/zenodo.21374317](https://doi.org/10.5281/zenodo.21374317), Concept DOI: [10.5281/zenodo.21318696](https://doi.org/10.5281/zenodo.21318696).
+3. Noriaki Kihara, "Inverse-Square Law from the Future-Phase-Position Acceleration Map and Harmonic Closure in the Closed AB Two-Body Phase System," Zenodo, 2026. Version DOI: [10.5281/zenodo.21441082](https://doi.org/10.5281/zenodo.21441082), Concept DOI: [10.5281/zenodo.21441081](https://doi.org/10.5281/zenodo.21441081).
+4. Noriaki Kihara, "Three XYZ Directions Read from Complete Pairwise Relational Waves: Growth of Internal Relational Directions and Saturation of Spatial-Direction Readout in Closed AB, ABC, and ABCD Systems," Zenodo, 2026. Version DOI: [10.5281/zenodo.21454790](https://doi.org/10.5281/zenodo.21454790), Concept DOI: [10.5281/zenodo.21454789](https://doi.org/10.5281/zenodo.21454789).
+
+### External references
+
+5. Hassler Whitney, "Congruent Graphs and the Connectivity of Graphs," *American Journal of Mathematics*, 54(1), 150–168, 1932. DOI: [10.2307/2371086](https://doi.org/10.2307/2371086).
+6. Milan Vujivčić, Fedor Herbut, and Gradimir Vujivčić, "Canonical Form for Matrices Under Unitary Congruence Transformations. I: Conjugate-Normal Matrices," *SIAM Journal on Applied Mathematics*, 23(2), 225–238, 1972. DOI: [10.1137/0123025](https://doi.org/10.1137/0123025).
+7. Fasma Diele, Luciano Lopez, and R. Peluso, "The Cayley Transform in the Numerical Solution of Unitary Differential Systems," *Advances in Computational Mathematics*, 8(4), 317–334, 1998. DOI: [10.1023/A:1018908700358](https://doi.org/10.1023/A:1018908700358).
+8. Cyriel van Nuffelen, "On the incidence matrix of a graph," *IEEE Transactions on Circuits and Systems*, 23(9), 572, 1976. DOI: [10.1109/TCS.1976.1084251](https://doi.org/10.1109/TCS.1976.1084251).
+9. Boris S. Mityagin, "The Zero Set of a Real Analytic Function," *Mathematical Notes*, 107(3), 529–530, 2020. DOI: [10.1134/S0001434620030189](https://doi.org/10.1134/S0001434620030189).

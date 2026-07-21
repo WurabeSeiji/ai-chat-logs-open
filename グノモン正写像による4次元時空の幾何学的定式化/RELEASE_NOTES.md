@@ -105,6 +105,26 @@
 
 ## 更新履歴
 
+### 2026-07-21: N体ランク線形上界と三方向飽和 新規公開
+
+**「次元の生成構造」シリーズ第3論文を新規公開**：AB・ABC・ABCDの完全二体関係波構成を一般のN体へ拡張し、内部関係波数 O(N²)・内部回転モード数 O(N)・一意に読める空間方向 3 の三層分離を、3定理と数値実験で示した。日本語・英語Markdown、TeX/PDF（数式・図組版済み）、4図、実験コード、再現用ZIPの計11ファイルを公開。
+
+- **日本語題**：N体完全二体関係波における生成子ランクの線形上界と空間方向読出しの三方向飽和
+- **英題**：Linear Upper Bound on Generator Rank and Three-Direction Saturation of Spatial-Direction Readout in N-Body Complete Pairwise Relational Waves
+- **Concept DOI**：[10.5281/zenodo.21465898](https://doi.org/10.5281/zenodo.21465898)
+- **v1 DOI**：[10.5281/zenodo.21465899](https://doi.org/10.5281/zenodo.21465899)
+- **Zenodo**：[公開レコード](https://zenodo.org/records/21465899)
+- **Zenn**：articles/nbody-rank-linear-bound-three-direction.md
+
+**核心結果**：
+- 定理1（頂点分解）：$\widetilde K=\sum_k(c_ks_k^{\mathsf T}-s_kc_k^{\mathsf T})$ から全Nで $\operatorname{rank}K\le2\min(N,\lfloor M/2\rfloor)$。恒等式の数値残差は最大 $5.00\times10^{-16}$
+- 定理2（一般位置等号、3≤N≤12、計算機援用証明）：tan半角の厳密有理数証人＋実解析関数零点集合の測度零性（Mityagin）。全Nへの一般化は新仮説として明示
+- 定理3（法線一意性）：法線候補空間は $d-2$ 次元、符号を除く一意性は $d=3$ に限る
+- 三方向飽和は公理16（区別可能性＋法線一意性）と定理3の接続による帰結。$D_{\mathrm{unique}}\le3$、一般位置で $=3$
+- N≥6 で核が再出現し $\dim\ker K=N(N-5)/2$ で成長。射影子一意・内部基底非一意の残余部分空間であることを直接実証
+- 数値実験：N=3〜9 各32試行×720ステップで最大二乗閉鎖誤差 $1.82\times10^{-13}$、ランク則は N=3〜12 の2560試行で例外なし
+- 外部引用に van Nuffelen（接続行列ランク）と Mityagin（測度零）を新規追加
+
 ### 2026-07-21: 無名等振幅複合波モデル基本公理系 v5 公開
 
 **基本公理系を v5 へ更新（Concept DOI 維持の新バージョン公開）**：第9章「観測選択・曲率射影」として公理16・公理17を追加した。日本語・英語Markdown、TeX/PDF（数式組版済み）計6ファイルを公開。
