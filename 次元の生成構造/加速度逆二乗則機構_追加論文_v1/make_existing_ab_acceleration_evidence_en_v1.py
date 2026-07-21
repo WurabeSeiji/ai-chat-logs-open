@@ -460,8 +460,7 @@ def main() -> None:
         raise RuntimeError("series/summary key mismatch")
 
     table_rows = build_table(groups, summary_map)
-    write_csv(TABLE_DIR / "既存AB加速度発生集計_v1.csv", table_rows)
-    write_markdown_table(table_rows)
+    # 英語版は図のみ生成する。日本語の表（tables/）は上書きしない。
     make_figure(groups, table_rows)
 
     max_slope_relative_error = max(float(row["slope_relative_error"]) for row in table_rows)
