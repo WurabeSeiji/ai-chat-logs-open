@@ -43,6 +43,86 @@ https://doi.org/10.5281/zenodo.21318701
 Zenn article:
 https://zenn.dev/noriaki_kihara/articles/abc-c-gauge-distance-exponent
 
+## Addendum (July 19, 2026): the mechanism that produces an inverse-square law
+
+In the experiments above, acceleration-like harmonic readout was confirmed, but no inverse-square law appeared naturally.
+
+We revisited this open point, identified the mechanism by which an inverse square arises, and confirmed that the inverse-square law holds under the specific conditions of the experiment.
+
+The reason no inverse square appeared before is that the earlier experiments varied the positional phase deviation as an amplitude while keeping the harmonic period fixed. What they tested was whether an inverse square appears automatically when the amplitude or the readout distance is changed — not the relation between a closed phase-cell width and the harmonic angular speed that corresponds to that cell.
+
+The starting point this time is to read the future phase position, seen from the current position moving along the circle, as a relational rotation center. With radius R and angular speed omega_n, the acceleration read along the direction of progression is
+
+alpha_n = R |omega_n|^2
+
+For a nonzero integer harmonic n, the phase-cell width and the harmonic angular speed are
+
+Delta_theta_n = 2 pi / |n|
+omega_n = n omega_1
+
+so their product closes as
+
+|omega_n| Delta_theta_n = 2 pi omega_1 = Omega
+
+The angular speed and the phase-cell width are not independently chosen quantities. Connecting this harmonic closure to the acceleration relation gives
+
+alpha_n = R Omega^2 / (Delta_theta_n)^2
+
+an inverse-square law with respect to phase-cell width. This is not the result of adding 1/L^2 to an existing formula afterwards. What was confirmed is the inverse-square law under the specific conditions of this experiment; whether the mechanism generalizes, and whether this readout is identical to standard gravity, remain untested and unclaimed.
+
+Paper:
+
+Concept DOI (always latest):
+https://doi.org/10.5281/zenodo.21441081
+
+Version DOI (v1):
+https://doi.org/10.5281/zenodo.21441082
+
+## Addendum (July 21, 2026): does acceleration accumulate into velocity? The paper is updated to v2
+
+We have updated the inverse-square paper above to v2.
+
+Version DOI (v2):
+https://doi.org/10.5281/zenodo.21466463
+
+The trigger was an honest discomfort left in v1.
+
+Acceleration could be read. The inverse-square law held. But the integral of that acceleration accumulated into no velocity at all.
+
+a exists, yet v = integral of a d tau does not.
+
+The center-directed closure compensation — the reaction force — cancels the velocity change exactly.
+
+In v2 we first turned this into a theorem: within the class of update rules that freeze the angular speed, the readout acceleration can act neither on the angular speed nor on the closure quantity. That the closure quantity does not change even though acceleration exists was not a discovery but a necessity of this dynamics class.
+
+We then introduced, as a working hypothesis, the velocity feedback in which the readout acceleration accumulates into the carrier angular speed:
+
+d omega / d tau = kappa a
+
+Together with the equation of motion this integrates exactly to omega = omega_0 + kappa (d chi / d tau). The speed is slaved to the deviation velocity, and is therefore automatically bounded.
+
+In the numerical experiments, v = integral of a d tau held with a maximum error of order 10^-16 — machine precision.
+
+![Velocity increment proportional to acceleration](../../次元の生成構造/加速度逆二乗則機構_追加論文_v1/velocity_feedback_preliminary_v1/velocity_feedback_preliminary_result_v1/dv_proportional_to_a_v1.png)
+
+Scattering the per-step velocity increment against the readout acceleration of that step, all points lie on straight lines through the origin with slope kappa. The relation that velocity changes in proportion to acceleration is directly visible. In the v1 dynamics, all points collapse onto the horizontal axis.
+
+![Linear velocity growth in the near-constant-a control](../../次元の生成構造/加速度逆二乗則機構_追加論文_v1/velocity_feedback_preliminary_v1/velocity_feedback_preliminary_result_v1/v_linear_growth_constant_a_v1.png)
+
+In the control where the deviation is clamped so that the acceleration is nearly constant, the speed grows along the line v = v_0 + kappa a tau — the textbook form of uniformly accelerated motion. The later bending away from the line is the self-regulating effect in which the acceleration itself weakens as the speed changes: the feedback does not run away.
+
+Because the system is closed, unbounded growth of v = a tau is impossible in principle. What holds is instantaneous kinematic consistency with bounded velocity variation — the same relation by which acceleration and velocity change coexist in a bound orbit.
+
+Crucially, the inverse-square law survived the feedback. The distance exponent is exactly -2 at zero order and -1.999937891 under feedback.
+
+![The inverse-square law survives the feedback](../../次元の生成構造/加速度逆二乗則機構_追加論文_v1/velocity_feedback_preliminary_v1/velocity_feedback_preliminary_result_v1/inverse_square_under_feedback_v1.png)
+
+All eight harmonic points lie on the line of slope -2, with and without feedback.
+
+There was one more instructive result. Under the strongest feedback, the oscillation envelope appeared to decrease by about 13% over 200 cycles — but re-integrating the same equations with refined step sizes made the decrease vanish completely. It was a discretization artifact. This became a worked example of the procedure: do not take what a numerical experiment shows at face value; discriminate against the continuum limit.
+
+This feedback rule is a new working hypothesis, not contained in the zero-order readout defined by Axiom 17 of Basic Axiom System v6. If it becomes established, it will be incorporated in the next version of the axiom system. The next task is to apply this first-order readout to the rotation planes of N-body systems.
+
 ## Do not import acceleration from outside
 
 The basic stance is the same as in the previous papers.
