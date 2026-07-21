@@ -4,8 +4,8 @@
 **著者:** 木原 範昭<br>
 **ORCID:** 0009-0004-6753-4020<br>
 **日付:** 2026年7月21日<br>
-**Version DOI:** 未取得<br>
-**Concept DOI:** 未取得<br>
+**Version DOI:** 10.5281/zenodo.21468960<br>
+**Concept DOI:** 10.5281/zenodo.21468959<br>
 **位置づけ:** 「次元の生成構造」シリーズ・第4論文 v1
 
 ---
@@ -458,7 +458,7 @@ $$
 
 1. 木原 範昭「無名等振幅複合波モデル基本公理系 v6」Zenodo, 2026. Version DOI: [10.5281/zenodo.21465984](https://doi.org/10.5281/zenodo.21465984), Concept DOI: [10.5281/zenodo.21315735](https://doi.org/10.5281/zenodo.21315735).
 2. 木原 範昭「AB二体閉鎖位相系における調和読出しとc=1面積スイープ予備実験総括 v4」Zenodo, 2026. Version DOI: [10.5281/zenodo.21374317](https://doi.org/10.5281/zenodo.21374317), Concept DOI: [10.5281/zenodo.21318696](https://doi.org/10.5281/zenodo.21318696).
-3. 木原 範昭「AB二体閉鎖位相系における未来位相位置加速度写像と調和閉鎖による逆二乗則 v3」Zenodo, 2026. Version DOI: [10.5281/zenodo.21466981](https://doi.org/10.5281/zenodo.21466981), Concept DOI: [10.5281/zenodo.21441081](https://doi.org/10.5281/zenodo.21441081).
+3. 木原 範昭「AB二体閉鎖位相系における未来位相位置加速度写像と調和閉鎖による逆二乗則 v4」Zenodo, 2026. Version DOI: [10.5281/zenodo.21468270](https://doi.org/10.5281/zenodo.21468270), Concept DOI: [10.5281/zenodo.21441081](https://doi.org/10.5281/zenodo.21441081).
 4. 木原 範昭「完全二体関係波から読み出されるXYZ三方向――AB・ABC・ABCD閉鎖系における内部関係方向の増加と空間方向読出しの飽和」Zenodo, 2026. Version DOI: [10.5281/zenodo.21454790](https://doi.org/10.5281/zenodo.21454790), Concept DOI: [10.5281/zenodo.21454789](https://doi.org/10.5281/zenodo.21454789).
 5. 木原 範昭「N体完全二体関係波における生成子ランクの線形上界と空間方向読出しの三方向飽和」Zenodo, 2026. Version DOI: [10.5281/zenodo.21465899](https://doi.org/10.5281/zenodo.21465899), Concept DOI: [10.5281/zenodo.21465898](https://doi.org/10.5281/zenodo.21465898).
 

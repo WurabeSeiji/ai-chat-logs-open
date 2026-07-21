@@ -1,0 +1,1210 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage[]{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{Plane-Decomposition Readout in N-Body Fixed-Generator
+Systems}\label{plane-decomposition-readout-in-n-body-fixed-generator-systems}
+
+\subsection{Each rotation plane reads as kinematically isomorphic to the
+two-body AB system --- plane-wise validity of progression, frequency,
+amplitude, energy, and the zero-order harmonic structure, with position
+and observed-acceleration readouts as connection
+problems}\label{each-rotation-plane-reads-as-kinematically-isomorphic-to-the-two-body-ab-system-plane-wise-validity-of-progression-frequency-amplitude-energy-and-the-zero-order-harmonic-structure-with-position-and-observed-acceleration-readouts-as-connection-problems}
+
+\textbf{Author:} Noriaki Kihara\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Date:} July 21, 2026\\
+\textbf{Version DOI:} 10.5281/zenodo.21468960\\
+\textbf{Concept DOI:} 10.5281/zenodo.21468959\\
+\textbf{Position:} Dimensional Generation Structure series, Paper 4, v1
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+The preceding Wave Information Readout series established, in the closed
+two-body AB phase system, position and harmonic readout {[}2{]} and the
+acceleration-like readout with the inverse-square law {[}3{]}. Paper 3
+{[}5{]} proved that the fixed generator of N-body complete pairwise
+relational waves decomposes into a direct sum of rotation planes and a
+null space, with the number of rotation modes growing at most linearly.
+This paper connects the two series and answers the following question.
+
+\begin{quote}
+From which part of an N-body fixed-generator system, and to what extent,
+do the readouts established for the two-body AB system hold?
+\end{quote}
+
+The key is that under a fixed generator each rotation plane is an
+invariant subspace and the motion on it is a single-frequency phase
+progression. We formalize this as the plane AB kinematic isomorphism and
+establish five mathematical consequences. First, the phase progression
+of each plane advances by the constant angle
+\(\theta_j=2\arctan(\gamma\sigma_j)\) with constant plane amplitude
+(Theorem 1). Second, under the in-plane \(SO(2)\) gauge (the orientation
+of each plane is fixed by the generator), the absolute phase is
+unreadable while the signed phase progression, frequency, and amplitude
+are readable; if reflections are allowed (\(O(2)\)), only the absolute
+values of progression and frequency are invariant. This means that Axiom
+5 of the basic axiom system (unreadability of individual phases) is
+reproduced at the level of derived quantities (Theorem 2). Third, the
+total energy decomposes exactly into per-plane and kernel conserved
+quantities: \(H=\sum_j H_j+H_{\ker}\) (Theorem 3). Fourth, because the
+residual subspace (kernel) carries no phase progression,
+progression-based readouts --- position as progressing phase and
+harmonic acceleration --- do not hold from the kernel; the projector,
+the kernel squared quantity, and the state projection \(P_0X\) are
+covariantly defined, while \(K\) alone cannot select a standard internal
+basis (the dynamical realization of Consequence 16.3 {[}1{]}, Theorem
+4). Whether the static \(P_0X\) can be read as a positional direction is
+not tested in this paper. Fifth, the squared closure itself also
+decomposes plane-wise and kernel-wise with each term individually
+conserved: \(\sum_jQ_j+Q_{\ker}=R^2\) (Theorem 5). Under a fixed
+generator, therefore, neither closure nor energy-like quantities move
+between planes --- a no-go condition for spontaneous splitting of the
+state.
+
+In the numerical experiments (\(N=3\)--\(9\), 32 trials × 720 steps
+each, fixed generator, no sequential renormalization) we confirmed:
+plane-amplitude drift \(\le1.21\times10^{-13}\); per-step progression
+variation \(\le1.89\times10^{-13}\); deviation of the signed mean
+progression from \(+2\arctan(\gamma\sigma_j)\)
+\(\le4.49\times10^{-15}\); signed-progression change under the in-plane
+\(SO(2)\) gauge \(\le1.52\times10^{-13}\); deviation of the orientation
+convention \(Kp_j=\sigma_jq_j\) \(\le7.64\times10^{-14}\); deviations of
+the permuted frequency and energy sets \(\le3.30\times10^{-15}\);
+frequency nondegeneracy (minimum gap \(\ge2.0\times10^{-3}\)). The
+second-difference relation \(\Delta^2c_j=-4\sin^2(\theta_j/2)c_j\) held
+with absolute deviation \(\le1.27\times10^{-16}\) (machine precision),
+and the distance exponent in the continuous-spectrum re-expression, for
+all configurations with at least two planes (\(N=4\)--\(9\)), was
+\(-1.99999\) to \(-1.99987\). The energy-decomposition identity held to
+\(\le2.00\times10^{-15}\), the closure-decomposition identity
+\(\sum Q_j+Q_{\ker}-R^2\) to \(\le1.89\times10^{-15}\), the per-plane
+closure variation to \(\le1.81\times10^{-13}\), the kernel component was
+static to \(\le4.57\times10^{-14}\), the kernel-projector gauge
+variation was \(\le7.77\times10^{-16}\), and the angle between
+independent kernel bases was at least \(13.6^\circ\).
+
+This is a verification paper: most results were predicted as
+consequences of the structure of Paper 3. The substantive novelty is
+twofold. First, the asymmetric structure of readability --- on rotation
+planes, progression, frequency, amplitude, energy, and the zero-order
+harmonic structure hold through the kinematic isomorphism, while
+progression-based readouts fail on the residual subspace --- is fixed by
+both theorems and numerics. Second, the fixed generator carries a double
+conservation register per plane and kernel (\(H_j\) and \(Q_j\)), and
+neither quantity moves between planes (the spontaneous-splitting no-go,
+Theorem 5). The plane counterpart of the AB same-time two-wave
+positional phase readout (\(D_{AB}\)) and the construction of the
+observed acceleration of Axiom 17 on the planes are not carried out here
+and are stated explicitly as connection problems.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{0. Conclusions}\label{conclusions}
+
+The readability of an N-body fixed-generator system has the following
+asymmetric structure.
+
+\[
+\boxed{
+\begin{aligned}
+&\text{Rotation planes (the 2D blocks of }\operatorname{rank}K\text{):}\\
+&\qquad\text{progression, frequency, amplitude, energy, and the zero-order harmonic structure all hold (AB kinematic isomorphism).}\\
+&\text{Residual subspace (}\ker K\text{):}\\
+&\qquad\text{progression-based readouts fail (static); projector, squared quantities, and state projection are covariantly defined.}
+\end{aligned}
+}
+\]
+
+Each rotation plane behaves, as a constant-amplitude single-frequency
+two-dimensional rotation, kinematically isomorphic to the two-body AB
+system. Phase progression, frequency, amplitude, energy, and the
+zero-order harmonic second-order structure lift plane-wise to N bodies
+through this isomorphism. By contrast, the plane counterpart of the AB
+same-time two-wave positional phase readout (\(D_{AB}\)) and the
+construction on the planes of the observed acceleration of Axiom 17
+(curvature radius, future phase position, tangential direction) are not
+carried out in this paper; they are connection problems.
+
+That under the in-plane \(SO(2)\) gauge the absolute phase is unreadable
+while the signed progression is readable shows that Axiom 5
+(unreadability of individual phases) {[}1{]} is reproduced not only as
+an axiom for elementary waves but also at the level of derived
+quantities obtained by spectral decomposition.
+
+The total energy decomposes as
+
+\[
+H=\sum_{j=1}^{r}H_j+H_{\ker}
+\]
+
+into per-plane and kernel conserved quantities. Moreover, the squared
+closure itself decomposes as
+
+\[
+X^{\mathsf T}X=\sum_{j=1}^{r}Q_j+Q_{\ker}=R^2,
+\qquad
+Q_j=(p_j^{\mathsf T}X)^2+(q_j^{\mathsf T}X)^2,
+\]
+
+with each term individually conserved (Theorem 5). The fixed generator
+carries a double conservation register per plane and kernel; neither
+closure nor energy-like quantities move between planes. This is a no-go
+condition for spontaneous splitting of the state: splitting requires
+sequentially reconstructed generators, nonlinear couplings, or
+inter-plane exchange.
+
+The residual subspace is static under the fixed generator and carries no
+phase progression, so progression-based readouts (position, harmonic
+acceleration) do not hold from the kernel. The projector, the kernel
+squared quantity, and the state projection \(P_0X\) are covariantly
+defined, and the standard internal basis of the kernel cannot be
+selected from \(K\) alone (Consequence 16.3 {[}1{]}). Whether the static
+\(P_0X\) can be read as a positional direction is untested.
+
+Spatial adoption (which planes are read as XYZ) is governed by the
+adoption conditions of Axiom 16 {[}1{]} and is not the subject of
+verification here. What this paper fixes is the validity range of
+internal-quantity readout, prior to adoption.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Research Question}\label{research-question}
+
+\subsubsection{1.1 Connecting the two
+series}\label{connecting-the-two-series}
+
+The Wave Information Readout series established position and harmonic
+readout {[}2{]} and the acceleration-like readout with the
+inverse-square law {[}3{]} in the closed two-body AB phase system. All
+of these are readouts constructed from the progression of a single phase
+relation.
+
+The Dimensional Generation Structure series established the structure of
+N-body complete pairwise relational waves. By Paper 3 {[}5{]}, the fixed
+generator satisfies
+
+\[
+\operatorname{rank}K\le2\min\!\left(N,\left\lfloor\frac{M}{2}\right\rfloor\right)
+\]
+
+and decomposes into a direct sum of rotation planes and a null space
+(Consequences 16.1, 16.2 {[}1{]}).
+
+The remaining question was the connection of the two series. The AB
+readouts read one phase relation; each rotation plane of the N-body
+system carries one phase progression. Hence the part of the AB readouts
+that can be constructed from a phase progression should lift plane-wise
+to N bodies. This paper writes that lift as theorems and verifies it
+numerically, and at the same time distinguishes the parts whose lift has
+not yet been derived --- the plane counterpart of the same-time two-wave
+positional phase readout (\(D_{AB}\)) and the observed-acceleration
+projection of Axiom 17 --- as connection problems.
+
+\subsubsection{1.2 Rule on the direction of causation --- plane
+coordinates are derived
+quantities}\label{rule-on-the-direction-of-causation-plane-coordinates-are-derived-quantities}
+
+Plane coordinates are not the relational waves themselves; they are
+derived quantities obtained from the spectral decomposition of the
+generator. To call a plane readout a readout, one must first show that
+it can be reconstructed covariantly under name permutations from
+relational data alone. This is done in Section 3, together with the
+strict separation of unreadable quantities (absolute in-plane phase,
+internal kernel directions) from readable ones.
+
+No background space is introduced. No distance matrices, no embeddings,
+no external observers.
+
+\subsubsection{1.3 What this paper
+discriminates}\label{what-this-paper-discriminates}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Can each rotation plane be read as a single-frequency rotation
+  kinematically isomorphic to the two-body AB system?
+\item
+  Under the in-plane gauge, what is readable and what is not? Is this
+  consistent with Axiom 5?
+\item
+  Does the energy-like readout decompose into per-plane and kernel
+  conserved quantities?
+\item
+  What can be read from the residual subspace? Do progression-based
+  readouts hold there?
+\item
+  Do the zero-order harmonic structure and the continuous-spectrum
+  re-expression exponent hold plane-wise?
+\item
+  Is all of the above covariant under name permutations?
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Classification of Claims}\label{classification-of-claims}
+
+This is a verification paper. All theorems are consequences of the
+existing structure (the invariant-subspace decomposition of the fixed
+generator), and the numerical experiments verify their implementation.
+The axiomatic basis is Basic Axiom System v6 {[}1{]}.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Item
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Classification
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Position in this paper
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+N-body complete pairwise relational-wave model & Model definition &
+Implementation of Axiom 16 {[}1{]}; inherited from {[}4,5{]} \\
+Phase-difference sine generator, fixed-generator dynamics & Working
+hypothesis & Working Axiom I of {[}1{]}; identical to {[}4,5{]} \\
+Plane coordinates = derived quantities from spectral decomposition &
+Definition & Section 3; name-permutation covariance is tested \\
+Plane AB kinematic isomorphism (constant progression and amplitude) &
+Mathematical consequence & Theorem 1; does not assert independent plane
+closure \(Q_j=0\) \\
+In-plane \(SO(2)\) gauge and readable quantities & Mathematical
+consequence & Theorem 2; under reflection-including \(O(2)\) the signed
+progression is not invariant \\
+Energy-like decomposition \(H=\sum H_j+H_{\ker}\) & Mathematical
+consequence & Theorem 3 \\
+Readout restriction on the residual subspace & Mathematical consequence
+& Theorem 4; dynamical realization of Consequence 16.3 \\
+Plane-wise validity of the zero-order harmonic structure & Mathematical
+consequence (corollary of Theorem 1) & Section 5; distinguished from the
+observed-acceleration projection of Axiom 17 \\
+Plane counterpart of the same-time two-wave positional readout
+\(D_{AB}\) & Connection problem & The corresponding plane quantity is
+undefined; not constructed here \\
+Plane application of the observed acceleration of Axiom 17 & Connection
+problem & \(\rho_c\), future phase position, and tangential projection
+are defined after construction on adopted planes \\
+Closure decomposition \(\sum Q_j+Q_{\ker}=R^2\) and conservation of each
+\(Q_j\) & Mathematical consequence & Theorem 5 \\
+Spontaneous-splitting no-go under fixed generators & Derived consequence
+& Corollary of Theorem 5; splitting requires dynamics beyond the fixed
+generator \\
+Continuous-spectrum re-expression exponent \(-2\) & Consequence of a
+definition & Section 5; follows identically from the cell-width
+definition \(\Delta\theta_j=2\pi\theta_{\min}/\theta_j\) \\
+Plane version of integer-harmonic closure (the mechanism of {[}3{]}) &
+Not established (unexamined) & Plane frequency ratios are generally
+non-integer \\
+Frequency nondegeneracy & General-position assumption (independent) &
+Section 3.3; not derivable from maximal rank; holds numerically in all
+224 trials \\
+Results of Experiments F--I & Numerical facts & Section 7 \\
+Spatial adoption limited to three planes & Rule of Axiom 16 {[}1{]} &
+Outside the scope of verification here \\
+Behavior of nearly degenerate planes & Out of scope & Treated in the
+sequel (allocation and observation selection) \\
+First-order readout (velocity feedback) on planes & Out of scope & This
+paper is restricted to zero order \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. Model and Plane
+Decomposition}\label{model-and-plane-decomposition}
+
+\subsubsection{3.1 Inheritance of the
+model}\label{inheritance-of-the-model}
+
+To the complete pairwise relation set \(\mathcal E_N\)
+(\(M=\binom{N}{2}\)) of \(N\) anonymous individuals we assign complex
+relational waves \(X\in\mathbb C^M\) with the closure
+\(\sum_eX_e^2+(iR)^2=0\) {[}1,4{]}. From the initial phases the
+phase-difference sine generator
+\(\widetilde K_{ef}=A_{ef}\sin(\theta_f-\theta_e)\) is constructed once,
+normalized by its spectral norm, and kept fixed (fixed generator). The
+update is the real orthogonal Cayley transform
+
+\[
+U=(I-\gamma K)^{-1}(I+\gamma K),\qquad \gamma=\tan(\pi/144),
+\]
+
+which preserves the squared closure and the absolute-square sum without
+sequential renormalization {[}5,8{]}.
+
+\subsubsection{3.2 Spectral decomposition and plane
+coordinates}\label{spectral-decomposition-and-plane-coordinates}
+
+A real antisymmetric matrix \(K\) decomposes under an orthogonal
+transformation into two-dimensional rotation blocks and a zero block
+{[}7{]}. To each nonzero block \(j\) corresponds an orthonormal pair
+\((p_j,q_j)\) and a frequency \(\sigma_j>0\); to the null space
+corresponds an orthonormal basis \(\{n_a\}\). The plane coordinate is
+
+\[
+\zeta_j(\tau)=p_j^{\mathsf T}\,\Re X_\tau+i\,q_j^{\mathsf T}\,\Re X_\tau
+\]
+
+(the same construction runs in parallel for \(\Im X_\tau\)).
+
+\subsubsection{3.3 Well-definedness of the plane
+readout}\label{well-definedness-of-the-plane-readout}
+
+The plane readout is grounded as follows. First, \((p_j,q_j,\sigma_j)\)
+is determined solely by the spectral decomposition of \(K\) constructed
+from relational data (the initial phases), without external axis names.
+Second, under a name permutation \(\pi\),
+\(K'=P_\pi KP_\pi^{\mathsf T}\), so the frequency set \(\{\sigma_j\}\)
+is invariant and the plane bases move covariantly,
+\(p_j\mapsto P_\pi p_j\). The readout quantities --- frequencies,
+amplitudes, energies --- are therefore permutation invariant (verified
+numerically in Experiment F). Third, each plane basis carries a residual
+gauge. Since \(K\) itself fixes the orientation of each plane (the
+standard form with \(\sigma_j>0\) is fixed by the orientation
+\(Kp_j=\sigma_jq_j\)), the residual gauge preserving the standard form
+is \(SO(2)\), and by Theorem 2 this freedom does not affect the readout
+quantities. Allowing reflections (\(O(2)\)) flips the signed
+progression.
+
+When frequencies degenerate, additional freedom remains in the very
+separation into planes. Note that the generic rank equality of
+Consequence 16.2 {[}1{]} guarantees \(\sigma_j\ne0\);
+\(\sigma_j\ne\sigma_k\) (\(j\ne k\)) is a separate proposition. This
+paper places frequency nondegeneracy explicitly as an independent
+general-position assumption. In all 224 trials of the numerical
+experiments (\(N=3\)--\(9\) × 32) all frequencies were distinct. The
+proof that the degeneracy set has measure zero is not given here
+(Section 8.4). The behavior of near degeneracy is likewise out of scope
+(Section 8).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. Plane Readout Theorems}\label{plane-readout-theorems}
+
+\begin{quote}
+\textbf{Theorem 1 (plane AB kinematic isomorphism)}
+
+Under the fixed-generator dynamics, the coordinate of each rotation
+plane satisfies
+
+\[
+\zeta_j(\tau+1)=e^{+i\theta_j}\zeta_j(\tau),
+\qquad
+\theta_j=2\arctan(\gamma\sigma_j).
+\]
+
+That is, the phase progression is the constant angle \(\theta_j\) and
+the amplitude \(\lvert\zeta_j\rvert\) is constant: each plane is, as a
+constant-amplitude single-frequency two-dimensional rotation,
+kinematically isomorphic to the rotational kinematics of the two-body AB
+system {[}2,3{]}. The progression readout is defined for planes with
+nonzero amplitude \(\lvert\zeta_j\rvert>0\) (at \(\zeta_j=0\) the phase
+is undefined).
+\end{quote}
+
+\textbf{Proof.} On plane \(j\), \(K\) acts as the two-dimensional
+antisymmetric block
+
+\[
+\begin{pmatrix}0&-\sigma_j\\\sigma_j&0\end{pmatrix},
+\]
+
+whose Cayley transform is a two-dimensional rotation by
+\(2\arctan(\gamma\sigma_j)\). The blocks are mutually orthogonal and do
+not mix, so the plane coordinate rotates at constant angular speed with
+conserved amplitude. \(\blacksquare\)
+
+Note that the complex bilinear quadratic quantity
+\(Q_j=(p_j^{\mathsf T}X)^2+(q_j^{\mathsf T}X)^2\) within the plane is
+also conserved under the real orthogonal update, but \(Q_j=0\) does not
+hold. The theorem asserts a kinematic isomorphism, not that each plane
+is an independently closed subsystem.
+
+\begin{quote}
+\textbf{Theorem 2 (in-plane \(SO(2)\) gauge and readable quantities)}
+
+For nonzero amplitude \(\lvert\zeta_j\rvert>0\), under the in-plane
+basis rotation
+\((p_j,q_j)\mapsto(p_j\cos\beta+q_j\sin\beta,\,-p_j\sin\beta+q_j\cos\beta)\)
+the absolute phase \(\arg\zeta_j\) shifts by \(-\beta\), while the
+signed phase progression \(\Delta\varphi_j\), the frequency
+\(\theta_j\), and the amplitude \(\lvert\zeta_j\rvert\) are invariant.
+Under the \(SO(2)\) gauge, therefore, the uniquely readable quantities
+are the signed progression, frequency, amplitude, and phase differences;
+the absolute phase is not readable.
+\end{quote}
+
+\textbf{Proof.} The basis rotation induces
+\(\zeta_j\mapsto e^{-i\beta}\zeta_j\). The ratio
+\(\zeta_j(\tau+1)/\zeta_j(\tau)\) and the modulus do not depend on
+\(e^{-i\beta}\). \(\blacksquare\)
+
+The residual gauge is \(SO(2)\) because \(K\) itself fixes the
+orientation of the plane (Section 3.3). Under the reflection
+\((p_j,q_j)\mapsto(p_j,-q_j)\), allowed in \(O(2)\), we get
+\(\zeta_j\mapsto\overline{\zeta_j}\) and the signed progression flips,
+\(\Delta\varphi_j\mapsto-\Delta\varphi_j\); the invariants are then
+\(\lvert\Delta\varphi_j\rvert\) and the absolute value of the frequency.
+
+This shows that the unreadability of individual phases, placed as Axiom
+5 {[}1{]} for elementary waves, is automatically reproduced at the level
+of the derived plane coordinates. The distinction between readable and
+unreadable quantities is preserved as one climbs the readout hierarchy.
+
+\begin{quote}
+\textbf{Theorem 3 (energy-like decomposition)}
+
+\[
+H(X)=\sum_{j=1}^{r}H_j+H_{\ker},
+\qquad
+H_j=\lvert p_j^\dagger X\rvert^2+\lvert q_j^\dagger X\rvert^2,
+\qquad
+H_{\ker}=\lVert P_0X\rVert^2
+\]
+
+holds as an identity, and under the fixed-generator dynamics each
+\(H_j\) and \(H_{\ker}\) is individually conserved.
+\end{quote}
+
+\textbf{Proof.} \(\{p_j,q_j\}\cup\{n_a\}\) is an orthonormal basis of
+\(\mathbb R^M\), so the decomposition is Parseval's identity. \(U\)
+decomposes into rotations within each plane and the identity on the
+kernel, so each component norm is invariant. \(\blacksquare\)
+
+\begin{quote}
+\textbf{Theorem 4 (readout restriction on the residual subspace)}
+
+The kernel component \(P_0X_\tau\) does not depend on \(\tau\) (static).
+Hence readouts based on nonzero phase progression --- position as
+progressing phase and harmonic acceleration --- do not hold from the
+residual subspace. The projector \(P_0\), the kernel squared quantity
+\(H_{\ker}\), and the state projection \(P_0X\) are all covariantly
+defined under name permutations. The standard internal basis of the
+kernel cannot be selected from \(K\) alone.
+\end{quote}
+
+\textbf{Proof.} If \(Kn=0\) then \(Un=n\), so the kernel component is
+invariant. The progression is zero, so phase increments and second
+differences vanish identically and progression-based readouts are
+undefined. Uniqueness of the projector and non-uniqueness of the
+internal basis follow from Consequence 16.3 {[}1{]}. \(P_0X\) is
+uniquely determined by the state and moves covariantly,
+\(P_0X\mapsto P_\pi P_0X\), under permutations. \(\blacksquare\)
+
+Theorem 4 shows that the uniqueness distinctions stated algebraically by
+Consequence 16.3 are realized directly as readout availability in the
+dynamics. Whether the static state projection \(P_0X\) can be read as a
+``positional direction'' is not tested here. The interpretation of Paper
+2, which read a one-dimensional kernel as the static Z-normal direction
+{[}4{]}, is a precedent located in this untested region and does not
+contradict the theorem.
+
+\begin{quote}
+\textbf{Theorem 5 (closure decomposition and splitting no-go)}
+
+The squared closure decomposes as
+
+\[
+X^{\mathsf T}X
+=\sum_{j=1}^{r}Q_j+Q_{\ker}
+=R^2,
+\qquad
+Q_j=(p_j^{\mathsf T}X)^2+(q_j^{\mathsf T}X)^2,
+\qquad
+Q_{\ker}=\sum_a(n_a^{\mathsf T}X)^2,
+\]
+
+and under the fixed-generator dynamics each \(Q_j\) and \(Q_{\ker}\) is
+individually conserved.
+\end{quote}
+
+\textbf{Proof.} Since \(\{p_j,q_j\}\cup\{n_a\}\) is an orthonormal basis
+of \(\mathbb R^M\), the decomposition is Parseval's identity for the
+complex bilinear form. For the in-plane rotation
+\(c'=c\cos\theta-d\sin\theta\), \(d'=c\sin\theta+d\cos\theta\), the
+identity \((c')^2+(d')^2=c^2+d^2\) holds algebraically also for complex
+values \(c,d\); on the kernel the update is the identity.
+\(\blacksquare\)
+
+\begin{quote}
+\textbf{Corollary (no-go for spontaneous splitting)}
+
+Under a fixed generator, neither the closure quantities \(Q_j\) nor the
+energy-like quantities \(H_j\) move between planes or between planes and
+the kernel. Spontaneous splitting of the state accompanied by
+redistribution among registers therefore cannot occur under
+fixed-generator dynamics. Splitting requires sequentially reconstructed
+generators, nonlinear couplings, or inter-plane exchange --- dynamics
+beyond the fixed generator.
+\end{quote}
+
+Theorem 5 shows that the fixed-generator system carries a double
+conservation register (\(H_j\) and \(Q_j\)) per plane and kernel, and
+serves as the starting point for the sequels on allocation, observation
+selection, and state splitting.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. The Zero-Order Harmonic Structure on
+Planes}\label{the-zero-order-harmonic-structure-on-planes}
+
+By Theorem 1 the plane coordinate rotates by the constant angle
+\(\theta_j\), so the real coordinate
+\(c_j(\tau)=p_j^{\mathsf T}\Re X_\tau\) satisfies the discrete
+second-difference relation
+
+\[
+\Delta^2c_j
+=-4\sin^2\!\left(\frac{\theta_j}{2}\right)c_j
+\]
+
+(the zero-order harmonic second-order structure). This is a direct
+corollary of Theorem 1, of the same form as the second-order structure
+confirmed for the AB system in the inverse-square paper {[}3{]}.
+
+It must be noted that this is not the observed acceleration of Axiom 17
+{[}1{]} itself. The readout
+\(\boldsymbol\alpha_{\mathrm{read}}=\rho_c\lvert\omega\rvert^2\hat{\boldsymbol t}_\tau\)
+of Axiom 17 requires the curvature radius \(\rho_c\), the future phase
+position, the circumferential direction \(\hat{\boldsymbol t}_\tau\),
+and the projection of the center-directed compensation onto the
+tangential direction; none of these are constructed on the planes in
+this paper. Only after Axiom 17 is applied on planes adopted as spatial
+directions by Axiom 16 can one speak of an observed acceleration. That
+construction is a connection problem. What this section and Experiment G
+confirm on all planes is the center-directed zero-order harmonic
+second-order structure.
+
+To organize the coefficients across planes we define, relative to the
+slowest plane,
+
+\[
+n_j=\frac{\theta_j}{\theta_{\min}},
+\qquad
+\Delta\theta_j=\frac{2\pi}{n_j}=2\pi\frac{\theta_{\min}}{\theta_j}.
+\]
+
+An important caution: \(n_j\) is \textbf{generally not an integer}. This
+is therefore a different structure from the integer-harmonic closure
+\(\omega_n=n\omega_1\) (\(n\in\mathbb Z\setminus\{0\}\)) used in the
+inverse-square paper {[}3{]}; it is a re-definition of the cell width on
+a continuous spectrum (continuous-spectrum re-expression). Under this
+definition, in the small-angle regime,
+
+\[
+4\sin^2\!\left(\frac{\theta_j}{2}\right)\simeq\theta_j^2\propto\frac{1}{\Delta\theta_j^2}
+\]
+
+follows identically. The exponent \(-2\) established here is thus a
+consequence of the definition; the plane version of the integer-harmonic
+inverse-square law of {[}3{]} is not claimed (unexamined). Moreover,
+this quantity is the normalized harmonic coefficient
+\(g_j=4\sin^2(\theta_j/2)\); the plane acceleration amplitude is
+\(a_j=\rho_jg_j\), depending on the plane amplitude \(\rho_j\). The
+exponent \(-2\) is the exponent of the coefficient, not of the
+cross-plane acceleration amplitude.
+
+The second-order structure of this paper is restricted to zero order
+(fixed generator, frozen \(\omega\)). The plane application of the
+first-order readout (velocity feedback, {[}3{]} v2) is out of scope and
+treated in a sequel.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. The Boundary of Spatial
+Adoption}\label{the-boundary-of-spatial-adoption}
+
+What this paper confirms is the readout validity of the \textbf{internal
+quantities} of all \(r\) planes --- progression, frequency, amplitude,
+energy, and the zero-order harmonic structure. Which planes are adopted
+as spatial directions (XYZ) is governed by the adoption conditions of
+Axiom 16 (distinguishability by rotation frequencies plus normal
+uniqueness, restricted to \(d=3\)) {[}1{]}, and as Paper 3 showed,
+adoption saturates at three directions. The experiments here do not
+verify the adoption limit. That internal quantities are readable on all
+planes and that spatial adoption is limited to three planes coexist
+without contradiction --- this is the two-layer structure of readout.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. Numerical Experiments}\label{numerical-experiments}
+
+\subsubsection{7.1 Common conditions}\label{common-conditions}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4286}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5714}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Item
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Value
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Configurations & \(N=3\)--\(9\) \\
+Trials & 32 each \\
+Steps & 720 each \\
+Dynamics & Fixed generator, Cayley orthogonal update
+(\(\gamma=\tan(\pi/144)\)) \\
+\(R^2\) / imaginary seed amplitude & 1.0 / 0.35 \\
+Random seed & 20260731 \\
+Tolerance & \(10^{-10}\) \\
+Sequential renormalization / observation damping / absolute background
+axes & None \\
+\end{longtable}
+}
+
+Plane counts and kernel dimensions agreed across all 32 trials per
+configuration, reproducing the rank law of Paper 3,
+\(r=\min(N,\lfloor M/2\rfloor)\), \(\dim\ker K=M-2r\). No planes were
+excluded for low amplitude in any trial.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rrrr@{}}
+\toprule\noalign{}
+\(N\) & \(M\) & Rotation planes \(r\) & \(\dim\ker K\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+3 & 3 & 1 & 1 \\
+4 & 6 & 3 & 0 \\
+5 & 10 & 5 & 0 \\
+6 & 15 & 6 & 3 \\
+7 & 21 & 7 & 7 \\
+8 & 28 & 8 & 12 \\
+9 & 36 & 9 & 18 \\
+\end{longtable}
+}
+
+\subsubsection{7.2 Experiment F: plane AB kinematic
+isomorphism}\label{experiment-f-plane-ab-kinematic-isomorphism}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4286}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5714}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Quantity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Maximum over all configurations
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Plane-amplitude drift & \(1.21\times10^{-13}\) \\
+Per-step progression variation (single-frequency property) &
+\(1.89\times10^{-13}\) \\
+Deviation of \textbf{signed} mean progression from
+\(+2\arctan(\gamma\sigma_j)\) & \(4.49\times10^{-15}\) \\
+Signed-progression change under the in-plane \(SO(2)\) gauge &
+\(1.52\times10^{-13}\) \\
+Deviation of the orientation convention \((Kp_j)\cdot q_j/\sigma_j-1\) &
+\(7.64\times10^{-14}\) \\
+Deviation of the permuted frequency set & \(2.00\times10^{-15}\) \\
+Deviation of the permuted plane-energy set & \(3.30\times10^{-15}\) \\
+\end{longtable}
+}
+
+All claims of Theorems 1 and 2 held three orders below tolerance. Under
+the in-plane \(SO(2)\) gauge the absolute phase moved while the signed
+progression was invariant. In all 224 trials the plane frequencies were
+all distinct (minimum frequency gap \(2.0\times10^{-3}\) to
+\(5.4\times10^{-2}\)), so the general-position assumption of frequency
+nondegeneracy held numerically. The rank law (plane count
+\(=\min(N,\lfloor M/2\rfloor)\), kernel dimension \(=M-2r\)) also held
+in every trial.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Plane AB kinematic isomorphism and kernel staticity}]{figs/plane_ab_isomorphism_v1.png}}
+\caption{Plane AB kinematic isomorphism and kernel staticity}
+\end{figure}
+
+Figure 1 shows a representative \(N=6\) trial. The phase progressions of
+the six planes stay at constant values (order \(10^{-2}\)) while the
+change of the kernel component stays at machine precision (order
+\(10^{-16}\)): the asymmetry of readability appears as a fourteen-order
+separation.
+
+\subsubsection{7.3 Experiment G: plane-wise confirmation of the
+zero-order harmonic
+structure}\label{experiment-g-plane-wise-confirmation-of-the-zero-order-harmonic-structure}
+
+The absolute deviation of the regression slope of
+\(\Delta^2c_j=-4\sin^2(\theta_j/2)c_j\) from the theoretical coefficient
+was at most \(1.27\times10^{-16}\) (machine precision) over all
+configurations. The relative deviation is amplified up to
+\(2.5\times10^{-9}\) on the slowest planes, a conditioning effect of the
+measure caused by the smallness of the theoretical coefficient itself;
+the acceptance criterion is the absolute deviation.
+
+The exponent in the continuous-spectrum re-expression, for all
+configurations with at least two planes (\(N=4\)--\(9\)) and all trials,
+was
+
+\[
+-1.99999\le\text{exponent}\le-1.99987,
+\]
+
+matching \(-2\) (deviation \(\le1.2\times10^{-4}\), a known discrete
+effect of \(4\sin^2(\theta/2)\) versus \(\theta^2\)).
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Inverse-square bookkeeping across planes}]{figs/inverse_square_across_planes_v1.png}}
+\caption{Inverse-square bookkeeping across planes}
+\end{figure}
+
+Figure 2 shows the nine planes of a representative \(N=9\) trial lying
+on the slope \(-2\) line in the continuous-spectrum cell-width display.
+This visualizes the definitional consequence of Section 5, not a
+verification of integer-harmonic closure.
+
+\subsubsection{7.4 Experiment H: energy-like decomposition and closure
+decomposition}\label{experiment-h-energy-like-decomposition-and-closure-decomposition}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4286}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5714}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Quantity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Maximum over all configurations
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Per-plane energy \(H_j\) drift & \(2.41\times10^{-13}\) \\
+Kernel energy \(H_{\ker}\) drift & \(4.55\times10^{-14}\) \\
+Identity \(\sum_jH_j+H_{\ker}-H\) & \(2.00\times10^{-15}\) \\
+Per-plane closure \(Q_j\) drift & \(1.81\times10^{-13}\) \\
+Kernel closure \(Q_{\ker}\) drift & \(4.03\times10^{-14}\) \\
+Closure-decomposition identity \(\sum_jQ_j+Q_{\ker}-R^2\) &
+\(1.89\times10^{-15}\) \\
+\end{longtable}
+}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Conservation of the energy-like decomposition}]{figs/plane_energy_decomposition_v1.png}}
+\caption{Conservation of the energy-like decomposition}
+\end{figure}
+
+Figure 3 summarizes the drifts over all configurations. The total energy
+decomposes exactly into per-plane plus kernel individually conserved
+quantities. The squared closure \(R^2\) likewise decomposes in the same
+basis, with each \(Q_j\) individually conserved (numerical confirmation
+of Theorem 5). Under the fixed generator, neither conservation register
+moves between planes.
+
+\subsubsection{7.5 Experiment I: readout restriction on the residual
+subspace}\label{experiment-i-readout-restriction-on-the-residual-subspace}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4286}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5714}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Quantity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Value
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Kernel-component time variation (staticity) & max
+\(4.57\times10^{-14}\) \\
+Kernel-projector gauge variation (uniqueness) & max
+\(7.77\times10^{-16}\) \\
+Angle between first directions of independent kernel bases
+(non-selectability) & min \(13.6^\circ\) (\(N=6\)) to \(50.9^\circ\)
+(\(N=9\)) \\
+\end{longtable}
+}
+
+The kernel component is static, so progression-based position and
+harmonic-acceleration readouts do not hold from the kernel. The
+projector and the kernel squared quantity are uniquely readable, and the
+state projection \(P_0X\) is covariant.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Readout asymmetry of the kernel}]{figs/kernel_readout_asymmetry_v1.png}}
+\caption{Readout asymmetry of the kernel}
+\end{figure}
+
+Figure 4 contrasts the non-uniqueness of kernel directions (angles
+between gauge-equivalent bases) with the uniqueness of the kernel
+projector (gauge variation \(\le7.8\times10^{-16}\)).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. Scope of Claims}\label{scope-of-claims}
+
+\subsubsection{8.1 Mathematical consequences
+proven}\label{mathematical-consequences-proven}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Plane AB kinematic isomorphism: each plane is a constant-angle
+  \(\theta_j=2\arctan(\gamma\sigma_j)\), constant-amplitude
+  single-frequency two-dimensional rotation (Theorem 1).
+\item
+  Under the in-plane \(SO(2)\) gauge the absolute phase is unreadable
+  while signed progression, frequency, and amplitude are readable; under
+  \(O(2)\) only absolute values (Theorem 2).
+\item
+  Energy-like decomposition \(H=\sum H_j+H_{\ker}\) with individual
+  conservation (Theorem 3).
+\item
+  Readout restriction on the residual subspace: progression-based
+  readouts fail; projector, squared quantities, and state projection are
+  covariant (Theorem 4).
+\item
+  Closure decomposition \(\sum Q_j+Q_{\ker}=R^2\) with individual
+  conservation, and the spontaneous-splitting no-go (Theorem 5).
+\end{enumerate}
+
+\subsubsection{8.2 Numerical facts
+confirmed}\label{numerical-facts-confirmed}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  All claims of Theorems 1--5 held for \(N=3\)--\(9\), 32 trials each,
+  within tolerance \(10^{-10}\) (measured values mostly below
+  \(10^{-13}\)).
+\item
+  The readout quantities (frequency and energy sets) were permutation
+  invariant. The orientation convention \(Kp_j=\sigma_jq_j\) and
+  frequency nondegeneracy (an independent general-position assumption)
+  held in all trials.
+\item
+  The zero-order harmonic structure
+  \(\Delta^2c_j=-4\sin^2(\theta_j/2)c_j\) held at machine precision, and
+  the continuous-spectrum re-expression exponent matched \(-2\)
+  (\(N=4\)--\(9\)).
+\item
+  The rank law and kernel dimensions reproduced the results of Paper 3.
+\item
+  The individual conservation of \(Q_j\), \(Q_{\ker}\) and the
+  closure-decomposition identity held at machine precision (numerical
+  confirmation of Theorem 5).
+\end{enumerate}
+
+\subsubsection{8.3 Interpretations
+adopted}\label{interpretations-adopted}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Axiom 5 (unreadability of individual phases) is reproduced not only
+  for elementary waves but also at the level of derived plane
+  coordinates.
+\item
+  The readout asymmetry of Consequence 16.3 (projector and squared
+  quantities unique; internal directions not) is realized directly as
+  readout availability in the dynamics.
+\item
+  Readout has a two-layer structure: internal-quantity readout holds on
+  all planes, while spatial adoption is limited to three planes by Axiom
+  16.
+\end{enumerate}
+
+\subsubsection{8.4 What this paper does not
+fix}\label{what-this-paper-does-not-fix}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Behavior of nearly degenerate planes; treated in the sequel
+  (allocation and observation selection).
+\item
+  Proof that the frequency-degeneracy set has measure zero;
+  nondegeneracy is placed as an independent general-position assumption.
+\item
+  Whether the plane version of integer-harmonic closure (the
+  inverse-square mechanism of {[}3{]}) holds; the exponent \(-2\) here
+  is a definitional consequence of the continuous-spectrum
+  re-expression.
+\item
+  Whether the static state projection \(P_0X\) can be read as a
+  positional direction (extension of the Z-normal interpretation of the
+  one-dimensional kernel {[}4{]} to multi-dimensional kernels).
+\item
+  Definition and verification of a plane quantity corresponding to the
+  same-time two-wave positional phase readout of the AB system
+  (\(D_{AB}=\{\delta,2\pi-\delta\}\)).
+\item
+  Construction and verification of the observed acceleration of Axiom 17
+  (\(\rho_c\), future phase position, tangential projection) on adopted
+  planes.
+\item
+  Plane application of the first-order readout (velocity feedback); this
+  paper is restricted to zero order.
+\item
+  Dynamical verification of the spatial adoption limit (three planes);
+  the experiments concern internal-quantity readout only.
+\item
+  Stability of the plane structure under sequentially reconstructed
+  generators.
+\item
+  Inter-plane interactions (Group B: exchange scattering).
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. Reproducibility}\label{reproducibility}
+
+The numerical experiments are based on the following programs and
+outputs.
+
+\subsubsection{Programs}\label{programs}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{dimension\_generation\_structure/contrast\_experiments\_v1/run\_nbody\_plane\_decomposition\_readout\_preliminary\_v1.py}
+  (Experiments F--I)
+\item
+  \texttt{dimension\_generation\_structure/contrast\_experiments\_v1/make\_nbody\_plane\_decomposition\_figures\_v1.py}
+  (figures)
+\end{itemize}
+
+\subsubsection{Main outputs}\label{main-outputs}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{plane\_decomposition\_readout\_result\_v1.json}
+\item
+  \texttt{plane\_decomposition\_trials\_v1.csv}
+\item
+  \texttt{plane\_decomposition\_readout\_report\_v1.md}
+\item
+  Four figures (\texttt{plane\_ab\_isomorphism\_v1.png} etc.)
+\end{itemize}
+
+Stored under
+
+\texttt{dimension\_generation\_structure/figs/}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. Final Conclusions}\label{final-conclusions}
+
+The N-body fixed generator decomposes into independent single-frequency
+rotation planes and carries per-plane and kernel conservation registers.
+Each rotation plane is, as a constant-amplitude single-frequency
+two-dimensional rotation, kinematically isomorphic to the rotational
+kinematics of AB, lifting phase progression, frequency, amplitude,
+energy, and the zero-order harmonic second-order structure. The plane
+counterpart of the same-time two-wave positional readout (\(D_{AB}\))
+and the construction on planes of the observed-acceleration projection
+of Axiom 17 remain as connection problems.
+
+The total energy decomposes exactly into per-plane and kernel conserved
+quantities. The residual subspace carries no phase progression, so
+progression-based position and harmonic-acceleration readouts do not
+hold there; the projector, kernel squared quantity, and state projection
+\(P_0X\) are covariantly defined, and whether the static \(P_0X\) reads
+as a positional direction is untested.
+
+The conclusions of this paper are therefore:
+
+\[
+\boxed{
+\begin{aligned}
+&\text{the N-body fixed generator decomposes into independent single-frequency rotation planes,}\\
+&\text{carries a double conservation register (}H_j\text{ and }Q_j\text{) per plane and kernel,}\\
+&\text{and progression-based readouts fail on the residual subspace.}
+\end{aligned}
+}
+\]
+
+This asymmetric readability shows that the uniqueness distinctions given
+algebraically by Consequence 16.3 become readout availability in the
+dynamics. The no-go of Theorem 5 --- under a fixed generator neither
+closure nor energy-like quantities move between planes --- means that
+spontaneous splitting of the state requires dynamics beyond the fixed
+generator (sequential reconstruction, nonlinear coupling, or inter-plane
+exchange). The double registers \(\{H_j,Q_j\}\) and
+\(\{H_{\ker},Q_{\ker}\}\) are the foundation for the sequels on N-body
+observation selection (weak C readout, strong D observation) and state
+splitting.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+\subsubsection{Self-citations}\label{self-citations}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Noriaki Kihara, ``Anonymous Equal-Amplitude Composite-Wave Model:
+  Basic Axiom System v6,'' Zenodo, 2026. Version DOI:
+  \href{https://doi.org/10.5281/zenodo.21465984}{10.5281/zenodo.21465984},
+  Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.21315735}{10.5281/zenodo.21315735}.
+\item
+  Noriaki Kihara, ``Harmonic Readout and c=1 Area-Sweep Preliminary
+  Experiments in the Closed AB Two-Body Phase System, v4,'' Zenodo,
+  2026. Version DOI:
+  \href{https://doi.org/10.5281/zenodo.21374317}{10.5281/zenodo.21374317},
+  Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.21318696}{10.5281/zenodo.21318696}.
+\item
+  Noriaki Kihara, ``An Inverse-Square Law from a Future-Phase-Position
+  Acceleration Map and Harmonic Closure in a Closed Two-Body AB Phase
+  System, v4,'' Zenodo, 2026. Version DOI:
+  \href{https://doi.org/10.5281/zenodo.21468270}{10.5281/zenodo.21468270},
+  Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.21441081}{10.5281/zenodo.21441081}.
+\item
+  Noriaki Kihara, ``Three XYZ Directions Read from Complete Pairwise
+  Relational Waves: Growth of Internal Relational Directions and
+  Saturation of Spatial-Direction Readout in Closed AB, ABC, and ABCD
+  Systems,'' Zenodo, 2026. Version DOI:
+  \href{https://doi.org/10.5281/zenodo.21454790}{10.5281/zenodo.21454790},
+  Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.21454789}{10.5281/zenodo.21454789}.
+\item
+  Noriaki Kihara, ``Linear Upper Bound on Generator Rank and
+  Three-Direction Saturation of Spatial-Direction Readout in N-Body
+  Complete Pairwise Relational Waves,'' Zenodo, 2026. Version DOI:
+  \href{https://doi.org/10.5281/zenodo.21465899}{10.5281/zenodo.21465899},
+  Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.21465898}{10.5281/zenodo.21465898}.
+\end{enumerate}
+
+\subsubsection{External references}\label{external-references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Hassler Whitney, ``Congruent Graphs and the Connectivity of Graphs,''
+  \emph{American Journal of Mathematics}, 54(1), 150--168, 1932. DOI:
+  \href{https://doi.org/10.2307/2371086}{10.2307/2371086}.
+\item
+  Milan Vujivčić, Fedor Herbut, and Gradimir Vujivčić, ``Canonical Form
+  for Matrices Under Unitary Congruence Transformations. I:
+  Conjugate-Normal Matrices,'' \emph{SIAM Journal on Applied
+  Mathematics}, 23(2), 225--238, 1972. DOI:
+  \href{https://doi.org/10.1137/0123025}{10.1137/0123025}.
+\item
+  Fasma Diele, Luciano Lopez, and R. Peluso, ``The Cayley Transform in
+  the Numerical Solution of Unitary Differential Systems,''
+  \emph{Advances in Computational Mathematics}, 8(4), 317--334, 1998.
+  DOI:
+  \href{https://doi.org/10.1023/A:1018908700358}{10.1023/A:1018908700358}.
+\end{enumerate}
+
+\end{document}
