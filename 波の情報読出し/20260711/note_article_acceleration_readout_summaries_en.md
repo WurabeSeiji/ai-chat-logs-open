@@ -68,7 +68,17 @@ The angular speed and the phase-cell width are not independently chosen quantiti
 
 alpha_n = R Omega^2 / (Delta_theta_n)^2
 
-an inverse-square law with respect to phase-cell width. This is not the result of adding 1/L^2 to an existing formula afterwards. What was confirmed is the inverse-square law under the specific conditions of this experiment; whether the mechanism generalizes, and whether this readout is identical to standard gravity, remain untested and unclaimed.
+an inverse-square law with respect to phase-cell width.
+
+![Mechanism: future-position rotation map and harmonic inverse square](../../次元の生成構造/加速度逆二乗則機構_追加論文_v1/figures/future_phase_position_inverse_square_mechanism_en_v1.png)
+
+Panel A maps the centripetal compensation f_AB of the earlier experiment to a tangential acceleration around the future-position center. Panel B shows that one integer harmonic simultaneously fixes the phase-cell width and the angular speed. Panel C connects the two conditions and the inverse square follows algebraically.
+
+![Published AB data: nonzero second difference and the harmonic relation](../../次元の生成構造/加速度逆二乗則機構_追加論文_v1/figures/existing_ab_acceleration_second_difference_en_v1.png)
+
+The acceleration-like second-order structure connected here is not a newly assumed quantity: recomputing the published AB time series gives a nonzero signed second difference that collapses, for all initial deviations and both protocols, onto the single harmonic relation.
+
+This is not the result of adding 1/L^2 to an existing formula afterwards. What was confirmed is the inverse-square law under the specific conditions of this experiment; whether the mechanism generalizes, and whether this readout is identical to standard gravity, remain untested and unclaimed.
 
 Paper:
 
@@ -84,6 +94,9 @@ We have updated the inverse-square paper above to v2.
 
 Version DOI (v2):
 https://doi.org/10.5281/zenodo.21466463
+
+Version DOI (v3, with English-labeled figures):
+https://doi.org/10.5281/zenodo.21466981
 
 The trigger was an honest discomfort left in v1.
 
