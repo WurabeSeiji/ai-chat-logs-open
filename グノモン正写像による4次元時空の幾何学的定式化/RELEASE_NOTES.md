@@ -110,6 +110,7 @@
 **解説ノート（零二乗和の幾何学的正体）の一般向けnote記事（日本語）を公開**：Σxₙ² = 0 が量子性を内蔵していたことを、数式最小限＋比喩（太鼓の膜＝離散性、ドーナツの紐＝巻き数の整数性、spherical harmonics＝文字通りの倍音）で解説。複素数の必然→閉じた面→生まれつき量子化→等分配とディラテーション→N=3は量子ビット、の構成。
 
 - **note**：[Σxₙ² = 0 という式は、生まれつき量子化されていた](https://note.com/kiharanoriaki/n/nc0ea47060f4b)（下書きmd：次元の生成構造/note記事案_零二乗和の量子性_v1/note_article_zero_square_sum_quantum_ja.md）
+- **note（英語版）**：[The Equation Σxₙ² = 0 Was Born Quantized](https://note.com/kiharanoriaki/n/nadc574b5957b)（下書きmd：note_article_zero_square_sum_quantum_en.md）
 
 ### 2026-07-22: note記事（英語版）"Why Do Directions Stop at Three, While Waves Multiply on Their Own?" 公開
 
