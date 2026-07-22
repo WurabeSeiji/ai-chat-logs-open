@@ -154,6 +154,7 @@
 
 - **note**：[なぜ方向は三つで止まり、波はひとりでに増えるのか](https://note.com/kiharanoriaki/n/nf99bd8fe7e30)（下書きmd：次元の生成構造/note記事案_次元と分裂と計数_v1/note_article_dimension_splitting_counting_ja.md）
 - **Facebook（日本語）**：[告知投稿](https://www.facebook.com/kihara.noriaki/posts/pfbid02ECpe7vjGKdFDKgoJRT8u7TvhkFVYtGcf69GM5SZWLFrdF5KtBmyaQnxg8JS7ctMtl)（2026-07-22、note記事URLはコメント欄）
+- **X（日本語）**：[告知ポスト](https://x.com/NoriakiKihara/status/2079939222656757794)（2026-07-22）
 
 ### 2026-07-22: 波の数は系の分解能である 新規公開
 
