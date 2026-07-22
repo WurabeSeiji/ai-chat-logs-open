@@ -104,24 +104,24 @@ def fig2():
 
 
 # ---------------------------------------------------------------- 図3
-def _load_largeN_curve():
-    """largeN_splitting_result_v1 から最大Nの f 曲線を読む。"""
+def _load_largeN_curves(wanted=(300, 1000)):
+    """largeN_splitting_result_v1 から指定Nの f 曲線を読む（存在するもののみ、N昇順）。"""
     import glob
     d = os.path.join(EXP, "largeN_splitting_result_v1")
-    best = None
+    found = {}
     for path in glob.glob(os.path.join(d, "fcurve_N*.csv")):
         n = int(os.path.basename(path).split("_")[1][1:])
-        if best is None or n > best[0]:
-            best = (n, path)
-    if best is None:
-        return None, None, None
-    n, path = best
-    taus, fs = [], []
-    with open(path) as fh:
-        for row in csv.DictReader(fh):
-            taus.append(float(row["tau"]))
-            fs.append(float(row["f"]))
-    return n, np.array(taus), np.array(fs)
+        if n in wanted:
+            found[n] = path
+    out = []
+    for n in sorted(found):
+        taus, fs = [], []
+        with open(found[n]) as fh:
+            for row in csv.DictReader(fh):
+                taus.append(float(row["tau"]))
+                fs.append(float(row["f"]))
+        out.append((n, np.array(taus), np.array(fs)))
+    return out
 
 
 def fig3():
@@ -135,15 +135,16 @@ def fig3():
     taus3 = np.array(taus3)
     f3 = np.array(f3)
 
-    # 大Nの実データ
-    n_big, taus_b, f_b = _load_largeN_curve()
-    m_big = n_big * (n_big - 1) // 2 if n_big else 0
+    # 大Nの実データ（300体・1000体）
+    curves = _load_largeN_curves()
 
     fig, ax = plt.subplots(figsize=(8.6, 5.4))
     ax.semilogy(taus3, f3, color=C_BLUE, lw=1.6,
                 label="3体（関係波3本、種はエネルギー比で100億分の1）")
-    if n_big:
-        ax.semilogy(taus_b, f_b, color=C_RED, lw=1.8,
+    big_colors = {300: C_ORANGE, 1000: C_RED}
+    for n_big, taus_b, f_b in curves:
+        m_big = n_big * (n_big - 1) // 2
+        ax.semilogy(taus_b, f_b, color=big_colors.get(n_big, C_GREEN), lw=1.8,
                     label=f"{n_big}体（関係波{m_big:,}本、種は10のマイナス30乗）")
     ax.set_xlabel("時間（ステップ）")
     ax.set_ylabel("新しい波に移った割合（対数目盛）")
@@ -151,10 +152,11 @@ def fig3():
     ax.grid(alpha=0.3, which="both")
     ax.legend(loc="lower right", fontsize=10)
     ax.set_ylim(1e-31, 2.0)
-    if n_big:
+    if curves:
+        n_big, taus_b, f_b = curves[-1]
         i_mid = int(np.argmin(np.abs(f_b - 1e-15)))
         ax.annotate("20桁以上を同じ倍率で\nまっすぐ駆け上がる",
-                    xy=(taus_b[i_mid], f_b[i_mid]), xytext=(taus_b[i_mid] + 900, 1e-19),
+                    xy=(taus_b[i_mid], f_b[i_mid]), xytext=(taus_b[i_mid] + 1100, 1e-19),
                     arrowprops=dict(arrowstyle="->", color="k"), fontsize=10.5)
         ax.annotate("出発点は10のマイナス30乗\n（測定にかからない「眠った」成分）",
                     xy=(taus_b[0], f_b[0]), xytext=(500, 3e-28),
