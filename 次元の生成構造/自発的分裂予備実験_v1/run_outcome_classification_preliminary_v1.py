@@ -58,15 +58,30 @@ def participation_ratio(Z):
 
 
 def prepare_parent_perturbed(rng, A, m, delta):
-    """自己無撞着固有モード親 + 親平面（span{v, conj v}）の直交補空間への複素種。"""
+    """自己無撞着固有モード親 + 親平面の直交補空間への零閉鎖種 g=(u+iw)/√2。
+
+    u, w は親平面 {p,q} の実直交補内の実正規直交対。g^T g = 0 厳密、v^T g = 0。"""
     v, residual = base.prepare_initial_state(rng, A, m, 0.0)
-    g = rng.normal(size=m) + 1j * rng.normal(size=m)
-    vb = np.conj(v)
-    # v と conj(v) は互いにエルミート直交（v^T v = 0）なので順に射影除去
-    g = g - v * (np.conj(v) @ g)
-    g = g - vb * (np.conj(vb) @ g)
-    nrm = np.linalg.norm(g)
-    Z0 = v + delta * (g / nrm)
+    p = v.real / np.linalg.norm(v.real)
+    q = v.imag - (v.imag @ p) * p
+    q = q / np.linalg.norm(q)
+
+    def proj_out(x):
+        return x - (x @ p) * p - (x @ q) * q
+
+    u = proj_out(rng.normal(size=m))
+    u = u / np.linalg.norm(u)
+    w = proj_out(rng.normal(size=m))
+    w = w - (w @ u) * u
+    nw = np.linalg.norm(w)
+    if nw > 1e-8:
+        w = w / nw
+        g = (u + 1j * w) / np.sqrt(2.0)  # g^T g = 0 厳密
+    else:
+        # 補空間が1次元（N=3）: 零閉鎖種は存在しない（等方ベクトルに2実次元必要）。
+        # 実種 g=u を用い、閉鎖残差 O(δ²) を明示的に許容する。
+        g = u.astype(complex)
+    Z0 = v + delta * g
     return Z0 / np.linalg.norm(Z0), residual
 
 
@@ -164,8 +179,11 @@ def main():
                 if family == "parent":
                     Z0, residual = prepare_parent_perturbed(rng, A, m, DELTA)
                 else:
-                    Z0 = rng.normal(size=m) + 1j * rng.normal(size=m)
-                    Z0 = Z0 / np.linalg.norm(Z0)
+                    X = rng.normal(size=m)
+                    Y = rng.normal(size=m)
+                    Y = Y - (X @ Y) / (X @ X) * X
+                    Y = Y * (np.linalg.norm(X) / np.linalg.norm(Y))
+                    Z0 = (X + 1j * Y) / np.linalg.norm(X + 1j * Y)  # Z^T Z = 0 厳密
                     residual = None
                 f, s2, pr, dev_c = run_and_measure(Z0, A, STEPS, RECORD_EVERY)
                 metrics = classify(f, s2, family)
@@ -174,6 +192,7 @@ def main():
                     "m": m,
                     "family": family,
                     "seed": seed,
+                    "abs_ztz_initial": float(abs(complex(Z0 @ Z0))),
                     "parent_residual": residual,
                     "f_initial": float(f[0]),
                     "pr_initial": float(pr[0]),

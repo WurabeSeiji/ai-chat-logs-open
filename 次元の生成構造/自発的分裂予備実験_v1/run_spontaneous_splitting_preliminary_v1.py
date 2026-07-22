@@ -162,7 +162,8 @@ def prepare_initial_state(rng, A, m, delta, iters=SC_ITERS, beta=SC_BETA):
     核方向へ複素係数で置く。
     """
     theta = rng.uniform(0.0, 2.0 * np.pi, m)
-    g = rng.normal(size=m) + 1j * rng.normal(size=m)  # 休眠種の生データ（決定的）
+    g1 = rng.normal(size=m)  # 休眠種の生データ（実、決定的）
+    g2 = rng.normal(size=m)
     residual = None
     v = None
     for _ in range(iters):
@@ -179,12 +180,20 @@ def prepare_initial_state(rng, A, m, delta, iters=SC_ITERS, beta=SC_BETA):
     mu_v = float(np.real(np.conj(v) @ (1j * K_fin @ v)))
     residual = float(np.linalg.norm(1j * K_fin @ v - mu_v * v))
     _, kernel = plane_decomposition(K_fin)
-    g_ker = np.zeros(m, dtype=complex)
-    for k_vec in kernel:
-        g_ker += (k_vec @ g) * k_vec
-    nrm = np.linalg.norm(g_ker)
-    if nrm > 0.0 and delta > 0.0:
-        Z = v + delta * (g_ker / nrm)
+    # 零閉鎖種: 核内の実正規直交対 (u,w) から g=(u+iw)/√2（g^T g = 0 厳密）
+    def kproj(x):
+        out = np.zeros(m)
+        for k_vec in kernel:
+            out += (k_vec @ x) * k_vec
+        return out
+    u = kproj(g1)
+    w = kproj(g2)
+    if delta > 0.0 and np.linalg.norm(u) > 0.0:
+        u = u / np.linalg.norm(u)
+        w = w - (w @ u) * u
+        w = w / np.linalg.norm(w)
+        g = (u + 1j * w) / math.sqrt(2.0)
+        Z = v + delta * g
     else:
         Z = v.copy()
     Z = Z / np.linalg.norm(Z)
@@ -361,6 +370,7 @@ def main():
                 "n_planes": n_pl,
                 "sigmas": [pl["sigma"] for pl in planes_ref],
                 "self_consistency_residual": sc_residual,
+                "abs_ztz_initial": float(abs(complex(Z0 @ Z0))),
                 "initial_dormant_fraction": float(init_dorm),
                 "concentration_quality": float(init_dorm / (delta * delta)),
                 "fixed": {
