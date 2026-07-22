@@ -110,6 +110,7 @@
 **第3〜第6論文まとめnote記事の英語版を公開**：日本語版「なぜ方向は三つで止まり、波はひとりでに増えるのか」の全訳＋英語版図5点（fig1〜fig5 の `_en.png`、実データ図含む）。前回英語記事 "If We Add More Waves, Do We Get More Spatial Dimensions?" の直接の続編。
 
 - **note（英語版）**：[Why Do Directions Stop at Three, While Waves Multiply on Their Own?](https://note.com/kiharanoriaki/n/nb7f682a299a6)（下書きmd：次元の生成構造/note記事案_次元と分裂と計数_v1/note_article_dimension_splitting_counting_en.md、図生成：make_note_figures_en_v1.py）
+- **Facebook（英語）**：[告知投稿](https://www.facebook.com/kihara.noriaki/posts/pfbid02NBevSqJ8kZDy2V9RnFJwcVfZRszwREMpVrmBFeoVxMc87fRXvQ34SArXQrdPsFdgl)（2026-07-22、英語note記事URLはコメント欄）
 
 ### 2026-07-22: 無名等振幅複合波モデル基本公理系 v8 公開
 
