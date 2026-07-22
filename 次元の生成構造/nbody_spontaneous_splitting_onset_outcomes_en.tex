@@ -1,0 +1,1676 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{Onset and Threefold Classification of Outcomes of Spontaneous
+Splitting in N-Body Relational-Wave Closed
+Systems}\label{onset-and-threefold-classification-of-outcomes-of-spontaneous-splitting-in-n-body-relational-wave-closed-systems}
+
+\subsection{Unfreezing the generator alone makes the parent state decay
+exponentially at a rate independent of the seed amplitude, and the
+outcomes divide into expansion, bounded mixing, and recurrence ---
+introducing the scale-anonymity axiom, with the stopping of splitting as
+a connection
+problem}\label{unfreezing-the-generator-alone-makes-the-parent-state-decay-exponentially-at-a-rate-independent-of-the-seed-amplitude-and-the-outcomes-divide-into-expansion-bounded-mixing-and-recurrence-introducing-the-scale-anonymity-axiom-with-the-stopping-of-splitting-as-a-connection-problem}
+
+\textbf{Author:} Noriaki Kihara \textbf{ORCID:} 0009-0004-6753-4020
+\textbf{Date:} July 22, 2026 \textbf{Version DOI:}
+10.5281/zenodo.21486234 \textbf{Concept DOI:} 10.5281/zenodo.21486233
+\textbf{Position:} Dimensional Generation Structure series, Paper 5, v1
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+Theorem 5 of Paper 4 {[}3{]} established that under a fixed generator
+neither closure quantities nor energy-like quantities move between
+rotation planes --- a no-go for spontaneous splitting of the state
+(Consequences 16.5 and 16.6 {[}1{]}). Taking this no-go as the starting
+boundary, this paper answers the following question.
+
+\begin{quote}
+Can multiple waves split spontaneously under the closure condition? If
+they split, can the subsequent outcomes be classified?
+\end{quote}
+
+To pose the question precisely, we first separate two layers. The
+closure \(\sum_k x_k^2=0\) imposes no constraint on the number of terms
+\(\mathcal N\) of a decomposition --- any term \(X_P^2\) can always be
+rewritten as \(Y_1^2+Y_2^2\) over the complex numbers (always solvable,
+with a continuum of solutions), and no obstacle to
+\(\mathcal N\to\mathcal N+1\) exists on the axiom side. The number of
+waves is not determined inside the system, and \textbf{the layer of
+existence has no ceiling (\(\mathcal N\) does not saturate)}. We
+separate the symbols: \(\mathcal N\) is the number of terms of a
+decomposition (layer of existence), and \(N\) is the number of bodies,
+the model parameter of this paper (a structural specification of the
+representation; the flat representation has \(M\) relational waves).
+What this paper measures is therefore not ``permission to split'' in the
+layer of existence. It measures the dynamics of the \textbf{readout
+layer} --- register allocation, active planes, freezing. The structures
+that look finite across the series (the \(O(N)\) cap on generator rank
+{[}2{]}, the saturation of spatial directions at three {[}2{]}, register
+freezing {[}3{]}, and the outcome classification of this paper) are all
+saturations of the readout, not finiteness of existence.
+
+Three preparations are made. First, we introduce scale anonymity as
+Axiom 0.5. The relations, update rules, and readouts of the system may
+reference no absolute scale, and every construction must be covariant
+under \(Z\to\lambda Z\) (\(\lambda\in\mathbb C^\ast\)). This is an
+unprovable formation rule of the same rank as Axiom 0 (anonymity), and
+the zero right-hand side of the quadratic closure of Axiom 1 is the
+unique choice compatible with this axiom within the family
+\(\sum_n x_n^2=c\). Second, we show that every smooth dynamics
+preserving the closure sphere is exhausted by the form \(\dot X=K(X)X\)
+(\(K\) skew-symmetric) (Theorem 2). The fixed generator is merely the
+special case \(K(X)=K_0\), and the search space for ``the minimal
+extension enabling splitting'' is thereby closed. Third, as the minimal
+extension intrinsic to the model, the phase-difference sine generator
+\(K_{ef}=A_{ef}\sin(\theta_f-\theta_e)\) is reconstructed at every step
+from the current phases \(\arg Z(\tau)\) (unfreezing). Being a function
+of phase differences only, this generator is zeroth-order homogeneous
+and satisfies Axiom 0.5 without adjustment.
+
+Spontaneity is defined operationally: the parent state must be
+dynamically unstable, i.e., arbitrarily small perturbations must grow
+exponentially at an intrinsic rate independent of the perturbation
+amplitude. Two structures were fixed in the construction of the parent
+state. Real-coefficient in-plane states have collinear component phases,
+on which the sine generator vanishes exactly (Theorem 4), so a
+self-consistent parent must be the circularly polarized eigenmode
+\(v=(p+iq)/\sqrt2\); and since an eigenmode advances by a common phase
+rotation only, it is an exact periodic orbit (Proposition 1; numerical
+verification: generator variation \(9.2\times10^{-14}\) over one
+period). As a numerical insight, the generator of the self-consistent
+parent has \(\operatorname{rank}2\) (one rotation plane), and the
+remaining \(M-2\) dimensions form a static kernel.
+
+In the numerical experiments (\(N=4\), \(M=6\), seed amplitudes
+\(\delta=10^{-2}\)--\(10^{-5}\), 6 trials each, 4320 steps; the dormant
+seed is constructed from a real orthonormal pair in the kernel as
+\(g=(u+iw)/\sqrt2\) with \(g^{\mathsf T}g=0\) exact, and the initial
+state satisfies zero closure to
+\(|Z^{\mathsf T}Z|\le3.2\times10^{-13}\)), all three criteria of
+spontaneity held. The initial exponential growth rate of the dormant
+fraction \(f(\tau)\) was invariant over three decades of \(\delta\),
+with medians \(3.78\times10^{-2}\)--\(3.80\times10^{-2}\)/step;
+absolute-threshold crossing times were linear in \(\log(1/\delta)\)
+(about 84 steps per decade); and relative-threshold crossing times were
+\(\delta\)-independent (about 84 steps) (the growth is not
+single-exponential: the initial-fit rate and the effective rate derived
+from crossing times differ; Section 8.2). Decisive is the \(\delta=0\)
+verification. The applied perturbation is zero, and under exact
+arithmetic the orbit would be invariant. Nevertheless, the nonzero
+numerical perturbation of floating-point rounding (\(f\sim10^{-33}\))
+was amplified by about 20 orders of magnitude, reaching \(f>10^{-10}\)
+at \(\tau\approx850\) and saturating --- strong evidence of transverse
+instability. Throughout, the real and imaginary parts of the complex
+bilinear closure (corresponding to the exact splitting conditions of
+Paper 4) were conserved to deviations \(\le1.8\times10^{-14}\). In the
+control experiment (same initial conditions, fixed generator),
+reference-register variation was \(\le4.5\times10^{-11}\): the numerical
+reconfirmation of the no-go and the onset of splitting were established
+on the same code. Scale anonymity was verified numerically as well:
+under the scale transformation \(\lambda=2^{10}\) all ratio observables
+agreed bitwise, and for generic \(\lambda\) and common phase rotations
+deviations stayed \(\le1.1\times10^{-13}\). The onset law is also robust
+in the number of bodies. Runs with the low-rank vertex-decomposition
+engine (an algorithmic use of the decomposition \(K=WJW^{\mathsf T}\) of
+Paper 3) at \(N=40,300,1000\) (\(M=780,\,44850,\,499500\)), measuring
+the dormant fraction without cancellation via projection onto the
+orthogonal complement of the parent plane, directly observed
+constant-rate exponential amplification over more than 20 decades from
+seed depths \(f(0)\approx\delta^2=10^{-30}\) (Experiment O6, Section
+8.8). The rate depends only weakly on \(N\)
+(\(3.6\times10^{-2}\to2.1\times10^{-2}\)/step, decreasing monotonically
+with \(N\) within the same order).
+
+In the outcome-classification experiments (\(N=3,4,5,6\), two families
+of initial conditions --- near-parent and generic zero-closure states
+--- 6 trials each, 20000 steps), the outcomes divided into three
+classes: expansion (a new rotation plane establishes itself and the
+allocation spreads over all relational waves), bounded mixing (the
+allocation spreads but no second plane establishes itself), and
+recurrence (repeated deep returns toward the parent plane). Class
+selection has a sharp \(N\) phase structure. At \(N=3\) expansion is
+structurally impossible (a skew-symmetric matrix with \(M=3\) has
+\(\operatorname{rank}\le2\)); at \(N=4\) zero-closure states did not
+expand either (both families bounded mixing); for \(N\ge5\) every
+initial condition examined (2 families × 6 seeds) expanded --- the
+boundary lies between \(N=4\) and \(N=5\). Furthermore, a controlled
+contrast experiment (Experiment O5: everything identical except the
+initial value of the complex bilinear closure) confirmed that the ratio
+\(c=\lvert Z^{\mathsf T}Z\rvert/\lVert Z\rVert^2\), exactly conserved by
+the dynamics, stratifies the outcome classes at small \(N\) --- \(N=4\):
+bounded mixing at \(c=0\) (3/3) but expansion at \(c\approx0.6\) (3/3);
+\(N=3\): bounded mixing at \(c=0\) (3/3) but recurrence at
+\(c\approx0.55\) (3/3). Closure is not only a conservation law; its
+conserved value selects the outcome (Section 8.7). In addition, in the
+\(N=4\) parent family the second singular direction \(\sigma_2\) decayed
+exponentially without external intervention
+(\(6\times10^{-4}\to10^{-5}\) over 20000 steps), an observed route by
+which the system spontaneously refreezes into a single-plane
+self-consistent configuration. The stopping mechanism of splitting,
+together with this observation, is the central subject of the sequel.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{0. Conclusions}\label{conclusions}
+
+\[
+\boxed{
+\begin{aligned}
+&\text{Closure-preserving dynamics is exhausted by }\dot X=K(X)X\ (K\text{ skew-symmetric});\text{ the fixed generator is a special case.}\\
+&\text{Unfreezing the generator alone makes the parent state (circularly polarized eigenmode) decay exponentially}\\
+&\text{without external forcing, while the real and imaginary parts of the closure are conserved to machine precision}\\
+&\text{and the allocation moves spontaneously into dormant directions.}\\
+&\text{The outcomes divide into three classes — expansion, bounded mixing, recurrence — selected by }N\\
+&\text{(structural room) and the conserved ratio }c=\lvert Z^{\mathsf T}Z\rvert/\lVert Z\rVert^2.
+\end{aligned}
+}
+\]
+
+Spontaneity holds as dynamical instability. The growth rate is invariant
+over three decades of the seed amplitude \(\delta\), and even the exact
+periodic orbit at \(\delta=0\) collapses from rounding noise alone.
+Under a deterministic update rule, which direction the state collapses
+into is decided by microscopic differences not contained in the
+macroscopic description --- determinism and predictability separate in
+this minimal model.
+
+The outcome classes have an \(N\) phase structure. At \(N=3\) expansion
+is structurally impossible; at \(N=4\) zero-closure states do not
+expand; for \(N\ge5\) every initial condition examined expanded --- the
+boundary lies between \(N=4\) and \(N=5\). The controlled contrast
+(Experiment O5) confirmed that what acts is the exactly conserved ratio
+\(c=\lvert Z^{\mathsf T}Z\rvert/\lVert Z\rVert^2\): at \(c=0\) (the
+zero-closure stratum = the stratum designated by Axiom 1) expansion is
+suppressed for \(N\le4\), while at \(c\approx0.5\)--\(0.6\), \(N=4\)
+expands and \(N=3\) recurs. The value of the conserved quantity
+stratifies the outcome. In the \(N=4\) parent family the second singular
+direction decays exponentially of its own accord, heading toward
+refreezing --- evidence that stopping can occur without an external
+freezing operation, and the central object of the sequel (stopping of
+splitting).
+
+All statements of this paper belong to the readout layer. The layer of
+existence (\(\mathcal N\) itself) is unconstrained by the axioms and
+does not saturate --- every structure that looks finite is a saturation
+of the readout (Section 1.2).
+
+Scale anonymity (Axiom 0.5) runs through the entire construction. The
+unfrozen generator is zeroth-order homogeneous as a function of phase
+differences only; all readouts are ratio quantities; all activity
+thresholds are relative. Numerically, all ratio observables agreed
+bitwise under a \(2^{10}\)-fold scale change.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Research Question}\label{research-question}
+
+\subsubsection{1.1 The no-go as the starting
+boundary}\label{the-no-go-as-the-starting-boundary}
+
+Paper 3 {[}2{]} proved that the fixed generator of N-body complete
+pairwise relational waves decomposes into a direct sum of rotation
+planes and a null space, with the number of rotation modes growing at
+most linearly. Paper 4 {[}3{]} established that each plane carries
+kinematics isomorphic to the two-body AB system, and its Theorem 5 gave
+a strong no-go: under a fixed generator, neither the closure quantities
+\(Q_j\) nor the energy-like quantities \(H_j\) move between planes or
+with the kernel (Consequences 16.5 and 16.6 {[}1{]}).
+
+Spontaneous splitting of the state --- reallocation between registers,
+activation of new rotation modes --- therefore cannot occur in the
+fixed-generator dynamics as a matter of principle. To ask about
+splitting, a relational update rule beyond the fixed generator is
+required. This paper identifies the minimal such extension, determines
+numerically whether splitting begins, and classifies the outcomes after
+onset.
+
+This paper is the first of a three-part sequence. First question (this
+paper): can splitting begin? Second question (sequel): can splitting
+stop? Third question (sequel): can the conserved quantities generated by
+splitting differentiate?
+
+\subsubsection{1.2 Layer of existence and layer of readout --- what this
+paper
+measures}\label{layer-of-existence-and-layer-of-readout-what-this-paper-measures}
+
+The closure \(\sum_k x_k^2=0\) does not constrain the number of terms
+\(\mathcal N\) of a decomposition. The splitting \(X_P^2=Y_1^2+Y_2^2\)
+is always solvable over the complex numbers, with a continuum of
+solutions --- the splitting map is not a ``hard-to-construct missing
+piece'' but an \textbf{underdetermined freedom}. In the layer of
+existence the number of waves is arbitrary (it may be infinite) and does
+not saturate.
+
+Distinction of symbols: \(\mathcal N\) (number of terms of a
+decomposition, layer of existence) and \(N\) (number of bodies,
+structural specification of the model = external input) are different
+quantities. The \(N\) used by the experiments of this paper for
+parameterization is the latter, and the number of terms of its flat
+representation is the number of relational waves \(M=\binom N2\).
+
+By contrast, every finiteness the series has established belongs to the
+readout layer.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Quantity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Behavior
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Source
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Number of relational waves \(M\) & \(O(N^2)\), unbounded & Definition \\
+Number of terms of a decomposition \(\mathcal N\) (layer of existence) &
+\textbf{Does not saturate} (the axioms admit any \(\mathcal N\)) & Axiom
+1 \\
+Number of bodies \(N\) (model specification) & External input
+(structural specification of the representation) & Section 4.1 \\
+Generator rank & Capped at \(\le 2N\) & Paper 3 {[}2{]} \\
+Uniquely readable spatial directions & Saturates at 3 & Paper 3
+{[}2{]} \\
+Readout registers & Frozen under a fixed generator (no-go) & Paper 4
+{[}3{]} \\
+\end{longtable}
+}
+
+\[
+\boxed{\ \text{Existence opens without limit; only the readout saturates}\ }
+\]
+
+A world that looks finite is a consequence of readout saturation, not of
+the finiteness of existence. All ``splitting'' in this paper is a
+statement of the readout layer --- register reallocation and the waxing
+and waning of active planes --- and the operation of increasing the term
+count \(\mathcal N\) is not an event requiring dynamical justification
+(see limitation (i) in Section 9).
+
+\subsubsection{1.3 Operational definition of
+spontaneity}\label{operational-definition-of-spontaneity}
+
+Applying a splitting map by hand proves no spontaneity. In this paper
+spontaneity is defined operationally as dynamical instability.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The growth rate of the dormant component does not depend on the seed
+  amplitude \(\delta\) (exponential growth at an intrinsic rate).
+\item
+  Absolute-threshold crossing times are linear in \(\log(1/\delta)\);
+  relative-threshold crossing times are \(\delta\)-independent.
+\item
+  The closure is conserved exactly throughout (the splitting is not
+  caused by a breaking of closure).
+\end{enumerate}
+
+As the strongest verification we place \(\delta=0\). The applied
+perturbation is zero; under exact arithmetic the orbit is invariant. If
+the only seed is the nonzero numerical perturbation of floating-point
+rounding, and that seed is amplified into collapse, this is strong
+evidence of transverse instability --- the parent state collapses under
+arbitrarily small perturbations.
+
+\subsubsection{1.4 What this paper
+decides}\label{what-this-paper-decides}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  How is the totality of closure-preserving dynamics characterized?
+  Where does the fixed generator sit inside it?
+\item
+  Is the minimal intrinsic extension (unfreezing) consistent with Axiom
+  0.5?
+\item
+  Does a self-consistent parent state (an exact periodic orbit of the
+  unfrozen dynamics) exist? What is its structure?
+\item
+  Is the parent state unstable? Do the three criteria of spontaneity
+  hold?
+\item
+  Can the outcomes after onset be classified? What decides class
+  selection?
+\item
+  Is all of the above scale-covariant?
+\end{enumerate}
+
+No background space, distance matrix, or external observer is
+introduced. No cosmological or field-theoretic physical names are used
+in this paper (Axiom 0).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Classification of Claims}\label{classification-of-claims}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Subject
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Classification
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Position in this paper
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+N-body complete pairwise relational-wave model & Model definition &
+Implementation of Axiom 16 {[}1{]}; inherited from {[}2,3{]} \\
+Non-constraint of \(\mathcal N\) (the term count is not internally
+determined and does not saturate) & Consequence of Axiom 1 & Section
+1.2. No ceiling in the layer of existence \\
+The measurement target of this paper is the readout layer (not the layer
+of existence) & Explicit framework & Section 1.2. All finiteness is
+readout saturation \\
+Scale anonymity & Axiom (first appearance) & Axiom 0.5. Unprovable
+formation rule. Section 3 \\
+The choice of zero on the right-hand side of Axiom 1 & Consequence of
+Axiom 0.5 & The unique scale-free quadratic closure. Section 3 \\
+Exact conservation of the complex square sum under orthogonal updates &
+Mathematical consequence & Theorem 1 \\
+Exhaustion of closure-preserving dynamics by \(\dot X=K(X)X\) &
+Mathematical consequence & Theorem 2. Closure of the search space \\
+Zeroth-order homogeneity of the unfrozen sine generator & Mathematical
+consequence & Theorem 3. First application of Axiom 0.5 \\
+Vanishing of the generator on collinear-phase states & Mathematical
+consequence & Theorem 4. The parent must be circularly polarized \\
+Exact periodicity of the eigenmode parent & Mathematical consequence &
+Proposition 1 \\
+Effective \(\operatorname{rank}2\) of the self-consistent parent's
+generator (\(N=4\)) & Numerical insight & Unproven. Section 5.
+Multi-plane for larger \(N\) (§5.3) \\
+Exponential instability of the parent (rate independent of \(\delta\)) &
+Numerical confirmation & Experiment O1. Section 8 \\
+Collapse from rounding noise at \(\delta=0\) & Numerical confirmation &
+Experiment O1. Section 8 \\
+No-go under the fixed generator & Derived consequence {[}1,3{]} &
+Numerically reconfirmed in control Experiment N \\
+Threefold outcome classification (expansion, bounded mixing, recurrence)
+& Numerical classification & Experiment O4. Classification thresholds
+preliminary \\
+Impossibility of expansion at \(N=3\) & Derived consequence & A
+skew-symmetric matrix with \(M=3\) has \(\operatorname{rank}\le2\) \\
+\(N\) phase structure (\(N\le4\) no expansion; \(N\ge5\) expansion in
+all trials) & Numerical confirmation & Experiment O4 \\
+Outcome stratification by the conserved ratio
+\(c=\lvert Z^{\mathsf T}Z\rvert/\lVert Z\rVert^2\) (expansion suppressed
+for \(N\le4\) at \(c=0\)) & Numerical confirmation & Experiment O5
+(controlled contrast). Section 8.7 \\
+Persistence of the onset law at large \(N\) (\(N=40\)--\(1000\), seed
+depth \(f(0)\approx10^{-30}\), constant-rate amplification over 20+
+decades) & Numerical confirmation & Experiment O6. Section 8.8 \\
+Spontaneous exponential decay of \(\sigma_2\) (refreezing candidate) &
+Numerical observation / working hypothesis & Confirmation of refreezing
+requires additional criteria such as
+\(\lVert K(\tau{+}1)-K(\tau)\rVert\). Sequel \\
+Origin of the saturation ceiling \(f\approx0.335\)--\(0.338\) &
+Unresolved & No identification with any specific constant is made \\
+Relation to modulational instability {[}5,6{]} & Structural similarity &
+Isomorphic phenomenology, different coupling structure (Section 9) \\
+Recurrence of splitting and recombination & Numerical confirmation &
+Phenomenology isomorphic to FPUT-type recurrence {[}7,8{]} \\
+An explicit splitting map increasing the component count & Not
+constructed & Measured here as growth of the active-plane count.
+Connection problem \\
+Stopping mechanism of splitting & Connection problem & Sequel (second
+question) \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. Axiom 0.5: Scale
+Anonymity}\label{axiom-0.5-scale-anonymity}
+
+\subsubsection{3.1 Full statement of the
+axiom}\label{full-statement-of-the-axiom}
+
+\begin{quote}
+\textbf{Axiom 0.5 (scale anonymity)} The relations, update rules, and
+readouts of the system may reference no absolute scale. Every
+construction must be covariant under \(Z\to\lambda Z\)
+(\(\lambda\in\mathbb C^\ast\)): the relations (closure conditions) are
+homogeneous, the generator is zeroth-order homogeneous
+(\(K(\lambda Z)=K(Z)\)), the state map is first-order homogeneous, and
+the readouts are ratio quantities only. No means exists to measure an
+absolute scale from inside the system.
+\end{quote}
+
+\subsubsection{3.2 Position}\label{position}
+
+Axiom 0 is the formation rule ``no physical names may be referenced.''
+Axiom 0.5 is the coequal formation rule ``no absolute scale may be
+referenced,'' placed immediately after Axiom 0 and before Axiom 1. The
+two are two clauses of a single idea: no names, no scale --- only
+relations and ratios can be read.
+
+This axiom is not a derived consequence. It is unprovable in the sense
+that all readouts are ratios and no means of measuring an absolute scale
+from inside the system exists in principle. It has the same rank as
+Axiom 1 (zero-square-sum closure), which is likewise unprovable.
+
+\subsubsection{3.3 The choice of the form of Axiom
+1}\label{the-choice-of-the-form-of-axiom-1}
+
+As a quadratic closure condition, any of \(\sum_n x_n^2=c\) was
+conceivable; but \(c\ne0\) breaks under \(Z\to\lambda Z\) as
+\(c\to\lambda^2c\). Within the family \(\sum_n x_n^2=c\), the only
+dilation-invariant right-hand side is
+
+\[
+\sum_n x_n^2=0
+\]
+
+(\(c=0\)). If Axiom 0.5 is placed first, the zero on the right-hand side
+of Axiom 1 is fixed with no room for choice within this family. If
+general quadratic forms \(Z^{\mathsf T}GZ=0\) are admitted, other
+homogeneous closures can be written, so the claim is not ``the quadratic
+closure itself is unique'' but ``zero is the unique right-hand side of
+\(\sum x_n^2=c\).'' The choice of the form \(\sum x_n^2\) (\(G=I\)) is
+required by the name-permutation symmetry (anonymity). Moreover, the
+compact part \(|\lambda|=1\) of the covariance group \(\mathbb C^\ast\)
+is the common-phase invariance of the zero-square-sum closure: the
+unreadability of phase and the unreadability of scale are the argument
+part and the modulus part of one and the same group.
+
+\subsubsection{3.4 Consequences within this
+paper}\label{consequences-within-this-paper}
+
+Axiom 0.5 performs three concrete jobs in this paper. First, it cuts the
+search space of extended update rules: the generator must be
+zeroth-order homogeneous and cannot depend on absolute amplitudes
+(phases and amplitude ratios only). Second, it restricts all readout
+thresholds to relative values: the activity threshold for planes, the
+seed amplitude, and the recurrence criterion are all defined as ratios.
+Third, it provides the acceptance criterion for numerical verification:
+the ratio observables of a scale-transformed orbit must agree exactly
+(Section 8.4).
+
+After publication of this paper, this axiom will be incorporated into
+layer 0 in the next version (v8) of the basic axiom system; Axiom 0 and
+Axiom 0+ will then be merged as clauses of a single Axiom 0 (anonymity).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. Preliminaries: Model and Conservation
+Structure}\label{preliminaries-model-and-conservation-structure}
+
+\subsubsection{4.1 State and generator}\label{state-and-generator}
+
+Consider the complete pairwise relational waves of \(N\) bodies. The
+relational waves correspond to the edges of the complete graph \(K_N\);
+there are \(M=\binom N2\) of them. The state is a complex vector
+\(Z\in\mathbb C^M\) with phases \(\theta_e=\arg Z_e\). The line-graph
+adjacency matrix \(A\) (\(A_{ef}=1\) when edges \(e,f\) share a body)
+and the phase-difference sine generator
+
+\[
+K_{ef}=A_{ef}\sin(\theta_f-\theta_e)
+\]
+
+are inherited from the definitions of Paper 3 {[}2{]} (since
+\(\theta_e=\arg Z_e\) is undefined at \(Z_e=0\), we adopt the convention
+\(\arg 0:=0\); in the initial conditions of this paper all components
+are nonzero). \(K\) is automatically skew-symmetric and is normalized in
+spectral norm (after normalization \(\sigma_{\max}=1\), which makes all
+subsequent thresholds relative). The update is the Cayley transform
+{[}10{]}
+
+\[
+U=(I-\gamma K)^{-1}(I+\gamma K),
+\qquad
+\gamma=\tan\frac{\pi}{144}.
+\]
+
+If \(K\) is skew-symmetric, \(U\) is a real orthogonal matrix.
+
+\textbf{Fixed generator (control)}: \(K\) is evaluated at the phases
+\(\arg Z(0)\) at \(\tau=0\) and frozen. This is the dynamics of Papers 3
+and 4.
+
+\textbf{Unfreezing (the minimal extension of this paper)}: \(K\) is
+reconstructed at every step from the current phases \(\arg Z(\tau)\).
+What is introduced is not a new coupling rule but only the release of
+the freezing of a generator that was defined as a function of phase
+differences from the start.
+
+\subsubsection{4.2 Theorem 1 (exact conservation of the complex square
+sum under orthogonal
+updates)}\label{theorem-1-exact-conservation-of-the-complex-square-sum-under-orthogonal-updates}
+
+An update \(Z'=UZ\) by a real orthogonal matrix \(U\) conserves the
+complex bilinear square sum and the Hermitian norm simultaneously and
+exactly:
+
+\[
+Z'^{\mathsf T}Z'=Z^{\mathsf T}U^{\mathsf T}UZ=Z^{\mathsf T}Z,
+\qquad
+Z'^{\dagger}Z'=Z^{\dagger}Z.
+\]
+
+\textbf{Proof} Immediate from \(U^{\mathsf T}U=I\) and the realness of
+\(U\). \(\blacksquare\)
+
+Conservation of the complex square sum \(Z^{\mathsf T}Z\) is the
+simultaneous conservation of two conditions, its real and imaginary
+parts. These are the same two conditions demanded by the local splitting
+condition \(X_P^2=\sum_kY_k^2\); the dynamics of this paper never breaks
+this closure at any point of the splitting process.
+
+\subsubsection{4.3 Theorem 2 (exhaustion of closure-preserving
+dynamics)}\label{theorem-2-exhaustion-of-closure-preserving-dynamics}
+
+Every smooth flow on the closure sphere \(\{X:\,X^{\mathsf T}X=R^2\}\)
+(\(R^2>0\), \(X\ne0\)) can be written, with a skew-symmetric
+matrix-valued function \(K(X)\), in the form
+
+\[
+\dot X=K(X)X,
+\]
+
+and conversely every flow of this form preserves the closure.
+
+\textbf{Proof} Conservation:
+\(\frac{d}{d\tau}X^{\mathsf T}X=2X^{\mathsf T}K(X)X=0\) (skew-symmetry).
+Exhaustion: for a tangent vector field \(V(X)\) on the sphere
+(\(X^{\mathsf T}V=0\)), set
+\(K(X)=\dfrac{VX^{\mathsf T}-XV^{\mathsf T}}{X^{\mathsf T}X}\); then
+\(K\) is skew-symmetric and \(K(X)X=V\). \(\blacksquare\)
+
+\textbf{Remark (scope)} (i) For isotropic states (\(X^{\mathsf T}X=0\),
+\(X\ne0\)) the denominator of the above construction vanishes; but
+taking \(Y\) with \(Y^{\mathsf T}X=1\) and setting
+\(K=VY^{\mathsf T}-YV^{\mathsf T}\) gives \(KX=V-Y(V^{\mathsf T}X)=V\)
+(using the tangency condition \(V^{\mathsf T}X=0\)), which repairs the
+construction. \(X=0\) is excluded. (ii) The theorem exhausts
+continuous-time flows; the state-dependent Cayley update of this paper
+is one discretization within this class. No exhaustion of all discrete
+maps is claimed.
+
+Thus a ``state-dependent generator'' is not one of many extension
+candidates but the totality of closure-preserving dynamics. The fixed
+generator is merely the special case \(K(X)=K_0\), and the search for
+the minimal extension enabling splitting may be conducted inside this
+space.
+
+\subsubsection{4.4 Theorem 3 (scale covariance of the unfrozen
+generator)}\label{theorem-3-scale-covariance-of-the-unfrozen-generator}
+
+The unfrozen sine generator is zeroth-order homogeneous: for any
+\(\lambda\in\mathbb C^\ast\),
+
+\[
+K(\lambda Z)=K(Z).
+\]
+
+\textbf{Proof} Write \(\lambda=|\lambda|e^{i\varphi}\). Then
+\(\arg(\lambda Z_e)=\arg Z_e+\varphi\), and the phase differences
+\(\theta_f-\theta_e\) depend on neither \(|\lambda|\) nor \(\varphi\).
+Spectral-norm normalization is a ratio and hence invariant.
+\(\blacksquare\)
+
+The unfrozen dynamics therefore satisfies Axiom 0.5 without adjustment.
+Since the update is linear (\(U\) is a zeroth-order function of \(Z\)),
+the entire orbit commutes with \(Z\to\lambda Z\), and the orbits of
+ratio observables are exactly scale-independent.
+
+\subsubsection{\texorpdfstring{4.5 Two invariants and the conserved
+ratio
+\(c\)}{4.5 Two invariants and the conserved ratio c}}\label{two-invariants-and-the-conserved-ratio-c}
+
+By Theorem 1 the dynamics conserves two quantities simultaneously and
+exactly: the Hermitian norm \(\lVert Z\rVert^2\) and the complex
+bilinear square sum \(Z^{\mathsf T}Z\). Their ratio
+
+\[
+c=\frac{\lvert Z^{\mathsf T}Z\rvert}{\lVert Z\rVert^2}\in[0,1]
+\]
+
+is a conserved dimensionless ratio and a readable quantity conforming to
+Axiom 0.5 (the upper bound \(c\le1\) follows from the triangle
+inequality \(\lvert\sum Z_e^2\rvert\le\sum\lvert Z_e\rvert^2\); equality
+is equivalent to squared-phase alignment of all components). \(c\)
+stratifies the orbits: states with different \(c\) cannot be carried
+into one another by the dynamics.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\(c=0\) stratum}: zero closure \(Z^{\mathsf T}Z=0\). The
+  stratum designated by Axiom 1; Experiments O1 and O4 of this paper run
+  here
+\item
+  \textbf{\(c>0\) strata}: the closure convention
+  \(X^{\mathsf T}X=R^2>0\) of Papers 3 and 4 {[}2,3{]} corresponds here.
+  The theorems of both papers are linear algebra and do not depend on
+  \(c\), but the standard initial states of their experiments (imaginary
+  seed amplitude \(s=0.35\)) run in the intermediate stratum
+  \(c=R^2/(R^2+2s^2)\approx0.80\). Purely real states (for which
+  \(X^{\mathsf T}X=\lVert X\rVert^2\) holds identically) are the
+  limiting case \(c=1\)
+\item
+  Generic complex states take intermediate \(c\)
+\end{itemize}
+
+That the series has moved back and forth between ``real sphere'' and
+``zero closure'' formulations is not a contradiction but a use of strata
+labeled by the conserved quantity \(c\). And as Section 8.7 shows, at
+small \(N\) the value of \(c\) actually changes the outcome class ---
+the distinction of strata is physics, not representational convenience.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. The Parent State: Necessity of the Circularly Polarized
+Eigenmode}\label{the-parent-state-necessity-of-the-circularly-polarized-eigenmode}
+
+\subsubsection{5.1 Theorem 4 (vanishing of the generator on
+collinear-phase
+states)}\label{theorem-4-vanishing-of-the-generator-on-collinear-phase-states}
+
+On a state whose component phases are collinear
+(\(\theta_e\in\{\psi,\psi+\pi\}\) for some \(\psi\)), the sine generator
+is exactly zero.
+
+\textbf{Proof} For any \(e,f\) we have
+\(\theta_f-\theta_e\in\{0,\pm\pi\}\), hence
+\(\sin(\theta_f-\theta_e)=0\). \(\blacksquare\)
+
+A state combining plane basis vectors with real coefficients,
+\(Z=e^{i\psi}(\cos\varphi\,p+\sin\varphi\,q)\) (\(p,q\) real vectors),
+falls under this condition since every component is a real multiple of
+\(e^{i\psi}\). That is, linearly polarized in-plane states degenerate
+the generator and cannot carry self-consistent dynamics. \textbf{The
+exact parent constructed in this paper is the circularly polarized
+eigenmode.} What Theorem 4 excludes is collinear-phase states;
+Proposition 1 gives a sufficient condition for a circularly polarized
+eigenmode to be an exact periodic parent. That no other kind of
+non-collinear self-consistent periodic orbit exists is not shown (open).
+
+\subsubsection{5.2 Proposition 1 (exact periodicity of the eigenmode
+parent)}\label{proposition-1-exact-periodicity-of-the-eigenmode-parent}
+
+Let \((\sigma,p,q)\) be the maximal singular-value plane of \(K\)
+(orientation convention \(Kp=+\sigma q\)) and
+
+\[
+v=\frac{p+iq}{\sqrt2},
+\qquad
+Kv=-i\sigma v
+\]
+
+its eigenmode. If \(v\) is self-consistent with its own generator
+(\(K(\arg v)=K\)), then under the unfrozen dynamics \(v\) is an exact
+periodic orbit.
+
+\textbf{Proof}
+\(Uv=\dfrac{1-i\gamma\sigma}{1+i\gamma\sigma}\,v=e^{-i\theta}v\)
+(\(\theta=2\arctan\gamma\sigma\)). The update is a common phase
+rotation; the phases of all components shift uniformly, so the phase
+differences are invariant. Hence \(K(\arg Uv)=K(\arg v)\) is preserved,
+and the same rotation repeats at every subsequent step. \(\blacksquare\)
+
+The self-consistent eigenmode was constructed numerically by the
+fixed-point iteration \(\theta\leftarrow\arg v(K(\theta))\). Since the
+in-plane \(SO(2)\) gauge acts only on the common phase of \(v\)
+(rotating \(p,q\) by an angle \(\alpha\) sends \(v\to e^{-i\alpha}v\)),
+the iteration does not depend on the gauge choice. The reached parent
+had a median eigenmode-equation residual of \(8.9\times10^{-13}\); in
+the \(\delta=0\) verification, over one period (144 steps) the generator
+variation stayed at \(9.2\times10^{-14}\) and the dormant fraction
+remained exactly zero.
+
+\subsubsection{\texorpdfstring{5.3 Numerical insight: the parent's
+generator has
+\(\operatorname{rank}2\)}{5.3 Numerical insight: the parent's generator has \textbackslash operatorname\{rank\}2}}\label{numerical-insight-the-parents-generator-has-operatornamerank2}
+
+The generator \(K(\arg v)\) of the self-consistent parent had effective
+\(\operatorname{rank}2\) (one rotation plane, \(\sigma=1\)) in every
+configuration examined at \(N=4\), the remaining \(M-2\) dimensions
+being the kernel (static subspace). The parent state sees only its own
+plane; all dormant directions belong to the kernel. No proof of this
+property has been obtained, and it is likely specific to \(N=4\) ---
+separately constructed self-consistent parents at larger \(N\) had
+generators with several planes
+(\(\sigma_2/\sigma_1\approx0.35\)--\(0.5\); treated in the sequel). The
+design of the dormant seed in this paper (kernel directions) is based on
+this \(N=4\) structure.
+
+The dormant seed is placed so as to preserve zero closure: constructing
+\(g=(u+iw)/\sqrt2\) from a real orthonormal pair \((u,w)\) in the kernel
+gives \(g^{\mathsf T}g=0\) exactly, and together with
+\(v^{\mathsf T}g=0\) the initial state preserves zero closure. For the
+\(N\ge5\) parent families of Sections 8.6 and 8.7 the parent generator
+is multi-plane and the ``kernel direction'' design does not apply; the
+seeds of those families are constructed by projection onto the
+orthogonal complement of the parent plane \(\mathrm{span}\{v,\bar v\}\)
+(Experiment O4: complex Gaussian projection; Experiment O5 parentZ0: a
+zero-closure pair from a real orthonormal pair inside the complement).
+At \(N=3\) the orthogonal complement of the parent plane is only
+one-dimensional and no zero-closure perturbation orthogonal to the
+parent exists (an isotropic vector needs two real dimensions) --- in
+that case a real seed \(g=u\) is used and a closure residual of
+\(O(\delta^2)\) is explicitly tolerated (the \(N=3\) parent family of
+Section 8.6).
+
+In addition, in 4 of 6 parent preparations at \(N=5\) and 1 of 6 at
+\(N=6\), the eigenmode residual stalled at \(\sim9\times10^{-2}\)
+(worsened convergence of the fixed-point iteration, or possibly
+nonexistence of the fixed point at larger \(N\)). The ``parents'' of
+those trials are approximate parents. The conclusions of Section 8.6 are
+unchanged when restricted to trials with residuals \(\sim10^{-15}\) and
+are robust, but the existence problem of parents at larger \(N\) remains
+open.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Readout Definitions for
+Splitting}\label{readout-definitions-for-splitting}
+
+Splitting is read through three ratio quantities (all relative
+quantities conforming to Axiom 0.5).
+
+\textbf{Dormant fraction} For the parent plane \((p_1,q_1)\) of the
+reference generator \(K(\arg Z(0))\),
+
+\[
+f(\tau)=1-\frac{|p_1^{\mathsf T}Z|^2+|q_1^{\mathsf T}Z|^2}{Z^{\dagger}Z}.
+\]
+
+The share of the allocation outside the parent plane (in the kernel).
+This is the readout of splitting as register reallocation.
+
+\textbf{Second singular direction} The second singular value
+\(\sigma_2\) of the instantaneous generator \(K(\arg Z(\tau))\) (after
+normalization \(\sigma_1=1\), so \(\sigma_2\) is a ratio). The relative
+threshold \(\sigma_2>0.05\) defines an active plane. This is the readout
+of the establishment of a new rotation mode --- corresponding to an
+increase of the component count. Note that an absolute threshold cannot
+be placed by Axiom 0.5; numerical dust \(\sigma_2=O(\delta)\) must not
+be counted as a plane.
+
+\textbf{Participation ratio} The participation ratio of edge amplitudes
+
+\[
+\mathrm{PR}(\tau)=\frac{\left(\sum_e|Z_e|^2\right)^2}{\sum_e|Z_e|^4}\in[1,M].
+\]
+
+The readout of the spread of the allocation {[}11{]}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. Experimental Design}\label{experimental-design}
+
+\subsubsection{Experiment N (control)}\label{experiment-n-control}
+
+The identical initial condition (parent + dormant seed) is updated with
+the fixed generator (frozen at \(\tau=0\)). By Consequences 16.5 and
+16.6 {[}1,3{]}, the reference plane registers and the kernel allocation
+should be individually conserved to machine precision. This doubles as a
+soundness check of the measurement system and a numerical reconfirmation
+of the no-go.
+
+\subsubsection{Experiment O1 (onset of
+splitting)}\label{experiment-o1-onset-of-splitting}
+
+The identical initial condition is updated with unfreezing. \(N=4\)
+(\(M=6\)), seed amplitudes \(\delta=10^{-2},10^{-3},10^{-4},10^{-5}\), 6
+random seeds each, 4320 steps. The dormant seed is placed from a real
+orthonormal pair in the kernel as \(g=(u+iw)/\sqrt2\)
+(\(g^{\mathsf T}g=0\) exact), and the initial state satisfies zero
+closure to \(|Z^{\mathsf T}Z|\le3.2\times10^{-13}\). The initial dormant
+fraction came to \(f(0)\approx0.62\,\delta^2\). In addition a
+\(\delta=0\) verification run (pure eigenmode, no perturbation) is
+placed.
+
+\subsubsection{Scale verification}\label{scale-verification}
+
+For a representative condition (\(\delta=10^{-3}\)), the ratio
+observables of orbits with \(Z_0\to\lambda Z_0\) are compared:
+\(\lambda=2^{10}=1024\) (a scale change with exactly zero floating-point
+rounding error), \(\lambda=987.654\) (generic value),
+\(\lambda=e^{0.7i}\) (common phase rotation). Additionally the
+orbit-divergence rate against a twin perturbation (one component changed
+by a relative \(10^{-13}\)) is compared, to separate deviations at
+generic \(\lambda\) --- dynamical amplification of rounding differences
+--- from any breaking of scale symmetry.
+
+\subsubsection{Experiment O4 (outcome
+classification)}\label{experiment-o4-outcome-classification}
+
+\(N=3,4,5,6\) (\(M=3,6,10,15\)), two families of initial conditions
+(parent: self-consistent parent + \(\delta=10^{-3}\) seed; generic:
+uniformly random complex state), 6 random seeds each, 20000 steps. The
+classification metrics are the late-window (second-half) minimum of
+\(f\) (recurrence depth), the residence fraction of \(\sigma_2>0.05\)
+(establishment of expansion), and the participation ratio. The
+(preliminary) classification rules are:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Expansion}: \(\sigma_2\) active residence fraction \(>0.5\)
+\item
+  \textbf{Recurrence}: late-window \(\min f<0.05\)
+\item
+  \textbf{Bounded mixing}: everything else
+\end{itemize}
+
+\subsubsection{Experiment O5 (controlled contrast of the closure
+convention)}\label{experiment-o5-controlled-contrast-of-the-closure-convention}
+
+With everything else identical (dynamics, classification metrics, 20000
+steps), four families contrast only the initial conserved ratio \(c\):
+genericZ0 (generic state, \(Z^{\mathsf T}Z=0\) exact), genericNZ
+(generic state, complex Gaussian, \(c\approx0.3\)--\(0.6\)), parentZ0
+(parent + zero-closure kernel seed), parentNZ (parent + complex Gaussian
+seed, \(c\lesssim\delta^2\)). \(N=3\)--\(6\), 3 random seeds each.
+Whether \(c\) changes the outcome class is judged directly.
+
+\subsubsection{Experiment O6 (large-N onset
+runs)}\label{experiment-o6-large-n-onset-runs}
+
+To confirm that the onset law (Experiment O1) is not a peculiarity of
+small \(N\), onset runs at \(N=40\) (\(M=780\)), \(N=300\)
+(\(M=44850\)), and \(N=1000\) (\(M=499500\)) are performed with the
+low-rank vertex-decomposition engine. The engine uses the vertex
+decomposition \(K=WJW^{\mathsf T}\) of Paper 3 as an algorithm, reducing
+one step to \(O(N^3)\) (agreement with the dense implementation verified
+at \(N=12\): maximum orbit deviation \(5.6\times10^{-14}\) over 300
+steps).
+
+The seed is \(f(0)\approx\delta^2=10^{-30}\) in energy ratio
+(\(\delta=10^{-15}\), near the lower limit at which the seed's relative
+amplitude against the parent components approaches the double-precision
+rounding unit). To measure this depth, the dormant fraction is measured
+not by the subtraction \(1-h_1/h_{\mathrm{total}}\) (whose cancellation
+floor is \(10^{-16}\)) but directly by the projection norm onto the
+orthogonal complement of the parent plane,
+\(f=\lVert Z-p(p^{\mathsf T}Z)-q(q^{\mathsf T}Z)\rVert^2/\lVert Z\rVert^2\).
+The parent's self-consistent iteration is converged to residuals at the
+\(10^{-12}\)--\(10^{-11}\) level (achieved residuals are listed in the
+results table; the energy of the construction residual,
+\(\sim10^{-24}\)--\(10^{-23}\), sets the measurement floor). The seed is
+\(g=(u+iw)/\sqrt2\) (\(g^{\mathsf T}g=0\) exact) from a real orthonormal
+pair in the kernel (for large \(N\), the orthogonal complement of
+\(\operatorname{span}(W)\)). One random seed per \(N\); runs are tracked
+to 1500 steps past the crossing of the threshold \(f>0.05\) (cap 9000
+steps).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. Results}\label{results}
+
+\subsubsection{8.1 Control (Experiment N): numerical reconfirmation of
+the
+no-go}\label{control-experiment-n-numerical-reconfirmation-of-the-no-go}
+
+Under the fixed generator, the maximum variation of the reference
+register ratios was \(\le4.5\times10^{-11}\) across all trials, and the
+dormant kernel allocation remained at \(\delta^2\) without any growth
+--- exactly as Consequences 16.5 and 16.6 predict.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Fixed generator versus unfreezing}]{figs/register_migration_fixed_vs_sequential_v1.png}}
+\caption{Fixed generator versus unfreezing}
+\end{figure}
+
+\emph{Figure 1: Orbits of the reference plane registers (\(N=4\),
+\(\delta=10^{-3}\)). Left: fixed generator (control) --- the parent
+plane and kernel allocations are frozen to machine precision. Right:
+unfreezing --- from the identical initial condition the allocation moves
+spontaneously.}
+
+\subsubsection{8.2 Onset of splitting (Experiment O1): the three
+criteria of spontaneity
+hold}\label{onset-of-splitting-experiment-o1-the-three-criteria-of-spontaneity-hold}
+
+\[
+\begin{array}{c|cccc}
+\delta & 10^{-2} & 10^{-3} & 10^{-4} & 10^{-5}\\\hline
+\text{initial growth rate (median, /step}) & 3.795\times10^{-2} & 3.783\times10^{-2} & 3.781\times10^{-2} & 3.781\times10^{-2}\\
+\tau_c(f\ge10^{-2})\text{ (median}) & 137.5 & 222 & 306 & 390\\
+\tau_c(f\ge10f(0))\text{ (median}) & 83.5 & 84 & 84 & 84
+\end{array}
+\]
+
+The growth rate is invariant over three decades of \(\delta\) (the rate
+depends on the random seed --- the parent configuration --- but not on
+\(\delta\)). Absolute-threshold crossing times are linear in
+\(\log(1/\delta)\) (about 84 steps per decade); relative-threshold
+crossing times are \(\delta\)-independent. Criteria 1 and 2 hold.
+
+The growth is not single-exponential, however. Against the crossing
+interval \(2\ln10/g\approx122\) steps predicted from the
+initial-fit-window rate \(g\approx3.8\times10^{-2}\), the measured
+interval is about 84 steps, so the effective rate defined from crossing
+times is \(2\ln10/84\approx5.5\times10^{-2}\). The initial transient and
+the main regime have different rates; both values are reported as a
+limitation of the single-exponential approximation.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Dormant-fraction growth for the δ series}]{figs/dormant_fraction_growth_delta_series_v1.png}}
+\caption{Dormant-fraction growth for the δ series}
+\end{figure}
+
+\emph{Figure 2: Growth of the dormant fraction \(f(\tau)\) (median over
+random seeds). Four parallel exponential ramps shifted by
+\(\log(1/\delta)\) --- the classic signature of an instability. After
+saturation the curves enter a universal ceiling
+(\(f\approx0.335\)--\(0.338\)) and back-and-forth oscillation.}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={δ dependence of crossing times}]{figs/crossing_time_vs_delta_v1.png}}
+\caption{δ dependence of crossing times}
+\end{figure}
+
+\emph{Figure 3: Threshold crossing times. Absolute thresholds (circles,
+squares) are linear in \(\log_{10}(1/\delta)\); the relative threshold
+(triangles) is \(\delta\)-independent.}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={δ independence of the growth rate}]{figs/growth_rate_vs_delta_v1.png}}
+\caption{δ independence of the growth rate}
+\end{figure}
+
+\emph{Figure 4: Distribution of initial exponential growth rates. The
+point pattern of each \(\delta\) column is identical --- the rate is
+decided by the random seed (parent configuration), not by the seed
+amplitude.}
+
+Decisive is \(\delta=0\). The applied perturbation is zero, and under
+exact arithmetic the orbit would be invariant. Nevertheless the orbit
+collapsed from the rounding-noise floor (\(f\sim10^{-33}\)) through an
+exponential ramp of about 20 decades, reaching \(f>10^{-10}\) at
+\(\tau\approx850\) and then saturating to the same ceiling ---
+amplification of the nonzero numerical perturbation of rounding, and
+strong evidence of transverse instability.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Collapse from rounding noise at δ=0}]{figs/zero_delta_machine_noise_onset_v1.png}}
+\caption{Collapse from rounding noise at δ=0}
+\end{figure}
+
+\emph{Figure 5: The \(\delta=0\) verification. An orbit that was exactly
+periodic over one period (generator variation \(9.2\times10^{-14}\),
+\(f=0\)) collapses spontaneously with nothing but floating-point
+rounding as the seed.}
+
+\subsubsection{8.3 Exact conservation of the
+closure}\label{exact-conservation-of-the-closure}
+
+\[
+\begin{array}{l|ccc}
+ & |\Delta\operatorname{Re}Z^{\mathsf T}Z| & |\Delta\operatorname{Im}Z^{\mathsf T}Z| & |\Delta Z^{\dagger}Z|/Z^{\dagger}Z\\\hline
+\text{fixed generator} & \le1.1\times10^{-14} & \le8.3\times10^{-15} & \le1.1\times10^{-12}\\
+\text{unfreezing} & \le1.7\times10^{-14} & \le1.2\times10^{-14} & \le1.8\times10^{-14}
+\end{array}
+\]
+
+The onset of splitting proceeds without breaking the real and imaginary
+parts of the complex square-sum closure (the two conditions demanded by
+the local splitting condition). Criterion 3 holds.
+
+\subsubsection{8.4 Numerical verification of scale anonymity and
+separation of
+sensitivity}\label{numerical-verification-of-scale-anonymity-and-separation-of-sensitivity}
+
+\[
+\begin{array}{l|c}
+\text{transformation} & \max|\Delta(\text{ratio observable})|\\\hline
+\lambda=2^{10}=1024 & 0\ \text{(bitwise agreement)}\\
+\lambda=987.654 & 2.9\times10^{-14}\\
+\lambda=e^{0.7i}\ \text{(common phase)} & 1.1\times10^{-13}\\
+\text{twin perturbation }10^{-13}\ \text{(reference)} & 1.6\times10^{-11}\\
+\text{twin perturbation, fixed generator (reference)} & 7.8\times10^{-16}
+\end{array}
+\]
+
+Bitwise agreement at \(\lambda=2^{10}\), where no rounding error occurs
+at all, shows the implementation to be exactly scale-free. The
+deviations \(\lesssim10^{-13}\) at generic \(\lambda\) have the same
+slow amplification rate (\(\sim3.8\times10^{-4}\)/step) as the twin
+perturbation and are dynamical amplification of initial rounding
+differences, not a breaking of scale symmetry. Together with Theorem 3,
+Axiom 0.5 holds both theoretically and numerically.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Closure conservation and sensitivity}]{figs/closure_conservation_and_sensitivity_v1.png}}
+\caption{Closure conservation and sensitivity}
+\end{figure}
+
+\emph{Figure 6: Left --- conservation error of the complex square-sum
+closure (machine precision for both dynamics). Right --- sensitivity
+probes. Generic scale, common phase, and twin perturbation show
+comparable slow divergence; the fixed-generator reference does not
+diverge.}
+
+\subsubsection{\texorpdfstring{8.5 After onset: saturation, recurrence,
+non-establishment of a second plane
+(\(N=4\))}{8.5 After onset: saturation, recurrence, non-establishment of a second plane (N=4)}}\label{after-onset-saturation-recurrence-non-establishment-of-a-second-plane-n4}
+
+After saturation, \(f\) has a universal ceiling \(0.335\)--\(0.338\) and
+oscillates between \(0.04\) and \(0.34\). This is repeated splitting and
+recombination in a conservative system --- phenomenology isomorphic to
+FPUT-type recurrence {[}7,8{]}. The origin of the ceiling value
+(structural or dynamical constant) is unresolved; no identification with
+any specific constant is made. Deciding this requires systematic
+measurement of the \(N\) and \(\gamma\) dependence.
+
+Meanwhile the instantaneous generator remains single-plane throughout.
+\(\sigma_2\) stays at \(10^{-3}\)--\(10^{-4}\) and never exceeds the
+relative threshold \(0.05\). Near the parent at \(N=4\), splitting as
+register reallocation occurs, but the establishment of a new rotation
+plane --- splitting as an increase of the component count --- does not.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Non-establishment of the second singular direction}]{figs/instantaneous_plane_count_v1.png}}
+\caption{Non-establishment of the second singular direction}
+\end{figure}
+
+\emph{Figure 7: The second singular direction \(\sigma_2\) of the
+instantaneous generator (\(N=4\), parent family). For all \(\delta\) it
+stays below the activity threshold \(0.05\) --- no second rotation plane
+establishes itself.}
+
+\subsubsection{8.6 Threefold outcome classification (Experiment
+O4)}\label{threefold-outcome-classification-experiment-o4}
+
+\[
+\begin{array}{cc|cc}
+N & M & \text{parent family} & \text{generic family}\\\hline
+3 & 3 & \text{bounded mixing }6/6 & \text{bounded mixing }5/6,\ \text{recurrence }1/6\\
+4 & 6 & \text{bounded mixing }6/6\ (\sigma_2\text{ exp. decay}) & \text{bounded mixing }6/6\\
+5 & 10 & \text{expansion }6/6 & \text{expansion }6/6\\
+6 & 15 & \text{expansion }6/6 & \text{expansion }6/6
+\end{array}
+\]
+
+Across all trials the maximum deviation of closure conservation was
+\(3.3\times10^{-14}\), and the initial zero closure was
+\(|Z^{\mathsf T}Z|\le2.3\times10^{-16}\) (except the \(N=3\) parent
+family, where no zero-closure seed exists and \(O(\delta^2)=10^{-6}\) is
+tolerated; Section 5.3). All three outcome classes were realized
+(recurrence in one trial only).
+
+\textbf{Expansion} A new rotation plane establishes itself
+(\(\sigma_2>0.05\) residence fraction 1) and the allocation spreads over
+all relational waves, converging to a stationary multi-plane state
+(parent-family representatives: \(N=5\): \(f\to0.55\),
+\(\sigma_2\approx0.25\) stationary; \(N=6\): \(f\to0.8\),
+\(\sigma_2\approx0.4\) stationary).
+
+\textbf{Bounded mixing} The allocation spreads (in the parent family the
+participation ratio converges numerically to the equipartition value
+\(\mathrm{PR}=M\); median deviation \(\lesssim10^{-2}\)), but no second
+plane establishes itself; a single plane wanders while mixing amplitudes
+only.
+
+\textbf{Recurrence} Repeated deep returns toward the parent plane. In
+the zero-closure stratum (\(c=0\)) it appeared in only one trial of the
+\(N=3\) generic family (\(f_{\min}=0.021\)), but at \(c\approx0.55\),
+\(N=3\) shows it systematically in 3/3 (Section 8.7).
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Fate curves of outcomes}]{figs/fate_curves_parent_family_v1.png}}
+\caption{Fate curves of outcomes}
+\end{figure}
+
+\emph{Figure 8: Fate curves of the parent family (\(N=3,4,5,6\)).
+\(N=3\) has \(\sigma_2\equiv0\) (expansion structurally impossible). At
+\(N=4\), \(\sigma_2\) decays spontaneously and exponentially from
+\(6\times10^{-4}\) into the \(10^{-5}\) range. For \(N\ge5\),
+\(\sigma_2\) settles at a stationary value and expansion completes.}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Outcome-class map}]{figs/outcome_class_map_v1.png}}
+\caption{Outcome-class map}
+\end{figure}
+
+\emph{Figure 9: Classification map of all 48 trials (4 values of \(N\) ×
+2 families × 6 random seeds; horizontal: late recurrence depth,
+vertical: \(\sigma_2\) active residence fraction). Expansion (top) and
+non-expansion (bottom) separate cleanly.}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Spread of the allocation}]{figs/participation_ratio_v1.png}}
+\caption{Spread of the allocation}
+\end{figure}
+
+\emph{Figure 10: Late participation ratio. The parent family converges
+numerically to \(\mathrm{PR}=M\) (equipartition) for all \(N\).}
+
+The structure of class selection is summarized in three points.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{\(N\) phase structure} At \(N=3\) expansion is structurally
+  impossible: a skew-symmetric matrix with \(M=3\) has
+  \(\operatorname{rank}\le2\), so no second rotation plane can exist
+  (\(\sigma_2\equiv0\), derived). At \(N=4\) no expansion arose from
+  zero-closure states either (both families bounded mixing). For
+  \(N\ge5\) expansion arose in both families and all random seeds. The
+  boundary lies between \(N=4\) and \(N=5\) --- though ``for all initial
+  conditions examined'': this is not a theorem over all initial states.
+\item
+  \textbf{Outcome stratification by the conserved ratio \(c\)} The
+  controlled contrast (Experiment O5, Section 8.7) established that what
+  separates expansion at \(N=4\) is not proximity to the parent but the
+  exactly conserved ratio \(c\). Restricting to \(c=0\) removes
+  expansion for \(N\le4\). That is, the closure condition of Axiom 1
+  (designation of the \(c=0\) stratum) is not only a conservation law
+  but narrows the reachable end states of the dynamics. The mechanism is
+  a connection problem.
+\item
+  \textbf{Observation of spontaneous refreezing} In the \(N=4\) parent
+  family, \(\sigma_2\) decayed exponentially without external
+  intervention (\(6\times10^{-4}\to10^{-5}\) over 20000 steps),
+  suggesting the system heads spontaneously toward a new single-plane
+  self-consistent configuration --- an effectively frozen state.
+  However, \(\sigma_2\to0\) only means the instantaneous generator
+  approaches \(\operatorname{rank}2\); if the orientation of the plane
+  keeps moving, allocation transfer can continue. Confirming refreezing
+  requires \(\lVert K(\tau{+}1)-K(\tau)\rVert_{\mathrm F}\to0\) or
+  vanishing drift of the principal-plane projector, which is done in the
+  sequel.
+\end{enumerate}
+
+\subsubsection{\texorpdfstring{8.7 Controlled contrast of the closure
+convention (Experiment O5): the conserved ratio \(c\) stratifies
+outcomes}{8.7 Controlled contrast of the closure convention (Experiment O5): the conserved ratio c stratifies outcomes}}\label{controlled-contrast-of-the-closure-convention-experiment-o5-the-conserved-ratio-c-stratifies-outcomes}
+
+\[
+\begin{array}{c|cccc}
+N & \text{genericZ0 }(c\approx0) & \text{genericNZ }(c\approx0.3\text{–}0.6) & \text{parentZ0 }(c\approx0) & \text{parentNZ}\\\hline
+3 & \text{bounded mixing }3/3 & \textbf{recurrence }3/3 & \text{bounded mixing }3/3 & \text{bounded mixing }3/3\\
+4 & \text{bounded mixing }3/3 & \textbf{expansion }3/3 & \text{bounded mixing }3/3 & \text{bounded mixing }3/3\\
+5 & \text{expansion }3/3 & \text{expansion }3/3 & \text{expansion }3/3 & \text{expansion }3/3\\
+6 & \text{expansion }3/3 & \text{expansion }3/3 & \text{expansion }3/3 & \text{expansion }3/3
+\end{array}
+\]
+
+Maximum deviation of closure conservation across all 48 runs:
+\(4.8\times10^{-14}\). Three readings are established.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{At small \(N\) (3, 4) the value of \(c\) changes the outcome
+  class.} The controlled comparison between the generic families
+  (everything identical, only \(c\) contrasted) separated systematically
+  3/3. For \(N\ge5\) it has no effect (all expansion)
+\item
+  \textbf{What acts is the magnitude of \(c\).} The parentNZ family at
+  \(N=3\) (\(c\approx10^{-6}\)) fell into the same class as the \(c=0\)
+  side, not as genericNZ (\(c\approx0.55\)) --- not a binary ``zero
+  versus nonzero'' but the magnitude of the conserved ratio decides the
+  stratum
+\item
+  \textbf{The old ``near-parent versus generic'' family contrast was
+  confounded with \(c\).} After separation by this controlled contrast,
+  the variable separating the \(N=4\) outcome is not the character of
+  the initial family but \(c\)
+\end{enumerate}
+
+The recurrence class gained systematic support from this contrast: at
+\(c\approx0.55\), \(N=3\) recurs in 3/3; the recurrence that appeared in
+only one trial in Experiment O4 (\(c=0\)) is a standard outcome in the
+nonzero-\(c\) strata.
+
+Reservation: in the parentNZ family, by the nature of the seed
+construction, \(c\) came out unintentionally tiny (\(\approx10^{-16}\)
+for \(N\ge4\), \(10^{-6}\) for \(N=3\)), so the parent-side contrast is
+used only as evidence for point 2 (``tiny \(c\) behaves as \(c=0\)'').
+The parentZ0 family at \(N=3\) degenerates (one-dimensional complement;
+Section 5.3).
+
+\subsubsection{8.8 Large-N onset runs (Experiment O6): body-count
+universality of the onset law and seed depth of 30
+decades}\label{large-n-onset-runs-experiment-o6-body-count-universality-of-the-onset-law-and-seed-depth-of-30-decades}
+
+\[
+\begin{array}{c|ccc}
+ & N=40\ (M=780) & N=300\ (M=44850) & N=1000\ (M=499500)\\\hline
+f(0) & 1.01\times10^{-30} & 1.40\times10^{-30} & 4.58\times10^{-30}\\
+\text{parent residual} & 6.2\times10^{-13} & 9.3\times10^{-13} & 4.5\times10^{-12}\\
+\text{initial growth rate (/step}) & 3.60\times10^{-2} & 2.49\times10^{-2} & 2.11\times10^{-2}\\
+\text{steps per decade} & 64 & 93 & 109\\
+\tau_c(f\ge0.05) & 2011 & 4844 & 7926\\
+\lvert Z^{\mathsf T}Z\rvert\text{ max} & 1.4\times10^{-15} & 5.6\times10^{-15} & 2.7\times10^{-14}
+\end{array}
+\]
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Large-N onset: constant-rate amplification from a seed depth of 30 decades}]{figs/dormant_growth_large_n_v1.png}}
+\caption{Large-N onset: constant-rate amplification from a seed depth of
+30 decades}
+\end{figure}
+
+Three readings are established.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{The onset law holds at large \(N\).} From seeds
+  \(f(0)\approx10^{-30}\), 25 decades deeper than Experiment O1
+  (\(N=4\), \(\delta\ge10^{-5}\)), the dormant fraction passed straight
+  through more than 20 decades of constant-factor exponential
+  amplification, then left the exponential regime and entered the
+  saturation region where growth slows by orders. The
+  seed-depth-independent exponential onset (Section 8.2) reproduces
+  unchanged at body counts 40, 300, and 1000 (about half a million
+  relational waves). The implication of Axiom 0.5 --- only amplitude
+  ratios act, and the arrival time of the amplification is linear in the
+  seed's decade count --- is supported by direct measurement to this
+  depth
+\item
+  \textbf{The rate depends only weakly on \(N\).} The initial growth
+  rate decreases monotonically from \(3.8\times10^{-2}\) at \(N=4\)
+  through \(3.6\times10^{-2}\) at \(N=40\) and \(2.5\times10^{-2}\) at
+  \(N=300\) to \(2.1\times10^{-2}\) at \(N=1000\), staying within the
+  same order, with the decrease slowing at large \(N\). Identifying the
+  \(N\)-dependence law of the rate is a connection problem
+\item
+  \textbf{The measurement floor is set by the parent's construction
+  accuracy.} The gentle initial rise from \(10^{-30}\) to about
+  \(10^{-24}\) is a transient in which the construction residual of the
+  parent eigenmode (\(\sim10^{-12}\), energy \(\sim10^{-24}\)) leaks
+  into the orthogonal complement; it is distinct from the subsequent
+  exponential regime. The 20+ decades above the floor are the measured
+  range of dynamical amplification
+\end{enumerate}
+
+Reservation: one random seed per \(N\); no \(\delta\)-series or seed
+statistics as in Experiment O1. Tracking extends to 1500 steps past
+crossing (\(N=1000\): 1074 steps past crossing due to the 9000-step
+cap), and the outcome classification of large \(N\) (the three classes
+of Section 8.6) is outside the scope of this experiment.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. Discussion and
+Limitations}\label{discussion-and-limitations}
+
+\textbf{Relation to modulational instability} The onset phenomenon of
+this paper shows phenomenology isomorphic to modulational instability
+{[}5,6{]}: exponential growth, seed-amplitude-independent rate,
+activation of discrete modes, saturation. The mechanism differs,
+however. NLS-type modulational instability arises from
+amplitude-dependent nonlinear coupling, whereas the generator of this
+system does not depend on amplitudes (phase-only coupling, zeroth-order
+homogeneous). It is not ``a kind of MI'' but ``a phase-coupled
+instability with phenomenology isomorphic to MI.''
+
+\textbf{FPUT-type recurrence} The post-saturation back-and-forth of
+splitting and recombination is isomorphic to recurrence in conservative
+systems {[}7,8{]}. The framework for judging recurrence versus
+thermalization (equipartition \(\mathrm{PR}=M\)) follows {[}8{]}. The
+bounded-mixing class shows the intermediate aspect ``recurring while the
+amplitudes head toward equipartition''; refining this classification is
+deferred to the sequel.
+
+\textbf{Determinism and predictability} The collapse direction of the
+\(\delta=0\) run was decided by floating-point rounding. The update rule
+is fully deterministic, but the outcome depends sensitively on
+microscopic differences not contained in the macroscopic description
+{[}9{]}. Moreover, that the conserved global invariant \(c\) of the
+initial condition separates the outcome classes at small \(N\) shows
+that the value of a conserved quantity acts on outcome selection
+(Section 8.7).
+
+\textbf{Limitations} (i) The operation of increasing the component count
+itself is an underdetermined freedom the axioms grant from the start
+(\(X_P^2=\sum_kY_k^2\) is always solvable over the complex numbers with
+a continuum of solutions) and requires no dynamical justification. That
+this paper selects no particular parameterization (no explicit splitting
+map) is not an omission: the physics --- conservation, freezing, outcome
+selection --- appears only in the readout layer (Section 1.2).
+``Splitting'' in this paper is a statement of the readout layer:
+register reallocation and growth of the active-plane count within a
+state space of fixed dimension. (ii) The \(\operatorname{rank}2\)
+property of the parent is a numerical insight, unproven. (iii) At larger
+\(N\) (some trials with \(N\ge5\)) the parent fixed-point iteration did
+not converge and approximate parents were used. (iv) The classification
+thresholds (\(\sigma_2>0.05\), \(\min f<0.05\), late window = second
+half) are preliminary; no sensitivity analysis was performed. (v) The
+origin of the saturation ceiling is unresolved. (vi) No theoretical
+formula for the growth rate \(3.8\times10^{-2}\)/step (Floquet analysis
+around the parent periodic orbit) has been carried out, and the
+quantitative resolution of the mismatch between the initial-fit rate and
+the crossing-derived effective rate (\(5.5\times10^{-2}\)) --- the
+non-single-exponential nature of the growth --- also remains. (vii) The
+relative activity threshold \(0.05\) is a readout convention; its
+conventionality (the choice of how to count) is itself thematized in the
+sequel.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. Connection Problems}\label{connection-problems}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Stopping of splitting} (sequel, second question). The
+  mechanism and rate of the spontaneous \(\sigma_2\) decay in the
+  \(N=4\) parent family. Identification of the destination of the decay
+  (a new self-consistent configuration). Relation to external generator
+  fixing (the operation that freezes all registers in the control
+  experiment). The threshold of re-splitting.
+\item
+  \textbf{Differentiation of conserved quantities} (sequel, third
+  question). Classification of the relative components generated by
+  splitting via exchange symmetry.
+\item
+  Construction of an explicit splitting map (component-count increase,
+  exact conservation of the complex square sum) and its relation to the
+  growth of the active-plane count in this paper.
+\item
+  Floquet analysis of the parent periodic orbit and comparison with the
+  measured growth rate.
+\item
+  The mechanism of outcome stratification by the conserved ratio \(c\)
+  --- why expansion is suppressed for \(N\le4\) in the \(c=0\) stratum;
+  measurement of the stratum boundary (the critical \(c\) at which
+  classes switch).
+\item
+  Systematic measurement of the \(N\) and \(\gamma\) dependence of the
+  saturation ceiling.
+\item
+  Proof of the parent's \(\operatorname{rank}2\) property; the existence
+  problem of self-consistent parents at larger \(N\).
+\item
+  Statistics of selective freezing (distribution of freezing times and
+  frozen allocations).
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{11. Reproducibility}\label{reproducibility}
+
+The numerical experiments of this paper are based on the following
+programs and outputs.
+
+\subsubsection{Programs}\label{programs}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{dimension\_generation\_structure/spontaneous\_splitting\_preliminary\_v1/run\_spontaneous\_splitting\_preliminary\_v1.py}
+  (Experiments N, O1, scale verification, \(\delta=0\) verification)
+\item
+  \texttt{dimension\_generation\_structure/spontaneous\_splitting\_preliminary\_v1/run\_outcome\_classification\_preliminary\_v1.py}
+  (Experiment O4)
+\item
+  \texttt{dimension\_generation\_structure/spontaneous\_splitting\_preliminary\_v1/run\_closure\_contrast\_v1.py}
+  (Experiment O5)
+\item
+  \texttt{dimension\_generation\_structure/spontaneous\_splitting\_preliminary\_v1/run\_spontaneous\_splitting\_largeN\_v1.py}
+  (Experiment O6)
+\item
+  \texttt{dimension\_generation\_structure/spontaneous\_splitting\_preliminary\_v1/run\_n\_scaling\_lowrank\_v1.py}
+  (low-rank vertex-decomposition engine; dense-matrix agreement
+  verification)
+\item
+  \texttt{dimension\_generation\_structure/spontaneous\_splitting\_preliminary\_v1/make\_largeN\_figure\_v1.py}
+  (Experiment O6 figure)
+\item
+  \texttt{dimension\_generation\_structure/spontaneous\_splitting\_preliminary\_v1/make\_paper\_supplement\_figures\_v1.py}
+  (supplementary figures)
+\end{itemize}
+
+\subsubsection{Main outputs}\label{main-outputs}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{spontaneous\_splitting\_result\_v1/summary\_v1.json},
+  \texttt{dormant\_fraction\_curves\_v1.csv}, 7 figures
+\item
+  \texttt{outcome\_classification\_result\_v1/summary\_v1.json}, 3
+  figures
+\item
+  \texttt{closure\_contrast\_result\_v1/summary\_v1.json} (Experiment
+  O5)
+\item
+  \texttt{largeN\_splitting\_result\_v1/fcurve\_*.csv},
+  \texttt{summary\_*.json}, 1 figure (Experiment O6)
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{12. Final Conclusions}\label{final-conclusions}
+
+Dynamics preserving the closure sphere is exhausted by \(\dot X=K(X)X\)
+(\(K\) skew-symmetric); the fixed generator is a special case. Merely
+unfreezing the sine generator --- which was defined as a function of
+phase differences from the start --- without introducing any new
+coupling rule and without external forcing, the parent state decays
+exponentially at an intrinsic rate independent of the seed amplitude,
+while the real and imaginary parts of the complex square-sum closure are
+conserved to machine precision and the allocation moves spontaneously
+into dormant directions. Even the exact periodic orbit at \(\delta=0\)
+collapses through the amplification of the nonzero numerical
+perturbation of rounding. Just outside the boundary drawn by the no-go
+of Paper 4, spontaneous splitting begins.
+
+Existence opens without limit; only the readout saturates. The rank
+bound and three-direction saturation of Paper 3, the register freezing
+of Paper 4, and the outcome classification of this paper are all
+statements of readout saturation, not statements of the finiteness of
+existence.
+
+\[
+\boxed{
+\begin{aligned}
+&\text{Splitting can begin. But the outcome is not a single road.}\\
+&\text{Three classes are real — expansion (establishment of a new plane, equipartition),}\\
+&\text{bounded mixing (wandering of a single plane), recurrence (repeated returns toward the parent) —}\\
+&\text{and the selection is decided by the }N\text{ phase structure }(N\le4\text{ no expansion, }N\ge5\text{ expansion in all trials})\\
+&\text{and the conserved ratio }c.
+\end{aligned}
+}
+\]
+
+Scale anonymity (Axiom 0.5) was introduced as the formation rule running
+through this entire construction. The unfrozen generator satisfies it
+without adjustment as a zeroth-order homogeneous function; the readouts
+and thresholds are all ratio quantities; and numerically all ratio
+observables agreed bitwise under a \(2^{10}\)-fold scale change. The
+zero square sum of Axiom 1 is the unique quadratic closure compatible
+with this axiom.
+
+The spontaneous exponential decay of \(\sigma_2\) observed in the
+\(N=4\) parent family suggests that splitting can stop without an
+external freezing operation. Can splitting begin? --- the answer of this
+paper is yes. Can it stop? --- that is the question of the sequel.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+\subsubsection{Self-citations}\label{self-citations}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Noriaki Kihara, ``Basic Axiom System of the Anonymous Equal-Amplitude
+  Composite Wave Model v7,'' Zenodo, 2026. Version DOI:
+  \href{https://doi.org/10.5281/zenodo.21469133}{10.5281/zenodo.21469133},
+  Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.21315735}{10.5281/zenodo.21315735}.
+\item
+  Noriaki Kihara, ``Linear Upper Bound on Generator Rank and
+  Three-Direction Saturation of Spatial-Direction Readout in N-Body
+  Complete Pairwise Relational Waves,'' Zenodo, 2026. Version DOI:
+  \href{https://doi.org/10.5281/zenodo.21465899}{10.5281/zenodo.21465899},
+  Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.21465898}{10.5281/zenodo.21465898}.
+\item
+  Noriaki Kihara, ``Plane-Decomposition Readout in N-Body
+  Fixed-Generator Systems,'' Zenodo, 2026. Version DOI:
+  \href{https://doi.org/10.5281/zenodo.21468960}{10.5281/zenodo.21468960},
+  Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.21468959}{10.5281/zenodo.21468959}.
+\item
+  Noriaki Kihara, ``Future-Phase Position-Acceleration Mapping and the
+  Inverse-Square Law from Harmonic Closure in the Closed Two-Body AB
+  Phase System v4,'' Zenodo, 2026. Version DOI:
+  \href{https://doi.org/10.5281/zenodo.21468270}{10.5281/zenodo.21468270},
+  Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.21441081}{10.5281/zenodo.21441081}.
+\end{enumerate}
+
+\subsubsection{External references}\label{external-references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  T. Brooke Benjamin and J. E. Feir, ``The disintegration of wave trains
+  on deep water. Part 1. Theory,'' \emph{Journal of Fluid Mechanics},
+  27(3), 417--430, 1967. DOI:
+  \href{https://doi.org/10.1017/S002211206700045X}{10.1017/S002211206700045X}.
+\item
+  Vladimir E. Zakharov and Lev A. Ostrovsky, ``Modulation instability:
+  The beginning,'' \emph{Physica D}, 238(5), 540--548, 2009. DOI:
+  \href{https://doi.org/10.1016/j.physd.2008.12.002}{10.1016/j.physd.2008.12.002}.
+\item
+  Enrico Fermi, John Pasta, and Stanislaw Ulam, ``Studies of Nonlinear
+  Problems. I,'' Los Alamos Report LA-1940, 1955. DOI:
+  \href{https://doi.org/10.2172/4376203}{10.2172/4376203}. (Including
+  Mary Tsingou's contribution to the computational implementation.)
+\item
+  Gennady P. Berman and Felix M. Izrailev, ``The Fermi--Pasta--Ulam
+  problem: Fifty years of progress,'' \emph{Chaos}, 15(1), 015104, 2005.
+  DOI: \href{https://doi.org/10.1063/1.1855036}{10.1063/1.1855036}.
+\item
+  Edward N. Lorenz, ``Deterministic Nonperiodic Flow,'' \emph{Journal of
+  the Atmospheric Sciences}, 20(2), 130--141, 1963. DOI:
+  \href{https://doi.org/10.1175/1520-0469(1963)020\%3C0130:DNF\%3E2.0.CO;2}{10.1175/1520-0469(1963)020\textless0130:DNF\textgreater2.0.CO;2}.
+\item
+  Fasma Diele, Luciano Lopez, and R. Peluso, ``The Cayley Transform in
+  the Numerical Solution of Unitary Differential Systems,''
+  \emph{Advances in Computational Mathematics}, 8(4), 317--334, 1998.
+  DOI:
+  \href{https://doi.org/10.1023/A:1018908700358}{10.1023/A:1018908700358}.
+\item
+  David J. Thouless, ``Electrons in disordered systems and the theory of
+  localization,'' \emph{Physics Reports}, 13(3), 93--142, 1974. DOI:
+  \href{https://doi.org/10.1016/0370-1573(74)90029-5}{10.1016/0370-1573(74)90029-5}.
+\end{enumerate}
+
+\end{document}
