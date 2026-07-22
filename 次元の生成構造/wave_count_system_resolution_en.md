@@ -4,8 +4,8 @@
 **Author:** Noriaki Kihara<br>
 **ORCID:** 0009-0004-6753-4020<br>
 **Date:** July 22, 2026<br>
-**Version DOI:** (assigned upon publication)<br>
-**Concept DOI:** (assigned upon publication)<br>
+**Version DOI:** 10.5281/zenodo.21486545<br>
+**Concept DOI:** 10.5281/zenodo.21486544<br>
 **Position:** Dimensional Generation Structure series, Paper 6, v1
 
 ---
@@ -323,7 +323,7 @@ The sequel will treat, on this foundation, the dynamics of readout stabilization
 ### Self-citations
 
 1. Noriaki Kihara, "Basic Axiom System of the Anonymous Equal-Amplitude Composite Wave Model v7," Zenodo, 2026. Version DOI: [10.5281/zenodo.21469133](https://doi.org/10.5281/zenodo.21469133), Concept DOI: [10.5281/zenodo.21315735](https://doi.org/10.5281/zenodo.21315735).
-2. Noriaki Kihara, "Onset and Threefold Classification of Outcomes of Spontaneous Splitting in N-Body Relational-Wave Closed Systems," Zenodo, 2026. (Version DOI to be fixed upon publication of the revised version.)
+2. Noriaki Kihara, "Onset and Threefold Classification of Outcomes of Spontaneous Splitting in N-Body Relational-Wave Closed Systems," Zenodo, 2026. Version DOI: [10.5281/zenodo.21486234](https://doi.org/10.5281/zenodo.21486234), Concept DOI: [10.5281/zenodo.21486233](https://doi.org/10.5281/zenodo.21486233).
 3. Noriaki Kihara, "Plane-Decomposition Readout in N-Body Fixed-Generator Systems," Zenodo, 2026. Version DOI: [10.5281/zenodo.21468960](https://doi.org/10.5281/zenodo.21468960), Concept DOI: [10.5281/zenodo.21468959](https://doi.org/10.5281/zenodo.21468959).
 4. Noriaki Kihara, "Linear Upper Bound on Generator Rank and Three-Direction Saturation of Spatial-Direction Readout in N-Body Complete Pairwise Relational Waves," Zenodo, 2026. Version DOI: [10.5281/zenodo.21465899](https://doi.org/10.5281/zenodo.21465899), Concept DOI: [10.5281/zenodo.21465898](https://doi.org/10.5281/zenodo.21465898).
 5. Noriaki Kihara, "Central Projection of the Vacuum Universe and Particle-like States with Spread Phase," Zenodo, 2026. Version DOI: [10.5281/zenodo.20543045](https://doi.org/10.5281/zenodo.20543045), Concept DOI: [10.5281/zenodo.20543044](https://doi.org/10.5281/zenodo.20543044). (A preceding observation placing particle-like states as relational, conventional readouts rather than entities.)
