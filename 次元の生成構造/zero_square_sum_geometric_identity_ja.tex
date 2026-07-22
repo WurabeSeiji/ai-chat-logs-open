@@ -1,0 +1,390 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{零二乗和拘束とスケール不変性の幾何学的正体}\label{ux96f6ux4e8cux4e57ux548cux62d8ux675fux3068ux30b9ux30b1ux30fcux30ebux4e0dux5909ux6027ux306eux5e7eux4f55ux5b66ux7684ux6b63ux4f53}
+
+\subsection{等方錐の射影化・射影クアドリック・内在的量子性------解説ノート（An
+Expository
+Note）}\label{ux7b49ux65b9ux9310ux306eux5c04ux5f71ux5316ux5c04ux5f71ux30afux30a2ux30c9ux30eaux30c3ux30afux5185ux5728ux7684ux91cfux5b50ux6027ux89e3ux8aacux30ceux30fcux30c8an-expository-note}
+
+\textbf{著者:} 木原 範昭 \textbf{ORCID:} 0009-0004-6753-4020
+\textbf{日付:} 2026年7月22日 \textbf{Version DOI:}
+10.5281/zenodo.21495306 \textbf{Concept DOI:} 10.5281/zenodo.21495305
+\textbf{位置づけ:} 解説ノート（expository
+note）。新規の定理を含まない。貢献は既知の数学的結果の統合（synthesis）と、一つの対象への配置（observation）である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+次の二つの要請だけを置いた系を考える。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  状態は複素ベクトル \(x=(x_1,\dots,x_N)\in\mathbb C^N\setminus\{0\}\)
+  であり、零二乗和拘束 \(\sum_{n=1}^N x_n^2=0\) を満たす。
+\item
+  物理的内容は比のみである。すなわち \(x\) と
+  \(\lambda x\)（\(\lambda\in\mathbb C^\ast\)）は同じ状態を表す。
+\end{enumerate}
+
+本ノートの目的は、この二要請が定める状態空間の数学的正体を、既知の結果の引用だけで同定することである。結論は次の五点に整理される。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  拘束 (1) の解集合は複素等方錐（ヌル錐）であり、要請 (2)
+  による射影化の結果、状態空間は複素射影空間内の二次超曲面------\textbf{射影クアドリック}
+  \(Q_{N-2}\subset\mathbb{CP}^{N-1}\)------になる。これはコンパクトなケーラー多様体である［4］
+\item
+  幾何学的量子化の一般論により、コンパクトな相空間を持つ系は、量子化のたびに\textbf{有限次元の状態空間と離散スペクトル}を持つ［1,2,3］。離散性（量子性）は追加の仮説ではなく、二要請から自動的に従う構造である。この系は量子化「できる」のではなく、生まれつき量子化されている
+\item
+  \(x_n=q_n+ip_n\) と分解すると、拘束の実部は
+  \(\sum q_n^2=\sum p_n^2\)（等分配）、虚部は
+  \(\sum q_np_n=0\)------後者は古典力学のスケール変換の生成子（ディラテーション）が恒等的に零という条件である。スケール不変性（要請
+  2）は独立の要請ではなく、拘束 (1) の虚部に既に現れている可能性がある
+\item
+  錐の上の多項式関数の空間は、厳密に\textbf{調和多項式}の空間であり［6］、調和多項式は球面調和関数------回転群の整数ラベルの既約多重項------を与える。「倍音（harmonics）」の構造は比喩ではなく状態空間の定理として現れる
+\item
+  コンパクト射影多様体上の線束は整数（チャーン類）で分類され［4,5］、巻き数的な量の厳密な整数性はコホモロジーの整数性そのものである。特に
+  \(N=3\) では射影化された等方錐は円錐曲線＝リーマン球面
+  \(\mathbb{CP}^1\)
+  と同型で、等方ベクトルはスピノールの二乗として書ける（カルタンの構成［7］）。すなわち最小の非自明系の状態空間は量子ビット（スピン1/2の射影状態空間）と同型である
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 前提と記法}\label{ux524dux63d0ux3068ux8a18ux6cd5}
+
+二つの要請を再掲する。
+
+\begin{quote}
+\textbf{要請1（零二乗和拘束）}
+\(x\in\mathbb C^N\setminus\{0\}\)、\(\displaystyle\sum_{n=1}^N x_n^2=0\)。
+
+\textbf{要請2（スケール不変性）}
+物理的内容は比のみ。\(x\sim\lambda x\)（\(\lambda\in\mathbb C^\ast\)）。
+\end{quote}
+
+要請1の解集合
+
+\[
+\mathcal C=\Bigl\{x\in\mathbb C^N\setminus\{0\}\ :\ \sum_{n=1}^N x_n^2=0\Bigr\}
+\]
+
+は複素二次形式 \(\sum x_n^2\) の\textbf{等方錐}（isotropic
+cone、ヌル錐）である。実ベクトルでは非自明解が存在しない（実数の二乗和が零なら全成分零）。非自明な解には虚部が必須であり、この意味で複素構造は要請1に内蔵されている。
+
+\(N=2\) では錐は二本の直線 \(x_2=\pm ix_1\)
+に退化し、射影化は2点になる。以下、滑らかな幾何が現れる \(N\ge3\)
+を考える。
+
+要請2の同一視 \(x\sim\lambda x\) は、群 \(\mathbb C^\ast\)
+による商を取ることである。\(\mathbb C^\ast=\{|\lambda|\}\times\{e^{i\varphi}\}\)
+の分解に対応して、絶対スケールの読出し不能性（\(|\lambda|\)）と共通位相の読出し不能性（\(e^{i\varphi}\)）は、同じ一つの群の絶対値部分と偏角部分である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2.
+状態空間は射影クアドリックである}\label{ux72b6ux614bux7a7aux9593ux306fux5c04ux5f71ux30afux30a2ux30c9ux30eaux30c3ux30afux3067ux3042ux308b}
+
+錐 \(\mathcal C\) は
+\(\lambda x\)（\(\lambda\in\mathbb C^\ast\)）で不変だから、商
+
+\[
+Q_{N-2}\ :=\ \mathcal C/\mathbb C^\ast\ =\ \bigl\{[x]\in\mathbb{CP}^{N-1}\ :\ \textstyle\sum_n x_n^2=0\bigr\}
+\]
+
+が定義できる。これは複素射影空間 \(\mathbb{CP}^{N-1}\)
+内の非退化二次超曲面------\textbf{射影クアドリック}------であり、複素次元
+\(N-2\) の滑らかなコンパクト複素多様体である［4］。
+
+\(\mathbb{CP}^{N-1}\)
+はフビニ--スタディ計量によるケーラー多様体であり、その複素部分多様体であるクアドリックはケーラー構造を継承する［4］。したがって、
+
+\begin{quote}
+二要請が定める状態空間は、コンパクトなケーラー多様体である。
+\end{quote}
+
+これが本ノートの出発点となる同定である。以下の全ては、この一行の既知の帰結にすぎない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3.
+コンパクト性が量子性を供給する}\label{ux30b3ux30f3ux30d1ux30afux30c8ux6027ux304cux91cfux5b50ux6027ux3092ux4f9bux7d66ux3059ux308b}
+
+幾何学的量子化（Kostant［1］・Souriau［2］）の一般論は次を教える。シンプレクティック多様体
+\((M,\omega)\) の量子化は、\([\omega/2\pi]\)
+が整数コホモロジー類であるとき（前量子化条件）に前量子線束 \(L\)
+を持ち、ケーラー多様体では正則偏極を選ぶことで、量子状態空間は正則切断の空間
+\(H^0(M,L^{\otimes k})\) として構成される。\(M\)
+が\textbf{コンパクト}なら、この空間は各 \(k\)
+で\textbf{有限次元}である。
+
+クアドリック上ではフビニ--スタディ形式の制限が超平面類（整数類）を代表するため、前量子化条件は自動的に満たせる。したがって、
+
+\begin{quote}
+二要請の系は、量子化の手続きに選択の余地を残さず、有限次元状態空間と離散スペクトルを持つ。
+\end{quote}
+
+コンパクト相空間での量子化が離散性・有限次元性を強制することの明示的な模型は、Berezin
+の球面の例［3］が古典的である（球面の量子化＝スピン系＝有限次元）。通常の量子化では
+\(\hbar\)
+を外部から導入して離散性を得るが、この系では錐のコンパクト性（射影化後）が離散性を供給する。この意味で、系は量子化「できる」のではなく、\textbf{生まれつき量子化されている}。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4.
+拘束の実部と虚部：等分配とディラテーション}\label{ux62d8ux675fux306eux5b9fux90e8ux3068ux865aux90e8ux7b49ux5206ux914dux3068ux30c7ux30a3ux30e9ux30c6ux30fcux30b7ux30e7ux30f3}
+
+\(x_n=q_n+ip_n\)（\(q_n,p_n\in\mathbb R\)）と書くと、
+
+\[
+\sum_n x_n^2=\Bigl(\sum_n q_n^2-\sum_n p_n^2\Bigr)+2i\sum_n q_np_n
+\]
+
+だから、要請1は二つの実条件に分解される。
+
+\[
+\text{実部：}\quad \sum_n q_n^2=\sum_n p_n^2,
+\qquad
+\text{虚部：}\quad \sum_n q_np_n=0.
+\]
+
+実部は、\(q\) を配位・\(p\)
+を運動量と読むときの調和振動子型の\textbf{等分配}条件である。虚部の
+\(D=\sum_n q_np_n\)
+は、古典力学で\textbf{スケール変換（ディラテーション）を生成する関数}である。したがって虚部は「スケール変換の生成子が恒等的に零」という条件であり、零二乗和拘束はスケール自由度を恒等的に殺す構造を最初から内蔵している。
+
+ここから一つの観察が得られる：\textbf{スケール不変性（要請2）は、独立の要請ではなく、要請1の虚部に既に現れている可能性がある}。本ノートはこれを観察として指摘するにとどめ、二要請の論理的独立性・従属性の決定は行わない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+錐上の関数空間は調和多項式である}\label{ux9310ux4e0aux306eux95a2ux6570ux7a7aux9593ux306fux8abfux548cux591aux9805ux5f0fux3067ux3042ux308b}
+
+\(\mathbb C^N\) 上の多項式を等方錐 \(\mathcal C\)
+に制限することは、イデアル \((\sum x_n^2)\)
+で割ることである。古典的な直和分解
+
+\[
+\mathcal P_k=\mathcal H_k\oplus r^2\,\mathcal P_{k-2}
+\qquad(\mathcal P_k:\text{次数 }k\text{ 同次多項式},\ \mathcal H_k:\text{調和多項式},\ r^2=\textstyle\sum x_n^2)
+\]
+
+により、錐上の次数 \(k\) の関数空間は\textbf{調和多項式}
+\(\mathcal H_k\)
+と厳密に同一視される（ラプラシアンの表象が錐の上で消えることの帰結。標準文献は
+Stein--Weiss［6］第IV章）。その次元は
+
+\[
+\dim\mathcal H_k=\binom{N+k-1}{k}-\binom{N+k-3}{k-2}
+\]
+
+であり、\(\mathcal H_k\)
+は球面上では球面調和関数------回転群の整数ラベル \(k\)
+の既約多重項------を与える。
+
+つまり、この状態空間の自然な関数系は文字通りの
+\textbf{harmonics（調和関数＝倍音）}
+である。倍音という語は、この幾何の上では比喩ではなく、関数空間の定理である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6.
+整数性：チャーン類と巻き数}\label{ux6574ux6570ux6027ux30c1ux30e3ux30fcux30f3ux985eux3068ux5dfbux304dux6570}
+
+コンパクト射影多様体上の複素線束は、第一チャーン類
+\(c_1\in H^2(M;\mathbb Z)\)------\textbf{整数係数}コホモロジー類------で分類される（Chern［5］、教科書的扱いは［4］）。クアドリックでは
+\(H^2(Q_{N-2};\mathbb Z)\cong\mathbb Z\)（\(N=4\) のみ
+\(Q_2\cong\mathbb{CP}^1\times\mathbb{CP}^1\) で
+\(\mathbb Z^2\)）である［4］。
+
+したがって、この状態空間の上で「巻き数」型の量（閉路に沿う位相の周回数、線束のラベル）が\textbf{厳密に整数}であることは、近似的・統計的な性質ではなく、コンパクト射影多様体のコホモロジーの整数性そのものである。整数性は力学の詳細に一切依存せず、連続変形とスケール変換のもとで不変である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{7. 最小の非自明系
+\(N=3\)：円錐曲線・スピノール・量子ビット}{7. 最小の非自明系 N=3：円錐曲線・スピノール・量子ビット}}\label{ux6700ux5c0fux306eux975eux81eaux660eux7cfb-n3ux5186ux9310ux66f2ux7ddaux30b9ux30d4ux30ceux30fcux30ebux91cfux5b50ux30d3ux30c3ux30c8}
+
+\(N=3\) の場合、射影化された等方錐は \(\mathbb{CP}^2\)
+内の滑らかな円錐曲線（二次曲線）であり、円錐曲線は有理正規曲線として
+\(\mathbb{CP}^1\)------リーマン球面------と同型である［4］。
+
+さらに、等方ベクトルはスピノールの二乗として明示的に書ける（Cartan
+の構成［7］）。スピノール \((a,b)\in\mathbb C^2\) に対し
+
+\[
+x_1=a^2-b^2,\qquad x_2=i\,(a^2+b^2),\qquad x_3=-2ab
+\]
+
+と置けば \(x_1^2+x_2^2+x_3^2=0\) が恒等的に成り立ち、逆に
+\(\mathbb C^3\) の任意の等方ベクトルはこの形に書ける。スピノールの比
+\([a:b]\in\mathbb{CP}^1\) が状態を定める。
+
+したがって、最小の非自明系の状態空間はリーマン球面であり、これは\textbf{量子ビット（2準位系）の射影状態空間、すなわちスピン1/2の状態空間と同型}である。\(SU(2)\)
+がスピノールに、\(SO(3)\) が等方ベクトルに作用し、\(SU(2)\to SO(3)\)
+の二重被覆がカルタンの構成そのものに実装されている。スピンと \(SU(2)\)
+の構造が、追加の仮定なしにこの幾何から出る位置にある。
+
+なお、射影化されたヌル構造とスピノール化を物理理論の基礎に据える構図は、Penrose
+のツイスター理論［8］が半世紀にわたり展開してきた隣接分野である。ヌル錐・スピノール・正則構造という本ノートの部品は、いずれもそこで標準的な道具である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8.
+本ノートが主張しないこと}\label{ux672cux30ceux30fcux30c8ux304cux4e3bux5f35ux3057ux306aux3044ux3053ux3068}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  本ノートの同定はすべて\textbf{運動学的}（状態空間のレベル）である。特定の力学・更新則・物理系との対応は主張しない。
+\item
+  第4節の「スケール不変性は拘束の虚部に現れている」は観察であり、二要請の論理的関係の決定ではない。
+\item
+  第7節の「スピンの起源が出る位置にある」は数学的同型の指摘であり、物理的スピンの導出主張ではない。
+\item
+  本ノートに新規の定理は含まれない。すべての数学的主張は引用文献に帰属し、貢献は二要請の系への配置と統合にある。
+\end{enumerate}
+
+\subsection{9. 主張の分類}\label{ux4e3bux5f35ux306eux5206ux985e}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+主張
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+分類
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+等方錐の射影化＝射影クアドリック、コンパクトケーラー &
+既知数学の適用［4］ \\
+コンパクト相空間の量子化＝有限次元・離散 & 既知数学の適用［1,2,3］ \\
+実部＝等分配、虚部＝ディラテーション零 & 初等計算 \\
+スケール不変性は拘束の虚部に現れている & 観察（可能性の指摘） \\
+錐上の関数空間＝調和多項式＝harmonics & 既知数学の適用［6］ \\
+巻き数の厳密な整数性＝コホモロジーの整数性 & 既知数学の適用［4,5］ \\
+\(N=3\)：円錐曲線≅\(\mathbb{CP}^1\)、スピノールの二乗、量子ビットと同型
+& 既知数学の適用［4,7］ \\
+スピン・\(SU(2)\) の物理的起源 & 主張しない（位置の指摘のみ） \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Bertram Kostant, ``Quantization and unitary representations,'' in
+  \emph{Lectures in Modern Analysis and Applications III}, Lecture Notes
+  in Mathematics 170, 87--208, Springer, 1970. DOI:
+  \href{https://doi.org/10.1007/BFb0079068}{10.1007/BFb0079068}.
+\item
+  Jean-Marie Souriau, \emph{Structure of Dynamical Systems: A Symplectic
+  View of Physics}, Progress in Mathematics 149, Birkhäuser,
+  1997（仏語原著 \emph{Structure des systèmes dynamiques}, Dunod,
+  1970）. DOI:
+  \href{https://doi.org/10.1007/978-1-4612-0281-3}{10.1007/978-1-4612-0281-3}.
+\item
+  Felix A. Berezin, ``General concept of quantization,''
+  \emph{Communications in Mathematical Physics}, 40, 153--174, 1975.
+  DOI: \href{https://doi.org/10.1007/BF01609397}{10.1007/BF01609397}.
+\item
+  Phillip Griffiths and Joseph Harris, \emph{Principles of Algebraic
+  Geometry}, Wiley, 1978（Wiley Classics Library, 1994）. DOI:
+  \href{https://doi.org/10.1002/9781118032527}{10.1002/9781118032527}.
+\item
+  Shiing-Shen Chern, ``Characteristic classes of Hermitian manifolds,''
+  \emph{Annals of Mathematics}, 47(1), 85--121, 1946. DOI:
+  \href{https://doi.org/10.2307/1969037}{10.2307/1969037}.
+\item
+  Elias M. Stein and Guido Weiss, \emph{Introduction to Fourier Analysis
+  on Euclidean Spaces}, Princeton University Press, 1971, 第IV章. ISBN:
+  978-0-691-08078-9.
+\item
+  Élie Cartan, \emph{The Theory of Spinors}, Hermann, 1966（仏語原著
+  \emph{Leçons sur la théorie des spineurs}, 1938；Dover 復刻 1981）.
+  ISBN: 978-0-486-64070-9.
+\item
+  Roger Penrose, ``Twistor algebra,'' \emph{Journal of Mathematical
+  Physics}, 8(2), 345--366, 1967. DOI:
+  \href{https://doi.org/10.1063/1.1705200}{10.1063/1.1705200}.
+\end{enumerate}
+
+\end{document}
