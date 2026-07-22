@@ -1,0 +1,1799 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{無名等振幅複合波モデル基本公理系
+v8}\label{ux7121ux540dux7b49ux632fux5e45ux8907ux5408ux6ce2ux30e2ux30c7ux30ebux57faux672cux516cux7406ux7cfb-v8}
+
+\textbf{日付:} 2026-07-22 \textbf{著者:} 木原 範昭 \textbf{位置づけ:}
+定義論文 \textbf{Version DOI:} 10.5281/zenodo.21495422 \textbf{Concept
+DOI:} 10.5281/zenodo.21315735
+
+v8 の変更（0層の再編）: (1)
+公理0（成分無名性）と公理0+（定式化無名性）を、単一の公理0（無名性）の条項1・条項2として統合した（本文の変更はない）。(2)
+スケール無名性を公理0.5として0層へ取り込んだ（初出は第5論文。Concept
+DOI: 10.5281/zenodo.21486233）。(3)
+旧・公理0.5（次元別中心投影読出し）は公理0.6へ改番した（本文の変更はない）。(4)
+公理0.5と公理1に、幾何学的な理論背景への参照（解説ノート。Concept DOI:
+10.5281/zenodo.21495305）を追記した。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{1. 第一原理}\label{ux7b2cux4e00ux539fux7406}
+
+\subsection{公理0: 無名性}\label{ux516cux74060-ux7121ux540dux6027}
+
+分類: 公理
+
+本公理は二つの条項からなる（v7
+までの公理0と公理0+を条項として統合。本文の変更はない）。
+
+\subsubsection{条項1:
+成分無名性}\label{ux6761ux98051-ux6210ux5206ux7121ux540dux6027}
+
+基本成分に、個別名、特権軸、特権符号、特権型を与えない。
+
+添字 \texttt{n} は便宜上のラベルであり、成分の固有名ではない。
+
+禁止:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{特定成分だけを負符号軸にする}
+\NormalTok{特定成分だけを時間軸にする}
+\NormalTok{特定成分だけを実数型にする}
+\NormalTok{特定成分だけを複素型にする}
+\NormalTok{特定成分だけに固有名を与える}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{条項2:
+定式化無名性}\label{ux6761ux98052-ux5b9aux5f0fux5316ux7121ux540dux6027}
+
+第一原理層では、理論名、定式名、読出し論理名にも固有名を与えない。
+
+物理名、対象名、相互作用名、既存理論上の分類名を理由として、第一原理層の方程式、射影、読出し規則を変更してはならない。
+
+禁止:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{重力だから円運動型の式を採用する}
+\NormalTok{クーロン力だから双曲線型の式を採用する}
+\NormalTok{質量だから符号を消す}
+\NormalTok{電荷だから符号を残す}
+\NormalTok{エネルギーだから時間軸へ移す}
+\NormalTok{二体系だから別の閉鎖式を使う}
+\NormalTok{三体系だから別の閉鎖式を使う}
+\NormalTok{ABC系だから特別な読出し規則を使う}
+\NormalTok{欲しい物理名に合わせて右辺表示を選ぶ}
+\end{Highlighting}
+\end{Shaded}
+
+許可:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{同一閉鎖条件に対する読出し演算の違い}
+\NormalTok{同一閉鎖条件に対する対称性の破れの違い}
+\NormalTok{同一閉鎖条件に対するゲージ安定性の違い}
+\NormalTok{同一閉鎖条件に対する符号保持の違い}
+\NormalTok{同一閉鎖条件に対する符号消失の違い}
+\NormalTok{同一閉鎖条件に対する位相枝選択の違い}
+\NormalTok{同一閉鎖条件に対する閉鎖対象集合の違い}
+\end{Highlighting}
+\end{Shaded}
+
+順序:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{同一の全正符号ゼロ閉鎖を置く}
+\NormalTok{読出し演算を先に定義する}
+\NormalTok{対称性の破れを先に定義する}
+\NormalTok{符号保持または符号消失を先に定義する}
+\NormalTok{ゲージ安定性を確認する}
+\NormalTok{読出し後に作業名を与える}
+\end{Highlighting}
+\end{Shaded}
+
+対象集合:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Q(P)=\textbackslash{}sum\_n p\_n\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Q(A)=0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Q(A+B)=0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Q(A+B+C)=0}
+\end{Highlighting}
+\end{Shaded}
+
+対象集合の違いは許される。
+
+\texttt{Q} の定義変更は許されない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{公理0.5:
+スケール無名性}\label{ux516cux74060.5-ux30b9ux30b1ux30fcux30ebux7121ux540dux6027}
+
+分類: 公理
+
+系の関係、更新則、読出しは、いかなる絶対スケールも参照してはならない。
+
+すべての構成は、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Z\textbackslash{}to\textbackslash{}lambda Z,\textbackslash{}qquad\textbackslash{}lambda\textbackslash{}in\textbackslash{}mathbb\{C\}\^{}\textbackslash{}ast}
+\end{Highlighting}
+\end{Shaded}
+
+のもとで共変でなければならない。
+
+すなわち:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{関係（閉鎖条件）は同次}
+\NormalTok{生成子は零次同次 K(λZ)=K(Z)}
+\NormalTok{状態写像は一次同次}
+\NormalTok{読出しは比率量のみ}
+\end{Highlighting}
+\end{Shaded}
+
+系の内部から絶対スケールを測定する手段は存在しない。
+
+本公理は、公理0（無名性）と同格の証明不能な形成規則である。両者は『名前も無い、スケールも無い------読めるのは関係と比率だけ』という単一の思想の条項である。
+
+共変性群 \texttt{C*} のコンパクト部分 \texttt{\textbar{}λ\textbar{}=1}
+は零閉鎖の共通位相不変性であり、位相の読出し不能性（公理5）とスケールの読出し不能性は、同じ一つの群の偏角部分と絶対値部分である。
+
+公理1の右辺零は、族
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_n x\_n\^{}2=c}
+\end{Highlighting}
+\end{Shaded}
+
+の中で本公理と両立する唯一の選択である。
+
+初出と導入の議論は第5論文による。Concept DOI: 10.5281/zenodo.21486233
+
+理論背景: \texttt{x\_n=q\_n+ip\_n}
+と分解すると、公理1の虚部はスケール変換の生成子（ディラテーション）\texttt{Σq\_np\_n}
+が零という条件であり、スケール自由度の恒等的消去は閉鎖に内蔵されている。この観察を含む幾何学的整理は解説ノートによる。Concept
+DOI: 10.5281/zenodo.21495305
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{公理0.6:
+次元別中心投影読出し}\label{ux516cux74060.6-ux6b21ux5143ux5225ux4e2dux5fc3ux6295ux5f71ux8aadux51faux3057}
+
+分類: 補助幾何公理（v7
+までの公理0.5。スケール無名性の公理0.5への配置に伴い改番。本文の変更はない）
+
+単一軸上の読出しでは曲率補正を導入しない。
+
+曲率補正候補は、独立な二方向以上が面積、体積、閉路、または輸送不一致を形成する場合に限り導入する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{公理1:
+全正符号ゼロ閉鎖}\label{ux516cux74061-ux5168ux6b63ux7b26ux53f7ux30bcux30edux9589ux9396}
+
+分類: 公理
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_\{n=1\}\^{}\{N\}x\_n\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+展開形:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_1\^{}2+x\_2\^{}2+\textbackslash{}cdots+x\_N\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+係数符号:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{全項 +}
+\end{Highlighting}
+\end{Shaded}
+
+非採用:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_n |x\_n|\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+閉鎖に用いる項:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_n\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+閉鎖に用いない項:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_n\textbackslash{}bar\{x\}\_n}
+\end{Highlighting}
+\end{Shaded}
+
+適用状態:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{定常閉鎖状態}
+\NormalTok{安定閉鎖状態}
+\end{Highlighting}
+\end{Shaded}
+
+準定常状態:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{外部影響直後}
+\NormalTok{閉鎖回復過程}
+\NormalTok{準安定状態}
+\end{Highlighting}
+\end{Shaded}
+
+準定常状態における一時的な非ゼロ閉鎖残差:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_n x\_n\^{}2\textbackslash{}ne0}
+\end{Highlighting}
+\end{Shaded}
+
+定常化後:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_n x\_n\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+理論背景:
+本閉鎖の解集合は複素等方錐であり、非自明解には虚部が必須である。公理0.5による射影化のもとで状態空間は射影クアドリック（コンパクトケーラー多様体）となり、コンパクト性により離散スペクトルと有限次元状態空間が幾何から従う。既知数学によるこの同定の解説は解説ノートによる。Concept
+DOI: 10.5281/zenodo.21495305
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{公理2:
+非自明存在}\label{ux516cux74062-ux975eux81eaux660eux5b58ux5728}
+
+分類: 公理
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}exists n,\textbackslash{}quad x\_n\textbackslash{}neq0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{公理3:
+投影軸縮退と虚数方向読出し}\label{ux516cux74063-ux6295ux5f71ux8ef8ux7e2eux9000ux3068ux865aux6570ux65b9ux5411ux8aadux51faux3057}
+
+分類: 公理
+
+投影法により内在座標系が構成されるとき、投影軸方向は、その内在座標系の住民から方向として判別されない。
+
+ただし、投影軸方向の値が閉鎖条件内に残る場合、その値を消去しない。
+
+投影軸方向の補償量を \texttt{z} と読むとき、内在座標系ではこれを
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{iz}
+\end{Highlighting}
+\end{Shaded}
+
+として扱う。
+
+この成分は一次方向としては観測不能である。
+
+閉鎖式内で二乗されると、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(iz)\^{}2={-}z\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+となる。
+
+したがって、投影軸方向の観測不能な補償量は、二乗読出しを通じて、符号反転した補償量として内在座標系に現れる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{2.
+第一原理からの帰結}\label{ux7b2cux4e00ux539fux7406ux304bux3089ux306eux5e30ux7d50}
+
+\subsection{帰結1:
+実数正定値成分の不足}\label{ux5e30ux7d501-ux5b9fux6570ux6b63ux5b9aux5024ux6210ux5206ux306eux4e0dux8db3}
+
+分類: 導出済み帰結
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_n\textbackslash{}in\textbackslash{}mathbb\{R\}}
+\NormalTok{\textbackslash{}Rightarrow}
+\NormalTok{x\_n\^{}2\textbackslash{}ge0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_n x\_n\^{}2=0}
+\NormalTok{\textbackslash{}Rightarrow}
+\NormalTok{x\_n=0\textbackslash{}quad\textbackslash{}forall n}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{帰結2:
+符号反転の内部生成}\label{ux5e30ux7d502-ux7b26ux53f7ux53cdux8ee2ux306eux5185ux90e8ux751fux6210}
+
+分類: 導出済み帰結
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_1=A,\textbackslash{}qquad x\_2=iA}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_1\^{}2+x\_2\^{}2=A\^{}2+(iA)\^{}2=A\^{}2{-}A\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{i\^{}2={-}1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{帰結3:
+位相代数の必要性}\label{ux5e30ux7d503-ux4f4dux76f8ux4ee3ux6570ux306eux5fc5ux8981ux6027}
+
+分類: 導出済み帰結
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_n=r\_n e\^{}\{i\textbackslash{}phi\_n\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_n\^{}2=r\_n\^{}2e\^{}\{i2\textbackslash{}phi\_n\}}
+\end{Highlighting}
+\end{Shaded}
+
+閉鎖条件:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_\{n=1\}\^{}\{N\}r\_n\^{}2e\^{}\{i2\textbackslash{}phi\_n\}=0}
+\end{Highlighting}
+\end{Shaded}
+
+等振幅条件:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{r\_n=r}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_\{n=1\}\^{}\{N\}e\^{}\{i2\textbackslash{}phi\_n\}=0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{帰結4:
+型無名性}\label{ux5e30ux7d504-ux578bux7121ux540dux6027}
+
+分類: 導出済み帰結
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_n\textbackslash{}in\textbackslash{}mathbb\{C\}\textbackslash{}quad\textbackslash{}forall n}
+\end{Highlighting}
+\end{Shaded}
+
+または、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{全成分に同一の位相代数型を与える}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{帰結5:
+90度位相差}\label{ux5e30ux7d505-90ux5ea6ux4f4dux76f8ux5dee}
+
+分類: 導出済み帰結
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A\^{}2+(iA)\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+\section{3.
+無名等振幅複合波}\label{ux7121ux540dux7b49ux632fux5e45ux8907ux5408ux6ce2}
+
+\subsection{公理4:
+無名等振幅複合波}\label{ux516cux74064-ux7121ux540dux7b49ux632fux5e45ux8907ux5408ux6ce2}
+
+分類: 公理
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_N=\textbackslash{}frac\{A\_0\}\{N\}\textbackslash{}sum\_\{k=1\}\^{}\{N\}e\^{}\{i\textbackslash{}theta\_k\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{|\textbackslash{}psi\_k|=\textbackslash{}frac\{A\_0\}\{N\}}
+\end{Highlighting}
+\end{Shaded}
+
+同相整列時:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}max|\textbackslash{}Psi\_N|=A\_0}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{公理5:
+個別位相不可読}\label{ux516cux74065-ux500bux5225ux4f4dux76f8ux4e0dux53efux8aad}
+
+分類: 公理
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}theta\_k\textbackslash{}rightarrow\textbackslash{}theta\_k+\textbackslash{}alpha}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{公理6:
+位相差読出し}\label{ux516cux74066-ux4f4dux76f8ux5deeux8aadux51faux3057}
+
+分類: 公理
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_\{ij\}=\textbackslash{}theta\_i{-}\textbackslash{}theta\_j}
+\end{Highlighting}
+\end{Shaded}
+
+読出し可能なペアチャンネル数:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}binom\{N\}\{2\}=\textbackslash{}frac\{N(N{-}1)\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{公理7:
+系同一視}\label{ux516cux74067-ux7cfbux540cux4e00ux8996}
+
+分類: 公理
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(N,A\_0,\textbackslash{}\{\textbackslash{}Delta\_\{ij\}\textbackslash{}\})}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{公理8:
+合成位相射影}\label{ux516cux74068-ux5408ux6210ux4f4dux76f8ux5c04ux5f71}
+
+分類: 公理
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S\_N=\textbackslash{}sum\_k e\^{}\{i\textbackslash{}theta\_k\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_N=\textbackslash{}frac\{A\_0\}\{N\}S\_N}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Theta\_N=\textbackslash{}arg\textbackslash{}Psi\_N}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{公理9:
+反転対称性非要請}\label{ux516cux74069-ux53cdux8ee2ux5bfeux79f0ux6027ux975eux8981ux8acb}
+
+分類: 公理
+
+反転対称性を要求しない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{4. 外部読出し}\label{ux5916ux90e8ux8aadux51faux3057}
+
+\subsection{公理10:
+外部軸応答}\label{ux516cux740610-ux5916ux90e8ux8ef8ux5fdcux7b54}
+
+分類: 公理候補
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{M\_\textbackslash{}alpha=e\^{}\{i\textbackslash{}alpha\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Y(\textbackslash{}alpha)=\textbackslash{}frac\{A\_0\}\{N\}\textbackslash{}sum\_\{k=1\}\^{}\{N\}e\^{}\{i(\textbackslash{}theta\_k{-}\textbackslash{}alpha)\}}
+\NormalTok{=e\^{}\{{-}i\textbackslash{}alpha\}\textbackslash{}Psi\_N}
+\end{Highlighting}
+\end{Shaded}
+
+連続応答:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S\_N(\textbackslash{}alpha)=\textbackslash{}operatorname\{Re\}\textbackslash{}left[\textbackslash{}frac\{1\}\{N\}\textbackslash{}sum\_\{k=1\}\^{}\{N\}e\^{}\{i(\textbackslash{}theta\_k{-}\textbackslash{}alpha)\}\textbackslash{}right]}
+\end{Highlighting}
+\end{Shaded}
+
+二値応答:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S\_N(\textbackslash{}alpha)=\textbackslash{}operatorname\{sgn\}\textbackslash{}operatorname\{Re\}\textbackslash{}left[\textbackslash{}frac\{1\}\{N\}\textbackslash{}sum\_\{k=1\}\^{}\{N\}e\^{}\{i(\textbackslash{}theta\_k{-}\textbackslash{}alpha)\}\textbackslash{}right]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{公理11:
+外部読出し位相}\label{ux516cux740611-ux5916ux90e8ux8aadux51faux3057ux4f4dux76f8}
+
+分類: 公理候補
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\textbackslash{}phi\_\textbackslash{}mu=\textbackslash{}phi\_\textbackslash{}mu\^{}\{(\textbackslash{}Psi)\}{-}\textbackslash{}phi\_\textbackslash{}mu\^{}\{(M)\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}mu=x,y,z,t}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{公理12:
+位置位相読出し}\label{ux516cux740612-ux4f4dux7f6eux4f4dux76f8ux8aadux51faux3057}
+
+分類: 公理候補
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x,y,z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{公理13:
+時間位相読出し}\label{ux516cux740613-ux6642ux9593ux4f4dux76f8ux8aadux51faux3057}
+
+分類: 公理候補
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}phi\_t\textbackslash{}equiv\textbackslash{}omega t\_\{\textbackslash{}mathrm\{read\}\}\textbackslash{}pmod\{2\textbackslash{}pi\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{公理14:
+被覆位相}\label{ux516cux740614-ux88abux8986ux4f4dux76f8}
+
+分類: 公理候補
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{2π 周期読出し}
+\NormalTok{4π 周期読出し}
+\NormalTok{巻数差読出し}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{5.
+観測位相離散性}\label{ux89b3ux6e2cux4f4dux76f8ux96e2ux6563ux6027}
+
+\subsection{公理15:
+観測位相離散性}\label{ux516cux740615-ux89b3ux6e2cux4f4dux76f8ux96e2ux6563ux6027}
+
+分類: 公理候補
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_\{\textbackslash{}mathrm\{cycle\}\}\textbackslash{}Delta\textbackslash{}phi=2\textbackslash{}pi m,\textbackslash{}qquad m\textbackslash{}in\textbackslash{}mathbb\{Z\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{W=\textbackslash{}frac\{1\}\{2\textbackslash{}pi\}\textbackslash{}oint d\textbackslash{}phi,\textbackslash{}qquad W\textbackslash{}in\textbackslash{}mathbb\{Z\}}
+\end{Highlighting}
+\end{Shaded}
+
+読出しセル形式:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}phi\_\{\textbackslash{}mathrm\{obs\}\}=m\textbackslash{}epsilon\_\textbackslash{}phi,\textbackslash{}qquad m\textbackslash{}in\textbackslash{}mathbb\{Z\}}
+\end{Highlighting}
+\end{Shaded}
+
+位相面積候補:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Q\_\textbackslash{}phi=\textbackslash{}sum\_\{i\textless{}j\}\textbackslash{}sin\^{}2\textbackslash{}frac\{\textbackslash{}Delta\_\{ij\}\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{6. 波形・局在}\label{ux6ce2ux5f62ux5c40ux5728}
+
+\subsection{作業公理A:
+状態波形}\label{ux4f5cux696dux516cux7406a-ux72b6ux614bux6ce2ux5f62}
+
+分類: 作業仮説
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A(\textbackslash{}theta)=\textbackslash{}sum\_n A\_n\textbackslash{}cos(n\textbackslash{}theta+\textbackslash{}phi\_n)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Z(\textbackslash{}theta)=\textbackslash{}sum\_n r\_n e\^{}\{i(n\textbackslash{}theta+\textbackslash{}phi\_n)\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{定義A1:
+正規化等振幅奇数倍音局在波}\label{ux5b9aux7fa9a1-ux6b63ux898fux5316ux7b49ux632fux5e45ux5947ux6570ux500dux97f3ux5c40ux5728ux6ce2}
+
+分類: 定義
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{N\_h=2K{-}1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S\_\{N\_h\}(u)=\textbackslash{}frac\{1\}\{K\}\textbackslash{}sum\_\{m=0\}\^{}\{K{-}1\}\textbackslash{}cos((2m+1)u)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Z\_\{N\_h\}(u)=\textbackslash{}frac\{1\}\{K\}\textbackslash{}sum\_\{m=0\}\^{}\{K{-}1\}e\^{}\{i(2m+1)u\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{N\_h\}(u)=A S\_\{N\_h\}(u)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{N\_h\}(u)=A Z\_\{N\_h\}(u)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}frac\{A\}\{K\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{定理A1:
+代表振幅保存}\label{ux5b9aux7406a1-ux4ee3ux8868ux632fux5e45ux4fddux5b58}
+
+分類: 導出済み定理
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S\_\{N\_h\}(0)=1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi\_\{N\_h\}(0)=A}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{定理A2:
+最高奇数倍音次数と局在幅}\label{ux5b9aux7406a2-ux6700ux9ad8ux5947ux6570ux500dux97f3ux6b21ux6570ux3068ux5c40ux5728ux5e45}
+
+分類: 導出済み定理
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{K=\textbackslash{}frac\{N\_h+1\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}lambda\_\{N\_h\}=\textbackslash{}frac\{\textbackslash{}lambda\_0\}\{N\_h\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta x\_\{N\_h\}\textbackslash{}propto\textbackslash{}frac\{\textbackslash{}lambda\_0\}\{N\_h\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{N\_\{h,\textbackslash{}rm req\}\textbackslash{}sim\textbackslash{}frac\{\textbackslash{}lambda\_0\}\{\textbackslash{}Delta x\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{N\_\{h,\textbackslash{}rm req\}\^{}\{(t)\}\textbackslash{}sim\textbackslash{}frac\{T\_0\}\{\textbackslash{}Delta t\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{帰結A1:
+空間・時間局在の同一構成}\label{ux5e30ux7d50a1-ux7a7aux9593ux6642ux9593ux5c40ux5728ux306eux540cux4e00ux69cbux6210}
+
+分類: 導出済み帰結
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Psi(\textbackslash{}chi,\textbackslash{}tau)=A S\_\{N\_\{h,\textbackslash{}chi\}\}(\textbackslash{}chi{-}\textbackslash{}chi\_0)S\_\{N\_\{h,\textbackslash{}tau\}\}(\textbackslash{}tau{-}\textbackslash{}tau\_0)e\^{}\{i\textbackslash{}phi\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{作業公理B:
+局在}\label{ux4f5cux696dux516cux7406b-ux5c40ux5728}
+
+分類: 作業仮説
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{S\_\{N\_h\}(u)=\textbackslash{}frac\{1\}\{K\}\textbackslash{}sum\_\{m=0\}\^{}\{K{-}1\}\textbackslash{}cos((2m+1)u)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Z\_\{N\_h\}(u)=\textbackslash{}frac\{1\}\{K\}\textbackslash{}sum\_\{m=0\}\^{}\{K{-}1\}e\^{}\{i(2m+1)u\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{作業公理C:
+結合入口}\label{ux4f5cux696dux516cux7406c-ux7d50ux5408ux5165ux53e3}
+
+分類: 作業仮説
+
+相互作用の入口は低次ベース位相の整合である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{作業公理D:
+観測写像}\label{ux4f5cux696dux516cux7406d-ux89b3ux6e2cux5199ux50cf}
+
+分類: 作業仮説
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s\_\textbackslash{}alpha=\textbackslash{}mathrm\{Loc\}\textbackslash{}left[\textbackslash{}int A(\textbackslash{}theta)M\_\textbackslash{}alpha(\textbackslash{}theta)d\textbackslash{}theta\textbackslash{}right]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{作業公理E:
+相関強度二乗}\label{ux4f5cux696dux516cux7406e-ux76f8ux95a2ux5f37ux5ea6ux4e8cux4e57}
+
+分類: 作業仮説
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P(\textbackslash{}alpha)=\textbackslash{}frac\{|C\_\textbackslash{}alpha|\^{}2\}\{\textbackslash{}sum\_\textbackslash{}beta |C\_\textbackslash{}beta|\^{}2\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{作業公理F:
+低次ベース同期共有}\label{ux4f5cux696dux516cux7406f-ux4f4eux6b21ux30d9ux30fcux30b9ux540cux671fux5171ux6709}
+
+分類: 作業仮説
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}theta\_A{-}\textbackslash{}theta\_B=\textbackslash{}Delta}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{作業公理G:
+同期復調不能化}\label{ux4f5cux696dux516cux7406g-ux540cux671fux5fa9ux8abfux4e0dux80fdux5316}
+
+分類: 作業仮説
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{V(t)=\textbackslash{}left|\textbackslash{}sum\_n w\_n e\^{}\{i\textbackslash{}epsilon\_n(t)\}\textbackslash{}right|}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{V(t)=\textbackslash{}left|\textbackslash{}sum\_n w\_n e\^{}\{{-}\textbackslash{}frac12\textbackslash{}sigma\_n\^{}2(t)\}\textbackslash{}right|}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{作業公理H:
+階層性}\label{ux4f5cux696dux516cux7406h-ux968eux5c64ux6027}
+
+分類: 作業仮説
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{低次ベースモード}
+\NormalTok{+ 高次局在モード}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{7.
+読出し・記憶・複素表示}\label{ux8aadux51faux3057ux8a18ux61b6ux8907ux7d20ux8868ux793a}
+
+\subsection{I/Q 読出し}\label{iq-ux8aadux51faux3057}
+
+分類: 理論的知見
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z=a+ib}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a=r\textbackslash{}cos\textbackslash{}theta,\textbackslash{}qquad b=r\textbackslash{}sin\textbackslash{}theta}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{u=r\textbackslash{}cos\textbackslash{}theta+r\textbackslash{}sin\textbackslash{}theta}
+\NormalTok{=\textbackslash{}sqrt2 r\textbackslash{}cos\textbackslash{}left(\textbackslash{}theta{-}\textbackslash{}frac\{\textbackslash{}pi\}\{4\}\textbackslash{}right)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{倍音情報読出し}\label{ux500dux97f3ux60c5ux5831ux8aadux51faux3057}
+
+分類: 理論的知見
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Z(\textbackslash{}theta)=\textbackslash{}sum\_n r\_n e\^{}\{i(n\textbackslash{}theta+\textbackslash{}phi\_n)\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P(Z)=\textbackslash{}operatorname\{Re\}(Z)+\textbackslash{}operatorname\{Im\}(Z)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{P(Z)=\textbackslash{}sum\_n \textbackslash{}sqrt2 r\_n}
+\NormalTok{\textbackslash{}cos\textbackslash{}left(n\textbackslash{}theta+\textbackslash{}phi\_n{-}\textbackslash{}frac\{\textbackslash{}pi\}\{4\}\textbackslash{}right)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{保存量側と読出し側}\label{ux4fddux5b58ux91cfux5074ux3068ux8aadux51faux3057ux5074}
+
+分類: 理論的知見
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z\textbackslash{}bar z=a\^{}2+b\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z\^{}2=a\^{}2{-}b\^{}2+2iab}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{二乗レジストリ}\label{ux4e8cux4e57ux30ecux30b8ux30b9ux30c8ux30ea}
+
+分類: 作業仮説
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}mathcal\{A\}\_0=\textbackslash{}sum\_k A\_k\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a\_0=\textbackslash{}sum\_k |A\_k|\^{}2=\textbackslash{}sum\_k A\_k\textbackslash{}bar A\_k}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{8. 統計分類}\label{ux7d71ux8a08ux5206ux985e}
+
+\subsection{ペア位相差}\label{ux30daux30a2ux4f4dux76f8ux5dee}
+
+分類: 定義
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_\{ij\}=\textbackslash{}theta\_i{-}\textbackslash{}theta\_j}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}binom\{N\}\{2\}=\textbackslash{}frac\{N(N{-}1)\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
+
+ペア合成:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}psi\_i+\textbackslash{}psi\_j}
+\NormalTok{=2A\textbackslash{}cos\textbackslash{}frac\{\textbackslash{}Delta\_\{ij\}\}\{2\}e\^{}\{i(\textbackslash{}theta\_i+\textbackslash{}theta\_j)/2\}}
+\end{Highlighting}
+\end{Shaded}
+
+ペア干渉強度:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{I\_\{ij\}=4A\^{}2\textbackslash{}cos\^{}2\textbackslash{}frac\{\textbackslash{}Delta\_\{ij\}\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{重なり度}\label{ux91cdux306aux308aux5ea6}
+
+分類: 定義
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{R\_N=\textbackslash{}left|\textbackslash{}frac\{A\_0\}\{N\}\textbackslash{}sum\_\{k=1\}\^{}\{N\}e\^{}\{i\textbackslash{}theta\_k\}\textbackslash{}right|}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}rho\_N=\textbackslash{}frac\{R\_N\}\{A\_0\}}
+\NormalTok{=\textbackslash{}frac\{1\}\{N\}\textbackslash{}left|\textbackslash{}sum\_\{k=1\}\^{}\{N\}e\^{}\{i\textbackslash{}theta\_k\}\textbackslash{}right|}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{0\textbackslash{}le\textbackslash{}rho\_N\textbackslash{}le1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{フェルミオン度}\label{ux30d5ux30a7ux30ebux30dfux30aaux30f3ux5ea6}
+
+分類: 定義
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{F\_N=}
+\NormalTok{\textbackslash{}frac\{2\}\{N(N{-}1)\}}
+\NormalTok{\textbackslash{}sum\_\{i\textless{}j\}\textbackslash{}sin\^{}2\textbackslash{}frac\{\textbackslash{}Delta\_\{ij\}\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B\_N=1{-}F\_N}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B\_N=}
+\NormalTok{\textbackslash{}frac\{2\}\{N(N{-}1)\}}
+\NormalTok{\textbackslash{}sum\_\{i\textless{}j\}\textbackslash{}cos\^{}2\textbackslash{}frac\{\textbackslash{}Delta\_\{ij\}\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{F\_N=\textbackslash{}frac\{N\}\{2(N{-}1)\}(1{-}\textbackslash{}rho\_N\^{}2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{9.
+観測選択・曲率射影}\label{ux89b3ux6e2cux9078ux629eux66f2ux7387ux5c04ux5f71}
+
+\subsection{公理16:
+完全二体関係波による一意観測選択}\label{ux516cux740616-ux5b8cux5168ux4e8cux4f53ux95a2ux4fc2ux6ce2ux306bux3088ux308bux4e00ux610fux89b3ux6e2cux9078ux629e}
+
+分類: 観測接続公理
+
+本公理は、公理0および公理1から未導出の独立な観測原理である。
+
+成分数を \texttt{N}
+とする閉鎖系に対し、固有名を持たない無順序の完全二体関係集合を
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}mathcal E\_N}
+\NormalTok{=\textbackslash{}left\textbackslash{}\{\textbackslash{}\{i,j\textbackslash{}\}\textbackslash{}mid 1\textbackslash{}le i\textless{}j\textbackslash{}le N\textbackslash{}right\textbackslash{}\}}
+\end{Highlighting}
+\end{Shaded}
+
+とする。
+
+各関係
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{e=\textbackslash{}\{i,j\textbackslash{}\}\textbackslash{}in\textbackslash{}mathcal E\_N}
+\end{Highlighting}
+\end{Shaded}
+
+に対応する
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X\_e\textbackslash{}in\textbackslash{}mathbb C}
+\end{Highlighting}
+\end{Shaded}
+
+を、観測器チャンネルではなく、系を構成する物理的な関係波とする。
+
+関係波 \texttt{X\_e}
+は、成分波から導出される量ではなく、独立な物理状態成分である。成分波との対応写像は、本公理では指定しない。
+
+関係波状態を
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X\_\{\textbackslash{}mathcal E\}}
+\NormalTok{=\textbackslash{}left(X\_e\textbackslash{}right)\_\{e\textbackslash{}in\textbackslash{}mathcal E\_N\}}
+\end{Highlighting}
+\end{Shaded}
+
+と書く。
+
+個体名の置換は関係波の置換として作用し、閉鎖式、更新則、観測選択を変更しない。
+
+関係波集合の二次形式を
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{q\_\{\textbackslash{}mathcal E\}(X)}
+\NormalTok{=\textbackslash{}sum\_\{e\textbackslash{}in\textbackslash{}mathcal E\_N\}X\_e\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+とする。
+
+関係波の閉鎖は、公理3の補償量を用いて
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}sum\_\{e\textbackslash{}in\textbackslash{}mathcal E\_N\}X\_e\^{}2+(iR)\^{}2=0}
+\end{Highlighting}
+\end{Shaded}
+
+と書く。右辺へ移した表示
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{q\_\{\textbackslash{}mathcal E\}(X)=R\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+を用いてよい。
+
+関係波数を
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{M=\textbackslash{}left|\textbackslash{}mathcal E\_N\textbackslash{}right|}
+\end{Highlighting}
+\end{Shaded}
+
+とし、全関係波へ同一に作用する実係数生成子を
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{K\textbackslash{}in\textbackslash{}mathbb R\^{}\{M\textbackslash{}times M\}}
+\end{Highlighting}
+\end{Shaded}
+
+とする。
+
+関係波 \texttt{X\_e} は複素数のままであり、\texttt{K}
+はその実部と虚部へ同一の実係数変換として作用する。
+
+関係波の局所線形更新を
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}dot X=KX}
+\end{Highlighting}
+\end{Shaded}
+
+と書き、この更新が二次形式を恒等的に保存する場合、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}frac\{d\}\{d\textbackslash{}tau\}q\_\{\textbackslash{}mathcal E\}(X)}
+\NormalTok{=X\^{}\{\textbackslash{}mathsf T\}\textbackslash{}left(K\^{}\{\textbackslash{}mathsf T\}+K\textbackslash{}right)X}
+\NormalTok{=0}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+したがって、関係波の閉鎖保存生成子は
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{K\^{}\{\textbackslash{}mathsf T\}={-}K}
+\end{Highlighting}
+\end{Shaded}
+
+を満たす。
+
+この反対称性は、特定の物理名または特定の軸名から導入しない。
+
+実反対称生成子は、追加の固有名、特権軸、外部基準なしに、二次元回転平面の直和と零空間へ分解できる。
+
+回転平面数を
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{r=\textbackslash{}frac12\textbackslash{}operatorname\{rank\}K}
+\end{Highlighting}
+\end{Shaded}
+
+零空間次元を
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}dim\textbackslash{}ker K=M{-}2r}
+\end{Highlighting}
+\end{Shaded}
+
+とする。
+
+内在観測可能方向の採用条件を次で定める。
+
+第一に、回転平面は、独立な回転周波数という関係量によって相互に区別できる場合に限り、別方向の候補となる。区別可能性は必要条件であり、単独では空間方向としての採用を許可しない。
+
+第二に、二つの独立な関係方向が張る面から法線方向を読む場合、法線候補空間が一次元である場合に限り、法線を符号を除いて一意な方向として採用できる。空間方向表示を実
+\texttt{d} 次元とすると、法線候補空間の次元は
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d{-}2}
+\end{Highlighting}
+\end{Shaded}
+
+であり、この条件は
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d=3}
+\end{Highlighting}
+\end{Shaded}
+
+の場合に限り成立する。
+
+第三に、内在観測可能方向の数は、関係波数
+\texttt{M}、生成子ランク、零空間次元から数えない。上の一意性条件を満たす方向の数として数える。
+
+最小例は \texttt{M=3} であり、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}operatorname\{rank\}K=2,}
+\NormalTok{\textbackslash{}qquad}
+\NormalTok{\textbackslash{}dim\textbackslash{}ker K=1}
+\end{Highlighting}
+\end{Shaded}
+
+のとき、一回転平面の二方向と、その面から一意に定まる一法線方向の、計三方向を採用できる。
+
+\texttt{M=6}
+で三つの回転平面が独立な回転周波数によって区別される場合、三方向を採用できる。
+
+区別可能な回転平面の数が、第二の一意性条件を満たす空間方向表示の範囲を超える場合、超える回転平面は空間方向として採用せず、内部位相モードとして保持する。
+
+複数の同型な回転平面、または二次元以上の法線候補空間もしくは零空間が残り、その内部の方向を関係量だけで区別できない場合、いずれか一つの方向を観測可能な空間方向として選択してはならない。そのような残余は、一意な基底を持たない内部部分空間として保持する。
+
+各関係波の原始読出しは、公理6の位相差
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}Delta\_\{ij\}=\textbackslash{}theta\_i{-}\textbackslash{}theta\_j}
+\end{Highlighting}
+\end{Shaded}
+
+および、公理1の二乗形式
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{q(X)=\textbackslash{}sum\_n X\_n\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+から得られる双線形関係
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{B(U,V)}
+\NormalTok{=\textbackslash{}frac\{1\}\{2\}\textbackslash{}left(q(U+V){-}q(U){-}q(V)\textbackslash{}right)}
+\end{Highlighting}
+\end{Shaded}
+
+によって構成する。
+
+三体以上の読出しは、完全二体関係波の集合と、その閉鎖保存生成子の不変分解から構成する。
+
+物理名、対象名、次元名を理由として、独立な高次読出し規則を追加してはならない。
+
+関係波生成子の具体的な結合強度、位相差依存性、更新周期は本公理で指定しない。
+
+これらは、公理0、公理0.5、公理1および本公理に整合する独立な関係更新則として定義する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{作業公理I:
+位相差正弦関係更新則}\label{ux4f5cux696dux516cux7406i-ux4f4dux76f8ux5deeux6b63ux5f26ux95a2ux4fc2ux66f4ux65b0ux5247}
+
+分類: 作業仮説
+
+公理16の関係波生成子の具体形として、端点共有隣接
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A\_\{ef\}}
+\NormalTok{=}
+\NormalTok{\textbackslash{}begin\{cases\}}
+\NormalTok{1,\& e\textbackslash{}ne f\textbackslash{} \textbackslash{}text\{かつ\}\textbackslash{} e\textbackslash{}cap f\textbackslash{}ne\textbackslash{}varnothing,\textbackslash{}\textbackslash{}}
+\NormalTok{0,\& \textbackslash{}text\{それ以外\}}
+\NormalTok{\textbackslash{}end\{cases\}}
+\end{Highlighting}
+\end{Shaded}
+
+と初期位相 \texttt{theta\_e\ =\ arg\ X\_e} から、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}widetilde K\_\{ef\}}
+\NormalTok{=}
+\NormalTok{A\_\{ef\}\textbackslash{}sin(\textbackslash{}theta\_f{-}\textbackslash{}theta\_e)}
+\end{Highlighting}
+\end{Shaded}
+
+を置く。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}widetilde K\^{}\{\textbackslash{}mathsf T\}={-}\textbackslash{}widetilde K}
+\end{Highlighting}
+\end{Shaded}
+
+であり、公理16の反対称条件を満たす。
+
+この結合則は、公理0、公理0.5、公理1、公理16から導出された規則ではない。閉鎖を保存する具体的な関係更新則の一つとして置く作業仮説である。なお本生成子は位相差のみの関数として零次同次であり、公理0.5を無調整で満たす（第5論文
+定理3。Concept DOI: 10.5281/zenodo.21486233）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{帰結16.1:
+頂点分解とランク線形上界}\label{ux5e30ux7d5016.1-ux9802ux70b9ux5206ux89e3ux3068ux30e9ux30f3ux30afux7ddaux5f62ux4e0aux754c}
+
+分類: 導出済み帰結（作業公理Iのもとで）
+
+個体を行、関係を列とする符号なし接続行列を \texttt{B} とし、その第
+\texttt{k} 行から
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{c\_k=(B\_\{ke\}\textbackslash{}cos\textbackslash{}theta\_e)\_\{e\},}
+\NormalTok{\textbackslash{}qquad}
+\NormalTok{s\_k=(B\_\{ke\}\textbackslash{}sin\textbackslash{}theta\_e)\_\{e\}}
+\end{Highlighting}
+\end{Shaded}
+
+を作ると、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}widetilde K=\textbackslash{}sum\_\{k=1\}\^{}\{N\}\textbackslash{}left(c\_k s\_k\^{}\{\textbackslash{}mathsf T\}{-}s\_k c\_k\^{}\{\textbackslash{}mathsf T\}\textbackslash{}right)}
+\end{Highlighting}
+\end{Shaded}
+
+が厳密に成立する。
+
+各項はランク2以下の反対称行列であるから、全ての \texttt{N}
+と全ての初期位相に対し、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}operatorname\{rank\}\textbackslash{}widetilde K}
+\NormalTok{\textbackslash{}le}
+\NormalTok{2\textbackslash{}min\textbackslash{}!\textbackslash{}left(N,\textbackslash{}left\textbackslash{}lfloor\textbackslash{}frac\{M\}\{2\}\textbackslash{}right\textbackslash{}rfloor\textbackslash{}right)}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+関係波数は
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{M=\textbackslash{}binom\{N\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
+
+で二乗的に増えるが、回転モード数
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{r=\textbackslash{}frac12\textbackslash{}operatorname\{rank\}\textbackslash{}widetilde K}
+\end{Highlighting}
+\end{Shaded}
+
+は高々線形である。
+
+証明は第3論文による。Concept DOI: 10.5281/zenodo.21465898
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{帰結16.2:
+一般位置ランク等号}\label{ux5e30ux7d5016.2-ux4e00ux822cux4f4dux7f6eux30e9ux30f3ux30afux7b49ux53f7}
+
+分類:
+導出済み帰結（計算機援用証明、\texttt{3\ \textless{}=\ N\ \textless{}=\ 12}）
+
+\texttt{3\ \textless{}=\ N\ \textless{}=\ 12} の各 \texttt{N}
+について、Lebesgue測度零の例外集合を除く全ての初期位相で、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}operatorname\{rank\}\textbackslash{}widetilde K}
+\NormalTok{=}
+\NormalTok{2\textbackslash{}min\textbackslash{}!\textbackslash{}left(N,\textbackslash{}left\textbackslash{}lfloor\textbackslash{}frac\{M\}\{2\}\textbackslash{}right\textbackslash{}rfloor\textbackslash{}right)}
+\end{Highlighting}
+\end{Shaded}
+
+が成立する。
+
+証明は、tan半角パラメータによる厳密有理数の証人配置と、非自明な実解析関数の零点集合がLebesgue測度零であることの組合せによる。第3論文による。Concept
+DOI: 10.5281/zenodo.21465898
+
+このとき一般位置の零空間次元は、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}dim\textbackslash{}ker\textbackslash{}widetilde K}
+\NormalTok{=}
+\NormalTok{M{-}2\textbackslash{}min\textbackslash{}!\textbackslash{}left(N,\textbackslash{}left\textbackslash{}lfloor\textbackslash{}frac\{M\}\{2\}\textbackslash{}right\textbackslash{}rfloor\textbackslash{}right)}
+\end{Highlighting}
+\end{Shaded}
+
+であり、\texttt{N\ \textgreater{}=\ 5} では
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}frac\{N(N{-}5)\}\{2\}}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+全 \texttt{N} での等号は新仮説であり、本帰結には含めない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{帰結16.3:
+法線一意性}\label{ux5e30ux7d5016.3-ux6cd5ux7ddaux4e00ux610fux6027}
+
+分類: 導出済み帰結
+
+二つの一次独立な関係方向が張る面から、追加の背景軸または選択規則なしに法線方向を再構成する場合、実
+\texttt{d} 次元表示の法線候補空間は
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d{-}2}
+\end{Highlighting}
+\end{Shaded}
+
+次元であり、法線が符号を除いて一意に定まるのは
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d=3}
+\end{Highlighting}
+\end{Shaded}
+
+の場合に限る。
+
+\texttt{d\ \textgreater{}=\ 4}
+では、面を固定したまま法線候補空間に作用する直交群
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{O(d{-}2)}
+\end{Highlighting}
+\end{Shaded}
+
+の選択自由度が残り、無名性（公理0）のもとで一本を選べない。射影子と二乗量は一意に定まるが、内部の各一次方向は一意に定まらない。
+
+本帰結は、公理16の第二採用条件の根拠である。証明は第3論文による。Concept
+DOI: 10.5281/zenodo.21465898
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{帰結16.4:
+固定生成子の平面分解と運動学的同型}\label{ux5e30ux7d5016.4-ux56faux5b9aux751fux6210ux5b50ux306eux5e73ux9762ux5206ux89e3ux3068ux904bux52d5ux5b66ux7684ux540cux578b}
+
+分類: 導出済み帰結（固定生成子のもとで）
+
+固定された閉鎖保存生成子は、二次元回転平面の直和と零空間へ分解される。Cayley型の直交更新は、各回転平面上で一定角
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}theta\_j=2\textbackslash{}arctan(\textbackslash{}gamma\textbackslash{}sigma\_j)}
+\end{Highlighting}
+\end{Shaded}
+
+の回転として作用し、零空間上では恒等写像として作用する。したがって各平面の座標は一定振幅の単一周波数回転となり、二体一関係の回転運動学と同型である。
+
+各平面の向きは、生成子自身が
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Kp\_j=\textbackslash{}sigma\_j q\_j}
+\end{Highlighting}
+\end{Shaded}
+
+によって定める。標準形を保つ残余ゲージは \texttt{SO(2)}
+であり、非零振幅の平面では符号付き位相進行・周波数・振幅が読め、絶対位相は読めない。これは公理5の不可読性が、導出量である平面座標のレベルでも再現されることを意味する。反射を含む
+\texttt{O(2)} まで許す場合、不変なのは進行と周波数の絶対値である。
+
+零空間の成分は静的であり、位相進行を持たない。したがって進行に基づく読出しは零空間からは成立しない（帰結16.3の動力学的実現）。
+
+周波数の非縮退は、一般位置ランク等号（帰結16.2）からは導出されない独立の一般位置仮定である。
+
+証明は第4論文による。Concept DOI: 10.5281/zenodo.21468959
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{帰結16.5:
+二重保存レジスタ}\label{ux5e30ux7d5016.5-ux4e8cux91cdux4fddux5b58ux30ecux30b8ux30b9ux30bf}
+
+分類: 導出済み帰結（固定生成子のもとで）
+
+エネルギー様量と二乗閉鎖は、いずれも平面別・零空間別に分解され、固定生成子の直交更新のもとで各項が個別に保存される。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{H=\textbackslash{}sum\_\{j\}H\_j+H\_\{\textbackslash{}ker\},}
+\NormalTok{\textbackslash{}qquad}
+\NormalTok{H\_j=\textbackslash{}lvert p\_j\^{}\textbackslash{}dagger X\textbackslash{}rvert\^{}2+\textbackslash{}lvert q\_j\^{}\textbackslash{}dagger X\textbackslash{}rvert\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X\^{}\{\textbackslash{}mathsf T\}X=\textbackslash{}sum\_\{j\}Q\_j+Q\_\{\textbackslash{}ker\}=R\^{}2,}
+\NormalTok{\textbackslash{}qquad}
+\NormalTok{Q\_j=(p\_j\^{}\{\textbackslash{}mathsf T\}X)\^{}2+(q\_j\^{}\{\textbackslash{}mathsf T\}X)\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+すなわち、固定生成子系は各平面と零空間に二重の保存レジスタ
+\texttt{(H\_j,\ Q\_j)} を持つ。
+
+証明は第4論文による。Concept DOI: 10.5281/zenodo.21468959
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{帰結16.6:
+自発的分裂のno-go}\label{ux5e30ux7d5016.6-ux81eaux767aux7684ux5206ux88c2ux306eno-go}
+
+分類: 導出済み帰結（固定生成子のもとで）
+
+固定生成子のもとでは、閉鎖量 \texttt{Q\_j} もエネルギー様量
+\texttt{H\_j} も、平面間および平面と零空間の間を移動しない。
+
+したがって、レジスタ間の再配分を伴う状態の自発的分裂は、固定生成子動力学では生じ得ない。分裂を記述するには、逐次再構成生成子、非線形結合、平面間交換のいずれか、すなわち固定生成子を超える関係更新則が必要である。
+
+この帰結は、公理0、公理0.5、公理1、公理16に整合する範囲で分裂動力学を追加定義する際の、出発境界を与える。
+
+証明は第4論文による。Concept DOI: 10.5281/zenodo.21468959
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{公理17:
+未来位相位置を中心とする曲率反力射影}\label{ux516cux740617-ux672aux6765ux4f4dux76f8ux4f4dux7f6eux3092ux4e2dux5fc3ux3068ux3059ux308bux66f2ux7387ux53cdux529bux5c04ux5f71}
+
+分類: 力学射影公理
+
+本公理は、公理0および公理1から未導出の独立な力学・射影原理である。
+
+閉鎖系の状態列に、順序インデックス
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}tau\textbackslash{}in\textbackslash{}mathbb\{N\}}
+\end{Highlighting}
+\end{Shaded}
+
+を与える。
+
+状態更新
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X(\textbackslash{}tau)\textbackslash{}longrightarrow X(\textbackslash{}tau+1)}
+\end{Highlighting}
+\end{Shaded}
+
+において、\texttt{tau+1}
+側の位相位置を、その状態列における未来位相位置と定義する。
+
+公理16によって追加名称なしに一意に構成された回転平面上の位相進行が、曲率半径読出し
+\texttt{rho\_c} と角速度読出し \texttt{omega}
+を持ち、未来位相位置を関係的な仮想回転中心とする運動として表現できる場合、その仮想回転を閉じる中心方向の補償、すなわち遠心力の反力を、円周進行方向の観測可能な加速度として写して読み出す。
+
+中心方向の補償は内部表示であり、円周進行方向の加速度は外部読出しである。本公理は、この両者を結ぶ射影を規則として定める。
+
+加速度の大きさは、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{|\textbackslash{}alpha\_\{\textbackslash{}mathrm\{read\}\}|}
+\NormalTok{=\textbackslash{}rho\_c|\textbackslash{}omega|\^{}2}
+\end{Highlighting}
+\end{Shaded}
+
+とする。
+
+現在位相位置から未来位相位置へ向かう円周進行方向の単位ベクトルを
+\texttt{t\_hat\_tau} とすると、読出し加速度は、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}boldsymbol\{\textbackslash{}alpha\}\_\{\textbackslash{}mathrm\{read\}\}}
+\NormalTok{=\textbackslash{}rho\_c|\textbackslash{}omega|\^{}2\textbackslash{},\textbackslash{}hat\{\textbackslash{}boldsymbol\{t\}\}\_\textbackslash{}tau}
+\end{Highlighting}
+\end{Shaded}
+
+とする。
+
+ここで \texttt{rho\_c}、\texttt{omega}、\texttt{t\_hat\_tau}
+は、第一原理層で物理名を持たない関係読出し量である。円周進行方向は、背景空間の絶対軸ではなく、現在位相位置、未来位相位置、閉鎖半径の関係から、その都度定まる。
+
+本公理を、重力、クーロン力、質量、電荷その他の物理名を理由として変更してはならない。
+
+同じ条件を満たす閉鎖モードには、同じ射影規則を適用する。
+
+未来側と反対側の位相枝、加速度方向の反転、符号保持または符号消失を採用する場合は、物理名から選択せず、独立な位相関係、枝選択、対称性の破れ、または読出し演算として事前に定義しなければならない。
+
+本公理は、読出し加速度を標準重力、標準クーロン力、または既知の外力と同一視しない。
+
+物理的名称は、加速度写像、距離指数、符号、閉鎖保存、ゲージ安定性を確認した後にのみ与える。
+
+\end{document}
