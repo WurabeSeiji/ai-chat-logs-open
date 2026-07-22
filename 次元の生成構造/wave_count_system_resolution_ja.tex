@@ -1,0 +1,755 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{波の数は系の分解能である}\label{ux6ce2ux306eux6570ux306fux7cfbux306eux5206ux89e3ux80fdux3067ux3042ux308b}
+
+\subsection{閉鎖系における計数の外部性と、定常状態の過小充填------数え方を固定すれば読出し数に上限があり、力学は過渡的にそこへ到達しうるが、定常では上限の下で安定する}\label{ux9589ux9396ux7cfbux306bux304aux3051ux308bux8a08ux6570ux306eux5916ux90e8ux6027ux3068ux5b9aux5e38ux72b6ux614bux306eux904eux5c0fux5145ux586bux6570ux3048ux65b9ux3092ux56faux5b9aux3059ux308cux3070ux8aadux51faux3057ux6570ux306bux4e0aux9650ux304cux3042ux308aux529bux5b66ux306fux904eux6e21ux7684ux306bux305dux3053ux3078ux5230ux9054ux3057ux3046ux308bux304cux5b9aux5e38ux3067ux306fux4e0aux9650ux306eux4e0bux3067ux5b89ux5b9aux3059ux308b}
+
+\textbf{著者:} 木原 範昭 \textbf{ORCID:} 0009-0004-6753-4020
+\textbf{日付:} 2026年7月22日 \textbf{Version DOI:} （公開時に付与）
+\textbf{Concept DOI:} （公開時に付与） \textbf{位置づけ:}
+「次元の生成構造」シリーズ・第6論文 v1
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+本稿は二つの主張を提示する。
+
+\textbf{主張1（計数の外部性）} 波の数 \(\mathcal N\) は、閉鎖
+\(\sum_{k=1}^{\mathcal N} x_k^2=0\) の項数 \(\mathcal N\)
+そのもの------\(\sum_{k=1}^{\mathcal N} x_k^2=R^2\)
+と書いたときのベース振動数に対する最大倍音番号、すなわち系の分解能そのもの------であり、系が内部で決める量ではない。これは仮定ではない。零閉鎖（公理1［1］：右辺の零は特権的な基底・基本振動・分解深度を指定しない）、成分の無名性（公理0［1］：成分は固有の個体ではなく分解の座標である）、位相の不可読性（公理5［1］）、および閉鎖塔の平坦化（倍音の再編成はどの内部読出しでも区別できない、第3節）の帰結である：結果が
+\(\mathcal N\) であるような内部読出しは存在せず、\(\mathcal N\)
+は状態でなく表現の仕様に属する。\(\mathcal N\)
+の外部性は無名性（表現独立性）の維持と同値であり、スケール無名性（公理0.5［2］）はその一側面である。記号は第5論文と共通：\(\mathcal N\)
+は分解の項数、\(N\) は実験モデルの体の数（構造仕様・外部入力）、\(k\)
+は総和添字である。
+
+\textbf{主張2（条件付き上限と過小充填）} 数え方------計数規約
+\(\mathcal C=(\omega_0,\varepsilon)\)（周波数分解能と相対振幅床）------が与えられた段階で、読出せる波の数には上限
+\(n_{\max}(\mathcal C)=\min(\lfloor\Omega/\omega_0\rfloor,\ 1/\varepsilon^2)\)
+が生じる。この上限は反復力学のもとで過渡的に到達可能である。しかし定常状態では系は上限に達せず、上限の下で安定する。
+
+主張2の実装（実測）：N体関係波モデル（\(N=8,12,16\)）の凍結解除力学で、調べた全ての規約において読出し数の時系列・規約格子（352セル×2系列＋補足格子）は上限を一度も超えず（硬い上界の違反0）、過渡的には上限への接触（\(N=8\)）を観測し、定常では充填率
+\(0.1\)〜\(0.4\) に留まった。主張2の原因（機構）：振幅は熱化する（関与比
+\(\mathrm{PR}/M\) が
+\(0.52\to1.0\)）にもかかわらず、振動数が帯域端へ凝集する（占有周波数クラスが
+\(8\to3\)）ため、読出せる周波数クラスが減る。振幅の熱化と振動数の凝集の共存が、この力学の特徴的構造である。
+
+上限の二本柱はいずれも閉鎖から出る。振幅床上限 \(1/\varepsilon^2\)
+は配分比の総和の固定（＝閉鎖）による鳩の巣原理であり、開いた系では消える。周波数スロット上限
+\(\lfloor\Omega/\omega_0\rfloor\)
+は離散更新の帯域上端（Nyquist型［7］）による。ただし上限の値は規約の比であり、規約に相対的である------\textbf{「上限がある」ことは閉鎖の帰結（規約不変）、「上限がいくつか」は規約（相対）}。この二層を定理の主張文に明示する。
+
+同一の走行データに対する規約格子の再解析だけで読出し数が \(1\)〜\(7\)
+まで変化すること（数は読出しの属性）、および床を固定すれば上限が有限で、床を下げ続ければ上限が際限なく上がること（波の数が無限に拡大して見える理由）も、同じ一つの比
+\(\Omega/\omega_0\)
+の二つの読み方として示す。標準理論側にも対応物がある------パートン数の分解能依存［10］、粒子数の観測者依存［9］------本稿はこれらを置き換えるものではなく、閉鎖とスケール無名性から同じ構造を出す別写像である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{0. 結論}\label{ux7d50ux8ad6}
+
+\[
+\boxed{
+\begin{aligned}
+&\text{波の数 }\mathcal N\text{ は系の分解能であり、系の内部では決まらない（零閉鎖と無名性の帰結）。}\\
+&\text{数え方を固定すれば読出し数に上限 }\min(\lfloor\Omega/\omega_0\rfloor,\ 1/\varepsilon^2)\text{ が生じ、}\\
+&\text{力学は過渡的にそこへ到達しうるが、定常状態では上限に達せず、その下で安定する。}\\
+&\text{原因は、振幅の熱化と振動数の帯域端凝集の共存である。}
+\end{aligned}
+}
+\]
+
+「上限がある」ことは閉鎖の帰結であり規約に依らない。「上限がいくつか」は規約の比であり、床の取り替えとともに共変に動く。床を下げ続ければ上限は際限なく上がる------波の数が無限に拡大して見えるのは、存在が増えているのではなく、観測の床が下がっているからである。床を固定すれば上限は有限である------これが「数える」という操作に閉鎖が課す構造である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 主張の提示}\label{ux4e3bux5f35ux306eux63d0ux793a}
+
+\subsubsection{1.1
+主張1：計数の外部性}\label{ux4e3bux5f351ux8a08ux6570ux306eux5916ux90e8ux6027}
+
+\begin{quote}
+波の数 \(\mathcal N\) は、\(\sum_{k=1}^{\mathcal N} x_k^2=0\) の項数
+\(\mathcal N\) そのもの------\(\sum_{k=1}^{\mathcal N} x_k^2=R^2\)
+と書いたときのベース振動数 \(R\)
+に対する最大倍音番号、すなわち系の分解能そのもの------であり、\textbf{系が内部で決める量ではない}。これは仮定ではなく、零閉鎖・成分の無名性・位相の不可読性・閉鎖塔の平坦化の帰結である。
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{実装（数値実証）}:
+  同一の走行データへ計数規約の格子（周波数分解能×振幅床）を適用する再解析だけで、読出し数は
+  \(1\)〜\(7\)
+  まで変化する（第5節・実験U2）。数は走行が決めるのではなく、読み方が決める
+\item
+  \textbf{支持構造（整合性）}: どの \(\mathcal N\)
+  の分解も同じ閉鎖の正当な読みであること------倍音の倍音は倍音であり、塊分けは中間基底の選択にすぎないこと------を閉鎖塔定理（第3節）が保証する
+\end{itemize}
+
+主張1の力学側の表現は「\(\mathcal N\)
+は飽和しない」である。シリーズ全体で何が飽和し何が飽和しないかを並べると、主張1の位置が見える。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+量
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+挙動
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+分解の項数 \(\mathcal N\)（存在の層） &
+\textbf{飽和しない}------公理は任意の \(\mathcal N\) を許し、系内部に
+\(\mathcal N\) を決める機構はない \\
+体の数 \(N\)（モデル仕様） & 外部入力（表現の構造仕様。平坦表示の項数は
+\(M\)） \\
+関係波数 \(M=O(N^2)\) & 無制限 \\
+生成子ランク & \(O(N)\) で頭打ち（読出し層）［4］ \\
+一意に読める空間方向 & 3 で飽和（読出し層）［4］ \\
+読出し数 \(n_{\mathrm{read}}(\mathcal C)\) &
+規約を固定すれば有限（本稿・主張2） \\
+\end{longtable}
+}
+
+存在は無限に開き、読出しだけが飽和する。有限に見える世界は存在の有限性ではなく、読出しの飽和の帰結である。
+
+\subsubsection{1.2
+主張2：条件付き上限と過小充填}\label{ux4e3bux5f352ux6761ux4ef6ux4ed8ux304dux4e0aux9650ux3068ux904eux5c0fux5145ux586b}
+
+\begin{quote}
+\(\mathcal N\)（数え方＝分解能）が与えられた段階で、読出し数には上限が生じる。\textbf{この上限は反復力学のもとで過渡的に到達可能である。しかし定常状態では系は上限に達せず、上限の下（\(n_{\mathrm{read}}<n_{\max}\)）で安定する。}
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{実装（実測）}:
+  調べた全規約で定常読出し数は上限を下回った（充填率
+  \(0.1\)〜\(0.4\)）。過渡的には上限への接触を観測した（\(N=8\)、ランク規約で
+  \(n_{\mathrm{read}}=8=\)
+  天井）。硬い上界の違反は、時系列全点・規約格子全セルを通じて
+  0（第5節）
+\item
+  \textbf{原因（機構）}:
+  振幅は熱化する（等分配へ向かう）にもかかわらず、振動数が帯域端へ凝集するため、読出せる周波数クラスが減る（第6節）
+\end{itemize}
+
+この階層------主張・実装・原因------を本稿全体で維持する。上限の存在は閉鎖の帰結（定理）、充填率は本モデルでの測定値、凝集はその機構である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. 主張の分類}\label{ux4e3bux5f35ux306eux5206ux985e}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+対象
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+分類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+本稿での位置づけ
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+主張1（\(\mathcal N\) は系の分解能、内部で決まらない） &
+0層の帰結（零閉鎖＋無名性＋位相不可読＋塔の平坦化） &
+第3節。仮定ではない \\
+\(\mathcal N\) の外部性 ⇔ 無名性（表現独立性）の維持 & 数学的同値 &
+第3節。振幅スケール共変性単独では不十分（本文に明記） \\
+閉鎖塔定理（既約閉鎖塊＝共通基本波長族） & 定理候補（証明スケッチ） &
+第3節。連続時間・線形進行で完結。離散 \(\tau\)・非線形拡張は接続課題 \\
+塔の再帰（上位基底は上位閉鎖の倍音） & 定理候補（証明スケッチ） &
+第3節 \\
+条件付き計数上限（二層定理） & 柱2は証明完結、柱1は初等 &
+第4節。有限性は規約不変、値は規約相対 \\
+振幅床上限 \(1/\varepsilon^2\) & 数学的帰結（証明完結） &
+第4節。閉鎖の鳩の巣原理。開いた系では消える \\
+周波数スロット上限 \(\lfloor\Omega/\omega_0\rfloor\) &
+数学的帰結（初等） &
+第4節。帯域上端は実装規約（\(\gamma\)・正規化）が与える \\
+ランク天井 \(\min(N,\lfloor M/2\rfloor)\) & 導出済み帰結［4］ &
+第4節。本モデル固有の第三の天井 \\
+硬い上界の全数成立（違反0） & 数値的確認 &
+第5節。操作的定義を固定すれば準自明であることを明記 \\
+上限への過渡的到達 & 数値的確認 & 第5節（U1、\(N=8\)） \\
+定常での過小充填（充填率 0.1〜0.4） & 数値的発見 &
+第5節（U1・U3）。本稿の実験側の主結果 \\
+帯域端凝集（熱化と凝集の共存） & 数値的知見 &
+第6節。機構の理論式は未導出 \\
+頂上モード約99\%＋ハロー構造 & 数値的知見 &
+第6節。瞬時固有基底での普遍的構造 \\
+充填率の力学依存（熱化＞凍結＞親） & 数値的確認 &
+第5節（U3）。上限は規約が決め、充填は力学が決める \\
+粒子数の分解能・観測者依存との対応 & 構造的対応 &
+第7節。導出ではない［9,10］ \\
+観測窓と分解能の結合（\(\omega_0\ge2\pi/T_{\mathrm{obs}}\)） &
+理論的注記 & 第7節。数値検証は未実施（接続課題）［8］ \\
+読出し安定化の力学（旧・停止問題） & 接続課題 & 続報 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3.
+主張1の導出と支持構造}\label{ux4e3bux5f351ux306eux5c0eux51faux3068ux652fux6301ux69cbux9020}
+
+\subsubsection{3.1 導出}\label{ux5c0eux51fa}
+
+以下、総和の走る添字を \(k\)、分解の項数（＝採用した最大倍音番号）を
+\(\mathcal N\)、実験モデルの体の数を \(N\)
+と書き分ける（第5論文と共通の記法）。
+
+\(\sum_{k=1}^{\mathcal N} x_k^2 = R^2\) の \(\mathcal N\)
+は、\(R^2\)（ベース振動）に対する分解能を外部から置くことで初めて与えられる数である。導出は0層の複合による。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{零閉鎖（公理1）}：右辺が零であるとは、閉鎖が特権的な基底も基本振動も分解深度も指定しないということである。\(\sum x^2=R^2\)
+  という表示へ移る時点で、何を一つの塊として括るか・何を \(R\)
+  と読むか・どこまでを独立成分とするか・\(\mathcal N\)
+  をいくつにするか、という読出し操作が既に入っている
+\item
+  \textbf{成分の無名性（公理0）}：分解後の成分を固有の個体として実在化することは禁じられている。成分は選ばれた分解の座標である
+\item
+  \textbf{位相の不可読性（公理5）}：絶対位相によって各成分へ固有の起点を与えることはできない
+\item
+  \textbf{閉鎖塔の平坦化（第3.2節の系）}：一つの波形を一塊として読む表示と、多数の倍音成分へ分解して読む表示は、同じ閉鎖へ戻る------倍音の再編成はどの内部読出しでも区別できない
+\end{enumerate}
+
+したがって、\textbf{結果が \(\mathcal N\)
+であるような内部読出しは存在しない}。\(\mathcal N\)
+は絶対位相・絶対スケールと同じ「原理的に読めない量」の族に属し、状態でなく表現の仕様に属する。
+
+\[
+\boxed{\ \mathcal N\text{ の外部性}\ \Longleftrightarrow\ \text{無名性（表現独立性）の維持}\ }
+\]
+
+\textbf{振幅スケール共変性単独では不十分であることの明示} 無次元の項数
+\(\mathcal N\) は \(Z\to\lambda Z\)
+で不変であり、実際、分解を固定した本シリーズのモデルは公理0.5を満たしたまま走る。ただしこれが示すのは「一度
+\(\mathcal N\)
+を選んだ表示の内部でもスケール共変性が維持される」ことだけであり、「分解前の閉鎖全体が
+\(\mathcal N\)
+を内在的に選ぶ」ことではない。公理0.5は、読めない絶対量の族（名前・位相・スケール・数・床）の振幅面を担う一員である。
+
+\textbf{実務上の支持}
+公理系［1］は分解の項数を一度も導出していない。項数は常にモデル仕様として外部から与えられてきた。これは欠落ではなく、\(\mathcal N\)
+が閉鎖系の内在量ではなく表現仕様であることの現れである。
+
+\(\mathcal N=1\) の表示（\(R^2=R^2\)）も、任意の大きさの \(\mathcal N\)
+の表示も、同じ系の正当な読み方であり、床不変な計数言明は
+\(\mathcal N\ge1\)（非自明存在、公理2［1］）のみである。
+
+\subsubsection{3.2
+支持構造：閉鎖塔定理}\label{ux652fux6301ux69cbux9020ux9589ux9396ux5854ux5b9aux7406}
+
+主張1の導出材料のうち平坦化（材料4）は本節の系として示す。塔定理の役割は、外部から置いた分解のうちどれが力学的に整合する読みか（可約性の構造）を特徴づけることにある。この論理順を逆にすると説明が循環する。
+
+\textbf{定理候補A（既約閉鎖塊＝共通基本波長族）} 閉鎖
+\(\sum_k x_k^2=R^2\) が全ての \(\tau\)
+で持続することを要求する。各成分が \(x_k(\tau)=a_ke^{i\omega_k\tau}\)
+と進むなら
+
+\[
+\sum_k a_k^2 e^{2i\omega_k\tau}=R^2\quad\forall\tau
+\]
+
+であり、異なる振動数の指数関数の線形独立性により、この等式は振動数クラスごとに別々に成立する。ゆえに既約な閉鎖塊（それ以上閉じた部分塊に分解できないもの）は共通の基本周期を共有する。逆に共通周期を持つ族は
+\(R^2\) を一定に保ったまま集団で閉じられる。
+
+\textbf{定理候補B（塔の再帰）}
+\(\sum_k x_k^2=X^2,\ \sum_k y_k^2=Y^2,\ \sum_k z_k^2=Z^2\) かつ
+\(X^2+Y^2+Z^2=R^2\) が持続するなら、同じ論法により \(X,Y,Z\)
+は共通周期を共有する------上位基底は上位閉鎖の倍音である。帰納的に任意の深さへ伸び、構造は自己相似となる。各塊は自分の基本振動だけを「1」として持ち、上の階層とは倍音番号（比）でのみ繋がる。
+
+\textbf{系（分解の平坦化）}
+倍音の倍音は倍音なので、塔は常に平坦化できる。\(X,Y,Z\)
+への塊分けは中間基底の選択であり、\(R\) をベースに数えれば 1、\(X,Y,Z\)
+で数えれば
+3、個々の成分まで割れば多数------どれも同じ閉鎖の正当な読みである。固定生成子の各回転平面のレジスタ保存（帰結16.5［1,3］）は、この定理の線形極限（純正弦波）にあたる。
+
+証明の適用範囲は連続時間・線形進行（振動数が一定）であり、離散 \(\tau\)
+更新への拡張（エイリアシングの扱い）と非線形の場合の定式化は接続課題である（第8節）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4.
+主張2の「上限」の定義：条件付き計数上限}\label{ux4e3bux5f352ux306eux4e0aux9650ux306eux5b9aux7fa9ux6761ux4ef6ux4ed8ux304dux8a08ux6570ux4e0aux9650}
+
+\subsubsection{4.1 計数規約}\label{ux8a08ux6570ux898fux7d04}
+
+計数規約を次の組とする。
+
+\[
+\mathcal C=(\ \omega_0,\ \varepsilon\ )
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(\omega_0\)：周波数分解能。この規約で区別する振動数クラスの最小間隔
+\item
+  \(\varepsilon\)：相対振幅床。配分比 \(\ge\varepsilon^2\)
+  の成分のみを「読出せる波」と数える
+\end{itemize}
+
+いずれも比として与えられ、公理0.5に適合する。読出し数
+\(n_{\mathrm{read}}(\mathcal C)\) は、振動数軸を分解能 \(\omega_0\)
+でビン分けし、ビン内配分比の和が \(\varepsilon^2\)
+以上のビンの個数とする。
+
+\subsubsection{4.2
+定理（条件付き計数上限、二層）}\label{ux5b9aux7406ux6761ux4ef6ux4ed8ux304dux8a08ux6570ux4e0aux9650ux4e8cux5c64}
+
+\begin{quote}
+\textbf{第一層（有限性、規約不変）} 閉鎖系において、いかなる計数規約
+\(\mathcal C\) を固定しても、\(n_{\mathrm{read}}(\mathcal C)\)
+は有限である。
+
+\textbf{第二層（値、規約相対）} その上限の値は規約の比で与えられる：
+
+\[
+n_{\mathrm{read}}(\mathcal C)\ \le\ \min\left(\left\lfloor\frac{\Omega}{\omega_0}\right\rfloor,\ \frac{1}{\varepsilon^2}\right)
+\]
+
+ここで \(\Omega\)
+は力学の帯域上端であり、その値自体も実装規約（時間刻み・正規化）が与える。
+\end{quote}
+
+\textbf{柱2（振幅床上限）の証明}
+閉鎖は配分比の総和を固定する：\(\sum_j(\text{配分比})_j=1\)。床
+\(\varepsilon\) の規約で読出せる波は配分比 \(\ge\varepsilon^2\)
+を持つものだけであるから、鳩の巣原理により
+\(n_{\mathrm{read}}\le1/\varepsilon^2\)。\(\blacksquare\)
+
+一行の証明だが、総和の固定（＝閉鎖）が無ければ成立しない。開いた系では配分比の総和が定義されず、この上限は消える。有限性は閉鎖の帰結である。
+
+\textbf{柱1（周波数スロット上限）} 離散 \(\tau\)
+更新の回転角は有界であり（Nyquist型の帯域上端［7］）、本稿の実装では
+\(\Omega=2\arctan\gamma\)（\(\gamma=\tan(\pi/144)\)、スペクトルノルム正規化）。分解能
+\(\omega_0\) で区別できる振動数クラスは高々
+\(\lfloor\Omega/\omega_0\rfloor\) 個である。\(\blacksquare\)
+
+\textbf{二層の意味}
+「上限がある」ことは物理（閉鎖と有界更新の帰結、規約不変）であり、「上限がいくつか」は規約（\(\Omega/\omega_0\)
+も \(1/\varepsilon^2\)
+も規約の比）である。床を下げ続ければ（\(\omega_0\to\)
+小）上限は際限なく上がる------波の数が無限に拡大して見える理由。床を固定すれば上限は有限------「数える」という操作に閉鎖が課す構造。同じ比の二つの読み方である。
+
+なお本稿のN体関係波モデルでは、第3論文のランク上界［4］により第三の天井
+\(n_{\mathrm{read}}\le\min(N,\lfloor M/2\rfloor)\) が加わる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+実験：硬い上界・過渡的到達・過小充填}\label{ux5b9fux9a13ux786cux3044ux4e0aux754cux904eux6e21ux7684ux5230ux9054ux904eux5c0fux5145ux586b}
+
+\subsubsection{5.1
+設計------走行と計数の分離}\label{ux8a2dux8a08ux8d70ux884cux3068ux8a08ux6570ux306eux5206ux96e2}
+
+\(N\)
+体完全二体関係波モデル（\(M=\binom N2\)、位相差正弦生成子の凍結解除力学、Cayley直交更新［12］、定義は［2,4］を継承）を用いる。走行中は各サンプル時刻の\textbf{重み付き振動数スペクトル}
+\(\{(\theta_j,\ h_j/h_{\mathrm{total}})\}\)（瞬時生成子の各回転平面［3］の回転角
+\(\theta_j=2\arctan(\gamma\sigma_j/\sigma_{\max})\)
+と配分比）だけを記録し、任意の規約での \(n_{\mathrm{read}}\)
+は事後の再解析で得る。走行は規約を知らない------これが主張1の実験設計への翻訳である。
+
+操作的定義を固定した時点で第4.2節の上界は殆ど論理的に成立する（ビン数上限と鳩の巣）。したがって数値実験の実質は上界の確認そのものではなく、(i)
+実装の健全性、(ii) 上限への到達可能性と定常挙動、(iii)
+規約依存のデモンストレーション、(iv) 充填率の力学依存にある。
+
+\subsubsection{5.2 U0（較正） 親状態は全規約で
+1}\label{u0ux8f03ux6b63-ux89aaux72b6ux614bux306fux5168ux898fux7d04ux3067-1}
+
+自己無撞着な単一波（円偏波固有モード親［2］）に対し、\(B=\Omega/\omega_0\in\{2,8,32\}\)、\(\varepsilon^2\in\{10^{-4},10^{-2},0.2\}\)
+の全組合せで
+\(n_{\mathrm{read}}=1\)（\(N=8,12\)）。計数の基準点が正しく較正されている。
+
+\subsubsection{5.3 U1（時系列）
+硬い上界と過渡的到達}\label{u1ux6642ux7cfbux5217-ux786cux3044ux4e0aux754cux3068ux904eux6e21ux7684ux5230ux9054}
+
+零閉鎖一般状態（\(Z^{\mathsf T}Z=0\)
+厳密）から凍結解除力学で4000ステップ、3規約で
+\(n_{\mathrm{read}}(\tau)\) を追跡した。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lllll@{}}
+\toprule\noalign{}
+\(N\) & 規約 & 天井 & 終値 & 最大値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+8 & \(B=4\) & 4 & 2 & 3 \\
+8 & \(B=16\) & 8（ランク） & 3 & 5 \\
+8 & \(B=64\) & 8（ランク） & 6 & \textbf{8（接触）} \\
+12 & \(B=4\) & 4 & 2 & 3 \\
+12 & \(B=16\) & 12 & 3 & 6 \\
+12 & \(B=64\) & 12（ランク） & 6 & 10 \\
+16 & \(B=4\) & 4 & 2 & 2 \\
+16 & \(B=16\) & 16 & 2 & 4 \\
+16 & \(B=64\) & 16（ランク） & 3 & 9 \\
+\end{longtable}
+}
+
+（\(\varepsilon^2=10^{-4}\)。天井は \(\min(B,1/\varepsilon^2,N)\)）
+
+全時系列で天井超過は 0。\(N=8\)
+では天井への接触（\(n_{\mathrm{read}}=8\)）が過渡的に生じた------上限は到達可能である。しかし全ケースで終値は天井を下回り、しかも中盤の最大値から\textbf{減少}して安定した。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={U1: 時系列と天井}]{figs/u1_saturation_v1.png}}
+\caption{U1: 時系列と天井}
+\end{figure}
+
+\emph{図1：3規約での
+\(n_{\mathrm{read}}(\tau)\)（点線＝天井）。天井を超えず、過渡的に接近・接触し、後期に減少して安定する。}
+
+\subsubsection{5.4 U2（規約格子）
+数は読出しの属性}\label{u2ux898fux7d04ux683cux5b50-ux6570ux306fux8aadux51faux3057ux306eux5c5eux6027}
+
+同一走行（\(N=16\)）の二つの時刻のスペクトルに対し、\((B,\varepsilon^2)\)
+格子（\(11\times16=176\) セル×2時刻、別途最終状態格子 \(176\times2\)
+系列）を再解析した。\textbf{全セルで硬い上界の違反 0。}
+中間時刻（\(\tau=500\)）では \(n_{\mathrm{read}}\) が規約に応じて
+\(1\)〜\(7\) まで変化し、終時刻（\(\tau=4000\)）では凝集により最大 \(3\)
+へ平坦化した。走行は一度きり、変えたのは読み方だけである。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={U2: 規約格子}]{figs/u2_floor_grid_v2.png}}
+\caption{U2: 規約格子}
+\end{figure}
+
+\emph{図2：同一走行・二時刻の規約格子。左（中間時刻）：数え方次第で
+\(1\)〜\(7\)。右（終時刻）：凝集後は最大 \(3\)。}
+
+\subsubsection{5.5 U3（充填率）
+上限は規約が決め、充填は力学が決める}\label{u3ux5145ux586bux7387-ux4e0aux9650ux306fux898fux7d04ux304cux6c7aux3081ux5145ux586bux306fux529bux5b66ux304cux6c7aux3081ux308b}
+
+同一規約（\(B=16\)、\(\varepsilon^2=10^{-3}\)）を三種の状態に適用した。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+状態 & \(N=8\)（天井8） & \(N=12\)（天井12） \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+熱化状態（位相のみ力学） & 3（充填率 0.38） & 2（0.17） \\
+レジスタ帰還の凍結状態 & 1（0.12） & 1（0.08） \\
+親状態（単一波） & 1 & 1 \\
+\end{longtable}
+}
+
+充填率の序列（熱化＞凍結≧親）は力学の種類が決める。上限の存在（閉鎖・規約）と充填の程度（力学）は独立の層である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6.
+機構：振幅の熱化と振動数の帯域端凝集}\label{ux6a5fux69cbux632fux5e45ux306eux71b1ux5316ux3068ux632fux52d5ux6570ux306eux5e2fux57dfux7aefux51ddux96c6}
+
+定常で上限に達しない原因を、\(N=16\) の走行で特定した。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={機構: 熱化と凝集}]{figs/mechanism_band_clustering_v1.png}}
+\caption{機構: 熱化と凝集}
+\end{figure}
+
+\emph{図3：左------重み付き振動数スペクトル（対数）。頂上モード（\(\theta=\Omega\)、配分比
+\(\approx0.99\)）と、\(\theta/\Omega\in[0.37,0.5)\)
+のバルク群。時間とともにバルクが \(\Omega/2\) へ収縮する。右------関与比
+\(\mathrm{PR}/M\) は \(0.52\to1.0\)
+へ上昇（振幅の熱化［11］）する一方、占有周波数クラス数（\(B=64\)）は
+\(8\to3\) へ減少（振動数の凝集）。}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{振幅は熱化する}：関与比は \(M\)
+  へ向かい、配分は全関係波へ広がる
+\item
+  \textbf{振動数は凝集する}：バルクのスペクトルが帯域端 \(\Omega/2\)
+  近傍の狭い帯へ集まり、分解能 \(\omega_0\) で区別できるクラスが減る
+\item
+  帰結：読出し数は中盤の最大値から減少し、天井の下で安定する（過小充填）
+\end{itemize}
+
+なお、瞬時固有基底で読むと、どの状態も「頂上モード（配分比約99\%）＋ハロー」構造を持つ。計数の実質はハローの中のクラス数である。バルク端
+\(\Omega/2\)
+への凝集はスペクトル密度の一般的性質（動力学的選択ではなく、無進化のランダム状態でも同じ端が現れる）だが、凝集の\textbf{進行}------クラス数の単調減少------は力学の効果である。凝集の理論式（なぜ
+\(\Omega/2\) か、収縮率）は未導出であり、接続課題とする。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. 議論と限界}\label{ux8b70ux8ad6ux3068ux9650ux754c}
+
+\textbf{標準理論側の対応物}
+粒子数が観測の設定に依存することは、標準理論も既に知っている。深非弾性散乱のパートン数は分解能の関数であり、細かく見るほど多く見える［10］。加速観測者は慣性観測者と異なる粒子数を見る［9］。本稿はこれらを置き換えるものではない。閉鎖とスケール無名性という別の出発点から、同じ「数は読出しの属性」という構造を出す別写像であり、そのうえで「数え方を固定したときの上限」という定理を加える。
+
+\textbf{観測窓との結合（理論的注記）}
+周波数分解能は観測窓に律速される：窓 \(T_{\mathrm{obs}}\)
+で区別できる振動数間隔は \(\omega_0\gtrsim2\pi/T_{\mathrm{obs}}\)
+を下回れない［8］。したがって計数規約の二成分は独立ではなく、「多くの波を数えるには長く観測しなければならない」。本稿の瞬時生成子スペクトルによる読出しはこの制約を回避する規約の一つであり、窓付きフーリエによる真の時間スペクトルとの突合は未実施である（接続課題）。
+
+\textbf{限界} （i）塔定理は連続時間・線形進行の範囲。（ii）柱1の
+\(\Omega\)
+は実装規約（\(\gamma\)・正規化）由来であり、検証できるのは有限性と比のスケーリングであって
+\(\Omega\)
+の絶対値ではない。（iii）硬い上界の数値検証は操作的定義のもとで準自明であり、実験の実質は到達可能性・過小充填・規約依存デモにある（本文中に明記した）。（iv）凝集機構の理論式は未導出。（v）充填率の値（0.1〜0.4）は本モデル・本規約群での測定値であり、普遍性は未検証。（vi）分類規則・閾値（ビン分け方式等）の感度解析は未実施。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. 接続課題}\label{ux63a5ux7d9aux8ab2ux984c}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  塔定理の離散 \(\tau\)
+  更新への拡張（エイリアシング）、非線形（振動数が動く場合）の定式化、既約分解の一意性補題
+\item
+  帯域端凝集の理論式（凝集先 \(\Omega/2\) の由来、収縮率）
+\item
+  窓付きフーリエによる真の時間スペクトルとの突合（観測窓規約の数値検証）
+\item
+  読出し安定化の力学------どの力学が充填率を上げ、どの力学が凍結させるか。レジスタ帰還力学（配分比の定理
+  \(r\le1/2\)・コヒーレント凍結・平衡則を含む）は続報で扱う
+\item
+  連続極限 \(\Delta\tau\to0\) で柱1が消える問題と離散基礎の関係
+\item
+  一つの閉鎖が特定の規約で保持できるレジスタ数の具体値の問題（本稿は値の同定を行わない）
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. 再現可能性}\label{ux518dux73feux53efux80fdux6027}
+
+本稿の数値実験は、次の実プログラムと出力に基づく。
+
+\subsubsection{実行プログラム}\label{ux5b9fux884cux30d7ux30edux30b0ux30e9ux30e0}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{次元の生成構造/自発的分裂予備実験\_v1/run\_counting\_ceiling\_v1.py}（U0〜U3）
+\item
+  \texttt{次元の生成構造/自発的分裂予備実験\_v1/make\_counting\_figures\_supplement\_v1.py}（機構図・規約格子図）
+\item
+  \texttt{次元の生成構造/自発的分裂予備実験\_v1/run\_n\_scaling\_lowrank\_v1.py}（力学基盤：頂点分解低ランク実装）
+\end{itemize}
+
+\subsubsection{主要出力}\label{ux4e3bux8981ux51faux529b}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{counting\_ceiling\_result\_v1/summary\_v1.json}
+\item
+  図4点（\texttt{u1\_saturation\_v1.png}・\texttt{u2\_floor\_grid\_v2.png}・\texttt{mechanism\_band\_clustering\_v1.png}・\texttt{u3\_filling\_v1.png}）
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. 最終結論}\label{ux6700ux7d42ux7d50ux8ad6}
+
+波の数 \(\mathcal N\)
+は系の分解能であり、系の内部では決まらない。これは仮定ではなく、零閉鎖・成分の無名性・位相の不可読性・閉鎖塔の平坦化（0層）の帰結であり、\(\mathcal N\)
+の外部性は無名性（表現独立性）の維持と同値である。数の見かけの拡大は観測床の降下の読出しであって、存在の増加ではない。
+
+存在は無限に開き、読出しだけが飽和する。\(\mathcal N\)
+は飽和しない------飽和するのは生成子ランク・空間方向・そして本稿の読出し数であり、いずれも読出しの層に属する。
+
+数え方を固定した瞬間、閉鎖は読出し数に上限を課す。上限の存在は規約に依らず（閉鎖の鳩の巣原理と帯域の有界性）、上限の値は規約の比である。力学はこの上限へ過渡的に到達しうるが、定常状態では到達せず、上限の下で安定する------振幅が熱化してもなお、振動数が帯域端へ凝集するからである。
+
+\[
+\boxed{
+\begin{aligned}
+&\text{数は読み方が決め、上限は閉鎖が決め、充填は力学が決める。}\\
+&\text{この三層の分離が、「波はいくつあるか」という問いの正しい解体である。}
+\end{aligned}
+}
+\]
+
+続報では、この土台の上で読出し安定化の力学（旧・分裂停止問題）------配分比の定理・コヒーレント凍結・平衡則------を扱う。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsubsection{自己引用}\label{ux81eaux5df1ux5f15ux7528}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  木原 範昭「無名等振幅複合波モデル基本公理系 v7」Zenodo, 2026. Version
+  DOI:
+  \href{https://doi.org/10.5281/zenodo.21469133}{10.5281/zenodo.21469133},
+  Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.21315735}{10.5281/zenodo.21315735}.
+\item
+  木原
+  範昭「N体関係波閉鎖系における状態の自発的分裂の開始と帰結の三分類」Zenodo,
+  2026.（改稿版の公開時に Version DOI を確定）
+\item
+  木原 範昭「N体固定生成子系における平面分解読出し」Zenodo, 2026.
+  Version DOI:
+  \href{https://doi.org/10.5281/zenodo.21468960}{10.5281/zenodo.21468960},
+  Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.21468959}{10.5281/zenodo.21468959}.
+\item
+  木原
+  範昭「N体完全二体関係波における生成子ランクの線形上界と空間方向読出しの三方向飽和」Zenodo,
+  2026. Version DOI:
+  \href{https://doi.org/10.5281/zenodo.21465899}{10.5281/zenodo.21465899},
+  Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.21465898}{10.5281/zenodo.21465898}.
+\item
+  木原 範昭「真空宇宙の中心投影と、広がり位相を持つ粒子様状態」Zenodo,
+  2026. Version DOI:
+  \href{https://doi.org/10.5281/zenodo.20543045}{10.5281/zenodo.20543045},
+  Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.20543044}{10.5281/zenodo.20543044}.（粒子様状態を実体でなく関係的・規約的読出しとして置く先行観察）
+\item
+  木原
+  範昭「広がり位相を持つ二粒子の干渉------相対配置の特徴点と統計的対応の観察」Zenodo,
+  2026. Version DOI:
+  \href{https://doi.org/10.5281/zenodo.20544005}{10.5281/zenodo.20544005},
+  Concept DOI:
+  \href{https://doi.org/10.5281/zenodo.20544004}{10.5281/zenodo.20544004}.（倍音族の共有が干渉を支配するという先行観察）
+\end{enumerate}
+
+\subsubsection{外部文献}\label{ux5916ux90e8ux6587ux732e}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Harry Nyquist, ``Certain Topics in Telegraph Transmission Theory,''
+  \emph{Transactions of the AIEE}, 47(2), 617--644, 1928. DOI:
+  \href{https://doi.org/10.1109/T-AIEE.1928.5055024}{10.1109/T-AIEE.1928.5055024}.
+\item
+  Dennis Gabor, ``Theory of Communication,'' \emph{Journal of the IEE
+  Part III}, 93(26), 429--441, 1946. DOI:
+  \href{https://doi.org/10.1049/ji-3-2.1946.0074}{10.1049/ji-3-2.1946.0074}.
+\item
+  William G. Unruh, ``Notes on black-hole evaporation,'' \emph{Physical
+  Review D}, 14(4), 870--892, 1976. DOI:
+  \href{https://doi.org/10.1103/PhysRevD.14.870}{10.1103/PhysRevD.14.870}.
+\item
+  Guido Altarelli and Giorgio Parisi, ``Asymptotic freedom in parton
+  language,'' \emph{Nuclear Physics B}, 126(2), 298--318, 1977. DOI:
+  \href{https://doi.org/10.1016/0550-3213(77)90384-4}{10.1016/0550-3213(77)90384-4}.
+\item
+  David J. Thouless, ``Electrons in disordered systems and the theory of
+  localization,'' \emph{Physics Reports}, 13(3), 93--142, 1974. DOI:
+  \href{https://doi.org/10.1016/0370-1573(74)90029-5}{10.1016/0370-1573(74)90029-5}.
+\item
+  Fasma Diele, Luciano Lopez, and R. Peluso, ``The Cayley Transform in
+  the Numerical Solution of Unitary Differential Systems,''
+  \emph{Advances in Computational Mathematics}, 8(4), 317--334, 1998.
+  DOI:
+  \href{https://doi.org/10.1023/A:1018908700358}{10.1023/A:1018908700358}.
+\end{enumerate}
+
+\end{document}
