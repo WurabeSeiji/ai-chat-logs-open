@@ -152,6 +152,7 @@
 **「次元の生成構造」シリーズ第3〜第6論文のまとめnote記事（日本語）を公開**：前回記事「波を増やしたら、空間の次元も増えるのか」（2026-07-20）の直接の続編。関係の爆発と三方向飽和（第3）→回転平面への整理（第4）→自発的分裂・インフレーション類比（第5）→計数の外部性と「存在は無限に開き、読出しだけが飽和する」（第6）を、問いの連鎖1本に束ねた一般向け解説。図5点（三層スケーリング／回転平面整理／3体・300体・1000体の分裂実データ／帰結マップ／存在と読出しの二層）。
 
 - **note**：[なぜ方向は三つで止まり、波はひとりでに増えるのか](https://note.com/kiharanoriaki/n/nf99bd8fe7e30)（下書きmd：次元の生成構造/note記事案_次元と分裂と計数_v1/note_article_dimension_splitting_counting_ja.md）
+- **Facebook（日本語）**：[告知投稿](https://www.facebook.com/kihara.noriaki/posts/pfbid02ECpe7vjGKdFDKgoJRT8u7TvhkFVYtGcf69GM5SZWLFrdF5KtBmyaQnxg8JS7ctMtl)（2026-07-22、note記事URLはコメント欄）
 
 ### 2026-07-22: 波の数は系の分解能である 新規公開
 
