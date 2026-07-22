@@ -105,6 +105,12 @@
 
 ## 更新履歴
 
+### 2026-07-23: note記事「Σxₙ² = 0 という式は、生まれつき量子化されていた」公開
+
+**解説ノート（零二乗和の幾何学的正体）の一般向けnote記事（日本語）を公開**：Σxₙ² = 0 が量子性を内蔵していたことを、数式最小限＋比喩（太鼓の膜＝離散性、ドーナツの紐＝巻き数の整数性、spherical harmonics＝文字通りの倍音）で解説。複素数の必然→閉じた面→生まれつき量子化→等分配とディラテーション→N=3は量子ビット、の構成。
+
+- **note**：[Σxₙ² = 0 という式は、生まれつき量子化されていた](https://note.com/kiharanoriaki/n/nc0ea47060f4b)（下書きmd：次元の生成構造/note記事案_零二乗和の量子性_v1/note_article_zero_square_sum_quantum_ja.md）
+
 ### 2026-07-22: note記事（英語版）"Why Do Directions Stop at Three, While Waves Multiply on Their Own?" 公開
 
 **第3〜第6論文まとめnote記事の英語版を公開**：日本語版「なぜ方向は三つで止まり、波はひとりでに増えるのか」の全訳＋英語版図5点（fig1〜fig5 の `_en.png`、実データ図含む）。前回英語記事 "If We Add More Waves, Do We Get More Spatial Dimensions?" の直接の続編。
