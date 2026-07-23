@@ -5,7 +5,7 @@
 # アルファベット1（前提A・四半回転）: {1, i, -1, -i}     -> 二乗は {+1, -1}
 # アルファベット2（対照・六分回転）  : {±1, ±ω, ±ω²}    -> 二乗は {1, ω, ω²}
 #
-# 実行: python3 even_theorem_enumeration.py
+# 実行: python3 N1_even_theorem_enumeration.py
 
 from itertools import product
 from math import comb, factorial

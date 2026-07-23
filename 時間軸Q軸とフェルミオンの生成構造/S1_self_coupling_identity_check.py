@@ -12,7 +12,7 @@ S1 は純粋な恒等式（定理A/B/C）であり近似を含まないが、シ
          かつ一次自己結合 (K)_ee = 0
   定理C(ii): 零次同次 K(λZ)=K(Z)（正弦生成子で確認）
 
-実行: python3 self_coupling_identity_check.py
+実行: python3 S1_self_coupling_identity_check.py
 """
 
 import numpy as np

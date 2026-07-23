@@ -13,7 +13,7 @@
 
 過去データの参照だけで済ませること、プログラムなしにデータを採用することは禁止。
 
-## 第5論文_自発的分裂_対照/（N2 が依拠）
+## N2_第5論文_自発的分裂_対照/（N2 が依拠）
 
 - `nbody_spontaneous_splitting_reproduction_v1/`: 第5論文（Concept DOI 10.5281/zenodo.21486233）
   再現パッケージのコピー。力学コードと公開ベースライン結果を同梱。
@@ -21,7 +21,7 @@
 - `rank_measurement_extension_v1.py`: 対照テスト済みモジュールの力学関数を import して
   N2 の rank 測定を追加（独自再実装なし）。結果は `rank_measurement_result_v1.json`。
 
-## 第4論文_平面分解_対照/（N1 §5.4 が遂及説明する観測）
+## N1_第4論文_平面分解_対照/（N1 §5.4 が遂及説明する観測）
 
 - `nbody_plane_decomposition_reproduction_v1/` 相当のコピー（第4論文 Concept DOI 10.5281/zenodo.21468959）。
 - `control_test_v1.py`: 対照テスト。**PASS（216フィールド, 最大差 0.000e+00, 完全一致）** — 2026-07-23。
