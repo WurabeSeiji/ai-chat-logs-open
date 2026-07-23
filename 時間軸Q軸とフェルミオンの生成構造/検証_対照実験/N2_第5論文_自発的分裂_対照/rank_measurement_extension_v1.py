@@ -70,6 +70,7 @@ def run_rank(N, delta, seed, steps=4320, sub=8, thresholds=(0.02, 0.05, 0.10)):
             Z = cayley(K) @ Z  # 検証済み関数
     base = np.array(series[0.05])
     rank = 2 * base
+    times = np.arange(len(rank)) * sub
     inc = np.diff(rank)
     inc = inc[inc != 0]
     return {
@@ -82,7 +83,59 @@ def run_rank(N, delta, seed, steps=4320, sub=8, thresholds=(0.02, 0.05, 0.10)):
         "even_not_2": int(np.sum((np.abs(inc) % 2 == 0) & (np.abs(inc) != 2))),
         "threshold_max_rank": {str(thr): int(2 * np.array(series[thr]).max())
                                 for thr in thresholds},
+        "_rank_series": rank.tolist(),   # 作図用
+        "_times": times.tolist(),        # 作図用
+        "_increments": inc.tolist(),     # 作図用
     }
+
+
+def make_figures(results, outdir):
+    """図1（rank(τ) 偶数階段）と図2（増分ヒストグラム）を SVG+PNG で生成。
+    図内ラベルは英数字（フォント非依存）。キャプションは論文本文（日本語）。"""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    os.makedirs(outdir, exist_ok=True)
+
+    # --- 図1: rank(τ) の偶数階段（代表 run: N=5 と N=6、delta=1e-3, seed=1）---
+    fig, ax = plt.subplots(figsize=(7.0, 4.2))
+    reps = [(5, 1e-3, 1, "tab:blue"), (6, 1e-3, 1, "tab:red")]
+    for N, d, s, color in reps:
+        r = next(x for x in results if x["N"] == N and x["delta"] == d and x["seed"] == s)
+        ax.step(r["_times"], r["_rank_series"], where="post", color=color,
+                label=f"N={N} (M={r['m']})", linewidth=1.6)
+    ax.set_xlabel("step  t")
+    ax.set_ylabel(r"generator rank$(K(t))$ = 2 x active planes")
+    ax.set_yticks(range(0, 14, 2))  # 偶数のみ
+    ax.grid(True, axis="y", alpha=0.3)
+    ax.set_title("Generator rank stays even; changes by +-2 (never odd)")
+    ax.legend(loc="lower right")
+    fig.tight_layout()
+    fig.savefig(os.path.join(outdir, "N2_fig1_rank_staircase.svg"))
+    fig.savefig(os.path.join(outdir, "N2_fig1_rank_staircase.png"), dpi=150)
+    plt.close(fig)
+
+    # --- 図2: 全増分イベントのヒストグラム（+2 に集中、奇数ゼロ）---
+    all_inc = [v for r in results for v in r["_increments"]]
+    n_plus = sum(1 for v in all_inc if v == 2)
+    n_minus = sum(1 for v in all_inc if v == -2)
+    n_odd = sum(1 for v in all_inc if v % 2 != 0)
+    fig, ax = plt.subplots(figsize=(7.0, 4.2))
+    bins = np.arange(-3.5, 5.5, 1.0)
+    ax.hist(all_inc, bins=bins, color="tab:green", edgecolor="black", rwidth=0.9)
+    ax.set_xlabel(r"rank increment $\Delta\,$rank per event")
+    ax.set_ylabel("count (all runs)")
+    ax.set_xticks(range(-3, 5))
+    for lo in (-1.5, 0.5, 2.5):  # 奇数の帯（±1, ±3）を薄赤で強調＝空
+        ax.axvspan(lo, lo + 1.0, color="red", alpha=0.08)
+    ax.set_title(f"All {len(all_inc)} increments at +-2 "
+                 f"(+2: {n_plus} cast, -2: {n_minus} deactivate); odd: {n_odd}")
+    fig.tight_layout()
+    fig.savefig(os.path.join(outdir, "N2_fig2_increment_histogram.svg"))
+    fig.savefig(os.path.join(outdir, "N2_fig2_increment_histogram.png"), dpi=150)
+    plt.close(fig)
+    print(f"図を生成: {outdir}/N2_fig1_rank_staircase.(svg|png), "
+          f"N2_fig2_increment_histogram.(svg|png)")
 
 
 if __name__ == "__main__":
@@ -108,8 +161,14 @@ if __name__ == "__main__":
     print(f"奇数ランク増分: {tot_odd}（0 が予言）")
     print(f"±2以外の偶数増分: {tot_oth}")
     print(f"±対性残差の最大: {max_pair:.2e}（機械精度で0＝rank偶数）")
+
+    # 図の生成（SVG+PNG）
+    make_figures(results, os.path.join(_HERE, "figures"))
+
+    # JSON 保存（作図用の大きな配列は除く）
+    slim = [{k: v for k, v in r.items() if not k.startswith("_")} for r in results]
     with open(os.path.join(_HERE, "rank_measurement_result_v1.json"), "w") as f:
-        json.dump({"import_source": _SRC, "runs": results,
+        json.dump({"import_source": _SRC, "runs": slim,
                    "totals": {"events": tot_evt, "odd": tot_odd,
                               "even_not_2": tot_oth, "max_pairing_residual": max_pair}},
                   f, indent=2, ensure_ascii=False)

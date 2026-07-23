@@ -112,7 +112,91 @@ def main():
                    "boson_endpoint_err": boson_err, "fermion_endpoint_err": fermi_err,
                    "max_root_return_err": max_root_return, "ladder": ladder},
                   f, indent=2, ensure_ascii=False)
+
+    make_figures(ladder, os.path.join(HERE, "figures"))
     return 0 if ok else 1
+
+
+def make_figures(ladder, outdir):
+    """図1（単位円上の固有値軌跡）と図2（R vs 交換位相の梯子）を SVG+PNG で生成。
+    図内ラベルは英数字（フォント非依存）。キャプションは論文本文（日本語）。"""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    os.makedirs(outdir, exist_ok=True)
+
+    # --- 図1: 複素単位円上の λ_anti = −e^{2iθ} 軌跡（R:0→1）と根 ---
+    fig, ax = plt.subplots(figsize=(5.6, 5.6))
+    circ = np.linspace(0, 2 * np.pi, 400)
+    ax.plot(np.cos(circ), np.sin(circ), color="0.7", lw=1.0, zorder=1)
+    Rs = np.linspace(0.0, 1.0, 600)
+    xs, ys = [], []
+    for R in Rs:
+        _, la = p5.exact_eigenvalues(float(R))
+        xs.append(la.real); ys.append(la.imag)
+    ax.plot(xs, ys, color="tab:purple", lw=2.0, zorder=2,
+            label=r"$\lambda_{anti}=-e^{2i\theta}$ (R:0$\to$1)")
+    # λ_sym=1 固定点
+    ax.plot([1], [0], "s", color="tab:gray", ms=9, zorder=3,
+            label=r"$\lambda_{sym}=1$ (fixed)")
+    # 端点と根
+    for r in ladder:
+        la = complex(r["lambda_a_re"], r["lambda_a_im"])
+        if r["stat"].startswith("ボゾン"):
+            ax.plot(la.real, la.imag, "o", color="tab:blue", ms=13, zorder=4,
+                    label="boson end R=1")
+        elif r["stat"].startswith("フェルミオン"):
+            ax.plot(la.real, la.imag, "o", color="tab:red", ms=13, zorder=4,
+                    label="fermion end R=0")
+        else:
+            ax.plot(la.real, la.imag, "^", color="tab:green", ms=9, zorder=4)
+            ax.annotate(f"{r['n']}/{r['m']}", (la.real, la.imag),
+                        textcoords="offset points", xytext=(6, 4), fontsize=8)
+    ax.plot([], [], "^", color="tab:green", label="anyonic roots (n/m)")
+    ax.set_xlabel(r"Re $\lambda$"); ax.set_ylabel(r"Im $\lambda$")
+    ax.set_aspect("equal"); ax.set_xlim(-1.3, 1.3); ax.set_ylim(-1.3, 1.3)
+    ax.grid(True, alpha=0.2)
+    ax.set_title("Statistics ladder on the unit circle")
+    ax.legend(loc="upper left", fontsize=7.5, framealpha=0.9)
+    fig.tight_layout()
+    fig.savefig(os.path.join(outdir, "N3_fig1_eigenvalue_unit_circle.svg"))
+    fig.savefig(os.path.join(outdir, "N3_fig1_eigenvalue_unit_circle.png"), dpi=150)
+    plt.close(fig)
+
+    # --- 図2: R vs 交換位相（λ_anti の偏角/2π）と有理量子化点 ---
+    fig, ax = plt.subplots(figsize=(7.0, 4.4))
+    ph = []
+    for R in Rs:
+        _, la = p5.exact_eigenvalues(float(R))
+        ph.append((math.atan2(la.imag, la.real) / (2 * math.pi)) % 1.0)
+    ax.plot(Rs, ph, color="tab:purple", lw=2.0,
+            label=r"exchange phase = arg$(\lambda_{anti})/2\pi$")
+    for r in ladder:
+        Rr = r["R"]; pr = r["phase_cycles"]
+        if r["stat"].startswith("ボゾン"):
+            ax.plot(Rr, pr, "o", color="tab:blue", ms=11, zorder=5)
+        elif r["stat"].startswith("フェルミオン"):
+            ax.plot(Rr, pr, "o", color="tab:red", ms=11, zorder=5)
+        else:
+            ax.plot(Rr, pr, "^", color="tab:green", ms=9, zorder=5)
+            ax.annotate(f"{r['n']-r['m']}/{r['n']}", (Rr, pr),
+                        textcoords="offset points", xytext=(5, -12), fontsize=8)
+    ax.set_xlabel("exchange coefficient  R")
+    ax.set_ylabel(r"exchange phase / 2$\pi$")
+    ax.set_title("Finite-order roots quantize the exchange phase (rational)")
+    ax.set_ylim(0.45, 1.03)
+    ax.grid(True, alpha=0.3)
+    ax.text(0.03, 0.53, "fermion R=0", color="tab:red", fontsize=8,
+            ha="left", va="center")
+    ax.text(0.97, 0.97, "boson R=1", color="tab:blue", fontsize=8,
+            ha="right", va="center")
+    ax.legend(loc="lower right", fontsize=8, framealpha=0.9)
+    fig.tight_layout()
+    fig.savefig(os.path.join(outdir, "N3_fig2_statistics_ladder.svg"))
+    fig.savefig(os.path.join(outdir, "N3_fig2_statistics_ladder.png"), dpi=150)
+    plt.close(fig)
+    print(f"図を生成: {outdir}/N3_fig1_eigenvalue_unit_circle.(svg|png), "
+          f"N3_fig2_statistics_ladder.(svg|png)")
 
 
 if __name__ == "__main__":
