@@ -109,10 +109,11 @@ def main():
 
     sys_lr = LowRankSystem(args.n)
     ea, eb = build_edges(args.n)
+    beta_tag = "" if args.beta == 0.5 else f"_beta{args.beta:.10f}".rstrip("0")
     out_dir = os.path.join(
         BASE_DIR,
         "lowN_metastable_result_v1",
-        f"parent_iteration_trace_N{args.n:05d}_seed{args.seed:03d}",
+        f"parent_iteration_trace_N{args.n:05d}_seed{args.seed:03d}{beta_tag}",
     )
     os.makedirs(out_dir, exist_ok=True)
 
@@ -164,7 +165,8 @@ def main():
     rng_ref = np.random.default_rng(args.seed)
     sys_ref = LowRankSystem(args.n)
     v_ref, res_ref, _ = make_parent(
-        sys_ref, rng_ref, iters=args.max_iters, tol=args.tol, restarts=args.restarts
+        sys_ref, rng_ref, iters=args.max_iters, beta=args.beta,
+        tol=args.tol, restarts=args.restarts
     )
     diff = float(np.linalg.norm(v_final - v_ref))
     ok = diff < 1e-10
