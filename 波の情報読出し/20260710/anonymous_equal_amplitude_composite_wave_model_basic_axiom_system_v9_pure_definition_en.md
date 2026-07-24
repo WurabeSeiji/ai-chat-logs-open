@@ -3,7 +3,7 @@
 **Date:** 2026-07-24  
 **Author:** Noriaki Kihara  
 **Status:** Definition paper  
-**Version DOI:** To be assigned at publication<br>
+**Version DOI:** 10.5281/zenodo.21522310<br>
 **Concept DOI:** 10.5281/zenodo.21315735
 
 Changes in v9 (introduction of the anonymous partial-projection existence axiom): (1) Axiom 0.7 is added as a general principle stating that physically realized state space is the image of a nontrivial admissible partial projection selected from the candidate space of the foundational axioms. (2) The numbers and texts of the existing Axioms 0, 0.5, 0.6, and 1--17, as well as the working axioms, are unchanged. (3) No specific symmetry-group name, eight-component assumption, two-quartet structure, or derived number 240, 248, or 30 is introduced into the axioms. These remain a conditional identification under additional branch assumptions in the independent paper. Concept DOI: 10.5281/zenodo.21521899

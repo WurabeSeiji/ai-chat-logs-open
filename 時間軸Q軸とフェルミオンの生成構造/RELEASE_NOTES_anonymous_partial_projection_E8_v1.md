@@ -83,3 +83,13 @@ The result is conditional. The foundational axioms do not uniquely force $E_8$; 
 - The Japanese PDF was compiled twice with XeLaTeX and explicit Japanese fonts.
 - The English PDF was compiled twice with pdfLaTeX.
 - Final logs contain no LaTeX errors, undefined control sequences, overfull boxes, or missing characters.
+
+## Follow-up Integration into Basic Axiom System v9
+
+On 2026-07-24, the symmetry-neutral principle developed in this paper was incorporated into the basic axiom system as Axiom 0.7, Anonymous Partial-Projection Existence.
+
+- Basic Axiom System Concept DOI: https://doi.org/10.5281/zenodo.21315735
+- Basic Axiom System v9.1 Version DOI: https://doi.org/10.5281/zenodo.21522310
+- Zenodo record: https://zenodo.org/records/21522310
+
+Only the general existence of a nontrivial admissible anonymous partial projection was incorporated. The name $E_8$, the eight-component and two-quartet branch assumptions, and the derived numbers 240, 248, and 30 remain in this independent paper as conditional results.
