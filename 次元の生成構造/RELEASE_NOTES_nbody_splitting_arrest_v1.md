@@ -14,6 +14,11 @@ Release date: 2026-07-25
 
 - https://zenn.dev/noriaki_kihara/articles/nbody-splitting-arrest-orthogonal-plane-emergence
 
+## note（一般向け・日本語）
+
+- https://note.com/kiharanoriaki/n/n28eeb5465c32
+- 元原稿: `次元の生成構造/波はなぜ分裂を止めるのか_note完成稿.md`
+
 ## 公開ファイル（Zenodo, 7点）
 
 - `nbody_splitting_arrest_and_orthogonal_plane_emergence_ja.md` / `_en.md`
