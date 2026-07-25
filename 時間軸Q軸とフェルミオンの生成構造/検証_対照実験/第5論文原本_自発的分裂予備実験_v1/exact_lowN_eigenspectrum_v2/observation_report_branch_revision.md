@@ -46,21 +46,54 @@ FigF（採用対応の最小重なり）。
 merge_candidate、両方なら ambiguous、対応 target なしは death、対応 source なしは birth。
 これらは幾何的追跡ラベルであり物理解釈を付けない。出力：`raw/N00005/cluster_lineage.csv`。図 FigB。
 
-## 5. 初期時刻部分空間との重なり（§4）
+## 5. 初期時刻部分空間との重なり（§4, initial_origin 修正済）
 
 初期 t0 の全固有値の ρ_j=|σ_j|/(ε‖K‖) から床/非床部分空間を構成（ρ<1e3 を床）。t0 では
-ρ が 1〜10（床）と 1e15（非床）に明瞭分離し、床空間は閾値 1e2〜1e6 で不変。各クラスタ×時刻の
-初期床/非床空間重なりと `initial_origin_status` を保存。
+ρ が 1〜10（床）と 1e15（非床）に明瞭分離し、床空間は閾値 1e2〜1e6 で不変。
+重なりは**クラスタ基底の全列**を用いた
 
-| initial_origin_status | 件数（クラスタ×時刻） |
+  O(U,B) = ‖U†B‖_F² / dim(B) = Tr(Π_U Π_B)/rank(Π_B)
+
+で計算（旧実装は先頭2列のみを使い多次元クラスタで過小評価していた。廃止）。
+
+**重なり閉鎖（O_floor + O_nonfloor = 1）**：初期床・非床が全空間を直交分解するため理論上 1。
+
+| 量 | 値 |
 |:--|--:|
-| mixed | 3864 |
-| initial_nonfloor | 679 |
-| initial_floor | 129 |
-| undetermined | 21 |
+| max\|O_floor+O_nonfloor−1\| | 1.55×10⁻¹⁵ |
+| median\|…−1\| | 2.22×10⁻¹⁶ |
+| 誤差>10⁻¹² の件数 | 0 |
+| 誤差>10⁻¹⁰ の件数 | 0 |
+| 合格（<10⁻¹²） | ✓ |
 
-出力：`raw/N00005/initial_space_origin.csv`（overlap_with_initial_floor_space,
-overlap_with_initial_nonfloor_space, initial_origin_status, floor_threshold_label）。図 FigC, FigD。
+**initial_origin_status（全列 Frobenius・閾値 0.99）**：
+
+| status | 件数（クラスタ×時刻） |
+|:--|--:|
+| mixed | 3852 |
+| initial_nonfloor | 679 |
+| initial_floor | 162 |
+| undetermined | 0 |
+
+**origin 閾値感度**：
+
+| 閾値 | initial_floor | initial_nonfloor | mixed | undetermined |
+|--:|--:|--:|--:|--:|
+| 0.90 | 186 | 747 | 3760 | 0 |
+| 0.95 | 177 | 705 | 3811 | 0 |
+| 0.99 | 162 | 679 | 3852 | 0 |
+| 0.999 | 143 | 650 | 3852 | 48 |
+
+出力：`raw/N00005/initial_space_origin.csv`（step, time, cluster_id, branch_id, cluster_dimension,
+sigma_min/max/representative, overlap_with_initial_floor_space, overlap_with_initial_nonfloor_space,
+origin_overlap_sum, origin_overlap_closure_error, initial_origin_status, origin_threshold,
+floor_threshold_label）、`diagnostics/N00005_initial_origin_revision.json`、
+`tables/N00005/initial_origin_summary.csv`。図 FigC（床/非床重なり）, FigC(closure)（和≈1）, FigD
+（O_floor≥0.99 の branch）。
+
+**旧結果（未確定として置換）**：旧 `overlap_space`（先頭2列）による initial_origin_status
+（mixed 3864 / nonfloor 679 / floor 129 / undetermined 21）と旧 FigC/FigD は廃止。旧
+`initial_floor_flag`（前時刻対応失敗＝床）由来の集計・図（fig09/fig10）は `deprecated/` へ隔離。
 
 ## 6. 併合閾値感度（§5）
 
@@ -121,9 +154,30 @@ v2 で branch ID を用いた図・branch別δ・初期床由来 branch・birth/
 
 ## 11. 出力一覧
 
-- `raw/N00005/branch_tracking_bijective.csv`, `cluster_lineage.csv`, `initial_space_origin.csv`,
-  `merge_tolerance_sensitivity.csv`
-- `diagnostics/N00005_branch_revision.json`
-- `figures/N00005/figA〜figF`
+- `raw/N00005/branch_tracking_bijective.csv`, `cluster_lineage.csv`, `initial_space_origin.csv`
+  （全列 Frobenius・新列付）, `merge_tolerance_sensitivity.csv`
+- `diagnostics/N00005_branch_revision.json`, `diagnostics/N00005_initial_origin_revision.json`
+- `tables/N00005/initial_origin_summary.csv`
+- `figures/N00005/figA〜figF`, `figC_origin_overlap_closure.png`
+- `deprecated/`：`fig09_floor_branches_obsolete.png`, `fig10_delta_branches_obsolete.png`,
+  `cluster_tracking_obsolete.csv`（旧方式・解析使用禁止）
+
+## 12. initial_origin 修正の検収（§12）
+
+| # | 条件 | 状態 |
+|--:|:--|:--|
+| 1 | overlap_space が全列使用 | ✓（‖U†B‖_F²/dim(B)） |
+| 2 | 初期床＋非床が全空間を構成 | ✓（U の直交補で構成） |
+| 3 | 全時刻・全クラスタで \|O_floor+O_nonfloor−1\|<10⁻¹² | ✓（max 1.55×10⁻¹⁵） |
+| 4 | initial_origin_status 全面再生成 | ✓ |
+| 5 | 旧 initial_floor_flag を解析から排除 | ✓（deprecated 隔離） |
+| 6,7 | FigC / FigD 再生成 | ✓（＋closure 図） |
+| 8 | origin 閾値感度保存 | ✓（0.90/0.95/0.99/0.999） |
+| 9 | 旧方式成果物を削除/隔離 | ✓（deprecated/, _obsolete） |
+| 10 | README に旧方式使用禁止 | ✓ |
+| 11 | 報告書の件数・表・図を修正版へ | ✓（本§5, §11） |
+| 12 | 固有値スペクトル・branch追跡 不変 | ✓（1,0.251458,…／unmatched=78,総81 不変） |
+| 13,14 | N=40・N=300 未着手 | ✓ |
+| 15 | 物理解釈なし | ✓ |
 
 **N=40 は人間検収後に同一コードで適用。N=300 未着手。**

@@ -39,6 +39,22 @@ observation_report_no_interpretation.md
 raw/ と tables/ の CSV はリポジトリ規約 `*.csv` により git 追跡外だがディスク（Drive）上に全存在。
 全精度データは binary/ npz で追跡。`git add -f tables/` で代表表を明示追跡。
 
+## branch修正・initial_origin修正（後処理）
+
+`code/run_branch_revision_v2.py 5` が Hungarian 一対一 branch 追跡・lineage・初期床空間重なり
+（全列 Frobenius）・併合閾値感度・crossing 表記を出力する。observation_report_branch_revision.md 参照。
+
+### 廃止（deprecated/, 解析使用禁止）
+
+- 旧 `initial_floor_flag` は、前時刻 branch 対応失敗を初期床由来とみなしていたため廃止。
+  `clusters.csv` の `initial_floor_flag` 列は無効（`initial_space_origin.csv` の
+  `initial_origin_status` / `overlap_with_initial_*` で置換）。
+- 旧 `overlap_space` は、多次元クラスタの先頭2列しか評価していなかったため廃止（全列 Frobenius へ）。
+- 旧方式の図表（`deprecated/fig09_floor_branches_obsolete.png`,
+  `deprecated/fig10_delta_branches_obsolete.png`, `deprecated/cluster_tracking_obsolete.csv`）は
+  解析に使用禁止。
+
 ## 再現
 
-`python3 code/run_exact_lowN_eigenspectrum_v2.py 5` → `python3 code/make_figures_exact_lowN_v2.py 5`。
+`python3 code/run_exact_lowN_eigenspectrum_v2.py 5` → `python3 code/make_figures_exact_lowN_v2.py 5`
+→ `python3 code/run_branch_revision_v2.py 5`。

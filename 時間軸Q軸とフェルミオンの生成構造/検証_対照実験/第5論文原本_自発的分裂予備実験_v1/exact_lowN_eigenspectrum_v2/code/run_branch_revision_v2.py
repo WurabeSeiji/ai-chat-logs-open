@@ -39,12 +39,35 @@ LINEAGE_TOL = 0.3
 FLOOR_RHO_PRIMARY = 1e3
 FLOOR_RHO_LABELS = [1e2, 1e3, 1e4, 1e6]
 MERGE_SWEEP = [1e-10, 1e-11, 1e-12, 1e-13, 1e-14]
+ORIGIN_THRESHOLDS = [0.90, 0.95, 0.99, 0.999]
+ORIGIN_PRIMARY = 0.99
+ORIGIN_CLOSURE_TOL = 1e-12
 FMT = "%.17e"
 
 
 def norm_overlap(Bi, Bj):
     """Tr(Pi Pj)/sqrt(rank_i rank_j) = ||Bi^T Bj||_F^2 / sqrt(dim_i dim_j) ∈ [0,1]."""
     return float(np.sum((Bi.T @ Bj) ** 2) / np.sqrt(Bi.shape[1] * Bj.shape[1]))
+
+
+def overlap_space(Ucols, B):
+    """O(U,B)=||U† B||_F² / dim(B) = Tr(Π_U Π_B)/rank(Π_B)。クラスタ基底の**全列**を使う。"""
+    if B.shape[1] == 0 or Ucols.shape[1] == 0:
+        return 0.0
+    Om = Ucols.conj().T @ B.astype(complex)
+    return float(np.real_if_close(np.linalg.norm(Om, "fro") ** 2 / B.shape[1]))
+
+
+def origin_status(of, onf, sumv, thr, closure_tol=ORIGIN_CLOSURE_TOL):
+    if abs(sumv - 1.0) > closure_tol:
+        return "undetermined"
+    if of >= thr:
+        return "initial_floor"
+    if onf >= thr:
+        return "initial_nonfloor"
+    if of > 0.01 and onf > 0.01:
+        return "mixed"
+    return "undetermined"
 
 
 def collect(n):
@@ -94,12 +117,11 @@ def main(n=5):
     U0 = d0["U"]
     Uf = U0[:, floor_idx0[FLOOR_RHO_PRIMARY]]
     Unf = U0[:, np.setdiff1d(np.arange(U0.shape[1]), floor_idx0[FLOOR_RHO_PRIMARY])]
-
-    def overlap_space(Ucols, B):
-        if Ucols.shape[1] == 0:
-            return 0.0
-        return float(np.sum(np.abs(Ucols.conj().T @ (B[:, 0] + 0j)) ** 2 +
-                            (np.abs(Ucols.conj().T @ (B[:, 1] + 0j)) ** 2 if B.shape[1] > 1 else 0)) / B.shape[1])
+    # 代表時刻（summary 用, 併合感度と共有）
+    reps = {"initial": t0, "nearest_before_crossing_step%d" % rep_crossing: rep_crossing,
+            "true_crossing_step%d" % crossing: crossing,
+            "post_crossing": min(times, key=lambda x: abs(x - (crossing + 200))),
+            "plateau_start": min(times, key=lambda x: abs(x - (crossing + 5000))), "final": end}
 
     # ---- Hungarian 一対一 branch 追跡 ----
     f_bij = open(raw / "branch_tracking_bijective.csv", "w", newline=""); w_bij = csv.writer(f_bij)
@@ -110,9 +132,11 @@ def main(n=5):
     w_lin.writerow(["source_step", "target_step", "source_cluster_id", "target_cluster_id",
                     "source_branch_id", "target_branch_id", "overlap", "relation_type"])
     f_org = open(raw / "initial_space_origin.csv", "w", newline=""); w_org = csv.writer(f_org)
-    w_org.writerow(["step", "cluster_id", "branch_id", "sigma_min", "sigma_max", "sigma_representative",
+    w_org.writerow(["step", "time", "cluster_id", "branch_id", "cluster_dimension",
+                    "sigma_min", "sigma_max", "sigma_representative",
                     "overlap_with_initial_floor_space", "overlap_with_initial_nonfloor_space",
-                    "initial_origin_status", "floor_threshold_label"])
+                    "origin_overlap_sum", "origin_overlap_closure_error",
+                    "initial_origin_status", "origin_threshold", "floor_threshold_label"])
 
     branch_of = {}          # t -> {cid: branch_id}
     next_branch = [0]
@@ -195,29 +219,60 @@ def main(n=5):
             if i not in matched_src:
                 w_lin.writerow([a, b, Pa[i]["cid"], -1, branch_of[a][Pa[i]["cid"]], -1, FMT % 0.0, "death"])
 
-    # ---- initial_space_origin（全時刻・全クラスタ）----
+    # ---- initial_space_origin（全時刻・全クラスタ, 全列 Frobenius）----
+    origin_rows = []           # (t, cid, branch, dim, of, onf, sumv, err, status_primary)
+    closure_errs = []
+    status_counts = {thr: defaultdict(int) for thr in ORIGIN_THRESHOLDS}
     for t in times:
         for c in dec[t]["clusters"]:
             of = overlap_space(Uf, c["B"]); onf = overlap_space(Unf, c["B"])
-            if of >= 0.99:
-                status = "initial_floor"
-            elif onf >= 0.99:
-                status = "initial_nonfloor"
-            elif of > 1e-6 and onf > 1e-6:
-                status = "mixed"
-            else:
-                status = "undetermined"
-            w_org.writerow([t, c["cid"], branch_of[t][c["cid"]], FMT % c["sigma_min"],
+            sumv = of + onf; err = abs(sumv - 1.0)
+            closure_errs.append(err)
+            st_primary = origin_status(of, onf, sumv, ORIGIN_PRIMARY)
+            for thr in ORIGIN_THRESHOLDS:
+                status_counts[thr][origin_status(of, onf, sumv, thr)] += 1
+            origin_rows.append((t, c["cid"], branch_of[t][c["cid"]], c["dim"], of, onf, sumv, err, st_primary))
+            w_org.writerow([t, t, c["cid"], branch_of[t][c["cid"]], c["dim"], FMT % c["sigma_min"],
                             FMT % c["sigma_max"], FMT % c["sigma"], FMT % of, FMT % onf,
-                            status, f"rho<{FLOOR_RHO_PRIMARY:.0e}"])
+                            FMT % sumv, FMT % err, st_primary, ORIGIN_PRIMARY, f"rho<{FLOOR_RHO_PRIMARY:.0e}"])
     for fh in (f_bij, f_lin, f_org):
         fh.close()
 
-    # ---- 併合閾値感度（代表時刻）----
-    reps = {"initial": t0, "nearest_before_crossing_step%d" % rep_crossing: rep_crossing,
-            "true_crossing_step%d" % crossing: crossing,
-            "post_crossing": min(times, key=lambda x: abs(x - (crossing + 200))),
-            "plateau_start": min(times, key=lambda x: abs(x - (crossing + 5000))), "final": end}
+    # origin 診断 JSON
+    ce = np.array(closure_errs)
+    prim = status_counts[ORIGIN_PRIMARY]
+    origin_diag = {
+        "N": n, "overlap_definition": "||U_dagger B||_F^2 / dim(B) (all columns)",
+        "floor_rho_primary": FLOOR_RHO_PRIMARY, "origin_primary_threshold": ORIGIN_PRIMARY,
+        "origin_closure_tol": ORIGIN_CLOSURE_TOL,
+        "max_origin_overlap_closure_error": float(ce.max()),
+        "median_origin_overlap_closure_error": float(np.median(ce)),
+        "count_origin_overlap_error_gt_1e-12": int(np.sum(ce > 1e-12)),
+        "count_origin_overlap_error_gt_1e-10": int(np.sum(ce > 1e-10)),
+        "closure_pass_lt_1e-12": bool(ce.max() < 1e-12),
+        "initial_floor_count": prim["initial_floor"], "initial_nonfloor_count": prim["initial_nonfloor"],
+        "mixed_count": prim["mixed"], "undetermined_count": prim["undetermined"],
+        "status_counts_by_origin_threshold": {str(thr): dict(status_counts[thr]) for thr in ORIGIN_THRESHOLDS},
+    }
+    with open(BASE / "diagnostics" / f"N{n:05d}_initial_origin_revision.json", "w", encoding="utf-8") as fh:
+        json.dump(origin_diag, fh, indent=2, ensure_ascii=False)
+
+    # origin 集計表（代表時刻）
+    tab = BASE / "tables" / f"N{n:05d}"; tab.mkdir(parents=True, exist_ok=True)
+    with open(tab / "initial_origin_summary.csv", "w", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["step", "label", "cluster_count", "initial_floor_count", "initial_nonfloor_count",
+                    "mixed_count", "undetermined_count", "max_origin_overlap_closure_error"])
+        for label, t in reps.items():
+            rr = [r for r in origin_rows if r[0] == t]
+            cnt = defaultdict(int)
+            for r in rr:
+                cnt[r[8]] += 1
+            mxe = max((r[7] for r in rr), default=0.0)
+            w.writerow([t, label, len(rr), cnt["initial_floor"], cnt["initial_nonfloor"],
+                        cnt["mixed"], cnt["undetermined"], FMT % mxe])
+
+    # ---- 併合閾値感度（代表時刻, reps は上で定義）----
     f_sen = open(raw / "merge_tolerance_sensitivity.csv", "w", newline=""); w_sen = csv.writer(f_sen)
     w_sen.writerow(["step", "label", "merge_tolerance", "cluster_count", "cluster_dimensions",
                     "dominant_cluster_dimension", "dominant_delta", "dominant_occupation",
@@ -300,30 +355,41 @@ def make_figures(n, dec, times, crossing, branch_of, raw, fd, min_overlap_series
     ax.set_xlabel("time"); ax.set_ylabel("edge count"); ax.set_title(f"N={n} FigB: lineage relation counts")
     fig.tight_layout(); fig.savefig(fd / "figB_lineage_counts.png", dpi=130); plt.close(fig)
 
-    # 図C：初期床/非床空間重なり（branch別）
+    # 図C：初期床/非床空間重なり（branch別, 全列 Frobenius）＋ 閉鎖 O_floor+O_nonfloor
     org = list(csv.DictReader(open(raw / "initial_space_origin.csv")))
-    of_b = defaultdict(dict); onf_b = defaultdict(dict)
+    of_b = defaultdict(dict); onf_b = defaultdict(dict); sum_b = defaultdict(dict)
     for r in org:
         b = int(r["branch_id"]); t = int(float(r["step"]))
         of_b[b][t] = float(r["overlap_with_initial_floor_space"])
         onf_b[b][t] = float(r["overlap_with_initial_nonfloor_space"])
+        sum_b[b][t] = float(r["origin_overlap_sum"])
     fig, (a1, a2) = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
     for b in of_b:
         xs = sorted(of_b[b]); a1.plot(xs, [of_b[b][x] for x in xs], lw=0.6)
         a2.plot(xs, [onf_b[b][x] for x in xs], lw=0.6)
     for a in (a1, a2): a.axvline(crossing, color="k", ls=":", lw=0.8)
     a1.set_ylabel("overlap w/ initial FLOOR space"); a2.set_ylabel("overlap w/ initial NONFLOOR space")
-    a2.set_xlabel("time"); a1.set_title(f"N={n} FigC: overlap with initial-time subspaces (per branch)")
+    a2.set_xlabel("time"); a1.set_title(f"N={n} FigC: overlap with initial-time subspaces (all-column Frobenius, per branch)")
     fig.tight_layout(); fig.savefig(fd / "figC_initial_space_overlap.png", dpi=130); plt.close(fig)
+    # 図C 閉鎖: O_floor + O_nonfloor（≈1 の確認）
+    fig, ax = plt.subplots(figsize=(10, 5))
+    for b in sum_b:
+        xs = sorted(sum_b[b]); ax.plot(xs, [sum_b[b][x] for x in xs], lw=0.6)
+    ax.axhline(1.0, color="r", ls="--", lw=0.8); ax.axvline(crossing, color="k", ls=":", lw=0.8)
+    ax.set_xlabel("time"); ax.set_ylabel("O_floor + O_nonfloor"); ax.set_ylim(0.5, 1.5)
+    ax.set_title(f"N={n} FigC(closure): O_floor+O_nonfloor (should be 1)")
+    fig.tight_layout(); fig.savefig(fd / "figC_origin_overlap_closure.png", dpi=130); plt.close(fig)
 
-    # 図D：初期床空間重なり大の branch の σ/σ1
+    # 図D：修正後 O_floor が閾値以上の branch の σ/σ1（旧 initial_floor_flag は不使用）
+    ORIGIN_THR = 0.99
     floor_branches = set(int(r["branch_id"]) for r in org
-                         if float(r["overlap_with_initial_floor_space"]) >= 0.99)
+                         if float(r["overlap_with_initial_floor_space"]) >= ORIGIN_THR)
     fig, ax = plt.subplots(figsize=(10, 6))
     for b in (floor_branches or []):
         xs = sorted(brt[b]); ax.plot(xs, [brt[b][x] for x in xs], lw=0.7)
     ax.axvline(crossing, color="k", ls=":", lw=0.8); ax.set_xlabel("time"); ax.set_ylabel("sigma/sigma1")
-    ax.set_title(f"N={n} FigD: branches with initial-floor overlap>=0.99 ({len(floor_branches)})")
+    ax.set_title(f"N={n} FigD: branches with initial-FLOOR overlap>={ORIGIN_THR} "
+                 f"(all-column, {len(floor_branches)} branches)")
     fig.tight_layout(); fig.savefig(fd / "figD_initial_floor_branches.png", dpi=130); plt.close(fig)
 
     # 図E：併合閾値感度（代表時刻ごとに cluster数, dominant δ, dominant占有, q3, q4）
