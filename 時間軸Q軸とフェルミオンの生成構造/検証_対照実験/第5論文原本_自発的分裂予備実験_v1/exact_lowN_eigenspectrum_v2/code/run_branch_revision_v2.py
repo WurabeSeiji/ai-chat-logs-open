@@ -96,7 +96,7 @@ def collect(n):
 
 
 def main(n=5):
-    assert n == 5, "branch修正は N=5 のみ。"
+    assert n in (5, 40), "N=5 検収済み。N=40 は実行指示により許可。N=300 未着手。"
     raw = BASE / "raw" / f"N{n:05d}"; fd = BASE / "figures" / f"N{n:05d}"
     raw.mkdir(parents=True, exist_ok=True); fd.mkdir(parents=True, exist_ok=True)
     sys_lr, B0, p, q, Zs, crossing, end = collect(n)

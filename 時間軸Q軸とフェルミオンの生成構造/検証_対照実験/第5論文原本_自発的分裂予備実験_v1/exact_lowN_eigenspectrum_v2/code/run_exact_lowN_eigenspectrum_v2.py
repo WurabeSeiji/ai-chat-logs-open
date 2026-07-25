@@ -231,7 +231,7 @@ def sample_schedule(crossing):
 
 
 def run(n):
-    assert n == 5, "v2 第1段階は N=5 のみ。N=40 は人間検収後に別途。"
+    assert n in (5, 40), "N=5 検収済み。N=40 は実行指示により許可。N=300 未着手。"
     sys_lr, v, B0, p, q, Z, wp = build_init(n)
     M = sys_lr.m
     seed = 40260722 + 1000 * n
