@@ -26,6 +26,10 @@ Release date: 2026-07-25
 - 日本語投稿: https://www.facebook.com/kihara.noriaki/posts/pfbid027R1e2p5G8xi24iEmm7159EYn78H6mjDQQ9EHEns53p8jRCnwoT9quk6D2dRgP426l
 - 英語投稿: https://www.facebook.com/kihara.noriaki/posts/pfbid02aLHAc9mL7GQWRyUsapHWofAJnJuqLt4TpLCUAv3L2TCRnDp4ANGq59UnUzG8FHxkl
 
+## X
+
+- 日本語ポスト: https://x.com/NoriakiKihara/status/2080856209125744857
+
 ## 公開ファイル（Zenodo, 7点）
 
 - `nbody_splitting_arrest_and_orthogonal_plane_emergence_ja.md` / `_en.md`
