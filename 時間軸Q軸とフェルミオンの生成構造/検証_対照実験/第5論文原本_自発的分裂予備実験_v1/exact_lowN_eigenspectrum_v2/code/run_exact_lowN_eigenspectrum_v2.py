@@ -63,8 +63,8 @@ def dense_K(sys_lr, Z):
     return np.column_stack([sys_lr.kmatvec(np.eye(M)[:, j]) for j in range(M)])
 
 
-def decompose(K, Z, B0):
-    """H=iK の eigh 分解 → クラスタ（縮退部分空間）と核。全量を返す。"""
+def decompose(K, Z, B0, merge_tol=1e-12):
+    """H=iK の eigh 分解 → クラスタ（縮退部分空間）と核。全量を返す。merge_tol は併合閾値。"""
     M = K.shape[0]
     Knorm = np.linalg.norm(K, 2)
     H = 1j * K
@@ -96,7 +96,7 @@ def decompose(K, Z, B0):
     # クラスタ化：個別候補平面を作り、平面間重なり>MERGE_TOL の対を併合（union-find）。
     # これにより「非縮退（未併合）平面」の相互直交を MERGE_TOL 以下に保証する（§5, 検収≤1e-12）。
     # 生固有値は平均しない（cluster_id で束ねるのみ）。σ-近接も併記のため min/max σ を保存。
-    MERGE_TOL = 1e-12
+    MERGE_TOL = merge_tol
     pos_rot = sorted([i for i in rot_idx if mu[i] > 0], key=lambda i: -sigma[i])
     cand = []
     for i in pos_rot:
