@@ -21,6 +21,10 @@ Release date: 2026-07-25
 - 英語: https://note.com/kiharanoriaki/n/ne2967054b888
   （元原稿: `次元の生成構造/why_does_the_wave_stop_splitting_note_en.md`）
 
+## Facebook
+
+- 日本語投稿: https://www.facebook.com/kihara.noriaki/posts/pfbid027R1e2p5G8xi24iEmm7159EYn78H6mjDQQ9EHEns53p8jRCnwoT9quk6D2dRgP426l
+
 ## 公開ファイル（Zenodo, 7点）
 
 - `nbody_splitting_arrest_and_orthogonal_plane_emergence_ja.md` / `_en.md`
