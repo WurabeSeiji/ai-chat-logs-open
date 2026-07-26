@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "stage": "A2d",
+  "title": "保存済み完全無seed N=5方向系譜",
+  "n": 5,
+  "dtype": "float64",
+  "max_step": 5000,
+  "input_stage": "A2a",
+  "input_runs": [
+    "A2a_N5_seedless_f64_e1",
+    "A2a_N5_seedless_f64_e2"
+  ],
+  "seed_conditions": {
+    "initial_kernel_seed": false,
+    "metastable_transverse_seed": false,
+    "benettin_reinjection": false,
+    "initial_state": "Z0 = v.copy()"
+  },
+  "crossing_rule": "first f > 0.05",
+  "late_reference": {
+    "start_step": 1800,
+    "end_step": 2500,
+    "construction": "top two eigenvectors of mean sampled P34"
+  },
+  "q_resolution_threshold": 1e-6,
+  "q_resolution_bands": [
+    {
+      "id": "Q0_LT_1E-8",
+      "lower": null,
+      "upper": 1e-8
+    },
+    {
+      "id": "Q1_1E-8_TO_1E-6",
+      "lower": 1e-8,
+      "upper": 1e-6
+    },
+    {
+      "id": "Q2_1E-6_TO_1E-4",
+      "lower": 1e-6,
+      "upper": 1e-4
+    },
+    {
+      "id": "Q3_1E-4_TO_1E-2",
+      "lower": 1e-4,
+      "upper": 1e-2
+    },
+    {
+      "id": "Q4_GE_1E-2",
+      "lower": 1e-2,
+      "upper": null
+    }
+  ],
+  "classification": {
+    "continuous_late_overlap_median_min": 0.95,
+    "continuous_late_max_angle_median_max_rad": 0.1,
+    "fallback_if_resolved": "SAMPLED_ROTATING_OR_MIXED_LINEAGE",
+    "insufficient": "INSUFFICIENT_RESOLUTION"
+  },
+  "display_windows": {
+    "crossing_zoom": [
+      900,
+      1400
+    ],
+    "full": [
+      0,
+      5000
+    ]
+  },
+  "prohibited": [
+    "new_dynamics",
+    "state_update",
+    "seed_injection",
+    "Tperp_reconstruction",
+    "one_step_rotation_claim",
+    "single_direction_establishment_step",
+    "H1_H2_H0_judgement"
+  ]
+}
