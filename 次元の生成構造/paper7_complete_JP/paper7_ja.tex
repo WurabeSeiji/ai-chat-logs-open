@@ -1,0 +1,834 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{N体関係波閉鎖系における三方向空間の創発}\label{nux4f53ux95a2ux4fc2ux6ce2ux9589ux9396ux7cfbux306bux304aux3051ux308bux4e09ux65b9ux5411ux7a7aux9593ux306eux5275ux767a}
+
+\subsection{------二方向初期状態からの第三方向生成と準安定閉包}\label{ux4e8cux65b9ux5411ux521dux671fux72b6ux614bux304bux3089ux306eux7b2cux4e09ux65b9ux5411ux751fux6210ux3068ux6e96ux5b89ux5b9aux9589ux5305}
+
+\textbf{木原 範昭}\\
+ORCID: 0009-0004-6753-4020\\
+2026年7月26日\\
+DOI: 10.5281/zenodo.21578402 （Concept DOI: 10.5281/zenodo.21578401）
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{概要}\label{ux6982ux8981}
+
+第6論文では、N体関係波閉鎖系における自発的分裂が、新しい直交回転平面の成立と同時に停止することを示した。その結果から、次の課題が生じた。
+
+\begin{quote}
+二方向から始まった活動部分空間は、時間発展によって第三、第四、第五の方向を逐次的に生成するのか。
+\end{quote}
+
+本稿は、この問いを直接検証した。
+
+N=5、40、300の二方向初期状態を絶対step
+0から55000まで追跡した。その結果、初期二方向の外側に独立な第三空間方向が生成され、三方向空間が成立した。反対称閉鎖力学では新方向は共役対として現れるため、数値的には初期親平面と瞬時支配平面の結合階数が2から4へ増加する。転移後、この階数4は全記録時刻で維持された。
+
+一方、調査した時間発展範囲では、三方向を超える新たな有限占有方向は観測されなかった。系は固定点へ停止せず、三方向の占有を保ったまま有界な振動を継続した。さらに、三方向閉包の外側へ与えた微小摂動には周期的な増幅応答が観測された。したがって、三方向以外の方向は有限占有としては成立していないが、その萌芽となる横方向応答は準安定状態に内在している。
+
+本稿の中心結果は次の通りである。
+
+\[
+\boxed{
+\text{二方向初期状態は第三方向を生成し、三方向空間からなる動的準安定閉包を形成する。}
+}
+\]
+
+また、本実験は新しい課題を示した。論文6および本稿で観測された幾何級数的発展には、その開始以前に見かけ上平坦な期間が存在し、初期条件として微小seedが与えられている。本稿では、この潜伏期間とseedの内部構造を分析していない。系のスケール不変性を考えると、幾何級数的発展以前の平坦期間も、本稿で観測した準安定振動と同型の微小準安定状態である可能性がある。この検証は次稿の主題とする。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1.
+第6論文からの課題}\label{ux7b2c6ux8ad6ux6587ux304bux3089ux306eux8ab2ux984c}
+
+第6論文では、単一支配平面へ局在した状態が、位相帰還によって親平面外へ増幅し、新しい直交回転平面へ再局在することを示した
+{[}5{]}。初期親平面と分裂後の支配平面を結合すると、活動部分空間は四次元となった。
+
+しかし、そこでは新しい平面が何を意味するかを確定していなかった。特に未解決だったのは、方向創生が一度で終わるのか、それとも同じ機構によって方向数が逐次的に増え続けるのかである。
+
+そこで本稿では、次の予想を置かずに時間発展を追跡した。
+
+\[
+\text{二方向}
+\longrightarrow
+\text{三方向}
+\longrightarrow
+\text{四方向}
+\longrightarrow\cdots
+\]
+
+実験の目的は、方向数が実際にどこまで増えるかを、長時間時系列と部分空間階数から決定することである。
+
+結果は明確だった。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  二方向状態から第三空間方向が生成された。
+\item
+  その後、55000 stepまで三方向を超える有限占有方向は生成されなかった。
+\item
+  三方向状態は静止せず、準安定振動を継続した。
+\item
+  閉包外には微小摂動を増幅する横方向応答が残った。
+\end{enumerate}
+
+したがって、方向創生は単純な無限列ではなく、三方向空間の成立後に動的準安定相へ移行する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. 系の定義}\label{ux7cfbux306eux5b9aux7fa9}
+
+\subsubsection{2.1
+完全二体関係空間}\label{ux5b8cux5168ux4e8cux4f53ux95a2ux4fc2ux7a7aux9593}
+
+N個の無名頂点の完全二体関係を辺として表す。辺数は
+
+\[
+M=\binom{N}{2}=\frac{N(N-1)}{2}
+\]
+
+であり、状態を
+
+\[
+Z\in\mathbb C^M
+\]
+
+とする。
+
+状態は
+
+\[
+Z^\dagger Z=1,
+\qquad
+Z^T Z=0
+\]
+
+を満たす。後者を零二乗閉鎖と呼ぶ。\(Z=X+iY\) と書けば、
+
+\[
+\|X\|=\|Y\|,
+\qquad
+X\cdot Y=0
+\]
+
+である。したがって、一つの複素状態は実空間内の直交二方向によって表される。
+
+\subsubsection{2.2
+状態依存反対称生成子}\label{ux72b6ux614bux4f9dux5b58ux53cdux5bfeux79f0ux751fux6210ux5b50}
+
+各辺位相
+
+\[
+\theta=\arg Z
+\]
+
+から、実反対称生成子
+
+\[
+K(\theta)=WJW^T,
+\qquad
+K^T=-K
+\]
+
+を構成する。最大回転率を\(\sigma_1\)として、
+
+\[
+\widetilde K=\frac{K}{\sigma_1}
+\]
+
+と正規化する。時間発展はCayley更新
+
+\[
+Z_{\tau+1}
+=
+\left(I-\gamma\widetilde K_\tau\right)^{-1}
+\left(I+\gamma\widetilde K_\tau\right)Z_\tau,
+\qquad
+\gamma=\tan\frac{\pi}{144}
+\]
+
+で与える。
+
+Cayley行列は実直交行列であるため、
+
+\[
+Z^\dagger Z,
+\qquad
+Z^T Z
+\]
+
+を保存する。
+
+\subsubsection{2.3
+二方向初期状態とseed}\label{ux4e8cux65b9ux5411ux521dux671fux72b6ux614bux3068seed}
+
+初期親状態\(v\)は、生成子の支配固有モードとして
+
+\[
+K(\arg v)v=-i\sigma_1v
+\]
+
+を満たす。対応する初期親平面を
+
+\[
+P_1=\operatorname{span}\{\Re v,\Im v\}
+\]
+
+とする。これは実二方向からなる。
+
+初期状態には微小seed \(g\) を加え、
+
+\[
+Z_0=\frac{v+\delta g}{\|v+\delta g\|},
+\qquad
+\delta=10^{-15}
+\]
+
+とした。
+
+本稿では、このseedを実験条件として固定する。seedの起源、振幅依存性、方向依存性、および幾何級数的発展以前の潜伏期間との関係は次稿で検証する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3.
+方向数の操作的定義}\label{ux65b9ux5411ux6570ux306eux64cdux4f5cux7684ux5b9aux7fa9}
+
+反対称生成子の基本運動単位は二次元回転平面である
+{[}6{]}。初期親平面の正規直交基底を\(B_0\)、各時刻の瞬時支配平面を\(B_{\mathrm{dom}}(\tau)\)とする。
+
+結合行列
+
+\[
+Q(\tau)=[B_0\mid B_{\mathrm{dom}}(\tau)]
+\]
+
+の特異値を
+
+\[
+q_1\ge q_2\ge q_3\ge q_4\ge0
+\]
+
+とする。
+
+転移前には
+
+\[
+q_3=q_4=0,
+\qquad
+\operatorname{rank}Q=2
+\]
+
+であり、瞬時支配平面は初期親平面内にある。
+
+転移後に
+
+\[
+q_3>0,
+\qquad
+q_4>0,
+\qquad
+\operatorname{rank}Q=4
+\]
+
+となれば、瞬時支配平面は初期二方向の外に独立成分を獲得したことになる。
+
+零二乗閉鎖を保つ反対称力学では、新方向は共役対として成立する。本稿では、その一方を第三空間方向、他方を閉鎖共役方向として読む。したがって、三方向空間の創発は、数値的には
+
+\[
+\boxed{
+\operatorname{rank}Q:2\longrightarrow4
+}
+\]
+
+として測定される。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. 数値実験}\label{ux6570ux5024ux5b9fux9a13}
+
+\subsubsection{4.1
+対象と観測時間}\label{ux5bfeux8c61ux3068ux89b3ux6e2cux6642ux9593}
+
+\[
+N=5,\quad40,\quad300
+\]
+
+を用いた。辺数はそれぞれ
+
+\[
+M=10,\quad780,\quad44850
+\]
+
+である。
+
+全系を共通の絶対時間軸
+
+\[
+0\le\tau\le55000
+\]
+
+で追跡した。
+
+方向生成の立上がり時刻は、分裂量\(f>0.05\)となる最初のstepで定義した。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rr@{}}
+\toprule\noalign{}
+N & 立上がりstep \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+5 & 1167 \\
+40 & 2011 \\
+300 & 4844 \\
+\end{longtable}
+}
+
+\subsubsection{4.2 五成分分解}\label{ux4e94ux6210ux5206ux5206ux89e3}
+
+保存ノルムを次の五群へ分解した。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  初期支配平面 \(P_1\)
+\item
+  新方向3
+\item
+  新方向4
+\item
+  残余回転部分空間
+\item
+  生成子核
+\end{enumerate}
+
+新方向3、4は、時間依存部分空間
+
+\[
+S_4(\tau)=\operatorname{orth}[B_0\mid B_{\mathrm{dom}}(\tau)]
+\]
+
+のうち、\(B_0\)に直交する二方向として構成した。
+
+各占有量の和は全時刻で1に閉じる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. 結果}\label{ux7d50ux679c}
+
+\subsubsection{5.1
+二方向状態から第三方向が生成された}\label{ux4e8cux65b9ux5411ux72b6ux614bux304bux3089ux7b2cux4e09ux65b9ux5411ux304cux751fux6210ux3055ux308cux305f}
+
+N=5、40、300のすべてで、転移前には
+
+\[
+\operatorname{rank}Q=2
+\]
+
+であった。転移後には、記録された全時刻で
+
+\[
+\operatorname{rank}Q=4
+\]
+
+となった。数値階数の閾値は\(10^{-8}\)であり、転移後の記録761点すべてで階数4が維持された。
+
+準安定域における\(q_3,q_4\)は次の通りである。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rrr@{}}
+\toprule\noalign{}
+N & \(q_3\) & \(q_4\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+5 & 0.751 & 0.631 \\
+40 & 0.338 & 0.311 \\
+300 & 0.200 & 0.195 \\
+\end{longtable}
+}
+
+したがって、三方向空間は初期条件として与えられていない。初期二方向状態から時間発展によって生成された。
+
+\subsubsection{5.2
+分裂量は有限値へ移行した}\label{ux5206ux88c2ux91cfux306fux6709ux9650ux5024ux3078ux79fbux884cux3057ux305f}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5、40、300の分裂量の長時間比較}]{figs/figure1_compare_N5_N40_N300.png}}
+\caption{N=5、40、300の分裂量の長時間比較}
+\end{figure}
+
+\textbf{図1：}
+N=5、40、300の分裂量\(f=1-E_{P_1}\)。各系は幾何級数的な立上がりの後、有限な準安定域へ移行する。立上がり時刻はN=5で1167、N=40で2011、N=300で4844である。
+
+最終時刻の分裂量は、
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rr@{}}
+\toprule\noalign{}
+N & \(f\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+5 & 0.805 \\
+40 & 0.204 \\
+300 & 0.086 \\
+\end{longtable}
+}
+
+であった。N=40、300では初期親平面に大部分のノルムを残したまま分裂が停止している。したがって、停止は親平面ノルムの枯渇ではない。
+
+\subsubsection{5.3
+三方向準安定閉包}\label{ux4e09ux65b9ux5411ux6e96ux5b89ux5b9aux9589ux5305}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5、40、300の五成分占有比較}]{figs/figure2_compare_N5_N40_N300.png}}
+\caption{N=5、40、300の五成分占有比較}
+\end{figure}
+
+\textbf{図2：}
+N=5、40、300における五成分占有。初期支配平面、新方向3、新方向4、残余回転部分空間、核を示す。黒線は分裂量\(f\)。
+
+最終時刻の占有は次の通りである。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rrrrrrr@{}}
+\toprule\noalign{}
+N & \(P_1\) & 新方向3 & 新方向4 & 残余回転 & 核 & 合計 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+5 & 0.195 & 0.190 & 0.143 & \(\simeq0\) & 0.472 & 1.000000 \\
+40 & 0.796 & 0.034 & 0.035 & \(\simeq0\) & 0.134 & 1.000000 \\
+300 & 0.914 & 0.021 & 0.020 & \(\simeq0\) & 0.045 & 1.000000 \\
+\end{longtable}
+}
+
+残余回転部分空間は準安定域でほぼゼロとなり、有限占有は初期平面、新方向3、新方向4、および核へ閉じた。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={五成分占有の対数表示}]{figs/figure3_compare_N5_N40_N300.png}}
+\caption{五成分占有の対数表示}
+\end{figure}
+
+\textbf{図3：}
+五成分占有の対数表示。第三方向生成後も、各占有量は完全な定数へ収束せず、微小な有界振動を継続する。
+
+本稿では、次を満たす状態を三方向準安定閉包と呼ぶ。
+
+\[
+Z^\dagger Z=1,
+\qquad
+Z^T Z=0,
+\]
+
+\[
+\operatorname{rank}Q=4,
+\]
+
+\[
+E_{P_1},E_3,E_4,E_{\ker}
+\text{が有界域に留まりながら時間変動を続ける。}
+\]
+
+これは静的固定点ではない。三方向空間が成立した後の動的閉包である。
+
+\subsubsection{5.4
+調査時間内では三方向以上に増えなかった}\label{ux8abfux67fbux6642ux9593ux5185ux3067ux306fux4e09ux65b9ux5411ux4ee5ux4e0aux306bux5897ux3048ux306aux304bux3063ux305f}
+
+絶対step
+0から55000までの自然発展で、第5、第6方向に対応する新しい有限占有帯は観測されなかった。
+
+残余回転部分空間は準安定域でほぼゼロに留まり、占有スペクトルに新たな有限バンドは現れなかった。
+
+したがって、本実験条件および観測時間では、
+
+\[
+\boxed{
+\text{方向生成は三方向準安定閉包へ到達した。}
+}
+\]
+
+\subsubsection{5.5
+三方向以外の方向の萌芽}\label{ux4e09ux65b9ux5411ux4ee5ux5916ux306eux65b9ux5411ux306eux840cux82bd}
+
+三方向閉包が完全な静的終状態であるかを調べるため、準安定域で活動四次元部分空間\(S_4(\tau)\)の直交補へ微小摂動を与えた。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5、40、300の閉包外横摂動応答}]{figs/transverse_growth_compare_N5_N40_N300.png}}
+\caption{N=5、40、300の閉包外横摂動応答}
+\end{figure}
+
+\textbf{図4：}
+三方向閉包外へ与えた微小摂動の時間発展。N=5、40、300のすべてで周期的な増幅応答が観測された。
+
+現行実装で得られた最大有限時間横成長率は、
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rrr@{}}
+\toprule\noalign{}
+N & \(\lambda_{\perp,\max}\) & \(\lambda_{\perp,\max}/\sigma_1\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+5 & \(2.917\times10^{-3}\) & \(7.305\times10^{-4}\) \\
+40 & \(3.765\times10^{-3}\) & \(9.653\times10^{-5}\) \\
+300 & \(3.614\times10^{-3}\) & \(1.209\times10^{-5}\) \\
+\end{longtable}
+}
+
+であり、複数seed・複数摂動振幅で正の符号が再現された。
+
+この結果は、自然軌道上では三方向を超える有限占有が現れない一方、準安定閉包の外側に増幅可能な横方向が残っていることを示す。したがって、三方向以外の方向は完成した新方向としてではなく、その萌芽として準安定状態に内在する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. 数値検証}\label{ux6570ux5024ux691cux8a3c}
+
+\subsubsection{6.1
+保存と射影閉鎖}\label{ux4fddux5b58ux3068ux5c04ux5f71ux9589ux9396}
+
+全Nで、
+
+\begin{itemize}
+\tightlist
+\item
+  保存誤差最大：\(2.0\times10^{-15}\)
+\item
+  五成分射影閉鎖誤差最大：\(2.2\times10^{-16}\)
+\end{itemize}
+
+であった。
+
+\subsubsection{6.2
+N=40における厳密法と低ランク法の一致}\label{n40ux306bux304aux3051ux308bux53b3ux5bc6ux6cd5ux3068ux4f4eux30e9ux30f3ux30afux6cd5ux306eux4e00ux81f4}
+
+N=40について、密行列固有分解と低ランク\(JG\)法を同一軌道上で比較した。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+量 & 最大偏差 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+五成分占有 & \(1.78\times10^{-15}\) \\
+分裂量\(f\) & \(1.78\times10^{-15}\) \\
+立上がりstep & 一致（2011） \\
+固定親基底次元 & 一致 \\
+\end{longtable}
+}
+
+低ランク法は密行列法を倍精度範囲で再現した。N=300の結果は、この検証済み低ランク法による。
+
+\subsubsection{6.3
+完全固有分解}\label{ux5b8cux5168ux56faux6709ux5206ux89e3}
+
+N=5では\(H=iK\)をHermitian行列として完全固有分解し、次を確認した。
+
+\begin{itemize}
+\tightlist
+\item
+  固有対残差：\(7.5\times10^{-15}\)
+\item
+  正負対誤差：\(6.7\times10^{-15}\)
+\item
+  状態分解閉鎖：\(3.3\times10^{-15}\)
+\item
+  非縮退平面間直交：\(9.7\times10^{-13}\)以下
+\end{itemize}
+
+N=40でも、固有対残差\(2.4\times10^{-13}\)、状態分解閉鎖\(5.7\times10^{-15}\)を得た。
+
+\subsubsection{6.4
+横摂動解析の実装課題}\label{ux6a2aux6442ux52d5ux89e3ux6790ux306eux5b9fux88c5ux8ab2ux984c}
+
+横摂動Benettin解析では、物理的摂動状態の再正規化後に、反復固有値ソルバーのwarm-start内部状態を基準軌道側へ完全同期していない。このため、横成長率の定量値には反復履歴差が混入する可能性がある。
+
+この課題が影響するのは、図4および\(\lambda_\perp\)の定量評価である。自然発展軌道から直接得た、
+
+\[
+\operatorname{rank}Q:2\to4,
+\]
+
+五成分占有、三方向準安定閉包、55000
+stepまでの追加有限方向の非出現には影響しない。
+
+次稿では内部状態を同期した対照計算によって、横方向応答を再測定する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7.
+幾何級数的発展以前の平坦期間}\label{ux5e7eux4f55ux7d1aux6570ux7684ux767aux5c55ux4ee5ux524dux306eux5e73ux5766ux671fux9593}
+
+本稿の実験では、方向生成が可視化される以前に、見かけ上ほぼ平坦な潜伏期間が存在する。また、初期条件には\(\delta=10^{-15}\)のseedを与えている。
+
+論文6と本稿は、seedから有限占有までの幾何級数的発展を確認した。しかし、次の二点はまだ調べていない。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  seedがどの階層から形成されたか。
+\item
+  幾何級数的発展以前の平坦期間で、どのような微小運動が進行しているか。
+\end{enumerate}
+
+本系がスケール不変であるなら、可視的な幾何級数的発展以前の平坦期間も、真の静止状態ではなく、図3で観測した準安定振動を極小スケールへ縮小した状態である可能性がある。
+
+すなわち、
+
+\[
+\boxed{
+\text{初期の平坦期間は、次の方向創生以前の微小準安定相である可能性がある。}
+}
+\]
+
+この可能性は、本稿の結果から発見された次の検証課題である。本稿では結論に含めず、次稿で高精度演算、seed掃引、位相整列、および初期・後期波形のスケール比較によって検証する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. 結論}\label{ux7d50ux8ad6}
+
+本稿は、第6論文で発見した新しい直交回転平面が、その後どのように時間発展するかを長時間追跡した。
+
+最初に期待したのは、二方向状態が時間発展によって第三、第四、第五の方向を逐次的に生成する可能性であった。
+
+実験で得られた結果は次の通りである。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  二方向初期状態から第三空間方向が生成された。
+\item
+  転移前の活動部分空間階数は2、転移後は4であり、第三方向は時間発展によって成立した。
+\item
+  N=5、40、300のすべてで三方向準安定閉包が形成された。
+\item
+  55000 stepまで、三方向を超える新たな有限占有方向は観測されなかった。
+\item
+  三方向閉包は固定点ではなく、有界な準安定振動を継続した。
+\item
+  閉包外への微小摂動には周期的な増幅応答があり、三方向以外の方向の萌芽が観測された。
+\end{enumerate}
+
+したがって、本稿の結論は次の通りである。
+
+\[
+\boxed{
+\text{N体関係波閉鎖系では、二方向初期状態から第三方向が生成され、三方向空間が動的準安定閉包として成立する。}
+}
+\]
+
+そして、本稿は次の問いを新たに残した。
+
+\[
+\boxed{
+\text{幾何級数的発展以前の平坦期間も、より小さなスケールの準安定状態ではないか。}
+}
+\]
+
+この問いは、seedの起源とともに次稿で検証する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9.
+次稿の検証課題}\label{ux6b21ux7a3fux306eux691cux8a3cux8ab2ux984c}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  seed振幅と立上がり時刻の関係
+\item
+  seed方向と生成方向の関係
+\item
+  数値精度および浮動小数点床への依存性
+\item
+  幾何級数的発展以前の微小振動の抽出
+\item
+  初期潜伏相と後期準安定相の時間・振幅スケール比較
+\item
+  Benettin再正規化時のwarm-start内部状態同期
+\item
+  三方向閉包外の横成長率の再測定
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsubsection{自己引用}\label{ux81eaux5df1ux5f15ux7528}
+
+{[}1{]} 木原範昭,
+「N体完全二体関係波における生成子ランク線形上界と三方向飽和」, Zenodo,
+Concept DOI: 10.5281/zenodo.21465898, 2026.
+
+{[}2{]} 木原範昭, 「N体固定生成子系における平面分解読出し」, Zenodo,
+Concept DOI: 10.5281/zenodo.21468959, 2026.
+
+{[}3{]} 木原範昭,
+「N体関係波閉鎖系における状態の自発的分裂の開始と帰結の三分類」, Zenodo,
+Concept DOI: 10.5281/zenodo.21486233, 2026.
+
+{[}4{]} 木原範昭, 「波の数は系の分解能である」, Zenodo, Concept DOI:
+10.5281/zenodo.21486544, 2026.
+
+{[}5{]} 木原範昭,
+「N体関係波閉鎖系における自発的分裂の停止と新しい直交回転平面の創発」,
+Zenodo, Concept DOI: 10.5281/zenodo.21543070, 2026.
+
+\subsubsection{外部文献}\label{ux5916ux90e8ux6587ux732e}
+
+{[}6{]} R. A. Horn and C. R. Johnson, \emph{Matrix Analysis}, 2nd ed.,
+Cambridge University Press, 2013.
+
+{[}7{]} A. Taghavi-Chabert, ``Twistor Geometry of Null Foliations in
+Complex Euclidean Space,'' \emph{SIGMA}, 13, 005 (2017). DOI:
+10.3842/SIGMA.2017.005; arXiv:1505.06938.
+
+{[}8{]} M. L. Walker, ``Spontaneous Emergence of a Causal Time Axis in
+Euclidean Space from a Gauged Rotational Symmetry Theory,''
+\emph{Symmetry}, 16(1), 4 (2024). DOI: 10.3390/sym16010004.
+
+{[}9{]} F. D. T. Smith, ``Higgs and Fermions in D4-D5-E6 Model based on
+Cl(0,8) Clifford Algebra,'' arXiv:hep-th/9403007 (1994).
+
+{[}10{]} N. Furey, ``Three Generations, Two Unbroken Gauge Symmetries,
+and One Eight-Dimensional Algebra,'' \emph{Physics Letters B}, 785,
+84--89; arXiv:1910.08395.
+
+{[}11{]} I. Todorov, ``Octonion Internal Space Algebra for the Standard
+Model,'' \emph{Universe}, 9(5), 222 (2023). DOI:
+10.3390/universe9050222; arXiv:2206.06912.
+
+{[}12{]} C. A. Manogue, T. Dray, and R. A. Wilson, ``Octions: An E8
+Description of the Standard Model,'' \emph{Journal of Mathematical
+Physics}, 63, 081703 (2022). DOI: 10.1063/5.0095484; arXiv:2204.05310.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{再現性}\label{ux518dux73feux6027}
+
+本稿の長時間走行、五成分分解、図、および数値表は、次の成果物から再生成できる。
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{run\_n\_scaling\_lowrank\_v1.py}
+\item
+  \texttt{run\_paper7\_5color\_timeseries.py}
+\item
+  \texttt{run\_paper7\_transverse.py}
+\item
+  \texttt{run\_paper7\_transverse\_cached.py}
+\item
+  \texttt{run\_paper7\_exact\_vs\_approx\_N40.py}
+\item
+  \texttt{make\_paper7\_figures.py}
+\item
+  \texttt{paper7\_long\_timeseries.csv}
+\item
+  \texttt{transverse\_stability\_timeseries.csv}
+\item
+  \texttt{N\_comparison\_table.csv}
+\item
+  \texttt{transverse\_stability\_summary.csv}
+\end{itemize}
+
+原本時間発展エンジンは変更していない。N=40では密行列法と低ランク法が倍精度範囲で一致した。
+
+\end{document}
