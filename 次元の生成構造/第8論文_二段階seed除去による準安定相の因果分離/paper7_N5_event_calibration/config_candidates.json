@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "stage": "A1",
+  "locked_n": 5,
+  "existing_crossing": 1167,
+  "stage_a0_root": "../paper7_N5_reproduction",
+  "stage_a0_report": "../paper7_N5_reproduction/reports/paper7_N5_reproduction_report.md",
+  "stage_a0_csv_comparison": "../paper7_N5_reproduction/comparison/csv_comparison.json",
+  "inputs": {
+    "fcurve": {
+      "path": "../paper7_N5_reproduction/reproduced/metastable_series_result_v1/fcurve_N00005_delta1e-15_seed0.csv",
+      "sha256": "9220c5f3c1f570c8a52ea24a3cdd95568354cea0943d9bee7d8ed20316d3a9d0",
+      "stage_a0_comparison_key": "fcurve_N00005",
+      "required_columns": [
+        "tau",
+        "f"
+      ]
+    },
+    "q_svd": {
+      "path": "../paper7_N5_reproduction/reproduced/exact_lowN_eigenspectrum_v2/raw/N00005_dimension_saturation_v2/q_svd_N00005.csv",
+      "sha256": "7c16a364c6cc9145293c2625dfe4ebb1f9962655d212679188215e8fad5e5155",
+      "stage_a0_comparison_key": "q_svd_N00005",
+      "required_columns": [
+        "step",
+        "time",
+        "relative_time",
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "rank_q"
+      ]
+    },
+    "paper7_long": {
+      "path": "../paper7_N5_reproduction/reproduced/exact_lowN_eigenspectrum_v2/paper7_longtime/raw/N00005/paper7_long_timeseries.csv",
+      "sha256": "efeaf9dab753c057ad0c6109b9e4a8919f8d8db1249da186658bfed9fda784e3",
+      "stage_a0_comparison_key": "paper7_long_timeseries_N00005",
+      "required_columns": [
+        "step",
+        "time",
+        "crossing_flag",
+        "splitting_fraction"
+      ]
+    }
+  },
+  "regression_windows": [
+    11,
+    21,
+    41,
+    81,
+    161,
+    321
+  ],
+  "r2_thresholds": [
+    0.9,
+    0.95,
+    0.98,
+    0.99,
+    0.995,
+    0.999
+  ],
+  "growth_minimum_durations": [
+    10,
+    20,
+    40,
+    80,
+    160
+  ],
+  "growth_end_conditions": {
+    "A": {
+      "description": "slope <= 0",
+      "median_slope_multiplier": 0.0
+    },
+    "B": {
+      "description": "slope <= 0.1 * interval_median_slope",
+      "median_slope_multiplier": 0.1
+    },
+    "C": {
+      "description": "slope <= 0.01 * interval_median_slope",
+      "median_slope_multiplier": 0.01
+    }
+  },
+  "growth_end_persistence": [
+    10,
+    20,
+    40,
+    80
+  ],
+  "rank_relative_thresholds": [
+    1e-06,
+    1e-07,
+    1e-08,
+    1e-09,
+    1e-10,
+    1e-11,
+    1e-12
+  ],
+  "rank_persistence_records": [
+    1,
+    5,
+    10,
+    20,
+    40,
+    80,
+    160
+  ],
+  "rank_persistence_unit": "consecutive_saved_q_records_without_interpolation",
+  "crossing_zoom_relative_range": [
+    -1000,
+    4000
+  ],
+  "output_status_values": [
+    "CALIBRATION_DATA_COMPLETE",
+    "CALIBRATION_DATA_INCOMPLETE",
+    "INPUT_MISMATCH"
+  ],
+  "prohibitions": [
+    "dynamics_execution",
+    "new_trajectory",
+    "N40",
+    "N300",
+    "high_precision",
+    "Series1_to_3",
+    "q5_to_q8",
+    "flux",
+    "eta_noise",
+    "automatic_single_event_selection",
+    "H1_H2_H0_judgment"
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "stage": "A2c",
+  "title": "N=5 方向基底の系譜追跡",
+  "n": 5,
+  "dtype": "float64",
+  "trajectory": {
+    "parent_prng_seed": 40265722,
+    "parent_iters": 1200,
+    "parent_tolerance": 1e-12,
+    "delta": 1e-15,
+    "seed_index": 0,
+    "max_step": 5000,
+    "crossing_rule": "first f > 0.05"
+  },
+  "f_levels": [
+    1e-20,
+    1e-18,
+    1e-16,
+    1e-14,
+    1e-12,
+    1e-10,
+    1e-8,
+    1e-6,
+    1e-4,
+    1e-3,
+    1e-2,
+    0.05,
+    0.1,
+    0.2,
+    0.5,
+    0.8
+  ],
+  "fixed_steps": [
+    0,
+    100,
+    250,
+    500,
+    750,
+    900,
+    1000,
+    1100,
+    1167,
+    1200,
+    1400,
+    1600,
+    1800,
+    2000,
+    2500,
+    3000,
+    4000,
+    5000
+  ],
+  "late_reference": {
+    "start_step": 1800,
+    "end_step": 2500,
+    "sampling": "every replayed integer step",
+    "construction": "top two eigenvectors of mean P34"
+  },
+  "transverse": {
+    "guard_after_crossing": 3000,
+    "t0": 4167,
+    "direction_prng_seed": 70005,
+    "seeds": 3,
+    "epsilons": [
+      1e-8,
+      1e-10,
+      1e-12,
+      1e-14
+    ],
+    "representation": "original complex eta plus real subspace span(eta.real, eta.imag)",
+    "verification_record_step": 4200
+  },
+  "q_resolution_bands": [
+    {
+      "id": "Q0_LT_1E-8",
+      "lower": null,
+      "upper": 1e-8,
+      "lower_inclusive": false,
+      "upper_inclusive": false
+    },
+    {
+      "id": "Q1_1E-8_TO_1E-6",
+      "lower": 1e-8,
+      "upper": 1e-6,
+      "lower_inclusive": true,
+      "upper_inclusive": false
+    },
+    {
+      "id": "Q2_1E-6_TO_1E-4",
+      "lower": 1e-6,
+      "upper": 1e-4,
+      "lower_inclusive": true,
+      "upper_inclusive": false
+    },
+    {
+      "id": "Q3_1E-4_TO_1E-2",
+      "lower": 1e-4,
+      "upper": 1e-2,
+      "lower_inclusive": true,
+      "upper_inclusive": false
+    },
+    {
+      "id": "Q4_GE_1E-2",
+      "lower": 1e-2,
+      "upper": null,
+      "lower_inclusive": true,
+      "upper_inclusive": false
+    }
+  ],
+  "classification": {
+    "evaluation_start": "first replayed step with min(q3,q4)/q1 >= 1e-6",
+    "evaluation_end_step": 5000,
+    "late_overlap_median_min": 0.95,
+    "late_max_principal_angle_median_max_rad": 0.1,
+    "transverse_overlap_median_max_for_continuous": 0.1,
+    "transverse_overlap_median_min_for_match": 0.95,
+    "late_overlap_median_max_for_transverse_match": 0.1,
+    "transverse_aggregation": "median over time per unique seed; maximum of the three seed medians",
+    "fallback_if_resolved": "ROTATING_OR_MIXED_LINEAGE",
+    "labels": [
+      "FIRST_DIRECTIONS_CONTINUOUS",
+      "MATCHES_LATE_TRANSVERSE_GERM",
+      "ROTATING_OR_MIXED_LINEAGE",
+      "INSUFFICIENT_RESOLUTION"
+    ]
+  },
+  "display_windows": {
+    "crossing_zoom": [
+      900,
+      1400
+    ],
+    "metastable_zoom": [
+      1400,
+      2500
+    ]
+  },
+  "execution_order": [
+    "verify_sources.py",
+    "replay_and_extract_bases.py",
+    "reconstruct_transverse_directions.py",
+    "analyze_direction_lineage.py",
+    "make_figures.py",
+    "make_report.py"
+  ],
+  "output_policy": {
+    "sources_read_only": true,
+    "stage_a0_read_only": true,
+    "fail_if_output_directories_not_empty": true
+  },
+  "prohibited": [
+    "high_precision",
+    "delta_sweep",
+    "seed_amplitude_sweep",
+    "N40",
+    "N300",
+    "new_dynamics",
+    "q5_to_q8",
+    "flux",
+    "eta_noise",
+    "new_physical_direction_definition",
+    "H1_H2_H0_judgement",
+    "single_direction_establishment_step"
+  ]
+}
