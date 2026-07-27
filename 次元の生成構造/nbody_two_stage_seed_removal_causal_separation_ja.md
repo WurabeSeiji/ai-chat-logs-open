@@ -163,7 +163,7 @@ $$\lVert X\rVert=\lVert Y\rVert,\qquad X\cdot Y=0$$
 | 300 | B | 4844 | 7844 | 0.0861 | 0.0861 | 4 | 0.0848 | 2.94×10⁻³ |
 | 300 | D | 4844 | 7844 | 0.0861 | 0.0861 | 4 | 0.0848 | 2.94×10⁻³ |
 
-![f 比較 N=5](figures/fig01_f_compare_N00005.png)
+![f 比較 N=5](第8論文_二段階seed除去による準安定相の因果分離/figures/fig01_f_compare_N00005.png)
 
 *図1: N=5 の条件 A/B/D の f(t)。無seed（A）と seedあり（B/D）の crossing 差は 1 step。N=40, 300 も同型。*
 
@@ -185,7 +185,7 @@ step 0 から $f\ge10^{-2}$ 初回到達（step 1129）の直前までの全 112
 
 である。「成長→停止→下位準安定棚→再成長」という形は、初期床から主増大までの毎 step データのどこにも存在しない。線形表示上の平坦さは観測量が小さいことによる見かけであり、対数表示では一つの連続した立ち上がりである（図2）。
 
-![無seed log10 f](paper8_stage_A2a_seedless_N5/figures/figure02_seedless_log10_f.png)
+![無seed log10 f](第8論文_二段階seed除去による準安定相の因果分離/paper8_stage_A2a_seedless_N5/figures/figure02_seedless_log10_f.png)
 
 *図2: 完全無seed N=5 の $\log_{10}f$。数値床からの単一の連続増大。*
 
@@ -199,7 +199,7 @@ $$\lambda=0.04937,\qquad R^2=0.9999993$$
 
 を与える。1 step あたりの f 比は $e^{\lambda}=1.0506$、振幅比は $e^{\lambda/2}=1.0250$。潜伏領域の主要部は単一の幾何級数則で記述される（図3）。
 
-![decade増幅率比較](paper8_stage_A2a_seedless_N5/figures/figure05_decade_growth_rate_comparison.png)
+![decade増幅率比較](第8論文_二段階seed除去による準安定相の因果分離/paper8_stage_A2a_seedless_N5/figures/figure05_decade_growth_rate_comparison.png)
 
 *図3: 一桁ごとの平均指数率。seedあり・無seedが全水準で重なる。*
 
@@ -215,7 +215,7 @@ $$\lambda=0.04937,\qquad R^2=0.9999993$$
 
 seedあり・無seed の first-passage を全水準で比較すると、$f\ge10^{-12}$ の初回到達はともに絶対 step 662、一桁通過時間の差は全区間で最大 1 step である（図4）。
 
-![絶対step比較](paper8_stage_A2a_seedless_N5/figures/figure03_seeded_vs_seedless_absolute_step.png)
+![絶対step比較](第8論文_二段階seed除去による準安定相の因果分離/paper8_stage_A2a_seedless_N5/figures/figure03_seeded_vs_seedless_absolute_step.png)
 
 *図4: seedあり・無seedの f(t) を絶対 step で重ねたもの。平行移動なしで一致する。*
 
@@ -253,7 +253,7 @@ $$\mathrm{rank_q}=4\quad\not\Rightarrow\quad\text{有限占有を持つ方向構
 
 である。rank_q=4 の出現を三方向成立の時刻とすることはできない（図5）。
 
-![q比とrank_q](paper7_N5_transition_anatomy/figures/figure06_q_ratios_and_rank_q_0_3000.png)
+![q比とrank_q](第8論文_二段階seed除去による準安定相の因果分離/paper7_N5_transition_anatomy/figures/figure06_q_ratios_and_rank_q_0_3000.png)
 
 *図5: N=5 の q₃/q₁, q₄/q₁ と rank_q（step 0〜3000）。rank_q の早期応答と占有の成長は別の時刻に起きる。*
 
@@ -288,7 +288,7 @@ $$\mathcal O_{\mathrm{early,late}}\ \text{中央値}=0.1425\qquad(\text{範囲}\
 
 である。seedあり軌道（Stage A2c）でも同水準（中央値 0.1495）である。部分空間が一致していれば 1 に近づく量が 0.14 に留まる。**急拡大前の微小方向部分空間は、後期三方向の縮小コピーではない**（H-縮小コピーを棄却、図6）。
 
-![無seed方向系譜](paper8_stage_A2d_seedless_direction_lineage_N5/figures/figure01_seedless_early_vs_late_lineage.png)
+![無seed方向系譜](第8論文_二段階seed除去による準安定相の因果分離/paper8_stage_A2d_seedless_direction_lineage_N5/figures/figure01_seedless_early_vs_late_lineage.png)
 
 *図6: 完全無seed N=5 の早期対後期方向系譜。早期 $P_{34}$ と後期代表の overlap は 0.14 に留まる。*
 
@@ -312,7 +312,7 @@ $$\mathcal O(D_{34}^{\mathrm{late}},T_\perp)=0.0330,\ 0.0301,\ 0.0182$$
 
 条件 B（準安定 seed なし）でも、準安定域の時間変動は最終 step まで継続した（std_meta: N=5 で 2.87×10⁻²、N=40 で 1.29×10⁻³、N=300 で 2.94×10⁻³）。条件 D（$t_1$ で $\varepsilon=10^{-8}$ を一回注入）との差は、N=40, 300 で記録精度内の完全一致、N=5 で ~10⁻³ である（図7）。
 
-![準安定 B vs D](figures/fig04_metastable_B_vs_D_N00005.png)
+![準安定 B vs D](第8論文_二段階seed除去による準安定相の因果分離/figures/fig04_metastable_B_vs_D_N00005.png)
 
 *図7: N=5 の準安定域における条件 B と D。横摂動の有無は準安定振動を変えない。*
 
@@ -327,7 +327,7 @@ $$\mathcal O(D_{34}^{\mathrm{late}},T_\perp)=0.0330,\ 0.0301,\ 0.0182$$
 - 後半の緩和は単一指数では吸収できず、二重指数で残差の谷が消失する（N=300 の AIC 改善量: f=2848.6, q₃=1568.8, q₄=2172.0、図8）。
 - 初期の準安定域には減衰振動の生値反転がある（N=40: q₃ の極大 t=1650、極小 t=1700）。N=300 は 100 step 記録間隔のため、これより短い振動は未分解の可能性を残す。
 
-![長時間残差](paper7_seedless_natural_figures3_4_v1/outputs/long_horizon_110000/figures/figure_long_horizon_one_exp_residual_x20.png)
+![長時間残差](第8論文_二段階seed除去による準安定相の因果分離/paper7_seedless_natural_figures3_4_v1/outputs/long_horizon_110000/figures/figure_long_horizon_one_exp_residual_x20.png)
 
 *図8: 長時間対照の単一指数残差。残る構造は二重指数緩和で説明され、再増幅への反転はない。*
 
@@ -351,7 +351,7 @@ $$\mathcal O(D_{34}^{\mathrm{late}},T_\perp)=0.0330,\ 0.0301,\ 0.0182$$
 
 rank_q は構造上 4 が上限（§1.1）であり追加方向の検出器にならないため、判定はこの直接測定による。残余回転占有は全 N で成長せず数値零へ減衰した（図9）。閉包外の応答チャネルは励起すれば増幅可能だが、無介入軌道では自然占有されない（§7.3）。長時間対照（t≤110000）でも新しいチャネルの成長系列は現れない。
 
-![五色占有分解](paper7_seedless_natural_figures3_4_v1/outputs/figures/figure3_compare_N5_N40_N300.png)
+![五色占有分解](第8論文_二段階seed除去による準安定相の因果分離/paper7_seedless_natural_figures3_4_v1/outputs/figures/figure3_compare_N5_N40_N300.png)
 
 *図9: 完全無seed自然軌道の五色占有分解（N=5, 40, 300）。三方向と kernel の外に自然占有される方向は現れない。*
 

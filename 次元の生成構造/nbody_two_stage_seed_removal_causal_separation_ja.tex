@@ -1,0 +1,982 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{N体関係波閉鎖系における三方向生成の時間構造------二段階seed除去による因果分離}\label{nux4f53ux95a2ux4fc2ux6ce2ux9589ux9396ux7cfbux306bux304aux3051ux308bux4e09ux65b9ux5411ux751fux6210ux306eux6642ux9593ux69cbux9020ux4e8cux6bb5ux968eseedux9664ux53bbux306bux3088ux308bux56e0ux679cux5206ux96e2}
+
+\textbf{著者:} 木原 範昭（WF System Co., Ltd.）　\textbf{日付:}
+2026-07-27 \textbf{Version DOI:}
+\href{https://doi.org/10.5281/zenodo.21614403}{10.5281/zenodo.21614403}
+\textbf{Concept DOI:}
+\href{https://doi.org/10.5281/zenodo.21614402}{10.5281/zenodo.21614402}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{主張}\label{ux4e3bux5f35}
+
+第7論文では、零二乗閉鎖された関係系が、長い低変化領域の後に幾何級数的な急拡大を起こし、その過程を経て、初期には存在しなかった三方向的な準安定構造を自発的に形成する現象を発見した。これは本研究の中心的な実験事実である。本稿は、その三方向生成を疑うものではない。第8論文の目的は、急拡大以前の平坦に見える領域の内部に、同じ生成過程を一段下で繰り返す別の底が存在するかを調べると同時に、急拡大後の準安定状態が、さらに次の急拡大サイクルを生み得るかを検証し、三方向生成へ至る時間構造と、その後の長時間発展を分離して明らかにすることにある。
+
+検証の結果、少なくとも
+N=5、倍精度計算の範囲では、初期の平坦領域内に、独立した急拡大・停止・準安定化を備えた別の底は確認されなかった。明示的なseedを除去しても、系は極微小な状態から同じ幾何級数的増大を開始し、主要な振幅水準をほぼ同じ時刻に通過した。したがって、平坦に見えた区間は静止相ではなく、後の急拡大へ連続する長い潜伏過程である。
+
+この潜伏段階から、行列診断上の rank\_q=4
+はすでに断続的に現れ、幾何級数的急拡大中にも存在し、急拡大後の準安定領域では明瞭かつ持続的な構造となった。急拡大後には新しい方向占有が有限量へ成長して保持されており、三方向的構造が実際に生成されたことは否定できない観測事実である。
+
+一方、詳細な方向系譜の追跡によって、急拡大前の微小な方向部分空間が、完成後の三方向へ固定されたまま単純増幅されたのではないことも判明した。方向部分空間は急拡大中に実際に回転・混合し、再編成されている。これは三方向生成を弱める結果ではなく、むしろ三方向があらかじめ固定された軸として存在したのではなく、急拡大過程の内部で動的に選択・形成されたことを示す新しい発見である。
+
+さらに本稿は、急拡大後に形成された準安定状態が、次の急拡大を準備する中間相である可能性も検証した。第7論文では、この準安定状態に第二のseedを加え、その後の時間発展を観測したが、論文6以来用いてきた時間方向の観測範囲内では、二度目の急拡大は確認されなかった。本稿では、この第二のseedそのものを除去し、準安定状態の自然な長時間発展を観察した。その結果、準安定状態はおおむね一周期程度で定常的な振動状態へ移行し、さらに時間軸方向の観測範囲を拡張しても、二度目の幾何級数的急拡大へ接続する兆候は観測されなかった。
+
+したがって、急拡大後の準安定状態は、少なくとも今回観測した範囲では、次の急拡大を自動的に生む中継点とは確認されなかった。準安定状態は長時間存続するが、その内部に第二の急拡大へ向かう明瞭な成長系列は見いだされていない。この結果は、最初の急拡大が単純に周期反復する普遍サイクルではない可能性を示すと同時に、三方向生成後の状態が独立した安定化機構を持つことを示唆する。
+
+本稿が明らかにした現象は、長い潜伏過程、幾何級数的急拡大、急拡大中の方向再編成、三方向的準安定構造の自発的生成、そして第二の急拡大を伴わない長時間準安定化という一連の時間発展である。未解明なのは現象の存在ではない。なぜ潜伏時間が必要なのか、なぜ幾何級数的急拡大が開始するのか、急拡大中の再編成がなぜ三方向を選択するのか、そして生成後の準安定状態がなぜ次の急拡大へ進まず定常化するのかという生成・停止機構である。
+
+なお、本実験系の初期状態について、重要な点を明記しておく必要がある。実験では、N
+個の存在から得られる N(N−1)/2 個の関係波を make\_parent
+によって初期化しているが、この初期化は、本論文シリーズの第一公理である零二乗閉塞条件を前提としている。したがって、初期状態は任意の連続値を無条件に配置したものではなく、最初から閉じた関係系として構成されている。
+
+別稿で検討したように、この閉塞条件は本質的に量子化を内在している。閉塞可能な状態が連続的に無制限に存在するのではなく、閉塞条件を満たす特定の位相関係へ状態が制限されるためである。この観点からは、複素位相にも量子化が要請され、位相が
+π
+周期を単位として離散化される可能性がある。本論文の実装では、そのような位相量子化規則を外部から明示的に与えてはいない。
+
+それにもかかわらず、make\_parent
+によって生成された多数の関係波は、初期状態において結果的に二つの直交方向へ集約され、定常的な二方向状態を形成した。実験者が二本の軸を初期条件として指定したわけではない。与えたのは関係系と閉塞条件であり、二方向構造はその帰結として自発的に現れたものである。
+
+したがって、本稿で観測された三方向生成は、人為的に設定された二軸へ第三軸を追加した実験ではない。零二乗閉塞から自発的に成立した二方向状態が、長い潜伏過程と幾何級数的急拡大、さらに急拡大中の方向再編成を経て、三方向的準安定構造へ移行した現象である。この初期二方向への集約が三方向生成の直接原因であるかどうかは、本稿ではまだ特定できていない。しかし、初期二方向が外部から導入されたものではなく、第一公理を満たす関係系の内部から生じたことは、本現象の解釈において不可欠な実験事実である。
+
+なお、本論文シリーズでは、波の相互作用に少なくとも二つの異なる型があることを、別の実験系で確認している。一つは、波同士が重ね合わせ可能なまま交換・混合するボゾン的な線形相互作用であり、もう一つは、反射と透過を伴う非線形散乱を起こすフェルミオン的な相互作用である。後者の相互作用では、広がった波と局在した波の間で局在性が交換され、準安定な中間状態が形成されることが確認されている。
+
+ただし、現在までの実験では、このフェルミオン的な波または非線形散乱則は、閉じた関係系の内部から自発的に発生したものではない。相互作用の型として、実験者が外部から明示的に与えている。したがって、本稿で観測された幾何級数的急拡大と三方向生成を、フェルミオン的相互作用の自然発生によって説明できるとは、現段階では言えない。
+
+本稿では、初期二方向状態から三方向的準安定構造へ移行する過程において、線形的な波と非線形反射散乱を起こす波との区別が内部から現れる可能性、すなわちボゾン的状態とフェルミオン的状態の分離が、急拡大または方向生成の開始と関係している可能性についても、その予兆を探索した。しかし、今回観測した時系列、方向占有、rankの変化および準安定化過程の中には、その区別が自発的に形成されたと判定できる明確な兆候は見いだされなかった。
+
+したがって、ボゾン的相互作用とフェルミオン的相互作用の分離が、幾何級数的急拡大や三方向生成の原因である可能性は否定されていないが、本実験によって支持されたとも言えない。今回確認されたのは、フェルミオン的散乱則を外装しなくても、零二乗閉塞から成立した二方向状態が、自発的な急拡大と方向再編成を経て三方向的準安定構造へ移行することである。波の統計的区別が、この生成過程の結果として後から現れるのか、それとも本実験ではまだ観測できない別の自由度を必要とするのかは、引き続き未解明である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1.
+系（定義と公理）}\label{ux7cfbux5b9aux7fa9ux3068ux516cux7406}
+
+\textbf{公理1（非自明零二乗和閉鎖）} \(\sum_e Z_e^2=0,\ Z\neq0\)。
+\textbf{公理2（有限回帰）} \(U^n=I\)。二公理は基本公理系 {[}1{]}
+による。系の定義は第7論文 {[}2{]}
+と同一であり、力学コードは第7論文原本を SHA-256
+固定で再利用した（§10）。
+
+完全グラフ \(K_N\) の各辺 \(e\) に複素振幅 \(Z_e\)
+を置く（\(M=N(N-1)/2\)）。状態は
+
+\[Z\in\mathbb C^M,\qquad \lVert Z\rVert^2=1,\qquad Z^{\mathsf T}Z=0\]
+
+に閉じる。生成子 \(K\) は辺の位相 \(\theta_e=\arg Z_e\)
+のみの関数で、頂点を共有する辺の間を位相差の正弦で結ぶ実反対称行列：
+
+\[(KZ)_e=\cos\theta_e\!\sum_{e'\sim e}\!\sin\theta_{e'}Z_{e'}-\sin\theta_e\!\sum_{e'\sim e}\!\cos\theta_{e'}Z_{e'}.\]
+
+更新はスペクトルノルム正規化後の Cayley 変換
+\(Z\leftarrow(I-\gamma\tilde K)^{-1}(I+\gamma\tilde K)Z\)（\(\tilde K=K/\sigma_{\max}\),
+\(\gamma=\tan(\pi/144)\)）。\(K\)
+は反対称ゆえこれはユニタリで、\(\lVert Z\rVert^2\) を厳密保存する。
+
+親状態 \(v\)
+は自己無撞着な円偏波固有モード（全辺が同一周波数で剛体回転、\(v^{\mathsf T}v=0\)）。親平面
+\(P_1=\mathrm{span}\{\mathrm{Re}\,v,\mathrm{Im}\,v\}\)。倍精度で構成した親の固有モード残差は
+N=5 で \(2.140\times10^{-13}\) である。
+
+\subsubsection{1.1 観測量}\label{ux89b3ux6e2cux91cf}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{分裂フラクション}
+  \(f(t)=\lVert Z-\Pi_{P_1}Z\rVert^2/\lVert Z\rVert^2\)。親平面の外に出た占有の総量。
+\item
+  \textbf{crossing}: 第7論文既存閾値 \(f>0.05\) の初回到達
+  step。イベントの定義ではなく参照座標である。
+\item
+  \textbf{準安定開始}: crossing+3000（第7論文の規約）。
+\item
+  \textbf{\(q_1\ge q_2\ge q_3\ge q_4\)}: 支配平面 Gram
+  縮約から得る特異値系列。\textbf{rank\_q}
+  は既存相対閾値による有効ランク。rank\_q は
+  \(Q=[B_0\mid B_{\mathrm{dom}}]\)（\(M\times4\) 行列）の rank
+  であり、構造上 4 が上限である。
+\item
+  \textbf{五色占有分解}: direction
+  1〜4（親平面2方向＋追加2方向）、残余回転、kernel
+  への状態占有。全占有の和は毎 step 1 に閉じる（射影閉鎖誤差 0）。
+\item
+  \textbf{方向部分空間} \(D_{34}(t)\): 既存 \texttt{s4\_new\_dirs}
+  が返す追加2方向の正規直交基底。比較の正本は列ではなく射影行列
+\end{itemize}
+
+\[P_{34}(t)=D_{34}(t)D_{34}(t)^{\mathsf T},\qquad \mathcal O(P,Q)=\tfrac12\operatorname{tr}(PQ)\]
+
+である。\(\mathcal O=1\) が部分空間の一致。個別の direction 3・4
+列は基底選択（列交換・符号）に依存するため、系譜判定には使わない。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{first-passage 座標}
+  \(\tau_k=\min\{t\mid f(t)\ge 10^{-k}\}\)。各10進水準の初回通過
+  step。区間増幅率は \(\ln 10/\Delta\tau\)
+  で定義する。増幅過程の座標であり、イベント閾値ではない。
+\end{itemize}
+
+\subsubsection{1.2 二段階の明示的
+seed}\label{ux4e8cux6bb5ux968eux306eux660eux793aux7684-seed}
+
+第7論文の軌道には人為的入力が二箇所ある。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{初期 seed}: 親の核内の零閉鎖対を \(\delta=10^{-15}\)
+  加える（\(f(0)\approx\delta^2=10^{-30}\)）。
+\item
+  \textbf{準安定 seed}: 準安定域 \(t_1=\mathrm{crossing}+3000\) で横摂動
+  \(\varepsilon\eta_\perp\)（\(\varepsilon=10^{-8}\)）を一回注入する（第7論文図4の摂動応答測定）。
+\end{enumerate}
+
+本稿はこの二つを独立に除去し、どの観測事実が seed
+に因果的に依存するかを分離する。
+
+\subsubsection{1.3 初期状態の構造:
+零二乗閉鎖が定める二方向性【帰結】}\label{ux521dux671fux72b6ux614bux306eux69cbux9020-ux96f6ux4e8cux4e57ux9589ux9396ux304cux5b9aux3081ux308bux4e8cux65b9ux5411ux6027ux5e30ux7d50}
+
+\(Z=X+iY\) に対し
+
+\[Z^{\mathsf T}Z=\lVert X\rVert^2-\lVert Y\rVert^2+2i\,X\cdot Y\]
+
+であるから、零二乗閉鎖 \(Z^{\mathsf T}Z=0\) は
+
+\[\lVert X\rVert=\lVert Y\rVert,\qquad X\cdot Y=0\]
+
+と同値である。閉鎖条件を満たす任意の非零状態は、実 \(M\)
+次元関係空間内に等ノルムで直交する二方向の組を必然的に定める。二方向構造は初期条件の選択ではなく、第一公理の帰結である。
+
+\texttt{make\_parent} の出力の実測を表1に示す。
+
+\emph{表1: 親状態の構造（原本 SHA-256 照合済み、Stage A2a と同一 PRNG）}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+量
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+N=5 (M=10)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+N=40 (M=780)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+非零複素成分数 / M & 10 / 10 & 780 / 780 \\
+min \(\lvert v_e\rvert\) & 0.2887 & 0.0324 \\
+rank\([\mathrm{Re}\,v,\ \mathrm{Im}\,v]\) & \textbf{2} & \textbf{2} \\
+\(\lVert\mathrm{Re}\,v\rVert=\lVert\mathrm{Im}\,v\rVert\) &
+\(1/\sqrt2\)（誤差 \(10^{-15}\)） & \(1/\sqrt2\)（誤差 \(10^{-15}\)） \\
+\(\mathrm{Re}\,v\cdot\mathrm{Im}\,v\) & \(-4.4\times10^{-16}\) &
+\(-3.6\times10^{-16}\) \\
+\(\lvert v^{\mathsf T}v\rvert\) & \(1.1\times10^{-15}\) &
+\(2.3\times10^{-15}\) \\
+不変平面残差 \(\lVert KX-\mu Y\rVert\) & \(2.0\times10^{-13}\) &
+\(1.1\times10^{-13}\) \\
+初期 \(K\) の分解次元（親平面/回転補/核） & 2 / 4 / 4 & 2 / 78 / 700 \\
+\end{longtable}
+}
+
+表1が示す事実は三つある。第一に、\(M\)
+個の関係波はすべて非零であり、特定の2成分だけを残した状態ではない。第二に、状態全体の実
+rank は 2 であり、全関係波が一つの二次元回転平面（生成子 \(K\)
+の不変平面、残差
+\(10^{-13}\)）へ集約されている。第三に、\texttt{make\_parent}
+が課すのは閉鎖条件と自己無撞着性（自身の位相が作る \(K\)
+の固有モードであること）だけであり、位相の量子化規則も二本の軸の座標も外部から与えていない。
+
+主張が参照する「閉塞条件が量子化を内在する」別稿の検討は解説ノート
+{[}3{]}
+にある。零二乗和拘束とスケール不変性の二要請から、状態空間は複素射影空間内の射影クアドリック（コンパクト・ケーラー多様体）になり、離散スペクトル・整数チャーン類・\(N=3\)
+での量子ビット同型が既知数学の引用のみで従う。本稿の実装はこの量子化規則を外部から与えておらず、表1の二方向集約は倍精度力学系としての実測である。
+
+初期二方向への集約が三方向生成の直接原因であるかどうかは特定していない（§9）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. 実験設計}\label{ux5b9fux9a13ux8a2dux8a08}
+
+\subsubsection{2.1
+条件と実験系}\label{ux6761ux4ef6ux3068ux5b9fux9a13ux7cfb}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2143}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2857}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2857}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2143}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+条件
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+初期 seed
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+準安定 seed
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+初期状態
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+A（完全無seed） & OFF & OFF & \(Z_0=v\)（乱数も消費しない） \\
+B（初期のみ） & ON & OFF & \(Z_0=(v+\delta g)/\lVert\cdot\rVert\) \\
+D（第7論文相当） & ON & ON & B と同一、\(t_1\) で
+\(\varepsilon\eta_\perp\) を一回注入 \\
+\end{longtable}
+}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{予備実験}（N=5, 40, 300、t≤55000）: 条件 A/B/D の全比較。
+\item
+  \textbf{Stage A2a}（N=5、毎 step 記録、t≤5000）:
+  完全無seed軌道の高密度観測。\(Z_0=v\) の数値床
+  \(f(0)=3.275\times10^{-33}\) から出発する。
+\item
+  \textbf{Stage A2c / A2d}（N=5）: seedあり／完全無seed軌道の方向系譜
+  \(P_{34}(t)\) 追跡。
+\item
+  \textbf{長時間対照}（N=5, 40, 300、完全無seed、t≤110000）:
+  第二の急拡大の探索。
+\item
+  \textbf{移行解剖}（N=5、第7論文再現軌道）: rank\_q・占有・f
+  の時刻分離。
+\end{itemize}
+
+\subsubsection{2.2
+検証した仮説}\label{ux691cux8a3cux3057ux305fux4eeeux8aac}
+
+第7論文を閉じた時点で残っていた仮説を、事前に固定した。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{H-下位底}:
+  急拡大前の平坦領域の内部に、同型の成長・停止過程を持つ下位の準安定相（第二の底）が隠れている。
+\item
+  \textbf{H-seed因果}: 明示的 seed
+  が、分裂の発生・時刻・最初の生成方向のいずれかを決めている。
+\item
+  \textbf{H-縮小コピー}:
+  急拡大前の微小方向部分空間は、後期三方向の縮小コピーである。
+\item
+  \textbf{H-反復サイクル}:
+  急拡大後の準安定状態は、次の急拡大を準備する中間相である。
+\end{itemize}
+
+本稿の結果はこの四仮説をいずれも棄却または不支持とし、その過程で主張に述べた時間構造を確定する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. 結果1: seed
+を除去しても現象の全系列が再現する【帰結】}\label{ux7d50ux679c1-seed-ux3092ux9664ux53bbux3057ux3066ux3082ux73feux8c61ux306eux5168ux7cfbux5217ux304cux518dux73feux3059ux308bux5e30ux7d50}
+
+条件 A（完全無seed）は、全 N で crossing・rank\_q
+増加・準安定化のすべてを再現した（表2）。
+
+\emph{表2: 条件 A/B/D の全 N 比較（t≤55000）}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+N
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+条件
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+crossing
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+準安定開始
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+max\_f
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+final\_f
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+final rank\_Q
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+mean\_meta(f)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+std\_meta(f)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+5 & A & 1166 & 4166 & 0.9655 & 0.8754 & 4 & 0.8744 &
+1.29\(\times10^{-2}\) \\
+5 & B & 1167 & 4167 & 0.9600 & 0.8053 & 4 & 0.8054 &
+2.87\(\times10^{-2}\) \\
+5 & D & 1167 & 4167 & 0.9600 & 0.8026 & 4 & 0.8034 &
+2.88\(\times10^{-2}\) \\
+40 & A & 2011 & 5011 & 0.1938 & 0.1938 & 4 & 0.1934 &
+7.38\(\times10^{-4}\) \\
+40 & B & 2011 & 5011 & 0.2035 & 0.2035 & 4 & 0.2030 &
+1.29\(\times10^{-3}\) \\
+40 & D & 2011 & 5011 & 0.2035 & 0.2035 & 4 & 0.2030 &
+1.29\(\times10^{-3}\) \\
+300 & A & 4849 & 7849 & 0.0898 & 0.0898 & 4 & 0.0882 &
+3.53\(\times10^{-3}\) \\
+300 & B & 4844 & 7844 & 0.0861 & 0.0861 & 4 & 0.0848 &
+2.94\(\times10^{-3}\) \\
+300 & D & 4844 & 7844 & 0.0861 & 0.0861 & 4 & 0.0848 &
+2.94\(\times10^{-3}\) \\
+\end{longtable}
+}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={f 比較 N=5}]{figs/fig01_f_compare_N00005.png}}
+\caption{f 比較 N=5}
+\end{figure}
+
+\emph{図1: N=5 の条件 A/B/D の f(t)。無seed（A）と seedあり（B/D）の
+crossing 差は 1 step。N=40, 300 も同型。}
+
+crossing の差は N=5 で 1 step、N=40 で 0 step、N=300 で 5 step
+である。明示的初期 seed
+は、分裂の発生にも時刻にも寄与していない（H-seed因果の第一部を棄却）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. 結果2:
+潜伏領域の内部に別の底はない【帰結】}\label{ux7d50ux679c2-ux6f5cux4f0fux9818ux57dfux306eux5185ux90e8ux306bux5225ux306eux5e95ux306fux306aux3044ux5e30ux7d50}
+
+完全無seed N=5 軌道（Stage A2a、毎 step 記録）で、初期数値床
+\(f(0)=3.275\times10^{-33}\) から主増大までの全構造を検査した。
+
+\subsubsection{4.1 毎 step
+差分の符号検査}\label{ux6bce-step-ux5deeux5206ux306eux7b26ux53f7ux691cux67fb}
+
+step 0 から \(f\ge10^{-2}\) 初回到達（step 1129）の直前までの全 1129
+本の差分は、
+
+\begin{itemize}
+\tightlist
+\item
+  正の差分: \textbf{1129 本（全数）}
+\item
+  負の差分: \textbf{0 本}
+\item
+  ゼロ差分: \textbf{0 本}
+\end{itemize}
+
+である。「成長→停止→下位準安定棚→再成長」という形は、初期床から主増大までの毎
+step
+データのどこにも存在しない。線形表示上の平坦さは観測量が小さいことによる見かけであり、対数表示では一つの連続した立ち上がりである（図2）。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={無seed log10 f}]{figs/figure02_seedless_log10_f.png}}
+\caption{無seed log10 f}
+\end{figure}
+
+\emph{図2: 完全無seed N=5 の
+\(\log_{10}f\)。数値床からの単一の連続増大。}
+
+\subsubsection{4.2 first-passage
+系列と増幅率}\label{first-passage-ux7cfbux5217ux3068ux5897ux5e45ux7387}
+
+\(10^{-30}\) から \(10^{-23}\) までの通過 step は 1, 2, 5, 14, 36, 68,
+107, 150 と立ち上がり、\(10^{-23}\to10^{-2}\) の全 21 区間では一桁あたり
+\textbf{46 または 47 step} に収束する。区間平均指数率の中央値は
+\(4.95\times10^{-2}\)（自然対数/step）である。
+
+\(f\ge10^{-23}\)（step 150）から \(f\ge10^{-2}\)（step 1129）までの 980
+点の \(\ln f\) 線形回帰は
+
+\[\lambda=0.04937,\qquad R^2=0.9999993\]
+
+を与える。1 step あたりの f 比は \(e^{\lambda}=1.0506\)、振幅比は
+\(e^{\lambda/2}=1.0250\)。潜伏領域の主要部は単一の幾何級数則で記述される（図3）。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={decade増幅率比較}]{figs/figure05_decade_growth_rate_comparison.png}}
+\caption{decade増幅率比較}
+\end{figure}
+
+\emph{図3: 一桁ごとの平均指数率。seedあり・無seedが全水準で重なる。}
+
+\subsubsection{4.3 判定}\label{ux5224ux5b9a}
+
+\textbf{H-下位底を棄却する。} 棄却の範囲は N=5・倍精度・毎 step
+記録（t≤5000）である。倍精度の数値床より下の構造、および厳密算術における無摂動離脱は本稿の範囲外である（§9）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. 結果3: seed
+は時刻も初期方向も選んでいない【帰結】}\label{ux7d50ux679c3-seed-ux306fux6642ux523bux3082ux521dux671fux65b9ux5411ux3082ux9078ux3093ux3067ux3044ux306aux3044ux5e30ux7d50}
+
+\subsubsection{5.1 時刻}\label{ux6642ux523b}
+
+seedあり・無seed の first-passage を全水準で比較すると、\(f\ge10^{-12}\)
+の初回到達はともに絶対 step 662、一桁通過時間の差は全区間で最大 1 step
+である（図4）。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={絶対step比較}]{figs/figure03_seeded_vs_seedless_absolute_step.png}}
+\caption{絶対step比較}
+\end{figure}
+
+\emph{図4: seedあり・無seedの f(t) を絶対 step
+で重ねたもの。平行移動なしで一致する。}
+
+初期値は逆転している。seedあり軌道は
+\(f(0)=1.066\times10^{-30}\)、無seed軌道は \(f(0)=3.275\times10^{-33}\)
+から出発し、両者は step 数百のうちに同じ幾何級数系列へ合流する。明示
+seed \(\delta=10^{-15}\) は倍精度親状態の固有モード残差
+\(2.140\times10^{-13}\)
+より小さい。seedあり軌道においても、実効的な最小横成分を支配していたのは明示
+seed ではない。
+
+\subsubsection{5.2 初期方向}\label{ux521dux671fux65b9ux5411}
+
+無seed軌道と seedあり軌道の \(P_{34}(t)\) の同一 step
+直接比較を表3に示す（Stage A2d）。
+
+\emph{表3: 無seed対seedありの同一 step overlap}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrrr@{}}
+\toprule\noalign{}
+区間 & 標本数 & overlap 中央値 & overlap 最小値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+crossing 前・解像可能 & 40 & \textbf{0.999999987} & 0.999976 \\
+crossing〜1799 & 128 & 0.999997 & 0.994306 \\
+1800〜2500 & 141 & 0.999852 & 0.990155 \\
+2500 より後 & 500 & 0.265980 & 0.203573 \\
+\end{longtable}
+}
+
+急拡大前から三方向閉包の成立直後まで、両軌道の方向部分空間は同一である。\textbf{明示的初期
+seed
+は、最初に生成される方向部分空間を選択していない}（H-seed因果の第二部を棄却）。
+
+step 2500 以後の分岐（overlap が 0.95 を初めて下回るのは step 2690、0.5
+を下回るのは step
+3185）は、方向生成の初期選択とは分離された長期軌道差である。この分岐後も
+rank\_q=4 と占有水準は両軌道で保持される（§6.3）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. 結果4: rank\_q=4 の出現・方向占有の成長・f
+の急拡大は別の時刻に起きる【帰結】}\label{ux7d50ux679c4-rank_q4-ux306eux51faux73feux65b9ux5411ux5360ux6709ux306eux6210ux9577f-ux306eux6025ux62e1ux5927ux306fux5225ux306eux6642ux523bux306bux8d77ux304dux308bux5e30ux7d50}
+
+\subsubsection{6.1 rank\_q=4
+は数値床段階で現れる}\label{rank_q4-ux306fux6570ux5024ux5e8aux6bb5ux968eux3067ux73feux308cux308b}
+
+\begin{itemize}
+\tightlist
+\item
+  無seed軌道: 最初の rank\_q=4 は保存 step \textbf{120}。その時点で
+  \(f=2.089\times10^{-24}\)、これを挟む占有実保存行（step 107 / 125）の
+  direction 3・4 占有は \(10^{-30}\sim10^{-29}\) 台。
+\item
+  seedあり軌道: 最初の保存 rank\_q=4 は step
+  \textbf{265}、\(f=3.127\times10^{-21}\)、これを挟む direction 3・4
+  占有は \(4\times10^{-28}\sim8\times10^{-28}\)。crossing 前の rank\_q=4
+  保存行数は 97。
+\end{itemize}
+
+分裂量・方向占有が数値床にある段階で rank\_q=4
+は出現している。したがって
+
+\[\mathrm{rank_q}=4\quad\not\Rightarrow\quad\text{有限占有を持つ方向構造の成立}\]
+
+である。rank\_q=4 の出現を三方向成立の時刻とすることはできない（図5）。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={q比とrank\_q}]{figs/figure06_q_ratios_and_rank_q_0_3000.png}}
+\caption{q比とrank\_q}
+\end{figure}
+
+\emph{図5: N=5 の \(q_3\)/\(q_1\), \(q_4\)/\(q_1\) と rank\_q（step
+0〜3000）。rank\_q の早期応答と占有の成長は別の時刻に起きる。}
+
+\subsubsection{6.2 crossing
+後に遅れて成長する量}\label{crossing-ux5f8cux306bux9045ux308cux3066ux6210ux9577ux3059ux308bux91cf}
+
+crossing=1167 の後も、direction 3・4 占有・kernel・q
+比は同じ速度では変化しない（表4）。
+
+\emph{表4: crossing 後の各観測量（N=5、実保存値）}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rrrrrr@{}}
+\toprule\noalign{}
+step & f & d3 占有 & d4 占有 & \(q_3\)/\(q_1\) & \(q_4\)/\(q_1\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1200 & 0.133 & 0.0027 & 0.0035 & 0.279 & 0.016 \\
+1400 & 0.585 & 0.023 & 0.195 & 0.608 & 0.248 \\
+1800 & 0.840 & 0.213 & 0.210 & 0.733 & 0.507 \\
+2500 & 0.801 & 0.319 & 0.045 & 0.752 & 0.549 \\
+\end{longtable}
+}
+
+f の crossing、方向占有の有限化、q 比の成長は数百 step
+にわたって分離しており、「三方向が一つの時刻に同時成立した」という単一イベント記述はデータに支持されない。急拡大後に
+direction 3・4 占有が有限量（\(10^{-1}\)
+台）へ成長して保持されることは、表4と図5の通り観測事実である。
+
+\subsubsection{6.3
+準安定なのは占有構造である}\label{ux6e96ux5b89ux5b9aux306aux306eux306fux5360ux6709ux69cbux9020ux3067ux3042ux308b}
+
+条件 A と B
+は準安定域で軌道として分岐する（§5.2）が、rank\_Q=4・天井水準の
+f・方向占有の有限性は両者で保たれる（表2）。三方向閉包は固定された三本の軸ではなく、占有次元数と占有分配を保ちながら内部方向が長期的に混合し得る動的閉包である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. 結果5:
+方向部分空間は急拡大中に再編成される【帰結】}\label{ux7d50ux679c5-ux65b9ux5411ux90e8ux5206ux7a7aux9593ux306fux6025ux62e1ux5927ux4e2dux306bux518dux7de8ux6210ux3055ux308cux308bux5e30ux7d50}
+
+\subsubsection{7.1
+急拡大前の方向は後期方向の縮小コピーではない}\label{ux6025ux62e1ux5927ux524dux306eux65b9ux5411ux306fux5f8cux671fux65b9ux5411ux306eux7e2eux5c0fux30b3ux30d4ux30fcux3067ux306fux306aux3044}
+
+完全無seed軌道（Stage A2d）で、急拡大前に解像可能になった
+\(P_{34}\)（解像基準 \(\min(q_3,q_4)/q_1\ge10^{-6}\)、step 985〜1165 の
+40 標本）と、後期代表部分空間（step 1800〜2500
+の平均射影の上位2固有ベクトル）の overlap は
+
+\[\mathcal O_{\mathrm{early,late}}\ \text{中央値}=0.1425\qquad(\text{範囲}\ [0.1210,\ 0.1445])\]
+
+である。seedあり軌道（Stage A2c）でも同水準（中央値
+0.1495）である。部分空間が一致していれば 1 に近づく量が 0.14
+に留まる。\textbf{急拡大前の微小方向部分空間は、後期三方向の縮小コピーではない}（H-縮小コピーを棄却、図6）。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={無seed方向系譜}]{figs/figure01_seedless_early_vs_late_lineage.png}}
+\caption{無seed方向系譜}
+\end{figure}
+
+\emph{図6: 完全無seed N=5 の早期対後期方向系譜。早期 \(P_{34}\)
+と後期代表の overlap は 0.14 に留まる。}
+
+\subsubsection{7.2
+再編は急拡大中の実回転である}\label{ux518dux7de8ux306fux6025ux62e1ux5927ux4e2dux306eux5b9fux56deux8ee2ux3067ux3042ux308b}
+
+seedあり軌道の固定観察窓 step 900〜1400 で、連続 step 間の \(P_{34}\)
+最大主角の総和（回転経路長）は 3.871 rad、連続 step 間最大主角の最大値は
+0.372 rad である。列交換は 0
+回であり、基底ラベルの入れ替えではなく部分空間そのものの回転・混合である。Stage
+A2c/A2d はこの系譜を \textbf{ROTATING\_OR\_MIXED\_LINEAGE} と分類した。
+
+\subsubsection{7.3
+第7論文図4の再分類}\label{ux7b2c7ux8ad6ux6587ux56f34ux306eux518dux5206ux985e}
+
+第7論文図4で準安定域に与えた横摂動方向 \(T_\perp\) と後期代表方向の
+overlap は、3 つの摂動方向 seed について
+
+\[\mathcal O(D_{34}^{\mathrm{late}},T_\perp)=0.0330,\ 0.0301,\ 0.0182\]
+
+である。人工的に励起できた応答チャネルは、自然に占有された三方向とも、急拡大前の前駆方向とも一致しない。第7論文図4が測っていたのは「自然に生じつつある追加方向の萌芽」ではなく、\textbf{三方向閉包の外部に残る、励起可能だが自然には占有されない応答チャネル}である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. 結果6:
+準安定状態は第二の急拡大へ進まない【帰結】}\label{ux7d50ux679c6-ux6e96ux5b89ux5b9aux72b6ux614bux306fux7b2cux4e8cux306eux6025ux62e1ux5927ux3078ux9032ux307eux306aux3044ux5e30ux7d50}
+
+\subsubsection{8.1 第二 seed の除去: 準安定振動は seed
+の産物ではない}\label{ux7b2cux4e8c-seed-ux306eux9664ux53bb-ux6e96ux5b89ux5b9aux632fux52d5ux306f-seed-ux306eux7523ux7269ux3067ux306fux306aux3044}
+
+条件 B（準安定 seed なし）でも、準安定域の時間変動は最終 step
+まで継続した（std\_meta: N=5 で 2.87\(\times10^{-2}\)、N=40 で
+1.29\(\times10^{-3}\)、N=300 で 2.94\(\times10^{-3}\)）。条件 D（\(t_1\)
+で \(\varepsilon=10^{-8}\) を一回注入）との差は、N=40, 300
+で記録精度内の完全一致、N=5 で \textasciitilde{}\(10^{-3}\)
+である（図7）。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={準安定 B vs D}]{figs/fig04_metastable_B_vs_D_N00005.png}}
+\caption{準安定 B vs D}
+\end{figure}
+
+\emph{図7: N=5 の準安定域における条件 B と
+D。横摂動の有無は準安定振動を変えない。}
+
+準安定振動は横摂動 seed の産物ではなく、閉鎖力学の帰結である。条件 D
+の注入後、観測範囲 t≤55000 に二度目の crossing・rank 増加は現れない。
+
+\subsubsection{8.2 長時間対照: t=110000
+まで第二の急拡大の兆候なし}\label{ux9577ux6642ux9593ux5bfeux7167-t110000-ux307eux3067ux7b2cux4e8cux306eux6025ux62e1ux5927ux306eux5146ux5019ux306aux3057}
+
+完全無seed軌道を N=5, 40, 300 で t=110000 まで延長した。
+
+\begin{itemize}
+\tightlist
+\item
+  N=40, 300: t=55000〜110000 の生の f, \(q_3\), \(q_4\)
+  は\textbf{極値を一つも作らず}、終端値へ単調に接近した。t=90000〜110000
+  の peak-to-peak は N=40 で f=1.0\(\times10^{-11}\)、N=300 で
+  f=2.1\(\times10^{-11}\)（記録精度水準）。
+\item
+  N=5: 準安定振動（step 4166〜55000 で f 範囲 {[}0.807, 0.966{]}）は
+  t=55000 までに減衰し、延長域 55000〜110000 の f は 0.875392
+  で一定（peak-to-peak 1.0\(\times10^{-11}\)、記録精度床）。延長域で f
+  が準安定域最大値を更新した step は 0、f\textless0.05 への転落
+  0、二度目の crossing 0。
+\item
+  後半の緩和は単一指数では吸収できず、二重指数で残差の谷が消失する（N=300
+  の AIC 改善量: f=2848.6, \(q_3\)=1568.8, \(q_4\)=2172.0、図8）。
+\item
+  初期の準安定域には減衰振動の生値反転がある（N=40: \(q_3\) の極大
+  t=1650、極小 t=1700）。N=300 は 100 step
+  記録間隔のため、これより短い振動は未分解の可能性を残す。
+\end{itemize}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={長時間残差}]{figs/figure_long_horizon_one_exp_residual_x20.png}}
+\caption{長時間残差}
+\end{figure}
+
+\emph{図8:
+長時間対照の単一指数残差。残る構造は二重指数緩和で説明され、再増幅への反転はない。}
+
+観測範囲内で
+\textbf{H-反復サイクルは支持されない}。準安定状態は、初期の減衰振動ののち多重指数的に緩和して定常水準へ接近する長時間持続相であり、その内部に第二の幾何級数的増大へ向かう成長系列はない。
+
+\subsubsection{8.3
+ボゾン的／フェルミオン的区別の予兆は観測範囲に現れない}\label{ux30dcux30beux30f3ux7684ux30d5ux30a7ux30ebux30dfux30aaux30f3ux7684ux533aux5225ux306eux4e88ux5146ux306fux89b3ux6e2cux7bc4ux56f2ux306bux73feux308cux306aux3044}
+
+本シリーズは別の実験系で、波の相互作用に二つの型があることを確認している。重ね合わせ可能なまま交換・混合する線形相互作用に対し、反射と透過を伴う非線形の交換干渉散乱では、広がった波と局在した波の間で局在性が交換され
+{[}4{]}、準安定な中間状態（白猫・黒猫・灰色猫界面）が形成される
+{[}5{]}。これらの実験では、散乱則は相互作用の型として実験者が外部から与えたものである。
+
+本稿の実験系にはこの型の判別を行う直接観測量がない。本系の更新は状態依存生成子による全状態一括のユニタリ一歩であり、波対ごとの反射・透過という散乱過程を構成するテスト方向を持たない。以下は設計された検定ではなく、既存観測量（時系列・方向占有・rank・準安定化過程）に対する受動的な予兆探索である。
+
+探索の operational
+な中身は「三方向を超える追加の離散方向、または新しい離散チャネルが自然に占有されるか」である。線形波と非線形散乱波の分離が急拡大や方向生成に伴って内部から発生するなら、その最初の痕跡は追加方向の自然占有として現れる。結果は表5である。
+
+\emph{表5: 完全無seed自然軌道の準安定域における残余回転占有（direction
+1〜4 と kernel 以外の回転部分空間占有）}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rrll@{}}
+\toprule\noalign{}
+N & 残余回転空間の次元 & 準安定域 max & 末端値 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+5 & 2 & 1.5\(\times10^{-3}\) & 4.4\(\times10^{-16}\) \\
+40 & 76 & 4.7\(\times10^{-6}\) & 0 \\
+300 & 596 & 9.7\(\times10^{-8}\) & 2.1\(\times10^{-17}\) \\
+\end{longtable}
+}
+
+rank\_q は構造上 4
+が上限（§1.1）であり追加方向の検出器にならないため、判定はこの直接測定による。残余回転占有は全
+N
+で成長せず数値零へ減衰した（図9）。閉包外の応答チャネルは励起すれば増幅可能だが、無介入軌道では自然占有されない（§7.3）。長時間対照（t≤110000）でも新しいチャネルの成長系列は現れない。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={五色占有分解}]{figs/figure3_compare_N5_N40_N300.png}}
+\caption{五色占有分解}
+\end{figure}
+
+\emph{図9: 完全無seed自然軌道の五色占有分解（N=5, 40, 300）。三方向と
+kernel の外に自然占有される方向は現れない。}
+
+ボゾン的状態とフェルミオン的状態の分離が自発的に形成されたと判定できる兆候は、今回の観測量の中にはない。この分離が急拡大・三方向生成の原因である可能性は否定されないが、支持もされない。確認されたのは、フェルミオン的散乱則を外装しなくても、二方向状態から三方向的準安定構造への移行が起きることである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9.
+境界条件（本稿が証明していないこと）}\label{ux5883ux754cux6761ux4ef6ux672cux7a3fux304cux8a3cux660eux3057ux3066ux3044ux306aux3044ux3053ux3068}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{倍精度の床}:
+  無seed軌道の最小入力は、親状態の固有モード残差（\(2.14\times10^{-13}\)）と丸め誤差である。厳密算術における無摂動離脱、すなわち「最初の微小差の物理的起源」は本稿では分離されていない。これは中心主張を弱める条件ではなく、次に分離すべき対象である。
+\item
+  \textbf{N と時間範囲}: 下位底の棄却（§4）の毎 step 検査は
+  N=5・t≤5000。長時間対照（§8.2）は N=5, 40,
+  300・t≤110000。さらに長い周期の反復を論理的に排除するものではないが、その候補を示す生データの反転は今回の範囲にない。
+\item
+  \textbf{記録間隔}: q は 5 step、占有は 25〜100 step
+  保存であり、同時性の主張は実保存レコードの範囲に限る。系譜解析の標本間回転量は
+  1-step 最大値ではない。
+\item
+  \textbf{未完了の対照}:
+  数値分解能掃引（人工量子化演算子による対照）は集計未完了である。完了分は「微小増幅源を分解能で切り捨てると軌道が親状態に固定される」対照であり、第二の底の証拠ではない。
+\item
+  \textbf{物理的 XYZ との対応}:
+  生成された三方向閉包と物理的空間方向との対応は、射影 Gram
+  行列・主角・干渉量で扱う別の接続課題である。本シリーズが確定しているのは「\(M\)
+  個の位相関係から三方向が読出し可能になった」ことであり、それが背景空間の
+  xyz
+  であることの証明ではない。読出しの物理的正本は方向面の干渉（法線間内積）である。
+\item
+  \textbf{初期二方向と三方向生成の因果}:
+  初期状態が第一公理の帰結として二方向へ集約されること（§1.3）は実測事実だが、この集約が三方向生成の直接原因であるかどうかは特定されていない。閉鎖条件のみを満たす一般状態（固有モード条件を課さない
+  \texttt{zero\_closure\_generic}
+  初期化）からの系統的対照は次の課題である。
+\item
+  \textbf{位相量子化の内在}: 閉鎖条件が量子化を内在するという解説ノート
+  {[}3{]}
+  の観点は、本稿の実装では外部規則として与えておらず、本稿のデータからは検証していない。
+\item
+  \textbf{統計的区別の検定不能性}: §8.3
+  の予兆探索は、本実験系に相互作用型を判別する直接観測量が存在しないという制約下の受動的探索であり、統計的区別の自発的形成を検定した実験ではない。検定には、閉じた関係系の内部に散乱過程を構成できる観測系（局在波束の生成と衝突の読出し）の設計が必要であり、それは交換干渉散乱系
+  {[}4,5{]} と本系の接続課題である。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. 再現性}\label{ux518dux73feux6027}
+
+\begin{itemize}
+\tightlist
+\item
+  力学コードは第7論文原本（\texttt{run\_n\_scaling\_lowrank\_v1.py}
+  ほか）を SHA-256 固定・read-only import
+  で再利用し、原本フォルダは変更していない。全ハッシュは各 Stage
+  報告書と \texttt{config/source\_file\_hashes.json} に記録。
+\item
+  第7論文 N=5 軌道は f・q
+  系列とも原本出力とビット一致で再現された（Stage A0）。無seed軌道は独立
+  2 実行がビット一致した（Stage A2a exec 1/2）。N=300 五色分解は既存条件
+  A と共通 27 列の全行一致を対照確認した。
+\item
+  数値健全性: 規格化誤差 ≤1.4\(\times10^{-14}\)、零二乗閉鎖
+  ≤1.8\(\times10^{-10}\)（条件Dの注入直後、他は
+  ≤1.3\(\times10^{-13}\)）、射影閉鎖誤差 0、占有和誤差 0。
+\item
+  本文の数値の正本: 表1・§4.1・§4.2 回帰・§6.1 無seed・§8.2 N=5・表5 は
+  \texttt{paper8\_draft\_supporting\_analysis\_v1/reports/}。表2・§8.1
+  は \texttt{reports/preliminary\_seed\_ablation\_report.md}。§4.2・§5.1
+  は \texttt{paper8\_stage\_A2a\_seedless\_N5/reports/}。表3・§7.1 は
+  \texttt{paper8\_stage\_A2d\_seedless\_direction\_lineage\_N5/reports/}。§6
+  は \texttt{paper7\_N5\_transition\_anatomy/reports/}。§7.2・§7.3 は
+  \texttt{paper8\_stage\_A2c\_direction\_lineage\_N5/reports/}。§8.2 は
+  \texttt{paper7\_seedless\_natural\_figures3\_4\_v1/validation\_report.md}。
+\item
+  実行環境: Python 3.9.6、NumPy 2.0.2、macOS arm64。乱数は
+  \texttt{numpy.random.default\_rng} の固定 seed。
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{11. 結論}\label{ux7d50ux8ad6}
+
+第7論文が発見した現象------長い低変化領域、幾何級数的急拡大、三方向的準安定構造の自発的生成------は、二つの明示的
+seed をともに除去しても、N=5, 40, 300 のすべてで再現された。seed
+は分裂の発生・時刻・最初の生成方向・準安定振動のいずれの原因でもない。
+
+出発点となる初期二方向状態も、実験者が置いた二軸ではない。零二乗閉鎖は任意の非零状態に等ノルム直交二方向を強制し、\texttt{make\_parent}
+の全 \(M\) 関係波は非零のまま実 rank 2
+の単一回転平面へ自発的に集約していた。本シリーズの観測系列は、公理から自発的に成立した二方向閉包に始まり、三方向閉包の動的形成で終わる。
+
+急拡大以前の平坦に見える領域は、毎 step
+検査で負差分ゼロの単一の連続増大であり、内部に下位の底を持たない長い潜伏過程である。rank\_q=4
+の早期出現は数値床への応答であり、方向成立と同一視できない。方向部分空間は急拡大中に回転・混合して再編成され、三方向はあらかじめ置かれた軸としてではなく、急拡大過程の内部で動的に選択・形成される。生成後の準安定状態は、初期の減衰振動ののち多重指数的に緩和し、観測範囲
+t=110000 まで第二の急拡大を生まない。
+
+未解決問題は次の三点へ限定された。(i)
+なぜ長い潜伏時間の後に幾何級数的増大が始まるのか------倍精度床の下にある最初の微小差の物理的起源を含む。(ii)
+急拡大中の再編成がなぜ三方向を選択するのか。(iii)
+生成後の準安定状態がなぜ次の急拡大へ進まず定常化するのか。(i)
+には厳密算術または高精度算術での潜伏領域再現、(ii) には共回転座標での横
+Jacobian（144-step Floquet 行列）の最大不安定固有平面と実測前駆
+\(P_{34}\) の照合、(iii)
+には準安定殻上の緩和スペクトルの同定が、それぞれ次の直接検証となる。
+
+ボゾン的相互作用とフェルミオン的相互作用の分離が本現象の背後にある可能性は、否定も支持もされないまま残る（§8.3）。フェルミオン的散乱則を外装せずに三方向生成が起きることは確認された。波の統計的区別がこの生成過程の結果として後から現れるのか、本実験系では観測できない別の自由度を必要とするのかは、閉じた関係系の内部に散乱過程を構成する観測系の設計とともに、次の実験系列の課題である。
+
+\subsubsection{11.1
+先行研究との関係}\label{ux5148ux884cux7814ux7a76ux3068ux306eux95a2ux4fc2}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{潜伏と幾何級数的増大}は、一様搬送波が雑音床から横帯域へ指数的に不安定化する変調不安定性
+  {[}8{]}
+  と同型の時間構造を持つ。ただし本系で成長するのは空間側帯波ではなく方向部分空間そのものであり、増幅中に方向が再編成される（§7）。
+\item
+  \textbf{状態依存生成子の横スペクトル}という道具立ては、結合位相振動子系のロック状態スペクトル解析
+  {[}7{]}
+  と共通する。ただし本系は零二乗閉鎖というノルム構造上の拘束を持ち、読出される対象は同期度ではなく方向構造である。
+\item
+  \textbf{第二の急拡大を伴わない長時間準安定化}（§8）は、FPUT
+  系の準安定状態 {[}6{]} や孤立系の前熱化 {[}9{]}
+  と同じ「長寿命の非熱的中間状態」の語彙で読める。ただし FPUT
+  型の再帰に相当する回帰は観測範囲 t≤110000 に現れない。
+\item
+  「対称な候補空間から三つの方向だけが拡大する」という主張の形が最も近い先行研究は、IIB（IKKT）型行列模型における
+  (3+1) 次元時空の動的創発 {[}10{]} である。そこでは SO(9,1)/SO(10)
+  対称性の自発的破れとして 3
+  方向だけが伸長する。機構も水準も異なる。行列自由度の経路積分に対し、本稿は
+  N
+  体関係波の決定論的閉鎖力学であり、三方向は背景空間の次元ではなく関係波の干渉から読出される方向構造である。両者がともに「3」を選ぶことが同一機構の別表現であるかどうかは、開いた問いとして残す。
+\end{itemize}
+
+本稿の中心結果------明示的 seed の因果的除去、潜伏領域の毎 step
+連続性による下位底の棄却、急拡大中の方向部分空間再編成の直接測定------に対応する先行研究は、上記のいずれにもない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{引用}\label{ux5f15ux7528}
+
+{[}1{]} 木原 範昭, 無名等振幅複合波モデル 基本公理系（純化定義論文）,
+Zenodo. Concept DOI:
+\href{https://doi.org/10.5281/zenodo.21315735}{10.5281/zenodo.21315735}.
+
+{[}2{]} 木原 範昭,
+N体関係波閉鎖系における自発的分裂の停止と追加軸の創生（第7論文）,
+Zenodo. Concept DOI:
+\href{https://doi.org/10.5281/zenodo.21543070}{10.5281/zenodo.21543070}.
+
+{[}3{]} 木原 範昭,
+零二乗和拘束とスケール不変性の幾何学的正体------等方錐の射影化・射影クアドリック・内在的量子性（解説ノート）,
+Zenodo. Concept DOI:
+\href{https://doi.org/10.5281/zenodo.21495305}{10.5281/zenodo.21495305}.
+一般向け解説:
+note記事\href{https://note.com/kiharanoriaki/n/nc0ea47060f4b}{「\(\Sigma x_n^2\)
+= 0 という式は、生まれつき量子化されていた」}.
+
+{[}4{]} 木原 範昭, 交換干渉散乱行列で局在性はどう交換されるか, Zenodo.
+Concept DOI:
+\href{https://doi.org/10.5281/zenodo.21333766}{10.5281/zenodo.21333766}.
+
+{[}5{]} 木原 範昭, 白猫・黒猫・灰色猫の準安定状態を閉鎖系で読む, Zenodo.
+Concept DOI:
+\href{https://doi.org/10.5281/zenodo.21353208}{10.5281/zenodo.21353208}.
+
+{[}6{]} G. Benettin ほか, The Metastable State of
+Fermi--Pasta--Ulam--Tsingou Models, Entropy \textbf{25}(2), 300 (2023).
+
+{[}7{]} R. E. Mirollo, S. H. Strogatz, The spectrum of the locked state
+for the Kuramoto model of coupled oscillators, Physica D \textbf{205},
+249 (2005).
+
+{[}8{]} I. Daumont, T. Dauxois, M. Peyrard, Modulational instability:
+first step towards energy localization in nonlinear lattices,
+Nonlinearity \textbf{10}, 617 (1997).
+
+{[}9{]} T. Mori, T. N. Ikeda, E. Kaminishi, M. Ueda, Thermalization and
+prethermalization in isolated quantum systems, J. Phys. B \textbf{51},
+112001 (2018).
+
+{[}10{]} S.-W. Kim, J. Nishimura, A. Tsuchiya, Expanding
+(3+1)-dimensional universe from a Lorentzian matrix model for
+superstring theory in (9+1)-dimensions, Phys. Rev.~Lett. \textbf{108},
+011601 (2012).
+
+\end{document}

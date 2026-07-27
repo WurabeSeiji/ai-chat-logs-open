@@ -1,0 +1,34 @@
+{
+  "paper": 8,
+  "experiment": "preliminary_two_stage_seed_ablation_v1",
+  "paper8_root": "次元の生成構造/第8論文_二段階seed除去による準安定相の因果分離",
+  "paper7_engine_root": "時間軸Q軸とフェルミオンの生成構造/検証_対照実験/第5論文原本_自発的分裂予備実験_v1",
+  "N_values": [5, 40, 300],
+  "conditions": {
+    "A": {"initial_seed": false, "metastable_seed": false},
+    "B": {"initial_seed": true, "metastable_seed": false, "initial_delta": 1e-15},
+    "D": {"initial_seed": true, "metastable_seed": true, "source": "existing_paper7_data"}
+  },
+  "forbidden_extra_analysis": [
+    "seed_amplitude_sweep", "seed_direction_sweep", "fft", "autocorrelation",
+    "lyapunov_reanalysis", "self_similarity_analysis", "physical_interpretation"
+  ],
+  "COMMON_FINAL_STEP": 55000,
+  "rng_rule": "numpy.random.default_rng(40260722 + 1000*N)",
+  "initial_seed_delta": 1e-15,
+  "crossing_definition": "first step where f = 1 - E_P1 exceeds 0.05",
+  "metastable_start_definition": "crossing + GUARD (GUARD=3000 in paper7 transverse)",
+  "record_sampling": {"5": 25, "40": 25, "300": 100},
+  "python_env": {"numpy": "2.0.2", "scipy": "1.13.1", "matplotlib": "3.9.4"},
+  "paper7_code_paths": {
+    "engine": "時間軸Q軸とフェルミオンの生成構造/検証_対照実験/第5論文原本_自発的分裂予備実験_v1/run_n_scaling_lowrank_v1.py",
+    "parent_basis_exact": ".../run_plane_flow_exact_v1.py",
+    "parent_basis_approx": ".../run_plane_flow_approx_v1.py",
+    "gram_dominant_plane": ".../exact_lowN_eigenspectrum_v2/code/run_n300_dimension_saturation_v2.py",
+    "paper7_5color": ".../exact_lowN_eigenspectrum_v2/paper7_longtime/code/run_paper7_5color_timeseries.py",
+    "paper7_transverse": ".../paper7_longtime/code/run_paper7_transverse.py",
+    "paper7_transverse_cached": ".../paper7_longtime/code/run_paper7_transverse_cached.py"
+  },
+  "reuse_policy": "read-only import of paper7 modules (no copy, no edit). SHA-256 recorded in config/source_file_hashes.json.",
+  "condition_D_open_item": "既存 transverse_stability_timeseries.csv は §9 要求列(q1-q4, rank_Q, 各占有, zero_square 等)を持たないため、条件D の §9 時系列は再生成が必要。再生成時の準安定seed(横摂動)のパラメトリゼーション(単一注入 ε・seed 指定 / または Benettin)が未確定のため、Phase 2 開始前に確認を要する。"
+}
