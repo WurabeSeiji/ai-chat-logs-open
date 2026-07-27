@@ -105,6 +105,18 @@
 
 ## 更新履歴
 
+### 2026-07-27: note記事「タネがなくても、インフレーションは起きた」公開（第8論文 一般向け）
+
+**第8論文の一般向けnote記事（日本語）を公開**：インフレーション理論の零点振動仮定を入口に、seed全除去でも急拡大が再現（時刻差1/0/5 step）、助走期間=複利成長（毎step 5%・増1129回減ゼロ）、方向は急拡大中に組み替えられて選択、第二インフレーション兆候なし、電磁力相当は生まれず→プランク→原子オーダーの初期インフレーション仮説（10^20以上のスケール差、現行スパコンで到達不能かもしれない）の構成。
+
+- **note**：[タネがなくても、インフレーションは起きた——そして方向は三つで止まった](https://note.com/kiharanoriaki/n/n48a02cd70f47)（下書きmd：次元の生成構造/タネがなくてもインフレーションは起きた_note完成稿.md）
+- **note（英語版）**：[The inflation happened without a seed — and the directions stopped at three](https://note.com/kiharanoriaki/n/nb584455b0aa5)（下書きmd：次元の生成構造/inflation_without_a_seed_note_en.md）
+- **Facebook（日本語）**：[告知投稿](https://www.facebook.com/kihara.noriaki/posts/pfbid0362xhGjsbjGjYoJ2RffBr5YcnCQDUbDuyDyDM3doHYr9qL82vhKthFxBkE7pHsqgMl)（2026-07-27、日本語note URLはコメント欄）
+- **Facebook（英語）**：[告知投稿](https://www.facebook.com/kihara.noriaki/posts/pfbid02uTCZukGCJ19oxfnNga3poC9YHjPnMtXFHQfRFaUUGNN3QsjRr1mVytFiMywcmdyHl)（2026-07-27、英語note URLはコメント欄）
+- **X（日本語）**：[告知ポスト](https://x.com/NoriakiKihara/status/2081580195061104704)（2026-07-27）
+- **X（英語）**：[告知ポスト](https://x.com/NoriakiKihara/status/2081580633030365211)（2026-07-27）
+
+
 ### 2026-07-27: 次元の生成構造 第8論文「三方向生成の時間構造の因果分離——二段階seed除去」公開
 
 **第8論文を Zenodo 公開（日英 md/tex/pdf + 再現パッケージzip の7点）**：第7論文の三方向生成の時間構造を二段階seed除去で因果分離。seedは発生・時刻・初期方向・準安定振動のいずれの原因でもない。潜伏領域の下位底を毎step検査で棄却、急拡大中の方向再編成を直接測定、t=110000まで第二の急拡大なし、初期二方向は零二乗閉鎖の帰結。

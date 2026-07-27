@@ -8,6 +8,23 @@ Release date: 2026-07-27
 - Version DOI (v1): https://doi.org/10.5281/zenodo.21614403
 - Zenodo record: https://zenodo.org/record/21614403
 
+## note（一般向け）
+
+- 日本語: https://note.com/kiharanoriaki/n/n48a02cd70f47 （2026-07-27 公開）
+  （元原稿: `次元の生成構造/タネがなくてもインフレーションは起きた_note完成稿.md`）
+- 英語: https://note.com/kiharanoriaki/n/nb584455b0aa5 （2026-07-27 公開）
+  （元原稿: `次元の生成構造/inflation_without_a_seed_note_en.md`）
+
+## Facebook
+
+- 日本語投稿: https://www.facebook.com/kihara.noriaki/posts/pfbid0362xhGjsbjGjYoJ2RffBr5YcnCQDUbDuyDyDM3doHYr9qL82vhKthFxBkE7pHsqgMl （2026-07-27、日本語note URLはコメント欄）
+- 英語投稿: https://www.facebook.com/kihara.noriaki/posts/pfbid02uTCZukGCJ19oxfnNga3poC9YHjPnMtXFHQfRFaUUGNN3QsjRr1mVytFiMywcmdyHl （2026-07-27、英語note URLはコメント欄）
+
+## X
+
+- 日本語ポスト: https://x.com/NoriakiKihara/status/2081580195061104704 （2026-07-27）
+- 英語ポスト: https://x.com/NoriakiKihara/status/2081580633030365211 （2026-07-27）
+
 ## 公開ファイル（Zenodo, 7点）
 
 - `nbody_two_stage_seed_removal_causal_separation_ja.md` / `_en.md`
