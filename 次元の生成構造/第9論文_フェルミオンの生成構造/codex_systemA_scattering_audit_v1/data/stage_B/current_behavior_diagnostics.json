@@ -1,0 +1,314 @@
+{
+  "schema": "current_System_A_stage_B_reproduction_v1",
+  "generated_at_utc": "2026-07-28T10:12:07.625568+00:00",
+  "execution_policy": "Independent reproduction only. Audited System A/System B originals were not imported, executed, or modified.",
+  "B_to_A_transfer_semantics": "B_to_A_transfer is spectral cosine similarity of the A-channel state to the initial B spectrum; it is NOT a path-exchange norm.",
+  "config": {
+    "chi_grid_n": 512,
+    "eta_grid_n": 16,
+    "high_n": 63,
+    "k_components": 4,
+    "mix_p": 0.5,
+    "mix_phi": 1.5707963267948966,
+    "reflection_rate": 0.6971778791282474,
+    "max_collision": 32,
+    "q_A": 1.0,
+    "q_B": -1.0,
+    "m_A": 1,
+    "m_B": 2,
+    "p0": 1.0
+  },
+  "cases": [
+    {
+      "case_id": "F1_x_F1",
+      "wave_A": "F1",
+      "wave_B": "F1",
+      "type_A": "odd",
+      "type_B": "odd"
+    },
+    {
+      "case_id": "FK_x_FK",
+      "wave_A": "FK",
+      "wave_B": "FK",
+      "type_A": "odd",
+      "type_B": "odd"
+    },
+    {
+      "case_id": "BK_x_BK",
+      "wave_A": "BK",
+      "wave_B": "BK",
+      "type_A": "even",
+      "type_B": "even"
+    },
+    {
+      "case_id": "FK_x_BK",
+      "wave_A": "FK",
+      "wave_B": "BK",
+      "type_A": "odd",
+      "type_B": "even"
+    },
+    {
+      "case_id": "MIX_x_MIX",
+      "wave_A": "MIX",
+      "wave_B": "MIX",
+      "type_A": "mixed",
+      "type_B": "mixed"
+    }
+  ],
+  "formula_provenance": {
+    "System_A_SHA256": "91a1a19a5e11be80626b34630e353fccc59b0197782c2fcd5417b9e18a2766ec",
+    "scattering_source_SHA256": "f815320f5632ae1b23ccade3a53b01e9110ad770da8407e2b10fa6065ef1695c",
+    "formula": {
+      "delta": "2*asin(sqrt(R_input))",
+      "t": "exp(i*delta/2)*cos(delta/2)",
+      "r": "-i*exp(i*delta/2)*sin(delta/2)",
+      "a_raw": "r*a + t*b",
+      "b_raw": "t*a + r*b",
+      "normalization": "each output channel independently normalized"
+    }
+  },
+  "coefficients": {
+    "delta": 1.9761630154079322,
+    "r": {
+      "real": 0.6971778791282475,
+      "imag": -0.45947892659238054,
+      "phase": -0.5827148190909305
+    },
+    "t": {
+      "real": 0.30282212087175253,
+      "imag": 0.45947892659238054,
+      "phase": 0.9880815077039661
+    },
+    "R": 0.6971778791282475,
+    "T": 0.30282212087175253
+  },
+  "input_wave_controls": {
+    "F1": {
+      "wave": "F1",
+      "type": "odd",
+      "sample_count": 512,
+      "spatial_domain": "[-pi, pi)",
+      "component_count": 1,
+      "kernel_norm2": 1.0,
+      "peak_amplitude": 0.0625,
+      "RMS_amplitude": 0.04419417382415922,
+      "localization_width_ipr": 4.188790204786391,
+      "spectral_RMS_wavenumber": 1.0,
+      "highest_wavenumber": 1.0,
+      "phase_origin": 0.0,
+      "carrier_treatment": "A:q=+1,m=1; B:q=-1,m=2; inverse carrier resolved by eta lineage before parity"
+    },
+    "FK": {
+      "wave": "FK",
+      "type": "odd",
+      "sample_count": 512,
+      "spatial_domain": "[-pi, pi)",
+      "component_count": 4,
+      "kernel_norm2": 1.0,
+      "peak_amplitude": 0.12500000000000003,
+      "RMS_amplitude": 0.04419417382415922,
+      "localization_width_ipr": 1.1689647083124808,
+      "spectral_RMS_wavenumber": 4.582575694955841,
+      "highest_wavenumber": 7.0,
+      "phase_origin": 0.0,
+      "carrier_treatment": "A:q=+1,m=1; B:q=-1,m=2; inverse carrier resolved by eta lineage before parity"
+    },
+    "BK": {
+      "wave": "BK",
+      "type": "even",
+      "sample_count": 512,
+      "spatial_domain": "[-pi, pi)",
+      "component_count": 4,
+      "kernel_norm2": 1.0000000000000002,
+      "peak_amplitude": 0.12500000000000003,
+      "RMS_amplitude": 0.04419417382415922,
+      "localization_width_ipr": 1.3585265529036938,
+      "spectral_RMS_wavenumber": 5.477225575051662,
+      "highest_wavenumber": 8.0,
+      "phase_origin": 0.0,
+      "carrier_treatment": "A:q=+1,m=1; B:q=-1,m=2; inverse carrier resolved by eta lineage before parity"
+    },
+    "MIX": {
+      "wave": "MIX",
+      "type": "mixed",
+      "sample_count": 512,
+      "spatial_domain": "[-pi, pi)",
+      "component_count": 8,
+      "kernel_norm2": 1.0,
+      "peak_amplitude": 0.12500000000000003,
+      "RMS_amplitude": 0.04419417382415922,
+      "localization_width_ipr": 1.272543859681941,
+      "spectral_RMS_wavenumber": 5.04975246918104,
+      "highest_wavenumber": 8.0,
+      "phase_origin": 0.0,
+      "carrier_treatment": "A:q=+1,m=1; B:q=-1,m=2; inverse carrier resolved by eta lineage before parity"
+    }
+  },
+  "case_summaries": [
+    {
+      "case_id": "F1_x_F1",
+      "wave_A": "F1",
+      "wave_B": "F1",
+      "type_A": "odd",
+      "type_B": "odd",
+      "max_abs_interference_in_a": 5.37393724549076e-16,
+      "max_abs_interference_in_b": 5.377519809184685e-16,
+      "max_path_decomposition_error": 1.5543122344752192e-15,
+      "max_raw_channel_norm2_error_from_one": 1.7763568394002505e-15,
+      "max_normalized_channel_norm2_error_from_one": 4.440892098500626e-16,
+      "max_eta_commutator_current_kernel": 2.3620623360239523e-16,
+      "B_to_A_transfer_min": 0.9999999999999998,
+      "B_to_A_transfer_max": 1.0,
+      "B_to_A_transfer_semantics": "B_to_A_transfer is spectral cosine similarity of the A-channel state to the initial B spectrum; it is NOT a path-exchange norm."
+    },
+    {
+      "case_id": "FK_x_FK",
+      "wave_A": "FK",
+      "wave_B": "FK",
+      "type_A": "odd",
+      "type_B": "odd",
+      "max_abs_interference_in_a": 9.120581565968048e-16,
+      "max_abs_interference_in_b": 9.122625229408694e-16,
+      "max_path_decomposition_error": 1.6653345369377348e-15,
+      "max_raw_channel_norm2_error_from_one": 2.220446049250313e-15,
+      "max_normalized_channel_norm2_error_from_one": 4.440892098500626e-16,
+      "max_eta_commutator_current_kernel": 2.2503228738068653e-16,
+      "B_to_A_transfer_min": 0.9999999999999998,
+      "B_to_A_transfer_max": 1.0,
+      "B_to_A_transfer_semantics": "B_to_A_transfer is spectral cosine similarity of the A-channel state to the initial B spectrum; it is NOT a path-exchange norm."
+    },
+    {
+      "case_id": "BK_x_BK",
+      "wave_A": "BK",
+      "wave_B": "BK",
+      "type_A": "even",
+      "type_B": "even",
+      "max_abs_interference_in_a": 5.709823261945185e-16,
+      "max_abs_interference_in_b": 5.734385532731783e-16,
+      "max_path_decomposition_error": 1.5543122344752192e-15,
+      "max_raw_channel_norm2_error_from_one": 1.9984014443252818e-15,
+      "max_normalized_channel_norm2_error_from_one": 4.440892098500626e-16,
+      "max_eta_commutator_current_kernel": 2.379677135156054e-16,
+      "B_to_A_transfer_min": 0.9999999999999998,
+      "B_to_A_transfer_max": 1.0,
+      "B_to_A_transfer_semantics": "B_to_A_transfer is spectral cosine similarity of the A-channel state to the initial B spectrum; it is NOT a path-exchange norm."
+    },
+    {
+      "case_id": "FK_x_BK",
+      "wave_A": "FK",
+      "wave_B": "BK",
+      "type_A": "odd",
+      "type_B": "even",
+      "max_abs_interference_in_a": 7.331375090346981e-16,
+      "max_abs_interference_in_b": 7.331375090346981e-16,
+      "max_path_decomposition_error": 1.2212453270876722e-15,
+      "max_raw_channel_norm2_error_from_one": 1.7763568394002505e-15,
+      "max_normalized_channel_norm2_error_from_one": 4.440892098500626e-16,
+      "max_eta_commutator_current_kernel": 2.3753578988548336e-16,
+      "B_to_A_transfer_min": 0.0006422305472810071,
+      "B_to_A_transfer_max": 0.9999966926987852,
+      "B_to_A_transfer_semantics": "B_to_A_transfer is spectral cosine similarity of the A-channel state to the initial B spectrum; it is NOT a path-exchange norm."
+    },
+    {
+      "case_id": "MIX_x_MIX",
+      "wave_A": "MIX",
+      "wave_B": "MIX",
+      "type_A": "mixed",
+      "type_B": "mixed",
+      "max_abs_interference_in_a": 1.495151599604505e-15,
+      "max_abs_interference_in_b": 1.4966892597072502e-15,
+      "max_path_decomposition_error": 2.1094237467877974e-15,
+      "max_raw_channel_norm2_error_from_one": 1.9984014443252818e-15,
+      "max_normalized_channel_norm2_error_from_one": 4.440892098500626e-16,
+      "max_eta_commutator_current_kernel": 3.0744758634701366e-16,
+      "B_to_A_transfer_min": 0.9999999999999998,
+      "B_to_A_transfer_max": 1.0,
+      "B_to_A_transfer_semantics": "B_to_A_transfer is spectral cosine similarity of the A-channel state to the initial B spectrum; it is NOT a path-exchange norm."
+    }
+  ],
+  "maximum_errors_and_spreads": {
+    "path_a_to_a_norm_cross_case_spread": 1.887379141862766e-15,
+    "path_b_to_a_norm_cross_case_spread": 1.4432899320127035e-15,
+    "path_b_to_b_norm_cross_case_spread": 3.885780586188048e-15,
+    "path_a_to_b_norm_cross_case_spread": 7.216449660063518e-16,
+    "raw_channel_norm2_error_from_one": 2.220446049250313e-15,
+    "normalized_channel_norm2_error_from_one": 4.440892098500626e-16,
+    "path_decomposition_error": 2.1094237467877974e-15,
+    "absolute_interference": 1.4966892597072502e-15,
+    "commutator_response": 3.0744758634701366e-16,
+    "inverse_carrier_lineage_residual": 4.86645668932221e-16
+  },
+  "parity_checks": {
+    "F1_x_F1_max_even_leakage": 4.448433717006217e-32,
+    "FK_x_FK_max_even_leakage": 4.487539035859539e-31,
+    "BK_x_BK_max_odd_leakage": 5.335247673620322e-31,
+    "MIX_x_MIX_max_half_weight_error": 1.5543122344752192e-15,
+    "FK_x_BK_pair_total_sector_error": 5.10702591327572e-15,
+    "c_pi_equals_p_B_minus_p_F_error": 6.661338147750939e-15
+  },
+  "assertions": {
+    "all_path_norms_case_independent": true,
+    "raw_channel_norms_conserved": true,
+    "normalized_channel_norms_equal_one": true,
+    "path_decomposition_identity_holds": true,
+    "eta_orthogonality_removes_path_interference": true,
+    "current_kernel_commutes_with_half_shift": true,
+    "inverse_carrier_lineage_projection_complete": true,
+    "pure_and_mixed_parity_weights_preserved": true
+  },
+  "result_interpretation": {
+    "type_preservation": "The current kernel commutes with half-period shift and preserves the total parity sectors represented in the two-channel state.",
+    "type_dependent_response": "No type-dependent path-norm response was generated; the same r,t acted on all cases.",
+    "mixed_channel_caution": "For odd x even input, each named output channel becomes a mixture of preserved odd/even source sectors; this is channel mixing, not parity conversion."
+  },
+  "outputs": [
+    {
+      "path": "data/stage_B/current_behavior_baseline.csv",
+      "size_bytes": 332440,
+      "sha256": "18e41fce3c6bec885f37d025dcc069564894acddf5b39d13e985b08df2847ef0",
+      "B_to_A_transfer_semantics": "B_to_A_transfer is spectral cosine similarity of the A-channel state to the initial B spectrum; it is NOT a path-exchange norm."
+    },
+    {
+      "path": "data/stage_B/state_parity_metrics.csv",
+      "size_bytes": 127898,
+      "sha256": "565cec1c8a3875783114efd6a8eab578bc28dd93cd20ad3182b15bd2261b44a1",
+      "B_to_A_transfer_semantics": "B_to_A_transfer is spectral cosine similarity of the A-channel state to the initial B spectrum; it is NOT a path-exchange norm."
+    },
+    {
+      "path": "data/stage_B/input_control_metrics.csv",
+      "size_bytes": 2849,
+      "sha256": "12cd27f9d5daff7f9b11f6e77166b9307b285b17f475fb119f14cb1000cadb1d",
+      "B_to_A_transfer_semantics": "B_to_A_transfer is spectral cosine similarity of the A-channel state to the initial B spectrum; it is NOT a path-exchange norm."
+    },
+    {
+      "path": "data/stage_B/path_arrays/F1_x_F1_collision_paths.npz",
+      "size_bytes": 17832479,
+      "sha256": "822d96b90d76d58b2640bc46008b8c944d95491d79b2f7a8057af1a8759a3a09",
+      "B_to_A_transfer_semantics": "B_to_A_transfer is spectral cosine similarity of the A-channel state to the initial B spectrum; it is NOT a path-exchange norm."
+    },
+    {
+      "path": "data/stage_B/path_arrays/FK_x_FK_collision_paths.npz",
+      "size_bytes": 17905922,
+      "sha256": "589dde4260304786a29bf3354e5da374092b1be9e2a54dc67ac65b52c61f7e39",
+      "B_to_A_transfer_semantics": "B_to_A_transfer is spectral cosine similarity of the A-channel state to the initial B spectrum; it is NOT a path-exchange norm."
+    },
+    {
+      "path": "data/stage_B/path_arrays/BK_x_BK_collision_paths.npz",
+      "size_bytes": 17760599,
+      "sha256": "a9656543e508f424e88b0273df74b699bd44488a5eae066d6c8173dcc019658e",
+      "B_to_A_transfer_semantics": "B_to_A_transfer is spectral cosine similarity of the A-channel state to the initial B spectrum; it is NOT a path-exchange norm."
+    },
+    {
+      "path": "data/stage_B/path_arrays/FK_x_BK_collision_paths.npz",
+      "size_bytes": 17946368,
+      "sha256": "2f977b86f4d7c83aa9ee8225768c2de4f60ef99e2fc7d7ee98ee10a84986a9b7",
+      "B_to_A_transfer_semantics": "B_to_A_transfer is spectral cosine similarity of the A-channel state to the initial B spectrum; it is NOT a path-exchange norm."
+    },
+    {
+      "path": "data/stage_B/path_arrays/MIX_x_MIX_collision_paths.npz",
+      "size_bytes": 17866899,
+      "sha256": "1d393665a6b6f91e8b56bfea2c8dd45d2aeba3f5faab790178bd7a7009b6b093",
+      "B_to_A_transfer_semantics": "B_to_A_transfer is spectral cosine similarity of the A-channel state to the initial B spectrum; it is NOT a path-exchange norm."
+    }
+  ]
+}

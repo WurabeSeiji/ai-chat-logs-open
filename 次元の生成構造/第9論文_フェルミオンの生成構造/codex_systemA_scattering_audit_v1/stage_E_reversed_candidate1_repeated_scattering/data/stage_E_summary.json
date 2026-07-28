@@ -1,0 +1,272 @@
+{
+  "schema": "stage_E_reversed_candidate1_repeated_scattering_v1",
+  "status": "PASS",
+  "purpose": "Implement the reversed Candidate 1 main hypothesis in an independent System A experimental copy and compare it with C0.",
+  "implementation_formula": "theta_eff = theta_0 - kappa*rho(theta_0)*(c_A+c_B)/2",
+  "configuration": {
+    "physical_grid": [
+      512,
+      16
+    ],
+    "K": 4,
+    "R_0": 0.6971778791282474,
+    "collision_count": 32,
+    "kappa_values": [
+      0.01,
+      0.1,
+      1.0
+    ],
+    "cases": [
+      "F_x_F",
+      "B_x_B",
+      "F_x_B"
+    ],
+    "kernels": [
+      "C0",
+      "C1_reversed"
+    ],
+    "carrier_eta_lineages": {
+      "origin_A": {
+        "q": 1.0,
+        "eta_mode": 1
+      },
+      "origin_B": {
+        "q": -1.0,
+        "eta_mode": 2
+      }
+    },
+    "raw_output_is_next_physical_state": true,
+    "channel_normalization_applied": false
+  },
+  "row_count": 576,
+  "expected_row_count": 576,
+  "run_count": 18,
+  "hypothesis_sign_check": {
+    "status": "PASS",
+    "failure_count": 0,
+    "failures": []
+  },
+  "C1_reversed_effective_R": [
+    {
+      "case_id": "F_x_F",
+      "kappa": 0.01,
+      "R_eff": 0.7005409574827296,
+      "R_eff_shift": 0.0033630783544821297,
+      "relation_to_R_0": "enhanced"
+    },
+    {
+      "case_id": "B_x_B",
+      "kappa": 0.01,
+      "R_eff": 0.6938042039880644,
+      "R_eff_shift": -0.0033736751401830523,
+      "relation_to_R_0": "suppressed"
+    },
+    {
+      "case_id": "F_x_B",
+      "kappa": 0.01,
+      "R_eff": 0.6971778791282475,
+      "R_eff_shift": 0.0,
+      "relation_to_R_0": "baseline"
+    },
+    {
+      "case_id": "F_x_F",
+      "kappa": 0.1,
+      "R_eff": 0.7303021809051838,
+      "R_eff_shift": 0.03312430177693637,
+      "relation_to_R_0": "enhanced"
+    },
+    {
+      "case_id": "B_x_B",
+      "kappa": 0.1,
+      "R_eff": 0.6629943685340114,
+      "R_eff_shift": -0.03418351059423608,
+      "relation_to_R_0": "suppressed"
+    },
+    {
+      "case_id": "F_x_B",
+      "kappa": 0.1,
+      "R_eff": 0.6971778791282475,
+      "R_eff_shift": 0.0,
+      "relation_to_R_0": "baseline"
+    },
+    {
+      "case_id": "F_x_F",
+      "kappa": 1.0,
+      "R_eff": 0.9539945540979675,
+      "R_eff_shift": 0.25681667496972005,
+      "relation_to_R_0": "enhanced"
+    },
+    {
+      "case_id": "B_x_B",
+      "kappa": 1.0,
+      "R_eff": 0.3390545022347522,
+      "R_eff_shift": -0.35812337689349527,
+      "relation_to_R_0": "suppressed"
+    },
+    {
+      "case_id": "F_x_B",
+      "kappa": 1.0,
+      "R_eff": 0.6971778791282475,
+      "R_eff_shift": 0.0,
+      "relation_to_R_0": "baseline"
+    }
+  ],
+  "maximum_residuals": {
+    "unitarity": 4.440892098500626e-16,
+    "coefficient_orthogonality": 6.055759722319595e-17,
+    "path_sum": 2.886579864025407e-15,
+    "pair_norm_conservation": 2.886579864025407e-15,
+    "lineage_reconstruction": 4.423842401905427e-16,
+    "interference": 2.0469737016526324e-16,
+    "raw_channel_norm_difference_from_one": 6.217248937900877e-15
+  },
+  "repeated_readout": {
+    "max_pure_R_eff_drift": 2.7755575615628914e-16,
+    "max_FxB_abs_c_mean": 1.3877787807814457e-16,
+    "max_FxB_R_eff_departure_from_R_0": 1.1102230246251565e-16
+  },
+  "C0_control": {
+    "max_R_eff_spread_across_requested_kappa": 0.0,
+    "duplicated_per_kappa_for_direct_pairing": true
+  },
+  "comparison_rows": [
+    {
+      "case_id": "F_x_F",
+      "kappa": 0.01,
+      "R_0": 0.6971778791282474,
+      "C0_R_eff": 0.6971778791282475,
+      "C1_reversed_R_eff": 0.7005409574827296,
+      "R_eff_shift": 0.0033630783544821297,
+      "R_eff_relation": "enhanced",
+      "max_abs_R_eff_difference_over_32": 0.0033630783544821297,
+      "max_abs_path_a_to_a_difference_over_32": 0.0033630783544855714,
+      "max_abs_path_b_to_a_difference_over_32": 0.0033630783544827403,
+      "max_abs_p_B_A_difference_over_32": 1.4709418647007166e-32,
+      "max_abs_p_F_A_difference_over_32": 2.220446049250313e-16,
+      "final_state_pair_L2_difference": 0.23405214786772968
+    },
+    {
+      "case_id": "B_x_B",
+      "kappa": 0.01,
+      "R_0": 0.6971778791282474,
+      "C0_R_eff": 0.6971778791282475,
+      "C1_reversed_R_eff": 0.6938042039880644,
+      "R_eff_shift": -0.0033736751401830523,
+      "R_eff_relation": "suppressed",
+      "max_abs_R_eff_difference_over_32": 0.0033736751401830523,
+      "max_abs_path_a_to_a_difference_over_32": 0.0033736751401836074,
+      "max_abs_path_b_to_a_difference_over_32": 0.0033736751401837184,
+      "max_abs_p_B_A_difference_over_32": 4.440892098500626e-16,
+      "max_abs_p_F_A_difference_over_32": 2.6811569421732235e-32,
+      "final_state_pair_L2_difference": 0.23405214786773082
+    },
+    {
+      "case_id": "F_x_B",
+      "kappa": 0.01,
+      "R_0": 0.6971778791282474,
+      "C0_R_eff": 0.6971778791282475,
+      "C1_reversed_R_eff": 0.6971778791282475,
+      "R_eff_shift": 0.0,
+      "R_eff_relation": "baseline",
+      "max_abs_R_eff_difference_over_32": 0.0,
+      "max_abs_path_a_to_a_difference_over_32": 0.0,
+      "max_abs_path_b_to_a_difference_over_32": 0.0,
+      "max_abs_p_B_A_difference_over_32": 0.0,
+      "max_abs_p_F_A_difference_over_32": 0.0,
+      "final_state_pair_L2_difference": 0.0
+    },
+    {
+      "case_id": "F_x_F",
+      "kappa": 0.1,
+      "R_0": 0.6971778791282474,
+      "C0_R_eff": 0.6971778791282475,
+      "C1_reversed_R_eff": 0.7303021809051838,
+      "R_eff_shift": 0.03312430177693637,
+      "R_eff_relation": "enhanced",
+      "max_abs_R_eff_difference_over_32": 0.03312430177693637,
+      "max_abs_path_a_to_a_difference_over_32": 0.033124301776939036,
+      "max_abs_path_b_to_a_difference_over_32": 0.03312430177693637,
+      "max_abs_p_B_A_difference_over_32": 2.6212382921378624e-32,
+      "max_abs_p_F_A_difference_over_32": 4.440892098500626e-16,
+      "final_state_pair_L2_difference": 1.8437938937428737
+    },
+    {
+      "case_id": "B_x_B",
+      "kappa": 0.1,
+      "R_0": 0.6971778791282474,
+      "C0_R_eff": 0.6971778791282475,
+      "C1_reversed_R_eff": 0.6629943685340114,
+      "R_eff_shift": -0.03418351059423608,
+      "R_eff_relation": "suppressed",
+      "max_abs_R_eff_difference_over_32": 0.03418351059423608,
+      "max_abs_path_a_to_a_difference_over_32": 0.03418351059423674,
+      "max_abs_path_b_to_a_difference_over_32": 0.03418351059423663,
+      "max_abs_p_B_A_difference_over_32": 4.440892098500626e-16,
+      "max_abs_p_F_A_difference_over_32": 1.909315118056546e-32,
+      "final_state_pair_L2_difference": 1.843793893742875
+    },
+    {
+      "case_id": "F_x_B",
+      "kappa": 0.1,
+      "R_0": 0.6971778791282474,
+      "C0_R_eff": 0.6971778791282475,
+      "C1_reversed_R_eff": 0.6971778791282475,
+      "R_eff_shift": 0.0,
+      "R_eff_relation": "baseline",
+      "max_abs_R_eff_difference_over_32": 0.0,
+      "max_abs_path_a_to_a_difference_over_32": 0.0,
+      "max_abs_path_b_to_a_difference_over_32": 0.0,
+      "max_abs_p_B_A_difference_over_32": 0.0,
+      "max_abs_p_F_A_difference_over_32": 0.0,
+      "final_state_pair_L2_difference": 0.0
+    },
+    {
+      "case_id": "F_x_F",
+      "kappa": 1.0,
+      "R_0": 0.6971778791282474,
+      "C0_R_eff": 0.6971778791282475,
+      "C1_reversed_R_eff": 0.9539945540979675,
+      "R_eff_shift": 0.25681667496972005,
+      "R_eff_relation": "enhanced",
+      "max_abs_R_eff_difference_over_32": 0.25681667496972005,
+      "max_abs_path_a_to_a_difference_over_32": 0.25681667496972216,
+      "max_abs_path_b_to_a_difference_over_32": 0.25681667496972027,
+      "max_abs_p_B_A_difference_over_32": 2.635573174831523e-32,
+      "max_abs_p_F_A_difference_over_32": 4.440892098500626e-16,
+      "final_state_pair_L2_difference": 1.4851218654028566
+    },
+    {
+      "case_id": "B_x_B",
+      "kappa": 1.0,
+      "R_0": 0.6971778791282474,
+      "C0_R_eff": 0.6971778791282475,
+      "C1_reversed_R_eff": 0.3390545022347522,
+      "R_eff_shift": -0.35812337689349527,
+      "R_eff_relation": "suppressed",
+      "max_abs_R_eff_difference_over_32": 0.35812337689349527,
+      "max_abs_path_a_to_a_difference_over_32": 0.3581233768934956,
+      "max_abs_path_b_to_a_difference_over_32": 0.35812337689349694,
+      "max_abs_p_B_A_difference_over_32": 4.440892098500626e-16,
+      "max_abs_p_F_A_difference_over_32": 1.973538677967677e-32,
+      "final_state_pair_L2_difference": 1.485121865402858
+    },
+    {
+      "case_id": "F_x_B",
+      "kappa": 1.0,
+      "R_0": 0.6971778791282474,
+      "C0_R_eff": 0.6971778791282475,
+      "C1_reversed_R_eff": 0.6971778791282475,
+      "R_eff_shift": 0.0,
+      "R_eff_relation": "baseline",
+      "max_abs_R_eff_difference_over_32": 0.0,
+      "max_abs_path_a_to_a_difference_over_32": 0.0,
+      "max_abs_path_b_to_a_difference_over_32": 0.0,
+      "max_abs_p_B_A_difference_over_32": 0.0,
+      "max_abs_p_F_A_difference_over_32": 0.0,
+      "final_state_pair_L2_difference": 0.0
+    }
+  ],
+  "original_System_A_modified": false,
+  "N_system_integrated": false,
+  "formal_integration_performed": false
+}
