@@ -112,6 +112,8 @@ def search_initial_b_amplitude(
     a_template: np.ndarray,
     b_template: np.ndarray,
     source_params: Any,
+    tolerance: float = SEARCH_TOLERANCE,
+    max_iterations: int = MAX_SEARCH_ITERATIONS,
 ) -> InitialStateSearchResult:
     """目標値との誤差だけを見て、初期B振幅をブラックボックス探索する。
 
@@ -121,6 +123,10 @@ def search_initial_b_amplitude(
 
     if not 0.0 < target_r < 1.0:
         raise ValueError("target_r must be strictly between 0 and 1")
+    if tolerance <= 0.0:
+        raise ValueError("tolerance must be positive")
+    if max_iterations <= 0:
+        raise ValueError("max_iterations must be positive")
 
     low = 0.0
     high = 1.0
@@ -159,7 +165,7 @@ def search_initial_b_amplitude(
         best_error = low_error
 
     iterations = 0
-    for iterations in range(1, MAX_SEARCH_ITERATIONS + 1):
+    for iterations in range(1, max_iterations + 1):
         midpoint = 0.5 * (low + high)
         readout = read_initial_r(
             a_template,
@@ -172,7 +178,7 @@ def search_initial_b_amplitude(
             best_amplitude = midpoint
             best_readout = readout
             best_error = error
-        if error <= SEARCH_TOLERANCE:
+        if error <= tolerance:
             break
         if readout.reflection_rate < target_r:
             low = midpoint
