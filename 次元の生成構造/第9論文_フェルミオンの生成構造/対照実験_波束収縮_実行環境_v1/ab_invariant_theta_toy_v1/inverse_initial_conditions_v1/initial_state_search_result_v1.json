@@ -1,0 +1,392 @@
+{
+  "experiment": "initial_state_search_v1",
+  "design_boundary": {
+    "target_R_used_only_in": "standalone initial-state error minimization",
+    "core_theta_readout_modified": false,
+    "forward_scattering_external_R_or_theta": false,
+    "forward_function_accepts_target_R": false
+  },
+  "case": {
+    "name": "odd_fermion_candidate_B63",
+    "interpretation": "B に基本波から high_n までの等振幅奇数倍音を与えたフェルミオン候補",
+    "packet_a": [
+      1
+    ],
+    "packet_b": [
+      1,
+      3,
+      5,
+      7,
+      9,
+      11,
+      13,
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      27,
+      29,
+      31,
+      33,
+      35,
+      37,
+      39,
+      41,
+      43,
+      45,
+      47,
+      49,
+      51,
+      53,
+      55,
+      57,
+      59,
+      61,
+      63
+    ]
+  },
+  "conditions": {
+    "A_template": "unit broad fundamental N=1",
+    "B_template": "unit equal-amplitude odd harmonics 1,3,...,63",
+    "searched_initial_parameter": "B amplitude only",
+    "collisions": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      10,
+      20,
+      42
+    ],
+    "display_normalization": "each rho_chi divided by its own maximum",
+    "forward_scattering_rule": "unchanged real orthogonal AB rotation with theta re-derived from current AB",
+    "alpha_denominator": 137.035999084,
+    "R_alpha": 0.6971778791282474
+  },
+  "search": {
+    "method": "black-box bisection",
+    "tolerance": 1e-12,
+    "maximum_iterations": 200
+  },
+  "core_runner": {
+    "path": "run_ab_invariant_theta_toy_v1.py",
+    "sha256": "90c7b27235a6716c8db08a61f71a0d9d6437694f016fd636ae53c1a58af69ed7"
+  },
+  "targets": [
+    {
+      "initial_state_search": {
+        "target_reflection_rate": 0.5,
+        "initial_a_amplitude": 1.0,
+        "initial_b_amplitude": 1.0504514628773904,
+        "achieved_reflection_rate": 0.4999999999998239,
+        "achieved_theta": 0.7853981633972722,
+        "absolute_error": 1.7608137170554983e-13,
+        "iterations": 38,
+        "method": "black-box bisection over initial B amplitude"
+      },
+      "forward_verification": {
+        "forward_input": {
+          "initial_A_array": "unit broad fundamental template",
+          "initial_B_array": "searched amplitude times unit odd-harmonic B63 template",
+          "initial_B_amplitude": 1.0504514628773904,
+          "external_R_or_theta": false
+        },
+        "initial_AB_readout": {
+          "theta": 0.7853981633972722,
+          "reflection_rate": 0.4999999999998239,
+          "transmission_rate": 0.5000000000001761,
+          "fermionic_relation_power": 1.0517241379302564,
+          "bosonic_relation_power": 1.0517241379309972,
+          "total_pair_power": 2.1034482758612536
+        },
+        "initial_pair_norm": 2.1034482758612563,
+        "initial_closure": {
+          "real": -3.8708774881586393e-16,
+          "imag": -6.313717621179704e-19,
+          "abs": 3.8708826372500027e-16
+        },
+        "max_R_drift": 2.7755575615628914e-16,
+        "max_theta_drift": 3.3306690738754696e-16,
+        "max_pair_norm_drift": 3.552713678800501e-15,
+        "max_closure_drift_abs": 1.0069816739689089e-16,
+        "max_combined_spectrum_drift": 1.2212453270876722e-15,
+        "invariant_verdict": "PASS",
+        "figure_png": "ab_initial_state_R050_waveform_evolution_v1.png",
+        "figure_svg": "ab_initial_state_R050_waveform_evolution_v1.svg",
+        "selected_collision_metrics": [
+          {
+            "collision": 0,
+            "R_derived_from_current_AB": 0.4999999999998239,
+            "theta_derived_from_current_AB": 0.7853981633972722,
+            "R_drift_from_initial": 0.0,
+            "theta_drift_from_initial": 0.0,
+            "pair_norm_drift": 0.0,
+            "closure_drift_abs": 0.0,
+            "combined_spectrum_max_drift": 0.0,
+            "L_A": 0.00018310546875000033,
+            "N_eff_A": 1.0,
+            "L_B": 0.005208969116210908,
+            "N_eff_B": 31.999999999999968
+          },
+          {
+            "collision": 1,
+            "R_derived_from_current_AB": 0.4999999999998241,
+            "theta_derived_from_current_AB": 0.7853981633972724,
+            "R_drift_from_initial": 1.6653345369377348e-16,
+            "theta_drift_from_initial": 2.220446049250313e-16,
+            "pair_norm_drift": 3.552713678800501e-15,
+            "closure_drift_abs": 1.9855118279880878e-17,
+            "combined_spectrum_max_drift": 6.938893903907228e-18,
+            "L_A": 0.0017165133018238981,
+            "N_eff_A": 17.262295081956033,
+            "L_B": 0.0017165133018257426,
+            "N_eff_B": 17.262295081966922
+          },
+          {
+            "collision": 2,
+            "R_derived_from_current_AB": 0.4999999999998241,
+            "theta_derived_from_current_AB": 0.7853981633972723,
+            "R_drift_from_initial": 1.6653345369377348e-16,
+            "theta_drift_from_initial": 1.1102230246251565e-16,
+            "pair_norm_drift": 2.6645352591003757e-15,
+            "closure_drift_abs": 4.4651525548315915e-17,
+            "combined_spectrum_max_drift": 1.1102230246251565e-16,
+            "L_A": 0.00520896911621093,
+            "N_eff_A": 31.99999999999997,
+            "L_B": 0.00018310546875000043,
+            "N_eff_B": 1.0
+          },
+          {
+            "collision": 3,
+            "R_derived_from_current_AB": 0.4999999999998241,
+            "theta_derived_from_current_AB": 0.7853981633972723,
+            "R_drift_from_initial": 1.6653345369377348e-16,
+            "theta_drift_from_initial": 1.1102230246251565e-16,
+            "pair_norm_drift": 1.3322676295501878e-15,
+            "closure_drift_abs": 1.8741625805380014e-17,
+            "combined_spectrum_max_drift": 1.0408340855860843e-17,
+            "L_A": 0.0017165133018275775,
+            "N_eff_A": 17.262295081977804,
+            "L_B": 0.0017165133018220563,
+            "N_eff_B": 17.26229508194515
+          },
+          {
+            "collision": 5,
+            "R_derived_from_current_AB": 0.49999999999982375,
+            "theta_derived_from_current_AB": 0.7853981633972721,
+            "R_drift_from_initial": 1.6653345369377348e-16,
+            "theta_drift_from_initial": 1.1102230246251565e-16,
+            "pair_norm_drift": 3.1086244689504383e-15,
+            "closure_drift_abs": 2.1353168822915037e-17,
+            "combined_spectrum_max_drift": 2.220446049250313e-16,
+            "L_A": 0.0017165133018202175,
+            "N_eff_A": 17.262295081934262,
+            "L_B": 0.0017165133018294245,
+            "N_eff_B": 17.26229508198869
+          },
+          {
+            "collision": 10,
+            "R_derived_from_current_AB": 0.4999999999998239,
+            "theta_derived_from_current_AB": 0.7853981633972722,
+            "R_drift_from_initial": 0.0,
+            "theta_drift_from_initial": 0.0,
+            "pair_norm_drift": 2.220446049250313e-15,
+            "closure_drift_abs": 7.337249349882507e-18,
+            "combined_spectrum_max_drift": 4.440892098500626e-16,
+            "L_A": 0.005208969116210943,
+            "N_eff_A": 31.999999999999968,
+            "L_B": 0.00018310546875000043,
+            "N_eff_B": 1.0
+          },
+          {
+            "collision": 20,
+            "R_derived_from_current_AB": 0.4999999999998241,
+            "theta_derived_from_current_AB": 0.7853981633972723,
+            "R_drift_from_initial": 1.6653345369377348e-16,
+            "theta_drift_from_initial": 1.1102230246251565e-16,
+            "pair_norm_drift": 4.440892098500626e-16,
+            "closure_drift_abs": 2.3884866481477435e-17,
+            "combined_spectrum_max_drift": 4.440892098500626e-16,
+            "L_A": 0.0001831054687500001,
+            "N_eff_A": 1.0,
+            "L_B": 0.005208969116210936,
+            "N_eff_B": 31.99999999999999
+          },
+          {
+            "collision": 42,
+            "R_derived_from_current_AB": 0.4999999999998241,
+            "theta_derived_from_current_AB": 0.7853981633972724,
+            "R_drift_from_initial": 1.6653345369377348e-16,
+            "theta_drift_from_initial": 2.220446049250313e-16,
+            "pair_norm_drift": 1.3322676295501878e-15,
+            "closure_drift_abs": 6.163673274565132e-17,
+            "combined_spectrum_max_drift": 1.2212453270876722e-15,
+            "L_A": 0.005208969116210943,
+            "N_eff_A": 31.99999999999997,
+            "L_B": 0.00018310546875000043,
+            "N_eff_B": 1.0
+          }
+        ]
+      }
+    },
+    {
+      "initial_state_search": {
+        "target_reflection_rate": 0.6971778791282474,
+        "initial_a_amplitude": 1.0,
+        "initial_b_amplitude": 1.6504283503090846,
+        "achieved_reflection_rate": 0.6971778791284632,
+        "achieved_theta": 0.9880815077042008,
+        "absolute_error": 2.1582735598713043e-13,
+        "iterations": 38,
+        "method": "black-box bisection over initial B amplitude"
+      },
+      "forward_verification": {
+        "forward_input": {
+          "initial_A_array": "unit broad fundamental template",
+          "initial_B_array": "searched amplitude times unit odd-harmonic B63 template",
+          "initial_B_amplitude": 1.6504283503090846,
+          "external_R_or_theta": false
+        },
+        "initial_AB_readout": {
+          "theta": 0.9880815077042008,
+          "reflection_rate": 0.6971778791284632,
+          "transmission_rate": 0.30282212087153687,
+          "fermionic_relation_power": 2.5962302829647257,
+          "bosonic_relation_power": 1.1276834565392497,
+          "total_pair_power": 3.7239137395039754
+        },
+        "initial_pair_norm": 3.7239137395039688,
+        "initial_closure": {
+          "real": -9.199341530769157e-16,
+          "imag": -9.303080784630058e-17,
+          "abs": 9.246261824142107e-16
+        },
+        "max_R_drift": 3.3306690738754696e-16,
+        "max_theta_drift": 2.220446049250313e-16,
+        "max_pair_norm_drift": 1.3766765505351941e-14,
+        "max_closure_drift_abs": 4.825010955892849e-16,
+        "max_combined_spectrum_drift": 2.220446049250313e-16,
+        "invariant_verdict": "PASS",
+        "figure_png": "ab_initial_state_Ralpha_waveform_evolution_v1.png",
+        "figure_svg": "ab_initial_state_Ralpha_waveform_evolution_v1.svg",
+        "selected_collision_metrics": [
+          {
+            "collision": 0,
+            "R_derived_from_current_AB": 0.6971778791284632,
+            "theta_derived_from_current_AB": 0.9880815077042008,
+            "R_drift_from_initial": 0.0,
+            "theta_drift_from_initial": 0.0,
+            "pair_norm_drift": 0.0,
+            "closure_drift_abs": 0.0,
+            "combined_spectrum_max_drift": 0.0,
+            "L_A": 0.00018310546875000033,
+            "N_eff_A": 1.0,
+            "L_B": 0.0052089691162109635,
+            "N_eff_B": 31.999999999999975
+          },
+          {
+            "collision": 1,
+            "R_derived_from_current_AB": 0.6971778791284631,
+            "theta_derived_from_current_AB": 0.9880815077042007,
+            "R_drift_from_initial": 1.1102230246251565e-16,
+            "theta_drift_from_initial": 1.1102230246251565e-16,
+            "pair_norm_drift": 4.884981308350689e-15,
+            "closure_drift_abs": 1.6830148668828468e-16,
+            "combined_spectrum_max_drift": 1.3877787807814457e-17,
+            "L_A": 0.003993115245178066,
+            "N_eff_A": 27.736593687933485,
+            "L_B": 0.001808843040781801,
+            "N_eff_B": 17.80029079219445
+          },
+          {
+            "collision": 2,
+            "R_derived_from_current_AB": 0.6971778791284629,
+            "theta_derived_from_current_AB": 0.9880815077042006,
+            "R_drift_from_initial": 3.3306690738754696e-16,
+            "theta_drift_from_initial": 2.220446049250313e-16,
+            "pair_norm_drift": 6.217248937900877e-15,
+            "closure_drift_abs": 2.1842601662057427e-16,
+            "combined_spectrum_max_drift": 1.1102230246251565e-16,
+            "L_A": 0.004628341152010796,
+            "N_eff_A": 30.036901431596537,
+            "L_B": 0.0008780363495827974,
+            "N_eff_B": 11.355687892087873
+          },
+          {
+            "collision": 3,
+            "R_derived_from_current_AB": 0.6971778791284631,
+            "theta_derived_from_current_AB": 0.9880815077042007,
+            "R_drift_from_initial": 1.1102230246251565e-16,
+            "theta_drift_from_initial": 1.1102230246251565e-16,
+            "pair_norm_drift": 8.881784197001252e-15,
+            "closure_drift_abs": 8.138355908623325e-17,
+            "combined_spectrum_max_drift": 1.1102230246251565e-16,
+            "L_A": 0.0002602375413491252,
+            "N_eff_A": 3.4943180696745633,
+            "L_B": 0.005099434362462422,
+            "N_eff_B": 31.63867034096646
+          },
+          {
+            "collision": 5,
+            "R_derived_from_current_AB": 0.6971778791284632,
+            "theta_derived_from_current_AB": 0.9880815077042008,
+            "R_drift_from_initial": 0.0,
+            "theta_drift_from_initial": 0.0,
+            "pair_norm_drift": 4.884981308350689e-15,
+            "closure_drift_abs": 1.7773404809290238e-16,
+            "combined_spectrum_max_drift": 1.1102230246251565e-16,
+            "L_A": 0.005027454775415462,
+            "N_eff_A": 31.399039950561917,
+            "L_B": 0.00033257956419190484,
+            "N_eff_B": 4.965442842542922
+          },
+          {
+            "collision": 10,
+            "R_derived_from_current_AB": 0.6971778791284631,
+            "theta_derived_from_current_AB": 0.9880815077042007,
+            "R_drift_from_initial": 1.1102230246251565e-16,
+            "theta_drift_from_initial": 1.1102230246251565e-16,
+            "pair_norm_drift": 7.993605777301127e-15,
+            "closure_drift_abs": 2.9219679229802294e-16,
+            "combined_spectrum_max_drift": 1.1102230246251565e-16,
+            "L_A": 0.001115071424813849,
+            "N_eff_A": 13.2734978212886,
+            "L_B": 0.004471188611764525,
+            "N_eff_B": 29.483918426608593
+          },
+          {
+            "collision": 20,
+            "R_derived_from_current_AB": 0.6971778791284631,
+            "theta_derived_from_current_AB": 0.9880815077042007,
+            "R_drift_from_initial": 1.1102230246251565e-16,
+            "theta_drift_from_initial": 1.1102230246251565e-16,
+            "pair_norm_drift": 9.325873406851315e-15,
+            "closure_drift_abs": 2.025262398795035e-16,
+            "combined_spectrum_max_drift": 2.7755575615628914e-17,
+            "L_A": 0.0036490630812143912,
+            "N_eff_A": 26.41054886054956,
+            "L_B": 0.002257490415584854,
+            "N_eff_B": 20.22224880838339
+          },
+          {
+            "collision": 42,
+            "R_derived_from_current_AB": 0.6971778791284632,
+            "theta_derived_from_current_AB": 0.9880815077042008,
+            "R_drift_from_initial": 0.0,
+            "theta_drift_from_initial": 0.0,
+            "pair_norm_drift": 4.440892098500626e-15,
+            "closure_drift_abs": 3.636765766199486e-16,
+            "combined_spectrum_max_drift": 1.1102230246251565e-16,
+            "L_A": 0.002257471052866655,
+            "N_eff_A": 20.222150214460616,
+            "L_B": 0.0036490787520674067,
+            "N_eff_B": 26.410610714039386
+          }
+        ]
+      }
+    }
+  ]
+}
