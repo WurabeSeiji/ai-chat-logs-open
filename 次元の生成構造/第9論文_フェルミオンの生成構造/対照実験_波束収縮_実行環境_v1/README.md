@@ -17,9 +17,12 @@
 ├── 20260713/
 │   └── run_exchange_scattering_matrix_fermionic_localization_transfer_preliminary_v1.py
 │                                            # 物理エンジン正本のコピー
-└── 20260715/
-    ├── run_system_A_localization_exchange_R_sweep_preliminary_v1.py   # 系統Aランナー
-    └── run_system_B_gray_cat_metastable_R_sweep_preliminary_v1.py    # 系統Bランナー
+├── 20260715/
+│   ├── run_system_A_localization_exchange_R_sweep_preliminary_v1.py   # 系統Aランナー
+│   └── run_system_B_gray_cat_metastable_R_sweep_preliminary_v1.py    # 系統Bランナー
+└── ab_invariant_theta_toy_v1/
+    ├── run_ab_invariant_theta_toy_v1.py      # AB波だけからthetaを生成する派生版
+    └── README.md
 ```
 
 委譲チェーン: 系統B → 系統A → 20260713エンジン → 20260711基底JSON（全て本フォルダ内で閉じる）。
@@ -70,6 +73,28 @@ femtofocus はバイト単位で同一。詳細と再現データ一式は `pari
 
 検証済み（`20260715/instrument_check_v1/` 参照）:
 既存4CSVは基底版とバイト同一、ダンプ係数からCSVの N_eff / p_chi を機械精度（〜1e-15）で再現。
+
+## AB 波から theta を生成する派生環境（2026-07-29 追加）
+
+`ab_invariant_theta_toy_v1/` は、外部入力していた $R$ / $\theta$ を廃止し、
+現在の AB 合成スペクトルの回転不変量から
+$\theta=\operatorname{atan2}(\sqrt{P_f},\sqrt{P_b})$ を毎衝突時に読み出す派生トイモデル。
+
+無修正コピーを import して初期波と既存指標を作るだけで、更新則は派生ランナー内に分離した。
+元の `波の情報読出し/` 側も、本フォルダ内の `20260713/`・`20260715/` コピーも変更していない。
+依存は本実行環境内で閉じる。詳細は `ab_invariant_theta_toy_v1/README.md` を参照。
+
+2026-07-29 に既定3条件を32衝突まで実行した。基本波・偶数倍音対照は
+$\theta=R=0$、奇数倍音B63条件では $\theta=0.761952071831$、
+$R=0.4765625$ がAB波だけから生成された。最大 $\theta$ ドリフトは
+$2.22\times10^{-16}$ で、2衝突後にA/B起源成分が約99.78%交換された。
+結果は `ab_invariant_theta_toy_v1/result_v1/` に保存している。
+推移図と波形・倍音交換図のPNG/SVGは同階層の `figures_v1/` に保存した。
+
+さらに、広域ボゾンA＋局在ボゾンBと、広域ボゾンA＋局在フェルミオン候補Bを
+256衝突まで比較した。前者は衝突0から不変、後者は瞬時交換が収束せず持続し、
+時間平均だけが約1/2へ定常化した。比較図は
+`ab_invariant_theta_toy_v1/result_longrun_v1/comparison_figures_v1/` に保存した。
 
 ## 使用上の規約
 

@@ -1,0 +1,177 @@
+{
+  "experiment": "ab_invariant_theta_toy_v1",
+  "status_boundary": "toy model; numerical invariance is not a particle-statistics proof",
+  "parameters": {
+    "high_n": 63,
+    "max_collision": 32,
+    "chi_grid_n": 512,
+    "eta_grid_n": 16,
+    "q_A": 1.0,
+    "q_B": -1.0,
+    "p0": 1.0
+  },
+  "theta_rule": {
+    "fermionic_sector": "raw chi FFT bins with even |k| >= 4",
+    "carrier_note": "q_A=+1 and q_B=-1 shift intrinsic odd harmonics to raw even bins",
+    "formula": "theta=atan2(sqrt(P_f),sqrt(P_b)); R=sin(theta)^2",
+    "external_scattering_parameter": false
+  },
+  "rotation_rule": "[A';B']=[[cos(theta),-sin(theta)],[sin(theta),cos(theta)]] [A;B]",
+  "local_dependencies": {
+    "system_A_path": "20260715/run_system_A_localization_exchange_R_sweep_preliminary_v1.py",
+    "system_A_sha256": "91a1a19a5e11be80626b34630e353fccc59b0197782c2fcd5417b9e18a2766ec",
+    "engine_path": "20260713/run_exchange_scattering_matrix_fermionic_localization_transfer_preliminary_v1.py",
+    "engine_sha256": "f815320f5632ae1b23ccade3a53b01e9110ad770da8407e2b10fa6065ef1695c"
+  },
+  "case_summaries": [
+    {
+      "case": {
+        "name": "fundamental_control",
+        "interpretation": "A と B がともに基本波だけのボゾン的対照",
+        "packet_a": [
+          1
+        ],
+        "packet_b": [
+          1
+        ]
+      },
+      "theta_initial": 0.0,
+      "R_generated_initial": 0.0,
+      "T_generated_initial": 1.0,
+      "P_f_relation_initial": 0.0,
+      "P_b_relation_initial": 2.0000000000000018,
+      "pair_norm_initial": 1.9999999999999993,
+      "closure_initial": {
+        "real": -1.6750716273439538e-16,
+        "imag": -2.1590210148973605e-19,
+        "abs": 1.6750730187381277e-16
+      },
+      "max_theta_drift": 0.0,
+      "max_pair_norm_drift": 0.0,
+      "max_closure_drift_abs": 0.0,
+      "max_combined_spectrum_drift": 0.0,
+      "invariant_tolerance": 1e-10,
+      "invariant_verdict": "PASS"
+    },
+    {
+      "case": {
+        "name": "even_boson_control_B62",
+        "interpretation": "B に基本波と等振幅の偶数倍音を与えたボゾン的対照",
+        "packet_a": [
+          1
+        ],
+        "packet_b": [
+          1,
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20,
+          22,
+          24,
+          26,
+          28,
+          30,
+          32,
+          34,
+          36,
+          38,
+          40,
+          42,
+          44,
+          46,
+          48,
+          50,
+          52,
+          54,
+          56,
+          58,
+          60,
+          62
+        ]
+      },
+      "theta_initial": 0.0,
+      "R_generated_initial": 0.0,
+      "T_generated_initial": 1.0,
+      "P_f_relation_initial": 0.0,
+      "P_b_relation_initial": 2.000000000000002,
+      "pair_norm_initial": 2.0000000000000004,
+      "closure_initial": {
+        "real": -3.1433270084440305e-16,
+        "imag": -2.3754126005145748e-18,
+        "abs": 3.143416762142107e-16
+      },
+      "max_theta_drift": 0.0,
+      "max_pair_norm_drift": 0.0,
+      "max_closure_drift_abs": 0.0,
+      "max_combined_spectrum_drift": 0.0,
+      "invariant_tolerance": 1e-10,
+      "invariant_verdict": "PASS"
+    },
+    {
+      "case": {
+        "name": "odd_fermion_candidate_B63",
+        "interpretation": "B に基本波から high_n までの等振幅奇数倍音を与えたフェルミオン候補",
+        "packet_a": [
+          1
+        ],
+        "packet_b": [
+          1,
+          3,
+          5,
+          7,
+          9,
+          11,
+          13,
+          15,
+          17,
+          19,
+          21,
+          23,
+          25,
+          27,
+          29,
+          31,
+          33,
+          35,
+          37,
+          39,
+          41,
+          43,
+          45,
+          47,
+          49,
+          51,
+          53,
+          55,
+          57,
+          59,
+          61,
+          63
+        ]
+      },
+      "theta_initial": 0.7619520718308078,
+      "R_generated_initial": 0.4765625000000005,
+      "T_generated_initial": 0.5234374999999996,
+      "P_f_relation_initial": 0.9531250000000027,
+      "P_b_relation_initial": 1.0468750000000009,
+      "pair_norm_initial": 2.0000000000000004,
+      "closure_initial": {
+        "real": -3.504857610991111e-16,
+        "imag": -2.7184609441525664e-18,
+        "abs": 3.5049630349424237e-16
+      },
+      "max_theta_drift": 2.220446049250313e-16,
+      "max_pair_norm_drift": 5.773159728050814e-15,
+      "max_closure_drift_abs": 7.697708431686102e-17,
+      "max_combined_spectrum_drift": 6.938893903907228e-18,
+      "invariant_tolerance": 1e-10,
+      "invariant_verdict": "PASS"
+    }
+  ]
+}
