@@ -1,0 +1,405 @@
+{
+  "experiment": "R_mass_beat_two_arm_pre_v1",
+  "design_boundary": {
+    "target_R_used_only_in": "standalone initial-state error minimization",
+    "core_theta_readout_modified": false,
+    "forward_scattering_external_R_or_theta": false,
+    "superposition_evolved_physically": false,
+    "protocol": "two separately evolved arms, post-hoc overlap phase"
+  },
+  "case": {
+    "name": "odd_fermion_candidate_B63",
+    "interpretation": "B に基本波から high_n までの等振幅奇数倍音を与えたフェルミオン候補",
+    "packet_a": [
+      1
+    ],
+    "packet_b": [
+      1,
+      3,
+      5,
+      7,
+      9,
+      11,
+      13,
+      15,
+      17,
+      19,
+      21,
+      23,
+      25,
+      27,
+      29,
+      31,
+      33,
+      35,
+      37,
+      39,
+      41,
+      43,
+      45,
+      47,
+      49,
+      51,
+      53,
+      55,
+      57,
+      59,
+      61,
+      63
+    ]
+  },
+  "conditions": {
+    "max_collision": 300,
+    "snapshot_collisions": [
+      0,
+      1,
+      2,
+      10,
+      100,
+      248,
+      300
+    ],
+    "search_tolerance": 1e-15,
+    "invariant_tolerance": 1e-10,
+    "overlap_fit_min_abs": 0.001,
+    "arms_normalized_to_unit_pair_norm": true
+  },
+  "core_runner": {
+    "path": "run_ab_invariant_theta_toy_v1.py",
+    "sha256": "90c7b27235a6716c8db08a61f71a0d9d6437694f016fd636ae53c1a58af69ed7"
+  },
+  "anchor_control": {
+    "anchor": "R124_23 period-248 exact return",
+    "target_R": 0.6971779275566593,
+    "achieved_initial_R": 0.6971779275566593,
+    "return_residual_at_248": 4.491492150224689e-14,
+    "max_R_drift_through_248": 4.440892098500626e-16,
+    "recurrence_tolerance": 1e-08,
+    "invariant_tolerance": 1e-10,
+    "verdict": "PASS"
+  },
+  "arms": {
+    "R030": {
+      "target_R": 0.3,
+      "note": "generic mid-low R",
+      "search": {
+        "target_reflection_rate": 0.3,
+        "initial_a_amplitude": 1.0,
+        "initial_b_amplitude": 0.6777389936698839,
+        "achieved_reflection_rate": 0.299999999999999,
+        "achieved_theta": 0.5796397403637032,
+        "absolute_error": 9.992007221626409e-16,
+        "iterations": 47,
+        "method": "black-box bisection over initial B amplitude"
+      },
+      "normalized_pair_norm": 1.0,
+      "initial_R_after_normalization": 0.299999999999999,
+      "initial_theta_after_normalization": 0.5796397403637032
+    },
+    "R050": {
+      "target_R": 0.5,
+      "note": "exact 8-collision closure point",
+      "search": {
+        "target_reflection_rate": 0.5,
+        "initial_a_amplitude": 1.0,
+        "initial_b_amplitude": 1.0504514628777812,
+        "achieved_reflection_rate": 0.5000000000000009,
+        "achieved_theta": 0.7853981633974492,
+        "absolute_error": 8.881784197001252e-16,
+        "iterations": 48,
+        "method": "black-box bisection over initial B amplitude"
+      },
+      "normalized_pair_norm": 1.0,
+      "initial_R_after_normalization": 0.5000000000000007,
+      "initial_theta_after_normalization": 0.7853981633974491
+    },
+    "R050_dup": {
+      "target_R": 0.5,
+      "note": "duplicate of R050: null-test arm (expects phi=0, |O|=1)",
+      "search": {
+        "target_reflection_rate": 0.5,
+        "initial_a_amplitude": 1.0,
+        "initial_b_amplitude": 1.0504514628777812,
+        "achieved_reflection_rate": 0.5000000000000009,
+        "achieved_theta": 0.7853981633974492,
+        "absolute_error": 8.881784197001252e-16,
+        "iterations": 48,
+        "method": "black-box bisection over initial B amplitude"
+      },
+      "normalized_pair_norm": 1.0,
+      "initial_R_after_normalization": 0.5000000000000007,
+      "initial_theta_after_normalization": 0.7853981633974491
+    },
+    "R070": {
+      "target_R": 0.7,
+      "note": "generic mid-high R",
+      "search": {
+        "target_reflection_rate": 0.7,
+        "initial_a_amplitude": 1.0,
+        "initial_b_amplitude": 1.6629588385661975,
+        "achieved_reflection_rate": 0.7000000000000007,
+        "achieved_theta": 0.9911565864311931,
+        "absolute_error": 7.771561172376096e-16,
+        "iterations": 46,
+        "method": "black-box bisection over initial B amplitude"
+      },
+      "normalized_pair_norm": 0.999999999999999,
+      "initial_R_after_normalization": 0.7000000000000006,
+      "initial_theta_after_normalization": 0.991156586431193
+    },
+    "R124_23": {
+      "target_R": 0.6971779275566593,
+      "note": "exact root, period 248",
+      "search": {
+        "target_reflection_rate": 0.6971779275566593,
+        "initial_a_amplitude": 1.0,
+        "initial_b_amplitude": 1.6504285637713139,
+        "achieved_reflection_rate": 0.6971779275566593,
+        "achieved_theta": 0.9880815604032414,
+        "absolute_error": 0.0,
+        "iterations": 47,
+        "method": "black-box bisection over initial B amplitude"
+      },
+      "normalized_pair_norm": 1.0000000000000007,
+      "initial_R_after_normalization": 0.6971779275566593,
+      "initial_theta_after_normalization": 0.9880815604032414
+    },
+    "R620_117": {
+      "target_R": 0.6878251911141453,
+      "note": "exact root, period 1240",
+      "search": {
+        "target_reflection_rate": 0.6878251911141453,
+        "initial_a_amplitude": 1.0,
+        "initial_b_amplitude": 1.6101656970067282,
+        "achieved_reflection_rate": 0.6878251911141453,
+        "achieved_theta": 0.9779473905529519,
+        "absolute_error": 0.0,
+        "iterations": 48,
+        "method": "black-box bisection over initial B amplitude"
+      },
+      "normalized_pair_norm": 1.0000000000000018,
+      "initial_R_after_normalization": 0.6878251911141453,
+      "initial_theta_after_normalization": 0.9779473905529519
+    }
+  },
+  "max_R_drift_by_arm": {
+    "R030": 2.220446049250313e-16,
+    "R050": 3.3306690738754696e-16,
+    "R050_dup": 3.3306690738754696e-16,
+    "R070": 3.3306690738754696e-16,
+    "R124_23": 4.440892098500626e-16,
+    "R620_117": 3.3306690738754696e-16
+  },
+  "null_pair_test": {
+    "pair": [
+      "R050",
+      "R050_dup"
+    ],
+    "max_abs_phase": 0.0,
+    "min_overlap_abs": 0.9999999999999933,
+    "verdict": "PASS"
+  },
+  "pair_results": [
+    {
+      "arm_i": "R030",
+      "arm_j": "R050",
+      "delta_R": 0.20000000000000168,
+      "min_overlap_abs": 0.004834665753709697,
+      "mean_overlap_abs": 0.6194386341229552,
+      "final_unwrapped_phase": -6.283185307179586,
+      "slope_rad_per_collision": -0.07510211176500964,
+      "intercept_rad": 11.213130840273205,
+      "linear_fit_r_squared": 0.7460019240603543,
+      "points_used": 301,
+      "note": ""
+    },
+    {
+      "arm_i": "R030",
+      "arm_j": "R050_dup",
+      "delta_R": 0.20000000000000168,
+      "min_overlap_abs": 0.004834665753709697,
+      "mean_overlap_abs": 0.6194386341229552,
+      "final_unwrapped_phase": -6.283185307179586,
+      "slope_rad_per_collision": -0.07510211176500964,
+      "intercept_rad": 11.213130840273205,
+      "linear_fit_r_squared": 0.7460019240603543,
+      "points_used": 301,
+      "note": ""
+    },
+    {
+      "arm_i": "R030",
+      "arm_j": "R070",
+      "delta_R": 0.40000000000000163,
+      "min_overlap_abs": 0.004489692437332989,
+      "mean_overlap_abs": 0.5795225623513928,
+      "final_unwrapped_phase": 3.141592653589793,
+      "slope_rad_per_collision": 0.04092205924250954,
+      "intercept_rad": 3.3804037384537686,
+      "linear_fit_r_squared": 0.44182298953988675,
+      "points_used": 301,
+      "note": ""
+    },
+    {
+      "arm_i": "R030",
+      "arm_j": "R124_23",
+      "delta_R": 0.3971779275566603,
+      "min_overlap_abs": 0.0015801631737643665,
+      "mean_overlap_abs": 0.579643497077233,
+      "final_unwrapped_phase": 15.707963267948966,
+      "slope_rad_per_collision": 0.1009227395108239,
+      "intercept_rad": -0.5159148878219242,
+      "linear_fit_r_squared": 0.7445125943897366,
+      "points_used": 301,
+      "note": ""
+    },
+    {
+      "arm_i": "R030",
+      "arm_j": "R620_117",
+      "delta_R": 0.3878251911141463,
+      "min_overlap_abs": 0.0003627281430077581,
+      "mean_overlap_abs": 0.5826608119346133,
+      "final_unwrapped_phase": -31.41592653589793,
+      "slope_rad_per_collision": -0.10354410744361849,
+      "intercept_rad": 1.799875009177673,
+      "linear_fit_r_squared": 0.8881491598890872,
+      "points_used": 300,
+      "note": ""
+    },
+    {
+      "arm_i": "R050",
+      "arm_j": "R050_dup",
+      "delta_R": 0.0,
+      "min_overlap_abs": 0.9999999999999933,
+      "mean_overlap_abs": 0.9999999999999962,
+      "final_unwrapped_phase": 0.0,
+      "slope_rad_per_collision": 0.0,
+      "intercept_rad": -0.0,
+      "linear_fit_r_squared": 1.0,
+      "points_used": 301,
+      "note": ""
+    },
+    {
+      "arm_i": "R050",
+      "arm_j": "R070",
+      "delta_R": 0.19999999999999996,
+      "min_overlap_abs": 0.004829314274851573,
+      "mean_overlap_abs": 0.6187529791412794,
+      "final_unwrapped_phase": -6.283185307179586,
+      "slope_rad_per_collision": 0.00600933016442095,
+      "intercept_rad": -2.2269220064103297,
+      "linear_fit_r_squared": 0.012686717503746392,
+      "points_used": 301,
+      "note": ""
+    },
+    {
+      "arm_i": "R050",
+      "arm_j": "R124_23",
+      "delta_R": 0.19717792755665864,
+      "min_overlap_abs": 0.04947167686604392,
+      "mean_overlap_abs": 0.6253139984504604,
+      "final_unwrapped_phase": 34.55751918948772,
+      "slope_rad_per_collision": 0.10807808640087285,
+      "intercept_rad": -0.5559356166601955,
+      "linear_fit_r_squared": 0.9527761879214772,
+      "points_used": 301,
+      "note": ""
+    },
+    {
+      "arm_i": "R050",
+      "arm_j": "R620_117",
+      "delta_R": 0.18782519111414464,
+      "min_overlap_abs": 1.0999536905852991e-13,
+      "mean_overlap_abs": 0.6261342930290297,
+      "final_unwrapped_phase": 18.84955592153876,
+      "slope_rad_per_collision": 0.09654668481174844,
+      "intercept_rad": -5.8724297395127,
+      "linear_fit_r_squared": 0.840447059268577,
+      "points_used": 300,
+      "note": ""
+    },
+    {
+      "arm_i": "R050_dup",
+      "arm_j": "R070",
+      "delta_R": 0.19999999999999996,
+      "min_overlap_abs": 0.004829314274851573,
+      "mean_overlap_abs": 0.6187529791412794,
+      "final_unwrapped_phase": -6.283185307179586,
+      "slope_rad_per_collision": 0.00600933016442095,
+      "intercept_rad": -2.2269220064103297,
+      "linear_fit_r_squared": 0.012686717503746392,
+      "points_used": 301,
+      "note": ""
+    },
+    {
+      "arm_i": "R050_dup",
+      "arm_j": "R124_23",
+      "delta_R": 0.19717792755665864,
+      "min_overlap_abs": 0.04947167686604392,
+      "mean_overlap_abs": 0.6253139984504604,
+      "final_unwrapped_phase": 34.55751918948772,
+      "slope_rad_per_collision": 0.10807808640087285,
+      "intercept_rad": -0.5559356166601955,
+      "linear_fit_r_squared": 0.9527761879214772,
+      "points_used": 301,
+      "note": ""
+    },
+    {
+      "arm_i": "R050_dup",
+      "arm_j": "R620_117",
+      "delta_R": 0.18782519111414464,
+      "min_overlap_abs": 1.0999536905852991e-13,
+      "mean_overlap_abs": 0.6261342930290297,
+      "final_unwrapped_phase": 18.84955592153876,
+      "slope_rad_per_collision": 0.09654668481174844,
+      "intercept_rad": -5.8724297395127,
+      "linear_fit_r_squared": 0.840447059268577,
+      "points_used": 300,
+      "note": ""
+    },
+    {
+      "arm_i": "R070",
+      "arm_j": "R124_23",
+      "delta_R": 0.002822072443341317,
+      "min_overlap_abs": 0.6038196567372434,
+      "mean_overlap_abs": 0.8638656227394329,
+      "final_unwrapped_phase": -5.854387950320944e-17,
+      "slope_rad_per_collision": -6.521894627783652e-21,
+      "intercept_rad": -1.4667650876828345e-17,
+      "linear_fit_r_squared": 6.444734467314639e-05,
+      "points_used": 301,
+      "note": ""
+    },
+    {
+      "arm_i": "R070",
+      "arm_j": "R620_117",
+      "delta_R": 0.012174808885855315,
+      "min_overlap_abs": 0.0010978693815303572,
+      "mean_overlap_abs": 0.689828654581508,
+      "final_unwrapped_phase": 3.141592653589795,
+      "slope_rad_per_collision": 0.014970102680127557,
+      "intercept_rad": -0.3459477510113508,
+      "linear_fit_r_squared": 0.7171523178807948,
+      "points_used": 301,
+      "note": ""
+    },
+    {
+      "arm_i": "R124_23",
+      "arm_j": "R620_117",
+      "delta_R": 0.009352736442513998,
+      "min_overlap_abs": 3.6470837153396006e-14,
+      "mean_overlap_abs": 0.6257596549098494,
+      "final_unwrapped_phase": -3.1415926535897913,
+      "slope_rad_per_collision": -0.01563855464628975,
+      "intercept_rad": 0.8270861051309578,
+      "linear_fit_r_squared": 0.7516638889804619,
+      "points_used": 300,
+      "note": ""
+    }
+  ],
+  "figures": [
+    "overlap_phase_and_abs_pre_v1.png",
+    "overlap_phase_and_abs_pre_v1.svg",
+    "beat_slope_vs_delta_R_pre_v1.png",
+    "beat_slope_vs_delta_R_pre_v1.svg"
+  ]
+}
