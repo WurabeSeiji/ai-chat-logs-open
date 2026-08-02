@@ -1,0 +1,185 @@
+{
+  "experiment": "counting_rule_lock_bridge_pre_v1",
+  "design_boundary": {
+    "theta_readout_modified": false,
+    "forward_scattering_modified": false,
+    "amplitude_search_used": false,
+    "states": "equal-weight packet constructions only (pure counting)"
+  },
+  "counting_rule_hypothesis": {
+    "formula": "R_eq(S) = (2|S| - c(S)) / (4|S|)",
+    "c_rule": "k=1 -> 2, k=3 -> 1, even k -> 2, odd k>=5 -> 0",
+    "decoded_from": "two_memory_readout_battery_pre_v1 (5 support classes)"
+  },
+  "core_runner": {
+    "path": "run_ab_invariant_theta_toy_v1.py",
+    "sha256": "90c7b27235a6716c8db08a61f71a0d9d6437694f016fd636ae53c1a58af69ed7"
+  },
+  "part1_held_out_verification": {
+    "rows": [
+      {
+        "label": "H_pair_1_3",
+        "support": "1 3",
+        "support_size": 2,
+        "c_excluded_half_bins": 3,
+        "predicted_R": "1/8",
+        "predicted_R_float": 0.125,
+        "measured_R": 0.12500000000000003,
+        "abs_error": 2.7755575615628914e-17,
+        "verdict": "PASS"
+      },
+      {
+        "label": "H_single_5",
+        "support": "5",
+        "support_size": 1,
+        "c_excluded_half_bins": 0,
+        "predicted_R": "1/2",
+        "predicted_R_float": 0.5,
+        "measured_R": 0.4999999999999998,
+        "abs_error": 2.220446049250313e-16,
+        "verdict": "PASS"
+      },
+      {
+        "label": "H_odds_5_to_63",
+        "support": "5 7 9 11 13 15 17 19...",
+        "support_size": 30,
+        "c_excluded_half_bins": 0,
+        "predicted_R": "1/2",
+        "predicted_R_float": 0.5,
+        "measured_R": 0.4999999999999996,
+        "abs_error": 3.885780586188048e-16,
+        "verdict": "PASS"
+      },
+      {
+        "label": "H_triple_1_5_7",
+        "support": "1 5 7",
+        "support_size": 3,
+        "c_excluded_half_bins": 2,
+        "predicted_R": "1/3",
+        "predicted_R_float": 0.3333333333333333,
+        "measured_R": 0.3333333333333333,
+        "abs_error": 0.0,
+        "verdict": "PASS"
+      },
+      {
+        "label": "H_pair_3_7",
+        "support": "3 7",
+        "support_size": 2,
+        "c_excluded_half_bins": 1,
+        "predicted_R": "3/8",
+        "predicted_R_float": 0.375,
+        "measured_R": 0.3749999999999995,
+        "abs_error": 4.996003610813204e-16,
+        "verdict": "PASS"
+      },
+      {
+        "label": "H_odds_1_to_15",
+        "support": "1 3 5 7 9 11 13 15",
+        "support_size": 8,
+        "c_excluded_half_bins": 3,
+        "predicted_R": "13/32",
+        "predicted_R_float": 0.40625,
+        "measured_R": 0.4062500000000005,
+        "abs_error": 4.996003610813204e-16,
+        "verdict": "PASS"
+      },
+      {
+        "label": "H_mixed_1_2_5",
+        "support": "1 2 5",
+        "support_size": 3,
+        "c_excluded_half_bins": 4,
+        "predicted_R": "1/6",
+        "predicted_R_float": 0.16666666666666666,
+        "measured_R": 0.1666666666666663,
+        "abs_error": 3.608224830031759e-16,
+        "verdict": "PASS"
+      }
+    ],
+    "tolerance": 1e-12,
+    "verdict": "PASS"
+  },
+  "part2_counting_to_lock": {
+    "predicted": {
+      "R": "1/2",
+      "real_rotation_period": 8
+    },
+    "rows": [
+      {
+        "label": "L_odds_5_to_63",
+        "support_size": 30,
+        "measured_R": 0.4999999999999996,
+        "abs_R_minus_half": 3.885780586188048e-16,
+        "first_exact_return_collision": 8,
+        "predicted_period": 8,
+        "period_matches_prediction": true,
+        "all_period_multiples_return": true,
+        "min_residual": 3.3016426551720415e-15,
+        "residual_at_8": 3.3016426551720415e-15,
+        "amplitude_search_used": false,
+        "theta_measured": 0.7853981633974478,
+        "wind_per_period_measured": 0.9999999999999994,
+        "wind_matches_prediction": true,
+        "x_half_minus_theta_over_pi": 0.2500000000000001,
+        "reconstructed_m": 1,
+        "reconstructed_n": 4,
+        "m_n_matches_prediction": true,
+        "rational_reconstruction_error": 1.1102230246251565e-16
+      },
+      {
+        "label": "L_single_5",
+        "support_size": 1,
+        "measured_R": 0.4999999999999998,
+        "abs_R_minus_half": 2.220446049250313e-16,
+        "first_exact_return_collision": 8,
+        "predicted_period": 8,
+        "period_matches_prediction": true,
+        "all_period_multiples_return": true,
+        "min_residual": 1.96927950052713e-15,
+        "residual_at_8": 1.96927950052713e-15,
+        "amplitude_search_used": false,
+        "theta_measured": 0.7853981633974482,
+        "wind_per_period_measured": 0.9999999999999999,
+        "wind_matches_prediction": true,
+        "x_half_minus_theta_over_pi": 0.25,
+        "reconstructed_m": 1,
+        "reconstructed_n": 4,
+        "m_n_matches_prediction": true,
+        "rational_reconstruction_error": 0.0
+      },
+      {
+        "label": "L_step4_from_5",
+        "support_size": 15,
+        "measured_R": 0.4999999999999998,
+        "abs_R_minus_half": 2.220446049250313e-16,
+        "first_exact_return_collision": 8,
+        "predicted_period": 8,
+        "period_matches_prediction": true,
+        "all_period_multiples_return": true,
+        "min_residual": 1.187079099620293e-15,
+        "residual_at_8": 1.187079099620293e-15,
+        "amplitude_search_used": false,
+        "theta_measured": 0.7853981633974483,
+        "wind_per_period_measured": 1.0,
+        "wind_matches_prediction": true,
+        "x_half_minus_theta_over_pi": 0.25,
+        "reconstructed_m": 1,
+        "reconstructed_n": 4,
+        "m_n_matches_prediction": true,
+        "rational_reconstruction_error": 0.0
+      }
+    ],
+    "verdict": "PASS"
+  },
+  "part3_ord_wind_readout": {
+    "predicted_m_n": [
+      1,
+      4
+    ],
+    "predicted_wind": 1,
+    "verdict": "PASS"
+  },
+  "figures": [
+    "counting_rule_lock_bridge_pre_v1.png",
+    "counting_rule_lock_bridge_pre_v1.svg"
+  ]
+}
