@@ -1,0 +1,437 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{無名二チャネル閉鎖波系における数え上げ読出しの構造}\label{ux7121ux540dux4e8cux30c1ux30e3ux30cdux30ebux9589ux9396ux6ce2ux7cfbux306bux304aux3051ux308bux6570ux3048ux4e0aux3052ux8aadux51faux3057ux306eux69cbux9020}
+
+\subsection{等重み点の厳密有理数性、メタ勘定則、規約監査、Niven
+交点の完全検証、および数え上げのみで構成される厳密ロック状態}\label{ux7b49ux91cdux307fux70b9ux306eux53b3ux5bc6ux6709ux7406ux6570ux6027ux30e1ux30bfux52d8ux5b9aux5247ux898fux7d04ux76e3ux67fbniven-ux4ea4ux70b9ux306eux5b8cux5168ux691cux8a3cux304aux3088ux3073ux6570ux3048ux4e0aux3052ux306eux307fux3067ux69cbux6210ux3055ux308cux308bux53b3ux5bc6ux30edux30c3ux30afux72b6ux614b}
+
+\textbf{著者:} 木原 範昭\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{日付:} 2026年8月3日\\
+\textbf{Version DOI:} \texttt{10.5281/zenodo.21763998}\\
+\textbf{Concept DOI:} \texttt{10.5281/zenodo.21763997}\\
+\textbf{位置づけ:} 「波の情報読出し」シリーズ・二チャネル交換散乱系
+追加論文 v1（第9論文系列・\textbf{三部作の第二部}。第一部＝二文法分解
+{[}4{]}、第三部＝ロック動力学 {[}5{]}）
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+\textbf{（分解定理）}
+無名二チャネル閉鎖波系の読出しは「数え上げ＋振幅変形」に厳密に分解される。倍音を等重みにした点（等重み点）で、読出しは倍音の存在集合の数え上げに退化して\textbf{小分母の厳密有理数}となり（例：奇数
+1..63 で \(61/128\)、奇数 1..31 で \(29/64\)、3 を除くと
+\(15/31\)、偶数対照で厳密
+\(0\)）、その値は各倍音の実測ビン表とマスクの勘定だけから予言できる（\textbf{メタ勘定則}：留め置き支持7種・規約5変種の全
+20/20 条件で誤差
+\(\le8\times10^{-16}\)、予言は測定前にコード内定数として固定）。一方、振幅分布は読出しを連続に汚染する（同一存在集合で
+spread
+\(0.407\)）。\textbf{構造情報を担うのは倍音の存在集合のみである。}
+
+\textbf{（規約監査）}
+この構造は読出し規約5変種（マスク定義の変更）で生存する。生存しないもの------勘定則の具体形・等重み点の具体値・奇数／偶数の役割割り当て------は簿記である。特にパリティ反転マスクの下ではロックを担う支持が\textbf{偶数倍音30本}へ移る：「奇数倍音＝フェルミオン的」は規約ラベルであり、構造（数え上げ→ロック）はラベルと独立である。
+
+\textbf{（Niven 交点の完全検証）} 数え上げが到達できる有理数 \(R\)
+と、有理角ロック \(\theta/\pi\in\mathbb{Q}\) の交点は、Niven
+の定理により \(R\in\{0,\,1/4,\,1/2,\,3/4,\,1\}\)
+の5点に厳密に限られる。到達可能な全交点で「数え上げ構成（等重み・\textbf{振幅探索ゼロ}）→厳密ロック」の直結を、全予言の測定前固定の下で検証し
+\textbf{6/6 的中}した：混合パリティ支持 \(\{2,5\}\) 等は \(R=1/4\)
+に厳密着地して周期12・\((m,n)=(1,3)\)、\(\{1,3\}\)-free 支持は
+\(R=1/2\)・周期8・\((1,4)\)、変種マスク下の奇数 5..63 は
+\(R=3/4\)・周期6・\((1,6)\)、\(R=0\) は不変（誤差はすべて
+\(\le3.9\times10^{-16}\)、回帰残差
+\(\sim10^{-15}\)）。\textbf{実現した位数 \(n=3,4,6\)
+は、2次元結晶学的制限の非自明な位数の完全なメニューと厳密に一致する}------Niven
+の定理と結晶学的制限は同じ有理余弦制約の両面である。
+
+\textbf{（整数の所在と限界）} 整数対 \((m,n)\)
+は発展の位数と巻き数から読み出せる（実測：3状態族すべてで厳密再構成）。一方、静的な状態分解は巻き数を運ばない：巡回レジスタ上の巻き数分光は、状態スペクトルが写像人工物と完全一致し、目標巻き数の占有が乱数水準であることを示した（反証実験）。ゆえに
+Niven 5点の\textbf{外}の整数対（物理の \(\,(23,124)\)
+を含む）の生成則は、静的構造ではなく動力学に求めるほかない------その判定は第三部
+{[}5{]} が行う。
+
+\textbf{キーワード:}
+数え上げ読出し、有理数退化、メタ勘定則、規約監査、Niven
+の定理、結晶学的制限、厳密回帰、再現可能計算
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{0. 結論}\label{ux7d50ux8ad6}
+
+\[
+\boxed{
+\begin{aligned}
+&\text{読出し＝数え上げ＋振幅変形。構造を担うのは存在集合のみ（等重み点で厳密有理数、20/20 で }\le8\times10^{-16}\text{）。}\\
+&\text{役割ラベル（奇数=フェルミオン等）は規約、構造はラベル独立（パリティ反転で偶数側がロック）。}\\
+&\text{数え上げ→ロック直結は Niven の5交点で全的中し、実現位数 }\{3,4,6\}\text{＝結晶学的メニュー。}\\
+&\text{整数対は動力学からのみ読める——静的分解は巻き数を運ばない（反証済）。}
+\end{aligned}
+}
+\]
+
+\subsection{本稿の位置づけ（三部構成）}\label{ux672cux7a3fux306eux4f4dux7f6eux3065ux3051ux4e09ux90e8ux69cbux6210}
+
+第一部 {[}4{]}
+は流れの二項恒等分解と二文法を、本稿（第二部）は読出しの構造層------何が数え上げで何が見え方か------を、第三部
+{[}5{]}
+は動力学（ロックの実在と選択の限界）を扱う。三部は同一の再現パッケージを共有する。
+
+\subsection{1. 研究課題}\label{ux7814ux7a76ux8ab2ux984c}
+
+読出しのどこまでが系の構造で、どこからが読み方の産物か。整数はどこから読めるのか。{[}4{]}
+は読出しの合成文法を確立したが、読出しの\textbf{値}そのものの身分------構造層（規約に依らない）と簿記層（規約の産物）の境界------は未分類だった。本稿はこの分類を実験的に完了し、数え上げが作れるロック状態の全域（Niven
+交点）を検証する。
+
+\subsection{2.
+系の定義と設計境界}\label{ux7cfbux306eux5b9aux7fa9ux3068ux8a2dux8a08ux5883ux754c}
+
+系・状態構成・標準読出し・回転は {[}4{]}
+第2節と同一。全実験で散乱本体・読出し式は無変更、目標値は状態構成のみに使用、予言は測定前にコード内定数として固定、各ランナー冒頭に既知結果の再現（アンカー）を置く。
+
+\subsection{3.
+実験I：二記憶バッテリー（分解の発見）}\label{ux5b9fux9a13iux4e8cux8a18ux61b6ux30d0ux30c3ux30c6ux30eaux30fcux5206ux89e3ux306eux767aux898b}
+
+\textbf{条件A（同一存在集合・異振幅分布・同ペアノルム）}：奇数 1..63
+の支持を固定し振幅分布を5種（等重み・線形減衰・\(1/k\)・指数減衰・乱数）に変えると、読出し
+\(R\) は \(0.069\)--\(0.477\) まで動く（\textbf{spread
+\(0.407\)}）。パワー比型読出しは振幅（可視層）に強く汚染される。
+
+\textbf{条件B（同ノルム・異存在集合・等重み）}：等重み点で読出しは厳密有理数に退化する。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+支持 & \(R\)（厳密値） \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+奇数 1..63（32本） & \(61/128\) \\
+奇数 1..31（16本） & \(29/64\) \\
+奇数 step4（16本） & \(15/32\) \\
+奇数から 3 を除く（31本） & \(15/31\) \\
+偶数対照 & \(0\)（厳密） \\
+\end{longtable}
+}
+
+分母は支持サイズを追跡し、偶数対照の厳密零はパリティの構造的読出しである。対照テスト：等重み単一倍音和はテンプレート構成と厳密一致（\(1.7\times10^{-16}\)）。発展下の不変性（100衝突）はドリフト
+\(\le3.3\times10^{-16}\)。
+
+\textbf{帰結：読出し＝数え上げ読出し＋振幅変形。等重み点が各支持クラスの構造代表である。}
+
+\subsection{4.
+実験II：メタ勘定則と留め置き予言検証}\label{ux5b9fux9a13iiux30e1ux30bfux52d8ux5b9aux5247ux3068ux7559ux3081ux7f6eux304dux4e88ux8a00ux691cux8a3c}
+
+条件Bの5点から解読した勘定則（正準マスクでの具体形）
+
+\[
+R_{\mathrm{eq}}(S)=\frac{2|S|-c(S)}{4|S|},\qquad
+c:\{k{=}1\to2,\ k{=}3\to1,\ \text{偶数}k\to2,\ \text{奇数}k{\ge}5\to0\}
+\]
+
+を、\textbf{測定前に固定した予言}として留め置き支持7種（\(\{1,3\}\)、\(\{5\}\)、奇数
+5..63、\(\{1,5,7\}\)、\(\{3,7\}\)、奇数 1..15、偶数混合
+\(\{1,2,5\}\)）で検証し、全て的中した（誤差
+\(\le5\times10^{-16}\)。偶数混合の一般化 \(c\) 則まで含む）。
+
+ただし具体形 \(c\)
+は正準マスクの簿記である（第5節）。規約に依らない本体は\textbf{メタ勘定則}------「等重み点の
+\(R\)
+は、各倍音単独の実測ビン表とマスクの勘定だけから予言できる」------であり、これは全規約で生存する。
+
+\subsection{5.
+実験III：規約監査}\label{ux5b9fux9a13iiiux898fux7d04ux76e3ux67fb}
+
+フェルミオンマスクを5変種（正準
+even\$\ge\(4／even\)\ge\(6／even\)\ge\(2／any\)\ge\(4／パリティ反転 odd\)\ge\$3）に振り、4状態クラスとの全
+20
+組合せで測定した（変種読出しは正準設定で元実装と厳密一致することを対照テストで確認、差
+\(0.0\)）。
+
+\textbf{物理級（全規約で生存）}：メタ勘定則（20/20、\(\le8\times10^{-16}\)）、等重み点の有理数性（\(61/128\)、\(59/128\)、\(95/128\)、\(61/124\)、\(3/4\)、\(1/4\)
+等）、振幅依存性（読出しが恒等零となる退化クラスを除く）、数え上げ→ロック橋頭堡。\textbf{とくにパリティ反転マスクでは偶数倍音30本がロックする}（周期8・\((1,4)\)）------役割割り当ての規約相対性。
+
+\textbf{簿記級（規約の産物）}：\(c\)
+則の具体形、等重み点の具体値、奇偶の役割割り当て、橋頭堡の存在条件（even\$\ge\$2
+では A が純ボゾンでなくなり数え上げロックが消える）。
+
+主張はすべてメタ形（物理級）で述べる。監査の全測定は図（\texttt{audit\_figure\_v1}）に集約した。
+
+\subsection{6. 実験IV：Niven
+交点の完全検証}\label{ux5b9fux9a13ivniven-ux4ea4ux70b9ux306eux5b8cux5168ux691cux8a3c}
+
+\subsubsection{6.1 交点定理}\label{ux4ea4ux70b9ux5b9aux7406}
+
+数え上げの等重み点は有理数 \(R\) を与える。他方、厳密ロックは
+\(\theta/\pi\in\mathbb{Q}\)（有理角）を要する。\(R=\cos^2\theta\)
+の両立は、Niven の定理（\(\theta/\pi\in\mathbb{Q}\) のとき
+\(\cos\theta\in\mathbb{Q}\) なら \(\cos\theta\in\{0,\pm\tfrac12,\pm1\}\)
+{[}8{]}）より \(\cos2\theta\) の有理性を介して
+
+\[
+R\in\{0,\ 1/4,\ 1/2,\ 3/4,\ 1\}
+\]
+
+の5点に限られる。対応する位数は
+\(n\in\{3,4,6\}\)（非自明点）------\textbf{2次元結晶学的制限の非自明位数の完全なメニュー}である（同じ有理余弦制約の両面）。
+
+\subsubsection{6.2 全予言検証（6/6
+的中）}\label{ux5168ux4e88ux8a00ux691cux8a3c66-ux7684ux4e2d}
+
+全予言を測定前にコード内定数として固定し、到達可能な全交点を検証した：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+ケース
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+支持
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+読出し
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(R\)（予言／誤差）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+周期（予言／実測）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\((m,n)\)（予言／実測）
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+アンカー & 奇数 5..63 & 正準 & \(1/2\)／\(3.9\times10^{-16}\) &
+8／\textbf{8} & \((1,4)\)／\textbf{\((1,4)\)} \\
+P1a--c & 混合パリティ \(\{2,5\}\) 等3種 & 正準 &
+\(1/4\)／\(\le3.3\times10^{-16}\) & 12／\textbf{12} &
+\((1,3)\)／\textbf{\((1,3)\)} \\
+P2 & 奇数 5..63 & even\$\ge\$2 変種 & \(3/4\)／\(3.3\times10^{-16}\) &
+6／\textbf{6} & \((1,6)\)／\textbf{\((1,6)\)} \\
+P3 & \(\{1\}\) & 正準 & \(0\)／\(0.0\) & 不変 ✓ & --- \\
+\end{longtable}
+}
+
+すべて等重み・\textbf{振幅探索ゼロ}の純粋な数え上げ構成である（\(R=1\)
+は A
+基本波が全マスクでボゾン的なため数え上げでは到達不能。振幅調整族での周期4回帰は既存の
+R
+掃引実験で確認済み------正直に記録する）。混合パリティ支持（P1系列）は本検証で初めて開いた状態クラスである。
+
+\subsection{\texorpdfstring{7. 実験V：整数対 \((m,n)\)
+の読出し器}{7. 実験V：整数対 (m,n) の読出し器}}\label{ux5b9fux9a13vux6574ux6570ux5bfe-mn-ux306eux8aadux51faux3057ux5668}
+
+厳密ロック状態に対し、位数（最初の厳密回帰衝突数
+\(P\)）と巻き数（一周期の累積回転角
+\(/2\pi\)）を測り、\(x=1/2-\bar\theta/\pi\) の有理数再構成で \((m,n)\)
+を得る。全ロック状態族で予言と厳密一致した：\((1,3)\)・\((1,4)\)・\((1,6)\)（巻き数誤差
+\(\le6\times10^{-16}\)）。整数対は発展から読み出せる。
+
+\subsection{8.
+対照・反証：静的分解は巻き数を運ばない}\label{ux5bfeux7167ux53cdux8a3cux9759ux7684ux5206ux89e3ux306fux5dfbux304dux6570ux3092ux904bux3070ux306aux3044}
+
+非共通倍音 31 × 4位相 = 124
+スロットの巡回レジスタ上で、状態の反対称成分の巻き数スペクトルを正準順序4種で測った（巻き数分光）。等重み状態のスペクトルは「写像のみ対照」と全順序で完全一致し、観測された巻き数構造（\(k=31,1,93\)）はすべてスロット写像の人工物、目標巻き数
+\(k=23\)
+の占有は全条件で乱数水準だった。\textbf{静的な初期状態分解は巻き数を運ばない}（反証実験として記録）。
+
+したがって、Niven 5点の外の整数対------物理の \((23,124)\) {[}2{]}
+を含む------の生成則は動力学に求めるほかない。動力学側の判定（ロックの実在と選択の限界）は第三部
+{[}5{]} が行う。
+
+\subsection{9. 主張}\label{ux4e3bux5f35}
+
+\textbf{主張1（分解定理）.}
+読出しは数え上げ（構造層：存在集合の関数、等重み点で厳密有理数、メタ勘定則で予言可能）と振幅変形（可視層：spread
+0.407）に厳密分解される。構造情報を担うのは倍音の存在集合のみである。
+
+\textbf{主張2（規約相対性）.}
+構造層は読出し規約5変種で生存し、役割ラベル（奇数＝フェルミオン等）は規約である。ラベルなしに構造だけが残る------{[}4{]}
+の無名性原理の読出し規約版。
+
+\textbf{主張3（Niven 交点）.} 数え上げ→厳密ロックの直結は Niven
+の5交点で成立し、かつそこに限られる。実現位数 \(\{3,4,6\}\)
+は結晶学的制限の完全メニューである。全予言は測定前固定の下で 6/6
+的中した。
+
+\textbf{主張4（整数の所在）.} 整数対 \((m,n)\)
+は発展（位数・巻き数）から読み出せ、静的分解からは読み出せない（反証済）。一般の
+\((m,n)\) の生成則は動力学型に限られる。
+
+\subsection{10. 未解決問題}\label{ux672aux89e3ux6c7aux554fux984c}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{勘定則の閉形一般論}：メタ勘定則（ビン表×マスク）の、任意の状態構成・任意の搬送波構造への一般化
+\item
+  \textbf{Niven 5点の外}：\((23,124)\)
+  型整数対の動力学的生成------第三部 {[}5{]}
+  の消去法により「観測時計の可換性」の問いへ変換済み
+\item
+  \textbf{\(R=1\) 交点}：数え上げ到達性は A
+  アンカーの構成に依存する。アンカー自由度を含む一般論
+\end{enumerate}
+
+\subsection{11. 再現性}\label{ux518dux73feux6027}
+
+{[}4{]} と同一の規律に従う。全ランナー・全測定CSV・図はコミット済み：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+実験
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+フォルダ
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+コミット
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+二記憶バッテリー & \texttt{two\_memory\_readout\_battery\_pre\_v1} &
+5444fbdb \\
+勘定則検証＋ロック直結＋\((m,n)\)読出し &
+\texttt{counting\_rule\_lock\_bridge\_pre\_v1} & 8dff131e \\
+規約監査 & \texttt{convention\_audit\_pre\_v1} & 5a8f4b0a \\
+監査図 & 同上 \texttt{run\_audit\_figure\_v1} & 47e2da02 \\
+Niven 交点ロック & \texttt{niven\_points\_lock\_pre\_v1} & 8f99d5c6 \\
+巻き数分光（反証） & \texttt{winding\_spectroscopy\_pre\_v1} &
+641048ad \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsection{自己引用}\label{ux81eaux5df1ux5f15ux7528}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  木原範昭「無名等振幅複合波モデル基本公理系 v6」Version DOI:
+  \texttt{10.5281/zenodo.21465984}, Concept DOI:
+  \texttt{10.5281/zenodo.21315735}, 2026.
+\item
+  木原範昭「反復交換散乱における有限位数共鳴の発見」Version DOI:
+  \texttt{10.5281/zenodo.21421367}, Concept DOI:
+  \texttt{10.5281/zenodo.21421366}, 2026.
+\item
+  木原範昭「AB二体閉鎖位相系における未来位相位置加速度写像と調和閉鎖による逆二乗則
+  v4」Version DOI: \texttt{10.5281/zenodo.21468270},
+  2026.（三段手順の先例）
+\item
+  木原範昭「無名二チャネル閉鎖波系における相互作用の二文法分解」（三部作第一部）Version
+  DOI: \texttt{10.5281/zenodo.21763996}, Concept DOI:
+  \texttt{10.5281/zenodo.21763995}, 2026.
+\item
+  木原範昭「無名二チャネル閉鎖波系におけるロック動力学」（三部作第三部）Version
+  DOI: \texttt{10.5281/zenodo.21764000}, Concept DOI:
+  \texttt{10.5281/zenodo.21763999}, 2026.
+\item
+  木原範昭「交換干渉散乱行列\ldots 局在性交換予備実験総括 v1」Version
+  DOI: \texttt{10.5281/zenodo.21333768}, 2026.（エンジンのコード出自）
+\item
+  木原範昭「交換散乱係数R集中と微細構造定数対応候補の数値実験
+  v1」Version DOI: \texttt{10.5281/zenodo.21396761}, 2026.（System A
+  コード出自）
+\end{enumerate}
+
+\subsection{外部参考文献}\label{ux5916ux90e8ux53c2ux8003ux6587ux732e}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  I. Niven, \emph{Irrational Numbers}, Carus Mathematical Monographs
+  No.~11, MAA
+  (1956).（有理角の余弦の有理性定理。交点集合と結晶学的制限の共通の根）
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{付記（訂正の記録）}
+本研究の過程で、数え上げ有理数族と有理角ロック族の交点を「\(R=1/2\)
+のみ」とする誤りが一度記録された（実験フォルダ README
+に発生・訂正の両方を追記保存）。Niven
+の定理による5点への訂正が本稿第6節であり、訂正から生じた残余2点の検証（P1・P2）は全予言的中で完了した。誤りが新しい状態クラス（混合パリティ支持）の発見に繋がった経緯ごと記録する。
+
+\end{document}

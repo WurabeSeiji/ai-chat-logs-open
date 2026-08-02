@@ -1,0 +1,870 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\ifLuaTeX
+  \usepackage{luacolor}
+  \usepackage[soul]{lua-ul}
+\else
+  \usepackage{soul}
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{無名二チャネル閉鎖波系における相互作用の二文法分解}\label{ux7121ux540dux4e8cux30c1ux30e3ux30cdux30ebux9589ux9396ux6ce2ux7cfbux306bux304aux3051ux308bux76f8ux4e92ux4f5cux7528ux306eux4e8cux6587ux6cd5ux5206ux89e3}
+
+\subsection{保存読出しの分類定理、流れの二項恒等式の項別機械精度検証、および重力型・電荷型合成則の波形からの必然的分化}\label{ux4fddux5b58ux8aadux51faux3057ux306eux5206ux985eux5b9aux7406ux6d41ux308cux306eux4e8cux9805ux6052ux7b49ux5f0fux306eux9805ux5225ux6a5fux68b0ux7cbeux5ea6ux691cux8a3cux304aux3088ux3073ux91cdux529bux578bux96fbux8377ux578bux5408ux6210ux5247ux306eux6ce2ux5f62ux304bux3089ux306eux5fc5ux7136ux7684ux5206ux5316}
+
+\textbf{著者:} 木原 範昭\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{日付:} 2026年8月2日\\
+\textbf{Version DOI:} \texttt{10.5281/zenodo.21763996}\\
+\textbf{Concept DOI:} \texttt{10.5281/zenodo.21763995}\\
+\textbf{位置づけ:} 「波の情報読出し」シリーズ・二チャネル交換散乱系
+追加論文
+v1（第9論文系列・\textbf{三部作の第一部}。第二部＝数え上げ読出しの構造、第三部＝ロック動力学。分割は下記「本稿の位置づけと三部構成」参照）
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+\textbf{（機構の発見）} 無名閉鎖波系の二体間の流れは、恒等的に
+
+\[
+dN_B
+\;=\;
+\underbrace{\sin^2\theta\,(N_A - N_B)}_{\text{大きさの項}}
+\;+\;
+\underbrace{\sin 2\theta\,\mathrm{Re}\langle a|b\rangle}_{\text{重なりの項}}
+\]
+
+の\textbf{二項に分解され、第三の項は存在しない}。この二項が、波の形の二種類の記憶------ノルム（大きさ）と、共有モード上の相対位相（形）------をそれぞれ\textbf{排他的に}読む。したがって、ラベルも背景も外部場も持たない波系において、相互作用は必然的に、かつ\textbf{二種類だけ}に分化する：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+大きさの項
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+重なりの項
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+合成則 & \textbf{加法}（平均、誤差 \(\le7.2\times10^{-16}\)） &
+\textbf{積} \(\sqrt{f_Af_B}\)（誤差 \(\le4.0\times10^{-15}\)） \\
+符号 & なし（ノルム差のみが向きを決める） &
+あり（相対位相で反転、実測） \\
+遮蔽 & 不能（ノルムがあれば常時オン） &
+可能（成分ゼロ／チャネル非共有の二機構） \\
+量子化 & なし（連続） & あり（有理ロック、実測） \\
+結合の可動域 & 比
+\((R/R_0)^2\)：非有界・連続（\textbf{桁違いの弱さが可能}） &
+角度：ユニタリティ上限 \(\alpha\le1/4\pi\) ×
+ロック離散化（\textbf{\(O(10^{-1})\) 帯に拘束}） \\
+\end{longtable}
+}
+
+この性質表は、\textbf{重力（加法的質量・符号なし・遮蔽不能・量子化なし）と電磁気（電荷の積・±・遮蔽可能・量子化）の対照表と一対一対応する}。この対応は性質の類似による任意の割当てではない：重なりの項を重力型と読めば相対位相の反転とチャネル非共有によって重力的作用が反転・消失して普遍性に反し、大きさの項を電荷型と読めば振幅積・二符号・中性化のいずれも構成できない------\textbf{割当ては逆割当てを排除した一意な対応である}（6.5節、系）。すなわち本稿は、二大長距離相互作用の性質の分岐が、波の形の二記憶の排他的読出しとして、単一の恒等式の中から必然的に生じる機構を発見し、全行を機械精度で検証した。無名性は一度も破れない------力の区別に、粒子の種類も結合定数の外部入力も要らない。
+
+\textbf{（クーロン側の完備）}
+重なりの項は、クーロン構造の五要素------逆二乗（調和閉鎖から導出済
+{[}3{]}）・結合の積・符号・量子化・値（厳密有限位数根
+\(\sin^2(23\pi/124)\)、無次元素電荷 \(\sqrt{4\pi\alpha}\) と 0.16 ppm
+{[}2{]}）------をすべて備える。\textbf{我々はこの量をモデルの素電荷と呼ぶ。}
+
+\textbf{（階層）}
+桁違いに弱い長距離相互作用は大きさの項の文法にしか存在できない。さらに大きさの項の結合はスケール比
+\((R/R_0)^2\) 型であり、局在した閉包を含む任意の宇宙で
+\(R\ll R_0\)------\textbf{二大長距離力の巨大な階層は、説明を要する偶然ではなく、粒子が背景より遥かに小さいという局在の定義から従う構造的必然である}。未導出として残るのは階層の存在ではなく、その指数（スケール辞書）のみである。
+
+\textbf{（残る一点）}
+物理の素電荷との同定へ向けて\textbf{モデル内部に}残る作業は、位数 124
+を選択する機構の導出のみである。静的分解は選択せず（反証済）、固定点チャネルは消去され、ロックの重みは分母とともに崩壊し（実測比
+\(>461\)）、観測選択は選択を観測時計の約数構造へ継承する------選択問題は「観測時計はなぜ248と可換か」という反証可能な単一の問いに変換されている（姉妹稿C）。
+
+\textbf{（収束）} 積 × cos(相対位相) × 逆二乗の力法則は
+Bjerknes（1875、脈動球）が流体で、モード重なり＝結合の存在条件は光学の可視度則が、ロックによる量子化台地は超伝導の
+Shapiro 段差が、力比とスケール比の対応は Dirac
+の大数（1937）が、それぞれ独立に実現・観察している。互いに無関係な系が同一の文法に収束していることは、この文法が媒質の詳細ではなく閉鎖波系の一般構造であることの証拠である。本稿固有の寄与は、結合を外部から与えない内生結合系において、五要素と二文法の全行が単一の流れ方程式の項として同時に導出・検証され、読出し規約5変種の監査に生き残ることを示した点にある。
+
+\textbf{キーワード:}
+二チャネル交換散乱、保存読出し、合成則、干渉交差項、Bjerknes 力、Arnold
+tongue、電荷量子化、階層問題、再現可能計算
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{0. 結論}\label{ux7d50ux8ad6}
+
+\[
+\boxed{
+\begin{aligned}
+&\text{無名閉鎖波系の二体流は、恒等的に「大きさの項」と「重なりの項」の二項に分解され、第三の項はない。}\\
+&\text{大きさの項：加法合成（誤差 }7.2\times10^{-16}\text{）・符号なし・遮蔽不能・読出しは厳密保存。}\\
+&\text{重なりの項：積合成 }\sqrt{f_Af_B}\text{（誤差 }4.0\times10^{-15}\text{）・符号=相対位相・二機構で中性化・有理ロックで量子化。}\\
+&\text{この対照は重力/電磁気の性質表と一対一対応し、桁違いに弱くなれるのは大きさの項のみである。}
+\end{aligned}
+}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{本稿の位置づけと三部構成}\label{ux672cux7a3fux306eux4f4dux7f6eux3065ux3051ux3068ux4e09ux90e8ux69cbux6210}
+
+本研究は同一の実験環境から得られた成果を、主張の独立性に従い三部に分割して報告する。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+主題
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+主結果
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+状態
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{第一部（本稿）} & 相互作用の二文法分解 &
+流れの二項恒等式・保存読出し分類定理・合成則（加法/積）・符号・中性化・階層の方向
+& 本稿 \\
+\textbf{第二部（姉妹稿B）} & 数え上げ読出しの構造 &
+等重み点の厳密有理数性・メタ勘定則（ビン表×マスク）・規約監査の完全報告・Niven
+交点の完全検証（位数 3/4/6＝結晶学的メニュー）・整数対 \((m,n)\)
+の読出し器 & 公開（DOI: 10.5281/zenodo.21763998） \\
+\textbf{第三部（姉妹稿C）} & ロック動力学と選択の限界 & 位数6 Arnold
+tongue の完全報告・タング幅実測（比
+\(>461\)）・固定点地図（選択チャネル消去）・観測選択（時計継承と有限回限界）・超臨界診断
+& 公開（DOI: 10.5281/zenodo.21764000） \\
+\end{longtable}
+}
+
+相互依存は次のとおりである。本稿の主張1〜3は自立しており、姉妹稿B・Cの結果は量子化の行の実例（第7節の要約）および規約頑健性の担保（第8節の要約）としてのみ引く。姉妹稿Bは本稿の主張が読出し規約に依存しないことを完全な形で示す。姉妹稿Cは本稿の主張4（選択問題）の探索プログラムを担う。三部はいずれも同一リポジトリの再現パッケージ（第12節）を共有する。
+
+\subsection{1. 研究課題}\label{ux7814ux7a76ux8ab2ux984c}
+
+ラベルを持たない波だけの系で、相互作用はどのように種類へ分化するのか。粒子の種別・結合定数・背景場を外部から与えずに、重力型（普遍・加法的・符号なし）と電荷型（積・両符号・量子化）という異なる文法の力が、同一の基盤から同時に生じうるか。生じるなら、その区別は波形のどの情報が担い、区別の網羅性（第三の型の不在）は言えるか。
+
+先行研究では、二チャネル交換散乱系の作用素構造と有限位数共鳴
+{[}2{]}、調和閉鎖からの逆二乗則 {[}3{]}、干渉による保存量読出し {[}4{]}
+が個別に確立されている。本稿はこれらを単一の流れ方程式の上で統合し、分化の機構そのものを主結果とする。
+
+\subsection{2.
+系の定義と設計境界}\label{ux7cfbux306eux5b9aux7fa9ux3068ux8a2dux8a08ux5883ux754c}
+
+系は先行実験環境（第9論文系列・対照実験\_波束収縮\_実行環境）の二チャネル複素場
+\(a(\chi,\eta), b(\chi,\eta)\) である。状態は既存の
+\texttt{explicit\_packet\_case} / \texttt{make\_case\_state}
+による倍音パケット構成のみを用い、標準構成では搬送波（\(q_A=+1, q_B=-1\)）が付く。読出し
+\(\theta\) は結合 \(\chi\) スペクトルの偶数・\(|k|\ge4\)
+セクターのパワー比から
+
+\[
+\theta=\operatorname{atan2}\!\left(\sqrt{P_f},\,\sqrt{P_b}\right),
+\qquad
+P_f=\sum_{\text{mask}}\left(|A_k|^2+|B_k|^2\right)
+\]
+
+と定め、一衝突は実直交回転
+
+\[
+a'=a\cos\theta-b\sin\theta,
+\qquad
+b'=a\sin\theta+b\cos\theta
+\]
+
+である（回転の符号規約は較正実験で \(\sigma=+1\) と確定）。
+
+\textbf{設計境界:} 散乱本体と \(\theta\)
+読出しの式は全実験で無変更である。目標値（分率 \(f\)
+等）は状態構成にのみ用い、前進処理へは渡さない。第6節の変種読出し・プローブ回転は、その旨を明示した作業仮説・計器設定として区別する。
+
+\textbf{固有透過分率:} 状態 \(s\) の分率 \(f(s)\) を、\(s\)
+単独のマスク内パワー比と定義する。全ボゾン的単一倍音（\(f=0\)）と全フェルミオン的単一倍音（\(f=1\)）の直交二倍音混合
+
+\[
+s(f)=\sqrt{1-f}\,s_{\mathrm{bos}}+\sqrt{f}\,s_{\mathrm{fer}}
+\]
+
+により、\(f\) は連続かつ厳密に調整できる（分率誤差
+\(\le 10^{-31}\)、交差重なり \(\le 1.3\times10^{-16}\)）。
+
+\subsection{3.
+流れの二項恒等式}\label{ux6d41ux308cux306eux4e8cux9805ux6052ux7b49ux5f0f}
+
+実直交回転の直接計算から、一衝突あたりの B チャネルノルム変化は
+
+\[
+\boxed{
+dN_B
+=\underbrace{\sin^2\theta\,(N_A-N_B)}_{\text{大きさの項}}
++\underbrace{\sin 2\theta\,\mathrm{Re}\langle a|b\rangle}_{\text{重なりの項}}
+}
+\]
+
+である。これは回転のノルム代数の恒等式であり、\textbf{このクラスの二チャネル・ユニタリ流において第三の項は存在しない}。大きさの項はノルム（対角量）だけを、重なりの項は内積
+\(\langle a|b\rangle\)（共有モード上の振幅積と相対位相）だけを読む。以下の全実験は、この二項の合成則・符号・保存性・量子化性を項別に測るものである。
+
+なお \(N_A=N_B\)
+における大きさの項の消失は結合の消失を意味せず、対称な二チャネル間で正味の移乗流が釣り合うことを意味する。結合係数
+\(\sin^2\theta\) と、観測される正味流 \(\sin^2\theta\,(N_A-N_B)\)
+は区別される------同温度の二物体間で正味の熱流がゼロでも熱的結合が消えないのと同じ区別である。
+
+混合状態
+\(a=s_A(f_A)\)、\(b=\nu\,[\sqrt{1-f_B}\,B_1+e^{i\varphi}\sqrt{f_B}\,B_7]\)（\(\nu\):
+ノルム倍率）に対する厳密予言は
+
+\[
+dN_B
+=\sin^2\theta\,(1-\nu^2)
++\sin2\theta\,\nu\!\left[\sqrt{(1-f_A)(1-f_B)}\,c_0
++\sqrt{f_Af_B}\,c_6\cos\varphi\right]
+\]
+
+であり、\(c_0=\langle A_1|B_1\rangle\)、\(c_6=\langle A_5|B_7\rangle\)
+は状態構成だけから測定される結合である。
+
+\subsection{4.
+保存読出しの分類定理}\label{ux4fddux5b58ux8aadux51faux3057ux306eux5206ux985eux5b9aux7406}
+
+\textbf{定理（保存の十分条件）.} 実直交回転は各周波数ビンで
+\(|A_k|^2+|B_k|^2\)
+を厳密に保存する（平行四辺形恒等式）。ゆえに、ビン別回転不変量のみの関数である読出しは、発展の下で厳密に保存される。
+
+\textbf{数値分類.} \(\theta\)
+読出しの候補7種を、各読出し自身が駆動する動力学の下での自己ドリフトで分類した（300衝突×3振幅）。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3000}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+読出し
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+分類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+最大自己ドリフト
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+R1 対角和 \(\sum(\lvert A_k\rvert^2+\lvert B_k\rvert^2)\) &
+\textbf{保存（唯一）} & \(2.2\times10^{-16}\) \\
+R2 \(\lvert A+B\rvert^2\)（X パワー） & 動力学 & \(1.06\) \\
+R3 \(\lvert A-B\rvert^2\) & 動力学 & \(1.06\) \\
+R4 交差スペクトル \(\lvert\sum A_k B_k^*\rvert\) & 動力学（固定点収束）
+& \(0.43\) \\
+R5 \(\lvert A\rvert^2\) のみ / R6 \(\lvert B\rvert^2\) のみ & 動力学 &
+\(1.35\) \\
+R7 交差実部 & 動力学 & \(0.38\) \\
+\end{longtable}
+}
+
+保存されたのは対角和のみである。この一つの構造が、後述の三つの
+no-go------\(\theta\)
+の凍結・加法合成・積構造の対角セクター不在------を同時に生む。なお R4
+は当初、末尾標準偏差 \(10^{-16}\)
+から保存と誤認されたが、分類実験により固定点アトラクタへの収束と判明した（訂正の経緯は再現性節に記録）。
+
+\subsection{5.
+実験I：大きさの項の合成則（加法・重力文法）}\label{ux5b9fux9a13iux5927ux304dux3055ux306eux9805ux306eux5408ux6210ux5247ux52a0ux6cd5ux91cdux529bux6587ux6cd5}
+
+固有分率 \((f_A,f_B)\) の \(6\times6\) グリッドで実効交換強度
+\(R_{\mathrm{joint}}=\sin^2\theta\)
+を測定し、三つの合成則仮説と比較した。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrl@{}}
+\toprule\noalign{}
+仮説 & 最大誤差 & 判定 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+平均 \((f_A+f_B)/2\) & \(7.2\times10^{-16}\) & \textbf{厳密一致} \\
+積 \(f_Af_B\) & \(0.5\) & 棄却 \\
+\(\sqrt{f_Af_B}\) & \(0.5\) & 棄却 \\
+\end{longtable}
+}
+
+対角セクターの結合は厳密に加法（平均）で合成する。質量の加法性に対応する文法であり、\(q_Aq_B\)
+型の頂点積はこのセクターに存在しない（ゼロ次
+no-go）。移乗観測量（ノルム・局在のスイング）にも積構造は検出されなかった（相関
+\(|r|\le0.24\)）。さらに平均則は読出し規約に依存しない：変種マスク（even\$\ge\(6、any\)\ge\$4）の下でも、マスク別に測った分率に対して恒等的に成立する（最大誤差
+\(4.4\times10^{-16}\)、定理としてはビン別パワー加法性の帰結）。
+
+\subsection{6.
+実験II：重なりの項の電荷文法（積・符号・中性化）}\label{ux5b9fux9a13iiux91cdux306aux308aux306eux9805ux306eux96fbux8377ux6587ux6cd5ux7a4dux7b26ux53f7ux4e2dux6027ux5316}
+
+\subsubsection{6.1
+ヌル定理（搬送波分離＝コヒーレント流路の閉鎖）}\label{ux30ccux30ebux5b9aux7406ux642cux9001ux6ce2ux5206ux96e2ux30b3ux30d2ux30fcux30ecux30f3ux30c8ux6d41ux8defux306eux9589ux9396}
+
+標準構成（搬送波あり）では、A/B 単一倍音の全対 \(7\times7\) で
+\(|\langle A_j|B_k\rangle|\le2.7\times10^{-17}\)------二チャネルは厳密直交部分空間に分離し、重なりの項は恒等的にゼロである。これは測定の失敗ではなく定理であり、\textbf{電荷型相互作用の存在条件はモード（チャネル）共有}であること、および中性化の第二機構（チャネル非共有）を与える。
+
+\subsubsection{6.2
+無効実験の記録}\label{ux7121ux52b9ux5b9fux9a13ux306eux8a18ux9332}
+
+搬送波なし＋パリティ反転マスクの構成（v2）は、搬送波なしでは倍音が想定ビンに乗らず分率調整が崩壊し、無効となった。対角
+\(\theta\)
+読出し（搬送波前提）とコヒーレント流路（共有前提）が本トイでは排他的構成に載ること、物理モデルは部分共有を要することが、この失敗から確定した（記録として保存）。
+
+\subsubsection{6.3
+電荷文法の項別検証}\label{ux96fbux8377ux6587ux6cd5ux306eux9805ux5225ux691cux8a3c}
+
+搬送波なしのアンカー（共有チャネル実測：\(c_0=c_6=0.500000\)、交差アンカー漏れ
+\(\le5\times10^{-16}\)）とプローブ回転角
+\(\theta_p\in\{0.05,0.1,0.2,0.3\}\)（計器設定として宣言）で、\(6\times6\)
+グリッド × 位相 \(\varphi\) 8点 ×
+等ノルム/異ノルム（\(N_B=1.44\)）を測定した。第3節の厳密予言に対し：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+検証項目
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+結果
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+変調振幅
+\(M=\lvert\sin2\theta_p\rvert\sqrt{f_Af_B}\,\nu\,\lvert c_6\rvert\)（頂点積則）
+& 最大誤差
+\(4.0\times10^{-15}\)（等ノルム）、\(5.7\times10^{-15}\)（異ノルム） \\
+オフセット（大きさの項＋ボゾン交差項） & 最大誤差
+\(7.1\times10^{-15}\)（等）、\(6.5\times10^{-15}\)（異） \\
+中性性（\(f_Af_B=0\) で \(M=0\)） & \(M\le4.2\times10^{-15}\) \\
+符号（\(\varphi\) 半回転で流れの向きが反転） &
+変調がオフセットに勝る全セルで反転（等63/異76セル） \\
+\end{longtable}
+}
+
+流れ方程式は、拡散項（大きさ駆動）・ボゾン交差項・電荷項（振幅積×相対位相）の三項すべてが機械精度で予言どおりであった。\textbf{符号は共有チャネル上の相対位相であり、結合の大きさは振幅の積である。}
+
+副産物として、共有チャネルは梯子構造を持つ：\(A_k\) は \(B_{k\pm2}\)
+とのみ結合し、結合値はすべて厳密に \(0.5\) である（選択則
+\(\Delta k=\pm2\)）。
+
+\subsubsection{6.4
+主張硬化実験（多重チャネル・符号の持続・部分共有・距離法則）}\label{ux4e3bux5f35ux786cux5316ux5b9fux9a13ux591aux91cdux30c1ux30e3ux30cdux30ebux7b26ux53f7ux306eux6301ux7d9aux90e8ux5206ux5171ux6709ux8dddux96e2ux6cd5ux5247}
+
+初稿の主張の未検証側面を塞ぐ4実験を追加実施した（全ランナー・データはコミット済み）。
+
+\textbf{（i）電荷のチャネル加算性.} 二本の共有チャネル（\(A_5\)--\(B_7\)
+と
+\(A_7\)--\(B_9\)）を同時に持つ混合状態で、実効結合は\textbf{チャネル別振幅積のコヒーレント和}
+
+\[
+\langle a|b\rangle=\sum_{\text{ch}}u\,v\,c_{\text{ch}}\,e^{i\varphi_{\text{ch}}}
+\]
+
+に厳密一致した（\(6\times6\) 二位相グリッド、最大誤差
+\(5.7\times10^{-15}\)）。電荷は複数チャネルにわたり振幅として加算される。
+
+\textbf{（ii）符号の多衝突挙動.} 固定プローブ回転の反復下で、移乗は Rabi
+型に振動し、符号成分（位相反転で反転する成分）は全軌道にわたり厳密に鏡映である（反対称性誤差
+\(2.2\times10^{-16}\)）。したがって符号は各衝突の流れの向きとして厳密だが、\textbf{正味の定常流を語るには振動の平均化の議論を要する}------これは
+Bjerknes 力が音響周期の時間平均として定義される事情と同型である。
+
+\textbf{（iii）部分共有状態＝二文法の同一状態対上での同時成立.}
+6.2節で記録した排他性（対角読出しは搬送波を要し、コヒーレント流路は共有を要する）は、搬送波あり成分と搬送波なし共有成分の混合
+
+\[
+a=\sqrt{1-w}\,A_{\mathrm{on}}+\sqrt{w}\,A_{\mathrm{off}},\qquad
+b=\sqrt{1-w}\,B_{\mathrm{on}}+\sqrt{w}\,e^{i\varphi}B_{\mathrm{off}}
+\]
+
+により解消される。この状態対の上で、対角読出し \(R\)（ビン加法予言、誤差
+\(\le3.3\times10^{-16}\)）とコヒーレント変調
+\(M=\sin2\theta\cdot w\,|c|\)（誤差
+\(\le6.1\times10^{-16}\)）が\textbf{同時に}成立した。二文法の共存は構成の切替えではなく、単一状態対の性質である。
+
+\textbf{（iv）コヒーレント結合の距離法則.} B 波束を \(\chi\)
+方向に厳密平行移動して結合 \(\langle a|b(d)\rangle\)
+を測った。流れの恒等式は全分離で厳密（\(\le1.4\times10^{-14}\)）だが、距離法則は\textbf{波束のスペクトル包絡が完全に決める}：等間隔コム状態では結合は減衰せず準周期的に復活し（\(d\ge32\)
+でも \(0.97\)）、ガウス包絡波束では相関長で約 \(400\) 分の \(1\)
+に減衰する。いずれも \(1/d^2\)
+則は現れない。\textbf{当初の「短距離型」という予言は反証された}（訂正記録
+(v)）。帰結として、クーロンの長距離則 \(1/r^2\)
+は直接重なりからは生じえず、媒介機構（調和閉鎖
+{[}3{]}）が担う必要がある------距離辞書（未解決2）が翻訳すべき対象がこれで実測的に特定された。
+
+\subsubsection{6.5
+反転割当ての排除------二文法対応の一意性}\label{ux53cdux8ee2ux5272ux5f53ux3066ux306eux6392ux9664ux4e8cux6587ux6cd5ux5bfeux5fdcux306eux4e00ux610fux6027}
+
+第3〜6節の実測が出そろったので、性質表の「一対一対応」を排除論法の系として確定できる。本節に新しい実験はない------以下は既に測定・コミット済みの行だけからの論理的帰結である。
+
+\textbf{系（反転割当ての排除）.}
+本系において、大きさの項を重力型文法に、重なりの項を電荷型文法に対応させる割当ては、性質の類似による任意の命名ではなく、逆割当てを排除した一意な対応である。
+
+\textbf{証明.} 大きさの項 \(\sin^2\theta\,(N_A-N_B)\)
+はノルムのみの関数であり、独立なチャネル再位相に恒等的に不変である（第3節、代数的）。その合成則は厳密に加法（平均、実験I、誤差
+\(\le7.2\times10^{-16}\)）であり、積構造は対角セクターに存在しない（ゼロ次
+no-go）。したがって大きさの項は、相対位相による二符号も、位相反転による流れの反転も、振幅積も、チャネル非共有による中性化も持たず、\textbf{電荷型文法にはなりえない}。
+
+一方、重なりの項 \(\sin2\theta\,\mathrm{Re}\langle a|b\rangle\)
+は共有モード上の振幅積を読み（6.3節、頂点積則
+\(\le4.0\times10^{-15}\)）、相対位相の半回転で符号を反転し（6.3節実測、多衝突でも厳密鏡映、6.4節（ii）、\(2.2\times10^{-16}\)）、成分ゼロまたはチャネル非共有で消失する（中性性
+\(\le4.2\times10^{-15}\)、ヌル定理
+6.1節）。これを重力型文法と読むと、内部位相の反転で重力荷の符号が反転し、直交化・デコヒーレンスによって重力的作用が消失することになり、位相盲目で普遍的な大きさ読出しという重力型文法の要件（普遍性・符号なし・遮蔽不能）に反する。\textbf{ゆえに重なりの項は重力型文法にはなりえない}。
+
+第4節の分類定理によりこのクラスに第三の項は存在しないから、
+
+\[
+\boxed{\text{大きさの項}=\text{重力型文法},\qquad \text{重なりの項}=\text{電荷型文法}}
+\]
+
+以外の割当ては存在しない。\(\blacksquare\)
+
+この系が確定するのは\textbf{前幾何学的な相互作用文法の割当て}である。創発した三方向上の距離・方向・計量への写像、および物理的な重力場・クーロン場との同一性は、スケール辞書（未解決2）と符号の翻訳（未解決3）の課題として別に残る------この射程の限定は主張を弱めるためではなく、一意割当て命題の定義域を厳密に固定するためのものである。
+
+\subsection{7.
+実験III：量子化機構（有理ロック）------姉妹稿Cの要約}\label{ux5b9fux9a13iiiux91cfux5b50ux5316ux6a5fux69cbux6709ux7406ux30edux30c3ux30afux59c9ux59b9ux7a3fcux306eux8981ux7d04}
+
+本節は、姉妹稿C（ロック動力学）で完全報告する実験の、本稿の主張（性質表の量子化行）に必要な要約である。
+
+\subsubsection{7.1 ゼロ次 no-go
+と作業仮説}\label{ux30bcux30edux6b21-no-go-ux3068ux4f5cux696dux4eeeux8aac}
+
+第4節の定理により、位相盲目読出しの下で \(\theta\)
+は運動の定数であり（数値確認：400衝突×4振幅で最大ドリフト
+\(2.2\times10^{-16}\)）、\(\theta\)
+の動力学もロックも存在しない。位相感受読出し（対称チャネル \(X=A+B\)
+のパワー比）を保存的作業仮説として導入すると \(\theta\) は発展する。
+
+\subsubsection{7.2 Arnold tongue
+の実測}\label{arnold-tongue-ux306eux5b9fux6e2c}
+
+初期 B
+振幅の掃引で、後期回転数の末尾平均が有理数へ厳密に張り付く有限区間を発見した：振幅
+\(2.52\)--\(3.3\) で
+
+\[
+\overline{\theta/\pi}=1/3
+\quad(\text{800衝突・末尾300平均、}|{\overline{\theta/\pi}}-1/3|\le5.6\times10^{-17})
+\]
+
+\(\theta\) 自身は振動し（末尾標準偏差
+\(\sim7\times10^{-2}\)）、平均回転数だけが有理数にロックする周期軌道------Arnold
+tongue の標準的挙動である。根の規約 \(\theta=\pi/2-\pi m/n\) で
+\((m,n)=(1,6)\)、位数6のロックに対応する。別途、数え上げ構成のみ（振幅探索ゼロ）で位数4のロック（\(R=1/2\)
+厳密、周期8回帰、\((m,n)=(1,4)\)
+の整数再構成）も得られている。量子化台地の機構は、結合を外部から与えない内生結合系に実在する。
+
+なお、数え上げ構成（等重み点＝有理数
+\(R\)）が有理角ロック（\(\theta/\pi\) 有理）に直結しうる点は、Niven
+の定理（\(\theta/\pi\) が有理のとき \(\cos\theta\) が有理となるのは
+\(\cos\theta\in\{0,\pm\tfrac12,\pm1\}\) に限る {[}17{]}）により
+
+\[
+R \in \{0,\ 1/4,\ 1/2,\ 3/4,\ 1\}
+\]
+
+の5点に厳密に限られる。本稿はこのうち
+\(R=1/2\)（周期8）を実証した。残る非自明点 \(R=1/4\)（予言周期12）と
+\(R=3/4\)（予言周期6）の検証は姉妹稿Bが担う（規約監査の even\$\ge\$2
+変種下では、数え上げ状態が \(R=3/4\)
+に厳密着地することが既に測定されている）。
+
+\subsubsection{7.3
+探索の限界の記録}\label{ux63a2ux7d22ux306eux9650ux754cux306eux8a18ux9332}
+
+タング下端直下では回転数が隣接振幅点間 \(\sim10^{-2}\)
+で非単調に変動し（超臨界領域の症状）、高位数タングの素朴掃引は不適である。目標
+\(\rho=39/124\) への最接近は \(3.3\times10^{-4}\)（1500衝突、走査幅
+\(0.002\)）でプラトー非検出------タング幅の上界として記録する。また、静的な状態分解から巻き数
+\(m=23\)
+を得る仮説は反証済みである（巻き数分光実験：状態スペクトルは写像人工物と完全一致、\(k=23\)
+占有は乱数水準）。
+
+\subsection{8.
+規約監査------姉妹稿Bの要約}\label{ux898fux7d04ux76e3ux67fbux59c9ux59b9ux7a3fbux306eux8981ux7d04}
+
+本節は、姉妹稿B（数え上げ読出しの構造）で完全報告する監査の、本稿の主張の規約頑健性に必要な要約である。フェルミオンマスクの定義を5変種（even\$\ge\(4 / even\)\ge\(6 / even\)\ge\(2 / any\)\ge\(4 / パリティ反転 odd\)\ge\$3）に振り、主張の規約依存性を監査した。
+
+\textbf{物理級（全規約で生存）:}
+等重み点の読出しが実測ビン表×マスクの数え上げで予言できること（20/20、\(\le8\times10^{-16}\)）、等重み点の小分母有理数性、振幅依存性、数え上げ→ロック橋頭堡（\(R=1/2\)・周期8・\((1,4)\)）。特に、パリティ反転マスクではロック支持が偶数倍音30本へ移る------\textbf{「奇数倍音＝フェルミオン的」という割り当ては規約ラベルであり、構造（数え上げ→ロック）はラベルと独立}である。
+
+\textbf{簿記級（規約の産物）:}
+勘定則の具体形・等重み点の具体値・奇偶役割の割り当て・橋頭堡の存在条件。本稿の主張はすべて物理級の形で述べている。
+
+\subsection{9. 主張}\label{ux4e3bux5f35}
+
+\textbf{主張1（筆頭・機構の発見）.}
+無名閉鎖波系の二体流は恒等的に二項へ分解され、第三の項は存在しない。二項は波形の二情報（ノルム／共有モード上の相対位相）を排他的に読み、相互作用は必然的に、かつ二種類だけの文法へ分化する：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+大きさの項
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+重なりの項
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+合成則 & \textbf{加法}（平均、\(\le7\times10^{-16}\)） & \textbf{積}
+\(\sqrt{f_Af_B}\)（\(\le4\times10^{-15}\)） \\
+符号 & なし & あり（相対位相で反転、実測） \\
+遮蔽 & 不能（常時オン） & 可能（成分ゼロ／非共有の二機構） \\
+量子化 & なし（連続） & あり（有理ロック、実測） \\
+結合の可動域 & 比 \((R/R_0)^2\)：非有界・連続 &
+角度：\(\alpha\le1/4\pi\) とロック離散化で \(O(10^{-1})\) 帯 \\
+\end{longtable}
+}
+
+この性質表は重力と電磁気の対照表と一対一対応する。しかもこの対応は、逆割当て（重なりの項→重力型／大きさの項→電荷型）が両方とも実測済みの性質と矛盾することにより、\textbf{排除論法で一意に定まる}（6.5節、系）。力の分化に、粒子種・結合定数・背景の外部入力は要らない。
+
+\textbf{主張2（クーロン側の完備）.}
+重なりの項は、クーロン構造の五要素------逆二乗（{[}3{]}
+で導出済）・積・符号・量子化・値（厳密有限位数根
+\(\sin^2(23\pi/124)\)、\(\sqrt{4\pi\alpha}\) と 0.16 ppm
+{[}2{]}）------をすべて備える。我々はこの量を\textbf{モデルの素電荷}と呼ぶ。
+
+\textbf{主張3（階層）.}
+桁違いに弱い長距離相互作用は大きさの項の文法にしか存在できない（重なりの項はユニタリティ上限と量子化に挟まれて角度帯から出られない）。さらに、大きさの項の結合はスケール比
+\((R/R_0)^2\) 型であり、局在した閉包を含む任意の宇宙で
+\(R\ll R_0\)、すなわち\textbf{二大長距離力の巨大な階層は、粒子が背景より遥かに小さいという局在の定義から従う構造}である。前提（重力結合＝ノルム比）と、階層の指数の導出（スケール辞書）は明示的な課題として残す。
+
+\textbf{主張4（残る一点）.}
+物理の素電荷との同定へ向けてモデル内部に残る作業は、位数124を選択する機構の導出のみである（創発時空・物理的力への接続課題の全体像は、内部選択問題とは別系列として姉妹稿C終節が整理する）。候補は姉妹稿Cの実験群で消去法的に絞られた：静的分解は選択せず（反証済）、固定点型チャネルは有理集中を示さず（消去）、ロックのタング重みは分母とともに実測比
+\(>461\)
+で崩壊し（不足）、観測選択は厳密根で忠実度1と\textbf{観測時計の約数構造への選択継承}を示す（時計
+\(J=8\) の観測者には位数124の回帰が見えず、\(J=248\)
+の観測者には見える）。ゆえに選択問題は\textbf{「観測時計はなぜ248と可換か」}という反証可能な単一の問いに変換されている。
+
+\textbf{符号の判別問題（予言）.}
+符号は相対位相として実測された。空間的引力・斥力への翻訳は距離辞書（\(\Delta\theta\leftrightarrow r\)、未了）を要するが、その完成と同時に、本系が
+Bjerknes
+型（同位相＝引力）か電磁気型（同符号＝斥力）かは辞書の構造から一意に決まる------符号問題は曖昧さではなく、自動的に検証される予言である。
+
+\subsection{10.
+既知系との収束}\label{ux65e2ux77e5ux7cfbux3068ux306eux53ceux675f}
+
+積 × cos(相対位相) ×
+逆二乗の力法則は、Bjerknes（1875）が理想流体中の脈動球で理論・実験の両面から示した構造であり（secondary
+Bjerknes
+力として現代音響学に生きる）、モード重なりが結合の存在条件であることは光学の可視度・識別可能性（Hong--Ou--Mandel
+を含む）が、位相ロックによる量子化台地は超伝導の Shapiro
+段差（および近年の Bloch 振動同期による電流量子化）が、力比
+\(\sim10^{40}\) とスケール比の対応は Dirac
+の大数（1937）が、それぞれ独立に実現・観察している。互いに無関係な流体・光学・超伝導と本モデルが同一の文法に収束することは、この文法が媒質の詳細でなく閉鎖波系の一般構造であることの証拠である。
+
+なお「創発電磁気」の語は近年の正準理論的研究（Phys. Rev.~D \textbf{110},
+125006,
+2024）にも現れるが、同研究の区別（基本場/創発場の正準構造）と本稿の区別（流れの二項の排他的読出し）は別物である。本稿固有の寄与は、(i)
+結合が装置定数でなく状態から読まれる内生結合系での読出し分類定理と合成則、(ii)
+五要素・二文法が単一系の一本の恒等式の項として同時に成立すること、(iii)
+全行の機械精度検証と規約監査、である。
+
+\subsection{11. 未解決問題}\label{ux672aux89e3ux6c7aux554fux984c}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{選択問題}：位数124を選ぶ内生動力学の同定。姉妹稿Cの実験群により候補は大きく絞られた------固定点型チャネルは消去（吸引先は連続帯、有理集中なし）、タング幅の実測比（分母3対分母\$\ge\$4で
+  \(>461\)）によりロック重みは不足、観測選択は厳密根で忠実度1かつ\textbf{観測時計の約数構造への選択継承}を示すが有限回観測では回帰盆地までしか絞れない。ゆえに問いの現在形は\textbf{「観測時計はなぜ248と可換か」}であり、この最終形は親論文（第9論文本体）が引き受ける
+\item
+  \textbf{スケール辞書}：\(\Delta\theta_n\leftrightarrow r\)
+  の距離翻訳と、\(R/R_0\)
+  の値（階層の指数）。6.4節（iv）により辞書の翻訳対象が特定された：直接重なりは
+  \(1/r^2\)
+  を生まないため、辞書は\textbf{媒介機構（調和閉鎖）の距離読出し}を翻訳しなければならない
+\item
+  \textbf{符号の翻訳}：Bjerknes
+  型か電磁気型かの判別（辞書完成と同時に自動判定）
+\item
+  \st{部分共有モデル}
+  \textbf{解決済み}（6.4節（iii）：二文法が同一状態対上で同時成立することを実証）
+\item
+  \textbf{勘定則の一般形}：等重み点の数え上げ構造の閉形と整数対読出しの一般論は\textbf{姉妹稿Bが担う}
+\end{enumerate}
+
+\subsection{12. 再現性}\label{ux518dux73feux6027}
+
+全実験は単一の中核ランナー（無変更の \(\theta\) 読出し・回転）を SHA-256
+検証付きで参照し、予言値は測定前にコード内定数として書き込む方式・既知結果の再現（アンカー）を各ランナー冒頭に置く方式で実施した。反証実験・無効実験・訂正（R4
+保存誤認の訂正を含む）はすべて削除せず記録した。実験フォルダとコミット：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+実験
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+フォルダ
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+コミット
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+二記憶判別バッテリー & \texttt{two\_memory\_readout\_battery\_pre\_v1} &
+5444fbdb \\
+勘定則検証＋数え上げロック直結 &
+\texttt{counting\_rule\_lock\_bridge\_pre\_v1} & 8dff131e \\
+巻き数分光（反証） & \texttt{winding\_spectroscopy\_pre\_v1} &
+641048ad \\
+規約監査 & \texttt{convention\_audit\_pre\_v1} & 5a8f4b0a \\
+モードロック探査（Z₆発見） & \texttt{mode\_locking\_probe\_pre\_v1} &
+56453653 \\
+読出し分類＋タング分光 & \texttt{tongue\_spectroscopy\_pre\_v1} &
+913756fe \\
+混合結合（平均則） & \texttt{mixed\_coupling\_pre\_v1} & fd7a3745 \\
+交差項電荷文法（v1ヌル/v2無効/v3成立） &
+\texttt{cross\_term\_charge\_pre\_v1} & 26f26eb8 \\
+本稿図表一括再生成 & \texttt{paperA\_two\_grammar\_evidence\_v1} &
+381c2c5c \\
+Niven交点ロック（周期6/8/12・全予言的中） &
+\texttt{niven\_points\_lock\_pre\_v1} & 8f99d5c6 \\
+主張硬化（多重チャネル・符号持続・平均則規約拡張） &
+\texttt{claim\_hardening\_battery\_v1} & 47e2da02 \\
+部分共有＋固定点地図 & \texttt{partial\_sharing\_fixed\_point\_v1} &
+47e2da02 \\
+距離法則（コム/ガウス対照） & \texttt{coupling\_range\_v1} & 47e2da02 \\
+観測選択（時計選択性） & \texttt{observation\_selection\_v1} &
+47e2da02 \\
+タング幅実測 & \texttt{tongue\_width\_measurement\_v1} & 47e2da02 \\
+\end{longtable}
+}
+
+図表（\texttt{paperA\_two\_grammar\_evidence\_v1}
+の単一ランナーで全再生成可能）：
+
+\begin{itemize}
+\tightlist
+\item
+  図A
+  \texttt{figA\_carrier\_overlap\_v1}：重なり行列（搬送波あり＝全ゼロ／なし＝梯子
+  \(\Delta k=\pm2\)）
+\item
+  図B \texttt{figB\_classification\_v1}：読出し7種の保存/動力学分類
+\item
+  図C \texttt{figC\_mean\_law\_v1}：平均合成則と残差
+\item
+  図D \texttt{figD\_charge\_grammar\_v1}：\(dN_B(\varphi)\)
+  の符号反転と頂点積直線
+\item
+  図E \texttt{figE\_three\_terms\_v1}：三項分解の予言 vs
+  実測（等/異ノルム）
+\end{itemize}
+
+全測定行 CSV はリポジトリの除外規則を明示的に上書きして同梱した。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsection{自己引用}\label{ux81eaux5df1ux5f15ux7528}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  木原範昭「無名等振幅複合波モデル基本公理系 v6」Version DOI:
+  \texttt{10.5281/zenodo.21465984}, Concept DOI:
+  \texttt{10.5281/zenodo.21315735}, 2026.
+\item
+  木原範昭「反復交換散乱における有限位数共鳴の発見------微細構造定数137・128近傍ピークの原因特定と再現可能な波束数理モデル」Version
+  DOI: \texttt{10.5281/zenodo.21421367}, Concept DOI:
+  \texttt{10.5281/zenodo.21421366}, 2026. （二チャネル交換作用素 \(U_R\)
+  と固有値構造 \(\lambda_a=e^{-2\pi i m/n}\)、B63
+  構成、厳密有限位数根の定義元）
+\item
+  木原範昭「AB二体閉鎖位相系における未来位相位置加速度写像と調和閉鎖による逆二乗則
+  v4」Version DOI: \texttt{10.5281/zenodo.21468270}, Concept DOI:
+  \texttt{10.5281/zenodo.21441081}, 2026. （逆二乗則の導出、および零次
+  no-go→保存的作業仮説→独立検証の三段手順の先例）
+\item
+  木原範昭「質量や運動量やエネルギーは、どこから読まれているのか------ABC閉鎖位相系の多ゲージ保存読出し」Version
+  DOI: \texttt{10.5281/zenodo.21308050}, Concept DOI:
+  \texttt{10.5281/zenodo.21308049}, 2026.
+\item
+  木原範昭「交換干渉散乱行列フェルミオン的衝突における加速度基底と局在性交換予備実験総括
+  v1」Version DOI: \texttt{10.5281/zenodo.21333768}, Concept DOI:
+  \texttt{10.5281/zenodo.21333766}, 2026. （散乱エンジンのコード出自）
+\item
+  木原範昭「交換散乱係数R集中と微細構造定数対応候補の数値実験
+  v1」Version DOI: \texttt{10.5281/zenodo.21396761}, Concept DOI:
+  \texttt{10.5281/zenodo.21396760}, 2026. （System A コードの出自）
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  姉妹稿B:
+  木原範昭「無名二チャネル閉鎖波系における数え上げ読出しの構造」（三部作第二部）Version
+  DOI: \texttt{10.5281/zenodo.21763998}, Concept DOI:
+  \texttt{10.5281/zenodo.21763997}, 2026.
+\item
+  姉妹稿C:
+  木原範昭「無名二チャネル閉鎖波系におけるロック動力学」（三部作第三部）Version
+  DOI: \texttt{10.5281/zenodo.21764000}, Concept DOI:
+  \texttt{10.5281/zenodo.21763999}, 2026.
+\end{itemize}
+
+\subsection{外部参考文献}\label{ux5916ux90e8ux53c2ux8003ux6587ux732e}
+
+外部参考文献は本稿の導出根拠ではない。同一構造の独立な実現（収束の証拠）と、歴史的先行を示すために用いる。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  G. Forbes, ``Hydrodynamic Analogies to Electricity and Magnetism'',
+  \emph{Nature} \textbf{24}, 360--361 (1881). DOI:
+  \texttt{10.1038/024360a0}. （C. A. Bjerknes の脈動球装置の報告）
+\item
+  L. A. Crum, ``Bjerknes forces on bubbles in a stationary sound
+  field'', \emph{J. Acoust. Soc. Am.} \textbf{57}, 1363--1370 (1975).
+  DOI: \texttt{10.1121/1.380614}. （secondary Bjerknes 力：振幅積 ×
+  cos(位相差) × 逆二乗、同位相引力・逆位相斥力）
+\item
+  M. Born and E. Wolf, \emph{Principles of Optics}, 7th ed., Cambridge
+  University Press (1999). （二光束干渉法則・相互コヒーレンス）
+\item
+  C. K. Hong, Z. Y. Ou, and L. Mandel, ``Measurement of subpicosecond
+  time intervals between two photons by interference'', \emph{Phys.
+  Rev.~Lett.} \textbf{59}, 2044 (1987). DOI:
+  \texttt{10.1103/PhysRevLett.59.2044}.
+\item
+  L. Mandel, ``Coherence and indistinguishability'', \emph{Opt. Lett.}
+  \textbf{16}, 1882 (1991). DOI: \texttt{10.1364/OL.16.001882}.
+  （モード識別可能性が干渉可視度＝コヒーレント結合を消す）
+\item
+  S. Shapiro, ``Josephson currents in superconducting tunneling: the
+  effect of microwaves and other observations'', \emph{Phys. Rev.~Lett.}
+  \textbf{11}, 80 (1963). DOI: \texttt{10.1103/PhysRevLett.11.80}.
+  （位相ロックによる量子化台地）
+\item
+  M. H. Jensen, P. Bak, and T. Bohr, ``Complete devil's staircase,
+  fractal dimension, and universality of mode-locking structure in the
+  circle map'', \emph{Phys. Rev.~Lett.} \textbf{50}, 1637 (1983). DOI:
+  \texttt{10.1103/PhysRevLett.50.1637}. （Arnold tongue・悪魔の階段）
+\item
+  P. A. M. Dirac, ``The cosmological constants'', \emph{Nature}
+  \textbf{139}, 323 (1937). DOI: \texttt{10.1038/139323a0}.
+  （力比とスケール比の大数対応。同仮説の G
+  時間変化予言は本稿の枠組みが強制しない）
+\item
+  O. Klein, ``Quantentheorie und fünfdimensionale Relativitätstheorie'',
+  \emph{Z. Phys.} \textbf{37}, 895--906 (1926). DOI:
+  \texttt{10.1007/BF01397481}.
+\item
+  E. I. Duque, ``Emergent electromagnetism'', \emph{Phys. Rev.~D}
+  \textbf{110}, 125006 (2024). DOI:
+  \texttt{10.1103/PhysRevD.110.125006}. arXiv:\texttt{2407.14954}.
+  （語は近接するが、正準構造による基本場/創発場の区別であり本稿の二項分解とは別物）
+\item
+  I. Niven, \emph{Irrational Numbers}, Carus Mathematical Monographs
+  No.~11, Mathematical Association of America (1956).
+  （有理角の余弦の有理性定理。数え上げ有理数 \(R\)
+  族と有理角ロック族の交点集合 \(\{0,1/4,1/2,3/4,1\}\) の根拠）
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{付記（訂正の記録）}
+本研究の過程で次の誤りが発生し、訂正された。(i) 交差スペクトル読出し R4
+を保存読出しと誤認（末尾凍結を保存と読み違え）→分類実験で固定点収束と判明し訂正。(ii)
+流れ方程式のオフセット項の符号予言の取り違え→回転規約の較正（\(\sigma=+1\)）で解消（誤差
+\(0.389=\sin0.4\) の厳密一致が符号スリップの証拠）。(iii)
+搬送波なし構成での分率調整の仮定の崩壊（v2 無効）。(iv)
+数え上げ有理数族と有理角ロック族の交点を「\(R=1/2\)
+のみ」とした先行記録の誤り→Niven の定理により5点 \(\{0,1/4,1/2,3/4,1\}\)
+と訂正（実験フォルダ README に訂正追記、残余2点は Niven
+交点実験で全予言的中を確認済み）。(v)
+コヒーレント結合の距離法則を「短距離型」と予言した誤り→実測によりコム状態は無減衰復活・ガウス波束は包絡減衰と判明、距離法則は波束包絡が決める（6.4節（iv））。すべて本文・再現パッケージに記録している。
+
+\end{document}
