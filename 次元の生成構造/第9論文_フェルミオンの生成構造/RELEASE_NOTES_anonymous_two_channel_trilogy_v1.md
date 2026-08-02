@@ -34,7 +34,8 @@ Release date: 2026-08-03
 
 ## Facebook
 
-- 日本語（下書き：fb_anonymous_two_channel_trilogy_ja.md、本文にnote URL入り）：投稿後にURL追記
+- 日本語（2026-08-03 投稿、note URLは1件目コメント）：https://www.facebook.com/kihara.noriaki/posts/pfbid0vqFnTQVxwE522awiRQiwzVcNLHZuwKmX6d5ZDr3kEDFWJ58C6qRGXCvSy6ifUCiDl （下書き：fb_anonymous_two_channel_trilogy_ja.md）
+- 英語版（下書き：fb_anonymous_two_channel_trilogy_en.md、コメント参照型）：投稿後にURL追記
 
 ## GitHub
 
