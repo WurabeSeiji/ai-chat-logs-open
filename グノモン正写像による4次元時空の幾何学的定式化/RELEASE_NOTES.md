@@ -120,7 +120,8 @@
 - **Concept DOI**：[10.5281/zenodo.21763999](https://doi.org/10.5281/zenodo.21763999)／**v1 DOI**：[10.5281/zenodo.21764000](https://doi.org/10.5281/zenodo.21764000)
 - **形式**：各レコード md（日英）+ tex（日英）+ pdf（日英）= 6ファイル、三部相互参照リンク付き
 - **Zenn**：[無名二チャネル閉鎖波系 三部作の公開](https://zenn.dev/noriaki_kihara/articles/anonymous-two-channel-trilogy)
-- **note（下書きmd）**：次元の生成構造/電気の力はどこに隠れていたのか_note完成稿.md（前記事「タネがなくても、インフレーションは起きた」の続編、公開後URL追記）
+- **note（日本語）**：[電気の力は、どこに隠れていたのか——波の形だけで、重力とクーロン力は分かれていた](https://note.com/kiharanoriaki/n/n8b1fedaec944)（2026-08-03 公開。前記事「タネがなくても、インフレーションは起きた」の続編。下書きmd：次元の生成構造/電気の力はどこに隠れていたのか_note完成稿.md、図5点は再現プログラム生成）
+- **note（英語版下書きmd）**：次元の生成構造/where_was_the_electric_force_hiding_note_en.md（公開後URL追記）
 - **再現パッケージ**：次元の生成構造/第9論文_フェルミオンの生成構造/対照実験_波束収縮_実行環境_v1/ab_invariant_theta_toy_v1/（実験16本・全ランナー/CSV/図コミット済み）
 
 ### 2026-07-27: note記事「タネがなくても、インフレーションは起きた」公開（第8論文 一般向け）

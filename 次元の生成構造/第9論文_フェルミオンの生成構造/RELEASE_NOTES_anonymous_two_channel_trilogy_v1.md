@@ -28,7 +28,8 @@ Release date: 2026-08-03
 
 ## note
 
-- 日本語（続編記事、下書き：次元の生成構造/電気の力はどこに隠れていたのか_note完成稿.md）：公開後にURL追記
+- 日本語（2026-08-03 公開）：https://note.com/kiharanoriaki/n/n8b1fedaec944 （下書き：次元の生成構造/電気の力はどこに隠れていたのか_note完成稿.md）
+- 英語版（下書き：次元の生成構造/where_was_the_electric_force_hiding_note_en.md）：公開後にURL追記
 - 前作：https://note.com/kiharanoriaki/n/n48a02cd70f47
 
 ## GitHub
