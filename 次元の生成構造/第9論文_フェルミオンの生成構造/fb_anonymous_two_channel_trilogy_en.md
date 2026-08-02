@@ -24,9 +24,9 @@ The trilogy also offers a structural candidate answer to why gravity is 10 to th
 We also state plainly what we cannot yet claim. This is the stage of grammars, before a background spacetime stands up — we do not claim it is real gravity and electromagnetism themselves. Why the elementary-charge angle chooses a division into 124 is still open; the mystery has been narrowed to a single question: why is the observation clock commensurable with 248?
 
 The trilogy (Japanese and English, on Zenodo, with the full reproduction package):
-Part I, Two-Grammar Decomposition https://doi.org/10.5281/zenodo.21763996
-Part II, Counting Readouts https://doi.org/10.5281/zenodo.21763998
-Part III, Lock Dynamics https://doi.org/10.5281/zenodo.21764000
+Part I, Two-Grammar Decomposition — DOI: 10.5281/zenodo.21763996
+Part II, Counting Readouts — DOI: 10.5281/zenodo.21763998
+Part III, Lock Dynamics — DOI: 10.5281/zenodo.21764000
 
 #TheoreticalPhysics #MathematicalPhysics #Gravity #Electromagnetism #CoulombForce #ElementaryCharge #FineStructureConstant #Quantization #HierarchyProblem #InverseSquareLaw #Waves #Harmonics #Phase #Interference #Emergence #Inflation #IndependentResearch #Preprint #Zenodo #NumericalExperiment #NumericalSimulation
 
