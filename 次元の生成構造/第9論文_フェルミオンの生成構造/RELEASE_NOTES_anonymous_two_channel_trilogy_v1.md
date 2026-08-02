@@ -32,6 +32,10 @@ Release date: 2026-08-03
 - 英語版（2026-08-03 公開）：https://note.com/kiharanoriaki/n/n9a5a0a42ed7b （下書き：次元の生成構造/where_was_the_electric_force_hiding_note_en.md）
 - 前作：https://note.com/kiharanoriaki/n/n48a02cd70f47
 
+## Facebook
+
+- 日本語（下書き：fb_anonymous_two_channel_trilogy_ja.md、本文にnote URL入り）：投稿後にURL追記
+
 ## GitHub
 
 - 論文本文（日英 md/tex/pdf）：次元の生成構造/第9論文_フェルミオンの生成構造/
