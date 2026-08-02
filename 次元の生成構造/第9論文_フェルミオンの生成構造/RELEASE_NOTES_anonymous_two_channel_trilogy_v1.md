@@ -39,7 +39,8 @@ Release date: 2026-08-03
 
 ## X
 
-- 日本語（下書き：x_anonymous_two_channel_trilogy_ja.md、note URL入り）：投稿後にURL追記
+- 日本語（2026-08-04 投稿）：https://x.com/NoriakiKihara/status/2084057799622082606 （下書き：x_anonymous_two_channel_trilogy_ja.md）
+- 英語版（下書き：x_anonymous_two_channel_trilogy_en.md、英語note URL入り）：投稿後にURL追記
 
 ## GitHub
 
