@@ -125,6 +125,7 @@
 - **Facebook（日本語）**：[告知投稿](https://www.facebook.com/kihara.noriaki/posts/pfbid0vqFnTQVxwE522awiRQiwzVcNLHZuwKmX6d5ZDr3kEDFWJ58C6qRGXCvSy6ifUCiDl)（2026-08-03、note URLは1件目コメント）
 - **Facebook（英語）**：[告知投稿](https://www.facebook.com/kihara.noriaki/posts/pfbid0CcmMQpyvjBpZ1j75wSUJduK7vBfy4BFt2rJt7XAr5p8Ba5gRWnYdLQ87C1Vci5mTl)（2026-08-03、note URLは1件目コメント）
 - **X（日本語）**：[告知ポスト](https://x.com/NoriakiKihara/status/2084057799622082606)（2026-08-04、日本語note URL入り）
+- **X（英語）**：[告知ポスト](https://x.com/NoriakiKihara/status/2084058608455848355)（2026-08-04、英語note URL入り）
 - **再現パッケージ**：次元の生成構造/第9論文_フェルミオンの生成構造/対照実験_波束収縮_実行環境_v1/ab_invariant_theta_toy_v1/（実験16本・全ランナー/CSV/図コミット済み）
 
 ### 2026-07-27: note記事「タネがなくても、インフレーションは起きた」公開（第8論文 一般向け）
