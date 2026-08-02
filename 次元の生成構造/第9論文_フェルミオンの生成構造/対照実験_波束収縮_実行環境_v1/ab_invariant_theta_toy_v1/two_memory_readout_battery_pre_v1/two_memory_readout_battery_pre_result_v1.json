@@ -1,0 +1,248 @@
+{
+  "experiment": "two_memory_readout_battery_pre_v1",
+  "design_boundary": {
+    "theta_readout_modified": false,
+    "forward_scattering_modified": false,
+    "state_construction": "existing explicit_packet_case / make_case_state only; amplitude profiles via weighted sums of single-harmonic states"
+  },
+  "conditions": {
+    "high_n": 63,
+    "evolution_collisions": 100,
+    "invariant_tolerance": 1e-10,
+    "random_seed": 7,
+    "A_state": "fundamental (1,) with hair, unit norm",
+    "B_states": "unit norm; pair norm equal across all states"
+  },
+  "core_runner": {
+    "path": "run_ab_invariant_theta_toy_v1.py",
+    "sha256": "90c7b27235a6716c8db08a61f71a0d9d6437694f016fd636ae53c1a58af69ed7"
+  },
+  "anchor_construction_test": {
+    "anchor": "equal-weight single-harmonic sum vs make_case_state B63 template",
+    "R_template": 0.4765625000000005,
+    "R_equal_weight_sum": 0.47656250000000067,
+    "abs_R_difference": 1.6653345369377348e-16,
+    "state_overlap_abs": 1.0000000000000004,
+    "verdict": "MATCH",
+    "note": "一致すれば構成法は等価。僅差なら等重み和を条件A基線として使用"
+  },
+  "rows": [
+    {
+      "label": "A_equal",
+      "condition": "A_same_support_diff_amplitude",
+      "support_size": 32,
+      "support_min": 1,
+      "support_max": 63,
+      "N_rel_noncommon_with_A": 31,
+      "n_counting_hypothesis_4Nrel": 124,
+      "pair_norm": 2.000000000000001,
+      "R_power_ratio_readout": 0.47656250000000067,
+      "theta": 0.761952071830808,
+      "P_fermionic": 0.9531250000000029,
+      "P_bosonic": 1.0468750000000007,
+      "L_B": 0.005208969116210965,
+      "N_eff_B": 31.99999999999997
+    },
+    {
+      "label": "A_linear_decay",
+      "condition": "A_same_support_diff_amplitude",
+      "support_size": 32,
+      "support_min": 1,
+      "support_max": 63,
+      "N_rel_noncommon_with_A": 31,
+      "n_counting_hypothesis_4Nrel": 124,
+      "pair_norm": 1.9999999999999987,
+      "R_power_ratio_readout": 0.44471952087286465,
+      "theta": 0.7300044379928813,
+      "P_fermionic": 0.8894390417457295,
+      "P_bosonic": 1.1105609582542706,
+      "L_B": 0.004856801534221114,
+      "N_eff_B": 19.33126934984519
+    },
+    {
+      "label": "A_inverse_k",
+      "condition": "A_same_support_diff_amplitude",
+      "support_size": 32,
+      "support_min": 1,
+      "support_max": 63,
+      "N_rel_noncommon_with_A": 31,
+      "n_counting_hypothesis_4Nrel": 124,
+      "pair_norm": 1.9999999999999973,
+      "R_power_ratio_readout": 0.06947332662949869,
+      "theta": 0.26672942707485103,
+      "P_fermionic": 0.13894665325899758,
+      "P_bosonic": 1.861053346741005,
+      "L_B": 0.0005406925719050105,
+      "N_eff_B": 2.2144288773113066
+    },
+    {
+      "label": "A_exp_decay",
+      "condition": "A_same_support_diff_amplitude",
+      "support_size": 32,
+      "support_min": 1,
+      "support_max": 63,
+      "N_rel_noncommon_with_A": 31,
+      "n_counting_hypothesis_4Nrel": 124,
+      "pair_norm": 2.0000000000000004,
+      "R_power_ratio_readout": 0.3771671522226772,
+      "theta": 0.6612949764797554,
+      "P_fermionic": 0.7543343044453547,
+      "P_bosonic": 1.2456656955546452,
+      "L_B": 0.0030950178054895278,
+      "N_eff_B": 10.387172383050943
+    },
+    {
+      "label": "A_random_seed7",
+      "condition": "A_same_support_diff_amplitude",
+      "support_size": 32,
+      "support_min": 1,
+      "support_max": 63,
+      "N_rel_noncommon_with_A": 31,
+      "n_counting_hypothesis_4Nrel": 124,
+      "pair_norm": 1.999999999999996,
+      "R_power_ratio_readout": 0.4663247583800114,
+      "theta": 0.7516974106945653,
+      "P_fermionic": 0.9326495167600227,
+      "P_bosonic": 1.0673504832399772,
+      "L_B": 0.0041143056472328285,
+      "N_eff_B": 30.199017934015295
+    },
+    {
+      "label": "B_odds_full_63",
+      "condition": "B_same_norm_diff_support",
+      "support_size": 32,
+      "support_min": 1,
+      "support_max": 63,
+      "N_rel_noncommon_with_A": 31,
+      "n_counting_hypothesis_4Nrel": 124,
+      "pair_norm": 2.000000000000001,
+      "R_power_ratio_readout": 0.47656250000000067,
+      "theta": 0.761952071830808,
+      "P_fermionic": 0.9531250000000029,
+      "P_bosonic": 1.0468750000000007,
+      "L_B": 0.005208969116210965,
+      "N_eff_B": 31.99999999999997
+    },
+    {
+      "label": "B_odds_upto_31",
+      "condition": "B_same_norm_diff_support",
+      "support_size": 16,
+      "support_min": 1,
+      "support_max": 31,
+      "N_rel_noncommon_with_A": 15,
+      "n_counting_hypothesis_4Nrel": 60,
+      "pair_norm": 2.000000000000001,
+      "R_power_ratio_readout": 0.4531250000000002,
+      "theta": 0.7384542258436902,
+      "P_fermionic": 0.9062500000000016,
+      "P_bosonic": 1.093750000000001,
+      "L_B": 0.00260543823242188,
+      "N_eff_B": 16.000000000000014
+    },
+    {
+      "label": "B_odds_sparse_step4",
+      "condition": "B_same_norm_diff_support",
+      "support_size": 16,
+      "support_min": 1,
+      "support_max": 61,
+      "N_rel_noncommon_with_A": 15,
+      "n_counting_hypothesis_4Nrel": 60,
+      "pair_norm": 2.0,
+      "R_power_ratio_readout": 0.46874999999999983,
+      "theta": 0.7541277824992024,
+      "P_fermionic": 0.9374999999999998,
+      "P_bosonic": 1.0625000000000007,
+      "L_B": 0.001956939697265623,
+      "N_eff_B": 30.999999999999986
+    },
+    {
+      "label": "B_odds_full_minus_3",
+      "condition": "B_same_norm_diff_support",
+      "support_size": 31,
+      "support_min": 1,
+      "support_max": 63,
+      "N_rel_noncommon_with_A": 30,
+      "n_counting_hypothesis_4Nrel": 120,
+      "pair_norm": 2.0000000000000018,
+      "R_power_ratio_readout": 0.4838709677419351,
+      "theta": 0.7692663325633244,
+      "P_fermionic": 0.9677419354838707,
+      "P_bosonic": 1.0322580645161303,
+      "L_B": 0.004817331494699518,
+      "N_eff_B": 32.93548387096772
+    },
+    {
+      "label": "B_evens_control",
+      "condition": "B_same_norm_diff_support",
+      "support_size": 32,
+      "support_min": 1,
+      "support_max": 62,
+      "N_rel_noncommon_with_A": 31,
+      "n_counting_hypothesis_4Nrel": 124,
+      "pair_norm": 2.0,
+      "R_power_ratio_readout": 0.0,
+      "theta": 0.0,
+      "P_fermionic": 0.0,
+      "P_bosonic": 2.0000000000000018,
+      "L_B": 0.00466871261596681,
+      "N_eff_B": 31.031249999999954
+    }
+  ],
+  "evolution_invariance": {
+    "A_equal": {
+      "collisions": 100,
+      "max_R_drift": 3.3306690738754696e-16,
+      "verdict": "PASS"
+    },
+    "A_inverse_k": {
+      "collisions": 100,
+      "max_R_drift": 2.7755575615628914e-17,
+      "verdict": "PASS"
+    },
+    "B_odds_upto_31": {
+      "collisions": 100,
+      "max_R_drift": 1.6653345369377348e-16,
+      "verdict": "PASS"
+    }
+  },
+  "summary": {
+    "condition_A_R_min": 0.06947332662949869,
+    "condition_A_R_max": 0.47656250000000067,
+    "condition_A_R_spread": 0.407089173370502,
+    "condition_A_max_abs_deviation_from_equal": 0.407089173370502,
+    "condition_A_structural_readout_requirement": "spread は構造層読出しなら 0 のはず。非零なら現行パワー比読出しは可視層（振幅）に依存しており、数え上げ型読出しへの置換が必要",
+    "condition_B_R_by_support": {
+      "B_odds_full_63": 0.47656250000000067,
+      "B_odds_upto_31": 0.4531250000000002,
+      "B_odds_sparse_step4": 0.46874999999999983,
+      "B_odds_full_minus_3": 0.4838709677419351,
+      "B_evens_control": 0.0
+    },
+    "condition_B_counting_hypothesis": {
+      "B_odds_full_63": {
+        "N_rel": 31,
+        "n_counting_4Nrel": 124
+      },
+      "B_odds_upto_31": {
+        "N_rel": 15,
+        "n_counting_4Nrel": 60
+      },
+      "B_odds_sparse_step4": {
+        "N_rel": 15,
+        "n_counting_4Nrel": 60
+      },
+      "B_odds_full_minus_3": {
+        "N_rel": 30,
+        "n_counting_4Nrel": 120
+      },
+      "B_evens_control": {
+        "N_rel": 31,
+        "n_counting_4Nrel": 124
+      }
+    }
+  },
+  "figures": [
+    "two_memory_readout_battery_pre_v1.png",
+    "two_memory_readout_battery_pre_v1.svg"
+  ]
+}
