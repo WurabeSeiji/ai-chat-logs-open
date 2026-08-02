@@ -37,6 +37,10 @@ Release date: 2026-08-03
 - 日本語（2026-08-03 投稿、note URLは1件目コメント）：https://www.facebook.com/kihara.noriaki/posts/pfbid0vqFnTQVxwE522awiRQiwzVcNLHZuwKmX6d5ZDr3kEDFWJ58C6qRGXCvSy6ifUCiDl （下書き：fb_anonymous_two_channel_trilogy_ja.md）
 - 英語版（2026-08-03 投稿、note URLは1件目コメント）：https://www.facebook.com/kihara.noriaki/posts/pfbid0CcmMQpyvjBpZ1j75wSUJduK7vBfy4BFt2rJt7XAr5p8Ba5gRWnYdLQ87C1Vci5mTl （下書き：fb_anonymous_two_channel_trilogy_en.md）
 
+## X
+
+- 日本語（下書き：x_anonymous_two_channel_trilogy_ja.md、note URL入り）：投稿後にURL追記
+
 ## GitHub
 
 - 論文本文（日英 md/tex/pdf）：次元の生成構造/第9論文_フェルミオンの生成構造/
