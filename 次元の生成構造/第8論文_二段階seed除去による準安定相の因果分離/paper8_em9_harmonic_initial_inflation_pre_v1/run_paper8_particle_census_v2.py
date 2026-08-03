@@ -55,7 +55,8 @@ K_SHOW = 6
 A_BASE = 0.3
 FREQ_MIN = 1e-8
 CFG = {5: {"H": 8, "seed": 40260801},
-       40: {"H": 4, "seed": 40260802}}
+       40: {"H": 4, "seed": 40260802},
+       300: {"H": 4, "seed": 40260803}}   # 2026-08-04 追記（既存実験と同一 seed）
 
 
 def sha256(p: Path) -> str:
@@ -69,7 +70,7 @@ def spectrum_row(Z, m):
     w = np.abs(dev)
     k_hi = max(1, min(K_SHOW, m // 2))
     if w.sum() < 1e-8 * max(1.0, amp.sum()):
-        return {"A": [0.0] * K_SHOW, "k0": None, "phase_deg": None,
+        return {"A": [0.0] * K_SHOW, "k0": None, "phase_deg": None, "s_circ": None,
                 "split_rms": float(np.std(amp)), "w": w, "th": th, "dev": dev}
     A = []
     for k in range(1, K_SHOW + 1):
@@ -77,10 +78,13 @@ def spectrum_row(Z, m):
                  if k <= k_hi else 0.0)
     k0 = int(np.argmax(A) + 1) if max(A) > A_BASE else None
     if k0 is not None:
-        phase = float(np.degrees(np.angle(np.sum(w * np.exp(1j * k0 * th))) / k0))
+        c = float(np.angle(np.sum(w * np.exp(1j * k0 * th))))
+        phase = float(np.degrees(c / k0))
+        s_circ = float(np.sum(dev * np.sin(2 * (k0 * th - c))))   # v1 と同一定義のC-odd量
     else:
         phase = None
-    return {"A": A, "k0": k0, "phase_deg": phase,
+        s_circ = None
+    return {"A": A, "k0": k0, "phase_deg": phase, "s_circ": s_circ,
             "split_rms": float(np.std(amp)), "w": w, "th": th, "dev": dev}
 
 
@@ -121,10 +125,14 @@ def census_state(n, level, v0, wp, name, family):
     return [
         {"N": n, "state": name, "family": family, "time": "初期",
          "k0": row0["k0"], "phase_deg": row0["phase_deg"], "A": row0["A"],
-         "split_rms": row0["split_rms"], "BF": parity, "charge_raw": None},
+         "split_rms": row0["split_rms"], "BF": parity, "charge_raw": None,
+         "s_circ": row0["s_circ"],
+         "pa": ("粒" if row0["s_circ"] > 0 else "反") if row0["s_circ"] else "—"},
         {"N": n, "state": name, "family": family, "time": "緩和後",
          "k0": row1["k0"], "phase_deg": row1["phase_deg"], "A": row1["A"],
-         "split_rms": row1["split_rms"], "BF": parity, "charge_raw": charge},
+         "split_rms": row1["split_rms"], "BF": parity, "charge_raw": charge,
+         "s_circ": row1["s_circ"],
+         "pa": ("粒" if row1["s_circ"] > 0 else "反") if row1["s_circ"] else "—"},
     ]
 
 
@@ -134,15 +142,18 @@ def fmt_row(r):
     As = " ".join(f"{a:5.2f}" for a in r["A"])
     ch = f"{r['charge_raw']:.6f}" if r["charge_raw"] is not None else "—"
     return (f"{r['N']:>3} | {r['state']:<10} | {r['family']:<7} | {r['time']:<3} | "
-            f"{wl:>4} | {ph} | {As} | {r['BF']} | {ch}")
+            f"{wl:>4} | {ph} | {As} | {r['BF']} | {r['pa']} | {ch}")
 
 
 def main() -> None:
     t0 = time.time()
-    print("粒子的グループ census v2 実行")
+    ns = ([int(x) for x in sys.argv[1].split(",")] if len(sys.argv) > 1
+          else list(CFG))
+    print(f"粒子的グループ census v2 実行（N={ns}）")
     print(f"  import: ABL {sha256(ABL)[:16]}…  MPH {sha256(MPH)[:16]}…\n")
     rows = []
-    for n, cfg in CFG.items():
+    for n in ns:
+        cfg = CFG[n]
         _, v, _, _, _, _, _, Z0, wp0 = abl.build_init(n, False)
         rows += census_state(n, 1, Z0, wp0.copy(), "control", "control")
         Zh, info = mph.make_parent_harmonic(n, cfg["H"], cfg["seed"],
@@ -155,7 +166,7 @@ def main() -> None:
             rows += census_state(n, h, v0, wp, f"n={h}", fam)
 
     hdr = ("  N | 状態       | 族      | 時点 | 波長 |  位相°  | "
-           "倍音1 倍音2 倍音3 倍音4 倍音5 倍音6 | B/F | 電荷(生)")
+           "倍音1 倍音2 倍音3 倍音4 倍音5 倍音6 | B/F | 粒/反 | 電荷(生)")
     print(hdr); print("-" * len(hdr))
     cur = None
     for r in rows:
@@ -168,13 +179,15 @@ def main() -> None:
         wtr = csv.writer(fh)
         wtr.writerow(["N", "state", "family", "time", "base_wavelength_k0",
                       "phase_deg", "A1", "A2", "A3", "A4", "A5", "A6",
-                      "amp_split_rms", "BF", "charge_raw"])
+                      "amp_split_rms", "BF", "particle_antiparticle_conv",
+                      "s_circ", "charge_raw"])
         for r in rows:
             wtr.writerow([r["N"], r["state"], r["family"], r["time"],
                           r["k0"] if r["k0"] else "",
                           f"{r['phase_deg']:.2f}" if r["phase_deg"] is not None else "",
                           *[f"{a:.4f}" for a in r["A"]],
-                          f"{r['split_rms']:.3e}", r["BF"],
+                          f"{r['split_rms']:.3e}", r["BF"], r["pa"],
+                          f"{r['s_circ']:.3e}" if r["s_circ"] is not None else "",
                           f"{r['charge_raw']:.6f}" if r["charge_raw"] is not None else ""])
     (HERE / "census_table_v2.json").write_text(
         json.dumps({"rows": [{k: v for k, v in r.items()} for r in rows],
@@ -192,16 +205,18 @@ def main() -> None:
           "- 倍音1..6: A_1..A_6（構造スペクトル、0..1）",
           "- B/F: 行動的半周期テスト（F=奇=フェルミオン型 / B=偶=ボゾン型）",
           "- 電荷(生): 塊周波数/残余周波数の生の比（緩和後のみ。一定にならなくても生値のまま記録）",
+          "- 粒/反: エンジンの時計方向（全状態共通の基準）に対する周回符号 s の規約ラベル。"
+          "粒=s>0/反=s<0。絶対名は規約であり相対符号のみ物理。一様海は「—」（自己共役＝区分なし、光子と同型）",
           "",
-          "| N | 状態 | 族 | 時点 | ベース波長 | 位相° | 倍音1 | 倍音2 | 倍音3 | 倍音4 | 倍音5 | 倍音6 | B/F | 電荷(生) |",
-          "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+          "| N | 状態 | 族 | 時点 | ベース波長 | 位相° | 倍音1 | 倍音2 | 倍音3 | 倍音4 | 倍音5 | 倍音6 | B/F | 粒/反 | 電荷(生) |",
+          "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for r in rows:
         wl = f"1/{r['k0']}" if r["k0"] else "—"
         ph = f"{r['phase_deg']:+.1f}" if r["phase_deg"] is not None else "—"
         ch = f"{r['charge_raw']:.6f}" if r["charge_raw"] is not None else "—"
         md.append("| " + " | ".join(
             [str(r["N"]), r["state"], r["family"], r["time"], wl, ph]
-            + [f"{a:.2f}" for a in r["A"]] + [r["BF"], ch]) + " |")
+            + [f"{a:.2f}" for a in r["A"]] + [r["BF"], r["pa"], ch]) + " |")
     (HERE / "census_table_v2.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     print(f"\nsaved: census_table_v2.csv / census_table_v2.json / census_table_v2.md "
           f"({time.time()-t0:.0f}s)")
