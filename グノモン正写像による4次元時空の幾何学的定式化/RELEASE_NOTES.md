@@ -119,7 +119,7 @@
 - **Facebook（日本語）**：[告知投稿](https://www.facebook.com/kihara.noriaki/posts/pfbid0jKevojSmepoHbehZNerupT5JX2MQNmNekkNFGZ8vQLdjSA88VrsDbxGdjUwctXHGl)（2026-08-04、note URLは1件目コメント。下書き：fb_generation_structure_of_fermions_ja.md）
 - **Facebook（英語）**：[告知投稿](https://www.facebook.com/kihara.noriaki/posts/pfbid02VM6YAJuKrzH4FANdnhznDodgwESLZwkeFEa52Ei5hPbD4wjKUYrqDTVdR1Vt8Uf6l)（2026-08-04、note URLは1件目コメント。下書き：fb_generation_structure_of_fermions_en.md）
 - **X（日本語）**：[告知ポスト](https://x.com/NoriakiKihara/status/2084136530130735512)（2026-08-04、日本語note URL入り。下書き：x_generation_structure_of_fermions_ja.md）
-- **X（英語版下書き）**：x_generation_structure_of_fermions_en.md（投稿後URL追記）
+- **X（英語）**：[告知ポスト](https://x.com/NoriakiKihara/status/2084137295050129840)（2026-08-04、英語note URL入り。下書き：x_generation_structure_of_fermions_en.md）
 - **所在**：次元の生成構造/第9論文_フェルミオンの生成構造/
 
 ### 2026-08-04: 実在中心読み直しによる加速度写像の再導出（導出置換編）新規公開
