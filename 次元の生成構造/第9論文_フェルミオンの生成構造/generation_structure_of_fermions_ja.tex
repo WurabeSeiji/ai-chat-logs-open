@@ -1,0 +1,482 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{フェルミオンの生成構造------光の海における閉鎖完走としての粒子}\label{ux30d5ux30a7ux30ebux30dfux30aaux30f3ux306eux751fux6210ux69cbux9020ux5149ux306eux6d77ux306bux304aux3051ux308bux9589ux9396ux5b8cux8d70ux3068ux3057ux3066ux306eux7c92ux5b50}
+
+\subsection{万能相互作用からの力の自発区別、パリティ・住所・コヒーレンス・毛による粒子種の自発分化、および存在量の数え上げ}\label{ux4e07ux80fdux76f8ux4e92ux4f5cux7528ux304bux3089ux306eux529bux306eux81eaux767aux533aux5225ux30d1ux30eaux30c6ux30a3ux4f4fux6240ux30b3ux30d2ux30fcux30ecux30f3ux30b9ux6bdbux306bux3088ux308bux7c92ux5b50ux7a2eux306eux81eaux767aux5206ux5316ux304aux3088ux3073ux5b58ux5728ux91cfux306eux6570ux3048ux4e0aux3052}
+
+\textbf{著者:} 木原 範昭\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{日付:} 2026年8月4日\\
+\textbf{Version DOI:} \texttt{10.5281/zenodo.21766707}\\
+\textbf{Concept DOI:} \texttt{10.5281/zenodo.21766706}\\
+\textbf{位置づけ:}
+次元の生成構造シリーズ・第9論文（本体）。三部作（二文法分解
+{[}3{]}・数え上げ読出し {[}4{]}・ロック動力学 {[}5{]}）と論文D予備実験群
+{[}9{]}
+の総合。\textbf{本稿は導出と総合のみであり、新しい数値実験・新しい図表を含まない。}
+全ての定量的事実は公開済み論文とコミット済み再現パッケージに依拠し、出典対応（第6節）で一対一に辿れる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{主張------粒子が波の形から自発的に分かれる仕組み}\label{ux4e3bux5f35ux7c92ux5b50ux304cux6ce2ux306eux5f62ux304bux3089ux81eaux767aux7684ux306bux5206ux304bux308cux308bux4ed5ux7d44ux307f}
+
+鍵は、既定と例外の逆転である。
+
+\textbf{既定状態は、光子の海である。}
+零閉塞（完全コヒーレント共有モード）は公理そのもの。何も「作る」必要がない------系の素材は最初から光的である。
+
+\textbf{第一の分岐は、パリティである。}
+奇数倍音＝フェルミオン型、偶数倍音＝ボゾン型。
+
+\textbf{第二の分岐は、住所捕獲である。}
+コヒーレントな海の中で、交換の連鎖がたまたまレジスタの閉鎖周期を完走したものだけが、回帰する閉包＝粒子になる。
+
+\textbf{物質と反物質は、完走の幾何が対で与える。} 完走の半分の地点が
+\(\lambda^{62}=-1\)（共役・反対符号）、全周が
+\(\lambda^{124}=+1\)------二重被覆の符号がそのまま対を与える。
+
+\textbf{つまり粒子とは、光の海の中で閉鎖周期を完走した稀な事象である。}
+「ほとんど無い」のは閉鎖完走が難しいからであり、「ゼロではない」のは分解能が有限で完走確率が厳密に正だからである------両方が構造として自動で出る。
+
+以下は、この主張を導いた導出にすぎない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{本稿の位置づけ}\label{ux672cux7a3fux306eux4f4dux7f6eux3065ux3051}
+
+第9論文系列は、粒子の種類と力の種類を入力せずに、波の形だけから両者が自発的に分化する機構を求めてきた。三部作は万能相互作用の二項恒等式と二文法の一意分化
+{[}3{]}、数え上げ読出しの構造 {[}4{]}、量子化機構と選択の消去法 {[}5{]}
+を機械精度で確立し、論文D予備実験群 {[}9{]}
+は二つのα根のレジスタ関係・時計盲目性・エイリアシング・質量ビートを実測した。本稿はこれらを一枚の生成構造として総合する。証明はすべて（i）公開済みの実測の引用、または（ii）本文中の初等的な恒等式であり、新しい実験は一切行わない。
+
+\subsection{1. 課題}\label{ux8ab2ux984c}
+
+説明すべきは次の三点である。（i）粒子の種類はどこから来るのか------外部の分類表なしに。（ii）力の種類はどこから来るのか------粒子種ごとの結合則を入力せずに。（iii）物質の存在量はなぜ「極めて少ないが厳密にゼロでない」のか------微調整パラメータなしに。
+
+\subsection{2.
+導出I------万能相互作用：力は一つしかない}\label{ux5c0eux51faiux4e07ux80fdux76f8ux4e92ux4f5cux7528ux529bux306fux4e00ux3064ux3057ux304bux306aux3044}
+
+系に存在する相互作用は実直交の交換衝突ただ一つであり、一衝突の移乗は恒等的に
+
+\[
+dN_B=\underbrace{\sin^2\theta\,(N_A-N_B)}_{\text{大きさの項}}+\underbrace{\sin 2\theta\,\mathrm{Re}\langle a|b\rangle}_{\text{重なりの項}}
+\]
+
+の二項に分解され、\textbf{第三の項は存在しない}
+{[}3{]}。この恒等式は相手が何であるかを問わない。ゆえにこれが万能相互作用であり、力の区別は相互作用の区別ではなく、\textbf{相手の波形がどの項を起動するかの区別}である：
+
+\begin{itemize}
+\tightlist
+\item
+  ノルムを持つ全てに大きさの項が働く------重力型（万有・加法・遮蔽不能・量子化なし）{[}3{]}
+\item
+  倍音を共有し毛を持つ対にのみ重なりの項が電荷型に働く------クーロン型（振幅積・±・遮蔽二機構・有理量子化）{[}3{]}
+\item
+  毛を持たない完全共有の関係はどちらの荷も持たず、両者を媒介する------光子（第3節）。なお二つの「無」は別々の軸に由来する：質量の不在は完全共有（\(\det\Gamma=0\)、第3節軸③）から、電荷型流れの不在は毛の不在（第3節軸④）から従う
+\end{itemize}
+
+この割当ては性質の類似ではなく、逆割当てを排除した一意な対応である（{[}3{]}
+6.5節）。すなわち\textbf{力の種類とは粒子の種類の別名であり、粒子の種類とは波の形の別名である。}
+
+\subsection{3.
+導出II------四軸の判定木：種は波の形から分かれる}\label{ux5c0eux51faiiux56dbux8ef8ux306eux5224ux5b9aux6728ux7a2eux306fux6ce2ux306eux5f62ux304bux3089ux5206ux304bux308cux308b}
+
+粒子の種類は、波の形の四つの独立な性質だけで決まる。
+
+\textbf{軸①パリティ（統計）.} 奇数倍音は反周期
+\(f(\theta+\pi)=-f(\theta)\)
+で二価------二重被覆を要するフェルミオン型。偶数倍音は一価------ボゾン型。奇数倍音の等振幅束によるフェルミオン的構成と衝突は実測済みである
+{[}8{]}。
+
+\textbf{軸②束縛（住所と量子化）.}
+整数比で束ねられた倍音族は調和族＝閉包を成し、交換作用素の厳密有限位数根
+\(U^n=\pm I\) として回帰する {[}2{]}。閉包はレジスタ \(n\) 上の既約住所
+\(m/n\) を持ち、\textbf{住所が電荷値を与える}：素電荷は
+\(1-R=\sin^2(23\pi/124)=0.302822\)、無次元素電荷 \(\sqrt{4\pi\alpha}\)
+と 0.16 ppm で一致する
+{[}2{]}{[}3{]}。高エネルギーの実効電荷は同じ素電荷の5倍細分レジスタ（\(620=5\times124\)、時計
+\(1240=5\times248\)）での読みであり、粗い時計の観測者には細かい根が電子の住所へ厳密に折り返されて読まれる（エイリアシング＝電荷普遍性の機構候補）{[}9{]}。束縛されない関係は海に留まる。
+
+\textbf{軸③コヒーレンス（質量）.} 対 \((a,b)\) の Gram 不変量
+
+\[
+\det\Gamma=N_AN_B-|\langle a|b\rangle|^2
+\]
+
+は Cauchy--Schwarz により \(\det\Gamma\ge0\) であり、等号は
+\(b\propto a\)（完全共有）のとき、かつそのときに限る------これは実験ではなく恒等式である。\(\det\Gamma\)
+を質量²型不変量と読めば、\textbf{質量とは非コヒーレンスであり、完全共有には質量という読みが原理的に発生しない}。
+
+\textbf{軸④毛（電荷の担い手）.}
+±の搬送波（毛）を持つ共有対にのみ電荷型の流れが立ち、中性化は成分ゼロとチャネル非共有の二機構で起こる
+{[}3{]}。
+
+四軸から原型が出る：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{光子}＝毛を持たない、完全共有された偶数差モード。共有チャネルの選択則
+  \(\Delta k=\pm2\)（実測、結合 0.5
+  {[}3{]}）------二つの奇数倍音の差＝偶数のモード------の量子であり、偶数だからボゾン（軸①）、完全共有だから質量ゼロ（軸③の恒等式）、毛を持たないから電荷ゼロ（軸④）、住所を持たないから自由。四つの性質はそれぞれ独立の軸から従う。長距離の逆二乗は調和閉鎖の媒介が担う
+  {[}7{]}
+\item
+  \textbf{荷電フェルミオン（電子型）}＝奇・束縛（レジスタ124の住所）・非コヒーレント束・毛つき共有
+\item
+  \textbf{中性フェルミオン}＝奇・束縛・毛なしまたは非共有（重力のみ受ける：大きさの項はノルムを住所と無関係に読む
+  {[}3{]}）
+\item
+  \textbf{バリオン}＝巻き数で位相的に保護された束縛閉包（バリオン数＝巻き数、安定性＝崩壊の行き先の不在）。この同定は本枠組みでは\textbf{対応仮説}の段階であり（外部では
+  Skyrme 系譜 {[}12{]}{[}13{]}
+  が同型構造を実証している）、導出は未解決問題4に置く
+\end{itemize}
+
+判定木には空席が一つ明示的に残る：\textbf{偶・束縛・毛つき}（荷電の重いボゾン、W±
+の枠）------未解決問題2である。
+
+\subsection{4.
+導出III------物質と反物質：完走の幾何が対で数える}\label{ux5c0eux51faiiiux7269ux8ceaux3068ux53cdux7269ux8ceaux5b8cux8d70ux306eux5e7eux4f55ux304cux5bfeux3067ux6570ux3048ux308b}
+
+素電荷レジスタの固有値は
+\(\lambda^{31}=i,\ \lambda^{62}=-1,\ \lambda^{124}=+1\) を満たす
+{[}2{]}。完走の半分の地点 \(\lambda^{62}=-1\)
+は共役・符号反転であり、全周 \(\lambda^{124}=+1\)
+で自己に戻る。スピノルの 2:1 被覆（状態周期は観測周期の2倍
+{[}9{]}）と合わせ、\textbf{閉鎖完走の幾何そのものが粒子・反粒子を対で数える}。対の生成に追加の対称性は要らない。
+
+\subsection{5.
+導出IV------存在量：稀少さとゼロでないことが同時に出る}\label{ux5c0eux51faivux5b58ux5728ux91cfux7a00ux5c11ux3055ux3068ux30bcux30edux3067ux306aux3044ux3053ux3068ux304cux540cux6642ux306bux51faux308b}
+
+分解能 \(N\) の系は \(M=N(N-1)/2\) 本の関係波を持つ
+{[}6{]}。閉鎖を完走できるのは整数比の対（一方が他方の整数倍------調和族に束ねられる対、軸②）だけであり、その数は
+
+\[
+\#\{(i,j):i<j,\ i\mid j\}=\sum_{i=1}^{N}\left(\left\lfloor\frac{N}{i}\right\rfloor-1\right)=N\ln N+(2\gamma-2)N+O(\sqrt N)
+\]
+
+（\(\gamma\): Euler 定数、Dirichlet
+の約数和評価）。ゆえに閉包になれる関係の割合は
+
+\[
+f(N)=\frac{2\,(\ln N+2\gamma-2)}{N}+O(N^{-3/2})
+\]
+
+------\textbf{\(N\)
+の拡大とともに急落するが、決してゼロにならない}。「物質がほとんど無いが厳密に存在する」の両方が、この一つの分数から自動で出る。観測されるバリオン・光子比
+\(\eta\approx6\times10^{-10}\) を \(f(N)\) に等置すると
+\(N\approx8\times10^{10}\)------\textbf{η
+は、インフレーション的拡大が三方向で停止した瞬間の分解能の化石}として読まれる（\(N\)
+自体は観測からの読み値であって導出ではない------未解決問題8）。
+
+標準宇宙論のバリオン数生成は Sakharov の三条件と CP
+破れの大きさを外部入力とする
+{[}17{]}。本枠組みの主張はその置換である：\textbf{非対称の小ささは微調整ではなく、整数比対の数え上げである}（B
+破れ動力学の詳細な対応は未解決問題に残す）。
+
+\subsection{6. 出典対応}\label{ux51faux5178ux5bfeux5fdc}
+
+主張の各文が依拠する検証済み事実：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{光の海＝零閉塞}：公理系 {[}1{]}。完全共有⇒質量なしは本文の
+  Cauchy--Schwarz 恒等式（第3節軸③）
+\item
+  \textbf{パリティ分岐}：奇数倍音束のフェルミオン的構成・衝突の実測
+  {[}8{]}、毛±の実装 {[}3{]}
+\item
+  \textbf{住所捕獲・回帰・量子化}：厳密有限位数根
+  {[}2{]}、数え上げ読出しと Niven 交点 {[}4{]}、Arnold tongue
+  と観測選択・時計継承
+  {[}5{]}、二α根のレジスタ算術・時計盲目性・エイリアシング・質量ビート
+  {[}9{]}
+\item
+  \textbf{物質/反物質の λ 周期}：{[}2{]} 6.5節
+\item
+  \textbf{存在量の勘定}：関係波 \(M=N(N-1)/2\) の機構
+  {[}6{]}、数え上げは本文第5節（初等）
+\item
+  \textbf{万能相互作用と力＝種の別名}：二項恒等式・一意割当て {[}3{]}
+\item
+  \textbf{光子＝媒介}：ヌル定理・\(\Delta k=\pm2\) 梯子
+  {[}3{]}、調和閉鎖の逆二乗媒介 {[}7{]}
+\end{itemize}
+
+\subsection{7.
+先行研究との関係------収束の証拠と相違}\label{ux5148ux884cux7814ux7a76ux3068ux306eux95a2ux4fc2ux53ceux675fux306eux8a3cux62e0ux3068ux76f8ux9055}
+
+外部文献は本稿の導出根拠ではない。同型の構図の独立な実現と、歴史的先行を示す。
+
+\textbf{媒質の中の安定構造としての粒子.} Kelvin の渦原子
+{[}10{]}：原子＝普遍媒質中の安定な渦構造------「既定＝媒質、粒子＝例外的安定構造」の原型。Wheeler
+のジェオン {[}11{]}：電磁波が自己重力で束ねられ粒子様に振る舞う「mass
+without
+mass」------物質を光から作る最初の定量的試み（相違：背景時空と重力束縛が必要）。Skyrme
+{[}12{]} と Finkelstein--Rubinstein
+{[}13{]}：バリオン数＝位相的巻き数、二重被覆から巻き数の偶奇でスピン統計------本稿のバリオン対応仮説とパリティ分岐の最近接の先行（相違：背景時空上の場のソリトン）。Hestenes
+の zitterbewegung 電子
+{[}14{]}：電子＝光的な螺旋閉軌道------「質量＝光的成分の束」の単一粒子版（相違：種の生成機構なし）。Volovik
+{[}15{]}：超流動 ³He の Fermi
+点近傍でフェルミオン準粒子・ゲージ場・有効重力が共創発------「種と力の共創発」の現代実現（相違：凝縮系の下部構造を仮定、低エネルギー極限のみ、有理住所量子化なし）。Wilczek
+{[}16{]}：可視宇宙の質量の99\%は質量ゼロのクォーク・グルーオン動力学から------「質量は質量ゼロの構成要素から」が自然界の実際の姿だという経験的支持。
+
+\textbf{倍音と粒子種.} Kaluza--Klein
+{[}18{]}{[}19{]}：コンパクト円周のモード番号が電荷（整数量子化）と質量塔を与える------「円周上の倍音番号＝電荷」の直接の先行（相違：余剰空間次元を要し、住所は整数のみで既約比・偶奇構造・普遍性機構なし）。弦理論の
+RNS 構成
+{[}20{]}{[}21{]}：粒子種＝一つの物体の振動モード、しかも周期的（Ramond）／反周期的（Neveu--Schwarz）境界条件と整数／半整数モードがフェルミオン／ボゾンを分ける------パリティ分岐の直接の先行（相違：世界面・臨界次元・世界面超対称性を外部から要する。本稿は閉鎖円周の倍音自身の偶奇のみ）。Regge--Chew--Frautschi
+{[}22{]}：ハドロン種の族＝励起の梯子（相違：強い相互作用内の現象論）。歴史的な種として
+de Broglie {[}23{]}：物質＝周期性。
+
+\textbf{対比枠.} Sakharov
+{[}17{]}：バリオン数生成の三条件------本稿の数え上げが置換を主張する標準枠。
+
+本稿に固有なのは三点である：（i）統計を倍音自身の偶奇から（超対称性なし）、（ii）電荷を既約有理住所から（余剰次元なし）、（iii）存在量を有限分解能の数え上げから（微調整なし）------そして三つが単一の公理系から同時に分岐すること。
+
+\subsection{8. 未解決問題}\label{ux672aux89e3ux6c7aux554fux984c}
+
+\subsubsection{第一級------本論文の主張に直接残る穴}\label{ux7b2cux4e00ux7d1aux672cux8ad6ux6587ux306eux4e3bux5f35ux306bux76f4ux63a5ux6b8bux308bux7a74}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{住所選択問題（素電荷の一意性）.} レジスタ124の既約住所は
+  \(\varphi(124)=60\)
+  個あり、それぞれ異なる電荷値を与える。現段階の枠組みは、このうち一つだけが実現する理由を持たない------\textbf{60種類の電荷があってもおかしくない}。消去済み：静的数え上げ
+  {[}4{]}、ロック重み（幅比 \(>461\)）{[}5{]}、固定点
+  {[}5{]}、観測選択（時計へ継承）{[}5{]}、単純算術選別4種
+  {[}9{]}。残る候補：質量平衡（ノルムセクター動力学、未検定）と親閉鎖からの時計継承。最終形は「観測時計はなぜ248と可換か」{[}5{]}。
+\item
+  \textbf{ボゾンのスペクトル問題.}
+  導出できたボゾンは光子ただ一つ。質量を持つボゾン・荷電ボゾン（W±
+  の枠＝偶・束縛・毛つき）の存在理由は導出できておらず、判定木の空席である。
+\item
+  \textbf{質量辞書問題（エネルギー階層）.}
+  質量＝非コヒーレンスは定性的に確立したが、物理質量をレジスタ・住所から与える関数形は未導出。素朴候補（レジスタ比5・結合比25）は世代比
+  \(m_\mu/m_e=206.77\) と模型自身の精度基準で不整合（棄却済み
+  {[}9{]}）。エネルギー階層が離散的な世代として現れる理由も未導出。\textbf{質量あるものの存在は言えるが、質量の値は一つも言えない。}
+\item
+  \textbf{バリオン同定問題.}
+  バリオン数＝巻き数は対応仮説の段階であり、本枠組み内での導出（巻き数の定義・保存・安定性＝行き先の不在）は未完である。
+\end{enumerate}
+
+\subsubsection{第二級------隣接論文と共有する接続課題}\label{ux7b2cux4e8cux7d1aux96a3ux63a5ux8ad6ux6587ux3068ux5171ux6709ux3059ux308bux63a5ux7d9aux8ab2ux984c}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  \textbf{距離辞書}：\(\Delta\theta\leftrightarrow r\) の翻訳と Kepler
+  型閉鎖条件 \(\omega^2R''^3=\text{const.}\)（三部作
+  {[}3{]}・実在中心論文 {[}7{]} と共有）。
+\item
+  \textbf{符号の翻訳}：相対位相の±が空間的引力・斥力のどちらへ写るか（辞書完成と同時に自動判定される予言として固定済み
+  {[}3{]}）。
+\item
+  \textbf{幾何接続}：三方向→3+1次元時空への実現写像8課題は三部作C終節
+  {[}5{]} が保持する。本稿は重複させない。
+\end{enumerate}
+
+\subsubsection{第三級------前提側に残る未導出}\label{ux7b2cux4e09ux7d1aux524dux63d0ux5074ux306bux6b8bux308bux672aux5c0eux51fa}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  \textbf{分解能 \(N\) の値}：\(f(N)\) は導出だが、拡大停止時の
+  \(N\approx10^{11}\) は観測比 \(\eta\)
+  からの読み値であって導出ではない。なぜ拡大がその
+  \(N\)・三方向で停止するかは {[}6{]} の未解決と同一。
+\item
+  \textbf{強い相互作用・弱い相互作用の位置づけ}：本枠組みの力のメニューは二文法と媒介のみであり、SU(2)・SU(3)
+  型構造は未着手である。
+\item
+  \textbf{スピンの値}：偶奇↔統計の対応は確立したが、変換倍率としてのスピンの値（\(\pm1/2,\ \pm1\)）が内部モードのどの離散的特徴から読み出されるかは未導出。
+\end{enumerate}
+
+この課題表は本稿の弱点の列挙ではなく、今後の系列の進行指針である。
+
+\subsection{9. 再現性}\label{ux518dux73feux6027}
+
+本稿は導出と総合のみであり、新しい数値実験を含まない。依拠する定量的事実はすべて公開済みである：三部作の再現パッケージ
+{[}3{]}{[}4{]}{[}5{]}（全数値がコミット済みランナーと一対一、SHA-256
+検証付き）、有限位数根の再現バンドル {[}2{]}、N体関係波の再現パッケージ
+{[}6{]}、調和閉鎖・実在中心の導出と検証 {[}7{]}、論文D予備実験群
+{[}9{]}（リポジトリ内、コミット
+7beea7ed・d802907a、予言先書き・反証と訂正の全記録つき）。本文中で新たに用いた数学は
+Cauchy--Schwarz の等号条件（第3節）と Dirichlet
+の約数和評価（第5節）の二つの初等的事実のみである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsection{自己引用}\label{ux81eaux5df1ux5f15ux7528}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  木原範昭「無名等振幅複合波モデル基本公理系」Concept DOI:
+  \texttt{10.5281/zenodo.21315735}（常に最新版）, 2026.
+\item
+  木原範昭「反復交換散乱における有限位数共鳴の発見------微細構造定数137・128近傍ピークの原因特定と再現可能な波束数理モデル」Version
+  DOI: \texttt{10.5281/zenodo.21421367}, Concept DOI:
+  \texttt{10.5281/zenodo.21421366}, 2026.
+\item
+  木原範昭「無名二チャネル閉鎖波系における相互作用の二文法分解」（三部作第一部）Version
+  DOI: \texttt{10.5281/zenodo.21763996}, Concept DOI:
+  \texttt{10.5281/zenodo.21763995}, 2026.
+\item
+  木原範昭「無名二チャネル閉鎖波系における数え上げ読出しの構造」（三部作第二部）Version
+  DOI: \texttt{10.5281/zenodo.21763998}, Concept DOI:
+  \texttt{10.5281/zenodo.21763997}, 2026.
+\item
+  木原範昭「無名二チャネル閉鎖波系におけるロック動力学」（三部作第三部）Version
+  DOI: \texttt{10.5281/zenodo.21764000}, Concept DOI:
+  \texttt{10.5281/zenodo.21763999}, 2026.
+\item
+  木原範昭「N体関係波閉鎖系における自発的分裂の停止と追加軸の創生」Version
+  DOI: \texttt{10.5281/zenodo.21543071}, Concept DOI:
+  \texttt{10.5281/zenodo.21543070},
+  2026；同「N体関係波閉鎖系における三方向生成の時間構造------二段階seed除去による因果分離」Version
+  DOI: \texttt{10.5281/zenodo.21614403}, Concept DOI:
+  \texttt{10.5281/zenodo.21614402}, 2026. （関係波
+  \(M=N(N-1)/2\)・インフレーション的拡大・三方向停止・seed非依存）
+\item
+  木原範昭「AB二体閉鎖位相系における未来位相位置加速度写像と調和閉鎖による逆二乗則
+  v4」Concept DOI:
+  \texttt{10.5281/zenodo.21441081}；同「実在中心読み直しによる加速度写像の再導出」Version
+  DOI: \texttt{10.5281/zenodo.21765368}, Concept DOI:
+  \texttt{10.5281/zenodo.21765367}, 2026.
+\item
+  木原範昭「交換干渉散乱行列フェルミオン的衝突における加速度基底と局在性交換予備実験総括
+  v1」Version DOI: \texttt{10.5281/zenodo.21333768}, Concept DOI:
+  \texttt{10.5281/zenodo.21333766}, 2026. （奇数倍音束 B63
+  のフェルミオン的構成と衝突の実測）
+\item
+  木原範昭、論文D予備実験群（二α根のレジスタ算術・時計盲目性・エイリアシング／質量ビート／住所選別調査）、リポジトリ
+  \texttt{ai-chat-logs-open} 内 \texttt{paperD\_*}
+  実験フォルダ、コミット \texttt{7beea7ed}・\texttt{d802907a}, 2026.
+\end{enumerate}
+
+\subsection{外部参考文献}\label{ux5916ux90e8ux53c2ux8003ux6587ux732e}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{9}
+\tightlist
+\item
+  W. Thomson (Lord Kelvin), ``On Vortex Atoms'', \emph{Proc. R. Soc.
+  Edinburgh} \textbf{6}, 94--105 (1867).
+\item
+  J. A. Wheeler, ``Geons'', \emph{Phys. Rev.} \textbf{97}, 511 (1955).
+  DOI: \texttt{10.1103/PhysRev.97.511}.
+\item
+  T. H. R. Skyrme, ``A non-linear field theory'', \emph{Proc. R. Soc.
+  Lond. A} \textbf{260}, 127 (1961); ``A unified field theory of mesons
+  and baryons'', \emph{Nucl. Phys.} \textbf{31}, 556 (1962).
+\item
+  D. Finkelstein and J. Rubinstein, ``Connection between Spin,
+  Statistics, and Kinks'', \emph{J. Math. Phys.} \textbf{9}, 1762
+  (1968). DOI: \texttt{10.1063/1.1664510}.
+\item
+  D. Hestenes, ``The zitterbewegung interpretation of quantum
+  mechanics'', \emph{Found. Phys.} \textbf{20}, 1213 (1990). DOI:
+  \texttt{10.1007/BF01889466}.
+\item
+  G. E. Volovik, \emph{The Universe in a Helium Droplet}, Oxford
+  University Press (2003).
+\item
+  F. Wilczek, ``Mass without mass I: Most of matter'', \emph{Phys.
+  Today} \textbf{52}(11), 11 (1999); ``Mass without mass II: The medium
+  is the mass-age'', \emph{Phys. Today} \textbf{53}(1), 13 (2000).
+\item
+  A. D. Sakharov, ``Violation of CP invariance, C asymmetry, and baryon
+  asymmetry of the universe'', \emph{JETP Lett.} \textbf{5}, 24 (1967).
+\item
+  T. Kaluza, ``Zum Unitätsproblem der Physik'', \emph{Sitzungsber.
+  Preuss. Akad. Wiss. Berlin}, 966 (1921).
+\item
+  O. Klein, ``Quantentheorie und fünfdimensionale Relativitätstheorie'',
+  \emph{Z. Phys.} \textbf{37}, 895 (1926). DOI:
+  \texttt{10.1007/BF01397481}.
+\item
+  P. Ramond, ``Dual Theory for Free Fermions'', \emph{Phys. Rev.~D}
+  \textbf{3}, 2415 (1971). DOI: \texttt{10.1103/PhysRevD.3.2415}.
+\item
+  A. Neveu and J. H. Schwarz, ``Factorizable dual model of pions'',
+  \emph{Nucl. Phys. B} \textbf{31}, 86 (1971).
+\item
+  G. F. Chew and S. C. Frautschi, ``Principle of Equivalence for All
+  Strongly Interacting Particles within the S-Matrix Framework'',
+  \emph{Phys. Rev.~Lett.} \textbf{7}, 394 (1961). DOI:
+  \texttt{10.1103/PhysRevLett.7.394}.
+\item
+  L. de Broglie, ``Recherches sur la théorie des quanta'', \emph{Ann.
+  Phys.} (Paris) \textbf{3}, 22 (1925)（1924年学位論文）.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{付記（本稿の証拠構造）}
+本稿の全ての定量的主張は、（i）公開済み論文の実測（各 DOI
+の再現パッケージで検証可能）、（ii）リポジトリ内のコミット済み予備実験（予言先書き・反証と訂正の全記録つき）、（iii）本文中の初等的恒等式、のいずれかに一対一で対応する。新しい実験・新しい図表を含まないのは、この論文の主張が新しいデータではなく、確立済みの事実の\textbf{配置}------既定と例外の逆転------にあるためである。
+
+\end{document}
