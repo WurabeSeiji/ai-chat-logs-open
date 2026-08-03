@@ -114,6 +114,7 @@
 - **Concept DOI**：[10.5281/zenodo.21766706](https://doi.org/10.5281/zenodo.21766706)／**v1 DOI**：[10.5281/zenodo.21766707](https://doi.org/10.5281/zenodo.21766707)
 - **形式**：md（日英）+ tex（日英）+ pdf（日英）= 6ファイル、三部作へ isSupplementedBy リンク
 - **Zenn**：[フェルミオンの生成構造](https://zenn.dev/noriaki_kihara/articles/generation-structure-of-fermions)
+- **note（日本語）**：[素粒子は、なぜ生まれたのか——粒子とは、光の海で閉鎖を完走した稀な波だった](https://note.com/kiharanoriaki/n/n93d91d0c1bb2)（2026-08-04 公開。下書きmd：次元の生成構造/素粒子はなぜ生まれたのか_note完成稿.md。クォーク1/3電荷・素電荷の値・ボゾンスペクトル・質量階層の未解明を明記）
 - **所在**：次元の生成構造/第9論文_フェルミオンの生成構造/
 
 ### 2026-08-04: 実在中心読み直しによる加速度写像の再導出（導出置換編）新規公開
