@@ -1,0 +1,549 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{AB二体閉鎖位相系における実在中心読み直しによる加速度写像の再導出}\label{abux4e8cux4f53ux9589ux9396ux4f4dux76f8ux7cfbux306bux304aux3051ux308bux5b9fux5728ux4e2dux5fc3ux8aadux307fux76f4ux3057ux306bux3088ux308bux52a0ux901fux5ea6ux5199ux50cfux306eux518dux5c0eux51fa}
+
+\subsection{三つの円 R・R′・R″
+による遠心力釣合いの重力型読み、未来位相位置中心の除去、および読出し分類定理の系としての等価原理}\label{ux4e09ux3064ux306eux5186-rrr-ux306bux3088ux308bux9060ux5fc3ux529bux91e3ux5408ux3044ux306eux91cdux529bux578bux8aadux307fux672aux6765ux4f4dux76f8ux4f4dux7f6eux4e2dux5fc3ux306eux9664ux53bbux304aux3088ux3073ux8aadux51faux3057ux5206ux985eux5b9aux7406ux306eux7cfbux3068ux3057ux3066ux306eux7b49ux4fa1ux539fux7406}
+
+\textbf{著者:} 木原 範昭\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{日付:} 2026年8月4日\\
+\textbf{Version DOI:} \texttt{10.5281/zenodo.21765368}\\
+\textbf{Concept DOI:} \texttt{10.5281/zenodo.21765367}\\
+\textbf{位置づけ:} 「波の情報読出し」シリーズ・AB二体閉鎖位相系 追加論文
+v1（先行論文 {[}2{]}
+の導出置換編。\textbf{本稿は導出のみであり、新しい数値実験を含まない}。数値的裏付けはすべて
+{[}2{]}{[}3{]} の公開済み再現パッケージに依拠する）
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+\textbf{（中心の実在化）} 先行論文 {[}2{]}
+の加速度写像は、未来位相位置という仮想点を回転中心とする導出を用いていた。本稿はこの仮想点を除去する。同一閉鎖円周上に実在する相手
+B
+を中心とする読み直しにより、同じ加速度写像が導出される。本構成に現れる中心は、親閉鎖の中心
+O と円周上の実在 B
+の二つだけであり、いずれも閉鎖から読まれる。なお本稿で「B
+中心の読み直し」とは、A が B の周囲を回るという意味ではない。A
+の加速度は常に O を向いており、その A→B 方向成分（差動成分）を実在 B
+を基準に読むことをいう（3.2節）。
+
+\textbf{（三円完結）} B の読みは、三つの閉鎖量------親半径 \(R\)、B
+の固有半径 \(R'\)、関係距離
+\(R''=2R\sin(\theta/2)\)------だけで完結する。背景座標・外部距離・重力場・質量源は一切導入しない。
+
+\textbf{（導出の同一性）} B
+中心の読み直しで遠心力と釣り合う加速度は、調和閉鎖（\(|\omega_n|\,\Delta\theta_n=\Omega\)）と合わせて、先行論文の逆二乗則
+\(\alpha_n=R\Omega^2/\Delta\theta_n^2\)
+を\textbf{厳密に同じ式として}再現する。変わるのは式ではなく導出であり、旧導出に含まれていた恣意性（仮想中心・反力の物語）は完全に除去される。
+
+\textbf{（対の同一性）} 親円周上で共回転する二体 A・B
+の運動学は、\textbf{相互引力 \(g=\omega^2 R''/2\)
+で結ばれ共通重心を回る二体閉鎖軌道と厳密に同一}である（命題2、等応答二体の運動学としての初等幾何の恒等式）。すなわち、背景座標も重力場も導入せず、親閉鎖への共通拘束運動を二体関係へ分解するだけで、互いを向く相互引力型の差動加速度が必然的に現れる------\textbf{重力型の運動は新しい力ではなく、全体閉鎖運動の局所的な二体差動表示である}。
+
+\textbf{（等価原理の導出）} B
+の内部観測者が持ちうる保存読出しは位相盲目である（保存読出し分類定理
+{[}3{]}）。ゆえに B
+の内部からは、親円周上の拘束された共回転と、重力場の中にいることが原理的に区別できない------\textbf{等価原理は本系では仮定ではなく、読出し分類定理の系として導出される}。導出されるのは、本系の読出しクラスにおける運動学的不可識別性------等価原理の前幾何学的原型------であり、その射程は3.4節で明示する。
+
+\textbf{（スケール比の同定）} B の固有半径は子閉鎖の構成から
+\(R'/R=m/M\)（\(m\): 倍音指数、\(M\): 分解能）と導出される。三部作
+{[}3{]} が実証した二乗型の重力文法に入るスケール変数は、この分解能比
+\(m/M\)
+と同定される。ゆえに階層のスケール比は自由パラメータではなく分解能比である（直接の力式への接続は距離辞書と合わせて次論文の課題）。
+
+\textbf{キーワード:}
+閉鎖位相系、関係読み、遠心力釣合い、等価原理、逆二乗則、Mach原理、分解能、再現可能導出
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{0. 結論}\label{ux7d50ux8ad6}
+
+\[
+\boxed{
+\begin{aligned}
+&\text{回転中心は全て実在（親の中心 O と円周上の B）。仮想点は不要。}\\
+&\text{B の読みは } R,\ R',\ R''=2R\sin(\theta/2) \text{ の三円で完結する。}\\
+&\text{対の差動成分 } g=\omega^2 R''/2 \text{ は、共通重心を回る二体閉鎖軌道の釣合いと厳密同一。}\\
+&\text{重力型運動＝全体閉鎖運動の局所的二体差動表示（力の新規導入なし）。}\\
+&\text{逆二乗則 } \alpha_n=R\Omega^2/\Delta\theta_n^2 \text{ は同じ式のまま再導出される。}\\
+&\text{等価原理は、位相盲目な保存読出しの分類定理の系である。}
+\end{aligned}
+}
+\]
+
+\subsection{本稿の位置づけ}\label{ux672cux7a3fux306eux4f4dux7f6eux3065ux3051}
+
+先行論文 {[}2{]}
+は、AB二体閉鎖位相系において、未来位相位置を関係的回転中心とする加速度写像と、整数倍音が位相セル幅と角速度を同時に定める調和閉鎖を接続し、位相セル幅に対する逆二乗則
+\(\alpha_n=R\Omega^2/\Delta\theta_n^2\)
+を数値的に確立した。式と数値結果はすべて正しい。しかし導出の散文には四つの欠陥があった（付記に記録）。本稿はこの導出を置き換える。数値実験は一切追加しない：主張はすべて初等幾何の恒等式と、公開済みの定理
+{[}3{]} からの論理的帰結である。
+
+\subsection{1.
+課題------旧導出の四つの欠陥}\label{ux8ab2ux984cux65e7ux5c0eux51faux306eux56dbux3064ux306eux6b20ux9665}
+
+{[}2{]}
+の導出は「未来位相位置を中心とした回転による遠心力の反力」という物語を用いていた。この物語には次の欠陥がある。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{慣性系の借用（無名性違反）.}
+  遠心力は回転座標系の見かけの力であり、その定義には回転していない基準系------背景の慣性構造------を要する。導出すべきものを説明の側が先取りする循環である。
+\item
+  \textbf{反力の作用対の不在.}
+  反力は作用・反作用対を要求するが、回っているのは位相であって空間中の物体ではなく、力の担い手が定義できない。
+\item
+  \textbf{未来中心の目的論.}
+  回転中心が未来の位置にあるという構図は、未来が現在に作用するかのように読める。
+\item
+  \textbf{物語と計算の乖離.}
+  再現計算が実際に使うのは正弦波の二階差分恒等式
+  \(\Delta^2\chi=-\omega^2\chi\)
+  だけであり、遠心力・反力は検証されたどの計算にも対応物を持たない装飾であった。
+\end{enumerate}
+
+本稿の課題は、同じ式を、これらの欠陥を全く含まない構成から導出することである。
+
+\subsection{2.
+構成------三つの円}\label{ux69cbux6210ux4e09ux3064ux306eux5186}
+
+\textbf{公理系.} 無名等振幅複合波モデル基本公理系 {[}1{]}
+に従う。親閉鎖は
+
+\[
+A^2+B^2+(iR)^2=0,\qquad\text{すなわち}\qquad A^2+B^2=R^2
+\]
+
+の読みを持つ（零閉鎖の R 軸命名）。分解能公理により唯一のパラメータ
+\(M\) が与えられ、最短波長
+
+\[
+\lambda_0=\frac{2\pi R}{M}
+\]
+
+が一意に決まる。
+
+\textbf{三つの円.} 同一円周上に二体 A・B が位相差 \(\theta\)
+で存在する。次の三つの閉鎖量を定義する（図1）。
+
+\begin{itemize}
+\tightlist
+\item
+  \(R\)：親閉鎖の半径。
+\item
+  \(R'\)：B の固有半径。B が基本波長 \(m\lambda_0\)
+  の倍音族（子閉鎖）であるとき、子の円周は
+  \(2\pi R'=m\lambda_0\)、ゆえに
+\end{itemize}
+
+\[
+R'=\frac{m\lambda_0}{2\pi}=\frac{m}{M}\,R
+\]
+
+これは選択ではなく導出である。
+
+\begin{itemize}
+\tightlist
+\item
+  \(R''\)：B から A への関係距離。円周上の位相差 \(\theta\) の弦として
+\end{itemize}
+
+\[
+R''=2R\sin\frac{\theta}{2}
+\]
+
+三つの円はすべて閉鎖から読まれる。背景座標・外部距離は登場しない。役割は分かれる：\textbf{差動運動学（命題1・2）を作るのは
+\(R\) と \(R''\) の二円}であり、\(R'\)
+は運動学の射影には現れず、\textbf{階層辞書（3.6節）を担う}。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={B中心読み直しの三円図}]{fig_b_centered_three_circles_v1.png}}
+\caption{B中心読み直しの三円図}
+\end{figure}
+
+図1。親円 \(R\)（灰）、B の固有半径 \(R'\)（橙）、関係距離
+\(R''\)（青・破線）。回転中心は親の中心 O と実在の B
+のみである。作図スクリプト
+\texttt{run\_fig\_b\_centered\_three\_circles\_v1.py} を同梱する。
+
+\subsection{3. 導出}\label{ux5c0eux51fa}
+
+\subsubsection{3.1
+恒等式としての向心加速度}\label{ux6052ux7b49ux5f0fux3068ux3057ux3066ux306eux5411ux5fc3ux52a0ux901fux5ea6}
+
+親円周上の点の位置成分は整数倍音の正弦波であり、その二階差分は自分自身に比例する：
+
+\[
+\Delta^2\chi=-\omega^2\chi\qquad(\text{連続極限で }a=R\omega^2,\ \text{向き O})
+\]
+
+これは力ではなく恒等式である。{[}2{]}
+の全数値結果はこの恒等式の検証であった。
+
+\subsubsection{3.2 B
+中心の分解（命題1）}\label{b-ux4e2dux5fc3ux306eux5206ux89e3ux547dux984c1}
+
+\textbf{命題1（差動成分）.} 二等辺三角形 OAB（\(OA=OB=R\)、頂角
+\(\theta\)）において、A の向心加速度ベクトル（大きさ \(R\omega^2\)、向き
+A→O）の、A→B 方向成分は
+
+\[
+a_{AB}=R\omega^2\sin\frac{\theta}{2}=\frac{\omega^2 R''}{2}
+\]
+
+である。
+
+\textbf{証明.} 底角は \((\pi-\theta)/2\) であるから、A→O と A→B
+のなす角は \((\pi-\theta)/2\)。成分は
+\(R\omega^2\cos\!\big(\tfrac{\pi-\theta}{2}\big)=R\omega^2\sin\tfrac{\theta}{2}\)。\(R''=2R\sin(\theta/2)\)
+を代入して主張を得る。\(\blacksquare\)
+
+なお、A が B の周囲を回るのではないことを再度明記する。A の加速度は常に
+O を向いており、「B 中心の読み直し」とはその差動成分を実在 B
+を基準に読むことである。対称性により B 側も同じ大きさの成分を A
+向きに持つ。すなわち向心加速度は、\textbf{対の共通成分}（対全体の親閉鎖への拘束、垂直二等分線方向）と、\textbf{対の差動成分}（互いに相手を向く
+\(\omega^2R''/2\) の対）に一意に分解される。
+
+\subsubsection{3.3
+対の同一性（命題2）}\label{ux5bfeux306eux540cux4e00ux6027ux547dux984c2}
+
+\textbf{命題2（二体閉鎖軌道との厳密同一）.} 分離 \(R''\)
+の二体が共通重心（線分 AB の中点）を角速度 \(\omega\)
+で回る閉鎖軌道に要する向心加速度は、各体で
+\(\omega^2(R''/2)\)、向きは相手側である。これは命題1の差動成分と大きさ・向きとも厳密に一致する。ゆえに、\textbf{親円周上の共回転対の運動学は、相互引力
+\(g=\omega^2R''/2\)
+で結ばれた二体閉鎖軌道の運動学と、恒等的に同一}である。ここで共通重心を中点に置くことは、二体の慣性応答が等しい場合（等応答二体）に対応する。不等応答への一般化------重心の内分点化と、慣性比を閉鎖量（\(R'\)・ノルム・分解能比）から読む導出------は次論文の課題である。
+
+\textbf{証明.} 共通重心からの距離は \(R''/2\)、必要向心加速度は
+\(\omega^2(R''/2)\)、向きは重心方向＝相手方向。命題1と一致。\(\blacksquare\)
+
+ここに力は導入されていない。同一なのは運動学であり、「引力」はまだ名前ではなく差動成分の別読みである。名前を与えるのは次節の等価原理である。
+
+\subsubsection{3.4
+等価原理の導出（定理）}\label{ux7b49ux4fa1ux539fux7406ux306eux5c0eux51faux5b9aux7406}
+
+\textbf{定理（等価原理）.} B
+の内部観測者が持ちうる保存読出しは、ビン別回転不変量のみの関数に限られる（保存読出し分類定理
+{[}3{]}：実回転は各ビンで \(|A_k|^2+|B_k|^2\)
+を厳密に保存し------平行四辺形恒等式------保存読出しはその関数に限る。数値分類では7候補中、対角和のみが保存、最大自己ドリフト
+\(2.2\times10^{-16}\)。この分類は本系で採用した読出し候補クラス------ビン別パワー比型------内のものである）。この読出しは共回転の位相を含まない。ゆえに
+B の内部には、（i）親円周上の拘束された共回転と、（ii）相互引力
+\(g=\omega^2R''/2\)
+の場の中の二体閉鎖軌道とを区別する観測量が\textbf{存在しない}。命題2によりこの二つは運動学的にも同一であるから、B
+の内部観測者にとって差動成分は重力加速度として読まれる。\(\blacksquare\)
+
+等価原理は本系では仮定ではない。位相盲目という読出しの限界の帰結である。
+
+\textbf{射程.}
+本定理が確立するのは、本閉鎖系における等価原理の\textbf{運動学的・読出し論的原型}（局所的不可識別性）である。物理学の等価原理が含む他の段階------内部構造の異なる試験体の落下普遍性、慣性質量と重力質量の一致、局所慣性系における非重力法則の特殊相対論形------は本稿の射程外であり、次論文以降の課題として明示的に残す。
+
+\subsubsection{3.5
+逆二乗則の再導出（同じ式）}\label{ux9006ux4e8cux4e57ux5247ux306eux518dux5c0eux51faux540cux3058ux5f0f}
+
+調和閉鎖 {[}2{]} により、整数倍音 \(n\) は位相セル幅
+\(\Delta\theta_n=2\pi/|n|\) と角速度 \(\omega_n=n\omega_1\)
+を同時に定め、\(|\omega_n|\,\Delta\theta_n=\Omega\)
+が成立する。ゆえに向心加速度の大きさは
+
+\[
+\alpha_n=R\,\omega_n^2=\frac{R\,\Omega^2}{\Delta\theta_n^2}
+\]
+
+------{[}2{]} と厳密に同じ式である。未来位相位置はどこにも登場しない。
+
+\textbf{距離変数の区別（正直な限定）.}
+本構成には二つの距離型変数がある：セル幅 \(\Delta\theta_n\) と対分離
+\(R''\)。逆二乗はセル幅に対して成立する（\(\alpha_n\propto\Delta\theta_n^{-2}\)、{[}2{]}
+の主結果）。一方、固定 \(\omega\) の下で差動成分は \(g\propto R''\)
+と分離に線形であり、これは一様密度球内部型（調和型）の依存である。二つの距離変数を結ぶ辞書（\(\Delta\theta\leftrightarrow r\)）は未解決であり、姉妹系列（二チャネル三部作
+{[}3{]} 未解決2）と共有される課題である。本稿はこの区別を隠さない。
+
+\subsubsection{3.6
+スケール比の系}\label{ux30b9ux30b1ux30fcux30ebux6bd4ux306eux7cfb}
+
+\textbf{系（スケール比の同定）.}
+\(R'/R=m/M\)（2節、導出）である。二チャネル三部作 {[}3{]}
+は、重力型文法の結合がスケール比の二乗型 \((R/R_0)^2\)
+であり、階層の存在が局在の定義から従うことを実証した。本系は、\textbf{その二乗型文法に入るスケール変数を、子と親の分解能比
+\(m/M\) と同定する}：
+
+\[
+\left(\frac{R'}{R}\right)^2=\left(\frac{m}{M}\right)^2
+\]
+
+\(M\)
+が親閉鎖（宇宙規模）の分解能であるなら、重力の桁違いの弱さは分解能の大きさそのものとして読める。ただし本節が確立するのはスケール変数の同定までであり、差動成分
+\(g=\omega^2R''/2\) と \((m/M)^2\)
+を同一の力式で結ぶ直接の導出は、距離辞書と合わせて次論文の課題である。
+
+\subsection{4.
+旧導出との対応}\label{ux65e7ux5c0eux51faux3068ux306eux5bfeux5fdc}
+
+未来位相位置は、\(\theta\to0\) の極限で弦 A→B
+の方向が円の接線方向に一致することから生じた便宜的な仮想点であった。すなわち旧導出の「接線方向の中心」は、本構成の実在中心
+B の小分離極限の影である。旧導出の式が正しかったのは、恒等式
+\(a=R\omega^2\)
+が中心の物語に依存しないためである。物語だけが間違っており、式は最初から正しかった------この非対称を明示的に記録する（付記）。
+
+\subsection{5. 主張}\label{ux4e3bux5f35}
+
+\textbf{主張1（中心の実在化）.}
+加速度写像の回転中心に仮想点は不要である。本構成の中心は親閉鎖の中心 O
+と円周上の実在 B の二つだけであり、いずれも閉鎖から読まれる。
+
+\textbf{主張2（三円完結）.} B の読みは三つの閉鎖量
+\(R,\ R',\ R''=2R\sin(\theta/2)\)
+だけで完結する。背景座標・外部距離・重力場・質量源は導入しない。
+
+\textbf{主張3（導出の同一性）.} B 中心の読み直しは、調和閉鎖と合わせて
+\(\alpha_n=R\Omega^2/\Delta\theta_n^2\)
+を厳密に同じ式として再現する。変わるのは導出のみであり、旧導出の恣意性は完全に除去された。
+
+\textbf{主張4（等価原理の導出）.}
+等価原理は本系では仮定ではなく、保存読出し分類定理（位相盲目）の系として導出される（3.4節、定理）。導出されるのは本系の読出しクラスにおける運動学的不可識別性------等価原理の前幾何学的原型------であり、射程は3.4節に明示した。
+
+\textbf{主張5（スケール比の同定）.} \(R'/R=m/M\)
+は導出であり、二乗型の重力文法 {[}3{]} に入るスケール変数は分解能比
+\(m/M\)
+と同定される。階層のスケール比は自由パラメータではない（力式への直接接続は次論文）。
+
+\subsection{6.
+先行研究との関係------収束の証拠と相違}\label{ux5148ux884cux7814ux7a76ux3068ux306eux95a2ux4fc2ux53ceux675fux306eux8a3cux62e0ux3068ux76f8ux9055}
+
+外部文献は本稿の導出根拠ではない。同型の構造の独立な実現と、歴史的先行を示す。
+
+\textbf{回転円盤の系譜.}
+一様回転の内部読みから等価原理を介して非ユークリッド幾何へ至る議論は、Ehrenfest
+のパラドックス {[}4{]} を経て Einstein を一般相対論へ導いた（Stachel
+{[}5{]}
+が「失われた環」として論証）。本稿の「拘束共回転の内部読み＝重力」はこの系譜の閉鎖位相系版である。相違：回転円盤は背景時空上の発見的議論であり、本稿は背景なしの導出である。
+
+\textbf{回転と重力の等価（GR内）.} Thirring {[}6{]}
+は回転質量殻の内部に遠心力型・Coriolis型の力が重力効果として現れることを示した（歴史的評価は
+Pfister
+{[}7{]}）。遠心力と重力の等価の最初の定量的実現である。相違：Einstein
+方程式を前提する。Manoff {[}8{]}
+は重力相互作用を遠心加速度の帰結として記述する可能性をアフィン接続空間で論じており、解釈として本稿に最も近い。相違：連続幾何を前提し、閉鎖・位相・無名性を持たない。
+
+\textbf{Mach の系譜.} 慣性・重力を遠方物質との関係に帰す構想は Mach
+{[}9{]} に遡り、Sciama {[}10{]}
+は慣性を遠方物質の誘導効果とし、\textbf{G
+の弱さを宇宙の広大さの帰結}とした。主張5（階層指数＝分解能比）は同じ方向の直観の独立な実現である。相違：Sciama
+は重力ポテンシャル経由、本稿は分解能比経由であり、機構が異なる。定量的対比は未解決問題7とする。
+
+\textbf{関係力学.} Barbour--Bertotti {[}11{]}
+は力学を無次元・スケール不変な量のみで書く関係力学を定式化した。本稿の「比だけが物理」（作図規則）はその閉鎖位相系版である。相違：粒子配置の関係力学であり、波・位相・閉鎖を持たない。
+
+\textbf{創発重力.} Jacobson {[}12{]}・Verlinde {[}13{]}
+は重力を熱力学・情報から導く。重力を基本としない類型は共有するが、機構（熱力学経由）は全く異なる。
+
+\textbf{観測者フレームと等価原理.}
+量子参照系の系譜（Giacomini--Castro-Ruiz--Brukner
+{[}14{]}、Giacomini--Brukner
+{[}15{]}）は、物理法則の共変性と等価原理を観測者フレームの構造から論じる。主張4（等価原理＝読出し限界の帰結）の最近接の現代文脈である。相違：量子重ね合わせ時空の文脈であり、保存読出し分類定理からの導出ではない。
+
+以上のいずれも、（i）全ての中心が閉鎖から読まれる実在である構成での遠心力釣合いによる逆二乗の再導出、（ii）等価原理の読出し分類定理からの導出、の二点は含まない。
+
+\subsection{7. 未解決問題}\label{ux672aux89e3ux6c7aux554fux984c}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Kepler 型閉鎖条件（次論文の中心課題）}：閉鎖条件から
+  \(\omega^2(R'')\,R''^3=\text{const.}\) が導出されるか。成立すれば
+  \(g(R'')=\omega^2(R'')R''/2\propto1/R''^2\)
+  となり、差動引力型運動・調和閉鎖の逆二乗・物理的二体距離・分解能比の階層が一つの式で閉じる。
+\item
+  \textbf{距離辞書}：\(\Delta\theta_n\) と \(R''\)
+  の二距離変数を結ぶ辞書（3.5節の限定）。三部作 {[}3{]} 未解決2と共有。
+\item
+  \textbf{不等応答二体への一般化}：共通重心の内分点化と、慣性比
+  \(a_A/a_B\) を閉鎖量から読む導出（命題2の限定の解除）。
+\item
+  \textbf{動的検証}：本稿は運動学的導出のみである。二体の実時間発展における差動成分の釣合いの数値実験は次段とする（{[}2{]}{[}3{]}
+  の再現環境で実行可能）。
+\item
+  \textbf{\(R'\) の規約補題}：最短波長の Nyquist
+  因子（\(\lambda_0=2\pi R/M\) か \(2\cdot2\pi R/M\)
+  か）の固定。系（スケール比の同定）の \(m\) の数え方に効く。
+\item
+  \textbf{共通／差動分解の同型検査}：本稿の分解（対全体の共通成分＋二体の差動成分）が、三方向の
+  2+1 分解および二文法（大きさ／重なり）の分解と同型かの検査。
+\item
+  \textbf{Sciama との定量対比}：分解能比 \((m/M)^2\) と Sciama の
+  \(G\propto1/\Phi\) の関係の明示化。
+\end{enumerate}
+
+\subsection{8. 再現性}\label{ux518dux73feux6027}
+
+本稿は導出のみであり、新しい数値実験を含まない。依拠する数値的事実はすべて公開済みである：恒等式
+\(\Delta^2\chi=-\omega^2\chi\) と逆二乗則の8条件の検証は {[}2{]}
+の再現パッケージ、保存読出し分類定理（対角和のみ保存、ドリフト
+\(2.2\times10^{-16}\)）は {[}3{]}
+の再現パッケージに含まれる。図1の作図スクリプト
+\texttt{run\_fig\_b\_centered\_three\_circles\_v1.py}（\(R''=2R\sin(\theta/2)\)
+の数値検算を内蔵）を本稿と同梱する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsection{自己引用}\label{ux81eaux5df1ux5f15ux7528}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  木原範昭「無名等振幅複合波モデル基本公理系」Concept DOI:
+  \texttt{10.5281/zenodo.21315735}（常に最新版）, 2026.
+\item
+  木原範昭「AB二体閉鎖位相系における未来位相位置加速度写像と調和閉鎖による逆二乗則
+  v4」Version DOI: \texttt{10.5281/zenodo.21468270}, Concept DOI:
+  \texttt{10.5281/zenodo.21441081}, 2026.
+\item
+  木原範昭「無名二チャネル閉鎖波系における相互作用の二文法分解」（三部作第一部）Version
+  DOI: \texttt{10.5281/zenodo.21763996}, Concept DOI:
+  \texttt{10.5281/zenodo.21763995}, 2026.
+  （保存読出し分類定理・重力型文法のスケール比・距離辞書の未解決課題）
+\end{enumerate}
+
+\subsection{外部参考文献}\label{ux5916ux90e8ux53c2ux8003ux6587ux732e}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  P. Ehrenfest, ``Gleichförmige Rotation starrer Körper und
+  Relativitätstheorie'', \emph{Phys. Z.} \textbf{10}, 918 (1909).
+\item
+  J. Stachel, ``The Rigidly Rotating Disk as the `Missing Link' in the
+  History of General Relativity'', in \emph{Einstein and the History of
+  General Relativity} (Einstein Studies Vol. 1), Birkhäuser (1989).
+\item
+  H. Thirring, ``Über die Wirkung rotierender ferner Massen in der
+  Einsteinschen Gravitationstheorie'', \emph{Phys. Z.} \textbf{19}, 33
+  (1918).
+\item
+  H. Pfister, ``On the history of the so-called Lense--Thirring
+  effect'', \emph{Gen.~Relativ. Gravit.} \textbf{39}, 1735 (2007). DOI:
+  \texttt{10.1007/s10714-007-0521-4}.
+\item
+  S. Manoff, ``Centrifugal (centripetal) and Coriolis velocities and
+  accelerations in spaces with affine connections and metrics as models
+  of space-time'', arXiv:\texttt{gr-qc/0309051} (2003).
+\item
+  E. Mach, \emph{Die Mechanik in ihrer Entwicklung}, Brockhaus, Leipzig
+  (1883).
+\item
+  D. W. Sciama, ``On the Origin of Inertia'', \emph{Mon. Not. R. Astron.
+  Soc.} \textbf{113}, 34--42 (1953).
+\item
+  J. B. Barbour and B. Bertotti, ``Mach's principle and the structure of
+  dynamical theories'', \emph{Proc. R. Soc. Lond. A} \textbf{382},
+  295--306 (1982). DOI: \texttt{10.1098/rspa.1982.0102}.
+\item
+  T. Jacobson, ``Thermodynamics of Spacetime: The Einstein Equation of
+  State'', \emph{Phys. Rev.~Lett.} \textbf{75}, 1260 (1995). DOI:
+  \texttt{10.1103/PhysRevLett.75.1260}.
+\item
+  E. Verlinde, ``On the Origin of Gravity and the Laws of Newton'',
+  \emph{JHEP} \textbf{04}, 029 (2011). DOI:
+  \texttt{10.1007/JHEP04(2011)029}.
+\item
+  F. Giacomini, E. Castro-Ruiz, and Č. Brukner, ``Quantum mechanics and
+  the covariance of physical laws in quantum reference frames'',
+  \emph{Nat. Commun.} \textbf{10}, 494 (2019). DOI:
+  \texttt{10.1038/s41467-018-08155-0}.
+\item
+  F. Giacomini and Č. Brukner, ``Einstein's Equivalence principle for
+  superpositions of gravitational fields and quantum reference frames'',
+  \emph{AVS Quantum Sci.} \textbf{4}, 015601 (2022).
+  arXiv:\texttt{2012.13754}.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{付記（訂正の記録）} 先行論文 {[}2{]}
+の導出散文には次の欠陥があり、本稿で訂正された：(i)
+遠心力の反力という語による慣性系の借用（無名性違反）、(ii)
+作用対の存在しない反力、(iii) 未来位相位置という目的論的な仮想中心、(iv)
+検証された計算（二階差分恒等式）に対応物を持たない力学的物語。{[}2{]}
+の式と数値結果はすべて正しく、訂正されたのは導出の散文のみである。旧導出の仮想中心は、本構成の実在中心
+B の小分離極限（\(\theta\to0\) で弦方向が接線方向に一致）の影であった。
+
+\end{document}
