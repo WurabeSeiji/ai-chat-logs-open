@@ -1,0 +1,75 @@
+{
+  "experiment": "paper9_boson_parity_verification_pre_v1",
+  "core_runner": {
+    "path": "run_ab_invariant_theta_toy_v1.py",
+    "sha256": "90c7b27235a6716c8db08a61f71a0d9d6437694f016fd636ae53c1a58af69ed7"
+  },
+  "honest_audit": "偶数倍音=ボゾンは本実験まで作業仮説のみ（longrun報告自身が『物理的実証ではない』と明記、B62対照はθ=0で読出しに不可視）",
+  "falsified_v1_prediction": "hair が χ 搬送波だとする初版予言は反証。hair=η位相、χ搬送波は無条件（コードで特定）",
+  "parity_rows": [
+    {
+      "op": "P_abs",
+      "bundle": "even",
+      "hair": false,
+      "P_sign": -0.9999999999999992,
+      "predicted": -1,
+      "pass": true
+    },
+    {
+      "op": "P_abs",
+      "bundle": "even",
+      "hair": true,
+      "P_sign": -0.9999999999999999,
+      "predicted": -1,
+      "pass": true
+    },
+    {
+      "op": "P_abs",
+      "bundle": "odd",
+      "hair": false,
+      "P_sign": 1.0000000000000009,
+      "predicted": 1,
+      "pass": true
+    },
+    {
+      "op": "P_abs",
+      "bundle": "odd",
+      "hair": true,
+      "P_sign": 1.0000000000000009,
+      "predicted": 1,
+      "pass": true
+    },
+    {
+      "op": "P_env",
+      "bundle": "even",
+      "hair": true,
+      "P_sign": 1.000000000000003,
+      "predicted": 1,
+      "pass": true
+    },
+    {
+      "op": "P_env",
+      "bundle": "odd",
+      "hair": true,
+      "P_sign": -0.9999999999999998,
+      "predicted": -1,
+      "pass": true
+    }
+  ],
+  "P3_visibility": [
+    {
+      "state": "B63型(毛つき奇数束)",
+      "theta": 0.7619520718308079,
+      "anchor": 0.7619520718308078,
+      "pass": true
+    },
+    {
+      "state": "B62型(毛つき偶数束)",
+      "theta": 0.0,
+      "anchor": 0.0,
+      "pass": true
+    }
+  ],
+  "all_pass": true,
+  "conclusion": "P_abs（絶対）: 偶数束−1/奇数束+1（毛の有無に不変、χ搬送波q_B=−1が占有ビンを1ずらすため）。P_env（搬送波フレーム・復調後）: 偶数束+1/奇数束−1=仮説文書のPφₙ=(−1)ⁿφₙ。全て機械精度で成立。帰結: (i)『偶数倍音=ボゾン』の(−1)ⁿは搬送波フレームの性質であり、統計演算子はフレーム相対で指定する必要がある（フェルミオン候補B63は絶対フレームではP_abs偶）。(ii)毛=η位相はχパリティと独立の軸。(iii)θ可視性（B63可視/B62盲目）はビンパリティで説明（longrun遡及アンカー）。(iv)行動的検証（偶偶衝突の透過性 vs 奇奇衝突の排他）はE-B3として未実施"
+}
