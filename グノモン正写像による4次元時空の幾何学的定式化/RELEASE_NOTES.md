@@ -116,6 +116,8 @@
 - **Zenn**：[フェルミオンの生成構造](https://zenn.dev/noriaki_kihara/articles/generation-structure-of-fermions)
 - **note（日本語）**：[素粒子は、なぜ生まれたのか——粒子とは、光の海で閉鎖を完走した稀な波だった](https://note.com/kiharanoriaki/n/n93d91d0c1bb2)（2026-08-04 公開。下書きmd：次元の生成構造/素粒子はなぜ生まれたのか_note完成稿.md。クォーク1/3電荷・素電荷の値・ボゾンスペクトル・質量階層の未解明を明記）
 - **note（英語版）**：[Why Were Elementary Particles Born? — A Particle Is a Rare Wave That Completed a Closure Cycle in the Sea of Light](https://note.com/kiharanoriaki/n/nd250158e0da1)（2026-08-04 公開。下書きmd：次元の生成構造/why_were_elementary_particles_born_note_en.md）
+- **Facebook（日本語）**：[告知投稿](https://www.facebook.com/kihara.noriaki/posts/pfbid0jKevojSmepoHbehZNerupT5JX2MQNmNekkNFGZ8vQLdjSA88VrsDbxGdjUwctXHGl)（2026-08-04、note URLは1件目コメント。下書き：fb_generation_structure_of_fermions_ja.md）
+- **Facebook（英語版下書き）**：fb_generation_structure_of_fermions_en.md（投稿後URL追記）
 - **所在**：次元の生成構造/第9論文_フェルミオンの生成構造/
 
 ### 2026-08-04: 実在中心読み直しによる加速度写像の再導出（導出置換編）新規公開
