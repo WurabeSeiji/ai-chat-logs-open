@@ -1,5 +1,55 @@
 # Can acceleration be read without background coordinates?
 
+## Addendum (August 4, 2026, placed first): the derivation has been replaced — the virtual center in the future is no longer needed
+
+I have published a paper that rewrites, from the ground up, the derivation of acceleration presented in this article. Not a single formula changes. What changes is where the formulas come from.
+
+The earlier derivation used a reading whose rotation center was the "future phase position" seen from the present position advancing along the circle. That derivation gave the correct formulas, but, to be honest, I had four complaints about it.
+
+First, the word "centrifugal force" silently borrows a non-rotating reference frame — a background inertial structure. The discipline of this series is to place no background, yet the explanatory language was helping itself to one. Second, a "reaction force" needs a partner to push against, but what rotates here is a phase, not a body — there is no carrier of the force. Third, a center located at a future position reads as if the future were acting on the present. Fourth, the verified computations only ever used the second-difference identity of a sinusoid; the story about forces corresponded to nothing in any computation.
+
+The new derivation uses no virtual point at all.
+
+On the same closed circle, two bodies A and B exist at phase difference θ. Only three circles are used.
+
+- The parent circle: radius R
+- B's own circle: radius R′. It is derived — not chosen — from the resolution M and the harmonic index m as R′ = (m/M)R
+- The relational circle: the distance from B to A, R″ = 2R sin(θ/2), the chord of the phase difference on the circle
+
+(Insert the figure here)
+
+![Three-circle figure of the real-center re-reading](real_center_rederivation_v1/fig_b_centered_three_circles_v1.png)
+
+Figure. The parent circle R (gray), B's intrinsic radius R′ (orange), and the relational distance R″ from B to A (blue, dashed). The only rotation centers are the parent center O and the really existing B on the circle. (Figure labels are in Japanese; the geometry is fully specified in the text.)
+
+From there, elementary geometry does everything.
+
+Project A's centripetal acceleration (magnitude Rω², pointing at the parent center O) onto the direction from A to B. The component is exactly
+
+ω²R″/2
+
+B symmetrically carries a component of the same magnitude pointing at A. In other words: merely decomposing the common constrained motion on the parent circle into the two-body relation necessarily produces mutually facing, attraction-type differential components.
+
+Moreover, this value coincides — in both magnitude and direction, exactly — with the centripetal acceleration required for two bodies at separation R″ to orbit their common barycenter at angular velocity ω. Co-rotation on the parent circle and a bound two-body orbit held together by mutual attraction are kinematically identical.
+
+**Gravity-type motion was not a new force. It is the differential representation of the whole closure's motion, re-read as a two-body relation.**
+
+One step further. A separate paper of the series established, as a theorem, that the conserved readouts available to B's internal observer cannot read phase. For an observer who cannot read phase, no observable exists that distinguishes constrained co-rotation from a two-body orbit in a gravitational field. In this system, therefore, **the equivalence principle is not an assumption but a consequence — a corollary — of the limits of readout.** What is derived is a kinematic prototype, and its scope is stated with precision in the paper.
+
+The inverse-square law α = RΩ²/Δθ² is rederived as exactly the same formula. It also became clear that the future phase position was the shadow of the real center B: in the limit θ→0 the chord direction coincides with the tangent direction.
+
+The remaining central problem is now sharp: connect the inverse square in the phase-cell width and the attraction in the two-body separation R″ on one and the same physical distance — can a Kepler-type closure condition ω²R″³ = const. be derived from closure? That is for the next paper.
+
+The paper (Japanese and English full texts, PDFs, the three-circle figure, and the plotting script):
+
+Concept DOI (always the latest version)
+https://doi.org/10.5281/zenodo.21765367
+
+Version DOI (v1)
+https://doi.org/10.5281/zenodo.21765368
+
+---
+
 I have published two new papers.
 
 This time, the theme is acceleration.

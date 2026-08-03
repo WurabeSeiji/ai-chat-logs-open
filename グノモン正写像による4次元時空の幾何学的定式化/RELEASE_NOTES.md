@@ -114,6 +114,7 @@
 - **Concept DOI**：[10.5281/zenodo.21765367](https://doi.org/10.5281/zenodo.21765367)／**v1 DOI**：[10.5281/zenodo.21765368](https://doi.org/10.5281/zenodo.21765368)
 - **形式**：md（日英）+ tex（日英）+ pdf（日英）+ 三円図 + 作図スクリプト = 8ファイル
 - **Zenn**：[加速度写像の導出置換](https://zenn.dev/noriaki_kihara/articles/real-center-acceleration-rederivation)
+- **note**：[加速度は、背景座標なしに読めるのか](https://note.com/kiharanoriaki/n/nad8429959a8a) の冒頭に 2026-08-04 追記として公開（三円図込み。英語版記事は下書き追記済み・公開反映待ち）
 - **所在**：波の情報読出し/20260711/real_center_rederivation_v1/
 
 ### 2026-08-03: 無名二チャネル閉鎖波系 三部作（二文法分解・数え上げ読出し・ロック動力学）新規公開
@@ -326,8 +327,8 @@
 - **v2 DOI**：[10.5281/zenodo.21466463](https://doi.org/10.5281/zenodo.21466463)
 - **Zenodo**：[公開レコード](https://zenodo.org/records/21466463)
 - **Zenn**：articles/inverse-square-velocity-feedback-v2.md
-- **note**：[加速度は、背景座標なしに読めるのか（2026-07-21 v2追記を公開）](https://note.com/kiharanoriaki/n/nad8429959a8a)（下書きmd：波の情報読出し/20260711/note_article_acceleration_readout_summaries_ja.md）
-- **note（英語版）**：[Can acceleration be read without background coordinates?](https://note.com/kiharanoriaki/n/n511a9b0c5787)（下書きmd：波の情報読出し/20260711/note_article_acceleration_readout_summaries_en.md、英語版図・v3 DOI併記）
+- **note**：[加速度は、背景座標なしに読めるのか（2026-08-04 冒頭追記＝導出置換・三円図を公開）](https://note.com/kiharanoriaki/n/nad8429959a8a)（下書きmd：波の情報読出し/20260711/note_article_acceleration_readout_summaries_ja.md）
+- **note（英語版）**：[Can acceleration be read without background coordinates?](https://note.com/kiharanoriaki/n/n511a9b0c5787)（下書きmd：波の情報読出し/20260711/note_article_acceleration_readout_summaries_en.md、英語版図・v3 DOI併記。2026-08-04 冒頭追記＝導出置換の英語版を下書きに追加、公開反映待ち）
 
 **核心結果**：
 - **零次no-go定理**：v1動力学クラスでは $d\omega/d\tau=0$ が定理であり、加速度読出しは角速度にも閉鎖量にも作用できない。「aは存在するのに v=∫a dτ が存在しない」状態の明文化
