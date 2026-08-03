@@ -49,10 +49,10 @@ mph = importlib.util.module_from_spec(spec2)
 sys.modules[spec2.name] = mph
 spec2.loader.exec_module(mph)
 
-TMAX = 5000                    # A2c と同一範囲
-CFG = {5: {"H": 8, "seed": 40260801},
-       40: {"H": 4, "seed": 40260802},
-       300: {"H": 4, "seed": 40260803}}
+CFG = {5: {"H": 8, "seed": 40260801, "tmax": 5000},    # A2c と同一範囲
+       40: {"H": 4, "seed": 40260802, "tmax": 5000},
+       300: {"H": 4, "seed": 40260803, "tmax": 12000}}  # crossing≈4849 を覆う延長
+TMAX = 5000                    # main() で CFG から上書き
 
 
 def direction34_series(n, v0, wp):
@@ -100,8 +100,10 @@ def direction34_series(n, v0, wp):
 
 
 def main():
+    global TMAX
     n = int(sys.argv[1]) if len(sys.argv) > 1 else 5
     cfg = CFG[n]; H = cfg["H"]
+    TMAX = cfg["tmax"]
 
     series = []
     print(f"N={n}: 対照走行…", flush=True)
