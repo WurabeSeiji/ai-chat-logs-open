@@ -71,6 +71,7 @@ def spectrum_row(Z, m):
     k_hi = max(1, min(K_SHOW, m // 2))
     if w.sum() < 1e-8 * max(1.0, amp.sum()):
         return {"A": [0.0] * K_SHOW, "k0": None, "phase_deg": None, "s_circ": None,
+                "n_clusters": 0, "n_members": 0, "n_sea": m,
                 "split_rms": float(np.std(amp)), "w": w, "th": th, "dev": dev}
     A = []
     for k in range(1, K_SHOW + 1):
@@ -84,11 +85,31 @@ def spectrum_row(Z, m):
     else:
         phase = None
         s_circ = None
+    # 数え上げ: ベース波長 k0 の塊（θ空間の位相クラスタ）と海成分
+    n_clusters = n_members = 0
+    n_sea = m
+    if k0 is not None:
+        c0 = float(np.angle(np.sum(w * np.exp(1j * k0 * th))))
+        resid = np.abs(np.angle(np.exp(1j * (k0 * th - c0))))
+        member = (w > max(1e-3, 0.1 * w.max())) & (resid < 0.8)
+        n_members = int(member.sum())
+        n_sea = int(m - n_members)
+        if n_members:
+            phs = np.sort(np.mod(th[member], 2 * np.pi))
+            gaps = 0.35
+            clusters = [[phs[0]]]
+            for x in phs[1:]:
+                (clusters[-1].append(x) if x - clusters[-1][-1] <= gaps
+                 else clusters.append([x]))
+            if len(clusters) > 1 and (phs[0] + 2 * np.pi - phs[-1]) <= gaps:
+                clusters[0] = clusters[-1] + clusters[0]; clusters.pop()
+            n_clusters = len(clusters)
     return {"A": A, "k0": k0, "phase_deg": phase, "s_circ": s_circ,
+            "n_clusters": n_clusters, "n_members": n_members, "n_sea": n_sea,
             "split_rms": float(np.std(amp)), "w": w, "th": th, "dev": dev}
 
 
-def census_state(n, level, v0, wp, name, family):
+def census_state(n, level, v0, wp, name, family, has_register=True):
     m = n * (n - 1) // 2
     row0 = spectrum_row(v0, m)                      # 初期
     sys_lr = abl.LowRankSystem(n)
@@ -107,7 +128,12 @@ def census_state(n, level, v0, wp, name, family):
     for _ in range(T_HALF):
         for _ in range(level):
             Zh, wp2 = abl.evolve(sys_lr, Zh, wp2)
-    parity = "F" if complex(np.vdot(Zref, Zh)).real < 0 else "B"
+    if has_register:
+        parity = "F" if complex(np.vdot(Zref, Zh)).real < 0 else "B"
+    else:
+        parity = "—"   # 倍音番号未割当（control）: パリティは未定義。
+                       # 行動テストは割当時計の偶奇 (−1)^n を読むため、
+                       # 未割当状態に適用すると規約のスタンプになる（2026-08-04 木原氏指摘）
     row1 = spectrum_row(Zref, m)                    # 緩和後
     # 電荷(生): 緩和後にベース波長塊があれば 塊周波数/残余周波数
     charge = None
@@ -124,24 +150,33 @@ def census_state(n, level, v0, wp, name, family):
                 charge = float(np.mean(fS) / np.mean(fR))
     return [
         {"N": n, "state": name, "family": family, "time": "初期",
+         "harmonic_n": (level if has_register else None),
          "k0": row0["k0"], "phase_deg": row0["phase_deg"], "A": row0["A"],
          "split_rms": row0["split_rms"], "BF": parity, "charge_raw": None,
          "s_circ": row0["s_circ"],
+         "M": m, "n_clusters": row0["n_clusters"], "n_members": row0["n_members"],
+         "n_sea": row0["n_sea"],
          "pa": ("粒" if row0["s_circ"] > 0 else "反") if row0["s_circ"] else "—"},
         {"N": n, "state": name, "family": family, "time": "緩和後",
+         "harmonic_n": (level if has_register else None),
          "k0": row1["k0"], "phase_deg": row1["phase_deg"], "A": row1["A"],
          "split_rms": row1["split_rms"], "BF": parity, "charge_raw": charge,
          "s_circ": row1["s_circ"],
+         "M": m, "n_clusters": row1["n_clusters"], "n_members": row1["n_members"],
+         "n_sea": row1["n_sea"],
          "pa": ("粒" if row1["s_circ"] > 0 else "反") if row1["s_circ"] else "—"},
     ]
 
 
 def fmt_row(r):
+    hn = str(r["harmonic_n"]) if r["harmonic_n"] is not None else "—"
     wl = f"1/{r['k0']}" if r["k0"] else "—"
     ph = f"{r['phase_deg']:+7.1f}" if r["phase_deg"] is not None else "      —"
     As = " ".join(f"{a:5.2f}" for a in r["A"])
     ch = f"{r['charge_raw']:.6f}" if r["charge_raw"] is not None else "—"
     return (f"{r['N']:>3} | {r['state']:<10} | {r['family']:<7} | {r['time']:<3} | "
+            f"{hn:>4} | "
+            f"{r['M']:>5} | {r['n_clusters']:>2} | {r['n_members']:>5} | {r['n_sea']:>5} | "
             f"{wl:>4} | {ph} | {As} | {r['BF']} | {r['pa']} | {ch}")
 
 
@@ -155,7 +190,8 @@ def main() -> None:
     for n in ns:
         cfg = CFG[n]
         _, v, _, _, _, _, _, Z0, wp0 = abl.build_init(n, False)
-        rows += census_state(n, 1, Z0, wp0.copy(), "control", "control")
+        rows += census_state(n, 1, Z0, wp0.copy(), "control", "control",
+                             has_register=False)
         Zh, info = mph.make_parent_harmonic(n, cfg["H"], cfg["seed"],
                                              iters=2000, restarts=10, tol=1e-12)
         for h in range(1, cfg["H"] + 1):
@@ -165,8 +201,8 @@ def main() -> None:
             wp = np.random.default_rng(90000 + (h - 1)).normal(size=len(v0))
             rows += census_state(n, h, v0, wp, f"n={h}", fam)
 
-    hdr = ("  N | 状態       | 族      | 時点 | 波長 |  位相°  | "
-           "倍音1 倍音2 倍音3 倍音4 倍音5 倍音6 | B/F | 粒/反 | 電荷(生)")
+    hdr = ("  N | 状態       | 族      | 時点 | 倍音数 | 波数M | 塊数 | 塊成分 | 海成分 | 波長 |  位相°  | "
+           "巻き1  巻き2  巻き3  巻き4  巻き5  巻き6 | B/F | 粒/反 | 電荷(生)")
     print(hdr); print("-" * len(hdr))
     cur = None
     for r in rows:
@@ -177,12 +213,16 @@ def main() -> None:
 
     with open(HERE / "census_table_v2.csv", "w", newline="", encoding="utf-8") as fh:
         wtr = csv.writer(fh)
-        wtr.writerow(["N", "state", "family", "time", "base_wavelength_k0",
+        wtr.writerow(["N", "state", "family", "time", "harmonic_n",
+                      "M_waves", "n_clusters", "n_clump_members", "n_sea",
+                      "base_wavelength_k0",
                       "phase_deg", "A1", "A2", "A3", "A4", "A5", "A6",
                       "amp_split_rms", "BF", "particle_antiparticle_conv",
                       "s_circ", "charge_raw"])
         for r in rows:
             wtr.writerow([r["N"], r["state"], r["family"], r["time"],
+                          r["harmonic_n"] if r["harmonic_n"] is not None else "",
+                          r["M"], r["n_clusters"], r["n_members"], r["n_sea"],
                           r["k0"] if r["k0"] else "",
                           f"{r['phase_deg']:.2f}" if r["phase_deg"] is not None else "",
                           *[f"{a:.4f}" for a in r["A"]],
@@ -202,20 +242,34 @@ def main() -> None:
           f"（seed 40260801/40260802・緩和 {T_RELAX} tick・決定論的に再現可能）", "",
           "- ベース波長: 偏差重み付き巻き数整列度 A_k（k≤M/2）の最大が 0.3 超のとき 1/k。"
           "「—」は一様海（構造なし）",
-          "- 倍音1..6: A_1..A_6（構造スペクトル、0..1）",
-          "- B/F: 行動的半周期テスト（F=奇=フェルミオン型 / B=偶=ボゾン型）",
+          "- 巻き1..6: A_k＝巻き数スペクトル（振幅偏差パターンの位相円上の整列度、0..1）。"
+          "**レジスタ倍音（段n・時間周波数n·ω₀）とは別物**——巻き数は空間的（位相円上）構造であり、"
+          "controlのようにレジスタ倍音を持たない状態にも定義される。"
+          "注意: N=5（M=10）は偏差成分が少なく複数kに同時整列して見える（小標本の見かけ）。"
+          "巻き数構造の信頼できる読みはN≥40",
+          "- B/F: レジスタ住所 n の偶奇（構成による定義。行動的半周期テストで時計実装を検証済み）。"
+          "F=奇/B=偶。**control は倍音番号未割当のため「—」（パリティ未定義）**——"
+          "本来のパリティ=波の内部倍音スペクトルの偶奇は、単一周波数閉包では測定不能",
           "- 電荷(生): 塊周波数/残余周波数の生の比（緩和後のみ。一定にならなくても生値のまま記録）",
           "- 粒/反: エンジンの時計方向（全状態共通の基準）に対する周回符号 s の規約ラベル。"
           "粒=s>0/反=s<0。絶対名は規約であり相対符号のみ物理。一様海は「—」（自己共役＝区分なし、光子と同型）",
           "",
-          "| N | 状態 | 族 | 時点 | ベース波長 | 位相° | 倍音1 | 倍音2 | 倍音3 | 倍音4 | 倍音5 | 倍音6 | B/F | 粒/反 | 電荷(生) |",
-          "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+          "- 波数M: 状態内の関係波（最小閉包）の総数。塊数: ベース波長 k₀ の位相クラスタ数"
+          "（Z₄なら4）。塊成分: 塊に属する波の総数。海成分: M−塊成分",
+          "",
+          "- 倍音数: レジスタ倍音番号 n（時計 n·ω₀、E-M11 実装）。B/F はその偶奇。"
+          "control は未割当「—」",
+          "",
+          "| N | 状態 | 族 | 時点 | 倍音数 | 波数M | 塊数 | 塊成分 | 海成分 | ベース波長 | 位相° | 巻き1 | 巻き2 | 巻き3 | 巻き4 | 巻き5 | 巻き6 | B/F | 粒/反 | 電荷(生) |",
+          "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for r in rows:
         wl = f"1/{r['k0']}" if r["k0"] else "—"
         ph = f"{r['phase_deg']:+.1f}" if r["phase_deg"] is not None else "—"
         ch = f"{r['charge_raw']:.6f}" if r["charge_raw"] is not None else "—"
         md.append("| " + " | ".join(
-            [str(r["N"]), r["state"], r["family"], r["time"], wl, ph]
+            [str(r["N"]), r["state"], r["family"], r["time"],
+             (str(r["harmonic_n"]) if r["harmonic_n"] is not None else "—"),
+             str(r["M"]), str(r["n_clusters"]), str(r["n_members"]), str(r["n_sea"]), wl, ph]
             + [f"{a:.2f}" for a in r["A"]] + [r["BF"], r["pa"], ch]) + " |")
     (HERE / "census_table_v2.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     print(f"\nsaved: census_table_v2.csv / census_table_v2.json / census_table_v2.md "

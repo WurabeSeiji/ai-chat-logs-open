@@ -1,0 +1,112 @@
+{
+  "schema": "n_only_white_closed_harmonic_parent_v2",
+  "generator": "make_parent_white_harmonics_n_only_v2.py",
+  "generator_sha256": "7a79d5f75c7bbde05a25ec25cbd3266ba7e3fe8b07c61981249d02aa25ea8808",
+  "numpy_version": "2.0.2",
+  "prng": "numpy.random.PCG64 via default_rng",
+  "function_contract": {
+    "N": 5,
+    "seed_argument": "2",
+    "max_retries_argument": 3,
+    "explicit_seed_means_single_attempt": true
+  },
+  "derived_only_from_N": {
+    "M": 10,
+    "lambda0": 1.2566370614359172,
+    "sample_count_per_relation_wave": 5
+  },
+  "fixed_solver_contract": {
+    "iterations": 2000,
+    "beta": 0.5,
+    "tolerance": 1e-12,
+    "check_every": 10,
+    "branch": "argmin(Im eigenvalue of JG)"
+  },
+  "explicit_absences": {
+    "harmonic_count_H": null,
+    "preassigned_harmonic_orders": false,
+    "preassigned_harmonic_amplitudes": false,
+    "preassigned_harmonic_phases": false
+  },
+  "seed_selection_protocol": "integer seeds tested sequentially from 1; first converged seed accepted",
+  "status": "success",
+  "accepted_seed": "2",
+  "seed_was_explicit": true,
+  "attempts": [
+    {
+      "attempt_number": 2,
+      "seed": "2",
+      "converged": true,
+      "iterations": 60,
+      "residual": 6.964382220947394e-15,
+      "mu": -4.0,
+      "sigma_max": 3.9999999999999996,
+      "parent_closure_abs": 7.098793326761488e-16,
+      "failure_reason": null
+    }
+  ],
+  "sequential_seed_search": [
+    {
+      "attempt_number": 1,
+      "seed": "1",
+      "converged": false,
+      "iterations": 2000,
+      "residual": 0.3623179376431513,
+      "mu": -3.877201403640648,
+      "sigma_max": 3.910092193440761,
+      "parent_closure_abs": 2.0856987010687024e-15,
+      "failure_reason": "self_consistency_tolerance_not_reached"
+    },
+    {
+      "attempt_number": 2,
+      "seed": "2",
+      "converged": true,
+      "iterations": 60,
+      "residual": 6.964382220947394e-15,
+      "mu": -4.0,
+      "sigma_max": 3.9999999999999996,
+      "parent_closure_abs": 7.098793326761488e-16,
+      "failure_reason": null
+    }
+  ],
+  "arrays": {
+    "raw_white_noise": {
+      "file": "raw_white_noise.npy",
+      "shape": [
+        10,
+        5,
+        2
+      ]
+    },
+    "parent_vector": {
+      "file": "parent_vector.npy",
+      "shape": [
+        10
+      ]
+    },
+    "relation_waves": {
+      "file": "relation_waves.npy",
+      "shape": [
+        10,
+        5
+      ]
+    },
+    "edges": {
+      "file": "edges.npy",
+      "shape": [
+        10,
+        2
+      ]
+    }
+  },
+  "invariant_audit": {
+    "parent_self_consistency_residual": 6.964382220947394e-15,
+    "parent_zero_closure_abs": 7.098793326761488e-16,
+    "all_M_relation_waves_zero_closed": true,
+    "max_relation_wave_closure_abs": 4.8696008501999263e-17,
+    "max_relation_wave_closure_relative": 4.86960085019994e-16,
+    "nested_total_closure_abs": 2.6422520788909847e-17,
+    "frobenius_norm": 0.9999999999999999
+  },
+  "runtime_seconds": 0.1256251335144043
+}

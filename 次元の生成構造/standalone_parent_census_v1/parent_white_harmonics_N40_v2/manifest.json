@@ -1,0 +1,101 @@
+{
+  "schema": "n_only_white_closed_harmonic_parent_v2",
+  "generator": "make_parent_white_harmonics_n_only_v2.py",
+  "generator_sha256": "7a79d5f75c7bbde05a25ec25cbd3266ba7e3fe8b07c61981249d02aa25ea8808",
+  "numpy_version": "2.0.2",
+  "prng": "numpy.random.PCG64 via default_rng",
+  "function_contract": {
+    "N": 40,
+    "seed_argument": "1",
+    "max_retries_argument": 3,
+    "explicit_seed_means_single_attempt": true
+  },
+  "derived_only_from_N": {
+    "M": 780,
+    "lambda0": 0.15707963267948966,
+    "sample_count_per_relation_wave": 40
+  },
+  "fixed_solver_contract": {
+    "iterations": 2000,
+    "beta": 0.5,
+    "tolerance": 1e-12,
+    "check_every": 10,
+    "branch": "argmin(Im eigenvalue of JG)"
+  },
+  "explicit_absences": {
+    "harmonic_count_H": null,
+    "preassigned_harmonic_orders": false,
+    "preassigned_harmonic_amplitudes": false,
+    "preassigned_harmonic_phases": false
+  },
+  "seed_selection_protocol": "integer seeds tested sequentially from 1; first converged seed accepted",
+  "status": "success",
+  "accepted_seed": "1",
+  "seed_was_explicit": true,
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "seed": "1",
+      "converged": true,
+      "iterations": 90,
+      "residual": 5.578834795891258e-14,
+      "mu": -38.88732410009623,
+      "sigma_max": 38.887324100096215,
+      "parent_closure_abs": 2.5097235914971403e-16,
+      "failure_reason": null
+    }
+  ],
+  "sequential_seed_search": [
+    {
+      "attempt_number": 1,
+      "seed": "1",
+      "converged": true,
+      "iterations": 90,
+      "residual": 5.578834795891258e-14,
+      "mu": -38.88732410009623,
+      "sigma_max": 38.887324100096215,
+      "parent_closure_abs": 2.5097235914971403e-16,
+      "failure_reason": null
+    }
+  ],
+  "arrays": {
+    "raw_white_noise": {
+      "file": "raw_white_noise.npy",
+      "shape": [
+        780,
+        40,
+        2
+      ]
+    },
+    "parent_vector": {
+      "file": "parent_vector.npy",
+      "shape": [
+        780
+      ]
+    },
+    "relation_waves": {
+      "file": "relation_waves.npy",
+      "shape": [
+        780,
+        40
+      ]
+    },
+    "edges": {
+      "file": "edges.npy",
+      "shape": [
+        780,
+        2
+      ]
+    }
+  },
+  "invariant_audit": {
+    "parent_self_consistency_residual": 5.578834795891258e-14,
+    "parent_zero_closure_abs": 2.5097235914971403e-16,
+    "all_M_relation_waves_zero_closed": true,
+    "max_relation_wave_closure_abs": 7.50420640053379e-19,
+    "max_relation_wave_closure_relative": 6.277886281861087e-16,
+    "nested_total_closure_abs": 1.5288067606533336e-17,
+    "frobenius_norm": 1.0000000000000002
+  },
+  "runtime_seconds": 0.1937100887298584
+}

@@ -1,0 +1,151 @@
+{
+  "schema": "n_only_multifrequency_parent_v1",
+  "generator": "make_parent_n_only_v1.py",
+  "generator_sha256": "d2c94e9a453d5f5ef25033a872a792284e94fe016721c164a01576f911dc9cc2",
+  "numpy_version": "2.0.2",
+  "prng": "numpy.random.PCG64 via default_rng",
+  "os_seed_source": "secrets.randbits(128)",
+  "function_contract": {
+    "N": 5,
+    "seed_argument": null,
+    "max_retries_argument": 3,
+    "explicit_seed_means_single_attempt": true,
+    "os_seed_total_attempt_limit": 4
+  },
+  "derived": {
+    "M": 10,
+    "lambda0": 1.2566370614359172,
+    "frequency_multiples": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "fixed_solver_contract": {
+    "iterations": 2000,
+    "beta": 0.5,
+    "tolerance": 1e-12,
+    "check_every": 10,
+    "branch": "argmin(Im eigenvalue of JG)",
+    "unconverged_best_value_is_never_returned": true
+  },
+  "status": "aborted",
+  "failure_reason": "make_parent aborted after 4 unsuccessful attempt(s)",
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "seed": "314837278815727595852433057111838593778",
+      "success": false,
+      "failure_reason": "frequency_multiple_2_did_not_converge",
+      "modes": [
+        {
+          "frequency_multiple": 1,
+          "converged": true,
+          "iterations": 50,
+          "residual": 3.9518325790760945e-15,
+          "mu": -4.000000000000002,
+          "sigma_max": 3.999999999999999,
+          "closure_abs": 3.714557365246514e-16
+        },
+        {
+          "frequency_multiple": 2,
+          "converged": false,
+          "iterations": 2000,
+          "residual": 0.3623179376431519,
+          "mu": -3.8772014036406466,
+          "sigma_max": 3.910092193440756,
+          "closure_abs": 1.3033857345453432e-15
+        }
+      ]
+    },
+    {
+      "attempt_number": 2,
+      "seed": "94073782352500601439994660576239604144",
+      "success": false,
+      "failure_reason": "frequency_multiple_4_did_not_converge",
+      "modes": [
+        {
+          "frequency_multiple": 1,
+          "converged": true,
+          "iterations": 150,
+          "residual": 3.694165850035646e-13,
+          "mu": -3.741657386773941,
+          "sigma_max": 3.741657386773943,
+          "closure_abs": 3.1181879820985834e-16
+        },
+        {
+          "frequency_multiple": 2,
+          "converged": true,
+          "iterations": 160,
+          "residual": 3.677104413748124e-13,
+          "mu": -3.7416573867739404,
+          "sigma_max": 3.7416573867739413,
+          "closure_abs": 1.3280951045162968e-15
+        },
+        {
+          "frequency_multiple": 3,
+          "converged": true,
+          "iterations": 150,
+          "residual": 6.155686900733821e-13,
+          "mu": -3.741657386773942,
+          "sigma_max": 3.741657386773944,
+          "closure_abs": 3.379960284609541e-16
+        },
+        {
+          "frequency_multiple": 4,
+          "converged": false,
+          "iterations": 2000,
+          "residual": 0.36231793764315295,
+          "mu": -3.8772014036406484,
+          "sigma_max": 3.9100921934407573,
+          "closure_abs": 7.416394471566091e-16
+        }
+      ]
+    },
+    {
+      "attempt_number": 3,
+      "seed": "178757261005607360575276334394394984581",
+      "success": false,
+      "failure_reason": "frequency_multiple_2_did_not_converge",
+      "modes": [
+        {
+          "frequency_multiple": 1,
+          "converged": true,
+          "iterations": 50,
+          "residual": 7.437665694196227e-15,
+          "mu": -4.000000000000001,
+          "sigma_max": 4.000000000000001,
+          "closure_abs": 1.3186159337914312e-16
+        },
+        {
+          "frequency_multiple": 2,
+          "converged": false,
+          "iterations": 2000,
+          "residual": 0.3623179376431516,
+          "mu": -3.8772014036406492,
+          "sigma_max": 3.9100921934407618,
+          "closure_abs": 7.84942534656099e-16
+        }
+      ]
+    },
+    {
+      "attempt_number": 4,
+      "seed": "300978866425640147117273131803751047317",
+      "success": false,
+      "failure_reason": "frequency_multiple_1_did_not_converge",
+      "modes": [
+        {
+          "frequency_multiple": 1,
+          "converged": false,
+          "iterations": 2000,
+          "residual": 0.36231793764315257,
+          "mu": -3.8772014036406484,
+          "sigma_max": 3.9100921934407613,
+          "closure_abs": 7.702156233562133e-16
+        }
+      ]
+    }
+  ]
+}

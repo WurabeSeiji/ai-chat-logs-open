@@ -1,0 +1,130 @@
+{
+  "schema": "n_only_multifrequency_parent_v1",
+  "generator": "make_parent_n_only_v1.py",
+  "generator_sha256": "d2c94e9a453d5f5ef25033a872a792284e94fe016721c164a01576f911dc9cc2",
+  "numpy_version": "2.0.2",
+  "prng": "numpy.random.PCG64 via default_rng",
+  "os_seed_source": "secrets.randbits(128)",
+  "function_contract": {
+    "N": 5,
+    "seed_argument": "11",
+    "max_retries_argument": 3,
+    "explicit_seed_means_single_attempt": true,
+    "os_seed_total_attempt_limit": 4
+  },
+  "derived": {
+    "M": 10,
+    "lambda0": 1.2566370614359172,
+    "frequency_multiples": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "fixed_solver_contract": {
+    "iterations": 2000,
+    "beta": 0.5,
+    "tolerance": 1e-12,
+    "check_every": 10,
+    "branch": "argmin(Im eigenvalue of JG)",
+    "unconverged_best_value_is_never_returned": true
+  },
+  "status": "success",
+  "accepted_seed": "11",
+  "seed_was_explicit": true,
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "seed": "11",
+      "success": true,
+      "failure_reason": null,
+      "modes": [
+        {
+          "frequency_multiple": 1,
+          "converged": true,
+          "iterations": 160,
+          "residual": 4.421188140236641e-13,
+          "mu": -3.7416573867739427,
+          "sigma_max": 3.741657386773943,
+          "closure_abs": 1.189476195153162e-15
+        },
+        {
+          "frequency_multiple": 2,
+          "converged": true,
+          "iterations": 160,
+          "residual": 1.7078622530907054e-13,
+          "mu": -3.741657386773941,
+          "sigma_max": 3.74165738677394,
+          "closure_abs": 9.923290257034447e-16
+        },
+        {
+          "frequency_multiple": 3,
+          "converged": true,
+          "iterations": 50,
+          "residual": 4.416818274174606e-14,
+          "mu": -4.0,
+          "sigma_max": 3.9999999999999987,
+          "closure_abs": 8.327124880384623e-16
+        },
+        {
+          "frequency_multiple": 4,
+          "converged": true,
+          "iterations": 150,
+          "residual": 5.453098688825962e-13,
+          "mu": -3.7416573867739418,
+          "sigma_max": 3.7416573867739413,
+          "closure_abs": 1.9616556182192635e-16
+        },
+        {
+          "frequency_multiple": 5,
+          "converged": true,
+          "iterations": 160,
+          "residual": 2.0023363948450792e-13,
+          "mu": -3.741657386773941,
+          "sigma_max": 3.7416573867739418,
+          "closure_abs": 2.1143198265044956e-16
+        }
+      ]
+    }
+  ],
+  "arrays": {
+    "white_input": {
+      "file": "white_input.npy",
+      "shape": [
+        10,
+        5
+      ]
+    },
+    "parent_modes": {
+      "file": "parent_modes.npy",
+      "shape": [
+        10,
+        5
+      ]
+    },
+    "edges": {
+      "file": "edges.npy",
+      "shape": [
+        10,
+        2
+      ]
+    },
+    "mode_weights": {
+      "file": "mode_weights.npy",
+      "shape": [
+        5
+      ]
+    }
+  },
+  "invariant_audit": {
+    "all_modes_converged": true,
+    "max_mode_residual": 5.453098688825962e-13,
+    "max_mode_closure_abs": 2.901969953046895e-16,
+    "total_closure_abs": 1.470529909822406e-16,
+    "frobenius_norm": 1.0,
+    "all_mode_weights_nonzero": true
+  },
+  "runtime_seconds": 0.036705732345581055
+}
