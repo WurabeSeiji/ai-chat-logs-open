@@ -1,10 +1,24 @@
 #!/usr/bin/env python3
-"""白色零閉塞親から、M本の関係波と全倍音を独立に一覧化する。
+"""make_parent保存直後の波を、既存の安定波長分類表で読む。
 
-生成器をimportしない。``n_only_white_closed_harmonic_parent_v2`` の保存契約
-だけを読む。主表の一行は一つの関係波であり、N=5なら10行、N=40なら
-780行になる。倍音は保存波形のN点DFTからだけ読み、全M*N成分の次数・
-振幅・位相を別CSVへ保存する。
+このプログラムは make_parent を import ・変更せず、保存契約
+``n_only_white_closed_harmonic_parent_v2`` だけを読む。分類の正本は
+``analytic_particle_tables_*/N*/粒子属性族一覧.csv`` である。
+
+分類原則
+--------
+* 主キーは波長と倍音波長の組であり、位相ではない。
+* 位相は実数値を保存し、0/180度へ丸めない。
+* N点DFTの循環次数 |k| に対し、|k| が N を割る場合だけ
+  波長 q*lambda0, q=N/|k| を安定候補とする。k=0 はN点節上で
+  k=Nと区別できない lambda0 表現として別記する。
+* 一つの保存波形に分類表外の波長が一本でも含まれれば、
+  安定族へ強制投影せず「分類外」とする。
+* 分類表内の波長集合でも、最長の基底 q に対して他の d が
+  d|q を満たさなければ「単一安定波でない」とする。
+* 零閉塞は make_parent の監査量であり、安定波分類の代用にしない。
+* M=N(N-1)/2 は入力に保存された関係波数として監査するが、
+  Mを安定粒子数とは解釈しない。
 """
 
 from __future__ import annotations
@@ -14,6 +28,7 @@ import csv
 import hashlib
 import json
 import math
+from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
 
@@ -21,8 +36,8 @@ import numpy as np
 
 
 INPUT_SCHEMA = "n_only_white_closed_harmonic_parent_v2"
-OUTPUT_SCHEMA = "n_only_white_closed_particle_table_v2"
-CONSTANT_WATCH = [0.3, 0.7, 0.302822, 0.697178]
+OUTPUT_SCHEMA = "stable_wavelength_classification_after_parent_v1"
+HERE = Path(__file__).resolve().parent
 
 
 def sha256_file(path: Path) -> str:
@@ -33,8 +48,18 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def portable_path(path: Path) -> str:
+    resolved = path.resolve()
+    try:
+        return str(resolved.relative_to(HERE))
+    except ValueError:
+        return resolved.name
+
+
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Nだけの白色零閉塞親から粒子表を作る")
+    parser = argparse.ArgumentParser(
+        description="make_parent直後の波を安定波長分類表で分類する"
+    )
     parser.add_argument("--input", type=Path, action="append", required=True)
     parser.add_argument("--output", type=Path, required=True)
     return parser.parse_args()
@@ -48,180 +73,197 @@ def edge_label(edge: np.ndarray) -> str:
     return f"({int(edge[0]) + 1},{int(edge[1]) + 1})"
 
 
-def address_for(k: int, n: int) -> tuple[int, int, str]:
-    if k == 0:
-        return 0, 1, "0/1"
-    divisor = math.gcd(abs(k), n)
-    numerator = k // divisor
-    denominator = n // divisor
-    return numerator, denominator, f"{numerator}/{denominator}"
+def parse_base_q(text: str) -> int:
+    suffix = "lambda0"
+    if not text.endswith(suffix):
+        raise ValueError(f"基底波長表記が不正です: {text!r}")
+    return int(text[: -len(suffix)])
 
 
-def harmonic_kind(k: int) -> str:
-    if k == 0:
-        return "直流"
-    if k == 1:
-        return "基本波"
-    if k == -1:
-        return "逆回転基本波"
-    if k > 1:
-        return f"第{k}倍音"
-    return f"逆回転第{abs(k)}倍音"
+def find_catalog(n: int) -> Path:
+    candidates = sorted(
+        HERE.glob(f"analytic_particle_tables_*/N{n}/粒子属性族一覧.csv")
+    )
+    if len(candidates) != 1:
+        raise SystemExit(
+            f"N={n} の安定波分類表を1個に特定できません: "
+            f"{[str(path) for path in candidates]}"
+        )
+    return candidates[0]
 
 
-def parity_type(odd_power: float, even_power: float, floor: float) -> str:
-    if odd_power <= floor and even_power <= floor:
-        return "非直流倍音なし"
-    if even_power <= floor:
-        return "純奇数倍音（F型）"
-    if odd_power <= floor:
-        return "純偶数倍音（B型）"
-    if odd_power >= even_power:
-        return "奇数・偶数倍音混合（奇数優勢）"
-    return "奇数・偶数倍音混合（偶数優勢）"
+def load_catalog(n: int) -> tuple[Path, dict[tuple[int, int, int], dict[str, str]]]:
+    path = find_catalog(n)
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    lookup: dict[tuple[int, int, int], dict[str, str]] = {}
+    for row in rows:
+        if int(row["分解能N"]) != n:
+            raise SystemExit(f"分類表のNが一致しません: {path}")
+        key = (
+            parse_base_q(row["基底波長"]),
+            int(row["選択する奇数倍音数"]),
+            int(row["選択する偶数倍音数"]),
+        )
+        if key in lookup:
+            raise SystemExit(f"分類表のキーが重複しています: {key}")
+        lookup[key] = row
+    return path, lookup
 
 
-def phase_network_readout(
-    values: np.ndarray, tolerance: float
-) -> tuple[str, str, float]:
-    """DFT成分の相対位相から B/F/E 位相網を読む。
+def order_wavelength(order: int, n: int) -> tuple[str, int | None, bool, bool]:
+    """DFT次数を波長倍率 q へ変換する。
 
-    位相セル数や外部分解能は置かない。数値許容差は浮動小数誤差の
-    判定にだけ用い、B=全成分が同相、F=二成分が逆相、E=それ以外とする。
+    戻り値は (表示, q, 安定候補, lambda0エイリアス) 。
     """
 
-    if len(values) <= 1:
-        return "—", "単一成分（位相網なし）", 0.0
-    units = values / np.abs(values)
-    relative = units * np.conjugate(units[0])
-    same_phase_residual = float(np.max(np.abs(relative - 1.0)))
-    if same_phase_residual <= tolerance:
-        return "B", "同相網（ボゾン型極限）", same_phase_residual
-    if len(values) == 2:
-        opposite_phase_residual = float(abs(relative[1] + 1.0))
-        if opposite_phase_residual <= tolerance:
-            return "F", "逆相二成分網（フェルミオン型極限）", opposite_phase_residual
-    pairwise = units[:, None] * np.conjugate(units[None, :])
-    off_diagonal = ~np.eye(len(values), dtype=bool)
-    intermediate_residual = float(
-        np.min(
-            np.minimum(np.abs(pairwise - 1.0), np.abs(pairwise + 1.0))[
-                off_diagonal
-            ]
-        )
+    absolute = abs(order)
+    if absolute == 0:
+        return "1lambda0（N点節上のk=Nエイリアス）", 1, True, True
+    quotient, remainder = divmod(n, absolute)
+    if remainder == 0:
+        return f"{quotient}lambda0", quotient, True, False
+    divisor = math.gcd(n, absolute)
+    return f"{n // divisor}/{absolute // divisor}lambda0", None, False, False
+
+
+def family_attributes(family: dict[str, str] | None) -> dict[str, Any]:
+    if family is None:
+        return {
+            "family_id": None,
+            "reflection_equal_amplitude": None,
+            "closure_address": None,
+            "conjugate_address": None,
+            "charge_from_address": None,
+            "particle_antiparticle": None,
+            "spin_from_winding_cover": None,
+        }
+    charge_text = family["住所電荷量sin2(pi*m/n)"]
+    return {
+        "family_id": family["族ID"],
+        "reflection_equal_amplitude": family["反射率R（等振幅）"],
+        "closure_address": family["閉鎖住所"],
+        "conjugate_address": family["共役住所"],
+        "charge_from_address": None if charge_text == "—" else float(charge_text),
+        "particle_antiparticle": family["粒子・反粒子"],
+        "spin_from_winding_cover": family["巻数・被覆から読むスピン"],
+    }
+
+
+def classify_spectrum(
+    spectrum: np.ndarray,
+    n: int,
+    m: int,
+    catalog: dict[tuple[int, int, int], dict[str, str]],
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    power = np.abs(spectrum) ** 2
+    total_power = float(np.sum(power))
+    eps = float(np.finfo(spectrum.real.dtype).eps)
+    numerical_floor = (
+        max(n, m) * eps * max(float(np.max(power)), np.finfo(float).tiny)
     )
-    return "E", "中間位相網（エルミオン型）", intermediate_residual
+    present = power > numerical_floor
 
+    components: list[dict[str, Any]] = []
+    wavelength_power: defaultdict[int, float] = defaultdict(float)
+    allowed_wavelengths: set[int] = set()
+    outside_orders: list[int] = []
+    outside_power = 0.0
 
-def cyclic_return_orders(
-    samples: np.ndarray, tolerance: float = 1e-10
-) -> tuple[int, int]:
-    """状態 w と二次量 w^2 の最小循環回帰次数を別々に読む。"""
-
-    state_norm = float(np.linalg.norm(samples))
-    quadratic = samples * samples
-    quadratic_norm = float(np.linalg.norm(quadratic))
-    state_order = len(samples)
-    quadratic_order = len(samples)
-    for lag in range(1, len(samples) + 1):
-        state_residual = float(
-            np.linalg.norm(np.roll(samples, -lag) - samples)
-            / max(state_norm, np.finfo(float).tiny)
+    for bin_index in range(n):
+        order = signed_order(bin_index, n)
+        wavelength, q, allowed, alias = order_wavelength(order, n)
+        is_present = bool(present[bin_index])
+        if is_present and allowed:
+            assert q is not None
+            allowed_wavelengths.add(q)
+            wavelength_power[q] += float(power[bin_index])
+        elif is_present:
+            outside_orders.append(order)
+            outside_power += float(power[bin_index])
+        components.append(
+            {
+                "DFT_bin": bin_index,
+                "cyclic_order": order,
+                "wavelength": wavelength,
+                "wavelength_multiple": q,
+                "stationary_wavelength_allowed": allowed,
+                "lambda0_node_alias": alias,
+                "present_above_numerical_floor": is_present,
+                "amplitude": float(abs(spectrum[bin_index])),
+                "power": float(power[bin_index]),
+                "power_fraction": float(power[bin_index] / total_power),
+                "phase_deg": float(math.degrees(np.angle(spectrum[bin_index]))),
+            }
         )
-        if state_residual <= tolerance:
-            state_order = lag
-            break
-    for lag in range(1, len(samples) + 1):
-        quadratic_residual = float(
-            np.linalg.norm(np.roll(quadratic, -lag) - quadratic)
-            / max(quadratic_norm, np.finfo(float).tiny)
-        )
-        if quadratic_residual <= tolerance:
-            quadratic_order = lag
-            break
-    return state_order, quadratic_order
 
-
-def half_turn_cover(
-    samples: np.ndarray, tolerance: float = 1e-10
-) -> tuple[complex | None, float | None, float | None, float | None, float | None]:
-    """半周期で状態が +w / -w のどちらへ戻るかと二次量の回帰を測る。"""
-
-    n = len(samples)
-    if n % 2:
-        return None, None, None, None, None
-    shifted = np.roll(samples, -n // 2)
-    state_norm = max(float(np.linalg.norm(samples)), np.finfo(float).tiny)
-    quadratic = samples * samples
-    quadratic_norm = max(float(np.linalg.norm(quadratic)), np.finfo(float).tiny)
-    overlap = complex(np.vdot(samples, shifted) / (state_norm * state_norm))
-    plus_residual = float(np.linalg.norm(shifted - samples) / state_norm)
-    minus_residual = float(np.linalg.norm(shifted + samples) / state_norm)
-    quadratic_residual = float(
-        np.linalg.norm(shifted * shifted - quadratic) / quadratic_norm
-    )
-    if plus_residual <= tolerance and quadratic_residual <= tolerance:
-        cover_ratio: float | None = 1.0
-    elif minus_residual <= tolerance and quadratic_residual <= tolerance:
-        cover_ratio = 2.0
+    base_q: int | None = None
+    harmonic_orders: list[int] = []
+    odd_count = 0
+    even_count = 0
+    family: dict[str, str] | None = None
+    classification_status = "分類外"
+    if outside_orders:
+        classification_reason = "安定波分類表外の波長を含む"
+    elif not allowed_wavelengths:
+        classification_reason = "数値誤差床より上の波長成分がない"
     else:
-        cover_ratio = None
-    return overlap, plus_residual, minus_residual, quadratic_residual, cover_ratio
+        base_q = max(allowed_wavelengths)
+        incompatible = sorted(q for q in allowed_wavelengths if base_q % q != 0)
+        if incompatible:
+            classification_reason = "単一基底波の倍音束ではない"
+        else:
+            harmonic_orders = sorted(
+                base_q // q for q in allowed_wavelengths if q != base_q
+            )
+            odd_count = sum(order % 2 == 1 for order in harmonic_orders)
+            even_count = len(harmonic_orders) - odd_count
+            family = catalog.get((base_q, odd_count, even_count))
+            if family is None:
+                classification_reason = "波長構成に対応する安定族が分類表にない"
+            else:
+                classification_status = "安定波分類表に一致"
+                classification_reason = "基底波長と倍音波長の組が一致"
 
+    actual_reflection: float | None = None
+    if family is not None and base_q is not None:
+        odd_power = 0.0
+        even_power = 0.0
+        for q, component_power in wavelength_power.items():
+            if q == base_q:
+                continue
+            harmonic_order = base_q // q
+            if harmonic_order % 2:
+                odd_power += component_power
+            else:
+                even_power += component_power
+        harmonic_power = odd_power + even_power
+        actual_reflection = 0.0 if harmonic_power == 0.0 else 0.5 * odd_power / harmonic_power
 
-def spin_type(
-    parity: str,
-    half_turn_ratio: float | None,
-) -> str:
-    """倍音パリティと半周期の符号/二次量回帰からスピン型候補を読む。"""
-
-    if parity.startswith("純奇数"):
-        if half_turn_ratio == 2.0:
-            return "2:1被覆確認（半整数スピン型）"
-        return "奇数倍音・2:1被覆候補（半整数スピン型）"
-    if parity.startswith("純偶数"):
-        if half_turn_ratio == 1.0:
-            return "1:1被覆確認（整数スピン型）"
-        return "偶数倍音・整数スピン型候補"
-    if parity.startswith("奇数・偶数"):
-        return "奇数・偶数倍音の混合スピン型"
-    return "非直流倍音なし"
-
-
-def cyclic_correlation_lifetime(samples: np.ndarray) -> tuple[int | None, list[float]]:
-    power = float(np.vdot(samples, samples).real)
-    if power == 0.0:
-        return None, []
-    correlations = []
-    first_crossing: int | None = None
-    for lag in range(1, len(samples)):
-        value = float(abs(np.vdot(samples, np.roll(samples, -lag))) / power)
-        correlations.append(value)
-        if first_crossing is None and value < math.exp(-1.0):
-            first_crossing = lag
-    return first_crossing, correlations
-
-
-def branch_gram(spectrum: np.ndarray, n: int) -> tuple[float, float, float, float, complex]:
-    max_pair = (n - 1) // 2
-    if max_pair == 0:
-        return 0.0, 0.0, 0.0, 0.0, 0.0 + 0.0j
-    positive = spectrum[np.arange(1, max_pair + 1)]
-    negative = spectrum[(-np.arange(1, max_pair + 1)) % n]
-    norm_positive = float(np.vdot(positive, positive).real)
-    norm_negative = float(np.vdot(negative, negative).real)
-    overlap = complex(np.vdot(positive, negative))
-    determinant = float(max(0.0, norm_positive * norm_negative - abs(overlap) ** 2))
-    return determinant, math.sqrt(determinant), norm_positive, norm_negative, overlap
-
-
-def phase_distinguished_count(waves: np.ndarray) -> int:
-    # 位相を商で消さない。同じ複素波形だけを同一とする。
-    return len({np.ascontiguousarray(row).tobytes() for row in waves})
+    result = {
+        "classification_status": classification_status,
+        "classification_reason": classification_reason,
+        "base_wavelength_multiple": base_q,
+        "base_wavelength": None if base_q is None else f"{base_q}lambda0",
+        "present_allowed_wavelengths": sorted(allowed_wavelengths),
+        "present_harmonic_orders": harmonic_orders,
+        "selected_odd_harmonic_count": odd_count,
+        "selected_even_harmonic_count": even_count,
+        "outside_stationary_order_count": len(outside_orders),
+        "outside_stationary_orders": outside_orders,
+        "outside_stationary_power_fraction": outside_power / total_power,
+        "actual_reflection_from_power": actual_reflection,
+        "phase_is_classification_key": False,
+        "phase_rounding_to_0_or_180": False,
+        "numerical_floor": numerical_floor,
+        **family_attributes(family),
+    }
+    return result, components
 
 
 def analyse(input_dir: Path) -> dict[str, Any]:
-    manifest = json.loads((input_dir / "manifest.json").read_text(encoding="utf-8"))
+    manifest_path = input_dir / "manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     if manifest.get("schema") != INPUT_SCHEMA:
         raise SystemExit(f"未対応schema: {manifest.get('schema')!r}")
     if manifest.get("status") != "success":
@@ -231,544 +273,382 @@ def analyse(input_dir: Path) -> dict[str, Any]:
     m = int(manifest["derived_only_from_N"]["M"])
     if m != n * (n - 1) // 2:
         raise SystemExit("M != N(N-1)/2")
-    waves = np.load(input_dir / manifest["arrays"]["relation_waves"]["file"])
-    parent = np.load(input_dir / manifest["arrays"]["parent_vector"]["file"])
-    edges = np.load(input_dir / manifest["arrays"]["edges"]["file"])
+
+    waves = np.load(
+        input_dir / manifest["arrays"]["relation_waves"]["file"], mmap_mode="r"
+    )
+    parent = np.load(
+        input_dir / manifest["arrays"]["parent_vector"]["file"], mmap_mode="r"
+    )
+    edges = np.load(input_dir / manifest["arrays"]["edges"]["file"], mmap_mode="r")
     if waves.shape != (m, n) or parent.shape != (m,) or edges.shape != (m, 2):
         raise SystemExit(
             f"配列shape不正: waves={waves.shape}, parent={parent.shape}, edges={edges.shape}"
         )
 
-    spectra = np.fft.fft(waves, axis=1) / math.sqrt(n)
-    reconstructed = np.fft.ifft(spectra, axis=1) * math.sqrt(n)
-    reconstruction_error = float(np.max(np.abs(reconstructed - waves)))
-    row_power = np.sum(np.abs(waves) ** 2, axis=1)
-    row_closure = np.abs(np.sum(waves**2, axis=1))
-    row_closure_relative = row_closure / np.maximum(row_power, np.finfo(float).tiny)
-    orders = np.array([signed_order(k, n) for k in range(n)], dtype=int)
-    eps = float(np.finfo(waves.real.dtype).eps)
-
+    catalog_path, catalog = load_catalog(n)
     rows: list[dict[str, Any]] = []
-    harmonics: list[dict[str, Any]] = []
-    all_charge_records: list[dict[str, Any]] = []
+    component_aggregate: dict[int, dict[str, Any]] = {}
+    closure_abs_values: list[float] = []
+    closure_relative_values: list[float] = []
+    nested_closure = 0.0 + 0.0j
+    reconstruction_max = 0.0
 
     for relation in range(m):
-        wave_id = f"W{relation + 1:04d}"
-        samples = waves[relation]
-        spectrum = spectra[relation]
-        power = np.abs(spectrum) ** 2
-        total_power = float(np.sum(power))
-        numerical_floor = max(n, m) * eps * max(float(np.max(power)), np.finfo(float).tiny)
-        present = power > numerical_floor
-        non_dc = orders != 0
-        present_non_dc = present & non_dc
-        base_mask = non_dc & (np.abs(orders) == 1)
-        higher_harmonic_mask = non_dc & (np.abs(orders) >= 2)
-        present_base = present & base_mask
-        present_harmonics = present & higher_harmonic_mask
-        if np.any(present_non_dc):
-            candidate_bins = np.flatnonzero(present_non_dc)
-            dominant_bin = int(candidate_bins[np.argmax(power[candidate_bins])])
+        samples = np.asarray(waves[relation])
+        spectrum = np.fft.fft(samples) / math.sqrt(n)
+        reconstructed = np.fft.ifft(spectrum) * math.sqrt(n)
+        reconstruction_max = max(
+            reconstruction_max, float(np.max(np.abs(reconstructed - samples)))
+        )
+        power_sum = float(np.sum(np.abs(samples) ** 2))
+        closure_value = complex(np.sum(samples**2))
+        nested_closure += closure_value
+        closure_abs = float(abs(closure_value))
+        closure_relative = closure_abs / max(power_sum, np.finfo(float).tiny)
+        closure_abs_values.append(closure_abs)
+        closure_relative_values.append(closure_relative)
+
+        classification, components = classify_spectrum(spectrum, n, m, catalog)
+        outside_orders = classification.pop("outside_stationary_orders")
+        outside_order_bytes = json.dumps(
+            outside_orders, separators=(",", ":")
+        ).encode("ascii")
+        if len(outside_orders) <= 32:
+            outside_orders_preview: list[int | str] = outside_orders
         else:
-            dominant_bin = 0
-        dominant_k = int(orders[dominant_bin])
-        addr_m, addr_n, address = address_for(dominant_k, n)
-        charge_magnitude = float(math.sin(math.pi * addr_m / addr_n) ** 2)
-
-        non_dc_power = float(np.sum(power[non_dc]))
-        odd_mask = non_dc & (np.abs(orders) % 2 == 1)
-        even_mask = non_dc & (np.abs(orders) % 2 == 0)
-        odd_power = float(np.sum(power[odd_mask]))
-        even_power = float(np.sum(power[even_mask]))
-        parity_denom = odd_power + even_power
-        odd_fraction = odd_power / parity_denom if parity_denom else 0.0
-        even_fraction = even_power / parity_denom if parity_denom else 0.0
-        parity = parity_type(odd_power, even_power, numerical_floor * n)
-
-        phase_tolerance = 100.0 * max(n, m) * eps
-        bfe_label, bfe_type, bfe_residual = phase_network_readout(
-            spectrum[present_non_dc], phase_tolerance
-        )
-
-        effective_harmonics = 0.0
-        if non_dc_power:
-            fractions = power[non_dc] / non_dc_power
-            effective_harmonics = float(1.0 / np.sum(fractions * fractions))
-
-        gram_det, gram_sqrt, positive_power, negative_power, overlap = branch_gram(
-            spectrum, n
-        )
-        branch_denominator = positive_power + negative_power
-        rotation_polarization = (
-            (positive_power - negative_power) / branch_denominator
-            if branch_denominator
-            else 0.0
-        )
-        if rotation_polarization > 100.0 * eps:
-            particle_side = "粒子側（正周回）"
-        elif rotation_polarization < -100.0 * eps:
-            particle_side = "反粒子側（負周回）"
-        else:
-            particle_side = "自己共役側（正負周回同強度）"
-        charge_signed = (
-            float(math.copysign(charge_magnitude, rotation_polarization))
-            if abs(rotation_polarization) > 100.0 * eps
-            else 0.0
-        )
-
-        (
-            half_turn,
-            half_turn_plus_residual,
-            half_turn_minus_residual,
-            half_turn_quadratic_residual,
-            cover_ratio,
-        ) = half_turn_cover(samples)
-        lifetime, correlations = cyclic_correlation_lifetime(samples)
-        state_order, quadratic_order = cyclic_return_orders(samples)
-        present_non_dc_orders = [int(k) for k in orders[present_non_dc]]
-        present_harmonic_orders = [int(k) for k in orders[present_harmonics]]
-        base_count = int(np.count_nonzero(present_base))
-        harmonic_count = int(np.count_nonzero(present_harmonics))
-        if base_count and harmonic_count:
-            wave_composition = "基本波＋倍音"
-        elif base_count:
-            wave_composition = "基本波のみ"
-        elif harmonic_count:
-            wave_composition = "倍音のみ（基本波なし）"
-        else:
-            wave_composition = "直流のみ"
-        fundamental_bin = 1 if n > 1 else 0
-
+            outside_orders_preview = [
+                *outside_orders[:16], "...", *outside_orders[-16:]
+            ]
+        classified_phases = [
+            {
+                "cyclic_order": item["cyclic_order"],
+                "wavelength": item["wavelength"],
+                "amplitude": item["amplitude"],
+                "phase_deg": item["phase_deg"],
+            }
+            for item in components
+            if item["present_above_numerical_floor"]
+            and item["stationary_wavelength_allowed"]
+            and (n <= 40 or classification["family_id"] is not None)
+        ]
         rows.append(
             {
-                "wave_id": wave_id,
+                "wave_id": f"W{relation + 1:04d}",
                 "relation_id": relation + 1,
                 "edge": edge_label(edges[relation]),
-                "wave_amplitude": math.sqrt(total_power),
+                "wave_amplitude": math.sqrt(power_sum),
                 "parent_phase_deg": float(math.degrees(np.angle(parent[relation]))),
-                "sample_count_N": n,
-                "wave_composition": wave_composition,
-                "detected_non_dc_component_count": int(
-                    np.count_nonzero(present_non_dc)
-                ),
-                "detected_non_dc_orders": present_non_dc_orders,
-                "base_wave_component_count": base_count,
-                "detected_harmonic_count": harmonic_count,
-                "detected_harmonic_orders": present_harmonic_orders,
-                "fundamental_amplitude": float(abs(spectrum[fundamental_bin])),
-                "fundamental_phase_deg": float(
-                    math.degrees(np.angle(spectrum[fundamental_bin]))
-                ),
-                "dominant_harmonic_order": dominant_k,
-                "dominant_harmonic_amplitude": float(abs(spectrum[dominant_bin])),
-                "dominant_harmonic_phase_deg": float(
-                    math.degrees(np.angle(spectrum[dominant_bin]))
-                ),
-                "effective_harmonic_count": effective_harmonics,
-                "odd_harmonic_power_fraction": odd_fraction,
-                "even_harmonic_power_fraction": even_fraction,
-                "BF_readout": parity,
-                "BFE_phase_network_readout": bfe_label,
-                "BFE_phase_network_type": bfe_type,
-                "BFE_phase_network_residual": bfe_residual,
-                "BFE_numerical_tolerance": phase_tolerance,
-                "positive_rotation_power": positive_power,
-                "negative_rotation_power": negative_power,
-                "rotation_polarization": rotation_polarization,
-                "particle_antiparticle_readout": particle_side,
-                "dominant_address": address,
-                "finite_return_order": addr_n,
-                "charge_magnitude_from_address": charge_magnitude,
-                "charge_signed_from_rotation": charge_signed,
-                "mass_squared_type_gram_det": gram_det,
-                "mass_type_sqrt_gram_det": gram_sqrt,
-                "branch_overlap_real": float(overlap.real),
-                "branch_overlap_imag": float(overlap.imag),
-                "half_turn_overlap_real": None if half_turn is None else float(half_turn.real),
-                "half_turn_overlap_imag": None if half_turn is None else float(half_turn.imag),
-                "half_turn_plus_residual": half_turn_plus_residual,
-                "half_turn_minus_residual": half_turn_minus_residual,
-                "half_turn_quadratic_residual": half_turn_quadratic_residual,
-                "state_return_order": state_order,
-                "quadratic_return_order": quadratic_order,
-                "cover_ratio": cover_ratio,
-                "spin_type_readout": spin_type(parity, cover_ratio),
-                "correlation_lifetime_samples": lifetime,
-                "correlation_lifetime_definition": "最初に循環自己相関絶対値が1/e未満となる標本遅れ",
-                "cyclic_correlations": correlations,
-                "zero_closure_abs": float(row_closure[relation]),
-                "zero_closure_relative": float(row_closure_relative[relation]),
-                "zero_closed": bool(row_closure_relative[relation] < 1e-12),
-                "DFT_reconstruction_error": float(
-                    np.max(np.abs(reconstructed[relation] - samples))
-                ),
+                "classified_component_phases": classified_phases,
+                "outside_stationary_orders_preview": outside_orders_preview,
+                "outside_stationary_orders_sha256": hashlib.sha256(
+                    outside_order_bytes
+                ).hexdigest(),
+                "zero_closure_abs": closure_abs,
+                "zero_closure_relative": closure_relative,
+                "zero_closed": closure_relative < 1e-12,
+                **classification,
             }
         )
 
-        for bin_index in range(n):
-            k = int(orders[bin_index])
-            component_m, component_n, component_address = address_for(k, n)
-            component_charge = float(
-                math.sin(math.pi * component_m / component_n) ** 2
+        for item in components:
+            order = int(item["cyclic_order"])
+            aggregate = component_aggregate.setdefault(
+                order,
+                {
+                    "cyclic_order": order,
+                    "wavelength": item["wavelength"],
+                    "wavelength_multiple": item["wavelength_multiple"],
+                    "stationary_wavelength_allowed": item[
+                        "stationary_wavelength_allowed"
+                    ],
+                    "lambda0_node_alias": item["lambda0_node_alias"],
+                    "present_wave_count": 0,
+                    "total_power": 0.0,
+                    "complex_amplitude_sum": 0.0 + 0.0j,
+                    "absolute_amplitude_sum": 0.0,
+                },
             )
-            item = {
-                "wave_id": wave_id,
-                "relation_id": relation + 1,
-                "edge": edge_label(edges[relation]),
-                "DFT_bin": bin_index,
-                "harmonic_order": k,
-                "harmonic_kind": harmonic_kind(k),
-                "amplitude": float(abs(spectrum[bin_index])),
-                "power": float(power[bin_index]),
-                "power_fraction_within_wave": float(power[bin_index] / total_power),
-                "phase_deg": float(math.degrees(np.angle(spectrum[bin_index]))),
-                "present_above_numerical_floor": bool(present[bin_index]),
-                "finite_address": component_address,
-                "finite_return_order": component_n,
-                "BF_of_harmonic": (
-                    "F型（奇数倍音）"
-                    if k and abs(k) % 2 == 1
-                    else "B型（偶数倍音）" if k else "直流"
-                ),
-                "rotation_branch": "正周回" if k > 0 else "負周回" if k < 0 else "直流",
-                "charge_magnitude_from_address": component_charge,
-                "zero_closure_is_wave_bundle_property": True,
-            }
-            harmonics.append(item)
-            if k != 0:
-                all_charge_records.append(item)
+            if item["present_above_numerical_floor"]:
+                aggregate["present_wave_count"] += 1
+            aggregate["total_power"] += item["power"]
+            value = spectrum[item["DFT_bin"]]
+            aggregate["complex_amplitude_sum"] += value
+            aggregate["absolute_amplitude_sum"] += abs(value)
 
-    watch = []
-    for target in CONSTANT_WATCH:
-        closest = min(
-            all_charge_records,
-            key=lambda item: abs(item["charge_magnitude_from_address"] - target),
-        )
-        watch.append(
+    spectrum_rows: list[dict[str, Any]] = []
+    total_spectral_power = sum(item["total_power"] for item in component_aggregate.values())
+    for order in sorted(component_aggregate):
+        item = component_aggregate[order]
+        amplitude_sum = float(item.pop("absolute_amplitude_sum"))
+        complex_sum = complex(item.pop("complex_amplitude_sum"))
+        spectrum_rows.append(
             {
-                "target": target,
-                "closest_value": closest["charge_magnitude_from_address"],
-                "absolute_difference": abs(
-                    closest["charge_magnitude_from_address"] - target
-                ),
-                "wave_id": closest["wave_id"],
-                "harmonic_order": closest["harmonic_order"],
-                "address": closest["finite_address"],
+                **item,
+                "power_fraction": item["total_power"] / total_spectral_power,
+                "circular_mean_phase_deg": float(math.degrees(np.angle(complex_sum))),
+                "phase_coherence": abs(complex_sum) / max(amplitude_sum, np.finfo(float).tiny),
             }
         )
 
+    stable_rows = [row for row in rows if row["family_id"] is not None]
+    reason_counts = Counter(row["classification_reason"] for row in rows)
+    family_counts = Counter(row["family_id"] for row in stable_rows)
+    family_power = defaultdict(float)
+    for row in stable_rows:
+        family_power[row["family_id"]] += row["wave_amplitude"] ** 2
+    stable_families = []
+    for family_id in sorted(family_counts):
+        example = next(row for row in stable_rows if row["family_id"] == family_id)
+        stable_families.append(
+            {
+                "family_id": family_id,
+                "base_wavelength": example["base_wavelength"],
+                "odd_harmonic_count": example["selected_odd_harmonic_count"],
+                "even_harmonic_count": example["selected_even_harmonic_count"],
+                "occurrence_count": family_counts[family_id],
+                "total_power": family_power[family_id],
+                "reflection_equal_amplitude": example["reflection_equal_amplitude"],
+                "closure_address": example["closure_address"],
+                "charge_from_address": example["charge_from_address"],
+                "spin_from_winding_cover": example["spin_from_winding_cover"],
+            }
+        )
+
+    allowed_power = sum(
+        item["total_power"]
+        for item in spectrum_rows
+        if item["stationary_wavelength_allowed"]
+    )
+    outside_power = total_spectral_power - allowed_power
     return {
         "schema": OUTPUT_SCHEMA,
         "source": {
-            "input_directory": str(input_dir),
+            "input_directory": portable_path(input_dir),
+            "manifest_sha256": sha256_file(manifest_path),
             "accepted_seed": manifest["accepted_seed"],
-            "seed_selection_protocol": manifest.get("seed_selection_protocol"),
-            "prng": manifest["prng"],
-            "numpy_version": manifest["numpy_version"],
             "generator": manifest["generator"],
             "generator_sha256": manifest["generator_sha256"],
+            "make_parent_modified_by_reader": False,
+            "universal_interaction_used_or_modified": False,
+        },
+        "classification_catalog": {
+            "path": portable_path(catalog_path),
+            "sha256": sha256_file(catalog_path),
+            "family_count": len(catalog),
+            "phase_used_as_key": False,
         },
         "summary": {
             "N": n,
             "M": m,
             "lambda0": float(manifest["derived_only_from_N"]["lambda0"]),
-            "relation_wave_state_count": m,
-            "phase_distinguished_wave_count": phase_distinguished_count(waves),
-            "total_DFT_components": m * n,
-            "detected_nonzero_harmonic_components": int(
-                sum(row["detected_harmonic_count"] for row in rows)
+            "generated_relation_wave_count": m,
+            "stable_classified_wave_count": len(stable_rows),
+            "unclassified_wave_count": m - len(stable_rows),
+            "classification_reason_counts": dict(reason_counts),
+            "observed_stable_family_count": len(stable_families),
+            "allowed_stationary_wavelength_power": allowed_power,
+            "outside_stationary_wavelength_power": outside_power,
+            "allowed_stationary_wavelength_power_fraction": (
+                allowed_power / total_spectral_power
             ),
-            "detected_nonzero_base_wave_components": int(
-                sum(row["base_wave_component_count"] for row in rows)
+            "outside_stationary_wavelength_power_fraction": (
+                outside_power / total_spectral_power
             ),
             "all_relation_waves_zero_closed": all(row["zero_closed"] for row in rows),
-            "max_relation_wave_closure_abs": float(np.max(row_closure)),
-            "max_relation_wave_closure_relative": float(np.max(row_closure_relative)),
-            "nested_total_closure_abs": float(abs(complex(np.sum(waves**2)))),
-            "parent_vector_closure_abs": float(abs(complex(parent @ parent))),
-            "DFT_reconstruction_max_error": reconstruction_error,
-            "base_wave_is_abs_k_1": True,
-            "harmonics_were_read_after_generation": True,
-            "harmonics_were_preassigned": False,
-            "BFE_uses_external_phase_resolution": False,
+            "max_relation_wave_closure_abs": max(closure_abs_values),
+            "max_relation_wave_closure_relative": max(closure_relative_values),
+            "nested_total_closure_abs": float(abs(nested_closure)),
+            "parent_vector_closure_abs": float(abs(complex(np.asarray(parent) @ np.asarray(parent)))),
+            "DFT_reconstruction_max_error": reconstruction_max,
+            "classification_is_readout_only": True,
+            "unclassified_is_preserved": True,
         },
-        "dimensionless_constant_watch": watch,
+        "stable_families_observed": stable_families,
         "waves": rows,
-        "harmonics": harmonics,
+        "spectrum_by_cyclic_order": spectrum_rows,
     }
 
 
-def fmt(value: Any, digits: int = 6) -> str:
+def serialise_cell(value: Any) -> Any:
     if value is None:
         return "—"
-    if isinstance(value, (list, tuple)):
-        return ",".join(str(x) for x in value)
-    number = float(value)
-    if not np.isfinite(number):
-        return "—"
-    return f"{number:.{digits}g}"
+    if isinstance(value, bool):
+        return "はい" if value else "いいえ"
+    if isinstance(value, (list, dict)):
+        return json.dumps(value, ensure_ascii=False, separators=(",", ":"))
+    return value
 
 
-def write_csv(
-    path: Path, rows: list[dict[str, Any]], fields: list[tuple[str, str]]
-) -> None:
+def write_csv(path: Path, rows: list[dict[str, Any]], fields: list[tuple[str, str]]) -> None:
     with path.open("w", encoding="utf-8-sig", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=[label for _, label in fields])
         writer.writeheader()
         for row in rows:
-            writer.writerow({label: row[key] for key, label in fields})
+            writer.writerow({label: serialise_cell(row[key]) for key, label in fields})
+
+
+WAVE_FIELDS = [
+    ("wave_id", "生成波ID"),
+    ("relation_id", "関係ID"),
+    ("edge", "関係辺"),
+    ("classification_status", "安定波分類"),
+    ("classification_reason", "分類理由"),
+    ("family_id", "安定族ID"),
+    ("base_wavelength", "基底波長"),
+    ("present_allowed_wavelengths", "存在する許容波長倍率"),
+    ("present_harmonic_orders", "倍音次数"),
+    ("outside_stationary_order_count", "分類表外波長数"),
+    ("outside_stationary_orders_preview", "分類表外循環次数_最大32件"),
+    ("outside_stationary_orders_sha256", "分類表外循環次数_SHA256"),
+    ("outside_stationary_power_fraction", "分類表外強度比"),
+    ("selected_odd_harmonic_count", "奇数倍音数"),
+    ("selected_even_harmonic_count", "偶数倍音数"),
+    ("reflection_equal_amplitude", "反射率R_等振幅参考"),
+    ("actual_reflection_from_power", "反射率R_実強度"),
+    ("closure_address", "閉鎖住所"),
+    ("conjugate_address", "共役住所"),
+    ("charge_from_address", "住所電荷量"),
+    ("particle_antiparticle", "粒子反粒子読出し"),
+    ("spin_from_winding_cover", "巻数被覆スピン読出し"),
+    ("wave_amplitude", "生成波振幅"),
+    ("parent_phase_deg", "親位相度_連続値"),
+    ("classified_component_phases", "許容波長成分の振幅位相_連続値"),
+    ("zero_closure_relative", "零閉塞相対残差_監査のみ"),
+]
+
+SPECTRUM_FIELDS = [
+    ("cyclic_order", "循環次数k"),
+    ("wavelength", "波長"),
+    ("stationary_wavelength_allowed", "安定波長候補"),
+    ("lambda0_node_alias", "lambda0節上エイリアス"),
+    ("present_wave_count", "存在する関係波数"),
+    ("total_power", "合計強度"),
+    ("power_fraction", "全強度比"),
+    ("circular_mean_phase_deg", "円平均位相度"),
+    ("phase_coherence", "位相コヒーレンス"),
+]
 
 
 def write_run(output: Path, result: dict[str, Any]) -> None:
     output.mkdir(parents=True, exist_ok=False)
+    census = {key: value for key, value in result.items() if key != "waves"}
+    census["wave_table"] = {
+        "file": "make_parent直後の波分類.csv",
+        "row_count": len(result["waves"]),
+        "all_rows_written": True,
+    }
     (output / "census.json").write_text(
-        json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8"
+        json.dumps(census, ensure_ascii=False, indent=2), encoding="utf-8"
     )
-    wave_fields = [
-        ("wave_id", "波ID"),
-        ("relation_id", "関係ID"),
-        ("edge", "関係辺"),
-        ("wave_amplitude", "波振幅"),
-        ("parent_phase_deg", "親位相度"),
-        ("sample_count_N", "標本数N"),
-        ("wave_composition", "波の構成"),
-        ("detected_non_dc_component_count", "非直流成分数"),
-        ("detected_non_dc_orders", "非直流次数一覧"),
-        ("base_wave_component_count", "基本波成分数"),
-        ("detected_harmonic_count", "倍音数"),
-        ("detected_harmonic_orders", "倍音次数一覧"),
-        ("fundamental_amplitude", "基本波振幅"),
-        ("fundamental_phase_deg", "基本波位相度"),
-        ("dominant_harmonic_order", "最大強度倍音次数"),
-        ("dominant_harmonic_amplitude", "最大強度倍音振幅"),
-        ("dominant_harmonic_phase_deg", "最大強度倍音位相度"),
-        ("effective_harmonic_count", "実効非直流成分数"),
-        ("odd_harmonic_power_fraction", "奇数倍音強度比"),
-        ("even_harmonic_power_fraction", "偶数倍音強度比"),
-        ("BFE_phase_network_readout", "B/F/E位相網"),
-        ("BFE_phase_network_type", "B/F/E位相網型"),
-        ("BFE_phase_network_residual", "B/F/E判定残差"),
-        ("BF_readout", "B/F読出し"),
-        ("particle_antiparticle_readout", "粒子反粒子読出し"),
-        ("rotation_polarization", "正負周回偏極"),
-        ("dominant_address", "最大強度倍音住所"),
-        ("finite_return_order", "有限回帰次数"),
-        ("charge_magnitude_from_address", "住所電荷量"),
-        ("charge_signed_from_rotation", "符号付き住所電荷量"),
-        ("mass_squared_type_gram_det", "質量二乗型Gram量"),
-        ("mass_type_sqrt_gram_det", "質量型sqrtGram量"),
-        ("half_turn_overlap_real", "半周重なり実部"),
-        ("half_turn_plus_residual", "半周同符号残差"),
-        ("half_turn_minus_residual", "半周反符号残差"),
-        ("half_turn_quadratic_residual", "半周二次量残差"),
-        ("state_return_order", "状態回帰次数"),
-        ("quadratic_return_order", "二次量回帰次数"),
-        ("cover_ratio", "半周期被覆比"),
-        ("spin_type_readout", "スピン型読出し"),
-        ("correlation_lifetime_samples", "相関寿命型量標本"),
-        ("zero_closure_abs", "零閉塞絶対残差"),
-        ("zero_closure_relative", "零閉塞相対残差"),
-        ("zero_closed", "零閉塞成立"),
-    ]
-    harmonic_fields = [
-        ("wave_id", "波ID"),
-        ("relation_id", "関係ID"),
-        ("edge", "関係辺"),
-        ("DFT_bin", "DFTビン"),
-        ("harmonic_order", "倍音次数"),
-        ("harmonic_kind", "倍音種別"),
-        ("amplitude", "倍音振幅"),
-        ("power", "倍音強度"),
-        ("power_fraction_within_wave", "波内強度比"),
-        ("phase_deg", "倍音位相度"),
-        ("present_above_numerical_floor", "数値誤差床より上"),
-        ("finite_address", "有限住所"),
-        ("finite_return_order", "有限回帰次数"),
-        ("BF_of_harmonic", "倍音B/F"),
-        ("rotation_branch", "回転枝"),
-        ("charge_magnitude_from_address", "住所電荷量"),
-    ]
-    write_csv(output / "particle_waves_ja.csv", result["waves"], wave_fields)
-    write_csv(output / "harmonics_ja.csv", result["harmonics"], harmonic_fields)
+    write_csv(output / "make_parent直後の波分類.csv", result["waves"], WAVE_FIELDS)
+    write_csv(
+        output / "循環次数別波長集計.csv",
+        result["spectrum_by_cyclic_order"],
+        SPECTRUM_FIELDS,
+    )
 
     summary = result["summary"]
     source = result["source"]
+    catalog = result["classification_catalog"]
     lines = [
-        f"# N={summary['N']} 白色零閉塞・粒子表",
+        f"# N={summary['N']} make_parent直後の安定波分類",
         "",
-        "## 1. 状態数と閉塞",
+        "make_parentと万能相互作用演算は変更・実行していない。",
+        "保存されたmake_parent直後の波を、既存の安定波分類表で読んだ結果である。",
+        "位相は分類キーにせず、0/180度に丸めていない。",
+        "",
+        "## 直後分類の集計",
         "",
         "| 項目 | 値 |",
         "|---|---:|",
         f"| N | {summary['N']} |",
-        f"| M=N(N−1)/2 | {summary['M']} |",
-        f"| 関係波状態数 | {summary['relation_wave_state_count']} |",
-        f"| 位相を区別した波数 | {summary['phase_distinguished_wave_count']} |",
-        f"| 採用seed | `{source['accepted_seed']}` |",
-        f"| 基本波長 λ0=2π/N | {summary['lambda0']:.12g} |",
-        f"| 全DFT成分数 | {summary['total_DFT_components']} |",
-        f"| 数値誤差床より上の基本波成分 | {summary['detected_nonzero_base_wave_components']} |",
-        f"| 数値誤差床より上の倍音成分（|k|≥2） | {summary['detected_nonzero_harmonic_components']} |",
-        f"| 全関係波が零閉塞 | {'はい' if summary['all_relation_waves_zero_closed'] else 'いいえ'} |",
+        f"| M=N(N−1)/2（生成関係波数。粒子数ではない） | {summary['M']} |",
+        f"| 安定波分類表に一致 | {summary['stable_classified_wave_count']} |",
+        f"| 分類外 | {summary['unclassified_wave_count']} |",
+        f"| 観測された安定族数 | {summary['observed_stable_family_count']} |",
+        f"| 安定波長候補の強度比 | {summary['allowed_stationary_wavelength_power_fraction']:.12g} |",
+        f"| 分類表外波長の強度比 | {summary['outside_stationary_wavelength_power_fraction']:.12g} |",
+        f"| 零閉塞成立（分類とは別の監査） | {'はい' if summary['all_relation_waves_zero_closed'] else 'いいえ'} |",
         f"| 最大零閉塞相対残差 | {summary['max_relation_wave_closure_relative']:.3e} |",
-        f"| 全体系の零閉塞絶対残差 | {summary['nested_total_closure_abs']:.3e} |",
-        f"| DFT逆変換最大誤差 | {summary['DFT_reconstruction_max_error']:.3e} |",
+        f"| 採用seed | `{source['accepted_seed']}` |",
+        f"| 使用した安定波分類族数 | {catalog['family_count']} |",
         "",
-        "倍音は生成時に置いていない。各関係波の生成後にN点DFTを行い、基本波 $|k|=1$ と",
-        "倍音 $|k|\\ge2$ を分離した。正負次数の振幅・位相を含む全成分は `harmonics_ja.csv` にある。",
+        "## 分類外の理由",
         "",
-        "## 2. 粒子主表（一波一行）",
-        "",
-        "この表が主成果である。B/F/E、倍音偶奇、電荷型量、質量型量、スピン型量を同じ波の一行で読む。",
-        "",
-        "| 波ID | 関係 | 波の構成 | 倍音数 | 支配次数 | 支配位相 | B/F/E | 倍音偶奇 | 粒子／反粒子 | 電荷型 q | 質量型 μ | スピン型 | 寿命型 | 零閉塞残差 |",
-        "|---|---|---|---:|---:|---:|---|---|---|---:|---:|---|---:|---:|",
+        "| 理由 | 波数 |",
+        "|---|---:|",
     ]
-    for row in result["waves"]:
-        lines.append(
-            f"| {row['wave_id']} | {row['edge']} | {row['wave_composition']} | "
-            f"{row['detected_harmonic_count']} | {row['dominant_harmonic_order']:+d} | "
-            f"{row['dominant_harmonic_phase_deg']:+.3f}° | "
-            f"{row['BFE_phase_network_readout']} | {row['BF_readout']} | "
-            f"{row['particle_antiparticle_readout']} | "
-            f"{row['charge_signed_from_rotation']:+.9g} | "
-            f"{row['mass_type_sqrt_gram_det']:.7g} | {row['spin_type_readout']} | "
-            f"{fmt(row['correlation_lifetime_samples'], 7)} | "
-            f"{row['zero_closure_relative']:.3e} |"
-        )
-    lines.extend(
-        [
-            "",
-            "B/F/Eは位相網の読出しであり、B=全成分同相、F=逆相二成分、E=中間位相網である。",
-            "外部の位相分解能や144セルは使わず、N点DFTの相対位相そのものを数値誤差内で判定した。",
-            "",
-            "## 3. 読出し量の式",
-            "",
-            "- 質量二乗型量: $\\det\\Gamma=N_+N_- - |\\langle c_+|c_-\\rangle|^2$。",
-            "- 住所電荷型量: 既約住所 $m/n$ に対して $q_{\\mathrm{addr}}=\\sin^2(\\pi m/n)$。符号は正負周回偏極から読む。",
-            "- スピン型量: 半周移動で $T^{N/2}w=+w$ なら1:1、$T^{N/2}w=-w$ かつ二次量が戻れば2:1被覆として読む。状態と二次量の最小回帰次数も併記する。",
-            "- 寿命型量: 循環自己相関 $|\\langle w,T^\\ell w\\rangle|/\\lVert w\\rVert^2$ が初めて $1/e$ 未満になる標本遅れ。",
-            "",
-            "## 4. 波・倍音・閉塞",
-            "",
-            "| 波ID | 関係 | 波振幅 | 親位相 | 波の構成 | 基本波成分数 | 倍音数 | 倍音次数 | 基本波振幅 | 基本波位相 | 最大強度次数 | 同振幅 | 同位相 | 実効成分数 | 零閉塞相対残差 |",
-            "|---|---|---:|---:|---|---:|---:|---|---:|---:|---:|---:|---:|---:|---:|",
-        ]
-    )
-    for row in result["waves"]:
-        lines.append(
-            f"| {row['wave_id']} | {row['edge']} | {row['wave_amplitude']:.7g} | "
-            f"{row['parent_phase_deg']:+.3f}° | {row['wave_composition']} | "
-            f"{row['base_wave_component_count']} | {row['detected_harmonic_count']} | "
-            f"{fmt(row['detected_harmonic_orders'])} | {row['fundamental_amplitude']:.7g} | "
-            f"{row['fundamental_phase_deg']:+.3f}° | {row['dominant_harmonic_order']:+d} | "
-            f"{row['dominant_harmonic_amplitude']:.7g} | {row['dominant_harmonic_phase_deg']:+.3f}° | "
-            f"{row['effective_harmonic_count']:.5g} | {row['zero_closure_relative']:.3e} |"
-        )
-    lines.extend(
-        [
-            "",
-            "## 5. 質量型・電荷型・粒子／反粒子",
-            "",
-            "| 波ID | 質量二乗型 detΓ | 質量型 √detΓ | 最大強度住所 | 有限回帰次数 | 住所電荷量 | 符号付き住所電荷量 | 正負周回偏極 | 粒子／反粒子 |",
-            "|---|---:|---:|---|---:|---:|---:|---:|---|",
-        ]
-    )
-    for row in result["waves"]:
-        lines.append(
-            f"| {row['wave_id']} | {row['mass_squared_type_gram_det']:.7g} | "
-            f"{row['mass_type_sqrt_gram_det']:.7g} | {row['dominant_address']} | "
-            f"{row['finite_return_order']} | {row['charge_magnitude_from_address']:.9g} | "
-            f"{row['charge_signed_from_rotation']:+.9g} | {row['rotation_polarization']:+.7f} | "
-            f"{row['particle_antiparticle_readout']} |"
-        )
-    lines.extend(
-        [
-            "",
-            "## 6. B/F/E・倍音偶奇・スピン型・相関寿命型量",
-            "",
-            "| 波ID | B/F/E | 位相網型 | 奇数倍音強度比 | 偶数倍音強度比 | 倍音偶奇読出し | 半周重なりRe | 状態回帰 | 二次量回帰 | 被覆比 | スピン型読出し | 相関寿命型量 |",
-            "|---|---|---|---:|---:|---|---:|---:|---:|---:|---|---:|",
-        ]
-    )
-    for row in result["waves"]:
-        lines.append(
-            f"| {row['wave_id']} | {row['BFE_phase_network_readout']} | "
-            f"{row['BFE_phase_network_type']} | "
-            f"{row['odd_harmonic_power_fraction']:.7f} | "
-            f"{row['even_harmonic_power_fraction']:.7f} | {row['BF_readout']} | "
-            f"{fmt(row['half_turn_overlap_real'], 7)} | {row['state_return_order']} | "
-            f"{row['quadratic_return_order']} | {fmt(row['cover_ratio'], 7)} | "
-            f"{row['spin_type_readout']} | "
-            f"{fmt(row['correlation_lifetime_samples'], 7)} |"
-        )
-    lines.extend(
-        [
-            "",
-            "相関寿命型量は、N点波形の循環自己相関の絶対値が初めて $1/e$ 未満になる標本遅れである。",
-            "物理時間への換算は行っていない。半周重なりはNが偶数の場合だけ定義する。",
-            "",
-            "## 7. 無次元数監視",
-            "",
-            "| 監視値 | 最近接住所電荷量 | 差 | 波ID | 倍音次数 | 住所 |",
-            "|---:|---:|---:|---|---:|---|",
-        ]
-    )
-    for item in result["dimensionless_constant_watch"]:
-        lines.append(
-            f"| {item['target']:.6f} | {item['closest_value']:.12g} | "
-            f"{item['absolute_difference']:.3e} | {item['wave_id']} | "
-            f"{item['harmonic_order']:+d} | {item['address']} |"
-        )
-    (output / "particle_table.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    for reason, count in sorted(summary["classification_reason_counts"].items()):
+        lines.append(f"| {reason} | {count} |")
 
-
-def combined_markdown(results: list[dict[str, Any]]) -> str:
-    lines = [
-        "# N=5・N=40 白色零閉塞・粒子表まとめ",
-        "",
-        "| N | M | 関係波状態数 | 位相区別波数 | 全DFT成分 | 基本波成分 | 倍音成分 | 全波零閉塞 | 最大相対残差 | 全体系残差 | seed |",
-        "|---:|---:|---:|---:|---:|---:|---:|---|---:|---:|---:|",
-    ]
-    for result in results:
-        summary = result["summary"]
-        lines.append(
-            f"| {summary['N']} | {summary['M']} | {summary['relation_wave_state_count']} | "
-            f"{summary['phase_distinguished_wave_count']} | {summary['total_DFT_components']} | "
-            f"{summary['detected_nonzero_base_wave_components']} | "
-            f"{summary['detected_nonzero_harmonic_components']} | "
-            f"{'はい' if summary['all_relation_waves_zero_closed'] else 'いいえ'} | "
-            f"{summary['max_relation_wave_closure_relative']:.3e} | "
-            f"{summary['nested_total_closure_abs']:.3e} | {result['source']['accepted_seed']} |"
-        )
     lines.extend(
         [
             "",
-            "## 粒子主表",
+            "## 実際に観測された安定族",
             "",
-            "| N | 波ID | 関係 | 波の構成 | 倍音数 | 支配次数 | 支配位相 | B/F/E | 倍音偶奇 | 粒子／反粒子 | 電荷型 q | 質量型 μ | スピン型 | 寿命型 | 零閉塞残差 |",
-            "|---:|---|---|---|---:|---:|---:|---|---|---|---:|---:|---|---:|---:|",
+            "| 族ID | 基底波長 | 奇数倍音数 | 偶数倍音数 | 出現数 | 合計強度 | 反射率R（等振幅参考） | 閉鎖住所 | 電荷量 | スピン読出し |",
+            "|---|---:|---:|---:|---:|---:|---:|---|---:|---|",
         ]
     )
-    for result in results:
-        n = result["summary"]["N"]
-        for row in result["waves"]:
+    if not result["stable_families_observed"]:
+        lines.append("| — | — | — | — | 0 | 0 | — | — | — | 現時点で安定族なし |")
+    else:
+        for row in result["stable_families_observed"]:
+            charge = "—" if row["charge_from_address"] is None else f"{row['charge_from_address']:.12g}"
             lines.append(
-                f"| {n} | {row['wave_id']} | {row['edge']} | {row['wave_composition']} | "
-                f"{row['detected_harmonic_count']} | {row['dominant_harmonic_order']:+d} | "
-                f"{row['dominant_harmonic_phase_deg']:+.3f}° | "
-                f"{row['BFE_phase_network_readout']} | {row['BF_readout']} | "
-                f"{row['particle_antiparticle_readout']} | "
-                f"{row['charge_signed_from_rotation']:+.9g} | "
-                f"{row['mass_type_sqrt_gram_det']:.7g} | {row['spin_type_readout']} | "
-                f"{fmt(row['correlation_lifetime_samples'], 7)} | "
-                f"{row['zero_closure_relative']:.3e} |"
+                f"| {row['family_id']} | {row['base_wavelength']} | "
+                f"{row['odd_harmonic_count']} | {row['even_harmonic_count']} | "
+                f"{row['occurrence_count']} | {row['total_power']:.12g} | "
+                f"{row['reflection_equal_amplitude']} | {row['closure_address']} | "
+                f"{charge} | {row['spin_from_winding_cover']} |"
             )
     lines.extend(
         [
             "",
-            "各Nの `particle_table.md` に同じM本全行と計算内訳を、`particle_waves_ja.csv` に同じ全行を、",
-            "`harmonics_ja.csv` に全M×N倍音成分の次数・振幅・位相を保存した。",
+            "全生成波の判定、分類表外循環次数、連続位相（N<=40）は",
+            "`make_parent直後の波分類.csv` に保存した。",
+            "循環次数ごとの波長、許容判定、強度は `循環次数別波長集計.csv` にある。",
+            "",
+            "## 分類の境界",
+            "",
+            "- 分類表外の波長を含む波を、最近の安定族へ投影していない。",
+            "- 零閉塞していても、波長構成が分類表外なら「分類外」である。",
+            "- k=0成分はN点節上で最短波長lambda0と区別できないため、エイリアスと明記した。",
+            "",
+        ]
+    )
+    (output / "make_parent直後の分類表.md").write_text(
+        "\n".join(lines), encoding="utf-8"
+    )
+
+
+def combined_markdown(results: list[dict[str, Any]]) -> str:
+    lines = [
+        "# make_parent直後の安定波分類まとめ",
+        "",
+        "make_parent本体と万能相互作用演算は変更していない。",
+        "既存の安定波分類表を、make_parent保存直後の波に対して使用した。",
+        "",
+        "| N | M（粒子数ではない） | 安定分類に一致 | 分類外 | 観測安定族数 | 安定波長候補強度比 | 分類表外強度比 | 零閉塞 | seed |",
+        "|---:|---:|---:|---:|---:|---:|---:|---|---:|",
+    ]
+    for result in results:
+        summary = result["summary"]
+        lines.append(
+            f"| {summary['N']} | {summary['M']} | "
+            f"{summary['stable_classified_wave_count']} | {summary['unclassified_wave_count']} | "
+            f"{summary['observed_stable_family_count']} | "
+            f"{summary['allowed_stationary_wavelength_power_fraction']:.12g} | "
+            f"{summary['outside_stationary_wavelength_power_fraction']:.12g} | "
+            f"{'はい' if summary['all_relation_waves_zero_closed'] else 'いいえ'} | "
+            f"{result['source']['accepted_seed']} |"
+        )
+    lines.extend(
+        [
+            "",
+            "「分類外」は失敗や削除対象ではなく、安定波分類表にまだ入らない",
+            "make_parent直後の波長構成をそのまま数えたものである。",
             "",
         ]
     )
@@ -782,8 +662,8 @@ def main() -> None:
         raise SystemExit(f"output already exists; refusing to overwrite: {output}")
     output.mkdir(parents=True, exist_ok=False)
 
-    results = []
-    seen = set()
+    results: list[dict[str, Any]] = []
+    seen: set[int] = set()
     for input_path in args.input:
         result = analyse(input_path.resolve())
         n = result["summary"]["N"]
@@ -794,21 +674,34 @@ def main() -> None:
         write_run(output / f"N{n}", result)
         print(
             f"N={n} M={result['summary']['M']} "
-            f"waves={result['summary']['relation_wave_state_count']} "
-            f"harmonic_components={result['summary']['total_DFT_components']}"
+            f"stable={result['summary']['stable_classified_wave_count']} "
+            f"unclassified={result['summary']['unclassified_wave_count']}"
         )
 
     results.sort(key=lambda item: item["summary"]["N"])
-    (output / "summary.md").write_text(
-        combined_markdown(results), encoding="utf-8"
-    )
+    (output / "summary.md").write_text(combined_markdown(results), encoding="utf-8")
     (output / "summary.json").write_text(
         json.dumps(
             {
                 "schema": OUTPUT_SCHEMA,
                 "reader": Path(__file__).name,
                 "reader_sha256": sha256_file(Path(__file__).resolve()),
-                "results": results,
+                "results": [
+                    {
+                        "source": result["source"],
+                        "classification_catalog": result["classification_catalog"],
+                        "summary": result["summary"],
+                        "stable_families_observed": result[
+                            "stable_families_observed"
+                        ],
+                        "wave_table": {
+                            "file": f"N{result['summary']['N']}/make_parent直後の波分類.csv",
+                            "row_count": len(result["waves"]),
+                            "all_rows_written": True,
+                        },
+                    }
+                    for result in results
+                ],
             },
             ensure_ascii=False,
             indent=2,
