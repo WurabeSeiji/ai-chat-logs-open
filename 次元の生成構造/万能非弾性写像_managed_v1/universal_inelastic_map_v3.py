@@ -69,6 +69,40 @@ def closure_norm(a, b):
             float(np.vdot(a, a).real + np.vdot(b, b).real))
 
 
+def seed_fraction_sweep() -> None:
+    """T5 自己触媒則の検証（再現用・s=8固定・シード割合4桁掃引）。
+    発見済みの法則: d(lnP_f)/d衝突 = C·f²（f=フェルミオン割合）、C(s=8)≈10.4。"""
+    import json as _json
+    params = base.Params(high_n=63, recursive_collision_count=J_MAX)
+    sp = base.build_source_params(params)
+    s = 8.0
+    rows = []
+    print("[T5] シード割合掃引（s=8, 200衝突）: 成長率/f₀² の一定性")
+    for seed_amp in (1e-3, 3e-3, 1e-2, 3e-2, 1e-1):
+        a = v1.make_bundle(sp, EVEN_KS, "A", scale=s)
+        a = a + v1.make_bundle(sp, ODD_KS, "A", scale=seed_amp * s)
+        b = v1.make_bundle(sp, EVEN_KS, "B", scale=s)
+        tot = float(np.vdot(a, a).real + np.vdot(b, b).real)
+        pfs = [v1.fermionic_power_raw(a, b, sp)]
+        for _ in range(J_MAX):
+            a, b, _ = collision_step_v3(a, b, sp)
+            pfs.append(v1.fermionic_power_raw(a, b, sp))
+        pfs = np.array(pfs)
+        f0 = float(pfs[0] / tot)
+        lp = np.log(np.maximum(pfs[:21], 1e-300))
+        rate0 = float(np.polyfit(np.arange(21), lp, 1)[0])
+        C = rate0 / f0 ** 2
+        rows.append({"seed_amp": seed_amp, "f0": f0, "rate0": rate0, "C": C,
+                     "growth_200": float(pfs[-1] / pfs[0])})
+        print(f"  seed={seed_amp:7.0e}: f0={f0:.3e} rate0={rate0:+.3e} C=rate0/f0²={C:.3f}")
+    Cs = [r["C"] for r in rows]
+    print(f"  C の変動: {min(Cs):.3f}〜{max(Cs):.3f}（比 {max(Cs)/min(Cs):.3f}——一定なら法則成立）")
+    Path(__file__).parent.joinpath("seed_fraction_sweep_result_v3.json").write_text(
+        _json.dumps({"s": s, "rows": rows, "law": "d(lnPf)/dj = C*f^2"},
+                    ensure_ascii=False, indent=2), encoding="utf-8")
+    print("saved: seed_fraction_sweep_result_v3.json")
+
+
 def main() -> None:
     t0 = time.time()
     print("万能非弾性写像 v3（結合定数なし・強さ=反射率）単体テスト")
