@@ -12,7 +12,13 @@ Release date: 2026-08-05
 
 - 記事: https://zenn.dev/noriaki_kihara/articles/universal-inelastic-map-fermion-gen （2026-08-05、push後に公開）
 
-## note / Facebook / X
+## note（一般向け）
+
+- 日本語: https://note.com/kiharanoriaki/n/n6718389c48ea （2026-08-05 公開）
+  （元原稿: `次元の生成構造/反物質は仕込まなくても出てきた_note完成稿.md`）
+- 英語: 未公開（元原稿: `次元の生成構造/antimatter_came_out_unbidden_note_en.md`）
+
+## Facebook / X
 
 - 未実施（公開後に追記）
 
