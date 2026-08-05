@@ -16,7 +16,8 @@ Release date: 2026-08-06
 
 - 日本語: https://note.com/kiharanoriaki/n/ne63f6e6d1e43 （2026-08-06 公開）
   （元原稿: `次元の生成構造/タイミングは教えなくても決まっていた_note完成稿.md`）
-- 英語: 未公開（元原稿: `次元の生成構造/timing_was_determined_without_being_told_note_en.md`）
+- 英語: https://note.com/kiharanoriaki/n/n6c035541423c （2026-08-06 公開）
+  （元原稿: `次元の生成構造/timing_was_determined_without_being_told_note_en.md`）
 
 ## Facebook / X
 
