@@ -20,6 +20,11 @@ Release date: 2026-08-05
   （元原稿: `次元の生成構造/no_universe_from_noise_note_en.md`）
 - 前回記事の続編（「タネがなくても、インフレーションは起きた」 https://note.com/kiharanoriaki/n/n48a02cd70f47 ）
 
+## Facebook
+
+- 日本語投稿: https://www.facebook.com/kihara.noriaki/posts/pfbid0vj2owZQ7YFsdawuKdUhKmfBsVk7LKzXiQryyAqZDPzoNQULDmJWAeymKf8MnJsL1l （2026-08-05、日本語note URLはコメント欄）
+- 英語投稿: 未公開（公開後にURLを追記）
+
 ## 公開ファイル（Zenodo, 6点）
 
 - `nbody_onset_mode_causal_discrimination_ja.md` / `_en.md`
