@@ -27,7 +27,7 @@ Release date: 2026-08-06
 ## X
 
 - 日本語ポスト: https://x.com/NoriakiKihara/status/2085030307133342037 （2026-08-06）
-- 英語ポスト: 未実施
+- 英語ポスト: https://x.com/NoriakiKihara/status/2085030689884578114 （2026-08-06）
 
 ## 公開ファイル（Zenodo, 6点）
 
