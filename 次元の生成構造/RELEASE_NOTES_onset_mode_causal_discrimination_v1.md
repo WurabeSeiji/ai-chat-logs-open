@@ -23,7 +23,12 @@ Release date: 2026-08-05
 ## Facebook
 
 - 日本語投稿: https://www.facebook.com/kihara.noriaki/posts/pfbid0vj2owZQ7YFsdawuKdUhKmfBsVk7LKzXiQryyAqZDPzoNQULDmJWAeymKf8MnJsL1l （2026-08-05、日本語note URLはコメント欄）
-- 英語投稿: 未公開（公開後にURLを追記）
+- 英語投稿: https://www.facebook.com/kihara.noriaki/posts/pfbid08Yytojni4LiJJaBT6yxR9uEqazBGLY3Wc2H45AAZgsetthPr3TJqpzL5REzYPjngl （2026-08-05、英語note URLはコメント欄）
+
+## X
+
+- 日本語ポスト: 未公開（公開後にURLを追記）
+- 英語ポスト: 未公開（公開後にURLを追記）
 
 ## 公開ファイル（Zenodo, 6点）
 
