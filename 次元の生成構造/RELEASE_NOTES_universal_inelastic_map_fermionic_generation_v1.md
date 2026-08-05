@@ -19,7 +19,12 @@ Release date: 2026-08-05
 - 英語: https://note.com/kiharanoriaki/n/n280577cf8bf8 （2026-08-05 公開）
   （元原稿: `次元の生成構造/antimatter_came_out_unbidden_note_en.md`）
 
-## Facebook / X
+## Facebook
+
+- 日本語投稿: https://www.facebook.com/kihara.noriaki/posts/pfbid02JXo3dtdApqvo9V17YjxytyudBCo8JRZsz9oHMUPvuFCfdeDbzZ1YBEHFqQN9hjn8l （2026-08-05、日本語note URLはコメント欄）
+- 英語投稿: 未実施
+
+## X
 
 - 未実施（公開後に追記）
 
