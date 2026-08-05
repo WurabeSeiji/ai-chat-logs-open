@@ -16,7 +16,8 @@ Release date: 2026-08-05
 
 - 日本語: https://note.com/kiharanoriaki/n/n6718389c48ea （2026-08-05 公開）
   （元原稿: `次元の生成構造/反物質は仕込まなくても出てきた_note完成稿.md`）
-- 英語: 未公開（元原稿: `次元の生成構造/antimatter_came_out_unbidden_note_en.md`）
+- 英語: https://note.com/kiharanoriaki/n/n280577cf8bf8 （2026-08-05 公開）
+  （元原稿: `次元の生成構造/antimatter_came_out_unbidden_note_en.md`）
 
 ## Facebook / X
 
