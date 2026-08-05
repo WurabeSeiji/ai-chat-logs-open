@@ -19,7 +19,12 @@ Release date: 2026-08-06
 - 英語: https://note.com/kiharanoriaki/n/n6c035541423c （2026-08-06 公開）
   （元原稿: `次元の生成構造/timing_was_determined_without_being_told_note_en.md`）
 
-## Facebook / X
+## Facebook
+
+- 日本語投稿: https://www.facebook.com/kihara.noriaki/posts/pfbid02HXobNGrqrykmkXAE7Y2rFkJY3WRqkqdxwSPv4AdWK7zjYtzqj4zH1yTtmqDS3K5ol （2026-08-06、日本語note URLはコメント欄）
+- 英語投稿: 未実施
+
+## X
 
 - 未実施（公開後に追記）
 
