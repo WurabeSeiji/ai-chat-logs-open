@@ -12,6 +12,11 @@ Release date: 2026-08-05
 
 - 記事: https://zenn.dev/noriaki_kihara/articles/onset-mode-unstable-equilibrium （2026-08-05、push後に公開）
 
+## note（一般向け）
+
+- 日本語: 未公開（原稿完成: `次元の生成構造/雑踏からは宇宙は始まらない_note完成稿.md`、2026-08-05。公開後にURLを追記）
+- 前回記事の続編（「タネがなくても、インフレーションは起きた」 https://note.com/kiharanoriaki/n/n48a02cd70f47 ）
+
 ## 公開ファイル（Zenodo, 6点）
 
 - `nbody_onset_mode_causal_discrimination_ja.md` / `_en.md`
