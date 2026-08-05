@@ -209,6 +209,7 @@ ok = (abs(frac_above - stored_ratchet["frac_final_above_init"]) < 1e-9
       and abs(mean_ratio - stored_ratchet["mean_ratio"]) < 1e-6)
 print(f"  ラチェット対照: frac={frac_above} (保存値 {stored_ratchet['frac_final_above_init']}), "
       f"mean_ratio={mean_ratio:.6f} (保存値 {stored_ratchet['mean_ratio']:.6f}) → 一致={ok}")
+np.savez_compressed(HERE / "ratchet_trajectories_v1.npz", trajs=trajs)
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 3.9))
 rr = np.array(pr["rates"])
@@ -216,7 +217,7 @@ ax1.bar(np.arange(len(rr)), rr, color=["tab:green" if x_ > 0 else "tab:red" for 
 ax1.axhline(0, color="k", lw=0.8)
 ax1.set_xlabel("乱位相種 #"); ax1.set_ylabel("早期生成率（符号つき）")
 ax1.set_title(f"(a) 方向は位相のくじ：50乱位相で P(+)={h1['P_plus']:.2f}\n"
-              f"瞬時符号予測子の的中率 {h1['sign_predictor_hit']:.2f}（決定論的くじ）", fontsize=10)
+              f"瞬時符号予測子の的中率 {h1['sign_predictor_hit']:.2f}（偶然50%超・完全予測は未達）", fontsize=10)
 tt = np.arange(1, T + 1)
 for i in range(trajs.shape[0]):
     ax2.plot(tt, trajs[i] / trajs[i, 0], color="tab:gray", lw=0.5, alpha=0.45)
