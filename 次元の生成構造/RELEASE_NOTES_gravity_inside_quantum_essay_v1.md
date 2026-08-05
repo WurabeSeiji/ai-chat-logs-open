@@ -12,7 +12,13 @@ Release date: 2026-08-05
 
 - 日本語: https://note.com/kiharanoriaki/n/nc07528c49524 （2026-08-05 公開）
   （元原稿: `次元の生成構造/重力は最初から量子論の中にいたのではないか_note完成稿.md`）
-- 英語: 未公開（原稿完成: `次元の生成構造/was_gravity_inside_quantum_theory_note_en.md`、2026-08-05。公開後にURLを追記）
+- 英語: https://note.com/kiharanoriaki/n/na6eb6107d241 （2026-08-05 公開）
+  （元原稿: `次元の生成構造/was_gravity_inside_quantum_theory_note_en.md`）
+
+## Facebook
+
+- 日本語投稿: 未公開（公開後にURLを追記）
+- 英語投稿: 未公開（公開後にURLを追記）
 
 ## 引用アンカー（本文で参照する公開済みDOI）
 
