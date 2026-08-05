@@ -23,7 +23,7 @@ Release date: 2026-08-05
 ## X
 
 - 日本語ポスト: https://x.com/NoriakiKihara/status/2084883186828599343 （2026-08-05）
-- 英語ポスト: 未公開（公開後にURLを追記）
+- 英語ポスト: https://x.com/NoriakiKihara/status/2084883669005779302 （2026-08-05）
 
 ## 引用アンカー（本文で参照する公開済みDOI）
 
