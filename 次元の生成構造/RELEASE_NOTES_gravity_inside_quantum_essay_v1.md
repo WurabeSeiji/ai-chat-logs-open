@@ -18,7 +18,12 @@ Release date: 2026-08-05
 ## Facebook
 
 - 日本語投稿: https://www.facebook.com/kihara.noriaki/posts/pfbid032ec8DAY2bWsj9b3RZcJZ31cj4whGufkUE8wuENNLZA6iuX6NhseWeXDvPWCKuVDZl （2026-08-05、日本語note URLはコメント欄）
-- 英語投稿: 未公開（公開後にURLを追記）
+- 英語投稿: https://www.facebook.com/kihara.noriaki/posts/pfbid0kAahAzr1EwxAxtYx8GjuWXLL83VQUHXHQJPJ71xco1ZVwbT2qTybsFm1LFpFQ4hzl （2026-08-05、英語note URLはコメント欄）
+
+## X
+
+- 日本語ポスト: 未公開（公開後にURLを追記）
+- 英語ポスト: 未公開（公開後にURLを追記）
 
 ## 引用アンカー（本文で参照する公開済みDOI）
 
