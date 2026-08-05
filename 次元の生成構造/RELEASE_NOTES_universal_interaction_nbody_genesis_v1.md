@@ -12,7 +12,13 @@ Release date: 2026-08-06
 
 - 記事: https://zenn.dev/noriaki_kihara/articles/nbody-genesis-two-factor-law （2026-08-06、push後に公開）
 
-## note / Facebook / X
+## note（一般向け）
+
+- 日本語: https://note.com/kiharanoriaki/n/ne63f6e6d1e43 （2026-08-06 公開）
+  （元原稿: `次元の生成構造/タイミングは教えなくても決まっていた_note完成稿.md`）
+- 英語: 未公開（元原稿: `次元の生成構造/timing_was_determined_without_being_told_note_en.md`）
+
+## Facebook / X
 
 - 未実施（公開後に追記）
 
