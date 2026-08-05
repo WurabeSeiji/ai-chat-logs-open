@@ -14,7 +14,9 @@ Release date: 2026-08-05
 
 ## note（一般向け）
 
-- 日本語: 未公開（原稿完成: `次元の生成構造/雑踏からは宇宙は始まらない_note完成稿.md`、2026-08-05。公開後にURLを追記）
+- 日本語: https://note.com/kiharanoriaki/n/n7b655e3da27a （2026-08-05 公開）
+  （元原稿: `次元の生成構造/雑踏からは宇宙は始まらない_note完成稿.md`）
+- 英語: 未公開（原稿完成: `次元の生成構造/no_universe_from_noise_note_en.md`、2026-08-05。公開後にURLを追記）
 - 前回記事の続編（「タネがなくても、インフレーションは起きた」 https://note.com/kiharanoriaki/n/n48a02cd70f47 ）
 
 ## 公開ファイル（Zenodo, 6点）
