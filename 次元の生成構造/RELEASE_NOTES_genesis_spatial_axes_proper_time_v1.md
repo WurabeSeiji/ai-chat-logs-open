@@ -17,7 +17,12 @@ Release date: 2026-08-06
 - 日本語版「読めないのは、時間だけだった——宇宙は自分の物差しと時計を、自分で作っていた」: https://note.com/kiharanoriaki/n/n41839f4350fa （2026-08-06公開）
 - 英語版: https://note.com/kiharanoriaki/n/ne49fc8430271 （2026-08-06公開）
 
-## Facebook / X
+## Facebook
+
+- 日本語版: https://www.facebook.com/kihara.noriaki/posts/pfbid0uKtZPSumSHYBqrXh2NoLLU72NryZiie4H4UwStMMz9GdW7QjiMXEcDuQG9U7vL1Tl （2026-08-06公開、本文リンク不可のためDOI番号表記）
+- 英語版: 未実施（公開後に追記）
+
+## X
 
 - 未実施（公開後に追記）
 
