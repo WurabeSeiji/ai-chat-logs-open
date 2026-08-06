@@ -17,7 +17,12 @@ Release date: 2026-08-06
 - 日本語版「波の周期表——思考実験だった62粒子の割り当てが、検証可能な仮説になった」: https://note.com/kiharanoriaki/n/n6be3536e1eb0 （2026-08-06公開）
 - 英語版: https://note.com/kiharanoriaki/n/n1583950ec812 （2026-08-06公開）
 
-## Facebook / X
+## Facebook
+
+- 日本語版: https://www.facebook.com/kihara.noriaki/posts/pfbid021dk5nPGmUV7qqgbU4kBUgc3mFd446DTifVNi5ckvJDJZuaULCP7JdE5jTV1zXM3yl （2026-08-06公開）
+- 英語版: 未実施（公開後に追記）
+
+## X
 
 - 未実施（公開後に追記）
 
