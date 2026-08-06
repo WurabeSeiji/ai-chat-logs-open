@@ -12,7 +12,12 @@ Release date: 2026-08-06
 
 - 記事: https://zenn.dev/noriaki_kihara/articles/genesis-spatial-axes-proper-time （2026-08-06、push後に公開）
 
-## note / Facebook / X
+## note
+
+- 日本語版「読めないのは、時間だけだった——宇宙は自分の物差しと時計を、自分で作っていた」: https://note.com/kiharanoriaki/n/n41839f4350fa （2026-08-06公開）
+- 英語版: https://note.com/kiharanoriaki/n/ne49fc8430271 （2026-08-06公開）
+
+## Facebook / X
 
 - 未実施（公開後に追記）
 
