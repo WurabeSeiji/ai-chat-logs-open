@@ -20,7 +20,7 @@ Release date: 2026-08-06
 ## Facebook
 
 - 日本語版: https://www.facebook.com/kihara.noriaki/posts/pfbid021dk5nPGmUV7qqgbU4kBUgc3mFd446DTifVNi5ckvJDJZuaULCP7JdE5jTV1zXM3yl （2026-08-06公開）
-- 英語版: 未実施（公開後に追記）
+- 英語版: https://www.facebook.com/kihara.noriaki/posts/pfbid02ZpufbPyZp19pVeQSg2rTMGycTEmWn5mkeU2D5inqzBAtNGpMDopP3JU8zozNk8xKl （2026-08-06公開）
 
 ## X
 
