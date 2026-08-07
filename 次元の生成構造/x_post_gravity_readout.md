@@ -17,3 +17,17 @@ OGPカード（図1バナー）が自動表示される。
 詳細：https://note.com/kiharanoriaki/n/n698b11999367
 
 #量子重力 #繰り込み #Zenodo
+
+---
+
+# X / Twitter 用ポスト（重力読出し論文、英語版）
+
+A counterterm is the price of confusing the layers. Put gravity on the readout side of space and time: gauge and gravity emerge from one readout, closure intact. A century of struggle may be a mistake of placement.
+
+Details: https://note.com/kiharanoriaki/n/n81dc28bcc73a
+
+#QuantumGravity #Zenodo
+
+----- 文字数メモ -----
+本文＋タグ＋URL（23換算）＝273/280ウェイト（制限内確認済み）。note 英語版の
+OGPカードが自動表示される。
