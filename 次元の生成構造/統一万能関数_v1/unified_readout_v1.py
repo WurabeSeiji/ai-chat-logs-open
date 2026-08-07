@@ -52,11 +52,17 @@ def g_space_history(C2, p2, q2):
     return {"f2": f2}
 
 
+def _odd_mask(Nn):
+    ks = np.arange(Nn)
+    return (ks % 2 == 1)
+
+
 def g_matter_fraction(C2):
-    """物質分率 f_seed: 奇数帯（フェルミオン型）内容のパワー分率。"""
+    """物質分率 f_seed: 奇数帯（フェルミオン型）内容のパワー分率。
+    帯マスクは汎用（全奇数k）——Nn=5 では {1,3} で従来定義とビット同一。"""
     P2 = np.abs(C2) ** 2
     ptot = float(P2.sum())
-    podd = float(P2[:, 1, :].sum() + P2[:, 3, :].sum())
+    podd = float(P2[:, _odd_mask(C2.shape[1]), :].sum())
     return {"f_seed": podd / max(ptot, 1e-300)}
 
 
@@ -73,16 +79,21 @@ def g_position_1d(C2):
     3Dレジスタエンジンのみ対応（本メンバーの既知の制限）。内容が無い場合は
     存在指標 present=False を返す（NaN でなく不在の明示）。"""
     Nn, Neta = C2.shape[1], C2.shape[2]
-    mask = np.zeros(Nn)
-    mask[1] = 1.0
-    if Nn > 3:
-        mask[3] = 1.0
+    mask = _odd_mask(Nn).astype(float)
     Wo = np.fft.ifft2(C2 * mask[None, :, None], axes=(1, 2)) * (Nn * Neta)
     Pn = np.sum(np.abs(Wo) ** 2, axis=(0, 2))
     if Pn.sum() <= 1e-280:
-        return {"x": None, "present": False}
-    z = np.sum(Pn * np.exp(2j * np.pi * np.arange(Nn) / Nn)) / Pn.sum()
-    return {"x": float((np.angle(z) * Nn / (2 * np.pi)) % Nn), "present": True}
+        return {"x": None, "cover": None, "present": False}
+    nn = np.arange(Nn)
+    z1 = np.sum(Pn * np.exp(2j * np.pi * nn / Nn)) / Pn.sum()
+    z2 = np.sum(Pn * np.exp(2j * np.pi * 2 * nn / Nn)) / Pn.sum()
+    # 被覆判定は関係量のみ: 対蹠二点構造（奇数帯の反周期性）では z1 が相殺し
+    # z2 が残る（正本 centroid3_v2 軸1 の処方・周期表柱7）。
+    if abs(z2) > abs(z1):
+        x = float((np.angle(z2) * Nn / (4 * np.pi)) % (Nn / 2))
+        return {"x": x, "cover": 2, "present": True}
+    x = float((np.angle(z1) * Nn / (2 * np.pi)) % Nn)
+    return {"x": x, "cover": 1, "present": True}
 
 
 # ---------------------------------------------------------------- 二時刻メンバー
@@ -136,7 +147,9 @@ def g_panel(C2, p2, q2, C_flat_prev=None, c_gen_prev=None):
     C_flat = C2.reshape(-1)
     if C_flat_prev is not None:
         out.update(g_collective_residual(C_flat, C_flat_prev))
-    c_gen = C2[:, 3, :].reshape(-1)
+    om = _odd_mask(C2.shape[1]).copy()
+    om[1] = False   # 生成帯=シード帯(最低奇数帯k=1)を除く奇数帯（Nn=5ではk=3と同一）
+    c_gen = C2[:, om, :].reshape(-1)
     out.update(g_matter_clock(c_gen, c_gen_prev))
     out["_carry"] = {"C_flat": C_flat.copy(), "c_gen": c_gen.copy()}
     return out
