@@ -99,3 +99,8 @@ Release date: 2026-08-06
 - アップロード6点: wave_periodic_table_v2_{ja,en}.{md,tex,pdf}
   （ja 1.78MB / en 1.40MB・グリフ欠落ゼロ確認済み）
 - Zenn記事更新済み
+
+### v2 note展開（2026-08-07）
+- note日本語版（既存記事を上書き更新）: https://note.com/kiharanoriaki/n/n6be3536e1eb0
+- note英語版（既存記事を上書き更新）: https://note.com/kiharanoriaki/n/n1583950ec812
+- Facebook・X は今回変更なし（木原判断）
