@@ -72,6 +72,21 @@ def g_census(C2):
     return {"census": np.abs(C2).__pow__(2).sum(axis=0)}
 
 
+def g_wave_census(C2):
+    """波数census: セル（帯k×巻きη）ごとの参加関係波の勘定。
+    粒子＝波・個数＝波の本数（周期表の数え上げ規定）。全て純関係量:
+      count = 厳密非零の参加本数（振幅²>0 の厳密判定・閾値なし——
+              荷電種の厳密0はここで厳密0本と数えられる）
+      pr_m  = 実効本数（参加比 PR_M = (Σ|c|²)²/Σ|c|⁴・M方向）"""
+    A2 = np.abs(C2) ** 2                       # M×Nn×Nη
+    P = A2.sum(axis=0)
+    count = (A2 > 0.0).sum(axis=0).astype(int)
+    S2 = (A2 ** 2).sum(axis=0)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        pr = np.where(S2 > 0.0, P ** 2 / np.where(S2 > 0.0, S2, 1.0), 0.0)
+    return {"wave_count": count, "wave_pr_m": pr}
+
+
 def g_position_1d(C2):
     """位置読出し（1D・暫定）: 奇数帯内容の双対レジスタ重心（巻きモーメント偏角）。
     注意: フェルミオン優勢内容は対蹠二点構造（空間的二重被覆・周期表柱7）を
@@ -143,6 +158,7 @@ def g_panel(C2, p2, q2, C_flat_prev=None, c_gen_prev=None):
     out.update(g_space_history(C2, p2, q2))
     out.update(g_matter_fraction(C2))
     out.update(g_census(C2))
+    out.update(g_wave_census(C2))
     out.update(g_position_1d(C2))
     C_flat = C2.reshape(-1)
     if C_flat_prev is not None:
