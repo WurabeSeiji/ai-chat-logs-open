@@ -75,9 +75,20 @@ def build(n, delta):
     return ui.UnifiedEngine(n, C2_0, wp0), p2, q2
 
 
+# 基準粒子構成表（仕様書 §8.3）の行に対応するセル——実効本数 PR_M を追跡する
+TRACK_CELLS = [(2, 0), (1, 0), (3, 0), (0, 0), (4, 0), (5, 0), (15, 0)]
+CELL_LABEL = {(2, 0): "k=2 光子型凝縮体（真空）", (1, 0): "k=1 ニュートリノ型（シード）",
+              (3, 0): "k=3 ニュートリノ型（生成）", (0, 0): "k=0 零モード",
+              (4, 0): "k=4 光子型（高次）", (5, 0): "k=5 ニュートリノ型（高次）",
+              (15, 0): "k=15 ニュートリノ型（最高次）"}
+
+
 def run(n, delta):
     eng, p2, q2 = build(n, delta)
     H = {k: np.zeros(T) for k in ("f2", "f_seed", "pr_n", "closure", "P_tot")}
+    for c in TRACK_CELLS:
+        H[f"prm_{c[0]}_{c[1]}"] = np.zeros(T)
+        H[f"pow_{c[0]}_{c[1]}"] = np.zeros(T)
     sig = np.zeros(T, complex)
     carry = {"C_flat": None, "c_gen": None}
     for t in range(T):
@@ -89,6 +100,9 @@ def run(n, delta):
         H["f_seed"][t] = pan["f_seed"]
         H["pr_n"][t] = pan["pr_n"]
         H["P_tot"][t] = pan["P_tot"]
+        for (k, e) in TRACK_CELLS:
+            H[f"prm_{k}_{e}"][t] = pan["cell_pr_m"][k, e]
+            H[f"pow_{k}_{e}"][t] = pan["cell_power"][k, e]
         # --- 監査量（統一読出しの外・内部状態の直接計測）: 零閉塞 Σxₙ²
         H["closure"][t] = abs(complex(np.sum(C2 ** 2))) / max(pan["P_tot"], 1e-300)
         # --- 全波合成信号（時間–振動数図の入力）
@@ -130,6 +144,26 @@ def fig_panels(n, Hm, Hv):
     ax[3].set_xlabel("τ（step）"); ax[3].legend(fontsize=8)
     fig.tight_layout()
     p = HERE / f"fig_tb_zeropoint_N{n}_Nn{NN}_v2.png"
+    fig.savefig(p, dpi=130); plt.close(fig)
+    return p
+
+
+def fig_prm(n, Hm):
+    """基準粒子構成表の各行の実効本数 PR_M の τ 推移（仕様書 §8.3 の動的版）"""
+    ts = np.arange(1, T + 1)
+    M = n * (n - 1) // 2
+    fig, ax = plt.subplots(2, 1, figsize=(9, 8), sharex=True)
+    for (k, e) in TRACK_CELLS:
+        pr = Hm[f"prm_{k}_{e}"]
+        po = Hm[f"pow_{k}_{e}"]
+        ax[0].plot(ts, pr, lw=0.8, label=CELL_LABEL[(k, e)])
+        ax[1].semilogy(ts, np.maximum(po, 1e-300), lw=0.8)
+    ax[0].axhline(M, color="red", lw=0.8, ls="--", label=f"M={M}（全波が参加）")
+    ax[0].set_ylabel("実効本数 PR_M"); ax[0].legend(fontsize=7, ncol=2)
+    ax[0].set_title(f"N={n} 基準粒子構成の実効本数 PR_M と場の量の推移（Nn={NN}）")
+    ax[1].set_ylabel("場の量 P（パワー）"); ax[1].set_xlabel("τ（step）")
+    fig.tight_layout()
+    p = HERE / f"fig_tb_prm_N{n}_Nn{NN}_v1.png"
     fig.savefig(p, dpi=130); plt.close(fig)
     return p
 
@@ -191,6 +225,7 @@ def main():
         Hv, sv = run(n, 0.0)
         pa = fig_panels(n, Hm, Hv)
         pb = fig_spectrogram(n, sm, sv)
+        pc = fig_prm(n, Hm)
         sh_m, sh_v = clock_sharpness(sm), clock_sharpness(sv)
         cw = slice(*WIN)
         rec = {"M": n * (n - 1) // 2,
@@ -207,7 +242,7 @@ def main():
                "closure_max_matter": float(np.max(Hm["closure"])),
                "closure_max_vacuum": float(np.max(Hv["closure"])),
                "clock_matter": sh_m, "clock_vacuum": sh_v,
-               "figs": [pa.name, pb.name]}
+               "figs": [pa.name, pb.name, pc.name]}
         out["N"][n] = rec
         cm = sh_m or {}
         print(f"N={n:3d} M={rec['M']:4d}: crossing 物質={rec['crossing_matter']:4d}/"
