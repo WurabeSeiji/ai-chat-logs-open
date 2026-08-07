@@ -3,15 +3,15 @@ title: "波と場の二層分離 ── counterterm とは層の混同の代償�
 emoji: "🌊"
 type: "idea"
 topics: ["物理学", "重力", "ゲージ理論", "数値実験", "仮説"]
-published: false
+published: true
 ---
 
 ## 概要
 
 次元の生成構造シリーズの枠組み提案論文です（2026-08-07 公開）。
 
-- **Version DOI**: [DOIPLACEHOLDER](https://doi.org/DOIPLACEHOLDER)
-- **Concept DOI（常に最新版）**: [CONCEPTPLACEHOLDER](https://doi.org/CONCEPTPLACEHOLDER)
+- **Version DOI**: [10.5281/zenodo.21832257](https://doi.org/10.5281/zenodo.21832257)
+- **Concept DOI（常に最新版）**: [10.5281/zenodo.21832256](https://doi.org/10.5281/zenodo.21832256)
 
 [波の周期表 v2](https://doi.org/10.5281/zenodo.21830706) には動力学——とりわけ重力——がありませんでした。本稿はその続編で、一つの失敗の記録から始まります。
 
