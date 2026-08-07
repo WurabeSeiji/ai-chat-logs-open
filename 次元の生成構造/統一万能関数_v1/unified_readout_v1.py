@@ -98,7 +98,8 @@ def g_position_1d(C2):
     Wo = np.fft.ifft2(C2 * mask[None, :, None], axes=(1, 2)) * (Nn * Neta)
     Pn = np.sum(np.abs(Wo) ** 2, axis=(0, 2))
     if Pn.sum() <= 1e-280:
-        return {"x": None, "cover": None, "present": False}
+        return {"x": None, "cover": None, "present": False, "pr_n": 0.0}
+    pr_n = float(Pn.sum() ** 2 / np.sum(Pn ** 2))   # 双対占有の実効セル数（局在度）
     nn = np.arange(Nn)
     z1 = np.sum(Pn * np.exp(2j * np.pi * nn / Nn)) / Pn.sum()
     z2 = np.sum(Pn * np.exp(2j * np.pi * 2 * nn / Nn)) / Pn.sum()
@@ -106,9 +107,9 @@ def g_position_1d(C2):
     # z2 が残る（正本 centroid3_v2 軸1 の処方・周期表柱7）。
     if abs(z2) > abs(z1):
         x = float((np.angle(z2) * Nn / (4 * np.pi)) % (Nn / 2))
-        return {"x": x, "cover": 2, "present": True}
+        return {"x": x, "cover": 2, "present": True, "pr_n": pr_n}
     x = float((np.angle(z1) * Nn / (2 * np.pi)) % Nn)
-    return {"x": x, "cover": 1, "present": True}
+    return {"x": x, "cover": 1, "present": True, "pr_n": pr_n}
 
 
 # ---------------------------------------------------------------- 二時刻メンバー

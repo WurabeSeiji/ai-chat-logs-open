@@ -46,7 +46,8 @@ def load(name, path):
 
 
 ui = load("ui_pos", UF / "unified_interaction_v1.py")
-ur = load("ur_pos", UF / "unified_readout_v1.py")
+ur = load("ur_pos", UF / "unified_readout_v2.py")     # 曖昧さ保存版（現行）
+S = load("sel_pos", UF / "selection_v1.py")           # 選択層（宣言して使う）
 
 N = 12
 NN = int(sys.argv[1]) if len(sys.argv) > 1 else 5   # 空間分解能（正本v3=16）
@@ -88,15 +89,15 @@ def run(seed_mode):
         eng.step()
         pan = ur.g_panel(eng.C2(), p2, q2, carry_f, carry_g)
         carry_f = pan["_carry"]["C_flat"]; carry_g = pan["_carry"]["c_gen"]
-        present.append(bool(pan["present"]))
-        xs.append(pan["x"] if pan["present"] else np.nan)
-        # PR_n（双対占有）: 読出しモジュール外の補助統計（記録のみ）
-        C2 = eng.C2()
-        mask = (np.arange(NN) % 2 == 1).astype(float)
-        Wo = np.fft.ifft2(C2 * mask[None, :, None], axes=(1, 2)) * (NN * NETA)
-        Pn = np.sum(np.abs(Wo) ** 2, axis=(0, 2))
-        prs.append(float(Pn.sum() ** 2 / max(np.sum(Pn ** 2), 1e-300))
-                   if Pn.sum() > 1e-280 else np.nan)
+        # 【宣言】選択 S = s_position_maxmoment（巻き m=1,2 のうち重み最大を採る）
+        # ＋ s_present（既定床 1e-280）。G は束を返すだけで選択しない（R7）。
+        pos = S.s_position_maxmoment(pan)
+        present.append(pos["present"])
+        xs.append(pos["x"] if pos["present"] else np.nan)
+        # PR_n（双対占有）は統一 G の読出し値（是正記録: 初版は「補助統計」と
+        # 称してインラインFFTで内部状態を直接読んでいた＝ルール違反——
+        # 統一 G の pr_n 出力に置換）
+        prs.append(pan["pr_n"] if pos["present"] else np.nan)
     return np.array(xs), np.array(prs), np.array(present)
 
 
