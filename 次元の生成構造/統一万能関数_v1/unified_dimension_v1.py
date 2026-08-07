@@ -16,54 +16,75 @@
 0.318 で非ゼロ閉塞、全体の閉塞欠損は物質量に厳密比例（相対1.4e-10）。
 すなわち**凝縮体＝ゼロ閉塞ブロック、物質＝閉塞の欠損**である。
 
-設計規約: R1–R7（unified_readout_v2 参照）を継承し、
+--------------------------------------------------------------------------
+設計規約: unified_readout_v2 の R1–R7 を継承し、以下を追加する。
 
   **R8 瞬時性**: D は窓（時間平均・移動SVD）を使わない。フレームは毎ステップ、
   その瞬間の状態と生成子だけから構成する。窓幅は調整パラメータであり R2
   （パラメータフリー）を破るため。生成子は正本 LowRankSystem.kmatvec を
   read-only で用い、状態には書き込まない（受動）。
 
+  **R9 停止条件の外部化**: D は閾値・ランク判定・打切り・停止条件を一切
+  持たない。計算が不能な場合は **NaN / None をそのまま返す**（0 や空の
+  代用値に置き換えない・IF で先回りしない）。ランクや打切り次数のような
+  「どこで切るか」は上位のループ（実験スクリプト）が宣言して行う。
+  そのために D は**連続量の素材**を返す——逐次直交化の残差ノルム列、
+  射影生成子そのもの、平面ごとの重みの列。
+
+  【是正記録 2026-08-08】初版の D は (a) Gram–Schmidt に 1e-300 の閾値を
+  埋め、(b) 値が取れないとき 0 の代用値を返す分岐を持ち、(c) Krylov 反復の
+  停止条件を内部に持ち、(d) その閾値の産物である rank で分岐までしていた。
+  これは統一G v1 で犯した「読出しに選択を焼き込む」失敗の再演であり、
+  どの閾値の下での次元かを宣言できないため基準値が再現不能になる。全廃した。
+
+  唯一の例外: 線形代数ルーチン（固有分解）は NaN 入力で例外を送出するため、
+  例外を捕捉して NaN を返す。これは閾値ではなく「計算不能→NaN」の写像である。
+--------------------------------------------------------------------------
+
 瞬時フレームの構成: 実表現 x=[Re Z⊥; Im Z⊥] ∈ ℝ^{2M} に対し、生成子の作用
 A（＝K を実部・虚部に同一に作用させたもの）で
   v₁ = x（位置）, v₂ = A x（速度）, v₃ = A² x（加速度）
-を作り、Gram–Schmidt で占有3次元部分空間 E を張る。**位置と速度の張る面が
+を作り、逐次直交化して占有3次元部分空間 E を張る。**位置と速度の張る面が
 回転平面、加速度が第3方向**を与える。生成子をこの3次元へ射影した反対称
-Ω = EᵀAE の回転軸 â と、回転平面の法線 n̂（＝E基底の第3軸）の一致度
-|n̂·â| = |Ω₁₂|/‖ω‖ が**第3次元がどれだけ確定しているか**の読出しになる。
+Ω = EᵀAE の回転軸 â と、回転平面の法線（E 基底の第3軸）の一致度
+|n̂·â| = |Ω₁₂|/‖ω‖ が第3次元の確定度である。
 
-平面の梯子は Krylov 部分空間 {x, Ax, …, A^{2p−1}x} 上で A を対角化して得る。
-p は**計算上の打切り次数**（物理閾値ではない）であり、値を記録し、p を上げても
-結果が安定であることを審査で確認する。
+**次元の結晶化の読出しは平面の縮退度 n_eff（実効平面数）である**（単体テスト
+2026-08-08 の実測: N=4 は n_eff=1.938 で2枚が拮抗＝一意な平面が選べず第3軸が
+定義できない／N≥5 は 1.09–1.47 で1枚が卓越）。瞬時 align は N=4 の非結晶化を
+検出できず（0.606）、二時刻の持続性も全 N で 1.0000 となり判別しない——
+いずれも実測で確認した限界であり、記録として残す。
 """
 from __future__ import annotations
 import numpy as np
+
+_NAN = float("nan")
 
 
 # ---------------------------------------------------------------- 子閉塞ブロック
 
 def d_closure_blocks(C2):
-    """ゼロ閉塞する子ブロックの探索（帳簿セル粒度）。
+    """ゼロ閉塞する子ブロックの検出（帳簿セル粒度）。
 
-    cell_power    : セルのパワー
-    cell_closure  : 閉塞残差 |Σ_e z_e²| / Σ_e|z_e|²（0 なら厳密なゼロ閉塞ブロック）
+    cell_power    : セルのパワー Σ_e|z_e|²
+    cell_closure  : 閉塞残差 |Σ_e z_e²| / Σ_e|z_e|²
+                    （パワー 0 のセルは 0/0 → **NaN**。0 で代用しない）
     total_closure : 全体の閉塞残差（＝物質の指標。0 なら物質を生まない真空）
 
-    凝縮体はここで閉塞残差が機械精度に落ちるセルとして現れる。閾値判定は
-    しない（残差そのものを返す——どこで切るかは選択層の責務）。
+    凝縮体はここで閉塞残差が機械精度に落ちるセルとして現れる。**どこで切るかは
+    D の責務ではない**（R9）——残差そのものを返す。
     """
-    M, Nn, Neta = C2.shape
-    P = np.zeros((Nn, Neta))
-    R = np.zeros((Nn, Neta))
-    for k in range(Nn):
-        for e in range(Neta):
-            z = C2[:, k, e]
-            p = float(np.real(np.vdot(z, z)))
-            P[k, e] = p
-            R[k, e] = abs(complex(np.sum(z * z))) / p if p > 0 else 0.0
+    A2 = np.abs(C2) ** 2
+    P = A2.sum(axis=0)                                   # Nn×Nη
+    B = np.abs(np.sum(C2 ** 2, axis=0))                  # |Σ_e z_e²|
+    with np.errstate(divide="ignore", invalid="ignore"):
+        R = B / P
     zf = C2.reshape(-1)
-    pt = float(np.real(np.vdot(zf, zf)))
-    return {"cell_power": P, "cell_closure": R,
-            "total_closure": abs(complex(np.sum(zf * zf))) / pt if pt > 0 else 0.0}
+    # Python スカラの割り算は 0/0 で例外になるため numpy 型で割る（NaN を返す・R9）
+    pt = np.float64(np.real(np.vdot(zf, zf)))
+    with np.errstate(divide="ignore", invalid="ignore"):
+        tot = np.float64(abs(complex(np.sum(zf * zf)))) / pt
+    return {"cell_power": P, "cell_closure": R, "total_closure": float(tot)}
 
 
 # ---------------------------------------------------------------- 瞬時フレーム
@@ -82,188 +103,184 @@ def _apply_A(x, kmatvec):
     return _to_real(kmatvec(_from_real(x)))
 
 
-def _gram_schmidt(vs, tol=0.0):
-    """数値ランクを保った直交化（tol=0: 厳密に非零な成分のみ採用）"""
-    E = []
+def _orthonormalize(vs):
+    """逐次直交化。**ベクトルを一本も捨てない**（ランク判定をしない・R9）。
+    戻り: E（列が正規直交ベクトル・退化列は NaN）、resid（各段の残差ノルム）。
+    残差ノルムが「どこまで独立か」の連続量であり、ランクは呼び出し側が決める。"""
+    E, resid = [], []
     for v in vs:
-        w = v.copy()
+        w = np.asarray(v, float).copy()
         for e in E:
-            w = w - (e @ w) * e
-        nrm = float(np.linalg.norm(w))
-        if nrm > tol and nrm > 1e-300:
-            E.append(w / nrm)
-    return np.array(E).T if E else np.zeros((len(vs[0]), 0))
+            with np.errstate(invalid="ignore"):
+                w = w - (e @ w) * e
+        r = float(np.linalg.norm(w))
+        resid.append(r)
+        with np.errstate(divide="ignore", invalid="ignore"):
+            E.append(w / r)                       # r=0 → NaN（代用しない）
+    return np.array(E).T, np.array(resid)
 
 
 def d_frame(Z, kmatvec, p2=None, q2=None):
     """瞬時フレーム（位置・速度・加速度が張る占有3次元から構成）。
 
-    Z      : 関係波ベクトル（複素 M）——凝縮体セルの内容を渡す
+    Z      : 関係波ベクトル（複素 M）
     kmatvec: 正本 LowRankSystem.kmatvec（生成子の作用・read-only）
     p2, q2 : 親平面基底（与えれば Z⊥ を取る＝誕生時の参照系を除く）
 
-    返す束:
-      d_plane   : 回転平面の複素方向（M）——x,y 復調の軸
-      axis_vec  : 回転軸（実 2M 表現の 3 次元係数を M へ戻した複素方向）
-      align     : |n̂·â| ＝ 第3次元の確定度（1 に近いほど鋭い・0 なら非結晶）
-      omega_gen : 射影生成子の回転の大きさ ‖ω‖
-      rank      : 占有部分空間の実次元（3 未満なら次元が立っていない）
-      weight    : ‖Z⊥‖²（フレームの存在重み。0 なら不在——真偽値は返さない）
+    返す束（計算不能な成分は NaN・**ランク判定は行わない**）:
+      weight    : ‖Z⊥‖²（フレームの存在重み。0 なら不在）
+      resid     : 逐次直交化の残差ノルム3本（位置・速度・加速度の独立性の連続量。
+                  **ランクはこの列から呼び出し側が決める**）
+      d_plane   : 回転平面の複素方向（x,y 復調の軸）
+      axis_vec  : 回転軸の複素方向
+      Omega     : 射影生成子 Ω = EᵀAE（3×3 反対称・生の素材）
+      omega_gen : ‖ω‖（回転の大きさ）
+      align     : |n̂·â| = |Ω₁₂|/‖ω‖（第3次元の確定度・補助量）
     """
-    z = Z.astype(complex)
+    z = np.asarray(Z, complex)
     if p2 is not None and q2 is not None:
         z = z - p2 * (p2 @ z) - q2 * (q2 @ z)
     w = float(np.real(np.vdot(z, z)))
-    M = len(z)
-    empty = {"d_plane": np.zeros(M, complex), "axis_vec": np.zeros(M, complex),
-             "align": 0.0, "omega_gen": 0.0, "rank": 0, "weight": w}
-    if w <= 0.0:
-        return empty
     x = _to_real(z)
-    v1 = x / np.linalg.norm(x)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        v1 = x / np.linalg.norm(x)
     v2 = _apply_A(v1, kmatvec)
     v3 = _apply_A(v2, kmatvec)
-    E = _gram_schmidt([v1, v2, v3])
-    if E.shape[1] < 3:
-        empty["rank"] = int(E.shape[1])
-        return empty
-    AE = np.stack([_apply_A(E[:, j], kmatvec) for j in range(3)], axis=1)
-    Om = E.T @ AE
-    Om = 0.5 * (Om - Om.T)                       # 反対称成分（射影生成子）
-    axis = np.array([Om[2, 1], Om[0, 2], Om[1, 0]])
-    om = float(np.linalg.norm(axis))
-    if om <= 0.0:
-        empty["rank"] = 3
-        return empty
-    ah = axis / om
-    # 回転平面 = {位置, 速度} が張る面 → その法線は E 基底の第3軸 (0,0,1)
-    align = float(abs(ah[2]))
-    d_plane = _from_real(E[:, 0]) + 1j * _from_real(E[:, 1])
-    d_plane = d_plane / np.linalg.norm(d_plane)
-    axis_vec = _from_real(E @ ah)
-    nv = np.linalg.norm(axis_vec)
-    axis_vec = axis_vec / nv if nv > 0 else axis_vec
-    return {"d_plane": d_plane, "axis_vec": axis_vec, "align": align,
-            "omega_gen": om, "rank": 3, "weight": w}
+    E, resid = _orthonormalize([v1, v2, v3])
+    try:
+        AE = np.stack([_apply_A(E[:, j], kmatvec) for j in range(E.shape[1])],
+                      axis=1)
+        Om = E.T @ AE
+        Om = 0.5 * (Om - Om.T)
+        axis = np.array([Om[2, 1], Om[0, 2], Om[1, 0]])
+        om = float(np.linalg.norm(axis))
+        with np.errstate(divide="ignore", invalid="ignore"):
+            ah = axis / om
+        align = float(abs(ah[2]))
+        d_plane = _from_real(E[:, 0]) + 1j * _from_real(E[:, 1])
+        with np.errstate(divide="ignore", invalid="ignore"):
+            d_plane = d_plane / np.linalg.norm(d_plane)
+            axis_vec = _from_real(E @ ah)
+            axis_vec = axis_vec / np.linalg.norm(axis_vec)
+    except Exception:                       # 計算不能 → NaN（R9・閾値ではない）
+        M = len(z)
+        Om = np.full((3, 3), _NAN)
+        om, align = _NAN, _NAN
+        d_plane = np.full(M, _NAN, complex)
+        axis_vec = np.full(M, _NAN, complex)
+    return {"weight": w, "resid": resid, "d_plane": d_plane,
+            "axis_vec": axis_vec, "Omega": Om, "omega_gen": om, "align": align}
 
 
-def d_plane_ladder(Z, kmatvec, p2=None, q2=None, order=6):
-    """回転平面の梯子（Krylov 部分空間上で生成子を対角化して得る）。
+def d_plane_ladder(Z, kmatvec, order, p2=None, q2=None):
+    """回転平面の梯子（Krylov 部分空間上で射影生成子を対角化して得る）。
 
-    order : 計算上の打切り次数（＝求める平面の枚数。物理閾値ではない）
-    返す束:
-      freqs      : 各平面の回転周波数（射影生成子の固有値の虚部・降順の重み順）
-      weights    : 各平面への状態の射影パワー（重み）
-      n_eff      : 実効平面数 ＝ 重みの参加比 PR（閾値なし・連続量）
-      krylov_dim : 実際に張れた次元（数値ランク）
+    **order は呼び出し側が宣言する打切り次数**（＝求める平面の枚数。D は
+    停止条件を持たない・R9）。実験仕様に値を明記すること。
+
+    返す束（計算不能なら NaN）:
+      krylov_resid : 逐次直交化の残差ノルム列（長さ 2·order。**どこまで
+                     独立かの連続量**——数値ランクは呼び出し側が決める）
+      freqs        : 各平面の回転周波数（cycles/step・重み降順）
+      weights      : 各平面への状態の射影パワー
+      n_eff        : 実効平面数 ＝ 重みの参加比 PR（閾値なし・連続量）
+                     **次元の結晶化の読出しはこの量である**
+      Omega        : 射影生成子（生の素材）
     """
-    z = Z.astype(complex)
+    z = np.asarray(Z, complex)
     if p2 is not None and q2 is not None:
         z = z - p2 * (p2 @ z) - q2 * (q2 @ z)
-    if float(np.real(np.vdot(z, z))) <= 0.0:
-        return {"freqs": np.zeros(0), "weights": np.zeros(0), "n_eff": 0.0,
-                "krylov_dim": 0}
     x = _to_real(z)
-    vs, cur = [], x / np.linalg.norm(x)
-    for _ in range(2 * order):
+    vs, cur = [], x
+    for _ in range(2 * int(order)):
         vs.append(cur)
         cur = _apply_A(cur, kmatvec)
-        nn = np.linalg.norm(cur)
-        if nn <= 1e-300:
-            break
-        cur = cur / nn
-    E = _gram_schmidt(vs)
+    E, kres = _orthonormalize(vs)
     d = E.shape[1]
-    if d < 2:
-        return {"freqs": np.zeros(0), "weights": np.zeros(0), "n_eff": 0.0,
-                "krylov_dim": int(d)}
-    AE = np.stack([_apply_A(E[:, j], kmatvec) for j in range(d)], axis=1)
-    Om = E.T @ AE
-    Om = 0.5 * (Om - Om.T)
-    ev, V = np.linalg.eig(Om)                    # 反対称 → 純虚固有値の共役対
-    coef = V.conj().T @ (E.T @ x)                # 各固有方向への射影
-    im = np.imag(ev)
-    pos = im > 0
-    freqs, wts = [], []
-    for j in np.where(pos)[0]:
-        freqs.append(float(im[j] / (2 * np.pi)))     # cycles/step 換算
-        wts.append(float(abs(coef[j]) ** 2))
-    if not wts:
-        return {"freqs": np.zeros(0), "weights": np.zeros(0), "n_eff": 0.0,
-                "krylov_dim": int(d)}
-    wts = np.array(wts)
-    freqs = np.array(freqs)
-    idx = np.argsort(-wts)
-    wts, freqs = wts[idx], freqs[idx]
-    s1, s2 = wts.sum(), (wts ** 2).sum()
-    n_eff = float(s1 ** 2 / s2) if s2 > 0 else 0.0
-    return {"freqs": freqs, "weights": wts, "n_eff": n_eff, "krylov_dim": int(d)}
+    try:
+        AE = np.stack([_apply_A(E[:, j], kmatvec) for j in range(d)], axis=1)
+        Om = E.T @ AE
+        Om = 0.5 * (Om - Om.T)
+        ev, V = np.linalg.eig(Om)
+        coef = V.conj().T @ (E.T @ x)
+        im = np.imag(ev)
+        sel = im > 0                       # 共役対の正の側（構造の選択・閾値でない）
+        freqs = im[sel] / (2 * np.pi)
+        wts = np.abs(coef[sel]) ** 2
+        idx = np.argsort(-wts)
+        freqs, wts = freqs[idx], wts[idx]
+        with np.errstate(divide="ignore", invalid="ignore"):
+            n_eff = float(wts.sum() ** 2 / (wts ** 2).sum())
+    except Exception:                      # 計算不能 → NaN（R9）
+        Om = np.full((d, d), _NAN)
+        freqs = np.full(0, _NAN)
+        wts = np.full(0, _NAN)
+        n_eff = _NAN
+    return {"krylov_resid": kres, "freqs": freqs, "weights": wts,
+            "n_eff": n_eff, "Omega": Om}
 
 
 def d_frame_persistence(frame, frame_prev):
-    """フレームの持続性（二時刻メンバー）——**次元が結晶化しているかの読出し**。
+    """フレームの持続性（二時刻）。
 
-    【設計の是正記録 2026-08-08】瞬時フレーム単独では次元の結晶化を測れない
-    ことが資格審査 Q16 で判明した（N=4 は第3次元が結晶化しないはずだが、
-    瞬時版は 0.527 を返した）。理由: {位置, 速度, 加速度} は一般に必ず3次元を
-    張るので、瞬間のスナップショットは常に rank 3 を返す。**結晶化とは同じ
-    方向が時間的に選ばれ続けること＝持続性**であり、瞬間の性質ではない。
-    窓（移動平均・移動SVD）を導入せずにこれを測るため、連続する二時刻の
-    フレームの重なりを返す（時計メンバーと同じ二時刻の作法・R8 を侵さない）。
-
-    axis_persist  : |⟨â(τ−1), â(τ)⟩|（回転軸の持続・1 なら完全に同じ方向）
-    plane_persist : |⟨d(τ−1), d(τ)⟩|（回転平面の持続）
-    重みは frame["weight"]。前時刻が無い場合は 0（不在＝重み0で表す）。
+    【実測による限界の記録 2026-08-08】次元の結晶化の判別には**使えない**——
+    N=4（非結晶化）でも N≥5 でも一様に 1.0000 を返した。結晶化の読出しは
+    d_plane_ladder の n_eff（平面の縮退度）である。本メンバーは記録として残す。
+    前時刻が無い場合は NaN（0 で代用しない・R9）。
     """
-    if frame_prev is None or frame["rank"] < 3 or frame_prev.get("rank", 0) < 3:
-        return {"axis_persist": 0.0, "plane_persist": 0.0}
-    a0, a1 = frame_prev["axis_vec"], frame["axis_vec"]
-    d0, d1 = frame_prev["d_plane"], frame["d_plane"]
-    na = np.linalg.norm(a0) * np.linalg.norm(a1)
-    nd = np.linalg.norm(d0) * np.linalg.norm(d1)
-    return {"axis_persist": float(abs(np.vdot(a0, a1)) / na) if na > 0 else 0.0,
-            "plane_persist": float(abs(np.vdot(d0, d1)) / nd) if nd > 0 else 0.0}
+    if frame_prev is None:
+        return {"axis_persist": _NAN, "plane_persist": _NAN}
+    with np.errstate(divide="ignore", invalid="ignore"):
+        a0, a1 = frame_prev["axis_vec"], frame["axis_vec"]
+        d0, d1 = frame_prev["d_plane"], frame["d_plane"]
+        ap = abs(np.vdot(a0, a1)) / (np.linalg.norm(a0) * np.linalg.norm(a1))
+        pp = abs(np.vdot(d0, d1)) / (np.linalg.norm(d0) * np.linalg.norm(d1))
+    return {"axis_persist": float(ap), "plane_persist": float(pp)}
 
 
 def d_clock_ref(Z, p2, q2):
     """集団時計の位相基準 φ（親平面の回転位相）＝復調の位相原点。
-    量子光学のホモダイン検波の局部発振器に当たるものを、宇宙自身が供給する。"""
-    a = complex(p2 @ Z)
-    b = complex(q2 @ Z)
-    c = a + 1j * b
-    return {"phi": float(np.angle(c)) if abs(c) > 0 else float("nan"),
-            "phi_weight": float(abs(c))}
+    量子光学のホモダイン検波の局部発振器に当たるものを、宇宙自身が供給する。
+    phi_weight が 0 のとき phi は意味を持たない（判定は呼び出し側・R9）。"""
+    c = complex(p2 @ Z) + 1j * complex(q2 @ Z)
+    return {"phi": float(np.angle(c)), "phi_weight": float(abs(c))}
 
 
-def d_gauge(frame, kmatvec):
+def d_gauge(frame):
     """局所ゲージ（四脚場）: フレームが各関係波に割り当てる方向の成分と、
     その非一様度。一様な真空では滑らかに揃い、質量が偏在すると割り当てが
     ばらつく——**この非一様度が重力（ゲージの目盛の不等間隔）**である。
 
-    col_norm : 各辺 e における局所軸の大きさ |d_plane[e]|²+|axis[e]|²
-    nonunif  : 非一様度 ＝ col_norm の変動係数（std/mean・連続量）
+    col_norm : 各辺 e における局所軸の大きさ |d_plane[e]|²+|axis_vec[e]|²
+    nonunif  : 非一様度 ＝ col_norm の変動係数（std/mean・0 割は NaN）
     """
-    d, a = frame["d_plane"], frame["axis_vec"]
-    col = np.abs(d) ** 2 + np.abs(a) ** 2
-    mu = float(col.mean())
-    return {"col_norm": col,
-            "nonunif": float(col.std() / mu) if mu > 0 else 0.0}
+    col = np.abs(frame["d_plane"]) ** 2 + np.abs(frame["axis_vec"]) ** 2
+    with np.errstate(divide="ignore", invalid="ignore"):
+        nonunif = float(col.std() / col.mean())
+    return {"col_norm": col, "nonunif": nonunif}
 
 
 # ---------------------------------------------------------------- パネル
 
-def d_panel(C2, kmatvec, p2, q2, cell=(2, 0), order=6):
+def d_panel(C2, kmatvec, p2, q2, cell, order, frame_prev=None):
     """常時実行パネル（D）。第0步から毎ステップ・一様ケイデンスで呼ぶ。
-    cell は「どのセルの内容からフレームを作るか」の宣言（選択）であり、
-    実験仕様に明記すること。既定は凝縮体セル（帯2・巻き0）。"""
+
+    cell  : どのセルの内容からフレームを作るかの**宣言**（選択。実験仕様に明記）
+    order : Krylov 打切り次数の**宣言**（停止条件は呼び出し側の責務・R9）
+    frame_prev : 前ステップの frame（持続性メンバー用・呼び出し側が持ち回す）
+
+    図で用いる量はすべて本パネルの出力から取る（実験側で独自計算をしない）。
+    """
     Z = C2[:, cell[0], cell[1]]
     out = {}
     out.update(d_closure_blocks(C2))
     fr = d_frame(Z, kmatvec, p2, q2)
     out.update({f"frame_{k}": v for k, v in fr.items()})
     out.update({f"ladder_{k}": v for k, v in
-                d_plane_ladder(Z, kmatvec, p2, q2, order).items()})
+                d_plane_ladder(Z, kmatvec, order, p2, q2).items()})
     out.update({f"clock_{k}": v for k, v in d_clock_ref(Z, p2, q2).items()})
-    out.update({f"gauge_{k}": v for k, v in d_gauge(fr, kmatvec).items()})
+    out.update({f"gauge_{k}": v for k, v in d_gauge(fr).items()})
+    out.update({f"pers_{k}": v for k, v in
+                d_frame_persistence(fr, frame_prev).items()})
     out["_frame"] = fr
     return out
