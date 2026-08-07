@@ -145,6 +145,69 @@ def g_position_spectrum(C2):
             "dual_profile": Pn}
 
 
+def g_cone_components(C2):
+    """閉塞錐の成分読出し（関係波ごとの局所値・M 個）。
+
+    錐の恒等式（[3]・空間軸3軸と固有時間の創生）:
+        x² + y² + z² = t² + R² + Q²  ,  R′² = R² + Q²
+        ⇒ **t² = R′² − m² − q²**（座標時間は残余として読む）
+
+    **粒度は関係波 e ごと（M 個）である。** 宇宙全体で一つの値にしてはならない
+    ——重力はこのモデルでは「ゲージ（空間・時間の目盛）が等間隔でなくなること」
+    として現れるので、t を大域一値に定義すると重力の効果が定義上消える。
+    局所的に異なる時計の進み方こそが測定対象であり、M 本の分布の広がりが
+    重力赤方偏移に相当する。
+
+    Gram（コヒーレンス行列）の構成——エンジン自身の二チャネル分割を使う:
+      帯の偶奇対 (k_even=2j, k_odd=2j+1), j=0…⌊Nn/2⌋−1 を対にし、
+      a = 奇数帯（フェルミオン型）内容、b = 偶数帯（ボゾン型）内容とする。
+      これは相互作用関数 F が生成子を作るときに使う分割そのものであり、
+      新たな任意構造を持ち込んでいない（R3 種別分岐なしを侵さない）。
+      Nn が奇数のとき対にならない最上帯は除外する。
+      S0=Σ(|a|²+|b|²)  S1=Σ(|a|²−|b|²)  S2=2ReΣā b  S3=2ImΣā b
+      (T,X,Y,Z) := (S0,S1,S2,S3)
+
+    返す量（全て (M,) 配列・パワー² の次元）:
+      cone_T    : T = 対内容の総パワー（保存読出し）
+      cone_X/Y/Z: Gram の Pauli 成分
+      cone_Rp2  : R′² = T²
+      cone_m2   : m² = detΓ = T²−X²−Y²−Z²（質量²＝非コヒーレンス）
+                  Cauchy–Schwarz より恒等的に ≥0（光錐束縛が自動）
+      cone_q    : q = Σ_η η_signed·P(η)（符号付き巻きの重みつき和・電荷）
+                  η_signed = ((η+Nη/2) mod Nη) − Nη/2。中性レシピでは厳密 0。
+      cone_q2   : q²
+      cone_t2   : t² = R′² − m² − q²（座標時間の二乗・残余読出し）
+
+    注意（正直な限界）: 本メンバーは **スピン読出しではない**。Stokes 型の
+    構成を Gram 4元を作るためだけに用いており、(X,Y,Z) をスピンと解釈する
+    ことは主張しない（統一エンジン上のスピン同定は TB-spin として未確定）。
+    また t² ≥ 0 は中性（q=0）では detΓ の定義から自動だが、荷電種が居る場合は
+    自動でなく、**そこで初めて非自明な検定になる**。
+    """
+    M, Nn, Neta = C2.shape
+    J = Nn // 2
+    ke = 2 * np.arange(J)          # 偶数帯（ボゾン型）
+    ko = ke + 1                    # 奇数帯（フェルミオン型）
+    a = C2[:, ko, :].reshape(M, -1)
+    b = C2[:, ke, :].reshape(M, -1)
+    pa = np.sum(np.abs(a) ** 2, axis=1)
+    pb = np.sum(np.abs(b) ** 2, axis=1)
+    z = np.sum(np.conj(a) * b, axis=1)
+    T = pa + pb
+    X = pa - pb
+    Y = 2.0 * np.real(z)
+    Z = 2.0 * np.imag(z)
+    m2 = T ** 2 - X ** 2 - Y ** 2 - Z ** 2
+    eta = np.arange(Neta)
+    eta_s = ((eta + Neta // 2) % Neta) - Neta // 2
+    P_eta = (np.abs(C2[:, ko, :]) ** 2 + np.abs(C2[:, ke, :]) ** 2).sum(axis=1)
+    q = P_eta @ eta_s.astype(float)
+    Rp2 = T ** 2
+    return {"cone_T": T, "cone_X": X, "cone_Y": Y, "cone_Z": Z,
+            "cone_Rp2": Rp2, "cone_m2": m2, "cone_q": q, "cone_q2": q ** 2,
+            "cone_t2": Rp2 - m2 - q ** 2}
+
+
 # ---------------------------------------------------------------- 二時刻メンバー
 
 def g_collective_residual(C_flat, C_flat_prev):
@@ -189,6 +252,7 @@ def g_panel(C2, p2, q2, C_flat_prev=None, c_gen_prev=None):
     out.update(g_cell_ledger(C2))
     out.update(g_species_content(C2))
     out.update(g_position_spectrum(C2))
+    out.update(g_cone_components(C2))
     C_flat = C2.reshape(-1)
     if C_flat_prev is not None:
         out.update(g_collective_residual(C_flat, C_flat_prev))

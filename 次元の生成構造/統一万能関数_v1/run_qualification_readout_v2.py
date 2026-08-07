@@ -158,7 +158,65 @@ def main():
     print(f"Q10 不在の表現（content_power={be['content_power']:.1e}・"
           f"重み0で表現・s_present=False）: {'通過' if ok else '不成立'}")
 
-    allpass = all(v for k, v in res.items() if not k.endswith("detail"))
+    # ---- Q11-Q15: 錐成分読出し（g_cone_components）
+    M11, Nn11, Ne11 = 5, 6, 4
+    rng = np.random.default_rng(11)
+    # Q12 光的（b = λa・二チャネル比例）→ detΓ = 0 厳密
+    Ca = np.zeros((M11, Nn11, Ne11), complex)
+    pat = rng.normal(size=(M11, Nn11 // 2, Ne11)) + 1j * rng.normal(size=(M11, Nn11 // 2, Ne11))
+    ko11 = 2 * np.arange(Nn11 // 2) + 1
+    ke11 = 2 * np.arange(Nn11 // 2)
+    Ca[:, ko11, :] = pat
+    Ca[:, ke11, :] = 0.37 * pat
+    c12 = v2.g_cone_components(Ca)
+    rel12 = float(np.max(np.abs(c12["cone_m2"]) / np.maximum(c12["cone_Rp2"], 1e-300)))
+    Q12 = rel12 < 1e-14
+    print(f"Q12 光的状態 b=λa で質量² detΓ=0（相対 {rel12:.1e}<1e-14）: "
+          f"{'通過' if Q12 else '不成立'}")
+
+    # Q13 直交・等パワー → detΓ = T² 厳密（最大質量＝t²は q=0 なら 0）
+    Cb = np.zeros((M11, Nn11, Ne11), complex)
+    Cb[:, 1, 0] = 1.0 + 0.5j        # a 側のみ（奇数帯・対 j=0）
+    Cb[:, 2, 0] = 1.0 - 0.5j        # b 側のみ（偶数帯・対 j=1）
+    c13 = v2.g_cone_components(Cb)
+    rel13 = float(np.max(np.abs(c13["cone_m2"] - c13["cone_Rp2"])
+                         / np.maximum(c13["cone_Rp2"], 1e-300)))
+    rel13t = float(np.max(np.abs(c13["cone_t2"]) / np.maximum(c13["cone_Rp2"], 1e-300)))
+    Q13 = rel13 < 1e-14 and rel13t < 1e-14
+    print(f"Q13 直交等パワーで detΓ=R′²（相対 {rel13:.1e}）かつ t²=0"
+          f"（相対 {rel13t:.1e}）: {'通過' if Q13 else '不成立'}")
+
+    # Q11/Q14/Q15: 実走行（Nn=16 標準環境・T=200）
+    eng, p2, q2 = build(ui, 12, 1e-2, 16)
+    carry = {"C_flat": None, "c_gen": None}
+    worst_neg, worst_q, worst_id = np.inf, 0.0, 0.0   # 最小値は inf で初期化
+    for t in range(200):
+        eng.step()
+        pan = v2.g_panel(eng.C2(), p2, q2, carry["C_flat"], carry["c_gen"])
+        carry = pan["_carry"]
+        Rp2 = np.maximum(pan["cone_Rp2"], 1e-300)
+        worst_neg = min(worst_neg, float(np.min(pan["cone_m2"] / Rp2)))
+        worst_q = max(worst_q, float(np.max(np.abs(pan["cone_q"]))))
+        ident = (pan["cone_t2"] + pan["cone_m2"] + pan["cone_q2"]
+                 - pan["cone_Rp2"]) / Rp2
+        worst_id = max(worst_id, float(np.max(np.abs(ident))))
+    Q11 = worst_neg >= 0.0
+    Q14 = worst_q == 0.0
+    Q15 = worst_id < 1e-14
+    print(f"Q11 光錐束縛（全波・全步で m²=detΓ ≥ 0・最小 {worst_neg:.1e}）: "
+          f"{'通過' if Q11 else '不成立'}")
+    print(f"Q14 中性レシピで電荷 q が厳密 0（最大 |q| {worst_q:.1e}）: "
+          f"{'通過' if Q14 else '不成立'}")
+    print(f"Q15 錐の恒等式 t²+m²+q²=R′²（相対 {worst_id:.1e}<1e-14）: "
+          f"{'通過' if Q15 else '不成立'}")
+    res.update({"Q11": bool(Q11), "Q12": bool(Q12), "Q13": bool(Q13),
+                "Q14": bool(Q14), "Q15": bool(Q15),
+                "cone_detail": {"m2_min_rel": worst_neg, "q_max": worst_q,
+                                "identity_rel": worst_id,
+                                "lightlike_rel": rel12, "orth_rel": rel13}})
+
+    allpass = all(v for k, v in res.items()
+                  if not k.endswith("detail") and isinstance(v, bool))
     print("読出しv2資格審査: " + ("ALL PASS — v2＋選択層は使用可"
                                   if allpass else "不成立あり"))
     res["all_pass"] = bool(allpass)
