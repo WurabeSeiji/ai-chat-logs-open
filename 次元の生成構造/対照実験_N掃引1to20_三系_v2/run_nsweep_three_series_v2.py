@@ -54,8 +54,25 @@ v1 系（3フォルダ・破棄済み）からの変更:
   (V6) **偶数帯の立ち上がり**: 帯別パワーから k=4 等の偶数帯が立つ時刻を読む。
        立つなら δ⁴ 抑制のオーダーか（δ 掃引は次段）。
 
+**mode="mixed"（追加）**——実際の時空に近い多種共存。周期表の 62 状態は (k,η) 住所と
+しては 7〜8 個に縮約される（u,c,t は全て m=+2 等・世代は別軸）ので、8 セルでほぼ全ての
+生成可能な住所を覆う。和則の逆解き k_seed = 2k_pump − k*、m_seed = 2m_pump − m*:
+  シードA（点火＋フェルミオン積荷）k=1・η∈{0,1,3,5,6}・各δ=1e−2
+    → 相棒帯 k*=3（奇）・m*∈{0,−1,−3,+3,+2} ＝ ν型・d型・e型・陽電子型・u型
+  シードB（ボゾン積荷）           k=6・η∈{0,3,5}・各δ=1e−2
+    → 相棒帯 k*=14（偶）・m*∈{0,−3,+3} ＝ γ/Z型・W−・W+
+  総物質分率 f ≈ Σδ² = 8e−4（量制御窓 [1e−3,1e−1] の下端付近・氾濫しない）
+  k_seed=4 は相棒が零モード k*=0 になるため禁止・k_seed=10 は相棒が自分自身。
+既知の難点（走行前に明示）: ①交差項 s_i+s_j−s_k で帳簿が密になり、単一シードで測った
+排他比 6.1e289 は成り立たない（V7 で定量する）②u型・d型（3∤m）は載っても単独で
+電荷が読めない（閉じ込め）③γ と Z は (k,η) では縮退（質量で分かれる）④G・H・g8重項・
+世代軸はどんなシードでも作れない。
+
+追加記録: 128セル帳簿 P[k,η] のスナップショット（50步毎）・狙った相棒セルごとのパワー・
+狙っていないセルの総和・排他比（V7）。
+
 使い方: python3 run_nsweep_three_series_v2.py <mode> [Nmin Nmax]
-        mode ∈ {neutral, electron, vacuum}（省略時 1 20）
+        mode ∈ {neutral, electron, vacuum, mixed}（省略時 1 20）
 """
 from __future__ import annotations
 
@@ -91,10 +108,21 @@ assert ns.HERE == HERE, "コピーの HERE が本フォルダでない（出力�
 F1 = _load("f1_three", UF / "unified_interaction_v1.py")
 
 # --- 宣言値 ----------------------------------------------------------------
+D0 = 1e-2
 MODES = {
-    "neutral":  {"delta": 1e-2, "m_pump": 0, "m_seed": 0, "label": "中性フェルミオン"},
-    "electron": {"delta": 1e-2, "m_pump": 0, "m_seed": 3, "label": "電子型フェルミオン"},
-    "vacuum":   {"delta": 0.0,  "m_pump": 0, "m_seed": 3, "label": "ボゾン真空（シードなし）"},
+    "neutral":  {"delta": D0, "m_pump": 0, "m_seed": 0, "label": "中性フェルミオン",
+                 "cells": [(1, 0, D0)]},
+    "electron": {"delta": D0, "m_pump": 0, "m_seed": 3, "label": "電子型フェルミオン",
+                 "cells": [(1, 3, D0)]},
+    "vacuum":   {"delta": 0.0, "m_pump": 0, "m_seed": 3, "label": "ボゾン真空（シードなし）",
+                 "cells": []},
+    # 混合シード: 実際の時空に近い多種共存。周期表の生成可能な住所をほぼ全て狙う。
+    #   奇数帯 k=1（点火＋フェルミオン積荷）→ 相棒帯 k*=4−1=3
+    #   偶数帯 k=6（ボゾン積荷）           → 相棒帯 k*=4−6=−2≡14
+    #   m* = −m_seed (mod 8)
+    "mixed":    {"delta": D0, "m_pump": 0, "m_seed": 0, "label": "混合シード（多種共存）",
+                 "cells": [(1, 0, D0), (1, 1, D0), (1, 3, D0), (1, 5, D0), (1, 6, D0),
+                           (6, 0, D0), (6, 3, D0), (6, 5, D0)]},
 }
 K_PUMP, K_SEED = 2, 1              # 帯（三系共通）。相棒帯 = 2*K_PUMP - K_SEED = 3
 PARTNER_K = 2 * K_PUMP - K_SEED    # = 3
@@ -106,27 +134,38 @@ R_ALPHA = math.cos(THETA_ALPHA) ** 2          # 0.697177928
 T_ALPHA = math.sin(THETA_ALPHA) ** 2          # 0.302822072
 ALPHA_INV = 4 * math.pi / T_ALPHA ** 2        # 137.036043
 
-MODE = sys.argv[1] if len(sys.argv) > 1 else "neutral"
-assert MODE in MODES, f"mode は {list(MODES)} のいずれか"
-CFG = MODES[MODE]
-DELTA, M_PUMP, M_SEED = CFG["delta"], CFG["m_pump"], CFG["m_seed"]
-M_STAR = 2 * M_PUMP - M_SEED
-M_STAR_IDX = M_STAR % NETA
-ns.DELTA = DELTA                   # 掃引スクリプトの主条件
-
-_ENGINES: list = []
-
+SPECIES = {0: "ν型/γ・Z型", -1: "d型", -3: "e型/W−", 2: "u型", 3: "陽電子型/W+"}
 
 def _signed(idx: int) -> int:
     h = NETA // 2
     return int(((idx + h) % NETA) - h)
 
 
+MODE = sys.argv[1] if len(sys.argv) > 1 else "neutral"
+assert MODE in MODES, f"mode は {list(MODES)} のいずれか"
+CFG = MODES[MODE]
+DELTA, M_PUMP, M_SEED = CFG["delta"], CFG["m_pump"], CFG["m_seed"]
+M_STAR = 2 * M_PUMP - M_SEED
+M_STAR_IDX = M_STAR % NETA
+ns.DELTA = DELTA                   # 掃引スクリプトの主条件（0 か否かの点火フラグとして働く）
+CELLS = CFG["cells"]               # シードセル [(k, η, δ), ...]
+# 狙った相棒セル: k* = 2·K_PUMP − k_seed, m* = 2·M_PUMP − m_seed（重複は除く）
+TARGETS = []
+for (_k, _e, _d) in CELLS:
+    t = ((2 * K_PUMP - _k) % NN, (2 * M_PUMP - _signed(_e)) % NETA)
+    if t not in TARGETS:
+        TARGETS.append(t)
+LEDGER_EVERY = 50                  # 128セル帳簿のスナップショット間隔（步）
+
+_ENGINES: list = []
+
+
 REC_KEYS = ("r_mean", "r_med", "r_min", "r_max", "r_raw",
             "dist_alpha", "absdist_alpha",
             "r_nopump", "dist_alpha_nopump", "even_power_nopump",
             "conc_all", "conc_k3", "dom_m", "q_hat", "readable", "k3_power",
-            "odd_power", "odd_amp_max", "even_power", "total_power")
+            "odd_power", "odd_amp_max", "even_power", "total_power",
+            "target_power", "nontarget_power", "excl_ratio")
 
 
 class RecordingEngine(F1.UnifiedEngine):
@@ -140,6 +179,10 @@ class RecordingEngine(F1.UnifiedEngine):
         super().__init__(*a, **kw)
         self._rec: list = []
         self._bands: list = []
+        self._ledger: list = []        # (k,η) 128セル帳簿のスナップショット
+        self._ledger_t: list = []
+        self._tgt: list = []           # 狙ったセルごとのパワー（毎步）
+        self._t = 0
 
     def step(self, *a, **kw):
         out = super().step(*a, **kw)
@@ -163,14 +206,27 @@ class RecordingEngine(F1.UnifiedEngine):
         s3 = float(P3.sum())
         conc_k3 = float(P3[M_STAR_IDX] / s3) if s3 > 0 else float("nan")
         dom = _signed(int(np.argmax(P3))) if s3 > 0 else 0
+        Pkh = P.sum(axis=0)                       # (Nn, Nη) 帳簿
+        tgt_vals = [float(Pkh[k, e]) for (k, e) in TARGETS]
+        tgt_p = float(sum(tgt_vals))
+        seed_p = float(sum(Pkh[k, e % NETA] for (k, e, _d) in CELLS))
+        pump_p = float(Pkh[K_PUMP, M_PUMP % NETA])
+        nontgt_p = max(tot - pump_p - seed_p - tgt_p, 0.0)
+        excl = tgt_p / nontgt_p if nontgt_p > 0 else float("inf")
         self._rec.append((
             r_mean, float(np.median(Rn)), float(Rn.min()), float(Rn.max()), r_raw,
             r_mean - R_ALPHA, abs(r_mean - R_ALPHA),
             r_nopump, r_nopump - R_ALPHA, even_np,
             conc_all, conc_k3, float(dom), dom / 3.0,
             1.0 if (s3 > 0 and dom % 3 == 0) else 0.0, s3,
-            odd_p, float(A[:, ODD_K, :].max()), even_p, tot))
+            odd_p, float(A[:, ODD_K, :].max()), even_p, tot,
+            tgt_p, nontgt_p, excl))
         self._bands.append(Pk.copy())
+        self._tgt.append(tgt_vals)
+        self._t += 1
+        if (self._t % LEDGER_EVERY) == 0 or self._t == 1:
+            self._ledger.append(Pkh.copy())
+            self._ledger_t.append(self._t)
         return out
 
 
@@ -182,9 +238,13 @@ def build_universe(n, delta, Nn=5, Neta=8, seed=2):
     Csec = np.fft.fft(r2.relation_waves, axis=1) / n
     seed_state = Csec[:, 1] / np.linalg.norm(Csec[:, 1])
     C2_0 = np.zeros((m, Nn, Neta), complex)
-    ip, isd = M_PUMP % Neta, M_SEED % Neta
+    ip = M_PUMP % Neta
     C2_0[:, K_PUMP, ip] = Z0c
-    C2_0[:, K_SEED, isd] = delta * seed_state       # δ=0 なら厳密に零
+    # delta==0 は真空対照の呼び出し（掃引スクリプトが各 N で必ず 1 回行う）。
+    # その場合シードを一切置かない。delta>0 なら宣言したセルを全て置く。
+    if delta > 0:
+        for (kk, ee, dd) in CELLS:
+            C2_0[:, kk, ee % Neta] += dd * seed_state
     p2 = C2_0[:, K_PUMP, ip].real / np.linalg.norm(C2_0[:, K_PUMP, ip].real)
     q2 = C2_0[:, K_PUMP, ip].imag - (C2_0[:, K_PUMP, ip].imag @ p2) * p2
     with np.errstate(divide="ignore", invalid="ignore"):
@@ -209,6 +269,9 @@ def arrays(eng):
     a = np.array(eng._rec, dtype=float)
     d = {k: a[:, i] for i, k in enumerate(REC_KEYS)}
     d["bands"] = np.array(eng._bands, dtype=float)   # (steps, Nn)
+    d["ledger"] = np.array(eng._ledger, dtype=float)  # (snapshots, Nn, Nη)
+    d["ledger_t"] = np.array(eng._ledger_t, dtype=float)
+    d["targets"] = np.array(eng._tgt, dtype=float)    # (steps, #TARGETS)
     return d
 
 
@@ -278,6 +341,48 @@ def fig_mix(n, hm, hv, rec):
             b.axvline(rec["tau_space"], color="tab:blue", lw=0.8, ls="-.")
     fig.tight_layout()
     fig.savefig(HERE / f"fig_{MODE}_mix_N{n}_v2.png", dpi=110)
+    plt.close(fig)
+
+
+def fig_ledger(n, hm, rec):
+    L = hm["ledger"]
+    if L.size == 0:
+        return
+    Lm = np.median(L, axis=0)
+    fig, ax = plt.subplots(1, 2, figsize=(14, 5.2))
+    a = ax[0]
+    im = a.imshow(np.log10(np.maximum(Lm.T, 1e-40)), aspect="auto", origin="lower",
+                  cmap="viridis")
+    a.set_xlabel("帯 k（偶=ボゾン・奇=フェルミオン）")
+    a.set_ylabel("毛 η（巻き）")
+    a.set_yticks(range(NETA))
+    a.set_yticklabels([f"{e}({_signed(e):+d})" for e in range(NETA)], fontsize=7)
+    a.set_xticks(range(NN)); a.set_xticklabels(range(NN), fontsize=7)
+    for (k, e) in TARGETS:
+        a.add_patch(plt.Rectangle((k - .5, e - .5), 1, 1, fill=False,
+                                  edgecolor="red", lw=1.4))
+    for (k, e, _d) in CELLS:
+        a.add_patch(plt.Rectangle((k - .5, (e % NETA) - .5), 1, 1, fill=False,
+                                  edgecolor="white", lw=1.0, ls="--"))
+    a.add_patch(plt.Rectangle((K_PUMP - .5, (M_PUMP % NETA) - .5), 1, 1, fill=False,
+                              edgecolor="orange", lw=1.6))
+    fig.colorbar(im, ax=a, label="log₁₀ パワー（窓中央値）")
+    a.set_title(f"N={n} 128セル帳簿（赤=狙った相棒・白破線=シード・橙=ポンプ）",
+                fontsize=10)
+    a = ax[1]
+    ts = np.arange(1, hm["targets"].shape[0] + 1)
+    for i, (k, e) in enumerate(TARGETS):
+        a.semilogy(ts, np.maximum(hm["targets"][:, i], 1e-40), lw=0.9,
+                   label=f"k={k} m={_signed(e):+d} {SPECIES.get(_signed(e),'?')}")
+    a.semilogy(ts, np.maximum(hm["nontarget_power"], 1e-40), "k--", lw=1.0,
+               label="狙っていないセルの総和")
+    a.axvspan(ns.WIN[0], ns.WIN[1], color="green", alpha=0.06)
+    a.set_xlabel("τ（step）"); a.set_ylabel("パワー")
+    a.set_title(f"狙った相棒セルの成長と非狙いセル（排他比中央値 "
+                f"{rec['excl_ratio_med']:.2e}）", fontsize=10)
+    a.legend(fontsize=7, ncol=2)
+    fig.tight_layout()
+    fig.savefig(HERE / f"fig_{MODE}_ledger_N{n}_v2.png", dpi=120)
     plt.close(fig)
 
 
@@ -357,12 +462,23 @@ def main():
             "odd_power_med": med_win(hm["odd_power"]),
             "band_rise_even": even_rise, "band_rise_odd": odd_rise,
             "band_power_med": {str(k): med_win(B[:, k]) for k in range(NN)},
+            "target_power_med": med_win(hm["target_power"]),
+            "nontarget_power_med": med_win(hm["nontarget_power"]),
+            "excl_ratio_med": med_win(hm["excl_ratio"]),
+            "targets": [[int(k), int(_signed(e)), SPECIES.get(_signed(e), "?")]
+                        for (k, e) in TARGETS],
+            "target_power_each_med": {
+                f"k{k}_m{_signed(e):+d}": med_win(hm["targets"][:, i])
+                for i, (k, e) in enumerate(TARGETS)},
+            "ledger_med": [[float(np.median(hm["ledger"][:, k, e]))
+                            for e in range(NETA)] for k in range(NN)],
             "determinism_max_abs": bit_identical(Hm, Hv) if DELTA == 0 else None,
         })
         recs.append(rec); out["N"][n] = rec
         ns.fig_one(n, Hm, Hv, Am, Ccm, Csm, rec)
         _rename(f"fig_nsweep_N{n}_v1.png", f"fig_{MODE}_4panel_N{n}_v2.png")
         fig_mix(n, hm, hv, rec)
+        fig_ledger(n, hm, rec)
         np.savez_compressed(
             HERE / f"nsweep_{MODE}_N{n}_v2.npz",
             **{f"m_{k}": Hm[k] for k in ns.KEYS},
@@ -370,13 +486,15 @@ def main():
             m_resid=Rm, m_acq=Am, v_acq=Av,
             m_cond_closure=Ccm, m_seed_closure=Csm,
             **{f"rec_m_{k}": v for k, v in hm.items()},
-            **{f"rec_v_{k}": v for k, v in hv.items()})
+            **{f"rec_v_{k}": v for k, v in hv.items()},
+            targets_index=np.array(TARGETS, dtype=float))
         print(f"N={n:3d} M={rec['M']:4d}: 空間τ={str(rec['tau_space']):>5} "
               f"物質={str(rec['matter_born']):>5} 時間τ={str(rec['tau_time']):>5} "
               f"| r={rec['r_med_win']:.6f} r_np={rec['r_nopump_med_win']:.6f} "
               f"Δα_np={rec['dist_alpha_nopump_win']:+.3e} "
               f"奇={rec['odd_power_med']:.2e} 偶={rec['even_power_med']:.2e} "
               f"集中度={rec['conc_k3_med']:.4f} m̂={rec['dom_m_med']:+.1f} "
+              f"狙い={rec['target_power_med']:.2e} 排他比={rec['excl_ratio_med']:.2e} "
               f"[{time.time()-t1:.0f}s]")
         (HERE / f"result_nsweep_{MODE}_v2.json").write_text(
             json.dumps(out, indent=1, ensure_ascii=False, default=float))
@@ -404,6 +522,10 @@ def main():
             (abs(r["dist_alpha_nopump_win"]) for r in recs
              if r["dist_alpha_nopump_win"] == r["dist_alpha_nopump_win"]),
             default=None),
+        "V7_excl_ratio_med_range": [
+            min((r["excl_ratio_med"] for r in recs), default=None),
+            max((r["excl_ratio_med"] for r in recs), default=None)],
+        "V7_targets": recs[0]["targets"] if recs else None,
         "V6_even_bands_risen": {str(k): sum(
             1 for r in recs if r["band_rise_even"].get(str(k)) is not None)
             for k in EVEN_K if k != K_PUMP},
