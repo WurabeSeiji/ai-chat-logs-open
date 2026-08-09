@@ -71,8 +71,13 @@ v1 系（3フォルダ・破棄済み）からの変更:
 追加記録: 128セル帳簿 P[k,η] のスナップショット（50步毎）・狙った相棒セルごとのパワー・
 狙っていないセルの総和・排他比（V7）。
 
-使い方: python3 run_nsweep_three_series_v2.py <mode> [Nmin Nmax]
-        mode ∈ {neutral, electron, vacuum, mixed}（省略時 1 20）
+**長時間走行（T 掃引）**: 第4引数で T を上書きできる。窓は後半 [T//2, T]（宣言値）。
+決定論なので T=42000 の1本の軌道が短い T をすべて前半として含む——T 掃引は独立走行を
+並べるのではなく、1本の長走行から窓を切り出して読む（同一軌道なので厳密に比較できる）。
+T≠4000 のときは出力名に `_T{T}` が付き、既存の T=4000 成果物を上書きしない。
+
+使い方: python3 run_nsweep_three_series_v2.py <mode> [Nmin Nmax] [T]
+        mode ∈ {neutral, electron, vacuum, mixed}（省略時 1 20・T=4000）
 """
 from __future__ import annotations
 
@@ -148,6 +153,11 @@ DELTA, M_PUMP, M_SEED = CFG["delta"], CFG["m_pump"], CFG["m_seed"]
 M_STAR = 2 * M_PUMP - M_SEED
 M_STAR_IDX = M_STAR % NETA
 ns.DELTA = DELTA                   # 掃引スクリプトの主条件（0 か否かの点火フラグとして働く）
+# 長時間走行の宣言: 第4引数で T を上書きする。窓は後半 [T//2, T]（宣言値）。
+if len(sys.argv) > 4:
+    ns.T = int(sys.argv[4])
+    ns.WIN = (ns.T // 2, ns.T)
+T_TAG = "" if ns.T == 4000 else f"_T{ns.T}"
 CELLS = CFG["cells"]               # シードセル [(k, η, δ), ...]
 # 狙った相棒セル: k* = 2·K_PUMP − k_seed, m* = 2·M_PUMP − m_seed（重複は除く）
 TARGETS = []
@@ -340,7 +350,7 @@ def fig_mix(n, hm, hv, rec):
         if rec["tau_space"]:
             b.axvline(rec["tau_space"], color="tab:blue", lw=0.8, ls="-.")
     fig.tight_layout()
-    fig.savefig(HERE / f"fig_{MODE}_mix_N{n}_v2.png", dpi=110)
+    fig.savefig(HERE / f"fig_{MODE}{T_TAG}_mix_N{n}_v2.png", dpi=110)
     plt.close(fig)
 
 
@@ -382,7 +392,7 @@ def fig_ledger(n, hm, rec):
                 f"{rec['excl_ratio_med']:.2e}）", fontsize=10)
     a.legend(fontsize=7, ncol=2)
     fig.tight_layout()
-    fig.savefig(HERE / f"fig_{MODE}_ledger_N{n}_v2.png", dpi=120)
+    fig.savefig(HERE / f"fig_{MODE}{T_TAG}_ledger_N{n}_v2.png", dpi=120)
     plt.close(fig)
 
 
@@ -429,7 +439,7 @@ def main():
             out["N"][n] = {"N": n, "M": n * (n - 1) // 2, "built": False,
                            "error": msg}
             print(f"N={n:3d} M={n*(n-1)//2:4d}: **構成不能** {msg[:70]}")
-            (HERE / f"result_nsweep_{MODE}_v2.json").write_text(
+            (HERE / f"result_nsweep_{MODE}{T_TAG}_v2.json").write_text(
                 json.dumps(out, indent=1, ensure_ascii=False, default=float))
             continue
         hm, hv = arrays(eng_m), arrays(eng_v)
@@ -476,11 +486,11 @@ def main():
         })
         recs.append(rec); out["N"][n] = rec
         ns.fig_one(n, Hm, Hv, Am, Ccm, Csm, rec)
-        _rename(f"fig_nsweep_N{n}_v1.png", f"fig_{MODE}_4panel_N{n}_v2.png")
+        _rename(f"fig_nsweep_N{n}_v1.png", f"fig_{MODE}{T_TAG}_4panel_N{n}_v2.png")
         fig_mix(n, hm, hv, rec)
         fig_ledger(n, hm, rec)
         np.savez_compressed(
-            HERE / f"nsweep_{MODE}_N{n}_v2.npz",
+            HERE / f"nsweep_{MODE}{T_TAG}_N{n}_v2.npz",
             **{f"m_{k}": Hm[k] for k in ns.KEYS},
             **{f"v_{k}": Hv[k] for k in ns.KEYS},
             m_resid=Rm, m_acq=Am, v_acq=Av,
@@ -496,13 +506,13 @@ def main():
               f"集中度={rec['conc_k3_med']:.4f} m̂={rec['dom_m_med']:+.1f} "
               f"狙い={rec['target_power_med']:.2e} 排他比={rec['excl_ratio_med']:.2e} "
               f"[{time.time()-t1:.0f}s]")
-        (HERE / f"result_nsweep_{MODE}_v2.json").write_text(
+        (HERE / f"result_nsweep_{MODE}{T_TAG}_v2.json").write_text(
             json.dumps(out, indent=1, ensure_ascii=False, default=float))
     if recs:
         ns.fig_summary(recs, fails)
-        _rename("fig_nsweep_summary_v1.png", f"fig_{MODE}_summary_v2.png")
+        _rename("fig_nsweep_summary_v1.png", f"fig_{MODE}{T_TAG}_summary_v2.png")
     ns.fig_matrix(recs, fails, nmin, nmax)
-    _rename("fig_nsweep_birth_matrix_v1.png", f"fig_{MODE}_birth_matrix_v2.png")
+    _rename("fig_nsweep_birth_matrix_v1.png", f"fig_{MODE}{T_TAG}_birth_matrix_v2.png")
     out["failed_N"] = fails
     out["judgments"] = {
         "V1_failed_N": fails,
@@ -531,7 +541,7 @@ def main():
             for k in EVEN_K if k != K_PUMP},
     }
     out["runtime_sec"] = time.time() - t0
-    (HERE / f"result_nsweep_{MODE}_v2.json").write_text(
+    (HERE / f"result_nsweep_{MODE}{T_TAG}_v2.json").write_text(
         json.dumps(out, indent=1, ensure_ascii=False, default=float))
     print(f"\n構成できなかった N: {fails if fails else 'なし'}")
     print(f"判定: {json.dumps(out['judgments'], ensure_ascii=False, default=float)}")
