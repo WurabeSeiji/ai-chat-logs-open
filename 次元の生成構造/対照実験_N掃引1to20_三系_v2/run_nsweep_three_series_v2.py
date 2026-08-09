@@ -1,0 +1,420 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""N 掃引 1→20・三系（中性／電子型／シードなし）を同一測定系で走らせる v2
+
+v1 系（3フォルダ・破棄済み）からの変更:
+  1. **力学を F v1 に戻した**。恒久ルール「力学は unified_interaction_v1.py の
+     UnifiedEngine／build_standard_universe のみ」に従う。v1 系が使っていた
+     F v2 は仕様書 §1.8 で不採用（真空に 9.66e-15 の物質が湧く自己維持
+     アーティファクト）。F v1 は資格審査 Q1–Q5 ALL PASS・G2 短絡あり。
+  2. **r（混合率＝反射率）の記録を追加**。r = sin²θ = P奇/(P奇+P偶) は新柱6 の
+     一行定式そのもので、α 根 R_α = cos²(23π/124) = 0.697177928 において
+     透過率 1−R_α = sin²(23π/124) = √(4πα) ＝ 素電荷、α⁻¹ = 4π/(1−R_α)² = 137.036
+     となる（本スクリプト起動時に検算して表示する）。
+  3. **全16帯のパワー**を毎步記録。偶数帯（ボゾン帯）が何段目で立つか——3次選択則
+     k* = k₁+k₂−k₃ から 1段目=k3（奇・δ²）／2段目=k4（偶・δ⁴）という予言の検証用。
+  4. 三系を一つのスクリプトのモード切替にした（測定系の同一性を構造的に保証）。
+  5. **モードごとに図を分けて保存**。無改変 import の `fig_one`/`fig_summary`/
+     `fig_matrix` は固定名（`fig_nsweep_*_v1.png`）で出力しモード間で上書きされる
+     ため、生成直後に `fig_{mode}_4panel_N{n}_v2.png`／`fig_{mode}_summary_v2.png`／
+     `fig_{mode}_birth_matrix_v2.png` へ改名する（関数は書き換えない）。
+
+**無改変 import の方針（シリーズ規約）**
+中性掃引スクリプト run_tb_nsweep_1to20_v1.py を本フォルダへ無改変コピー
+（md5 bfa5d854b637fe97c33a7148be9c7f86）し module として import して
+`run_one` / `summarize` / `fig_one` / `fig_summary` / `fig_matrix` をそのまま使う。
+走行ロジック・記録項目・判定・図は一行も書き換えない。コピーの HERE は本フォルダ
+なので出力は本フォルダに出る（原本フォルダは無傷）。
+
+**モード（唯一の物理的差）**
+| mode      | δ      | (m_pump, m_seed) | m* = 2m_pump − m_seed | 種 |
+|-----------|--------|------------------|------------------------|----|
+| neutral   | 1e-2   | (0, 0)           | 0                      | 中性フェルミオン（ν型） |
+| electron  | 1e-2   | (0, 3)           | −3（Q=−1・毛idx 5）    | 電子型 |
+| vacuum    | 0      | (0, 3) 宣言のみ  | —（シード項は厳密に零） | ボゾン真空（γ型のみ） |
+
+帯はいずれも pump k=2・seed k=1（和則 k* = 2·2−1 = 3 が相棒帯）。
+
+条件（三系で完全同一・すべて宣言値）:
+  F=unified_interaction_v1.py（★v1）/ D=unified_dimension_v1.py /
+  G=unified_readout_v3.py / S=selection_v1.py
+  Nn=16・Nη=8・T=4000・親 seed=2 固定・cell=(2,0)・order=6・窓[2000,4000]・N=1..20
+  各 N で真空対照（δ=0）も走行。mode=vacuum では2条件が同一になるため決定論検査に転用。
+
+事前登録（実行前固定）:
+  (V1) 構成できない N は三系で同一。シードの巻き・振幅は make_parent／build_init に
+       影響しないため。不一致なら異常。
+  (V2) 空間: crossing（f₂>0.05）が全 N で起きる。τ_space を三系で比較する。
+  (V3) 物質: neutral/electron は f_seed が立つ。vacuum は全奇数帯パワーが全步で厳密 0。
+  (V4) 電子型: 相棒帯 k=3 の巻き集中度 ≥0.9・優勢巻き m̂=−3・Q̂=−1・可読率 1。
+  (V5) **r の挙動**: r（node 平均）の全步時系列と α 根との距離を記録する。
+       vacuum は P奇=0 ゆえ r=0（真空固定点）が厳密に成立するはず。
+       neutral/electron の r が α 根 0.697177928 に向かうか・通り過ぎるかは
+       **予言を置かず記録する**（本実験の主目的）。
+  (V6) **偶数帯の立ち上がり**: 帯別パワーから k=4 等の偶数帯が立つ時刻を読む。
+       立つなら δ⁴ 抑制のオーダーか（δ 掃引は次段）。
+
+使い方: python3 run_nsweep_three_series_v2.py <mode> [Nmin Nmax]
+        mode ∈ {neutral, electron, vacuum}（省略時 1 20）
+"""
+from __future__ import annotations
+
+import importlib.util
+import json
+import math
+import sys
+import time
+from pathlib import Path
+
+import numpy as np
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+
+HERE = Path(__file__).resolve().parent
+UF = HERE.parent / "統一万能関数_v1"
+
+
+def _load(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules[name] = mod
+    spec.loader.exec_module(mod)
+    return mod
+
+
+# 走行ロジックの提供元（無改変コピー）
+ns = _load("ns_sweep", HERE / "run_tb_nsweep_1to20_v1.py")
+assert ns.HERE == HERE, "コピーの HERE が本フォルダでない（出力先が原本になる）"
+
+# ★力学は F v1（恒久ルール）
+F1 = _load("f1_three", UF / "unified_interaction_v1.py")
+
+# --- 宣言値 ----------------------------------------------------------------
+MODES = {
+    "neutral":  {"delta": 1e-2, "m_pump": 0, "m_seed": 0, "label": "中性フェルミオン"},
+    "electron": {"delta": 1e-2, "m_pump": 0, "m_seed": 3, "label": "電子型フェルミオン"},
+    "vacuum":   {"delta": 0.0,  "m_pump": 0, "m_seed": 3, "label": "ボゾン真空（シードなし）"},
+}
+K_PUMP, K_SEED = 2, 1              # 帯（三系共通）。相棒帯 = 2*K_PUMP - K_SEED = 3
+PARTNER_K = 2 * K_PUMP - K_SEED    # = 3
+NETA, NN = ns.NETA, ns.NN
+ODD_K = [k for k in range(NN) if k % 2 == 1]
+EVEN_K = [k for k in range(NN) if k % 2 == 0 and k != 0]
+THETA_ALPHA = 23 * math.pi / 124
+R_ALPHA = math.cos(THETA_ALPHA) ** 2          # 0.697177928
+T_ALPHA = math.sin(THETA_ALPHA) ** 2          # 0.302822072
+ALPHA_INV = 4 * math.pi / T_ALPHA ** 2        # 137.036043
+
+MODE = sys.argv[1] if len(sys.argv) > 1 else "neutral"
+assert MODE in MODES, f"mode は {list(MODES)} のいずれか"
+CFG = MODES[MODE]
+DELTA, M_PUMP, M_SEED = CFG["delta"], CFG["m_pump"], CFG["m_seed"]
+M_STAR = 2 * M_PUMP - M_SEED
+M_STAR_IDX = M_STAR % NETA
+ns.DELTA = DELTA                   # 掃引スクリプトの主条件
+
+_ENGINES: list = []
+
+
+def _signed(idx: int) -> int:
+    h = NETA // 2
+    return int(((idx + h) % NETA) - h)
+
+
+REC_KEYS = ("r_mean", "r_med", "r_min", "r_max", "r_raw",
+            "dist_alpha", "absdist_alpha",
+            "r_nopump", "dist_alpha_nopump", "even_power_nopump",
+            "conc_all", "conc_k3", "dom_m", "q_hat", "readable", "k3_power",
+            "odd_power", "odd_amp_max", "even_power", "total_power")
+
+
+class RecordingEngine(F1.UnifiedEngine):
+    """力学は F v1 の UnifiedEngine そのまま。step 後に記録を 1 回だけ追記する。
+
+    _readout() は純関数（self.C を読むだけ・副作用なし）なので、毎步もう一度
+    呼んで node ごとの R = scale·sin²θ を取得する。scale=1 なので R = sin²θ = r。
+    """
+
+    def __init__(self, *a, **kw):
+        super().__init__(*a, **kw)
+        self._rec: list = []
+        self._bands: list = []
+
+    def step(self, *a, **kw):
+        out = super().step(*a, **kw)
+        C2 = self.C2()
+        A = np.abs(C2)
+        P = A ** 2
+        tot = float(P.sum())
+        Pk = P.sum(axis=(0, 2))                       # 帯ごとのパワー（長さ Nn）
+        odd_p = float(Pk[ODD_K].sum())
+        even_p = float(Pk[EVEN_K].sum())
+        r_raw = odd_p / (odd_p + even_p) if (odd_p + even_p) > 0 else float("nan")
+        # 物質側の r: ポンプ帯（凝縮体）を分母から除く＝H1c が種に対して測った量と同型
+        even_np = float(Pk[[k for k in EVEN_K if k != K_PUMP]].sum())
+        r_nopump = (odd_p / (odd_p + even_np)
+                    if (odd_p + even_np) > 0 else float("nan"))
+        Rn = np.asarray(self._readout(), dtype=float)  # = scale·sin²θ（node ごと）
+        r_mean = float(Rn.mean()) if Rn.size else float("nan")
+        Pe = P.sum(axis=(0, 1))
+        conc_all = float(Pe[M_STAR_IDX] / tot) if tot > 0 else float("nan")
+        P3 = P[:, PARTNER_K, :].sum(axis=0)
+        s3 = float(P3.sum())
+        conc_k3 = float(P3[M_STAR_IDX] / s3) if s3 > 0 else float("nan")
+        dom = _signed(int(np.argmax(P3))) if s3 > 0 else 0
+        self._rec.append((
+            r_mean, float(np.median(Rn)), float(Rn.min()), float(Rn.max()), r_raw,
+            r_mean - R_ALPHA, abs(r_mean - R_ALPHA),
+            r_nopump, r_nopump - R_ALPHA, even_np,
+            conc_all, conc_k3, float(dom), dom / 3.0,
+            1.0 if (s3 > 0 and dom % 3 == 0) else 0.0, s3,
+            odd_p, float(A[:, ODD_K, :].max()), even_p, tot))
+        self._bands.append(Pk.copy())
+        return out
+
+
+def build_universe(n, delta, Nn=5, Neta=8, seed=2):
+    """F v1 の build_standard_universe と同一手順。帯・巻きの置き場所のみ宣言化。"""
+    m = n * (n - 1) // 2
+    _, v, _, _, _, _, _, Z0c, wp0 = F1.abl.build_init(n, False)
+    r2 = F1.gen3.make_parent(n, seed=seed)
+    Csec = np.fft.fft(r2.relation_waves, axis=1) / n
+    seed_state = Csec[:, 1] / np.linalg.norm(Csec[:, 1])
+    C2_0 = np.zeros((m, Nn, Neta), complex)
+    ip, isd = M_PUMP % Neta, M_SEED % Neta
+    C2_0[:, K_PUMP, ip] = Z0c
+    C2_0[:, K_SEED, isd] = delta * seed_state       # δ=0 なら厳密に零
+    p2 = C2_0[:, K_PUMP, ip].real / np.linalg.norm(C2_0[:, K_PUMP, ip].real)
+    q2 = C2_0[:, K_PUMP, ip].imag - (C2_0[:, K_PUMP, ip].imag @ p2) * p2
+    with np.errstate(divide="ignore", invalid="ignore"):
+        q2 = q2 / np.linalg.norm(q2)
+    eng = RecordingEngine(n, C2_0, wp0)
+    _ENGINES.append(eng)
+    return eng, p2, q2
+
+
+ns.F.build_standard_universe = build_universe        # メモリ上のみ差し替え
+
+
+def _rename(src: str, dst: str) -> None:
+    """無改変 import の fig_one/fig_summary/fig_matrix が固定名で出す図を、
+    モード名付きへ改名する（図の中身は同一関数の出力そのまま）。"""
+    a, b = HERE / src, HERE / dst
+    if a.exists():
+        a.replace(b)
+
+
+def arrays(eng):
+    a = np.array(eng._rec, dtype=float)
+    d = {k: a[:, i] for i, k in enumerate(REC_KEYS)}
+    d["bands"] = np.array(eng._bands, dtype=float)   # (steps, Nn)
+    return d
+
+
+def med_win(x):
+    w = x[slice(*ns.WIN)]
+    w = w[np.isfinite(w)]
+    return float(np.median(w)) if len(w) else float("nan")
+
+
+def first_over(x, thr):
+    idx = np.flatnonzero(np.nan_to_num(x, nan=-np.inf) > thr)
+    return int(idx[0]) + 1 if len(idx) else None
+
+
+def bit_identical(A, B):
+    worst = 0.0
+    for k in ns.KEYS:
+        x, y = A[k], B[k]
+        if not np.all(np.isnan(x) == np.isnan(y)):
+            return float("inf")
+        d = np.abs(np.nan_to_num(x, nan=0.0) - np.nan_to_num(y, nan=0.0))
+        worst = max(worst, float(d.max()) if d.size else 0.0)
+    return worst
+
+
+def fig_mix(n, hm, hv, rec):
+    ts = np.arange(1, len(hm["r_mean"]) + 1)
+    fig, ax = plt.subplots(4, 1, figsize=(9, 11), sharex=True)
+    a = ax[0]
+    a.plot(ts, hm["r_mean"], lw=0.9, color="tab:blue", label="r = sin²θ（node平均・物質）")
+    a.fill_between(ts, hm["r_min"], hm["r_max"], color="tab:blue", alpha=0.15,
+                   label="node の min–max")
+    a.plot(ts, hm["r_nopump"], lw=1.0, color="tab:green",
+           label="r_nopump（ポンプ帯を除く＝物質側）")
+    a.plot(ts, hv["r_mean"], "k--", lw=0.8, label="真空対照")
+    a.axhline(R_ALPHA, color="tab:red", lw=1.0, ls=":",
+              label=f"α根 R_α=cos²(23π/124)={R_ALPHA:.9f}")
+    a.set_ylabel("混合率 r（反射率）")
+    a.set_title(f"N={n}  {CFG['label']}  r 窓中央値={rec['r_med_win']:.6f}  "
+                f"α根との距離={rec['dist_alpha_win']:+.6f}")
+    a.legend(fontsize=7)
+    a = ax[1]
+    a.semilogy(ts, np.maximum(np.abs(hm["dist_alpha"]), 1e-18), lw=0.9,
+               color="tab:purple", label="|r − R_α|（系全体）")
+    a.semilogy(ts, np.maximum(np.abs(hm["dist_alpha_nopump"]), 1e-18), lw=0.9,
+               color="tab:green", label="|r_nopump − R_α|（物質側）")
+    a.set_ylabel("α根からの距離"); a.legend(fontsize=7)
+    a = ax[2]
+    a.semilogy(ts, np.maximum(hm["odd_power"], 1e-40), lw=0.9, color="tab:red",
+               label="全奇数帯（フェルミオン帯）")
+    a.semilogy(ts, np.maximum(hm["even_power"], 1e-40), lw=0.9, color="tab:blue",
+               label="全偶数帯（ボゾン帯・k≠0）")
+    a.semilogy(ts, np.maximum(hv["odd_power"], 1e-40), "k--", lw=0.8,
+               label="真空 奇数帯")
+    a.set_ylabel("帯パワー"); a.legend(fontsize=7)
+    a = ax[3]
+    B = hm["bands"]
+    for k in (PARTNER_K, 4, 5, 6, K_SEED, K_PUMP):
+        if k < B.shape[1]:
+            a.semilogy(ts, np.maximum(B[:, k], 1e-40), lw=0.8,
+                       label=f"k={k}" + ("（相棒・奇）" if k == PARTNER_K else
+                                         "（偶）" if k % 2 == 0 else "（奇）"))
+    a.set_ylabel("帯別パワー"); a.set_xlabel("τ（step）"); a.legend(fontsize=7, ncol=3)
+    for b in ax:
+        b.axvspan(ns.WIN[0], ns.WIN[1], color="green", alpha=0.06)
+        if rec["tau_space"]:
+            b.axvline(rec["tau_space"], color="tab:blue", lw=0.8, ls="-.")
+    fig.tight_layout()
+    fig.savefig(HERE / f"fig_{MODE}_mix_N{n}_v2.png", dpi=110)
+    plt.close(fig)
+
+
+def main():
+    t0 = time.time()
+    nmin = int(sys.argv[2]) if len(sys.argv) > 3 else 1
+    nmax = int(sys.argv[3]) if len(sys.argv) > 3 else 20
+    print(f"=== N 掃引 {nmin}→{nmax}・mode={MODE}（{CFG['label']}）"
+          f"・F=v1・Nn={NN}・Nη={NETA}・δ={DELTA}・m*={M_STAR}"
+          f"（毛idx {M_STAR_IDX}）・相棒帯 k={PARTNER_K}・T={ns.T} ===")
+    print(f"    α根 R_α = cos²(23π/124) = {R_ALPHA:.9f} / 1−R_α = {T_ALPHA:.9f} / "
+          f"4π/(1−R_α)² = {ALPHA_INV:.6f}（α⁻¹実測 137.035999206）")
+    print(f"    奇数帯 k={ODD_K} / 偶数帯 k={EVEN_K}")
+    recs, fails = [], []
+    out = {"env": {"mode": MODE, "label": CFG["label"], "Nn": NN, "Neta": NETA,
+                   "T": ns.T, "delta": DELTA, "seed": ns.SEED,
+                   "cell": list(ns.CELL), "order": ns.ORDER,
+                   "window": list(ns.WIN),
+                   "functions": ["unified_interaction_v1（★v1・恒久ルール）",
+                                 "unified_dimension_v1", "unified_readout_v3",
+                                 "selection_v1"],
+                   "recipe": {"k_pump": K_PUMP, "k_seed": K_SEED,
+                              "partner_k": PARTNER_K,
+                              "m_pump": M_PUMP, "m_seed": M_SEED,
+                              "m_star": M_STAR, "hair_index": M_STAR_IDX,
+                              "sum_rule": "m*=2m_pump−m_seed / k*=2k_pump−k_seed"},
+                   "alpha": {"theta": "23π/124", "R_alpha": R_ALPHA,
+                             "T_alpha": T_ALPHA, "alpha_inv_from_R": ALPHA_INV,
+                             "alpha_inv_measured": 137.035999206},
+                   "odd_k": ODD_K, "even_k": EVEN_K,
+                   "base_script_md5": "bfa5d854b637fe97c33a7148be9c7f86"},
+           "N": {}, "failed": {}}
+    for n in range(nmin, nmax + 1):
+        t1 = time.time()
+        _ENGINES.clear()
+        try:
+            Hm, Rm, Am, Ccm, Csm = ns.run_one(n, DELTA)
+            eng_m = _ENGINES[-1]
+            Hv, Rv, Av, Ccv, Csv = ns.run_one(n, 0.0)
+            eng_v = _ENGINES[-1]
+        except Exception as ex:
+            msg = f"{type(ex).__name__}: {ex}"
+            fails.append(n); out["failed"][n] = msg
+            out["N"][n] = {"N": n, "M": n * (n - 1) // 2, "built": False,
+                           "error": msg}
+            print(f"N={n:3d} M={n*(n-1)//2:4d}: **構成不能** {msg[:70]}")
+            (HERE / f"result_nsweep_{MODE}_v2.json").write_text(
+                json.dumps(out, indent=1, ensure_ascii=False, default=float))
+            continue
+        hm, hv = arrays(eng_m), arrays(eng_v)
+        assert len(hm["r_mean"]) == ns.T, f"記録数 {len(hm['r_mean'])} ≠ T"
+        rec = ns.summarize(n, Hm, Rm, Am, Ccm, Csm, Hv, Av)
+        B = hm["bands"]
+        even_rise = {str(k): first_over(B[:, k], 0.0) for k in EVEN_K if k != K_PUMP}
+        odd_rise = {str(k): first_over(B[:, k], 0.0) for k in ODD_K if k != K_SEED}
+        rec.update({
+            "r_med_win": med_win(hm["r_mean"]),
+            "r_nopump_med_win": med_win(hm["r_nopump"]),
+            "dist_alpha_nopump_win": med_win(hm["dist_alpha_nopump"]),
+            "r_nopump_final": float(hm["r_nopump"][-1]),
+            "even_power_nopump_med": med_win(hm["even_power_nopump"]),
+            "r_raw_med_win": med_win(hm["r_raw"]),
+            "r_min_win": med_win(hm["r_min"]), "r_max_win": med_win(hm["r_max"]),
+            "dist_alpha_win": med_win(hm["dist_alpha"]),
+            "absdist_alpha_win": med_win(hm["absdist_alpha"]),
+            "r_final": float(hm["r_mean"][-1]),
+            "dist_alpha_final": float(hm["dist_alpha"][-1]),
+            "r_med_win_vacuum": med_win(hv["r_mean"]),
+            "conc_k3_med": med_win(hm["conc_k3"]),
+            "dom_m_med": med_win(hm["dom_m"]), "q_hat_med": med_win(hm["q_hat"]),
+            "readable_rate": med_win(hm["readable"]),
+            "k3_power_med": med_win(hm["k3_power"]),
+            "odd_power_max": float(np.nanmax(hm["odd_power"])),
+            "odd_amp_max": float(np.nanmax(hm["odd_amp_max"])),
+            "odd_exact_zero_steps": int((hm["odd_power"] == 0.0).sum()),
+            "even_power_med": med_win(hm["even_power"]),
+            "odd_power_med": med_win(hm["odd_power"]),
+            "band_rise_even": even_rise, "band_rise_odd": odd_rise,
+            "band_power_med": {str(k): med_win(B[:, k]) for k in range(NN)},
+            "determinism_max_abs": bit_identical(Hm, Hv) if DELTA == 0 else None,
+        })
+        recs.append(rec); out["N"][n] = rec
+        ns.fig_one(n, Hm, Hv, Am, Ccm, Csm, rec)
+        _rename(f"fig_nsweep_N{n}_v1.png", f"fig_{MODE}_4panel_N{n}_v2.png")
+        fig_mix(n, hm, hv, rec)
+        np.savez_compressed(
+            HERE / f"nsweep_{MODE}_N{n}_v2.npz",
+            **{f"m_{k}": Hm[k] for k in ns.KEYS},
+            **{f"v_{k}": Hv[k] for k in ns.KEYS},
+            m_resid=Rm, m_acq=Am, v_acq=Av,
+            m_cond_closure=Ccm, m_seed_closure=Csm,
+            **{f"rec_m_{k}": v for k, v in hm.items()},
+            **{f"rec_v_{k}": v for k, v in hv.items()})
+        print(f"N={n:3d} M={rec['M']:4d}: 空間τ={str(rec['tau_space']):>5} "
+              f"物質={str(rec['matter_born']):>5} 時間τ={str(rec['tau_time']):>5} "
+              f"| r={rec['r_med_win']:.6f} r_np={rec['r_nopump_med_win']:.6f} "
+              f"Δα_np={rec['dist_alpha_nopump_win']:+.3e} "
+              f"奇={rec['odd_power_med']:.2e} 偶={rec['even_power_med']:.2e} "
+              f"集中度={rec['conc_k3_med']:.4f} m̂={rec['dom_m_med']:+.1f} "
+              f"[{time.time()-t1:.0f}s]")
+        (HERE / f"result_nsweep_{MODE}_v2.json").write_text(
+            json.dumps(out, indent=1, ensure_ascii=False, default=float))
+    if recs:
+        ns.fig_summary(recs, fails)
+        _rename("fig_nsweep_summary_v1.png", f"fig_{MODE}_summary_v2.png")
+    ns.fig_matrix(recs, fails, nmin, nmax)
+    _rename("fig_nsweep_birth_matrix_v1.png", f"fig_{MODE}_birth_matrix_v2.png")
+    out["failed_N"] = fails
+    out["judgments"] = {
+        "V1_failed_N": fails,
+        "V2_space_born_all_N": bool(recs) and all(r["space_born"] for r in recs),
+        "V3_matter_born_all_N": bool(recs) and all(r["matter_born"] for r in recs),
+        "V3_odd_exact_zero_all_N": bool(recs) and all(
+            r["odd_exact_zero_steps"] == ns.T for r in recs),
+        "V4_conc_ge_09_all_N": bool(recs) and all(
+            (r["conc_k3_med"] >= 0.9) for r in recs if np.isfinite(r["conc_k3_med"])),
+        "V5_r_med_range": [min((r["r_med_win"] for r in recs), default=None),
+                           max((r["r_med_win"] for r in recs), default=None)],
+        "V5_absdist_alpha_min": min((r["absdist_alpha_win"] for r in recs),
+                                    default=None),
+        "V5_r_nopump_range": [min((r["r_nopump_med_win"] for r in recs), default=None),
+                              max((r["r_nopump_med_win"] for r in recs), default=None)],
+        "V5_absdist_alpha_nopump_min": min(
+            (abs(r["dist_alpha_nopump_win"]) for r in recs
+             if r["dist_alpha_nopump_win"] == r["dist_alpha_nopump_win"]),
+            default=None),
+        "V6_even_bands_risen": {str(k): sum(
+            1 for r in recs if r["band_rise_even"].get(str(k)) is not None)
+            for k in EVEN_K if k != K_PUMP},
+    }
+    out["runtime_sec"] = time.time() - t0
+    (HERE / f"result_nsweep_{MODE}_v2.json").write_text(
+        json.dumps(out, indent=1, ensure_ascii=False, default=float))
+    print(f"\n構成できなかった N: {fails if fails else 'なし'}")
+    print(f"判定: {json.dumps(out['judgments'], ensure_ascii=False, default=float)}")
+    print(f"完了 {time.time()-t0:.0f}s")
+
+
+if __name__ == "__main__":
+    main()
