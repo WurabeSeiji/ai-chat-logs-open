@@ -27,13 +27,16 @@ v1 系（3フォルダ・破棄済み）からの変更:
 なので出力は本フォルダに出る（原本フォルダは無傷）。
 
 **モード（唯一の物理的差）**
-| mode      | δ      | (m_pump, m_seed) | m* = 2m_pump − m_seed | 種 |
-|-----------|--------|------------------|------------------------|----|
-| neutral   | 1e-2   | (0, 0)           | 0                      | 中性フェルミオン（ν型） |
-| electron  | 1e-2   | (0, 3)           | −3（Q=−1・毛idx 5）    | 電子型 |
-| vacuum    | 0      | (0, 3) 宣言のみ  | —（シード項は厳密に零） | ボゾン真空（γ型のみ） |
+| mode            | δ      | primary (k_seed, m_seed) | primary (k*, m*) | 種 |
+|-----------------|--------|--------------------------|------------------|----|
+| neutral         | 1e-2   | (1, 0)                   | (3, 0)           | 中性フェルミオン（ν型） |
+| electron        | 1e-2   | (1, 3)                   | (3, −3)          | 電子型 |
+| vacuum          | 0      | (1, 3) 宣言のみ          | —                | ボゾン真空（シードなし） |
+| fermion_family  | 1e-2×5 | k=1, η∈{0,1,3,5,6}    | k*=3, 5巻き    | フェルミオン積荷のみ |
+| boson_family    | 1e-2×3 | k=6, η∈{0,3,5}        | k*=14, 3巻き   | ボゾン積荷のみ |
 
-帯はいずれも pump k=2・seed k=1（和則 k* = 2·2−1 = 3 が相棒帯）。
+ポンプは全モードで k=2。primary seed は既存4モードと
+fermion_family で k=1（相棒 k*=3）、boson_family で k=6（相棒 k*=14）。
 
 条件（三系で完全同一・すべて宣言値）:
   F=unified_interaction_v1.py（★v1）/ D=unified_dimension_v1.py /
@@ -88,14 +91,18 @@ T≠4000 のときは出力名に `_T{T}` が付き、既存の T=4000 成果物
      δ=1e−2 8セルで 74 → δ=1e−3 8セルは 74 と 1624 の間）
   ④ f ≈ Σδ² = 8×1e−6 = 8e−6（δ² 則の検証点）
 
-使い方: python3 run_nsweep_three_series_v2.py <mode> [Nmin Nmax] [T] [δ]
-        mode ∈ {neutral, electron, vacuum, mixed}（省略時 1 20・T=4000・δ=1e−2）
+使い方: python3 run_nsweep_three_series_v2.py <mode> [Nmin Nmax] [T] [δ] [output_suffix]
+        mode ∈ {neutral, electron, vacuum, mixed, fermion_family, boson_family}
+        （省略時 1 20・T=4000・δ=1e−2）
+        output_suffix は安全な ASCII 識別子のみ。`_rep-<suffix>` を全成果物に
+        付け、既存の正本を上書きせず完全同条件の複製走行を可能にする。
 """
 from __future__ import annotations
 
 import importlib.util
 import json
 import math
+import re
 import sys
 import time
 from pathlib import Path
@@ -140,9 +147,20 @@ MODES = {
     "mixed":    {"delta": D0, "m_pump": 0, "m_seed": 0, "label": "混合シード（多種共存）",
                  "cells": [(1, 0, D0), (1, 1, D0), (1, 3, D0), (1, 5, D0), (1, 6, D0),
                            (6, 0, D0), (6, 3, D0), (6, 5, D0)]},
+    # mixed から偶数帯積荷を除いた family ablation。primary は先頭セル。
+    "fermion_family": {
+        "delta": D0, "m_pump": 0, "m_seed": 0, "k_seed": 1,
+        "label": "フェルミオン積荷のみ（5セル）",
+        "cells": [(1, 0, D0), (1, 1, D0), (1, 3, D0), (1, 5, D0), (1, 6, D0)],
+    },
+    # mixed から奇数帯積荷を除いた family ablation。P_odd=0 が保たれるかを測る。
+    "boson_family": {
+        "delta": D0, "m_pump": 0, "m_seed": 0, "k_seed": 6,
+        "label": "ボゾン積荷のみ（3セル）",
+        "cells": [(6, 0, D0), (6, 3, D0), (6, 5, D0)],
+    },
 }
-K_PUMP, K_SEED = 2, 1              # 帯（三系共通）。相棒帯 = 2*K_PUMP - K_SEED = 3
-PARTNER_K = 2 * K_PUMP - K_SEED    # = 3
+K_PUMP = 2
 NETA, NN = ns.NETA, ns.NN
 ODD_K = [k for k in range(NN) if k % 2 == 1]
 EVEN_K = [k for k in range(NN) if k % 2 == 0 and k != 0]
@@ -162,6 +180,8 @@ MODE = sys.argv[1] if len(sys.argv) > 1 else "neutral"
 assert MODE in MODES, f"mode は {list(MODES)} のいずれか"
 CFG = MODES[MODE]
 DELTA, M_PUMP, M_SEED = CFG["delta"], CFG["m_pump"], CFG["m_seed"]
+K_SEED = int(CFG.get("k_seed", 1))
+PARTNER_K = (2 * K_PUMP - K_SEED) % NN
 M_STAR = 2 * M_PUMP - M_SEED
 M_STAR_IDX = M_STAR % NETA
 ns.DELTA = DELTA                   # 掃引スクリプトの主条件（0 か否かの点火フラグとして働く）
@@ -181,14 +201,48 @@ if len(sys.argv) > 5:
         DELTA = _dnew
         ns.DELTA = _dnew
     D_TAG = f"_d{_dnew:g}"
-TAG = T_TAG + D_TAG
+# 第6引数は物理条件ではなく、完全同条件の複製走行用識別子。
+# パス区切り・空白・シェル記号を入れず、既存正本の名前と分離する。
+OUTPUT_SUFFIX = sys.argv[6] if len(sys.argv) > 6 else ""
+if OUTPUT_SUFFIX:
+    assert re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,63}", OUTPUT_SUFFIX), (
+        "output_suffix は ASCII 英数字で始まる 1〜64 文字"
+        "（英数字・_ ・- のみ）"
+    )
+OUTPUT_TAG = f"_rep-{OUTPUT_SUFFIX}" if OUTPUT_SUFFIX else ""
+TAG = T_TAG + D_TAG + OUTPUT_TAG
 CELLS = CFG["cells"]               # シードセル [(k, η, δ), ...]
+if CELLS:
+    assert CELLS[0][0] == K_SEED, "primary k_seed と先頭シードセルが不一致"
+    assert CELLS[0][1] % NETA == M_SEED % NETA, (
+        "primary m_seed と先頭シードセルが不一致"
+    )
 # 狙った相棒セル: k* = 2·K_PUMP − k_seed, m* = 2·M_PUMP − m_seed（重複は除く）
 TARGETS = []
 for (_k, _e, _d) in CELLS:
     t = ((2 * K_PUMP - _k) % NN, (2 * M_PUMP - _signed(_e)) % NETA)
     if t not in TARGETS:
         TARGETS.append(t)
+CELL_RECORDS = [
+    {"k": int(k), "eta_index": int(e % NETA), "m_signed": _signed(e),
+     "delta": float(d)}
+    for (k, e, d) in CELLS
+]
+TARGET_RECORDS = [
+    {"k": int(k), "eta_index": int(e % NETA), "m_signed": _signed(e),
+     "species": SPECIES.get(_signed(e), "?")}
+    for (k, e) in TARGETS
+]
+N_DELTA = float(sum(d for (_k, _e, d) in CELLS))
+N_DELTA2 = float(sum(d * d for (_k, _e, d) in CELLS))
+NF = sum(1 for (k, _e, _d) in CELLS if k % 2 == 1)
+NB = sum(1 for (k, _e, _d) in CELLS if k % 2 == 0)
+PF_DECLARED = float(sum(d * d for (k, _e, d) in CELLS if k % 2 == 1))
+PB_DECLARED = float(sum(d * d for (k, _e, d) in CELLS if k % 2 == 0))
+PSEED_DECLARED = PF_DECLARED + PB_DECLARED
+R_NP_CELL_RATIO = (float(NF / (NF + NB)) if (NF + NB) else None)
+R_NP_POWER_RATIO = (float(PF_DECLARED / PSEED_DECLARED)
+                    if PSEED_DECLARED > 0 else None)
 LEDGER_EVERY = 50                  # 128セル帳簿のスナップショット間隔（步）
 
 _ENGINES: list = []
@@ -199,7 +253,9 @@ REC_KEYS = ("r_mean", "r_med", "r_min", "r_max", "r_raw",
             "r_nopump", "dist_alpha_nopump", "even_power_nopump",
             "conc_all", "conc_k3", "dom_m", "q_hat", "readable", "k3_power",
             "odd_power", "odd_amp_max", "even_power", "total_power",
-            "target_power", "nontarget_power", "excl_ratio")
+            "target_power", "nontarget_power", "excl_ratio",
+            # 既存23配列の後ろにだけ追加し、common arrays の順序と値を保つ。
+            "seed_power", "pump_power", "primary_seed_power")
 
 
 class RecordingEngine(F1.UnifiedEngine):
@@ -236,15 +292,19 @@ class RecordingEngine(F1.UnifiedEngine):
         r_mean = float(Rn.mean()) if Rn.size else float("nan")
         Pe = P.sum(axis=(0, 1))
         conc_all = float(Pe[M_STAR_IDX] / tot) if tot > 0 else float("nan")
-        P3 = P[:, PARTNER_K, :].sum(axis=0)
-        s3 = float(P3.sum())
-        conc_k3 = float(P3[M_STAR_IDX] / s3) if s3 > 0 else float("nan")
-        dom = _signed(int(np.argmax(P3))) if s3 > 0 else 0
+        # `conc_k3` / `k3_power` は既存 NPZ との互換キー名。値は常に
+        # 設定された primary 相棒帯を読む（既存4モードで k=3、boson_family で k=14）。
+        Ppartner = P[:, PARTNER_K, :].sum(axis=0)
+        s3 = float(Ppartner.sum())
+        conc_k3 = (float(Ppartner[M_STAR_IDX] / s3)
+                   if s3 > 0 else float("nan"))
+        dom = _signed(int(np.argmax(Ppartner))) if s3 > 0 else 0
         Pkh = P.sum(axis=0)                       # (Nn, Nη) 帳簿
         tgt_vals = [float(Pkh[k, e]) for (k, e) in TARGETS]
         tgt_p = float(sum(tgt_vals))
         seed_p = float(sum(Pkh[k, e % NETA] for (k, e, _d) in CELLS))
         pump_p = float(Pkh[K_PUMP, M_PUMP % NETA])
+        primary_seed_p = float(Pkh[K_SEED, M_SEED % NETA])
         nontgt_p = max(tot - pump_p - seed_p - tgt_p, 0.0)
         excl = tgt_p / nontgt_p if nontgt_p > 0 else float("inf")
         self._rec.append((
@@ -254,7 +314,8 @@ class RecordingEngine(F1.UnifiedEngine):
             conc_all, conc_k3, float(dom), dom / 3.0,
             1.0 if (s3 > 0 and dom % 3 == 0) else 0.0, s3,
             odd_p, float(A[:, ODD_K, :].max()), even_p, tot,
-            tgt_p, nontgt_p, excl))
+            tgt_p, nontgt_p, excl,
+            seed_p, pump_p, primary_seed_p))
         self._bands.append(Pk.copy())
         self._tgt.append(tgt_vals)
         self._t += 1
@@ -363,11 +424,14 @@ def fig_mix(n, hm, hv, rec):
     a.set_ylabel("帯パワー"); a.legend(fontsize=7)
     a = ax[3]
     B = hm["bands"]
-    for k in (PARTNER_K, 4, 5, 6, K_SEED, K_PUMP):
+    for k in dict.fromkeys((PARTNER_K, 4, 5, 6, K_SEED, K_PUMP)):
         if k < B.shape[1]:
+            if k == PARTNER_K:
+                kind = "（相棒・奇）" if k % 2 else "（相棒・偶）"
+            else:
+                kind = "（偶）" if k % 2 == 0 else "（奇）"
             a.semilogy(ts, np.maximum(B[:, k], 1e-40), lw=0.8,
-                       label=f"k={k}" + ("（相棒・奇）" if k == PARTNER_K else
-                                         "（偶）" if k % 2 == 0 else "（奇）"))
+                       label=f"k={k}" + kind)
     a.set_ylabel("帯別パワー"); a.set_xlabel("τ（step）"); a.legend(fontsize=7, ncol=3)
     for b in ax:
         b.axvspan(ns.WIN[0], ns.WIN[1], color="green", alpha=0.06)
@@ -420,13 +484,47 @@ def fig_ledger(n, hm, rec):
     plt.close(fig)
 
 
+def _assert_replicate_paths_unused(nmin: int, nmax: int) -> None:
+    """suffix 付き複製走行で、既存の同名成果を上書きしない。
+
+    import 元の図関数は一時的に固定名 `fig_nsweep_*_v1.png` を使うため、
+    その残骸がある場合も開始しない。複数プロセスの並列走行は不可。
+    """
+    if not OUTPUT_SUFFIX:
+        return
+    finals = [
+        HERE / f"result_nsweep_{MODE}{TAG}_v2.json",
+        HERE / f"fig_{MODE}{TAG}_summary_v2.png",
+        HERE / f"fig_{MODE}{TAG}_birth_matrix_v2.png",
+    ]
+    fixed = [HERE / "fig_nsweep_summary_v1.png",
+             HERE / "fig_nsweep_birth_matrix_v1.png"]
+    for n in range(nmin, nmax + 1):
+        finals.extend([
+            HERE / f"nsweep_{MODE}{TAG}_N{n}_v2.npz",
+            HERE / f"fig_{MODE}{TAG}_4panel_N{n}_v2.png",
+            HERE / f"fig_{MODE}{TAG}_mix_N{n}_v2.png",
+            HERE / f"fig_{MODE}{TAG}_ledger_N{n}_v2.png",
+        ])
+        fixed.append(HERE / f"fig_nsweep_N{n}_v1.png")
+    occupied = [p.name for p in finals + fixed if p.exists()]
+    if occupied:
+        raise FileExistsError(
+            "複製走行の出力先または固定名一時図が既に存在: "
+            + ", ".join(occupied)
+        )
+
+
 def main():
     t0 = time.time()
     nmin = int(sys.argv[2]) if len(sys.argv) > 3 else 1
     nmax = int(sys.argv[3]) if len(sys.argv) > 3 else 20
+    _assert_replicate_paths_unused(nmin, nmax)
     print(f"=== N 掃引 {nmin}→{nmax}・mode={MODE}（{CFG['label']}）"
           f"・F=v1・Nn={NN}・Nη={NETA}・δ={DELTA}・m*={M_STAR}"
           f"（毛idx {M_STAR_IDX}）・相棒帯 k={PARTNER_K}・T={ns.T} ===")
+    if OUTPUT_SUFFIX:
+        print(f"    複製走行 output_suffix={OUTPUT_SUFFIX!r} / tag={OUTPUT_TAG}")
     print(f"    α根 R_α = cos²(23π/124) = {R_ALPHA:.9f} / 1−R_α = {T_ALPHA:.9f} / "
           f"4π/(1−R_α)² = {ALPHA_INV:.6f}（α⁻¹実測 137.035999206）")
     print(f"    奇数帯 k={ODD_K} / 偶数帯 k={EVEN_K}")
@@ -435,6 +533,55 @@ def main():
                    "T": ns.T, "delta": DELTA, "seed": ns.SEED,
                    "cell": list(ns.CELL), "order": ns.ORDER,
                    "window": list(ns.WIN),
+                   "output_suffix": OUTPUT_SUFFIX or None,
+                   "seed_cells": CELL_RECORDS,
+                   "target_cells": TARGET_RECORDS,
+                   "seed_strength": {
+                       "n_cells": len(CELLS),
+                       "n_delta": N_DELTA,
+                       "n_delta2": N_DELTA2,
+                       "nF": NF,
+                       "nB": NB,
+                       "PF": PF_DECLARED,
+                       "PB": PB_DECLARED,
+                       "Pseed": PSEED_DECLARED,
+                       "Acoh": N_DELTA,
+                       "r_np_cell_ratio": R_NP_CELL_RATIO,
+                       "r_np_power_ratio": R_NP_POWER_RATIO,
+                       "definitions": {
+                           "n_delta": "Σ_j δ_j（一様強度で nδ）",
+                           "n_delta2": "Σ_j δ_j^2（一様強度で nδ^2）",
+                           "PF_PB": "奇数帯/偶数帯シードの Σ_j δ_j^2（宣言値）",
+                           "Pseed": "PF+PB（宣言シードパワー）",
+                           "Acoh": "Σ_j δ_j（一様強度で nδ）",
+                           "r_np_cell_ratio": "nF/(nF+nB)",
+                           "r_np_power_ratio": "PF/(PF+PB)",
+                       },
+                   },
+                   "primary": {
+                       "pump": {"k": K_PUMP, "m_signed": M_PUMP,
+                                "eta_index": M_PUMP % NETA},
+                       "seed": {"k": K_SEED, "m_signed": M_SEED,
+                                "eta_index": M_SEED % NETA,
+                                "declared_only": not bool(CELLS)},
+                       "partner": {"k": PARTNER_K, "m_signed": M_STAR,
+                                   "eta_index": M_STAR_IDX},
+                   },
+                   "legacy_diagnostics": {
+                       "seed_closure_cell": [1, 0],
+                       "seed_closure_note": (
+                           "import元 run_one の固定診断。boson_family の実シード"
+                           " k=6 の閉塞値ではなく、同 mode では適用外"
+                       ),
+                       "conc_k3_and_k3_power_note": (
+                           "互換キー名。読出し帯は primary.partner.k"
+                       ),
+                       "matter_born_note": (
+                           "import元 summarize の legacy matter_born は "
+                           "g_matter_fraction=f_seed（奇数帯パワー分率）>1e-30 "
+                           "の判定。ボゾン積荷の存在判定ではない"
+                       ),
+                   },
                    "functions": ["unified_interaction_v1（★v1・恒久ルール）",
                                  "unified_dimension_v1", "unified_readout_v3",
                                  "selection_v1"],
@@ -489,6 +636,12 @@ def main():
             "dom_m_med": med_win(hm["dom_m"]), "q_hat_med": med_win(hm["q_hat"]),
             "readable_rate": med_win(hm["readable"]),
             "k3_power_med": med_win(hm["k3_power"]),
+            # primary 相棒帯の汎用名。上の既存キーと同じ配列の alias。
+            "conc_partner_med": med_win(hm["conc_k3"]),
+            "partner_dom_m_med": med_win(hm["dom_m"]),
+            "partner_q_hat_med": med_win(hm["q_hat"]),
+            "partner_readable_rate": med_win(hm["readable"]),
+            "partner_power_med": med_win(hm["k3_power"]),
             "odd_power_max": float(np.nanmax(hm["odd_power"])),
             "odd_amp_max": float(np.nanmax(hm["odd_amp_max"])),
             "odd_exact_zero_steps": int((hm["odd_power"] == 0.0).sum()),
@@ -499,6 +652,15 @@ def main():
             "target_power_med": med_win(hm["target_power"]),
             "nontarget_power_med": med_win(hm["nontarget_power"]),
             "excl_ratio_med": med_win(hm["excl_ratio"]),
+            "payload_seed_power_med": med_win(hm["seed_power"]),
+            "payload_seed_power_max": float(np.nanmax(hm["seed_power"])),
+            "primary_seed_power_med": med_win(hm["primary_seed_power"]),
+            "primary_seed_power_max": float(np.nanmax(hm["primary_seed_power"])),
+            "pump_power_med": med_win(hm["pump_power"]),
+            "pump_power_max": float(np.nanmax(hm["pump_power"])),
+            "target_exact_zero_steps": int((hm["target_power"] == 0.0).sum()),
+            # R は非負。node 最大値が厳密 0 なら全 node で R≡0。
+            "readout_R_exact_zero_steps": int((hm["r_max"] == 0.0).sum()),
             "targets": [[int(k), int(_signed(e)), SPECIES.get(_signed(e), "?")]
                         for (k, e) in TARGETS],
             "target_power_each_med": {
@@ -521,6 +683,22 @@ def main():
             m_cond_closure=Ccm, m_seed_closure=Csm,
             **{f"rec_m_{k}": v for k, v in hm.items()},
             **{f"rec_v_{k}": v for k, v in hv.items()},
+            # 互換キー rec_*_conc_k3 / rec_*_k3_power を残したままの alias。
+            rec_m_conc_partner=hm["conc_k3"],
+            rec_m_partner_dom_m=hm["dom_m"],
+            rec_m_partner_q_hat=hm["q_hat"],
+            rec_m_partner_readable=hm["readable"],
+            rec_m_partner_power=hm["k3_power"],
+            rec_v_conc_partner=hv["conc_k3"],
+            rec_v_partner_dom_m=hv["dom_m"],
+            rec_v_partner_q_hat=hv["q_hat"],
+            rec_v_partner_readable=hv["readable"],
+            rec_v_partner_power=hv["k3_power"],
+            seed_cells_index=np.array(
+                [(k, e % NETA) for (k, e, _d) in CELLS], dtype=int).reshape(-1, 2),
+            seed_cells_delta=np.array([d for (_k, _e, d) in CELLS], dtype=float),
+            targets_index_2d=np.array(TARGETS, dtype=int).reshape(-1, 2),
+            # legacy キーは vacuum 時の shape=(0,) を含め、既存配列と同一に保つ。
             targets_index=np.array(TARGETS, dtype=float))
         print(f"N={n:3d} M={rec['M']:4d}: 空間τ={str(rec['tau_space']):>5} "
               f"物質={str(rec['matter_born']):>5} 時間τ={str(rec['tau_time']):>5} "
@@ -538,14 +716,43 @@ def main():
     ns.fig_matrix(recs, fails, nmin, nmax)
     _rename("fig_nsweep_birth_matrix_v1.png", f"fig_{MODE}{TAG}_birth_matrix_v2.png")
     out["failed_N"] = fails
+    # V4 は neutral/electron の単一種巻き集中度試験。多種・無シード・
+    # family に適用すると、NaN 空集合が all(empty)=True になる場合がある。
+    v4_applicable = MODE in {"neutral", "electron"}
+    if v4_applicable:
+        v4_conc_ge_09 = bool(recs) and all(
+            (r["conc_k3_med"] >= 0.9)
+            for r in recs if np.isfinite(r["conc_k3_med"])
+        )
+    else:
+        v4_conc_ge_09 = None
+    b3_applicable = MODE == "boson_family"
     out["judgments"] = {
         "V1_failed_N": fails,
         "V2_space_born_all_N": bool(recs) and all(r["space_born"] for r in recs),
         "V3_matter_born_all_N": bool(recs) and all(r["matter_born"] for r in recs),
         "V3_odd_exact_zero_all_N": bool(recs) and all(
             r["odd_exact_zero_steps"] == ns.T for r in recs),
-        "V4_conc_ge_09_all_N": bool(recs) and all(
-            (r["conc_k3_med"] >= 0.9) for r in recs if np.isfinite(r["conc_k3_med"])),
+        "V4_conc_ge_09_all_N": v4_conc_ge_09,
+        "V4_applicable": v4_applicable,
+        "V4_note": (
+            "neutral/electron の単一種 primary 相棒巻き集中度のみに適用。"
+            "vacuum/mixed/family ablation は N/A"
+        ),
+        "B3_applicable": b3_applicable,
+        "B3_note": (
+            "boson_family で payload は存在するが、奇数帯 R と"
+            " primary 相棒生成が厳密零かを分離する判定。他 mode は N/A"
+        ),
+        "B3_payload_seed_present_all_N": (
+            bool(recs) and all(r["payload_seed_power_max"] > 0.0 for r in recs)
+            if b3_applicable else None),
+        "B3_target_exact_zero_all_steps_all_N": (
+            bool(recs) and all(r["target_exact_zero_steps"] == ns.T for r in recs)
+            if b3_applicable else None),
+        "B3_readout_R_exact_zero_all_steps_all_N": (
+            bool(recs) and all(r["readout_R_exact_zero_steps"] == ns.T for r in recs)
+            if b3_applicable else None),
         "V5_r_med_range": [min((r["r_med_win"] for r in recs), default=None),
                            max((r["r_med_win"] for r in recs), default=None)],
         "V5_absdist_alpha_min": min((r["absdist_alpha_win"] for r in recs),

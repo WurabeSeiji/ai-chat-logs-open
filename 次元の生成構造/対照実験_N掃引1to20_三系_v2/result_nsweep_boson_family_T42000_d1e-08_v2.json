@@ -1,0 +1,503 @@
+{
+ "env": {
+  "mode": "boson_family",
+  "label": "ボゾン積荷のみ（3セル）",
+  "Nn": 16,
+  "Neta": 8,
+  "T": 42000,
+  "delta": 1e-08,
+  "seed": 2,
+  "cell": [
+   2,
+   0
+  ],
+  "order": 6,
+  "window": [
+   21000,
+   42000
+  ],
+  "output_suffix": null,
+  "seed_cells": [
+   {
+    "k": 6,
+    "eta_index": 0,
+    "m_signed": 0,
+    "delta": 1e-08
+   },
+   {
+    "k": 6,
+    "eta_index": 3,
+    "m_signed": 3,
+    "delta": 1e-08
+   },
+   {
+    "k": 6,
+    "eta_index": 5,
+    "m_signed": -3,
+    "delta": 1e-08
+   }
+  ],
+  "target_cells": [
+   {
+    "k": 14,
+    "eta_index": 0,
+    "m_signed": 0,
+    "species": "ν型/γ・Z型"
+   },
+   {
+    "k": 14,
+    "eta_index": 5,
+    "m_signed": -3,
+    "species": "e型/W−"
+   },
+   {
+    "k": 14,
+    "eta_index": 3,
+    "m_signed": 3,
+    "species": "陽電子型/W+"
+   }
+  ],
+  "seed_strength": {
+   "n_cells": 3,
+   "n_delta": 3.0000000000000004e-08,
+   "n_delta2": 3.0000000000000004e-16,
+   "nF": 0,
+   "nB": 3,
+   "PF": 0.0,
+   "PB": 3.0000000000000004e-16,
+   "Pseed": 3.0000000000000004e-16,
+   "Acoh": 3.0000000000000004e-08,
+   "r_np_cell_ratio": 0.0,
+   "r_np_power_ratio": 0.0,
+   "definitions": {
+    "n_delta": "Σ_j δ_j（一様強度で nδ）",
+    "n_delta2": "Σ_j δ_j^2（一様強度で nδ^2）",
+    "PF_PB": "奇数帯/偶数帯シードの Σ_j δ_j^2（宣言値）",
+    "Pseed": "PF+PB（宣言シードパワー）",
+    "Acoh": "Σ_j δ_j（一様強度で nδ）",
+    "r_np_cell_ratio": "nF/(nF+nB)",
+    "r_np_power_ratio": "PF/(PF+PB)"
+   }
+  },
+  "primary": {
+   "pump": {
+    "k": 2,
+    "m_signed": 0,
+    "eta_index": 0
+   },
+   "seed": {
+    "k": 6,
+    "m_signed": 0,
+    "eta_index": 0,
+    "declared_only": false
+   },
+   "partner": {
+    "k": 14,
+    "m_signed": 0,
+    "eta_index": 0
+   }
+  },
+  "legacy_diagnostics": {
+   "seed_closure_cell": [
+    1,
+    0
+   ],
+   "seed_closure_note": "import元 run_one の固定診断。boson_family の実シード k=6 の閉塞値ではなく、同 mode では適用外",
+   "conc_k3_and_k3_power_note": "互換キー名。読出し帯は primary.partner.k",
+   "matter_born_note": "import元 summarize の legacy matter_born は g_matter_fraction=f_seed（奇数帯パワー分率）>1e-30 の判定。ボゾン積荷の存在判定ではない"
+  },
+  "functions": [
+   "unified_interaction_v1（★v1・恒久ルール）",
+   "unified_dimension_v1",
+   "unified_readout_v3",
+   "selection_v1"
+  ],
+  "recipe": {
+   "k_pump": 2,
+   "k_seed": 6,
+   "partner_k": 14,
+   "m_pump": 0,
+   "m_seed": 0,
+   "m_star": 0,
+   "hair_index": 0,
+   "sum_rule": "m*=2m_pump−m_seed / k*=2k_pump−k_seed"
+  },
+  "alpha": {
+   "theta": "23π/124",
+   "R_alpha": 0.6971779275566593,
+   "T_alpha": 0.30282207244334064,
+   "alpha_inv_from_R": 137.0360429145986,
+   "alpha_inv_measured": 137.035999206
+  },
+  "odd_k": [
+   1,
+   3,
+   5,
+   7,
+   9,
+   11,
+   13,
+   15
+  ],
+  "even_k": [
+   2,
+   4,
+   6,
+   8,
+   10,
+   12,
+   14
+  ],
+  "base_script_md5": "bfa5d854b637fe97c33a7148be9c7f86"
+ },
+ "N": {
+  "12": {
+   "N": 12,
+   "M": 66,
+   "built": true,
+   "tau_space": 851,
+   "tau_space_vacuum": 1624,
+   "tau_time": null,
+   "tau_lock": null,
+   "space_born": true,
+   "matter_born": false,
+   "time_born": false,
+   "vacuum_time_born": false,
+   "align_med": 0.9809156231769879,
+   "n_eff_med": 1.0887125990105786,
+   "nonunif_med": 0.6049460202018082,
+   "closure_med": 3.4648251722517936e-15,
+   "f_seed_med": 0.0,
+   "carrier_med": 0.0,
+   "coherence_med": NaN,
+   "omega_med": 0.0,
+   "cond_closure_med": 3.558259586409134e-15,
+   "seed_closure_med": NaN,
+   "resid_med": [
+    1.0,
+    10.779305696717621,
+    23.03148309865346
+   ],
+   "align_med_vacuum": 0.988777960775235,
+   "n_eff_med_vacuum": 1.0533742238264618,
+   "clock_rate": 0.0,
+   "clock_rate_vacuum": 0.0,
+   "r_med_win": 0.0,
+   "r_nopump_med_win": 0.0,
+   "dist_alpha_nopump_win": -0.6971779275566593,
+   "r_nopump_final": 0.0,
+   "even_power_nopump_med": 3.000000000000006e-16,
+   "r_raw_med_win": 0.0,
+   "r_min_win": 0.0,
+   "r_max_win": 0.0,
+   "dist_alpha_win": -0.6971779275566593,
+   "absdist_alpha_win": 0.6971779275566593,
+   "r_final": 0.0,
+   "dist_alpha_final": -0.6971779275566593,
+   "r_med_win_vacuum": 0.0,
+   "conc_k3_med": NaN,
+   "dom_m_med": 0.0,
+   "q_hat_med": 0.0,
+   "readable_rate": 0.0,
+   "k3_power_med": 0.0,
+   "conc_partner_med": NaN,
+   "partner_dom_m_med": 0.0,
+   "partner_q_hat_med": 0.0,
+   "partner_readable_rate": 0.0,
+   "partner_power_med": 0.0,
+   "odd_power_max": 0.0,
+   "odd_amp_max": 0.0,
+   "odd_exact_zero_steps": 42000,
+   "even_power_med": 1.0000000000000004,
+   "odd_power_med": 0.0,
+   "band_rise_even": {
+    "4": null,
+    "6": 1,
+    "8": null,
+    "10": null,
+    "12": null,
+    "14": null
+   },
+   "band_rise_odd": {
+    "1": null,
+    "3": null,
+    "5": null,
+    "7": null,
+    "9": null,
+    "11": null,
+    "13": null,
+    "15": null
+   },
+   "band_power_med": {
+    "0": 0.0,
+    "1": 0.0,
+    "2": 1.0000000000000002,
+    "3": 0.0,
+    "4": 0.0,
+    "5": 0.0,
+    "6": 3.000000000000006e-16,
+    "7": 0.0,
+    "8": 0.0,
+    "9": 0.0,
+    "10": 0.0,
+    "11": 0.0,
+    "12": 0.0,
+    "13": 0.0,
+    "14": 0.0,
+    "15": 0.0
+   },
+   "target_power_med": 0.0,
+   "nontarget_power_med": 0.0,
+   "excl_ratio_med": 0.0,
+   "payload_seed_power_med": 3.000000000000006e-16,
+   "payload_seed_power_max": 3.0000000000000123e-16,
+   "primary_seed_power_med": 1.000000000000002e-16,
+   "primary_seed_power_max": 1.000000000000004e-16,
+   "pump_power_med": 1.0000000000000002,
+   "pump_power_max": 1.0000000000000018,
+   "target_exact_zero_steps": 42000,
+   "readout_R_exact_zero_steps": 42000,
+   "targets": [
+    [
+     14,
+     0,
+     "ν型/γ・Z型"
+    ],
+    [
+     14,
+     -3,
+     "e型/W−"
+    ],
+    [
+     14,
+     3,
+     "陽電子型/W+"
+    ]
+   ],
+   "target_power_each_med": {
+    "k14_m+0": 0.0,
+    "k14_m-3": 0.0,
+    "k14_m+3": 0.0
+   },
+   "ledger_med": [
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0000000000000002,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0000000000000013e-16,
+     0.0,
+     0.0,
+     1.0000000000000013e-16,
+     0.0,
+     1.0000000000000013e-16,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "determinism_max_abs": null
+  }
+ },
+ "failed": {},
+ "failed_N": [],
+ "judgments": {
+  "V1_failed_N": [],
+  "V2_space_born_all_N": true,
+  "V3_matter_born_all_N": false,
+  "V3_odd_exact_zero_all_N": true,
+  "V4_conc_ge_09_all_N": null,
+  "V4_applicable": false,
+  "V4_note": "neutral/electron の単一種 primary 相棒巻き集中度のみに適用。vacuum/mixed/family ablation は N/A",
+  "B3_applicable": true,
+  "B3_note": "boson_family で payload は存在するが、奇数帯 R と primary 相棒生成が厳密零かを分離する判定。他 mode は N/A",
+  "B3_payload_seed_present_all_N": true,
+  "B3_target_exact_zero_all_steps_all_N": true,
+  "B3_readout_R_exact_zero_all_steps_all_N": true,
+  "V5_r_med_range": [
+   0.0,
+   0.0
+  ],
+  "V5_absdist_alpha_min": 0.6971779275566593,
+  "V5_r_nopump_range": [
+   0.0,
+   0.0
+  ],
+  "V5_absdist_alpha_nopump_min": 0.6971779275566593,
+  "V7_excl_ratio_med_range": [
+   0.0,
+   0.0
+  ],
+  "V7_targets": [
+   [
+    14,
+    0,
+    "ν型/γ・Z型"
+   ],
+   [
+    14,
+    -3,
+    "e型/W−"
+   ],
+   [
+    14,
+    3,
+    "陽電子型/W+"
+   ]
+  ],
+  "V6_even_bands_risen": {
+   "4": 0,
+   "6": 1,
+   "8": 0,
+   "10": 0,
+   "12": 0,
+   "14": 0
+  }
+ },
+ "runtime_sec": 157.3671510219574
+}

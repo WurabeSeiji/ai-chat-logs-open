@@ -1,0 +1,456 @@
+{
+ "env": {
+  "mode": "neutral",
+  "label": "中性フェルミオン",
+  "Nn": 16,
+  "Neta": 8,
+  "T": 42000,
+  "delta": 0.001,
+  "seed": 2,
+  "cell": [
+   2,
+   0
+  ],
+  "order": 6,
+  "window": [
+   21000,
+   42000
+  ],
+  "output_suffix": null,
+  "seed_cells": [
+   {
+    "k": 1,
+    "eta_index": 0,
+    "m_signed": 0,
+    "delta": 0.001
+   }
+  ],
+  "target_cells": [
+   {
+    "k": 3,
+    "eta_index": 0,
+    "m_signed": 0,
+    "species": "ν型/γ・Z型"
+   }
+  ],
+  "seed_strength": {
+   "n_cells": 1,
+   "n_delta": 0.001,
+   "n_delta2": 1e-06,
+   "nF": 1,
+   "nB": 0,
+   "PF": 1e-06,
+   "PB": 0.0,
+   "Pseed": 1e-06,
+   "Acoh": 0.001,
+   "r_np_cell_ratio": 1.0,
+   "r_np_power_ratio": 1.0,
+   "definitions": {
+    "n_delta": "Σ_j δ_j（一様強度で nδ）",
+    "n_delta2": "Σ_j δ_j^2（一様強度で nδ^2）",
+    "PF_PB": "奇数帯/偶数帯シードの Σ_j δ_j^2（宣言値）",
+    "Pseed": "PF+PB（宣言シードパワー）",
+    "Acoh": "Σ_j δ_j（一様強度で nδ）",
+    "r_np_cell_ratio": "nF/(nF+nB)",
+    "r_np_power_ratio": "PF/(PF+PB)"
+   }
+  },
+  "primary": {
+   "pump": {
+    "k": 2,
+    "m_signed": 0,
+    "eta_index": 0
+   },
+   "seed": {
+    "k": 1,
+    "m_signed": 0,
+    "eta_index": 0,
+    "declared_only": false
+   },
+   "partner": {
+    "k": 3,
+    "m_signed": 0,
+    "eta_index": 0
+   }
+  },
+  "legacy_diagnostics": {
+   "seed_closure_cell": [
+    1,
+    0
+   ],
+   "seed_closure_note": "import元 run_one の固定診断。boson_family の実シード k=6 の閉塞値ではなく、同 mode では適用外",
+   "conc_k3_and_k3_power_note": "互換キー名。読出し帯は primary.partner.k",
+   "matter_born_note": "import元 summarize の legacy matter_born は g_matter_fraction=f_seed（奇数帯パワー分率）>1e-30 の判定。ボゾン積荷の存在判定ではない"
+  },
+  "functions": [
+   "unified_interaction_v1（★v1・恒久ルール）",
+   "unified_dimension_v1",
+   "unified_readout_v3",
+   "selection_v1"
+  ],
+  "recipe": {
+   "k_pump": 2,
+   "k_seed": 1,
+   "partner_k": 3,
+   "m_pump": 0,
+   "m_seed": 0,
+   "m_star": 0,
+   "hair_index": 0,
+   "sum_rule": "m*=2m_pump−m_seed / k*=2k_pump−k_seed"
+  },
+  "alpha": {
+   "theta": "23π/124",
+   "R_alpha": 0.6971779275566593,
+   "T_alpha": 0.30282207244334064,
+   "alpha_inv_from_R": 137.0360429145986,
+   "alpha_inv_measured": 137.035999206
+  },
+  "odd_k": [
+   1,
+   3,
+   5,
+   7,
+   9,
+   11,
+   13,
+   15
+  ],
+  "even_k": [
+   2,
+   4,
+   6,
+   8,
+   10,
+   12,
+   14
+  ],
+  "base_script_md5": "bfa5d854b637fe97c33a7148be9c7f86"
+ },
+ "N": {
+  "12": {
+   "N": 12,
+   "M": 66,
+   "built": true,
+   "tau_space": 347,
+   "tau_space_vacuum": 1624,
+   "tau_time": 2,
+   "tau_lock": 16,
+   "space_born": true,
+   "matter_born": true,
+   "time_born": true,
+   "vacuum_time_born": false,
+   "align_med": 0.9964666021535564,
+   "n_eff_med": 1.0164005812473862,
+   "nonunif_med": 0.2035419487587537,
+   "closure_med": 3.1735265829365047e-07,
+   "f_seed_med": 1.000002447290824e-06,
+   "carrier_med": 1.7236596052704137e-12,
+   "coherence_med": 0.9999999331375052,
+   "omega_med": 0.04362836451817322,
+   "cond_closure_med": 2.4283829355943696e-10,
+   "seed_closure_med": 0.3172707301350697,
+   "resid_med": [
+    1.0,
+    10.958511876717925,
+    10.122029891970463
+   ],
+   "align_med_vacuum": 0.988777960775235,
+   "n_eff_med_vacuum": 1.0533742238264618,
+   "clock_rate": 1.0,
+   "clock_rate_vacuum": 0.0,
+   "r_med_win": 9.999988281916126e-07,
+   "r_nopump_med_win": 1.0,
+   "dist_alpha_nopump_win": 0.3028220724433407,
+   "r_nopump_final": 1.0,
+   "even_power_nopump_med": 3.1367989915941678e-24,
+   "r_raw_med_win": 1.0000024472908241e-06,
+   "r_min_win": 6.294005828288953e-07,
+   "r_max_win": 1.4214873910857197e-06,
+   "dist_alpha_win": -0.6971769275578311,
+   "absdist_alpha_win": 0.6971769275578311,
+   "r_final": 9.999889210620544e-07,
+   "dist_alpha_final": -0.6971769275677382,
+   "r_med_win_vacuum": 0.0,
+   "conc_k3_med": 1.0,
+   "dom_m_med": 0.0,
+   "q_hat_med": 0.0,
+   "readable_rate": 1.0,
+   "k3_power_med": 1.7236596052704137e-12,
+   "conc_partner_med": 1.0,
+   "partner_dom_m_med": 0.0,
+   "partner_q_hat_med": 0.0,
+   "partner_readable_rate": 1.0,
+   "partner_power_med": 1.7236596052704137e-12,
+   "odd_power_max": 1.0000061303582233e-06,
+   "odd_amp_max": 0.0003835975639734789,
+   "odd_exact_zero_steps": 0,
+   "even_power_med": 0.9999999999983887,
+   "odd_power_med": 1.0000034472951076e-06,
+   "band_rise_even": {
+    "4": 1,
+    "6": 1,
+    "8": 1,
+    "10": 1,
+    "12": 1,
+    "14": 1
+   },
+   "band_rise_odd": {
+    "3": 1,
+    "5": 1,
+    "7": 1,
+    "9": 1,
+    "11": 1,
+    "13": 1,
+    "15": 1
+   },
+   "band_power_med": {
+    "0": 1.2611021956110781e-17,
+    "1": 1.0000017236355023e-06,
+    "2": 0.9999999999983887,
+    "3": 1.7236596052704137e-12,
+    "4": 7.430852273158451e-25,
+    "5": 1.0004264501304681e-29,
+    "6": 9.154599234133878e-29,
+    "7": 7.809870353528809e-30,
+    "8": 2.382570476616651e-29,
+    "9": 1.438048569447192e-29,
+    "10": 2.3934822242050596e-24,
+    "11": 8.752645851359553e-30,
+    "12": 2.3376683164935186e-29,
+    "13": 8.998065804158636e-30,
+    "14": 8.880221884406643e-29,
+    "15": 1.0490466762427978e-29
+   },
+   "target_power_med": 1.7236596052704137e-12,
+   "nontarget_power_med": 1.2473503247107034e-17,
+   "excl_ratio_med": 11659.810477204688,
+   "payload_seed_power_med": 1.0000017236355023e-06,
+   "payload_seed_power_max": 1.0000030651573747e-06,
+   "primary_seed_power_med": 1.0000017236355023e-06,
+   "primary_seed_power_max": 1.0000030651573747e-06,
+   "pump_power_med": 0.9999999999983887,
+   "pump_power_max": 1.0000000000002485,
+   "target_exact_zero_steps": 0,
+   "readout_R_exact_zero_steps": 0,
+   "targets": [
+    [
+     3,
+     0,
+     "ν型/γ・Z型"
+    ]
+   ],
+   "target_power_each_med": {
+    "k3_m+0": 1.7236596052704137e-12
+   },
+   "ledger_med": [
+    [
+     5.56390380326974e-18,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0000007652343707e-06,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.9999999999996934,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     7.652448622088787e-13,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.4627071515334208e-25,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     7.345619502218467e-30,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     6.143794001966893e-29,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     5.890971221585495e-30,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.572404339201941e-29,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     9.352250686405559e-30,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.0623081490370142e-24,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     5.481207782477267e-30,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     1.546209281790779e-29,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     6.042623863897451e-30,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     6.699021924231057e-29,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     6.1676232542937736e-30,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   ],
+   "determinism_max_abs": null
+  }
+ },
+ "failed": {},
+ "failed_N": [],
+ "judgments": {
+  "V1_failed_N": [],
+  "V2_space_born_all_N": true,
+  "V3_matter_born_all_N": true,
+  "V3_odd_exact_zero_all_N": false,
+  "V4_conc_ge_09_all_N": true,
+  "V4_applicable": true,
+  "V4_note": "neutral/electron の単一種 primary 相棒巻き集中度のみに適用。vacuum/mixed/family ablation は N/A",
+  "B3_applicable": false,
+  "B3_note": "boson_family で payload は存在するが、奇数帯 R と primary 相棒生成が厳密零かを分離する判定。他 mode は N/A",
+  "B3_payload_seed_present_all_N": null,
+  "B3_target_exact_zero_all_steps_all_N": null,
+  "B3_readout_R_exact_zero_all_steps_all_N": null,
+  "V5_r_med_range": [
+   9.999988281916126e-07,
+   9.999988281916126e-07
+  ],
+  "V5_absdist_alpha_min": 0.6971769275578311,
+  "V5_r_nopump_range": [
+   1.0,
+   1.0
+  ],
+  "V5_absdist_alpha_nopump_min": 0.3028220724433407,
+  "V7_excl_ratio_med_range": [
+   11659.810477204688,
+   11659.810477204688
+  ],
+  "V7_targets": [
+   [
+    3,
+    0,
+    "ν型/γ・Z型"
+   ]
+  ],
+  "V6_even_bands_risen": {
+   "4": 1,
+   "6": 1,
+   "8": 1,
+   "10": 1,
+   "12": 1,
+   "14": 1
+  }
+ },
+ "runtime_sec": 268.73529720306396
+}
