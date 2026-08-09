@@ -76,8 +76,20 @@ v1 系（3フォルダ・破棄済み）からの変更:
 並べるのではなく、1本の長走行から窓を切り出して読む（同一軌道なので厳密に比較できる）。
 T≠4000 のときは出力名に `_T{T}` が付き、既存の T=4000 成果物を上書きしない。
 
-使い方: python3 run_nsweep_three_series_v2.py <mode> [Nmin Nmax] [T]
-        mode ∈ {neutral, electron, vacuum, mixed}（省略時 1 20・T=4000）
+**シード強度 δ の掃引（第5引数）**: セル一覧の δ を一律で上書きする。
+「どこまで弱くしても同じ発展が起こるか」を測る。出力名に `_d{δ}` が付く。
+走行前に登録した予言（δ=1e−3・T=42000）:
+  ① τ=1 の r_nopump = 5δ²/(5δ²+3δ²) = **5/8 = 0.625000 で δ に依存しない**
+     （セル数の比だけで決まる）
+  ② 頂点の駆動 R = sin²θ ≈ P奇/P偶 ≈ 5δ² なので δ→1/10 で **R→1/100**。
+     T=42000 で r_nopump が動く量は 1/100（距離の縮みが 8% → 0.08%）。
+     「同じ発展」を見るには **T を 100 倍**必要という帰結になる
+  ③ τ_space は真空側へ戻る（既知: δ=0 で 1624・δ=1e−2 1セルで 224・
+     δ=1e−2 8セルで 74 → δ=1e−3 8セルは 74 と 1624 の間）
+  ④ f ≈ Σδ² = 8×1e−6 = 8e−6（δ² 則の検証点）
+
+使い方: python3 run_nsweep_three_series_v2.py <mode> [Nmin Nmax] [T] [δ]
+        mode ∈ {neutral, electron, vacuum, mixed}（省略時 1 20・T=4000・δ=1e−2）
 """
 from __future__ import annotations
 
@@ -158,6 +170,18 @@ if len(sys.argv) > 4:
     ns.T = int(sys.argv[4])
     ns.WIN = (ns.T // 2, ns.T)
 T_TAG = "" if ns.T == 4000 else f"_T{ns.T}"
+# シード強度 δ の上書き（第5引数）。セル一覧の δ を一律で置き換える。
+# 「どこまで弱くしても同じ発展が起こるか」の測定用。出力名に _d{δ} が付く。
+D_TAG = ""
+if len(sys.argv) > 5:
+    _dnew = float(sys.argv[5])
+    CFG["cells"] = [(k, e, _dnew) for (k, e, _d) in CFG["cells"]]
+    if CFG["delta"] > 0:
+        CFG["delta"] = _dnew
+        DELTA = _dnew
+        ns.DELTA = _dnew
+    D_TAG = f"_d{_dnew:g}"
+TAG = T_TAG + D_TAG
 CELLS = CFG["cells"]               # シードセル [(k, η, δ), ...]
 # 狙った相棒セル: k* = 2·K_PUMP − k_seed, m* = 2·M_PUMP − m_seed（重複は除く）
 TARGETS = []
@@ -350,7 +374,7 @@ def fig_mix(n, hm, hv, rec):
         if rec["tau_space"]:
             b.axvline(rec["tau_space"], color="tab:blue", lw=0.8, ls="-.")
     fig.tight_layout()
-    fig.savefig(HERE / f"fig_{MODE}{T_TAG}_mix_N{n}_v2.png", dpi=110)
+    fig.savefig(HERE / f"fig_{MODE}{TAG}_mix_N{n}_v2.png", dpi=110)
     plt.close(fig)
 
 
@@ -392,7 +416,7 @@ def fig_ledger(n, hm, rec):
                 f"{rec['excl_ratio_med']:.2e}）", fontsize=10)
     a.legend(fontsize=7, ncol=2)
     fig.tight_layout()
-    fig.savefig(HERE / f"fig_{MODE}{T_TAG}_ledger_N{n}_v2.png", dpi=120)
+    fig.savefig(HERE / f"fig_{MODE}{TAG}_ledger_N{n}_v2.png", dpi=120)
     plt.close(fig)
 
 
@@ -439,7 +463,7 @@ def main():
             out["N"][n] = {"N": n, "M": n * (n - 1) // 2, "built": False,
                            "error": msg}
             print(f"N={n:3d} M={n*(n-1)//2:4d}: **構成不能** {msg[:70]}")
-            (HERE / f"result_nsweep_{MODE}{T_TAG}_v2.json").write_text(
+            (HERE / f"result_nsweep_{MODE}{TAG}_v2.json").write_text(
                 json.dumps(out, indent=1, ensure_ascii=False, default=float))
             continue
         hm, hv = arrays(eng_m), arrays(eng_v)
@@ -486,11 +510,11 @@ def main():
         })
         recs.append(rec); out["N"][n] = rec
         ns.fig_one(n, Hm, Hv, Am, Ccm, Csm, rec)
-        _rename(f"fig_nsweep_N{n}_v1.png", f"fig_{MODE}{T_TAG}_4panel_N{n}_v2.png")
+        _rename(f"fig_nsweep_N{n}_v1.png", f"fig_{MODE}{TAG}_4panel_N{n}_v2.png")
         fig_mix(n, hm, hv, rec)
         fig_ledger(n, hm, rec)
         np.savez_compressed(
-            HERE / f"nsweep_{MODE}{T_TAG}_N{n}_v2.npz",
+            HERE / f"nsweep_{MODE}{TAG}_N{n}_v2.npz",
             **{f"m_{k}": Hm[k] for k in ns.KEYS},
             **{f"v_{k}": Hv[k] for k in ns.KEYS},
             m_resid=Rm, m_acq=Am, v_acq=Av,
@@ -506,13 +530,13 @@ def main():
               f"集中度={rec['conc_k3_med']:.4f} m̂={rec['dom_m_med']:+.1f} "
               f"狙い={rec['target_power_med']:.2e} 排他比={rec['excl_ratio_med']:.2e} "
               f"[{time.time()-t1:.0f}s]")
-        (HERE / f"result_nsweep_{MODE}{T_TAG}_v2.json").write_text(
+        (HERE / f"result_nsweep_{MODE}{TAG}_v2.json").write_text(
             json.dumps(out, indent=1, ensure_ascii=False, default=float))
     if recs:
         ns.fig_summary(recs, fails)
-        _rename("fig_nsweep_summary_v1.png", f"fig_{MODE}{T_TAG}_summary_v2.png")
+        _rename("fig_nsweep_summary_v1.png", f"fig_{MODE}{TAG}_summary_v2.png")
     ns.fig_matrix(recs, fails, nmin, nmax)
-    _rename("fig_nsweep_birth_matrix_v1.png", f"fig_{MODE}{T_TAG}_birth_matrix_v2.png")
+    _rename("fig_nsweep_birth_matrix_v1.png", f"fig_{MODE}{TAG}_birth_matrix_v2.png")
     out["failed_N"] = fails
     out["judgments"] = {
         "V1_failed_N": fails,
@@ -541,7 +565,7 @@ def main():
             for k in EVEN_K if k != K_PUMP},
     }
     out["runtime_sec"] = time.time() - t0
-    (HERE / f"result_nsweep_{MODE}{T_TAG}_v2.json").write_text(
+    (HERE / f"result_nsweep_{MODE}{TAG}_v2.json").write_text(
         json.dumps(out, indent=1, ensure_ascii=False, default=float))
     print(f"\n構成できなかった N: {fails if fails else 'なし'}")
     print(f"判定: {json.dumps(out['judgments'], ensure_ascii=False, default=float)}")
