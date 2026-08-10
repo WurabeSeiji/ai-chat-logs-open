@@ -336,6 +336,74 @@ def figA19(out):
          "3 次元の確定と凝縮体を壊す", tight=(0, 0.10, 1, 0.92))
 
 
+# ===================== 追加2枚（本文の図6・図15） =====================
+def figA06b():
+    """集中しているとき（δ=1e-3）と広がりきったとき（δ=0.1）の 128 か所の地図。"""
+    fig, axes = plt.subplots(1, 2, figsize=(11, 4.2))
+    for a, d, lab in ((axes[0], 1e-3, "強さ 10⁻³（狙いが最もよく利く）"),
+                      (axes[1], 0.1, "強さ 0.1（広がりきる）")):
+        z = np.load(npz_path("electron", d))
+        led = z["rec_m_ledger"]
+        t = np.arange(led.shape[0], dtype=float) * 50.0
+        t[0] = 1.0
+        cm = led[(t >= T_LONG // 2) & (t < T_LONG)].mean(axis=0)
+        im = a.imshow(np.log10(np.maximum(cm, 1e-40)).T, aspect="auto",
+                      origin="lower", cmap="viridis", vmin=-40, vmax=0)
+        sup = int(np.count_nonzero(cm > 0.0))
+        r = json.loads(result_path("electron", d).read_text())["N"]["12"]
+        a.set_title(f"{lab}\n占めた場所 {sup}/128・集中度 {r['excl_ratio_med']:.2e}",
+                    fontsize=10)
+        a.set_xlabel("第 1 の向きの巻き数 k")
+        a.set_xticks(range(0, 16, 4))
+        a.set_yticks(range(8))
+        a.add_patch(plt.Rectangle((1 - .5, 3 - .5), 1, 1, fill=False,
+                                  ec="crimson", lw=2.0))
+        a.add_patch(plt.Rectangle((3 - .5, 5 - .5), 1, 1, fill=False,
+                                  ec="lime", lw=2.0))
+    axes[0].set_ylabel("第 2 の向きの巻き数 m")
+    fig.colorbar(im, ax=axes, fraction=0.02, label="log₁₀ パワー")
+    fig.suptitle("図6　同じ電子型の種でも、強さによって集中するか広がるかが変わる"
+                 "（赤枠＝種、緑枠＝狙った相手）", fontsize=12, y=1.06)
+    fig.savefig(HERE / "figA06b_ledger_pair_v1.png", dpi=150, bbox_inches="tight")
+    plt.close(fig)
+    print("  → figA06b_ledger_pair_v1.png")
+
+
+def figA04b():
+    """分解能 4 の異常：平面の枚数が揺れ続け、特別な値 0.6972 を横切る。"""
+    R_ALPHA = math.cos(23 * math.pi / 124) ** 2
+    z4 = np.load(HERE / "nsweep_neutral_T42000_d0.01_"
+                 "rep-s4-n4-neutral-t42000-l1_N4_v2.npz")
+    z12 = np.load(npz_path("neutral", 0.01))
+    fig, axes = plt.subplots(1, 2, figsize=(13.5, 4.4))
+    a = axes[0]
+    t = np.arange(1, len(z4["m_n_eff"]) + 1)
+    a.plot(t, z4["m_n_eff"], lw=0.6, color="tab:red", label="分解能 4")
+    a.plot(t, z12["m_n_eff"], lw=0.9, color="tab:blue", label="分解能 12")
+    a.axhline(1.0, color="k", ls=":", lw=0.9)
+    a.set_xlabel("更新回数")
+    a.set_ylabel("拮抗している平面の枚数")
+    a.set_title("分解能 4 では最後まで揺れ続ける", fontsize=10)
+    a.legend(fontsize=9)
+    a.grid(alpha=0.3)
+    b = axes[1]
+    for z, lab, col in ((z4, "分解能 4", "tab:red"), (z12, "分解能 12", "tab:blue")):
+        r = z["rec_m_r_raw"]
+        b.semilogy(np.arange(1, len(r) + 1), np.maximum(np.abs(r - R_ALPHA), 1e-8),
+                   lw=0.6, color=col, label=lab)
+    b.axhline(1e-3, color="k", ls="--", lw=1.0)
+    b.text(1000, 1.3e-3, "±0.001 の範囲", fontsize=9)
+    b.set_xlabel("更新回数")
+    b.set_ylabel("特別な値 0.6972 からの隔たり")
+    b.set_title("分解能 4 でだけ、揺れがこの値を横切る\n"
+                "（±0.001 に入るのは 42000 回中 9 回）", fontsize=10)
+    b.legend(fontsize=9)
+    b.grid(alpha=0.3, which="both")
+    save(fig, "figA04b_N4_anomaly_v1.png",
+         "図15　分解能 4 の異常——平面の枚数が最後まで定まらず、"
+         "その揺れが特別な値 0.6972 を横切る")
+
+
 if __name__ == "__main__":
     print("=== 監査由来の主張図（4 枚）===")
     out = {"generator": {"script": Path(__file__).name,
@@ -354,6 +422,10 @@ if __name__ == "__main__":
     figA17(pts, out)
     figA18(out)
     figA19(out)
+    figA06b()
+    figA04b()
     (HERE / "result_paperA_audit_figs_v1.json").write_text(
         json.dumps(out, indent=1, ensure_ascii=False, default=str))
     print("完了：4 枚 → result_paperA_audit_figs_v1.json")
+
+
