@@ -1,0 +1,2512 @@
+{
+ "schema": "stage4-longtime-orchestrator-v1",
+ "created_at": "2026-08-10T15:59:25.806661+09:00",
+ "conditions": {
+  "delta": 0.01,
+  "Nn": 16,
+  "Neta": 8,
+  "parent_seed": 2,
+  "cell": [
+   2,
+   0
+  ],
+  "order": 6,
+  "sequential": true,
+  "all_runs_have_unique_output_suffix": true,
+  "N4": {
+   "controls": 4,
+   "long_runs": 4,
+   "T_control": 4000,
+   "T_long": 42000,
+   "modes": [
+    "mixed",
+    "neutral",
+    "electron",
+    "fermion_family"
+   ]
+  },
+  "N12": {
+   "long_runs": 4,
+   "T": 300000,
+   "modes": [
+    "neutral",
+    "electron",
+    "fermion_family",
+    "mixed"
+   ]
+  }
+ },
+ "evidence_policy": {
+  "N4": "existing T4000 exact controls for mixed/neutral/electron; new F5 T4000 control; every T42000 first4000 matches its stage control",
+  "N12": "every T300000 first42000 matches the existing T42000 reference; mixed/neutral/electron also match independent existing T4000 references",
+  "N12_F5_T4000": {
+   "independent_reference_exists": false,
+   "double_count_first4000_inside_T42000": false,
+   "required_evidence": "existing F5 T42000 full 42000-step prefix"
+  }
+ },
+ "plan": [
+  {
+   "run_id": "n4_mixed_t4000_control",
+   "stage": "N4",
+   "role": "control",
+   "mode": "mixed",
+   "N": 4,
+   "T": 4000,
+   "delta": 0.01,
+   "suffix": "s4-n4-mixed-t4000-c1",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "mixed",
+    "4",
+    "4",
+    "4000",
+    "0.01",
+    "s4-n4-mixed-t4000-c1"
+   ],
+   "artifacts": [
+    "result_nsweep_mixed_d0.01_rep-s4-n4-mixed-t4000-c1_v2.json",
+    "nsweep_mixed_d0.01_rep-s4-n4-mixed-t4000-c1_N4_v2.npz",
+    "fig_mixed_d0.01_rep-s4-n4-mixed-t4000-c1_4panel_N4_v2.png",
+    "fig_mixed_d0.01_rep-s4-n4-mixed-t4000-c1_mix_N4_v2.png",
+    "fig_mixed_d0.01_rep-s4-n4-mixed-t4000-c1_ledger_N4_v2.png",
+    "fig_mixed_d0.01_rep-s4-n4-mixed-t4000-c1_summary_v2.png",
+    "fig_mixed_d0.01_rep-s4-n4-mixed-t4000-c1_birth_matrix_v2.png"
+   ],
+   "log": "stage4_log_n4_mixed_t4000_control_v1.txt"
+  },
+  {
+   "run_id": "n4_neutral_t4000_control",
+   "stage": "N4",
+   "role": "control",
+   "mode": "neutral",
+   "N": 4,
+   "T": 4000,
+   "delta": 0.01,
+   "suffix": "s4-n4-neutral-t4000-c1",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "neutral",
+    "4",
+    "4",
+    "4000",
+    "0.01",
+    "s4-n4-neutral-t4000-c1"
+   ],
+   "artifacts": [
+    "result_nsweep_neutral_d0.01_rep-s4-n4-neutral-t4000-c1_v2.json",
+    "nsweep_neutral_d0.01_rep-s4-n4-neutral-t4000-c1_N4_v2.npz",
+    "fig_neutral_d0.01_rep-s4-n4-neutral-t4000-c1_4panel_N4_v2.png",
+    "fig_neutral_d0.01_rep-s4-n4-neutral-t4000-c1_mix_N4_v2.png",
+    "fig_neutral_d0.01_rep-s4-n4-neutral-t4000-c1_ledger_N4_v2.png",
+    "fig_neutral_d0.01_rep-s4-n4-neutral-t4000-c1_summary_v2.png",
+    "fig_neutral_d0.01_rep-s4-n4-neutral-t4000-c1_birth_matrix_v2.png"
+   ],
+   "log": "stage4_log_n4_neutral_t4000_control_v1.txt"
+  },
+  {
+   "run_id": "n4_electron_t4000_control",
+   "stage": "N4",
+   "role": "control",
+   "mode": "electron",
+   "N": 4,
+   "T": 4000,
+   "delta": 0.01,
+   "suffix": "s4-n4-electron-t4000-c1",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "electron",
+    "4",
+    "4",
+    "4000",
+    "0.01",
+    "s4-n4-electron-t4000-c1"
+   ],
+   "artifacts": [
+    "result_nsweep_electron_d0.01_rep-s4-n4-electron-t4000-c1_v2.json",
+    "nsweep_electron_d0.01_rep-s4-n4-electron-t4000-c1_N4_v2.npz",
+    "fig_electron_d0.01_rep-s4-n4-electron-t4000-c1_4panel_N4_v2.png",
+    "fig_electron_d0.01_rep-s4-n4-electron-t4000-c1_mix_N4_v2.png",
+    "fig_electron_d0.01_rep-s4-n4-electron-t4000-c1_ledger_N4_v2.png",
+    "fig_electron_d0.01_rep-s4-n4-electron-t4000-c1_summary_v2.png",
+    "fig_electron_d0.01_rep-s4-n4-electron-t4000-c1_birth_matrix_v2.png"
+   ],
+   "log": "stage4_log_n4_electron_t4000_control_v1.txt"
+  },
+  {
+   "run_id": "n4_f5_t4000_control",
+   "stage": "N4",
+   "role": "control",
+   "mode": "fermion_family",
+   "N": 4,
+   "T": 4000,
+   "delta": 0.01,
+   "suffix": "s4-n4-f5-t4000-c1",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "fermion_family",
+    "4",
+    "4",
+    "4000",
+    "0.01",
+    "s4-n4-f5-t4000-c1"
+   ],
+   "artifacts": [
+    "result_nsweep_fermion_family_d0.01_rep-s4-n4-f5-t4000-c1_v2.json",
+    "nsweep_fermion_family_d0.01_rep-s4-n4-f5-t4000-c1_N4_v2.npz",
+    "fig_fermion_family_d0.01_rep-s4-n4-f5-t4000-c1_4panel_N4_v2.png",
+    "fig_fermion_family_d0.01_rep-s4-n4-f5-t4000-c1_mix_N4_v2.png",
+    "fig_fermion_family_d0.01_rep-s4-n4-f5-t4000-c1_ledger_N4_v2.png",
+    "fig_fermion_family_d0.01_rep-s4-n4-f5-t4000-c1_summary_v2.png",
+    "fig_fermion_family_d0.01_rep-s4-n4-f5-t4000-c1_birth_matrix_v2.png"
+   ],
+   "log": "stage4_log_n4_f5_t4000_control_v1.txt"
+  },
+  {
+   "run_id": "n4_mixed_t42000_long",
+   "stage": "N4",
+   "role": "long",
+   "mode": "mixed",
+   "N": 4,
+   "T": 42000,
+   "delta": 0.01,
+   "suffix": "s4-n4-mixed-t42000-l1",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "mixed",
+    "4",
+    "4",
+    "42000",
+    "0.01",
+    "s4-n4-mixed-t42000-l1"
+   ],
+   "artifacts": [
+    "result_nsweep_mixed_T42000_d0.01_rep-s4-n4-mixed-t42000-l1_v2.json",
+    "nsweep_mixed_T42000_d0.01_rep-s4-n4-mixed-t42000-l1_N4_v2.npz",
+    "fig_mixed_T42000_d0.01_rep-s4-n4-mixed-t42000-l1_4panel_N4_v2.png",
+    "fig_mixed_T42000_d0.01_rep-s4-n4-mixed-t42000-l1_mix_N4_v2.png",
+    "fig_mixed_T42000_d0.01_rep-s4-n4-mixed-t42000-l1_ledger_N4_v2.png",
+    "fig_mixed_T42000_d0.01_rep-s4-n4-mixed-t42000-l1_summary_v2.png",
+    "fig_mixed_T42000_d0.01_rep-s4-n4-mixed-t42000-l1_birth_matrix_v2.png"
+   ],
+   "log": "stage4_log_n4_mixed_t42000_long_v1.txt"
+  },
+  {
+   "run_id": "n4_neutral_t42000_long",
+   "stage": "N4",
+   "role": "long",
+   "mode": "neutral",
+   "N": 4,
+   "T": 42000,
+   "delta": 0.01,
+   "suffix": "s4-n4-neutral-t42000-l1",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "neutral",
+    "4",
+    "4",
+    "42000",
+    "0.01",
+    "s4-n4-neutral-t42000-l1"
+   ],
+   "artifacts": [
+    "result_nsweep_neutral_T42000_d0.01_rep-s4-n4-neutral-t42000-l1_v2.json",
+    "nsweep_neutral_T42000_d0.01_rep-s4-n4-neutral-t42000-l1_N4_v2.npz",
+    "fig_neutral_T42000_d0.01_rep-s4-n4-neutral-t42000-l1_4panel_N4_v2.png",
+    "fig_neutral_T42000_d0.01_rep-s4-n4-neutral-t42000-l1_mix_N4_v2.png",
+    "fig_neutral_T42000_d0.01_rep-s4-n4-neutral-t42000-l1_ledger_N4_v2.png",
+    "fig_neutral_T42000_d0.01_rep-s4-n4-neutral-t42000-l1_summary_v2.png",
+    "fig_neutral_T42000_d0.01_rep-s4-n4-neutral-t42000-l1_birth_matrix_v2.png"
+   ],
+   "log": "stage4_log_n4_neutral_t42000_long_v1.txt"
+  },
+  {
+   "run_id": "n4_electron_t42000_long",
+   "stage": "N4",
+   "role": "long",
+   "mode": "electron",
+   "N": 4,
+   "T": 42000,
+   "delta": 0.01,
+   "suffix": "s4-n4-electron-t42000-l1",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "electron",
+    "4",
+    "4",
+    "42000",
+    "0.01",
+    "s4-n4-electron-t42000-l1"
+   ],
+   "artifacts": [
+    "result_nsweep_electron_T42000_d0.01_rep-s4-n4-electron-t42000-l1_v2.json",
+    "nsweep_electron_T42000_d0.01_rep-s4-n4-electron-t42000-l1_N4_v2.npz",
+    "fig_electron_T42000_d0.01_rep-s4-n4-electron-t42000-l1_4panel_N4_v2.png",
+    "fig_electron_T42000_d0.01_rep-s4-n4-electron-t42000-l1_mix_N4_v2.png",
+    "fig_electron_T42000_d0.01_rep-s4-n4-electron-t42000-l1_ledger_N4_v2.png",
+    "fig_electron_T42000_d0.01_rep-s4-n4-electron-t42000-l1_summary_v2.png",
+    "fig_electron_T42000_d0.01_rep-s4-n4-electron-t42000-l1_birth_matrix_v2.png"
+   ],
+   "log": "stage4_log_n4_electron_t42000_long_v1.txt"
+  },
+  {
+   "run_id": "n4_f5_t42000_long",
+   "stage": "N4",
+   "role": "long",
+   "mode": "fermion_family",
+   "N": 4,
+   "T": 42000,
+   "delta": 0.01,
+   "suffix": "s4-n4-f5-t42000-l1",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "fermion_family",
+    "4",
+    "4",
+    "42000",
+    "0.01",
+    "s4-n4-f5-t42000-l1"
+   ],
+   "artifacts": [
+    "result_nsweep_fermion_family_T42000_d0.01_rep-s4-n4-f5-t42000-l1_v2.json",
+    "nsweep_fermion_family_T42000_d0.01_rep-s4-n4-f5-t42000-l1_N4_v2.npz",
+    "fig_fermion_family_T42000_d0.01_rep-s4-n4-f5-t42000-l1_4panel_N4_v2.png",
+    "fig_fermion_family_T42000_d0.01_rep-s4-n4-f5-t42000-l1_mix_N4_v2.png",
+    "fig_fermion_family_T42000_d0.01_rep-s4-n4-f5-t42000-l1_ledger_N4_v2.png",
+    "fig_fermion_family_T42000_d0.01_rep-s4-n4-f5-t42000-l1_summary_v2.png",
+    "fig_fermion_family_T42000_d0.01_rep-s4-n4-f5-t42000-l1_birth_matrix_v2.png"
+   ],
+   "log": "stage4_log_n4_f5_t42000_long_v1.txt"
+  },
+  {
+   "run_id": "n12_neutral_t300000_long",
+   "stage": "N12",
+   "role": "long",
+   "mode": "neutral",
+   "N": 12,
+   "T": 300000,
+   "delta": 0.01,
+   "suffix": "s4-n12-neutral-t300000-l1",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "neutral",
+    "12",
+    "12",
+    "300000",
+    "0.01",
+    "s4-n12-neutral-t300000-l1"
+   ],
+   "artifacts": [
+    "result_nsweep_neutral_T300000_d0.01_rep-s4-n12-neutral-t300000-l1_v2.json",
+    "nsweep_neutral_T300000_d0.01_rep-s4-n12-neutral-t300000-l1_N12_v2.npz",
+    "fig_neutral_T300000_d0.01_rep-s4-n12-neutral-t300000-l1_4panel_N12_v2.png",
+    "fig_neutral_T300000_d0.01_rep-s4-n12-neutral-t300000-l1_mix_N12_v2.png",
+    "fig_neutral_T300000_d0.01_rep-s4-n12-neutral-t300000-l1_ledger_N12_v2.png",
+    "fig_neutral_T300000_d0.01_rep-s4-n12-neutral-t300000-l1_summary_v2.png",
+    "fig_neutral_T300000_d0.01_rep-s4-n12-neutral-t300000-l1_birth_matrix_v2.png"
+   ],
+   "log": "stage4_log_n12_neutral_t300000_long_v1.txt"
+  },
+  {
+   "run_id": "n12_electron_t300000_long",
+   "stage": "N12",
+   "role": "long",
+   "mode": "electron",
+   "N": 12,
+   "T": 300000,
+   "delta": 0.01,
+   "suffix": "s4-n12-electron-t300000-l1",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "electron",
+    "12",
+    "12",
+    "300000",
+    "0.01",
+    "s4-n12-electron-t300000-l1"
+   ],
+   "artifacts": [
+    "result_nsweep_electron_T300000_d0.01_rep-s4-n12-electron-t300000-l1_v2.json",
+    "nsweep_electron_T300000_d0.01_rep-s4-n12-electron-t300000-l1_N12_v2.npz",
+    "fig_electron_T300000_d0.01_rep-s4-n12-electron-t300000-l1_4panel_N12_v2.png",
+    "fig_electron_T300000_d0.01_rep-s4-n12-electron-t300000-l1_mix_N12_v2.png",
+    "fig_electron_T300000_d0.01_rep-s4-n12-electron-t300000-l1_ledger_N12_v2.png",
+    "fig_electron_T300000_d0.01_rep-s4-n12-electron-t300000-l1_summary_v2.png",
+    "fig_electron_T300000_d0.01_rep-s4-n12-electron-t300000-l1_birth_matrix_v2.png"
+   ],
+   "log": "stage4_log_n12_electron_t300000_long_v1.txt"
+  },
+  {
+   "run_id": "n12_f5_t300000_long",
+   "stage": "N12",
+   "role": "long",
+   "mode": "fermion_family",
+   "N": 12,
+   "T": 300000,
+   "delta": 0.01,
+   "suffix": "s4-n12-f5-t300000-l1",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "fermion_family",
+    "12",
+    "12",
+    "300000",
+    "0.01",
+    "s4-n12-f5-t300000-l1"
+   ],
+   "artifacts": [
+    "result_nsweep_fermion_family_T300000_d0.01_rep-s4-n12-f5-t300000-l1_v2.json",
+    "nsweep_fermion_family_T300000_d0.01_rep-s4-n12-f5-t300000-l1_N12_v2.npz",
+    "fig_fermion_family_T300000_d0.01_rep-s4-n12-f5-t300000-l1_4panel_N12_v2.png",
+    "fig_fermion_family_T300000_d0.01_rep-s4-n12-f5-t300000-l1_mix_N12_v2.png",
+    "fig_fermion_family_T300000_d0.01_rep-s4-n12-f5-t300000-l1_ledger_N12_v2.png",
+    "fig_fermion_family_T300000_d0.01_rep-s4-n12-f5-t300000-l1_summary_v2.png",
+    "fig_fermion_family_T300000_d0.01_rep-s4-n12-f5-t300000-l1_birth_matrix_v2.png"
+   ],
+   "log": "stage4_log_n12_f5_t300000_long_v1.txt"
+  },
+  {
+   "run_id": "n12_mixed_t300000_long",
+   "stage": "N12",
+   "role": "long",
+   "mode": "mixed",
+   "N": 12,
+   "T": 300000,
+   "delta": 0.01,
+   "suffix": "s4-n12-mixed-t300000-l1",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "mixed",
+    "12",
+    "12",
+    "300000",
+    "0.01",
+    "s4-n12-mixed-t300000-l1"
+   ],
+   "artifacts": [
+    "result_nsweep_mixed_T300000_d0.01_rep-s4-n12-mixed-t300000-l1_v2.json",
+    "nsweep_mixed_T300000_d0.01_rep-s4-n12-mixed-t300000-l1_N12_v2.npz",
+    "fig_mixed_T300000_d0.01_rep-s4-n12-mixed-t300000-l1_4panel_N12_v2.png",
+    "fig_mixed_T300000_d0.01_rep-s4-n12-mixed-t300000-l1_mix_N12_v2.png",
+    "fig_mixed_T300000_d0.01_rep-s4-n12-mixed-t300000-l1_ledger_N12_v2.png",
+    "fig_mixed_T300000_d0.01_rep-s4-n12-mixed-t300000-l1_summary_v2.png",
+    "fig_mixed_T300000_d0.01_rep-s4-n12-mixed-t300000-l1_birth_matrix_v2.png"
+   ],
+   "log": "stage4_log_n12_mixed_t300000_long_v1.txt"
+  }
+ ],
+ "runs": {
+  "n4_mixed_t4000_control": {
+   "status": "validated_existing",
+   "started_at": "2026-08-10T15:59:28.065736+09:00",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "mixed",
+    "4",
+    "4",
+    "4000",
+    "0.01",
+    "s4-n4-mixed-t4000-c1"
+   ],
+   "command_display": "'/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3' -u '/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py' mixed 4 4 4000 0.01 s4-n4-mixed-t4000-c1",
+   "log": "stage4_log_n4_mixed_t4000_control_v1.txt",
+   "capacity_gate_before": {
+    "spec_estimates": [
+     {
+      "run_id": "n4_mixed_t4000_control",
+      "raw_npz_arrays_bytes": 4979140,
+      "estimated_compressed_npz_bytes": 2117995,
+      "reference_compression_ratio": 0.4253736584521961,
+      "estimated_all_output_bytes": 14700907,
+      "estimated_peak_ram_bytes": 1113574944,
+      "estimated_runtime_sec": 39.0127588453747,
+      "conservative_notes": [
+       "compressed estimate includes 25% schema margin",
+       "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+       "N4 estimate intentionally uses N12 reference and is conservative"
+      ]
+     }
+    ],
+    "remaining_run_count": 1,
+    "estimated_remaining_output_bytes": 14700907,
+    "estimated_peak_ram_bytes": 1113574944,
+    "disk_free_bytes": 201600159744,
+    "disk_required_bytes": 2191586369,
+    "disk_safety_factor": 3.0,
+    "disk_headroom_bytes": 2147483648,
+    "physical_memory_bytes": 25769803776,
+    "available_memory_bytes": 7723859968,
+    "ram_available_safety_factor": 1.25,
+    "ram_physical_safety_factor": 1.5,
+    "disk_gate_pass": true,
+    "physical_ram_gate_pass": true,
+    "available_ram_gate_pass": true,
+    "gate_pass": true,
+    "estimated_runtime_sec": 39.0127588453747
+   },
+   "source_sha256_before": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_before": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "returncode": 0,
+   "runtime_sec": 69.55976390838623,
+   "source_sha256_after": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_after": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "validation": {
+    "json": {
+     "env_fixed": true,
+     "built_N": 4,
+     "failed_N": []
+    },
+    "npz": {
+     "arrays": 99,
+     "time_steps": 4000,
+     "ledger_snapshots": 81
+    },
+    "existing_T4000_exact_control": {
+     "reference": "nsweep_mixed_N4_v2.npz",
+     "candidate": "nsweep_mixed_d0.01_rep-s4-n4-mixed-t4000-c1_N4_v2.npz",
+     "prefix": false,
+     "reference_steps": 4000,
+     "arrays_checked": 80,
+     "array_classes": {
+      "time_series": 75,
+      "ledger": 4,
+      "static": 1
+     },
+     "byte_exact": true,
+     "max_abs_difference": 0.0
+    },
+    "internal_vacuum_exact": {
+     "reference": "nsweep_vacuum_N4_v2.npz",
+     "candidate": "nsweep_mixed_d0.01_rep-s4-n4-mixed-t4000-c1_N4_v2.npz",
+     "prefix": false,
+     "reference_steps": 4000,
+     "arrays_checked": 26,
+     "array_classes": {
+      "time_series": 26,
+      "ledger": 0,
+      "static": 0
+     },
+     "byte_exact": true,
+     "max_abs_difference": 0.0
+    },
+    "artifact_hashes": {
+     "result_nsweep_mixed_d0.01_rep-s4-n4-mixed-t4000-c1_v2.json": {
+      "sha256": "97845ae9675491813c0096cb563c865708ff3577be6f63589389c02618b51639",
+      "bytes": 13121
+     },
+     "nsweep_mixed_d0.01_rep-s4-n4-mixed-t4000-c1_N4_v2.npz": {
+      "sha256": "267f65dd6c9b8b0e37b3ebf8676535e6f777692981d931071c71c9504b950c38",
+      "bytes": 2021147
+     },
+     "fig_mixed_d0.01_rep-s4-n4-mixed-t4000-c1_4panel_N4_v2.png": {
+      "sha256": "753eaa7f7683a613a4e847d2323e982c5883b62826f0214368a6644a24d03df7",
+      "bytes": 172877
+     },
+     "fig_mixed_d0.01_rep-s4-n4-mixed-t4000-c1_mix_N4_v2.png": {
+      "sha256": "63944803769f2664077a6841f2b18b1d8ae3b50d1bae059610b8c558105773e6",
+      "bytes": 132765
+     },
+     "fig_mixed_d0.01_rep-s4-n4-mixed-t4000-c1_ledger_N4_v2.png": {
+      "sha256": "8396af59fe1744a8ed17aaf53e48d7fbf145d0da368505ed87f5c15e0c378f8f",
+      "bytes": 111747
+     },
+     "fig_mixed_d0.01_rep-s4-n4-mixed-t4000-c1_summary_v2.png": {
+      "sha256": "fe99fcb4e2ba6fdecfdb6c76f921cbed7ba6537ac9d5cc7dd38e85656a990eee",
+      "bytes": 140568
+     },
+     "fig_mixed_d0.01_rep-s4-n4-mixed-t4000-c1_birth_matrix_v2.png": {
+      "sha256": "4073dfffd9163b27709b5f108d7945bae333aa8a1c63ed112cf3c447b92926e0",
+      "bytes": 39500
+     },
+     "stage4_log_n4_mixed_t4000_control_v1.txt": {
+      "sha256": "180c43132b04e26a109094851c19fd1926bcd2430d2cf1f0489f20620b5860ee",
+      "bytes": 5110
+     }
+    }
+   },
+   "finished_at": "2026-08-10T16:00:37.735770+09:00",
+   "validated_at": "2026-08-10T16:49:55.617004+09:00"
+  },
+  "n4_neutral_t4000_control": {
+   "status": "validated_existing",
+   "started_at": "2026-08-10T16:00:38.042263+09:00",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "neutral",
+    "4",
+    "4",
+    "4000",
+    "0.01",
+    "s4-n4-neutral-t4000-c1"
+   ],
+   "command_display": "'/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3' -u '/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py' neutral 4 4 4000 0.01 s4-n4-neutral-t4000-c1",
+   "log": "stage4_log_n4_neutral_t4000_control_v1.txt",
+   "capacity_gate_before": {
+    "spec_estimates": [
+     {
+      "run_id": "n4_neutral_t4000_control",
+      "raw_npz_arrays_bytes": 4419000,
+      "estimated_compressed_npz_bytes": 1726081,
+      "reference_compression_ratio": 0.3906042451935103,
+      "estimated_all_output_bytes": 14308993,
+      "estimated_peak_ram_bytes": 1109093824,
+      "estimated_runtime_sec": 25.291650749388197,
+      "conservative_notes": [
+       "compressed estimate includes 25% schema margin",
+       "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+       "N4 estimate intentionally uses N12 reference and is conservative"
+      ]
+     }
+    ],
+    "remaining_run_count": 1,
+    "estimated_remaining_output_bytes": 14308993,
+    "estimated_peak_ram_bytes": 1109093824,
+    "disk_free_bytes": 201576464384,
+    "disk_required_bytes": 2190410627,
+    "disk_safety_factor": 3.0,
+    "disk_headroom_bytes": 2147483648,
+    "physical_memory_bytes": 25769803776,
+    "available_memory_bytes": 7999275008,
+    "ram_available_safety_factor": 1.25,
+    "ram_physical_safety_factor": 1.5,
+    "disk_gate_pass": true,
+    "physical_ram_gate_pass": true,
+    "available_ram_gate_pass": true,
+    "gate_pass": true,
+    "estimated_runtime_sec": 25.291650749388197
+   },
+   "source_sha256_before": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_before": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "returncode": 0,
+   "runtime_sec": 25.455913305282593,
+   "source_sha256_after": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_after": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "validation": {
+    "json": {
+     "env_fixed": true,
+     "built_N": 4,
+     "failed_N": []
+    },
+    "npz": {
+     "arrays": 99,
+     "time_steps": 4000,
+     "ledger_snapshots": 81
+    },
+    "existing_T4000_exact_control": {
+     "reference": "nsweep_neutral_N4_v2.npz",
+     "candidate": "nsweep_neutral_d0.01_rep-s4-n4-neutral-t4000-c1_N4_v2.npz",
+     "prefix": false,
+     "reference_steps": 4000,
+     "arrays_checked": 67,
+     "array_classes": {
+      "time_series": 67,
+      "ledger": 0,
+      "static": 0
+     },
+     "byte_exact": true,
+     "max_abs_difference": 0.0
+    },
+    "internal_vacuum_exact": {
+     "reference": "nsweep_vacuum_N4_v2.npz",
+     "candidate": "nsweep_neutral_d0.01_rep-s4-n4-neutral-t4000-c1_N4_v2.npz",
+     "prefix": false,
+     "reference_steps": 4000,
+     "arrays_checked": 26,
+     "array_classes": {
+      "time_series": 26,
+      "ledger": 0,
+      "static": 0
+     },
+     "byte_exact": true,
+     "max_abs_difference": 0.0
+    },
+    "artifact_hashes": {
+     "result_nsweep_neutral_d0.01_rep-s4-n4-neutral-t4000-c1_v2.json": {
+      "sha256": "eab01b54fb6dacfc1cb895c9fea5c5090c23a88d0ee3f5780dfc7baaf2fc65c8",
+      "bytes": 8940
+     },
+     "nsweep_neutral_d0.01_rep-s4-n4-neutral-t4000-c1_N4_v2.npz": {
+      "sha256": "21e560b94031f5d99a7e09702f6fd65458c19f9f1050e66c157a19efc930c369",
+      "bytes": 1604740
+     },
+     "fig_neutral_d0.01_rep-s4-n4-neutral-t4000-c1_4panel_N4_v2.png": {
+      "sha256": "781ee5cdabe3370f42693aa317190d05cf475ac1bc5840c5b71dcc68701104d4",
+      "bytes": 153259
+     },
+     "fig_neutral_d0.01_rep-s4-n4-neutral-t4000-c1_mix_N4_v2.png": {
+      "sha256": "4d90d5d6813cca3b010cf77656f0ffe525f4af819f3e234d0d819df77989b2de",
+      "bytes": 111515
+     },
+     "fig_neutral_d0.01_rep-s4-n4-neutral-t4000-c1_ledger_N4_v2.png": {
+      "sha256": "2631aed9bcf7da582e4501b479907fcb4302516a215475ace56ebb87b9e50023",
+      "bytes": 80825
+     },
+     "fig_neutral_d0.01_rep-s4-n4-neutral-t4000-c1_summary_v2.png": {
+      "sha256": "95bec42cbefbb1389aea74486cb006d74e2a17219f549be2a893a983b4e10f92",
+      "bytes": 140990
+     },
+     "fig_neutral_d0.01_rep-s4-n4-neutral-t4000-c1_birth_matrix_v2.png": {
+      "sha256": "43f466d4d8dcdfc975abf65494609ba3237dfe99dfe1358cdd6568067216a338",
+      "bytes": 39679
+     },
+     "stage4_log_n4_neutral_t4000_control_v1.txt": {
+      "sha256": "27c798ecb8e8a9716391a2641ff3403181003ef76734bfc7fad8c5978a0b7054",
+      "bytes": 4888
+     }
+    }
+   },
+   "finished_at": "2026-08-10T16:01:03.602348+09:00",
+   "validated_at": "2026-08-10T16:49:55.662783+09:00"
+  },
+  "n4_electron_t4000_control": {
+   "status": "validated_existing",
+   "started_at": "2026-08-10T16:01:03.829535+09:00",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "electron",
+    "4",
+    "4",
+    "4000",
+    "0.01",
+    "s4-n4-electron-t4000-c1"
+   ],
+   "command_display": "'/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3' -u '/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py' electron 4 4 4000 0.01 s4-n4-electron-t4000-c1",
+   "log": "stage4_log_n4_electron_t4000_control_v1.txt",
+   "capacity_gate_before": {
+    "spec_estimates": [
+     {
+      "run_id": "n4_electron_t4000_control",
+      "raw_npz_arrays_bytes": 5059050,
+      "estimated_compressed_npz_bytes": 1886208,
+      "reference_compression_ratio": 0.3728382790421293,
+      "estimated_all_output_bytes": 14469120,
+      "estimated_peak_ram_bytes": 1114214224,
+      "estimated_runtime_sec": 35.61116027832031,
+      "conservative_notes": [
+       "compressed estimate includes 25% schema margin",
+       "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+       "N4 estimate intentionally uses N12 reference and is conservative"
+      ]
+     }
+    ],
+    "remaining_run_count": 1,
+    "estimated_remaining_output_bytes": 14469120,
+    "estimated_peak_ram_bytes": 1114214224,
+    "disk_free_bytes": 201582682112,
+    "disk_required_bytes": 2190891008,
+    "disk_safety_factor": 3.0,
+    "disk_headroom_bytes": 2147483648,
+    "physical_memory_bytes": 25769803776,
+    "available_memory_bytes": 7984529408,
+    "ram_available_safety_factor": 1.25,
+    "ram_physical_safety_factor": 1.5,
+    "disk_gate_pass": true,
+    "physical_ram_gate_pass": true,
+    "available_ram_gate_pass": true,
+    "gate_pass": true,
+    "estimated_runtime_sec": 35.61116027832031
+   },
+   "source_sha256_before": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_before": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "returncode": 0,
+   "runtime_sec": 34.70396590232849,
+   "source_sha256_after": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_after": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "validation": {
+    "json": {
+     "env_fixed": true,
+     "built_N": 4,
+     "failed_N": []
+    },
+    "npz": {
+     "arrays": 99,
+     "time_steps": 4000,
+     "ledger_snapshots": 81
+    },
+    "existing_T4000_exact_control": {
+     "reference": "nsweep_electron_N4_v2.npz",
+     "candidate": "nsweep_electron_d0.01_rep-s4-n4-electron-t4000-c1_N4_v2.npz",
+     "prefix": false,
+     "reference_steps": 4000,
+     "arrays_checked": 67,
+     "array_classes": {
+      "time_series": 67,
+      "ledger": 0,
+      "static": 0
+     },
+     "byte_exact": true,
+     "max_abs_difference": 0.0
+    },
+    "internal_vacuum_exact": {
+     "reference": "nsweep_vacuum_N4_v2.npz",
+     "candidate": "nsweep_electron_d0.01_rep-s4-n4-electron-t4000-c1_N4_v2.npz",
+     "prefix": false,
+     "reference_steps": 4000,
+     "arrays_checked": 26,
+     "array_classes": {
+      "time_series": 26,
+      "ledger": 0,
+      "static": 0
+     },
+     "byte_exact": true,
+     "max_abs_difference": 0.0
+    },
+    "artifact_hashes": {
+     "result_nsweep_electron_d0.01_rep-s4-n4-electron-t4000-c1_v2.json": {
+      "sha256": "3c6563d6e730d83b2e7bda1ca07fe7db8e974f06f0a98f479781f9baefdefee5",
+      "bytes": 9789
+     },
+     "nsweep_electron_d0.01_rep-s4-n4-electron-t4000-c1_N4_v2.npz": {
+      "sha256": "4cefeac0098c37d5d40ff97939c1b8d9e69b0ac25011cef74eaeca9c12ca57e8",
+      "bytes": 1669046
+     },
+     "fig_electron_d0.01_rep-s4-n4-electron-t4000-c1_4panel_N4_v2.png": {
+      "sha256": "7598c6c3b2f77400a2cd1efa74e53f8cd306c18db516f9a34ac5f33d2f73c811",
+      "bytes": 155521
+     },
+     "fig_electron_d0.01_rep-s4-n4-electron-t4000-c1_mix_N4_v2.png": {
+      "sha256": "f4d07e16bd6a9916ba9dc37a134c3958c4f295166ba4a402089a97151074f692",
+      "bytes": 111806
+     },
+     "fig_electron_d0.01_rep-s4-n4-electron-t4000-c1_ledger_N4_v2.png": {
+      "sha256": "aca6117e144b65c9b5e39f62d8f10d2381aa02f05f21da677da972b346114503",
+      "bytes": 81175
+     },
+     "fig_electron_d0.01_rep-s4-n4-electron-t4000-c1_summary_v2.png": {
+      "sha256": "099fa2e951e44dc1a45a4e966bb90cf7492c88c2c8c71b453612506051979018",
+      "bytes": 140795
+     },
+     "fig_electron_d0.01_rep-s4-n4-electron-t4000-c1_birth_matrix_v2.png": {
+      "sha256": "43f466d4d8dcdfc975abf65494609ba3237dfe99dfe1358cdd6568067216a338",
+      "bytes": 39679
+     },
+     "stage4_log_n4_electron_t4000_control_v1.txt": {
+      "sha256": "85dc331fd751f85b744de7a268f1d462b9825cf872df6ac7b8222d9c5f2ae8db",
+      "bytes": 4890
+     }
+    }
+   },
+   "finished_at": "2026-08-10T16:01:38.641844+09:00",
+   "validated_at": "2026-08-10T16:49:55.730898+09:00"
+  },
+  "n4_f5_t4000_control": {
+   "status": "validated_existing",
+   "started_at": "2026-08-10T16:01:38.982040+09:00",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "fermion_family",
+    "4",
+    "4",
+    "4000",
+    "0.01",
+    "s4-n4-f5-t4000-c1"
+   ],
+   "command_display": "'/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3' -u '/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py' fermion_family 4 4 4000 0.01 s4-n4-f5-t4000-c1",
+   "log": "stage4_log_n4_f5_t4000_control_v1.txt",
+   "capacity_gate_before": {
+    "spec_estimates": [
+     {
+      "run_id": "n4_f5_t4000_control",
+      "raw_npz_arrays_bytes": 5379330,
+      "estimated_compressed_npz_bytes": 2210816,
+      "reference_compression_ratio": 0.4109834659844021,
+      "estimated_all_output_bytes": 14793728,
+      "estimated_peak_ram_bytes": 1116776464,
+      "estimated_runtime_sec": 44.766090393066406,
+      "conservative_notes": [
+       "compressed estimate includes 25% schema margin",
+       "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+       "N4 estimate intentionally uses N12 reference and is conservative"
+      ]
+     }
+    ],
+    "remaining_run_count": 1,
+    "estimated_remaining_output_bytes": 14793728,
+    "estimated_peak_ram_bytes": 1116776464,
+    "disk_free_bytes": 201572708352,
+    "disk_required_bytes": 2191864832,
+    "disk_safety_factor": 3.0,
+    "disk_headroom_bytes": 2147483648,
+    "physical_memory_bytes": 25769803776,
+    "available_memory_bytes": 7948746752,
+    "ram_available_safety_factor": 1.25,
+    "ram_physical_safety_factor": 1.5,
+    "disk_gate_pass": true,
+    "physical_ram_gate_pass": true,
+    "available_ram_gate_pass": true,
+    "gate_pass": true,
+    "estimated_runtime_sec": 44.766090393066406
+   },
+   "source_sha256_before": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_before": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "returncode": 0,
+   "runtime_sec": 51.72144293785095,
+   "source_sha256_after": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_after": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "validation": {
+    "json": {
+     "env_fixed": true,
+     "built_N": 4,
+     "failed_N": []
+    },
+    "npz": {
+     "arrays": 99,
+     "time_steps": 4000,
+     "ledger_snapshots": 81
+    },
+    "new_T4000_control": {
+     "mode": "fermion_family",
+     "independent_existing_reference": null,
+     "baseline_for_N4_T42000": true
+    },
+    "internal_vacuum_exact": {
+     "reference": "nsweep_vacuum_N4_v2.npz",
+     "candidate": "nsweep_fermion_family_d0.01_rep-s4-n4-f5-t4000-c1_N4_v2.npz",
+     "prefix": false,
+     "reference_steps": 4000,
+     "arrays_checked": 26,
+     "array_classes": {
+      "time_series": 26,
+      "ledger": 0,
+      "static": 0
+     },
+     "byte_exact": true,
+     "max_abs_difference": 0.0
+    },
+    "artifact_hashes": {
+     "result_nsweep_fermion_family_d0.01_rep-s4-n4-f5-t4000-c1_v2.json": {
+      "sha256": "4ddfe81b6a4aa8d7ab8f7f326755d88bd9288c9377ae6f399734c4f658a7f531",
+      "bytes": 12198
+     },
+     "nsweep_fermion_family_d0.01_rep-s4-n4-f5-t4000-c1_N4_v2.npz": {
+      "sha256": "2960d707e66ae9361981244cc479c00406b8ac1f0fc39cb605a91adbbfe4a5b3",
+      "bytes": 1959833
+     },
+     "fig_fermion_family_d0.01_rep-s4-n4-f5-t4000-c1_4panel_N4_v2.png": {
+      "sha256": "0a5f257bcd2e00d83850d607b185a92f075577cc4e5ffbf622a60b62d795dd4b",
+      "bytes": 172223
+     },
+     "fig_fermion_family_d0.01_rep-s4-n4-f5-t4000-c1_mix_N4_v2.png": {
+      "sha256": "0228e10695ead469e8df9ff10e4e99d0f90692fd76584e51e1c45c67625e735e",
+      "bytes": 133779
+     },
+     "fig_fermion_family_d0.01_rep-s4-n4-f5-t4000-c1_ledger_N4_v2.png": {
+      "sha256": "66123ac12e0bed6108c2f8189ea072d99610da1be8bff5cfb6678ad6b13dde42",
+      "bytes": 100734
+     },
+     "fig_fermion_family_d0.01_rep-s4-n4-f5-t4000-c1_summary_v2.png": {
+      "sha256": "321b6c0d0992bb144a9f88c1d8d6e888ecbb15d670481eec5f930570e90a4325",
+      "bytes": 146999
+     },
+     "fig_fermion_family_d0.01_rep-s4-n4-f5-t4000-c1_birth_matrix_v2.png": {
+      "sha256": "4073dfffd9163b27709b5f108d7945bae333aa8a1c63ed112cf3c447b92926e0",
+      "bytes": 39500
+     },
+     "stage4_log_n4_f5_t4000_control_v1.txt": {
+      "sha256": "743173c6448db1dacf299560292024beb8248a806204ff1d957efea6043a70e8",
+      "bytes": 4980
+     }
+    }
+   },
+   "finished_at": "2026-08-10T16:02:30.801766+09:00",
+   "validated_at": "2026-08-10T16:49:55.744815+09:00"
+  },
+  "n4_mixed_t42000_long": {
+   "status": "validated_existing",
+   "started_at": "2026-08-10T16:02:31.254662+09:00",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "mixed",
+    "4",
+    "4",
+    "42000",
+    "0.01",
+    "s4-n4-mixed-t42000-l1"
+   ],
+   "command_display": "'/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3' -u '/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py' mixed 4 4 42000 0.01 s4-n4-mixed-t42000-l1",
+   "log": "stage4_log_n4_mixed_t42000_long_v1.txt",
+   "capacity_gate_before": {
+    "spec_estimates": [
+     {
+      "run_id": "n4_mixed_t42000_long",
+      "raw_npz_arrays_bytes": 52254940,
+      "estimated_compressed_npz_bytes": 22227875,
+      "reference_compression_ratio": 0.4253736584521961,
+      "estimated_all_output_bytes": 34810787,
+      "estimated_peak_ram_bytes": 1491781344,
+      "estimated_runtime_sec": 409.6339678764343,
+      "conservative_notes": [
+       "compressed estimate includes 25% schema margin",
+       "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+       "N4 estimate intentionally uses N12 reference and is conservative"
+      ]
+     }
+    ],
+    "remaining_run_count": 1,
+    "estimated_remaining_output_bytes": 34810787,
+    "estimated_peak_ram_bytes": 1491781344,
+    "disk_free_bytes": 201579147264,
+    "disk_required_bytes": 2251916009,
+    "disk_safety_factor": 3.0,
+    "disk_headroom_bytes": 2147483648,
+    "physical_memory_bytes": 25769803776,
+    "available_memory_bytes": 7982022656,
+    "ram_available_safety_factor": 1.25,
+    "ram_physical_safety_factor": 1.5,
+    "disk_gate_pass": true,
+    "physical_ram_gate_pass": true,
+    "available_ram_gate_pass": true,
+    "gate_pass": true,
+    "estimated_runtime_sec": 409.6339678764343
+   },
+   "source_sha256_before": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_before": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "returncode": 0,
+   "runtime_sec": 843.4803969860077,
+   "source_sha256_after": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_after": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "validation": {
+    "json": {
+     "env_fixed": true,
+     "built_N": 4,
+     "failed_N": []
+    },
+    "npz": {
+     "arrays": 99,
+     "time_steps": 42000,
+     "ledger_snapshots": 841
+    },
+    "first4000_vs_stage_control": {
+     "reference": "nsweep_mixed_d0.01_rep-s4-n4-mixed-t4000-c1_N4_v2.npz",
+     "candidate": "nsweep_mixed_T42000_d0.01_rep-s4-n4-mixed-t42000-l1_N4_v2.npz",
+     "prefix": true,
+     "reference_steps": 4000,
+     "arrays_checked": 99,
+     "array_classes": {
+      "time_series": 91,
+      "ledger": 4,
+      "static": 4
+     },
+     "byte_exact": true,
+     "max_abs_difference": 0.0
+    },
+    "artifact_hashes": {
+     "result_nsweep_mixed_T42000_d0.01_rep-s4-n4-mixed-t42000-l1_v2.json": {
+      "sha256": "a47ed06876a006c1a2ff996df23b1e01456ceae33189c493dece074f316dd27e",
+      "bytes": 12943
+     },
+     "nsweep_mixed_T42000_d0.01_rep-s4-n4-mixed-t42000-l1_N4_v2.npz": {
+      "sha256": "57f76feb854919ff2a7b1e7b2253cdfb320e875d5b15d96cd2a14ea679c2b750",
+      "bytes": 22076652
+     },
+     "fig_mixed_T42000_d0.01_rep-s4-n4-mixed-t42000-l1_4panel_N4_v2.png": {
+      "sha256": "1918b7e96a9a9b12becf04e9b8ea8ced3885d2295b1cba2e13ca0c0c1062c4c9",
+      "bytes": 195967
+     },
+     "fig_mixed_T42000_d0.01_rep-s4-n4-mixed-t42000-l1_mix_N4_v2.png": {
+      "sha256": "c7ddbab34692258979a682bb255a55a135f9447f5fd6754086f197a55be22ad1",
+      "bytes": 173593
+     },
+     "fig_mixed_T42000_d0.01_rep-s4-n4-mixed-t42000-l1_ledger_N4_v2.png": {
+      "sha256": "8eb4bbc5410bbcbeb36d5b0d0ab13a8b07448d878332d51307e399cabcb10159",
+      "bytes": 134526
+     },
+     "fig_mixed_T42000_d0.01_rep-s4-n4-mixed-t42000-l1_summary_v2.png": {
+      "sha256": "36fb5b933c6635feadb337ac0a39890c14ada0e2407397835332a681d7dbf519",
+      "bytes": 150536
+     },
+     "fig_mixed_T42000_d0.01_rep-s4-n4-mixed-t42000-l1_birth_matrix_v2.png": {
+      "sha256": "4073dfffd9163b27709b5f108d7945bae333aa8a1c63ed112cf3c447b92926e0",
+      "bytes": 39500
+     },
+     "stage4_log_n4_mixed_t42000_long_v1.txt": {
+      "sha256": "140ee4caf87dffd63fc3ee28704fb8f8cfb0bd9d994127187d5cc6adf59bff9b",
+      "bytes": 5053
+     }
+    }
+   },
+   "finished_at": "2026-08-10T16:16:34.946383+09:00",
+   "validated_at": "2026-08-10T16:49:55.889441+09:00"
+  },
+  "n4_neutral_t42000_long": {
+   "status": "validated_existing",
+   "started_at": "2026-08-10T16:16:35.220124+09:00",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "neutral",
+    "4",
+    "4",
+    "42000",
+    "0.01",
+    "s4-n4-neutral-t42000-l1"
+   ],
+   "command_display": "'/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3' -u '/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py' neutral 4 4 42000 0.01 s4-n4-neutral-t42000-l1",
+   "log": "stage4_log_n4_neutral_t42000_long_v1.txt",
+   "capacity_gate_before": {
+    "spec_estimates": [
+     {
+      "run_id": "n4_neutral_t42000_long",
+      "raw_npz_arrays_bytes": 46374800,
+      "estimated_compressed_npz_bytes": 18114194,
+      "reference_compression_ratio": 0.3906042451935103,
+      "estimated_all_output_bytes": 30697106,
+      "estimated_peak_ram_bytes": 1444740224,
+      "estimated_runtime_sec": 265.56233286857605,
+      "conservative_notes": [
+       "compressed estimate includes 25% schema margin",
+       "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+       "N4 estimate intentionally uses N12 reference and is conservative"
+      ]
+     }
+    ],
+    "remaining_run_count": 1,
+    "estimated_remaining_output_bytes": 30697106,
+    "estimated_peak_ram_bytes": 1444740224,
+    "disk_free_bytes": 201501306880,
+    "disk_required_bytes": 2239574966,
+    "disk_safety_factor": 3.0,
+    "disk_headroom_bytes": 2147483648,
+    "physical_memory_bytes": 25769803776,
+    "available_memory_bytes": 7950237696,
+    "ram_available_safety_factor": 1.25,
+    "ram_physical_safety_factor": 1.5,
+    "disk_gate_pass": true,
+    "physical_ram_gate_pass": true,
+    "available_ram_gate_pass": true,
+    "gate_pass": true,
+    "estimated_runtime_sec": 265.56233286857605
+   },
+   "source_sha256_before": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_before": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "returncode": 0,
+   "runtime_sec": 479.67993998527527,
+   "source_sha256_after": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_after": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "validation": {
+    "json": {
+     "env_fixed": true,
+     "built_N": 4,
+     "failed_N": []
+    },
+    "npz": {
+     "arrays": 99,
+     "time_steps": 42000,
+     "ledger_snapshots": 841
+    },
+    "first4000_vs_stage_control": {
+     "reference": "nsweep_neutral_d0.01_rep-s4-n4-neutral-t4000-c1_N4_v2.npz",
+     "candidate": "nsweep_neutral_T42000_d0.01_rep-s4-n4-neutral-t42000-l1_N4_v2.npz",
+     "prefix": true,
+     "reference_steps": 4000,
+     "arrays_checked": 99,
+     "array_classes": {
+      "time_series": 91,
+      "ledger": 4,
+      "static": 4
+     },
+     "byte_exact": true,
+     "max_abs_difference": 0.0
+    },
+    "artifact_hashes": {
+     "result_nsweep_neutral_T42000_d0.01_rep-s4-n4-neutral-t42000-l1_v2.json": {
+      "sha256": "e1d8dc7580ba5309d623b4544bba1cd621dca0ae6ea30f25fe1c9dfb747cd3f5",
+      "bytes": 8807
+     },
+     "nsweep_neutral_T42000_d0.01_rep-s4-n4-neutral-t42000-l1_N4_v2.npz": {
+      "sha256": "c92642cca2033d1276a03a697510980c51f1ea9170b8b866905393ed69971077",
+      "bytes": 17896092
+     },
+     "fig_neutral_T42000_d0.01_rep-s4-n4-neutral-t42000-l1_4panel_N4_v2.png": {
+      "sha256": "74351a5436b23bf692fb46ac9c247c77ef349f8143ffb8525f5155365dd6fbe6",
+      "bytes": 182907
+     },
+     "fig_neutral_T42000_d0.01_rep-s4-n4-neutral-t42000-l1_mix_N4_v2.png": {
+      "sha256": "bd725fb64637150f88fc6980cea3533878433c957d7335573348eccc9adca998",
+      "bytes": 183459
+     },
+     "fig_neutral_T42000_d0.01_rep-s4-n4-neutral-t42000-l1_ledger_N4_v2.png": {
+      "sha256": "5a07bde4c52ed43d6858eadfa1ed6f7def4db9c74e9117072ef2e225d8efad31",
+      "bytes": 94394
+     },
+     "fig_neutral_T42000_d0.01_rep-s4-n4-neutral-t42000-l1_summary_v2.png": {
+      "sha256": "2a038fc0d323ca2c2c9e5ba12962cc30ce26b9564b292cc751e1f3ba24c44822",
+      "bytes": 149816
+     },
+     "fig_neutral_T42000_d0.01_rep-s4-n4-neutral-t42000-l1_birth_matrix_v2.png": {
+      "sha256": "4073dfffd9163b27709b5f108d7945bae333aa8a1c63ed112cf3c447b92926e0",
+      "bytes": 39500
+     },
+     "stage4_log_n4_neutral_t42000_long_v1.txt": {
+      "sha256": "11da533713177188730e7375ec5924fa2218a4e1852bcbbf897833b7b5a5d31f",
+      "bytes": 4886
+     }
+    }
+   },
+   "finished_at": "2026-08-10T16:24:35.098163+09:00",
+   "validated_at": "2026-08-10T16:49:56.011267+09:00"
+  },
+  "n4_electron_t42000_long": {
+   "status": "validated_existing",
+   "started_at": "2026-08-10T16:24:35.369823+09:00",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "electron",
+    "4",
+    "4",
+    "42000",
+    "0.01",
+    "s4-n4-electron-t42000-l1"
+   ],
+   "command_display": "'/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3' -u '/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py' electron 4 4 42000 0.01 s4-n4-electron-t42000-l1",
+   "log": "stage4_log_n4_electron_t42000_long_v1.txt",
+   "capacity_gate_before": {
+    "spec_estimates": [
+     {
+      "run_id": "n4_electron_t42000_long",
+      "raw_npz_arrays_bytes": 53094850,
+      "estimated_compressed_npz_bytes": 19795793,
+      "reference_compression_ratio": 0.3728382790421293,
+      "estimated_all_output_bytes": 32378705,
+      "estimated_peak_ram_bytes": 1498500624,
+      "estimated_runtime_sec": 373.9171829223633,
+      "conservative_notes": [
+       "compressed estimate includes 25% schema margin",
+       "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+       "N4 estimate intentionally uses N12 reference and is conservative"
+      ]
+     }
+    ],
+    "remaining_run_count": 1,
+    "estimated_remaining_output_bytes": 32378705,
+    "estimated_peak_ram_bytes": 1498500624,
+    "disk_free_bytes": 201475518464,
+    "disk_required_bytes": 2244619763,
+    "disk_safety_factor": 3.0,
+    "disk_headroom_bytes": 2147483648,
+    "physical_memory_bytes": 25769803776,
+    "available_memory_bytes": 8045346816,
+    "ram_available_safety_factor": 1.25,
+    "ram_physical_safety_factor": 1.5,
+    "disk_gate_pass": true,
+    "physical_ram_gate_pass": true,
+    "available_ram_gate_pass": true,
+    "gate_pass": true,
+    "estimated_runtime_sec": 373.9171829223633
+   },
+   "source_sha256_before": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_before": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "returncode": 0,
+   "runtime_sec": 672.1445770263672,
+   "source_sha256_after": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_after": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "validation": {
+    "json": {
+     "env_fixed": true,
+     "built_N": 4,
+     "failed_N": []
+    },
+    "npz": {
+     "arrays": 99,
+     "time_steps": 42000,
+     "ledger_snapshots": 841
+    },
+    "first4000_vs_stage_control": {
+     "reference": "nsweep_electron_d0.01_rep-s4-n4-electron-t4000-c1_N4_v2.npz",
+     "candidate": "nsweep_electron_T42000_d0.01_rep-s4-n4-electron-t42000-l1_N4_v2.npz",
+     "prefix": true,
+     "reference_steps": 4000,
+     "arrays_checked": 99,
+     "array_classes": {
+      "time_series": 91,
+      "ledger": 4,
+      "static": 4
+     },
+     "byte_exact": true,
+     "max_abs_difference": 0.0
+    },
+    "artifact_hashes": {
+     "result_nsweep_electron_T42000_d0.01_rep-s4-n4-electron-t42000-l1_v2.json": {
+      "sha256": "f7a57b029447556ee5cfe3cfa9efe553260e06e1051214c4cfa70b59db9d0f39",
+      "bytes": 9744
+     },
+     "nsweep_electron_T42000_d0.01_rep-s4-n4-electron-t42000-l1_N4_v2.npz": {
+      "sha256": "71dde3cde958d41fcceb4f8658a6a549c77c3e176711ece6fc041966825b3817",
+      "bytes": 18572482
+     },
+     "fig_electron_T42000_d0.01_rep-s4-n4-electron-t42000-l1_4panel_N4_v2.png": {
+      "sha256": "4ba30341efaf24cac88c901683ba48ee9fe115c0db8c1d3bdffee49d9efe8f9e",
+      "bytes": 178777
+     },
+     "fig_electron_T42000_d0.01_rep-s4-n4-electron-t42000-l1_mix_N4_v2.png": {
+      "sha256": "d54bd2bad384a850c0eae8029aa4ff4de9fac6e7189465c6757f389de133da1b",
+      "bytes": 167610
+     },
+     "fig_electron_T42000_d0.01_rep-s4-n4-electron-t42000-l1_ledger_N4_v2.png": {
+      "sha256": "146bc6d0bd39ea4a03deabbc0e0b96038cc546ca029dce6edc76104f2a5409b6",
+      "bytes": 95330
+     },
+     "fig_electron_T42000_d0.01_rep-s4-n4-electron-t42000-l1_summary_v2.png": {
+      "sha256": "ba0338375ac2b0a3e0e2d5eb9b3be353966f061ee3d7fb16e0b1d62fbc34f6dc",
+      "bytes": 147131
+     },
+     "fig_electron_T42000_d0.01_rep-s4-n4-electron-t42000-l1_birth_matrix_v2.png": {
+      "sha256": "4073dfffd9163b27709b5f108d7945bae333aa8a1c63ed112cf3c447b92926e0",
+      "bytes": 39500
+     },
+     "stage4_log_n4_electron_t42000_long_v1.txt": {
+      "sha256": "eaa5c1de0cb7dfca498ad82c3c0c95925a4a603034b665a76714669a6bc5c18a",
+      "bytes": 4889
+     }
+    }
+   },
+   "finished_at": "2026-08-10T16:35:47.705808+09:00",
+   "validated_at": "2026-08-10T16:49:56.134152+09:00"
+  },
+  "n4_f5_t42000_long": {
+   "status": "validated_existing",
+   "started_at": "2026-08-10T16:35:47.975675+09:00",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "fermion_family",
+    "4",
+    "4",
+    "42000",
+    "0.01",
+    "s4-n4-f5-t42000-l1"
+   ],
+   "command_display": "'/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3' -u '/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py' fermion_family 4 4 42000 0.01 s4-n4-f5-t42000-l1",
+   "log": "stage4_log_n4_f5_t42000_long_v1.txt",
+   "capacity_gate_before": {
+    "spec_estimates": [
+     {
+      "run_id": "n4_f5_t42000_long",
+      "raw_npz_arrays_bytes": 56455130,
+      "estimated_compressed_npz_bytes": 23202125,
+      "reference_compression_ratio": 0.4109834659844021,
+      "estimated_all_output_bytes": 35785037,
+      "estimated_peak_ram_bytes": 1525382864,
+      "estimated_runtime_sec": 470.04394912719727,
+      "conservative_notes": [
+       "compressed estimate includes 25% schema margin",
+       "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+       "N4 estimate intentionally uses N12 reference and is conservative"
+      ]
+     }
+    ],
+    "remaining_run_count": 1,
+    "estimated_remaining_output_bytes": 35785037,
+    "estimated_peak_ram_bytes": 1525382864,
+    "disk_free_bytes": 201437585408,
+    "disk_required_bytes": 2254838759,
+    "disk_safety_factor": 3.0,
+    "disk_headroom_bytes": 2147483648,
+    "physical_memory_bytes": 25769803776,
+    "available_memory_bytes": 8071626752,
+    "ram_available_safety_factor": 1.25,
+    "ram_physical_safety_factor": 1.5,
+    "disk_gate_pass": true,
+    "physical_ram_gate_pass": true,
+    "available_ram_gate_pass": true,
+    "gate_pass": true,
+    "estimated_runtime_sec": 470.04394912719727
+   },
+   "source_sha256_before": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_before": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "returncode": 0,
+   "runtime_sec": 847.3782351016998,
+   "source_sha256_after": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_after": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "validation": {
+    "json": {
+     "env_fixed": true,
+     "built_N": 4,
+     "failed_N": []
+    },
+    "npz": {
+     "arrays": 99,
+     "time_steps": 42000,
+     "ledger_snapshots": 841
+    },
+    "first4000_vs_stage_control": {
+     "reference": "nsweep_fermion_family_d0.01_rep-s4-n4-f5-t4000-c1_N4_v2.npz",
+     "candidate": "nsweep_fermion_family_T42000_d0.01_rep-s4-n4-f5-t42000-l1_N4_v2.npz",
+     "prefix": true,
+     "reference_steps": 4000,
+     "arrays_checked": 99,
+     "array_classes": {
+      "time_series": 91,
+      "ledger": 4,
+      "static": 4
+     },
+     "byte_exact": true,
+     "max_abs_difference": 0.0
+    },
+    "artifact_hashes": {
+     "result_nsweep_fermion_family_T42000_d0.01_rep-s4-n4-f5-t42000-l1_v2.json": {
+      "sha256": "a9217025e9f4ce44208101868c3c8f4cb0aa70dcb3e5c1ea154d8e2c545d54ba",
+      "bytes": 11994
+     },
+     "nsweep_fermion_family_T42000_d0.01_rep-s4-n4-f5-t42000-l1_N4_v2.npz": {
+      "sha256": "5b5d90f4c9096e5e9e54fc2ab0262d5f5e75cd1168ac2f640dffb9fcf2cfa821",
+      "bytes": 21187907
+     },
+     "fig_fermion_family_T42000_d0.01_rep-s4-n4-f5-t42000-l1_4panel_N4_v2.png": {
+      "sha256": "001c13416f142efc602bd1ef7c33d893651f7ed278b30df8476aa60ca8cf6cd9",
+      "bytes": 197086
+     },
+     "fig_fermion_family_T42000_d0.01_rep-s4-n4-f5-t42000-l1_mix_N4_v2.png": {
+      "sha256": "117b76fa05c2fee3c19c2c0945b484c61b15cd1f5f20bd322433983e4737d09c",
+      "bytes": 189294
+     },
+     "fig_fermion_family_T42000_d0.01_rep-s4-n4-f5-t42000-l1_ledger_N4_v2.png": {
+      "sha256": "d9455148ab6920003958e50236ca7b26a3c02e865f93d8a279555774e5cfa3e1",
+      "bytes": 129736
+     },
+     "fig_fermion_family_T42000_d0.01_rep-s4-n4-f5-t42000-l1_summary_v2.png": {
+      "sha256": "475c10a6863e6609e40eaa3ca5db02a782f32d1f33433b939e4fa291ac82cd5d",
+      "bytes": 154479
+     },
+     "fig_fermion_family_T42000_d0.01_rep-s4-n4-f5-t42000-l1_birth_matrix_v2.png": {
+      "sha256": "4073dfffd9163b27709b5f108d7945bae333aa8a1c63ed112cf3c447b92926e0",
+      "bytes": 39500
+     },
+     "stage4_log_n4_f5_t42000_long_v1.txt": {
+      "sha256": "73eebafcb26353992ceadc806c46aa5b163b5b3cfc777ed4b9aa358929a31bf7",
+      "bytes": 4987
+     }
+    }
+   },
+   "finished_at": "2026-08-10T16:49:55.542829+09:00",
+   "validated_at": "2026-08-10T16:49:56.261526+09:00"
+  },
+  "n12_neutral_t300000_long": {
+   "status": "completed",
+   "started_at": "2026-08-10T16:49:56.453862+09:00",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "neutral",
+    "12",
+    "12",
+    "300000",
+    "0.01",
+    "s4-n12-neutral-t300000-l1"
+   ],
+   "command_display": "'/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3' -u '/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py' neutral 12 12 300000 0.01 s4-n12-neutral-t300000-l1",
+   "log": "stage4_log_n12_neutral_t300000_long_v1.txt",
+   "capacity_gate_before": {
+    "spec_estimates": [
+     {
+      "run_id": "n12_neutral_t300000_long",
+      "raw_npz_arrays_bytes": 331232600,
+      "estimated_compressed_npz_bytes": 129380860,
+      "reference_compression_ratio": 0.3906042451935103,
+      "estimated_all_output_bytes": 141963772,
+      "estimated_peak_ram_bytes": 3723602624,
+      "estimated_runtime_sec": 1896.8738062041145,
+      "conservative_notes": [
+       "compressed estimate includes 25% schema margin",
+       "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+       "N4 estimate intentionally uses N12 reference and is conservative"
+      ]
+     }
+    ],
+    "remaining_run_count": 1,
+    "estimated_remaining_output_bytes": 141963772,
+    "estimated_peak_ram_bytes": 3723602624,
+    "disk_free_bytes": 201219792896,
+    "disk_required_bytes": 2573374964,
+    "disk_safety_factor": 3.0,
+    "disk_headroom_bytes": 2147483648,
+    "physical_memory_bytes": 25769803776,
+    "available_memory_bytes": 7530971136,
+    "ram_available_safety_factor": 1.25,
+    "ram_physical_safety_factor": 1.5,
+    "disk_gate_pass": true,
+    "physical_ram_gate_pass": true,
+    "available_ram_gate_pass": true,
+    "gate_pass": true,
+    "estimated_runtime_sec": 1896.8738062041145
+   },
+   "source_sha256_before": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_before": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "returncode": 0,
+   "runtime_sec": 4449.768567085266,
+   "source_sha256_after": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_after": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "validation": {
+    "json": {
+     "env_fixed": true,
+     "built_N": 12,
+     "failed_N": []
+    },
+    "npz": {
+     "arrays": 99,
+     "time_steps": 300000,
+     "ledger_snapshots": 6001
+    },
+    "first42000_vs_existing": {
+     "reference": "nsweep_neutral_T42000_N12_v2.npz",
+     "candidate": "nsweep_neutral_T300000_d0.01_rep-s4-n12-neutral-t300000-l1_N12_v2.npz",
+     "prefix": true,
+     "reference_steps": 42000,
+     "arrays_checked": 80,
+     "array_classes": {
+      "time_series": 75,
+      "ledger": 4,
+      "static": 1
+     },
+     "byte_exact": true,
+     "max_abs_difference": 0.0
+    },
+    "first4000_vs_independent_existing": {
+     "reference": "nsweep_neutral_N12_v2.npz",
+     "candidate": "nsweep_neutral_T300000_d0.01_rep-s4-n12-neutral-t300000-l1_N12_v2.npz",
+     "prefix": true,
+     "reference_steps": 4000,
+     "arrays_checked": 67,
+     "array_classes": {
+      "time_series": 67,
+      "ledger": 0,
+      "static": 0
+     },
+     "byte_exact": true,
+     "max_abs_difference": 0.0
+    },
+    "artifact_hashes": {
+     "result_nsweep_neutral_T300000_d0.01_rep-s4-n12-neutral-t300000-l1_v2.json": {
+      "sha256": "2f750baad8f72ccde6380d86c23696c50fcf08daa415a744b4a45f99ddeb69ce",
+      "bytes": 8921
+     },
+     "nsweep_neutral_T300000_d0.01_rep-s4-n12-neutral-t300000-l1_N12_v2.npz": {
+      "sha256": "a49dc80834804cf7fd953b945228a041b08710a3f487d574b42d8c0c2cd6b510",
+      "bytes": 108213359
+     },
+     "fig_neutral_T300000_d0.01_rep-s4-n12-neutral-t300000-l1_4panel_N12_v2.png": {
+      "sha256": "bb07680991e8ba53280e47e1dd35e6f7a69ec116033c8a0c681da3b3206c627d",
+      "bytes": 110124
+     },
+     "fig_neutral_T300000_d0.01_rep-s4-n12-neutral-t300000-l1_mix_N12_v2.png": {
+      "sha256": "6860c42b23ffb4d2ed4262f03dfbe1b31ec7e81972e6b44fce87c86c54fbec36",
+      "bytes": 128236
+     },
+     "fig_neutral_T300000_d0.01_rep-s4-n12-neutral-t300000-l1_ledger_N12_v2.png": {
+      "sha256": "206cb43016cf4d7f45fba8af255be2c465d1692a12b543a4002a688844bebb74",
+      "bytes": 82535
+     },
+     "fig_neutral_T300000_d0.01_rep-s4-n12-neutral-t300000-l1_summary_v2.png": {
+      "sha256": "f7cae88013b9b5b2e19e8fa8435fd7c2e8cbafc15cbc8893dcb9d0616068fd66",
+      "bytes": 144901
+     },
+     "fig_neutral_T300000_d0.01_rep-s4-n12-neutral-t300000-l1_birth_matrix_v2.png": {
+      "sha256": "2a13761dadaa5d7d57808c5ce1ed824394c5103983e27fbaaa047ac3b1cf80f1",
+      "bytes": 39852
+     },
+     "stage4_log_n12_neutral_t300000_long_v1.txt": {
+      "sha256": "62c65934a725569cdf41c3066bc1817ef85fa626e21ca337466f5a316da8287d",
+      "bytes": 2882
+     }
+    }
+   },
+   "finished_at": "2026-08-10T18:04:07.131376+09:00"
+  },
+  "n12_electron_t300000_long": {
+   "status": "completed",
+   "started_at": "2026-08-10T18:04:07.312664+09:00",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "electron",
+    "12",
+    "12",
+    "300000",
+    "0.01",
+    "s4-n12-electron-t300000-l1"
+   ],
+   "command_display": "'/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3' -u '/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py' electron 12 12 300000 0.01 s4-n12-electron-t300000-l1",
+   "log": "stage4_log_n12_electron_t300000_long_v1.txt",
+   "capacity_gate_before": {
+    "spec_estimates": [
+     {
+      "run_id": "n12_electron_t300000_long",
+      "raw_npz_arrays_bytes": 379232650,
+      "estimated_compressed_npz_bytes": 141392449,
+      "reference_compression_ratio": 0.3728382790421293,
+      "estimated_all_output_bytes": 153975361,
+      "estimated_peak_ram_bytes": 4107603024,
+      "estimated_runtime_sec": 2670.8370208740234,
+      "conservative_notes": [
+       "compressed estimate includes 25% schema margin",
+       "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+       "N4 estimate intentionally uses N12 reference and is conservative"
+      ]
+     }
+    ],
+    "remaining_run_count": 1,
+    "estimated_remaining_output_bytes": 153975361,
+    "estimated_peak_ram_bytes": 4107603024,
+    "disk_free_bytes": 201130606592,
+    "disk_required_bytes": 2609409731,
+    "disk_safety_factor": 3.0,
+    "disk_headroom_bytes": 2147483648,
+    "physical_memory_bytes": 25769803776,
+    "available_memory_bytes": 8944107520,
+    "ram_available_safety_factor": 1.25,
+    "ram_physical_safety_factor": 1.5,
+    "disk_gate_pass": true,
+    "physical_ram_gate_pass": true,
+    "available_ram_gate_pass": true,
+    "gate_pass": true,
+    "estimated_runtime_sec": 2670.8370208740234
+   },
+   "source_sha256_before": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_before": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "returncode": 0,
+   "runtime_sec": 4536.720038175583,
+   "source_sha256_after": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_after": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   },
+   "validation": {
+    "json": {
+     "env_fixed": true,
+     "built_N": 12,
+     "failed_N": []
+    },
+    "npz": {
+     "arrays": 99,
+     "time_steps": 300000,
+     "ledger_snapshots": 6001
+    },
+    "first42000_vs_existing": {
+     "reference": "nsweep_electron_T42000_d0.01_N12_v2.npz",
+     "candidate": "nsweep_electron_T300000_d0.01_rep-s4-n12-electron-t300000-l1_N12_v2.npz",
+     "prefix": true,
+     "reference_steps": 42000,
+     "arrays_checked": 99,
+     "array_classes": {
+      "time_series": 91,
+      "ledger": 4,
+      "static": 4
+     },
+     "byte_exact": true,
+     "max_abs_difference": 0.0
+    },
+    "first4000_vs_independent_existing": {
+     "reference": "nsweep_electron_N12_v2.npz",
+     "candidate": "nsweep_electron_T300000_d0.01_rep-s4-n12-electron-t300000-l1_N12_v2.npz",
+     "prefix": true,
+     "reference_steps": 4000,
+     "arrays_checked": 67,
+     "array_classes": {
+      "time_series": 67,
+      "ledger": 0,
+      "static": 0
+     },
+     "byte_exact": true,
+     "max_abs_difference": 0.0
+    },
+    "artifact_hashes": {
+     "result_nsweep_electron_T300000_d0.01_rep-s4-n12-electron-t300000-l1_v2.json": {
+      "sha256": "66faa10204ab8da5dc954a99cc16c7939558084ed9fba90123bb20f35b992885",
+      "bytes": 9785
+     },
+     "nsweep_electron_T300000_d0.01_rep-s4-n12-electron-t300000-l1_N12_v2.npz": {
+      "sha256": "317fbd72f81f6812a99e641067b6d1305f9a5532bd82eca10d9188762238a2d6",
+      "bytes": 110580691
+     },
+     "fig_electron_T300000_d0.01_rep-s4-n12-electron-t300000-l1_4panel_N12_v2.png": {
+      "sha256": "d044c9f5167a0a960270bba5d18302ac2053fb638b1bbaf36e4baf93068db6bd",
+      "bytes": 103608
+     },
+     "fig_electron_T300000_d0.01_rep-s4-n12-electron-t300000-l1_mix_N12_v2.png": {
+      "sha256": "845f8b334918c72427c9f9edb046ae92b08d4f6aade3de8e3e1d4ba99a72a4c9",
+      "bytes": 125497
+     },
+     "fig_electron_T300000_d0.01_rep-s4-n12-electron-t300000-l1_ledger_N12_v2.png": {
+      "sha256": "06bdb21c4eb733e0cc6fb311649a806fcf80941151cfb120de151ef339b46af2",
+      "bytes": 83318
+     },
+     "fig_electron_T300000_d0.01_rep-s4-n12-electron-t300000-l1_summary_v2.png": {
+      "sha256": "9342620d2c610373cf09c49f9f70f49179f2f7b405e114772b1a14da390b5d13",
+      "bytes": 145608
+     },
+     "fig_electron_T300000_d0.01_rep-s4-n12-electron-t300000-l1_birth_matrix_v2.png": {
+      "sha256": "2a13761dadaa5d7d57808c5ce1ed824394c5103983e27fbaaa047ac3b1cf80f1",
+      "bytes": 39852
+     },
+     "stage4_log_n12_electron_t300000_long_v1.txt": {
+      "sha256": "3575001364f2cea5407696a72e4221c07316929638d66a372f4e00c92e03b3d0",
+      "bytes": 2885
+     }
+    }
+   },
+   "finished_at": "2026-08-10T19:19:44.749780+09:00"
+  },
+  "n12_f5_t300000_long": {
+   "status": "running",
+   "started_at": "2026-08-10T19:19:45.038495+09:00",
+   "command": [
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3",
+    "-u",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py",
+    "fermion_family",
+    "12",
+    "12",
+    "300000",
+    "0.01",
+    "s4-n12-f5-t300000-l1"
+   ],
+   "command_display": "'/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/.venv/bin/python3' -u '/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/対照実験_N掃引1to20_三系_v2/run_nsweep_three_series_v2.py' fermion_family 12 12 300000 0.01 s4-n12-f5-t300000-l1",
+   "log": "stage4_log_n12_f5_t300000_long_v1.txt",
+   "capacity_gate_before": {
+    "spec_estimates": [
+     {
+      "run_id": "n12_f5_t300000_long",
+      "raw_npz_arrays_bytes": 403232930,
+      "estimated_compressed_npz_bytes": 165722068,
+      "reference_compression_ratio": 0.4109834659844021,
+      "estimated_all_output_bytes": 178304980,
+      "estimated_peak_ram_bytes": 4299605264,
+      "estimated_runtime_sec": 3357.4567794799805,
+      "conservative_notes": [
+       "compressed estimate includes 25% schema margin",
+       "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+       "N4 estimate intentionally uses N12 reference and is conservative"
+      ]
+     }
+    ],
+    "remaining_run_count": 1,
+    "estimated_remaining_output_bytes": 178304980,
+    "estimated_peak_ram_bytes": 4299605264,
+    "disk_free_bytes": 200860000256,
+    "disk_required_bytes": 2682398588,
+    "disk_safety_factor": 3.0,
+    "disk_headroom_bytes": 2147483648,
+    "physical_memory_bytes": 25769803776,
+    "available_memory_bytes": 7007043584,
+    "ram_available_safety_factor": 1.25,
+    "ram_physical_safety_factor": 1.5,
+    "disk_gate_pass": true,
+    "physical_ram_gate_pass": true,
+    "available_ram_gate_pass": true,
+    "gate_pass": true,
+    "estimated_runtime_sec": 3357.4567794799805
+   },
+   "source_sha256_before": {
+    "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+    "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+    "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+   },
+   "reference_sha256_before": {
+    "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+    "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+    "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+    "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+    "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+    "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+    "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+    "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+    "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+    "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+    "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+    "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+    "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+    "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+    "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+    "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+    "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+    "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+   }
+  }
+ },
+ "orchestrator_sha256": "d8114c14ed54a3a650c9732644ebd3fd73053451cacad7883c6bffb9dd84b0b3",
+ "argv": [
+  "run_stage4_longtime_orchestrator_v1.py",
+  "--run-all"
+ ],
+ "mplconfigdir": "/var/folders/zv/5bsngr096zbb2w7f2xq4fdcc0000gn/T/stage4_longtime_mplconfig_v1",
+ "capacity_gate_before": {
+  "spec_estimates": [
+   {
+    "run_id": "n4_mixed_t4000_control",
+    "raw_npz_arrays_bytes": 4979140,
+    "estimated_compressed_npz_bytes": 2117995,
+    "reference_compression_ratio": 0.4253736584521961,
+    "estimated_all_output_bytes": 14700907,
+    "estimated_peak_ram_bytes": 1113574944,
+    "estimated_runtime_sec": 39.0127588453747,
+    "conservative_notes": [
+     "compressed estimate includes 25% schema margin",
+     "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+     "N4 estimate intentionally uses N12 reference and is conservative"
+    ]
+   },
+   {
+    "run_id": "n4_neutral_t4000_control",
+    "raw_npz_arrays_bytes": 4419000,
+    "estimated_compressed_npz_bytes": 1726081,
+    "reference_compression_ratio": 0.3906042451935103,
+    "estimated_all_output_bytes": 14308993,
+    "estimated_peak_ram_bytes": 1109093824,
+    "estimated_runtime_sec": 25.291650749388197,
+    "conservative_notes": [
+     "compressed estimate includes 25% schema margin",
+     "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+     "N4 estimate intentionally uses N12 reference and is conservative"
+    ]
+   },
+   {
+    "run_id": "n4_electron_t4000_control",
+    "raw_npz_arrays_bytes": 5059050,
+    "estimated_compressed_npz_bytes": 1886208,
+    "reference_compression_ratio": 0.3728382790421293,
+    "estimated_all_output_bytes": 14469120,
+    "estimated_peak_ram_bytes": 1114214224,
+    "estimated_runtime_sec": 35.61116027832031,
+    "conservative_notes": [
+     "compressed estimate includes 25% schema margin",
+     "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+     "N4 estimate intentionally uses N12 reference and is conservative"
+    ]
+   },
+   {
+    "run_id": "n4_f5_t4000_control",
+    "raw_npz_arrays_bytes": 5379330,
+    "estimated_compressed_npz_bytes": 2210816,
+    "reference_compression_ratio": 0.4109834659844021,
+    "estimated_all_output_bytes": 14793728,
+    "estimated_peak_ram_bytes": 1116776464,
+    "estimated_runtime_sec": 44.766090393066406,
+    "conservative_notes": [
+     "compressed estimate includes 25% schema margin",
+     "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+     "N4 estimate intentionally uses N12 reference and is conservative"
+    ]
+   },
+   {
+    "run_id": "n4_mixed_t42000_long",
+    "raw_npz_arrays_bytes": 52254940,
+    "estimated_compressed_npz_bytes": 22227875,
+    "reference_compression_ratio": 0.4253736584521961,
+    "estimated_all_output_bytes": 34810787,
+    "estimated_peak_ram_bytes": 1491781344,
+    "estimated_runtime_sec": 409.6339678764343,
+    "conservative_notes": [
+     "compressed estimate includes 25% schema margin",
+     "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+     "N4 estimate intentionally uses N12 reference and is conservative"
+    ]
+   },
+   {
+    "run_id": "n4_neutral_t42000_long",
+    "raw_npz_arrays_bytes": 46374800,
+    "estimated_compressed_npz_bytes": 18114194,
+    "reference_compression_ratio": 0.3906042451935103,
+    "estimated_all_output_bytes": 30697106,
+    "estimated_peak_ram_bytes": 1444740224,
+    "estimated_runtime_sec": 265.56233286857605,
+    "conservative_notes": [
+     "compressed estimate includes 25% schema margin",
+     "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+     "N4 estimate intentionally uses N12 reference and is conservative"
+    ]
+   },
+   {
+    "run_id": "n4_electron_t42000_long",
+    "raw_npz_arrays_bytes": 53094850,
+    "estimated_compressed_npz_bytes": 19795793,
+    "reference_compression_ratio": 0.3728382790421293,
+    "estimated_all_output_bytes": 32378705,
+    "estimated_peak_ram_bytes": 1498500624,
+    "estimated_runtime_sec": 373.9171829223633,
+    "conservative_notes": [
+     "compressed estimate includes 25% schema margin",
+     "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+     "N4 estimate intentionally uses N12 reference and is conservative"
+    ]
+   },
+   {
+    "run_id": "n4_f5_t42000_long",
+    "raw_npz_arrays_bytes": 56455130,
+    "estimated_compressed_npz_bytes": 23202125,
+    "reference_compression_ratio": 0.4109834659844021,
+    "estimated_all_output_bytes": 35785037,
+    "estimated_peak_ram_bytes": 1525382864,
+    "estimated_runtime_sec": 470.04394912719727,
+    "conservative_notes": [
+     "compressed estimate includes 25% schema margin",
+     "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+     "N4 estimate intentionally uses N12 reference and is conservative"
+    ]
+   },
+   {
+    "run_id": "n12_neutral_t300000_long",
+    "raw_npz_arrays_bytes": 331232600,
+    "estimated_compressed_npz_bytes": 129380860,
+    "reference_compression_ratio": 0.3906042451935103,
+    "estimated_all_output_bytes": 141963772,
+    "estimated_peak_ram_bytes": 3723602624,
+    "estimated_runtime_sec": 1896.8738062041145,
+    "conservative_notes": [
+     "compressed estimate includes 25% schema margin",
+     "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+     "N4 estimate intentionally uses N12 reference and is conservative"
+    ]
+   },
+   {
+    "run_id": "n12_electron_t300000_long",
+    "raw_npz_arrays_bytes": 379232650,
+    "estimated_compressed_npz_bytes": 141392449,
+    "reference_compression_ratio": 0.3728382790421293,
+    "estimated_all_output_bytes": 153975361,
+    "estimated_peak_ram_bytes": 4107603024,
+    "estimated_runtime_sec": 2670.8370208740234,
+    "conservative_notes": [
+     "compressed estimate includes 25% schema margin",
+     "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+     "N4 estimate intentionally uses N12 reference and is conservative"
+    ]
+   },
+   {
+    "run_id": "n12_f5_t300000_long",
+    "raw_npz_arrays_bytes": 403232930,
+    "estimated_compressed_npz_bytes": 165722068,
+    "reference_compression_ratio": 0.4109834659844021,
+    "estimated_all_output_bytes": 178304980,
+    "estimated_peak_ram_bytes": 4299605264,
+    "estimated_runtime_sec": 3357.4567794799805,
+    "conservative_notes": [
+     "compressed estimate includes 25% schema margin",
+     "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+     "N4 estimate intentionally uses N12 reference and is conservative"
+    ]
+   },
+   {
+    "run_id": "n12_mixed_t300000_long",
+    "raw_npz_arrays_bytes": 373232740,
+    "estimated_compressed_npz_bytes": 158763377,
+    "reference_compression_ratio": 0.4253736584521961,
+    "estimated_all_output_bytes": 171346289,
+    "estimated_peak_ram_bytes": 4059603744,
+    "estimated_runtime_sec": 2925.956913403102,
+    "conservative_notes": [
+     "compressed estimate includes 25% schema margin",
+     "peak RAM = raw NPZ estimate x8 + 1 GiB for Python lists and temporaries",
+     "N4 estimate intentionally uses N12 reference and is conservative"
+    ]
+   }
+  ],
+  "remaining_run_count": 12,
+  "estimated_remaining_output_bytes": 837534785,
+  "estimated_peak_ram_bytes": 4299605264,
+  "disk_free_bytes": 201600335872,
+  "disk_required_bytes": 4660088003,
+  "disk_safety_factor": 3.0,
+  "disk_headroom_bytes": 2147483648,
+  "physical_memory_bytes": 25769803776,
+  "available_memory_bytes": 7701446656,
+  "ram_available_safety_factor": 1.25,
+  "ram_physical_safety_factor": 1.5,
+  "disk_gate_pass": true,
+  "physical_ram_gate_pass": true,
+  "available_ram_gate_pass": true,
+  "gate_pass": true,
+  "estimated_runtime_sec": 12514.963613021942
+ },
+ "source_sha256_before": {
+  "run_nsweep_three_series_v2.py": "c4b3b33a82657232734223f089cff79e103ce7a18fb5a064fc71a058d1d006fe",
+  "run_tb_nsweep_1to20_v1.py": "1615b8769cf765a444a8e057718ff4a760f040376335f434f9903b8cf4f9dba4",
+  "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_interaction_v1.py": "b4db659b9bf958246d192c852a48fd97f5793f9bf2f891d5c75ce22ae5a5ed63",
+  "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_dimension_v1.py": "cfc9cf5d835e39ec6959eeeadff102e5dd23b93deed9dfeff52778e3ee48830a",
+  "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/unified_readout_v3.py": "4dec07c9811c3c06b3c34941ade85593ac3feecbeb82e6902cecad1263958953",
+  "/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/統一万能関数_v1/selection_v1.py": "90d546e61e20ce58b4e9a962bdcd761ef96d46a9061a60decca2586ad324eed2"
+ },
+ "reference_sha256_before": {
+  "nsweep_mixed_N4_v2.npz": "f52ce29ffbd2a550572e33b247c185dec4b5c0826dd8b810e17ec96832a465b9",
+  "nsweep_neutral_N4_v2.npz": "85f8d650ca10000e53e191c48c3dab957ebcb1055afab0e25cd4dd6830d26c5e",
+  "nsweep_electron_N4_v2.npz": "ba769fcf2dacdcd4ac26959c32c91ef4530a6f0556a3087b648555f1e547b416",
+  "nsweep_vacuum_N4_v2.npz": "77773a774f4a2a69333daf90f9a5b6f27c2497998c5bf06b3a4715ab2b3fbf25",
+  "nsweep_mixed_N12_v2.npz": "0b114f10aacb892f586dc9174d772849ba3e35d48ceda2b00dfe7f1f41e5b05e",
+  "nsweep_neutral_N12_v2.npz": "bc04e8beb99a796ed5316f3323b62739260fcc5683ef2705a449f5bd94949cb5",
+  "nsweep_electron_N12_v2.npz": "e2fd0a9c37024e0e6af54223a4b9df088094fede59f95070e8359aea9d2d9747",
+  "nsweep_mixed_T42000_N12_v2.npz": "0de730a69d303fa7af0a88f09d768bea6f07159348a5c5b4b097cf60c1ad01ff",
+  "nsweep_neutral_T42000_N12_v2.npz": "6c78a39c37e50243ef78383d7ec8d94e7f741c207d5700d29bc55508f3be33c0",
+  "nsweep_electron_T42000_d0.01_N12_v2.npz": "4d558b3caa07a3943f7a6418d2c515d9d7fded0d3c1f06940caa0dc7d1beb73a",
+  "nsweep_fermion_family_T42000_d0.01_N12_v2.npz": "752fad29af40f896973acd844e5082fd7ff06df7cab6436f476dff4560aa7a9a",
+  "result_nsweep_mixed_v2.json": "9092b2f262440915d7aff32702203e5ad5be2b05074cc0e95dcff4ebcbaed5b6",
+  "result_nsweep_neutral_v2.json": "7c27fd7a849fc63649418c02f6fbaa21b60f86752a7f074bd55477e5c8883a70",
+  "result_nsweep_electron_v2.json": "de50d6bcfaa5c01d125b172dd3af99b631423fbfc2d49835efedded42bfee6ec",
+  "result_nsweep_mixed_T42000_v2.json": "af756ff7992e2c8342bd884d110fcd5d6c6cabcfb65e0f6b05b3095777934864",
+  "result_nsweep_neutral_T42000_v2.json": "225ff0ec279090a6321cb3f2e05bd8c6386209354a0566ce4c44fb8941150c66",
+  "result_nsweep_electron_T42000_d0.01_v2.json": "90ef2f194b6b0f88973f08c5994e77d28bbe2e87284a4a1b513a236126093e95",
+  "result_nsweep_fermion_family_T42000_d0.01_v2.json": "1e3b284f7fccf42c7139eb7c4ad72c8df6157bd45bc7da4f9f02bf8c1446136c"
+ },
+ "campaign_started_or_resumed_at": "2026-08-10T15:59:27.829539+09:00",
+ "updated_at": "2026-08-10T19:19:45.038572+09:00",
+ "stage_N4_status": "complete_revalidated",
+ "stage_N4_finished_at": "2026-08-10T16:49:55.567980+09:00"
+}
