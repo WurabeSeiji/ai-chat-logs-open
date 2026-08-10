@@ -2,6 +2,8 @@
 
 **著者:** 木原 範昭（WF System Co., Ltd.）　**日付:** 2026-08-10　**版:** v1
 
+**Version DOI:** [10.5281/zenodo.21874482](https://doi.org/10.5281/zenodo.21874482)　**Concept DOI:** [10.5281/zenodo.21874481](https://doi.org/10.5281/zenodo.21874481)
+
 ---
 
 ## 本稿の性格

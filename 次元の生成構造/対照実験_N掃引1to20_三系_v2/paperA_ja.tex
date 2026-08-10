@@ -1,0 +1,1349 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={空間・物質・時計の生成条件は一致しない------シードが粒子を生む条件と分解能の下限},
+  pdfauthor={木原 範昭（WF System Co., Ltd.）},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{空間・物質・時計の生成条件は一致しない------シードが粒子を生む条件と分解能の下限}
+\author{木原 範昭（WF System Co., Ltd.）}
+\date{2026-08-10}
+
+\begin{document}
+\maketitle
+
+\textbf{著者:} 木原 範昭（WF System Co., Ltd.）　\textbf{日付:}
+2026-08-10　\textbf{版:} v1
+
+\textbf{Version DOI:}
+\href{https://doi.org/10.5281/zenodo.21874482}{10.5281/zenodo.21874482}　\textbf{Concept
+DOI:}
+\href{https://doi.org/10.5281/zenodo.21874481}{10.5281/zenodo.21874481}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{本稿の性格}\label{ux672cux7a3fux306eux6027ux683c}
+
+本稿は新しい力学を提案する論文ではない。前回の論文で確立した力学を一切変更せずに
+読み込み専用で取り込み、\textbf{種の置き場所・種の強さ・種の位相・分解能・周期の等分数だけを
+変えて}、何が起こるかを実測する論文である。
+
+主張の数値は、保存してある走行データから独立に計算し直し、既存の記録と機械的に照合してある
+（補遺E）。測定の前に予想を文書へ固定してから走らせた実験については、その旨を本文に明記した。
+
+\subsection{前提}\label{ux524dux63d0}
+
+前回の論文で、波の形から 62
+種類の標準理論の粒子に対応しそうな波を同定することができたが、
+この過程で、インフレーション実験で現れた奇数倍音の場合のみフェルミオン的な波になり、
+偶数倍音の場合にはボゾン的な波になる、また、相互作用の反射率（混合率）が
+0.7 前後の場合には、
+フェルミオン的な状態とボゾン的な状態が混合した状態になることも分かっているが、
+その機構については課題として残った。
+
+とくに、インフレーション的な幾何級数拡大はシードを与えなくても発生したが、
+粒子的な波が生まれるためにはシードが不可欠で、比較的大きな振幅のシードを与えたが、
+どのようなシードがどのような粒子的な波を生むのかについても課題として残った。
+
+また、分解能 N による影響の分析も課題として残った。
+
+このため、本論文では、以下の課題に取り組み、一定の結果を得た。
+
+\subsection{本稿の結果を、確からしさで 5
+つに分ける}\label{ux672cux7a3fux306eux7d50ux679cux3092ux78baux304bux3089ux3057ux3055ux3067-5-ux3064ux306bux5206ux3051ux308b}
+
+読者が取り違えないよう、得られたものを最初に分類しておく。
+
+\textbf{(1) 実測則として強いもの}
+
+\begin{itemize}
+\tightlist
+\item
+  立ち上がりが、種を複素数として足した大きさの対数で決まること（R² =
+  0.99987）
+\item
+  出そろう時刻が、奇数の帯に置いたパワーの冪で決まること（R² = 0.996、14
+  点）
+\item
+  偶数の帯だけの種では、奇数の帯が厳密にゼロのままであること（42000 回 ×
+  8 段階）
+\item
+  約数による分類が、周期の等分数を変えても追随すること（278 通り・外れ
+  0）
+\end{itemize}
+
+\textbf{(2) 機構まで説明できているもの}
+
+\begin{itemize}
+\tightlist
+\item
+  立ち上がりが複素数の和で決まるのは、更新の前半が和だけを見て
+  同じ回転を全部の場所にかけるからである
+\item
+  偶数の帯だけの種で何も起きないのは、相互作用の係数が
+  奇数の帯と偶数の帯のパワーの比から作られており、
+  奇数の帯がゼロなら係数もゼロになるからである。
+  奇数の帯が現れないこと自体も、3
+  つの波が出会う形から偶奇の保存として出る
+\end{itemize}
+
+\textbf{(3) 経験則にとどまるもの}
+
+\begin{itemize}
+\tightlist
+\item
+  出そろう時刻の冪 −1.073 そのもの（なぜ −1
+  に近いのかは説明できていない）
+\item
+  狙った場所への集中度が中間の強さで最大になること
+\item
+  分解能ごとの様相の違い
+\item
+  更新の前半が見ているのが「和」か「二乗して足した和」かは、
+  実験では分けられていない（更新の手続きからは和である）
+\end{itemize}
+
+\textbf{(4) 異常として記録するが、解釈は保留するもの}
+
+\begin{itemize}
+\tightlist
+\item
+  分解能 4 で時計の刻む速さが 9.9 倍になること
+\item
+  分解能 4 でだけ、揺れが 0.6972 を横切ること
+\item
+  分解能 8 と 10 で初期状態が作れなかったこと
+\item
+  分解能 13 と 20 で拮抗が再発すること
+\end{itemize}
+
+\textbf{(5) 現実の物理への対応仮説（本稿では検証していない）}
+
+\begin{itemize}
+\tightlist
+\item
+  奇数の帯・偶数の帯が、フェルミオンとボゾンに対応すること
+\item
+  3 方向目の生成が、現実の空間の生成に対応すること
+\item
+  系が持つ時計が、物理的な時間に対応すること
+\item
+  種が、粒子の生成源に対応すること
+\end{itemize}
+
+\textbf{(5)
+はいずれも前回の論文から引き継いだ前提であり、本稿はそれを検証していない。}
+本稿が実測したのは、あくまで模型の内部で何がどの条件で読み出せるかである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{測定の作法}\label{ux6e2cux5b9aux306eux4f5cux6cd5}
+
+独立した研究で最も疑われるのは、結果を見てから条件を選んでいないかである。
+本稿では次の手続きを取った。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{走らせる前に予想を文書へ固定した実験がある。}
+  位相を打ち消した種の 4 条件（本文
+  3）節）と、周期の等分数を変えた検定（8）節）は、
+  測定前に予想値を書いた文書を作ってから走らせ、そのまま的中した
+\item
+  \textbf{力学は読み込み専用で取り込み、走行の前後で自身の照合値を検査している。}
+  食い違えばその場で停止する
+\item
+  \textbf{主張の数値は、保存データから独立に計算し直して既存の記録と照合してある}（補遺E）
+\item
+  \textbf{走行ごとの記録図 462 枚を全数目視した。}
+  その結果、本文の主張のうち 6 つに訂正が必要と分かり、訂正した （とくに
+  2）節の「強さの窓」は、この監査で観測時間の産物だと判明したものである）
+\item
+  走行 126 件・保存データ 1174 MB・プログラム 13
+  本の照合値を補遺に載せた
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{実験系}\label{ux5b9fux9a13ux7cfb}
+
+主張を読むために必要な範囲で、この実験が何を扱っているかを述べる。
+
+\subsubsection{点・関係・分解能}\label{ux70b9ux95a2ux4fc2ux5206ux89e3ux80fd}
+
+系は \textbf{N
+個の点}からなる。点どうしのすべての組に\textbf{関係}があり、
+関係の本数は N(N−1)/2 である。この N を\textbf{分解能}と呼ぶ。主実験では
+N=12、関係は 66 本である。
+
+\subsubsection{波と「場所」}\label{ux6ce2ux3068ux5834ux6240}
+
+\textbf{各関係は 1 個の波を持つ。ただしこの波は 1 個の複素数ではない。}
+2 つの周期的な向きに沿って並んだ値の組である。 第 1 の向きは 1 周を 16
+等分、第 2 の向きは 8 等分してあり、合わせて 128 個の値を持つ。
+
+周期的な向きに沿った波は、1 周する間に位相が何回まわるかで分類できる。
+この回数を\textbf{巻き数}と呼ぶ。第 1 の向きの巻き数を k、第 2
+の向きの巻き数を m と書く。 128 個の値は、この (k, m)
+の組ごとの成分に分けて見ることができる。
+本論文で\textbf{場所}というのは、この (k, m) の組のことである。場所は
+128 か所ある。
+
+\textbf{この「場所」は、波が記憶している番地ではない。} 波が 1
+個の複素数ではなく分布であるから、その成分に番号が付いているだけである。
+
+k が同じ場所をまとめたものを\textbf{帯}と呼ぶ。帯は 16 本ある。
+前回の論文で、\textbf{k
+が奇数の帯に立つ波はフェルミオン的、偶数の帯に立つ波はボゾン的}な
+振る舞いを示すことが分かっている。本論文はこの対応をそのまま引き継ぐ。
+\pandocbounded{\includegraphics[keepaspectratio,alt={図1　系の構成。各関係が持つ 128 か所の地図と、背景の振動（黒）・種（赤）・種が狙う相手の場所（緑枠）の関係。濃い列が奇数の帯である。}]{figA01_lattice_and_seeds_v1.png}}
+
+\textbf{図1　系の構成。各関係が持つ 128
+か所の地図と、背景の振動（黒）・種（赤）・種が狙う相手の場所（緑枠）の関係。濃い列が奇数の帯である。}
+
+\subsubsection{背景の振動とシード}\label{ux80ccux666fux306eux632fux52d5ux3068ux30b7ux30fcux30c9}
+
+実験を始める前に、場所 (k=2, m=0)
+に大きな振幅の波を置く。これを\textbf{背景の振動}と呼ぶ。
+背景の振動はすべての条件で共通であり、後述の「シードなし」の場合にも置かれる。
+\textbf{シードを与えなくてもインフレーション的な拡大が起こるのは、この背景の振動があるためである。}
+
+そのうえで、指定した場所に小さな振幅を足す操作を\textbf{シード}（種）と呼ぶ。
+足す振幅の大きさを\textbf{種の強さ}、足す場所の組を\textbf{種の置き場所}と呼ぶ。
+
+\subsubsection{更新と、外から数える回数}\label{ux66f4ux65b0ux3068ux5916ux304bux3089ux6570ux3048ux308bux56deux6570}
+
+系は離散的な更新を繰り返す。\textbf{本論文に秒は存在せず、時間はすべて更新の回数で測る。}
+この回数は、我々が外から数えている目盛りであって、系の中にあるものではない。
+
+1 回の更新は 2 段からなる。前半は、各関係について \textbf{128
+か所の値を複素数として全部足した和}を作り、その和の偏角から回転を決めて、
+\textbf{その同じ回転を 128 か所すべてに施す}。後半は、3
+つの波が出会って別の波を作る相互作用である。
+\pandocbounded{\includegraphics[keepaspectratio,alt={図2　代表的な 1 本の走行（混合 8 か所・強さ 0.01・分解能 12・42000 回）。空間・物質・時計がこの順に生まれ、最後に平面が 1 枚に決まる。}]{figA03_full_run_example_v1.png}}
+
+\textbf{図2　代表的な 1 本の走行（混合 8 か所・強さ 0.01・分解能
+12・42000 回）。空間・物質・時計がこの順に生まれ、最後に平面が 1
+枚に決まる。}
+
+\subsubsection{時計------系が自分で持つ時間}\label{ux6642ux8a08ux7cfbux304cux81eaux5206ux3067ux6301ux3064ux6642ux9593}
+
+系が育っていくと、ある時点から、\textbf{全体が形を変えずに一定の角度ずつ回る}状態になる。
+この状態になると、系の状態そのものから「1
+回の更新あたり何度回ったか」を読み取れる。
+\textbf{これが系にとっての時間の刻みであり、本論文ではこれを時計と呼ぶ。}
+
+読み取れる条件は 2
+つある。直前の状態との重なりが一定の下限を超えていること、
+そして回転を担っている成分の振幅が一定の下限を超えていることである。
+この 2 つが揃った最初の更新回数を、\textbf{時計が生まれた}と言う。
+
+\textbf{外から数える更新回数と、系が持つこの時計は別物である。} 「時計が
+2 回目に生まれた」とは、外の目盛りで 2 回更新したところで、
+系の中に時間の刻みが現れた、という意味である。
+
+\subsubsection{凝縮体}\label{ux51ddux7e2eux4f53}
+
+背景の振動が置かれた場所では、集まっている値どうしの位相がそろい、
+\textbf{それらを二乗して足すとゼロに落ちる}（打ち消し合う）。この状態を\textbf{凝縮体}と呼ぶ。
+粒子的な波は、この塊を土台にして生まれる。 本論文では、打ち消し残りが
+10⁻⁵ を下回っているとき「凝縮体ができている」とする。
+
+\subsubsection{3 方向目}\label{ux65b9ux5411ux76ee}
+
+背景の振動の分布は、はじめ 1 枚の平面の中に収まっている。
+そこから平面の外へはみ出す成分が育つと、\textbf{3 方向目}が立つ。
+はみ出した割合が 5\%
+を超えた最初の更新回数を、\textbf{空間が生まれた}と言う。
+
+ただし「はみ出した」だけでは 3 方向目の向きは決まらない。
+はみ出す先の平面が 2
+枚以上拮抗していると、どちらを基準に取るかが定まらないからである。
+基準の平面が 1
+枚に決まっている度合いを別に測り、それが一定の値を超えているとき
+\textbf{3 方向目が定まった}とする。
+\pandocbounded{\includegraphics[keepaspectratio,alt={図3　主実験の全体。5 通りの種の置き方 × 8 段階の強さ = 40 条件を、同じ力学・同じ分解能・同じ更新回数で走らせた。赤い「---」は生まれないことを表す。}]{figA02_experiment_matrix_v1.png}}
+
+\textbf{図3　主実験の全体。5 通りの種の置き方 × 8 段階の強さ = 40
+条件を、同じ力学・同じ分解能・同じ更新回数で走らせた。赤い「---」は生まれないことを表す。}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1）シードの形で、生まれる粒子の種類をある程度制御できることがわかった}\label{ux30b7ux30fcux30c9ux306eux5f62ux3067ux751fux307eux308cux308bux7c92ux5b50ux306eux7a2eux985eux3092ux3042ux308bux7a0bux5ea6ux5236ux5fa1ux3067ux304dux308bux3053ux3068ux304cux308fux304bux3063ux305f}
+
+第 1 の向きの巻き数 k を同じにして、\textbf{第 2 の向きの巻き数 m
+だけを変えた 2 種類の種}を、
+同じ強さで置いて比べた。一方は狙う相手が電荷のない波（ニュートリノ型）になる場所、
+もう一方は狙う相手が電子型の波になる場所である。
+
+インフレーションが立ち上がる更新回数も、時計が生まれる更新回数も、
+\textbf{8 段階の強さのうち 7 段階で完全に一致した}。 いちばん弱い 1
+段階でのみ 1 回だけずれたが、その強さでは種なしの場合と区別がつかない。
+
+\textbf{それでいて、生まれた波が占める場所は 16 か所と 64
+か所に分かれた。} 電子型では、第 1 の巻き数が偶数なら第 2
+の巻き数も偶数、 第 1 が奇数なら第 2 も奇数、という市松模様になった。
+
+すなわち\textbf{「いつ生まれるか」と「何が生まれるか」は別々に決まる}。
+前者は種の置き場所に鈍感で、後者は置き場所で決まる。
+\pandocbounded{\includegraphics[keepaspectratio,alt={図4　5 通りの種の置き方による、波が占める場所の違い（強さ 0.1・42000 回更新後）。赤枠が種の位置。ニュートリノ型は 16 か所、電子型は市松状の 64 か所、偶数の帯 3 か所の種は 4 か所だけである。}]{figA06_support_structure_v1.png}}
+
+\textbf{図4　5 通りの種の置き方による、波が占める場所の違い（強さ
+0.1・42000 回更新後）。赤枠が種の位置。ニュートリノ型は 16
+か所、電子型は市松状の 64 か所、偶数の帯 3 か所の種は 4
+か所だけである。}
+
+\subsubsection{狙ったとおりに生まれるのは、中間の強さのときだけである}\label{ux72d9ux3063ux305fux3068ux304aux308aux306bux751fux307eux308cux308bux306eux306fux4e2dux9593ux306eux5f37ux3055ux306eux3068ux304dux3060ux3051ux3067ux3042ux308b}
+
+狙った場所のパワーを、狙っていない場所のパワーで割って、
+「狙った場所にどれだけ集中して入ったか」を測った。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrrrrr@{}}
+\toprule\noalign{}
+種の強さ & 10⁻⁸ & 10⁻⁴ & \textbf{10⁻³} & 10⁻² & 0.03 以上 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+集中度 & ほぼ 0 & 0.009 & \textbf{1 万倍} & 2 千倍 & 0.08 \\
+\end{longtable}
+}
+
+\textbf{種が強すぎると、波は 128
+か所すべてに広がってしまい、狙いが利かなくなる。}
+狙いが最もよく利くのは強さ 10⁻³ 付近で、そこでは狙った場所に 1
+万倍集中する。 強くしていくと、この集中度は 6 桁落ちる。
+
+この集中度は分解能によっても 120 倍変わる（N=3 で 57 倍、N=20 で 0.47
+倍）。
+\pandocbounded{\includegraphics[keepaspectratio,alt={図5　狙った場所への集中度は強さ 10⁻³ 付近で最大になり、強くすると 6 桁落ちる。}]{figA18_selectivity_window_v1.png}}
+
+\textbf{図5　狙った場所への集中度は強さ 10⁻³
+付近で最大になり、強くすると 6 桁落ちる。}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図6　集中しているとき（強さ 10⁻³）と、広がりきったとき（強さ 0.1）の 128 か所の地図。同じ電子型の種である。}]{figA06b_ledger_pair_v1.png}}
+\caption{図6　集中しているとき（強さ 10⁻³）と、広がりきったとき（強さ
+0.1）の 128 か所の地図。同じ電子型の種である。}
+\end{figure}
+
+\textbf{図6　集中しているとき（強さ 10⁻³）と、広がりきったとき（強さ
+0.1）の 128 か所の地図。同じ電子型の種である。}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2）シードの振幅には一定の幅があるように見えるが、それは観測時間の長さが作る見かけである}\label{ux30b7ux30fcux30c9ux306eux632fux5e45ux306bux306fux4e00ux5b9aux306eux5e45ux304cux3042ux308bux3088ux3046ux306bux898bux3048ux308bux304cux305dux308cux306fux89b3ux6e2cux6642ux9593ux306eux9577ux3055ux304cux4f5cux308bux898bux304bux3051ux3067ux3042ux308b}
+
+42000 回の更新までしか見なければ、弱すぎるとインフレーションは起こり 3
+方向も現れるが
+粒子的な波ができず、強くすると粒子的な波ができ、それ以上強くしても頭打ちになる、と見える。
+
+ところが更新を 300000 回まで延ばしたところ、 \textbf{42000
+回では「何も起きない」と見えていた強さ 10⁻² でも、262,751 回目に
+粒子的な波が一気に立ち上がった}。効かないのではなく、効くまでに時間がかかっていた。
+
+粒子的な波が出そろうまでの回数を、種の強さごとに測るとこうなる。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1304}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1739}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+種の強さ
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+10⁻³
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\textbf{10⁻²}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+0.03
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+0.044
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+0.1
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+出そろうまでの更新回数 & 42000 回では未了 & \textbf{262,751} & 25,760 &
+13,391 & 2,352 \\
+\end{longtable}
+}
+
+測った範囲では境目のような強さは現れず、次の経験則で滑らかにつながる。
+
+\begin{verbatim}
+出そろうまでの回数 ∝（種のうち奇数の帯に置いたパワーの合計）の −1.073 乗
+当てはまりの良さ R² = 0.996（14 点）
+\end{verbatim}
+
+この経験則をそのまま外挿すると、奇数の帯に置くパワーをゼロに近づける極限で
+出そろうまでの回数は無限に発散する。\textbf{したがって、有限の観測時間で見るかぎり、
+見かけの下限は必ず生じる。}
+実際、奇数の帯にまったく置かない種（パワーが厳密にゼロ）は、
+どの強さでも永久に出そろわない。
+
+ただし、\textbf{あらゆる非ゼロの種が無限時間の極限で必ず出そろうことを示したわけではない。}
+示したのは、42000 回で閾値に見えたものが 300000 回で崩れたことと、
+測定できた 14 点がこの冪則に乗ることである。
+
+\textbf{測った範囲では、種の強さは粒子的な波ができるかどうかではなく、
+できるまでの時間を決めている。}
+
+出そろう前と後では、できる波の量が質的に違う。
+
+\begin{itemize}
+\tightlist
+\item
+  出そろう前は、奇数の帯にある量が\textbf{投入した分ちょうど}（置いた種のパワーそのまま）
+\item
+  出そろった後は、\textbf{奇数の帯と偶数の帯がほぼ半々}になる
+\end{itemize}
+
+「弱すぎると粒子的な波ができない」という下限についても、
+同じく観測時間の産物である可能性が高い。長時間の走行で確かめる必要がある（未実施）。
+\pandocbounded{\includegraphics[keepaspectratio,alt={図7　粒子的な波が出そろうまでの回数。★は 300000 回の走行で初めて観測できた点である。42000 回の線より上に出た点は、出そろわないのではなく、その線の外で出そろう。右は、奇数の帯に置いたパワーに対して整理したもの。}]{figA16_saturation_power_law_v1.png}}
+
+\textbf{図7　粒子的な波が出そろうまでの回数。★は 300000
+回の走行で初めて観測できた点である。42000
+回の線より上に出た点は、出そろわないのではなく、その線の外で出そろう。右は、奇数の帯に置いたパワーに対して整理したもの。}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図8　空間・物質・時計は、生成条件が一致しない。4 通りの組み合わせがすべて実現する。}]{figA05_three_births_v1.png}}
+\caption{図8　空間・物質・時計は、生成条件が一致しない。4
+通りの組み合わせがすべて実現する。}
+\end{figure}
+
+\textbf{図8　空間・物質・時計は独立に起きる。4
+通りの組み合わせがすべて実現する。}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3）シードの強さにより、インフレーションの立ち上がりまでの助走期間が変わることがわかった}\label{ux30b7ux30fcux30c9ux306eux5f37ux3055ux306bux3088ux308aux30a4ux30f3ux30d5ux30ecux30fcux30b7ux30e7ux30f3ux306eux7acbux3061ux4e0aux304cux308aux307eux3067ux306eux52a9ux8d70ux671fux9593ux304cux5909ux308fux308bux3053ux3068ux304cux308fux304bux3063ux305f}
+
+助走期間は、種の強さの対数に比例して短くなる。
+
+\begin{verbatim}
+助走期間 = 9.892 − 48.611 × ln（種を複素数として足し合わせた大きさ）
+当てはまりの良さ R² = 0.99987
+\end{verbatim}
+
+ここで効いているのは、\textbf{種のパワーの合計ではなく、種を複素数として足し合わせた大きさ}である。
+パワーの合計で整理すると、ずれが 7.7 倍に悪化する。
+
+これは更新の仕組みから出る。更新の前半は \textbf{128
+か所の値を複素数として全部足した和だけを見て}、同じ回転を全部の場所にかける。
+したがって、和が同じ 2 つの初期状態は、前半では区別できない。
+
+これを直接試した。種のパワーも置き場所も一切変えず、
+\textbf{位相だけを打ち消し合うように置いた}。和だけがゼロになる。
+そして「偶数の帯に種を持たない場合と、更新回数まで一致するはずだ」と
+\textbf{測る前に予告し、4 つの強さすべてで 1 回単位で的中した}。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+種の強さ
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+通常の種
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+位相を打ち消した種
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+偶数の帯に種を持たない場合
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0.01 & 74 & \textbf{116} & 116 \\
+0.03 & 29 & \textbf{43} & 43 \\
+0.044 & 22 & \textbf{33} & 33 \\
+0.1 & 12 & \textbf{17} & 17 \\
+\end{longtable}
+}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図9　助走期間。左は種を複素数として足した大きさで整理した場合、右は同じ 15 点をパワーの合計で整理した場合。}]{figA10_runup_log_law_v1.png}}
+\caption{図9　助走期間。左は種を複素数として足した大きさで整理した場合、右は同じ
+15 点をパワーの合計で整理した場合。}
+\end{figure}
+
+\textbf{図9　助走期間。左は種を複素数として足した大きさで整理した場合、右は同じ
+15 点をパワーの合計で整理した場合。}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図10　位相を打ち消した種の対照。パワーも置き場所も変えていないのに、偶数の帯に種を持たない場合と 1 回単位で一致する。}]{figA11_phase_cancellation_v1.png}}
+\caption{図10　位相を打ち消した種の対照。パワーも置き場所も変えていないのに、偶数の帯に種を持たない場合と
+1 回単位で一致する。}
+\end{figure}
+
+\textbf{図10　位相を打ち消した種の対照。パワーも置き場所も変えていないのに、偶数の帯に種を持たない場合と
+1 回単位で一致する。}
+
+\subsubsection{この対照実験だけでは、和と二乗の和を区別できない}\label{ux3053ux306eux5bfeux7167ux5b9fux9a13ux3060ux3051ux3067ux306fux548cux3068ux4e8cux4e57ux306eux548cux3092ux533aux5225ux3067ux304dux306aux3044}
+
+位相を打ち消すのに用いたのは、同じ振幅で位相を 0・2π/3・4π/3 とした 3
+つ組である。
+この配置は複素数として足した和をゼロにするが、\textbf{同時に、二乗して足した和もゼロにする}
+（どちらも 10⁻¹⁵ 程度）。
+
+したがって\textbf{この実験だけでは、更新の前半が見ているのが
+「和」なのか「二乗して足した和」なのかを区別できない。}
+本稿が和だと述べているのは、更新の手続きそのものが
+和の偏角しか使っていないことによる。実験はそれと矛盾しないが、
+実験単独で和を選び出したわけではない。
+
+区別するには、和はゼロだが二乗の和はゼロでない配置 （たとえば位相差 π の
+2 つ組）を別の腕として走らせる必要がある。本稿では行っていない。
+
+\subsubsection{複素数として足した大きさが効くのは、立ち上がりについてだけである}\label{ux8907ux7d20ux6570ux3068ux3057ux3066ux8db3ux3057ux305fux5927ux304dux3055ux304cux52b9ux304fux306eux306fux7acbux3061ux4e0aux304cux308aux306bux3064ux3044ux3066ux3060ux3051ux3067ux3042ux308b}
+
+2）で述べた「粒子的な波が出そろうまでの回数」のほうは、パワーの合計で決まる。
+同じ系に、性質の違う二つの決まり方が同居している。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+何を見るか & 決めているのは & 効く量 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+インフレーションの立ち上がり & 更新の前半 &
+複素数として足した\textbf{和} \\
+粒子的な波が出そろう時刻 & 更新の後半 & \textbf{パワー}の合計 \\
+\end{longtable}
+}
+
+前半は和だけを見る。後半は、奇数の帯と偶数の帯のパワーの比から作った係数に比例する。
+だから見る現象によって効く量が変わる。
+
+偶数の帯だけに種を置いた場合が、この二つを同時に満たしている。
+奇数の帯のパワーがゼロなので出そろう時刻は無限（実際どの強さでも永久に出そろわない）、
+一方で立ち上がりのほうは、複素数として足した大きさの直線に乗る。
+\pandocbounded{\includegraphics[keepaspectratio,alt={図11　同じ系にある二つの決まり方。左は更新の前半が決める立ち上がり、右は後半が決める出そろう時刻。}]{figA17_two_laws_v1.png}}
+
+\textbf{図11　同じ系にある二つの決まり方。左は更新の前半が決める立ち上がり、右は後半が決める出そろう時刻。}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図12　立ち上がりの更新回数（40 条件すべて）。右のように複素数として足した大きさで並べ直すと、5 通りの種の置き方が 1 本に重なる。}]{figA09_tau_space_all_conditions_v1.png}}
+\caption{図12　立ち上がりの更新回数（40
+条件すべて）。右のように複素数として足した大きさで並べ直すと、5
+通りの種の置き方が 1 本に重なる。}
+\end{figure}
+
+\textbf{図12　立ち上がりの更新回数（40
+条件すべて）。右のように複素数として足した大きさで並べ直すと、5
+通りの種の置き方が 1 本に重なる。}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4）分解能 N には最低があり、N＝1, 2 では、インフレーションも
+3
+方向も現れなかった}\label{ux5206ux89e3ux80fd-n-ux306bux306fux6700ux4f4eux304cux3042ux308an1-2-ux3067ux306fux30a4ux30f3ux30d5ux30ecux30fcux30b7ux30e7ux30f3ux3082-3-ux65b9ux5411ux3082ux73feux308cux306aux304bux3063ux305f}
+
+N=1 では点どうしの関係が 1 本もなく、N=2 では 1
+本しかないため、系そのものが作れない。
+
+\subsubsection{分解能に特異な値があり、N=3, 4 では 3
+方向目が定まらない}\label{ux5206ux89e3ux80fdux306bux7279ux7570ux306aux5024ux304cux3042ux308an3-4-ux3067ux306f-3-ux65b9ux5411ux76eeux304cux5b9aux307eux3089ux306aux3044}
+
+\textbf{N=3 と N=4 では、基準にすべき平面が拮抗して 1
+枚に決まらないため、3 方向目が定まらない。} N=3 では 3 枚が、N=4 では 2
+枚が拮抗する。しかもこの拮抗は
+\textbf{最後まで落ち着かず、全区間にわたって揺れ続ける}。定常状態が無い。
+
+N=5, 6
+はまた別の様相で、\textbf{静かな期間と激しく揺れる期間が交替する}。 N=7
+以上でようやく 1 枚が卓越する。
+
+\textbf{N=8 と N=10 では初期状態そのものが作れなかった。}
+ただしこれは、実装が 1 回試して失敗したら中断する仕様のためであり、
+構造的に不可能だと確かめたわけではない（未検証）。
+
+\textbf{種は、この拮抗を解く方向に働く。} 作れた 16 通りの分解能のうち、
+拮抗している分解能の個数は、種なしで 8 個、1 か所に種を置くと 4 個、 8
+か所に置くと 2 個に減る。ただし \textbf{N=3 と N=4
+だけは、どれだけ種を置いても解けない}。
+
+「拮抗している分解能では助走が長い」という関係はなかった。両者は別々の性質である。
+\pandocbounded{\includegraphics[keepaspectratio,alt={図13　分解能と種による平面の拮抗。黄は N=3, 4（どの条件でも拮抗）、赤は初期状態が作れなかった分解能。右は、種を多く置くほど拮抗する分解能が減ることを示す。}]{figA12_resolution_regimes_v1.png}}
+
+\textbf{図13　分解能と種による平面の拮抗。黄は N=3,
+4（どの条件でも拮抗）、赤は初期状態が作れなかった分解能。右は、種を多く置くほど拮抗する分解能が減ることを示す。}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図14　分解能 1〜20 での 4 条件の判定。種なしの行は空間だけが○で、物質と時計はすべての分解能で×である。}]{figA13_nsweep_birth_matrix_v1.png}}
+\caption{図14　分解能 1〜20 での 4
+条件の判定。種なしの行は空間だけが○で、物質と時計はすべての分解能で×である。}
+\end{figure}
+
+\textbf{図14　分解能 1〜20 での 4
+条件の判定。種なしの行は空間だけが○で、物質と時計はすべての分解能で×である。}
+
+\subsubsection{N=4 だけに現れた 3
+つの異常}\label{n4-ux3060ux3051ux306bux73feux308cux305f-3-ux3064ux306eux7570ux5e38}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  平面が 2 枚拮抗して 3 方向目が定まらない
+\item
+  \textbf{時計の刻む速さが、他の分解能の 9.9 倍になる}
+\item
+  \textbf{前論文で出た特別な値 0.6972
+  を、読み出しが唯一横切る分解能である}
+\end{enumerate}
+
+126 通りの走行すべてを調べたところ、この値を越えたのは \textbf{N=4 に 1
+か所だけ種を置いた 2 走行のみ}で、到達した最大値は 0.8019 だった。
+ニュートリノ型と電子型でこの値が 12 桁一致している。
+最も近づいたときの差は 0.0000068（相対 0.001\%）である。
+
+ただし、越えるだけで留まらない。この値の ±0.001 の範囲に入っていたのは
+42000 回のうち\textbf{わずか 9 回}である。N=4
+では波が出そろったあと激しく揺れ続けており、
+その揺れが偶然この値を横切る瞬間があるにすぎない。 N=12 では最大 0.6786
+で、この値に 2.7\% 手前までしか届かない。
+\pandocbounded{\includegraphics[keepaspectratio,alt={図15　分解能 4 の異常。平面の枚数が最後まで揺れ続け（左）、その揺れが特別な値 0.6972 を横切る（右）。}]{figA04b_N4_anomaly_v1.png}}
+
+\textbf{図15　分解能 4
+の異常。平面の枚数が最後まで揺れ続け（左）、その揺れが特別な値 0.6972
+を横切る（右）。}
+
+\subsubsection{分解能 N ≥ 12 以降は N=20
+まで試験をおこなったが、おおむね大きな挙動の変化はなかった}\label{ux5206ux89e3ux80fd-n-12-ux4ee5ux964dux306f-n20-ux307eux3067ux8a66ux9a13ux3092ux304aux3053ux306aux3063ux305fux304cux304aux304aux3080ux306dux5927ux304dux306aux6319ux52d5ux306eux5909ux5316ux306fux306aux304bux3063ux305f}
+
+助走期間は 206〜277 回の範囲に収まり、単調な傾向はない。
+
+\textbf{ただし例外が 2 つある。} N=13 と N=20 では平面の拮抗が再発する。
+とくに \textbf{N=20 では 3 方向目が定まらない}。
+
+\subsubsection{波が出そろったあとは、平面はふたたび定まらなくなる}\label{ux6ce2ux304cux51faux305dux308dux3063ux305fux3042ux3068ux306fux5e73ux9762ux306fux3075ux305fux305fux3073ux5b9aux307eux3089ux306aux304fux306aux308b}
+
+「N=7 以上で 1 枚が卓越する」は、粒子的な波が出そろう前の話である。
+出そろったあとは、どの分解能でも平面の枚数が揺れ続ける。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5）「生まれる」は 4 つではなく 6 つあり、強い種は後の 2
+つを壊す}\label{ux751fux307eux308cux308bux306f-4-ux3064ux3067ux306fux306aux304f-6-ux3064ux3042ux308aux5f37ux3044ux7a2eux306fux5f8cux306e-2-ux3064ux3092ux58caux3059}
+
+本実験が判定しているのは、次の 6 つである。
+
+系が作れたか／\textbf{空間が生まれたか}（3
+方向目が立つ）／\textbf{物質が生まれたか}（奇数の帯に波が現れる）／
+\textbf{時計が生まれたか}（系が自分の時間を読み出せる）／\textbf{3
+方向目が定まったか}／ \textbf{凝縮体ができているか}。
+
+種を強くしていくと、\textbf{前の 4 つは増えるが、後の 2 つは失われる}。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}rccccc@{}}
+\toprule\noalign{}
+種の強さ & 空間 & 物質 & 時計 & 3 方向目が定まる & 凝縮体 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+10⁻¹⁵、10⁻⁸ & ○ & ○ & \textbf{×} & ○ & ○ \\
+10⁻⁴、10⁻³ & ○ & ○ & ○ & ○ & ○ \\
+10⁻² & ○ & ○ & ○ & ○ & \textbf{×}（種を多く置いた場合） \\
+0.03 以上 & ○ & ○ & ○ & \textbf{×} & \textbf{×} \\
+\end{longtable}
+}
+
+\textbf{強い種は、物質と時計を生む代わりに、3
+方向目の確かさと凝縮体を壊す。}
+単純に生まれていくのではなく、引き換えになっている。
+
+さらに、更新を 300000 回まで延ばすと、\textbf{強さ 10⁻²
+でも最後には凝縮体が壊れる}。 42000
+回で凝縮体ありと見えていたのは、まだ壊れる前だっただけである。
+\pandocbounded{\includegraphics[keepaspectratio,alt={図16　6 つの判定。太い横線より上の 4 つは種を強くすると増えるが、下の 2 つは失われる。}]{figA19_six_criteria_tradeoff_v1.png}}
+
+\textbf{図16　6 つの判定。太い横線より上の 4
+つは種を強くすると増えるが、下の 2 つは失われる。}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6）偶数の帯だけに種を置くと、相互作用そのものが一度も起こらない}\label{ux5076ux6570ux306eux5e2fux3060ux3051ux306bux7a2eux3092ux7f6eux304fux3068ux76f8ux4e92ux4f5cux7528ux305dux306eux3082ux306eux304cux4e00ux5ea6ux3082ux8d77ux3053ux3089ux306aux3044}
+
+偶数の帯だけに種を置くと、42000 回の全区間・8 段階の強さすべてで、
+\textbf{奇数の帯に波がまったく現れない}。それだけでなく、
+\textbf{波が立った帯は 16 本のうち 2
+本だけ}------背景の振動と種そのもの------で、
+\textbf{この種が狙っていた相手の帯すら立たない}。
+
+理由はこうである。相互作用の強さを決める係数は、
+奇数の帯と偶数の帯のパワーの比から作られている。奇数の帯がゼロなら、この係数もゼロになる。
+係数がゼロなら、相互作用の式は丸ごとゼロになる。
+\textbf{偶数の帯だけに種を置くと、相互作用が一度も起こらず、系は更新の前半だけで動く。}
+
+奇数の帯に波が現れない理由自体は、更新の仕組みから出る。 相互作用は 3
+つの波が出会う形をしているので、
+出てくる波が偶数の帯か奇数の帯かは、入ってきた 3
+つの偶奇の合計で決まる。
+偶数だけが集まっても、出てくるのは偶数だけである。
+
+そのかわり、この種は 3 方向目の確かさと凝縮体を、どの強さでも保つ。
+相互作用が起こらないから壊れない。5）で述べた引き換えの、最も分かりやすい対照になっている。
+\pandocbounded{\includegraphics[keepaspectratio,alt={図17　帯ごとの育ち方。左はニュートリノ型で、狙った相手の帯が立つ。中は偶数の帯だけの種で、立った帯は 2 本だけである。右は相互作用の強さを決める係数で、偶数の帯だけの種では全区間ゼロである。}]{figA04_band_evolution_sumrule_v1.png}}
+
+\textbf{図17　帯ごとの育ち方。左はニュートリノ型で、狙った相手の帯が立つ。中は偶数の帯だけの種で、立った帯は
+2
+本だけである。右は相互作用の強さを決める係数で、偶数の帯だけの種では全区間ゼロである。}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図18　偶数の帯だけの種では、奇数の帯が 42000 回の全区間・8 段階の強さすべてで厳密にゼロのままである。}]{figA07_parity_selection_rule_v1.png}}
+\caption{図18　偶数の帯だけの種では、奇数の帯が 42000 回の全区間・8
+段階の強さすべてで厳密にゼロのままである。}
+\end{figure}
+
+\textbf{図18　偶数の帯だけの種では、奇数の帯が 42000 回の全区間・8
+段階の強さすべてで厳密にゼロのままである。}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7）本系には時間が二重に現れる。更新の順序は時間ではない}\label{ux672cux7cfbux306bux306fux6642ux9593ux304cux4e8cux91cdux306bux73feux308cux308bux66f4ux65b0ux306eux9806ux5e8fux306fux6642ux9593ux3067ux306fux306aux3044}
+
+本稿には時間と呼びうるものが 2
+つ現れる。ひとつは\textbf{外から数える更新の回数}で、
+これは我々が実験を回すために付けた通し番号にすぎず、系の中にはない。
+もうひとつは\textbf{系が自分の状態から読み出す時計}で、
+これは全体が形を変えずに一定の角度ずつ回るようになって初めて存在する。
+
+\textbf{この 2 つを混同してはならない。}
+本系の力学には、時間という名前の量が入力されていない。
+入っているのは更新の手続きだけである。
+それにもかかわらず、系が育つと、状態どうしの関係から回転の刻みが読めるようになる。
+\textbf{時間は与えたものではなく、読み出せるようになったものである。}
+
+さらに、その時計についても 3 つが別の量であることが分かった。
+
+\subsubsection{時計が「ある」ことと「一定である」ことと「その速さ」は別である}\label{ux6642ux8a08ux304cux3042ux308bux3053ux3068ux3068ux4e00ux5b9aux3067ux3042ux308bux3053ux3068ux3068ux305dux306eux901fux3055ux306fux5225ux3067ux3042ux308b}
+
+系が自分の時間を読み出せるようになる更新回数と、
+その読み出した速さが一定値に落ち着く更新回数は、別の量である。
+
+\begin{itemize}
+\tightlist
+\item
+  8 か所に種を置いた場合、4000 回の更新では \textbf{N が 15
+  以上で速さが落ち着かない} （時間を読み出せるようにはなっている）
+\item
+  3）で述べた位相を打ち消す操作をすると、\textbf{落ち着くまでの回数が
+  15638 回から 18 回へ、 870 倍速くなる}（強さ 0.1 では 96 回から 6 回）
+\item
+  時計の刻む速さそのものが条件によって変わる。 132 走行のうち \textbf{67
+  走行で基準から 5\% 以上ずれた}。最大は N=4 での 9.9 倍である
+\end{itemize}
+
+\textbf{時計が生まれただけでは、系が一定の時を刻んでいることを意味しない。}
+\pandocbounded{\includegraphics[keepaspectratio,alt={図19　時計が生まれる更新回数（左）と、混合率の山（右）。左の灰色の領域では、42000 回の観測のあいだ時計が生まれない。}]{figA08_amplitude_window_v1.png}}
+
+\textbf{図19　時計が生まれる更新回数（左）と、混合率の山（右）。左の灰色の領域では、42000
+回の観測のあいだ時計が生まれない。}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8）前論文で見つけた約数の類による分類は、周期の等分数を変えても成り立つ}\label{ux524dux8ad6ux6587ux3067ux898bux3064ux3051ux305fux7d04ux6570ux306eux985eux306bux3088ux308bux5206ux985eux306fux5468ux671fux306eux7b49ux5206ux6570ux3092ux5909ux3048ux3066ux3082ux6210ux308aux7acbux3064}
+
+前回の論文は、背景の海の中では波の性質が第 2
+の向きの巻き数そのものではなく、
+\textbf{その巻き数と「周期の等分数」との最大公約数}にしか依存しないことを見つけていた。
+
+ここで\textbf{周期の等分数}とは、実験系の説明で述べた「第 2 の向きを 1
+周何等分してあるか」である。
+巻き数は等分数で割った余りとしてしか意味を持たないので、
+等分数を変えれば、どの巻き数どうしが同じ類に入るかも変わるはずである。
+前回の論文はこの点を検証課題として登録していた。本実験ではこれを検定した。
+
+前論文と同じ等分数 16 で走らせ直し、前論文の保存済み結果と \textbf{62
+件すべてがビット単位で一致}することを確認した。 そのうえで等分数
+8・12・32 を追加し、 \textbf{278
+通りの組すべてで予想どおり、外れはゼロ}であった。
+
+決め手は巻き数 1 と 3 の組である。最大公約数で決まるなら、この組は
+等分数 8・16・32 では同じ類、\textbf{等分数 12
+でだけ別の類}になるはずである。 実測では、等分数 8・16・32 で \textbf{14
+桁一致}し、等分数 12 でだけ \textbf{60\% 違った}。
+\pandocbounded{\includegraphics[keepaspectratio,alt={図20　周期の等分数を変えた検定。同じ色の点が同じ高さに揃う。巻き数 1 と 3 は等分数 8・16・32 で 14 桁一致し、等分数 12 でだけ 60\% 違う。}]{figA14_divisor_class_register_order_v1.png}}
+
+\textbf{図20　周期の等分数を変えた検定。同じ色の点が同じ高さに揃う。巻き数
+1 と 3 は等分数 8・16・32 で 14 桁一致し、等分数 12 でだけ 60\% 違う。}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{残された課題}\label{ux6b8bux3055ux308cux305fux8ab2ux984c}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  N=8 と N=10
+  で初期状態が作れなかったのは、構造的なものか実装の打ち切りか
+\item
+  「弱すぎると粒子的な波ができない」も観測時間の産物か
+\item
+  種を多く置いた場合の強さ 10⁻² の長時間走行。 本稿の飽和則（図7）は 14
+  点で引いてある。この 2 点が加われば 16 点になる。
+  冪の値は変わりうるが、有限の観測時間で見かけの下限が生じるという結論は変わらない
+\item
+  多体の系でも約数の類による分類が成り立つか（8）は 2
+  つの波の系で確かめた）
+\item
+  第 1 の向きの等分数（本実験では 16）を変えた検定
+\item
+  相互作用が実際に使っている係数そのものの測定 （前論文の 0.6972
+  との関係はここで決まる）
+\item
+  前論文の 62 種類と、本実験でどの場所がどの粒子に当たるかの突き合わせ
+\end{enumerate}
+
+以下は本稿の範囲を超えるため、続篇で扱う。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\item
+  \textbf{助走則と飽和則を分ける直交実験。}
+  本稿の位相相殺実験は、パワーと置き場所を固定して複素数の和を変えた。
+  その直交な対として、\textbf{和を固定したままパワーだけを変える}初期条件を作れば、
+  立ち上がりは変わらず出そろう時刻だけが変わるはずである。
+  同時に、3）節で述べた「和か二乗の和か」の区別も、
+  和はゼロだが二乗の和はゼロでない配置を入れれば決着する
+\item
+  \textbf{飽和則の外挿による反証。} 既存 14
+  点で冪を固定したまま、未測定の強さについて出そろう時刻を事前に予測し、
+  フィットし直さずに当てにいく。当たれば経験則が一段強くなる
+\item
+  \textbf{どこまでが関係だけで閉じているかの形式的な監査。} 本稿が使った
+  3 つの読出し（平面と 3 方向目、帯と混合率、時計の判定）について、
+  入力が関係の組だけで閉じているか、点に付随する量が混じっていないかを分類する。
+
+  \textbf{ただしここは 2 段に分けて考える必要がある。}
+  読出しが関係だけで閉じていると確かめられても、それが示すのは
+  \textbf{読み出す写像が関係だけで閉じている}ことであって、
+  \textbf{系そのものが関係だけで動いている}ことではない。
+  後者を言うには、初期状態の作り方・更新の前半・相互作用の側にも同じ監査が要る。
+
+  すなわち、状態を作る → 更新する → 相互作用する →
+  読み出す、の各段について、
+  点そのものに付いた量が紛れ込んでいないかを順に確かめる必要がある。
+  本稿はその最後の 1 段（読み出す）についてすら、まだ確かめていない
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{補遺　全実験・全図表・全プログラムの一覧}\label{ux88dcux907a-ux5168ux5b9fux9a13ux5168ux56f3ux8868ux5168ux30d7ux30edux30b0ux30e9ux30e0ux306eux4e00ux89a7}
+
+本補遺は \texttt{make\_paperA\_appendix\_v1.py}
+がフォルダを走査して自動生成したものである。
+手作業で書き写した箇所はない。
+
+\subsection{補遺A　実験の一覧}\label{ux88dcux907aa-ux5b9fux9a13ux306eux4e00ux89a7}
+
+走行ごとの保存データ（NPZ）は \textbf{126 件}、合計 1174 MB である。
+種の置き場所・種の強さ・更新回数・分解能のいずれかが違えば別の走行として数えている。
+
+\subsubsection{A-1　走行の内訳}\label{a-1-ux8d70ux884cux306eux5185ux8a33}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+更新回数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+分解能 N
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+走行数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+300000 & 12 & 2 & ニュートリノ型（1か所）、電子型（1か所） \\
+42000 & 4 & 4 &
+ニュートリノ型（1か所）、奇数の帯5か所、混合8か所、電子型（1か所） \\
+42000 & 12 & 52 &
+ニュートリノ型（1か所）、偶数の帯3か所、奇数の帯5か所、混合8か所、種なし、電子型（1か所） \\
+4000 & 3 & 4 &
+ニュートリノ型（1か所）、混合8か所、種なし、電子型（1か所） \\
+4000 & 4 & 8 &
+ニュートリノ型（1か所）、奇数の帯5か所、混合8か所、種なし、電子型（1か所） \\
+4000 & 5 & 4 &
+ニュートリノ型（1か所）、混合8か所、種なし、電子型（1か所） \\
+4000 & 6 & 4 &
+ニュートリノ型（1か所）、混合8か所、種なし、電子型（1か所） \\
+4000 & 7 & 4 &
+ニュートリノ型（1か所）、混合8か所、種なし、電子型（1か所） \\
+4000 & 9 & 4 &
+ニュートリノ型（1か所）、混合8か所、種なし、電子型（1か所） \\
+4000 & 11 & 4 &
+ニュートリノ型（1か所）、混合8か所、種なし、電子型（1か所） \\
+4000 & 12 & 4 &
+ニュートリノ型（1か所）、混合8か所、種なし、電子型（1か所） \\
+4000 & 13 & 4 &
+ニュートリノ型（1か所）、混合8か所、種なし、電子型（1か所） \\
+4000 & 14 & 4 &
+ニュートリノ型（1か所）、混合8か所、種なし、電子型（1か所） \\
+4000 & 15 & 4 &
+ニュートリノ型（1か所）、混合8か所、種なし、電子型（1か所） \\
+4000 & 16 & 4 &
+ニュートリノ型（1か所）、混合8か所、種なし、電子型（1か所） \\
+4000 & 17 & 4 &
+ニュートリノ型（1か所）、混合8か所、種なし、電子型（1か所） \\
+4000 & 18 & 4 &
+ニュートリノ型（1か所）、混合8か所、種なし、電子型（1か所） \\
+4000 & 19 & 4 &
+ニュートリノ型（1か所）、混合8か所、種なし、電子型（1か所） \\
+4000 & 20 & 4 &
+ニュートリノ型（1か所）、混合8か所、種なし、電子型（1か所） \\
+\end{longtable}
+}
+
+\subsubsection{A-2　主実験（分解能 12・更新 42000 回）の 40
+条件}\label{a-2-ux4e3bux5b9fux9a13ux5206ux89e3ux80fd-12ux66f4ux65b0-42000-ux56deux306e-40-ux6761ux4ef6}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 16\tabcolsep) * \real{0.1111}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+種の置き方
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1e-15
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+1e-08
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.0001
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.001
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.01
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.0316228
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.04357
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.1
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+ニュートリノ型（1か所） & ○ & ○ & ○ & ○ & ○ & ○ & ○ & ○ \\
+電子型（1か所） & ○ & ○ & ○ & ○ & ○ & ○ & ○ & ○ \\
+奇数の帯5か所 & ○ & ○ & ○ & ○ & ○ & ○ & ○ & ○ \\
+偶数の帯3か所 & ○ & ○ & ○ & ○ & ○ & ○ & ○ & ○ \\
+混合8か所 & ○ & ○ & ○ & ○ & ○ & ○ & ○ & ○ \\
+\end{longtable}
+}
+
+\subsubsection{A-3　対照・追試・長時間走行}\label{a-3-ux5bfeux7167ux8ffdux8a66ux9577ux6642ux9593ux8d70ux884c}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+種類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+走行
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+目的
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+再現対照 & 混合8か所・強さ 0.01・更新 42000・N=12 &
+\texttt{cohmixv1-ctl1} \\
+再現対照 & 混合8か所・強さ 0.0316228・更新 42000・N=12 &
+\texttt{cohmixv1-ctl1} \\
+再現対照 & 混合8か所・強さ 0.04357・更新 42000・N=12 &
+\texttt{cohmixv1-ctl1} \\
+再現対照 & 混合8か所・強さ 0.1・更新 42000・N=12 &
+\texttt{cohmixv1-ctl1} \\
+再現対照 & 混合8か所・強さ 0.01・更新 42000・N=12 &
+\texttt{controlrep1} \\
+再現対照 & ニュートリノ型（1か所）・強さ 0.01・更新 42000・N=12 &
+\texttt{controlrep1} \\
+位相を打ち消した種 & 混合8か所・強さ 0.01・更新 42000・N=12 &
+\texttt{pbmixv1-r1} \\
+位相を打ち消した種 & 混合8か所・強さ 0.0316228・更新 42000・N=12 &
+\texttt{pbmixv1-r1} \\
+位相を打ち消した種 & 混合8か所・強さ 0.04357・更新 42000・N=12 &
+\texttt{pbmixv1-r1} \\
+位相を打ち消した種 & 混合8か所・強さ 0.1・更新 42000・N=12 &
+\texttt{pbmixv1-r1} \\
+位相を打ち消した種 & 混合8か所・強さ 0.04357・更新 42000・N=12 &
+\texttt{pbmixv1-r2} \\
+長時間走行 & 電子型（1か所）・強さ 0.01・更新 300000・N=12 &
+\texttt{s4-n12-electron-t300000-l1} \\
+長時間走行 & ニュートリノ型（1か所）・強さ 0.01・更新 300000・N=12 &
+\texttt{s4-n12-neutral-t300000-l1} \\
+分解能 4 の追加走行 & 電子型（1か所）・強さ 0.01・更新 4000・N=4 &
+\texttt{s4-n4-electron-t4000-c1} \\
+分解能 4 の追加走行 & 電子型（1か所）・強さ 0.01・更新 42000・N=4 &
+\texttt{s4-n4-electron-t42000-l1} \\
+分解能 4 の追加走行 & 奇数の帯5か所・強さ 0.01・更新 4000・N=4 &
+\texttt{s4-n4-f5-t4000-c1} \\
+分解能 4 の追加走行 & 奇数の帯5か所・強さ 0.01・更新 42000・N=4 &
+\texttt{s4-n4-f5-t42000-l1} \\
+分解能 4 の追加走行 & 混合8か所・強さ 0.01・更新 4000・N=4 &
+\texttt{s4-n4-mixed-t4000-c1} \\
+分解能 4 の追加走行 & 混合8か所・強さ 0.01・更新 42000・N=4 &
+\texttt{s4-n4-mixed-t42000-l1} \\
+分解能 4 の追加走行 & ニュートリノ型（1か所）・強さ 0.01・更新 4000・N=4
+& \texttt{s4-n4-neutral-t4000-c1} \\
+分解能 4 の追加走行 & ニュートリノ型（1か所）・強さ 0.01・更新
+42000・N=4 & \texttt{s4-n4-neutral-t42000-l1} \\
+\end{longtable}
+}
+
+\subsection{補遺B　図の一覧}\label{ux88dcux907ab-ux56f3ux306eux4e00ux89a7}
+
+本文で使う図は \textbf{19 枚}、走行ごとの記録図は \textbf{462 枚}、
+全数目視のために焼いた一覧シートは \textbf{41 枚}である。
+
+\subsubsection{B-1　本文の図}\label{b-1-ux672cux6587ux306eux56f3}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+図 & ファイル \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+figA01 & \texttt{figA01\_lattice\_and\_seeds\_v1.png} \\
+figA02 & \texttt{figA02\_experiment\_matrix\_v1.png} \\
+figA03 & \texttt{figA03\_full\_run\_example\_v1.png} \\
+figA04 & \texttt{figA04\_band\_evolution\_sumrule\_v1.png} \\
+figA05 & \texttt{figA05\_three\_births\_v1.png} \\
+figA06 & \texttt{figA06\_support\_structure\_v1.png} \\
+figA07 & \texttt{figA07\_parity\_selection\_rule\_v1.png} \\
+figA08 & \texttt{figA08\_amplitude\_window\_v1.png} \\
+figA09 & \texttt{figA09\_tau\_space\_all\_conditions\_v1.png} \\
+figA10 & \texttt{figA10\_runup\_log\_law\_v1.png} \\
+figA11 & \texttt{figA11\_phase\_cancellation\_v1.png} \\
+figA12 & \texttt{figA12\_resolution\_regimes\_v1.png} \\
+figA13 & \texttt{figA13\_nsweep\_birth\_matrix\_v1.png} \\
+figA14 & \texttt{figA14\_divisor\_class\_register\_order\_v1.png} \\
+figA15 & \texttt{figA15\_reproduction\_controls\_v1.png} \\
+figA16 & \texttt{figA16\_saturation\_power\_law\_v1.png} \\
+figA17 & \texttt{figA17\_two\_laws\_v1.png} \\
+figA18 & \texttt{figA18\_selectivity\_window\_v1.png} \\
+figA19 & \texttt{figA19\_six\_criteria\_tradeoff\_v1.png} \\
+\end{longtable}
+}
+
+\subsubsection{B-2　走行ごとの記録図（系統別の枚数）}\label{b-2-ux8d70ux884cux3054ux3068ux306eux8a18ux9332ux56f3ux7cfbux7d71ux5225ux306eux679aux6570}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llr@{}}
+\toprule\noalign{}
+系統 & 内容 & 枚数 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+4panel & 空間・平面の枚数・時計・打ち消し残りの 4 段 & 126 \\
+mix & 帯ごとのパワーと混合率 & 126 \\
+ledger & 128 か所の地図と、狙った場所の育ち方 & 78 \\
+summary & 分解能ごとの要約 & 66 \\
+birth\_matrix & 6 つの判定の一覧 & 66 \\
+\end{longtable}
+}
+
+命名は
+\texttt{fig\_\textless{}種の置き方\textgreater{}{[}\_T更新回数{]}{[}\_d強さ{]}{[}\_rep-識別子{]}\_\textless{}系統\textgreater{}{[}\_N分解能{]}\_v2.png}。
+この規約により、本文で参照した図はファイル名から一意に特定できる。
+
+\subsubsection{B-3　全数目視のための一覧シート}\label{b-3-ux5168ux6570ux76eeux8996ux306eux305fux3081ux306eux4e00ux89a7ux30b7ux30fcux30c8}
+
+走行ごとの記録図 462 枚を 1 枚あたり 12 図で焼いた 41 枚。
+\texttt{sheet\_\textless{}系統\textgreater{}\_\textless{}通し番号\textgreater{}.png}。監査の経過は
+\texttt{分析記録\_全図面監査\_v2.md} に記録した。
+
+\subsection{補遺C　プログラムの一覧}\label{ux88dcux907ac-ux30d7ux30edux30b0ux30e9ux30e0ux306eux4e00ux89a7}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+役割
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ファイル
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+SHA-256（先頭16桁）
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+実験本体（分解能掃引・種の置き方・強さ） &
+\texttt{run\_nsweep\_three\_series\_v2.py} & c4b3b33a82657232 \\
+実験本体の下層（分解能 1〜20 の掃引と図） &
+\texttt{run\_tb\_nsweep\_1to20\_v1.py} & 1615b8769cf765a4 \\
+不足していた種の置き方の追加取得 &
+\texttt{run\_missing\_seed\_sweeps\_T42000\_v1.py} & 75f9ee9745209f89 \\
+位相を打ち消した種の走行 & \texttt{run\_phase\_balanced\_mixed\_v1.py} &
+7c53508c13c23776 \\
+同上（強さを変えた版） &
+\texttt{run\_phase\_balanced\_mixed\_grid\_v1.py} & fe1d21ce92958ebd \\
+周期の等分数を変えた検定 &
+\texttt{run\_divisor\_class\_register\_order\_v1.py} &
+29f9c1f8a6334c29 \\
+主張の数値を保存データから再計算し照合 &
+\texttt{aggregate\_paperA\_claims\_v1.py} & 4a3a00e4d4cf3dc1 \\
+本文の図（15 枚） & \texttt{make\_paperA\_figures\_v2.py} &
+40106fda39749245 \\
+監査から出た図（4 枚） & \texttt{make\_paperA\_figures\_audit\_v1.py} &
+10c912b5c7dfebd6 \\
+特別な値 0.6972 への最接近を全走行から取得 &
+\texttt{probe\_alpha\_root\_closest\_approach\_v1.py} &
+9c2564174074e7a2 \\
+全数目視のための一覧シート & \texttt{make\_contact\_sheets\_v1.py} &
+5f17d29b5837210b \\
+本補遺の生成 & \texttt{make\_paperA\_appendix\_v1.py} &
+897e33d4923e10a0 \\
+長時間走行と分解能 4 の追加走行の管理 &
+\texttt{run\_stage4\_longtime\_orchestrator\_v1.py} &
+d8114c14ed54a3a6 \\
+\end{longtable}
+}
+
+\subsubsection{C-1　外部から読み込んでいる力学（本論文では一切変更していない）}\label{c-1-ux5916ux90e8ux304bux3089ux8aadux307fux8fbcux3093ux3067ux3044ux308bux529bux5b66ux672cux8ad6ux6587ux3067ux306fux4e00ux5207ux5909ux66f4ux3057ux3066ux3044ux306aux3044}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+役割
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ファイル
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+SHA-256（先頭16桁）
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+相互作用（更新の後半） &
+\texttt{../統一万能関数\_v1/unified\_interaction\_v1.py} &
+b4db659b9bf95824 \\
+平面と 3 方向目の読み出し &
+\texttt{../統一万能関数\_v1/unified\_dimension\_v1.py} &
+cfc9cf5d835e39ec \\
+帯・混合率・物質量の読み出し &
+\texttt{../統一万能関数\_v1/unified\_readout\_v3.py} &
+4dec07c9811c3c06 \\
+時計が読めるかどうかの判定 &
+\texttt{../統一万能関数\_v1/selection\_v1.py} & 90d546e61e20ce58 \\
+2 つの波の系（8）の検定に使用） &
+\texttt{../万能非弾性写像\_managed\_v1/run\_ignition\_fate\_exact\_v3.py}
+& f8aa9a12fe88d205 \\
+\end{longtable}
+}
+
+これらは読み込み専用で取り込んでおり、走行の前後で自身の SHA-256
+を検査する。 食い違えばその場で停止する。
+
+\subsection{補遺D　事前登録・結果報告・検算の記録}\label{ux88dcux907ad-ux4e8bux524dux767bux9332ux7d50ux679cux5831ux544aux691cux7b97ux306eux8a18ux9332}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+種類
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ファイル
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+事前登録（測定前に予想を固定した文書） &
+\texttt{事前登録\_d3.162e-2\_v1.md} \\
+事前登録（測定前に予想を固定した文書） &
+\texttt{事前登録\_d4.36e-2\_v1.md} \\
+事前登録（測定前に予想を固定した文書） &
+\texttt{事前登録\_electron\_affine16\_16to64診断\_v1.md} \\
+事前登録（測定前に予想を固定した文書） &
+\texttt{事前登録\_シード型別δ一括掃引\_T42000\_v1.md} \\
+事前登録（測定前に予想を固定した文書） &
+\texttt{事前登録\_シード生成構造判別実験\_v1.md} \\
+事前登録（測定前に予想を固定した文書） &
+\texttt{事前登録\_第1段階格子拡張\_phase\_balanced\_v1.md} \\
+事前登録（測定前に予想を固定した文書） &
+\texttt{事前登録\_第3段階有限位数root\_passive\_probe\_v1.md} \\
+事前登録（測定前に予想を固定した文書） &
+\texttt{事前登録\_約数類定理レジスタ位数追随検定\_v1.md} \\
+結果報告 & \texttt{結果報告\_α根最接近\_全走行\_v1.md} \\
+結果報告 & \texttt{結果報告\_シード型別δ一括掃引\_T42000\_v1.md} \\
+結果報告 & \texttt{結果報告\_約数類定理レジスタ位数追随検定\_v1.md} \\
+分析記録 & \texttt{分析記録\_全図面監査\_v1.md} \\
+分析記録 & \texttt{分析記録\_全図面監査\_v2.md} \\
+数値の記録 & \texttt{result\_paperA\_claims\_v1.json} \\
+数値の記録 & \texttt{result\_paperA\_audit\_figs\_v1.json} \\
+数値の記録 &
+\texttt{result\_divisor\_class\_register\_order\_v1.json} \\
+数値の記録 & \texttt{result\_alpha\_root\_closest\_v1.json} \\
+\end{longtable}
+}
+
+\subsection{補遺E　検算の結果}\label{ux88dcux907ae-ux691cux7b97ux306eux7d50ux679c}
+
+主張の数値は、保存データから独立に計算し直して、既存の記録と機械的に照合してある。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+検査
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+結果
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+保存データから再計算した立ち上がり・時計の回数が記録と一致するか & 40
+条件・食い違い 0 件 \\
+波が占める場所の数 & 一致 \\
+偶数の帯だけの種で奇数の帯が厳密にゼロか & 最大値 0.0 \\
+助走期間の式 & 9.8922 − 48.6108 × ln（複素数として足した大きさ）　R² =
+0.999868 \\
+同じ点をパワーの合計で整理した場合 & R² = 0.992202 \\
+位相を打ち消した種の 4 条件 & すべて予想どおり \\
+前論文の結果の再現（等分数 16） & 62 件・最大の食い違い 0.0e+00 \\
+周期の等分数を変えた検定 & 278 通り・外れ 0 件 \\
+波が出そろうまでの回数の式 & 奇数の帯に置いたパワーの -1.073
+乗に比例　R² = 0.9960（14 点） \\
+\end{longtable}
+}
+
+\end{document}
