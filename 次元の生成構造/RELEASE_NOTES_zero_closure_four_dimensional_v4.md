@@ -15,6 +15,11 @@
 - 英語版: https://note.com/kiharanoriaki/n/n187532ebbee2
   （元原稿: `次元の生成構造/ゼロ閉塞の幾何・代数構造/zero_closure_was_four_dimensional_note_v1_en.md`）
 
+## Facebook
+- 日本語版: https://www.facebook.com/kihara.noriaki/posts/pfbid021MoWouqaVQhx9FCRG77QDgTVFR1zDmrYjLaLh5skVwBj929zfjoyP7hZ8BsJgSeDl
+  （元原稿: `次元の生成構造/facebook_zero_closure_four_dimensional_ja_v1.md`）
+- 英語版: 元原稿 `次元の生成構造/facebook_zero_closure_four_dimensional_en_v1.md`
+
 ## 公開ファイル（Zenodo, 6点）
 - `ゼロ閉塞は４次元だった_主張案_v4.md` / `Zero_Closure_Was_Four_Dimensional_Claim_Draft_v4_en.md`
 - `ゼロ閉塞は４次元だった_主張案_v4.tex` / `Zero_Closure_Was_Four_Dimensional_Claim_Draft_v4_en.tex`
