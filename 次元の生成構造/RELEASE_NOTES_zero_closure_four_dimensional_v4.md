@@ -10,7 +10,10 @@
   （元原稿: `articles/zero-closure-was-four-dimensional.md`）
 
 ## note
-- 元原稿: `次元の生成構造/ゼロ閉塞の幾何・代数構造/note記事_ゼロ閉塞は4次元だった_v1.md`
+- 日本語版: https://note.com/kiharanoriaki/n/n8d9f407546f4
+  （元原稿: `次元の生成構造/ゼロ閉塞の幾何・代数構造/note記事_ゼロ閉塞は4次元だった_v1.md`）
+- 英語版: https://note.com/kiharanoriaki/n/n187532ebbee2
+  （元原稿: `次元の生成構造/ゼロ閉塞の幾何・代数構造/zero_closure_was_four_dimensional_note_v1_en.md`）
 
 ## 公開ファイル（Zenodo, 6点）
 - `ゼロ閉塞は４次元だった_主張案_v4.md` / `Zero_Closure_Was_Four_Dimensional_Claim_Draft_v4_en.md`
