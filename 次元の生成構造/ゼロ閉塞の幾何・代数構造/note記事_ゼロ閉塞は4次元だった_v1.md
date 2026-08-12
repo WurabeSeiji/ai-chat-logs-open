@@ -189,9 +189,9 @@ https://doi.org/10.5281/zenodo.21902806
 Concept DOI（常に最新版を指します）: 10.5281/zenodo.21902805
 https://doi.org/10.5281/zenodo.21902805
 
-日本語版の本文 PDF（78ページ）は、公開リポジトリから直接ご覧いただけます。
+日本語版の本文 PDF（78ページ）は、公開リポジトリからダウンロードできます。
 
-https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E3%82%BC%E3%83%AD%E9%96%89%E5%A1%9E%E3%81%AE%E5%B9%BE%E4%BD%95%E3%83%BB%E4%BB%A3%E6%95%B0%E6%A7%8B%E9%80%A0/%E3%82%BC%E3%83%AD%E9%96%89%E5%A1%9E%E3%81%AF%EF%BC%94%E6%AC%A1%E5%85%83%E3%81%A0%E3%81%A3%E3%81%9F_%E4%B8%BB%E5%BC%B5%E6%A1%88_v4.pdf
+https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E3%82%BC%E3%83%AD%E9%96%89%E5%A1%9E%E3%81%AE%E5%B9%BE%E4%BD%95%E3%83%BB%E4%BB%A3%E6%95%B0%E6%A7%8B%E9%80%A0/%E3%82%BC%E3%83%AD%E9%96%89%E5%A1%9E%E3%81%AF%EF%BC%94%E6%AC%A1%E5%85%83%E3%81%A0%E3%81%A3%E3%81%9F_%E4%B8%BB%E5%BC%B5%E6%A1%88_v4.pdf
 
 図・数値を再現するプログラムは全てリポジトリに置いてあり、md5 ハッシュ付きで一覧にしてあります。乱数シードも固定してあるので、同じ数字が出ます。
 
