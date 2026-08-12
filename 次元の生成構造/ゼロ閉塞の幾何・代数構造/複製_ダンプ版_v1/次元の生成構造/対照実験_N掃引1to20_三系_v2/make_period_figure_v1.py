@@ -116,7 +116,12 @@ def peak_gap_estimate(y: np.ndarray, min_gap: int = 8):
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("stem")
-    ap.add_argument("--dense-end", type=int, default=4000)
+    # 【2026-08-12 修正】既定値 4000 を固定していたため、密領域を広げて走らせても
+    # τ<4000 しか測らないという罠があった（N=16 は転移が τ≈9000 にあり、
+    # 4000 で切ると転移が窓の外になる）。既定は None とし、走行時の
+    # DUMP_TAUC（dump_meta の dump_tauc）を読んで密領域の実際の端を使う。
+    ap.add_argument("--dense-end", type=int, default=None,
+                    help="密領域の終端 τ。既定は dump_meta の dump_tauc に従う")
     ap.add_argument("--stride", type=int, default=31)
     ap.add_argument("--win", type=int, default=496)
     ap.add_argument("--outdir", default="figures_tau")
@@ -124,6 +129,17 @@ def main() -> None:
 
     outdir = HERE / ns.outdir
     outdir.mkdir(parents=True, exist_ok=True)
+
+    # 密領域の終端と関係の本数 M を、走行のメタから決める（ハードコードしない）
+    meta_path = HERE / f"dump_meta_{ns.stem}_m_v1.npz"
+    meta = np.load(meta_path) if meta_path.exists() else {}
+    if ns.dense_end is None:
+        ns.dense_end = int(meta["dump_tauc"]) if "dump_tauc" in getattr(meta, "files", []) \
+            else 4000
+        print(f"  [dense-end] メタの dump_tauc から {ns.dense_end} を採用")
+    if "dump_stride" in getattr(meta, "files", []):
+        ns.stride = int(meta["dump_stride"])
+    M_REL = int(meta["m"]) if "m" in getattr(meta, "files", []) else None
 
     series = {}
     for side in ("m", "v"):
@@ -158,7 +174,9 @@ def main() -> None:
                 color=COL[side], lw=0.8, label=NAME[side])
     ax.set_xlabel("tau"); ax.set_ylabel("mean relation length")
     ax.legend(fontsize=9, loc="upper left")
-    ax.set_title("(a) the observable: mean of the M = 66 relation lengths"
+    # 【2026-08-12 修正】M を 66 に固定していたため N=16（M=120）で題字が誤っていた
+    ax.set_title(f"(a) the observable: mean of the M = {M_REL if M_REL else '?'}"
+                 " relation lengths"
                  f"   [dense region, every step, tau < {ns.dense_end}]",
                  fontsize=11, pad=4)
     ax.grid(alpha=0.25)
