@@ -102,6 +102,7 @@ from __future__ import annotations
 import importlib.util
 import json
 import math
+import os                      # ダンプ版 v2 の追加（環境変数で二段サンプリング指定）
 import re
 import sys
 import time
@@ -258,6 +259,39 @@ REC_KEYS = ("r_mean", "r_med", "r_min", "r_max", "r_raw",
             "seed_power", "pump_power", "primary_seed_power")
 
 
+# ===== ダンプ版 v2 の追加（0/3）===============================================
+# 二段サンプリングの設定。CLI を壊さないよう環境変数で与える。
+#   DUMP_TAUC   : ここまでは毎步保存（既定 4000）
+#   DUMP_STRIDE : それ以降の間引き幅（既定 31）
+# 実測根拠: 転移域は τ=2300〜2600、振幅の減衰時定数は約 1190 步。
+# τ_c=4000 は転移後 1400 步（時定数の1.2倍）まで密に覆う。
+# 間引き 31 は減衰時定数あたり 38 点で、包絡線を追うのに十分。
+DUMP_TAUC = int(os.environ.get("DUMP_TAUC", "4000"))
+DUMP_STRIDE = int(os.environ.get("DUMP_STRIDE", "31"))
+
+
+def _dump_index(t: int):
+    """步 t の保存先フレーム番号。保存しない步は None。"""
+    if t < DUMP_TAUC:
+        return t
+    d = t - DUMP_TAUC
+    return DUMP_TAUC + d // DUMP_STRIDE if d % DUMP_STRIDE == 0 else None
+
+
+def _dump_frames(T: int) -> int:
+    """T 步走ったときに保存されるフレーム総数。"""
+    if T <= DUMP_TAUC:
+        return T
+    return DUMP_TAUC + (T - 1 - DUMP_TAUC) // DUMP_STRIDE + 1
+
+
+def _dump_taus(T: int) -> np.ndarray:
+    """各フレームが対応する τ の一覧。"""
+    return np.array([t for t in range(T) if _dump_index(t) is not None],
+                    dtype=np.int64)
+# ==============================================================================
+
+
 class RecordingEngine(F1.UnifiedEngine):
     """力学は F v1 の UnifiedEngine そのまま。step 後に記録を 1 回だけ追記する。
 
@@ -273,16 +307,20 @@ class RecordingEngine(F1.UnifiedEngine):
         self._ledger_t: list = []
         self._tgt: list = []           # 狙ったセルごとのパワー（毎步）
         self._t = 0
-        self._dump = None              # ダンプ版 v1 の追加：全τの C2 memmap
+        self._dump = None              # ダンプ版 v2 の追加：C2 memmap
 
     def step(self, *a, **kw):
         out = super().step(*a, **kw)
         C2 = self.C2()
-        # ===== ダンプ版 v1 の追加（1/3）=======================================
-        # 全 τ の状態 C2（M×Nn×Nη 複素）を memmap へ書き出す。
+        # ===== ダンプ版 v2 の追加（1/3）=======================================
+        # 二段サンプリングで C2（M×Nn×Nη 複素）を memmap へ書き出す。
+        #   τ <  DUMP_TAUC : 毎步（転移を含む区間を密に取る）
+        #   τ >= DUMP_TAUC : DUMP_STRIDE 步ごと（包絡線の減衰を追う）
         # 既存の記録・判定・図には一切触れない（読むだけ）。
-        if self._dump is not None and self._t < self._dump.shape[0]:
-            self._dump[self._t] = C2
+        if self._dump is not None:
+            k = _dump_index(self._t)
+            if k is not None and k < self._dump.shape[0]:
+                self._dump[k] = C2
         # =====================================================================
         A = np.abs(C2)
         P = A ** 2
@@ -352,21 +390,29 @@ def build_universe(n, delta, Nn=5, Neta=8, seed=2):
     with np.errstate(divide="ignore", invalid="ignore"):
         q2 = q2 / np.linalg.norm(q2)
     eng = RecordingEngine(n, C2_0, wp0)
-    # ===== ダンプ版 v1 の追加（2/3）===========================================
-    # 走行ごとに C2 の memmap を用意し、初期条件（p2/q2/C2_0/セル）を併記する。
+    # ===== ダンプ版 v2 の追加（2/3）===========================================
+    # 走行ごとに C2 の memmap を用意し、初期条件と τ 対応表を併記する。
     # delta>0 が物質側（m）、delta==0 が真空対照（v）。
     _side = "m" if delta > 0 else "v"
     _stem = f"{MODE}{TAG}_N{n}_{_side}"
+    _nf = _dump_frames(int(ns.T))
+    _taus = _dump_taus(int(ns.T))
+    assert len(_taus) == _nf, f"フレーム数不一致 {len(_taus)} vs {_nf}"
     eng._dump = np.lib.format.open_memmap(
         HERE / f"dump_C2_{_stem}_v1.npy", mode="w+",
-        dtype=np.complex128, shape=(int(ns.T), m, Nn, Neta))
+        dtype=np.complex128, shape=(_nf, m, Nn, Neta))
     np.savez(HERE / f"dump_meta_{_stem}_v1.npz",
              p2=p2, q2=q2, C2_0=C2_0, Z0c=Z0c, wp0=wp0,
              n=n, m=m, Nn=Nn, Neta=Neta, T=int(ns.T), delta=float(delta),
              seed=seed, k_pump=K_PUMP, m_pump=M_PUMP,
              partner_k=PARTNER_K, m_star_idx=M_STAR_IDX,
              odd_k=np.array(ODD_K), even_k=np.array(EVEN_K),
-             cells=np.array(CELLS, dtype=float).reshape(-1, 3))
+             cells=np.array(CELLS, dtype=float).reshape(-1, 3),
+             dump_tauc=DUMP_TAUC, dump_stride=DUMP_STRIDE,
+             dump_frames=_nf, dump_taus=_taus)
+    print(f"    [dump] {_stem}: {_nf} フレーム "
+          f"(τ<{DUMP_TAUC} 毎步 / 以降 {DUMP_STRIDE} 步ごと) "
+          f"= {_nf * m * Nn * Neta * 16 / 1e6:.1f} MB")
     # =========================================================================
     _ENGINES.append(eng)
     return eng, p2, q2
