@@ -1,0 +1,151 @@
+{
+ "d": 4,
+ "N_pow": 16,
+ "N_nonpow": 13,
+ "sweep_N_at_fixed_rank": [
+  {
+   "N": 5,
+   "rank": 4,
+   "N_minus_1": 4,
+   "degenerate": true,
+   "maxmin_median": 1.0000000000000004,
+   "maxmin_worst": 1.0000000000003426
+  },
+  {
+   "N": 6,
+   "rank": 4,
+   "N_minus_1": 5,
+   "degenerate": false,
+   "maxmin_median": 1.4763363001446845,
+   "maxmin_worst": 5.837659075357333
+  },
+  {
+   "N": 7,
+   "rank": 4,
+   "N_minus_1": 6,
+   "degenerate": false,
+   "maxmin_median": 1.7566154936060332,
+   "maxmin_worst": 5.622203402259934
+  },
+  {
+   "N": 8,
+   "rank": 4,
+   "N_minus_1": 7,
+   "degenerate": false,
+   "maxmin_median": 2.0090867351183164,
+   "maxmin_worst": 9.14963491882871
+  },
+  {
+   "N": 10,
+   "rank": 4,
+   "N_minus_1": 9,
+   "degenerate": false,
+   "maxmin_median": 2.436762944782676,
+   "maxmin_worst": 10.37812603602026
+  },
+  {
+   "N": 13,
+   "rank": 4,
+   "N_minus_1": 12,
+   "degenerate": false,
+   "maxmin_median": 2.932330200550803,
+   "maxmin_worst": 8.2050086093187
+  },
+  {
+   "N": 16,
+   "rank": 4,
+   "N_minus_1": 15,
+   "degenerate": false,
+   "maxmin_median": 3.3733230918658945,
+   "maxmin_worst": 11.992199460825356
+  },
+  {
+   "N": 20,
+   "rank": 4,
+   "N_minus_1": 19,
+   "degenerate": false,
+   "maxmin_median": 3.8555517798187173,
+   "maxmin_worst": 49.47008482078182
+  }
+ ],
+ "sweep_parallelotope_d": [
+  {
+   "d": 1,
+   "N": 2,
+   "rank": 1,
+   "N_minus_1": 1,
+   "degenerate": true,
+   "maxmin_median": 1.0
+  },
+  {
+   "d": 2,
+   "N": 4,
+   "rank": 2,
+   "N_minus_1": 3,
+   "degenerate": false,
+   "maxmin_median": 1.0000000000000002
+  },
+  {
+   "d": 3,
+   "N": 8,
+   "rank": 3,
+   "N_minus_1": 7,
+   "degenerate": false,
+   "maxmin_median": 1.0000000000000004
+  },
+  {
+   "d": 4,
+   "N": 16,
+   "rank": 4,
+   "N_minus_1": 15,
+   "degenerate": false,
+   "maxmin_median": 1.0000000000000007
+  },
+  {
+   "d": 5,
+   "N": 32,
+   "rank": 5,
+   "N_minus_1": 31,
+   "degenerate": false,
+   "maxmin_median": 1.0000000000000013
+  }
+ ],
+ "trials": 200,
+ "seed": 20260812,
+ "definition": "s_i = sqrt(v_i^T T^-1 v_i / (rank/N)); max/min = 1 iff all vertices lie on the inertia ellipsoid",
+ "note_full_rank": "rank = N-1 のとき H = I - (1/N)11^T より s_i = 1 が恒等的に成立。楕円面条件は次元が落ちている配置でのみ内容を持つ。",
+ "rows": [
+  {
+   "case": "(0) rank = N-1（次元を落とさない）",
+   "N": 16,
+   "rank": "N-1",
+   "maxmin_median": 1.0000000000000007,
+   "maxmin_worst": 1.0000000000000286,
+   "cv_median": 1.6302281299819418e-16
+  },
+  {
+   "case": "(1) N = 2^d かつ rank = d（平行多面体でない）",
+   "N": 16,
+   "rank": "4",
+   "maxmin_median": 3.4382410191958845,
+   "maxmin_worst": 17.53426254385279,
+   "cv_median": 0.30997181751353087
+  },
+  {
+   "case": "(2) rank = d だけ（頂点数が 2 の冪でない）",
+   "N": 13,
+   "rank": "4",
+   "maxmin_median": 3.042336912922732,
+   "maxmin_worst": 18.925559162730618,
+   "cv_median": 0.28068209344806594
+  },
+  {
+   "case": "(3) 平行多面体（主張4 が選び出す配置）",
+   "N": 16,
+   "rank": "4",
+   "maxmin_median": 1.0000000000000009,
+   "maxmin_worst": 1.0000000000000453,
+   "cv_median": 1.8823635057480544e-16
+  }
+ ]
+}
