@@ -246,8 +246,10 @@ def draw(tau: int, side: str, stem: str, outdir: Path,
                 ("R", "#0060c0", 1.6, "-", "B  (2nd)"),
                 ("Q", "#00a000", 1.6, "-", "C  (3rd)"),
                 ("r_rms_3d", "#7f4fbf", 2.0, "-", "r_rms of the 3D projection"),
-                ("r_rms_full", "#000000", 2.4, "--",
-                 "r_rms over all 11 directions  (conserved)")]:
+                ("r_rms_full", "#7f7f7f", 1.8, ":",
+                 "sqrt(sum of POSITIVE eigenvalues / N)  -- NOT conserved"),
+                ("r_rms_sgn", "#000000", 2.4, "--",
+                 "sqrt(SIGNED tr(T) / N)  -- exactly conserved")]:
             ax3.plot(tt, smooth(S[key]), color=col, lw=lw, ls=ls, label=lab)
         ax3.axvline(tau, color="#ff8800", lw=2.5, alpha=0.9)
         ax3.set_yscale("log"); ax3.set_xlim(0, tt.max())
@@ -255,8 +257,11 @@ def draw(tau: int, side: str, stem: str, outdir: Path,
         ax3.set_ylabel("scale (log)", fontsize=10)
         ax3.grid(alpha=0.25, which="both")
         ax3.legend(fontsize=7.6, loc="lower right", framealpha=0.92, ncol=1)
-        ax3.set_title("(c) scale history   —   the total over all 11 directions is "
-                      "conserved,\nwhile the 3 observable directions expand",
+        ax3.set_title("(c) scale history   —   the SIGNED trace (black dashed) is "
+                      "exactly conserved,\nwhile the real content (grey dotted) and "
+                      "the 3 observable directions both grow.\n"
+                      "Real and imaginary content grow together and cancel "
+                      "in the signed sum.",
                       fontsize=10.5, pad=4)
         ax3.text(tau, ax3.get_ylim()[1], f" tau = {tau}", color="#cc6600",
                  fontsize=9, va="top", ha="left")

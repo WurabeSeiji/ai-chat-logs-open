@@ -6,7 +6,11 @@
 出力: scale_series_{stem}_{side}_v1.npz
   tau        : 保存された τ
   t, R, Q    : 上位3主軸から作る楕円体の半軸
-  r_rms_full : 全次元の二乗平均半径（閉鎖が保存する量）
+  r_rms_full : 正の固有値のみの二乗平均半径（**保存しない**。実方向の総量）
+  r_rms_sgn  : 符号付き tr(T) の二乗平均半径（ラグランジュ恒等式より
+               Σd² = N·tr(T)。**これが厳密に保存する量**）
+  sum_pos    : Σλ⁺（実方向の総量）
+  sum_neg    : Σ|λ⁻|（虚方向の総量）
   r_rms_3d   : 上位3主軸に射影した二乗平均半径（観測されるスケール）
   top3       : 上位3主軸が占める割合
   rank, nimag: グラム行列のランクと負固有値の本数
@@ -29,7 +33,8 @@ def compute(stem: str, side: str) -> Path:
     ia, ib = np.triu_indices(N, k=1)
     J = np.eye(N) - np.ones((N, N)) / N
     out = {k: np.zeros(len(taus)) for k in
-           ("t", "R", "Q", "r_rms_full", "r_rms_3d", "top3", "rank", "nimag")}
+           ("t", "R", "Q", "r_rms_full", "r_rms_3d", "top3", "rank", "nimag",
+            "r_rms_sgn", "sum_pos", "sum_neg")}
     spec = np.zeros((len(taus), N - 1))   # 符号付き √λ（大きい順）
     for f in range(len(taus)):
         C = np.asarray(X[f])
@@ -52,6 +57,11 @@ def compute(stem: str, side: str) -> Path:
         out["r_rms_full"][f] = np.sqrt(pos.sum() / N)
         out["r_rms_3d"][f] = np.sqrt(pos[:3].sum() / N)
         out["top3"][f] = pos[:3].sum() / pos.sum()
+        sp_ = lam_nt[lam_nt > 0].sum()
+        sn_ = -lam_nt[lam_nt < 0].sum()
+        out["sum_pos"][f] = sp_
+        out["sum_neg"][f] = sn_
+        out["r_rms_sgn"][f] = np.sqrt(max(lam_nt.sum(), 0.0) / N)
         out["rank"][f] = int((lam_nt > 1e-10 * sc).sum())
         out["nimag"][f] = int((lam_nt < -1e-10 * sc).sum())
         spec[f] = np.sign(lam_nt) * np.sqrt(np.abs(lam_nt))
