@@ -22,7 +22,9 @@
   （元原稿: `次元の生成構造/facebook_zero_closure_four_dimensional_en_v1.md`）
 
 ## X
-- 原稿（日本語・短縮版併記）: `次元の生成構造/x_post_zero_closure_four_dimensional.md`
+- 日本語版: https://x.com/NoriakiKihara/status/2087512959291740492
+- 英語版: 未投稿
+  （元原稿・日英とも短縮版併記: `次元の生成構造/x_post_zero_closure_four_dimensional.md`）
 
 ## 公開ファイル（Zenodo, 6点）
 - `ゼロ閉塞は４次元だった_主張案_v4.md` / `Zero_Closure_Was_Four_Dimensional_Claim_Draft_v4_en.md`
