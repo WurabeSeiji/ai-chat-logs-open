@@ -22,8 +22,8 @@
   （元原稿: `次元の生成構造/facebook_zero_closure_four_dimensional_en_v1.md`）
 
 ## X
-- 日本語版: https://x.com/NoriakiKihara/status/2087512959291740492
-- 英語版: 未投稿
+- 日本語版: https://x.com/NoriakiKihara/status/2087514063526035796
+- 英語版: https://x.com/NoriakiKihara/status/2087513751306264744
   （元原稿・日英とも短縮版併記: `次元の生成構造/x_post_zero_closure_four_dimensional.md`）
 
 ## 公開ファイル（Zenodo, 6点）
