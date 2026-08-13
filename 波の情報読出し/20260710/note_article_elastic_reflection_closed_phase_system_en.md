@@ -191,4 +191,16 @@ The formal paper, specification, experiment results, and reproducibility data ar
 - Zenn article: https://zenn.dev/noriaki_kihara/articles/elastic-reflection-closed-phase-system
 - Japanese note article: https://note.com/kiharanoriaki/n/n15451632027b
 
+<!-- pdf-links -->
+The paper PDFs can be downloaded directly from the public repository.
+
+- back.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/.venv/lib/python3.9/site-packages/matplotlib/mpl-data/images/back.pdf
+- elastic_reflection_closed_phase_system_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/elastic_reflection_closed_phase_system_en.pdf
+- elastic_reflection_closed_phase_system_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/elastic_reflection_closed_phase_system_ja.pdf
+
+Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #Physics #QuantumMechanics #ComplexNumbers #Waves #Interference #Observation #Simulation #IndependentResearch #Zenodo #Science

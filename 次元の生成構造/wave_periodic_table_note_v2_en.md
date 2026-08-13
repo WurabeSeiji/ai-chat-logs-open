@@ -187,4 +187,14 @@ https://note.com/kiharanoriaki/n/ne49fc8430271
 
 ---
 
+<!-- pdf-links -->
+The paper PDFs can be downloaded directly from the public repository.
+
+- wave_periodic_table_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/波の周期表検討/wave_periodic_table_en.pdf
+- wave_periodic_table_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/波の周期表検討/wave_periodic_table_ja.pdf
+
+Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #TheoreticalPhysics #MathematicalPhysics #ParticlePhysics #StandardModel #Quark #Charge #Confinement #Fermion #Boson #Neutrino #Spin #PeriodicTable #Classification #Emergence #Mass #Lifetime #IndependentResearch #Preprint #Zenodo #NumericalExperiment #Simulation #Hypothesis #ThoughtExperiment #Waves

@@ -178,4 +178,14 @@ q → -q
 
 ・Zenn 記事: https://zenn.dev/noriaki_kihara/articles/curved-closure-stationary-wave
 
+<!-- pdf-links -->
+論文本体の PDF は、公開リポジトリから直接ダウンロードいただけます。
+
+- curved_closure_stationary_wave_curvature_renormalization_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/curved_closure_stationary_wave_curvature_renormalization_en.pdf
+- curved_closure_stationary_wave_curvature_renormalization_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/curved_closure_stationary_wave_curvature_renormalization_ja.pdf
+
+リポジトリ: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #物理学 #量子力学 #複素数 #波動 #干渉 #曲率 #局所平坦性 #数値実験 #シミュレーション #独立研究 #Zenodo #サイエンス

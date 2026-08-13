@@ -171,4 +171,14 @@ https://note.com/kiharanoriaki/n/n6718389c48ea
 
 ---
 
+<!-- pdf-links -->
+論文本体の PDF は、公開リポジトリから直接ダウンロードいただけます。
+
+- universal_interaction_nbody_genesis_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/万能相互作用多体接続_v1/universal_interaction_nbody_genesis_en.pdf
+- universal_interaction_nbody_genesis_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/万能相互作用多体接続_v1/universal_interaction_nbody_genesis_ja.pdf
+
+リポジトリ: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #理論物理学 #数理物理学 #宇宙論 #インフレーション #物質生成 #ビッグバン #初期揺らぎ #素粒子 #創発 #自己触媒 #凝縮 #波 #無名性 #独立研究 #プレプリント #Zenodo #数値実験 #数値シミュレーション #思考実験 #反物質

@@ -194,4 +194,14 @@ The formal paper, English translation, TeX/PDF files, scripts, and result data a
 
 - Japanese note article: https://note.com/kiharanoriaki/n/n2389460836cf
 
+<!-- pdf-links -->
+The paper PDFs can be downloaded directly from the public repository.
+
+- curved_closure_stationary_wave_curvature_renormalization_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/curved_closure_stationary_wave_curvature_renormalization_en.pdf
+- curved_closure_stationary_wave_curvature_renormalization_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/curved_closure_stationary_wave_curvature_renormalization_ja.pdf
+
+Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #Physics #QuantumMechanics #ComplexNumbers #Waves #Interference #Curvature #LocalFlatness #NumericalExperiment #Simulation #IndependentResearch #Zenodo #Science

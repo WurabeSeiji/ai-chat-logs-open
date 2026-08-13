@@ -213,4 +213,14 @@ https://doi.org/10.5281/zenodo.21766706
 
 ---
 
+<!-- pdf-links -->
+論文本体の PDF は、公開リポジトリから直接ダウンロードいただけます。
+
+- universal_inelastic_map_fermionic_generation_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/万能非弾性写像_managed_v1/universal_inelastic_map_fermionic_generation_en.pdf
+- universal_inelastic_map_fermionic_generation_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/万能非弾性写像_managed_v1/universal_inelastic_map_fermionic_generation_ja.pdf
+
+リポジトリ: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #理論物理学 #数理物理学 #素粒子 #反物質 #フェルミオン #ボゾン #対生成 #波 #創発 #自己触媒 #選択則 #保存則 #無名性 #独立研究 #プレプリント #Zenodo #数値実験 #数値シミュレーション #思考実験 #非線形

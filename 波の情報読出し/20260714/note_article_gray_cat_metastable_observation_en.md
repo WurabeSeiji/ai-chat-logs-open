@@ -238,4 +238,18 @@ https://doi.org/10.5281/zenodo.21353209
 Zenn article:
 https://zenn.dev/noriaki_kihara/articles/gray-cat-metastable-observation
 
+<!-- pdf-links -->
+The paper PDFs can be downloaded directly from the public repository.
+
+- gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260714/gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_en.pdf
+- gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260714/gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_ja.pdf
+- gray_cat_metastable_observation_preliminary_summary_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260714/gray_cat_metastable_observation_preliminary_summary_en.pdf
+- gray_cat_metastable_observation_preliminary_summary_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260714/gray_cat_metastable_observation_preliminary_summary_ja.pdf
+
+Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #Physics #QuantumMechanics #SchrodingersCat #WavePacketCollapse #MeasurementProblem #ComplexNumbers #WaveInterference #ClosedSystem #Simulation #IndependentResearch #Zenodo #Science

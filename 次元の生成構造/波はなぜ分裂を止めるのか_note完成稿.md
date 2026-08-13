@@ -402,4 +402,14 @@ https://doi.org/10.5281/zenodo.21315735
 
 ---
 
+<!-- pdf-links -->
+論文本体の PDF は、公開リポジトリから直接ダウンロードいただけます。
+
+- nbody_splitting_arrest_and_orthogonal_plane_emergence_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_splitting_arrest_and_orthogonal_plane_emergence_en.pdf
+- nbody_splitting_arrest_and_orthogonal_plane_emergence_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_splitting_arrest_and_orthogonal_plane_emergence_ja.pdf
+
+リポジトリ: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #理論物理学 #数理物理学 #波 #位相 #次元 #回転平面 #粒子 #自発的分裂 #準安定 #閉鎖系 #創発 #対称性 #独立研究 #プレプリント #Zenodo #数値実験 #数値シミュレーション

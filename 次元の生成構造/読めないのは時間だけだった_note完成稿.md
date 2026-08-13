@@ -136,4 +136,14 @@ https://note.com/kiharanoriaki/n/ne63f6e6d1e43
 
 ---
 
+<!-- pdf-links -->
+論文本体の PDF は、公開リポジトリから直接ダウンロードいただけます。
+
+- genesis_spatial_axes_proper_time_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/空間軸3軸と固有時間の創生_v1/genesis_spatial_axes_proper_time_en.pdf
+- genesis_spatial_axes_proper_time_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/空間軸3軸と固有時間の創生_v1/genesis_spatial_axes_proper_time_ja.pdf
+
+リポジトリ: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #理論物理学 #数理物理学 #時空 #時間 #相対性理論 #固有時間 #空間 #次元 #創発 #同期 #引き込み #質量 #コヒーレンス #独立研究 #プレプリント #Zenodo #数値実験 #数値シミュレーション #思考実験 #波

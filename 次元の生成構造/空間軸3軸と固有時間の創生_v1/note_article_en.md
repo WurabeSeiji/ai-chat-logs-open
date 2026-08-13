@@ -131,4 +131,14 @@ Previous article
 "The Timing Was Already Decided, Without Being Taught — How Inflation Ends Is How Matter Generation Begins"
 https://note.com/kiharanoriaki/n/ne63f6e6d1e43
 
+<!-- pdf-links -->
+The paper PDFs can be downloaded directly from the public repository.
+
+- genesis_spatial_axes_proper_time_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/空間軸3軸と固有時間の創生_v1/genesis_spatial_axes_proper_time_en.pdf
+- genesis_spatial_axes_proper_time_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/空間軸3軸と固有時間の創生_v1/genesis_spatial_axes_proper_time_ja.pdf
+
+Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #TheoreticalPhysics #MathematicalPhysics #Spacetime #Time #Relativity #ProperTime #Space #Dimensions #Emergence #Synchronization #Entrainment #Mass #Coherence #IndependentResearch #Preprint #Zenodo #NumericalExperiment #NumericalSimulation #ThoughtExperiment #Waves

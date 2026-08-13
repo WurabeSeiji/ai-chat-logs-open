@@ -256,4 +256,22 @@ https://note.com/kiharanoriaki/n/n48a02cd70f47
 
 ---
 
+<!-- pdf-links -->
+論文本体の PDF は、公開リポジトリから直接ダウンロードいただけます。
+
+- counting_readout_structure_anonymous_two_channel_closed_wave_system_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/counting_readout_structure_anonymous_two_channel_closed_wave_system_en.pdf
+- counting_readout_structure_anonymous_two_channel_closed_wave_system_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/counting_readout_structure_anonymous_two_channel_closed_wave_system_ja.pdf
+- lock_dynamics_anonymous_two_channel_closed_wave_system_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/lock_dynamics_anonymous_two_channel_closed_wave_system_en.pdf
+- lock_dynamics_anonymous_two_channel_closed_wave_system_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/lock_dynamics_anonymous_two_channel_closed_wave_system_ja.pdf
+- two_grammar_decomposition_anonymous_two_channel_closed_wave_system_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/two_grammar_decomposition_anonymous_two_channel_closed_wave_system_en.pdf
+- two_grammar_decomposition_anonymous_two_channel_closed_wave_system_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/two_grammar_decomposition_anonymous_two_channel_closed_wave_system_ja.pdf
+
+リポジトリ: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #理論物理学 #数理物理学 #重力 #電磁気力 #クーロン力 #素電荷 #微細構造定数 #量子化 #階層問題 #逆二乗則 #波 #倍音 #位相 #干渉 #閉鎖系 #創発 #インフレーション #独立研究 #プレプリント #Zenodo #数値実験 #数値シミュレーション

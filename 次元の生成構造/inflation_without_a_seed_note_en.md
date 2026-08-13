@@ -304,4 +304,14 @@ Previous article
 
 ---
 
+<!-- pdf-links -->
+The paper PDFs can be downloaded directly from the public repository.
+
+- nbody_two_stage_seed_removal_causal_separation_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_two_stage_seed_removal_causal_separation_en.pdf
+- nbody_two_stage_seed_removal_causal_separation_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_two_stage_seed_removal_causal_separation_ja.pdf
+
+Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #TheoreticalPhysics #MathematicalPhysics #Inflation #Cosmology #BigBang #Waves #Phase #Dimensions #ZeroPointVibration #Fluctuation #Electromagnetism #SpontaneousSplitting #Metastability #ClosedSystem #Emergence #IndependentResearch #Preprint #Zenodo #NumericalExperiment #NumericalSimulation

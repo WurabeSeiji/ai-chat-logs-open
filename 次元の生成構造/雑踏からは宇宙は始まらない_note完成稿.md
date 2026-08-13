@@ -215,4 +215,14 @@ https://doi.org/10.5281/zenodo.21315735
 
 ---
 
+<!-- pdf-links -->
+論文本体の PDF は、公開リポジトリから直接ダウンロードいただけます。
+
+- nbody_onset_mode_causal_discrimination_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_onset_mode_causal_discrimination_en.pdf
+- nbody_onset_mode_causal_discrimination_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_onset_mode_causal_discrimination_ja.pdf
+
+リポジトリ: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #理論物理学 #数理物理学 #インフレーション #宇宙論 #ビッグバン #初期条件問題 #波 #ホワイトノイズ #コヒーレンス #相対平衡 #不安定性 #創発 #閉鎖系 #準安定 #独立研究 #プレプリント #Zenodo #数値実験 #数値シミュレーション #思考実験

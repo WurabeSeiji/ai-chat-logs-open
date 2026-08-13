@@ -187,4 +187,14 @@ https://note.com/kiharanoriaki/n/n41839f4350fa
 
 ---
 
+<!-- pdf-links -->
+論文本体の PDF は、公開リポジトリから直接ダウンロードいただけます。
+
+- wave_periodic_table_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/波の周期表検討/wave_periodic_table_en.pdf
+- wave_periodic_table_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/波の周期表検討/wave_periodic_table_ja.pdf
+
+リポジトリ: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #理論物理学 #数理物理学 #素粒子 #標準模型 #クォーク #電荷 #閉じ込め #フェルミオン #ボゾン #ニュートリノ #スピン #周期表 #分類 #創発 #質量 #寿命 #独立研究 #プレプリント #Zenodo #数値実験 #数値シミュレーション #仮説 #思考実験 #波

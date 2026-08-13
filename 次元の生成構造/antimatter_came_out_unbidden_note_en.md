@@ -216,4 +216,14 @@ https://note.com/kiharanoriaki/n/n6718389c48ea
 
 ---
 
+<!-- pdf-links -->
+The paper PDFs can be downloaded directly from the public repository.
+
+- universal_inelastic_map_fermionic_generation_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/万能非弾性写像_managed_v1/universal_inelastic_map_fermionic_generation_en.pdf
+- universal_inelastic_map_fermionic_generation_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/万能非弾性写像_managed_v1/universal_inelastic_map_fermionic_generation_ja.pdf
+
+Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #TheoreticalPhysics #MathematicalPhysics #ParticlePhysics #Antimatter #Fermions #Bosons #PairCreation #Waves #Emergence #Autocatalysis #SelectionRules #ConservationLaws #Anonymity #IndependentResearch #Preprint #Zenodo #NumericalExperiment #Simulation #ThoughtExperiment #Nonlinear

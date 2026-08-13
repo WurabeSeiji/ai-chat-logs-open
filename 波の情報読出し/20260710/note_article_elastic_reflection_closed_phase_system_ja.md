@@ -175,4 +175,16 @@ A の内部識別振動は A のまま。B の内部識別振動は B のまま�
 ・Version DOI: https://doi.org/10.5281/zenodo.21291020  
 ・Zenn 記事: https://zenn.dev/noriaki_kihara/articles/elastic-reflection-closed-phase-system
 
+<!-- pdf-links -->
+論文本体の PDF は、公開リポジトリから直接ダウンロードいただけます。
+
+- back.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/.venv/lib/python3.9/site-packages/matplotlib/mpl-data/images/back.pdf
+- elastic_reflection_closed_phase_system_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/elastic_reflection_closed_phase_system_en.pdf
+- elastic_reflection_closed_phase_system_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/elastic_reflection_closed_phase_system_ja.pdf
+
+リポジトリ: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #物理学 #量子力学 #複素数 #波動 #干渉 #観測 #シミュレーション #独立研究 #Zenodo #サイエンス

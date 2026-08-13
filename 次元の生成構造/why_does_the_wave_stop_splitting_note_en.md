@@ -390,4 +390,14 @@ Previous article
 
 ---
 
+<!-- pdf-links -->
+The paper PDFs can be downloaded directly from the public repository.
+
+- nbody_splitting_arrest_and_orthogonal_plane_emergence_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_splitting_arrest_and_orthogonal_plane_emergence_en.pdf
+- nbody_splitting_arrest_and_orthogonal_plane_emergence_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_splitting_arrest_and_orthogonal_plane_emergence_ja.pdf
+
+Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #TheoreticalPhysics #MathematicalPhysics #Waves #Phase #Dimensions #RotationPlanes #Particles #SpontaneousSplitting #Metastability #ClosedSystem #Emergence #Symmetry #IndependentResearch #Preprint #Zenodo #NumericalExperiment #NumericalSimulation

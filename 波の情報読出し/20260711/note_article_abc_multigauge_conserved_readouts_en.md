@@ -268,4 +268,22 @@ The formal paper, English translation, TeX/PDF files, scripts, and result data a
 
 - Japanese note article: https://note.com/kiharanoriaki/n/nd5d3777a6e48
 
+<!-- pdf-links -->
+The paper PDFs can be downloaded directly from the public repository.
+
+- ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_en.pdf
+- ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_ja.pdf
+- abc_closed_phase_independent_c_gauge_relation_decomposition_distance_exponent_preliminary_summary_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/abc_closed_phase_independent_c_gauge_relation_decomposition_distance_exponent_preliminary_summary_en.pdf
+- abc_closed_phase_independent_c_gauge_relation_decomposition_distance_exponent_preliminary_summary_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/abc_closed_phase_independent_c_gauge_relation_decomposition_distance_exponent_preliminary_summary_ja.pdf
+- abc_closed_phase_system_multigauge_conserved_readouts_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/abc_closed_phase_system_multigauge_conserved_readouts_en.pdf
+- abc_closed_phase_system_multigauge_conserved_readouts_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/abc_closed_phase_system_multigauge_conserved_readouts_ja.pdf
+
+Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #Physics #QuantumMechanics #ComplexNumbers #Waves #Interference #ConservedQuantities #Mass #Momentum #Energy #NumericalExperiment #Simulation #IndependentResearch #Zenodo #Science

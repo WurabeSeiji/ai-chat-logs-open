@@ -260,4 +260,22 @@ https://note.com/kiharanoriaki/n/n8b1fedaec944
 
 ---
 
+<!-- pdf-links -->
+The paper PDFs can be downloaded directly from the public repository.
+
+- counting_readout_structure_anonymous_two_channel_closed_wave_system_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/counting_readout_structure_anonymous_two_channel_closed_wave_system_en.pdf
+- counting_readout_structure_anonymous_two_channel_closed_wave_system_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/counting_readout_structure_anonymous_two_channel_closed_wave_system_ja.pdf
+- lock_dynamics_anonymous_two_channel_closed_wave_system_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/lock_dynamics_anonymous_two_channel_closed_wave_system_en.pdf
+- lock_dynamics_anonymous_two_channel_closed_wave_system_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/lock_dynamics_anonymous_two_channel_closed_wave_system_ja.pdf
+- two_grammar_decomposition_anonymous_two_channel_closed_wave_system_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/two_grammar_decomposition_anonymous_two_channel_closed_wave_system_en.pdf
+- two_grammar_decomposition_anonymous_two_channel_closed_wave_system_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/two_grammar_decomposition_anonymous_two_channel_closed_wave_system_ja.pdf
+
+Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #TheoreticalPhysics #MathematicalPhysics #Gravity #Electromagnetism #CoulombForce #ElementaryCharge #FineStructureConstant #Quantization #HierarchyProblem #InverseSquareLaw #Waves #Harmonics #Phase #Interference #ClosedSystem #Emergence #Inflation #IndependentResearch #Preprint #Zenodo #NumericalExperiment #NumericalSimulation

@@ -174,4 +174,14 @@ https://note.com/kiharanoriaki/n/ne63f6e6d1e43
 
 ---
 
+<!-- pdf-links -->
+The paper PDFs can be downloaded directly from the public repository.
+
+- universal_interaction_nbody_genesis_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/万能相互作用多体接続_v1/universal_interaction_nbody_genesis_en.pdf
+- universal_interaction_nbody_genesis_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/万能相互作用多体接続_v1/universal_interaction_nbody_genesis_ja.pdf
+
+Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #TheoreticalPhysics #MathematicalPhysics #Cosmology #Inflation #MatterGeneration #BigBang #PrimordialFluctuations #ParticlePhysics #Emergence #Autocatalysis #Condensation #Waves #Anonymity #IndependentResearch #Preprint #Zenodo #NumericalExperiment #Simulation #ThoughtExperiment #Antimatter

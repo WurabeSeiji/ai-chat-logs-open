@@ -250,4 +250,22 @@ R_B/R_A は、0.015625 から 64.0 まで掃引しました。
 
 ・Zenn 記事: https://zenn.dev/noriaki_kihara/articles/abc-multigauge-conserved-readouts
 
+<!-- pdf-links -->
+論文本体の PDF は、公開リポジトリから直接ダウンロードいただけます。
+
+- ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_en.pdf
+- ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_ja.pdf
+- abc_closed_phase_independent_c_gauge_relation_decomposition_distance_exponent_preliminary_summary_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/abc_closed_phase_independent_c_gauge_relation_decomposition_distance_exponent_preliminary_summary_en.pdf
+- abc_closed_phase_independent_c_gauge_relation_decomposition_distance_exponent_preliminary_summary_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/abc_closed_phase_independent_c_gauge_relation_decomposition_distance_exponent_preliminary_summary_ja.pdf
+- abc_closed_phase_system_multigauge_conserved_readouts_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/abc_closed_phase_system_multigauge_conserved_readouts_en.pdf
+- abc_closed_phase_system_multigauge_conserved_readouts_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/abc_closed_phase_system_multigauge_conserved_readouts_ja.pdf
+
+リポジトリ: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #物理学 #量子力学 #複素数 #波動 #干渉 #保存量 #質量 #運動量 #エネルギー #数値実験 #シミュレーション #独立研究 #Zenodo #サイエンス

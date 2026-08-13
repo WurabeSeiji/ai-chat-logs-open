@@ -211,4 +211,14 @@ Previous article
 
 ---
 
+<!-- pdf-links -->
+The paper PDFs can be downloaded directly from the public repository.
+
+- nbody_onset_mode_causal_discrimination_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_onset_mode_causal_discrimination_en.pdf
+- nbody_onset_mode_causal_discrimination_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_onset_mode_causal_discrimination_ja.pdf
+
+Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #TheoreticalPhysics #MathematicalPhysics #Inflation #Cosmology #BigBang #InitialConditions #Waves #WhiteNoise #Coherence #RelativeEquilibrium #Instability #Emergence #ClosedSystem #Metastability #IndependentResearch #Preprint #Zenodo #NumericalExperiment #NumericalSimulation #ThoughtExperiment

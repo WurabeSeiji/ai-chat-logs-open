@@ -240,4 +240,18 @@ https://doi.org/10.5281/zenodo.21353209
 Zenn 記事:
 https://zenn.dev/noriaki_kihara/articles/gray-cat-metastable-observation
 
+<!-- pdf-links -->
+論文本体の PDF は、公開リポジトリから直接ダウンロードいただけます。
+
+- gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260714/gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_en.pdf
+- gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260714/gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_ja.pdf
+- gray_cat_metastable_observation_preliminary_summary_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260714/gray_cat_metastable_observation_preliminary_summary_en.pdf
+- gray_cat_metastable_observation_preliminary_summary_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260714/gray_cat_metastable_observation_preliminary_summary_ja.pdf
+
+リポジトリ: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #物理学 #量子力学 #シュレディンガーの猫 #波束収縮 #観測問題 #複素数 #波動 #干渉 #閉鎖系 #シミュレーション #独立研究 #Zenodo #サイエンス

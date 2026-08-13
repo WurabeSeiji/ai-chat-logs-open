@@ -210,4 +210,14 @@ https://doi.org/10.5281/zenodo.21333768
 Zenn article:
 https://zenn.dev/noriaki_kihara/articles/exchange-scattering-localization-exchange
 
+<!-- pdf-links -->
+The paper PDFs can be downloaded directly from the public repository.
+
+- exchange_scattering_matrix_fermionic_localization_exchange_preliminary_summary_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260713/exchange_scattering_matrix_fermionic_localization_exchange_preliminary_summary_en.pdf
+- exchange_scattering_matrix_fermionic_localization_exchange_preliminary_summary_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260713/exchange_scattering_matrix_fermionic_localization_exchange_preliminary_summary_ja.pdf
+
+Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #Physics #QuantumMechanics #WavePacketCollapse #WaveLocalization #ComplexNumbers #WaveInterference #Observation #Fermion #Simulation #IndependentResearch #Zenodo #Science

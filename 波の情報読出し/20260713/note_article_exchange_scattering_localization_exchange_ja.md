@@ -210,4 +210,14 @@ https://doi.org/10.5281/zenodo.21333768
 Zenn 記事:
 https://zenn.dev/noriaki_kihara/articles/exchange-scattering-localization-exchange
 
+<!-- pdf-links -->
+論文本体の PDF は、公開リポジトリから直接ダウンロードいただけます。
+
+- exchange_scattering_matrix_fermionic_localization_exchange_preliminary_summary_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260713/exchange_scattering_matrix_fermionic_localization_exchange_preliminary_summary_en.pdf
+- exchange_scattering_matrix_fermionic_localization_exchange_preliminary_summary_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260713/exchange_scattering_matrix_fermionic_localization_exchange_preliminary_summary_ja.pdf
+
+リポジトリ: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #物理学 #量子力学 #波束収縮 #波束集束 #複素数 #波動 #干渉 #観測 #フェルミオン #シミュレーション #独立研究 #Zenodo #サイエンス

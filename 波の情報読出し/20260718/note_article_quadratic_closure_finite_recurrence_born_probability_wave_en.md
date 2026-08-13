@@ -244,4 +244,22 @@ https://doi.org/10.5281/zenodo.21422506
 
 The Japanese and English Markdown manuscripts, TeX sources, and PDFs are available in the public records.
 
+<!-- pdf-links -->
+The paper PDFs can be downloaded directly from the public repository.
+
+- finite_order_recurrence_discrete_born_type_weights_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260718/finite_order_recurrence_discrete_born_type_weights_en.pdf
+- finite_order_recurrence_discrete_born_type_weights_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260718/finite_order_recurrence_discrete_born_type_weights_ja.pdf
+- finite_order_resonance_iterated_exchange_scattering_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260718/finite_order_resonance_iterated_exchange_scattering_en.pdf
+- finite_order_resonance_iterated_exchange_scattering_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260718/finite_order_resonance_iterated_exchange_scattering_ja.pdf
+- nontrivial_quadratic_closure_complex_phase_born_interpretation_en.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260718/nontrivial_quadratic_closure_complex_phase_born_interpretation_en.pdf
+- nontrivial_quadratic_closure_complex_phase_born_interpretation_ja.pdf
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260718/nontrivial_quadratic_closure_complex_phase_born_interpretation_ja.pdf
+
+Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
+
 #BornRule #QuantumMechanics #ProbabilityWave #WaveFunction #ComplexNumbers #ImaginaryNumbers #QuadraticClosure #FiniteOrderRecurrence #QuantumMeasurement #MeasurementProblem #TheoreticalPhysics #MathematicalPhysics #IndependentResearch #Preprint #Zenodo
