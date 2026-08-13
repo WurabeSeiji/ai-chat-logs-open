@@ -20,22 +20,37 @@ C は推測で PDF を貼るとまた誤対応になるため、意図的に空�
 
 ## B 判定 21 件の全件調査結果（完了）
 
-v2 初版で「要目視」としていた B 判定（PDF 本文に番号は出るが DOI ラベルが無い）21 件を、
-**全件 Zenodo のレコードを取得し、収録ファイル名で突き合わせた**。
+初版で「要目視」としていた B 判定（PDF 本文に番号は出るが DOI ラベルが無い）21 件を、**全件 Zenodo のレコードを取得し、収録ファイル名で突き合わせた**。
 
-- **20 件を確定**（本文中の印は `Z`）。うち **14 件は私の割り当てが誤っていた**ので訂正した。
-  例: `10.5281/zenodo.19435162` に `gnomonic_summary_handout` を貼っていたが、
-  Zenodo の収録は `subjective_space_relativity.pdf` / `_en.pdf` だった。
-  BH 熱力学の 6 篇（19837587〜19837597）も handout ではなく
-  `BH_Paper1_Overview_Hypotheses` 〜 `BH_Paper6_Synthesis_3plus1Reduction` が正しい。
-  `paper0_geodesic_cell_distortion` は 20680269 が v1.5、20684135 が v1.4 と版まで確定した。
-- **1 件は PDF が存在しない**。`10.5281/zenodo.20666114` は論文ではなく
-  「Repository Snapshot (2026-06-12)」で、収録物は zip 1 本のみ。
-  note にこの DOI を論文として載せている場合は、リポジトリのスナップショットである旨に直すか外す。
+- **20 件を確定**（本文中の印は `Z`）。うち **14 件は割り当てが誤っていた**ので訂正した。
+  - `19435162` … `gnomonic_summary_handout` を貼っていたが、正しくは `subjective_space_relativity.pdf` / `_en.pdf`
+  - `19837587`〜`19837597`（BH 熱力学 6 篇）… handout ではなく `BH_Paper1_Overview_Hypotheses` 〜 `BH_Paper6_Synthesis_3plus1Reduction` が正しい
+  - `19876200` / `19881119` … handout の混入を除去し、`BH_Paper7_Alpha_Identity` / `BH_Paper8_Isomorphism` のみに
+  - `paper0_geodesic_cell_distortion` … `20680269` が **v1.5**、`20684135` が **v1.4** と版まで確定
+- **1 件は PDF が存在しない**（`20666114`。下記(3)）
 
-## note 側で DOI の記載を削除すること — 2 件
+handout（配布資料）の本文にも各論文の DOI が印刷されているため、本文照合だけでは論文本体と区別できなかった。Zenodo の収録ファイル名で初めて分離できる。
+
+## note 側で DOI の記載を削除すること — 3 件
+
+### (1)(2) W1・W2 — 公開を断念した論文
 
 W1「中心投影による主観空間の構成と位相空間における相互作用の定式化」（10.5281/zenodo.19534373）と W2「波束の収縮していない光子モデルの検証」（10.5281/zenodo.19534409）は**公開を断念した論文**で、Zenodo に存在しない。19534409 に至ってはまったく別の論文（ヒンディー語の政治学論文）に解決される。note「超直方体の組合せ論から標準模型の62粒子を導出する ── 位相方程式篇（W1〜W11）」（下の一覧 No.87）から DOI の記載を削除すること。リリースノート `グノモン正写像による4次元時空の幾何学的定式化/RELEASE_NOTES.md` は修正済み。
+
+### (3) 10.5281/zenodo.20666114 — 論文ではない
+
+この DOI は論文ではなく **「Repository Snapshot (2026-06-12): Dual Geometry of Wavelength and Frequency Spaces」**、すなわちリポジトリのスナップショットである。収録物は zip 1 本だけで、PDF は無い。**論文として案内している箇所から削除すること。**
+
+記載のある note（本文中では論文の一つとして並んでいる）:
+
+- No.55 「位置は読まれていなかった」── 双対幾何シリーズ続報:論文13〜16と総説を一斉公開
+  https://note.com/kiharanoriaki/n/nefcd306c9016
+- No.56 "Position Had Never Been Read" — Dual Geometry Series, the Sequel: Papers 13–16（英語版）
+  https://note.com/kiharanoriaki/n/n6d8ab15ea24c
+
+元原稿: `波長空間と周波数空間の双対幾何/note_article_ja_v3.md` / `note_article_en_v3.md`
+
+削除でなく残す場合は「論文」ではなく「公開時点のリポジトリ一式（zip）」と性格を書き換えること。
 
 
 ---
