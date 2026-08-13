@@ -9,14 +9,29 @@ v2 では **リポジトリ内の全 PDF 440 本を pdftotext で開き、本文
 | 印 | 意味 |
 |---|---|
 | **A** | PDF 本文の「DOI:／Concept DOI:／Version DOI:」行に、その DOI が印刷されている。**確実** |
-| **B** | PDF 本文にその番号は出るが、DOI ラベル付きではない。**要目視** |
-| **C** | リポジトリのどの PDF 本文にもその DOI が無い。**PDF を貼らない**（Zenodo へのリンクのみ） |
+| **Z** | PDF 本文に DOI ラベルが無かったため、**Zenodo のレコードを取得して収録ファイル名で確定**した。確実 |
+| **C** | PDF 本文にも Zenodo 照合でも確定できない。**PDF を貼らない**（DOI のみ） |
 
 C は推測で PDF を貼るとまた誤対応になるため、意図的に空欄にしてある。必要なら Zenodo の該当レコードから取得すること。
 
 - `済` … リポジトリ内の元原稿に追記済み（note 側への反映が残っている）／`未` … 未着手
 - PDF の URL は GitHub raw。クリックでダウンロードされる
 - Concept DOI と Version DOI が同じ PDF を指す場合は 1 論文にまとめ、DOI を並記した
+
+## B 判定 21 件の全件調査結果（完了）
+
+v2 初版で「要目視」としていた B 判定（PDF 本文に番号は出るが DOI ラベルが無い）21 件を、
+**全件 Zenodo のレコードを取得し、収録ファイル名で突き合わせた**。
+
+- **20 件を確定**（本文中の印は `Z`）。うち **14 件は私の割り当てが誤っていた**ので訂正した。
+  例: `10.5281/zenodo.19435162` に `gnomonic_summary_handout` を貼っていたが、
+  Zenodo の収録は `subjective_space_relativity.pdf` / `_en.pdf` だった。
+  BH 熱力学の 6 篇（19837587〜19837597）も handout ではなく
+  `BH_Paper1_Overview_Hypotheses` 〜 `BH_Paper6_Synthesis_3plus1Reduction` が正しい。
+  `paper0_geodesic_cell_distortion` は 20680269 が v1.5、20684135 が v1.4 と版まで確定した。
+- **1 件は PDF が存在しない**。`10.5281/zenodo.20666114` は論文ではなく
+  「Repository Snapshot (2026-06-12)」で、収録物は zip 1 本のみ。
+  note にこの DOI を論文として載せている場合は、リポジトリのスナップショットである旨に直すか外す。
 
 ## note 側で DOI の記載を削除すること — 2 件
 
@@ -2223,17 +2238,19 @@ https://note.com/kiharanoriaki/n/n65be6bf06c9b
 
 **論文 2 件**
 
-1. **[B]** A Thought Experiment on Double-Slit Interference from a Localized Odd-Harmonic Source: Shape Preservation Is Conditional and Fragile, and the Single-Wavelength N=1 Is the Robust Special Case
+1. **[Z]** A Thought Experiment on Double-Slit Interference from a Localized Odd-Harmonic Source: Shape Preservation Is Conditional and Fragile, and the Single-Wavelength N=1 Is the Robust Special Case
    - DOI: https://doi.org/10.5281/zenodo.21035831
    - paper_localized_source_fluctuation_en_v0_1.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/simplified_double_slit/paper_localized_source_fluctuation_en_v0_1.pdf
    - paper_localized_source_fluctuation_ja_v0_1.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/simplified_double_slit/paper_localized_source_fluctuation_ja_v0_1.pdf
 
-2. **[B]** 位置揺らぎを持つ光源による二重スリット干渉の思考実験 ― 光源位置分布の縞シフト量分布への押し出し（形の保存）
+2. **[Z]** 位置揺らぎを持つ光源による二重スリット干渉の思考実験 ― 光源位置分布の縞シフト量分布への押し出し（形の保存）
    - DOI: https://doi.org/10.5281/zenodo.21035808
    - paper_doubleslit_position_readout_en_v0_3.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/simplified_double_slit/paper_doubleslit_position_readout_en_v0_3.pdf
+   - paper_doubleslit_position_readout_ja_v0_3.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/simplified_double_slit/paper_doubleslit_position_readout_ja_v0_3.pdf
 
 
 ---
@@ -2248,17 +2265,19 @@ https://note.com/kiharanoriaki/n/n701e9d57d7bb
 
 **論文 2 件**
 
-1. **[B]** A Thought Experiment on Double-Slit Interference from a Localized Odd-Harmonic Source: Shape Preservation Is Conditional and Fragile, and the Single-Wavelength N=1 Is the Robust Special Case
+1. **[Z]** A Thought Experiment on Double-Slit Interference from a Localized Odd-Harmonic Source: Shape Preservation Is Conditional and Fragile, and the Single-Wavelength N=1 Is the Robust Special Case
    - DOI: https://doi.org/10.5281/zenodo.21035831
    - paper_localized_source_fluctuation_en_v0_1.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/simplified_double_slit/paper_localized_source_fluctuation_en_v0_1.pdf
    - paper_localized_source_fluctuation_ja_v0_1.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/simplified_double_slit/paper_localized_source_fluctuation_ja_v0_1.pdf
 
-2. **[B]** 位置揺らぎを持つ光源による二重スリット干渉の思考実験 ― 光源位置分布の縞シフト量分布への押し出し（形の保存）
+2. **[Z]** 位置揺らぎを持つ光源による二重スリット干渉の思考実験 ― 光源位置分布の縞シフト量分布への押し出し（形の保存）
    - DOI: https://doi.org/10.5281/zenodo.21035808
    - paper_doubleslit_position_readout_en_v0_3.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/simplified_double_slit/paper_doubleslit_position_readout_en_v0_3.pdf
+   - paper_doubleslit_position_readout_ja_v0_3.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/simplified_double_slit/paper_doubleslit_position_readout_ja_v0_3.pdf
 
 
 ---
@@ -2273,28 +2292,24 @@ https://note.com/kiharanoriaki/n/n1f41301fdf49
 
 **論文 3 件**
 
-1. **[B]** Paper 0: Distortion of the Geodesic Unit Cell in Positively-Curved Constant-Curvature Space — Exact Evaluation of Edge, Angle, Area, and Volume
+1. **[Z]** Paper 0: Distortion of the Geodesic Unit Cell in Positively-Curved Constant-Curvature Space — Exact Evaluation of Edge, Angle, Area, and Volume
    - DOI: https://doi.org/10.5281/zenodo.20684135
    - paper0_geodesic_cell_distortion_en_v1_4.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper0_geodesic_cell_distortion_en_v1_4.pdf
    - paper0_geodesic_cell_distortion_ja_v1_4.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper0_geodesic_cell_distortion_ja_v1_4.pdf
 
-2. **[B]** 平方量読出しによる線形単体化と曲率補正候補の次元別整理
+2. **[Z]** 平方量読出しによる線形単体化と曲率補正候補の次元別整理
    - DOI: https://doi.org/10.5281/zenodo.20785539 / https://doi.org/10.5281/zenodo.20785540
    - paper_square_quantity_readout_en_v0_1.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/paper_square_quantity_readout_en_v0_1.pdf
    - paper_square_quantity_readout_ja_v0_1.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/paper_square_quantity_readout_ja_v0_1.pdf
 
-3. **[B]** 論文0:正曲率定曲率空間における測地的単位セルの歪み — 一辺・角・面積・体積の厳密評価
+3. **[Z]** 論文0:正曲率定曲率空間における測地的単位セルの歪み — 一辺・角・面積・体積の厳密評価
    - DOI: https://doi.org/10.5281/zenodo.20680269
-   - paper0_geodesic_cell_distortion_en_v1_4.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper0_geodesic_cell_distortion_en_v1_4.pdf
    - paper0_geodesic_cell_distortion_en_v1_5.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper0_geodesic_cell_distortion_en_v1_5.pdf
-   - paper0_geodesic_cell_distortion_ja_v1_4.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper0_geodesic_cell_distortion_ja_v1_4.pdf
    - paper0_geodesic_cell_distortion_ja_v1_5.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper0_geodesic_cell_distortion_ja_v1_5.pdf
 
@@ -2311,28 +2326,24 @@ https://note.com/kiharanoriaki/n/n879eac8f6cb2
 
 **論文 3 件**
 
-1. **[B]** Paper 0: Distortion of the Geodesic Unit Cell in Positively-Curved Constant-Curvature Space — Exact Evaluation of Edge, Angle, Area, and Volume
+1. **[Z]** Paper 0: Distortion of the Geodesic Unit Cell in Positively-Curved Constant-Curvature Space — Exact Evaluation of Edge, Angle, Area, and Volume
    - DOI: https://doi.org/10.5281/zenodo.20684135
    - paper0_geodesic_cell_distortion_en_v1_4.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper0_geodesic_cell_distortion_en_v1_4.pdf
    - paper0_geodesic_cell_distortion_ja_v1_4.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper0_geodesic_cell_distortion_ja_v1_4.pdf
 
-2. **[B]** 平方量読出しによる線形単体化と曲率補正候補の次元別整理
+2. **[Z]** 平方量読出しによる線形単体化と曲率補正候補の次元別整理
    - DOI: https://doi.org/10.5281/zenodo.20785539 / https://doi.org/10.5281/zenodo.20785540
    - paper_square_quantity_readout_en_v0_1.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/paper_square_quantity_readout_en_v0_1.pdf
    - paper_square_quantity_readout_ja_v0_1.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/paper_square_quantity_readout_ja_v0_1.pdf
 
-3. **[B]** 論文0:正曲率定曲率空間における測地的単位セルの歪み — 一辺・角・面積・体積の厳密評価
+3. **[Z]** 論文0:正曲率定曲率空間における測地的単位セルの歪み — 一辺・角・面積・体積の厳密評価
    - DOI: https://doi.org/10.5281/zenodo.20680269
-   - paper0_geodesic_cell_distortion_en_v1_4.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper0_geodesic_cell_distortion_en_v1_4.pdf
    - paper0_geodesic_cell_distortion_en_v1_5.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper0_geodesic_cell_distortion_en_v1_5.pdf
-   - paper0_geodesic_cell_distortion_ja_v1_4.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper0_geodesic_cell_distortion_ja_v1_4.pdf
    - paper0_geodesic_cell_distortion_ja_v1_5.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper0_geodesic_cell_distortion_ja_v1_5.pdf
 
@@ -2347,7 +2358,7 @@ https://note.com/kiharanoriaki/n/nefcd306c9016
 
 **元原稿**: `note_article_ja_v3.md`
 
-**論文 5 件**
+**論文 6 件**
 
 1. **[A]** Paper 14: The Choice of Time Direction and the Stage for Amplitudes — the Marking Theorem, Derived Z₄ Phases, Inversion Holonomy, and the Canonical Counting Theorem
    - DOI: https://doi.org/10.5281/zenodo.20665661
@@ -2364,7 +2375,7 @@ https://note.com/kiharanoriaki/n/nefcd306c9016
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper16_measure_granularity_ja_v1_2.pdf
 
 3. **[A]** 総説:関係ひとつ・定数ひとつ・1ビットから — 標準理論への辞書と公理の交換収支
-   - DOI: https://doi.org/10.5281/zenodo.20666132 / https://doi.org/10.5281/zenodo.20666114
+   - DOI: https://doi.org/10.5281/zenodo.20666132
    - survey_dictionary_axiom_exchange_en_v1_0.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/survey_dictionary_axiom_exchange_en_v1_0.pdf
    - survey_dictionary_axiom_exchange_ja_v1_0.pdf
@@ -2383,6 +2394,10 @@ https://note.com/kiharanoriaki/n/nefcd306c9016
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper15_xyztRQ_projection_en_v1_2.pdf
    - paper15_xyztRQ_projection_ja_v1_2.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper15_xyztRQ_projection_ja_v1_2.pdf
+
+6. **[C]** 総説:関係ひとつ・定数ひとつ・1ビットから — 標準理論への辞書と公理の交換収支
+   - DOI: https://doi.org/10.5281/zenodo.20666114
+   - PDF: 本文照合できず。上記 DOI から取得すること
 
 
 ---
@@ -2395,7 +2410,7 @@ https://note.com/kiharanoriaki/n/n6d8ab15ea24c
 
 **元原稿**: `note_article_ja_v3.md`
 
-**論文 5 件**
+**論文 6 件**
 
 1. **[A]** Paper 14: The Choice of Time Direction and the Stage for Amplitudes — the Marking Theorem, Derived Z₄ Phases, Inversion Holonomy, and the Canonical Counting Theorem
    - DOI: https://doi.org/10.5281/zenodo.20665661
@@ -2412,7 +2427,7 @@ https://note.com/kiharanoriaki/n/n6d8ab15ea24c
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper16_measure_granularity_ja_v1_2.pdf
 
 3. **[A]** 総説:関係ひとつ・定数ひとつ・1ビットから — 標準理論への辞書と公理の交換収支
-   - DOI: https://doi.org/10.5281/zenodo.20666132 / https://doi.org/10.5281/zenodo.20666114
+   - DOI: https://doi.org/10.5281/zenodo.20666132
    - survey_dictionary_axiom_exchange_en_v1_0.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/survey_dictionary_axiom_exchange_en_v1_0.pdf
    - survey_dictionary_axiom_exchange_ja_v1_0.pdf
@@ -2431,6 +2446,10 @@ https://note.com/kiharanoriaki/n/n6d8ab15ea24c
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper15_xyztRQ_projection_en_v1_2.pdf
    - paper15_xyztRQ_projection_ja_v1_2.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper15_xyztRQ_projection_ja_v1_2.pdf
+
+6. **[C]** 総説:関係ひとつ・定数ひとつ・1ビットから — 標準理論への辞書と公理の交換収支
+   - DOI: https://doi.org/10.5281/zenodo.20666114
+   - PDF: 本文照合できず。上記 DOI から取得すること
 
 
 ---
@@ -2645,10 +2664,10 @@ https://note.com/kiharanoriaki/n/n08aeb3c4e8ae
 
 **元原稿**: `波長空間と周波数空間の双対幾何/note_article_ja.md`
 
-**論文 6 件**
+**論文 5 件**
 
 1. **[A]** Paper 1: Dual Geometry of Wavelength Space and Frequency Space
-   - DOI: https://doi.org/10.5281/zenodo.20588036
+   - DOI: https://doi.org/10.5281/zenodo.20588036 / https://doi.org/10.5281/zenodo.20588037
    - paper1_wavelength_frequency_dual_geometry_v0_3.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper1_wavelength_frequency_dual_geometry_v0_3.pdf
    - paper1_wavelength_frequency_dual_geometry_v0_3_en.pdf
@@ -2672,31 +2691,16 @@ https://note.com/kiharanoriaki/n/n08aeb3c4e8ae
    - paper2_4d_lattice_cell_count_radius_sweep_v0_1_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper2_4d_lattice_cell_count_radius_sweep_v0_1_en.pdf
 
-4. **[B]** Closed Four-Degree-of-Freedom Structure and Its Correspondence with 4-Dimensional Lattice Counting: A Geometric Organization from the 5-Component Sum-of-Squares Constraint to the Unit-Cell Counting Region
+4. **[C]** Radius Sweep of Fully-Inscribed Unit-Cell Counts on a 4-Dimensional Lattice: An Enumeration Table from R = 0.5 to 10.0 with a Reproducible Formulation
+   - DOI: https://doi.org/10.5281/zenodo.20588039
+   - PDF: 本文照合できず。上記 DOI から取得すること
+
+5. **[Z]** Closed Four-Degree-of-Freedom Structure and Its Correspondence with 4-Dimensional Lattice Counting: A Geometric Organization from the 5-Component Sum-of-Squares Constraint to the Unit-Cell Counting Region
    - DOI: https://doi.org/10.5281/zenodo.20589262
    - paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2.pdf
    - paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2_en.pdf
-
-5. **[B]** Dual Geometry of Wavelength Space and Frequency Space: A Geometric and Topological Observational Model of Reciprocal Conditions, Logarithmic Representation, and Uncertainty-Weighted Counting
-   - DOI: https://doi.org/10.5281/zenodo.20588037
-   - paper1_wavelength_frequency_dual_geometry_v0_3.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper1_wavelength_frequency_dual_geometry_v0_3.pdf
-   - paper1_wavelength_frequency_dual_geometry_v0_3_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper1_wavelength_frequency_dual_geometry_v0_3_en.pdf
-   - paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2.pdf
-   - paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2_en.pdf
-   - paper3_closed_4d_structure_and_lattice_counting_supplement_v0_3.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_3.pdf
-   - paper3_closed_4d_structure_and_lattice_counting_supplement_v0_3_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_3_en.pdf
-
-6. **[C]** Radius Sweep of Fully-Inscribed Unit-Cell Counts on a 4-Dimensional Lattice: An Enumeration Table from R = 0.5 to 10.0 with a Reproducible Formulation
-   - DOI: https://doi.org/10.5281/zenodo.20588039
-   - PDF: 本文照合できず。上記 DOI から取得すること
 
 
 ---
@@ -2709,10 +2713,10 @@ https://note.com/kiharanoriaki/n/nf2b3e4392ea1
 
 **元原稿**: `note_article_ja_v2.md`
 
-**論文 6 件**
+**論文 5 件**
 
 1. **[A]** Paper 1: Dual Geometry of Wavelength Space and Frequency Space
-   - DOI: https://doi.org/10.5281/zenodo.20588036
+   - DOI: https://doi.org/10.5281/zenodo.20588036 / https://doi.org/10.5281/zenodo.20588037
    - paper1_wavelength_frequency_dual_geometry_v0_3.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper1_wavelength_frequency_dual_geometry_v0_3.pdf
    - paper1_wavelength_frequency_dual_geometry_v0_3_en.pdf
@@ -2736,31 +2740,16 @@ https://note.com/kiharanoriaki/n/nf2b3e4392ea1
    - paper2_4d_lattice_cell_count_radius_sweep_v0_1_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper2_4d_lattice_cell_count_radius_sweep_v0_1_en.pdf
 
-4. **[B]** Closed Four-Degree-of-Freedom Structure and Its Correspondence with 4-Dimensional Lattice Counting: A Geometric Organization from the 5-Component Sum-of-Squares Constraint to the Unit-Cell Counting Region
+4. **[C]** Radius Sweep of Fully-Inscribed Unit-Cell Counts on a 4-Dimensional Lattice: An Enumeration Table from R = 0.5 to 10.0 with a Reproducible Formulation
+   - DOI: https://doi.org/10.5281/zenodo.20588039
+   - PDF: 本文照合できず。上記 DOI から取得すること
+
+5. **[Z]** Closed Four-Degree-of-Freedom Structure and Its Correspondence with 4-Dimensional Lattice Counting: A Geometric Organization from the 5-Component Sum-of-Squares Constraint to the Unit-Cell Counting Region
    - DOI: https://doi.org/10.5281/zenodo.20589262
    - paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2.pdf
    - paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2_en.pdf
-
-5. **[B]** Dual Geometry of Wavelength Space and Frequency Space: A Geometric and Topological Observational Model of Reciprocal Conditions, Logarithmic Representation, and Uncertainty-Weighted Counting
-   - DOI: https://doi.org/10.5281/zenodo.20588037
-   - paper1_wavelength_frequency_dual_geometry_v0_3.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper1_wavelength_frequency_dual_geometry_v0_3.pdf
-   - paper1_wavelength_frequency_dual_geometry_v0_3_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper1_wavelength_frequency_dual_geometry_v0_3_en.pdf
-   - paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2.pdf
-   - paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2_en.pdf
-   - paper3_closed_4d_structure_and_lattice_counting_supplement_v0_3.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_3.pdf
-   - paper3_closed_4d_structure_and_lattice_counting_supplement_v0_3_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_3_en.pdf
-
-6. **[C]** Radius Sweep of Fully-Inscribed Unit-Cell Counts on a 4-Dimensional Lattice: An Enumeration Table from R = 0.5 to 10.0 with a Reproducible Formulation
-   - DOI: https://doi.org/10.5281/zenodo.20588039
-   - PDF: 本文照合できず。上記 DOI から取得すること
 
 
 ---
@@ -2801,16 +2790,12 @@ https://note.com/kiharanoriaki/n/nb00c0ffb2c14
    - BH_Paper12_Model_Particle_Dimension_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/Paper12_Model_Particle_Dimension/BH_Paper12_Model_Particle_Dimension_ja.pdf
 
-3. **[B]** Abstract
+3. **[Z]** Abstract
    - DOI: https://doi.org/10.5281/zenodo.20060728
    - central_projection_composition_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/central_projection_composition_en.pdf
    - central_projection_composition_jp.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/central_projection_composition_jp.pdf
-   - handout_central_spherical_projection_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/handout_central_spherical_projection_en.pdf
-   - handout_central_spherical_projection_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/handout_central_spherical_projection_ja.pdf
 
 
 ---
@@ -2939,27 +2924,19 @@ https://note.com/kiharanoriaki/n/n8ffc8e2c9123
    - thought_exp_ch5_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/新版量子論の基礎/thought_exp_ch5_ja.pdf
 
-3. **[B]** A Geometric Identity for the Fine-Structure Constant: From the 4D Unit Ball Volume and its Cube-Packing Deficit (Paper 7, v3)
+3. **[Z]** A Geometric Identity for the Fine-Structure Constant: From the 4D Unit Ball Volume and its Cube-Packing Deficit (Paper 7, v3)
    - DOI: https://doi.org/10.5281/zenodo.19876200
    - BH_Paper7_Alpha_Identity_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper7_alpha/BH_Paper7_Alpha_Identity_en.pdf
    - BH_Paper7_Alpha_Identity_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper7_alpha/BH_Paper7_Alpha_Identity_ja.pdf
-   - handout_alpha_trilogy_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_en.pdf
-   - handout_alpha_trilogy_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_ja.pdf
 
-4. **[B]** Chain Complex Structure on the 4D Hypercubic Lattice: Structural Correspondence between Kihara Cube-Packing and Wilson Lattice Gauge Theory (Paper 8, v2)
+4. **[Z]** Chain Complex Structure on the 4D Hypercubic Lattice: Structural Correspondence between Kihara Cube-Packing and Wilson Lattice Gauge Theory (Paper 8, v2)
    - DOI: https://doi.org/10.5281/zenodo.19881119
    - BH_Paper8_Isomorphism_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper8_isomorphism/BH_Paper8_Isomorphism_en.pdf
    - BH_Paper8_Isomorphism_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper8_isomorphism/BH_Paper8_Isomorphism_ja.pdf
-   - handout_alpha_trilogy_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_en.pdf
-   - handout_alpha_trilogy_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_ja.pdf
 
 
 ---
@@ -2988,27 +2965,19 @@ https://note.com/kiharanoriaki/n/ncaf7e51ecc2b
    - thought_exp_ch5_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/新版量子論の基礎/thought_exp_ch5_ja.pdf
 
-3. **[B]** A Geometric Identity for the Fine-Structure Constant: From the 4D Unit Ball Volume and its Cube-Packing Deficit (Paper 7, v3)
+3. **[Z]** A Geometric Identity for the Fine-Structure Constant: From the 4D Unit Ball Volume and its Cube-Packing Deficit (Paper 7, v3)
    - DOI: https://doi.org/10.5281/zenodo.19876200
    - BH_Paper7_Alpha_Identity_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper7_alpha/BH_Paper7_Alpha_Identity_en.pdf
    - BH_Paper7_Alpha_Identity_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper7_alpha/BH_Paper7_Alpha_Identity_ja.pdf
-   - handout_alpha_trilogy_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_en.pdf
-   - handout_alpha_trilogy_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_ja.pdf
 
-4. **[B]** Chain Complex Structure on the 4D Hypercubic Lattice: Structural Correspondence between Kihara Cube-Packing and Wilson Lattice Gauge Theory (Paper 8, v2)
+4. **[Z]** Chain Complex Structure on the 4D Hypercubic Lattice: Structural Correspondence between Kihara Cube-Packing and Wilson Lattice Gauge Theory (Paper 8, v2)
    - DOI: https://doi.org/10.5281/zenodo.19881119
    - BH_Paper8_Isomorphism_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper8_isomorphism/BH_Paper8_Isomorphism_en.pdf
    - BH_Paper8_Isomorphism_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper8_isomorphism/BH_Paper8_Isomorphism_ja.pdf
-   - handout_alpha_trilogy_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_en.pdf
-   - handout_alpha_trilogy_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_ja.pdf
 
 
 ---
@@ -3037,27 +3006,19 @@ https://note.com/kiharanoriaki/n/n2410d4863565
    - thought_exp_ch3_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/新版量子論の基礎/thought_exp_ch3_ja.pdf
 
-3. **[B]** A Geometric Identity for the Fine-Structure Constant: From the 4D Unit Ball Volume and its Cube-Packing Deficit (Paper 7, v3)
+3. **[Z]** A Geometric Identity for the Fine-Structure Constant: From the 4D Unit Ball Volume and its Cube-Packing Deficit (Paper 7, v3)
    - DOI: https://doi.org/10.5281/zenodo.19876200
    - BH_Paper7_Alpha_Identity_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper7_alpha/BH_Paper7_Alpha_Identity_en.pdf
    - BH_Paper7_Alpha_Identity_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper7_alpha/BH_Paper7_Alpha_Identity_ja.pdf
-   - handout_alpha_trilogy_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_en.pdf
-   - handout_alpha_trilogy_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_ja.pdf
 
-4. **[B]** Chain Complex Structure on the 4D Hypercubic Lattice: Structural Correspondence between Kihara Cube-Packing and Wilson Lattice Gauge Theory (Paper 8, v2)
+4. **[Z]** Chain Complex Structure on the 4D Hypercubic Lattice: Structural Correspondence between Kihara Cube-Packing and Wilson Lattice Gauge Theory (Paper 8, v2)
    - DOI: https://doi.org/10.5281/zenodo.19881119
    - BH_Paper8_Isomorphism_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper8_isomorphism/BH_Paper8_Isomorphism_en.pdf
    - BH_Paper8_Isomorphism_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper8_isomorphism/BH_Paper8_Isomorphism_ja.pdf
-   - handout_alpha_trilogy_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_en.pdf
-   - handout_alpha_trilogy_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_ja.pdf
 
 
 ---
@@ -3086,27 +3047,19 @@ https://note.com/kiharanoriaki/n/nbfc40cb3cfa3
    - thought_exp_ch3_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/新版量子論の基礎/thought_exp_ch3_ja.pdf
 
-3. **[B]** A Geometric Identity for the Fine-Structure Constant: From the 4D Unit Ball Volume and its Cube-Packing Deficit (Paper 7, v3)
+3. **[Z]** A Geometric Identity for the Fine-Structure Constant: From the 4D Unit Ball Volume and its Cube-Packing Deficit (Paper 7, v3)
    - DOI: https://doi.org/10.5281/zenodo.19876200
    - BH_Paper7_Alpha_Identity_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper7_alpha/BH_Paper7_Alpha_Identity_en.pdf
    - BH_Paper7_Alpha_Identity_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper7_alpha/BH_Paper7_Alpha_Identity_ja.pdf
-   - handout_alpha_trilogy_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_en.pdf
-   - handout_alpha_trilogy_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_ja.pdf
 
-4. **[B]** Chain Complex Structure on the 4D Hypercubic Lattice: Structural Correspondence between Kihara Cube-Packing and Wilson Lattice Gauge Theory (Paper 8, v2)
+4. **[Z]** Chain Complex Structure on the 4D Hypercubic Lattice: Structural Correspondence between Kihara Cube-Packing and Wilson Lattice Gauge Theory (Paper 8, v2)
    - DOI: https://doi.org/10.5281/zenodo.19881119
    - BH_Paper8_Isomorphism_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper8_isomorphism/BH_Paper8_Isomorphism_en.pdf
    - BH_Paper8_Isomorphism_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper8_isomorphism/BH_Paper8_Isomorphism_ja.pdf
-   - handout_alpha_trilogy_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_en.pdf
-   - handout_alpha_trilogy_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_ja.pdf
 
 
 ---
@@ -3263,7 +3216,7 @@ https://note.com/kiharanoriaki/n/n1bd7b7446ac4
 
 **元原稿**: `グノモン正写像による4次元時空の幾何学的定式化/note_article_中心投影合成演算.md`
 
-**論文 3 件**
+**論文 2 件**
 
 1. **[A]** Geometric Formulation of 4-Dimensional Space via Central Projection
    - DOI: https://doi.org/10.5281/zenodo.19427780
@@ -3284,19 +3237,8 @@ https://note.com/kiharanoriaki/n/n1bd7b7446ac4
    - rq_mapping_definition_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/rq_mapping_definition_en.pdf
 
-2. **[B]** Abstract
-   - DOI: https://doi.org/10.5281/zenodo.20060728
-   - central_projection_composition_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/central_projection_composition_en.pdf
-   - central_projection_composition_jp.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/central_projection_composition_jp.pdf
-   - handout_central_spherical_projection_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/handout_central_spherical_projection_en.pdf
-   - handout_central_spherical_projection_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/handout_central_spherical_projection_ja.pdf
-
-3. **[B]** Composition of Central Projection and the Closed Form of the Composite Curvature Radius: An Algebraic Formulation of High-Dimensional Reduction via One Central Projection and Commutative Cuts on the Sphere
-   - DOI: https://doi.org/10.5281/zenodo.20060729
+2. **[Z]** Abstract
+   - DOI: https://doi.org/10.5281/zenodo.20060728 / https://doi.org/10.5281/zenodo.20060729
    - central_projection_composition_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/central_projection_composition_en.pdf
    - central_projection_composition_jp.pdf
@@ -3313,7 +3255,7 @@ https://note.com/kiharanoriaki/n/ne867c5c7c569
 
 **元原稿**: `グノモン正写像による4次元時空の幾何学的定式化/note_article_central_projection_composition_en.md`
 
-**論文 3 件**
+**論文 2 件**
 
 1. **[A]** Geometric Formulation of 4-Dimensional Space via Central Projection
    - DOI: https://doi.org/10.5281/zenodo.19427780
@@ -3334,19 +3276,8 @@ https://note.com/kiharanoriaki/n/ne867c5c7c569
    - rq_mapping_definition_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/rq_mapping_definition_en.pdf
 
-2. **[B]** Abstract
-   - DOI: https://doi.org/10.5281/zenodo.20060728
-   - central_projection_composition_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/central_projection_composition_en.pdf
-   - central_projection_composition_jp.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/central_projection_composition_jp.pdf
-   - handout_central_spherical_projection_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/handout_central_spherical_projection_en.pdf
-   - handout_central_spherical_projection_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/handout_central_spherical_projection_ja.pdf
-
-3. **[B]** Composition of Central Projection and the Closed Form of the Composite Curvature Radius: An Algebraic Formulation of High-Dimensional Reduction via One Central Projection and Commutative Cuts on the Sphere
-   - DOI: https://doi.org/10.5281/zenodo.20060729
+2. **[Z]** Abstract
+   - DOI: https://doi.org/10.5281/zenodo.20060728 / https://doi.org/10.5281/zenodo.20060729
    - central_projection_composition_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/central_projection_composition_en.pdf
    - central_projection_composition_jp.pdf
@@ -3680,16 +3611,12 @@ https://note.com/kiharanoriaki/n/n87df7a4977e7
    - 思考実験_R軸について.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/思考実験_R軸について.pdf
 
-2. **[B]** Chain Complex Structure on the 4D Hypercubic Lattice: Structural Correspondence between Kihara Cube-Packing and Wilson Lattice Gauge Theory (Paper 8, v2)
+2. **[Z]** Chain Complex Structure on the 4D Hypercubic Lattice: Structural Correspondence between Kihara Cube-Packing and Wilson Lattice Gauge Theory (Paper 8, v2)
    - DOI: https://doi.org/10.5281/zenodo.19881119
    - BH_Paper8_Isomorphism_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper8_isomorphism/BH_Paper8_Isomorphism_en.pdf
    - BH_Paper8_Isomorphism_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper8_isomorphism/BH_Paper8_Isomorphism_ja.pdf
-   - handout_alpha_trilogy_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_en.pdf
-   - handout_alpha_trilogy_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_ja.pdf
 
 
 ---
@@ -3719,16 +3646,12 @@ https://note.com/kiharanoriaki/n/n9c37c6f99a0a
    - 思考実験_R軸について.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/思考実験_R軸について.pdf
 
-2. **[B]** Chain Complex Structure on the 4D Hypercubic Lattice: Structural Correspondence between Kihara Cube-Packing and Wilson Lattice Gauge Theory (Paper 8, v2)
+2. **[Z]** Chain Complex Structure on the 4D Hypercubic Lattice: Structural Correspondence between Kihara Cube-Packing and Wilson Lattice Gauge Theory (Paper 8, v2)
    - DOI: https://doi.org/10.5281/zenodo.19881119
    - BH_Paper8_Isomorphism_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper8_isomorphism/BH_Paper8_Isomorphism_en.pdf
    - BH_Paper8_Isomorphism_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper8_isomorphism/BH_Paper8_Isomorphism_ja.pdf
-   - handout_alpha_trilogy_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_en.pdf
-   - handout_alpha_trilogy_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_alpha_trilogy_ja.pdf
 
 
 ---
@@ -3773,14 +3696,49 @@ https://note.com/kiharanoriaki/n/n4524006ef175
 
 **元原稿**: `BH熱力学プログラム/note_article_ja.md`
 
-**論文 1 件**
+**論文 6 件**
 
-1. **[B]** ブラックホール熱力学の上位時空構造からの写像としての再解釈：仮説駆動型研究プログラム（論文1：俯瞰・仮説提示）
-   - DOI: https://doi.org/10.5281/zenodo.19837587 / https://doi.org/10.5281/zenodo.19837589 / https://doi.org/10.5281/zenodo.19837591 / https://doi.org/10.5281/zenodo.19837593 / https://doi.org/10.5281/zenodo.19837595 / https://doi.org/10.5281/zenodo.19837597
-   - handout_bh_thermodynamics_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_bh_thermodynamics_en.pdf
-   - handout_bh_thermodynamics_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_bh_thermodynamics_ja.pdf
+1. **[Z]** $S^4$ からのグノモン投影と4次元主観座標図上の誘導計量の Schwarzschild 様の形（論文2：射影の数学的基盤）
+   - DOI: https://doi.org/10.5281/zenodo.19837589
+   - BH_Paper2_Gnomonic_Projection_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper2_projection/BH_Paper2_Gnomonic_Projection_en.pdf
+   - BH_Paper2_Gnomonic_Projection_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper2_projection/BH_Paper2_Gnomonic_Projection_ja.pdf
+
+2. **[Z]** 4次元球の離散構造：単位立方体充填と漸近的体積不足 $\Delta(R)$（論文3：離散性の数学的基盤）
+   - DOI: https://doi.org/10.5281/zenodo.19837591
+   - BH_Paper3_Packing_VolumeDeficit_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper3_packing/BH_Paper3_Packing_VolumeDeficit_en.pdf
+   - BH_Paper3_Packing_VolumeDeficit_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper3_packing/BH_Paper3_Packing_VolumeDeficit_ja.pdf
+
+3. **[Z]** ブラックホール熱力学の上位時空構造からの写像としての再解釈：仮説駆動型研究プログラム（論文1：俯瞰・仮説提示）
+   - DOI: https://doi.org/10.5281/zenodo.19837587
+   - BH_Paper1_Overview_Hypotheses_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper1_overview/BH_Paper1_Overview_Hypotheses_en.pdf
+   - BH_Paper1_Overview_Hypotheses_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper1_overview/BH_Paper1_Overview_Hypotheses_ja.pdf
+
+4. **[Z]** 曲率半径の自己整合的決定と Tangherlini 蒸発スケーリングの回復（論文5：動力学的接続）
+   - DOI: https://doi.org/10.5281/zenodo.19837595
+   - BH_Paper5_Dynamics_Tangherlini_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper5_dynamics/BH_Paper5_Dynamics_Tangherlini_en.pdf
+   - BH_Paper5_Dynamics_Tangherlini_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper5_dynamics/BH_Paper5_Dynamics_Tangherlini_ja.pdf
+
+5. **[Z]** 格子体積不足と Tangherlini Bekenstein–Hawking エントロピーの定量的対応（論文4：エントロピー対応）
+   - DOI: https://doi.org/10.5281/zenodo.19837593
+   - BH_Paper4_Entropy_Correspondence_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper4_entropy/BH_Paper4_Entropy_Correspondence_en.pdf
+   - BH_Paper4_Entropy_Correspondence_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper4_entropy/BH_Paper4_Entropy_Correspondence_ja.pdf
+
+6. **[Z]** 統合と 4+1 から 3+1 への削減を主要未解決問題として（論文6：統合）
+   - DOI: https://doi.org/10.5281/zenodo.19837597
+   - BH_Paper6_Synthesis_3plus1Reduction_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper6_synthesis/BH_Paper6_Synthesis_3plus1Reduction_en.pdf
+   - BH_Paper6_Synthesis_3plus1Reduction_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper6_synthesis/BH_Paper6_Synthesis_3plus1Reduction_ja.pdf
 
 
 ---
@@ -3793,14 +3751,49 @@ https://note.com/kiharanoriaki/n/n916eac778c1c
 
 **元原稿**: `BH熱力学プログラム/note_article_en.md`
 
-**論文 1 件**
+**論文 6 件**
 
-1. **[B]** ブラックホール熱力学の上位時空構造からの写像としての再解釈：仮説駆動型研究プログラム（論文1：俯瞰・仮説提示）
-   - DOI: https://doi.org/10.5281/zenodo.19837587 / https://doi.org/10.5281/zenodo.19837589 / https://doi.org/10.5281/zenodo.19837591 / https://doi.org/10.5281/zenodo.19837593 / https://doi.org/10.5281/zenodo.19837595 / https://doi.org/10.5281/zenodo.19837597
-   - handout_bh_thermodynamics_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_bh_thermodynamics_en.pdf
-   - handout_bh_thermodynamics_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/handout_bh_thermodynamics_ja.pdf
+1. **[Z]** $S^4$ からのグノモン投影と4次元主観座標図上の誘導計量の Schwarzschild 様の形（論文2：射影の数学的基盤）
+   - DOI: https://doi.org/10.5281/zenodo.19837589
+   - BH_Paper2_Gnomonic_Projection_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper2_projection/BH_Paper2_Gnomonic_Projection_en.pdf
+   - BH_Paper2_Gnomonic_Projection_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper2_projection/BH_Paper2_Gnomonic_Projection_ja.pdf
+
+2. **[Z]** 4次元球の離散構造：単位立方体充填と漸近的体積不足 $\Delta(R)$（論文3：離散性の数学的基盤）
+   - DOI: https://doi.org/10.5281/zenodo.19837591
+   - BH_Paper3_Packing_VolumeDeficit_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper3_packing/BH_Paper3_Packing_VolumeDeficit_en.pdf
+   - BH_Paper3_Packing_VolumeDeficit_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper3_packing/BH_Paper3_Packing_VolumeDeficit_ja.pdf
+
+3. **[Z]** ブラックホール熱力学の上位時空構造からの写像としての再解釈：仮説駆動型研究プログラム（論文1：俯瞰・仮説提示）
+   - DOI: https://doi.org/10.5281/zenodo.19837587
+   - BH_Paper1_Overview_Hypotheses_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper1_overview/BH_Paper1_Overview_Hypotheses_en.pdf
+   - BH_Paper1_Overview_Hypotheses_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper1_overview/BH_Paper1_Overview_Hypotheses_ja.pdf
+
+4. **[Z]** 曲率半径の自己整合的決定と Tangherlini 蒸発スケーリングの回復（論文5：動力学的接続）
+   - DOI: https://doi.org/10.5281/zenodo.19837595
+   - BH_Paper5_Dynamics_Tangherlini_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper5_dynamics/BH_Paper5_Dynamics_Tangherlini_en.pdf
+   - BH_Paper5_Dynamics_Tangherlini_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper5_dynamics/BH_Paper5_Dynamics_Tangherlini_ja.pdf
+
+5. **[Z]** 格子体積不足と Tangherlini Bekenstein–Hawking エントロピーの定量的対応（論文4：エントロピー対応）
+   - DOI: https://doi.org/10.5281/zenodo.19837593
+   - BH_Paper4_Entropy_Correspondence_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper4_entropy/BH_Paper4_Entropy_Correspondence_en.pdf
+   - BH_Paper4_Entropy_Correspondence_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper4_entropy/BH_Paper4_Entropy_Correspondence_ja.pdf
+
+6. **[Z]** 統合と 4+1 から 3+1 への削減を主要未解決問題として（論文6：統合）
+   - DOI: https://doi.org/10.5281/zenodo.19837597
+   - BH_Paper6_Synthesis_3plus1Reduction_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper6_synthesis/BH_Paper6_Synthesis_3plus1Reduction_en.pdf
+   - BH_Paper6_Synthesis_3plus1Reduction_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper6_synthesis/BH_Paper6_Synthesis_3plus1Reduction_ja.pdf
 
 
 ---
@@ -4078,51 +4071,43 @@ https://note.com/kiharanoriaki/n/n63d3c20e6b20
    - D1 中心投影フレームワークの粒子データ構造仕様 v2.1.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波動方程式/中心投影における位相方程式/D1 中心投影フレームワークの粒子データ構造仕様 v2.1.pdf
 
-30. **[B]** Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle — Spacetime Dimensionality, the Origin of Time, and the Beginning of the Universe as Derived from a Discrete Packing Model
+30. **[C]** （表題未取得）
+   - DOI: https://doi.org/10.5281/zenodo.19534373
+   - PDF: 本文照合できず。上記 DOI から取得すること
+
+31. **[C]** （表題未取得）
+   - DOI: https://doi.org/10.5281/zenodo.19534409
+   - PDF: 本文照合できず。上記 DOI から取得すること
+
+32. **[C]** 6次元超直方体を採用した (R, Q) マッピングの構成
+   - DOI: https://doi.org/10.5281/zenodo.19763466
+   - PDF: 本文照合できず。上記 DOI から取得すること
+
+33. **[C]** Considerations on Mass Structure: A Framework for Mass Analysis via Axis Scale Values and Signed Areas
+   - DOI: https://doi.org/10.5281/zenodo.19763476
+   - PDF: 本文照合できず。上記 DOI から取得すること
+
+34. **[C]** Considerations on the Relationship between the 6-Dimensional Hypercube and Central Projection
+   - DOI: https://doi.org/10.5281/zenodo.19731614
+   - PDF: 本文照合できず。上記 DOI から取得すること
+
+35. **[C]** Formulation of Signed Area: Derivation of Charge Structure and Consequences of Spin-2 Configurations
+   - DOI: https://doi.org/10.5281/zenodo.19763471
+   - PDF: 本文照合できず。上記 DOI から取得すること
+
+36. **[Z]** Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle — Spacetime Dimensionality, the Origin of Time, and the Beginning of the Universe as Derived from a Discrete Packing Model
    - DOI: https://doi.org/10.5281/zenodo.19533313
-   - gnomonic_summary_handout.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/gnomonic_summary_handout.pdf
-   - gnomonic_summary_handout_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/gnomonic_summary_handout_en.pdf
-   - gnomonic_summary_handout_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/gnomonic_summary_handout_ja.pdf
    - 5. Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/主観空間曲率半径の極限と次元追加・各次元の構図/5. Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle.pdf
    - 5. 体積1の四次元超直方体に外接する超球体の直径.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/主観空間曲率半径の極限と次元追加・各次元の構図/5. 体積1の四次元超直方体に外接する超球体の直径.pdf
 
-31. **[B]** Relativity of Observation in Multiple Subjective Spaces: Geometric Consequences of the Symmetries of Central Projection
+37. **[Z]** Relativity of Observation in Multiple Subjective Spaces: Geometric Consequences of the Symmetries of Central Projection
    - DOI: https://doi.org/10.5281/zenodo.19435162
-   - gnomonic_summary_handout.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/gnomonic_summary_handout.pdf
-   - gnomonic_summary_handout_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/gnomonic_summary_handout_en.pdf
-   - gnomonic_summary_handout_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/gnomonic_summary_handout_ja.pdf
-
-32. **[C]** （表題未取得）
-   - DOI: https://doi.org/10.5281/zenodo.19534373
-   - PDF: 本文照合できず。上記 DOI から取得すること
-
-33. **[C]** （表題未取得）
-   - DOI: https://doi.org/10.5281/zenodo.19534409
-   - PDF: 本文照合できず。上記 DOI から取得すること
-
-34. **[C]** 6次元超直方体を採用した (R, Q) マッピングの構成
-   - DOI: https://doi.org/10.5281/zenodo.19763466
-   - PDF: 本文照合できず。上記 DOI から取得すること
-
-35. **[C]** Considerations on Mass Structure: A Framework for Mass Analysis via Axis Scale Values and Signed Areas
-   - DOI: https://doi.org/10.5281/zenodo.19763476
-   - PDF: 本文照合できず。上記 DOI から取得すること
-
-36. **[C]** Considerations on the Relationship between the 6-Dimensional Hypercube and Central Projection
-   - DOI: https://doi.org/10.5281/zenodo.19731614
-   - PDF: 本文照合できず。上記 DOI から取得すること
-
-37. **[C]** Formulation of Signed Area: Derivation of Charge Structure and Consequences of Spin-2 Configurations
-   - DOI: https://doi.org/10.5281/zenodo.19763471
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - subjective_space_relativity.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/subjective_space_relativity.pdf
+   - subjective_space_relativity_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/subjective_space_relativity_en.pdf
 
 
 ---
@@ -4432,27 +4417,19 @@ https://note.com/kiharanoriaki/n/nc51e43282b0a
    - 3. ゼロ次元から四次元主観空間の考察.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/主観空間曲率半径の極限と次元追加・各次元の構図/3. ゼロ次元から四次元主観空間の考察.pdf
 
-9. **[B]** Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle — Spacetime Dimensionality, the Origin of Time, and the Beginning of the Universe as Derived from a Discrete Packing Model
+9. **[Z]** Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle — Spacetime Dimensionality, the Origin of Time, and the Beginning of the Universe as Derived from a Discrete Packing Model
    - DOI: https://doi.org/10.5281/zenodo.19533313
-   - gnomonic_summary_handout.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/gnomonic_summary_handout.pdf
-   - gnomonic_summary_handout_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/gnomonic_summary_handout_en.pdf
-   - gnomonic_summary_handout_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/gnomonic_summary_handout_ja.pdf
    - 5. Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/主観空間曲率半径の極限と次元追加・各次元の構図/5. Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle.pdf
    - 5. 体積1の四次元超直方体に外接する超球体の直径.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/主観空間曲率半径の極限と次元追加・各次元の構図/5. 体積1の四次元超直方体に外接する超球体の直径.pdf
 
-10. **[B]** Relativity of Observation in Multiple Subjective Spaces: Geometric Consequences of the Symmetries of Central Projection
+10. **[Z]** Relativity of Observation in Multiple Subjective Spaces: Geometric Consequences of the Symmetries of Central Projection
    - DOI: https://doi.org/10.5281/zenodo.19435162
-   - gnomonic_summary_handout.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/gnomonic_summary_handout.pdf
-   - gnomonic_summary_handout_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/gnomonic_summary_handout_en.pdf
-   - gnomonic_summary_handout_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/gnomonic_summary_handout_ja.pdf
+   - subjective_space_relativity.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/subjective_space_relativity.pdf
+   - subjective_space_relativity_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/subjective_space_relativity_en.pdf
 
 
 ---
