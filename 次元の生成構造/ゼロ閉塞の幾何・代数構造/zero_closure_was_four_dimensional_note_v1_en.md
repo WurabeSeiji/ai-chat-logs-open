@@ -189,6 +189,12 @@ https://doi.org/10.5281/zenodo.21902806
 Concept DOI (always points to the latest version): 10.5281/zenodo.21902805
 https://doi.org/10.5281/zenodo.21902805
 
+The English full text PDF (about 8 MB) can be downloaded directly from the public repository.
+
+https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/ゼロ閉塞の幾何・代数構造/Zero_Closure_Was_Four_Dimensional_Claim_Draft_v4_en.pdf
+
 All programs that reproduce the figures and numbers are in the repository, listed with md5 hashes. The random seeds are fixed, so you get the same numbers.
+
+Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
 
 #Physics #TheoreticalPhysics #Mathematics #Geometry #ComplexNumbers #CentralProjection #ZeroClosure #ExtraDimensions #Compactification #Inflation #LightCone #IndependentResearcher #ResearchNotes #Zenodo #OpenScience
