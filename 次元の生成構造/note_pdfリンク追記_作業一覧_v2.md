@@ -29,6 +29,16 @@ C は推測で PDF を貼るとまた誤対応になるため、意図的に空�
   - `paper0_geodesic_cell_distortion` … `20680269` が **v1.5**、`20684135` が **v1.4** と版まで確定
 - **1 件は PDF が存在しない**（`20666114`。下記(3)）
 
+## C 判定 21 件の全件調査結果（完了）
+
+PDF 本文からは確定できなかった C 判定 21 件も、同じ手順で **全件 Zenodo に当てた**。
+
+- **18 件を確定**（印は `Z`）。BH 論文10（signal/control）、観測論文、補講1（符号付き面積）、質量構造の考察、rq_mapping、逆二乗則、波の周期表 v2、重力読出しなどが該当する。
+- **1 件は同一内容が別名で在庫していた**。`19933730`（BH 論文7 補講）は Zenodo 上の名が `..._v1_ja.pdf` / `..._v1_en.pdf` だが、リポジトリには `_v1` 無しの名で既に存在し、**md5 が完全一致**（`e735a8a0…` / `87f93205…`）。重複取得を避けて既存ファイルに対応付けた。
+- **残る 3 件は下記のとおり note 側で DOI を削除する**（19534373 / 19534409 / 20666114）。
+
+この結果、**note が引く論文 DOI 154 件のうち 151 件が確定**し、PDF を貼れないのは削除対象の 3 件だけになった。
+
 handout（配布資料）の本文にも各論文の DOI が印刷されているため、本文照合だけでは論文本体と区別できなかった。Zenodo の収録ファイル名で初めて分離できる。
 
 ## note 側で DOI の記載を削除すること — 3 件
@@ -115,13 +125,19 @@ https://note.com/kiharanoriaki/n/n698b11999367
 
 **論文 2 件**
 
-1. **[C]** 波と場の二層分離——場の読出し万能関数によるゲージ場と重力場の統合 / Two-Layer Separation of Waves and Fields — Unifying Gauge and Gravitational Fields via a Universal Field-Readout Function
+1. **[Z]** 波と場の二層分離——場の読出し万能関数によるゲージ場と重力場の統合 / Two-Layer Separation of Waves and Fields — Unifying Gauge and Gravitational Fields via a Universal Field-Readout Function
    - DOI: https://doi.org/10.5281/zenodo.21832257
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - gravity_readout_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/重力読出し検討/gravity_readout_en.pdf
+   - gravity_readout_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/重力読出し検討/gravity_readout_ja.pdf
 
-2. **[C]** 波の周期表 v2——巻き数番地と観測時計による粒子分類、および時計場ω(x)による質量・寿命・分裂の統合 / The Periodic Table of Waves v2: Particle Classification by Winding Addresses and Observation Clocks, and the Unification of Mass, Lifetime, and Splitting by the Clock Field ω(x)
+2. **[Z]** 波の周期表 v2——巻き数番地と観測時計による粒子分類、および時計場ω(x)による質量・寿命・分裂の統合 / The Periodic Table of Waves v2: Particle Classification by Winding Addresses and Observation Clocks, and the Unification of Mass, Lifetime, and Splitting by the Clock Field ω(x)
    - DOI: https://doi.org/10.5281/zenodo.21830706
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - wave_periodic_table_v2_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/波の周期表検討/wave_periodic_table_v2_en.pdf
+   - wave_periodic_table_v2_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/波の周期表検討/wave_periodic_table_v2_ja.pdf
 
 
 ---
@@ -136,13 +152,19 @@ https://note.com/kiharanoriaki/n/n81dc28bcc73a
 
 **論文 2 件**
 
-1. **[C]** 波と場の二層分離——場の読出し万能関数によるゲージ場と重力場の統合 / Two-Layer Separation of Waves and Fields — Unifying Gauge and Gravitational Fields via a Universal Field-Readout Function
+1. **[Z]** 波と場の二層分離——場の読出し万能関数によるゲージ場と重力場の統合 / Two-Layer Separation of Waves and Fields — Unifying Gauge and Gravitational Fields via a Universal Field-Readout Function
    - DOI: https://doi.org/10.5281/zenodo.21832257
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - gravity_readout_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/重力読出し検討/gravity_readout_en.pdf
+   - gravity_readout_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/重力読出し検討/gravity_readout_ja.pdf
 
-2. **[C]** 波の周期表 v2——巻き数番地と観測時計による粒子分類、および時計場ω(x)による質量・寿命・分裂の統合 / The Periodic Table of Waves v2: Particle Classification by Winding Addresses and Observation Clocks, and the Unification of Mass, Lifetime, and Splitting by the Clock Field ω(x)
+2. **[Z]** 波の周期表 v2——巻き数番地と観測時計による粒子分類、および時計場ω(x)による質量・寿命・分裂の統合 / The Periodic Table of Waves v2: Particle Classification by Winding Addresses and Observation Clocks, and the Unification of Mass, Lifetime, and Splitting by the Clock Field ω(x)
    - DOI: https://doi.org/10.5281/zenodo.21830706
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - wave_periodic_table_v2_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/波の周期表検討/wave_periodic_table_v2_en.pdf
+   - wave_periodic_table_v2_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/波の周期表検討/wave_periodic_table_v2_ja.pdf
 
 
 ---
@@ -203,9 +225,12 @@ https://note.com/kiharanoriaki/n/n6be3536e1eb0
    - wave_periodic_table_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/波の周期表検討/wave_periodic_table_ja.pdf
 
-2. **[C]** 波の周期表 v2——巻き数番地と観測時計による粒子分類、および時計場ω(x)による質量・寿命・分裂の統合 / The Periodic Table of Waves v2: Particle Classification by Winding Addresses and Observation Clocks, and the Unification of Mass, Lifetime, and Splitting by the Clock Field ω(x)
+2. **[Z]** 波の周期表 v2——巻き数番地と観測時計による粒子分類、および時計場ω(x)による質量・寿命・分裂の統合 / The Periodic Table of Waves v2: Particle Classification by Winding Addresses and Observation Clocks, and the Unification of Mass, Lifetime, and Splitting by the Clock Field ω(x)
    - DOI: https://doi.org/10.5281/zenodo.21830706
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - wave_periodic_table_v2_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/波の周期表検討/wave_periodic_table_v2_en.pdf
+   - wave_periodic_table_v2_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/波の周期表検討/wave_periodic_table_v2_ja.pdf
 
 
 ---
@@ -305,9 +330,12 @@ https://note.com/kiharanoriaki/n/n1583950ec812
    - wave_periodic_table_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/波の周期表検討/wave_periodic_table_ja.pdf
 
-2. **[C]** 波の周期表 v2——巻き数番地と観測時計による粒子分類、および時計場ω(x)による質量・寿命・分裂の統合 / The Periodic Table of Waves v2: Particle Classification by Winding Addresses and Observation Clocks, and the Unification of Mass, Lifetime, and Splitting by the Clock Field ω(x)
+2. **[Z]** 波の周期表 v2——巻き数番地と観測時計による粒子分類、および時計場ω(x)による質量・寿命・分裂の統合 / The Periodic Table of Waves v2: Particle Classification by Winding Addresses and Observation Clocks, and the Unification of Mass, Lifetime, and Splitting by the Clock Field ω(x)
    - DOI: https://doi.org/10.5281/zenodo.21830706
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - wave_periodic_table_v2_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/波の周期表検討/wave_periodic_table_v2_en.pdf
+   - wave_periodic_table_v2_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/波の周期表検討/wave_periodic_table_v2_ja.pdf
 
 
 ---
@@ -1869,10 +1897,10 @@ https://note.com/kiharanoriaki/n/nad8429959a8a
 
 **元原稿**: `note_article_acceleration_readout_summaries_ja.md`
 
-**論文 7 件**
+**論文 6 件**
 
 1. **[A]** AB二体閉鎖位相系における調和読出しとc=1面積スイープ予備実験総括 v4
-   - DOI: https://doi.org/10.5281/zenodo.21318696
+   - DOI: https://doi.org/10.5281/zenodo.21318696 / https://doi.org/10.5281/zenodo.21318697
    - ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_en.pdf
    - ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_ja.pdf
@@ -1924,10 +1952,6 @@ https://note.com/kiharanoriaki/n/nad8429959a8a
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/real_center_rederivation_v1/real_center_rederivation_acceleration_map_en.pdf
    - real_center_rederivation_acceleration_map_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/real_center_rederivation_v1/real_center_rederivation_acceleration_map_ja.pdf
-
-7. **[C]** Preliminary Summary of Harmonic Readout and c=1 Area Sweep in an AB Two-Body Closed Phase System
-   - DOI: https://doi.org/10.5281/zenodo.21318697
-   - PDF: 本文照合できず。上記 DOI から取得すること
 
 
 ---
@@ -1940,10 +1964,10 @@ https://note.com/kiharanoriaki/n/n511a9b0c5787
 
 **元原稿**: `note_article_acceleration_readout_summaries_en.md`
 
-**論文 7 件**
+**論文 6 件**
 
 1. **[A]** AB二体閉鎖位相系における調和読出しとc=1面積スイープ予備実験総括 v4
-   - DOI: https://doi.org/10.5281/zenodo.21318696
+   - DOI: https://doi.org/10.5281/zenodo.21318696 / https://doi.org/10.5281/zenodo.21318697
    - ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_en.pdf
    - ab_two_body_harmonic_readout_c1_area_sweep_preliminary_summary_ja.pdf
@@ -1996,10 +2020,6 @@ https://note.com/kiharanoriaki/n/n511a9b0c5787
    - real_center_rederivation_acceleration_map_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/real_center_rederivation_v1/real_center_rederivation_acceleration_map_ja.pdf
 
-7. **[C]** Preliminary Summary of Harmonic Readout and c=1 Area Sweep in an AB Two-Body Closed Phase System
-   - DOI: https://doi.org/10.5281/zenodo.21318697
-   - PDF: 本文照合できず。上記 DOI から取得すること
-
 
 ---
 
@@ -2011,18 +2031,14 @@ https://note.com/kiharanoriaki/n/nd5d3777a6e48
 
 **元原稿**: `波の情報読出し/20260711/note_article_abc_multigauge_conserved_readouts_ja.md`
 
-**論文 2 件**
+**論文 1 件**
 
 1. **[A]** Construction Experiment of Multigauge Interference Readout Conserved Quantities in an ABC Closed Phase System v2
-   - DOI: https://doi.org/10.5281/zenodo.21308049
+   - DOI: https://doi.org/10.5281/zenodo.21308049 / https://doi.org/10.5281/zenodo.21308050
    - abc_closed_phase_system_multigauge_conserved_readouts_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/abc_closed_phase_system_multigauge_conserved_readouts_en.pdf
    - abc_closed_phase_system_multigauge_conserved_readouts_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/abc_closed_phase_system_multigauge_conserved_readouts_ja.pdf
-
-2. **[C]** Construction Experiment of Multigauge Interference Readout Conserved Quantities in an ABC Closed Phase System
-   - DOI: https://doi.org/10.5281/zenodo.21308050
-   - PDF: 本文照合できず。上記 DOI から取得すること
 
 
 ---
@@ -2035,18 +2051,14 @@ https://note.com/kiharanoriaki/n/n2389460836cf
 
 **元原稿**: `波の情報読出し/20260710/note_article_curved_closure_stationary_wave_ja.md`
 
-**論文 2 件**
+**論文 1 件**
 
 1. **[A]** Curvature Renormalization and Perfect-Reflection Stability by Curved Closed Stationary Waves v2
-   - DOI: https://doi.org/10.5281/zenodo.21304039
+   - DOI: https://doi.org/10.5281/zenodo.21304039 / https://doi.org/10.5281/zenodo.21304040
    - curved_closure_stationary_wave_curvature_renormalization_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/curved_closure_stationary_wave_curvature_renormalization_en.pdf
    - curved_closure_stationary_wave_curvature_renormalization_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/curved_closure_stationary_wave_curvature_renormalization_ja.pdf
-
-2. **[C]** Curvature Renormalization and Perfect-Reflection Stability by Curved Closed Stationary Waves
-   - DOI: https://doi.org/10.5281/zenodo.21304040
-   - PDF: 本文照合できず。上記 DOI から取得すること
 
 
 ---
@@ -2059,18 +2071,14 @@ https://note.com/kiharanoriaki/n/nd10d4b8d627d
 
 **元原稿**: `波の情報読出し/20260711/note_article_abc_multigauge_conserved_readouts_en.md`
 
-**論文 2 件**
+**論文 1 件**
 
 1. **[A]** Construction Experiment of Multigauge Interference Readout Conserved Quantities in an ABC Closed Phase System v2
-   - DOI: https://doi.org/10.5281/zenodo.21308049
+   - DOI: https://doi.org/10.5281/zenodo.21308049 / https://doi.org/10.5281/zenodo.21308050
    - abc_closed_phase_system_multigauge_conserved_readouts_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/abc_closed_phase_system_multigauge_conserved_readouts_en.pdf
    - abc_closed_phase_system_multigauge_conserved_readouts_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260711/abc_closed_phase_system_multigauge_conserved_readouts_ja.pdf
-
-2. **[C]** Construction Experiment of Multigauge Interference Readout Conserved Quantities in an ABC Closed Phase System
-   - DOI: https://doi.org/10.5281/zenodo.21308050
-   - PDF: 本文照合できず。上記 DOI から取得すること
 
 
 ---
@@ -2083,18 +2091,14 @@ https://note.com/kiharanoriaki/n/nda3623c44423
 
 **元原稿**: `波の情報読出し/20260710/note_article_curved_closure_stationary_wave_en.md`
 
-**論文 2 件**
+**論文 1 件**
 
 1. **[A]** Curvature Renormalization and Perfect-Reflection Stability by Curved Closed Stationary Waves v2
-   - DOI: https://doi.org/10.5281/zenodo.21304039
+   - DOI: https://doi.org/10.5281/zenodo.21304039 / https://doi.org/10.5281/zenodo.21304040
    - curved_closure_stationary_wave_curvature_renormalization_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/curved_closure_stationary_wave_curvature_renormalization_en.pdf
    - curved_closure_stationary_wave_curvature_renormalization_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/curved_closure_stationary_wave_curvature_renormalization_ja.pdf
-
-2. **[C]** Curvature Renormalization and Perfect-Reflection Stability by Curved Closed Stationary Waves
-   - DOI: https://doi.org/10.5281/zenodo.21304040
-   - PDF: 本文照合できず。上記 DOI から取得すること
 
 
 ---
@@ -2107,18 +2111,14 @@ https://note.com/kiharanoriaki/n/n15451632027b
 
 **元原稿**: `波の情報読出し/20260710/note_article_elastic_reflection_closed_phase_system_ja.md`
 
-**論文 2 件**
+**論文 1 件**
 
 1. **[A]** Constructive Experiment on Elastic Reflection of Two Fermionic Local Waves in a Closed Phase System Without Assuming Background Space
-   - DOI: https://doi.org/10.5281/zenodo.21291018
+   - DOI: https://doi.org/10.5281/zenodo.21291018 / https://doi.org/10.5281/zenodo.21291020
    - elastic_reflection_closed_phase_system_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/elastic_reflection_closed_phase_system_en.pdf
    - elastic_reflection_closed_phase_system_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/elastic_reflection_closed_phase_system_ja.pdf
-
-2. **[C]** Constructive Experiment on Elastic Reflection of Two Fermionic Local Waves in a Closed Phase System Without Assuming Background Space
-   - DOI: https://doi.org/10.5281/zenodo.21291020
-   - PDF: 本文照合できず。上記 DOI から取得すること
 
 
 ---
@@ -2131,18 +2131,14 @@ https://note.com/kiharanoriaki/n/n5a009a2735e7
 
 **元原稿**: `波の情報読出し/20260710/note_article_elastic_reflection_closed_phase_system_en.md`
 
-**論文 2 件**
+**論文 1 件**
 
 1. **[A]** Constructive Experiment on Elastic Reflection of Two Fermionic Local Waves in a Closed Phase System Without Assuming Background Space
-   - DOI: https://doi.org/10.5281/zenodo.21291018
+   - DOI: https://doi.org/10.5281/zenodo.21291018 / https://doi.org/10.5281/zenodo.21291020
    - elastic_reflection_closed_phase_system_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/elastic_reflection_closed_phase_system_en.pdf
    - elastic_reflection_closed_phase_system_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/elastic_reflection_closed_phase_system_ja.pdf
-
-2. **[C]** Constructive Experiment on Elastic Reflection of Two Fermionic Local Waves in a Closed Phase System Without Assuming Background Space
-   - DOI: https://doi.org/10.5281/zenodo.21291020
-   - PDF: 本文照合できず。上記 DOI から取得すること
 
 
 ---
@@ -2155,18 +2151,14 @@ https://note.com/kiharanoriaki/n/ne02b32947541
 
 **元原稿**: `simplified_double_slit/note_debroglie_double_slit_{ja,en}.md`
 
-**論文 2 件**
+**論文 1 件**
 
-1. **[A]** Simulated Observation of the de Broglie Wavelength in a Localized Odd-Harmonic Double-Slit Model
-   - DOI: https://doi.org/10.5281/zenodo.21109903
+1. **[Z]** 局在奇数倍音ダブルスリット模型における de Broglie 波長の模擬観測
+   - DOI: https://doi.org/10.5281/zenodo.21109902 / https://doi.org/10.5281/zenodo.21109903
    - paper_debroglie_double_slit_en_v0_3.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/simplified_double_slit/paper_debroglie_double_slit_en_v0_3.pdf
    - paper_debroglie_double_slit_ja_v0_3.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/simplified_double_slit/paper_debroglie_double_slit_ja_v0_3.pdf
-
-2. **[C]** 局在奇数倍音ダブルスリット模型における de Broglie 波長の模擬観測
-   - DOI: https://doi.org/10.5281/zenodo.21109902
-   - PDF: 本文照合できず。上記 DOI から取得すること
 
 
 ---
@@ -2188,9 +2180,12 @@ https://note.com/kiharanoriaki/n/na360a22014c4
    - paper_complex_norm_square_readout_ja_v0_4.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/paper_complex_norm_square_readout_ja_v0_4.pdf
 
-2. **[C]** On the Connection Between the Conjugate Complex Norm and Square-Quantity Readout
+2. **[Z]** On the Connection Between the Conjugate Complex Norm and Square-Quantity Readout
    - DOI: https://doi.org/10.5281/zenodo.21126212
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - paper_complex_norm_square_readout_en_v0_5.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/paper_complex_norm_square_readout_en_v0_5.pdf
+   - paper_complex_norm_square_readout_ja_v0_5.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/paper_complex_norm_square_readout_ja_v0_5.pdf
 
 
 ---
@@ -2212,9 +2207,12 @@ https://note.com/kiharanoriaki/n/n741507be8583
    - paper_complex_norm_square_readout_ja_v0_4.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/paper_complex_norm_square_readout_ja_v0_4.pdf
 
-2. **[C]** On the Connection Between the Conjugate Complex Norm and Square-Quantity Readout
+2. **[Z]** On the Connection Between the Conjugate Complex Norm and Square-Quantity Readout
    - DOI: https://doi.org/10.5281/zenodo.21126212
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - paper_complex_norm_square_readout_en_v0_5.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/paper_complex_norm_square_readout_en_v0_5.pdf
+   - paper_complex_norm_square_readout_ja_v0_5.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/paper_complex_norm_square_readout_ja_v0_5.pdf
 
 
 ---
@@ -2227,18 +2225,14 @@ https://note.com/kiharanoriaki/n/nb07cbb1529d9
 
 **元原稿**: `simplified_double_slit/note_debroglie_double_slit_{ja,en}.md`
 
-**論文 2 件**
+**論文 1 件**
 
-1. **[A]** Simulated Observation of the de Broglie Wavelength in a Localized Odd-Harmonic Double-Slit Model
-   - DOI: https://doi.org/10.5281/zenodo.21109903
+1. **[Z]** 局在奇数倍音ダブルスリット模型における de Broglie 波長の模擬観測
+   - DOI: https://doi.org/10.5281/zenodo.21109902 / https://doi.org/10.5281/zenodo.21109903
    - paper_debroglie_double_slit_en_v0_3.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/simplified_double_slit/paper_debroglie_double_slit_en_v0_3.pdf
    - paper_debroglie_double_slit_ja_v0_3.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/simplified_double_slit/paper_debroglie_double_slit_ja_v0_3.pdf
-
-2. **[C]** 局在奇数倍音ダブルスリット模型における de Broglie 波長の模擬観測
-   - DOI: https://doi.org/10.5281/zenodo.21109902
-   - PDF: 本文照合できず。上記 DOI から取得すること
 
 
 ---
@@ -2679,7 +2673,7 @@ https://note.com/kiharanoriaki/n/n08aeb3c4e8ae
 
 **元原稿**: `波長空間と周波数空間の双対幾何/note_article_ja.md`
 
-**論文 5 件**
+**論文 4 件**
 
 1. **[A]** Paper 1: Dual Geometry of Wavelength Space and Frequency Space
    - DOI: https://doi.org/10.5281/zenodo.20588036 / https://doi.org/10.5281/zenodo.20588037
@@ -2700,17 +2694,13 @@ https://note.com/kiharanoriaki/n/n08aeb3c4e8ae
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_3_en.pdf
 
 3. **[A]** 論文2：4次元格子における単位セル完全内接数の半径スイープ
-   - DOI: https://doi.org/10.5281/zenodo.20588038
+   - DOI: https://doi.org/10.5281/zenodo.20588038 / https://doi.org/10.5281/zenodo.20588039
    - paper2_4d_lattice_cell_count_radius_sweep_v0_1.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper2_4d_lattice_cell_count_radius_sweep_v0_1.pdf
    - paper2_4d_lattice_cell_count_radius_sweep_v0_1_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper2_4d_lattice_cell_count_radius_sweep_v0_1_en.pdf
 
-4. **[C]** Radius Sweep of Fully-Inscribed Unit-Cell Counts on a 4-Dimensional Lattice: An Enumeration Table from R = 0.5 to 10.0 with a Reproducible Formulation
-   - DOI: https://doi.org/10.5281/zenodo.20588039
-   - PDF: 本文照合できず。上記 DOI から取得すること
-
-5. **[Z]** Closed Four-Degree-of-Freedom Structure and Its Correspondence with 4-Dimensional Lattice Counting: A Geometric Organization from the 5-Component Sum-of-Squares Constraint to the Unit-Cell Counting Region
+4. **[Z]** Closed Four-Degree-of-Freedom Structure and Its Correspondence with 4-Dimensional Lattice Counting: A Geometric Organization from the 5-Component Sum-of-Squares Constraint to the Unit-Cell Counting Region
    - DOI: https://doi.org/10.5281/zenodo.20589262
    - paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2.pdf
@@ -2728,7 +2718,7 @@ https://note.com/kiharanoriaki/n/nf2b3e4392ea1
 
 **元原稿**: `note_article_ja_v2.md`
 
-**論文 5 件**
+**論文 4 件**
 
 1. **[A]** Paper 1: Dual Geometry of Wavelength Space and Frequency Space
    - DOI: https://doi.org/10.5281/zenodo.20588036 / https://doi.org/10.5281/zenodo.20588037
@@ -2749,17 +2739,13 @@ https://note.com/kiharanoriaki/n/nf2b3e4392ea1
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_3_en.pdf
 
 3. **[A]** 論文2：4次元格子における単位セル完全内接数の半径スイープ
-   - DOI: https://doi.org/10.5281/zenodo.20588038
+   - DOI: https://doi.org/10.5281/zenodo.20588038 / https://doi.org/10.5281/zenodo.20588039
    - paper2_4d_lattice_cell_count_radius_sweep_v0_1.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper2_4d_lattice_cell_count_radius_sweep_v0_1.pdf
    - paper2_4d_lattice_cell_count_radius_sweep_v0_1_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper2_4d_lattice_cell_count_radius_sweep_v0_1_en.pdf
 
-4. **[C]** Radius Sweep of Fully-Inscribed Unit-Cell Counts on a 4-Dimensional Lattice: An Enumeration Table from R = 0.5 to 10.0 with a Reproducible Formulation
-   - DOI: https://doi.org/10.5281/zenodo.20588039
-   - PDF: 本文照合できず。上記 DOI から取得すること
-
-5. **[Z]** Closed Four-Degree-of-Freedom Structure and Its Correspondence with 4-Dimensional Lattice Counting: A Geometric Organization from the 5-Component Sum-of-Squares Constraint to the Unit-Cell Counting Region
+4. **[Z]** Closed Four-Degree-of-Freedom Structure and Its Correspondence with 4-Dimensional Lattice Counting: A Geometric Organization from the 5-Component Sum-of-Squares Constraint to the Unit-Cell Counting Region
    - DOI: https://doi.org/10.5281/zenodo.20589262
    - paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2.pdf
@@ -2823,19 +2809,21 @@ https://note.com/kiharanoriaki/n/n6ad7686c6b08
 
 **元原稿**: `articles/signal-control-quantum-correspondences.md`
 
-**論文 3 件**
+**論文 2 件**
 
-1. **[C]** An Observation on the Structural Correspondences between Signal/Control Theory and Quantum Mechanics, Quantum Optics, and Open Quantum Systems
-   - DOI: https://doi.org/10.5281/zenodo.20521599
-   - PDF: 本文照合できず。上記 DOI から取得すること
-
-2. **[C]** Conserved Quantities and Uncertainty as Phase-Space Area — A Unified Viewpoint of Symplectic Symmetry, Wick Rotation, and Stone's Theorem
+1. **[Z]** Conserved Quantities and Uncertainty as Phase-Space Area — A Unified Viewpoint of Symplectic Symmetry, Wick Rotation, and Stone's Theorem
    - DOI: https://doi.org/10.5281/zenodo.20521566
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - observation_paper_stealth_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_en.pdf
+   - observation_paper_stealth_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_ja.pdf
 
-3. **[C]** 信号論・制御理論と量子力学・量子光学・開放量子系の構造的対応関係に関する観察
-   - DOI: https://doi.org/10.5281/zenodo.20521598
-   - PDF: 本文照合できず。上記 DOI から取得すること
+2. **[Z]** 信号論・制御理論と量子力学・量子光学・開放量子系の構造的対応関係に関する観察
+   - DOI: https://doi.org/10.5281/zenodo.20521598 / https://doi.org/10.5281/zenodo.20521599
+   - BH_Paper10_Signal_Control_Observation_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper10_signal_control_observation/BH_Paper10_Signal_Control_Observation_en.pdf
+   - BH_Paper10_Signal_Control_Observation_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper10_signal_control_observation/BH_Paper10_Signal_Control_Observation_ja.pdf
 
 
 ---
@@ -2848,19 +2836,21 @@ https://note.com/kiharanoriaki/n/nc18b32d1e27e
 
 **元原稿**: `articles/signal-control-quantum-correspondences.md`
 
-**論文 3 件**
+**論文 2 件**
 
-1. **[C]** Conserved Quantities and Uncertainty as Phase-Space Area — A Unified Viewpoint of Symplectic Symmetry, Wick Rotation, and Stone's Theorem
-   - DOI: https://doi.org/10.5281/zenodo.20521566
-   - PDF: 本文照合できず。上記 DOI から取得すること
+1. **[Z]** Conserved Quantities and Uncertainty as Phase-Space Area — A Unified Viewpoint of Symplectic Symmetry, Wick Rotation, and Stone's Theorem
+   - DOI: https://doi.org/10.5281/zenodo.20521566 / https://doi.org/10.5281/zenodo.20521567
+   - observation_paper_stealth_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_en.pdf
+   - observation_paper_stealth_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_ja.pdf
 
-2. **[C]** Conserved Quantities and Uncertainty as Phase-Space Area: A Unified Viewpoint of Symplectic Symmetry, Wick Rotation, and Stone's Theorem
-   - DOI: https://doi.org/10.5281/zenodo.20521567
-   - PDF: 本文照合できず。上記 DOI から取得すること
-
-3. **[C]** 信号論・制御理論と量子力学・量子光学・開放量子系の構造的対応関係に関する観察
+2. **[Z]** 信号論・制御理論と量子力学・量子光学・開放量子系の構造的対応関係に関する観察
    - DOI: https://doi.org/10.5281/zenodo.20521598
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - BH_Paper10_Signal_Control_Observation_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper10_signal_control_observation/BH_Paper10_Signal_Control_Observation_en.pdf
+   - BH_Paper10_Signal_Control_Observation_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper10_signal_control_observation/BH_Paper10_Signal_Control_Observation_ja.pdf
 
 
 ---
@@ -2873,19 +2863,21 @@ https://note.com/kiharanoriaki/n/n1f942c4ae5fd
 
 **元原稿**: `articles/signal-control-quantum-correspondences.md`
 
-**論文 3 件**
+**論文 2 件**
 
-1. **[C]** Conserved Quantities and Uncertainty as Phase-Space Area — A Unified Viewpoint of Symplectic Symmetry, Wick Rotation, and Stone's Theorem
-   - DOI: https://doi.org/10.5281/zenodo.20521566
-   - PDF: 本文照合できず。上記 DOI から取得すること
+1. **[Z]** Conserved Quantities and Uncertainty as Phase-Space Area — A Unified Viewpoint of Symplectic Symmetry, Wick Rotation, and Stone's Theorem
+   - DOI: https://doi.org/10.5281/zenodo.20521566 / https://doi.org/10.5281/zenodo.20521567
+   - observation_paper_stealth_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_en.pdf
+   - observation_paper_stealth_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_ja.pdf
 
-2. **[C]** Conserved Quantities and Uncertainty as Phase-Space Area: A Unified Viewpoint of Symplectic Symmetry, Wick Rotation, and Stone's Theorem
-   - DOI: https://doi.org/10.5281/zenodo.20521567
-   - PDF: 本文照合できず。上記 DOI から取得すること
-
-3. **[C]** 信号論・制御理論と量子力学・量子光学・開放量子系の構造的対応関係に関する観察
+2. **[Z]** 信号論・制御理論と量子力学・量子光学・開放量子系の構造的対応関係に関する観察
    - DOI: https://doi.org/10.5281/zenodo.20521598
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - BH_Paper10_Signal_Control_Observation_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper10_signal_control_observation/BH_Paper10_Signal_Control_Observation_en.pdf
+   - BH_Paper10_Signal_Control_Observation_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper10_signal_control_observation/BH_Paper10_Signal_Control_Observation_ja.pdf
 
 
 ---
@@ -2898,19 +2890,21 @@ https://note.com/kiharanoriaki/n/n6b292c7f640c
 
 **元原稿**: `articles/signal-control-quantum-correspondences.md`
 
-**論文 3 件**
+**論文 2 件**
 
-1. **[C]** An Observation on the Structural Correspondences between Signal/Control Theory and Quantum Mechanics, Quantum Optics, and Open Quantum Systems
-   - DOI: https://doi.org/10.5281/zenodo.20521599
-   - PDF: 本文照合できず。上記 DOI から取得すること
-
-2. **[C]** Conserved Quantities and Uncertainty as Phase-Space Area — A Unified Viewpoint of Symplectic Symmetry, Wick Rotation, and Stone's Theorem
+1. **[Z]** Conserved Quantities and Uncertainty as Phase-Space Area — A Unified Viewpoint of Symplectic Symmetry, Wick Rotation, and Stone's Theorem
    - DOI: https://doi.org/10.5281/zenodo.20521566
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - observation_paper_stealth_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_en.pdf
+   - observation_paper_stealth_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_ja.pdf
 
-3. **[C]** 信号論・制御理論と量子力学・量子光学・開放量子系の構造的対応関係に関する観察
-   - DOI: https://doi.org/10.5281/zenodo.20521598
-   - PDF: 本文照合できず。上記 DOI から取得すること
+2. **[Z]** 信号論・制御理論と量子力学・量子光学・開放量子系の構造的対応関係に関する観察
+   - DOI: https://doi.org/10.5281/zenodo.20521598 / https://doi.org/10.5281/zenodo.20521599
+   - BH_Paper10_Signal_Control_Observation_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper10_signal_control_observation/BH_Paper10_Signal_Control_Observation_en.pdf
+   - BH_Paper10_Signal_Control_Observation_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper10_signal_control_observation/BH_Paper10_Signal_Control_Observation_ja.pdf
 
 
 ---
@@ -3363,9 +3357,12 @@ https://note.com/kiharanoriaki/n/ne1dc24c07455
    - 思考実験_R軸について.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/思考実験_R軸について.pdf
 
-5. **[C]** BH 熱力学プログラム 論文 7 補講:α 恒等式の二次補正項に関する幾何学的観察 / BH Thermodynamics Programme Paper 7 Supplement: Geometric Observations on the Second-Order Correction of the α Identity
+5. **[Z]** BH 熱力学プログラム 論文 7 補講:α 恒等式の二次補正項に関する幾何学的観察 / BH Thermodynamics Programme Paper 7 Supplement: Geometric Observations on the Second-Order Correction of the α Identity
    - DOI: https://doi.org/10.5281/zenodo.19933730
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - BH_Paper7_Supplement_Second_Order_Observation_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper7_alpha_supplement/BH_Paper7_Supplement_Second_Order_Observation_en.pdf
+   - BH_Paper7_Supplement_Second_Order_Observation_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper7_alpha_supplement/BH_Paper7_Supplement_Second_Order_Observation_ja.pdf
 
 
 ---
@@ -3432,9 +3429,12 @@ https://note.com/kiharanoriaki/n/n268fa839f6c4
    - 思考実験_R軸について.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/思考実験_R軸について.pdf
 
-5. **[C]** BH 熱力学プログラム 論文 7 補講:α 恒等式の二次補正項に関する幾何学的観察 / BH Thermodynamics Programme Paper 7 Supplement: Geometric Observations on the Second-Order Correction of the α Identity
+5. **[Z]** BH 熱力学プログラム 論文 7 補講:α 恒等式の二次補正項に関する幾何学的観察 / BH Thermodynamics Programme Paper 7 Supplement: Geometric Observations on the Second-Order Correction of the α Identity
    - DOI: https://doi.org/10.5281/zenodo.19933730
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - BH_Paper7_Supplement_Second_Order_Observation_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper7_alpha_supplement/BH_Paper7_Supplement_Second_Order_Observation_en.pdf
+   - BH_Paper7_Supplement_Second_Order_Observation_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper7_alpha_supplement/BH_Paper7_Supplement_Second_Order_Observation_ja.pdf
 
 
 ---
@@ -4094,28 +4094,48 @@ https://note.com/kiharanoriaki/n/n63d3c20e6b20
    - DOI: https://doi.org/10.5281/zenodo.19534409
    - PDF: 本文照合できず。上記 DOI から取得すること
 
-32. **[C]** 6次元超直方体を採用した (R, Q) マッピングの構成
+32. **[Z]** 6次元超直方体を採用した (R, Q) マッピングの構成
    - DOI: https://doi.org/10.5281/zenodo.19763466
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - rq_mapping_definition.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/rq_mapping_definition.pdf
+   - rq_mapping_definition_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/rq_mapping_definition_en.pdf
 
-33. **[C]** Considerations on Mass Structure: A Framework for Mass Analysis via Axis Scale Values and Signed Areas
+33. **[Z]** Considerations on Mass Structure: A Framework for Mass Analysis via Axis Scale Values and Signed Areas
    - DOI: https://doi.org/10.5281/zenodo.19763476
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - mass_structure_considerations_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/mass_structure_considerations_en.pdf
+   - mass_structure_considerations_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/mass_structure_considerations_ja.pdf
+   - mass_structure_discussion_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/mass_structure_discussion_en.pdf
+   - mass_structure_discussion_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/mass_structure_discussion_ja.pdf
 
-34. **[C]** Considerations on the Relationship between the 6-Dimensional Hypercube and Central Projection
+34. **[Z]** Considerations on the Relationship between the 6-Dimensional Hypercube and Central Projection
    - DOI: https://doi.org/10.5281/zenodo.19731614
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - hypercube_central_projection_relationship_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/hypercube_central_projection_relationship_en.pdf
+   - hypercube_central_projection_relationship_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/hypercube_central_projection_relationship_ja.pdf
 
-35. **[C]** Formulation of Signed Area: Derivation of Charge Structure and Consequences of Spin-2 Configurations
-   - DOI: https://doi.org/10.5281/zenodo.19763471
-   - PDF: 本文照合できず。上記 DOI から取得すること
-
-36. **[Z]** Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle — Spacetime Dimensionality, the Origin of Time, and the Beginning of the Universe as Derived from a Discrete Packing Model
+35. **[Z]** Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle — Spacetime Dimensionality, the Origin of Time, and the Beginning of the Universe as Derived from a Discrete Packing Model
    - DOI: https://doi.org/10.5281/zenodo.19533313
    - 5. Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/主観空間曲率半径の極限と次元追加・各次元の構図/5. Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle.pdf
    - 5. 体積1の四次元超直方体に外接する超球体の直径.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/主観空間曲率半径の極限と次元追加・各次元の構図/5. 体積1の四次元超直方体に外接する超球体の直径.pdf
+
+36. **[Z]** Formulation of Signed Area: Derivation of Charge Structure and Consequences of Spin-2 Configurations
+   - DOI: https://doi.org/10.5281/zenodo.19763471
+   - supplementary_lecture_1_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/supplementary_lecture_1_en.pdf
+   - supplementary_lecture_1_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/supplementary_lecture_1_ja.pdf
+   - supplementary_lecture_1_signed_area_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/supplementary_lecture_1_signed_area_en.pdf
+   - supplementary_lecture_1_signed_area_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/supplementary_lecture_1_signed_area_ja.pdf
 
 37. **[Z]** Relativity of Observation in Multiple Subjective Spaces: Geometric Consequences of the Symmetries of Central Projection
    - DOI: https://doi.org/10.5281/zenodo.19435162
@@ -4287,17 +4307,34 @@ https://note.com/kiharanoriaki/n/na95064891249
    - DOI: https://doi.org/10.5281/zenodo.19534409
    - PDF: 本文照合できず。上記 DOI から取得すること
 
-17. **[C]** Considerations on Mass Structure: A Framework for Mass Analysis via Axis Scale Values and Signed Areas
+17. **[Z]** Considerations on Mass Structure: A Framework for Mass Analysis via Axis Scale Values and Signed Areas
    - DOI: https://doi.org/10.5281/zenodo.19763476
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - mass_structure_considerations_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/mass_structure_considerations_en.pdf
+   - mass_structure_considerations_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/mass_structure_considerations_ja.pdf
+   - mass_structure_discussion_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/mass_structure_discussion_en.pdf
+   - mass_structure_discussion_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/mass_structure_discussion_ja.pdf
 
-18. **[C]** Considerations on the Relationship between the 6-Dimensional Hypercube and Central Projection
+18. **[Z]** Considerations on the Relationship between the 6-Dimensional Hypercube and Central Projection
    - DOI: https://doi.org/10.5281/zenodo.19731614
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - hypercube_central_projection_relationship_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/hypercube_central_projection_relationship_en.pdf
+   - hypercube_central_projection_relationship_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/hypercube_central_projection_relationship_ja.pdf
 
-19. **[C]** Formulation of Signed Area: Derivation of Charge Structure and Consequences of Spin-2 Configurations
+19. **[Z]** Formulation of Signed Area: Derivation of Charge Structure and Consequences of Spin-2 Configurations
    - DOI: https://doi.org/10.5281/zenodo.19763471
-   - PDF: 本文照合できず。上記 DOI から取得すること
+   - supplementary_lecture_1_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/supplementary_lecture_1_en.pdf
+   - supplementary_lecture_1_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/supplementary_lecture_1_ja.pdf
+   - supplementary_lecture_1_signed_area_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/supplementary_lecture_1_signed_area_en.pdf
+   - supplementary_lecture_1_signed_area_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/supplementary_lecture_1_signed_area_ja.pdf
 
 
 ---
