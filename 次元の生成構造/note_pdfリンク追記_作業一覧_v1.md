@@ -6,7 +6,22 @@
 - `未` … note 側・原稿とも未追記
 - PDF の URL は GitHub raw。クリックでダウンロードされる
 - Concept DOI と Version DOI は 1 論文にまとめ、DOI を並記した
-- `PDF 未収録` … リポジトリに PDF が無い論文。Zenodo から取得する
+- `PDF 未収録` … リポジトリに PDF が無い論文（下記の要確認2件のみ）
+
+## PDF の日英そろい状況
+
+note が引く論文 DOI は 154 件。うち **152 件は日本語版・英語版の PDF が両方そろっている**（リポジトリに無かった分は Zenodo からダウンロードして該当フォルダに保存済み。取得時は Zenodo レコードの著者が Kihara であることを検証している）。
+
+## 要確認 — リンク切れ 2 件
+
+次の 2 件は note 本文とリリースノートに DOI が書かれているが、**論文が取得できない**。note の読者がクリックしても論文にたどり着けないので、note 側の記載を直すか削除する必要がある。
+
+| DOI | 症状 | 記載場所 |
+|---|---|---|
+| [10.5281/zenodo.19534373](https://doi.org/10.5281/zenodo.19534373) | Zenodo API がレコードを返さない（3回試行）。削除または非公開の可能性 | note「超直方体の組合せ論から標準模型の62粒子を導出する」ほか、`グノモン正写像による4次元時空の幾何学的定式化/RELEASE_NOTES.md` |
+| [10.5281/zenodo.19534409](https://doi.org/10.5281/zenodo.19534409) | **別人の論文に解決される**（ヒンディー語の政治学論文、著者 सोनिया देवी）。DOI の記載自体が誤っている可能性が高い | 同上 |
+
+いずれも `波動方程式/中心投影における位相方程式/note_article_位相方程式篇.md` 系統の「補講」に対応する番号帯で、前後の DOI（19534345〜19534355、19534361 等）は正常に取得できている。
 
 
 ---
@@ -371,11 +386,15 @@ https://note.com/kiharanoriaki/n/nc07528c49524
    - DOI: https://doi.org/10.5281/zenodo.21766706
    - generation_structure_of_fermions_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/generation_structure_of_fermions_en.pdf
+   - generation_structure_of_fermions_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/generation_structure_of_fermions_ja.pdf
 
 6. The Geometric Identity of the Zero-Square-Sum Constraint under Scale Invariance
    - DOI: https://doi.org/10.5281/zenodo.21495305
    - zero_square_sum_geometric_identity_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/zero_square_sum_geometric_identity_en.pdf
+   - zero_square_sum_geometric_identity_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/zero_square_sum_geometric_identity_ja.pdf
 
 7. 幾何級数的急拡大は不安定な自己無撞着閉包に固有である——一般零閉塞初期状態による開始様式の因果判別
    - DOI: https://doi.org/10.5281/zenodo.21798854
@@ -408,6 +427,8 @@ https://note.com/kiharanoriaki/n/n6718389c48ea
    - DOI: https://doi.org/10.5281/zenodo.21766706
    - generation_structure_of_fermions_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/generation_structure_of_fermions_en.pdf
+   - generation_structure_of_fermions_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/generation_structure_of_fermions_ja.pdf
 
 3. 幾何級数的急拡大は不安定な自己無撞着閉包に固有である——一般零閉塞初期状態による開始様式の因果判別
    - DOI: https://doi.org/10.5281/zenodo.21798854
@@ -461,11 +482,15 @@ https://note.com/kiharanoriaki/n/na6eb6107d241
    - DOI: https://doi.org/10.5281/zenodo.21766706
    - generation_structure_of_fermions_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/generation_structure_of_fermions_en.pdf
+   - generation_structure_of_fermions_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/generation_structure_of_fermions_ja.pdf
 
 6. The Geometric Identity of the Zero-Square-Sum Constraint under Scale Invariance
    - DOI: https://doi.org/10.5281/zenodo.21495305
    - zero_square_sum_geometric_identity_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/zero_square_sum_geometric_identity_en.pdf
+   - zero_square_sum_geometric_identity_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/zero_square_sum_geometric_identity_ja.pdf
 
 7. 幾何級数的急拡大は不安定な自己無撞着閉包に固有である——一般零閉塞初期状態による開始様式の因果判別
    - DOI: https://doi.org/10.5281/zenodo.21798854
@@ -498,6 +523,8 @@ https://note.com/kiharanoriaki/n/n280577cf8bf8
    - DOI: https://doi.org/10.5281/zenodo.21766706
    - generation_structure_of_fermions_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/generation_structure_of_fermions_en.pdf
+   - generation_structure_of_fermions_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/generation_structure_of_fermions_ja.pdf
 
 3. 幾何級数的急拡大は不安定な自己無撞着閉包に固有である——一般零閉塞初期状態による開始様式の因果判別
    - DOI: https://doi.org/10.5281/zenodo.21798854
@@ -571,16 +598,22 @@ https://note.com/kiharanoriaki/n/n8b1fedaec944
    - DOI: https://doi.org/10.5281/zenodo.21763999 / https://doi.org/10.5281/zenodo.21764000
    - lock_dynamics_anonymous_two_channel_closed_wave_system_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/lock_dynamics_anonymous_two_channel_closed_wave_system_en.pdf
+   - lock_dynamics_anonymous_two_channel_closed_wave_system_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/lock_dynamics_anonymous_two_channel_closed_wave_system_ja.pdf
 
 4. Structure of Counting Readouts in an Anonymous Two-Channel Closed Wave System
    - DOI: https://doi.org/10.5281/zenodo.21763997 / https://doi.org/10.5281/zenodo.21763998
    - counting_readout_structure_anonymous_two_channel_closed_wave_system_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/counting_readout_structure_anonymous_two_channel_closed_wave_system_en.pdf
+   - counting_readout_structure_anonymous_two_channel_closed_wave_system_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/counting_readout_structure_anonymous_two_channel_closed_wave_system_ja.pdf
 
 5. Two-Grammar Decomposition of Interaction in an Anonymous Two-Channel Closed Wave System
    - DOI: https://doi.org/10.5281/zenodo.21763995 / https://doi.org/10.5281/zenodo.21763996
    - two_grammar_decomposition_anonymous_two_channel_closed_wave_system_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/two_grammar_decomposition_anonymous_two_channel_closed_wave_system_en.pdf
+   - two_grammar_decomposition_anonymous_two_channel_closed_wave_system_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/two_grammar_decomposition_anonymous_two_channel_closed_wave_system_ja.pdf
 
 6. 反復交換散乱における有限位数共鳴の発見
    - DOI: https://doi.org/10.5281/zenodo.21421366
@@ -590,6 +623,8 @@ https://note.com/kiharanoriaki/n/n8b1fedaec944
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/対照実験_公開α論文_v1/finite_order_resonance_v1/paper/finite_order_resonance_iterated_exchange_scattering_ja.pdf
    - finite_order_resonance_iterated_exchange_scattering_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260718/finite_order_resonance_iterated_exchange_scattering_en.pdf
+   - finite_order_resonance_iterated_exchange_scattering_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260718/finite_order_resonance_iterated_exchange_scattering_ja.pdf
 
 
 ---
@@ -622,26 +657,36 @@ https://note.com/kiharanoriaki/n/n93d91d0c1bb2
    - DOI: https://doi.org/10.5281/zenodo.21763999
    - lock_dynamics_anonymous_two_channel_closed_wave_system_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/lock_dynamics_anonymous_two_channel_closed_wave_system_en.pdf
+   - lock_dynamics_anonymous_two_channel_closed_wave_system_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/lock_dynamics_anonymous_two_channel_closed_wave_system_ja.pdf
 
 4. Paper 6
    - DOI: https://doi.org/10.5281/zenodo.21543070
    - nbody_splitting_arrest_and_orthogonal_plane_emergence_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_splitting_arrest_and_orthogonal_plane_emergence_en.pdf
+   - nbody_splitting_arrest_and_orthogonal_plane_emergence_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_splitting_arrest_and_orthogonal_plane_emergence_ja.pdf
 
 5. Structure of Counting Readouts in an Anonymous Two-Channel Closed Wave System
    - DOI: https://doi.org/10.5281/zenodo.21763997
    - counting_readout_structure_anonymous_two_channel_closed_wave_system_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/counting_readout_structure_anonymous_two_channel_closed_wave_system_en.pdf
+   - counting_readout_structure_anonymous_two_channel_closed_wave_system_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/counting_readout_structure_anonymous_two_channel_closed_wave_system_ja.pdf
 
 6. The Generation Structure of Fermions: Particles as Completed Closure Cycles in a Sea of Light
    - DOI: https://doi.org/10.5281/zenodo.21766706 / https://doi.org/10.5281/zenodo.21766707
    - generation_structure_of_fermions_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/generation_structure_of_fermions_en.pdf
+   - generation_structure_of_fermions_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/generation_structure_of_fermions_ja.pdf
 
 7. Two-Grammar Decomposition of Interaction in an Anonymous Two-Channel Closed Wave System
    - DOI: https://doi.org/10.5281/zenodo.21763995
    - two_grammar_decomposition_anonymous_two_channel_closed_wave_system_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/two_grammar_decomposition_anonymous_two_channel_closed_wave_system_en.pdf
+   - two_grammar_decomposition_anonymous_two_channel_closed_wave_system_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/two_grammar_decomposition_anonymous_two_channel_closed_wave_system_ja.pdf
 
 
 ---
@@ -674,26 +719,36 @@ https://note.com/kiharanoriaki/n/nd250158e0da1
    - DOI: https://doi.org/10.5281/zenodo.21763999
    - lock_dynamics_anonymous_two_channel_closed_wave_system_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/lock_dynamics_anonymous_two_channel_closed_wave_system_en.pdf
+   - lock_dynamics_anonymous_two_channel_closed_wave_system_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/lock_dynamics_anonymous_two_channel_closed_wave_system_ja.pdf
 
 4. Paper 6
    - DOI: https://doi.org/10.5281/zenodo.21543070
    - nbody_splitting_arrest_and_orthogonal_plane_emergence_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_splitting_arrest_and_orthogonal_plane_emergence_en.pdf
+   - nbody_splitting_arrest_and_orthogonal_plane_emergence_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_splitting_arrest_and_orthogonal_plane_emergence_ja.pdf
 
 5. Structure of Counting Readouts in an Anonymous Two-Channel Closed Wave System
    - DOI: https://doi.org/10.5281/zenodo.21763997
    - counting_readout_structure_anonymous_two_channel_closed_wave_system_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/counting_readout_structure_anonymous_two_channel_closed_wave_system_en.pdf
+   - counting_readout_structure_anonymous_two_channel_closed_wave_system_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/counting_readout_structure_anonymous_two_channel_closed_wave_system_ja.pdf
 
 6. The Generation Structure of Fermions: Particles as Completed Closure Cycles in a Sea of Light
    - DOI: https://doi.org/10.5281/zenodo.21766706 / https://doi.org/10.5281/zenodo.21766707
    - generation_structure_of_fermions_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/generation_structure_of_fermions_en.pdf
+   - generation_structure_of_fermions_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/generation_structure_of_fermions_ja.pdf
 
 7. Two-Grammar Decomposition of Interaction in an Anonymous Two-Channel Closed Wave System
    - DOI: https://doi.org/10.5281/zenodo.21763995
    - two_grammar_decomposition_anonymous_two_channel_closed_wave_system_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/two_grammar_decomposition_anonymous_two_channel_closed_wave_system_en.pdf
+   - two_grammar_decomposition_anonymous_two_channel_closed_wave_system_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/two_grammar_decomposition_anonymous_two_channel_closed_wave_system_ja.pdf
 
 
 ---
@@ -726,16 +781,22 @@ https://note.com/kiharanoriaki/n/n9a5a0a42ed7b
    - DOI: https://doi.org/10.5281/zenodo.21763999 / https://doi.org/10.5281/zenodo.21764000
    - lock_dynamics_anonymous_two_channel_closed_wave_system_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/lock_dynamics_anonymous_two_channel_closed_wave_system_en.pdf
+   - lock_dynamics_anonymous_two_channel_closed_wave_system_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/lock_dynamics_anonymous_two_channel_closed_wave_system_ja.pdf
 
 4. Structure of Counting Readouts in an Anonymous Two-Channel Closed Wave System
    - DOI: https://doi.org/10.5281/zenodo.21763997 / https://doi.org/10.5281/zenodo.21763998
    - counting_readout_structure_anonymous_two_channel_closed_wave_system_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/counting_readout_structure_anonymous_two_channel_closed_wave_system_en.pdf
+   - counting_readout_structure_anonymous_two_channel_closed_wave_system_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/counting_readout_structure_anonymous_two_channel_closed_wave_system_ja.pdf
 
 5. Two-Grammar Decomposition of Interaction in an Anonymous Two-Channel Closed Wave System
    - DOI: https://doi.org/10.5281/zenodo.21763995 / https://doi.org/10.5281/zenodo.21763996
    - two_grammar_decomposition_anonymous_two_channel_closed_wave_system_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/two_grammar_decomposition_anonymous_two_channel_closed_wave_system_en.pdf
+   - two_grammar_decomposition_anonymous_two_channel_closed_wave_system_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/two_grammar_decomposition_anonymous_two_channel_closed_wave_system_ja.pdf
 
 6. 反復交換散乱における有限位数共鳴の発見
    - DOI: https://doi.org/10.5281/zenodo.21421366
@@ -745,6 +806,8 @@ https://note.com/kiharanoriaki/n/n9a5a0a42ed7b
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/対照実験_公開α論文_v1/finite_order_resonance_v1/paper/finite_order_resonance_iterated_exchange_scattering_ja.pdf
    - finite_order_resonance_iterated_exchange_scattering_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260718/finite_order_resonance_iterated_exchange_scattering_en.pdf
+   - finite_order_resonance_iterated_exchange_scattering_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260718/finite_order_resonance_iterated_exchange_scattering_ja.pdf
 
 
 ---
@@ -824,6 +887,8 @@ https://note.com/kiharanoriaki/n/n28eeb5465c32
    - DOI: https://doi.org/10.5281/zenodo.21543070 / https://doi.org/10.5281/zenodo.21543071
    - nbody_splitting_arrest_and_orthogonal_plane_emergence_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_splitting_arrest_and_orthogonal_plane_emergence_en.pdf
+   - nbody_splitting_arrest_and_orthogonal_plane_emergence_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_splitting_arrest_and_orthogonal_plane_emergence_ja.pdf
 
 
 ---
@@ -849,6 +914,8 @@ https://note.com/kiharanoriaki/n/ne2967054b888
    - DOI: https://doi.org/10.5281/zenodo.21543070 / https://doi.org/10.5281/zenodo.21543071
    - nbody_splitting_arrest_and_orthogonal_plane_emergence_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_splitting_arrest_and_orthogonal_plane_emergence_en.pdf
+   - nbody_splitting_arrest_and_orthogonal_plane_emergence_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_splitting_arrest_and_orthogonal_plane_emergence_ja.pdf
 
 
 ---
@@ -867,6 +934,8 @@ https://note.com/kiharanoriaki/n/nadc574b5957b
    - DOI: https://doi.org/10.5281/zenodo.21495305
    - zero_square_sum_geometric_identity_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/zero_square_sum_geometric_identity_en.pdf
+   - zero_square_sum_geometric_identity_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/zero_square_sum_geometric_identity_ja.pdf
 
 
 ---
@@ -892,16 +961,22 @@ https://note.com/kiharanoriaki/n/nf99bd8fe7e30
    - DOI: https://doi.org/10.5281/zenodo.21486233
    - nbody_spontaneous_splitting_onset_outcomes_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_spontaneous_splitting_onset_outcomes_en.pdf
+   - nbody_spontaneous_splitting_onset_outcomes_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_spontaneous_splitting_onset_outcomes_ja.pdf
 
 3. Plane-Decomposition Readout in N-Body Fixed-Generator Systems
    - DOI: https://doi.org/10.5281/zenodo.21468959
    - nbody_plane_decomposition_readout_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_plane_decomposition_readout_en.pdf
+   - nbody_plane_decomposition_readout_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_plane_decomposition_readout_ja.pdf
 
 4. The Number of Waves Is the Resolution of the System
    - DOI: https://doi.org/10.5281/zenodo.21486544
    - wave_count_system_resolution_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/wave_count_system_resolution_en.pdf
+   - wave_count_system_resolution_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/wave_count_system_resolution_ja.pdf
 
 
 ---
@@ -920,6 +995,8 @@ https://note.com/kiharanoriaki/n/nc0ea47060f4b
    - DOI: https://doi.org/10.5281/zenodo.21495305
    - zero_square_sum_geometric_identity_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/zero_square_sum_geometric_identity_en.pdf
+   - zero_square_sum_geometric_identity_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/zero_square_sum_geometric_identity_ja.pdf
 
 
 ---
@@ -945,16 +1022,22 @@ https://note.com/kiharanoriaki/n/nb7f682a299a6
    - DOI: https://doi.org/10.5281/zenodo.21486233
    - nbody_spontaneous_splitting_onset_outcomes_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_spontaneous_splitting_onset_outcomes_en.pdf
+   - nbody_spontaneous_splitting_onset_outcomes_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_spontaneous_splitting_onset_outcomes_ja.pdf
 
 3. Plane-Decomposition Readout in N-Body Fixed-Generator Systems
    - DOI: https://doi.org/10.5281/zenodo.21468959
    - nbody_plane_decomposition_readout_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_plane_decomposition_readout_en.pdf
+   - nbody_plane_decomposition_readout_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/nbody_plane_decomposition_readout_ja.pdf
 
 4. The Number of Waves Is the Resolution of the System
    - DOI: https://doi.org/10.5281/zenodo.21486544
    - wave_count_system_resolution_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/wave_count_system_resolution_en.pdf
+   - wave_count_system_resolution_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/wave_count_system_resolution_ja.pdf
 
 
 ---
@@ -1004,6 +1087,8 @@ https://note.com/kiharanoriaki/n/na16b6a4e5ff2
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/対照実験_公開α論文_v1/finite_order_resonance_v1/paper/finite_order_resonance_iterated_exchange_scattering_ja.pdf
    - finite_order_resonance_iterated_exchange_scattering_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260718/finite_order_resonance_iterated_exchange_scattering_en.pdf
+   - finite_order_resonance_iterated_exchange_scattering_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260718/finite_order_resonance_iterated_exchange_scattering_ja.pdf
 
 
 ---
@@ -1026,6 +1111,8 @@ https://note.com/kiharanoriaki/n/n2ebe434754e2
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/対照実験_公開α論文_v1/finite_order_resonance_v1/paper/finite_order_resonance_iterated_exchange_scattering_ja.pdf
    - finite_order_resonance_iterated_exchange_scattering_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260718/finite_order_resonance_iterated_exchange_scattering_en.pdf
+   - finite_order_resonance_iterated_exchange_scattering_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260718/finite_order_resonance_iterated_exchange_scattering_ja.pdf
 
 
 ---
@@ -1090,19 +1177,10 @@ https://note.com/kiharanoriaki/n/n2901bcd95bba
 
 **元原稿**: `波の情報読出し/20260714/note_article_gray_cat_metastable_observation_ja.md`
 
-**論文 2 件**
+**論文 1 件**
 
-1. Experimental Specification for the White-Cat, Black-Cat, and Gray-Cat Metastable Interface in AB-C-D Stages v1
-   - DOI: https://doi.org/10.5281/zenodo.21353209
-   - gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260714/gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_en.pdf
-   - gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260714/gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_ja.pdf
-   - gray_cat_metastable_observation_preliminary_summary_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260714/gray_cat_metastable_observation_preliminary_summary_ja.pdf
-
-2. Preliminary Numerical Study of Gray-Cat Metastable Interfaces, Weak C Readout, and Strong D Observation Selection in a Closed Phase System v2
-   - DOI: https://doi.org/10.5281/zenodo.21353208
+1. Preliminary Numerical Study of Gray-Cat Metastable Interfaces, Weak C Readout, and Strong D Observation Selection in a Closed Phase System v2
+   - DOI: https://doi.org/10.5281/zenodo.21353208 / https://doi.org/10.5281/zenodo.21353209
    - gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260714/gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_en.pdf
    - gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_ja.pdf
@@ -1123,19 +1201,10 @@ https://note.com/kiharanoriaki/n/n3350efb4e43c
 
 **元原稿**: `波の情報読出し/20260714/note_article_gray_cat_metastable_observation_en.md`
 
-**論文 2 件**
+**論文 1 件**
 
-1. Experimental Specification for the White-Cat, Black-Cat, and Gray-Cat Metastable Interface in AB-C-D Stages v1
-   - DOI: https://doi.org/10.5281/zenodo.21353209
-   - gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_en.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260714/gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_en.pdf
-   - gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260714/gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_ja.pdf
-   - gray_cat_metastable_observation_preliminary_summary_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260714/gray_cat_metastable_observation_preliminary_summary_ja.pdf
-
-2. Preliminary Numerical Study of Gray-Cat Metastable Interfaces, Weak C Readout, and Strong D Observation Selection in a Closed Phase System v2
-   - DOI: https://doi.org/10.5281/zenodo.21353208
+1. Preliminary Numerical Study of Gray-Cat Metastable Interfaces, Weak C Readout, and Strong D Observation Selection in a Closed Phase System v2
+   - DOI: https://doi.org/10.5281/zenodo.21353208 / https://doi.org/10.5281/zenodo.21353209
    - gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260714/gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_en.pdf
    - gray_cat_metastable_interface_ab_c_d_stage_experiment_spec_v1_ja.pdf
@@ -1386,17 +1455,12 @@ https://note.com/kiharanoriaki/n/n15451632027b
 
 **元原稿**: `波の情報読出し/20260710/note_article_elastic_reflection_closed_phase_system_ja.md`
 
-**論文 2 件**
+**論文 1 件**
 
 1. Constructive Experiment on Elastic Reflection of Two Fermionic Local Waves in a Closed Phase System Without Assuming Background Space
-   - DOI: https://doi.org/10.5281/zenodo.21291020
+   - DOI: https://doi.org/10.5281/zenodo.21291018 / https://doi.org/10.5281/zenodo.21291020
    - elastic_reflection_closed_phase_system_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/elastic_reflection_closed_phase_system_en.pdf
-   - elastic_reflection_closed_phase_system_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/elastic_reflection_closed_phase_system_ja.pdf
-
-2. 背景空間を仮定しない閉じた位相系におけるフェルミオン的二局所波の完全弾性反射の構成実験 v2
-   - DOI: https://doi.org/10.5281/zenodo.21291018
    - elastic_reflection_closed_phase_system_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/elastic_reflection_closed_phase_system_ja.pdf
 
@@ -1411,17 +1475,12 @@ https://note.com/kiharanoriaki/n/n5a009a2735e7
 
 **元原稿**: `波の情報読出し/20260710/note_article_elastic_reflection_closed_phase_system_en.md`
 
-**論文 2 件**
+**論文 1 件**
 
 1. Constructive Experiment on Elastic Reflection of Two Fermionic Local Waves in a Closed Phase System Without Assuming Background Space
-   - DOI: https://doi.org/10.5281/zenodo.21291020
+   - DOI: https://doi.org/10.5281/zenodo.21291018 / https://doi.org/10.5281/zenodo.21291020
    - elastic_reflection_closed_phase_system_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/elastic_reflection_closed_phase_system_en.pdf
-   - elastic_reflection_closed_phase_system_ja.pdf
-     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/elastic_reflection_closed_phase_system_ja.pdf
-
-2. 背景空間を仮定しない閉じた位相系におけるフェルミオン的二局所波の完全弾性反射の構成実験 v2
-   - DOI: https://doi.org/10.5281/zenodo.21291018
    - elastic_reflection_closed_phase_system_ja.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/elastic_reflection_closed_phase_system_ja.pdf
 
@@ -2100,6 +2159,8 @@ https://note.com/kiharanoriaki/n/n6ad7686c6b08
    - DOI: https://doi.org/10.5281/zenodo.20521566
    - observation_paper_stealth_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_en.pdf
+   - observation_paper_stealth_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_ja.pdf
 
 2. 信号論・制御理論と量子力学・量子光学・開放量子系の構造的対応関係に関する観察
    - DOI: https://doi.org/10.5281/zenodo.20521598 / https://doi.org/10.5281/zenodo.20521599
@@ -2125,6 +2186,8 @@ https://note.com/kiharanoriaki/n/nc18b32d1e27e
    - DOI: https://doi.org/10.5281/zenodo.20521566 / https://doi.org/10.5281/zenodo.20521567
    - observation_paper_stealth_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_en.pdf
+   - observation_paper_stealth_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_ja.pdf
 
 2. 信号論・制御理論と量子力学・量子光学・開放量子系の構造的対応関係に関する観察
    - DOI: https://doi.org/10.5281/zenodo.20521598
@@ -2150,6 +2213,8 @@ https://note.com/kiharanoriaki/n/n1f942c4ae5fd
    - DOI: https://doi.org/10.5281/zenodo.20521566 / https://doi.org/10.5281/zenodo.20521567
    - observation_paper_stealth_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_en.pdf
+   - observation_paper_stealth_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_ja.pdf
 
 2. 信号論・制御理論と量子力学・量子光学・開放量子系の構造的対応関係に関する観察
    - DOI: https://doi.org/10.5281/zenodo.20521598
@@ -2175,6 +2240,8 @@ https://note.com/kiharanoriaki/n/n6b292c7f640c
    - DOI: https://doi.org/10.5281/zenodo.20521566
    - observation_paper_stealth_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_en.pdf
+   - observation_paper_stealth_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_ja.pdf
 
 2. 信号論・制御理論と量子力学・量子光学・開放量子系の構造的対応関係に関する観察
    - DOI: https://doi.org/10.5281/zenodo.20521598 / https://doi.org/10.5281/zenodo.20521599
@@ -2196,8 +2263,12 @@ https://note.com/kiharanoriaki/n/n8ffc8e2c9123
 
 **論文 4 件**
 
-1. 6次元符号化 xyztRQ の再検討──次論文化に向けた思考実験ノート
+1. 6次元符号化 xyztRQ の再検討──次論文化に向けた思考実験ノート / Reexamination of the 6-Dimensional Sign Vector xyztRQ: A Thought Experiment Toward a Future Paper
    - DOI: https://doi.org/10.5281/zenodo.19904714
+   - rethinking_xyztRQ_v4_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/rethinking_xyztRQ_v4_en.pdf
+   - rethinking_xyztRQ_v4_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/rethinking_xyztRQ_v4_ja.pdf
    - 思考実験_R軸について.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/思考実験_R軸について.pdf
 
@@ -2235,8 +2306,12 @@ https://note.com/kiharanoriaki/n/ncaf7e51ecc2b
 
 **論文 4 件**
 
-1. 6次元符号化 xyztRQ の再検討──次論文化に向けた思考実験ノート
+1. 6次元符号化 xyztRQ の再検討──次論文化に向けた思考実験ノート / Reexamination of the 6-Dimensional Sign Vector xyztRQ: A Thought Experiment Toward a Future Paper
    - DOI: https://doi.org/10.5281/zenodo.19904714
+   - rethinking_xyztRQ_v4_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/rethinking_xyztRQ_v4_en.pdf
+   - rethinking_xyztRQ_v4_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/rethinking_xyztRQ_v4_ja.pdf
    - 思考実験_R軸について.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/思考実験_R軸について.pdf
 
@@ -2274,8 +2349,12 @@ https://note.com/kiharanoriaki/n/n2410d4863565
 
 **論文 4 件**
 
-1. 6次元符号化 xyztRQ の再検討──次論文化に向けた思考実験ノート
+1. 6次元符号化 xyztRQ の再検討──次論文化に向けた思考実験ノート / Reexamination of the 6-Dimensional Sign Vector xyztRQ: A Thought Experiment Toward a Future Paper
    - DOI: https://doi.org/10.5281/zenodo.19904714
+   - rethinking_xyztRQ_v4_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/rethinking_xyztRQ_v4_en.pdf
+   - rethinking_xyztRQ_v4_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/rethinking_xyztRQ_v4_ja.pdf
    - 思考実験_R軸について.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/思考実験_R軸について.pdf
 
@@ -2313,8 +2392,12 @@ https://note.com/kiharanoriaki/n/nbfc40cb3cfa3
 
 **論文 4 件**
 
-1. 6次元符号化 xyztRQ の再検討──次論文化に向けた思考実験ノート
+1. 6次元符号化 xyztRQ の再検討──次論文化に向けた思考実験ノート / Reexamination of the 6-Dimensional Sign Vector xyztRQ: A Thought Experiment Toward a Future Paper
    - DOI: https://doi.org/10.5281/zenodo.19904714
+   - rethinking_xyztRQ_v4_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/rethinking_xyztRQ_v4_en.pdf
+   - rethinking_xyztRQ_v4_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/rethinking_xyztRQ_v4_ja.pdf
    - 思考実験_R軸について.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/思考実験_R軸について.pdf
 
@@ -2639,8 +2722,12 @@ https://note.com/kiharanoriaki/n/n39fecf32607f
    - 思考実験_R軸について.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/思考実験_R軸について.pdf
 
-2. 6次元符号化 xyztRQ の再検討──次論文化に向けた思考実験ノート
+2. 6次元符号化 xyztRQ の再検討──次論文化に向けた思考実験ノート / Reexamination of the 6-Dimensional Sign Vector xyztRQ: A Thought Experiment Toward a Future Paper
    - DOI: https://doi.org/10.5281/zenodo.19904714
+   - rethinking_xyztRQ_v4_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/rethinking_xyztRQ_v4_en.pdf
+   - rethinking_xyztRQ_v4_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/rethinking_xyztRQ_v4_ja.pdf
    - 思考実験_R軸について.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/思考実験_R軸について.pdf
 
@@ -2684,8 +2771,12 @@ https://note.com/kiharanoriaki/n/nc75457ca96f7
    - 思考実験_R軸について.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/思考実験_R軸について.pdf
 
-2. 6次元符号化 xyztRQ の再検討──次論文化に向けた思考実験ノート
+2. 6次元符号化 xyztRQ の再検討──次論文化に向けた思考実験ノート / Reexamination of the 6-Dimensional Sign Vector xyztRQ: A Thought Experiment Toward a Future Paper
    - DOI: https://doi.org/10.5281/zenodo.19904714
+   - rethinking_xyztRQ_v4_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/rethinking_xyztRQ_v4_en.pdf
+   - rethinking_xyztRQ_v4_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/rethinking_xyztRQ_v4_ja.pdf
    - 思考実験_R軸について.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/思考実験_R軸について.pdf
 
@@ -2958,6 +3049,10 @@ https://note.com/kiharanoriaki/n/n63d3c20e6b20
 
 5. Considerations on the Relationship between the 6-Dimensional Hypercube and Central Projection
    - DOI: https://doi.org/10.5281/zenodo.19731614
+   - hypercube_central_projection_relationship_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/hypercube_central_projection_relationship_en.pdf
+   - hypercube_central_projection_relationship_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/hypercube_central_projection_relationship_ja.pdf
    - 10 Considerations on the Relationship between the 6-Dimensional Hypercube and Central Projection.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波動方程式/中心投影における位相方程式/10 Considerations on the Relationship between the 6-Dimensional Hypercube and Central Projection.pdf
 
@@ -2996,6 +3091,8 @@ https://note.com/kiharanoriaki/n/n63d3c20e6b20
 
 9. Four Modes of Shape-Invariant Waves: Spin, Chirality, and Statistics Determined by Wave Vector Structure
    - DOI: https://doi.org/10.5281/zenodo.19709798
+   - four_modes_of_shape_invariant_waves.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/four_modes_of_shape_invariant_waves.pdf
    - four_modes_of_shape_invariant_waves_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/four_modes_of_shape_invariant_waves_en.pdf
    - Supplementary Lecture 3 Geometric Necessity of Spontaneous Symmetry Breaking — Three-Stage Derivation of the Higgs Mechanism.pdf
@@ -3017,13 +3114,21 @@ https://note.com/kiharanoriaki/n/n63d3c20e6b20
    - 補講3 自発的対称性の破れの幾何学的必然性——ヒッグス機構の3段階導出.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波動方程式/中心投影における位相方程式/補講3 自発的対称性の破れの幾何学的必然性——ヒッグス機構の3段階導出.pdf
 
-12. Geometric Necessity of Spontaneous Symmetry Breaking — Three-Stage Derivation of the Higgs Mechanism
+12. Geometric Necessity of Spontaneous Symmetry Breaking: Three-Stage Derivation of the Higgs Mechanism
    - DOI: https://doi.org/10.5281/zenodo.19731606
+   - supplementary_lecture_3_higgs_mechanism_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/supplementary_lecture_3_higgs_mechanism_en.pdf
+   - supplementary_lecture_3_higgs_mechanism_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/supplementary_lecture_3_higgs_mechanism_ja.pdf
    - Supplementary Lecture 3 Geometric Necessity of Spontaneous Symmetry Breaking — Three-Stage Derivation of the Higgs Mechanism.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波動方程式/中心投影における位相方程式/Supplementary Lecture 3 Geometric Necessity of Spontaneous Symmetry Breaking — Three-Stage Derivation of the Higgs Mechanism.pdf
 
-13. Geometric Structure of Generation Mixing — Qualitative Derivation of the CKM and PMNS Matrices
+13. Geometric Structure of Generation Mixing: Qualitative Derivation of CKM and PMNS Matrices
    - DOI: https://doi.org/10.5281/zenodo.19731602
+   - supplementary_lecture_2_generation_mixing_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/supplementary_lecture_2_generation_mixing_en.pdf
+   - supplementary_lecture_2_generation_mixing_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/supplementary_lecture_2_generation_mixing_ja.pdf
    - Supplementary Lecture 2 Geometric Structure of Generation Mixing — Qualitative Derivation of CKM and PMNS Matrices.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波動方程式/中心投影における位相方程式/Supplementary Lecture 2 Geometric Structure of Generation Mixing — Qualitative Derivation of CKM and PMNS Matrices.pdf
 
@@ -3085,11 +3190,15 @@ https://note.com/kiharanoriaki/n/n63d3c20e6b20
 
 22. Shape-Invariant Standing Waves on Closed Spheres — Dimensional Stability and the Geometric Necessity of 3+1 Spacetime
    - DOI: https://doi.org/10.5281/zenodo.19731594
+   - standing_waves_on_closed_spheres.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/standing_waves_on_closed_spheres.pdf
    - standing_waves_on_closed_spheres_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/standing_waves_on_closed_spheres_en.pdf
 
 23. Shape-Invariant Traveling Waves on a 4-Dimensional Integer Lattice: Existence Conditions, Conservation Structure, and Self-Consistent Loop
    - DOI: https://doi.org/10.5281/zenodo.19731598
+   - shape_invariant_traveling_waves_on_4d_lattice.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/shape_invariant_traveling_waves_on_4d_lattice.pdf
    - shape_invariant_traveling_waves_on_4d_lattice_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/shape_invariant_traveling_waves_on_4d_lattice_en.pdf
 
@@ -3261,6 +3370,10 @@ https://note.com/kiharanoriaki/n/na95064891249
 
 4. Considerations on the Relationship between the 6-Dimensional Hypercube and Central Projection
    - DOI: https://doi.org/10.5281/zenodo.19731614
+   - hypercube_central_projection_relationship_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/hypercube_central_projection_relationship_en.pdf
+   - hypercube_central_projection_relationship_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/hypercube_central_projection_relationship_ja.pdf
    - 10 Considerations on the Relationship between the 6-Dimensional Hypercube and Central Projection.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波動方程式/中心投影における位相方程式/10 Considerations on the Relationship between the 6-Dimensional Hypercube and Central Projection.pdf
 
@@ -3292,6 +3405,8 @@ https://note.com/kiharanoriaki/n/na95064891249
 
 7. Four Modes of Shape-Invariant Waves: Spin, Chirality, and Statistics Determined by Wave Vector Structure
    - DOI: https://doi.org/10.5281/zenodo.19709798
+   - four_modes_of_shape_invariant_waves.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/four_modes_of_shape_invariant_waves.pdf
    - four_modes_of_shape_invariant_waves_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/four_modes_of_shape_invariant_waves_en.pdf
    - Supplementary Lecture 3 Geometric Necessity of Spontaneous Symmetry Breaking — Three-Stage Derivation of the Higgs Mechanism.pdf
@@ -3313,13 +3428,21 @@ https://note.com/kiharanoriaki/n/na95064891249
    - 補講3 自発的対称性の破れの幾何学的必然性——ヒッグス機構の3段階導出.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波動方程式/中心投影における位相方程式/補講3 自発的対称性の破れの幾何学的必然性——ヒッグス機構の3段階導出.pdf
 
-10. Geometric Necessity of Spontaneous Symmetry Breaking — Three-Stage Derivation of the Higgs Mechanism
+10. Geometric Necessity of Spontaneous Symmetry Breaking: Three-Stage Derivation of the Higgs Mechanism
    - DOI: https://doi.org/10.5281/zenodo.19731606
+   - supplementary_lecture_3_higgs_mechanism_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/supplementary_lecture_3_higgs_mechanism_en.pdf
+   - supplementary_lecture_3_higgs_mechanism_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/supplementary_lecture_3_higgs_mechanism_ja.pdf
    - Supplementary Lecture 3 Geometric Necessity of Spontaneous Symmetry Breaking — Three-Stage Derivation of the Higgs Mechanism.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波動方程式/中心投影における位相方程式/Supplementary Lecture 3 Geometric Necessity of Spontaneous Symmetry Breaking — Three-Stage Derivation of the Higgs Mechanism.pdf
 
-11. Geometric Structure of Generation Mixing — Qualitative Derivation of the CKM and PMNS Matrices
+11. Geometric Structure of Generation Mixing: Qualitative Derivation of CKM and PMNS Matrices
    - DOI: https://doi.org/10.5281/zenodo.19731602
+   - supplementary_lecture_2_generation_mixing_en.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/supplementary_lecture_2_generation_mixing_en.pdf
+   - supplementary_lecture_2_generation_mixing_ja.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/supplementary_lecture_2_generation_mixing_ja.pdf
    - Supplementary Lecture 2 Geometric Structure of Generation Mixing — Qualitative Derivation of CKM and PMNS Matrices.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波動方程式/中心投影における位相方程式/Supplementary Lecture 2 Geometric Structure of Generation Mixing — Qualitative Derivation of CKM and PMNS Matrices.pdf
 
@@ -3339,11 +3462,15 @@ https://note.com/kiharanoriaki/n/na95064891249
 
 14. Shape-Invariant Standing Waves on Closed Spheres — Dimensional Stability and the Geometric Necessity of 3+1 Spacetime
    - DOI: https://doi.org/10.5281/zenodo.19731594
+   - standing_waves_on_closed_spheres.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/standing_waves_on_closed_spheres.pdf
    - standing_waves_on_closed_spheres_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/standing_waves_on_closed_spheres_en.pdf
 
 15. Shape-Invariant Traveling Waves on a 4-Dimensional Integer Lattice: Existence Conditions, Conservation Structure, and Self-Consistent Loop
    - DOI: https://doi.org/10.5281/zenodo.19731598
+   - shape_invariant_traveling_waves_on_4d_lattice.pdf
+     https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/shape_invariant_traveling_waves_on_4d_lattice.pdf
    - shape_invariant_traveling_waves_on_4d_lattice_en.pdf
      https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/shape_invariant_traveling_waves_on_4d_lattice_en.pdf
 
