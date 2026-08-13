@@ -32,3 +32,10 @@
   （判定基準実行前固定・JSON出力・実験一覧_重力_v1.md 参照）
 - 関連識別子: 自己引用8 DOI（cites）
 - Zenn記事: articles/gravity-readout-two-layer.md（GitHub連携公開）
+- note: 日本語版 https://note.com/kiharanoriaki/n/n698b11999367
+  （元原稿: `次元の生成構造/波と場の二層分離_note完成稿_v1.md`）
+  英語版 https://note.com/kiharanoriaki/n/n81dc28bcc73a
+  （元原稿: `次元の生成構造/gravity_readout_note_v1_en.md`）
+- 論文PDF 直接ダウンロード（GitHub raw）:
+  - 日本語 `次元の生成構造/重力読出し検討/gravity_readout_ja.pdf`（24頁・880 KB）
+  - 英語 `次元の生成構造/重力読出し検討/gravity_readout_en.pdf`（29頁・590 KB）

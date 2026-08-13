@@ -119,7 +119,13 @@
 波と場の二層分離——場の読出し万能関数によるゲージ場と重力場の統合
 https://doi.org/10.5281/zenodo.21832257
 
+日本語版の本文 PDF（24ページ・約 0.9 MB）は、公開リポジトリから直接ダウンロードいただけます。
+
+https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/重力読出し検討/gravity_readout_ja.pdf
+
 全実験は決定論的なプログラム（判定基準は実行前に固定）として論文と同じフォルダに公開しており、図も含めて誰でも再現・反証できます。
+
+リポジトリ: https://github.com/WurabeSeiji/ai-chat-logs-open
 
 前作もあわせてどうぞ。
 
