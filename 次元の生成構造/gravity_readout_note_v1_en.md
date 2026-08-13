@@ -119,7 +119,13 @@ The paper is published on Zenodo in both Japanese and English (CC-BY-4.0).
 Two-Layer Separation of Waves and Fields — Unifying Gauge and Gravitational Fields via a Universal Field-Readout Function
 https://doi.org/10.5281/zenodo.21832257
 
+The English full text PDF (29 pages, about 0.6 MB) can be downloaded directly from the public repository.
+
+https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/重力読出し検討/gravity_readout_en.pdf
+
 Every experiment is published as a deterministic program (judgment criteria fixed before execution) in the same folder as the paper; everything, figures included, can be reproduced and refuted by anyone.
+
+Repository: https://github.com/WurabeSeiji/ai-chat-logs-open
 
 The previous papers, too:
 
