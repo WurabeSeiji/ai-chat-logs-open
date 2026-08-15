@@ -214,7 +214,7 @@ basic_axiom_system_v9_pure_definition_ja.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/basic_axiom_system_v9_pure_definition_ja.pdf
 
 
-12. 2026-08-05 未
+12. 2026-08-05 済
 重力は、最初から量子論の中にいたのではないか——虚数と規格化の百年
 https://note.com/kiharanoriaki/n/nc07528c49524
 元原稿 次元の生成構造/重力は最初から量子論の中にいたのではないか_note完成稿.md
@@ -305,7 +305,7 @@ generation_structure_of_fermions_ja.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/第9論文_フェルミオンの生成構造/generation_structure_of_fermions_ja.pdf
 
 
-14. 2026-08-05 未
+14. 2026-08-05 済
 Was gravity inside quantum theory all along? — a hundred years of the imaginary unit and normalizatio
 https://note.com/kiharanoriaki/n/na6eb6107d241
 元原稿 次元の生成構造/was_gravity_inside_quantum_theory_note_en.md
@@ -497,7 +497,7 @@ basic_axiom_system_v9_pure_definition_ja.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/basic_axiom_system_v9_pure_definition_ja.pdf
 
 
-18. 2026-08-03 未
+18. 2026-08-03 済
 素粒子は、なぜ生まれたのか——粒子とは、光の海で閉鎖を完走した稀な波だった
 https://note.com/kiharanoriaki/n/n93d91d0c1bb2
 元原稿 次元の生成構造/素粒子はなぜ生まれたのか_note完成稿.md
@@ -555,7 +555,7 @@ basic_axiom_system_v9_pure_definition_ja.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/basic_axiom_system_v9_pure_definition_ja.pdf
 
 
-19. 2026-08-03 未
+19. 2026-08-03 済
 Why Were Elementary Particles Born? — A Particle Is a Rare Wave That Completed a Closure Cycle in the
 https://note.com/kiharanoriaki/n/nd250158e0da1
 元原稿 fb_generation_structure_of_fermions_ja.md
@@ -820,7 +820,7 @@ basic_axiom_system_v9_pure_definition_en.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/basic_axiom_system_v9_pure_definition_en.pdf
 
 
-25. 2026-07-23 未
+25. 2026-07-23 済
 The Equation Σxₙ² = 0 Was Born Quantized
 https://note.com/kiharanoriaki/n/nadc574b5957b
 元原稿 次元の生成構造/note記事案_零二乗和の量子性_v1/note_article_zero_square_sum_quantum_en.md
@@ -835,7 +835,7 @@ basic_axiom_system_v9_pure_definition_en.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/basic_axiom_system_v9_pure_definition_en.pdf
 
 
-26. 2026-07-22 未
+26. 2026-07-22 済
 なぜ方向は三つで止まり、波はひとりでに増えるのか
 https://note.com/kiharanoriaki/n/nf99bd8fe7e30
 元原稿 次元の生成構造/note記事案_次元と分裂と計数_v1/note_article_dimension_splitting_counting_ja.md
@@ -865,7 +865,7 @@ wave_count_system_resolution_ja.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/wave_count_system_resolution_ja.pdf
 
 
-27. 2026-07-22 未
+27. 2026-07-22 済
 Σxₙ² = 0 という式は、生まれつき量子化されていた
 https://note.com/kiharanoriaki/n/nc0ea47060f4b
 元原稿 次元の生成構造/note記事案_零二乗和の量子性_v1/note_article_zero_square_sum_quantum_ja.md
@@ -880,7 +880,7 @@ basic_axiom_system_v9_pure_definition_ja.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/basic_axiom_system_v9_pure_definition_ja.pdf
 
 
-28. 2026-07-22 未
+28. 2026-07-22 済
 Why Do Directions Stop at Three, While Waves Multiply on Their Own?
 https://note.com/kiharanoriaki/n/nb7f682a299a6
 元原稿 次元の生成構造/note記事案_次元と分裂と計数_v1/note_article_dimension_splitting_counting_en.md
@@ -984,7 +984,7 @@ https://note.com/kiharanoriaki/n/nb4340afa4a9e
 元原稿 波の情報読出し/20260718/note_article_quadratic_closure_finite_recurrence_born_probability_wave_en.md
 論文 なし（note本文にDOIの記載なし）
 
-33. 2026-07-16 未
+33. 2026-07-16 済
 波束の収縮を調べていたら、なぜか α=137 が出てきた
 https://note.com/kiharanoriaki/n/n7e0b6cd38c55
 元原稿 波の情報読出し/20260715/note_article_exchange_weight_alpha_correspondence_ja.md
@@ -1000,7 +1000,7 @@ exchange_weight_alpha_correspondence_numerical_experiment_ja.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260715/exchange_weight_alpha_correspondence_numerical_experiment_ja.pdf
 
 
-34. 2026-07-16 未
+34. 2026-07-16 済
 Why Did 137 Appear While Studying Wave-Packet Collapse?
 https://note.com/kiharanoriaki/n/n66b59a98ed6c
 元原稿 波の情報読出し/20260715/note_article_exchange_weight_alpha_correspondence_en.md
@@ -1086,7 +1086,7 @@ exchange_scattering_matrix_fermionic_localization_exchange_preliminary_summary_e
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260713/exchange_scattering_matrix_fermionic_localization_exchange_preliminary_summary_en.pdf
 
 
-39. 2026-07-12 未
+39. 2026-07-12 済
 加速度は、背景座標なしに読めるのか
 https://note.com/kiharanoriaki/n/nad8429959a8a
 元原稿 note_article_acceleration_readout_summaries_ja.md
@@ -1135,7 +1135,7 @@ inverse_square_phase_closure_v2_ja.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の生成構造/加速度逆二乗則機構_追加論文_v1/inverse_square_phase_closure_v2_ja.pdf
 
 
-40. 2026-07-12 未
+40. 2026-07-12 済
 Can acceleration be read without background coordinates?
 https://note.com/kiharanoriaki/n/n511a9b0c5787
 元原稿 note_article_acceleration_readout_summaries_en.md
@@ -1272,7 +1272,7 @@ elastic_reflection_closed_phase_system_en.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波の情報読出し/20260710/elastic_reflection_closed_phase_system_en.pdf
 
 
-47. 2026-07-02 未
+47. 2026-07-02 済
 電子は粒子か、波か ── ダブルスリットの思考実験で、ド・ブロイ波長とプランク定数を「再現」してみる
 https://note.com/kiharanoriaki/n/ne02b32947541
 元原稿 simplified_double_slit/note_debroglie_double_slit_{ja,en}.md
@@ -1288,7 +1288,7 @@ paper_debroglie_double_slit_ja_v0_3.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/simplified_double_slit/paper_debroglie_double_slit_ja_v0_3.pdf
 
 
-48. 2026-07-02 未
+48. 2026-07-02 済
 共役な複素数は、じつはただの平方和 ── 理論物理の基本表現をシンプルに読み直す
 https://note.com/kiharanoriaki/n/na360a22014c4
 元原稿 平方数を基本量とした場合の検討/note_complex_norm_square_readout_ja.md
@@ -1302,7 +1302,7 @@ paper_complex_norm_square_readout_ja_v0_5.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/paper_complex_norm_square_readout_ja_v0_5.pdf
 
 
-49. 2026-07-02 未
+49. 2026-07-02 済
 The Conjugate Complex Number Is Really Just a Sum of Squares —— rereading a basic tool of theoretical
 https://note.com/kiharanoriaki/n/n741507be8583
 元原稿 平方数を基本量とした場合の検討/note_complex_norm_square_readout_en.md
@@ -1316,7 +1316,7 @@ paper_complex_norm_square_readout_en_v0_5.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/paper_complex_norm_square_readout_en_v0_5.pdf
 
 
-50. 2026-07-02 未
+50. 2026-07-02 済
 Is the Electron a Particle or a Wave? —— "reproducing" the de Broglie wavelength and Planck's constan
 https://note.com/kiharanoriaki/n/nb07cbb1529d9
 元原稿 simplified_double_slit/note_debroglie_double_slit_{ja,en}.md
@@ -1332,7 +1332,7 @@ paper_debroglie_double_slit_en_v0_3.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/simplified_double_slit/paper_debroglie_double_slit_en_v0_3.pdf
 
 
-51. 2026-06-29 未
+51. 2026-06-29 済
 二重スリットの謎、観測も「波束の収縮」もいらなかった？──粒子のような波のかたまりが、波として干渉し、粒子のように映る
 https://note.com/kiharanoriaki/n/n65be6bf06c9b
 元原稿 note_doubleslit_ja.md
@@ -1348,7 +1348,7 @@ paper_localized_source_fluctuation_ja_v0_1.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/simplified_double_slit/paper_localized_source_fluctuation_ja_v0_1.pdf
 
 
-52. 2026-06-29 未
+52. 2026-06-29 済
 The Double-Slit Puzzle Without Observation or "Wave-Packet Collapse"? — A Particle-Like Wave Packet I
 https://note.com/kiharanoriaki/n/n701e9d57d7bb
 元原稿 note_doubleslit_en.md
@@ -1364,7 +1364,7 @@ paper_localized_source_fluctuation_en_v0_1.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/平方数を基本量とした場合の検討/simplified_double_slit/paper_localized_source_fluctuation_en_v0_1.pdf
 
 
-53. 2026-06-22 未
+53. 2026-06-22 済
 Reading by Squares: When a Curved Sum of Squares Becomes a Straight Line
 https://note.com/kiharanoriaki/n/n1f41301fdf49
 元原稿 平方数を基本量とした場合の検討/note_article_en.md
@@ -1390,7 +1390,7 @@ paper0_geodesic_cell_distortion_en_v1_4.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper0_geodesic_cell_distortion_en_v1_4.pdf
 
 
-54. 2026-06-21 未
+54. 2026-06-21 済
 平方数で読むと、曲がった平方和が直線になる ── 曲率歪みと平方量読出しの整理
 https://note.com/kiharanoriaki/n/n879eac8f6cb2
 元原稿 平方数を基本量とした場合の検討/note_article_ja.md
@@ -1416,7 +1416,7 @@ paper0_geodesic_cell_distortion_ja_v1_4.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper0_geodesic_cell_distortion_ja_v1_4.pdf
 
 
-55. 2026-06-12 未
+55. 2026-06-12 済
 「位置は読まれていなかった」── 双対幾何シリーズ続報:論文13〜16と総説を一斉公開（50年の問いの解決から、測度問題の厳密な縮約まで）
 https://note.com/kiharanoriaki/n/nefcd306c9016
 元原稿 note_article_ja_v3.md
@@ -1448,7 +1448,7 @@ survey_dictionary_axiom_exchange_ja_v1_0.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/survey_dictionary_axiom_exchange_ja_v1_0.pdf
 
 
-56. 2026-06-12 未
+56. 2026-06-12 済
 "Position Had Never Been Read" — Dual Geometry Series, the Sequel: Papers 13–16 and a Survey, Publish
 https://note.com/kiharanoriaki/n/n6d8ab15ea24c
 元原稿 note_article_ja_v3.md
@@ -1480,7 +1480,7 @@ survey_dictionary_axiom_exchange_en_v1_0.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/survey_dictionary_axiom_exchange_en_v1_0.pdf
 
 
-57. 2026-06-11 未
+57. 2026-06-11 済
 双対幾何シリーズ完結 ── 三つの仮定から、量子的・時空的に見える構造はどこまで定理として従うか（論文1〜12）
 https://note.com/kiharanoriaki/n/nd6a788866947
 元原稿 note_article_ja_v2.md
@@ -1548,7 +1548,7 @@ paper4_reciprocal_dual_cell_decomposition_hierarchical_vacuum_ja_v1_0.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper4_reciprocal_dual_cell_decomposition_hierarchical_vacuum_ja_v1_0.pdf
 
 
-58. 2026-06-11 未
+58. 2026-06-11 済
 The Dual Geometry Series Is Complete — From Three Assumptions, How Much of What Looks Quantum and Spa
 https://note.com/kiharanoriaki/n/ne161bb2bf44a
 元原稿 note_article_en_v2.md
@@ -1616,7 +1616,7 @@ paper4_reciprocal_dual_cell_decomposition_hierarchical_vacuum_en_v1_0.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper4_reciprocal_dual_cell_decomposition_hierarchical_vacuum_en_v1_0.pdf
 
 
-59. 2026-06-08 未
+59. 2026-06-08 済
 波長空間と周波数空間の双対幾何を、逆数双対と4次元格子の数え上げから観察してみました
 https://note.com/kiharanoriaki/n/n08aeb3c4e8ae
 元原稿 波長空間と周波数空間の双対幾何/note_article_ja.md
@@ -1654,7 +1654,7 @@ paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2.pdf
 
 
-60. 2026-06-08 未
+60. 2026-06-08 済
 Dual Geometry of Wavelength Space and Frequency Space: Reciprocal Duality and 4D Lattice Counting (Ob
 https://note.com/kiharanoriaki/n/nf2b3e4392ea1
 元原稿 note_article_ja_v2.md
@@ -1692,13 +1692,13 @@ paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2_en.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波長空間と周波数空間の双対幾何/paper3_closed_4d_structure_and_lattice_counting_supplement_v0_2_en.pdf
 
 
-61. 2026-06-04 未
+61. 2026-06-04 済
 振動数だけを基本に据えると、時空はどう編み直せるか ── 一つのモデル粒子の思考実験（論文12・13）
 https://note.com/kiharanoriaki/n/nc9c435c9cc00
 元原稿 papers/Paper13_Fifth_Frequency_Composite_Curvature/note_article_{ja,en}.md
 論文 なし（note本文にDOIの記載なし）
 
-62. 2026-06-04 未
+62. 2026-06-04 済
 Re-weaving spacetime from frequency alone — a thought experiment on a model particle (Papers 12 and 1
 https://note.com/kiharanoriaki/n/nb00c0ffb2c14
 元原稿 papers/Paper13_Fifth_Frequency_Composite_Curvature/note_article_{ja,en}.md
@@ -1719,7 +1719,7 @@ central_projection_composition_en.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/central_projection_composition_en.pdf
 
 
-63. 2026-06-03 未
+63. 2026-06-03 済
 信号論・制御理論と量子論の 10 個の構造的対応を並置・分類する──論文 10（観察論文）
 https://note.com/kiharanoriaki/n/n6ad7686c6b08
 元原稿 articles/signal-control-quantum-correspondences.md
@@ -1740,7 +1740,7 @@ observation_paper_stealth_ja.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_ja.pdf
 
 
-64. 2026-06-03 未
+64. 2026-06-03 済
 不確定性・Sp(2,ℝ)・Wick 回転・Stone の定理を「位相空間の面積」という一視点で並べ直す──論文 11（観察論文）
 https://note.com/kiharanoriaki/n/nc18b32d1e27e
 元原稿 articles/signal-control-quantum-correspondences.md
@@ -1761,7 +1761,7 @@ BH_Paper10_Signal_Control_Observation_ja.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper10_signal_control_observation/BH_Paper10_Signal_Control_Observation_ja.pdf
 
 
-65. 2026-06-03 未
+65. 2026-06-03 済
 Realigning Uncertainty, Sp(2,ℝ), Wick Rotation, and Stone's Theorem Through the Single Lens of "Phase
 https://note.com/kiharanoriaki/n/n1f942c4ae5fd
 元原稿 articles/signal-control-quantum-correspondences.md
@@ -1782,7 +1782,7 @@ BH_Paper10_Signal_Control_Observation_en.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper10_signal_control_observation/BH_Paper10_Signal_Control_Observation_en.pdf
 
 
-66. 2026-06-03 未
+66. 2026-06-03 済
 Juxtaposing and Classifying 10 Structural Correspondences Between Signal/Control Theory and Quantum T
 https://note.com/kiharanoriaki/n/n6b292c7f640c
 元原稿 articles/signal-control-quantum-correspondences.md
@@ -1803,7 +1803,7 @@ observation_paper_stealth_en.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper11_observational_signature/observation_paper_stealth_en.pdf
 
 
-67. 2026-05-27 未
+67. 2026-05-27 済
 清水明『新版量子論の基礎』第1章〜第5章を読んでの思考実験をZenodoに公開しました（前稿の続編）
 https://note.com/kiharanoriaki/n/n8ffc8e2c9123
 元原稿 新版量子論の基礎/note_article_ch5_ja.md
@@ -1830,7 +1830,7 @@ D1 中心投影フレームワークの粒子データ構造仕様 v2.1.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波動方程式/中心投影における位相方程式/D1 中心投影フレームワークの粒子データ構造仕様 v2.1.pdf
 
 
-68. 2026-05-27 未
+68. 2026-05-27 済
 Thought Experiments through Chapters 1–5 of Shimizu's Foundations of Quantum Theory — Published on Ze
 https://note.com/kiharanoriaki/n/ncaf7e51ecc2b
 元原稿 新版量子論の基礎/note_article_ch5_en.md
@@ -1857,7 +1857,7 @@ D1 Particle Data Structure Specification of the Central Projection Framework v2.
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波動方程式/中心投影における位相方程式/D1 Particle Data Structure Specification of the Central Projection Framework v2.1.pdf
 
 
-69. 2026-05-26 未
+69. 2026-05-26 済
 清水明『新版量子論の基礎』第1章〜第3章を読んでの思考実験をZenodoに公開しました
 https://note.com/kiharanoriaki/n/n2410d4863565
 元原稿 新版量子論の基礎/note_article_ja.md
@@ -1883,7 +1883,7 @@ D1 中心投影フレームワークの粒子データ構造仕様 v2.1.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波動方程式/中心投影における位相方程式/D1 中心投影フレームワークの粒子データ構造仕様 v2.1.pdf
 
 
-70. 2026-05-26 未
+70. 2026-05-26 済
 Thought Experiments through Chapters 1–3 of Shimizu's Foundations of Quantum Theory — Published on Ze
 https://note.com/kiharanoriaki/n/nbfc40cb3cfa3
 元原稿 新版量子論の基礎/note_article_en.md
@@ -1909,7 +1909,7 @@ D1 Particle Data Structure Specification of the Central Projection Framework v2.
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波動方程式/中心投影における位相方程式/D1 Particle Data Structure Specification of the Central Projection Framework v2.1.pdf
 
 
-71. 2026-05-21 未
+71. 2026-05-21 済
 α 自己整合方程式の 0.036 ドリフトを 2 次元面振動モードで物理的に解釈する──論文 9
 https://note.com/kiharanoriaki/n/nd7ae96120b66
 元原稿 articles/paper9-2d-mode-drift.md
@@ -1949,7 +1949,7 @@ https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグ�
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/思考実験_R軸について.pdf
 
 
-72. 2026-05-21 未
+72. 2026-05-21 済
 Physical Interpretation of the 0.036 Drift in the α Self-Consistency Equation via 2D Surface Vibratio
 https://note.com/kiharanoriaki/n/nf9b18cb9a254
 元原稿 articles/paper9-2d-mode-drift.md
@@ -1989,7 +1989,7 @@ rethinking_xyztRQ_v4_en.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/rethinking_xyztRQ_v4_en.pdf
 
 
-73. 2026-05-07 未
+73. 2026-05-07 済
 中心投影による次元削減 ── 「順次中心投影」を正しく代数化する
 https://note.com/kiharanoriaki/n/n1bd7b7446ac4
 元原稿 グノモン正写像による4次元時空の幾何学的定式化/note_article_中心投影合成演算.md
@@ -2016,7 +2016,7 @@ rq_mapping_definition.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/rq_mapping_definition.pdf
 
 
-74. 2026-05-07 未
+74. 2026-05-07 済
 Dimensional Reduction via Central Projection — Algebraizing "Successive Central Projections" Correctl
 https://note.com/kiharanoriaki/n/ne867c5c7c569
 元原稿 グノモン正写像による4次元時空の幾何学的定式化/note_article_central_projection_composition_en.md
@@ -2043,7 +2043,7 @@ rq_mapping_definition_en.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/中心投影による宇宙の3層モデル/rq_mapping_definition_en.pdf
 
 
-75. 2026-05-01 未
+75. 2026-05-01 済
 α 恒等式の二次補正項に関する幾何学的観察──論文7 の補講として
 https://note.com/kiharanoriaki/n/ne1dc24c07455
 元原稿 BH熱力学プログラム/papers/paper7_alpha_supplement/note_article_ja.md
@@ -2078,7 +2078,7 @@ https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグ�
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/思考実験_R軸について.pdf
 
 
-76. 2026-05-01 未
+76. 2026-05-01 済
 Geometric Observations on the Second-Order Correction of the α Identity — Supplement to Paper 7
 https://note.com/kiharanoriaki/n/n268fa839f6c4
 元原稿 BH熱力学プログラム/papers/paper7_alpha_supplement/note_article_en.md
@@ -2113,7 +2113,7 @@ rethinking_xyztRQ_v4_en.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/rethinking_xyztRQ_v4_en.pdf
 
 
-77. 2026-04-30 未
+77. 2026-04-30 済
 Reexamining the 6-Dimensional Sign Vector xyztRQ: A Thought Experiment Note Published on Zenodo
 https://note.com/kiharanoriaki/n/n39fecf32607f
 元原稿 ヒッグス波についての考察/note_article_xyztRQ_en.md
@@ -2143,7 +2143,7 @@ rethinking_xyztRQ_v4_en.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/rethinking_xyztRQ_v4_en.pdf
 
 
-78. 2026-04-30 未
+78. 2026-04-30 済
 6次元符号化 xyztRQ の再検討──思考実験ノートを Zenodo に公開しました
 https://note.com/kiharanoriaki/n/nc75457ca96f7
 元原稿 ヒッグス波についての考察/note_article_xyztRQ_ja.md
@@ -2173,7 +2173,7 @@ https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグ�
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/思考実験_R軸について.pdf
 
 
-79. 2026-04-29 未
+79. 2026-04-29 済
 微細構造定数 α を4次元の幾何学から 8.7 ppb で予言する自己整合恒等式
 https://note.com/kiharanoriaki/n/n19cc13927c51
 元原稿 articles/alpha-identity-4d-geometry.md
@@ -2190,7 +2190,7 @@ https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグ�
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/思考実験_R軸について.pdf
 
 
-80. 2026-04-29 未
+80. 2026-04-29 済
 微細構造定数 α の幾何学的恒等式は、標準格子ゲージ理論と数学的に同型な構造を持つ
 https://note.com/kiharanoriaki/n/n87df7a4977e7
 元原稿 BH熱力学プログラム/papers/paper8_isomorphism/note_article_ja.md
@@ -2210,7 +2210,7 @@ BH_Paper8_Isomorphism_ja.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper8_isomorphism/BH_Paper8_Isomorphism_ja.pdf
 
 
-81. 2026-04-29 未
+81. 2026-04-29 済
 The Geometric Identity for the Fine-Structure Constant α is Mathematically Isomorphic to Standard Lat
 https://note.com/kiharanoriaki/n/n9c37c6f99a0a
 元原稿 BH熱力学プログラム/papers/paper8_isomorphism/note_article_en.md
@@ -2230,7 +2230,7 @@ BH_Paper8_Isomorphism_en.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper8_isomorphism/BH_Paper8_Isomorphism_en.pdf
 
 
-82. 2026-04-29 未
+82. 2026-04-29 済
 Predicting the Fine-Structure Constant α to 8.7 ppb from 4D Geometry: A Self-Consistent Identity
 https://note.com/kiharanoriaki/n/n01d98237ddae
 元原稿 articles/alpha-identity-4d-geometry.md
@@ -2247,7 +2247,7 @@ rethinking_xyztRQ_v4_en.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/ヒッグス波についての考察/rethinking_xyztRQ_v4_en.pdf
 
 
-83. 2026-04-28 未
+83. 2026-04-28 済
 ブラックホールは「上位時空構造の射影」かもしれない ── 6篇の研究プログラム
 https://note.com/kiharanoriaki/n/n4524006ef175
 元原稿 BH熱力学プログラム/note_article_ja.md
@@ -2283,7 +2283,7 @@ BH_Paper6_Synthesis_3plus1Reduction_ja.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper6_synthesis/BH_Paper6_Synthesis_3plus1Reduction_ja.pdf
 
 
-84. 2026-04-28 未
+84. 2026-04-28 済
 Black Holes as Projections from a Higher Spacetime Structure — A Six-Paper Research Programme
 https://note.com/kiharanoriaki/n/n916eac778c1c
 元原稿 BH熱力学プログラム/note_article_en.md
@@ -2319,7 +2319,7 @@ BH_Paper6_Synthesis_3plus1Reduction_en.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/BH熱力学プログラム/papers/paper6_synthesis/BH_Paper6_Synthesis_3plus1Reduction_en.pdf
 
 
-85. 2026-04-25 未
+85. 2026-04-25 済
 From the Necessity of 5 Dimensions to 62 Particles and Four Forces — A Guide to All 36 Papers on the
 https://note.com/kiharanoriaki/n/n63d3c20e6b20
 元原稿 note_portal_article_en.md
@@ -2382,11 +2382,7 @@ https://doi.org/10.5281/zenodo.19538106
 6. Dimensional Interpretation of Geodesic Structure at the R→0 Limit.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/主観空間曲率半径の極限と次元追加・各次元の構図/6. Dimensional Interpretation of Geodesic Structure at the R→0 Limit.pdf
 
-（表題未取得）
-https://doi.org/10.5281/zenodo.19534373
 
-（表題未取得）
-https://doi.org/10.5281/zenodo.19534409
 
 Formulation of Structural Requirements for a Theory of Everything: Structural Constraints Based on Definitions of Information and Operations
 https://doi.org/10.5281/zenodo.19601592
@@ -2548,22 +2544,18 @@ wave_packet_collapse_en.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波動方程式/思考実験（ディレイ回路）/wave_packet_collapse_en.pdf
 
 
-86. 2026-04-25 未
+86. 2026-04-25 済
 5次元の必然性から62粒子と4つの力へ ── 中心投影フレームワーク全36論文の案内
 https://note.com/kiharanoriaki/n/nc1619291b690
 元原稿 note_portal_article.md
 論文 なし（note本文にDOIの記載なし）
 
-87. 2026-04-22 未
+87. 2026-04-22 済
 超直方体の組合せ論から標準模型の62粒子を導出する ── 位相方程式篇（W1〜W11）
 https://note.com/kiharanoriaki/n/na95064891249
 元原稿 波動方程式/中心投影における位相方程式/note_article_位相方程式篇.md
 
-（表題未取得）
-https://doi.org/10.5281/zenodo.19534373
 
-（表題未取得）
-https://doi.org/10.5281/zenodo.19534409
 
 Formulation of Structural Requirements for a Theory of Everything: Structural Constraints Based on Definitions of Information and Operations
 https://doi.org/10.5281/zenodo.19601592
@@ -2677,7 +2669,7 @@ hypercube_central_projection_relationship_ja.pdf
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/hypercube_central_projection_relationship_ja.pdf
 
 
-88. 2026-04-12 未
+88. 2026-04-12 済
 ディレイ回路モデルによる波動シミュレーション
 https://note.com/kiharanoriaki/n/ne438ca291ce8
 元原稿 波動方程式/思考実験（ディレイ回路）/note_article_ディレイ回路.md
@@ -2708,7 +2700,7 @@ https://doi.org/10.5281/zenodo.19534355
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/波動方程式/思考実験（ディレイ回路）/ディレイ回路モデルでの波束の収縮モデルの実現.pdf
 
 
-89. 2026-04-05 未
+89. 2026-04-05 済
 中心投影による空間の幾何学的定式化 ── 10論文の概要
 https://note.com/kiharanoriaki/n/nc51e43282b0a
 元原稿 グノモン正写像による4次元時空の幾何学的定式化/note_article_基礎シリーズ.md
@@ -2772,7 +2764,7 @@ https://doi.org/10.5281/zenodo.19538106
 https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/グノモン正写像による4次元時空の幾何学的定式化/主観空間曲率半径の極限と次元追加・各次元の構図/6. R→0極限における測地線構造の次元的解釈.pdf
 
 
-90. 2026-03-11 未
+90. 2026-03-11 済
 木原範昭の経歴
 https://note.com/kiharanoriaki/n/ncdb7bdc8b040
 元原稿 （リポジトリに無し）
