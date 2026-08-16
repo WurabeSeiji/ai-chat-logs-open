@@ -171,7 +171,12 @@ function drawPolar(i){
   const cv = document.getElementById("polar");
   const [g,w,h] = fit(cv); g.clearRect(0,0,w,h);
   const cx = w/2, cy = h/2, R = Math.min(w,h)*0.40;
-  const rr = v => 0.30*R + 0.70*R*(Math.sqrt(v)-Math.sqrt(rMin))/(Math.sqrt(rMax)-Math.sqrt(rMin));
+  // R′² が定数の構成（倍音が少ない場合）では rMax=rMin となりゼロ除算する。
+  // その場合は動径を固定半径に落とす（R′ が動かないこと自体が結果である）。
+  const span = Math.sqrt(rMax) - Math.sqrt(rMin);
+  const rr = v => span > 0
+      ? 0.30*R + 0.70*R*(Math.sqrt(v)-Math.sqrt(rMin))/span
+      : 0.72*R;
   const pr = v => 5 + 26*(v-prMin)/(prMax-prMin);
 
   g.strokeStyle = css.grid; g.lineWidth = 1;
@@ -211,6 +216,10 @@ function drawPolar(i){
     g.globalAlpha = 1; g.strokeStyle = c; g.lineWidth = 2;
     g.beginPath(); g.arc(x,y,pr(p),0,7); g.stroke();
     g.beginPath(); g.arc(x,y,3,0,7); g.fill();
+  }
+  if (span <= 0){
+    g.fillStyle = css.faint; g.font="11px ui-monospace,Menlo,monospace"; g.textAlign="center";
+    g.fillText("R′² = " + rMin.toLocaleString() + "（定数・動径は固定）", cx, cy);
   }
   g.fillStyle = css.a; g.font="600 13px system-ui"; g.textAlign="center";
   g.fillText("A", ax, ay-pr(f[C.prA])-8);
