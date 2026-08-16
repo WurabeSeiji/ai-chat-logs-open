@@ -100,11 +100,11 @@ input[type=range]{flex:1;min-width:180px;accent-color:var(--a)}
       <canvas id="chi" width="1000" height="220" aria-label="相対位相の時系列"></canvas>
     </div>
     <div class="card">
-      <h2>閉包 Σz² — 実部と虚部</h2>
-      <canvas id="clo" width="1000" height="220" aria-label="閉包残差の時系列"></canvas>
+      <h2>閉包 Σz² — 実部と虚部（符号付き対数）</h2>
+      <canvas id="clo" width="1000" height="300" aria-label="閉包残差の時系列（符号付き対数）"></canvas>
       <div class="legend">
         <span><i style="background:var(--res)"></i>実部 Σ(a²−b²)</span>
-        <span><i style="background:var(--om)"></i>虚部 2Σab</span>
+        <span><i style="background:var(--om)"></i>虚部 2Σab</span><span style="color:var(--faint)">符号付き対数軸 · 上=正 / 下=負</span>
       </div>
     </div>
   </div>
@@ -127,6 +127,9 @@ input[type=range]{flex:1;min-width:180px;accent-color:var(--a)}
   <b>電荷の符号に依存しない</b>。円周が閉じているため逃げ場がなく、束縛振動になる。
   動径の伸縮が R′ の変動で、平均の 1/4 から 2 倍以上まで呼吸する。
   結合定数は宣言せず、毎步の透過率 1−r を読んでいる。
+  閉包の軸は<b>符号付き対数</b>——線形軸では 1e-12 以下が全部ゼロに潰れ、
+  τ≈28000 の飽和も見えなかった。実際の残差は倍精度の丸め（1e-16）の
+  数十〜数百倍で、<b>成長ではなく「飽和 → 一段 → 飽和」</b>である。
 </p>
 </div>
 
@@ -254,6 +257,46 @@ function strip(id, series, lo, hi, colors, i, zero){
     g.beginPath(); g.arc(x,Y(s[i]),3,0,7); g.fill(); });
 }
 
+// 符号付き対数（symlog）: 符号を保ったまま桁を見る
+const FLOOR = 1e-17;
+const SL = v => (v===0?0:Math.sign(v)*Math.max(0,Math.log10(Math.abs(v)/FLOOR)));
+const SLinv = y => (y===0?0:Math.sign(y)*FLOOR*Math.pow(10,Math.abs(y)));
+
+function stripLog(id, series, colors, labels, i){
+  const cv = document.getElementById(id);
+  const [g,w,h] = fit(cv); g.clearRect(0,0,w,h);
+  const padL=44, padR=8, padT=8, padB=16;
+  const W=w-padL-padR, H=h-padT-padB;
+  const S = series.map(s=>s.map(SL));
+  let m=0; for(const s of S) for(const v of s) m=Math.max(m,Math.abs(v));
+  m=Math.ceil(m)||1;
+  const Y = y => padT + H*(1-(y+m)/(2*m));
+
+  // 十年ごとの目盛り
+  g.font="10px ui-monospace,Menlo,monospace"; g.textAlign="right";
+  for(let k=-m;k<=m;k++){
+    const yy=Y(k); const zero=(k===0);
+    g.strokeStyle= zero?css.edge:css.grid; g.lineWidth= zero?1.2:1;
+    g.beginPath(); g.moveTo(padL,yy); g.lineTo(w-padR,yy); g.stroke();
+    if (zero || Math.abs(k)%2===0){
+      g.fillStyle=css.faint;
+      const lab = zero ? "0" : (k>0?"+":"−")+"1e"+(Math.log10(FLOOR)+Math.abs(k));
+      g.fillText(lab, padL-5, yy+3);
+    }
+  }
+  S.forEach((s,si)=>{
+    g.beginPath();
+    for(let j=0;j<N;j++){ const x=padL+W*j/(N-1);
+      j? g.lineTo(x,Y(s[j])) : g.moveTo(x,Y(s[j])); }
+    g.strokeStyle=colors[si]; g.lineWidth=1.4; g.globalAlpha=.92; g.stroke(); g.globalAlpha=1;
+  });
+  const x = padL+W*i/(N-1);
+  g.strokeStyle=css.ink; g.lineWidth=1; g.globalAlpha=.55;
+  g.beginPath(); g.moveTo(x,padT); g.lineTo(x,h-padB); g.stroke(); g.globalAlpha=1;
+  S.forEach((s,si)=>{ g.fillStyle=colors[si];
+    g.beginPath(); g.arc(x,Y(s[i]),3.2,0,7); g.fill(); });
+}
+
 const ro = document.getElementById("ro");
 const rows = [["Δθ","°"],["弦 R″/R",""],["R′² A",""],["R′² B",""],
               ["広がり A","セル"],["広がり B","セル"],["ω",""],["反射率 r",""],
@@ -265,7 +308,7 @@ const e = (x,d=3)=>x.toExponential(d);
 function draw(i){
   drawPolar(i); drawProfile(i);
   strip("chi",[chiA],ciMin,ciMax,[css.a],i,true);
-  strip("clo",[cloR,cloI],-cAbs,cAbs,[css.res,css.om],i,true);
+  stripLog("clo",[cloR,cloI],[css.res,css.om],["実部","虚部"],i);
   const f = F[i];
   const val = [(f[C.chi]*180/Math.PI).toFixed(2)+"°", f[C.chord].toFixed(4),
     e(f[C.RpA]), e(f[C.RpB]), f[C.prA].toFixed(1), f[C.prB].toFixed(1),
