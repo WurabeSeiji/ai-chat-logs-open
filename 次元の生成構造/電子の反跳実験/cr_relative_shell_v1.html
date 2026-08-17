@@ -1,0 +1,307 @@
+<title>__TITLE__</title>
+<style>
+:root{
+  --ground:#eaeef0; --panel:#f7f9fa; --edge:#c8d2d8; --grid:#dbe3e8;
+  --ink:#16222b; --dim:#5d7280; --faint:#93a6b1;
+  --a:#0f9c92; --b:#c9791a; --res:#b8306f; --om:#5b6fa8;
+  --shadow:0 1px 2px rgba(20,34,44,.08),0 8px 24px rgba(20,34,44,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0a0f14; --panel:#121a21; --edge:#26343f; --grid:#1b2731;
+    --ink:#dbe6ec; --dim:#8fa0ab; --faint:#5a6d79;
+    --a:#34d1c4; --b:#f0a13a; --res:#d8508f; --om:#8ea3d8;
+    --shadow:0 1px 2px rgba(0,0,0,.5),0 8px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0a0f14; --panel:#121a21; --edge:#26343f; --grid:#1b2731;
+  --ink:#dbe6ec; --dim:#8fa0ab; --faint:#5a6d79;
+  --a:#34d1c4; --b:#f0a13a; --res:#d8508f; --om:#8ea3d8;
+  --shadow:0 1px 2px rgba(0,0,0,.5),0 8px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);
+  font-family:system-ui,-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;
+  line-height:1.6;font-size:15px}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 56px}
+header{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 18px;margin-bottom:6px}
+h1{font-size:24px;font-weight:650;letter-spacing:-.01em;margin:0;text-wrap:balance}
+.sub{color:var(--dim);font-size:13.5px;margin:0 0 22px;max-width:74ch}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);
+  font-weight:600}
+.stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:840px){.stage{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--edge);border-radius:10px;
+  padding:14px 14px 10px;box-shadow:var(--shadow)}
+.card h2{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
+  margin:0 0 10px;font-weight:650}
+canvas{display:block;width:100%;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:10px;font-size:12.5px;color:var(--dim)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;
+  vertical-align:-1px}
+.readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:2px 14px;
+  margin-top:12px;font-variant-numeric:tabular-nums}
+.readout div{display:flex;justify-content:space-between;gap:8px;padding:3px 0;
+  border-bottom:1px solid var(--grid);font-size:12.5px}
+.readout span:first-child{color:var(--faint)}
+.readout span:last-child{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px}
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:16px;
+  background:var(--panel);border:1px solid var(--edge);border-radius:10px;padding:12px 14px}
+button{font:inherit;font-size:13px;font-weight:600;color:var(--ground);background:var(--ink);
+  border:0;border-radius:6px;padding:7px 14px;cursor:pointer}
+button:hover{opacity:.85}
+button:focus-visible,input:focus-visible{outline:2px solid var(--a);outline-offset:2px}
+.step{background:transparent;color:var(--ink);border:1px solid var(--edge);
+  font-family:ui-monospace,Menlo,monospace;padding:7px 12px}
+.step:hover{background:var(--grid);opacity:1}
+input[type=range]{flex:1;min-width:160px;accent-color:var(--a)}
+.spd{display:flex;gap:4px}
+.spd button{background:transparent;color:var(--dim);border:1px solid var(--edge);
+  padding:5px 10px;font-size:12px}
+.spd button[aria-pressed=true]{background:var(--a);color:var(--ground);border-color:var(--a)}
+.tstamp{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;
+  color:var(--dim);font-variant-numeric:tabular-nums;min-width:96px}
+.note{margin-top:24px;color:var(--dim);font-size:13px;max-width:70ch}
+.note b{color:var(--ink);font-weight:620}
+.note code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;
+  background:var(--grid);padding:1px 5px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>__TITLE__</h1>
+  <span class="eyebrow">__EYEBROW__</span>
+</header>
+<p class="sub">
+__SUB__
+</p>
+
+<div class="stage">
+  <div class="card">
+    <h2>相対位相の変位 — 振り子として</h2>
+    <canvas id="pend" width="1000" height="740" aria-label="相対位相を振り子で表す"></canvas>
+    <div class="legend">
+      <span><i style="background:var(--a)"></i>A</span>
+      <span><i style="background:var(--b)"></i>B</span>
+      <span style="color:var(--faint)">共通回転は除去済み・振れ幅は ±60°</span>
+    </div>
+    <div class="readout" id="ro"></div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <div class="card">
+      <h2>位相空間 (Δθ, dΔθ/dτ)</h2>
+      <canvas id="ps" width="1000" height="640" aria-label="位相空間"></canvas>
+    </div>
+    <div class="card">
+      <h2>Δθ の時系列（直近 200 步）</h2>
+      <canvas id="ts" width="1000" height="240" aria-label="相対位相の時系列"></canvas>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="play">一時停止</button>
+  <button class="step" id="m10">−10</button>
+  <button class="step" id="m1">−1</button>
+  <button class="step" id="p1">+1</button>
+  <button class="step" id="p10">+10</button>
+  <input type="range" id="scrub" min="0" value="0" aria-label="時刻">
+  <span class="tstamp" id="tt">τ = 0</span>
+  <div class="spd" role="group" aria-label="速度">
+    <button data-s="1" aria-pressed="true">×1</button>
+    <button data-s="3">×3</button><button data-s="10">×10</button>
+  </div>
+</div>
+
+<p class="note">
+__NOTE__
+</p>
+</div>
+
+<script>
+const D = __DATA__;
+const CHI = D.chi, DCHI = D.dchi, PR = D.pr, RP = D.Rp, R = D.r,
+      V = D.v, OM = D.omega, CRE = D.cloRe, CIM = D.cloIm, MID = D.mid;
+const N = CHI.length;
+
+let css = {};
+function readTokens(){
+  const s = getComputedStyle(document.documentElement); css = {};
+  for (const k of ["ground","panel","edge","grid","ink","dim","faint","a","b","res","om"])
+    css[k] = s.getPropertyValue("--"+k).trim();
+}
+readTokens();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{readTokens();draw(cur);});
+
+const mx = a => Math.max(...a), mn = a => Math.min(...a);
+const CHI_MAX = Math.max(Math.abs(mn(CHI)), Math.abs(mx(CHI)));
+const DC_MAX  = Math.max(Math.abs(mn(DCHI)), Math.abs(mx(DCHI)));
+const PR_MIN = mn(PR), PR_MAX = mx(PR);
+
+function fit(cv){
+  const dpr = Math.min(devicePixelRatio||1,2);
+  const w = cv.clientWidth || cv.width;
+  const h = cv.height/(cv.width/w);
+  cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr);
+  cv.style.height = h+"px";
+  const g = cv.getContext("2d"); g.setTransform(dpr,0,0,dpr,0,0);
+  return [g,w,h];
+}
+
+function drawPendulum(i){
+  const cv=document.getElementById("pend"); const [g,w,h]=fit(cv); g.clearRect(0,0,w,h);
+  const cx=w/2, cy=h*0.22, L=Math.min(w*0.34,h*0.56);
+  const chi=CHI[i];
+  // 目盛り（±60°）
+  g.strokeStyle=css.grid; g.lineWidth=1;
+  for(let d=-60;d<=60;d+=15){
+    const t=Math.PI/2 + d*Math.PI/180;
+    g.beginPath(); g.moveTo(cx+Math.cos(t)*L*0.94, cy+Math.sin(t)*L*0.94);
+    g.lineTo(cx+Math.cos(t)*L*1.03, cy+Math.sin(t)*L*1.03); g.stroke();
+  }
+  g.strokeStyle=css.edge; g.beginPath();
+  g.arc(cx,cy,L, Math.PI/2-60*Math.PI/180, Math.PI/2+60*Math.PI/180); g.stroke();
+  g.fillStyle=css.faint; g.font="11px ui-monospace,Menlo,monospace"; g.textAlign="center";
+  for(const d of [-60,-30,0,30,60]){
+    const t=Math.PI/2 + d*Math.PI/180;
+    g.fillText(d+"°", cx+Math.cos(t)*L*1.13, cy+Math.sin(t)*L*1.13+4);
+  }
+  // 軌跡（直近120步）
+  const TR=120;
+  g.lineWidth=1.4;
+  for(let j=Math.max(0,i-TR); j<i; j++){
+    g.globalAlpha=0.05+0.45*(j-(i-TR))/TR;
+    const t0=Math.PI/2+CHI[j], t1=Math.PI/2+CHI[j+1];
+    g.strokeStyle=css.a; g.beginPath();
+    g.moveTo(cx+Math.cos(t0)*L, cy+Math.sin(t0)*L);
+    g.lineTo(cx+Math.cos(t1)*L, cy+Math.sin(t1)*L); g.stroke();
+  }
+  g.globalAlpha=1;
+  // 支点と棒
+  const t=Math.PI/2+chi;
+  const px=cx+Math.cos(t)*L, py=cy+Math.sin(t)*L;
+  g.strokeStyle=css.dim; g.lineWidth=2;
+  g.beginPath(); g.moveTo(cx,cy); g.lineTo(px,py); g.stroke();
+  g.setLineDash([3,5]); g.strokeStyle=css.grid;
+  g.beginPath(); g.moveTo(cx,cy); g.lineTo(cx,cy+L); g.stroke(); g.setLineDash([]);
+  g.fillStyle=css.dim; g.beginPath(); g.arc(cx,cy,5,0,7); g.fill();
+  // A・B を棒の両端に置き、円の大きさで広がりを表す
+  const rad = 8 + 26*(PR[i]-PR_MIN)/(PR_MAX-PR_MIN||1);
+  for(const [sx,sy,c,lab] of [[px,py,css.a,"A"],
+      [cx+Math.cos(Math.PI-t+Math.PI)*L*0+2*cx-px, 2*cy-py+2*(py-cy), css.b,"B"]]){}
+  // A = 振れた先、B = 鏡像（−Δθ 側）
+  const t2=Math.PI/2-chi, qx=cx+Math.cos(t2)*L, qy=cy+Math.sin(t2)*L;
+  g.strokeStyle=css.dim; g.lineWidth=1; g.globalAlpha=.5;
+  g.beginPath(); g.moveTo(cx,cy); g.lineTo(qx,qy); g.stroke(); g.globalAlpha=1;
+  for(const [x,y,c,lab] of [[px,py,css.a,"A"],[qx,qy,css.b,"B"]]){
+    g.fillStyle=c; g.globalAlpha=.16;
+    g.beginPath(); g.arc(x,y,rad,0,7); g.fill(); g.globalAlpha=1;
+    g.strokeStyle=c; g.lineWidth=2; g.beginPath(); g.arc(x,y,rad,0,7); g.stroke();
+    g.beginPath(); g.arc(x,y,3.5,0,7); g.fill();
+    g.font="600 13px system-ui"; g.fillText(lab,x,y-rad-8);
+  }
+  g.fillStyle=css.ink; g.font="600 15px ui-monospace,Menlo,monospace";
+  g.fillText((chi*180/Math.PI).toFixed(3)+"°", cx, cy+L*1.30);
+  g.fillStyle=css.faint; g.font="11px system-ui";
+  g.fillText("Δθ", cx, cy+L*1.30+16);
+}
+
+function drawPhaseSpace(i){
+  const cv=document.getElementById("ps"); const [g,w,h]=fit(cv); g.clearRect(0,0,w,h);
+  const pad=34, W=w-pad*2, H=h-pad*2;
+  const X=v=>pad+W*(v+CHI_MAX)/(2*CHI_MAX), Y=v=>pad+H*(1-(v+DC_MAX)/(2*DC_MAX));
+  g.strokeStyle=css.grid; g.lineWidth=1;
+  g.beginPath(); g.moveTo(pad,Y(0)); g.lineTo(w-pad,Y(0)); g.stroke();
+  g.beginPath(); g.moveTo(X(0),pad); g.lineTo(X(0),h-pad); g.stroke();
+  g.fillStyle=css.faint; g.font="10px ui-monospace,Menlo,monospace";
+  g.textAlign="center"; g.fillText("Δθ →", w-pad-24, Y(0)-6);
+  g.save(); g.translate(X(0)+10,pad+16); g.textAlign="left";
+  g.fillText("dΔθ/dτ", 0,0); g.restore();
+  // 全軌道を薄く
+  g.strokeStyle=css.a; g.globalAlpha=.10; g.lineWidth=1; g.beginPath();
+  for(let j=0;j<N;j++){ j? g.lineTo(X(CHI[j]),Y(DCHI[j])) : g.moveTo(X(CHI[j]),Y(DCHI[j])); }
+  g.stroke(); g.globalAlpha=1;
+  // 直近1周期ぶんを濃く
+  const TR=40;
+  g.lineWidth=1.8;
+  for(let j=Math.max(0,i-TR); j<i; j++){
+    g.globalAlpha=0.15+0.75*(j-(i-TR))/TR; g.strokeStyle=css.res;
+    g.beginPath(); g.moveTo(X(CHI[j]),Y(DCHI[j])); g.lineTo(X(CHI[j+1]),Y(DCHI[j+1])); g.stroke();
+  }
+  g.globalAlpha=1;
+  g.fillStyle=css.res; g.beginPath(); g.arc(X(CHI[i]),Y(DCHI[i]),5,0,7); g.fill();
+  g.strokeStyle=css.ground; g.lineWidth=1.5; g.stroke();
+}
+
+function drawSeries(i){
+  const cv=document.getElementById("ts"); const [g,w,h]=fit(cv); g.clearRect(0,0,w,h);
+  const pad=8, W=w-pad*2, H=h-pad*2, WIN=200;
+  const s=Math.max(0,i-WIN), e=Math.min(N-1,i+WIN);
+  const Y=v=>pad+H*(1-(v+CHI_MAX)/(2*CHI_MAX));
+  g.strokeStyle=css.grid; g.lineWidth=1;
+  g.beginPath(); g.moveTo(pad,Y(0)); g.lineTo(w-pad,Y(0)); g.stroke();
+  g.strokeStyle=css.a; g.lineWidth=1.6; g.beginPath();
+  for(let j=s;j<=e;j++){ const x=pad+W*(j-s)/(e-s);
+    (j===s)? g.moveTo(x,Y(CHI[j])) : g.lineTo(x,Y(CHI[j])); }
+  g.stroke();
+  const x=pad+W*(i-s)/(e-s);
+  g.strokeStyle=css.ink; g.globalAlpha=.5; g.lineWidth=1;
+  g.beginPath(); g.moveTo(x,pad); g.lineTo(x,h-pad); g.stroke(); g.globalAlpha=1;
+  g.fillStyle=css.a; g.beginPath(); g.arc(x,Y(CHI[i]),4,0,7); g.fill();
+}
+
+const ro=document.getElementById("ro");
+const rows=["Δθ","dΔθ/dτ","広がり PR","R′²","反射率 r","ω","v","Σz² 実部","Σz² 虚部","共通回転"];
+ro.innerHTML=rows.map(r=>`<div><span>${r}</span><span data-v></span></div>`).join("");
+const vs=[...ro.querySelectorAll("[data-v]")];
+const ex=(x,d=3)=>x.toExponential(d);
+
+function draw(i){
+  drawPendulum(i); drawPhaseSpace(i); drawSeries(i);
+  vs[0].textContent=(CHI[i]*180/Math.PI).toFixed(4)+"°";
+  vs[1].textContent=ex(DCHI[i],3);
+  vs[2].textContent=PR[i].toFixed(2);
+  vs[3].textContent=ex(RP[i],3);
+  vs[4].textContent=R[i].toFixed(6);
+  vs[5].textContent=OM[i].toFixed(7);
+  vs[6].textContent=ex(V[i],3);
+  vs[7].textContent=ex(CRE[i],2);
+  vs[8].textContent=ex(CIM[i],2);
+  vs[9].textContent=(MID[i]*180/Math.PI).toFixed(2)+"°";
+  document.getElementById("tt").textContent="τ = "+i;
+  document.getElementById("scrub").value=i;
+}
+
+let cur=0, playing=true, speed=1;
+if (matchMedia("(prefers-reduced-motion: reduce)").matches) playing=false;
+const sc=document.getElementById("scrub"); sc.max=N-1;
+const pb=document.getElementById("play");
+pb.textContent=playing?"一時停止":"再生";
+pb.onclick=()=>{playing=!playing; pb.textContent=playing?"一時停止":"再生"; if(playing)loop();};
+const jump=d=>{playing=false; pb.textContent="再生"; cur=(cur+d+N)%N; draw(cur);};
+document.getElementById("p1").onclick=()=>jump(1);
+document.getElementById("m1").onclick=()=>jump(-1);
+document.getElementById("p10").onclick=()=>jump(10);
+document.getElementById("m10").onclick=()=>jump(-10);
+addEventListener("keydown",ev=>{
+  if(ev.key==="ArrowRight"){jump(1);ev.preventDefault();}
+  if(ev.key==="ArrowLeft"){jump(-1);ev.preventDefault();}
+});
+sc.oninput=ev=>{cur=+ev.target.value; draw(cur);};
+document.querySelectorAll(".spd button").forEach(b=>b.onclick=()=>{
+  speed=+b.dataset.s;
+  document.querySelectorAll(".spd button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+});
+addEventListener("resize",()=>draw(cur));
+let last=0;
+function loop(ts){
+  if(!playing) return;
+  if(ts-last>55){ cur=(cur+speed)%N; draw(cur); last=ts; }
+  requestAnimationFrame(loop);
+}
+draw(0);
+if(playing) requestAnimationFrame(loop);
+</script>
