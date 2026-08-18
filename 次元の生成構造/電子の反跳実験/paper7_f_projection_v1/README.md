@@ -35,19 +35,23 @@ f(0)=1.0660150592067595e-30 と一致する。**第7論文の走行は30桁を�
 | make_parent | iters=1200, tol=1e-12 | iters=1200, tol=1e-12（**同一**） |
 | 親残差 | 2.139898e-13 | 2.139898e-13（**同一**） |
 | **初期状態** | **Z0 = (v + 1e-15·g)/‖·‖** | **Z0 = v.copy()** |
+| warm-start `wp` | seed生成後の乱数流 | seed生成を挟まない乱数流（**異なる**） |
 | f の定義 | ‖Z−p(p·Z)−q(q·Z)‖²/‖Z‖² | 同左（**同一**） |
 | f(0) | 1.066015e-30 | 3.274787e-33 |
 | 記録範囲 | 0–5000 毎ステップ | 0–5000 毎ステップ（**同一**） |
 | 図の ZOOMS | 0-5000 / 0-250 / 0-25 | 同左（**同一**） |
 
+親状態は同一だが、seed生成による乱数消費のため `wp` も異なり、Cayley 更新へ入る。
+したがって両系列は各原本の再現には使えるが、シード単独の因果対には使わない。
+
 ## プログラム（すべて原本を import、変更点は ★ コメント付き）
 
 | ファイル | 役割 | 検証 |
 |---|---|---|
-| `run_control_paper7_5color_v1.py` | CTRL-2 純再現 | 公開CSV **2202行×16列 バイト一致**（md5 a510ec9e…） |
+| `run_control_paper7_5color_v1.py` | CTRL-2 純再現 | 公開CSV **2201データ行×16列（ヘッダ込み2202物理行）バイト一致**（md5 a510ec9e…） |
 | `run_paper7_5color_dual_f_v1.py` | 16列＋射影列（se_ev=25, XMAX=55000） | 既存16列が公開CSVと全行一致 |
 | `run_paper7_5color_everystep_v1.py` | 毎ステップ 0–5000 | 25の倍数 201行×10列 一致（下記注意） |
-| `make_paper7_figures_control_v1.py` | 原本図化の忠実コピー（パス2箇所のみ） | 公開図と **md5 一致**（比較図4枚） |
+| `make_paper7_figures_control_v1.py` | 原本図化の忠実コピー（パス2箇所のみ） | 公開PNG図と **md5 一致**（比較図4枚） |
 | `make_paper7_figures_projection_v1.py` | 射影形・原本レイアウト | — |
 | `make_paper7_figures_projection_stacked_v1.py` | 射影形・縦2段（間引き25データ） | — |
 | `make_paper7_figures_everystep_v1.py` | 毎ステップ・縦2段 | — |
