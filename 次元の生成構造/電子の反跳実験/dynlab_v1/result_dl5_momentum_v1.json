@@ -1,0 +1,54 @@
+{
+ "config": {
+  "N": 16,
+  "delta": 0.1,
+  "window": [
+   15000,
+   16000
+  ],
+  "engine": "unified_interaction_v1",
+  "mass_def": "m_A=θ_A+2r_Af_A（頂点星集約・本走行で固定）"
+ },
+ "R1_sum_u": {
+  "max": 4.844215306665234e-16,
+  "pass": true
+ },
+ "R2_torque": {
+  "max": 5.711068390617631e-17,
+  "pass": true
+ },
+ "R3_cr1_calibration": {
+  "period_measured": 5.366159355416293,
+  "period_canonical": 5.455971625400723,
+  "ratio": 0.9835387212121299,
+  "bounded": true,
+  "pass": true
+ },
+ "R4_weighted_momentum": {
+  "P_m_std_norm": 0.01049671328228627,
+  "conservation_ratio": 0.039553436445722144,
+  "reading": "(ii)/(iii) 残差あり——構造は R5 と npz 系列で読む",
+  "pass": true
+ },
+ "R5_weight_identification": {
+  "conservation_ratios": {
+   "w=1": 6.220407782503546e-16,
+   "w=m": 0.039553436445722144,
+   "w=Av": 0.15576688429728267
+  },
+  "best_weight": "w=1",
+  "note": "比が小さいほど保存が良い（P_w の std / 素朴スケール）",
+  "pass": true
+ },
+ "R6_exchange_rule": {
+  "exchange_rule_dev": 3.469446951953614e-18,
+  "rule": "Δω = κ·acc, κ=1−r（透過率）",
+  "pass": true,
+  "note": "交換配分は透過率で構成どおり（厳密）。作用面(a)の平面選択は1次元相対座標では生じない——3次元対イベントの独立検定は次段の実装固定"
+ },
+ "protocol_records": {
+  "lam3_positive_all": true
+ },
+ "elapsed_sec": 155.91726326942444,
+ "all_pass": true
+}
