@@ -126,7 +126,7 @@ a1.hist(rho10, bins=bins, color="tab:gray", alpha=0.8)
 a1.axvline(0.5, color="tab:red", ls=":", lw=1.5, label="保証境界 1/2")
 a1.set_xscale("log")
 a1.set_xlabel(r"$\rho=\|\Delta B\|_2/g_{\min}$")
-a1.set_title("10步間隔: 中央値 3.74・全域外（追跡不能）")
+a1.set_title("10步間隔: 中央値 3.74・全域外（定理の保証なし）")
 a1.legend(fontsize=9)
 a2.hist(rho1, bins=bins, color="tab:blue", alpha=0.8)
 a2.axvline(0.5, color="tab:red", ls=":", lw=1.5, label="保証境界 1/2")
@@ -136,7 +136,7 @@ a2.set_xscale("log")
 a2.set_xlabel(r"$\rho=\|\Delta B\|_2/g_{\min}$")
 a2.set_title("毎步: 中央値 0.477・域内 52%（保証域の縁）")
 a2.legend(fontsize=9)
-fig.suptitle("H6 枠輸送の分解能条件（DL3・判定 M3——本実験の新事実）", y=1.02)
+fig.suptitle("H6 枠輸送の輸送比（DL3・判定 M3。決着は直接検定＝図H9）", y=1.02)
 _save(fig, "fig_h6_transport_ratio")
 
 # ------------------------------------------- H7 尾部質量と楕円体偏差
@@ -153,5 +153,42 @@ a2.set_title("楕円体偏差（判定 M9・[V4] と同域）")
 a2.legend(fontsize=9)
 fig.suptitle("H7 rank-3 支配の定量と過渡の偏差（DL3）", y=1.02)
 _save(fig, "fig_h7_tail_ellipsoid")
+
+# ------------------------------------------- H8 点火の順序構造（毎步・§7 新事実2）
+DI = np.load(HERE / "dl3_ignition_series_v1.npz")
+fig, ax = plt.subplots(figsize=(8.5, 4.4))
+ax.semilogy(DI["tau"], np.maximum(DI["gmin"], 1e-9), color="tab:blue", lw=0.7,
+            label=r"$g_{\min}$（毎步）")
+ax2 = ax.twinx()
+ax2.plot(DI["tau"], DI["n_neg"], color="tab:red", lw=0.8, alpha=0.7,
+         label=r"$\nu_-$（毎步）")
+ax.axvline(9090, color="tab:red", ls="--", lw=1.2)
+ax.axvline(10118, color="tab:blue", ls="--", lw=1.2)
+ax.annotate(r"$\tau_-=9090$", (9090, 3e-3), color="tab:red", fontsize=10,
+            xytext=(8350, 5e-3))
+ax.annotate(r"$\tau_g=10118$", (10118, 1e-5), color="tab:blue", fontsize=10,
+            xytext=(10180, 8e-6))
+ax.set_xlabel(r"$\tau$（步）")
+ax.set_ylabel(r"$g_{\min}$（対数）", color="tab:blue")
+ax2.set_ylabel(r"虚方向本数 $\nu_-$", color="tab:red")
+ax.set_title("H8 点火の順序構造: 虚方向が枠に約1000步先行する（§7 新事実2）")
+_save(fig, "fig_h8_ignition_order")
+
+# ------------------------------------------- H9 輸送の直接検定（§7 新事実1）
+DT = np.load(HERE / "dl3_transport_compose_v1.npz")
+th = DT["theta_disc_deg"]
+de = DT["det_disc"]
+fig, ax = plt.subplots(figsize=(8.5, 4.2))
+w = np.arange(1, len(de) + 1)
+ok = de > 0
+ax.bar(w[ok], th[ok], color="tab:blue", label="一致窓（差角）")
+ax.bar(w[~ok], [32] * int((~ok).sum()), color="tab:red",
+       label="枝不一致（反射）イベント")
+ax.axhline(30, color="k", ls=":", lw=1.2, label="事前登録しきい値 30°")
+ax.set_xlabel("窓番号（各10步・物質相後期）")
+ax.set_ylabel("合成輸送と直接輸送の差角（度）")
+ax.set_title("H9 輸送の直接検定: 38/40窓で一致（中央値0.9°）・枝不一致2窓（§7 新事実1）")
+ax.legend(fontsize=9)
+_save(fig, "fig_h9_transport_direct")
 
 print("完了")
