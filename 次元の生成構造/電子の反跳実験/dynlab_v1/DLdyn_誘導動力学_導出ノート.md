@@ -126,15 +126,65 @@ $m,q$ が読めないため、残差 $t$ も定義されない。空間軸（規
 真空の内容が光的であることが残差式から従い、真空ポンプが光子型（ボゾン型）
 単一振動数波であるという**構成**と、読出しが独立に同じ答えを与える。
 
+## 5c. 紙と鉛筆課題の閉鎖（2026-08-19。検証正本 `verify_paper_closures_v1.py`）
+
+**命題 Dyn-7（$\dot\theta$ の閉形式——Ω混合ブロックの整理・完成）**
+可視配置 $x_{A,i}=\sqrt{\lambda_i}\,v_i(A)$（$i\le3$）の変化率は
+
+$$\dot x_{A,i}=\underbrace{\frac{\dot\lambda_i}{2\sqrt{\lambda_i}}v_i(A)}_{\widehat G\text{・}\rho\text{ 成分}}
++\sqrt{\lambda_i}\sum_{j\ne i}\Omega_{ij}v_j(A),\qquad
+\Omega_{ij}=\frac{v_j^{\mathsf T}\dot Bv_i}{\lambda_i-\lambda_j}$$
+
+で完結する（$j\le3$：ゲージ回転／$j>3$：体の運動）。検証 W1：直接固有分解差分と
+一次精度で一致（$4.5\times10^{-7}$、$\varepsilon=10^{-7}$）。
+$\dot B$ は Dyn-1 により $B_v$ 源——**$\dot\theta$ 閉形式は $B_v$ 源で閉じた**。
+
+**命題 Dyn-8（N体調和閉鎖——[AB] 双対の N 体版は算術恒等式）**
+閉じた位相円上の倍音梯子 $\omega_n=n\omega_1$・$\Delta\theta_n=2\pi/\lvert n\rvert$ を持つ**任意の**系で
+
+$$\lvert\omega_n\rvert\,\Delta\theta_n=2\pi\omega_1\equiv\Omega\quad(\text{恒等})
+\qquad\Rightarrow\qquad \alpha_n=R\lvert\omega_n\rvert^2=\frac{R\Omega^2}{\Delta\theta_n^2}$$
+
+N体側の入力は「集団時計 $\omega_1=\pi/72$ の倍音梯子」だけであり（S17/S18 実測）、
+$\Omega_N=2\pi^2/72$。検証 W2：双対のずれ $5.6\times10^{-17}$・log-log 勾配 $-2$（$10^{-15}$）。
+**数値実験に残るのは距離写像 $L=\kappa\Delta\theta$ の創発距離での成立のみ**（DL2/DL3 登録済み）。
+
+**命題 Dyn-9（線形部の変分性——C1 の線形半分を閉鎖）**
+実反対称 $K$ に対し $h=iK$ は**エルミート**であり、線形部は Schrödinger 型
+$\dot z=-ihz$。スライス Cayley 一歩は $(I-\tfrac\tau2K)^{-1}(I+\tfrac\tau2K)$＝
+**中点則（Crank–Nicolson）**、すなわち標準的な変分（シンプレクティック）積分器である。
+$O$ は $K$ の有理関数なので $[O,K]=0$——二次不変量 $\langle z,hz\rangle$・$\Sigma\lvert z\rvert^2$・
+$\Sigma z^2$ を**厳密保存**する。検証 W3：直交性 $4.4\times10^{-16}$、
+3不変量のドリフト $10^{-14}$〜$10^{-12}$（200步）。**線形部は変分的——確定**。
+
+**命題 Dyn-10（頂点のハミルトン形式と、変分性の障害の一点特定）**
+対対称強度 $R_{ee'}$ を**定数とみなす**とき、媒介頂点は複素ハミルトン流である：
+
+$$\delta z_e=i\,\frac{\partial H}{\partial\bar z_e},\qquad
+\boxed{\;H=g\sum_{e<e',\,e\sim e'}R_{ee'}\Big(\lvert z_e\rvert^2\lvert z_{e'}\rvert^2
+-\mathrm{Re}\big(z_{e'}^2\bar z_e^2\big)\Big)\;}$$
+
+検証 W4a：レートと $i\partial H/\partial\bar z$ の一致 $6.8\times10^{-6}$（数値微分精度）。
+W4b：凍結 R の RK4 流で $H$・ノルム・閉塞が積分器精度で保存
+（$2\times10^{-10}$／$9\times10^{-12}$／$5\times10^{-11}$）。
+**帰結**：F の変分構成（C1）の障害は**強度 $R$ の状態依存性ただ一点**に局在する——
+$R=R(z)$ のとき $\delta z$ には $i\partial H/\partial\bar z$ を超える
+$\partial R/\partial\bar z$ 項が代数的に現れる。障害の所在の特定はこの代数による。
+（W4c の数値例示は判定保留：例示則でのドリフトが積分器誤差水準 $2\times10^{-11}$ に
+留まり、実証として不十分。実証設計は DL5 C1 の続きへ登録。）
+副産物：凍結 R では位相対称性 $z\to e^{i\phi}z$ の Noether 量が $\Sigma\lvert z\rvert^2$——
+補題 DL1-2 の変分的再導出。
+
 ## 6. 開いている計算（[F2] §8 の課題表へ）
 
 1. **線形部（スライス Cayley）の寄与**：多スライス占有では $\dot x_e$ にクロススライス項が
-   入る（DL2-2）。誘導式への追加項の書き下しと大きさの評価
+   入る（DL2-2）。誘導式への追加項の書き下しと大きさの評価。
+   線形部の変分性そのものは **Dyn-9 で閉鎖済み**（残るのはクロススライス項の実測＝DL0〜DL2）
 2. **有効閉包**：$\dot d^2$ の右辺は $\{x_e\}$ の位相を含む。ゲージ変数＋レジスタの
    有限集合で閉じるか（閉じなくても率方程式は厳密——本ノートの式群）
 3. **二階合成**：Dyn-5 の合成（ドリフト＋誘導レート）から、逆自乗ポテンシャル中の
    ニュートン型軌道が出るか——DL5/DL6 の判定と経路Aの前提（流束保存）に接続
-4. **$\Omega$ 混合ブロックの $B_v$ 源への明示的整理**（$\dot\theta_A$ の閉形式の完成）
+4. ~~$\Omega$ 混合ブロックの $B_v$ 源への明示的整理~~ → **Dyn-7 で閉鎖済み**（2026-08-19）
 5. **符号則の裁定 H4——第一段実行済み（2026-08-19）。結果：巻き符号は力の符号を生まない（厳密対称性）**
 
    **実行**：`probe_h4_sign_v1.py`（二体正本 `collision_step_exact`・等振幅倍音1..17・
