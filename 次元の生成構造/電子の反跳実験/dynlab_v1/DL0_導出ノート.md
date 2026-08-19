@@ -171,6 +171,11 @@ J5 の破れ=親構成の恒等式の破れ。
 | レジスタ | $\sum x_e^2$・$\sum\lvert x_e\rvert^2$ | J5／J2 |
 | 部分空間重なり | $\mathrm{tr}(P_1P_2)/3$（[V4] 18-a と同式） | J8 |
 
+## 7b. 数値検証の正本
+
+理論値の数値評価は `verify_derivation_checks_v1.py`（V1）で保存・再現する
+（`result_verification_checks_v1.json`。√λ=0.064550、tr(B)−1/N=0、占有率 0.200）。
+
 ## 8. 出所
 
 - [F1] 体ゲージと絶対ゲージ空間 v1.5（§7 DL0・定義2.3 規約1・§6 置換同変な媒介頂点）
