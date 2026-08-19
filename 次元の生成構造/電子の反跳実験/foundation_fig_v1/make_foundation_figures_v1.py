@@ -277,10 +277,10 @@ def fig_f5_pair_to_vector() -> None:
             v_ab = float(u @ (vel[i] - vel[j]))
             ax1.plot(*np.array([pos[i], pos[j]]).T, color="gray", lw=1.0,
                      linestyle="--")
-            ax1.annotate(f"$v_{{{names[i]}{names[j]}}}$={v_ab:+.2f}", mid,
+            ax1.annotate(f"$s_{{{names[i]}{names[j]}}}$={v_ab:+.2f}", mid,
                          fontsize=8.5, color="dimgray", ha="center")
-    ax1.set_title("対スカラー族 $\\{v_{AB}\\}$（枠なしで定義できる一次データ）\n"
-                  "$v_{AB}=-v_{BA}$（反対称）", fontsize=10)
+    ax1.set_title("対スカラー族 $\\{s_{AB}\\}$（枠なしで定義できる一次データ）\n"
+                  "距離ドリフト $s_{AB}=s_{BA}=\\dot d_{AB}$（対称）", fontsize=10)
     ax1.axis("off")
 
     # 右: 復元されたベクトル（左と同一の座標系・矢印は2倍表示）
