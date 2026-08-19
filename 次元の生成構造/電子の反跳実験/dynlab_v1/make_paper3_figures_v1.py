@@ -73,7 +73,7 @@ a2.axhline(0.200, color="k", ls="--", lw=1, label="乱数基準 0.200")
 a2.axhline(0.5, color="tab:red", ls=":", lw=1.2, label="持続閾値 0.5")
 a2.set_xlabel(r"$\tau$（步）")
 a2.set_ylabel("上位3部分空間の重なり（ラグ120步）")
-a2.set_title("枠の非持続（判定 J8/K5）")
+a2.set_title("持続する選好軸は現れない（判定 K5）")
 a2.set_ylim(0, 1.0)
 a2.legend(fontsize=9)
 fig.suptitle("H2 真空に枠は立たない（DL0/DL1）", y=1.02)
@@ -183,12 +183,31 @@ w = np.arange(1, len(de) + 1)
 ok = de > 0
 ax.bar(w[ok], th[ok], color="tab:blue", label="一致窓（差角）")
 ax.bar(w[~ok], [32] * int((~ok).sum()), color="tab:red",
-       label="枝不一致（反射）イベント")
+       label=r"枝パリティ $\chi=-1$")
 ax.axhline(30, color="k", ls=":", lw=1.2, label="事前登録しきい値 30°")
 ax.set_xlabel("窓番号（各10步・物質相後期）")
 ax.set_ylabel("合成輸送と直接輸送の差角（度）")
-ax.set_title("H9 輸送の直接検定: 38/40窓で一致（中央値0.9°）・枝不一致2窓（§7 新事実1）")
+ax.set_title(r"H9 輸送の直接検定: 38/40窓で一致（中央値0.9°）・$\chi=-1$ は2窓（§7 新事実1）")
 ax.legend(fontsize=9)
 _save(fig, "fig_h9_transport_direct")
+
+# ------------------------------------------- H10 枝イベント＝λ3−λ4 交差（§7 新事実1b）
+DF = np.load(HERE / "dl3_full_scan_v1.npz")
+tf, lamf, chif, wmg = DF["tau"], DF["lam"], DF["chi"], DF["win_min_gap"]
+scan0 = int(DF["scan_tau0"][0])
+i0 = scan0 - int(tf[0])
+tw = tf[i0:i0 + len(chif)]
+g34 = lamf[:, 2] - lamf[:, 3]
+fig, ax = plt.subplots(figsize=(10, 4.4))
+ax.semilogy(tf[i0:], g34[i0:], color="tab:blue", lw=0.5,
+            label=r"$\lambda_3-\lambda_4$（毎步）")
+ev = chif < 0
+ax.scatter(tw[ev], wmg[ev], s=12, color="tab:red", zorder=5,
+           label=r"枝イベント窓（$\chi=-1$・113窓/18イベント）")
+ax.set_xlabel(r"$\tau$（步）")
+ax.set_ylabel(r"$\lambda_3-\lambda_4$（対数）")
+ax.set_title("H10 枝イベントは第3・第4固有軸の交差に局在する（全窓走査・§7 新事実1b）")
+ax.legend(fontsize=9)
+_save(fig, "fig_h10_branch_crossing")
 
 print("完了")
