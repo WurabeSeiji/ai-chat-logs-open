@@ -206,7 +206,7 @@ ax.scatter(tw[ev], wmg[ev], s=12, color="tab:red", zorder=5,
            label=r"枝イベント窓（$\chi=-1$・113窓/18イベント）")
 ax.set_xlabel(r"$\tau$（步）")
 ax.set_ylabel(r"$\lambda_3-\lambda_4$（対数）")
-ax.set_title("H10 枝イベントは第3・第4固有軸の交差に局在する（全窓走査・§7 新事実1b）")
+ax.set_title("H10 枝イベントは第3・第4固有枝の回避交差に局在する（全窓走査・§7 新事実2）")
 ax.legend(fontsize=9)
 _save(fig, "fig_h10_branch_crossing")
 

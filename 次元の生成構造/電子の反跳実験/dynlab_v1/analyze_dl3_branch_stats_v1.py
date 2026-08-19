@@ -56,6 +56,14 @@ def main():
     qs = np.quantile(d34_min, [0.2, 0.4, 0.6, 0.8])
     bins = np.digitize(d34_min, qs)
     p_ev_by_quintile = [float(np.mean(ev[bins == b])) for b in range(5)]
+    # イベント統計（連続イベント窓を併合し、イベントごとの最小 Δ34 の五分位）
+    ev_int = ev.astype(int)
+    starts = np.where(np.diff(np.concatenate([[0], ev_int])) == 1)[0]
+    ends = np.where(np.diff(np.concatenate([ev_int, [0]])) == -1)[0]
+    ev_quintiles = []
+    for s, e in zip(starts, ends):
+        ev_quintiles.append(int(np.digitize(d34_min[s:e + 1].min(), qs)))
+    ev_quintile_counts = [int(sum(q == b for q in ev_quintiles)) for b in range(5)]
 
     # ---- (2) η_{3+} ----
     pos = np.where(lam > 0, lam, 0.0)
@@ -77,7 +85,9 @@ def main():
         "selectivity": {
             "P_d34_is_min_given_event": p_d34min_ev,
             "P_d34_is_min_given_no_event": p_d34min_nev,
-            "P_event_by_d34_quintile_low_to_high": p_ev_by_quintile},
+            "P_event_by_d34_quintile_low_to_high": p_ev_by_quintile,
+            "n_events_merged": len(ev_quintiles),
+            "event_counts_by_quintile_low_to_high": ev_quintile_counts},
         "eta3plus": {"late_mean": float(eta3p[late].mean()),
                      "late_min": float(eta3p[late].min()),
                      "late_max": float(eta3p[late].max())},
@@ -90,6 +100,7 @@ def main():
         json.dumps(res, indent=1, ensure_ascii=False))
     print(f"(1) P(Δ34=min | χ=-1)={p_d34min_ev}  P(Δ34=min | χ=+1)={p_d34min_nev:.4f}")
     print(f"    P(χ=-1 | Δ34五分位 低→高)={['%.4f' % p for p in p_ev_by_quintile]}")
+    print(f"    イベント統計: {len(ev_quintiles)}件の五分位内訳(低→高)={ev_quintile_counts}")
     print(f"(2) η_3+ 後期: 平均={eta3p[late].mean():.4f} "
           f"[{eta3p[late].min():.4f}, {eta3p[late].max():.4f}]")
     print(f"(3) τ_W={tau_W}  τ_-={tau_m}  τ_g={tau_g}  "
