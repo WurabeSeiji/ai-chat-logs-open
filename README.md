@@ -2,13 +2,15 @@
 
 AIチャットログおよび中心投影（central projection）による時空の幾何学的定式化に関する研究ノート・論文の公開リポジトリです。
 
-## 論文シリーズ：中心投影による幾何学的定式化
+## 論文目次 / Index of Papers
 
-| # | タイトル | DOI |
-|---|---------|-----|
-| 1 | 中心投影による4次元空間の幾何学的定式化 / Geometric Formulation of 4-Dimensional Space via Central Projection | [10.5281/zenodo.19427780](https://doi.org/10.5281/zenodo.19427780) |
-| 2 | 中心投影の幾何学的対称性：多軸モデルの数学的基盤 / Geometric Symmetries of Central Projection: Mathematical Foundations of the Multi-Axis Model | [10.5281/zenodo.19434932](https://doi.org/10.5281/zenodo.19434932) |
-| 3 | 複数の主観空間における観測の相対性：中心投影の対称性の幾何学的帰結 / Relativity of Observation in Multiple Subjective Spaces: Geometric Consequences of the Symmetries of Central Projection | [10.5281/zenodo.19435162](https://doi.org/10.5281/zenodo.19435162) |
+公開論文（Zenodo・最新版）の全目次はルートの次のファイルにあります。シリーズ別に、日英題名・Version DOI・Concept DOI・公開日・版・PDF・リポジトリ内フォルダ・リリースノートを一覧化しています。
+
+- 日本語：[PAPERS_ja.md](PAPERS_ja.md)
+- English：[PAPERS_en.md](PAPERS_en.md)
+- 論文ごとのランディングページ（Google Scholar 索引用）：https://wurabeseiji.github.io/ai-chat-logs-open/
+
+目次は `tools/gen_paper_index.py` が Zenodo API から自動生成します（新規公開後に再実行して commit）。各シリーズのフォルダには `RELEASE_NOTES*.md`（変更履歴）と md/tex/pdf 原本、再現用プログラムが入っています。
 
 ## 著者
 
