@@ -288,8 +288,12 @@ def index_html(recs):
 <meta name="description" content="Index of {len(recs)} papers by Noriaki Kihara (WF System Co., Ltd.) published on Zenodo: central projection geometry, closed wave systems, generative structure of dimensions, α-identity.">
 <style>body{{font-family:Georgia,serif;max-width:52em;margin:2em auto;padding:0 1em;line-height:1.5}}.ja{{color:#555}}.meta{{color:#666;font-size:.9em}}li{{margin:.5em 0}}</style>
 </head><body>
-<h1>Noriaki Kihara — Papers</h1>
-<p>WF System Co., Ltd. · ORCID <a href="https://orcid.org/{ORCID}">{ORCID}</a> · <a href="{GH}">GitHub repository</a> · <a href="{GH_BLOB}PAPERS_en.md">PAPERS_en.md</a> / <a href="{GH_BLOB}PAPERS_ja.md">PAPERS_ja.md</a></p>
+<h1>Noriaki Kihara <span class="ja">木原 範昭</span></h1>
+<p><b>Independent researcher · WF System Co., Ltd. (Nara, Japan)</b><br>
+B.Eng. Osaka University (Mechanical Engineering, 1983). Forty years as a computer-graphics programmer, software entrepreneur and management consultant; since 2026 working full-time on the foundations of physics.</p>
+<p><b>Research.</b> Reconstruction of the axioms of quantum theory and of spacetime geometry from a smaller set of wave/signal-theoretic principles: <i>central (gnomonic) projection</i> as the generator of 4-dimensional geometry, <i>closed two-channel wave systems</i> as a minimal model in which Born-type weights, spin/statistics, an inverse-square law and a three-direction space emerge, and a self-consistent geometric identity for the fine-structure constant (α⁻¹ = 137 + (π²/2)α). All results are published as numbered, reproducible preprints with code.</p>
+<p class="meta">ORCID <a href="https://orcid.org/{ORCID}">{ORCID}</a> · <a href="https://scholar.google.com/citations?user=XUpD3aYAAAAJ">Google Scholar</a> · <a href="https://zenodo.org/search?q=metadata.creators.person_or_org.identifiers.identifier%3A%22{ORCID}%22&l=list&p=1&s=10&sort=newest">Zenodo</a> · <a href="{GH}">GitHub</a> · <a href="https://zenn.dev/noriaki_kihara">Zenn (articles, ja)</a> · <a href="https://note.com/kiharanoriaki">note (ja/en)</a> · <a href="{GH_BLOB}PAPERS_en.md">PAPERS_en.md</a> / <a href="{GH_BLOB}PAPERS_ja.md">PAPERS_ja.md</a></p>
+<h2 id="papers">Papers</h2>
 <p>{len(recs)} papers, latest versions, all on Zenodo under CC BY 4.0. Each entry links to a landing page with abstract, DOI, PDFs, source folder and release notes.</p>
 {''.join(secs)}
 </body></html>
