@@ -9,6 +9,23 @@
 - 記事: https://zenn.dev/noriaki_kihara/articles/closure-axioms-symmetry-derivation
   （元原稿: `articles/closure-axioms-symmetry-derivation.md`）
 
+## note
+- 日本語版: https://note.com/kiharanoriaki/n/nc9dc07117a8c
+  （元原稿: `次元の生成構造/電子の反跳実験/note_symmetry_from_closure_ja_v2.md`）
+- 英語版: https://note.com/kiharanoriaki/n/nab79ff1664be
+  （元原稿: `次元の生成構造/電子の反跳実験/note_symmetry_from_closure_en_v2.md`）
+
+## Facebook
+- 日本語版: https://www.facebook.com/kihara.noriaki/posts/pfbid02wBuUn8bd7kKk5wXRvJrjWMRertixMg152TCobE5opRoK6DhHK9TzFJpwGtcQ8nuWl
+  （元原稿: `次元の生成構造/facebook_closure_axioms_symmetry_ja_v1.md`）
+- 英語版: https://www.facebook.com/kihara.noriaki/posts/pfbid0nEHUs4U7N5jJJpay5bGdxJyFeuJdANYeB8ULKbLtPAdyrrejXKie28wD4K2N9MP8l
+  （元原稿: `次元の生成構造/facebook_closure_axioms_symmetry_en_v1.md`）
+
+## X
+- 日本語版: https://x.com/NoriakiKihara/status/2090408703271039209
+  （元原稿・日英とも: `次元の生成構造/x_post_closure_axioms_symmetry.md`）
+- 英語版: https://x.com/NoriakiKihara/status/2090408703271039209（日本語版と同スレッド）
+
 ## 公開ファイル（Zenodo, 6点）
 - `closure_axioms_symmetry_derivation_ja_public_v1.0.md` / `closure_axioms_symmetry_derivation_en_public_v1.0.md`
 - `closure_axioms_symmetry_derivation_ja_public_v1.0.tex` / `closure_axioms_symmetry_derivation_en_public_v1.0.tex`
@@ -47,3 +64,9 @@
 | 日付 | 内容 |
 |---|---|
 | 2026-08-20 | v1.0 公開。Zenodo 6ファイル（日英 md/tex/pdf）、DOI 取得、Zenn 記事公開 |
+| 2026-08-20 | note 日本語版公開（nc9dc07117a8c）。note 原稿 日英（Unicode 数式・導出マップ箇条書き・PDF 直接DLリンク入り）作成 |
+| 2026-08-20 | note 英語版公開（nab79ff1664be）。Facebook 日本語投稿文作成 |
+| 2026-08-20 | Facebook 日本語版投稿公開。英語版投稿文作成 |
+| 2026-08-20 | Facebook 英語版投稿公開。X 用日本語ポスト作成 |
+| 2026-08-20 | X 日本語版投稿公開（2090408703271039209）。X 用英語ポスト作成 |
+| 2026-08-20 | X 英語版投稿公開。SNS 展開一式完了（Zenn・note 日英・Facebook 日英・X 日英） |
