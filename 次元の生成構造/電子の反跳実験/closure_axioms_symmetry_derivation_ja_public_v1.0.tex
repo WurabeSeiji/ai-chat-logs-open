@@ -1,0 +1,2439 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{\texorpdfstring{零閉包・有限位数・自己無撞着幾何からの対称性生成――唯一の外部指定パラメータ
+\(N\)
+と、一般化・動力学導出という残された課題}{零閉包・有限位数・自己無撞着幾何からの対称性生成――唯一の外部指定パラメータ N と、一般化・動力学導出という残された課題}}\label{ux96f6ux9589ux5305ux6709ux9650ux4f4dux6570ux81eaux5df1ux7121ux649eux7740ux5e7eux4f55ux304bux3089ux306eux5bfeux79f0ux6027ux751fux6210ux552fux4e00ux306eux5916ux90e8ux6307ux5b9aux30d1ux30e9ux30e1ux30fcux30bf-n-ux3068ux4e00ux822cux5316ux52d5ux529bux5b66ux5c0eux51faux3068ux3044ux3046ux6b8bux3055ux308cux305fux8ab2ux984c}
+
+\textbf{著者:} 木原 範昭**ORCID:** 0009-0004-6753-4020**日付:**
+2026年8月20日**Version DOI:** 10.5281/zenodo.22028073**Concept DOI:**
+10.5281/zenodo.22028072**位置づけ:**
+「次元の生成構造」シリーズ・閉包公理からの対称性導出 公開版
+v1.0**ライセンス:** CC BY 4.0
+
+\begin{quote}
+\textbf{主題}：本稿は、未導出・未一般化部分を除けば、明示的な連続調整パラメータを持たず、唯一の外部指定パラメータとして離散整数
+\(N\)
+のみを用いる公理的構造から、幾何・対称性・統計・読出し構造がどこまで導かれるかを整理する。複素5自由度は厳密に導出される一方、\(3+2\)
+分解を含む読出し sector
+の自己無撞着な選択則、一部構造の一般化、および完全な動力学の導出は今後の主要課題である。
+\end{quote}
+
+\subsection{引用方針と自己仮説の区分}\label{ux5f15ux7528ux65b9ux91ddux3068ux81eaux5df1ux4eeeux8aacux306eux533aux5206}
+
+本稿は原則として外部文献によって既知数学・既知物理との対応を検証する。ただし、本稿が用いる構成のうち、既に著者自身の数値実験・構成的導出として公開済みであり、本稿の導出鎖に直接必要なものについては、以下の三論文だけを自己参照として採用する。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  木原範昭, \textbf{『波の周期表
+  v2――巻き数番地と観測時計による粒子分類、および時計場 \(\omega(x)\)
+  による質量・寿命・分裂の統合』}, Zenodo, Concept DOI:
+  10.5281/zenodo.21830706.
+\item
+  木原範昭,
+  \textbf{『波と場の二層分離――場の読出し万能関数によるゲージ場と重力場の統合』},
+  Zenodo, DOI: 10.5281/zenodo.21832257.
+\item
+  木原範昭,
+  \textbf{『ゼロ閉塞は4次元だった――複素数の世界でも「中心投影」は生き残る』},
+  Zenodo, Version DOI: 10.5281/zenodo.21902806, Concept DOI:
+  10.5281/zenodo.21902805.
+\end{enumerate}
+
+この三論文に依存する結果は、外部理論によって確立済みの定理とは混同せず、
+
+\[
+\boxed{\text{自己仮説・自己構成による既導出結果}}
+\]
+
+として明示する。
+
+特に『波の周期表 v2』から本稿へ持ち込むのは、奇数・偶数倍音の \(Z_2\)
+分解、半周期並進に対する符号、奇数倍音比から決まる反射率、時計被覆度、対蹠二点構造、および
+Bose/Fermi/混合型の統計分類である。これらは本稿では「未導出」には置かず、\textbf{自己仮説として導出・構成・数値確認済み}と分類する。
+
+また『波と場の二層分離』から持ち込む、波の存在層と観測読出し層の分離、時計・曲率・重力を読出し側に置く構成も、同じく\textbf{自己仮説としての既導出結果}として扱う。
+
+この引用方針により、本稿では「外部文献による既知結果」「本稿内での厳密導出」「上記三論文に由来する自己仮説としての既導出結果」「未解明の一般化課題」を明確に分離する。
+
+\subsection{観測不能複素軸を含む零閉包から、曲率・時空符号・量子化・内部対称性を再構成する}\label{ux89b3ux6e2cux4e0dux80fdux8907ux7d20ux8ef8ux3092ux542bux3080ux96f6ux9589ux5305ux304bux3089ux66f2ux7387ux6642ux7a7aux7b26ux53f7ux91cfux5b50ux5316ux5185ux90e8ux5bfeux79f0ux6027ux3092ux518dux69cbux6210ux3059ux308b}
+
+\textbf{版:} 公開版 v1.0\\
+\textbf{日付:} 2026-08-20\\
+\textbf{引用方針:}
+最低限の自己引用に限定する。既発表の自己論文のうち、本稿で「既導出・既構成・既数値確認」として扱う結果の一次資料3本のみを自己引用し、それ以外の数学的・数理物理学的背景、既知定理、先行研究との比較には外部文献を用いる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+本稿の中心的特徴は、既導出範囲において外部から調整する連続自由パラメータを導入せず、唯一の外部指定量を離散整数
+\(N\)
+とする点にある。一方、既に構成・数値確認された結果の一部を一般定理へ拡張すること、および局所相互作用を含む完全な動力学を公理系から閉じて導出することは、本稿以後の主要課題として明示的に残す。
+
+本稿は、現代理論物理で個別に導入される多数の対称性・幾何構造を、少数の閉包原理から統一的に再構成できるかを検討する。
+
+中心公理は一貫して
+
+\[
+\boxed{
+\mathrm{A1}:\quad
+\sum_{n=1}^{M} x_n^2=0,
+\qquad x_n\in\mathbb C
+}
+\]
+
+である。
+
+本稿では、曲率半径 \(R\)、時間軸 \(t\)、内部軸 \(Q\)
+をこの式の外に追加しない。これらはすべて、複素成分 \(x_n\)
+のうち、観測可能な実方向とは異なる符号を持つ成分として読む。
+
+たとえば四成分
+
+\[
+(x,y,z,iR)
+\]
+
+に対して A1 は
+
+\[
+x^2+y^2+z^2+(iR)^2=0
+\]
+
+すなわち
+
+\[
+\boxed{
+x^2+y^2+z^2=R^2
+}
+\]
+
+を与える。
+
+従って \(\sum x_n^2=R^2\) は A1 とは別の公理でも、別の level set
+でもない。\textbf{A1 の一成分を観測不能な虚方向 \(iR\)
+と読んだ実表示}である。
+
+同様に
+
+\[
+(x,y,z,it,iR,iQ)
+\]
+
+なら
+
+\[
+x^2+y^2+z^2-t^2-R^2-Q^2=0.
+\]
+
+したがって、時空の不定符号、曲率半径、内部軸は、零閉包を壊さず、複素軸の実表示として同一の二次形式から現れる。
+
+この点が本稿の中心である。\\
+曲率を別の場として追加する必要はない。観測不能な複素軸の実表示が、観測可能側では曲率半径として現れる。同じ原理で、時間軸の負符号も外部の
+Lorentz 計量から導入されるのではなく、観測不能軸 \(t\) を \(it\)
+として読むことで \((it)^2=-t^2\) として現れる。したがって
+\(R\)、\(t\)、\(Q\)
+は同種の観測不能複素軸であり、負符号の起源は一つである。
+
+さらに、
+
+\[
+\boxed{
+\mathrm{A2}:\quad U^N=I
+}
+\]
+
+が有限巡回・離散位相・円分固有値・Born 型二乗重みを与え、
+
+\[
+\boxed{
+\mathrm{A3}:\quad
+N\text{頂点の全二体距離が simplex として整合する}
+}
+\]
+
+が関係集合を幾何へ変換し、
+
+\[
+\boxed{
+\mathrm{A4}:\quad X=\mathcal F(X)
+}
+\]
+
+が自己無撞着な固定点・stabilizer・対称性選択を与える。
+
+本稿は、これらの少数原理から直交群、巡回群、置換群、シンプレクティック構造、Lorentz
+型符号、定曲率幾何、共形構造、単体鎖複体、固定点対称性、さらに、本公理系から得られる5独立自由度構造の自己同型群を順方向に分類し、標準模型で用いられる内部対称群が結果として現れるかを検証する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{1.
+出発点は一つの零閉包である}\label{ux51faux767aux70b9ux306fux4e00ux3064ux306eux96f6ux9589ux5305ux3067ux3042ux308b}
+
+本稿の第一公理は
+
+\[
+\boxed{
+\sum_n x_n^2=0
+}
+\]
+
+のみである。
+
+重要なのは
+
+\[
+x_n\in\mathbb C
+\]
+
+である点である。
+
+この式を
+
+\[
+\sum_{\rm visible} x_a^2
+=
+R^2
+\]
+
+のように書く場合、右辺 \(R^2\) を新しい保存量として導入したのではない。
+
+本来の式に
+
+\[
+x_R=iR
+\]
+
+という一成分が存在し、
+
+\[
+x_R^2=(iR)^2=-R^2
+\]
+
+なので、
+
+\[
+\sum_{\rm visible}x_a^2-R^2=0
+\]
+
+を移項しただけである。
+
+従って
+
+\[
+\boxed{
+\sum_{\rm visible}x_a^2=R^2
+}
+\]
+
+は
+
+\[
+\boxed{
+\sum_nx_n^2=0
+}
+\]
+
+の観測可能成分と観測不能成分への分解表示である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{無名性は任意性を意味しない――強拘束による対称性 sector
+の選択}\label{ux7121ux540dux6027ux306fux4efbux610fux6027ux3092ux610fux5473ux3057ux306aux3044ux5f37ux62d8ux675fux306bux3088ux308bux5bfeux79f0ux6027-sector-ux306eux9078ux629e}
+
+本構成では、基礎関係成分に「空間」「時間」「曲率」「電荷」「色」などの物理ラベルを事前に割り当てない。したがって同一の零閉包は、観測写像に応じて複数の縮約・細分化・分解として読むことができる。
+
+例えば、
+
+\[
+r^2=x^2+y^2+z^2
+\]
+
+とまとめれば、
+
+\[
+r^2=t^2+R^2+Q^2
+\]
+
+と読める。また、
+
+\[
+R'^2=t^2+R^2+Q^2
+\]
+
+と縮約すれば、
+
+\[
+r^2=R'^2,
+\qquad
+x^2+y^2+z^2=R'^2
+\]
+
+という三次元楕円・球面的読出しになる。一方、
+
+\[
+x^2+y^2+z^2-t^2=R^2+Q^2
+\]
+
+という Lorentz 型の分解も可能であり、さらに内部読出しを
+
+\[
+Q^2=Q_1^2+Q_2^2+Q_3^2
+\]
+
+と細分化すれば、
+
+\[
+x^2+y^2+z^2-t^2
+=
+R^2+Q_1^2+Q_2^2+Q_3^2
+\]
+
+と読むことができる。
+
+しかし、
+
+\[
+\boxed{\text{無名性}\neq\text{任意性}}
+\]
+
+である。
+
+複数の読出し候補が存在することは、任意の観測結果に合わせて自由に物理解釈を作れることを意味しない。本構成で許される状態・分解・読出しは、零閉包、有限位数回帰、simplex
+整合、倍音構造、自己無撞着固定点など、本稿で独立に課される強い拘束を同時に満たさなければならない。
+
+概念的には許容集合は、
+
+\[
+\boxed{
+\mathcal S_{\rm allowed}
+=
+\mathcal S_{\rm closure}
+\cap
+\mathcal S_{\rm recurrence}
+\cap
+\mathcal S_{\rm simplex}
+\cap
+\mathcal S_{\rm harmonic}
+\cap
+\mathcal S_{\rm self-consistent}
+}
+\]
+
+として表される。したがって入力候補の空間が大きくても、実際に残る許容解集合はその交差によって制限される。
+
+本模型の特徴は、自由な解釈によって多数の構造を作ることではない。逆に、
+
+\[
+\boxed{
+\text{極めて少ない入力}
++
+\text{極めて強い拘束}
+\Longrightarrow
+\text{高密度な幾何・代数・対称性}
+}
+\]
+
+という方向にある。
+
+特に本稿で外部から走査可能な本質的離散パラメータは \(N\) であり、
+
+\[
+M=\frac{N(N-1)}2
+\]
+
+は \(N\)
+から決まる。空間・時間・曲率・内部量などの名称は追加パラメータではなく、強拘束を通過して残った対称性
+sector に対する観測上の命名である。
+
+従って「対称性を選択する」とは、任意の群を外から選ぶことではない。候補となる分解のうち、公理系と自己無撞着条件を同時に満たして安定に閉じる
+sector が選別され、その stabilizer / automorphism
+を観測者が対称性として読む、という意味である。
+
+\[
+\boxed{
+\text{無名な関係系}
+\longrightarrow
+\text{強拘束による許容 sector の選別}
+\longrightarrow
+\text{安定な幾何・対称性}
+\longrightarrow
+\text{物理量としての読出し}
+}
+\]
+
+この区別は本稿の予言力に直接関係する。読出し候補が複数存在しても、拘束条件を満たさない候補は棄却されるため、「何でも説明できる」構成ではない。むしろ、同一の少数公理から互いに独立な多数の構造を同時に満たさなければならないことが、本構成の反証可能性を強くしている。
+
+\section{2. A1: 複素零閉包}\label{a1-ux8907ux7d20ux96f6ux9589ux5305}
+
+\[
+x=a+ib,
+\qquad a,b\in\mathbb R^M
+\]
+
+とする。
+
+\[
+0=x^Tx
+=
+a^Ta-b^Tb+2i\,a^Tb.
+\]
+
+従って、
+
+\[
+\boxed{
+a^Ta=b^Tb
+}
+\]
+
+および
+
+\[
+\boxed{
+a^Tb=0
+}
+\]
+
+が同時に成立する。
+
+\subsection{定理1:
+等長直交二平面}\label{ux5b9aux74061-ux7b49ux9577ux76f4ux4ea4ux4e8cux5e73ux9762}
+
+A1 の非零解は実関係空間内に
+
+\[
+\boxed{
+\|a\|=\|b\|,
+\qquad
+a\perp b
+}
+\]
+
+を要求する。
+
+すなわち A1 は単なる「総和ゼロ」ではなく、等長直交二平面を内蔵する。
+
+全体位相
+
+\[
+x\mapsto e^{i\theta}x
+\]
+
+はこの平面内の回転として表される。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{3.
+観測可能軸と観測不能軸}\label{ux89b3ux6e2cux53efux80fdux8ef8ux3068ux89b3ux6e2cux4e0dux80fdux8ef8}
+
+A1 の成分を、観測側で実方向として読む成分 \(r_a\) と、観測不能側で \(i\)
+を伴う成分 \(s_\alpha\) に分ける。
+
+\[
+x=
+(r_1,\ldots,r_p,
+is_1,\ldots,is_q).
+\]
+
+すると A1 は
+
+\[
+\sum_{a=1}^{p}r_a^2
+-
+\sum_{\alpha=1}^{q}s_\alpha^2
+=0.
+\]
+
+従って複素零閉包から、実表示では自動的に符号数 \((p,q)\)
+の不定二次形式が現れる。ここで符号数は外部から置いた metric signature
+ではなく、\textbf{実として読まれる軸数 \(p\)
+と、観測不能な虚軸として読まれる軸数 \(q\)} の数え上げである。
+
+\[
+\boxed{
+Q_{p,q}
+=
+r^2-s^2
+}
+\]
+
+である。
+
+この意味で、負符号は外から Minkowski metric を置いた結果ではなく、
+
+\[
+\boxed{
+(i s_\alpha)^2=-s_\alpha^2
+}
+\]
+
+という複素軸の実表示から生じる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{4. \(R\)
+軸は新しい定数ではなく複素成分である}{4. R 軸は新しい定数ではなく複素成分である}}\label{r-ux8ef8ux306fux65b0ux3057ux3044ux5b9aux6570ux3067ux306fux306aux304fux8907ux7d20ux6210ux5206ux3067ux3042ux308b}
+
+最小例として
+
+\[
+x=(x,y,z,iR)
+\]
+
+を考える。
+
+A1 は
+
+\[
+x^2+y^2+z^2-R^2=0.
+\]
+
+従って
+
+\[
+\boxed{
+x^2+y^2+z^2=R^2
+}.
+\]
+
+ここで \(R\) は右辺へ追加した曲率半径ではない。
+
+\[
+\boxed{
+x_R=iR
+}
+\]
+
+という第一公理内部の一成分である。
+
+観測者が \(R\) 方向を直接読まず、\((x,y,z)\)
+だけを読むと、可視三方向は半径 \(R\) の球面条件を満たす。
+
+従って
+\textbf{隠れた複素軸の座標値が、可視空間では曲率半径として読まれる}。
+
+これは本稿の中心的幾何解釈である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{5. 局所曲率は \(R\)
+軸の読出しである}{5. 局所曲率は R 軸の読出しである}}\label{ux5c40ux6240ux66f2ux7387ux306f-r-ux8ef8ux306eux8aadux51faux3057ux3067ux3042ux308b}
+
+可視空間の局所断面が
+
+\[
+x^2+y^2+z^2=R^2
+\]
+
+を満たすなら、可視二次曲面は球面であり sectional curvature は
+
+\[
+\boxed{
+K=\frac{1}{R^2}
+}
+\]
+
+である。
+
+一般に \(d\) 次元球面 \(S^d(R)\) では
+
+\[
+R_{abcd}
+=
+\frac1{R^2}
+(g_{ac}g_{bd}-g_{ad}g_{bc}),
+\]
+
+\[
+R_{ab}
+=
+\frac{d-1}{R^2}g_{ab},
+\]
+
+\[
+\boxed{
+\mathcal R
+=
+\frac{d(d-1)}{R^2}
+}.
+\]
+
+従って、可視側で \(R\) が場所ごとに異なるなら、
+
+\[
+R=R(q)
+\]
+
+は
+\textbf{観測不能軸の局所座標}であると同時に、可視側では局所曲率半径として読むことができる。
+
+重要なのは、
+
+\[
+\boxed{
+R(q)\text{ を外部の重力場として追加していない}
+}
+\]
+
+ことである。
+
+R は A1 の内部成分である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{6.
+時間軸も同じ仕組みである}\label{ux6642ux9593ux8ef8ux3082ux540cux3058ux4ed5ux7d44ux307fux3067ux3042ux308b}
+
+\[
+x=(x,y,z,it)
+\]
+
+なら A1 は
+
+\[
+x^2+y^2+z^2-t^2=0.
+\]
+
+これは Lorentz 型 null cone である。
+
+従って時間の負符号も、
+
+\[
+\boxed{it}
+\]
+
+という観測不能複素軸の実表示として現れる。ここに別途 Minkowski
+計量を仮定する必要はない。
+
+より一般に
+
+\[
+x=(x,y,z,it,iR,iQ)
+\]
+
+なら
+
+\[
+\boxed{
+x^2+y^2+z^2-t^2-R^2-Q^2=0
+}.
+\]
+
+従って
+
+\begin{itemize}
+\tightlist
+\item
+  可視空間軸,
+\item
+  時間軸,
+\item
+  曲率軸 \(R\),
+\item
+  内部軸 \(Q\),
+\end{itemize}
+
+を別々の基本原理として置く必要はない。とりわけ \(t\)、\(R\)、\(Q\)
+の負符号はすべて
+
+\[
+\boxed{(iu)^2=-u^2}
+\]
+
+という同一の複素二乗則から出る。
+
+すべて同じ
+
+\[
+\boxed{
+\sum_nx_n^2=0
+}
+\]
+
+の異なる複素方向の実表示である。
+
+\subsubsection{定理2: Lorentz
+符号は虚軸の二乗から生じる}\label{ux5b9aux74062-lorentz-ux7b26ux53f7ux306fux865aux8ef8ux306eux4e8cux4e57ux304bux3089ux751fux3058ux308b}
+
+観測可能軸を \(r_1,\ldots,r_p\)、観測不能軸を \(u_1,\ldots,u_q\)
+とし、複素状態を
+
+\[
+x=(r_1,\ldots,r_p,iu_1,\ldots,iu_q)
+\]
+
+と書く。
+
+A1 は
+
+\[
+\sum_{a=1}^{p}r_a^2+\sum_{\alpha=1}^{q}(iu_\alpha)^2=0
+\]
+
+すなわち
+
+\[
+\boxed{
+\sum_{a=1}^{p}r_a^2-\sum_{\alpha=1}^{q}u_\alpha^2=0
+}
+\]
+
+となる。
+
+したがって実表示に現れる signature \((p,q)\)
+は、独立に導入した計量符号ではなく、\textbf{可視実軸と観測不能虚軸の個数}で決まる。
+
+特に \(p=3,q=1\) なら
+
+\[
+\boxed{
+x^2+y^2+z^2-t^2=0
+}
+\]
+
+であり、Lorentz 型符号は
+
+\[
+\boxed{(it)^2=-t^2}
+\]
+
+の直接帰結である。 \(\square\)
+
+この意味で \(R\) 軸と \(t\) 軸の符号起源は完全に同一である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{7. A1
+から現れる保存群}\label{a1-ux304bux3089ux73feux308cux308bux4fddux5b58ux7fa4}
+
+二次形式
+
+\[
+Q(x)=x^Tx
+\]
+
+の複素線形保存群は
+
+\[
+\boxed{
+O(M,\mathbb C)
+}.
+\]
+
+実表示で符号数が \((p,q)\) に選ばれた場合、実保存群は
+
+\[
+\boxed{
+O(p,q)
+}.
+\]
+
+本構成でこの六成分読出しに現れる分解は \(3+1\) ではなく、
+
+\[
+\boxed{
+3+3=(x,y,z)+(t,R,Q)
+}
+\]
+
+である。すなわち可視側に3本、観測不能側に3本の軸を持つ。
+
+\((x,y,z,t)\) 部分読出しに対しては、その実二次形式の自己同型群として
+
+\[
+\boxed{
+O(3,1)
+}
+\]
+
+が現れる。
+
+連結・時間向き保存成分は
+
+\[
+SO^+(3,1),
+\]
+
+その二重被覆は
+
+\[
+\boxed{
+Spin^+(3,1)\cong SL(2,\mathbb C)
+}.
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{8. 零錐・曲率・時空は同じ A1
+の異なる読出しである}\label{ux96f6ux9310ux66f2ux7387ux6642ux7a7aux306fux540cux3058-a1-ux306eux7570ux306aux308bux8aadux51faux3057ux3067ux3042ux308b}
+
+A1 自体は常に
+
+\[
+\sum_nx_n^2=0.
+\]
+
+しかし観測者が一部軸を直接読めない場合、
+
+\[
+\sum_{\rm visible}r_a^2
+=
+\sum_{\rm hidden}s_\alpha^2
+\]
+
+と見える。
+
+右辺に一軸だけあれば曲率半径 \(R\) と読める。
+
+右辺に時間軸を含めれば Lorentz 型 null structure と読める。
+
+複数の観測不能軸を含めれば
+
+\[
+r^2=t^2+R^2+Q^2+\cdots
+\]
+
+となる。
+
+従って
+
+\[
+\boxed{
+\text{零閉包}
+\to
+\text{符号}
+\to
+\text{曲率}
+\to
+\text{時空}
+}
+\]
+
+は異なる公理の列ではなく、同じ A1 の分解・射影・読出しの違いである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{9.
+正規化はこの幾何を削る}\label{ux6b63ux898fux5316ux306fux3053ux306eux5e7eux4f55ux3092ux524aux308b}
+
+A1 は斉次条件である。
+
+\[
+Q(\lambda x)=\lambda^2Q(x).
+\]
+
+従って A1 は尺度方向を殺さない。
+
+一方、
+
+\[
+x^\dagger x=1
+\]
+
+を基本公理として課すと、Hermitian norm の半径を固定する。
+
+もし観測不能複素軸の大きさが可視側の
+
+\begin{itemize}
+\tightlist
+\item
+  曲率半径,
+\item
+  時計尺度,
+\item
+  内部尺度,
+\end{itemize}
+
+として読まれるなら、全体正規化はそれらの自由度を固定する危険がある。
+
+ここで
+
+\[
+x^Tx
+\]
+
+と
+
+\[
+x^\dagger x
+\]
+
+を混同してはならない。
+
+\[
+\boxed{
+x^Tx=0
+}
+\]
+
+は幾何的零閉包。
+
+\[
+\boxed{
+x^\dagger x=1
+}
+\]
+
+は Hermitian norm の断面選択である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{10.
+複素構造とシンプレクティック構造}\label{ux8907ux7d20ux69cbux9020ux3068ux30b7ux30f3ux30d7ux30ecux30afux30c6ux30a3ux30c3ux30afux69cbux9020}
+
+実表示
+
+\[
+x=(a,b)
+\]
+
+における複素構造は
+
+\[
+J=
+\begin{pmatrix}
+0&-I\\
+I&0
+\end{pmatrix},
+\qquad
+J^2=-I.
+\]
+
+適合計量 \(g\) に対し
+
+\[
+\omega(u,v)=g(Ju,v)
+\]
+
+は反対称二形式となる。
+
+従って
+
+\[
+\boxed{
+\text{complex}
+\to
+\text{orthogonal}
+\to
+\text{symplectic}
+}
+\]
+
+は互いに独立な追加仮定ではなく、適合条件の下で同じ複素幾何の異なる側面になる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{11. A2: \(U^N=I\)
+は作用の自己閉包}{11. A2: U\^{}N=I は作用の自己閉包}}\label{a2-uni-ux306fux4f5cux7528ux306eux81eaux5df1ux9589ux5305}
+
+\[
+\boxed{
+U^N=I
+}
+\]
+
+なら任意の固有値 \(\lambda\) は
+
+\[
+\lambda^N=1
+\]
+
+を満たす。
+
+従って
+
+\[
+\boxed{
+\lambda_m=e^{2\pi i m/N}
+}.
+\]
+
+作用素が正確に位数 \(N\) を持つなら
+
+\[
+\boxed{
+\langle U\rangle\cong\mathbb Z_N
+}.
+\]
+
+さらに円分体
+
+\[
+\mathbb Q(\zeta_N)
+\]
+
+と
+
+\[
+\operatorname{Gal}
+(\mathbb Q(\zeta_N)/\mathbb Q)
+\cong
+(\mathbb Z/N\mathbb Z)^\times
+\]
+
+が自然に付随する。
+
+A2 はしたがって
+
+\begin{itemize}
+\tightlist
+\item
+  有限回帰,
+\item
+  位相離散化,
+\item
+  巡回群,
+\item
+  円分構造,
+\end{itemize}
+
+を同時に与える。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{12. Born 型 \(\cos^2/\sin^2\)
+は有限回帰の読出しである}{12. Born 型 \textbackslash cos\^{}2/\textbackslash sin\^{}2 は有限回帰の読出しである}}\label{born-ux578b-cos2sin2-ux306fux6709ux9650ux56deux5e30ux306eux8aadux51faux3057ux3067ux3042ux308b}
+
+二チャネル回転
+
+\[
+U(\theta)
+=
+\begin{pmatrix}
+\cos\theta&-\sin\theta\\
+\sin\theta&\cos\theta
+\end{pmatrix}
+\]
+
+に
+
+\[
+U^N=I
+\]
+
+を課すと
+
+\[
+\theta=\frac{2\pi m}{N}.
+\]
+
+軸への二乗射影は
+
+\[
+\boxed{
+\cos^2\theta,\qquad\sin^2\theta
+}.
+\]
+
+従って Born 型二乗重みは、少なくとも二チャネル系では
+
+\[
+\boxed{
+\text{有限位数位相回帰}
+\to
+\text{二乗読出し}
+}
+\]
+
+として生成できる。
+
+Born 型二乗重みは出発公理ではない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{13. A3: 同じ \(N\)
+が頂点数になる}{13. A3: 同じ N が頂点数になる}}\label{a3-ux540cux3058-n-ux304cux9802ux70b9ux6570ux306bux306aux308b}
+
+A2 の \(N\) を同時に幾何頂点数とする。
+
+すると全二体関係数は
+
+\[
+\boxed{
+M=\frac{N(N-1)}2
+}.
+\]
+
+各関係をスカラー距離 \(d_{ij}\) とし、全距離が simplex
+として整合すると仮定する。
+
+これにより
+
+\[
+\boxed{
+\text{位相分割数}
+=
+\text{頂点数}
+}
+\]
+
+が成立する。
+
+A2 と A3 は独立な整数を持たず、同じ \(N\) に拘束される。
+
+これは量子化と幾何を直接結ぶ強い条件である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{14. simplex
+閉包が空間を作る}\label{simplex-ux9589ux5305ux304cux7a7aux9593ux3092ux4f5cux308b}
+
+\(N\) 頂点の全二体距離は
+
+\[
+K_N
+\]
+
+の辺データである。
+
+整合する距離なら Gram matrix または Cayley--Menger determinant
+から埋め込み次元と形が決まる。
+
+従って
+
+\[
+\boxed{
+\text{関係集合}
+\to
+\text{距離幾何}
+}
+\]
+
+が成立する。
+
+絶対位置は必要ない。
+
+全体
+
+\begin{itemize}
+\tightlist
+\item
+  並進,
+\item
+  回転,
+\item
+  鏡映,
+\end{itemize}
+
+は距離データを変えない。
+
+従ってこれらは関係記述では冗長性となる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{15. simplex
+は鎖複体も生む}\label{simplex-ux306fux9396ux8907ux4f53ux3082ux751fux3080}
+
+向き付き simplex の境界作用素は
+
+\[
+\boxed{
+\partial^2=0
+}
+\]
+
+を満たす。
+
+双対化すれば
+
+\[
+\boxed{
+d^2=0
+}.
+\]
+
+従って simplex は単なる「立体」ではなく、
+
+\begin{itemize}
+\tightlist
+\item
+  homology,
+\item
+  cohomology,
+\item
+  discrete differential form,
+\item
+  closed / exact structure,
+\end{itemize}
+
+を生む。
+
+これはゲージ幾何に必要な形式構造への自然な入口である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{16. A4:
+自己無撞着はどの幾何が実在するかを選ぶ}\label{a4-ux81eaux5df1ux7121ux649eux7740ux306fux3069ux306eux5e7eux4f55ux304cux5b9fux5728ux3059ux308bux304bux3092ux9078ux3076}
+
+\[
+\boxed{
+X=\mathcal F(X)
+}
+\]
+
+を要求する。
+
+\(\mathcal F\) が群 \(G\) に equivariant なら、固定点 \(X_*\) の保存群は
+
+\[
+\boxed{
+G_{X_*}
+=
+\{g\in G\mid gX_*=X_*\}
+}.
+\]
+
+従って
+
+\[
+\boxed{
+G\to H
+}
+\]
+
+という symmetry selection が自然に起こる。
+
+線形化
+
+\[
+\delta X'
+=
+D\mathcal F(X_*)\delta X
+\]
+
+の固有値により、安定・中立・増幅方向が選ばれる。
+
+従って少数方向だけが巨視化する現象は、自己無撞着固定点のスペクトル選択として記述できる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{17. A2 と A4
+は自己閉包の異なる階層である}\label{a2-ux3068-a4-ux306fux81eaux5df1ux9589ux5305ux306eux7570ux306aux308bux968eux5c64ux3067ux3042ux308b}
+
+\[
+U^N=I
+\]
+
+は作用素全体の有限回帰。
+
+\[
+X=\mathcal F(X)
+\]
+
+は状態・幾何の固定点閉包。
+
+周期固定点
+
+\[
+\mathcal F^N(X)=X
+\]
+
+まで拡張すると、両者は同じ「有限自己回帰」の異なる実現になる。
+
+従って
+
+\[
+\boxed{
+\text{自己閉包}
+}
+\]
+
+を上位原理として、
+
+\begin{itemize}
+\tightlist
+\item
+  二次形式の零閉包,
+\item
+  作用素の有限閉包,
+\item
+  距離の simplex 閉包,
+\item
+  生成写像の固定点閉包,
+\end{itemize}
+
+を同族に分類できる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{18. \(3+1\) が出れば Lorentz
+は追加公理ではない}{18. 3+1 が出れば Lorentz は追加公理ではない}}\label{ux304cux51faux308cux3070-lorentz-ux306fux8ffdux52a0ux516cux7406ux3067ux306fux306aux3044}
+
+A1 の複素軸分解と A3/A4 の幾何選択が
+
+\[
+\boxed{
+3\text{可視実軸}
++
+1\text{観測不能虚軸}
+}
+\]
+
+を安定に選ぶとする。観測不能軸を \(it\) と書けば、その二乗は自動的に
+\(-t^2\) になる。
+
+すると A1 はその実表示で
+
+\[
+x^2+y^2+z^2+(it)^2=0
+\]
+
+すなわち
+
+\[
+\boxed{x^2+y^2+z^2-t^2=0}
+\]
+
+を与える。この不定二次形式の保存群は
+
+\[
+O(3,1)
+\]
+
+である。
+
+従って未解決点は Lorentz
+の負符号でも、三つの可視方向が発生するか否かでもない。負符号は
+\texttt{it} の二乗から自動である。
+
+さらに三次元性そのものも、単なる数値実験上の偶然として扱わない。第一公理の複素零閉包から実部・虚部の等量直交構造が生じ、直交する二平面とその独立法線方向によって三方向が成立する。加えて、位相閉包と
+simplex
+幾何の整合から、可視断面は三つの互いに識別可能な主軸を持つ3次元楕円構造として表現される。
+
+したがって、
+
+\[
+\boxed{
+\text{零閉包}
+\Longrightarrow
+\text{等量直交構造}
+\Longrightarrow
+\text{直交二平面＋法線}
+\Longrightarrow
+\text{3次元楕円構造}
+}
+\]
+
+という幾何学的経路を、三次元性の既導出部分として分類する。
+
+これに対して著者の既発表論文『ゼロ閉塞は4次元だった』では、最大 \(N-1\)
+本の非自明な主軸のうち上位3方向 \(A,B,C\)
+が選択的に増幅し、中位方向はほぼ停滞し、下位方向の一部が虚方向へ移ることが数値的に確認されている。したがって、
+
+\[
+\boxed{
+\text{位相・閉包幾何}
+\Longrightarrow
+\text{3次元楕円構造}
+}
+\]
+
+と、
+
+\[
+\boxed{
+\text{自己無撞着なコヒーレント parent の発展}
+\Longrightarrow
+\text{3主軸へのスペクトル集中・選択的増幅}
+}
+\]
+
+は別々の根拠ではあるが、同じ三次元可視構造を指している。
+
+よって「三方向の発生原理が未解明」とは分類しない。三方向の幾何学的成立と、三方向での卓越・飽和は自己論文において既導出・既確認の領域に置く。
+
+残る課題は、この一致の\textbf{普遍性の一般定理化}である。すなわち、十分大きな任意の
+\(N\)、広い初期条件、seed、および許容される自己無撞着写像に対して、
+
+\[
+\boxed{
+\text{3次元楕円構造}
+\Longleftrightarrow
+\text{3主軸の選択的卓越}
+}
+\]
+
+が成立するための必要十分条件を解析的に確定することである。すなわち、自己無撞着なコヒーレント
+parent、奇数倍音を持つフェルミオン的
+seed、および零閉包を保った選択的・インフレーション的増幅が、なぜ多数の関係方向から三つの異方的主軸を選択するのか、その一般的な解析機構はまだ確定していない。
+
+したがって今後の課題は「三方向を作ること」ではなく、
+
+\[
+\boxed{
+\text{既に再現された三方向の自発生成を一般化し、その選択原理を解析的に特定すること}
+}
+\]
+
+である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{19. \(R\) 軸があるため局所曲率は既に A1
+に含まれる}{19. R 軸があるため局所曲率は既に A1 に含まれる}}\label{r-ux8ef8ux304cux3042ux308bux305fux3081ux5c40ux6240ux66f2ux7387ux306fux65e2ux306b-a1-ux306bux542bux307eux308cux308b}
+
+従来の整理では「局所曲率の生成」を別問題として扱いがちである。
+
+しかし A1 内に
+
+\[
+iR
+\]
+
+という観測不能成分があるなら、可視三方向では
+
+\[
+x^2+y^2+z^2=R^2
+\]
+
+となる。
+
+従って
+
+\[
+\boxed{
+R^{-2}
+}
+\]
+
+は可視球面の曲率そのものである。
+
+局所的に
+
+\[
+R=R(q)
+\]
+
+なら、各点で観測される可視断面の曲率半径が変わる。
+
+従って「重力の置き場所」は、状態に外力を追加することではなく、
+
+\[
+\boxed{
+\text{観測不能複素軸の局所読出し}
+}
+\]
+
+として既に A1 内に存在する。
+
+一般の Riemann dynamics
+はなお導出課題だが、\textbf{局所曲率という幾何量自体は新しい自由度として追加する必要がない}。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{20.
+複素零閉包の自由度、読出し解像度、および標準模型ゲージ群への二つの経路}\label{ux8907ux7d20ux96f6ux9589ux5305ux306eux81eaux7531ux5ea6ux8aadux51faux3057ux89e3ux50cfux5ea6ux304aux3088ux3073ux6a19ux6e96ux6a21ux578bux30b2ux30fcux30b8ux7fa4ux3078ux306eux4e8cux3064ux306eux7d4cux8def}
+
+\begin{quote}
+\textbf{層と選択に関する注意。} 以下の \(\mathbb C^6\)、\(3+3\)、\(3+2\)
+は、基礎関係系に唯一固定された存在論的軸数を意味しない。基礎側で外部から与える本質的離散パラメータは
+\(N\) であり、関係成分数は \(M=N(N-1)/2\) と決まる。\(\mathbb C^6\)
+は零閉包を六つのレジスタへ縮約して読む一つの有効表現であり、その表現を採った後の複素次元計数
+\(6-1=5\) は厳密である。一方、\(Q^2=Q_1^2+Q_2^2+Q_3^2\)
+のような細分化や、\(r^2=t^2+R^2+Q^2\)
+のような再縮約は、同一閉包の別の対称的読出しである。したがって問題は「真の軸数を一意に公理から導くこと」ではなく、強拘束を同時に満たして安定に閉じる読出し
+sector とその対称性を分類することである。
+\end{quote}
+
+第一公理は最初から複素空間上の一本の複素零閉包
+
+\[
+\boxed{\sum_{n=1}^{6}X_n^2=0,\qquad X_n\in\mathbb C}
+\]
+
+として読む。したがって、ここでの自由度勘定は実軸6本から実拘束1本を引く議論ではない。正しくは
+
+\[
+\boxed{\dim_{\mathbb C}\mathbb C^6-1=5}
+\]
+
+である。実表示では複素拘束1本は実2条件に対応し、実12次元から実10次元を残すので、同じく複素5次元である。
+
+観測写像の一つとして
+
+\[
+\boxed{x^2+y^2+z^2=t^2+R^2+Q^2}
+\]
+
+と読むと、\((x,y,z,it,iR,iQ)\)
+は存在論的にはすべて同じ複素軸であり、可視／観測不能、時間／曲率／内部量という区別は読出し側で付く。この表示では
+\(t\) を直接読めない従属読出しとして
+
+\[
+\boxed{t^2=x^2+y^2+z^2-R^2-Q^2}
+\]
+
+と置ける。
+
+この読出しで \(t\) を実数の時計量として採用する sector では、
+
+\[
+\boxed{
+x^2+y^2+z^2\ge R^2+Q^2
+}
+\]
+
+が必要であり、等号面
+
+\[
+\boxed{
+x^2+y^2+z^2=R^2+Q^2
+}
+\]
+
+では \(t=0\)
+となる。これは当該読出しから自動的に生じる境界である。本稿では現段階で一般相対論の
+event horizon と同一視せず、\textbf{地平線型境界候補}として分類する。
+
+したがって \(3+2\)
+は標準模型に合わせて外から導入した数ではなく、複素6軸に複素零閉包1本を課した5複素自由度を、観測写像で
+\(3+2\) と読む一つの分解である。
+
+\subsection{20.1
+粗視化読出しと細分化読出し}\label{ux7c97ux8996ux5316ux8aadux51faux3057ux3068ux7d30ux5206ux5316ux8aadux51faux3057}
+
+重要なのは、\(Q\) を基礎成分数そのものと同一視しないことである。\(Q\)
+は観測不能側の閉包量を縮約して読むレジスタであり、より細かい解像度では
+
+\[
+\boxed{Q^2=Q_1^2+Q_2^2+Q_3^2}
+\]
+
+のように展開できる。従って
+
+\[
+x^2+y^2+z^2-t^2=R^2+Q^2
+\]
+
+と
+
+\[
+\boxed{x^2+y^2+z^2-t^2=R^2+Q_1^2+Q_2^2+Q_3^2}
+\]
+
+は競合する二つの存在論ではなく、同じ零閉包を異なる内部解像度で読む粗視化／細分化の関係として扱える。
+
+この区別により、A3 の
+
+\[
+M=\frac{N(N-1)}2
+\]
+
+で数える関係成分数と、\((r,t,R,Q_i,\ldots)\)
+の読出し軸数を混同してはならない。読出しレジスタの展開は、それだけで
+\(M\) を変更する操作ではない。
+
+\subsection{20.2
+標準模型ゲージ群への粗視化経路}\label{ux6a19ux6e96ux6a21ux578bux30b2ux30fcux30b8ux7fa4ux3078ux306eux7c97ux8996ux5316ux7d4cux8def}
+
+複素5自由度が自己無撞着な \(3\oplus2\) 分解
+
+\[
+V=V_3\oplus V_2,
+\qquad
+\dim_{\mathbb C}V_3=3,
+\qquad
+\dim_{\mathbb C}V_2=2
+\]
+
+を保存し、各部分空間に Hermitian structure を認めるなら、保存群は
+
+\[
+U(3)\times U(2)
+\]
+
+となる。さらに物理的に冗長な全体位相を除く保存条件が全 determinant
+の位相除去として実現されるなら、
+
+\[
+\boxed{
+S(U(3)\times U(2))
+\cong
+\frac{SU(3)\times SU(2)\times U(1)}{\mathbb Z_6}
+}
+\]
+
+を得る。
+
+ここで注意すべきなのは、\(V_3\) をそのまま可視空間 \((x,y,z)\)
+と同一視して色 \(SU(3)\)
+を作用させる必要はないことである。本稿の中心原理は「存在層の複素零閉包」と「観測読出し」の分離であり、内部対称性の作用先は読出しレジスタとして別に識別されなければならない。
+
+また、A1 で全体位相
+
+\[
+X\mapsto e^{i\theta}X
+\]
+
+が観測不能な共通位相として扱われることから、\(\det=1\)
+条件は新しい独立公理ではなく、この全体位相冗長性を物理的自己同型群から除く操作として導ける可能性が高い。離散中心の同定を含む厳密化は残るが、残課題は「det=1
+を外から仮定すること」ではなく「A1 の全体位相商が \(S(U(3)\times U(2))\)
+の大域形をどこまで一意に固定するか」である。
+
+\subsection{20.3
+内部三重項を展開する細分化経路}\label{ux5185ux90e8ux4e09ux91cdux9805ux3092ux5c55ux958bux3059ux308bux7d30ux5206ux5316ux7d4cux8def}
+
+細分化読出し
+
+\[
+R^2+Q_1^2+Q_2^2+Q_3^2
+\]
+
+では、内部三重項 \((Q_1,Q_2,Q_3)\)
+が可視空間三軸とは独立に現れる。この三重項の複素 Hermitian structure
+を保存するなら、内部 \(U(3)\)、さらに全体位相を分離すれば \(SU(3)\)
+への入口が得られる。
+
+また \((R,Q_1,Q_2,Q_3)\)
+を複素4成分としてまとめる読出しでは、既知の群論として
+
+\[
+U(4)\supset SU(4),
+\qquad
+SU(4)\supset SU(3)\times U(1)
+\]
+
+という別経路が存在する。一方、\((x,y,z,t)\) 側の4成分には Lorentz
+読出しと Euclid 型読出しがあり、後者の二重被覆では
+
+\[
+Spin(4)\cong SU(2)\times SU(2)
+\]
+
+が現れる。従って、細分化読出しは Pati--Salam 型
+
+\[
+SU(4)\times SU(2)\times SU(2)
+\]
+
+との既知数学的接続も持つ。ただし、本稿は現段階でこれを A1--A4
+から一意に選択された物理ゲージ群とは分類しない。重要なのは、粗視化
+\(3+2\)
+経路と内部三重項展開経路が、同じ複素零閉包の異なる読出し解像度から生じることである。
+
+\subsection{\texorpdfstring{20.4 \(M=6\)
+の複素零二次形式と既知幾何}{20.4 M=6 の複素零二次形式と既知幾何}}\label{m6-ux306eux8907ux7d20ux96f6ux4e8cux6b21ux5f62ux5f0fux3068ux65e2ux77e5ux5e7eux4f55}
+
+\(M=6\) の A1 を射影化した零集合は、複素射影空間 \(\mathbb{CP}^5\)
+内の非退化複素二次超曲面 \(Q^4\) として扱える。この種の quadric は
+Grassmann/Plücker
+幾何および6次元直交群の偶然同型と接続する。したがって、同じ複素零閉包から異なる実形・観測読出しを選ぶことで、\(SO(3,3)\)、共形幾何に現れる
+\(SO(4,2)\)、および \(Spin(6)\cong SU(4)\)
+へ接続するという外部数学的経路が存在する。
+
+これは A1
+から標準模型を直接証明したという主張ではない。しかし本稿の中心命題
+
+\[
+\boxed{\text{一つの複素零幾何}\longrightarrow\text{異なる読出し}\longrightarrow\text{異なる物理対称性}}
+\]
+
+が、既知の複素二次超曲面とその実形の数学に自然に接続することを示す。粗視化
+\(3+2\) 経路とは独立な外部数学的検算経路として重要である。
+
+\subsection{20.5
+現時点の導出段階}\label{ux73feux6642ux70b9ux306eux5c0eux51faux6bb5ux968e}
+
+\textbf{A1 から直接得られる部分}
+
+\[
+\boxed{\mathbb C^6\cap\{\sum X_n^2=0\}\Longrightarrow\dim_{\mathbb C}=5}
+\]
+
+および、その観測読出しとしての
+
+\[
+\boxed{x^2+y^2+z^2=t^2+R^2+Q^2}.
+\]
+
+\textbf{自己論文を含めて既に構成・数値確認されている部分}
+
+可視三主軸の卓越、\(R/Q\)
+を含む読出し分解、内部構造の細分化、および倍音構造による粒子型分類である。
+
+\textbf{群論として厳密な条件付き部分}
+
+\[
+3\oplus2+\text{Hermitian 分解保存}+\text{全体位相除去}
+\Longrightarrow
+S(U(3)\times U(2))
+\]
+
+および
+
+\[
+S(U(3)\times U(2))
+\cong
+\frac{SU(3)\times SU(2)\times U(1)}{\mathbb Z_6}.
+\]
+
+\textbf{残る一般化・動力学課題}は、厳密に得られる複素5自由度をどの
+\(3+2\)
+読出しや内部三重項として自己無撞着に選択するかを一般化することであり、既に構成された読出しを単に作り直すことではない。どの読出し解像度・どの
+stabilizer が自己無撞着な動力学で普遍的に選択されるか、局所 gauge
+connection がどのように発生するか、そして
+chirality・hypercharge・anomaly cancellation
+まで同じ導出鎖で閉じるかを確定することである。
+
+\section{21.
+修正版・導出マップ}\label{ux4feeux6b63ux7248ux5c0eux51faux30deux30c3ux30d7}
+
+導出マップを読む際の最上位原則は、
+
+\[
+\boxed{
+N
+\Longrightarrow
+M=\frac{N(N-1)}2
+\Longrightarrow
+\text{無名な関係系}
+\Longrightarrow
+\text{強拘束による sector 選別}
+\Longrightarrow
+\text{対称性・幾何の読出し}
+}
+\]
+
+である。従って \(3+3\)、\(3+2\)、内部 \(Q\)
+三重項などは互いに競合する「基礎軸数」ではなく、同一の強拘束関係系に対する異なる解像度・対称性
+sector
+の読出しとして分類する。複数の読出しが許されること自体は自由パラメータの追加ではない。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+構造
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+出所
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+状態
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+無名性／強拘束 sector 選別 &
+\(N\to M=N(N-1)/2\)、零閉包・有限回帰・simplex・倍音・自己無撞着の交差 &
+読出しの複数性は任意性ではなく、許容 sector の選別として扱う \\
+複素零二次形式 & A1 & 公理 \\
+等長直交二平面 & A1 & 厳密 \\
+複素位相回転 & A1 & 厳密 \\
+\(O(M,\mathbb C)\) & A1 保存群 & 厳密 \\
+不定符号 \(O(p,q)\) & 観測不能虚軸 \(iu\) の実表示 & 厳密 \\
+null cone & A1 の実表示 & 厳密 \\
+\(x^2+y^2+z^2=R^2\) & A1 に \(iR\) を含める & 厳密 \\
+曲率半径 \(R\) & 可視球面読出し & 厳密 \\
+\(K=1/R^2\) & 球面幾何 & 厳密 \\
+\(t\) の負符号 & 観測不能軸を \(it\) と読むため \((it)^2=-t^2\) &
+厳密 \\
+六成分読出しの signature \((3,3)\) & \((x,y,z,it,iR,iQ)\) の実表示 &
+厳密 \\
+\(O(3,3)\) & 六成分読出しの \((3,3)\) 二次形式の保存群 & 厳密 \\
+Lorentz \(O(3,1)\) & \((x,y,z,t)\) の時空部分読出し & 条件付き厳密 \\
+可視3主軸の識別可能性 & 異方的楕円体 \(a\neq b\neq c\) &
+自己無撞着主軸解が成立する範囲で厳密 \\
+Spin\((3,1)\) & Lorentz lift & 条件付き厳密 \\
+conformal structure & null cone / scale & 強い既知接続 \\
+symplectic \(J\) & 複素構造の実表示 & 厳密な入口 \\
+\(\mathbb Z_N\) & A2 & 厳密 \\
+円分固有値 & A2 & 厳密 \\
+Galois 対称性 & 円分体 & 厳密 \\
+Born 型二乗重み & A2 + 二チャネル射影 & 厳密 \\
+\(K_N\) & A3 & 厳密 \\
+\(S_N\) & 無名頂点 & 厳密 \\
+simplex distance geometry & A3 & 厳密 \\
+\(\partial^2=0\) & simplex chain complex & 厳密 \\
+cohomology & A3 & 厳密 \\
+stabilizer & A4 & 厳密 \\
+\(G\to H\) & A4 & 条件付き厳密 \\
+3次元楕円構造 & A1：等量直交構造 → 直交二平面＋法線 & 既導出 \\
+3主軸の選択的卓越 & A4 / \texttt{make\_parent} 自己無撞着 spectrum &
+自己論文で既数値確認；普遍性・必要十分条件の一般化が課題 \\
+複素6軸零閉包 & \(\mathbb C^6\) 上の A1：複素拘束1本 &
+\(\dim_{\mathbb C}=5\) を厳密導出 \\
+粗視化読出し & \(x^2+y^2+z^2=t^2+R^2+Q^2\) &
+同一複素零閉包の観測表示として導出済み \\
+細分化内部読出し & \(Q^2=Q_1^2+Q_2^2+Q_3^2\) &
+自己論文の読出し規約と整合；粗視化との入れ子構造 \\
+独立自由度 & 複素6自由度 \(-\) 複素零閉包1本 & \(6-1=5\)
+複素自由度として厳密；\(3+2\) はその一つの観測分解 \\
+\(U(3)\times U(2)\) & 複素5自由度の \(3\oplus2\) Hermitian 分解保存 &
+条件付き厳密；自己無撞着 stabilizer としての選択則が一般化課題 \\
+\(S(U(3)\times U(2))\) & 上記 + A1 の全体位相冗長性の除去 &
+条件付き厳密；離散中心を含む大域形の厳密化が課題 \\
+標準模型 gauge Lie algebra & \(S(U(3)\times U(2))\) の Lie algebra &
+\(\mathfrak{su}(3)\oplus\mathfrak{su}(2)\oplus\mathfrak{u}(1)\)：条件付き厳密 \\
+SM global gauge group & \(S(U(3)\times U(2))\) &
+\([SU(3)\times SU(2)\times U(1)]/\mathbb Z_6\)：条件付き厳密 \\
+内部 \(Q\) 三重項 & \((Q_1,Q_2,Q_3)\) の細分化読出し & 可視 \((x,y,z)\)
+と独立な内部 \(SU(3)\) 候補への入口 \\
+\(SU(4)\) 経路 & \((R,Q_1,Q_2,Q_3)\) の複素4成分読出し &
+\(Spin(6)\cong SU(4)\) および \(SU(4)\supset SU(3)\times U(1)\)
+と既知接続 \\
+Pati--Salam 型経路 & 内部4成分 + \(Spin(4)\cong SU(2)\times SU(2)\) &
+外部数学的な第二経路；物理的選択は未一般化 \\
+複素 quadric \(Q^4\subset\mathbb{CP}^5\) & \(M=6\) A1 の射影零集合 &
+既知数学との強い接続；異なる実形・読出しの統一検算経路 \\
+Bose/Fermi/混合型 sectors & 奇数・偶数倍音比、\(Z_2\)
+パリティ、一重／二重被覆 &
+自己論文で導出・構成・数値確認済み；質量同定・一般 spin-statistics
+対応が課題 \\
+general Riemann dynamics & \(R(q)\)+接続 & 未導出 \\
+chirality/hypercharge/anomaly & SM 表現 & 未導出 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{21.1
+今回追加した二重導出枝}\label{ux4ecaux56deux8ffdux52a0ux3057ux305fux4e8cux91cdux5c0eux51faux679d}
+
+今回の修正では、従来の
+
+\[
+\mathbb C^6\xrightarrow{\sum X_n^2=0}\dim_{\mathbb C}=5\xrightarrow{3\oplus2}S(U(3)\times U(2))
+\]
+
+という粗視化経路を保持しつつ、内部読出しを
+
+\[
+Q^2=Q_1^2+Q_2^2+Q_3^2
+\]
+
+へ細分化する第二経路を追加する。これにより \(SU(3)\)
+を可視空間三軸へ直接作用させる必要はなく、内部三重項へ作用する対称性として読むことができる。
+
+さらに \(M=6\) の A1 は複素二次超曲面 \(Q^4\subset\mathbb{CP}^5\)
+との既知数学的接続を持ち、\(Spin(6)\cong SU(4)\)
+を経る独立経路を与える。従って今後の検証対象は「\(SU(3)\times SU(2)\times U(1)\)
+を一つの偶然の \(3+2\)
+分解から作ること」ではなく、\textbf{同一の複素零幾何に対する複数の読出し経路が、どの
+stabilizer へ収束するか}である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{22.
+本当に残る未解決問題}\label{ux672cux5f53ux306bux6b8bux308bux672aux89e3ux6c7aux554fux984c}
+
+第一公理を正しく読むことで、以下は「新しい構造を追加する問題」ではなくなる。
+
+\begin{itemize}
+\tightlist
+\item
+  曲率半径,
+\item
+  局所曲率の幾何的置き場所,
+\item
+  時間軸の負符号,
+\item
+  null cone,
+\item
+  不定二次形式,
+\item
+  Lorentz 群への入口,
+\item
+  尺度自由度.
+\end{itemize}
+
+特に \(t\)、\(R\)、\(Q\) は同種の観測不能複素軸であり、符号差は
+
+\[
+\boxed{(iu)^2=-u^2}
+\]
+
+だけから生じる。
+
+残る中心課題は絞られる。
+
+\subsection{自己仮説として既導出とする統計構造}\label{ux81eaux5df1ux4eeeux8aacux3068ux3057ux3066ux65e2ux5c0eux51faux3068ux3059ux308bux7d71ux8a08ux69cbux9020}
+
+『波の周期表 v2』で得られた構成を、本稿では次の導出鎖として採用する。
+
+\[
+\text{奇数・偶数倍音}
+\longrightarrow
+T_{\lambda_0/2}\psi=\pm\psi
+\longrightarrow
+Z_2\text{ パリティ}
+\longrightarrow
+\text{一重／二重被覆}
+\]
+
+さらに奇数倍音・偶数倍音のパワーを \(P_{\rm odd},P_{\rm even}\)
+とすれば、
+
+\[
+\boxed{
+r=\frac{P_{\rm odd}}{P_{\rm odd}+P_{\rm even}}
+}
+\]
+
+が交換・反射率を与える。この連続量によって、純偶数端、純奇数端、および両者の混合
+sector が区別される。
+
+したがって本稿では、
+
+\[
+\boxed{
+\begin{array}{ll}
+P_{\rm odd}=0 &\rightarrow \text{Bose 型端点},\\[2mm]
+P_{\rm even}=0 &\rightarrow \text{Fermi 型端点},\\[2mm]
+P_{\rm odd}P_{\rm even}>0 &\rightarrow \text{混合（Ermion 型）sector}
+\end{array}
+}
+\]
+
+を、外部のスピン統計定理から新たに仮定する分類ではなく、\textbf{著者の既発表模型から得られた自己仮説としての導出結果}とする。
+
+従って今後の課題は Bose/Fermi
+構造を「発生させること」ではない。残るのは、この倍音パリティ由来の統計構造と標準量子場理論の
+spin-statistics
+構造との対応を、より一般的な条件の下で比較・定式化することである。
+
+\subsection{問題1}\label{ux554fux984c1}
+
+\texttt{make\_parent}
+で既に再現されている三つの異方的可視主軸の自発生成について、その発生原理を解析的に特定し、特定の数値構成を越えて一般化すること。特に、自己無撞着なコヒーレント
+parent、奇数倍音を持つフェルミオン的
+seed、零閉包、および選択的増幅のうち、どの条件が三方向選択に必要十分であるかを確定すること。
+
+\subsection{問題2}\label{ux554fux984c2}
+
+複素零閉包が許す複数の読出し解像度のうち、どの Hermitian
+分解・stabilizer
+が自己無撞着動力学で普遍的に選択されるかを一般化すること。\(3+2\)
+自由度そのものを新たに導出する問題ではなく、粗視化 \(3\oplus2\)、内部
+\(Q\) 三重項、\(SU(4)\)
+型細分化などの既存経路の選択則を確定する問題である。
+
+\subsection{問題3}\label{ux554fux984c3}
+
+観測不能軸
+
+\[
+R(q)
+\]
+
+の自己無撞着変化から一般 Riemann curvature と geodesic dynamics
+を導けるか。
+
+\subsection{問題4}\label{ux554fux984c4}
+
+simplex cochain と位相データから局所 gauge connection / curvature
+を導けるか。
+
+\subsection{問題5}\label{ux554fux984c5}
+
+Bose/Fermi/混合型分類そのものは自己論文で既導出・構成・数値確認済みである。残るのは、奇数・偶数倍音比と
+\(Z_2\) パリティによる分類を、任意の十分大きな \(N\)
+と広い相互作用条件へ一般化し、現実の粒子の質量同定・質量階層および標準量子場理論の
+spin-statistics 構造との対応を閉じることである。
+
+\subsection{問題6}\label{ux554fux984c6}
+
+標準模型の chirality, hypercharge, anomaly cancellation を stabilizer
+representation から再現できるか。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{23. 反証可能性}\label{ux53cdux8a3cux53efux80fdux6027}
+
+本構成の強い形は以下で反証される。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  A1--A4 の自己無撞着固定点が、観測された三主軸構造や許容される読出し
+  sector を再現しない。
+\item
+  A2 の \(N\) と A3 の頂点数を同一視すると解が消滅する。
+\item
+  \(iR\) 軸の局所変化が geodesic / curvature 読出しと整合しない。
+\item
+  大 \(N\) で 3主軸選択が消失し単なる有限サイズ効果になる。
+\item
+  5自由度構造の自己同型群が標準模型の内部対称性・表現内容を再現しない。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{24. 結論}\label{ux7d50ux8ad6}
+
+本稿の中心原理は一貫して
+
+\[
+\boxed{
+\sum_nx_n^2=0
+}
+\]
+
+である。
+
+曲率半径 \(R\) は右辺に追加された量ではない。
+
+\[
+\boxed{
+x_R=iR
+}
+\]
+
+という複素成分を実表示したとき、
+
+\[
+\sum_{\rm visible}x_a^2=R^2
+\]
+
+と見えるだけである。
+
+同様に時間軸も
+
+\[
+it
+\]
+
+という複素方向として
+
+\[
+r^2-t^2=0
+\]
+
+を生む。
+
+ここで \(t\)、\(R\)、\(Q\)
+は本質的に同種の観測不能複素軸であり、どの軸を時間・曲率・内部量と呼ぶかは、それがどの観測写像でどのように読まれるかによって決まる。したがってその名称差自体を公理から一意に導出する必要はない。
+
+従って
+
+\[
+\boxed{
+\text{曲率}
+,\quad
+\text{時間符号}
+,\quad
+\text{null structure}
+}
+\]
+
+は第一公理の外部に追加されるものではない。
+
+すべて
+
+\[
+\boxed{
+\text{複素零閉包の観測可能／観測不能軸分解}
+}
+\]
+
+から現れる。
+
+さらに六方向を
+
+\[
+(x,y,z,it,iR,iQ)
+\]
+
+と読む場合、第一公理は
+
+\[
+\boxed{
+x^2+y^2+z^2=t^2+R^2+Q^2
+}
+\]
+
+を与える。従ってこの六成分読出しでは幾何は \(3+1\) ではなく \(3+3\)
+と表現され、観測時空の \(3+1\)
+はその部分読出しである。可視側が異方的楕円体となれば、その三本の主軸は互いに区別可能な固有方向として自立的に現れる。
+
+第二公理
+
+\[
+U^N=I
+\]
+
+は作用の有限自己閉包を与え、
+
+第三条件 simplex closure は位相頂点を距離幾何へ変換し、
+
+第四条件 self-consistency はその中から実現される固定点・対称性を選ぶ。
+
+従って少数原理は
+
+\[
+\boxed{
+\text{零閉包}
++
+\text{有限回帰}
++
+\text{距離閉包}
++
+\text{自己無撞着}
+}
+\]
+
+に圧縮できる。
+
+このとき理論物理の多くの対称性は、独立の公理ではなく
+
+\[
+\boxed{
+\text{自己閉包する複素関係幾何の自己同型}
+}
+\]
+
+として再分類できる。
+
+最重要課題は、対称群をさらに追加することではない。
+
+\[
+\boxed{
+\text{A1--A4 の固定点と stabilizer を完全分類すること}
+}
+\]
+
+である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+外部文献を基本とし、自己仮説として既導出・既確認の一次資料3本のみを最小限に自己引用する。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  E. W. Weisstein, ``Sphere,'' \emph{MathWorld}. Sphere geometry and
+  curvature references.\\
+  https://mathworld.wolfram.com/Sphere.html
+\item
+  E. W. Weisstein, ``Cayley-Menger Determinant,'' \emph{MathWorld}.\\
+  https://mathworld.wolfram.com/Cayley-MengerDeterminant.html
+\item
+  M. Cvetič and L. Lin, ``The Global Gauge Group Structure of F-theory
+  Compactification with U(1)s,'' arXiv:1706.08521 (2017).\\
+  https://arxiv.org/abs/1706.08521
+\item
+  N. Raghuram, W. Taylor and A. P. Turner, ``General F-theory models
+  with tuned \((SU(3)\times SU(2)\times U(1))/\mathbb Z_6\) symmetry,''
+  arXiv:1912.10991 (2019).\\
+  https://arxiv.org/abs/1912.10991
+\item
+  F. Klinker, ``An explicit description of \(SL(2,\mathbb C)\) in terms
+  of \(SO^+(3,1)\) and vice versa,'' arXiv:1712.02168 (2017).\\
+  https://arxiv.org/abs/1712.02168
+\item
+  J. T. Wheeler, ``Weyl geometry,'' arXiv:1801.03178 (2018).\\
+  https://arxiv.org/abs/1801.03178
+\item
+  O. Macia and Y. Nagatomo, ``Holomorphic isometric embeddings of
+  complex Grassmannians into quadrics: The general case,'' \emph{Kyoto
+  Journal of Mathematics} 66(1), 67--85 (2026).\\
+  https://doi.org/10.1215/21562261-2024-0033
+\item
+  Standard differential geometry result: a \(d\)-sphere of radius \(R\)
+  has constant sectional curvature \(1/R^2\), Ricci curvature
+  \((d-1)g/R^2\), and scalar curvature \(d(d-1)/R^2\).
+\item
+  Standard Lorentz geometry result: the real quadratic form of signature
+  \((3,1)\) is preserved by \(O(3,1)\); its proper orthochronous spin
+  double cover is \(SL(2,\mathbb C)\).
+\item
+  Standard algebraic topology result: the simplicial boundary operator
+  satisfies \(\partial^2=0\).
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{主張強度}\label{ux4e3bux5f35ux5f37ux5ea6}
+
+\subsubsection{厳密}\label{ux53b3ux5bc6}
+
+\begin{itemize}
+\tightlist
+\item
+  \(x^Tx=0\Rightarrow \|a\|=\|b\|,\ a\perp b\)
+\item
+  複素軸 \(iR\) を含む A1 が可視側で \(r^2=R^2\) を与えること
+\item
+  複素軸 \(it\) を含む A1 が可視側で Lorentz 型負符号を与えること
+\item
+  可視球面断面の \(K=1/R^2\)
+\item
+  A2 から \(\mathbb Z_N\) と円分固有値
+\item
+  A3 から \(K_N,S_N,\partial^2=0\)
+\item
+  A4 + equivariance から stabilizer
+\end{itemize}
+
+\subsubsection{条件付き厳密}\label{ux6761ux4ef6ux4ed8ux304dux53b3ux5bc6}
+
+\begin{itemize}
+\tightlist
+\item
+  \(3+3\) からの \((x,y,z,t)\) 部分読出しにおける Lorentz / Spin /
+  conformal
+\item
+  3+2 選択後の \(S(U(3)\times U(2))\) と標準模型 global gauge group
+\item
+  \(R(q)\) を局所可視曲率半径として読む構成
+\end{itemize}
+
+\subsection{\texorpdfstring{唯一の外部指定パラメータは離散整数 \(N\)
+である}{唯一の外部指定パラメータは離散整数 N である}}\label{ux552fux4e00ux306eux5916ux90e8ux6307ux5b9aux30d1ux30e9ux30e1ux30fcux30bfux306fux96e2ux6563ux6574ux6570-n-ux3067ux3042ux308b}
+
+本構成の重要な特徴は、未導出・未一般化の部分を除けば、現象を合わせるための明示的な連続調整パラメータを導入していないことである。
+
+外部から指定される唯一の構造パラメータは、
+
+\[
+\boxed{N\in\mathbb N}
+\]
+
+である。
+
+この \(N\) は通常の coupling constant や fitting parameter
+ではない。本構成では同じ整数 \(N\) が、
+
+\[
+\boxed{
+U^N=I,\qquad
+|V|=N,\qquad
+M=\frac{N(N-1)}2
+}
+\]
+
+を同時に結び、有限位数回帰の次数、位相円の離散分割数、閉包幾何の頂点数、および全二体関係数を指定する。
+
+したがって \(N\)
+は観測値に合わせて連続的に調整される数値ではなく、系そのものの有限性・閉包次数・関係空間の規模を指定する\textbf{離散的構造次数}である。
+
+一方、本稿および自己参照三論文で現れる
+
+\[
+R,\quad t,\quad Q,\quad
+r,\quad
+P_{\rm odd},\quad P_{\rm even},
+\]
+
+各主軸長、時計場、質量読出し、反射率、被覆度、Bose/Fermi/混合型分類などは、独立な自由パラメータとして入力されるのではなく、零閉包、有限位数、simplex
+関係、倍音構造、自己無撞着性、および観測写像から生じる量として扱われる。
+
+従って本模型は、現段階では
+
+\[
+\boxed{
+\text{one-discrete-parameter structural model}
+}
+\]
+
+すなわち\textbf{唯一の外部指定自由度として整数 \(N\)
+だけを持つ構造模型}と特徴づけられる。
+
+この点は、単に「パラメータ数が少ない」という意味ではない。本構成が説明対象とする対称性・幾何・統計・読出し構造を得るために、個別の質量、結合定数、曲率尺度、統計混合率、異方性などを別々の調整ノブとして追加していない、という意味である。
+
+さらに、将来 \(N\)
+自体が自己無撞着条件または閉包条件から一意または離散的に選択されることが示されれば、
+
+\[
+\boxed{
+\text{外部自由入力}=0
+}
+\]
+
+となる可能性がある。ただし、これは現時点では導出済みとはしない。
+
+\subsubsection{\texorpdfstring{\(N\)
+に関する残る一般化課題}{N に関する残る一般化課題}}\label{n-ux306bux95a2ux3059ux308bux6b8bux308bux4e00ux822cux5316ux8ab2ux984c}
+
+現在の理論では \(N\)
+は唯一の外部指定整数である。従って残る根源的課題の一つは、
+
+\[
+\boxed{
+\text{なぜこの宇宙・観測 sector が特定の }N\text{ を選ぶのか}
+}
+\]
+
+を、自己無撞着性、有限位数閉包、または大 \(N\)
+極限の構造から導けるかどうかである。
+
+これは既導出構造に新しい連続パラメータを追加する課題ではなく、\textbf{最後に残った一つの離散入力
+\(N\) の選択則を求める課題}である。
+
+\subsubsection{自己論文で導出・構成・数値確認済み}\label{ux81eaux5df1ux8ad6ux6587ux3067ux5c0eux51faux69cbux6210ux6570ux5024ux78baux8a8dux6e08ux307f}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{3次元楕円構造と三主軸の卓越}\\
+  三次元性は、零閉包から生じる等量直交構造、直交二平面と独立法線、および位相閉包・simplex
+  幾何の整合から3次元楕円構造として既導出と分類する。さらに『ゼロ閉塞は4次元だった』では、最大
+  \(N-1\) 本の非自明な主軸のうち上位3方向 \(A,B,C\)
+  が選択的に増幅し、中位方向がほぼ停滞し、下位方向の一部が虚方向へ移ることを数値確認済みである。三方向の成立、異方性、三方向での卓越・飽和そのものは「未導出」ではない。\\
+  \textbf{残る課題:}
+  幾何学的3次元性と動力学的3主軸卓越の一致を、十分大きな任意の \(N\)
+  と広い初期条件に対する一般定理へ昇格すること。
+\end{itemize}
+
+以下は A1--A4
+だけから本稿内で新たに証明した項目ではないが、著者の既発表三論文において、自己仮説として既に導出・構成・数値確認されている。したがって「未導出」には分類しない。
+
+\begin{itemize}
+\item
+  \textbf{三方向の自発生成}\\
+  \texttt{make\_parent} による自己無撞着なコヒーレント
+  parent、奇数倍音を持つフェルミオン的
+  seed、零閉包、および選択的・インフレーション的増幅から、多数の関係方向のうち三つの異方的可視主軸が卓越する構成は実現済み。\\
+  \textbf{残る課題:}
+  なぜ三方向が選択されるかという発生原理の解析的解明、必要十分条件の抽出、および任意の十分大きな
+  \(N\) への一般定理化。
+\item
+  \textbf{Bose/Fermi/混合（Ermion）型分類}\\
+  奇数・偶数倍音の半周期並進に対する \(Z_2\)
+  パリティ、奇数倍音比から決まる反射率 \[
+  r=\frac{P_{\rm odd}}{P_{\rm odd}+P_{\rm even}},
+  \] 一重／二重被覆、対蹠二点構造を通じた
+  Bose/Fermi/混合型の分類は『波の周期表
+  v2』で導出・構成・数値確認済み。\\
+  \textbf{残る課題:}
+  現実の粒子種との完全な質量同定、質量階層の閉じた導出、ならびに標準量子場理論の
+  spin-statistics 構造との一般的対応の確立。
+\item
+  \textbf{質量・時計場・重力読出しの二層構造}\\
+  波の存在層と観測読出し層を分離し、質量を時計場の値、重力をその勾配として読む構成、およびゲージ的読出しとの分離は『波と場の二層分離』で自己仮説として導出・数値確認済み。\\
+  \textbf{残る課題:}
+  質量不変量の確定、現実の質量階層への一般化、重力読出しの一般可変曲率系への拡張、および完全な動力学化。
+\item
+  \textbf{\(t,R,Q\) の読出し上の区別}\\
+  \(t,R,Q\)
+  は根本的には同種の観測不能複素軸であり、状態更新として読まれるものを時間
+  \(t\)、可視幾何の曲率尺度として読まれるものを
+  \(R\)、内部量として読まれるものを \(Q\)
+  と命名する。これは「三種類の軸を公理から導出する問題」ではなく観測写像上の同定である。\\
+  \textbf{残る課題:}
+  原理的な役割分化の証明ではなく、各観測写像と実測量との対応を必要に応じて精密化すること。
+\end{itemize}
+
+\subsubsection{本稿および自己論文を含めても未導出・未一般化}\label{ux672cux7a3fux304aux3088ux3073ux81eaux5df1ux8ad6ux6587ux3092ux542bux3081ux3066ux3082ux672aux5c0eux51faux672aux4e00ux822cux5316}
+
+ここには、本当にまだ導出鎖が閉じていないものだけを置く。
+
+\begin{itemize}
+\item
+  \textbf{基礎 \(M\) 成分系からの読出し sector の一般分類}
+
+  既存の \texttt{make\_parent} 構成による三方向生成とは別に、A1--A4
+  だけから特定の軸数選択を一般定理として得ること。
+\item
+  \textbf{一般可変曲率の完全動力学}\\
+  \(R\)
+  を複素二乗閉包の観測不能方向として読む局所曲率構造そのものではなく、任意に変化する曲率場について閉じた完全動力学を与えること。
+\item
+  \textbf{局所 gauge dynamics の完全導出}\\
+  既に得られているゲージ的読出し・選択則を越え、局所ゲージ接続とその完全な動力学を公理系から一般的に閉じること。
+\item
+  \textbf{chirality / hypercharge / anomaly cancellation の完全導出}\\
+  既導出の巻き数・パリティ・内部量構造との対応候補を、標準模型のカイラリティ、ハイパーチャージ、および異常相殺条件まで一意に閉じること。
+\item
+  \textbf{\(N\) の選択則}\\
+  現段階で唯一残る外部指定構造パラメータ \(N\)
+  が、自己無撞着性・有限位数閉包・大 \(N\)
+  極限などから自律的に選択されるかを導出すること。これが閉じれば、外部自由入力ゼロの模型となる。
+\end{itemize}
+
+\subsection{自己参照文献}\label{ux81eaux5df1ux53c2ux7167ux6587ux732e}
+
+\begin{itemize}
+\tightlist
+\item
+  木原範昭, 『波の周期表
+  v2――巻き数番地と観測時計による粒子分類、および時計場 \(\omega(x)\)
+  による質量・寿命・分裂の統合』, Zenodo, Concept DOI:
+  10.5281/zenodo.21830706.
+  \textbf{本稿では自己仮説としての既導出結果の出典として使用する。}
+\item
+  木原範昭,
+  『波と場の二層分離――場の読出し万能関数によるゲージ場と重力場の統合』,
+  Zenodo, DOI: 10.5281/zenodo.21832257.
+  \textbf{本稿では自己仮説としての既導出結果の出典として使用する。}
+\item
+  木原範昭,
+  『ゼロ閉塞は4次元だった――複素数の世界でも「中心投影」は生き残る』,
+  Zenodo, Version DOI: 10.5281/zenodo.21902806, Concept DOI:
+  10.5281/zenodo.21902805.
+  \textbf{本稿では三方向スペクトル集中・異方的主軸発生・インフレーション的拡大の自己仮説としての既導出結果の出典として使用する。}
+\end{itemize}
+
+\end{document}
