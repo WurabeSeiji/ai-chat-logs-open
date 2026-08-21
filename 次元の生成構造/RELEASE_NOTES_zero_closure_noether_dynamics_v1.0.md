@@ -19,8 +19,12 @@
 ## Facebook
 - 日本語版: https://www.facebook.com/kihara.noriaki/posts/pfbid02nGaTsL4KGZpFrEZZhpdXNda93yKXU1vjMU3EcW5AK8Qq6ZKdt6bdd78yC5TxCQdsl
   （元原稿: `次元の生成構造/facebook_zero_closure_noether_dynamics_ja_v1.md`）
-- 英語版: （公開後に追記）
+- 英語版: https://www.facebook.com/kihara.noriaki/posts/pfbid0St9jytCvD3JcPqykVi7UZokXn2dBELPTFjGm8ErxbHVq7Hhoe8mLiL8yrci4MbACl
   （元原稿: `次元の生成構造/facebook_zero_closure_noether_dynamics_en_v1.md`）
+
+## X
+- 日本語版: （公開後に追記）
+  （元原稿: `次元の生成構造/x_post_zero_closure_noether_dynamics.md`）
 
 ## 公開ファイル（Zenodo, 6点）
 - `zero_closure_noether_dynamics_ja_public_v1.0.md` / `zero_closure_noether_dynamics_en_public_v1.0.md`

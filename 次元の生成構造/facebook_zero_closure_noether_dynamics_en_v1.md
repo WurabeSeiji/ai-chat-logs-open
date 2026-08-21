@@ -1,6 +1,6 @@
-I was chasing Noether's theorem, and "ordinary physics" came out of discrete waves — dynamics as a self-map that never breaks zero closure, and the standard theory that appears as N→∞ (new paper published)
-
+I was chasing Noether's theorem, and "ordinary physics" came out of discrete waves
 Details in the comments:
+ — dynamics as a self-map that never breaks zero closure, and the standard theory that appears as N→∞ (new paper published)
 
 What I wanted to study this time was dynamics. Up to now I have taken two basic conditions — zero closure ΣXn²=0, the vanishing of a sum of complex squares, and finite recurrence U^N=I, returning to the start after N applications — and asked how much physical structure emerges from the relations among waves alone, with no background spacetime and no ready-made symmetry placed at the start. The previous paper produced most of the symmetries. But a big problem remained: how do things move in that world?
 
@@ -19,8 +19,3 @@ What was unexpected came next. If each vertex may re-choose its phase origin ind
 This time I deliberately approached the region where present standard physics succeeds with extremely high precision — the continuum limit N→∞ and the regime of large curvature radius, locally almost flat. I am not saying the standard theory is wrong. Rather the opposite: the possibility that has come into view is that one may explain why the standard theory is that accurate from the discrete structure one level below it. What I will examine next is whether this road really continues unbroken to Maxwell's equations and on to relativity. The paper is published on Zenodo in Japanese and English with tex and PDF (CC BY 4.0).
 
 #TheoreticalPhysics #MathematicalPhysics #NoetherTheorem #ConservationLaws #Dynamics #Geometry #GaugeTheory #StandardModel #MaxwellEquations #YangMills #Relativity #DiscreteSystems #ContinuumLimit #ComplexNumbers #ZeroClosure #SelfConsistency #AxiomaticPhysics #Anomaly #Chirality #Spacetime #IndependentResearch #Preprint #Zenodo #Hypothesis #Waves
-
------ For the comment section (note URLs only) -----
-
-note (English): https://note.com/kiharanoriaki/n/n6db6d9f175d8
-note (Japanese): https://note.com/kiharanoriaki/n/n91202fa73800
