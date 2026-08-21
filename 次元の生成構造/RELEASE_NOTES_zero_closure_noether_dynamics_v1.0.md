@@ -24,7 +24,7 @@
 
 ## X
 - 日本語版: https://x.com/NoriakiKihara/status/2090712684459393322
-- 英語版: 日本語版と同スレッド（公開後に追記）
+- 英語版: https://x.com/NoriakiKihara/status/2090713217140232279（日本語版と同スレッド）
   （元原稿: `次元の生成構造/x_post_zero_closure_noether_dynamics.md`）
 
 ## 公開ファイル（Zenodo, 6点）
