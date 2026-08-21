@@ -100,3 +100,4 @@ $$
 - 波の周期表 v2: https://doi.org/10.5281/zenodo.21830706
 - 波と場の二層分離: https://doi.org/10.5281/zenodo.21832257
 - ゼロ閉塞は4次元だった: https://doi.org/10.5281/zenodo.21902805
+- 続編（動力学・保存則・標準模型表現）: https://doi.org/10.5281/zenodo.22040735
