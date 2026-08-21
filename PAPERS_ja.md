@@ -4,7 +4,7 @@
 全論文は Zenodo で CC BY 4.0 公開。各行：題名（日本語 / 英語）・Version DOI・Concept DOI・公開日・版・PDF・リポジトリ内フォルダ・リリースノート。
 本ファイルは `tools/gen_paper_index.py` により Zenodo API から自動生成。English: [PAPERS_en.md](PAPERS_en.md) / Scholar 用ページ: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**論文数: 120**
+**論文数: 121**
 
 ## グノモン正写像による4次元時空の幾何学的定式化 / Central Projection Framework (Gnomonic Spacetime Geometry)
 
@@ -469,6 +469,10 @@
    Symmetry Generation from Zero Closure, Finite Order, and Self-Consistent Geometry: The Single External Parameter N and the Remaining Tasks of Generalization and Dynamics  
    DOI [10.5281/zenodo.22028073](https://doi.org/10.5281/zenodo.22028073) · Concept [10.5281/zenodo.22028072](https://doi.org/10.5281/zenodo.22028072) · 2026-08-20 · v1.0 · [PDF en](https://zenodo.org/records/22028073/files/closure_axioms_symmetry_derivation_en_public_v1.0.pdf) [PDF ja](https://zenodo.org/records/22028073/files/closure_axioms_symmetry_derivation_ja_public_v1.0.pdf)  
    フォルダ: [次元の生成構造/電子の反跳実験](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E9%9B%BB%E5%AD%90%E3%81%AE%E5%8F%8D%E8%B7%B3%E5%AE%9F%E9%A8%93) · [リリースノート](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_closure_axioms_symmetry_derivation_v1.0.md)
+23. **離散零閉包からの Noether 保存則と関係位相動力学――零閉包を厳密保存する離散自己写像、$N\to\infty$ 連続場方程式、局所ゲージ幾何、および標準模型一世代表現と chirality 選択**  
+   Noether Conservation Laws and Relational Phase Dynamics from Discrete Zero Closure: A Zero-Closure-Preserving Discrete Self-Map, the N→∞ Continuum Field Equations, Local Gauge Geometry, and the Standard-Model One-Generation Representation with Chirality Selection  
+   DOI [10.5281/zenodo.22040736](https://doi.org/10.5281/zenodo.22040736) · Concept [10.5281/zenodo.22040735](https://doi.org/10.5281/zenodo.22040735) · 2026-08-21 · v1.0 · [PDF en](https://zenodo.org/records/22040736/files/zero_closure_noether_dynamics_en_public_v1.0.pdf) [PDF ja](https://zenodo.org/records/22040736/files/zero_closure_noether_dynamics_ja_public_v1.0.pdf)  
+   フォルダ: [次元の生成構造/電子の反跳実験](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E9%9B%BB%E5%AD%90%E3%81%AE%E5%8F%8D%E8%B7%B3%E5%AE%9F%E9%A8%93) · [リリースノート](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_zero_closure_noether_dynamics_v1.0.md)
 
 ## 時間軸Q軸とフェルミオンの生成構造 / Time Axis, Q Axis, and Fermion Generation
 
