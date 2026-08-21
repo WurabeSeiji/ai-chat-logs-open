@@ -17,8 +17,10 @@
   （元原稿: `次元の生成構造/電子の反跳実験/note_zero_closure_noether_dynamics_en_v1.md`）
 
 ## Facebook
-- 日本語版: （公開後に追記）
+- 日本語版: https://www.facebook.com/kihara.noriaki/posts/pfbid02nGaTsL4KGZpFrEZZhpdXNda93yKXU1vjMU3EcW5AK8Qq6ZKdt6bdd78yC5TxCQdsl
   （元原稿: `次元の生成構造/facebook_zero_closure_noether_dynamics_ja_v1.md`）
+- 英語版: （公開後に追記）
+  （元原稿: `次元の生成構造/facebook_zero_closure_noether_dynamics_en_v1.md`）
 
 ## 公開ファイル（Zenodo, 6点）
 - `zero_closure_noether_dynamics_ja_public_v1.0.md` / `zero_closure_noether_dynamics_en_public_v1.0.md`
