@@ -10,6 +10,12 @@
 - 記事: https://zenn.dev/noriaki_kihara/articles/zero-closure-noether-dynamics
   （元原稿: `articles/zero-closure-noether-dynamics.md`）
 
+## note
+- 日本語版: https://note.com/kiharanoriaki/n/n91202fa73800
+  （元原稿: `次元の生成構造/電子の反跳実験/note_zero_closure_noether_dynamics_ja_v1.md`）
+- 英語版: （公開後に追記）
+  （元原稿: `次元の生成構造/電子の反跳実験/note_zero_closure_noether_dynamics_en_v1.md`）
+
 ## 公開ファイル（Zenodo, 6点）
 - `zero_closure_noether_dynamics_ja_public_v1.0.md` / `zero_closure_noether_dynamics_en_public_v1.0.md`
 - `zero_closure_noether_dynamics_ja_public_v1.0.tex` / `zero_closure_noether_dynamics_en_public_v1.0.tex`
