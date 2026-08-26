@@ -12,9 +12,16 @@ Release date: 2026-08-26
 
 - 記事: https://zenn.dev/noriaki_kihara/articles/self-consistent-inflation-mechanism （2026-08-26 push。Zenn の新規記事レート制限のため公開反映は要確認）
 
-## note / Facebook / X
+## note（一般向け）
 
-- 未投稿（一般向け記事は今後）
+- 日本語: https://note.com/kiharanoriaki/n/n07c3e4c97e3a （2026-08-26 公開）
+  （元原稿: `次元の生成構造/インフレーションは倒れかけの波に書き込まれていた_note完成稿.md`、図: `次元の生成構造/note_figs_self_consistent_inflation/`）
+- 英語: 原稿 `次元の生成構造/inflation_written_in_the_tilting_wave_note_en.md`（図: 同フォルダ `en/`）、公開後に URL 追記
+- 前2記事の続編（「タネがなくても」 n48a02cd70f47 ／「雑踏からは」 n7b655e3da27a）
+
+## Facebook / X
+
+- 未投稿
 
 ## 公開ファイル（Zenodo, 21点）
 
