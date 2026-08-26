@@ -571,7 +571,7 @@ $$
 
 で再描画した。
 
-![図1](./N5_normalized_vs_raw_cumulative_phase.png)
+![図1](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_normalized_vs_raw_cumulative_phase.png)
 
 **図1　N=5 正規化あり/なしの累積位相比較。有限stepの軌道差を累積Cayley位相で比較する。**
 
@@ -705,7 +705,7 @@ $$
 }
 $$
 
-![図2](./N5_gamma_continuum_convergence.png)
+![図2](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_gamma_continuum_convergence.png)
 
 **図2　N=5 時間刻み細分化による連続極限。累積位相あたり成長率は一次有限刻み補正を伴って共通極限へ収束する。**
 
@@ -786,7 +786,7 @@ $$
 
 今回、corrected raw-$K$ N=5データから両者を直接重ね描きした。
 
-![図3](./N5_pump_depletion_Hparallel_Hperp.png)
+![図3](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_pump_depletion_Hparallel_Hperp.png)
 
 **図3　N=5 親平面成分の枯渇と直交成分の増大。両者の和は厳密保存され、急拡大が内部移送であることを示す。**
 
@@ -968,7 +968,7 @@ $$
 
 を計算した。
 
-![図4](./N5_spectral_entropy.png)
+![図4](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_spectral_entropy.png)
 
 **図4　N=5 スペクトルエントロピー。長時間で等分配へ近づく一方、単純な単調H定理ではない。**
 
@@ -998,7 +998,7 @@ $$
 
 N=5では $H_\perp$ がほぼ飽和した後も、位相・距離4群の秩序化は長時間続く。
 
-![図5](./N5_inflation_vs_ordering.png)
+![図5](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_inflation_vs_ordering.png)
 
 **図5　N=5 急拡大と秩序化の時間発展。急拡大の飽和後もsimplex秩序化が継続する。**
 
@@ -1070,7 +1070,7 @@ $$
 
 へ分かれる。
 
-![図6](./N4_tetrahedron_opposite_edge_classes.png)
+![図6](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N4_tetrahedron_opposite_edge_classes.png)
 
 **図6　N=4 四面体の対辺3群。局所閉包と等モジュラスから3群の120°分離が厳密に従う。**
 
@@ -1105,11 +1105,11 @@ N=5 は今回の $N=3$〜16 系列の中で、単なる「5頂点・rank 4 の�
 
 まず、N=5で得られた構造を一枚で把握できる総合図を示す。以下の詳細節は、この図の各要素を順に分解して検証したものである。
 
-![図7](./N5_complex_distance_structure_overview.png)
+![図7](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_complex_distance_structure_overview.png)
 
 **図7　N=5 複素関係距離構造の総合図。5頂点10関係、rank 4、3+3+2+2構造を統合表示する。**
 
-![図8](./N5_complete_simplex_analysis_overview.png)
+![図8](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_complete_simplex_analysis_overview.png)
 
 **図8　N=5 複素simplex完全解析の総合図。急拡大と4群秩序化の二段階発展を同一時間軸で示す。**
 
@@ -1182,7 +1182,7 @@ $$
 
 の実部・虚部まで同一クラスへ収束する。
 
-![図9](./N5_final_z2_classes.png)
+![図9](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_final_z2_classes.png)
 
 **図9　N=5 最終複素二乗距離クラス。10辺が3+3+2+2の4群へ収束する。**
 
@@ -1213,7 +1213,7 @@ $$
 
 複素二乗距離では符号反転 $z^2\rightarrow-z^2$ は位相を $\pi$ だけずらすため、$A_+$ と $A_-$、$B_+$ と $B_-$ はそれぞれ同じ距離族の反対向きとして読める。
 
-![図10](./N5_two_family_components.png)
+![図10](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_two_family_components.png)
 
 **図10　N=5 二つの距離族と符号反転。A系・B系と各符号反転が4群を構成する。**
 
@@ -1246,7 +1246,7 @@ $$
 
 として3次元的に読むことができる。
 
-![図11](./N5_square_pyramid_interpretation.png)
+![図11](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_square_pyramid_interpretation.png)
 
 **図11　N=5 3次元四角錐としての読出し。rank-4複素simplex上の位相・距離分類を3次元的に可視化する。**
 
@@ -1287,7 +1287,7 @@ $$
 
 まで緩和を続ける。
 
-![図12](./N5_four_group_convergence.png)
+![図12](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_four_group_convergence.png)
 
 **図12　N=5 4群構造への収束。急拡大後にも群内位相・複素距離の秩序化が継続する。**
 
@@ -1318,7 +1318,7 @@ $$
 6. **局所閉包として:** 各頂点に接続する4辺のvertex-starゼロ閉包。
 7. **追加閉包として:** vertex-star spanでは説明できない非自明2辺ゼロ閉包。
 
-![図13](./N5_complete_simplex_analysis_overview.png)
+![図13](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_complete_simplex_analysis_overview.png)
 
 **図13　N=5 複素simplex完全解析図。rank、4群、二距離族、四角錐読出しと時間発展を統合する。**
 
@@ -1327,7 +1327,7 @@ $$
 
 各頂点の自明な4辺 star 閉包を除外した後、N=5では2辺ゼロ閉包が13個観測された。
 
-![図14](./N5_nontrivial_pair_closure_graph.png)
+![図14](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_nontrivial_pair_closure_graph.png)
 
 **図14　N=5 非自明2辺ゼロ閉包グラフ。3+3+2+2符号対構造から13個の閉包が導出される。**
 
@@ -1517,7 +1517,7 @@ Kihara et al. [E4] は10次元Einstein–Yang–Mills系において、4次元�
 
 明示seedを一切加えず $Z_0=v$ とし、`make_parent` の要求 tolerance を $10^{-6},10^{-8},10^{-10},10^{-12}$ と変更した。ただし回帰に用いた説明変数は要求 tolerance そのものではなく、各runで実測された最終固定点残差 $\varepsilon_{\rm parent}$ である。
 
-![図15](./N5_tol_sweep_timeseries.png)
+![図15](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_tol_sweep_timeseries.png)
 
 **図15　N=5 make_parent残差tol掃引。残差を小さくするとonsetが遅れるが指数成長率はほぼ不変である。**
 
@@ -1533,7 +1533,7 @@ Kihara et al. [E4] は10次元Einstein–Yang–Mills系において、4次元�
 
 ここで残差の対数間隔は等間隔ではない。したがって onset step だけを要求 tolerance の $10^{-6},10^{-8},10^{-10},10^{-12}$ に対して回帰してはならない。上表の**実測固定点残差**を用いると、
 
-![図16](./N5_tol_sweep_onset_log_residual.png)
+![図16](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_tol_sweep_onset_log_residual.png)
 
 **図16　N=5 onsetと実測固定点残差の関係。t_onsetは -ln residual に対して高精度に線形である。**
 
@@ -1558,7 +1558,7 @@ $$
 
 親状態の一step全体位相回転を除いた rotating-frame map の20実次元 Jacobian を数値線形化した。
 
-![図17](./N5_floquet_spectrum.png)
+![図17](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_floquet_spectrum.png)
 
 **図17　N=5 rotating-frame Floquet spectrum。支配不安定実2重固有値と第2の実2重固有値のギャップを示す。不安定乗数はすべて実軸上にある。**
 
@@ -1641,7 +1641,7 @@ $$
 
 も存在し、より遅い副成長指数 $2\ln\mu_2\simeq0.10253$ を予測する。
 
-![図18](./N5_floquet_fd_stability.png)
+![図18](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_floquet_fd_stability.png)
 
 **図18　N=5 Floquet有限差分安定性。支配乗数が差分刻みに対して安定であることを確認する。**
 
@@ -1666,7 +1666,7 @@ $$
 
 一方、符号を商に取った二距離族間の相対位相はrun間で変化した。
 
-![図19](./N5_moduli_relative_phase_seed_sweep.png)
+![図19](電子の反跳実験/seed除去による準安定相追試/chatgpt追試/N5_moduli_relative_phase_seed_sweep.png)
 
 **図19　N=5 seed掃引における二距離族相対位相。3+3+2+2は再現する一方、相対位相は一意に固定されない。**
 
@@ -1731,7 +1731,7 @@ $$
 
 本文中の図は出現順に図1から通し番号を付した。
 
-本稿の図は Markdown ファイルと同一ディレクトリに配置し、`./ファイル名.png` の相対パスで参照する。今回の追加実験で使用する図は、正規化比較、親平面から直交方向への移送、スペクトルエントロピー、tol 掃引、onset-residual 則、Floquet スペクトル、有限差分安定性、および N=5 モジュライ seed 掃引を含む。
+本稿の図はリポジトリ内 `次元の生成構造/電子の反跳実験/seed除去による準安定相追試/chatgpt追試/` に配置し、そこからの相対パスで参照する（Zenodo 公開版では図一式を `nbody_self_consistent_inflation_figures_v1.zip` に同梱する）。今回の追加実験で使用する図は、正規化比較、親平面から直交方向への移送、スペクトルエントロピー、tol 掃引、onset-residual 則、Floquet スペクトル、有限差分安定性、および N=5 モジュライ seed 掃引を含む。
 
 ## 自己引用
 

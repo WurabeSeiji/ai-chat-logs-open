@@ -115,6 +115,17 @@
 
 ## 更新履歴
 
+### 2026-08-26: 次元の生成構造 第8論文続編「自己無撞着な関係波閉鎖系におけるインフレーション的急拡大の機構」新規公開
+
+**第8論文（二段階seed除去）の続編を公開**：seedなし急拡大を実装監査・N=3〜16再実験・N=5線形安定性で再構成。(1) 実反対称生成子の Cayley 更新は実直交行列なので $Z^\dagger Z$ と $Z^TZ$（二乗ゼロ閉包）は**厳密保存**——「数値的保存」は定理へ格上げ、急拡大は $H_\parallel\to H_\perp$ の内部移送で $H_\perp\le H_{\rm total}$ が無限増大を禁止。(2) 開始機構＝自己無撞着相対平衡の線形不安定性：rotating-frame Jacobian の支配不安定実2重固有値 $\mu_1=1.090086569$ から $2\ln\mu_1=0.172514$（実測成長率 0.172513）、$1/\ln\mu_1=11.593$（実測残差に対する onset 回帰傾き 11.616、R²=0.99999201）の**三重整合**、親 rank-2＋支配不安定2次元＝rank-4。(3) $K/\sigma_{\max}$ 正規化は Cayley step の再尺度化（恒等式）、有限step差 6.8% は刻み収束則 $g(n)=1.15963-4.105/n$ から 0.13% で予測——アーティファクト説を排除。(4) 頂点 star 閉包 ⟺ 全頂点がヌル錐上（定理）、準安定状態＝equimodular null complex simplex（Gram rank N−1）。(5) N=4 の120°は定理、N=5 の非自明2辺閉包13個・exact cover 12通りは 3+3+2+2 符号対構造から $3\cdot3+2\cdot2$、$3!2!$ で導出、8-seed 掃引で相対位相は平坦方向。(6) 公理系再構成：自己無撞着⇒複素回転対⇒$\sum z^2=0$⇒$S^1$ コンパクト軌道までは導出、$U^n=I$ は有理ロック機構が別途必要。ChatGPT 生成稿を Claude が査読・検算（回帰統計の見かけの矛盾、共役対→実2重固有値の訂正、有限step差の決着）し、反証と修正の過程を本文に記録。
+
+- **日本語題**：自己無撞着な関係波閉鎖系におけるインフレーション的急拡大の機構——正規化監査、rank 生成、二乗閉包保存、simplex 対称化および公理系の再構成
+- **英題**：Mechanism of Inflation-like Rapid Expansion in Self-Consistent Closed Relational-Wave Systems: Normalization Audit, Rank Generation, Zero-Square-Closure Conservation, Simplex Symmetrization, and Reconstruction of the Axiom System
+- **Concept DOI**：[10.5281/zenodo.22112008](https://doi.org/10.5281/zenodo.22112008)／**v1 DOI**：[10.5281/zenodo.22112009](https://doi.org/10.5281/zenodo.22112009)
+- **形式**：md（日英）+ tex（日英）+ pdf（日英・ja 40p/en 36p）+ 図バンドル zip（PNG 21枚＋英語版作図スクリプト）+ 再現パッケージ zip 14点 = 21ファイル
+- **Zenn**：[インフレーション的急拡大は「不安定な自己無撞着閉包」の線形不安定性だった](https://zenn.dev/noriaki_kihara/articles/self-consistent-inflation-mechanism)
+- **所在**：次元の生成構造/nbody_self_consistent_inflation_mechanism_{ja,en}.{md,tex,pdf}、図・再現データは 次元の生成構造/電子の反跳実験/seed除去による準安定相追試/chatgpt追試/、リリースノート 次元の生成構造/RELEASE_NOTES_nbody_self_consistent_inflation_mechanism_v1.md
+
 ### 2026-08-04: 第9論文本体「フェルミオンの生成構造——光の海における閉鎖完走としての粒子」新規公開
 
 **次元の生成構造シリーズ第9論文（本体）を公開**：三部作（二文法分解・数え上げ読出し・ロック動力学）と論文D予備実験群の総合。中心主張＝既定と例外の逆転：既定状態は光子の海（零閉塞＝公理そのもの）であり、粒子とは交換の連鎖がレジスタの閉鎖周期を完走した稀な事象である。第一の分岐＝パリティ（奇数倍音＝フェルミオン型／偶数倍音＝ボゾン型）、第二の分岐＝住所捕獲、物質/反物質は完走の幾何（λ⁶²=−1／λ¹²⁴=+1）が対で与える。万能相互作用の二項恒等式から力＝種の別名を導出、四軸判定木（パリティ・束縛・コヒーレンス・毛）で光子（毛なし完全共有偶数差モード・四性質が独立四軸から従う）・荷電/中性フェルミオン・バリオン（対応仮説）の原型とW±の空席を明示。存在量は f(N)=2(lnN+2γ−2)/N（Dirichlet評価）——物質の稀少さとゼロでないことが一つの分数から出る（η≈6×10⁻¹⁰→N≈8×10¹⁰は読み値と明記、Sakharov三条件の置換主張）。先行研究13件（Kelvin/Wheeler/Skyrme+F–R/Hestenes/Volovik/Wilczek/Sakharov/Kaluza/Klein/Ramond/Neveu–Schwarz/Chew–Frautschi/de Broglie）との収束と相違、未解決問題三層10項（60住所問題・ボゾンスペクトル・質量辞書・バリオン同定ほか）を明示。導出と総合のみ・新実験/新図表なし・出典対応節つき。

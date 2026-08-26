@@ -1,0 +1,2414 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Mechanism of Inflation-like Rapid Expansion in Self-Consistent Closed Relational-Wave Systems --- Normalization Audit{,} Rank Generation{,} Zero-Square-Closure Conservation{,} Simplex Symmetrization{,} and Reconstruction of the Axiom System},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Mechanism of Inflation-like Rapid Expansion in Self-Consistent
+Closed Relational-Wave Systems --- Normalization Audit, Rank Generation,
+Zero-Square-Closure Conservation, Simplex Symmetrization, and
+Reconstruction of the Axiom System}
+\author{Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020}
+\date{August 26, 2026 Version DOI 10.5281/zenodo.22112009}
+
+\begin{document}
+\maketitle
+
+\textbf{Version DOI:}
+\href{https://doi.org/10.5281/zenodo.22112009}{10.5281/zenodo.22112009}\\
+\textbf{Concept DOI:}
+\href{https://doi.org/10.5281/zenodo.22112008}{10.5281/zenodo.22112008}
+
+\subsection{Abstract}\label{abstract}
+
+Earlier work reported that a closed \(N\)-body relational-wave system,
+even with every external seed removed, undergoes a long latency followed
+by exponential growth of the component outside the parent plane, passes
+through rank-4 and a three-direction readout, and settles into a
+metastable structure. This paper reconstructs the onset, the
+conservation laws, the saturation, and the geometric ordering of that
+process by auditing the code, re-running \(N=3,\ldots,16\), and adding a
+linear-stability study at \(N=5\).
+
+First, the Cayley update of the real antisymmetric generator \(K_t\),
+
+\[
+C_t=(I-\gamma K_t)^{-1}(I+\gamma K_t),
+\]
+
+is a real orthogonal matrix, so \(Z^\dagger Z\) and \(Z^T Z\) are
+conserved exactly in exact arithmetic. The zero-square closure that had
+been described as ``numerically conserved'' is promoted to a kinematic
+theorem; the expansion is not an external injection but an internal
+transfer from \(H_\parallel\) to \(H_\perp\), and
+\(H_\perp\le H_{\rm total}\) forbids unbounded growth.
+
+Second, when the fixed-point residual of \texttt{make\_parent} at
+\(N=5\) is varied from \(3.87\times10^{-7}\) to \(2.38\times10^{-13}\),
+the onset step is delayed as 72, 134, 176, 238 while the exponential
+growth rate stays at about \(0.17251\)/step. Regression against the
+measured fixed-point residual gives
+
+\[
+t_{\rm onset}=11.6162[-\ln\varepsilon_{\rm parent}]-99.5631,
+\qquad R^2=0.999992 .
+\]
+
+Moreover, the rotating-frame Jacobian has a dominant unstable real
+doubly degenerate eigenvalue \(\mu_1=1.090086569\) and a weaker second
+real doubly degenerate eigenvalue \(\mu_2=1.052603212\). The prediction
+from the dominant eigenvalue,
+
+\[
+2\ln|\mu_1|=0.172514229,
+\]
+
+agrees with the directly measured growth rate of \(H_\perp\), and
+
+\[
+1/\ln|\mu_1|=11.5932
+\]
+
+agrees with the slope 11.6162 of the onset--residual regression. That
+the independent time evolution, the tolerance sweep, and the linearized
+spectrum are all consistent with one dominant eigenvalue is the main
+quantitative result of this paper. In the numerical spectrum the
+dominant multiplier \(\mu_1\) appears as a real doubly degenerate
+eigenvalue whose real two-dimensional eigenspace gives the fastest
+unstable directions; adding this dominant unstable plane to the rank-2
+parent therefore explains the initial selection of rank-4
+quantitatively. All twenty multipliers show a clear pair structure, but
+fixing the symmetry origin of that doubling analytically would require
+showing separately that the Jacobian commutes with the complex
+structure.
+
+Third, local zero-square closure at every vertex star is equivalent to
+all vertices of the centered complex simplex lying on the bilinear null
+cone. Combined with the equimodular amplitudes of the metastable state,
+the final geometry is described uniformly as an \textbf{equimodular null
+complex simplex}. The complex Gram rank \(N-1\) was confirmed for
+\(N=3\)--16.
+
+Fourth, the \(120^\circ\) separation of the three phase classes at
+\(N=4\) is derived exactly from local closure and equimodularity. At
+\(N=5\), the sign-paired structure \(3+3+2+2\) yields the number of
+nontrivial two-edge closures,
+
+\[
+3\times3+2\times2=13,
+\]
+
+and the number of exact covers partitioning the ten edges into five zero
+pairs,
+
+\[
+3!\,2!=12,
+\]
+
+combinatorially. In an 8-seed sweep, \(3+3+2+2\) and equimodularity were
+reproduced in every run, whereas the relative phase between the two
+distance families was not fixed uniquely, indicating a flat direction.
+
+Fifth, the axiom system is revised. Complex rotating pairs,
+\(\sum z_m^2=0\), and a compact \(S^1\) phase orbit follow from the
+self-consistent fixed point, but \(U^n=I\) requires a separate rational
+phase-locking mechanism that selects \(\Delta\theta/2\pi\in\mathbb Q\).
+The \(K/\sigma_{\max}\) normalization corresponds exactly, at the same
+state, to a rescaling of the Cayley step. The roughly 6.8\% difference
+in growth rate per accumulated phase observed at finite step is
+explained quantitatively by the independent step-refinement series
+\(g(n)=g_\infty+c/n\) (\(g_\infty=1.15963\), \(c=-4.105\)): estimating
+\(n_{\rm eff}\simeq41.2\) from the mean \(\bar\sigma\simeq3.49\) of the
+raw-\(K\) run gives \(g_{\rm pred}=1.0600\), within 0.13\% of the
+measured \(1.05874\). Both updates therefore converge to the same
+continuum limit, and the possibility that normalization artificially
+generated the expansion is excluded both by the Cayley identity and by
+the step-convergence series.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Introduction}\label{introduction}
+
+This series studies numerically a closed system in which \(N\) entities
+and all their pairwise relations,
+
+\[
+M=\frac{N(N-1)}2,
+\]
+
+are treated as relational waves. Previously the foundational conditions
+were the nontrivial zero-square closure
+
+\[
+\sum_m z_m^2=0
+\]
+
+and the finite recurrence
+
+\[
+U^n=I,
+\]
+
+taken as axioms, on top of which the possibilities of finite closed
+systems, phase, direction, interaction, and quantization were examined.
+
+The preceding study {[}K8{]} confirmed that even when the external seeds
+are removed step by step, the system undergoes geometric rapid expansion
+after a long latency, the direction subspace rotates and mixes during
+the expansion, and the system finally moves to a metastable
+three-direction structure. The simple explanation ``no seed, no
+expansion'' was therefore rejected.
+
+The following questions, however, remained open in that study.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Why does the rapid expansion start?
+\item
+  What actually expands?
+\item
+  When and from where does rank-4 appear?
+\item
+  Why does the rapid expansion stop?
+\item
+  Why are directions generated?
+\item
+  Do the numerical normalization and the step size contained in the
+  initialization and the time evolution create the phenomenon?
+\item
+  Are the two conventional axioms \(\sum z^2=0\) and \(U^n=I\) really
+  independent input axioms?
+\end{enumerate}
+
+This paper re-examines these questions by an implementation audit and by
+re-running \(N=3\)--16.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. What Is Inherited from the Preceding Study and What Is
+Corrected}\label{what-is-inherited-from-the-preceding-study-and-what-is-corrected}
+
+\subsubsection{2.1 The direct predecessor}\label{the-direct-predecessor}
+
+The direct predecessor is {[}K8{]}. It confirmed that rapid expansion
+and direction generation persist after seed removal.
+
+That paper, however, contained the following statement.
+
+\begin{quote}
+The initialization \texttt{make\_parent} presupposes the zero-square
+closure condition.
+\end{quote}
+
+Auditing the code back to the original source, we found that this
+statement needs correction.
+
+\texttt{make\_parent} does not impose \(\sum z_m^2=0\) directly as a
+numerical constraint. What it actually does is search for a
+self-consistent eigenmode fixed point of a phase-dependent real
+antisymmetric action. Zero-square closure appears on the output side as
+a consequence.
+
+This paper therefore does not deny the experimental facts of {[}K8{]};
+it \textbf{corrects the understanding of the initialization mechanism
+through a code audit and, as a consequence, reconstructs the axiom
+system further upstream}.
+
+\subsubsection{2.2 What was re-examined}\label{what-was-re-examined}
+
+We re-audited
+
+\begin{itemize}
+\tightlist
+\item
+  the original code,
+\item
+  \texttt{make\_parent},
+\item
+  the Cayley time evolution,
+\item
+  the \(K/\sigma_{\max}\) normalization,
+\item
+  the step parameter \texttt{GAMMA},
+\item
+  the time evolution of the rank,
+\item
+  \(Z^T Z\),
+\item
+  complex distances,
+\item
+  the simplex rank,
+\item
+  the metastabilization of amplitudes and phases,
+\item
+  partial zero closures.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. Minimal Input of the
+System}\label{minimal-input-of-the-system}
+
+The only independent size parameter in this paper is \(N\).
+
+Because all pairwise relations of \(N\) entities are taken,
+
+\[
+M=\binom N2=\frac{N(N-1)}2
+\]
+
+is a derived quantity, not an independent parameter.
+
+Abstracting the current implementation, the minimal input is
+
+\begin{center}\fbox{\parbox{0.9\linewidth}{\centering $N
++$ complete pairwise relations $+$ self-consistent fixed-point condition}}\end{center}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{4. Implementation Audit of
+\texttt{make\_parent}}{4. Implementation Audit of make\_parent}}\label{implementation-audit-of-make_parent}
+
+\subsubsection{4.1 The actual code}\label{the-actual-code}
+
+The core of the \texttt{make\_parent} currently in use is the following.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ make\_parent(sys\_lr, rng, iters}\OperatorTok{=}\DecValTok{400}\NormalTok{, beta}\OperatorTok{=}\FloatTok{0.5}\NormalTok{, tol}\OperatorTok{=}\FloatTok{1e{-}8}\NormalTok{, restarts}\OperatorTok{=}\DecValTok{3}\NormalTok{):}
+\NormalTok{    best }\OperatorTok{=}\NormalTok{ (}\VariableTok{None}\NormalTok{, np.inf, }\VariableTok{None}\NormalTok{)}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(restarts):}
+\NormalTok{        theta }\OperatorTok{=}\NormalTok{ rng.uniform(}\FloatTok{0.0}\NormalTok{, }\FloatTok{2.0} \OperatorTok{*}\NormalTok{ np.pi, sys\_lr.m)}
+\NormalTok{        v }\OperatorTok{=} \VariableTok{None}
+        \ControlFlowTok{for}\NormalTok{ it }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(iters):}
+\NormalTok{            sys\_lr.set\_theta(theta)}
+\NormalTok{            ev, EV }\OperatorTok{=}\NormalTok{ np.linalg.eig(sys\_lr.J }\OperatorTok{@}\NormalTok{ sys\_lr.G)}
+\NormalTok{            idx }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(np.argmin(ev.imag))  }\CommentTok{\# lambda = {-}i sigma\_max}
+\NormalTok{            v }\OperatorTok{=}\NormalTok{ sys\_lr.w(EV[:, idx].astype(}\BuiltInTok{complex}\NormalTok{))}
+\NormalTok{            v }\OperatorTok{=}\NormalTok{ v }\OperatorTok{/}\NormalTok{ np.linalg.norm(v)}
+\NormalTok{            theta\_new }\OperatorTok{=}\NormalTok{ np.angle(v)}
+\NormalTok{            mix }\OperatorTok{=}\NormalTok{ (}\FloatTok{1.0} \OperatorTok{{-}}\NormalTok{ beta) }\OperatorTok{*}\NormalTok{ np.exp(}\OtherTok{1j} \OperatorTok{*}\NormalTok{ theta) }\OperatorTok{\textbackslash{}}
+                \OperatorTok{+}\NormalTok{ beta }\OperatorTok{*}\NormalTok{ np.exp(}\OtherTok{1j} \OperatorTok{*}\NormalTok{ theta\_new)}
+\NormalTok{            theta }\OperatorTok{=}\NormalTok{ np.angle(mix)}
+
+            \ControlFlowTok{if}\NormalTok{ it }\OperatorTok{\%} \DecValTok{10} \OperatorTok{==} \DecValTok{9}\NormalTok{:}
+\NormalTok{                sys\_lr.set\_theta(np.angle(v))}
+\NormalTok{                res\_now }\OperatorTok{=}\NormalTok{ \_eigenmode\_residual(sys\_lr, v)}
+                \ControlFlowTok{if}\NormalTok{ res\_now }\OperatorTok{\textless{}}\NormalTok{ tol:}
+                    \ControlFlowTok{break}
+
+\NormalTok{        sys\_lr.set\_theta(np.angle(v))}
+\NormalTok{        residual }\OperatorTok{=}\NormalTok{ \_eigenmode\_residual(sys\_lr, v)}
+        \ControlFlowTok{if}\NormalTok{ residual }\OperatorTok{\textless{}}\NormalTok{ best[}\DecValTok{1}\NormalTok{]:}
+\NormalTok{            best }\OperatorTok{=}\NormalTok{ (v, residual, sys\_lr.sigma\_spectrum())}
+        \ControlFlowTok{if}\NormalTok{ residual }\OperatorTok{\textless{}}\NormalTok{ tol:}
+            \ControlFlowTok{break}
+
+\NormalTok{    v, residual, sig }\OperatorTok{=}\NormalTok{ best}
+\NormalTok{    sys\_lr.set\_theta(np.angle(v))}
+    \ControlFlowTok{return}\NormalTok{ v, residual, sig}
+\end{Highlighting}
+\end{Shaded}
+
+Here the initial value \texttt{theta} is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theta }\OperatorTok{=}\NormalTok{ rng.uniform(}\FloatTok{0.0}\NormalTok{, }\FloatTok{2.0}\OperatorTok{*}\NormalTok{np.pi, M)}
+\end{Highlighting}
+\end{Shaded}
+
+that is, \textbf{real random numbers}.
+
+No pair of random amplitude sets for real and imaginary parts is given
+as a physical initial value.
+
+The \texttt{astype(complex)} in the implementation exists only to store
+the complex-conjugate eigenmode of the real matrix \texttt{J\ @\ G}; it
+does not specify any complex phase relation as an external condition.
+
+\subsubsection{4.2 Self-consistency as a fixed
+point}\label{self-consistency-as-a-fixed-point}
+
+Conceptually, the iteration
+
+\[
+\theta
+\rightarrow
+G(\theta)
+\rightarrow
+v
+\rightarrow
+\arg v
+\rightarrow
+\theta'
+\]
+
+is repeated and a fixed point with
+
+\[
+\boxed{\theta'=\theta}
+\]
+
+is sought.
+
+The essence of \texttt{make\_parent} is therefore the self-consistent
+fixed-point condition
+
+\[
+\boxed{\mathcal F(X)=X} .
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Spontaneous Generation of the Complex
+Structure}\label{spontaneous-generation-of-the-complex-structure}
+
+\subsubsection{5.1 Real antisymmetric
+action}\label{real-antisymmetric-action}
+
+The generator \(K\) is real antisymmetric,
+
+\[
+K^T=-K.
+\]
+
+Its nonzero eigenmodes have the form
+
+\[
+Kv=i\sigma v .
+\]
+
+Writing
+
+\[
+v=a+ib
+\]
+
+gives
+
+\[
+Ka=-\sigma b,\qquad
+Kb=\sigma a.
+\]
+
+Thus \(a,b\) are not two components supplied independently from outside;
+they are \textbf{the rotating pair that appears inside a nonzero
+eigenmode of a real antisymmetric action}.
+
+In this sense one may read
+
+\begin{center}\fbox{\parbox{0.9\linewidth}{\centering real initial phases $+$ self-consistent real antisymmetric action $\Rightarrow$ complex rotating structure}}\end{center}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. From Self-Consistency to Zero-Square
+Closure}\label{from-self-consistency-to-zero-square-closure}
+
+By real antisymmetry, for any \(v\),
+
+\[
+v^T K v=0 .
+\]
+
+Substituting a self-consistent nonzero eigenmode
+
+\[
+Kv=i\sigma v,\qquad \sigma\neq0
+\]
+
+gives
+
+\[
+v^TKv=i\sigma v^Tv=0 .
+\]
+
+Hence
+
+\[
+\boxed{v^Tv=0},
+\]
+
+that is,
+
+\[
+\boxed{\sum_m v_m^2=0} .
+\]
+
+Furthermore, with \(v=a+ib\),
+
+\[
+\sum_m(a_m+ib_m)^2=0
+\]
+
+yields
+
+\[
+\boxed{\|a\|^2=\|b\|^2},
+\qquad
+\boxed{a\cdot b=0}.
+\]
+
+Zero-square closure is therefore not an external constraint given to
+\texttt{make\_parent}; it is derived from the self-consistent nonzero
+antisymmetric eigenmode.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. Linear-Combination Closure at Each
+Vertex}\label{linear-combination-closure-at-each-vertex}
+
+In the complete graph on \(N\) vertices, \(N-1\) relational waves are
+incident to vertex \(i\).
+
+In the present \(N=3\)--16 analysis, for \(N\ge4\) each vertex satisfied
+
+\[
+\boxed{
+\sum_{j\neq i} z_{ij}^2\simeq0
+}
+\]
+
+within numerical precision.
+
+This means that the state of each vertex is a linear-combination closure
+built from the \(N-1\) relational waves other than itself:
+
+\begin{center}\fbox{\parbox{0.9\linewidth}{\centering state of one vertex $=$ self-consistent linear combination of the $(N-1)$ incident relational waves}}\end{center}
+
+Since each relation \(z_{ij}\) belongs to the local closures of both
+vertex \(i\) and vertex \(j\), the whole system is covered by \(N\)
+mutually overlapping local linear closures.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{8. From Zero-Square Closure to a Compact
+Phase Orbit --- the Logical Distinction from
+\(U^n=I\)}{8. From Zero-Square Closure to a Compact Phase Orbit --- the Logical Distinction from U\^{}n=I}}\label{from-zero-square-closure-to-a-compact-phase-orbit-the-logical-distinction-from-uni}
+
+From
+
+\[
+v^Tv=0
+\]
+
+we have, for \(v=a+ib\),
+
+\[
+\|a\|=\|b\|,
+\qquad
+a\perp b,
+\]
+
+so the state can be written as a rotating pair of finite radius,
+
+\[
+X(\theta)=a\cos\theta+b\sin\theta .
+\]
+
+Hence
+
+\[
+X(\theta+2\pi)=X(\theta),
+\]
+
+and a \textbf{compact \(S^1\) phase orbit} can be derived from the
+self-consistent fixed point.
+
+Finite recurrence,
+
+\[
+U^n=I,
+\]
+
+however, does not follow automatically. To return to the initial state
+after a finite \(n\), the phase increment must satisfy
+
+\[
+\frac{\Delta\theta}{2\pi}\in\mathbb Q .
+\]
+
+For an irrational rotation the orbit is dense on \(S^1\) and never
+closes in finitely many steps.
+
+The logical hierarchy that this paper can establish rigorously is
+therefore
+
+\begin{center}\fbox{\parbox{0.9\linewidth}{\centering self-consistent fixed point $\Rightarrow$ complex rotating pair $\Rightarrow
+\sum z_m^2=0
+\Rightarrow
+S^1$ compactness}}\end{center}
+
+and no further. The remaining step must be separated as
+
+\begin{center}\fbox{\parbox{0.9\linewidth}{\centering $S^1$ compactness $+$ rational phase locking / discrete phase selection $\Rightarrow
+U^n=I$}}\end{center}
+
+This paper therefore does not claim that \(U^n=I\), previously placed as
+an axiom, has been fully derived from self-consistency. The rational
+phase-locking mechanism is an independent problem to be examined in
+connection with the separate phase-discretization experiments.
+
+\subsection{9. Implementation of the Time
+Evolution}\label{implementation-of-the-time-evolution}
+
+At each step the time evolution reads the phase of the current state,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sys\_lr.set\_theta(np.angle(Z))}
+\NormalTok{sig\_est, wp }\OperatorTok{=}\NormalTok{ sys\_lr.sigma\_max\_power(wp)}
+\NormalTok{Z }\OperatorTok{=}\NormalTok{ sys\_lr.cayley\_step(Z, sig\_est)}
+\end{Highlighting}
+\end{Shaded}
+
+and writes back the next state.
+
+Physically,
+
+\[
+Z_t
+\rightarrow
+\theta_t=\arg Z_t
+\rightarrow
+K(\theta_t)
+\rightarrow
+U_t Z_t
+\rightarrow
+Z_{t+1} .
+\]
+
+The generator is therefore not fixed: it is \textbf{a state-dependent
+generator reconstructed at every step from the readout of the current
+wave state}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. Cayley Update and Phase
+Rotation}\label{cayley-update-and-phase-rotation}
+
+The time evolution is the Cayley transform
+
+\[
+Z_{t+1}
+=
+(I-\gamma K_t)^{-1}
+(I+\gamma K_t)Z_t .
+\]
+
+For real antisymmetric \(K_t\) this update is a norm-preserving
+rotation.
+
+For an eigenmode
+
+\[
+K_tv=i\sigma v
+\]
+
+we have
+
+\[
+v\rightarrow
+\frac{1+i\gamma\sigma}
+     {1-i\gamma\sigma}v
+=
+e^{i\Delta\phi}v,
+\]
+
+\[
+\boxed{
+\Delta\phi
+=
+2\arctan(\gamma\sigma)
+} .
+\]
+
+This formula is the mathematical expression of ``read the state, rotate
+the phase, write back the next state''.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{11. The Unnecessary \(K/\sigma_{\max}\)
+Normalization and Time
+Reparametrization}{11. The Unnecessary K/\textbackslash sigma\_\{\textbackslash max\} Normalization and Time Reparametrization}}\label{the-unnecessary-ksigma_max-normalization-and-time-reparametrization}
+
+\subsubsection{11.1 Old code and corrected
+code}\label{old-code-and-corrected-code}
+
+The earlier code used the generator
+
+\[
+K\rightarrow\frac{K}{\sigma_{\max}} .
+\]
+
+The corrected code uses the raw \(K\).
+
+At the same state the Cayley map satisfies the identity
+
+\[
+C\!\left(\frac K\sigma,\gamma\right)
+=
+C\!\left(K,\frac\gamma\sigma\right) .
+\]
+
+In the continuum limit, therefore, the vector fields with and without
+normalization point in the same direction, and the normalization can be
+understood as a state-dependent change of clock.
+
+In the earlier step-axis comparison at \(N=4,5\), the ratio of growth
+rates raw/normalized and the ratio of arrival steps normalized/raw were
+
+\[
+N=4:\quad2.708\ \text{vs}\ 2.702,
+\]
+
+\[
+N=5:\quad3.495\ \text{vs}\ 3.489,
+\]
+
+in agreement, which strongly suggested the time-reparametrization
+interpretation.
+
+\subsubsection{11.2 Additional verification on the accumulated-phase
+axis}\label{additional-verification-on-the-accumulated-phase-axis}
+
+The existing \(N=5\) data were re-plotted against the accumulated Cayley
+phase of the dominant mode,
+
+\[
+\Phi(t)=\sum_{s<t}2\arctan(\gamma\sigma_s) .
+\]
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: comparison with and without normalization on the accumulated-phase axis. The finite-step trajectory difference is compared in terms of the accumulated Cayley phase.}]{figs/N5_normalized_vs_raw_cumulative_phase.png}}
+\caption{\(N=5\): comparison with and without normalization on the
+accumulated-phase axis. The finite-step trajectory difference is
+compared in terms of the accumulated Cayley phase.}
+\end{figure}
+
+At finite step the two curves do not coincide completely; the RMSE of
+\(\log_{10}H_\perp\) in the growth region was \textbf{0.944 decade}. In
+an unstable system, however, a tiny discretization difference is
+amplified exponentially, so the trajectory RMSE alone is not used as a
+refutation of the time-reparametrization hypothesis. We therefore
+regressed separately the slope of \(\ln H_\perp\) per accumulated phase
+in the exponential-growth region \(10^{-10}<H_\perp<10^{-3}\) of the
+same data. The result is
+
+\[
+\frac{d\ln H_\perp}{d\Phi}
+=
+1.13117\quad(K/\sigma_{\max}),
+\]
+
+\[
+\frac{d\ln H_\perp}{d\Phi}
+=
+1.05874\quad(\text{raw }K),
+\]
+
+a difference of about 6.8\%. The intercepts of the same regressions,
+\(-55.7414\) and \(-55.7412\), almost coincide. At the current
+\(\gamma=\tan(\pi/144)\), therefore, the difference cannot be absorbed
+by a mere horizontal or vertical offset; a small but measurable
+difference remains in the effective finite-step growth rate.
+
+This 6.8\% difference can be closed with the step-refinement series
+already obtained in the next section. A least-squares fit of the five
+points of §12 to
+
+\[
+g(n)=g_\infty+\frac{c}{n}
+\]
+
+gives
+
+\[
+g_\infty=1.1596346,\qquad c=-4.10498,
+\]
+
+with a maximum residual of \(8.12\times10^{-5}\) over the five points.
+The growth rate per accumulated phase is thus described to high
+precision by a first-order finite-step correction.
+
+On the other hand, by the identity at the same state,
+
+\[
+C(K/\sigma,\gamma)=C(K,\gamma/\sigma),
+\]
+
+the raw-\(K\) update can be read as the normalized update run at a
+coarser effective step on average. Estimating \(\bar\sigma\simeq3.49\)
+from the \(N=5\) step-axis growth-rate ratio,
+
+\[
+n_{\rm eff}\simeq\frac{144}{3.49}=41.2 .
+\]
+
+At this point the independent convergence law predicts
+
+\[
+g(41.2)=1.1596346-\frac{4.10498}{41.2}\simeq1.0600,
+\]
+
+which agrees with the directly measured raw-\(K\) value \(1.05874\) to
+about 0.13\%. Since \(\sigma_t\) is time dependent, \(n_{\rm eff}\) is
+an average approximation, but this agreement shows that the roughly
+6.8\% finite-step difference is explained by the same first-order step
+correction. The agreement of the two intercepts, \(-55.7414\) and
+\(-55.7412\), is also consistent with the interpretation that the
+initial perturbation is common and the difference stems mainly from the
+step.
+
+The conclusion is therefore
+
+\begin{center}\fbox{\parbox{0.9\linewidth}{\centering the $K/\sigma_{\max}$ normalization is a state-dependent rescaling of the Cayley step; the finite-step raw/normalized difference is explained quantitatively by the independently measured first-order step correction, and both converge to the same continuum limit.}}\end{center}
+
+Hence the possibility that normalization or step size artificially
+generated the inflation-like expansion itself is excluded both by the
+algebraic identity and by the continuum-limit series.
+
+\subsection{\texorpdfstring{12. \texttt{144} Is a Time Step, Not a
+Physical
+Constant}{12. 144 Is a Time Step, Not a Physical Constant}}\label{is-a-time-step-not-a-physical-constant}
+
+The code sets
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{GAMMA }\OperatorTok{=}\NormalTok{ math.tan(math.pi }\OperatorTok{/} \FloatTok{144.0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Note that \(\pi/144\) is the angle of the Cayley parameter; the actual
+one-step rotation angle for a normalized eigenmode with \(\sigma=1\) is
+
+\[
+\Delta\phi
+=
+2\arctan[\tan(\pi/144)]
+=
+\frac{2\pi}{144}
+=
+\frac{\pi}{72}
+=
+2.5^\circ .
+\]
+
+Thus ``144'' is not a physical constant but the denominator of the
+numerical time step chosen to obtain a \(2.5^\circ\) increment.
+
+For \(N=5\) we refined the step as
+
+\[
+n_\gamma=144,\ 288,\ 576,\ 1152,\ 2304
+\]
+
+with
+
+\[
+\gamma=\tan(\pi/n_\gamma)
+\]
+
+and examined the continuum limit.
+
+The growth rate per accumulated phase converged as
+
+\begin{itemize}
+\tightlist
+\item
+  144: 1.131171 /rad
+\item
+  288: 1.145300 /rad
+\item
+  576: 1.152475 /rad
+\item
+  1152: 1.156090 /rad
+\item
+  2304: 1.157905 /rad
+\end{itemize}
+
+These five points are described by the first-order convergence law
+
+\[
+g(n)=g_\infty+\frac{c}{n},\qquad
+g_\infty=1.1596346,\quad c=-4.10498,
+\]
+
+with a maximum residual of \(8.12\times10^{-5}\). This convergence law
+independently explains the raw/normalized difference of §11.2.
+
+Therefore
+
+\begin{center}\fbox{\parbox{0.9\linewidth}{\centering there is no physical resonance specific to 144; the dynamics converges to the continuum-time limit $\gamma\rightarrow0 .$}}\end{center}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: continuum limit under step refinement. The growth rate per accumulated phase converges to a common limit with a first-order finite-step correction.}]{figs/N5_gamma_continuum_convergence.png}}
+\caption{\(N=5\): continuum limit under step refinement. The growth rate
+per accumulated phase converges to a common limit with a first-order
+finite-step correction.}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{13. The Rank-2 Initial State and the Spontaneous Generation
+of
+Rank-4}\label{the-rank-2-initial-state-and-the-spontaneous-generation-of-rank-4}
+
+The parent state obtained by \texttt{make\_parent} has a rank-2 initial
+plane spanned by its real and imaginary parts.
+
+When the time evolution starts from this state, the component outside
+the parent plane rises spontaneously and the readout structure moves to
+rank-4.
+
+The important point is
+
+\[
+\boxed{
+\text{rank-4 is not given as an initial condition}
+} .
+\]
+
+Rank-4 is generated spontaneously by the iteration that reads the
+current state, reconstructs the generator, and writes back the
+phase-rotated result.
+
+The rank-4 referred to here differs from the Gram rank \(N-1\) of the
+complex simplex discussed later. The former is the readout of the ``two
+two-dimensional rotation planes'' that rise during the time evolution;
+the latter is the simplex rank of the distance geometry of \(N\)
+vertices.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{14. Generation of Three
+Directions}\label{generation-of-three-directions}
+
+Let the initial rank-2 plane be \(A\).
+
+During the time evolution a second two-dimensional plane \(B\) rises
+outside the parent plane.
+
+Reading the relative configuration of the two planes, one can identify
+three directions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  the shared direction related to both planes,
+\item
+  the independent direction on the side of plane \(A\),
+\item
+  the independent direction on the side of plane \(B\).
+\end{enumerate}
+
+Hence the generation sequence
+
+\begin{center}\fbox{\parbox{0.9\linewidth}{\centering rank-2 $\rightarrow$ rank-4 $\rightarrow$ three-direction readout}}\end{center}
+
+is obtained.
+
+The ``three directions'' observed in {[}K8{]} are not an amplification
+of three axes fixed from the beginning; they are formed dynamically
+during the rapid expansion, accompanied by rotation and mixing of
+subspaces.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{15. What Expands --- Internal Transfer under Exact
+Conservation}\label{what-expands-internal-transfer-under-exact-conservation}
+
+Let \(Z_\parallel,Z_\perp\) be the projection onto the parent plane and
+the orthogonal component, and
+
+\[
+H_\parallel=\|Z_\parallel\|^2,
+\qquad
+H_\perp=\|Z_\perp\|^2 .
+\]
+
+Since the orthogonal decomposition is fixed, together with the exact
+conservation law of the Cayley update shown in the next section,
+
+\[
+H_\parallel+H_\perp=H_{\rm total} .
+\]
+
+We overlaid both quantities directly from the corrected raw-\(K\)
+\(N=5\) data.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: depletion of the parent-plane component and growth of the transverse component. Their sum is conserved exactly, showing that the rapid expansion is an internal transfer.}]{figs/N5_pump_depletion_Hparallel_Hperp.png}}
+\caption{\(N=5\): depletion of the parent-plane component and growth of
+the transverse component. Their sum is conserved exactly, showing that
+the rapid expansion is an internal transfer.}
+\end{figure}
+
+The maximum error of the implementation is
+
+\[
+\max|H_\parallel+H_\perp-H_{\rm total}|=4.44\times10^{-16}.
+\]
+
+At step 5000,
+
+\[
+H_\parallel=0.3220054054,
+\qquad
+H_\perp=0.6779945946 .
+\]
+
+The rapid growth of \(H_\perp\) is therefore not an external injection
+but an \textbf{exact internal redistribution} from the parent-plane
+component to the orthogonal directions.
+
+Moreover, since
+
+\[
+0\le H_\perp\le H_{\rm total}=\text{const.},
+\]
+
+the fact that the exponential growth does not continue indefinitely is
+kinematically enforced.
+
+\subsection{16. Two Exact Conservation Laws of the Cayley
+Update}\label{two-exact-conservation-laws-of-the-cayley-update}
+
+The generator at each step is real antisymmetric,
+
+\[
+K_t^T=-K_t .
+\]
+
+Hence the Cayley map
+
+\[
+C_t=(I-\gamma K_t)^{-1}(I+\gamma K_t)
+\]
+
+is a real orthogonal matrix satisfying identically
+
+\[
+C_t^T C_t=I .
+\]
+
+In exact arithmetic, therefore, even though the generator changes with
+the state at every step,
+
+\[
+\boxed{Z_{t+1}^\dagger Z_{t+1}=Z_t^\dagger Z_t}
+\]
+
+and
+
+\[
+\boxed{Z_{t+1}^T Z_{t+1}=Z_t^T Z_t}
+\]
+
+are conserved exactly.
+
+The earlier statements ``\(H_{\rm total}\) is almost constant'' and
+``\(Z^TZ\simeq0\) is maintained'' are thus promoted from numerical
+findings to \textbf{structural theorems of the update rule}. The
+residuals of order \(10^{-15}\) observed in the \(N=5\) raw-\(K\)
+implementation are the floating-point implementation error of this exact
+theorem.
+
+This theorem guarantees analytically that the inflation-like expansion
+is not an energy generation that violates conservation, but an internal
+rearrangement of a conserved total quantity.
+
+\subsection{17. Complex Simplex and the Null Cone --- a Geometric
+Theorem on Local
+Closure}\label{complex-simplex-and-the-null-cone-a-geometric-theorem-on-local-closure}
+
+Let the complex squared distance of each relation be
+
+\[
+q_{ij}=z_{ij}^2=(x_i-x_j)\cdot(x_i-x_j),
+\]
+
+and take the centroid at
+
+\[
+\sum_i x_i=0 .
+\]
+
+The star sum at vertex \(i\) is
+
+\[
+\sum_{j\ne i}(x_i-x_j)^2
+=Nx_i^2+T,
+\qquad
+T\equiv\sum_jx_j^2 .
+\]
+
+If local closure
+
+\[
+\sum_{j\ne i}q_{ij}=0
+\]
+
+holds at every vertex, then
+
+\[
+x_i^2=-T/N
+\]
+
+is common to all \(i\). Summing over all vertices gives \(T=-T\), hence
+
+\[
+T=0,
+\]
+
+and therefore
+
+\[
+\boxed{x_i\cdot x_i=0\quad\forall i}.
+\]
+
+The converse holds immediately, so
+
+\begin{center}\fbox{\parbox{0.9\linewidth}{\centering zero-square closure of every vertex star $\Longleftrightarrow$ all simplex vertices lie on the complex null cone}}\end{center}
+
+is a theorem.
+
+In this case
+
+\[
+q_{ij}=-2x_i\cdot x_j .
+\]
+
+Across the whole series \(N=3\)--16 the complex Gram rank is
+
+\[
+\operatorname{rank}B=N-1,
+\]
+
+so the \(N\) vertices form an \((N-1)\)-dimensional complex simplex.
+
+\subsection{18. Metastabilization to an Equimodular Null Complex
+Simplex}\label{metastabilization-to-an-equimodular-null-complex-simplex}
+
+After long evolution, for most \(N\),
+
+\[
+|z_{ij}|^2\rightarrow\frac1M ,
+\]
+
+i.e.~equipartition.
+
+Combined with the null-cone theorem of the previous section, the
+metastable state is summarized as one geometric object,
+
+\[
+\boxed{
+\text{equimodular null complex simplex}
+} ,
+\]
+
+namely
+
+\[
+x_i^2=0,
+\qquad
+|x_i\cdot x_j|=\frac{1}{2M}\quad(i\ne j).
+\]
+
+For \(N=5\) we computed the spectral entropy of the amplitude
+distribution,
+
+\[
+p_m=\frac{|z_m|^2}{\sum_k|z_k|^2},
+\qquad
+S=-\sum_mp_m\ln p_m .
+\]
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: spectral entropy. It approaches equipartition over long times, but not as a simple monotone H-theorem.}]{figs/N5_spectral_entropy.png}}
+\caption{\(N=5\): spectral entropy. It approaches equipartition over
+long times, but not as a simple monotone H-theorem.}
+\end{figure}
+
+Initially \(S/\ln M=0.97472\); it dipped once to 0.97322 at step 375 and
+reached
+
+\[
+\boxed{S/\ln M=1.000000}
+\]
+
+at step 5000. The final equipartition is therefore quantitatively
+complete. Since \(S(t)\) is not strictly monotone, however, this differs
+from a simple H-theorem.
+
+\subsection{19. Stopping of the Rapid Expansion: Kinematic Bound and
+Subsequent Simplex
+Ordering}\label{stopping-of-the-rapid-expansion-kinematic-bound-and-subsequent-simplex-ordering}
+
+By the Cayley orthogonality,
+
+\[
+H_\perp\le H_{\rm total}=\text{const.},
+\]
+
+so the fact that the exponential growth saturates rather than continuing
+indefinitely is explained kinematically.
+
+The question ``why does it stop'' therefore splits into two.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Why it does not grow indefinitely}: resolved by the bound from
+  total-norm conservation.
+\item
+  \textbf{Why it moves to a specific equimodular simplex configuration}:
+  still a dynamical problem.
+\end{enumerate}
+
+At \(N=5\), even after \(H_\perp\) has nearly saturated, the ordering of
+the four phase/distance classes continues for a long time.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: time evolution of rapid expansion and ordering. Simplex ordering continues after the expansion has saturated.}]{figs/N5_inflation_vs_ordering.png}}
+\caption{\(N=5\): time evolution of rapid expansion and ordering.
+Simplex ordering continues after the expansion has saturated.}
+\end{figure}
+
+The time evolution therefore has at least two stages,
+
+\begin{center}\fbox{\parbox{0.9\linewidth}{\centering linear instability / rapid transfer $\rightarrow$ bounded saturation $\rightarrow$ slow simplex ordering}}\end{center}
+
+\subsection{\texorpdfstring{20. The Series
+\(N=3\)--16}{20. The Series N=3--16}}\label{the-series-n316}
+
+The main results are summarized below.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+N
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+M
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+simplex rank
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+outline of the metastable phase structure
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+3 & 3 & 2 & triangular simplex, still relaxing at 5000 steps \\
+4 & 6 & 3 & \(2+2+2\): the three pairs of opposite edges of a
+tetrahedron \\
+5 & 10 & 4 & \(3+3+2+2\), plus nontrivial two-edge closures \\
+6 & 15 & 5 & strictly multi-class, a boundary case with slow
+relaxation \\
+7 & 21 & 6 & 21 edges nondegenerate at high precision \\
+8 & 28 & 7 & 28 edges nondegenerate at high precision \\
+9 & 36 & 8 & 36 edges nondegenerate at high precision \\
+10 & 45 & 9 & 45 edges nondegenerate at high precision \\
+11 & 55 & 10 & 55 edges nondegenerate at high precision \\
+12 & 66 & 11 & 66 edges nondegenerate at high precision \\
+13 & 78 & 12 & 78 edges nondegenerate at high precision \\
+14 & 91 & 13 & nondegenerate, one 6-edge quasi-closure candidate \\
+15 & 105 & 14 & 105 edges nondegenerate at high precision \\
+16 & 120 & 15 & 120 edges nondegenerate at high precision \\
+\end{longtable}
+}
+
+Universal are
+
+\[
+\boxed{
+\operatorname{rank}=N-1
+}
+\]
+
+and, in the metastable state,
+
+\[
+\boxed{
+|z|^2\rightarrow1/M
+} .
+\]
+
+The small phase groups and the additional closures, on the other hand,
+depend strongly on \(N\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{21. The Opposite-Edge Structure at \(N=4\)
+--- \(120^\circ\) Is a Theorem, Not a Numerical
+Approximation}{21. The Opposite-Edge Structure at N=4 --- 120\^{}\textbackslash circ Is a Theorem, Not a Numerical Approximation}}\label{the-opposite-edge-structure-at-n4-120circ-is-a-theorem-not-a-numerical-approximation}
+
+At \(N=4\) the six edges split into three pairs of opposite edges,
+
+\[
+(12,34),\qquad(13,24),\qquad(14,23).
+\]
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=4: the three opposite-edge classes of the tetrahedron. The 120\^{}\textbackslash circ separation of the three classes follows exactly from local closure and equimodularity.}]{figs/N4_tetrahedron_opposite_edge_classes.png}}
+\caption{\(N=4\): the three opposite-edge classes of the tetrahedron.
+The \(120^\circ\) separation of the three classes follows exactly from
+local closure and equimodularity.}
+\end{figure}
+
+Each vertex star contains one edge from each class, so local closure
+reads
+
+\[
+v_1+v_2+v_3=0 .
+\]
+
+Under metastable equipartition,
+
+\[
+|v_1|=|v_2|=|v_3| .
+\]
+
+Three complex numbers of equal modulus can sum to zero only by forming
+an equilateral triangle in the complex plane, hence
+
+\[
+\boxed{\Delta\arg=2\pi/3=120^\circ}
+\]
+
+follows exactly.
+
+The earlier ``about \(120^\circ\)'' is therefore not a numerical
+observation but a theorem from local closure plus equipartition. Since a
+\(120^\circ\) configuration contains no pair of opposite signs, this
+also explains at once why \(N=4\) has no two-edge zero closures of the
+\(N=5\) type.
+
+\subsection{\texorpdfstring{22. The Special Symmetry of
+\(N=5\)}{22. The Special Symmetry of N=5}}\label{the-special-symmetry-of-n5}
+
+Among the present series \(N=3\)--16, \(N=5\) is not merely ``a complex
+simplex with five vertices and rank 4''; it is \textbf{the clearest
+singular case in which phase classification, complex-squared-distance
+classification, a three-dimensional readout, and partial zero closures
+independent of the generic vertex closures all coincide}.
+
+Here we describe \(N=5\) in detail, including its time evolution, not
+only its final state.
+
+We first show overview figures that capture the structure obtained at
+\(N=5\) on one page. The detailed subsections below decompose and verify
+each element of these figures in turn.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: overview of the complex relational distance structure. Five vertices, ten relations, rank 4, and the 3+3+2+2 structure are displayed together.}]{figs/N5_complex_distance_structure_overview_en.png}}
+\caption{\(N=5\): overview of the complex relational distance structure.
+Five vertices, ten relations, rank 4, and the \(3+3+2+2\) structure are
+displayed together.}
+\end{figure}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: overview of the complete complex-simplex analysis. The two-stage evolution --- rapid expansion and four-class ordering --- is shown on a common time axis.}]{figs/N5_complete_simplex_analysis_overview_en.png}}
+\caption{\(N=5\): overview of the complete complex-simplex analysis. The
+two-stage evolution --- rapid expansion and four-class ordering --- is
+shown on a common time axis.}
+\end{figure}
+
+\subsubsection{22.1 Basic geometry: five vertices, ten relations, rank
+4}\label{basic-geometry-five-vertices-ten-relations-rank-4}
+
+At \(N=5\) the number of complete pairwise relations is
+
+\[
+M=\frac{5\cdot4}{2}=10 .
+\]
+
+From the ten complex relational waves \(z_{ij}\) we form the complex
+squared distances
+
+\[
+d_{ij}^2=z_{ij}^2
+\]
+
+and the centered complex Gram matrix
+
+\[
+B=-\frac12 JD^2J ,
+\]
+
+whose nontrivial rank is
+
+\[
+\boxed{\operatorname{rank}B=4} .
+\]
+
+The basic structure is thus ``five vertices, ten edges, rank 4'',
+corresponding to an ordinary 4-simplex, and this in itself is not
+special to \(N=5\). What is special is that \textbf{the phases and
+complex squared distances of the ten relations self-organize further
+into a small number of highly symmetric classes}.
+
+\subsubsection{\texorpdfstring{22.2 The ten edges finally order into the
+four classes
+\(3+3+2+2\)}{22.2 The ten edges finally order into the four classes 3+3+2+2}}\label{the-ten-edges-finally-order-into-the-four-classes-3322}
+
+In the metastable state at step 5000 the ten edges converge to the four
+classes
+
+\[
+A_+:\{12,13,45\},
+\]
+
+\[
+A_-:\{14,15,23\},
+\]
+
+\[
+B_+:\{24,35\},
+\]
+
+\[
+B_-:\{25,34\},
+\]
+
+i.e.
+
+\[
+\boxed{10=3+3+2+2} .
+\]
+
+The important point is that this is not an artificial clustering of
+``edges with nearby phases''. Tracking \(a,b,a^2,b^2,ab\) directly for
+each edge, edges in the same class converge to the same class even in
+the real and imaginary parts of the complex squared distance
+
+\[
+z_{ij}^2=(a_{ij}^2-b_{ij}^2)+2i a_{ij}b_{ij} .
+\]
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: final complex-squared-distance classes. The ten edges converge to the four classes 3+3+2+2.}]{figs/N5_final_z2_classes.png}}
+\caption{\(N=5\): final complex-squared-distance classes. The ten edges
+converge to the four classes \(3+3+2+2\).}
+\end{figure}
+
+\subsubsection{\texorpdfstring{22.3 The four classes reduce further to
+``two distance directions \(\times\) sign
+reversal''}{22.3 The four classes reduce further to ``two distance directions \textbackslash times sign reversal''}}\label{the-four-classes-reduce-further-to-two-distance-directions-times-sign-reversal}
+
+Among the four classes,
+
+\[
+A_-=-A_+,
+\qquad
+B_-=-B_+ .
+\]
+
+The four classes are therefore not four independent kinds; essentially
+they are
+
+\begin{center}\fbox{\parbox{0.9\linewidth}{\centering $2$ complex squared-distance directions $\times$ sign reversal}}\end{center}
+
+For complex squared distances the sign reversal \(z^2\rightarrow-z^2\)
+shifts the phase by \(\pi\), so \(A_+\) and \(A_-\), and \(B_+\) and
+\(B_-\), can each be read as the opposite orientations of the same
+distance family.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: the two distance families and sign reversal. Families A and B, each with its sign reversal, make up the four classes.}]{figs/N5_two_family_components.png}}
+\caption{\(N=5\): the two distance families and sign reversal. Families
+A and B, each with its sign reversal, make up the four classes.}
+\end{figure}
+
+This structure is the basis for reading the \(N=5\) phase classification
+not as ``four accidental classes'' but as \textbf{a reversal symmetry
+with respect to two basic directions}.
+
+\subsubsection{22.4 Readout as a three-dimensional square
+pyramid}\label{readout-as-a-three-dimensional-square-pyramid}
+
+The distance geometry of \(N=5\) itself is a 4-simplex of rank 4. Using
+the \(3+3+2+2\) phase/distance classification above, however, the ten
+edges can be arranged very naturally as a three-dimensional square
+pyramid.
+
+The edges of a square pyramid are
+
+\begin{itemize}
+\tightlist
+\item
+  4 base edges,
+\item
+  4 lateral edges from the apex to the 4 base vertices,
+\item
+  2 base diagonals,
+\end{itemize}
+
+in total
+
+\[
+4+4+2=10 .
+\]
+
+All ten relations can therefore be read three-dimensionally as
+
+\[
+\boxed{8\text{ outer edges}+2\text{ base diagonals}} .
+\]
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: readout as a three-dimensional square pyramid. The phase/distance classification on the rank-4 complex simplex is visualized three-dimensionally.}]{figs/N5_square_pyramid_interpretation_en.png}}
+\caption{\(N=5\): readout as a three-dimensional square pyramid. The
+phase/distance classification on the rank-4 complex simplex is
+visualized three-dimensionally.}
+\end{figure}
+
+This point is important to avoid misreading:
+
+\[
+\boxed{
+\text{complex simplex rank}=4
+}
+\]
+
+and
+
+\[
+\boxed{
+\text{three-dimensional readout of the phase/distance classification}
+}
+\]
+
+are different observables, and the two do not contradict each other.
+
+\subsubsection{22.5 The four classes do not exist from the beginning of
+the
+expansion}\label{the-four-classes-do-not-exist-from-the-beginning-of-the-expansion}
+
+Tracing the final \(3+3+2+2\) structure backwards step by step, the
+completed pattern is not fixed from the onset of the rapid expansion.
+
+The amplitude outside the parent plane grows rapidly first; afterwards
+the phase and distance differences within each class shrink over a long
+time.
+
+At \(N=5\), the transverse squared amplitude \(H_\perp\) reaches 99\% of
+its final value at about step 449, whereas the error to the final
+four-class pattern keeps relaxing until
+
+\[
+\le10^{-4}:\ \text{step }2627,
+\]
+
+\[
+\le10^{-8}:\ \text{step }4923 .
+\]
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: convergence to the four-class structure. The ordering of intra-class phases and complex distances continues after the expansion.}]{figs/N5_four_group_convergence.png}}
+\caption{\(N=5\): convergence to the four-class structure. The ordering
+of intra-class phases and complex distances continues after the
+expansion.}
+\end{figure}
+
+The time evolution at \(N=5\) is therefore the two-stage process
+
+\begin{center}\fbox{\parbox{0.9\linewidth}{\centering rapid expansion into new directions $\rightarrow$ ordering into the four-class phase/distance structure}}\end{center}
+
+This observation is the most detailed visualization, at \(N=5\), of the
+paper-wide claim that ``the stopping of the expansion and the simplex
+symmetrization correspond in time''.
+
+\subsubsection{\texorpdfstring{22.6 The whole structure at
+\(N=5\)}{22.6 The whole structure at N=5}}\label{the-whole-structure-at-n5}
+
+In summary, at \(N=5\) several readout levels hold simultaneously for
+the same ten relational waves.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{As a complete graph:} \(K_5\), 10 edges.
+\item
+  \textbf{As distance geometry:} a complex 4-simplex with 5 vertices and
+  rank 4.
+\item
+  \textbf{As a metastable phase classification:} the four classes
+  \(3+3+2+2\).
+\item
+  \textbf{As an algebraic reduction:} two complex distance directions
+  and their sign reversals.
+\item
+  \textbf{As a three-dimensional readout:} 8 outer edges + 2 base
+  diagonals of a square pyramid.
+\item
+  \textbf{As local closure:} the vertex-star zero closure of the 4 edges
+  incident to each vertex.
+\item
+  \textbf{As additional closure:} nontrivial two-edge zero closures not
+  explained by the vertex-star span.
+\end{enumerate}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: complete complex-simplex analysis. Rank, four classes, two distance families, square-pyramid readout, and time evolution are integrated.}]{figs/N5_complete_simplex_analysis_overview_en.png}}
+\caption{\(N=5\): complete complex-simplex analysis. Rank, four classes,
+two distance families, square-pyramid readout, and time evolution are
+integrated.}
+\end{figure}
+
+\subsubsection{\texorpdfstring{22.7 Derivation of the nontrivial
+two-edge zero closures: 13 and 12 are forced by
+\(3+3+2+2\)}{22.7 Derivation of the nontrivial two-edge zero closures: 13 and 12 are forced by 3+3+2+2}}\label{derivation-of-the-nontrivial-two-edge-zero-closures-13-and-12-are-forced-by-3322}
+
+After excluding the trivial 4-edge star closure at each vertex, 13
+two-edge zero closures were observed at \(N=5\).
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: graph of the nontrivial two-edge zero closures. The 13 closures are derived from the 3+3+2+2 sign-paired structure.}]{figs/N5_nontrivial_pair_closure_graph.png}}
+\caption{\(N=5\): graph of the nontrivial two-edge zero closures. The 13
+closures are derived from the \(3+3+2+2\) sign-paired structure.}
+\end{figure}
+
+This is not an independent numerical coincidence. Denote the four
+classes by
+
+\[
+A_+,\ A_-,\ B_+,\ B_-
+\]
+
+with sizes
+
+\[
+|A_+|=|A_-|=3,
+\qquad
+|B_+|=|B_-|=2,
+\]
+
+and squared-distance values
+
+\[
+q(A_-)=-q(A_+),
+\qquad
+q(B_-)=-q(B_+) .
+\]
+
+Then the two-edge zero closures \(q_e+q_f=0\) are exactly all
+combinations between classes of opposite sign, so their number is
+
+\[
+\boxed{3\times3+2\times2=13}.
+\]
+
+Furthermore, to partition all ten edges into five zero pairs one chooses
+independently a bijection between \(A_+\) and \(A_-\) (\(3!\) ways) and
+a bijection between \(B_+\) and \(B_-\) (\(2!\) ways), so
+
+\[
+\boxed{3!\times2!=12}.
+\]
+
+The ``13 closures'' and ``12 exact covers'' found earlier by numerical
+search are therefore derived as a \textbf{combinatorial necessity} of
+the \(3+3+2+2\) sign-paired structure.
+
+The residual \(1.88\times10^{-10}\) of the best numerical example,
+
+\[
+z_{23}^2+z_{45}^2\simeq0,
+\]
+
+is now a verification value showing that the numerical implementation
+reproduces this derived structure.
+
+\subsubsection{\texorpdfstring{22.8 \(N=5\) is not ``simple because it
+is
+low-dimensional''}{22.8 N=5 is not ``simple because it is low-dimensional''}}\label{n5-is-not-simple-because-it-is-low-dimensional}
+
+\(N=4\) also has a clear opposite-edge symmetry \(2+2+2\), but its
+closures can be explained as linear consequences of the vertex-star
+closures. At \(N=5\), by contrast, in addition to the four-class
+structure, two-edge closures and exact covers independent of the generic
+star span appear.
+
+What makes \(N=5\) special in the present \(N=3\)--16 series is
+therefore not merely that it has few edges and is easy to visualize. It
+is that
+
+\begin{center}\fbox{\parbox{0.9\linewidth}{\centering simplex symmetry $+$ phase degeneracy $+$ three-dimensional readout $+$ additional zero closures}}\end{center}
+
+coincide at the same \(N\).
+
+\subsection{\texorpdfstring{23. Search for Additional Closures at
+\(N=14\)--16}{23. Search for Additional Closures at N=14--16}}\label{search-for-additional-closures-at-n1416}
+
+Over all orders smaller than the trivial \((N-1)\)-edge vertex-star
+closure, we searched
+
+\begin{itemize}
+\tightlist
+\item
+  \(N=14\): \(k=2,\ldots,12\),
+\item
+  \(N=15\): \(k=2,\ldots,13\),
+\item
+  \(N=16\): \(k=2,\ldots,14\).
+\end{itemize}
+
+At \(N=14\) a candidate with
+
+\[
+C=9.25\times10^{-7}
+\]
+
+exists at \(k=6\), but in the time evolution it stalls near \(10^{-6}\)
+and does not converge continuously to \(10^{-8}\), \(10^{-10}\) as at
+\(N=5\).
+
+It is therefore classified as a quasi-closure rather than a strict
+additional closure.
+
+At \(N=15,16\) no additional closure clearly below \(10^{-6}\) was found
+at any order searched.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{24. Reconstruction of the Axiom System in This Paper ---
+What Is Settled and What Is
+Not}\label{reconstruction-of-the-axiom-system-in-this-paper-what-is-settled-and-what-is-not}
+
+Previously the two basic axioms were
+
+\[
+\sum z_m^2=0,
+\qquad
+U^n=I .
+\]
+
+From the self-consistent real antisymmetric eigenmode we have now
+organized analytically
+
+\begin{center}\fbox{\parbox{0.9\linewidth}{\centering self-consistency $\Rightarrow$ complex rotating pair $\Rightarrow
+\sum z_m^2=0
+\Rightarrow
+S^1$ compact phase orbit}}\end{center}
+
+However,
+
+\[
+S^1\text{ compactness}\not\Rightarrow U^n=I .
+\]
+
+Finite recurrence requires, in addition, rational locking of the phase
+increment.
+
+The axiom-reduction conclusion of this paper is therefore revised to:
+\textbf{zero-square closure and the complex rotating structure can be
+derived from self-consistency, but the full derivation of \(U^n=I\)
+requires an additional rational phase-locking mechanism}.
+
+\subsection{25. Relation to Prior Work}\label{relation-to-prior-work}
+
+\subsubsection{25.1 Chronology of the
+research}\label{chronology-of-the-research}
+
+The numerical model of this paper was not built for the purpose of
+implementing or reproducing the external prior work listed below.
+
+The chronological order of the research is
+
+\begin{center}\fbox{\parbox{0.9\linewidth}{\centering independent numerical experiments $\rightarrow$ discovery of the phenomenon $\rightarrow$ later literature survey $\rightarrow$ recognition of structural relations}}\end{center}
+
+The external literature is therefore cited not as the starting
+assumptions of the model, but to locate independently obtained results
+in the existing research space.
+
+\subsubsection{25.2 Complex structure from real
+structure}\label{complex-structure-from-real-structure}
+
+Aste {[}E1{]} discusses the possibility that a complex structure emerges
+from the linear dynamics of a finite-dimensional real Euclidean Hilbert
+space.
+
+The common concern with the present paper is that ``complex numbers need
+not be a primitive input from the outset''.
+
+The difference is that here the self-consistent fixed point of a real
+antisymmetric action built from complete pairwise relations generates
+the complex rotating pair.
+
+\subsubsection{25.3 Low-dimensional expanding spacetime from
+high-dimensional degrees of
+freedom}\label{low-dimensional-expanding-spacetime-from-high-dimensional-degrees-of-freedom}
+
+In the Lorentzian type IIB / IKKT matrix model, the possibility that a
+low-dimensional expanding spacetime emerges dynamically from many matrix
+degrees of freedom has been studied numerically {[}E2,E3{]}.
+
+The present paper shares the structural feature that rank generation and
+direction selection arise from many relational degrees of freedom.
+
+The action, the degrees of freedom, the probability measure, and the
+numerical methods differ, however, and this paper is not a reproduction
+of the IKKT model.
+
+\subsubsection{25.4 Inflation and dynamical
+compactification}\label{inflation-and-dynamical-compactification}
+
+Kihara et al.~{[}E4{]} study, in a ten-dimensional Einstein--Yang--Mills
+system, exponential expansion on the four-dimensional side and
+compactification of the extra dimensions within one dynamical system.
+
+In the seedless system of this paper all principal axes expand
+isotropically; in future harmonic-seed experiments we plan to test an
+anisotropic separation in which some directions become macroscopic while
+others remain compact.
+
+In this sense that work is an important object of future comparison.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{26. Discussion --- the Onset Mechanism Is Quantified as the
+Linear Instability of a Relative
+Equilibrium}\label{discussion-the-onset-mechanism-is-quantified-as-the-linear-instability-of-a-relative-equilibrium}
+
+\subsubsection{26.1 Seedless onset and the fixed-point
+residual}\label{seedless-onset-and-the-fixed-point-residual}
+
+With no explicit seed added and \(Z_0=v\), we varied the requested
+tolerance of \texttt{make\_parent} over
+\(10^{-6},10^{-8},10^{-10},10^{-12}\). The explanatory variable used in
+the regression, however, is not the requested tolerance itself but the
+final fixed-point residual \(\varepsilon_{\rm parent}\) actually
+measured in each run.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: sweep of the make\_parent residual tolerance. A smaller residual delays the onset while the exponential growth rate is almost unchanged.}]{figs/N5_tol_sweep_timeseries.png}}
+\caption{\(N=5\): sweep of the \protect\texttt{make\_parent} residual
+tolerance. A smaller residual delays the onset while the exponential
+growth rate is almost unchanged.}
+\end{figure}
+
+The measured values are as follows.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+requested tol
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+measured parent residual \(\varepsilon_{\rm parent}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+onset step \(f\ge10^{-8}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+growth rate /step
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(10^{-6}\) & \(3.8728081613\times10^{-7}\) & 72 & 0.17483734 \\
+\(10^{-8}\) & \(1.8154355031\times10^{-9}\) & 134 & 0.17252539 \\
+\(10^{-10}\) & \(5.0849521984\times10^{-11}\) & 176 & 0.17251311 \\
+\(10^{-12}\) & \(2.3845913288\times10^{-13}\) & 238 & 0.17251360 \\
+\end{longtable}
+}
+
+The logarithms of the residuals are not equally spaced. The onset step
+must therefore not be regressed against the requested tolerances
+\(10^{-6},10^{-8},10^{-10},10^{-12}\) alone. Using the \textbf{measured
+fixed-point residuals} in the table,
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: onset versus the measured fixed-point residual. t\_\{\textbackslash rm onset\} is linear in -\textbackslash ln(\textbackslash text\{residual\}) to high precision.}]{figs/N5_tol_sweep_onset_log_residual.png}}
+\caption{\(N=5\): onset versus the measured fixed-point residual.
+\(t_{\rm onset}\) is linear in \(-\ln(\text{residual})\) to high
+precision.}
+\end{figure}
+
+the regression
+
+\[
+t_{\rm onset}=a[-\ln\varepsilon_{\rm parent}]+b
+\]
+
+gives
+
+\[
+a=11.616225,
+\qquad b=-99.563139,
+\qquad R^2=0.99999201.
+\]
+
+The predicted onsets for the four points are 71.940, 134.236, 175.766,
+238.058 steps, differing from the integer detected values by at most
+0.236 step. The regression statistics of the previous version are
+therefore consistent with the raw data; the apparent contradiction arose
+from identifying the ``requested tolerance'' with the ``measured
+fixed-point residual''.
+
+This result shows that the intrinsic floor of the seedless onset is the
+\texttt{make\_parent} fixed-point residual: the residual controls the
+onset time, while in the regime of sufficiently small residuals the
+dominant growth rate converges to about 0.17251/step.
+
+\subsubsection{26.2 The rotating-frame Jacobian explains rank-4 and the
+growth rate
+simultaneously}\label{the-rotating-frame-jacobian-explains-rank-4-and-the-growth-rate-simultaneously}
+
+We linearized numerically the 20-real-dimensional Jacobian of the
+rotating-frame map, in which the one-step global phase rotation of the
+parent state has been removed.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: rotating-frame Floquet spectrum. It shows the gap between the dominant unstable real doubly degenerate eigenvalue and the second one. All unstable multipliers lie on the real axis.}]{figs/N5_floquet_spectrum.png}}
+\caption{\(N=5\): rotating-frame Floquet spectrum. It shows the gap
+between the dominant unstable real doubly degenerate eigenvalue and the
+second one. All unstable multipliers lie on the real axis.}
+\end{figure}
+
+The largest unstable multiplier is real (zero imaginary part) and
+appears twice, with value
+
+\[
+|\mu_1|=1.090086569 .
+\]
+
+In the measured spectrum (\texttt{floquet\_spectrum.csv}) both the
+dominant multiplier \(\mu_1\) and the weaker second unstable multiplier
+\(\mu_2=1.052603212\) appear as real doubly degenerate eigenvalues, with
+a clear gap in growth rate between them. What can be established
+directly from the data is therefore that the dominant unstable
+eigenspace is real two-dimensional and gives the fastest unstable
+directions.
+
+All twenty multipliers show a clear pair structure. Global phase
+equivariance alone, \[
+F(e^{i\alpha}Z)=e^{i\alpha}F(Z),
+\] does not automatically imply, for an arbitrary perturbation
+\(\delta Z\), \[
+DF(Z)[i\,\delta Z]=i\,DF(Z)[\delta Z],
+\] i.e.~that the whole Jacobian is complex linear. To attribute the
+symmetry origin of the real doubling to the global phase symmetry, one
+would have to show separately that the Jacobian commutes with the
+complex structure. In this paper the doubling itself is treated as an
+observed fact of the numerical spectrum, and its symmetry origin is left
+as a future analytical problem.
+
+The sum of the log-moduli of all twenty multipliers is about
+\(-0.0855\), which is negative. Since the rotating-frame Jacobian is the
+derivative of the 20-real-dimensional state map, \[
+\sum_i\ln|\mu_i|=\ln|\det J|<0
+\] shows that local state volume contracts near the parent relative
+equilibrium. This does not contradict the exact conservation of the
+total norm, and it is consistent with the possibility of interpreting
+the simplex ordering as attractor-like. Restricting the contraction to
+particular ``angular directions'', however, would require a separate
+tangent-space decomposition.
+
+Hence the selection rule
+
+\[
+\boxed{\text{parent rank-2}+\text{dominant unstable 2D}=\text{rank-4}}
+\]
+
+is obtained.
+
+Furthermore, from the amplitude exponent
+
+\[
+\lambda_A=\ln\mu_1=0.0862571143
+\]
+
+the squared-amplitude exponent
+
+\[
+2\lambda_A=0.172514229
+\]
+
+is predicted, which agrees with the growth rate of \(H_\perp\) in the
+direct time evolution, about 0.172513.
+
+Moreover,
+
+\[
+\frac1{\lambda_A}=11.5932
+\]
+
+agrees with the slope 11.6162 of onset versus residual obtained from the
+tolerance sweep.
+
+For the onset of the rapid expansion at \(N=5\), therefore, the
+quantitative mechanism
+
+\begin{center}\fbox{\parbox{0.9\linewidth}{\centering self-consistent relative equilibrium $\rightarrow$ linear instability $\rightarrow$ dominant 2D unstable eigenspace $\rightarrow$ rank-4 and $H_\perp$ exponential growth}}\end{center}
+
+holds.
+
+The second unstable real doubly degenerate eigenvalue
+
+\[
+|\mu_2|=1.052603212
+\]
+
+also exists and predicts a slower secondary growth exponent
+\(2\ln\mu_2\simeq0.10253\).
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: finite-difference stability of the Floquet multipliers. The dominant multipliers are stable against the finite-difference step.}]{figs/N5_floquet_fd_stability.png}}
+\caption{\(N=5\): finite-difference stability of the Floquet
+multipliers. The dominant multipliers are stable against the
+finite-difference step.}
+\end{figure}
+
+\subsubsection{26.3 Structural similarity to preheating-type mode
+transfer}\label{structural-similarity-to-preheating-type-mode-transfer}
+
+Because the total norm is conserved exactly in this system, the rapid
+expansion is not an energy generation but an exponential transfer from
+the coherent parent mode to the orthogonal modes. Structurally it is
+closer to parametric mode amplification / preheating than to
+cosmological inflation proper.
+
+This paper does not claim identity with the standard preheating
+equations, however. We only point out the dynamical similarity: Floquet
+instability, depletion of the parent component, and long-time
+redistribution after saturation.
+
+Moreover, even at step 5000, \(H_\parallel=0.322005\) and
+\(H_\perp=0.677995\): the parent-plane component has not vanished.
+Taking an uncorrelated isotropic state on 20 real dimensions as a naive
+reference, the expected projection ratio onto a fixed two-dimensional
+parent plane is \(2/20=0.1\), so the observed value 0.322 is about 3.22
+times that. Since we have not shown that the metastable distribution of
+this map is uniform on the 20-dimensional sphere, this is treated as ``a
+diagnostic suggesting residual memory of the initial parent plane'', and
+its strict statistical significance is to be tested in future seed
+series.
+
+\subsubsection{\texorpdfstring{26.4 Seed sweep of the \(N=5\)
+moduli}{26.4 Seed sweep of the N=5 moduli}}\label{seed-sweep-of-the-n5-moduli}
+
+Re-running 5000 steps for 8 parent random seeds, the final class sizes
+were
+
+\[
+3+3+2+2
+\]
+
+in every run, and both distance-family moduli converged to about 0.1.
+
+The relative phase between the two distance families, taken modulo sign,
+varied from run to run.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=5: relative phase between the two distance families across seeds. 3+3+2+2 is reproduced, while the relative phase is not fixed uniquely.}]{figs/N5_moduli_relative_phase_seed_sweep.png}}
+\caption{\(N=5\): relative phase between the two distance families
+across seeds. \(3+3+2+2\) is reproduced, while the relative phase is not
+fixed uniquely.}
+\end{figure}
+
+This supports the possibility that \(3+3+2+2\) and equimodularity are
+selected rigidly, whereas a flat direction remains in the relative phase
+between the distance families. Longer runs with more seeds are needed.
+
+\subsection{27. Limitations and Future
+Work}\label{limitations-and-future-work}
+
+The additional analyses of this paper have narrowed some of the earlier
+open problems.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Onset of the rapid expansion}: at \(N=5\) it has been
+  quantified as the linear instability of a relative equilibrium.
+  Whether the same Floquet structure holds at other \(N\) is to be
+  checked.
+\item
+  \textbf{Rank-4 selection}: at \(N=5\) it is explained by the
+  two-real-dimensional dominant unstable space. The real-time growth of
+  the second unstable pair is to be separated directly.
+\item
+  \textbf{Stopping}: the reason for the absence of unbounded growth is
+  resolved by total-norm conservation. The remaining problem is why the
+  system orders into an equimodular null simplex.
+\item
+  \textbf{Thermalization / ordering}: the spectral entropy eventually
+  becomes maximal but not monotonically. The \(N\)-dependence of the
+  relaxation time and the presence or absence of FPUT-type
+  quasi-integrability are to be examined.
+\item
+  \textbf{Moduli at \(N=5\)}: whether the relative phase is a true flat
+  direction or locks over very long times is to be confirmed with many
+  seeds and long runs.
+\item
+  \textbf{\(U^n=I\)}: a compact phase orbit has been derived from
+  self-consistency, but finite recurrence requires a rational
+  phase-locking mechanism.
+\item
+  \textbf{General classification of the \(N=5\) singularity}: the
+  conditions for the existence of opposite-sign phase classes are to be
+  classified as balanced edge-class designs on \(K_N\).
+\item
+  \textbf{Floquet spectra at other \(N\)}: the correspondence between
+  the dimension of the unstable space and the simplex ordering is to be
+  organized as a series over \(N=3\)--16.
+\item
+  \textbf{Parent-plane memory}: at \(N=5\), \(H_\parallel=0.322\)
+  remains even at step 5000. The seed dependence, \(N\) dependence, and
+  long-time limit of this residual fraction are to be examined.
+\item
+  \textbf{Symmetry origin of the real doubly degenerate eigenvalues}:
+  the reason why all twenty multipliers of the rotating-frame Jacobian
+  come in pairs and the unstable multipliers appear as real doubles was
+  treated as a numerical observation. Since global phase equivariance
+  alone does not imply complex linearity of the Jacobian, commutation
+  with the complex structure or another symmetry must be shown
+  analytically.
+\end{enumerate}
+
+\subsection{28. Conclusion}\label{conclusion}
+
+This paper re-audited the rapid expansion of the seedless closed
+relational-wave system and promoted some of the numerical observations
+to exact theorems and part of the onset mechanism to a linear-stability
+problem.
+
+The main results are as follows.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The Cayley update of a real antisymmetric generator is real orthogonal
+  and conserves \(Z^\dagger Z\) and \(Z^TZ\) exactly.
+\item
+  Hence the growth of \(H_\perp\) is not an external injection but an
+  internal transfer from \(H_\parallel\), and
+  \(H_\perp\le H_{\rm total}\) gives the kinematic upper bound of the
+  expansion.
+\item
+  The \(K/\sigma_{\max}\) normalization corresponds exactly, at the same
+  state, to a rescaling of the Cayley step. The roughly 6.8\%
+  growth-rate difference observed at finite step is predicted as
+  \(g_{\rm pred}\simeq1.0600\) from the first-order step-convergence law
+  \(g(n)=1.1596346-4.10498/n\) of §12 and \(n_{\rm eff}\simeq41.2\) of
+  the raw-\(K\) run, agreeing with the measured \(1.05874\) to about
+  0.13\%. Both updates therefore converge to the same continuum limit,
+  and the possibility that normalization or step size artificially
+  generated the expansion is excluded.
+\item
+  In the seedless \(N=5\) system, reducing the \texttt{make\_parent}
+  fixed-point residual delays the onset in proportion to
+  \(-\ln\varepsilon\) while the growth rate is unchanged.
+\item
+  The rotating-frame Jacobian has a dominant unstable real doubly
+  degenerate eigenvalue \(\mu_1=1.090086569\), faster than the second
+  real doubly degenerate eigenvalue \(\mu_2=1.052603212\). The numerical
+  spectrum establishes that the dominant unstable space is real
+  two-dimensional, and adding it to the rank-2 parent explains the
+  initial selection of rank-4. The symmetry origin of the real doubling
+  requires a separate proof of commutation between the Jacobian and the
+  complex structure.
+\item
+  \(2\ln|\mu_1|=0.172514\) agrees with the directly measured \(H_\perp\)
+  growth rate of about 0.172513, and \(1/\ln|\mu_1|=11.593\) agrees with
+  the onset-regression slope 11.616 against the \textbf{measured
+  fixed-point residual}. This triple consistency is the central
+  quantitative result on the \(N=5\) onset mechanism.
+\item
+  Zero-square closure of every vertex star is equivalent, in the
+  centered representation, to all simplex vertices lying on the complex
+  null cone.
+\item
+  Together with equipartition, the metastable state is described
+  uniformly as an \textbf{equimodular null complex simplex}.
+\item
+  The \(120^\circ\) phase difference at \(N=4\) is derived exactly from
+  local closure plus equipartition.
+\item
+  The 13 nontrivial two-edge closures and 12 exact covers at \(N=5\) are
+  derived exactly from the \(3+3+2+2\) sign-paired structure as
+  \(3\times3+2\times2=13\) and \(3!2!=12\).
+\item
+  In the 8-seed sweep at \(N=5\), \(3+3+2+2\) and equimodularity were
+  reproduced in every run, whereas the relative phase between the two
+  distance families was not fixed uniquely, indicating a possible
+  modulus.
+\item
+  From self-consistency one can derive the complex rotating structure,
+  zero-square closure, and a compact \(S^1\) phase orbit, but \(U^n=I\)
+  requires separate rational phase locking.
+\end{enumerate}
+
+The onset of the rapid expansion at \(N=5\) can therefore be described,
+at least within numerical linearization, as one dynamical sequence,
+
+\begin{center}\fbox{\parbox{0.9\linewidth}{\centering self-consistent rank-2 relative equilibrium $\rightarrow$ dominant 2D linear instability $\rightarrow$ rank-4 $\rightarrow$ exponential internal mode transfer $\rightarrow$ bounded saturation $\rightarrow$ equimodular null-simplex ordering}}\end{center}
+
+\subsection{Location of Figure Files}\label{location-of-figure-files}
+
+The figures are numbered consecutively from Figure 1 in order of
+appearance.
+
+The figures are stored in the repository under
+\texttt{dimensional-generation/} \texttt{electron-recoil/}
+\texttt{seed-removal-metastable/} \texttt{chatgpt-followup/} (repository
+path, romanized) and referenced by relative paths from there (the Zenodo
+release bundles the full set of figures in
+\path{nbody_self_consistent_inflation_figures_v1.zip}). The figures used
+in the additional experiments of this paper comprise the normalization
+comparison, the transfer from the parent plane to the orthogonal
+directions, the spectral entropy, the tolerance sweep, the
+onset--residual law, the Floquet spectrum, the finite-difference
+stability, and the \(N=5\) moduli seed sweep. Figures 7, 8, 11, and 13
+are the English versions of the corresponding Japanese infographics,
+regenerated from the same analysis data.
+
+\subsection{Self-Citations}\label{self-citations}
+
+\textbf{{[}K1{]}} N. Kihara, \emph{Anonymous Equal-Amplitude
+Composite-Wave Model: Basic Axiom System v9 --- Pure Definition}, 2026.
+
+\textbf{{[}K2{]}} N. Kihara, ``Linear Upper Bound on Generator Rank and
+Three-Direction Saturation in N-Body Complete Pairwise Relational
+Waves'', 2026. Concept DOI: 10.5281/zenodo.21465898.
+
+\textbf{{[}K3{]}} N. Kihara, ``Plane-Decomposition Readout in N-Body
+Fixed-Generator Systems'', 2026. Concept DOI: 10.5281/zenodo.21468959.
+
+\textbf{{[}K4{]}} N. Kihara, ``Onset of Spontaneous State Splitting and
+the Threefold Classification of Its Outcomes in Closed N-Body
+Relational-Wave Systems'', 2026. Concept DOI: 10.5281/zenodo.21486233.
+
+\textbf{{[}K5{]}} N. Kihara, ``The Number of Waves Is the Resolution of
+the System'', 2026. Concept DOI: 10.5281/zenodo.21486544.
+
+\textbf{{[}K6{]}} N. Kihara, ``The Three-Direction Structure Arising
+from the Antisymmetric Generator of Complete Pairwise Relational
+Waves'', 2026.
+
+\textbf{{[}K7{]}} N. Kihara, ``Emergence of Three-Direction Space in
+Closed N-Body Relational-Wave Systems'', 2026.
+
+\textbf{{[}K8{]}} N. Kihara, ``Causal Separation of the Time Structure
+of Three-Direction Formation in Closed N-Body Relational Wave Systems
+via Two-Stage Seed Removal'', 2026. Version DOI:
+10.5281/zenodo.21614403; Concept DOI: 10.5281/zenodo.21614402.\\
+note: https://note.com/kiharanoriaki/n/n48a02cd70f47
+
+\subsection{External Prior Work}\label{external-prior-work}
+
+\textbf{{[}E1{]}} A. Aste, ``Origin of the Complex Structure of Quantum
+Mechanics,'' arXiv:1905.12894, 2019.\\
+https://arxiv.org/abs/1905.12894
+
+\textbf{{[}E2{]}} T. Aoki, M. Hirasawa, Y. Ito, J. Nishimura, A.
+Tsuchiya, ``On the structure of the emergent 3D expanding space in the
+Lorentzian type IIB matrix model,'' \emph{Progress of Theoretical and
+Experimental Physics} 2019, 093B03 (2019). DOI: 10.1093/ptep/ptz092.
+
+\textbf{{[}E3{]}} M. Hirasawa, K. N. Anagnostopoulos, T. Azuma, K.
+Hatakeyama, J. Nishimura, S. Papadoudis, A. Tsuchiya, ``The effects of
+SUSY on the emergent spacetime in the Lorentzian type IIB matrix
+model,'' arXiv:2407.03491, 2024.\\
+https://arxiv.org/abs/2407.03491
+
+\textbf{{[}E4{]}} H. Kihara, M. Nitta, M. Sasaki, C.-M. Yoo, I. Zaballa,
+``Dynamical Compactification and Inflation in Einstein-Yang-Mills Theory
+with Higher Derivative Coupling,'' \emph{Physical Review D} \textbf{80},
+066004 (2009). DOI: 10.1103/PhysRevD.80.066004.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Note on Reproducibility}\label{note-on-reproducibility}
+
+The re-run data, programs, and figure generation used in this paper are
+stored in the following verification packages created on 2026-08-26 (the
+\(\gamma\) continuum bundle on 2026-08-25).
+
+\begin{itemize}
+\item
+  \path{K_sigma_normalization_artifact_test_N4_N5_20260826.zip}
+\item
+  \path{N5_gamma_continuum_test_bundle_20260825.zip}
+\item
+  \path{N3_N4_complex_simplex_complete_analysis_20260826.zip}
+\item
+  \path{N5_complex_simplex_complete_analysis_20260826.zip}
+\item
+  \path{N6_N7_complex_simplex_complete_analysis_20260826.zip}
+\item
+  \path{N8_N9_complex_simplex_complete_analysis_20260826.zip}
+\item
+  \path{N10_N11_complex_simplex_complete_analysis_20260826.zip}
+\item
+  \path{N12_N13_complex_simplex_complete_analysis_20260826.zip}
+\item
+  \path{N14_N15_complex_simplex_complete_analysis_20260826.zip}
+\item
+  \path{N16_complex_simplex_complete_analysis_20260826.zip}
+\item
+  \path{N3_N16_partial_zero_closure_analysis_20260826.zip}
+\item
+  \path{N3_N16_nontrivial_zero_closure_analysis_20260826.zip}
+\item
+  \path{N14_N16_complete_nontrivial_zero_closure_search_20260826.zip}
+\item
+  \path{N5_dynamics_followup_theorems_and_stability_20260826.zip}
+\end{itemize}
+
+With these programs, raw data, and figure scripts, the main numerical
+results of this paper can be reproduced.
+
+\end{document}
