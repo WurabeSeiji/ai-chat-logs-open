@@ -124,6 +124,12 @@
 - **Concept DOI**：[10.5281/zenodo.22112008](https://doi.org/10.5281/zenodo.22112008)／**v1 DOI**：[10.5281/zenodo.22112009](https://doi.org/10.5281/zenodo.22112009)
 - **形式**：md（日英）+ tex（日英）+ pdf（日英・ja 40p/en 36p）+ 図バンドル zip（PNG 21枚＋英語版作図スクリプト）+ 再現パッケージ zip 14点 = 21ファイル
 - **Zenn**：[インフレーション的急拡大は「不安定な自己無撞着閉包」の線形不安定性だった](https://zenn.dev/noriaki_kihara/articles/self-consistent-inflation-mechanism)
+- **note（日本語）**：[インフレーションは、倒れかけの波にすでに書き込まれていた——三つの独立な測定が、一つの数で一致した](https://note.com/kiharanoriaki/n/n07c3e4c97e3a)（2026-08-26 公開。下書きmd：次元の生成構造/インフレーションは倒れかけの波に書き込まれていた_note完成稿.md、図8枚：note_figs_self_consistent_inflation/）
+- **note（英語版）**：[The inflation was already written into the tilting wave — three independent measurements agree on one number](https://note.com/kiharanoriaki/n/nf2549985b38a)（2026-08-27 公開。下書きmd：次元の生成構造/inflation_written_in_the_tilting_wave_note_en.md）
+- **Facebook（日本語）**：[告知投稿](https://www.facebook.com/kihara.noriaki/posts/pfbid03xxXurodu8kyoTe3WFEwGbN85BSL5gxALmsfGLfLsWaQ9jHRMvU9QaoXa5SufCMbl)（2026-08-27、note URLはコメント欄。下書き：facebook_self_consistent_inflation_ja_v1.md）
+- **Facebook（英語）**：[告知投稿](https://www.facebook.com/kihara.noriaki/posts/pfbid0uaKLfYojegoqFcQLm8L2wwwimhavGMo8hZgMKr5WNG51HC9yWyfgkv76m3KmTZ6fl)（2026-08-27、note URLはコメント欄。下書き：facebook_self_consistent_inflation_en_v1.md）
+- **X（日本語）**：[告知ポスト](https://x.com/NoriakiKihara/status/2092632241801486659)（2026-08-27、日本語note URL入り。下書き：x_self_consistent_inflation_ja.md）
+- **X（英語）**：[告知ポスト](https://x.com/NoriakiKihara/status/2092632834536243644)（2026-08-27、英語note URL入り。下書き：x_self_consistent_inflation_en.md）
 - **所在**：次元の生成構造/nbody_self_consistent_inflation_mechanism_{ja,en}.{md,tex,pdf}、図・再現データは 次元の生成構造/電子の反跳実験/seed除去による準安定相追試/chatgpt追試/、リリースノート 次元の生成構造/RELEASE_NOTES_nbody_self_consistent_inflation_mechanism_v1.md
 
 ### 2026-08-04: 第9論文本体「フェルミオンの生成構造——光の海における閉鎖完走としての粒子」新規公開
