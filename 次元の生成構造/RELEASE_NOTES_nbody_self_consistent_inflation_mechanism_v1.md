@@ -20,7 +20,12 @@ Release date: 2026-08-26
   （元原稿: `次元の生成構造/inflation_written_in_the_tilting_wave_note_en.md`、図: `note_figs_self_consistent_inflation/en/`）
 - 前2記事の続編（「タネがなくても」 n48a02cd70f47 ／「雑踏からは」 n7b655e3da27a）
 
-## Facebook / X
+## Facebook
+
+- 日本語投稿: https://www.facebook.com/kihara.noriaki/posts/pfbid03xxXurodu8kyoTe3WFEwGbN85BSL5gxALmsfGLfLsWaQ9jHRMvU9QaoXa5SufCMbl （2026-08-27、note URLはコメント欄。下書き: `facebook_self_consistent_inflation_ja_v1.md`）
+- 英語投稿: 下書き `facebook_self_consistent_inflation_en_v1.md`（公開後に URL 追記）
+
+## X
 
 - 未投稿
 
