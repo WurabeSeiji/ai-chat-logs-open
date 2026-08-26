@@ -96,4 +96,6 @@ $$
 - 論文（Zenodo, 日英 md/tex/pdf・図バンドル・再現パッケージ）: https://doi.org/10.5281/zenodo.22112008
 - 先行論文（第8論文・二段階seed除去）: https://doi.org/10.5281/zenodo.21614402
 - 開始様式判別論文（第8論文続編・不安定な相対平衡）: https://doi.org/10.5281/zenodo.21798854
+- 一般向け記事（note・日本語）: https://note.com/kiharanoriaki/n/n07c3e4c97e3a
+- General-audience article (note, English): https://note.com/kiharanoriaki/n/nf2549985b38a
 - GitHub: https://github.com/WurabeSeiji/ai-chat-logs-open

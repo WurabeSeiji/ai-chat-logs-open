@@ -1,6 +1,6 @@
 # Release Notes: 自己無撞着な関係波閉鎖系におけるインフレーション的急拡大の機構——正規化監査、rank 生成、二乗閉包保存、simplex 対称化および公理系の再構成（次元の生成構造 第8論文続編）
 
-Release date: 2026-08-26
+Release date: 2026-08-27（deposit 作成・DOI 取得は 2026-08-26、publish は 2026-08-27 00:25 JST）
 
 ## DOI
 
@@ -79,4 +79,4 @@ Release date: 2026-08-26
 
 ## 変更履歴
 
-- 2026-08-26 v1 公開（Version DOI 22112009）。
+- 2026-08-27 v1 公開（Version DOI 22112009、21 ファイル 354 MB、publish 00:25 JST）。deposit 作成・DOI 取得・md/tex/pdf・SNS 原稿は 2026-08-26。
