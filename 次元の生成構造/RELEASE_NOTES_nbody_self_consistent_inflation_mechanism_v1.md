@@ -27,7 +27,8 @@ Release date: 2026-08-26
 
 ## X
 
-- 日本語ポスト: 下書き `x_self_consistent_inflation_ja.md`（公開後に URL 追記）
+- 日本語ポスト: https://x.com/NoriakiKihara/status/2092632241801486659 （2026-08-27、下書き: `x_self_consistent_inflation_ja.md`）
+- 英語ポスト: 下書き `x_self_consistent_inflation_en.md`（公開後に URL 追記）
 
 ## 公開ファイル（Zenodo, 21点）
 
