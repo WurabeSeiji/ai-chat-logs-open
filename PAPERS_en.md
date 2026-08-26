@@ -4,7 +4,7 @@ Noriaki Kihara / WF System Co., Ltd. / ORCID [0009-0004-6753-4020](https://orcid
 All papers are published on Zenodo under CC BY 4.0. Columns: title (English / Japanese), Version DOI, Concept DOI, date, version, PDFs, folder in this repository, release notes.
 Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PAPERS_ja.md](PAPERS_ja.md) / Scholar landing pages: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**Papers: 121**
+**Papers: 122**
 
 ## Central Projection Framework (Gnomonic Spacetime Geometry) / グノモン正写像による4次元時空の幾何学的定式化
 
@@ -424,7 +424,7 @@ Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PA
 11. **Causal Separation of the Time Structure of Three-Direction Formation in Closed N-Body Relational Wave Systems via Two-Stage Seed Removal**  
    N体関係波閉鎖系における三方向生成の時間構造——二段階seed除去による因果分離  
    DOI [10.5281/zenodo.21614403](https://doi.org/10.5281/zenodo.21614403) · Concept [10.5281/zenodo.21614402](https://doi.org/10.5281/zenodo.21614402) · 2026-07-27 · v1 · [PDF en](https://zenodo.org/records/21614403/files/nbody_two_stage_seed_removal_causal_separation_en.pdf) [PDF ja](https://zenodo.org/records/21614403/files/nbody_two_stage_seed_removal_causal_separation_ja.pdf)  
-   folder: [次元の生成構造](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0) · [release notes](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_nbody_two_stage_seed_removal_v1.md)
+   folder: [次元の生成構造](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0) · [release notes](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_nbody_self_consistent_inflation_mechanism_v1.md)
 12. **Two-Grammar Decomposition of Interaction in an Anonymous Two-Channel Closed Wave System**  
    無名二チャネル閉鎖波系における相互作用の二文法分解  
    DOI [10.5281/zenodo.21763996](https://doi.org/10.5281/zenodo.21763996) · Concept [10.5281/zenodo.21763995](https://doi.org/10.5281/zenodo.21763995) · 2026-08-02 · v1 · [PDF en](https://zenodo.org/records/21763996/files/two_grammar_decomposition_anonymous_two_channel_closed_wave_system_en.pdf) [PDF ja](https://zenodo.org/records/21763996/files/two_grammar_decomposition_anonymous_two_channel_closed_wave_system_ja.pdf)  
@@ -444,7 +444,7 @@ Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PA
 16. **Geometric Rapid Expansion Is Specific to Unstable Self-Consistent Closures: Causal Discrimination of Onset Modes via Generic Zero-Closure Initial States**  
    幾何級数的急拡大は不安定な自己無撞着閉包に固有である——一般零閉塞初期状態による開始様式の因果判別  
    DOI [10.5281/zenodo.21798855](https://doi.org/10.5281/zenodo.21798855) · Concept [10.5281/zenodo.21798854](https://doi.org/10.5281/zenodo.21798854) · 2026-08-05 · [PDF en](https://zenodo.org/records/21798855/files/nbody_onset_mode_causal_discrimination_en.pdf) [PDF ja](https://zenodo.org/records/21798855/files/nbody_onset_mode_causal_discrimination_ja.pdf)  
-   folder: [次元の生成構造](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0) · [release notes](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_onset_mode_causal_discrimination_v1.md)
+   folder: [次元の生成構造](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0) · [release notes](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_nbody_self_consistent_inflation_mechanism_v1.md)
 17. **Generation of Fermionic Structure Is Induced, Autocatalytic, and Pair-Correlated: Assumptions and Consequences of a Universal Inelastic Map Acting on Waveforms Alone**  
    フェルミオン的構造の生成は誘導・自己触媒・対相関で起こる——波形のみを入力とする万能非弾性写像の仮定と帰結  
    DOI [10.5281/zenodo.21808092](https://doi.org/10.5281/zenodo.21808092) · Concept [10.5281/zenodo.21808091](https://doi.org/10.5281/zenodo.21808091) · 2026-08-05 · [PDF en](https://zenodo.org/records/21808092/files/universal_inelastic_map_fermionic_generation_en.pdf) [PDF ja](https://zenodo.org/records/21808092/files/universal_inelastic_map_fermionic_generation_ja.pdf)  
@@ -473,6 +473,10 @@ Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PA
    離散零閉包からの Noether 保存則と関係位相動力学――零閉包を厳密保存する離散自己写像、$N\to\infty$ 連続場方程式、局所ゲージ幾何、および標準模型一世代表現と chirality 選択  
    DOI [10.5281/zenodo.22040736](https://doi.org/10.5281/zenodo.22040736) · Concept [10.5281/zenodo.22040735](https://doi.org/10.5281/zenodo.22040735) · 2026-08-21 · v1.0 · [PDF en](https://zenodo.org/records/22040736/files/zero_closure_noether_dynamics_en_public_v1.0.pdf) [PDF ja](https://zenodo.org/records/22040736/files/zero_closure_noether_dynamics_ja_public_v1.0.pdf)  
    folder: [次元の生成構造/電子の反跳実験](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E9%9B%BB%E5%AD%90%E3%81%AE%E5%8F%8D%E8%B7%B3%E5%AE%9F%E9%A8%93) · [release notes](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_zero_closure_noether_dynamics_v1.0.md)
+24. **Mechanism of Inflation-like Rapid Expansion in Self-Consistent Closed Relational-Wave Systems: Normalization Audit, Rank Generation, Zero-Square-Closure Conservation, Simplex Symmetrization, and Reconstruction of the Axiom System**  
+   自己無撞着な関係波閉鎖系におけるインフレーション的急拡大の機構——正規化監査、rank 生成、二乗閉包保存、simplex 対称化および公理系の再構成  
+   DOI [10.5281/zenodo.22112009](https://doi.org/10.5281/zenodo.22112009) · Concept [10.5281/zenodo.22112008](https://doi.org/10.5281/zenodo.22112008) · 2026-08-26 · v1 · [PDF en](https://zenodo.org/records/22112009/files/nbody_self_consistent_inflation_mechanism_en.pdf) [PDF ja](https://zenodo.org/records/22112009/files/nbody_self_consistent_inflation_mechanism_ja.pdf)  
+   folder: [次元の生成構造](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0) · [release notes](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_nbody_self_consistent_inflation_mechanism_v1.md)
 
 ## Time Axis, Q Axis, and Fermion Generation / 時間軸Q軸とフェルミオンの生成構造
 
