@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Rotating-frame Jacobian at the parent relative equilibrium for N=3..16.
 Classifies multipliers: unstable (|mu|>1), neutral (|mu|=1), decaying; reports angles / parent dphi."""
-import importlib.util, math, json, sys, time
+import importlib.util, math, json, sys, time, os
 import numpy as np
 HERE = __file__.rsplit("/", 1)[0]
 spec = importlib.util.spec_from_file_location("eng", HERE + "/run_n_scaling_lowrank_v1_no_sigma_norm.py")
@@ -38,5 +38,5 @@ for n in NS:
              "neutral_angle_over_dphi": neut, "decaying_mod_angle_over_dphi": dec[:10], "sum_log_mod": sumlog, "sec": round(time.time() - t0, 1)}
     out[n] = res_n
     print(f"N={n:2d} M={m:3d} σ²={res_n['parent_sigma2'][:3]} | unstable dims={len(unst)} |μ|={[round(u[0],6) for u in unst[:4]]} angle/Δφ={res_n['unstable_angle_over_dphi'][:4]} | neutral angle/Δφ={neut} | Σln|μ|={sumlog:+.4f} | defect={defect:.1e} | {res_n['sec']}s", flush=True)
-    json.dump(out, open(HERE + "/sweep_floquet.json", "w"), indent=1)
+    json.dump(out, open(os.path.join(HERE, "results", "sweep_floquet.json"), "w"), indent=1)
 print("DONE")

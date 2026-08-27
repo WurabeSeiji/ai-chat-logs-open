@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """N=3..16: parent sigma^2 spectrum, late-time collective rotation (sigma_eff^2), rigidity, final-state K spectrum.
 Same engine / seeds / GAMMA as the decompactification package (no new physics)."""
-import importlib.util, math, json, sys, time
+import importlib.util, math, json, sys, time, os
 import numpy as np
 HERE = __file__.rsplit("/", 1)[0]
 spec = importlib.util.spec_from_file_location("eng", HERE + "/run_n_scaling_lowrank_v1_no_sigma_norm.py")
@@ -47,5 +47,5 @@ for n in NS:
     }
     out[n] = res
     print(f"N={n:2d} M={syslr.m:3d} parent σ²={res['parent_sigma2'][:4]} | late Δφ={dphi:.7f} σ_eff²={sig_eff*sig_eff:.6f} | rigid spread={res['late_edge_increment_spread']:.1e} tstd={res['late_time_std_max']:.1e} | final K σ²={res['final_K_sigma2'][:3]} | equip max/min={equip:.4f} | {res['sec']}s", flush=True)
-    json.dump(out, open(HERE + "/sweep_sigma2.json", "w"), indent=1)
+    json.dump(out, open(os.path.join(HERE, "results", "sweep_sigma2.json"), "w"), indent=1)
 print("DONE")
