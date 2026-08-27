@@ -1,0 +1,195 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+N=5 linear124 seedless + make_parent amplitude-normalization removed experiment.
+Baseline is copied from the previously verified linear124 experiment.
+Based on the amplitude-aware linear124 version. Also removes the remaining explicit initial amplitude normalization.
+The interaction-generator correction remains:
+    K_ij = sin(theta_j-theta_i)
+        -> Im(conj(Z_i) * Z_j)
+for edge pairs sharing a vertex.
+The exact exponential rotation exp((2*pi/124) K) is unchanged.
+Starting from the prior seedless/all-three-fixes experiment, the only new change is removal of v/=norm(v) inside make_parent. Other make_parent logic is unchanged.
+"""
+import os, math, csv, json, sys, hashlib
+import numpy as np
+sys.path.insert(0, os.path.dirname(__file__))
+import original_engine as eng
+
+ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA=os.path.join(ROOT,'data'); FIG=os.path.join(ROOT,'figures')
+os.makedirs(DATA,exist_ok=True); os.makedirs(FIG,exist_ok=True)
+N=5; STEPS=5000; SEED=0; DELTA=0.0; L=124
+
+
+def adjacency_mask(s):
+    m=s.m
+    A=np.zeros((m,m),dtype=float)
+    for i in range(m):
+        share=(s.ea==s.ea[i])|(s.ea==s.eb[i])|(s.eb==s.ea[i])|(s.eb==s.eb[i])
+        share[i]=False
+        A[i,share]=1.0
+    return A
+
+
+def dense_K_phase_only(s,z):
+    """Exact baseline generator from the verified linear124 experiment."""
+    m=s.m; K=np.zeros((m,m)); th=np.angle(z)
+    for i in range(m):
+        share=(s.ea==s.ea[i])|(s.ea==s.eb[i])|(s.eb==s.ea[i])|(s.eb==s.eb[i])
+        share[i]=False
+        K[i,share]=np.sin(th[share]-th[i])
+    return K
+
+
+def dense_K_amplitude_aware(s,z):
+    """ONE change: retain complex amplitudes in interaction coefficient.
+
+    For connected edge-wave pair (i,j):
+        K_ij = Im(conj(z_i) z_j)
+             = |z_i||z_j| sin(theta_j-theta_i)
+    This is real and antisymmetric by construction.
+    """
+    A=adjacency_mask(s)
+    pair=np.imag(np.conj(z)[:,None] * z[None,:])
+    K=A*pair
+    np.fill_diagonal(K,0.0)
+    return K
+
+
+def exp_linear_step(s,z,mode):
+    K = dense_K_phase_only(s,z) if mode=='baseline_phase_only' else dense_K_amplitude_aware(s,z)
+    # diagnostic gate: generator must be real antisymmetric
+    asym=np.linalg.norm(K+K.T)
+    if asym > 1e-10:
+        raise RuntimeError(f'K antisymmetry failure: {asym}')
+    H=1j*K
+    w,V=np.linalg.eigh(H)
+    return V @ (np.exp(-1j*(2*math.pi/L)*w)*(V.conj().T@z)), K
+
+
+def metrics(s,Z,p,q,t,K=None):
+    hpar=abs(p@Z)**2+abs(q@Z)**2
+    htot=float(np.vdot(Z,Z).real)
+    hperp=htot-hpar
+    pr=eng.participation_ratio(Z)
+    ztz=abs(complex(Z@Z))
+    s.set_theta(np.angle(Z))
+    sig=s.sigma_spectrum(); sig1=float(sig[0]) if len(sig) else 0.0
+    amp=np.abs(Z)
+    if K is None:
+        knorm=float('nan'); kasym=float('nan')
+    else:
+        knorm=float(np.linalg.norm(K,2)); kasym=float(np.linalg.norm(K+K.T))
+    return [t,hpar,hperp,htot,pr,pr/s.m,ztz,sig1,float(amp.min()),float(amp.max()),float(amp.std()),knorm,kasym]
+
+
+def run(mode,v,g,p,q):
+    s=eng.LowRankSystem(N)
+    Z=v.copy()  # SEEDLESS: remove external perturbation DELTA*g; make_parent unchanged
+    rows=[]; states=np.empty((STEPS+1,s.m),dtype=np.complex128)
+    Kprev=None
+    for t in range(STEPS+1):
+        states[t]=Z
+        rows.append(metrics(s,Z,p,q,t,Kprev))
+        if t==STEPS: break
+        Z,Kprev=exp_linear_step(s,Z,mode)
+    return np.asarray(rows,float),states
+
+# EXACT SAME parent and seed construction as prior linear124 comparison
+s0=eng.LowRankSystem(N)
+rng=np.random.default_rng(40260721+1000*N+SEED)
+v,res,sig=eng.make_parent(s0,rng)
+g=eng.zero_closure_kernel_seed(s0,rng)
+p=v.real/np.linalg.norm(v.real)
+q=v.imag-(v.imag@p)*p; q/=np.linalg.norm(q)
+
+baseline,states_b=run('baseline_phase_only',v,g,p,q)
+treat,states_t=run('treatment_amplitude_aware',v,g,p,q)
+
+headers=['step','H_parallel','H_perp','H_total','PR','PR_over_M','abs_ZT_Z','sigma1_phase_reader','amp_min','amp_max','amp_std','K_spectral_norm','K_antisym_error']
+for name,a in [('baseline_linear124_phase_only',baseline),('treatment_linear124_amplitude_aware',treat)]:
+    with open(os.path.join(DATA,name+'_timeseries.csv'),'w',newline='') as f:
+        w=csv.writer(f); w.writerow(headers); w.writerows(a)
+np.savez_compressed(os.path.join(DATA,'states_baseline.npz'),Z=states_b)
+np.savez_compressed(os.path.join(DATA,'states_treatment.npz'),Z=states_t)
+
+# Reproduction gate against previously saved linear124 baseline
+ref_path=os.path.join(ROOT,'data','previous_treatment_with_normalization.csv')
+repro_max_abs=float('nan')
+
+# summaries
+def first_cross(a,col,threshold):
+    ix=np.where(a[:,col]>threshold)[0]
+    return int(ix[0]) if len(ix) else None
+
+def frac_onset(a,thr=0.05):
+    f=a[:,2]/a[:,3]; ix=np.where(f>thr)[0]
+    return int(ix[0]) if len(ix) else None
+
+def growth_fit(a,lo=1e-10,hi=1e-3):
+    y=a[:,2]; mask=(y>lo)&(y<hi)&np.isfinite(y)
+    if mask.sum()<3: return None
+    x=a[mask,0]; ly=np.log(y[mask])
+    slope,inter=np.polyfit(x,ly,1)
+    pred=slope*x+inter
+    ssr=((ly-pred)**2).sum(); sst=((ly-ly.mean())**2).sum()
+    return {'slope_ln_Hperp_per_step':float(slope),'intercept':float(inter),'R2':float(1-ssr/sst),'n':int(mask.sum()),'step_min':int(x.min()),'step_max':int(x.max())}
+
+def summarize(a):
+    frac=a[:,2]/a[:,3]
+    return {
+      'onset_Hperp_fraction_gt_0.05': frac_onset(a,0.05),
+      'max_Hperp': float(np.nanmax(a[:,2])),
+      'max_Hperp_step': int(a[np.nanargmax(a[:,2]),0]),
+      'max_Hperp_fraction': float(np.nanmax(frac)),
+      'max_Hperp_fraction_step': int(a[np.nanargmax(frac),0]),
+      'final_Hparallel':float(a[-1,1]),'final_Hperp':float(a[-1,2]),'final_Htotal':float(a[-1,3]),
+      'final_PR_over_M':float(a[-1,5]),'final_abs_ZT_Z':float(a[-1,6]),
+      'final_amp_min':float(a[-1,8]),'final_amp_max':float(a[-1,9]),'final_amp_std':float(a[-1,10]),
+      'Htotal_max_abs_drift':float(np.nanmax(np.abs(a[:,3]-a[0,3]))),
+      'growth_fit':growth_fit(a)
+    }
+
+summary={
+ 'experiment':'N5 linear124 seedless + make_parent v normalization removed; no external DELTA*g; no initialization Z normalization; linear exponential rotation; amplitude-aware K',
+ 'N':N,'M':10,'L':L,'steps':STEPS,'seed':SEED,'delta':DELTA,
+ 'parent_residual':float(res),'parent_sigma':[float(x) for x in sig],
+ 'fixes':['make_parent v/=norm(v) removed; all other make_parent logic unchanged','removed external perturbation seed DELTA*g: Z0=v','removed explicit Z/=norm(Z) at initialization','linear exponential rotation retained','amplitude-aware K retained: Im(conj(Z_i)*Z_j)'],
+ 'baseline_reproduction_max_abs_difference_vs_saved_linear124':repro_max_abs,
+ 'baseline':summarize(baseline),
+ 'treatment':summarize(treat),
+}
+with open(os.path.join(DATA,'summary.json'),'w') as f: json.dump(summary,f,indent=2,ensure_ascii=False)
+
+# key-step comparison
+key_steps=sorted(set([0,25,50,75,100,125,150,200,300,500,750,1000,1500,2000,3000,4000,5000]))
+with open(os.path.join(DATA,'key_steps.csv'),'w',newline='') as f:
+    w=csv.writer(f); w.writerow(['step','base_Hperp','treat_Hperp','base_Hperp_frac','treat_Hperp_frac','base_PR_M','treat_PR_M','base_amp_std','treat_amp_std'])
+    for t in key_steps:
+        b=baseline[t]; a=treat[t]
+        w.writerow([t,b[2],a[2],b[2]/b[3],a[2]/a[3],b[5],a[5],b[10],a[10]])
+
+# plots (match original H_perp log style and additional diagnostics)
+import matplotlib.pyplot as plt
+plt.figure(figsize=(10,6))
+plt.semilogy(baseline[:,0],np.maximum(baseline[:,2],1e-30),label='baseline: phase-only K')
+plt.semilogy(treat[:,0],np.maximum(treat[:,2],1e-30),label='treatment: amplitude-aware K')
+plt.xlabel('step'); plt.ylabel('H_perp'); plt.title('N=5 linear124: H_perp (single-change control)'); plt.legend(); plt.grid(True,which='both',alpha=.25); plt.tight_layout(); plt.savefig(os.path.join(FIG,'N5_Hperp_baseline_vs_amplitude_aware.png'),dpi=180); plt.close()
+
+plt.figure(figsize=(10,6))
+plt.plot(baseline[:,0],baseline[:,5],label='baseline')
+plt.plot(treat[:,0],treat[:,5],label='amplitude-aware')
+plt.xlabel('step'); plt.ylabel('PR / M'); plt.title('N=5 linear124: participation ratio'); plt.legend(); plt.grid(True,alpha=.25); plt.tight_layout(); plt.savefig(os.path.join(FIG,'N5_PR_baseline_vs_amplitude_aware.png'),dpi=180); plt.close()
+
+plt.figure(figsize=(10,6))
+plt.plot(baseline[:,0],baseline[:,10],label='baseline')
+plt.plot(treat[:,0],treat[:,10],label='amplitude-aware')
+plt.xlabel('step'); plt.ylabel('std(|Z_m|)'); plt.title('N=5 linear124: amplitude dispersion'); plt.legend(); plt.grid(True,alpha=.25); plt.tight_layout(); plt.savefig(os.path.join(FIG,'N5_amplitude_std_compare.png'),dpi=180); plt.close()
+
+plt.figure(figsize=(10,6))
+plt.semilogy(baseline[:,0],np.maximum(baseline[:,6],1e-30),label='baseline')
+plt.semilogy(treat[:,0],np.maximum(treat[:,6],1e-30),label='amplitude-aware')
+plt.xlabel('step'); plt.ylabel('|Z^T Z|'); plt.title('N=5 linear124: squared-closure residual'); plt.legend(); plt.grid(True,which='both',alpha=.25); plt.tight_layout(); plt.savefig(os.path.join(FIG,'N5_closure_residual_compare.png'),dpi=180); plt.close()
+
+print(json.dumps(summary,indent=2,ensure_ascii=False))
