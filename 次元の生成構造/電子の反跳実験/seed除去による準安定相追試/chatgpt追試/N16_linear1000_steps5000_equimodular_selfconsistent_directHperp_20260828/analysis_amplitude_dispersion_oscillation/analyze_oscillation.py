@@ -56,3 +56,17 @@ extra={"parent_residual_r":r,"norm_v":nv,"predicted_drift_per_step_ANGLE*r*|v|":
        "kernel_dim_of_Kamp(v)":int(np.sum(np.abs(w)<1e-9)),"fraction_of_|delta(final)|^2_in_kernel":float(np.sum(np.abs(c[-1][np.abs(w)<1e-9])**2)/np.sum(np.abs(c[-1])**2)),
        "predicted_period_kernel_modes_L/sigma_max":float(L/(-w[0]))}
 out.update(extra); json.dump(out,open(os.path.join(H,"results.json"),"w"),indent=1); print(json.dumps(extra,indent=1))
+# 6) 訂正：|c_k(0)| は丸め誤差（2e-19）の分解で意味が薄い。δ(final) の分解で支配モードを特定し、その w_k と位相回転率・周期を出す
+magF=np.abs(c[-1]); orderF=np.argsort(magF)[::-1]; topF=[]
+for k in orderF[:10]:
+    ck=c[:,k]; seg=slice(1000,T); ph=np.unwrap(np.angle(ck[seg])); rate=np.polyfit(np.arange(1000,T),ph,1)[0]
+    topF.append({"k":int(k),"w_k":float(w[k]),"|c_k(final)|":float(magF[k]),"share_of_|delta(final)|^2":float(magF[k]**2/np.sum(magF**2)),"measured_phase_rate_per_step(t>1000)":float(rate),"predicted_rate_ANGLE*(w_k-w0)":float(ANGLE*(w[k]-w[0])),"predicted_period_steps":float(L/abs(w[k]-w[0])) if abs(w[k]-w[0])>1e-12 else None})
+# 固有値の群ごとの |δ(final)|² の割合
+groups={}
+for k in range(M):
+    key=round(float(w[k]),3); groups[key]=groups.get(key,0.0)+float(magF[k]**2)
+tot=float(np.sum(magF**2)); share={str(k):v/tot for k,v in sorted(groups.items(),key=lambda kv:-kv[1])[:6]}
+out["delta_final_top_components"]=topF; out["delta_final_share_by_eigenvalue"]=share; out["eigenvalue_spectrum_distinct"]=sorted(set(round(float(x),4) for x in w))
+json.dump(out,open(os.path.join(H,"results.json"),"w"),indent=1)
+print("δ(final) の固有値群別割合:",share); print("スペクトル:",out["eigenvalue_spectrum_distinct"])
+for t_ in topF[:5]: print(t_)
