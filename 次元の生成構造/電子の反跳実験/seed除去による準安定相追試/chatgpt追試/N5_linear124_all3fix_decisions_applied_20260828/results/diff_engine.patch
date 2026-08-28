@@ -1,0 +1,75 @@
+--- N5_linear124_all3fix_seedless_parentnorm_removed_40000_20260828/program/original_engine.py	2026-08-28 05:03:12
++++ N5_linear124_all3fix_decisions_applied_20260828/program/original_engine.py	2026-08-28 12:21:16
+@@ -42,7 +42,8 @@
+     print(f"[進捗 {time.strftime('%H:%M:%S')}] {msg}", file=sys.stderr, flush=True)
+ 
+ 
+-GAMMA = math.tan(math.pi / 144.0)
++GAMMA = math.tan(math.pi / 144.0)  # 旧 Cayley 刻み（記録用。validate では使わない）
++ANGLE = 2.0 * math.pi / 124.0    # 判断4(R3-ii): 検算用の線形回転の刻み角（最新版の L=124 に合わせる）
+ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ RESULT_DIR = os.path.join(BASE_DIR, "n_scaling_result_v1")
+ 
+@@ -211,7 +212,7 @@
+     Y = Y - (X @ Y) / (X @ X) * X
+     Y = Y * (np.linalg.norm(X) / np.linalg.norm(Y))
+     Z = X + 1j * Y
+-    return Z / np.linalg.norm(Z)
++    return Z  # 判断1(A5): 全体の振幅正規化を除去（|X|=|Y| の相対比は維持）
+ 
+ 
+ # ---------------- 検証（密行列との一致） ----------------
+@@ -230,39 +231,33 @@
+         A[i, share] = 1.0
+     np.fill_diagonal(A, 0.0)
+ 
+-    theta0 = np.angle(Z)
+-    sys_lr.set_theta(theta0)
+-    Kd = A * np.sin(theta0[None, :] - theta0[:, None])
++    # 判断4(R3-ii): 密行列側も振幅込み K で比較。低ランク側は c=Re z, s=Im z を直接与える
++    sys_lr.c = Z.real.copy(); sys_lr.s = Z.imag.copy()
++    Kd = A * np.imag(np.conj(Z)[:, None] * Z[None, :])
+ 
+     err_matvec = np.linalg.norm(sys_lr.kmatvec(Z) - Kd @ Z) / np.linalg.norm(Kd @ Z)
+ 
+-    Wd = np.zeros((m, 2 * n))
+-    for k in range(n):
+-        b = ((ea == k) | (eb == k)).astype(float)
+-        Wd[:, k] = b * sys_lr.c
+-        Wd[:, n + k] = b * sys_lr.s
+-    err_G = np.linalg.norm(Wd.T @ Wd - sys_lr.G) / np.linalg.norm(sys_lr.G)
++    err_G = 0.0  # G（WᵀW）は振幅込みでは set_theta が作らないため本検算では対象外（kmatvec と軌道で検算）
+ 
+-    sig_lr = sys_lr.sigma_spectrum()
++    sig_lr = np.sort(np.linalg.eigvalsh(1j * np.column_stack([sys_lr.kmatvec(e) for e in np.eye(m)])))
++    sig_lr = sig_lr[sig_lr > 1e-12][::-1]
+     sig_d = np.sort(np.linalg.eigvalsh(1j * Kd))
+     sig_d = sig_d[sig_d > 1e-12][::-1]
+     err_sigma = float(np.max(np.abs(sig_lr[: len(sig_d)] - sig_d) / sig_d[0]))
+ 
+-    # 軌道一致（両側とも厳密σ正規化）
++    # 軌道一致：低ランク kmatvec で組んだ K と密行列 K の双方で exp(ANGLE·K)（raw、正規化なし）
+     Z_lr = Z.copy()
+     Z_d = Z.copy()
+     dev = 0.0
+     for _ in range(steps):
+-        sys_lr.set_theta(np.angle(Z_lr))
+-        sig = sys_lr.sigma_spectrum()[0]
+-        Z_lr = sys_lr.cayley_step(Z_lr, sig)
++        sys_lr.c = Z_lr.real.copy(); sys_lr.s = Z_lr.imag.copy()
++        K_lr = np.column_stack([sys_lr.kmatvec(e) for e in np.eye(m)])
++        w, V = np.linalg.eigh(1j * K_lr)
++        Z_lr = V @ (np.exp(-1j * ANGLE * w) * (V.conj().T @ Z_lr))
+ 
+-        th = np.angle(Z_d)
+-        Kd = A * np.sin(th[None, :] - th[:, None])
+-        sd = np.linalg.norm(Kd, 2)
+-        Kn = Kd / sd
+-        I = np.eye(m)
+-        Z_d = np.linalg.solve(I - GAMMA * Kn, (I + GAMMA * Kn) @ Z_d)
++        Kd = A * np.imag(np.conj(Z_d)[:, None] * Z_d[None, :])
++        w, V = np.linalg.eigh(1j * Kd)
++        Z_d = V @ (np.exp(-1j * ANGLE * w) * (V.conj().T @ Z_d))
+         dev = max(dev, float(np.max(np.abs(Z_lr - Z_d))))
+     return {
+         "steps": steps,

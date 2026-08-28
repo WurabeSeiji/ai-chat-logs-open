@@ -1,0 +1,63 @@
+--- N5_linear124_all3fix_seedless_parentnorm_removed_40000_20260828/program/run_amplitude_only_fix.py	2026-08-28 05:43:11
++++ N5_linear124_all3fix_decisions_applied_20260828/program/run_amplitude_only_fix.py	2026-08-28 12:20:18
+@@ -74,13 +74,13 @@
+     hperp=htot-hpar
+     pr=eng.participation_ratio(Z)
+     ztz=abs(complex(Z@Z))
+-    s.set_theta(np.angle(Z))
+-    sig=s.sigma_spectrum(); sig1=float(sig[0]) if len(sig) else 0.0
++    # 判断2(A6-b): σ₁ は「この step を実際に回した生成子 K」の最大固有値（位相のみ読出し器 set_theta は使わない）
+     amp=np.abs(Z)
+     if K is None:
+-        knorm=float('nan'); kasym=float('nan')
++        knorm=float('nan'); kasym=float('nan'); sig1=float('nan')
+     else:
+         knorm=float(np.linalg.norm(K,2)); kasym=float(np.linalg.norm(K+K.T))
++        sig1=float(np.max(np.abs(np.linalg.eigvalsh(1j*K))))
+     return [t,hpar,hperp,htot,pr,pr/s.m,ztz,sig1,float(amp.min()),float(amp.max()),float(amp.std()),knorm,kasym]
+ 
+ 
+@@ -89,25 +89,30 @@
+     Z=v.copy()  # SEEDLESS: remove external perturbation DELTA*g; make_parent unchanged
+     rows=[]; states=np.empty((STEPS+1,s.m),dtype=np.complex128)
+     Kprev=None
++    dphi=[]  # 判断2(A6-b): 実測位相進み arg<Z_t, Z_{t+1}>（ANGLE·σ₁ との検算用）
+     for t in range(STEPS+1):
+         states[t]=Z
+         rows.append(metrics(s,Z,p,q,t,Kprev))
+         if t==STEPS: break
+-        Z,Kprev=exp_linear_step(s,Z,mode)
+-    return np.asarray(rows,float),states
++        Zn,Kprev=exp_linear_step(s,Z,mode)
++        dphi.append(float(np.angle(np.vdot(Z,Zn)))); Z=Zn
++    a=np.asarray(rows,float); dphi=np.array(dphi+[np.nan])
++    # 列追加：measured_phase_advance（step t→t+1）、angle_times_sigma1（同 step の K の σ₁ × 2π/L；K は直前 step のものなので 1 step ずらして対応）
++    sig_next=np.r_[a[1:,7],np.nan]
++    return np.c_[a,dphi,(2*math.pi/L)*sig_next],states
+ 
+ # EXACT SAME parent and seed construction as prior linear124 comparison
+ s0=eng.LowRankSystem(N)
+ rng=np.random.default_rng(40260721+1000*N+SEED)
+ v,res,sig=eng.make_parent(s0,rng)
+-g=eng.zero_closure_kernel_seed(s0,rng)
++g=None  # 判断5(S1): 外部 seed g は計算しない（zero_closure_kernel_seed の定義はエンジンに残す）
+ p=v.real/np.linalg.norm(v.real)
+ q=v.imag-(v.imag@p)*p; q/=np.linalg.norm(q)
+ 
+ baseline,states_b=run('baseline_phase_only',v,g,p,q)
+ treat,states_t=run('treatment_amplitude_aware',v,g,p,q)
+ 
+-headers=['step','H_parallel','H_perp','H_total','PR','PR_over_M','abs_ZT_Z','sigma1_phase_reader','amp_min','amp_max','amp_std','K_spectral_norm','K_antisym_error']
++headers=['step','H_parallel','H_perp','H_total','PR','PR_over_M','abs_ZT_Z','sigma1_of_step_generator','amp_min','amp_max','amp_std','K_spectral_norm','K_antisym_error','measured_phase_advance','angle_times_sigma1_next']
+ for name,a in [('baseline_linear124_phase_only',baseline),('treatment_linear124_amplitude_aware',treat)]:
+     with open(os.path.join(DATA,name+'_timeseries.csv'),'w',newline='') as f:
+         w=csv.writer(f); w.writerow(headers); w.writerows(a)
+@@ -155,7 +160,7 @@
+  'experiment':'N5 linear124 seedless + make_parent v normalization removed; no external DELTA*g; no initialization Z normalization; linear exponential rotation; amplitude-aware K',
+  'N':N,'M':10,'L':L,'steps':STEPS,'seed':SEED,'delta':DELTA,
+  'parent_residual':float(res),'parent_sigma':[float(x) for x in sig],
+- 'fixes':['make_parent v/=norm(v) removed; all other make_parent logic unchanged','removed external perturbation seed DELTA*g: Z0=v','removed explicit Z/=norm(Z) at initialization','linear exponential rotation retained','amplitude-aware K retained: Im(conj(Z_i)*Z_j)'],
++ 'fixes':['make_parent v/=norm(v) removed; all other make_parent logic unchanged','removed external perturbation seed DELTA*g: Z0=v','removed explicit Z/=norm(Z) at initialization','linear exponential rotation retained','amplitude-aware K retained: Im(conj(Z_i)*Z_j)','DECISION A5: zero_closure_generic normalization removed (unused)','DECISION A6(b): sigma1 read from the generator actually used in each branch; measured phase advance recorded','DECISION S1: zero_closure_kernel_seed not executed (definition kept)','DECISION R3(ii): validate_against_dense rewritten for amplitude-aware raw exp rotation (tool only)'],
+  'baseline_reproduction_max_abs_difference_vs_saved_linear124':repro_max_abs,
+  'baseline':summarize(baseline),
+  'treatment':summarize(treat),
