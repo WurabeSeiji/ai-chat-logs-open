@@ -41,7 +41,6 @@ sys=eng.LowRankSystem(N)
 rng=np.random.default_rng(SEED)
 v,res,sig=eng.make_parent(sys,rng,iters=1200,beta=0.5,tol=1e-12,restarts=3)
 Z=v.copy()
-wp=rng.normal(size=M)
 
 states=[]; increments=[]; phase_rows=[]
 prev_theta=None
@@ -68,9 +67,8 @@ for t in range(STEPS+1):
                            np.nan if q is None else q,
                            ";".join(map(str,sorted(set(dens))))] + list(map(float,dth)))
     if t<STEPS:
-        sys.set_state(Z)  # FIX4
-        se,wp=sys.sigma_max_power(wp)
-        Z=sys.linear_rotation_step(Z,se)
+        sys.set_state(Z)  # A4
+        Z=sys.linear_rotation_step(Z)  # R1
     prev_theta=theta.copy()
 
 states_df=pd.DataFrame(states,columns=["step","H_total","abs_ZtZ","phase_pair_max_rat_err_q_le_256","phase_pair_median_rat_err_q_le_256","phase_pair_frac_err_lt_1e10","phase_pair_smallest_global_q_tol_1e10"])

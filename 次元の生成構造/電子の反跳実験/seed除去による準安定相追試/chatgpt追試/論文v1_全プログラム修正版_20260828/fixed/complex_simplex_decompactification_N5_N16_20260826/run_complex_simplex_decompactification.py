@@ -66,7 +66,6 @@ def run_n(n, eng, outdir):
     p = v.real / np.linalg.norm(v.real)
     q = v.imag - (v.imag @ p) * p
     q = q / np.linalg.norm(q)
-    wp = rng.normal(size=m)
 
     raw_rows = []
     geom_rows = []
@@ -127,9 +126,8 @@ def run_n(n, eng, outdir):
         raw_rows.append(raw)
 
         if t < STEPS:
-            syslr.set_state(Z)  # FIX4
-            se, wp = syslr.sigma_max_power(wp)
-            Z = syslr.linear_rotation_step(Z,se)
+            syslr.set_state(Z)  # A4
+            Z = syslr.linear_rotation_step(Z)  # R1
 
     full_axes=np.asarray(full_axes)
     par_axes=np.asarray(par_axes)
@@ -170,8 +168,8 @@ def run_n(n, eng, outdir):
     Rrate,R0,R1,Rcount=fit_rate(gdf['R_perp_takagi'].to_numpy())
 
     summary={
-        'N':n,'M':m,'steps':STEPS,'seed':SEED,'gamma':float(eng.GAMMA),'angle':float(eng.ANGLE),
-        'physics':'amplitude-aware K, exact linear rotation exp(ANGLE K), no normalization (FIX1-4)',
+        'N':n,'M':m,'steps':STEPS,'seed':SEED,'gamma':float(eng.GAMMA),'angle':float(eng.ANGLE),'kmode':eng.KMODE,
+        'physics':'linear rotation exp(ANGLE K); K = Im(conj z_i z_j) (KMODE=amplitude) or phase-only (KMODE=phase); no normalization, no seed',
         'parent_residual':float(residual),
         'parent_sigma_spectrum':[float(x) for x in sig_parent],
         'max_abs_ztz':float(gdf.abs_ztz.max()),
@@ -259,7 +257,7 @@ def main():
             f"- H_total range: {s['H_total_min']:.16f} .. {s['H_total_max']:.16f}",
             f"- A_perp: {s['A_perp_initial']:.3e} -> {s['A_perp_final']:.6f} (max {s['A_perp_max']:.6f})",
             f"- R_perp(Takagi): {s['R_perp_takagi_initial']:.3e} -> {s['R_perp_takagi_final']:.6f}",
-            (f"- R_perp early log growth rate: {s['R_perp_log_growth_rate_per_step']:.6f}/step" if s['R_perp_log_growth_rate_per_step'] is not None else "- R_perp early log growth rate: (no exponential regime found; fit window empty)"),  # ROBUSTNESS PATCH: 修正版では指数成長域が無く fit が None になる,
+            (f"- R_perp early log growth rate: {s['R_perp_log_growth_rate_per_step']:.6f}/step" if s['R_perp_log_growth_rate_per_step'] is not None else "- R_perp early log growth rate: not fitted (no exponential window 1e-10<R_perp<1e-3 with >=10 points)"),
             f"- growing perpendicular canonical axes measured: {len(rates)} of {n-1}",
             f"- axis growth-rate range: {min(rates):.6f} .. {max(rates):.6f}/step" if rates else "- no fitted axis rates",
             "",
