@@ -16,7 +16,7 @@ def load_engine(path):
 
 def trajectory(engine, n_den, tau_max=70.0, seed=0):
     gamma = math.tan(math.pi / n_den)  # 記録用
-    engine.ANGLE = 2.0 * math.pi / n_den  # FIX3: 線形回転の刻み角
+    engine.ANGLE = 2.0 * math.pi / n_den  # R1/R3(iii): 線形回転の刻み角を掃引
     dphi = engine.ANGLE
 
     N = 5
@@ -31,7 +31,6 @@ def trajectory(engine, n_den, tau_max=70.0, seed=0):
     p = v.real / np.linalg.norm(v.real)
     q = v.imag - (v.imag @ p) * p
     q = q / np.linalg.norm(q)
-    wp = rng.normal(size=M)
 
     rows = []
     for t in range(steps + 1):
@@ -40,9 +39,8 @@ def trajectory(engine, n_den, tau_max=70.0, seed=0):
         f = max(0.0, 1.0 - h1 / norm2)
         rows.append((t, t * dphi, f, abs(Z @ Z), norm2))
         if t < steps:
-            syslr.set_state(Z)  # FIX4
-            se, wp = syslr.sigma_max_power(wp)
-            Z = syslr.linear_rotation_step(Z, se)
+            syslr.set_state(Z)  # A4
+            Z = syslr.linear_rotation_step(Z)  # R1
 
     df = pd.DataFrame(rows, columns=["step", "tau", "f", "abs_ztz", "norm2"])
     return df, residual, gamma, dphi
