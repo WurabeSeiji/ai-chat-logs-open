@@ -64,3 +64,9 @@ $$\boxed{\text{正規化除去は、スケール }c\text{ と時間の }c^2\text
 - `program/parent_symmetry_check.py` → `results/parent_symmetry_check.{json,log}`
 - `data/`, `figures/`：無変更再実行の出力（参照と同形式）、`results/rerun_stdout.log`, `results/rerun_progress.log`
 - `run_all.sh`, `README.md`, `SHA256SUMS.txt`
+
+---
+
+## 追記（2026-08-28）——§0・§4・§5-3 の「別模型」という表現の訂正
+
+上記で treatment（振幅込み K）を「別の模型」「修正ではなく模型の変更」と書いたのは誤り。木原理論では**振幅の正規化は禁止**であり、位相のみの K_ij = sin(θ_j−θ_i) は相互作用内部に隠れた振幅正規化を持つ旧プログラムのミス（4 点のうちの 1 つ）であって、振幅込み K_ij = Im(z̄_i z_j)・線形回転 exp((2π/L)K)・正規化なしが理論に忠実な実装である。旧プログラムの 4 つのミス：(1) `make_parent` の `v/‖v‖`、(2) 初期化の外部 seed と `Z/‖Z‖`、(3) Cayley 変換、(4) 位相のみ生成子。したがって「位相のみ K の等分配・σ=N−1・ヌル錐単体」は旧プログラムの性質であり、理論の結果として引き継がない。40000 step 版の検証は `../N5_linear124_all3fix_control_rerun_40000_20260828/` を参照。
