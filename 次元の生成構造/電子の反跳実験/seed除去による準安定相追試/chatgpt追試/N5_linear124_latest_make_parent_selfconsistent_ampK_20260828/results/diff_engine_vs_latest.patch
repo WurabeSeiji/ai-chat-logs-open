@@ -1,0 +1,107 @@
+--- N5_linear124_all3fix_seedless_parentnorm_removed_40000_20260828/program/original_engine.py	2026-08-28 05:03:12
++++ N5_linear124_latest_make_parent_selfconsistent_ampK_20260828/program/original_engine.py	2026-08-28 19:43:36
+@@ -155,39 +155,75 @@
+     return float(np.linalg.norm(1j * kv - mu * v))
+ 
+ 
+-def make_parent(sys_lr, rng, iters=400, beta=0.5, tol=1e-8, restarts=3):
+-    """自己無撞着円偏波固有モード親。小空間（JG）の固有対で反復。
++def _adjacency(sys_lr):
++    """隣接辺マスク A（頂点を共有する辺対に 1）。"""
++    m = sys_lr.m
++    A = np.zeros((m, m))
++    for i in range(m):
++        share = (sys_lr.ea == sys_lr.ea[i]) | (sys_lr.ea == sys_lr.eb[i]) | (sys_lr.eb == sys_lr.ea[i]) | (sys_lr.eb == sys_lr.eb[i])
++        share[i] = False
++        A[i, share] = 1.0
++    return A
+ 
+-    収束判定（残差 < tol）付き。停滞時はランダム初期位相からリスタート。
++
++def _K_amplitude_aware(A, v):
++    """実際の相互作用の生成子 K_ij = Im(conj(v_i) v_j)（隣接辺のみ）。実反対称。"""
++    K = A * np.imag(np.conj(v)[:, None] * v[None, :])
++    np.fill_diagonal(K, 0.0)
++    return K
++
++
++def _selfconsistency_residual(K, v):
++    """スケール不変の固有モード残差 ‖iKv − μv‖/‖v‖、μ = v†(iKv)/v†v。"""
++    kv = 1j * (K @ v)
++    mu = np.vdot(v, kv) / np.vdot(v, v)
++    return float(np.linalg.norm(kv - mu * v) / np.linalg.norm(v))
++
++
++def make_parent(sys_lr, rng, iters=2000, beta=0.5, tol=1e-10, restarts=20):
++    """自己無撞着な親：実際の相互作用 K_amp(v) = Im(conj(v_i) v_j) に対して K_amp(v) v = iσ_max v を満たす状態 v を、
++    位相と振幅の両方を未知数として反復で解く（v → K_amp(v) の λ=−iσ_max モード u（旧 make_parent の argmin(ev.imag) と同じカイラリティ）→ v ← (1−β)v + βu、u は v に位相整合）。
++
++    - 振幅の正規化は行わない。固定点は c·v の族（K_amp は |v|² に比例）で、全体スケール c は自由なモジュライ。
++      ここでは固有値ソルバが返す固有ベクトルのスケール（‖u‖=1）をそのまま使う（明示的な正規化行は無い）。
++    - 収束判定はスケール不変残差 < tol。restarts 回すべて失敗したら RuntimeError（実験は走らせない）。
+     """
+-    best = (None, np.inf, None)
+-    for _ in range(restarts):
+-        theta = rng.uniform(0.0, 2.0 * np.pi, sys_lr.m)
+-        v = None
+-        for it in range(iters):
+-            sys_lr.set_theta(theta)
+-            ev, EV = np.linalg.eig(sys_lr.J @ sys_lr.G)
+-            idx = int(np.argmin(ev.imag))  # λ = -iσ_max
+-            v = sys_lr.w(EV[:, idx].astype(complex))
+-            # v amplitude normalization removed in this experiment
+-            theta_new = np.angle(v)
+-            mix = (1.0 - beta) * np.exp(1j * theta) + beta * np.exp(1j * theta_new)
+-            theta = np.angle(mix)
++    A = _adjacency(sys_lr)
++    m = sys_lr.m
++    log = []
++    for r in range(restarts):
++        theta = rng.uniform(0.0, 2.0 * np.pi, m)
++        v = np.exp(1j * theta)
++        res = np.inf
++        for it in range(iters):
++            K = _K_amplitude_aware(A, v)
++            w, U = np.linalg.eigh(1j * K)
++            # 旧 make_parent と同じカイラリティ：λ = −iσ_max のモード（iK の最小固有値 −σ_max）。縮退時は現在の v との重なりが最大のもの
++            top = np.where(w <= w.min() + 1e-12 * max(1.0, abs(w.min())))[0]
++            ov = [abs(np.vdot(U[:, j], v)) for j in top]
++            u = U[:, top[int(np.argmax(ov))]]
++            ph = np.vdot(u, v)
++            if abs(ph) > 0:
++                u = u * (ph / abs(ph))  # 位相整合（大域位相は自由）
++            v_new = (1.0 - beta) * v + beta * u
++            v = v_new
+             if it % 10 == 9:
+-                sys_lr.set_theta(np.angle(v))
+-                res_now = _eigenmode_residual(sys_lr, v)
+-                progress(f"親構成 iter={it+1} 残差={res_now:.2e}")
+-                if res_now < tol:
++                res = _selfconsistency_residual(_K_amplitude_aware(A, v), v)
++                progress(f"親構成(振幅込み) restart={r+1} iter={it+1} 残差={res:.2e}")
++                if res < tol:
+                     break
+-        sys_lr.set_theta(np.angle(v))
+-        residual = _eigenmode_residual(sys_lr, v)
+-        if residual < best[1]:
+-            best = (v, residual, sys_lr.sigma_spectrum())
+-        if residual < tol:
+-            break
+-    v, residual, sig = best
+-    sys_lr.set_theta(np.angle(v))
+-    return v, residual, sig
++        K = _K_amplitude_aware(A, v)
++        res = _selfconsistency_residual(K, v)
++        sig = np.sort(np.linalg.eigvalsh(1j * K))[::-1]
++        sig = sig[sig > 1e-12]
++        log.append((r + 1, res))
++        if res < tol:
++            sys_lr.set_theta(np.angle(v))
++            progress(f"親構成(振幅込み) 収束 restart={r+1} 残差={res:.2e} |v|={np.linalg.norm(v):.6f} σ={sig[:4]}")
++            return v, res, sig
++    msg = "make_parent: 振幅込み K に対する自己無撞着解が得られず（restarts=%d, iters=%d, tol=%.0e）: " % (restarts, iters, tol) + ", ".join(f"r{r}:{x:.2e}" for r, x in log)
++    progress(msg)
++    raise RuntimeError(msg)
+ 
+ 
+ def zero_closure_kernel_seed(sys_lr, rng):

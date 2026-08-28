@@ -1,0 +1,11 @@
+--- N5_linear124_all3fix_seedless_parentnorm_removed_40000_20260828/program/original_engine.py	2026-08-28 05:03:12
++++ N5_linear124_latest_make_parent_restored_norm_20260828/program/original_engine.py	2026-08-28 19:43:36
+@@ -169,7 +169,7 @@
+             ev, EV = np.linalg.eig(sys_lr.J @ sys_lr.G)
+             idx = int(np.argmin(ev.imag))  # λ = -iσ_max
+             v = sys_lr.w(EV[:, idx].astype(complex))
+-            # v amplitude normalization removed in this experiment
++            v = v / np.linalg.norm(v)
+             theta_new = np.angle(v)
+             mix = (1.0 - beta) * np.exp(1j * theta) + beta * np.exp(1j * theta_new)
+             theta = np.angle(mix)
