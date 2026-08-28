@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""取得済データのみで、N=5,10,16 の H⊥/H_total を 3 色で重ね描き（実験は行わない）。
+"""取得済データのみで、N=5,8,10,16,20 の H⊥/H_total を 3 色で重ね描き（実験は行わない）。
  図1: L=1000・5000 step（…linear1000_steps5000_equimodular_selfconsistent_directHperp_20260828）
  図2: L=124・40000 step（…linear124_equimodular_selfconsistent_directHperp_treatment_only_20260828）
 入力列: data/treatment_linear124_amplitude_aware_timeseries.csv の H_perp, H_total（H⊥ は直交成分の直接計算）。
@@ -7,9 +7,9 @@
 import os, json, numpy as np, pandas as pd, matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
 plt.rcParams.update({"font.family":"Hiragino Sans","font.size":11})  # 日本語題名の文字化け防止
 H=os.path.dirname(os.path.abspath(__file__)); P=os.path.dirname(H)
-SETS={"L1000_5000":{N:f"N{N}_linear1000_steps5000_equimodular_selfconsistent_directHperp_20260828" for N in (5,10,16)},
-      "L124_40000":{N:f"N{N}_linear124_equimodular_selfconsistent_directHperp_treatment_only_20260828" for N in (5,10,16)}}
-COL={5:"#d7263d",10:"#2e8b57",16:"#1f5fd8"}; out={}
+SETS={"L1000_5000":{N:f"N{N}_linear1000_steps5000_equimodular_selfconsistent_directHperp_20260828" for N in (5,8,10,16,20)},
+      "L124_40000":{N:f"N{N}_linear124_equimodular_selfconsistent_directHperp_treatment_only_20260828" for N in (5,8,10,16,20)}}
+COL={5:"#d7263d",8:"#e67e22",10:"#2e8b57",16:"#1f5fd8",20:"#6c3483"}; out={}
 def load(pkg):
     d=pd.read_csv(os.path.join(P,pkg,"data","treatment_linear124_amplitude_aware_timeseries.csv")); return d.step.to_numpy(), (d.H_perp/d.H_total).to_numpy(), d.H_perp.to_numpy()
 fig_all,axs=plt.subplots(1,2,figsize=(17,6.5))
@@ -42,6 +42,6 @@ ax.set_xlabel("累積刻み角 τ [rad]"); ax.set_ylabel("H⊥ / H_total"); ax.s
 fig.tight_layout(); fig.savefig(os.path.join(H,"figures","compare_N_tau_axis_full.png"),dpi=160); plt.close(fig)
 # 数値：同じ τ での比較（τ=31.4 rad ＝ L=1000 の 5000 step ＝ L=124 の 620 step）
 cmp={}
-for N in (5,10,16):
+for N in (5,8,10,16,20):
     s1,f1,_=load(SETS["L1000_5000"][N]); s2,f2,_=load(SETS["L124_40000"][N]); cmp[f"N{N}"]={"f(τ=31.4) L=1000":float(f1[5000]),"f(τ=31.4) L=124(step620)":float(f2[620]),"ratio L124/L1000":float(f2[620]/f1[5000]),"(1000/124)^2":float((1000/124)**2)}
 out["same_tau_comparison"]=cmp; json.dump(out,open(os.path.join(H,"results.json"),"w"),indent=1); print(json.dumps(cmp,indent=1))
