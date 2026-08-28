@@ -25,7 +25,6 @@ sys=eng.LowRankSystem(N)
 rng=np.random.default_rng(SEED)
 v,res,sig=eng.make_parent(sys,rng,iters=1200,beta=0.5,tol=1e-12,restarts=3)
 Z=v.copy()
-wp=rng.normal(size=M)
 edges=[(i,j) for i in range(N) for j in range(i+1,N)]
 
 raw_rows=[]
@@ -52,9 +51,8 @@ for t in range(STEPS+1):
                 float(r2[k]),float(np.angle(Z[k])),float(z2[k].real),float(z2[k].imag),float(np.angle(z2[k])/np.pi)]
     raw_rows.append(row)
     if t<STEPS:
-        sys.set_state(Z)  # FIX4
-        se,wp=sys.sigma_max_power(wp)
-        Z=sys.linear_rotation_step(Z,se)
+        sys.set_state(Z)  # A4
+        Z=sys.linear_rotation_step(Z)  # R1
 
 # Wide raw data
 cols=["step"]
