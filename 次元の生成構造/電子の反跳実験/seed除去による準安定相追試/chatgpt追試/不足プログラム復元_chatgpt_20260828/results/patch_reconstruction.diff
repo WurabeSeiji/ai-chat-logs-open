@@ -1,0 +1,85 @@
+diff -ru extracted/論文v1_全プログラム修正版_20260828/B1_N5/reconstruct_N5_missing_outputs.py extracted_patched/論文v1_全プログラム修正版_20260828/B1_N5/reconstruct_N5_missing_outputs.py
+--- extracted/論文v1_全プログラム修正版_20260828/B1_N5/reconstruct_N5_missing_outputs.py	2026-08-28 20:01:49
++++ extracted_patched/論文v1_全プログラム修正版_20260828/B1_N5/reconstruct_N5_missing_outputs.py	2026-08-28 23:38:59
+@@ -41,12 +41,22 @@
+     if spec is None or spec.loader is None: raise RuntimeError(path)
+     mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod); return mod
+ 
+-def generate_trajectory(engine):
+-    sys=engine.LowRankSystem(N)
+-    rng=np.random.default_rng(SEED)
+-    v,res,_=engine.make_parent(sys,rng,iters=1200,beta=0.5,tol=1e-12,restarts=3)
+-    Z=v.copy(); wp=rng.normal(size=M)
+-    ea,eb=sys.ea,sys.eb
++def generate_trajectory(engine, trajectory_csv=None):
++    """PATCH(Claude, 2026-08-28): trajectory_csv が与えられたら engine を再実行せず、
++    その root の力学が書いた N5_phase_by_edge_5000steps.csv（step, edge_index, theta, amplitude）から Z(t) を復元する。
++    以降の表・図の計算は無変更。"""
++    if trajectory_csv is not None:
++        tj=pd.read_csv(trajectory_csv); ea,eb=np.triu_indices(N,k=1); res=float("nan")
++        Zs={int(t):(g.sort_values("edge_index").amplitude.to_numpy()*np.exp(1j*g.sort_values("edge_index").theta.to_numpy())) for t,g in tj.groupby("step")}
++        class _S: pass
++        sys=_S(); sys.ea=ea; sys.eb=eb
++    else:
++        sys=engine.LowRankSystem(N)
++        rng=np.random.default_rng(SEED)
++        v,res,_=engine.make_parent(sys,rng,iters=1200,beta=0.5,tol=1e-12,restarts=3)
++        Z=v.copy(); wp=rng.normal(size=M)
++        ea,eb=sys.ea,sys.eb
++    if trajectory_csv is not None: Z=Zs[0]
+     rows=[]
+     snapshots={}
+     for t in range(STEPS+1):
+@@ -65,7 +75,8 @@
+         if t in KEY_STEPS or t==STEPS:
+             snapshots[t]=(Z.copy(),theta.copy())
+         if t<STEPS:
+-            sys.set_theta(theta); se,wp=sys.sigma_max_power(wp); Z=sys.cayley_step(Z,se)
++            if trajectory_csv is not None: Z=Zs[t+1]
++            else: sys.set_theta(theta); se,wp=sys.sigma_max_power(wp); Z=sys.cayley_step(Z,se)
+     cols=["step","edge_index","theta","relative_theta_over_pi_mod_pi","amplitude","a","b","a2","b2","ab","r2",
+           "a2_norm","b2_norm","ab_norm","z2_re","z2_im","z2_phase_over_pi","relation_class","constraint1","constraint2"]
+     return pd.DataFrame(rows,columns=cols), ea, eb, float(res)
+@@ -184,12 +195,13 @@
+ 
+ def main():
+     ap=argparse.ArgumentParser()
+-    ap.add_argument("--engine",type=Path,required=True)
++    ap.add_argument("--engine",type=Path,required=False,default=None)
++    ap.add_argument("--trajectory-csv",type=Path,default=None,help="PATCH: N5_phase_by_edge_5000steps.csv から軌道を読む（engine 再実行なし）")
+     ap.add_argument("--raw-observables",type=Path,default=None)
+     ap.add_argument("--outdir",type=Path,required=True)
+     args=ap.parse_args(); out=args.outdir; out.mkdir(parents=True,exist_ok=True)
+-    engine=load_engine(args.engine)
+-    all_df,ea,eb,parent_res=generate_trajectory(engine)
++    engine=load_engine(args.engine) if args.engine else None
++    all_df,ea,eb,parent_res=generate_trajectory(engine, trajectory_csv=args.trajectory_csv)
+     all_df.to_csv(out/"N5_all_steps_a_b_a2_b2_ab.csv",index=False)
+     # four group pattern
+     prows=[]
+diff -ru extracted/論文v1_全プログラム修正版_20260828/B5_nontrivial/rebuild_nontrivial_zero_closure_analysis.py extracted_patched/論文v1_全プログラム修正版_20260828/B5_nontrivial/rebuild_nontrivial_zero_closure_analysis.py
+--- extracted/論文v1_全プログラム修正版_20260828/B5_nontrivial/rebuild_nontrivial_zero_closure_analysis.py	2026-08-28 20:05:28
++++ extracted_patched/論文v1_全プログラム修正版_20260828/B5_nontrivial/rebuild_nontrivial_zero_closure_analysis.py	2026-08-28 23:46:31
+@@ -104,15 +104,19 @@
+     pd.DataFrame(ass,columns=['N','M','nontrivial_k','best_residual','assessment']).to_csv(out/'N3_N16_nontrivial_closure_assessment.csv',index=False)
+     # N5 exact covers
+     d5=pd.read_csv(a.source_dir/'SOURCE_N5_step5000_final_edges.csv'); covers=exact_covers_n5(cls,d5); covers.to_csv(out/'N5_nontrivial_pair_exact_covers.csv',index=False)
+-    best5=summ[summ.N==5].iloc[0].best_nontrivial_edges; graph_best_pair(out/'N5_nontrivial_pair_closure_graph.png',d5,best5)
++    best5=summ[summ.N==5].iloc[0].best_nontrivial_edges
++    if isinstance(best5,str) and best5:  # PATCH(Claude): N5 に非自明閉包が無い軌道では図・時間発展をスキップ
++        graph_best_pair(out/'N5_nontrivial_pair_closure_graph.png',d5,best5)
+     # bar plot of trivial/nontrivial hits
+     fig,ax=plt.subplots(figsize=(9,5)); x=np.arange(3,17); total=np.array([int(summ[summ.N==n].small_zero_hits.iloc[0]) for n in x]); non=np.array([int(summ[summ.N==n].nontrivial_small_zero_hits.iloc[0]) for n in x]); ax.bar(x-.18,total-non,width=.36,label='star-span trivial'); ax.bar(x+.18,non,width=.36,label='nontrivial'); ax.set_xlabel('N'); ax.set_ylabel('small closure hits (<1e-6)'); ax.set_title('N=3..16: trivial vs nontrivial small closures'); ax.legend(); fig.tight_layout(); fig.savefig(out/'N3_N16_trivial_vs_nontrivial_small_closures.png',dpi=180); plt.close(fig)
+     # time-evolution products
+-    if a.n5_all_steps and a.n5_all_steps.exists():
++    if a.n5_all_steps and a.n5_all_steps.exists() and isinstance(best5,str) and best5:  # PATCH(Claude): N5 閉包なしならスキップ
+         t5=time_evolution(a.n5_all_steps,best5); t5.to_csv(out/'N5_best_nontrivial_pair_time_evolution.csv',index=False)
+     else: t5=None
+     if a.n14_all_steps and a.n14_all_steps.exists():
+-        t14=time_evolution(a.n14_all_steps,str(n14.edges)); t14.to_csv(out/'N14_best_k6_candidate_time_evolution.csv',index=False)
++        if isinstance(n14.edges,str) and n14.edges:  # PATCH(Claude): N14 候補が無い軌道ではスキップ
++            t14=time_evolution(a.n14_all_steps,str(n14.edges)); t14.to_csv(out/'N14_best_k6_candidate_time_evolution.csv',index=False)
++        else: t14=None
+     else: t14=None
+     if t5 is not None and t14 is not None:
+         fig,ax=plt.subplots(figsize=(8,5)); ax.semilogy(t5.step,np.maximum(t5.residual,1e-18),label='N=5 best nontrivial pair'); ax.semilogy(t14.step,np.maximum(t14.residual,1e-18),label='N=14 best k=6 candidate'); ax.axhline(1e-6,lw=.7,ls=':'); ax.set_xlabel('step'); ax.set_ylabel('closure residual'); ax.set_title('Nontrivial closure time evolution'); ax.legend(); fig.tight_layout(); fig.savefig(out/'N5_vs_N14_nontrivial_closure_time_evolution.png',dpi=180); plt.close(fig)

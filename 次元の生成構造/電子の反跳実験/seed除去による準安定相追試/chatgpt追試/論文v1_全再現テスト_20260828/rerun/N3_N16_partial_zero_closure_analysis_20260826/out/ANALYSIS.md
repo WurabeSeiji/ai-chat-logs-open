@@ -21,7 +21,7 @@
 
 - N=3, M=3: total=2.100e-15, best2=4.763e-01 (hits=0, covers=0), best3=2.100e-15 (hits=1), triple exact covers=1
 - N=4, M=6: total=4.133e-15, best2=5.000e-01 (hits=0, covers=0), best3=2.508e-15 (hits=8), triple exact covers=4
-- N=5, M=10: total=2.683e-15, best2=1.880e-10 (hits=13, covers=12), best3=3.333e-01 (hits=0), triple exact covers=0
+- N=5, M=10: total=4.724e-15, best2=1.531e-04 (hits=0, covers=0), best3=3.333e-01 (hits=0), triple exact covers=0
 - N=6, M=15: total=4.176e-15, best2=1.758e-01 (hits=0, covers=0), best3=1.207e-01 (hits=0), triple exact covers=0
 - N=7, M=21: total=4.104e-15, best2=9.532e-05 (hits=0, covers=0), best3=3.166e-02 (hits=0), triple exact covers=0
 - N=8, M=28: total=9.977e-16, best2=1.205e-03 (hits=0, covers=0), best3=7.502e-03 (hits=0), triple exact covers=0
