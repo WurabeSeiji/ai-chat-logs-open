@@ -183,7 +183,7 @@ def _selfconsistency_residual(K, v):
 
 def make_parent(sys_lr, rng, iters=2000, beta=0.5, tol=1e-10, restarts=20):
     """自己無撞着な親：実際の相互作用 K_amp(v) = Im(conj(v_i) v_j) に対して K_amp(v) v = iσ_max v を満たす状態 v を、
-    位相と振幅の両方を未知数として反復で解く（v → K_amp(v) の最大固有モード u → v ← (1−β)v + βu、u は v に位相整合）。
+    位相と振幅の両方を未知数として反復で解く（v → K_amp(v) の λ=−iσ_max モード u（旧 make_parent の argmin(ev.imag) と同じカイラリティ）→ v ← (1−β)v + βu、u は v に位相整合）。
 
     - 振幅の正規化は行わない。固定点は c·v の族（K_amp は |v|² に比例）で、全体スケール c は自由なモジュライ。
       ここでは固有値ソルバが返す固有ベクトルのスケール（‖u‖=1）をそのまま使う（明示的な正規化行は無い）。
@@ -199,8 +199,8 @@ def make_parent(sys_lr, rng, iters=2000, beta=0.5, tol=1e-10, restarts=20):
         for it in range(iters):
             K = _K_amplitude_aware(A, v)
             w, U = np.linalg.eigh(1j * K)
-            # 最大固有値 σ_max のモード（縮退時は現在の v との重なりが最大のもの）
-            top = np.where(w >= w.max() - 1e-12 * max(1.0, abs(w.max())))[0]
+            # 旧 make_parent と同じカイラリティ：λ = −iσ_max のモード（iK の最小固有値 −σ_max）。縮退時は現在の v との重なりが最大のもの
+            top = np.where(w <= w.min() + 1e-12 * max(1.0, abs(w.min())))[0]
             ov = [abs(np.vdot(U[:, j], v)) for j in top]
             u = U[:, top[int(np.argmax(ov))]]
             ph = np.vdot(u, v)
