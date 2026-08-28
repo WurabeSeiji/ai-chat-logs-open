@@ -1,0 +1,16 @@
+--- NORMALIZED_ORIGINAL
++++ RAW_K
+@@ -132,10 +132,10 @@
+         return float(sig), wp
+ 
+     def cayley_step(self, z, sigma):
+-        """z ← (I-γK̃)^{-1}(I+γK̃) z, K̃ = K/σ。Woodbury で O(N^3)。"""
+-        gn = GAMMA / sigma
++        """z ← (I-γK)^{-1}(I+γK) z。K/σ 正規化なし。Woodbury で O(N^3)。"""
++        gn = GAMMA
+         r = z + gn * self.kmatvec(z)
+-        A2 = (sigma / GAMMA) * self.J + self.G
++        A2 = (1.0 / GAMMA) * self.J + self.G
+         rhs = self.wt(r)
+         y = np.linalg.solve(A2, rhs)
+         return r - self.w(y)
