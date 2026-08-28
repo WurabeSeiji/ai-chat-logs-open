@@ -42,8 +42,7 @@ def progress(msg):
     print(f"[進捗 {time.strftime('%H:%M:%S')}] {msg}", file=sys.stderr, flush=True)
 
 
-GAMMA = math.tan(math.pi / 144.0)  # 旧 Cayley 刻み（記録用、力学には使わない）
-ANGLE = 2.0 * math.pi / 144.0    # FIX3: 線形回転の刻み角
+GAMMA = math.tan(math.pi / 144.0)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 RESULT_DIR = os.path.join(BASE_DIR, "n_scaling_result_v1")
 
@@ -67,21 +66,16 @@ class LowRankSystem:
         self.J[n:, :n] = -np.eye(n)
 
     def set_theta(self, theta):
-        """位相のみ（|z|=1）の生成子。親の固有モード反復でのみ使用。"""
-        self.set_state(np.exp(1j * np.asarray(theta, dtype=float)))
-
-    def set_state(self, z):
-        """FIX4: 振幅込み生成子 K_ij = Im(conj(z_i) z_j) = |z_i||z_j| sin(θ_j-θ_i)（隣接辺）。c=Re z, s=Im z。"""
         n = self.n
-        z = np.asarray(z, dtype=complex)
-        self.c = np.real(z).copy()
-        self.s = np.imag(z).copy()
-        CT = np.zeros((n, n))
-        ST = np.zeros((n, n))
-        CT[self.ea, self.eb] = self.c
-        CT[self.eb, self.ea] = self.c
-        ST[self.ea, self.eb] = self.s
-        ST[self.eb, self.ea] = self.s
+        self.c = np.cos(theta)
+        self.s = np.sin(theta)
+        T = np.zeros((n, n))
+        T[self.ea, self.eb] = theta
+        T[self.eb, self.ea] = theta
+        CT = np.cos(T)
+        ST = np.sin(T)
+        np.fill_diagonal(CT, 0.0)
+        np.fill_diagonal(ST, 0.0)
         Gcc = CT * CT
         Gcs = CT * ST
         Gss = ST * ST
@@ -137,15 +131,14 @@ class LowRankSystem:
         sig = np.linalg.norm(self.kmatvec(wp))
         return float(sig), wp
 
-    def dense_K(self):
-        """現在の状態（set_state）の振幅込み生成子 K を密行列で返す（M×M、実反対称）。"""
-        return np.column_stack([self.kmatvec(e) for e in np.eye(self.m)])
-
-    def linear_rotation_step(self, z, sigma):
-        """FIX3: z ← exp((ANGLE/σ)·K) z。厳密な線形回転、K/σ 正規化あり（比較用ブランチ）。"""
-        K = self.dense_K()
-        w, V = np.linalg.eigh(1j * K)
-        return V @ (np.exp(-1j * (ANGLE / sigma) * w) * (V.conj().T @ z))
+    def cayley_step(self, z, sigma):
+        """z ← (I-γK̃)^{-1}(I+γK̃) z, K̃ = K/σ。Woodbury で O(N^3)。"""
+        gn = GAMMA / sigma
+        r = z + gn * self.kmatvec(z)
+        A2 = (sigma / GAMMA) * self.J + self.G
+        rhs = self.wt(r)
+        y = np.linalg.solve(A2, rhs)
+        return r - self.w(y)
 
 
 def participation_ratio(z):
@@ -175,7 +168,8 @@ def make_parent(sys_lr, rng, iters=400, beta=0.5, tol=1e-8, restarts=3):
             sys_lr.set_theta(theta)
             ev, EV = np.linalg.eig(sys_lr.J @ sys_lr.G)
             idx = int(np.argmin(ev.imag))  # λ = -iσ_max
-            v = sys_lr.w(EV[:, idx].astype(complex))  # FIX1: 振幅正規化を除去
+            v = sys_lr.w(EV[:, idx].astype(complex))
+            v = v / np.linalg.norm(v)
             theta_new = np.angle(v)
             mix = (1.0 - beta) * np.exp(1j * theta) + beta * np.exp(1j * theta_new)
             theta = np.angle(mix)
@@ -217,7 +211,7 @@ def zero_closure_generic(rng, m):
     Y = Y - (X @ Y) / (X @ X) * X
     Y = Y * (np.linalg.norm(X) / np.linalg.norm(Y))
     Z = X + 1j * Y
-    return Z  # FIX1/2: 正規化を除去
+    return Z / np.linalg.norm(Z)
 
 
 # ---------------- 検証（密行列との一致） ----------------
@@ -236,8 +230,9 @@ def validate_against_dense(n, seed, steps=300):
         A[i, share] = 1.0
     np.fill_diagonal(A, 0.0)
 
-    sys_lr.set_state(Z)
-    Kd = A * np.imag(np.conj(Z)[:, None] * Z[None, :])  # FIX4: 振幅込み
+    theta0 = np.angle(Z)
+    sys_lr.set_theta(theta0)
+    Kd = A * np.sin(theta0[None, :] - theta0[:, None])
 
     err_matvec = np.linalg.norm(sys_lr.kmatvec(Z) - Kd @ Z) / np.linalg.norm(Kd @ Z)
 
@@ -258,14 +253,16 @@ def validate_against_dense(n, seed, steps=300):
     Z_d = Z.copy()
     dev = 0.0
     for _ in range(steps):
-        sys_lr.set_state(Z_lr)
+        sys_lr.set_theta(np.angle(Z_lr))
         sig = sys_lr.sigma_spectrum()[0]
-        Z_lr = sys_lr.linear_rotation_step(Z_lr, sig)
+        Z_lr = sys_lr.cayley_step(Z_lr, sig)
 
-        Kd = A * np.imag(np.conj(Z_d)[:, None] * Z_d[None, :])  # FIX4
-        wd, Vd = np.linalg.eigh(1j * Kd)
-        ang = (ANGLE / np.linalg.norm(Kd, 2)) if True else ANGLE
-        Z_d = Vd @ (np.exp(-1j * ang * wd) * (Vd.conj().T @ Z_d))  # FIX3
+        th = np.angle(Z_d)
+        Kd = A * np.sin(th[None, :] - th[:, None])
+        sd = np.linalg.norm(Kd, 2)
+        Kn = Kd / sd
+        I = np.eye(m)
+        Z_d = np.linalg.solve(I - GAMMA * Kn, (I + GAMMA * Kn) @ Z_d)
         dev = max(dev, float(np.max(np.abs(Z_lr - Z_d))))
     return {
         "steps": steps,
@@ -285,7 +282,9 @@ def onset_probe(n, seed, delta=1e-6, cap=4000):
     v, residual, sig = make_parent(sys_lr, rng)
     t_parent = time.time() - t0
 
-    Z = v.copy()  # FIX2: 外部 seed と正規化を除去（seedless、親そのもの）
+    g = zero_closure_kernel_seed(sys_lr, rng)
+    Z = v + delta * g
+    Z = Z / np.linalg.norm(Z)
     ztz0 = complex(Z @ Z)
 
     p = v.real / np.linalg.norm(v.real)
@@ -309,9 +308,9 @@ def onset_probe(n, seed, delta=1e-6, cap=4000):
         if t % 200 == 0 and t > 0:
             progress(f"開始率走行 τ={t} f={f:.3e}")
         max_ztz = max(max_ztz, abs(complex(Z @ Z)))
-        sys_lr.set_state(Z)  # FIX4
+        sys_lr.set_theta(np.angle(Z))
         sig_est, wp = sys_lr.sigma_max_power(wp)
-        Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+        Z = sys_lr.cayley_step(Z, sig_est)
     t_run = time.time() - t0
 
     f_arr = np.array(f_hist)
@@ -352,7 +351,7 @@ def relax_probe(n, seed, cap=3000, sub=None):
     t = 0
     for t in range(cap + 1):
         pr_hist.append(participation_ratio(Z))
-        sys_lr.set_state(Z)  # FIX4
+        sys_lr.set_theta(np.angle(Z))
         sig_est, wp = sys_lr.sigma_max_power(wp)
         if t % sub == 0:
             sig_exact = sys_lr.sigma_spectrum()
@@ -364,10 +363,10 @@ def relax_probe(n, seed, cap=3000, sub=None):
                 plateau_tau = t
                 break
         if t < cap:
-            Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+            Z = sys_lr.cayley_step(Z, sig_est)
     t_run = time.time() - t0
 
-    sys_lr.set_state(Z)  # FIX4
+    sys_lr.set_theta(np.angle(Z))
     sig = sys_lr.sigma_spectrum()
     n_act = int(np.sum(sig / sig[0] > 0.05))
     qv = np.linalg.lstsq(sys_lr.G, sys_lr.wt(Z), rcond=None)[0]
@@ -410,7 +409,7 @@ def main():
 
     os.makedirs(RESULT_DIR, exist_ok=True)
     m = n * (n - 1) // 2
-    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA, "angle": ANGLE}
+    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA}
     print(f"=== N スケーリング測定（低ランク頂点分解） N={n}, M={m}, seed={seed} ===", flush=True)
 
     if do_validate:

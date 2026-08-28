@@ -39,7 +39,6 @@ def runN(N):
     rng=np.random.default_rng(SEED)
     v,res,sig=eng.make_parent(sys,rng,iters=1200,beta=0.5,tol=1e-12,restarts=3)
     Z=v.copy()
-    wp=rng.normal(size=M)
     edges=[(i,j) for i in range(N) for j in range(i+1,N)]
 
     Q,_=np.linalg.qr(np.column_stack([v.real,v.imag]))
@@ -67,9 +66,8 @@ def runN(N):
                                float(ab[k]),float(r2[k]),float(np.angle(Z[k])),
                                float(z2.real),float(z2.imag),float(np.angle(z2)/np.pi)])
         if t<STEPS:
-            sys.set_state(Z)  # FIX4
-            se,wp=sys.sigma_max_power(wp)
-            Z=sys.linear_rotation_step(Z,se)
+            sys.set_state(Z)  # A4
+            Z=sys.linear_rotation_step(Z)  # R1
 
     glob=pd.DataFrame(global_rows,columns=["step","H_total","H_parallel","H_perp","A_perp","abs_ZtZ",
         "sum_a2","sum_b2","sum_ab","r2_min","r2_max","simplex_rank"])
