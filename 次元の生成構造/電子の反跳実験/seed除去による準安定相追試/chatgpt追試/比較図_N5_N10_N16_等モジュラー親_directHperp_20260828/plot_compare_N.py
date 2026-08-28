@@ -9,13 +9,14 @@ plt.rcParams.update({"font.family":"Hiragino Sans","font.size":11})  # 日本語
 H=os.path.dirname(os.path.abspath(__file__)); P=os.path.dirname(H)
 SETS={"L1000_5000":{N:f"N{N}_linear1000_steps5000_equimodular_selfconsistent_directHperp_20260828" for N in (5,8,10,16,20)},
       "L124_40000":{N:f"N{N}_linear124_equimodular_selfconsistent_directHperp_treatment_only_20260828" for N in (5,8,10,16,20)},
-      "L10000_500":{N:f"N{N}_linear10000_steps500_equimodular_selfconsistent_directHperp_20260828" for N in (5,8,10,16,20)}}
+      "L10000_500":{N:f"N{N}_linear10000_steps500_equimodular_selfconsistent_directHperp_20260828" for N in (5,8,10,16,20)},
+      "L100000_50":{N:f"N{N}_linear100000_steps50_equimodular_selfconsistent_directHperp_20260828" for N in (5,8,10,16,20)}}
 COL={5:"#d7263d",8:"#e67e22",10:"#2e8b57",16:"#1f5fd8",20:"#6c3483"}; out={}
 def load(pkg):
     d=pd.read_csv(os.path.join(P,pkg,"data","treatment_linear124_amplitude_aware_timeseries.csv")); return d.step.to_numpy(), (d.H_perp/d.H_total).to_numpy(), d.H_perp.to_numpy()
-fig_all,axs=plt.subplots(1,3,figsize=(24,6.5))
+fig_all,axs=plt.subplots(1,4,figsize=(30,6.5))
 for ai,(key,pk) in enumerate(SETS.items()):
-    L={"L1000_5000":1000,"L124_40000":124,"L10000_500":10000}[key]; fig,ax=plt.subplots(figsize=(11,6.5)); out[key]={}
+    L={"L1000_5000":1000,"L124_40000":124,"L10000_500":10000,"L100000_50":100000}[key]; fig,ax=plt.subplots(figsize=(11,6.5)); out[key]={}
     for N,pkg in pk.items():
         st,f,hp=load(pkg)
         for a in (ax,axs[ai]): a.semilogy(st,np.maximum(f,1e-40),color=COL[N],lw=1.6,label=f"N={N}  (H_total={hp[0]/f[0] if f[0]>0 else np.nan:.3g})" if False else f"N={N}")
@@ -31,7 +32,7 @@ json.dump(out,open(os.path.join(H,"results.json"),"w"),indent=1); print(json.dum
 # 図3：横軸を累積刻み角 τ = step·2π/L にして、L=124（実線）と L=1000（破線）を同じ軸に重ねる（同じ N は同色）。刻み依存性と「同じカーブか」の直接比較
 fig,ax=plt.subplots(figsize=(11,6.5))
 for key,pk in SETS.items():
-    L={"L1000_5000":1000,"L124_40000":124,"L10000_500":10000}[key]; ls={124:"-",1000:"--",10000:":"}[L]
+    L={"L1000_5000":1000,"L124_40000":124,"L10000_500":10000,"L100000_50":100000}[key]; ls={124:"-",1000:"--",10000:":",100000:"-."}[L]
     for N,pkg in pk.items():
         st,f,_=load(pkg); tau=st*2*np.pi/L; ax.semilogy(tau,np.maximum(f,1e-40),color=COL[N],lw=1.6,ls=ls,label=f"N={N}, Δ=2π/{L}")
 ax.set_xlim(0,60); ax.set_xlabel("累積刻み角 τ = step·Δ [rad]"); ax.set_ylabel("H⊥ / H_total"); ax.set_title("同じ τ 軸での比較（実線 Δ=2π/124、破線 Δ=2π/1000、点線 Δ=2π/10000）：0〜60 rad"); ax.grid(True,which="both",alpha=.25); ax.legend(ncol=2)
