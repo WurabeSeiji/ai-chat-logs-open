@@ -1,0 +1,1 @@
+N=12/N=13 complete analysis. Same raw-K, no K/sigma normalization, seedless make_parent, 5000-step pipeline as prior N series. Includes full edge data, observables, Takagi axes, phase/distance classes, figures, runner, engine, report and checksums.
