@@ -1,0 +1,121 @@
+--- N5_linear124_all3fix_decisions_applied_20260828/program/original_engine.py	2026-08-28 12:21:16
++++ N5_linear124_decisions_applied_make_parent_equimodular_selfconsistent_20260828/program/original_engine.py	2026-08-28 20:39:10
+@@ -156,7 +156,7 @@
+     return float(np.linalg.norm(1j * kv - mu * v))
+ 
+ 
+-def make_parent(sys_lr, rng, iters=400, beta=0.5, tol=1e-8, restarts=3):
++def _make_parent_phase_only(sys_lr, rng, iters=400, beta=0.5, tol=1e-8, restarts=3):
+     """自己無撞着円偏波固有モード親。小空間（JG）の固有対で反復。
+ 
+     収束判定（残差 < tol）付き。停滞時はランダム初期位相からリスタート。
+@@ -191,6 +191,109 @@
+     return v, residual, sig
+ 
+ 
++def _adjacency(sys_lr):
++    """隣接辺マスク A（頂点を共有する辺対に 1）。"""
++    m = sys_lr.m
++    A = np.zeros((m, m))
++    for i in range(m):
++        share = (sys_lr.ea == sys_lr.ea[i]) | (sys_lr.ea == sys_lr.eb[i]) | (sys_lr.eb == sys_lr.ea[i]) | (sys_lr.eb == sys_lr.eb[i])
++        share[i] = False
++        A[i, share] = 1.0
++    return A
++
++
++def _K_amplitude_aware(A, v):
++    """実際の相互作用の生成子 K_ij = Im(conj(v_i) v_j)（隣接辺のみ）。実反対称。"""
++    K = A * np.imag(np.conj(v)[:, None] * v[None, :])
++    np.fill_diagonal(K, 0.0)
++    return K
++
++
++def _K_phase_only(A, v):
++    """位相のみの生成子 K_ij = sin(θ_j − θ_i)（隣接辺のみ）。"""
++    th = np.angle(v)
++    K = A * np.sin(th[None, :] - th[:, None])
++    np.fill_diagonal(K, 0.0)
++    return K
++
++
++def _selfconsistency_residual(K, v):
++    """スケール不変の固有モード残差 ‖iKv − μv‖/‖v‖、μ = v†(iKv)/v†v。"""
++    kv = 1j * (K @ v)
++    mu = np.vdot(v, kv) / np.vdot(v, v)
++    return float(np.linalg.norm(kv - mu * v) / np.linalg.norm(v))
++
++
++def _exp_step(K, z, angle):
++    w, V = np.linalg.eigh(1j * K)
++    return V @ (np.exp(-1j * angle * w) * (V.conj().T @ z))
++
++
++def make_parent(sys_lr, rng, iters=2000, beta=0.5, tol=1e-10, restarts=20, pre_steps=20000, equi_tol=1e-9, L_pre=124):
++    """等モジュラー（全辺の振幅が等しい）で縮退していない自己無撞着親。
++
++    段階1: 旧アルゴリズム（位相のみ K の固有モード反復、正規化なし）で rank-2 の親 v0 を作る。
++    段階2: v0 から位相のみ K の線形回転 exp((2π/L_pre)·K_phase) で時間発展させ、|z|² の相対幅 < equi_tol
++           （等モジュラー）に達するまで進める。旧力学が到達する等モジュラー・ヌル単体（σ = N−1 定理の状態）。
++    段階3: その状態を初期値に、振幅込み K_amp(v) = Im(conj(v_i) v_j) の λ = −iσ_max モードへの混合反復で
++           残差 < tol まで磨く。等モジュラーなら K_amp = r²·K_phase なので固有モードのまま（恒等式）。
++    振幅の正規化は行わない（全体スケールは段階1の親のまま）。段階2/3 が失敗したらリスタート、全失敗で RuntimeError。
++    """
++    A = _adjacency(sys_lr)
++    m = sys_lr.m
++    log = []
++    for r in range(restarts):
++        v0, res0, sig0 = _make_parent_phase_only(sys_lr, rng, iters=400, beta=0.5, tol=1e-8, restarts=1)
++        # 段階2：位相のみ K で等モジュラー状態まで時間発展
++        z = v0.copy()
++        spread = np.inf
++        for t in range(pre_steps):
++            z = _exp_step(_K_phase_only(A, z), z, 2.0 * math.pi / L_pre)
++            if t % 100 == 99:
++                r2 = np.abs(z) ** 2
++                spread = float((r2.max() - r2.min()) / r2.mean())
++                if spread < equi_tol:
++                    break
++        progress(f"親構成(等モジュラー) restart={r+1} 段階2: {t+1} step で |z|² 相対幅={spread:.2e}")
++        if spread >= equi_tol:
++            log.append((r + 1, "stage2", spread))
++            continue
++        # 段階3：振幅込み K で磨く
++        v = z
++        res = _selfconsistency_residual(_K_amplitude_aware(A, v), v)
++        progress(f"親構成(等モジュラー) restart={r+1} 段階3 開始残差={res:.2e}")
++        for it in range(iters):
++            if res < tol:
++                break
++            K = _K_amplitude_aware(A, v)
++            w, U = np.linalg.eigh(1j * K)
++            top = np.where(w <= w.min() + 1e-12 * max(1.0, abs(w.min())))[0]
++            ov = [abs(np.vdot(U[:, jj], v)) for jj in top]
++            u = U[:, top[int(np.argmax(ov))]]
++            ph = np.vdot(u, v)
++            if abs(ph) > 0:
++                u = u * (ph / abs(ph))
++            u = u * (np.linalg.norm(v) / np.linalg.norm(u))  # 固有ベクトルを現在の v と同じ全体スケールに（正規化ではなく族内のスケール固定）
++            v = (1.0 - beta) * v + beta * u
++            res = _selfconsistency_residual(_K_amplitude_aware(A, v), v)
++            if it % 10 == 9:
++                progress(f"親構成(等モジュラー) restart={r+1} 段階3 iter={it+1} 残差={res:.2e}")
++        K = _K_amplitude_aware(A, v)
++        res = _selfconsistency_residual(K, v)
++        r2 = np.abs(v) ** 2
++        spread = float((r2.max() - r2.min()) / r2.mean())
++        sig = np.sort(np.linalg.eigvalsh(1j * K))[::-1]
++        sig = sig[sig > 1e-12]
++        log.append((r + 1, "stage3", res))
++        if res < tol:
++            sys_lr.set_theta(np.angle(v))
++            progress(f"親構成(等モジュラー) 収束 restart={r+1} 残差={res:.2e} |v|={np.linalg.norm(v):.6f} |z|²相対幅={spread:.2e} 非零辺={int(np.sum(np.abs(v)>1e-8))}/{m} σ={sig[:4]}")
++            return v, res, sig
++    msg = "make_parent: 等モジュラー自己無撞着解が得られず（restarts=%d）: " % restarts + ", ".join(f"r{r}:{st}:{x:.2e}" for r, st, x in log)
++    progress(msg)
++    raise RuntimeError(msg)
++
++
+ def zero_closure_kernel_seed(sys_lr, rng):
+     """span(W) の直交補内の実正規直交対 (u,w) から g=(u+iw)/√2。g^T g = 0 厳密。"""
+     m = sys_lr.m
