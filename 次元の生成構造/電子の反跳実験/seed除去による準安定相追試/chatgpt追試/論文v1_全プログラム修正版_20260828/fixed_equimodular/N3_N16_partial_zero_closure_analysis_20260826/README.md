@@ -1,0 +1,1 @@
+N=3..16 partial zero-closure analysis using existing step=5000 raw edge data. No physics rerun or modification. Includes normalized source final-edge CSVs for every N, exhaustive 2-edge/3-edge subset searches, exact-cover results, canonical graph decompositions, plots, analysis program, report, and checksums.
