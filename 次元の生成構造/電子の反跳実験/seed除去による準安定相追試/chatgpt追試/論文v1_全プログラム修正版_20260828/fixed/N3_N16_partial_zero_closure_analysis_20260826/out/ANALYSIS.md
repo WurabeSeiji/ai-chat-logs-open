@@ -19,20 +19,20 @@
 
 ## 主要結果
 
-- N=3, M=3: total=1.021e-13, best2=3.333e-01 (hits=0, covers=0), best3=1.021e-13 (hits=1), triple exact covers=1
-- N=4, M=6: total=6.938e-14, best2=3.333e-01 (hits=0, covers=0), best3=1.653e-13 (hits=12), triple exact covers=6
+- N=3, M=3: total=2.809e-14, best2=3.333e-01 (hits=0, covers=0), best3=2.809e-14 (hits=1), triple exact covers=1
+- N=4, M=6: total=6.544e-15, best2=3.333e-01 (hits=0, covers=0), best3=5.231e-13 (hits=12), triple exact covers=6
 - N=5, M=10: total=2.683e-15, best2=1.880e-10 (hits=13, covers=12), best3=3.333e-01 (hits=0), triple exact covers=0
-- N=6, M=15: total=4.207e-14, best2=3.527e-01 (hits=0, covers=0), best3=2.792e-02 (hits=0), triple exact covers=0
-- N=7, M=21: total=4.607e-14, best2=1.418e-01 (hits=0, covers=0), best3=4.781e-02 (hits=0), triple exact covers=0
-- N=8, M=28: total=6.020e-14, best2=3.839e-02 (hits=0, covers=0), best3=2.862e-02 (hits=0), triple exact covers=0
-- N=9, M=36: total=5.893e-14, best2=9.155e-02 (hits=0, covers=0), best3=1.251e-02 (hits=0), triple exact covers=0
-- N=10, M=45: total=3.304e-14, best2=4.137e-02 (hits=0, covers=0), best3=1.196e-02 (hits=0), triple exact covers=0
-- N=11, M=55: total=4.303e-14, best2=2.838e-02 (hits=0, covers=0), best3=3.833e-03 (hits=0), triple exact covers=0
-- N=12, M=66: total=6.338e-14, best2=4.903e-02 (hits=0, covers=0), best3=7.171e-03 (hits=0), triple exact covers=0
-- N=13, M=78: total=2.457e-14, best2=2.978e-02 (hits=0, covers=0), best3=1.559e-03 (hits=0), triple exact covers=0
-- N=14, M=91: total=4.138e-14, best2=1.372e-02 (hits=0, covers=0), best3=2.036e-03 (hits=0), triple exact covers=0
-- N=15, M=105: total=3.612e-14, best2=1.253e-02 (hits=0, covers=0), best3=1.045e-03 (hits=0), triple exact covers=0
-- N=16, M=120: total=4.702e-14, best2=1.792e-02 (hits=0, covers=0), best3=2.132e-04 (hits=0), triple exact covers=0
+- N=6, M=15: total=3.101e-14, best2=3.527e-01 (hits=0, covers=0), best3=2.792e-02 (hits=0), triple exact covers=0
+- N=7, M=21: total=8.090e-14, best2=1.418e-01 (hits=0, covers=0), best3=4.780e-02 (hits=0), triple exact covers=0
+- N=8, M=28: total=1.923e-14, best2=3.839e-02 (hits=0, covers=0), best3=2.862e-02 (hits=0), triple exact covers=0
+- N=9, M=36: total=5.042e-14, best2=9.155e-02 (hits=0, covers=0), best3=1.251e-02 (hits=0), triple exact covers=0
+- N=10, M=45: total=8.591e-14, best2=4.137e-02 (hits=0, covers=0), best3=1.196e-02 (hits=0), triple exact covers=0
+- N=11, M=55: total=5.227e-14, best2=2.838e-02 (hits=0, covers=0), best3=3.833e-03 (hits=0), triple exact covers=0
+- N=12, M=66: total=6.874e-14, best2=4.903e-02 (hits=0, covers=0), best3=7.171e-03 (hits=0), triple exact covers=0
+- N=13, M=78: total=4.543e-14, best2=2.978e-02 (hits=0, covers=0), best3=1.559e-03 (hits=0), triple exact covers=0
+- N=14, M=91: total=4.374e-14, best2=1.372e-02 (hits=0, covers=0), best3=2.036e-03 (hits=0), triple exact covers=0
+- N=15, M=105: total=4.152e-14, best2=1.253e-02 (hits=0, covers=0), best3=1.045e-03 (hits=0), triple exact covers=0
+- N=16, M=120: total=5.618e-14, best2=1.792e-02 (hits=0, covers=0), best3=2.132e-04 (hits=0), triple exact covers=0
 
 ## 解釈上の注意
 
