@@ -1,0 +1,2690 @@
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/K_sigma_normalization_artifact_test_N4_N5_20260826/run_artifact_comparison_N4_N5.py fixed/K_sigma_normalization_artifact_test_N4_N5_20260826/run_artifact_comparison_N4_N5.py
+--- ../論文v1_全再現テスト_20260828/original/K_sigma_normalization_artifact_test_N4_N5_20260826/run_artifact_comparison_N4_N5.py	2026-08-25 20:28:28
++++ fixed/K_sigma_normalization_artifact_test_N4_N5_20260826/run_artifact_comparison_N4_N5.py	2026-08-28 11:14:20
+@@ -2,7 +2,7 @@
+ # Reproducibility runner for K/sigma normalization artifact test.
+ # Requires run_n_scaling_lowrank_v1_NORMALIZED_ORIGINAL.py and run_n_scaling_lowrank_v1_RAW_K.py
+ # Conditions: same parent, same zero-closure seed, same Z0, same GAMMA, same wp0.
+-# Branch difference: only cayley_step K/sigma normalization.
++# Branch difference: only K/sigma normalization inside the linear rotation exp((ANGLE/sigma) K) vs exp(ANGLE K).
+ 
+ import importlib.util, math, numpy as np, pandas as pd
+ from pathlib import Path
+@@ -32,12 +32,12 @@
+     sys=mod.LowRankSystem(N); Z=Z0.copy(); wp=wp0.copy(); rows=[]
+     for t in range(STEPS+1):
+         Ht,Hp,Ho,Ao,f,ztz=obs(Z,p,q)
+-        sys.set_theta(np.angle(Z))
++        sys.set_state(Z)  # FIX4
+         se,wpn=sys.sigma_max_power(wp)
+         sex=float(sys.sigma_spectrum()[0])
+         rows.append((t,Ht,Hp,Ho,Ao,f,ztz.real,ztz.imag,abs(ztz),se,sex))
+         if t<STEPS:
+-            Z=sys.cayley_step(Z,se); wp=wpn
++            Z=sys.linear_rotation_step(Z,se); wp=wpn
+     return pd.DataFrame(rows,columns=["step","H_total","H_parallel","H_perp","A_perp","f","ztz_re","ztz_im","abs_ztz","sigma_est","sigma_exact"])
+ 
+ for N in N_VALUES:
+@@ -45,9 +45,7 @@
+     sys0=norm.LowRankSystem(N)
+     rng=np.random.default_rng(seed)
+     v,residual,sig=norm.make_parent(sys0,rng,iters=1200,tol=1e-12)
+-    g=norm.zero_closure_kernel_seed(sys0,rng)
+-    Z0=v+DELTA*g
+-    Z0=Z0/np.linalg.norm(Z0)
++    Z0=v.copy()  # FIX2: 外部 seed と正規化を除去（DELTA は不使用）
+     p=v.real/np.linalg.norm(v.real)
+     q=v.imag-(v.imag@p)*p
+     q=q/np.linalg.norm(q)
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/K_sigma_normalization_artifact_test_N4_N5_20260826/run_n_scaling_lowrank_v1_NORMALIZED_ORIGINAL.py fixed/K_sigma_normalization_artifact_test_N4_N5_20260826/run_n_scaling_lowrank_v1_NORMALIZED_ORIGINAL.py
+--- ../論文v1_全再現テスト_20260828/original/K_sigma_normalization_artifact_test_N4_N5_20260826/run_n_scaling_lowrank_v1_NORMALIZED_ORIGINAL.py	2026-08-25 20:26:50
++++ fixed/K_sigma_normalization_artifact_test_N4_N5_20260826/run_n_scaling_lowrank_v1_NORMALIZED_ORIGINAL.py	2026-08-28 11:14:20
+@@ -42,7 +42,8 @@
+     print(f"[進捗 {time.strftime('%H:%M:%S')}] {msg}", file=sys.stderr, flush=True)
+ 
+ 
+-GAMMA = math.tan(math.pi / 144.0)
++GAMMA = math.tan(math.pi / 144.0)  # 旧 Cayley 刻み（記録用、力学には使わない）
++ANGLE = 2.0 * math.pi / 144.0    # FIX3: 線形回転の刻み角
+ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ RESULT_DIR = os.path.join(BASE_DIR, "n_scaling_result_v1")
+ 
+@@ -66,16 +67,21 @@
+         self.J[n:, :n] = -np.eye(n)
+ 
+     def set_theta(self, theta):
++        """位相のみ（|z|=1）の生成子。親の固有モード反復でのみ使用。"""
++        self.set_state(np.exp(1j * np.asarray(theta, dtype=float)))
++
++    def set_state(self, z):
++        """FIX4: 振幅込み生成子 K_ij = Im(conj(z_i) z_j) = |z_i||z_j| sin(θ_j-θ_i)（隣接辺）。c=Re z, s=Im z。"""
+         n = self.n
+-        self.c = np.cos(theta)
+-        self.s = np.sin(theta)
+-        T = np.zeros((n, n))
+-        T[self.ea, self.eb] = theta
+-        T[self.eb, self.ea] = theta
+-        CT = np.cos(T)
+-        ST = np.sin(T)
+-        np.fill_diagonal(CT, 0.0)
+-        np.fill_diagonal(ST, 0.0)
++        z = np.asarray(z, dtype=complex)
++        self.c = np.real(z).copy()
++        self.s = np.imag(z).copy()
++        CT = np.zeros((n, n))
++        ST = np.zeros((n, n))
++        CT[self.ea, self.eb] = self.c
++        CT[self.eb, self.ea] = self.c
++        ST[self.ea, self.eb] = self.s
++        ST[self.eb, self.ea] = self.s
+         Gcc = CT * CT
+         Gcs = CT * ST
+         Gss = ST * ST
+@@ -131,16 +137,17 @@
+         sig = np.linalg.norm(self.kmatvec(wp))
+         return float(sig), wp
+ 
+-    def cayley_step(self, z, sigma):
+-        """z ← (I-γK̃)^{-1}(I+γK̃) z, K̃ = K/σ。Woodbury で O(N^3)。"""
+-        gn = GAMMA / sigma
+-        r = z + gn * self.kmatvec(z)
+-        A2 = (sigma / GAMMA) * self.J + self.G
+-        rhs = self.wt(r)
+-        y = np.linalg.solve(A2, rhs)
+-        return r - self.w(y)
++    def dense_K(self):
++        """現在の状態（set_state）の振幅込み生成子 K を密行列で返す（M×M、実反対称）。"""
++        return np.column_stack([self.kmatvec(e) for e in np.eye(self.m)])
+ 
++    def linear_rotation_step(self, z, sigma):
++        """FIX3: z ← exp((ANGLE/σ)·K) z。厳密な線形回転、K/σ 正規化あり（比較用ブランチ）。"""
++        K = self.dense_K()
++        w, V = np.linalg.eigh(1j * K)
++        return V @ (np.exp(-1j * (ANGLE / sigma) * w) * (V.conj().T @ z))
+ 
++
+ def participation_ratio(z):
+     a2 = np.abs(z) ** 2
+     return float(np.sum(a2) ** 2 / np.sum(a2 * a2))
+@@ -168,8 +175,7 @@
+             sys_lr.set_theta(theta)
+             ev, EV = np.linalg.eig(sys_lr.J @ sys_lr.G)
+             idx = int(np.argmin(ev.imag))  # λ = -iσ_max
+-            v = sys_lr.w(EV[:, idx].astype(complex))
+-            v = v / np.linalg.norm(v)
++            v = sys_lr.w(EV[:, idx].astype(complex))  # FIX1: 振幅正規化を除去
+             theta_new = np.angle(v)
+             mix = (1.0 - beta) * np.exp(1j * theta) + beta * np.exp(1j * theta_new)
+             theta = np.angle(mix)
+@@ -211,7 +217,7 @@
+     Y = Y - (X @ Y) / (X @ X) * X
+     Y = Y * (np.linalg.norm(X) / np.linalg.norm(Y))
+     Z = X + 1j * Y
+-    return Z / np.linalg.norm(Z)
++    return Z  # FIX1/2: 正規化を除去
+ 
+ 
+ # ---------------- 検証（密行列との一致） ----------------
+@@ -230,9 +236,8 @@
+         A[i, share] = 1.0
+     np.fill_diagonal(A, 0.0)
+ 
+-    theta0 = np.angle(Z)
+-    sys_lr.set_theta(theta0)
+-    Kd = A * np.sin(theta0[None, :] - theta0[:, None])
++    sys_lr.set_state(Z)
++    Kd = A * np.imag(np.conj(Z)[:, None] * Z[None, :])  # FIX4: 振幅込み
+ 
+     err_matvec = np.linalg.norm(sys_lr.kmatvec(Z) - Kd @ Z) / np.linalg.norm(Kd @ Z)
+ 
+@@ -253,16 +258,14 @@
+     Z_d = Z.copy()
+     dev = 0.0
+     for _ in range(steps):
+-        sys_lr.set_theta(np.angle(Z_lr))
++        sys_lr.set_state(Z_lr)
+         sig = sys_lr.sigma_spectrum()[0]
+-        Z_lr = sys_lr.cayley_step(Z_lr, sig)
++        Z_lr = sys_lr.linear_rotation_step(Z_lr, sig)
+ 
+-        th = np.angle(Z_d)
+-        Kd = A * np.sin(th[None, :] - th[:, None])
+-        sd = np.linalg.norm(Kd, 2)
+-        Kn = Kd / sd
+-        I = np.eye(m)
+-        Z_d = np.linalg.solve(I - GAMMA * Kn, (I + GAMMA * Kn) @ Z_d)
++        Kd = A * np.imag(np.conj(Z_d)[:, None] * Z_d[None, :])  # FIX4
++        wd, Vd = np.linalg.eigh(1j * Kd)
++        ang = (ANGLE / np.linalg.norm(Kd, 2)) if True else ANGLE
++        Z_d = Vd @ (np.exp(-1j * ang * wd) * (Vd.conj().T @ Z_d))  # FIX3
+         dev = max(dev, float(np.max(np.abs(Z_lr - Z_d))))
+     return {
+         "steps": steps,
+@@ -282,9 +285,7 @@
+     v, residual, sig = make_parent(sys_lr, rng)
+     t_parent = time.time() - t0
+ 
+-    g = zero_closure_kernel_seed(sys_lr, rng)
+-    Z = v + delta * g
+-    Z = Z / np.linalg.norm(Z)
++    Z = v.copy()  # FIX2: 外部 seed と正規化を除去（seedless、親そのもの）
+     ztz0 = complex(Z @ Z)
+ 
+     p = v.real / np.linalg.norm(v.real)
+@@ -308,9 +309,9 @@
+         if t % 200 == 0 and t > 0:
+             progress(f"開始率走行 τ={t} f={f:.3e}")
+         max_ztz = max(max_ztz, abs(complex(Z @ Z)))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+-        Z = sys_lr.cayley_step(Z, sig_est)
++        Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+     f_arr = np.array(f_hist)
+@@ -351,7 +352,7 @@
+     t = 0
+     for t in range(cap + 1):
+         pr_hist.append(participation_ratio(Z))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+         if t % sub == 0:
+             sig_exact = sys_lr.sigma_spectrum()
+@@ -363,10 +364,10 @@
+                 plateau_tau = t
+                 break
+         if t < cap:
+-            Z = sys_lr.cayley_step(Z, sig_est)
++            Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+-    sys_lr.set_theta(np.angle(Z))
++    sys_lr.set_state(Z)  # FIX4
+     sig = sys_lr.sigma_spectrum()
+     n_act = int(np.sum(sig / sig[0] > 0.05))
+     qv = np.linalg.lstsq(sys_lr.G, sys_lr.wt(Z), rcond=None)[0]
+@@ -409,7 +410,7 @@
+ 
+     os.makedirs(RESULT_DIR, exist_ok=True)
+     m = n * (n - 1) // 2
+-    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA}
++    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA, "angle": ANGLE}
+     print(f"=== N スケーリング測定（低ランク頂点分解） N={n}, M={m}, seed={seed} ===", flush=True)
+ 
+     if do_validate:
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/K_sigma_normalization_artifact_test_N4_N5_20260826/run_n_scaling_lowrank_v1_RAW_K.py fixed/K_sigma_normalization_artifact_test_N4_N5_20260826/run_n_scaling_lowrank_v1_RAW_K.py
+--- ../論文v1_全再現テスト_20260828/original/K_sigma_normalization_artifact_test_N4_N5_20260826/run_n_scaling_lowrank_v1_RAW_K.py	2026-08-25 19:15:14
++++ fixed/K_sigma_normalization_artifact_test_N4_N5_20260826/run_n_scaling_lowrank_v1_RAW_K.py	2026-08-28 11:14:20
+@@ -42,7 +42,8 @@
+     print(f"[進捗 {time.strftime('%H:%M:%S')}] {msg}", file=sys.stderr, flush=True)
+ 
+ 
+-GAMMA = math.tan(math.pi / 144.0)
++GAMMA = math.tan(math.pi / 144.0)  # 旧 Cayley 刻み（記録用、力学には使わない）
++ANGLE = 2.0 * math.pi / 144.0    # FIX3: 線形回転の刻み角
+ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ RESULT_DIR = os.path.join(BASE_DIR, "n_scaling_result_v1")
+ 
+@@ -66,16 +67,21 @@
+         self.J[n:, :n] = -np.eye(n)
+ 
+     def set_theta(self, theta):
++        """位相のみ（|z|=1）の生成子。親の固有モード反復でのみ使用。"""
++        self.set_state(np.exp(1j * np.asarray(theta, dtype=float)))
++
++    def set_state(self, z):
++        """FIX4: 振幅込み生成子 K_ij = Im(conj(z_i) z_j) = |z_i||z_j| sin(θ_j-θ_i)（隣接辺）。c=Re z, s=Im z。"""
+         n = self.n
+-        self.c = np.cos(theta)
+-        self.s = np.sin(theta)
+-        T = np.zeros((n, n))
+-        T[self.ea, self.eb] = theta
+-        T[self.eb, self.ea] = theta
+-        CT = np.cos(T)
+-        ST = np.sin(T)
+-        np.fill_diagonal(CT, 0.0)
+-        np.fill_diagonal(ST, 0.0)
++        z = np.asarray(z, dtype=complex)
++        self.c = np.real(z).copy()
++        self.s = np.imag(z).copy()
++        CT = np.zeros((n, n))
++        ST = np.zeros((n, n))
++        CT[self.ea, self.eb] = self.c
++        CT[self.eb, self.ea] = self.c
++        ST[self.ea, self.eb] = self.s
++        ST[self.eb, self.ea] = self.s
+         Gcc = CT * CT
+         Gcs = CT * ST
+         Gss = ST * ST
+@@ -131,16 +137,17 @@
+         sig = np.linalg.norm(self.kmatvec(wp))
+         return float(sig), wp
+ 
+-    def cayley_step(self, z, sigma):
+-        """z ← (I-γK)^{-1}(I+γK) z。K/σ 正規化なし。Woodbury で O(N^3)。"""
+-        gn = GAMMA
+-        r = z + gn * self.kmatvec(z)
+-        A2 = (1.0 / GAMMA) * self.J + self.G
+-        rhs = self.wt(r)
+-        y = np.linalg.solve(A2, rhs)
+-        return r - self.w(y)
++    def dense_K(self):
++        """現在の状態（set_state）の振幅込み生成子 K を密行列で返す（M×M、実反対称）。"""
++        return np.column_stack([self.kmatvec(e) for e in np.eye(self.m)])
+ 
++    def linear_rotation_step(self, z, sigma):
++        """FIX3: z ← exp(ANGLE·K) z。厳密な線形回転（実直交）。K/σ 正規化なし。"""
++        K = self.dense_K()
++        w, V = np.linalg.eigh(1j * K)
++        return V @ (np.exp(-1j * ANGLE * w) * (V.conj().T @ z))
+ 
++
+ def participation_ratio(z):
+     a2 = np.abs(z) ** 2
+     return float(np.sum(a2) ** 2 / np.sum(a2 * a2))
+@@ -168,8 +175,7 @@
+             sys_lr.set_theta(theta)
+             ev, EV = np.linalg.eig(sys_lr.J @ sys_lr.G)
+             idx = int(np.argmin(ev.imag))  # λ = -iσ_max
+-            v = sys_lr.w(EV[:, idx].astype(complex))
+-            v = v / np.linalg.norm(v)
++            v = sys_lr.w(EV[:, idx].astype(complex))  # FIX1: 振幅正規化を除去
+             theta_new = np.angle(v)
+             mix = (1.0 - beta) * np.exp(1j * theta) + beta * np.exp(1j * theta_new)
+             theta = np.angle(mix)
+@@ -211,7 +217,7 @@
+     Y = Y - (X @ Y) / (X @ X) * X
+     Y = Y * (np.linalg.norm(X) / np.linalg.norm(Y))
+     Z = X + 1j * Y
+-    return Z / np.linalg.norm(Z)
++    return Z  # FIX1/2: 正規化を除去
+ 
+ 
+ # ---------------- 検証（密行列との一致） ----------------
+@@ -230,9 +236,8 @@
+         A[i, share] = 1.0
+     np.fill_diagonal(A, 0.0)
+ 
+-    theta0 = np.angle(Z)
+-    sys_lr.set_theta(theta0)
+-    Kd = A * np.sin(theta0[None, :] - theta0[:, None])
++    sys_lr.set_state(Z)
++    Kd = A * np.imag(np.conj(Z)[:, None] * Z[None, :])  # FIX4: 振幅込み
+ 
+     err_matvec = np.linalg.norm(sys_lr.kmatvec(Z) - Kd @ Z) / np.linalg.norm(Kd @ Z)
+ 
+@@ -253,16 +258,14 @@
+     Z_d = Z.copy()
+     dev = 0.0
+     for _ in range(steps):
+-        sys_lr.set_theta(np.angle(Z_lr))
++        sys_lr.set_state(Z_lr)
+         sig = sys_lr.sigma_spectrum()[0]
+-        Z_lr = sys_lr.cayley_step(Z_lr, sig)
++        Z_lr = sys_lr.linear_rotation_step(Z_lr, sig)
+ 
+-        th = np.angle(Z_d)
+-        Kd = A * np.sin(th[None, :] - th[:, None])
+-        sd = np.linalg.norm(Kd, 2)
+-        Kn = Kd / sd
+-        I = np.eye(m)
+-        Z_d = np.linalg.solve(I - GAMMA * Kn, (I + GAMMA * Kn) @ Z_d)
++        Kd = A * np.imag(np.conj(Z_d)[:, None] * Z_d[None, :])  # FIX4
++        wd, Vd = np.linalg.eigh(1j * Kd)
++        ang = (ANGLE / np.linalg.norm(Kd, 2)) if False else ANGLE
++        Z_d = Vd @ (np.exp(-1j * ang * wd) * (Vd.conj().T @ Z_d))  # FIX3
+         dev = max(dev, float(np.max(np.abs(Z_lr - Z_d))))
+     return {
+         "steps": steps,
+@@ -282,9 +285,7 @@
+     v, residual, sig = make_parent(sys_lr, rng)
+     t_parent = time.time() - t0
+ 
+-    g = zero_closure_kernel_seed(sys_lr, rng)
+-    Z = v + delta * g
+-    Z = Z / np.linalg.norm(Z)
++    Z = v.copy()  # FIX2: 外部 seed と正規化を除去（seedless、親そのもの）
+     ztz0 = complex(Z @ Z)
+ 
+     p = v.real / np.linalg.norm(v.real)
+@@ -308,9 +309,9 @@
+         if t % 200 == 0 and t > 0:
+             progress(f"開始率走行 τ={t} f={f:.3e}")
+         max_ztz = max(max_ztz, abs(complex(Z @ Z)))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+-        Z = sys_lr.cayley_step(Z, sig_est)
++        Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+     f_arr = np.array(f_hist)
+@@ -351,7 +352,7 @@
+     t = 0
+     for t in range(cap + 1):
+         pr_hist.append(participation_ratio(Z))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+         if t % sub == 0:
+             sig_exact = sys_lr.sigma_spectrum()
+@@ -363,10 +364,10 @@
+                 plateau_tau = t
+                 break
+         if t < cap:
+-            Z = sys_lr.cayley_step(Z, sig_est)
++            Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+-    sys_lr.set_theta(np.angle(Z))
++    sys_lr.set_state(Z)  # FIX4
+     sig = sys_lr.sigma_spectrum()
+     n_act = int(np.sum(sig / sig[0] > 0.05))
+     qv = np.linalg.lstsq(sys_lr.G, sys_lr.wt(Z), rcond=None)[0]
+@@ -409,7 +410,7 @@
+ 
+     os.makedirs(RESULT_DIR, exist_ok=True)
+     m = n * (n - 1) // 2
+-    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA}
++    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA, "angle": ANGLE}
+     print(f"=== N スケーリング測定（低ランク頂点分解） N={n}, M={m}, seed={seed} ===", flush=True)
+ 
+     if do_validate:
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N10_N11_complex_simplex_complete_analysis_20260826/run_N10_N11_complete_analysis.py fixed/N10_N11_complex_simplex_complete_analysis_20260826/run_N10_N11_complete_analysis.py
+--- ../論文v1_全再現テスト_20260828/original/N10_N11_complex_simplex_complete_analysis_20260826/run_N10_N11_complete_analysis.py	2026-08-26 01:31:44
++++ fixed/N10_N11_complex_simplex_complete_analysis_20260826/run_N10_N11_complete_analysis.py	2026-08-28 11:14:20
+@@ -67,9 +67,9 @@
+                                float(ab[k]),float(r2[k]),float(np.angle(Z[k])),
+                                float(z2.real),float(z2.imag),float(np.angle(z2)/np.pi)])
+         if t<STEPS:
+-            sys.set_theta(np.angle(Z))
++            sys.set_state(Z)  # FIX4
+             se,wp=sys.sigma_max_power(wp)
+-            Z=sys.cayley_step(Z,se)
++            Z=sys.linear_rotation_step(Z,se)
+ 
+     glob=pd.DataFrame(global_rows,columns=["step","H_total","H_parallel","H_perp","A_perp","abs_ZtZ",
+         "sum_a2","sum_b2","sum_ab","r2_min","r2_max","simplex_rank"])
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N10_N11_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py fixed/N10_N11_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py
+--- ../論文v1_全再現テスト_20260828/original/N10_N11_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-25 23:41:00
++++ fixed/N10_N11_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-28 11:14:20
+@@ -42,7 +42,8 @@
+     print(f"[進捗 {time.strftime('%H:%M:%S')}] {msg}", file=sys.stderr, flush=True)
+ 
+ 
+-GAMMA = math.tan(math.pi / 144.0)
++GAMMA = math.tan(math.pi / 144.0)  # 旧 Cayley 刻み（記録用、力学には使わない）
++ANGLE = 2.0 * math.pi / 144.0    # FIX3: 線形回転の刻み角
+ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ RESULT_DIR = os.path.join(BASE_DIR, "n_scaling_result_v1")
+ 
+@@ -66,16 +67,21 @@
+         self.J[n:, :n] = -np.eye(n)
+ 
+     def set_theta(self, theta):
++        """位相のみ（|z|=1）の生成子。親の固有モード反復でのみ使用。"""
++        self.set_state(np.exp(1j * np.asarray(theta, dtype=float)))
++
++    def set_state(self, z):
++        """FIX4: 振幅込み生成子 K_ij = Im(conj(z_i) z_j) = |z_i||z_j| sin(θ_j-θ_i)（隣接辺）。c=Re z, s=Im z。"""
+         n = self.n
+-        self.c = np.cos(theta)
+-        self.s = np.sin(theta)
+-        T = np.zeros((n, n))
+-        T[self.ea, self.eb] = theta
+-        T[self.eb, self.ea] = theta
+-        CT = np.cos(T)
+-        ST = np.sin(T)
+-        np.fill_diagonal(CT, 0.0)
+-        np.fill_diagonal(ST, 0.0)
++        z = np.asarray(z, dtype=complex)
++        self.c = np.real(z).copy()
++        self.s = np.imag(z).copy()
++        CT = np.zeros((n, n))
++        ST = np.zeros((n, n))
++        CT[self.ea, self.eb] = self.c
++        CT[self.eb, self.ea] = self.c
++        ST[self.ea, self.eb] = self.s
++        ST[self.eb, self.ea] = self.s
+         Gcc = CT * CT
+         Gcs = CT * ST
+         Gss = ST * ST
+@@ -131,16 +137,17 @@
+         sig = np.linalg.norm(self.kmatvec(wp))
+         return float(sig), wp
+ 
+-    def cayley_step(self, z, sigma):
+-        """z ← (I-γK)^{-1}(I+γK) z。K/σ 正規化なし。Woodbury で O(N^3)。"""
+-        gn = GAMMA
+-        r = z + gn * self.kmatvec(z)
+-        A2 = (1.0 / GAMMA) * self.J + self.G
+-        rhs = self.wt(r)
+-        y = np.linalg.solve(A2, rhs)
+-        return r - self.w(y)
++    def dense_K(self):
++        """現在の状態（set_state）の振幅込み生成子 K を密行列で返す（M×M、実反対称）。"""
++        return np.column_stack([self.kmatvec(e) for e in np.eye(self.m)])
+ 
++    def linear_rotation_step(self, z, sigma):
++        """FIX3: z ← exp(ANGLE·K) z。厳密な線形回転（実直交）。K/σ 正規化なし。"""
++        K = self.dense_K()
++        w, V = np.linalg.eigh(1j * K)
++        return V @ (np.exp(-1j * ANGLE * w) * (V.conj().T @ z))
+ 
++
+ def participation_ratio(z):
+     a2 = np.abs(z) ** 2
+     return float(np.sum(a2) ** 2 / np.sum(a2 * a2))
+@@ -168,8 +175,7 @@
+             sys_lr.set_theta(theta)
+             ev, EV = np.linalg.eig(sys_lr.J @ sys_lr.G)
+             idx = int(np.argmin(ev.imag))  # λ = -iσ_max
+-            v = sys_lr.w(EV[:, idx].astype(complex))
+-            v = v / np.linalg.norm(v)
++            v = sys_lr.w(EV[:, idx].astype(complex))  # FIX1: 振幅正規化を除去
+             theta_new = np.angle(v)
+             mix = (1.0 - beta) * np.exp(1j * theta) + beta * np.exp(1j * theta_new)
+             theta = np.angle(mix)
+@@ -211,7 +217,7 @@
+     Y = Y - (X @ Y) / (X @ X) * X
+     Y = Y * (np.linalg.norm(X) / np.linalg.norm(Y))
+     Z = X + 1j * Y
+-    return Z / np.linalg.norm(Z)
++    return Z  # FIX1/2: 正規化を除去
+ 
+ 
+ # ---------------- 検証（密行列との一致） ----------------
+@@ -230,9 +236,8 @@
+         A[i, share] = 1.0
+     np.fill_diagonal(A, 0.0)
+ 
+-    theta0 = np.angle(Z)
+-    sys_lr.set_theta(theta0)
+-    Kd = A * np.sin(theta0[None, :] - theta0[:, None])
++    sys_lr.set_state(Z)
++    Kd = A * np.imag(np.conj(Z)[:, None] * Z[None, :])  # FIX4: 振幅込み
+ 
+     err_matvec = np.linalg.norm(sys_lr.kmatvec(Z) - Kd @ Z) / np.linalg.norm(Kd @ Z)
+ 
+@@ -253,16 +258,14 @@
+     Z_d = Z.copy()
+     dev = 0.0
+     for _ in range(steps):
+-        sys_lr.set_theta(np.angle(Z_lr))
++        sys_lr.set_state(Z_lr)
+         sig = sys_lr.sigma_spectrum()[0]
+-        Z_lr = sys_lr.cayley_step(Z_lr, sig)
++        Z_lr = sys_lr.linear_rotation_step(Z_lr, sig)
+ 
+-        th = np.angle(Z_d)
+-        Kd = A * np.sin(th[None, :] - th[:, None])
+-        sd = np.linalg.norm(Kd, 2)
+-        Kn = Kd / sd
+-        I = np.eye(m)
+-        Z_d = np.linalg.solve(I - GAMMA * Kn, (I + GAMMA * Kn) @ Z_d)
++        Kd = A * np.imag(np.conj(Z_d)[:, None] * Z_d[None, :])  # FIX4
++        wd, Vd = np.linalg.eigh(1j * Kd)
++        ang = (ANGLE / np.linalg.norm(Kd, 2)) if False else ANGLE
++        Z_d = Vd @ (np.exp(-1j * ang * wd) * (Vd.conj().T @ Z_d))  # FIX3
+         dev = max(dev, float(np.max(np.abs(Z_lr - Z_d))))
+     return {
+         "steps": steps,
+@@ -282,9 +285,7 @@
+     v, residual, sig = make_parent(sys_lr, rng)
+     t_parent = time.time() - t0
+ 
+-    g = zero_closure_kernel_seed(sys_lr, rng)
+-    Z = v + delta * g
+-    Z = Z / np.linalg.norm(Z)
++    Z = v.copy()  # FIX2: 外部 seed と正規化を除去（seedless、親そのもの）
+     ztz0 = complex(Z @ Z)
+ 
+     p = v.real / np.linalg.norm(v.real)
+@@ -308,9 +309,9 @@
+         if t % 200 == 0 and t > 0:
+             progress(f"開始率走行 τ={t} f={f:.3e}")
+         max_ztz = max(max_ztz, abs(complex(Z @ Z)))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+-        Z = sys_lr.cayley_step(Z, sig_est)
++        Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+     f_arr = np.array(f_hist)
+@@ -351,7 +352,7 @@
+     t = 0
+     for t in range(cap + 1):
+         pr_hist.append(participation_ratio(Z))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+         if t % sub == 0:
+             sig_exact = sys_lr.sigma_spectrum()
+@@ -363,10 +364,10 @@
+                 plateau_tau = t
+                 break
+         if t < cap:
+-            Z = sys_lr.cayley_step(Z, sig_est)
++            Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+-    sys_lr.set_theta(np.angle(Z))
++    sys_lr.set_state(Z)  # FIX4
+     sig = sys_lr.sigma_spectrum()
+     n_act = int(np.sum(sig / sig[0] > 0.05))
+     qv = np.linalg.lstsq(sys_lr.G, sys_lr.wt(Z), rcond=None)[0]
+@@ -409,7 +410,7 @@
+ 
+     os.makedirs(RESULT_DIR, exist_ok=True)
+     m = n * (n - 1) // 2
+-    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA}
++    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA, "angle": ANGLE}
+     print(f"=== N スケーリング測定（低ランク頂点分解） N={n}, M={m}, seed={seed} ===", flush=True)
+ 
+     if do_validate:
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N12_N13_complex_simplex_complete_analysis_20260826/run_N12_N13_complete_analysis.py fixed/N12_N13_complex_simplex_complete_analysis_20260826/run_N12_N13_complete_analysis.py
+--- ../論文v1_全再現テスト_20260828/original/N12_N13_complex_simplex_complete_analysis_20260826/run_N12_N13_complete_analysis.py	2026-08-26 01:35:00
++++ fixed/N12_N13_complex_simplex_complete_analysis_20260826/run_N12_N13_complete_analysis.py	2026-08-28 11:14:20
+@@ -67,9 +67,9 @@
+                                float(ab[k]),float(r2[k]),float(np.angle(Z[k])),
+                                float(z2.real),float(z2.imag),float(np.angle(z2)/np.pi)])
+         if t<STEPS:
+-            sys.set_theta(np.angle(Z))
++            sys.set_state(Z)  # FIX4
+             se,wp=sys.sigma_max_power(wp)
+-            Z=sys.cayley_step(Z,se)
++            Z=sys.linear_rotation_step(Z,se)
+ 
+     glob=pd.DataFrame(global_rows,columns=["step","H_total","H_parallel","H_perp","A_perp","abs_ZtZ",
+         "sum_a2","sum_b2","sum_ab","r2_min","r2_max","simplex_rank"])
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N12_N13_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py fixed/N12_N13_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py
+--- ../論文v1_全再現テスト_20260828/original/N12_N13_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-25 23:41:00
++++ fixed/N12_N13_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-28 11:14:20
+@@ -42,7 +42,8 @@
+     print(f"[進捗 {time.strftime('%H:%M:%S')}] {msg}", file=sys.stderr, flush=True)
+ 
+ 
+-GAMMA = math.tan(math.pi / 144.0)
++GAMMA = math.tan(math.pi / 144.0)  # 旧 Cayley 刻み（記録用、力学には使わない）
++ANGLE = 2.0 * math.pi / 144.0    # FIX3: 線形回転の刻み角
+ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ RESULT_DIR = os.path.join(BASE_DIR, "n_scaling_result_v1")
+ 
+@@ -66,16 +67,21 @@
+         self.J[n:, :n] = -np.eye(n)
+ 
+     def set_theta(self, theta):
++        """位相のみ（|z|=1）の生成子。親の固有モード反復でのみ使用。"""
++        self.set_state(np.exp(1j * np.asarray(theta, dtype=float)))
++
++    def set_state(self, z):
++        """FIX4: 振幅込み生成子 K_ij = Im(conj(z_i) z_j) = |z_i||z_j| sin(θ_j-θ_i)（隣接辺）。c=Re z, s=Im z。"""
+         n = self.n
+-        self.c = np.cos(theta)
+-        self.s = np.sin(theta)
+-        T = np.zeros((n, n))
+-        T[self.ea, self.eb] = theta
+-        T[self.eb, self.ea] = theta
+-        CT = np.cos(T)
+-        ST = np.sin(T)
+-        np.fill_diagonal(CT, 0.0)
+-        np.fill_diagonal(ST, 0.0)
++        z = np.asarray(z, dtype=complex)
++        self.c = np.real(z).copy()
++        self.s = np.imag(z).copy()
++        CT = np.zeros((n, n))
++        ST = np.zeros((n, n))
++        CT[self.ea, self.eb] = self.c
++        CT[self.eb, self.ea] = self.c
++        ST[self.ea, self.eb] = self.s
++        ST[self.eb, self.ea] = self.s
+         Gcc = CT * CT
+         Gcs = CT * ST
+         Gss = ST * ST
+@@ -131,16 +137,17 @@
+         sig = np.linalg.norm(self.kmatvec(wp))
+         return float(sig), wp
+ 
+-    def cayley_step(self, z, sigma):
+-        """z ← (I-γK)^{-1}(I+γK) z。K/σ 正規化なし。Woodbury で O(N^3)。"""
+-        gn = GAMMA
+-        r = z + gn * self.kmatvec(z)
+-        A2 = (1.0 / GAMMA) * self.J + self.G
+-        rhs = self.wt(r)
+-        y = np.linalg.solve(A2, rhs)
+-        return r - self.w(y)
++    def dense_K(self):
++        """現在の状態（set_state）の振幅込み生成子 K を密行列で返す（M×M、実反対称）。"""
++        return np.column_stack([self.kmatvec(e) for e in np.eye(self.m)])
+ 
++    def linear_rotation_step(self, z, sigma):
++        """FIX3: z ← exp(ANGLE·K) z。厳密な線形回転（実直交）。K/σ 正規化なし。"""
++        K = self.dense_K()
++        w, V = np.linalg.eigh(1j * K)
++        return V @ (np.exp(-1j * ANGLE * w) * (V.conj().T @ z))
+ 
++
+ def participation_ratio(z):
+     a2 = np.abs(z) ** 2
+     return float(np.sum(a2) ** 2 / np.sum(a2 * a2))
+@@ -168,8 +175,7 @@
+             sys_lr.set_theta(theta)
+             ev, EV = np.linalg.eig(sys_lr.J @ sys_lr.G)
+             idx = int(np.argmin(ev.imag))  # λ = -iσ_max
+-            v = sys_lr.w(EV[:, idx].astype(complex))
+-            v = v / np.linalg.norm(v)
++            v = sys_lr.w(EV[:, idx].astype(complex))  # FIX1: 振幅正規化を除去
+             theta_new = np.angle(v)
+             mix = (1.0 - beta) * np.exp(1j * theta) + beta * np.exp(1j * theta_new)
+             theta = np.angle(mix)
+@@ -211,7 +217,7 @@
+     Y = Y - (X @ Y) / (X @ X) * X
+     Y = Y * (np.linalg.norm(X) / np.linalg.norm(Y))
+     Z = X + 1j * Y
+-    return Z / np.linalg.norm(Z)
++    return Z  # FIX1/2: 正規化を除去
+ 
+ 
+ # ---------------- 検証（密行列との一致） ----------------
+@@ -230,9 +236,8 @@
+         A[i, share] = 1.0
+     np.fill_diagonal(A, 0.0)
+ 
+-    theta0 = np.angle(Z)
+-    sys_lr.set_theta(theta0)
+-    Kd = A * np.sin(theta0[None, :] - theta0[:, None])
++    sys_lr.set_state(Z)
++    Kd = A * np.imag(np.conj(Z)[:, None] * Z[None, :])  # FIX4: 振幅込み
+ 
+     err_matvec = np.linalg.norm(sys_lr.kmatvec(Z) - Kd @ Z) / np.linalg.norm(Kd @ Z)
+ 
+@@ -253,16 +258,14 @@
+     Z_d = Z.copy()
+     dev = 0.0
+     for _ in range(steps):
+-        sys_lr.set_theta(np.angle(Z_lr))
++        sys_lr.set_state(Z_lr)
+         sig = sys_lr.sigma_spectrum()[0]
+-        Z_lr = sys_lr.cayley_step(Z_lr, sig)
++        Z_lr = sys_lr.linear_rotation_step(Z_lr, sig)
+ 
+-        th = np.angle(Z_d)
+-        Kd = A * np.sin(th[None, :] - th[:, None])
+-        sd = np.linalg.norm(Kd, 2)
+-        Kn = Kd / sd
+-        I = np.eye(m)
+-        Z_d = np.linalg.solve(I - GAMMA * Kn, (I + GAMMA * Kn) @ Z_d)
++        Kd = A * np.imag(np.conj(Z_d)[:, None] * Z_d[None, :])  # FIX4
++        wd, Vd = np.linalg.eigh(1j * Kd)
++        ang = (ANGLE / np.linalg.norm(Kd, 2)) if False else ANGLE
++        Z_d = Vd @ (np.exp(-1j * ang * wd) * (Vd.conj().T @ Z_d))  # FIX3
+         dev = max(dev, float(np.max(np.abs(Z_lr - Z_d))))
+     return {
+         "steps": steps,
+@@ -282,9 +285,7 @@
+     v, residual, sig = make_parent(sys_lr, rng)
+     t_parent = time.time() - t0
+ 
+-    g = zero_closure_kernel_seed(sys_lr, rng)
+-    Z = v + delta * g
+-    Z = Z / np.linalg.norm(Z)
++    Z = v.copy()  # FIX2: 外部 seed と正規化を除去（seedless、親そのもの）
+     ztz0 = complex(Z @ Z)
+ 
+     p = v.real / np.linalg.norm(v.real)
+@@ -308,9 +309,9 @@
+         if t % 200 == 0 and t > 0:
+             progress(f"開始率走行 τ={t} f={f:.3e}")
+         max_ztz = max(max_ztz, abs(complex(Z @ Z)))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+-        Z = sys_lr.cayley_step(Z, sig_est)
++        Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+     f_arr = np.array(f_hist)
+@@ -351,7 +352,7 @@
+     t = 0
+     for t in range(cap + 1):
+         pr_hist.append(participation_ratio(Z))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+         if t % sub == 0:
+             sig_exact = sys_lr.sigma_spectrum()
+@@ -363,10 +364,10 @@
+                 plateau_tau = t
+                 break
+         if t < cap:
+-            Z = sys_lr.cayley_step(Z, sig_est)
++            Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+-    sys_lr.set_theta(np.angle(Z))
++    sys_lr.set_state(Z)  # FIX4
+     sig = sys_lr.sigma_spectrum()
+     n_act = int(np.sum(sig / sig[0] > 0.05))
+     qv = np.linalg.lstsq(sys_lr.G, sys_lr.wt(Z), rcond=None)[0]
+@@ -409,7 +410,7 @@
+ 
+     os.makedirs(RESULT_DIR, exist_ok=True)
+     m = n * (n - 1) // 2
+-    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA}
++    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA, "angle": ANGLE}
+     print(f"=== N スケーリング測定（低ランク頂点分解） N={n}, M={m}, seed={seed} ===", flush=True)
+ 
+     if do_validate:
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N14_N15_complex_simplex_complete_analysis_20260826/run_N14_N15_complete_analysis.py fixed/N14_N15_complex_simplex_complete_analysis_20260826/run_N14_N15_complete_analysis.py
+--- ../論文v1_全再現テスト_20260828/original/N14_N15_complex_simplex_complete_analysis_20260826/run_N14_N15_complete_analysis.py	2026-08-26 01:38:08
++++ fixed/N14_N15_complex_simplex_complete_analysis_20260826/run_N14_N15_complete_analysis.py	2026-08-28 11:14:20
+@@ -67,9 +67,9 @@
+                                float(ab[k]),float(r2[k]),float(np.angle(Z[k])),
+                                float(z2.real),float(z2.imag),float(np.angle(z2)/np.pi)])
+         if t<STEPS:
+-            sys.set_theta(np.angle(Z))
++            sys.set_state(Z)  # FIX4
+             se,wp=sys.sigma_max_power(wp)
+-            Z=sys.cayley_step(Z,se)
++            Z=sys.linear_rotation_step(Z,se)
+ 
+     glob=pd.DataFrame(global_rows,columns=["step","H_total","H_parallel","H_perp","A_perp","abs_ZtZ",
+         "sum_a2","sum_b2","sum_ab","r2_min","r2_max","simplex_rank"])
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N14_N15_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py fixed/N14_N15_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py
+--- ../論文v1_全再現テスト_20260828/original/N14_N15_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-25 23:41:00
++++ fixed/N14_N15_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-28 11:14:20
+@@ -42,7 +42,8 @@
+     print(f"[進捗 {time.strftime('%H:%M:%S')}] {msg}", file=sys.stderr, flush=True)
+ 
+ 
+-GAMMA = math.tan(math.pi / 144.0)
++GAMMA = math.tan(math.pi / 144.0)  # 旧 Cayley 刻み（記録用、力学には使わない）
++ANGLE = 2.0 * math.pi / 144.0    # FIX3: 線形回転の刻み角
+ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ RESULT_DIR = os.path.join(BASE_DIR, "n_scaling_result_v1")
+ 
+@@ -66,16 +67,21 @@
+         self.J[n:, :n] = -np.eye(n)
+ 
+     def set_theta(self, theta):
++        """位相のみ（|z|=1）の生成子。親の固有モード反復でのみ使用。"""
++        self.set_state(np.exp(1j * np.asarray(theta, dtype=float)))
++
++    def set_state(self, z):
++        """FIX4: 振幅込み生成子 K_ij = Im(conj(z_i) z_j) = |z_i||z_j| sin(θ_j-θ_i)（隣接辺）。c=Re z, s=Im z。"""
+         n = self.n
+-        self.c = np.cos(theta)
+-        self.s = np.sin(theta)
+-        T = np.zeros((n, n))
+-        T[self.ea, self.eb] = theta
+-        T[self.eb, self.ea] = theta
+-        CT = np.cos(T)
+-        ST = np.sin(T)
+-        np.fill_diagonal(CT, 0.0)
+-        np.fill_diagonal(ST, 0.0)
++        z = np.asarray(z, dtype=complex)
++        self.c = np.real(z).copy()
++        self.s = np.imag(z).copy()
++        CT = np.zeros((n, n))
++        ST = np.zeros((n, n))
++        CT[self.ea, self.eb] = self.c
++        CT[self.eb, self.ea] = self.c
++        ST[self.ea, self.eb] = self.s
++        ST[self.eb, self.ea] = self.s
+         Gcc = CT * CT
+         Gcs = CT * ST
+         Gss = ST * ST
+@@ -131,16 +137,17 @@
+         sig = np.linalg.norm(self.kmatvec(wp))
+         return float(sig), wp
+ 
+-    def cayley_step(self, z, sigma):
+-        """z ← (I-γK)^{-1}(I+γK) z。K/σ 正規化なし。Woodbury で O(N^3)。"""
+-        gn = GAMMA
+-        r = z + gn * self.kmatvec(z)
+-        A2 = (1.0 / GAMMA) * self.J + self.G
+-        rhs = self.wt(r)
+-        y = np.linalg.solve(A2, rhs)
+-        return r - self.w(y)
++    def dense_K(self):
++        """現在の状態（set_state）の振幅込み生成子 K を密行列で返す（M×M、実反対称）。"""
++        return np.column_stack([self.kmatvec(e) for e in np.eye(self.m)])
+ 
++    def linear_rotation_step(self, z, sigma):
++        """FIX3: z ← exp(ANGLE·K) z。厳密な線形回転（実直交）。K/σ 正規化なし。"""
++        K = self.dense_K()
++        w, V = np.linalg.eigh(1j * K)
++        return V @ (np.exp(-1j * ANGLE * w) * (V.conj().T @ z))
+ 
++
+ def participation_ratio(z):
+     a2 = np.abs(z) ** 2
+     return float(np.sum(a2) ** 2 / np.sum(a2 * a2))
+@@ -168,8 +175,7 @@
+             sys_lr.set_theta(theta)
+             ev, EV = np.linalg.eig(sys_lr.J @ sys_lr.G)
+             idx = int(np.argmin(ev.imag))  # λ = -iσ_max
+-            v = sys_lr.w(EV[:, idx].astype(complex))
+-            v = v / np.linalg.norm(v)
++            v = sys_lr.w(EV[:, idx].astype(complex))  # FIX1: 振幅正規化を除去
+             theta_new = np.angle(v)
+             mix = (1.0 - beta) * np.exp(1j * theta) + beta * np.exp(1j * theta_new)
+             theta = np.angle(mix)
+@@ -211,7 +217,7 @@
+     Y = Y - (X @ Y) / (X @ X) * X
+     Y = Y * (np.linalg.norm(X) / np.linalg.norm(Y))
+     Z = X + 1j * Y
+-    return Z / np.linalg.norm(Z)
++    return Z  # FIX1/2: 正規化を除去
+ 
+ 
+ # ---------------- 検証（密行列との一致） ----------------
+@@ -230,9 +236,8 @@
+         A[i, share] = 1.0
+     np.fill_diagonal(A, 0.0)
+ 
+-    theta0 = np.angle(Z)
+-    sys_lr.set_theta(theta0)
+-    Kd = A * np.sin(theta0[None, :] - theta0[:, None])
++    sys_lr.set_state(Z)
++    Kd = A * np.imag(np.conj(Z)[:, None] * Z[None, :])  # FIX4: 振幅込み
+ 
+     err_matvec = np.linalg.norm(sys_lr.kmatvec(Z) - Kd @ Z) / np.linalg.norm(Kd @ Z)
+ 
+@@ -253,16 +258,14 @@
+     Z_d = Z.copy()
+     dev = 0.0
+     for _ in range(steps):
+-        sys_lr.set_theta(np.angle(Z_lr))
++        sys_lr.set_state(Z_lr)
+         sig = sys_lr.sigma_spectrum()[0]
+-        Z_lr = sys_lr.cayley_step(Z_lr, sig)
++        Z_lr = sys_lr.linear_rotation_step(Z_lr, sig)
+ 
+-        th = np.angle(Z_d)
+-        Kd = A * np.sin(th[None, :] - th[:, None])
+-        sd = np.linalg.norm(Kd, 2)
+-        Kn = Kd / sd
+-        I = np.eye(m)
+-        Z_d = np.linalg.solve(I - GAMMA * Kn, (I + GAMMA * Kn) @ Z_d)
++        Kd = A * np.imag(np.conj(Z_d)[:, None] * Z_d[None, :])  # FIX4
++        wd, Vd = np.linalg.eigh(1j * Kd)
++        ang = (ANGLE / np.linalg.norm(Kd, 2)) if False else ANGLE
++        Z_d = Vd @ (np.exp(-1j * ang * wd) * (Vd.conj().T @ Z_d))  # FIX3
+         dev = max(dev, float(np.max(np.abs(Z_lr - Z_d))))
+     return {
+         "steps": steps,
+@@ -282,9 +285,7 @@
+     v, residual, sig = make_parent(sys_lr, rng)
+     t_parent = time.time() - t0
+ 
+-    g = zero_closure_kernel_seed(sys_lr, rng)
+-    Z = v + delta * g
+-    Z = Z / np.linalg.norm(Z)
++    Z = v.copy()  # FIX2: 外部 seed と正規化を除去（seedless、親そのもの）
+     ztz0 = complex(Z @ Z)
+ 
+     p = v.real / np.linalg.norm(v.real)
+@@ -308,9 +309,9 @@
+         if t % 200 == 0 and t > 0:
+             progress(f"開始率走行 τ={t} f={f:.3e}")
+         max_ztz = max(max_ztz, abs(complex(Z @ Z)))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+-        Z = sys_lr.cayley_step(Z, sig_est)
++        Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+     f_arr = np.array(f_hist)
+@@ -351,7 +352,7 @@
+     t = 0
+     for t in range(cap + 1):
+         pr_hist.append(participation_ratio(Z))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+         if t % sub == 0:
+             sig_exact = sys_lr.sigma_spectrum()
+@@ -363,10 +364,10 @@
+                 plateau_tau = t
+                 break
+         if t < cap:
+-            Z = sys_lr.cayley_step(Z, sig_est)
++            Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+-    sys_lr.set_theta(np.angle(Z))
++    sys_lr.set_state(Z)  # FIX4
+     sig = sys_lr.sigma_spectrum()
+     n_act = int(np.sum(sig / sig[0] > 0.05))
+     qv = np.linalg.lstsq(sys_lr.G, sys_lr.wt(Z), rcond=None)[0]
+@@ -409,7 +410,7 @@
+ 
+     os.makedirs(RESULT_DIR, exist_ok=True)
+     m = n * (n - 1) // 2
+-    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA}
++    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA, "angle": ANGLE}
+     print(f"=== N スケーリング測定（低ランク頂点分解） N={n}, M={m}, seed={seed} ===", flush=True)
+ 
+     if do_validate:
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N14_N16_complete_nontrivial_zero_closure_search_20260826/mitm56.py fixed/N14_N16_complete_nontrivial_zero_closure_search_20260826/mitm56.py
+--- ../論文v1_全再現テスト_20260828/original/N14_N16_complete_nontrivial_zero_closure_search_20260826/mitm56.py	2026-08-26 02:59:02
++++ fixed/N14_N16_complete_nontrivial_zero_closure_search_20260826/mitm56.py	2026-08-28 11:14:20
+@@ -1,7 +1,7 @@
+ import pandas as pd,numpy as np,itertools,math,sys,time
+ from scipy.spatial import cKDTree
+ N=int(sys.argv[1]); out=sys.argv[2]
+-df=pd.read_csv(f'/mnt/data/N3_N16_partial_zero_closure_analysis_20260826/SOURCE_N{N}_step5000_final_edges.csv')
++df=pd.read_csv(f'{__import__("os").path.dirname(__import__("os").path.abspath(__file__))}/../N3_N16_partial_zero_closure_analysis_20260826/SOURCE_N{N}_step5000_final_edges.csv')  # PATH PATCH: was /mnt/data/...
+ z=df.z2_re.to_numpy()+1j*df.z2_im.to_numpy(); n=len(z); absz=np.abs(z)
+ def comb_array(n,k):
+  return np.fromiter((x for c in itertools.combinations(range(n),k) for x in c),dtype=np.int16,count=math.comb(n,k)*k).reshape(-1,k)
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N14_N16_complete_nontrivial_zero_closure_search_20260826/refine_subset.py fixed/N14_N16_complete_nontrivial_zero_closure_search_20260826/refine_subset.py
+--- ../論文v1_全再現テスト_20260828/original/N14_N16_complete_nontrivial_zero_closure_search_20260826/refine_subset.py	2026-08-26 03:00:18
++++ fixed/N14_N16_complete_nontrivial_zero_closure_search_20260826/refine_subset.py	2026-08-28 11:14:20
+@@ -1,6 +1,6 @@
+ import pandas as pd,numpy as np,sys,itertools
+ N=int(sys.argv[1]); edgestr=sys.argv[2]
+-df=pd.read_csv(f'/mnt/data/N3_N16_partial_zero_closure_analysis_20260826/SOURCE_N{N}_step5000_final_edges.csv')
++df=pd.read_csv(f'{__import__("os").path.dirname(__import__("os").path.abspath(__file__))}/../N3_N16_partial_zero_closure_analysis_20260826/SOURCE_N{N}_step5000_final_edges.csv')  # PATH PATCH: was /mnt/data/...
+ q=df.z2_re.to_numpy()+1j*df.z2_im.to_numpy(); w=np.abs(q); mp={(int(r.i),int(r.j)):i for i,r in df.iterrows()}
+ S=set(mp[tuple(map(int,e.split('-')))] for e in edgestr.split(';') if e)
+ def rr(S): idx=np.array(sorted(S)); return abs(q[idx].sum())/w[idx].sum()
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N16_complex_simplex_complete_analysis_20260826/run_N16_complex_simplex_physics.py fixed/N16_complex_simplex_complete_analysis_20260826/run_N16_complex_simplex_physics.py
+--- ../論文v1_全再現テスト_20260828/original/N16_complex_simplex_complete_analysis_20260826/run_N16_complex_simplex_physics.py	2026-08-26 01:10:52
++++ fixed/N16_complex_simplex_complete_analysis_20260826/run_N16_complex_simplex_physics.py	2026-08-28 11:14:20
+@@ -52,9 +52,9 @@
+                 float(r2[k]),float(np.angle(Z[k])),float(z2[k].real),float(z2[k].imag),float(np.angle(z2[k])/np.pi)]
+     raw_rows.append(row)
+     if t<STEPS:
+-        sys.set_theta(np.angle(Z))
++        sys.set_state(Z)  # FIX4
+         se,wp=sys.sigma_max_power(wp)
+-        Z=sys.cayley_step(Z,se)
++        Z=sys.linear_rotation_step(Z,se)
+ 
+ # Wide raw data
+ cols=["step"]
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N16_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py fixed/N16_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py
+--- ../論文v1_全再現テスト_20260828/original/N16_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-25 23:41:00
++++ fixed/N16_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-28 11:14:20
+@@ -42,7 +42,8 @@
+     print(f"[進捗 {time.strftime('%H:%M:%S')}] {msg}", file=sys.stderr, flush=True)
+ 
+ 
+-GAMMA = math.tan(math.pi / 144.0)
++GAMMA = math.tan(math.pi / 144.0)  # 旧 Cayley 刻み（記録用、力学には使わない）
++ANGLE = 2.0 * math.pi / 144.0    # FIX3: 線形回転の刻み角
+ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ RESULT_DIR = os.path.join(BASE_DIR, "n_scaling_result_v1")
+ 
+@@ -66,16 +67,21 @@
+         self.J[n:, :n] = -np.eye(n)
+ 
+     def set_theta(self, theta):
++        """位相のみ（|z|=1）の生成子。親の固有モード反復でのみ使用。"""
++        self.set_state(np.exp(1j * np.asarray(theta, dtype=float)))
++
++    def set_state(self, z):
++        """FIX4: 振幅込み生成子 K_ij = Im(conj(z_i) z_j) = |z_i||z_j| sin(θ_j-θ_i)（隣接辺）。c=Re z, s=Im z。"""
+         n = self.n
+-        self.c = np.cos(theta)
+-        self.s = np.sin(theta)
+-        T = np.zeros((n, n))
+-        T[self.ea, self.eb] = theta
+-        T[self.eb, self.ea] = theta
+-        CT = np.cos(T)
+-        ST = np.sin(T)
+-        np.fill_diagonal(CT, 0.0)
+-        np.fill_diagonal(ST, 0.0)
++        z = np.asarray(z, dtype=complex)
++        self.c = np.real(z).copy()
++        self.s = np.imag(z).copy()
++        CT = np.zeros((n, n))
++        ST = np.zeros((n, n))
++        CT[self.ea, self.eb] = self.c
++        CT[self.eb, self.ea] = self.c
++        ST[self.ea, self.eb] = self.s
++        ST[self.eb, self.ea] = self.s
+         Gcc = CT * CT
+         Gcs = CT * ST
+         Gss = ST * ST
+@@ -131,16 +137,17 @@
+         sig = np.linalg.norm(self.kmatvec(wp))
+         return float(sig), wp
+ 
+-    def cayley_step(self, z, sigma):
+-        """z ← (I-γK)^{-1}(I+γK) z。K/σ 正規化なし。Woodbury で O(N^3)。"""
+-        gn = GAMMA
+-        r = z + gn * self.kmatvec(z)
+-        A2 = (1.0 / GAMMA) * self.J + self.G
+-        rhs = self.wt(r)
+-        y = np.linalg.solve(A2, rhs)
+-        return r - self.w(y)
++    def dense_K(self):
++        """現在の状態（set_state）の振幅込み生成子 K を密行列で返す（M×M、実反対称）。"""
++        return np.column_stack([self.kmatvec(e) for e in np.eye(self.m)])
+ 
++    def linear_rotation_step(self, z, sigma):
++        """FIX3: z ← exp(ANGLE·K) z。厳密な線形回転（実直交）。K/σ 正規化なし。"""
++        K = self.dense_K()
++        w, V = np.linalg.eigh(1j * K)
++        return V @ (np.exp(-1j * ANGLE * w) * (V.conj().T @ z))
+ 
++
+ def participation_ratio(z):
+     a2 = np.abs(z) ** 2
+     return float(np.sum(a2) ** 2 / np.sum(a2 * a2))
+@@ -168,8 +175,7 @@
+             sys_lr.set_theta(theta)
+             ev, EV = np.linalg.eig(sys_lr.J @ sys_lr.G)
+             idx = int(np.argmin(ev.imag))  # λ = -iσ_max
+-            v = sys_lr.w(EV[:, idx].astype(complex))
+-            v = v / np.linalg.norm(v)
++            v = sys_lr.w(EV[:, idx].astype(complex))  # FIX1: 振幅正規化を除去
+             theta_new = np.angle(v)
+             mix = (1.0 - beta) * np.exp(1j * theta) + beta * np.exp(1j * theta_new)
+             theta = np.angle(mix)
+@@ -211,7 +217,7 @@
+     Y = Y - (X @ Y) / (X @ X) * X
+     Y = Y * (np.linalg.norm(X) / np.linalg.norm(Y))
+     Z = X + 1j * Y
+-    return Z / np.linalg.norm(Z)
++    return Z  # FIX1/2: 正規化を除去
+ 
+ 
+ # ---------------- 検証（密行列との一致） ----------------
+@@ -230,9 +236,8 @@
+         A[i, share] = 1.0
+     np.fill_diagonal(A, 0.0)
+ 
+-    theta0 = np.angle(Z)
+-    sys_lr.set_theta(theta0)
+-    Kd = A * np.sin(theta0[None, :] - theta0[:, None])
++    sys_lr.set_state(Z)
++    Kd = A * np.imag(np.conj(Z)[:, None] * Z[None, :])  # FIX4: 振幅込み
+ 
+     err_matvec = np.linalg.norm(sys_lr.kmatvec(Z) - Kd @ Z) / np.linalg.norm(Kd @ Z)
+ 
+@@ -253,16 +258,14 @@
+     Z_d = Z.copy()
+     dev = 0.0
+     for _ in range(steps):
+-        sys_lr.set_theta(np.angle(Z_lr))
++        sys_lr.set_state(Z_lr)
+         sig = sys_lr.sigma_spectrum()[0]
+-        Z_lr = sys_lr.cayley_step(Z_lr, sig)
++        Z_lr = sys_lr.linear_rotation_step(Z_lr, sig)
+ 
+-        th = np.angle(Z_d)
+-        Kd = A * np.sin(th[None, :] - th[:, None])
+-        sd = np.linalg.norm(Kd, 2)
+-        Kn = Kd / sd
+-        I = np.eye(m)
+-        Z_d = np.linalg.solve(I - GAMMA * Kn, (I + GAMMA * Kn) @ Z_d)
++        Kd = A * np.imag(np.conj(Z_d)[:, None] * Z_d[None, :])  # FIX4
++        wd, Vd = np.linalg.eigh(1j * Kd)
++        ang = (ANGLE / np.linalg.norm(Kd, 2)) if False else ANGLE
++        Z_d = Vd @ (np.exp(-1j * ang * wd) * (Vd.conj().T @ Z_d))  # FIX3
+         dev = max(dev, float(np.max(np.abs(Z_lr - Z_d))))
+     return {
+         "steps": steps,
+@@ -282,9 +285,7 @@
+     v, residual, sig = make_parent(sys_lr, rng)
+     t_parent = time.time() - t0
+ 
+-    g = zero_closure_kernel_seed(sys_lr, rng)
+-    Z = v + delta * g
+-    Z = Z / np.linalg.norm(Z)
++    Z = v.copy()  # FIX2: 外部 seed と正規化を除去（seedless、親そのもの）
+     ztz0 = complex(Z @ Z)
+ 
+     p = v.real / np.linalg.norm(v.real)
+@@ -308,9 +309,9 @@
+         if t % 200 == 0 and t > 0:
+             progress(f"開始率走行 τ={t} f={f:.3e}")
+         max_ztz = max(max_ztz, abs(complex(Z @ Z)))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+-        Z = sys_lr.cayley_step(Z, sig_est)
++        Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+     f_arr = np.array(f_hist)
+@@ -351,7 +352,7 @@
+     t = 0
+     for t in range(cap + 1):
+         pr_hist.append(participation_ratio(Z))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+         if t % sub == 0:
+             sig_exact = sys_lr.sigma_spectrum()
+@@ -363,10 +364,10 @@
+                 plateau_tau = t
+                 break
+         if t < cap:
+-            Z = sys_lr.cayley_step(Z, sig_est)
++            Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+-    sys_lr.set_theta(np.angle(Z))
++    sys_lr.set_state(Z)  # FIX4
+     sig = sys_lr.sigma_spectrum()
+     n_act = int(np.sum(sig / sig[0] > 0.05))
+     qv = np.linalg.lstsq(sys_lr.G, sys_lr.wt(Z), rcond=None)[0]
+@@ -409,7 +410,7 @@
+ 
+     os.makedirs(RESULT_DIR, exist_ok=True)
+     m = n * (n - 1) // 2
+-    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA}
++    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA, "angle": ANGLE}
+     print(f"=== N スケーリング測定（低ランク頂点分解） N={n}, M={m}, seed={seed} ===", flush=True)
+ 
+     if do_validate:
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N3_N16_partial_zero_closure_analysis_20260826/analyze_partial_zero_closures_N3_N16.py fixed/N3_N16_partial_zero_closure_analysis_20260826/analyze_partial_zero_closures_N3_N16.py
+--- ../論文v1_全再現テスト_20260828/original/N3_N16_partial_zero_closure_analysis_20260826/analyze_partial_zero_closures_N3_N16.py	2026-08-26 01:53:22
++++ fixed/N3_N16_partial_zero_closure_analysis_20260826/analyze_partial_zero_closures_N3_N16.py	2026-08-28 11:14:20
+@@ -4,8 +4,8 @@
+ import pandas as pd
+ import matplotlib.pyplot as plt
+ 
+-BASE=Path('/mnt/data')
+-OUT=BASE/'N3_N16_partial_zero_closure_analysis_20260826'
++BASE=Path(__file__).resolve().parent.parent  # PATH PATCH: was Path('/mnt/data') (sibling packages)
++OUT=Path(__file__).resolve().parent/'out'  # PATH PATCH: was BASE/'N3_N16_partial_zero_closure_analysis_20260826' (would rmtree this package)
+ if OUT.exists(): shutil.rmtree(OUT)
+ OUT.mkdir()
+ 
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N3_N4_complex_simplex_complete_analysis_20260826/run_N3_N4_complete_analysis.py fixed/N3_N4_complex_simplex_complete_analysis_20260826/run_N3_N4_complete_analysis.py
+--- ../論文v1_全再現テスト_20260828/original/N3_N4_complex_simplex_complete_analysis_20260826/run_N3_N4_complete_analysis.py	2026-08-26 01:21:12
++++ fixed/N3_N4_complex_simplex_complete_analysis_20260826/run_N3_N4_complete_analysis.py	2026-08-28 11:14:20
+@@ -54,9 +54,9 @@
+                                float(ab[k]),float(r2[k]),float(np.angle(Z[k])),
+                                float(z2.real),float(z2.imag),float(np.angle(z2)/np.pi)])
+         if t<STEPS:
+-            sys.set_theta(np.angle(Z))
++            sys.set_state(Z)  # FIX4
+             se,wp=sys.sigma_max_power(wp)
+-            Z=sys.cayley_step(Z,se)
++            Z=sys.linear_rotation_step(Z,se)
+ 
+     glob=pd.DataFrame(global_rows,columns=["step","H_total","H_parallel","H_perp","A_perp","abs_ZtZ",
+         "sum_a2","sum_b2","sum_ab","r2_min","r2_max","simplex_rank"])
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N3_N4_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py fixed/N3_N4_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py
+--- ../論文v1_全再現テスト_20260828/original/N3_N4_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-25 23:41:00
++++ fixed/N3_N4_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-28 11:14:20
+@@ -42,7 +42,8 @@
+     print(f"[進捗 {time.strftime('%H:%M:%S')}] {msg}", file=sys.stderr, flush=True)
+ 
+ 
+-GAMMA = math.tan(math.pi / 144.0)
++GAMMA = math.tan(math.pi / 144.0)  # 旧 Cayley 刻み（記録用、力学には使わない）
++ANGLE = 2.0 * math.pi / 144.0    # FIX3: 線形回転の刻み角
+ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ RESULT_DIR = os.path.join(BASE_DIR, "n_scaling_result_v1")
+ 
+@@ -66,16 +67,21 @@
+         self.J[n:, :n] = -np.eye(n)
+ 
+     def set_theta(self, theta):
++        """位相のみ（|z|=1）の生成子。親の固有モード反復でのみ使用。"""
++        self.set_state(np.exp(1j * np.asarray(theta, dtype=float)))
++
++    def set_state(self, z):
++        """FIX4: 振幅込み生成子 K_ij = Im(conj(z_i) z_j) = |z_i||z_j| sin(θ_j-θ_i)（隣接辺）。c=Re z, s=Im z。"""
+         n = self.n
+-        self.c = np.cos(theta)
+-        self.s = np.sin(theta)
+-        T = np.zeros((n, n))
+-        T[self.ea, self.eb] = theta
+-        T[self.eb, self.ea] = theta
+-        CT = np.cos(T)
+-        ST = np.sin(T)
+-        np.fill_diagonal(CT, 0.0)
+-        np.fill_diagonal(ST, 0.0)
++        z = np.asarray(z, dtype=complex)
++        self.c = np.real(z).copy()
++        self.s = np.imag(z).copy()
++        CT = np.zeros((n, n))
++        ST = np.zeros((n, n))
++        CT[self.ea, self.eb] = self.c
++        CT[self.eb, self.ea] = self.c
++        ST[self.ea, self.eb] = self.s
++        ST[self.eb, self.ea] = self.s
+         Gcc = CT * CT
+         Gcs = CT * ST
+         Gss = ST * ST
+@@ -131,16 +137,17 @@
+         sig = np.linalg.norm(self.kmatvec(wp))
+         return float(sig), wp
+ 
+-    def cayley_step(self, z, sigma):
+-        """z ← (I-γK)^{-1}(I+γK) z。K/σ 正規化なし。Woodbury で O(N^3)。"""
+-        gn = GAMMA
+-        r = z + gn * self.kmatvec(z)
+-        A2 = (1.0 / GAMMA) * self.J + self.G
+-        rhs = self.wt(r)
+-        y = np.linalg.solve(A2, rhs)
+-        return r - self.w(y)
++    def dense_K(self):
++        """現在の状態（set_state）の振幅込み生成子 K を密行列で返す（M×M、実反対称）。"""
++        return np.column_stack([self.kmatvec(e) for e in np.eye(self.m)])
+ 
++    def linear_rotation_step(self, z, sigma):
++        """FIX3: z ← exp(ANGLE·K) z。厳密な線形回転（実直交）。K/σ 正規化なし。"""
++        K = self.dense_K()
++        w, V = np.linalg.eigh(1j * K)
++        return V @ (np.exp(-1j * ANGLE * w) * (V.conj().T @ z))
+ 
++
+ def participation_ratio(z):
+     a2 = np.abs(z) ** 2
+     return float(np.sum(a2) ** 2 / np.sum(a2 * a2))
+@@ -168,8 +175,7 @@
+             sys_lr.set_theta(theta)
+             ev, EV = np.linalg.eig(sys_lr.J @ sys_lr.G)
+             idx = int(np.argmin(ev.imag))  # λ = -iσ_max
+-            v = sys_lr.w(EV[:, idx].astype(complex))
+-            v = v / np.linalg.norm(v)
++            v = sys_lr.w(EV[:, idx].astype(complex))  # FIX1: 振幅正規化を除去
+             theta_new = np.angle(v)
+             mix = (1.0 - beta) * np.exp(1j * theta) + beta * np.exp(1j * theta_new)
+             theta = np.angle(mix)
+@@ -211,7 +217,7 @@
+     Y = Y - (X @ Y) / (X @ X) * X
+     Y = Y * (np.linalg.norm(X) / np.linalg.norm(Y))
+     Z = X + 1j * Y
+-    return Z / np.linalg.norm(Z)
++    return Z  # FIX1/2: 正規化を除去
+ 
+ 
+ # ---------------- 検証（密行列との一致） ----------------
+@@ -230,9 +236,8 @@
+         A[i, share] = 1.0
+     np.fill_diagonal(A, 0.0)
+ 
+-    theta0 = np.angle(Z)
+-    sys_lr.set_theta(theta0)
+-    Kd = A * np.sin(theta0[None, :] - theta0[:, None])
++    sys_lr.set_state(Z)
++    Kd = A * np.imag(np.conj(Z)[:, None] * Z[None, :])  # FIX4: 振幅込み
+ 
+     err_matvec = np.linalg.norm(sys_lr.kmatvec(Z) - Kd @ Z) / np.linalg.norm(Kd @ Z)
+ 
+@@ -253,16 +258,14 @@
+     Z_d = Z.copy()
+     dev = 0.0
+     for _ in range(steps):
+-        sys_lr.set_theta(np.angle(Z_lr))
++        sys_lr.set_state(Z_lr)
+         sig = sys_lr.sigma_spectrum()[0]
+-        Z_lr = sys_lr.cayley_step(Z_lr, sig)
++        Z_lr = sys_lr.linear_rotation_step(Z_lr, sig)
+ 
+-        th = np.angle(Z_d)
+-        Kd = A * np.sin(th[None, :] - th[:, None])
+-        sd = np.linalg.norm(Kd, 2)
+-        Kn = Kd / sd
+-        I = np.eye(m)
+-        Z_d = np.linalg.solve(I - GAMMA * Kn, (I + GAMMA * Kn) @ Z_d)
++        Kd = A * np.imag(np.conj(Z_d)[:, None] * Z_d[None, :])  # FIX4
++        wd, Vd = np.linalg.eigh(1j * Kd)
++        ang = (ANGLE / np.linalg.norm(Kd, 2)) if False else ANGLE
++        Z_d = Vd @ (np.exp(-1j * ang * wd) * (Vd.conj().T @ Z_d))  # FIX3
+         dev = max(dev, float(np.max(np.abs(Z_lr - Z_d))))
+     return {
+         "steps": steps,
+@@ -282,9 +285,7 @@
+     v, residual, sig = make_parent(sys_lr, rng)
+     t_parent = time.time() - t0
+ 
+-    g = zero_closure_kernel_seed(sys_lr, rng)
+-    Z = v + delta * g
+-    Z = Z / np.linalg.norm(Z)
++    Z = v.copy()  # FIX2: 外部 seed と正規化を除去（seedless、親そのもの）
+     ztz0 = complex(Z @ Z)
+ 
+     p = v.real / np.linalg.norm(v.real)
+@@ -308,9 +309,9 @@
+         if t % 200 == 0 and t > 0:
+             progress(f"開始率走行 τ={t} f={f:.3e}")
+         max_ztz = max(max_ztz, abs(complex(Z @ Z)))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+-        Z = sys_lr.cayley_step(Z, sig_est)
++        Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+     f_arr = np.array(f_hist)
+@@ -351,7 +352,7 @@
+     t = 0
+     for t in range(cap + 1):
+         pr_hist.append(participation_ratio(Z))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+         if t % sub == 0:
+             sig_exact = sys_lr.sigma_spectrum()
+@@ -363,10 +364,10 @@
+                 plateau_tau = t
+                 break
+         if t < cap:
+-            Z = sys_lr.cayley_step(Z, sig_est)
++            Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+-    sys_lr.set_theta(np.angle(Z))
++    sys_lr.set_state(Z)  # FIX4
+     sig = sys_lr.sigma_spectrum()
+     n_act = int(np.sum(sig / sig[0] > 0.05))
+     qv = np.linalg.lstsq(sys_lr.G, sys_lr.wt(Z), rcond=None)[0]
+@@ -409,7 +410,7 @@
+ 
+     os.makedirs(RESULT_DIR, exist_ok=True)
+     m = n * (n - 1) // 2
+-    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA}
++    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA, "angle": ANGLE}
+     print(f"=== N スケーリング測定（低ランク頂点分解） N={n}, M={m}, seed={seed} ===", flush=True)
+ 
+     if do_validate:
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N5_complex_simplex_complete_analysis_20260826/run_N5_physical_phase_step_test.py fixed/N5_complex_simplex_complete_analysis_20260826/run_N5_physical_phase_step_test.py
+--- ../論文v1_全再現テスト_20260828/original/N5_complex_simplex_complete_analysis_20260826/run_N5_physical_phase_step_test.py	2026-08-25 23:41:22
++++ fixed/N5_complex_simplex_complete_analysis_20260826/run_N5_physical_phase_step_test.py	2026-08-28 11:14:20
+@@ -4,9 +4,9 @@
+ from fractions import Fraction
+ import matplotlib.pyplot as plt
+ 
+-base=Path("/mnt/data")
++base=Path(__file__).resolve().parent  # PATH PATCH: was Path("/mnt/data")
+ engine_path=base/"run_n_scaling_lowrank_v1_no_sigma_norm.py"
+-OUT=base/"N5_physical_phase_step_test"
++OUT=base  # PATH PATCH: was base/"N5_physical_phase_step_test" (original outputs sit at package root)
+ OUT.mkdir(exist_ok=True)
+ spec=importlib.util.spec_from_file_location("engraw",engine_path)
+ eng=importlib.util.module_from_spec(spec); spec.loader.exec_module(eng)
+@@ -68,9 +68,9 @@
+                            np.nan if q is None else q,
+                            ";".join(map(str,sorted(set(dens))))] + list(map(float,dth)))
+     if t<STEPS:
+-        sys.set_theta(theta)
++        sys.set_state(Z)  # FIX4
+         se,wp=sys.sigma_max_power(wp)
+-        Z=sys.cayley_step(Z,se)
++        Z=sys.linear_rotation_step(Z,se)
+     prev_theta=theta.copy()
+ 
+ states_df=pd.DataFrame(states,columns=["step","H_total","abs_ZtZ","phase_pair_max_rat_err_q_le_256","phase_pair_median_rat_err_q_le_256","phase_pair_frac_err_lt_1e10","phase_pair_smallest_global_q_tol_1e10"])
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N5_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py fixed/N5_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py
+--- ../論文v1_全再現テスト_20260828/original/N5_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-25 23:41:00
++++ fixed/N5_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-28 11:14:20
+@@ -42,7 +42,8 @@
+     print(f"[進捗 {time.strftime('%H:%M:%S')}] {msg}", file=sys.stderr, flush=True)
+ 
+ 
+-GAMMA = math.tan(math.pi / 144.0)
++GAMMA = math.tan(math.pi / 144.0)  # 旧 Cayley 刻み（記録用、力学には使わない）
++ANGLE = 2.0 * math.pi / 144.0    # FIX3: 線形回転の刻み角
+ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ RESULT_DIR = os.path.join(BASE_DIR, "n_scaling_result_v1")
+ 
+@@ -66,16 +67,21 @@
+         self.J[n:, :n] = -np.eye(n)
+ 
+     def set_theta(self, theta):
++        """位相のみ（|z|=1）の生成子。親の固有モード反復でのみ使用。"""
++        self.set_state(np.exp(1j * np.asarray(theta, dtype=float)))
++
++    def set_state(self, z):
++        """FIX4: 振幅込み生成子 K_ij = Im(conj(z_i) z_j) = |z_i||z_j| sin(θ_j-θ_i)（隣接辺）。c=Re z, s=Im z。"""
+         n = self.n
+-        self.c = np.cos(theta)
+-        self.s = np.sin(theta)
+-        T = np.zeros((n, n))
+-        T[self.ea, self.eb] = theta
+-        T[self.eb, self.ea] = theta
+-        CT = np.cos(T)
+-        ST = np.sin(T)
+-        np.fill_diagonal(CT, 0.0)
+-        np.fill_diagonal(ST, 0.0)
++        z = np.asarray(z, dtype=complex)
++        self.c = np.real(z).copy()
++        self.s = np.imag(z).copy()
++        CT = np.zeros((n, n))
++        ST = np.zeros((n, n))
++        CT[self.ea, self.eb] = self.c
++        CT[self.eb, self.ea] = self.c
++        ST[self.ea, self.eb] = self.s
++        ST[self.eb, self.ea] = self.s
+         Gcc = CT * CT
+         Gcs = CT * ST
+         Gss = ST * ST
+@@ -131,16 +137,17 @@
+         sig = np.linalg.norm(self.kmatvec(wp))
+         return float(sig), wp
+ 
+-    def cayley_step(self, z, sigma):
+-        """z ← (I-γK)^{-1}(I+γK) z。K/σ 正規化なし。Woodbury で O(N^3)。"""
+-        gn = GAMMA
+-        r = z + gn * self.kmatvec(z)
+-        A2 = (1.0 / GAMMA) * self.J + self.G
+-        rhs = self.wt(r)
+-        y = np.linalg.solve(A2, rhs)
+-        return r - self.w(y)
++    def dense_K(self):
++        """現在の状態（set_state）の振幅込み生成子 K を密行列で返す（M×M、実反対称）。"""
++        return np.column_stack([self.kmatvec(e) for e in np.eye(self.m)])
+ 
++    def linear_rotation_step(self, z, sigma):
++        """FIX3: z ← exp(ANGLE·K) z。厳密な線形回転（実直交）。K/σ 正規化なし。"""
++        K = self.dense_K()
++        w, V = np.linalg.eigh(1j * K)
++        return V @ (np.exp(-1j * ANGLE * w) * (V.conj().T @ z))
+ 
++
+ def participation_ratio(z):
+     a2 = np.abs(z) ** 2
+     return float(np.sum(a2) ** 2 / np.sum(a2 * a2))
+@@ -168,8 +175,7 @@
+             sys_lr.set_theta(theta)
+             ev, EV = np.linalg.eig(sys_lr.J @ sys_lr.G)
+             idx = int(np.argmin(ev.imag))  # λ = -iσ_max
+-            v = sys_lr.w(EV[:, idx].astype(complex))
+-            v = v / np.linalg.norm(v)
++            v = sys_lr.w(EV[:, idx].astype(complex))  # FIX1: 振幅正規化を除去
+             theta_new = np.angle(v)
+             mix = (1.0 - beta) * np.exp(1j * theta) + beta * np.exp(1j * theta_new)
+             theta = np.angle(mix)
+@@ -211,7 +217,7 @@
+     Y = Y - (X @ Y) / (X @ X) * X
+     Y = Y * (np.linalg.norm(X) / np.linalg.norm(Y))
+     Z = X + 1j * Y
+-    return Z / np.linalg.norm(Z)
++    return Z  # FIX1/2: 正規化を除去
+ 
+ 
+ # ---------------- 検証（密行列との一致） ----------------
+@@ -230,9 +236,8 @@
+         A[i, share] = 1.0
+     np.fill_diagonal(A, 0.0)
+ 
+-    theta0 = np.angle(Z)
+-    sys_lr.set_theta(theta0)
+-    Kd = A * np.sin(theta0[None, :] - theta0[:, None])
++    sys_lr.set_state(Z)
++    Kd = A * np.imag(np.conj(Z)[:, None] * Z[None, :])  # FIX4: 振幅込み
+ 
+     err_matvec = np.linalg.norm(sys_lr.kmatvec(Z) - Kd @ Z) / np.linalg.norm(Kd @ Z)
+ 
+@@ -253,16 +258,14 @@
+     Z_d = Z.copy()
+     dev = 0.0
+     for _ in range(steps):
+-        sys_lr.set_theta(np.angle(Z_lr))
++        sys_lr.set_state(Z_lr)
+         sig = sys_lr.sigma_spectrum()[0]
+-        Z_lr = sys_lr.cayley_step(Z_lr, sig)
++        Z_lr = sys_lr.linear_rotation_step(Z_lr, sig)
+ 
+-        th = np.angle(Z_d)
+-        Kd = A * np.sin(th[None, :] - th[:, None])
+-        sd = np.linalg.norm(Kd, 2)
+-        Kn = Kd / sd
+-        I = np.eye(m)
+-        Z_d = np.linalg.solve(I - GAMMA * Kn, (I + GAMMA * Kn) @ Z_d)
++        Kd = A * np.imag(np.conj(Z_d)[:, None] * Z_d[None, :])  # FIX4
++        wd, Vd = np.linalg.eigh(1j * Kd)
++        ang = (ANGLE / np.linalg.norm(Kd, 2)) if False else ANGLE
++        Z_d = Vd @ (np.exp(-1j * ang * wd) * (Vd.conj().T @ Z_d))  # FIX3
+         dev = max(dev, float(np.max(np.abs(Z_lr - Z_d))))
+     return {
+         "steps": steps,
+@@ -282,9 +285,7 @@
+     v, residual, sig = make_parent(sys_lr, rng)
+     t_parent = time.time() - t0
+ 
+-    g = zero_closure_kernel_seed(sys_lr, rng)
+-    Z = v + delta * g
+-    Z = Z / np.linalg.norm(Z)
++    Z = v.copy()  # FIX2: 外部 seed と正規化を除去（seedless、親そのもの）
+     ztz0 = complex(Z @ Z)
+ 
+     p = v.real / np.linalg.norm(v.real)
+@@ -308,9 +309,9 @@
+         if t % 200 == 0 and t > 0:
+             progress(f"開始率走行 τ={t} f={f:.3e}")
+         max_ztz = max(max_ztz, abs(complex(Z @ Z)))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+-        Z = sys_lr.cayley_step(Z, sig_est)
++        Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+     f_arr = np.array(f_hist)
+@@ -351,7 +352,7 @@
+     t = 0
+     for t in range(cap + 1):
+         pr_hist.append(participation_ratio(Z))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+         if t % sub == 0:
+             sig_exact = sys_lr.sigma_spectrum()
+@@ -363,10 +364,10 @@
+                 plateau_tau = t
+                 break
+         if t < cap:
+-            Z = sys_lr.cayley_step(Z, sig_est)
++            Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+-    sys_lr.set_theta(np.angle(Z))
++    sys_lr.set_state(Z)  # FIX4
+     sig = sys_lr.sigma_spectrum()
+     n_act = int(np.sum(sig / sig[0] > 0.05))
+     qv = np.linalg.lstsq(sys_lr.G, sys_lr.wt(Z), rcond=None)[0]
+@@ -409,7 +410,7 @@
+ 
+     os.makedirs(RESULT_DIR, exist_ok=True)
+     m = n * (n - 1) // 2
+-    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA}
++    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA, "angle": ANGLE}
+     print(f"=== N スケーリング測定（低ランク頂点分解） N={n}, M={m}, seed={seed} ===", flush=True)
+ 
+     if do_validate:
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N5_dynamics_followup_theorems_and_stability_20260826/followup_dynamics_20260826/analyze_followup.py fixed/N5_dynamics_followup_theorems_and_stability_20260826/followup_dynamics_20260826/analyze_followup.py
+--- ../論文v1_全再現テスト_20260828/original/N5_dynamics_followup_theorems_and_stability_20260826/followup_dynamics_20260826/analyze_followup.py	2026-08-26 19:18:02
++++ fixed/N5_dynamics_followup_theorems_and_stability_20260826/followup_dynamics_20260826/analyze_followup.py	2026-08-28 11:14:20
+@@ -6,6 +6,7 @@
+ HERE=Path(__file__).resolve().parent
+ ROOT=HERE.parent
+ GAMMA=math.tan(math.pi/144.0)
++ANGLE=2.0*math.pi/144.0  # FIX3
+ 
+ # 1) Pump depletion / orthogonal transfer from existing corrected raw-K run
+ raw=pd.read_csv(ROOT/'N5_sigma_normalization_artifact_test/N5_raw_K_raw_observables.csv')
+@@ -22,8 +23,8 @@
+ # 2) Normalized-vs-raw time reparameterization test
+ norm=pd.read_csv(ROOT/'N5_sigma_normalization_artifact_test/N5_normalized_K_raw_observables.csv')
+ for d,kind in [(norm,'normalized'),(raw,'raw')]:
+-    if kind=='normalized': inc=np.full(len(d),2*math.atan(GAMMA))
+-    else: inc=2*np.arctan(GAMMA*d.sigma_exact.to_numpy())
++    if kind=='normalized': inc=np.full(len(d),ANGLE)  # FIX3: 線形回転では位相増分は ANGLE（正規化）/ ANGLE·σ（raw）
++    else: inc=ANGLE*d.sigma_exact.to_numpy()
+     phi=np.r_[0,np.cumsum(inc[:-1])]
+     d['cumulative_phase']=phi
+ # interpolate overlap and compare Hperp in log regime and full regime
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N5_dynamics_followup_theorems_and_stability_20260826/followup_dynamics_20260826/original_RAW_K_reference.py fixed/N5_dynamics_followup_theorems_and_stability_20260826/followup_dynamics_20260826/original_RAW_K_reference.py
+--- ../論文v1_全再現テスト_20260828/original/N5_dynamics_followup_theorems_and_stability_20260826/followup_dynamics_20260826/original_RAW_K_reference.py	2026-08-26 19:15:01
++++ fixed/N5_dynamics_followup_theorems_and_stability_20260826/followup_dynamics_20260826/original_RAW_K_reference.py	2026-08-28 11:14:20
+@@ -42,7 +42,8 @@
+     print(f"[進捗 {time.strftime('%H:%M:%S')}] {msg}", file=sys.stderr, flush=True)
+ 
+ 
+-GAMMA = math.tan(math.pi / 144.0)
++GAMMA = math.tan(math.pi / 144.0)  # 旧 Cayley 刻み（記録用、力学には使わない）
++ANGLE = 2.0 * math.pi / 144.0    # FIX3: 線形回転の刻み角
+ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ RESULT_DIR = os.path.join(BASE_DIR, "n_scaling_result_v1")
+ 
+@@ -66,16 +67,21 @@
+         self.J[n:, :n] = -np.eye(n)
+ 
+     def set_theta(self, theta):
++        """位相のみ（|z|=1）の生成子。親の固有モード反復でのみ使用。"""
++        self.set_state(np.exp(1j * np.asarray(theta, dtype=float)))
++
++    def set_state(self, z):
++        """FIX4: 振幅込み生成子 K_ij = Im(conj(z_i) z_j) = |z_i||z_j| sin(θ_j-θ_i)（隣接辺）。c=Re z, s=Im z。"""
+         n = self.n
+-        self.c = np.cos(theta)
+-        self.s = np.sin(theta)
+-        T = np.zeros((n, n))
+-        T[self.ea, self.eb] = theta
+-        T[self.eb, self.ea] = theta
+-        CT = np.cos(T)
+-        ST = np.sin(T)
+-        np.fill_diagonal(CT, 0.0)
+-        np.fill_diagonal(ST, 0.0)
++        z = np.asarray(z, dtype=complex)
++        self.c = np.real(z).copy()
++        self.s = np.imag(z).copy()
++        CT = np.zeros((n, n))
++        ST = np.zeros((n, n))
++        CT[self.ea, self.eb] = self.c
++        CT[self.eb, self.ea] = self.c
++        ST[self.ea, self.eb] = self.s
++        ST[self.eb, self.ea] = self.s
+         Gcc = CT * CT
+         Gcs = CT * ST
+         Gss = ST * ST
+@@ -131,16 +137,17 @@
+         sig = np.linalg.norm(self.kmatvec(wp))
+         return float(sig), wp
+ 
+-    def cayley_step(self, z, sigma):
+-        """z ← (I-γK)^{-1}(I+γK) z。K/σ 正規化なし。Woodbury で O(N^3)。"""
+-        gn = GAMMA
+-        r = z + gn * self.kmatvec(z)
+-        A2 = (1.0 / GAMMA) * self.J + self.G
+-        rhs = self.wt(r)
+-        y = np.linalg.solve(A2, rhs)
+-        return r - self.w(y)
++    def dense_K(self):
++        """現在の状態（set_state）の振幅込み生成子 K を密行列で返す（M×M、実反対称）。"""
++        return np.column_stack([self.kmatvec(e) for e in np.eye(self.m)])
+ 
++    def linear_rotation_step(self, z, sigma):
++        """FIX3: z ← exp(ANGLE·K) z。厳密な線形回転（実直交）。K/σ 正規化なし。"""
++        K = self.dense_K()
++        w, V = np.linalg.eigh(1j * K)
++        return V @ (np.exp(-1j * ANGLE * w) * (V.conj().T @ z))
+ 
++
+ def participation_ratio(z):
+     a2 = np.abs(z) ** 2
+     return float(np.sum(a2) ** 2 / np.sum(a2 * a2))
+@@ -168,8 +175,7 @@
+             sys_lr.set_theta(theta)
+             ev, EV = np.linalg.eig(sys_lr.J @ sys_lr.G)
+             idx = int(np.argmin(ev.imag))  # λ = -iσ_max
+-            v = sys_lr.w(EV[:, idx].astype(complex))
+-            v = v / np.linalg.norm(v)
++            v = sys_lr.w(EV[:, idx].astype(complex))  # FIX1: 振幅正規化を除去
+             theta_new = np.angle(v)
+             mix = (1.0 - beta) * np.exp(1j * theta) + beta * np.exp(1j * theta_new)
+             theta = np.angle(mix)
+@@ -211,7 +217,7 @@
+     Y = Y - (X @ Y) / (X @ X) * X
+     Y = Y * (np.linalg.norm(X) / np.linalg.norm(Y))
+     Z = X + 1j * Y
+-    return Z / np.linalg.norm(Z)
++    return Z  # FIX1/2: 正規化を除去
+ 
+ 
+ # ---------------- 検証（密行列との一致） ----------------
+@@ -230,9 +236,8 @@
+         A[i, share] = 1.0
+     np.fill_diagonal(A, 0.0)
+ 
+-    theta0 = np.angle(Z)
+-    sys_lr.set_theta(theta0)
+-    Kd = A * np.sin(theta0[None, :] - theta0[:, None])
++    sys_lr.set_state(Z)
++    Kd = A * np.imag(np.conj(Z)[:, None] * Z[None, :])  # FIX4: 振幅込み
+ 
+     err_matvec = np.linalg.norm(sys_lr.kmatvec(Z) - Kd @ Z) / np.linalg.norm(Kd @ Z)
+ 
+@@ -253,16 +258,14 @@
+     Z_d = Z.copy()
+     dev = 0.0
+     for _ in range(steps):
+-        sys_lr.set_theta(np.angle(Z_lr))
++        sys_lr.set_state(Z_lr)
+         sig = sys_lr.sigma_spectrum()[0]
+-        Z_lr = sys_lr.cayley_step(Z_lr, sig)
++        Z_lr = sys_lr.linear_rotation_step(Z_lr, sig)
+ 
+-        th = np.angle(Z_d)
+-        Kd = A * np.sin(th[None, :] - th[:, None])
+-        sd = np.linalg.norm(Kd, 2)
+-        Kn = Kd / sd
+-        I = np.eye(m)
+-        Z_d = np.linalg.solve(I - GAMMA * Kn, (I + GAMMA * Kn) @ Z_d)
++        Kd = A * np.imag(np.conj(Z_d)[:, None] * Z_d[None, :])  # FIX4
++        wd, Vd = np.linalg.eigh(1j * Kd)
++        ang = (ANGLE / np.linalg.norm(Kd, 2)) if False else ANGLE
++        Z_d = Vd @ (np.exp(-1j * ang * wd) * (Vd.conj().T @ Z_d))  # FIX3
+         dev = max(dev, float(np.max(np.abs(Z_lr - Z_d))))
+     return {
+         "steps": steps,
+@@ -282,9 +285,7 @@
+     v, residual, sig = make_parent(sys_lr, rng)
+     t_parent = time.time() - t0
+ 
+-    g = zero_closure_kernel_seed(sys_lr, rng)
+-    Z = v + delta * g
+-    Z = Z / np.linalg.norm(Z)
++    Z = v.copy()  # FIX2: 外部 seed と正規化を除去（seedless、親そのもの）
+     ztz0 = complex(Z @ Z)
+ 
+     p = v.real / np.linalg.norm(v.real)
+@@ -308,9 +309,9 @@
+         if t % 200 == 0 and t > 0:
+             progress(f"開始率走行 τ={t} f={f:.3e}")
+         max_ztz = max(max_ztz, abs(complex(Z @ Z)))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+-        Z = sys_lr.cayley_step(Z, sig_est)
++        Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+     f_arr = np.array(f_hist)
+@@ -351,7 +352,7 @@
+     t = 0
+     for t in range(cap + 1):
+         pr_hist.append(participation_ratio(Z))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+         if t % sub == 0:
+             sig_exact = sys_lr.sigma_spectrum()
+@@ -363,10 +364,10 @@
+                 plateau_tau = t
+                 break
+         if t < cap:
+-            Z = sys_lr.cayley_step(Z, sig_est)
++            Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+-    sys_lr.set_theta(np.angle(Z))
++    sys_lr.set_state(Z)  # FIX4
+     sig = sys_lr.sigma_spectrum()
+     n_act = int(np.sum(sig / sig[0] > 0.05))
+     qv = np.linalg.lstsq(sys_lr.G, sys_lr.wt(Z), rcond=None)[0]
+@@ -409,7 +410,7 @@
+ 
+     os.makedirs(RESULT_DIR, exist_ok=True)
+     m = n * (n - 1) // 2
+-    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA}
++    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA, "angle": ANGLE}
+     print(f"=== N スケーリング測定（低ランク頂点分解） N={n}, M={m}, seed={seed} ===", flush=True)
+ 
+     if do_validate:
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N5_dynamics_followup_theorems_and_stability_20260826/followup_dynamics_20260826/run_followup_experiments.py fixed/N5_dynamics_followup_theorems_and_stability_20260826/followup_dynamics_20260826/run_followup_experiments.py
+--- ../論文v1_全再現テスト_20260828/original/N5_dynamics_followup_theorems_and_stability_20260826/followup_dynamics_20260826/run_followup_experiments.py	2026-08-26 19:15:01
++++ fixed/N5_dynamics_followup_theorems_and_stability_20260826/followup_dynamics_20260826/run_followup_experiments.py	2026-08-28 11:14:20
+@@ -6,7 +6,8 @@
+ import matplotlib.pyplot as plt
+ 
+ HERE=Path(__file__).resolve().parent
+-GAMMA=math.tan(math.pi/144.0)
++GAMMA=math.tan(math.pi/144.0)  # 旧 Cayley 刻み（記録用）
++ANGLE=2.0*math.pi/144.0        # FIX3: 線形回転の刻み角
+ 
+ # Physics core copied verbatim in structure from run_n_scaling_lowrank_v1_RAW_K.py.
+ def build_edges(n):
+@@ -15,10 +16,11 @@
+     def __init__(self,n):
+         self.n=n; self.ea,self.eb=build_edges(n); self.m=len(self.ea)
+         self.J=np.zeros((2*n,2*n)); self.J[:n,n:]=np.eye(n); self.J[n:,:n]=-np.eye(n)
+-    def set_theta(self,theta):
+-        n=self.n; self.c=np.cos(theta); self.s=np.sin(theta)
+-        T=np.zeros((n,n)); T[self.ea,self.eb]=theta; T[self.eb,self.ea]=theta
+-        CT=np.cos(T); ST=np.sin(T); np.fill_diagonal(CT,0); np.fill_diagonal(ST,0)
++    def set_theta(self,theta): self.set_state(np.exp(1j*np.asarray(theta,dtype=float)))  # 位相のみ（親の固有モード反復でのみ使用）
++    def set_state(self,z):
++        # FIX4: 振幅込み生成子 K_ij = Im(conj(z_i) z_j)。c=Re z, s=Im z
++        n=self.n; z=np.asarray(z,dtype=complex); self.c=np.real(z).copy(); self.s=np.imag(z).copy()
++        CT=np.zeros((n,n)); ST=np.zeros((n,n)); CT[self.ea,self.eb]=self.c; CT[self.eb,self.ea]=self.c; ST[self.ea,self.eb]=self.s; ST[self.eb,self.ea]=self.s
+         Gcc=CT*CT; Gcs=CT*ST; Gss=ST*ST
+         np.fill_diagonal(Gcc,Gcc.sum(axis=1)); np.fill_diagonal(Gcs,Gcs.sum(axis=1)); np.fill_diagonal(Gss,Gss.sum(axis=1))
+         G=np.empty((2*n,2*n)); G[:n,:n]=Gcc; G[:n,n:]=Gcs; G[n:,:n]=Gcs; G[n:,n:]=Gss; self.G=G
+@@ -37,8 +39,10 @@
+         return self.c*(vs[self.ea]+vs[self.eb])-self.s*(vc[self.ea]+vc[self.eb])
+     def sigma_spectrum(self):
+         ev=np.linalg.eigvals(self.J@self.G); return np.sort(ev.imag[ev.imag>1e-12])[::-1]
+-    def cayley_step(self,z,sigma_unused=None):
+-        gn=GAMMA; r=z+gn*self.kmatvec(z); A2=(1.0/GAMMA)*self.J+self.G; rhs=self.wt(r); y=np.linalg.solve(A2,rhs); return r-self.w(y)
++    def dense_K(self): return np.column_stack([self.kmatvec(e) for e in np.eye(self.m)])
++    def linear_rotation_step(self,z,sigma_unused=None):
++        # FIX3: z ← exp(ANGLE·K) z（厳密な線形回転、正規化なし）
++        K=self.dense_K(); w,V=np.linalg.eigh(1j*K); return V@(np.exp(-1j*ANGLE*w)*(V.conj().T@z))
+ 
+ def eigenmode_residual(sys,v):
+     kv=sys.kmatvec(v); mu=float(np.real(np.conj(v)@(1j*kv))); return float(np.linalg.norm(1j*kv-mu*v))
+@@ -48,7 +52,7 @@
+         theta=rng.uniform(0,2*np.pi,sys.m); v=None
+         for it in range(iters):
+             sys.set_theta(theta); ev,EV=np.linalg.eig(sys.J@sys.G); idx=int(np.argmin(ev.imag))
+-            v=sys.w(EV[:,idx].astype(complex)); v=v/np.linalg.norm(v); theta_new=np.angle(v)
++            v=sys.w(EV[:,idx].astype(complex)); theta_new=np.angle(v)  # FIX1: 振幅正規化を除去
+             mix=(1-beta)*np.exp(1j*theta)+beta*np.exp(1j*theta_new); theta=np.angle(mix)
+             if it%10==9:
+                 sys.set_theta(np.angle(v)); rr=eigenmode_residual(sys,v)
+@@ -72,7 +76,7 @@
+             f,hpar,ht=f_relative_to_parent(Z,v); vals.append((t,f))
+             if onset is None and f>=1e-8: onset=t
+             if t<5000:
+-                sys.set_theta(np.angle(Z)); Z=sys.cayley_step(Z)
++                sys.set_state(Z); Z=sys.linear_rotation_step(Z)  # FIX3/4
+         arr=np.array(vals); mask=(arr[:,1]>1e-12)&(arr[:,1]<1e-4)
+         rate=float(np.polyfit(arr[mask,0],np.log(arr[mask,1]),1)[0]) if mask.sum()>=5 else np.nan
+         rows.append((tol,res,nit,onset,rate,arr[-1,1])); series.append(pd.DataFrame({'tol':tol,'step':arr[:,0].astype(int),'f':arr[:,1]}))
+@@ -81,9 +85,9 @@
+ 
+ def floquet_jacobian():
+     sys=LowRankSystem(5); rng=np.random.default_rng(40260721+5000); v,res,sig,nit=make_parent(sys,rng,iters=2000,tol=1e-12,restarts=3)
+-    sys.set_theta(np.angle(v)); Fv=sys.cayley_step(v); phase=np.vdot(v,Fv); phase=phase/abs(phase)
++    sys.set_state(v); Fv=sys.linear_rotation_step(v); phase=np.vdot(v,Fv); phase=phase/abs(phase)  # FIX3/4
+     def R(z):
+-        sys.set_theta(np.angle(z)); return sys.cayley_step(z)/phase
++        sys.set_state(z); return sys.linear_rotation_step(z)/phase  # FIX3/4
+     defect=np.linalg.norm(R(v)-v)
+     x0=np.r_[v.real,v.imag]; m=len(v); results=[]
+     for eps in [3e-6,1e-6,3e-7,1e-7]:
+@@ -102,7 +106,7 @@
+     rows=[]
+     for seed in range(20):
+         sys=LowRankSystem(5); rng=np.random.default_rng(40260721+5000+seed); v,res,sig,nit=make_parent(sys,rng,iters=800,tol=1e-10,restarts=3); Z=v.copy()
+-        for t in range(5000): sys.set_theta(np.angle(Z)); Z=sys.cayley_step(Z)
++        for t in range(5000): sys.set_state(Z); Z=sys.linear_rotation_step(Z)  # FIX3/4
+         q=Z**2
+         # Enumerate partitions into sizes 3,3,2,2 minimizing within-cluster SSE; 10 points => manageable.
+         inds=set(range(10)); best=None
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N5_dynamics_followup_theorems_and_stability_20260826/followup_dynamics_20260826/run_moduli_sweep_fast.py fixed/N5_dynamics_followup_theorems_and_stability_20260826/followup_dynamics_20260826/run_moduli_sweep_fast.py
+--- ../論文v1_全再現テスト_20260828/original/N5_dynamics_followup_theorems_and_stability_20260826/followup_dynamics_20260826/run_moduli_sweep_fast.py	2026-08-26 19:16:31
++++ fixed/N5_dynamics_followup_theorems_and_stability_20260826/followup_dynamics_20260826/run_moduli_sweep_fast.py	2026-08-28 11:14:20
+@@ -11,7 +11,7 @@
+     sysm=LowRankSystem(5); rng=np.random.default_rng(40260721+5000+seed)
+     v,res,sig,nit=make_parent(sysm,rng,iters=800,tol=1e-10,restarts=3); Z=v.copy()
+     for t in range(5000):
+-        sysm.set_theta(np.angle(Z)); Z=sysm.cayley_step(Z)
++        sysm.set_state(Z); Z=sysm.linear_rotation_step(Z)  # FIX3/4
+     q=Z**2
+     data=np.c_[q.real,q.imag]
+     # deterministic initial centers: four points with farthest-first selection
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N5_gamma_continuum_test_bundle_20260825/run_N5_gamma_continuum_test.py fixed/N5_gamma_continuum_test_bundle_20260825/run_N5_gamma_continuum_test.py
+--- ../論文v1_全再現テスト_20260828/original/N5_gamma_continuum_test_bundle_20260825/run_N5_gamma_continuum_test.py	2026-08-25 13:46:58
++++ fixed/N5_gamma_continuum_test_bundle_20260825/run_N5_gamma_continuum_test.py	2026-08-28 11:14:20
+@@ -15,9 +15,9 @@
+     return mod
+ 
+ def trajectory(engine, n_den, tau_max=70.0, seed=0):
+-    gamma = math.tan(math.pi / n_den)
+-    engine.GAMMA = gamma
+-    dphi = 2.0 * math.atan(gamma)
++    gamma = math.tan(math.pi / n_den)  # 記録用
++    engine.ANGLE = 2.0 * math.pi / n_den  # FIX3: 線形回転の刻み角
++    dphi = engine.ANGLE
+ 
+     N = 5
+     M = N * (N - 1) // 2
+@@ -40,9 +40,9 @@
+         f = max(0.0, 1.0 - h1 / norm2)
+         rows.append((t, t * dphi, f, abs(Z @ Z), norm2))
+         if t < steps:
+-            syslr.set_theta(np.angle(Z))
++            syslr.set_state(Z)  # FIX4
+             se, wp = syslr.sigma_max_power(wp)
+-            Z = syslr.cayley_step(Z, se)
++            Z = syslr.linear_rotation_step(Z, se)
+ 
+     df = pd.DataFrame(rows, columns=["step", "tau", "f", "abs_ztz", "norm2"])
+     return df, residual, gamma, dphi
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N5_gamma_continuum_test_bundle_20260825/run_n_scaling_lowrank_v1_abprobe.py fixed/N5_gamma_continuum_test_bundle_20260825/run_n_scaling_lowrank_v1_abprobe.py
+--- ../論文v1_全再現テスト_20260828/original/N5_gamma_continuum_test_bundle_20260825/run_n_scaling_lowrank_v1_abprobe.py	2026-08-25 13:08:04
++++ fixed/N5_gamma_continuum_test_bundle_20260825/run_n_scaling_lowrank_v1_abprobe.py	2026-08-28 11:14:20
+@@ -42,7 +42,8 @@
+     print(f"[進捗 {time.strftime('%H:%M:%S')}] {msg}", file=sys.stderr, flush=True)
+ 
+ 
+-GAMMA = math.tan(math.pi / 144.0)
++GAMMA = math.tan(math.pi / 144.0)  # 旧 Cayley 刻み（記録用、力学には使わない）
++ANGLE = 2.0 * math.pi / 144.0    # FIX3: 線形回転の刻み角
+ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ RESULT_DIR = os.path.join(BASE_DIR, "n_scaling_result_v1")
+ 
+@@ -66,16 +67,21 @@
+         self.J[n:, :n] = -np.eye(n)
+ 
+     def set_theta(self, theta):
++        """位相のみ（|z|=1）の生成子。親の固有モード反復でのみ使用。"""
++        self.set_state(np.exp(1j * np.asarray(theta, dtype=float)))
++
++    def set_state(self, z):
++        """FIX4: 振幅込み生成子 K_ij = Im(conj(z_i) z_j) = |z_i||z_j| sin(θ_j-θ_i)（隣接辺）。c=Re z, s=Im z。"""
+         n = self.n
+-        self.c = np.cos(theta)
+-        self.s = np.sin(theta)
+-        T = np.zeros((n, n))
+-        T[self.ea, self.eb] = theta
+-        T[self.eb, self.ea] = theta
+-        CT = np.cos(T)
+-        ST = np.sin(T)
+-        np.fill_diagonal(CT, 0.0)
+-        np.fill_diagonal(ST, 0.0)
++        z = np.asarray(z, dtype=complex)
++        self.c = np.real(z).copy()
++        self.s = np.imag(z).copy()
++        CT = np.zeros((n, n))
++        ST = np.zeros((n, n))
++        CT[self.ea, self.eb] = self.c
++        CT[self.eb, self.ea] = self.c
++        ST[self.ea, self.eb] = self.s
++        ST[self.eb, self.ea] = self.s
+         Gcc = CT * CT
+         Gcs = CT * ST
+         Gss = ST * ST
+@@ -131,16 +137,17 @@
+         sig = np.linalg.norm(self.kmatvec(wp))
+         return float(sig), wp
+ 
+-    def cayley_step(self, z, sigma):
+-        """z ← (I-γK̃)^{-1}(I+γK̃) z, K̃ = K/σ。Woodbury で O(N^3)。"""
+-        gn = GAMMA / sigma
+-        r = z + gn * self.kmatvec(z)
+-        A2 = (sigma / GAMMA) * self.J + self.G
+-        rhs = self.wt(r)
+-        y = np.linalg.solve(A2, rhs)
+-        return r - self.w(y)
++    def dense_K(self):
++        """現在の状態（set_state）の振幅込み生成子 K を密行列で返す（M×M、実反対称）。"""
++        return np.column_stack([self.kmatvec(e) for e in np.eye(self.m)])
+ 
++    def linear_rotation_step(self, z, sigma):
++        """FIX3: z ← exp((ANGLE/σ)·K) z。厳密な線形回転、K/σ 正規化あり（比較用ブランチ）。"""
++        K = self.dense_K()
++        w, V = np.linalg.eigh(1j * K)
++        return V @ (np.exp(-1j * (ANGLE / sigma) * w) * (V.conj().T @ z))
+ 
++
+ def participation_ratio(z):
+     a2 = np.abs(z) ** 2
+     return float(np.sum(a2) ** 2 / np.sum(a2 * a2))
+@@ -168,8 +175,7 @@
+             sys_lr.set_theta(theta)
+             ev, EV = np.linalg.eig(sys_lr.J @ sys_lr.G)
+             idx = int(np.argmin(ev.imag))  # λ = -iσ_max
+-            v = sys_lr.w(EV[:, idx].astype(complex))
+-            v = v / np.linalg.norm(v)
++            v = sys_lr.w(EV[:, idx].astype(complex))  # FIX1: 振幅正規化を除去
+             theta_new = np.angle(v)
+             mix = (1.0 - beta) * np.exp(1j * theta) + beta * np.exp(1j * theta_new)
+             theta = np.angle(mix)
+@@ -211,7 +217,7 @@
+     Y = Y - (X @ Y) / (X @ X) * X
+     Y = Y * (np.linalg.norm(X) / np.linalg.norm(Y))
+     Z = X + 1j * Y
+-    return Z / np.linalg.norm(Z)
++    return Z  # FIX1/2: 正規化を除去
+ 
+ 
+ # ---------------- 検証（密行列との一致） ----------------
+@@ -230,9 +236,8 @@
+         A[i, share] = 1.0
+     np.fill_diagonal(A, 0.0)
+ 
+-    theta0 = np.angle(Z)
+-    sys_lr.set_theta(theta0)
+-    Kd = A * np.sin(theta0[None, :] - theta0[:, None])
++    sys_lr.set_state(Z)
++    Kd = A * np.imag(np.conj(Z)[:, None] * Z[None, :])  # FIX4: 振幅込み
+ 
+     err_matvec = np.linalg.norm(sys_lr.kmatvec(Z) - Kd @ Z) / np.linalg.norm(Kd @ Z)
+ 
+@@ -253,16 +258,14 @@
+     Z_d = Z.copy()
+     dev = 0.0
+     for _ in range(steps):
+-        sys_lr.set_theta(np.angle(Z_lr))
++        sys_lr.set_state(Z_lr)
+         sig = sys_lr.sigma_spectrum()[0]
+-        Z_lr = sys_lr.cayley_step(Z_lr, sig)
++        Z_lr = sys_lr.linear_rotation_step(Z_lr, sig)
+ 
+-        th = np.angle(Z_d)
+-        Kd = A * np.sin(th[None, :] - th[:, None])
+-        sd = np.linalg.norm(Kd, 2)
+-        Kn = Kd / sd
+-        I = np.eye(m)
+-        Z_d = np.linalg.solve(I - GAMMA * Kn, (I + GAMMA * Kn) @ Z_d)
++        Kd = A * np.imag(np.conj(Z_d)[:, None] * Z_d[None, :])  # FIX4
++        wd, Vd = np.linalg.eigh(1j * Kd)
++        ang = (ANGLE / np.linalg.norm(Kd, 2)) if True else ANGLE
++        Z_d = Vd @ (np.exp(-1j * ang * wd) * (Vd.conj().T @ Z_d))  # FIX3
+         dev = max(dev, float(np.max(np.abs(Z_lr - Z_d))))
+     return {
+         "steps": steps,
+@@ -282,9 +285,7 @@
+     v, residual, sig = make_parent(sys_lr, rng)
+     t_parent = time.time() - t0
+ 
+-    g = zero_closure_kernel_seed(sys_lr, rng)
+-    Z = v + delta * g
+-    Z = Z / np.linalg.norm(Z)
++    Z = v.copy()  # FIX2: 外部 seed と正規化を除去（seedless、親そのもの）
+     ztz0 = complex(Z @ Z)
+ 
+     p = v.real / np.linalg.norm(v.real)
+@@ -308,9 +309,9 @@
+         if t % 200 == 0 and t > 0:
+             progress(f"開始率走行 τ={t} f={f:.3e}")
+         max_ztz = max(max_ztz, abs(complex(Z @ Z)))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+-        Z = sys_lr.cayley_step(Z, sig_est)
++        Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+     f_arr = np.array(f_hist)
+@@ -351,7 +352,7 @@
+     t = 0
+     for t in range(cap + 1):
+         pr_hist.append(participation_ratio(Z))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+         if t % sub == 0:
+             sig_exact = sys_lr.sigma_spectrum()
+@@ -363,10 +364,10 @@
+                 plateau_tau = t
+                 break
+         if t < cap:
+-            Z = sys_lr.cayley_step(Z, sig_est)
++            Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+-    sys_lr.set_theta(np.angle(Z))
++    sys_lr.set_state(Z)  # FIX4
+     sig = sys_lr.sigma_spectrum()
+     n_act = int(np.sum(sig / sig[0] > 0.05))
+     qv = np.linalg.lstsq(sys_lr.G, sys_lr.wt(Z), rcond=None)[0]
+@@ -409,7 +410,7 @@
+ 
+     os.makedirs(RESULT_DIR, exist_ok=True)
+     m = n * (n - 1) // 2
+-    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA}
++    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA, "angle": ANGLE}
+     print(f"=== N スケーリング測定（低ランク頂点分解） N={n}, M={m}, seed={seed} ===", flush=True)
+ 
+     if do_validate:
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N6_N7_complex_simplex_complete_analysis_20260826/run_N6_N7_complete_analysis.py fixed/N6_N7_complex_simplex_complete_analysis_20260826/run_N6_N7_complete_analysis.py
+--- ../論文v1_全再現テスト_20260828/original/N6_N7_complex_simplex_complete_analysis_20260826/run_N6_N7_complete_analysis.py	2026-08-26 01:25:24
++++ fixed/N6_N7_complex_simplex_complete_analysis_20260826/run_N6_N7_complete_analysis.py	2026-08-28 11:14:20
+@@ -67,9 +67,9 @@
+                                float(ab[k]),float(r2[k]),float(np.angle(Z[k])),
+                                float(z2.real),float(z2.imag),float(np.angle(z2)/np.pi)])
+         if t<STEPS:
+-            sys.set_theta(np.angle(Z))
++            sys.set_state(Z)  # FIX4
+             se,wp=sys.sigma_max_power(wp)
+-            Z=sys.cayley_step(Z,se)
++            Z=sys.linear_rotation_step(Z,se)
+ 
+     glob=pd.DataFrame(global_rows,columns=["step","H_total","H_parallel","H_perp","A_perp","abs_ZtZ",
+         "sum_a2","sum_b2","sum_ab","r2_min","r2_max","simplex_rank"])
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N6_N7_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py fixed/N6_N7_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py
+--- ../論文v1_全再現テスト_20260828/original/N6_N7_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-25 23:41:00
++++ fixed/N6_N7_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-28 11:14:20
+@@ -42,7 +42,8 @@
+     print(f"[進捗 {time.strftime('%H:%M:%S')}] {msg}", file=sys.stderr, flush=True)
+ 
+ 
+-GAMMA = math.tan(math.pi / 144.0)
++GAMMA = math.tan(math.pi / 144.0)  # 旧 Cayley 刻み（記録用、力学には使わない）
++ANGLE = 2.0 * math.pi / 144.0    # FIX3: 線形回転の刻み角
+ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ RESULT_DIR = os.path.join(BASE_DIR, "n_scaling_result_v1")
+ 
+@@ -66,16 +67,21 @@
+         self.J[n:, :n] = -np.eye(n)
+ 
+     def set_theta(self, theta):
++        """位相のみ（|z|=1）の生成子。親の固有モード反復でのみ使用。"""
++        self.set_state(np.exp(1j * np.asarray(theta, dtype=float)))
++
++    def set_state(self, z):
++        """FIX4: 振幅込み生成子 K_ij = Im(conj(z_i) z_j) = |z_i||z_j| sin(θ_j-θ_i)（隣接辺）。c=Re z, s=Im z。"""
+         n = self.n
+-        self.c = np.cos(theta)
+-        self.s = np.sin(theta)
+-        T = np.zeros((n, n))
+-        T[self.ea, self.eb] = theta
+-        T[self.eb, self.ea] = theta
+-        CT = np.cos(T)
+-        ST = np.sin(T)
+-        np.fill_diagonal(CT, 0.0)
+-        np.fill_diagonal(ST, 0.0)
++        z = np.asarray(z, dtype=complex)
++        self.c = np.real(z).copy()
++        self.s = np.imag(z).copy()
++        CT = np.zeros((n, n))
++        ST = np.zeros((n, n))
++        CT[self.ea, self.eb] = self.c
++        CT[self.eb, self.ea] = self.c
++        ST[self.ea, self.eb] = self.s
++        ST[self.eb, self.ea] = self.s
+         Gcc = CT * CT
+         Gcs = CT * ST
+         Gss = ST * ST
+@@ -131,16 +137,17 @@
+         sig = np.linalg.norm(self.kmatvec(wp))
+         return float(sig), wp
+ 
+-    def cayley_step(self, z, sigma):
+-        """z ← (I-γK)^{-1}(I+γK) z。K/σ 正規化なし。Woodbury で O(N^3)。"""
+-        gn = GAMMA
+-        r = z + gn * self.kmatvec(z)
+-        A2 = (1.0 / GAMMA) * self.J + self.G
+-        rhs = self.wt(r)
+-        y = np.linalg.solve(A2, rhs)
+-        return r - self.w(y)
++    def dense_K(self):
++        """現在の状態（set_state）の振幅込み生成子 K を密行列で返す（M×M、実反対称）。"""
++        return np.column_stack([self.kmatvec(e) for e in np.eye(self.m)])
+ 
++    def linear_rotation_step(self, z, sigma):
++        """FIX3: z ← exp(ANGLE·K) z。厳密な線形回転（実直交）。K/σ 正規化なし。"""
++        K = self.dense_K()
++        w, V = np.linalg.eigh(1j * K)
++        return V @ (np.exp(-1j * ANGLE * w) * (V.conj().T @ z))
+ 
++
+ def participation_ratio(z):
+     a2 = np.abs(z) ** 2
+     return float(np.sum(a2) ** 2 / np.sum(a2 * a2))
+@@ -168,8 +175,7 @@
+             sys_lr.set_theta(theta)
+             ev, EV = np.linalg.eig(sys_lr.J @ sys_lr.G)
+             idx = int(np.argmin(ev.imag))  # λ = -iσ_max
+-            v = sys_lr.w(EV[:, idx].astype(complex))
+-            v = v / np.linalg.norm(v)
++            v = sys_lr.w(EV[:, idx].astype(complex))  # FIX1: 振幅正規化を除去
+             theta_new = np.angle(v)
+             mix = (1.0 - beta) * np.exp(1j * theta) + beta * np.exp(1j * theta_new)
+             theta = np.angle(mix)
+@@ -211,7 +217,7 @@
+     Y = Y - (X @ Y) / (X @ X) * X
+     Y = Y * (np.linalg.norm(X) / np.linalg.norm(Y))
+     Z = X + 1j * Y
+-    return Z / np.linalg.norm(Z)
++    return Z  # FIX1/2: 正規化を除去
+ 
+ 
+ # ---------------- 検証（密行列との一致） ----------------
+@@ -230,9 +236,8 @@
+         A[i, share] = 1.0
+     np.fill_diagonal(A, 0.0)
+ 
+-    theta0 = np.angle(Z)
+-    sys_lr.set_theta(theta0)
+-    Kd = A * np.sin(theta0[None, :] - theta0[:, None])
++    sys_lr.set_state(Z)
++    Kd = A * np.imag(np.conj(Z)[:, None] * Z[None, :])  # FIX4: 振幅込み
+ 
+     err_matvec = np.linalg.norm(sys_lr.kmatvec(Z) - Kd @ Z) / np.linalg.norm(Kd @ Z)
+ 
+@@ -253,16 +258,14 @@
+     Z_d = Z.copy()
+     dev = 0.0
+     for _ in range(steps):
+-        sys_lr.set_theta(np.angle(Z_lr))
++        sys_lr.set_state(Z_lr)
+         sig = sys_lr.sigma_spectrum()[0]
+-        Z_lr = sys_lr.cayley_step(Z_lr, sig)
++        Z_lr = sys_lr.linear_rotation_step(Z_lr, sig)
+ 
+-        th = np.angle(Z_d)
+-        Kd = A * np.sin(th[None, :] - th[:, None])
+-        sd = np.linalg.norm(Kd, 2)
+-        Kn = Kd / sd
+-        I = np.eye(m)
+-        Z_d = np.linalg.solve(I - GAMMA * Kn, (I + GAMMA * Kn) @ Z_d)
++        Kd = A * np.imag(np.conj(Z_d)[:, None] * Z_d[None, :])  # FIX4
++        wd, Vd = np.linalg.eigh(1j * Kd)
++        ang = (ANGLE / np.linalg.norm(Kd, 2)) if False else ANGLE
++        Z_d = Vd @ (np.exp(-1j * ang * wd) * (Vd.conj().T @ Z_d))  # FIX3
+         dev = max(dev, float(np.max(np.abs(Z_lr - Z_d))))
+     return {
+         "steps": steps,
+@@ -282,9 +285,7 @@
+     v, residual, sig = make_parent(sys_lr, rng)
+     t_parent = time.time() - t0
+ 
+-    g = zero_closure_kernel_seed(sys_lr, rng)
+-    Z = v + delta * g
+-    Z = Z / np.linalg.norm(Z)
++    Z = v.copy()  # FIX2: 外部 seed と正規化を除去（seedless、親そのもの）
+     ztz0 = complex(Z @ Z)
+ 
+     p = v.real / np.linalg.norm(v.real)
+@@ -308,9 +309,9 @@
+         if t % 200 == 0 and t > 0:
+             progress(f"開始率走行 τ={t} f={f:.3e}")
+         max_ztz = max(max_ztz, abs(complex(Z @ Z)))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+-        Z = sys_lr.cayley_step(Z, sig_est)
++        Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+     f_arr = np.array(f_hist)
+@@ -351,7 +352,7 @@
+     t = 0
+     for t in range(cap + 1):
+         pr_hist.append(participation_ratio(Z))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+         if t % sub == 0:
+             sig_exact = sys_lr.sigma_spectrum()
+@@ -363,10 +364,10 @@
+                 plateau_tau = t
+                 break
+         if t < cap:
+-            Z = sys_lr.cayley_step(Z, sig_est)
++            Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+-    sys_lr.set_theta(np.angle(Z))
++    sys_lr.set_state(Z)  # FIX4
+     sig = sys_lr.sigma_spectrum()
+     n_act = int(np.sum(sig / sig[0] > 0.05))
+     qv = np.linalg.lstsq(sys_lr.G, sys_lr.wt(Z), rcond=None)[0]
+@@ -409,7 +410,7 @@
+ 
+     os.makedirs(RESULT_DIR, exist_ok=True)
+     m = n * (n - 1) // 2
+-    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA}
++    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA, "angle": ANGLE}
+     print(f"=== N スケーリング測定（低ランク頂点分解） N={n}, M={m}, seed={seed} ===", flush=True)
+ 
+     if do_validate:
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N8_N9_complex_simplex_complete_analysis_20260826/run_N8_N9_complete_analysis.py fixed/N8_N9_complex_simplex_complete_analysis_20260826/run_N8_N9_complete_analysis.py
+--- ../論文v1_全再現テスト_20260828/original/N8_N9_complex_simplex_complete_analysis_20260826/run_N8_N9_complete_analysis.py	2026-08-26 01:28:56
++++ fixed/N8_N9_complex_simplex_complete_analysis_20260826/run_N8_N9_complete_analysis.py	2026-08-28 11:14:20
+@@ -67,9 +67,9 @@
+                                float(ab[k]),float(r2[k]),float(np.angle(Z[k])),
+                                float(z2.real),float(z2.imag),float(np.angle(z2)/np.pi)])
+         if t<STEPS:
+-            sys.set_theta(np.angle(Z))
++            sys.set_state(Z)  # FIX4
+             se,wp=sys.sigma_max_power(wp)
+-            Z=sys.cayley_step(Z,se)
++            Z=sys.linear_rotation_step(Z,se)
+ 
+     glob=pd.DataFrame(global_rows,columns=["step","H_total","H_parallel","H_perp","A_perp","abs_ZtZ",
+         "sum_a2","sum_b2","sum_ab","r2_min","r2_max","simplex_rank"])
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/N8_N9_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py fixed/N8_N9_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py
+--- ../論文v1_全再現テスト_20260828/original/N8_N9_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-25 23:41:00
++++ fixed/N8_N9_complex_simplex_complete_analysis_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-28 11:14:20
+@@ -42,7 +42,8 @@
+     print(f"[進捗 {time.strftime('%H:%M:%S')}] {msg}", file=sys.stderr, flush=True)
+ 
+ 
+-GAMMA = math.tan(math.pi / 144.0)
++GAMMA = math.tan(math.pi / 144.0)  # 旧 Cayley 刻み（記録用、力学には使わない）
++ANGLE = 2.0 * math.pi / 144.0    # FIX3: 線形回転の刻み角
+ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ RESULT_DIR = os.path.join(BASE_DIR, "n_scaling_result_v1")
+ 
+@@ -66,16 +67,21 @@
+         self.J[n:, :n] = -np.eye(n)
+ 
+     def set_theta(self, theta):
++        """位相のみ（|z|=1）の生成子。親の固有モード反復でのみ使用。"""
++        self.set_state(np.exp(1j * np.asarray(theta, dtype=float)))
++
++    def set_state(self, z):
++        """FIX4: 振幅込み生成子 K_ij = Im(conj(z_i) z_j) = |z_i||z_j| sin(θ_j-θ_i)（隣接辺）。c=Re z, s=Im z。"""
+         n = self.n
+-        self.c = np.cos(theta)
+-        self.s = np.sin(theta)
+-        T = np.zeros((n, n))
+-        T[self.ea, self.eb] = theta
+-        T[self.eb, self.ea] = theta
+-        CT = np.cos(T)
+-        ST = np.sin(T)
+-        np.fill_diagonal(CT, 0.0)
+-        np.fill_diagonal(ST, 0.0)
++        z = np.asarray(z, dtype=complex)
++        self.c = np.real(z).copy()
++        self.s = np.imag(z).copy()
++        CT = np.zeros((n, n))
++        ST = np.zeros((n, n))
++        CT[self.ea, self.eb] = self.c
++        CT[self.eb, self.ea] = self.c
++        ST[self.ea, self.eb] = self.s
++        ST[self.eb, self.ea] = self.s
+         Gcc = CT * CT
+         Gcs = CT * ST
+         Gss = ST * ST
+@@ -131,16 +137,17 @@
+         sig = np.linalg.norm(self.kmatvec(wp))
+         return float(sig), wp
+ 
+-    def cayley_step(self, z, sigma):
+-        """z ← (I-γK)^{-1}(I+γK) z。K/σ 正規化なし。Woodbury で O(N^3)。"""
+-        gn = GAMMA
+-        r = z + gn * self.kmatvec(z)
+-        A2 = (1.0 / GAMMA) * self.J + self.G
+-        rhs = self.wt(r)
+-        y = np.linalg.solve(A2, rhs)
+-        return r - self.w(y)
++    def dense_K(self):
++        """現在の状態（set_state）の振幅込み生成子 K を密行列で返す（M×M、実反対称）。"""
++        return np.column_stack([self.kmatvec(e) for e in np.eye(self.m)])
+ 
++    def linear_rotation_step(self, z, sigma):
++        """FIX3: z ← exp(ANGLE·K) z。厳密な線形回転（実直交）。K/σ 正規化なし。"""
++        K = self.dense_K()
++        w, V = np.linalg.eigh(1j * K)
++        return V @ (np.exp(-1j * ANGLE * w) * (V.conj().T @ z))
+ 
++
+ def participation_ratio(z):
+     a2 = np.abs(z) ** 2
+     return float(np.sum(a2) ** 2 / np.sum(a2 * a2))
+@@ -168,8 +175,7 @@
+             sys_lr.set_theta(theta)
+             ev, EV = np.linalg.eig(sys_lr.J @ sys_lr.G)
+             idx = int(np.argmin(ev.imag))  # λ = -iσ_max
+-            v = sys_lr.w(EV[:, idx].astype(complex))
+-            v = v / np.linalg.norm(v)
++            v = sys_lr.w(EV[:, idx].astype(complex))  # FIX1: 振幅正規化を除去
+             theta_new = np.angle(v)
+             mix = (1.0 - beta) * np.exp(1j * theta) + beta * np.exp(1j * theta_new)
+             theta = np.angle(mix)
+@@ -211,7 +217,7 @@
+     Y = Y - (X @ Y) / (X @ X) * X
+     Y = Y * (np.linalg.norm(X) / np.linalg.norm(Y))
+     Z = X + 1j * Y
+-    return Z / np.linalg.norm(Z)
++    return Z  # FIX1/2: 正規化を除去
+ 
+ 
+ # ---------------- 検証（密行列との一致） ----------------
+@@ -230,9 +236,8 @@
+         A[i, share] = 1.0
+     np.fill_diagonal(A, 0.0)
+ 
+-    theta0 = np.angle(Z)
+-    sys_lr.set_theta(theta0)
+-    Kd = A * np.sin(theta0[None, :] - theta0[:, None])
++    sys_lr.set_state(Z)
++    Kd = A * np.imag(np.conj(Z)[:, None] * Z[None, :])  # FIX4: 振幅込み
+ 
+     err_matvec = np.linalg.norm(sys_lr.kmatvec(Z) - Kd @ Z) / np.linalg.norm(Kd @ Z)
+ 
+@@ -253,16 +258,14 @@
+     Z_d = Z.copy()
+     dev = 0.0
+     for _ in range(steps):
+-        sys_lr.set_theta(np.angle(Z_lr))
++        sys_lr.set_state(Z_lr)
+         sig = sys_lr.sigma_spectrum()[0]
+-        Z_lr = sys_lr.cayley_step(Z_lr, sig)
++        Z_lr = sys_lr.linear_rotation_step(Z_lr, sig)
+ 
+-        th = np.angle(Z_d)
+-        Kd = A * np.sin(th[None, :] - th[:, None])
+-        sd = np.linalg.norm(Kd, 2)
+-        Kn = Kd / sd
+-        I = np.eye(m)
+-        Z_d = np.linalg.solve(I - GAMMA * Kn, (I + GAMMA * Kn) @ Z_d)
++        Kd = A * np.imag(np.conj(Z_d)[:, None] * Z_d[None, :])  # FIX4
++        wd, Vd = np.linalg.eigh(1j * Kd)
++        ang = (ANGLE / np.linalg.norm(Kd, 2)) if False else ANGLE
++        Z_d = Vd @ (np.exp(-1j * ang * wd) * (Vd.conj().T @ Z_d))  # FIX3
+         dev = max(dev, float(np.max(np.abs(Z_lr - Z_d))))
+     return {
+         "steps": steps,
+@@ -282,9 +285,7 @@
+     v, residual, sig = make_parent(sys_lr, rng)
+     t_parent = time.time() - t0
+ 
+-    g = zero_closure_kernel_seed(sys_lr, rng)
+-    Z = v + delta * g
+-    Z = Z / np.linalg.norm(Z)
++    Z = v.copy()  # FIX2: 外部 seed と正規化を除去（seedless、親そのもの）
+     ztz0 = complex(Z @ Z)
+ 
+     p = v.real / np.linalg.norm(v.real)
+@@ -308,9 +309,9 @@
+         if t % 200 == 0 and t > 0:
+             progress(f"開始率走行 τ={t} f={f:.3e}")
+         max_ztz = max(max_ztz, abs(complex(Z @ Z)))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+-        Z = sys_lr.cayley_step(Z, sig_est)
++        Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+     f_arr = np.array(f_hist)
+@@ -351,7 +352,7 @@
+     t = 0
+     for t in range(cap + 1):
+         pr_hist.append(participation_ratio(Z))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+         if t % sub == 0:
+             sig_exact = sys_lr.sigma_spectrum()
+@@ -363,10 +364,10 @@
+                 plateau_tau = t
+                 break
+         if t < cap:
+-            Z = sys_lr.cayley_step(Z, sig_est)
++            Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+-    sys_lr.set_theta(np.angle(Z))
++    sys_lr.set_state(Z)  # FIX4
+     sig = sys_lr.sigma_spectrum()
+     n_act = int(np.sum(sig / sig[0] > 0.05))
+     qv = np.linalg.lstsq(sys_lr.G, sys_lr.wt(Z), rcond=None)[0]
+@@ -409,7 +410,7 @@
+ 
+     os.makedirs(RESULT_DIR, exist_ok=True)
+     m = n * (n - 1) // 2
+-    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA}
++    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA, "angle": ANGLE}
+     print(f"=== N スケーリング測定（低ランク頂点分解） N={n}, M={m}, seed={seed} ===", flush=True)
+ 
+     if do_validate:
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/complex_simplex_decompactification_N5_N16_20260826/run_complex_simplex_decompactification.py fixed/complex_simplex_decompactification_N5_N16_20260826/run_complex_simplex_decompactification.py
+--- ../論文v1_全再現テスト_20260828/original/complex_simplex_decompactification_N5_N16_20260826/run_complex_simplex_decompactification.py	2026-08-25 20:52:56
++++ fixed/complex_simplex_decompactification_N5_N16_20260826/run_complex_simplex_decompactification.py	2026-08-28 11:14:20
+@@ -127,9 +127,9 @@
+         raw_rows.append(raw)
+ 
+         if t < STEPS:
+-            syslr.set_theta(np.angle(Z))
++            syslr.set_state(Z)  # FIX4
+             se, wp = syslr.sigma_max_power(wp)
+-            Z = syslr.cayley_step(Z,se)
++            Z = syslr.linear_rotation_step(Z,se)
+ 
+     full_axes=np.asarray(full_axes)
+     par_axes=np.asarray(par_axes)
+@@ -170,8 +170,8 @@
+     Rrate,R0,R1,Rcount=fit_rate(gdf['R_perp_takagi'].to_numpy())
+ 
+     summary={
+-        'N':n,'M':m,'steps':STEPS,'seed':SEED,'gamma':float(eng.GAMMA),
+-        'physics':'raw K Cayley; K/sigma normalization removed',
++        'N':n,'M':m,'steps':STEPS,'seed':SEED,'gamma':float(eng.GAMMA),'angle':float(eng.ANGLE),
++        'physics':'amplitude-aware K, exact linear rotation exp(ANGLE K), no normalization (FIX1-4)',
+         'parent_residual':float(residual),
+         'parent_sigma_spectrum':[float(x) for x in sig_parent],
+         'max_abs_ztz':float(gdf.abs_ztz.max()),
+diff -ru -x _ ../論文v1_全再現テスト_20260828/original/complex_simplex_decompactification_N5_N16_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py fixed/complex_simplex_decompactification_N5_N16_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py
+--- ../論文v1_全再現テスト_20260828/original/complex_simplex_decompactification_N5_N16_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-25 19:15:14
++++ fixed/complex_simplex_decompactification_N5_N16_20260826/run_n_scaling_lowrank_v1_no_sigma_norm.py	2026-08-28 11:14:20
+@@ -42,7 +42,8 @@
+     print(f"[進捗 {time.strftime('%H:%M:%S')}] {msg}", file=sys.stderr, flush=True)
+ 
+ 
+-GAMMA = math.tan(math.pi / 144.0)
++GAMMA = math.tan(math.pi / 144.0)  # 旧 Cayley 刻み（記録用、力学には使わない）
++ANGLE = 2.0 * math.pi / 144.0    # FIX3: 線形回転の刻み角
+ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ RESULT_DIR = os.path.join(BASE_DIR, "n_scaling_result_v1")
+ 
+@@ -66,16 +67,21 @@
+         self.J[n:, :n] = -np.eye(n)
+ 
+     def set_theta(self, theta):
++        """位相のみ（|z|=1）の生成子。親の固有モード反復でのみ使用。"""
++        self.set_state(np.exp(1j * np.asarray(theta, dtype=float)))
++
++    def set_state(self, z):
++        """FIX4: 振幅込み生成子 K_ij = Im(conj(z_i) z_j) = |z_i||z_j| sin(θ_j-θ_i)（隣接辺）。c=Re z, s=Im z。"""
+         n = self.n
+-        self.c = np.cos(theta)
+-        self.s = np.sin(theta)
+-        T = np.zeros((n, n))
+-        T[self.ea, self.eb] = theta
+-        T[self.eb, self.ea] = theta
+-        CT = np.cos(T)
+-        ST = np.sin(T)
+-        np.fill_diagonal(CT, 0.0)
+-        np.fill_diagonal(ST, 0.0)
++        z = np.asarray(z, dtype=complex)
++        self.c = np.real(z).copy()
++        self.s = np.imag(z).copy()
++        CT = np.zeros((n, n))
++        ST = np.zeros((n, n))
++        CT[self.ea, self.eb] = self.c
++        CT[self.eb, self.ea] = self.c
++        ST[self.ea, self.eb] = self.s
++        ST[self.eb, self.ea] = self.s
+         Gcc = CT * CT
+         Gcs = CT * ST
+         Gss = ST * ST
+@@ -131,16 +137,17 @@
+         sig = np.linalg.norm(self.kmatvec(wp))
+         return float(sig), wp
+ 
+-    def cayley_step(self, z, sigma):
+-        """z ← (I-γK)^{-1}(I+γK) z。K/σ 正規化なし。Woodbury で O(N^3)。"""
+-        gn = GAMMA
+-        r = z + gn * self.kmatvec(z)
+-        A2 = (1.0 / GAMMA) * self.J + self.G
+-        rhs = self.wt(r)
+-        y = np.linalg.solve(A2, rhs)
+-        return r - self.w(y)
++    def dense_K(self):
++        """現在の状態（set_state）の振幅込み生成子 K を密行列で返す（M×M、実反対称）。"""
++        return np.column_stack([self.kmatvec(e) for e in np.eye(self.m)])
+ 
++    def linear_rotation_step(self, z, sigma):
++        """FIX3: z ← exp(ANGLE·K) z。厳密な線形回転（実直交）。K/σ 正規化なし。"""
++        K = self.dense_K()
++        w, V = np.linalg.eigh(1j * K)
++        return V @ (np.exp(-1j * ANGLE * w) * (V.conj().T @ z))
+ 
++
+ def participation_ratio(z):
+     a2 = np.abs(z) ** 2
+     return float(np.sum(a2) ** 2 / np.sum(a2 * a2))
+@@ -168,8 +175,7 @@
+             sys_lr.set_theta(theta)
+             ev, EV = np.linalg.eig(sys_lr.J @ sys_lr.G)
+             idx = int(np.argmin(ev.imag))  # λ = -iσ_max
+-            v = sys_lr.w(EV[:, idx].astype(complex))
+-            v = v / np.linalg.norm(v)
++            v = sys_lr.w(EV[:, idx].astype(complex))  # FIX1: 振幅正規化を除去
+             theta_new = np.angle(v)
+             mix = (1.0 - beta) * np.exp(1j * theta) + beta * np.exp(1j * theta_new)
+             theta = np.angle(mix)
+@@ -211,7 +217,7 @@
+     Y = Y - (X @ Y) / (X @ X) * X
+     Y = Y * (np.linalg.norm(X) / np.linalg.norm(Y))
+     Z = X + 1j * Y
+-    return Z / np.linalg.norm(Z)
++    return Z  # FIX1/2: 正規化を除去
+ 
+ 
+ # ---------------- 検証（密行列との一致） ----------------
+@@ -230,9 +236,8 @@
+         A[i, share] = 1.0
+     np.fill_diagonal(A, 0.0)
+ 
+-    theta0 = np.angle(Z)
+-    sys_lr.set_theta(theta0)
+-    Kd = A * np.sin(theta0[None, :] - theta0[:, None])
++    sys_lr.set_state(Z)
++    Kd = A * np.imag(np.conj(Z)[:, None] * Z[None, :])  # FIX4: 振幅込み
+ 
+     err_matvec = np.linalg.norm(sys_lr.kmatvec(Z) - Kd @ Z) / np.linalg.norm(Kd @ Z)
+ 
+@@ -253,16 +258,14 @@
+     Z_d = Z.copy()
+     dev = 0.0
+     for _ in range(steps):
+-        sys_lr.set_theta(np.angle(Z_lr))
++        sys_lr.set_state(Z_lr)
+         sig = sys_lr.sigma_spectrum()[0]
+-        Z_lr = sys_lr.cayley_step(Z_lr, sig)
++        Z_lr = sys_lr.linear_rotation_step(Z_lr, sig)
+ 
+-        th = np.angle(Z_d)
+-        Kd = A * np.sin(th[None, :] - th[:, None])
+-        sd = np.linalg.norm(Kd, 2)
+-        Kn = Kd / sd
+-        I = np.eye(m)
+-        Z_d = np.linalg.solve(I - GAMMA * Kn, (I + GAMMA * Kn) @ Z_d)
++        Kd = A * np.imag(np.conj(Z_d)[:, None] * Z_d[None, :])  # FIX4
++        wd, Vd = np.linalg.eigh(1j * Kd)
++        ang = (ANGLE / np.linalg.norm(Kd, 2)) if False else ANGLE
++        Z_d = Vd @ (np.exp(-1j * ang * wd) * (Vd.conj().T @ Z_d))  # FIX3
+         dev = max(dev, float(np.max(np.abs(Z_lr - Z_d))))
+     return {
+         "steps": steps,
+@@ -282,9 +285,7 @@
+     v, residual, sig = make_parent(sys_lr, rng)
+     t_parent = time.time() - t0
+ 
+-    g = zero_closure_kernel_seed(sys_lr, rng)
+-    Z = v + delta * g
+-    Z = Z / np.linalg.norm(Z)
++    Z = v.copy()  # FIX2: 外部 seed と正規化を除去（seedless、親そのもの）
+     ztz0 = complex(Z @ Z)
+ 
+     p = v.real / np.linalg.norm(v.real)
+@@ -308,9 +309,9 @@
+         if t % 200 == 0 and t > 0:
+             progress(f"開始率走行 τ={t} f={f:.3e}")
+         max_ztz = max(max_ztz, abs(complex(Z @ Z)))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+-        Z = sys_lr.cayley_step(Z, sig_est)
++        Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+     f_arr = np.array(f_hist)
+@@ -351,7 +352,7 @@
+     t = 0
+     for t in range(cap + 1):
+         pr_hist.append(participation_ratio(Z))
+-        sys_lr.set_theta(np.angle(Z))
++        sys_lr.set_state(Z)  # FIX4
+         sig_est, wp = sys_lr.sigma_max_power(wp)
+         if t % sub == 0:
+             sig_exact = sys_lr.sigma_spectrum()
+@@ -363,10 +364,10 @@
+                 plateau_tau = t
+                 break
+         if t < cap:
+-            Z = sys_lr.cayley_step(Z, sig_est)
++            Z = sys_lr.linear_rotation_step(Z, sig_est)  # FIX3
+     t_run = time.time() - t0
+ 
+-    sys_lr.set_theta(np.angle(Z))
++    sys_lr.set_state(Z)  # FIX4
+     sig = sys_lr.sigma_spectrum()
+     n_act = int(np.sum(sig / sig[0] > 0.05))
+     qv = np.linalg.lstsq(sys_lr.G, sys_lr.wt(Z), rcond=None)[0]
+@@ -409,7 +410,7 @@
+ 
+     os.makedirs(RESULT_DIR, exist_ok=True)
+     m = n * (n - 1) // 2
+-    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA}
++    out = {"n": n, "m": m, "seed": seed, "gamma": GAMMA, "angle": ANGLE}
+     print(f"=== N スケーリング測定（低ランク頂点分解） N={n}, M={m}, seed={seed} ===", flush=True)
+ 
+     if do_validate:
