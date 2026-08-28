@@ -5,6 +5,7 @@
 入力列: data/treatment_linear124_amplitude_aware_timeseries.csv の H_perp, H_total（H⊥ は直交成分の直接計算）。
 出力: figures/compare_N_L1000_5000.png, figures/compare_N_L124_40000.png, figures/compare_N_both.png, results.json"""
 import os, json, numpy as np, pandas as pd, matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
+plt.rcParams.update({"font.family":"Hiragino Sans","font.size":11})  # 日本語題名の文字化け防止
 H=os.path.dirname(os.path.abspath(__file__)); P=os.path.dirname(H)
 SETS={"L1000_5000":{N:f"N{N}_linear1000_steps5000_equimodular_selfconsistent_directHperp_20260828" for N in (5,10,16)},
       "L124_40000":{N:f"N{N}_linear124_equimodular_selfconsistent_directHperp_treatment_only_20260828" for N in (5,10,16)}}
