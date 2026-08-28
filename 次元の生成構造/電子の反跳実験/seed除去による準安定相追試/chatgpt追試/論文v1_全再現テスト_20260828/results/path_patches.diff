@@ -1,0 +1,48 @@
+--- a/N5_complex_simplex_complete_analysis_20260826/run_N5_physical_phase_step_test.py	2026-08-25 23:41:22
++++ b/N5_complex_simplex_complete_analysis_20260826/run_N5_physical_phase_step_test.py	2026-08-28 10:42:51
+@@ -4,9 +4,9 @@
+ from fractions import Fraction
+ import matplotlib.pyplot as plt
+ 
+-base=Path("/mnt/data")
++base=Path(__file__).resolve().parent  # PATH PATCH: was Path("/mnt/data")
+ engine_path=base/"run_n_scaling_lowrank_v1_no_sigma_norm.py"
+-OUT=base/"N5_physical_phase_step_test"
++OUT=base  # PATH PATCH: was base/"N5_physical_phase_step_test" (original outputs sit at package root)
+ OUT.mkdir(exist_ok=True)
+ spec=importlib.util.spec_from_file_location("engraw",engine_path)
+ eng=importlib.util.module_from_spec(spec); spec.loader.exec_module(eng)
+--- a/N3_N16_partial_zero_closure_analysis_20260826/analyze_partial_zero_closures_N3_N16.py	2026-08-26 01:53:22
++++ b/N3_N16_partial_zero_closure_analysis_20260826/analyze_partial_zero_closures_N3_N16.py	2026-08-28 10:42:51
+@@ -4,8 +4,8 @@
+ import pandas as pd
+ import matplotlib.pyplot as plt
+ 
+-BASE=Path('/mnt/data')
+-OUT=BASE/'N3_N16_partial_zero_closure_analysis_20260826'
++BASE=Path(__file__).resolve().parent.parent  # PATH PATCH: was Path('/mnt/data') (sibling packages)
++OUT=Path(__file__).resolve().parent/'out'  # PATH PATCH: was BASE/'N3_N16_partial_zero_closure_analysis_20260826' (would rmtree this package)
+ if OUT.exists(): shutil.rmtree(OUT)
+ OUT.mkdir()
+ 
+--- a/N14_N16_complete_nontrivial_zero_closure_search_20260826/mitm56.py	2026-08-26 02:59:02
++++ b/N14_N16_complete_nontrivial_zero_closure_search_20260826/mitm56.py	2026-08-28 10:42:52
+@@ -1,7 +1,7 @@
+ import pandas as pd,numpy as np,itertools,math,sys,time
+ from scipy.spatial import cKDTree
+ N=int(sys.argv[1]); out=sys.argv[2]
+-df=pd.read_csv(f'/mnt/data/N3_N16_partial_zero_closure_analysis_20260826/SOURCE_N{N}_step5000_final_edges.csv')
++df=pd.read_csv(f'{__import__("os").path.dirname(__import__("os").path.abspath(__file__))}/../N3_N16_partial_zero_closure_analysis_20260826/SOURCE_N{N}_step5000_final_edges.csv')  # PATH PATCH: was /mnt/data/...
+ z=df.z2_re.to_numpy()+1j*df.z2_im.to_numpy(); n=len(z); absz=np.abs(z)
+ def comb_array(n,k):
+  return np.fromiter((x for c in itertools.combinations(range(n),k) for x in c),dtype=np.int16,count=math.comb(n,k)*k).reshape(-1,k)
+--- a/N14_N16_complete_nontrivial_zero_closure_search_20260826/refine_subset.py	2026-08-26 03:00:18
++++ b/N14_N16_complete_nontrivial_zero_closure_search_20260826/refine_subset.py	2026-08-28 10:42:52
+@@ -1,6 +1,6 @@
+ import pandas as pd,numpy as np,sys,itertools
+ N=int(sys.argv[1]); edgestr=sys.argv[2]
+-df=pd.read_csv(f'/mnt/data/N3_N16_partial_zero_closure_analysis_20260826/SOURCE_N{N}_step5000_final_edges.csv')
++df=pd.read_csv(f'{__import__("os").path.dirname(__import__("os").path.abspath(__file__))}/../N3_N16_partial_zero_closure_analysis_20260826/SOURCE_N{N}_step5000_final_edges.csv')  # PATH PATCH: was /mnt/data/...
+ q=df.z2_re.to_numpy()+1j*df.z2_im.to_numpy(); w=np.abs(q); mp={(int(r.i),int(r.j)):i for i,r in df.iterrows()}
+ S=set(mp[tuple(map(int,e.split('-')))] for e in edgestr.split(';') if e)
+ def rr(S): idx=np.array(sorted(S)); return abs(q[idx].sum())/w[idx].sum()
