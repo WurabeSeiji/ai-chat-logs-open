@@ -122,7 +122,8 @@
 - **Concept DOI**：[10.5281/zenodo.22112008](https://doi.org/10.5281/zenodo.22112008)（維持）／**v2 DOI**：[10.5281/zenodo.22176949](https://doi.org/10.5281/zenodo.22176949)（v1 22112009 の訂正版）
 - **内容**：v1 の全プログラムを原本まで遡って再実行・監査。数値結果は無変更で再現するが、隠れた振幅正規化（make_parent の v/‖v‖、位相のみ相互作用）・Cayley 有理写像・非自己無撞着な初期状態の 3 点を訂正。主張 3 つ：閉塞は定理（110 親で検証）／複素シンプレックスは制約を与えない（Takagi、乱数 1400 状態）／修正後もインフレーション的発展（線形不安定性＋非線形飽和）は再現するが成長率は 10〜30 分の 1・飽和後は局在・発生は N でなく初期状態の構造で決まる（4 生成法 × N=3〜16、54 走行、走行前予測 53/54）。高対称系列に奇偶非対称。v1 の主張を維持／修正／撤回で表化、新解釈なし
 - **形式**：md（日英）+ tex（日英）+ pdf（日英・ja 22p/en 21p）+ 図バンドル v2（11 枚）+ 新規再現パッケージ zip 14 点（v1 の 21 ファイルは継承）= 36 ファイル
-- **Zenn**：[記事を v2 の内容に全面書き換え](https://zenn.dev/noriaki_kihara/articles/self-consistent-inflation-mechanism)（公開反映は要確認）
+- **note（日本語）**：https://note.com/kiharanoriaki/n/n0b5cc8dbcee5 ／**note（英語）**：https://note.com/kiharanoriaki/n/na53b0313ef06（2026-08-30 公開、v1 記事のバージョンアップ）
+- **Zenn**：[記事を v2 の内容に全面書き換え](https://zenn.dev/noriaki_kihara/articles/self-consistent-inflation-mechanism)（投稿上限のため未公開、放置）
 - **詳細**：`次元の生成構造/RELEASE_NOTES_nbody_self_consistent_inflation_mechanism_v2.md`
 
 ### 2026-08-26: 次元の生成構造 第8論文続編「自己無撞着な関係波閉鎖系におけるインフレーション的急拡大の機構」新規公開

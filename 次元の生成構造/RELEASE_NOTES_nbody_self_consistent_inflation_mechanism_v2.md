@@ -9,6 +9,11 @@ Release date: 2026-08-30
 - Zenodo record: https://zenodo.org/records/22176949
 - 訂正対象 v1: https://doi.org/10.5281/zenodo.22112009（2026-08-27 公開。レコードとファイルはそのまま保存）
 
+## note（一般向け、v1 記事のバージョンアップ）
+
+- 日本語: https://note.com/kiharanoriaki/n/n0b5cc8dbcee5 （2026-08-30 公開。v1 記事 n07c3e4c97e3a の第 2 版）
+- 英語: https://note.com/kiharanoriaki/n/na53b0313ef06 （2026-08-30 公開。v1 英語記事 nf2549985b38a の第 2 版）
+
 ## Zenn
 
 - 記事（全面書き換え、v2 の内容）: https://zenn.dev/noriaki_kihara/articles/self-consistent-inflation-mechanism （v1 時点の push は Zenn の投稿数上限で未公開のままだった。v2 push 後に 200 を要確認）
