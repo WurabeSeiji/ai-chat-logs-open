@@ -1,12 +1,12 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 \documentclass[
+  10pt,
   a4paper,
 ]{ltjsarticle}
 \usepackage{xcolor}
-\usepackage[margin=25mm]{geometry}
+\usepackage[margin=22mm]{geometry}
 \usepackage{amsmath,amssymb}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usepackage{iftex}
@@ -22,6 +22,9 @@
 \usepackage{lmodern}
 \ifPDFTeX\else
   % xetex/luatex font selection
+  \setmainfont[]{Hiragino Mincho ProN}
+  \setsansfont[]{Hiragino Sans}
+  \setmonofont[]{Menlo}
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -39,44 +42,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\newenvironment{Shaded}{}{}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
-\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
-\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
 \newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
@@ -110,2154 +75,1233 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={自己無撞着な関係波閉鎖系におけるインフレーション的急拡大の機構------正規化監査、rank 生成、二乗閉包保存、simplex 対称化および公理系の再構成},
+  pdftitle={自己無撞着な関係波閉鎖系におけるインフレーション的急拡大の機構------第 2 版：計算条件の訂正と N=3〜16 の再検証},
   pdfauthor={木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020},
-  colorlinks=true,
-  linkcolor={Maroon},
-  filecolor={Maroon},
-  citecolor={Blue},
-  urlcolor={Blue},
+  hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{自己無撞着な関係波閉鎖系におけるインフレーション的急拡大の機構------正規化監査、rank
-生成、二乗閉包保存、simplex 対称化および公理系の再構成}
+\title{自己無撞着な関係波閉鎖系におけるインフレーション的急拡大の機構------第
+2 版：計算条件の訂正と N=3〜16 の再検証}
 \author{木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020}
-\date{2026年8月26日　Version DOI 10.5281/zenodo.22112009}
+\date{2026年8月30日　Version DOI 10.5281/zenodo.22176949}
 
 \begin{document}
 \maketitle
 
-\textbf{Version DOI:}
-\href{https://doi.org/10.5281/zenodo.22112009}{10.5281/zenodo.22112009}\\
-\textbf{Concept DOI:}
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\textbf{著者:} 木原 範昭（WF System Co., Ltd.）　\textbf{日付:}
+2026-08-30 \textbf{Version DOI:}
+\href{https://doi.org/10.5281/zenodo.22176949}{10.5281/zenodo.22176949}　\textbf{Concept
+DOI:}
 \href{https://doi.org/10.5281/zenodo.22112008}{10.5281/zenodo.22112008}
+\textbf{訂正対象:} 第 1 版 Version DOI
+\href{https://doi.org/10.5281/zenodo.22112009}{10.5281/zenodo.22112009}（2026-08-27
+公開。以下「v1」）
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \subsection{要旨}\label{ux8981ux65e8}
 
-先行研究では、外部seedを除去したN体関係波閉鎖系でも、長い潜伏過程の後に親平面外成分が指数的に増大し、rank-4および三方向的読出しを経て準安定構造へ移行することを報告した。本研究は、その開始・保存・飽和・幾何秩序化を、コード監査、\(N=3,\ldots,16\)
-の再検証、およびN=5の線形安定性追試によって再構成する。
+本稿は v1 の訂正版である。v1
+の引用する全プログラムを原本まで遡って再実行・監査した結果、v1
+の数値結果は公開プログラムから無変更で再現する一方、そのプログラムに理論と食い違う計算条件が
+3 点あった：(1) 初期化 \texttt{make\_parent}
+と相互作用の内部に残っていた\textbf{隠れた振幅正規化}、(2)
+時間発展に用いていた Cayley
+変換（\textbf{凍結生成子の有理近似}。固有位相応答が
+\(2\arctan(\gamma\sigma)\) に歪む）、(3)
+乱数から作った初期状態が修正後の力学では\textbf{自己無撞着でない}こと。本稿はこの
+3 点を、(1) 正規化の全面除去と振幅込み相互作用
+\(K_{ij}=\mathrm{Im}(\bar z_i z_j)\)、(2)
+各刻みで生成子を凍結した厳密直交の指数回転 \(\exp(\Delta K)\)（連続流
+\(dv/d\tau=K(v)v\)
+の、ノルムと閉塞を厳密に保存する一次積分器。以下「線形回転」）、(3)
+厳密な自己無撞着解による初期化（等モジュラー制約あり／なしの 2
+系統）、に置き換えて \(N=3\)〜16 を再検証した。
 
-第一に、実反対称生成子 \(K_t\) の Cayley 更新
-
-\[
-C_t=(I-\gamma K_t)^{-1}(I+\gamma K_t)
-\]
-
-は実直交行列であるため、\(Z^\dagger Z\) と \(Z^T Z\) は exact arithmetic
-で厳密保存される。従来「数値的に保存」と記述していた二乗ゼロ閉包は運動学的定理へ格上げされ、急拡大は外部注入ではなく
-\(H_\parallel\) から \(H_\perp\)
-への内部移送であり、\(H_\perp\le H_{\rm total}\) が無限増大を禁止する。
-
-第二に、N=5の \texttt{make\_parent} 固定点残差を \(3.87\times10^{-7}\)
-から \(2.38\times10^{-13}\) まで変化させると、onset step は 72, 134,
-176, 238 と遅延する一方、指数成長率は約 \(0.17251\)/step
-に保たれた。実際の固定点残差を説明変数とした回帰は
-
-\[
-t_{\rm onset}=11.6162[-\ln\varepsilon_{\rm parent}]-99.5631,
-\qquad R^2=0.999992
-\]
-
-である。さらに rotating-frame Jacobian は、支配的な不安定実2重固有値
-\(\mu_1=1.090086569\) と、それより弱い第2の実2重固有値
-\(\mu_2=1.052603212\) を持つ。支配固有値からの予測
-
-\[
-2\ln|\mu_1|=0.172514229
-\]
-
-は直接測定した \(H_\perp\) 成長率と一致し、
-
-\[
-1/\ln|\mu_1|=11.5932
-\]
-
-は onset--残差回帰の傾き 11.6162
-と一致する。独立な時間発展、tol掃引、線形化スペクトルが同一の支配固有値で整合することが、本研究の主要な定量結果である。数値スペクトルでは支配乗数
-\(\mu_1\)
-は実2重固有値として現れ、その実2次元固有空間が最速不安定空間を与える。したがって、親rank-2に支配不安定実2次元が加わることでrank-4の初期選択を定量的に説明できる。全20乗数には明瞭な対構造が観測されるが、その2重性の対称性起源を解析的に確定するには
-Jacobian と複素構造の可換性を別途示す必要がある。
-
-第三に、全頂点starの局所二乗閉包は、重心表示された複素simplexの全頂点が双線形ヌル錐上にあることと同値である。準安定時の等モジュラス化と合わせると、最終幾何は
-\textbf{equimodular null complex simplex}
-として統一的に記述できる。\(N=3\)〜16でcomplex Gram rank \(N-1\)
-を確認した。
-
-第四に、N=4の3位相群の120\(^\circ\)分離は局所閉包と等モジュラスから厳密に導出される。N=5では
-\(3+3+2+2\) の符号対構造から、非自明2辺閉包数
-
-\[
-3\times3+2\times2=13
-\]
-
-および10辺を5つのゼロ対へ完全分割する exact cover 数
-
-\[
-3!\,2!=12
-\]
-
-が組合せ論的に導出される。8-seed掃引では \(3+3+2+2\)
-と等モジュラスは全runで再現した一方、二距離族間の相対位相は一意に固定されず、平坦方向の存在を示唆した。
-
-第五に、従来の公理系は修正される。自己無撞着固定点から複素回転構造、\(\sum z_m^2=0\)、compact
-\(S^1\) phase orbit までは導出できるが、\(U^n=I\) には
-\(\Delta\theta/2\pi\in\mathbb Q\) を選ぶ rational phase-locking
-機構が別途必要である。また \(K/\sigma_{\max}\) 正規化は同一状態で Cayley
-step
-の再尺度化と厳密に対応する。有限stepで観測された累積位相あたり成長率の約6.8\%差は、独立な刻み細分化系列
-\(g(n)=g_\infty+c/n\)（\(g_\infty=1.15963\),
-\(c=-4.105\)）で定量的に説明される。raw-\(K\) の平均
-\(\bar\sigma\simeq3.49\) から \(n_{\rm eff}\simeq41.2\) と見積もると
-\(g_{\rm pred}=1.0600\) で、実測 \(1.05874\)
-と0.13\%以内で一致する。したがって両更新は同一の連続極限へ収束し、正規化が急拡大を人工的に生成した可能性は、Cayley恒等式と刻み収束の双方から排除される。
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{1. はじめに}\label{ux306fux3058ux3081ux306b}
-
-本研究シリーズでは、\(N\) 個の存在と、その全二体関係
-
-\[
-M=\frac{N(N-1)}2
-\]
-
-を関係波として扱う閉鎖系を数値的に研究してきた。従来は基礎条件として、
-
-\[
-\sum_m z_m^2=0
-\]
-
-という非自明二乗ゼロ閉包と、
-
-\[
-U^n=I
-\]
-
-という有限回帰性を公理として置き、その上で有限閉鎖系、位相、方向、相互作用、量子化の可能性を検討してきた。
-
-先行研究 {[}K8{]}
-では、外部seedを段階的に除去しても、系が長い潜伏過程の後に幾何級数的な急拡大を起こし、急拡大中に方向部分空間が回転・混合し、最終的に三方向的な準安定構造へ移行することを確認した。したがって「seedが無ければ急拡大しない」という単純な説明は否定された。
-
-しかし同研究では、次の問題が未解明として残った。
+主張は 3 つである。
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  なぜ急拡大が開始するのか。
+  \textbf{ゼロ閉塞 \(\sum_m z_m^2=0\) は公理ではなく定理である。}
+  生成子が実反対称で、状態がその非零固有モード（自己無撞着）でありさえすれば、正規化・振幅分布・\(N\)・親の生成法に依らず閉塞は成立する（証明
+  5 行。4 生成法 54 親と旧 4 系統 56 親の step 0 で
+  \(|\sum z^2|/H\le 10^{-13}\)、40000 step の走行中も
+  \(\le 5\times10^{-13}\)）。v1 §6・§24
+  の導出はこの意味で正しく、本稿はその射程（何にも依らないこと）を確定する。
 \item
-  実際に何が急拡大しているのか。
+  \textbf{複素シンプレックスは幾何に制約を与えない。}
+  実シンプレックスでは 2
+  乗距離が半正定値条件（Schoenberg）を満たす必要があるが、複素対称行列は常に
+  Takagi 分解を持つため、\textbf{任意の}複素 2 乗距離の組が \(N-1\)
+  次元複素空間に厳密に埋め込める。乱数状態 1400 個（\(N=3\)〜16 ×
+  100）の全てが誤差 \(10^{-15}\) で埋め込まれ rank \(N-1\)
+  を持つのに対し、実の読み方では \(N\ge6\) で 100 個中 0
+  個しか埋め込めない。複素シンプレックスは状態から各関係の符号
+  \(z_e\to-z_e\)
+  を忘れた像（\(v/(\mathbb Z_2)^M\)）であり、選択原理ではない。閉塞が可能なのは複素化で正値性を捨てたからである。
 \item
-  rank-4 はいつ、どこから現れるのか。
-\item
-  なぜ急拡大は停止するのか。
-\item
-  なぜ方向が生成されるのか。
-\item
-  初期化や時間発展に含まれる数値正規化・刻みが現象を作っていないか。
-\item
-  従来の二公理 \(\sum z^2=0\) と \(U^n=I\)
-  は本当に独立な入力公理なのか。
+  \textbf{計算条件の変更はインフレーション的発展に少なくない影響を与えたが、インフレーション的発展そのものは再現した。}
+  修正後の力学でも、自己無撞着で不安定な初期状態からは計算精度の底（倍精度で
+  \(10^{-32}\)。多倍長ではさらに深く、底は物理でなく精度と親残差が決める）から指数成長し飽和する。本稿で確認したのは、自己無撞着な相対平衡のうち線形不安定なものが任意に小さい摂動（親残差・丸め誤差）を指数増幅して非線形飽和すること------すなわち線形不安定性とその飽和------であり、摂動源を含む「開始機構」ではない。成長率は
+  v1 の \(0.17\)〜\(0.25\)/step から \(0.006\)〜\(0.022\)/step へ 10〜30
+  倍遅くなり、飽和後の状態は v1 の等分配（PR/M
+  \(=1\)）ではなく少数の関係への局在（PR/M
+  \(=0.05\)〜0.31）になる。高対称な初期状態の系列（1-因子分解／距離クラス構成、等モジュラーとその振幅変形）では
+  \(N=6,8,\dots,16\) が全て飽和し \(N=5,7,\dots,15\) が全て床（\(N=3,4\)
+  はともに床）という明瞭な奇偶非対称が現れたが、対称性のない乱数均衡親では奇数
+  \(N\) にも不安定状態があるので、これは \(N\)
+  の偶奇だけで決まる普遍則ではない。4 生成法 × \(N=3\)〜16 の 54
+  走行について、走行前に固定した共回転 1
+  刻み線形化行列（離散写像のヤコビアン）による予測は 53/54
+  で実測分類と一致し、飽和した 25 走行の成長率は予測と 0.997〜1.008
+  で一致した。
 \end{enumerate}
 
-本研究は、これらを実装監査と \(N=3\)〜16 の再実験によって再検証する。
+本稿は新しい解釈を加えない。v1 の各主張の維持／修正／撤回を §9
+の表で明示し、v1
+で暗黙に仮定されていた「自己無撞着性が物理状態を一意に選ぶ」という命題が成り立たないことを記録して閉じる。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{2.
-先行研究からの継承点と本研究での訂正}\label{ux5148ux884cux7814ux7a76ux304bux3089ux306eux7d99ux627fux70b9ux3068ux672cux7814ux7a76ux3067ux306eux8a02ux6b63}
+\subsection{1. v1
+からの訂正の位置づけ}\label{v1-ux304bux3089ux306eux8a02ux6b63ux306eux4f4dux7f6eux3065ux3051}
+
+\subsubsection{1.1 訂正の連鎖}\label{ux8a02ux6b63ux306eux9023ux9396}
+
+先行研究 {[}K8{]} は外部 seed
+を除去しても急拡大が起きることを示し、「初期化 \texttt{make\_parent}
+は零二乗閉塞条件を前提としている」と記した。v1 §2.1
+はコード監査によりこれを訂正し、\texttt{make\_parent}
+は閉塞を拘束として課しておらず、自己無撞着固定点探索の出力として閉塞が現れると述べた。この訂正は正しい。
+
+本稿はさらに一段遡る。v1 §4 は \texttt{make\_parent}
+を「監査済み」としたが、監査は 2
+点を見落としていた：\texttt{make\_parent} 内の
+\texttt{v\ =\ v/‖v‖}（親の振幅正規化）と、相互作用を位相だけで組む
+\(K_{ij}=\sin(\theta_j-\theta_i)\)（相互作用内部の隠れた振幅正規化）である。加えて時間発展の
+Cayley 変換は凍結生成子に対する有理近似（固有位相応答
+\(2\arctan(\gamma\sigma)\)）であり、凍結生成子の厳密な指数回転（応答
+\(\Delta\sigma\)）に置き換えるべきものであった。v1
+の数値主張はこれらの計算条件の下での結果である。
+
+\subsubsection{1.2
+本稿の書き方}\label{ux672cux7a3fux306eux66f8ux304dux65b9}
+
+本稿の全ての主張は次の 4 種類のいずれかに分類し、各所で明記する。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{証明済み}：公理と定義から計算だけで従うもの。
+\item
+  \textbf{数値事実}：どの点（\(N\)・生成法・走行数）で何が測られたかを添えて述べるもの。
+\item
+  \textbf{未証明命題}：数学的に定式化できるが証明も反例も無いもの。
+\item
+  \textbf{証明に必要な補題}：未証明命題を定理にするために示すべき有限個の事実。
+\end{itemize}
+
+「〜を強く支持する」「〜と考えられる」という表現は用いない。
+
+また本稿で「インフレーション的」と呼ぶのは、模型内で
+\(H_\perp/H_{\rm total}\)
+が指数増幅して非線形飽和する現象を指し、宇宙論的インフレーションとの同一性を主張するものではない（v1
+§25--26 の宇宙論的類似は本稿では扱わない）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. 系の最小入力（v1 §3・§5
+の継承）}\label{ux7cfbux306eux6700ux5c0fux5165ux529bv1-35-ux306eux7d99ux627f}
 
 \subsubsection{2.1
-直接の先行研究}\label{ux76f4ux63a5ux306eux5148ux884cux7814ux7a76}
+状態と相互作用}\label{ux72b6ux614bux3068ux76f8ux4e92ux4f5cux7528}
 
-直接の先行研究は {[}K8{]}
-である。同研究は、seedを除去しても急拡大と方向生成が存続することを確認した。
+\(N\) 個の存在の全二体関係 \(M=\binom N2\) のそれぞれに複素数の波
+\(z_e=a_e+ib_e\) を置く。状態ベクトルは
+\(v=(z_e)\in\mathbb C^M\)、そのノルム
+\(\|v\|^2=\sum_e|z_e|^2=H_{\rm total}\)
+である。関係グラフの構造パラメータは \(N\) のみで、\(M\)
+は導出量である（v1 §3 の「独立パラメータは \(N\)
+のみ」は構造についての記述であり、後述の刻み \(\Delta\)
+と全体振幅------\(K(cv)=|c|^2K(v)\)
+により回転速度に効く------は別に指定する）。
 
-一方、同論文には次の記述があった。
-
-\begin{quote}
-初期化 \texttt{make\_parent} は零二乗閉塞条件を前提としている。
-\end{quote}
-
-今回、コードを原本まで遡って監査した結果、この記述は修正が必要であることが分かった。
-
-\texttt{make\_parent} は、\(\sum z_m^2=0\)
-を数値拘束として直接課していない。実際に行っているのは、位相依存の実反対称作用に対する自己無撞着固有モード固定点の探索である。その結果として、二乗ゼロ閉包が出力側に現れている。
-
-したがって本論文は、{[}K8{]}
-の実験事実を否定するものではなく、\textbf{初期化機構の理解をコード監査によって訂正し、その結果として公理系をさらに上流へ再構成する}ものである。
-
-\subsubsection{2.2
-何を再検証したか}\label{ux4f55ux3092ux518dux691cux8a3cux3057ux305fux304b}
-
-本研究では、
-
-\begin{itemize}
-\tightlist
-\item
-  原本コード
-\item
-  \texttt{make\_parent}
-\item
-  Cayley時間発展
-\item
-  \(K/\sigma_{\max}\) 正規化
-\item
-  処理刻み \texttt{GAMMA}
-\item
-  rank の時間発展
-\item
-  \(Z^T Z\)
-\item
-  複素距離
-\item
-  simplex rank
-\item
-  振幅・位相の準安定化
-\item
-  部分ゼロ閉包
-\end{itemize}
-
-を再監査した。
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{3. 系の最小入力}\label{ux7cfbux306eux6700ux5c0fux5165ux529b}
-
-本研究で独立な規模パラメータは \(N\) とする。
-
-\(N\) 個の存在の全二体関係を取るため、
+相互作用は、点を共有する 2 つの関係 \(e,f\) の間だけに働き、その強さは
 
 \[
-M=\binom N2=\frac{N(N-1)}2
+K_{ef}=A_{ef}\,\mathrm{Im}(\bar z_e z_f)=A_{ef}\,(a_eb_f-b_ea_f)
 \]
 
-は導出量であり、独立パラメータではない。
+である（\(A\) は関係の線グラフの隣接行列）。\(K\) は実反対称 \(K^T=-K\)
+で、\(K(cz)=|c|^2K(z)\) を満たす（振幅に比例する）。
 
-現在の実装を抽象化すると、最小入力は
+\subsubsection{2.2 発展}\label{ux767aux5c55}
+
+発展則は連続流
 
 \[
-\boxed{
-N
-+\text{完全二体関係}
-+\text{自己無撞着固定点条件}
-}
+\frac{dv}{d\tau}=K(v)\,v
 \]
 
-である。
+である。\(K\) は実反対称なので流れは \(\|v\|^2\) と \(v^Tv=\sum z_e^2\)
+を保存し、\(H_{\rm int}=\tfrac12\sum_{\{e,f\}}(\mathrm{Im}\,\bar z_ez_f)^2\)（和は隣接する非順序対
+\(\{e,f\}\) を各 1 回だけ数える）に対するハミルトン流
+\(\dot z_e=2i\,\partial H_{\rm int}/\partial\bar z_e=(Kz)_e\)
+でもある（本稿は \(\dot z=+2i\,\partial H/\partial\bar z\)
+の符号規約を採る。\(\dot z=-2i\,\partial H/\partial\bar z\) の流儀では
+\(-H_{\rm int}\)
+がハミルトニアンになる）。数値計算では各刻みで生成子を凍結した指数写像
+
+\[
+v_{t+1}=\exp(\Delta\,K(v_t))\,v_t,\qquad \Delta=\frac{2\pi}{L}
+\]
+
+で進める。\(\exp(\Delta K)\) は実直交行列なので \(\|v\|^2\) と \(v^Tv\)
+は離散写像でも厳密に保存される（v1 §16 の定理は Cayley
+でも指数写像でも同じ）が、\(H_{\rm int}\) は厳密には保存されず
+\(O(\Delta)\)
+で漂う（§10）。本稿で「線形回転」と呼ぶのはこの凍結生成子の指数写像のことで、旧コードの
+Cayley 変換（凍結生成子の有理写像）に対する呼称である。どちらも凍結した
+\(K\) に対しては線形作用素であり、状態 \(v\)
+に対する写像としてはどちらも非線形である。刻みの通し番号は処理ステップであり、流れの径数
+\(\tau\) も物理的な時間ではない（v1 §12、および
+§8.2：時間に相当する量は状態自身の位相進みとして別に定義される）。
+
+\subsubsection{2.3
+自己無撞着状態}\label{ux81eaux5df1ux7121ux649eux7740ux72b6ux614b}
+
+\(v\) が自分自身の生成子の非零固有モード
+
+\[
+iK(v)\,v=\mu v,\qquad \mu\neq0
+\]
+
+であるとき自己無撞着と呼ぶ。このとき \(v\) は形を変えずに角速度 \(\mu\)
+で一様回転する（相対平衡）。\(v=a+ib\) と書けば
+\(Ka=\mu b\)、\(Kb=-\mu a\)
+であり、実部と虚部は実反対称作用の固有モード内部に現れる回転対である（v1
+§5：実数の位相と実反対称作用から複素回転構造が出る）。
+
+最小入力は v1 §3 と同じく
+
+\[
+N+\text{完全二体関係}+\text{自己無撞着固定点条件}
+\]
+
+である。本稿で新たに明らかになるのは、この最小入力が状態を\textbf{一意に定めない}ことである（§7.4・§11）。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{\texorpdfstring{4. \texttt{make\_parent}
-の実装監査}{4. make\_parent の実装監査}}\label{make_parent-ux306eux5b9fux88c5ux76e3ux67fb}
+\subsection{3. 3
+つの変更と、その切り分け}\label{ux3064ux306eux5909ux66f4ux3068ux305dux306eux5207ux308aux5206ux3051}
 
-\subsubsection{4.1 実コード}\label{ux5b9fux30b3ux30fcux30c9}
+\subsubsection{3.1 変更の内容}\label{ux5909ux66f4ux306eux5185ux5bb9}
 
-現在使用している \texttt{make\_parent} の中心部は以下である。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{def}\NormalTok{ make\_parent(sys\_lr, rng, iters}\OperatorTok{=}\DecValTok{400}\NormalTok{, beta}\OperatorTok{=}\FloatTok{0.5}\NormalTok{, tol}\OperatorTok{=}\FloatTok{1e{-}8}\NormalTok{, restarts}\OperatorTok{=}\DecValTok{3}\NormalTok{):}
-\NormalTok{    best }\OperatorTok{=}\NormalTok{ (}\VariableTok{None}\NormalTok{, np.inf, }\VariableTok{None}\NormalTok{)}
-    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(restarts):}
-\NormalTok{        theta }\OperatorTok{=}\NormalTok{ rng.uniform(}\FloatTok{0.0}\NormalTok{, }\FloatTok{2.0} \OperatorTok{*}\NormalTok{ np.pi, sys\_lr.m)}
-\NormalTok{        v }\OperatorTok{=} \VariableTok{None}
-        \ControlFlowTok{for}\NormalTok{ it }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(iters):}
-\NormalTok{            sys\_lr.set\_theta(theta)}
-\NormalTok{            ev, EV }\OperatorTok{=}\NormalTok{ np.linalg.eig(sys\_lr.J }\OperatorTok{@}\NormalTok{ sys\_lr.G)}
-\NormalTok{            idx }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(np.argmin(ev.imag))  }\CommentTok{\# lambda = {-}i sigma\_max}
-\NormalTok{            v }\OperatorTok{=}\NormalTok{ sys\_lr.w(EV[:, idx].astype(}\BuiltInTok{complex}\NormalTok{))}
-\NormalTok{            v }\OperatorTok{=}\NormalTok{ v }\OperatorTok{/}\NormalTok{ np.linalg.norm(v)}
-\NormalTok{            theta\_new }\OperatorTok{=}\NormalTok{ np.angle(v)}
-\NormalTok{            mix }\OperatorTok{=}\NormalTok{ (}\FloatTok{1.0} \OperatorTok{{-}}\NormalTok{ beta) }\OperatorTok{*}\NormalTok{ np.exp(}\OtherTok{1j} \OperatorTok{*}\NormalTok{ theta) }\OperatorTok{\textbackslash{}}
-                \OperatorTok{+}\NormalTok{ beta }\OperatorTok{*}\NormalTok{ np.exp(}\OtherTok{1j} \OperatorTok{*}\NormalTok{ theta\_new)}
-\NormalTok{            theta }\OperatorTok{=}\NormalTok{ np.angle(mix)}
-
-            \ControlFlowTok{if}\NormalTok{ it }\OperatorTok{\%} \DecValTok{10} \OperatorTok{==} \DecValTok{9}\NormalTok{:}
-\NormalTok{                sys\_lr.set\_theta(np.angle(v))}
-\NormalTok{                res\_now }\OperatorTok{=}\NormalTok{ \_eigenmode\_residual(sys\_lr, v)}
-                \ControlFlowTok{if}\NormalTok{ res\_now }\OperatorTok{\textless{}}\NormalTok{ tol:}
-                    \ControlFlowTok{break}
-
-\NormalTok{        sys\_lr.set\_theta(np.angle(v))}
-\NormalTok{        residual }\OperatorTok{=}\NormalTok{ \_eigenmode\_residual(sys\_lr, v)}
-        \ControlFlowTok{if}\NormalTok{ residual }\OperatorTok{\textless{}}\NormalTok{ best[}\DecValTok{1}\NormalTok{]:}
-\NormalTok{            best }\OperatorTok{=}\NormalTok{ (v, residual, sys\_lr.sigma\_spectrum())}
-        \ControlFlowTok{if}\NormalTok{ residual }\OperatorTok{\textless{}}\NormalTok{ tol:}
-            \ControlFlowTok{break}
-
-\NormalTok{    v, residual, sig }\OperatorTok{=}\NormalTok{ best}
-\NormalTok{    sys\_lr.set\_theta(np.angle(v))}
-    \ControlFlowTok{return}\NormalTok{ v, residual, sig}
-\end{Highlighting}
-\end{Shaded}
-
-ここで初期値 \texttt{theta} は、
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{theta }\OperatorTok{=}\NormalTok{ rng.uniform(}\FloatTok{0.0}\NormalTok{, }\FloatTok{2.0}\OperatorTok{*}\NormalTok{np.pi, M)}
-\end{Highlighting}
-\end{Shaded}
-
-という\textbf{実数乱数}である。
-
-実部・虚部の二組の乱数振幅を物理初期値として与えてはいない。
-
-数値実装上 \texttt{astype(complex)} を用いているのは、実行列
-\texttt{J\ @\ G}
-の複素共役固有モードを格納するためであり、複素位相関係を外部条件として指定しているわけではない。
-
-\subsubsection{4.2
-固定点としての自己無撞着性}\label{ux56faux5b9aux70b9ux3068ux3057ux3066ux306eux81eaux5df1ux7121ux649eux7740ux6027}
-
-概念的には、
-
-\[
-\theta
-\rightarrow
-G(\theta)
-\rightarrow
-v
-\rightarrow
-\arg v
-\rightarrow
-\theta'
-\]
-
-を反復し、
-
-\[
-\boxed{\theta'=\theta}
-\]
-
-となる固定点を探索している。
-
-したがって \texttt{make\_parent} の本質は、
-
-\[
-\boxed{\mathcal F(X)=X}
-\]
-
-という自己無撞着固定点条件である。
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{5.
-複素構造の自発生成}\label{ux8907ux7d20ux69cbux9020ux306eux81eaux767aux751fux6210}
-
-\subsubsection{5.1
-実反対称作用}\label{ux5b9fux53cdux5bfeux79f0ux4f5cux7528}
-
-生成子 \(K\) は実反対称である。
-
-\[
-K^T=-K.
-\]
-
-非零固有モードは
-
-\[
-Kv=i\sigma v
-\]
-
-の形を取る。
-
-\[
-v=a+ib
-\]
-
-と書くと、
-
-\[
-Ka=-\sigma b,\qquad
-Kb=\sigma a.
-\]
-
-したがって \(a,b\)
-は独立に外部から与えた二成分ではなく、\textbf{実反対称作用の非零固有モード内部に現れる回転対}である。
-
-この意味で、
-
-\[
-\boxed{
-\text{実数初期位相}
-+\text{自己無撞着な実反対称作用}
-\Rightarrow
-\text{複素回転構造}
-}
-\]
-
-と読むことができる。
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{6.
-自己無撞着性から二乗ゼロ閉包}\label{ux81eaux5df1ux7121ux649eux7740ux6027ux304bux3089ux4e8cux4e57ux30bcux30edux9589ux5305}
-
-実反対称性から任意の \(v\) について
-
-\[
-v^T K v=0
-\]
-
-である。
-
-自己無撞着非零固有モード
-
-\[
-Kv=i\sigma v,\qquad \sigma\neq0
-\]
-
-を代入すると、
-
-\[
-v^TKv=i\sigma v^Tv=0.
-\]
-
-したがって
-
-\[
-\boxed{v^Tv=0}
-\]
-
-すなわち、
-
-\[
-\boxed{\sum_m v_m^2=0}
-\]
-
-が従う。
-
-さらに \(v=a+ib\) とすれば、
-
-\[
-\sum_m(a_m+ib_m)^2=0
-\]
-
-より、
-
-\[
-\boxed{\|a\|^2=\|b\|^2},
-\qquad
-\boxed{a\cdot b=0}.
-\]
-
-したがって、二乗ゼロ閉包は \texttt{make\_parent}
-に外部拘束として与えたものではなく、自己無撞着な非零反対称固有モードから導かれる。
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{7.
-各頂点における線形合成閉包}\label{ux5404ux9802ux70b9ux306bux304aux3051ux308bux7ddaux5f62ux5408ux6210ux9589ux5305}
-
-\(N\) 頂点の完全グラフでは、頂点 \(i\) に接続する関係波は \(N-1\)
-本である。
-
-今回の \(N=3\)〜16 解析では、\(N\ge4\) について各頂点で
-
-\[
-\boxed{
-\sum_{j\neq i} z_{ij}^2\simeq0
-}
-\]
-
-が数値精度内で成立した。
-
-これは各頂点状態が、自分以外の \(N-1\)
-個の関係波から構成される線形合成閉包であることを意味する。
-
-\[
-\boxed{
-\text{1頂点の状態}
-=
-(N-1)\text{本の関係波の自己無撞着な線形合成状態}
-}
-\]
-
-である。
-
-各関係 \(z_{ij}\) は頂点 \(i\) と \(j\)
-の双方の局所閉包に属するため、全体系は互いに重なり合う \(N\)
-個の局所線形閉包によって被覆される。
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{\texorpdfstring{8. 二乗閉包から compact phase orbit
-へ――\(U^n=I\)
-との論理的区別}{8. 二乗閉包から compact phase orbit へ――U\^{}n=I との論理的区別}}\label{ux4e8cux4e57ux9589ux5305ux304bux3089-compact-phase-orbit-ux3078uni-ux3068ux306eux8ad6ux7406ux7684ux533aux5225}
-
-\[
-v^Tv=0
-\]
-
-より、\(v=a+ib\) について
-
-\[
-\|a\|=\|b\|,
-\qquad
-a\perp b
-\]
-
-であり、状態は有限半径の回転対
-
-\[
-X(\theta)=a\cos\theta+b\sin\theta
-\]
-
-として表せる。
-
-したがって
-
-\[
-X(\theta+2\pi)=X(\theta)
-\]
-
-であり、自己無撞着固定点から \textbf{compact な \(S^1\)
-位相軌道}までは導出できる。
-
-ただし、ここから有限回帰
-
-\[
-U^n=I
-\]
-
-が自動的に従うわけではない。有限 \(n\) で元に戻るためには位相増分が
-
-\[
-\frac{\Delta\theta}{2\pi}\in\mathbb Q
-\]
-
-である必要がある。無理数回転なら軌道は \(S^1\)
-上に稠密であり、有限回では閉じない。
-
-したがって本研究で厳密に整理できる論理階層は
-
-\begin{center}\fbox{\parbox{0.9\linewidth}{\centering 自己無撞着固定点 $\Rightarrow$ 複素回転対 $\Rightarrow
-\sum z_m^2=0
-\Rightarrow
-S^1$ compactness}}\end{center}
-
-までである。
-
-一方、
-
-\begin{center}\fbox{\parbox{0.9\linewidth}{\centering $S^1$ compactness $+$ rational phase locking / discrete phase selection $\Rightarrow
-U^n=I$}}\end{center}
-
-と分離する必要がある。したがって従来公理として置いた \(U^n=I\)
-を自己無撞着性から完全に導出した、とは本論文では主張しない。位相の有理ロック機構は、別途行った位相離散化実験と接続して今後検証すべき独立課題である。
-
-\subsection{9.
-時間発展の実装}\label{ux6642ux9593ux767aux5c55ux306eux5b9fux88c5}
-
-時間発展では、各stepで現在状態の位相を読み、
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{sys\_lr.set\_theta(np.angle(Z))}
-\NormalTok{sig\_est, wp }\OperatorTok{=}\NormalTok{ sys\_lr.sigma\_max\_power(wp)}
-\NormalTok{Z }\OperatorTok{=}\NormalTok{ sys\_lr.cayley\_step(Z, sig\_est)}
-\end{Highlighting}
-\end{Shaded}
-
-として次状態を書き戻す。
-
-物理的には、
-
-\[
-Z_t
-\rightarrow
-\theta_t=\arg Z_t
-\rightarrow
-K(\theta_t)
-\rightarrow
-U_t Z_t
-\rightarrow
-Z_{t+1}
-\]
-
-である。
-
-したがって生成子は固定ではなく、\textbf{現在の波状態を読み出した結果から毎step再構成される状態依存生成子}である。
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{10.
-Cayley更新と位相回転}\label{cayleyux66f4ux65b0ux3068ux4f4dux76f8ux56deux8ee2}
-
-時間発展は
-
-\[
-Z_{t+1}
-=
-(I-\gamma K_t)^{-1}
-(I+\gamma K_t)Z_t
-\]
-
-という Cayley 変換である。
-
-実反対称 \(K_t\) に対し、この更新はノルム保存回転となる。
-
-固有モード
-
-\[
-K_tv=i\sigma v
-\]
-
-に対しては、
-
-\[
-v\rightarrow
-\frac{1+i\gamma\sigma}
-     {1-i\gamma\sigma}v
-=
-e^{i\Delta\phi}v,
-\]
-
-\[
-\boxed{
-\Delta\phi
-=
-2\arctan(\gamma\sigma)
-}
-\]
-
-である。
-
-この式が「状態を読み出し、位相を回転し、次状態へ書き戻す」処理の数式表現である。
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{\texorpdfstring{11. 不要な \(K/\sigma_{\max}\)
-正規化と時間再パラメータ化}{11. 不要な K/\textbackslash sigma\_\{\textbackslash max\} 正規化と時間再パラメータ化}}\label{ux4e0dux8981ux306a-ksigma_max-ux6b63ux898fux5316ux3068ux6642ux9593ux518dux30d1ux30e9ux30e1ux30fcux30bfux5316}
-
-\subsubsection{11.1
-旧コードと修正版}\label{ux65e7ux30b3ux30fcux30c9ux3068ux4feeux6b63ux7248}
-
-先行コードでは生成子を
-
-\[
-K\rightarrow\frac{K}{\sigma_{\max}}
-\]
-
-としていた。修正版では生の \(K\) を用いる。
-
-同一状態において Cayley 写像は
-
-\[
-C\!\left(\frac K\sigma,\gamma\right)
-=
-C\!\left(K,\frac\gamma\sigma\right)
-\]
-
-という恒等式を満たす。したがって連続極限では、正規化あり・なしのベクトル場は同じ方向を持ち、状態依存の時計の付け替えとして理解できる。
-
-従来の step 軸比較では、N=4,5について成長率比 raw/normalized
-と到達step比 normalized/raw がそれぞれ
-
-\[
-N=4:\quad2.708\ \text{vs}\ 2.702,
-\]
-
-\[
-N=5:\quad3.495\ \text{vs}\ 3.489
-\]
-
-と一致しており、時間再パラメータ化解釈を強く示唆した。
-
-\subsubsection{11.2
-累積位相軸による追加検証}\label{ux7d2fux7a4dux4f4dux76f8ux8ef8ux306bux3088ux308bux8ffdux52a0ux691cux8a3c}
-
-既存N=5データを支配モードの累積 Cayley 位相
-
-\[
-\Phi(t)=\sum_{s<t}2\arctan(\gamma\sigma_s)
-\]
-
-で再描画した。
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 正規化あり/なしの累積位相比較。有限stepの軌道差を累積Cayley位相で比較する。}]{figs/N5_normalized_vs_raw_cumulative_phase.png}}
-\caption{N=5
-正規化あり/なしの累積位相比較。有限stepの軌道差を累積Cayley位相で比較する。}
-\end{figure}
-
-有限stepでは2曲線は完全には重ならず、成長域の \(\log_{10}H_\perp\) RMSE
-は \textbf{0.944 decade}
-であった。ただし不安定系では微小な離散化差が指数増幅されるため、軌道RMSEだけを時間再パラメータ化仮説の反証量とはしない。そこで同じデータの指数成長域
-\(10^{-10}<H_\perp<10^{-3}\) で、\(\ln H_\perp\)
-の累積位相あたり傾きを別々に回帰した。その結果、
-
-\[
-\frac{d\ln H_\perp}{d\Phi}
-=
-1.13117\quad(K/\sigma_{\max}),
-\]
-
-\[
-\frac{d\ln H_\perp}{d\Phi}
-=
-1.05874\quad(\text{raw }K)
-\]
-
-で、差は約6.8\%であった。一方、同じ回帰の切片は -55.7414 と -55.7412
-でほぼ一致した。したがって現行の \(\gamma=\tan(\pi/144)\)
-では、単なる水平・垂直オフセットだけでは差を吸収できず、有限stepの実効成長率にも小さいが測定可能な差が残る。
-
-この約6.8\%差は、次節ですでに取得済みの刻み細分化系列によって閉じることができる。§12
-の5点を
-
-\[
-g(n)=g_\infty+\frac{c}{n}
-\]
-
-で最小二乗すると、
-
-\[
-g_\infty=1.1596346,\qquad c=-4.10498,
-\]
-
-となり、5点の最大残差は \(8.12\times10^{-5}\)
-である。すなわち累積位相あたり成長率は高精度に一次有限刻み補正で記述される。
-
-一方、同一状態での恒等式
-
-\[
-C(K/\sigma,\gamma)=C(K,\gamma/\sigma)
-\]
-
-より、raw-\(K\) 更新は normalized
-更新を平均的により粗い実効刻みで走らせたものと読める。N=5 の step
-軸成長率比から \(\bar\sigma\simeq3.49\) と見積もると、
-
-\[
-n_{\rm eff}\simeq\frac{144}{3.49}=41.2.
-\]
-
-上の独立な収束式はこの点で
-
-\[
-g(41.2)=1.1596346-\frac{4.10498}{41.2}\simeq1.0600
-\]
-
-を予測し、raw-\(K\) の直接測定値 \(1.05874\)
-と約0.13\%で一致する。\(\sigma_t\) は時間依存なので \(n_{\rm eff}\)
-は平均近似であるが、この一致は有限stepの約6.8\%差が同じ一次刻み補正で説明されることを示す。また両回帰の切片
--55.7414 と -55.7412
-が一致することも、初期摂動が共通で差が主として刻みに由来する解釈と整合する。
-
-したがって結論は、
-
-\begin{center}\fbox{\parbox{0.9\linewidth}{\centering $K/\sigma_{\max}$ 正規化は状態依存の Cayley step 再尺度化であり、raw/normalized の有限step差は独立に測定した一次刻み補正で定量的に説明され、両者は同一の連続極限へ収束する。}}\end{center}
-
-である。よって、正規化・刻みがインフレーション的急拡大そのものを人工的に生成したという可能性は、代数的恒等式と連続極限系列の双方から排除される。
-
-\subsection{\texorpdfstring{12. \texttt{144}
-は物理定数ではなく時間刻みである}{12. 144 は物理定数ではなく時間刻みである}}\label{ux306fux7269ux7406ux5b9aux6570ux3067ux306fux306aux304fux6642ux9593ux523bux307fux3067ux3042ux308b}
-
-コードでは、
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{GAMMA }\OperatorTok{=}\NormalTok{ math.tan(math.pi }\OperatorTok{/} \FloatTok{144.0}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-としている。
-
-ここで注意すべきなのは、\(\pi/144\) は Cayley
-パラメータの角であり、\(\sigma=1\)
-の正規化固有モードに対する実際の一step回転角は
-
-\[
-\Delta\phi
-=
-2\arctan[\tan(\pi/144)]
-=
-\frac{2\pi}{144}
-=
-\frac{\pi}{72}
-=
-2.5^\circ
-\]
-
-である。
-
-したがって「144」は物理定数ではなく、2.5\(^\circ\)刻みを得るために選んだ数値時間刻みの分母である。
-
-N=5について、
-
-\[
-n_\gamma=144,\ 288,\ 576,\ 1152,\ 2304
-\]
-
-と刻みを細分化し、
-
-\[
-\gamma=\tan(\pi/n_\gamma)
-\]
-
-として連続刻み極限を調べた。
-
-累積位相あたりの成長率は、
-
-\begin{itemize}
-\tightlist
-\item
-  144: 1.131171 /rad
-\item
-  288: 1.145300 /rad
-\item
-  576: 1.152475 /rad
-\item
-  1152: 1.156090 /rad
-\item
-  2304: 1.157905 /rad
-\end{itemize}
-
-へ収束した。これら5点は
-
-\[
-g(n)=g_\infty+\frac{c}{n},\qquad
-g_\infty=1.1596346,\quad c=-4.10498
-\]
-
-という一次収束則で記述され、最大残差は \(8.12\times10^{-5}\)
-である。この収束則は §11.2 の raw/normalized 差を独立に説明する。
-
-したがって、
-
-\[
-\boxed{
-144\text{ に固有の物理的共鳴はなく、}
-\gamma\rightarrow0
-\text{ の連続時間極限へ収束する。}
-}
-\]
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 時間刻み細分化による連続極限。累積位相あたり成長率は一次有限刻み補正を伴って共通極限へ収束する。}]{figs/N5_gamma_continuum_convergence.png}}
-\caption{N=5
-時間刻み細分化による連続極限。累積位相あたり成長率は一次有限刻み補正を伴って共通極限へ収束する。}
-\end{figure}
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{13. rank-2 初期状態と rank-4
-の自発生成}\label{rank-2-ux521dux671fux72b6ux614bux3068-rank-4-ux306eux81eaux767aux751fux6210}
-
-\texttt{make\_parent} によって得られる親状態は、実部と虚部が張る rank-2
-の初期平面を持つ。
-
-この初期状態から時間発展を開始すると、親平面外成分が自発的に立ち上がり、rank-4
-の読出し構造へ移行する。
-
-重要なのは、
-
-\[
-\boxed{
-\text{rank-4 は初期条件として与えていない}
-}
-\]
-
-という点である。
-
-rank-4
-は現在状態を読み出して生成子を再構成し、位相回転結果を書き戻す反復によって自発的に生成される。
-
-ここでいう rank-4 は、後述する複素simplexの Gram rank \(N-1\)
-とは異なる。前者は時間発展によって立ち上がる「二つの2次元回転平面」の読出し、後者は
-\(N\) 頂点距離幾何のsimplex rankである。
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{14.
-三方向の生成}\label{ux4e09ux65b9ux5411ux306eux751fux6210}
-
-初期 rank-2 平面を \(A\) とする。
-
-時間発展によって親平面外に第二の2次元平面 \(B\) が立ち上がる。
-
-この二平面の相対配置を読出すと、
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  両平面に関係する共有方向、
-\item
-  平面 \(A\) 側の独立方向、
-\item
-  平面 \(B\) 側の独立方向、
-\end{enumerate}
-
-という三方向として識別できる。
-
-したがって、
-
-\[
-\boxed{
-\text{rank-2}
-\rightarrow
-\text{rank-4}
-\rightarrow
-\text{三方向的読出し}
-}
-\]
-
-という生成系列が得られる。
-
-先行研究 {[}K8{]}
-で観測された「三方向」は、最初から固定された3軸を増幅したものではなく、急拡大中に部分空間の回転・混合を伴って動的に形成される。
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{15.
-何が急拡大しているのか――厳密保存下の内部移送}\label{ux4f55ux304cux6025ux62e1ux5927ux3057ux3066ux3044ux308bux306eux304bux53b3ux5bc6ux4fddux5b58ux4e0bux306eux5185ux90e8ux79fbux9001}
-
-親平面への射影成分と直交成分を \(Z_\parallel,Z_\perp\) とし、
-
-\[
-H_\parallel=\|Z_\parallel\|^2,
-\qquad
-H_\perp=\|Z_\perp\|^2.
-\]
-
-固定された直交分解なので、次節で示す Cayley 更新の厳密保存則と合わせて
-
-\[
-H_\parallel+H_\perp=H_{\rm total}
-\]
-
-である。
-
-今回、corrected raw-\(K\) N=5データから両者を直接重ね描きした。
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 親平面成分の枯渇と直交成分の増大。両者の和は厳密保存され、急拡大が内部移送であることを示す。}]{figs/N5_pump_depletion_Hparallel_Hperp.png}}
-\caption{N=5
-親平面成分の枯渇と直交成分の増大。両者の和は厳密保存され、急拡大が内部移送であることを示す。}
-\end{figure}
-
-実装上の最大誤差は
-
-\[
-\max|H_\parallel+H_\perp-H_{\rm total}|=4.44\times10^{-16}.
-\]
-
-step 5000では
-
-\[
-H_\parallel=0.3220054054,
-\qquad
-H_\perp=0.6779945946.
-\]
-
-したがって \(H_\perp\)
-の急拡大は外部からの注入ではなく、親平面内成分から直交方向への\textbf{厳密な内部再配分}である。
-
-また
-
-\[
-0\le H_\perp\le H_{\rm total}=\text{const.}
-\]
-
-なので、指数増大が無限に継続しないこと自体は運動学的に強制される。
-
-\subsection{16. Cayley
-更新による二つの厳密保存則}\label{cayley-ux66f4ux65b0ux306bux3088ux308bux4e8cux3064ux306eux53b3ux5bc6ux4fddux5b58ux5247}
-
-各stepの生成子は実反対称である。
-
-\[
-K_t^T=-K_t.
-\]
-
-したがって Cayley 写像
-
-\[
-C_t=(I-\gamma K_t)^{-1}(I+\gamma K_t)
-\]
-
-は恒等的に
-
-\[
-C_t^T C_t=I
-\]
-
-を満たす実直交行列である。
-
-よって exact arithmetic では、生成子が毎step状態依存で変化しても、
-
-\[
-\boxed{Z_{t+1}^\dagger Z_{t+1}=Z_t^\dagger Z_t}
-\]
-
-および
-
-\[
-\boxed{Z_{t+1}^T Z_{t+1}=Z_t^T Z_t}
-\]
-
-が厳密に保存される。
-
-したがって従来の「\(H_{\rm total}\) がほぼ一定」「\(Z^TZ\simeq0\)
-が維持された」という記述は、数値的発見ではなく\textbf{更新則の構造定理}へ格上げされる。N=5
-raw-\(K\) 実装で観測した \(10^{-15}\)
-程度の残差は、この厳密定理の浮動小数点実装誤差である。
-
-この定理は、インフレーション的急拡大が保存則を破るエネルギー生成ではなく、保存された全体量の内部再配置であることを解析的に保証する。
-
-\subsection{17.
-複素simplexとヌル錐――局所閉包の幾何定理}\label{ux8907ux7d20simplexux3068ux30ccux30ebux9310ux5c40ux6240ux9589ux5305ux306eux5e7eux4f55ux5b9aux7406}
-
-各関係の複素二乗距離を
-
-\[
-q_{ij}=z_{ij}^2=(x_i-x_j)\cdot(x_i-x_j)
-\]
-
-とし、重心を
-
-\[
-\sum_i x_i=0
-\]
-
-に取る。
-
-各頂点 \(i\) の star 和は
-
-\[
-\sum_{j\ne i}(x_i-x_j)^2
-=Nx_i^2+T,
-\qquad
-T\equiv\sum_jx_j^2.
-\]
-
-全頂点で局所閉包
-
-\[
-\sum_{j\ne i}q_{ij}=0
-\]
-
-が成立すると、
-
-\[
-x_i^2=-T/N
-\]
-
-が全 \(i\) で共通となる。これを全頂点で足すと \(T=-T\) なので
-
-\[
-T=0,
-\]
-
-したがって
-
-\[
-\boxed{x_i\cdot x_i=0\quad\forall i}.
-\]
-
-逆も直ちに成立するため、
-
-\begin{center}\fbox{\parbox{0.9\linewidth}{\centering 全頂点の star 二乗閉包 $\Longleftrightarrow$ 全 simplex 頂点が複素ヌル錐上にある}}\end{center}
-
-は定理である。
-
-このとき
-
-\[
-q_{ij}=-2x_i\cdot x_j.
-\]
-
-また N=3〜16 の全系列で複素Gram rankは
-
-\[
-\operatorname{rank}B=N-1
-\]
-
-であり、\(N\) 頂点は \(N-1\) 次元複素simplexを構成する。
-
-\subsection{18.
-等モジュラー・ヌル複素simplexへの準安定化}\label{ux7b49ux30e2ux30b8ux30e5ux30e9ux30fcux30ccux30ebux8907ux7d20simplexux3078ux306eux6e96ux5b89ux5b9aux5316}
-
-長時間発展後、多くの \(N\) で
-
-\[
-|z_{ij}|^2\rightarrow\frac1M
-\]
-
-へ等分配する。
-
-前節のヌル錐定理と合わせると、準安定状態は
-
-\[
-\boxed{
-\text{equimodular null complex simplex}
-}
-\]
-
-として一つの幾何対象にまとめられる。
-
-すなわち
-
-\[
-x_i^2=0,
-\qquad
-|x_i\cdot x_j|=\frac{1}{2M}\quad(i\ne j).
-\]
-
-N=5について振幅分配のスペクトルエントロピー
-
-\[
-p_m=\frac{|z_m|^2}{\sum_k|z_k|^2},
-\qquad
-S=-\sum_mp_m\ln p_m
-\]
-
-を計算した。
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 スペクトルエントロピー。長時間で等分配へ近づく一方、単純な単調H定理ではない。}]{figs/N5_spectral_entropy.png}}
-\caption{N=5
-スペクトルエントロピー。長時間で等分配へ近づく一方、単純な単調H定理ではない。}
-\end{figure}
-
-初期 \(S/\ln M=0.97472\)、step 375で一度0.97322まで低下した後、step
-5000では
-
-\[
-\boxed{S/\ln M=1.000000}
-\]
-
-に到達した。したがって最終等分配は定量的にも完全である。ただし \(S(t)\)
-は厳密単調ではないため、単純な H 定理とは異なる。
-
-\subsection{19.
-急拡大の停止：運動学的上限と、その後のsimplex秩序化}\label{ux6025ux62e1ux5927ux306eux505cux6b62ux904bux52d5ux5b66ux7684ux4e0aux9650ux3068ux305dux306eux5f8cux306esimplexux79e9ux5e8fux5316}
-
-Cayley直交性より
-
-\[
-H_\perp\le H_{\rm total}=\text{const.}
-\]
-
-であるため、指数増大が無限に続かず飽和すること自体は運動学的に説明できる。
-
-したがって「なぜ停止するか」という問題は二つに分離される。
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \textbf{なぜ無限増大しないか}：全ノルム保存による上限で解決。
-\item
-  \textbf{なぜ特定の等モジュラーsimplex配置へ移行するか}：依然として力学的問題。
-\end{enumerate}
-
-N=5では \(H_\perp\)
-がほぼ飽和した後も、位相・距離4群の秩序化は長時間続く。
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 急拡大と秩序化の時間発展。急拡大の飽和後もsimplex秩序化が継続する。}]{figs/N5_inflation_vs_ordering.png}}
-\caption{N=5
-急拡大と秩序化の時間発展。急拡大の飽和後もsimplex秩序化が継続する。}
-\end{figure}
-
-したがって時間発展は
-
-\begin{center}\fbox{\parbox{0.9\linewidth}{\centering linear instability / rapid transfer $\rightarrow$ bounded saturation $\rightarrow$ slow simplex ordering}}\end{center}
-
-という少なくとも二段階を持つ。
-
-\subsection{\texorpdfstring{20. \(N=3\)〜16
-の系列}{20. N=3〜16 の系列}}\label{n316-ux306eux7cfbux5217}
-
-主要結果をまとめる。
-
-{\def\LTcaptype{none} % do not increment counter
-\begin{longtable}[]{@{}rrrl@{}}
-\toprule\noalign{}
-N & M & simplex rank & 準安定位相構造の概略 \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-3 & 3 & 2 & 三角simplex、5000 stepでは緩和途上 \\
-4 & 6 & 3 & \(2+2+2\)：四面体の3組の対辺 \\
-5 & 10 & 4 & \(3+3+2+2\)、さらに非自明2辺閉包 \\
-6 & 15 & 5 & 厳密には多クラス、緩和の遅い境界例 \\
-7 & 21 & 6 & 高精度では21辺非縮退 \\
-8 & 28 & 7 & 高精度では28辺非縮退 \\
-9 & 36 & 8 & 高精度では36辺非縮退 \\
-10 & 45 & 9 & 高精度では45辺非縮退 \\
-11 & 55 & 10 & 高精度では55辺非縮退 \\
-12 & 66 & 11 & 高精度では66辺非縮退 \\
-13 & 78 & 12 & 高精度では78辺非縮退 \\
-14 & 91 & 13 & 非縮退、6辺quasi-closure候補 \\
-15 & 105 & 14 & 高精度では105辺非縮退 \\
-16 & 120 & 15 & 高精度では120辺非縮退 \\
-\end{longtable}
-}
-
-普遍的なのは、
-
-\[
-\boxed{
-\operatorname{rank}=N-1
-}
-\]
-
-と、準安定状態での
-
-\[
-\boxed{
-|z|^2\rightarrow1/M
-}
-\]
-
-である。
-
-一方、少数位相群や追加閉包は \(N\) に強く依存する。
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{\texorpdfstring{21. N=4
-の対辺構造――120\(^\circ\)は数値近似ではなく定理}{21. N=4 の対辺構造――120\^{}\textbackslash circは数値近似ではなく定理}}\label{n4-ux306eux5bfeux8fbaux69cbux9020120circux306fux6570ux5024ux8fd1ux4f3cux3067ux306fux306aux304fux5b9aux7406}
-
-N=4では6辺が3組の対辺
-
-\[
-(12,34),\qquad(13,24),\qquad(14,23)
-\]
-
-へ分かれる。
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=4 四面体の対辺3群。局所閉包と等モジュラスから3群の120\^{}\textbackslash circ分離が厳密に従う。}]{figs/N4_tetrahedron_opposite_edge_classes.png}}
-\caption{N=4
-四面体の対辺3群。局所閉包と等モジュラスから3群の120\(^\circ\)分離が厳密に従う。}
-\end{figure}
-
-各頂点 star は3群から1本ずつ含み、局所閉包は
-
-\[
-v_1+v_2+v_3=0
-\]
-
-となる。準安定等分配では
-
-\[
-|v_1|=|v_2|=|v_3|.
-\]
-
-等 modulus
-の3複素数が和ゼロを作るためには複素平面上で正三角形を構成するしかなく、
-
-\[
-\boxed{\Delta\arg=2\pi/3=120^\circ}
-\]
-
-が厳密に従う。
-
-したがって従来の「約120\(^\circ\)」は数値観察ではなく、局所閉包＋等分配からの定理である。また120\(^\circ\)配置には反対符号対が存在しないため、N=4にN=5型の2辺ゼロ閉包がないことも同時に説明できる。
-
-\subsection{22. N=5
-の特殊対称性}\label{n5-ux306eux7279ux6b8aux5bfeux79f0ux6027}
-
-N=5 は今回の \(N=3\)〜16 系列の中で、単なる「5頂点・rank 4
-の複素simplex」にとどまらず、\textbf{位相分類、複素二乗距離分類、3次元的読出し、さらに一般の頂点閉包から独立な部分ゼロ閉包が同時に重なる最も明瞭な特異例}である。
-
-ここでは N=5 を、最終状態だけでなく時間発展を含めて詳しく記述する。
-
-まず、N=5で得られた構造を一枚で把握できる総合図を示す。以下の詳細節は、この図の各要素を順に分解して検証したものである。
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 複素関係距離構造の総合図。5頂点10関係、rank 4、3+3+2+2構造を統合表示する。}]{figs/N5_complex_distance_structure_overview.png}}
-\caption{N=5 複素関係距離構造の総合図。5頂点10関係、rank
-4、3+3+2+2構造を統合表示する。}
-\end{figure}
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 複素simplex完全解析の総合図。急拡大と4群秩序化の二段階発展を同一時間軸で示す。}]{figs/N5_complete_simplex_analysis_overview.png}}
-\caption{N=5
-複素simplex完全解析の総合図。急拡大と4群秩序化の二段階発展を同一時間軸で示す。}
-\end{figure}
-
-\subsubsection{22.1 基本幾何：5頂点・10関係・rank
-4}\label{ux57faux672cux5e7eux4f555ux9802ux70b910ux95a2ux4fc2rank-4}
-
-N=5 では、完全二体関係数は
-
-\[
-M=\frac{5\cdot4}{2}=10
-\]
-
-である。
-
-10本の複素関係波 \(z_{ij}\) から複素二乗距離
-
-\[
-d_{ij}^2=z_{ij}^2
-\]
-
-を作り、中心化複素Gram行列
-
-\[
-B=-\frac12 JD^2J
-\]
-
-を構成すると、非自明rankは
-
-\[
-\boxed{\operatorname{rank}B=4}
-\]
-
-となる。
-
-したがって、まず基礎構造は通常の4-simplexに対応する「5頂点・10辺・rank
-4」であり、この点自体はN=5だけの特異性ではない。特異性は、その10関係の\textbf{位相と複素二乗距離がさらに少数の高対称クラスへ自己組織化すること}にある。
-
-\subsubsection{\texorpdfstring{22.2 10辺は最終的に \(3+3+2+2\)
-の4群へ秩序化する}{22.2 10辺は最終的に 3+3+2+2 の4群へ秩序化する}}\label{ux8fbaux306fux6700ux7d42ux7684ux306b-3322-ux306e4ux7fa4ux3078ux79e9ux5e8fux5316ux3059ux308b}
-
-step 5000 の準安定状態では、10辺は
-
-\[
-A_+:\{12,13,45\},
-\]
-
-\[
-A_-:\{14,15,23\},
-\]
-
-\[
-B_+:\{24,35\},
-\]
-
-\[
-B_-:\{25,34\}
-\]
-
-という
-
-\[
-\boxed{10=3+3+2+2}
-\]
-
-の4群へ収束する。
-
-ここで重要なのは、これは単なる「位相の近い辺を人為的にクラスタリングした」分類ではないことである。各辺について
-\(a,b,a^2,b^2,ab\) を直接追うと、同じ群に属する辺は複素二乗距離
-
-\[
-z_{ij}^2=(a_{ij}^2-b_{ij}^2)+2i a_{ij}b_{ij}
-\]
-
-の実部・虚部まで同一クラスへ収束する。
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 最終複素二乗距離クラス。10辺が3+3+2+2の4群へ収束する。}]{figs/N5_final_z2_classes.png}}
-\caption{N=5 最終複素二乗距離クラス。10辺が3+3+2+2の4群へ収束する。}
-\end{figure}
-
-\subsubsection{\texorpdfstring{22.3 4群は「2種類の距離方向 \(\times\)
-符号反転」としてさらに縮約できる}{22.3 4群は「2種類の距離方向 \textbackslash times 符号反転」としてさらに縮約できる}}\label{ux7fa4ux306f2ux7a2eux985eux306eux8dddux96e2ux65b9ux5411-times-ux7b26ux53f7ux53cdux8ee2ux3068ux3057ux3066ux3055ux3089ux306bux7e2eux7d04ux3067ux304dux308b}
-
-4群の間には、
-
-\[
-A_-=-A_+,
-\qquad
-B_-=-B_+
-\]
-
-という関係が成立する。
-
-したがって4群は独立な4種類ではなく、本質的には
-
-\[
-\boxed{
-2\text{種類の複素二乗距離方向}
-\times
-\text{符号反転}
-}
-\]
-
-である。
-
-複素二乗距離では符号反転 \(z^2\rightarrow-z^2\) は位相を \(\pi\)
-だけずらすため、\(A_+\) と \(A_-\)、\(B_+\) と \(B_-\)
-はそれぞれ同じ距離族の反対向きとして読める。
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 二つの距離族と符号反転。A系・B系と各符号反転が4群を構成する。}]{figs/N5_two_family_components.png}}
-\caption{N=5
-二つの距離族と符号反転。A系・B系と各符号反転が4群を構成する。}
-\end{figure}
-
-この構造は、N=5の位相分類を「4種類の偶然なクラス」ではなく、\textbf{二つの基本方向に対する反転対称性}として読む根拠になる。
-
-\subsubsection{22.4
-3次元四角錐としての読出し}\label{ux6b21ux5143ux56dbux89d2ux9310ux3068ux3057ux3066ux306eux8aadux51faux3057}
-
-N=5の距離幾何そのものは rank 4 の4-simplexである。しかし、上の
-\(3+3+2+2\)
-位相・距離分類を用いると、10辺は3次元の四角錐として非常に自然に配置できる。
-
-四角錐の辺数は、
-
-\begin{itemize}
-\tightlist
-\item
-  底面4辺
-\item
-  頂点から底面4頂点へ向かう側辺4本
-\item
-  底面対角線2本
-\end{itemize}
-
-で、合計
-
-\[
-4+4+2=10
-\]
-
-である。
-
-したがって全10関係を
-
-\[
-\boxed{8\text{外郭辺}+2\text{底面対角線}}
-\]
-
-として3次元的に読むことができる。
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 3次元四角錐としての読出し。rank-4複素simplex上の位相・距離分類を3次元的に可視化する。}]{figs/N5_square_pyramid_interpretation.png}}
-\caption{N=5
-3次元四角錐としての読出し。rank-4複素simplex上の位相・距離分類を3次元的に可視化する。}
-\end{figure}
-
-ここは誤読を避けるため重要である。
-
-\[
-\boxed{
-\text{複素simplex rank}=4
-}
-\]
-
-と、
-
-\[
-\boxed{
-\text{位相・距離分類の3次元的読出し}
-}
-\]
-
-は異なる観測量であり、両者は矛盾しない。
-
-\subsubsection{22.5
-この4群は急拡大の初めから存在するのではない}\label{ux3053ux306e4ux7fa4ux306fux6025ux62e1ux5927ux306eux521dux3081ux304bux3089ux5b58ux5728ux3059ux308bux306eux3067ux306fux306aux3044}
-
-最終 \(3+3+2+2\) 構造を step
-ごとに逆追跡すると、急拡大の開始時点から完成形が固定されているわけではない。
-
-親平面外振幅は先に急増し、その後に群内の位相差・距離差が長時間をかけて縮小する。
-
-N=5では、親平面外二乗振幅 \(H_\perp\) が最終値の99\%へ到達するのは約
-step 449 であるのに対し、4群構造の最終パターンへの誤差は、
-
-\[
-10^{-4}\text{ 以下}:\ \text{step }2627,
-\]
-
-\[
-10^{-8}\text{ 以下}:\ \text{step }4923
-\]
-
-まで緩和を続ける。
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 4群構造への収束。急拡大後にも群内位相・複素距離の秩序化が継続する。}]{figs/N5_four_group_convergence.png}}
-\caption{N=5
-4群構造への収束。急拡大後にも群内位相・複素距離の秩序化が継続する。}
-\end{figure}
-
-したがってN=5の時間発展は、
-
-\[
-\boxed{
-\text{新方向への急拡大}
-\rightarrow
-\text{4群位相・距離構造への秩序化}
-}
-\]
-
-という二段階である。
-
-この観測は、本論文全体の「急拡大停止とsimplex対称化が時間的に対応する」という主張を、N=5で最も詳細に可視化した例である。
-
-\subsubsection{22.6
-N=5の全体構造}\label{n5ux306eux5168ux4f53ux69cbux9020}
-
-以上をまとめると、N=5では同じ10本の関係波に、異なる読み出し階層が同時に成立する。
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \textbf{完全グラフとして:} \(K_5\)、10辺。
-\item
-  \textbf{距離幾何として:} 5頂点・rank 4 の複素4-simplex。
-\item
-  \textbf{準安定位相分類として:} \(3+3+2+2\) の4群。
-\item
-  \textbf{代数的縮約として:} 2種類の複素距離方向とその符号反転。
-\item
-  \textbf{3次元的読出しとして:} 四角錐の8外郭辺 + 2底面対角線。
-\item
-  \textbf{局所閉包として:} 各頂点に接続する4辺のvertex-starゼロ閉包。
-\item
-  \textbf{追加閉包として:} vertex-star
-  spanでは説明できない非自明2辺ゼロ閉包。
-\end{enumerate}
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 複素simplex完全解析図。rank、4群、二距離族、四角錐読出しと時間発展を統合する。}]{figs/N5_complete_simplex_analysis_overview.png}}
-\caption{N=5
-複素simplex完全解析図。rank、4群、二距離族、四角錐読出しと時間発展を統合する。}
-\end{figure}
-
-\subsubsection{\texorpdfstring{22.7
-非自明2辺ゼロ閉包の導出：13個と12通りは \(3+3+2+2\)
-から必然}{22.7 非自明2辺ゼロ閉包の導出：13個と12通りは 3+3+2+2 から必然}}\label{ux975eux81eaux660e2ux8fbaux30bcux30edux9589ux5305ux306eux5c0eux51fa13ux500bux306812ux901aux308aux306f-3322-ux304bux3089ux5fc5ux7136}
-
-各頂点の自明な4辺 star
-閉包を除外した後、N=5では2辺ゼロ閉包が13個観測された。
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 非自明2辺ゼロ閉包グラフ。3+3+2+2符号対構造から13個の閉包が導出される。}]{figs/N5_nontrivial_pair_closure_graph.png}}
-\caption{N=5
-非自明2辺ゼロ閉包グラフ。3+3+2+2符号対構造から13個の閉包が導出される。}
-\end{figure}
-
-しかしこれは独立な数値偶然ではない。4群を
-
-\[
-A_+,\ A_-,\ B_+,\ B_-
-\]
-
-とし、そのサイズが
-
-\[
-|A_+|=|A_-|=3,
-\qquad
-|B_+|=|B_-|=2
-\]
-
-で、二乗距離値が
-
-\[
-q(A_-)=-q(A_+),
-\qquad
-q(B_-)=-q(B_+)
-\]
-
-なら、2辺ゼロ閉包 \(q_e+q_f=0\) は反対符号群間の全組合せに一致する。
-
-したがって個数は
-
-\[
-\boxed{3\times3+2\times2=13}.
-\]
-
-さらに10辺全体を5個のゼロ対へ完全分割するには、\(A_+\) と \(A_-\)
-の全単射 \(3!\) 通りと、\(B_+\) と \(B_-\) の全単射 \(2!\)
-通りを独立に選ぶので、
-
-\[
-\boxed{3!\times2!=12}.
-\]
-
-従来数値探索で得た「13個」と「12 exact covers」は、したがって
-\(3+3+2+2\) 符号対構造の\textbf{組合せ論的必然}として導出できる。
-
-最良数値例
-
-\[
-z_{23}^2+z_{45}^2\simeq0
-\]
-
-の残差 \(1.88\times10^{-10}\)
-は、この導出構造を数値実装が再現していることの検証値と位置づけられる。
-
-\subsubsection{22.8
-N=5は「低次元だから単純」ではない}\label{n5ux306fux4f4eux6b21ux5143ux3060ux304bux3089ux5358ux7d14ux3067ux306fux306aux3044}
-
-N=4にも \(2+2+2\)
-の明瞭な対辺対称性があるが、その閉包はvertex-star閉包の線形帰結として説明できる。一方、N=5では、4群構造に加えて、一般のstar-spanから独立な2辺閉包とexact
-coverが現れる。
-
-したがって今回の \(N=3\)〜16
-系列でN=5が特別なのは、単に辺数が少なく可視化しやすいからではない。
-
-\[
-\boxed{
-\text{simplex対称性}
-+
-\text{位相縮退}
-+
-\text{3次元的読出し}
-+
-\text{追加ゼロ閉包}
-}
-\]
-
-が同一のNで重なることが、N=5の特異性である。
-
-\subsection{23. N=14〜16
-の追加閉包探索}\label{n1416-ux306eux8ffdux52a0ux9589ux5305ux63a2ux7d22}
-
-自明な \(N-1\) 辺vertex-star閉包より小さい全次数を対象に、
-
-\begin{itemize}
-\tightlist
-\item
-  N=14: \(k=2,\ldots,12\)
-\item
-  N=15: \(k=2,\ldots,13\)
-\item
-  N=16: \(k=2,\ldots,14\)
-\end{itemize}
-
-を探索した。
-
-N=14では \(k=6\) に
-
-\[
-C=9.25\times10^{-7}
-\]
-
-の候補が存在したが、時間発展では \(10^{-6}\) 近傍で停止し、N=5のように
-\(10^{-8}\), \(10^{-10}\) へ連続収束しない。
-
-したがってこれは厳密な追加閉包ではなく quasi-closure と分類する。
-
-N=15,16では探索した全次数で \(10^{-6}\)
-を明瞭に下回る追加閉包は確認されなかった。
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{24.
-本研究での公理系再構成――確定した部分と未確定な部分}\label{ux672cux7814ux7a76ux3067ux306eux516cux7406ux7cfbux518dux69cbux6210ux78baux5b9aux3057ux305fux90e8ux5206ux3068ux672aux78baux5b9aux306aux90e8ux5206}
-
-従来は
-
-\[
-\sum z_m^2=0,
-\qquad
-U^n=I
-\]
-
-を二つの基本公理としていた。
-
-今回、自己無撞着な実反対称固有モードから
-
-\begin{center}\fbox{\parbox{0.9\linewidth}{\centering self-consistency $\Rightarrow$ complex rotating pair $\Rightarrow
-\sum z_m^2=0
-\Rightarrow
-S^1$ compact phase orbit}}\end{center}
-
-までは解析的に整理できた。
-
-しかし
-
-\[
-S^1\text{ compactness}\not\Rightarrow U^n=I
-\]
-
-である。有限回帰には位相増分の有理ロックが別途必要である。
-
-したがって本論文の公理削減の結論は、\textbf{二乗ゼロ閉包と複素回転構造は自己無撞着性から導出できるが、\(U^n=I\)
-の完全導出には rational phase locking
-の追加機構が必要}、という形に修正する。
-
-\subsection{25.
-先行研究との関係}\label{ux5148ux884cux7814ux7a76ux3068ux306eux95a2ux4fc2}
-
-\subsubsection{25.1
-研究の時間的順序}\label{ux7814ux7a76ux306eux6642ux9593ux7684ux9806ux5e8f}
-
-本研究の数値モデルは、以下に挙げる外部先行研究を実装または再現する目的で構築したものではない。
-
-研究の時間的順序は、
-
-\begin{center}\fbox{\parbox{0.9\linewidth}{\centering 独立な数値実験 $\rightarrow$ 現象の発見 $\rightarrow$ 後日の文献調査 $\rightarrow$ 構造的関係の認識}}\end{center}
-
-である。
-
-したがって外部文献は、本モデルの出発仮定ではなく、独立に得られた結果を既存研究空間へ位置づけるために引用する。
-
-\subsubsection{25.2
-実構造からの複素構造}\label{ux5b9fux69cbux9020ux304bux3089ux306eux8907ux7d20ux69cbux9020}
-
-Aste {[}E1{]} は、有限次元の実Euclidean
-Hilbert空間の線形力学から複素構造が現れる可能性を論じている。
-
-本研究との共通点は「複素数を最初から原始的な入力としなくてもよい」という問題意識にある。
-
-一方、本研究では完全二体関係から構成した実反対称作用の自己無撞着固定点が複素回転対を生成する点が異なる。
-
-\subsubsection{25.3
-高次元自由度からの低次元膨張時空}\label{ux9ad8ux6b21ux5143ux81eaux7531ux5ea6ux304bux3089ux306eux4f4eux6b21ux5143ux81a8ux5f35ux6642ux7a7a}
-
-Lorentzian type IIB / IKKT matrix
-modelでは、多数の行列自由度から低次元の膨張時空が動的に現れる可能性が数値的に研究されている
-{[}E2,E3{]}。
-
-本研究も、多数の関係自由度からrank生成と方向選択が生じるという構造的類似を持つ。
-
-ただし作用、自由度、確率測度、数値手法は異なり、本研究はIKKT模型の再現ではない。
-
-\subsubsection{25.4
-インフレーションと動的コンパクト化}\label{ux30a4ux30f3ux30d5ux30ecux30fcux30b7ux30e7ux30f3ux3068ux52d5ux7684ux30b3ux30f3ux30d1ux30afux30c8ux5316}
-
-Kihara et al.~{[}E4{]}
-は10次元Einstein--Yang--Mills系において、4次元側の指数膨張と余剰次元のコンパクト化を同一の力学系で研究している。
-
-本研究のseedなし系では全主軸が等方的に展開するが、将来の倍音seed実験では、一部方向が巨視化し、別の方向がcompactなまま残る異方的分離を検証する予定である。
-
-この意味で、同研究は今後の比較対象として重要である。
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
-
-\subsection{26.
-考察――開始機構は相対平衡の線形不安定性として定量化された}\label{ux8003ux5bdfux958bux59cbux6a5fux69cbux306fux76f8ux5bfeux5e73ux8861ux306eux7ddaux5f62ux4e0dux5b89ux5b9aux6027ux3068ux3057ux3066ux5b9aux91cfux5316ux3055ux308cux305f}
-
-\subsubsection{26.1 seedless onset
-と固定点残差}\label{seedless-onset-ux3068ux56faux5b9aux70b9ux6b8bux5dee}
-
-明示seedを一切加えず \(Z_0=v\) とし、\texttt{make\_parent} の要求
-tolerance を \(10^{-6},10^{-8},10^{-10},10^{-12}\)
-と変更した。ただし回帰に用いた説明変数は要求 tolerance
-そのものではなく、各runで実測された最終固定点残差
-\(\varepsilon_{\rm parent}\) である。
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 make\_parent残差tol掃引。残差を小さくするとonsetが遅れるが指数成長率はほぼ不変である。}]{figs/N5_tol_sweep_timeseries.png}}
-\caption{N=5
-make\_parent残差tol掃引。残差を小さくするとonsetが遅れるが指数成長率はほぼ不変である。}
-\end{figure}
-
-実測値は次の通りである。
+v1 が引用する 15
+パッケージの原本プログラム（\texttt{run\_n\_scaling\_lowrank\_v1\_*.py}
+系エンジン）と、本稿の修正後プログラムの差は次の 3 点に整理される。
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
-  >{\raggedleft\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
 \toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedleft
-requested tol
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-measured parent residual \(\varepsilon_{\rm parent}\)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-onset step \(f\ge10^{-8}\)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
-growth rate /step
+\begin{minipage}[b]{\linewidth}\raggedright
+変更
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+旧（v1）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+新（本稿）
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-\(10^{-6}\) & \(3.8728081613\times10^{-7}\) & 72 & 0.17483734 \\
-\(10^{-8}\) & \(1.8154355031\times10^{-9}\) & 134 & 0.17252539 \\
-\(10^{-10}\) & \(5.0849521984\times10^{-11}\) & 176 & 0.17251311 \\
-\(10^{-12}\) & \(2.3845913288\times10^{-13}\) & 238 & 0.17251360 \\
+\textbf{1. 隠れた振幅正規化の除去} & (a) \texttt{make\_parent} 内で親を
+\(v\mapsto v/\|v\|\) に正規化。(b)
+相互作用を位相のみで組む：\(K_{ef}=\sin(\theta_f-\theta_e)\)（\(K(cz)=K(z)\)、振幅を捨てる）。(c)
+一部パッケージで初期状態に外部 seed を加えて正規化 & (a) 除去。(b)
+振幅込み \(K_{ef}=\mathrm{Im}(\bar z_ez_f)\)。(c)
+除去（\(Z_0=v\)、種なし） \\
+\textbf{2. Cayley 有理写像から凍結生成子の指数写像へ} & Cayley 変換
+\((I-\gamma K)^{-1}(I+\gamma K)\)、\(\gamma=\tan(\pi/144)\)（凍結 \(K\)
+の有理関数、固有位相応答は \(2\arctan(\gamma\sigma)\)）。一部に
+\(K/\sigma_{\max}\) 正規化 & 凍結 \(K\) の厳密直交指数回転
+\(\exp(\Delta K)\)、\(\Delta=2\pi/L\)（固有位相応答は
+\(\Delta\sigma\)）。\(K/\sigma\) 枝は廃止。どちらも凍結 \(K\)
+に対しては線形、状態に対しては非線形（§2.2） \\
+\textbf{3. 初期化の変更} & 乱数位相から位相のみ \(K\)
+の固有モード反復で得た状態（修正後の力学の固定点ではない：振幅込み \(K\)
+に対する残差 \(0.058\)〜\(0.007\)） &
+厳密な自己無撞着解。3-1：等モジュラー（全関係の \(|z_e|\)
+が等しい）制約あり。3-2：制約なし（非等モジュラー） \\
 \end{longtable}
 }
 
-ここで残差の対数間隔は等間隔ではない。したがって onset step だけを要求
-tolerance の \(10^{-6},10^{-8},10^{-10},10^{-12}\)
-に対して回帰してはならない。上表の\textbf{実測固定点残差}を用いると、
+\subsubsection{3.2 v1
+パッケージの無変更再実行（数値事実）}\label{v1-ux30d1ux30c3ux30b1ux30fcux30b8ux306eux7121ux5909ux66f4ux518dux5b9fux884cux6570ux5024ux4e8bux5b9f}
 
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 onsetと実測固定点残差の関係。t\_onsetは -ln residual に対して高精度に線形である。}]{figs/N5_tol_sweep_onset_log_residual.png}}
-\caption{N=5 onsetと実測固定点残差の関係。t\_onsetは -ln residual
-に対して高精度に線形である。}
-\end{figure}
+v1 が引用する 15 パッケージをパス変更 4
+箇所以外は無変更で再実行し、保存データ・図と突合した（\texttt{論文v1\_全再現テスト\_20260828}）。主要数値主張------Floquet
+乗数 \(\mu_1=1.090086569\)（9 桁）、onset--残差則の傾き 11.616、成長率
+0.172513、厳密保存 \(4.4\times10^{-16}\)、等分配、閉包探索の exact
+部分------は再現した。再現しないのは丸め誤差の指数増幅で軌道が分かれる後半の量（秩序化の到達
+step、\(H_\parallel/H_\perp\)
+の最終分配、モジュライの位相値、出発深さの桁数）である。\(N=5\) の
+\(3+3+2+2\) 時間分離（2627/4923
+step）を生成したプログラムは公開パッケージに含まれていなかった。
 
-\[
-t_{\rm onset}=a[-\ln\varepsilon_{\rm parent}]+b
-\]
+\subsubsection{3.3
+三者比較・四者比較による切り分け（数値事実）}\label{ux4e09ux8005ux6bd4ux8f03ux56dbux8005ux6bd4ux8f03ux306bux3088ux308bux5207ux308aux5206ux3051ux6570ux5024ux4e8bux5b9f}
 
-に対し、
+同じ 15
+パッケージに変更を段階的に適用して再実行した（\texttt{論文v1\_全プログラム修正版\_20260828}、\(L=144\)、5000
+step）。
 
-\[
-a=11.616225,
-\qquad b=-99.563139,
-\qquad R^2=0.99999201.
-\]
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+系
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+適用した変更
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+結果
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+原本 & なし & 潜伏 100〜600 step → 指数成長 0.17〜0.25/step →
+等分配（\(|z|^2\to1/M\)、PR/M \(=1\)）、\(\sigma=N-1\)、Floquet
+1.0901 \\
+baseline & 変更 2 と変更 1(a)(c)（相互作用は位相のみのまま） &
+\textbf{原本を再現}：成長率 0.172（\(N=5\)）、Floquet
+1.0903、等分配、\(N=5\) の 13 個・12 通り閉包も再現 \\
+fixed & 変更 1(b) も適用、初期化は旧のまま & 親が固定点でないため step 1
+から弾道的に離脱、指数域なし、\(H_\perp/H\to0.93\)〜0.999、局在（\(|z|^2\)
+相対幅 \(\approx2\)）、スペクトルエントロピー 0.87 \\
+fixed\_equimodular & 変更 1・2・3-1 &
+潜伏が戻り、丸め床から指数成長。\(N=5\)：5000 step
+内では床（\(4.6\times10^{-19}\)）、\(N=6,7\)：onset 4152/4316、成長率
+0.0059/0.0063、\(N=8\)〜15：床、\(N=16\)：\(1.3\times10^{-17}\)。Floquet（\(N=5\)）1.0001 \\
+\end{longtable}
+}
 
-4点に対する予測 onset は 71.940, 134.236, 175.766, 238.058 step
-で、整数検出値との差は最大0.236
-stepである。したがって前版の回帰統計は生データと整合しており、見かけの矛盾は「要求
-tolerance」と「実測固定点残差」を同一視したことから生じる。
+この表から次が確定する。
 
-この結果は、seedless onset の内在床が \texttt{make\_parent}
-固定点残差であり、残差が開始時刻を制御する一方、十分小さい残差領域では支配成長率が約0.17251/stepへ収束することを示す。
-
-\subsubsection{26.2 rotating-frame Jacobian が rank-4
-と成長率を同時に説明する}\label{rotating-frame-jacobian-ux304c-rank-4-ux3068ux6210ux9577ux7387ux3092ux540cux6642ux306bux8aacux660eux3059ux308b}
-
-親状態の一step全体位相回転を除いた rotating-frame map の20実次元
-Jacobian を数値線形化した。
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 rotating-frame Floquet spectrum。支配不安定実2重固有値と第2の実2重固有値のギャップを示す。不安定乗数はすべて実軸上にある。}]{figs/N5_floquet_spectrum.png}}
-\caption{N=5 rotating-frame Floquet
-spectrum。支配不安定実2重固有値と第2の実2重固有値のギャップを示す。不安定乗数はすべて実軸上にある。}
-\end{figure}
-
-最大不安定 multiplier は実数（虚部 0）で2重に現れ、その値は
-
-\[
-|\mu_1|=1.090086569
-\]
-
-である。実測スペクトル（\texttt{floquet\_spectrum.csv}）では、支配乗数
-\(\mu_1\) と、それより弱い第2の不安定乗数 \(\mu_2=1.052603212\)
-がいずれも実2重固有値として現れ、両者の間には明瞭な不安定率の差がある。したがって、データから直接確定できるのは、支配不安定固有空間が実2次元であり、それが最速の不安定方向を与えるという事実である。
-
-全20乗数には明瞭な対構造が観測される。ただし、大域位相同変性 \[
-F(e^{i\alpha}Z)=e^{i\alpha}F(Z)
-\] だけから、任意の摂動 \(\delta Z\) に対して \[
-DF(Z)[i\,\delta Z]=i\,DF(Z)[\delta Z]
-\] すなわち Jacobian
-全体が複素線形であることまでは自動には従わない。したがって、実2重性の対称性起源を大域位相対称性へ帰着するには、Jacobian
-が複素構造と可換することを別途解析的に示す必要がある。本論文では、2重性そのものは数値スペクトルの観測事実として扱い、その対称性起源は今後の解析課題として残す。
-
-また全20乗数の対数モジュラス和は約 \(-0.0855\)
-で負である。対象としている rotating-frame Jacobian
-が20実次元状態写像の微分であることから、 \[
-\sum_i\ln|\mu_i|=\ln|\det J|<0
-\]
-は親相対平衡近傍で局所状態体積に収縮が存在することを示す。これは全ノルムの厳密保存と矛盾せず、simplex秩序化をアトラクタ的に解釈できる可能性と整合する。ただし、収縮を特定の「角度方向」に限定するには接空間分解を別途示す必要がある。
-
-したがって
-
-\[
-\boxed{\text{parent rank-2}+\text{dominant unstable 2D}=\text{rank-4}}
-\]
-
-という選択則が得られる。
-
-さらに振幅指数
-
-\[
-\lambda_A=\ln\mu_1=0.0862571143
-\]
-
-から二乗振幅指数
-
-\[
-2\lambda_A=0.172514229
-\]
-
-を予測する。これは直接時間発展の \(H_\perp\) 成長率 0.172513
-程度と一致する。
-
-さらに
-
-\[
-\frac1{\lambda_A}=11.5932
-\]
-
-は、tol掃引で得た onset-vs-residual の傾き 11.6162 と一致する。
-
-したがって N=5 の急拡大開始については、
-
-\begin{center}\fbox{\parbox{0.9\linewidth}{\centering self-consistent relative equilibrium $\rightarrow$ linear instability $\rightarrow$ dominant 2D unstable eigenspace $\rightarrow$ rank-4 and $H_\perp$ exponential growth}}\end{center}
-
-という定量的機構が成立する。
-
-なお第2の不安定実2重固有値
-
-\[
-|\mu_2|=1.052603212
-\]
-
-も存在し、より遅い副成長指数 \(2\ln\mu_2\simeq0.10253\) を予測する。
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 Floquet有限差分安定性。支配乗数が差分刻みに対して安定であることを確認する。}]{figs/N5_floquet_fd_stability.png}}
-\caption{N=5
-Floquet有限差分安定性。支配乗数が差分刻みに対して安定であることを確認する。}
-\end{figure}
-
-\subsubsection{26.3 preheating 型 mode transfer
-との構造的類似}\label{preheating-ux578b-mode-transfer-ux3068ux306eux69cbux9020ux7684ux985eux4f3c}
-
-本系では全ノルムが厳密保存されるため、急拡大はエネルギー生成というより、コヒーレント親モードから直交モードへの指数的
-transfer である。構造的には宇宙論的 inflation 本体より、parametric mode
-amplification / preheating に近い。
-
-ただし本論文では標準的なpreheating方程式との同一性を主張しない。Floquet不安定性、親成分の枯渇、飽和後の長時間再配分という力学的類似を指摘するに留める。
-
-さらに step 5000 でも \(H_\parallel=0.322005\)、\(H_\perp=0.677995\)
-であり、親平面成分は消失していない。20実次元上の無相関な等方状態を単純基準とすれば固定2次元親平面への期待射影比は
-\(2/20=0.1\)
-であるため、観測値0.322はその約3.22倍である。ただし本写像の準安定分布が20次元球面上の一様分布であることは示していないので、これは「初期親平面への記憶残存を示唆する診断量」として扱い、厳密な統計的有意性は今後のseed系列で検証する。
-
-\subsubsection{26.4 N=5 のモジュライ seed
-掃引}\label{n5-ux306eux30e2ux30b8ux30e5ux30e9ux30a4-seed-ux6383ux5f15}
-
-8個の parent random seed で5000
-stepを再実行したところ、全runで最終群サイズは
-
-\[
-3+3+2+2
-\]
-
-となり、二距離族 modulus はともに約0.1へ収束した。
-
-一方、符号を商に取った二距離族間の相対位相はrun間で変化した。
-
-\begin{figure}
-\centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={N=5 seed掃引における二距離族相対位相。3+3+2+2は再現する一方、相対位相は一意に固定されない。}]{figs/N5_moduli_relative_phase_seed_sweep.png}}
-\caption{N=5
-seed掃引における二距離族相対位相。3+3+2+2は再現する一方、相対位相は一意に固定されない。}
-\end{figure}
-
-これは \(3+3+2+2\) と等 modulus
-が剛的に選択される一方、距離族間相対位相には平坦方向が残る可能性を支持する。より長時間・多数seedでの追試が必要である。
-
-\subsection{27.
-限界と今後の課題}\label{ux9650ux754cux3068ux4ecaux5f8cux306eux8ab2ux984c}
-
-今回の追加解析によって、従来の未解決問題の一部は縮約された。
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
+\begin{itemize}
 \tightlist
 \item
-  \textbf{急拡大開始}：N=5では相対平衡の線形不安定性として定量化できた。他Nで同じFloquet構造が成立するかを確認する。
+  \textbf{変更 2（Cayley→指数写像）と変更
+  1(a)(c)（親と初期状態の正規化）は v1 の現象の原因ではない}（baseline
+  が原本を再現）。
 \item
-  \textbf{rank-4選択}：N=5では最大不安定2実次元が説明する。第2不安定対の実時間成長を直接分離する。
+  \textbf{v1 固有の像------数百 step の潜伏と \(0.17\)〜\(0.25\)/step
+  の急拡大、等分配、\(N=5\) の \(3+3+2+2\)------は変更
+  1(b)、すなわち位相のみの相互作用に依存していた}。位相のみ \(K\)
+  は消えた波が満額の作用を出す相互作用であり、等分配はその帰結であった。一方、\(\sigma=N-1\)
+  はスケール不変形 \(\mu=-(N-1)r^2\) として振幅込み \(K\)
+  でも成り立ち（§6.1）、インフレーション的成長そのものも振幅込み \(K\)
+  で残る（§7）。
 \item
-  \textbf{停止}：無限増大しない理由は全ノルム保存で解決。残る問題は、なぜ等モジュラー・ヌルsimplexへ秩序化するかである。
-\item
-  \textbf{熱化／秩序化}：スペクトルエントロピーは最終的に最大となるが単調ではない。N依存の緩和時間・FPUT型準可積分性の有無を調べる。
-\item
-  \textbf{N=5のモジュライ}：相対位相が真の平坦方向か、超長時間でロックするかを多数seed・長時間で確認する。
-\item
-  \textbf{\(U^n=I\)}：自己無撞着性からcompact phase
-  orbitまでは導出したが、有限回帰には rational phase locking
-  の機構が必要である。
-\item
-  \textbf{N=5特異性の一般分類}：反対符号位相クラスの存在条件を \(K_N\)
-  の均衡辺クラス設計として分類する。
-\item
-  \textbf{他NのFloquet
-  spectrum}：N=3〜16で不安定空間次元とsimplex秩序の対応を系列化する。
-\item
-  \textbf{親平面記憶}：N=5では step 5000 でも \(H_\parallel=0.322\)
-  が残る。この残存率のseed依存、N依存、長時間極限を調べる。
-\item
-  \textbf{実2重固有値の対称性起源}：rotating-frame Jacobian
-  の全20乗数が対構造を持ち不安定乗数が実2重で現れる理由は、数値観測事実として扱った。大域位相同変性だけでは
-  Jacobian
-  の複素線形性は従わないため、複素構造との可換性あるいは別の対称性を解析的に示す必要がある。
-\end{enumerate}
+  変更 1(b) を入れると旧初期状態は固定点でなくなる（変更 3
+  が必要になる理由）。fixed
+  の弾道離脱は親の残差が作る項であり、不安定性ではない（§8.1）。
+\end{itemize}
 
-\subsection{28. 結論}\label{ux7d50ux8ad6}
+fixed の \(N=6,7,10,11\) は変更 1(a)
+の副作用で親探索の収束判定（単位ノルム前提の残差式）が壊れ、対照として無効である。fixed\_equimodular
+ではこの問題は起きない（残差 \(10^{-11}\)〜\(10^{-13}\)）。
 
-本研究は、seedなし関係波閉鎖系の急拡大を再監査し、数値観察の一部を厳密定理へ、開始機構の一部を線形安定性問題へ格上げした。
+\pandocbounded{\includegraphics[keepaspectratio,alt={図 1}]{figs/figA_four_way_Hperp_N3_N16.png}}
 
-主要結果は次の通りである。
+\textbf{図 1.} 四者比較の \(H_\perp/H_{\rm total}\)（\(L=144\)、5000
+step、差し引き読出し・床
+\(10^{-16}\)）、\(N=3\)〜16。灰：原本（Cayley・位相のみ
+\(K\)・親正規化）、青：baseline（線形回転・位相のみ
+\(K\)）、赤：fixed（振幅込み
+\(K\)・旧親）、緑：fixed\_equimodular（振幅込み
+\(K\)・等モジュラー自己無撞着親）。baseline は原本と重なり、fixed は
+step 1 から弾道離脱し、fixed\_equimodular は \(N=6,7\)（および \(N=10\)
+の後半）だけが 5000 step 内に指数成長を見せる。
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  実反対称生成子のCayley更新は実直交であり、\(Z^\dagger Z\) と \(Z^TZ\)
-  を厳密保存する。
-\item
-  したがって \(H_\perp\) の増大は外部注入ではなく、\(H_\parallel\)
-  からの内部移送であり、\(H_\perp\le H_{\rm total}\)
-  が急拡大の運動学的上限を与える。
-\item
-  \(K/\sigma_{\max}\) 正規化は同一状態でCayley
-  stepの再尺度化に厳密対応する。有限stepで観測された約6.8\%の成長率差は、§12の一次刻み収束則
-  \(g(n)=1.1596346-4.10498/n\) と raw-\(K\) の \(n_{\rm eff}\simeq41.2\)
-  から \(g_{\rm pred}\simeq1.0600\) と予測され、実測 \(1.05874\)
-  と約0.13\%で一致する。したがって両更新は同一の連続極限へ収束し、正規化・刻みが急拡大を人工的に生成した可能性は排除される。
-\item
-  seedless N=5では \texttt{make\_parent} 固定点残差を小さくすると onset
-  が \(-\ln\varepsilon\) に比例して遅れ、成長率は不変である。
-\item
-  rotating-frame Jacobian には支配的な不安定実2重固有値
-  \(\mu_1=1.090086569\) があり、第2の実2重固有値 \(\mu_2=1.052603212\)
-  より速い。数値スペクトルから支配不安定空間が実2次元であることが確定し、この2次元が
-  parent rank-2
-  に加わることでrank-4の初期選択を説明する。実2重性の対称性起源については、Jacobian
-  と複素構造の可換性を別途証明する必要がある。
-\item
-  \(2\ln|\mu_1|=0.172514\) は直接測定した \(H_\perp\)
-  成長率約0.172513と一致し、\(1/\ln|\mu_1|=11.593\)
-  は\textbf{実測固定点残差}に対する onset
-  回帰傾き11.616と一致する。この三重整合がN=5開始機構の中心的定量結果である。
-\item
-  全頂点 star
-  二乗閉包は、重心表示において全simplex頂点が複素ヌル錐上にあることと同値である。
-\item
-  等分配と合わせた準安定状態は \textbf{equimodular null complex simplex}
-  として統一的に記述できる。
-\item
-  N=4の120\(^\circ\)位相差は局所閉包＋等分配から厳密に導出される。
-\item
-  N=5の13個の非自明2辺閉包と12通りのexact coverは、\(3+3+2+2\)
-  符号対構造から \(3\times3+2\times2=13\)、\(3!2!=12\)
-  と厳密に導出される。
-\item
-  N=5の8-seed掃引では \(3+3+2+2\) と等 modulus
-  は全runで再現した一方、二距離族間相対位相は一意に固定されず、モジュライの可能性を示した。
-\item
-  自己無撞着性から複素回転構造、二乗ゼロ閉包、compact \(S^1\)
-  位相軌道までは導出できるが、\(U^n=I\) には別途 rational phase locking
-  が必要である。
-\end{enumerate}
+\subsubsection{3.4
+統一プロトコル}\label{ux7d71ux4e00ux30d7ux30edux30c8ux30b3ux30eb}
 
-したがってN=5の急拡大開始は、少なくとも数値線形化の範囲で
-
-\begin{center}\fbox{\parbox{0.9\linewidth}{\centering self-consistent rank-2 relative equilibrium $\rightarrow$ dominant 2D linear instability $\rightarrow$ rank-4 $\rightarrow$ exponential internal mode transfer $\rightarrow$ bounded saturation $\rightarrow$ equimodular null-simplex ordering}}\end{center}
-
-という一つの力学系列として記述できる。
-
-\subsection{図ファイルの配置}\label{ux56f3ux30d5ux30a1ux30a4ux30ebux306eux914dux7f6e}
-
-本文中の図は出現順に図1から通し番号を付した。
-
-本稿の図はリポジトリ内 \texttt{次元の生成構造/figs/}
-に配置し、そこからの相対パスで参照する（Zenodo 公開版では図一式を
-\path{nbody_self_consistent_inflation_figures_v1.zip}
-に同梱する）。今回の追加実験で使用する図は、正規化比較、親平面から直交方向への移送、スペクトルエントロピー、tol
-掃引、onset-residual 則、Floquet スペクトル、有限差分安定性、および N=5
-モジュライ seed 掃引を含む。
-
-\subsection{自己引用}\label{ux81eaux5df1ux5f15ux7528}
-
-\textbf{{[}K1{]}} N. Kihara, \emph{Anonymous Equal-Amplitude
-Composite-Wave Model: Basic Axiom System v9 --- Pure Definition}, 2026.
-
-\textbf{{[}K2{]}} 木原範昭,
-「N体完全二体関係波における生成子ランク線形上界と三方向飽和」, 2026.
-Concept DOI: 10.5281/zenodo.21465898.
-
-\textbf{{[}K3{]}} 木原範昭, 「N体固定生成子系における平面分解読出し」,
-2026. Concept DOI: 10.5281/zenodo.21468959.
-
-\textbf{{[}K4{]}} 木原範昭,
-「N体関係波閉鎖系における状態の自発的分裂の開始と帰結の三分類」, 2026.
-Concept DOI: 10.5281/zenodo.21486233.
-
-\textbf{{[}K5{]}} 木原範昭, 「波の数は系の分解能である」, 2026. Concept
-DOI: 10.5281/zenodo.21486544.
-
-\textbf{{[}K6{]}} 木原範昭,
-「完全二体関係波の反対称生成子から生じる三方向構造」, 2026.
-
-\textbf{{[}K7{]}} 木原範昭, 「N体関係波閉鎖系における三方向空間の創発」,
-2026.
-
-\textbf{{[}K8{]}} 木原範昭,
-「N体関係波閉鎖系における三方向生成の時間構造――二段階seed除去による因果分離」,
-2026. Version DOI: 10.5281/zenodo.21614403; Concept DOI:
-10.5281/zenodo.21614402.\\
-note: https://note.com/kiharanoriaki/n/n48a02cd70f47
-
-\subsection{外部先行研究}\label{ux5916ux90e8ux5148ux884cux7814ux7a76}
-
-\textbf{{[}E1{]}} A. Aste, ``Origin of the Complex Structure of Quantum
-Mechanics,'' arXiv:1905.12894, 2019.\\
-https://arxiv.org/abs/1905.12894
-
-\textbf{{[}E2{]}} T. Aoki, M. Hirasawa, Y. Ito, J. Nishimura, A.
-Tsuchiya, ``On the structure of the emergent 3D expanding space in the
-Lorentzian type IIB matrix model,'' \emph{Progress of Theoretical and
-Experimental Physics} 2019, 093B03 (2019). DOI: 10.1093/ptep/ptz092.
-
-\textbf{{[}E3{]}} M. Hirasawa, K. N. Anagnostopoulos, T. Azuma, K.
-Hatakeyama, J. Nishimura, S. Papadoudis, A. Tsuchiya, ``The effects of
-SUSY on the emergent spacetime in the Lorentzian type IIB matrix
-model,'' arXiv:2407.03491, 2024.\\
-https://arxiv.org/abs/2407.03491
-
-\textbf{{[}E4{]}} H. Kihara, M. Nitta, M. Sasaki, C.-M. Yoo, I. Zaballa,
-``Dynamical Compactification and Inflation in Einstein-Yang-Mills Theory
-with Higher Derivative Coupling,'' \emph{Physical Review D} \textbf{80},
-066004 (2009). DOI: 10.1103/PhysRevD.80.066004.
+§5 以降の新しい走行は全て次のプロトコルで行う：振幅込み
+\(K_{ef}=\mathrm{Im}(\bar z_ez_f)\)、\(\exp((2\pi/124)K)\)、正規化なし、種なし
+\(Z_0=v\)、40000 step、\(H_\perp\) は親平面（\(a,b\) の張る実 2
+次元）に直交する成分の直接計算
+\(\|Z-p(p\cdot Z)-q(q\cdot Z)\|^2\)（丸め床 \(10^{-32}\)）。刻み
+\(L\)（§3.3 は 144、§7 は
+124）は、連続極限の軌道には時間の再径数化としてしか効かない（v1
+§12）が、有限刻みの離散計算では \(O(\Delta^2)\)
+の積分器依存を残す（§8.3：中立な親の見かけの成長率 \(\Delta^2/8\) は
+\(L\) で変わる）。
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\subsection{再現性に関する注記}\label{ux518dux73feux6027ux306bux95a2ux3059ux308bux6ce8ux8a18}
+\subsection{4. 主張
+1：ゼロ閉塞は定理である}\label{ux4e3bux5f35-1ux30bcux30edux9589ux585eux306fux5b9aux7406ux3067ux3042ux308b}
 
-本研究で用いた再実験データ・プログラム・図化は、2026-08-26
-に作成した以下の検証パッケージ群に保存している。
+\subsubsection{4.1
+定理と証明（証明済み）}\label{ux5b9aux7406ux3068ux8a3cux660eux8a3cux660eux6e08ux307f}
+
+\textbf{定理.} \(K\) が実反対称行列で、\(v=a+ib\) が
+\(iKv=\mu v\)、\(\mu\ne0\) を満たすなら
+\(v^Tv=\sum_e z_e^2=0\)、すなわち \(a^Ta=b^Tb\) かつ \(a^Tb=0\)。
+
+\textbf{証明.} \(iK(a+ib)=\mu a+i\mu b\) の実部・虚部から
+\(Ka=\mu b\)、\(Kb=-\mu a\)。よって
+\(\mu\,a^Ta=-a^TKb\)、\(\mu\,b^Tb=b^TKa=-a^TKb\)（反対称性）、したがって
+\(\mu(a^Ta-b^Tb)=0\)。また
+\(\mu\,a^Tb=a^TKa=0\)（反対称行列の二次形式は零）。\(\mu\ne0\)
+なので主張が従う。□
+
+証明に使ったのは「\(K\) が実」「\(K\) が反対称」「\(v\)
+が非零固有モード」の 3
+つだけである。正規化・振幅分布・\(N\)・隣接構造・親の生成法は現れない。同じことは固定した
+\(K\) の固有ベクトル \(v\) と \(\bar v\)（固有値 \(\mu\) と
+\(-\mu\)）の直交性 \(\bar v^\dagger v=v^Tv=0\) としても言える（v1 §6
+の形）。
+
+\textbf{系（力学による保存）.} \(\exp(\Delta K)\) は実直交なので
+\(v^Tv\) は保存される。閉塞は初期状態で成立すれば全 step で成立する。
+
+\textbf{注意（射程）.} この定理は位相のみの \(K\)（v1
+の旧エンジン）でも成立する。したがって閉塞の成立は振幅込み相互作用の正しさの証拠にはならない。閉塞の起源は、実反対称生成子の非零複素固有モード構造（\(K\)
+が実、\(K\) が反対称、\(\mu\ne0\) の 3 条件）にある。
+
+\subsubsection{4.2
+実測（数値事実）}\label{ux5b9fux6e2cux6570ux5024ux4e8bux5b9f}
+
+\textbf{旧 4
+系統（2026-08-29）}：原本／baseline／fixed／fixed\_equimodular ×
+\(N=3\)〜16 の 56 親で、step 0 の \(|\sum z^2|/H\) は最大
+\(1.0\times10^{-13}\)（fixed\_equimodular、親残差 \(10^{-11}\)
+相当）、他は \(\le4.4\times10^{-15}\)。振幅が等分配でも局在（\(|z|^2\)
+相対幅
+1.3）でも、正規化あり（\(\|v\|=1\)）でも無し（\(0.45\)〜\(1.91\)）でも成立。
+
+\textbf{本稿の 4 生成法（§7.1）}：54 親で
+\(\le8\times10^{-14}\)（make\_parent）、\(\le2.5\times10^{-16}\)（他 3
+法）。走行中の \(|Z^TZ|/H\) は 40000 step で
+\(\le5.1\times10^{-13}\)（丸め蓄積のみ）。
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={図 2}]{figs/fig1_closure_step0.png}}
+
+\textbf{図 2.} step 0 の \(|\sum z^2|/H\)、\(N=3\)〜16。塗り記号は本稿の
+4 生成法（54 親）、× は 2026-08-29 の参照 4 系統（56
+親）。生成法・正規化の有無・振幅分布に依らず全て \(10^{-13}\)
+以下（make\_parent 系は親残差 \(10^{-11}\)
+相当、手作り・非等モジュラー・乱数均衡は \(10^{-16}\) 台）。
+
+\subsubsection{4.3 v1 との関係}\label{v1-ux3068ux306eux95a2ux4fc2}
+
+v1 §6 は同じ定理を導出し、§24
+で「閉塞は公理から導出可能な定理」と位置づけていた。本稿はこれを取り消さない。訂正するのは、v1
+では「自己無撞着な親から閉塞が出る」ことを主に旧エンジンの親で確認していた点で、本稿は定理が生成法・正規化・振幅分布のいずれにも依らないことを
+110
+親の実装で数値検証した（証明済みの定理をサンプルで確定する必要はなく、検証は実装が定理の前提を満たしていることの確認である）。
+
+\(U^n=I\) については v1 §24 のとおり本定理からは従わない（\(S^1\)
+軌道のコンパクト性 \(\not\Rightarrow\)
+有限回帰）。本稿でも未導出のままである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. 主張
+2：複素シンプレックスは制約を与えない}\label{ux4e3bux5f35-2ux8907ux7d20ux30b7ux30f3ux30d7ux30ecux30c3ux30afux30b9ux306fux5236ux7d04ux3092ux4e0eux3048ux306aux3044}
+
+\subsubsection{5.1
+定理（証明済み）}\label{ux5b9aux7406ux8a3cux660eux6e08ux307f}
+
+各関係の 2 乗距離を \(d^2_{ij}=z_{ij}^2\)
+と読み、\(D^2=(d^2_{ij})\)、\(J=I-\mathbf 1\mathbf 1^T/N\)、\(B=-\tfrac12JD^2J\)
+とする（v1 §17 と同じ）。
 
 \begin{itemize}
+\tightlist
 \item
-  \path{K_sigma_normalization_artifact_test_N4_N5_20260826.zip}
+  \textbf{実の場合}：\(d^2_{ij}\) が実で、\(N\) 点の実配置
+  \(x_i\in\mathbb R^{N-1}\) が \(|x_i-x_j|^2=d^2_{ij}\)
+  を満たすための必要十分条件は \(B\succeq0\)（Schoenberg
+  {[}E3{]}、Cayley--Menger 条件と同値）。これは不等式の拘束で、\(d^2\)
+  の空間の中の錐を切り出す。
 \item
-  \path{N5_gamma_continuum_test_bundle_20260825.zip}
-\item
-  \path{N3_N4_complex_simplex_complete_analysis_20260826.zip}
-\item
-  \path{N5_complex_simplex_complete_analysis_20260826.zip}
-\item
-  \path{N6_N7_complex_simplex_complete_analysis_20260826.zip}
-\item
-  \path{N8_N9_complex_simplex_complete_analysis_20260826.zip}
-\item
-  \path{N10_N11_complex_simplex_complete_analysis_20260826.zip}
-\item
-  \path{N12_N13_complex_simplex_complete_analysis_20260826.zip}
-\item
-  \path{N14_N15_complex_simplex_complete_analysis_20260826.zip}
-\item
-  \path{N16_complex_simplex_complete_analysis_20260826.zip}
-\item
-  \path{N3_N16_partial_zero_closure_analysis_20260826.zip}
-\item
-  \path{N3_N16_nontrivial_zero_closure_analysis_20260826.zip}
-\item
-  \path{N14_N16_complete_nontrivial_zero_closure_search_20260826.zip}
-\item
-  \path{N5_dynamics_followup_theorems_and_stability_20260826.zip}
+  \textbf{複素の場合}：\(B\) は複素対称行列。任意の複素対称行列は
+  Autonne--Takagi 分解 \(B=U\Sigma U^T\)（\(U\) ユニタリ、\(\Sigma\ge0\)
+  対角）を持つ {[}E2{]}。\(X=U\Sigma^{1/2}\) と置けば
+  \(B=XX^T\)。\(D^2\) は対角零の対称行列なので
+  \(B_{ii}+B_{jj}-2B_{ij}=d^2_{ij}\) が恒等的に成り立ち、\(X\) の行
+  \(x_i\) について
+  \((x_i-x_j)\cdot(x_i-x_j)=x_i\cdot x_i+x_j\cdot x_j-2x_i\cdot x_j=B_{ii}+B_{jj}-2B_{ij}=d^2_{ij}\)（双線形形式、複素共役なし）。さらに
+  \(B\mathbf 1=0\)（\(J\mathbf1=0\)）なので非零特異値の列だけを残した
+  \(X\) は \(X^T\mathbf1=0\)、すなわち重心零で rank \(X\le N-1\) の
+  \(\mathbb C^{N-1}\)
+  埋め込みである。正定値条件は消え、\textbf{任意の}複素 \(d^2\)
+  が埋め込める。□
 \end{itemize}
 
-これらのプログラム・生データ・図化を用いることで、本稿の主要数値結果を再現できる。
+したがって \(\mathbb C^M\) の任意の状態 \(v\) は（rank \(<N-1\)
+の退化を許した）複素シンプレックスを与える。ただし辞書 \(d^2=z^2\)
+は各関係の符号 \(z_e\to-z_e\) を忘れるので、状態から形への写像は 1:1
+ではない：零成分がなければ 1 つの形に \(2^M\)
+個の状態（符号枝）が対応し、形が表すのは \(v/(\mathbb Z_2)^M\)
+である。符号枝は現在の力学では厳密な離散対称性で結ばれる：\(S=\mathrm{diag}(s_e)\)、\(s_e=\pm1\)
+に対して \(K(Sv)=SK(v)S\)（\(K_{ef}\) に \(s_es_f\)
+が掛かる）、したがって \(\Phi(Sv)=e^{\Delta SK(v)S}Sv=S\,\Phi(v)\)
+であり、符号枝どうしの軌道は共役である。形の側の自由度は \(N(N-1)\)
+複素座標 \(-(N-1)\) 平行移動 \(-(N-1)(N-2)/2\) 複素直交群
+\(O(N-1,\mathbb C)\) \(=M\) で、符号を除いた状態の自由度と一致する。
+
+\textbf{系.} 実の読み方 \(d^2=|z|^2\ge0\) では閉塞 \(\sum d^2=0\)
+は全零以外で不可能である。閉塞が可能なのは、複素化が正値性という拘束を除去したからである。複素シンプレックスは公理でも定理でも選択でもなく、\(d^2:=z^2\)
+という辞書（規約）のもとで状態の符号を忘れた像である。
+
+\subsubsection{5.2
+実測（数値事実）}\label{ux5b9fux6e2cux6570ux5024ux4e8bux5b9f-1}
+
+自己無撞着でも閉塞でもない乱数状態（各成分の実部・虚部が標準正規、\(N=3\)〜16
+× 100
+個）について（\texttt{v2補完実験\_…/program/pass2\_embed\_random.py}）：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\(N\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+複素：埋め込み誤差 \(\max|(x_i-x_j)^2-d^2_{ij}|/\max|d^2|\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+複素：rank \(=N-1\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+実（\(d^2=|z|^2\)）：\(B\succeq0\) で埋め込める個数 /100
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+3 & \(1.6\times10^{-15}\) & 100/100 & 63 \\
+4 & \(1.3\times10^{-15}\) & 100/100 & 12 \\
+5 & \(1.6\times10^{-15}\) & 100/100 & 2 \\
+6〜16 & \(\le2.7\times10^{-15}\) & 100/100 & 0 \\
+\end{longtable}
+}
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={図 3}]{figs/fig2_embed_random.png}}
+
+\textbf{図 3.} 乱数状態 100 個 × \(N=3\)〜16
+の埋め込み。左：複素（\(d^2=z^2\)）の最大相対誤差------全て \(10^{-15}\)
+台で厳密に埋め込まれ rank \(=N-1\)。右：実の読み（\(d^2=|z|^2\)）で
+\(B\succeq0\) となり埋め込める個数------\(N\ge6\) で 0。
+
+\subsubsection{5.3 v1
+の幾何定理の位置づけ}\label{v1-ux306eux5e7eux4f55ux5b9aux7406ux306eux4f4dux7f6eux3065ux3051}
+
+v1 §17 の「全頂点の star 二乗閉塞 \(\Leftrightarrow\) 全頂点が
+\(x_i\cdot x_i=0\) 上にある」は \(B\)
+の代数だけで成り立つ定理であり、維持する。ただし名称は「光円錐」から\textbf{複素ヌル錐}に改める：複素二次形式の零集合には時間的／空間的の区別がない。\(N=5\)
+の等モジュラー状態のように \(d^2\) が全て実で \(\mathbb R^{2,2}\)
+に実埋め込みできる場合だけ光円錐と呼べるが、それは等モジュラー点の性質であって
+\(N=5\) の性質ではない（§7.1 の非等モジュラー \(N=5\) では \(d^2\)
+は複素になる）。
+
+本稿の結論として、複素シンプレックスは\textbf{結果を描く言語}であって\textbf{状態を選ぶ原理}ではない。v1
+が §18
+で「準安定状態＝等モジュラー・ヌル複素シンプレックス」と述べたとき、幾何が状態を選んでいたのではなく、位相のみの相互作用がそこへ収束させていた（§3.3）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. 主張 3
+の準備：自己無撞着な初期状態の作り方}\label{ux4e3bux5f35-3-ux306eux6e96ux5099ux81eaux5df1ux7121ux649eux7740ux306aux521dux671fux72b6ux614bux306eux4f5cux308aux65b9}
+
+変更 3 に用いた初期状態（以下「親」）の 4 生成法を定義する。以下
+\(S_i=\sum_{j\ne i}z_{ij}^2\)（頂点 \(i\) の局所和。局所閉塞は
+\(S_i=0\)）、\(W_i=\sum_{j\ne i}|z_{ij}|^2\)（頂点重み）と書く。
+
+\subsubsection{6.1
+自己無撞着の頂点形（証明済み）}\label{ux81eaux5df1ux7121ux649eux7740ux306eux9802ux70b9ux5f62ux8a3cux660eux6e08ux307f}
+
+\(\mathrm{Im}(\bar z_ez_f)=(\bar z_ez_f-z_e\bar z_f)/2i\) を代入すると
+
+\[
+(iKv)_e=\tfrac12\bigl[\bar z_e(Az^2)_e-z_e(A|z|^2)_e\bigr],
+\]
+
+\(e=(i,j)\) の隣接和は
+\((Az^2)_e=S_i+S_j-2z_e^2\)、\((A|z|^2)_e=W_i+W_j-2|z_e|^2\)
+なので、自己無撞着 \(iKv=\mu v\) は各関係について
+
+\[
+S_i+S_j=(2\mu+W_i+W_j)\,\frac{z_e^2}{|z_e|^2}
+\]
+
+と同値である。\textbf{系}：\(S_i=0\)（全頂点）かつ
+\(W_i=W\)（全頂点）ならば自己無撞着で \(\mu=-W\)。逆に自己無撞着かつ
+\(S\equiv0\) なら \(W_i\equiv-\mu\)。等モジュラー状態では
+\(W_i=(N-1)r^2\)、したがって \(\mu=-(N-1)r^2\)（v1 の \(\sigma=N-1\)
+のスケール不変形。\(N=3\) は \(-\tfrac32 r^2\)）。
+
+\subsubsection{6.2 4 生成法}\label{ux751fux6210ux6cd5}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+記号
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+生成法
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+制約
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+構成
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+mp & make\_parent 等モジュラー（3-1） & 等モジュラー & 3
+段階：旧アルゴリズム（位相のみ \(K\) の固有モード反復、正規化なし）で
+rank-2 の状態 → 位相のみ \(K\) の時間発展で \(|z|^2\) の相対幅
+\(<10^{-9}\) まで進める → 振幅込み \(K\) の固有モードへの混合反復で残差
+\(<10^{-10}\) まで磨く。乱数は rng(40260721+1000N) \\
+hm & 手作り等モジュラー（3-1） & 等モジュラー & 偶数 \(N\)：完全グラフの
+1-因子分解（円法）の色 \(c\) に位相 \(\theta=c\pi/(N-1)\)。奇数
+\(N\)：距離クラス \(d\) に
+\(\theta=(d-1)\pi/q\)、\(q=(N-1)/2\)。\(N=3\)：\(0/60/120°\)。一般和則
+\(\sum_f r_f^2\sin^2\phi_{ef}=-\mu\)、\(\sum_f r_f^2\sin2\phi_{ef}=0\)
+を厳密に満たす（残差 \(\le1.2\times10^{-16}\)） \\
+ne & 非等モジュラー（3-2） & なし & hm と同じ位相配置で、クラス \(c\)
+の振幅二乗を \(a_c=\bar r^2(1+0.6\cos(4\pi c/q))\)
+とした状態（自己無撞着条件は
+\(\sum_ca_c\omega^c=0\)、\(\omega=e^{2\pi i/q}\)。\(q\ge4\)
+で成立）。\(q\le3\) の \(N=3,4,5,7\)
+では等モジュラー点を通る自己無撞着解の連続族の上の別の点（\(N=5,7\) は
+\(S=0\) を保つ分枝、\(N=3,4\) は \(S\ne0\)） \\
+rb & 乱数均衡（3-2） & なし & 乱数初期値から \(\{S_i=0,\ W_i=W_0\}\) を
+Newton で解いた状態（§6.1
+の系により自己無撞着）。位相クラスも対称性もない。各 \(N\) 1
+個、rng(100+N) \\
+\end{longtable}
+}
+
+各 \(N\) で \(\|v\|\) を mp
+親に揃える（スケールは回転速度にしか効かない）。受け入れ検査（54/54
+合格）：残差
+\(\le6.4\times10^{-11}\)（mp）／\(\le1.7\times10^{-16}\)（他）、\(|\sum z^2|/H\le8\times10^{-14}\)、\(\mu\ne0\)。局所閉塞は
+\(N=3\)（不可能）と ne の \(N=4\) を除いて成立。rank は全て
+\(N-1\)（\(N=3\) の hm は 1、mp・ne は 2）。
+
+非等モジュラーな自己無撞着解が存在すること（ne, rb）自体が、v1 §18
+の等モジュラーが自己無撞着の必要条件ではないことを示す。等モジュラー点を通る自己無撞着解集合の次元は
+\(N\ge5\) で \(N^2-4N+1\)（\(=2M-(3N-1)\)、\(\{S=0,W=\text{const}\}\)
+の拘束数と一致）と数値で測られている（\texttt{複素シンプレックス\_重心閉塞\_非等モジュラー族\_20260830}。等モジュラー点近傍の解集合が
+\(\{S=0,W=\text{const}\}\) に一致することは、2 つの有限な rank
+条件を厳密演算で確認すれば陰関数定理で定理になる：\textbf{証明に必要な補題}）。
+
+\subsubsection{6.3 走行前予測}\label{ux8d70ux884cux524dux4e88ux6e2c}
+
+各親について 1 刻み写像 \(\Phi(z)=\exp(\Delta K(z))z\)
+の実ヤコビアンを中心差分で求め、親の回転
+\(e^{-i\phi}\)（\(\phi=\Delta\mu\)）を戻した共回転 1 刻み線形化行列
+\(G=R(+\phi)D\Phi(v)\)（回転座標系での固定点の接写像。先行記録では共回転モノドロミーと呼んだ）
+の最大固有値絶対値 \(\rho\) から \(\lambda_f=2\ln\rho\)（\(H_\perp\) の
+1
+刻み成長率）を計算し、走行前に固定した（\texttt{results/parents\_predictions.csv}）。判定規則：\(\rho-1>10^{-3}\)
+なら「不安定（40000 step
+内に飽和）」、以下なら「中立（床）」。既知の床（hm の \(N=5,7\)）でも
+\(\rho-1\approx10^{-4}\) が出る（§8.3 の刻み由来項。\(N=4\) は
+\(10^{-7}\)）ため、この閾値は既知の床と飽和の実走行 6
+種類（\(N=4\)〜9）で 2026-08-30 に較正したものである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{7. 主張
+3：計算条件変更後のインフレーション的発展、\(N=3\)〜16}{7. 主張 3：計算条件変更後のインフレーション的発展、N=3〜16}}\label{ux4e3bux5f35-3ux8a08ux7b97ux6761ux4ef6ux5909ux66f4ux5f8cux306eux30a4ux30f3ux30d5ux30ecux30fcux30b7ux30e7ux30f3ux7684ux767aux5c55n316}
+
+\subsubsection{\texorpdfstring{7.1
+結果行列（数値事実。\texttt{v2補完実験\_…/results/matrix\_N\_by\_method.md}）}{7.1 結果行列（数値事実。v2補完実験\_\ldots/results/matrix\_N\_by\_method.md）}}\label{ux7d50ux679cux884cux5217ux6570ux5024ux4e8bux5b9fv2ux88dcux5b8cux5b9fux9a13_resultsmatrix_n_by_method.md}
+
+床＝40000 step で \(\max H_\perp/H<10^{-10}\)。飽和＝\(H_\perp/H\ge0.5\)
+に到達。\(t_{50}\)＝到達 step。\(\lambda\)＝\(\ln H_\perp\)
+の指数窓（\(10^{-10}<H_\perp<10^{-3}\)）の傾き /step。括弧内は走行前予測
+\(\lambda_f\)。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\(N\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+mp（等モジュラー）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+hm（等モジュラー）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ne（非等モジュラー）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+rb（乱数均衡）
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+3 & 床 & 床 & 床 & --- \\
+4 & 床 & 床 & 床 & --- \\
+5 & \textbf{飽和} \(t_{50}=5029\), \(\lambda=0.0089\) (0.0089) & 床
+(0.0002) & \textbf{飽和} 5971, 0.0113 (0.0114) & \textbf{飽和} 5322,
+0.0126 (0.0126) \\
+6 & \textbf{飽和} 2933, 0.0151 (0.0151) & \textbf{飽和} 4338, 0.0160
+(0.0160) & \textbf{飽和} 4395, 0.0148 (0.0148) & \textbf{飽和} 6115,
+0.0103 (0.0103) \\
+7 & \textbf{飽和} 6564, 0.0070 (0.0070) & 床 (0.0002) & 床 (0.0003) &
+\textbf{飽和} 6553, 0.0097 (0.0097) \\
+8 & 床・成長中 \(\lambda=0.0005\) (0.0005) & \textbf{飽和} 3864, 0.0177
+(0.0177) & \textbf{飽和} 4031, 0.0172 (0.0172) & \textbf{飽和} 9345,
+0.0067 (0.0066) \\
+9 & 床・成長中 0.0007 (0.0007) & 床 (0.0003) & 床 (0.0003) &
+\textbf{飽和} 6505, 0.0098 (0.0098) \\
+10 & 床 (0.0003) & \textbf{飽和} 3468, 0.0198 (0.0198) & \textbf{飽和}
+3610, 0.0193 (0.0193) & \textbf{飽和} 6522, 0.0100 (0.0100) \\
+11 & 床 (0.0003) & 床 (0.0003) & 床 (0.0003) & \textbf{飽和} 6814,
+0.0094 (0.0094) \\
+12 & 床 (0.0004) & \textbf{飽和} 3391, 0.0202 (0.0202) & \textbf{飽和}
+3371, 0.0198 (0.0198) & \textbf{飽和} 11535, 0.0057 (0.0057) \\
+13 & 床 (0.0003) & 床 (0.0003) & 床 (0.0003) & \textbf{飽和} 30809,
+0.0020 (0.0020) \\
+14 & 床 (0.0003) & \textbf{飽和} 3194, 0.0209 (0.0209) & \textbf{飽和}
+3270, 0.0204 (0.0204) & 床 (0.0004) \\
+15 & 床 (0.0003) & 床 (0.0003) & 床 (0.0003) & 床 (0.0004) \\
+16 & 床 (0.0003) & \textbf{飽和} 3186, 0.0215 (0.0215) & \textbf{飽和}
+3266, 0.0210 (0.0210) & 床 (0.0005) \\
+\end{longtable}
+}
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={図 4}]{figs/fig3_Hperp_grid_N3_N16.png}}
+
+\textbf{図 4.} 全 54 走行の \(H_\perp/H\)（対数、40000
+step、\(L=124\)、種なし、直接読出し）。黒：mp、青：hm、橙：ne、緑：rb。凡例の数値は走行前に固定した予測
+\(\lambda_f\)。飽和する走行は \(10^{-27}\)
+台から一直線に立ち上がり、床の走行は \(10^{-20}\)〜\(10^{-14}\)
+に留まる。
+
+\subsubsection{7.2
+予測との照合（数値事実）}\label{ux4e88ux6e2cux3068ux306eux7167ux5408ux6570ux5024ux4e8bux5b9f}
+
+\begin{itemize}
+\tightlist
+\item
+  走行前の分類予測は \textbf{53/54}
+  で実測と一致した（主結果）。唯一の不一致 rb\(_{N=13}\) は
+  \(\rho-1=9.86\times10^{-4}\) で閾値 \(10^{-3}\)
+  を僅かに下回り「中立」と予測したが、\(t_{50}=30809\)
+  で飽和した。\(\lambda\) は予測 0.00197 に対し実測 0.00197（比
+  0.998）で成長率の予測は正しい。判定規則を「予測 \(t_{50}\le\)
+  走行長」に置き換えれば 54/54
+  になるが、これは結果を見た後の規則変更なので主結果にはしない。
+\item
+  飽和した 25 走行の \(\lambda\) 実測／予測比は
+  \textbf{0.997〜1.008}（指数窓の
+  \(R^2\ge0.997\)）。この一致の意味は、同じ離散写像の線形化（共回転 1
+  刻み線形化行列
+  \(G\)）が、その写像の非線形走行の初期指数率を与えること------線形安定性解析と直接時間発展の一致------であり、独立な物理的予言ではない。
+\item
+  床の走行の後半（30000〜40000 step）の \(\ln f\) の傾きは
+  \(2.7\)〜\(3.2\times10^{-4}\)/step で、生成法・\(N\)
+  に依らない共通値である（§8.3）。mp の
+  \(N=8,9\)（\(5.4\)、\(6.6\times10^{-4}\)）はこれに流れの弱い不安定性が加わり、40000
+  step で \(10^{-10}\)、\(4\times10^{-9}\) まで成長した。
+\end{itemize}
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={図 5}]{figs/fig5_rho_bands.png}}
+
+\textbf{図 5.} 走行前に固定した \(\rho-1\)（共回転 1
+刻み線形化行列）と実測分類。塗り＝飽和／成長中、白抜き＝床。緑の帯（\(\rho-1<10^{-3}\)）が「40000
+step 内は床」の予測域。帯の境界に乗った 1 点（rb,
+\(N=13\)）だけが分類を外した。
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={図 6}]{figs/fig6_lambda_pred_vs_meas.png}}
+
+\textbf{図 6.} 成長率：予測 \(\lambda_f=2\ln\rho\) 対 実測
+\(\lambda\)（\(\ln H_\perp\) の指数窓の傾き）。飽和 25 走行で比
+0.997〜1.008。
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={図 7}]{figs/fig7_t50_vs_N.png}}
+
+\textbf{図 7.} \(t_{50}\)（\(H_\perp/H=0.5\) 到達 step）の \(N\)
+依存。塗り＝実測、白抜き＝予測（\(f_0=3\times10^{-32}\)）。破線は走行長
+40000。hm/ne の偶数 \(N\) は \(N\) とともに \(t_{50}\) が短くなり、rb は
+\(N\) とともに長くなって \(N=14\) 以上で走行長を超える。
+
+\subsubsection{7.3
+飽和後の状態（数値事実）}\label{ux98fdux548cux5f8cux306eux72b6ux614bux6570ux5024ux4e8bux5b9f}
+
+飽和した 25 走行すべてで、step 40000 の参加率
+PR/M（\(=(\sum|z|^2)^2/(M\sum|z|^4)\)）は 0.05〜0.31 で \(N\)
+とともに減少し（\(N=5\)：0.27〜0.31、\(N=16\)：0.05〜0.07）、最小振幅は
+\(10^{-4}\) 以下、最大振幅は
+0.6〜1.05------少数の関係への局在である。等モジュラー親（mp,
+hm）、非等モジュラー親（ne）、乱数均衡親（rb）のどれから出発しても同じ型に落ちる。v1
+§18--19 の等分配（PR/M \(=1\)、\(|z|^2\to1/M\)）は 54
+走行のどこにも現れない。
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={図 8}]{figs/fig4_final_state.png}}
+
+\textbf{図 8.} step 40000 の状態。左：飽和した走行の参加率
+PR/M------破線の PR/M \(=1\)（旧力学の等分配）に達するものはなく、\(N\)
+とともに 0.3 から 0.05 へ下がる。右：振幅の広がり
+std\(|z|\)/rms\(|z|\)------飽和した走行は生成法によらず 0.7〜0.95
+に集まり、床の走行は初期値（等モジュラーなら 0）のまま。
+
+\subsubsection{7.4
+生成法ごとの読み（数値事実の整理。解釈は加えない）}\label{ux751fux6210ux6cd5ux3054ux3068ux306eux8aadux307fux6570ux5024ux4e8bux5b9fux306eux6574ux7406ux89e3ux91c8ux306fux52a0ux3048ux306aux3044}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{hm と ne は同じ縞}：偶数 \(N=6,8,\dots,16\) は全て飽和、奇数
+  \(N\) と \(N=3,4\) は全て床。ne は hm
+  と位相配置が同じで振幅だけ異なる（\(|z|\) の幅は
+  0.11〜0.42）ので、\textbf{振幅分布は安定性の帰属（飽和／床）を変えず、\(\lambda\)
+  を 2〜3\% 変えるだけ}である。
+\item
+  偶数 \(N\) の hm/ne の \(\lambda\) は \(N\)
+  とともに単調に増える（0.016 → 0.0215、\(t_{50}\) は 4338 → 3186）。
+\item
+  \textbf{高対称系列（hm,
+  ne）には明瞭な奇偶非対称が存在する}。ただしそれは \(N\)
+  の偶奇だけで決まる普遍則ではない：同じ \(N=5,7,9,11,13\)
+  で対称性のない rb は飽和する。この縞は「1-因子分解（偶数 \(N\)
+  にしか存在しない）／距離クラス（奇数 \(N\)
+  に用いた）」という構成法の切り替わりと同時に起きているので、原因が
+  \(N\) の数論的 parity
+  そのものか、それに伴う離散対称構造の違いかは\textbf{未分離}である（証明済みは「偶奇だけでは説明できない」まで。偶数
+  \(N\) に距離クラス構成を、奇数 \(N\) に
+  1-因子分解に代わる別構成を与えて走らせれば分離できるが、本稿では未実施）。
+\item
+  mp（v1 系列の生成法）は \(N=5,6,7\) のみ飽和、\(N\ge8\) は床。v1
+  系列で「\(N\) 依存」に見えていたものは make\_parent
+  生成法で得られる親系列の性質である。
+\item
+  rb は \(N=5\)〜13 で飽和、\(N=14,15,16\) で床（各 \(N\) 1 個）。
+\item
+  \(N=3,4\) は 4 生成法とも床（\(\rho-1\le10^{-5}\)）。
+\end{enumerate}
+
+以上から、\textbf{修正後の力学でどの \(N\)
+でインフレーション的発展が起きるかは、\(N\)
+単独では決まらず、初期状態の構造が必要である}。自己無撞着性は状態の許容集合を切り出すが、その中の状態を一意に選択しない（非等モジュラー解、連続族、安定性の異なる親が同じ
+\(N\) に共存する）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8.
+弾道則・読出し・刻み由来の成長}\label{ux5f3eux9053ux5247ux8aadux51faux3057ux523bux307fux7531ux6765ux306eux6210ux9577}
+
+\subsubsection{8.1 弾道則（数値事実、多倍長 50
+桁）}\label{ux5f3eux9053ux5247ux6570ux5024ux4e8bux5b9fux591aux500dux9577-50-ux6841}
+
+親の自己無撞着残差を \(r=\|iKv-\mu v\|/\|v\|\)
+とすると、修正後の力学の立ち上がりは短時間で
+
+\[
+\frac{H_\perp}{H_{\rm total}}\simeq(r\tau)^2\qquad(\tau\to0),\qquad \tau=\Delta\cdot\text{step}
+\]
+
+に従う（数値事実。一次展開からの解析導出は行っていない）。mpmath 50 桁で
+\(\Delta=2\pi/10^6\)・5 step
+を走らせた結果（\texttt{Nall\_linear1000000\_steps5\_mpmath50\_…\_20260828}）：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\(N\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(r\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+step 1 実測
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\((r\Delta)^2\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+step 5 実測
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\((r\tau)^2\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+5 & \(3.78\times10^{-11}\) & \(5.63248\times10^{-32}\) &
+\(5.63248\times10^{-32}\) & \(1.40812\times10^{-30}\) &
+\(1.40812\times10^{-30}\) \\
+8 & \(2.01\times10^{-11}\) & \(1.59347\times10^{-32}\) &
+\(1.59347\times10^{-32}\) & \(3.98367\times10^{-31}\) &
+\(3.98368\times10^{-31}\) \\
+16 & \(9.38\times10^{-13}\) & \(3.47645\times10^{-35}\) &
+\(3.47645\times10^{-35}\) & \(8.69113\times10^{-34}\) &
+\(8.69114\times10^{-34}\) \\
+20 & \(1.38\times10^{-12}\) & \(7.56157\times10^{-35}\) &
+\(7.56245\times10^{-35}\) & \(1.89039\times10^{-33}\) &
+\(1.89061\times10^{-33}\) \\
+\end{longtable}
+}
+
+\(H_{\rm total}\) のドリフトは \(10^{-50}\) 台（厳密保存）。
+
+この結果の意味は次のとおりである。\textbf{出発の底は物理が決めているのではない。}
+倍精度では \(H_\perp/H\) の床が \(10^{-32}\)（振幅で
+\(10^{-16}\)）に見えるが、精度を 50 桁に上げると底は \(10^{-35}\)
+以下まで深くなり、そこでも同じ法則 \((r\tau)^2\) が 5〜7
+桁で成り立つ。数値的な底を決めているのは (i) 計算精度と (ii)
+親の自己無撞着残差 \(r\) であり、親を高精度で \(r\to0\)
+まで磨けば底は際限なく深くなる（厳密な固定点からは、不安定モードが精度雑音を増幅するまで何も起きない）。したがって
+v1 記事図 1 の「\(10^{-32}\) から 31 桁」も本稿 §7 の「\(10^{-24}\) から
+23
+桁」も、\textbf{計算精度が見せている桁数}であって物理の桁数ではなく、これらの値から物理的な初期摂動の振幅を読み取ることはできない（摂動源は未同定、§10）。桁数が
+31 から 23 に減ったのではない（\(10^{-24}\) は倍精度の床 \(10^{-32}\)
+に親残差 \(r\approx10^{-11}\) の弾道項 \((r\Delta)^2\)
+が乗った値である）。
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={図 9}]{figs/figB_ballistic_mp50.png}}
+
+\textbf{図 9.} 多倍長 50 桁、\(\Delta=2\pi/10^6\)、5 step の
+\(H_\perp/H\)（直接読出し）。倍精度の床 \(10^{-31}\) の下でも
+\(N=5,8,10,16,20\) の全てが
+\((r\tau)^2\)（破線、実測と重なって見えない）に乗る。底は精度と親残差で決まり、精度を上げれば深くなる。
+
+v1 の onset--残差則 \(t_{\rm onset}=11.616[-\ln\varepsilon]-99.6\)
+は位相のみ \(K\)
+の固定点についての法則であり、修正後の力学では、親残差が作る決定論的ドリフト
+\(\simeq(r\tau)^2\) の上に、親の不安定性による指数成長
+\(e^{\lambda_f\,\text{step}}\) が乗る形に置き換わる。\(N=5\)（mp）では
+\(10^{-24}\) から \(10^{-1}\) まで 23
+桁が一直線（\(\lambda=0.0089\)/step、\(R^2=1.000\)）である。
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={図 10}]{figs/figD_N5_directHperp_40000.png}}
+
+\textbf{図 10.} \(N=5\)、make\_parent 等モジュラー親、40000
+step、直接読出しの \(H_\perp\)（対数）。step 1 で倍精度の床 \(10^{-32}\)
+から弾道項 \((r\Delta)^2\approx10^{-24}\) に跳び、以後 \(10^{-1}\)
+まで一定率 0.0089/step の指数成長、約 5000 step
+で飽和して局在状態に留まる。潜伏と見える区間の中身は最初から同じ率の指数成長である。
+
+\subsubsection{8.2
+読出し（数値事実）}\label{ux8aadux51faux3057ux6570ux5024ux4e8bux5b9f}
+
+\(H_\perp\) を \(H_{\rm total}-H_\parallel\)
+の差し引きで求めると丸め床が \(10^{-15}\)（\(H\)
+の尺度）になり、それ以下の成長が「不動」に見える。\(N=16\)
+を「安定」と読んだ中間記録はこの読出し不良によるもので、直交成分の直接計算（床
+\(10^{-32}\)）では \(N=16\) の mp 親も 40000 step で
+\(10^{-32}\to1.6\times10^{-15}\)
+と単調に成長している。本稿の数値は全て直接読出しである。
+
+\subsubsection{8.3
+刻み由来の成長（数値事実）}\label{ux523bux307fux7531ux6765ux306eux6210ux9577ux6570ux5024ux4e8bux5b9f}
+
+刻み角 \(\Delta\) を \(L=62\)〜1984
+で変えた走行（\texttt{飽和ステップ数とNの関係\_固定点ヤコビアン解析\_20260829}）から、\(H_\perp/H\)
+の 1 刻み成長率は
+
+\[
+\lambda_f=a\,\Delta+b\,\Delta^2,\qquad b=0.1250\simeq\tfrac18\ (N=16,\ 4\text{ 桁の数値結果})
+\]
+
+に分離される。\(a\) は連続流 \(dv/d\tau=K(v)v\)
+の相対平衡の線形不安定性（離散化に依存しない模型内の不安定性。親依存で、mp
+親では \(N=6,7\) で全親 \(0.13\)〜\(0.30\)、\(N\ge11\) で 25 親中
+0）、\(b\Delta^2\) は積分器が状態依存の \(K\) を 1
+刻み凍結することによる離散化誤差で \(N\)・親に依らない。§7
+の床の後半傾き \(\sim3\times10^{-4}\)/step はこの第 2
+項（\(\Delta=2\pi/124\) で \(\Delta^2/8=3.2\times10^{-4}\)）である。
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={図 11}]{figs/figC_lambda_t50_vs_N.png}}
+
+\textbf{図 11.} make\_parent 等モジュラー親（各 \(N\) 5
+実現）の成長率と飽和 step。左：共回転 1 刻み線形化行列の
+\(2\lambda_G\)（青、中央値と実現ごとの点）と実測
+\(\lambda\)（赤四角）------\(N\ge9\) で \(3\times10^{-4}\)/step
+の共通床（刻み由来項）に張り付く。右：予測
+\(t_{50}=(\ln0.5-\ln f_{\rm seed})/\lambda_f\) と実測------\(N=5\)〜7 は
+40000 以下、\(N\ge8\) は \(10^5\) 以上。\(\tau\) 単位では
+\(\tau_{50}=355/\Delta\to\infty\)（\(\Delta\to0\)）なので、\textbf{中立な親は連続極限では飽和しない}。§7
+の「床」は 40000 step 内の判定であり、刻み由来の成長は \(10^5\) step
+台で \(O(1)\) に達しうる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. v1
+の主張の維持／修正／撤回}\label{v1-ux306eux4e3bux5f35ux306eux7dadux6301ux4feeux6b63ux64a4ux56de}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+v1 の主張（§28 の番号、記事図）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+判定
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+根拠
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1. 実直交更新により \(Z^\dagger Z\)・\(Z^TZ\) は厳密保存 &
+\textbf{維持}（Cayley→\(\exp\) に書換） & §2.2、§8.1（\(10^{-50}\)） \\
+2. \(H_\perp\) の増大は内部移送、\(H_\perp\le H_{\rm total}\) &
+\textbf{維持} & §7 \\
+3. \(K/\sigma_{\max}\) 正規化は時計の付け替え、6.8\%
+差は刻み収束則で説明 & \textbf{限定} & 位相のみ \(K\)
+についての記述。修正後は \(K/\sigma\) 枝を廃止 \\
+4. onset \(\propto-\ln\varepsilon\)、成長率不変 & \textbf{修正} &
+§8.1：弾道則 \((r\tau)^2\)＋親依存の \(\lambda_f\) \\
+5. Floquet 実 2 重固有値 \(\mu_1=1.0901\)、rank-4 選択 & \textbf{修正} &
+旧写像の値。修正後の \(N=5\) mp 親は共回転 1 刻み線形化行列で
+\(\rho=1.0045\)、hm 親は中立 \\
+6. 三重整合 0.1725／11.616／\(\mu_1\) & \textbf{修正} & §7.2：1
+刻み線形化行列の予測と実測 \(\lambda\) の一致（0.997〜1.008）に置換 \\
+7. star 閉塞 \(\Leftrightarrow\) 頂点が複素ヌル錐上 &
+\textbf{維持}（用語を複素ヌル錐に） & §5.3 \\
+8. 準安定状態＝等モジュラー・ヌル複素シンプレックス（等分配） &
+\textbf{撤回} & §7.3：修正後は局在。等分配は位相のみ \(K\) の終着点 \\
+9. \(N=4\) の \(120°\) は局所閉塞＋等分配から定理 &
+\textbf{維持（定理）／撤回（到達）} &
+定理は正しい。系がそこへ到達するのは旧力学 \\
+10. \(N=5\) の 13 個・12 通り閉包 & \textbf{撤回} &
+旧力学でも軌道依存（再実行で 0）、修正後は 4 群構造が現れない \\
+11. 8 seed で \(3+3+2+2\) と等モジュラス & \textbf{撤回} & 同上 \\
+12. 自己無撞着 ⇒ 閉塞 ⇒ \(S^1\) 軌道、\(U^n=I\) は別途 & \textbf{維持} &
+§4 \\
+記事図 1「\(10^{-32}\) から 31 桁」 & \textbf{修正（強める方向）} &
+出発の底 \(10^{-32}\) は倍精度の丸め床であって物理の底ではない。多倍長
+50 桁で同じ走行を行うと底はさらに深くなり、\(10^{-35}\) まで
+\((r\tau)^2\) の法則が続く（§8.1）。数値的な底は計算精度と親残差 \(r\)
+で決まる下限であり、\(r\to0\) の厳密な固定点では任意に深い。「31
+桁」「23 桁」は計算精度が見せる桁数であって、物理の桁数が 31 から 23
+に減ったのではなく、これらから物理的な初期摂動振幅は読み取れない \\
+記事図 6「完全均等分配」 & \textbf{撤回} & §7.3 \\
+§20 の \(N=3\)〜16 表（rank \(=N-1\)、\(|z|^2\to1/M\)） & \textbf{修正}
+& rank は維持。等分配は撤回。\(\sigma=N-1\) は \(\mu=-(N-1)r^2\)
+として維持（\(N=3\) は \(-\tfrac32r^2\)） \\
+§4「\texttt{make\_parent} は監査済み」 & \textbf{訂正} & §1.1、§3.1 \\
+§25.3--25.4 の IIB 行列模型・動的コンパクト化との類似、§26.3 の
+preheating 型類似 & \textbf{削除} & 図 1・6
+に依拠していた考察。本稿は新解釈を入れない \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. 限界}\label{ux9650ux754c}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{軌道の計算機依存}：長時間の個別軌道は丸め誤差の指数増幅で機械間で再現しない（\(N=5\)
+  で 6800 step 以降、\(10^{-8}\to10^{-2}\) に 2600 step）。本稿の
+  \(t_{50}\)・\(\lambda\)・PR/M
+  は統計量として安定だが、飽和後の個別配置は再現しない。v1 の \(N=5\)
+  主張（\(3+3+2+2\)、13/12）は同じ旧力学でも再実行で現れなかった。
+\item
+  \textbf{rb は各 \(N\) 1 個}：\(N\ge14\) の中立は 1
+  例ずつであり、統計ではない。
+\item
+  \textbf{床は 40000 step 内の判定}：§8.3 の刻み由来項により、中立な親も
+  step 単位では \(10^5\) 台で \(O(1)\) に達しうる。連続極限の主張には
+  \(\tau\) 単位の不変性確認が要る。
+\item
+  \textbf{\(H_{\rm int}\) を厳密保存しない}：\(\exp(\Delta K(z))\) は
+  \(K\) を 1 刻み凍結するため
+  \(H_{\rm int}=\tfrac12\sum_{\{e,f\}}(\mathrm{Im}\,\bar z_ez_f)^2\) が
+  \(\Delta\) に比例して漂う（\(\Delta\) を 1/10 にすると変動も
+  1/10）。ノルムと閉塞は厳密保存される。積分器がシンプレクティックか否かは本稿では判定していない（判定には
+  1 刻み写像の実ヤコビアンについて \((D\Phi)^TJ\,D\Phi-J\)
+  を調べる必要がある）。
+\item
+  \textbf{未証明命題}：(a) \(N\ge5\) で「自己無撞着 \(\Rightarrow\)
+  局所閉塞」（等モジュラー点近傍では数値的に成立、\(N=4\)
+  には反例分枝）。(b) 対称な親（hm の奇数
+  \(N\)、\(N=3,4\)）が中立になる機構。(c) 高対称系列の奇偶非対称の原因が
+  parity か構成法の離散対称構造か（§7.4）。(d) \(U^n=I\)（有理ロック）。
+\item
+  \textbf{摂動源は未同定}：厳密な自己無撞着状態は
+  \(v(\tau)=e^{-i\mu\tau}v(0)\) のまま離れない。本稿の立ち上がりは親残差
+  \(r\)
+  と丸め誤差が不安定モードに入って始まっており（§8.1）、本稿が確認したのは線形不安定性とその非線形飽和であって、物理的な摂動源を含む開始機構ではない。
+\item
+  \textbf{fixed 系の \(N=6,7,10,11\)} は親探索の汚染で対照無効（§3.3）。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{11. 結論}\label{ux7d50ux8ad6}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  ゼロ閉塞 \(\sum z^2=0\)
+  は、生成子が実反対称で状態がその非零固有モードであることだけから従う定理であり、正規化・振幅分布・\(N\)・親の生成法に依らない（証明済み。110
+  親の実装で数値検証）。
+\item
+  複素シンプレックスは状態空間を 1 点も削らない。任意の複素 2 乗距離は
+  Takagi 分解で厳密に埋め込まれ（証明済み。乱数 1400
+  状態で数値検証）、閉塞が可能なのは複素化が正値性を除去したからである。形が表すのは状態の符号を忘れた像
+  \(v/(\mathbb Z_2)^M\)
+  で、符号枝は力学の厳密な離散対称性で結ばれる。幾何は結果を描く言語であって状態を選ぶ原理ではない。
+\item
+  隠れた振幅正規化の除去・凍結生成子の指数回転・厳密な自己無撞着初期化のもとでも、自己無撞着な相対平衡のうち線形不安定な親に微小摂動（親残差・丸め誤差）が入ると横方向成分は指数成長し非線形飽和する。成長率は
+  v1 の 10〜30 分の 1、飽和後は等分配でなく局在である。高対称な hm/ne
+  系列では \(N=6\)〜16 の偶数と \(N=5\)〜15
+  の奇数の間に明瞭な安定性の非対称が現れたが（\(N=3,4\)
+  は床）、乱数均衡親では奇数 \(N\) にも不安定状態が存在するので、これは
+  \(N\) の偶奇だけで決まる普遍則ではない。したがって \(N\)
+  単独は発展の有無を決めず、初期状態の構造が必要である。離散写像の共回転
+  1 刻み線形化行列は 54 走行の帰属を 53/54、成長率を 0.997〜1.008
+  で与える。
+\end{enumerate}
+
+まとめると：閉塞は定理として残った。複素シンプレックスは選択原理ではなかった。旧インフレーション像（潜伏→急拡大→等分配）は修正されたが、連続流の相対平衡の線形不安定性とその飽和は残った。高対称系列には奇偶非対称が現れた。自己無撞着性だけでは物理状態を一意に選択できず、追加の選択原理は未発見である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{12.
+引用と再現性}\label{ux5f15ux7528ux3068ux518dux73feux6027}
+
+\subsubsection{12.1 自己引用}\label{ux81eaux5df1ux5f15ux7528}
+
+\textbf{{[}K1{]}} N. Kihara, \emph{Anonymous Equal-Amplitude
+Composite-Wave Model: Basic Axiom System v9 --- Pure Definition}, 2026.
+\textbf{{[}K2{]}} 木原範昭,
+「N体完全二体関係波における生成子ランク線形上界と三方向飽和」, 2026.
+Concept DOI: 10.5281/zenodo.21465898. \textbf{{[}K8{]}} 木原範昭,
+「N体関係波閉鎖系における三方向生成の時間構造――二段階seed除去による因果分離」,
+2026. Concept DOI: 10.5281/zenodo.21614402. \textbf{{[}K9{]}} 木原範昭,
+「幾何級数的急拡大は不安定な自己無撞着閉包に固有である------一般零閉塞初期状態による開始様式の因果判別」,
+2026. Concept DOI: 10.5281/zenodo.21798854. \textbf{{[}v1{]}} 木原範昭,
+本論文第 1 版, 2026-08-27. Version DOI: 10.5281/zenodo.22112009.
+
+\subsubsection{12.2 外部引用}\label{ux5916ux90e8ux5f15ux7528}
+
+\textbf{{[}E1{]}} A. Aste, ``Origin of the Complex Structure of Quantum
+Mechanics,'' arXiv:1905.12894, 2019. \textbf{{[}E2{]}} T. Takagi, ``On
+an algebraic problem related to an analytic theorem of Carathéodory and
+Fejér and on an allied theorem of Landau,'' \emph{Japan. J. Math.} 1
+(1925) 83--93. （Autonne--Takagi 分解。R. A. Horn, C. R. Johnson,
+\emph{Matrix Analysis}, 2nd ed., Cambridge Univ. Press, 2013, Cor. 4.4.4
+も参照） \textbf{{[}E3{]}} I. J. Schoenberg, ``Remarks to Maurice
+Fréchet's article `Sur la définition axiomatique d'une classe d'espace
+distanciés vectoriellement applicable sur l'espace de Hilbert',''
+\emph{Ann. of Math.} 36 (1935) 724--732.
+
+\subsubsection{12.3
+再現パッケージ}\label{ux518dux73feux30d1ux30c3ux30b1ux30fcux30b8}
+
+v1 が引用した 15 パッケージ（旧エンジン。うち 14 zip は Zenodo 22112009
+に収録、記事図 1 の源
+\texttt{complex\_simplex\_decompactification\_N5\_N16\_20260826}
+は本リポジトリ収録）は v1
+の再現用としてそのまま残す。本稿の主張は以下のパッケージ（GitHub
+\texttt{WurabeSeiji/ai-chat-logs-open}、\texttt{次元の生成構造/電子の反跳実験/seed除去による準安定相追試/chatgpt追試/}
+配下、各パッケージに
+program・data・results・figures・README・run\_all.sh・SHA256SUMS
+を同梱）で再現できる。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+節
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+パッケージ
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+§3.2 & \texttt{論文v1\_全再現テスト\_20260828} \\
+§3.3 &
+\texttt{論文v1\_全プログラム修正版\_20260828}（fixed／fixed\_baseline／fixed\_equimodular、四者比較）、\texttt{不足プログラム復元\_chatgpt\_20260828} \\
+§4 &
+\texttt{公理見直し\_ゼロ閉塞定理と固有時計\_20260829}、\texttt{v2補完実験\_4生成法\_N3toN16\_統一プロトコル\_20260830} \\
+§5 &
+\texttt{v2補完実験\_…}（pass2）、\texttt{複素シンプレックス基礎\_N別全展開\_20260830}、\texttt{複素シンプレックス基礎\_N別全展開\_非等モジュラー版\_20260830} \\
+§6 &
+\texttt{手作り自己無撞着親と対称性\_倍音と関係数の検討\_20260829}、\texttt{複素シンプレックス\_重心閉塞\_非等モジュラー族\_20260830} \\
+§7 & \texttt{v2補完実験\_4生成法\_N3toN16\_統一プロトコル\_20260830}（54
+走行、予測、図 2〜8） \\
+§8 &
+\texttt{N5/N16\_linear124\_equimodular\_selfconsistent\_directHperp\_treatment\_only\_20260828}、\texttt{Nall\_linear1000000\_steps5\_mpmath50\_…\_20260828}、\texttt{飽和ステップ数とNの関係\_固定点ヤコビアン解析\_20260829} \\
+\end{longtable}
+}
+
+\subsubsection{12.4
+図ファイルの配置}\label{ux56f3ux30d5ux30a1ux30a4ux30ebux306eux914dux7f6e}
+
+本文の図は \texttt{figs/}（本文と同じフォルダ）に集約した。出所：
+
+\begin{itemize}
+\tightlist
+\item
+  図 1 \texttt{figA\_four\_way\_Hperp\_N3\_N16.png} ←
+  \texttt{論文v1\_全プログラム修正版\_20260828/results/figures/four\_way\_Hperp\_frac\_N3\_N16.png}
+\item
+  図 2 \texttt{fig1\_closure\_step0.png}、図 3
+  \texttt{fig2\_embed\_random.png}、図 4
+  \texttt{fig3\_Hperp\_grid\_N3\_N16.png}、図 5
+  \texttt{fig5\_rho\_bands.png}、図 6
+  \texttt{fig6\_lambda\_pred\_vs\_meas.png}、図 7
+  \texttt{fig7\_t50\_vs\_N.png}、図 8 \texttt{fig4\_final\_state.png} ←
+  \texttt{v2補完実験\_4生成法\_N3toN16\_統一プロトコル\_20260830/figures/}
+\item
+  図 9 \texttt{figB\_ballistic\_mp50.png} ←
+  \texttt{Nall\_linear1000000\_steps5\_mpmath50\_…\_20260828/figures/compare\_N\_L1000000\_5\_mp50.png}
+\item
+  図 10 \texttt{figD\_N5\_directHperp\_40000.png} ←
+  \texttt{N5\_linear124\_equimodular\_selfconsistent\_directHperp\_treatment\_only\_20260828/figures/N5\_Hperp\_baseline\_vs\_amplitude\_aware.png}（ファイル名は旧スクリプト固定、中身は
+  treatment のみ）
+\item
+  図 11 \texttt{figC\_lambda\_t50\_vs\_N.png} ←
+  \texttt{飽和ステップ数とNの関係\_固定点ヤコビアン解析\_20260829/figures/lambda\_and\_t50\_vs\_N.png}
+\end{itemize}
 
 \end{document}
