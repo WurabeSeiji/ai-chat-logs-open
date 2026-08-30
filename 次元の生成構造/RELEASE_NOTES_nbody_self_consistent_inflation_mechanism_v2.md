@@ -19,6 +19,11 @@ Release date: 2026-08-30
 - 日本語投稿: https://www.facebook.com/kihara.noriaki/posts/pfbid02KLYtqPm2scLcpkEjLi69XwoFttvhp6gV42k6LidQiicYe2USMHyGvpGooFgRq1Dnl （2026-08-30、DOI・note URL はコメント欄）
 - 英語投稿: https://www.facebook.com/kihara.noriaki/posts/pfbid04hSezsbUEKJ6PCQm14RcCCqyuQQEjFKo6kZCHRWivxz5499usMAPyVrtt8LdqxPnl （2026-08-30、同上）
 
+## X
+
+- 日本語ポスト: https://x.com/NoriakiKihara/status/2094058518437560465 （2026-08-30、note 日本語 URL 付き）
+- 英語ポスト: https://x.com/NoriakiKihara/status/2094059127542890803 （2026-08-30、note 英語 URL 付き）
+
 ## Zenn
 
 - 記事（全面書き換え、v2 の内容）: https://zenn.dev/noriaki_kihara/articles/self-consistent-inflation-mechanism （v1 時点の push は Zenn の投稿数上限で未公開のままだった。v2 push 後に 200 を要確認）
