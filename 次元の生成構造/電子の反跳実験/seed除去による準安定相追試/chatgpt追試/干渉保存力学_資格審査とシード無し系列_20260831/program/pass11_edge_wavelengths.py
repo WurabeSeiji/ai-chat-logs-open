@@ -18,7 +18,10 @@ from common import edges
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 LW = 16384; PAD = 8
-TARGETS = ["hm_N12", "mp_N5", "rb_N5", "mp_N3", "ne_N3", "ne_N4"]
+TARGETS = [("hm_N12", "late"), ("mp_N5", "late"), ("rb_N5", "late"), ("mp_N3", "late"),
+           ("ne_N3", "late"), ("ne_N4", "late"),
+           ("hm_N12", "early"), ("hm_N3", "late"), ("hm_N4", "late"), ("hm_N5", "late")]
+# early=潰れる前の親窓（step 0..8192）。仮説：hm は潰れる前は全辺同一時計＝正 (N−1) 単体として読める
 
 def refine(W, om0):
     n = len(W); t = np.arange(n); h = np.hanning(n)
@@ -67,12 +70,13 @@ def cayley_menger_ok(N, E, L):
 
 md = ["# 辺ごとの波長読み（パス11）：ν_e → λ_e = λ0/|m_e| → L_e=(k_e/|m_e|)·λ0/2", ""]
 rows = []
-for tag in TARGETS:
+for tag, win in TARGETS:
     N = int(tag.split("N")[1]); E = edges(N); M = len(E)
-    Z = np.load(os.path.join(DATA, tag, "states_treatment.npz"))["Z"][-LW:]
+    allZ = np.load(os.path.join(DATA, tag, "states_treatment.npz"))["Z"]
+    Z = allZ[:8192] if win == "early" else allZ[-LW:]
     amp = np.abs(Z).mean(axis=0)
     amax = amp.max()
-    md.append(f"## {tag}（終窓、辺 {M} 本）"); md.append("")
+    md.append(f"## {tag}（{'親窓 0..8192' if win == 'early' else '終窓'}、辺 {M} 本）"); md.append("")
     md.append("| 辺 (i,j) | 振幅/max | ν_e [rad/step] | ±err | 単色度 | 状態 |")
     md.append("|---|---|---|---|---|---|")
     freqs = []
@@ -103,12 +107,12 @@ for tag in TARGETS:
             tri, psd, mineig, rank = cayley_menger_ok(N, E, L)
             md.append(f"**実単体テスト（k≡1、L_e∝1/|ν_e|）:** 三角不等式={'成立' if tri else '破れ'}、"
                       f"CM 半正定値={'成立' if psd else '破れ'}（min eig/scale={mineig:+.2e}）、rank={rank}")
-            rows.append(dict(tag=tag, all_edges_wave=True, tri=tri, psd=psd, min_eig=mineig, rank=rank))
+            rows.append(dict(tag=tag, window=win, all_edges_wave=True, tri=tri, psd=psd, min_eig=mineig, rank=rank))
         else:
             nwave = sum(1 for f in freqs if f)
             md.append(f"**実単体テスト:** 波を持つ辺 {nwave}/{M} 本のみ → 波なし辺の長さが未定義のため k≡1 テスト不可"
                       "（星型＝衛星間の関係が消えた縮退幾何）")
-            rows.append(dict(tag=tag, all_edges_wave=False, tri=None, psd=None, min_eig=None, rank=None))
+            rows.append(dict(tag=tag, window=win, all_edges_wave=False, tri=None, psd=None, min_eig=None, rank=None))
     md.append("")
 with open(os.path.join(ROOT, "results", "edge_wavelengths.md"), "w") as f:
     f.write("\n".join(md)+"\n")
