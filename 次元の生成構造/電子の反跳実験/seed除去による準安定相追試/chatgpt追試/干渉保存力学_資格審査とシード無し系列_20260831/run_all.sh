@@ -20,12 +20,12 @@ for d in data/*/; do
   python3 program/pass2c_run_L12400.py "$tag"
 done
 python3 program/pass6c_figures_L12400.py
-# 初期拡大診断第 2 段（L=1240000・500 step、追加。木原指示 2026-08-31）
+# 初期拡大診断第 2 段（L=124000000・500 step。木原指示 2026-08-31、L=1240000 段は破棄）
 for d in data/*/; do
   tag=$(basename "$d")
   [ "$tag" = "reference" ] && continue
-  python3 program/pass2d_run_L1240000.py "$tag"
+  python3 program/pass2d_run_L124000000.py "$tag"
 done
-python3 program/pass6d_figures_L1240000.py
+python3 program/pass6d_figures_L124000000.py
 shasum -a 256 program/*.py run_all.sh README.md *.md results/*.csv results/*.md results/*.json > SHA256SUMS.txt
 echo ALL DONE
