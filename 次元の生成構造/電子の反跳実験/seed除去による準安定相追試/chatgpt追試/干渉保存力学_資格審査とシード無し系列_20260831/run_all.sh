@@ -37,5 +37,6 @@ python3 program/pass13_k_enumeration.py
 python3 program/pass14_k_search_star.py
 python3 program/pass15_verification_records.py
 python3 program/pass16_k_search_ne_N3.py
+python3 program/pass17_hm_series_k.py
 shasum -a 256 program/*.py run_all.sh README.md *.md results/*.csv results/*.md results/*.json > SHA256SUMS.txt
 echo ALL DONE
