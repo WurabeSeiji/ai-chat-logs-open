@@ -27,5 +27,14 @@ for d in data/*/; do
   python3 program/pass2d_run_L124000000.py "$tag"
 done
 python3 program/pass6d_figures_L124000000.py
+# 読出し・分析パス（パス8〜15）
+python3 program/pass8_ladder_geometry.py
+python3 program/pass9_composite_wave.py
+python3 program/pass10_harmonic_ladder.py
+python3 program/pass11_edge_wavelengths.py
+python3 program/pass12_wavelength_table.py
+python3 program/pass13_k_enumeration.py
+python3 program/pass14_k_search_star.py
+python3 program/pass15_verification_records.py
 shasum -a 256 program/*.py run_all.sh README.md *.md results/*.csv results/*.md results/*.json > SHA256SUMS.txt
 echo ALL DONE
