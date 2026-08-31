@@ -12,6 +12,7 @@ for d in data/*/; do
 done
 python3 program/pass5_analysis.py
 python3 program/pass6_figures.py
+python3 program/pass6b_figures_early.py
 python3 program/pass7_final_structure.py
 shasum -a 256 program/*.py run_all.sh README.md *.md results/*.csv results/*.md results/*.json > SHA256SUMS.txt
 echo ALL DONE
