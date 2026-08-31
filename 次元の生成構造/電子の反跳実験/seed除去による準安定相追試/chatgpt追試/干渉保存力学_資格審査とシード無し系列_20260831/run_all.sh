@@ -12,7 +12,13 @@ for d in data/*/; do
 done
 python3 program/pass5_analysis.py
 python3 program/pass6_figures.py
-python3 program/pass6b_figures_early.py
 python3 program/pass7_final_structure.py
+# 初期拡大診断（L=12400・500 step、追加。木原指示 2026-08-31）
+for d in data/*/; do
+  tag=$(basename "$d")
+  [ "$tag" = "reference" ] && continue
+  python3 program/pass2c_run_L12400.py "$tag"
+done
+python3 program/pass6c_figures_L12400.py
 shasum -a 256 program/*.py run_all.sh README.md *.md results/*.csv results/*.md results/*.json > SHA256SUMS.txt
 echo ALL DONE
