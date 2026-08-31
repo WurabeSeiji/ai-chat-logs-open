@@ -4,7 +4,8 @@
 hm_N3〜N16 の全 14 終状態について、辺別波長を測定し、{k} の整数選択で実数シンプレックスが
 成立するかを判定する。方法：
   1. 終窓 16384 step の辺別支配振動数（整合フィルタ）→ λ_e = 1/|ν_e|（最短=1 規格化）
-  2. λ を 0.5% クラスタで群化
+  2. λ を 0.5% クラスタで群化（報告用）。{k} 探索には 2% クラスタを使う（未収束状態では
+     星辺群自体が ~1% 幅に割れ、0.5% 群化だとアンザッツが構造的に合わないため。hm_N6 で判明）
   3. {k} 探索：群一様アンザッツ（同じ λ 群は同じ k）。単一群なら k≡1（等長正単体）で自明成立。
      複数群なら 2 段：まず全衛星群に共通 d ∈ {1,2,3}（高速経路。衛星 λ は互いに数 % 以内なので自然）、
      見つからなければ群別 k_g ∈ {1..3} の全組合せ。c は下限 floor(0.5·max(k_g λ_g)) から 100 まで。
@@ -57,6 +58,16 @@ for N in range(3, 17):
             groups.append([lamn[e], [e]])
     groups.sort()
     gdesc = " / ".join(f"{g[0]:.3f}×{len(g[1])}" for g in groups)
+    # 探索用の粗い群化（2%）
+    sgroups = []
+    for e in range(M):
+        for g in sgroups:
+            if abs(lamn[e]-g[0])/g[0] < 0.02:
+                g[1].append(e); g[0] = (g[0]*(len(g[1])-1)+lamn[e])/len(g[1]); break
+        else:
+            sgroups.append([lamn[e], [e]])
+    sgroups.sort()
+    groups = sgroups
     if len(groups) == 1:
         verdict, sol, rank = "成立（k≡1、等長正単体）", "k≡1", N-1
     else:
