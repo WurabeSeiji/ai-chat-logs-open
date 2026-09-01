@@ -73,7 +73,7 @@ def save(tag,N,v,design,extra):
     if not all(ok.values()): raise SystemExit(f"ABORT {tag}: {ok}")
     return rep
 rows=[]; NORM={}
-for N in range(3,17):
+for N in range(3,41):
     # --- mp ---
     s0=eng.LowRankSystem(N); rng=np.random.default_rng(40260721+1000*N+0)
     v,res,sig=eng.make_parent(s0,rng,pre_steps=(40000 if N==3 else 20000))
