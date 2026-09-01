@@ -37,7 +37,13 @@
 ## Publication Platforms
 
 - [Zenodo (Record 22230941)](https://zenodo.org/record/22230941)
-- Zenn: *（作成予定）*
+- [note (日本語)](https://note.com/kiharanoriaki/n/n37ab90073b11)
+- [note (English)](https://note.com/kiharanoriaki/n/nda747a7ff9e7)
+- [Zenn (日本語)](https://zenn.dev/noriaki_kihara/articles/complex-rotating-wave-curvature)
+- [Facebook (日本語)](https://www.facebook.com/kihara.noriaki/posts/pfbid023AmHZZ8WeKNu275LxS2o75DStR2vFTiY396nro9Ah7Mvfp85q3NNDzGHuWsDkj5il)
+- [Facebook (English)](https://www.facebook.com/kihara.noriaki/posts/pfbid02V5iP9uS2hv9mNC1THLrekFkFoTJJ15jvCeuPY8uHgdrUUT78oR91sUZmHzcGs7Vxl)
+- [X (日本語)](https://x.com/NoriakiKihara/status/2094778301768409102)
+- [X (English)](https://x.com/NoriakiKihara/status/2094778574255554925)
 - GitHub: `/複素旋回波の面積交差項による曲率振動の読出し/`
 - ORCID: *（DataCite Auto-Update で自動同期予定）*
 
@@ -50,6 +56,8 @@
   - 8ファイル全てアップロード完了
   - DOI 確定：10.5281/zenodo.22230941
   - 論文が提案する内容：複素旋回波の面積交差項が曲率と結合する機構を、既報の幾何学的結果と数学的恒等式から導出。GW150914 の周波数スケール（250 Hz）と振幅スケール（10^-21）が自然な曲率スケールと同一オーダーであることを検証。
+  - 公開プラットフォーム：Zenodo, note（日本語・English）, Zenn, Facebook（日本語・English）, X（日本語・English）
+  - エッセイ形式の解説記事を複数言語で展開し、学術論文と普及記事の両立を実現。
 
 ## Zenodo Metadata
 
