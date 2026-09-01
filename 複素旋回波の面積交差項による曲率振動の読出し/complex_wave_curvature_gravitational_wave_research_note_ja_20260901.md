@@ -13,7 +13,7 @@ ORCID: 0009-0004-6753-4020
 
 ## 要旨
 
-既報 \[1\]
+既報 $$1$$
 では、正曲率定曲率空間に置いた測地的単位セルについて、一辺の測地線長は曲率半径に依存せず保存される一方、曲率歪みは二方向が張る面積から初めて現れることを示した。本稿では、この結果を複素旋回波
 
 z=a+ib
@@ -50,7 +50,7 @@ wave, Schwarzschild radius, GW150914
 
 ## 1. 動機――曲率歪みは長さではなく面積から始まる
 
-既報 \[1\] では、曲率半径 R の正曲率定曲率空間 S^d(R) に、一辺 1
+既報 $$1$$ では、曲率半径 R の正曲率定曲率空間 S^d(R) に、一辺 1
 の正則測地セルを置いた場合の歪みを、一辺・角・面積・体積に分けて評価した。
 
 その最も単純な結果は、一辺の測地線長が構成により厳密に 1
@@ -75,7 +75,7 @@ $$V_d(R) = 1+\frac{d(d-1)}{12R^2}+O(R^{-4})$$
 $$\frac{d(d-1)}{12} = \frac{1}{6}\binom{d}{2}$$
 
 であることから、最低次の体積歪みは独立な二方向の組が作る面積歪みの和として整理できる
-\[1\]。
+$$1$$。
 
 したがって既報から得られる本稿の出発点は、
 
@@ -121,7 +121,7 @@ $$\boxed{z^2=A^2(\cos2\theta+i\sin2\theta)} \tag{4}$$
 ここで本稿が注目するのは式 (3) である。
 
 a^2 と b^2 はそれぞれ一方向成分の平方であるのに対し、ab
-は二つの独立成分 (a,b) の積である。既報 \[1\]
+は二つの独立成分 (a,b) の積である。既報 $$1$$
 の「曲率歪みは二方向が張る面積から現れる」という整理に従えば、2ab
 は複素旋回波の中で曲率と結合しうる最小の面積型交差量として自然に選ばれる。
 
@@ -142,7 +142,7 @@ $$2ab=A^2\sin2\theta$$
 
 $$x=A\cos\theta$$
 
-は、一つの測地線方向に沿った振動として表せる。この場合、既報 \[1\]
+は、一つの測地線方向に沿った振動として表せる。この場合、既報 $$1$$
 の意味で二方向が張る面積セルは生じない。
 
 これに対し、
@@ -204,9 +204,9 @@ $$i(2iab)=-2ab=-A^2\sin2\theta. \tag{5}$$
 自体を新しい力学方程式と主張しているのではないことである。式 (1)--(4)
 は恒等式であるが、その虚数方向を曲率方向として物理的に読むことが本稿の仮説である。
 
-既報 \[1\] の面積補正を用いれば、正曲率の場合の最小候補は概念的には
+既報 $$1$$ の面積補正を用いれば、正曲率の場合の最小候補は概念的には
 
-$$h_{\rm curv} \propto (k_s(R)-1)(-2ab), \tag{6}$$
+$$h_\text{curv} \propto (k_s(R)-1)(-2ab), \tag{6}$$
 
 $$k_s(R) = R^2 \left[4\arccos\left(-\tan^2\frac{1}{2R}\right)-2\pi\right]. \tag{7}$$
 
@@ -216,7 +216,7 @@ $$k_s(R)-1 = \frac{1}{6R^2}+O(R^{-4})$$
 
 なので、
 
-$$h_{\rm curv} \propto -\frac{A^2}{6R^2}\sin2\theta +O(R^{-4}). \tag{8}$$
+$$h_\text{curv} \propto -\frac{A^2}{6R^2}\sin2\theta +O(R^{-4}). \tag{8}$$
 
 式 (6)--(8) は候補結合であり、その比例係数、正規化、測度として k_s
 を用いるか逆量を用いるかは本稿では決定しない。ここで確定しているのは、平坦極限
@@ -274,66 +274,55 @@ $$f_s=\frac{1}{2\pi t_s} = \frac{c}{2\pi r_s}. \tag{10}$$
 LIGO による GW150914
 の初期解析では、二つのブラックホールの源質量はおよそ
 
-\[ M_1=36^{+5}{-4}M\odot,\qquad
-$$M_2=29^{+4}{-4}M\odot, \]$$
+$$M_1=36_{-4}^{+5}M_\odot,\qquad M_2=29_{-4}^{+4}M_\odot,$$
 
 光度距離は
 
-\[ D_L=410^{+160}_{-180} {\rm Mpc}, \]
+$$D_L=410_{-180}^{+160} \text{ Mpc},$$
 
 信号は約 35 Hz から 250 Hz へ上昇し、ピーク strain は
 
-\[ h_{\rm peak}\simeq1.0\times10^{-21} \]
+$$h_\text{peak}\simeq1.0\times10^{-21}$$
 
-であった \[2,3\]。
+であった $$2,3$$。
 
 オーダー検算として合体前の総質量を
 
-\[ M=M_1+M_2\simeq65M_\odot \]
+$$M=M_1+M_2\simeq65M_\odot$$
 
 とすると、式 (9) から
 
-\[ r_s $\simeq
-$$1.92\times10^5 {\rm m$}$$
-$$\simeq192 {\rm km}. \tag{11} \]$$
+$$r_s \simeq 1.92\times10^5 \text{ m} \simeq 192 \text{ km}. \tag{11}$$
 
 したがって式 (10) は
 
-\[ f_s = \frac{c}{2\pi r_s} $\simeq
-$$2.49\times10^2 {\rm Hz}. \tag{12}$ \]$$
+$$f_s = \frac{c}{2\pi r_s} \simeq 2.49\times10^2 \text{ Hz}. \tag{12}$$
 
 これは GW150914 で観測された 35--250 Hz
 の上端と同一オーダーにあり、代表的な強重力時間尺度として直ちに破綻しない。
 
-次に、遠方で振幅が (1/D) で減衰する放射場について、Schwarzschild
+次に、遠方で振幅が $(1/D)$ で減衰する放射場について、Schwarzschild
 半径から作れる最も単純な無次元比を調べると、
 
-\[ \frac{r_s}{D_L} \simeq \frac{1.92\times10^5}
-$${410\times10^6\times3.0857\times10^{16}} $\simeq$$
-$$1.52\times10^{-20}. \tag{13}$ \]$$
+$$\frac{r_s}{D_L} \simeq \frac{1.92\times10^5}{410\times10^6\times3.0857\times10^{16}} \simeq 1.52\times10^{-20}. \tag{13}$$
 
 観測されたピーク strain との比は
 
-\[ C_{\rm obs} \equiv
-$$\frac{h_{\rm peak}}{r_s/D_L} $\simeq$$
-$$6.6\times10^{-2}. \tag{14}$ \]$$
+$$C_\text{obs} \equiv \frac{h_\text{peak}}{r_s/D_L} \simeq 6.6\times10^{-2}. \tag{14}$$
 
 すなわち、
 
-\[ h_{\rm peak} $\simeq
-$$0.066,\frac{r_s}{D_L}$ \]$$
-
-と書ける。
+$$h_\text{peak} \simeq 0.066 \cdot \frac{r_s}{D_L}$$
 
 ただし、式 (14) の (0.066)
 は本稿の複素波モデルから導出された定数ではない。したがって、これは予言値ではなく、観測値から逆算した無次元係数である。標準的な重力波理論でも、強重力源の
 strain が源の重力半径と距離の比に関係することは次元解析から自然に現れる
-\[4\]。本稿が検証したのは、提案した曲率読出しの自然スケールが代表的実イベントに対して何桁も外れてはいない、という限定された事実である。
+$$4$$。本稿が検証したのは、提案した曲率読出しの自然スケールが代表的実イベントに対して何桁も外れてはいない、という限定された事実である。
 
 本稿でより直接的に興味深いのは周波数側である。外部から (r_s)
 だけを与えて得た
 
-\[ f_s\simeq249 {\rm Hz} \]
+$$f_s\simeq249 \text{Hz}$$
 
 が観測帯 35--250 Hz
 に入ることは、少なくとも本仮説を即座に棄却する結果ではない。
@@ -344,31 +333,31 @@ strain が源の重力半径と距離の比に関係することは次元解析�
 
 本稿の構造は意図的に単純である。
 
-第一に、既報 \[1\] の結果として、
+第一に、既報 $$1$$ の結果として、
 
-\[ \text{1D length: no curvature distortion}, \]
+$$\text{1D length: no curvature distortion},$$
 
-\[ \text{2D area: first curvature distortion} \]
+$$\text{2D area: first curvature distortion}$$
 
 がある。
 
 第二に、複素旋回波を二乗するだけで、
 
-\[ (a+ib)^2=(a^2-b^2)+2iab \]
+$$(a+ib)^2=(a^2-b^2)+2iab$$
 
 となり、二方向の積である (2ab) が必ず現れる。
 
 第三に、
 
-\[ 2ab=A^2\sin2\theta \]
+$$2ab=A^2\sin2\theta$$
 
 なので、その面積型交差項は実数値の周期振動である。
 
 この三点を組み合わせると、
 
-\[ $\boxed{
+$$$\boxed{
 \text{曲率が最初に結合できる波動量の候補として }2iab\text{ が選ばれる}
-}$ \]
+}$$$
 
 という極めて単純な仮説が得られる。
 
@@ -378,11 +367,11 @@ strain が源の重力半径と距離の比に関係することは次元解析�
 
 また、本稿の (z^2) は
 
-\[ z\rightarrow e^{i\alpha}z \]
+$$z\rightarrow e^{i\alpha}z$$
 
 に対して
 
-\[ z^2\rightarrow e^{2i\alpha}z^2 \]
+$$z^2\rightarrow e^{2i\alpha}z^2$$
 
 と変換される。この二倍角構造は重力波の偏極に現れる spin-2
 的な角度依存性と形式的に似ている。しかし、複素平面上の二倍角変換だけで一般相対論の
@@ -395,18 +384,16 @@ spin-2
 
 本稿が主張する内容は次の範囲に限られる。
 
-1.  既報 \[1\]
+1.  既報 $$1$$
     では、測地線長そのものは曲率で歪まず、曲率歪みは二方向が張る面積から初めて現れる。
 2.  複素旋回波 (z=a+ib) の二乗には、二方向の積からなる面積型交差項
     (2iab) が必ず現れる。
 $$3.  (a=A\cos\theta, b=A\sin\theta)$$
-    なら、その係数は \[ 2ab=A^2\sin2\theta \]
+    なら、その係数は $$2ab=A^2\sin2\theta$$
     であり、実数値を持つ二倍角振動である。
 4.  この交差項を曲率方向との結合成分として読むと、虚数方向の面積振動が外部から実数の曲率振動として読み出される、という最小仮説が得られる。
 5.  ブラックホールについて外部読出し尺度として Schwarzschild
-    半径を採用すると、GW150914 では \[
-    c/(2\pi r_s)\sim2.5\times10^2 {\rm Hz}
-    \] となり、観測された重力波周波数帯と同一オーダーに入る。
+    半径を採用すると、GW150914 では $$c/(2\pi r_s)\sim2.5\times10^2 \text{Hz}$$ となり、観測された重力波周波数帯と同一オーダーに入る。
 $$6.  (r_s/D_L\sim1.5\times10^{-20}) も観測 strain$$
     (10^{-21})
     から巨大な桁差を持たないが、その比例係数は本稿では導出されていないため、振幅予言とはみなさない。
@@ -415,11 +402,11 @@ $$6.  (r_s/D_L\sim1.5\times10^{-20}) も観測 strain$$
 
 提示したのは、
 
-\[ $\boxed{
+$$$\boxed{
 \text{「曲率歪みは面積から始まる」という既報結果}
 +
 \text{「複素波の二乗には振動する面積交差項がある」という恒等式}
-}$ \]
+}$$$
 
 から得られる、一つの最小物理解釈である。
 
@@ -432,22 +419,22 @@ $$6.  (r_s/D_L\sim1.5\times10^{-20}) も観測 strain$$
 
 ## 参考文献
 
-\[1\] 木原範昭, 「論文0:
+$$1$$ 木原範昭, 「論文0:
 正曲率定曲率空間における測地的単位セルの歪み――一辺・角・面積・体積の厳密評価」,
 v1.4, Zenodo, Version DOI: 10.5281/zenodo.20684135; Concept DOI:
 10.5281/zenodo.20680269 (2026).
 
-\[2\] B. P. Abbott et al. (LIGO Scientific Collaboration and Virgo
+$$2$$ B. P. Abbott et al. (LIGO Scientific Collaboration and Virgo
 Collaboration), "Observation of Gravitational Waves from a Binary
 Black Hole Merger," Physical Review Letters 116, 061102 (2016).
 DOI: 10.1103/PhysRevLett.116.061102.
 
-\[3\] B. P. Abbott et al. (LIGO Scientific Collaboration and Virgo
+$$3$$ B. P. Abbott et al. (LIGO Scientific Collaboration and Virgo
 Collaboration), "Properties of the Binary Black Hole Merger
 GW150914," Physical Review Letters 116, 241102 (2016). DOI:
 10.1103/PhysRevLett.116.241102.
 
-\[4\] LIGO Scientific Collaboration and Virgo Collaboration, "The
+$$4$$ LIGO Scientific Collaboration and Virgo Collaboration, "The
 basic physics of the binary black hole merger GW150914," Annalen der
 Physik 529, 1600209 (2017). DOI: 10.1002/andp.201600209.
 
