@@ -13,7 +13,7 @@ ORCID: 0009-0004-6753-4020
 
 ## 要旨
 
-既報 $$1$$
+既報 \[1\]
 では、正曲率定曲率空間に置いた測地的単位セルについて、一辺の測地線長は曲率半径に依存せず保存される一方、曲率歪みは二方向が張る面積から初めて現れることを示した。本稿では、この結果を複素旋回波
 
 z=a+ib
@@ -50,7 +50,7 @@ wave, Schwarzschild radius, GW150914
 
 ## 1. 動機――曲率歪みは長さではなく面積から始まる
 
-既報 $$1$$ では、曲率半径 R の正曲率定曲率空間 S^d(R) に、一辺 1
+既報 \[1\] では、曲率半径 R の正曲率定曲率空間 S^d(R) に、一辺 1
 の正則測地セルを置いた場合の歪みを、一辺・角・面積・体積に分けて評価した。
 
 その最も単純な結果は、一辺の測地線長が構成により厳密に 1
@@ -75,7 +75,7 @@ $$V_d(R) = 1+\frac{d(d-1)}{12R^2}+O(R^{-4})$$
 $$\frac{d(d-1)}{12} = \frac{1}{6}\binom{d}{2}$$
 
 であることから、最低次の体積歪みは独立な二方向の組が作る面積歪みの和として整理できる
-$$1$$。
+\[1\]。
 
 したがって既報から得られる本稿の出発点は、
 
@@ -121,7 +121,7 @@ $$\boxed{z^2=A^2(\cos2\theta+i\sin2\theta)} \tag{4}$$
 ここで本稿が注目するのは式 (3) である。
 
 a^2 と b^2 はそれぞれ一方向成分の平方であるのに対し、ab
-は二つの独立成分 (a,b) の積である。既報 $$1$$
+は二つの独立成分 (a,b) の積である。既報 \[1\]
 の「曲率歪みは二方向が張る面積から現れる」という整理に従えば、2ab
 は複素旋回波の中で曲率と結合しうる最小の面積型交差量として自然に選ばれる。
 
@@ -142,7 +142,7 @@ $$2ab=A^2\sin2\theta$$
 
 $$x=A\cos\theta$$
 
-は、一つの測地線方向に沿った振動として表せる。この場合、既報 $$1$$
+は、一つの測地線方向に沿った振動として表せる。この場合、既報 \[1\]
 の意味で二方向が張る面積セルは生じない。
 
 これに対し、
@@ -204,7 +204,7 @@ $$i(2iab)=-2ab=-A^2\sin2\theta. \tag{5}$$
 自体を新しい力学方程式と主張しているのではないことである。式 (1)--(4)
 は恒等式であるが、その虚数方向を曲率方向として物理的に読むことが本稿の仮説である。
 
-既報 $$1$$ の面積補正を用いれば、正曲率の場合の最小候補は概念的には
+既報 \[1\] の面積補正を用いれば、正曲率の場合の最小候補は概念的には
 
 $$h_\text{curv} \propto (k_s(R)-1)(-2ab), \tag{6}$$
 
@@ -317,7 +317,7 @@ $$h_\text{peak} \simeq 0.066 \cdot \frac{r_s}{D_L}$$
 ただし、式 (14) の (0.066)
 は本稿の複素波モデルから導出された定数ではない。したがって、これは予言値ではなく、観測値から逆算した無次元係数である。標準的な重力波理論でも、強重力源の
 strain が源の重力半径と距離の比に関係することは次元解析から自然に現れる
-$$4$$。本稿が検証したのは、提案した曲率読出しの自然スケールが代表的実イベントに対して何桁も外れてはいない、という限定された事実である。
+\[4\]。本稿が検証したのは、提案した曲率読出しの自然スケールが代表的実イベントに対して何桁も外れてはいない、という限定された事実である。
 
 本稿でより直接的に興味深いのは周波数側である。外部から (r_s)
 だけを与えて得た
@@ -333,7 +333,7 @@ $$f_s\simeq249 \text{Hz}$$
 
 本稿の構造は意図的に単純である。
 
-第一に、既報 $$1$$ の結果として、
+第一に、既報 \[1\] の結果として、
 
 $$\text{1D length: no curvature distortion},$$
 
@@ -384,7 +384,7 @@ spin-2
 
 本稿が主張する内容は次の範囲に限られる。
 
-1.  既報 $$1$$
+1.  既報 \[1\]
     では、測地線長そのものは曲率で歪まず、曲率歪みは二方向が張る面積から初めて現れる。
 2.  複素旋回波 (z=a+ib) の二乗には、二方向の積からなる面積型交差項
     (2iab) が必ず現れる。
@@ -419,22 +419,22 @@ $$$\boxed{
 
 ## 参考文献
 
-$$1$$ 木原範昭, 「論文0:
+\[1\] 木原範昭, 「論文0:
 正曲率定曲率空間における測地的単位セルの歪み――一辺・角・面積・体積の厳密評価」,
 v1.4, Zenodo, Version DOI: 10.5281/zenodo.20684135; Concept DOI:
 10.5281/zenodo.20680269 (2026).
 
-$$2$$ B. P. Abbott et al. (LIGO Scientific Collaboration and Virgo
+\[2\] B. P. Abbott et al. (LIGO Scientific Collaboration and Virgo
 Collaboration), "Observation of Gravitational Waves from a Binary
 Black Hole Merger," Physical Review Letters 116, 061102 (2016).
 DOI: 10.1103/PhysRevLett.116.061102.
 
-$$3$$ B. P. Abbott et al. (LIGO Scientific Collaboration and Virgo
+\[3\] B. P. Abbott et al. (LIGO Scientific Collaboration and Virgo
 Collaboration), "Properties of the Binary Black Hole Merger
 GW150914," Physical Review Letters 116, 241102 (2016). DOI:
 10.1103/PhysRevLett.116.241102.
 
-$$4$$ LIGO Scientific Collaboration and Virgo Collaboration, "The
+\[4\] LIGO Scientific Collaboration and Virgo Collaboration, "The
 basic physics of the binary black hole merger GW150914," Annalen der
 Physik 529, 1600209 (2017). DOI: 10.1002/andp.201600209.
 
