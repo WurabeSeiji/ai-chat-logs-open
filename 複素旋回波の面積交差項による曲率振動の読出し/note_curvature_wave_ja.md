@@ -104,7 +104,11 @@ $$(a + ib)^2 = a^2 - b^2 + 2iab$$
 
 ---
 
-**続きは論文で。** DOI: 10.5281/zenodo.22230941
+**続きは論文で。**
+
+- Zenodo: https://zenodo.org/record/22230941
+- GitHub PDF（日本語）: https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/複素旋回波の面積交差項による曲率振動の読出し/complex_wave_curvature_gravitational_wave_research_note_ja_20260901.pdf
+- DOI: 10.5281/zenodo.22230941
 
 ---
 
