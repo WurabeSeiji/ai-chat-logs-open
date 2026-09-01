@@ -1,5 +1,5 @@
 import numpy as np, math, csv, json, time
-p='./parent_v.npz'; d=np.load(p); z0=d['v'].astype(np.complex128); N=40
+p='/mnt/data/n40run/parent_v.npz'; d=np.load(p); z0=d['v'].astype(np.complex128); N=40
 ea,eb=np.triu_indices(N,1); M=len(ea); A=np.zeros((M,M))
 for e in range(M):
  s=(ea==ea[e])|(ea==eb[e])|(eb==ea[e])|(eb==eb[e]); s[e]=False; A[e,s]=1
@@ -16,6 +16,6 @@ for t in range(151):
   w,V=np.linalg.eigh(H); phase=np.exp(-1j*dt*w); zn=V@(phase*(V.conj().T@z));
   if t in (0,1,2,10,50,100): print(t,hp,h,cl,herm,np.linalg.norm(zn)/np.linalg.norm(z)-1)
   z=zn
-with open('./Claude_diagnostic_0_200.csv','w',newline='') as f:
+with open('/mnt/data/n40run/diagnostic_0_200.csv','w',newline='') as f:
  cw=csv.writer(f); cw.writerow(['step','Hperp_frac','H_total','closure','max_abs_z','finite']); cw.writerows(rows)
 print('DONE',rows[-1],'bad',bad,'sec',time.time()-t0)
