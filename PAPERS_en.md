@@ -4,7 +4,7 @@ Noriaki Kihara / WF System Co., Ltd. / ORCID [0009-0004-6753-4020](https://orcid
 All papers are published on Zenodo under CC BY 4.0. Columns: title (English / Japanese), Version DOI, Concept DOI, date, version, PDFs, folder in this repository, release notes.
 Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PAPERS_ja.md](PAPERS_ja.md) / Scholar landing pages: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**Papers: 122**
+**Papers: 123**
 
 ## Central Projection Framework (Gnomonic Spacetime Geometry) / グノモン正写像による4次元時空の幾何学的定式化
 
@@ -502,6 +502,13 @@ Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PA
    6次元符号化 xyztRQ の再検討──次論文化に向けた思考実験ノート  
    DOI [10.5281/zenodo.19904714](https://doi.org/10.5281/zenodo.19904714) · Concept [10.5281/zenodo.19902677](https://doi.org/10.5281/zenodo.19902677) · 2026-04-30 · [PDF en](https://zenodo.org/records/19904714/files/rethinking_xyztRQ_v4_en.pdf) [PDF ja](https://zenodo.org/records/19904714/files/rethinking_xyztRQ_v4_ja.pdf)  
    folder: [ヒッグス波についての考察](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E3%83%92%E3%83%83%E3%82%B0%E3%82%B9%E6%B3%A2%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E3%81%AE%E8%80%83%E5%AF%9F)
+
+## 複素旋回波の面積交差項による曲率振動の読出し / 複素旋回波の面積交差項による曲率振動の読出し
+
+1. **Complex Rotating Wave's Area Cross-Term Curvature Oscillation Readout: Minimal Application to Gravitational Waves**  
+   複素旋回波の面積交差項による曲率振動の読出し  
+   DOI [10.5281/zenodo.22230941](https://doi.org/10.5281/zenodo.22230941) · Concept [10.5281/zenodo.22230940](https://doi.org/10.5281/zenodo.22230940) · 2026-09-01 · [PDF en](https://zenodo.org/records/22230941/files/complex_wave_curvature_gravitational_wave_research_note_en_20260901.pdf) [PDF ja](https://zenodo.org/records/22230941/files/complex_wave_curvature_gravitational_wave_research_note_ja_20260901.pdf)  
+   folder: [複素旋回波の面積交差項による曲率振動の読出し](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97) · [release notes](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97/RELEASE_NOTES.md)
 
 ## Other (not stored in this repository) / その他（本リポジトリ未収録）
 
