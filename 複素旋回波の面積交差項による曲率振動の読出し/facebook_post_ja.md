@@ -1,12 +1,6 @@
-# Facebook投稿（日本語版）
-
 複素数の波が曲率空間で何をしているのか――一般相対論も標準理論も使わない、シンプルな幾何学的導出から重力波が見えてきた。
 
 詳細はコメント参照
-
----
-
-## 投稿本文
 
 曲率のある測地線を飛ぶ複素波 z = a + ib を考えると、その二乗には必ず面積型交差項 2iab が現れます。
 
@@ -23,14 +17,5 @@
 • 二倍角の偏極構造を持つ
 
 GW150914 の観測データとの一致は、単なる形式的な読み替えではなく、何か本質的なものを示唆しているのかもしれません。
-
-論文・解説記事は以下から：
-
-📄 Zenodo: https://zenodo.org/record/22230941
-📝 note（日本語）: https://note.com/kiharanoriaki/n/n37ab90073b11
-📰 note（English）: https://note.com/kiharanoriaki/n/nda747a7ff9e7
-🔗 GitHub: https://github.com/WurabeSeiji/ai-chat-logs-open
-
----
 
 #物理学 #重力波 #複素数 #幾何学 #曲率 #研究 #論文 #数学
