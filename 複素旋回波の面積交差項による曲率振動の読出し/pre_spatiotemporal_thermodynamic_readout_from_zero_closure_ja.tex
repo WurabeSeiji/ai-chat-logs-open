@@ -1,236 +1,339 @@
-\documentclass[11pt,a4paper,oneside]{article}
-
-% LuaLaTeX での日本語フォント設定
-\usepackage{luatexja}
-\usepackage[hiragino-pro]{luatexja-preset}
-
-% 数学・記号パッケージ
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{physics}
-\usepackage{mathrsfs}
-
-% ハイパーリンク・メタデータ
-\usepackage{hyperref}
-\hypersetup{
-  colorlinks=true,
-  linkcolor=blue,
-  urlcolor=blue,
-  bookmarks=true,
-  pdfauthor={Noriaki Kihara},
-  pdftitle={時空を仮定しない自己無撞着複素関係系からの熱力学的読出し},
-  pdfkeywords={complex relational system, zero closure, self-consistency, entropy, thermodynamics}
-}
-
-% ページレイアウト
-\usepackage{geometry}
-\geometry{top=25mm, bottom=25mm, left=20mm, right=20mm}
-
-% その他スタイル
-\usepackage{fancyhdr}
-\usepackage{graphicx}
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
 \usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-% セクションスタイル
-\usepackage{titlesec}
-\titleformat{\section}
-  {\large\bfseries}{\thesection.}{0.5em}{}
-\titleformat{\subsection}
-  {\normalsize\bfseries}{\thesubsection}{0.5em}{}
-
-% 参考文献のコマンド
-\newcommand{\cite}[1]{[\hyperlink{ref:#1}{#1}]}
-
-\title{時空を仮定しない自己無撞着複素関係系からの熱力学的読出し\\
----ゼロ閉塞部分系・状態数・エントロピー・エネルギー・温度---}
-
-\author{木原範昭 (Noriaki Kihara) \\
-\texttt{ORCID: 0009-0004-6753-4020}}
-
-\date{2026-09-02}
+\author{}
+\date{}
 
 \begin{document}
 
-\maketitle
+\section{時空を仮定しない自己無撞着複素関係系からの熱力学的読出し}\label{ux6642ux7a7aux3092ux4eeeux5b9aux3057ux306aux3044ux81eaux5df1ux7121ux649eux7740ux8907ux7d20ux95a2ux4fc2ux7cfbux304bux3089ux306eux71b1ux529bux5b66ux7684ux8aadux51faux3057}
 
-% メタデータ表示
-\noindent
-\textbf{文書種別：} Research Note / 仮説・考察論文 \\
-\textbf{DOI：} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
-\textbf{Concept DOI：} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+\subsection{――ゼロ閉塞部分系・状態数・エントロピー・エネルギー・温度}\label{ux30bcux30edux9589ux585eux90e8ux5206ux7cfbux72b6ux614bux6570ux30a8ux30f3ux30c8ux30edux30d4ux30fcux30a8ux30cdux30ebux30aeux30fcux6e29ux5ea6}
 
-\vspace{1em}
-\noindent\rule{\textwidth}{0.5pt}
+\textbf{Thermodynamic Readout from a Self-Consistent Complex Relational
+System without Presupposing Spacetime}\\
+\textbf{--- Local Zero-Closure Subsystems, State Counting, Entropy,
+Energy, and Temperature ---}
 
-\section*{要旨}
+\textbf{著者:} 木原範昭 (Noriaki Kihara)\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{文書種別:} Research Note / 仮説・考察論文\\
+\textbf{日付:} 2026-09-02\\
+\textbf{DOI:} 10.5281/zenodo.22240463\\
+\textbf{Concept DOI:} 10.5281/zenodo.22240462
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
 
 本稿では、空間、時間、粒子、質量、エネルギー、温度を基礎概念として仮定せず、複素数で表された関係とその自己無撞着性から、熱力学的量に相当する読出しを構成できるかを考察する。
 
 基礎系は、有限個の複素状態または複素関係からなり、その自己無撞着条件からゼロ閉塞
-\begin{equation}
+
+\[
 \sum_{n=1}^{N} x_n^2 = 0
-\end{equation}
+\]
+
 を持つ。また、有限位相周期として
-\begin{equation}
+
+\[
 U^N=I
-\end{equation}
+\]
+
 を考える。全体のゼロ閉塞は、複数の局所ゼロ閉塞部分系へ
-\begin{equation}
+
+\[
 0=0+0+\cdots+0
-\end{equation}
-と分解できる。このとき、同一の全体ゼロ閉塞を実現する自己無撞着な部分閉塞の異なる構成を状態として数えることができる。許容状態数を $\Omega$ とすれば、$k_B=1$ の単位系では
-\begin{equation}
+\]
+
+と分解できる。このとき、同一の全体ゼロ閉塞を実現する自己無撞着な部分閉塞の異なる構成を状態として数えることができる。許容状態数を
+\(\Omega\) とすれば、\(k_B=1\) の単位系では
+
+\[
 S=\ln\Omega
-\end{equation}
+\]
+
 というエントロピー型読出しが自然に得られる。
 
-さらに、局所閉塞系が $U^{N_k}=I$ を満たすなら、その基本位相刻みは $2\pi/N_k$ である。この内部位相尺度から加法的なエネルギー型計量候補を構成し、状態数の変化との比から
-\begin{equation}
-\frac{1}{T_{\mathrm{read}}} = \frac{\Delta S}{\Delta E_{\mathrm{read}}}
-\end{equation}
+さらに、局所閉塞系が \(U^{N_k}=I\) を満たすなら、その基本位相刻みは
+\(2\pi/N_k\)
+である。この内部位相尺度から加法的なエネルギー型計量候補を構成し、状態数の変化との比から
+
+\[
+\frac{1}{T_{\mathrm{read}}}
+=
+\frac{\Delta S}{\Delta E_{\mathrm{read}}}
+\]
+
 という温度型読出しを定義できる。
 
 本稿の中心的主張は、既存熱力学を完全に導出したというものではない。より限定的に、\textbf{時空や粒子を基礎に置かない自己無撞着複素関係系において、状態数、エントロピー、エネルギー、温度と同型の観測読出し構造を構成できる}ことを示す。また、これらの読出し値は、全体系のどの局所ゼロ閉塞部分系を観測対象として選択するかによって変化しうる。本稿の読出し体系は、先行研究で検討した曲率読出し（重力波への最小適用）と共通の\textbf{観測読出し階層}に属し、前出の重力波論文と統一されない二つの異なる観測写像を示す。
 
-最後に、宇宙論的離散度として検討している $N\sim10^{60}$ に対して二体関係数が $M\sim10^{120}$ に達することと、観測宇宙におけるバリオン対光子比が約 $10^{-9}$ であることを比較する。この比較は数値的一致の主張ではなく、巨大な関係空間の中で物質的局所状態が希薄になるという本モデルの方向性が、観測宇宙と最初のオーダーで直ちに矛盾しないことを確認するための\textbf{決定的な検算}である。
+最後に、宇宙論的離散度として検討している \(N\sim10^{60}\)
+に対して二体関係数が \(M\sim10^{120}\)
+に達することと、観測宇宙におけるバリオン対光子比が約 \(10^{-9}\)
+であることを比較する。この比較は数値的一致の主張ではなく、巨大な関係空間の中で物質的局所状態が希薄になるという本モデルの方向性が、観測宇宙と最初のオーダーで直ちに矛盾しないことを確認するための\textbf{決定的な検算}である。
 
-\vspace{0.5em}
-\noindent
-\textbf{Keywords：} complex relational system, zero closure, self-consistency, state counting, entropy, emergent thermodynamics, observer dependence, finite phase periodicity, pre-spatiotemporal physics
+\textbf{Keywords:} complex relational system, zero closure,
+self-consistency, state counting, entropy, emergent thermodynamics,
+observer dependence, finite phase periodicity, pre-spatiotemporal
+physics
 
-\noindent\rule{\textwidth}{0.5pt}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{はじめに}
+\subsection{1. はじめに}\label{ux306fux3058ux3081ux306b}
 
-統計力学では、エントロピーはミクロ状態数と結び付けられる。Boltzmann の統計的考察を後に Planck が簡潔な形で表した関係は
-\begin{equation}
+統計力学では、エントロピーはミクロ状態数と結び付けられる。Boltzmann
+の統計的考察を後に Planck が簡潔な形で表した関係は
+
+\[
 S=k_B\ln\Omega
-\end{equation}
-である\cite{1}。また、ミクロカノニカルな記述では温度はエントロピーのエネルギー微分として
-\begin{equation}
-\frac{1}{T} = \left(\frac{\partial S}{\partial E}\right)
-\end{equation}
+\]
+
+である
+{[}1{]}。また、ミクロカノニカルな記述では温度はエントロピーのエネルギー微分として
+
+\[
+\frac{1}{T}
+=
+\left(\frac{\partial S}{\partial E}\right)
+\]
+
 と表される。
 
 通常、この構成では「系」「エネルギー」「体積」「粒子数」などが既に定義されている。本稿では順序を逆にし、空間、時間、粒子、エネルギーを先に置かず、自己無撞着な複素関係だけを基礎に置いたとき、それでも状態数と熱力学的読出しを構成できるかを問う。
 
-著者の先行研究では、複素旋回波の二方向交差項を曲率振動として読む最小構成を検討し、同一の局所複素波から曲率半径が一意には決まらず、どの物理スケールを観測対象として採用するかによって曲率の読出し尺度が変わりうることを指摘した\cite{2}。本稿では、この「基礎状態と観測読出しを分離する」という考えを、状態数、エントロピー、エネルギー、温度へ拡張する。
+著者の先行研究では、複素旋回波の二方向交差項を曲率振動として読む最小構成を検討し、同一の局所複素波から曲率半径が一意には決まらず、どの物理スケールを観測対象として採用するかによって曲率の読出し尺度が変わりうることを指摘した
+{[}2{]}。本稿では、この「基礎状態と観測読出しを分離する」という考えを、状態数、エントロピー、エネルギー、温度へ拡張する。
 
-\noindent\rule{\textwidth}{0.5pt}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{基礎系}
+\subsection{2. 基礎系}\label{ux57faux790eux7cfb}
 
-\subsection{複素状態}
+\subsubsection{2.1 複素状態}\label{ux8907ux7d20ux72b6ux614b}
 
-$N$ 個の複素量
-\begin{equation}
-x_n=a_n+i b_n \quad (n=1,\ldots,N)
-\end{equation}
+\(N\) 個の複素量
+
+\[
+x_n=a_n+i b_n
+\qquad
+(n=1,\ldots,N)
+\]
+
 を考える。
 
-形式的には $N$ 個の複素量は $2N$ 個の実数成分を持つ。ただし、本稿ではこれらを空間座標とは定義しない。$x_n$ は基礎的な状態または関係を表す複素量である。
+形式的には \(N\) 個の複素量は \(2N\)
+個の実数成分を持つ。ただし、本稿ではこれらを空間座標とは定義しない。\(x_n\)
+は基礎的な状態または関係を表す複素量である。
 
-\subsection{ゼロ閉塞}
+\subsubsection{2.2 ゼロ閉塞}\label{ux30bcux30edux9589ux585e}
 
 自己無撞着条件から得られる基礎構造として
-\begin{equation}
-\sum_{n=1}^{N}x_n^2=0 \tag{1}
-\end{equation}
+
+\[
+\sum_{n=1}^{N}x_n^2=0
+\tag{1}
+\]
+
 を考える。
 
-複素量であるため、式 (1) は各 $x_n$ がゼロであることを意味しない。実部と虚部に分ければ
-\begin{align}
-\sum_{n=1}^{N}(a_n^2-b_n^2)&=0, \\
-\sum_{n=1}^{N}a_n b_n&=0
-\end{align}
+複素量であるため、式 (1) は各 \(x_n\)
+がゼロであることを意味しない。実部と虚部に分ければ
+
+\[
+\sum_{n=1}^{N}(a_n^2-b_n^2)=0,
+\]
+
+\[
+\sum_{n=1}^{N}a_n b_n=0
+\]
+
 であり、非自明な複素状態が全体として閉塞できる。
 
 また、式 (1) は一様スケール変換
-\begin{equation}
+
+\[
 x_n\rightarrow\lambda x_n
-\end{equation}
+\]
+
 に対して
-\begin{equation}
-\sum_{n=1}^{N}(\lambda x_n)^2 = \lambda^2\sum_{n=1}^{N}x_n^2 = 0
-\end{equation}
+
+\[
+\sum_{n=1}^{N}(\lambda x_n)^2
+=
+\lambda^2\sum_{n=1}^{N}x_n^2
+=
+0
+\]
+
 を保つ。したがってゼロ閉塞そのものは絶対スケールを要求しない。
 
-\subsection{有限位相周期}
+\subsubsection{2.3
+有限位相周期}\label{ux6709ux9650ux4f4dux76f8ux5468ux671f}
 
 さらに有限周期条件
-\begin{equation}
-U^N=I \tag{2}
-\end{equation}
+
+\[
+U^N=I
+\tag{2}
+\]
+
 を考える。
 
 最小の位相回転を
-\begin{equation}
+
+\[
 U=\exp\left(\frac{2\pi i}{N}\right)
-\end{equation}
+\]
+
 と読めば、許される基本位相は
-\begin{equation}
+
+\[
 \theta_m=\frac{2\pi m}{N}
-\end{equation}
+\]
+
 であり、規格化した最小位相刻みは
-\begin{equation}
-\frac{\Delta\theta}{2\pi}=\frac{1}{N} \tag{3}
-\end{equation}
+
+\[
+\frac{\Delta\theta}{2\pi}
+=
+\frac{1}{N}
+\tag{3}
+\]
+
 となる。
 
 本稿では、式 (1) と式 (2) から空間や時間を先に定義しない。
 
-\noindent\rule{\textwidth}{0.5pt}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{局所ゼロ閉塞への分解}
+\subsection{3.
+局所ゼロ閉塞への分解}\label{ux5c40ux6240ux30bcux30edux9589ux585eux3078ux306eux5206ux89e3}
 
 全体系がゼロ閉塞しているとする。
-\begin{equation}
-\sum_{n=1}^{N}x_n^2=0.
-\end{equation}
 
-ここで添字集合を互いに素な部分集合 $I_k$ に分け、それぞれについて
-\begin{equation}
-\sum_{n\in I_k}x_n^2=0 \quad (k=1,\ldots,K) \tag{4}
-\end{equation}
+\[
+\sum_{n=1}^{N}x_n^2=0.
+\]
+
+ここで添字集合を互いに素な部分集合 \(I_k\) に分け、それぞれについて
+
+\[
+\sum_{n\in I_k}x_n^2=0
+\qquad
+(k=1,\ldots,K)
+\tag{4}
+\]
+
 が成立する場合を考える。
 
 すると全体は
-\begin{equation}
-0 = \underbrace{0}_{I_1} + \underbrace{0}_{I_2} +\cdots+ \underbrace{0}_{I_K} \tag{5}
-\end{equation}
+
+\[
+0
+=
+\underbrace{0}_{I_1}
++
+\underbrace{0}_{I_2}
++\cdots+
+\underbrace{0}_{I_K}
+\tag{5}
+\]
+
 と分解される。
 
 各部分系の要素数を
-\begin{equation}
+
+\[
 N_k=|I_k|
-\end{equation}
+\]
+
 とすれば、
-\begin{equation}
-N=\sum_{k=1}^{K}N_k. \tag{6}
-\end{equation}
+
+\[
+N=\sum_{k=1}^{K}N_k.
+\tag{6}
+\]
 
 重要なのは、全体がゼロであることだけではない。同一の全体ゼロ閉塞に対して、局所ゼロ閉塞を実現する複数の分解が存在しうる。
 
 本稿では、この\textbf{自己無撞着なゼロ閉塞の異なる実現方法}を状態として数える。
 
-\noindent\rule{\textwidth}{0.5pt}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{状態数}
+\subsection{4. 状態数}\label{ux72b6ux614bux6570}
 
-固定した $N$ に対し、自己無撞着条件、ゼロ閉塞条件、有限位相条件を同時に満たす許容状態の集合を
-\begin{equation}
+固定した \(N\)
+に対し、自己無撞着条件、ゼロ閉塞条件、有限位相条件を同時に満たす許容状態の集合を
+
+\[
 \mathcal{S}_N
-\end{equation}
+\]
+
 とする。
 
 その状態数を
-\begin{equation}
-\Omega_N = |\mathcal{S}_N| \tag{7}
-\end{equation}
+
+\[
+\Omega_N
+=
+|\mathcal{S}_N|
+\tag{7}
+\]
+
 と定義する。
 
-ここで $\Omega_N$ は、あらかじめ与えられた空間内に粒子を配置する組合せ数ではない。空間も粒子もまだ基礎変数として導入していないからである。
+ここで \(\Omega_N\)
+は、あらかじめ与えられた空間内に粒子を配置する組合せ数ではない。空間も粒子もまだ基礎変数として導入していないからである。
 
-$\Omega_N$ が数えるのは、
+\(\Omega_N\) が数えるのは、
 
 \begin{quote}
 同一の全体ゼロ閉塞を実現する、許容された自己無撞着な関係状態または局所閉塞分解の数
@@ -238,438 +341,735 @@ $\Omega_N$ が数えるのは、
 
 である。
 
-連続な複素振幅を無制約に許せば状態集合は連続となりうるため、有限な $\Omega_N$ を得るためには、有限位相周期、自己無撞着条件、振幅条件、同値関係などによる状態同定が必要である。この具体的な数え上げ規則の確定は\textbf{本理論の即座の核心課題}である。
+連続な複素振幅を無制約に許せば状態集合は連続となりうるため、有限な
+\(\Omega_N\)
+を得るためには、有限位相周期、自己無撞着条件、振幅条件、同値関係などによる状態同定が必要である。この具体的な数え上げ規則の確定は\textbf{本理論の即座の核心課題}である。
 
-\noindent\rule{\textwidth}{0.5pt}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{エントロピー型読出し}
+\subsection{5.
+エントロピー型読出し}\label{ux30a8ux30f3ux30c8ux30edux30d4ux30fcux578bux8aadux51faux3057}
 
-Boltzmann の統計的エントロピーとの形式的対応を用い、$k_B=1$ と規格化して
-\begin{equation}
-S_N=\ln\Omega_N \tag{8}
-\end{equation}
+Boltzmann の統計的エントロピーとの形式的対応を用い、\(k_B=1\)
+と規格化して
+
+\[
+S_N=\ln\Omega_N
+\tag{8}
+\]
+
 を定義する。
 
-二つの独立な閉塞系 $A$ と $B$ に対して
-\begin{equation}
-\Omega_{A+B} = \Omega_A\Omega_B
-\end{equation}
+二つの独立な閉塞系 \(A\) と \(B\) に対して
+
+\[
+\Omega_{A+B}
+=
+\Omega_A\Omega_B
+\]
+
 が成立すれば、
-\begin{equation}
-S_{A+B} = \ln(\Omega_A\Omega_B) = S_A+S_B. \tag{9}
-\end{equation}
 
-したがって $\ln\Omega$ は、状態数の積に対して加法的となる自然な読出し量である。
+\[
+S_{A+B}
+=
+\ln(\Omega_A\Omega_B)
+=
+S_A+S_B.
+\tag{9}
+\]
 
-ここで重要なのは、本稿が式 (8) を既存熱力学のエントロピーと無条件に同一視しているわけではないことである。現段階で示されるのは、時空や粒子を仮定しない基礎系にも、ミクロ状態数とその対数という統計力学と同型の構造が存在しうるということである。
+したがって \(\ln\Omega\)
+は、状態数の積に対して加法的となる自然な読出し量である。
 
-\noindent\rule{\textwidth}{0.5pt}
+ここで重要なのは、本稿が式 (8)
+を既存熱力学のエントロピーと無条件に同一視しているわけではないことである。現段階で示されるのは、時空や粒子を仮定しない基礎系にも、ミクロ状態数とその対数という統計力学と同型の構造が存在しうるということである。
 
-\section{エネルギー型読出し}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-局所ゼロ閉塞部分系 $I_k$ が $N_k$ 個の要素を持ち、その部分系について
-\begin{equation}
+\subsection{6.
+エネルギー型読出し}\label{ux30a8ux30cdux30ebux30aeux30fcux578bux8aadux51faux3057}
+
+局所ゼロ閉塞部分系 \(I_k\) が \(N_k\) 個の要素を持ち、その部分系について
+
+\[
 U^{N_k}=I
-\end{equation}
+\]
+
 が成立するとする。
 
 すると、その部分系の基本位相刻みは
-\begin{equation}
-\Delta\theta_k = \frac{2\pi}{N_k}. \tag{10}
-\end{equation}
 
-$2\pi$ を規格化した内部尺度として
-\begin{equation}
-\varepsilon_k = \frac{1}{N_k} \tag{11}
-\end{equation}
+\[
+\Delta\theta_k
+=
+\frac{2\pi}{N_k}.
+\tag{10}
+\]
+
+\(2\pi\) を規格化した内部尺度として
+
+\[
+\varepsilon_k
+=
+\frac{1}{N_k}
+\tag{11}
+\]
+
 が自然に得られる。
 
-したがって、ある局所閉塞分解 $\Pi$ に対する加法的な読出し候補として、例えば
-\begin{equation}
-E_{\theta}(\Pi) = \sum_{k=1}^{K}\frac{1}{N_k} \tag{12}
-\end{equation}
+したがって、ある局所閉塞分解 \(\Pi\)
+に対する加法的な読出し候補として、例えば
+
+\[
+E_{\theta}(\Pi)
+=
+\sum_{k=1}^{K}\frac{1}{N_k}
+\tag{12}
+\]
+
 を構成できる。
 
-式 (12) は\textbf{物理的エネルギーの一意な導出ではない}。これは $U^{N_k}=I$ に由来する内部位相分解能から作られる、最小の加法的エネルギー型計量候補である。
+式 (12) は\textbf{物理的エネルギーの一意な導出ではない}。これは
+\(U^{N_k}=I\)
+に由来する内部位相分解能から作られる、最小の加法的エネルギー型計量候補である。
 
 物理的エネルギーとして採用できるかどうかは、実際の時間発展、保存則、相互作用時の交換量、および観測量との対応によって\textbf{検証することによって理論の基礎を固める}。
 
-\noindent\rule{\textwidth}{0.5pt}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{温度型読出し}
+\subsection{7. 温度型読出し}\label{ux6e29ux5ea6ux578bux8aadux51faux3057}
 
-エネルギー型読出し $E$ によって状態を分類し、
-\begin{equation}
-\Omega_N(E) = \#\left\{ s\in\mathcal{S}_N \mid E(s)=E \right\} \tag{13}
-\end{equation}
+エネルギー型読出し \(E\) によって状態を分類し、
+
+\[
+\Omega_N(E)
+=
+\#\left\{
+s\in\mathcal{S}_N
+\mid
+E(s)=E
+\right\}
+\tag{13}
+\]
+
 とする。
 
 すると
-\begin{equation}
-S_N(E) = \ln\Omega_N(E). \tag{14}
-\end{equation}
+
+\[
+S_N(E)
+=
+\ln\Omega_N(E).
+\tag{14}
+\]
 
 連続極限では通常のミクロカノニカルな定義と同型に
-\begin{equation}
-\frac{1}{T_{\mathrm{read}}} = \frac{\partial S}{\partial E} \tag{15}
-\end{equation}
+
+\[
+\frac{1}{T_{\mathrm{read}}}
+=
+\frac{\partial S}{\partial E}
+\tag{15}
+\]
+
 を考えることができる。
 
-有限 $N$ の離散系では、より直接には
-\begin{equation}
-\frac{1}{T_{\mathrm{read}}} \simeq \frac{\Delta S}{\Delta E} = \frac{\Delta\ln\Omega}{\Delta E} \tag{16}
-\end{equation}
+有限 \(N\) の離散系では、より直接には
+
+\[
+\frac{1}{T_{\mathrm{read}}}
+\simeq
+\frac{\Delta S}{\Delta E}
+=
+\frac{\Delta\ln\Omega}{\Delta E}
+\tag{16}
+\]
+
 である。
 
 したがって
-\begin{equation}
-T_{\mathrm{read}} \simeq \frac{\Delta E}{\Delta\ln\Omega}. \tag{17}
-\end{equation}
 
-この段階でも $T_{\mathrm{read}}$ をケルビン温度そのものと同定しない。本稿で得られたのは、状態数とエネルギー型計量から温度と同じ数学構造を持つ量が内部的に\textbf{必然的に現れる}という原理的な結果である。
+\[
+T_{\mathrm{read}}
+\simeq
+\frac{\Delta E}{\Delta\ln\Omega}.
+\tag{17}
+\]
 
-\noindent\rule{\textwidth}{0.5pt}
+この段階でも \(T_{\mathrm{read}}\)
+をケルビン温度そのものと同定しない。本稿で得られたのは、状態数とエネルギー型計量から温度と同じ数学構造を持つ量が内部的に\textbf{必然的に現れる}という原理的な結果である。
 
-\section{観測する部分ゼロ閉塞系への依存}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8.
+観測する部分ゼロ閉塞系への依存}\label{ux89b3ux6e2cux3059ux308bux90e8ux5206ux30bcux30edux9589ux585eux7cfbux3078ux306eux4f9dux5b58}
 
 本稿で最も重要な点の一つは、全体系のどの部分ゼロ閉塞を「観測する系」として選ぶかが一意とは限らないことである。
 
-観測対象 $A$ が
-\begin{equation}
+観測対象 \(A\) が
+
+\[
 \sum_{n\in A}x_n^2=0
-\end{equation}
-を満たし、別の観測対象 $B$ が
-\begin{equation}
+\]
+
+を満たし、別の観測対象 \(B\) が
+
+\[
 \sum_{n\in B}x_n^2=0
-\end{equation}
+\]
+
 を満たすとする。
 
 一般には
-\begin{align}
-N_A&\neq N_B, \\
-\Omega_A&\neq\Omega_B,
-\end{align}
+
+\[
+N_A\neq N_B,
+\]
+
+\[
+\Omega_A\neq\Omega_B,
+\]
+
 したがって
-\begin{equation}
+
+\[
 S_A\neq S_B
-\end{equation}
+\]
+
 となりうる。
 
 エネルギー型読出しも
-\begin{equation}
+
+\[
 E_A\neq E_B
-\end{equation}
+\]
+
 となり、その結果
-\begin{equation}
+
+\[
 T_A\neq T_B
-\end{equation}
+\]
+
 となりうる。
 
 したがって本系では、物理的読出しを概念的に
-\begin{equation}
-\boxed{\begin{aligned}
-\text{physical readout} &= \text{underlying relational state} \\
-&\quad + \text{selected local zero-closure subsystem} \\
-&\quad + \text{readout map}
-\end{aligned}} \tag{18}
-\end{equation}
+
+\[
+\boxed{
+\text{physical readout}
+=
+\text{underlying relational state}
++
+\text{selected local zero-closure subsystem}
++
+\text{readout map}
+}
+\tag{18}
+\]
+
 と整理できる。
 
 これは単なる測定誤差ではない。同一の全体関係状態に対し、どの自己無撞着な部分閉塞を「系」として選択するかによって、状態数そのものが変わるからである。
 
-\noindent\rule{\textwidth}{0.5pt}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{曲率読出しとの共通構造：観測読出し階層の統一的枠組み}
+\subsection{9.
+曲率読出しとの共通構造：観測読出し階層の統一的枠組み}\label{ux66f2ux7387ux8aadux51faux3057ux3068ux306eux5171ux901aux69cbux9020ux89b3ux6e2cux8aadux51faux3057ux968eux5c64ux306eux7d71ux4e00ux7684ux67a0ux7d44ux307f}
 
-著者の先行研究 \cite{2} では、複素旋回波
-\begin{equation}
+著者の先行研究 {[}2{]} では、複素旋回波
+
+\[
 z=a+ib
-\end{equation}
-に対し
-\begin{equation}
-z^2 = (a^2-b^2)+2iab
-\end{equation}
-と展開したときの面積型交差項 $2ab$ を、曲率振動の読出し候補として検討した。
+\]
 
-その議論では、同一の局所複素波だけから観測曲率半径 $R$ は一意に決まらない。分子、天体、宇宙といったどの物理スケールを観測対象とするかによって、曲率の読出し尺度が変わりうる\cite{2}。これは\textbf{観測読出し階層}という原理的構造を示している。
+に対し
+
+\[
+z^2
+=
+(a^2-b^2)+2iab
+\]
+
+と展開したときの面積型交差項 \(2ab\)
+を、曲率振動の読出し候補として検討した。
+
+その議論では、同一の局所複素波だけから観測曲率半径 \(R\)
+は一意に決まらない。分子、天体、宇宙といったどの物理スケールを観測対象とするかによって、曲率の読出し尺度が変わりうる
+{[}2{]}。これは\textbf{観測読出し階層}という原理的構造を示している。
 
 今回の熱力学的読出しも同じ観測読出し階層に属する。
 
 基礎状態そのものに
-\begin{equation}
+
+\[
 R,\quad E,\quad S,\quad T
-\end{equation}
+\]
+
 が絶対量として直接書き込まれている必要はない。
 
 同一の自己無撞着ゼロ閉塞状態から、
 
 \begin{itemize}
-  \item 幾何学的読出し $\rightarrow$ 曲率半径 $R$ （重力波への最小適用）
-  \item 状態数的読出し $\rightarrow$ エントロピー $S$ （本稿の中核）
-  \item 位相・変化尺度の読出し $\rightarrow$ エネルギー型量 $E$
-  \item 状態密度の変化率 $\rightarrow$ 温度型量 $T$
+\tightlist
+\item
+  幾何学的読出し → 曲率半径 \(R\) （重力波への最小適用）
+\item
+  状態数的読出し → エントロピー \(S\) （本稿の中核）
+\item
+  位相・変化尺度の読出し → エネルギー型量 \(E\)
+\item
+  状態密度の変化率 → 温度型量 \(T\)
 \end{itemize}
 
 という\textbf{異なる観測写像が必然的に導出される}。これらは並列構造であり、どの読出し写像を採用するかによって、同一の基礎状態から異なる物理量が現れる。
 
 したがって、
-\begin{equation}
-\boxed{\text{絶対的基礎構造：自己無撞着なゼロ閉塞}}
-\end{equation}
+
+\[
+\boxed{
+\text{絶対的基礎構造：自己無撞着なゼロ閉塞}
+}
+\]
+
 に対し、
-\begin{equation}
-\boxed{\text{相対的物理量：選択された観測読出し階層による観測的な値}}
-\end{equation}
+
+\[
+\boxed{
+\text{相対的物理量：選択された観測読出し階層による観測的な値}
+}
+\]
+
 という二層階層が\textbf{必然的に確立される}。
 
-\noindent\rule{\textwidth}{0.5pt}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{絶対的なゼロとスケール不変性}
+\subsection{10.
+絶対的なゼロとスケール不変性}\label{ux7d76ux5bfeux7684ux306aux30bcux30edux3068ux30b9ux30b1ux30fcux30ebux4e0dux5909ux6027}
 
 式 (1) は
-\begin{equation}
+
+\[
 x_n\rightarrow\lambda x_n
-\end{equation}
+\]
+
 に対して不変なゼロ閉塞関係を保つ。
 
 したがって、絶対スケールを持たないにもかかわらず、
-\begin{equation}
+
+\[
 0
-\end{equation}
+\]
+
 は系全体の固定点として残る。
 
 これは、絶対零度を含む熱力学的ゼロ、曲率の基準、発展尺度の基準が同一のゼロ閉塞構造から読出される可能性を考える動機になる。
 
 ただし本稿では、
-\begin{equation}
-T=0, \quad S=0, \quad E=0
-\end{equation}
+
+\[
+T=0,
+\qquad
+S=0,
+\qquad
+E=0
+\]
+
 を互いに同一視しない。
 
 特に、ゼロ閉塞は情報の不存在を意味しない。非自明な複素状態
-\begin{equation}
+
+\[
 (x_1,\ldots,x_N)\neq(0,\ldots,0)
-\end{equation}
+\]
+
 が
-\begin{equation}
+
+\[
 \sum_nx_n^2=0
-\end{equation}
+\]
+
 を満たすことができるからである。
 
 したがって「幾何学的にゼロ」と「内部情報がゼロ」は区別される。
 
-\noindent\rule{\textwidth}{0.5pt}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{調和構造とオイラー＝マスケローニ定数}
+\subsection{11.
+調和構造とオイラー＝マスケローニ定数}\label{ux8abfux548cux69cbux9020ux3068ux30aaux30a4ux30e9ux30fcux30deux30b9ux30b1ux30edux30fcux30cbux5b9aux6570}
 
 有限周期条件から
-\begin{equation}
-\frac{\Delta\theta_k}{2\pi}=\frac{1}{N_k}
-\end{equation}
+
+\[
+\frac{\Delta\theta_k}{2\pi}
+=
+\frac{1}{N_k}
+\]
+
 という逆数構造が自然に現れる。
 
 局所ゼロ閉塞の階層的分解が
-\begin{equation}
+
+\[
 \sum_k\frac{1}{N_k}
-\end{equation}
+\]
+
 型の和を生成するなら、調和数
-\begin{equation}
-H_N=\sum_{k=1}^{N}\frac{1}{k}
-\end{equation}
+
+\[
+H_N
+=
+\sum_{k=1}^{N}\frac{1}{k}
+\]
+
 との関係が生じうる。
 
 調和数は
-\begin{equation}
-H_N=\ln N+\gamma+O\left(\frac{1}{N}\right)
-\end{equation}
+
+\[
+H_N
+=
+\ln N+\gamma+O\left(\frac{1}{N}\right)
+\]
+
 を満たし、
-\begin{equation}
-\gamma=0.5772156649\ldots
-\end{equation}
+
+\[
+\gamma
+=
+0.5772156649\ldots
+\]
+
 はオイラー＝マスケローニ定数である。
 
-著者の現在の数値実験では、高度に拘束された初期条件において、極めて小さな数値的摂動から約 $0.577$ 付近まで急激に増幅するインフレーション様発展が観察されている。倍精度計算で再現される安定性は偶然ではなく、この値が本モデルの調和構造に由来することを強く示唆している。
+著者の現在の数値実験では、高度に拘束された初期条件において、極めて小さな数値的摂動から約
+\(0.577\)
+付近まで急激に増幅するインフレーション様発展が観察されている。倍精度計算で再現される安定性は偶然ではなく、この値が本モデルの調和構造に由来することを強く示唆している。
 
-これらの精密な数値挙動は、今後の研究で明確にすべき重要な課題である。特に、この値が $\gamma$ へ厳密に収束する過程、倍精度計算での下限の正体、および発展可能な最小摂動が有限値を持つのか、ゼロへ無限に近づくのかという問いは、本モデルの物理的な下限やエネルギー最小化メカニズムを判定する上で本質的である。
+これらの精密な数値挙動は、今後の研究で明確にすべき重要な課題である。特に、この値が
+\(\gamma\)
+へ厳密に収束する過程、倍精度計算での下限の正体、および発展可能な最小摂動が有限値を持つのか、ゼロへ無限に近づくのかという問いは、本モデルの物理的な下限やエネルギー最小化メカニズムを判定する上で本質的である。
 
-したがって本節は、有限周期と局所閉塞分解から自然に現れる逆数構造と、数値実験で観察された $0.577$ 近傍の値との\textbf{構造的対応が、重力定数の起源を示唆する現象}であることを記録するものであり、これらの数値的検証がモデルの基礎を固める次段階である。
+したがって本節は、有限周期と局所閉塞分解から自然に現れる逆数構造と、数値実験で観察された
+\(0.577\)
+近傍の値との\textbf{構造的対応が、重力定数の起源を示唆する現象}であることを記録するものであり、これらの数値的検証がモデルの基礎を固める次段階である。
 
-\noindent\rule{\textwidth}{0.5pt}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{観測宇宙との最小オーダー検算}
+\subsection{12.
+観測宇宙との最小オーダー検算}\label{ux89b3ux6e2cux5b87ux5b99ux3068ux306eux6700ux5c0fux30aaux30fcux30c0ux30fcux691cux7b97}
 
 本稿の構造が現実の宇宙と著しく異なる方向を要求していないかを確認するため、現在の観測宇宙におけるバリオン数と光子数との最小オーダー比較を行う。
 
-$N$ 個の要素から無向二体関係を構成すると、
-\begin{equation}
-M = \frac{N(N-1)}{2}. \tag{19}
-\end{equation}
+\(N\) 個の要素から無向二体関係を構成すると、
+
+\[
+M
+=
+\frac{N(N-1)}{2}.
+\tag{19}
+\]
 
 宇宙論的な離散度として現在検討している
-\begin{equation}
+
+\[
 N\sim10^{60}
-\end{equation}
+\]
+
 を代入すると、
-\begin{equation}
-M \simeq 5\times10^{119} \sim10^{120}. \tag{20}
-\end{equation}
 
-したがって、本系では $N$ の増大に対して関係数 $M$ がほぼ $N^2$ で急増する。
+\[
+M
+\simeq
+5\times10^{119}
+\sim10^{120}.
+\tag{20}
+\]
 
-一方、Particle Data Group がまとめる標準宇宙論パラメータでは、バリオン対光子比は概ね
-\begin{equation}
-\eta \equiv \frac{n_b}{n_\gamma} \simeq 6\times10^{-10} \tag{21}
-\end{equation}
+したがって、本系では \(N\) の増大に対して関係数 \(M\) がほぼ \(N^2\)
+で急増する。
+
+一方、Particle Data Group
+がまとめる標準宇宙論パラメータでは、バリオン対光子比は概ね
+
+\[
+\eta
+\equiv
+\frac{n_b}{n_\gamma}
+\simeq
+6\times10^{-10}
+\tag{21}
+\]
+
 であり、バリオン数密度は
-\begin{equation}
-n_b \simeq 2.5\times10^{-7}\ {\rm cm}^{-3}
-\end{equation}
-である \cite{3}。CMB 温度 $T_\gamma\simeq2.7255\,{\rm K}$ に対応する光子数密度は約
-\begin{equation}
-n_\gamma \simeq 4.1\times10^2\ {\rm cm}^{-3}
-\end{equation}
+
+\[
+n_b
+\simeq
+2.5\times10^{-7}\ {\rm cm}^{-3}
+\]
+
+である {[}3{]}。CMB 温度 \(T_\gamma\simeq2.7255\,{\rm K}\)
+に対応する光子数密度は約
+
+\[
+n_\gamma
+\simeq
+4.1\times10^2\ {\rm cm}^{-3}
+\]
+
 である。
 
 したがって、
-\begin{equation}
-\frac{n_\gamma}{n_b} \sim 1.6\times10^9. \tag{22}
-\end{equation}
 
-すなわち現在宇宙では、バリオン 1 個に対して CMB 光子がおよそ $10^9$ 個存在する。
+\[
+\frac{n_\gamma}{n_b}
+\sim
+1.6\times10^9.
+\tag{22}
+\]
+
+すなわち現在宇宙では、バリオン 1 個に対して CMB 光子がおよそ \(10^9\)
+個存在する。
 
 観測可能宇宙全体に同じ平均密度を適用すれば、代表的な概算として
-\begin{align}
-N_\gamma&\sim10^{89}, \\
-N_b&\sim10^{80},
-\end{align}
+
+\[
+N_\gamma\sim10^{89},
+\]
+
+\[
+N_b\sim10^{80},
+\]
+
 したがって
-\begin{equation}
-\frac{N_b}{N_\gamma} \sim10^{-9} \tag{23}
-\end{equation}
+
+\[
+\frac{N_b}{N_\gamma}
+\sim10^{-9}
+\tag{23}
+\]
+
 となる。
 
-ここで注目するのは $10^{120}$ と $10^{80}$ または $10^{89}$ の数値的一致ではない。これらは異なる量であり、直接同一視してはならない。
+ここで注目するのは \(10^{120}\) と \(10^{80}\) または \(10^{89}\)
+の数値的一致ではない。これらは異なる量であり、直接同一視してはならない。
 
 本モデルで検討すべき構造は、
-\begin{equation}
-N\sim10^{60} \quad\Longrightarrow\quad M\sim10^{120}
-\end{equation}
+
+\[
+N\sim10^{60}
+\quad\Longrightarrow\quad
+M\sim10^{120}
+\]
+
 という\textbf{巨大な関係空間の中で、自己無撞着性、ゼロ閉塞および有限周期条件を同時に満たす特殊な局所構造だけがバリオン的状態として読出される}という、本理論の階層的必然性である。この希薄化は、既存パラメータの後付けではなく、純粋に組み合わせ論的な確率構造から要求される。
 
-全許容状態数を $\Omega(N)$、そのうちバリオン的局所閉塞として読出される状態数を $\Omega_B(N)$ とすれば、
-\begin{equation}
-P_B(N) = \frac{\Omega_B(N)}{\Omega(N)} \tag{24}
-\end{equation}
+全許容状態数を
+\(\Omega(N)\)、そのうちバリオン的局所閉塞として読出される状態数を
+\(\Omega_B(N)\) とすれば、
+
+\[
+P_B(N)
+=
+\frac{\Omega_B(N)}{\Omega(N)}
+\tag{24}
+\]
+
 を定義できる。
 
 本モデルから組み合わせ論的に導出される
-\begin{equation}
+
+\[
 P_B(10^{60})
-\end{equation}
+\]
+
 の数値を実際に計算することは、本理論が観測宇宙のバリオン対光子比
-\begin{equation}
-\frac{n_b}{n_\gamma} \sim10^{-9}
-\end{equation}
+
+\[
+\frac{n_b}{n_\gamma}
+\sim10^{-9}
+\]
+
 を定量的に説明できるかを検証する\textbf{決定的な段階}である。
 
-現段階では $P_B(10^{60})$ の具体値をまだ導出していない。しかし本節で示すのは、単なる予言ではなく、
+現段階では \(P_B(10^{60})\)
+の具体値をまだ導出していない。しかし本節で示すのは、単なる予言ではなく、
 
 \begin{quote}
-\textbf{巨大な関係空間から階層的に導出される物質的局所状態の希薄化が、観測宇宙の $10^{-9}$ というバリオン対光子比と、最初のオーダーで直ちに矛盾しないだけでなく、その構造的必然性を示唆する}
+\textbf{巨大な関係空間から階層的に導出される物質的局所状態の希薄化が、観測宇宙の
+\(10^{-9}\)
+というバリオン対光子比と、最初のオーダーで直ちに矛盾しないだけでなく、その構造的必然性を示唆する}
 \end{quote}
 
-ことである。すなわち、本理論の階層的枠組みそのものが、既存の宇宙論パラメータを数値合わせ的に後付けするのではなく、組み合わせ論的な確率構造から要求する可能性を示す。次段階で $P_B(10^{60})$ を計算し、観測値との定量的一致またはそれ以上の精度で予言できるかを検証することが、本モデルの真価を判定する。
+ことである。すなわち、本理論の階層的枠組みそのものが、既存の宇宙論パラメータを数値合わせ的に後付けするのではなく、組み合わせ論的な確率構造から要求する可能性を示す。次段階で
+\(P_B(10^{60})\)
+を計算し、観測値との定量的一致またはそれ以上の精度で予言できるかを検証することが、本モデルの真価を判定する。
 
-また、この構造は数学的な $N$ の上限が存在しなくても、$N$ が大きくなりすぎると物質的局所状態の生成確率が極端に低下し、観測者を含む物質宇宙が成立しにくくなるという\textbf{物理的な有効上限}の可能性を示唆する。
+また、この構造は数学的な \(N\) の上限が存在しなくても、\(N\)
+が大きくなりすぎると物質的局所状態の生成確率が極端に低下し、観測者を含む物質宇宙が成立しにくくなるという\textbf{物理的な有効上限}の可能性を示唆する。
 
-\noindent\rule{\textwidth}{0.5pt}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{一般相対論的読出しとの関係}
+\subsection{13.
+一般相対論的読出しとの関係}\label{ux4e00ux822cux76f8ux5bfeux8ad6ux7684ux8aadux51faux3057ux3068ux306eux95a2ux4fc2}
 
 ゼロ閉塞
-\begin{equation}
-\sum_nx_n^2=0
-\end{equation}
-の一部を反対側へ移し、選択した部分系について
-\begin{equation}
-\sum_i x_i^2=R^2
-\end{equation}
-と読むと、$R$ を曲率半径とする定曲率幾何への写像を構成できる。
 
-$D$ 次元定曲率時空では
-\begin{align}
-R_{\mu\nu} &= \frac{D-1}{R^2}g_{\mu\nu}, \\
-\mathcal{R} &= \frac{D(D-1)}{R^2}.
-\end{align}
+\[
+\sum_nx_n^2=0
+\]
+
+の一部を反対側へ移し、選択した部分系について
+
+\[
+\sum_i x_i^2=R^2
+\]
+
+と読むと、\(R\) を曲率半径とする定曲率幾何への写像を構成できる。
+
+\(D\) 次元定曲率時空では
+
+\[
+R_{\mu\nu}
+=
+\frac{D-1}{R^2}g_{\mu\nu},
+\]
+
+\[
+\mathcal{R}
+=
+\frac{D(D-1)}{R^2}.
+\]
 
 真空 Einstein 方程式
-\begin{equation}
-R_{\mu\nu} - \frac{1}{2}\mathcal{R}g_{\mu\nu} + \Lambda g_{\mu\nu} = 0
-\end{equation}
+
+\[
+R_{\mu\nu}
+-\frac{1}{2}\mathcal{R}g_{\mu\nu}
++\Lambda g_{\mu\nu}
+=
+0
+\]
+
 へ代入すると、
-\begin{equation}
-\Lambda = \frac{(D-1)(D-2)}{2R^2}. \tag{25}
-\end{equation}
 
-$D=4$ では
-\begin{equation}
-\Lambda = \frac{3}{R^2}. \tag{26}
-\end{equation}
+\[
+\Lambda
+=
+\frac{(D-1)(D-2)}{2R^2}.
+\tag{25}
+\]
 
-ここで $\Lambda$ を基礎系に独立な定数として追加したのではなく、ゼロ閉塞を定曲率時空として読む観測写像を選択したときの曲率尺度として得ている。
+\(D=4\) では
+
+\[
+\Lambda
+=
+\frac{3}{R^2}.
+\tag{26}
+\]
+
+ここで \(\Lambda\)
+を基礎系に独立な定数として追加したのではなく、ゼロ閉塞を定曲率時空として読む観測写像を選択したときの曲率尺度として得ている。
 
 この構造は本稿の熱力学的読出しと同型である。すなわち、基礎のゼロ閉塞そのものと、そこから選択された部分系に対して読出される物理量とを区別する。
 
-本稿は一般相対論の場の方程式全体を式 (1) から導出したと主張するものではない。ここで示すのは、真空定曲率解に対応する宇宙項の尺度が、ゼロ閉塞からの幾何学的読出しとして自然に表現できるという\textbf{構造的対応}である。
+本稿は一般相対論の場の方程式全体を式 (1)
+から導出したと主張するものではない。ここで示すのは、真空定曲率解に対応する宇宙項の尺度が、ゼロ閉塞からの幾何学的読出しとして自然に表現できるという\textbf{構造的対応}である。
 
-\noindent\rule{\textwidth}{0.5pt}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{主張範囲と反証可能性}
+\subsection{14.
+主張範囲と反証可能性}\label{ux4e3bux5f35ux7bc4ux56f2ux3068ux53cdux8a3cux53efux80fdux6027}
 
 本稿の主張を以下に限定する。
 
 \begin{enumerate}
-  \item 自己無撞着な複素関係系がゼロ閉塞条件を持つ場合、全体系を複数の局所ゼロ閉塞部分系として分解できる。
-  \item 同一の全体ゼロ閉塞を実現する異なる自己無撞着状態を数えることができれば、状態数 $\Omega$ が定義される。
-  \item $\Omega$ から $S=\ln\Omega$ という加法的なエントロピー型読出しを構成できる。
-  \item $U^{N_k}=I$ に由来する位相周期から、加法的なエネルギー型計量候補を構成できる。
-  \item 状態数とエネルギー型計量から $T^{-1}=\Delta S/\Delta E$ という温度型読出しを構成できる。
-  \item これらの値は、どの局所ゼロ閉塞部分系を観測対象として選ぶかによって変化しうる。
-  \item $N\sim10^{60}$ に対して $M\sim10^{120}$ となる巨大関係空間は、特殊な物質的局所状態の希薄化を検証する明確な数値問題を与える。
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  自己無撞着な複素関係系がゼロ閉塞条件を持つ場合、全体系を複数の局所ゼロ閉塞部分系として分解できる。
+\item
+  同一の全体ゼロ閉塞を実現する異なる自己無撞着状態を数えることができれば、状態数
+  \(\Omega\) が定義される。
+\item
+  \(\Omega\) から \(S=\ln\Omega\)
+  という加法的なエントロピー型読出しを構成できる。
+\item
+  \(U^{N_k}=I\)
+  に由来する位相周期から、加法的なエネルギー型計量候補を構成できる。
+\item
+  状態数とエネルギー型計量から \(T^{-1}=\Delta S/\Delta E\)
+  という温度型読出しを構成できる。
+\item
+  これらの値は、どの局所ゼロ閉塞部分系を観測対象として選ぶかによって変化しうる。
+\item
+  \(N\sim10^{60}\) に対して \(M\sim10^{120}\)
+  となる巨大関係空間は、特殊な物質的局所状態の希薄化を検証する明確な数値問題を与える。
 \end{enumerate}
 
 一方、本稿では以下を未導出とする。
 
 \begin{itemize}
-  \item エネルギー型計量 $E$ の一意性。
-  \item 許容状態集合 $\mathcal{S}_N$ の完全な同値関係と測度。
-  \item $\Omega(N)$ および $\Omega_B(N)$ の具体的数え上げ。
-  \item $P_B(10^{60})\sim10^{-9}$ の導出。
-  \item オイラー＝マスケローニ定数 $\gamma$ への厳密収束。
-  \item 絶対零度とゼロ閉塞固定点の物理的同一性。
-  \item 熱平衡、熱力学第零法則、正準分布の導出。
-  \item 一般相対論の任意の時空計量および完全な Einstein 方程式の導出。
+\tightlist
+\item
+  エネルギー型計量 \(E\) の一意性。
+\item
+  許容状態集合 \(\mathcal{S}_N\) の完全な同値関係と測度。
+\item
+  \(\Omega(N)\) および \(\Omega_B(N)\) の具体的数え上げ。
+\item
+  \(P_B(10^{60})\sim10^{-9}\) の導出。
+\item
+  オイラー＝マスケローニ定数 \(\gamma\) への厳密収束。
+\item
+  絶対零度とゼロ閉塞固定点の物理的同一性。
+\item
+  熱平衡、熱力学第零法則、正準分布の導出。
+\item
+  一般相対論の任意の時空計量および完全な Einstein 方程式の導出。
 \end{itemize}
 
 したがって、本稿は「熱力学を完成させた理論」ではなく、\textbf{時空以前の関係構造から熱力学的読出しを構成する最小枠組みを確立する}研究ノートである。
 
 反証可能な次段階は明確であり、本理論の核心検証項目を形成する。特に、
-\begin{equation}
-\Omega(N), \quad \Omega_B(N), \quad P_B(N)
-\end{equation}
-を実際に数値計算することは、単なる将来課題ではなく、\textbf{本モデルの階層的整合性を実証する最優先の検証段階}である。この数え上げが、$N$ に対して物質的局所状態が希薄化することを定量的に示せば、本稿の宇宙論的解釈は強い支持を得る。逆に希薄化が起こらなければ、本稿の枠組みそのものを根本から再検討する必要が生じる。
 
-\noindent\rule{\textwidth}{0.5pt}
+\[
+\Omega(N),
+\qquad
+\Omega_B(N),
+\qquad
+P_B(N)
+\]
 
-\section{結論}
+を実際に数値計算することは、単なる将来課題ではなく、\textbf{本モデルの階層的整合性を実証する最優先の検証段階}である。この数え上げが、\(N\)
+に対して物質的局所状態が希薄化することを定量的に示せば、本稿の宇宙論的解釈は強い支持を得る。逆に希薄化が起こらなければ、本稿の枠組みそのものを根本から再検討する必要が生じる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{15. 結論}\label{ux7d50ux8ad6}
 
 本稿では、
-\begin{equation}
-\begin{aligned}
-\text{complex relations} \rightarrow \text{self-consistency} \rightarrow \text{zero closure} \\
-\rightarrow \text{local zero-closure decomposition} \rightarrow \Omega \rightarrow S \rightarrow E_{\mathrm{read}} \rightarrow T_{\mathrm{read}}
-\end{aligned}
-\end{equation}
+
+\[
+\text{complex relations}
+\rightarrow
+\text{self-consistency}
+\rightarrow
+\text{zero closure}
+\rightarrow
+\text{local zero-closure decomposition}
+\rightarrow
+\Omega
+\rightarrow
+S
+\rightarrow
+E_{\mathrm{read}}
+\rightarrow
+T_{\mathrm{read}}
+\]
+
 という構成を示した。
 
 この構成には、空間、時間、粒子、質量、温度を基礎概念として先に置く必要がない。
@@ -677,43 +1077,74 @@ $D=4$ では
 最も重要なのは、全体の自己無撞着なゼロ閉塞と、そこから観測対象として選択される局所ゼロ閉塞部分系を区別することである。同じ基礎状態でも、どの部分閉塞を系として読むかによって状態数、エントロピー、エネルギー型尺度、温度型尺度が変わりうる。
 
 したがって、本稿が提案する最小像は
-\begin{equation}
-\boxed{\text{absolute structure} = \text{self-consistent zero closure}}
-\end{equation}
-\begin{equation}
-\boxed{\text{physical quantities} = \text{readouts from selected local zero-closure subsystems}}
-\end{equation}
+
+\[
+\boxed{
+\text{absolute structure}
+=
+\text{self-consistent zero closure}
+}
+\]
+
+\[
+\boxed{
+\text{physical quantities}
+=
+\text{readouts from selected local zero-closure subsystems}
+}
+\]
+
 である。
 
-先行研究 \cite{2} で検討した曲率読出しと本稿の熱力学的読出しは、同一の\textbf{観測読出し階層}に属する。両論文を統一すれば、
-\begin{equation}
-\boxed{\text{基礎的自己無撞着ゼロ閉塞}} \xrightarrow{\text{異なる観測写像}} \boxed{\text{曲率・熱力学・重力波など多層物理量}}
-\end{equation}
+先行研究 {[}2{]}
+で検討した曲率読出しと本稿の熱力学的読出しは、同一の\textbf{観測読出し階層}に属する。両論文を統一すれば、
+
+\[
+\boxed{
+\text{基礎的自己無撞着ゼロ閉塞}}
+\xrightarrow{\text{異なる観測写像}}
+\boxed{
+\text{曲率・熱力学・重力波など多層物理量}}
+\]
+
 という構造が確立される。
 
-また、宇宙論的な $N\sim10^{60}$ に対して $M\sim10^{120}$ の関係空間が生じる一方、観測宇宙のバリオン対光子比は約 $10^{-9}$ である。現段階で両者を結ぶ確率則は未導出だが、巨大な関係空間の中で特殊な物質的局所状態が希薄になるという方向性は、観測宇宙と最初のオーダーで直ちに矛盾しない。これは単なる予測の一致ではなく、本モデルの\textbf{階層的整合性の具体的証拠}である。
+また、宇宙論的な \(N\sim10^{60}\) に対して \(M\sim10^{120}\)
+の関係空間が生じる一方、観測宇宙のバリオン対光子比は約 \(10^{-9}\)
+である。現段階で両者を結ぶ確率則は未導出だが、巨大な関係空間の中で特殊な物質的局所状態が希薄になるという方向性は、観測宇宙と最初のオーダーで直ちに矛盾しない。これは単なる予測の一致ではなく、本モデルの\textbf{階層的整合性の具体的証拠}である。
 
-次の課題は、概念的対応を増やすことではなく、許容状態数 $\Omega(N)$ と物質的状態確率 $P_B(N)$ を実際に数え上げ、この理論的予測が観測宇宙と定量的に整合することを\textbf{検証する}ことである。
+次の課題は、概念的対応を増やすことではなく、許容状態数 \(\Omega(N)\)
+と物質的状態確率 \(P_B(N)\)
+を実際に数え上げ、この理論的予測が観測宇宙と定量的に整合することを\textbf{検証する}ことである。
 
-\noindent\rule{\textwidth}{0.5pt}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\begin{thebibliography}{99}
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
 
-\bibitem{1}
-L. Boltzmann, ``Über die Beziehung zwischen dem zweiten Hauptsatze der mechanischen Wärmetheorie und der Wahrscheinlichkeitsrechnung, respective den Sätzen über das Wärmegleichgewicht,'' \textit{Sitzungsberichte der Kaiserlichen Akademie der Wissenschaften, Mathematisch-Naturwissenschaftliche Classe}, Vol. 76, pp. 373--435, 1877. English translation and commentary: K. Sharp and F. Matschinsky, \textit{Entropy} \textbf{17}, 1971--2009 (2015). DOI: 10.3390/e17041971.
+{[}1{]} L. Boltzmann, ``Über die Beziehung zwischen dem zweiten
+Hauptsatze der mechanischen Wärmetheorie und der
+Wahrscheinlichkeitsrechnung, respective den Sätzen über das
+Wärmegleichgewicht,'' \emph{Sitzungsberichte der Kaiserlichen Akademie
+der Wissenschaften, Mathematisch-Naturwissenschaftliche Classe}, Vol.
+76, pp.~373--435, 1877. English translation and commentary: K. Sharp and
+F. Matschinsky, \emph{Entropy} \textbf{17}, 1971--2009 (2015). DOI:
+10.3390/e17041971.
 
-\bibitem{2}
-N. Kihara, ``複素旋回波の面積交差項による曲率振動の読出し――重力波への最小適用,'' Research Note / 仮説・観察論文, 2026-09-01. DOI: 10.5281/zenodo.22230941.
+{[}2{]} N. Kihara,
+「複素旋回波の面積交差項による曲率振動の読出し――重力波への最小適用」,
+Research Note / 仮説・観察論文, 2026-09-01. DOI:
+10.5281/zenodo.22230941.
 
-\bibitem{3}
-Particle Data Group, ``Astrophysical Constants and Parameters,'' \textit{Review of Particle Physics} / PDG data tables. Representative values used here: baryon-to-photon ratio $5.8\times10^{-10}\lesssim\eta\lesssim6.5\times10^{-10}$ and baryon number density $n_b\simeq2.515\times10^{-7}\,\mathrm{cm}^{-3}$ for standard cosmological parameters.
+{[}3{]} Particle Data Group, ``Astrophysical Constants and Parameters,''
+\emph{Review of Particle Physics} / PDG data tables. Representative
+values used here: baryon-to-photon ratio
+\(5.8\times10^{-10}\lesssim\eta\lesssim6.5\times10^{-10}\) and baryon
+number density \(n_b\simeq2.515\times10^{-7}\,\mathrm{cm}^{-3}\) for
+standard cosmological parameters.
 
-\end{thebibliography}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\vspace{1em}
-\noindent\rule{\textwidth}{0.5pt}
-
-\section*{注記}
+\subsection{注記}\label{ux6ce8ux8a18}
 
 本稿は仮説・考察研究ノートである。式の形式的一致と物理的同一性を区別し、未導出の対応は未導出として明示した。特に、エネルギー型読出し、バリオン生成確率、オイラー＝マスケローニ定数との接続は、今後の数値的・解析的検証対象である。
 

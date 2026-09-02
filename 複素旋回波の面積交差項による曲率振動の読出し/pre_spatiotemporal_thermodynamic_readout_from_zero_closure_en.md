@@ -1,21 +1,19 @@
-# Thermodynamic Readout from a Self-Consistent Complex Relational System
-## without Presupposing Spacetime
+# Thermodynamic Readout from a Self-Consistent Complex Relational System without Presupposing Spacetime
 
-**--- Local Zero-Closure Subsystems, State Counting, Entropy, Energy, and Temperature ---**
+## --- Local Zero-Closure Subsystems, State Counting, Entropy, Energy, and Temperature ---
 
 **Author:** Noriaki Kihara\
 **ORCID:** 0009-0004-6753-4020\
 **Document Type:** Research Note / Hypothesis and Exploratory Study\
 **Date:** 2026-09-02\
-**DOI:** \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\
-**Concept DOI:**
-\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+**DOI:** 10.5281/zenodo.22240463\
+**Concept DOI:** 10.5281/zenodo.22240462
 
 ------------------------------------------------------------------------
 
 ## Abstract
 
-This paper investigates whether thermodynamic quantities can be constructed from complex relations and their self-consistency, without presupposing space, time, particle, mass, energy, or temperature as fundamental concepts.
+In this paper, we investigate whether thermodynamic quantities can be constructed from complex relations and their self-consistency, without presupposing space, time, particle, mass, energy, or temperature as fundamental concepts.
 
 The fundamental system consists of a finite set of complex states or complex relations satisfying a self-consistency condition: a **zero closure**
 
@@ -49,7 +47,7 @@ $$
 \frac{\Delta S}{\Delta E_{\mathrm{read}}}
 $$
 
-The central claim of this paper is **not** to derive existing thermodynamics completely. More precisely, it demonstrates that **in a self-consistent complex relational system without spacetime or particles as foundations, one can construct observational readout structures isomorphic to state counting, entropy, energy, and temperature**. Moreover, these readout values depend on which local zero-closure subsystem is selected as the observation target. This readout framework belongs to the same **observational readout hierarchy** examined in prior work on curvature readouts (minimal application to gravitational waves) and exhibits two distinct, non-unified observational mappings.
+The central claim of this paper is **not** to derive existing thermodynamics completely. More precisely, it demonstrates that **in a self-consistent complex relational system without spacetime or particles as foundations, one can construct observational readout structures isomorphic to state counting, entropy, energy, and temperature**. Moreover, these readout values depend on which local zero-closure subsystem is selected as the observation target. This readout framework belongs to the same **observational readout hierarchy** examined in prior work on curvature readouts (minimal application to gravitational waves) and exhibits two distinct, non-unified observational mappings with the prior work.
 
 Finally, we compare the fact that for a cosmological discreteness parameter $N\sim10^{60}$, the two-body relationship count reaches $M\sim10^{120}$, with the observed baryon-to-photon ratio in the observable universe, approximately $10^{-9}$. This comparison is not a claim of numerical coincidence, but rather a **decisive consistency check** to confirm that the direction of this model—wherein material local states become sparse within the vast relational space—does not immediately contradict the observable universe at leading order.
 
