@@ -1,0 +1,43 @@
+{
+ "experiment": "N7_N8 DeltaTau=2pi/D wide denominator sweep",
+ "date": "2026-09-02",
+ "instruction": "CLAUDE_CODE_EXPERIMENT_INSTRUCTION_D_over_N_tau_sweep_20260902.md",
+ "dynamics": "H_ef=A_ef*conj(z_e)*z_f; z_next=exp(-i*(2*pi/D)*H)*z via numpy.linalg.eigh; H rebuilt each step; no seed/clipping/renormalization/noise",
+ "dtype_state": "complex128",
+ "dtype_real": "float64",
+ "stageA": {
+  "D": "2..256 all integers + 320,384,512",
+  "steps": 500,
+  "runs": 516
+ },
+ "stageB": {
+  "D": "2..32 all integers + 40,48,64,80,96,112,124,128,160,192,224,256,320,384,512",
+  "steps": "ceil(500*D/N)",
+  "runs": 92
+ },
+ "stageC": "not triggered (0 mechanical anomaly flags)",
+ "inputs": {
+  "N7": {
+   "file": "data/N7/parent_v.npz",
+   "sha256": "39f2a2419be63b148859f817e226683041228a7d47b1c6d49d098de0c95a840b",
+   "canonical": "../干渉保存力学_資格審査とシード無し系列_20260831/hm_mp_free_N3_N40_20260901/data/hm_N7/parent_v.npz"
+  },
+  "N8": {
+   "file": "data/N8/parent_v.npz",
+   "sha256": "9412ec6d465325cc51ec969aa9caa12317efea8f9a39d4bddc5a278f8b691696",
+   "canonical": "../干渉保存力学_資格審査とシード無し系列_20260831/hm_mp_free_N3_N40_20260901/data/hm_N8/parent_v.npz"
+  }
+ },
+ "environment": {
+  "python": "3.9.6",
+  "numpy": "2.0.2",
+  "platform": "macOS-26.3.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "blas": "accelerate"
+ },
+ "audit_notes": [
+  "All 608 runs status ok; max relative H_total drift ~2.3e-12 (< failure 1e-7).",
+  "Spurious Accelerate BLAS RuntimeWarnings in least-squares residual matmul for 4 fits (N7 D32/D40/D48, N8 D40 stage B); inputs/outputs verified finite, max|resid|<=0.02; no effect on results.",
+  "Heatmaps drawn by zero-order hold of actual samples; no smoothing, no cross-column interpolation; masked beyond coverage."
+ ]
+}
