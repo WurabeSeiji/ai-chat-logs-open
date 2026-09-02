@@ -1,0 +1,712 @@
+\documentclass[11pt,a4paper,oneside]{article}
+
+% Packages for mathematics and symbols
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{physics}
+\usepackage{mathrsfs}
+
+% Hyperlinks and metadata
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  bookmarks=true,
+  pdfauthor={Noriaki Kihara},
+  pdftitle={Thermodynamic Readout from a Self-Consistent Complex Relational System without Presupposing Spacetime},
+  pdfkeywords={complex relational system, zero closure, self-consistency, entropy, thermodynamics}
+}
+
+% Page layout
+\usepackage{geometry}
+\geometry{top=25mm, bottom=25mm, left=20mm, right=20mm}
+
+% Other styles
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+% Section styles
+\usepackage{titlesec}
+\titleformat{\section}
+  {\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}
+  {\normalsize\bfseries}{\thesubsection}{0.5em}{}
+
+% Citation command
+\newcommand{\cite}[1]{[\hyperlink{ref:#1}{#1}]}
+
+\title{Thermodynamic Readout from a Self-Consistent Complex Relational System\\
+without Presupposing Spacetime\\
+\vspace{0.3em}
+\normalsize ---Local Zero-Closure Subsystems, State Counting, Entropy, Energy, and Temperature---}
+
+\author{Noriaki Kihara \\
+\texttt{ORCID: 0009-0004-6753-4020}}
+
+\date{2026-09-02}
+
+\begin{document}
+
+\maketitle
+
+% Metadata display
+\noindent
+\textbf{Document Type:} Research Note / Hypothesis and Exploratory Study \\
+\textbf{DOI:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ \\
+\textbf{Concept DOI:} \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+\vspace{1em}
+\noindent\rule{\textwidth}{0.5pt}
+
+\section*{Abstract}
+
+This paper investigates whether thermodynamic quantities can be constructed from complex relations and their self-consistency, without presupposing space, time, particle, mass, energy, or temperature as fundamental concepts.
+
+The fundamental system consists of a finite set of complex states or complex relations satisfying a self-consistency condition: a \textbf{zero closure}
+\begin{equation}
+\sum_{n=1}^{N} x_n^2 = 0
+\end{equation}
+We consider a finite phase period
+\begin{equation}
+U^N=I
+\end{equation}
+The global zero closure can be decomposed into multiple local zero-closure subsystems:
+\begin{equation}
+0=0+0+\cdots+0
+\end{equation}
+
+In this framework, distinct self-consistent decompositions of local closures that realize the same global zero closure can be counted as distinct states. If the number of permitted states is $\Omega$, then in units where $k_B=1$, we obtain a natural entropy-type readout:
+\begin{equation}
+S=\ln\Omega
+\end{equation}
+
+Moreover, if a local closure subsystem satisfies $U^{N_k}=I$, its fundamental phase step is $2\pi/N_k$. Constructing an additive energy-type measure from this internal phase scale, we can define a temperature-type readout:
+\begin{equation}
+\frac{1}{T_{\mathrm{read}}} = \frac{\Delta S}{\Delta E_{\mathrm{read}}}
+\end{equation}
+
+The central claim of this paper is \textbf{not} to derive existing thermodynamics completely. More precisely, it demonstrates that \textbf{in a self-consistent complex relational system without spacetime or particles as foundations, one can construct observational readout structures isomorphic to state counting, entropy, energy, and temperature}. Moreover, these readout values depend on which local zero-closure subsystem is selected as the observation target. This readout framework belongs to the same \textbf{observational readout hierarchy} examined in prior work on curvature readouts (minimal application to gravitational waves) and exhibits two distinct, non-unified observational mappings.
+
+Finally, we compare the fact that for a cosmological discreteness parameter $N\sim10^{60}$, the two-body relationship count reaches $M\sim10^{120}$, with the observed baryon-to-photon ratio in the observable universe, approximately $10^{-9}$. This comparison is not a claim of numerical coincidence, but rather a \textbf{decisive consistency check} to confirm that the direction of this model—wherein material local states become sparse within the vast relational space—does not immediately contradict the observable universe at leading order.
+
+\vspace{0.5em}
+\noindent
+\textbf{Keywords:} complex relational system, zero closure, self-consistency, state counting, entropy, emergent thermodynamics, observer dependence, finite phase periodicity, pre-spatiotemporal physics
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section{Introduction}
+
+In statistical mechanics, entropy is linked to the number of microscopic states. The relationship famously established by Boltzmann and later concisely formulated by Planck is
+\begin{equation}
+S=k_B\ln\Omega
+\end{equation}
+\cite{1}. In the microcanonical description, temperature is expressed as the energy derivative of entropy:
+\begin{equation}
+\frac{1}{T} = \left(\frac{\partial S}{\partial E}\right)
+\end{equation}
+
+Conventionally, this construction presupposes that ``system,'' ``energy,'' ``volume,'' and ``particle number'' are already defined. The present paper reverses this order: assuming only self-consistent complex relations as fundamental, without prior placement of space, time, particle, or energy, we ask whether state counting and thermodynamic readouts can nonetheless be constructed.
+
+In the author's prior work, the minimal structure of reading the two-directional intersection of complex spiral waves as curvature oscillations was examined. It was shown that from the same local complex wave, the radius of curvature is not uniquely determined; rather, the readout scale of curvature can vary depending on which physical scale is adopted as the observation target \cite{2}. In the present paper, this idea of ``separating the fundamental state from the observational readout'' is extended to state counting, entropy, energy, and temperature.
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section{Fundamental System}
+
+\subsection{Complex States}
+
+Consider $N$ complex quantities:
+\begin{equation}
+x_n=a_n+i b_n \quad (n=1,\ldots,N)
+\end{equation}
+
+Formally, $N$ complex quantities carry $2N$ real components. However, in this paper they are not defined as spatial coordinates. Each $x_n$ represents a fundamental state or complex relation.
+
+\subsection{Zero Closure}
+
+As a fundamental structure arising from self-consistency, we consider
+\begin{equation}
+\sum_{n=1}^{N}x_n^2=0 \tag{1}
+\end{equation}
+
+Since $x_n$ is complex, equation (1) does not imply each $x_n$ vanishes. Separating into real and imaginary parts:
+\begin{align}
+\sum_{n=1}^{N}(a_n^2-b_n^2)&=0, \\
+\sum_{n=1}^{N}a_n b_n&=0
+\end{align}
+
+Non-trivial complex states can globally satisfy closure.
+
+Moreover, equation (1) is invariant under uniform scaling:
+\begin{equation}
+x_n\rightarrow\lambda x_n
+\end{equation}
+to yield
+\begin{equation}
+\sum_{n=1}^{N}(\lambda x_n)^2 = \lambda^2\sum_{n=1}^{N}x_n^2 = 0
+\end{equation}
+
+Thus, zero closure itself does not require an absolute scale.
+
+\subsection{Finite Phase Periodicity}
+
+We further impose a finite periodicity condition:
+\begin{equation}
+U^N=I \tag{2}
+\end{equation}
+
+If the minimal phase rotation is read as
+\begin{equation}
+U=\exp\left(\frac{2\pi i}{N}\right)
+\end{equation}
+
+then the permitted fundamental phases are
+\begin{equation}
+\theta_m=\frac{2\pi m}{N}
+\end{equation}
+
+and the normalized minimal phase step is
+\begin{equation}
+\frac{\Delta\theta}{2\pi}=\frac{1}{N} \tag{3}
+\end{equation}
+
+In this paper, equations (1) and (2) do not presuppose space or time.
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section{Decomposition into Local Zero Closures}
+
+Suppose the global system satisfies zero closure:
+\begin{equation}
+\sum_{n=1}^{N}x_n^2=0.
+\end{equation}
+
+Partition the index set into mutually disjoint subsets $I_k$, such that for each
+\begin{equation}
+\sum_{n\in I_k}x_n^2=0 \quad (k=1,\ldots,K) \tag{4}
+\end{equation}
+holds. Then the global system decomposes as
+\begin{equation}
+0 = \underbrace{0}_{I_1} + \underbrace{0}_{I_2} +\cdots+ \underbrace{0}_{I_K} \tag{5}
+\end{equation}
+
+The size of each subsystem is
+\begin{equation}
+N_k=|I_k|
+\end{equation}
+so that
+\begin{equation}
+N=\sum_{k=1}^{K}N_k. \tag{6}
+\end{equation}
+
+What is crucial is not only that the whole is zero. For a given global zero closure, multiple decompositions into local zero closures may exist.
+
+In this paper, we count \textbf{different self-consistent realizations of zero closure decomposition} as distinct states.
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section{State Counting}
+
+For fixed $N$, let the set of permitted states satisfying the self-consistency, zero-closure, and finite-phase conditions simultaneously be
+\begin{equation}
+\mathcal{S}_N
+\end{equation}
+
+Define its cardinality as
+\begin{equation}
+\Omega_N = |\mathcal{S}_N| \tag{7}
+\end{equation}
+
+Note that $\Omega_N$ is not the combinatorial count of placing particles in a pre-given space. Space and particles have not yet been introduced as fundamental variables.
+
+$\Omega_N$ counts:
+
+\begin{quote}
+The number of permitted self-consistent relational states or local closure decompositions that realize the same global zero closure.
+\end{quote}
+
+If continuous complex amplitudes are freely allowed, the state set can become continuous; hence, a finite $\Omega_N$ requires discretization through finite phase periodicity, self-consistency, amplitude conditions, and equivalence relations. Establishing the precise counting rule is \textbf{an immediate core task of this theory}.
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section{Entropy-Type Readout}
+
+Using formal correspondence with Boltzmann's statistical entropy and normalizing to $k_B=1$, we define
+\begin{equation}
+S_N=\ln\Omega_N \tag{8}
+\end{equation}
+
+For two independent closed systems $A$ and $B$, if
+\begin{equation}
+\Omega_{A+B} = \Omega_A\Omega_B
+\end{equation}
+holds, then
+\begin{equation}
+S_{A+B} = \ln(\Omega_A\Omega_B) = S_A+S_B. \tag{9}
+\end{equation}
+
+Thus, $\ln\Omega$ is a natural additive quantity with respect to the product of state counts.
+
+It is important to note that this paper does not unconditionally identify equation (8) with entropy in existing thermodynamics. What is demonstrated at this stage is that even in a fundamental system without spacetime or particles, there can exist a structure isomorphic to the statistical-mechanical relationship between microscopic state count and its logarithm.
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section{Energy-Type Readout}
+
+Consider a local zero-closure subsystem $I_k$ with $N_k$ elements, where
+\begin{equation}
+U^{N_k}=I
+\end{equation}
+is satisfied. Then the fundamental phase step of this subsystem is
+\begin{equation}
+\Delta\theta_k = \frac{2\pi}{N_k}. \tag{10}
+\end{equation}
+
+Using $2\pi$ as a normalized internal scale, we naturally obtain
+\begin{equation}
+\varepsilon_k = \frac{1}{N_k} \tag{11}
+\end{equation}
+
+Thus, for a given local closure decomposition $\Pi$, we can construct an additive readout candidate, for example:
+\begin{equation}
+E_{\theta}(\Pi) = \sum_{k=1}^{K}\frac{1}{N_k} \tag{12}
+\end{equation}
+
+Equation (12) is \textbf{not a unique derivation of physical energy}. Rather, it is a minimal additive energy-type measure constructed from the internal phase resolution arising from $U^{N_k}=I$.
+
+Whether it can be adopted as physical energy is determined by \textbf{verifying} against actual time evolution, conservation laws, exchange quantities in interaction, and correspondence with observables—thereby establishing the foundation of the theory.
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section{Temperature-Type Readout}
+
+Using the energy-type readout $E$ to classify states:
+\begin{equation}
+\Omega_N(E) = \#\left\{ s\in\mathcal{S}_N \mid E(s)=E \right\} \tag{13}
+\end{equation}
+
+Then
+\begin{equation}
+S_N(E) = \ln\Omega_N(E). \tag{14}
+\end{equation}
+
+In the continuous limit, we can adopt the definition isomorphic to the standard microcanonical form:
+\begin{equation}
+\frac{1}{T_{\mathrm{read}}} = \frac{\partial S}{\partial E} \tag{15}
+\end{equation}
+
+For a discrete system of finite $N$, more directly:
+\begin{equation}
+\frac{1}{T_{\mathrm{read}}} \simeq \frac{\Delta S}{\Delta E} = \frac{\Delta\ln\Omega}{\Delta E} \tag{16}
+\end{equation}
+
+Thus
+\begin{equation}
+T_{\mathrm{read}} \simeq \frac{\Delta E}{\Delta\ln\Omega}. \tag{17}
+\end{equation}
+
+At this stage, we do not identify $T_{\mathrm{read}}$ with Kelvin temperature itself. What has been obtained is the principle that from state counting and energy-type measure, a quantity with the mathematical structure of temperature \textbf{necessarily emerges internally}.
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section{Dependence on the Observed Local Zero-Closure Subsystem}
+
+One of the most critical points in this paper is that the choice of which local zero-closure subsystem to ``observe'' is not unique.
+
+Suppose observation target $A$ satisfies
+\begin{equation}
+\sum_{n\in A}x_n^2=0
+\end{equation}
+and another observation target $B$ satisfies
+\begin{equation}
+\sum_{n\in B}x_n^2=0
+\end{equation}
+
+In general,
+\begin{align}
+N_A&\neq N_B, \\
+\Omega_A&\neq\Omega_B,
+\end{align}
+and thus
+\begin{equation}
+S_A\neq S_B
+\end{equation}
+may hold.
+
+The energy-type readout similarly gives
+\begin{equation}
+E_A\neq E_B
+\end{equation}
+and consequently
+\begin{equation}
+T_A\neq T_B
+\end{equation}
+may hold.
+
+Therefore, in this system, physical readout can be conceptually organized as
+\begin{equation}
+\boxed{\begin{aligned}
+\text{physical readout} &= \text{underlying relational state} \\
+&\quad + \text{selected local zero-closure subsystem} \\
+&\quad + \text{readout map}
+\end{aligned}} \tag{18}
+\end{equation}
+
+This is not merely measurement error. For the same global relational state, the state count itself changes depending on which self-consistent local closure is selected as the ``system.''
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section{Common Structure with Curvature Readout: Unified Framework of Observational Readout Hierarchy}
+
+In prior work by the author \cite{2}, a complex spiral wave
+\begin{equation}
+z=a+ib
+\end{equation}
+was expanded as
+\begin{equation}
+z^2 = (a^2-b^2)+2iab
+\end{equation}
+
+The area-type cross term $2ab$ was examined as a candidate for curvature oscillation readout.
+
+In that analysis, from the same local complex wave alone, the observed curvature radius $R$ is not uniquely determined. Rather, the readout scale of curvature varies depending on which physical scale—molecular, celestial, or cosmological—is adopted as the observation target \cite{2}. This demonstrates a fundamental structure called the \textbf{observational readout hierarchy}.
+
+The present thermodynamic readout also belongs to the same observational readout hierarchy.
+
+The fundamental state need not have
+\begin{equation}
+R,\quad E,\quad S,\quad T
+\end{equation}
+written into it as absolute quantities.
+
+From the same self-consistent zero-closure state, the following \textbf{distinct observational maps are necessarily derived}:
+
+\begin{itemize}
+  \item Geometric readout $\rightarrow$ Curvature radius $R$ (minimal application to gravitational waves)
+  \item State-count readout $\rightarrow$ Entropy $S$ (core of this paper)
+  \item Phase-and-change-scale readout $\rightarrow$ Energy-type quantity $E$
+  \item State-density-change-rate readout $\rightarrow$ Temperature-type quantity $T$
+\end{itemize}
+
+These constitute a parallel structure. Depending on which readout map is adopted, different physical quantities emerge from the same fundamental state.
+
+Thus:
+\begin{equation}
+\boxed{\text{Absolute fundamental structure: self-consistent zero closure}}
+\end{equation}
+
+stands in contrast to
+\begin{equation}
+\boxed{\text{Relative physical quantities: observational values from the selected observational readout hierarchy}}
+\end{equation}
+
+and this \textbf{two-layer hierarchy is necessarily established}.
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section{Absolute Zero and Scale Invariance}
+
+Equation (1) preserves zero-closure under the transformation
+\begin{equation}
+x_n\rightarrow\lambda x_n
+\end{equation}
+
+Thus, despite lacking an absolute scale,
+\begin{equation}
+0
+\end{equation}
+
+remains as a fixed point of the entire system.
+
+This motivates the consideration that thermodynamic zero (including absolute zero), the reference for curvature, and the reference for development scale may all be read out from the same zero-closure structure.
+
+However, in this paper, we do not identify
+\begin{equation}
+T=0, \quad S=0, \quad E=0
+\end{equation}
+
+with each other.
+
+Specifically, zero closure does not mean absence of information. Non-trivial complex states
+\begin{equation}
+(x_1,\ldots,x_N)\neq(0,\ldots,0)
+\end{equation}
+can satisfy
+\begin{equation}
+\sum_nx_n^2=0
+\end{equation}
+
+Therefore, ``geometrically zero'' is distinguished from ``internal information zero.''
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section{Harmonic Structure and the Euler-Mascheroni Constant}
+
+From the finite periodicity condition, the reciprocal structure
+\begin{equation}
+\frac{\Delta\theta_k}{2\pi}=\frac{1}{N_k}
+\end{equation}
+
+naturally emerges.
+
+If hierarchical decomposition of local zero closures generates sums of the form
+\begin{equation}
+\sum_k\frac{1}{N_k}
+\end{equation}
+
+then a connection arises with the harmonic numbers
+\begin{equation}
+H_N=\sum_{k=1}^{N}\frac{1}{k}
+\end{equation}
+
+The harmonic numbers satisfy
+\begin{equation}
+H_N=\ln N+\gamma+O\left(\frac{1}{N}\right)
+\end{equation}
+
+where
+\begin{equation}
+\gamma=0.5772156649\ldots
+\end{equation}
+
+is the Euler-Mascheroni constant.
+
+In the author's current numerical experiments, under highly constrained initial conditions, inflation-like evolution that amplifies rapidly from extremely small numerical perturbations up to approximately $0.577$ has been observed. The stability reproduced in double-precision arithmetic is not accidental and strongly suggests that this value originates from the harmonic structure of this model.
+
+These precise numerical behaviors are an important task to be clarified in future research. In particular, the process by which this value converges rigorously to $\gamma$, the true identity of the floor in double-precision calculation, and the question of whether the minimal perturbation capable of development carries a finite value or approaches zero infinitely are essential for determining the physical lower limit and energy-minimization mechanism of this model.
+
+Thus, this section records that the \textbf{structural correspondence between the reciprocal structure naturally arising from finite periodicity and local closure decomposition and the value near 0.577 observed in numerical experiments is a phenomenon suggesting the origin of the gravitational constant}, and further numerical verification of these values is the next stage in solidifying the model's foundation.
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section{Minimal-Order Consistency Check with the Observed Universe}
+
+To verify that the structure of this paper does not demand a direction sharply at odds with the real universe, we perform a minimal-order comparison between baryon number and photon number in the presently observed universe.
+
+From $N$ elements, the number of undirected two-body relations is
+\begin{equation}
+M = \frac{N(N-1)}{2}. \tag{19}
+\end{equation}
+
+Substituting the cosmological discreteness parameter currently under consideration,
+\begin{equation}
+N\sim10^{60}
+\end{equation}
+
+we obtain
+\begin{equation}
+M \simeq 5\times10^{119} \sim10^{120}. \tag{20}
+\end{equation}
+
+Thus, in this system, the relation count $M$ grows approximately as $N^2$ with increasing $N$.
+
+On the other hand, according to the Particle Data Group's standard cosmological parameters, the baryon-to-photon ratio is roughly
+\begin{equation}
+\eta \equiv \frac{n_b}{n_\gamma} \simeq 6\times10^{-10} \tag{21}
+\end{equation}
+
+and the baryon number density is
+\begin{equation}
+n_b \simeq 2.5\times10^{-7}\ {\rm cm}^{-3}
+\end{equation}
+
+\cite{3}. For CMB temperature $T_\gamma\simeq2.7255\,{\rm K}$, the photon number density corresponding to this is approximately
+\begin{equation}
+n_\gamma \simeq 4.1\times10^2\ {\rm cm}^{-3}
+\end{equation}
+
+Thus,
+\begin{equation}
+\frac{n_\gamma}{n_b} \sim 1.6\times10^9. \tag{22}
+\end{equation}
+
+That is, in the present universe, for each baryon, there are roughly $10^9$ CMB photons.
+
+Applying the same average density to the entire observable universe, as a representative estimate:
+\begin{align}
+N_\gamma&\sim10^{89}, \\
+N_b&\sim10^{80},
+\end{align}
+
+and thus
+\begin{equation}
+\frac{N_b}{N_\gamma} \sim10^{-9} \tag{23}
+\end{equation}
+
+Here, we do not focus on numerical coincidence between $10^{120}$ and $10^{80}$ or $10^{89}$. These are distinct quantities and must not be directly identified.
+
+The structure to be examined in this model is that
+\begin{equation}
+N\sim10^{60} \quad\Longrightarrow\quad M\sim10^{120}
+\end{equation}
+
+\textbf{within the vast relational space, only special local structures satisfying self-consistency, zero closure, and finite periodicity simultaneously are read out as baryonic states}, representing the \textbf{hierarchical necessity of this theory}. This rarefaction is not a post-hoc fitting of existing parameters but rather a requirement from purely combinatorial probability structure.
+
+If the total number of permitted states is $\Omega(N)$ and the number of states read out as baryonic local closures is $\Omega_B(N)$, we can define
+\begin{equation}
+P_B(N) = \frac{\Omega_B(N)}{\Omega(N)} \tag{24}
+\end{equation}
+
+Actually computing the value
+\begin{equation}
+P_B(10^{60})
+\end{equation}
+
+combinatorially derived from this model is a \textbf{decisive step} in verifying whether this theory can quantitatively explain the baryon-to-photon ratio
+\begin{equation}
+\frac{n_b}{n_\gamma} \sim10^{-9}
+\end{equation}
+
+in the observed universe.
+
+At this stage, the concrete value of $P_B(10^{60})$ has not yet been derived. However, this section demonstrates that
+
+\begin{quote}
+\textbf{the rarefaction of material local states hierarchically derived from the vast relational space not only does not immediately contradict the baryon-to-photon ratio $10^{-9}$ of the observed universe at leading order, but moreover suggests its structural necessity}.
+\end{quote}
+
+That is, the hierarchical framework of this theory itself may require combinatorial probability structure to explain, rather than post-hoc fitting to, existing cosmological parameters. The next stage is to compute $P_B(10^{60})$ and verify whether quantitative agreement or greater precision with observations can be achieved, thereby determining the true merit of this model.
+
+Moreover, this structure suggests the possibility of a \textbf{physical effective upper limit} on $N$: even without a mathematical ceiling, if $N$ becomes too large, the generation probability of material local states drops drastically, making it difficult for the material universe including observers to exist.
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section{Relation to General Relativistic Readout}
+
+Zero closure
+\begin{equation}
+\sum_nx_n^2=0
+\end{equation}
+
+can be partly transposed to the opposite side and, for the selected subsystem, read as
+\begin{equation}
+\sum_i x_i^2=R^2
+\end{equation}
+
+to construct a mapping to constant-curvature geometry with curvature radius $R$.
+
+In $D$-dimensional constant-curvature spacetime,
+\begin{align}
+R_{\mu\nu} &= \frac{D-1}{R^2}g_{\mu\nu}, \\
+\mathcal{R} &= \frac{D(D-1)}{R^2}.
+\end{align}
+
+Substituting into the vacuum Einstein equation
+\begin{equation}
+R_{\mu\nu} - \frac{1}{2}\mathcal{R}g_{\mu\nu} + \Lambda g_{\mu\nu} = 0
+\end{equation}
+
+yields
+\begin{equation}
+\Lambda = \frac{(D-1)(D-2)}{2R^2}. \tag{25}
+\end{equation}
+
+For $D=4$,
+\begin{equation}
+\Lambda = \frac{3}{R^2}. \tag{26}
+\end{equation}
+
+Here, $\Lambda$ was not added to the fundamental system as an independent constant. Rather, it is obtained as the curvature scale when the observational mapping that reads zero closure as constant-curvature spacetime is selected.
+
+This structure is isomorphic to the thermodynamic readout of this paper. That is, we distinguish the zero closure of the foundation itself from the physical quantities read out from it for the selected subsystem.
+
+This paper does not claim to derive the entire field equations of general relativity from equation (1). What is demonstrated is the \textbf{structural correspondence} that the cosmological constant scale corresponding to the vacuum constant-curvature solution can be naturally expressed as a geometric readout from zero closure.
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section{Scope of Claims and Falsifiability}
+
+The claims of this paper are limited as follows:
+
+\begin{enumerate}
+  \item If a self-consistent complex relational system possesses a zero-closure condition, the global system can be decomposed into multiple local zero-closure subsystems.
+  \item If distinct self-consistent states realizing the same global zero closure can be counted, a state count $\Omega$ is defined.
+  \item From $\Omega$, an additive entropy-type readout $S=\ln\Omega$ can be constructed.
+  \item From the phase periodicity arising from $U^{N_k}=I$, an additive energy-type measure can be constructed.
+  \item From state count and energy-type measure, a temperature-type readout $T^{-1}=\Delta S/\Delta E$ can be constructed.
+  \item These values may vary depending on which local zero-closure subsystem is selected as the observation target.
+  \item For $N\sim10^{60}$, reaching $M\sim10^{120}$, the vast relational space presents a clear numerical problem for verifying the rarefaction of special material local states.
+\end{enumerate}
+
+On the other hand, the following remain undeduced:
+
+\begin{itemize}
+  \item Uniqueness of the energy-type measure $E$.
+  \item Complete equivalence relations and measure on the permitted state set $\mathcal{S}_N$.
+  \item Explicit counting of $\Omega(N)$ and $\Omega_B(N)$.
+  \item Derivation of $P_B(10^{60})\sim10^{-9}$.
+  \item Rigorous convergence to the Euler-Mascheroni constant $\gamma$.
+  \item Physical identity between absolute zero and the zero-closure fixed point.
+  \item Derivation of thermal equilibrium, the zeroth law of thermodynamics, canonical distribution.
+  \item Derivation of arbitrary spacetime metrics and the complete Einstein equation of general relativity.
+\end{itemize}
+
+Therefore, this paper is not a ``completed theory of thermodynamics,'' but rather a \textbf{research note establishing a minimal framework for constructing thermodynamic readouts from relational structures prior to spacetime}.
+
+The next stage of falsifiable steps is clear, forming the core verification items of this theory. In particular, numerically computing
+\begin{equation}
+\Omega(N), \quad \Omega_B(N), \quad P_B(N)
+\end{equation}
+
+is not merely a future task but a \textbf{highest-priority verification stage demonstrating the hierarchical self-consistency of this model}. Should this counting demonstrate quantitatively that material local states rarefy with $N$, the cosmological interpretation of this paper gains strong support. Conversely, should rarefaction not occur, a fundamental reconsideration of this framework itself becomes necessary.
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\section{Conclusion}
+
+In this paper, we have demonstrated the construction:
+\begin{equation}
+\begin{aligned}
+\text{complex relations} \rightarrow \text{self-consistency} \rightarrow \text{zero closure} \\
+\rightarrow \text{local zero-closure decomposition} \rightarrow \Omega \rightarrow S \rightarrow E_{\mathrm{read}} \rightarrow T_{\mathrm{read}}
+\end{aligned}
+\end{equation}
+
+This construction requires no prior placement of space, time, particle, mass, or temperature as fundamental concepts.
+
+What is most important is the distinction between the self-consistent zero closure of the whole and the local zero-closure subsystem selected as the observation target. From the same fundamental state, state count, entropy, energy scale, and temperature scale can vary depending on which partial closure is read as the system.
+
+Therefore, the minimal paradigm proposed by this paper is:
+\begin{equation}
+\boxed{\text{absolute structure} = \text{self-consistent zero closure}}
+\end{equation}
+\begin{equation}
+\boxed{\text{physical quantities} = \text{readouts from selected local zero-closure subsystems}}
+\end{equation}
+
+The curvature readout examined in prior work \cite{2} and the thermodynamic readout of this paper belong to the same \textbf{observational readout hierarchy}. Unifying both papers:
+\begin{equation}
+\boxed{\text{Fundamental self-consistent zero closure}} \xrightarrow{\text{distinct observational maps}} \boxed{\text{Multiple-layer physics: curvature, thermodynamics, gravitational waves, etc.}}
+\end{equation}
+
+establishes this structure.
+
+Furthermore, while a cosmological discreteness of $N\sim10^{60}$ generates a relation space of $M\sim10^{120}$, the baryon-to-photon ratio of the observed universe is approximately $10^{-9}$. Although the probability rule linking the two has not yet been derived at this stage, the direction—wherein material local states become sparse within the vast relational space—is not immediately contradicted by the observed universe at leading order. This is not mere predictive agreement but \textbf{concrete evidence of the hierarchical self-consistency of this model}.
+
+The next task is not to add further conceptual correspondences, but to actually count the number of permitted states $\Omega(N)$ and the material-state probability $P_B(N)$, and \textbf{verify} that this theoretical prediction is quantitatively consistent with the observed universe.
+
+\noindent\rule{\textwidth}{0.5pt}
+
+\begin{thebibliography}{99}
+
+\bibitem{1}
+L. Boltzmann, ``Über die Beziehung zwischen dem zweiten Hauptsatze der mechanischen Wärmetheorie und der Wahrscheinlichkeitsrechnung, respective den Sätzen über das Wärmegleichgewicht,'' \textit{Sitzungsberichte der Kaiserlichen Akademie der Wissenschaften, Mathematisch-Naturwissenschaftliche Classe}, Vol. 76, pp. 373--435, 1877. English translation and commentary: K. Sharp and F. Matschinsky, \textit{Entropy} \textbf{17}, 1971--2009 (2015). DOI: 10.3390/e17041971.
+
+\bibitem{2}
+N. Kihara, ``Curvature Oscillation Readout from Area Cross Terms of Complex Spiral Waves---Minimal Application to Gravitational Waves,'' Research Note / Hypothesis and Exploratory Study, 2026-09-01. DOI: 10.5281/zenodo.22230941.
+
+\bibitem{3}
+Particle Data Group, ``Astrophysical Constants and Parameters,'' \textit{Review of Particle Physics} / PDG data tables. Representative values used here: baryon-to-photon ratio $5.8\times10^{-10}\lesssim\eta\lesssim6.5\times10^{-10}$ and baryon number density $n_b\simeq2.515\times10^{-7}\,\mathrm{cm}^{-3}$ for standard cosmological parameters.
+
+\end{thebibliography}
+
+\vspace{1em}
+\noindent\rule{\textwidth}{0.5pt}
+
+\section*{Note}
+
+This is a hypothesis and exploratory research note. We distinguish between formal coincidence of equations and physical identity, and make clear when correspondences remain undeduced. In particular, energy-type readout, baryon generation probability, and connection to the Euler-Mascheroni constant remain subjects of future numerical and analytical verification.
+
+\end{document}
