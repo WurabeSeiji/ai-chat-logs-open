@@ -1,0 +1,40 @@
+{
+ "experiment": "precision seed vs dynamics isolation, 64bit vs 100 digits",
+ "date": "2026-09-02",
+ "instruction": {
+  "file": "CLAUDE_CODE_EXPERIMENT_INSTRUCTION_precision_seed_dynamics_isolation_100digit_20260902.md",
+  "drive_file_id": "1Y6WSnL29JHWXjpQteUsiX9XdOqyqHKws",
+  "note": "local Drive sync lagged; full text fetched via Google Drive API and executed faithfully"
+ },
+ "conditions": {
+  "A": "IC64 + Dynamics64 (numpy eigh, complex128), reproduction-checked vs existing sweep",
+  "B": "IC64 exact binary64 lift (as_integer_ratio) + mpmath dps=100 dynamics (eighe, 100-digit pi)",
+  "C": "IC100 (analytic phases at 100 digits, exact-lifted legacy norm amplitude) + same mpmath dynamics imported from B module"
+ },
+ "order": "N=8 A->B->C completed and reported before N=7 replication (instruction sec.16)",
+ "steps": 2000,
+ "no_extension_needed": true,
+ "inputs": {
+  "N7": {
+   "sha256": "39f2a2419be63b148859f817e226683041228a7d47b1c6d49d098de0c95a840b"
+  },
+  "N8": {
+   "sha256": "9412ec6d465325cc51ec969aa9caa12317efea8f9a39d4bddc5a278f8b691696"
+  }
+ },
+ "environment": {
+  "python": "3.9.6",
+  "numpy": "2.0.2",
+  "mpmath": "1.3.0",
+  "platform": "macOS-26.3.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "float64_blas": "accelerate"
+ },
+ "precision_selftest": "per-run precision_selftest.json (dps=100 effective, eighe residual ~2e-100)",
+ "audit_notes": [
+  "A not bitwise-identical to existing sweep (max rel diff ~4.5e-12, onset exactly equal): Accelerate BLAS inter-process ulp nondeterminism, present from step 0; judged as reproduced per instruction sec.2.",
+  "Norm drift: float64 runs ~1e-13; 100-digit runs <= 8.5e-98 over 2000 steps; never corrected.",
+  "IC100 qualification residuals ~1e-102 for both N; gate 1e-90 passed.",
+  "Tiny values in 110-digit CSV may be fixed-point notation; parse with Decimal."
+ ]
+}
