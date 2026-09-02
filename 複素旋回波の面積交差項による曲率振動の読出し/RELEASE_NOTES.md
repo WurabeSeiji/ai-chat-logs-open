@@ -40,6 +40,7 @@
 - [Facebook (日本語)](https://www.facebook.com/kihara.noriaki/posts/pfbid02uuvQT2Rf6XidceMwCa76Y2czqdU4z6wE4dLgX2kqPNkZ3pUTFyNnGXT4jFcBQRyl)
 - [Facebook (English)](https://www.facebook.com/kihara.noriaki/posts/pfbid02z8psq4zXSpmnJ9vHs4VwzeqXKrHc42evx4oYgs93YfBZajDq9s8CTBA6R9uhKCAVl)
 - [X (日本語)](https://x.com/NoriakiKihara/status/2094989679292739644)
+- [X (English)](https://x.com/NoriakiKihara/status/2094990684591976480)
 - [GitHub](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/複素旋回波の面積交差項による曲率振動の読出し)
 - ORCID: *（DataCite Auto-Update で自動同期予定）*
 
