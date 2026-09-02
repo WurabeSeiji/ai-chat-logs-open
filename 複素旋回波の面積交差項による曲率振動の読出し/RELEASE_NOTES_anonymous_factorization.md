@@ -36,10 +36,15 @@
 
 - [Zenodo (Record 22250744)](https://zenodo.org/record/22250744)
 - [Zenn (日本語)](https://zenn.dev/noriaki_kihara/articles/anonymous-wave-factorization-emergence) ※投稿数上限によりデプロイ反映待ち（2026-09-02 21:41 以降に再デプロイ可）
+- [note (日本語・研究メモ)](https://note.com/kiharanoriaki/n/n43c548d85630) — 2026-09-02 公開
 - [GitHub](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/複素旋回波の面積交差項による曲率振動の読出し)
 - ORCID: *（DataCite Auto-Update で自動同期予定）*
 
 ## Version History
+
+### 2026-09-02（note 公開）
+- note に研究メモ記事を公開：[無名複素波集合の因数分解としての創発構造 ――作業仮説と数値検証計画（研究メモ）](https://note.com/kiharanoriaki/n/n43c548d85630)
+- 記事ソース：`note_anonymous_factorization_ja.md`（論文 DOI・Concept DOI・GitHub PDF リンクを掲載）
 
 ### v1.0 (2026-09-02)
 - **Initial Release**
@@ -47,7 +52,7 @@
   - 日本語版・英訳版の両言語で MD, TeX, PDF を配置（6ファイル全てアップロード完了）
   - DOI 確定：10.5281/zenodo.22250744
   - 論文が提案する内容：頂点・辺・完全ネットワーク・倍音親子・局在・粒子を基礎に置かず、置換で同一視した無名複素波多重集合だけを基礎状態とし、二乗ゼロ閉塞・有限回帰・整数比・共通位相・低ランク性・複素 Gram 整合性を同時に満たす一意な因数分解として創発構造（シンプレックス・倍音・局在・凝縮体・持続対象）を定義する作業仮説。完全ネットワーク $K_n$ は入力ではなく再構成証明書。動力学は因子署名の保存＋共通位相中心の変化として定義。正解埋込み・ブラインド対照・置換不変性・摂動・持続性の数値検証プロトコル（E0〜E6）と成功条件・反証条件を事前登録形式で固定。
-  - 公開プラットフォーム：Zenodo, Zenn, GitHub
+  - 公開プラットフォーム：Zenodo, Zenn, note, GitHub
 
 ## Zenodo Metadata
 
