@@ -37,6 +37,7 @@
 - [Zenodo (Record 22240463)](https://zenodo.org/record/22240463)
 - [note (日本語)](https://note.com/kiharanoriaki/n/nc04fe697dd4b)
 - [note (English)](https://note.com/kiharanoriaki/n/nde9e4ce36db0)
+- [Facebook (日本語)](https://www.facebook.com/kihara.noriaki/posts/pfbid02uuvQT2Rf6XidceMwCa76Y2czqdU4z6wE4dLgX2kqPNkZ3pUTFyNnGXT4jFcBQRyl)
 - [GitHub](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/複素旋回波の面積交差項による曲率振動の読出し)
 - ORCID: *（DataCite Auto-Update で自動同期予定）*
 
