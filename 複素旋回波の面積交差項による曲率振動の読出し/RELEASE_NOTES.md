@@ -1,73 +1,66 @@
-# Release Notes — Complex Rotating Wave's Area Cross-Term Curvature Oscillation Readout
+# Release Notes — Thermodynamic Readout from a Self-Consistent Complex Relational System without Presupposing Spacetime
 
 ## Paper Information
 
 | 項目 | 値 |
 |------|-----|
-| **Title (EN)** | Complex Rotating Wave's Area Cross-Term Curvature Oscillation Readout: Minimal Application to Gravitational Waves |
-| **Title (JA)** | 複素旋回波の面積交差項による曲率振動の読出し―― 重力波への最小適用 |
+| **Title (EN)** | Thermodynamic Readout from a Self-Consistent Complex Relational System without Presupposing Spacetime — Local Zero-Closure Subsystems, State Counting, Entropy, Energy, and Temperature |
+| **Title (JA)** | 時空を仮定しない自己無撞着複素関係系からの熱力学的読出し ――ゼロ閉塞部分系・状態数・エントロピー・エネルギー・温度 |
 | **Author** | Noriaki Kihara (木原範昭) |
-| **Affiliation** | WF System Co., Ltd. |
+| **Affiliation** | Independent Researcher |
 | **ORCID** | 0009-0004-6753-4020 |
-| **Type** | Research Note / Hypothesis and Observational Paper |
-| **Publication Date** | September 1, 2026 |
+| **Type** | Research Note / Hypothesis and Exploratory Study |
+| **Publication Date** | September 2, 2026 |
 | **License** | CC BY 4.0 |
 
 ## DOI Information
 
 | DOI Type | DOI | URL |
 |----------|-----|-----|
-| **Version DOI** | 10.5281/zenodo.22230941 | https://doi.org/10.5281/zenodo.22230941 |
-| **Concept DOI** | 10.5281/zenodo.22230940 | https://doi.org/10.5281/zenodo.22230940 |
-| **Zenodo Record** | 22230941 | https://zenodo.org/record/22230941 |
+| **Version DOI** | 10.5281/zenodo.22240463 | https://doi.org/10.5281/zenodo.22240463 |
+| **Concept DOI** | 10.5281/zenodo.22240462 | https://doi.org/10.5281/zenodo.22240462 |
+| **Zenodo Record** | 22240463 | https://zenodo.org/record/22240463 |
 
 ## Files on Zenodo
 
 | Filename | Format | Size | Type |
 |----------|--------|------|------|
-| complex_wave_curvature_gravitational_wave_research_note_ja_20260901.md | Markdown | 18 KB | Manuscript (JA) |
-| complex_wave_curvature_gravitational_wave_research_note_ja_20260901.tex | LaTeX | 21 KB | Source (JA) |
-| complex_wave_curvature_gravitational_wave_research_note_ja_20260901.pdf | PDF | 181 KB | Publication (JA) |
-| complex_wave_curvature_gravitational_wave_research_note_en_20260901.md | Markdown | 18 KB | Manuscript (EN) |
-| complex_wave_curvature_gravitational_wave_research_note_en_20260901.tex | LaTeX | 21 KB | Source (EN) |
-| complex_wave_curvature_gravitational_wave_research_note_en_20260901.pdf | PDF | 176 KB | Publication (EN) |
-| sphere_lightcone_diagram.svg | SVG | 4 KB | Figure (JA) |
-| sphere_lightcone_diagram_en.svg | SVG | 4 KB | Figure (EN) |
+| pre_spatiotemporal_thermodynamic_readout_from_zero_closure_ja.md | Markdown | 29 KB | Manuscript (JA) |
+| pre_spatiotemporal_thermodynamic_readout_from_zero_closure_ja.tex | LaTeX | 32 KB | Source (JA) |
+| pre_spatiotemporal_thermodynamic_readout_from_zero_closure_ja.pdf | PDF | 230 KB | Publication (JA) |
+| pre_spatiotemporal_thermodynamic_readout_from_zero_closure_en.md | Markdown | 28 KB | Manuscript (EN) |
+| pre_spatiotemporal_thermodynamic_readout_from_zero_closure_en.tex | LaTeX | 30 KB | Source (EN) |
+| pre_spatiotemporal_thermodynamic_readout_from_zero_closure_en.pdf | PDF | 246 KB | Publication (EN) |
 
 ## Publication Platforms
 
-- [Zenodo (Record 22230941)](https://zenodo.org/record/22230941)
-- [note (日本語)](https://note.com/kiharanoriaki/n/n37ab90073b11)
-- [note (English)](https://note.com/kiharanoriaki/n/nda747a7ff9e7)
-- [Zenn (日本語)](https://zenn.dev/noriaki_kihara/articles/complex-rotating-wave-curvature)
-- [Facebook (日本語)](https://www.facebook.com/kihara.noriaki/posts/pfbid023AmHZZ8WeKNu275LxS2o75DStR2vFTiY396nro9Ah7Mvfp85q3NNDzGHuWsDkj5il)
-- [Facebook (English)](https://www.facebook.com/kihara.noriaki/posts/pfbid02V5iP9uS2hv9mNC1THLrekFkFoTJJ15jvCeuPY8uHgdrUUT78oR91sUZmHzcGs7Vxl)
-- [X (日本語)](https://x.com/NoriakiKihara/status/2094778301768409102)
-- [X (English)](https://x.com/NoriakiKihara/status/2094778574255554925)
-- GitHub: `/複素旋回波の面積交差項による曲率振動の読出し/`
+- [Zenodo (Record 22240463)](https://zenodo.org/record/22240463)
+- [note (日本語)](https://note.com/kiharanoriaki/n/nc04fe697dd4b)
+- [note (English)](https://note.com/kiharanoriaki/n/nde9e4ce36db0)
+- [GitHub](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/複素旋回波の面積交差項による曲率振動の読出し)
 - ORCID: *（DataCite Auto-Update で自動同期予定）*
 
 ## Version History
 
-### v1.0 (2026-09-01)
+### v1.0 (2026-09-02)
 - **Initial Release**
   - Zenodo に初版として公開
   - 日本語版・英訳版の両言語でMD, TeX, PDF を配置
-  - 8ファイル全てアップロード完了
-  - DOI 確定：10.5281/zenodo.22230941
-  - 論文が提案する内容：複素旋回波の面積交差項が曲率と結合する機構を、既報の幾何学的結果と数学的恒等式から導出。GW150914 の周波数スケール（250 Hz）と振幅スケール（10^-21）が自然な曲率スケールと同一オーダーであることを検証。
-  - 公開プラットフォーム：Zenodo, note（日本語・English）, Zenn, Facebook（日本語・English）, X（日本語・English）
-  - エッセイ形式の解説記事を複数言語で展開し、学術論文と普及記事の両立を実現。
+  - 6ファイル全てアップロード完了
+  - DOI 確定：10.5281/zenodo.22240463
+  - 論文が提案する内容：時空・粒子・質量・エネルギー・温度を基礎概念として仮定せず、自己無撞着な複素関係系から、状態数・エントロピー・エネルギー型量・温度的量を構成する方法を提案。ゼロ閉塞の部分系分解と観測者依存性、バリオン対光子比との予想外の整合性を検討。
+  - 公開プラットフォーム：Zenodo, note（日本語）, GitHub
+  - essay 形式の解説記事を note で発表し、学術論文と普及記事の両立を実現。
 
 ## Zenodo Metadata
 
-**Keywords:** complex rotating wave, curvature, area cross-term, gravitational waves, GW150914, Schwarzschild radius
+**Keywords:** complex relational system, zero closure, self-consistency, state counting, entropy, emergent thermodynamics, observer dependence, finite phase periodicity, pre-spatiotemporal physics
 
-**Description:** This research note proposes that the area cross-term (2iab) in complex rotating waves couples with curvature, enabling external observation as real-valued oscillations. We apply this to gravitational wave observations, particularly GW150914, using the Schwarzschild radius as the external readout scale. The natural frequency scale c/(2πr_s) ≈ 250 Hz matches the observed gravitational wave frequency band (35-250 Hz), suggesting potential connection to gravitational wave phenomena.
+**Description:** Construction of state count, entropy, energy, and temperature readout from a self-consistent complex relational system without presupposing spacetime and particle. Local zero-closure subsystems, observer-dependent readouts, and implications for baryon-to-photon ratio in the observable universe.
 
 **Access:** Open Access
 **License:** CC BY 4.0
 
 ---
 
-**Last Updated:** 2026-09-01
+**Last Updated:** 2026-09-02

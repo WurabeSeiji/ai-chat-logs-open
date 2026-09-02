@@ -130,6 +130,6 @@ N ~ 10^60 の要素から M ~ 10^120 の二体関係を作るとき、全許容�
 ## 参考資料
 
 - 前回のノート: 複素波の面積交差項が見せる重力波
-- 詳細な論文（PDF）: https://zenodo.org/records/22240034/files/pre_spatiotemporal_thermodynamic_readout_from_zero_closure_ja.pdf
+- 詳細な論文（PDF）: https://github.com/WurabeSeiji/ai-chat-logs-open/raw/main/複素旋回波の面積交差項による曲率振動の読出し/pre_spatiotemporal_thermodynamic_readout_from_zero_closure_ja.pdf
 
 #物理学 #熱力学 #複素数 #幾何学 #曲率 #研究 #数学
