@@ -35,7 +35,7 @@
 ## Publication Platforms
 
 - [Zenodo (Record 22250744)](https://zenodo.org/record/22250744)
-- [Zenn (日本語)](https://zenn.dev/noriaki_kihara/articles/anonymous-wave-factorization-emergence)
+- [Zenn (日本語)](https://zenn.dev/noriaki_kihara/articles/anonymous-wave-factorization-emergence) ※投稿数上限によりデプロイ反映待ち（2026-09-02 21:41 以降に再デプロイ可）
 - [GitHub](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/複素旋回波の面積交差項による曲率振動の読出し)
 - ORCID: *（DataCite Auto-Update で自動同期予定）*
 
