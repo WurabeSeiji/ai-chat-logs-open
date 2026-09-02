@@ -4,7 +4,7 @@
 全論文は Zenodo で CC BY 4.0 公開。各行：題名（日本語 / 英語）・Version DOI・Concept DOI・公開日・版・PDF・リポジトリ内フォルダ・リリースノート。
 本ファイルは `tools/gen_paper_index.py` により Zenodo API から自動生成。English: [PAPERS_en.md](PAPERS_en.md) / Scholar 用ページ: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**論文数: 123**
+**論文数: 127**
 
 ## グノモン正写像による4次元時空の幾何学的定式化 / Central Projection Framework (Gnomonic Spacetime Geometry)
 
@@ -508,11 +508,23 @@
 1. **複素旋回波の面積交差項による曲率振動の読出し**  
    Complex Rotating Wave's Area Cross-Term Curvature Oscillation Readout: Minimal Application to Gravitational Waves  
    DOI [10.5281/zenodo.22230941](https://doi.org/10.5281/zenodo.22230941) · Concept [10.5281/zenodo.22230940](https://doi.org/10.5281/zenodo.22230940) · 2026-09-01 · [PDF en](https://zenodo.org/records/22230941/files/complex_wave_curvature_gravitational_wave_research_note_en_20260901.pdf) [PDF ja](https://zenodo.org/records/22230941/files/complex_wave_curvature_gravitational_wave_research_note_ja_20260901.pdf)  
-   フォルダ: [複素旋回波の面積交差項による曲率振動の読出し](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97) · [リリースノート](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97/RELEASE_NOTES.md)
+   フォルダ: [複素旋回波の面積交差項による曲率振動の読出し](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97)
 2. **時空を仮定しない自己無撞着複素関係系からの熱力学的読出し**  
    Thermodynamic Readout from a Self-Consistent Complex Relational System without Presupposing Spacetime  
-   DOI [10.5281/zenodo.22240463](https://doi.org/10.5281/zenodo.22240463) · Concept [10.5281/zenodo.22240462](https://doi.org/10.5281/zenodo.22240462) · 2026-09-02 · [PDF en](https://github.com/WurabeSeiji/ai-chat-logs-open/raw/main/複素旋回波の面積交差項による曲率振動の読出し/pre_spatiotemporal_thermodynamic_readout_from_zero_closure_en.pdf) [PDF ja](https://github.com/WurabeSeiji/ai-chat-logs-open/raw/main/複素旋回波の面積交差項による曲率振動の読出し/pre_spatiotemporal_thermodynamic_readout_from_zero_closure_ja.pdf)  
+   DOI [10.5281/zenodo.22240024](https://doi.org/10.5281/zenodo.22240024) · Concept [10.5281/zenodo.22240023](https://doi.org/10.5281/zenodo.22240023) · 2026-09-02 · [PDF en](https://zenodo.org/records/22240024/files/pre_spatiotemporal_thermodynamic_readout_from_zero_closure_en.pdf) [PDF ja](https://zenodo.org/records/22240024/files/pre_spatiotemporal_thermodynamic_readout_from_zero_closure_ja.pdf)  
+   フォルダ: [複素旋回波の面積交差項による曲率振動の読出し](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97)
+3. **時空を仮定しない自己無撞着複素関係系からの熱力学的読出し**  
+   Thermodynamic Readout from a Self-Consistent Complex Relational System without Presupposing Spacetime  
+   DOI [10.5281/zenodo.22240034](https://doi.org/10.5281/zenodo.22240034) · Concept [10.5281/zenodo.22240033](https://doi.org/10.5281/zenodo.22240033) · 2026-09-02 · [PDF en](https://zenodo.org/records/22240034/files/pre_spatiotemporal_thermodynamic_readout_from_zero_closure_en.pdf) [PDF ja](https://zenodo.org/records/22240034/files/pre_spatiotemporal_thermodynamic_readout_from_zero_closure_ja.pdf)  
+   フォルダ: [複素旋回波の面積交差項による曲率振動の読出し](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97) · [リリースノート](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97/RELEASE_NOTES_thermodynamic.md)
+4. **時空を仮定しない自己無撞着複素関係系からの熱力学的読出し**  
+   Thermodynamic Readout from a Self-Consistent Complex Relational System without Presupposing Spacetime  
+   DOI [10.5281/zenodo.22240463](https://doi.org/10.5281/zenodo.22240463) · Concept [10.5281/zenodo.22240462](https://doi.org/10.5281/zenodo.22240462) · 2026-09-02 · [PDF en](https://zenodo.org/records/22240463/files/pre_spatiotemporal_thermodynamic_readout_from_zero_closure_en.pdf) [PDF ja](https://zenodo.org/records/22240463/files/pre_spatiotemporal_thermodynamic_readout_from_zero_closure_ja.pdf)  
    フォルダ: [複素旋回波の面積交差項による曲率振動の読出し](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97) · [リリースノート](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97/RELEASE_NOTES.md)
+5. **無名複素波集合の因数分解としての創発構造**  
+   Emergent Structures as Factorization of an Anonymous Complex Wave Multiset: Working Hypotheses and a Numerical Verification Program for Simplices, Localization, Condensates, and Dynamics  
+   DOI [10.5281/zenodo.22250744](https://doi.org/10.5281/zenodo.22250744) · Concept [10.5281/zenodo.22250743](https://doi.org/10.5281/zenodo.22250743) · 2026-09-02 · v1.0 · [PDF en](https://zenodo.org/records/22250744/files/anonymous_complex_wave_factorization_emergent_structures_working_hypothesis_en.pdf) [PDF ja](https://zenodo.org/records/22250744/files/anonymous_complex_wave_factorization_emergent_structures_working_hypothesis_ja.pdf)  
+   フォルダ: [複素旋回波の面積交差項による曲率振動の読出し](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97) · [リリースノート](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97/RELEASE_NOTES_anonymous_factorization.md)
 
 ## その他（本リポジトリ未収録） / Other (not stored in this repository)
 

@@ -1,0 +1,1410 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Emergent Structures as Factorization of an Anonymous Complex Wave Multiset: Working Hypotheses and a Numerical Verification Program for Simplices{,} Localization{,} Condensates{,} and Dynamics},
+  pdfauthor={Noriaki Kihara (Independent Researcher), ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Emergent Structures as Factorization of an Anonymous Complex Wave
+Multiset: Working Hypotheses and a Numerical Verification Program for
+Simplices, Localization, Condensates, and Dynamics}
+\author{Noriaki Kihara (Independent Researcher), ORCID
+0009-0004-6753-4020}
+\date{September 2, 2026 --- v1.0 --- Version DOI
+10.5281/zenodo.22250744}
+
+\begin{document}
+\maketitle
+
+\subsection{Abstract}\label{abstract}
+
+This paper formulates a working hypothesis that asks whether structures
+such as space, time, particles, vertices, edges, and complete networks
+can be uniquely read out from a multiset of anonymous complex waves
+alone, without being assumed as foundational.
+
+Conventionally, when describing relations among multiple elements, one
+first fixes the number of elements and counts all pairwise relations as
+the number of edges of a complete graph. This description, however,
+implicitly introduces identifiable and persistent vertices, endpoints
+for each relation, complete connectivity, and a one-relation-one-edge
+correspondence. If the underlying waves are anonymous, these cannot be
+axioms; they must be reconstruction results that are admitted only after
+a successful factorization of the anonymous set.
+
+We define the base state as a complex wave multiset identified under
+permutations. A submultiset is read as a harmonic series, a
+localization, a condensate, a simplex, or a persistent object only when
+it is uniquely factorized while simultaneously satisfying conditions
+such as zero-square closure, finite recurrence, integer ratios, common
+phase, low rank, and complex Gram consistency. The complete network is
+not an input; it is a connectivity structure that becomes known as a
+consequence, once anonymous relational quantities have been uniquely
+reconstructed into a simplex.
+
+Furthermore, we define dynamics not as trajectories of named
+constituents, but as a process in which the factorization type of the
+anonymous wave set is preserved while its common phase center changes.
+We propose ground-truth embedding experiments in which all provenance
+information of data generated from known structures is completely
+erased, blind control experiments with no planted structure,
+permutation-invariance tests, perturbation tests, and temporal
+persistence tests. This paper does not prove the existence or uniqueness
+of emergent structures. It fixes a falsifiable problem setting for
+verifying them without breaking anonymity.
+
+\textbf{Keywords}: anonymous complex waves, factorization, zero-square
+closure, finite recurrence, simplex, unlabeled distance geometry,
+localization, condensate, emergent dynamics, numerical experiments
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Introduction}\label{introduction}
+
+When constructing a physical model, it is natural to number particles or
+nodes and to describe the relations among them as arrays or matrices. If
+the number of elements is N and one relation is placed between every
+pair of elements, the number of relations is
+
+\[
+M=\frac{N(N-1)}{2}.
+\]
+
+This counting itself is correct. Before it, however, at least the
+following assumptions have been made.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  N nodes exist in advance.
+\item
+  The nodes can be distinguished from one another.
+\item
+  The identity of each node is preserved throughout any change.
+\item
+  A relation exists between every pair of nodes.
+\item
+  Each relation has one pair of endpoints.
+\item
+  Relations among three or more elements are composed of pairwise
+  relations.
+\end{enumerate}
+
+If, however, the only underlying entities are anonymous complex waves,
+then the waves carry no vertex numbers and no edge numbers from the
+start. Array indices are storage locations in a computation, not
+physical names. Nevertheless, if relations are represented by index
+pairs from the outset, the complete network and its connectivity
+information are smuggled into the foundation.
+
+This paper reverses that order. Instead of starting from
+
+\[
+\text{complete network}
+\longrightarrow
+\text{relational quantities},
+\]
+
+we ask about
+
+\[
+\text{anonymous complex wave set}
+\longrightarrow
+\text{unique factorization}
+\longrightarrow
+\text{readout of geometry, localization, condensates, and dynamics}.
+\]
+
+With this change, the complete network ceases to be an ontological
+premise. Only when a part of the anonymous relational quantities is
+uniquely reconstructed into a simplex with some number of vertices do we
+judge that this subset could be read as the edge set of a complete
+graph.
+
+The same idea applies to harmonics. We do not first posit a base wave
+and its child harmonics. When a subset of the anonymous wave set is
+found that can be factorized with a common fundamental period and
+integer ratios, we read it, as a result, as having been a harmonic
+series. Localization, condensation, parent-child relations, and motion
+are likewise defined as stable factorization results of the anonymous
+set.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Position and Scope of
+Claims}\label{position-and-scope-of-claims}
+
+This paper is neither a proof paper nor a report of numerical results.
+It has three aims.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Define a base state that preserves anonymity.
+\item
+  Define emergent structures as factorizations of the anonymous set.
+\item
+  Fix experimental procedures that verify the hypotheses without
+  circularity and can detect failure.
+\end{enumerate}
+
+We do not claim that space, time, or particles have already been
+derived. We do not claim that any particular update rule is the correct
+physical law. Nor do we claim any correspondence with real particles,
+the Standard Model, gravity, or cosmology.
+
+The central proposition proposed in this paper is the following.
+
+\begin{quote}
+If a small number of strongly consistent factors exist within an
+anonymous complex wave multiset, they may be uniquely read out,
+independently of labels, as simplices, harmonics, localizations,
+condensates, or persistent objects.
+\end{quote}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. Anonymous Complex Wave
+States}\label{anonymous-complex-wave-states}
+
+\subsubsection{3.1 Base set}\label{base-set}
+
+Computationally we handle M complex waves arranged in order:
+
+\[
+W=(w_1,w_2,\ldots,w_M),
+\qquad
+w_m\in\mathbb C.
+\]
+
+The indices, however, are not physical names. We regard any permutation
+as the same state and define the base state as the following equivalence
+class:
+
+\[
+\mathcal W
+=
+[W]_{S_M}
+=
+\{(w_{\pi(1)},\ldots,w_{\pi(M)})\mid \pi\in S_M\}.
+\]
+
+The physical input is therefore not an ordered vector but a multiset:
+
+\[
+\mathcal W
+=
+\{w_1,\ldots,w_M\}/S_M.
+\]
+
+Since several waves may share the same value, we treat this as a
+multiset rather than an ordinary set.
+
+\subsubsection{3.2 Zero-square closure}\label{zero-square-closure}
+
+The base constraint adopted in this paper is the closure of the complex
+sum of squares, not of the Hermitian norm:
+
+\[
+Q(\mathcal W)
+=
+\sum_{m=1}^{M}w_m^2
+=0.
+\]
+
+This expression does not depend on the ordering of the waves. It is also
+closed under a common rescaling by any nonzero complex number:
+
+\[
+Q(\lambda\mathcal W)
+=
+\lambda^2Q(\mathcal W)
+=0.
+\]
+
+Hence the absolute scale is not fixed by this condition alone.
+
+\subsubsection{3.3 Finite recurrence}\label{finite-recurrence}
+
+We define finite recurrence not as the condition that each named wave
+returns to the same place, but as the condition that the anonymous set
+as a whole returns to the original state up to permutation equivalence:
+
+\[
+U^q\mathcal W
+\simeq
+\mathcal W.
+\]
+
+Here q is the finite recurrence order, and the equivalence includes at
+least permutations of the waves. When necessary, common phase, overall
+scale, or geometric congruence transformations are also included in the
+equivalence relation.
+
+Under this definition, each array element need not return to the same
+index after one period. It suffices that the same state is reconstituted
+as a set.
+
+\subsubsection{3.4 Distinguishing computational order from emergent
+time}\label{distinguishing-computational-order-from-emergent-time}
+
+Numerical experiments require step numbers for performing updates:
+
+\[
+s=0,1,2,\ldots.
+\]
+
+This s, however, is the order in which the computer processed the
+updates, not physical time. We call it the computational order. If, in
+the future, a factor readable as time is constructed, it must be
+reconstructed separately from finite cycles or reference phases within
+the anonymous wave set:
+
+\[
+\tau_{\mathrm{read}}
+=
+F_{\mathrm{clock}}(\mathcal W_s,\mathcal W_{s+1},\ldots).
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. Anonymous Factorization}\label{anonymous-factorization}
+
+\subsubsection{4.1 Definition of a factor}\label{definition-of-a-factor}
+
+We express the operation of reading structure from an anonymous wave
+state as a factorization map:
+
+\[
+\mathcal F:
+\mathcal W
+\longmapsto
+\{F_1,F_2,\ldots,F_L\}.
+\]
+
+A factor F consists of a submultiset, latent parameters, a
+reconstruction rule, and a residual:
+
+\[
+F
+=
+(C,\theta,R,\varepsilon),
+\qquad
+C\subseteq\mathcal W.
+\]
+
+Here C is the anonymous submultiset constituting the factor; \(\theta\)
+denotes latent parameters such as a common period, a phase center,
+integer orders, or a geometric dimension; R is the rule that
+reconstructs C from them; and \(\varepsilon\) is the reconstruction
+residual.
+
+For an exact factor,
+
+\[
+\varepsilon(F)=0.
+\]
+
+In numerical experiments, allowing for finite precision, a factor is
+called approximate when its residual is below a tolerance fixed in
+advance:
+
+\[
+\varepsilon(F)\leq\varepsilon_{\mathrm{tol}}.
+\]
+
+\subsubsection{4.2 Equivalent
+factorizations}\label{equivalent-factorizations}
+
+If two factorizations differ only by permutations of the input waves,
+permutations of factor names, a global phase, a common scale, a mirror
+reflection, or a congruence transformation of the adopted geometry, we
+regard them as the same physical interpretation.
+
+The number of inequivalent valid factorizations is denoted by
+
+\[
+\Omega_{\mathrm{fact}}(\mathcal W)
+=
+\#\left(
+\frac{\{\text{valid factorizations}\}}
+{\text{admissible symmetries}}
+\right).
+\]
+
+The judgment falls into three cases:
+
+\[
+\Omega_{\mathrm{fact}}=0
+\quad\Longrightarrow\quad
+\text{not reconstructible as the specified structure},
+\]
+
+\[
+\Omega_{\mathrm{fact}}=1
+\quad\Longrightarrow\quad
+\text{uniquely reconstructed up to physical equivalence},
+\]
+
+\[
+\Omega_{\mathrm{fact}}>1
+\quad\Longrightarrow\quad
+\text{multiple inequivalent structural interpretations exist}.
+\]
+
+Finding one planted ground truth demonstrates only existence. To claim
+unique emergence, one must confirm that no inequivalent alternative
+solutions exist.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Simplex Reconstruction without Inputting a Complete
+Network}\label{simplex-reconstruction-without-inputting-a-complete-network}
+
+\subsubsection{5.1 Anonymous set of complex squared
+lengths}\label{anonymous-set-of-complex-squared-lengths}
+
+Take a submultiset as candidate complex squared lengths:
+
+\[
+D
+=
+\{d_1^2,d_2^2,\ldots,d_r^2\}.
+\]
+
+At this stage, no vertices and no edges exist, and no correspondence
+between lengths and point pairs is given.
+
+If a candidate vertex number n exists, the required number of lengths
+satisfies
+
+\[
+r
+=
+\frac{n(n-1)}{2}.
+\]
+
+Here this equation is not a foundational axiom. It is a necessary
+condition for judging whether the anonymous subset can serve as
+candidates for all edges of an n-vertex simplex.
+
+\subsubsection{5.2 Provisional edge
+assignment}\label{provisional-edge-assignment}
+
+The reconstructor examines all essentially distinct assignments from the
+anonymous length set to candidate edges:
+
+\[
+f:
+D
+\longrightarrow
+\bigl\{\{i,j\}\mid 0\leq i<j<n\bigr\}.
+\]
+
+This map is not base data; it is a candidate variable of the inverse
+problem.
+
+Taking vertex 0 as the reference, a complex Gram matrix is constructed
+from the assignment f:
+
+\[
+G_{ab}
+=
+\frac{1}{2}
+\left(
+d_{0a}^2+d_{0b}^2-d_{ab}^2
+\right),
+\qquad
+1\leq a,b<n.
+\]
+
+Only assignments satisfying the required embedding dimension, rank,
+nondegeneracy, closure conditions, and any additional symmetry
+conditions are accepted as valid. Because complex squared lengths are
+involved, positivity and triangle inequalities valid for real Euclidean
+distances are not required unconditionally. Which congruence
+transformations are identified is specified in the experimental protocol
+together with the adopted complex bilinear form.
+
+\subsubsection{5.3 The complete network is a reconstruction
+certificate}\label{the-complete-network-is-a-reconstruction-certificate}
+
+Only when exactly one valid assignment remains, up to vertex
+permutations and congruence transformations, do we judge that D uniquely
+determines an n-vertex simplex:
+
+\[
+D
+\xrightarrow{\text{unique reconstruction}}
+\text{n-vertex simplex}.
+\]
+
+Only then does it become known that the elements of D corresponded to
+all edges of a complete graph:
+
+\[
+K_n
+\quad\text{is a reconstruction result, not an input}.
+\]
+
+The problem of reconstructing real point configurations from unlabeled
+distance multisets has been studied as unlabeled distance geometry and
+unlabeled global rigidity. This paper shares that problem awareness, but
+adds, as working hypotheses, that the input is not restricted to
+positive real distances and that complex waves, zero-square closure,
+finite recurrence, harmonic factors, and factor persistence are treated
+within a single readout framework.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Factorization of Harmonics, Localization, and
+Condensation}\label{factorization-of-harmonics-localization-and-condensation}
+
+\subsubsection{6.1 Harmonics are not an a priori parent-child
+relation}\label{harmonics-are-not-an-a-priori-parent-child-relation}
+
+We do not posit a base wave first and generate integer multiples as
+child waves. From the phase histories or cyclic properties of the
+anonymous wave set, we search for a subset C for which a common
+fundamental quantity and an integer sequence exist:
+
+\[
+\omega_m
+\simeq
+k_m\omega_0,
+\qquad
+k_m\in\mathbb Z,
+\qquad
+w_m\in C.
+\]
+
+A wave corresponding to the fundamental quantity need not be explicitly
+present in the set. The fundamental can be inferred inversely as a
+latent factor shared by several waves.
+
+For phases too, we search for the following low-dimensional
+representation:
+
+\[
+\phi_m(s)
+\simeq
+k_m\phi_0(s)+\delta_{k_m}
+\pmod{2\pi}.
+\]
+
+If this representation holds with a small residual, C is read as a
+harmonic factor.
+
+\subsubsection{6.2 Localization is a readout of common
+phase}\label{localization-is-a-readout-of-common-phase}
+
+The readout kernel obtained by synthesizing a harmonic factor is written
+as
+
+\[
+L_C(\phi)
+=
+\left|
+\sum_{m\in C}
+A_m
+\exp\left[
+i k_m(\phi-\phi_0)
++i\delta_{k_m}
+\right]
+\right|^2.
+\]
+
+When L has a sharp peak near the phase \(\phi_0\), the factor is read as
+a localized state. This does not mean that the underlying waves exist at
+a point in a background space. It means that the common phase factor of
+the anonymous wave set has a sharp coincidence position with respect to
+a particular readout.
+
+If the highest harmonic order is K, then for an ideal series with equal
+amplitudes and regular phases, the phase resolution improves roughly at
+the order
+
+\[
+\Delta\phi
+\sim
+\frac{1}{K}.
+\]
+
+Even when many harmonics are present, if they are all generated from one
+common fundamental phase and a fixed integer sequence, the number of
+independent degrees of freedom need not have grown with the number of
+harmonics. The very fact that many components can be described by a few
+latent factors serves as an indicator of condensation or low-rankness.
+
+\subsubsection{6.3 Condensates}\label{condensates}
+
+In this paper a condensate is defined not as a fixed set of named
+elements but as a persistent low-dimensional factor satisfying the
+following.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Many anonymous waves can be reconstructed from a few latent
+  parameters.
+\item
+  The partial zero-square closure, or a specified conservation residual,
+  is small.
+\item
+  It has a common phase center and a finite phase width.
+\item
+  Its factor signature, modulo admissible symmetries, is preserved
+  across computational order.
+\end{enumerate}
+
+The constituent waves of a condensate may be exchanged during updates.
+What is conserved is not the names of elements but the factorization
+type.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. Symmetry and Uniqueness}\label{symmetry-and-uniqueness}
+
+\subsubsection{7.1 The need for strong
+symmetry}\label{the-need-for-strong-symmetry}
+
+Sets that simultaneously satisfy zero-square closure, finite recurrence,
+integer ratios, low rank, and geometric consistency are expected to be
+special among generic random complex wave sets. Strong symmetry is a
+candidate condition making it possible to compress many anonymous
+components into a few factors.
+
+On the other hand, perfect symmetry produces a degeneracy in which no
+vertex, direction, or phase center can be distinguished. What is needed
+is therefore not simply maximal symmetry. We take as a working
+hypothesis the two-layer structure
+
+\[
+\text{strong symmetry enabling factorization}
++
+\text{a small symmetry breaking selecting the readout}.
+\]
+
+\subsubsection{7.2 Identification of symmetric
+solutions}\label{identification-of-symmetric-solutions}
+
+The many solutions obtained by renaming the vertices of a regular
+simplex are not different physical structures. Uniqueness is therefore
+judged not by the number of labeled solutions but by the number of
+equivalence classes after quotienting by admissible symmetries.
+
+If, however, distinct simplices, distinct harmonic fundamentals, or
+distinct condensate partitions remain that cannot be connected by
+symmetry transformations, that is genuine non-uniqueness.
+
+\subsubsection{7.3 Perturbation regimes}\label{perturbation-regimes}
+
+Starting from a perfectly symmetric state, we add perturbations that
+preserve anonymity:
+
+\[
+w_m(\epsilon)
+=
+w_m^{(0)}+\epsilon\eta_m.
+\]
+
+We test for the possible existence of three regimes.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Perfectly symmetric point: the shape is clear but directions or
+  centers are degenerate.
+\item
+  Small-perturbation regime: the shape is preserved while a position or
+  direction is selected.
+\item
+  Large-perturbation regime: valid factors are lost and reconstruction
+  becomes non-unique or impossible.
+\end{enumerate}
+
+The existence of a critical perturbation magnitude is itself a working
+hypothesis and may be refuted by experiment.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. Dynamics as Preservation of Factorization
+Type}\label{dynamics-as-preservation-of-factorization-type}
+
+\subsubsection{8.1 Microscopic updates and observed
+dynamics}\label{microscopic-updates-and-observed-dynamics}
+
+A microscopic update is expressed as a map producing a sequence of
+anonymous states:
+
+\[
+\mathcal W_{s+1}
+=
+\Phi(\mathcal W_s).
+\]
+
+The update map must not depend on input ordering:
+
+\[
+\Phi(\pi\mathcal W)
+\simeq
+\Phi(\mathcal W).
+\]
+
+At each computational order we perform a factorization:
+
+\[
+\mathcal F(\mathcal W_s)
+=
+\{F_1(s),F_2(s),\ldots\}.
+\]
+
+Observed dynamics is defined not as trajectories of individual waves but
+as changes of factor equivalence classes:
+
+\[
+[F_\alpha(s)]
+\longrightarrow
+[F_\beta(s+1)].
+\]
+
+\subsubsection{8.2 Factor signature}\label{factor-signature}
+
+To judge the identity of a factor, we define a signature that does not
+depend on element names:
+
+\[
+\Sigma(F)
+=
+\left(
+q,
+\{k_m\},
+\text{amplitude ratios},
+\text{closure residual},
+\text{Gram spectrum},
+\text{rank},
+\text{localization width},
+\ldots
+\right).
+\]
+
+The concrete signature components are preregistered for each target
+factor. When the signature agrees before and after an update and only
+the common phase center changes, the factor is read as a conserved
+condensate.
+
+\subsubsection{8.3 Motion}\label{motion}
+
+With factor shape \(C_0\) and common phase translation T, a moving
+factor is expressed as
+
+\[
+F(s)
+\simeq
+T_{\phi(s)}F^{(0)}.
+\]
+
+If after the update
+
+\[
+\Sigma(F(s+1))
+\simeq
+\Sigma(F(s))
+\]
+
+still holds, the lump is conserved. Meanwhile the center phase may
+change:
+
+\[
+\phi(s+1)
+\neq
+\phi(s).
+\]
+
+Motion is therefore not the same named material changing its position;
+it is the persistence of the same factorization type while its common
+phase center changes.
+
+\subsubsection{8.4 Fusion, splitting, and
+interactions}\label{fusion-splitting-and-interactions}
+
+Recompositions of the factorization are read as follows:
+
+\[
+\{F_A,F_B\}
+\longrightarrow
+\{F_C\}
+\qquad
+\text{fusion candidate},
+\]
+
+\[
+\{F_A\}
+\longrightarrow
+\{F_B,F_C\}
+\qquad
+\text{splitting candidate},
+\]
+
+\[
+\{F_A,F_B\}
+\longrightarrow
+\{F'_A,F'_B\}
+\qquad
+\text{scattering or exchange candidate}.
+\]
+
+To call these physical interactions, one must identify global invariants
+that are conserved independently of changes in the number of factors.
+This paper does not assume their concrete form.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. Working Hypotheses}\label{working-hypotheses}
+
+We divide the claims of this paper into forms that future experiments
+can refute individually.
+
+\subsubsection{Hypothesis H1: Anonymous simplex
+reconstruction}\label{hypothesis-h1-anonymous-simplex-reconstruction}
+
+Some anonymous sets of complex squared quantities with strong
+consistency are uniquely reconstructed into a single complex simplex, up
+to vertex permutations, congruence transformations, and admissible
+gauges.
+
+\subsubsection{Hypothesis H2: A posteriori appearance of the complete
+network}\label{hypothesis-h2-a-posteriori-appearance-of-the-complete-network}
+
+For a subset admitting a unique simplex reconstruction, the complete
+graph structure becomes known as a result, from the number of elements
+and the connection assignment. There is no need to input a complete
+network.
+
+\subsubsection{Hypothesis H3: Localization readout by harmonic
+factors}\label{hypothesis-h3-localization-readout-by-harmonic-factors}
+
+An anonymous wave subset sharing integer ratios, a common fundamental
+phase, and regular amplitudes produces a phase peak of finite width in
+the synthesized readout. The center and width of this peak are read as
+the localization position and localization width.
+
+\subsubsection{Hypothesis H4: Condensates as low-rank
+factors}\label{hypothesis-h4-condensates-as-low-rank-factors}
+
+When many anonymous waves are reconstructible from a few latent factors
+and the closure and phase width remain stable, the factor persists as a
+condensate.
+
+\subsubsection{Hypothesis H5: Motion as preservation of factor
+type}\label{hypothesis-h5-motion-as-preservation-of-factor-type}
+
+When the signature of a condensed factor is preserved and only its
+common phase center changes continuously, the change is read as motion.
+
+\subsubsection{Hypothesis H6: Emergent space, time, and
+objects}\label{hypothesis-h6-emergent-space-time-and-objects}
+
+When a simplex factor, an internal cyclic factor, and a persistent
+condensed factor are independently reconstructed from the same anonymous
+wave sequence and are mutually consistent, they can be read respectively
+as space, time, and objects.
+
+\subsubsection{Hypothesis H7: Symmetry with small
+breaking}\label{hypothesis-h7-symmetry-with-small-breaking}
+
+There exists a finite regime in which strong symmetry enabling unique
+factorization coexists with a small symmetry breaking that selects
+positions and directions.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. Numerical Verification
+Program}\label{numerical-verification-program}
+
+\subsubsection{10.1 Complete separation of generator and
+reconstructor}\label{complete-separation-of-generator-and-reconstructor}
+
+The experiments consist of two independent programs.
+
+The generator produces complex wave sets from known structures:
+
+\[
+S_{\mathrm{true}}
+\xrightarrow{\mathrm{generator}}
+\mathcal W.
+\]
+
+After generation, all of the following are erased:
+
+\begin{itemize}
+\tightlist
+\item
+  vertex numbers
+\item
+  edge endpoints
+\item
+  generation order of waves
+\item
+  harmonic orders
+\item
+  fundamental-wave labels
+\item
+  condensate labels
+\item
+  parent-child labels
+\item
+  individual IDs across computational order
+\item
+  coordinates used in generation
+\end{itemize}
+
+The input ordering is further randomized.
+
+The reconstructor receives only the permitted complex values, phase
+histories, and global constraints. The reconstructor must not access the
+generator's internal data, ground-truth labels, or connection tables.
+
+\subsubsection{10.2 Experiment E0: Permutation-invariance
+test}\label{experiment-e0-permutation-invariance-test}
+
+The same anonymous set is input under multiple random permutations:
+
+\[
+\mathcal W^{(r)}
+=
+\{w_{\pi_r(1)},\ldots,w_{\pi_r(M)}\}.
+\]
+
+We require that all inputs yield the same factorization result up to
+admissible symmetries. If inequivalent results depend on the input
+ordering, the implementation has a hidden label dependence.
+
+\subsubsection{10.3 Experiment E1: Ground-truth embedded
+simplex}\label{experiment-e1-ground-truth-embedded-simplex}
+
+All pairwise relational quantities are generated from a known real or
+complex simplex, and the correspondence table is erased. We test whether
+the reconstructor satisfies the following.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  It recovers a solution congruent to the original simplex.
+\item
+  No inequivalent alternative solution exists.
+\item
+  Even without inputting the vertex number, it recovers the candidate
+  vertex number.
+\item
+  The complete network is obtained as an output result.
+\end{enumerate}
+
+\subsubsection{10.4 Experiment E2: Ground-truth embedded harmonics and
+localization}\label{experiment-e2-ground-truth-embedded-harmonics-and-localization}
+
+Wave sets are generated from a known fundamental phase and integer
+orders and then anonymized. We test whether the reconstructor can
+recover the fundamental quantity, the set of integer orders, the phase
+center, and the localization width.
+
+We also test the case where the wave corresponding to the fundamental is
+removed from the input set, checking whether the latent fundamental
+factor can be inferred inversely.
+
+\subsubsection{10.5 Experiment E3: Composite
+factors}\label{experiment-e3-composite-factors}
+
+A simplex factor, a harmonic factor, and a closure factor are
+simultaneously embedded in the same anonymous wave set. We verify
+whether the individually recovered factors occupy the same subsets or
+consistent overlaps.
+
+This experiment examines whether different readouts point to the same
+emergent structure.
+
+\subsubsection{10.6 Experiment E4: Persistence and motion
+lock}\label{experiment-e4-persistence-and-motion-lock}
+
+We generate sequences of anonymous sets in which the factor shape is
+preserved and only the common phase center is varied. At each
+computational order, the wave ordering and the constituents are
+shuffled, making named tracking impossible.
+
+We verify whether the reconstructor can recover the same factor
+signature and the change of phase center without using the identity of
+the constituent waves.
+
+\subsubsection{10.7 Experiment E5: Blind
+controls}\label{experiment-e5-blind-controls}
+
+Without planting any structure, we generate anonymous sets satisfying
+only zero-square closure, finite recurrence, or the same marginal
+distributions. Compared with the ground-truth embedded group, we measure
+the frequencies of valid factors, unique factors, and false positives:
+
+\[
+P_{\mathrm{unique}}
+=
+P\left(
+\Omega_{\mathrm{fact}}=1
+\mid
+\text{generating condition}
+\right).
+\]
+
+If structures are detected at the same frequency in the control group as
+in the ground-truth group, the reconstruction conditions are too weak.
+
+\subsubsection{10.8 Experiment E6: Perturbation and
+criticality}\label{experiment-e6-perturbation-and-criticality}
+
+Controlled perturbations are added to ground-truth embedded sets, and
+the following are measured:
+
+\begin{itemize}
+\tightlist
+\item
+  number of factorizations
+\item
+  ground-truth recovery rate
+\item
+  reconstruction residual
+\item
+  Gram rank and spectrum
+\item
+  localization peak width
+\item
+  lifetime of factor signatures
+\item
+  false-positive rate
+\end{itemize}
+
+The regime from the perfectly symmetric point to factor collapse is
+scanned continuously.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{11. Success Conditions}\label{success-conditions}
+
+The minimal success conditions of this research program are set as
+follows.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Changing the input ordering yields the same physical equivalence
+  class.
+\item
+  The ground-truth structure can be recovered without using names,
+  coordinates, or connectivity information from generation.
+\item
+  No alternative solution exists that is not symmetry-equivalent to the
+  ground truth.
+\item
+  Multiple independent readouts point to the same factor.
+\item
+  Factors have a finite stability regime against small perturbations.
+\item
+  Persistent objects can be identified solely by conservation of factor
+  signatures, without tracking constituent waves.
+\item
+  The computational step itself is not taken as physical time; a time
+  candidate can be reconstructed from internal cycles.
+\item
+  Verifiable predictions about the next factor state can be obtained
+  from the current factor state.
+\end{enumerate}
+
+Constructing separate readouts for space, time, and objects is not
+sufficient. We require that they be mutually consistent on the same
+anonymous wave set and constrain each other's predictions.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{12. Refutation Conditions}\label{refutation-conditions}
+
+If any of the following holds, the corresponding hypothesis is not
+supported.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Inequivalent structures emerge depending on the ordering of the input
+  array.
+\item
+  Even when the ground truth is recovered, many equally valid
+  inequivalent solutions remain.
+\item
+  Structures can be recovered only if ground-truth labels or connection
+  tables are passed to the reconstructor.
+\item
+  Structures are detected in random control groups at rates comparable
+  to ground-truth embedded groups.
+\item
+  Factors are completely destroyed by arbitrarily small perturbations.
+\item
+  The localization readout depends on external coordinates used at
+  generation time.
+\item
+  The judgment of motion depends on tracking named constituent waves.
+\item
+  Emergent time is nothing but an alias of the computational step.
+\item
+  The simplex readout, the harmonic localization readout, and the
+  persistent factor readout contradict one another.
+\item
+  Expanding the search range destroys uniqueness, revealing that the
+  earlier unique solution was an artifact of insufficient search.
+\end{enumerate}
+
+Failure results are also important. The conditions under which
+factorization becomes impossible, non-unique, or unstable delimit the
+regime in which emergent structures hold.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{13. Computational Cost and Search
+Strategy}\label{computational-cost-and-search-strategy}
+
+A naive search assigning r anonymous candidate lengths to the edges of
+an n-vertex simplex grows rapidly. In the generic case where all values
+are distinct, an estimate of the number of candidates up to vertex
+permutations is
+
+\[
+\frac{r!}{n!},
+\qquad
+r=\frac{n(n-1)}{2}.
+\]
+
+For large systems, therefore, instead of exhaustive permutation search,
+the following pruning becomes necessary:
+
+\begin{itemize}
+\tightlist
+\item
+  partial Gram consistency
+\item
+  rank conditions
+\item
+  subsets with zero-square closure
+\item
+  finite cycle orders
+\item
+  integer-ratio candidates
+\item
+  repeated values and automorphisms
+\item
+  spectral invariants
+\item
+  low-rank decompositions
+\item
+  gluing consistency of partial simplices
+\end{itemize}
+
+In ground-truth embedding experiments the generator knows the answer,
+but the reconstructor must not use that answer for pruning. The ground
+truth is used only for evaluation after the reconstruction has finished.
+
+When the search becomes large-scale, constructing uniqueness
+certificates instead of enumerating all solutions will also be
+considered. However, uniqueness must not be claimed merely because one
+locally optimal solution has been found.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{14. Minimal Relation to Existing
+Work}\label{minimal-relation-to-existing-work}
+
+The question of whether real point configurations can be reconstructed
+from unlabeled distance multisets has been studied. Boutin and Kemper
+treated the problem of reconstructing point configurations from the
+distribution of distances or areas, showing that many generic
+configurations are reconstructible while counterexamples also exist.
+Gortler, Theran, and Thurston studied the relation between unlabeled
+distances and global rigidity in generic position.
+
+This paper does not claim that these results apply as they stand to
+complex wave systems. Handling complex squared quantities lacking the
+positivity of real positive distances, zero-square closure, finite
+recurrence, harmonic factors, and factor persistence across time
+simultaneously requires a different formulation and numerical
+verification.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{15. Limitations and Future
+Work}\label{limitations-and-future-work}
+
+At the stage of this paper, the following remain unresolved.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Whether anonymity should quotient only by permutations, or whether
+  wider basis transformations should also be identified.
+\item
+  The congruence group of complex squared lengths and the exact
+  equivalence relation for unique reconstruction.
+\item
+  Whether the global structure in the case of overlapping factors
+  becomes a partition, a covering, or a hypergraph.
+\item
+  Natural measures and tolerances for valid factor residuals.
+\item
+  Conditions under which strong symmetry increases unique
+  factorizations, versus conditions under which it increases degeneracy.
+\item
+  Concrete procedures for constructing emergent time from internal
+  cycles.
+\item
+  Microscopic update rules that preserve anonymity while producing
+  interactions between factors.
+\item
+  Global invariants conserved even when the number of factors changes.
+\item
+  Uniqueness-certifying algorithms enabling large-scale search.
+\end{enumerate}
+
+These are not concealments of gaps in this paper; they are explicit
+tasks connecting the working hypotheses to the next experiments.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{16. Conclusion}\label{conclusion}
+
+This paper proposed a research framework that does not place complete
+networks, harmonic parent-child relations, localized bodies, or
+particles at the foundation, but reads them out solely from an anonymous
+complex wave multiset.
+
+Taking
+
+\[
+\mathcal W
+=
+\{w_1,\ldots,w_M\}/S_M
+\]
+
+as the base state, valid partial factors are searched for:
+
+\[
+\mathcal W
+\xrightarrow{\text{anonymous factorization}}
+\left\{
+\begin{array}{l}
+\text{simplex factors}\\
+\text{harmonic factors}\\
+\text{localization factors}\\
+\text{condensate factors}\\
+\text{persistent factors}
+\end{array}
+\right\}.
+\]
+
+When a simplex factor is uniquely reconstructed, the complete network
+turns out to be its reconstruction result, not an input. Harmonic
+relations likewise appear, without positing a parent-child structure
+first, as factorization results of subsets sharing a common fundamental
+quantity and integer ratios. Localization is a sharp readout of a common
+phase factor, and a condensate is a low-rank factor describing many
+anonymous waves by a few latent quantities.
+
+Dynamics is defined not as trajectories of named waves but as changes of
+factor equivalence classes that preserve the factor signature while
+changing the common phase center:
+
+\[
+[F(s)]
+\longrightarrow
+[F(s+1)].
+\]
+
+The success or failure of this framework can be judged by blind
+reconstruction of anonymized ground-truth data, control experiments with
+no planted structure, permutation-invariance tests, perturbation tests,
+and persistence tests.
+
+The central proposal of this paper is not to assume structures and
+assign them to waves. It is to ask
+
+\[
+\boxed{
+\begin{array}{l}
+\text{under which conditions an anonymous wave set}\\
+\text{is uniquely factorized as a single structure.}
+\end{array}
+}
+\]
+
+If factors readable as space, time, and particles are reconstructed
+consistently with one another from the same anonymous wave set, without
+using names or coordinates from generation time, the minimal goal of
+this research program is achieved.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Mireille Boutin and Gregor Kemper, ``On Reconstructing n-Point
+  Configurations from the Distribution of Distances or Areas,''
+  \emph{Advances in Applied Mathematics}, Vol. 32, No.~4, pp.~709--735,
+  2004. \url{https://doi.org/10.1016/S0196-8858(03)00101-5}
+\item
+  Steven J. Gortler, Louis Theran, and Dylan P. Thurston, ``Generic
+  Unlabeled Global Rigidity,'' \emph{Forum of Mathematics, Sigma}, Vol.
+  7, e21, 2019. \url{https://doi.org/10.1017/fms.2019.16}
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Appendix A: List of
+Symbols}\label{appendix-a-list-of-symbols}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Symbol
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Meaning
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+M & total number of anonymous complex waves in the base input \\
+W & ordered complex wave array in computation \\
+\(\mathcal W\) & anonymous complex wave multiset identified under
+permutations \\
+Q & closure quantity given by the complex sum of squares \\
+q & finite recurrence order \\
+s & update order in numerical computation; not physical time \\
+F & factor extracted from the anonymous set \\
+C & submultiset constituting a factor \\
+\(\theta\) & latent parameters of a factor \\
+\(\varepsilon\) & factor reconstruction residual \\
+\(\Omega_{\mathrm{fact}}\) & number of inequivalent factorizations
+modulo admissible symmetries \\
+D & anonymous set of complex squared quantities used for simplex
+reconstruction \\
+n & candidate number of simplex vertices for reconstruction \\
+G & complex Gram matrix built from a candidate assignment \\
+k & integer order of a harmonic factor \\
+\(\phi_0\) & recovered common phase center \\
+\(\Sigma\) & invariant signature of a factor \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Appendix B: Items to Preregister for
+Experiments}\label{appendix-b-items-to-preregister-for-experiments}
+
+Before running each numerical experiment, at least the following are
+fixed.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Data items permitted as input
+\item
+  Generation information hidden from the reconstructor
+\item
+  Symmetry transformations to be identified
+\item
+  Definition of factor residuals
+\item
+  Numerical tolerances
+\item
+  Search ranges and cutoff conditions
+\item
+  Method for judging uniqueness
+\item
+  Method for evaluating ground-truth recovery
+\item
+  Method for generating random control groups
+\item
+  Perturbation distributions
+\item
+  Success conditions
+\item
+  Refutation conditions
+\end{enumerate}
+
+This preregistration prevents the circularity of conveniently changing
+factor definitions, tolerances, or search ranges after seeing the
+results.
+
+\end{document}
