@@ -36,10 +36,18 @@
 
 - [Zenodo (Record 22282218)](https://zenodo.org/record/22282218)
 - [Zenn (日本語)](https://zenn.dev/noriaki_kihara/articles/zero-closure-emergent-spacetime-readout) ※記事は articles/ に push 済み（デプロイ反映は追跡しない方針）
+- [note (日本語・論文1/2合同解説)](https://note.com/kiharanoriaki/n/nb5c10fd0e318) — 2026-09-03 公開
+- [note (English・論文1/2合同解説)](https://note.com/kiharanoriaki/n/n9839b3b828e2) — 2026-09-03 公開
 - [GitHub](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/複素旋回波の面積交差項による曲率振動の読出し)
 - ORCID: *（DataCite Auto-Update で自動同期予定）*
 
 ## Version History
+
+### 2026-09-03（note 公開・日英）
+- note に一般向け解説記事を公開（論文1・論文2 の合同記事）
+  - 日本語: [複素数の集まりから、空間・時間・物質はどう生まれるのか](https://note.com/kiharanoriaki/n/nb5c10fd0e318)
+  - English: [How Do Space, Time, and Matter Emerge from a Collection of Complex Numbers?](https://note.com/kiharanoriaki/n/n9839b3b828e2)
+- 記事ソース：`note_emergent_spacetime_matter_ja.md` / `note_emergent_spacetime_matter_en.md`（両論文の Concept DOI と GitHub PDF 直リンクを掲載、英語版は英語 PDF を参照）
 
 ### v2.0 (2026-09-03) — Zenodo 初版公開
 - **Initial Public Release**（内部版 v1.0 への査読反映後の完成版を初版として公開）
