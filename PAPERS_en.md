@@ -4,7 +4,7 @@ Noriaki Kihara / WF System Co., Ltd. / ORCID [0009-0004-6753-4020](https://orcid
 All papers are published on Zenodo under CC BY 4.0. Columns: title (English / Japanese), Version DOI, Concept DOI, date, version, PDFs, folder in this repository, release notes.
 Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PAPERS_ja.md](PAPERS_ja.md) / Scholar landing pages: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**Papers: 127**
+**Papers: 128**
 
 ## Central Projection Framework (Gnomonic Spacetime Geometry) / グノモン正写像による4次元時空の幾何学的定式化
 
@@ -525,6 +525,10 @@ Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PA
    無名複素波集合の因数分解としての創発構造  
    DOI [10.5281/zenodo.22250744](https://doi.org/10.5281/zenodo.22250744) · Concept [10.5281/zenodo.22250743](https://doi.org/10.5281/zenodo.22250743) · 2026-09-02 · v1.0 · [PDF en](https://zenodo.org/records/22250744/files/anonymous_complex_wave_factorization_emergent_structures_working_hypothesis_en.pdf) [PDF ja](https://zenodo.org/records/22250744/files/anonymous_complex_wave_factorization_emergent_structures_working_hypothesis_ja.pdf)  
    folder: [複素旋回波の面積交差項による曲率振動の読出し](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97) · [release notes](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97/RELEASE_NOTES_anonymous_factorization.md)
+6. **Emergent Spacetime and Wave-Scale Readout from Anonymous Complex Zero Closure: Minimal Readout, an Infinite Constructive Solution, Logarithmic Spacetime Mapping, and Post-Mapping Wavelength-Frequency Invariance**  
+   無名複素ゼロ閉包からの時空・波動計量の読出し  
+   DOI [10.5281/zenodo.22282218](https://doi.org/10.5281/zenodo.22282218) · Concept [10.5281/zenodo.22282217](https://doi.org/10.5281/zenodo.22282217) · 2026-09-03 · v2.0 · [PDF en](https://zenodo.org/records/22282218/files/anonymous_complex_zero_closure_spacetime_wave_readout_en_v2.pdf) [PDF ja](https://zenodo.org/records/22282218/files/anonymous_complex_zero_closure_spacetime_wave_readout_ja_v2.pdf)  
+   folder: [複素旋回波の面積交差項による曲率振動の読出し](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97) · [release notes](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97/RELEASE_NOTES_zero_closure_spacetime_readout.md)
 
 ## Other (not stored in this repository) / その他（本リポジトリ未収録）
 

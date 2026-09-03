@@ -8,8 +8,8 @@
 **著者**：木原範昭 (Noriaki Kihara)  
 **所属**：独立研究者 (Independent Researcher)  
 **ORCID**：[0009-0004-6753-4020](https://orcid.org/0009-0004-6753-4020)  
-**論文 DOI**：＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿  
-**Concept DOI**：＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿  
+**論文 DOI**：[10.5281/zenodo.22282218](https://doi.org/10.5281/zenodo.22282218)  
+**Concept DOI**：[10.5281/zenodo.22282217](https://doi.org/10.5281/zenodo.22282217)  
 **版**：v2.0  
 **日付**：2026年9月3日  
 **論文種別**：構成的数理モデル・思考実験  
