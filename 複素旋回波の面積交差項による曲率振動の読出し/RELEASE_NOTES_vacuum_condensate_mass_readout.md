@@ -40,6 +40,8 @@
 - [note (English・論文1/2合同解説)](https://note.com/kiharanoriaki/n/n9839b3b828e2) — 2026-09-03 公開
 - [Facebook (日本語・論文1/2合同告知)](https://www.facebook.com/kihara.noriaki/posts/pfbid02XLYp4QXLQjBY3HNN3Wf1R7CeTf9rfGxCteJUVFSWtaXXgLoJixEHCtRh7diUbg4wl) — 2026-09-04 投稿
 - [Facebook (English・論文1/2合同告知)](https://www.facebook.com/kihara.noriaki/posts/pfbid0PGFt4b7tzZtspreUNHNPGjWyAHmUPKFppoPv4YgFYNLnQab3kGwxycxpGkqVcZhdl) — 2026-09-04 投稿
+- [X (日本語・論文1/2合同告知)](https://x.com/NoriakiKihara/status/2095531001942601980) — 2026-09-04 投稿
+- [X (English・論文1/2合同告知)](https://x.com/NoriakiKihara/status/2095531587316465968) — 2026-09-04 投稿
 - [GitHub](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/複素旋回波の面積交差項による曲率振動の読出し)
 - ORCID: *（DataCite Auto-Update で自動同期予定）*
 
@@ -48,6 +50,12 @@
 - 前報 [K1]: Emergent Spacetime and Wave-Scale Readout from Anonymous Complex Zero Closure — Concept DOI [10.5281/zenodo.22282217](https://doi.org/10.5281/zenodo.22282217)（Zenodo related_identifiers に cites として登録済み）
 
 ## Version History
+
+### 2026-09-04（X 日英投稿）
+- X に論文1・論文2 合同の告知を日英で投稿
+  - 日本語: [投稿リンク](https://x.com/NoriakiKihara/status/2095531001942601980)
+  - English: [投稿リンク](https://x.com/NoriakiKihara/status/2095531587316465968)
+- 原稿ソース：`x_message_emergent_spacetime_matter_ja.md` / `x_message_emergent_spacetime_matter_en.md`（リンク先はそれぞれ note 日本語記事／英語記事）
 
 ### 2026-09-04（Facebook 日英投稿）
 - Facebook に論文1・論文2 合同の告知を日英で投稿
