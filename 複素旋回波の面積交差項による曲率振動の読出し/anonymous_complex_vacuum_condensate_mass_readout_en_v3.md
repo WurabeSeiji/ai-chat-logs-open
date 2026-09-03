@@ -1,0 +1,2309 @@
+# Emergent Condensate, Center of Mass, and Mass-Like Measure from an Anonymous Complex Standing-Wave Vacuum
+
+## --- An Anonymous Fourier–Mellin Readout of Condensation Strength, Finite Extent, and Vacuum-State Gauge Distortion ---
+
+**Author**: Noriaki Kihara  
+**Affiliation**: Independent Researcher  
+**ORCID**: [0009-0004-6753-4020](https://orcid.org/0009-0004-6753-4020)  
+**Paper DOI**: [10.5281/zenodo.22282690](https://doi.org/10.5281/zenodo.22282690)  
+**Concept DOI**: [10.5281/zenodo.22282689](https://doi.org/10.5281/zenodo.22282689)  
+**Version**: v3.0  
+**Date**: September 3, 2026  
+**Document type**: Constructive mathematical model / thought experiment
+
+---
+
+## Abstract
+
+Without assuming localized particles, mass, a center of mass, or background spacetime from the start, this paper begins with an anonymous set of complex standing waves and the complex square-zero closure
+
+$$
+\sum_n z_n^2=0,
+$$
+
+and constructs a method to read out, when a localized condensate forms inside the homogeneous vacuum state field, the condensate's relative center of mass, finite extent, condensation strength, and the distortion of the surrounding vacuum-state gauge, without introducing external coordinates or particle labels.
+
+In the previous paper [K1], relative scales, phase periods, logarithmic spatial and temporal readouts, and a post-mapping $$\lambda\nu$$-type invariant were constructed from the anonymous complex zero-closure system. In this paper, that homogeneous vacuum state field is taken as a "sea of many complex standing waves", and we treat the case where a localized condensation distinguishable from the homogeneous background arises within it.
+
+For a complex number
+
+$$
+z_n=r_n e^{i\theta_n},
+$$
+
+using the logarithmic amplitude
+
+$$
+X_n=\ln r_n
+$$
+
+and the phase $$\theta_n$$, we define a Fourier–Mellin-type transform of the empirical measure of the anonymous set,
+
+$$
+\mathcal A(s,m)
+=
+\frac{1}{N}
+\sum_{n=1}^{N}
+\exp\left[
+-i\left(
+s\ln r_n+m\theta_n
+\right)
+\right].
+$$
+
+This transform is invariant under rearrangements of the waves, and the common amplitude scale and common phase rotation appear only as overall phase factors of the transform, so that its intensity
+
+$$
+P(s,m)=|\mathcal A(s,m)|^2
+$$
+
+is invariant under anonymity, the common scale, and the common phase.
+
+Writing the normalized transform of a localized condensate as $$\chi_C$$, its logarithm expands near the transform origin as
+
+$$
+\ln\chi_C(\mathbf q)
+=
+-i\mathbf q\cdot\boldsymbol\mu_C
+-\frac12
+\mathbf q^{\mathsf T}\Sigma_C\mathbf q
++O(|\mathbf q|^3),
+$$
+
+where $$\boldsymbol\mu_C$$ is the condensate's center of mass and $$\Sigma_C$$ is the covariance matrix expressing its finite extent and shape. Therefore the center of mass can be read from the first derivative of the spectral phase, and the extent from the second derivative of the spectral amplitude. The absolute center of mass, however, is erased by the common gauge transformation; what can be physically read is the relative center of mass with respect to another condensate or the homogeneous vacuum background.
+
+Furthermore, introducing the difference
+
+$$
+\delta\mathcal A
+=
+\mathcal A-\mathcal A_0
+$$
+
+between the pre-condensation homogeneous vacuum spectrum $$\mathcal A_0$$ and the post-condensation spectrum $$\mathcal A$$, the existence of a condensate can be defined as a local inhomogeneity of the vacuum state field. Since the inverse-transformed $$\delta\rho$$ can extend outside the condensation center, the condition under which localized condensation deforms the surrounding vacuum-state gauge can be verified directly. Without placing mass as an external parameter, this paper proposes a "mass-like measure" that obtains the condensation strength, a stable relative center of mass, a finite second moment, and the background gauge deformation from one and the same change of state.
+
+In Appendix A, we further generalize the previous paper's light-like special solution to $$P=P_0L^\alpha$$ and show that the necessary and sufficient condition for $$\lambda\nu$$ to be constant across all shell pairs is this power relation. Matching the readout units, $$\alpha<1$$, $$\alpha=1$$, and $$\alpha>1$$ correspond to spacelike, null, and timelike, respectively. We also construct a rational-exponent shell family that simultaneously satisfies integer cycles, exact per-shell square-zero closure, and overall absolute convergence. The connection claiming that localized condensation actually generates $$\alpha_{\mathrm{eff}}>1$$ is separated as an underived hypothesis.
+
+The claim of this paper is not that real particle masses or the Einstein equations have already been derived. What is shown is an explicit readout framework in which, for a square-zero-closed anonymous complex standing-wave vacuum, a localized condensate can be detected anonymously and its relative center of mass, finite extent, condensation strength, and the distortion of the background state field can all be defined from the same harmonic analysis.
+
+**Keywords**: anonymous complex numbers, square-zero closure, standing-wave vacuum, localized condensate, center of mass, mass, Fourier–Mellin transform, characteristic function, gauge-invariant readout, emergent matter
+
+---
+
+## 1. Problem Setting --- How to Read an "Object" out of a Homogeneous Vacuum
+
+In the previous paper [K1], without first placing space, time, wavelength, or frequency, we investigated what can be read out relatively from an anonymous set of complex numbers
+
+$$
+\mathcal Z
+=
+\{z_1,z_2,\ldots\}/S
+$$
+
+and the square-zero closure
+
+$$
+Q(\mathcal Z)
+=
+\sum_n z_n^2
+=
+0.
+\tag{1}
+$$
+
+Equation (1) is preserved under any common complex scale
+
+$$
+z_n\mapsto \gamma z_n,
+\qquad
+\gamma\in\mathbb C^\times,
+$$
+
+since
+
+$$
+Q\mapsto \gamma^2Q=0.
+$$
+
+Therefore the closure condition itself selects neither an absolute amplitude scale nor an absolute phase.
+
+In this paper, such a state is read as a homogeneous vacuum state field consisting of many complex standing waves. What matters is that this is not a "vacuum field existing inside spacetime" but a state set prior to the readout spacetime.
+
+In a homogeneous vacuum, no special center is placed anywhere. Therefore the vacuum itself has no center of mass intrinsic to an object.
+
+The question of this paper is the following.
+
+> When a part of the anonymous sea of complex standing waves condenses and forms a localized structure distinguishable from the background, can its center of mass, extent, strength, and the distortion of the surrounding background field be read out without giving external coordinates, particle numbers, or known masses?
+
+Organizing the necessary conditions first, a candidate material condensate must satisfy at least the following.
+
+1. It does not break the square-zero closure of the whole system.
+2. It is statistically and spectrally distinguishable from the homogeneous background.
+3. It has a stable relative center of mass.
+4. It has a finite extent that is neither zero nor infinite.
+5. It can induce a deformation of the background state outside the condensation center.
+6. At large distance, or under sufficiently coarse readout, it returns to the original homogeneous vacuum.
+
+A structure satisfying these six conditions is called a "localized condensate" in this paper.
+
+---
+
+## 2. Scale Invariance of the Square-Zero Closure and Interference Closure
+
+Writing each complex number as
+
+$$
+z_n=a_n+i b_n,
+$$
+
+we have
+
+$$
+z_n^2
+=
+a_n^2-b_n^2
++
+2i a_n b_n.
+$$
+
+Therefore equation (1) splits into
+
+$$
+\sum_n(a_n^2-b_n^2)=0
+\tag{2}
+$$
+
+and
+
+$$
+\sum_n a_n b_n=0.
+\tag{3}
+$$
+
+In particular, equation (3) requires that the cross terms of the complex components, that is, the total of the interference terms appearing in the square readout, close.
+
+Transforming all components by a common real scale $$\kappa>0$$,
+
+$$
+a_n\mapsto \kappa a_n,
+\qquad
+b_n\mapsto \kappa b_n,
+$$
+
+we get
+
+$$
+\sum_n(\kappa a_n)(\kappa b_n)
+=
+\kappa^2
+\sum_n a_n b_n
+=
+0.
+$$
+
+Therefore the zero closure fixes no scale, and has the property
+
+$$
+\boxed{
+\text{self-consistency does not depend on any absolute scale}
+}
+$$
+
+This paper places importance on this property. Mass and length are not inserted into the foundational equation as bare absolute parameters; they are treated as relative readouts arising after condensation.
+
+---
+
+## 3. The Homogeneous Vacuum State Gauge Field
+
+### 3.1 Definition of the vacuum
+
+Write the vacuum state as
+
+$$
+\mathcal V_0
+=
+\{z_n^{(0)}\}
+$$
+
+satisfying
+
+$$
+\sum_n
+\left(z_n^{(0)}\right)^2
+=
+0.
+\tag{4}
+$$
+
+Furthermore, the vacuum is assumed to have no localized special point with respect to the anonymous readout adopted. In this sense it is called "homogeneous".
+
+The state gauge here means that no absolute common amplitude or common phase is physically fixed. That is, states related by
+
+$$
+z_n^{(0)}
+\mapsto
+\gamma z_n^{(0)}
+$$
+
+within the same closure class belong to the same gauge orbit from the viewpoint of relative readout.
+
+### 3.2 Vacuum and matter are not separate foundational variables
+
+In this paper, the vacuum and the condensate are not introduced as different kinds of entities.
+
+Write the post-condensation state as
+
+$$
+\mathcal V
+=
+\{z_n\},
+$$
+
+maintaining
+
+$$
+\sum_n z_n^2=0.
+\tag{5}
+$$
+
+Material condensation refers to the case where, among the self-consistent rearrangements from $$\mathcal V_0$$ to $$\mathcal V$$, a localized correlation structure arises.
+
+We therefore adopt the one-layer structure
+
+$$
+\boxed{
+\text{vacuum}
+\longrightarrow
+\text{localized rearrangement of the same state degrees of freedom}
+\longrightarrow
+\text{condensate}
+}
+$$
+
+---
+
+## 4. The Empirical Measure of the Anonymous Set
+
+Since wave numbers carry no physical meaning, readout operations must not depend on rearrangements of the indices.
+
+For a finite set, define the empirical measure
+
+$$
+\mu
+=
+\frac1N
+\sum_{n=1}^{N}
+\delta_{z_n}.
+\tag{6}
+$$
+
+Equation (6) is invariant under rearrangements of the set.
+
+Represent the complex numbers in polar form
+
+$$
+z_n
+=
+r_n e^{i\theta_n},
+\qquad
+r_n>0.
+$$
+
+Zeros have no logarithmic amplitude, so if needed $$z=0$$ is treated separately as a limit point, and the transform is defined on $$\mathbb C^\times$$.
+
+The multiplicative group of nonzero complex numbers decomposes as
+
+$$
+\mathbb C^\times
+\simeq
+\mathbb R_+
+\times
+S^1.
+$$
+
+Therefore it is natural to combine harmonic analysis in the amplitude direction $$r\in\mathbb R_+$$ with harmonic analysis in the phase direction $$\theta\in S^1$$.
+
+Adopting the logarithmic scale readout of the previous paper [K1],
+
+$$
+X=\ln r,
+$$
+
+multiplicative amplitude ratios are carried to additive differences.
+
+---
+
+## 5. The Anonymous Fourier–Mellin Transform
+
+### 5.1 Definition
+
+For the anonymous complex set, define
+
+$$
+\boxed{
+\mathcal A(s,m)
+=
+\frac1N
+\sum_{n=1}^{N}
+\exp
+\left[
+-i
+\left(
+s\ln r_n
++
+m\theta_n
+\right)
+\right]
+}
+\tag{7}
+$$
+
+where
+
+$$
+s\in\mathbb R,
+\qquad
+m\in\mathbb Z.
+$$
+
+The phase direction is the circle $$S^1$$, giving a Fourier series; the amplitude direction is the multiplicative group $$\mathbb R_+$$, giving a Mellin-type transform.
+
+Using the empirical measure, equation (7) can be written as
+
+$$
+\mathcal A(s,m)
+=
+\int_{\mathbb C^\times}
+|z|^{-is}
+\left(
+\frac{z}{|z|}
+\right)^{-m}
+d\mu(z).
+\tag{8}
+$$
+
+### 5.2 Permutation invariance
+
+For any permutation $$\pi$$, replacing
+
+$$
+z_n\mapsto z_{\pi(n)}
+$$
+
+does not change the sum. Therefore $$\mathcal A$$ preserves anonymity.
+
+### 5.3 Common scale transformation
+
+If
+
+$$
+r_n
+\mapsto
+\kappa r_n,
+$$
+
+then
+
+$$
+\ln r_n
+\mapsto
+\ln r_n+\ln\kappa.
+$$
+
+Hence
+
+$$
+\mathcal A(s,m)
+\mapsto
+ e^{-is\ln\kappa}
+\mathcal A(s,m).
+\tag{9}
+$$
+
+Therefore the intensity
+
+$$
+\boxed{
+P(s,m)
+=
+|\mathcal A(s,m)|^2
+}
+\tag{10}
+$$
+
+is invariant under the common scale.
+
+### 5.4 Common phase rotation
+
+If
+
+$$
+\theta_n
+\mapsto
+\theta_n+\phi,
+$$
+
+then
+
+$$
+\mathcal A(s,m)
+\mapsto
+ e^{-im\phi}
+\mathcal A(s,m).
+\tag{11}
+$$
+
+Therefore equation (10) is invariant under the common phase as well.
+
+From the above, $$P(s,m)$$ is an anonymous spectrum that does not depend on wave numbering, the absolute amplitude scale, or the absolute phase.
+
+That Fourier–Mellin-type analysis can be used for representations invariant under scale transformations and rotations is itself known [E1]. The original point of this paper is to apply it not to images or existing spatial coordinates, but to a pre-spacetime anonymous complex state set, and to connect it to the material readout of condensates.
+
+---
+
+## 6. Definition of a Condensate
+
+Let $$\mu_0$$ be the vacuum state and $$\mu$$ the post-condensation measure.
+
+Set the formal difference
+
+$$
+\delta\mu
+=
+\mu-\mu_0.
+\tag{12}
+$$
+
+A condensate is a state in which $$\delta\mu$$ contains a correlation component that is separable from the background and has finite width.
+
+Here we write the condensate component as $$\mu_C$$ and its total weight as
+
+$$
+M_0
+=
+\int d\mu_C.
+\tag{13}
+$$
+
+The quantity $$M_0$$ is not yet called a physical mass; it is called the "condensation participation weight" or the "zeroth condensation moment".
+
+Define the normalized condensate measure
+
+$$
+d\nu_C
+=
+\frac{d\mu_C}{M_0}.
+\tag{14}
+$$
+
+---
+
+## 7. The Center of Mass Appears as the First Derivative of the Spectral Phase
+
+### 7.1 Derivation on the one-dimensional logarithmic scale
+
+First fix the phase direction and look only at the logarithmic scale
+
+$$
+X=\ln r.
+$$
+
+Let the normalized characteristic function of the condensate be
+
+$$
+\chi_C(s)
+=
+\int
+ e^{-isX}
+d\nu_C(X).
+\tag{15}
+$$
+
+At the origin,
+
+$$
+\chi_C(0)=1.
+$$
+
+Differentiating,
+
+$$
+\left.
+\frac{d\chi_C}{ds}
+\right|_{s=0}
+=
+-i
+\int X\,d\nu_C
+=
+-iX_C,
+\tag{16}
+$$
+
+where
+
+$$
+\boxed{
+X_C
+=
+\int X\,d\nu_C
+}
+\tag{17}
+$$
+
+is defined as the condensate's center of mass.
+
+Using the logarithm of the characteristic function,
+
+$$
+\boxed{
+X_C
+=
+i
+\left.
+\frac{d}{ds}
+\ln\chi_C(s)
+\right|_{s=0}
+}
+\tag{18}
+$$
+
+Written with the phase sign convention,
+
+$$
+\boxed{
+X_C
+=
+-
+\left.
+\frac{d}{ds}
+\arg\chi_C(s)
+\right|_{s=0}
+}
+\tag{19}
+$$
+
+This shows that the central position of the condensate can be read as the first-order slope of the spectral phase.
+
+### 7.2 The absolute center of mass is not read out
+
+Shifting the whole condensate by
+
+$$
+X\mapsto X+X_0,
+$$
+
+we get
+
+$$
+\chi_C(s)
+\mapsto
+ e^{-isX_0}\chi_C(s).
+\tag{20}
+$$
+
+Therefore $$|\chi_C|$$ does not change, but the phase slope changes by $$X_0$$.
+
+This is not a defect. Since the underlying system has no absolute scale, the absolute center of mass should not be physically fixed either.
+
+For two condensates $$A,B$$, taking
+
+$$
+\frac{\chi_A(s)}{\chi_B(s)},
+$$
+
+we obtain
+
+$$
+\boxed{
+X_A-X_B
+=
+-
+\left.
+\frac{d}{ds}
+\arg
+\frac{\chi_A(s)}{\chi_B(s)}
+\right|_{s=0}
+}
+\tag{21}
+$$
+
+Therefore what can be read out is not the absolute center of mass but the relative center of mass.
+
+---
+
+## 8. Finite Extent Appears as the Second Derivative of the Spectral Amplitude
+
+Let the condensate's variance be
+
+$$
+\sigma_X^2
+=
+\int
+(X-X_C)^2
+d\nu_C.
+\tag{22}
+$$
+
+By the cumulant expansion of the characteristic function [E2],
+
+$$
+\ln\chi_C(s)
+=
+-isX_C
+-
+\frac12
+s^2\sigma_X^2
++
+O(s^3).
+\tag{23}
+$$
+
+Therefore
+
+$$
+\boxed{
+\sigma_X^2
+=
+-
+\left.
+\frac{d^2}{ds^2}
+\Re\ln\chi_C(s)
+\right|_{s=0}
+}
+\tag{24}
+$$
+
+This gives the clear hierarchy
+
+$$
+\boxed{
+\text{first-order spectral phase}
+\longrightarrow
+\text{center of mass}
+}
+$$
+
+$$
+\boxed{
+\text{second-order spectral decay}
+\longrightarrow
+\text{extent}
+}
+$$
+
+Requiring
+
+$$
+0<\sigma_X^2<\infty
+\tag{25}
+$$
+
+as the minimal condition of a material condensate, we can define a finite-size object that is neither a perfect point singularity nor an infinitely diffused background.
+
+---
+
+## 9. Two-Variable Expansion Including the Phase/Time Direction
+
+Including the phase direction, set
+
+$$
+Y=
+\begin{pmatrix}
+X\\
+T
+\end{pmatrix}.
+$$
+
+Here $$T$$ is the time readout obtained from the phase period or relative winding number in the previous paper [K1].
+
+With the dual variable
+
+$$
+q=
+\begin{pmatrix}
+s\\
+\omega
+\end{pmatrix},
+$$
+
+we have
+
+$$
+\chi_C(q)
+=
+\int
+ e^{-iq^{\mathsf T}Y}
+d\nu_C(Y).
+\tag{26}
+$$
+
+Near the origin,
+
+$$
+\boxed{
+\ln\chi_C(q)
+=
+-iq^{\mathsf T}\mu_C
+-
+\frac12
+q^{\mathsf T}
+\Sigma_C
+q
++
+O(|q|^3)
+}
+\tag{27}
+$$
+
+where
+
+$$
+\mu_C
+=
+\begin{pmatrix}
+X_C\\
+T_C
+\end{pmatrix}
+$$
+
+is the center of mass, and
+
+$$
+\Sigma_C
+=
+\begin{pmatrix}
+\sigma_X^2 & C_{XT}\\
+C_{XT} & \sigma_T^2
+\end{pmatrix}
+$$
+
+is the covariance matrix.
+
+Therefore the cross term
+
+$$
+\boxed{
+C_{XT}
+=
+-
+\left.
+\frac{\partial^2}
+{\partial s\,\partial\omega}
+\Re\ln\chi_C
+\right|_{q=0}
+}
+\tag{28}
+$$
+
+can also be read out.
+
+With this, not only the mere radius of the condensate but also the coupling between the spatial scale and the temporal phase can be measured.
+
+---
+
+## 10. Generalization to a 3-Space + Time Readout
+
+**Assumption 10.1 (existence of a four-dimensional relative readout)**  
+We assume that the spacetime readout of the previous paper [K1] and the relative geometry of multiple complex planes can be extended so that four-dimensional relative readout coordinates can be constructed for the condensate. This is not a proposition newly proved in this paper. The readout explicitly constructed in the previous paper is first of all $$1+1$$ dimensional, and the four-dimensionalization below is a conditional construction valid when that extension holds.
+
+Concretely, suppose readout coordinates
+
+$$
+Y_n
+=
+\begin{pmatrix}
+X_n\\
+Y_n\\
+Z_n\\
+T_n
+\end{pmatrix}
+$$
+
+have been constructed for the condensate.
+
+What matters here is that these are not given from the start as a background lattice; they are relative readouts obtained from complex state relations.
+
+Consequently, the four-dimensional moment readout of equations (29)–(31), and the four-dimensional mass-like interpretation of Section 11 that uses it, are conditional on Assumption 10.1. On the other hand, the one-dimensional and two-variable moment identities derived in Sections 7–9 themselves do not depend on this assumption.
+
+With the four-dimensional dual variable
+
+$$
+q
+=
+\begin{pmatrix}
+k_x\\
+k_y\\
+k_z\\
+\omega
+\end{pmatrix},
+$$
+
+set
+
+$$
+\boxed{
+\chi_C(q)
+=
+\frac{1}{M_0}
+\int
+\exp
+\left[
+-i
+\left(
+k_xX+k_yY+k_zZ-\omega T
+\right)
+\right]
+d\mu_C
+}
+\tag{29}
+$$
+
+The sign of the time term is chosen opposite for consistency with the Lorentz-type readout, but the moment extraction itself does not depend on the sign convention.
+
+The logarithmic expansion of equation (29) is
+
+$$
+\boxed{
+\ln\chi_C(q)
+=
+-iq^{\mathsf T}\mu_C
+-
+\frac12q^{\mathsf T}\Sigma_C q
++
+O(|q|^3)
+}
+\tag{30}
+$$
+
+where
+
+$$
+\boxed{
+\mu_C
+=
+(X_C,Y_C,Z_C,T_C)
+}
+\tag{31}
+$$
+
+is the four-dimensional relative center of mass and $$\Sigma_C$$ is the $$4\times4$$ covariance matrix.
+
+From the eigenvalues and eigenvectors of the spatial $$3\times3$$ part, the principal radii, ellipticity, principal axes, and anisotropy can be read out.
+
+A single spectral operation therefore yields the condensation weight, center of mass, extent, shape, and space-time correlation in a unified way.
+
+---
+
+## 11. The Mass-Like Measure
+
+### 11.1 Mass is not placed as a foundational parameter
+
+In this paper the physical mass $$m$$ is not introduced as an initial condition.
+
+The homogeneous vacuum has no localized center.
+
+Only when condensation occurs do the condensation participation weight, the relative center of mass, the finite extent, and the background distortion become definable simultaneously.
+
+We therefore define the minimal data of a mass-like object as
+
+$$
+\boxed{
+\mathfrak M_C
+=
+\left(
+M_0,
+\mu_C,
+\Sigma_C
+\right)
+}
+\tag{32}
+$$
+
+This is not yet an inertial mass in kilograms.
+
+The "mass-like measure" of this paper is a state quantity expressing the condensation strength that creates a localized center and finite width relative to the homogeneous vacuum.
+
+### 11.2 Condensation weight as the zeroth moment
+
+With the unnormalized condensation spectrum
+
+$$
+\Delta\mathcal A_C(q)
+=
+\int
+ e^{-iq^{\mathsf T}Y}
+d\mu_C(Y),
+\tag{33}
+$$
+
+we have
+
+$$
+\boxed{
+\Delta\mathcal A_C(0)
+=
+M_0
+}
+\tag{34}
+$$
+
+Therefore the hierarchy
+
+$$
+\boxed{
+\begin{aligned}
+0\text{th moment}
+&\longrightarrow
+\text{condensation weight},\\
+1\text{st moment}
+&\longrightarrow
+\text{center of mass},\\
+2\text{nd moment}
+&\longrightarrow
+\text{extent and shape}
+\end{aligned}
+}
+\tag{35}
+$$
+
+holds.
+
+This structure gives a minimal candidate for measuring mass from the state distribution of the condensate itself, rather than assigning it as an external scalar.
+
+---
+
+## 12. Cross Phase against the Homogeneous Vacuum and Relative Position
+
+The spectral intensity
+
+$$
+|\mathcal A|^2
+$$
+
+alone loses the absolute position information.
+
+Therefore, reading the condensate's center of mass requires a cross phase with a reference.
+
+Let $$\mathcal A_0(q)$$ be the pre-condensation vacuum and $$\mathcal A(q)$$ the post-condensation spectrum.
+
+Consider the difference spectrum
+
+$$
+\boxed{
+\delta\mathcal A(q)
+=
+\mathcal A(q)-\mathcal A_0(q)
+}
+\tag{36}
+$$
+
+Alternatively, in regions where the reference spectrum is nonzero, the cross spectrum
+
+$$
+\boxed{
+C(q)
+=
+\mathcal A(q)
+\mathcal A_0(q)^*
+}
+\tag{37}
+$$
+
+may be used.
+
+The phase obtained here is not a position relative to an external origin but a relative phase shift with respect to the homogeneous vacuum gauge.
+
+This structure is consistent with the basic principle of this paper: read only relations, not absolute quantities.
+
+---
+
+## 13. Distortion of the Surrounding Vacuum State Gauge by a Condensate
+
+### 13.1 Localized condensation and global closure
+
+The whole system always maintains
+
+$$
+\sum_n z_n^2=0.
+$$
+
+Formally dividing the condensate region $$C$$ from its exterior $$E$$,
+
+$$
+Q_C
+=
+\sum_{n\in C}z_n^2,
+$$
+
+$$
+Q_E
+=
+\sum_{n\in E}z_n^2,
+$$
+
+we have
+
+$$
+\boxed{
+Q_C+Q_E=0
+}
+\tag{38}
+$$
+
+In general there is no need for the condensate part alone to satisfy $$Q_C=0$$.
+
+If the localized condensation has
+
+$$
+Q_C\neq0,
+$$
+
+the global closure necessarily requires
+
+$$
+\boxed{
+Q_E=-Q_C
+}
+\tag{39}
+$$
+
+Therefore, if the closure contribution becomes biased by local condensation, the surrounding state set must rearrange compensatingly.
+
+This is a candidate for producing
+
+$$
+\boxed{
+\text{localized condensation}
+\longrightarrow
+\text{compensating deformation of the background state}
+}
+$$
+
+without additional axioms.
+
+### 13.2 Reducible closure and the limits of the residual-compensation mechanism
+
+The explicit shell special solution of the previous paper [K1] has a reducible structure in which each shell individually satisfies the square-zero closure. For this reason, when the condensate region $$C$$ is composed only of complete closure shells,
+
+$$
+Q_C=0
+$$
+
+holds, and the **mechanism by which the exterior compensates a nonzero closure residual** of equation (39) does not operate. Therefore, to experimentally test the compensation mechanism of the equation (39) type itself, one must include configurations in which the condensate is cut out across closure units, so that in general $$Q_C\neq0$$ can occur.
+
+However, this does not mean that
+
+$$
+Q_C=0
+$$
+
+implies the absence of any background deformation whatsoever. While the total closure of the sum of squares is maintained, the internal correlations, the phase arrangement, or the relational structure between the condensate and its exterior may still be rearranged. This paper therefore distinguishes
+
+- **residual-compensation-type distortion**: the deformation required by equation (39) for $$Q_C\neq0$$,
+- **closure-preserving correlational distortion**: a different kind of rearrangement that can occur while maintaining $$Q_C=0$$.
+
+The existence conditions and the readout of the latter are an open problem.
+
+### 13.3 Spectral readout of the distortion
+
+Inverse-transform the pre/post-condensation difference $$\delta\mathcal A(q)$$ to obtain $$\delta\rho(Y)$$.
+
+Conceptually,
+
+$$
+\delta\rho(Y)
+=
+\mathcal F^{-1}
+\left[
+\delta\mathcal A(q)
+\right].
+\tag{40}
+$$
+
+However, when the spatial scale is obtained from the logarithmic amplitude, this is interpreted, with respect to the original complex state variables, as the product of an inverse Fourier transform and an inverse Mellin transform.
+
+If a localized condensate truly distorts the surrounding gauge, then $$\delta\rho(Y)\neq0$$ exists outside the condensation center as well, and
+
+$$
+\delta\rho(Y)
+\to0
+\qquad
+\text{for sufficiently large relative separation}
+\tag{41}
+$$
+
+is expected.
+
+In that case, one obtains the structure required of an isolated object: a condensation center, a finite core, and a background deformation decaying outward.
+
+---
+
+## 14. Relation to Background Curvature
+
+The previous paper [K1] treated the possibility of constructing an additive readout space from a closed, bounded complex state field.
+
+In this paper, the state-distribution deformation caused by the condensate is extracted as $$\delta\rho$$.
+
+Writing the readout metric as $$g_0$$ and the post-condensation one as $$g_C$$, it will in the future be possible to define
+
+$$
+\boxed{
+\delta g
+=
+g_C-g_0
+}
+\tag{42}
+$$
+
+as the local metric deviation caused by condensation.
+
+However, this paper does not yet derive a unique map from $$\delta\rho$$ to $$\delta g$$.
+
+What this paper establishes is therefore up to
+
+$$
+\boxed{
+\text{localized condensation}
+\longrightarrow
+\text{inhomogeneity of the vacuum state distribution}
+}
+$$
+
+while
+
+$$
+\boxed{
+\delta\rho
+\longrightarrow
+\text{Einstein curvature}
+}
+$$
+
+is left as an unsolved problem.
+
+This distinction is important.
+
+On the other hand, whether a surrounding deformation due to condensation exists is directly verifiable by numerical experiment.
+
+---
+
+## 15. Relation to the Four-Dimensional FFT
+
+On the surface, equation (29) is close to a four-dimensional Fourier transform.
+
+In the usual four-dimensional FFT, however, the lattice of $$ (x,y,z,t) $$ exists from the start.
+
+In this paper the order is reversed:
+
+$$
+\boxed{
+\text{anonymous complex waves}
+\rightarrow
+\text{relative scale and phase readout}
+\rightarrow
+\text{emergent coordinates}
+\rightarrow
+\text{spectral condensation analysis}
+}
+\tag{43}
+$$
+
+In particular, since
+
+$$
+X=\ln r,
+$$
+
+we have
+
+$$
+e^{-isX}
+=
+e^{-is\ln r}
+=
+r^{-is}.
+$$
+
+For the original amplitude variable $$r$$, this is the Mellin kernel itself.
+
+Hence the operation of this paper is not a mere four-dimensional FFT but carries the correspondence
+
+$$
+\boxed{
+\text{Fourier in the emergent logarithmic space}
+\equiv
+\text{Mellin in the original amplitude space}
+}
+$$
+
+---
+
+## 16. Basis Search from Anonymous States
+
+The equations so far give the moment extraction after readout coordinates corresponding to the condensate have been obtained.
+
+The hardest problem, however, is how to choose that basis itself from the anonymous state.
+
+This paper proposes to consider, for a candidate basis $$B$$, the spectrum
+
+$$
+\mathcal A_B(q)
+$$
+
+and to define a condensation evaluation functional
+
+$$
+\mathcal C(B).
+$$
+
+For example,
+
+$$
+\mathcal C(B)
+=
+\frac{
+\displaystyle
+\int_{\Omega_{\rm peak}}
+|\delta\mathcal A_B(q)|^2dq
+}{
+\displaystyle
+\int_{\Omega_{\rm all}}
+|\delta\mathcal A_B(q)|^2dq
+}
+\tag{44}
+$$
+
+measures the concentration into a limited spectral region.
+
+Define the optimal basis as
+
+$$
+\boxed{
+B_*
+=
+\operatorname*{arg\,max}_{B}
+\mathcal C(B)
+}
+\tag{45}
+$$
+
+However, the admissible bases $$B$$ are not arbitrary: they must be constructed only from permutation-invariant state quantities, must not depend on the common-scale and common-phase gauges, must preserve the square-zero closure, and must be consistent with the spacetime readout of the previous paper [K1].
+
+This is therefore not an operation of freely fitting coordinates to fabricate an arbitrary condensation.
+
+Rather, it is the problem of
+
+$$
+\boxed{
+\text{searching, within the bases the zero-closure system itself admits, for the most self-consistently localized mode}
+}
+$$
+
+---
+
+## 17. Minimal Verification as Numerical Experiments
+
+The proposal of this paper is directly verifiable numerically.
+
+### Experiment A: Anonymity
+
+Create a complex wave set containing a known condensate and randomly shuffle the numbering of all waves.
+
+The pass condition is
+
+$$
+\mathcal A_{\rm before}
+=
+\mathcal A_{\rm after}.
+$$
+
+### Experiment B: Common-scale invariance
+
+Transform all waves by
+
+$$
+z_n\mapsto\kappa z_n.
+$$
+
+The pass condition is
+
+$$
+|\mathcal A_{\kappa}(s,m)|^2
+=
+|\mathcal A(s,m)|^2.
+$$
+
+### Experiment C: Common-phase invariance
+
+Transform by
+
+$$
+z_n\mapsto e^{i\phi}z_n.
+$$
+
+The pass condition is likewise
+
+$$
+|\mathcal A_{\phi}(s,m)|^2
+=
+|\mathcal A(s,m)|^2.
+$$
+
+### Experiment D: Center-of-mass recovery
+
+Apply a known relative shift $$\Delta X$$ to the condensate.
+
+The prediction is
+
+$$
+\chi_C(s)
+\mapsto
+ e^{-is\Delta X}
+\chi_C(s),
+$$
+
+and
+
+$$
+-
+\left.
+\frac{d}{ds}
+\Delta\arg\chi_C
+\right|_0
+=
+\Delta X
+\tag{46}
+$$
+
+should be recovered.
+
+### Experiment E: Finite-width recovery
+
+Generate a condensate with a known variance $$\sigma^2$$.
+
+Compare the variance recovered via equation (24) with the input value.
+
+### Experiment F: Multiple condensates
+
+Place two or more condensates and recover $$X_A-X_B$$ from the cross phase.
+
+Confirm that the result is invariant under changes of the absolute origin.
+
+### Experiment G: Background distortion
+
+Generate a local condensation while maintaining the global zero closure, and measure how far $$\delta\rho(Y)$$ extends outside the condensation core. In particular, for the series testing the residual-compensation mechanism of the equation (39) type, do not select only complete closure shells as the condensate; include in the generation conditions condensations cut out across closure units, so that in general $$Q_C\neq0$$ can occur. In parallel, measure as a separate series whether closure-preserving correlational distortion arises even for condensations maintaining $$Q_C=0$$.
+
+This is the most physically important verification in this paper.
+
+### Experiment H: Blind control and false-positive rate
+
+Generate, as a control group, homogeneous vacuum states with no condensate planted at all, and run the basis search of Section 16 under the same conditions. Measure the distributions of the concentration $$\mathcal C(B)$$ for each candidate basis, the difference spectrum $$\delta\mathcal A$$, the apparent center of mass and finite width, and the background distortion indicators, and first establish the false-positive rate that arises even in systems containing no condensate.
+
+Then require that the signals of Experiments D–G be statistically separable from this control distribution. This discriminates whether the basis search is discovering a condensation or manufacturing an apparent localization through optimization.
+
+---
+
+## 18. Relation to Renormalization
+
+The foundational equation of this paper,
+
+$$
+\sum_n z_n^2=0,
+$$
+
+is invariant under the common scale transformation.
+
+Therefore no particular absolute scale needs to be chosen to preserve the self-consistency of the foundational state.
+
+Moreover, the mass-like measure is not injected as a bare mass parameter; it is read out as the condensation weight, the relative center of mass, the finite width, and the background deformation.
+
+For this reason, this construction at least does not require, as a foundational definition, "readjusting divergent bare parameters to observables".
+
+However, we do not yet conclude from this fact alone that all ultraviolet divergences of quantum field theory automatically disappear.
+
+The strict claim of this paper is only that
+
+$$
+\boxed{
+\text{the foundational closure condition is scale invariant, and mass-like quantities are not introduced as external bare parameters}
+}
+$$
+
+If, in the future, all observables are shown to remain finite when interactions between condensates are introduced, only then can a stronger UV-finiteness be discussed.
+
+---
+
+## 19. Difference from Standard Mass Concepts
+
+The "mass-like measure" of this paper does not yet identify the Higgs mechanism of the Standard Model, inertial mass, and gravitational mass.
+
+What this paper constructs is
+
+$$
+\boxed{
+\text{a measure of localized condensation that creates an intrinsic center of mass inside the homogeneous vacuum}
+}
+$$
+
+The quantities to be distinguished and verified in the future are therefore at least: the condensation participation weight $$M_0$$, mass as inertial response, the strength of the surrounding background distortion, the coefficient of the gravitational far field, and the internal oscillation period or eigenfrequency.
+
+If these eventually converge to one and the same condensation invariant, that would constitute a unified readout of mass.
+
+At the present stage this coincidence is not assumed.
+
+---
+
+## 20. Minimality of the Construction
+
+The mathematical structure added in this paper is limited.
+
+What is needed as the foundation is
+
+$$
+\boxed{
+\begin{aligned}
+&\text{(i) an anonymous complex state set},\\
+&\text{(ii) the square-zero closure},\\
+&\text{(iii) the relative logarithmic scale and phase readout of the previous paper},\\
+&\text{(iv) harmonic analysis on the empirical measure}
+\end{aligned}
+}
+$$
+
+Particle labels, external coordinate lattices, absolute origins, and bare masses are not introduced.
+
+Nor is a Fourier transform taken after first specifying the center of a localized body. The center comes out of the first moment after the transform.
+
+The logical order is therefore
+
+$$
+\boxed{
+\text{waves}
+\rightarrow
+\text{condensation}
+\rightarrow
+\text{spectrum}
+\rightarrow
+\text{center of mass}
+}
+$$
+
+and not the order of placing a wave packet at a known position.
+
+---
+
+## 21. Open Problems
+
+### 21.1 Are condensates generated spontaneously?
+
+This paper gives a method to read out condensates, but it does not prove that
+
+$$
+\sum_n z_n^2=0
+$$
+
+alone necessarily generates stable localized condensation.
+
+This is the most important dynamical problem.
+
+### 21.2 Stability of condensates
+
+The conditions under which the center of mass $$\mu_C$$ and the covariance $$\Sigma_C$$ remain stable over long times must be found.
+
+### 21.3 Relation between condensation weight and background distortion
+
+Whether a simple proportionality law exists between
+
+$$
+M_0
+$$
+
+and the far-field amplitude of
+
+$$
+\delta\rho
+$$
+
+must be verified.
+
+### 21.4 Inverse-square law
+
+After the three-dimensional readout, whether the background distortion of an isolated condensate produces a gradient of the
+
+$$
+\frac{1}{R^2}
+$$
+
+type at large distance is unverified.
+
+### 21.5 Coincidence of inertia and gravity
+
+If the condensate's resistance to acceleration and the surrounding background distortion are determined by the same invariant, this could connect to the coincidence of inertial and gravitational mass. At the present stage this is a prediction problem.
+
+### 21.6 Uniqueness of condensate decomposition
+
+This paper separates the condensate component $$\mu_C$$ from the difference measure $$\delta\mu$$ and reads its center of mass and extent. However, when multiple localized correlations coexist in the anonymous many-body system, it is not yet shown that the decomposition
+
+$$
+\delta\mu
+\longrightarrow
+\{\mu_{C_1},\mu_{C_2},\ldots\}
+$$
+
+is uniquely determined. Beyond the maximal concentration in the basis search of Section 16, the existence and uniqueness of the decomposition, the separation limit for nearby condensates, and the resolution dependence must be formalized. This is the central problem for not specifying from outside "how much counts as one object".
+
+### 21.7 Residual-compensation-type versus closure-preserving background distortion
+
+Under which conditions the two kinds of background deformation distinguished in Section 13.2 arise, and whether they converge to the same far-field readout, is unresolved. In particular, it must be discriminated whether long-range distortion can arise from correlational rearrangement alone even for condensates with $$Q_C=0$$.
+
+---
+
+## 22. Discussion --- No Separate Entity at the Vacuum-Matter Boundary
+
+The characteristic of this construction is that vacuum and matter are not placed as fundamentally different things.
+
+The homogeneous vacuum is
+
+$$
+\mathcal V_0,
+$$
+
+and the universe containing condensates is
+
+$$
+\mathcal V.
+$$
+
+Both consist of the same complex state degrees of freedom; the difference lies in the correlation structure.
+
+Therefore the reading
+
+$$
+\boxed{
+\text{matter}
+=
+\text{localized condensation of the vacuum state gauge field}
+}
+\tag{47}
+$$
+
+becomes possible.
+
+Furthermore, if the compensating deformation required to maintain the global zero closure extends to the surroundings upon condensation, then matter and background distortion are not independent inputs but two readouts of the same self-consistent rearrangement.
+
+Here lies the most important physical possibility of this construction.
+
+---
+
+## 23. Conclusion
+
+In this paper, for the case where a localized condensate exists inside the homogeneous vacuum state field of anonymous complex standing waves,
+
+$$
+\sum_n z_n^2=0,
+$$
+
+we constructed a framework that reads out the condensate's material information without external coordinates or known masses.
+
+The main results are as follows.
+
+First, for the empirical measure of the anonymous complex set we defined the Fourier–Mellin-type transform
+
+$$
+\mathcal A(s,m)
+=
+\frac1N
+\sum_n
+\exp
+\left[
+-i
+\left(
+s\ln r_n+m\theta_n
+\right)
+\right].
+$$
+
+Second, its spectral intensity is invariant under wave permutations, the common amplitude scale, and the common phase rotation.
+
+Third, from the logarithmic expansion of the condensate's normalized transform,
+
+$$
+\ln\chi_C(q)
+=
+-iq^{\mathsf T}\mu_C
+-
+\frac12q^{\mathsf T}\Sigma_Cq
++
+\cdots,
+$$
+
+we obtained the relative center of mass as the first-order term and the finite extent and shape as the second-order term.
+
+Fourth, by taking the unnormalized zeroth-order term as the condensation participation weight, we constructed the mass-like moment hierarchy
+
+$$
+\boxed{
+0\text{th}
+\to
+\text{condensation weight},
+\qquad
+1\text{st}
+\to
+\text{center of mass},
+\qquad
+2\text{nd}
+\to
+\text{extent}
+}
+$$
+
+Fifth, from the pre/post-condensation difference spectrum
+
+$$
+\delta\mathcal A
+=
+\mathcal A-\mathcal A_0,
+$$
+
+we showed a method to directly detect the distortion of the vacuum state gauge extending outside the condensate.
+
+In this construction, therefore,
+
+$$
+\boxed{
+\text{homogeneous vacuum}
+\rightarrow
+\text{localized condensation}
+\rightarrow
+\text{relative center of mass}
+\rightarrow
+\text{finite extent}
+\rightarrow
+\text{mass-like measure}
+\rightarrow
+\text{surrounding gauge distortion}
+}
+$$
+
+can be described continuously as internal readouts of one and the same anonymous complex state field.
+
+The most important open problem is not the readout method but whether the dynamics of a square-zero-closed homogeneous standing-wave vacuum can be shown to spontaneously generate such stable condensates of finite width.
+
+In that sense this paper is not a "completed theory of mass"; it provides
+
+$$
+\boxed{
+\text{the minimal mathematical apparatus for reading an object as an object out of the anonymous sea of vacuum waves}
+}
+$$
+
+---
+
+# Appendix A: Minimal Extension to the Self-Dual Vacuum and Non-Null Readouts
+
+## A.1 Purpose and positioning
+
+In the countably infinite special solution of the previous paper [K1], the spatial scale and the period scale are proportional to the same shell parameter, and the post-mapping wavelength-frequency product is constant for every shell pair. Moreover, when the readout units are matched, all shell-pair intervals become null.
+
+In this appendix, we generalize this structure minimally without breaking it, and investigate under which conditions the three-way classification into spacelike, null, and timelike opens up. What is derived here is a mathematical classification between readout scales; that localized condensates actually generate timelike structure is distinguished at the end as an independent hypothesis.
+
+Let the positive spatial and period scales be
+
+$$
+L_k>0,
+\qquad
+P_k>0,
+$$
+
+with logarithmic readouts
+
+$$
+X_k=C_X\ln L_k,
+\qquad
+T_k=C_T\ln P_k.
+\tag{A1}
+$$
+
+For a shell pair $$j,k$$,
+
+$$
+\Delta X_{jk}
+=
+C_X\ln\frac{L_j}{L_k},
+\qquad
+\Delta T_{jk}
+=
+C_T\ln\frac{P_j}{P_k}.
+\tag{A2}
+$$
+
+Define the wavelength readout and the period/frequency readouts as
+
+$$
+\lambda_{jk}=|\Delta X_{jk}|,
+\qquad
+\tau_{jk}=|\Delta T_{jk}|,
+\qquad
+\nu_{jk}=\frac{1}{\tau_{jk}}.
+\tag{A3}
+$$
+
+---
+
+## A.2 The necessary and sufficient condition for constant $\lambda\nu$ across all shell pairs
+
+### Theorem A1
+
+Consider a shell family containing at least three mutually distinct spatial scales $$L_k$$. For all distinct shell pairs $$j\neq k$$,
+
+$$
+\lambda_{jk}\nu_{jk}=K
+\qquad
+(K>0)
+\tag{A4}
+$$
+
+is one and the same constant if and only if there exist a constant $$P_0>0$$ and a nonzero real number $$\alpha$$ such that
+
+$$
+\boxed{
+P_k=P_0L_k^{\alpha}
+}
+\tag{A5}
+$$
+
+holds for all shells. Since a reversal of axis orientation can be absorbed into the sign of $$\alpha$$ or the sign of $$C_T$$, one may take $$\alpha>0$$ when treating only increasing scale relations.
+
+### Proof
+
+Set
+
+$$
+x_k=\ln L_k,
+\qquad
+y_k=\ln P_k.
+$$
+
+From equations (A3)(A4),
+
+$$
+\frac{|C_X|\,|x_j-x_k|}
+{|C_T|\,|y_j-y_k|}
+=K,
+$$
+
+so for some $$a>0$$,
+
+$$
+|y_j-y_k|
+=
+a|x_j-x_k|
+\tag{A6}
+$$
+
+holds for all shell pairs.
+
+Therefore the map $$x_k\mapsto y_k/a$$ preserves all pairwise distances of this point set on the real line. Since a distance-preserving map on a subset of the real line containing at least three points is unique up to translation and orientation reversal, there exist $$b\in\mathbb R$$ and $$\sigma=\pm1$$ such that
+
+$$
+y_k
+=
+\sigma a x_k+b.
+\tag{A7}
+$$
+
+Setting
+
+$$
+\alpha=\sigma a,
+\qquad
+P_0=e^b
+$$
+
+yields equation (A5).
+
+Conversely, if equation (A5) holds, then
+
+$$
+\ln\frac{P_j}{P_k}
+=
+\alpha
+\ln\frac{L_j}{L_k},
+$$
+
+so equations (A2)(A3) give
+
+$$
+\boxed{
+\lambda_{jk}\nu_{jk}
+=
+\frac{|C_X|}{|C_T|\,|\alpha|}
+}
+\tag{A8}
+$$
+
+which does not depend on the shell pair. This establishes necessity and sufficiency. □
+
+By this theorem, the condition $$P_k\propto L_k$$ of the previous paper [K1] is the special point
+
+$$
+\boxed{\alpha=1}
+$$
+
+of the general condition.
+
+---
+
+## A.3 Spacelike / null / timelike classification by $\alpha$
+
+Normalize the readout units to
+
+$$
+|C_X|=|C_T|=:C.
+\tag{A9}
+$$
+
+From equation (A5),
+
+$$
+\Delta T_{jk}
+=
+\sigma\alpha\,\Delta X_{jk},
+$$
+
+where $$\sigma=\pm1$$ expresses only the axis orientation and does not affect the quadratic form.
+
+Taking the Lorentz-type readout quadratic form
+
+$$
+ds_{jk}^2
+=
+(\Delta X_{jk})^2
+-
+(\Delta T_{jk})^2,
+\tag{A10}
+$$
+
+we obtain
+
+$$
+\boxed{
+ ds_{jk}^2
+=
+(1-\alpha^2)
+C^2
+\left(
+\ln\frac{L_j}{L_k}
+\right)^2
+}
+\tag{A11}
+$$
+
+Therefore, for $$\alpha>0$$,
+
+$$
+\boxed{
+0<\alpha<1
+\quad\Longrightarrow\quad
+ ds^2>0
+\quad\text{(spacelike)}
+}
+\tag{A12}
+$$
+
+$$
+\boxed{
+\alpha=1
+\quad\Longrightarrow\quad
+ ds^2=0
+\quad\text{(null)}
+}
+\tag{A13}
+$$
+
+$$
+\boxed{
+\alpha>1
+\quad\Longrightarrow\quad
+ ds^2<0
+\quad\text{(timelike)}
+}
+\tag{A14}
+$$
+
+Hence the special solution of the previous paper is the self-dual point
+
+$$
+\boxed{
+\alpha=1
+}
+$$
+
+at which the exponents of the spatial and period scales coincide, and there all shell-pair intervals are null.
+
+Also, from equation (A8), in the same normalization,
+
+$$
+\boxed{
+\lambda_{jk}\nu_{jk}
+=
+\frac{1}{\alpha}
+}
+\tag{A15}
+$$
+
+In a normalization carrying a dimensional reference speed $$c_*$$, the right-hand side becomes $$c_*/\alpha$$.
+
+What matters is that the constancy of $$\lambda\nu$$ itself is not restricted to null. Constancy across all shell pairs is equivalent to the power relation $$P\propto L^\alpha$$, and within it $$\alpha=1$$ selects the null self-dual point.
+
+---
+
+## A.4 A rational-exponent shell family preserving integrality and exact closure
+
+We now construct the $$\alpha$$ generalization above as a countable complex zero-closure solution with no rounding error.
+
+Take the base integer sequence
+
+$$
+B_k=k(k+1),
+\qquad
+k=1,2,3,\ldots
+\tag{A16}
+$$
+
+and for positive integers $$p,q$$ define
+
+$$
+R_k=B_k^q,
+\qquad
+N_k=B_k^p.
+\tag{A17}
+$$
+
+Take the complex waves of each shell as
+
+$$
+\boxed{
+z_{k,n}
+=
+\frac{A}{R_k}
+\exp\left[
+i\left(
+\phi_k+
+\frac{\pi n}{N_k}
+\right)
+\right],
+\qquad
+n=0,\ldots,N_k-1
+}
+\tag{A18}
+$$
+
+Squaring,
+
+$$
+z_{k,n}^2
+=
+\frac{A^2e^{2i\phi_k}}{R_k^2}
+\exp\left(
+\frac{2\pi i n}{N_k}
+\right),
+$$
+
+so for $$N_k\ge2$$ the sum of roots of unity makes each shell exactly satisfy
+
+$$
+\boxed{
+\sum_{n=0}^{N_k-1}z_{k,n}^2=0
+}
+\tag{A19}
+$$
+
+Meanwhile, $$R_k$$ can be read from the inverse-amplitude scale, and $$N_k$$ from the phase-cycle order or the shell multiplicity. From equation (A17),
+
+$$
+\ln N_k
+=
+\frac{p}{q}
+\ln R_k
+\tag{A20}
+$$
+
+holds exactly.
+
+Therefore we obtain the rational-exponent family
+
+$$
+\boxed{
+\alpha=\frac{p}{q}
+}
+\tag{A21}
+$$
+
+The previous paper's $$\alpha=1$$ corresponds to $$p=q$$.
+
+### Absolute convergence condition
+
+The total sum of squared absolute values over all shells is
+
+$$
+\sum_k\sum_{n=0}^{N_k-1}|z_{k,n}^2|
+=
+|A|^2
+\sum_k
+\frac{N_k}{R_k^2},
+$$
+
+and substituting equation (A17),
+
+$$
+|A|^2
+\sum_k
+B_k^{p-2q}.
+\tag{A22}
+$$
+
+Since $$B_k\sim k^2$$, the convergence condition is
+
+$$
+2(p-2q)<-1.
+$$
+
+As $$p,q$$ are integers, this is equivalent to
+
+$$
+\boxed{
+p\le2q-1
+}
+\tag{A23}
+$$
+
+Therefore, in the absolutely convergent rational-exponent family,
+
+$$
+\boxed{
+0<\alpha
+=
+\frac pq
+\le
+2-
+\frac1q
+<2
+}
+\tag{A24}
+$$
+
+This range contains all of
+
+- $$p<q$$: spacelike,
+- $$p=q$$: null,
+- $$q<p\le2q-1$$: timelike.
+
+In particular, having an exact timelike family requires $$q\ge2$$.
+
+Hence, without breaking the null solution of the previous paper, the construction extends to both spacelike and timelike while simultaneously maintaining integer cycle numbers, exact per-shell square-zero closure, and overall absolute convergence.
+
+---
+
+## A.5 Connection to condensates --- separating derived results from hypotheses
+
+In the main text, the localized condensate was defined as a local rearrangement of the homogeneous vacuum state field, and the condensation weight, the relative center of mass, the finite extent, and the background state gauge distortion were constructed from the Fourier–Mellin-type readout.
+
+What this appendix newly derives is the following.
+
+1. The constancy of $$\lambda\nu$$ across all shell pairs is necessarily and sufficiently equivalent to $$P\propto L^\alpha$$.
+2. $$\alpha=1$$ is the self-dual point at which all shell pairs are null.
+3. $$\alpha<1$$ and $$\alpha>1$$ give spacelike and timelike readouts, respectively.
+4. For rational exponents $$\alpha=p/q$$, there exists a countable shell family preserving exact square-zero closure and absolute convergence.
+
+Furthermore, since exchanging the roles of $$L$$ and $$P$$ formally gives $$\alpha\leftrightarrow1/\alpha$$, timelike-type and spacelike-type readouts may form a reciprocal pair across the self-dual point $$\alpha=1$$. This is reminiscent of the reciprocal structure of phase velocity and group velocity appearing for standard massive waves, but this paper does not derive the physical identity of the two. It therefore remains a **correspondence hypothesis**.
+
+When testing this hypothesis, one must distinguish whether $$\alpha_{\mathrm{eff}}$$ is measured from "the worldline-type readout of the condensate" or from "the wavefront-type readout attached to the condensate". The two are not to be unconditionally identified as the same $$\alpha_{\mathrm{eff}}$$.
+
+On the other hand, the following proposition is not yet derived in this paper.
+
+> **Connection hypothesis**: the formation of a localized condensate may locally break the $$\alpha=1$$ self-dual relation of the homogeneous vacuum and generate a timelike readout with $$\alpha_{\mathrm{eff}}>1$$ inside or around the condensate.
+
+The local effective exponent can be formally defined, for two nearby readout scales, as
+
+$$
+\boxed{
+\alpha_{\mathrm{eff}}
+=
+\frac{\Delta\ln P}{\Delta\ln L}
+}
+\tag{A25}
+$$
+
+If
+
+$$
+\alpha_{\mathrm{eff}}=1
+$$
+
+is maintained in the homogeneous vacuum and systematically shifts to
+
+$$
+\alpha_{\mathrm{eff}}>1
+$$
+
+near the condensation center, a direct relation between mass-like condensation and timelike readout would be suggested.
+
+At the present stage, however,
+
+$$
+\boxed{
+\text{localized condensation}
+\Longrightarrow
+\alpha_{\mathrm{eff}}>1
+}
+$$
+
+is a hypothesis and is not treated as a consequence.
+
+---
+
+## A.6 Minimal discriminating computations
+
+This connection hypothesis can be discriminated in the following order.
+
+### A.6.1 Direct verification of the rational-exponent family
+
+Generate equation (A18) for several $$p,q$$ and confirm that
+
+- each shell's sum of squares is zero within numerical precision,
+- $$\ln N_k/\ln R_k=p/q$$,
+- $$\lambda\nu$$ is constant across all shell pairs,
+- the sign of equation (A11) matches the order relation of $$p/q$$.
+
+### A.6.2 Readout stability against local closure residuals
+
+Give two shells $$j,k$$ several small phase degrees of freedom and construct exactly
+
+$$
+Q_j=\epsilon,
+\qquad
+Q_k=-\epsilon,
+\qquad
+Q_{\mathrm{total}}=0.
+\tag{A26}
+$$
+
+For a phase deformation of a single element,
+
+$$
+\delta z
+\simeq
+iz\,\delta\theta,
+$$
+
+we have
+
+$$
+\delta(z^2)
+\simeq
+2iz^2\,\delta\theta,
+\tag{A27}
+$$
+
+so the complex direction of the residual is constrained to $$z^2$$, and a single degree of freedom is in general insufficient to produce an arbitrary complex $$\epsilon$$. Therefore prepare at least two independent real phase degrees of freedom in each shell and solve the two conditions for the real and imaginary parts.
+
+On top of that, measure whether the Fourier–Mellin readouts of
+
+- the condensation peak position,
+- the relative center of mass,
+- the finite extent,
+- $$\alpha_{\mathrm{eff}}$$,
+
+remain continuously stable as $$\epsilon\to0$$. For $$\alpha_{\mathrm{eff}}$$, always record whether the value is computed from the worldline-type readout or the wavefront-type readout, and independently discriminate whether the two stand in a reciprocal relation.
+
+If this discriminating computation is stable, then even though the exact special solutions are of measure zero, the likelihood increases that physically readable structure exists in their neighborhood.
+
+---
+
+## A.7 Conclusion of the appendix
+
+The $$\alpha=1$$ special solution of the previous paper [K1] is not merely one example where $$\lambda\nu$$ is constant; it is the self-dual point of the power relation
+
+$$
+P\propto L^\alpha,
+$$
+
+at which all shell pairs become null.
+
+In this appendix we showed the necessary and sufficient condition
+
+$$
+\boxed{
+\lambda\nu=\mathrm{const}
+\quad\Longleftrightarrow\quad
+P=P_0L^\alpha
+}
+$$
+
+and, via the exact rational-exponent shell family, constructed
+
+$$
+\boxed{
+\alpha<1:
+\text{spacelike},
+\qquad
+\alpha=1:
+\text{null},
+\qquad
+\alpha>1:
+\text{timelike}
+}
+$$
+
+within the same square-zero closure system.
+
+Therefore the null structure is not forced by the square-zero closure itself; it is selected by the self-duality condition $$\alpha=1$$ between the spatial scale and the period scale.
+
+Whether localized condensation produces a local deviation from this self-dual point, and whether that deviation connects to the mass-like measure and the timelike readout, is the next discrimination problem obtained directly from this paper.
+
+---
+
+## References
+
+### Self-citation
+
+[K1] Noriaki Kihara, **"Emergent Spacetime and Wave-Scale Readout from Anonymous Complex Zero Closure --- Minimal Readout, an Infinite Constructive Solution, Logarithmic Spacetime Mapping, and Post-Mapping λν Invariance"**, 2026, v2.0. Japanese title: *無名複素ゼロ閉包からの時空・波動計量の読出し――最小読出し、無限閉包特殊解、対数時空写像、および写像後の $$\lambda\nu$$ 不変性*. Zenodo Concept DOI: 10.5281/zenodo.22282217.
+
+### External references
+
+[E1] D. Casasent and D. Psaltis, "Position, rotation, and scale invariant optical correlation," *Applied Optics*, **15**(7), 1795–1799 (1976). DOI: 10.1364/AO.15.001795.
+
+[E2] Eugene Lukacs, *Characteristic Functions*, 2nd ed., Hafner Publishing Company / Griffin, 1970.
+
+---
+
+## Note: The Original Scope of This Paper
+
+Reference [E1] is cited for the known status of Fourier–Mellin-type scale- and rotation-invariant analysis, and [E2] for the standard mathematics of obtaining moments from characteristic functions and cumulant expansions.
+
+These references do not propose the anonymous complex vacuum state field satisfying
+
+$$
+\sum_n z_n^2=0
+$$
+
+of this paper, the definition of localized condensates within it, the construction reading the condensation center of mass as a mass-like measure, or the vacuum-state gauge distortion caused by condensation.
+
+The original proposal of this paper is to connect these known mathematics to the emergent spacetime readout from anonymous complex zero closure of the previous paper [K1], and to construct
+
+$$
+\boxed{
+\text{anonymous complex states}
+\rightarrow
+\text{condensate}
+\rightarrow
+\text{relative center of mass}
+\rightarrow
+\text{mass-like measure}
+\rightarrow
+\text{background gauge distortion}
+}
+$$
+
+as one readout sequence.

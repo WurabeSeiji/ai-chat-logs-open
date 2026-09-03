@@ -4,7 +4,7 @@
 全論文は Zenodo で CC BY 4.0 公開。各行：題名（日本語 / 英語）・Version DOI・Concept DOI・公開日・版・PDF・リポジトリ内フォルダ・リリースノート。
 本ファイルは `tools/gen_paper_index.py` により Zenodo API から自動生成。English: [PAPERS_en.md](PAPERS_en.md) / Scholar 用ページ: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**論文数: 128**
+**論文数: 129**
 
 ## グノモン正写像による4次元時空の幾何学的定式化 / Central Projection Framework (Gnomonic Spacetime Geometry)
 
@@ -529,6 +529,10 @@
    Emergent Spacetime and Wave-Scale Readout from Anonymous Complex Zero Closure: Minimal Readout, an Infinite Constructive Solution, Logarithmic Spacetime Mapping, and Post-Mapping Wavelength-Frequency Invariance  
    DOI [10.5281/zenodo.22282218](https://doi.org/10.5281/zenodo.22282218) · Concept [10.5281/zenodo.22282217](https://doi.org/10.5281/zenodo.22282217) · 2026-09-03 · v2.0 · [PDF en](https://zenodo.org/records/22282218/files/anonymous_complex_zero_closure_spacetime_wave_readout_en_v2.pdf) [PDF ja](https://zenodo.org/records/22282218/files/anonymous_complex_zero_closure_spacetime_wave_readout_ja_v2.pdf)  
    フォルダ: [複素旋回波の面積交差項による曲率振動の読出し](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97) · [リリースノート](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97/RELEASE_NOTES_zero_closure_spacetime_readout.md)
+7. **無名複素定常波真空からの局在凝縮体・重心・質量的計量の読出し**  
+   Emergent Condensate, Center of Mass, and Mass-Like Measure from an Anonymous Complex Standing-Wave Vacuum: An Anonymous Fourier-Mellin Readout of Condensation Strength, Finite Extent, and Vacuum-State Gauge Distortion  
+   DOI [10.5281/zenodo.22282690](https://doi.org/10.5281/zenodo.22282690) · Concept [10.5281/zenodo.22282689](https://doi.org/10.5281/zenodo.22282689) · 2026-09-03 · v3.0 · [PDF en](https://zenodo.org/records/22282690/files/anonymous_complex_vacuum_condensate_mass_readout_en_v3.pdf) [PDF ja](https://zenodo.org/records/22282690/files/anonymous_complex_vacuum_condensate_mass_readout_ja_v3.pdf)  
+   フォルダ: [複素旋回波の面積交差項による曲率振動の読出し](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97) · [リリースノート](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E8%A4%87%E7%B4%A0%E6%97%8B%E5%9B%9E%E6%B3%A2%E3%81%AE%E9%9D%A2%E7%A9%8D%E4%BA%A4%E5%B7%AE%E9%A0%85%E3%81%AB%E3%82%88%E3%82%8B%E6%9B%B2%E7%8E%87%E6%8C%AF%E5%8B%95%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97/RELEASE_NOTES_vacuum_condensate_mass_readout.md)
 
 ## その他（本リポジトリ未収録） / Other (not stored in this repository)
 
