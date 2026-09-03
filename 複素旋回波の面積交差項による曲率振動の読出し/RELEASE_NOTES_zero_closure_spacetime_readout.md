@@ -38,10 +38,18 @@
 - [Zenn (日本語)](https://zenn.dev/noriaki_kihara/articles/zero-closure-emergent-spacetime-readout) ※記事は articles/ に push 済み（デプロイ反映は追跡しない方針）
 - [note (日本語・論文1/2合同解説)](https://note.com/kiharanoriaki/n/nb5c10fd0e318) — 2026-09-03 公開
 - [note (English・論文1/2合同解説)](https://note.com/kiharanoriaki/n/n9839b3b828e2) — 2026-09-03 公開
+- [Facebook (日本語・論文1/2合同告知)](https://www.facebook.com/kihara.noriaki/posts/pfbid02XLYp4QXLQjBY3HNN3Wf1R7CeTf9rfGxCteJUVFSWtaXXgLoJixEHCtRh7diUbg4wl) — 2026-09-04 投稿
+- [Facebook (English・論文1/2合同告知)](https://www.facebook.com/kihara.noriaki/posts/pfbid0PGFt4b7tzZtspreUNHNPGjWyAHmUPKFppoPv4YgFYNLnQab3kGwxycxpGkqVcZhdl) — 2026-09-04 投稿
 - [GitHub](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/複素旋回波の面積交差項による曲率振動の読出し)
 - ORCID: *（DataCite Auto-Update で自動同期予定）*
 
 ## Version History
+
+### 2026-09-04（Facebook 日英投稿）
+- Facebook に論文1・論文2 合同の告知を日英で投稿
+  - 日本語: [投稿リンク](https://www.facebook.com/kihara.noriaki/posts/pfbid02XLYp4QXLQjBY3HNN3Wf1R7CeTf9rfGxCteJUVFSWtaXXgLoJixEHCtRh7diUbg4wl)
+  - English: [投稿リンク](https://www.facebook.com/kihara.noriaki/posts/pfbid0PGFt4b7tzZtspreUNHNPGjWyAHmUPKFppoPv4YgFYNLnQab3kGwxycxpGkqVcZhdl)
+- 原稿ソース：`fb_message_emergent_spacetime_matter_ja.md` / `fb_message_emergent_spacetime_matter_en.md`（コメント欄に note 日英記事リンクを掲載）
 
 ### 2026-09-03（note 公開・日英）
 - note に一般向け解説記事を公開（論文1・論文2 の合同記事）
