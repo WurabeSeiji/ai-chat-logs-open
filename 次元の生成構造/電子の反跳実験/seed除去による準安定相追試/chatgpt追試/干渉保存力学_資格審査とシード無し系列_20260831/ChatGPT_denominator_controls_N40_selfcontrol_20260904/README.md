@@ -42,6 +42,37 @@
 - `fig_N40_selfcontrol_complex_plane_final.png` — 最大 step（τ=500）
 - `fig_N40_selfcontrol_complex_plane_final_cluster_zoom.png` — 凝縮部（角クラスター）拡大
 
+## 静的親差し替え実験（2026-09-04 実行・run_all_staticparent.sh）
+
+初期データのみを 7月 make_parent 静的親
+`自発的分裂予備実験_v1_N40対照実験系_20260904/largeN_splitting_result_v1/parent_static_N40_makeparent_20260904.npz`
+の `Z0` に差し替え（`run_N40_staticparent_v1.py`、自己対照版との差分は
+OUT先・STATIC_PARENT 定数・z0 読込・図名・メタデータ名のみ。物理・分母系列・step数は不変）。
+出力は `results_staticparent/`（既存 results/ は無傷）。
+
+- **INPUT GATE PASS**: 全6分母 npz の Z[0] が静的 Z0 と bit 一致（check_staticparent_inputs_v1.py）
+- 図: `results_staticparent/fig_Hperp_denominator_controls_with_124_N40_staticparent.png`
+- 複素読出し図（plot_complex_plane_N40_staticparent_v1.py、Δτ=2π/40）:
+  `fig_N40_staticparent_complex_plane_step0.png` / `_final.png` / `_final_cluster_zoom.png`
+
+## 変形第1段: 振幅正規化の追加（2026-09-04 実行・run_all_staticparent_phaseonly.sh）
+
+`run_N40_staticparent_phaseonly_v1.py` — 静的親版との差分は力学1行のみ:
+`H=H_of(np.exp(1j*np.angle(z)),A)`（生成子を単位振幅化した波から構成。
+旧 set_theta(np.angle(Z)) と同一の数学）。他は出力先・図名・メタデータ名のみ変更。
+出力 `results_staticparent_phaseonly/`。
+
+- **INPUT GATE PASS**（全6分母 Z[0] が静的 Z0 と bit 一致）
+- 結果（振幅込み版との比較）: 振幅込みでは全分母が天井 ~1.16e-3 で安定だったのに対し、
+  **位相のみでは全6分母が 0.05 を交差し（τ=198/148/49/24/18/4）、H⊥/H≈0.94〜0.9999 まで
+  ほぼ完全に親平面から離脱**（den=38 のみ max 0.48・振動）。
+- step1 ミスマッチは分母依存が強い: den=38 で 1.41e-9、39→124 で 8.5e-5→8.9e-3。
+  den=38 は step100 の 2.1e-6 から step200 の 0.147 へ指数的成長区間を示す。
+- **注意（解釈の限定）**: どの分母も f(1) は種スケール（3.6e-32）に留まらないため、
+  これは δ 種のインフレーションではなくミスマッチ起動の不安定性。ただし
+  「振幅正規化の有無だけで安定（~1e-3 天井）⇔ 強不安定（ほぼ完全離脱）が反転する」
+  ことは単一因子の結果として確定。
+
 ## 次段（予定）
 
 N=40 の初期データを、`次元の生成構造/自発的分裂予備実験_v1_N40対照実験系_20260904` の

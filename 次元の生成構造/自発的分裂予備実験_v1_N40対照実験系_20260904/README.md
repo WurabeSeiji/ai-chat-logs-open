@@ -39,6 +39,20 @@
   - `fig_N40_complex_plane_final.png` — 最大 step（τ=3511）複素図（リング）
   - `fig_N40_complex_plane_final_cluster_zoom.png` — 凝縮部（角クラスター）拡大図
 
+## 静的親データ（2026-09-04 追加・make_static_parent_N40_v1.py）
+
+本フォルダの検証済みエンジンから make_parent / zero_closure_kernel_seed を import し、
+正本走行と同一手順・同一 rng 消費順で v（親）・g（零閉塞種）・Z0（正規化初期状態）を生成、
+既存データを一切上書きしない別名で保存:
+
+- `largeN_splitting_result_v1/parent_static_N40_makeparent_20260904.npz`
+  （v, g, Z0, sigma, residual, n=40, seed=0, delta=1e-15, tol=1e-12, iters=1200）
+
+**GATE PASS（2026-09-04 実行）**: 生成 Z0 が既存
+`states_N00040_delta1e-15_seed0.npz` の Z0 と bit 一致（residual=6.237953231674313e-13 も一致）。
+以後、新プログラム側の N=40 初期データ差し替えにはこの静的ファイルを使う
+（make_parent の動的呼び出しは行わない）。
+
 ## 環境
 
 `.venv/bin/python3`（Python 3.9.6、numpy 2.0.2、macOS arm64 Accelerate）
