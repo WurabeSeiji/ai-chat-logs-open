@@ -73,6 +73,22 @@ OUT先・STATIC_PARENT 定数・z0 読込・図名・メタデータ名のみ。
   「振幅正規化の有無だけで安定（~1e-3 天井）⇔ 強不安定（ほぼ完全離脱）が反転する」
   ことは単一因子の結果として確定。
 
+## 変形第3段: 生成子を虚部のみに（2026-09-04 実行・run_all_staticparent_imK.sh）
+
+`run_N40_staticparent_imK_v1.py` — 段2との差分は力学のみ:
+`H = 1j*Im(H_of(exp(1j*angle(z))))` = i·K（K=sin(Δθ) 実反対称）。
+exp(−iΔτ·iK)=exp(Δτ·K) の実直交回転。出力 `results_staticparent_imK/`。
+
+- **INPUT GATE PASS**（全6分母 Z[0] bit一致）
+- **f(1) ゲート合格**: step1 H⊥/H = 4.0〜9.1×10⁻²⁹（種スケール。段1/2 の 10⁻⁸〜10⁻²
+  のミスマッチ注入が消滅）→ 親の相対平衡性が予測どおり回復
+- **閉塞保存回復**: |Z·Z|/H は 1.2e-15 → 500 step 後も 2.8e-14（段1/2 は 10⁻³ まで成長していた）
+- **緩和曲線（インフレーション）復活**: 全6分母で 10⁻²⁸ 付近から真っ直ぐな指数増幅。
+  レートは分母依存（約4〜16 steps/decade、den=124 最速・den=39 最遅）で、
+  飽和は 0.038〜0.10。7月正本（64 steps/decade・飽和0.166）との残差は時計（段4）の領分
+- 図: `results_staticparent_imK/fig_inflation_N40_staticparent_imK.png`（単独大判）・
+  `fig_Hperp_..._imK.png`（グリッド）・複素3枚 `fig_N40_staticparent_imK_complex_plane_*.png`
+
 ## 次段（予定）
 
 N=40 の初期データを、`次元の生成構造/自発的分裂予備実験_v1_N40対照実験系_20260904` の
