@@ -4,7 +4,7 @@ Noriaki Kihara / WF System Co., Ltd. / ORCID [0009-0004-6753-4020](https://orcid
 All papers are published on Zenodo under CC BY 4.0. Columns: title (English / Japanese), Version DOI, Concept DOI, date, version, PDFs, folder in this repository, release notes.
 Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PAPERS_ja.md](PAPERS_ja.md) / Scholar landing pages: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**Papers: 129**
+**Papers: 130**
 
 ## Central Projection Framework (Gnomonic Spacetime Geometry) / グノモン正写像による4次元時空の幾何学的定式化
 
@@ -404,7 +404,7 @@ Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PA
 6. **Onset and Threefold Classification of Outcomes of Spontaneous Splitting in N-Body Relational-Wave Closed Systems: Exponential Decay of the Parent State at a Seed-Independent Rate under Generator Unfreezing, the Scale-Anonymity Axiom, and Outcome Stratification by the Conserved Ratio c**  
    N体関係波閉鎖系における状態の自発的分裂の開始と帰結の三分類  
    DOI [10.5281/zenodo.21486234](https://doi.org/10.5281/zenodo.21486234) · Concept [10.5281/zenodo.21486233](https://doi.org/10.5281/zenodo.21486233) · 2026-07-22 · v1.0 · [PDF en](https://zenodo.org/records/21486234/files/nbody_spontaneous_splitting_onset_outcomes_en.pdf) [PDF ja](https://zenodo.org/records/21486234/files/nbody_spontaneous_splitting_onset_outcomes_ja.pdf)  
-   folder: [次元の生成構造](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0)
+   folder: [次元の生成構造](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0) · [release notes](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_stage123_sweep_reproduction_v1.md)
 7. **The Number of Waves Is the Resolution of the System: Externality of Counting in Closed Systems and Steady-State Underfilling**  
    波の数は系の分解能である  
    DOI [10.5281/zenodo.21486545](https://doi.org/10.5281/zenodo.21486545) · Concept [10.5281/zenodo.21486544](https://doi.org/10.5281/zenodo.21486544) · 2026-07-22 · v1.0 · [PDF en](https://zenodo.org/records/21486545/files/wave_count_system_resolution_en.pdf) [PDF ja](https://zenodo.org/records/21486545/files/wave_count_system_resolution_ja.pdf)  
@@ -477,6 +477,10 @@ Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PA
    自己無撞着な関係波閉鎖系におけるインフレーション的急拡大の機構——正規化監査、rank 生成、二乗閉包保存、simplex 対称化および公理系の再構成  
    DOI [10.5281/zenodo.22176949](https://doi.org/10.5281/zenodo.22176949) · Concept [10.5281/zenodo.22112008](https://doi.org/10.5281/zenodo.22112008) · 2026-08-30 · v2 · [PDF en](https://zenodo.org/records/22176949/files/nbody_self_consistent_inflation_mechanism_en.pdf) [PDF ja](https://zenodo.org/records/22176949/files/nbody_self_consistent_inflation_mechanism_ja.pdf)  
    folder: [次元の生成構造/電子の反跳実験/seed除去による準安定相追試/chatgpt追試/論文v1_全再現テスト_20260828/paper](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E9%9B%BB%E5%AD%90%E3%81%AE%E5%8F%8D%E8%B7%B3%E5%AE%9F%E9%A8%93/seed%E9%99%A4%E5%8E%BB%E3%81%AB%E3%82%88%E3%82%8B%E6%BA%96%E5%AE%89%E5%AE%9A%E7%9B%B8%E8%BF%BD%E8%A9%A6/chatgpt%E8%BF%BD%E8%A9%A6/%E8%AB%96%E6%96%87v1_%E5%85%A8%E5%86%8D%E7%8F%BE%E3%83%86%E3%82%B9%E3%83%88_20260828/paper) · [release notes](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_nbody_self_consistent_inflation_mechanism_v2.md)
+25. **Stage Decomposition of the Self-Consistent Inflation Mechanism and Its Full-Range Reproduction for N=3..40: A Reproduction Specification**  
+   自己無撞着インフレーション機構の段階分解と N=3..40 全域再現 — 再現仕様書（総括）  
+   DOI [10.5281/zenodo.22317636](https://doi.org/10.5281/zenodo.22317636) · Concept [10.5281/zenodo.22317635](https://doi.org/10.5281/zenodo.22317635) · 2026-09-05 · v1.0 · [PDF en](https://zenodo.org/records/22317636/files/ch1_static_parents_en.pdf) [PDF ja](https://zenodo.org/records/22317636/files/ch1_static_parents_ja.pdf)  
+   folder: [次元の生成構造/電子の反跳実験/seed除去による準安定相追試/chatgpt追試/干渉保存力学_資格審査とシード無し系列_20260831/N3_N40_stage123_sweep_20260905/paper_ch2_sweep_dynamics](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E9%9B%BB%E5%AD%90%E3%81%AE%E5%8F%8D%E8%B7%B3%E5%AE%9F%E9%A8%93/seed%E9%99%A4%E5%8E%BB%E3%81%AB%E3%82%88%E3%82%8B%E6%BA%96%E5%AE%89%E5%AE%9A%E7%9B%B8%E8%BF%BD%E8%A9%A6/chatgpt%E8%BF%BD%E8%A9%A6/%E5%B9%B2%E6%B8%89%E4%BF%9D%E5%AD%98%E5%8A%9B%E5%AD%A6_%E8%B3%87%E6%A0%BC%E5%AF%A9%E6%9F%BB%E3%81%A8%E3%82%B7%E3%83%BC%E3%83%89%E7%84%A1%E3%81%97%E7%B3%BB%E5%88%97_20260831/N3_N40_stage123_sweep_20260905/paper_ch2_sweep_dynamics) · [release notes](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_stage123_sweep_reproduction_v1.md)
 
 ## Time Axis, Q Axis, and Fermion Generation / 時間軸Q軸とフェルミオンの生成構造
 

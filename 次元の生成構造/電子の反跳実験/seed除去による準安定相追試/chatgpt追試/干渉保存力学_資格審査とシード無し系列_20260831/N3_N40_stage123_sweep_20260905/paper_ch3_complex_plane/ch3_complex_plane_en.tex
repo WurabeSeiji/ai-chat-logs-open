@@ -1,0 +1,500 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Chapter 3: Complex-Plane Readout Figures --- Three Grids: Step 0{,} Final Step{,} and Zoom into the Condensed Center},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Chapter 3: Complex-Plane Readout Figures --- Three Grids: Step 0,
+Final Step, and Zoom into the Condensed Center}
+\author{Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020}
+\date{September 5, 2026 Version DOI 10.5281/zenodo.22317636}
+
+\begin{document}
+\maketitle
+
+(Chapter 3 of the reproduction papers for the N=3..40 stage-1+2+3 sweep.
+Shares the Concept DOI 10.5281/zenodo.22317635 with the overview paper;
+Version DOI 10.5281/zenodo.22317636. Equation numbers continue from
+Chapters 1--2 (Eqs. 1--25). Code blocks are quoted verbatim; comments
+inside them remain in Japanese, as in the originals.)
+
+\subsection{1. Purpose}\label{purpose}
+
+This chapter describes the process that generates, from the state npz
+files saved by the Chapter-2 sweep (the Δτ=2π/N runs), three grid
+figures reading out the per-edge complex waves z\_e ∈ C on the complex
+plane --- (1) step 0, (2) the final step (step 500), and (3) a zoom into
+the largest angular cluster at the final step. The design intent of the
+three figures (their division of roles corroborating the start, end, and
+end-interior of the inflation figure from the configuration side, the
+caution that ``the complex plane of the figures ≠ the parent plane Π'',
+and the bridging identity) is given in \textbf{Chapter 2, §2.6 (Eq.
+25)}; this chapter fixes the implementation, execution, and
+observations. The data are read-only; the dynamics and stored data are
+never touched.
+
+\subsection{2. Theoretical Background}\label{theoretical-background}
+
+The mathematics of states and measurement follows Chapter 2 (Eqs.
+22--25). The figure-specific conventions of this chapter are defined as
+Eqs. 26--28.
+
+\textbf{(Eq. 26) Duplicate counting (notation of degeneracy)} --- The
+set of plotted complex values \{z\_e\} is partitioned into equivalence
+classes by \textbf{rounding the real and imaginary parts to the 12th
+decimal place}; classes with c \textgreater{} 1 members are annotated
+``xc'' at their position:
+
+\begin{verbatim}
+class(w) = ( round(Re w, 12), round(Im w, 12) )
+\end{verbatim}
+
+Rounding at 12 digits is coarser than the effective double precision
+(\textasciitilde16 digits): it identifies differences at the level of
+rounding error while keeping physically significant separations
+(relative 10\^{}-4 or larger in this series) distinct. In the zoom
+figure the rounding is tightened to the 15th decimal (Eq. 28), so that
+only machine-precision coincidences are counted as ``xn''.
+
+\textbf{(Eq. 27) Panel scaling convention} --- The axis range of each
+panel is the square {[}−1.15r, +1.15r{]} (equal aspect) with r = max\_e
+\textbar z\_e\textbar{} the overall amplitude of that panel, and
+\textbf{the tick values display the actual values} (no relabeling by
+normalized values). The line segments from the origin to each point are
+guides for reading the argument and modulus of each wave simultaneously.
+
+\textbf{(Eq. 28) Extraction of the largest angular cluster (algorithm of
+the zoom figure)} --- The final-step state, in coordinates normalized by
+the overall amplitude, is grouped by rounding at \textbf{coarse
+resolution 1/100}; the group with the most members is the zoom target:
+
+\begin{verbatim}
+key(w) = ( round(Re w / amp, 2), round(Im w / amp, 2) ),   amp = max_e |z_e|
+C* = argmax_{key} |{ w : key(w) = key }|
+center c = mean(C*),  spread = max_{w∈C*} |w − c|,  window = 1.4 × spread
+\end{verbatim}
+
+The panel title prints \textbar C*\textbar, spread, and amp. The spread
+quantifies whether the cluster is an exact single point (exact
+degeneracy) or a bundle of finite width (the zoom row of the table in
+Chapter 2, §2.6).
+
+\subsection{3. Implementation Method}\label{implementation-method}
+
+\begin{itemize}
+\tightlist
+\item
+  Plotting program
+  \texttt{plot\_complex\_plane\_N3\_N40\_stage123\_v1.py} (bundled in
+  this package; read-only). The drawing style extends the existing
+  plotting programs of this series (the grid style of
+  \texttt{complex\_plane\_readout\_step0\_step2000\_20260904/plot\_complex\_plane\_step0\_step2000.py}
+  and the cluster-zoom algorithm of
+  \texttt{自発的分裂予備実験\_v1/N40\_state\_readout\_20260904/plot\_complex\_plane\_N40\_v1.py})
+  to the 8×5 grid of N=3..40; the algorithms themselves are identical
+  (the style lineage is unchanged).
+\item
+  The input is solely the Chapter-2 product
+  \texttt{results/hm\_N\{N\}\_den\_\{N\}\_states\_500.npz}. \textbf{The
+  den=N (Δτ=2π/N) run is used as the representative for each N} (step 0
+  is identical across denominators, so the representative choice matters
+  only for the final step; final configurations for other denominators
+  can be read out likewise from the stored npz).
+\item
+  The output is 3 PNG files. No data are rewritten or regenerated.
+\end{itemize}
+
+\subsection{4. Detailed Design}\label{detailed-design}
+
+\subsubsection{4.1 Overall Flow}\label{overall-flow}
+
+\begin{verbatim}
+[initialization]  fix the input folder (results/)
+[loop]  draw_grid(step=0)  : draw the step-0 state on each panel for N=3..40 (Eqs. 26, 27)
+        draw_grid(step=500): same for the final-step state
+        zoom grid          : largest angular cluster (Eq. 28) per panel for N=3..40
+[finalization]  savefig each figure; switch off the 2 unused panels
+\end{verbatim}
+
+\subsubsection{4.2 Overall Data Flow}\label{overall-data-flow}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Input}:
+  \texttt{results/hm\_N\{N\}\_den\_\{N\}\_states\_500.npz} × 38
+  (Chapter-2 products; read-only). Fields used: \texttt{Z} (501×M),
+  \texttt{denominator}, \texttt{steps} (for consistency asserts)
+\item
+  \textbf{Parameters} (all constants inside the program):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    rounding digits: 12 (Eq. 26) / 15 (inside the zoom, Eq. 28) / coarse
+    resolution 2 digits (the 1/100 of Eq. 28)
+  \item
+    scale factor 1.15 (Eq. 27), window factor 1.4 (Eq. 28)
+  \item
+    grid 8×5 (38 used, 2 off), dpi=180
+  \end{itemize}
+\item
+  \textbf{Output}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{fig\_complex\_plane\_step0\_N3\_N40\_stage123.png}
+  \item
+    \texttt{fig\_complex\_plane\_final\_N3\_N40\_stage123.png}
+  \item
+    \texttt{fig\_complex\_plane\_final\_zoom\_N3\_N40\_stage123.png}
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{4.3 Individual Processes}\label{individual-processes}
+
+\paragraph{4.3.1 Initialization (loading and consistency
+checks)}\label{initialization-loading-and-consistency-checks}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{18}  \KeywordTok{def}\NormalTok{ load(N, step):}
+    \DecValTok{19}\NormalTok{      d }\OperatorTok{=}\NormalTok{ np.load(os.path.join(IN, }\SpecialStringTok{f\textquotesingle{}hm\_N}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{\}}\SpecialStringTok{\_den\_}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{\}}\SpecialStringTok{\_states\_500.npz\textquotesingle{}}\NormalTok{))}
+    \DecValTok{20}      \ControlFlowTok{assert} \BuiltInTok{int}\NormalTok{(d[}\StringTok{\textquotesingle{}denominator\textquotesingle{}}\NormalTok{]) }\OperatorTok{==}\NormalTok{ N }\KeywordTok{and} \BuiltInTok{int}\NormalTok{(d[}\StringTok{\textquotesingle{}steps\textquotesingle{}}\NormalTok{]) }\OperatorTok{==} \DecValTok{500}
+    \DecValTok{21}      \ControlFlowTok{return}\NormalTok{ np.asarray(d[}\StringTok{\textquotesingle{}Z\textquotesingle{}}\NormalTok{][step], dtype}\OperatorTok{=}\NormalTok{np.complex128)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  The assert on line 20 checks that ``the intended file (den=N, 500
+  steps) is being read''; on mismatch an AssertionError stops execution
+  (no drawing occurs).
+\end{itemize}
+
+\paragraph{4.3.2 Loop (1): Grid Rendering (Eqs. 26,
+27)}\label{loop-1-grid-rendering-eqs.-26-27}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{26}      \ControlFlowTok{for}\NormalTok{ k, N }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{41}\NormalTok{)):}
+    \DecValTok{27}\NormalTok{          ax }\OperatorTok{=}\NormalTok{ axs[k]}
+    \DecValTok{28}\NormalTok{          z }\OperatorTok{=}\NormalTok{ load(N, step)}
+    \DecValTok{29}\NormalTok{          M }\OperatorTok{=}\NormalTok{ N }\OperatorTok{*}\NormalTok{ (N }\OperatorTok{{-}} \DecValTok{1}\NormalTok{) }\OperatorTok{//} \DecValTok{2}
+    \DecValTok{30}          \ControlFlowTok{assert}\NormalTok{ z.size }\OperatorTok{==}\NormalTok{ M}
+    \DecValTok{31}          \ControlFlowTok{for}\NormalTok{ w }\KeywordTok{in}\NormalTok{ z:}
+    \DecValTok{32}\NormalTok{              ax.plot([}\FloatTok{0.0}\NormalTok{, w.real], [}\FloatTok{0.0}\NormalTok{, w.imag], color}\OperatorTok{=}\StringTok{\textquotesingle{}tab:blue\textquotesingle{}}\NormalTok{, linewidth}\OperatorTok{=}\FloatTok{0.7}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.6}\NormalTok{)}
+    \DecValTok{33}\NormalTok{          ax.plot(z.real, z.imag, }\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, ms}\OperatorTok{=}\FloatTok{2.5}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}tab:red\textquotesingle{}}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.85}\NormalTok{, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}none\textquotesingle{}}\NormalTok{)}
+    \DecValTok{34}\NormalTok{          cnt }\OperatorTok{=}\NormalTok{ Counter((}\BuiltInTok{round}\NormalTok{(}\BuiltInTok{float}\NormalTok{(w.real), }\DecValTok{12}\NormalTok{), }\BuiltInTok{round}\NormalTok{(}\BuiltInTok{float}\NormalTok{(w.imag), }\DecValTok{12}\NormalTok{)) }\ControlFlowTok{for}\NormalTok{ w }\KeywordTok{in}\NormalTok{ z)}
+    \DecValTok{35}          \ControlFlowTok{for}\NormalTok{ (a, b), c }\KeywordTok{in}\NormalTok{ cnt.items():}
+    \DecValTok{36}              \ControlFlowTok{if}\NormalTok{ c }\OperatorTok{\textgreater{}} \DecValTok{1}\NormalTok{:}
+    \DecValTok{37}\NormalTok{                  ax.annotate(}\SpecialStringTok{f\textquotesingle{}x}\SpecialCharTok{\{}\NormalTok{c}\SpecialCharTok{\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{, (a, b), textcoords}\OperatorTok{=}\StringTok{\textquotesingle{}offset points\textquotesingle{}}\NormalTok{, xytext}\OperatorTok{=}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{),}
+    \DecValTok{38}\NormalTok{                              fontsize}\OperatorTok{=}\DecValTok{5}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}black\textquotesingle{}}\NormalTok{)}
+    \DecValTok{39}\NormalTok{          r }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(np.}\BuiltInTok{abs}\NormalTok{(z).}\BuiltInTok{max}\NormalTok{())}
+    \DecValTok{40}\NormalTok{          lim }\OperatorTok{=}\NormalTok{ r }\OperatorTok{*} \FloatTok{1.15} \ControlFlowTok{if}\NormalTok{ r }\OperatorTok{\textgreater{}} \DecValTok{0} \ControlFlowTok{else} \FloatTok{1.0}
+    \DecValTok{41}\NormalTok{          ax.set\_xlim(}\OperatorTok{{-}}\NormalTok{lim, lim)}\OperatorTok{;}\NormalTok{ ax.set\_ylim(}\OperatorTok{{-}}\NormalTok{lim, lim)}\OperatorTok{;}\NormalTok{ ax.set\_aspect(}\StringTok{\textquotesingle{}equal\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Lines 31--32: segments from the origin; line 33: points; lines 34--38:
+  the duplicate annotations of Eq. 26; lines 39--41: the scaling
+  convention of Eq. 27 (tick values remain actual values;
+  \texttt{ticklabel\_format} on line 46 only switches the notation to
+  scientific).
+\end{itemize}
+
+\paragraph{4.3.3 Loop (2): Zoom into the Largest Angular Cluster (Eq.
+28)}\label{loop-2-zoom-into-the-largest-angular-cluster-eq.-28}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{67}\NormalTok{      z }\OperatorTok{=}\NormalTok{ load(N, }\DecValTok{500}\NormalTok{)}
+    \DecValTok{68}\NormalTok{      amp }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(np.}\BuiltInTok{abs}\NormalTok{(z).}\BuiltInTok{max}\NormalTok{())}
+    \DecValTok{69}\NormalTok{      coarse }\OperatorTok{=}\NormalTok{ \{\}}
+    \DecValTok{70}      \ControlFlowTok{for}\NormalTok{ w }\KeywordTok{in}\NormalTok{ z:}
+    \DecValTok{71}\NormalTok{          key }\OperatorTok{=}\NormalTok{ (}\BuiltInTok{round}\NormalTok{(}\BuiltInTok{float}\NormalTok{(w.real) }\OperatorTok{/}\NormalTok{ amp, }\DecValTok{2}\NormalTok{), }\BuiltInTok{round}\NormalTok{(}\BuiltInTok{float}\NormalTok{(w.imag) }\OperatorTok{/}\NormalTok{ amp, }\DecValTok{2}\NormalTok{))}
+    \DecValTok{72}\NormalTok{          coarse.setdefault(key, []).append(w)}
+    \DecValTok{73}\NormalTok{      mem }\OperatorTok{=} \BuiltInTok{max}\NormalTok{(coarse.values(), key}\OperatorTok{=}\BuiltInTok{len}\NormalTok{)}
+    \DecValTok{74}\NormalTok{      zz }\OperatorTok{=}\NormalTok{ np.array(mem)}
+    \DecValTok{75}\NormalTok{      c }\OperatorTok{=}\NormalTok{ zz.mean()}
+    \DecValTok{76}\NormalTok{      dev }\OperatorTok{=}\NormalTok{ np.}\BuiltInTok{abs}\NormalTok{(zz }\OperatorTok{{-}}\NormalTok{ c)}
+    \DecValTok{77}\NormalTok{      spread }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(dev.}\BuiltInTok{max}\NormalTok{())}
+    \DecValTok{78}\NormalTok{      win }\OperatorTok{=}\NormalTok{ spread }\OperatorTok{*} \FloatTok{1.4} \ControlFlowTok{if}\NormalTok{ spread }\OperatorTok{\textgreater{}} \DecValTok{0} \ControlFlowTok{else}\NormalTok{ amp }\OperatorTok{*} \FloatTok{1e{-}12}
+\NormalTok{...}
+    \DecValTok{90}\NormalTok{      ax.set\_title(}\SpecialStringTok{f\textquotesingle{}N=}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{\}}\SpecialStringTok{: }\SpecialCharTok{\{}\BuiltInTok{len}\NormalTok{(zz)}\SpecialCharTok{\}}\SpecialStringTok{ waves, dev=}\SpecialCharTok{\{}\NormalTok{spread}\SpecialCharTok{:.2e\}}\SpecialStringTok{ (|z|max=}\SpecialCharTok{\{}\NormalTok{amp}\SpecialCharTok{:.2e\}}\SpecialStringTok{)\textquotesingle{}}\NormalTok{, fontsize}\OperatorTok{=}\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Lines 70--73: the grouping and largest-cluster selection of Eq. 28;
+  lines 75--78: center, spread, window; line 90: printing member count,
+  spread, and amp in the panel title (this printed output is the source
+  of the observed values in §6).
+\end{itemize}
+
+\paragraph{4.3.4 Finalization and Exceptional Behavior (elements not
+formulated as
+equations)}\label{finalization-and-exceptional-behavior-elements-not-formulated-as-equations}
+
+\begin{itemize}
+\tightlist
+\item
+  Line 40, \texttt{lim\ =\ r*1.15\ if\ r\ \textgreater{}\ 0\ else\ 1.0}:
+  fallback for the degenerate case of all points at the origin (does not
+  occur in these data).
+\item
+  Line 78,
+  \texttt{win\ =\ spread*1.4\ if\ spread\ \textgreater{}\ 0\ else\ amp*1e-12}:
+  window fallback when the cluster has a single member (spread=0; occurs
+  at N=3, where the largest cluster is a single wave).
+\item
+  Lines 50--51 and 91--92: of the 8×5=40 panels, the unused 39th and
+  40th are set to
+  \texttt{axis(\textquotesingle{}off\textquotesingle{})}.
+\item
+  The only exception paths are the asserts (lines 20, 30); there are no
+  other branches.
+\end{itemize}
+
+\subsection{5. Execution Results}\label{execution-results}
+
+\subsubsection{5.1 Reproduction Commands}\label{reproduction-commands}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd}\NormalTok{ N3\_N40\_stage123\_sweep\_20260905}
+\ExtensionTok{python3}\NormalTok{ plot\_complex\_plane\_N3\_N40\_stage123\_v1.py}
+\CommentTok{\# or as the final step of ./run\_all.sh}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{5.2 Execution Environment}\label{execution-environment}
+
+\begin{itemize}
+\tightlist
+\item
+  Python 3.9.6 (\texttt{.venv/bin/python3}), numpy 2.0.2, matplotlib
+  (Agg rendering)
+\item
+  macOS 26.3.1 (arm64)
+\end{itemize}
+
+\subsubsection{5.3 Execution Time}\label{execution-time}
+
+\textbf{Under about 1 minute} for the three figures in total (dominated
+by 38×2 npz loads and the rendering of up to 780 segments × 38 panels).
+
+\subsubsection{5.4 Verification Gates}\label{verification-gates}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Gate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pass condition
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Measured
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Verdict
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+G1: input consistency & asserts denominator==N, steps==500, z.size==M
+pass at every load & passed for all 38 N × 3 figures (no AssertionError)
+& \textbf{PASS} \\
+G2: completion & \texttt{ALL\ DONE} printed, 3 PNGs generated &
+confirmed & \textbf{PASS} \\
+\end{longtable}
+}
+
+(The bit-level lineage of the input npz themselves is guaranteed by
+Chapter 2 G1 --- \texttt{Z{[}0{]}} of all 228 runs bit-identical to the
+static parents.)
+
+\subsubsection{5.5 Data}\label{data}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Item
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Content
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Input & \texttt{results/hm\_N\{N\}\_den\_\{N\}\_states\_500.npz} × 38
+(Chapter-2 products; read-only) \\
+Output location & package root \\
+step-0 figure &
+\texttt{fig\_complex\_plane\_step0\_N3\_N40\_stage123.png} (632,949
+bytes) \\
+final-step figure &
+\texttt{fig\_complex\_plane\_final\_N3\_N40\_stage123.png} (4,582,367
+bytes) \\
+zoom figure &
+\texttt{fig\_complex\_plane\_final\_zoom\_N3\_N40\_stage123.png}
+(494,906 bytes) \\
+SHA256 & the bundled \texttt{SHA256SUMS.txt} is canonical \\
+\end{longtable}
+}
+
+\subsubsection{5.6 Figures}\label{figures}
+
+The three figures above (8×5 grids; each panel equal aspect,
+actual-value ticks). How to read them, and their correspondence with the
+inflation figure, follow the table in Chapter 2, §2.6.
+
+\subsection{6. Execution Analysis (objective report and observations
+only; the
+numbers}\label{execution-analysis-objective-report-and-observations-only-the-numbers}
+
+originate from the in-figure printing = the output of this program)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Step-0 figure}: every panel for N=3..40 shows the star shape
+  of two antipodal pairs (4 bundles). The bundles have a radial spread
+  of amplitudes. The duplicate annotations of Eq. 26 appear only for
+  some small N (x4 at N=4; x2--x3 for N=5--9, etc.); exact duplicates
+  vanish as N grows.
+\item
+  \textbf{Final-step figure}: in every panel the star has disappeared,
+  replaced by a nearly equimodular ring-like arrangement (sparse spokes
+  for small N). The Eq. 26 (12-digit) duplicate annotations do not
+  appear except for a few small-N cases (x2 at N=4, 5).
+\item
+  \textbf{Zoom figure}: the largest angular cluster has 1--10 members
+  (N=3: 1 wave; N=39, 40: 10 waves); the spread is of order
+  10\textsuperscript{-7--10}-4 for N≥6 (e.g., at N=40, dev=2.04e-04 with
+  \textbar z\textbar max=3.64e-02, relative
+  \textasciitilde5.6×10\^{}-3). Only the two-wave clusters of N=4, 5
+  coincide at machine precision (dev 10\textsuperscript{-16--10}-10).
+\item
+  Summary of observations (facts only): for all N≥6 the final-step
+  angular clusters are bundles of finite width, not condensation onto
+  exactly identical complex values. As per the division of roles in
+  Chapter 2 §2.6, this records the fine organization of the final state
+  that H⊥/H does not measure.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+(End of Chapter 3. The overview paper is separate.)
+
+\end{document}

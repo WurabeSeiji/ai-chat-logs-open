@@ -3,8 +3,8 @@
 **著者:** 木原 範昭<br>
 **ORCID:** 0009-0004-6753-4020<br>
 **日付:** 2026年9月5日<br>
-**Version DOI:** （Zenodo 発行後に記入）<br>
-**Concept DOI:** （Zenodo 発行後に記入。本総括と第1〜3章は本 Concept DOI を共有する）<br>
+**Version DOI:** 10.5281/zenodo.22317636<br>
+**Concept DOI:** 10.5281/zenodo.22317635（本総括と第1〜3章は本 Concept DOI を共有する）<br>
 **位置づけ:** 再現仕様書（総括＋章論文3本の構成）。物理的解釈は含まない
 
 ---

@@ -1,0 +1,277 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={自己無撞着インフレーション機構の段階分解と N=3..40 全域再現 --- 再現仕様書（総括）},
+  pdfauthor={木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{自己無撞着インフレーション機構の段階分解と N=3..40 全域再現 ---
+再現仕様書（総括）}
+\author{木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020}
+\date{2026年9月5日　Version DOI 10.5281/zenodo.22317636}
+
+\begin{document}
+\maketitle
+
+\textbf{著者:} 木原 範昭\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{日付:} 2026年9月5日\\
+\textbf{Version DOI:} 10.5281/zenodo.22317636\\
+\textbf{Concept DOI:} 10.5281/zenodo.22317635（本総括と第1〜3章は本
+Concept DOI を共有する）\\
+\textbf{位置づけ:}
+再現仕様書（総括＋章論文3本の構成）。物理的解釈は含まない
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 目的}\label{ux76eeux7684}
+
+本仕様書群の目的は、\textbf{インフレーション的な発展------測定にかからないほど小さい種
+（休眠比 H⊥/H \textasciitilde{}
+10\^{}-30）が、力学だけで何十桁も指数増幅して飽和に至る現象------が起こる
+機構を、再現可能な形で確定すること}である。
+
+2026-07-22 の正本論文（自発的分裂の開始と帰結の三分類、Version DOI
+10.5281/zenodo.21486234 / Concept DOI 10.5281/zenodo.21486233）で N=40,
+300, 1000 に
+観測されたこの現象について、力学の構成要素を一因子ずつ切り分けた結果、必要条件は
+\textbf{段2（生成子の振幅正規化）＋段3（生成子の cos
+対称部の除去＝実直交回転）}の同時成立で
+あることが確定し（削除対照の監査記録は第2章補遺A）、その構成（段1+2+3
+力学）を 静的親から N=3..40
+の全域でスイープして普遍性を固定した（第2章）。
+
+本総括は目的とアップロード構成の一覧のみを与える。\textbf{主章は第2章}であり、数式・
+プログラム・データの対応、検証ゲート、観察はすべて章論文に記載されている。
+
+\subsection{2. 論文構造（本 Concept DOI
+配下）}\label{ux8ad6ux6587ux69cbux9020ux672c-concept-doi-ux914dux4e0b}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+章
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ファイル
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+式番号
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+総括（本書） & \texttt{paper\_overview/overview\_stage123\_sweep\_ja.md}
+& 目的・構成一覧・同梱物台帳 & --- \\
+第1章 & \texttt{paper\_ch1\_static\_parents/ch1\_static\_parents\_ja.md}
+& 静的親データの生成（rng式・make\_parent・零閉塞種・Z0、7月正本との bit
+一致ゲート） & 式1〜式9 \\
+\textbf{第2章（主章）} &
+\texttt{paper\_ch2\_sweep\_dynamics/ch2\_sweep\_stage123\_ja.md} &
+段1+2+3
+力学の定義（旧力学の数学・新旧回転写像の差異・分母設計仮説・休眠比の指標性・複素図との対応）と
+N=3..40 スイープ。補遺A=削除対照監査表、補遺B=プログラム系譜 &
+式10〜式25 \\
+第3章 & \texttt{paper\_ch3\_complex\_plane/ch3\_complex\_plane\_ja.md} &
+複素平面読出し図3種（step0・終了時・凝縮中心拡大）の実装と観察 &
+式26〜式28 \\
+\end{longtable}
+}
+
+\subsection{3. Zenodo
+アップロード一覧}\label{zenodo-ux30a2ux30c3ux30d7ux30edux30fcux30c9ux4e00ux89a7}
+
+\subsubsection{3.1 論文}\label{ux8ad6ux6587}
+
+\begin{itemize}
+\tightlist
+\item
+  総括・第1章・第2章・第3章の md（日本語正本）および
+  tex/PDF（日英、Zenodo 公開時に生成）
+\end{itemize}
+
+\subsubsection{\texorpdfstring{3.2 本体パッケージ
+\texttt{N3\_N40\_stage123\_sweep\_20260905/}（約476MB）}{3.2 本体パッケージ N3\_N40\_stage123\_sweep\_20260905/（約476MB）}}\label{ux672cux4f53ux30d1ux30c3ux30b1ux30fcux30b8-n3_n40_stage123_sweep_20260905ux7d04476mb}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+区分
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+プログラム（6本） &
+\texttt{make\_static\_parents\_N3\_N40\_v1.py}（親生成）・\texttt{run\_N3\_N40\_stage123\_v1.py}（スイープ本体）・\texttt{check\_sweep\_inputs\_v1.py}（入力ゲート）・\texttt{analyze\_sweep\_summary\_v1.py}（集計）・\texttt{plot\_complex\_plane\_N3\_N40\_stage123\_v1.py}（図化）・\texttt{run\_n\_scaling\_lowrank\_v1.py}（7月正本エンジンの
+bit 同一コピー） \\
+一括再現 & \texttt{run\_all.sh}（親生成→スイープ→ゲート→集計→図化） \\
+初期データ & \texttt{parents/} 静的親 npz 38個＋台帳
+\texttt{parents\_summary.csv}（約636KB） \\
+結果データ & \texttt{results/} 状態 npz
+228個（全501step×全波保存）・timeseries CSV（114,228行）・summary
+CSV（228行）・集計 JSON・RUN\_METADATA \\
+図（4枚） & H⊥/H
+分母コントロール図（目標図）・複素平面3グリッド（step0/終了時/拡大） \\
+台帳 &
+\texttt{README.md}（進行記録・章登録）・\texttt{SHA256SUMS.txt}（全ファイルの
+SHA256 正本） \\
+\end{longtable}
+}
+
+\subsubsection{3.3
+再現性担保のための関連フォルダ（補遺A・Bの実物）}\label{ux518dux73feux6027ux62c5ux4fddux306eux305fux3081ux306eux95a2ux9023ux30d5ux30a9ux30ebux30c0ux88dcux907aabux306eux5b9fux7269}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+フォルダ
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+容量
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{ChatGPT\_denominator\_controls\_N40\_selfcontrol\_20260904/} &
+段構成を確定した N=40 一因子実験の全実物（62ファイル）:
+自己対照・静的親差替（段1基準）・段2・段3・段2削除・段2初期化のみ・σ時計の各プログラム／results／図／README／SHA256SUMS
+& 約238MB \\
+\texttt{自発的分裂予備実験\_v1\_N40対照実験系\_20260904/} & 7月正本 N=40
+走行のゲート付き再現（fcurve 全行 bit 一致）・正本静的親
+\texttt{parent\_static\_N40\_makeparent\_20260904.npz}・複素図・インフレーション図
+& 約1.5MB \\
+\end{longtable}
+}
+
+\subsubsection{3.4
+引用で参照する既公開物（再アップロードしない）}\label{ux5f15ux7528ux3067ux53c2ux7167ux3059ux308bux65e2ux516cux958bux7269ux518dux30a2ux30c3ux30d7ux30edux30fcux30c9ux3057ux306aux3044}
+
+\begin{itemize}
+\tightlist
+\item
+  7月正本論文・プログラム・図:
+  「N体関係波閉鎖系における状態の自発的分裂の開始と帰結の
+  三分類」v1.0（2026-07-22）。\textbf{Version DOI
+  10.5281/zenodo.21486234 / Concept DOI
+  10.5281/zenodo.21486233}。レコードに再現プログラム
+  zip（\texttt{run\_spontaneous\_splitting\_largeN\_v1.py}・
+  エンジン等）と図が同梱済み。
+\end{itemize}
+
+\subsection{4. 検証の要 ---
+全体を貫くゲート連鎖}\label{ux691cux8a3cux306eux8981-ux5168ux4f53ux3092ux8cabux304fux30b2ux30fcux30c8ux9023ux9396}
+
+本仕様書群の再現性は、次の bit レベルの連鎖で7月正本に接続されている
+（各ゲートの定義・実測は該当章）:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{7月正本 ⇔ 再現走行}:
+  \texttt{自発的分裂予備実験\_v1\_N40対照実験系\_20260904}
+  の無変更再走行が 7月 fcurve と全 3512 行 bit 一致（GATE1/GATE2）
+\item
+  \textbf{再現走行 ⇔ 静的親}: 正本静的親の v・g・Z0 が7月走行の初期値と
+  bit 一致（第1章 G1）。 第1章で生成した N=40 親は正本静的親と bit
+  一致（npz の SHA256 も同一）
+\item
+  \textbf{静的親 ⇔ スイープ}: 全228走行の保存済み Z{[}0{]} が各 N
+  の静的親 Z0 と bit 一致 （第2章 G1、checked 228 / MISMATCH 0）
+\end{enumerate}
+
+全ファイルの SHA256 は各パッケージ同梱の \texttt{SHA256SUMS.txt}
+を正本とする。
+
+\subsection{5.
+実行環境（共通）}\label{ux5b9fux884cux74b0ux5883ux5171ux901a}
+
+\begin{itemize}
+\tightlist
+\item
+  Python 3.9.6（venv）・numpy 2.0.2（BLAS/LAPACK: macOS
+  Accelerate）・matplotlib
+\item
+  macOS 26.3.1（arm64, Darwin 25.x）・乱数 numpy
+  PCG64（\texttt{default\_rng}）
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+（総括おわり。詳細はすべて第1〜3章および同梱 README・SHA256SUMS を参照）
+
+\end{document}
