@@ -8,4 +8,5 @@ python3 analyze_transition_migration_v1.py
 python3 check_axis_structure_v1.py
 python3 check_closure_factorization_v1.py
 python3 check_certified_factorization_v1.py
+python3 check_parity_class_v1.py
 echo "run_all done"
