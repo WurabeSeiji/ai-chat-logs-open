@@ -63,7 +63,29 @@ Release date: 2026-09-05
 - 自己引用: 自発的分裂の開始と帰結分類（Version 21486234 / Concept 21486233）。
   Zenodo related_identifiers: cites 10.5281/zenodo.21486234
 
+## Zenn
+
+- https://zenn.dev/noriaki_kihara/articles/stage123-sweep-reproduction-spec
+
+## note（一般向け）
+
+- 日本語: https://note.com/kiharanoriaki/n/n95446d0ced35
+  （元原稿: `次元の生成構造/note記事案_stage123_sweep_reproduction_v1/note_article_stage123_sweep_ja.md`）
+- 英語: https://note.com/kiharanoriaki/n/n3d20d514b8d8
+  （元原稿: `次元の生成構造/note記事案_stage123_sweep_reproduction_v1/note_article_stage123_sweep_en.md`）
+
+## Facebook
+
+- 日本語投稿: https://www.facebook.com/kihara.noriaki/posts/pfbid08Hbp73EiRQS3roA2ES76yoku41Ggjm9JxYvKdnQcmDfoRrUb8QH2aQJydqk1pa8xl
+- 英語投稿: https://www.facebook.com/kihara.noriaki/posts/pfbid0n15ZgUaVfRDZeLh8vEyNJUzahJmtrp7wzGt7uVLWv6zdPdVQBYFNTXH4Wna3RcdXl
+
+## X
+
+- 日本語ポスト: https://x.com/NoriakiKihara/status/2096115607628661145
+- 英語ポスト: https://x.com/NoriakiKihara/status/2096116422636376202
+
 ## 変更履歴
 
 - 2026-09-05 v1.0 公開（Version DOI 22317636、31ファイル・約710MB）。deposit 作成・
   DOI 取得・日英 md/tex/pdf・Zenn 記事は同日
+- 2026-09-05 note 日英・Facebook 日英・X 日英を公開（同日）
