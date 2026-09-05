@@ -81,3 +81,5 @@ https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/次元の�
 
 The original July paper (Onset and Threefold Classification of Outcomes of Spontaneous Splitting)
 https://doi.org/10.5281/zenodo.21486234
+
+#TheoreticalPhysics #SpontaneousSplitting #Inflation #Reproducibility #IndependentResearch
