@@ -48,6 +48,23 @@ N=40 ラインで確立した段1+2+3 力学（位相のみ・虚部のみ生成
 - `fig_complex_plane_final_N3_N40_stage123.png` — 終了時（step500）
 - `fig_complex_plane_final_zoom_N3_N40_stage123.png` — 終了時の最大角クラスター拡大
 
+## 再現論文（章別・Concept DOI 共通）
+
+- 総括: `paper_overview/overview_stage123_sweep_ja.md`
+  （ヘッダ〔ORCID・DOI欄〕・目的・章構成一覧・Zenodo アップロード台帳
+  〔本体476MB＋selfcontrol 238MB＋N40対照系1.5MB、7月正本は DOI 21486234 引用〕・
+  ゲート連鎖の要約）
+
+- 第1章 静的親データの生成: `paper_ch1_static_parents/ch1_static_parents_ja.md`
+  （式1〜式9 とエンジン実装の行番号対応・ゲート表・SHA 台帳・再現コマンドを収録）
+- 第2章 スイープ本体: `paper_ch2_sweep_dynamics/ch2_sweep_stage123_ja.md`
+  （式10〜式25: 旧力学の数学・段1/2/3の定義・新旧回転写像の差異・分母設計仮説・
+  休眠比 H⊥/H の指標性・複素図との対応 §2.6。段⇔式⇔行対応表、ゲート表、
+  集計 analysis_sweep_summary_v1.json、補遺A=削除対照監査表、補遺B=プログラム系譜と全桁SHA）
+- 第3章 複素平面読出し図: `paper_ch3_complex_plane/ch3_complex_plane_ja.md`
+  （式26〜式28: 重複計数・スケール規約・最大クラスター抽出算法の行番号対応、
+  3グリッド図の実装・ゲート・観察）
+
 ## 一括再現
 
 ```bash

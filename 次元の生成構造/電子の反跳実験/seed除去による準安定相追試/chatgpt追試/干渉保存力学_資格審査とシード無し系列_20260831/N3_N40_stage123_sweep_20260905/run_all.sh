@@ -5,5 +5,6 @@ cd "$(dirname "$0")"
 python3 make_static_parents_N3_N40_v1.py
 python3 run_N3_N40_stage123_v1.py
 python3 check_sweep_inputs_v1.py
+python3 analyze_sweep_summary_v1.py
 python3 plot_complex_plane_N3_N40_stage123_v1.py
 echo 'SWEEP PACKAGE ALL DONE'
