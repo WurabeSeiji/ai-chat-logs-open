@@ -52,13 +52,26 @@
 振幅スケールの縮小（|z0|max → |zf|max、例 N=3: 0.707→0.577）は、蒸発（一部が核・休眠へ
 移る）と再正規化の帰結で、全Nで観察される。
 
+## 全ケース版（N=3..40・38ケース）
+
+木原追加依頼「全て同じ複素平面図を作る」。`plot_step0_final_allN_v1.py` は 10cases版の
+最小変更（NS を代表10 → 全38 N=3..40 に置換しただけ、描画・入力・SHAゲートは同一）。
+- `fig_step0_final_N{3..40}.png` — 全38ケースの個別図（各 step0｜完了時）。
+- `fig_step0_grid_allN.png` / `fig_final_grid_allN.png` — 8×5 俯瞰グリッド（step0／完了時）。
+
+俯瞰グリッド（完了時）が結晶→ガラスの遷移を一望させる: N=3 離散3本 → N=4 三腕（x2縮退）
+→ N=5 少数腕（周辺）→ N=6..12 少数房 → N=13.. 円環が埋まりだす → N=25.. ほぼ完全な
+等モジュラー円環（位相ガラス）→ N=40 全周。
+
 ## ファイル
 
 - `plot_complex_plane_N3_N40_stage123_v1.py` — A の忠実コピー（対照テスト基準）
-- `plot_step0_final_10cases_v1.py` — 10ケース派生（本体）
+- `plot_step0_final_10cases_v1.py` — 10ケース派生
+- `plot_step0_final_allN_v1.py` — 全38ケース派生
 - `control/control_reproduce_A_figs_v1.py` — 対照テストハーネス＋結果json
-- `fig_step0_final_N{3,4,5,6,7,8,10,12,20,40}.png` — 個別10図（各 step0｜完了時）
-- `fig_step0_final_contact_10cases.png` — 一覧コンタクトシート（10行×2列）
+- `fig_step0_final_N{3..40}.png` — 個別38図（各 step0｜完了時）
+- `fig_step0_final_contact_10cases.png` — 代表10ケースの一覧コンタクトシート
+- `fig_step0_grid_allN.png` / `fig_final_grid_allN.png` — 全N俯瞰グリッド
 
 ## 再現
 
