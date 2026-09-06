@@ -40,6 +40,7 @@ PROG_SHA = '1abf2353fee2e4f56f05e7a6f149fd086885136beb61ab571b48a56b09691567'  #
 OLD_PD = "PARENT_DIR=os.path.join(ROOT,'N3_N40_stage123_sweep_20260905','parents')"
 OLD_OUT = "OUT=os.path.join(ROOT,'N3_N40_stage123_sweep_20260905','results')"
 NPZ_NAME = 'parent_static_N{N:05d}_makeparent_20260905.npz'   # 正本が読むファイル名（触らない）
+N_MAX = None   # 本走行（指示書 §6: N=3..6 合格につき全 N へ拡張）
 
 
 def sha(path):
@@ -64,8 +65,13 @@ def patched_source(parent_dir, out_dir):
     assert hashlib.sha256(src.encode()).hexdigest() == PROG_SHA, '正本プログラムのSHAが一致しない（無変更保証の破れ）'
     assert src.count(OLD_PD) == 1 and src.count(OLD_OUT) == 1, 'パス定数行が想定と異なる'
     new = src.replace(OLD_PD, f'PARENT_DIR={parent_dir!r}').replace(OLD_OUT, f'OUT={out_dir!r}')
+    if N_MAX is not None:  # 試走（木原指示 2026-09-06: N=6 まで）: ループ上限のみ変更
+        old_loop = 'for N in range(3,41):'
+        assert new.count(old_loop) == 1
+        new = new.replace(old_loop, f'for N in range(3,{N_MAX + 1}):')
     diff = sum(1 for a, b in zip(src.splitlines(), new.splitlines()) if a != b)
-    assert diff == 2 and len(src.splitlines()) == len(new.splitlines()), f'置換行数が2でない: {diff}'
+    expected = 2 if N_MAX is None else 3
+    assert diff == expected and len(src.splitlines()) == len(new.splitlines()), f'置換行数が想定外: {diff}'
     return new
 
 
@@ -132,14 +138,10 @@ def verify_control(out_dir):
 
 
 if __name__ == '__main__':
-    args = set(sys.argv[1:])
-    if '--skip-control' not in args:
-        pc = stage_control()
-        run_patched(pc, os.path.join(BASE, 'results_control'), 'control')
-        assert verify_control(os.path.join(BASE, 'results_control')), '対照走行が正本と不一致——中断'
-    if '--control-only' in args:
-        print('CONTROL ONLY DONE', flush=True)
-        sys.exit(0)
-    ps = stage_symmetric()
-    run_patched(ps, os.path.join(BASE, 'results'), 'symmetric')
+    # v3 改修（2026-09-06 木原承認: 旧走行は残さないので修正可）:
+    # 対照段・ステージング段を撤去。parents_symmetric_staged/ に配置済みの親
+    # （make_parents_v3_centroid_zero_v1.py が書いた重心ゼロ系列 v3）をそのまま読み、
+    # 正本プログラム（SHA照合・パス2行置換のみ）で本走行する。
+    ps = os.path.join(BASE, 'parents_symmetric_staged')
+    run_patched(ps, os.path.join(BASE, 'results'), 'symmetric_v3')
     print('WRAPPER ALL DONE', flush=True)
