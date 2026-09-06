@@ -1,0 +1,1153 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={第2章 スイープ本体 --- 段1+2+3 力学と N=3..40 走行（H⊥/H 分母コントロール図）},
+  pdfauthor={木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{第2章 スイープ本体 --- 段1+2+3 力学と N=3..40 走行（H⊥/H
+分母コントロール図）}
+\author{木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020}
+\date{2026年9月5日　Version DOI 10.5281/zenodo.22317636}
+
+\begin{document}
+\maketitle
+
+（N=3..40 段1+2+3 スイープ再現論文・第2章。総括論文と Concept DOI
+10.5281/zenodo.22317635 を共有する。Version DOI
+10.5281/zenodo.22317636。 式番号は第1章（式1〜式9）からの連番）
+
+\subsection{1. 目的}\label{ux76eeux7684}
+
+本数値実験系列の中心目的は、\textbf{インフレーション的な発展------測定にかからないほど小さい種
+（休眠比 H⊥/H \textasciitilde{}
+10\^{}-30）が、力学だけで何十桁も指数増幅して飽和に至る現象------が
+起こる機構を明確にすること}である。7月正本（N=40, 300,
+1000）でこの現象が観測されて
+以降、系列は「どの力学構成要素がこの発展の必要条件か」を一因子ずつ切り分けてきた
+（その確定結果が段1+2+3 の構成であり、監査記録は補遺A）。
+
+本章はその到達点として、第1章で生成・検証した静的親38個（N=3..40）を初期データに、
+段1+2+3 力学（位相のみ・虚部のみ生成子、実直交回転、固定 Δτ=2π/den）を
+N=3..40 × 6分母 × 500 step で走行し、インフレーション的発展の指標である
+\textbf{休眠比 H⊥/H}（定義と指標性の根拠は §2.5）・全エネルギー
+H\_total・零閉塞 \textbar z\^{}Tz\textbar/H を 全 step
+記録して、この発展が N の全域と時計（分母）の掃引に対してどう現れるかを
+目標図
+\texttt{fig\_Hperp\_denominator\_controls\_with\_124\_N3\_N40\_stage123.png}
+に固定する。
+
+本論文の記述目的は完全な再現性と数式・プログラム・データの対応の固定であり、
+観測事実を超える物理的解釈は含まない。段1+2+3
+がこの形である根拠は、本文の流れを
+妨げないよう\textbf{補遺A（削除対照の監査表）・補遺B（プログラム系譜）}に分離して記載する。
+
+\subsection{2. 理論的背景}\label{ux7406ux8ad6ux7684ux80ccux666f}
+
+本章の力学は、7月正本（旧プログラム）の力学を出発点とし、それを新アーキテクチャ上で
+\textbf{段1・段2・段3}
+の3つの構成要素に分解して再構成したものである。したがって理論的背景は
+(2.1) 共通の状態空間、(2.2) 旧プログラムの力学の数学、(2.3)
+本プログラムの力学の数学 （段分解）、(2.4)
+新旧の回転写像の数学的差異、(2.5) 測定量と保存則、の順で記述する。
+
+\subsubsection{2.1
+状態空間と隣接構造（新旧共通）}\label{ux72b6ux614bux7a7aux9593ux3068ux96a3ux63a5ux69cbux9020ux65b0ux65e7ux5171ux901a}
+
+\textbf{(式10) 線グラフ隣接行列} --- 完全グラフ K\_N の辺 e=(i,j),
+f=(k,l) が頂点を共有するとき A\_ef = 1、それ以外 0、対角
+0（M×M、実対称）。辺順序は式1と同一の上三角順。 状態は z ∈ C\^{}M（M =
+N(N−1)/2）、辺位相は θ\_e = arg z\_e。
+
+\subsubsection{2.2
+旧プログラム（7月正本）の力学の数学}\label{ux65e7ux30d7ux30edux30b0ux30e9ux30e07ux6708ux6b63ux672cux306eux529bux5b66ux306eux6570ux5b66}
+
+旧プログラムは本パッケージ同梱のエンジン
+\texttt{run\_n\_scaling\_lowrank\_v1.py}（正本の bit 同一
+コピー）で定義される。1ステップは次の3段の合成である。
+
+\textbf{(式11) 旧生成子（位相差正弦・実反対称）} --- 頂点共有辺対 (e,f)
+上で
+
+\begin{verbatim}
+K_ef(θ) = cos θ_e sin θ_f − sin θ_e cos θ_f = sin(θ_f − θ_e)
+\end{verbatim}
+
+生成子は毎ステップ現在位相 θ = arg z から作り直される。振幅
+\textbar z\_e\textbar{} は入らない。 頂点分解 K = C S\^{}T − S C\^{}T =
+W J W\^{}T（rank ≤ 2N）は第1章の式3と同一。
+
+\textbf{(式12) σ\_max の冪反復推定（近似・履歴依存）} --- 実ベクトル wp
+を持ち回り、
+
+\begin{verbatim}
+wp ← −K(K wp)/‖−K(K wp)‖   （3回反復）
+σ^_max = ‖K wp‖
+\end{verbatim}
+
+−K\^{}2 は半正定値対称でその最大固有値は σ\_max\^{}2 だから、σ\^{}\_max
+は σ\_max の\textbf{冪反復による 近似値}である。反復はわずか3回で、wp
+は前ステップから引き継がれる（warm start）。 したがって旧力学は厳密には
+z の写像ではなく、\textbf{隠れ状態 wp を持つ系}であり、σ\^{}\_max(t) は
+軌道履歴に依存する近似列である。
+
+エンジン実装（\texttt{run\_n\_scaling\_lowrank\_v1.py}）:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+   \DecValTok{122}      \KeywordTok{def}\NormalTok{ sigma\_max\_power(}\VariableTok{self}\NormalTok{, wp, iters}\OperatorTok{=}\DecValTok{3}\NormalTok{):}
+   \DecValTok{123}          \StringTok{"""warm{-}start 冪反復による σ\_max 推定。wp は前ステップのベクトル（更新して返す）。"""}
+   \DecValTok{124}          \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(iters):}
+   \DecValTok{125}\NormalTok{              y }\OperatorTok{=} \VariableTok{self}\NormalTok{.kmatvec(wp)}
+   \DecValTok{126}\NormalTok{              wp }\OperatorTok{=} \OperatorTok{{-}}\VariableTok{self}\NormalTok{.kmatvec(y)}
+   \DecValTok{127}\NormalTok{              nrm }\OperatorTok{=}\NormalTok{ np.linalg.norm(wp)}
+   \DecValTok{128}              \ControlFlowTok{if}\NormalTok{ nrm }\OperatorTok{==} \FloatTok{0.0}\NormalTok{:}
+   \DecValTok{129}                  \ControlFlowTok{return} \FloatTok{0.0}\NormalTok{, wp}
+   \DecValTok{130}\NormalTok{              wp }\OperatorTok{=}\NormalTok{ wp }\OperatorTok{/}\NormalTok{ nrm}
+   \DecValTok{131}\NormalTok{          sig }\OperatorTok{=}\NormalTok{ np.linalg.norm(}\VariableTok{self}\NormalTok{.kmatvec(wp))}
+   \DecValTok{132}          \ControlFlowTok{return} \BuiltInTok{float}\NormalTok{(sig), wp}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{(式13) 旧の1ステップ写像（Cayley 変換・σ正規化時計）} --- γ =
+tan(π/144) を定数として
+
+\begin{verbatim}
+K̃ = K / σ^_max
+z ← (I − γ K̃)^-1 (I + γ K̃) z
+\end{verbatim}
+
+エンジン実装（Woodbury による 2N×2N 解）:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+   \DecValTok{134}      \KeywordTok{def}\NormalTok{ cayley\_step(}\VariableTok{self}\NormalTok{, z, sigma):}
+   \DecValTok{135}          \StringTok{"""z ← (I{-}γK̃)\^{}\{{-}1\}(I+γK̃) z, K̃ = K/σ。Woodbury で O(N\^{}3)。"""}
+   \DecValTok{136}\NormalTok{          gn }\OperatorTok{=}\NormalTok{ GAMMA }\OperatorTok{/}\NormalTok{ sigma}
+   \DecValTok{137}\NormalTok{          r }\OperatorTok{=}\NormalTok{ z }\OperatorTok{+}\NormalTok{ gn }\OperatorTok{*} \VariableTok{self}\NormalTok{.kmatvec(z)}
+   \DecValTok{138}\NormalTok{          A2 }\OperatorTok{=}\NormalTok{ (sigma }\OperatorTok{/}\NormalTok{ GAMMA) }\OperatorTok{*} \VariableTok{self}\NormalTok{.J }\OperatorTok{+} \VariableTok{self}\NormalTok{.G}
+   \DecValTok{139}\NormalTok{          rhs }\OperatorTok{=} \VariableTok{self}\NormalTok{.wt(r)}
+   \DecValTok{140}\NormalTok{          y }\OperatorTok{=}\NormalTok{ np.linalg.solve(A2, rhs)}
+   \DecValTok{141}          \ControlFlowTok{return}\NormalTok{ r }\OperatorTok{{-}} \VariableTok{self}\NormalTok{.w(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{(式14) 旧の固有平面回転角} --- K の固有値は純虚数対 ±iσ\_k（σ\_k
+≥ 0）。K̃ の固有値 ±iσ\_k/σ\^{}\_max に対する Cayley 因子は
+
+\begin{verbatim}
+(1 + iγσ_k/σ^_max) / (1 − iγσ_k/σ^_max)   （絶対値 1）
+\end{verbatim}
+
+すなわち固有平面 k の1ステップ回転角は
+
+\begin{verbatim}
+φ_k = 2 arctan( γ · σ_k / σ^_max )
+\end{verbatim}
+
+最速平面（σ\_k = σ\^{}\_max）の回転角は常に φ\_max = 2
+arctan(tan(π/144)) = \textbf{π/72} に固定される。
+これは「系の最速モードで時間を刻む」\textbf{適応的（σ正規化）時計}であり、回転角の
+スペクトル依存は arctan による\textbf{非線形圧縮}を受ける。
+
+\textbf{(式15) 旧の保存量} --- K は実反対称なので Cayley 変換 O =
+(I−γK̃)\^{}-1(I+γK̃) は \textbf{実直交行列}（O\^{}T O = I）。実直交行列は
+z = x + iy の実部・虚部に同一に作用するため
+
+\begin{verbatim}
+‖Oz‖^2 = ‖z‖^2          （ノルム保存）
+(Oz)^T(Oz) = z^T O^TO z = z^Tz   （零閉塞 z^Tz の厳密保存）
+\end{verbatim}
+
+\textbf{(式15') 相対平衡（親）} --- 親 v は K(arg v)
+の固有平面上にあり（第1章・式4〜式6）、 流れ dZ/dt = KZ の上では KZ =
+−iσZ、すなわち Z(t) = e\^{}\{−iσt\} Z(0)。全辺の位相が同量だけ
+進むので位相差は不変、したがって K(θ(t)) =
+K(θ(0))。親は「位相差を変えずに剛体回転する」 相対平衡である。
+
+\subsubsection{2.3 本プログラムの力学の数学（段1・段2・段3
+の定義）}\label{ux672cux30d7ux30edux30b0ux30e9ux30e0ux306eux529bux5b66ux306eux6570ux5b66ux6bb51ux6bb52ux6bb53-ux306eux5b9aux7fa9}
+
+段番号は N=40
+一因子実験系列（補遺A）の定義に従う。\textbf{段1が基準アーキテクチャ}を与え、
+\textbf{段2・段3がそれに施す2つの変更}である。
+
+\textbf{(式16) 段1: 基準アーキテクチャ（明示行列・スペクトル写像・固定
+Δτ 時計）} --- 生成子をエルミート行列 H
+として明示的に構成し、1ステップを厳密スペクトル指数写像
+
+\begin{verbatim}
+H = V diag(w) V†,   z ← V e^{−i Δτ w} V† z
+\end{verbatim}
+
+で与える。時計は\textbf{固定の外部時計}
+
+\begin{verbatim}
+Δτ = 2π/den,   den ∈ { N−2, N−1, N, N+1, N+2 } ∩ N^+ ∪ { 124 }
+\end{verbatim}
+
+（小 N では den\textgreater0 の条件により系列が特殊になる。N=3 の系列は
+den=1,2,3,4,5,124。 den=1 は Δτ=2π を意味する。）段1のみの基準では H =
+A*(z̄⊗z)（振幅込み）を用いる。 本写像は無記憶（1ステップは z
+と定数のみの純関数）であり、旧の隠れ状態 wp・ 近似σ推定は存在しない。
+
+\paragraph{2.3.1 分母系列 den
+の設計背景（仮説）と実装対応}\label{ux5206ux6bcdux7cfbux5217-den-ux306eux8a2dux8a08ux80ccux666fux4eeeux8aacux3068ux5b9fux88c5ux5bfeux5fdc}
+
+Δτ = 2π/den の分母系列 \{ N−2, N−1, N, N+1, N+2, 124 \}
+は本章の発明ではなく、
+本シリーズの\textbf{分母コントロール実験}（2026-09-03、設計指示書
+\texttt{ChatGPT\_denominator\_controls\_N3\_N40\_mixedseed\_20260903/CLAUDE\_CODE\_RUN\_INSTRUCTION\_N3\_N40\_20260903.md}）
+の設計をそのまま継承したものである。その背景は次の2系統に分かれる。
+
+\textbf{(a) den=124（固定時計の対照）} --- 干渉保存力学系列の刻み規約 Δτ
+= 2π/L, \textbf{L=124} （例:
+\texttt{干渉保存力学\_資格審査とシード無し系列\_20260831/program/pass1\_parents.py}
+27行 \texttt{L=124}）の継承。時計を N に依らず固定した legacy
+規約の対照である。
+
+\textbf{(b) den ∈ \{N−2..N+2\}（系スケール時計の仮説系列）} ---
+仮説は式20 の回転角 ψ\_k = (2π/den)·σ\_k
+を通じて実装と結びつく。第1章で保存した親のσスペクトル （npz の
+\texttt{sigma}）から σ\_max を実測すると（集計
+\texttt{analysis\_sweep\_summary\_v1.json} の
+\texttt{sigma\_max\_by\_N}）:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+N & σ\_max & ψ\_max/2π（den=N） & ψ\_max/2π（den=124） \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+3 & 1.414 & 0.471 & 0.011 \\
+5 & 3.742 & 0.748 & 0.030 \\
+10 & 8.928 & 0.893 & 0.072 \\
+20 & 18.894 & 0.945 & 0.152 \\
+30 & 28.898 & 0.963 & 0.233 \\
+40 & 38.905 & 0.973 & 0.314 \\
+\end{longtable}
+}
+
+σ\_max(N) は N とともにほぼ線形に増える（N−σ\_max ≈ 1.1）。したがって
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{den ≈ N の系列}では最速固有平面の1ステップ回転が ψ\_max ≈
+  2π·(1 − O(1)/N)、 すなわち\textbf{ほぼ一回転（2π
+  との可換に近い・ストロボ的）領域}に置かれる。 den を N±1, N±2
+  とずらす5点は、この可換性からの離調を掃引する対照である。
+\item
+  \textbf{den = 124} では全固有平面が小角領域（本スイープの範囲で
+  ψ\_max/2π ≤ 0.314）に 収まり、連続流 dz/dt = Kz
+  の小刻み近似に近い\textbf{流れ的領域}の対照になる。
+\end{itemize}
+
+\textbf{実装対応}: den は
+38行の系列生成（\texttt{pairs={[}(N+o,…)\ for\ o\ in\ OFFSETS\ if\ N+o\textgreater{}0{]}+{[}(124,\textquotesingle{}124\textquotesingle{}){]}}）
+で決まり、力学には 27行の \texttt{2.0*math.pi/den} を通じてのみ入る。den
+はそれ以外の箇所で 使われない（式20 の通り、den
+の効果は回転角の線形スケールとエイリアシングに尽きる）。
+
+本章はこの設計仮説の当否を論じない。den 依存の観測結果は §6（onset
+の分母依存・ 未交差の分布）に事実として記載する。
+
+\textbf{(式17) 段2: 振幅正規化} --- 生成子構成への入力を z
+から単位振幅化した z\^{} に置換する:
+
+\begin{verbatim}
+z^_e = e^{i θ_e} = e^{i arg z_e}
+Ĥ_ef = A_ef · conj(z^_e) z^_f = A_ef · e^{i(θ_f − θ_e)}
+\end{verbatim}
+
+これにより生成子は旧（式11）と同じく\textbf{位相のみ}の関数になる。状態
+z 自身の振幅は
+保持され力学変数のまま進化する（正規化は生成子構成の中だけで毎ステップ行われる）。
+
+\textbf{(式18) Ĥ の実虚分解} --- Ĥ
+はエルミートであり、実対称部と実反対称部に一意に分解される:
+
+\begin{verbatim}
+Ĥ = S + iK,
+S_ef = A_ef cos(θ_f − θ_e)   （実対称）
+K_ef = A_ef sin(θ_f − θ_e)   （実反対称）
+\end{verbatim}
+
+この K は\textbf{旧生成子（式11）と同一の行列}である。
+
+\textbf{(式19) 段3: 虚部抽出（cos対称部の除去）と実直交回転} ---
+生成子として Ĥ の代わりに
+
+\begin{verbatim}
+H_3 = i K = i · Im(Ĥ)
+\end{verbatim}
+
+を用いる（i×実反対称 = エルミート）。段1の写像（式16）に代入すると
+
+\begin{verbatim}
+z ← exp(−i Δτ · iK) z = exp(Δτ K) z
+\end{verbatim}
+
+exp(ΔτK)
+は実反対称行列の指数、すなわち\textbf{実直交行列}である。ゆえに旧（式15）と同じ
+保存量 ‖z‖\^{}2, z\^{}Tz を持つ（証明は式15と同一）。段2により K
+が位相のみで作られるため、 式15'
+の相対平衡の議論もそのまま成立し、親軌道上で K
+は時間不変、親は剛体回転する。
+
+\textbf{(式20) 新の固有平面回転角} --- H\_3 = iK の固有値 w\_k
+は実数で、K の ±iσ\_k に対応して w = ±σ\_k。固有平面 k
+の1ステップ回転角は
+
+\begin{verbatim}
+ψ_k = Δτ · σ_k = (2π/den) · σ_k
+\end{verbatim}
+
+回転角は固有値に\textbf{線形}で、上限がない。位相因子 e\^{}\{−iΔτw\} は
+w について周期 2π/Δτ で 巻き戻る（\textbf{エイリアシング}）: Δτσ\_k が
+2π を超える固有平面では、実効回転角は Δτσ\_k mod 2π となる。
+
+\subsubsection{2.4
+新旧の回転写像の数学的差異（本章の力学のキモ）}\label{ux65b0ux65e7ux306eux56deux8ee2ux5199ux50cfux306eux6570ux5b66ux7684ux5deeux7570ux672cux7ae0ux306eux529bux5b66ux306eux30adux30e2}
+
+両者は「位相のみ実反対称生成子 K による実直交回転」という点で同一だが、
+\textbf{回転角のスペクトル写像と時計が数学的に異なる}。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+項目
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+旧（式12〜式14）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+本章＝段1+2+3（式16〜式20）
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+固有平面回転角 & φ\_k = 2 arctan(γ σ\_k/σ\^{}\_max) & ψ\_k = (2π/den)
+σ\_k \\
+スペクトル依存 & arctan による非線形圧縮（\textbar φ\textbar{}
+\textless{} π） & 線形（mod 2π のエイリアシングあり） \\
+時計 & σ\^{}\_max 正規化（最速平面 π/72 固定、系固有） & 固定 Δτ =
+2π/den（外部、den は掃引パラメータ） \\
+σ の取得 & 冪反復3回の近似 σ\^{}\_max（warm start・履歴依存） & eigh
+による厳密固有値（推定なし） \\
+写像の実現 & Cayley 有理式を Woodbury 解で適用（O(N\^{}3)/step） &
+スペクトル分解で厳密指数を適用（O(M\^{}3)/step） \\
+記憶 & 隠れ状態 wp を持つ（純関数でない） & 無記憶（z の純関数） \\
+保存量 & ‖z‖\^{}2, z\^{}Tz（実直交） & 同左（実直交） \\
+相対平衡（親） & 成立（式15'） & 成立（式19の帰結） \\
+\end{longtable}
+}
+
+\textbf{(式21) 小角極限での対応} --- Δτσ\_k ≪ 1 かつ γσ\_k/σ\^{}\_max ≪
+1 の領域では arctan x ≈ x より
+
+\begin{verbatim}
+φ_k ≈ (2γ/σ^_max) · σ_k = Δτ_eff · σ_k,   Δτ_eff = 2 tan(π/144)/σ^_max ≈ (π/72)/σ^_max
+\end{verbatim}
+
+すなわち旧は「Δτ\_eff が σ\^{}\_max
+で毎ステップ再規格化される式20」と近似的に一致する。 両者の差は (i) Δτ
+の値（外部固定 2π/den か、系固有の (π/72)/σ\^{}\_max か）、 (ii) arctan
+圧縮とエイリアシングの有無、(iii) σ の厳密性、に整理される。
+この対応の実測は補遺Aの最終行（σ正規化時計の参照実験: 後半勾配 65.8
+steps/decade、 7月正本 64.0
+steps/decade）に記録されている。本章の走行はあくまで\textbf{固定
+Δτ（段1）}で 行われ、分母 den の掃引がこの時計差の影響を測る。
+
+\subsubsection{2.5 測定量と保存則 --- 休眠比 H⊥/H
+の定義とインフレーション指標としての根拠}\label{ux6e2cux5b9aux91cfux3068ux4fddux5b58ux5247-ux4f11ux7720ux6bd4-hh-ux306eux5b9aux7fa9ux3068ux30a4ux30f3ux30d5ux30ecux30fcux30b7ux30e7ux30f3ux6307ux6a19ux3068ux3057ux3066ux306eux6839ux62e0}
+
+\textbf{(式22) 読出し平面} --- 初期状態 z0 = v + δg（正規化後）から
+
+\begin{verbatim}
+p = Re z0 / ‖Re z0‖,   q' = Im z0 − (Im z0·p) p,   q = q'/‖q'‖
+\end{verbatim}
+
+p, q
+は走行を通じて\textbf{固定}される（初期状態の実部・虚部が張る実2次元平面
+Π = span\_R(p, q) のグラム・シュミット正規直交基底）。δ = 10\^{}-15
+なので Π は実質的に \textbf{親 v の張る平面}である。
+
+\textbf{(式23) 測定量} --- 各 step の状態 z について
+
+\begin{verbatim}
+H⊥/H = ‖ z − p(p·z) − q(q·z) ‖^2 / ‖z‖^2   （読出し平面 Π の外にあるエネルギー比）
+H_total = z†z
+closure = |z^Tz| / z†z
+\end{verbatim}
+
+\textbf{(式23') H⊥/H が「休眠比」であり、親の運動を拾わないこと} ---
+純粋な親（δ=0）の軌道は 相対平衡（式15'・式19）であり、Z(t) =
+e\^{}\{−iσt\} Z(0)。展開すると
+
+\begin{verbatim}
+e^{−iσt}(x + iy) = (x cos σt + y sin σt) + i (y cos σt − x sin σt),   x=Re Z(0), y=Im Z(0)
+\end{verbatim}
+
+すなわち実部・虚部は常に span\_R(x, y) = Π の中に留まる。補直交射影 z −
+p(p·z) − q(q·z) は Π
+内の任意の複素結合を厳密に消すので、\textbf{親軌道上で H⊥ は恒等的に 0}
+である。したがって H⊥/H
+は「親の剛体回転\textbf{以外}のすべて」------初期には種 g の Π
+外成分（H⊥/H(0) ≈ δ\^{}2 〜
+10\^{}-30）、以後は力学がそこから育てた成分------だけを測る。
+種は親のスケールからは見えないエネルギーであることから、7月正本はこれを
+\textbf{休眠フラクション（dormant fraction）}と呼ぶ。
+
+\textbf{(式23'\,') 7月正本との定義の同一性} --- 本章の H⊥/H は7月正本の
+f(τ) と同一の測定である。 正本
+\texttt{自発的分裂予備実験\_v1/run\_spontaneous\_splitting\_largeN\_v1.py}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{57}\NormalTok{          Zp }\OperatorTok{=}\NormalTok{ Z }\OperatorTok{{-}}\NormalTok{ p }\OperatorTok{*}\NormalTok{ (p }\OperatorTok{@}\NormalTok{ Z) }\OperatorTok{{-}}\NormalTok{ q }\OperatorTok{*}\NormalTok{ (q }\OperatorTok{@}\NormalTok{ Z)}
+    \DecValTok{58}\NormalTok{          htot }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(np.real(np.conj(Z) }\OperatorTok{@}\NormalTok{ Z))}
+    \DecValTok{59}\NormalTok{          f }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(np.real(np.conj(Zp) }\OperatorTok{@}\NormalTok{ Zp)) }\OperatorTok{/}\NormalTok{ htot}
+\end{Highlighting}
+\end{Shaded}
+
+（p, q
+の構成も同一。46-48行。）ゆえに本章の曲線は7月のインフレーション図
+（dormant\_growth\_large\_n\_v1.png）と同じ量を同じ定義で描いたものであり、直接比較できる。
+
+\textbf{インフレーション指標としての根拠} --- 以上より H⊥/H の時間発展は
+「(i) 初期値が種スケール 10\^{}-30
+台にあること（親が平衡である限り第1歩で跳ばない）、 (ii)
+そこから半対数プロット上の直線＝一定レートの指数増幅が続くこと、 (iii)
+O(10\^{}-2〜1)
+で飽和すること」の3点でインフレーション的発展を定量化する。 (i)
+が破れる（第1歩で 10\textsuperscript{-8〜10}-3
+へ跳ぶ）場合はミスマッチ注入であり、種の増幅とは
+区別される（補遺Aの削除対照はまさにこの (i)
+で判別される）。onset（式24）は (iii) への 到達の指標である。
+
+保存則: 式19より写像は実直交だから、closure の分子
+\textbar z\^{}Tz\textbar{} と分母 z†z は理論上ともに 不変であり、closure
+の時間変化は数値丸めの蓄積のみを測る（実測は §6・G3）。 また ‖z‖
+保存により H⊥/H ∈ {[}0,1{]} が保証される。
+
+\textbf{(式24) onset（記録用指標）} --- H⊥/H \textgreater{} 0.05
+となる最初の step 番号（なければ −1）。 力学には影響しない集計値である。
+
+\subsubsection{2.6 複素平面読出しとの対応 ---
+インフレーション図と3種の複素平面図の設計意図}\label{ux8907ux7d20ux5e73ux9762ux8aadux51faux3057ux3068ux306eux5bfeux5fdc-ux30a4ux30f3ux30d5ux30ecux30fcux30b7ux30e7ux30f3ux56f3ux30683ux7a2eux306eux8907ux7d20ux5e73ux9762ux56f3ux306eux8a2dux8a08ux610fux56f3}
+
+第3章の複素平面図（step0・終了時・凝縮中心の拡大）は、本章のインフレーション図
+（H⊥/H
+曲線）と対をなす読出しである。両者の関係を定める恒等式を先にここで与える。
+
+\textbf{注意（混同しやすい2つの「平面」）} --- 図の複素平面は「各辺の値
+z\_e ∈ C を M 点 打った平面」であり、H⊥/H の基準である親平面 Π =
+span\_R(p,q) は「状態空間 C\^{}M の中の
+実2次元部分空間」である。両者は別物だが、次の恒等式で結ばれる。
+
+\textbf{(式25) Π 内の状態の per-edge 表示} --- x = Re z0, y = Im z0, v ≈
+z0（δ=10\^{}-15）とすると x = (v+v̄)/2, y = (v−v̄)/(2i) より、
+
+\begin{verbatim}
+z ∈ span_C{x, y} = Π  <=>  z_e = a·v_e + b·conj(v_e)   （a, b ∈ C は辺に依らない定数）
+\end{verbatim}
+
+すなわち **Π
+内に留まる運動は、図の上では「親の星型の一斉回転・スケール（a·v\_e）と
+その鏡像の混合（b·v̄\_e）」の2複素パラメータ族の中の変形しか起こせない\textbf{。特に純粋な
+親軌道 Z(t)=e\^{}\{−iσt\}Z(0)（式15'）は a=e\^{}\{−iσt\}, b=0
+で、}星型全体が形を変えずに原点まわりを
+一斉回転するだけ**である。逆に、この族で表せない形（例:
+全方位への位相分散＝リング）が 図に現れることは、状態が Π
+の外へ出たことの配置的な表現である。
+
+この恒等式により、3種の複素平面図はインフレーション図（H⊥/H 曲線）の
+始点・終点・終点内部を配置側から裏づける役割分担を持つ:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+図
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+H⊥/H 曲線との対応
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+読み取る内容
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+step0 図 & 曲線の始点（H⊥/H ≈ 10\^{}-31） & Π
+の中身＝親の形（対蹠2ペア・4束の星型）。step1 の図が step0
+と見分けがつかないことは f(1) が種スケールに留まること（§2.5
+(i)）の可視化 \\
+終了時図 & 曲線の飽和域（H⊥/H \textasciitilde{} 0.05〜0.46） &
+式25の族では表せない形（星→リング）への逸脱＝ Π
+外成分が支配的になった配置。onset（式24）は形の崩れが目視可能になる時期に概ね対応 \\
+凝縮中心の拡大図 & 曲線が言わない情報の補完 & H⊥/H は「どれだけ Π
+を出たか」しか測らない。拡大図は「出た先の組織化」------角クラスターが厳密な同一複素数への凝縮（厳密縮退）か有限幅の束か------を分解する \\
+\end{longtable}
+}
+
+図の実装（グリッド描画・クラスター抽出の算法・行番号対応）は第3章で記述する。
+
+\subsection{3. 実装方法}\label{ux5b9fux88c5ux65b9ux6cd5}
+
+\begin{itemize}
+\tightlist
+\item
+  スイープ本体 \texttt{run\_N3\_N40\_stage123\_v1.py}
+  は自己完結（エンジン import なし）。 同梱エンジン
+  \texttt{run\_n\_scaling\_lowrank\_v1.py} は
+  §2.2（旧の数学）の定義体・第1章の
+  親生成にのみ使われ、本章の力学ループには関与しない。
+\item
+  本プログラムは ChatGPT 作成の正本
+  \texttt{run\_and\_plot\_N3\_N40\_mixedseed\_20260903.py} から
+  \textbf{文書化された最小差分の鎖}（補遺B）だけを経て導出されており、力学関数
+  \texttt{one\_step} は N=40
+  一因子実験で3ゲート合格済みの段3版と同一である。
+\item
+  初期データは第1章の静的親 npz の \texttt{Z0} を per-N
+  で読み込む（再生成・変更なし）。
+\item
+  入力ゲート \texttt{check\_sweep\_inputs\_v1.py}
+  が、全228走行の保存済み \texttt{Z{[}0{]}} と静的親 \texttt{Z0} の bit
+  一致を事後検証する。
+\item
+  §6 の数値は集計プログラム \texttt{analyze\_sweep\_summary\_v1.py}
+  の出力 \texttt{results/analysis\_sweep\_summary\_v1.json}
+  から転載する（手計算・手集計なし）。
+\end{itemize}
+
+\textbf{段⇔数式⇔実装の対応表}（実装は
+\texttt{run\_N3\_N40\_stage123\_v1.py}）:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+段
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+数式
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+実装箇所
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+段1 & 明示行列＋厳密スペクトル写像 & 式16 &
+21-22行（\texttt{H\_of}）・27-28行（\texttt{eigh} と位相因子適用） \\
+段1 & 固定 Δτ=2π/den 時計と分母系列 & 式16 & 27行の
+\texttt{2.0*math.pi/den}・38行（系列生成） \\
+段2 & 振幅正規化（z\textsuperscript{=e}\{iθ\}） & 式17 & 26行の
+\texttt{np.exp(1j*np.angle(z))} \\
+段3 & 虚部抽出 H\_3=i·Im(Ĥ) → 実直交回転 & 式18・式19 & 26行の
+\texttt{(1j*np.imag(H))} \\
+--- & 読出し平面・測定量・onset & 式22・式23・式24 &
+29-30行・31-32行・45-46行 \\
+\end{longtable}
+}
+
+（対比: 旧の式12〜式14 はエンジン 122-132 行・134-141
+行にのみ存在し、本章の ループでは呼ばれない。）
+
+\subsection{4. 詳細設計}\label{ux8a73ux7d30ux8a2dux8a08}
+
+\subsubsection{4.1 全体フロー}\label{ux5168ux4f53ux30d5ux30edux30fc}
+
+\begin{verbatim}
+for N in 3..40:
+  [初期化]   静的親 Z0 読込 → 隣接行列 A（式10）→ 読出し平面 p,q（式22）→ 分母系列（式16）
+  for den in 系列:
+    [ループ処理] t=0..500: 状態と測定量（式23）を記録し、t<500 なら one_step（式16〜式19）
+    [終了処理(den)] 状態 npz 保存、onset（式24）等を summary 行に追加
+[終了処理(全体)] timeseries/summary CSV 出力 → 8×5 グリッド図 → RUN_METADATA 出力
+\end{verbatim}
+
+\subsubsection{4.2
+全体データフロー}\label{ux5168ux4f53ux30c7ux30fcux30bfux30d5ux30edux30fc}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{入力}:
+  \texttt{parents/parent\_static\_N\{N:05d\}\_makeparent\_20260905.npz}
+  の \texttt{Z0}（38個、第1章の 成果物。SHA256 は SHA256SUMS.txt 正本）
+\item
+  \textbf{パラメータ}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{STEPS\ =\ 500} \ldots{}
+    1走行のステップ数（早期停止なし、固定）
+  \item
+    \texttt{OFFSETS\ =\ (-2,-1,0,1,2)} \ldots{} 分母系列の N
+    からのオフセット（式16）
+  \item
+    分母 124 \ldots{} 全 N 共通の対照分母
+  \item
+    dtype: 状態 complex128／実数 float64（12行目の assert で固定）
+  \end{itemize}
+\item
+  \textbf{出力}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{results/hm\_N\{N\}\_den\_\{den\}\_states\_500.npz} ×
+    228（\texttt{Z}(501×M), \texttt{N}, \texttt{denominator},
+    \texttt{steps}）
+  \item
+    \texttt{results/timeseries\_64bit\_with124\_N3\_N40.csv}（列: N,
+    series, denominator, step, Hperp\_frac, H\_total,
+    global\_closure。228×501 = 114,228 行）
+  \item
+    \texttt{results/summary\_64bit\_with124\_N3\_N40.csv}（列: N,
+    series, denominator, onset\_gt\_0.05, initial, step1, final,
+    max。228行）
+  \item
+    \texttt{results/fig\_Hperp\_denominator\_controls\_with\_124\_N3\_N40\_stage123.png}（目標図）
+  \item
+    \texttt{results/RUN\_METADATA\_N3\_N40\_stage123.json}
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{4.3 個別処理}\label{ux500bux5225ux51e6ux7406}
+
+\paragraph{\texorpdfstring{4.3.1
+初期化（\texttt{run\_N3\_N40\_stage123\_v1.py}）}{4.3.1 初期化（run\_N3\_N40\_stage123\_v1.py）}}\label{ux521dux671fux5316run_n3_n40_stage123_v1.py}
+
+定数と dtype 固定:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{11}\NormalTok{  STEPS}\OperatorTok{=}\DecValTok{500}\OperatorTok{;}\NormalTok{ OFFSETS}\OperatorTok{=}\NormalTok{(}\OperatorTok{{-}}\DecValTok{2}\NormalTok{,}\OperatorTok{{-}}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+    \DecValTok{12}  \ControlFlowTok{assert}\NormalTok{ np.dtype(np.float64).itemsize}\OperatorTok{==}\DecValTok{8} \KeywordTok{and}\NormalTok{ np.dtype(np.complex128).itemsize}\OperatorTok{==}\DecValTok{16}
+\end{Highlighting}
+\end{Shaded}
+
+辺・隣接行列（式1・式10）:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{14}  \KeywordTok{def}\NormalTok{ edges(N):}
+    \DecValTok{15}\NormalTok{      a,b}\OperatorTok{=}\NormalTok{np.triu\_indices(N,k}\OperatorTok{=}\DecValTok{1}\NormalTok{)}\OperatorTok{;} \ControlFlowTok{return}\NormalTok{ a.astype(np.int64),b.astype(np.int64)}
+    \DecValTok{16}  \KeywordTok{def}\NormalTok{ adjacency(N):}
+    \DecValTok{17}\NormalTok{      ea,eb}\OperatorTok{=}\NormalTok{edges(N)}\OperatorTok{;}\NormalTok{ M}\OperatorTok{=}\BuiltInTok{len}\NormalTok{(ea)}\OperatorTok{;}\NormalTok{ A}\OperatorTok{=}\NormalTok{np.zeros((M,M),dtype}\OperatorTok{=}\NormalTok{np.float64)}
+    \DecValTok{18}      \ControlFlowTok{for}\NormalTok{ e }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(M):}
+    \DecValTok{19}\NormalTok{          share}\OperatorTok{=}\NormalTok{(ea}\OperatorTok{==}\NormalTok{ea[e])}\OperatorTok{|}\NormalTok{(ea}\OperatorTok{==}\NormalTok{eb[e])}\OperatorTok{|}\NormalTok{(eb}\OperatorTok{==}\NormalTok{ea[e])}\OperatorTok{|}\NormalTok{(eb}\OperatorTok{==}\NormalTok{eb[e])}\OperatorTok{;}\NormalTok{ share[e]}\OperatorTok{=}\VariableTok{False}\OperatorTok{;}\NormalTok{ A[e,share]}\OperatorTok{=}\FloatTok{1.0}
+    \DecValTok{20}      \ControlFlowTok{return}\NormalTok{ A}
+\end{Highlighting}
+\end{Shaded}
+
+親読込・読出し平面（式22）・分母系列（式16）:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{34}  \ControlFlowTok{for}\NormalTok{ N }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{41}\NormalTok{):}
+    \DecValTok{35}      \CommentTok{\# 初期データ: 各 N の静的親ファイルの Z0 を使用}
+    \DecValTok{36}\NormalTok{      z0}\OperatorTok{=}\NormalTok{np.array(np.load(os.path.join(PARENT\_DIR,}\SpecialStringTok{f\textquotesingle{}parent\_static\_N}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{:05d\}}\SpecialStringTok{\_makeparent\_20260905.npz\textquotesingle{}}\NormalTok{))[}\StringTok{\textquotesingle{}Z0\textquotesingle{}}\NormalTok{],dtype}\OperatorTok{=}\NormalTok{np.complex128,copy}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+    \DecValTok{37}\NormalTok{      A}\OperatorTok{=}\NormalTok{adjacency(N)}\OperatorTok{;}\NormalTok{ p,q}\OperatorTok{=}\NormalTok{plane(z0)}
+    \DecValTok{38}\NormalTok{      pairs}\OperatorTok{=}\NormalTok{[(N}\OperatorTok{+}\NormalTok{o, }\SpecialStringTok{f\textquotesingle{}N}\SpecialCharTok{\{}\NormalTok{o}\SpecialCharTok{:+d\}}\SpecialStringTok{\textquotesingle{}} \ControlFlowTok{if}\NormalTok{ o }\ControlFlowTok{else} \StringTok{\textquotesingle{}N\textquotesingle{}}\NormalTok{) }\ControlFlowTok{for}\NormalTok{ o }\KeywordTok{in}\NormalTok{ OFFSETS }\ControlFlowTok{if}\NormalTok{ N}\OperatorTok{+}\NormalTok{o}\OperatorTok{\textgreater{}}\DecValTok{0}\NormalTok{] }\OperatorTok{+}\NormalTok{ [(}\DecValTok{124}\NormalTok{,}\StringTok{\textquotesingle{}124\textquotesingle{}}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{29}  \KeywordTok{def}\NormalTok{ plane(v):}
+    \DecValTok{30}\NormalTok{      p}\OperatorTok{=}\NormalTok{v.real.astype(np.float64,copy}\OperatorTok{=}\VariableTok{True}\NormalTok{)}\OperatorTok{;}\NormalTok{ p}\OperatorTok{/=}\NormalTok{np.linalg.norm(p)}\OperatorTok{;}\NormalTok{ q}\OperatorTok{=}\NormalTok{v.imag.astype(np.float64,copy}\OperatorTok{=}\VariableTok{True}\NormalTok{)}\OperatorTok{;}\NormalTok{ q}\OperatorTok{{-}=}\NormalTok{np.dot(q,p)}\OperatorTok{*}\NormalTok{p}\OperatorTok{;}\NormalTok{ q}\OperatorTok{/=}\NormalTok{np.linalg.norm(q)}\OperatorTok{;} \ControlFlowTok{return}\NormalTok{ p,q}
+\end{Highlighting}
+\end{Shaded}
+
+\paragraph{4.3.2 ループ処理（1ステップの力学 ---
+式16〜式20）}\label{ux30ebux30fcux30d7ux51e6ux74061ux30b9ux30c6ux30c3ux30d7ux306eux529bux5b66-ux5f0f16ux5f0f20}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{21}  \KeywordTok{def}\NormalTok{ H\_of(z,A):}
+    \DecValTok{22}\NormalTok{      H}\OperatorTok{=}\NormalTok{A}\OperatorTok{*}\NormalTok{(np.conj(z)[:,}\VariableTok{None}\NormalTok{]}\OperatorTok{*}\NormalTok{z[}\VariableTok{None}\NormalTok{,:])}\OperatorTok{;}\NormalTok{ np.fill\_diagonal(H,}\FloatTok{0.0}\NormalTok{)}\OperatorTok{;} \ControlFlowTok{return}\NormalTok{ H.astype(np.complex128,copy}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+    \DecValTok{23}  \KeywordTok{def}\NormalTok{ one\_step(z,A,den):}
+    \DecValTok{24}      \CommentTok{\# 段3の最小変更（唯一の力学変更点）: 位相のみ生成子 Ĥ の虚部だけを取る H=i·K（K=sin(Δθ) 実反対称）。}
+    \DecValTok{25}      \CommentTok{\# exp({-}iΔτ·iK)=exp(Δτ·K) の実直交回転となり、Z\^{}T Z（零閉塞）と ‖Z‖ を厳密保存する。}
+    \DecValTok{26}\NormalTok{      H}\OperatorTok{=}\NormalTok{H\_of(np.exp(}\OtherTok{1j}\OperatorTok{*}\NormalTok{np.angle(z)),A)}\OperatorTok{;}\NormalTok{ H}\OperatorTok{=}\NormalTok{(}\OtherTok{1j}\OperatorTok{*}\NormalTok{np.imag(H)).astype(np.complex128,copy}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+    \DecValTok{27}\NormalTok{      w,V}\OperatorTok{=}\NormalTok{np.linalg.eigh(H)}\OperatorTok{;}\NormalTok{ phase}\OperatorTok{=}\NormalTok{np.exp(}\OperatorTok{{-}}\OtherTok{1j}\OperatorTok{*}\NormalTok{np.float64(}\FloatTok{2.0}\OperatorTok{*}\NormalTok{math.pi}\OperatorTok{/}\NormalTok{den)}\OperatorTok{*}\NormalTok{w)}
+    \DecValTok{28}      \ControlFlowTok{return}\NormalTok{ (V}\OperatorTok{@}\NormalTok{(phase}\OperatorTok{*}\NormalTok{(V.conj().T}\OperatorTok{@}\NormalTok{z))).astype(np.complex128,copy}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  26行前半 \texttt{np.exp(1j*np.angle(z))}:
+  \textbf{段2}＝式17（振幅正規化。生成子入力を
+  z\textsuperscript{=e}\{iθ\} に置換）。
+\item
+  26行後半 \texttt{(1j*np.imag(H))}:
+  \textbf{段3}＝式18の虚部抽出→式19の生成子 H\_3=i·K （\texttt{np.imag}
+  は要素ごとの虚部。エルミート行列 Ĥ の虚部は実反対称行列 K になる）。
+\item
+  27-28行: \textbf{段1}＝式16（\texttt{np.linalg.eigh}
+  による厳密スペクトル分解、固定 Δτ=2π/den の 位相因子
+  e\^{}\{−i(2π/den)w\} の適用）。固有平面回転角は式20 ψ\_k=(2π/den)σ\_k
+  であり、 旧の式14（arctan 圧縮・σ\^{}\_max
+  正規化）とは異なる（§2.4）。
+\end{itemize}
+
+測定と記録（式23）:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{31}  \KeywordTok{def}\NormalTok{ metrics(z,p,q):}
+    \DecValTok{32}\NormalTok{      h}\OperatorTok{=}\NormalTok{np.vdot(z,z).real}\OperatorTok{;}\NormalTok{ zp}\OperatorTok{=}\NormalTok{z}\OperatorTok{{-}}\NormalTok{p}\OperatorTok{*}\NormalTok{np.dot(p,z)}\OperatorTok{{-}}\NormalTok{q}\OperatorTok{*}\NormalTok{np.dot(q,z)}\OperatorTok{;}\NormalTok{ hp}\OperatorTok{=}\NormalTok{np.vdot(zp,zp).real}\OperatorTok{;} \ControlFlowTok{return} \BuiltInTok{float}\NormalTok{(hp}\OperatorTok{/}\NormalTok{h),}\BuiltInTok{float}\NormalTok{(h),}\BuiltInTok{float}\NormalTok{(}\BuiltInTok{abs}\NormalTok{(z}\OperatorTok{@}\NormalTok{z)}\OperatorTok{/}\NormalTok{h)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{40}\NormalTok{          z}\OperatorTok{=}\NormalTok{z0.copy()}\OperatorTok{;}\NormalTok{ vals}\OperatorTok{=}\NormalTok{np.empty(STEPS}\OperatorTok{+}\DecValTok{1}\NormalTok{,np.float64)}\OperatorTok{;}\NormalTok{ states}\OperatorTok{=}\NormalTok{np.empty((STEPS}\OperatorTok{+}\DecValTok{1}\NormalTok{,z.size),np.complex128)}\OperatorTok{;}\NormalTok{ closures}\OperatorTok{=}\NormalTok{np.empty(STEPS}\OperatorTok{+}\DecValTok{1}\NormalTok{,np.float64)}\OperatorTok{;}\NormalTok{ htot}\OperatorTok{=}\NormalTok{np.empty(STEPS}\OperatorTok{+}\DecValTok{1}\NormalTok{,np.float64)}
+    \DecValTok{41}          \ControlFlowTok{for}\NormalTok{ t }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(STEPS}\OperatorTok{+}\DecValTok{1}\NormalTok{):}
+    \DecValTok{42}\NormalTok{              states[t]}\OperatorTok{=}\NormalTok{z}\OperatorTok{;}\NormalTok{ vals[t],htot[t],closures[t]}\OperatorTok{=}\NormalTok{metrics(z,p,q)}
+    \DecValTok{43}              \ControlFlowTok{if}\NormalTok{ t}\OperatorTok{\textless{}}\NormalTok{STEPS: z}\OperatorTok{=}\NormalTok{one\_step(z,A,den)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{停止条件・例外的挙動（数式化しない要素）}: -
+早期停止はない。全走行が\textbf{固定 501 回}（t=0..500）の記録と 500
+回の写像適用で構成される
+（41-43行）。onset（式24）は集計にのみ使われ、力学を止めない（45-46行の
+\texttt{np.flatnonzero(vals\textgreater{}0.05)}）。 - 大きい N
+の走行では \texttt{V@(phase*(V†z))} の行列積に対して numpy の
+RuntimeWarning （divide by zero / overflow / invalid value encountered
+in matmul）が表示されることがある。
+これは警告であって例外ではなく、実行は停止しない。本系列では同一入力に対する再走行の
+bit 一致（第1章
+G1、および本章の入力ゲート）で結果への影響がないことを確認している。 -
+N=3,4 では式16の \texttt{N+o\textgreater{}0} フィルタにより
+den=1（Δτ=2π）等の小さな分母が系列に入る。
+プログラム上の特別扱いはない（38行の内包表記の帰結）。式20の観点では小さな
+den は 大きな Δτ を意味し、エイリアシング（Δτσ\_k mod
+2π）が強く働く領域である。
+
+\paragraph{4.3.3
+終了処理（保存・図化・メタデータ）}\label{ux7d42ux4e86ux51e6ux7406ux4fddux5b58ux56f3ux5316ux30e1ux30bfux30c7ux30fcux30bf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{44}\NormalTok{          np.savez\_compressed(os.path.join(OUT,}\SpecialStringTok{f\textquotesingle{}hm\_N}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{\}}\SpecialStringTok{\_den\_}\SpecialCharTok{\{}\NormalTok{den}\SpecialCharTok{\}}\SpecialStringTok{\_states\_500.npz\textquotesingle{}}\NormalTok{),Z}\OperatorTok{=}\NormalTok{states,N}\OperatorTok{=}\NormalTok{np.int64(N),denominator}\OperatorTok{=}\NormalTok{np.int64(den),steps}\OperatorTok{=}\NormalTok{np.int64(STEPS))}
+    \DecValTok{45}\NormalTok{          rows.extend((N,label,den,t,vals[t],htot[t],closures[t]) }\ControlFlowTok{for}\NormalTok{ t }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(STEPS}\OperatorTok{+}\DecValTok{1}\NormalTok{))}\OperatorTok{;}\NormalTok{ ix}\OperatorTok{=}\NormalTok{np.flatnonzero(vals}\OperatorTok{\textgreater{}}\FloatTok{0.05}\NormalTok{)}
+    \DecValTok{46}\NormalTok{          summaries.append((N,label,den,}\BuiltInTok{int}\NormalTok{(ix[}\DecValTok{0}\NormalTok{]) }\ControlFlowTok{if}\NormalTok{ ix.size }\ControlFlowTok{else} \OperatorTok{{-}}\DecValTok{1}\NormalTok{,}\BuiltInTok{float}\NormalTok{(vals[}\DecValTok{0}\NormalTok{]),}\BuiltInTok{float}\NormalTok{(vals[}\DecValTok{1}\NormalTok{]),}\BuiltInTok{float}\NormalTok{(vals[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]),}\BuiltInTok{float}\NormalTok{(vals.}\BuiltInTok{max}\NormalTok{())))}
+\end{Highlighting}
+\end{Shaded}
+
+CSV・図・メタデータ（48-66行）は測定値の書き出しと描画のみで力学に影響しない。
+図は 8×5 グリッド（55-64行）、38パネル使用・2パネル off（64行）。
+
+\paragraph{\texorpdfstring{4.3.4
+入力ゲート（\texttt{check\_sweep\_inputs\_v1.py}）}{4.3.4 入力ゲート（check\_sweep\_inputs\_v1.py）}}\label{ux5165ux529bux30b2ux30fcux30c8check_sweep_inputs_v1.py}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{18}  \ControlFlowTok{for}\NormalTok{ N }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{41}\NormalTok{):}
+    \DecValTok{19}\NormalTok{      Z0 }\OperatorTok{=}\NormalTok{ np.load(os.path.join(PARENT\_DIR, }\SpecialStringTok{f\textquotesingle{}parent\_static\_N}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{:05d\}}\SpecialStringTok{\_makeparent\_20260905.npz\textquotesingle{}}\NormalTok{))[}\StringTok{\textquotesingle{}Z0\textquotesingle{}}\NormalTok{]}
+    \DecValTok{20}\NormalTok{      dens }\OperatorTok{=}\NormalTok{ [N }\OperatorTok{+}\NormalTok{ o }\ControlFlowTok{for}\NormalTok{ o }\KeywordTok{in}\NormalTok{ (}\OperatorTok{{-}}\DecValTok{2}\NormalTok{, }\OperatorTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{) }\ControlFlowTok{if}\NormalTok{ N }\OperatorTok{+}\NormalTok{ o }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OperatorTok{+}\NormalTok{ [}\DecValTok{124}\NormalTok{]}
+    \DecValTok{21}      \ControlFlowTok{for}\NormalTok{ den }\KeywordTok{in}\NormalTok{ dens:}
+    \DecValTok{22}\NormalTok{          p }\OperatorTok{=}\NormalTok{ os.path.join(RESULT\_DIR, }\SpecialStringTok{f\textquotesingle{}hm\_N}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{\}}\SpecialStringTok{\_den\_}\SpecialCharTok{\{}\NormalTok{den}\SpecialCharTok{\}}\SpecialStringTok{\_states\_500.npz\textquotesingle{}}\NormalTok{)}
+    \DecValTok{23}\NormalTok{          same }\OperatorTok{=} \BuiltInTok{bool}\NormalTok{(np.array\_equal(np.load(p)[}\StringTok{\textquotesingle{}Z\textquotesingle{}}\NormalTok{][}\DecValTok{0}\NormalTok{], Z0))}
+    \DecValTok{24}\NormalTok{          n\_checked }\OperatorTok{+=} \DecValTok{1}
+    \DecValTok{25}          \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ same:}
+    \DecValTok{26}              \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f\textquotesingle{}MISMATCH: N=}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{\}}\SpecialStringTok{ den=}\SpecialCharTok{\{}\NormalTok{den}\SpecialCharTok{\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{)}
+    \DecValTok{27}\NormalTok{              ok }\OperatorTok{=} \VariableTok{False}
+\NormalTok{...}
+    \DecValTok{35}\NormalTok{  sys.exit(}\DecValTok{0} \ControlFlowTok{if}\NormalTok{ ok }\ControlFlowTok{else} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+保存済み全 npz の \texttt{Z{[}0{]}} が対応する静的親 \texttt{Z0} と
+\texttt{np.array\_equal}（bit 一致）であることを
+検証し、1件でも不一致なら終了コード 1。
+
+\subsection{5. 実行結果}\label{ux5b9fux884cux7d50ux679c}
+
+\subsubsection{5.1
+再現コマンド}\label{ux518dux73feux30b3ux30deux30f3ux30c9}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd}\NormalTok{ N3\_N40\_stage123\_sweep\_20260905}
+\ExtensionTok{python3}\NormalTok{ run\_N3\_N40\_stage123\_v1.py        }\CommentTok{\# スイープ本体}
+\ExtensionTok{python3}\NormalTok{ check\_sweep\_inputs\_v1.py         }\CommentTok{\# 入力ゲート}
+\ExtensionTok{python3}\NormalTok{ analyze\_sweep\_summary\_v1.py      }\CommentTok{\# §6 の数値の集計}
+\CommentTok{\# または ./run\_all.sh（親生成→スイープ→ゲート→集計→図化）}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{5.2 実行環境}\label{ux5b9fux884cux74b0ux5883}
+
+\begin{itemize}
+\tightlist
+\item
+  Python 3.9.6（\texttt{.venv/bin/python3}）、numpy 2.0.2（BLAS/LAPACK:
+  macOS Accelerate）、 matplotlib（グリッド図描画）
+\item
+  macOS 26.3.1（arm64）
+\end{itemize}
+
+\subsubsection{5.3 実行時間}\label{ux5b9fux884cux6642ux9593}
+
+スイープ本体（38N×6分母×500
+step、状態全保存込み）で\textbf{約45〜50分}（実測 2026-09-05、 支配項は
+M×M の \texttt{eigh} × 500 × 6。N=40
+単独で約3分）。入力ゲートと集計は各1分未満。
+
+\subsubsection{5.4 検証ゲート}\label{ux691cux8a3cux30b2ux30fcux30c8}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+ゲート
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+合格条件
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+実測
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+合否
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+G1: 入力同一性 & 全228 npz の \texttt{Z{[}0{]}} が対応する静的親
+\texttt{Z0} と bit 一致 & checked 228 / MISMATCH 0 & \textbf{PASS} \\
+G2: 完走 & \texttt{ALL\ DONE} 出力・終了コード 0 & 確認 &
+\textbf{PASS} \\
+G3: 保存量（観察） & closure = \textbar z\^{}Tz\textbar/H が全走行・全
+step で小さいまま & step0 最大 5.19e-15、全域最大 3.72e-13 &
+\textbf{PASS} \\
+\end{longtable}
+}
+
+（G3 の数値は \texttt{analysis\_sweep\_summary\_v1.json} の
+\texttt{global\_closure\_step0\_max} /
+\texttt{global\_closure\_all\_max}）
+
+\subsubsection{5.5 データ}\label{ux30c7ux30fcux30bf}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+項目
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+フォルダ & \texttt{N3\_N40\_stage123\_sweep\_20260905/results/} \\
+状態 npz & \texttt{hm\_N\{N\}\_den\_\{den\}\_states\_500.npz} ×
+228（数十KB〜約5.9MB/個、合計約900MB 相当のブロック、実サイズは
+SHA256SUMS.txt と同梱物参照） \\
+時系列 CSV &
+\texttt{timeseries\_64bit\_with124\_N3\_N40.csv}（約8.7MB、114,228行） \\
+サマリ CSV & \texttt{summary\_64bit\_with124\_N3\_N40.csv}（228行） \\
+メタデータ & \texttt{RUN\_METADATA\_N3\_N40\_stage123.json} \\
+集計 & \texttt{analysis\_sweep\_summary\_v1.json}（§6 の数値の出所） \\
+SHA256 & 全ファイルの正本値は同梱
+\texttt{SHA256SUMS.txt}。本体プログラム:
+\texttt{1abf2353fee2e4f56f05e7a6f149fd086885136beb61ab571b48a56b09691567\ \ run\_N3\_N40\_stage123\_v1.py} \\
+\end{longtable}
+}
+
+\subsubsection{5.6 図化}\label{ux56f3ux5316}
+
+\begin{itemize}
+\tightlist
+\item
+  目標図:
+  \texttt{results/fig\_Hperp\_denominator\_controls\_with\_124\_N3\_N40\_stage123.png}
+  （8×5 グリッド。各パネルの\textbf{縦軸は休眠比 H⊥/H}〔式23・意味は
+  §2.5〕の半対数、 横軸は
+  step。6分母の曲線を重ね描き。半対数上の直線区間がインフレーション的
+  指数増幅、水平区間が飽和に対応する）
+\item
+  複素平面読出し図（step0・終了時・拡大）は第3章で扱う。
+\end{itemize}
+
+\subsection{6. 実行分析（客観的報告と観察のみ。数値は
+analysis\_sweep\_summary\_v1.json
+より）}\label{ux5b9fux884cux5206ux6790ux5ba2ux89b3ux7684ux5831ux544aux3068ux89b3ux5bdfux306eux307fux6570ux5024ux306f-analysis_sweep_summary_v1.json-ux3088ux308a}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  228走行のうち \textbf{212走行が 500 step 内に H⊥/H \textgreater{} 0.05
+  を交差}した（onset 範囲 45〜481）。
+\item
+  \textbf{全228走行で step1 は種スケールに留まった}: H⊥/H(0) ∈
+  {[}1.92e-33, 1.60e-31{]}、 H⊥/H(1) ∈ {[}3.64e-30,
+  7.32e-25{]}。ミスマッチ注入（10\textsuperscript{-8〜10}-3 級の跳び）は
+  0 件である。
+\item
+  交差した走行の終値は 0.0501〜0.458。
+\item
+  未交差16走行の内訳: 15走行は final 0.025〜0.048 で\textbf{閾値 0.05
+  のわずかに下で飽和}して おり（N≥26 の 124 系列と N+2 系列、および N=39
+  の3系列）、成長が遅かったのは N=3・den=124 の1走行のみ（final
+  1.75e-8）。
+\item
+  124 系列の onset は N=4 の 318 から N の増加とともに短くなり、N≥15
+  では 89〜160 の帯に 入る（交差した N に限る。表は
+  \texttt{analysis\_sweep\_summary\_v1.json} の
+  \texttt{onset\_by\_series{[}\textquotesingle{}124\textquotesingle{}{]}}）。
+\item
+  零閉塞 \textbar z\^{}Tz\textbar/H は全 228×501 記録点で最大
+  3.72e-13（初期最大 5.19e-15）に留まった。
+  式19の保存則の数値的な確認である。
+\item
+  図の目視観察: 全パネルで「種スケールからの直線的指数増幅 →
+  10\textsuperscript{-3〜10}-1 台での飽和」 という同型の曲線族が現れる。
+\end{enumerate}
+
+\subsection{補遺A 段構成の由来 ---
+一因子実験と削除対照の監査表}\label{ux88dcux907aa-ux6bb5ux69cbux6210ux306eux7531ux6765-ux4e00ux56e0ux5b50ux5b9fux9a13ux3068ux524aux9664ux5bfeux7167ux306eux76e3ux67fbux8868}
+
+本章の力学（段1+2+3）は、N=40・静的親（第1章と同一の
+Z0）に対する一因子実験系列で
+確定した構成である。実験一式（プログラム・データ・図・README・SHA256SUMS）は
+\texttt{ChatGPT\_denominator\_controls\_N40\_selfcontrol\_20260904/}
+に完備されており、
+\textbf{本論文のアップロードに同梱する}。数値の出所は各 results
+ディレクトリの summary CSV および README である。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+構成
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+力学（生成子／時計）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+f(1) の水準
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.05 交差（500step, 6分母）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+終値・観察
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+出力ディレクトリ
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+段1のみ（基準） & H=A*(z̄⊗z)（振幅込み・cos入り）／固定Δτ &
+5.3〜6.5e-8（注入） & 0/6 & 天井 \textasciitilde1.16e-3 で安定 &
+results\_staticparent/ \\
+段1+2（段3削除） & 位相のみ Ĥ（cos入り）／固定Δτ &
+1.4e-9〜8.9e-3（注入・分母依存） & 6/6（τ=4〜198） & 0.94〜0.9999
+まで離脱 & results\_staticparent\_phaseonly/ \\
+段1+3（段2削除） & 振幅込み i·Im(H)／固定Δτ & 1.8〜2.3e-8（注入） & 0/6
+& \textasciitilde3.5e-3 へ緩慢に漂う & results\_staticparent\_ampimK/ \\
+\textbf{段1+2+3（本章）} & 位相のみ i·K／固定Δτ &
+\textbf{4.0〜9.1e-29（種スケール）} & 4/6（τ=276〜456） &
+0.038〜0.10、緩和曲線あり & results\_staticparent\_imK/ \\
+段2初期化のみ（参考） & z0 を1回等振幅化＋振幅込み i·Im(H)／固定Δτ &
+2.9〜3.4e-3（注入） & 6/6（τ=3〜6） & 0.96〜0.99、即時離脱 &
+results\_staticparent\_stage2init/ \\
+段2+3＋σ時計（参考） & 位相のみ i·K／σ正規化 Cayley 時計 &
+5.84e-30（種スケール） & 0/6（500step内） & 後半勾配 65.8
+steps/decade（7月正本 64.0） & results\_staticparent\_sigmaclock/ \\
+\end{longtable}
+}
+
+観察（事実のみ）: f(1)
+が種スケール（\textasciitilde10\^{}-29）に留まるのは段2と段3が\textbf{同時に}入っている
+構成のみであり、いずれか一方を削除した構成では f(1) が
+10\textsuperscript{-8〜10}-3 に跳ぶ。段2を初期化時
+1回に移した構成では跳びが最大（10\^{}-3）になる。
+
+\subsection{補遺B プログラム系譜（最小差分の鎖と
+SHA256）}\label{ux88dcux907ab-ux30d7ux30edux30b0ux30e9ux30e0ux7cfbux8b5cux6700ux5c0fux5deeux5206ux306eux9396ux3068-sha256}
+
+各段の差分は該当パッケージの README に全文記録されている。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\#
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+プログラム
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+直前からの差分
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 &
+\texttt{ChatGPT\_denominator\_controls\_N3\_N40\_mixedseed\_20260903/run\_and\_plot\_N3\_N40\_mixedseed\_20260903.py}（ChatGPT
+作成正本） & --- \\
+1 &
+\texttt{ChatGPT\_denominator\_controls\_N40\_selfcontrol\_20260904/run\_and\_plot\_N40\_only\_selfcontrol.py}
+& OUT 先変更・\texttt{range(40,41)} の2行（N=40 出力が正本と bit
+一致を確認） \\
+2 & \texttt{…/run\_N40\_staticparent\_v1.py} & 初期データを第1章静的親
+Z0 に差替（入力のみ） \\
+3 & \texttt{…/run\_N40\_staticparent\_phaseonly\_v1.py} & one\_step 1行:
+H を exp(i·arg z) から構成（段2） \\
+4 & \texttt{…/run\_N40\_staticparent\_imK\_v1.py} & one\_step 1行:
+H=1j·Im(Ĥ)（段3） \\
+5 &
+\texttt{N3\_N40\_stage123\_sweep\_20260905/run\_N3\_N40\_stage123\_v1.py}（本章）
+& ループ range(3,41)・per-N
+親読込・出力先・図名・メタデータ名のみ（力学無変更） \\
+\end{longtable}
+}
+
+SHA256（全桁、shasum -a 256 の出力を転載）:
+
+\begin{verbatim}
+c709c56335d4c67373bff9a3ef6414ea17564d5fbf9c10b7bc9c3724ff091b92  run_and_plot_N3_N40_mixedseed_20260903.py
+5a07f354e19985dca0f5de89217e2aa22ac511afaa4b2bb4aa5d93e0c7f9706f  run_and_plot_N40_only_selfcontrol.py
+cb5a0ab6db9ae5719eac7aee3b539eb04ca09f5ebfcab6dcce36e8a6e727719e  run_N40_staticparent_v1.py
+c1d6d2e60e101f0a99585eefdc22990a087c46246aba112042ac97a7fcbd1a71  run_N40_staticparent_phaseonly_v1.py
+a67912b77f7f112731c1eac7612f21b464aed7e2c42431f7b3a7afabb2cd051d  run_N40_staticparent_imK_v1.py
+1abf2353fee2e4f56f05e7a6f149fd086885136beb61ab571b48a56b09691567  run_N3_N40_stage123_v1.py
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+（第2章おわり。第3章「複素平面読出し図」に続く）
+
+\end{document}

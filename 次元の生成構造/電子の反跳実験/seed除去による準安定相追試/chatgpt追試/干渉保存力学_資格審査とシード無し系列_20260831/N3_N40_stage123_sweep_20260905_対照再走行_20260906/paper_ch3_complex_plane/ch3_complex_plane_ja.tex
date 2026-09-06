@@ -1,0 +1,476 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={第3章 複素平面読出し図 --- step0・終了時・凝縮中心拡大の3グリッド},
+  pdfauthor={木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{第3章 複素平面読出し図 ---
+step0・終了時・凝縮中心拡大の3グリッド}
+\author{木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020}
+\date{2026年9月5日　Version DOI 10.5281/zenodo.22317636}
+
+\begin{document}
+\maketitle
+
+（N=3..40 段1+2+3 スイープ再現論文・第3章。総括論文と Concept DOI
+10.5281/zenodo.22317635 を共有する。Version DOI
+10.5281/zenodo.22317636。 式番号は第1章・第2章（式1〜式25）からの連番）
+
+\subsection{1. 目的}\label{ux76eeux7684}
+
+第2章のスイープが保存した状態 npz（Δτ=2π/N 走行）から、各辺の複素波 z\_e
+∈ C を 複素平面に読み出した3枚のグリッド図------(1) step0、(2)
+終了時（step500）、 (3)
+終了時の最大角クラスター拡大------を生成する処理を記述する。3図の設計意図
+（インフレーション図の始点・終点・終点内部を配置側から裏づける役割分担、および
+「図の複素平面 ≠ 親平面 Π」の注意と橋渡しの恒等式）は\textbf{第2章
+§2.6（式25）}で
+与えられており、本章はその実装・実行・観察を固定する。データは読み出しのみで、
+力学・保存データには一切触れない。
+
+\subsection{2. 理論的背景}\label{ux7406ux8ad6ux7684ux80ccux666f}
+
+状態と測定の数学は第2章（式22〜式25）に依る。本章の図固有の規約を式26〜式28
+として 定義する。
+
+\textbf{(式26) 重複計数（縮退の表記）} --- 描画対象の複素値集合 \{z\_e\}
+を、実部・虚部の \textbf{小数第12位丸め}で同値類に分け、要素数 c
+\textgreater{} 1 の類の位置に「xc」を注記する:
+
+\begin{verbatim}
+class(w) = ( round(Re w, 12), round(Im w, 12) )
+\end{verbatim}
+
+12桁丸めは倍精度の実効桁（〜16桁）より粗く、丸め誤差程度の差を同一視しつつ
+物理的に有意な分離（本系列では相対 10\^{}-4
+以上）は別扱いにする閾値である。
+拡大図では丸めを第15位（式28）に締め、機械精度レベルの一致のみを「xn」と数える。
+
+\textbf{(式27) パネルスケール規約} ---
+各パネルの軸範囲は、そのパネルの全体振幅 r = max\_e
+\textbar z\_e\textbar{} を用いて {[}−1.15r, +1.15r{]} の正方（equal
+aspect）とし、
+\textbf{目盛数値は実値のまま}表示する（正規化した値に貼り替えない）。原点から各点への
+線分は波の偏角と振幅を同時に読むための補助線である。
+
+\textbf{(式28) 最大角クラスター抽出（拡大図の算法）} ---
+終了時状態を全体振幅で規格化した 座標で\textbf{粗解像度 1/100}
+に丸めて群化し、最大要素数の群を拡大対象とする:
+
+\begin{verbatim}
+key(w) = ( round(Re w / amp, 2), round(Im w / amp, 2) ),   amp = max_e |z_e|
+C* = argmax_{key} |{ w : key(w) = key }|
+中心 c = mean(C*),  割れ幅 spread = max_{w∈C*} |w − c|,  窓幅 = 1.4 × spread
+\end{verbatim}
+
+パネル題に本数 \textbar C*\textbar・spread・amp を印字する。spread
+は「クラスターが厳密な一点
+（厳密縮退）か有限幅の束か」を定量化する（第2章 §2.6
+の表・拡大図の行）。
+
+\subsection{3. 実装方法}\label{ux5b9fux88c5ux65b9ux6cd5}
+
+\begin{itemize}
+\tightlist
+\item
+  図化プログラム
+  \texttt{plot\_complex\_plane\_N3\_N40\_stage123\_v1.py}（本パッケージ同梱、
+  読み出しのみ）。描画様式は本シリーズの既存図化プログラム
+  （\texttt{complex\_plane\_readout\_step0\_step2000\_20260904/plot\_complex\_plane\_step0\_step2000.py}
+  のグリッド様式、および
+  \texttt{自発的分裂予備実験\_v1/N40\_state\_readout\_20260904/\ plot\_complex\_plane\_N40\_v1.py}
+  のクラスター拡大算法）を N=3..40 の 8×5 グリッドに
+  拡張したもので、算法自体は同一である（様式の系譜を変えない）。
+\item
+  入力は第2章の成果物
+  \texttt{results/hm\_N\{N\}\_den\_\{N\}\_states\_500.npz}
+  のみ。\textbf{den=N （Δτ=2π/N）の走行を各 N の代表として用いる}（step0
+  は分母に依らず同一なので
+  代表選択は終了時にのみ効く。他の分母の終了時配置は保存済み npz
+  から同様に 読み出せる）。
+\item
+  出力は PNG 3枚。データの書き換え・再生成はない。
+\end{itemize}
+
+\subsection{4. 詳細設計}\label{ux8a73ux7d30ux8a2dux8a08}
+
+\subsubsection{4.1 全体フロー}\label{ux5168ux4f53ux30d5ux30edux30fc}
+
+\begin{verbatim}
+[初期化]   入力フォルダの決定（results/）
+[ループ処理] draw_grid(step=0)  : N=3..40 の各パネルに step0 状態を描画（式26・式27）
+           draw_grid(step=500): 同、終了時状態
+           拡大グリッド      : N=3..40 の各パネルに最大角クラスター（式28）
+[終了処理] 各図を savefig、未使用2パネルを off
+\end{verbatim}
+
+\subsubsection{4.2
+全体データフロー}\label{ux5168ux4f53ux30c7ux30fcux30bfux30d5ux30edux30fc}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{入力}:
+  \texttt{results/hm\_N\{N\}\_den\_\{N\}\_states\_500.npz} ×
+  38（第2章成果物・読み出しのみ）。 使用フィールド:
+  \texttt{Z}（501×M）、\texttt{denominator}、\texttt{steps}（整合性
+  assert 用）
+\item
+  \textbf{パラメータ}（すべてプログラム内定数）:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    丸め桁: 12（式26）／15（拡大図内、式28）／粗解像度 2桁（式28の
+    1/100）
+  \item
+    スケール係数 1.15（式27）、窓係数 1.4（式28）
+  \item
+    グリッド 8×5（38使用・2 off）、dpi=180
+  \end{itemize}
+\item
+  \textbf{出力}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{fig\_complex\_plane\_step0\_N3\_N40\_stage123.png}
+  \item
+    \texttt{fig\_complex\_plane\_final\_N3\_N40\_stage123.png}
+  \item
+    \texttt{fig\_complex\_plane\_final\_zoom\_N3\_N40\_stage123.png}
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{4.3 個別処理}\label{ux500bux5225ux51e6ux7406}
+
+\paragraph{4.3.1
+初期化（読み込みと整合性検査）}\label{ux521dux671fux5316ux8aadux307fux8fbcux307fux3068ux6574ux5408ux6027ux691cux67fb}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{18}  \KeywordTok{def}\NormalTok{ load(N, step):}
+    \DecValTok{19}\NormalTok{      d }\OperatorTok{=}\NormalTok{ np.load(os.path.join(IN, }\SpecialStringTok{f\textquotesingle{}hm\_N}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{\}}\SpecialStringTok{\_den\_}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{\}}\SpecialStringTok{\_states\_500.npz\textquotesingle{}}\NormalTok{))}
+    \DecValTok{20}      \ControlFlowTok{assert} \BuiltInTok{int}\NormalTok{(d[}\StringTok{\textquotesingle{}denominator\textquotesingle{}}\NormalTok{]) }\OperatorTok{==}\NormalTok{ N }\KeywordTok{and} \BuiltInTok{int}\NormalTok{(d[}\StringTok{\textquotesingle{}steps\textquotesingle{}}\NormalTok{]) }\OperatorTok{==} \DecValTok{500}
+    \DecValTok{21}      \ControlFlowTok{return}\NormalTok{ np.asarray(d[}\StringTok{\textquotesingle{}Z\textquotesingle{}}\NormalTok{][step], dtype}\OperatorTok{=}\NormalTok{np.complex128)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  20行の assert は「意図したファイル（den=N・500
+  step）を読んでいる」ことの検査で、 不一致なら AssertionError
+  で停止する（描画は行われない）。
+\end{itemize}
+
+\paragraph{4.3.2 ループ処理（1）:
+グリッド描画（式26・式27）}\label{ux30ebux30fcux30d7ux51e6ux74061-ux30b0ux30eaux30c3ux30c9ux63cfux753bux5f0f26ux5f0f27}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{26}      \ControlFlowTok{for}\NormalTok{ k, N }\KeywordTok{in} \BuiltInTok{enumerate}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{41}\NormalTok{)):}
+    \DecValTok{27}\NormalTok{          ax }\OperatorTok{=}\NormalTok{ axs[k]}
+    \DecValTok{28}\NormalTok{          z }\OperatorTok{=}\NormalTok{ load(N, step)}
+    \DecValTok{29}\NormalTok{          M }\OperatorTok{=}\NormalTok{ N }\OperatorTok{*}\NormalTok{ (N }\OperatorTok{{-}} \DecValTok{1}\NormalTok{) }\OperatorTok{//} \DecValTok{2}
+    \DecValTok{30}          \ControlFlowTok{assert}\NormalTok{ z.size }\OperatorTok{==}\NormalTok{ M}
+    \DecValTok{31}          \ControlFlowTok{for}\NormalTok{ w }\KeywordTok{in}\NormalTok{ z:}
+    \DecValTok{32}\NormalTok{              ax.plot([}\FloatTok{0.0}\NormalTok{, w.real], [}\FloatTok{0.0}\NormalTok{, w.imag], color}\OperatorTok{=}\StringTok{\textquotesingle{}tab:blue\textquotesingle{}}\NormalTok{, linewidth}\OperatorTok{=}\FloatTok{0.7}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.6}\NormalTok{)}
+    \DecValTok{33}\NormalTok{          ax.plot(z.real, z.imag, }\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, ms}\OperatorTok{=}\FloatTok{2.5}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}tab:red\textquotesingle{}}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{0.85}\NormalTok{, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}none\textquotesingle{}}\NormalTok{)}
+    \DecValTok{34}\NormalTok{          cnt }\OperatorTok{=}\NormalTok{ Counter((}\BuiltInTok{round}\NormalTok{(}\BuiltInTok{float}\NormalTok{(w.real), }\DecValTok{12}\NormalTok{), }\BuiltInTok{round}\NormalTok{(}\BuiltInTok{float}\NormalTok{(w.imag), }\DecValTok{12}\NormalTok{)) }\ControlFlowTok{for}\NormalTok{ w }\KeywordTok{in}\NormalTok{ z)}
+    \DecValTok{35}          \ControlFlowTok{for}\NormalTok{ (a, b), c }\KeywordTok{in}\NormalTok{ cnt.items():}
+    \DecValTok{36}              \ControlFlowTok{if}\NormalTok{ c }\OperatorTok{\textgreater{}} \DecValTok{1}\NormalTok{:}
+    \DecValTok{37}\NormalTok{                  ax.annotate(}\SpecialStringTok{f\textquotesingle{}x}\SpecialCharTok{\{}\NormalTok{c}\SpecialCharTok{\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{, (a, b), textcoords}\OperatorTok{=}\StringTok{\textquotesingle{}offset points\textquotesingle{}}\NormalTok{, xytext}\OperatorTok{=}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{),}
+    \DecValTok{38}\NormalTok{                              fontsize}\OperatorTok{=}\DecValTok{5}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}black\textquotesingle{}}\NormalTok{)}
+    \DecValTok{39}\NormalTok{          r }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(np.}\BuiltInTok{abs}\NormalTok{(z).}\BuiltInTok{max}\NormalTok{())}
+    \DecValTok{40}\NormalTok{          lim }\OperatorTok{=}\NormalTok{ r }\OperatorTok{*} \FloatTok{1.15} \ControlFlowTok{if}\NormalTok{ r }\OperatorTok{\textgreater{}} \DecValTok{0} \ControlFlowTok{else} \FloatTok{1.0}
+    \DecValTok{41}\NormalTok{          ax.set\_xlim(}\OperatorTok{{-}}\NormalTok{lim, lim)}\OperatorTok{;}\NormalTok{ ax.set\_ylim(}\OperatorTok{{-}}\NormalTok{lim, lim)}\OperatorTok{;}\NormalTok{ ax.set\_aspect(}\StringTok{\textquotesingle{}equal\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  31-32行: 原点からの線分、33行: 点、34-38行: 式26の重複注記、39-41行:
+  式27の スケール規約（目盛は実値のまま。46行の
+  \texttt{ticklabel\_format} は表記の指数化のみ）。
+\end{itemize}
+
+\paragraph{4.3.3 ループ処理（2）:
+最大角クラスター拡大（式28）}\label{ux30ebux30fcux30d7ux51e6ux74062-ux6700ux5927ux89d2ux30afux30e9ux30b9ux30bfux30fcux62e1ux5927ux5f0f28}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{67}\NormalTok{      z }\OperatorTok{=}\NormalTok{ load(N, }\DecValTok{500}\NormalTok{)}
+    \DecValTok{68}\NormalTok{      amp }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(np.}\BuiltInTok{abs}\NormalTok{(z).}\BuiltInTok{max}\NormalTok{())}
+    \DecValTok{69}\NormalTok{      coarse }\OperatorTok{=}\NormalTok{ \{\}}
+    \DecValTok{70}      \ControlFlowTok{for}\NormalTok{ w }\KeywordTok{in}\NormalTok{ z:}
+    \DecValTok{71}\NormalTok{          key }\OperatorTok{=}\NormalTok{ (}\BuiltInTok{round}\NormalTok{(}\BuiltInTok{float}\NormalTok{(w.real) }\OperatorTok{/}\NormalTok{ amp, }\DecValTok{2}\NormalTok{), }\BuiltInTok{round}\NormalTok{(}\BuiltInTok{float}\NormalTok{(w.imag) }\OperatorTok{/}\NormalTok{ amp, }\DecValTok{2}\NormalTok{))}
+    \DecValTok{72}\NormalTok{          coarse.setdefault(key, []).append(w)}
+    \DecValTok{73}\NormalTok{      mem }\OperatorTok{=} \BuiltInTok{max}\NormalTok{(coarse.values(), key}\OperatorTok{=}\BuiltInTok{len}\NormalTok{)}
+    \DecValTok{74}\NormalTok{      zz }\OperatorTok{=}\NormalTok{ np.array(mem)}
+    \DecValTok{75}\NormalTok{      c }\OperatorTok{=}\NormalTok{ zz.mean()}
+    \DecValTok{76}\NormalTok{      dev }\OperatorTok{=}\NormalTok{ np.}\BuiltInTok{abs}\NormalTok{(zz }\OperatorTok{{-}}\NormalTok{ c)}
+    \DecValTok{77}\NormalTok{      spread }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(dev.}\BuiltInTok{max}\NormalTok{())}
+    \DecValTok{78}\NormalTok{      win }\OperatorTok{=}\NormalTok{ spread }\OperatorTok{*} \FloatTok{1.4} \ControlFlowTok{if}\NormalTok{ spread }\OperatorTok{\textgreater{}} \DecValTok{0} \ControlFlowTok{else}\NormalTok{ amp }\OperatorTok{*} \FloatTok{1e{-}12}
+\NormalTok{...}
+    \DecValTok{90}\NormalTok{      ax.set\_title(}\SpecialStringTok{f\textquotesingle{}N=}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{\}}\SpecialStringTok{: }\SpecialCharTok{\{}\BuiltInTok{len}\NormalTok{(zz)}\SpecialCharTok{\}}\SpecialStringTok{ waves, dev=}\SpecialCharTok{\{}\NormalTok{spread}\SpecialCharTok{:.2e\}}\SpecialStringTok{ (|z|max=}\SpecialCharTok{\{}\NormalTok{amp}\SpecialCharTok{:.2e\}}\SpecialStringTok{)\textquotesingle{}}\NormalTok{, fontsize}\OperatorTok{=}\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  70-73行: 式28の群化と最大クラスター選択、75-78行: 中心・割れ幅・窓幅、
+  90行: パネル題への本数・spread・amp の印字（§6
+  の観察値の出所はこの印字である）。
+\end{itemize}
+
+\paragraph{4.3.4
+終了処理・例外的挙動（数式化しない要素）}\label{ux7d42ux4e86ux51e6ux7406ux4f8bux5916ux7684ux6319ux52d5ux6570ux5f0fux5316ux3057ux306aux3044ux8981ux7d20}
+
+\begin{itemize}
+\tightlist
+\item
+  40行 \texttt{lim\ =\ r*1.15\ if\ r\ \textgreater{}\ 0\ else\ 1.0}:
+  全点が原点の退化ケースへのフォールバック （本データでは発生しない）。
+\item
+  78行
+  \texttt{win\ =\ spread*1.4\ if\ spread\ \textgreater{}\ 0\ else\ amp*1e-12}:
+  クラスターが1点のみ （spread=0）の場合の窓幅フォールバック（N=3
+  で発生: 最大クラスターが1波）。
+\item
+  50-51行・91-92行: 8×5=40 パネル中、未使用の 39・40 番目を
+  \texttt{axis(\textquotesingle{}off\textquotesingle{})}。
+\item
+  例外処理は assert（20・30行）のみで、それ以外の分岐はない。
+\end{itemize}
+
+\subsection{5. 実行結果}\label{ux5b9fux884cux7d50ux679c}
+
+\subsubsection{5.1
+再現コマンド}\label{ux518dux73feux30b3ux30deux30f3ux30c9}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd}\NormalTok{ N3\_N40\_stage123\_sweep\_20260905}
+\ExtensionTok{python3}\NormalTok{ plot\_complex\_plane\_N3\_N40\_stage123\_v1.py}
+\CommentTok{\# または ./run\_all.sh の最終段として実行される}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{5.2 実行環境}\label{ux5b9fux884cux74b0ux5883}
+
+\begin{itemize}
+\tightlist
+\item
+  Python 3.9.6（\texttt{.venv/bin/python3}）、numpy
+  2.0.2、matplotlib（Agg 描画）
+\item
+  macOS 26.3.1（arm64）
+\end{itemize}
+
+\subsubsection{5.3 実行時間}\label{ux5b9fux884cux6642ux9593}
+
+3図の生成合計で\textbf{約1分以内}（支配項は 38×2 回の npz 読込と 780
+本×38 パネルの線分描画）。
+
+\subsubsection{5.4 検証ゲート}\label{ux691cux8a3cux30b2ux30fcux30c8}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+ゲート
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+合格条件
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+実測
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+合否
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+G1: 入力整合 & 各読込で denominator==N・steps==500・z.size==M の assert
+通過 & 全38N×3図で通過（AssertionError なし） & \textbf{PASS} \\
+G2: 完走 & \texttt{ALL\ DONE} 出力・PNG 3枚生成 & 確認 &
+\textbf{PASS} \\
+\end{longtable}
+}
+
+（入力 npz 自体の bit 系譜は第2章 G1〔全228走行の Z{[}0{]} が静的親と
+bit 一致〕で担保済み）
+
+\subsubsection{5.5 データ}\label{ux30c7ux30fcux30bf}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+項目
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+入力 & \texttt{results/hm\_N\{N\}\_den\_\{N\}\_states\_500.npz} ×
+38（第2章成果物、読み出しのみ） \\
+出力先 & パッケージ直下 \\
+step0 図 &
+\texttt{fig\_complex\_plane\_step0\_N3\_N40\_stage123.png}（632,949
+bytes） \\
+終了時図 &
+\texttt{fig\_complex\_plane\_final\_N3\_N40\_stage123.png}（4,582,367
+bytes） \\
+拡大図 &
+\texttt{fig\_complex\_plane\_final\_zoom\_N3\_N40\_stage123.png}（494,906
+bytes） \\
+SHA256 & 同梱 \texttt{SHA256SUMS.txt} を正本とする \\
+\end{longtable}
+}
+
+\subsubsection{5.6 図化}\label{ux56f3ux5316}
+
+上記3枚（8×5 グリッド、各パネル equal aspect・実値目盛）。図の読み方と
+インフレーション図との対応は第2章 §2.6 の表の通り。
+
+\subsection{6.
+実行分析（客観的報告と観察のみ。数値の出所は図中印字＝本プログラムの出力）}\label{ux5b9fux884cux5206ux6790ux5ba2ux89b3ux7684ux5831ux544aux3068ux89b3ux5bdfux306eux307fux6570ux5024ux306eux51faux6240ux306fux56f3ux4e2dux5370ux5b57ux672cux30d7ux30edux30b0ux30e9ux30e0ux306eux51faux529b}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{step0 図}: 全 N=3..40
+  のパネルで、対蹠2ペア（4束）の星型が現れる。束は動径方向に
+  振幅の広がりを持つ。式26の重複注記は小 N の一部（N=4 の x4、N=5〜9 の
+  x2〜x3 など） に現れ、N が大きくなると厳密重複は消える。
+\item
+  \textbf{終了時図}:
+  全パネルで星型は消失し、ほぼ等振幅のリング状配置（小 N では疎な
+  スポーク）になる。式26（12桁丸め）の重複注記は小 N の少数（N=4, 5 の
+  x2）を除き 現れない。
+\item
+  \textbf{拡大図}: 最大角クラスターの本数は 1〜10（N=3: 1波、N=39, 40:
+  10波）、割れ幅 spread は N≥6 で 10\textsuperscript{-7〜10}-4
+  のオーダー（例: N=40 で
+  dev=2.04e-04、\textbar z\textbar max=3.64e-02、 相対
+  \textasciitilde5.6×10\^{}-3）。N=4, 5 のクラスター（2波）のみ dev が
+  10\textsuperscript{-16〜10}-10 と機械精度 レベルで一致する。
+\item
+  観察のまとめ（事実のみ）: 終了時の角クラスターは、N≥6
+  の全域で「厳密な同一複素数 への凝縮」ではなく有限幅の束である。第2章
+  §2.6 の役割分担の通り、これは H⊥/H が
+  測らない終状態の微細組織の記録である。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+（第3章おわり。総括論文は別途）
+
+\end{document}

@@ -1,0 +1,677 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={第1章 静的親データの生成 --- N=3..40 自己無撞着円偏波固有モード親と零閉塞核種},
+  pdfauthor={木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{第1章 静的親データの生成 --- N=3..40
+自己無撞着円偏波固有モード親と零閉塞核種}
+\author{木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020}
+\date{2026年9月5日　Version DOI 10.5281/zenodo.22317636}
+
+\begin{document}
+\maketitle
+
+（N=3..40 段1+2+3 スイープ再現論文・第1章。総括論文と Concept DOI
+10.5281/zenodo.22317635 を共有する。Version DOI
+10.5281/zenodo.22317636）
+
+\subsection{1. 目的}\label{ux76eeux7684}
+
+本章は、第3章のスイープ（N=3..40、段1+2+3
+力学）が入力とする初期データ------ 自己無撞着円偏波固有モード親
+v、零閉塞核種 g、および正規化初期状態 Z0------を、
+乱数种表式から決定的に生成し、静的ファイル（npz）として固定する数値実験を記述する。
+
+生成手順・乱数消費順・全引数は 2026-07-22 の正本走行
+\texttt{自発的分裂予備実験\_v1/run\_spontaneous\_splitting\_largeN\_v1.py}（N=40,
+δ=1e-15, seed=0, tol=1e-12）と同一であり、N=40
+について生成物が正本走行の初期値と bit 一致することを
+合格ゲートとする。本章の目的は完全な再現性と数式・プログラム・データの対応の固定であり、
+物理的解釈は含まない。
+
+\subsection{2. 理論的背景}\label{ux7406ux8ad6ux7684ux80ccux666f}
+
+完全グラフ K\_N の辺集合上の複素関係波を扱う。
+
+\textbf{(式1) 辺集合と次元} --- 辺数 M = N(N−1)/2。辺の順序は上三角順
+（(0,1),(0,2),\ldots,(0,N−1),(1,2),\ldots）で固定する。状態は z ∈
+C\^{}M。
+
+\textbf{(式2) 位相差正弦生成子} --- 辺位相 θ ∈ R\^{}M
+に対し、頂点を共有する辺対 (e,f) 上で
+
+\begin{verbatim}
+K_ef(θ) = cos θ_e sin θ_f − sin θ_e cos θ_f = sin(θ_f − θ_e)
+\end{verbatim}
+
+非隣接では 0、対角 0。K は実反対称（K\^{}T = −K）。
+
+\textbf{(式3) 頂点分解と小空間} --- c\_e = cos θ\_e, s\_e = sin θ\_e
+を頂点へ散布した行列 C, S（M×N）を並べ W = {[}C\textbar S{]}（M×2N）、J
+= {[}{[}0, I\_N{]}, {[}−I\_N, 0{]}{]} とすると
+
+\begin{verbatim}
+K = C S^T − S C^T = W J W^T,   rank K ≤ 2N
+\end{verbatim}
+
+グラム行列 G = W\^{}T W（2N×2N）は、K\_N の線グラフでは頂点対 (k,l)
+の共有辺が 1本（辺 (k,l)）であることから解析的に構成できる:
+
+\begin{verbatim}
+G_cc[k,l] = cos^2θ_{(k,l)},  G_cs[k,l] = cosθ_{(k,l)} sinθ_{(k,l)},  G_ss[k,l] = sin^2θ_{(k,l)}  (k≠l)
+対角は各行の非対角和
+\end{verbatim}
+
+\textbf{(式4) 円偏波固有モード（親）} --- K の非零スペクトルは
+JG（2N×2N）の固有値と対応する。 JG の固有値 λ のうち虚部最小のもの（λ =
+−iσ\_max）の固有ベクトル y から
+
+\begin{verbatim}
+v = W y,   v ← v/‖v‖
+\end{verbatim}
+
+を作る。iK はエルミートなので、v が固有モードなら iKv = μv（μ =
+σ\_max）。
+
+\textbf{(式5) 自己無撞着反復（位相混合）} --- v から読み出した位相
+θ\_new = arg v を混合率 β = 0.5 で現位相に混ぜる:
+
+\begin{verbatim}
+θ ← arg( (1−β) e^{iθ} + β e^{iθ_new} )
+\end{verbatim}
+
+この反復の固定点が「自分の位相から作った生成子の固有モードが自分自身」という
+自己無撞着親である。
+
+\textbf{(式6) 固有モード残差（収束判定量）} ---
+
+\begin{verbatim}
+μ = Re( v† (iKv) ),   r = ‖ iKv − μ v ‖
+\end{verbatim}
+
+r \textless{} tol（本章では tol = 1e-12）で収束と判定する。
+
+\textbf{(式7) 零閉塞核種} --- span(W) の直交補への射影を
+
+\begin{verbatim}
+P⊥ g = g − W q,   q = lstsq(G, W^T g)
+\end{verbatim}
+
+とし、実ガウスベクトル ξ\_1, ξ\_2 から u = P⊥ξ\_1/‖·‖、w =
+正規直交化した P⊥ξ\_2 を作り
+
+\begin{verbatim}
+g = (u + i w)/√2
+\end{verbatim}
+
+とする。u ⊥ w、‖u‖ = ‖w‖ = 1 より g\^{}Tg = (‖u‖\^{}2 − ‖w‖\^{}2)/2 + i
+u·w = 0 が厳密に成り立つ （零閉塞）。また g ∈ span(W)⊥ より g は K
+の値域の外にある。
+
+\textbf{(式8) 初期状態} ---
+
+\begin{verbatim}
+Z0 = (v + δ g) / ‖v + δ g‖,   δ = 1e-15
+\end{verbatim}
+
+\textbf{(式9) 乱数} --- 乱数生成器は numpy PCG64 であり、種は
+
+\begin{verbatim}
+seed(N) = 40260722 + 1000·N + 0
+\end{verbatim}
+
+消費順は「親反復の初期位相 θ\^{}0（m 個の一様乱数、リスタート毎）→
+ξ\_1（m 個の正規乱数） → ξ\_2（m
+個の正規乱数）」で固定。これにより全生成物が N のみの決定的関数になる。
+
+\subsection{3. 実装方法}\label{ux5b9fux88c5ux65b9ux6cd5}
+
+\begin{itemize}
+\tightlist
+\item
+  エンジン \texttt{run\_n\_scaling\_lowrank\_v1.py} は 2026-07-22 正本
+  （\texttt{自発的分裂予備実験\_v1/run\_n\_scaling\_lowrank\_v1.py}）の
+  \textbf{bit 同一コピー}（diff で確認）。 式2〜式7
+  の実装はすべてこのエンジンにあり、本章では\textbf{一切変更せず import
+  で使用}する （独自再実装の禁止規約に従う）。
+\item
+  生成プログラム \texttt{make\_static\_parents\_N3\_N40\_v1.py}
+  は、正本走行 \texttt{run()} 冒頭と同一の 呼び出し列（式9 の rng →
+  make\_parent → zero\_closure\_kernel\_seed → 式8 の正規化）を N=3..40
+  について実行し、npz に保存する。
+\item
+  N=40 は正本静的親（2026-09-04、正本走行との bit 一致検証済み）との bit
+  一致を プログラム内ゲートとして検証する。
+\end{itemize}
+
+\subsection{4. 詳細設計}\label{ux8a73ux7d30ux8a2dux8a08}
+
+\subsubsection{4.1 全体フロー}\label{ux5168ux4f53ux30d5ux30edux30fc}
+
+\begin{verbatim}
+for N in 3..40:
+  [初期化]   LowRankSystem(N) を構築（辺順序・J）、rng = default_rng(40260722+1000N)
+  [ループ処理] make_parent: 自己無撞着反復（式4→式5→式6、最大1200反復×3リスタート）
+             zero_closure_kernel_seed: 種 g の構成（式7）
+  [終了処理] Z0 の構成（式8）→ N=40 ゲート → npz 保存（既存なら検証のみ）→ 台帳へ追記
+台帳 parents_summary.csv を出力、ゲート不合格なら exit 1
+\end{verbatim}
+
+\subsubsection{4.2
+全体データフロー}\label{ux5168ux4f53ux30c7ux30fcux30bfux30d5ux30edux30fc}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{入力}: ファイル入力なし。乱数种表式（式9）と定数のみ。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{SEED\ =\ 0} \ldots{} 種表式の第3項（系列番号）
+  \item
+    \texttt{DELTA\ =\ 1e-15} \ldots{} 式8 の δ（種振幅）
+  \item
+    \texttt{TOL\ =\ 1e-12} \ldots{} 式6 の収束閾値（正本走行の
+    \texttt{-\/-tol=1e-12} と同一）
+  \item
+    \texttt{ITERS\ =\ 1200} \ldots{} 自己無撞着反復の上限（正本走行
+    \texttt{run()} の \texttt{iters=1200} と同一）
+  \item
+    参照入力 \texttt{REF40} \ldots{} N=40 ゲート用の正本静的親
+    npz（読み出しのみ）
+  \end{itemize}
+\item
+  \textbf{処理}: 4.3 の個別処理を N=3..40 で反復。
+\item
+  \textbf{出力}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{parents/parent\_static\_N\{N:05d\}\_makeparent\_20260905.npz}
+    × 38 （フィールド: \texttt{v}, \texttt{g}, \texttt{Z0},
+    \texttt{sigma}（親のσスペクトル）, \texttt{residual}, \texttt{n},
+    \texttt{seed}, \texttt{delta}, \texttt{tol}, \texttt{iters}）
+  \item
+    \texttt{parents/parents\_summary.csv}（列: N, M, parent\_residual,
+    rank\_planes, status）
+  \end{itemize}
+\end{itemize}
+
+定数定義（\texttt{make\_static\_parents\_N3\_N40\_v1.py}）:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{34}\NormalTok{  PARENT\_DIR }\OperatorTok{=}\NormalTok{ os.path.join(BASE\_DIR, }\StringTok{"parents"}\NormalTok{)}
+    \DecValTok{35}\NormalTok{  REF40 }\OperatorTok{=} \StringTok{\textquotesingle{}.../自発的分裂予備実験\_v1\_N40対照実験系\_20260904/largeN\_splitting\_result\_v1/parent\_static\_N40\_makeparent\_20260904.npz\textquotesingle{}}
+    \DecValTok{36}
+    \DecValTok{37}\NormalTok{  SEED }\OperatorTok{=} \DecValTok{0}
+    \DecValTok{38}\NormalTok{  DELTA }\OperatorTok{=} \FloatTok{1e{-}15}
+    \DecValTok{39}\NormalTok{  TOL }\OperatorTok{=} \FloatTok{1e{-}12}
+    \DecValTok{40}\NormalTok{  ITERS }\OperatorTok{=} \DecValTok{1200}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{4.3 個別処理}\label{ux500bux5225ux51e6ux7406}
+
+\paragraph{4.3.1 初期化}\label{ux521dux671fux5316}
+
+エンジン初期化（式1・式3の J）。辺順序は \texttt{np.triu\_indices}
+で固定される。
+
+\texttt{run\_n\_scaling\_lowrank\_v1.py}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{52}  \KeywordTok{def}\NormalTok{ build\_edges(n):}
+    \DecValTok{53}\NormalTok{      ea, eb }\OperatorTok{=}\NormalTok{ np.triu\_indices(n, k}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+    \DecValTok{54}      \ControlFlowTok{return}\NormalTok{ ea.astype(np.int64), eb.astype(np.int64)}
+\NormalTok{...}
+    \DecValTok{60}      \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, n):}
+    \DecValTok{61}          \VariableTok{self}\NormalTok{.n }\OperatorTok{=}\NormalTok{ n}
+    \DecValTok{62}          \VariableTok{self}\NormalTok{.ea, }\VariableTok{self}\NormalTok{.eb }\OperatorTok{=}\NormalTok{ build\_edges(n)}
+    \DecValTok{63}          \VariableTok{self}\NormalTok{.m }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(}\VariableTok{self}\NormalTok{.ea)}
+    \DecValTok{64}          \VariableTok{self}\NormalTok{.J }\OperatorTok{=}\NormalTok{ np.zeros((}\DecValTok{2} \OperatorTok{*}\NormalTok{ n, }\DecValTok{2} \OperatorTok{*}\NormalTok{ n))}
+    \DecValTok{65}          \VariableTok{self}\NormalTok{.J[:n, n:] }\OperatorTok{=}\NormalTok{ np.eye(n)}
+    \DecValTok{66}          \VariableTok{self}\NormalTok{.J[n:, :n] }\OperatorTok{=} \OperatorTok{{-}}\NormalTok{np.eye(n)}
+\end{Highlighting}
+\end{Shaded}
+
+呼び出し側（\texttt{make\_static\_parents\_N3\_N40\_v1.py}、式9）:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{48}\NormalTok{          sys\_lr }\OperatorTok{=}\NormalTok{ LowRankSystem(N)}
+    \DecValTok{49}\NormalTok{          rng }\OperatorTok{=}\NormalTok{ np.random.default\_rng(}\DecValTok{40260722} \OperatorTok{+} \DecValTok{1000} \OperatorTok{*}\NormalTok{ N }\OperatorTok{+}\NormalTok{ SEED)}
+\end{Highlighting}
+\end{Shaded}
+
+\paragraph{4.3.2 ループ処理（1）:
+自己無撞着親の構成（式2〜式6）}\label{ux30ebux30fcux30d7ux51e6ux74061-ux81eaux5df1ux7121ux649eux7740ux89aaux306eux69cbux6210ux5f0f2ux5f0f6}
+
+生成子の構成（式2・式3。\texttt{set\_theta} は c, s と解析的 G
+を保持する）:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{68}      \KeywordTok{def}\NormalTok{ set\_theta(}\VariableTok{self}\NormalTok{, theta):}
+    \DecValTok{69}\NormalTok{          n }\OperatorTok{=} \VariableTok{self}\NormalTok{.n}
+    \DecValTok{70}          \VariableTok{self}\NormalTok{.c }\OperatorTok{=}\NormalTok{ np.cos(theta)}
+    \DecValTok{71}          \VariableTok{self}\NormalTok{.s }\OperatorTok{=}\NormalTok{ np.sin(theta)}
+    \DecValTok{72}\NormalTok{          T }\OperatorTok{=}\NormalTok{ np.zeros((n, n))}
+    \DecValTok{73}\NormalTok{          T[}\VariableTok{self}\NormalTok{.ea, }\VariableTok{self}\NormalTok{.eb] }\OperatorTok{=}\NormalTok{ theta}
+    \DecValTok{74}\NormalTok{          T[}\VariableTok{self}\NormalTok{.eb, }\VariableTok{self}\NormalTok{.ea] }\OperatorTok{=}\NormalTok{ theta}
+    \DecValTok{75}\NormalTok{          CT }\OperatorTok{=}\NormalTok{ np.cos(T)}
+    \DecValTok{76}\NormalTok{          ST }\OperatorTok{=}\NormalTok{ np.sin(T)}
+    \DecValTok{77}\NormalTok{          np.fill\_diagonal(CT, }\FloatTok{0.0}\NormalTok{)}
+    \DecValTok{78}\NormalTok{          np.fill\_diagonal(ST, }\FloatTok{0.0}\NormalTok{)}
+    \DecValTok{79}\NormalTok{          Gcc }\OperatorTok{=}\NormalTok{ CT }\OperatorTok{*}\NormalTok{ CT}
+    \DecValTok{80}\NormalTok{          Gcs }\OperatorTok{=}\NormalTok{ CT }\OperatorTok{*}\NormalTok{ ST}
+    \DecValTok{81}\NormalTok{          Gss }\OperatorTok{=}\NormalTok{ ST }\OperatorTok{*}\NormalTok{ ST}
+    \DecValTok{82}\NormalTok{          np.fill\_diagonal(Gcc, Gcc.}\BuiltInTok{sum}\NormalTok{(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{))}
+    \DecValTok{83}\NormalTok{          np.fill\_diagonal(Gcs, Gcs.}\BuiltInTok{sum}\NormalTok{(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{))}
+    \DecValTok{84}\NormalTok{          np.fill\_diagonal(Gss, Gss.}\BuiltInTok{sum}\NormalTok{(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{))}
+    \DecValTok{85}\NormalTok{          G }\OperatorTok{=}\NormalTok{ np.empty((}\DecValTok{2} \OperatorTok{*}\NormalTok{ n, }\DecValTok{2} \OperatorTok{*}\NormalTok{ n))}
+    \DecValTok{86}\NormalTok{          G[:n, :n] }\OperatorTok{=}\NormalTok{ Gcc}
+    \DecValTok{87}\NormalTok{          G[:n, n:] }\OperatorTok{=}\NormalTok{ Gcs}
+    \DecValTok{88}\NormalTok{          G[n:, :n] }\OperatorTok{=}\NormalTok{ Gcs}
+    \DecValTok{89}\NormalTok{          G[n:, n:] }\OperatorTok{=}\NormalTok{ Gss}
+    \DecValTok{90}          \VariableTok{self}\NormalTok{.G }\OperatorTok{=}\NormalTok{ G}
+\end{Highlighting}
+\end{Shaded}
+
+親反復本体（式4: 169-172 行、式5: 173-175 行、式6 の判定: 176-181 行）:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+   \DecValTok{158}  \KeywordTok{def}\NormalTok{ make\_parent(sys\_lr, rng, iters}\OperatorTok{=}\DecValTok{400}\NormalTok{, beta}\OperatorTok{=}\FloatTok{0.5}\NormalTok{, tol}\OperatorTok{=}\FloatTok{1e{-}8}\NormalTok{, restarts}\OperatorTok{=}\DecValTok{3}\NormalTok{):}
+   \DecValTok{159}      \StringTok{"""自己無撞着円偏波固有モード親。小空間（JG）の固有対で反復。}
+\StringTok{   160}
+\StringTok{   161      収束判定（残差 \textless{} tol）付き。停滞時はランダム初期位相からリスタート。}
+\StringTok{   162      """}
+   \DecValTok{163}\NormalTok{      best }\OperatorTok{=}\NormalTok{ (}\VariableTok{None}\NormalTok{, np.inf, }\VariableTok{None}\NormalTok{)}
+   \DecValTok{164}      \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(restarts):}
+   \DecValTok{165}\NormalTok{          theta }\OperatorTok{=}\NormalTok{ rng.uniform(}\FloatTok{0.0}\NormalTok{, }\FloatTok{2.0} \OperatorTok{*}\NormalTok{ np.pi, sys\_lr.m)}
+   \DecValTok{166}\NormalTok{          v }\OperatorTok{=} \VariableTok{None}
+   \DecValTok{167}          \ControlFlowTok{for}\NormalTok{ it }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(iters):}
+   \DecValTok{168}\NormalTok{              sys\_lr.set\_theta(theta)}
+   \DecValTok{169}\NormalTok{              ev, EV }\OperatorTok{=}\NormalTok{ np.linalg.eig(sys\_lr.J }\OperatorTok{@}\NormalTok{ sys\_lr.G)}
+   \DecValTok{170}\NormalTok{              idx }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(np.argmin(ev.imag))  }\CommentTok{\# λ = {-}iσ\_max}
+   \DecValTok{171}\NormalTok{              v }\OperatorTok{=}\NormalTok{ sys\_lr.w(EV[:, idx].astype(}\BuiltInTok{complex}\NormalTok{))}
+   \DecValTok{172}\NormalTok{              v }\OperatorTok{=}\NormalTok{ v }\OperatorTok{/}\NormalTok{ np.linalg.norm(v)}
+   \DecValTok{173}\NormalTok{              theta\_new }\OperatorTok{=}\NormalTok{ np.angle(v)}
+   \DecValTok{174}\NormalTok{              mix }\OperatorTok{=}\NormalTok{ (}\FloatTok{1.0} \OperatorTok{{-}}\NormalTok{ beta) }\OperatorTok{*}\NormalTok{ np.exp(}\OtherTok{1j} \OperatorTok{*}\NormalTok{ theta) }\OperatorTok{+}\NormalTok{ beta }\OperatorTok{*}\NormalTok{ np.exp(}\OtherTok{1j} \OperatorTok{*}\NormalTok{ theta\_new)}
+   \DecValTok{175}\NormalTok{              theta }\OperatorTok{=}\NormalTok{ np.angle(mix)}
+   \DecValTok{176}              \ControlFlowTok{if}\NormalTok{ it }\OperatorTok{\%} \DecValTok{10} \OperatorTok{==} \DecValTok{9}\NormalTok{:}
+   \DecValTok{177}\NormalTok{                  sys\_lr.set\_theta(np.angle(v))}
+   \DecValTok{178}\NormalTok{                  res\_now }\OperatorTok{=}\NormalTok{ \_eigenmode\_residual(sys\_lr, v)}
+   \DecValTok{179}\NormalTok{                  progress(}\SpecialStringTok{f"親構成 iter=}\SpecialCharTok{\{}\NormalTok{it}\OperatorTok{+}\DecValTok{1}\SpecialCharTok{\}}\SpecialStringTok{ 残差=}\SpecialCharTok{\{}\NormalTok{res\_now}\SpecialCharTok{:.2e\}}\SpecialStringTok{"}\NormalTok{)}
+   \DecValTok{180}                  \ControlFlowTok{if}\NormalTok{ res\_now }\OperatorTok{\textless{}}\NormalTok{ tol:}
+   \DecValTok{181}                      \ControlFlowTok{break}
+   \DecValTok{182}\NormalTok{          sys\_lr.set\_theta(np.angle(v))}
+   \DecValTok{183}\NormalTok{          residual }\OperatorTok{=}\NormalTok{ \_eigenmode\_residual(sys\_lr, v)}
+   \DecValTok{184}          \ControlFlowTok{if}\NormalTok{ residual }\OperatorTok{\textless{}}\NormalTok{ best[}\DecValTok{1}\NormalTok{]:}
+   \DecValTok{185}\NormalTok{              best }\OperatorTok{=}\NormalTok{ (v, residual, sys\_lr.sigma\_spectrum())}
+   \DecValTok{186}          \ControlFlowTok{if}\NormalTok{ residual }\OperatorTok{\textless{}}\NormalTok{ tol:}
+   \DecValTok{187}              \ControlFlowTok{break}
+   \DecValTok{188}\NormalTok{      v, residual, sig }\OperatorTok{=}\NormalTok{ best}
+   \DecValTok{189}\NormalTok{      sys\_lr.set\_theta(np.angle(v))}
+   \DecValTok{190}      \ControlFlowTok{return}\NormalTok{ v, residual, sig}
+\end{Highlighting}
+\end{Shaded}
+
+残差（式6）:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+   \DecValTok{151}  \KeywordTok{def}\NormalTok{ \_eigenmode\_residual(sys\_lr, v):}
+   \DecValTok{152}      \StringTok{"""カイラリティ非依存の固有モード残差: μ = v†(iKv) に対する ‖iKv {-} μv‖。"""}
+   \DecValTok{153}\NormalTok{      kv }\OperatorTok{=}\NormalTok{ sys\_lr.kmatvec(v)}
+   \DecValTok{154}\NormalTok{      mu }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(np.real(np.conj(v) }\OperatorTok{@}\NormalTok{ (}\OtherTok{1j} \OperatorTok{*}\NormalTok{ kv)))}
+   \DecValTok{155}      \ControlFlowTok{return} \BuiltInTok{float}\NormalTok{(np.linalg.norm(}\OtherTok{1j} \OperatorTok{*}\NormalTok{ kv }\OperatorTok{{-}}\NormalTok{ mu }\OperatorTok{*}\NormalTok{ v))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{停止条件・例外的挙動（数式化しない要素）}: -
+収束判定は\textbf{10反復ごと}（176 行
+\texttt{it\ \%\ 10\ ==\ 9}）にのみ行われる。したがって実際の 反復回数は
+10 の倍数で終わる。 - 上限 \texttt{iters=1200} に達しても r \textless{}
+tol にならない場合は例外を投げず、 リスタート（165 行、rng
+から新しい初期位相を消費）へ進む。最大 \texttt{restarts=3}。
+最良残差の解が採用される（163, 184-185
+行）。\textbf{リスタートが起きると rng 消費数が
+変わる}ため、再現時は同一 tol の使用が必須である（本走行では全 N
+が第1リスタート内で 収束し、追加消費は発生していない。根拠: N=40
+の生成物が、同条件の正本と bit 一致）。 - \texttt{progress} 行（179
+行）は stderr 出力のみで演算に影響しない。
+
+\paragraph{4.3.3 ループ処理（2）:
+零閉塞核種の構成（式7）}\label{ux30ebux30fcux30d7ux51e6ux74062-ux96f6ux9589ux585eux6838ux7a2eux306eux69cbux6210ux5f0f7}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+   \DecValTok{193}  \KeywordTok{def}\NormalTok{ zero\_closure\_kernel\_seed(sys\_lr, rng):}
+   \DecValTok{194}      \StringTok{"""span(W) の直交補内の実正規直交対 (u,w) から g=(u+iw)/√2。g\^{}T g = 0 厳密。"""}
+   \DecValTok{195}\NormalTok{      m }\OperatorTok{=}\NormalTok{ sys\_lr.m}
+   \DecValTok{196}      \KeywordTok{def}\NormalTok{ project\_out(g):}
+   \DecValTok{197}\NormalTok{          q }\OperatorTok{=}\NormalTok{ np.linalg.lstsq(sys\_lr.G, sys\_lr.wt(g), rcond}\OperatorTok{=}\VariableTok{None}\NormalTok{)[}\DecValTok{0}\NormalTok{]}
+   \DecValTok{198}          \ControlFlowTok{return}\NormalTok{ g }\OperatorTok{{-}}\NormalTok{ sys\_lr.w(q)}
+   \DecValTok{199}\NormalTok{      u }\OperatorTok{=}\NormalTok{ project\_out(rng.normal(size}\OperatorTok{=}\NormalTok{m))}
+   \DecValTok{200}\NormalTok{      u }\OperatorTok{=}\NormalTok{ u }\OperatorTok{/}\NormalTok{ np.linalg.norm(u)}
+   \DecValTok{201}\NormalTok{      w }\OperatorTok{=}\NormalTok{ project\_out(rng.normal(size}\OperatorTok{=}\NormalTok{m))}
+   \DecValTok{202}\NormalTok{      w }\OperatorTok{=}\NormalTok{ w }\OperatorTok{{-}}\NormalTok{ (w }\OperatorTok{@}\NormalTok{ u) }\OperatorTok{*}\NormalTok{ u}
+   \DecValTok{203}\NormalTok{      w }\OperatorTok{=}\NormalTok{ w }\OperatorTok{/}\NormalTok{ np.linalg.norm(w)}
+   \DecValTok{204}      \ControlFlowTok{return}\NormalTok{ (u }\OperatorTok{+} \OtherTok{1j} \OperatorTok{*}\NormalTok{ w) }\OperatorTok{/}\NormalTok{ math.sqrt(}\FloatTok{2.0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  射影（式7 の P⊥）は正規方程式 G q = W\^{}T g を
+  \texttt{lstsq}（rcond=None）で解く（197 行）。 G が特異に近い場合も
+  lstsq は最小二乗解を返すため例外は生じない。
+\item
+  この時点の G は、make\_parent 終了時に設定された \textbf{θ = arg
+  v}（189 行）のものである。
+  すなわち種は「親の生成子の値域の直交補」から取られる。
+\end{itemize}
+
+\paragraph{4.3.4 終了処理: Z0
+構成・ゲート・保存・台帳}\label{ux7d42ux4e86ux51e6ux7406-z0-ux69cbux6210ux30b2ux30fcux30c8ux4fddux5b58ux53f0ux5e33}
+
+\texttt{make\_static\_parents\_N3\_N40\_v1.py}（式8: 52-53 行）:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{50}\NormalTok{          v, residual, sig }\OperatorTok{=}\NormalTok{ make\_parent(sys\_lr, rng, iters}\OperatorTok{=}\NormalTok{ITERS, tol}\OperatorTok{=}\NormalTok{TOL)}
+    \DecValTok{51}\NormalTok{          g }\OperatorTok{=}\NormalTok{ zero\_closure\_kernel\_seed(sys\_lr, rng)}
+    \DecValTok{52}\NormalTok{          Z }\OperatorTok{=}\NormalTok{ v }\OperatorTok{+}\NormalTok{ DELTA }\OperatorTok{*}\NormalTok{ g}
+    \DecValTok{53}\NormalTok{          Z }\OperatorTok{=}\NormalTok{ Z }\OperatorTok{/}\NormalTok{ np.linalg.norm(Z)}
+    \DecValTok{54}\NormalTok{          converged }\OperatorTok{=} \BuiltInTok{bool}\NormalTok{(residual }\OperatorTok{\textless{}} \FloatTok{1e{-}8}\NormalTok{)}
+    \DecValTok{55}\NormalTok{          status }\OperatorTok{=} \StringTok{"ok"} \ControlFlowTok{if}\NormalTok{ converged }\ControlFlowTok{else} \StringTok{"NOT\_CONVERGED"}
+    \DecValTok{56}
+    \DecValTok{57}          \ControlFlowTok{if}\NormalTok{ N }\OperatorTok{==} \DecValTok{40}\NormalTok{:}
+    \DecValTok{58}\NormalTok{              ref }\OperatorTok{=}\NormalTok{ np.load(REF40)}
+    \DecValTok{59}\NormalTok{              same }\OperatorTok{=} \BuiltInTok{all}\NormalTok{(np.array\_equal(x, ref[k]) }\ControlFlowTok{for}\NormalTok{ x, k }\KeywordTok{in}\NormalTok{ ((v, }\StringTok{\textquotesingle{}v\textquotesingle{}}\NormalTok{), (g, }\StringTok{\textquotesingle{}g\textquotesingle{}}\NormalTok{), (Z, }\StringTok{\textquotesingle{}Z0\textquotesingle{}}\NormalTok{)))}
+    \DecValTok{60}              \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"GATE N=40 v/g/Z0 bit{-}identical to canonical static parent: }\SpecialCharTok{\{}\NormalTok{same}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+    \DecValTok{61}              \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ same:}
+    \DecValTok{62}\NormalTok{                  gate\_ok }\OperatorTok{=} \VariableTok{False}
+    \DecValTok{63}\NormalTok{                  status }\OperatorTok{=} \StringTok{"GATE\_FAIL"}
+    \DecValTok{64}
+    \DecValTok{65}          \ControlFlowTok{if}\NormalTok{ os.path.exists(out\_path):}
+    \DecValTok{66}\NormalTok{              prev }\OperatorTok{=}\NormalTok{ np.load(out\_path)}
+    \DecValTok{67}\NormalTok{              same\_prev }\OperatorTok{=} \BuiltInTok{all}\NormalTok{(np.array\_equal(x, prev[k]) }\ControlFlowTok{for}\NormalTok{ x, k }\KeywordTok{in}\NormalTok{ ((v, }\StringTok{\textquotesingle{}v\textquotesingle{}}\NormalTok{), (g, }\StringTok{\textquotesingle{}g\textquotesingle{}}\NormalTok{), (Z, }\StringTok{\textquotesingle{}Z0\textquotesingle{}}\NormalTok{)))}
+    \DecValTok{68}              \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"N=}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{\}}\SpecialStringTok{: 既存ファイルあり（上書きせず検証のみ）一致=}\SpecialCharTok{\{}\NormalTok{same\_prev}\SpecialCharTok{\}}\SpecialStringTok{ residual=}\SpecialCharTok{\{}\NormalTok{residual}\SpecialCharTok{:.3e\}}\SpecialStringTok{ }\SpecialCharTok{\{}\NormalTok{status}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+    \DecValTok{69}              \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ same\_prev:}
+    \DecValTok{70}\NormalTok{                  gate\_ok }\OperatorTok{=} \VariableTok{False}
+    \DecValTok{71}\NormalTok{                  status }\OperatorTok{=} \StringTok{"EXISTING\_MISMATCH"}
+    \DecValTok{72}          \ControlFlowTok{else}\NormalTok{:}
+    \DecValTok{73}\NormalTok{              np.savez\_compressed(out\_path, v}\OperatorTok{=}\NormalTok{v, g}\OperatorTok{=}\NormalTok{g, Z0}\OperatorTok{=}\NormalTok{Z,}
+    \DecValTok{74}\NormalTok{                                  sigma}\OperatorTok{=}\NormalTok{sig, residual}\OperatorTok{=}\NormalTok{np.float64(residual),}
+    \DecValTok{75}\NormalTok{                                  n}\OperatorTok{=}\NormalTok{np.int64(N), seed}\OperatorTok{=}\NormalTok{np.int64(SEED),}
+    \DecValTok{76}\NormalTok{                                  delta}\OperatorTok{=}\NormalTok{np.float64(DELTA), tol}\OperatorTok{=}\NormalTok{np.float64(TOL),}
+    \DecValTok{77}\NormalTok{                                  iters}\OperatorTok{=}\NormalTok{np.int64(ITERS))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{81}      \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(os.path.join(PARENT\_DIR, }\StringTok{"parents\_summary.csv"}\NormalTok{), }\StringTok{"w"}\NormalTok{, newline}\OperatorTok{=}\StringTok{""}\NormalTok{) }\ImportTok{as}\NormalTok{ fh:}
+    \DecValTok{82}\NormalTok{          w }\OperatorTok{=}\NormalTok{ csv.writer(fh)}
+    \DecValTok{83}\NormalTok{          w.writerow([}\StringTok{"N"}\NormalTok{, }\StringTok{"M"}\NormalTok{, }\StringTok{"parent\_residual"}\NormalTok{, }\StringTok{"rank\_planes"}\NormalTok{, }\StringTok{"status"}\NormalTok{])}
+    \DecValTok{84}\NormalTok{          w.writerows(rows)}
+    \DecValTok{85}\NormalTok{      n\_bad }\OperatorTok{=} \BuiltInTok{sum}\NormalTok{(}\DecValTok{1} \ControlFlowTok{for}\NormalTok{ r }\KeywordTok{in}\NormalTok{ rows }\ControlFlowTok{if}\NormalTok{ r[}\DecValTok{4}\NormalTok{] }\OperatorTok{!=} \StringTok{"ok"}\NormalTok{)}
+    \DecValTok{86}      \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"summary: }\SpecialCharTok{\{}\BuiltInTok{len}\NormalTok{(rows)}\SpecialCharTok{\}}\SpecialStringTok{ parents, }\SpecialCharTok{\{}\NormalTok{n\_bad}\SpecialCharTok{\}}\SpecialStringTok{ non{-}ok"}\NormalTok{)}
+    \DecValTok{87}      \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ gate\_ok:}
+    \DecValTok{88}          \BuiltInTok{print}\NormalTok{(}\StringTok{"GATE FAIL"}\NormalTok{)}
+    \DecValTok{89}\NormalTok{          sys.exit(}\DecValTok{1}\NormalTok{)}
+    \DecValTok{90}      \BuiltInTok{print}\NormalTok{(}\StringTok{"STATIC PARENTS DONE"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{例外的挙動}: -
+既存ファイルは\textbf{上書きしない}。既存がある場合は再生成値との bit
+一致検証のみ行い （65-71 行）、不一致は EXISTING\_MISMATCH
+としてゲート不合格にする。 - 収束不良（residual ≥ 1e-8）は例外ではなく
+NOT\_CONVERGED として台帳に明示される （54-55 行）。 -
+いずれかのゲート不合格で終了コード 1（87-89 行）。
+
+\subsection{5. 実行結果}\label{ux5b9fux884cux7d50ux679c}
+
+\subsubsection{5.1
+再現コマンド}\label{ux518dux73feux30b3ux30deux30f3ux30c9}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd}\NormalTok{ N3\_N40\_stage123\_sweep\_20260905}
+\ExtensionTok{python3}\NormalTok{ make\_static\_parents\_N3\_N40\_v1.py      }\CommentTok{\# 単独実行}
+\CommentTok{\# または ./run\_all.sh の第1段として実行される}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{5.2 実行環境}\label{ux5b9fux884cux74b0ux5883}
+
+\begin{itemize}
+\tightlist
+\item
+  Python 3.9.6（\texttt{.venv/bin/python3}）
+\item
+  numpy 2.0.2（BLAS/LAPACK: macOS Accelerate）
+\item
+  macOS 26.3.1（arm64, Darwin 25.x）
+\item
+  乱数: numpy \texttt{default\_rng}（PCG64）
+\end{itemize}
+
+\subsubsection{5.3 実行時間}\label{ux5b9fux884cux6642ux9593}
+
+全38親（生成・保存・検証・台帳出力込み）で\textbf{おおよそ30秒〜1分}。
+1親あたりの支配項は JG（2N×2N）の固有分解×反復数で、N=40
+は約0.15秒/親構成。
+
+\subsubsection{5.4 検証ゲート}\label{ux691cux8a3cux30b2ux30fcux30c8}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+ゲート
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+合格条件
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+実測
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+合否
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+G1: N=40 系譜 & 生成した v・g・Z0 が正本静的親（20260904、7月正本走行と
+bit 一致検証済み）と \texttt{np.array\_equal} で一致 & 一致 &
+\textbf{PASS} \\
+G1' : ファイル同一性 & （観察）N=40 npz の SHA256
+が正本静的親ファイルと一致 & 両者 \texttt{eadc87ee…} で同一 &
+\textbf{PASS} \\
+G2: 収束 & 全 N で residual \textless{} 1e-8（status=ok） & 38/38
+ok、residual ∈ {[}3.54e-14, 9.42e-13{]} & \textbf{PASS} \\
+G3: 実行 & 終了コード 0・\texttt{STATIC\ PARENTS\ DONE} 出力 & 確認 &
+\textbf{PASS} \\
+\end{longtable}
+}
+
+\subsubsection{5.5 データ}\label{ux30c7ux30fcux30bf}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+項目
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+フォルダ & \texttt{N3\_N40\_stage123\_sweep\_20260905/parents/} \\
+静的親 npz &
+\texttt{parent\_static\_N00003..N00040\_makeparent\_20260905.npz}（38個） \\
+サイズ & 約2.0KB（N=3、1,980 bytes）〜約37KB（N=40、37,396
+bytes）、合計約636KB \\
+台帳 & \texttt{parents\_summary.csv}（38行: N, M, parent\_residual,
+rank\_planes, status） \\
+SHA256 & 全ファイルの正本値は同梱 \texttt{SHA256SUMS.txt}
+に収録。代表値: \\
+\end{longtable}
+}
+
+\begin{verbatim}
+c3230103e82976decde7bbe6fe5df545d12804127cf274f0d385e044ce544ca2  make_static_parents_N3_N40_v1.py
+ba0fc19b03caf06d16e97e2cd5da499ed2ed8e95288f6dbf2062bedcaf11176d  run_n_scaling_lowrank_v1.py
+eadc87ee0276554c7ab02e571e05200f0b719c1250b82607c7546b30a4d6f232  parents/parent_static_N00040_makeparent_20260905.npz
+f384d9e90cc0a3a87a82a9a6928c9996d51bd0f83862c79f2cfe8a5ce182bbca  parents/parents_summary.csv
+\end{verbatim}
+
+\subsubsection{5.6 図化}\label{ux56f3ux5316}
+
+本章では図を生成しない（初期データの複素平面図は第4章の step0 グリッド図
+\texttt{fig\_complex\_plane\_step0\_N3\_N40\_stage123.png}
+が本章の生成物を可視化する）。
+
+\subsection{6.
+実行分析（客観的報告と観察のみ）}\label{ux5b9fux884cux5206ux6790ux5ba2ux89b3ux7684ux5831ux544aux3068ux89b3ux5bdfux306eux307f}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  全38親が第1リスタート内で収束し、固有モード残差は
+  3.54×10\textsuperscript{-14〜9.42×10}-13 の範囲に 収まった（tol=1e-12
+  に対し全て同桁以下）。NOT\_CONVERGED・GATE\_FAIL は 0 件。
+\item
+  N=40 の生成物は、独立に（2026-09-04
+  に別フォルダで）生成された正本静的親と 配列レベルで bit 一致し、npz
+  ファイル自体の SHA256 も一致した。同一 seed・同一
+  エンジン・同一環境の下で、生成が完全に決定的であることの直接の証拠である。
+\item
+  親のσスペクトルの非零平面数（rank\_planes）は N=3: 2、N=4: 2、N=5:
+  4、N=6: 6、 N≥7: N と観測された（台帳 \texttt{parents\_summary.csv}
+  参照）。
+\item
+  ファイルサイズは M = N(N−1)/2 にほぼ比例して増加した。
+\item
+  乱数消費は「一様 m 個＋正規 2m
+  個」（リスタートなしの場合）で、全走行がこの
+  最小消費で完了している（項目2の bit 一致がその傍証）。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+（第1章おわり。第2章「段1+2+3 力学の定義と由来」に続く）
+
+\end{document}

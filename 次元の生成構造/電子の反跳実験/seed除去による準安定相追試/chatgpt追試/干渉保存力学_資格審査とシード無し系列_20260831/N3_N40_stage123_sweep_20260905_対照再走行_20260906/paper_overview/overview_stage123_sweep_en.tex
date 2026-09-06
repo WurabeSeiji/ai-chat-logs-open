@@ -1,0 +1,308 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Stage Decomposition of the Self-Consistent Inflation Mechanism and Its Full-Range Reproduction for N=3..40 --- A Reproduction Specification (Overview)},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Stage Decomposition of the Self-Consistent Inflation Mechanism
+and Its Full-Range Reproduction for N=3..40 --- A Reproduction
+Specification (Overview)}
+\author{Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020}
+\date{September 5, 2026 Version DOI 10.5281/zenodo.22317636}
+
+\begin{document}
+\maketitle
+
+\textbf{Author:} Noriaki Kihara\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Date:} September 5, 2026\\
+\textbf{Version DOI:} 10.5281/zenodo.22317636\\
+\textbf{Concept DOI:} 10.5281/zenodo.22317635 (this overview and
+Chapters 1--3 share this Concept DOI)\\
+\textbf{Positioning:} Reproduction specification (an overview plus three
+chapter papers). Contains no physical interpretation
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Purpose}\label{purpose}
+
+The purpose of this set of specifications is \textbf{to fix, in a
+reproducible form, the mechanism by which inflation-like development
+occurs --- the phenomenon in which a seed too small to be measured
+(dormant fraction H⊥/H \textasciitilde{} 10\^{}-30) is exponentially
+amplified by the dynamics alone over dozens of orders of magnitude until
+saturation.}
+
+For this phenomenon, observed at N = 40, 300, 1000 in the canonical
+paper of 2026-07-22 (``Onset and Threefold Classification of Outcomes of
+Spontaneous Splitting'', Version DOI 10.5281/zenodo.21486234 / Concept
+DOI 10.5281/zenodo.21486233), the components of the dynamics were
+isolated one factor at a time. The confirmed necessary condition is the
+simultaneous presence of \textbf{stage 2 (amplitude normalization of the
+generator) and stage 3 (removal of the cos symmetric part of the
+generator = real orthogonal rotation)} (the audit record of the deletion
+controls is Chapter 2, Appendix A). That composition (the stage-1+2+3
+dynamics) was then swept from static parents over the whole range
+N=3..40, fixing its universality (Chapter 2).
+
+This overview gives only the purpose and the inventory of the uploaded
+structure. \textbf{The main chapter is Chapter 2}; the
+equation--program--data correspondences, the verification gates, and the
+observations are all recorded in the chapter papers.
+
+\subsection{2. Paper Structure (under this Concept
+DOI)}\label{paper-structure-under-this-concept-doi}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Part
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+File
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Content
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Equations
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Overview (this document) &
+\texttt{paper\_overview/overview\_stage123\_sweep\_en.md} & purpose,
+structure, upload inventory & --- \\
+Chapter 1 &
+\texttt{paper\_ch1\_static\_parents/ch1\_static\_parents\_en.md} &
+generation of the static parent data (seed formula, make\_parent,
+zero-closure seed, Z0; bit-identity gate against the July canonical) &
+Eqs. 1--9 \\
+\textbf{Chapter 2 (main)} &
+\texttt{paper\_ch2\_sweep\_dynamics/ch2\_sweep\_stage123\_en.md} &
+definition of the stage-1+2+3 dynamics (mathematics of the old dynamics;
+differences of the old/new rotation maps; design hypothesis of the
+denominators; the dormant fraction as indicator; correspondence with the
+complex-plane figures §2.6) and the N=3..40 sweep. Appendix A = audit
+table of deletion controls; Appendix B = program lineage & Eqs.
+10--25 \\
+Chapter 3 &
+\texttt{paper\_ch3\_complex\_plane/ch3\_complex\_plane\_en.md} &
+implementation and observations of the three complex-plane readout
+figures (step 0, final step, zoom into the condensed center) & Eqs.
+26--28 \\
+\end{longtable}
+}
+
+Japanese originals (\texttt{*\_ja.md}) are included alongside the
+English versions.
+
+\subsection{3. Zenodo Upload Inventory}\label{zenodo-upload-inventory}
+
+\subsubsection{3.1 Papers}\label{papers}
+
+\begin{itemize}
+\tightlist
+\item
+  The overview and Chapters 1--3 as md (Japanese originals and English
+  versions) and tex/PDF (generated at publication).
+\end{itemize}
+
+\subsubsection{\texorpdfstring{3.2 Main Package
+\texttt{N3\_N40\_stage123\_sweep\_20260905/}
+(\textasciitilde476MB)}{3.2 Main Package N3\_N40\_stage123\_sweep\_20260905/ (\textasciitilde476MB)}}\label{main-package-n3_n40_stage123_sweep_20260905-476mb}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Category
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Content
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Programs (6) & \texttt{make\_static\_parents\_N3\_N40\_v1.py} (parent
+generation), \texttt{run\_N3\_N40\_stage123\_v1.py} (sweep body),
+\texttt{check\_sweep\_inputs\_v1.py} (input gate),
+\texttt{analyze\_sweep\_summary\_v1.py} (aggregation),
+\texttt{plot\_complex\_plane\_N3\_N40\_stage123\_v1.py} (plotting),
+\texttt{run\_n\_scaling\_lowrank\_v1.py} (bit-identical copy of the July
+canonical engine) \\
+One-shot reproduction & \texttt{run\_all.sh} (parents → sweep → gate →
+aggregation → plots) \\
+Initial data & \texttt{parents/}: 38 static-parent npz + ledger
+\texttt{parents\_summary.csv} (\textasciitilde636KB) \\
+Result data & \texttt{results/}: 228 state npz (all 501 steps × all
+waves saved), timeseries CSV (114,228 rows), summary CSV (228 rows),
+aggregation JSON, RUN\_METADATA \\
+Figures (4) & the H⊥/H denominator-control figure (target figure) and
+the three complex-plane grids (step0 / final / zoom) \\
+Ledgers & \texttt{README.md} (progress record, chapter registry),
+\texttt{SHA256SUMS.txt} (canonical SHA256 of all files) \\
+\end{longtable}
+}
+
+\subsubsection{3.3 Companion Folders for Reproducibility (the artifacts
+behind Appendices A and
+B)}\label{companion-folders-for-reproducibility-the-artifacts-behind-appendices-a-and-b}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Folder
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Content
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Size
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{ChatGPT\_denominator\_controls\_N40\_selfcontrol\_20260904/} &
+the complete artifacts of the N=40 single-factor experiments that fixed
+the stage composition (62 files): self-control, static-parent
+substitution (stage-1 baseline), stage 2, stage 3, stage-2 deletion,
+stage-2-at-init-only, σ clock --- each with programs / results / figures
+/ README / SHA256SUMS & \textasciitilde238MB \\
+\texttt{自発的分裂予備実験\_v1\_N40対照実験系\_20260904/} & the gated
+reproduction of the July canonical N=40 run (fcurve bit-identical, all
+rows), the canonical static parent
+\texttt{parent\_static\_N40\_makeparent\_20260904.npz}, complex-plane
+figures, and the inflation figure & \textasciitilde1.5MB \\
+\end{longtable}
+}
+
+\subsubsection{3.4 Previously Published Items Referenced by Citation
+(not
+re-uploaded)}\label{previously-published-items-referenced-by-citation-not-re-uploaded}
+
+\begin{itemize}
+\tightlist
+\item
+  The July canonical paper, programs, and figures: ``Onset and Threefold
+  Classification of Outcomes of Spontaneous Splitting in N-body
+  Relation-Wave Closed Systems'' v1.0 (2026-07-22). \textbf{Version DOI
+  10.5281/zenodo.21486234 / Concept DOI 10.5281/zenodo.21486233.} The
+  record already bundles the reproduction-program zip
+  (\texttt{run\_spontaneous\_splitting\_largeN\_v1.py}, the engine,
+  etc.) and the figures.
+\end{itemize}
+
+\subsection{4. The Backbone of Verification --- the Chain of
+Gates}\label{the-backbone-of-verification-the-chain-of-gates}
+
+The reproducibility of this set is connected to the July canonical by
+the following bit-level chain (definitions and measurements in the
+respective chapters):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{July canonical ⇔ reproduction run}: the unmodified rerun in
+  \texttt{自発的分裂予備実験\_v1\_N40対照実験系\_20260904} matches the
+  July fcurve bit-identically over all 3,512 rows (GATE1/GATE2).
+\item
+  \textbf{Reproduction run ⇔ static parent}: the v, g, Z0 of the
+  canonical static parent are bit-identical to the initial values of the
+  July run (Chapter 1, G1). The N=40 parent generated in Chapter 1 is
+  bit-identical to the canonical static parent (the npz SHA256 also
+  coincide).
+\item
+  \textbf{Static parents ⇔ sweep}: the stored \texttt{Z{[}0{]}} of all
+  228 runs are bit-identical to the static parents' \texttt{Z0} for each
+  N (Chapter 2, G1; checked 228 / MISMATCH 0).
+\end{enumerate}
+
+The canonical SHA256 of every file is the \texttt{SHA256SUMS.txt}
+bundled with each package.
+
+\subsection{5. Execution Environment
+(common)}\label{execution-environment-common}
+
+\begin{itemize}
+\tightlist
+\item
+  Python 3.9.6 (venv), numpy 2.0.2 (BLAS/LAPACK: macOS Accelerate),
+  matplotlib
+\item
+  macOS 26.3.1 (arm64, Darwin 25.x); RNG: numpy PCG64
+  (\texttt{default\_rng})
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+(End of the overview. For all details, see Chapters 1--3 and the bundled
+README and SHA256SUMS files.)
+
+\end{document}

@@ -1,0 +1,708 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Chapter 1: Generation of the Static Parent Data --- Self-Consistent Circularly Polarized Eigenmode Parents and Zero-Closure Kernel Seeds for N=3..40},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Chapter 1: Generation of the Static Parent Data ---
+Self-Consistent Circularly Polarized Eigenmode Parents and Zero-Closure
+Kernel Seeds for N=3..40}
+\author{Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020}
+\date{September 5, 2026 Version DOI 10.5281/zenodo.22317636}
+
+\begin{document}
+\maketitle
+
+(Chapter 1 of the reproduction papers for the N=3..40 stage-1+2+3 sweep.
+Shares the Concept DOI 10.5281/zenodo.22317635 with the overview paper;
+Version DOI 10.5281/zenodo.22317636. Code blocks are quoted verbatim
+from the programs; comments inside them remain in Japanese, as in the
+originals.)
+
+\subsection{1. Purpose}\label{purpose}
+
+This chapter describes the numerical experiment that deterministically
+generates, from a random-seed formula, the initial data used by the
+sweep of Chapter 2 --- the self-consistent circularly polarized
+eigenmode parent v, the zero-closure kernel seed g, and the normalized
+initial state Z0 --- and fixes them as static files (npz).
+
+The generation procedure, the order of random-number consumption, and
+all arguments are identical to the canonical run of 2026-07-22
+(\texttt{自発的分裂予備実験\_v1/run\_spontaneous\_splitting\_largeN\_v1.py};
+N=40, δ=1e-15, seed=0, tol=1e-12), and the pass gate is that, for N=40,
+the generated objects are bit-identical to the initial values of the
+canonical run. The purpose of this chapter is complete reproducibility
+and the fixing of the correspondence among equations, programs, and
+data; it contains no physical interpretation.
+
+\subsection{2. Theoretical Background}\label{theoretical-background}
+
+We work with complex relation waves on the edge set of the complete
+graph K\_N.
+
+\textbf{(Eq. 1) Edge set and dimension} --- The number of edges is M =
+N(N−1)/2. The edge ordering is fixed to the upper-triangular order
+((0,1),(0,2),\ldots,(0,N−1),(1,2),\ldots). The state is z ∈ C\^{}M.
+
+\textbf{(Eq. 2) Phase-difference sine generator} --- For edge phases θ ∈
+R\^{}M, on vertex-sharing edge pairs (e,f):
+
+\begin{verbatim}
+K_ef(θ) = cos θ_e sin θ_f − sin θ_e cos θ_f = sin(θ_f − θ_e)
+\end{verbatim}
+
+0 on non-adjacent pairs, 0 on the diagonal. K is real antisymmetric
+(K\^{}T = −K).
+
+\textbf{(Eq. 3) Vertex decomposition and the small space} --- Scattering
+c\_e = cos θ\_e, s\_e = sin θ\_e to the vertices yields matrices C, S
+(M×N); with W = {[}C\textbar S{]} (M×2N) and J = {[}{[}0, I\_N{]},
+{[}−I\_N, 0{]}{]}:
+
+\begin{verbatim}
+K = C S^T − S C^T = W J W^T,   rank K ≤ 2N
+\end{verbatim}
+
+The Gram matrix G = W\^{}T W (2N×2N) can be constructed analytically
+because, in the line graph of K\_N, a vertex pair (k,l) shares exactly
+one edge (the edge (k,l)):
+
+\begin{verbatim}
+G_cc[k,l] = cos^2θ_{(k,l)},  G_cs[k,l] = cosθ_{(k,l)} sinθ_{(k,l)},  G_ss[k,l] = sin^2θ_{(k,l)}  (k≠l)
+diagonals are the row sums of the off-diagonals
+\end{verbatim}
+
+\textbf{(Eq. 4) Circularly polarized eigenmode (parent)} --- The nonzero
+spectrum of K corresponds to the eigenvalues of JG (2N×2N). From the
+eigenvector y of the eigenvalue λ with the smallest imaginary part (λ =
+−iσ\_max):
+
+\begin{verbatim}
+v = W y,   v ← v/‖v‖
+\end{verbatim}
+
+Since iK is Hermitian, if v is an eigenmode then iKv = μv (μ = σ\_max).
+
+\textbf{(Eq. 5) Self-consistent iteration (phase mixing)} --- The phases
+θ\_new = arg v read from v are mixed into the current phases with mixing
+ratio β = 0.5:
+
+\begin{verbatim}
+θ ← arg( (1−β) e^{iθ} + β e^{iθ_new} )
+\end{verbatim}
+
+A fixed point of this iteration is the self-consistent parent: ``the
+eigenmode of the generator built from its own phases is itself''.
+
+\textbf{(Eq. 6) Eigenmode residual (convergence criterion)} ---
+
+\begin{verbatim}
+μ = Re( v† (iKv) ),   r = ‖ iKv − μ v ‖
+\end{verbatim}
+
+Convergence is declared when r \textless{} tol (tol = 1e-12 in this
+chapter).
+
+\textbf{(Eq. 7) Zero-closure kernel seed} --- With the projection onto
+the orthogonal complement of span(W)
+
+\begin{verbatim}
+P⊥ g = g − W q,   q = lstsq(G, W^T g)
+\end{verbatim}
+
+construct from real Gaussian vectors ξ\_1, ξ\_2: u = P⊥ξ\_1/‖·‖ and w =
+the orthonormalized P⊥ξ\_2, and set
+
+\begin{verbatim}
+g = (u + i w)/√2
+\end{verbatim}
+
+From u ⊥ w and ‖u‖ = ‖w‖ = 1, g\^{}Tg = (‖u‖\^{}2 − ‖w‖\^{}2)/2 + i u·w
+= 0 holds exactly (zero closure). Moreover g ∈ span(W)⊥, i.e., g lies
+outside the range of K.
+
+\textbf{(Eq. 8) Initial state} ---
+
+\begin{verbatim}
+Z0 = (v + δ g) / ‖v + δ g‖,   δ = 1e-15
+\end{verbatim}
+
+\textbf{(Eq. 9) Random numbers} --- The RNG is numpy PCG64 with seed
+
+\begin{verbatim}
+seed(N) = 40260722 + 1000·N + 0
+\end{verbatim}
+
+The consumption order is fixed: ``initial phases θ\^{}0 of the parent
+iteration (m uniform numbers, per restart) → ξ\_1 (m normal numbers) →
+ξ\_2 (m normal numbers)''. All generated objects are thereby
+deterministic functions of N alone.
+
+\subsection{3. Implementation Method}\label{implementation-method}
+
+\begin{itemize}
+\tightlist
+\item
+  The engine \texttt{run\_n\_scaling\_lowrank\_v1.py} is a
+  \textbf{bit-identical copy} of the 2026-07-22 canonical
+  (\texttt{自発的分裂予備実験\_v1/run\_n\_scaling\_lowrank\_v1.py}),
+  verified by diff. The implementations of Eqs. 2--7 all reside in this
+  engine; this chapter uses them \textbf{unmodified, via import only}
+  (following the rule prohibiting independent reimplementation).
+\item
+  The generator program \texttt{make\_static\_parents\_N3\_N40\_v1.py}
+  executes, for N=3..40, the same call sequence as the opening of the
+  canonical \texttt{run()} (rng of Eq. 9 → make\_parent →
+  zero\_closure\_kernel\_seed → normalization of Eq. 8) and saves to
+  npz.
+\item
+  For N=40, bit-identity with the canonical static parent (2026-09-04;
+  itself verified bit-identical against the canonical run) is checked as
+  an in-program gate.
+\end{itemize}
+
+\subsection{4. Detailed Design}\label{detailed-design}
+
+\subsubsection{4.1 Overall Flow}\label{overall-flow}
+
+\begin{verbatim}
+for N in 3..40:
+  [initialization]  build LowRankSystem(N) (edge order, J), rng = default_rng(40260722+1000N)
+  [loop]  make_parent: self-consistent iteration (Eq. 4 → Eq. 5 → Eq. 6; up to 1200 iterations × 3 restarts)
+          zero_closure_kernel_seed: construction of the seed g (Eq. 7)
+  [finalization]  build Z0 (Eq. 8) → N=40 gate → save npz (verify only if file exists) → append to the ledger
+write the ledger parents_summary.csv; exit 1 if any gate fails
+\end{verbatim}
+
+\subsubsection{4.2 Overall Data Flow}\label{overall-data-flow}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Input}: no file input. Only the random-seed formula (Eq. 9)
+  and constants.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{SEED\ =\ 0} \ldots{} third term of the seed formula (series
+    number)
+  \item
+    \texttt{DELTA\ =\ 1e-15} \ldots{} δ of Eq. 8 (seed amplitude)
+  \item
+    \texttt{TOL\ =\ 1e-12} \ldots{} convergence threshold of Eq. 6
+    (identical to the canonical run's \texttt{-\/-tol=1e-12})
+  \item
+    \texttt{ITERS\ =\ 1200} \ldots{} iteration cap of the
+    self-consistent loop (identical to the canonical \texttt{run()}'s
+    \texttt{iters=1200})
+  \item
+    reference input \texttt{REF40} \ldots{} the canonical static-parent
+    npz for the N=40 gate (read-only)
+  \end{itemize}
+\item
+  \textbf{Processing}: repeat the individual processes of 4.3 for
+  N=3..40.
+\item
+  \textbf{Output}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{parents/parent\_static\_N\{N:05d\}\_makeparent\_20260905.npz}
+    × 38 (fields: \texttt{v}, \texttt{g}, \texttt{Z0}, \texttt{sigma}
+    (the parent's σ spectrum), \texttt{residual}, \texttt{n},
+    \texttt{seed}, \texttt{delta}, \texttt{tol}, \texttt{iters})
+  \item
+    \texttt{parents/parents\_summary.csv} (columns: N, M,
+    parent\_residual, rank\_planes, status)
+  \end{itemize}
+\end{itemize}
+
+Constant definitions (\texttt{make\_static\_parents\_N3\_N40\_v1.py}):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{34}\NormalTok{  PARENT\_DIR }\OperatorTok{=}\NormalTok{ os.path.join(BASE\_DIR, }\StringTok{"parents"}\NormalTok{)}
+    \DecValTok{35}\NormalTok{  REF40 }\OperatorTok{=} \StringTok{\textquotesingle{}.../自発的分裂予備実験\_v1\_N40対照実験系\_20260904/largeN\_splitting\_result\_v1/parent\_static\_N40\_makeparent\_20260904.npz\textquotesingle{}}
+    \DecValTok{36}
+    \DecValTok{37}\NormalTok{  SEED }\OperatorTok{=} \DecValTok{0}
+    \DecValTok{38}\NormalTok{  DELTA }\OperatorTok{=} \FloatTok{1e{-}15}
+    \DecValTok{39}\NormalTok{  TOL }\OperatorTok{=} \FloatTok{1e{-}12}
+    \DecValTok{40}\NormalTok{  ITERS }\OperatorTok{=} \DecValTok{1200}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{4.3 Individual Processes}\label{individual-processes}
+
+\paragraph{4.3.1 Initialization}\label{initialization}
+
+Engine initialization (Eq. 1; J of Eq. 3). The edge order is fixed by
+\texttt{np.triu\_indices}.
+
+\texttt{run\_n\_scaling\_lowrank\_v1.py}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{52}  \KeywordTok{def}\NormalTok{ build\_edges(n):}
+    \DecValTok{53}\NormalTok{      ea, eb }\OperatorTok{=}\NormalTok{ np.triu\_indices(n, k}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+    \DecValTok{54}      \ControlFlowTok{return}\NormalTok{ ea.astype(np.int64), eb.astype(np.int64)}
+\NormalTok{...}
+    \DecValTok{60}      \KeywordTok{def} \FunctionTok{\_\_init\_\_}\NormalTok{(}\VariableTok{self}\NormalTok{, n):}
+    \DecValTok{61}          \VariableTok{self}\NormalTok{.n }\OperatorTok{=}\NormalTok{ n}
+    \DecValTok{62}          \VariableTok{self}\NormalTok{.ea, }\VariableTok{self}\NormalTok{.eb }\OperatorTok{=}\NormalTok{ build\_edges(n)}
+    \DecValTok{63}          \VariableTok{self}\NormalTok{.m }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(}\VariableTok{self}\NormalTok{.ea)}
+    \DecValTok{64}          \VariableTok{self}\NormalTok{.J }\OperatorTok{=}\NormalTok{ np.zeros((}\DecValTok{2} \OperatorTok{*}\NormalTok{ n, }\DecValTok{2} \OperatorTok{*}\NormalTok{ n))}
+    \DecValTok{65}          \VariableTok{self}\NormalTok{.J[:n, n:] }\OperatorTok{=}\NormalTok{ np.eye(n)}
+    \DecValTok{66}          \VariableTok{self}\NormalTok{.J[n:, :n] }\OperatorTok{=} \OperatorTok{{-}}\NormalTok{np.eye(n)}
+\end{Highlighting}
+\end{Shaded}
+
+Caller side (\texttt{make\_static\_parents\_N3\_N40\_v1.py}, Eq. 9):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{48}\NormalTok{          sys\_lr }\OperatorTok{=}\NormalTok{ LowRankSystem(N)}
+    \DecValTok{49}\NormalTok{          rng }\OperatorTok{=}\NormalTok{ np.random.default\_rng(}\DecValTok{40260722} \OperatorTok{+} \DecValTok{1000} \OperatorTok{*}\NormalTok{ N }\OperatorTok{+}\NormalTok{ SEED)}
+\end{Highlighting}
+\end{Shaded}
+
+\paragraph{4.3.2 Loop (1): Construction of the Self-Consistent Parent
+(Eqs.
+2--6)}\label{loop-1-construction-of-the-self-consistent-parent-eqs.-26}
+
+Generator construction (Eqs. 2, 3; \texttt{set\_theta} holds c, s and
+the analytic G):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{68}      \KeywordTok{def}\NormalTok{ set\_theta(}\VariableTok{self}\NormalTok{, theta):}
+    \DecValTok{69}\NormalTok{          n }\OperatorTok{=} \VariableTok{self}\NormalTok{.n}
+    \DecValTok{70}          \VariableTok{self}\NormalTok{.c }\OperatorTok{=}\NormalTok{ np.cos(theta)}
+    \DecValTok{71}          \VariableTok{self}\NormalTok{.s }\OperatorTok{=}\NormalTok{ np.sin(theta)}
+    \DecValTok{72}\NormalTok{          T }\OperatorTok{=}\NormalTok{ np.zeros((n, n))}
+    \DecValTok{73}\NormalTok{          T[}\VariableTok{self}\NormalTok{.ea, }\VariableTok{self}\NormalTok{.eb] }\OperatorTok{=}\NormalTok{ theta}
+    \DecValTok{74}\NormalTok{          T[}\VariableTok{self}\NormalTok{.eb, }\VariableTok{self}\NormalTok{.ea] }\OperatorTok{=}\NormalTok{ theta}
+    \DecValTok{75}\NormalTok{          CT }\OperatorTok{=}\NormalTok{ np.cos(T)}
+    \DecValTok{76}\NormalTok{          ST }\OperatorTok{=}\NormalTok{ np.sin(T)}
+    \DecValTok{77}\NormalTok{          np.fill\_diagonal(CT, }\FloatTok{0.0}\NormalTok{)}
+    \DecValTok{78}\NormalTok{          np.fill\_diagonal(ST, }\FloatTok{0.0}\NormalTok{)}
+    \DecValTok{79}\NormalTok{          Gcc }\OperatorTok{=}\NormalTok{ CT }\OperatorTok{*}\NormalTok{ CT}
+    \DecValTok{80}\NormalTok{          Gcs }\OperatorTok{=}\NormalTok{ CT }\OperatorTok{*}\NormalTok{ ST}
+    \DecValTok{81}\NormalTok{          Gss }\OperatorTok{=}\NormalTok{ ST }\OperatorTok{*}\NormalTok{ ST}
+    \DecValTok{82}\NormalTok{          np.fill\_diagonal(Gcc, Gcc.}\BuiltInTok{sum}\NormalTok{(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{))}
+    \DecValTok{83}\NormalTok{          np.fill\_diagonal(Gcs, Gcs.}\BuiltInTok{sum}\NormalTok{(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{))}
+    \DecValTok{84}\NormalTok{          np.fill\_diagonal(Gss, Gss.}\BuiltInTok{sum}\NormalTok{(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{))}
+    \DecValTok{85}\NormalTok{          G }\OperatorTok{=}\NormalTok{ np.empty((}\DecValTok{2} \OperatorTok{*}\NormalTok{ n, }\DecValTok{2} \OperatorTok{*}\NormalTok{ n))}
+    \DecValTok{86}\NormalTok{          G[:n, :n] }\OperatorTok{=}\NormalTok{ Gcc}
+    \DecValTok{87}\NormalTok{          G[:n, n:] }\OperatorTok{=}\NormalTok{ Gcs}
+    \DecValTok{88}\NormalTok{          G[n:, :n] }\OperatorTok{=}\NormalTok{ Gcs}
+    \DecValTok{89}\NormalTok{          G[n:, n:] }\OperatorTok{=}\NormalTok{ Gss}
+    \DecValTok{90}          \VariableTok{self}\NormalTok{.G }\OperatorTok{=}\NormalTok{ G}
+\end{Highlighting}
+\end{Shaded}
+
+Parent iteration body (Eq. 4: lines 169--172; Eq. 5: lines 173--175; the
+criterion of Eq. 6: lines 176--181):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+   \DecValTok{158}  \KeywordTok{def}\NormalTok{ make\_parent(sys\_lr, rng, iters}\OperatorTok{=}\DecValTok{400}\NormalTok{, beta}\OperatorTok{=}\FloatTok{0.5}\NormalTok{, tol}\OperatorTok{=}\FloatTok{1e{-}8}\NormalTok{, restarts}\OperatorTok{=}\DecValTok{3}\NormalTok{):}
+   \DecValTok{159}      \StringTok{"""自己無撞着円偏波固有モード親。小空間（JG）の固有対で反復。}
+\StringTok{   160}
+\StringTok{   161      収束判定（残差 \textless{} tol）付き。停滞時はランダム初期位相からリスタート。}
+\StringTok{   162      """}
+   \DecValTok{163}\NormalTok{      best }\OperatorTok{=}\NormalTok{ (}\VariableTok{None}\NormalTok{, np.inf, }\VariableTok{None}\NormalTok{)}
+   \DecValTok{164}      \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(restarts):}
+   \DecValTok{165}\NormalTok{          theta }\OperatorTok{=}\NormalTok{ rng.uniform(}\FloatTok{0.0}\NormalTok{, }\FloatTok{2.0} \OperatorTok{*}\NormalTok{ np.pi, sys\_lr.m)}
+   \DecValTok{166}\NormalTok{          v }\OperatorTok{=} \VariableTok{None}
+   \DecValTok{167}          \ControlFlowTok{for}\NormalTok{ it }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(iters):}
+   \DecValTok{168}\NormalTok{              sys\_lr.set\_theta(theta)}
+   \DecValTok{169}\NormalTok{              ev, EV }\OperatorTok{=}\NormalTok{ np.linalg.eig(sys\_lr.J }\OperatorTok{@}\NormalTok{ sys\_lr.G)}
+   \DecValTok{170}\NormalTok{              idx }\OperatorTok{=} \BuiltInTok{int}\NormalTok{(np.argmin(ev.imag))  }\CommentTok{\# λ = {-}iσ\_max}
+   \DecValTok{171}\NormalTok{              v }\OperatorTok{=}\NormalTok{ sys\_lr.w(EV[:, idx].astype(}\BuiltInTok{complex}\NormalTok{))}
+   \DecValTok{172}\NormalTok{              v }\OperatorTok{=}\NormalTok{ v }\OperatorTok{/}\NormalTok{ np.linalg.norm(v)}
+   \DecValTok{173}\NormalTok{              theta\_new }\OperatorTok{=}\NormalTok{ np.angle(v)}
+   \DecValTok{174}\NormalTok{              mix }\OperatorTok{=}\NormalTok{ (}\FloatTok{1.0} \OperatorTok{{-}}\NormalTok{ beta) }\OperatorTok{*}\NormalTok{ np.exp(}\OtherTok{1j} \OperatorTok{*}\NormalTok{ theta) }\OperatorTok{+}\NormalTok{ beta }\OperatorTok{*}\NormalTok{ np.exp(}\OtherTok{1j} \OperatorTok{*}\NormalTok{ theta\_new)}
+   \DecValTok{175}\NormalTok{              theta }\OperatorTok{=}\NormalTok{ np.angle(mix)}
+   \DecValTok{176}              \ControlFlowTok{if}\NormalTok{ it }\OperatorTok{\%} \DecValTok{10} \OperatorTok{==} \DecValTok{9}\NormalTok{:}
+   \DecValTok{177}\NormalTok{                  sys\_lr.set\_theta(np.angle(v))}
+   \DecValTok{178}\NormalTok{                  res\_now }\OperatorTok{=}\NormalTok{ \_eigenmode\_residual(sys\_lr, v)}
+   \DecValTok{179}\NormalTok{                  progress(}\SpecialStringTok{f"親構成 iter=}\SpecialCharTok{\{}\NormalTok{it}\OperatorTok{+}\DecValTok{1}\SpecialCharTok{\}}\SpecialStringTok{ 残差=}\SpecialCharTok{\{}\NormalTok{res\_now}\SpecialCharTok{:.2e\}}\SpecialStringTok{"}\NormalTok{)}
+   \DecValTok{180}                  \ControlFlowTok{if}\NormalTok{ res\_now }\OperatorTok{\textless{}}\NormalTok{ tol:}
+   \DecValTok{181}                      \ControlFlowTok{break}
+   \DecValTok{182}\NormalTok{          sys\_lr.set\_theta(np.angle(v))}
+   \DecValTok{183}\NormalTok{          residual }\OperatorTok{=}\NormalTok{ \_eigenmode\_residual(sys\_lr, v)}
+   \DecValTok{184}          \ControlFlowTok{if}\NormalTok{ residual }\OperatorTok{\textless{}}\NormalTok{ best[}\DecValTok{1}\NormalTok{]:}
+   \DecValTok{185}\NormalTok{              best }\OperatorTok{=}\NormalTok{ (v, residual, sys\_lr.sigma\_spectrum())}
+   \DecValTok{186}          \ControlFlowTok{if}\NormalTok{ residual }\OperatorTok{\textless{}}\NormalTok{ tol:}
+   \DecValTok{187}              \ControlFlowTok{break}
+   \DecValTok{188}\NormalTok{      v, residual, sig }\OperatorTok{=}\NormalTok{ best}
+   \DecValTok{189}\NormalTok{      sys\_lr.set\_theta(np.angle(v))}
+   \DecValTok{190}      \ControlFlowTok{return}\NormalTok{ v, residual, sig}
+\end{Highlighting}
+\end{Shaded}
+
+Residual (Eq. 6):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+   \DecValTok{151}  \KeywordTok{def}\NormalTok{ \_eigenmode\_residual(sys\_lr, v):}
+   \DecValTok{152}      \StringTok{"""カイラリティ非依存の固有モード残差: μ = v†(iKv) に対する ‖iKv {-} μv‖。"""}
+   \DecValTok{153}\NormalTok{      kv }\OperatorTok{=}\NormalTok{ sys\_lr.kmatvec(v)}
+   \DecValTok{154}\NormalTok{      mu }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(np.real(np.conj(v) }\OperatorTok{@}\NormalTok{ (}\OtherTok{1j} \OperatorTok{*}\NormalTok{ kv)))}
+   \DecValTok{155}      \ControlFlowTok{return} \BuiltInTok{float}\NormalTok{(np.linalg.norm(}\OtherTok{1j} \OperatorTok{*}\NormalTok{ kv }\OperatorTok{{-}}\NormalTok{ mu }\OperatorTok{*}\NormalTok{ v))}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Stopping conditions and exceptional behavior (elements not
+formulated as equations)}: - The convergence check is performed only
+\textbf{every 10 iterations} (line 176, \texttt{it\ \%\ 10\ ==\ 9}); the
+actual iteration count therefore ends at a multiple of 10. - If r
+\textless{} tol is not reached within \texttt{iters=1200}, no exception
+is raised; the loop proceeds to a restart (line 165, consuming new
+initial phases from the rng), up to \texttt{restarts=3}. The solution
+with the best residual is adopted (lines 163, 184--185). \textbf{A
+restart changes the number of rng draws}, so reproduction requires the
+same tol. (In this run, every N converged within the first restart with
+no extra draws; evidence: the N=40 products are bit-identical to the
+canonical generated under the same conditions.) - The \texttt{progress}
+line (line 179) is stderr output only and does not affect the
+computation.
+
+\paragraph{4.3.3 Loop (2): Construction of the Zero-Closure Kernel Seed
+(Eq.
+7)}\label{loop-2-construction-of-the-zero-closure-kernel-seed-eq.-7}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+   \DecValTok{193}  \KeywordTok{def}\NormalTok{ zero\_closure\_kernel\_seed(sys\_lr, rng):}
+   \DecValTok{194}      \StringTok{"""span(W) の直交補内の実正規直交対 (u,w) から g=(u+iw)/√2。g\^{}T g = 0 厳密。"""}
+   \DecValTok{195}\NormalTok{      m }\OperatorTok{=}\NormalTok{ sys\_lr.m}
+   \DecValTok{196}      \KeywordTok{def}\NormalTok{ project\_out(g):}
+   \DecValTok{197}\NormalTok{          q }\OperatorTok{=}\NormalTok{ np.linalg.lstsq(sys\_lr.G, sys\_lr.wt(g), rcond}\OperatorTok{=}\VariableTok{None}\NormalTok{)[}\DecValTok{0}\NormalTok{]}
+   \DecValTok{198}          \ControlFlowTok{return}\NormalTok{ g }\OperatorTok{{-}}\NormalTok{ sys\_lr.w(q)}
+   \DecValTok{199}\NormalTok{      u }\OperatorTok{=}\NormalTok{ project\_out(rng.normal(size}\OperatorTok{=}\NormalTok{m))}
+   \DecValTok{200}\NormalTok{      u }\OperatorTok{=}\NormalTok{ u }\OperatorTok{/}\NormalTok{ np.linalg.norm(u)}
+   \DecValTok{201}\NormalTok{      w }\OperatorTok{=}\NormalTok{ project\_out(rng.normal(size}\OperatorTok{=}\NormalTok{m))}
+   \DecValTok{202}\NormalTok{      w }\OperatorTok{=}\NormalTok{ w }\OperatorTok{{-}}\NormalTok{ (w }\OperatorTok{@}\NormalTok{ u) }\OperatorTok{*}\NormalTok{ u}
+   \DecValTok{203}\NormalTok{      w }\OperatorTok{=}\NormalTok{ w }\OperatorTok{/}\NormalTok{ np.linalg.norm(w)}
+   \DecValTok{204}      \ControlFlowTok{return}\NormalTok{ (u }\OperatorTok{+} \OtherTok{1j} \OperatorTok{*}\NormalTok{ w) }\OperatorTok{/}\NormalTok{ math.sqrt(}\FloatTok{2.0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  The projection (P⊥ of Eq. 7) solves the normal equations G q = W\^{}T
+  g by \texttt{lstsq} (rcond=None; line 197). Even for near-singular G,
+  lstsq returns a least-squares solution, so no exception arises.
+\item
+  The G at this point is that of \textbf{θ = arg v} set at the end of
+  make\_parent (line 189); i.e., the seed is taken from the orthogonal
+  complement of the range of the parent's generator.
+\end{itemize}
+
+\paragraph{4.3.4 Finalization: Z0 Construction, Gate, Saving,
+Ledger}\label{finalization-z0-construction-gate-saving-ledger}
+
+\texttt{make\_static\_parents\_N3\_N40\_v1.py} (Eq. 8: lines 52--53):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{50}\NormalTok{          v, residual, sig }\OperatorTok{=}\NormalTok{ make\_parent(sys\_lr, rng, iters}\OperatorTok{=}\NormalTok{ITERS, tol}\OperatorTok{=}\NormalTok{TOL)}
+    \DecValTok{51}\NormalTok{          g }\OperatorTok{=}\NormalTok{ zero\_closure\_kernel\_seed(sys\_lr, rng)}
+    \DecValTok{52}\NormalTok{          Z }\OperatorTok{=}\NormalTok{ v }\OperatorTok{+}\NormalTok{ DELTA }\OperatorTok{*}\NormalTok{ g}
+    \DecValTok{53}\NormalTok{          Z }\OperatorTok{=}\NormalTok{ Z }\OperatorTok{/}\NormalTok{ np.linalg.norm(Z)}
+    \DecValTok{54}\NormalTok{          converged }\OperatorTok{=} \BuiltInTok{bool}\NormalTok{(residual }\OperatorTok{\textless{}} \FloatTok{1e{-}8}\NormalTok{)}
+    \DecValTok{55}\NormalTok{          status }\OperatorTok{=} \StringTok{"ok"} \ControlFlowTok{if}\NormalTok{ converged }\ControlFlowTok{else} \StringTok{"NOT\_CONVERGED"}
+    \DecValTok{56}
+    \DecValTok{57}          \ControlFlowTok{if}\NormalTok{ N }\OperatorTok{==} \DecValTok{40}\NormalTok{:}
+    \DecValTok{58}\NormalTok{              ref }\OperatorTok{=}\NormalTok{ np.load(REF40)}
+    \DecValTok{59}\NormalTok{              same }\OperatorTok{=} \BuiltInTok{all}\NormalTok{(np.array\_equal(x, ref[k]) }\ControlFlowTok{for}\NormalTok{ x, k }\KeywordTok{in}\NormalTok{ ((v, }\StringTok{\textquotesingle{}v\textquotesingle{}}\NormalTok{), (g, }\StringTok{\textquotesingle{}g\textquotesingle{}}\NormalTok{), (Z, }\StringTok{\textquotesingle{}Z0\textquotesingle{}}\NormalTok{)))}
+    \DecValTok{60}              \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"GATE N=40 v/g/Z0 bit{-}identical to canonical static parent: }\SpecialCharTok{\{}\NormalTok{same}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+    \DecValTok{61}              \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ same:}
+    \DecValTok{62}\NormalTok{                  gate\_ok }\OperatorTok{=} \VariableTok{False}
+    \DecValTok{63}\NormalTok{                  status }\OperatorTok{=} \StringTok{"GATE\_FAIL"}
+    \DecValTok{64}
+    \DecValTok{65}          \ControlFlowTok{if}\NormalTok{ os.path.exists(out\_path):}
+    \DecValTok{66}\NormalTok{              prev }\OperatorTok{=}\NormalTok{ np.load(out\_path)}
+    \DecValTok{67}\NormalTok{              same\_prev }\OperatorTok{=} \BuiltInTok{all}\NormalTok{(np.array\_equal(x, prev[k]) }\ControlFlowTok{for}\NormalTok{ x, k }\KeywordTok{in}\NormalTok{ ((v, }\StringTok{\textquotesingle{}v\textquotesingle{}}\NormalTok{), (g, }\StringTok{\textquotesingle{}g\textquotesingle{}}\NormalTok{), (Z, }\StringTok{\textquotesingle{}Z0\textquotesingle{}}\NormalTok{)))}
+    \DecValTok{68}              \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"N=}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{\}}\SpecialStringTok{: 既存ファイルあり（上書きせず検証のみ）一致=}\SpecialCharTok{\{}\NormalTok{same\_prev}\SpecialCharTok{\}}\SpecialStringTok{ residual=}\SpecialCharTok{\{}\NormalTok{residual}\SpecialCharTok{:.3e\}}\SpecialStringTok{ }\SpecialCharTok{\{}\NormalTok{status}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+    \DecValTok{69}              \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ same\_prev:}
+    \DecValTok{70}\NormalTok{                  gate\_ok }\OperatorTok{=} \VariableTok{False}
+    \DecValTok{71}\NormalTok{                  status }\OperatorTok{=} \StringTok{"EXISTING\_MISMATCH"}
+    \DecValTok{72}          \ControlFlowTok{else}\NormalTok{:}
+    \DecValTok{73}\NormalTok{              np.savez\_compressed(out\_path, v}\OperatorTok{=}\NormalTok{v, g}\OperatorTok{=}\NormalTok{g, Z0}\OperatorTok{=}\NormalTok{Z,}
+    \DecValTok{74}\NormalTok{                                  sigma}\OperatorTok{=}\NormalTok{sig, residual}\OperatorTok{=}\NormalTok{np.float64(residual),}
+    \DecValTok{75}\NormalTok{                                  n}\OperatorTok{=}\NormalTok{np.int64(N), seed}\OperatorTok{=}\NormalTok{np.int64(SEED),}
+    \DecValTok{76}\NormalTok{                                  delta}\OperatorTok{=}\NormalTok{np.float64(DELTA), tol}\OperatorTok{=}\NormalTok{np.float64(TOL),}
+    \DecValTok{77}\NormalTok{                                  iters}\OperatorTok{=}\NormalTok{np.int64(ITERS))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{81}      \ControlFlowTok{with} \BuiltInTok{open}\NormalTok{(os.path.join(PARENT\_DIR, }\StringTok{"parents\_summary.csv"}\NormalTok{), }\StringTok{"w"}\NormalTok{, newline}\OperatorTok{=}\StringTok{""}\NormalTok{) }\ImportTok{as}\NormalTok{ fh:}
+    \DecValTok{82}\NormalTok{          w }\OperatorTok{=}\NormalTok{ csv.writer(fh)}
+    \DecValTok{83}\NormalTok{          w.writerow([}\StringTok{"N"}\NormalTok{, }\StringTok{"M"}\NormalTok{, }\StringTok{"parent\_residual"}\NormalTok{, }\StringTok{"rank\_planes"}\NormalTok{, }\StringTok{"status"}\NormalTok{])}
+    \DecValTok{84}\NormalTok{          w.writerows(rows)}
+    \DecValTok{85}\NormalTok{      n\_bad }\OperatorTok{=} \BuiltInTok{sum}\NormalTok{(}\DecValTok{1} \ControlFlowTok{for}\NormalTok{ r }\KeywordTok{in}\NormalTok{ rows }\ControlFlowTok{if}\NormalTok{ r[}\DecValTok{4}\NormalTok{] }\OperatorTok{!=} \StringTok{"ok"}\NormalTok{)}
+    \DecValTok{86}      \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"summary: }\SpecialCharTok{\{}\BuiltInTok{len}\NormalTok{(rows)}\SpecialCharTok{\}}\SpecialStringTok{ parents, }\SpecialCharTok{\{}\NormalTok{n\_bad}\SpecialCharTok{\}}\SpecialStringTok{ non{-}ok"}\NormalTok{)}
+    \DecValTok{87}      \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ gate\_ok:}
+    \DecValTok{88}          \BuiltInTok{print}\NormalTok{(}\StringTok{"GATE FAIL"}\NormalTok{)}
+    \DecValTok{89}\NormalTok{          sys.exit(}\DecValTok{1}\NormalTok{)}
+    \DecValTok{90}      \BuiltInTok{print}\NormalTok{(}\StringTok{"STATIC PARENTS DONE"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Exceptional behavior}: - Existing files are \textbf{never
+overwritten}. If a file exists, only bit-identity verification against
+the regenerated values is performed (lines 65--71); a mismatch is
+flagged EXISTING\_MISMATCH and fails the gate. - Non-convergence
+(residual ≥ 1e-8) is not an exception; it is explicitly recorded in the
+ledger as NOT\_CONVERGED (lines 54--55). - Any gate failure yields exit
+code 1 (lines 87--89).
+
+\subsection{5. Execution Results}\label{execution-results}
+
+\subsubsection{5.1 Reproduction Commands}\label{reproduction-commands}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd}\NormalTok{ N3\_N40\_stage123\_sweep\_20260905}
+\ExtensionTok{python3}\NormalTok{ make\_static\_parents\_N3\_N40\_v1.py      }\CommentTok{\# standalone}
+\CommentTok{\# or as the first step of ./run\_all.sh}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{5.2 Execution Environment}\label{execution-environment}
+
+\begin{itemize}
+\tightlist
+\item
+  Python 3.9.6 (\texttt{.venv/bin/python3})
+\item
+  numpy 2.0.2 (BLAS/LAPACK: macOS Accelerate)
+\item
+  macOS 26.3.1 (arm64, Darwin 25.x)
+\item
+  RNG: numpy \texttt{default\_rng} (PCG64)
+\end{itemize}
+
+\subsubsection{5.3 Execution Time}\label{execution-time}
+
+\textbf{Roughly 30 seconds to 1 minute} for all 38 parents (including
+generation, saving, verification, and ledger output). The dominant cost
+per parent is the eigendecomposition of JG (2N×2N) times the iteration
+count; \textasciitilde0.15 s per parent construction at N=40.
+
+\subsubsection{5.4 Verification Gates}\label{verification-gates}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Gate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pass condition
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Measured
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Verdict
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+G1: N=40 lineage & generated v, g, Z0 equal (via
+\texttt{np.array\_equal}) to the canonical static parent (20260904;
+itself verified bit-identical to the July canonical run) & equal &
+\textbf{PASS} \\
+G1': file identity & (observation) SHA256 of the N=40 npz equals that of
+the canonical static-parent file & both \texttt{eadc87ee…}, identical &
+\textbf{PASS} \\
+G2: convergence & residual \textless{} 1e-8 for all N (status=ok) &
+38/38 ok, residual ∈ {[}3.54e-14, 9.42e-13{]} & \textbf{PASS} \\
+G3: execution & exit code 0 and \texttt{STATIC\ PARENTS\ DONE} printed &
+confirmed & \textbf{PASS} \\
+\end{longtable}
+}
+
+\subsubsection{5.5 Data}\label{data}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Item
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Content
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Folder & \texttt{N3\_N40\_stage123\_sweep\_20260905/parents/} \\
+Static-parent npz &
+\texttt{parent\_static\_N00003..N00040\_makeparent\_20260905.npz} (38
+files) \\
+Sizes & \textasciitilde2.0KB (N=3; 1,980 bytes) to \textasciitilde37KB
+(N=40; 37,396 bytes), total \textasciitilde636KB \\
+Ledger & \texttt{parents\_summary.csv} (38 rows: N, M, parent\_residual,
+rank\_planes, status) \\
+SHA256 & canonical values for all files in the bundled
+\texttt{SHA256SUMS.txt}. Representative values: \\
+\end{longtable}
+}
+
+\begin{verbatim}
+c3230103e82976decde7bbe6fe5df545d12804127cf274f0d385e044ce544ca2  make_static_parents_N3_N40_v1.py
+ba0fc19b03caf06d16e97e2cd5da499ed2ed8e95288f6dbf2062bedcaf11176d  run_n_scaling_lowrank_v1.py
+eadc87ee0276554c7ab02e571e05200f0b719c1250b82607c7546b30a4d6f232  parents/parent_static_N00040_makeparent_20260905.npz
+f384d9e90cc0a3a87a82a9a6928c9996d51bd0f83862c79f2cfe8a5ce182bbca  parents/parents_summary.csv
+\end{verbatim}
+
+\subsubsection{5.6 Figures}\label{figures}
+
+No figures are generated in this chapter (the step-0 grid figure of
+Chapter 3, \texttt{fig\_complex\_plane\_step0\_N3\_N40\_stage123.png},
+visualizes this chapter's products).
+
+\subsection{6. Execution Analysis (objective report and observations
+only)}\label{execution-analysis-objective-report-and-observations-only}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  All 38 parents converged within the first restart; the eigenmode
+  residuals fell in the range 3.54×10\^{}-14 to 9.42×10\^{}-13 (all at
+  or below the order of tol=1e-12). Zero cases of NOT\_CONVERGED or
+  GATE\_FAIL.
+\item
+  The N=40 products are bit-identical, at the array level, to the
+  canonical static parent generated independently (on 2026-09-04, in a
+  different folder), and the SHA256 of the npz files themselves also
+  coincide. This is direct evidence that the generation is fully
+  deterministic under the same seed, engine, and environment.
+\item
+  The number of nonzero planes of the parent's σ spectrum (rank\_planes)
+  was observed as N=3: 2, N=4: 2, N=5: 4, N=6: 6, and N for N≥7 (see the
+  ledger \texttt{parents\_summary.csv}).
+\item
+  File sizes grow roughly in proportion to M = N(N−1)/2.
+\item
+  The rng consumption is the minimal ``m uniforms + 2m normals'' (when
+  no restart occurs); every run completed with this minimal consumption
+  (the bit-identity of item 2 is corroborating evidence).
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+(End of Chapter 1. Chapter 2, ``The Sweep --- Stage 1+2+3 Dynamics'',
+follows.)
+
+\end{document}

@@ -1,0 +1,1254 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Chapter 2: The Sweep --- Stage 1+2+3 Dynamics and the N=3..40 Runs (H⊥/H Denominator-Control Figure)},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Chapter 2: The Sweep --- Stage 1+2+3 Dynamics and the N=3..40
+Runs (H⊥/H Denominator-Control Figure)}
+\author{Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020}
+\date{September 5, 2026 Version DOI 10.5281/zenodo.22317636}
+
+\begin{document}
+\maketitle
+
+(Chapter 2 of the reproduction papers for the N=3..40 stage-1+2+3 sweep.
+Shares the Concept DOI 10.5281/zenodo.22317635 with the overview paper;
+Version DOI 10.5281/zenodo.22317636. Equation numbers continue from
+Chapter 1 (Eqs. 1--9). Code blocks are quoted verbatim from the
+programs; comments inside them remain in Japanese, as in the originals.)
+
+\subsection{1. Purpose}\label{purpose}
+
+The central purpose of this series of numerical experiments is
+\textbf{to clarify the mechanism by which inflation-like development
+occurs --- the phenomenon in which a seed too small to be measured
+(dormant fraction H⊥/H \textasciitilde{} 10\^{}-30) is exponentially
+amplified by the dynamics alone over dozens of orders of magnitude until
+saturation.} Since this phenomenon was observed in the July canonical
+runs (N = 40, 300, 1000), the series has isolated, one factor at a time,
+which components of the dynamics are necessary conditions for this
+development (the confirmed result is the stage-1+2+3 composition; the
+audit record is Appendix A).
+
+As the culmination, this chapter takes the 38 static parents (N=3..40)
+generated and verified in Chapter 1 as initial data, runs the
+stage-1+2+3 dynamics (phase-only, imaginary-part-only generator; real
+orthogonal rotation; fixed Δτ=2π/den) for N=3..40 × 6 denominators × 500
+steps, records at every step the indicator of inflation-like
+development, the \textbf{dormant fraction H⊥/H} (definition and its
+justification as an indicator: §2.5), the total energy H\_total, and the
+zero closure \textbar z\^{}Tz\textbar/H, and fixes how this development
+appears across the whole range of N and the sweep of the clock
+(denominator) in the target figure
+\texttt{fig\_Hperp\_denominator\_controls\_with\_124\_N3\_N40\_stage123.png}.
+
+The descriptive purpose of this paper is complete reproducibility and
+the fixing of the correspondence among equations, programs, and data; it
+contains no physical interpretation beyond the observed facts. The
+grounds for the stage-1+2+3 composition are placed in \textbf{Appendix A
+(audit table of deletion controls)} and \textbf{Appendix B (program
+lineage)} so as not to interrupt the main text.
+
+\subsection{2. Theoretical Background}\label{theoretical-background}
+
+The dynamics of this chapter takes the dynamics of the July canonical
+(old) program as its starting point and reconstructs it on a new
+architecture, decomposed into three components: \textbf{stage 1, stage
+2, and stage 3}. The theoretical background is therefore described in
+the order (2.1) the common state space, (2.2) the mathematics of the old
+program's dynamics, (2.3) the mathematics of this program's dynamics
+(stage decomposition), (2.4) the mathematical differences between the
+old and new rotation maps, and (2.5) measured quantities and
+conservation laws.
+
+\subsubsection{2.1 State Space and Adjacency Structure (common to old
+and
+new)}\label{state-space-and-adjacency-structure-common-to-old-and-new}
+
+\textbf{(Eq. 10) Line-graph adjacency matrix} --- For edges e=(i,j),
+f=(k,l) of the complete graph K\_N, A\_ef = 1 when e and f share a
+vertex, 0 otherwise, 0 on the diagonal (M×M, real symmetric). The edge
+ordering is the upper-triangular order identical to Eq. 1. The state is
+z ∈ C\^{}M (M = N(N−1)/2); the edge phase is θ\_e = arg z\_e.
+
+\subsubsection{2.2 Mathematics of the Old Program (July Canonical)
+Dynamics}\label{mathematics-of-the-old-program-july-canonical-dynamics}
+
+The old program is defined by the engine
+\texttt{run\_n\_scaling\_lowrank\_v1.py} bundled in this package (a
+bit-identical copy of the canonical). One step is the composition of the
+following three parts.
+
+\textbf{(Eq. 11) Old generator (phase-difference sine, real
+antisymmetric)} --- On vertex-sharing edge pairs (e,f):
+
+\begin{verbatim}
+K_ef(θ) = cos θ_e sin θ_f − sin θ_e cos θ_f = sin(θ_f − θ_e)
+\end{verbatim}
+
+The generator is rebuilt at every step from the current phases θ = arg
+z. The amplitudes \textbar z\_e\textbar{} do not enter. The vertex
+decomposition K = C S\^{}T − S C\^{}T = W J W\^{}T (rank ≤ 2N) is the
+same as Eq. 3 of Chapter 1.
+
+\textbf{(Eq. 12) Power-iteration estimate of σ\_max (approximate,
+history-dependent)} --- A real vector wp is carried across steps:
+
+\begin{verbatim}
+wp ← −K(K wp)/‖−K(K wp)‖   (3 iterations)
+σ^_max = ‖K wp‖
+\end{verbatim}
+
+Since −K\^{}2 is positive semidefinite symmetric with largest eigenvalue
+σ\_max\^{}2, σ\^{}\_max is a \textbf{power-iteration approximation} of
+σ\_max. Only 3 iterations are used, and wp is inherited from the
+previous step (warm start). Strictly speaking, the old dynamics is
+therefore not a map of z alone but a \textbf{system with a hidden state
+wp}, and σ\^{}\_max(t) is an approximate sequence depending on the
+trajectory history.
+
+Engine implementation (\texttt{run\_n\_scaling\_lowrank\_v1.py}):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+   \DecValTok{122}      \KeywordTok{def}\NormalTok{ sigma\_max\_power(}\VariableTok{self}\NormalTok{, wp, iters}\OperatorTok{=}\DecValTok{3}\NormalTok{):}
+   \DecValTok{123}          \StringTok{"""warm{-}start 冪反復による σ\_max 推定。wp は前ステップのベクトル（更新して返す）。"""}
+   \DecValTok{124}          \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(iters):}
+   \DecValTok{125}\NormalTok{              y }\OperatorTok{=} \VariableTok{self}\NormalTok{.kmatvec(wp)}
+   \DecValTok{126}\NormalTok{              wp }\OperatorTok{=} \OperatorTok{{-}}\VariableTok{self}\NormalTok{.kmatvec(y)}
+   \DecValTok{127}\NormalTok{              nrm }\OperatorTok{=}\NormalTok{ np.linalg.norm(wp)}
+   \DecValTok{128}              \ControlFlowTok{if}\NormalTok{ nrm }\OperatorTok{==} \FloatTok{0.0}\NormalTok{:}
+   \DecValTok{129}                  \ControlFlowTok{return} \FloatTok{0.0}\NormalTok{, wp}
+   \DecValTok{130}\NormalTok{              wp }\OperatorTok{=}\NormalTok{ wp }\OperatorTok{/}\NormalTok{ nrm}
+   \DecValTok{131}\NormalTok{          sig }\OperatorTok{=}\NormalTok{ np.linalg.norm(}\VariableTok{self}\NormalTok{.kmatvec(wp))}
+   \DecValTok{132}          \ControlFlowTok{return} \BuiltInTok{float}\NormalTok{(sig), wp}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{(Eq. 13) Old one-step map (Cayley transform, σ-normalized
+clock)} --- With the constant γ = tan(π/144):
+
+\begin{verbatim}
+K̃ = K / σ^_max
+z ← (I − γ K̃)^-1 (I + γ K̃) z
+\end{verbatim}
+
+Engine implementation (2N×2N solve via Woodbury):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+   \DecValTok{134}      \KeywordTok{def}\NormalTok{ cayley\_step(}\VariableTok{self}\NormalTok{, z, sigma):}
+   \DecValTok{135}          \StringTok{"""z ← (I{-}γK̃)\^{}\{{-}1\}(I+γK̃) z, K̃ = K/σ。Woodbury で O(N\^{}3)。"""}
+   \DecValTok{136}\NormalTok{          gn }\OperatorTok{=}\NormalTok{ GAMMA }\OperatorTok{/}\NormalTok{ sigma}
+   \DecValTok{137}\NormalTok{          r }\OperatorTok{=}\NormalTok{ z }\OperatorTok{+}\NormalTok{ gn }\OperatorTok{*} \VariableTok{self}\NormalTok{.kmatvec(z)}
+   \DecValTok{138}\NormalTok{          A2 }\OperatorTok{=}\NormalTok{ (sigma }\OperatorTok{/}\NormalTok{ GAMMA) }\OperatorTok{*} \VariableTok{self}\NormalTok{.J }\OperatorTok{+} \VariableTok{self}\NormalTok{.G}
+   \DecValTok{139}\NormalTok{          rhs }\OperatorTok{=} \VariableTok{self}\NormalTok{.wt(r)}
+   \DecValTok{140}\NormalTok{          y }\OperatorTok{=}\NormalTok{ np.linalg.solve(A2, rhs)}
+   \DecValTok{141}          \ControlFlowTok{return}\NormalTok{ r }\OperatorTok{{-}} \VariableTok{self}\NormalTok{.w(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{(Eq. 14) Old eigenplane rotation angle} --- The eigenvalues of K
+are purely imaginary pairs ±iσ\_k (σ\_k ≥ 0). The Cayley factor for the
+eigenvalues ±iσ\_k/σ\^{}\_max of K̃ is
+
+\begin{verbatim}
+(1 + iγσ_k/σ^_max) / (1 − iγσ_k/σ^_max)   (modulus 1)
+\end{verbatim}
+
+so the one-step rotation angle of eigenplane k is
+
+\begin{verbatim}
+φ_k = 2 arctan( γ · σ_k / σ^_max )
+\end{verbatim}
+
+The rotation angle of the fastest plane (σ\_k = σ\^{}\_max) is always
+fixed at φ\_max = 2 arctan(tan(π/144)) = \textbf{π/72}. This is an
+\textbf{adaptive (σ-normalized) clock} that ``ticks time by the system's
+fastest mode'', and the spectral dependence of the rotation angle
+undergoes \textbf{nonlinear compression} by arctan.
+
+\textbf{(Eq. 15) Old conserved quantities} --- Since K is real
+antisymmetric, the Cayley transform O = (I−γK̃)\^{}-1(I+γK̃) is a
+\textbf{real orthogonal matrix} (O\^{}T O = I). A real orthogonal matrix
+acts identically on the real and imaginary parts of z = x + iy, so
+
+\begin{verbatim}
+‖Oz‖^2 = ‖z‖^2          (norm conservation)
+(Oz)^T(Oz) = z^T O^TO z = z^Tz   (exact conservation of the zero closure z^Tz)
+\end{verbatim}
+
+\textbf{(Eq. 15') Relative equilibrium (parent)} --- The parent v lies
+on an eigenplane of K(arg v) (Chapter 1, Eqs. 4--6); on the flow dZ/dt =
+KZ we have KZ = −iσZ, i.e., Z(t) = e\^{}\{−iσt\} Z(0). All edge phases
+advance by the same amount, so phase differences are invariant, hence
+K(θ(t)) = K(θ(0)). The parent is a relative equilibrium that ``rotates
+rigidly without changing phase differences''.
+
+\subsubsection{2.3 Mathematics of This Program's Dynamics (Definitions
+of Stages 1, 2,
+3)}\label{mathematics-of-this-programs-dynamics-definitions-of-stages-1-2-3}
+
+The stage numbering follows the definitions of the N=40 single-factor
+experiment series (Appendix A). \textbf{Stage 1 provides the baseline
+architecture}, and \textbf{stages 2 and 3 are the two modifications
+applied to it}.
+
+\textbf{(Eq. 16) Stage 1: baseline architecture (explicit matrix,
+spectral map, fixed Δτ clock)} --- The generator is constructed
+explicitly as a Hermitian matrix H, and one step is given by the exact
+spectral exponential map
+
+\begin{verbatim}
+H = V diag(w) V†,   z ← V e^{−i Δτ w} V† z
+\end{verbatim}
+
+The clock is a \textbf{fixed external clock}
+
+\begin{verbatim}
+Δτ = 2π/den,   den ∈ { N−2, N−1, N, N+1, N+2 } ∩ N^+ ∪ { 124 }
+\end{verbatim}
+
+(For small N the series becomes special due to the condition
+den\textgreater0. For N=3 the series is den=1,2,3,4,5,124; den=1 means
+Δτ=2π.) In the stage-1-only baseline, H = A*(z̄⊗z) (amplitude-weighted)
+is used. This map is memoryless (one step is a pure function of z and
+constants); the old hidden state wp and approximate σ estimation do not
+exist.
+
+\paragraph{2.3.1 Design Background (Hypothesis) of the Denominator
+Series and
+Its}\label{design-background-hypothesis-of-the-denominator-series-and-its}
+
+Implementation Correspondence
+
+The denominator series \{ N−2, N−1, N, N+1, N+2, 124 \} of Δτ = 2π/den
+is not an invention of this chapter; it inherits, unchanged, the design
+of the \textbf{denominator control experiments} of this series
+(2026-09-03; design instruction document
+\texttt{ChatGPT\_denominator\_controls\_N3\_N40\_mixedseed\_20260903/CLAUDE\_CODE\_RUN\_INSTRUCTION\_N3\_N40\_20260903.md}).
+The background splits into two lines.
+
+\textbf{(a) den=124 (fixed-clock control)} --- Inherited from the
+step-size convention Δτ = 2π/L, \textbf{L=124} of the
+interference-preserving dynamics series (e.g., line 27 \texttt{L=124} of
+\texttt{.../program/pass1\_parents.py} in the qualification-and-seedless
+series folder). It is the control with the clock fixed independently of
+N (legacy convention).
+
+\textbf{(b) den ∈ \{N−2..N+2\} (hypothesis series of a system-scaled
+clock)} --- The hypothesis connects to the implementation through the
+rotation angle of Eq. 20, ψ\_k = (2π/den)·σ\_k. Measuring σ\_max from
+the parents' σ spectra saved in Chapter 1 (the \texttt{sigma} field of
+the npz; aggregated in \texttt{analysis\_sweep\_summary\_v1.json},
+\texttt{sigma\_max\_by\_N}):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+N & σ\_max & ψ\_max/2π (den=N) & ψ\_max/2π (den=124) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+3 & 1.414 & 0.471 & 0.011 \\
+5 & 3.742 & 0.748 & 0.030 \\
+10 & 8.928 & 0.893 & 0.072 \\
+20 & 18.894 & 0.945 & 0.152 \\
+30 & 28.898 & 0.963 & 0.233 \\
+40 & 38.905 & 0.973 & 0.314 \\
+\end{longtable}
+}
+
+σ\_max(N) grows nearly linearly with N (N − σ\_max ≈ 1.1). Therefore:
+
+\begin{itemize}
+\tightlist
+\item
+  In the \textbf{den ≈ N series}, the one-step rotation of the fastest
+  eigenplane is placed at ψ\_max ≈ 2π·(1 − O(1)/N), i.e., in the
+  \textbf{nearly-one-full-turn (near-commensurate with 2π, stroboscopic)
+  regime}. The five points den = N, N±1, N±2 sweep the detuning from
+  this commensurability.
+\item
+  With \textbf{den = 124}, all eigenplanes stay in the small-angle
+  regime (ψ\_max/2π ≤ 0.314 within this sweep), a control close to the
+  small-step approximation of the continuous flow dz/dt = Kz
+  (\textbf{flow-like regime}).
+\end{itemize}
+
+\textbf{Implementation correspondence}: den is determined by the series
+generation on line 38
+(\texttt{pairs={[}(N+o,…)\ for\ o\ in\ OFFSETS\ if\ N+o\textgreater{}0{]}+{[}(124,\textquotesingle{}124\textquotesingle{}){]}})
+and enters the dynamics only through \texttt{2.0*math.pi/den} on line
+27. den is used nowhere else (as Eq. 20 states, the effect of den is
+exhausted by the linear scaling of rotation angles and aliasing).
+
+This chapter does not judge this design hypothesis. The den-dependent
+observations are recorded as facts in §6 (denominator dependence of
+onset; distribution of non-crossing runs).
+
+\textbf{(Eq. 17) Stage 2: amplitude normalization} --- The input to the
+generator construction is replaced by the unit-modulus z\^{}:
+
+\begin{verbatim}
+z^_e = e^{i θ_e} = e^{i arg z_e}
+Ĥ_ef = A_ef · conj(z^_e) z^_f = A_ef · e^{i(θ_f − θ_e)}
+\end{verbatim}
+
+The generator thereby becomes a function of the \textbf{phases only}, as
+in the old dynamics (Eq. 11). The amplitudes of the state z itself are
+retained and continue to evolve as dynamical variables (the
+normalization happens only inside the generator construction, at every
+step).
+
+\textbf{(Eq. 18) Real/imaginary decomposition of Ĥ} --- Ĥ is Hermitian
+and decomposes uniquely into a real symmetric part and a real
+antisymmetric part:
+
+\begin{verbatim}
+Ĥ = S + iK,
+S_ef = A_ef cos(θ_f − θ_e)   (real symmetric)
+K_ef = A_ef sin(θ_f − θ_e)   (real antisymmetric)
+\end{verbatim}
+
+This K is \textbf{the same matrix as the old generator (Eq. 11)}.
+
+\textbf{(Eq. 19) Stage 3: extraction of the imaginary part (removal of
+the cos symmetric part) and real orthogonal rotation} --- Instead of Ĥ,
+the generator
+
+\begin{verbatim}
+H_3 = i K = i · Im(Ĥ)
+\end{verbatim}
+
+is used (i × real antisymmetric = Hermitian). Substituting into the
+stage-1 map (Eq. 16):
+
+\begin{verbatim}
+z ← exp(−i Δτ · iK) z = exp(Δτ K) z
+\end{verbatim}
+
+exp(ΔτK) is the exponential of a real antisymmetric matrix, i.e., a
+\textbf{real orthogonal matrix}. It therefore has the same conserved
+quantities ‖z‖\^{}2, z\^{}Tz as the old dynamics (Eq. 15; same proof).
+Since stage 2 makes K phase-only, the relative-equilibrium argument of
+Eq. 15' also holds unchanged: along the parent orbit K is time-invariant
+and the parent rotates rigidly.
+
+\textbf{(Eq. 20) New eigenplane rotation angle} --- The eigenvalues w\_k
+of H\_3 = iK are real; corresponding to ±iσ\_k of K, w = ±σ\_k. The
+one-step rotation angle of eigenplane k is
+
+\begin{verbatim}
+ψ_k = Δτ · σ_k = (2π/den) · σ_k
+\end{verbatim}
+
+The rotation angle is \textbf{linear} in the eigenvalue, with no upper
+bound. The phase factor e\^{}\{−iΔτw\} wraps around in w with period
+2π/Δτ (\textbf{aliasing}): for eigenplanes with Δτσ\_k exceeding 2π, the
+effective rotation angle is Δτσ\_k mod 2π.
+
+\subsubsection{2.4 Mathematical Differences between the Old and New
+Rotation Maps (the crux
+of}\label{mathematical-differences-between-the-old-and-new-rotation-maps-the-crux-of}
+
+this chapter's dynamics)
+
+Both are ``real orthogonal rotations generated by the phase-only real
+antisymmetric K'', but \textbf{the spectral map of rotation angles and
+the clock differ mathematically}.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Item
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Old (Eqs. 12--14)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+This chapter = stages 1+2+3 (Eqs. 16--20)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Eigenplane rotation angle & φ\_k = 2 arctan(γ σ\_k/σ\^{}\_max) & ψ\_k =
+(2π/den) σ\_k \\
+Spectral dependence & nonlinear compression by arctan
+(\textbar φ\textbar{} \textless{} π) & linear (with mod-2π aliasing) \\
+Clock & σ\^{}\_max-normalized (fastest plane fixed at π/72;
+system-intrinsic) & fixed Δτ = 2π/den (external; den is the sweep
+parameter) \\
+Obtaining σ & approximate σ\^{}\_max by 3 power iterations (warm start,
+history-dependent) & exact eigenvalues via eigh (no estimation) \\
+Realization of the map & Cayley rational form applied via Woodbury solve
+(O(N\^{}3)/step) & exact exponential applied via spectral decomposition
+(O(M\^{}3)/step) \\
+Memory & carries hidden state wp (not a pure function) & memoryless
+(pure function of z) \\
+Conserved quantities & ‖z‖\^{}2, z\^{}Tz (real orthogonal) & same (real
+orthogonal) \\
+Relative equilibrium (parent) & holds (Eq. 15') & holds (consequence of
+Eq. 19) \\
+\end{longtable}
+}
+
+\textbf{(Eq. 21) Correspondence in the small-angle limit} --- In the
+regime Δτσ\_k ≪ 1 and γσ\_k/σ\^{}\_max ≪ 1, arctan x ≈ x gives
+
+\begin{verbatim}
+φ_k ≈ (2γ/σ^_max) · σ_k = Δτ_eff · σ_k,   Δτ_eff = 2 tan(π/144)/σ^_max ≈ (π/72)/σ^_max
+\end{verbatim}
+
+That is, the old dynamics approximately coincides with ``Eq. 20 with
+Δτ\_eff re-normalized by σ\^{}\_max at every step''. The differences
+between the two reduce to (i) the value of Δτ (externally fixed 2π/den
+vs.~the system-intrinsic (π/72)/σ\^{}\_max), (ii) the presence of arctan
+compression and aliasing, and (iii) the exactness of σ. The measured
+record of this correspondence is the last row of Appendix A (the
+σ-normalized-clock reference experiment: late-segment slope 65.8
+steps/decade vs.~the July canonical 64.0 steps/decade). The runs of this
+chapter use the \textbf{fixed Δτ (stage 1)} throughout; the sweep of den
+measures the effect of this clock difference.
+
+\subsubsection{2.5 Measured Quantities and Conservation Laws ---
+Definition of the Dormant
+Fraction}\label{measured-quantities-and-conservation-laws-definition-of-the-dormant-fraction}
+
+H⊥/H and Its Justification as the Inflation Indicator
+
+\textbf{(Eq. 22) Readout plane} --- From the initial state z0 = v + δg
+(after normalization):
+
+\begin{verbatim}
+p = Re z0 / ‖Re z0‖,   q' = Im z0 − (Im z0·p) p,   q = q'/‖q'‖
+\end{verbatim}
+
+p, q are \textbf{fixed} throughout the run (the Gram--Schmidt
+orthonormal basis of the real 2-dimensional plane Π = span\_R(p, q)
+spanned by the real and imaginary parts of the initial state). Since δ =
+10\^{}-15, Π is essentially \textbf{the plane spanned by the parent v}.
+
+\textbf{(Eq. 23) Measured quantities} --- For the state z at each step:
+
+\begin{verbatim}
+H⊥/H = ‖ z − p(p·z) − q(q·z) ‖^2 / ‖z‖^2   (energy fraction outside the readout plane Π)
+H_total = z†z
+closure = |z^Tz| / z†z
+\end{verbatim}
+
+\textbf{(Eq. 23') Why H⊥/H is the ``dormant fraction'' and does not pick
+up the parent's motion} --- The orbit of the pure parent (δ=0) is a
+relative equilibrium (Eqs. 15', 19): Z(t) = e\^{}\{−iσt\} Z(0).
+Expanding,
+
+\begin{verbatim}
+e^{−iσt}(x + iy) = (x cos σt + y sin σt) + i (y cos σt − x sin σt),   x=Re Z(0), y=Im Z(0)
+\end{verbatim}
+
+i.e., the real and imaginary parts always remain within span\_R(x, y) =
+Π. The complementary orthogonal projection z − p(p·z) − q(q·z) exactly
+annihilates any complex combination inside Π, so \textbf{H⊥ is
+identically 0 along the parent orbit}. Hence H⊥/H measures only
+``everything \textbf{other than} the parent's rigid rotation'' ---
+initially the out-of-Π component of the seed g (H⊥/H(0) ≈ δ\^{}2
+\textasciitilde{} 10\^{}-30), and afterwards whatever the dynamics grows
+from it. Because the seed is energy invisible at the parent's scale, the
+July canonical calls this the \textbf{dormant fraction}.
+
+\textbf{(Eq. 23'\,') Identity of definition with the July canonical} ---
+The H⊥/H of this chapter is the same measurement as f(τ) of the July
+canonical. Canonical program
+\texttt{自発的分裂予備実験\_v1/run\_spontaneous\_splitting\_largeN\_v1.py}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{57}\NormalTok{          Zp }\OperatorTok{=}\NormalTok{ Z }\OperatorTok{{-}}\NormalTok{ p }\OperatorTok{*}\NormalTok{ (p }\OperatorTok{@}\NormalTok{ Z) }\OperatorTok{{-}}\NormalTok{ q }\OperatorTok{*}\NormalTok{ (q }\OperatorTok{@}\NormalTok{ Z)}
+    \DecValTok{58}\NormalTok{          htot }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(np.real(np.conj(Z) }\OperatorTok{@}\NormalTok{ Z))}
+    \DecValTok{59}\NormalTok{          f }\OperatorTok{=} \BuiltInTok{float}\NormalTok{(np.real(np.conj(Zp) }\OperatorTok{@}\NormalTok{ Zp)) }\OperatorTok{/}\NormalTok{ htot}
+\end{Highlighting}
+\end{Shaded}
+
+(The construction of p, q is also identical; lines 46--48.) The curves
+of this chapter therefore plot the same quantity with the same
+definition as the July inflation figure
+(dormant\_growth\_large\_n\_v1.png) and can be compared directly.
+
+\textbf{Justification as the inflation indicator} --- By the above, the
+time evolution of H⊥/H quantifies inflation-like development by three
+points: ``(i) the initial value lies at the seed scale 10\^{}-30 (as
+long as the parent is an equilibrium, there is no jump at the first
+step); (ii) from there a straight line on the semilog plot --- i.e.,
+constant-rate exponential amplification --- continues; (iii) it
+saturates at O(10\^{}-2--1).'' When (i) fails (a jump to
+10\textsuperscript{-8--10}-3 at the first step), that is a mismatch
+injection and is distinguished from seed amplification (the deletion
+controls of Appendix A are discriminated precisely by this (i)). The
+onset (Eq. 24) is the indicator of reaching (iii).
+
+Conservation: by Eq. 19 the map is real orthogonal, so both the
+numerator \textbar z\^{}Tz\textbar{} and denominator z†z of closure are
+theoretically invariant; the time variation of closure measures only the
+accumulation of numerical rounding (measured in §6, G3). Norm
+conservation guarantees H⊥/H ∈ {[}0,1{]}.
+
+\textbf{(Eq. 24) onset (bookkeeping indicator)} --- The first step
+number at which H⊥/H \textgreater{} 0.05 (−1 if none). A tally that does
+not affect the dynamics.
+
+\subsubsection{2.6 Correspondence with the Complex-Plane Readout ---
+Design Intent of the
+Inflation}\label{correspondence-with-the-complex-plane-readout-design-intent-of-the-inflation}
+
+Figure and the Three Complex-Plane Figures
+
+The complex-plane figures of Chapter 3 (step 0, final step, zoom into
+the condensed center) are the readout paired with the inflation figure
+(H⊥/H curves) of this chapter. The identity that fixes their relation is
+given here first.
+
+\textbf{Caution (two easily confused ``planes'')} --- The complex plane
+of the figures is ``the plane on which the M per-edge values z\_e ∈ C
+are plotted'', whereas the parent plane Π = span\_R(p,q), the reference
+of H⊥/H, is ``a real 2-dimensional subspace of the state space C\^{}M''.
+They are distinct, but connected by the following identity.
+
+\textbf{(Eq. 25) Per-edge representation of states inside Π} --- With x
+= Re z0, y = Im z0, v ≈ z0 (δ=10\^{}-15), x = (v+v̄)/2 and y = (v−v̄)/(2i)
+give
+
+\begin{verbatim}
+z ∈ span_C{x, y} = Π  <=>  z_e = a·v_e + b·conj(v_e)   (a, b ∈ C constants independent of the edge)
+\end{verbatim}
+
+That is, **motion confined to Π can, in the figure, produce only
+deformations within the two-complex-parameter family ``uniform
+rotation/scaling of the parent's star (a·v\_e) plus admixture of its
+mirror image (b·v̄\_e)``\textbf{. In particular the pure parent orbit
+Z(t)=e\^{}\{−iσt\}Z(0) (Eq. 15') has a=e\^{}\{−iσt\}, b=0: }the whole
+star rotates uniformly about the origin without changing its shape**.
+Conversely, the appearance in the figure of shapes not expressible in
+this family (e.g., phase dispersal in all directions = a ring) is the
+configurational expression of the state having left Π.
+
+By this identity, the three complex-plane figures share the roles of
+corroborating, from the configuration side, the start point, end point,
+and interior of the end point of the inflation figure (H⊥/H curves):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Figure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Correspondence to the H⊥/H curve
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+What it reads
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+step-0 figure & start of the curve (H⊥/H ≈ 10\^{}-31) & the contents of
+Π = the parent's shape (two antipodal pairs, 4-bundle star). That the
+step-1 figure is indistinguishable from step 0 visualizes f(1) staying
+at seed scale (§2.5 (i)) \\
+final-step figure & saturation region of the curve (H⊥/H
+\textasciitilde{} 0.05--0.46) & departure to shapes not expressible in
+the family of Eq. 25 (star → ring) = configuration in which out-of-Π
+components dominate. onset (Eq. 24) roughly corresponds to when the
+shape breakdown becomes visible \\
+zoom into the condensed center & complement of what the curve does not
+say & H⊥/H measures only ``how much left Π''. The zoom resolves ``the
+organization at the destination'' --- whether angular clusters are
+condensation onto exactly identical complex values (exact degeneracy) or
+bundles of finite width \\
+\end{longtable}
+}
+
+The implementation of the figures (grid rendering, cluster-extraction
+algorithm, line-number correspondence) is described in Chapter 3.
+
+\subsection{3. Implementation Method}\label{implementation-method}
+
+\begin{itemize}
+\tightlist
+\item
+  The sweep body \texttt{run\_N3\_N40\_stage123\_v1.py} is
+  self-contained (no engine import). The bundled engine
+  \texttt{run\_n\_scaling\_lowrank\_v1.py} serves only as the definition
+  body of §2.2 (the old mathematics) and for the parent generation of
+  Chapter 1; it plays no role in this chapter's dynamics loop.
+\item
+  This program is derived from the ChatGPT-authored canonical
+  \texttt{run\_and\_plot\_N3\_N40\_mixedseed\_20260903.py} through
+  \textbf{a documented chain of minimal diffs only} (Appendix B); the
+  dynamics function \texttt{one\_step} is identical to the stage-3
+  version that passed the three gates in the N=40 single-factor
+  experiments.
+\item
+  The initial data are the \texttt{Z0} of the Chapter-1 static-parent
+  npz files, loaded per N (no regeneration, no modification).
+\item
+  The input gate \texttt{check\_sweep\_inputs\_v1.py} verifies post hoc
+  that the stored \texttt{Z{[}0{]}} of all 228 runs is bit-identical to
+  the static parents' \texttt{Z0}.
+\item
+  The numbers in §6 are transcribed from the output of the aggregation
+  program \texttt{analyze\_sweep\_summary\_v1.py},
+  \texttt{results/analysis\_sweep\_summary\_v1.json} (no manual
+  computation or manual tallying).
+\end{itemize}
+
+\textbf{Stage ⇔ equation ⇔ implementation correspondence table}
+(implementation: \texttt{run\_N3\_N40\_stage123\_v1.py}):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Stage
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Content
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Equations
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Implementation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Stage 1 & explicit matrix + exact spectral map & Eq. 16 & lines 21--22
+(\texttt{H\_of}), lines 27--28 (\texttt{eigh} and application of the
+phase factor) \\
+Stage 1 & fixed Δτ=2π/den clock and denominator series & Eq. 16 &
+\texttt{2.0*math.pi/den} on line 27; line 38 (series generation) \\
+Stage 2 & amplitude normalization (z\textsuperscript{=e}\{iθ\}) & Eq. 17
+& \texttt{np.exp(1j*np.angle(z))} on line 26 \\
+Stage 3 & imaginary-part extraction H\_3=i·Im(Ĥ) → real orthogonal
+rotation & Eqs. 18, 19 & \texttt{(1j*np.imag(H))} on line 26 \\
+--- & readout plane, measured quantities, onset & Eqs. 22, 23, 24 &
+lines 29--30, 31--32, 45--46 \\
+\end{longtable}
+}
+
+(Contrast: the old Eqs. 12--14 exist only in engine lines 122--132 and
+134--141 and are never called in this chapter's loop.)
+
+\subsection{4. Detailed Design}\label{detailed-design}
+
+\subsubsection{4.1 Overall Flow}\label{overall-flow}
+
+\begin{verbatim}
+for N in 3..40:
+  [initialization]  load static parent Z0 → adjacency A (Eq. 10) → readout plane p,q (Eq. 22) → denominator series (Eq. 16)
+  for den in series:
+    [loop]  t=0..500: record state and measured quantities (Eq. 23); apply one_step (Eqs. 16–19) if t<500
+    [finalization (den)]  save state npz; append onset (Eq. 24) etc. to the summary row
+[finalization (all)]  write timeseries/summary CSVs → 8×5 grid figure → RUN_METADATA
+\end{verbatim}
+
+\subsubsection{4.2 Overall Data Flow}\label{overall-data-flow}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Input}: \texttt{Z0} from
+  \texttt{parents/parent\_static\_N\{N:05d\}\_makeparent\_20260905.npz}
+  (38 files; Chapter-1 products; SHA256 canonical in SHA256SUMS.txt)
+\item
+  \textbf{Parameters}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{STEPS\ =\ 500} \ldots{} steps per run (no early stopping;
+    fixed)
+  \item
+    \texttt{OFFSETS\ =\ (-2,-1,0,1,2)} \ldots{} offsets of the
+    denominator series from N (Eq. 16)
+  \item
+    denominator 124 \ldots{} the control denominator common to all N
+  \item
+    dtype: state complex128 / real float64 (fixed by the assert on line
+    12)
+  \end{itemize}
+\item
+  \textbf{Output}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{results/hm\_N\{N\}\_den\_\{den\}\_states\_500.npz} × 228
+    (\texttt{Z}(501×M), \texttt{N}, \texttt{denominator},
+    \texttt{steps})
+  \item
+    \texttt{results/timeseries\_64bit\_with124\_N3\_N40.csv} (columns:
+    N, series, denominator, step, Hperp\_frac, H\_total,
+    global\_closure; 228×501 = 114,228 rows)
+  \item
+    \texttt{results/summary\_64bit\_with124\_N3\_N40.csv} (columns: N,
+    series, denominator, onset\_gt\_0.05, initial, step1, final, max;
+    228 rows)
+  \item
+    \texttt{results/fig\_Hperp\_denominator\_controls\_with\_124\_N3\_N40\_stage123.png}
+    (target figure)
+  \item
+    \texttt{results/RUN\_METADATA\_N3\_N40\_stage123.json}
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{4.3 Individual Processes}\label{individual-processes}
+
+\paragraph{\texorpdfstring{4.3.1 Initialization
+(\texttt{run\_N3\_N40\_stage123\_v1.py})}{4.3.1 Initialization (run\_N3\_N40\_stage123\_v1.py)}}\label{initialization-run_n3_n40_stage123_v1.py}
+
+Constants and dtype fixing:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{11}\NormalTok{  STEPS}\OperatorTok{=}\DecValTok{500}\OperatorTok{;}\NormalTok{ OFFSETS}\OperatorTok{=}\NormalTok{(}\OperatorTok{{-}}\DecValTok{2}\NormalTok{,}\OperatorTok{{-}}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+    \DecValTok{12}  \ControlFlowTok{assert}\NormalTok{ np.dtype(np.float64).itemsize}\OperatorTok{==}\DecValTok{8} \KeywordTok{and}\NormalTok{ np.dtype(np.complex128).itemsize}\OperatorTok{==}\DecValTok{16}
+\end{Highlighting}
+\end{Shaded}
+
+Edges and adjacency (Eqs. 1, 10):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{14}  \KeywordTok{def}\NormalTok{ edges(N):}
+    \DecValTok{15}\NormalTok{      a,b}\OperatorTok{=}\NormalTok{np.triu\_indices(N,k}\OperatorTok{=}\DecValTok{1}\NormalTok{)}\OperatorTok{;} \ControlFlowTok{return}\NormalTok{ a.astype(np.int64),b.astype(np.int64)}
+    \DecValTok{16}  \KeywordTok{def}\NormalTok{ adjacency(N):}
+    \DecValTok{17}\NormalTok{      ea,eb}\OperatorTok{=}\NormalTok{edges(N)}\OperatorTok{;}\NormalTok{ M}\OperatorTok{=}\BuiltInTok{len}\NormalTok{(ea)}\OperatorTok{;}\NormalTok{ A}\OperatorTok{=}\NormalTok{np.zeros((M,M),dtype}\OperatorTok{=}\NormalTok{np.float64)}
+    \DecValTok{18}      \ControlFlowTok{for}\NormalTok{ e }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(M):}
+    \DecValTok{19}\NormalTok{          share}\OperatorTok{=}\NormalTok{(ea}\OperatorTok{==}\NormalTok{ea[e])}\OperatorTok{|}\NormalTok{(ea}\OperatorTok{==}\NormalTok{eb[e])}\OperatorTok{|}\NormalTok{(eb}\OperatorTok{==}\NormalTok{ea[e])}\OperatorTok{|}\NormalTok{(eb}\OperatorTok{==}\NormalTok{eb[e])}\OperatorTok{;}\NormalTok{ share[e]}\OperatorTok{=}\VariableTok{False}\OperatorTok{;}\NormalTok{ A[e,share]}\OperatorTok{=}\FloatTok{1.0}
+    \DecValTok{20}      \ControlFlowTok{return}\NormalTok{ A}
+\end{Highlighting}
+\end{Shaded}
+
+Parent loading, readout plane (Eq. 22), denominator series (Eq. 16):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{34}  \ControlFlowTok{for}\NormalTok{ N }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{41}\NormalTok{):}
+    \DecValTok{35}      \CommentTok{\# 初期データ: 各 N の静的親ファイルの Z0 を使用}
+    \DecValTok{36}\NormalTok{      z0}\OperatorTok{=}\NormalTok{np.array(np.load(os.path.join(PARENT\_DIR,}\SpecialStringTok{f\textquotesingle{}parent\_static\_N}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{:05d\}}\SpecialStringTok{\_makeparent\_20260905.npz\textquotesingle{}}\NormalTok{))[}\StringTok{\textquotesingle{}Z0\textquotesingle{}}\NormalTok{],dtype}\OperatorTok{=}\NormalTok{np.complex128,copy}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+    \DecValTok{37}\NormalTok{      A}\OperatorTok{=}\NormalTok{adjacency(N)}\OperatorTok{;}\NormalTok{ p,q}\OperatorTok{=}\NormalTok{plane(z0)}
+    \DecValTok{38}\NormalTok{      pairs}\OperatorTok{=}\NormalTok{[(N}\OperatorTok{+}\NormalTok{o, }\SpecialStringTok{f\textquotesingle{}N}\SpecialCharTok{\{}\NormalTok{o}\SpecialCharTok{:+d\}}\SpecialStringTok{\textquotesingle{}} \ControlFlowTok{if}\NormalTok{ o }\ControlFlowTok{else} \StringTok{\textquotesingle{}N\textquotesingle{}}\NormalTok{) }\ControlFlowTok{for}\NormalTok{ o }\KeywordTok{in}\NormalTok{ OFFSETS }\ControlFlowTok{if}\NormalTok{ N}\OperatorTok{+}\NormalTok{o}\OperatorTok{\textgreater{}}\DecValTok{0}\NormalTok{] }\OperatorTok{+}\NormalTok{ [(}\DecValTok{124}\NormalTok{,}\StringTok{\textquotesingle{}124\textquotesingle{}}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{29}  \KeywordTok{def}\NormalTok{ plane(v):}
+    \DecValTok{30}\NormalTok{      p}\OperatorTok{=}\NormalTok{v.real.astype(np.float64,copy}\OperatorTok{=}\VariableTok{True}\NormalTok{)}\OperatorTok{;}\NormalTok{ p}\OperatorTok{/=}\NormalTok{np.linalg.norm(p)}\OperatorTok{;}\NormalTok{ q}\OperatorTok{=}\NormalTok{v.imag.astype(np.float64,copy}\OperatorTok{=}\VariableTok{True}\NormalTok{)}\OperatorTok{;}\NormalTok{ q}\OperatorTok{{-}=}\NormalTok{np.dot(q,p)}\OperatorTok{*}\NormalTok{p}\OperatorTok{;}\NormalTok{ q}\OperatorTok{/=}\NormalTok{np.linalg.norm(q)}\OperatorTok{;} \ControlFlowTok{return}\NormalTok{ p,q}
+\end{Highlighting}
+\end{Shaded}
+
+\paragraph{4.3.2 Loop (the one-step dynamics --- Eqs.
+16--20)}\label{loop-the-one-step-dynamics-eqs.-1620}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{21}  \KeywordTok{def}\NormalTok{ H\_of(z,A):}
+    \DecValTok{22}\NormalTok{      H}\OperatorTok{=}\NormalTok{A}\OperatorTok{*}\NormalTok{(np.conj(z)[:,}\VariableTok{None}\NormalTok{]}\OperatorTok{*}\NormalTok{z[}\VariableTok{None}\NormalTok{,:])}\OperatorTok{;}\NormalTok{ np.fill\_diagonal(H,}\FloatTok{0.0}\NormalTok{)}\OperatorTok{;} \ControlFlowTok{return}\NormalTok{ H.astype(np.complex128,copy}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+    \DecValTok{23}  \KeywordTok{def}\NormalTok{ one\_step(z,A,den):}
+    \DecValTok{24}      \CommentTok{\# 段3の最小変更（唯一の力学変更点）: 位相のみ生成子 Ĥ の虚部だけを取る H=i·K（K=sin(Δθ) 実反対称）。}
+    \DecValTok{25}      \CommentTok{\# exp({-}iΔτ·iK)=exp(Δτ·K) の実直交回転となり、Z\^{}T Z（零閉塞）と ‖Z‖ を厳密保存する。}
+    \DecValTok{26}\NormalTok{      H}\OperatorTok{=}\NormalTok{H\_of(np.exp(}\OtherTok{1j}\OperatorTok{*}\NormalTok{np.angle(z)),A)}\OperatorTok{;}\NormalTok{ H}\OperatorTok{=}\NormalTok{(}\OtherTok{1j}\OperatorTok{*}\NormalTok{np.imag(H)).astype(np.complex128,copy}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+    \DecValTok{27}\NormalTok{      w,V}\OperatorTok{=}\NormalTok{np.linalg.eigh(H)}\OperatorTok{;}\NormalTok{ phase}\OperatorTok{=}\NormalTok{np.exp(}\OperatorTok{{-}}\OtherTok{1j}\OperatorTok{*}\NormalTok{np.float64(}\FloatTok{2.0}\OperatorTok{*}\NormalTok{math.pi}\OperatorTok{/}\NormalTok{den)}\OperatorTok{*}\NormalTok{w)}
+    \DecValTok{28}      \ControlFlowTok{return}\NormalTok{ (V}\OperatorTok{@}\NormalTok{(phase}\OperatorTok{*}\NormalTok{(V.conj().T}\OperatorTok{@}\NormalTok{z))).astype(np.complex128,copy}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  First half of line 26, \texttt{np.exp(1j*np.angle(z))}: \textbf{stage
+  2} = Eq. 17 (amplitude normalization; the generator input is replaced
+  by z\textsuperscript{=e}\{iθ\}).
+\item
+  Second half of line 26, \texttt{(1j*np.imag(H))}: \textbf{stage 3} =
+  the imaginary-part extraction of Eq. 18 → the generator H\_3=i·K of
+  Eq. 19 (\texttt{np.imag} is the elementwise imaginary part; the
+  imaginary part of the Hermitian Ĥ is the real antisymmetric K).
+\item
+  Lines 27--28: \textbf{stage 1} = Eq. 16 (exact spectral decomposition
+  by \texttt{np.linalg.eigh}; application of the phase factor
+  e\^{}\{−i(2π/den)w\} with fixed Δτ=2π/den). The eigenplane rotation
+  angle is Eq. 20, ψ\_k=(2π/den)σ\_k, which differs from the old Eq. 14
+  (arctan compression, σ\^{}\_max normalization) (§2.4).
+\end{itemize}
+
+Measurement and recording (Eq. 23):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{31}  \KeywordTok{def}\NormalTok{ metrics(z,p,q):}
+    \DecValTok{32}\NormalTok{      h}\OperatorTok{=}\NormalTok{np.vdot(z,z).real}\OperatorTok{;}\NormalTok{ zp}\OperatorTok{=}\NormalTok{z}\OperatorTok{{-}}\NormalTok{p}\OperatorTok{*}\NormalTok{np.dot(p,z)}\OperatorTok{{-}}\NormalTok{q}\OperatorTok{*}\NormalTok{np.dot(q,z)}\OperatorTok{;}\NormalTok{ hp}\OperatorTok{=}\NormalTok{np.vdot(zp,zp).real}\OperatorTok{;} \ControlFlowTok{return} \BuiltInTok{float}\NormalTok{(hp}\OperatorTok{/}\NormalTok{h),}\BuiltInTok{float}\NormalTok{(h),}\BuiltInTok{float}\NormalTok{(}\BuiltInTok{abs}\NormalTok{(z}\OperatorTok{@}\NormalTok{z)}\OperatorTok{/}\NormalTok{h)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{40}\NormalTok{          z}\OperatorTok{=}\NormalTok{z0.copy()}\OperatorTok{;}\NormalTok{ vals}\OperatorTok{=}\NormalTok{np.empty(STEPS}\OperatorTok{+}\DecValTok{1}\NormalTok{,np.float64)}\OperatorTok{;}\NormalTok{ states}\OperatorTok{=}\NormalTok{np.empty((STEPS}\OperatorTok{+}\DecValTok{1}\NormalTok{,z.size),np.complex128)}\OperatorTok{;}\NormalTok{ closures}\OperatorTok{=}\NormalTok{np.empty(STEPS}\OperatorTok{+}\DecValTok{1}\NormalTok{,np.float64)}\OperatorTok{;}\NormalTok{ htot}\OperatorTok{=}\NormalTok{np.empty(STEPS}\OperatorTok{+}\DecValTok{1}\NormalTok{,np.float64)}
+    \DecValTok{41}          \ControlFlowTok{for}\NormalTok{ t }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(STEPS}\OperatorTok{+}\DecValTok{1}\NormalTok{):}
+    \DecValTok{42}\NormalTok{              states[t]}\OperatorTok{=}\NormalTok{z}\OperatorTok{;}\NormalTok{ vals[t],htot[t],closures[t]}\OperatorTok{=}\NormalTok{metrics(z,p,q)}
+    \DecValTok{43}              \ControlFlowTok{if}\NormalTok{ t}\OperatorTok{\textless{}}\NormalTok{STEPS: z}\OperatorTok{=}\NormalTok{one\_step(z,A,den)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Stopping conditions and exceptional behavior (elements not
+formulated as equations)}: - There is no early stopping. Every run
+consists of a \textbf{fixed 501} recordings (t=0..500) and 500
+applications of the map (lines 41--43). onset (Eq. 24) is used only for
+tallying and never stops the dynamics (the
+\texttt{np.flatnonzero(vals\textgreater{}0.05)} on lines 45--46). - For
+runs at larger N, numpy RuntimeWarnings (divide by zero / overflow /
+invalid value encountered in matmul) may be printed for the matrix
+product \texttt{V@(phase*(V†z))}. These are warnings, not exceptions;
+execution does not stop. In this series, bit-identity of reruns on
+identical inputs (Chapter 1 G1 and this chapter's input gate) confirms
+they do not affect the results. - For N=3,4 the
+\texttt{N+o\textgreater{}0} filter of Eq. 16 admits small denominators
+such as den=1 (Δτ=2π) into the series. There is no special-casing in the
+program (a consequence of the comprehension on line 38). From the
+viewpoint of Eq. 20, small den means large Δτ --- the regime where
+aliasing (Δτσ\_k mod 2π) acts strongly.
+
+\paragraph{4.3.3 Finalization (saving, plotting,
+metadata)}\label{finalization-saving-plotting-metadata}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{44}\NormalTok{          np.savez\_compressed(os.path.join(OUT,}\SpecialStringTok{f\textquotesingle{}hm\_N}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{\}}\SpecialStringTok{\_den\_}\SpecialCharTok{\{}\NormalTok{den}\SpecialCharTok{\}}\SpecialStringTok{\_states\_500.npz\textquotesingle{}}\NormalTok{),Z}\OperatorTok{=}\NormalTok{states,N}\OperatorTok{=}\NormalTok{np.int64(N),denominator}\OperatorTok{=}\NormalTok{np.int64(den),steps}\OperatorTok{=}\NormalTok{np.int64(STEPS))}
+    \DecValTok{45}\NormalTok{          rows.extend((N,label,den,t,vals[t],htot[t],closures[t]) }\ControlFlowTok{for}\NormalTok{ t }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(STEPS}\OperatorTok{+}\DecValTok{1}\NormalTok{))}\OperatorTok{;}\NormalTok{ ix}\OperatorTok{=}\NormalTok{np.flatnonzero(vals}\OperatorTok{\textgreater{}}\FloatTok{0.05}\NormalTok{)}
+    \DecValTok{46}\NormalTok{          summaries.append((N,label,den,}\BuiltInTok{int}\NormalTok{(ix[}\DecValTok{0}\NormalTok{]) }\ControlFlowTok{if}\NormalTok{ ix.size }\ControlFlowTok{else} \OperatorTok{{-}}\DecValTok{1}\NormalTok{,}\BuiltInTok{float}\NormalTok{(vals[}\DecValTok{0}\NormalTok{]),}\BuiltInTok{float}\NormalTok{(vals[}\DecValTok{1}\NormalTok{]),}\BuiltInTok{float}\NormalTok{(vals[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]),}\BuiltInTok{float}\NormalTok{(vals.}\BuiltInTok{max}\NormalTok{())))}
+\end{Highlighting}
+\end{Shaded}
+
+The CSVs, figure, and metadata (lines 48--66) only write out measured
+values and render the figure; they do not affect the dynamics. The
+figure is an 8×5 grid (lines 55--64), 38 panels used and 2 panels off
+(line 64).
+
+\paragraph{\texorpdfstring{4.3.4 Input Gate
+(\texttt{check\_sweep\_inputs\_v1.py})}{4.3.4 Input Gate (check\_sweep\_inputs\_v1.py)}}\label{input-gate-check_sweep_inputs_v1.py}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DecValTok{18}  \ControlFlowTok{for}\NormalTok{ N }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{41}\NormalTok{):}
+    \DecValTok{19}\NormalTok{      Z0 }\OperatorTok{=}\NormalTok{ np.load(os.path.join(PARENT\_DIR, }\SpecialStringTok{f\textquotesingle{}parent\_static\_N}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{:05d\}}\SpecialStringTok{\_makeparent\_20260905.npz\textquotesingle{}}\NormalTok{))[}\StringTok{\textquotesingle{}Z0\textquotesingle{}}\NormalTok{]}
+    \DecValTok{20}\NormalTok{      dens }\OperatorTok{=}\NormalTok{ [N }\OperatorTok{+}\NormalTok{ o }\ControlFlowTok{for}\NormalTok{ o }\KeywordTok{in}\NormalTok{ (}\OperatorTok{{-}}\DecValTok{2}\NormalTok{, }\OperatorTok{{-}}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{) }\ControlFlowTok{if}\NormalTok{ N }\OperatorTok{+}\NormalTok{ o }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{] }\OperatorTok{+}\NormalTok{ [}\DecValTok{124}\NormalTok{]}
+    \DecValTok{21}      \ControlFlowTok{for}\NormalTok{ den }\KeywordTok{in}\NormalTok{ dens:}
+    \DecValTok{22}\NormalTok{          p }\OperatorTok{=}\NormalTok{ os.path.join(RESULT\_DIR, }\SpecialStringTok{f\textquotesingle{}hm\_N}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{\}}\SpecialStringTok{\_den\_}\SpecialCharTok{\{}\NormalTok{den}\SpecialCharTok{\}}\SpecialStringTok{\_states\_500.npz\textquotesingle{}}\NormalTok{)}
+    \DecValTok{23}\NormalTok{          same }\OperatorTok{=} \BuiltInTok{bool}\NormalTok{(np.array\_equal(np.load(p)[}\StringTok{\textquotesingle{}Z\textquotesingle{}}\NormalTok{][}\DecValTok{0}\NormalTok{], Z0))}
+    \DecValTok{24}\NormalTok{          n\_checked }\OperatorTok{+=} \DecValTok{1}
+    \DecValTok{25}          \ControlFlowTok{if} \KeywordTok{not}\NormalTok{ same:}
+    \DecValTok{26}              \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f\textquotesingle{}MISMATCH: N=}\SpecialCharTok{\{}\NormalTok{N}\SpecialCharTok{\}}\SpecialStringTok{ den=}\SpecialCharTok{\{}\NormalTok{den}\SpecialCharTok{\}}\SpecialStringTok{\textquotesingle{}}\NormalTok{)}
+    \DecValTok{27}\NormalTok{              ok }\OperatorTok{=} \VariableTok{False}
+\NormalTok{...}
+    \DecValTok{35}\NormalTok{  sys.exit(}\DecValTok{0} \ControlFlowTok{if}\NormalTok{ ok }\ControlFlowTok{else} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+It verifies that the \texttt{Z{[}0{]}} of every stored npz is
+\texttt{np.array\_equal} (bit-identical) to the corresponding static
+parent \texttt{Z0}; a single mismatch yields exit code 1.
+
+\subsection{5. Execution Results}\label{execution-results}
+
+\subsubsection{5.1 Reproduction Commands}\label{reproduction-commands}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{cd}\NormalTok{ N3\_N40\_stage123\_sweep\_20260905}
+\ExtensionTok{python3}\NormalTok{ run\_N3\_N40\_stage123\_v1.py        }\CommentTok{\# sweep body}
+\ExtensionTok{python3}\NormalTok{ check\_sweep\_inputs\_v1.py         }\CommentTok{\# input gate}
+\ExtensionTok{python3}\NormalTok{ analyze\_sweep\_summary\_v1.py      }\CommentTok{\# aggregation for the numbers in §6}
+\CommentTok{\# or ./run\_all.sh (parents → sweep → gate → aggregation → plots)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{5.2 Execution Environment}\label{execution-environment}
+
+\begin{itemize}
+\tightlist
+\item
+  Python 3.9.6 (\texttt{.venv/bin/python3}), numpy 2.0.2 (BLAS/LAPACK:
+  macOS Accelerate), matplotlib (grid rendering)
+\item
+  macOS 26.3.1 (arm64)
+\end{itemize}
+
+\subsubsection{5.3 Execution Time}\label{execution-time}
+
+About \textbf{45--50 minutes} for the sweep body (38 N × 6 denominators
+× 500 steps, including full state saving; measured 2026-09-05; dominated
+by the M×M \texttt{eigh} × 500 × 6; N=40 alone about 3 minutes). Input
+gate and aggregation: under 1 minute each.
+
+\subsubsection{5.4 Verification Gates}\label{verification-gates}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Gate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pass condition
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Measured
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Verdict
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+G1: input identity & \texttt{Z{[}0{]}} of all 228 npz bit-identical to
+the corresponding static parent \texttt{Z0} & checked 228 / MISMATCH 0 &
+\textbf{PASS} \\
+G2: completion & \texttt{ALL\ DONE} printed, exit code 0 & confirmed &
+\textbf{PASS} \\
+G3: conserved quantity (observation) & closure =
+\textbar z\^{}Tz\textbar/H stays small over all runs and steps & step-0
+max 5.19e-15; global max 3.72e-13 & \textbf{PASS} \\
+\end{longtable}
+}
+
+(The G3 numbers are \texttt{global\_closure\_step0\_max} /
+\texttt{global\_closure\_all\_max} of
+\texttt{analysis\_sweep\_summary\_v1.json}.)
+
+\subsubsection{5.5 Data}\label{data}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Item
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Content
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Folder & \texttt{N3\_N40\_stage123\_sweep\_20260905/results/} \\
+State npz & \texttt{hm\_N\{N\}\_den\_\{den\}\_states\_500.npz} × 228
+(tens of KB to \textasciitilde5.9MB each; actual sizes per
+SHA256SUMS.txt and the bundle) \\
+Timeseries CSV & \texttt{timeseries\_64bit\_with124\_N3\_N40.csv}
+(\textasciitilde8.7MB, 114,228 rows) \\
+Summary CSV & \texttt{summary\_64bit\_with124\_N3\_N40.csv} (228
+rows) \\
+Metadata & \texttt{RUN\_METADATA\_N3\_N40\_stage123.json} \\
+Aggregation & \texttt{analysis\_sweep\_summary\_v1.json} (source of the
+numbers in §6) \\
+SHA256 & Canonical values for all files in the bundled
+\texttt{SHA256SUMS.txt}. Sweep program:
+\texttt{1abf2353fee2e4f56f05e7a6f149fd086885136beb61ab571b48a56b09691567\ \ run\_N3\_N40\_stage123\_v1.py} \\
+\end{longtable}
+}
+
+\subsubsection{5.6 Figures}\label{figures}
+
+\begin{itemize}
+\tightlist
+\item
+  Target figure:
+  \texttt{results/fig\_Hperp\_denominator\_controls\_with\_124\_N3\_N40\_stage123.png}
+  (8×5 grid; the \textbf{vertical axis of each panel is the dormant
+  fraction H⊥/H} {[}Eq. 23; meaning in §2.5{]} on a semilog scale,
+  horizontal axis is the step; the six denominator curves are overlaid.
+  Straight segments on the semilog correspond to inflation-like
+  exponential amplification; horizontal segments to saturation.)
+\item
+  The complex-plane readout figures (step 0, final, zoom) are treated in
+  Chapter 3.
+\end{itemize}
+
+\subsection{6. Execution Analysis (objective report and observations
+only; numbers
+from}\label{execution-analysis-objective-report-and-observations-only-numbers-from}
+
+analysis\_sweep\_summary\_v1.json)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Of the 228 runs, \textbf{212 crossed H⊥/H \textgreater{} 0.05 within
+  500 steps} (onset range 45--481).
+\item
+  \textbf{In all 228 runs, step 1 remained at seed scale}: H⊥/H(0) ∈
+  {[}1.92e-33, 1.60e-31{]}, H⊥/H(1) ∈ {[}3.64e-30, 7.32e-25{]}. There
+  were \textbf{zero} mismatch injections (jumps of order
+  10\textsuperscript{-8--10}-3).
+\item
+  Final values of the crossing runs: 0.0501--0.458.
+\item
+  Breakdown of the 16 non-crossing runs: 15 runs saturated with final
+  0.025--0.048, \textbf{just below the 0.05 threshold} (the 124 series
+  and N+2 series for N≥26, and the three series of N=39); only one run
+  was actually slow-growing: N=3, den=124 (final 1.75e-8).
+\item
+  The onset of the 124 series shortens from 318 at N=4 as N increases,
+  entering the band 89--160 for N≥15 (crossing N only; the table is
+  \texttt{onset\_by\_series{[}\textquotesingle{}124\textquotesingle{}{]}}
+  of \texttt{analysis\_sweep\_summary\_v1.json}).
+\item
+  The zero closure \textbar z\^{}Tz\textbar/H stayed at most 3.72e-13
+  over all 228×501 recorded points (initial max 5.19e-15) --- a
+  numerical confirmation of the conservation law of Eq. 19.
+\item
+  Visual observation of the figure: every panel shows the same family of
+  curves --- ``straight exponential amplification from seed scale →
+  saturation in the 10\textsuperscript{-3--10}-1 range''.
+\end{enumerate}
+
+\subsection{Appendix A: Provenance of the Stage Composition --- Audit
+Table of the
+Single-Factor}\label{appendix-a-provenance-of-the-stage-composition-audit-table-of-the-single-factor}
+
+Experiments and Deletion Controls
+
+The dynamics of this chapter (stages 1+2+3) is the composition
+established by the single-factor experiment series on N=40 with the
+static parent (the same Z0 as Chapter 1). The complete set of
+experiments (programs, data, figures, README, SHA256SUMS) is contained
+in \texttt{ChatGPT\_denominator\_controls\_N40\_selfcontrol\_20260904/}
+and is \textbf{bundled with the upload of this paper}. The numbers
+originate from the summary CSVs and READMEs of the respective results
+directories.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Composition
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Dynamics (generator / clock)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Level of f(1)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+0.05 crossing (500 steps, 6 dens)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Final values / observation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Output directory
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Stage 1 only (baseline) & H=A*(z̄⊗z) (amplitude-weighted, cos included) /
+fixed Δτ & 5.3--6.5e-8 (injection) & 0/6 & stable at ceiling
+\textasciitilde1.16e-3 & results\_staticparent/ \\
+Stages 1+2 (stage 3 deleted) & phase-only Ĥ (cos included) / fixed Δτ &
+1.4e-9--8.9e-3 (injection, den-dependent) & 6/6 (τ=4--198) & departure
+up to 0.94--0.9999 & results\_staticparent\_phaseonly/ \\
+Stages 1+3 (stage 2 deleted) & amplitude-weighted i·Im(H) / fixed Δτ &
+1.8--2.3e-8 (injection) & 0/6 & slow drift to \textasciitilde3.5e-3 &
+results\_staticparent\_ampimK/ \\
+\textbf{Stages 1+2+3 (this chapter)} & phase-only i·K / fixed Δτ &
+\textbf{4.0--9.1e-29 (seed scale)} & 4/6 (τ=276--456) & 0.038--0.10,
+relaxation curve present & results\_staticparent\_imK/ \\
+Stage 2 at init only (reference) & z0 equimodularized once +
+amplitude-weighted i·Im(H) / fixed Δτ & 2.9--3.4e-3 (injection) & 6/6
+(τ=3--6) & 0.96--0.99, immediate departure &
+results\_staticparent\_stage2init/ \\
+Stages 2+3 + σ clock (reference) & phase-only i·K / σ-normalized Cayley
+clock & 5.84e-30 (seed scale) & 0/6 (within 500 steps) & late-segment
+slope 65.8 steps/decade (July canonical: 64.0) &
+results\_staticparent\_sigmaclock/ \\
+\end{longtable}
+}
+
+Observation (facts only): f(1) remains at seed scale
+(\textasciitilde10\^{}-29) \textbf{only} in the composition where stages
+2 and 3 are present \textbf{simultaneously}; deleting either one makes
+f(1) jump to 10\textsuperscript{-8--10}-3. Moving stage 2 to a one-time
+initialization produces the largest jump (10\^{}-3).
+
+\subsection{Appendix B: Program Lineage (chain of minimal diffs and
+SHA256)}\label{appendix-b-program-lineage-chain-of-minimal-diffs-and-sha256}
+
+The diffs of each step are recorded in full in the READMEs of the
+respective packages.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\#
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Program
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Diff from the previous
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 &
+\texttt{ChatGPT\_denominator\_controls\_N3\_N40\_mixedseed\_20260903/run\_and\_plot\_N3\_N40\_mixedseed\_20260903.py}
+(ChatGPT-authored canonical) & --- \\
+1 &
+\texttt{ChatGPT\_denominator\_controls\_N40\_selfcontrol\_20260904/run\_and\_plot\_N40\_only\_selfcontrol.py}
+& 2 lines: OUT destination, \texttt{range(40,41)} (N=40 output verified
+bit-identical to canonical) \\
+2 & \texttt{…/run\_N40\_staticparent\_v1.py} & initial data replaced by
+the Chapter-1 static parent Z0 (input only) \\
+3 & \texttt{…/run\_N40\_staticparent\_phaseonly\_v1.py} & 1 line in
+one\_step: H built from exp(i·arg z) (stage 2) \\
+4 & \texttt{…/run\_N40\_staticparent\_imK\_v1.py} & 1 line in one\_step:
+H=1j·Im(Ĥ) (stage 3) \\
+5 &
+\texttt{N3\_N40\_stage123\_sweep\_20260905/run\_N3\_N40\_stage123\_v1.py}
+(this chapter) & loop range(3,41), per-N parent loading, output
+destination, figure/metadata names only (dynamics unchanged) \\
+\end{longtable}
+}
+
+SHA256 (full digits; transcribed from the output of shasum -a 256):
+
+\begin{verbatim}
+c709c56335d4c67373bff9a3ef6414ea17564d5fbf9c10b7bc9c3724ff091b92  run_and_plot_N3_N40_mixedseed_20260903.py
+5a07f354e19985dca0f5de89217e2aa22ac511afaa4b2bb4aa5d93e0c7f9706f  run_and_plot_N40_only_selfcontrol.py
+cb5a0ab6db9ae5719eac7aee3b539eb04ca09f5ebfcab6dcce36e8a6e727719e  run_N40_staticparent_v1.py
+c1d6d2e60e101f0a99585eefdc22990a087c46246aba112042ac97a7fcbd1a71  run_N40_staticparent_phaseonly_v1.py
+a67912b77f7f112731c1eac7612f21b464aed7e2c42431f7b3a7afabb2cd051d  run_N40_staticparent_imK_v1.py
+1abf2353fee2e4f56f05e7a6f149fd086885136beb61ab571b48a56b09691567  run_N3_N40_stage123_v1.py
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+(End of Chapter 2. Chapter 3, ``Complex-Plane Readout Figures'',
+follows.)
+
+\end{document}
