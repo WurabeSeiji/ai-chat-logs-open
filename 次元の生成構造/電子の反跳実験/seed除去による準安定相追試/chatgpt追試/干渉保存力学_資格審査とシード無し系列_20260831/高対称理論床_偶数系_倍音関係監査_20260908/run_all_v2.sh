@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+python3 analyze_highsym_harmonic_spectrum_v2.py
+python3 verify_highsym_harmonic_results_v1.py
+sha256sum analyze_highsym_harmonic_spectrum_v2.py verify_highsym_harmonic_results_v1.py run_all_v2.sh even_N_harmonic_summary.csv positive_frequency_modes.csv integer_harmonic_relations.csv low_denominator_rational_relations.csv three_wave_sum_resonances.csv RUN_METADATA.json README_v2.md 高対称理論床_偶数系_倍音関係監査_20260908.md > SHA256SUMS_v2.txt
