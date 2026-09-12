@@ -1,0 +1,104 @@
+# Zero-Closure Factorization of High-Symmetry Floors — Complete $\pm i$ Photon-Pair Covering of Even Systems $N=8k$ and Minimal $p$-Wave Condensates of Odd Systems
+
+**Series:** Foundations of Self-Consistent Relational-Wave Closed Systems (Paper 4 of 10)
+**Author:** Noriaki Kihara (WF System Co., Ltd.)　**Date:** 2026-09-12
+**Version DOI:** 10.5281/zenodo.22729081
+**Concept DOI:** 10.5281/zenodo.22729080
+**ORCID:** 0009-0004-6753-4020
+**Zenodo:** https://zenodo.org/records/22729081
+
+---
+
+## Abstract
+
+We study the square-closure $\sum_e z_e^2=0$ of the high-symmetry floor as a factorization into smaller zero-closure blocks, and unify it into a **factorization theorem of cyclic square waves** in which the minimal block size is determined by the number theory of $N$. We reconstruct the cyclic-Fourier relative-equilibrium floor $z_{ij}=r_d e^{i2\pi(i+j)/N}$ from its defining equation, and exhaustively audit all unordered pairs, 3-waves, and 4-waves. **Theorem:** within a fixed distance class, the square wave $w=z^2$ cycles through a regular $L$-gon with phase step $q=e^{i8\pi/N}$ (order $L=N/\gcd(N,4)$), and the minimal zero-closure block is the regular $p$-gon with $p=\operatorname{spf}(L)$ (smallest prime factor of $L$). Hence $p=2\iff L$ even $\iff 8\mid N$——**an exact two-wave self-closure $z_b=\pm i\,z_a$ (photon-type $\pm i$ pair) within one and the same distance class is possible only for $N=8k$ (proved for arbitrary $N$)**. In the full space (including across distinct distance classes) the same selection rule was confirmed by an exhaustive pair audit over all $N=3$–$40$ (via the phase lattice + parity + amplitude reflection $r_d=r_{N/2-d}$; a general proof for arbitrary $N$ that there is no accidental equal-amplitude pair other than the reflection is a future task, §8). For $N=8k$, using $z_{i+m}=\pm i\,z_i$ with $m=N/8$, all $M$ waves can be **explicitly and completely matched** into $M/2$ photon pairs without any graph search (closed form of the candidate edge count $E_\gamma=N(4N-11)/2=84,424,1020,1872,2980$; the candidate graph is bipartite with degrees $2/4/8$ and connected-component sizes $4/8/16$, and the matching is non-unique). Even $N$ other than $N=8k$ can be $100\%$ decomposed into minimal $p$-gon zero-closures, and each distance class $C_d$ itself independently satisfies $\sum_{e\in C_d}z_e^2=0$. Odd $N$ have zero two-wave pairs, and the minimal prime-factor $p$-wave ($3\mid N$ gives 3-waves, odd primes $N$ give $N$-waves) is the fundamental unit. The factorization is in general non-unique. On the floor all of these blocks are phase-locked to a single carrier with frequency ratio $1{:}1$ (algebraically decomposable $\ne$ dynamically independent). Classification: existence of a static algebraic factorization (particle identification and dynamical conservation are separate tasks).
+
+---
+
+## 1. The Problem — Factorization of Closure
+
+The floors of Papers 1 and 3 satisfy $\sum_e z_e^2=0$ (zero-closure). We ask whether this total closure can be **factorized** into a direct sum of smaller zero-closure blocks, and how the type of those blocks varies with $N$. The minimal nontrivial block is a 2-wave ($z_2=\pm i z_1$, photon-type $\pm i$ pair) (Paper 9).
+
+## 2. Objects and Methods
+
+We reconstruct the high-symmetry theoretical floor $z_{ij}=r_d e^{i2\pi(i+j)/N}$ (case (C) of Paper 2, cyclic-Fourier relative equilibrium) from its defining equation. In the full space we independently cross-check $\|z\|^2$, $\sum z$, $\sum z^2$, and the eigen-residual. The two-wave condition is exhaustively checked over all pairs with the dimensionless residual $\varepsilon_{ij}=|z_i^2+z_j^2|/(|z_i|^2+|z_j|^2)$ (strict is $\varepsilon\le10^{-12}$); 3-waves and 4-waves are exhaustively checked by meet-in-the-middle. With $Z_0=(v+\delta g)/\|\cdot\|$ and $\delta=10^{-15}$, the $N$ values and counts under strict judgment are unchanged.
+
+## 3. Factorization Theorem of Cyclic Square Waves ($L=N/\gcd(N,4)$)
+
+Since the edge $\{i,i+d\}$ of a fixed distance class $C_d$ is $z_{i,i+d}=r_d e^{i2\pi(2i+d)/N}$, the square wave
+
+$$w_i=z_{i,i+d}^2=r_d^2\,e^{i4\pi(2i+d)/N},\qquad w_{i+1}=q\,w_i,\quad q=e^{i8\pi/N},\quad L=\operatorname{ord}(q)=\frac{N}{\gcd(N,4)}.$$
+
+Since the square waves within a class cycle through the vertices of a regular $L$-gon, $q^{L/p}$ spans a subgroup of order $p=\operatorname{spf}(L)$ = a regular $p$-gon, whose vertex sum $=0$——**a $p$-wave zero-closure block exists**. Furthermore, by the **vanishing-sum theorem of Lam–Leung [2]**, the minimal weight (number of terms) of a nonempty vanishing sum of $L$-th roots equals the smallest prime factor of $L$. Since the square waves within a distance class are $L$-th roots of equal modulus $r_d^2$, this $p$-gon is not merely a construction example but **the minimal zero-closure block within the same class** (not only existence but minimality). This makes a single formula explain both even and odd cases:
+
+| $N$ | $L=N/\gcd(N,4)$ | Minimal block $p=\operatorname{spf}(L)$ |
+|---|---|---|
+| odd | $N$ | $\operatorname{spf}(N)$ ($3\mid N$→3-wave, $N=25,35$→5-wave, odd prime $N$→$N$-wave) |
+| $N\equiv2\ (\mathrm{mod}\,4)$ | $N/2$ | $\operatorname{spf}(N/2)$ |
+| $N\equiv4\ (\mathrm{mod}\,8)$ | $N/4$ (odd) | $\operatorname{spf}(N/4)$ |
+| $N\equiv0\ (\mathrm{mod}\,8)$ | $N/4$ (even) | $2$ ($\pm i$ photon pair) |
+
+Hence $\boxed{p=2\iff L\ \text{even}\iff 8\mid N}$——**a two-wave zero-closure ($\pm i$ photon pair) within the same distance class is possible only for $8\mid N$**. $\operatorname{ord}(q)=L$ and the $p$-gon sum $=0$ were confirmed for all $N=3$–$40$ ($N=4$ is the degenerate case $L=1$, outside the scope of this mechanism = 3-wave closure by a different mechanism, §6).
+
+**Why "8" (2-adic selection rule).** The original cyclic phase advances by $\Delta\varphi=4\pi/N$ under $i\to i+1$, and the square map doubles it again to $\Delta\arg(z^2)=8\pi/N$. A two-wave zero-closure $w_b=-w_a$ requires an antipodal point (a subgroup of order 2) in the cyclic group $\mathbb Z_L$ of the square waves, which holds iff $L$ is even $\iff\nu_2(N)\ge3\iff 8\mid N$ ($\nu_2$ is the 2-adic valuation). That is, $N=8k$ is not an accidental period but a **2-adic selection rule required by the square map**.
+
+**Explicit construction for $N=8k$ (no graph search needed).** With $L=N/4=2k$ and $m=N/8$, we have $q^m=e^{i\pi}=-1$. Hence within the same class
+
+$$w_{i+m}=-w_i\ \Longrightarrow\ z_{i+m}^2=-z_i^2\ \Longrightarrow\ z_{i+m}=\pm i\,z_i$$
+
+(equal amplitude $r_d$, phase difference exactly $\pi/2$). Pairing the antipodal points of the map $i\mapsto i+m$ ($w_{i+m}=-w_i$) in each distance class produces a perfect matching on the spot (the orbit length of $i\mapsto i+m$ is 8 for an ordinary class $d<N/2$ and 4 for the diameter class $d=N/2$; both being even, the orbit can be partitioned into pairs without surplus or deficit). For the $8k$ values in $N=8$–$40$ we confirmed exact $\pm i$ and a covering of all $M$ edges into $M/2$ pairs ($14,60,138,248,390$). The perfect matching of §4 has this **explicit construction**.
+
+**Even including across distinct distance classes, $\iff 8\mid N$.** A $\pm i$ pair requires $|z_a|=|z_b|$ and a phase difference of exactly $\pi/2$. (1) Since the floor phases lie on $(2\pi/N)\mathbb Z$, a $\pi/2$ phase difference requires $4\mid N$ (impossible for $4\nmid N$ = odd and $N\equiv2\ (\mathrm{mod}\,4)$). (2) Since the $2i$ in the phase $2\pi(2i+d)/N$ is even, a $\pi/2$ difference between classes $d,d'$ requires $d'-d\equiv N/4\ (\mathrm{mod}\,2)$. (3) Equal amplitude holds under reflection $r_d=r_{N/2-d}$ (numerically confirmed for $N=3$–$40$, error $\le1.2\times10^{-16}$), which gives $d'-d\equiv N/2\ (\mathrm{mod}\,2)$: for $N\equiv4\ (\mathrm{mod}\,8)$, $N/2$ is even but $N/4$ is odd, so the two are incompatible, and only $8\mid N$ is realized. We confirmed that the count of exact $\pm i$ pairs over all pairs (including across classes) agrees perfectly and independently with the earlier exhaustive audit (§4). Below, as consequences of this theorem, we describe the even system (§4), the odd system (§5), and distance-class-independent closure (§6).
+
+## 4. Even Systems — Complete $\pm i$ Photon-Pair Covering of $N=8k$
+
+- **Exact $z_b=\pm i z_a$ exists only for $N=8k$ (8,16,24,32,40)** (other even $N$ have 0 candidates)——a consequence of $p=2\iff8\mid N$ in the theorem of §3. The following is its combinatorial structure.
+- All $M$ waves can be **perfectly matched** into $M/2$ non-overlapping two-wave self-closure pairs: $N=8{:}14/28$, $16{:}60/120$, $24{:}138/276$, $32{:}248/496$, $40{:}390/780$.
+- Closed form of the candidate edge count $E_\gamma=N(4N-11)/2=84,424,1020,1872,2980$. The candidate graph is **bipartite** for all $N=8k$, with degrees only $2/4/8$ ($\#\deg2=N/2$, $\#\deg4=N$, $\#\deg8=M-3N/2$) and connected-component sizes only $4/8/16$ ($C_4=N/8$, $C_8=N/8$, $C_{16}=N(N-4)/32$).
+- **Selection rule (parity):** a $90^\circ$ phase requires $\Delta(i+j)=N/4$, and an edge of distance $d$ satisfies $i+j\equiv d\ (\mathrm{mod}\,2)$. If $N=8k$, then $N/4$ is even and parity is preserved; if $N=8k+4$, it is odd and parity is inverted, incompatible with the equal-amplitude class.
+- **Complete pair decomposition is non-unique:** a perfect matching can select pairs sharing an original edge in anywhere from 0 up to a maximum of $N$ pairs. From the static state alone, "which two waves are one photon" is not unique, and the absolute counts of $+i/-i$ (right-handed/left-handed) cannot be defined from undirected pairs alone (propagation direction / orientation is separately required).
+
+## 5. Odd Systems — Minimal $p$-Wave Condensate
+
+- For odd $N$ (3,5,…,39), **photon-type two-wave pairs are completely 0** (by the theorem of §3, odd cases have $L=N$, $p=\operatorname{spf}(N)\ge3$), maximum matching 0, and all $M$ waves are unpaired. Nevertheless, a **100% complete decomposition** into minimal $p$-wave zero-closure condensates is possible (constructive coverage $=1.0$, maximum group residual $\le1.2\times10^{-15}$).
+- $z^2$ makes one round of the $N$-th roots and splits into regular $p$-gons with $p=\text{smallest prime factor}(N)$: $3\mid N\to3$-wave, $N=5,25,35\to$ minimal 5-wave, odd prime $N\to$ minimal $N$-wave.
+- Over all 3-wave exhaustive checks, exact triads appear only for $3\mid N$ ($N=3,9,15,21,27,33,39$). All 4-waves are 0 across all odd systems.
+
+## 6. Residual Waves and Independent Closure of Distance Classes (Even Systems)
+
+- $N=8k$ has 0 residual (complete pair covering); for other even $N$, exact 2-wave pairs are 0 and the residual = all $M$ waves. **The residual as a whole is also zero-closed to machine precision** (relative residual $4.1\times10^{-17}$–$2.4\times10^{-16}$).
+- For $N>4$, **each distance class $C_d$ itself independently satisfies $\sum_{e\in C_d}z_e^2=0$**. The total closure is already decomposed into distance-class condensates. The intra-class phase step of the square wave $w=z^2$ is $q=e^{i8\pi/N}$, with order $L=N/\gcd(N,4)$. For each factor $p$ of $L$, it can be decomposed into a $p$-gon zero-closure.
+- For all even $N$, all $M$ waves are 100% decomposed into minimal symmetric zero-closure blocks with no overlap (e.g. $N=4{:}3\times2$, $6{:}3\times5$, $8{:}2\times14$, $10{:}5\times9$, $12{:}3\times22$, …, $40{:}2\times390$). Exact 3-wave closure holds for $N=4,6,12,18,24,30,36$. The factorization is non-unique when $L$ is composite ($N=24{:}2/3/6$, $30{:}3/5/15$, $40{:}2/5/10$).
+
+## 7. On the Floor It Is a Single Carrier — No Harmonics
+
+We audit the positive eigenvalues of $iK$ of the frozen generator $K$ of the very cyclic-Fourier floor factorized in this paper (§2, $z_{ij}=r_d e^{i2\pi(i+j)/N}$) (the audited floor is identical to §2–6, reconstructed via `build_theoretical_floor` from $z=r_d e^{i\theta}$, $\theta=2\pi(i+j)/N$; distinct from the 90-degree integer-K floor = Paper 3):
+
+- The occupied state of the high-symmetry floor is a **single eigenmode** in which all waves co-wind a single carrier (eigen-residual $\le3.0\times10^{-14}$). Even after factorization, the inter-block frequency ratio on the floor is $1{:}1$.
+- Across all even systems $N=4$–$40$, there are **0 integer-harmonic relations of 2/3/4-fold, 0 low-denominator rational ratios with denominator $\le16$, and 0 three-wave sum resonances $\omega_i+\omega_j=\omega_k$**. The complete photon-pair covering of $N=8k$ and the appearance of harmonics are uncorrelated.
+- A two-wave $z_j=\pm iz_i$ is a zero-closure geometry with a $90^\circ$ phase difference, not a harmonic such as $1{:}2$. The high-symmetry background can be factorized into many closure condensates, but on the floor they have no independent clocks and are phase-locked to the same carrier.
+
+**Control (what creates the factorization).** For the make_parent floor, which likewise satisfies self-consistency and zero-closure $\sum z^2=0$ and has a 90-degree phase lattice, we audited all two-waves (Experiment 15), but exact $z_b=\pm i\,z_a$ pairs are 0 across the entire series of $N=3$–$40$ at $\varepsilon\le10^{-9}$ ($\pm90^\circ$ phases form spontaneously, but amplitude equalization is insufficient, with a best case of $\varepsilon=3.7\times10^{-8}$). Therefore the photon-type two-wave factorization **does not arise from zero-closure itself or from the 90-degree phase lattice alone**, but depends on the phase-cyclicity ($q=e^{i8\pi/N}$) and the distance-class equal-amplitude structure of the cyclic-Fourier floor treated in this paper. This control is also consistent with the make_parent floor and the high-symmetry theoretical floor being **distinct members** that satisfy the same ignition qualification (Papers 3 and 0).
+
+## 8. Claim Classification and Open Points
+
+- Classification: **existence** of a static algebraic factorization. Within the same distance class it is a general proof from the phase alone (theorem of §3, $L=N/\gcd(N,4)$, $p=\operatorname{spf}(L)$); the explicit construction for $N=8k$ is exact; the full-space "$\iff 8\mid N$" is explained by the phase lattice + parity + amplitude reflection and numerically established by an exhaustive pair audit ($N=3$–$40$). Judgment: retained.
+- Open: that the equality of amplitudes is limited to the reflection $r_d=r_{N/2-d}$ (that there is no accidental equal-amplitude class pair with odd $d'-d$) is numerically confirmed for $N=3$–$40$. A general proof for arbitrary $N$ (that the $r_d$ of the cyclic-Fourier relative equilibrium has no equality other than the reflection) is left as a future task. However, the absence of 2-wave pairs for $4\nmid N$ follows unconditionally from the phase lattice, independent of amplitude.
+- Not treated explicitly: identification of particle species and dynamical conservation (generation, annihilation, and recombination of blocks under fixed $R_{124,23}$ exchange scattering) are outside the scope of this paper. The helicity of $\pm i$ pairs (the absolute counts of right-handed/left-handed) cannot be defined from static undirected pairs alone.
+- Control: on the make_parent floor, exact $\pm i$ pairs $=0$ (exhaustive pair audit, $N=3$–$40$, Experiment 15). The factorization depends not on zero-closure or the 90-degree lattice but on the additional structure of the cyclic-Fourier floor (§7).
+- The high-symmetry background is more generally a **sea of minimal zero-closure condensates** than a "sea of photons," and $N=8k$ is the special series whose minimal unit can be decomposed down to two waves (photon-type). The algebraic basis for the minimal unit of information being a two-wave is Paper 9.
+
+## Related Work (Structural Agreement, Not the Source of Derivation)
+
+- Factorization of vanishing sums of roots of unity (Lam–Leung): agrees with the structure in which zero-closure blocks are decomposed into prime sizes.
+- Line graph / association scheme ($L(K_N)$, Johnson scheme): distance-class structure.
+
+## References
+
+1. Noriaki Kihara, "The mechanism of inflationary rapid expansion in self-consistent relational-wave closed systems," Concept DOI 10.5281/zenodo.22112008.
+2. T. Y. Lam and K. H. Leung, "On vanishing sums of roots of unity", J. Algebra 224 (2000) 91.
+3. D. Cvetković, P. Rowlinson, S. Simić, *An Introduction to the Theory of Graph Spectra*, Cambridge (2010).
+
+## Reproduction
+
+Audit scripts and CSVs are provided as a complete set in each package: for the even system, `高対称理論床_偶数系光子対精密解析_20260908/` (`audit_highsym_even_photon_pairs_v2.py`, `even_N_summary.csv`, `selected_maximum_matchings.csv`, `component_size_counts.csv`), `高対称理論床_偶数系_光子対と凝縮体因数分解_20260908/` (`analyze_unpaired_condensates_v1.py`, `primitive_zero_closure_groups.csv`, `distance_class_zero_closure.csv`), `高対称理論床_偶数系_倍音関係監査_20260908/` (`analyze_highsym_harmonic_spectrum_v2.py`, `positive_frequency_modes.csv`); for the odd system, `高対称理論床_奇数系_ゼロ閉塞因数分解監査_20260908/` (`analyze_highsym_odd_closure_factorization_v1.py`, `constructive_primitive_zero_closure_groups.csv`); and the photon-pair audit of the make_parent floor `make_parent型初期値_自己無撞着構造_20260907/二波自己閉塞光子対監査_20260908/`. The verification of the factorization theorem of §3 ($L=N/\gcd(N,4)$, $p=\operatorname{spf}(L)$, the $N=8k$ explicit construction, and inter-class absence) is in `巡回二乗波因数分解定理_20260913/` (`verify_cyclic_square_wave_factorization_20260913.py` = read-out only, reproducing the phase theorem + the $N=8k$ explicit construction + the all-pairs audit, `results/cyclic_factorization_summary.csv`, `実行ログ`, `分析`, README, SHA256SUMS, run_all; the input is the even-system CSVs above). Each is complete with README, SHA256SUMS, analysis md, and RUN_METADATA. The reconstruction and cross-checks of the floor use the same definitions as the canonical `run_N3_N40_stage123_v1.py` (SHA256 `1abf2353fee2e4f56f05e7a6f149fd086885136beb61ab571b48a56b09691567`), with no physical changes.

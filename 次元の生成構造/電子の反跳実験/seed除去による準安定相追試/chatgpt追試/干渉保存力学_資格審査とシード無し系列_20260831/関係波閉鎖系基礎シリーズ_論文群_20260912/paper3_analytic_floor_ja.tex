@@ -1,0 +1,612 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% Glyph map for lualatex (newunicodechar). Maps symbols that may lack font glyphs.
+\usepackage{newunicodechar}
+\usepackage{amssymb}
+\newunicodechar{∎}{\ensuremath{\blacksquare}}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{✗}{\ensuremath{\times}}
+\newunicodechar{⟹}{\ensuremath{\Longrightarrow}}
+\newunicodechar{⟺}{\ensuremath{\Longleftrightarrow}}
+\newunicodechar{↪}{\ensuremath{\hookrightarrow}}
+\newunicodechar{⌊}{\ensuremath{\lfloor}}
+\newunicodechar{⌋}{\ensuremath{\rfloor}}
+\newunicodechar{≃}{\ensuremath{\simeq}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{←}{\ensuremath{\leftarrow}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{⊥}{\ensuremath{\perp}}
+\newunicodechar{√}{\ensuremath{\surd}}
+\newunicodechar{∑}{\ensuremath{\sum}}
+\newunicodechar{∏}{\ensuremath{\prod}}
+\newunicodechar{∞}{\ensuremath{\infty}}
+\newunicodechar{∈}{\ensuremath{\in}}
+\newunicodechar{∀}{\ensuremath{\forall}}
+\newunicodechar{∣}{\ensuremath{\mid}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{φ}{\ensuremath{\varphi}}
+\newunicodechar{ψ}{\ensuremath{\psi}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{Π}{\ensuremath{\Pi}}
+\newunicodechar{Λ}{\ensuremath{\Lambda}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{ω}{\ensuremath{\omega}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{ν}{\ensuremath{\nu}}
+\newunicodechar{±}{\ensuremath{\pm}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{·}{\ensuremath{\cdot}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={90度高対称床の解析的厳密解------Z4位相ラベルが定める整数反対称生成子の \textbackslash sigma\_\{\textbackslash max\} 固有モードと閉形式スペクトル},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.), ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{90度高対称床の解析的厳密解------Z4位相ラベルが定める整数反対称生成子の
+\(\sigma_{\max}\) 固有モードと閉形式スペクトル}
+\author{Noriaki Kihara (WF System Co., Ltd.), ORCID 0009-0004-6753-4020}
+\date{2026-09-12}
+
+\begin{document}
+\maketitle
+
+\textbf{シリーズ:} 自己無撞着な関係波閉鎖系の基礎（論文3／全10本）\\
+\textbf{著者:} 木原 範昭（WF System Co., Ltd.）　\textbf{日付:}
+2026-09-12\\
+\textbf{Version DOI:} 10.5281/zenodo.22728996\\
+\textbf{Concept DOI:} 10.5281/zenodo.22728995\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Zenodo:} https://zenodo.org/records/22728996\\
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+論文2で点火の資格を満たすと確定した90度高対称床を、反復近似（make\_parent、\texttt{iters=1200},
+\texttt{tol=1e-12}）ではなく\textbf{整数固有値問題として解析的に厳密に}構成し、その閉形式を\textbf{任意
+\(N\)} に対して導出する。床の位相は大域位相を除き
+\(\{0,90,180,270\}^\circ\) に量子化されるので各辺に Z4 ラベル
+\(k_e\in\{0,1,2,3\}\) を与えると、生成子
+\(K_{ef}=A_{ef}\sin(90^\circ(k_f-k_e))\) は\textbf{整数行列（成分
+\(0,\pm1\)）}になる。決定論的種 \(k_e=(i+j)\bmod4\)
+について、生成子を決めるのは mod 4 ではなく \textbf{parity}
+\(p_e=(i+j)\bmod2\) だけで、論文1の実対称行列
+\(W_{ef}=A_{ef}\sin^2\psi_{ef}\) が二部グラフ
+\(W_{ef}=A_{ef}\mathbf 1_{p_e\neq p_f}\)（\(L(K_N)\)
+を頂点番号和の偶奇で二分）になる。したがって床は
+\(k_e=(i+j)\bmod4\to W\to\) Perron ベクトル
+\(r>0\to z=Dr\)（\(D=\operatorname{diag}(e^{i90^\circ k_e})\)、論文1
+\(D^{-1}KD=iW\)）で\textbf{一発で構成でき、離散ラベル反復は本質的に不要}である。床は
+\(iK\) の\textbf{絶対値最大の負固有値} \(\mu=-\sigma_{\max}\)
+の固有ベクトルで、位相は \(d\varphi/d\tau=-\mu=\sigma_{\max}>0\)
+で前進し位相方程式と整合する。二部構造の縮約 Perron 問題（偶数 \(N\) は
+\(2\times2\)、奇数 \(N\) は \(3\times3\)）から \(\sigma^2\)（偶数
+\(N(N-2)\)／奇数 \(N^2-2N-1\)）・各辺振幅²（parity
+クラスごとに有理数）・全スペクトル（\(BB^{\mathsf T}\)）が任意 \(N\)
+で閉形式に出る（\textbf{sympy 記号で \(N\) 一般に検証、数値で
+\(N=3\)--\(40\) 一致}）。さらに一般 \(N\) で非零スペクトルは \(O(N)\)
+個であり、偶数 \(N\ge6\)・奇数 \(N\ge7\) では厳密に \(2(N-1)\)
+個＝\(\operatorname{rank}K=2(N-1)\)・核次元
+\((N-1)(N-4)/2\)（\(N=3,4,5\) は退化例）：\(M=N(N-1)/2=O(N^2)\)
+の関係波空間のうち活動するのは \(O(N)\) 次元だけである。全
+\(N=3,\ldots,40\)（38床）で one\_step 相対平衡残差
+\(\sim10^{-15}\)--\(1.2\times10^{-14}\)（make\_parent の
+\(\sim10^{-13}\)
+を上回る）、位相は厳密に軸上、\(\|z\|^2=1\)。\textbf{零閉塞
+\(\sum z^2=0\)
+は床に課した追加条件ではなく、二部固有モード（\(\|x\|^2=\|y\|^2\)）であることから自動的に従う一般定理}（Perron
+に限らず全非零固有モードで成立）で、二部 \(W\) の連結性も任意 \(N\ge3\)
+で証明する（論文1の Perron
+適用条件を回収）。床は「\(\sigma=\sqrt{\text{整数}}\)、各辺振幅
+\(=\sqrt{\text{有理数}}\)（parity クラスで決まる）、位相
+\(\in\{0,90,180,270\}\)」で完全に代数的に書き下せる。分類：解析的厳密解（parity
+二部構造＋縮約 Perron 問題）＋記号（任意
+\(N\)）/数値（\(N=3\)--\(40\)）検証。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1.
+課題------近似床を厳密化する}\label{ux8ab2ux984cux8fd1ux4f3cux5e8aux3092ux53b3ux5bc6ux5316ux3059ux308b}
+
+論文2で用いた make\_parent
+床は自己無撞着固有モードを反復で近似した解で、残差は
+\(\sim10^{-13}\)。反復上限・許容カット・damping
+で止めた近似をそのままコピーしても意味がない。90度床は位相が離散（Z4）に量子化されるという構造を持つので、これを使えば\textbf{整数固有値問題として代数的に厳密}に解ける。本論文はその厳密解を全
+\(N\)（奇数を含む）で構成し、閉形式を確定する。
+
+\subsection{2.
+原理------Z4ラベルから整数反対称生成子へ}\label{ux539fux7406z4ux30e9ux30d9ux30ebux304bux3089ux6574ux6570ux53cdux5bfeux79f0ux751fux6210ux5b50ux3078}
+
+床の位相を大域位相を除き4象限に量子化し、各辺に \(k_e\in\{0,1,2,3\}\)
+を割り当てる。位相差は \(90^\circ(k_f-k_e)\) だから
+
+\[K_{ef}=A_{ef}\sin\!\big(90^\circ(k_f-k_e)\big),\qquad (k_f-k_e)\bmod4:\ 0\to0,\ 1\to+1,\ 2\to0,\ 3\to-1,\]
+
+すなわち \(K\) は成分 \(0,\pm1\) の\textbf{整数反対称行列}。床 \(z\)
+はその \(\sigma_{\max}\) 固有モード、すなわち \(iK\)
+の\textbf{絶対値最大の負固有値} \(\mu=-\sigma_{\max}\)
+の固有ベクトル（\(z=\sigma_{\max}u-iKu\) の形、\(u\) は
+\(K^2u=-\sigma_{\max}^2u\) の実固有ベクトル）。\(iK\)
+はエルミートで固有値は共役対 \(\pm\sigma_j\)、\(\sigma_{\max}\)
+が最大特異値（スペクトル半径）。床は位相が前進する分枝
+\(\mu=-\sigma_{\max}\) を取り、\(d\varphi/d\tau=-\mu=\sigma_{\max}>0\)
+が位相方程式 \(r\dot\varphi=\sum r_f\sin^2\Delta\varphi\ge0\)
+と整合する（実データ・コードで確認：N=6 で make\_parent 床
+\(\mu=-4.868\)、整数K床
+\(\mu=-4.899\)、ともに最小固有値）。\(K^{\mathsf T}K\)
+の固有値の平方根が定めるのは\textbf{特異値
+\(\sigma=\sqrt{\text{整数}}\)} であって、各辺振幅 \(r_e\)
+はそれに属する固有ベクトル（＝\(W\) の Perron
+ベクトル）の成分であり、本構成では
+\(r_e=\sqrt{\text{有理数}}\)（§5）の閉形式になる。
+
+なお、複素自己無撞着問題 \(Kz=i\omega z\) が実対称非負整数行列
+\(W_{ef}=A_{ef}\sin^2\psi_{ef}\) の固有値問題 \(Wr=\omega r\)
+と厳密同値であること（\(D^{-1}KD=iW\)、\(D=\operatorname{diag}(e^{i\varphi_e})\)）と、\(W\)
+既約下での Perron--Frobenius による正振幅解の存在・一意性は\textbf{論文1
+が一般に与える}。本論文はその \(W\)＝整数 \(K\)
+の具体形で、\(\sigma=\rho(W)\) と各辺振幅を閉形式（§5）に解く（\(W\) の
+Perron 固有ベクトルと整数 \(K\) の \(\sigma_{\max}\)
+モードは同一の床。\(r>0\)・主固有ベクトル一致を全 \(N\) で確認）。
+
+\textbf{parity による二部構造。} \(W\) を決めるのは mod 4 ではなく
+\textbf{mod 2}（parity）\(p_e=(i+j)\bmod2\)
+だけである。\(\sin^2[90^\circ(k_f-k_e)]\) は \(k_f-k_e\)
+が奇（\(p_e\neq p_f\)）なら \(1\)、偶（\(p_e=p_f\)）なら \(0\) だから
+
+\[W_{ef}=A_{ef}\,\mathbf 1_{p_e\neq p_f}.\]
+
+すなわち \(W\) は \(L(K_N)\) の頂点（＝\(K_N\) の辺
+\(\{i,j\}\)）を頂点番号和の偶奇 \(p_e\)
+で二分した\textbf{二部グラフの隣接行列}である。この \(W\) は任意
+\(N\ge3\) で\textbf{連結（既約）}である（証明は §8：偶頂点集合
+\(U\)（\(|U|=\lceil N/2\rceil\ge2\)）・奇頂点集合 \(V\)
+に対し、異偶間辺どうしは内部辺を橋に、同偶奇辺は異偶間辺で接続する）。ゆえ
+Perron ベクトル \(r>0\)
+が一意（論文1）で、\(z=Dr\)（\(D=\operatorname{diag}(e^{i90^\circ k_e})\)）が
+\(Kz=i\sigma_{\max}z\) を厳密に満たす。したがって床は種ラベルから
+\(k\to W\to r\to z=Dr\)
+で一発構成でき、離散ラベル反復（§3）は床の構成には不要である（反復床の
+\(W\) が種 parity の \(W\) と機械精度一致することを全 \(N=3\)--\(40\)
+で確認、‖差‖
+\(\le3\times10^{-27}\)、\texttt{parity二部構造\_解析的証明\_20260912/}）。この二部構造から
+§5・§6 の閉形式が任意 \(N\) で出る。
+
+\textbf{二乗閉塞 \(\sum_e z_e^2=0\)
+は二部構造の帰結（追加条件でない）。} 二部
+\(W=\begin{pmatrix}0&B\\B^{\mathsf T}&0\end{pmatrix}\) の非零固有モード
+\(r=(x,y)\) は \(By=\sigma x,\ B^{\mathsf T}x=\sigma y\) より
+\(\sigma\|x\|^2=x^{\mathsf T}By=(B^{\mathsf T}x)^{\mathsf T}y=\sigma\|y\|^2\)、\(\sigma\neq0\)
+ゆえ \(\|x\|^2=\|y\|^2\)（規格化で各 \(1/2\)）。一方
+\(z_e=e^{i90^\circ k_e}r_e\) より
+\(z_e^2=(-1)^{k_e}r_e^2=(-1)^{p_e}r_e^2\)（実数）だから
+
+\[\sum_e z_e^2=\sum_{p_e=0}r_e^2-\sum_{p_e=1}r_e^2=\|x\|^2-\|y\|^2=0.\]
+
+すなわち零閉塞 \(\sum z^2=0\)
+は床に課した追加条件ではなく、\textbf{二部固有モードであることから自動的に生じる}（Perron
+床に限らず二部 \(W\)
+の任意の非零固有モードで成立。実部・交差項虚部が別々にゼロなのは
+\(z_e^2\) が実であることの帰結）。全 \(N=3\)--\(40\)
+の全非零固有モードで
+\(|\sum z^2|\le10^{-15}\)・\(|\|x\|^2-\|y\|^2|\le10^{-15}\) を確認。
+
+\subsection{3. 床の構成------種ラベルから Perron
+で一発（反復は確認のみ）}\label{ux5e8aux306eux69cbux6210ux7a2eux30e9ux30d9ux30ebux304bux3089-perron-ux3067ux4e00ux767aux53cdux5fa9ux306fux78baux8a8dux306eux307f}
+
+§2 より床は種ラベル \(k_e=(i+j)\bmod4\)（辺
+\(e=\{i,j\}\)、\(0\le i<j\le N-1\)）から\textbf{反復なしで直接}構成できる：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  parity \(p_e=(i+j)\bmod2\) で二部行列
+  \(W_{ef}=A_{ef}\mathbf 1_{p_e\neq p_f}\) を組む。
+\item
+  \(W\) の Perron ベクトル \(r>0\) と \(\sigma_{\max}=\rho(W)\)
+  を取る（\(W\) 連結、論文1）。
+\item
+  \(D=\operatorname{diag}(e^{i90^\circ k_e})\) として床 \(z=Dr\)。論文1
+  \(D^{-1}KD=iW\) より \(Kz=i\sigma_{\max}z\)（相対平衡）。
+\end{enumerate}
+
+この直接構成 \(z=Dr\) が one\_step 相対平衡残差 \(\le1.2\times10^{-14}\)
+を満たすことを全 \(N=3\)--\(40\) で確認した。従来の生成器
+\texttt{make\_90deg\_floor\_analytic\_v1.py}
+は種から離散ラベル反復（\(iK\) の絶対値最大固有値 \(\mu=-\sigma_{\max}\)
+の固有ベクトルを4象限へ再量子化→大域位相4通りで前ラベルに最一致→固定点/gauge等価サイクルで停止・最小残差床を採用）で床を求めるが、\textbf{反復床の
+\(W\) は種 parity の \(W\) と機械精度一致}（‖差‖
+\(\le3\times10^{-27}\)）し、床は種直接構成と\textbf{符号ゲージ}（\(z_e\to-z_e\)、\(k_e\to k_e+2\)、\(K\to SKS\)
+で \(Kz=i\sigma_{\max}z\)・\(W\) 不変）を除いて同一である（ゲージ整合後
+‖差‖
+\(\le8\times10^{-15}\)）。したがって反復は床の構成には不要で、種が固定点（符号ゲージを除く）であることの確認に相当する。adjacency/one\_step
+は正本
+\texttt{run\_N3\_N40\_stage123\_v1.py}（SHA照合）から抽出（物理無変更）。各床の検算（\texttt{build\_analytic\_floor}）：\(\|z\|^2\)、\(|\sum z|\)、\(\Re(a^{\mathsf T}a-b^{\mathsf T}b)\)、\(a^{\mathsf T}b\)、\(|\sum z^2|\)、one\_step
+相対平衡残差、軸上判定、象限数、振幅種数、\(\sigma\) を記録。
+
+\subsection{\texorpdfstring{4. 結果（全
+\(N=3,\ldots,40\)・38床）}{4. 結果（全 N=3,\textbackslash ldots,40・38床）}}\label{ux7d50ux679cux5168-n3ldots4038ux5e8a}
+
+全床とも位相ちょうど軸上（\(0/90/180/270\)）、閉塞
+\(\sum z^2=0\)（実部・交差項虚部とも機械ゼロ。§2
+の二部構造の帰結）、\(\|z\|^2=1\)、相対平衡残差
+\(\sim10^{-15}\)--\(1.2\times10^{-14}\)。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\(N=3\)}：3象限（T型）、\(|\sum z|=0.707\)、\(\sigma=\sqrt2=1.414\)。
+\item
+  \textbf{\(4\mid N\)（4,8,\ldots,40）}：重心
+  \(|\sum z|\sim10^{-15}\)（厳密ゼロ）、振幅2値。
+\item
+  \textbf{\(N\equiv2\ (\mathrm{mod}\,4)\)（6,10,\ldots,38）}：重心
+  \(0.236\to0.037\)（\(N\)増で減少）、振幅2値。
+\item
+  \textbf{奇数 \(N\)（5,7,\ldots,39）}：重心
+  \(0.154\to0.019\)（減少）、振幅3値。\textbf{奇数も全て床}（軸上・閉塞ゼロ）。
+\end{itemize}
+
+重心の厳密ゼロは \(4\mid N\)（象限の完全 \(\pm\)
+対称が可能）に限られ、他は parity 不均衡と Perron
+解から決まる残差重心である（最小化ではなく決定量。閉形式は
+§8。厳密ゼロは取れない）。精度比較（同一 \(N\)）：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+\(N\) & make\_parent 残差 & 整数K解析解 残差 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+6 & \(2.3\times10^{-13}\) & \(5.4\times10^{-16}\) \\
+7 & \(3.5\times10^{-14}\) & \(1.7\times10^{-15}\) \\
+8 & \(8.2\times10^{-14}\) & \(5.7\times10^{-16}\) \\
+9 & \(8.2\times10^{-14}\) & \(1.0\times10^{-15}\) \\
+\end{longtable}
+}
+
+全38床を複素平面グリッド図（図1）に収録。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図1: 90度理論床（整数K σ\_max 解析解, 全N=3..40）。位相 0/90/180/270・厳密相対平衡（残差\textasciitilde1e-15）・4\textbar N は重心厳密ゼロ。}]{figs/p3_analytic_floor_ja_fig1.png}}
+\caption{図1: 90度理論床（整数K σ\_max 解析解, 全N=3..40）。位相
+0/90/180/270・厳密相対平衡（残差\textasciitilde1e-15）・4\textbar N
+は重心厳密ゼロ。}
+\end{figure}
+
+\textbf{図1} 90度理論床（整数K \(\sigma_{\max}\)
+解析解、\(N=3\)--\(40\)）。
+
+\subsection{\texorpdfstring{5. 閉形式（parity 縮約 Perron 問題から任意
+\(N\)）}{5. 閉形式（parity 縮約 Perron 問題から任意 N）}}\label{ux9589ux5f62ux5f0fparity-ux7e2eux7d04-perron-ux554fux984cux304bux3089ux4efbux610f-n}
+
+§2 の二部構造から Perron ベクトル \(r\) は parity
+クラスで一定値をとる。各クラスの隣接本数を数えると縮約 Perron
+問題になり、\(\sigma\) と各辺振幅が\textbf{任意 \(N\)}
+で閉形式に解ける（sympy
+記号検証、\texttt{parity二部構造\_解析的証明\_20260912/results/実行ログ}）。整数
+\(K\) は反対称ゆえ \(K^2\) は整数対称（固有値 \(-\sigma^2\)）で
+\(\sigma=\sqrt{\text{整数}}\)、各辺振幅² は有理数。
+
+\textbf{偶数 \(N=2m\)（2クラス）。} 異偶間辺（\(p=1\)、\(i+j\) 奇、本数
+\(N^2/4\)）と同偶奇内辺（\(p=0\)、\(i+j\) 偶、本数
+\(N(N-2)/4\)）。各異偶間辺は同偶奇辺を \(N-2\)
+本、各同偶奇辺は異偶間辺を \(N\) 本隣接に持つので、クラス代表値
+\(x\)（異偶間）・\(y\)（同偶奇）は
+
+\[\sigma x=(N-2)y,\qquad \sigma y=Nx\ \Longrightarrow\ \sigma^2=N(N-2),\]
+
+\(\|z\|^2=1\) で規格化して \(x^2=2/N^2\)、\(y^2=2/(N(N-2))\)。
+
+\textbf{奇数 \(N\)（3クラス）。} \(a=\tfrac{N+1}2\)
+偶頂点・\(b=\tfrac{N-1}2\)
+奇頂点。異偶間（\(ab=\tfrac{N^2-1}4\)）・偶側内部（\(\binom a2=\tfrac{N^2-1}8\)）・奇側内部（\(\binom b2=\tfrac{(N-1)(N-3)}8\)）。代表値
+\(x\)（異偶間）・\(y\)（偶側内部）・\(z\)（奇側内部）は
+
+\[\sigma x=\tfrac{N-1}2y+\tfrac{N-3}2z,\quad \sigma y=(N-1)x,\quad \sigma z=(N+1)x\ \Longrightarrow\ \sigma^2=N^2-2N-1,\]
+
+規格化して
+\(x^2=\tfrac{2}{(N-1)(N+1)}\)、\(y^2=\tfrac{2(N-1)}{(N+1)(N^2-2N-1)}\)、\(z^2=\tfrac{2(N+1)}{(N-1)(N^2-2N-1)}\)。
+
+\textbf{\(\sigma^2\)}：偶数 \(N(N-2)\)／奇数 \(N^2-2N-1\)。数列
+\(N=3\)--\(20\)：\(2,8,14,24,34,48,62,80,98,120,142,168,194,224,254,288,322,360\)。
+
+\textbf{振幅²（規格化 \(\|z\|^2=1\)、値 × 本数）------クラス割当は
+parity で確定する。}
+
+偶数 \(N\)（2クラス・各クラス総パワー \(1/2\)）：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+振幅² & クラス（辺） & 本数 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(2/N^2\) & 異偶間（\(i+j\) 奇） & \((N/2)^2\) \\
+\(2/(N(N-2))\) & 同偶奇内（\(i+j\) 偶） & \(N(N-2)/4\) \\
+\end{longtable}
+}
+
+奇数 \(N\)（3クラス。\(N=3\) は奇側内部0本＝T型）：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+振幅²
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+クラス（辺）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+本数
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(2/((N-1)(N+1))\) & 異偶間（\(i+j\) 奇） & \((N^2-1)/4\) \\
+\(2(N-1)/((N+1)(N^2-2N-1))\) & 偶側内部（\(i,j\) とも偶） &
+\((N^2-1)/8\) \\
+\(2(N+1)/((N-1)(N^2-2N-1))\) & 奇側内部（\(i,j\) とも奇） &
+\((N-1)(N-3)/8\) \\
+\end{longtable}
+}
+
+本数総和はいずれも \(M=N(N-1)/2\)。閉形式は sympy 記号（任意
+\(N\)）で検証し、数値で \(N=3\)--\(40\) の各辺振幅² と一致（誤差
+\(\le1.2\times10^{-16}\)）。偶数 \(N\) で重心が厳密ゼロなのは2クラスが各
+\(1/2\) パワーで \(\pm\) 完全相殺するため。奇数 \(N\) は3クラスで
+\(\pm\) 相殺が不完全なため小さな残差重心が残る（閉形式は §8）。
+
+\subsection{\texorpdfstring{6.
+固有振動スペクトルと活動次元（\(O(N)\)）}{6. 固有振動スペクトルと活動次元（O(N)）}}\label{ux56faux6709ux632fux52d5ux30b9ux30daux30afux30c8ux30ebux3068ux6d3bux52d5ux6b21ux5143on}
+
+二部構造 \(W=\begin{pmatrix}0&B\\B^{\mathsf T}&0\end{pmatrix}\)
+の非零固有値は
+\(\pm\sqrt{\operatorname{eig}(BB^{\mathsf T})}\)。異偶間辺を（偶頂点)×(奇頂点)
+の \(a\times b\) 格子で添字づけると
+
+\[BB^{\mathsf T}=(a-2)I_a\otimes J_b+(b-2)J_a\otimes I_b+2J_a\otimes J_b,\]
+
+固有値は
+\(4ab-2(a+b)\)（\(\times1\)）、\(b(a-2)\)（\(\times(a-1)\)）、\(a(b-2)\)（\(\times(b-1)\)）、残り
+\(0\)。\(a,b\) を代入して（偶数 \(N\) は \(a=b=N/2\)、奇数 \(N\) は
+\(a=\tfrac{N+1}2,b=\tfrac{N-1}2\)）：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{偶数
+  \(N\ge6\)}：\(\lambda_{\max}^2=N(N-2)\)（多重度1）、\(\lambda_1^2=N(N-4)/4\)（多重度
+  \(N-2\)）。
+\item
+  \textbf{奇数
+  \(N\ge7\)}：\(\lambda_{\max}^2=N^2-2N-1\)（多重度1）、\(\lambda_1^2=(N-5)(N+1)/4\)（多重度
+  \((N-3)/2\)）、\(\lambda_2^2=(N-1)(N-3)/4\)（多重度 \((N-1)/2\)）。
+\end{itemize}
+
+数値で全 \(N\) 一致（偶 \(N\ge6\)／奇 \(N\ge7\)）。\(N=3,4,5\)
+は退化で一部の固有値族が消える（\(N=4\)：\(\lambda_1^2=0\)、\(N=5\)：\((N-5)(N+1)/4=0\)）。
+
+\textbf{活動次元 \(O(N)\)。} 非零固有値は \(a+b-1=N-1\) 個（\(\pm\)
+ペアで \(2(N-1)\)）。よって
+
+\[\operatorname{rank}K=\operatorname{rank}W=2(N-1),\qquad \dim\ker=M-2(N-1)=\frac{(N-1)(N-4)}2\quad(\text{偶}N\ge6,\ \text{奇}N\ge7).\]
+
+\(M=N(N-1)/2=O(N^2)\) の関係波空間のうち、90度床の生成子で活動するのは
+\(O(N)\) 次元だけで、残りは \(\ker K\) に落ちる。小 \(N\)
+は退化で例外：\(N=3\)（rank2, 核1）、\(N=4\)（rank2,
+核4）、\(N=5\)（rank6, 核4）。
+
+単純整数倍音系（基音の整数倍）になるのは \(N=3,4\) のみ。\(N\ge5\)
+は一般に平方根比。生の固有値 \(\lambda\) を \(N\) 横断で比較すると
+\(2\)--\(8\) 倍の機械精度整数比ペアが65組、位相刻みを込めた
+\(q=\lambda/N\)
+では11組検出される（\texttt{固有振動数解析\_90度系列\_N3\_N40\_20260910/}）。これは床が単一
+carrier
+を共巻きする単一固有モードであること（論文4：因数分解しても床上の周波数比は1:1）と整合する。
+
+\subsection{7.
+非90度理論床との関係}\label{ux975e90ux5ea6ux7406ux8ad6ux5e8aux3068ux306eux95a2ux4fc2}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+位相
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+生成子
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+解法
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+対称性
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+巡回Fourier床（論文2の(C)） & \(2\pi(i+j)/N\)（N値） & 連続 &
+距離クラス縮約固有ベクトル & 巡回対称（振幅は距離クラス一定） \\
+90度整数K床（本論文） & \(0/90/180/270\)（4値） & \textbf{整数行列} &
+\(\mu=-\sigma_{\max}\) 固有ベクトル & 距離クラス対称を破る（振幅は
+parity クラスごと） \\
+\end{longtable}
+}
+
+90度整数K床は距離クラス対称ではない（振幅は parity クラスごと。偶数
+\(N\) で2値、奇数 \(N\) で3値）ので距離クラス縮約では作れず、二部 \(W\)
+の Perron モード（＝整数 \(K\) の \(\sigma_{\max}\)
+固有モード）として解くのが正しい。両床は別メンバーだが、ともに論文2の点火資格（不安定な相対平衡）を満たす。
+
+\subsection{8.
+主張分類・未決}\label{ux4e3bux5f35ux5206ux985eux672aux6c7a}
+
+\begin{itemize}
+\tightlist
+\item
+  分類：解析的厳密解（parity 二部構造＋縮約 Perron 問題）＋記号（任意
+  \(N\), sympy）/数値（\(N=3\)--\(40\)）検証。判定：保持。
+\item
+  \textbf{解決済み（本版で閉形式化・一般証明）}：(1)
+  振幅クラスの辺割当は parity クラスそのもの（異偶間＝\(i+j\)
+  奇／偶側内部＝\(i,j\) とも偶／奇側内部＝\(i,j\)
+  とも奇）に確定（§5）。(2) 奇数 \(N\)
+  の残差重心も閉形式（\(D=N^2-2N-1\)）：
+\end{itemize}
+
+\[|\textstyle\sum z|=\begin{cases}0&N\equiv0\ (\mathrm{mod}\,4)\\[1mm] \sqrt2/N&N\equiv2\ (\mathrm{mod}\,4)\\[1mm] \sqrt{(N-1)/(2(N+1)D)}&N\equiv1\ (\mathrm{mod}\,4)\\[1mm] \sqrt{(N+1)/(2(N-1)D)}&N\equiv3\ (\mathrm{mod}\,4)\end{cases}\]
+
+全 \(N=3\)--\(40\) で実測と一致（誤差 \(\le10^{-9}\)。例
+\(N=5\)：0.154303、\(N=6\)：0.235702、\(N=7\)：0.140028）。(3) 二乗閉塞
+\(\sum z^2=0\) は二部固有モードの帰結で、Perron
+に限らず全非零固有モードで成立する一般定理（§2）。(4) \textbf{二部 \(W\)
+の連結性を任意 \(N\ge3\) で一般証明（論文1の未決を回収）}：偶頂点
+\(U\)（\(|U|=\lceil N/2\rceil\ge2\)）・奇頂点 \(V\)。異偶間辺
+\((u,v),(u',v')\) は、\(u\neq u'\) なら
+\((u,v)\)--\((u,u')\)--\((u',v')\)（\((u,u')\)
+は偶側内部）、\(u=u'\)（\(v\neq v'\)、\(|V|\ge2\)）なら
+\((u,v)\)--\((v,v')\)--\((u,v')\) で連結。同偶奇辺 \((u,u')\) は
+\((u,u')\)--\((u,v)\)（任意 \(v\in V\)）でその成分に接続。ゆえ \(N\ge3\)
+で連結＝既約、Perron--Frobenius が任意 \(N\ge3\) で適用可能（連結成分数
+\(=1\) を \(N=3\)--\(40\) で数値確認）。(5)
+符号ゲージ族の数え上げ：各辺独立に
+\(k_e\to k_e+2t_e\)（\(S=\operatorname{diag}((-1)^{t_e})\)、\(K\to SKS\)・\(W\)
+不変）で \(2^M\) 通り、全辺同時反転 \(S=-I\)（大域位相
+\(\pi\)）を同一視して相対符号ゲージ \(2^{M-1}\)。 -
+未決：本論文の範囲で構造的な未決は残らない。頂点置換など符号ゲージ以外の同値による床の分類（幾何的モジュライの整理）は本論文の対象外。
+
+\subsection{関連研究（構造的一致・導出元でない）}\label{ux95a2ux9023ux7814ux7a76ux69cbux9020ux7684ux4e00ux81f4ux5c0eux51faux5143ux3067ux306aux3044}
+
+\begin{itemize}
+\tightlist
+\item
+  辺グラフのスペクトル（Cvetković et al.,
+  代数的グラフ理論）：\(A=L(K_N)\) とその上の整数反対称作用素の固有値。
+\item
+  相対平衡（Marsden \& Ratiu）：床＝剛体回転相対平衡。
+\end{itemize}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  木原範昭「自己無撞着な関係波閉鎖系におけるインフレーション的急拡大の機構」Concept
+  DOI 10.5281/zenodo.22112008.
+\item
+  D. Cvetković, P. Rowlinson, S. Simić, \emph{An Introduction to the
+  Theory of Graph Spectra}, Cambridge (2010).
+\end{enumerate}
+
+\subsection{再現}\label{ux518dux73fe}
+
+生成器・検証・データは
+\texttt{90度理論床\_整数K解析解\_全N\_20260909/}（\texttt{make\_90deg\_floor\_analytic\_v1.py}＝生成器、\texttt{closed\_form\_90deg\_floor\_verify\_v1.py}＝閉形式
+sympy
+厳密検証、\texttt{parents\_90deg\_floor\_analytic/parent\_90deg\_floor\_N\{00003..00040\}\_analytic.npz}＝38床、\texttt{summary\_90deg\_floor\_closed\_form.csv}、\texttt{manifest\_90deg\_floor\_analytic.json}、\texttt{fig\_90deg\_floor\_complex\_planes\_analytic.png}、\texttt{分析\_90度理論床\_整数K解析解\_全N\_20260909.md}、\texttt{run\_all.sh}、\texttt{SHA256SUMS.txt}）。parity
+二部構造による任意 \(N\) 解析化（§2・§3・§5・§6・§8）の検証は
+\texttt{同/parity二部構造\_解析的証明\_20260912/}（\texttt{verify\_parity\_bipartite\_analytic\_20260912.py}＝正本
+adjacency/one\_step を SHA 照合 import の読出しのみ検証＋sympy
+記号、\texttt{results/parity\_bipartite\_summary.csv}、\texttt{results/実行ログ\_20260912.log}、\texttt{分析\_parity二部構造\_解析的一本化\_20260912.md}、\texttt{README.md}、\texttt{run\_all.sh}、\texttt{SHA256SUMS.txt}）。固有振動スペクトルは
+\texttt{同/固有振動数解析\_90度系列\_N3\_N40\_20260910/}。複素自己無撞着
+≡ 実対称 \(W\) の同値（\(D^{-1}KD=iW\)）と Perron--Frobenius
+は論文1。adjacency/one\_step は正本
+\texttt{run\_N3\_N40\_stage123\_v1.py}（SHA256
+\texttt{1abf2353fee2e4f56f05e7a6f149fd086885136beb61ab571b48a56b09691567}）から抽出・物理無変更。
+
+\end{document}

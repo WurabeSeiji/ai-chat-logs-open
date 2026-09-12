@@ -1,0 +1,426 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% Glyph map for lualatex (newunicodechar). Maps symbols that may lack font glyphs.
+\usepackage{newunicodechar}
+\usepackage{amssymb}
+\newunicodechar{∎}{\ensuremath{\blacksquare}}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{✗}{\ensuremath{\times}}
+\newunicodechar{⟹}{\ensuremath{\Longrightarrow}}
+\newunicodechar{⟺}{\ensuremath{\Longleftrightarrow}}
+\newunicodechar{↪}{\ensuremath{\hookrightarrow}}
+\newunicodechar{⌊}{\ensuremath{\lfloor}}
+\newunicodechar{⌋}{\ensuremath{\rfloor}}
+\newunicodechar{≃}{\ensuremath{\simeq}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{←}{\ensuremath{\leftarrow}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{⊥}{\ensuremath{\perp}}
+\newunicodechar{√}{\ensuremath{\surd}}
+\newunicodechar{∑}{\ensuremath{\sum}}
+\newunicodechar{∏}{\ensuremath{\prod}}
+\newunicodechar{∞}{\ensuremath{\infty}}
+\newunicodechar{∈}{\ensuremath{\in}}
+\newunicodechar{∀}{\ensuremath{\forall}}
+\newunicodechar{∣}{\ensuremath{\mid}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{φ}{\ensuremath{\varphi}}
+\newunicodechar{ψ}{\ensuremath{\psi}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{Π}{\ensuremath{\Pi}}
+\newunicodechar{Λ}{\ensuremath{\Lambda}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{ω}{\ensuremath{\omega}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{ν}{\ensuremath{\nu}}
+\newunicodechar{±}{\ensuremath{\pm}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{·}{\ensuremath{\cdot}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Spontaneous Symmetry Breaking and Degenerate Vacua from the 90-Degree Floor------Symmetry Breaking by an Infinitesimal Seed and the \textbackslash Delta=-2\textbackslash pi/N Lock (N=6{,}\textbackslash ldots{,}40{,} all cases)},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.), ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Spontaneous Symmetry Breaking and Degenerate Vacua from the
+90-Degree Floor------Symmetry Breaking by an Infinitesimal Seed and the
+\(\Delta=-2\pi/N\) Lock (\(N=6,\ldots,40\), all cases)}
+\author{Noriaki Kihara (WF System Co., Ltd.), ORCID 0009-0004-6753-4020}
+\date{2026-09-12}
+
+\begin{document}
+\maketitle
+
+\textbf{Series:} Foundations of Self-Consistent Relational-Wave Closed
+Systems (Paper 5 of 10)\\
+\textbf{Author:} Noriaki Kihara (WF System Co., Ltd.)　\textbf{Date:}
+2026-09-12\\
+\textbf{Version DOI:} 10.5281/zenodo.22729089\\
+\textbf{Concept DOI:} 10.5281/zenodo.22729088\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Zenodo:} https://zenodo.org/records/22729089\\
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+The 90-degree floor is a self-consistent unstable relative equilibrium
+with a 90° phase skeleton (Papers 1 and 2). When the same floor \(Z_0\)
+is given an infinitesimal seed of amplitude \(10^{-8}\) pointing in
+\textbf{different directions} and run with the exact one\_step, the
+symmetry breaks, and after exponential inflation (Paper 6) the system
+locks onto an equal-amplitude, phase-dispersed, tilted relative
+equilibrium (one of the degenerate vacua). In all 35 cases
+\(N=6,\ldots,40\), every seed triggers inflation and locks onto an
+\textbf{isomorphic equilibrium} with a 1-step rotation angle that is
+exactly \(\Delta=-2\pi/N\) (error \(\sim10^{-5}\)) and equal amplitude
+(ratio \(\to1\), \(\sim10^{-3}\)), while the phase configuration (the
+direction of the vacuum) differs depending on the seed (vacuum
+difference: median \(4.0^\circ\)--\(48.4^\circ\), maximum
+\(76.9^\circ\)--\(180^\circ\)). That is, from a symmetric, unstable
+floor, an infinitesimal seed \textbf{spontaneously selects} one of the
+degenerate vacua. This is spontaneous symmetry breaking on a discrete
+map (Mexican-hat type). From the measured dynamics of the order
+parameter \(r=\sqrt{H_\perp/H}\), a Landau-type effective potential
+\(V(r)\) can be reconstructed with measured parameters
+(\(N=6{:}\lambda=0.338,r_{\rm vac}=0.485\)／\(N=40{:}\lambda=0.076,r_{\rm vac}=0.330\);
+ansatz). Large \(N\) that were unlocked at 500 steps all lock within
+2000 steps (\(N=22\) at step \(663\), \(N=40\) at step \(1299\)).
+Classification: empirical support for a new hypothesis (the SSB picture;
+exhaustive verification).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Problem}\label{problem}
+
+In Paper 1 the 90-degree floor was established as ``an unstable relative
+equilibrium in which the amplitude-driving \(\sin(2\Delta\varphi)\)
+vanishes individually for every term (90° phase skeleton)'', and in
+Paper 2 as ``the qualification for ignition = an unstable relative
+equilibrium''. This paper investigates what that instability concretely
+produces------\textbf{what an infinitesimal seed selects}------for all
+\(N\), and reads it as Mexican-hat-type SSB.
+
+\subsection{2. Dynamics and the seed (control
+experiment)}\label{dynamics-and-the-seed-control-experiment}
+
+The map is the canonical one\_step (Paper 1 §2, SHA \texttt{1abf2353…}).
+The floor \(Z_0\) is step0 of \texttt{full\_N3\_N40\_sweep} (the
+make\_parent eigenmode floor, Paper 2 §6). The only control variable is
+the initial seed (no change to the physical equations; the decision
+rules are not put into the dynamics but applied in post-run analysis):
+for each \(N\) we give \(Z_0+10^{-8}(\xi+i\eta)\) (\(\xi,\eta\) random,
+normalized) in 5 different directions, and run until adaptive stopping
+(equal amplitude and gauge-invariant relative-phase rate of change below
+threshold, upper limit 2600 steps). In the final state of each seed we
+measure lock\_step, \(H_\perp/H\), amplitude ratio, \(\Delta\) (1-step
+rotation angle), \(|\Delta+2\pi/N|\), and the inter-seed difference of
+the relative-phase configuration.
+
+\subsection{3. Mechanism------Mexican-hat-type
+SSB}\label{mechanismmexican-hat-type-ssb}
+
+The 90-degree floor = the 90° skeleton unstable relative equilibrium
+(schematically, the summit of the sombrero); the valley = the family of
+degenerate relative equilibria (equal amplitude, phase dispersion,
+tilted equilibria; sharing the common invariants \(\Delta=-2\pi/N\) and
+equal amplitude). An infinitesimal seed breaks the symmetry and rolls
+the system down an unstable eigendirection (inflation, Paper 6), locking
+onto a single point in the valley------from an unstable symmetric
+maximum it spontaneously selects one of the degenerate lower equilibria.
+We confirmed for \(N=6\) that the valley (the degenerate vacuum
+manifold) is not a finite discrete map-symmetry orbit but a
+\textbf{continuous moduli of tilted relative equilibria} (the 5 final
+states do not map onto one another under any of the \(6!=720\) vertex
+permutations plus a global phase plus complex conjugation:
+\texttt{頂点置換による縮退真空同定\_N6\_20260913/}). This is consistent
+with the fact that the valley of a Mexican-hat is intrinsically a
+continuous degenerate manifold (this is not the claim that the valley
+forms a single discrete symmetry orbit). From the measurement of the
+order parameter \(r=\sqrt{H_\perp/H}\) (\(H_\perp\) = the energy of the
+component orthogonal to the floor plane), a Landau-type
+
+\[V(r)=-\tfrac12\lambda r^2+\frac{\lambda}{4\,r_{\rm vac}^2}r^4,\qquad \lambda=\ln|\mu_{\max}|,\ r_{\rm vac}=\sqrt{H_\perp/H|_{\rm sat}}\]
+
+can be reconstructed
+(\(N=6{:}\lambda=0.338,r_{\rm vac}=0.485\)／\(N=40{:}\lambda=0.076,r_{\rm vac}=0.330\)).
+This is an \textbf{effective description (ansatz)} in which the
+coefficients are identified from measured quantities. A first-principles
+derivation of \(V(r)\) is left as future work. \(r=\sqrt{H_\perp/H}\) is
+one scalar coordinate representing the amount of departure from the
+floor, and the Mexican-hat in the figures is a \textbf{schematic
+visualization} of the SSB configuration; it does not mean that \(r\) is
+an exact radial coordinate common to all degenerate vacua (in fact
+\(H_\perp/H\) differs from vacuum to vacuum, \(0.19\)--\(0.38\), §7).
+Here ``vacuum'' is a mathematical designation for the degenerate minima
+of the effective potential; the physical characterization of the vacuum
+is left as future work. Note that \(\lambda=\ln|\mu_{\max}|\)
+(\(\mu_{\max}\) = the spectral radius of the floor Jacobian, a quantity
+distinct from the \(\mu\) of \(iK\)) is itself the inflation
+amplification rate of Paper 6, so \textbf{the curvature of the SSB
+potential = the amplification rate of inflation} are tied together by
+the same \(\mu_{\max}\).
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 1: Mexican-hat-type SSB (measured reconstruction, N=6). Left = the measured order parameter falling on V(r) from the floor (unstable summit) to the valley; right = the sombrero surface and the degenerate vacuum ring (5 seed points).}]{figs/p5_ssb_degenerate_vacuum_en_fig1.png}}
+\caption{Figure 1: Mexican-hat-type SSB (measured reconstruction, N=6).
+Left = the measured order parameter falling on \(V(r)\) from the floor
+(unstable summit) to the valley; right = the sombrero surface and the
+degenerate vacuum ring (5 seed points).}
+\end{figure}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 2: The same for N=40 (λ=0.076, r\_vac=0.330).}]{figs/p5_ssb_degenerate_vacuum_en_fig2.png}}
+\caption{Figure 2: The same for N=40 (λ=0.076, r\_vac=0.330).}
+\end{figure}
+
+\textbf{Figures 1 and 2} Mexican-hat-type SSB (measured reconstruction,
+\(N=6\)／\(N=40\)).
+
+\subsection{\texorpdfstring{4. Decisive verification (same floor +
+different seeds → degenerate vacua,
+\(N=6\))}{4. Decisive verification (same floor + different seeds → degenerate vacua, N=6)}}\label{decisive-verification-same-floor-different-seeds-degenerate-vacua-n6}
+
+Final states obtained by giving the \(N=6\) floor seeds of amplitude
+\(10^{-8}\) pointing in different directions: every seed locks onto an
+\textbf{isomorphic equilibrium} with \(\Delta=-1.047198=-2\pi/6\)
+(\(|\Delta+2\pi/N|\le4.3\times10^{-7}\)) and amplitude ratio
+\(1.0000\)--\(1.0006\). Meanwhile, the inter-seed difference in the
+direction of the vacuum (the relative-phase configuration)
+\textbf{differs}, from median \(1.6^\circ\) (seed1 vs 0) to
+\(112.7^\circ\) (seed5 vs 0). The invariants (\(\Delta=-2\pi/N\), equal
+amplitude) are common to the vacua, while the broken degree of freedom
+(the direction of the phase configuration) is selected by the seed.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 3: N=6, same floor + 5 different infinitesimal seeds. Left = the locked configuration of each seed (rigid rotation removed; equal radius but different phase configurations = degenerate vacua), center = all seeds Δ=-2π/N, right = the N-dependence of the vacuum difference over all N6-40.}]{figs/p5_ssb_degenerate_vacuum_en_fig3.png}}
+\caption{Figure 3: N=6, same floor + 5 different infinitesimal seeds.
+Left = the locked configuration of each seed (rigid rotation removed;
+equal radius but different phase configurations = degenerate vacua),
+center = all seeds Δ=-2π/N, right = the N-dependence of the vacuum
+difference over all N6-40.}
+\end{figure}
+
+\textbf{Figure 3} SSB degenerate vacua (real data, \(N=6\)).
+
+\subsection{\texorpdfstring{5. Exhaustive verification
+(\(N=6,\ldots,40\),
+35/35)}{5. Exhaustive verification (N=6,\textbackslash ldots,40, 35/35)}}\label{exhaustive-verification-n6ldots40-3535}
+
+For all 35 cases \(N=6\)--\(40\) (5 differently-directed seeds per \(N\)
+= \(35\times5=175\) runs in total), all three SSB conditions hold (batch
+summary \texttt{ssb\_batch\_summary.csv}):
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Every seed triggers inflation} (clear departure from the
+  floor, \texttt{onset\_ok=True} for all 35).
+\item
+  \textbf{All equal amplitude} (amplitude ratio \(<1.01\),
+  \texttt{all\_equal\_amp=True} for all 35) and \textbf{the 1-step
+  rotation angle is exactly \(\Delta=-2\pi/N\)}
+  (\texttt{all\_lock\_2piN=True} for all 35,
+  \(|\Delta+2\pi/N|<10^{-3}\)).
+\item
+  \textbf{The phase configuration (the direction of the vacuum) differs
+  depending on the seed}: vacuum difference median \(4.0^\circ\)
+  (\(N=40\))--\(48.4^\circ\) (\(N=10\)), maximum \(76.9^\circ\)
+  (\(N=26\))--\(180.0^\circ\).
+\end{itemize}
+
+That is, from an unstable floor, an infinitesimal seed spontaneously
+selects one of the degenerate vacua permitted by the symmetry of the map
+(SSB confirmed in 35/35).
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 4: SSB batch over all N6-40. Left = the N-dependence of the vacuum difference (median/maximum); right = the measured Δ\_tail agreeing with the theoretical -2π/N for all N (error \textasciitilde1e-5) and amplitude ratio →1.}]{figs/p5_ssb_degenerate_vacuum_en_fig4.png}}
+\caption{Figure 4: SSB batch over all N6-40. Left = the N-dependence of
+the vacuum difference (median/maximum); right = the measured Δ\_tail
+agreeing with the theoretical -2π/N for all N (error
+\textasciitilde1e-5) and amplitude ratio →1.}
+\end{figure}
+
+\textbf{Figure 4} SSB over all \(N=6\)--\(40\) (35/35).
+
+\subsection{\texorpdfstring{6. Long-time verification (\(N=22,40\), 2000
+steps)}{6. Long-time verification (N=22,40, 2000 steps)}}\label{long-time-verification-n2240-2000-steps}
+
+The large \(N\) (\(N=22,30,\ldots,40\)) that were unlocked at 500 steps
+were so because of truncation; running without stopping up to 2000
+steps, they all lock. \(N=22\) locks completely at step \(663\) and
+\(N=40\) at step \(1299\) (\(\Delta_{\rm tail}\) exactly \(-2\pi/N\),
+equal-amplitude ratio \(1.0000\), rigid-rotation residual of floor/tail
+at machine zero). A control test confirmed that the initial value
+bit-matches the old run at step0 (step1 difference \(\sim10^{-16}\),
+after which inflation exponentially amplifies), ensuring faithful
+reproduction.
+
+\subsection{7. Claim classification and open
+items}\label{claim-classification-and-open-items}
+
+\begin{itemize}
+\tightlist
+\item
+  Classification: empirical support for a new hypothesis (the SSB
+  picture; exhaustive verification). Verdict: retained.
+\item
+  Assertion: this system exhibits spontaneous symmetry breaking (the
+  configuration------the 90° skeleton unstable relative equilibrium →
+  the family of degenerate lower equilibria → spontaneous selection by
+  an infinitesimal seed → all vacua isomorphic with \(\Delta=-2\pi/N\)
+  and equal amplitude------holds to machine precision, 35/35. The
+  Mexican-hat is a schematic effective model, §3). \textbf{The key point
+  is that from the same 90° floor, the terminal surface (the direction
+  of the vacuum) is not uniquely determined but depends on the seed.}
+\item
+  Structure of the vacuum manifold (the valley): the 5 final states of
+  \(N=6\) do not map onto one another under any of the \(6!=720\) vertex
+  permutations plus a global phase (plus complex conjugation) (minimum
+  residual \(0.05\)--\(0.83\)). Hence the valley is not a finite
+  discrete map-symmetry orbit but a \textbf{continuous moduli of tilted
+  relative equilibria} (\(H_\perp/H=0.19\)--\(0.38\) is continuous).
+  This is consistent with the fact that the valley of a Mexican-hat is
+  intrinsically a continuous degenerate manifold, and does not negate
+  SSB. Identifying the dimension and metric of the moduli is left as
+  future work.
+\item
+  A detailed classification of the symmetry group is outside the scope
+  of this paper. The invariants are \(\Delta=-2\pi/N\) and equal
+  amplitude; what changes with the seed is the direction of the vacuum
+  (tilt \(H_\perp/H\) is \(0.19\)--\(0.38\), \(N=6\)). ``Vacuum'' is a
+  mathematical designation for the degenerate minima of the effective
+  potential; the physical vacuum is uncharacterized. \(V(r)\) is an
+  ansatz.
+\end{itemize}
+
+\subsection{Related work (structural agreement, not the source of
+derivation)}\label{related-work-structural-agreement-not-the-source-of-derivation}
+
+\begin{itemize}
+\tightlist
+\item
+  Spontaneous symmetry breaking / Landau theory / Goldstone・Higgs
+  (Landau 1937; Goldstone 1961; Anderson 1963; Higgs 1964): this section
+  is one example of SSB on a discrete map, and the reconstructed
+  effective potential is a Ginzburg--Landau-type sombrero.
+\item
+  Kuramoto model (synchronization): lock = synchronization.
+\end{itemize}
+
+\subsection{References}\label{references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Noriaki Kihara, ``The mechanism of inflationary rapid expansion in
+  self-consistent relational-wave closed systems'', Concept DOI
+  10.5281/zenodo.22112008.
+\item
+  L. D. Landau, ``On the theory of phase transitions'', 1937; J.
+  Goldstone, Nuovo Cimento 19 (1961) 154; P. W. Anderson, Phys. Rev.~130
+  (1963) 439; P. W. Higgs, Phys. Rev.~Lett. 13 (1964) 508.
+\item
+  Y. Kuramoto, \emph{Chemical Oscillations, Waves, and Turbulence},
+  Springer (1984).
+\end{enumerate}
+
+\subsection{Reproduction}\label{reproduction}
+
+The verification scripts, figures, and summaries are in
+\texttt{位相ロック全N確認\_相対平衡\_20260912/自発的対称性の破れ\_シード依存縮退真空\_20260912/}
+(\texttt{verify\_ssb\_seed\_vacua\_20260912.py},
+\texttt{make\_figure\_ssb.py},
+\texttt{make\_figure\_mexican\_hat.py}/\texttt{\_N40.py},
+\texttt{REPORT.md}, \texttt{SHA256SUMS.txt}, \texttt{run\_all.sh}), and
+under it \texttt{全N6\_40\_SSBバッチ\_20260912/}
+(\texttt{run\_ssb\_batch\_N6\_N40\_20260912.py},
+\texttt{per\_N/N\{6..40\}.txt}, \texttt{ssb\_batch\_summary.csv},
+\texttt{fig\_ssb\_batch\_allN.png}). The long-time runs are
+\texttt{N22\_2000step検証走行\_20260912/} and
+\texttt{N40\_2000step検証走行\_20260912/}. The decisive \(N=6\) test
+that the vacuum manifold is a continuous moduli (not a finite discrete
+symmetry orbit) is \texttt{頂点置換による縮退真空同定\_N6\_20260913/}
+(\texttt{verify\_vacua\_permutation\_orbit\_N6\_20260913.py} = imports
+the canonical one\_step with SHA verification, a read-only exhaustive
+\(S_6\) sweep). The floor data is the make\_parent floor (Paper 2 §6).
+The runs are identical to the canonical
+\texttt{run\_N3\_N40\_stage123\_v1.py} (SHA256
+\texttt{1abf2353fee2e4f56f05e7a6f149fd086885136beb61ab571b48a56b09691567}),
+with only the initial seed controlled.
+
+\end{document}

@@ -1,0 +1,382 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% Glyph map for lualatex (newunicodechar). Maps symbols that may lack font glyphs.
+\usepackage{newunicodechar}
+\usepackage{amssymb}
+\newunicodechar{∎}{\ensuremath{\blacksquare}}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{✗}{\ensuremath{\times}}
+\newunicodechar{⟹}{\ensuremath{\Longrightarrow}}
+\newunicodechar{⟺}{\ensuremath{\Longleftrightarrow}}
+\newunicodechar{↪}{\ensuremath{\hookrightarrow}}
+\newunicodechar{⌊}{\ensuremath{\lfloor}}
+\newunicodechar{⌋}{\ensuremath{\rfloor}}
+\newunicodechar{≃}{\ensuremath{\simeq}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{←}{\ensuremath{\leftarrow}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{⊥}{\ensuremath{\perp}}
+\newunicodechar{√}{\ensuremath{\surd}}
+\newunicodechar{∑}{\ensuremath{\sum}}
+\newunicodechar{∏}{\ensuremath{\prod}}
+\newunicodechar{∞}{\ensuremath{\infty}}
+\newunicodechar{∈}{\ensuremath{\in}}
+\newunicodechar{∀}{\ensuremath{\forall}}
+\newunicodechar{∣}{\ensuremath{\mid}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{φ}{\ensuremath{\varphi}}
+\newunicodechar{ψ}{\ensuremath{\psi}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{Π}{\ensuremath{\Pi}}
+\newunicodechar{Λ}{\ensuremath{\Lambda}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{ω}{\ensuremath{\omega}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{ν}{\ensuremath{\nu}}
+\newunicodechar{±}{\ensuremath{\pm}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{·}{\ensuremath{\cdot}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={点火の資格は不安定な相対平衡である------関係波閉鎖系の初期値3系統の資格審査},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.), ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{点火の資格は不安定な相対平衡である------関係波閉鎖系の初期値3系統の資格審査}
+\author{Noriaki Kihara (WF System Co., Ltd.), ORCID 0009-0004-6753-4020}
+\date{2026-09-12}
+
+\begin{document}
+\maketitle
+
+\textbf{シリーズ:} 自己無撞着な関係波閉鎖系の基礎（論文2／全10本）\\
+\textbf{著者:} 木原 範昭（WF System Co., Ltd.）　\textbf{日付:}
+2026-09-12\\
+\textbf{Version DOI:} 10.5281/zenodo.22728824\\
+\textbf{Concept DOI:} 10.5281/zenodo.22728823\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Zenodo:} https://zenodo.org/records/22728824\\
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+関係波閉鎖系のインフレーション（論文6）とSSB（論文5）は特定の初期値（床）から出発する。この初期値が「都合よく仕込んだタネ」ではないことを、初期値を制御変数とする制御実験で確定する。物理写像を無変更のまま初期値だけを3系統------(A)
+位相 \(0^\circ/90^\circ\) の対称親（等振幅系）、(B) 重心ゼロ親、(C)
+高対称理論床（巡回Fourier相対平衡
+\(z_{ij}=r_d e^{i2\pi(i+j)/N}\)）------に差し替えて \(N=3,\ldots,40\)
+で500 step 走行した。結果：(A) は \(N\equiv1\ (\mathrm{mod}\,4)\)
+で中立固定点、他 \(N\) で step1 に即時緩和（点火せず）、(B) も残差
+\(O(1)\) で即時緩和、\textbf{(C) のみ step1
+ジャンプが全38系で消え、床からの指数ランプで点火}（\(N=4\)--\(17\) で
+onset \(65\)--\(421\)、\(N\ge18\) は遅いランプ進行中、\(N=3\)
+は中立床）。\textbf{点火の資格は「不安定な相対平衡（自己無撞着固有モード
+\(H(z)z=\lambda z\)、残差機械精度）」であり、高対称・重心ゼロ・二乗閉塞は資格ではない}。(A)(B)
+の失敗は「高対称だから」でなく「相対平衡でなかったから」に確定する。論文5・6・7が用いる床データは、この資格を満たす
+make\_parent
+固有モード床（実験13）である。分類：仮説→反証→確定（制御実験）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1.
+課題------「都合よく仕込んだタネ」への回答}\label{ux8ab2ux984cux90fdux5408ux3088ux304fux4ed5ux8fbcux3093ux3060ux30bfux30cdux3078ux306eux56deux7b54}
+
+床が結果に都合よく選ばれていれば、この系の急拡大そのものが疑われる。したがって初期値の性質のうち\textbf{何が点火を決めるか}を、初期値を唯一の制御変数とする制御実験で切り分ける必要がある。候補となる「良さそうな性質」は、高対称性・重心ゼロ・二乗閉塞
+\(\sum z^2=0\)・相対平衡（固定点）である。本論文はこれらを分離して資格を同定する。
+
+\subsection{2.
+力学と相対平衡の資格}\label{ux529bux5b66ux3068ux76f8ux5bfeux5e73ux8861ux306eux8cc7ux683c}
+
+写像は正本 \texttt{run\_N3\_N40\_stage123\_v1.py}（SHA256
+\texttt{1abf2353…}）の one\_step
+\(z\to\exp(\Delta\tau K)z\)、\(K_{ef}=A_{ef}\sin(\varphi_f-\varphi_e)\)、\(\Delta\tau=2\pi/N\)（論文1
+§2）。床が「置いて静止する」相対平衡であるとは、\(z\)
+が生成子の自己無撞着固有モード
+\(H(z)z=\lambda z\)（\(H=iK\)）であること。相対平衡なら step1
+の即時ジャンプが起きず、平衡が\textbf{不安定}なら微小成分が指数増幅して点火する（論文6）。\textbf{点火の資格を次で定義する：床が相対平衡（自己無撞着固有モード）であり、かつ線形不安定方向を持つ（床ヤコビアンに
+\(\lambda_{\max}>0\)、または実測で正の指数成長率）こと。}
+これは「観測時間（本実験は500 step）内に onset
+閾値を超えたか」とは\textbf{別概念}であり、資格があっても時計が遅ければ観測窓内では未交差になり得る（§4
+の
+\(N\ge18\)）。資格が確定するのは床から離脱すること（不安定方向の指数増幅）までで、終端でロックするかは別の力学的事実（論文5）。走行は物理正本の
+PARENT\_DIR/OUT
+のみ変更（SHA一致確認、物理式無変更）、判定規則は力学に入れず走行後分析のみ。
+
+\subsection{3.
+初期値3系統＋データ床}\label{ux521dux671fux50243ux7cfbux7d71ux30c7ux30fcux30bfux5e8a}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+系統
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+位相
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+振幅
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+重心 \(\sum z\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+二乗閉塞
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+相対平衡か
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+(A) 対称親 v2 & \(0^\circ/90^\circ\) のみ & 族統一（偶M等振幅／奇M 2値）
+& 最大級 \(\sqrt{M/2}\) & \(\approx0\) & \(N\equiv1\,(4)\)
+のみ（中立） \\
+(B) 重心ゼロ v3 & 4位置±対/トリオ & --- & 厳密ゼロ & \(\approx0\) &
+否（残差 \(O(1)\)） \\
+(C) 高対称理論床 & \(2\pi(i+j)/N\)（巡回Fourier） & 距離クラス一定
+\(r_d\) & \(\le2.0\times10^{-15}\) & \(\le3.1\times10^{-16}\) &
+\textbf{是}（残差 \(4.1\text{e-}16\)--\(4.8\text{e-}14\)） \\
+データ床 make\_parent & \(0/90\) 格子（Z4残差 \(\le2\text{e-}12\)） &
+辺ごと（自己無撞着調整） & 非ゼロ \(0.25\)--\(1.41\) &
+\(\approx0\)（\(P_A=P_B\)） & \textbf{是}（残差 \(\sim10^{-13}\)） \\
+\end{longtable}
+}
+
+\begin{enumerate}
+\def\labelenumi{(\Alph{enumi})}
+\tightlist
+\item
+  は \(P_A=n_A r^2=P_B=n_B r^2\) が閉塞に必要なため二軸等振幅は
+  \(n_A=n_B\)（\(N\equiv1\ \mathrm{mod}\,4\) の \((N-1)/2\)
+  正則グラフ）でのみ厳密相対平衡（\(\sigma=N-1\)）になり、それ以外では固定点でない。(C)
+  の生成は導出手順（位相固定→距離クラス縮約→固有値問題→全空間検算）に従い
+  make\_parent を使わない。
+\end{enumerate}
+
+\subsection{4.
+資格審査の結果（実験12・実験13）}\label{ux8cc7ux683cux5be9ux67fbux306eux7d50ux679cux5b9fux9a1312ux5b9fux9a1313}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{(A) 対称親 v2 は NG}：\(N=3\)
+  のみランプ（旧make\_parent床とゲージ同一）、\(N\equiv1\ \mathrm{mod}\,4\)
+  は中立固定点で床（点火せず）、他 \(N\) は線形期なしに step1 で
+  \(f(1)=7.5\times10^{-4}\)--\(2.7\times10^{-2}\)
+  へ\textbf{即時緩和}。分解：\(\sum z^2\)
+  は成立していたが交差項チャネルが空（全波
+  \(ab\equiv0\)）かつ重心が最大級。
+\item
+  \textbf{(B) 重心ゼロ v3 も NG}（試走
+  \(N=3\)--\(6\)）：4条件（位相・重心ゼロ・二乗閉塞・規格化）を厳密に満たしても、相対平衡でない（残差
+  \(O(1)\)）ため step1 で \(0.15\)--\(0.52\) へ即時緩和。
+\item
+  \textbf{(C) 高対称理論床は OK}：step1
+  の即時ジャンプが\textbf{全38系で消滅}（\(f(1)=5\times10^{-32}\)--\(8\times10^{-31}\)）。\(N=4\)--\(17\)
+  は床からの指数ランプで点火（onset \(>0.05\) が
+  \(65\)（\(N=4\)）--\(421\)（\(N=17\)））、\(N=4\) の増幅率
+  \(0.470\ \log_{10}/\text{step}\) は旧床 \(0.475\) とほぼ一致・飽和
+  \(1/6\) も一致。\(N\ge18\)
+  は正の増幅率（\(0.060\)--\(0.015\ \log_{10}/\text{step}\)、単調減少）でランプ進行中に500
+  step が尽きる形＝\textbf{全系で不安定（点火資格あり）、時計だけが
+  \(N\) とともに遅い}。\(N=3\) は中立床（\(\lambda=-3/2\)、\(N=3\)
+  終状態ロック値と整合）。\(H_{\rm total}=1.000000\)（ユニタリ保存）、global
+  closure 最大 \(\sim10^{-13}\)。
+\end{itemize}
+
+\subsection{5.
+確定------資格は「不安定な相対平衡」}\label{ux78baux5b9aux8cc7ux683cux306fux4e0dux5b89ux5b9aux306aux76f8ux5bfeux5e73ux8861}
+
+仮説（重心ゼロ／二乗閉塞／高対称のいずれかが点火の資格）は反証された：
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{重心ゼロは資格でない}：(B)
+  は重心厳密ゼロでも点火しない。一方データ床 make\_parent
+  は重心非ゼロ（\(0.25\)--\(1.41\)）でも点火する。重心の値は点火の有無を決めない。
+\item
+  \textbf{二乗閉塞は資格でない}：(A)(B) は \(\sum z^2\approx0\)
+  でも点火しない。
+\item
+  \textbf{高対称そのものは資格でない}：(A) は最も対称だが点火しない。
+\end{itemize}
+
+\textbf{確定：点火の資格は「不安定な相対平衡（自己無撞着固有モード、残差機械精度）」だけ}である。(A)(B)
+の失敗は「高対称だから」ではなく「相対平衡でなかったから」。これは開始様式判別論文［2］の「増幅⟺不安定な相対平衡」を初期値制御実験で独立に再確認するものである。したがって論文5・6が用いる床は「都合よく動くタネ」ではなく、写像＋『最大対称な相対平衡』という選択基準だけで定まる不安定な出発点である（90°骨格上に自己無撞着床が作れることは論文1（\(D^{-1}KD=iW\)・Perron）、90°骨格の代数的厳密解は論文3、床が90°になる必然性の解析的裏付けは論文0）。
+
+本制御実験から、初期状態は力学的に三つの開始様式へ分かれる。相対平衡でない状態は即時緩和し、安定または中立な相対平衡は床に留まり、不安定な相対平衡のみが潜伏期間を経て指数離脱する。(B)
+は相対平衡でない（即時緩和）、(A) は相対平衡だが中立（床に留まる）、(C)
+と make\_parent
+は不安定な相対平衡（潜伏後の指数ランプ）------3系統がこの三分類を実際に分離している。したがって「点火」は初期値の見かけの対称性や閉塞性ではなく、相対平衡の線形安定性によって分類される。\textbf{初期状態の安定性クラスが、時間発展の開始様式を決める。}
+
+\subsection{6. 論文データが用いる床（make\_parent
+固有モード床）}\label{ux8ad6ux6587ux30c7ux30fcux30bfux304cux7528ux3044ux308bux5e8amake_parent-ux56faux6709ux30e2ux30fcux30c9ux5e8a}
+
+論文5・6・7・8の走行データ（\texttt{full\_N3\_N40\_sweep}）は、正本エンジンの
+\texttt{make\_parent}
+反復（\texttt{rng=default\_rng(40260722+1000N)}、\texttt{iters=1200},
+\texttt{tol=1e-12}）で自己無撞着固有モード \(v\)
+を求め、\(Z_0=(v+10^{-15}g)/\|\cdot\|\)（\(g\)＝零閉塞核の微小種）とした床を用いる。構造監査（全38系）：Z4位相残差
+\(\le2.0\times10^{-12}\) rad、\(P_{\rm even}=P_{\rm odd}=0.500000\)
+厳密、レイリー残差 \(\sim10^{-15}\)--\(10^{-13}\)。\(N=40\) の
+\(v,g,Z_0\) は7月正本の静的親と bit 一致（対照ゲート）。step0
+複素平面（全
+\(N=3\)--\(40\)）を図1に示す------全波が直交2軸のどちらかに乗る90°格子である（90°骨格上の自己無撞着床を代数的に厳密構成した\textbf{別メンバー}------同じ点火資格を持つが
+\(W\)・振幅・重心が異なる------を論文3で扱う。make\_parent
+床そのものの厳密版ではない、論文0）。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図1: make\_parent床 step0 複素平面（全N=3..40）。全波が直交2軸に乗る90°位相格子。}]{figs/p2_ignition_qualification_ja_fig1.png}}
+\caption{図1: make\_parent床 step0
+複素平面（全N=3..40）。全波が直交2軸に乗る90°位相格子。}
+\end{figure}
+
+\textbf{図1} データ床（make\_parent）の step0
+複素平面（\(N=3\)--\(40\)）。
+
+\subsection{7.
+主張分類・未決}\label{ux4e3bux5f35ux5206ux985eux672aux6c7a}
+
+\begin{itemize}
+\tightlist
+\item
+  分類：仮説→反証→確定（初期値を唯一の制御変数とする制御実験）。判定：資格＝不安定な相対平衡（相対平衡＋線形不安定方向）に確定。
+\item
+  資格と観測窓内の発火は別（§2）：(C) 理論床で \(N=4\)--\(17\) は500
+  step 内に onset 閾値を超えた；\(N\ge18\)
+  は正の増幅率（\(0.060\)--\(0.015\,\log_{10}/\text{step}\)）を持ち\textbf{点火資格あり＝床から離脱する}が、時計が遅く500
+  step 内は未交差；\(N=3\)
+  は中立（\(\lambda=-3/2\)、資格なし）。本論文が確定するのはこの資格（床からの離脱）までで、\textbf{終端でロックするか否かは対象外・論文5が扱う}（データ床では
+  \(N=64\) まで
+  \(\Delta_{\rm tail}=-2\pi/N\)・等振幅のロックを確認済み）。
+\item
+  未決：相対平衡の
+  moduli（生成測度が違えば別の自己無撞着固定点が存在。90°床は最も対称な一員）。\(N=3\)
+  の中立性（\(\lambda=-3/2\)）の起源。
+\end{itemize}
+
+\subsection{関連研究（構造的一致・導出元でない）}\label{ux95a2ux9023ux7814ux7a76ux69cbux9020ux7684ux4e00ux81f4ux5c0eux51faux5143ux3067ux306aux3044}
+
+\begin{itemize}
+\tightlist
+\item
+  開始様式判別論文（増幅⟺不安定な相対平衡・全86状態）Concept DOI
+  10.5281/zenodo.21798854：本論文はその初期値制御版。
+\item
+  相対平衡（Marsden \& Ratiu, 幾何力学）：床＝剛体回転相対平衡。
+\end{itemize}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  木原範昭「自己無撞着な関係波閉鎖系におけるインフレーション的急拡大の機構」Concept
+  DOI 10.5281/zenodo.22112008.
+\item
+  木原範昭「開始様式判別（増幅と不安定な相対平衡）」Concept DOI
+  10.5281/zenodo.21798854.
+\item
+  J. E. Marsden and T. S. Ratiu, \emph{Introduction to Mechanics and
+  Symmetry}, Springer (1999).
+\end{enumerate}
+
+\subsection{再現}\label{ux518dux73fe}
+
+制御実験（3系統）：\texttt{対称親v2\_500step走行\_20260906/}（\texttt{make\_parents\_theoretical\_floor\_v1.py}＝(C)
+生成、\texttt{make\_parents\_v3\_centroid\_zero\_v1.py}＝(B)、\texttt{wrapper\_run\_symmetric500\_v1.py}、\texttt{再実験結果メモ\_理論床\_N3\_N40.md}、\texttt{compare\_theoretical\_floor\_vs\_old\_makeparent.csv}、\texttt{theoretical\_floor\_parent\_manifest.json}、\texttt{SHA256SUMS.txt}）。(A)
+対称親は \texttt{最も対称性の高い初期値\_20260906/}。データ床
+make\_parent
+とその構造監査・bit再現：\texttt{make\_parent型初期値\_自己無撞着構造\_20260907/}（\texttt{make\_static\_parents\_N3\_N40\_v1.py}、\texttt{audit\_parent\_structure\_N3\_N40\_v1.py}、\texttt{full\_N3\_N40\_sweep/}）。走行は物理正本
+\texttt{run\_N3\_N40\_stage123\_v1.py}（SHA256
+\texttt{1abf2353fee2e4f56f05e7a6f149fd086885136beb61ab571b48a56b09691567}）の
+PARENT\_DIR/OUT のみ変更・物理式無変更。※データ npz
+は容量のため各フォルダ内に保存（SHA256SUMS＋run\_all.sh で再生成可）。
+
+\end{document}

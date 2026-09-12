@@ -1,0 +1,342 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% Glyph map for lualatex (newunicodechar). Maps symbols that may lack font glyphs.
+\usepackage{newunicodechar}
+\usepackage{amssymb}
+\newunicodechar{∎}{\ensuremath{\blacksquare}}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{✗}{\ensuremath{\times}}
+\newunicodechar{⟹}{\ensuremath{\Longrightarrow}}
+\newunicodechar{⟺}{\ensuremath{\Longleftrightarrow}}
+\newunicodechar{↪}{\ensuremath{\hookrightarrow}}
+\newunicodechar{⌊}{\ensuremath{\lfloor}}
+\newunicodechar{⌋}{\ensuremath{\rfloor}}
+\newunicodechar{≃}{\ensuremath{\simeq}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{←}{\ensuremath{\leftarrow}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{⊥}{\ensuremath{\perp}}
+\newunicodechar{√}{\ensuremath{\surd}}
+\newunicodechar{∑}{\ensuremath{\sum}}
+\newunicodechar{∏}{\ensuremath{\prod}}
+\newunicodechar{∞}{\ensuremath{\infty}}
+\newunicodechar{∈}{\ensuremath{\in}}
+\newunicodechar{∀}{\ensuremath{\forall}}
+\newunicodechar{∣}{\ensuremath{\mid}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{φ}{\ensuremath{\varphi}}
+\newunicodechar{ψ}{\ensuremath{\psi}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{Π}{\ensuremath{\Pi}}
+\newunicodechar{Λ}{\ensuremath{\Lambda}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{ω}{\ensuremath{\omega}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{ν}{\ensuremath{\nu}}
+\newunicodechar{±}{\ensuremath{\pm}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{·}{\ensuremath{\cdot}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={終端等振幅の加法法則 a\_\textbackslash infty=\textbackslash sqrt\{H/M\}------終端普遍性と点火動態の分離（N=9 単独 vs N=7+N=6、3初期値系統）},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.), ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{終端等振幅の加法法則
+\(a_\infty=\sqrt{H/M}\)------終端普遍性と点火動態の分離（\(N=9\) 単独 vs
+\(N=7+N=6\)、3初期値系統）}
+\author{Noriaki Kihara (WF System Co., Ltd.), ORCID 0009-0004-6753-4020}
+\date{2026-09-12}
+
+\begin{document}
+\maketitle
+
+\textbf{シリーズ:} 自己無撞着な関係波閉鎖系の基礎（論文8／全10本）\\
+\textbf{著者:} 木原 範昭（WF System Co., Ltd.）　\textbf{日付:}
+2026-09-12\\
+\textbf{Version DOI:} 10.5281/zenodo.22729116\\
+\textbf{Concept DOI:} 10.5281/zenodo.22729115\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Zenodo:} https://zenodo.org/records/22729116\\
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+ロック後の終端状態は等振幅（論文5）である。その半径が示量変数 \((H,M)\)
+だけで決まる\textbf{加法法則} \(a_\infty=\sqrt{H/M}\) を、三角数の混合和
+\(M(9)=M(7)+M(6)\)（\(36=21+15\)）で検証する。密度 \(H_i/M_i=1/36\)
+に正規化した \(N=7\) と \(N=6\) の混合系は、単独 \(N=9\)
+系と終端リング半径が一致する（両者とも
+\(a_\infty=\sqrt{1/36}=1/6=0.1666667\)）。一方 onset・経路・plateau
+は構成に刻印される（\(N=9\) 単独 onset \(191\) vs 混合 union
+は最初期離脱）。さらに初期値系統（staged \(2\pi/N\)
+刻み／90度解析床／90度対称v2）を変えると\textbf{点火の有無そのもの}が変わる（\(N=9\):
+staged onset \(191\)／90度解析床 onset \(140\)／90度v2
+は非点火の厳密固定点 \(\sigma=N-1\)）が、終端値 \(1/6\)
+は3系統すべてで共通。すなわち\textbf{終端普遍性（\(a_\infty=\sqrt{H/M}\)）は初期値の対称族と独立}、\textbf{点火動態はそれに強く依存}する。構成（どの
+\(N\)
+の組か）はインフレーション期にのみ刻印され、終端では単一系と識別不能。\((H,M)\)
+は示量量・\(\rho=H/M\) は示強量・\(a_\infty=\sqrt\rho\)
+は示強的な終端状態量で、公式自体は等振幅＋\(H\)保存からの厳密帰結、非自明なのは終端普遍性である。\textbf{過渡は構成を記憶し（論文6の
+\(J_0,\prod_tJ_t\)）、終端は \(|z_e|^2\to H/M\)
+で振幅が構成を忘れる一方、位相配置・面の向きは縮退し seed
+が選ぶ（論文5）}------振幅は状態量化、向きは SSB
+履歴を保持。因数分解自体は \(K_N\)
+が極大連結ゆえ力学的に不能（跨ぎ辺が必ず残る）で、終端一致は分解可能性と無関係な等分配の帰結である。分類：数値確認（加法法則）＋数学的事実（分解不能）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 課題}\label{ux8ab2ux984c}
+
+終端が等振幅なら \(a_\infty=\sqrt{H/M}\) は
+\(H=\sum_{e=1}^M|z_e|^2=Ma_\infty^2\)
+から\textbf{厳密に従う}------公式自体は非自明でない。本論文が数値実験で確かめる非自明な部分は、\textbf{異なる構成・異なる初期値族でも終端が同じ等振幅則へ到達する「終端普遍性」}である。一般化：部分系が同一密度
+\(\rho_i=H_i/M_i=\rho\) を持てば
+\(H_{\rm tot}=\sum_iH_i=\rho\sum_iM_i=\rho M_{\rm tot}\) ゆえ
+
+\[\frac{H_{\rm tot}}{M_{\rm tot}}=\rho,\qquad a_{\infty,\rm tot}=\sqrt{H_{\rm tot}/M_{\rm tot}}=\sqrt\rho=a_{\infty,i}.\]
+
+すなわち \((H,M)\) は\textbf{示量量}、\(\rho=H/M\)
+は\textbf{示強量}、\(a_\infty=\sqrt\rho\)
+は\textbf{示強的な終端状態量}であり、\((H,M)\) の加法性が \(\rho\)
+の合成不変性を与える（\(N=9=7+6\)
+はその一例）。これを異種混合で検証し、終端普遍性と点火動態（構成の刻印）を分離する。
+
+\subsection{2.
+力学と設計（忠実コピー＋密度正規化）}\label{ux529bux5b66ux3068ux8a2dux8a08ux5fe0ux5b9fux30b3ux30d4ux30fcux5bc6ux5ea6ux6b63ux898fux5316}
+
+写像は正本 one\_step（SHA
+\texttt{1abf2353…}）。ラッパーは正本実装の忠実コピーに初期値ソース・出力名の最小変更のみ（diff
+監査済み、物理式無変更）。三角数分解 \(M(9)=36=21+15=M(7)+M(6)\)
+を用い、\(N=7,N=6\) の理論床親（各 \(H=1\)）を密度一致条件
+\(H_i/M_i=1/36\)
+に正規化（\(c_7=\sqrt{21/36}=0.7638\)、\(c_6=\sqrt{15/36}=0.6455\)、合計
+\(H=1\)）。den=N・500 step。混合系は各部分系を自 adjacency・自 den
+で独立に走らせる。
+
+\subsection{3.
+加法法則の成立（実験21）}\label{ux52a0ux6cd5ux6cd5ux5247ux306eux6210ux7acbux5b9fux9a1321}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{終端リング半径が一致}：\(N=9\) 単独
+  \(0.1666667\)（min=max）、混合の \(N=7\) 部分 \(0.1666667\)・\(N=6\)
+  部分 \(0.16649\)--\(0.16677\)、いずれも理論値
+  \(\sqrt{1/36}=0.1666667\)。
+\item
+  \textbf{点火動態は構成で全く異なる}（終端のみ普遍）：onset\((>0.05)\)
+  は \(N=9\) 単独 \(191\) vs 混合 union は最初期離脱（union
+  は無意味なので部分系別に評価）。部分系別 onset：\(N=7\) 部分
+  \(145\)、\(N=6\) 部分 \(153\)（\(N=6\times3\) 系列の \(153\)
+  と一致＝スケール不変）。
+\item
+  \(H\) 保存・閉塞維持は健全（\(H\) 相対差 \(\sim10^{-14}\)、最大閉塞
+  \(\sim10^{-14}\)、全ステップ有限）。
+\end{itemize}
+
+同種 \(m\) 倍でも異種混合でも、終端は \(a_\infty=\sqrt{H/M}\)
+で単一系と識別不能。構造（どの \(N\) の組か）は onset・経路・plateau
+にのみ刻印される。
+
+\subsection{4.
+初期値系統による点火動態の変化（実験23・25）------3系統比較}\label{ux521dux671fux5024ux7cfbux7d71ux306bux3088ux308bux70b9ux706bux52d5ux614bux306eux5909ux5316ux5b9fux9a1323253ux7cfbux7d71ux6bd4ux8f03}
+
+同一実験を初期値系統だけ変えて追試した：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\(N=9\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+staged（\(2\pi/N\) 刻み）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+90度解析床（整数K）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+90度対称v2（0/90等振幅）
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+点火 & 点火（onset \(191\)） & 点火（onset \(140\)） &
+\textbf{非点火}（\(N\equiv1\,\mathrm{mod}\,4\) の \(\sigma=N-1\)
+厳密固定点） \\
+混合部分 onset（\(N=7,N=6\)） & \(145,\ 153\) & \(113,\ 121\) &
+\(5,\ 5\) \\
+終端 \(a_\infty\) & \(1/6\) & \(1/6\) & \(1/6\) \\
+\end{longtable}
+}
+
+\textbf{終端値 \(1/6\) は3系統すべてで共通}、点火の有無・onset
+だけが系統で変わる。90度v2 の \(N=9\) は \(0^\circ\) 族が \((N-1)/2\)
+正則グラフとなる厳密固定点（\(\sigma=N-1\)）で等振幅リング上に静止し点火しない（論文2の資格審査と整合：中立固定点は点火しない）。90度解析床（論文3）と
+staged は不安定床で点火する。
+
+\subsection{5.
+因数分解は不能・終端一致は等分配の帰結（実験22）}\label{ux56e0ux6570ux5206ux89e3ux306fux4e0dux80fdux7d42ux7aefux4e00ux81f4ux306fux7b49ux5206ux914dux306eux5e30ux7d50ux5b9fux9a1322}
+
+三角数分解 \(M(N)=\sum M(k)\) の全列挙（等分・2部分27件・3部分46件、部品
+\(M(4)\) 以上で分解を持たない「素」な \(N\) は
+\(3,4,5,6,8\)）は選定の根拠だが、\textbf{力学的な因数分解は原理的に不能}：\(K_N\)
+は完全グラフゆえ跨ぎ辺が必ず残り極大連結で、\(K_{10}\to3K_6\)
+は次数条件違反。実験21のインフレーション不一致（onset \(191\) vs
+\(145/153\)）が力学的分解不能の実験的証拠である。したがって\textbf{終端一致は分解可能性と無関係な等分配（\(a_\infty=\sqrt{H/M}\)）の帰結}である。凝縮体＝1頂点の階層化（質量＝一段下の閉包が私有する
+\(H\)）は作業仮説として提示し、その導出は今後の検討課題とする。
+
+\subsection{6.
+記憶と消去------過渡は構成を記憶し終端振幅は忘れる（論文5・6・8
+の一本化）}\label{ux8a18ux61b6ux3068ux6d88ux53bbux904eux6e21ux306fux69cbux6210ux3092ux8a18ux61b6ux3057ux7d42ux7aefux632fux5e45ux306fux5fd8ux308cux308bux8ad6ux6587568-ux306eux4e00ux672cux5316}
+
+過渡と終端で情報の担い手が分離する。\textbf{過渡}（インフレ期）は構成・初期値族を記憶する：床ヤコビアン
+\(J_0\) と接線コサイクル \(\prod_t J(z_t)\)（論文6）に初期構造が刻印され
+onset・経路・plateau を決める（§3--4：\(N=9\) 単独 onset \(191\) vs 混合
+\(145/153\)、staged/解析床/v2
+で点火の有無すら変わる）。\textbf{終端}は非線形飽和後に
+\(|z_e|^2\to H/M\)
+となり、この振幅から構成情報が消える（\(a_\infty=\sqrt{H/M}\)
+が3系統×混合で共通）。すなわち
+
+\[\text{初期構造}\ \to\ J_0,\ \textstyle\prod_t J_t\ \text{に記憶}\ \to\ \text{inflation}\ \to\ \text{飽和}\ \to\ \text{振幅情報の普遍化}.\]
+
+論文5との接続（振幅は忘れ、向きは残す）：論文5
+の縮退真空族は、\textbf{共通する振幅尺度} \(|z_e|=\sqrt{H/M}\)
+と、\textbf{シード依存する位相配置・面の向き（幾何モジュライ）}
+を併せ持つ。論文5 の動径 \(r=\sqrt{H_\perp/H}\)（真空ごと
+\(0.19\)--\(0.38\)）は面の傾きの秩序変数であって、本論文の各辺振幅
+\(a_\infty=\sqrt{H/M}\)
+とは\textbf{別量}である（同一視しない）。両者を合わせると終端の姿は
+
+\[\boxed{\text{振幅尺度 }|z_e|=\sqrt{H/M}\text{ は普遍（状態量化）／位相配置・面の向きは縮退し seed が選択（SSB 履歴を保持）}}\]
+
+------\textbf{終端では振幅が構成を忘れ、向きが SSB
+の履歴を保持する}。これが論文5（縮退真空）・論文6（過渡インフレ）・論文8（終端状態量）の一本化である。
+
+\subsection{7.
+主張分類・未決}\label{ux4e3bux5f35ux5206ux985eux672aux6c7a}
+
+\begin{itemize}
+\tightlist
+\item
+  分類：数値確認（加法法則
+  \(a_\infty=\sqrt{H/M}\)、3系統×混合）＋数学的事実（因数分解不能）。判定：保持。
+\item
+  留意：終端等振幅は本エンジンの位相正規化（振幅を殺す段2）を内在するため、ノルム形式の独立傍証としては提示しない（循環導出の疑い。振幅保持型対照力学での独立検証が未決）。
+\item
+  検証済み（追試C）：辺空間の3分解
+  \(1\oplus(N-1)\oplus N(N-3)/2\)（線グラフ／Johnson
+  スキーム）の実在と終端 \(\sigma_{\max}\to N-1\) は全 \(N\)
+  で確認。ただし終端状態は \((N-1)\)
+  次元頂点セクターに乗らず残余セクター（frac\_rest
+  \(\to0.93\)）に広がる------\textbf{「\(\sigma=N-1\)（固有値の値）↔
+  頂点セクター（次元）」は次元ラベルの偶合で対応しない}（否定）。
+\item
+  未決：混合系の即時離脱（union onset）の定量。
+\end{itemize}
+
+\subsection{関連研究（構造的一致・導出元でない）}\label{ux95a2ux9023ux7814ux7a76ux69cbux9020ux7684ux4e00ux81f4ux5c0eux51faux5143ux3067ux306aux3044}
+
+\begin{itemize}
+\tightlist
+\item
+  平均場・全対結合系の重心分解（\(K_k\) スペクトル
+  \(\{0,k,\ldots,k\}\)）：N体＝保存重心＋独立2体問題の還元。
+\item
+  示量／示強変数（熱力学）：\(a_\infty=\sqrt{H/M}\) は示量変数 \((H,M)\)
+  の状態量。
+\end{itemize}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  木原範昭「自己無撞着な関係波閉鎖系におけるインフレーション的急拡大の機構」Concept
+  DOI 10.5281/zenodo.22112008.
+\item
+  木原範昭「開始様式判別（増幅と不安定な相対平衡）」Concept DOI
+  10.5281/zenodo.21798854.
+\end{enumerate}
+
+\subsection{再現}\label{ux518dux73fe}
+
+ラッパー・親・図は各パッケージに一式：\texttt{ロールバック対照テスト\_正本実装N3\_N6\_20260908/}（実験20・21：\texttt{run\_single\_simplex\_N9\_v1.py}、\texttt{make\_normalized\_parents\_N7N6\_v1.py}、\texttt{run\_mixed\_simplex\_N7N6\_v1.py}、\texttt{plot\_Hperp\_mixed\_parts\_N7N6\_v1.py}、図8枚）、\texttt{加法法則\_90度系\_N9\_vs\_N7N6\_20260909/}（実験23）、\texttt{加法法則\_90度解析床\_N9\_vs\_N7N6\_20260909/}（実験25）、\texttt{二体三体問題\_関係波の検討\_20260908/}（実験22：\texttt{enumerate\_triangular\_decompositions\_v1.py}、\texttt{三角数分解一覧\_N3\_N40.txt}、\texttt{分析\_二体三体問題\_関係波と凝縮体頂点階層\_20260908.md}）。頂点セクターと
+\(\sigma=N-1\) の対応の検定（追試C）は
+\texttt{位相ロック全N確認\_相対平衡\_20260912/頂点セクター\_sigmaN1\_20260912/}（\texttt{analyze\_vertex\_sector\_sigmaN1\_20260912.py}、\texttt{results/vertex\_sector\_summary.csv}、README／REPORT／SHA／run\_all；読出しのみ）。各に
+README・SHA256SUMS・run\_all.sh・実行ログ。ラッパーは正本
+\texttt{run\_N3\_N40\_stage123\_v1.py}（SHA256
+\texttt{1abf2353fee2e4f56f05e7a6f149fd086885136beb61ab571b48a56b09691567}）の忠実コピー・初期値と出力名のみ最小変更。
+
+\end{document}

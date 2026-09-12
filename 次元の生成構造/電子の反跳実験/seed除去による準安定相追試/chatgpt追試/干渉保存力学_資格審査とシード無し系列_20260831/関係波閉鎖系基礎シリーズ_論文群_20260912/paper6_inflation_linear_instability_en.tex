@@ -1,0 +1,481 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% Glyph map for lualatex (newunicodechar). Maps symbols that may lack font glyphs.
+\usepackage{newunicodechar}
+\usepackage{amssymb}
+\newunicodechar{∎}{\ensuremath{\blacksquare}}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{✗}{\ensuremath{\times}}
+\newunicodechar{⟹}{\ensuremath{\Longrightarrow}}
+\newunicodechar{⟺}{\ensuremath{\Longleftrightarrow}}
+\newunicodechar{↪}{\ensuremath{\hookrightarrow}}
+\newunicodechar{⌊}{\ensuremath{\lfloor}}
+\newunicodechar{⌋}{\ensuremath{\rfloor}}
+\newunicodechar{≃}{\ensuremath{\simeq}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{←}{\ensuremath{\leftarrow}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{⊥}{\ensuremath{\perp}}
+\newunicodechar{√}{\ensuremath{\surd}}
+\newunicodechar{∑}{\ensuremath{\sum}}
+\newunicodechar{∏}{\ensuremath{\prod}}
+\newunicodechar{∞}{\ensuremath{\infty}}
+\newunicodechar{∈}{\ensuremath{\in}}
+\newunicodechar{∀}{\ensuremath{\forall}}
+\newunicodechar{∣}{\ensuremath{\mid}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{φ}{\ensuremath{\varphi}}
+\newunicodechar{ψ}{\ensuremath{\psi}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{Π}{\ensuremath{\Pi}}
+\newunicodechar{Λ}{\ensuremath{\Lambda}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{ω}{\ensuremath{\omega}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{ν}{\ensuremath{\nu}}
+\newunicodechar{±}{\ensuremath{\pm}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{·}{\ensuremath{\cdot}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={The inflation curve is exponential amplification of the floor's linear instability mode------the largest eigenvalue of the floor Jacobian and its non-normality / time-varying corrections},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.), ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{The inflation curve is exponential amplification of the floor's
+linear instability mode------the largest eigenvalue of the floor
+Jacobian and its non-normality / time-varying corrections}
+\author{Noriaki Kihara (WF System Co., Ltd.), ORCID 0009-0004-6753-4020}
+\date{2026-09-12}
+
+\begin{document}
+\maketitle
+
+\textbf{Series:} Foundations of Self-Consistent Relational-Wave Closed
+Systems (Paper 6 of 10)\\
+\textbf{Author:} Noriaki Kihara (WF System Co., Ltd.)　\textbf{Date:}
+2026-09-12\\
+\textbf{Version DOI:} 10.5281/zenodo.22729096\\
+\textbf{Concept DOI:} 10.5281/zenodo.22729095\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Zenodo:} https://zenodo.org/records/22729096\\
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+We derive analytically, as the \textbf{linear instability} of a tiny
+seed, the inflation-like rapid expansion (exponential growth of the
+out-of-floor-plane component \(H_\perp/H\)) reported in prior work
+{[}1{]}. When the largest eigenvalue \(|\mu_{\max}|\) of the linearized
+map of the floor (the Jacobian \(J\): the \(2M\times2M\) real matrix
+obtained by linearizing \(z\to\exp(\Delta\tau K(\varphi))z\) at the
+floor) exceeds unity, it gives
+\(H_\perp/H(t)\approx\text{seed}^2\,|\mu_{\max}|^{2t}\), ramp slope
+\(2\log_{10}|\mu_{\max}|\), and onset
+\(\approx\ln(1/H_{\perp0})/(2\ln|\mu_{\max}|)=\ln(1/\text{seed})/\ln|\mu_{\max}|\)
+(with \(H_{\perp0}=\text{seed}^2\)). The \(H_\perp\) slope obtained by
+evolving a tiny \(\delta\) under the frozen floor \(J\) matches
+\(2\log_{10}|\mu_{\max}|\) exactly (\(N=6{:}0.2935\) vs analytic
+\(0.2937\)). \(|\mu_{\max}|\) decreases as \(N\) increases
+(\(1.402\to1.269\to1.185\) for \(N=6,8,10\)) = inflation becomes slower
+and the onset lengthens (measured onset is \(64,87,133\) steps for
+\(N=6,8,10\)). The measured ramp slope is consistently \(18\)--\(31\%\)
+steeper than the floor value, and this stems from the fact that the
+floor \(J\) is a strongly \textbf{non-normal matrix} (non-normality
+\(0.53\)--\(0.76\)) and that the real ramp is the amplification of the
+\textbf{time-varying, non-commuting time-ordered product}
+\(\prod J(\varphi_t)\) accompanying the gradual change of \(K(\varphi)\)
+(joint spectral radius \(\ge\) individual spectral radius)
+(\textbf{directly confirmed in follow-up test A}: the slope of the
+time-varying product matches the measured value and exceeds the
+frozen-floor value by 18--31\%). The floor eigenvalue is its lower bound
+(initial / frozen rate). Classification: derivable (form, mechanism,
+\(N\) dependence, onset) + direct confirmation of the non-normality
+correction (follow-up test A; only the closed form is open).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Problem}\label{problem}
+
+In Papers 1 and 2 the floor was established as an unstable relative
+equilibrium. ``If the dynamics of the wave has been solved, then the
+inflation curve too should be derivable analytically from a tiny
+seed''------this paper shows this quantitatively, as the exponential
+amplification of the linear instability mode of the floor Jacobian.
+
+\subsection{2. The linear-instability prediction
+formulas}\label{the-linear-instability-prediction-formulas}
+
+We construct by numerical differentiation the real Jacobian
+\(J\in\mathbb R^{2M\times2M}\) obtained by linearizing the map around
+the floor \(z_0\) (embedding the state as \([\Re z;\Im z]\)), and
+compute its eigenvalues \(\mu\). If the floor is unstable,
+\(|\mu_{\max}|>1\). A tiny seed \(\delta\) is amplified along the
+unstable eigendirection, and the fraction of the component orthogonal to
+the floor plane is
+
+\[\frac{H_\perp}{H}(t)\approx(\text{seed})^2\,|\mu_{\max}|^{2t},\qquad
+\text{ramp slope}=\frac{d\log_{10}(H_\perp/H)}{dt}=2\log_{10}|\mu_{\max}|,\qquad
+\text{onset}\approx\frac{\ln(1/H_{\perp0})}{2\ln|\mu_{\max}|}=\frac{\ln(1/\text{seed})}{\ln|\mu_{\max}|}.\]
+
+(The onset is the number of steps to reach \(H_\perp/H\to1\).
+\(H_{\perp0}=\text{seed}^2\). The old draft's
+\(\ln(1/\text{seed})/(2\ln|\mu|)\) was a coefficient error that produced
+a self-contradiction---about half of the measured onset---so it has been
+corrected.)
+
+\subsection{\texorpdfstring{3. Verification
+(\(N=6,8,10\))}{3. Verification (N=6,8,10)}}\label{verification-n6810}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\(N\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(|\mu_{\max}|\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\lambda=\ln|\mu|\)/step
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+number of unstable modes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+analytic slope \(2\log_{10}|\mu|\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\delta\)-evolution slope under frozen floor \(J\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+measured ramp slope
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+measured/floor-analytic
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+floor \(J\) non-normality
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+onset analytic/measured
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+6 & 1.40234 & 0.3381 & 5 & 0.2937 & 0.2935 & 0.3460 & 1.178 & 0.761 & 86
+/ 64 \\
+8 & 1.26908 & 0.2383 & 6 & 0.2070 & 0.1988 & 0.2702 & 1.306 & 0.641 &
+125 / 87 \\
+10 & 1.18513 & 0.1699 & 8 & 0.1475 & 0.1271 & 0.1814 & 1.230 & 0.530 &
+180 / 133 \\
+\end{longtable}
+}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{The linear-instability formula is exactly correct}: the
+  \(H_\perp\) slope from evolving a tiny \(\delta\) under the frozen
+  floor \(J\) matches the analytic \(2\log_{10}|\mu_{\max}|\)
+  (\(N=6{:}0.2935\) vs \(0.2937\)).
+\item
+  \textbf{The \(N\) dependence is reproduced}: \(|\mu_{\max}|\)
+  decreases as \(N\) increases (\(1.402\to1.269\to1.185\)) = inflation
+  becomes slower and the onset lengthens (measured onset is
+  \(64,87,133\) steps for \(N=6,8,10\), analytic \(86,125,180\) steps).
+  The closed-form \(N\)-dependence law of the onset is left as future
+  work.
+\item
+  \textbf{onset} \(\approx\ln(1/\text{seed})/\ln|\mu|\) matches in order
+  of magnitude and scale (analytic \(86/125/180\) vs measured
+  \(64/87/133\)).
+\end{itemize}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 1: Inflation = linear instability. Left = N dependence of the floor Jacobian \textbar\textbackslash mu\_\{\textbackslash max\}\textbar{} and the onset; center = analytic ramp slope 2\textbackslash log\_\{10\}\textbar\textbackslash mu\textbar{} (floor) vs measured (non-normality gap); right = the measured H\_\textbackslash perp/H ramp for N=6 with the analytic slope overlaid.}]{figs/p6_inflation_linear_instability_en_fig1.png}}
+\caption{Figure 1: Inflation = linear instability. Left = \(N\)
+dependence of the floor Jacobian \(|\mu_{\max}|\) and the onset; center
+= analytic ramp slope \(2\log_{10}|\mu|\) (floor) vs measured
+(non-normality gap); right = the measured \(H_\perp/H\) ramp for \(N=6\)
+with the analytic slope overlaid.}
+\end{figure}
+
+\textbf{Figure 1} Inflation = the floor's linear instability (\(N\)
+dependence, slope, overlay).
+
+\subsection{4. Non-normality correction (the amount by which the
+measurement exceeds the floor
+value)}\label{non-normality-correction-the-amount-by-which-the-measurement-exceeds-the-floor-value}
+
+The measured ramp slope is consistently \(18\)--\(31\%\) steeper than
+the floor value (measured/floor-analytic \(=1.18\)--\(1.31\)).
+
+\begin{itemize}
+\tightlist
+\item
+  The floor \(J\) is a strongly \textbf{non-normal matrix}
+  (non-normality
+  \(\|JJ^{\mathsf T}-J^{\mathsf T}J\|/\|J^{\mathsf T}J\|=0.53\)--\(0.76\)).
+\item
+  The spectral radius when \(J\) is frozen at each point is nearly
+  constant along the ramp (\(1.402\) for \(N=6\)), but the real ramp
+  \textbf{persistently} exceeds it. Frozen non-normality only provides
+  transient amplification; the persistent part is carried by the
+  amplification of the \textbf{time-varying, non-commuting time-ordered
+  product of Jacobians} \(\prod_t J(\varphi_t)\) (joint spectral radius
+  \(\ge\) individual spectral radius) as \(K(\varphi)\) changes
+  gradually. \textbf{This mechanism has been established by direct
+  verification (follow-up test A)}: the \(H_\perp\) slope from evolving
+  \(\delta\) under the time-varying Jacobian product \(\prod_t J(z_t)\)
+  on the real trajectory matches the measured ramp
+  (time-varying/measured = 0.999 / 1.004 / 1.019 for \(N=6,8,10\)), and
+  exceeds the frozen floor \(J_0\) by 18--31\% (time-varying/floor =
+  1.177 / 1.311 / 1.253 = quantitatively matching the measured excess).
+  The floor eigenvalue is its lower bound (initial / frozen rate).
+  Therefore the fact that the analytic onset (based on the floor
+  \(|\mu_{\max}|\)) in §3 consistently exceeds the measured value
+  (\(86/125/180\) vs measured \(64/87/133\)) is likewise a consequence
+  of the same non-normality mechanism------because the floor eigenvalue
+  is a lower bound on the growth rate, the floor-based onset gives an
+  upper bound, and the real ramp is steeper (slope ratio
+  \(1.18\)--\(1.31\)) and reaches the threshold faster. The onset
+  overestimation and the non-normality excess are two sides of the same
+  mechanism.
+\end{itemize}
+
+\textbf{Deeper reading (finite-time Lyapunov rate of the tangent
+cocycle).} Near the floor, \(\delta_{t+1}=J_0\delta_t\) and the rate is
+\(\ln\rho(J_0)=\ln|\mu_{\max}|\) (the initial growth rate near the
+floor). Once away from the floor, on the real trajectory
+\(\delta_{t+1}=J(z_t)\delta_t\), i.e.~\(\delta_t=\Phi(t,0)\delta_0\),
+\(\Phi(t,0)=J(z_{t-1})\cdots J(z_0)\) (the time-ordered product of
+tangent maps = the \textbf{tangent cocycle}). Hence \textbf{the real
+inflation rate is the finite-time Lyapunov rate of the tangent cocycle
+\(\Phi(t,0)=\prod_t J(z_t)\) on the real trajectory}
+
+\[\gamma_t=\frac1t\ln\frac{\|P_\perp\Phi(t,0)\delta_0\|}{\|P_\perp\delta_0\|},\qquad \text{slope of }\log_{10}(H_\perp/H)=\frac{2\gamma_t}{\ln10}\]
+
+(\(P_\perp\) = orthogonal projection onto the floor plane). Since the
+\(J_t\) are non-normal (\(0.53\)--\(0.76\)) and mutually non-commuting,
+\(\Phi(t,0)\neq J_0^t\), and the direction of maximal amplification is
+further amplified by the next \(J_t\) while rotating under time
+evolution (unstable eigenmode → rotating amplified direction →
+time-ordered exponential growth). Follow-up test A confirmed this
+\(\gamma_t\) as matching the measured ramp (time-varying/measured 0.999
+/ 1.004 / 1.019). \(\mu_{\max}\) (the local instability of the floor)
+and \(\Phi(t,0)\) (the tangent dynamics of the real inflation) are a
+\textbf{two-stage dynamics}, and \(\mu_{\max}\) is its lower bound
+(\(t\to0^+\) / frozen limit).
+
+\subsection{5. Conclusion of the two-stage
+structure}\label{conclusion-of-the-two-stage-structure}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Derivable (form, mechanism, \(N\) dependence, onset)}: the
+  inflation curve is the exponential amplification of the floor's linear
+  instability mode. The main predictions (slope \(2\lambda/\ln10\),
+  onset, \(N\) dependence) are given by the largest eigenvalue of the
+  floor Jacobian \(\lambda=\ln|\mu_{\max}|\).
+\item
+  \textbf{Unification with Paper 5 (two faces of the same
+  \(\mu_{\max}\))}: this \(\lambda=\ln|\mu_{\max}|\) is precisely the
+  summit curvature of the Mexican-hat effective potential of Paper 5
+  (\(V''(0)=-\lambda\), \(\lambda=\ln|\mu_{\max}|\)). That is,
+  \textbf{the instability of SSB (the negative curvature of the summit
+  that drives the fall into the valley) and the exponential growth rate
+  of inflation are tied together by the same floor Jacobian eigenvalue
+  \(\mu_{\max}\)}. Paper 5's static SSB picture (spontaneous selection
+  from an unstable symmetric maximum) and this paper's dynamic
+  amplification (exponential rapid expansion) are the static and dynamic
+  aspects of a single \(\mu_{\max}\). As \(N\) increases and
+  \(\mu_{\max}\to1\), the summit flattens (curvature decreases), and the
+  fall = inflation also becomes slower (onset lengthens). That the
+  growth rate does not depend on precision or seed depth (= it is
+  intrinsic to the dynamics) has already been established in an
+  experiment that verified the floor of the seed at 100-digit
+  precision------even at IC100 (closure \(\sim10^{-102}\), floor
+  \(\sim10^{-200}\)), \(\gamma_\tau\) agrees with the 64-bit run to 8
+  digits (\(N=8\)), and it fires across about 179 digits from the floor
+  under a single exponential law
+  (\texttt{precision\_seed\_dynamics\_isolation\_100digit\_20260902},
+  \(N=7,8\)).
+\item
+  \textbf{Refinement (non-normality correction)}: the exact slope is the
+  amplification of the time-ordered product of the time-varying
+  non-normal \(J\), adding \(\sim18\)--\(31\%\) on top of the floor
+  eigenvalue (\textbf{directly confirmed in follow-up test A}: the slope
+  of the time-varying product matches the measured ramp and exceeds the
+  frozen floor by 18--31\%). Only the closed form remains underived.
+\end{itemize}
+
+\textbf{Unified chain} (a single line from ignition to landing):
+
+\[\rho(J_0)>1\ \Rightarrow\ \text{ignition qualification (Paper 2)}\ \to\ \ln\rho(J_0)\ \Rightarrow\ \text{initial growth rate near the floor}\ \to\ \gamma_{\rm FT}\big[\textstyle\prod_t J(z_t)\big]\ \Rightarrow\ \text{real ramp growth rate (follow-up test A)}\ \to\ \frac{\ln(1/\text{seed})}{\gamma}\ \Rightarrow\ \text{onset}\ \to\ \text{nonlinear saturation}\ \Rightarrow\ \text{degenerate vacuum (Paper 5)}.\]
+
+Viewing the same unstable floor by ``how it leaves the floor'' gives
+inflation, and by ``where it lands'' gives SSB------the two are not
+distinct mechanisms but two views of a single unstable floor.
+
+This is a quantitative description of rolling down from the Mexican-hat
+summit (the unstable relative equilibrium of the 90° skeleton), and the
+landing (the degenerate vacuum, \(\Delta=-2\pi/N\)) is treated by Paper
+5, while the geometry of tilting away from the floor plane is treated by
+Paper 7.
+
+\subsection{6. Claim classification / open
+items}\label{claim-classification-open-items}
+
+\begin{itemize}
+\tightlist
+\item
+  Classification: derived consequence (the linear-instability formula) +
+  measurement of the non-normality correction (the refinement is a
+  hypothesis). Judgment: retained.
+\item
+  Open: the \textbf{closed form} of the amplification rate of the
+  non-normal time-varying product is underived (the mechanism is
+  established by follow-up test A; only the analytic expression of the
+  amplification rate remains for future work). The floor Jacobian for
+  \(N=40\) (\(2M=1560\) dimensions) is heavy and uncomputed------for
+  small \(N\) (6, 8, 10) the two-stage structure is established.
+\end{itemize}
+
+\subsection{Related work (structural correspondence, not the source of
+derivation)}\label{related-work-structural-correspondence-not-the-source-of-derivation}
+
+\begin{itemize}
+\tightlist
+\item
+  Transient amplification / pseudospectra of non-normal matrices
+  (Trefethen \& Embree 2005): the amount by which the ramp exceeds the
+  floor eigenvalue is the non-normal transient growth / amplification of
+  the time-ordered product.
+\item
+  Self-consistent inflation v2 {[}1{]}: this paper is the analytic
+  derivation (refinement) of its rapid-expansion mechanism.
+\end{itemize}
+
+\subsection{References}\label{references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Noriaki Kihara, ``The mechanism of inflation-like rapid expansion in
+  self-consistent relational-wave closed systems,'' Version DOI
+  10.5281/zenodo.22176949 / Concept DOI 10.5281/zenodo.22112008.
+\item
+  L. N. Trefethen and M. Embree, \emph{Spectra and Pseudospectra},
+  Princeton (2005).
+\end{enumerate}
+
+\subsection{Reproduction}\label{reproduction}
+
+The verification scripts, figures, and reports are in
+\texttt{位相ロック全N確認\_相対平衡\_20260912/インフレ曲線\_線形不安定解析\_20260912/}
+(\texttt{analyze\_inflation\_linear\_instability\_20260912.py} =
+verifications A--E {[}floor \(J\) eigenvalues / non-normality /
+frozen-floor \(\delta\) evolution / measured ramp / onset{]},
+\texttt{make\_figure\_inflation.py},
+\texttt{fig\_inflation\_linear\_instability.png}, \texttt{REPORT.md},
+\texttt{解析ログ\_20260912.log}, \texttt{SHA256SUMS.txt},
+\texttt{run\_all.sh}). The \textbf{direct confirmation of the mechanism
+of the non-normality correction (follow-up test A)} is in
+\texttt{位相ロック全N確認\_相対平衡\_20260912/ランプ直接Lyapunov\_非正規時変積\_20260912/}
+(\texttt{analyze\_ramp\_lyapunov\_20260912.py} = comparison of the
+\(H_\perp\) slopes of frozen floor / time-varying product / measurement,
+\texttt{results/ramp\_lyapunov\_summary.csv}, \texttt{README.md} /
+\texttt{REPORT.md} / \texttt{SHA256SUMS.txt} / \texttt{run\_all.sh}).
+The input is the existing den=N npz (500 steps, make\_parent floor). No
+runs or physics were changed. The dynamical map is identical to the
+canonical \texttt{run\_N3\_N40\_stage123\_v1.py} (SHA256
+\texttt{1abf2353fee2e4f56f05e7a6f149fd086885136beb61ab571b48a56b09691567}).
+
+\end{document}

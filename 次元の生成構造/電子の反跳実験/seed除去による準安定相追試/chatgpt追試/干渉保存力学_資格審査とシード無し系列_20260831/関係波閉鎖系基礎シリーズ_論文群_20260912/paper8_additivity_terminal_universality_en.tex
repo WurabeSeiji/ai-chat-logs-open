@@ -1,0 +1,419 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% Glyph map for lualatex (newunicodechar). Maps symbols that may lack font glyphs.
+\usepackage{newunicodechar}
+\usepackage{amssymb}
+\newunicodechar{∎}{\ensuremath{\blacksquare}}
+\newunicodechar{✓}{\ensuremath{\checkmark}}
+\newunicodechar{✗}{\ensuremath{\times}}
+\newunicodechar{⟹}{\ensuremath{\Longrightarrow}}
+\newunicodechar{⟺}{\ensuremath{\Longleftrightarrow}}
+\newunicodechar{↪}{\ensuremath{\hookrightarrow}}
+\newunicodechar{⌊}{\ensuremath{\lfloor}}
+\newunicodechar{⌋}{\ensuremath{\rfloor}}
+\newunicodechar{≃}{\ensuremath{\simeq}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{≠}{\ensuremath{\neq}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{←}{\ensuremath{\leftarrow}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{⊥}{\ensuremath{\perp}}
+\newunicodechar{√}{\ensuremath{\surd}}
+\newunicodechar{∑}{\ensuremath{\sum}}
+\newunicodechar{∏}{\ensuremath{\prod}}
+\newunicodechar{∞}{\ensuremath{\infty}}
+\newunicodechar{∈}{\ensuremath{\in}}
+\newunicodechar{∀}{\ensuremath{\forall}}
+\newunicodechar{∣}{\ensuremath{\mid}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{ρ}{\ensuremath{\rho}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{φ}{\ensuremath{\varphi}}
+\newunicodechar{ψ}{\ensuremath{\psi}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{Π}{\ensuremath{\Pi}}
+\newunicodechar{Λ}{\ensuremath{\Lambda}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{ε}{\ensuremath{\varepsilon}}
+\newunicodechar{ω}{\ensuremath{\omega}}
+\newunicodechar{π}{\ensuremath{\pi}}
+\newunicodechar{ν}{\ensuremath{\nu}}
+\newunicodechar{±}{\ensuremath{\pm}}
+\newunicodechar{×}{\ensuremath{\times}}
+\newunicodechar{·}{\ensuremath{\cdot}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={The Additivity Law of the Terminal Equal Amplitude a\_\textbackslash infty=\textbackslash sqrt\{H/M\} ------ Separating Terminal Universality from Ignition Dynamics (N=9 alone vs N=7+N=6{,} 3 initial-value families)},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.), ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{The Additivity Law of the Terminal Equal Amplitude
+\(a_\infty=\sqrt{H/M}\) ------ Separating Terminal Universality from
+Ignition Dynamics (\(N=9\) alone vs \(N=7+N=6\), 3 initial-value
+families)}
+\author{Noriaki Kihara (WF System Co., Ltd.), ORCID 0009-0004-6753-4020}
+\date{2026-09-12}
+
+\begin{document}
+\maketitle
+
+\textbf{Series:} Foundations of Self-Consistent Relational-Wave Closed
+Systems (Paper 8 of 10)\\
+\textbf{Author:} Noriaki Kihara (WF System Co., Ltd.)　\textbf{Date:}
+2026-09-12\\
+\textbf{Version DOI:} 10.5281/zenodo.22729116\\
+\textbf{Concept DOI:} 10.5281/zenodo.22729115\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Zenodo:} https://zenodo.org/records/22729116\\
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+The post-lock terminal state is equal-amplitude (Paper 5). We verify the
+\textbf{additivity law} \(a_\infty=\sqrt{H/M}\), in which its radius is
+determined solely by the extensive variables \((H,M)\), using the mixed
+sum of triangular numbers \(M(9)=M(7)+M(6)\) (\(36=21+15\)). The mixed
+system of \(N=7\) and \(N=6\), normalized to the density
+\(H_i/M_i=1/36\), agrees in terminal ring radius with the standalone
+\(N=9\) system (both giving \(a_\infty=\sqrt{1/36}=1/6=0.1666667\)). On
+the other hand, onset, path, and plateau are imprinted by the
+composition (\(N=9\) alone onset \(191\) vs mixed union departs at the
+earliest stage). Furthermore, changing the initial-value family (staged
+\(2\pi/N\) increments / 90-degree analytic floor / 90-degree symmetric
+v2) changes \textbf{the presence or absence of ignition itself}
+(\(N=9\): staged onset \(191\) / 90-degree analytic floor onset \(140\)
+/ 90-degree v2 is the non-igniting exact fixed point \(\sigma=N-1\)),
+yet the terminal value \(1/6\) is common across all three families. That
+is, \textbf{terminal universality (\(a_\infty=\sqrt{H/M}\)) is
+independent of the symmetry family of the initial values}, whereas
+\textbf{ignition dynamics depends strongly on it}. The composition
+(which combination of \(N\)) is imprinted only during the inflation
+period, and at the terminal state it is indistinguishable from a single
+system. \((H,M)\) are extensive quantities, \(\rho=H/M\) is an intensive
+quantity, and \(a_\infty=\sqrt\rho\) is an intensive terminal state
+quantity; the formula itself is an exact consequence of equal amplitude
+plus \(H\) conservation, and what is nontrivial is terminal
+universality. \textbf{The transient remembers the composition (the
+\(J_0,\prod_tJ_t\) of Paper 6), while the terminal state forgets the
+composition in its amplitude via \(|z_e|^2\to H/M\), whereas the phase
+configuration and the orientation of the face are degenerate and
+selected by the seed (Paper 5)} ------ the amplitude becomes a state
+quantity, the orientation retains the SSB history. Factorization itself
+is dynamically impossible because \(K_N\) is maximally connected
+(crossing edges necessarily remain), and the terminal agreement is a
+consequence of equipartition unrelated to decomposability.
+Classification: numerical verification (additivity law) + mathematical
+fact (impossibility of decomposition).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Problem}\label{problem}
+
+If the terminal state is equal-amplitude, then \(a_\infty=\sqrt{H/M}\)
+\textbf{follows exactly} from \(H=\sum_{e=1}^M|z_e|^2=Ma_\infty^2\)
+------ the formula itself is not nontrivial. The nontrivial part that
+this paper confirms by numerical experiment is \textbf{``terminal
+universality,'' namely that even different compositions and different
+initial-value families reach the same equal-amplitude law at the
+terminal state}. Generalization: if the subsystems have identical
+density \(\rho_i=H_i/M_i=\rho\), then since
+\(H_{\rm tot}=\sum_iH_i=\rho\sum_iM_i=\rho M_{\rm tot}\),
+
+\[\frac{H_{\rm tot}}{M_{\rm tot}}=\rho,\qquad a_{\infty,\rm tot}=\sqrt{H_{\rm tot}/M_{\rm tot}}=\sqrt\rho=a_{\infty,i}.\]
+
+That is, \((H,M)\) are \textbf{extensive quantities}, \(\rho=H/M\) is an
+\textbf{intensive quantity}, and \(a_\infty=\sqrt\rho\) is an
+\textbf{intensive terminal state quantity}; the additivity of \((H,M)\)
+gives the composition-invariance of \(\rho\) (\(N=9=7+6\) is one
+instance). We verify this with a heterogeneous mixture and separate
+terminal universality from ignition dynamics (the imprint of
+composition).
+
+\subsection{2. Dynamics and Design (faithful copy + density
+normalization)}\label{dynamics-and-design-faithful-copy-density-normalization}
+
+The map is the canonical one\_step (SHA \texttt{1abf2353…}). The wrapper
+is a faithful copy of the canonical implementation with only minimal
+changes to the initial-value source and output names (diff audited,
+physics formulas unchanged). Using the triangular-number decomposition
+\(M(9)=36=21+15=M(7)+M(6)\), the theoretical-floor parents of
+\(N=7,N=6\) (each with \(H=1\)) are normalized to the density-matching
+condition \(H_i/M_i=1/36\) (\(c_7=\sqrt{21/36}=0.7638\),
+\(c_6=\sqrt{15/36}=0.6455\), total \(H=1\)). den=N・500 step. The mixed
+system runs each subsystem independently with its own adjacency and its
+own den.
+
+\subsection{3. Establishment of the Additivity Law (Experiment
+21)}\label{establishment-of-the-additivity-law-experiment-21}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{The terminal ring radius agrees}: \(N=9\) alone \(0.1666667\)
+  (min=max), the \(N=7\) part of the mixture \(0.1666667\), the \(N=6\)
+  part \(0.16649\)--\(0.16677\), all equal to the theoretical value
+  \(\sqrt{1/36}=0.1666667\).
+\item
+  \textbf{The ignition dynamics is entirely different by composition}
+  (only the terminal state is universal): onset\((>0.05)\) is \(191\)
+  for \(N=9\) alone vs the mixed union departs at the earliest stage
+  (the union is meaningless, so it is evaluated per subsystem).
+  Per-subsystem onset: \(N=7\) part \(145\), \(N=6\) part \(153\)
+  (agreeing with the \(153\) of the \(N=6\times3\) series =
+  scale-invariant).
+\item
+  \(H\) conservation and closure maintenance are sound (\(H\) relative
+  difference \(\sim10^{-14}\), maximum closure \(\sim10^{-14}\), finite
+  at all steps).
+\end{itemize}
+
+Whether by homogeneous \(m\)-fold or heterogeneous mixture, the terminal
+state is indistinguishable from a single system via
+\(a_\infty=\sqrt{H/M}\). The structure (which combination of \(N\)) is
+imprinted only on onset, path, and plateau.
+
+\subsection{4. Change of Ignition Dynamics by Initial-Value Family
+(Experiments 23 \& 25) ------ comparison of 3
+families}\label{change-of-ignition-dynamics-by-initial-value-family-experiments-23-25-comparison-of-3-families}
+
+The same experiment was re-run changing only the initial-value family:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\(N=9\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+staged (\(2\pi/N\) increments)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+90-degree analytic floor (integer K)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+90-degree symmetric v2 (0/90 equal amplitude)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+ignition & ignition (onset \(191\)) & ignition (onset \(140\)) &
+\textbf{non-ignition} (the \(\sigma=N-1\) exact fixed point of
+\(N\equiv1\,\mathrm{mod}\,4\)) \\
+mixed-part onset (\(N=7,N=6\)) & \(145,\ 153\) & \(113,\ 121\) &
+\(5,\ 5\) \\
+terminal \(a_\infty\) & \(1/6\) & \(1/6\) & \(1/6\) \\
+\end{longtable}
+}
+
+\textbf{The terminal value \(1/6\) is common across all three families},
+and only the presence/absence of ignition and the onset change by
+family. For 90-degree v2, the \(N=9\) case is an exact fixed point where
+the \(0^\circ\) family becomes a \((N-1)/2\)-regular graph
+(\(\sigma=N-1\)), which sits at rest on the equal-amplitude ring and
+does not ignite (consistent with the qualification screening of Paper 2:
+a neutral fixed point does not ignite). The 90-degree analytic floor
+(Paper 3) and staged ignite on an unstable floor.
+
+\subsection{5. Factorization Is Impossible; the Terminal Agreement Is a
+Consequence of Equipartition (Experiment
+22)}\label{factorization-is-impossible-the-terminal-agreement-is-a-consequence-of-equipartition-experiment-22}
+
+The complete enumeration of the triangular-number decomposition
+\(M(N)=\sum M(k)\) (equal partition, 27 two-part cases, 46 three-part
+cases; the ``prime'' \(N\) having no decomposition with parts \(M(4)\)
+or larger are \(3,4,5,6,8\)) is the basis for the selection, but
+\textbf{dynamical factorization is impossible in principle}: since
+\(K_N\) is a complete graph, crossing edges necessarily remain and it is
+maximally connected, and \(K_{10}\to3K_6\) violates the degree
+condition. The inflation mismatch of Experiment 21 (onset \(191\) vs
+\(145/153\)) is the experimental evidence of dynamical impossibility of
+decomposition. Therefore, \textbf{the terminal agreement is a
+consequence of equipartition (\(a_\infty=\sqrt{H/M}\)) unrelated to
+decomposability}. The hierarchization of a condensate = a single vertex
+(mass = the \(H\) privately held by the closure one level below) is
+presented as a working hypothesis, and its derivation is left as an open
+problem for future study.
+
+\subsection{6. Memory and Erasure ------ the Transient Remembers the
+Composition and the Terminal Amplitude Forgets It (unification of Papers
+5, 6,
+8)}\label{memory-and-erasure-the-transient-remembers-the-composition-and-the-terminal-amplitude-forgets-it-unification-of-papers-5-6-8}
+
+The carrier of information separates between the transient and the
+terminal state. The \textbf{transient} (inflation period) remembers the
+composition and initial-value family: the initial structure is imprinted
+in the floor Jacobian \(J_0\) and the tangent cocycle \(\prod_t J(z_t)\)
+(Paper 6), determining onset, path, and plateau (§3--4: \(N=9\) alone
+onset \(191\) vs mixed \(145/153\), and even the presence/absence of
+ignition changes with staged/analytic floor/v2). The \textbf{terminal
+state} has \(|z_e|^2\to H/M\) after nonlinear saturation, and the
+composition information disappears from this amplitude
+(\(a_\infty=\sqrt{H/M}\) is common across 3 families × mixture). That
+is,
+
+\[\text{initial structure}\ \to\ \text{memorized in}\ J_0,\ \textstyle\prod_t J_t\ \to\ \text{inflation}\ \to\ \text{saturation}\ \to\ \text{universalization of amplitude information}.\]
+
+Connection with Paper 5 (amplitude forgets, orientation remains): the
+degenerate vacuum family of Paper 5 possesses both a \textbf{common
+amplitude scale} \(|z_e|=\sqrt{H/M}\) and a \textbf{seed-dependent phase
+configuration and orientation of the face (geometric moduli)}. The
+radial coordinate \(r=\sqrt{H_\perp/H}\) of Paper 5 (\(0.19\)--\(0.38\)
+per vacuum) is the order parameter of the tilt of the face, and it is a
+\textbf{distinct quantity} from the per-edge amplitude
+\(a_\infty=\sqrt{H/M}\) of this paper (they are not identified).
+Combining the two, the terminal appearance is
+
+\[\boxed{\text{the amplitude scale }|z_e|=\sqrt{H/M}\text{ is universal (becomes a state quantity) / the phase configuration and the orientation of the face are degenerate and selected by the seed (retain the SSB history)}}\]
+
+------ \textbf{at the terminal state the amplitude forgets the
+composition, and the orientation retains the history of SSB}. This is
+the unification of Paper 5 (degenerate vacuum), Paper 6 (transient
+inflation), and Paper 8 (terminal state quantity).
+
+\subsection{7. Claim Classification \& Open
+Items}\label{claim-classification-open-items}
+
+\begin{itemize}
+\tightlist
+\item
+  Classification: numerical verification (additivity law
+  \(a_\infty=\sqrt{H/M}\), 3 families × mixture) + mathematical fact
+  (impossibility of factorization). Verdict: retained.
+\item
+  Note: the terminal equal amplitude has the phase normalization of this
+  engine (stage 2, which kills the amplitude) built in, so it is not
+  presented as an independent corroboration of the norm form (suspicion
+  of circular derivation; independent verification with an
+  amplitude-preserving control dynamics is open).
+\item
+  Verified (re-run C): the 3-way decomposition of the edge space
+  \(1\oplus(N-1)\oplus N(N-3)/2\) (line graph / Johnson scheme) exists
+  in reality and the terminal \(\sigma_{\max}\to N-1\) is confirmed for
+  all \(N\). However, the terminal state does not ride on the
+  \((N-1)\)-dimensional vertex sector but spreads into the residual
+  sector (frac\_rest \(\to0.93\)) ------ \textbf{``\(\sigma=N-1\) (the
+  eigenvalue) ↔ vertex sector (the dimension)'' is a coincidence of
+  dimension labels and does not correspond} (rejected).
+\item
+  Open: quantification of the immediate departure of the mixed system
+  (union onset).
+\end{itemize}
+
+\subsection{Related work (structural agreement, not the source of
+derivation)}\label{related-work-structural-agreement-not-the-source-of-derivation}
+
+\begin{itemize}
+\tightlist
+\item
+  Barycentric decomposition of mean-field / all-pairs-coupled systems
+  (\(K_k\) spectrum \(\{0,k,\ldots,k\}\)): the reduction N-body =
+  conserved barycenter + independent two-body problem.
+\item
+  Extensive / intensive variables (thermodynamics):
+  \(a_\infty=\sqrt{H/M}\) is a state quantity of the extensive variables
+  \((H,M)\).
+\end{itemize}
+
+\subsection{References}\label{references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Noriaki Kihara, ``The Mechanism of Inflationary Rapid Expansion in
+  Self-Consistent Relational-Wave Closed Systems,'' Concept DOI
+  10.5281/zenodo.22112008.
+\item
+  Noriaki Kihara, ``Onset-Mode Discrimination (Amplification and
+  Unstable Relative Equilibria),'' Concept DOI 10.5281/zenodo.21798854.
+\end{enumerate}
+
+\subsection{Reproduction}\label{reproduction}
+
+Wrappers, parents, and figures are packaged together in each set:
+\texttt{ロールバック対照テスト\_正本実装N3\_N6\_20260908/} (Experiments
+20 \& 21: \texttt{run\_single\_simplex\_N9\_v1.py},
+\texttt{make\_normalized\_parents\_N7N6\_v1.py},
+\texttt{run\_mixed\_simplex\_N7N6\_v1.py},
+\texttt{plot\_Hperp\_mixed\_parts\_N7N6\_v1.py}, 8 figures),
+\texttt{加法法則\_90度系\_N9\_vs\_N7N6\_20260909/} (Experiment 23),
+\texttt{加法法則\_90度解析床\_N9\_vs\_N7N6\_20260909/} (Experiment 25),
+\texttt{二体三体問題\_関係波の検討\_20260908/} (Experiment 22:
+\texttt{enumerate\_triangular\_decompositions\_v1.py},
+\texttt{三角数分解一覧\_N3\_N40.txt},
+\texttt{分析\_二体三体問題\_関係波と凝縮体頂点階層\_20260908.md}). The
+test of the correspondence between the vertex sector and \(\sigma=N-1\)
+(re-run C) is in
+\texttt{位相ロック全N確認\_相対平衡\_20260912/頂点セクター\_sigmaN1\_20260912/}
+(\texttt{analyze\_vertex\_sector\_sigmaN1\_20260912.py},
+\texttt{results/vertex\_sector\_summary.csv}, README / REPORT / SHA /
+run\_all; read-only). Each includes README, SHA256SUMS, run\_all.sh, and
+execution logs. The wrapper is a faithful copy of the canonical
+\texttt{run\_N3\_N40\_stage123\_v1.py} (SHA256
+\texttt{1abf2353fee2e4f56f05e7a6f149fd086885136beb61ab571b48a56b09691567})
+with only minimal changes to the initial values and output names.
+
+\end{document}
