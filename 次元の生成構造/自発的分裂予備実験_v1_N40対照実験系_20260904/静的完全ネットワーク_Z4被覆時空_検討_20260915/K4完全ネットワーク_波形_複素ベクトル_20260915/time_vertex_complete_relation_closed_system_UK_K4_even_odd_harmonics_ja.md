@@ -5,8 +5,8 @@
 **ORCID:** 0009-0004-6753-4020  
 **日付:** 2026-09-15  
 **版:** v1.2 日本語完成稿（再査読修正版）  
-**Version DOI:** （取得後記入）  
-**Concept DOI:** （取得後記入）  
+**Version DOI:** [10.5281/zenodo.22763330](https://doi.org/10.5281/zenodo.22763330)  
+**Concept DOI:** [10.5281/zenodo.22763329](https://doi.org/10.5281/zenodo.22763329)  
 
 ---
 
@@ -1198,7 +1198,7 @@ $\Delta=3$ は $\Delta=1$ と対称なので $d=\sqrt6$ である。
 
 全 6 辺は次の通り。
 
-| 辺 | $\min(|\Delta|,\,4-|\Delta|)$ | $d_{ij}$ |
+| 辺 | $\min(\lvert\Delta\rvert,\,4-\lvert\Delta\rvert)$ | $d_{ij}$ |
 |---|---:|---:|
 | $(0,1)$ | 1 | $\sqrt6$ |
 | $(0,2)$ | 2 | $2$ |
@@ -1272,7 +1272,7 @@ $\Delta=3$ は $\Delta=1$ と対称なので $d=2$ である。
 
 全 6 辺は次の通り。
 
-| 辺 | $\min(|\Delta|,\,4-|\Delta|)$ | $d_{ij}$ |
+| 辺 | $\min(\lvert\Delta\rvert,\,4-\lvert\Delta\rvert)$ | $d_{ij}$ |
 |---|---:|---:|
 | $(0,1)$ | 1 | $2$ |
 | $(0,2)$ | 2 | $2\sqrt2$ |

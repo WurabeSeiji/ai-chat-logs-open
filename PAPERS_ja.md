@@ -4,7 +4,7 @@
 全論文は Zenodo で CC BY 4.0 公開。各行：題名（日本語 / 英語）・Version DOI・Concept DOI・公開日・版・PDF・リポジトリ内フォルダ・リリースノート。
 本ファイルは `tools/gen_paper_index.py` により Zenodo API から自動生成。English: [PAPERS_en.md](PAPERS_en.md) / Scholar 用ページ: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**論文数: 140**
+**論文数: 141**
 
 ## グノモン正写像による4次元時空の幾何学的定式化 / Central Projection Framework (Gnomonic Spacetime Geometry)
 
@@ -521,6 +521,10 @@
    Dynamics of a Self-Consistent Relational-Wave Closed System: From the Local Instability of the 90-Degree Relative Equilibrium to Inflation, Spontaneous Symmetry Breaking, Grassmann Geometry, Terminal Universality and Relationalism  
    DOI [10.5281/zenodo.22729147](https://doi.org/10.5281/zenodo.22729147) · Concept [10.5281/zenodo.22729146](https://doi.org/10.5281/zenodo.22729146) · 2026-09-12 · v1 · [PDF en](https://zenodo.org/records/22729147/files/paper0_capstone_en.pdf) [PDF ja](https://zenodo.org/records/22729147/files/paper0_capstone_ja.pdf)  
    フォルダ: [次元の生成構造/電子の反跳実験/seed除去による準安定相追試/chatgpt追試/干渉保存力学_資格審査とシード無し系列_20260831/関係波閉鎖系基礎シリーズ_論文群_20260912](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E9%9B%BB%E5%AD%90%E3%81%AE%E5%8F%8D%E8%B7%B3%E5%AE%9F%E9%A8%93/seed%E9%99%A4%E5%8E%BB%E3%81%AB%E3%82%88%E3%82%8B%E6%BA%96%E5%AE%89%E5%AE%9A%E7%9B%B8%E8%BF%BD%E8%A9%A6/chatgpt%E8%BF%BD%E8%A9%A6/%E5%B9%B2%E6%B8%89%E4%BF%9D%E5%AD%98%E5%8A%9B%E5%AD%A6_%E8%B3%87%E6%A0%BC%E5%AF%A9%E6%9F%BB%E3%81%A8%E3%82%B7%E3%83%BC%E3%83%89%E7%84%A1%E3%81%97%E7%B3%BB%E5%88%97_20260831/%E9%96%A2%E4%BF%82%E6%B3%A2%E9%96%89%E9%8E%96%E7%B3%BB%E5%9F%BA%E7%A4%8E%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA_%E8%AB%96%E6%96%87%E7%BE%A4_20260912) · [リリースノート](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E9%9B%BB%E5%AD%90%E3%81%AE%E5%8F%8D%E8%B7%B3%E5%AE%9F%E9%A8%93/seed%E9%99%A4%E5%8E%BB%E3%81%AB%E3%82%88%E3%82%8B%E6%BA%96%E5%AE%89%E5%AE%9A%E7%9B%B8%E8%BF%BD%E8%A9%A6/chatgpt%E8%BF%BD%E8%A9%A6/%E5%B9%B2%E6%B8%89%E4%BF%9D%E5%AD%98%E5%8A%9B%E5%AD%A6_%E8%B3%87%E6%A0%BC%E5%AF%A9%E6%9F%BB%E3%81%A8%E3%82%B7%E3%83%BC%E3%83%89%E7%84%A1%E3%81%97%E7%B3%BB%E5%88%97_20260831/%E9%96%A2%E4%BF%82%E6%B3%A2%E9%96%89%E9%8E%96%E7%B3%BB%E5%9F%BA%E7%A4%8E%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA_%E8%AB%96%E6%96%87%E7%BE%A4_20260912/RELEASE_NOTES.md)
+36. **時間発展を頂点化した有限完全関係閉系**  
+   A Finite Complete-Relation Closed System with Time Evolution as Vertices: Exact Minimal Closure at N=1, K=4 under U^K=I and Complete-Network Analysis of Even and Odd Harmonics  
+   DOI [10.5281/zenodo.22763330](https://doi.org/10.5281/zenodo.22763330) · Concept [10.5281/zenodo.22763329](https://doi.org/10.5281/zenodo.22763329) · 2026-09-15 · v1.2 · [PDF en](https://zenodo.org/records/22763330/files/time_vertex_complete_relation_closed_system_UK_K4_even_odd_harmonics_en.pdf) [PDF ja](https://zenodo.org/records/22763330/files/time_vertex_complete_relation_closed_system_UK_K4_even_odd_harmonics_ja.pdf)  
+   フォルダ: [次元の生成構造/自発的分裂予備実験_v1_N40対照実験系_20260904/静的完全ネットワーク_Z4被覆時空_検討_20260915/K4完全ネットワーク_波形_複素ベクトル_20260915](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E8%87%AA%E7%99%BA%E7%9A%84%E5%88%86%E8%A3%82%E4%BA%88%E5%82%99%E5%AE%9F%E9%A8%93_v1_N40%E5%AF%BE%E7%85%A7%E5%AE%9F%E9%A8%93%E7%B3%BB_20260904/%E9%9D%99%E7%9A%84%E5%AE%8C%E5%85%A8%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF_Z4%E8%A2%AB%E8%A6%86%E6%99%82%E7%A9%BA_%E6%A4%9C%E8%A8%8E_20260915/K4%E5%AE%8C%E5%85%A8%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF_%E6%B3%A2%E5%BD%A2_%E8%A4%87%E7%B4%A0%E3%83%98%E3%82%99%E3%82%AF%E3%83%88%E3%83%AB_20260915)
 
 ## 時間軸Q軸とフェルミオンの生成構造 / Time Axis, Q Axis, and Fermion Generation
 

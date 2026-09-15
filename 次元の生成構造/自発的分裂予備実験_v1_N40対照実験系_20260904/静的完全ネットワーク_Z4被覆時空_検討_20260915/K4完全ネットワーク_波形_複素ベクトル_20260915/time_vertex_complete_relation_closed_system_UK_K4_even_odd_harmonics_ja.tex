@@ -1,0 +1,3513 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={時間発展を頂点化した有限完全関係閉系------U\^{}K=I による N=1{,} K=4 最小厳密閉系と偶奇倍音の完全ネットワーク解析},
+  pdfauthor={木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{時間発展を頂点化した有限完全関係閉系------\(U^K=I\) による
+\(N=1, K=4\) 最小厳密閉系と偶奇倍音の完全ネットワーク解析}
+\author{木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020}
+\date{2026年9月15日　v1.2　Version DOI 10.5281/zenodo.22763330}
+
+\begin{document}
+\maketitle
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+本研究の目的は、時間発展を外部の特別なパラメータとして与えず、異なる位相時点の状態そのものを通常の状態頂点と区別せずに有限個の頂点として扱い、それらの全関係を完全ネットワークとして閉じる最小厳密系を解析することである。出発点は、先行研究
+{[}K1{]}
+における自己無撞着な関係波閉鎖系の数値実験である。そこでは、ある瞬間に
+\(N\) 個の頂点と \(M=N(N-1)/2\) 個の関係波を置き、離散更新変数 \(\tau\)
+に対して \(\Delta\tau=2\pi/N\)
+として相互作用を反復した。高対称な初期状態では関係波が複素平面上の 90
+度系列近傍、すなわち十字架状の狭い帯に集中し、その後、急激な横方向成分の増大を経て、ほぼ等振幅かつ位相が広く分散した準安定リングへ遷移することが観測された。しかしこの記述は、\(\tau\)
+を他の状態変数から区別して更新方向として特別扱いしている点、および「ある瞬間の
+\(N\)
+頂点」を先に仮定している点で、無名性の原則に抵触している可能性を残す。
+
+本稿では、各名目時点に \(N\) 個の状態があり、閉路上に \(K\)
+個の位相状態がある場合、全状態を区別せず \(P=KN\)
+個の頂点とみなし、全関係数を \(M_P=P(P-1)/2=KN(KN-1)/2\)
+とする。さらに位相閉路を \(U^K=I\) で閉じる。この構成では \(N=1\)
+であっても \(K\ge 3\)
+ならば自己の異なる位相状態間に複数の関係と閉路を定義できる。本稿は最小の非自明かつ厳密に閉じた場合として
+\(N=1, K=4\) を完全解析する。ここで \(U=\exp(2\pi i/4)=i\) を primitive
+4-th root とし、状態を \(S_k=(U^k,U^{mk})\) と定義する。\(m=2\)
+を最小の非自明な偶数倍音、\(m=3\)
+を最小の非自明な奇数倍音として比較する。
+
+結果は三層に分離して記述する。第一に、完全グラフ \(K_4\)
+の存在、状態巡回、位数、二波成分の二乗和は数学的に厳密であり、物理的同定を必要としない。第二に、\(\mathbb C^2\)
+上のユークリッド距離 \(d_{ij}\)
+を\textbf{解析上の読出しとして定義した場合}、\(m=2\) と \(m=3\) で 6
+辺の距離多重集合が異なる。これは定義後には厳密だが、\(d_{ij}\)
+を実空間距離と同定することは本稿の主張ではない。第三に、\(N=1\)
+系を「光子1個」に対応させること、\(k\)
+の巡回を物理時間の過去・現在・未来として読むこと、ネットワーク距離を物理的長さとして読むことは、すべて今後検証すべき\textbf{物理的仮定}であり、本稿の完全ネットワーク解析の成立条件ではない。
+
+\(K=4\) について、\(m=2\) では倍音成分の最小位数が 2 に縮退し、\(m=3\)
+では基底波・倍音とも最小位数 4 を維持する。さらに 4
+状態にわたる二波成分の二乗総和を
+
+\[
+Q_{\mathrm{loop}}(m)
+=
+\sum_{k=0}^{3}\left[(U^k)^2+(U^{mk})^2\right]
+\]
+
+と定義すると、厳密に
+
+\[
+Q_{\mathrm{loop}}(m)
+=
+\begin{cases}
+4,&m\ \mathrm{even},\\
+0,&m\ \mathrm{odd}
+\end{cases}
+\]
+
+となる。したがって最小比較では \(m=2\) が二乗ゼロ閉塞せず、\(m=3\)
+が厳密に二乗ゼロ閉塞する。本稿はこの差を数値近似ではなく有限巡回群上の幾何級数として完全導出し、全状態、全
+6 関係、全可視化、動的 HTML、MP4、CSV
+および再現プログラムを同一フォルダに収録する。
+
+\textbf{キーワード:}
+完全グラフ、離散位相、有限巡回群、\(U^K=I\)、関係波、時間の頂点化、二乗ゼロ閉塞、倍音、無名性、自己無撞着性
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{1.
+本稿の主張範囲を最初に固定する}\label{ux672cux7a3fux306eux4e3bux5f35ux7bc4ux56f2ux3092ux6700ux521dux306bux56faux5b9aux3059ux308b}
+
+本稿は、物理的同定と数学的ネットワーク解析を意図的に分離する。これは表現上の注意ではなく、本稿の論理構造そのものである。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+層
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+本稿での位置づけ
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+A & \(P=KN\) 個の頂点を全関係化すること、\(K_4\) の 6
+関係、\(U^K=I\)、状態巡回、位数、二波成分の二乗和 &
+\textbf{厳密な数学的・代数的主張} \\
+B & \(\mathbb C^2\) のユークリッド距離 \(d_{ij}\) による 6
+辺の数値的長さ &
+\textbf{明示的に定義した解析読出し}。定義後は厳密だが、物理距離ではない \\
+C & MDS による 3 次元配置 &
+\textbf{距離行列の可視化}。座標値自体に物理的意味を与えない \\
+D & \(N=1\)
+を光子1個とみなすこと、基底波＋倍音1本をその最小状態とみなすこと &
+\textbf{物理的仮定} \\
+E & 位相状態 \(k\)
+を物理的な過去・現在・未来と読むこと、ネットワーク距離を時空距離として読むこと
+& \textbf{今後検証すべき物理的読出し仮説} \\
+\end{longtable}
+}
+
+したがって、D または E が将来否定されたとしても、A
+の完全ネットワーク解析および有限巡回群上の結果は影響を受けない。また B
+の距離読出しが物理的長さとして採用できないことが判明した場合でも、\(K_4\)
+の完全関係構造、位数、二乗和の結果は残る。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{2.
+動機：先行インフレーション系で何が観測されたか}\label{ux52d5ux6a5fux5148ux884cux30a4ux30f3ux30d5ux30ecux30fcux30b7ux30e7ux30f3ux7cfbux3067ux4f55ux304cux89b3ux6e2cux3055ux308cux305fux304b}
+
+\subsection{2.1
+先行系の基本構成}\label{ux5148ux884cux7cfbux306eux57faux672cux69cbux6210}
+
+先行研究 {[}K1{]} では、名目上「ある瞬間」に \(N\)
+個の頂点を置き、全頂点対に複素関係波を対応させる完全グラフを用いた。関係数は
+
+\[
+M
+=
+\binom{N}{2}
+=
+\frac{N(N-1)}{2}
+\]
+
+である。
+
+例えば \(N=40\) では、
+
+\[
+M
+=
+\frac{40\times39}{2}
+=
+780
+\]
+
+本の関係波が存在する。
+
+先行実験では、これらの関係波を複素平面上で観測すると、高対称な初期状態が
+90
+度系列の近傍に集中し、十字架状の狭い帯を形成した。これは文章だけでは誤解されやすいため、\(N=40\)
+の実測図をそのまま再掲する。
+
+\subsubsection{\texorpdfstring{図1　\(N=40, M=780\)
+の初期状態：90度系列近傍の十字架状帯}{図1　N=40, M=780 の初期状態：90度系列近傍の十字架状帯}}\label{ux56f31-n40-m780-ux306eux521dux671fux72b6ux614b90ux5ea6ux7cfbux5217ux8fd1ux508dux306eux5341ux5b57ux67b6ux72b6ux5e2f}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=40 step0 cross phase distribution}]{figs/inflation_N40_phase_step0_cross_20260915.png}}
+\caption{N=40 step0 cross phase distribution}
+\end{figure}
+
+図1では、関係波が一様な位相円上に置かれているのではなく、約 90 度ごとの
+4
+方向近傍に強く拘束され、それぞれに小さい振幅幅を持つ帯として分布している。したがって「初期状態が十字架状である」という記述は模式的比喩ではなく、\(N=40, M=780\)
+の関係波集合を複素平面に直接描いた観測結果である。
+
+\subsection{2.2
+反復後の準安定リング}\label{ux53cdux5fa9ux5f8cux306eux6e96ux5b89ux5b9aux30eaux30f3ux30b0}
+
+先行系では相互作用を反復すると、横方向成分が急増した後、振幅がほぼ均一化し、位相拘束が大きく解ける。ただし終端分布は完全な等角度配置ではなく、元の
+90 度系列に対応する異方性を残す。
+
+\subsubsection{\texorpdfstring{図2　\(N=40, M=780\)
+の終端状態：放射状リング}{図2　N=40, M=780 の終端状態：放射状リング}}\label{ux56f32-n40-m780-ux306eux7d42ux7aefux72b6ux614bux653eux5c04ux72b6ux30eaux30f3ux30b0}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=40 step500 ring phase distribution}]{figs/inflation_N40_phase_step500_ring_20260915.png}}
+\caption{N=40 step500 ring phase distribution}
+\end{figure}
+
+図2は step 500 の終端例である。初期の 4
+本の狭い帯から、ほぼ同一半径のリング状分布へ遷移しているが、角度密度は完全一様ではない。本稿では、この現象を「時間方向も含めた全状態関係を、最初から一つの閉じたネットワークとして記述できないか」という問題意識の出発点とする。
+
+\subsection{2.3
+本稿で「インフレーション的」と呼ぶ意味}\label{ux672cux7a3fux3067ux30a4ux30f3ux30d5ux30ecux30fcux30b7ux30e7ux30f3ux7684ux3068ux547cux3076ux610fux5473}
+
+本稿で「インフレーション」または「インフレーション的」という語を用いる場合、それは\textbf{宇宙論的
+inflation
+と同一であることを前提としない}。先行関係波系において、低い横成分から短い区間で横方向の秩序パラメータが急増し、対称な不安定状態から縮退した準安定状態へ移る観測挙動を指す。
+
+この用語の意味を明確にするため、先行実験から二つの図を再掲する。
+
+\subsubsection{図3　測定された秩序パラメータ力学から再構成した
+Mexican-hat 型 SSB
+図}\label{ux56f33-ux6e2cux5b9aux3055ux308cux305fux79e9ux5e8fux30d1ux30e9ux30e1ux30fcux30bfux529bux5b66ux304bux3089ux518dux69cbux6210ux3057ux305f-mexican-hat-ux578b-ssb-ux56f3}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Mexican-hat SSB reconstructed from measured dynamics}]{figs/inflation_mexican_hat_SSB_reconstruction_20260915.png}}
+\caption{Mexican-hat SSB reconstructed from measured dynamics}
+\end{figure}
+
+この図は模式的なポテンシャルを先に仮定して描いたものではなく、先行実験で測定された秩序変数
+
+\[
+r=\sqrt{H_\perp/H}
+\]
+
+の発展を、Landau 型の有効ポテンシャル
+
+\[
+V(r)
+=
+-\frac12\lambda_0 r^2
++
+\frac{\lambda_0}{4r_{\mathrm{vac}}^2}r^4
+\]
+
+へ写像して再構成した補助的可視化である。係数は測定値から
+
+\[
+\lambda_0=\ln\rho_0,
+\qquad
+r_{\mathrm{vac}}
+=
+\sqrt{(H_\perp/H)_{\mathrm{sat}}}
+\]
+
+と置く。
+
+ここで \(H=\langle z,z\rangle=\sum_e|z_e|^2\)
+は全関係波状態の総二乗ノルム、\(H_\perp=\|\Pi_\perp z\|^2\) は初期床平面
+\(\Pi_0\) の直交補への成分の二乗ノルムである。したがって \(H_\perp/H\)
+は初期床平面からの相対的な離脱量を表す無次元読出し量である。また \(J_0\)
+は初期相対平衡を固定した共回転座標でのヤコビアン、\(\rho_0=\rho(J_0)\)
+はそのスペクトル半径、\((H_\perp/H)_{\mathrm{sat}}\)
+は終端準安定相で測定された \(H_\perp/H\) の飽和値である。
+
+したがってこの \(V(r)\)
+は\textbf{測定量で係数を同定した有効記述（アンサッツ）}であり、ポテンシャル形そのものを本稿で第一原理から導出したものではない。また、この有効ポテンシャルは本稿の
+\(K_4\)
+完全ネットワーク解析の前提でもない。ここで重要なのは、中心の高対称状態から、終端のリング状準安定集合へ遷移する先行観測を視覚的に示すことである。本稿はこの図から新しい力学則を導入しない。
+
+\subsubsection{\texorpdfstring{図4　\(N=40\) 関係波の 3D
+発展表示}{図4　N=40 関係波の 3D 発展表示}}\label{ux56f34-n40-ux95a2ux4fc2ux6ce2ux306e-3d-ux767aux5c55ux8868ux793a}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={N=40 relation-wave 3D expansion}]{figs/inflation_N40_relation_wave_3D_step500_20260915.png}}
+\caption{N=40 relation-wave 3D expansion}
+\end{figure}
+
+図4は、初期の高対称な拘束状態から終端リングへ至る多数の関係波軌道を 3
+次元的に表示した例である。これも本稿の \(K_4\)
+解析の入力ではない。\textbf{本稿の動機を与えた先行観測}としてのみ用いる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{3.
+先行系に残る無名性上の懸念}\label{ux5148ux884cux7cfbux306bux6b8bux308bux7121ux540dux6027ux4e0aux306eux61f8ux5ff5}
+
+本稿でいう\textbf{無名性}とは、系を構成する状態・変数のいずれにも、先験的な種別（例えば「空間頂点」か「時間ラベル」か）や、外部的役割（例えば他の状態を更新する順序を与える特別な変数）を割り当てないことをいう。したがって本稿でいう「無名性上の懸念」は、ある変数や頂点集合を計算手続きの外側から特別扱いしていないか、という構造上の検査を意味する。
+
+\subsection{\texorpdfstring{3.1 外部更新変数 \(\tau\)
+の特別扱い}{3.1 外部更新変数 \textbackslash tau の特別扱い}}\label{ux5916ux90e8ux66f4ux65b0ux5909ux6570-tau-ux306eux7279ux5225ux6271ux3044}
+
+先行実験では、相互作用を離散更新変数 \(\tau\) に沿って反復し、典型的には
+
+\[
+\Delta\tau
+=
+\frac{2\pi}{N}
+\]
+
+という刻みを用いた。
+
+ここで本稿は、\(\tau\)
+を物理時間と同定しているとは仮定しない。それでもなお、計算手続きとして
+
+\[
+\text{state at }\tau
+\longrightarrow
+\text{state at }\tau+\Delta\tau
+\]
+
+と一方向に更新する以上、\(\tau\)
+だけが「他の変数を更新するための外部順序」として特別扱いされる。
+
+無名性を徹底するならば、
+
+\[
+\boxed{
+\text{なぜ }\tau\text{ だけが頂点でも関係でもなく、外部ラベルでなければならないのか}
+}
+\]
+
+という疑問が残る。
+
+\subsection{\texorpdfstring{3.2 「ある瞬間の \(N\)
+頂点」という仮定}{3.2 「ある瞬間の N 頂点」という仮定}}\label{ux3042ux308bux77acux9593ux306e-n-ux9802ux70b9ux3068ux3044ux3046ux4eeeux5b9a}
+
+同様に、
+
+\[
+N\text{ 個の頂点}
+\quad\Longrightarrow\quad
+M=\frac{N(N-1)}{2}\text{ 個の関係}
+\]
+
+と置くとき、\(N\)
+個の頂点を「同一時点に存在するもの」として先に分類している。この分類も、より上位の無名な関係系から見れば人工的である可能性がある。
+
+したがって本稿では、「空間的に並ぶ頂点」と「時間方向に並ぶ状態」を初めから別種のものとして扱わない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{4.
+時間方向の状態を頂点化する}\label{ux6642ux9593ux65b9ux5411ux306eux72b6ux614bux3092ux9802ux70b9ux5316ux3059ux308b}
+
+\subsection{\texorpdfstring{4.1 全頂点数
+\(P=KN\)}{4.1 全頂点数 P=KN}}\label{ux5168ux9802ux70b9ux6570-pkn}
+
+名目上、一つの位相断面に \(N\) 個の状態があり、閉じた位相系列に \(K\)
+個の状態ラベルがあるとする。
+
+従来なら、
+
+\[
+\{1,2,\ldots,N\}
+\]
+
+を「頂点」、
+
+\[
+\{0,1,\ldots,K-1\}
+\]
+
+を「時間または更新ラベル」として別に扱う。
+
+本稿ではこの区別を外し、組
+
+\[
+(k,a),
+\qquad
+k\in\{0,1,\ldots,K-1\},
+\qquad
+a\in\{1,2,\ldots,N\}
+\]
+
+をすべて同種の頂点として数える。
+
+したがって全頂点数は
+
+\[
+P
+=
+K\times N
+=
+KN
+\]
+
+である。
+
+ここには「\(k\) は物理時間である」という仮定は入っていない。\(k\)
+は有限閉路上の状態ラベルであり、これを後に物理時間として読むかどうかは別問題である。
+
+\subsection{4.2
+全関係数の導出}\label{ux5168ux95a2ux4fc2ux6570ux306eux5c0eux51fa}
+
+\(P\) 個の頂点の全ての異なる 2 頂点対を関係として保持すると、完全グラフ
+\(K_P\) の辺数は
+
+\[
+M_P
+=
+\binom{P}{2}
+\]
+
+である。
+
+組合せの定義から、
+
+\[
+\binom{P}{2}
+=
+\frac{P!}{2!(P-2)!}
+\]
+
+であり、
+
+\[
+P!
+=
+P(P-1)(P-2)!
+\]
+
+なので、
+
+\[
+\binom{P}{2}
+=
+\frac{P(P-1)(P-2)!}{2(P-2)!}
+=
+\frac{P(P-1)}{2}.
+\]
+
+ここへ \(P=KN\) を代入すると、
+
+\[
+\boxed{
+M_P
+=
+\frac{KN(KN-1)}{2}
+}
+\]
+
+を得る。
+
+この式は時間の物理的意味を仮定していない。「\(K\) 個の異なる状態層をもつ
+\(N\) 個の対象」を、区別なく \(KN\)
+頂点として完全関係化したときの組合せ数である。
+
+\subsection{4.3
+巨大系を直接数値計算しない理由}\label{ux5de8ux5927ux7cfbux3092ux76f4ux63a5ux6570ux5024ux8a08ux7b97ux3057ux306aux3044ux7406ux7531}
+
+従来の数値実験は高々 \(N\sim40\) 程度までである。これを \(KN\)
+に分解すれば、例えば \(N=6, K=7\) 程度でもすでに同程度の頂点数となる。
+
+一方、仮に物理的な状態数の目安として \(N\sim10^{60}\)、位相方向にも
+\(K\sim10^{60}\) を考えるなら、
+
+\[
+P=KN\sim10^{120}
+\]
+
+であり、完全関係数は
+
+\[
+M_P
+=
+\frac{P(P-1)}{2}
+\sim
+\frac{10^{240}}{2}
+\]
+
+すなわち \(10^{240}\)
+オーダとなる。この数値は本稿の実験値ではなく、巨大系を直接列挙することが原理的に困難であることを示すオーダ評価である。
+
+したがって本稿の戦略は、巨大系を粗く近似することではない。
+
+\[
+\boxed{
+\text{同じ閉路公理と全関係構造を保ったまま、最小の厳密閉系を完全に解く}
+}
+\]
+
+ことである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{5. なぜ \(N=1\)
+まで下げられるのか}{5. なぜ N=1 まで下げられるのか}}\label{ux306aux305c-n1-ux307eux3067ux4e0bux3052ux3089ux308cux308bux306eux304b}
+
+\subsection{5.1
+同一断面だけを見る場合}\label{ux540cux4e00ux65adux9762ux3060ux3051ux3092ux898bux308bux5834ux5408}
+
+通常の完全グラフだけを考えると、
+
+\subsubsection{\texorpdfstring{\(N=1\)}{N=1}}\label{n1}
+
+\[
+M
+=
+\frac{1(1-1)}{2}
+=0.
+\]
+
+関係がない。
+
+\subsubsection{\texorpdfstring{\(N=2\)}{N=2}}\label{n2}
+
+\[
+M
+=
+\frac{2(2-1)}{2}
+=1.
+\]
+
+関係は 1 本だけなので、関係同士を比較できない。
+
+\subsubsection{\texorpdfstring{\(N=3\)}{N=3}}\label{n3}
+
+\[
+M
+=
+\frac{3(3-1)}{2}
+=3.
+\]
+
+初めて 3 関係
+
+\[
+r_{12},\quad r_{23},\quad r_{31}
+\]
+
+を相互比較でき、閉路
+
+\[
+1\to2\to3\to1
+\]
+
+を定義できる。
+
+したがって「同じ名目時点の頂点だけ」を数えるなら、\(N=3\)
+が最小の非自明閉路である。
+
+\subsection{\texorpdfstring{5.2 状態方向も頂点なら \(N=1, K\ge3\)
+で閉路が作れる}{5.2 状態方向も頂点なら N=1, K\textbackslash ge3 で閉路が作れる}}\label{ux72b6ux614bux65b9ux5411ux3082ux9802ux70b9ux306aux3089-n1-kge3-ux3067ux9589ux8defux304cux4f5cux308cux308b}
+
+しかし、状態方向の \(K\) 個もすべて頂点なら、\(N=1\) でも全頂点数は
+
+\[
+P=K.
+\]
+
+このとき関係数は
+
+\[
+M_P
+=
+\frac{K(K-1)}{2}.
+\]
+
+\(K=3\) なら
+
+\[
+M_P
+=
+3,
+\]
+
+\(K=4\) なら
+
+\[
+M_P
+=
+6.
+\]
+
+すなわち、単一対象であっても、その異なる位相状態を同等の頂点として扱えば、自己の異なる状態間に複数の関係を持ち、閉路を形成できる。
+
+先行系の初期状態は図1の通り、複素平面上で約90度ごとの4方向帯に拘束されていた。この\textbf{観測された4方向構造}に対応する最小の位相閉路として、
+
+\[
+\boxed{N=1,\quad K=4}
+\]
+
+を採用する。その上で、最小の非自明な偶数倍音 \(m=2\) と奇数倍音 \(m=3\)
+を比較する。したがって「90度だから
+\(K=4\)」を定義だけから循環的に置くのではなく、先行実験で観測された4方向構造を本稿の最小厳密閉系へ写した比較設定である。
+
+これは巨大系の粗い近似ではない。4 頂点と 6
+関係を\textbf{一つも省略せず保持する有限完全関係閉系}である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{6.
+物理的対応は仮定として別立てにする}\label{ux7269ux7406ux7684ux5bfeux5fdcux306fux4eeeux5b9aux3068ux3057ux3066ux5225ux7acbux3066ux306bux3059ux308b}
+
+\subsection{6.1
+「光子1個」は数学的解析の前提ではない}\label{ux5149ux5b501ux500bux306fux6570ux5b66ux7684ux89e3ux6790ux306eux524dux63d0ux3067ux306fux306aux3044}
+
+\(N=1\)
+の物理的候補として、本稿では「光子1個」を想定する。しかし、この同定は完全ネットワーク解析を成立させるためには不要である。
+
+したがって以下を明確に区別する。
+
+\[
+\boxed{
+N=1\text{ の有限閉系を解析する}
+}
+\]
+
+は本稿の数学的設定であり、
+
+\[
+\boxed{\text{その }N=1\text{ を光子1個と読む}}
+\]
+
+ことは物理的仮定である。
+
+\subsection{6.2
+単一複素波だけでは局在読出しが不足するという動機}\label{ux5358ux4e00ux8907ux7d20ux6ce2ux3060ux3051ux3067ux306fux5c40ux5728ux8aadux51faux3057ux304cux4e0dux8db3ux3059ux308bux3068ux3044ux3046ux52d5ux6a5f}
+
+単一複素波を
+
+\[
+z
+=
+a+ib
+\]
+
+とする。
+
+極形式では
+
+\[
+z
+=
+A e^{i\theta}
+\]
+
+である。
+
+単一の単色波として \(A\)
+が一定なら、その位相は全閉路にわたって存在し、一つの波だけから局在した状態位置を区別する情報は乏しい。
+
+そこで本稿では、最小限の追加関係として「基底波＋整数倍音1本」を用いる。
+
+\[
+z_1(\theta)
+=
+e^{i\theta},
+\]
+
+\[
+z_m(\theta)
+=
+e^{im\theta}.
+\]
+
+この二波系は、同一の位相変数 \(\theta\)
+を共有する。独立な別時計を導入しない。
+
+さらに本稿では振幅を 1 と定義するが、これは各 step
+で行う正規化操作ではない。すなわち、
+
+\[
+|z_1|=|z_m|=1
+\]
+
+は\textbf{状態族そのものの定義}であり、時間発展の途中でノルムを再調整する演算を導入していない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{7.
+有限閉路の定義：\(U^K=I\)}{7. 有限閉路の定義：U\^{}K=I}}\label{ux6709ux9650ux9589ux8defux306eux5b9aux7fa9uki}
+
+\subsection{\texorpdfstring{7.1 primitive \(K\)-th root
+を選ぶ}{7.1 primitive K-th root を選ぶ}}\label{primitive-k-th-root-ux3092ux9078ux3076}
+
+単に
+
+\[
+U^K=I
+\]
+
+だけでは、\(U\) の最小位数が \(K\) であるとは限らない。例えば \(U=1\) も
+\(U^K=1\) を満たすが、1 ステップで閉じる。
+
+そこで本稿では、\(K\) 個の異なる基底位相を得るために primitive \(K\)-th
+root
+
+\[
+U
+=
+\exp\left(\frac{2\pi i}{K}\right)
+\]
+
+を採用する。
+
+すると
+
+\[
+U^K
+=
+\exp\left(\frac{2\pi i}{K}K\right)
+=
+\exp(2\pi i)
+=
+1.
+\]
+
+また \(0<q<K\) に対して一般には \(U^q\ne1\)
+なので、基底生成子の最小位数は \(K\) である。
+
+\subsection{\texorpdfstring{7.2 本稿では
+\(K=4\)}{7.2 本稿では K=4}}\label{ux672cux7a3fux3067ux306f-k4}
+
+\[
+U
+=
+\exp\left(\frac{2\pi i}{4}\right)
+=
+\exp\left(\frac{\pi i}{2}\right)
+=i.
+\]
+
+したがって
+
+\[
+U^0=1,
+\]
+
+\[
+U^1=i,
+\]
+
+\[
+U^2=-1,
+\]
+
+\[
+U^3=-i,
+\]
+
+\[
+U^4=1.
+\]
+
+4 個の離散位相状態を
+
+\[
+k=0,1,2,3
+\]
+
+とする。
+
+\subsection{7.3
+二波状態の定義}\label{ux4e8cux6ce2ux72b6ux614bux306eux5b9aux7fa9}
+
+整数倍音 \(m\) に対し、状態 \(S_k\) を
+
+\[
+\boxed{
+S_k
+=
+\left(z_1(k),z_m(k)\right)
+=
+\left(U^k,U^{mk}\right)
+}
+\]
+
+と定義する。
+
+この定義から次状態は
+
+\[
+S_{k+1}
+=
+\left(U^{k+1},U^{m(k+1)}\right).
+\]
+
+指数法則を用いると、
+
+\[
+U^{k+1}
+=
+U\,U^k,
+\]
+
+\[
+U^{m(k+1)}
+=
+U^{mk+m}
+=
+U^m U^{mk}.
+\]
+
+したがって
+
+\[
+\boxed{
+S_{k+1}
+=
+\left(U z_1(k),U^m z_m(k)\right)
+}
+\]
+
+である。
+
+さらに \(K\) ステップ後は
+
+\[
+S_{k+K}
+=
+\left(U^{k+K},U^{m(k+K)}\right).
+\]
+
+第一成分は
+
+\[
+U^{k+K}
+=
+U^k U^K
+=
+U^k.
+\]
+
+第二成分は
+
+\[
+U^{m(k+K)}
+=
+U^{mk}U^{mK}
+=
+U^{mk}(U^K)^m
+=
+U^{mk}.
+\]
+
+ゆえに
+
+\[
+\boxed{
+S_{k+K}=S_k
+}
+\]
+
+である。
+
+ここで「全状態が閉路になる」ことが、定義から代数的に導かれる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{8. 最小比較：偶数倍音 \(m=2\) と奇数倍音
+\(m=3\)}{8. 最小比較：偶数倍音 m=2 と奇数倍音 m=3}}\label{ux6700ux5c0fux6bd4ux8f03ux5076ux6570ux500dux97f3-m2-ux3068ux5947ux6570ux500dux97f3-m3}
+
+\subsection{\texorpdfstring{8.1 偶数倍音
+\(m=2\)}{8.1 偶数倍音 m=2}}\label{ux5076ux6570ux500dux97f3-m2}
+
+定義は
+
+\[
+S_k
+=
+(U^k,U^{2k}).
+\]
+
+\subsubsection{\texorpdfstring{\(k=0\)}{k=0}}\label{k0}
+
+\[
+S_0
+=
+(U^0,U^0)
+=
+(1,1).
+\]
+
+\subsubsection{\texorpdfstring{\(k=1\)}{k=1}}\label{k1}
+
+\[
+S_1
+=
+(U,U^2)
+=
+(i,-1).
+\]
+
+\subsubsection{\texorpdfstring{\(k=2\)}{k=2}}\label{k2}
+
+\[
+S_2
+=
+(U^2,U^4)
+=
+(-1,1).
+\]
+
+\subsubsection{\texorpdfstring{\(k=3\)}{k=3}}\label{k3}
+
+\[
+S_3
+=
+(U^3,U^6).
+\]
+
+ここで
+
+\[
+U^6
+=
+U^{4+2}
+=
+U^4U^2
+=
+1\times(-1)
+=
+-1
+\]
+
+なので、
+
+\[
+S_3
+=
+(-i,-1).
+\]
+
+したがって
+
+\[
+\boxed{
+(1,1)
+\to
+(i,-1)
+\to
+(-1,1)
+\to
+(-i,-1)
+\to
+(1,1)
+}
+\]
+
+である。
+
+倍音成分だけを見ると、
+
+\[
+1,-1,1,-1
+\]
+
+であり、4 状態ではなく 2 状態へ縮退している。
+
+\subsection{\texorpdfstring{8.2 奇数倍音
+\(m=3\)}{8.2 奇数倍音 m=3}}\label{ux5947ux6570ux500dux97f3-m3}
+
+定義は
+
+\[
+S_k
+=
+(U^k,U^{3k}).
+\]
+
+\subsubsection{\texorpdfstring{\(k=0\)}{k=0}}\label{k0-1}
+
+\[
+S_0
+=
+(1,1).
+\]
+
+\subsubsection{\texorpdfstring{\(k=1\)}{k=1}}\label{k1-1}
+
+\[
+S_1
+=
+(U,U^3)
+=
+(i,-i).
+\]
+
+\subsubsection{\texorpdfstring{\(k=2\)}{k=2}}\label{k2-1}
+
+\[
+S_2
+=
+(U^2,U^6).
+\]
+
+\[
+U^6
+=
+U^{4+2}
+=
+U^2
+=
+-1
+\]
+
+より、
+
+\[
+S_2
+=
+(-1,-1).
+\]
+
+\subsubsection{\texorpdfstring{\(k=3\)}{k=3}}\label{k3-1}
+
+\[
+S_3
+=
+(U^3,U^9).
+\]
+
+\[
+U^9
+=
+U^{8+1}
+=
+(U^4)^2U
+=
+i
+\]
+
+なので、
+
+\[
+S_3
+=
+(-i,i).
+\]
+
+したがって
+
+\[
+\boxed{
+(1,1)
+\to
+(i,-i)
+\to
+(-1,-1)
+\to
+(-i,i)
+\to
+(1,1)
+}
+\]
+
+である。
+
+この場合、倍音成分も
+
+\[
+1,-i,-1,i
+\]
+
+と 4 状態をすべて巡回する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{9.
+有限閉系としての代数的自己無撞着性}\label{ux6709ux9650ux9589ux7cfbux3068ux3057ux3066ux306eux4ee3ux6570ux7684ux81eaux5df1ux7121ux649eux7740ux6027}
+
+「自己無撞着」という語は、先行インフレーション系の完全な非線形相互作用固定点条件と混同しないよう、本稿では意味を限定する。
+
+本稿で検査するのは、\textbf{有限閉系としての代数的一貫性}であり、条件は以下である。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  状態定義どおり \(|z_1|=|z_m|=1\) である。
+\item
+  各状態で \(z_m=z_1^m\) が成立する。
+\item
+  遷移則 \(S_{k+1}=(Uz_1,U^m z_m)\) が成立する。
+\item
+  forward と reverse で同じ \(k\) は同じ複素状態を与える。
+\item
+  \(K\) ステップ後に厳密に初期状態へ戻る。
+\end{enumerate}
+
+\subsection{9.1 振幅条件}\label{ux632fux5e45ux6761ux4ef6}
+
+\(U\) は単位円上にあるので、
+
+\[
+|U|=1.
+\]
+
+したがって任意の整数 \(q\) について
+
+\[
+|U^q|
+=
+|U|^q
+=
+1.
+\]
+
+ゆえに
+
+\[
+|z_1(k)|
+=
+|U^k|
+=
+1,
+\]
+
+\[
+|z_m(k)|
+=
+|U^{mk}|
+=
+1.
+\]
+
+\subsection{9.2 倍音関係}\label{ux500dux97f3ux95a2ux4fc2}
+
+第一成分は
+
+\[
+z_1(k)=U^k.
+\]
+
+その \(m\) 乗は
+
+\[
+[z_1(k)]^m
+=
+(U^k)^m
+=
+U^{mk}
+=
+z_m(k).
+\]
+
+したがって
+
+\[
+\boxed{z_m=z_1^m}
+\]
+
+は全状態で恒等的に成立する。
+
+\subsection{9.3 forward / reverse}\label{forward-reverse}
+
+forward を
+
+\[
+0\to1\to2\to3
+\]
+
+reverse を
+
+\[
+0\to3\to2\to1
+\]
+
+とする。
+
+状態 \(S_k\) は順序ではなく \(k\) の関数として一意に定義されるため、同じ
+\(k\) に対して forward/reverse は同じ \(S_k\) を与える。
+
+これは「物理時間が可逆である」ことの証明ではない。\textbf{同じ有限閉路を二方向から列挙しても状態定義が矛盾しない}ことの検査である。
+
+\subsection{9.4
+数値データとの照合}\label{ux6570ux5024ux30c7ux30fcux30bfux3068ux306eux7167ux5408}
+
+exact-\(i\) で生成した生データでは、\(m=2\)、\(m=3\)
+とも上記代数条件の最大残差は 0 である。
+
+\begin{itemize}
+\tightlist
+\item
+  \href{再現性検証_生データ読出し_20260915/raw_data/complex_states_animation_exact_i.csv}{exact-\(i\)
+  複素状態データ}
+\item
+  \href{再現性検証_生データ読出し_20260915/raw_data/complex_states_static_exp.csv}{\(\exp(i\theta)\)
+  による静的再計算データ}
+\item
+  \href{再現性検証_生データ読出し_20260915/自己無撞着性_二乗和_U4検証_20260915/K4_self_consistency_square_sum_by_state_20260915.csv}{自己無撞着性・二乗和の状態別検査
+  CSV}
+\item
+  \href{再現性検証_生データ読出し_20260915/自己無撞着性_二乗和_U4検証_20260915/K4_self_consistency_square_sum_summary_20260915.csv}{集計
+  CSV}
+\item
+  \href{再現性検証_生データ読出し_20260915/自己無撞着性_二乗和_U4検証_20260915/K4_self_consistency_square_sum_analysis_20260915.md}{解析詳細}
+\end{itemize}
+
+浮動小数の \(\exp(i\theta)\) 生成との最大差は \(m=2\) で約
+\(4.0\times10^{-16}\)、\(m=3\) で約 \(5.5\times10^{-16}\)
+であり、exact-\(i\) の離散状態と丸め誤差内で一致する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{10. 完全ネットワーク
+\(K_4\)}{10. 完全ネットワーク K\_4}}\label{ux5b8cux5168ux30cdux30c3ux30c8ux30efux30fcux30af-k_4}
+
+\subsection{10.1 6
+関係を一つも省略しない}\label{ux95a2ux4fc2ux3092ux4e00ux3064ux3082ux7701ux7565ux3057ux306aux3044}
+
+\(K=4\) なので頂点数は 4 であり、完全グラフの辺数は
+
+\[
+M
+=
+\frac{4(4-1)}{2}
+=
+6.
+\]
+
+全頂点対は
+
+\[
+(0,1),
+(0,2),
+(0,3),
+(1,2),
+(1,3),
+(2,3)
+\]
+
+である。
+
+ここで重要なのは、完全グラフの存在自体には「長さ」の定義は不要なことである。6
+本すべての関係を保持する、という組合せ構造がまず本体である。
+
+\subsection{\texorpdfstring{10.2 \(\mathbb C^2\)
+上の距離は解析読出しとして定義する}{10.2 \textbackslash mathbb C\^{}2 上の距離は解析読出しとして定義する}}\label{mathbb-c2-ux4e0aux306eux8dddux96e2ux306fux89e3ux6790ux8aadux51faux3057ux3068ux3057ux3066ux5b9aux7fa9ux3059ux308b}
+
+状態
+
+\[
+S_i=(U^i,U^{mi}),
+\]
+
+\[
+S_j=(U^j,U^{mj})
+\]
+
+の差を
+
+\[
+S_i-S_j
+=
+(U^i-U^j,\;U^{mi}-U^{mj})
+\]
+
+とする。
+
+この 2
+成分複素ベクトルに標準ユークリッドノルムを\textbf{解析上の読出しとして定義}すると、
+
+\[
+\boxed{
+d_{ij}
+=
+\sqrt{
+|U^i-U^j|^2
++
+|U^{mi}-U^{mj}|^2
+}
+}
+\]
+
+である。
+
+この \(d_{ij}\)
+を実空間距離、時空間隔、粒子間距離と同定する根拠は本稿では与えない。したがって以下の距離幾何は、\(\mathbb C^2\)
+上の定義に基づく\textbf{状態空間幾何}である。
+
+\subsection{10.3
+距離公式の完全導出}\label{ux8dddux96e2ux516cux5f0fux306eux5b8cux5168ux5c0eux51fa}
+
+一般に単位複素数 \(e^{i\alpha},e^{i\beta}\) に対して、
+
+\[
+|e^{i\alpha}-e^{i\beta}|^2
+=
+(e^{i\alpha}-e^{i\beta})(e^{-i\alpha}-e^{-i\beta}).
+\]
+
+展開すると、
+
+\[
+=
+1-e^{i(\alpha-\beta)}-e^{-i(\alpha-\beta)}+1.
+\]
+
+オイラー公式より
+
+\[
+e^{ix}+e^{-ix}=2\cos x
+\]
+
+なので、
+
+\[
+|e^{i\alpha}-e^{i\beta}|^2
+=
+2-2\cos(\alpha-\beta).
+\]
+
+さらに
+
+\[
+1-\cos x
+=
+2\sin^2\frac{x}{2}
+\]
+
+より、
+
+\[
+|e^{i\alpha}-e^{i\beta}|^2
+=
+4\sin^2\frac{\alpha-\beta}{2}.
+\]
+
+\(U=e^{2\pi i/4}\) で \(\Delta=i-j\) と置けば、第一成分について
+
+\[
+|U^i-U^j|^2
+=
+4\sin^2\left(\frac{\pi\Delta}{4}\right).
+\]
+
+第二成分について
+
+\[
+|U^{mi}-U^{mj}|^2
+=
+4\sin^2\left(\frac{\pi m\Delta}{4}\right).
+\]
+
+したがって
+
+\[
+\boxed{
+d_{ij}^2
+=
+4\sin^2\left(\frac{\pi\Delta}{4}\right)
++
+4\sin^2\left(\frac{\pi m\Delta}{4}\right)
+}
+\]
+
+を得る。
+
+\subsection{\texorpdfstring{10.4 \(m=2\) の全 6
+辺}{10.4 m=2 の全 6 辺}}\label{m2-ux306eux5168-6-ux8fba}
+
+\(\Delta=1\) のとき、
+
+\[
+4\sin^2\frac{\pi}{4}=2,
+\]
+
+\[
+4\sin^2\frac{2\pi}{4}
+=
+4\sin^2\frac{\pi}{2}
+=4.
+\]
+
+したがって
+
+\[
+d^2=2+4=6,
+\]
+
+\[
+d=\sqrt6.
+\]
+
+\(\Delta=2\) のとき、
+
+\[
+4\sin^2\frac{2\pi}{4}
+=4,
+\]
+
+\[
+4\sin^2\frac{4\pi}{4}
+=
+4\sin^2\pi
+=0.
+\]
+
+したがって
+
+\[
+d^2=4,
+\]
+
+\[
+d=2.
+\]
+
+\(\Delta=3\) は \(\Delta=1\) と対称なので \(d=\sqrt6\) である。
+
+全 6 辺は次の通り。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrr@{}}
+\toprule\noalign{}
+辺 & \(\min(\lvert\Delta\rvert,\,4-\lvert\Delta\rvert)\) & \(d_{ij}\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\((0,1)\) & 1 & \(\sqrt6\) \\
+\((0,2)\) & 2 & \(2\) \\
+\((0,3)\) & 1 & \(\sqrt6\) \\
+\((1,2)\) & 1 & \(\sqrt6\) \\
+\((1,3)\) & 2 & \(2\) \\
+\((2,3)\) & 1 & \(\sqrt6\) \\
+\end{longtable}
+}
+
+よって距離多重集合は
+
+\[
+\boxed{
+\{2,2,\sqrt6,\sqrt6,\sqrt6,\sqrt6\}
+}
+\]
+
+である。
+
+\subsubsection{\texorpdfstring{図5　\(m=2\)
+完全状態ネットワーク}{図5　m=2 完全状態ネットワーク}}\label{ux56f35-m2-ux5b8cux5168ux72b6ux614bux30cdux30c3ux30c8ux30efux30fcux30af}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={K4 complete network m2}]{figs/K4_complete_network_m2.png}}
+\caption{K4 complete network m2}
+\end{figure}
+
+\href{K4_complete_network_m2.svg}{SVG版} / \href{edges_m2.csv}{辺データ
+CSV}
+
+\subsection{\texorpdfstring{10.5 \(m=3\) の全 6
+辺}{10.5 m=3 の全 6 辺}}\label{m3-ux306eux5168-6-ux8fba}
+
+\(\Delta=1\) のとき、
+
+\[
+4\sin^2\frac{\pi}{4}=2,
+\]
+
+\[
+4\sin^2\frac{3\pi}{4}=2.
+\]
+
+したがって
+
+\[
+d^2=4,
+\]
+
+\[
+d=2.
+\]
+
+\(\Delta=2\) のとき、
+
+\[
+4\sin^2\frac{2\pi}{4}=4,
+\]
+
+\[
+4\sin^2\frac{6\pi}{4}
+=
+4\sin^2\frac{3\pi}{2}
+=4.
+\]
+
+したがって
+
+\[
+d^2=8,
+\]
+
+\[
+d=2\sqrt2.
+\]
+
+\(\Delta=3\) は \(\Delta=1\) と対称なので \(d=2\) である。
+
+全 6 辺は次の通り。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrr@{}}
+\toprule\noalign{}
+辺 & \(\min(\lvert\Delta\rvert,\,4-\lvert\Delta\rvert)\) & \(d_{ij}\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\((0,1)\) & 1 & \(2\) \\
+\((0,2)\) & 2 & \(2\sqrt2\) \\
+\((0,3)\) & 1 & \(2\) \\
+\((1,2)\) & 1 & \(2\) \\
+\((1,3)\) & 2 & \(2\sqrt2\) \\
+\((2,3)\) & 1 & \(2\) \\
+\end{longtable}
+}
+
+よって距離多重集合は
+
+\[
+\boxed{
+\{2,2,2,2,2\sqrt2,2\sqrt2\}
+}
+\]
+
+である。
+
+\subsubsection{\texorpdfstring{図6　\(m=3\)
+完全状態ネットワーク}{図6　m=3 完全状態ネットワーク}}\label{ux56f36-m3-ux5b8cux5168ux72b6ux614bux30cdux30c3ux30c8ux30efux30fcux30af}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={K4 complete network m3}]{figs/K4_complete_network_m3.png}}
+\caption{K4 complete network m3}
+\end{figure}
+
+\href{K4_complete_network_m3.svg}{SVG版} / \href{edges_m3.csv}{辺データ
+CSV} / \href{all_edges_m2_m3.csv}{\(m=2,3\) 統合辺データ}
+
+\subsection{10.6 MDS
+表示の意味と非主張}\label{mds-ux8868ux793aux306eux610fux5473ux3068ux975eux4e3bux5f35}
+
+図5、図6の 3 次元座標は、6 本の \(d_{ij}\) を距離行列として classical
+MDS で再構成した表示座標である。
+
+したがって、
+
+\[
+\boxed{
+\text{図の MDS-1,MDS-2,MDS-3 軸を物理空間の }x,y,z\text{ と同定しない}
+}
+\]
+
+ことが重要である。
+
+物理的に意味があると本稿で主張しているのは 3D
+座標そのものではなく、\textbf{定義した \(\mathbb C^2\) 距離に対して 6
+辺の距離多重集合が \(m=2\) と \(m=3\) で異なる}という事実である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{11.
+波形表示：連続曲線は読出し図であり、状態そのものは離散である}\label{ux6ce2ux5f62ux8868ux793aux9023ux7d9aux66f2ux7ddaux306fux8aadux51faux3057ux56f3ux3067ux3042ux308aux72b6ux614bux305dux306eux3082ux306eux306fux96e2ux6563ux3067ux3042ux308b}
+
+状態ネットワークは
+
+\[
+k=0,1,2,3
+\]
+
+の 4 点だけから成る。
+
+一方、波形を視覚的に理解するために、同じ基底と倍音を連続位相変数
+\(\theta\) 上で
+
+\[
+\psi_1(\theta)=\cos\theta,
+\]
+
+\[
+\psi_m(\theta)=\cos(m\theta)
+\]
+
+として描くことができる。
+
+ここで連続曲線を描くことは、実際の状態遷移が連続であるという新たな仮定ではない。本稿の離散状態はあくまで
+
+\[
+\theta_k
+=
+\frac{2\pi k}{4}
+=
+\frac{k\pi}{2}
+\]
+
+でサンプリングされた 4 状態である。
+
+\subsubsection{\texorpdfstring{図7　基底波と偶数倍音
+\(m=2\)}{図7　基底波と偶数倍音 m=2}}\label{ux56f37-ux57faux5e95ux6ce2ux3068ux5076ux6570ux500dux97f3-m2}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={base wave and harmonic m2}]{figs/waves_base_harmonic_m2.png}}
+\caption{base wave and harmonic m2}
+\end{figure}
+
+\href{waves_base_harmonic_m2.svg}{SVG版}
+
+\subsubsection{\texorpdfstring{図8　基底波と奇数倍音
+\(m=3\)}{図8　基底波と奇数倍音 m=3}}\label{ux56f38-ux57faux5e95ux6ce2ux3068ux5947ux6570ux500dux97f3-m3}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={base wave and harmonic m3}]{figs/waves_base_harmonic_m3.png}}
+\caption{base wave and harmonic m3}
+\end{figure}
+
+\href{waves_base_harmonic_m3.svg}{SVG版}
+
+合成波は
+
+\[
+\psi_{\mathrm{sum}}(\theta)
+=
+\cos\theta+\cos(m\theta)
+\]
+
+である。
+
+\subsubsection{\texorpdfstring{図9　合成波
+\(m=2\)}{図9　合成波 m=2}}\label{ux56f39-ux5408ux6210ux6ce2-m2}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={composite waveform m2}]{figs/composite_wave_m2.png}}
+\caption{composite waveform m2}
+\end{figure}
+
+\href{composite_wave_m2.svg}{SVG版}
+
+\subsubsection{\texorpdfstring{図10　合成波
+\(m=3\)}{図10　合成波 m=3}}\label{ux56f310-ux5408ux6210ux6ce2-m3}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={composite waveform m3}]{figs/composite_wave_m3.png}}
+\caption{composite waveform m3}
+\end{figure}
+
+\href{composite_wave_m3.svg}{SVG版}
+
+この波形図も、状態ネットワークとは別の読出し表示である。完全ネットワークの構成は波形図を用いなくても定義できる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{12.
+複素ベクトル表示}\label{ux8907ux7d20ux30d9ux30afux30c8ux30ebux8868ux793a}
+
+各状態 \(k\) では、二つの複素数
+
+\[
+z_1=U^k,
+\]
+
+\[
+z_m=U^{mk}
+\]
+
+を単位円上のベクトルとして表示できる。
+
+\subsubsection{\texorpdfstring{図11　\(m=2\)：全4状態の二複素ベクトル}{図11　m=2：全4状態の二複素ベクトル}}\label{ux56f311-m2ux51684ux72b6ux614bux306eux4e8cux8907ux7d20ux30d9ux30afux30c8ux30eb}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={complex vectors all states m2}]{figs/complex_vectors_all_states_m2.png}}
+\caption{complex vectors all states m2}
+\end{figure}
+
+\href{complex_vectors_all_states_m2.svg}{SVG版}
+
+\subsubsection{\texorpdfstring{図12　\(m=3\)：全4状態の二複素ベクトル}{図12　m=3：全4状態の二複素ベクトル}}\label{ux56f312-m3ux51684ux72b6ux614bux306eux4e8cux8907ux7d20ux30d9ux30afux30c8ux30eb}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={complex vectors all states m3}]{figs/complex_vectors_all_states_m3.png}}
+\caption{complex vectors all states m3}
+\end{figure}
+
+\href{complex_vectors_all_states_m3.svg}{SVG版}
+
+\(m=2\) では倍音ベクトルが \(+1,-1\) の 2
+方向に縮退するのに対し、\(m=3\) では 4 方向を巡回することが直接見える。
+
+離散状態そのものではないが、連続位相の代表位置 \(\theta=\pi/4\)
+で二波の相対向きを確認した図も残している。
+
+\subsubsection{\texorpdfstring{図13　\(m=2,\ \theta=\pi/4\)
+の代表複素ベクトル}{図13　m=2,\textbackslash{} \textbackslash theta=\textbackslash pi/4 の代表複素ベクトル}}\label{ux56f313-m2-thetapi4-ux306eux4ee3ux8868ux8907ux7d20ux30d9ux30afux30c8ux30eb}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={complex vectors theta pi4 m2}]{figs/complex_vectors_theta_pi4_m2.png}}
+\caption{complex vectors theta pi4 m2}
+\end{figure}
+
+\href{complex_vectors_theta_pi4_m2.svg}{SVG版}
+
+\subsubsection{\texorpdfstring{図14　\(m=3,\ \theta=\pi/4\)
+の代表複素ベクトル}{図14　m=3,\textbackslash{} \textbackslash theta=\textbackslash pi/4 の代表複素ベクトル}}\label{ux56f314-m3-thetapi4-ux306eux4ee3ux8868ux8907ux7d20ux30d9ux30afux30c8ux30eb}
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={complex vectors theta pi4 m3}]{figs/complex_vectors_theta_pi4_m3.png}}
+\caption{complex vectors theta pi4 m3}
+\end{figure}
+
+\href{complex_vectors_theta_pi4_m3.svg}{SVG版}
+
+図13、図14は離散 \(k\)
+状態そのものではなく、連続位相表示上の補助図である。この区別を保持する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{13.
+二乗和の完全展開}\label{ux4e8cux4e57ux548cux306eux5b8cux5168ux5c55ux958b}
+
+\subsection{13.1
+何を二乗和しているか}\label{ux4f55ux3092ux4e8cux4e57ux548cux3057ux3066ux3044ux308bux304b}
+
+本節でいう二乗和は、6 本のネットワーク辺長 \(d_{ij}\) の二乗和ではない。
+
+各頂点状態 \(S_k\) を構成する二波成分
+
+\[
+z_1(k),
+\qquad
+z_m(k)
+\]
+
+について、まず状態ごとに
+
+\[
+Q_k
+=
+[z_1(k)]^2+[z_m(k)]^2
+\]
+
+を定義し、その後 4 状態全体について
+
+\[
+Q_{\mathrm{loop}}
+=
+\sum_{k=0}^{3}Q_k
+\]
+
+を計算する。
+
+したがってこれは、\textbf{4 頂点に付随する 2
+成分複素状態の二乗総和}である。
+
+なお、共役付きのノルム和は各状態で
+
+\[
+|z_1(k)|^2+|z_m(k)|^2=1+1=2
+\]
+
+であるから、4状態全体では
+
+\[
+\sum_{k=0}^{3}\left(|z_1(k)|^2+|z_m(k)|^2\right)=8
+\]
+
+となり、\(m\)
+によらず一定であるため、この比較に対する判別力を持たない。一方、共役を取らない二乗和は
+
+\[
+Q_{\mathrm{loop}}(m)
+=
+\sum_k U^{2k}+\sum_k U^{2mk}
+\]
+
+という\textbf{2倍位相の有限幾何級数}へ帰着する。このため、その値は倍音指数
+\(m\) と閉路長 \(K\) の整除構造によって変化しうる。本稿が
+\(Q_{\mathrm{loop}}\) を検査する理由はここにあり、物理的確率やノルムを
+\(\sum z^2\) と同定しているからではない。
+
+\subsection{13.2
+実部・虚部への展開}\label{ux5b9fux90e8ux865aux90e8ux3078ux306eux5c55ux958b}
+
+一般の複素数を
+
+\[
+z_j
+=
+a_j+i b_j
+\]
+
+とする。
+
+二乗すると、
+
+\[
+z_j^2
+=
+(a_j+i b_j)^2.
+\]
+
+積を展開すると、
+
+\[
+(a_j+i b_j)^2
+=
+a_j^2+2i a_j b_j+(i b_j)^2.
+\]
+
+\(i^2=-1\) より、
+
+\[
+(i b_j)^2
+=
+i^2 b_j^2
+=
+-b_j^2.
+\]
+
+したがって
+
+\[
+\boxed{
+z_j^2
+=
+a_j^2-b_j^2+2i a_j b_j
+}
+\]
+
+である。
+
+複数成分について和を取ると、
+
+\[
+\sum_j z_j^2
+=
+\sum_j(a_j^2-b_j^2+2i a_jb_j).
+\]
+
+和の線形性から、
+
+\[
+\boxed{
+\sum_j z_j^2
+=
+\sum_j a_j^2
+-
+\sum_j b_j^2
++
+2i\sum_j a_jb_j
+}
+\]
+
+となる。
+
+したがって
+
+\[
+\sum_j z_j^2=0
+\]
+
+であるための実条件は
+
+\[
+\sum_j a_j^2
+=
+\sum_j b_j^2
+\]
+
+かつ
+
+\[
+\sum_j a_jb_j
+=
+0
+\]
+
+である。
+
+\subsection{\texorpdfstring{13.3 \(m=2\)
+の状態別計算}{13.3 m=2 の状態別計算}}\label{m2-ux306eux72b6ux614bux5225ux8a08ux7b97}
+
+\subsubsection{\texorpdfstring{\(k=0\)}{k=0}}\label{k0-2}
+
+\[
+S_0=(1,1).
+\]
+
+したがって
+
+\[
+Q_0
+=
+1^2+1^2
+=
+2.
+\]
+
+\subsubsection{\texorpdfstring{\(k=1\)}{k=1}}\label{k1-2}
+
+\[
+S_1=(i,-1).
+\]
+
+\[
+i^2=-1,
+\]
+
+\[
+(-1)^2=1
+\]
+
+より、
+
+\[
+Q_1
+=
+-1+1
+=
+0.
+\]
+
+\subsubsection{\texorpdfstring{\(k=2\)}{k=2}}\label{k2-2}
+
+\[
+S_2=(-1,1).
+\]
+
+\[
+Q_2
+=
+(-1)^2+1^2
+=
+1+1
+=
+2.
+\]
+
+\subsubsection{\texorpdfstring{\(k=3\)}{k=3}}\label{k3-2}
+
+\[
+S_3=(-i,-1).
+\]
+
+\[
+(-i)^2
+=
+(-1)^2i^2
+=
+-1,
+\]
+
+\[
+(-1)^2=1
+\]
+
+なので、
+
+\[
+Q_3
+=
+-1+1
+=
+0.
+\]
+
+よって
+
+\[
+\boxed{
+(Q_0,Q_1,Q_2,Q_3)
+=
+(2,0,2,0)
+}
+\]
+
+であり、
+
+\[
+Q_{\mathrm{loop}}(2)
+=
+2+0+2+0
+=
+\boxed{4}.
+\]
+
+\subsection{\texorpdfstring{13.4 \(m=3\)
+の状態別計算}{13.4 m=3 の状態別計算}}\label{m3-ux306eux72b6ux614bux5225ux8a08ux7b97}
+
+\subsubsection{\texorpdfstring{\(k=0\)}{k=0}}\label{k0-3}
+
+\[
+S_0=(1,1)
+\]
+
+なので、
+
+\[
+Q_0=2.
+\]
+
+\subsubsection{\texorpdfstring{\(k=1\)}{k=1}}\label{k1-3}
+
+\[
+S_1=(i,-i).
+\]
+
+\[
+i^2=-1,
+\]
+
+\[
+(-i)^2=-1
+\]
+
+より、
+
+\[
+Q_1
+=
+-1-1
+=
+-2.
+\]
+
+\subsubsection{\texorpdfstring{\(k=2\)}{k=2}}\label{k2-3}
+
+\[
+S_2=(-1,-1)
+\]
+
+なので、
+
+\[
+Q_2
+=
+1+1
+=
+2.
+\]
+
+\subsubsection{\texorpdfstring{\(k=3\)}{k=3}}\label{k3-3}
+
+\[
+S_3=(-i,i).
+\]
+
+\[
+Q_3
+=
+(-i)^2+i^2
+=
+-1-1
+=
+-2.
+\]
+
+よって
+
+\[
+\boxed{
+(Q_0,Q_1,Q_2,Q_3)
+=
+(2,-2,2,-2)
+}
+\]
+
+であり、
+
+\[
+Q_{\mathrm{loop}}(3)
+=
+2-2+2-2
+=
+\boxed{0}.
+\]
+
+\subsection{13.5
+実部・虚部の二乗成分集計}\label{ux5b9fux90e8ux865aux90e8ux306eux4e8cux4e57ux6210ux5206ux96c6ux8a08}
+
+4 状態、二成分すべてをまとめると、\(m=2\) では
+
+\[
+\sum a^2=6,
+\]
+
+\[
+\sum b^2=2,
+\]
+
+\[
+\sum ab=0.
+\]
+
+したがって
+
+\[
+\sum z^2
+=
+6-2+2i\times0
+=
+4.
+\]
+
+\(m=3\) では
+
+\[
+\sum a^2=4,
+\]
+
+\[
+\sum b^2=4,
+\]
+
+\[
+\sum ab=0.
+\]
+
+したがって
+
+\[
+\sum z^2
+=
+4-4+2i\times0
+=
+0.
+\]
+
+一方、複素数そのものの線形和は両系とも 0 である。
+
+\[
+\sum z_1(k)=0,
+\]
+
+\(m=2\) では
+
+\[
+\sum z_2(k)
+=
+1-1+1-1
+=
+0,
+\]
+
+\(m=3\) では
+
+\[
+\sum z_3(k)
+=
+1-i-1+i
+=
+0.
+\]
+
+したがって「線形和ゼロ」と「二乗和ゼロ」は別条件であり、\(m=2\)
+は前者を満たしても後者を満たさない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{14. \(K=4\)
+における偶奇選択則の厳密導出}{14. K=4 における偶奇選択則の厳密導出}}\label{k4-ux306bux304aux3051ux308bux5076ux5947ux9078ux629eux5247ux306eux53b3ux5bc6ux5c0eux51fa}
+
+\(m=2,3\) の違いが偶然の数値例かどうかを確認するため、任意の整数 \(m\)
+について \(K=4\) の二乗総和を導出する。
+
+定義より
+
+\[
+Q_{\mathrm{loop}}(m)
+=
+\sum_{k=0}^{3}
+\left[(U^k)^2+(U^{mk})^2\right].
+\]
+
+指数法則から
+
+\[
+(U^k)^2
+=
+U^{2k},
+\]
+
+\[
+(U^{mk})^2
+=
+U^{2mk}.
+\]
+
+したがって
+
+\[
+Q_{\mathrm{loop}}(m)
+=
+\sum_{k=0}^{3}U^{2k}
++
+\sum_{k=0}^{3}U^{2mk}.
+\]
+
+\(K=4\) では \(U=i\) なので
+
+\[
+U^2=i^2=-1.
+\]
+
+第一項は
+
+\[
+\sum_{k=0}^{3}U^{2k}
+=
+\sum_{k=0}^{3}(-1)^k
+\]
+
+であり、
+
+\[
+=1-1+1-1
+=0.
+\]
+
+第二項について、
+
+\[
+U^{2m}
+=(i^2)^m
+=(-1)^m.
+\]
+
+よって
+
+\[
+\sum_{k=0}^{3}U^{2mk}
+=
+\sum_{k=0}^{3}\left[(-1)^m\right]^k.
+\]
+
+\subsubsection{\texorpdfstring{\(m\)
+が偶数の場合}{m が偶数の場合}}\label{m-ux304cux5076ux6570ux306eux5834ux5408}
+
+\[
+(-1)^m=1
+\]
+
+なので、
+
+\[
+\sum_{k=0}^{3}\left[(-1)^m\right]^k
+=
+1+1+1+1
+=4.
+\]
+
+したがって
+
+\[
+Q_{\mathrm{loop}}(m)
+=0+4
+=4.
+\]
+
+\subsubsection{\texorpdfstring{\(m\)
+が奇数の場合}{m が奇数の場合}}\label{m-ux304cux5947ux6570ux306eux5834ux5408}
+
+\[
+(-1)^m=-1
+\]
+
+なので、
+
+\[
+\sum_{k=0}^{3}\left[(-1)^m\right]^k
+=
+1-1+1-1
+=0.
+\]
+
+したがって
+
+\[
+Q_{\mathrm{loop}}(m)
+=0+0
+=0.
+\]
+
+ゆえに \(K=4\) では厳密に
+
+\[
+\boxed{
+Q_{\mathrm{loop}}(m)
+=
+\begin{cases}
+4,&m\ \mathrm{even},\\
+0,&m\ \mathrm{odd}
+\end{cases}
+}
+\]
+
+である。
+
+したがって \(m=2\) と \(m=3\) は単なる二つの個別例ではなく、\(K=4\)
+での最小の非自明な偶数・奇数代表である。
+
+この \(K=4\) の偶奇選択則は、次の一般定理の系として書ける。primitive
+\(K\)-th root
+
+\[
+U=e^{2\pi i/K}
+\]
+
+に対し、
+
+\[
+Q_{\mathrm{loop}}(m;K)
+=
+\sum_{k=0}^{K-1}
+\left(U^{2k}+U^{2mk}\right)
+\]
+
+と定義する。有限幾何級数について、整数 \(r\) に対し
+
+\[
+\sum_{k=0}^{K-1}U^{rk}
+=
+\begin{cases}
+K,&K\mid r,\\
+0,&K\nmid r
+\end{cases}
+\]
+
+である。実際、\(K\mid r\) なら \(U^r=1\) なので全 \(K\) 項が 1
+である。一方 \(K\nmid r\) なら \(U^r\ne1\) かつ \((U^r)^K=1\) だから、
+
+\[
+\sum_{k=0}^{K-1}(U^r)^k
+=
+\frac{1-(U^r)^K}{1-U^r}
+=
+0
+\]
+
+となる。したがって二つの級数を別々に評価して、
+
+\[
+\boxed{
+Q_{\mathrm{loop}}(m;K)
+=
+K\,\mathbf 1_{K\mid2}
++
+K\,\mathbf 1_{K\mid2m}
+}
+\]
+
+を得る。ここで \(\mathbf 1_{P}\) は条件 \(P\) が成立するとき
+1、成立しないとき 0 である。
+
+\(K=4\) では \(4\nmid2\) なので第一項は 0 であり、
+
+\[
+Q_{\mathrm{loop}}(m;4)
+=
+4\,\mathbf 1_{4\mid2m}.
+\]
+
+さらに
+
+\[
+4\mid2m
+\iff
+2\mid m
+\]
+
+なので、先に得た
+
+\[
+Q_{\mathrm{loop}}(m;4)
+=
+\begin{cases}
+4,&m\ \mathrm{even},\\
+0,&m\ \mathrm{odd}
+\end{cases}
+\]
+
+が直ちに従う。したがって \(K=4\)
+における偶奇差は個別数値例ではなく、有限巡回群上の整除条件の厳密な系である。一般
+\(K\) では「偶奇」そのものではなく、\(K\mid2\) と \(K\mid2m\)
+が分類を支配する。例えば \(K=6,m=3\) では \(6\mid2m\) なので
+\(Q_{\mathrm{loop}}=6\) となり、奇数 \(m\) であってもゼロ閉塞しない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{14.1 \(m=1\) と \(m=3\) に関する注意：Gram
+構造による区別}{14.1 m=1 と m=3 に関する注意：Gram 構造による区別}}\label{m1-ux3068-m3-ux306bux95a2ux3059ux308bux6ce8ux610fgram-ux69cbux9020ux306bux3088ux308bux533aux5225}
+
+\(K=4\) では、距離多重集合・倍音最小位数・\(Q_{\mathrm{loop}}\)
+だけを見ると \(m=1\) と \(m=3\) は区別されない。これは
+\(U^3=\overline U\) に対応する。
+
+この区別を与える追加の関係不変量は、状態間の標準 Hermitian 内積
+
+\[
+\langle S_j,S_k\rangle
+=
+\overline{U^j}U^k
++
+\overline{U^{mj}}U^{mk}
+\]
+
+である。隣接状態では
+
+\[
+\langle S_k,S_{k+1}\rangle
+=
+\overline{U^k}U^{k+1}
++
+\overline{U^{mk}}U^{m(k+1)}
+=
+U+U^m
+\]
+
+となり、\(k\) に依存しない。\(U=i\) を代入すると、
+
+\[
+m=1:\quad i+i=2i,
+\]
+
+\[
+m=2:\quad i+i^2=-1+i,
+\]
+
+\[
+m=3:\quad i+i^3=i-i=0.
+\]
+
+したがって
+
+\[
+\boxed{
+m=1,\ m=3\text{ は距離多重集合では区別できないが、複素 Gram 構造では区別できる}
+}
+\]
+
+である。
+
+特に \(m=3\) では、隣接内積がすべて 0 であり、かつ
+
+\[
+S_{k+2}
+=
+\left(U^2 U^k,\;U^6 U^{3k}\right)
+=
+-S_k
+\]
+
+が成立する。ゆえに 4 状態は
+
+\[
+\boxed{
+S_0,S_1,S_2,S_3
+=
+\{v,w,-v,-w\},
+\qquad
+\langle v,w\rangle=0
+}
+\]
+
+という \(\mathbb C^2\) の直交対 \(\pm\)
+構造をとる。この結果は、完全ネットワークの分類を距離多重集合より細かくする不変量を与える。本稿の
+\(m=2\) 対 \(m=3\)
+比較は偶奇差の最小比較として有効であり、本節の結果はその結論を変更しない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{15. \(U^K=I\)
+と最小位数}{15. U\^{}K=I と最小位数}}\label{uki-ux3068ux6700ux5c0fux4f4dux6570}
+
+\subsection{15.1
+倍音生成子の一般位数}\label{ux500dux97f3ux751fux6210ux5b50ux306eux4e00ux822cux4f4dux6570}
+
+\(U\) の位数が \(K\) のとき、\(U^m\) の位数を \(r\) とする。
+
+位数の定義から
+
+\[
+(U^m)^r=1.
+\]
+
+これは
+
+\[
+U^{mr}=1
+\]
+
+と同値である。
+
+\(U\) の最小位数が \(K\) なので、
+
+\[
+K\mid mr
+\]
+
+が必要である。
+
+\(g=\gcd(K,m)\) と置き、
+
+\[
+K=gK',
+\qquad
+m=gm'
+\]
+
+と分解する。ここで
+
+\[
+\gcd(K',m')=1.
+\]
+
+条件 \(K\mid mr\) は
+
+\[
+gK'\mid gm'r
+\]
+
+なので、\(g\) を消して
+
+\[
+K'\mid m'r.
+\]
+
+\(K'\) と \(m'\) は互いに素だから、最小の正整数 \(r\) は
+
+\[
+r=K'.
+\]
+
+したがって
+
+\[
+\boxed{
+\operatorname{ord}(U^m)
+=
+\frac{K}{\gcd(K,m)}
+}
+\]
+
+である。
+
+\subsection{\texorpdfstring{15.2
+\(K=4,\ m=2\)}{15.2 K=4,\textbackslash{} m=2}}\label{k4-m2}
+
+\[
+\gcd(4,2)=2
+\]
+
+なので、
+
+\[
+\operatorname{ord}(U^2)
+=
+\frac{4}{2}
+=2.
+\]
+
+実際、
+
+\[
+U^2=-1,
+\]
+
+\[
+(U^2)^2=(-1)^2=1.
+\]
+
+\subsection{\texorpdfstring{15.3
+\(K=4,\ m=3\)}{15.3 K=4,\textbackslash{} m=3}}\label{k4-m3}
+
+\[
+\gcd(4,3)=1
+\]
+
+なので、
+
+\[
+\operatorname{ord}(U^3)
+=
+\frac{4}{1}
+=4.
+\]
+
+実際、
+
+\[
+U^3=-i,
+\]
+
+\[
+(-i)^2=-1,
+\]
+
+\[
+(-i)^3=i,
+\]
+
+\[
+(-i)^4=1.
+\]
+
+\subsection{15.4
+二波状態全体の閉路}\label{ux4e8cux6ce2ux72b6ux614bux5168ux4f53ux306eux9589ux8def}
+
+第一成分 \(U^k\) 自体が primitive 4-state cycle を保つので、\(m=2\)
+で倍音が 2 状態に縮退しても、二波状態対 \(S_k\) 全体は 4
+ステップで初めて戻る。
+
+したがって、
+
+\[
+\boxed{
+\operatorname{ord}(S_k)=4
+\quad\text{for both }m=2,3
+}
+\]
+
+である。
+
+違いは、
+
+\[
+\boxed{
+\text{$m=2$ では内部成分の一つが先に 2 周期へ縮退する}
+}
+\]
+
+点にある。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{16.
+動的表示：固定ネットワーク上を離散状態だけが移る}\label{ux52d5ux7684ux8868ux793aux56faux5b9aux30cdux30c3ux30c8ux30efux30fcux30afux4e0aux3092ux96e2ux6563ux72b6ux614bux3060ux3051ux304cux79fbux308b}
+
+本稿の離散性を誤解しないため、動的 HTML と MP4 を作成した。
+
+重要なのは、ネットワークの背景や波形そのものを毎 step
+作り直すのではなく、
+
+\[
+k=0\to1\to2\to3\to0
+\]
+
+の現在状態を示すマーカーだけを離散的に移動させる点である。
+
+\subsection{16.1 動的 HTML}\label{ux52d5ux7684-html}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{K4_harmonic_discrete_phase_animation_20260915.html}{統合版：ネットワーク＋複素ベクトル＋波形}
+\item
+  \href{K4_network_wave_discrete_m2.html}{\(m=2\)：元の完全ネットワーク図＋元の基底波/倍音図を固定背景にした離散位相
+  HTML}
+\item
+  \href{K4_network_wave_discrete_m3.html}{\(m=3\)：元の完全ネットワーク図＋元の基底波/倍音図を固定背景にした離散位相
+  HTML}
+\item
+  \href{K4_network_wave_index.html}{HTML インデックス}
+\end{itemize}
+
+\(m=2,3\) の個別 HTML
+では、元の静的図を差し替えず、その上に現在状態を示す赤丸および位相位置を示す赤い縦点線を重ねている。
+
+\subsection{16.2 MP4}\label{mp4}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{K4_harmonic_discrete_phase_m2_20260915.mp4}{\(m=2\) forward}
+\item
+  \href{K4_harmonic_discrete_phase_m3_20260915.mp4}{\(m=3\) forward}
+\item
+  \href{K4_harmonic_discrete_phase_m2_reverse_20260915.mp4}{\(m=2\)
+  reverse}
+\item
+  \href{K4_harmonic_discrete_phase_m3_reverse_20260915.mp4}{\(m=3\)
+  reverse}
+\end{itemize}
+
+reverse
+版は、閉路を逆順に読んだ場合にも同じ有限状態集合に戻ることを視覚的に確認するためのものである。これは時間反転対称性の物理的主張ではない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{17.
+本稿から厳密に言えること}\label{ux672cux7a3fux304bux3089ux53b3ux5bc6ux306bux8a00ux3048ux308bux3053ux3068}
+
+ここまでの結果を、仮説を混入させず整理する。
+
+\subsection{17.1
+完全関係構造}\label{ux5b8cux5168ux95a2ux4fc2ux69cbux9020}
+
+\(N=1, K=4\) なら、全頂点数は
+
+\[
+P=4
+\]
+
+であり、全関係数は
+
+\[
+M_P=6.
+\]
+
+全 6 関係を保持するため、ネットワークは完全グラフ \(K_4\) である。
+
+\subsection{17.2 有限閉路}\label{ux6709ux9650ux9589ux8def}
+
+primitive root
+
+\[
+U=i
+\]
+
+を用いた状態
+
+\[
+S_k=(U^k,U^{mk})
+\]
+
+は
+
+\[
+S_{k+4}=S_k
+\]
+
+を厳密に満たす。
+
+\subsection{17.3
+偶奇倍音の内部位数差}\label{ux5076ux5947ux500dux97f3ux306eux5185ux90e8ux4f4dux6570ux5dee}
+
+\[
+m=2:
+\quad
+\operatorname{ord}(U^2)=2,
+\]
+
+\[
+m=3:
+\quad
+\operatorname{ord}(U^3)=4.
+\]
+
+\subsection{17.4
+状態空間距離を定義した場合の完全ネットワーク幾何差}\label{ux72b6ux614bux7a7aux9593ux8dddux96e2ux3092ux5b9aux7fa9ux3057ux305fux5834ux5408ux306eux5b8cux5168ux30cdux30c3ux30c8ux30efux30fcux30afux5e7eux4f55ux5dee}
+
+\(\mathbb C^2\) ユークリッド距離を定義すると、
+
+\[
+m=2:
+\quad
+\{d_{ij}\}
+=
+\{2,2,\sqrt6,\sqrt6,\sqrt6,\sqrt6\},
+\]
+
+\[
+m=3:
+\quad
+\{d_{ij}\}
+=
+\{2,2,2,2,2\sqrt2,2\sqrt2\}.
+\]
+
+したがって同じ \(K_4\)
+の組合せ構造でも、状態ラベルから定義した距離幾何は異なる。
+
+\subsection{17.5
+二波状態成分の二乗閉塞差}\label{ux4e8cux6ce2ux72b6ux614bux6210ux5206ux306eux4e8cux4e57ux9589ux585eux5dee}
+
+\[
+m=2:
+\quad
+Q_{\mathrm{loop}}=4,
+\]
+
+\[
+m=3:
+\quad
+Q_{\mathrm{loop}}=0.
+\]
+
+さらに \(K=4\) について任意整数 \(m\) に対し、
+
+\[
+Q_{\mathrm{loop}}(m)
+=
+4
+\]
+
+は \(m\) 偶数、
+
+\[
+Q_{\mathrm{loop}}(m)
+=
+0
+\]
+
+は \(m\) 奇数であることを厳密に導出した。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{18.
+本稿からはまだ言えないこと}\label{ux672cux7a3fux304bux3089ux306fux307eux3060ux8a00ux3048ux306aux3044ux3053ux3068}
+
+以下は本稿の数学的結果から自動的には従わない。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(N=1\) が実在の光子1個であること。
+\item
+  基底波＋倍音1本が光子の完全な内部自由度であること。
+\item
+  \(k=0,1,2,3\) が物理時間の四時点であること。
+\item
+  \(U^K=I\) の周期が宇宙の物理的時間周期であること。
+\item
+  \(d_{ij}\)
+  が実空間距離、固有時間、測地線長、因果距離のいずれかであること。
+\item
+  MDS 座標が物理空間座標であること。
+\item
+  先行関係波系の「インフレーション的急拡大」が宇宙論的 inflation
+  と同一現象であること。
+\item
+  \(m=3\) の二乗閉塞だけで現実の粒子状態を選別できること。
+\end{enumerate}
+
+したがって、査読上の判定は二段階で行うべきである。
+
+第一段階は、
+
+\[
+\boxed{
+\text{有限完全関係閉系としての数学的結果が正しいか}
+}
+\]
+
+である。
+
+第二段階は、
+
+\[
+\boxed{
+\text{その閉系をどの物理量へ対応させる読出しが妥当か}
+}
+\]
+
+である。
+
+第一段階の成立を、第二段階の未確定性を理由に否定することはできない。一方で第一段階の数学的成立だけから第二段階の物理的同定を正しいと主張することもできない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{19.
+先行概念との関係}\label{ux5148ux884cux6982ux5ff5ux3068ux306eux95a2ux4fc2}
+
+本稿と同一の「\(KN\) 状態を匿名頂点として完全関係化し、\(U^K=I\)
+で閉じる」構成を先行研究として採用するものは、著者が確認した範囲では見出していない。ただし問題意識の一部に近い概念は存在する。
+
+\subsection{19.1
+Page--Wootters：外部時間を基本にしない記述}\label{pagewoottersux5916ux90e8ux6642ux9593ux3092ux57faux672cux306bux3057ux306aux3044ux8a18ux8ff0}
+
+Page と Wootters {[}E1{]} は、閉じた全体系を stationary state
+として扱い、内部時計との相関から観測される時間発展を記述する考えを示した。
+
+本稿との接点は、外部時間を基本変数として置かない点にある。しかし
+Page--Wootters は Hilbert 空間を clock/system
+に分ける構成であり、本稿のように全状態を同種の匿名頂点へ統合して完全グラフ化するものではない。
+
+\subsection{19.2 離散 history state}\label{ux96e2ux6563-history-state}
+
+Boette と Rossignoli {[}E2{]} は、有限次元 clock に対する discrete
+system-time history state
+を扱い、複数時点の状態を一つの静的構造へ埋め込む。
+
+本稿との接点は有限離散の履歴状態を一括して持つ点である。相違点は、本稿では
+clock Hilbert space
+を別に仮定せず、状態時点そのものを頂点として全関係を保持する点である。
+
+\subsection{19.3 all-at-once / time-symmetric boundary
+condition}\label{all-at-once-time-symmetric-boundary-condition}
+
+Wharton {[}E3{]}
+は初期条件だけから一方向発展を作ることを唯一の基本形式とせず、初期・終端を含む境界条件から全履歴を一括して制約する考えを論じた。
+
+本稿との接点は「未来を逐次生成する」記述を唯一視しない点にある。一方、本稿は作用原理や連続場境界値問題から出発せず、有限巡回群と完全関係ネットワークを出発点とする。
+
+\subsection{19.4 causal set}\label{causal-set}
+
+Bombelli, Lee, Meyer, Sorkin {[}E4{]}
+は、時空を連続多様体よりも先に離散イベントと因果関係の集合として扱う
+causal set を提案した。
+
+本稿との接点は、時空を先に連続座標として仮定せず、関係構造を基本にする点である。しかし
+causal set
+の基本関係は因果半順序であり、本稿の全頂点対を保持する完全グラフとは数学的構造が異なる。
+
+したがってこれらは本稿の導出根拠ではなく、\textbf{概念上の近隣研究}として引用する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{20.
+先行インフレーション系との接続の意味}\label{ux5148ux884cux30a4ux30f3ux30d5ux30ecux30fcux30b7ux30e7ux30f3ux7cfbux3068ux306eux63a5ux7d9aux306eux610fux5473}
+
+本稿は、図1〜図4のインフレーション的関係波力学を \(K_4\)
+系だけから再現したと主張するものではない。
+
+接続は次の問題設定に限定される。
+
+先行系では、
+
+\[
+\text{state}(\tau)
+\to
+\text{state}(\tau+\Delta\tau)
+\]
+
+という更新を用いた。
+
+本稿は、これを
+
+\[
+\{S_0,S_1,\ldots,S_{K-1}\}
+\]
+
+という有限状態集合と、その全関係
+
+\[
+K_{KN}
+\]
+
+に置き換えられる可能性を検査する最小厳密閉系である。
+
+したがって最終的に問いたいのは、
+
+\[
+\boxed{
+\text{外部更新変数を使わず、全関係だけから軌道順序を読めるか}
+}
+\]
+
+である。
+
+今回確認したのは、そのための必要条件の一部である。
+
+\begin{itemize}
+\tightlist
+\item
+  閉路を持つ有限完全関係系が構成できる。
+\item
+  基底＋倍音という内部状態だけで、同じ 4
+  頂点でも偶奇に応じて異なる関係幾何を持ちうる。
+\item
+  \(K=4\) では倍音位数と二乗閉塞に厳密な偶奇差がある。
+\end{itemize}
+
+これだけで物理時間は導出されない。しかし「時間方向を頂点化した瞬間に構造が破綻する」ということもない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{21.
+今後の検証課題}\label{ux4ecaux5f8cux306eux691cux8a3cux8ab2ux984c}
+
+本稿から自然に続く課題を、数学的課題と物理的課題に分離する。
+
+\subsection{21.1 数学的課題}\label{ux6570ux5b66ux7684ux8ab2ux984c}
+
+\subsubsection{\texorpdfstring{(a) 一般 \(K\)
+における完全分類の拡張}{(a) 一般 K における完全分類の拡張}}\label{a-ux4e00ux822c-k-ux306bux304aux3051ux308bux5b8cux5168ux5206ux985eux306eux62e1ux5f35}
+
+本稿では二乗総和について
+
+\[
+Q_{\mathrm{loop}}(m;K)
+=
+K\,\mathbf 1_{K\mid2}
++
+K\,\mathbf 1_{K\mid2m}
+\]
+
+まで厳密に分類した。次の課題は、この整除分類と、倍音成分の最小位数
+
+\[
+\operatorname{ord}(U^m)=\frac{K}{\gcd(K,m)}
+\]
+
+および完全ネットワークの距離多重集合・Gram
+不変量（\(\langle S_i,S_j\rangle\)
+が与える状態間複素内積の不変量）を組み合わせ、一般 \((K,m)\)
+の同値類を完全分類することである。
+
+\subsubsection{\texorpdfstring{(b) 一般
+\(N>1,\ K>1\)}{(b) 一般 N\textgreater1,\textbackslash{} K\textgreater1}}\label{b-ux4e00ux822c-n1-k1}
+
+全頂点数
+
+\[
+P=KN
+\]
+
+に対し、全関係
+
+\[
+\frac{P(P-1)}2
+\]
+
+を匿名に保持したまま、元の \(N\) 分解と \(K\)
+分解が関係不変量から再構成できるかを調べる。
+
+これは重要である。もし外から \(KN\)
+個の匿名頂点だけを与えたとき、\(N\times K\)
+の分解を先験的に与えなければならないなら、無名性問題が形を変えて残るからである。
+
+\subsubsection{(c)
+順序の関係的再構成}\label{c-ux9806ux5e8fux306eux95a2ux4fc2ux7684ux518dux69cbux6210}
+
+完全グラフは全関係を持つが、それだけでは「次状態」が自動的に指定されるとは限らない。本稿では
+\(S_k=(U^k,U^{mk})\) の位相巡回により順序を既知としている。
+
+将来は、順序ラベル \(k\) を消した後でも、関係量だけから
+
+\[
+S_0\to S_1\to\cdots\to S_{K-1}\to S_0
+\]
+
+を再構成できるかを検証する必要がある。
+
+これは本研究計画における中心的な反証可能点である。
+
+\(K=4\)
+では距離構造から無向巡回順序までは再構成可能である一方、向きの再構成は別問題である。複素内積を含む追加不変量による方向情報の可否は別稿で扱う。
+
+\subsection{21.2 物理的課題}\label{ux7269ux7406ux7684ux8ab2ux984c}
+
+\subsubsection{(a) 光子同定}\label{a-ux5149ux5b50ux540cux5b9a}
+
+基底波＋倍音1本の \(N=1\)
+系が、光子の偏光、ヘリシティ、エネルギー・運動量、量子統計等を再現できるかは未検証である。
+
+\subsubsection{(b) 長さ読出し}\label{b-ux9577ux3055ux8aadux51faux3057}
+
+本稿の \(d_{ij}\) は \(\mathbb C^2\)
+上の標準ノルムである。物理的時空距離を主張するためには、観測手続きまたは不変量から独立に同じ距離則が導出される必要がある。
+
+\subsubsection{(c)
+インフレーション系への戻し}\label{c-ux30a4ux30f3ux30d5ux30ecux30fcux30b7ux30e7ux30f3ux7cfbux3078ux306eux623bux3057}
+
+先行 \(N=40\) 系の実測軌道を、外部 \(\tau\) 更新なしの \(KN\)
+完全関係系として再構成し、従来の軌道と一致するかを検査することが最終的な接続試験となる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{22. 再現性資料}\label{ux518dux73feux6027ux8cc7ux6599}
+
+本稿の全静的図、動的表示、生データ、解析プログラムはこの Markdown
+と同じフォルダ、またはその直下の再現性検証フォルダに保存する。
+
+\subsection{22.1 静的図生成}\label{ux9759ux7684ux56f3ux751fux6210}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{generate_all_K4_harmonic_figures_20260915.py}{全 K4
+  図生成プログラム}
+\item
+  \href{figs/K4_complete_network_m2.png}{\(m=2\) 完全ネットワーク PNG}
+\item
+  \href{K4_complete_network_m2.svg}{\(m=2\) 完全ネットワーク SVG}
+\item
+  \href{figs/K4_complete_network_m3.png}{\(m=3\) 完全ネットワーク PNG}
+\item
+  \href{K4_complete_network_m3.svg}{\(m=3\) 完全ネットワーク SVG}
+\item
+  \href{figs/waves_base_harmonic_m2.png}{\(m=2\) 基底波＋倍音 PNG}
+\item
+  \href{waves_base_harmonic_m2.svg}{\(m=2\) 基底波＋倍音 SVG}
+\item
+  \href{figs/waves_base_harmonic_m3.png}{\(m=3\) 基底波＋倍音 PNG}
+\item
+  \href{waves_base_harmonic_m3.svg}{\(m=3\) 基底波＋倍音 SVG}
+\item
+  \href{figs/composite_wave_m2.png}{\(m=2\) 合成波 PNG}
+\item
+  \href{composite_wave_m2.svg}{\(m=2\) 合成波 SVG}
+\item
+  \href{figs/composite_wave_m3.png}{\(m=3\) 合成波 PNG}
+\item
+  \href{composite_wave_m3.svg}{\(m=3\) 合成波 SVG}
+\item
+  \href{figs/complex_vectors_all_states_m2.png}{\(m=2\)
+  全状態複素ベクトル PNG}
+\item
+  \href{complex_vectors_all_states_m2.svg}{\(m=2\) 全状態複素ベクトル
+  SVG}
+\item
+  \href{figs/complex_vectors_all_states_m3.png}{\(m=3\)
+  全状態複素ベクトル PNG}
+\item
+  \href{complex_vectors_all_states_m3.svg}{\(m=3\) 全状態複素ベクトル
+  SVG}
+\item
+  \href{figs/complex_vectors_theta_pi4_m2.png}{\(m=2,\ \theta=\pi/4\)
+  PNG}
+\item
+  \href{complex_vectors_theta_pi4_m2.svg}{\(m=2,\ \theta=\pi/4\) SVG}
+\item
+  \href{figs/complex_vectors_theta_pi4_m3.png}{\(m=3,\ \theta=\pi/4\)
+  PNG}
+\item
+  \href{complex_vectors_theta_pi4_m3.svg}{\(m=3,\ \theta=\pi/4\) SVG}
+\end{itemize}
+
+\subsection{22.2
+完全ネットワーク辺データ}\label{ux5b8cux5168ux30cdux30c3ux30c8ux30efux30fcux30afux8fbaux30c7ux30fcux30bf}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{edges_m2.csv}{\(m=2\) 6辺 CSV}
+\item
+  \href{edges_m3.csv}{\(m=3\) 6辺 CSV}
+\item
+  \href{all_edges_m2_m3.csv}{\(m=2,3\) 統合 CSV}
+\end{itemize}
+
+\subsection{22.3
+離散複素状態の生データ}\label{ux96e2ux6563ux8907ux7d20ux72b6ux614bux306eux751fux30c7ux30fcux30bf}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{再現性検証_生データ読出し_20260915/}{生データ読出しフォルダ}
+\item
+  \href{再現性検証_生データ読出し_20260915/raw_data/complex_states_animation_exact_i.csv}{exact-\(i\)
+  離散状態}
+\item
+  \href{再現性検証_生データ読出し_20260915/raw_data/complex_states_static_exp.csv}{静的
+  \(\exp(i\theta)\) 状態}
+\item
+  \href{再現性検証_生データ読出し_20260915/raw_data/complex_states.csv}{元の複素状態
+  CSV}
+\item
+  \href{再現性検証_生データ読出し_20260915/raw_data/RAW_DATA_MANIFEST.csv}{raw
+  data manifest}
+\item
+  \href{再現性検証_生データ読出し_20260915/raw_data/representative_vectors_theta_pi4.csv}{\(\theta=\pi/4\)
+  代表ベクトル}
+\end{itemize}
+
+\subsection{22.4
+波形サンプルデータ}\label{ux6ce2ux5f62ux30b5ux30f3ux30d7ux30ebux30c7ux30fcux30bf}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{再現性検証_生データ読出し_20260915/raw_data/wave_samples_static_2000_m2.csv}{\(m=2\)
+  static 2000 samples}
+\item
+  \href{再現性検証_生データ読出し_20260915/raw_data/wave_samples_static_2000_m3.csv}{\(m=3\)
+  static 2000 samples}
+\item
+  \href{再現性検証_生データ読出し_20260915/raw_data/wave_samples_html_800_m2.csv}{\(m=2\)
+  HTML 800 samples}
+\item
+  \href{再現性検証_生データ読出し_20260915/raw_data/wave_samples_html_800_m3.csv}{\(m=3\)
+  HTML 800 samples}
+\item
+  \href{再現性検証_生データ読出し_20260915/raw_data/wave_samples_mp4_1200_m2.csv}{\(m=2\)
+  MP4 1200 samples}
+\item
+  \href{再現性検証_生データ読出し_20260915/raw_data/wave_samples_mp4_1200_m3.csv}{\(m=3\)
+  MP4 1200 samples}
+\end{itemize}
+
+\subsection{22.5
+自己無撞着性・二乗和解析}\label{ux81eaux5df1ux7121ux649eux7740ux6027ux4e8cux4e57ux548cux89e3ux6790}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{再現性検証_生データ読出し_20260915/自己無撞着性_二乗和_U4検証_20260915/analyze_K4_self_consistency_square_sum_20260915.py}{解析プログラム}
+\item
+  \href{再現性検証_生データ読出し_20260915/自己無撞着性_二乗和_U4検証_20260915/K4_self_consistency_square_sum_by_state_20260915.csv}{状態別結果}
+\item
+  \href{再現性検証_生データ読出し_20260915/自己無撞着性_二乗和_U4検証_20260915/K4_self_consistency_square_sum_summary_20260915.csv}{集計結果}
+\item
+  \href{再現性検証_生データ読出し_20260915/自己無撞着性_二乗和_U4検証_20260915/K4_self_consistency_square_sum_analysis_20260915.md}{分析レポート}
+\end{itemize}
+
+\subsection{22.6 動的 HTML / MP4}\label{ux52d5ux7684-html-mp4}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{K4_harmonic_discrete_phase_animation_20260915.html}{統合 HTML}
+\item
+  \href{K4_network_wave_discrete_m2.html}{\(m=2\) 元図固定 HTML}
+\item
+  \href{K4_network_wave_discrete_m3.html}{\(m=3\) 元図固定 HTML}
+\item
+  \href{K4_network_wave_index.html}{HTML index}
+\item
+  \href{K4_harmonic_discrete_phase_m2_20260915.mp4}{\(m=2\) forward MP4}
+\item
+  \href{K4_harmonic_discrete_phase_m3_20260915.mp4}{\(m=3\) forward MP4}
+\item
+  \href{K4_harmonic_discrete_phase_m2_reverse_20260915.mp4}{\(m=2\)
+  reverse MP4}
+\item
+  \href{K4_harmonic_discrete_phase_m3_reverse_20260915.mp4}{\(m=3\)
+  reverse MP4}
+\item
+  \href{generate_K4_harmonic_discrete_phase_mp4_20260915.py}{MP4生成プログラム}
+\item
+  \href{generate_K4_harmonic_discrete_phase_forward_reverse_mp4_20260915.py}{forward/reverse
+  MP4生成プログラム}
+\item
+  \href{generate_k4_phase_html.py}{HTML生成プログラム}
+\item
+  \href{generate_K4_harmonic_complex_raw_states_20260915.py}{複素生状態生成プログラム}
+\end{itemize}
+
+\subsection{22.7
+先行インフレーション系から本稿へ再掲した図}\label{ux5148ux884cux30a4ux30f3ux30d5ux30ecux30fcux30b7ux30e7ux30f3ux7cfbux304bux3089ux672cux7a3fux3078ux518dux63b2ux3057ux305fux56f3}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{figs/inflation_N40_phase_step0_cross_20260915.png}{N=40 step0
+  十字架状帯}
+\item
+  \href{figs/inflation_N40_phase_step500_ring_20260915.png}{N=40 step500
+  リング}
+\item
+  \href{figs/inflation_mexican_hat_SSB_reconstruction_20260915.png}{Mexican-hat
+  / SSB 再構成}
+\item
+  \href{figs/inflation_N40_relation_wave_3D_step500_20260915.png}{N=40
+  関係波 3D 発展図}
+\end{itemize}
+
+これら 4 図は先行インフレーション系 {[}K1{]}
+の背景を本稿内で理解できるよう、同一フォルダに再配置したものである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{23. 結論}\label{ux7d50ux8ad6}
+
+本稿は、時間方向を外部更新パラメータとして特別扱いせず、異なる位相状態そのものを通常の状態頂点と同等に扱い、全状態を完全関係化する構成を提案し、その最小厳密閉系
+\(N=1, K=4\) を完全解析した。
+
+全頂点数は
+
+\[
+P=KN
+\]
+
+であり、全関係数は
+
+\[
+M_P
+=
+\frac{KN(KN-1)}2
+\]
+
+である。
+
+\(N=1, K=4\) では 4 頂点、6 関係の完全グラフ \(K_4\) となる。primitive
+root
+
+\[
+U=e^{2\pi i/4}=i
+\]
+
+を用い、
+
+\[
+S_k=(U^k,U^{mk})
+\]
+
+と定義することで、外部の連続時間を用いずに 4 状態の厳密閉路を得た。
+
+最小の非自明な偶数倍音 \(m=2\) と奇数倍音 \(m=3\) を比較すると、
+
+\[
+m=2:
+\quad
+\operatorname{ord}(U^2)=2,
+\]
+
+\[
+m=3:
+\quad
+\operatorname{ord}(U^3)=4,
+\]
+
+という内部位数差がある。
+
+また、\(\mathbb C^2\) ユークリッド距離を解析読出しとして定義した場合、6
+辺の距離多重集合は
+
+\[
+m=2:
+\quad
+\{2,2,\sqrt6,\sqrt6,\sqrt6,\sqrt6\},
+\]
+
+\[
+m=3:
+\quad
+\{2,2,2,2,2\sqrt2,2\sqrt2\}
+\]
+
+と異なる。
+
+さらに二波状態成分の全 4 状態二乗総和は、
+
+\[
+Q_{\mathrm{loop}}(2)=4,
+\]
+
+\[
+Q_{\mathrm{loop}}(3)=0.
+\]
+
+そして \(K=4\) に対しては任意整数 \(m\) について
+
+\[
+\boxed{
+Q_{\mathrm{loop}}(m)
+=
+\begin{cases}
+4,&m\ \mathrm{even},\\
+0,&m\ \mathrm{odd}
+\end{cases}
+}
+\]
+
+という厳密な偶奇選択則を得た。
+
+これらの主張は、光子同定、物理時間同定、物理的長さ読出しを必要としない。一方、\(N=1\)
+を光子1個と読むこと、\(k\) を過去・現在・未来と読むこと、\(d_{ij}\)
+を物理時空距離と読むことは、本稿では仮定として明確に保留した。
+
+したがって本稿の中心成果は、
+
+\[
+\boxed{
+\text{外部時間発展を仮定しなくても、有限位相状態を全頂点化した最小厳密完全関係閉系が構成でき、}
+\\
+\text{その内部倍音構造の違いが、位数・状態空間距離幾何・二乗閉塞に厳密な差を生む}
+}
+\]
+
+ことを、全状態・全関係を省略せず示した点にある。
+
+次段階の決定的課題は、\(k\)
+という順序ラベルを外した完全関係データだけから、閉路の順序そのものを再構成できるかを検証することである。これが可能なら、「状態を時間発展させる」という記述から「全状態関係から時間順序を読む」という記述へ移るための具体的な数学的橋が得られる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsection{自己引用}\label{ux81eaux5df1ux5f15ux7528}
+
+\textbf{{[}K1{]}} 木原範昭,
+「自己無撞着な関係波閉鎖系におけるインフレーション的急拡大の機構」,
+2026. Version DOI:
+\href{https://doi.org/10.5281/zenodo.22176949}{10.5281/zenodo.22176949};
+Concept DOI:
+\href{https://doi.org/10.5281/zenodo.22112008}{10.5281/zenodo.22112008}.
+
+本稿の動機となる \(N\)
+体完全関係波系、90度高対称床、急激な横成分増大、準安定リングの出典としてのみ用いる。本稿の
+\(KN\) 頂点化、\(K_4\)
+解析、偶奇二乗閉塞の導出は本稿内で独立に完結する。
+
+\subsection{外部参考文献：概念上の近隣研究}\label{ux5916ux90e8ux53c2ux8003ux6587ux732eux6982ux5ff5ux4e0aux306eux8fd1ux96a3ux7814ux7a76}
+
+\textbf{{[}E1{]}} D. N. Page and W. K. Wootters, ``Evolution without
+evolution: Dynamics described by stationary observables,''
+\emph{Physical Review D} \textbf{27}, 2885 (1983). DOI:
+\href{https://doi.org/10.1103/PhysRevD.27.2885}{10.1103/PhysRevD.27.2885}.
+
+\textbf{{[}E2{]}} A. Boette and R. Rossignoli, ``History states of
+systems and operators,'' \emph{Physical Review A} \textbf{98}, 032108
+(2018). DOI:
+\href{https://doi.org/10.1103/PhysRevA.98.032108}{10.1103/PhysRevA.98.032108}.
+
+\textbf{{[}E3{]}} K. Wharton, ``Time-Symmetric Boundary Conditions and
+Quantum Foundations,'' \emph{Symmetry} \textbf{2}, 272--283 (2010). DOI:
+\href{https://doi.org/10.3390/sym2010272}{10.3390/sym2010272}.
+
+\textbf{{[}E4{]}} L. Bombelli, J. Lee, D. Meyer, and R. D. Sorkin,
+``Space-time as a causal set,'' \emph{Physical Review Letters}
+\textbf{59}, 521--524 (1987). DOI:
+\href{https://doi.org/10.1103/PhysRevLett.59.521}{10.1103/PhysRevLett.59.521}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{付録A：結果の最小表}\label{ux4ed8ux9332aux7d50ux679cux306eux6700ux5c0fux8868}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrr@{}}
+\toprule\noalign{}
+項目 & \(m=2\) 偶数倍音 & \(m=3\) 奇数倍音 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+基底生成子 & \(i\) & \(i\) \\
+基底最小位数 & 4 & 4 \\
+倍音生成子 & \(-1\) & \(-i\) \\
+倍音最小位数 & 2 & 4 \\
+二波状態全体の最小ループ & 4 & 4 \\
+状態別 \(Q_k\) & \([2,0,2,0]\) & \([2,-2,2,-2]\) \\
+\(\sum a^2\) & 6 & 4 \\
+\(\sum b^2\) & 2 & 4 \\
+\(\sum ab\) & 0 & 0 \\
+\(Q_{\mathrm{loop}}=\sum z^2\) & 4 & 0 \\
+二乗ゼロ閉塞 & NO & YES \\
+\(\mathbb C^2\) 距離の短辺 & 2本 × 2 & 4本 × 2 \\
+\(\mathbb C^2\) 距離の長辺 & 4本 × \(\sqrt6\) & 2本 × \(2\sqrt2\) \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{付録B：用語の厳密な使い分け}\label{ux4ed8ux9332bux7528ux8a9eux306eux53b3ux5bc6ux306aux4f7fux3044ux5206ux3051}
+
+\textbf{完全ネットワーク:}
+全頂点対を関係として保持する組合せ構造。物理距離を仮定しない。\\
+\textbf{状態空間距離:} 本稿で \(\mathbb C^2\) 標準ノルムとして定義した
+\(d_{ij}\)。物理距離ではない。\\
+\textbf{MDS 座標:}
+距離行列を可視化するための埋め込み座標。物理座標ではない。\\
+\textbf{離散位相状態:} \(k=0,1,2,3\)。連続時間を意味しない。\\
+\textbf{波形図:} \(\cos\theta\)、\(\cos(m\theta)\)
+を連続表示した読出し図。実際のネットワーク状態は 4 離散点。\\
+\textbf{代数的自己無撞着性:}
+本稿で定義した状態生成則、倍音関係、閉路の内部整合性。先行非線形力学の固定点条件と同義ではない。\\
+\textbf{二乗ゼロ閉塞:} 本稿では 4 頂点の二波状態成分に対する
+\(Q_{\mathrm{loop}}=0\)。6 辺長の二乗和ではない。\\
+\textbf{インフレーション的:}
+先行関係波系で観測された急激な秩序パラメータ増大を指す。宇宙論的
+inflation との同一性を主張しない。\\
+\textbf{光子モデル:} \(N=1\)
+閉系に対する物理的候補解釈。数学的ネットワーク解析の前提ではない。
+
+\end{document}
