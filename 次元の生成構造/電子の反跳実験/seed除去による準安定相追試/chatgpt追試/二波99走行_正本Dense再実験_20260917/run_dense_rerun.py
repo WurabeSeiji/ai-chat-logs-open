@@ -20,7 +20,14 @@ QA は機械的確認のみ（4097 状態・NaN/Inf・metadata・SHA256）。H/Q
 反対称残差は生値で記録し、閾値分類しない（v3 §10）。FAIL でも states を削除しない。
 
 使い方: python3 run_dense_rerun.py <run_id> [<run_id> ...]
+        python3 run_dense_rerun.py --upto-L <N>   … manifest の L<=N の未走行 run を全て実行
         python3 run_dense_rerun.py --all99
+
+2026-09-17 木原指示による追加（力学は無変更）:
+ - 各 run の完了直後に図化4セット（初期複素 v4 / 終了複素 / インフレーション /
+   残差時系列、plot_scripts_run/ の存在runのみ図化版）を subprocess で自動実行
+ - 経過ログ run_progress_20260917.log（UTC時刻付き）に run 開始/完了/図化の
+   所要時間を追記（stdout にも同内容）。図化失敗は記録して続行（走行は止めない）
 """
 import os
 
@@ -57,8 +64,40 @@ from gen_manifest import build_runs, T                              # noqa: E402
 RUNS_DIR = os.path.join(HERE, 'runs')
 FP_PATH = os.path.join(HERE, 'environment_fingerprint.json')
 QA_PATH = os.path.join(HERE, 'qa_summary.json')
+PROGRESS_LOG = os.path.join(HERE, 'run_progress_20260917.log')
 CODE_FILES = ('interaction_kernel_theory_v1.py', 'generator_twowave_v1.py',
               'gen_manifest.py', 'run_dense_rerun.py', 'structural_audit_v1.py')
+PLOT_SCRIPTS = ('plot_initial_states_all99_v4_20260916.py',
+                'plot_final_states_all99_20260916.py',
+                'plot_inflation_hperp_all99_20260916.py',
+                'plot_residual_timeseries_all99_20260916.py')
+
+
+def log_line(msg):
+    line = f'[{time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())} UTC] {msg}'
+    print(line, flush=True)
+    with open(PROGRESS_LOG, 'a', encoding='utf-8') as f:
+        f.write(line + '\n')
+
+
+def run_plots_after(rid):
+    """図化4セットを順に実行（read-only 後処理）。失敗しても走行は続行する。"""
+    pdir = os.path.join(HERE, 'plot_scripts_run')
+    logdir = os.path.join(HERE, 'plot_logs')
+    os.makedirs(logdir, exist_ok=True)
+    plog = os.path.join(logdir, f'auto_after_{rid}.log')
+    ok_all = True
+    with open(plog, 'w', encoding='utf-8') as f:
+        for name in PLOT_SCRIPTS:
+            t0 = time.time()
+            r = subprocess.run([sys.executable, name], cwd=pdir,
+                               stdout=f, stderr=subprocess.STDOUT)
+            dt = time.time() - t0
+            ok = (r.returncode == 0)
+            ok_all &= ok
+            log_line(f'  figure {name}: {"ok" if ok else f"FAIL(exit {r.returncode})"} '
+                     f'{dt:.1f}s')
+    return ok_all
 
 
 def sha256_file(path):
@@ -214,12 +253,24 @@ def do_run(row, fp):
 def main():
     args = sys.argv[1:]
     if not args:
-        print('usage: python3 run_dense_rerun.py <run_id> [<run_id> ...] | --all99')
+        print('usage: python3 run_dense_rerun.py <run_id> [<run_id> ...] '
+              '| --upto-L <N> | --all99')
         sys.exit(2)
     rows = build_runs()
     by_id = {r['run_id']: r for r in rows}
     if args == ['--all99']:
         selected = rows
+    elif args[0] == '--upto-L':
+        if len(args) != 2 or not args[1].isdigit():
+            print('usage: python3 run_dense_rerun.py --upto-L <N>')
+            sys.exit(2)
+        lmax = int(args[1])
+        selected = [r for r in rows if r['L'] <= lmax and
+                    not os.path.exists(os.path.join(RUNS_DIR, r['run_id'], 'states.npz'))]
+        if not selected:
+            print(f'L<={lmax} の未走行 run はありません')
+            sys.exit(0)
+        print(f'--upto-L {lmax}: 未走行 {len(selected)} run を実行（走行済みはスキップ）')
     else:
         for rid in args:
             if rid not in by_id:
@@ -232,13 +283,16 @@ def main():
     if os.path.exists(QA_PATH):
         with open(QA_PATH, encoding='utf-8') as f:
             qa_all = {r['run_id']: r for r in json.load(f).get('runs', [])}
+    log_line(f'batch start: {len(selected)} run(s) — '
+             + ', '.join(r['run_id'] for r in selected))
     for i, row in enumerate(selected):
+        log_line(f'[{i + 1:2d}/{len(selected)}] {row["run_id"]} start '
+                 f'(M={row["M"]}, T={row["T"]})')
         r = do_run(row, fp)
         qa_all[r['run_id']] = r
-        print(f'[{i + 1:2d}/{len(selected)}] {r["run_id"]:>22}: {r["qa_status"]} '
-              f'dH={r["dH_rel_max"]:.1e} dQ2={r["dQ2_rel_max"]:.1e} '
-              f'antisym={r["antisym_residual_max"]:.1e} {r["wall_time_sec"]:.1f}s',
-              flush=True)
+        log_line(f'[{i + 1:2d}/{len(selected)}] {r["run_id"]}: {r["qa_status"]} '
+                 f'dH={r["dH_rel_max"]:.1e} dQ2={r["dQ2_rel_max"]:.1e} '
+                 f'antisym={r["antisym_residual_max"]:.1e} {r["wall_time_sec"]:.1f}s')
         runs_list = sorted(qa_all.values(), key=lambda x: x['run_id'])
         with open(QA_PATH, 'w', encoding='utf-8') as f:
             json.dump({'n_runs': len(runs_list),
@@ -247,7 +301,8 @@ def main():
                        'qa_rule': '機械的確認のみ（4097 states / NaN/Inf / metadata / SHA256）。'
                                   'drift・反対称残差は生値記録、閾値分類なし',
                        'runs': runs_list}, f, indent=1, ensure_ascii=False)
-    print(f'done: {len(selected)} run(s)')
+        run_plots_after(r['run_id'])
+    log_line(f'batch done: {len(selected)} run(s)')
 
 
 if __name__ == '__main__':
