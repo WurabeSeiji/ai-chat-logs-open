@@ -1,0 +1,133 @@
+--- plot_states_steprange_trajectory_20260917.py	2026-09-17 11:00:52
++++ plot_states_steprange_rigidremoved_20260917.py	2026-09-17 11:16:02
+@@ -1,19 +1,30 @@
+ #!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+-"""ステップ区間軌跡の複素平面図・1 run = 1 図（2026-09-17 木原指示）。
++"""剛体回転除去つきステップ区間軌跡・1 run = 1 図（2026-09-17 木原指示）。
+ 
+-plot_states_alltime_trajectory_20260917.py の物理コピー。木原指示:
+-「step0 から step10 までだけ描画した図をつくりなさい」（全ステップ重ね描きの
+-塗り潰しでは軌道が読めないため、短い区間で step ごとの実際の遷移を見る）。
++plot_states_steprange_trajectory_20260917.py の物理コピー。木原指示:
++「この時点で想定している剛体回転を除く機能を追加しなさい。10stepまででいいです。」
+ 
+-変更点は区間制限のみ:
+-(1) 描画区間を t=RANGE_T0..RANGE_T1（既定 0..10、コマンドライン引数で変更可）に制限
+-(2) 絶対スケール S は描画区間内の実測最大 |z_e(t)| × 1.05
+-(3) それ以外（細い薄い実線・辺ごと1色 turbo・剛体回転除去なし・t=0 状態を
+-    最終図形式 panel() で重ね描き）は全ステップ版と同一
++剛体回転の定義（この時点の想定）:
++  この系の剛体運動は大域 U(1) 位相ではなく、初期生成子 K0 = K(Z(0))
++  （正本カーネル K_of で計算、K^T=-K 実反対称）が生成する実直交回転
++  exp(t·Δτ·K0) である。共回転フレーム
++      W(t) = exp(-t·Δτ·K0) · Z(t)
++  で描く。運動が厳密に相対平衡（Z(t)=exp(t·Δτ·K0)Z(0)）なら W(t)≡Z(0) で
++  各波は不動点に潰れ、W(t) に残る動きが真の非剛体成分（K(Z(t)) の時間変化に
++  由来）である。exp の評価は正本 one_step と同じ全固有分解スペクトル法
++  （H0=iK0, eigh, e^{+i t Δτ w}）。状態は書き換えず read-only。
+ 
+-使い方: python3 plot_states_steprange_trajectory_20260917.py [t0] [t1]
++変更点:
++(1) 各 run で K0=K_of(Z(0), adjacency(L)) を計算し、W(t)=V e^{+i t Δτ w} V†Z(t)
++    を描画（区間 t=RANGE_T0..RANGE_T1、既定 0..10）
++(2) スケール S は区間内 max|W| × 1.05、出力先 plots/rigid_removed/
++(3) 剛体除去残差 max_t |W(t)-Z(0)| を診断値として出力（判定はしない）
++(4) それ以外（細い薄い実線・辺ごと1色・t=0 状態を最終図形式 panel() で重ね描き）
++    は区間版と同一
+ 
++使い方: python3 plot_states_steprange_rigidremoved_20260917.py [t0] [t1]
++
+ 元ヘッダ: 全 99 走行の最終状態（t=4096）複素平面カタログ（2026-09-16、初期状態 v4 の最終ステージ版）。
+ 
+ 木原指示 2026-09-16: 「今の図を、最終ステージの状態で適切な名前で作成」。
+@@ -50,11 +61,30 @@
+ SURVEY = os.path.abspath(os.path.join(HERE, '..'))
+ sys.path.insert(0, SURVEY)
+ from gen_manifest import MAIN_L, MAIN_PAIRS, GCD_L, GCD_PAIRS, CTRL_L, CTRL_PAIRS, CTRL_DEN, T  # noqa: E402
++from interaction_kernel_theory_v1 import adjacency, K_of  # noqa: E402  # read-only 参照
+ 
+ RANGE_T0 = int(sys.argv[1]) if len(sys.argv) > 1 else 0
+ RANGE_T1 = int(sys.argv[2]) if len(sys.argv) > 2 else 10
+ 
+ 
++def remove_rigid(Ztr_slice, z0_full, L, den, t_offset):
++    """区間スライス Ztr_slice（先頭が t=t_offset）に W(t)=exp(-tΔτK0)Z(t) を適用。
++
++    K0 は常に t=0 の状態 z0_full から計算する（区間先頭ではない）。"""
++    import math
++    A = adjacency(L)
++    K0 = K_of(z0_full, A)
++    H0 = (1j * K0).astype(np.complex128, copy=False)
++    w, V = np.linalg.eigh(H0)
++    dtau = np.float64(2.0 * math.pi / den)
++    W = np.empty_like(Ztr_slice)
++    for i in range(Ztr_slice.shape[0]):
++        t = t_offset + i
++        phase = np.exp(+1j * dtau * t * w)
++        W[i] = V @ (phase * (V.conj().T @ Ztr_slice[i]))
++    return W
++
++
+ def load_final(L, ma, mb, den):
+     """t=0 状態と全 4097 状態 Z（軌跡用）を返す（read-only）。"""
+     rid = f'L{L}_ma{ma}_mb{mb}_den{den}'
+@@ -146,9 +176,17 @@
+         print('states.npz が存在する run が無い — 図化せず終了')
+         return
+     print(f'存在する run: {len(data)}/99（欠損パネルは空欄表示）')
+-    S = max(float(np.max(np.abs(Zt[RANGE_T0:RANGE_T1 + 1]))) for Zt in traj.values()) * 1.05
++    wtraj = {}
++    for key in sorted(traj):
++        Lk, mak, mbk, denk = key
++        wtraj[key] = remove_rigid(traj[key][RANGE_T0:RANGE_T1 + 1], data[key],
++                                  Lk, denk, RANGE_T0)
++        dev = float(np.max(np.abs(wtraj[key] - data[key][None, :])))
++        print(f'剛体除去残差 max_t|W(t)-Z(0)| = {dev:.6e}  '
++              f'(L{Lk}_ma{mak}_mb{mbk}_den{denk}、診断値・判定なし)')
++    S = max(float(np.max(np.abs(Wt))) for Wt in wtraj.values()) * 1.05
+     Smax = S / 1.05
+-    print(f'共通絶対スケール: 区間 t={RANGE_T0}..{RANGE_T1} 実測 max|z_e(t)| = {Smax:.6f}'
++    print(f'共通絶対スケール: 区間 t={RANGE_T0}..{RANGE_T1} 実測 max|W_e(t)| = {Smax:.6f}'
+           f' → 表示範囲 ±{S:.4f}')
+     print(f'Q2 参照（t=0 同士、恒等的に 0）: {q2dev:.3e}')
+     Gs = {key: complex(np.sum(z)) for key, z in data.items()}
+@@ -167,7 +205,7 @@
+         L, ma, mb, den = key
+         rid = f'L{L}_ma{ma}_mb{mb}_den{den}'
+         fig, ax = plt.subplots(figsize=(7.6, 8.6))
+-        Ztr = traj[key][RANGE_T0:RANGE_T1 + 1]
++        Ztr = wtraj[key]
+         M = Ztr.shape[1]
+         cols = plt.cm.turbo(np.linspace(0.02, 0.98, M))
+         for e in range(M):
+@@ -176,21 +214,23 @@
+         panel(ax, data[key], S, f'L{L} ({ma},{mb}) den={den}',
+               Gs[key] * kG, abs(Gs[key]),
+               Q2s[key].real * kRe, Q2s[key].imag * kIm, Q2s[key])
+-        fig.suptitle(f'ステップ区間軌跡 t={RANGE_T0}..{RANGE_T1}（{rid}）— 剛体回転そのまま\n'
+-                     f'正規化なし・絶対スケール ±{S:.3f}（区間実測最大 |z|={Smax:.4f}）。'
+-                     f'細線=各波の軌跡（辺ごと1色）\n'
++        fig.suptitle(f'剛体回転除去 軌跡 t={RANGE_T0}..{RANGE_T1}（{rid}）— '
++                     f'W(t)=exp(−tΔτK₀)Z(t)、K₀=K(Z(0))\n'
++                     f'正規化なし・絶対スケール ±{S:.3f}（区間実測最大 |W|={Smax:.4f}）。'
++                     f'細線=各波の剛体除去後軌跡（辺ごと1色）\n'
+                      f'◯=t=0 状態（面積∝重複辺数・12桁丸め）、'
+                      f'緑×=重心 Σz(0)（max|Σz|={Gmax:.1f} 圧縮）、'
+                      f'橙×=Σz²(0) 残差（下枠=Re/max {Q2re_max:.1f}・左枠=Im/max {Q2im_max:.1f}）',
+                      fontsize=8.5, y=0.99)
+         handles = legend_handles()
+         handles.insert(0, Line2D([], [], color=plt.cm.turbo(0.5), ls='-', lw=1.0,
+-                                 label=f'各波の軌跡 t={RANGE_T0}..{RANGE_T1}（細い薄い実線、辺ごと1色）'))
++                                 label=f'各波の剛体除去後軌跡 W(t)、t={RANGE_T0}..{RANGE_T1}'
++                                       '（細い薄い実線、辺ごと1色）'))
+         fig.legend(handles=handles, loc='lower center', ncol=1, fontsize=7.5,
+                    frameon=False)
+         fig.tight_layout(rect=[0, 0.13, 1, 0.89])
+-        out1 = os.path.join(HERE, '..', 'plots', 'alltime_trajectory',
+-                            f'fig_states_trajectory_t{RANGE_T0}_{RANGE_T1}_{rid}_dense_rerun_20260917.png')
++        out1 = os.path.join(HERE, '..', 'plots', 'rigid_removed',
++                            f'fig_states_rigidremoved_t{RANGE_T0}_{RANGE_T1}_{rid}_dense_rerun_20260917.png')
+         fig.savefig(out1, dpi=200)
+         plt.close(fig)
+         print('->', os.path.basename(out1))

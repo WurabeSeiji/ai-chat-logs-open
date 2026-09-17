@@ -1,0 +1,136 @@
+--- plot_initial_states_finalformat_20260917.py	2026-09-17 10:47:52
++++ plot_states_alltime_trajectory_20260917.py	2026-09-17 10:55:20
+@@ -1,13 +1,20 @@
+ #!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+-"""初期状態 t=0 を最終図と同一形式で描くカタログ（2026-09-17 木原指示）。
++"""全ステップ軌跡の複素平面図・1 run = 1 図（2026-09-17 木原指示）。
+ 
+-plot_final_states_all99_20260916.py（実行用コピー）の物理コピー。変更は
+-(1) プロット対象を Z[T] → Z[0]、(2) カタログ配列ではなく 1 run = 1 図の単独出力、
+-(3) 題・ラベルの t=0 表記、(4) 出力ファイル名、のみ。作図ルール（panel() 無変更:
+-合成路なし・12桁丸め縮退・n>1 のみ数字・絶対スケール式・緑×/橙× 圧縮式）は
+-最終図と同一。
++plot_initial_states_finalformat_20260917.py の物理コピー。木原指示:
++「step0 の単独図（最終図形式）に、step1 から最終ステップまでの全状態を描画し、
++同じ波（辺）は細い薄い実線で繋いで1図にまとめる。剛体回転は無視してそのまま描く。」
+ 
++変更点:
++(1) states.npz の全 4097 状態を読み込み、各辺の軌跡を細い薄い実線（辺ごと1色、
++    turbo 配色、lw=0.35・alpha=0.35）で重ね描き（剛体回転除去なし・生の状態のまま）
++(2) 絶対スケール S を全ステップの実測最大 |z_e(t)| × 1.05 に変更
++    （t=0 基準のままでは軌跡がはみ出すため。正規化なしの思想は同じ）
++(3) t=0 の状態は従来どおり panel()（最終図形式: 合成路なし・12桁丸め縮退・
++    n>1 のみ数字・緑×=Σz・橙×=Σz²）で軌跡の上に描く
++(4) 題・凡例・出力ファイル名
++
+ 元ヘッダ: 全 99 走行の最終状態（t=4096）複素平面カタログ（2026-09-16、初期状態 v4 の最終ステージ版）。
+ 
+ 木原指示 2026-09-16: 「今の図を、最終ステージの状態で適切な名前で作成」。
+@@ -47,13 +54,13 @@
+ 
+ 
+ def load_final(L, ma, mb, den):
+-    """最終状態 z(T) と、保存量検証用の Q2(0), Q2(T) を返す（read-only）。"""
++    """t=0 状態と全 4097 状態 Z（軌跡用）を返す（read-only）。"""
+     rid = f'L{L}_ma{ma}_mb{mb}_den{den}'
+     with np.load(os.path.join(SURVEY, 'runs', rid, 'states.npz')) as d:
+-        Z = d['Z']
++        Z = np.array(d['Z'])
+         assert Z.shape[0] == T + 1
+-        z0, zT = np.array(Z[0]), np.array(Z[T])
+-    return z0, complex(np.sum(z0 ** 2)), complex(np.sum(z0 ** 2))
++        z0 = np.array(Z[0])
++    return z0, Z, complex(np.sum(z0 ** 2)), complex(np.sum(z0 ** 2))
+ 
+ 
+ def panel(ax, zT, S, label, gdisp, gtrue, q2x, q2y, q2true):
+@@ -111,32 +118,35 @@
+ 
+ 
+ def main():
+-    data, q2dev = {}, 0.0
++    data, traj, q2dev = {}, {}, 0.0
+     for L in MAIN_L:
+         for ma, mb in MAIN_PAIRS:
+             if have(L, ma, mb, L):
+-                zT, q0, qT = load_final(L, ma, mb, L)
++                zT, Ztr, q0, qT = load_final(L, ma, mb, L)
+                 data[(L, ma, mb, L)] = zT
++                traj[(L, ma, mb, L)] = Ztr
+                 q2dev = max(q2dev, abs(qT - q0))
+     for L in GCD_L:
+         for ma, mb in GCD_PAIRS:
+             if have(L, ma, mb, L):
+-                zT, q0, qT = load_final(L, ma, mb, L)
++                zT, Ztr, q0, qT = load_final(L, ma, mb, L)
+                 data[(L, ma, mb, L)] = zT
++                traj[(L, ma, mb, L)] = Ztr
+                 q2dev = max(q2dev, abs(qT - q0))
+     for L in CTRL_L:
+         for ma, mb in CTRL_PAIRS:
+             if have(L, ma, mb, CTRL_DEN):
+-                zT, q0, qT = load_final(L, ma, mb, CTRL_DEN)
++                zT, Ztr, q0, qT = load_final(L, ma, mb, CTRL_DEN)
+                 data[(L, ma, mb, CTRL_DEN)] = zT
++                traj[(L, ma, mb, CTRL_DEN)] = Ztr
+                 q2dev = max(q2dev, abs(qT - q0))
+     if not data:
+         print('states.npz が存在する run が無い — 図化せず終了')
+         return
+     print(f'存在する run: {len(data)}/99（欠損パネルは空欄表示）')
+-    S = max(float(np.max(np.abs(z))) for z in data.values()) * 1.05
++    S = max(float(np.max(np.abs(Zt))) for Zt in traj.values()) * 1.05
+     Smax = S / 1.05
+-    print(f'共通絶対スケール: max|z_e(0)| = {Smax:.6f} → 表示範囲 ±{S:.4f}')
++    print(f'共通絶対スケール: 全ステップ実測 max|z_e(t)| = {Smax:.6f} → 表示範囲 ±{S:.4f}')
+     print(f'Q2 参照（t=0 同士、恒等的に 0）: {q2dev:.3e}')
+     Gs = {key: complex(np.sum(z)) for key, z in data.items()}
+     Gmax = max(abs(g) for g in Gs.values())
+@@ -149,25 +159,35 @@
+     kIm = 0.97 * S / Q2im_max
+     print(f'二乗閉塞残差 max|Re Σz²| = {Q2re_max:.4f} / max|Im Σz²| = {Q2im_max:.4f}')
+ 
+-    # 1 run = 1 図（木原指示 2026-09-17: カタログ配列ではなく、この1図だけを取り出す）
++    # 1 run = 1 図: t=0 状態（最終図形式）＋ 全ステップ軌跡（細い薄い実線、剛体回転そのまま）
+     for key in sorted(data):
+         L, ma, mb, den = key
+         rid = f'L{L}_ma{ma}_mb{mb}_den{den}'
+         fig, ax = plt.subplots(figsize=(7.6, 8.6))
++        Ztr = traj[key]
++        M = Ztr.shape[1]
++        cols = plt.cm.turbo(np.linspace(0.02, 0.98, M))
++        for e in range(M):
++            ax.plot(Ztr[:, e].real, Ztr[:, e].imag, color=cols[e], lw=0.35,
++                    ls='-', alpha=0.35, zorder=1.5)
+         panel(ax, data[key], S, f'L{L} ({ma},{mb}) den={den}',
+               Gs[key] * kG, abs(Gs[key]),
+               Q2s[key].real * kRe, Q2s[key].imag * kIm, Q2s[key])
+-        fig.suptitle(f'初期状態 t=0・最終図形式（{rid}）\n'
+-                     f'正規化なし・絶対スケール ±{S:.3f}（実測最大 |z|={Smax:.4f}）。'
+-                     f'◯面積∝重複辺数（12桁丸め）\n'
+-                     f'緑×=重心 Σz（max|Σz|={Gmax:.1f} 圧縮）、'
+-                     f'橙×=Σz² 残差（下枠=Re/max {Q2re_max:.1f}・左枠=Im/max {Q2im_max:.1f}）',
+-                     fontsize=9, y=0.99)
+-        fig.legend(handles=legend_handles(), loc='lower center', ncol=1, fontsize=8,
++        fig.suptitle(f'全ステップ軌跡 t=0..{T}（{rid}）— 剛体回転そのまま\n'
++                     f'正規化なし・絶対スケール ±{S:.3f}（全ステップ実測最大 |z|={Smax:.4f}）。'
++                     f'細線=各波の軌跡（辺ごと1色）\n'
++                     f'◯=t=0 状態（面積∝重複辺数・12桁丸め）、'
++                     f'緑×=重心 Σz(0)（max|Σz|={Gmax:.1f} 圧縮）、'
++                     f'橙×=Σz²(0) 残差（下枠=Re/max {Q2re_max:.1f}・左枠=Im/max {Q2im_max:.1f}）',
++                     fontsize=8.5, y=0.99)
++        handles = legend_handles()
++        handles.insert(0, Line2D([], [], color=plt.cm.turbo(0.5), ls='-', lw=1.0,
++                                 label='各波の全ステップ軌跡（細い薄い実線、辺ごと1色）'))
++        fig.legend(handles=handles, loc='lower center', ncol=1, fontsize=7.5,
+                    frameon=False)
+-        fig.tight_layout(rect=[0, 0.11, 1, 0.90])
+-        out1 = os.path.join(HERE, '..', 'plots', 'initial_complex',
+-                            f'fig_initial_states_finalformat_{rid}_dense_rerun_20260917.png')
++        fig.tight_layout(rect=[0, 0.13, 1, 0.89])
++        out1 = os.path.join(HERE, '..', 'plots', 'alltime_trajectory',
++                            f'fig_states_alltime_trajectory_{rid}_dense_rerun_20260917.png')
+         fig.savefig(out1, dpi=200)
+         plt.close(fig)
+         print('->', os.path.basename(out1))
