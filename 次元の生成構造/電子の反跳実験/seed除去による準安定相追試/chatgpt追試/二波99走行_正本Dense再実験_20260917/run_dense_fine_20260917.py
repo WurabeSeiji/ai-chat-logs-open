@@ -15,6 +15,9 @@ den = 200·L（初期 Δτ·ω₀ ≈ 0.05 rad、K 成長 6 倍でも ~0.3 rad�
 - run_id は L{L}_ma{ma}_mb{mb}_den{200L}、保存先は runs_fine/。
 - QA は機械的確認のみ（状態数・NaN/Inf・metadata・SHA256）。drift・反対称残差は
   生値記録・閾値分類なし。実行ゲートなし。人為的停止なし。
+- 各 run 完了直後に fine 版図化4セット（初期複素 v4 / 終了複素 / インフレーション /
+  残差時系列、plot_scripts_run/plot_*_fine_20260917.py、存在 run のみ図化）を自動実行し、
+  図を常に最新の走行集合へ更新する（手動図化に依存しない＝再現性確保、2026-09-18 追加）。
 
 使い方: python3 run_dense_fine_20260917.py <base_run_id> [<base_run_id> ...]
   base_run_id は 99-manifest の run_id（例 L8_ma1_mb2_den8）。den・T のみ置換される。
@@ -51,6 +54,12 @@ QA_PATH = os.path.join(HERE, 'qa_summary_fine.json')
 PROGRESS_LOG = os.path.join(HERE, 'run_progress_20260917.log')
 CODE_FILES = ('interaction_kernel_theory_v1.py', 'generator_twowave_v1.py',
               'gen_manifest.py', 'run_dense_fine_20260917.py')
+# fine 版図化4セット（存在 run のみ図化する版）。粗い系列と同様、各 run 完了直後に
+# 自動実行して図を必ず最新の走行集合に更新する（手動図化に依存しない＝再現性確保）。
+PLOT_SCRIPTS = ('plot_initial_states_fine_20260917.py',
+                'plot_final_states_fine_20260917.py',
+                'plot_inflation_hperp_fine_20260917.py',
+                'plot_residual_timeseries_fine_20260917.py')
 
 
 def log_line(msg):
@@ -58,6 +67,26 @@ def log_line(msg):
     print(line, flush=True)
     with open(PROGRESS_LOG, 'a', encoding='utf-8') as f:
         f.write(line + '\n')
+
+
+def run_plots_after(rid):
+    """fine 図化4セットを順に実行（read-only 後処理）。失敗しても走行は続行する。"""
+    pdir = os.path.join(HERE, 'plot_scripts_run')
+    logdir = os.path.join(HERE, 'plot_logs')
+    os.makedirs(logdir, exist_ok=True)
+    plog = os.path.join(logdir, f'auto_after_fine_{rid}.log')
+    ok_all = True
+    with open(plog, 'w', encoding='utf-8') as f:
+        for name in PLOT_SCRIPTS:
+            t0 = time.time()
+            r = subprocess.run([sys.executable, name], cwd=pdir,
+                               stdout=f, stderr=subprocess.STDOUT)
+            dt = time.time() - t0
+            ok = (r.returncode == 0)
+            ok_all &= ok
+            log_line(f'  figure {name}: {"ok" if ok else f"FAIL(exit {r.returncode})"} '
+                     f'{dt:.1f}s')
+    return ok_all
 
 
 def sha256_file(path):
@@ -151,14 +180,38 @@ def do_run(row):
 def main():
     args = sys.argv[1:]
     if not args:
-        print('usage: python3 run_dense_fine_20260917.py <base_run_id> [<base_run_id> ...]')
+        print('usage: python3 run_dense_fine_20260917.py <base_run_id> [<base_run_id> ...] '
+              '| --upto-L <N>')
         sys.exit(2)
-    by_id = {r['run_id']: r for r in build_runs()}
-    for rid in args:
-        if rid not in by_id:
-            print(f'unknown base run_id: {rid}')
+    rows = build_runs()
+    by_id = {r['run_id']: r for r in rows}
+    if args[0] == '--upto-L':
+        if len(args) != 2 or not args[1].isdigit():
+            print('usage: python3 run_dense_fine_20260917.py --upto-L <N>')
             sys.exit(2)
-    selected = [by_id[rid] for rid in args]
+        lmax = int(args[1])
+        # fine では den=200L に固定されるため、(L,ma,mb) が同じ den40 対照は主系列と
+        # 同一 fine run_id に潰れる。fine run_id で重複排除し、既存 states.npz はスキップ。
+        selected, seen = [], set()
+        for r in rows:
+            if r['L'] > lmax:
+                continue
+            frid = f'L{r["L"]}_ma{r["ma"]}_mb{r["mb"]}_den{r["L"] * DEN_MULT}'
+            if frid in seen or os.path.exists(os.path.join(RUNS_DIR, frid, 'states.npz')):
+                continue
+            seen.add(frid)
+            selected.append(r)
+        if not selected:
+            print(f'L<={lmax} の未走行 fine run はありません')
+            sys.exit(0)
+        print(f'--upto-L {lmax}: 未走行 {len(selected)} fine run を実行'
+              '（走行済み・den40対照の重複はスキップ）')
+    else:
+        for rid in args:
+            if rid not in by_id:
+                print(f'unknown base run_id: {rid}')
+                sys.exit(2)
+        selected = [by_id[rid] for rid in args]
     qa_all = {}
     if os.path.exists(QA_PATH):
         with open(QA_PATH, encoding='utf-8') as f:
@@ -180,6 +233,7 @@ def main():
                        'n_fail': sum(1 for x in runs_list if x['qa_status'] == 'FAIL'),
                        'series': 'fine_den200L',
                        'runs': runs_list}, f, indent=1, ensure_ascii=False)
+        run_plots_after(r['run_id'])
     log_line(f'fine batch done: {len(selected)} run(s)')
 
 

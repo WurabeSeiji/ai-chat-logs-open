@@ -70,7 +70,11 @@ def main():
         sys.exit(1)
     summary = {}
     figf, axf = plt.subplots(figsize=(13.0, 7.0))
-    cols = plt.cm.tab10(np.linspace(0, 1, 10))
+    # 色は L 別（run 数に依存せず堅牢）。凡例は L ごとに1本だけ出す。
+    all_L = sorted({int(os.path.basename(os.path.dirname(p)).split('_')[0][1:])
+                    for p in paths})
+    lcol = {L: plt.cm.turbo(x) for L, x in zip(all_L, np.linspace(0.1, 0.9, len(all_L)))}
+    labeled = set()
     for i, p in enumerate(paths):
         t0 = time.time()
         rid, L, v_star, f_out, cross, E, ja, jb = analyze(p)
@@ -79,8 +83,9 @@ def main():
             f.writelines(f'{t},{repr(x)}\n' for t, x in enumerate(f_out))
         summary[rid] = {'star_vertex': v_star, 'f_out_final': float(f_out[-1]),
                         'f_out_min': float(f_out.min()), 'crossings': cross}
-        axf.plot(np.arange(len(f_out)), np.maximum(f_out, 1e-31), lw=0.7,
-                 color=cols[i], label=f'{rid}（星=頂点{v_star}）')
+        axf.plot(np.arange(len(f_out)), np.maximum(f_out, 1e-31), lw=0.6, alpha=0.7,
+                 color=lcol[L], label=(f'L={L}' if L not in labeled else None))
+        labeled.add(L)
         # 辺別振幅包絡図
         amax = float(np.abs(np.sqrt(E)).max())
         fig, ax = plt.subplots(figsize=(13.0, 7.0))
