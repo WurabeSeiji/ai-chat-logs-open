@@ -1,0 +1,18 @@
+--- /Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/自発的分裂予備実験_v1_N40対照実験系_20260904/静的完全ネットワーク_Z4被覆時空_検討_20260915/二波分離_固有周期_CRT検証_20260915/PhaseA_実装一式_v1_20260915/generator_phaseA.py	2026-09-15 17:26:05
++++ generator_twowave_v1.py	2026-09-17 09:21:35
+@@ -8,10 +8,14 @@
+ 
+ 規律: 生成時ラベル・モード番号は provenance であり、力学カーネルへは
+ {z_e} のみを渡す（dynamics metadata ≠ analysis metadata）。
++
++物理コピー元: PhaseA_実装一式_v1_20260915/generator_phaseA.py
++変更は import 元のみ（外部フォルダ import 禁止のため、本実験フォルダ内の
++interaction_kernel_theory_v1 から edges を取る）。数式・生成手順は無変更。
+ """
+ import numpy as np
+ 
+-from kernel_canonical_dense import edges
++from interaction_kernel_theory_v1 import edges
+ 
+ 
+ def generate(L, m_a=2, m_b=3):
