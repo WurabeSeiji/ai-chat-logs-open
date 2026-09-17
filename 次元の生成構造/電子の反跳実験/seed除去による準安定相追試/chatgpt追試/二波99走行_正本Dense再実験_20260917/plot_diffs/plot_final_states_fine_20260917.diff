@@ -1,0 +1,85 @@
+3c3,5
+< """全 99 走行の最終状態（t=4096）複素平面カタログ（2026-09-16、初期状態 v4 の最終ステージ版）。
+---
+> # fine 系列（den=200L・runs_fine/・T=819200）版。正本カタログ版（存在runガード付き実行コピー）の
+> # 物理コピーに機械置換のみ適用（2026-09-17 木原指示。物理式・パネル描画ロジック無変更）。
+> """全 99 走行の最終状態（t=819200）複素平面カタログ（2026-09-16、初期状態 v4 の最終ステージ版）。
+8,10c10,12
+<  - ◯ = z_e(4096)。面積∝同一値（12 桁丸め）の重複辺数、重複時（n>1）のみ数字を記載。
+<  - 緑× = 重心 Σ_e z_e(4096)（全 99 走行の max|Σz| 基準の全図共通線形圧縮、G=真の|Σz|）。
+<  - 橙× = 二乗閉塞残差 Σ_e z_e(4096)²（下枠=Re・左枠=Im、成分別 max 基準の共通圧縮、
+---
+>  - ◯ = z_e(819200)。面積∝同一値（12 桁丸め）の重複辺数、重複時（n>1）のみ数字を記載。
+>  - 緑× = 重心 Σ_e z_e(819200)（全 99 走行の max|Σz| 基準の全図共通線形圧縮、G=真の|Σz|）。
+>  - 橙× = 二乗閉塞残差 Σ_e z_e(819200)²（下枠=Re・左枠=Im、成分別 max 基準の共通圧縮、
+12c14
+<  - 共通絶対スケール ±S、S = 全 99 走行の実測最大 |z_e(4096)| × 1.05（正規化なし）。
+---
+>  - 共通絶対スケール ±S、S = 全 99 走行の実測最大 |z_e(819200)| × 1.05（正規化なし）。
+21c23
+< データは runs/*/states.npz の Z[4096]（検証用に Z[0] も）を read-only 参照のみ。
+---
+> データは runs/*/states.npz の Z[819200]（検証用に Z[0] も）を read-only 参照のみ。
+39a42,43
+> DEN_MULT = 200
+> TF = T * DEN_MULT
+40a45
+> 
+43,44c48,49
+<     rid = f'L{L}_ma{ma}_mb{mb}_den{den}'
+<     with np.load(os.path.join(SURVEY, 'runs', rid, 'states.npz')) as d:
+---
+>     rid = f'L{L}_ma{ma}_mb{mb}_den{den * DEN_MULT}'
+>     with np.load(os.path.join(SURVEY, 'runs_fine', rid, 'states.npz')) as d:
+46,47c51,52
+<         assert Z.shape[0] == T + 1
+<         z0, zT = np.array(Z[0]), np.array(Z[T])
+---
+>         assert Z.shape[0] == TF + 1
+>         z0, zT = np.array(Z[0]), np.array(Z[TF])
+89c94
+<                markerfacecolor='white', label='z(4096)（面積∝重複辺数、n>1 のみ数字）'),
+---
+>                markerfacecolor='white', label='z(819200)（面積∝重複辺数、n>1 のみ数字）'),
+101,102c106,107
+<     rid = f'L{L}_ma{ma}_mb{mb}_den{den}'
+<     return os.path.exists(os.path.join(SURVEY, 'runs', rid, 'states.npz'))
+---
+>     rid = f'L{L}_ma{ma}_mb{mb}_den{den * DEN_MULT}'
+>     return os.path.exists(os.path.join(SURVEY, 'runs_fine', rid, 'states.npz'))
+131c136
+<     print(f'共通絶対スケール: max|z_e(4096)| = {Smax:.6f} → 表示範囲 ±{S:.4f}'
+---
+>     print(f'共通絶対スケール: max|z_e(819200)| = {Smax:.6f} → 表示範囲 ±{S:.4f}'
+133c138
+<     print(f'Q2 保存検証: max|Q2(4096)−Q2(0)| = {q2dev:.3e}（全 99 run）')
+---
+>     print(f'Q2 保存検証: max|Q2(819200)−Q2(0)| = {q2dev:.3e}（全 99 run）')
+137c142
+<     print(f'重心 max|Σz(4096)| = {Gmax:.4f} → ×共通圧縮係数 {kG:.6e}')
+---
+>     print(f'重心 max|Σz(819200)| = {Gmax:.4f} → ×共通圧縮係数 {kG:.6e}')
+160c165
+<     fig.suptitle(f'最終状態 t=4096（主サーベイ 72 走行、den=L）— 正規化なし・共通絶対スケール '
+---
+>     fig.suptitle(f'最終状態 t=819200（主サーベイ 72 走行、den=200L）— 正規化なし・共通絶対スケール '
+168c173
+<     out1 = os.path.join(HERE, '..', 'plots', 'final_complex', 'fig_final_states_all99_page1_main72_dense_rerun_20260917.png')
+---
+>     out1 = os.path.join(HERE, '..', 'plots', 'final_complex', 'fig_final_states_fine_page1_main72_den200L_20260917.png')
+193c198
+<     fig.suptitle(f'最終状態 t=4096（gcd 系列 18 走行・上 6 行 ＋ den=40 対照 9 走行・下 3 行）\n'
+---
+>     fig.suptitle(f'最終状態 t=819200（gcd 系列 18 走行・上 6 行 ＋ den=40 対照 9 走行・下 3 行）\n'
+200c205
+<     out2 = os.path.join(HERE, '..', 'plots', 'final_complex', 'fig_final_states_all99_page2_gcd18_ctrl9_dense_rerun_20260917.png')
+---
+>     out2 = os.path.join(HERE, '..', 'plots', 'final_complex', 'fig_final_states_fine_page2_den200L_20260917.png')
+207c212
+<     print(f'重心 |Σz(4096)| 範囲: 最小 {gm[0][0]:.4f} ({gm[0][1]}) / '
+---
+>     print(f'重心 |Σz(819200)| 範囲: 最小 {gm[0][0]:.4f} ({gm[0][1]}) / '
+211c216
+<     print(f'最大振幅 max|z_e(4096)| 範囲: 最小 {amax[0][0]:.4f} ({amax[0][1]}) / '
+---
+>     print(f'最大振幅 max|z_e(819200)| 範囲: 最小 {amax[0][0]:.4f} ({amax[0][1]}) / '

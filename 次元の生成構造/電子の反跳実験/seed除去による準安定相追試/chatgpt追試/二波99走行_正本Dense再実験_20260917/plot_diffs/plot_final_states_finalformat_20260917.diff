@@ -1,0 +1,81 @@
+--- plot_initial_states_finalformat_20260917.py	2026-09-17 13:12:58
++++ plot_final_states_finalformat_20260917.py	2026-09-17 13:13:42
+@@ -1,9 +1,9 @@
+ #!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+-"""初期状態 t=0 を最終図と同一形式で描くカタログ（2026-09-17 木原指示）。
++"""最終状態 t=4096 の単独図（2026-09-17 木原指示、初期単独図の姉妹版）。
+ 
+ plot_final_states_all99_20260916.py（実行用コピー）の物理コピー。変更は
+-(1) プロット対象を Z[T] → Z[0]、(2) カタログ配列ではなく 1 run = 1 図の単独出力、
++(1) プロット対象は Z[T]（最終状態）、(2) カタログ配列ではなく 1 run = 1 図の単独出力、
+ (3) 題・ラベルの t=0 表記、(4) 出力ファイル名、のみ。作図ルール（panel() 無変更:
+ 合成路なし・12桁丸め縮退・n>1 のみ数字・絶対スケール式・緑×/橙× 圧縮式）は
+ 最終図と同一。
+@@ -53,7 +53,7 @@
+         Z = d['Z']
+         assert Z.shape[0] == T + 1
+         z0, zT = np.array(Z[0]), np.array(Z[T])
+-    return z0, complex(np.sum(z0 ** 2)), complex(np.sum(z0 ** 2))
++    return zT, complex(np.sum(z0 ** 2)), complex(np.sum(zT ** 2))
+ 
+ 
+ def panel(ax, zT, S, label, gdisp, gtrue, q2x, q2y, q2true):
+@@ -94,7 +94,7 @@
+ def legend_handles():
+     return [
+         Line2D([], [], color='black', marker='o', ls='none', markersize=7,
+-               markerfacecolor='white', label='z(0)（面積∝重複辺数、n>1 のみ数字）'),
++               markerfacecolor='white', label="z(4096)（面積∝重複辺数、n>1 のみ数字）"),
+         Line2D([], [], color='tab:green', marker='x', ls='none', markersize=8,
+                markeredgewidth=1.6,
+                label='重心 Σz（max|Σz| 基準の全図共通圧縮表示、G=真の|Σz|）'),
+@@ -142,12 +142,12 @@
+     print(f'存在する run: {len(data)}/99（欠損パネルは空欄表示）')
+     S = max(float(np.max(np.abs(z))) for z in data.values()) * 1.05
+     Smax = S / 1.05
+-    print(f'共通絶対スケール: max|z_e(0)| = {Smax:.6f} → 表示範囲 ±{S:.4f}')
+-    print(f'Q2 参照（t=0 同士、恒等的に 0）: {q2dev:.3e}')
++    print(f"共通絶対スケール: max|z_e(4096)| = {Smax:.6f} → 表示範囲 ±{S:.4f}")
++    print(f'Q2 保存検証 max|Q2(4096)−Q2(0)|: {q2dev:.3e}')
+     Gs = {key: complex(np.sum(z)) for key, z in data.items()}
+     Gmax = max(abs(g) for g in Gs.values())
+     kG = 0.97 * S / Gmax
+-    print(f'重心 max|Σz(0)| = {Gmax:.4f} → ×共通圧縮係数 {kG:.6e}')
++    print(f'重心 max|Σz(4096)| = {Gmax:.4f} → ×共通圧縮係数 {kG:.6e}')
+     Q2s = {key: complex(np.sum(z ** 2)) for key, z in data.items()}
+     Q2re_max = max(abs(q.real) for q in Q2s.values())
+     Q2im_max = max(abs(q.imag) for q in Q2s.values())
+@@ -163,7 +163,7 @@
+         panel(ax, data[key], S, f'L{L} ({ma},{mb}) den={den}',
+               Gs[key] * kG, abs(Gs[key]),
+               Q2s[key].real * kRe, Q2s[key].imag * kIm, Q2s[key])
+-        fig.suptitle(f'初期状態 t=0・最終図形式（{rid}）\n'
++        fig.suptitle(f'最終状態 t=4096（{rid}）\n'
+                      f'正規化なし・絶対スケール ±{S:.3f}（実測最大 |z|={Smax:.4f}）。'
+                      f'◯面積∝重複辺数（12桁丸め）\n'
+                      f'緑×=重心 Σz（max|Σz|={Gmax:.1f} 圧縮）、'
+@@ -172,19 +172,19 @@
+         fig.legend(handles=legend_handles(), loc='lower center', ncol=1, fontsize=8,
+                    frameon=False)
+         fig.tight_layout(rect=[0, 0.11, 1, 0.90])
+-        out1 = os.path.join(HERE, '..', 'plots', 'initial_complex',
+-                            f'fig_initial_states_finalformat_{rid}_dense_rerun_20260917.png')
++        out1 = os.path.join(HERE, '..', 'plots', 'final_complex',
++                            f'fig_final_states_finalformat_{rid}_dense_rerun_20260917.png')
+         fig.savefig(out1, dpi=200)
+         plt.close(fig)
+         print('->', os.path.basename(out1))
+ 
+     print(f'panels total: {len(data)}')
+     gm = sorted((abs(g), f'L{k[0]}_ma{k[1]}_mb{k[2]}_den{k[3]}') for k, g in Gs.items())
+-    print(f'重心 |Σz(0)| 範囲: 最小 {gm[0][0]:.4f} ({gm[0][1]}) / '
++    print(f'重心 |Σz(4096)| 範囲: 最小 {gm[0][0]:.4f} ({gm[0][1]}) / '
+           f'最大 {gm[-1][0]:.4f} ({gm[-1][1]})')
+     amax = sorted((float(np.max(np.abs(z))), f'L{k[0]}_ma{k[1]}_mb{k[2]}_den{k[3]}')
+                   for k, z in data.items())
+-    print(f'最大振幅 max|z_e(0)| 範囲: 最小 {amax[0][0]:.4f} ({amax[0][1]}) / '
++    print(f'最大振幅 max|z_e(4096)| 範囲: 最小 {amax[0][0]:.4f} ({amax[0][1]}) / '
+           f'最大 {amax[-1][0]:.4f} ({amax[-1][1]})')
+ 
+ 

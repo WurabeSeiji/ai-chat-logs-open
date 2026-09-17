@@ -104,9 +104,15 @@ def legend_handles():
     ]
 
 
+RIDS = set(sys.argv[1:])   # run_id 引数があればその run だけ図化（無指定は存在run全部）
+
+
 def have(L, ma, mb, den):
-    """段階実行対応（木原承認 2026-09-17）: states.npz が存在する run だけ図化する。"""
+    """段階実行対応（木原承認 2026-09-17）: states.npz が存在する run だけ図化する。
+    2026-09-17 追加: コマンドライン引数で run_id を指定した場合はその run に限定。"""
     rid = f'L{L}_ma{ma}_mb{mb}_den{den}'
+    if RIDS and rid not in RIDS:
+        return False
     return os.path.exists(os.path.join(SURVEY, 'runs', rid, 'states.npz'))
 
 

@@ -1,0 +1,43 @@
+47a48,49
+> RANGE_T0 = int(sys.argv[1]) if len(sys.argv) > 1 else 0
+> RANGE_T1 = int(sys.argv[2]) if len(sys.argv) > 2 else 1000  # 拡大区間（引数指定可）
+76c78
+<     ax.plot(np.arange(len(fz)), fz, color='black', lw=0.6)
+---
+>     ax.plot(np.arange(RANGE_T0, RANGE_T0 + len(fz)), fz, color='black', lw=0.6)
+78c80
+<     ax.set_xlim(0, TF)
+---
+>     ax.set_xlim(RANGE_T0, RANGE_T1)
+82,83c84,85
+<     ax.set_xticks([0, TF // 2, TF])
+<     ax.set_xticklabels(['0', str(TF // 2), str(TF)] if xlabels else [], fontsize=6)
+---
+>     ax.set_xticks([RANGE_T0, (RANGE_T0 + RANGE_T1) // 2, RANGE_T1])
+>     ax.set_xticklabels([str(RANGE_T0), str((RANGE_T0 + RANGE_T1) // 2), str(RANGE_T1)] if xlabels else [], fontsize=6)
+102c104
+<                 data[(L, ma, mb, L)] = series_hperp(L, ma, mb, L)
+---
+>                 data[(L, ma, mb, L)] = series_hperp(L, ma, mb, L)[RANGE_T0:RANGE_T1 + 1]
+110c112
+<                 data[(L, ma, mb, CTRL_DEN)] = series_hperp(L, ma, mb, CTRL_DEN)
+---
+>                 data[(L, ma, mb, CTRL_DEN)] = series_hperp(L, ma, mb, CTRL_DEN)[RANGE_T0:RANGE_T1 + 1]
+117,118c119,120
+<     print(f'H⊥/H step0: 最小 {f0[0][0]:.3e} {f0[0][1]} / 最大 {f0[-1][0]:.3e} {f0[-1][1]}')
+<     print(f'H⊥/H step{TF}: 最小 {fe[0][0]:.3e} {fe[0][1]} / 最大 {fe[-1][0]:.3e} {fe[-1][1]}')
+---
+>     print(f'H⊥/H step{RANGE_T0}: 最小 {f0[0][0]:.3e} {f0[0][1]} / 最大 {f0[-1][0]:.3e} {f0[-1][1]}')
+>     print(f'H⊥/H step{RANGE_T1}: 最小 {fe[0][0]:.3e} {fe[0][1]} / 最大 {fe[-1][0]:.3e} {fe[-1][1]}')
+133c135
+<     fig.suptitle('インフレーション図 H⊥/H（fine 系列、den=200L、t=0..819200）— '
+---
+>     fig.suptitle(f'インフレーション図 H⊥/H 拡大（fine 系列、den=200L、t={RANGE_T0}..{RANGE_T1}）— '
+137c139
+<     out1 = os.path.join(HERE, '..', 'plots', 'inflation', 'fig_inflation_hperp_fine_page1_main72_den200L_20260917.png')
+---
+>     out1 = os.path.join(HERE, '..', 'plots', 'inflation', f'fig_inflation_hperp_fine_zoom_t{RANGE_T0}_{RANGE_T1}_page1_20260917.png')
+161c163
+<     out2 = os.path.join(HERE, '..', 'plots', 'inflation', 'fig_inflation_hperp_fine_page2_den200L_20260917.png')
+---
+>     out2 = os.path.join(HERE, '..', 'plots', 'inflation', f'fig_inflation_hperp_fine_zoom_t{RANGE_T0}_{RANGE_T1}_page2_20260917.png')

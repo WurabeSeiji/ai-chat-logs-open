@@ -1,0 +1,49 @@
+2a3,4
+> # fine 系列（den=200L・runs_fine/・T=819200）版。正本カタログ版（存在runガード付き実行コピー）の
+> # 物理コピーに機械置換のみ適用（2026-09-17 木原指示。物理式・パネル描画ロジック無変更）。
+43a46,48
+> DEN_MULT = 200
+> TF = T * DEN_MULT
+> 
+52,53c57,58
+<     rid = f'L{L}_ma{ma}_mb{mb}_den{den}'
+<     d = np.load(os.path.join(SURVEY, 'runs', rid, 'states.npz'))
+---
+>     rid = f'L{L}_ma{ma}_mb{mb}_den{den * DEN_MULT}'
+>     d = np.load(os.path.join(SURVEY, 'runs_fine', rid, 'states.npz'))
+55c60
+<     assert S.shape[0] == T + 1
+---
+>     assert S.shape[0] == TF + 1
+73c78
+<     ax.set_xlim(0, T)
+---
+>     ax.set_xlim(0, TF)
+77,78c82,83
+<     ax.set_xticks([0, T // 2, T])
+<     ax.set_xticklabels(['0', str(T // 2), str(T)] if xlabels else [], fontsize=6)
+---
+>     ax.set_xticks([0, TF // 2, TF])
+>     ax.set_xticklabels(['0', str(TF // 2), str(TF)] if xlabels else [], fontsize=6)
+88,89c93,94
+<     rid = f'L{L}_ma{ma}_mb{mb}_den{den}'
+<     return os.path.exists(os.path.join(SURVEY, 'runs', rid, 'states.npz'))
+---
+>     rid = f'L{L}_ma{ma}_mb{mb}_den{den * DEN_MULT}'
+>     return os.path.exists(os.path.join(SURVEY, 'runs_fine', rid, 'states.npz'))
+113c118
+<     print(f'H⊥/H step{T}: 最小 {fe[0][0]:.3e} {fe[0][1]} / 最大 {fe[-1][0]:.3e} {fe[-1][1]}')
+---
+>     print(f'H⊥/H step{TF}: 最小 {fe[0][0]:.3e} {fe[0][1]} / 最大 {fe[-1][0]:.3e} {fe[-1][1]}')
+128c133
+<     fig.suptitle('インフレーション図 H⊥/H（主サーベイ 72 走行、den=L、t=0..4096）— '
+---
+>     fig.suptitle('インフレーション図 H⊥/H（主サーベイ 72 走行、den=L、t=0..819200）— '
+132c137
+<     out1 = os.path.join(HERE, '..', 'plots', 'inflation', 'fig_inflation_hperp_all99_page1_main72_dense_rerun_20260917.png')
+---
+>     out1 = os.path.join(HERE, '..', 'plots', 'inflation', 'fig_inflation_hperp_fine_page1_main72_den200L_20260917.png')
+156c161
+<     out2 = os.path.join(HERE, '..', 'plots', 'inflation', 'fig_inflation_hperp_all99_page2_gcd18_ctrl9_dense_rerun_20260917.png')
+---
+>     out2 = os.path.join(HERE, '..', 'plots', 'inflation', 'fig_inflation_hperp_fine_page2_den200L_20260917.png')

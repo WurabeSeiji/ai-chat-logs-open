@@ -1,0 +1,30 @@
+2a3,4
+> # fine 系列（den=200L・runs_fine/・T=819200）版。正本カタログ版（存在runガード付き実行コピー）の
+> # 物理コピーに機械置換のみ適用（2026-09-17 木原指示。物理式・パネル描画ロジック無変更）。
+45a48,49
+> DEN_MULT = 200
+> 
+55,56c59,60
+<     rid = f'L{L}_ma{ma}_mb{mb}_den{den}'
+<     with np.load(os.path.join(SURVEY, 'runs', rid, 'states.npz')) as d:
+---
+>     rid = f'L{L}_ma{ma}_mb{mb}_den{den * DEN_MULT}'
+>     with np.load(os.path.join(SURVEY, 'runs_fine', rid, 'states.npz')) as d:
+139,140c143,144
+<     rid = f'L{L}_ma{ma}_mb{mb}_den{den}'
+<     return os.path.exists(os.path.join(SURVEY, 'runs', rid, 'states.npz'))
+---
+>     rid = f'L{L}_ma{ma}_mb{mb}_den{den * DEN_MULT}'
+>     return os.path.exists(os.path.join(SURVEY, 'runs_fine', rid, 'states.npz'))
+193c197
+<     fig.suptitle('初期状態 t=0 v4（主サーベイ 72 走行、den=L）— 正規化なし・共通絶対スケール '
+---
+>     fig.suptitle('初期状態 t=0 v4（主サーベイ 72 走行、den=200L）— 正規化なし・共通絶対スケール '
+202c206
+<     out1 = os.path.join(HERE, '..', 'plots', 'initial_complex', 'fig_initial_states_all99_v4_page1_main72_dense_rerun_20260917.png')
+---
+>     out1 = os.path.join(HERE, '..', 'plots', 'initial_complex', 'fig_initial_states_fine_page1_main72_den200L_20260917.png')
+236c240
+<     out2 = os.path.join(HERE, '..', 'plots', 'initial_complex', 'fig_initial_states_all99_v4_page2_gcd18_ctrl9_dense_rerun_20260917.png')
+---
+>     out2 = os.path.join(HERE, '..', 'plots', 'initial_complex', 'fig_initial_states_fine_page2_den200L_20260917.png')
