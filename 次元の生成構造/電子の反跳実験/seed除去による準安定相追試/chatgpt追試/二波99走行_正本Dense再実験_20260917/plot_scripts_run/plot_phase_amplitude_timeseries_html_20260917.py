@@ -19,6 +19,11 @@ v5 までの「実行のたびに存在する全 run を検出し run ごとの�
     位相・正規化振幅を全 4097 step・全辺ぶん JSON で書き出す（丸めなし・
     repr 最短往復精度）。states.npz より新しい既存データはスキップ（増分生成）。
 
+v7（2026-09-17 木原指示）: 位相の振幅カットオフ選択を追加。正規化振幅が
+指定値未満の点では位相を非表示（null で線を途切れさせる）。既定=カットオフ無し、
+選択肢 0.1 / 0.2 / 0.3 / 0.5 / 0.7 / 1.0。振幅表示・hover・選択には影響しない。
+run 切替時も選択中のカットオフを維持適用。
+
 データは states.npz の read-only 参照のみ。
 
 使い方: python3 plot_phase_amplitude_timeseries_html_20260917.py
@@ -46,8 +51,28 @@ var TMAX = __TMAX__;
 var COLORS = __COLORS_JSON__;      // M（辺数）→ turbo 色配列
 var INITIAL = '__INITIAL__';
 var current = null;                // 表示中の run_id
+var curData = null;                // 表示中の run データ（カットオフ再適用用）
 var selected = null;               // モーダル選択中の波（meta 値）。null = 非選択
 var phaseOn = true, ampOn = true;  // 表示モード（初期値: 両方 ON）
+var cutoff = null;                 // 位相の振幅カットオフ（正規化値）。null = カットオフ無し
+function applyCutoff(){
+  // 正規化振幅 < cutoff の点は位相を null にして非表示（線は途切れる）。
+  // 対象は位相トレース（各辺の 3e 番目）のみ。振幅表示には影響しない。
+  if(!curData){ return; }
+  var M = curData.edges.length;
+  var idx = [], ys = [];
+  for(var e = 0; e < M; e++){
+    var ph = curData.phase[e], an = curData.ampn[e];
+    var y;
+    if(cutoff === null){ y = ph; }
+    else {
+      y = new Array(ph.length);
+      for(var i = 0; i < ph.length; i++){ y[i] = (an[i] >= cutoff) ? ph[i] : null; }
+    }
+    ys.push(y); idx.push(3 * e);
+  }
+  Plotly.restyle(gd, {'y': ys}, idx);
+}
 function cls(t){
   if(t.yaxis === 'y2'){ return (t.mode === 'lines') ? 'conn' : 'amp'; }
   return 'phase';
@@ -87,7 +112,7 @@ function applyVis(){
   Plotly.restyle(gd, {'visible': vis, 'showlegend': sl});
 }
 function buildAndRender(d){
-  current = d.rid; selected = null;
+  current = d.rid; curData = d; selected = null;
   var M = d.edges.length;
   var cols = COLORS[String(M)];
   var tt = new Array(d.T + 1);
@@ -125,6 +150,7 @@ function buildAndRender(d){
     '振幅正規化: 全体最大 ' + d.amax.toFixed(4) + '</sup>'});
   applyVis();
   apply();
+  applyCutoff();   // 選択中のカットオフを新しい run にも適用
 }
 function loadRun(rid){
   if(rid === current){ return; }
@@ -164,6 +190,10 @@ gd.on('plotly_buttonclicked', function(d){
     phaseOn = !phaseOn; applyVis();
   } else if(lbl.indexOf('振幅') === 0){
     ampOn = !ampOn; applyVis();
+  } else if(lbl.indexOf('カットオフ') === 0){
+    var v = lbl.replace('カットオフ', '').trim();
+    cutoff = (v === '無し') ? null : parseFloat(v);
+    applyCutoff();
   } else if(lbl.charAt(0) === 'L'){
     loadRun(lbl);
   }
@@ -249,6 +279,11 @@ def write_viewer(outdir, rid_all, initial_rid):
             dict(type='buttons', direction='left', x=0.72, y=1.10, xanchor='left',
                  buttons=[dict(label='位相 ON/OFF', method='skip'),
                           dict(label='振幅 ON/OFF', method='skip')]),
+            dict(type='dropdown', direction='down', x=0.90, y=1.10,
+                 xanchor='left', active=0,
+                 buttons=[dict(label='カットオフ無し', method='skip')] +
+                         [dict(label=f'カットオフ {c}', method='skip')
+                          for c in ('0.1', '0.2', '0.3', '0.5', '0.7', '1.0')]),
             dict(type='dropdown', direction='down', x=0.44, y=1.10,
                  xanchor='left', active=rid_all.index(initial_rid),
                  buttons=[dict(label=r, method='skip') for r in rid_all]),
