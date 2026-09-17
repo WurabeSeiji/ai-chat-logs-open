@@ -18,9 +18,10 @@ python3 structural_audit_v1.py L8_ma1_mb2_den8 L8_ma1_mb3_den8 L8_ma2_mb4_den8
 # 3) 確認後、残り2本
 # python3 run_dense_rerun.py L8_ma1_mb3_den8 L8_ma2_mb4_den8
 
-# 4) 図化 — plot_scripts_run/ は「存在する run だけ図化（欠損パネルは空欄）」対応済み
+# 4) 図化（4本）— plot_scripts_run/ は「存在する run だけ図化（欠損パネルは空欄）」対応済み
 #    （木原承認 2026-09-17、README.md 参照）。走行数に関わらずそのまま実行できる。
 # cd plot_scripts_run
 # python3 plot_initial_states_all99_v4_20260916.py  > ../plot_logs/initial.log 2>&1
 # python3 plot_final_states_all99_20260916.py       > ../plot_logs/final.log 2>&1
 # python3 plot_inflation_hperp_all99_20260916.py    > ../plot_logs/inflation.log 2>&1
+# python3 plot_residual_timeseries_all99_20260916.py > ../plot_logs/residual.log 2>&1

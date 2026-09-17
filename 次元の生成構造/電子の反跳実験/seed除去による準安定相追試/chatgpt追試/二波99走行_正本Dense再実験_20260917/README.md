@@ -29,7 +29,7 @@
 | `structural_audit_v1.py` | §4 構造診断（新規） | 8項目を生値で記録するだけ（判定・閾値・実験開始ゲートなし。2026-09-17 指示でゲート撤去） |
 | `run_dense_rerun.py` | ランナー（新規） | run_id 明示指定制。実行ゲートなし（2026-09-17 指示）。スレッド1固定・環境 fingerprint 保存。力学は kernel の one_step のみ |
 | `run_all_phase2.sh` | Phase 2 手順書 | 未実行 |
-| `plot_scripts_original/` | 旧図化正本3本 | 旧 figures_v1 と**バイト同一** |
+| `plot_scripts_original/` | 旧図化正本4本（初期複素・終了複素・インフレーション・残差時系列） | 旧 figures_v1 と**バイト同一** |
 | `plot_scripts_run/` | 図化実行用コピー | 出力パス文字列（各2行）＋**存在 run のみ図化ガード**（木原承認 2026-09-17、証跡 `plot_diffs/*.diff`） |
 | `provenance/` | 出自証跡 diff 一式 | — |
 | `SHA256SUMS_code.txt` | コード SHA256 固定（Phase 1 時点） | — |
@@ -53,8 +53,7 @@
 
 ## 図化の段階実行対応（木原承認 2026-09-17）
 
-旧カタログ図化3本は manifest の99走行全部を読む設計のため、木原指示により
-`plot_scripts_run/` の3本へ「**存在する states.npz の run だけ読込・図化し、
+`plot_scripts_run/` の各本へ「**存在する states.npz の run だけ読込・図化し、
 欠損パネルは空欄（axis off）にする**」最小変更を承認の上で追加した。
 
 - 変更内容は各スクリプト共通: `have()` 存在チェック関数の追加、データ読込ループの

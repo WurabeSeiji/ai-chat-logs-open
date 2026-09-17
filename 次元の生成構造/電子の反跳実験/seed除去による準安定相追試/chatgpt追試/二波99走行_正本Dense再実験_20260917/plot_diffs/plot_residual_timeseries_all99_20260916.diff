@@ -1,0 +1,93 @@
+--- plot_scripts_original/plot_residual_timeseries_all99_20260916.py	2026-09-17 10:11:37
++++ plot_scripts_run/plot_residual_timeseries_all99_20260916.py	2026-09-17 10:12:05
+@@ -86,17 +86,30 @@
+     ]
+ 
+ 
++def have(L, ma, mb, den):
++    """段階実行対応（木原承認 2026-09-17）: states.npz が存在する run だけ図化する。"""
++    rid = f'L{L}_ma{ma}_mb{mb}_den{den}'
++    return os.path.exists(os.path.join(SURVEY, 'runs', rid, 'states.npz'))
++
++
+ def main():
+     data = {}
+     for L in MAIN_L:
+         for ma, mb in MAIN_PAIRS:
+-            data[(L, ma, mb, L)] = load_series(L, ma, mb, L)
++            if have(L, ma, mb, L):
++                data[(L, ma, mb, L)] = load_series(L, ma, mb, L)
+     for L in GCD_L:
+         for ma, mb in GCD_PAIRS:
+-            data[(L, ma, mb, L)] = load_series(L, ma, mb, L)
++            if have(L, ma, mb, L):
++                data[(L, ma, mb, L)] = load_series(L, ma, mb, L)
+     for L in CTRL_L:
+         for ma, mb in CTRL_PAIRS:
+-            data[(L, ma, mb, CTRL_DEN)] = load_series(L, ma, mb, CTRL_DEN)
++            if have(L, ma, mb, CTRL_DEN):
++                data[(L, ma, mb, CTRL_DEN)] = load_series(L, ma, mb, CTRL_DEN)
++    if not data:
++        print('states.npz が存在する run が無い — 図化せず終了')
++        return
++    print(f'存在する run: {len(data)}/99（欠損パネルは空欄表示）')
+ 
+     peak = {key: max(float(np.max(np.abs(s2.real))), float(np.max(np.abs(s2.imag))),
+                      float(np.max(np.abs(s1.real))), float(np.max(np.abs(s1.imag))))
+@@ -115,9 +128,12 @@
+     fig, axs = plt.subplots(len(MAIN_L), len(MAIN_PAIRS), figsize=(26.0, 13.5))
+     for i, L in enumerate(MAIN_L):
+         for j, (ma, mb) in enumerate(MAIN_PAIRS):
+-            s1, s2 = data[(L, ma, mb, L)]
+-            panel(axs[i, j], s1, s2, Y, f'L{L} ({ma},{mb})',
+-                  xlabels=(i == len(MAIN_L) - 1))
++            if (L, ma, mb, L) in data:
++                s1, s2 = data[(L, ma, mb, L)]
++                panel(axs[i, j], s1, s2, Y, f'L{L} ({ma},{mb})',
++                      xlabels=(i == len(MAIN_L) - 1))
++            else:
++                axs[i, j].axis('off')
+         axs[i, 0].set_ylabel(f'L={L}', fontsize=10)
+     for j, (ma, mb) in enumerate(MAIN_PAIRS):
+         cls = 'odd-odd' if j < 3 else ('even-even' if j < 6 else 'odd-even')
+@@ -129,7 +145,7 @@
+     fig.legend(handles=legend_handles(), loc='lower center', ncol=6, fontsize=9,
+                frameon=False)
+     fig.tight_layout(rect=[0, 0.028, 1, 0.972])
+-    out1 = os.path.join(HERE, 'fig_residual_timeseries_all99_page1_main72_20260916.png')
++    out1 = os.path.join(HERE, '..', 'plots', 'residual_timeseries', 'fig_residual_timeseries_all99_page1_main72_dense_rerun_20260917.png')
+     fig.savefig(out1, dpi=130)
+     plt.close(fig)
+     print('page1 ->', os.path.basename(out1))
+@@ -140,21 +156,23 @@
+                           top=0.945, bottom=0.045, left=0.05, right=0.97)
+     for i, L in enumerate(GCD_L):
+         for j, (ma, mb) in enumerate(GCD_PAIRS):
+-            ax = fig.add_subplot(gs[i, j])
+-            s1, s2 = data[(L, ma, mb, L)]
+-            panel(ax, s1, s2, Y, f'L{L} ({ma},{mb}) den={L}')
++            if (L, ma, mb, L) in data:
++                ax = fig.add_subplot(gs[i, j])
++                s1, s2 = data[(L, ma, mb, L)]
++                panel(ax, s1, s2, Y, f'L{L} ({ma},{mb}) den={L}')
+     for i, L in enumerate(CTRL_L):
+         for j, (ma, mb) in enumerate(CTRL_PAIRS):
+-            ax = fig.add_subplot(gs[6 + i, j])
+-            s1, s2 = data[(L, ma, mb, CTRL_DEN)]
+-            panel(ax, s1, s2, Y, f'L{L} ({ma},{mb}) den={CTRL_DEN}',
+-                  xlabels=(i == len(CTRL_L) - 1))
++            if (L, ma, mb, CTRL_DEN) in data:
++                ax = fig.add_subplot(gs[6 + i, j])
++                s1, s2 = data[(L, ma, mb, CTRL_DEN)]
++                panel(ax, s1, s2, Y, f'L{L} ({ma},{mb}) den={CTRL_DEN}',
++                      xlabels=(i == len(CTRL_L) - 1))
+     fig.suptitle('残差時系列 t=0..4096（gcd 系列 18 走行・上 6 行 ＋ den=40 対照 9 走行・下 3 行）\n'
+                  f'生値・全図共通スケール ±{Y:.1f}。実線=Σz²（赤=Re・青=Im、保存量）、'
+                  '点線=重心 Σz（赤=Re・青=Im）', fontsize=10, y=0.99)
+     fig.legend(handles=legend_handles(), loc='lower center', ncol=2, fontsize=8,
+                frameon=False)
+-    out2 = os.path.join(HERE, 'fig_residual_timeseries_all99_page2_gcd18_ctrl9_20260916.png')
++    out2 = os.path.join(HERE, '..', 'plots', 'residual_timeseries', 'fig_residual_timeseries_all99_page2_gcd18_ctrl9_dense_rerun_20260917.png')
+     fig.savefig(out2, dpi=130)
+     plt.close(fig)
+     print('page2 ->', os.path.basename(out2))
