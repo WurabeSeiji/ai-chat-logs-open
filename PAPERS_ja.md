@@ -4,7 +4,7 @@
 全論文は Zenodo で CC BY 4.0 公開。各行：題名（日本語 / 英語）・Version DOI・Concept DOI・公開日・版・PDF・リポジトリ内フォルダ・リリースノート。
 本ファイルは `tools/gen_paper_index.py` により Zenodo API から自動生成。English: [PAPERS_en.md](PAPERS_en.md) / Scholar 用ページ: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**論文数: 142**
+**論文数: 143**
 
 ## グノモン正写像による4次元時空の幾何学的定式化 / Central Projection Framework (Gnomonic Spacetime Geometry)
 
@@ -322,6 +322,10 @@
 10. **共役複素ノルムと平方量読出しの接続について**  
    On the Connection Between the Conjugate Complex Norm and Square-Quantity Readout  
    DOI [10.5281/zenodo.21127200](https://doi.org/10.5281/zenodo.21127200) · Concept [10.5281/zenodo.21126212](https://doi.org/10.5281/zenodo.21126212) · 2026-07-02 · v0.5 · [PDF en](https://zenodo.org/records/21127200/files/paper_complex_norm_square_readout_en_v0_5.pdf) [PDF ja](https://zenodo.org/records/21127200/files/paper_complex_norm_square_readout_ja_v0_5.pdf)  
+   フォルダ: [平方数を基本量とした場合の検討](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E5%B9%B3%E6%96%B9%E6%95%B0%E3%82%92%E5%9F%BA%E6%9C%AC%E9%87%8F%E3%81%A8%E3%81%97%E3%81%9F%E5%A0%B4%E5%90%88%E3%81%AE%E6%A4%9C%E8%A8%8E) · [リリースノート](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E5%B9%B3%E6%96%B9%E6%95%B0%E3%82%92%E5%9F%BA%E6%9C%AC%E9%87%8F%E3%81%A8%E3%81%97%E3%81%9F%E5%A0%B4%E5%90%88%E3%81%AE%E6%A4%9C%E8%A8%8E/RELEASE_NOTES.md)
+11. **複素数の閉性からの関係・閉路・フラックス・凝縮体の読出し**  
+   Reading Relations, Loops, Flux, and Condensates from the Closure of Complex Numbers: A Minimal-Assumption Thought Experiment That Shaves Off Axiom Candidates  
+   DOI [10.5281/zenodo.22841917](https://doi.org/10.5281/zenodo.22841917) · Concept [10.5281/zenodo.22841916](https://doi.org/10.5281/zenodo.22841916) · 2026-09-19 · v1.3 · [PDF en](https://zenodo.org/records/22841917/files/paper_complex_square_closure_flux_condensate_readout_en_v1_3.pdf) [PDF ja](https://zenodo.org/records/22841917/files/paper_complex_square_closure_flux_condensate_readout_ja_v1_3.pdf)  
    フォルダ: [平方数を基本量とした場合の検討](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E5%B9%B3%E6%96%B9%E6%95%B0%E3%82%92%E5%9F%BA%E6%9C%AC%E9%87%8F%E3%81%A8%E3%81%97%E3%81%9F%E5%A0%B4%E5%90%88%E3%81%AE%E6%A4%9C%E8%A8%8E) · [リリースノート](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E5%B9%B3%E6%96%B9%E6%95%B0%E3%82%92%E5%9F%BA%E6%9C%AC%E9%87%8F%E3%81%A8%E3%81%97%E3%81%9F%E5%A0%B4%E5%90%88%E3%81%AE%E6%A4%9C%E8%A8%8E/RELEASE_NOTES.md)
 
 ## 波の情報読出し / Information Readout of Waves (Closed Two-Channel Systems)

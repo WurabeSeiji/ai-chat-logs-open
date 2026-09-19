@@ -1,0 +1,1643 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Reading Relations{,} Loops{,} Flux{,} and Condensates from the Closure of Complex Numbers --- A Minimal-Assumption Thought Experiment That Shaves Off Axiom Candidates},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Reading Relations, Loops, Flux, and Condensates from the Closure
+of Complex Numbers --- A Minimal-Assumption Thought Experiment That
+Shaves Off Axiom Candidates}
+\author{Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020}
+\date{September 19, 2026 Version DOI 10.5281/zenodo.22841917}
+
+\begin{document}
+\maketitle
+
+\textbf{Author:} Noriaki Kihara\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Date:} 2026-09-19\\
+\textbf{Version:} v1.3 (review revision: the vanishing global flux
+recast as a derived identity, domain conditions for the complex
+logarithm, the curvature readout restricted to a correspondence map,
+finite sequences made explicit)\\
+\textbf{Version DOI:} 10.5281/zenodo.22841917\\
+\textbf{Concept DOI:} 10.5281/zenodo.22841916
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+This paper proposes no new algebraic law and no new equation of motion.
+The starting point is only the ordinary complex number
+\(z\in\mathbb C\), and the only facts used are the known ones that
+complex numbers are closed under addition, multiplication, and squaring.
+In particular, for any finite complex sequence \(\{z_n\}_{n=1}^{N}\) we
+have \(z_n^2\in\mathbb C\), so setting \(Z_n:=z_n^2\) we can read
+
+\[
+\sum_{n=1}^{N} z_n^2=\sum_{n=1}^{N} Z_n=K,\qquad K\in\mathbb C.
+\]
+
+Furthermore, any \(K\in\mathbb C\) can be written as \(K=C^2\) for some
+\(C\in\mathbb C\), so
+
+\[
+\sum_n z_n^2=C^2
+\]
+
+is not a new physical axiom but a notation that stays within the closure
+of the complex numbers.
+
+The subject of this paper is not this trivial fact itself but its
+\textbf{order of readout}. In the thought experiment, we questioned, one
+by one, complete networks, external standards, ratios, equality tests,
+zero closure, and the presupposition of triangles and vertices, removing
+hidden assumptions against namelessness. As a result, when the squared
+quantities \(Z_n\) are read as ordinary complex relations, we found that
+sums of multiple relations, loops, loop residuals, face fluxes,
+cancellation of shared parts, closed polyhedra as condensates, and
+further the hierarchization of condensates can all be described while
+staying within the same complex-number type.
+
+If the sum of three relations is zero it can be read as a loop; if
+nonzero it carries a residual \(K_f\). When multiple loops are glued
+together with orientations, shared edges cancel with opposite signs, and
+only the quantities remaining on the external boundary survive as
+effective flux. Since the face residual \(K_f\) is itself a complex
+number, it can be reused as a relation at the next level of the
+hierarchy. This hierarchy has the characteristic that edge, face, and
+cell types need not be postulated separately: the recursion runs inside
+the same \(\mathbb C\).
+
+At the end, the paper compares structural similarities with lattice
+gauge theory, coarse-graining of spin networks, closure defects, the
+Bianchi identity, and bubble networks. However, none of these is placed
+at the starting point. The candidate novelty of this paper is not a
+simplification of existing theories but \textbf{the fact that, starting
+only from the trivial closure of ordinary complex numbers and shaving
+off hidden assumptions along the way, we obtain a minimal interpretive
+framework that reads off loops, curvature, flux, and condensates}.
+
+\textbf{Keywords:} complex numbers, squared quantities, loop, closure,
+closure defect, flux, curvature, condensate, namelessness, minimal
+assumptions, lattice gauge theory
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. What This Paper Does and Does Not
+Claim}\label{what-this-paper-does-and-does-not-claim}
+
+\subsubsection{1.1 What is not claimed}\label{what-is-not-claimed}
+
+This paper does not claim the following as new mathematical theorems.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  That the square of a complex number is a complex number.
+\item
+  That a finite sum of complex numbers is a complex number.
+\item
+  That every complex number has a complex square root.
+\item
+  That if a sum of complex vectors is zero it can be drawn as a closed
+  polygon.
+\item
+  That on an oriented boundary a shared element appears with opposite
+  signs.
+\end{enumerate}
+
+These are known mathematics.
+
+\subsubsection{1.2 The subject of this
+paper}\label{the-subject-of-this-paper}
+
+What this paper addresses is \textbf{in what order, and without which
+additional assumptions, the known facts above can be read as physical
+structure}.
+
+Therefore this paper is not a ``paper proposing a new equation'' but
+
+\[
+\boxed{\text{a minimal-assumption readout paper on known identity structures.}}
+\]
+
+\subsubsection{1.3 Methodology}\label{methodology}
+
+At each stage of the thought experiment, before introducing a new
+structure we ask:
+
+\begin{itemize}
+\tightlist
+\item
+  Is the structure derived from the algebra of complex numbers?
+\item
+  Are we implicitly importing an external standard?
+\item
+  Does it require names of individuals or vertices?
+\item
+  Are we granting in advance a complete graph, distance, dimension,
+  coordinates, or time?
+\item
+  Are we placing a ``same/different'' detector as a primitive operation?
+\item
+  Are we importing an existing physical theory back into the
+  foundations?
+\end{itemize}
+
+Only what cannot be derived yet is needed remains as an \textbf{axiom
+candidate}; whatever can be derived is removed from the axiom
+candidates.
+
+\subsubsection{1.4 Revision note for v1.2: a hidden assumption about the
+completeness of many-body
+relations}\label{revision-note-for-v1.2-a-hidden-assumption-about-the-completeness-of-many-body-relations}
+
+After completing v1.1 of this paper, we read Anegawa, Miyata, Suzuki,
+Tamaoka (2026) {[}6{]}. Although that paper works in a different
+framework --- quantum information and holography --- it exhibits
+examples in which, for a fixed tripartition, quantities measuring
+genuine multi-partite entanglement can continue to evolve in time even
+after the ordinary entanglement entropies of the subsystems have
+saturated.
+
+Prompted by examining that paper, we noticed that v1.1 of the present
+paper implicitly retained the assumption
+
+\[
+\boxed{\{Z_e,K_f\}\ \text{suffices to exhaust the effective relational information of a many-body system.}}
+\]
+
+That is, we had effectively presupposed that the pairwise complex
+relations \(Z_e\), together with the set of loop residuals \(K_f\)
+constructed from them, suffice to read the relational structure of a
+many-body system. This completeness, however, has not been derived from
+the complex-number algebra of this paper.
+
+The results of Anegawa et al.~{[}6{]} neither directly support nor
+refute the present model, and \(K_f\) cannot be identified with
+multi-entropy. On the other hand, the concrete example that
+\textbf{irreducible many-body relations can remain even after low-order
+readouts saturate} shows that the above completeness cannot be taken for
+granted.
+
+Therefore, in v1.2 this assumption is removed from the derived
+properties, and its validity is stated explicitly as a problem for
+future work. This revision is the result of applying to the paper itself
+the very methodology the paper adopts: ``when a hidden assumption is
+discovered, delete it or put it on hold.''
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Starting Point: A Single Complex
+Number}\label{starting-point-a-single-complex-number}
+
+Take as the starting point
+
+\[
+z\in\mathbb C.
+\]
+
+Here we assume no particles, edges, vertices, faces, space, time, gauge
+group, or network.
+
+From the closure of the complex field,
+
+\[
+z^2\in\mathbb C.
+\]
+
+This is utterly trivial. But in this paper we pursue how much structure
+can be read without breaking this triviality.
+
+Even when a single complex number is multiplied by itself,
+
+\[
+z\mapsto z^2,
+\]
+
+the result is again a single complex number. Therefore, at this stage
+one cannot say ``one body has split into two'' or ``a new vertex has
+appeared.'' The algebraic type remains
+
+\[
+\mathbb C\to\mathbb C.
+\]
+
+What matters here is that \textbf{the generation history and the number
+of individuals cannot be recovered from the results of complex
+operations alone}. Hence, to discuss structure, the case in which
+multiple complex relations appear simultaneously must be considered
+separately.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. Two Complex Numbers: Take the Product, Not a
+Comparator}\label{two-complex-numbers-take-the-product-not-a-comparator}
+
+Suppose there are two complex numbers
+
+\[
+z_1,z_2\in\mathbb C.
+\]
+
+One might first consider taking the ratio \(z_2/z_1\) as the relational
+quantity. However, reading a ratio as ``larger/smaller'' or
+``same/different'' risks smuggling in a comparison standard. Likewise,
+placing the equality test \(z_1=z_2\) as a primitive operation is too
+strong for the purposes of this paper.
+
+The product
+
+\[
+z_1z_2,
+\]
+
+on the other hand, requires no external standard. From the closure of
+complex numbers,
+
+\[
+z_1z_2\in\mathbb C.
+\]
+
+Expanding into real and imaginary parts, for
+
+\[
+z_1=a+ib,\qquad z_2=c+id
+\]
+
+we have
+
+\[
+z_1z_2=(ac-bd)+i(ad+bc).
+\]
+
+The result is again a single complex number.
+
+Using the same value twice gives
+
+\[
+z\,z=z^2,
+\]
+
+so the self-product is a special case of the two-body product. But there
+is no need to detect from outside that the values are equal and split
+the structure into cases. Algebraically, one simply takes the product.
+
+Also, since the complex numbers have no zero divisors,
+
+\[
+z_1z_2=0
+\]
+
+implies that at least one factor is zero. Hence the minimal algebraic
+boundary that appears without any external scale is ``zero / nonzero.''
+In this paper, however, we do not elevate this to a new physical axiom.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. Reading the Squared Quantity as the Basic
+Quantity}\label{reading-the-squared-quantity-as-the-basic-quantity}
+
+Here we perform the main rereading of this paper.
+
+For each complex number define
+
+\[
+\boxed{Z_n:=z_n^2}.
+\]
+
+Since the square of a complex number is a complex number,
+
+\[
+Z_n\in\mathbb C.
+\]
+
+Then the expression
+
+\[
+\sum_n z_n^2,
+\]
+
+which often looks like a special form, is simply
+
+\[
+\boxed{\sum_n Z_n},
+\]
+
+an ordinary sum of complex numbers.
+
+Therefore
+
+\[
+\sum_n z_n^2=C^2
+\]
+
+is also, once written as
+
+\[
+\boxed{\sum_n Z_n=K},\qquad K:=C^2\in\mathbb C,
+\]
+
+just an ordinary complex sum.
+
+At this point there is no need to treat \(C^2\) as ``special because it
+is a square.'' In the space of squared quantities, \(K=C^2\) is an
+ordinary complex number.
+
+This rereading is the core of this paper.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Fig. 1 From the closure of complex numbers to the loop residual}]{figs/fig1_complex_closure_loop_residual_en.png}}
+\caption{Fig. 1 From the closure of complex numbers to the loop
+residual}
+\end{figure}
+
+\emph{Fig. 1 From the closure of complex numbers to the loop residual.
+The trivial identity \(\sum z_n^2=C^2\) is reread as the sum
+\(\sum Z_n=K\) of complex relations \(Z_n:=z_n^2\). \(K=0\) represents
+closure; \(K\neq0\) represents a loop residual.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. An Auxiliary Two-Body Thought Experiment: When the Sum Is
+Real}\label{an-auxiliary-two-body-thought-experiment-when-the-sum-is-real}
+
+Consider an auxiliary thought experiment in which, for two complex
+numbers, the only constraint imposed is
+
+\[
+z_1^2+z_2^2=R^2\in\mathbb R.
+\]
+
+Writing the squared quantities as
+
+\[
+Z_1=z_1^2,\qquad Z_2=z_2^2,
+\]
+
+this is simply
+
+\[
+\boxed{Z_1+Z_2=R^2}.
+\]
+
+Subtracting the center,
+
+\[
+W_1:=Z_1-\frac{R^2}{2},\qquad
+W_2:=Z_2-\frac{R^2}{2},
+\]
+
+we get
+
+\[
+\boxed{W_1+W_2=0},
+\]
+
+that is,
+
+\[
+W_2=-W_1.
+\]
+
+In the original \(z\) representation this involves square-root branches,
+but once the squared quantity \(Z\) is taken as basic, the two bodies
+simplify to an antisymmetric configuration about the center \(R^2/2\) on
+the real axis.
+
+This auxiliary example shows the advantage of ``reading squared
+quantities as basic quantities,'' but the paper does not require
+\(R^2\in\mathbb R\) throughout.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Three Bodies: The First Nontrivial
+Loop}\label{three-bodies-the-first-nontrivial-loop}
+
+For three squared quantities, let
+
+\[
+Z_1+Z_2+Z_3=R^2\in\mathbb R,
+\]
+
+and set
+
+\[
+W_k:=Z_k-\frac{R^2}{3}.
+\]
+
+Then
+
+\[
+\boxed{W_1+W_2+W_3=0}.
+\]
+
+Hence any one of them is determined by the other two:
+
+\[
+W_3=-(W_1+W_2).
+\]
+
+What matters here is that there is no need to presuppose a ``triangle.''
+
+First there are three complex relations \(W_1,W_2,W_3\), and their sum
+happens to be zero. When this algebraic condition is drawn in the
+complex plane, it can be read as a closed triangle.
+
+That is, the logical order is not
+
+\[
+\boxed{\text{assume a triangle}\Rightarrow\text{loop condition}}
+\]
+
+but
+
+\[
+\boxed{W_1+W_2+W_3=0\Rightarrow\text{readable as a triangular loop}}.
+\]
+
+This ordering becomes important in the later discussion of namelessness.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Fig. 2 Three bodies: one is determined by the other two}]{figs/fig2_three_body_triangular_loop_en.png}}
+\caption{Fig. 2 Three bodies: one is determined by the other two}
+\end{figure}
+
+\emph{Fig. 2 The triangular loop of three bodies. From the zero sum of
+three complex relations, any one of them is fixed as the reverse of the
+sum of the other two, and the closed triangle is read afterwards.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. What Four Bodies Expose: Bodies and Relations Are Not the
+Same}\label{what-four-bodies-expose-bodies-and-relations-are-not-the-same}
+
+With three bodies, the number of vertices (3) coincides with the number
+of edges (3), so it is easy to confuse ``bodies'' with ``relations.''
+
+With four bodies, however, if one assumes all pairwise relations, the
+number of relations is
+
+\[
+M=\binom{4}{2}=6.
+\]
+
+Here one is tempted to declare ``four bodies, therefore the complete
+graph \(K_4\).'' But this is not allowed by the methodology of this
+paper, because complete connectivity has not been derived from the
+closure of complex numbers.
+
+In fact, even in a five-relation system consisting of the four outer
+edges and one diagonal on four vertices, there exist nontrivial
+solutions in which two triangular loops close simultaneously.
+
+For example, with oriented relations,
+
+\[
+W_{12}+W_{23}-W_{13}=0
+\]
+
+\[
+W_{13}+W_{34}+W_{41}=0.
+\]
+
+From the first equation,
+
+\[
+W_{13}=W_{12}+W_{23},
+\]
+
+and substituting into the second,
+
+\[
+W_{12}+W_{23}+W_{34}+W_{41}=0.
+\]
+
+Therefore,
+
+\[
+\boxed{\text{triangular loops close}\not\Rightarrow\text{complete connectivity}}.
+\]
+
+By this counterexample, the complete-network hypothesis is excluded from
+the thought experiment.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Fig. 3 Four-vertex network comparison of triangular loops}]{figs/fig3_four_vertex_triangular_loops_en.png}}
+\caption{Fig. 3 Four-vertex network comparison of triangular loops}
+\end{figure}
+
+\emph{Fig. 3 On four vertices, the complete network \(K_4\) cannot be
+derived from the mere existence of triangular loops. Even with 4
+vertices and 5 relations two triangular loops can close, so complete
+connectivity is an additional assumption.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. A Dual Turn: From Vertex-Centered to
+Edge-Centered}\label{a-dual-turn-from-vertex-centered-to-edge-centered}
+
+To read structure without first laying down a complete graph, we invert
+the viewpoint.
+
+Conventional pictures tend to think
+
+\[
+\text{vertices}\to\text{edges}\to\text{faces}.
+\]
+
+In this paper, however, the complex relations \(Z_e\) are basic, so we
+read instead
+
+\[
+\boxed{\text{relations (edges)}\to\text{loops}\to\text{faces}}.
+\]
+
+If three relations \(Z_1,Z_2,Z_3\) satisfy
+
+\[
+Z_1+Z_2+Z_3=0,
+\]
+
+then those three relations can be read as one closed face.
+
+Here we do not specify in advance ``which vertices are shared.'' The
+loop structure comes first; vertices and cell structure are read
+afterwards, dually.
+
+With this ordering, there is no need to postulate complete networks or
+vertex names as primitive structure.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. Loop Residual}\label{loop-residual}
+
+When a loop does not close completely, we write
+
+\[
+\boxed{\sum_{e\in\partial f}\epsilon_{fe}Z_e=K_f},\qquad K_f\in\mathbb C.
+\]
+
+\(\epsilon_{fe}=\pm1\) is the sign relative to the orientation of the
+loop.
+
+If \(K_f=0\) the loop closes completely; if \(K_f\neq0\) it carries a
+complex residual.
+
+What matters is that \(K_f\) is again an ordinary complex number:
+
+\[
+\boxed{Z_e\in\mathbb C\quad\Rightarrow\quad K_f\in\mathbb C}.
+\]
+
+Hence ``edge quantities'' and ``face residuals'' do not change the
+algebraic type.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. The Residual as a Central-Projection
+Radius}\label{the-residual-as-a-central-projection-radius}
+
+Since \(K_f\in\mathbb C\), there exists \(C_f\in\mathbb C\) such that
+
+\[
+\boxed{K_f=C_f^2}.
+\]
+
+Therefore
+
+\[
+\sum_{e\in\partial f}\epsilon_{fe}Z_e=C_f^2
+\]
+
+can be read as a complex version of a central-projection radius written
+in squared quantities.
+
+At this stage there is no need to add ``curvature'' as an entirely
+separate variable. Complete closure means \(C_f=0\); non-closure means a
+finite complex radius.
+
+When one reads this as a central-projection constant-curvature geometry,
+for non-closed faces (\(K_f\neq0\)) the curvature scale is the inverse
+squared radius:
+
+\[
+\kappa_f\propto \frac{1}{C_f^2}=\frac{1}{K_f}.
+\]
+
+This curvature readout is a correspondence map. In particular,
+restricting to the real positive branch
+
+\[
+K_f=C_f^2\in\mathbb R_{>0}
+\]
+
+and adopting the standard convention for the radius of curvature, one
+recovers the real constant-curvature readout
+
+\[
+\kappa_f=\frac{1}{K_f}.
+\]
+
+The geometric meaning carried by a general complex \(K_f\), in
+particular \(\operatorname{Im}K_f\neq0\), is not derived in this paper
+and is left as a connection problem.
+
+What matters in this paper is that \(K_f\) was not added from outside as
+a ``curvature variable'': the loop residual itself already exists as the
+quantity determining the central-projection radius.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{11. Cancellation of Shared Edges and Face
+Flux}\label{cancellation-of-shared-edges-and-face-flux}
+
+Consider gluing two triangular faces along one internal edge.
+
+Let the residuals of faces \(f_1\) and \(f_2\) be
+
+\[
+K_{f_1}=Z_{12}+Z_{23}-Z_{13}
+\]
+
+\[
+K_{f_2}=Z_{13}+Z_{34}+Z_{41}.
+\]
+
+Adding the two, the shared edge \(Z_{13}\) cancels:
+
+\[
+-Z_{13}+Z_{13}=0,
+\]
+
+leaving
+
+\[
+\boxed{K_{f_1}+K_{f_2}=Z_{12}+Z_{23}+Z_{34}+Z_{41}}.
+\]
+
+That is, internal relations disappear and only the relations touching
+the external boundary remain.
+
+Reading \(K_f\) as a face flux, we obtain the discrete Stokes-type
+structure
+
+\[
+\boxed{\text{cancellation of shared internal relations}\Rightarrow\text{only the external boundary flux remains}}.
+\]
+
+Here too, Stokes' theorem was not placed at the starting point. This is
+the result of following the algebraic fact that when oriented loops are
+glued, the shared term appears with opposite signs.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{12. Reading a Closed Polyhedron as a
+Condensate}\label{reading-a-closed-polyhedron-as-a-condensate}
+
+Consider a structure \(\mathcal C\) in which multiple faces are glued
+together and the outer shell is closed.
+
+Each face carries a complex flux \(K_f\), and on a face shared by
+adjacent cells the orientations are opposite, so the contribution of an
+internal face cancels:
+
+\[
+K_f+(-K_f)=0.
+\]
+
+Therefore, in the flux readout defined in this paper, shared internal
+relations cancel and the quantity remaining on the boundary is read as
+the effective quantity.
+
+However, \textbf{it is not proven in this paper that this boundary flux
+exhausts all irreducible relational information of the many-body
+system.} The possibility that higher-order relational quantities exist
+independently, not captured by pairwise relations and loop residuals, is
+explicitly left as an open problem in v1.2.
+
+This paper proposes to call this closed polyhedral relational structure
+a \textbf{condensate}:
+
+\[
+\boxed{\text{condensate}=\text{a closed relational complex whose internal relations cancel on shared faces}}.
+\]
+
+This is not a definition of ``particle = point.'' A condensate is
+defined as many complex relations forming a closed face structure that
+can be read from outside as a single effective object.
+
+This interpretation is a physical readout, not a mathematical identity,
+and we keep it distinguished as an axiom candidate / interpretation
+candidate.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{13. Local Flux and Global
+Flux}\label{local-flux-and-global-flux}
+
+Consider the closed polyhedral condensate of this paper, that is, a
+closed, oriented, 2-manifold-like face complex \(\mathcal C\) in which
+every edge belongs to exactly two faces with opposite orientations. Let
+\(F(\mathcal C)\) denote the set of oriented faces constituting the
+condensate \(\mathcal C\). With the face flux
+
+\[
+K_f=\sum_{e\in\partial f}\epsilon_{fe}Z_e,
+\]
+
+we have
+
+\[
+\sum_{f\in F(\mathcal C)}K_f=\sum_{e}\left(\sum_{f\in F(\mathcal C)}\epsilon_{fe}\right)Z_e=0.
+\]
+
+This holds because for each shared edge the incidence signs \(+1\) and
+\(-1\) each appear exactly once; it is a discrete identity of
+\(\partial^2=0\) type. This structure corresponds to the commutative
+version of the structure in which reference {[}4{]} reads the closure
+constraint as a Bianchi identity.
+
+Therefore, the vanishing of the global flux is not an additional
+condition but a consequence of this closed oriented structure. It does
+not, however, imply
+
+\[
+K_f=0
+\]
+
+for each face. Faces with \(K_f\neq0\) can exist locally.
+
+This is important: a structure is possible in which nonzero interactions
+persist inside while the whole remains closed.
+
+Therefore,
+
+\[
+\boxed{\text{global flux zero}\neq\text{local flux zero}}.
+\]
+
+If one adopts a physical correspondence to gauge theory, the nonzero
+fluxes on internal shared faces can be read as modes of internal gauge
+exchange. In QED-like vocabulary an interpretation close to ``exchange
+of virtual photons'' is possible, but this is not a particle
+identification derived directly from the algebra of this paper.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{14. Hierarchy from the Flux Being
+Complex}\label{hierarchy-from-the-flux-being-complex}
+
+An important feature of this construction is that the face flux \(K_f\)
+is itself a complex number:
+
+\[
+K_f\in\mathbb C.
+\]
+
+Hence the external flux of a condensate can be treated as a new
+relational quantity at the next level.
+
+Schematically,
+
+\[
+Z_e\in\mathbb C
+\longrightarrow
+K_f\in\mathbb C
+\longrightarrow
+K_{\mathcal C}\in\mathbb C
+\longrightarrow\cdots
+\]
+
+That is, without changing the type
+
+\[
+\boxed{\mathbb C\to\mathbb C\to\mathbb C},
+\]
+
+we can read recursively
+
+\[
+\text{relations}\to\text{faces}\to\text{condensates}\to\text{relations between condensates}.
+\]
+
+This property allows small closed structures to be glued into larger
+closed structures --- hierarchical condensation.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Fig. 4 Internal cancellation and the hierarchical growth of condensates}]{figs/fig4_internal_cancellation_condensate_en.png}}
+\caption{Fig. 4 Internal cancellation and the hierarchical growth of
+condensates}
+\end{figure}
+
+\emph{Fig. 4 Oppositely oriented contributions of shared relations
+cancel internally, and a closed set of faces is read from outside as a
+single condensate. Since the face flux \(K_f\in\mathbb C\) can be reused
+as a relation at the next level, the hierarchy stays within the same
+complex-number type.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{15. Complete Closure and the Indistinguishability of
+``Universe'' and ``Grandchild
+Universe''}\label{complete-closure-and-the-indistinguishability-of-universe-and-grandchild-universe}
+
+Suppose the relational flux between a closed condensate and its exterior
+has vanished completely.
+
+More strongly than a mere zero total: if no boundary relation readable
+as an external connection exists, or if the entire effective flux on the
+external boundary has vanished, the system is relationally cut off from
+the outside.
+
+For an internal observer, there is then no way to distinguish, without
+external relations, whether the system is ``the whole universe'' or ``a
+grandchild universe generated inside a larger system.''
+
+Therefore the readout
+
+\[
+\boxed{\text{a completely closed relational world carries no absolute label of “the whole universe”}}
+\]
+
+becomes possible.
+
+This is a physical hypothesis; it is not a derivation of actual
+existence from the complex-number algebra alone.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{16. Composition from Past to Present and the Direction of
+Time}\label{composition-from-past-to-present-and-the-direction-of-time}
+
+The same complex-sum structure can also be used for a temporal readout.
+
+Let the squared quantities fixed in the past be
+
+\[
+Z_1,\ldots,Z_n.
+\]
+
+Then the present composite quantity
+
+\[
+K_n=\sum_{j=1}^{n}Z_j
+\]
+
+is uniquely computable.
+
+After the next relation \(Z_{n+1}\) is realized,
+
+\[
+K_{n+1}=K_n+Z_{n+1}.
+\]
+
+In this sense, no matter how many history items there are, the update
+contracts to the two-body composition
+
+\[
+\boxed{(K_n,Z_{n+1})\to K_{n+1}}.
+\]
+
+On the other hand, there is no rule that uniquely factorizes or
+generates the future \(Z_{n+1}\) from the present \(K_n\) alone.
+Therefore,
+
+\[
+\boxed{\text{past}\to\text{present}}
+\]
+
+is definable as composition, whereas
+
+\[
+\boxed{\text{present}\to\text{future}}
+\]
+
+requires an additional generation rule.
+
+This paper does not present this as a proof of the arrow of time itself,
+but retains it as the \textbf{asymmetry between the composition
+direction and the generation direction}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{17. An Auxiliary Relation to the Log
+Readout}\label{an-auxiliary-relation-to-the-log-readout}
+
+For the multiplicative relation of nonzero complex numbers \(z_1,z_2\),
+
+\[
+z_3=z_1z_2,
+\]
+
+we have \(z_3\neq0\), and with properly managed branches the complex
+logarithm gives
+
+\[
+\operatorname{Log} z_3=\operatorname{Log} z_1+\operatorname{Log} z_2.
+\]
+
+For the self-product
+
+\[
+z\mapsto z^2,
+\]
+
+take \(z\neq0\) and, on the chosen logarithmic branch, set
+
+\[
+q:=\operatorname{Log}z.
+\]
+
+Then in Log space
+
+\[
+q\mapsto 2q,
+\]
+
+which reads as additive self-doubling.
+
+On the other hand, to read the sum of squared quantities
+
+\[
+\sum_n Z_n=K
+\]
+
+in Log space, set for each nonzero \(Z_n\)
+
+\[
+q_n:=\operatorname{Log}Z_n.
+\]
+
+Zero terms contribute nothing to the sum and can be excluded. Only when
+\(K\neq0\),
+
+\[
+\operatorname{Log} K=\operatorname{Log}\left(\sum_n e^{q_n}\right).
+\]
+
+For \(K=0\), \(\operatorname{Log}K\) is undefined.
+
+This Log readout is not essential to the loop/flux construction of this
+paper, but it can be retained as an auxiliary readout connecting the
+multiplicative foundation with additive observational representations.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{18. History of Deleted Hidden
+Assumptions}\label{history-of-deleted-hidden-assumptions}
+
+If only the conclusions of this paper were presented, it would look like
+existing discrete gauge theory rewritten in complex numbers. We
+therefore state explicitly the assumptions actually removed during the
+thought experiment.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Candidate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Initial reading
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Verdict
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Reason
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Complete network \(K_N\) & every relation connects to every relation &
+deleted & not derivable from triangular loops alone; a 4-vertex, 5-edge
+system with one diagonal also has loop solutions \\
+Ratio \(z_2/z_1\) & minimal two-body relation & removed from the
+foundation & easily smuggles in a comparison standard at readout \\
+Equality test \(z_1=z_2\) & primitive same/different test & removed from
+the foundation & no need to place an equality detector as a prior
+physical operation \\
+\(\sum z_n^2=0\) for two bodies & condition for two waves & deleted &
+zero closure is not imposed as an extra condition in this thought
+experiment \\
+Triangle & a priori geometry of three bodies & deleted & readable as a
+loop after \(W_1+W_2+W_3=0\) \\
+Vertex sharing & connection principle of edges & on hold & vertices are
+not presupposed; we moved to the dual edge-to-face readout \\
+Adding a curvature variable & a field separate from the loop residual &
+unnecessary & \(K_f=C_f^2\) reads as a complex central-projection
+radius \\
+Adding gauge particles & separate particles carrying flux & demoted to
+physical interpretation & local flux propagation may be read as gauge
+exchange, but independent particles are not derived \\
+Completeness of many-body information & \(Z_e\) and \(K_f\) exhaust all
+relational information of a many-body system & on hold & implicitly
+assumed in v1.1; noticed to be underived on the occasion of Anegawa et
+al.~{[}6{]}. It has not been shown that irreducible higher-order
+relations do not exist independently \\
+\end{longtable}
+}
+
+As the table shows, this paper moved in the direction of deriving or
+deleting assumption candidates rather than adding assumptions.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Fig. 5 Method flowchart of the thought experiment}]{figs/fig5_thought_experiment_flowchart_en.png}}
+\caption{Fig. 5 Method flowchart of the thought experiment}
+\end{figure}
+
+\emph{Fig. 5 The method of the thought experiment. Starting from the
+closure of complex numbers, at each stage we check whether a complete
+network, comparison by ratio, equality tests, zero closure, or
+presupposed triangles have been assumed, shave off the unnecessary
+assumptions, and adopt only the readouts that remain.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{19. Axiom Candidates Remaining at This
+Point}\label{axiom-candidates-remaining-at-this-point}
+
+Apart from the algebra of complex numbers itself, the following
+candidates remain at this stage.
+
+\subsubsection{19.1 Simultaneous existence of multiple complex
+relations}\label{simultaneous-existence-of-multiple-complex-relations}
+
+It cannot yet be said that ``multiple occurrences'' have been generated
+from a single value \(z\in\mathbb C\) by algebra alone. Therefore the
+existence, or a generation rule, of multiple relations is an axiom
+candidate.
+
+\subsubsection{19.2 Generation of orientation and
+incidence}\label{generation-of-orientation-and-incidence}
+
+The structure in which a shared edge carries opposite signs in two faces
+follows automatically once oriented boundaries are defined. But whether
+the oriented incidence structure itself necessarily emerges from
+nameless complex relations is unsettled.
+
+\subsubsection{19.3 Reading a loop as a
+face}\label{reading-a-loop-as-a-face}
+
+Drawing the zero sum of three complex relations as a closed triangle is
+mathematically natural, but identifying it with a physical ``face'' is a
+readout rule.
+
+\subsubsection{19.4 Reading a closed face complex as a
+condensate}\label{reading-a-closed-face-complex-as-a-condensate}
+
+Reading an internally cancelled closed polyhedron as one effective
+object is the main physical interpretation candidate of this paper.
+
+\subsubsection{19.5 Completeness of many-body information via pair
+relations and loop
+residuals}\label{completeness-of-many-body-information-via-pair-relations-and-loop-residuals}
+
+Although not stated explicitly in v1.1, parts of the argument implicitly
+used the assumption that
+
+\[
+\mathcal I_{\mathrm{pair+loop}}:=\{Z_e,K_f\}
+\]
+
+suffices to represent the relational information of a many-body system.
+However, the completeness
+
+\[
+\boxed{\{Z_e,K_f\}\stackrel{?}{\Longrightarrow}\mathcal R_{\mathrm{full}}}
+\]
+
+is unproven. In particular, whether irreducible higher-order relational
+quantities such as
+
+\[
+R_{123},\quad R_{1234},\quad\ldots
+\]
+
+are independently necessary, or whether they can be derived from \(Z_e\)
+and \(K_f\), is unsettled. This paper does not adopt this point as a new
+axiom but \textbf{keeps it on hold as an axiom candidate / derivation
+problem.}
+
+These are the objects of future study: whether they can be derived
+further from complex-number algebra and namelessness.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{20. Connection to Existing Gauge
+Theories}\label{connection-to-existing-gauge-theories}
+
+Comparing with existing theories after obtaining the construction above,
+the structural similarity with lattice gauge theory becomes clear.
+
+In Wilson's lattice gauge theory, link variables on a discrete lattice
+and closed loops play the central role {[}1{]}. In Hamiltonian lattice
+gauge theory as well, electric flux and link structure are fundamental
+{[}2{]}.
+
+This paper does not put a gauge group or a lattice first, but reading
+
+\[
+K_f=\sum_{e\in\partial f}\epsilon_{fe}Z_e
+\]
+
+as a face flux, the format ``quantities on edges → loops → residuals on
+faces'' is close to commutative lattice gauge theory.
+
+The difference lies in the starting point. In this paper:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  No lattice is assumed.
+\item
+  No complete graph is assumed.
+\item
+  No vertices are assumed first.
+\item
+  No specific gauge group is assumed first.
+\item
+  Both squared quantities and face residuals belong to the same
+  \(\mathbb C\).
+\end{enumerate}
+
+Hence this is not a simplified construction of existing gauge theory;
+the order is that gauge-theoretic structure was connected only after
+following the closure of complex numbers.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{21. Comparison with Closure Defects, the Bianchi Identity,
+Bubble Networks, and Multi-partite
+Entanglement}\label{comparison-with-closure-defects-the-bianchi-identity-bubble-networks-and-multi-partite-entanglement}
+
+Livine relaxes the closure constraint in the coarse-graining of spin
+networks and interprets the closure defect as a local measure of
+curvature inside the coarse-grained region {[}3{]}.
+
+Charles and Livine reinterpret the closure constraint of the hyperbolic
+tetrahedron as a Bianchi identity, connecting face holonomies with
+polyhedral closure {[}4{]}.
+
+The bubble networks of Freidel and Livine glue three-dimensional
+geometric cells along interfaces and handle the structure of boundary
+faces, fluxes, and gluing {[}5{]}.
+
+These have strong similarity to this paper's
+
+\[
+\text{relations}\to\text{loops}\to\text{residuals}\to\text{face flux}\to\text{closed cells}.
+\]
+
+The differences are equally clear. In the prior work, structures such as
+spin networks, \(SU(2)\) holonomies, spinors, graphs, and cell complexes
+exist from the start. This paper does not take them as the starting
+point; it examines how far one can reach the same type of readout from
+
+\[
+z\in\mathbb C
+\]
+
+and
+
+\[
+Z=z^2\in\mathbb C
+\]
+
+together with the closure of complex addition.
+
+The relation to prior work is therefore positioned not as ``imitation of
+the same structure'' but as \textbf{verification of the possibility of
+having reached the same kind of structure independently from fewer
+premises}.
+
+Anegawa, Miyata, Suzuki, Tamaoka {[}6{]} showed that in a fixed
+tripartition of the two-sided BTZ black hole, a quantity measuring
+genuine multi-partite entanglement keeps growing even after the ordinary
+entanglement entropies of the subsystems saturate, continuing to track
+the growth of the Einstein--Rosen bridge.
+
+This result cannot be identified with the \(K_f\) or the condensates of
+this paper, nor does it directly support or refute the present
+complex-relation model. What matters for this paper is that it supplies
+\textbf{a concrete example that low-order readouts need not exhaust the
+total information of a many-body system}. Through it we recognized the
+implicit assumption remaining in v1.1 --- ``\(Z_e\) and \(K_f\) suffice
+to exhaust the effective relational information of a many-body system''
+--- and in v1.2 returned that completeness to the list of open problems.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{22. Candidate Novelty}\label{candidate-novelty}
+
+We divide the candidate novelty of this paper into mathematical novelty
+and interpretive novelty.
+
+\subsubsection{22.1 Mathematical novelty}\label{mathematical-novelty}
+
+No novelty is claimed for the closure of complex numbers, sums of
+squares, closed polygons, or boundary cancellation themselves.
+
+\subsubsection{22.2 Interpretive novelty
+candidates}\label{interpretive-novelty-candidates}
+
+What this paper proposes is the following readout chain:
+
+\[
+\boxed{
+\mathbb C
+\to
+z^2\in\mathbb C
+\to
+\sum Z_n=K\in\mathbb C
+\to
+\text{closure / defect}
+\to
+\text{face flux}
+\to
+\text{closed condensate}
+\to
+\text{hierarchical condensate}
+}
+\]
+
+Moreover, in obtaining this chain we assumed no complete network, no
+fixed vertices, no fixed dimension, and no external comparison standard.
+
+\subsubsection{22.3 Methodological novelty
+candidate}\label{methodological-novelty-candidate}
+
+In this paper, instead of adding axioms while building a model, we
+delete a hidden assumption each time one is discovered.
+
+What matters in the end is therefore
+
+\[
+\boxed{\text{not what was introduced, but what never had to be introduced.}}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{23. Limitations and Open
+Problems}\label{limitations-and-open-problems}
+
+This paper alone does not derive the following.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  How multiple independent complex relations are generated from a single
+  complex number.
+\item
+  Whether the oriented incidence structure necessarily arises from
+  namelessness.
+\item
+  Which loops are selected as actually existing faces.
+\item
+  Whether triangular loops suffice, or higher polygonal loops are
+  independently necessary.
+\item
+  The time-evolution law of the flux.
+\item
+  How flux propagation maps to the individual gauge particles of the
+  Standard Model.
+\item
+  Stability conditions of condensates and the readout of mass, energy,
+  and spin.
+\item
+  Whether completely closed systems correspond to actually existing
+  independent universes.
+\item
+  The geometric meaning of complex \(K_f\), in particular of its
+  imaginary part, and the correspondence from the complex
+  central-projection radius to general non-constant curvature fields.
+\item
+  Whether the set of pairwise relations \(Z_e\) and loop residuals
+  \(K_f\) suffices to determine the full relational information of a
+  many-body system. This informational sufficiency can be tested by
+  fixing all face residuals and the external boundary readout on the
+  face--edge incidence matrix and computing, by a rank computation, the
+  dimension of the solution space admitted for the internal \(Z_e\).
+\item
+  Whether irreducible relational invariants of three or more bodies,
+  \(R_{123},R_{1234},\ldots\), exist independently, underivable from
+  pairwise and loop quantities.
+\end{enumerate}
+
+Items 10 and 11 in particular make explicit, in v1.2, the hidden
+assumption that remained in v1.1. Their validity is currently unsettled
+and is left to future theoretical analysis and numerical experiments.
+
+These are not negative evidence but connection problems for the next
+stage.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{24. Conclusion}\label{conclusion}
+
+The starting point of this paper is one ordinary complex number:
+
+\[
+z\in\mathbb C.
+\]
+
+A complex number squared is still a complex number:
+
+\[
+Z_n:=z_n^2\in\mathbb C.
+\]
+
+Therefore
+
+\[
+\sum_n z_n^2=C^2
+\]
+
+is, once squared quantities are read as basic,
+
+\[
+\boxed{\sum_n Z_n=K},
+\]
+
+an ordinary sum of complex numbers.
+
+From this simple rereading, one reads a zero sum of three relations as a
+loop, a nonzero sum as a loop residual, and by gluing oriented loops
+obtains the cancellation of shared internal relations and the external
+boundary flux. Since the flux is again complex, it can be reused as a
+relation at the next level. A closed set of faces can be read as one
+effective object with its internal degrees of freedom cancelled --- a
+condensate.
+
+What matters is that in obtaining these we did not first posit complete
+networks, fixed vertices, triangles, gauge groups, or external scales.
+Rather, by doubting them as assumption candidates and deleting those
+that could not be derived, a loop/flux structure similar to existing
+gauge theory appeared afterwards.
+
+The central claim of this paper is therefore not a new equation:
+
+\[
+\boxed{
+\text{Give the trivial closure of complex numbers a relational readout with minimized assumptions,}
+\text{and the hierarchy of loops, residuals, fluxes, and condensates can be read in a unified way.}
+}
+\]
+
+However, this unified readout does \textbf{not claim to exhaust the full
+relational information of many-body systems.} In v1.2 we withdrew the
+implicit assumption that the pairwise relations \(Z_e\) and the loop
+residuals \(K_f\) suffice, and left as an open problem whether
+irreducible higher-order relations are independently necessary.
+
+We do not claim that this framework is a final physical theory. But as a
+minimal basis for clarifying which additional assumptions are truly
+indispensable, it merits examination.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+This paper uses no self-citation. The following are external references
+consulted, after the construction of this paper was obtained, to check
+structural similarities with existing theories.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  K. G. Wilson, ``Confinement of quarks,'' \emph{Physical Review D}
+  \textbf{10}, 2445--2459 (1974). DOI: 10.1103/PhysRevD.10.2445.
+\item
+  J. Kogut and L. Susskind, ``Hamiltonian formulation of Wilson's
+  lattice gauge theories,'' \emph{Physical Review D} \textbf{11},
+  395--408 (1975). DOI: 10.1103/PhysRevD.11.395.
+\item
+  E. R. Livine, ``Deformation Operators of Spin Networks and
+  Coarse-Graining,'' \emph{Classical and Quantum Gravity} \textbf{31},
+  075004 (2014). arXiv:1310.3362. DOI: 10.1088/0264-9381/31/7/075004.
+\item
+  C. Charles and E. R. Livine, ``The closure constraint for the
+  hyperbolic tetrahedron as a Bianchi identity,'' \emph{General
+  Relativity and Gravitation} \textbf{49}, 92 (2017). arXiv:1607.08359.
+  DOI: 10.1007/s10714-017-2255-2.
+\item
+  L. Freidel and E. R. Livine, ``Bubble Networks: Framed Discrete
+  Geometry for Quantum Gravity,'' \emph{General Relativity and
+  Gravitation} \textbf{51}, 9 (2019). arXiv:1810.09364. DOI:
+  10.1007/s10714-018-2493-y.
+\item
+  T. Anegawa, A. Miyata, S. Suzuki, and K. Tamaoka, ``Growing
+  Einstein--Rosen Bridge with Multi-partite Entanglement,''
+  arXiv:2609.18225 (2026).
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Appendix A: The Minimal Series of
+Formulas}\label{appendix-a-the-minimal-series-of-formulas}
+
+Extracting only the algebraic skeleton of this paper gives the following
+series.
+
+\[
+z_n\in\mathbb C
+\]
+
+\[
+Z_n:=z_n^2\in\mathbb C
+\]
+
+\[
+K:=\sum_n Z_n\in\mathbb C
+\]
+
+\[
+K=C^2,\qquad C\in\mathbb C
+\]
+
+Loop:
+
+\[
+\sum_{e\in\partial f}\epsilon_{fe}Z_e=0
+\]
+
+Loop residual:
+
+\[
+\sum_{e\in\partial f}\epsilon_{fe}Z_e=K_f
+\]
+
+Central-projection-radius readout:
+
+\[
+K_f=C_f^2
+\]
+
+Shared-edge cancellation:
+
+\[
+(+Z_e)+(-Z_e)=0
+\]
+
+Composition of multiple faces:
+
+\[
+\sum_f K_f=\sum_{e\in\partial\Omega}\epsilon_e Z_e
+\]
+
+Global identity on a closed oriented face complex (derived identity
+structure):
+
+\[
+\boxed{\sum_{f\in F(\mathcal C)}K_f=0}
+\]
+
+\(F(\mathcal C)\) is the set of oriented faces constituting the
+condensate \(\mathcal C\). On a closed polyhedral boundary in which
+every edge belongs to two faces with opposite orientations, this holds
+identically by incidence cancellation, i.e., by the discrete
+\(\partial^2=0\).
+
+Hierarchization:
+
+\[
+K_f\in\mathbb C\quad\Rightarrow\quad K_f\ \text{is reusable as a relational quantity at the next level}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Appendix B: Ledger of Axiom
+Candidates}\label{appendix-b-ledger-of-axiom-candidates}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Object
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Current classification
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Reason
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(z\in\mathbb C\) & mathematical background & complex numbers adopted as
+the descriptive language \\
+\(z^2\in\mathbb C\) & derived identity structure & closure of complex
+numbers \\
+\(\sum z_n^2=C^2\) & derived identity structure &
+\(\sum z_n^2\in\mathbb C\) and existence of square roots \\
+Reading \(Z_n=z_n^2\) as the basic quantity & readout definition & entry
+point of the new physical interpretation \\
+Existence of multiple relations & axiom candidate & multiple occurrences
+not yet derived from a single complex number \\
+Reading a loop as a face & readout candidate & natural as a geometric
+representation, but physical identity unproven \\
+Oriented incidence & axiom candidate / derivation problem & needed for
+shared-edge cancellation; derivation from namelessness incomplete \\
+Reading \(K_f=C_f^2\) as a complex central-projection radius & geometric
+readout & re-expression of the same sum-of-squares structure \\
+Closed polyhedron = condensate & physical interpretation candidate & has
+internal cancellation and external effectivization \\
+Local flux = gauge exchange & connection problem with existing theory &
+similar to lattice gauge theory, but particle identity underived \\
+Completeness of many-body information
+\(\{Z_e,K_f\}\Rightarrow\mathcal R_{\mathrm{full}}\) & axiom candidate /
+derivation problem & implicitly assumed in v1.1 but unproven; the
+possibility of independently existing irreducible higher-order
+relational quantities cannot be excluded \\
+Complete network & deleted & not derivable from loop conditions alone \\
+\end{longtable}
+}
+
+\end{document}
