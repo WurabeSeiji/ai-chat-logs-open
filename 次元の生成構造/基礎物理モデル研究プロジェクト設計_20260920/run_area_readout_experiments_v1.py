@@ -678,7 +678,7 @@ def svg_fig3(res5):
     a.line([1.5, 12.5], [1e-10, 1e-10], "#000", 1, "5 4")
     a.line(ns, mx, COLORS[0], 1.6)
     a.dots(ns, mx, COLORS[0], 3.5)
-    a.legend([("n≥3：相対誤差の最大値（200 試行）", COLORS[0], None), ("事前に宣言した許容値 1e-10", "#000", "5 4")], 500, 60, box_w=250)
+    a.legend([("n≧3：相対誤差の最大値（200 試行）", COLORS[0], None), ("事前に宣言した許容値 1e-10", "#000", "5 4")], 500, 60, box_w=250)
     s.text(a.X(1.7), a.Y(3e-16), "n=2：S=−I で面積の自己読み出しが", 11)
     s.text(a.X(1.7), a.Y(3e-16) + 15, "恒等的にゼロ（計量が定義できない）", 11)
     s.save(FIG_DIR / (FIG3 + ".svg"))
@@ -778,7 +778,7 @@ def make_fig3(res5):
     ns = sorted(int(k) for k in res5["per_n"].keys())
     mx = [res5["per_n"][n]["max_rel_err"] for n in ns]
     fig, ax = plt.subplots(figsize=(8.6, 5.4), dpi=170)
-    ax.semilogy(ns, mx, "o-", label=L("n≥3：相対誤差の最大値（200 試行）", "n>=3: max relative error (200 trials)"))
+    ax.semilogy(ns, mx, "o-", label=L("n≧3：相対誤差の最大値（200 試行）", "n>=3: max relative error (200 trials)"))
     ax.axhline(1e-10, color="k", ls="--", lw=0.9, label=L("事前に宣言した許容値 1e-10", "pre-declared tolerance 1e-10"))
     ax.set_xticks([2] + ns)
     ax.annotate(L("n=2：S=−I で面積の自己読み出しが\n恒等的にゼロ（計量が定義できない）",

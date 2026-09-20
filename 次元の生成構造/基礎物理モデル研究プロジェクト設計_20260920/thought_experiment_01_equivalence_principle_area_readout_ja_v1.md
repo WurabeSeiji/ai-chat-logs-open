@@ -208,7 +208,7 @@ $z_1=a$ とし、$z_2$ を $s=+1,\,0,\,-1$ に応じて $b$、$\epsilon b$（$\e
 
 ### 4.2 $C$ は曲率半径である　【導出 T6】
 
-$S^{\mathsf T}GS=G$ から $(S-I)^{\mathsf T}G(S-I)=\kappa G$ が出る。面積の言葉では $\omega(\Delta X_k,\Delta X_{k+1})=\kappa\,\omega(X_k,X_{k+1})$ である。T4 と合わせると、$\kappa\neq0$、$C\neq0$ のすべての軌道で
+$S^{\mathsf T}GS=G$ から $(S-I)^{\mathsf T}G(S-I)=\kappa G$ が出る。面積の言葉では $\omega(\Delta X_k,\Delta X_{k+1})=\kappa\,\omega(X_k,X_{k+1})$ である。T4 と合わせると、非退化型（$\lvert\tau\rvert\neq2$）で $C\neq0$ のすべての軌道で
 
 $$
 \lvert\Delta X\rvert_{\hat G}^2=\lvert\kappa\rvert C^2,\qquad\lvert\Delta^2X\rvert_{\hat G}=\lvert\kappa\rvert\,\lvert C\rvert
@@ -359,6 +359,8 @@ $n$ と $C$ は独立な自由度ではない。$n$ は、曲率半径を分解�
 | E6 | E4b の原因から立て、実行前に宣言した**予測** | 双曲型で $\ln\bigl(\lvert q\rvert/\lvert X_k\rvert\lvert X_{k+1}\rvert\bigr)$ の傾きが $-2H$ から 1% を超えてずれる | 300 法則で最大 $0.05\%$ | PASS |
 
 E6 が T8 である。落ちた検証が、双曲型では保存量が指数的に読めなくなるという言明を教えた。
+
+**別環境での再実行。** 上の表の数値と、同梱の JSON・図は、一つの実行（Linux x86_64、Python 3.12.3、NumPy 2.4.4、OpenBLAS 0.3.31）によるものである。別の環境（macOS arm64、Python 3.9.6、NumPy 2.0.2、Accelerate）でスクリプトを再実行したところ、17 項目の判定はすべて一致した（E4b だけが FAIL）。有理数の厳密計算（E1a、E2a の厳密部、E4a）と整数値の結果（E3a、E3b、閉路数の一覧）は完全に一致し、浮動小数の検証値は末尾の桁だけが変わった（例：E1b の最大値 $2.5\times10^{-13}\to$ $3.0\times10^{-13}$、E4b の最大値 $1.9\times10^{-4}\to$ $1.4\times10^{-4}$）。浮動小数の検証値は線形代数ライブラリの実装に依存するので、再現の対象は数値そのものではなく判定である。E4b は両方の環境で落ちており、桁落ちという診断と整合する。
 
 ![図1　三つの型と二つの読み出し](fig01_area_readout_three_classes_ja_v1.svg)
 
