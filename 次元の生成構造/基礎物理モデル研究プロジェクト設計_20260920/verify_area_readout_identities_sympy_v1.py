@@ -66,3 +66,19 @@ S2 = sp.Matrix([[sp.diff(f(a, a) + f(a, b), a), sp.diff(f(a, a) + f(a, b), b)],
                 [sp.diff(f(b, b) + f(b, a), a), sp.diff(f(b, b) + f(b, a), b)]])
 print("T11 S - [[2pp+qq, qq],[qq, 2pp+qq]]    :", sp.simplify(S2 - sp.Matrix([[2 * pp + qq, qq], [qq, 2 * pp + qq]])))
 print("T11 det S - 4 pp (pp+qq)               :", sp.simplify(S2.det() - 4 * pp * (pp + qq)))
+
+# T3′：det S=1 を仮定しない一般の可逆な S（d = det S）。Y_k = X_{-k} は列を逆向きに読んだもの
+p2, q2, r2, s2 = sp.symbols("p2 q2 r2 s2", real=True)
+Sg = sp.Matrix([[p2, q2], [r2, s2]])
+tg, dg = Sg.trace(), Sg.det()
+Ym1, Y0, Y1 = Sg * X, X, Sg.inv() * X
+print("T3' 逆向きの法則  Y1 - (tau/d) Y0 + (1/d) Y_{-1} :", sp.simplify(Y1 - (tg / dg) * Y0 + Ym1 / dg))
+res = Y1 - tg * Y0 + dg * Ym1
+print("T3' 残差 - (d-1)/d [-tau Y0 + (d+1) Y_{-1}]      :", sp.simplify(res - (dg - 1) / dg * (-tg * Y0 + (dg + 1) * Ym1)))
+print("T3' tr S^2 - (tau^2 - 2d)                        :", sp.simplify((Sg * Sg).trace() - (tg**2 - 2 * dg)))
+Gd = Om * (Sg - dg * Sg.inv()) / 2
+print("T3' G_d - G_d^T                                  :", sp.simplify(Gd - Gd.T))
+print("T3' X^T G_d X - w(X,SX)                          :", sp.simplify((X.T * Gd * X)[0] - w(X, Sg * X)))
+print("T3' det G_d - (d - tau^2/4)                      :", sp.simplify(Gd.det() - (dg - tg**2 / 4)))
+print("T3' w(SX,S^2X) - d w(X,SX)                       :", sp.simplify(w(Sg * X, Sg * Sg * X) - dg * w(X, Sg * X)))
+print("T3' w(X,PX) - (a^2 - b^2)                        :", sp.simplify(w(X, P * X) - (a**2 - b**2)))
