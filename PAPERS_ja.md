@@ -4,7 +4,7 @@
 全論文は Zenodo で CC BY 4.0 公開。各行：題名（日本語 / 英語）・Version DOI・Concept DOI・公開日・版・PDF・リポジトリ内フォルダ・リリースノート。
 本ファイルは `tools/gen_paper_index.py` により Zenodo API から自動生成。English: [PAPERS_en.md](PAPERS_en.md) / Scholar 用ページ: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**論文数: 143**
+**論文数: 144**
 
 ## グノモン正写像による4次元時空の幾何学的定式化 / Central Projection Framework (Gnomonic Spacetime Geometry)
 
@@ -533,6 +533,10 @@
    Quadratic Condensation and Relational Local Time in a Many-Wave Complete Relational System — From Relational Closure without Spacetime as Fundamental Variables to the Kepler Equation and the Inverse-Square Central Force  
    DOI [10.5281/zenodo.22788738](https://doi.org/10.5281/zenodo.22788738) · Concept [10.5281/zenodo.22788737](https://doi.org/10.5281/zenodo.22788737) · 2026-09-16 · v0.2 · [PDF en](https://zenodo.org/records/22788738/files/quadratic_condensation_relational_local_time_en_v0_2_20260916.pdf) [PDF ja](https://zenodo.org/records/22788738/files/%E5%A4%9A%E6%B3%A2%E5%AE%8C%E5%85%A8%E9%96%A2%E4%BF%82%E7%B3%BB_%E4%BA%8C%E4%B9%97%E5%87%9D%E7%B8%AE%E3%81%A8%E9%96%A2%E4%BF%82%E7%9A%84%E5%B1%80%E6%89%80%E6%99%82%E9%96%93_ja_v0_2_20260916.pdf)  
    フォルダ: [次元の生成構造/自発的分裂予備実験_v1_N40対照実験系_20260904/静的完全ネットワーク_Z4被覆時空_検討_20260915/二波分離_固有周期_CRT検証_20260915/二波サーベイ_生軌道データベース_20260915/figures_v1](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E8%87%AA%E7%99%BA%E7%9A%84%E5%88%86%E8%A3%82%E4%BA%88%E5%82%99%E5%AE%9F%E9%A8%93_v1_N40%E5%AF%BE%E7%85%A7%E5%AE%9F%E9%A8%93%E7%B3%BB_20260904/%E9%9D%99%E7%9A%84%E5%AE%8C%E5%85%A8%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF_Z4%E8%A2%AB%E8%A6%86%E6%99%82%E7%A9%BA_%E6%A4%9C%E8%A8%8E_20260915/%E4%BA%8C%E6%B3%A2%E5%88%86%E9%9B%A2_%E5%9B%BA%E6%9C%89%E5%91%A8%E6%9C%9F_CRT%E6%A4%9C%E8%A8%BC_20260915/%E4%BA%8C%E6%B3%A2%E3%82%B5%E3%83%BC%E3%83%99%E3%82%A4_%E7%94%9F%E8%BB%8C%E9%81%93%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9_20260915/figures_v1)
+38. **状態と関係性から時空・粒子・相互作用の創発を探索する研究プロジェクト設計**  
+   Designing a Research Project to Explore the Emergence of Spacetime, Particles, and Interactions from States and Relations: A Framework of Preliminary Design and Feasibility Verification for Foundational-Physics Model Exploration under Uncertainty  
+   DOI [10.5281/zenodo.22851945](https://doi.org/10.5281/zenodo.22851945) · Concept [10.5281/zenodo.22851944](https://doi.org/10.5281/zenodo.22851944) · 2026-09-20 · v1.0 · [PDF en](https://zenodo.org/records/22851945/files/foundational_physics_project_design_en_v1.pdf) [PDF ja](https://zenodo.org/records/22851945/files/foundational_physics_project_design_ja_v1.pdf)  
+   フォルダ: [次元の生成構造/基礎物理モデル研究プロジェクト設計_20260920](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%9F%BA%E7%A4%8E%E7%89%A9%E7%90%86%E3%83%A2%E3%83%87%E3%83%AB%E7%A0%94%E7%A9%B6%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E8%A8%AD%E8%A8%88_20260920)
 
 ## 時間軸Q軸とフェルミオンの生成構造 / Time Axis, Q Axis, and Fermion Generation
 

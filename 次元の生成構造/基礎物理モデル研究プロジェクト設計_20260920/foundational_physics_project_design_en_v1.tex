@@ -1,0 +1,1101 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Designing a Research Project to Explore the Emergence of Spacetime{,} Particles{,} and Interactions from States and Relations --- A Framework of Preliminary Design and Feasibility Verification for Foundational-Physics Model Exploration under Uncertainty},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Designing a Research Project to Explore the Emergence of
+Spacetime, Particles, and Interactions from States and Relations --- A
+Framework of Preliminary Design and Feasibility Verification for
+Foundational-Physics Model Exploration under Uncertainty}
+\author{Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020}
+\date{September 20, 2026 Version DOI 10.5281/zenodo.22851945}
+
+\begin{document}
+\maketitle
+
+\textbf{Author:} Noriaki Kihara\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Version DOI:} 10.5281/zenodo.22851945\\
+\textbf{Concept DOI:} 10.5281/zenodo.22851944\\
+\textbf{Version:} v1.0\\
+\textbf{Date:} 2026-09-20
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+The Standard Model and General Relativity are extremely successful
+within their respective domains of application. At the same time, the
+problem of describing quantum theory and gravity naturally from a single
+underlying structure remains unsolved: despite decades of work on
+several major research programs, including superstring theory, loop
+quantum gravity, asymptotic safety, and holography, no completed picture
+uniquely recovers real low-energy physics, a quantum description of
+spacetime, the cosmological background, and observables at the same time
+{[}4--9{]}. Moreover, while the Standard Model possesses high gauge
+symmetry and conservation structure, the description of concrete
+physical states requires multiple experimentally determined parameters
+{[}10{]}.
+
+The author has been exploring whether spacetime, fields, particles,
+mass, charge, distance, and time --- rather than being given from the
+start --- can be generated spontaneously from a smaller number of
+``states'' and ``relations'' alone. However, when individual candidate
+equations and numerical experiments are put first, the research
+direction tends to shift whenever a locally interesting phenomenon
+appears, and the exploration proceeds while the project's goal image ---
+``what structure must be generated for the research objective to count
+as achieved'' --- remains vague.
+
+This paper presents no completed theory. Instead, applying
+project-management research on exploratory projects under high
+uncertainty {[}1--3{]}, together with the author's own working
+heuristics from IT consulting and systems design, it redesigns this
+research as a long-term exploratory project. Concretely, it defines an
+iterative research structure of philosophical principles, a provisional
+goal image, preliminary design, feasibility verification, numerical
+experiments, and design revision.
+
+The goal of this research is not to invent a new physical law and
+replace existing theories. It is to explore whether there exists an
+underlying structure or interpretation that can explain the Standard
+Model and General Relativity --- with their successes preserved --- from
+fewer assumptions and fewer arbitrary parameters.
+
+\textbf{Keywords:} foundational physics, quantum gravity, emergent
+spacetime, states and relations, exploratory project, project
+management, preliminary design, feasibility verification
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Motivation}\label{motivation}
+
+The starting point of this research is the following two questions.
+
+First: given that the Standard Model and General Relativity are each
+successful to very high precision, why is it difficult to derive both
+naturally from the same underlying structure?
+
+General Relativity treats spacetime geometry itself as a dynamical
+degree of freedom. The Standard Model, on the other hand, describes the
+strong, weak, and electromagnetic interactions on the basis of quantum
+field theory and gauge symmetry. At low energies, General Relativity can
+be treated quantum mechanically as an effective field theory, but no
+completed form of a fundamental quantum theory of gravity valid up to
+the Planck regime has been obtained {[}4,5{]}.
+
+Second: while the Standard Model possesses high symmetry and many
+conservation structures, its concrete description requires multiple
+experimental parameters. This does not mean the Standard Model has
+failed. Rather, this research considers the possibility that the
+existing theories are highly accurate effective descriptions, behind
+which there exists a foundational layer that generates the same
+structures from a smaller number of principles.
+
+String theory has important achievements as a quantum framework that
+includes gravity, and gauge--gravity duality and holography give strong
+hints about the relation between spacetime and information. However,
+unresolved problems remain concerning background independence,
+non-perturbative formulation, the selection of realistic vacua, and
+application to cosmological spacetimes {[}6,7{]}. Loop quantum gravity,
+asymptotic safety, discrete spacetime models, and others have likewise
+shown important progress from different angles, but no consensus has
+been reached on a single completed theory {[}4,8,9{]}.
+
+This research does not deny these existing approaches. Rather, it treats
+the successes of the existing theories as strong constraints that must
+ultimately be reproduced.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Position and Scope as an Independent
+Researcher}\label{position-and-scope-as-an-independent-researcher}
+
+The author is an independent researcher, not affiliated with a
+university, research institute, or academic society specializing in
+quantum gravity, particle theory, or general relativity.
+
+This position has two sides.
+
+On one hand, the author is not directly bound by the research programs,
+particular theoretical lineages, or community-internal problem settings
+usually required inside established research fields, and can explore by
+combining concepts from different fields and many hypotheses relatively
+freely. This makes it possible to test the strong hypothesis of removing
+the existing concepts of spacetime, fields, particles, mass, and charge
+themselves from the initial premises and reconstructing them from a
+smaller number of states and relations.
+
+On the other hand, research resources are limited. Carrying out
+large-scale collaboration, dedicated computational resources, long-term
+rigorous mathematical analysis, and complete connection proofs to
+existing theories simultaneously is not realistic. For this reason, the
+outputs of this research primarily target the level of theoretical
+proposals, thought experiments, numerical experiments, and reproducible
+preliminary designs, and this project alone does not aim to derive a
+complete rigorous connection to the Standard Model or General
+Relativity.
+
+This limitation does not mean neglecting consistency with existing
+theories. Quite the opposite. In this research, the Standard Model and
+General Relativity are treated not as ``objects to be replaced'' but as
+``known successes to be reproduced.''
+
+The purpose of this research is therefore not
+
+\[
+\boxed{\text{to invent new physics}}
+\]
+
+but
+
+\[
+\boxed{
+\text{to explore structures that can explain the known Standard Model and relativity}\
+\text{from fewer assumptions and fewer arbitrary parameters.}
+}
+\]
+
+The structure presented in this paper is meant to fix the direction of
+the research project toward this purpose; it is not the claim of a
+completed physical theory.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. Why the Research Project Itself Is a Design
+Object}\label{why-the-research-project-itself-is-a-design-object}
+
+In this research, the author has so far repeated an exploration cycle of
+building individual candidate equations, running numerical experiments,
+and analyzing the phenomena obtained. This method is heuristically
+effective, but it has one problem.
+
+When candidate equations yield interesting phenomena --- singularities,
+closure structures, metastable states, exponential growth, periodic
+structures --- those phenomena easily start to look as if they
+themselves were the research objective.
+
+However,
+
+\[
+\boxed{
+\text{an interesting numerical phenomenon}
+\neq
+\text{the foundational structure actually being sought.}
+}
+\]
+
+Project-management research has likewise pointed out that projects whose
+exploration methods and final goals are vague require learning,
+candidate selection, and iterative design revision, not merely fixed
+plan execution {[}1--3{]}.
+
+Turner and Cochrane classified projects by separating the clarity of
+goals from the clarity of the methods of achieving them {[}1{]}. Pich,
+Loch, and De Meyer argued for the need to use instructionism, learning,
+and selectionism according to the kinds of uncertainty, ambiguity, and
+complexity involved {[}2{]}. Lenfle showed that exploratory projects, in
+which neither the technology nor the requirements are fixed at the
+start, need management methods different from those of ordinary
+development projects {[}3{]}.
+
+In this sense, this research is close to a typical exploratory project.
+
+The following iterative structure is therefore adopted:
+
+\[
+\boxed{
+\text{philosophical principles}
+\rightarrow
+\text{goal image}
+\rightarrow
+\text{preliminary design}
+\rightarrow
+\text{feasibility verification}
+\rightarrow
+\text{numerical experiments}
+\rightarrow
+\text{revision of design and goal image}
+}
+\]
+
+What matters is that the goal image itself is not a fixed specification.
+If numerical experiments or mathematical examination show it to be
+impossible or unnatural, the goal image itself is revised.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. First-Principle Candidate: Nameless Distinguishable
+States}\label{first-principle-candidate-nameless-distinguishable-states}
+
+This research keeps what exists initially to a minimum.
+
+The first-principle candidate is expressed as follows:
+
+\[
+\boxed{
+\text{There exist states that have no names, yet are mutually distinguishable and countable.}
+}
+\]
+
+For convenience, the state set is written
+
+\[
+\mathcal Z_n=\{z_{1,n},z_{2,n},\ldots,z_{N_n,n}\}.
+\]
+
+Here the subscripts are computational bookkeeping identifiers, not
+physical ``names.'' States are not endowed in advance with attributes
+such as electron, photon, mass, charge, spatial position, or time
+coordinate.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Non-direct Readability and Interaction =
+Readout}\label{non-direct-readability-and-interaction-readout}
+
+This research does not assume that a state itself can be read directly.
+
+Likewise, it does not assume that a relation between states can itself
+be read directly.
+
+Physical readout is taken to become possible only as a product with
+other states or relations.
+
+Conceptually,
+
+\[
+\boxed{
+\text{a state alone: unreadable}
+}
+\]
+
+\[
+\boxed{
+\text{a relation alone: unreadable}
+}
+\]
+
+\[
+\boxed{
+\text{product-type operations of states and relations: readable.}
+}
+\]
+
+In this position, observation and interaction cannot be separated in
+principle.
+
+To read anything out, an operation with other states and relations is
+required, and that operation itself produces the next state.
+
+This research therefore takes
+
+\[
+\boxed{
+\text{observation}\equiv\text{readout accompanied by interaction.}
+}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Self-interaction Is Not
+Excluded}\label{self-interaction-is-not-excluded}
+
+Since states have no physical names, there is initially no ground for
+excluding only oneself from the interaction partners.
+
+Hence, writing the unknown two-state map as
+
+\[
+f(z_i,z_j),
+\]
+
+the minimal skeleton producing each state's next state is taken as the
+candidate
+
+\[
+\boxed{
+ z_{i,n+1}
+ =
+ \sum_{j=1}^{N_n} f(z_{i,n},z_{j,n}).
+}
+\]
+
+The sum includes
+
+\[
+j=i
+\]
+
+as well.
+
+However, this paper does not decide the concrete
+
+\[
+f(z_i,z_j).
+\]
+
+This is precisely the main object to be explored in the coming
+preliminary design and feasibility verification.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. The Project's First Goal
+Image}\label{the-projects-first-goal-image}
+
+The following is neither an axiom nor a completed requirements
+specification.
+
+It is the first goal image --- what the author currently hopes will
+ultimately appear if structures resembling known physics can be
+generated from a small number of states and relations alone.
+
+\subsubsection{7.1 Global conserved
+quantity}\label{global-conserved-quantity}
+
+The system as a whole is expected to have a conserved quantity
+
+\[
+C_{\mathrm{tot}}
+\]
+
+that may later be read out as corresponding to mass or energy.
+
+For example, a structure like
+
+\[
+\boxed{
+\sum_{i=1}^{N_n} C(z_{i,n})=C_{\mathrm{tot}}.
+}
+\]
+
+The concrete form of the conserved quantity is undetermined.
+
+\subsubsection{7.2 Growth and decrease of the number of
+states}\label{growth-and-decrease-of-the-number-of-states}
+
+The number of states
+
+\[
+N_n
+\]
+
+is not assumed fixed.
+
+Both
+
+\[
+N_{n+1}>N_n
+\]
+
+and
+
+\[
+N_{n+1}<N_n
+\]
+
+are allowed.
+
+A structure in which the global conserved quantity is maintained even as
+the number of states changes is desirable.
+
+\subsubsection{7.3 Extension arising from
+relations}\label{extension-arising-from-relations}
+
+Between states, multiple relational quantities
+
+\[
+R_{ij}^{(\mu)}
+\]
+
+are expected to form, some of which may later be read out as distance or
+spatial extension.
+
+The direction \(\mu\) is not given as a spatial axis from the start.
+
+Multiple directions are expected to form spontaneously from
+interactions.
+
+\subsubsection{7.4 Initial highly symmetric
+state}\label{initial-highly-symmetric-state}
+
+Initially, a highly symmetric state is envisaged in which the
+all-direction total of the relational quantities that look like distance
+or extension is arbitrarily close to zero:
+
+\[
+\boxed{
+L_\mu(0)\simeq 0.
+}
+\]
+
+However, exact zero is not fixed from outside.
+
+\subsubsection{7.5 Spontaneous symmetry breaking and exponential
+extension}\label{spontaneous-symmetry-breaking-and-exponential-extension}
+
+If the highly symmetric state is not a stable fixed point but an
+unstable one, a small asymmetry
+
+\[
+\epsilon
+\]
+
+may be amplified as
+
+\[
+\epsilon\rightarrow e^{\lambda n}\epsilon,
+\]
+
+producing extension without any externally specified direction.
+
+For directions that look spatial, the appearance, over some period, of
+exponential growth like
+
+\[
+\boxed{
+L_s(n)\sim e^{Hn}
+}
+\]
+
+is taken as one element of the goal image.
+
+\subsubsection{7.6 Temporal direction}\label{temporal-direction}
+
+By contrast, one relational direction is expected to differ from the
+spatial ones: not condensing locally, but increasing monotonically as
+the accumulation of causal processing.
+
+For example, an approximately linear increase like
+
+\[
+\boxed{
+L_t(n)\sim n
+}
+\]
+
+may later be read out as time.
+
+Rather than giving time as a continuous coordinate from the start, it is
+desirable to generate it as the order, or accumulated amount, of
+discrete causal updates.
+
+\subsubsection{7.7 Upper bound of extension and phase
+transition}\label{upper-bound-of-extension-and-phase-transition}
+
+Spatial exponential growth is not expected to continue without limit; it
+is expected to reach a ceiling originating from the number of states,
+the number of relations, the conserved quantity, or the total of
+relational quantities, and to undergo another phase transition.
+
+As a result,
+
+\[
+\boxed{
+\text{growth of wide-area relations}
+\rightarrow
+\text{condensation of local relations}
+}
+\]
+
+is considered as a possible outcome.
+
+\subsubsection{7.8 Condensates and
+particles}\label{condensates-and-particles}
+
+If locally stable relational structures form, they are read out
+afterwards as particles or condensates.
+
+Particles are not a basic input.
+
+Condensation is expected to occur in the spatial directions, while the
+same kind of condensation is expected not to occur in the temporal
+direction.
+
+\subsubsection{7.9 Reactions between
+condensates}\label{reactions-between-condensates}
+
+In interactions between condensates, the conserved quantity is expected
+to appear not as unlimited fresh creation, but as
+
+\[
+\boxed{
+\text{transmission}+\text{partition}+\text{redistribution}.
+}
+\]
+
+Furthermore, it is a long-term goal that both gravitational and
+electromagnetic interactions later appear as different readouts of the
+same basic states and the same relational operations.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. Performance Targets: Cutoff Criteria for Evaluating
+Candidate
+Models}\label{performance-targets-cutoff-criteria-for-evaluating-candidate-models}
+
+The following are also not axioms at this stage; they are performance
+targets for evaluating preliminary designs.
+
+\subsubsection{8.1 Boundedness}\label{boundedness}
+
+The most important performance target is boundedness.
+
+From finite input,
+
+\begin{itemize}
+\tightlist
+\item
+  state values
+\item
+  relational quantities
+\item
+  the number of states
+\item
+  the number of relations
+\item
+  the operational steps needed for one interaction
+\end{itemize}
+
+are expected not to diverge without limit.
+
+Conceptually,
+
+\[
+\boxed{
+\text{finite input}
+\rightarrow
+\text{finite operations}
+\rightarrow
+\text{finite output.}
+}
+\]
+
+This differs from assuming that the universe as a whole has a
+permanently fixed maximum number of states. The requirement is that at
+any finite processing stage, the computational objects and physical
+quantities are finite.
+
+\subsubsection{8.2 Discrete causality}\label{discrete-causality}
+
+An interaction has the definite order
+
+\[
+\text{input}
+\rightarrow
+\text{operation}
+\rightarrow
+\text{output}.
+\]
+
+The basic description is therefore expected to be
+
+\[
+\boxed{
+\mathcal Z_n\rightarrow\mathcal Z_{n+1}.
+}
+\]
+
+In this position, the elementary process is essentially discrete, and
+there is no need to postulate intermediate states
+
+\[
+n+\epsilon
+\]
+
+as physical reality.
+
+Differentiable continuous equations are considered to appear, if at all,
+only as effective descriptions in a coarse-grained limit of many
+discrete updates.
+
+\subsubsection{8.3 Resolution floor}\label{resolution-floor}
+
+This research does not assume that the infinitesimal and zero are always
+physically distinguishable.
+
+Readout is performed not by direct measurement of a single state, but by
+product-sum operations with other states and relations.
+
+Conceptually, a finite-range product-sum readout like
+
+\[
+Y_{AB}
+=
+\sum_k P(R_{Ak},R_{Bk})
+\]
+
+is considered.
+
+If this operation acts as a finite-bandwidth integrating operation, the
+readout itself may possess an effective lower bound of resolution.
+
+If the difference of two states is below the readout resolution, it is
+treated as
+
+\[
+\boxed{
+\text{an unresolvable nonzero}\equiv\text{physically zero.}
+}
+\]
+
+What matters is that this resolution is not given from the start as a
+fixed constant. It is expected that the two interacting relational
+structures themselves determine the resolution, as in
+
+\[
+\boxed{
+\epsilon_{AB}=\mathcal E(R_A,R_B).
+}
+\]
+
+Note that a low-pass characteristic does not follow automatically from
+``being a product-sum'' alone. Whether high-frequency components are
+actually suppressed to yield a finite bandwidth is an item to be
+verified for each concrete candidate map.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. The Position of Quantum
+Behavior}\label{the-position-of-quantum-behavior}
+
+This research does not place quantum behavior as a first axiom.
+
+If, from
+
+\[
+\boxed{
+\text{discrete causal processing}
++
+\text{finite resolution}
++
+\text{product-sum relational readout,}
+}
+\]
+
+distinguishable observational outcomes become naturally discretized,
+then quantum behavior may be explainable as an emergent property.
+
+Accordingly, quantum behavior is treated not as
+
+\[
+\boxed{
+\text{quantum behavior}
+=
+\text{an axiom}
+}
+\]
+
+but as
+
+\[
+\boxed{
+\text{quantum behavior}
+=
+\text{a phenomenon to be derived from discrete causality and finite resolution.}
+}
+\]
+
+This is not a conclusion proven in this paper; it is a subject of future
+verification.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. Connection Policy toward the Standard Model and General
+Relativity}\label{connection-policy-toward-the-standard-model-and-general-relativity}
+
+This research does not start from denying or replacing the Standard
+Model and General Relativity.
+
+Rather, if a candidate model matures sufficiently, it must recover at
+least the following two kinds of limits.
+
+First, for gravity: reproducing the Newtonian distance dependence in the
+weak-field, low-velocity limit, and more generally yielding readouts
+consistent with the geometric description of General Relativity.
+
+Second, for non-gravitational interactions: conservation laws,
+symmetries, and interaction structures corresponding to the gauge
+interactions of the Standard Model being read out as effective
+descriptions.
+
+At the current stage of the project, however, rigorous derivation of
+these is not an immediate goal.
+
+First,
+
+\[
+\boxed{
+\text{does there exist a finite dynamics that can generate these structures from states and relations alone?}
+}
+\]
+
+is examined at the level of feasibility.
+
+In existing quantum-gravity research as well, the emergent viewpoint ---
+classical spacetime and gravitons appearing in suitable limits from more
+basic short-distance structure --- is an important research theme
+{[}8{]}. The holographic principle suggests a deep relation between
+geometry and information {[}7{]}. This research does not adopt these
+specific theories, but the exploratory direction itself --- not taking
+known spacetime and particles as basic entities from the start --- is
+not isolated from the problem-consciousness of contemporary
+quantum-gravity research.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{11. Preliminary Design and Feasibility
+Verification}\label{preliminary-design-and-feasibility-verification}
+
+At the current stage, preliminary design and feasibility verification
+are needed before proceeding to basic design.
+
+The reason is simple.
+
+There is no guarantee that a map satisfying all the goal images listed
+in this paper exists.
+
+Moreover, even if one exists, it may not be discoverable within
+realistic research resources.
+
+Therefore, instead of fixing one map as the correct answer, multiple
+candidates
+
+\[
+f_1,
+\ f_2,
+\ f_3,
+\ \ldots
+\]
+
+are constructed and evaluated in stages.
+
+The first feasibility verification is limited to a small number of
+conditions, for example:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Can a global conserved quantity be maintained?
+\item
+  Can all-state interaction including self-interaction be defined?
+\item
+  Can the conservation structure be maintained as the number of states
+  grows or shrinks?
+\item
+  Do states, relations, and operations remain finite?
+\item
+  Are relational directions generated without externally supplied
+  spatial axes or particle species?
+\end{enumerate}
+
+Candidates that fail these are not extended to the later stages of
+cosmic expansion, condensation, gravity, and electromagnetism.
+
+When a candidate fails, instead of immediately adding auxiliary
+assumptions to keep it alive, the question
+
+\[
+\boxed{
+\text{is the candidate map wrong?}
+}
+\]
+
+or
+
+\[
+\boxed{
+\text{is the goal image itself wrong?}
+}
+\]
+
+is examined separately.
+
+This iteration is the central method of this research.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{12. Research Prohibitions}\label{research-prohibitions}
+
+While preserving the freedom of exploration, this project avoids, as far
+as possible, hidden inputs such as the following.
+
+\begin{itemize}
+\tightlist
+\item
+  Giving particle-species names to initial states.
+\item
+  Separating basic waves for gravity and for electromagnetism from the
+  start.
+\item
+  Fixing spatial or temporal axes externally.
+\item
+  Pre-specifying the network of interaction partners without reason.
+\item
+  Excluding only self-interaction without reason.
+\item
+  Adding normalization or clipping solely to obtain desirable results.
+\item
+  Repairing a diverging candidate with a saturation function that has no
+  physical grounding.
+\item
+  Interpreting an observed numerical phenomenon as a physical discovery
+  without verification of correspondence with known physics.
+\end{itemize}
+
+These are not absolute prohibitions. If their necessity is derived, they
+may be introduced. In that case, however, they must be stated explicitly
+as new assumptions.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{13. Success and Failure
+Conditions}\label{success-and-failure-conditions}
+
+Success for this project does not mean only obtaining a completed theory
+of everything.
+
+For example, any of the following counts as an outcome:
+
+\begin{itemize}
+\tightlist
+\item
+  Showing that a minimal map exists that simultaneously satisfies part
+  of the goal image.
+\item
+  Showing that certain requirements are mathematically incompatible with
+  each other.
+\item
+  Showing that a specific known physical structure can emerge from
+  states and relations alone.
+\item
+  Conversely, showing that additional basic degrees of freedom are
+  indispensable.
+\item
+  Establishing effective exploration procedures and rejection criteria.
+\end{itemize}
+
+Therefore,
+
+\[
+\boxed{
+\text{the discovery of infeasibility is also a research outcome.}
+}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{14. Significance of This
+Paper}\label{significance-of-this-paper}
+
+This paper contains no proof of a new physical law.
+
+Its purpose is to clearly separate what has tended to be mixed together:
+
+\[
+\boxed{
+\text{philosophical principles}
+}
+\]
+
+\[
+\boxed{
+\text{axiom candidates}
+}
+\]
+
+\[
+\boxed{
+\text{the project's goal image}
+}
+\]
+
+\[
+\boxed{
+\text{assumptions of preliminary design}
+}
+\]
+
+\[
+\boxed{
+\text{phenomena obtained in numerical experiments}
+}
+\]
+
+\[
+\boxed{
+\text{conditions for comparison with known physics.}
+}
+\]
+
+In foundational-physics exploration, obtaining a locally interesting
+phenomenon and that structure explaining real physics are not the same
+thing.
+
+This project therefore emphasizes
+
+\[
+\boxed{
+\text{preserving not only what was discovered, but why that computation was performed.}
+}
+\]
+
+This is also a research-management principle for maintaining
+reproducibility and direction in independent research that must sustain
+long-term exploration with limited resources.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{15. Conclusion}\label{conclusion}
+
+The immediate purpose of this research is not to present a completed
+equation of the universe.
+
+More restrictedly, it is to examine
+
+\[
+\boxed{
+\text{whether there exists a finite computational system that can spontaneously generate,}
+\text{from nameless distinguishable states and relations alone,}\
+\text{spacetime, particle, and interaction structures resembling known physics.}
+}
+\]
+
+This paper adopted no specific two-body interaction map.
+
+Instead, it defined the research process itself:
+
+\[
+\boxed{
+\text{philosophical principles}
+\rightarrow
+\text{provisional goal image}
+\rightarrow
+\text{preliminary design}
+\rightarrow
+\text{feasibility verification}
+\rightarrow
+\text{numerical experiments}
+\rightarrow
+\text{revision.}
+}
+\]
+
+As an independent researcher, the author does not deny existing
+theories, but explores whether structures exist that can explain their
+successes from fewer assumptions.
+
+In that process, it is accepted that candidate maps will be rejected,
+that the goal image itself will be revised, and that the original
+conception may ultimately turn out to be infeasible.
+
+This paper is the planning document of that exploration --- written so
+that the search neither drifts nor is fixed prematurely into a single
+theory.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+{[}1{]} J. R. Turner and R. A. Cochrane, ``Goals-and-methods matrix:
+coping with projects with ill defined goals and/or methods of achieving
+them,'' \emph{International Journal of Project Management}, 11(2),
+93--102 (1993). DOI: 10.1016/0263-7863(93)90017-H.
+
+{[}2{]} M. T. Pich, C. H. Loch, and A. De Meyer, ``On Uncertainty,
+Ambiguity, and Complexity in Project Management,'' \emph{Management
+Science}, 48(8), 1008--1023 (2002). DOI: 10.1287/mnsc.48.8.1008.163.
+
+{[}3{]} S. Lenfle, ``Exploration and project management,''
+\emph{International Journal of Project Management}, 26(5), 469--478
+(2008). DOI: 10.1016/j.ijproman.2008.05.017.
+
+{[}4{]} S. Carlip, D.-W. Chiou, W.-T. Ni, and R. Woodard, ``Quantum
+Gravity: A Brief History of Ideas and Some Prospects,''
+\emph{International Journal of Modern Physics D}, 24 (2015). DOI:
+10.1142/S0218271815300281. arXiv:1507.08194.
+
+{[}5{]} J. F. Donoghue, ``Quantum General Relativity and Effective Field
+Theory,'' arXiv:2211.09902 (2022).
+
+{[}6{]} M. Blau and S. Theisen, ``String theory as a theory of quantum
+gravity: a status report,'' \emph{General Relativity and Gravitation},
+41, 743--755 (2009). DOI: 10.1007/s10714-008-0752-z.
+
+{[}7{]} R. Bousso, ``The Holographic Principle,'' \emph{Reviews of
+Modern Physics}, 74, 825--874 (2002). DOI: 10.1103/RevModPhys.74.825.
+
+{[}8{]} A. Ashtekar, M. Reuter, and C. Rovelli, ``From General
+Relativity to Quantum Gravity,'' arXiv:1408.4336 (2014); subsequently
+published as a chapter in \emph{General Relativity and Gravitation: A
+Centennial Perspective}.
+
+{[}9{]} L. Smolin, ``How far are we from the quantum theory of
+gravity?'' arXiv:hep-th/0303185 (2003).
+
+{[}10{]} Particle Data Group, \emph{Review of Particle Physics}, current
+Standard Model and related reviews; see F. Takahashi et al.~(Particle
+Data Group), \emph{International Journal of Modern Physics A} 41,
+2630011 (2026).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Note: Citation Policy of This
+Paper}\label{note-citation-policy-of-this-paper}
+
+Because the purpose of this paper is to fix the direction of the
+research project, the author's own previously published papers are not
+used as grounds. There is no self-citation, and external citations are
+limited to (i) management methods for exploratory projects under high
+uncertainty, and (ii) reviews organizing the current position of the
+Standard Model, General Relativity, and quantum-gravity research.
+
+\end{document}
