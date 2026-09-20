@@ -4,7 +4,7 @@ Noriaki Kihara / WF System Co., Ltd. / ORCID [0009-0004-6753-4020](https://orcid
 All papers are published on Zenodo under CC BY 4.0. Columns: title (English / Japanese), Version DOI, Concept DOI, date, version, PDFs, folder in this repository, release notes.
 Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PAPERS_ja.md](PAPERS_ja.md) / Scholar landing pages: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**Papers: 144**
+**Papers: 145**
 
 ## Central Projection Framework (Gnomonic Spacetime Geometry) / グノモン正写像による4次元時空の幾何学的定式化
 
@@ -536,6 +536,10 @@ Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PA
 38. **Designing a Research Project to Explore the Emergence of Spacetime, Particles, and Interactions from States and Relations: A Framework of Preliminary Design and Feasibility Verification for Foundational-Physics Model Exploration under Uncertainty**  
    状態と関係性から時空・粒子・相互作用の創発を探索する研究プロジェクト設計  
    DOI [10.5281/zenodo.22851945](https://doi.org/10.5281/zenodo.22851945) · Concept [10.5281/zenodo.22851944](https://doi.org/10.5281/zenodo.22851944) · 2026-09-20 · v1.0 · [PDF en](https://zenodo.org/records/22851945/files/foundational_physics_project_design_en_v1.pdf) [PDF ja](https://zenodo.org/records/22851945/files/foundational_physics_project_design_ja_v1.pdf)  
+   folder: [次元の生成構造/基礎物理モデル研究プロジェクト設計_20260920](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%9F%BA%E7%A4%8E%E7%89%A9%E7%90%86%E3%83%A2%E3%83%87%E3%83%AB%E7%A0%94%E7%A9%B6%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E8%A8%AD%E8%A8%88_20260920)
+39. **The First Thought Experiment: Tracing the Equivalence Principle Down to Two Nameless Degrees of Freedom - Deriving the Sign of the Sum of Squares, the Curvature Radius, and Three Systems (Inertial, Uniformly Accelerated, Rotating) from the Conservation of an Area Readout**  
+   第一思考実験：等価原理を無名な二自由度まで遡る  
+   DOI [10.5281/zenodo.22857953](https://doi.org/10.5281/zenodo.22857953) · Concept [10.5281/zenodo.22857952](https://doi.org/10.5281/zenodo.22857952) · 2026-09-20 · v1.0 · [PDF en](https://zenodo.org/records/22857953/files/thought_experiment_01_equivalence_principle_area_readout_en_v1.pdf) [PDF ja](https://zenodo.org/records/22857953/files/thought_experiment_01_equivalence_principle_area_readout_ja_v1.pdf)  
    folder: [次元の生成構造/基礎物理モデル研究プロジェクト設計_20260920](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%9F%BA%E7%A4%8E%E7%89%A9%E7%90%86%E3%83%A2%E3%83%87%E3%83%AB%E7%A0%94%E7%A9%B6%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E8%A8%AD%E8%A8%88_20260920)
 
 ## Time Axis, Q Axis, and Fermion Generation / 時間軸Q軸とフェルミオンの生成構造
