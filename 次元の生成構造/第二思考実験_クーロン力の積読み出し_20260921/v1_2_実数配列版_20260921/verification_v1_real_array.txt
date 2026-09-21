@@ -1,0 +1,87 @@
+第二思考実験 v1.2 実数配列版 — 検証記録
+日付: 2026-09-21
+
+[1] 旧版プログラムの複素演算監査
+対象:
+- run_coulomb_readout_experiments_v1.py
+- verify_coulomb_readout_identities_sympy_v1.py
+- make_coulomb_readout_figures_v1.py
+
+検索語: complex(, 1j, sp.I, conjugate, .imag, np.angle, expand_complex
+検出件数:
+- run v1: 10
+- sympy verifier v1: 16
+- figure generator v1: 3
+
+[2] v1.2 プログラムの複素演算監査
+対象:
+- run_coulomb_readout_experiments_v1.py
+- verify_coulomb_readout_identities_sympy_v1.py
+- make_coulomb_readout_figures_v1.py
+
+同じ検索語に加え .real, cmath も検索。
+検出件数: 3ファイルすべて 0
+
+v1.2 では次の実写像を使用:
+J0 = [[0,-1],[1,0]], J0^2 = -I
+B(X) = a I + b J0 = [[a,-b],[b,a]]
+Phi(X) = B(X)X = [a^2-b^2, 2ab]^T
+
+[3] Python 構文検証
+python3 -m py_compile を v1.2 の3プログラムに実施: PASS
+
+[4] 記号検算
+verify_coulomb_readout_identities_sympy_v1.py を再実行。
+コロン付き恒等式出力を機械走査し、非ゼロ右辺: 0件。
+T14: B(X)^T B(X)=rI, Phi(X)^T Phi(X)=r^2
+T15: omega(Phi(X0),Phi(X1))/2 = q p
+T16: d^2 Phi/dt^2 = -mu Phi/r^3
+T20: Phi(cu)=c^2 Phi(u)
+T22: Phi(D'_phi X)=R4(phi) Phi(X), R4^T R4=I, det R4=-1
+すべて厳密に確認。
+
+[5] 数値実験
+run_coulomb_readout_experiments_v1.py を再実行。
+判定:
+E1a PASS
+E1b PASS
+E2a PASS
+E2b PASS
+E3 PASS
+E4a PASS
+E4b PASS
+E4c FAIL（既知の事前宣言失敗、400件中3件）
+E4c_prime PASS
+E4d PASS
+E5a PASS
+E5b PASS
+E5c PASS
+E5d PASS
+E6 PASS
+E6b PASS
+E7a PASS
+E7b PASS
+
+主要値:
+E2a max = 5.302606180821199e-13
+E3 max = 9.322399380193366e-13
+E5b max = 5.277263095230576e-13
+E5c max = 5.344072577443309e-15
+E4a max = 2.4202861936828413e-14
+E4b max = 9.325873406851315e-15
+E4d order = 1.9983424275202173
+E6 max off ray = 1.1102230246251565e-16
+E7a max = 2.825691070018621e-14
+
+[6] 旧版 JSON との比較
+PASS/FAIL verdict: 完全一致。
+数値差は浮動小数の演算順序・実固有ベクトル計算経路の変更による丸め域。
+最大の絶対差は E4d_order の 4.783273999109383e-08。
+主要恒等式の差は 1e-12 以下。
+
+[7] 図化
+make_coulomb_readout_figures_v1.py を再実行し、fig01〜fig05 の日本語/英語 SVG/PNG 全10ファイルを生成。
+図化コードにも複素演算なし。
+
+結論:
+v1.2 は旧版の複素数ショートカットを除去し、論文・数値実験・記号検算・図化を実行列/実配列だけで再構成した。主結果は維持されたが、方法上の不整合は v1.2 で修正された。
