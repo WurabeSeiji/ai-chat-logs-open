@@ -3,9 +3,9 @@
 
 **著者:** 木原範昭 (Noriaki Kihara)  
 **ORCID:** 0009-0004-6753-4020  
-**Version DOI:** TBD  
-**Concept DOI:** TBD  
-**版:** v1.0 Draft  
+**Version DOI:** 10.5281/zenodo.22867337  
+**Concept DOI:** 10.5281/zenodo.22867336  
+**版:** v1.0  
 **日付:** 2026-09-21
 
 ---

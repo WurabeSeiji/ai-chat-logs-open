@@ -4,7 +4,7 @@
 全論文は Zenodo で CC BY 4.0 公開。各行：題名（日本語 / 英語）・Version DOI・Concept DOI・公開日・版・PDF・リポジトリ内フォルダ・リリースノート。
 本ファイルは `tools/gen_paper_index.py` により Zenodo API から自動生成。English: [PAPERS_en.md](PAPERS_en.md) / Scholar 用ページ: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**論文数: 145**
+**論文数: 146**
 
 ## グノモン正写像による4次元時空の幾何学的定式化 / Central Projection Framework (Gnomonic Spacetime Geometry)
 
@@ -541,6 +541,10 @@
    The First Thought Experiment: Tracing the Equivalence Principle Down to Two Nameless Degrees of Freedom - Deriving the Sign of the Sum of Squares, the Curvature Radius, and Three Systems (Inertial, Uniformly Accelerated, Rotating) from the Conservation of an Area Readout  
    DOI [10.5281/zenodo.22857953](https://doi.org/10.5281/zenodo.22857953) · Concept [10.5281/zenodo.22857952](https://doi.org/10.5281/zenodo.22857952) · 2026-09-20 · v1.0 · [PDF en](https://zenodo.org/records/22857953/files/thought_experiment_01_equivalence_principle_area_readout_en_v1.pdf) [PDF ja](https://zenodo.org/records/22857953/files/thought_experiment_01_equivalence_principle_area_readout_ja_v1.pdf)  
    フォルダ: [次元の生成構造/基礎物理モデル研究プロジェクト設計_20260920](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%9F%BA%E7%A4%8E%E7%89%A9%E7%90%86%E3%83%A2%E3%83%87%E3%83%AB%E7%A0%94%E7%A9%B6%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E8%A8%AD%E8%A8%88_20260920)
+40. **第二思考実験：クーロン型の逆二乗の力を、積の読み出しと面積の時計から導く**  
+   The Second Thought Experiment: Deriving the Coulomb-Type Inverse-Square Force from a Product Readout and an Area Clock - Keeping Two Values and a Linear Law, Obtaining the Focus, Attraction, Repulsion and Neutrality, and Fixing What Two Values Cannot Write  
+   DOI [10.5281/zenodo.22867337](https://doi.org/10.5281/zenodo.22867337) · Concept [10.5281/zenodo.22867336](https://doi.org/10.5281/zenodo.22867336) · 2026-09-21 · v1.0 · [PDF en](https://zenodo.org/records/22867337/files/thought_experiment_02_coulomb_readout_en_v1.pdf) [PDF ja](https://zenodo.org/records/22867337/files/thought_experiment_02_coulomb_readout_ja_v1.pdf)  
+   フォルダ: [次元の生成構造/第二思考実験_クーロン力の積読み出し_20260921](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E7%AC%AC%E4%BA%8C%E6%80%9D%E8%80%83%E5%AE%9F%E9%A8%93_%E3%82%AF%E3%83%BC%E3%83%AD%E3%83%B3%E5%8A%9B%E3%81%AE%E7%A9%8D%E8%AA%AD%E3%81%BF%E5%87%BA%E3%81%97_20260921)
 
 ## 時間軸Q軸とフェルミオンの生成構造 / Time Axis, Q Axis, and Fermion Generation
 
