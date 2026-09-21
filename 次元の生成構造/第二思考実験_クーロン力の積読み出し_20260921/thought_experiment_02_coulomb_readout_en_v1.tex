@@ -81,16 +81,16 @@ Inverse-Square Force from a Product Readout and an Area Clock - Keeping
 Two Values and a Linear Law, Obtaining the Focus, Attraction and
 Repulsion and Neutrality, and Fixing What Two Values Cannot Write -}
 \author{Noriaki Kihara (ORCID 0009-0004-6753-4020)}
-\date{2026-09-21 / v1.0 / Version DOI 10.5281/zenodo.22867337}
+\date{2026-09-21 / v1.1 / Version DOI 10.5281/zenodo.22867900}
 
 \begin{document}
 \maketitle
 
 \textbf{Author:} Noriaki Kihara\\
 \textbf{ORCID:} 0009-0004-6753-4020\\
-\textbf{Version DOI:} 10.5281/zenodo.22867337\\
+\textbf{Version DOI:} 10.5281/zenodo.22867900\\
 \textbf{Concept DOI:} 10.5281/zenodo.22867336\\
-\textbf{Version:} v1.0\\
+\textbf{Version:} v1.1\\
 \textbf{Date:} 2026-09-21
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -148,8 +148,10 @@ The following are then derived.
 \item
   The orbit is a conic with the origin as focus, and its equation is the
   conserved quantity \(q\) of the first thought experiment itself. \(q\)
-  equals the linear form \(\frac{A-C}{2}x+By+\frac{A+C}{2}r\) in the
-  readouts, which is of the form \(r=p-\mathbf e\cdot(x,y)\). The
+  equals the linear form
+  \(\frac{g_{11}-g_{22}}{2}x+g_{12}y+\frac{g_{11}+g_{22}}{2}r\) in the
+  readouts (where \(g_{ij}\) are the components of the induced metric
+  \(G\)), which is of the form \(r=p-\mathbf e\cdot(x,y)\). The
   eccentricity is read from the induced metric as
   \(e^2=1-4\det G/(\operatorname{tr}G)^2\). What \(\tau\) fixes is only
   the type (whether \(e\) is smaller than, equal to, or larger than 1);
@@ -564,8 +566,9 @@ T16{]}}\label{the-inverse-square-force-derivation-t16}
 \boxed{\;\frac{d^2z}{dt^2}=-\mu\,\frac{z}{r^3},\qquad \mu=2\lvert X'\rvert^2-E\lvert X\rvert^2,\quad E=2\sigma,\ \ \sigma=-\det A\;}
 \]
 
-\(E\) is \(-2\) in the elliptic case and \(+2\) in the hyperbolic case.
-The centre of force is the origin, that is, the focus of the orbit.
+\(E\) is \(-2\) for the elliptic type, \(0\) for the parabolic type, and
+\(+2\) for the hyperbolic type. The centre of force is the origin, that
+is, the focus of the orbit.
 
 \(\mu\) is not a parameter of the law but a conserved quantity on the
 side of the orbit. \(q\) corresponds to the angular momentum. \(E\)
@@ -597,14 +600,14 @@ thought experiment {[}Derivation T17{]} {[}Cross-check
 C1{]}}\label{the-conic-is-the-conserved-quantity-of-the-first-thought-experiment-derivation-t17-cross-check-c1}
 
 {[}Derivation T17{]} The conserved quantity \(q=X^{\mathsf T}GX\) of
-{[}1{]} (with \(G=\Omega(S-S^{-1})/2\) and components \(A,B,C\)) equals
-a linear form in the readouts.
+{[}1{]} (with \(G=\Omega(S-S^{-1})/2\) and components
+\(g_{11},g_{12},g_{22}\)) equals a linear form in the readouts.
 
 \[
-\boxed{\;q=\frac{A-C}{2}\,x+B\,y+\frac{A+C}{2}\,r\;}
+\boxed{\;q=\frac{g_{11}-g_{22}}{2}\,x+g_{12}\,y+\frac{g_{11}+g_{22}}{2}\,r\;}
 \]
 
-If \(\operatorname{tr}G=A+C\neq0\), this can be written as
+If \(\operatorname{tr}G=g_{11}+g_{22}\neq0\), this can be written as
 
 \[
 r=p-\mathbf e\cdot(x,y),\qquad \lvert\mathbf e\rvert=e=\sqrt{1-\frac{4\det G}{(\operatorname{tr}G)^2}}
@@ -618,10 +621,12 @@ the value of \(e\) itself is not fixed by \(\tau\) alone. As a
 counterexample, the laws \(S_\lambda=T_\lambda R_\theta T_\lambda^{-1}\)
 with \(\tau=1\) (where \(T_\lambda=\mathrm{diag}(\lambda,\lambda^{-1})\)
 and \(2\cos\theta=1\)) give \(e=0\) for \(\lambda=1\) and \(e=15/17\)
-for \(\lambda=2\). \(e\) is a quantity fixed by \(S\), that is, in the
-language of {[}1{]}, by the law and the initial data, which is
-consistent with listing \(\tau\) and \(e\) as separate readable
-quantities in Section 8.1.
+for \(\lambda=2\). \(e\) is determined by \(S\) alone and does not
+depend on the initial configuration \(X_0\) among the orbits of the same
+\(S\). Indeed, T19' of Section 5.2 gives
+\(e^2=1+2E/\operatorname{tr}(\Omega A)^2\). This is consistent with
+listing \(\tau\) and \(e\) as separate readable quantities in Section
+8.1.
 
 {[}Cross-check C1{]} This is Kepler's first law. When
 \(\operatorname{tr}G\neq0\), the elliptic case gives \(e<1\), the
@@ -1004,7 +1009,9 @@ The following are readable from inside.
 \begin{itemize}
 \tightlist
 \item
-  The number of the law \(\tau\) (corresponding to the energy)
+  The law's number \(\tau\) (it fixes the type of the energy \(E\);
+  under the normalization of §3.1, \(E\) takes only the values \(-2\),
+  \(0\), or \(+2\))
 \item
   The eccentricity \(e\)
 \item
@@ -1293,14 +1300,15 @@ Recorded in accordance with Section 14 of the design document.
   for publication was Kihara's.
 \item
   \textbf{Provenance of the elements.} P1, P2, A1 and D1 through D3 come
-  from {[}0{]} and {[}1{]}. D5, D6 and T13 through T21 were put together
-  here. Section 8.2 (``with two values neither the mass ratio nor the
-  charge ratio is readable''), the three-body structure of Section 8.3,
-  the two roles of \(\tau\) in Section 10, and the problem of a common
-  \(\tau\) in Section 11 came from Kihara's remarks. In particular the
-  question ``the interaction too has namelessness; can the cases that
-  look attractive and repulsive be decided without external
-  intervention?'' led to T18 and T19.
+  from {[}0{]} and {[}1{]}. D5, D6 and T13-T22 were constructed in this
+  paper (T19' arose during the verification, and T22 was added following
+  a reviewer's suggestion). Section 8.2 (``with two values neither the
+  mass ratio nor the charge ratio is readable''), the three-body
+  structure of Section 8.3, the two roles of \(\tau\) in Section 10, and
+  the problem of a common \(\tau\) in Section 11 came from Kihara's
+  remarks. In particular the question ``the interaction too has
+  namelessness; can the cases that look attractive and repulsive be
+  decided without external intervention?'' led to T18 and T19.
 \item
   \textbf{Risks specific to this draft.} As with {[}1{]}, it was written
   in one pass without Kihara's corrections. The places to be checked
@@ -1376,6 +1384,29 @@ Recorded in accordance with Section 14 of the design document.
   {[}4a{]}, {[}8{]} and {[}9{]} were checked down to volume and pages
   against several independent sources. For {[}7{]} only the arXiv
   bibliographic record was checked.
+\item
+  \textbf{Corrections in v1.1.} After v1.0 (Version DOI
+  10.5281/zenodo.22867337) was published, the following inconsistencies
+  were found and corrected in v1.1. (1) In Section 8.1, ``The number of
+  the law \(\tau\) (corresponding to the energy)'' contradicted the
+  correction in Section 4.1. (2) In Section 4.1, the parabolic value
+  \(E=0\) was missing. (3) In Section 4.2, \(e\) was described as
+  ``fixed by \(S\), that is, in the language of {[}1{]}, by the law and
+  the initial data''; in fact \(e\) is determined by \(S\) alone and
+  does not depend on the initial configuration. (4) In Appendix A.19,
+  the components of \(S\) were written with \(q,r\), clashing with the
+  conserved quantity and the distance; in T17, the components of \(G\)
+  were written \(A,B,C\), clashing with the normalized generator \(A\).
+  The components are now written \(s_{ij}\) and \(g_{ij}\). (5) In
+  Appendix B and the script description, the verified range was still
+  given as A.13 through A.21. (6) In Section 12, the range of the
+  constructed results was still given as T13 through T21. The
+  derivations and numerical results are unchanged. (1)-(3) were errors
+  or omissions in the correction instructions written by Claude, the
+  drafter; (4) came from the notation of the first draft; (5) and (6)
+  were caused by correction instructions that were never applied before
+  publication. Claude Code, the verifier, noticed (1), (3) and (6) while
+  applying edits but only added notes instead of issuing warnings.
 \item
   \textbf{Reproducibility.} The numbers were reproduced in two
   environments and the verdicts agreed (Section 7). The scripts use
@@ -1490,21 +1521,23 @@ Using \(w''=\sigma w\) gives \(z''=2(w')^2+2\sigma w^2\) and
 \(\mu\) is conserved follows from
 \(d\mu/ds=4\operatorname{Re}(\bar w'w'')-4\sigma\operatorname{Re}(\bar ww')=0\).
 
-\textbf{A.17 (T17)} Substituting \(a^2=(r+x)/2\), \(b^2=(r-x)/2\) and
-\(ab=y/2\) into \(q=Aa^2+2Bab+Cb^2\) gives
-\(q=\frac{A-C}{2}x+By+\frac{A+C}{2}r\). Rewriting this in the form
-\(r=p-\mathbf e\cdot(x,y)\) gives \(p=2q/(A+C)\) and
-\(\mathbf e=\frac{2}{A+C}\bigl(\frac{A-C}{2},B\bigr)\), so that
-\(e^2=\lvert\mathbf e\rvert^2=\frac{(A-C)^2+4B^2}{(A+C)^2}=1-\frac{4(AC-B^2)}{(A+C)^2}=1-\frac{4\det G}{(\operatorname{tr}G)^2}\).
-Since \(\det G=1-\tau^2/4\) (T5 of {[}1{]}), the elliptic case has
-\(\det G>0\), hence \(A\) and \(C\) have the same sign,
-\(\operatorname{tr}G\neq0\), and \(e<1\). In the hyperbolic and
-parabolic cases \(\det G\le0\), so \(\operatorname{tr}G\neq0\) is not
-automatic. When \(\operatorname{tr}G\neq0\), the hyperbolic case gives
-\(e>1\) and the parabolic case \(e=1\). The case
-\(\operatorname{tr}G=0\) is exactly the neutral case of T19, in which
-\(e\) is undefined and the readout point traces a straight line rather
-than a conic.
+\textbf{A.17 (T17)} Write the components of \(G\) as
+\(g_{11},g_{12},g_{22}\), so that \(q=g_{11}a^2+2g_{12}ab+g_{22}b^2\).
+Substituting \(a^2=(r+x)/2\), \(b^2=(r-x)/2\), \(ab=y/2\) gives
+\(q=\frac{g_{11}-g_{22}}{2}x+g_{12}y+\frac{g_{11}+g_{22}}{2}r\).
+Rewriting this as \(r=p-\mathbf e\cdot(x,y)\) gives
+\(p=2q/(g_{11}+g_{22})\) and
+\(\mathbf e=\frac{2}{g_{11}+g_{22}}\bigl(\frac{g_{11}-g_{22}}{2},g_{12}\bigr)\),
+hence
+\(e^2=\lvert\mathbf e\rvert^2=\frac{(g_{11}-g_{22})^2+4g_{12}^2}{(g_{11}+g_{22})^2}=1-\frac{4(g_{11}g_{22}-g_{12}^2)}{(g_{11}+g_{22})^2}=1-\frac{4\det G}{(\operatorname{tr}G)^2}\).
+Since \(\det G=1-\tau^2/4\) (T5 of {[}1{]}), in the elliptic type
+\(\det G>0\), so \(g_{11}\) and \(g_{22}\) have the same sign,
+\(\operatorname{tr}G\neq0\) and \(e<1\). In the hyperbolic and parabolic
+types \(\det G\le0\), so \(\operatorname{tr}G\neq0\) is not automatic.
+When \(\operatorname{tr}G\neq0\), \(e>1\) in the hyperbolic type and
+\(e=1\) in the parabolic type. \(\operatorname{tr}G=0\) is exactly the
+neutral case of T19; then \(e\) is undefined and the readout point
+traces a straight line rather than a conic.
 
 \textbf{A.18 (T18)} In the hyperbolic case let the eigenvalues of \(S\)
 be \(e^{\pm H}\) and the eigendirections \(v_\pm\), and write
@@ -1518,16 +1551,18 @@ Taking the orientations of \(v_\pm\) so that \(\alpha,\beta>0\) gives
 \(\mu=-8\alpha\beta\cos\psi\), whose sign is opposite to that of
 \(\cos\psi\).
 
-\textbf{A.19 (T19)} \(v_+\!\cdot v_-=0\) iff the eigendirections of
-\(S\) are orthogonal iff \(S\) is symmetric. In components, with
-\(S=\begin{pmatrix}p&q\\r&s\end{pmatrix}\), the components of
-\(G=\operatorname{sym}(\Omega S)\) are \(A=r\), \(B=(s-p)/2\) and
-\(C=-q\), so \(\operatorname{tr}G=r-q\); that is,
-\(\operatorname{tr}G=0\) iff \(q=r\) iff \(S\) is symmetric. Also, by
-T18, \(\mu=0\) for every configuration iff \(v_+\!\cdot v_-=0\). If
-\(\mu=0\) then the force of A.16 vanishes and \(\ddot z=0\). Since the
-eigenvalues of a symmetric real matrix are real, this case has
-\(\lvert\tau\rvert\ge2\) and does not occur in the elliptic case.
+\textbf{A.19 (T19)} \(v_+\!\cdot v_-=0\) iff the eigen-directions of
+\(S\) are orthogonal iff \(S\) is symmetric. Writing
+\(S=\begin{pmatrix}s_{11}&s_{12}\\s_{21}&s_{22}\end{pmatrix}\), the
+components of \(G=\operatorname{sym}(\Omega S)\) are \(g_{11}=s_{21}\),
+\(g_{12}=(s_{22}-s_{11})/2\), \(g_{22}=-s_{12}\), so
+\(\operatorname{tr}G=s_{21}-s_{12}\); that is, \(\operatorname{tr}G=0\)
+iff \(s_{12}=s_{21}\) iff \(S\) is symmetric. By T18, \(\mu=0\) for
+every configuration iff \(v_+\!\cdot v_-=0\) (this also follows directly
+from \(\mu=2q\operatorname{tr}(\Omega A)\) of T19'). If \(\mu=0\), the
+force of A.16 vanishes and \(\ddot z=0\). Since a real symmetric matrix
+has real eigenvalues, this case has \(\lvert\tau\rvert\ge2\) and does
+not occur in the elliptic type.
 
 \textbf{A.20 (T20)} \(q=0\) iff \(X_0\parallel X_1\) (T7 of {[}1{]}).
 The second-order rule then puts all \(X_k\) on the same line, so that
@@ -1604,15 +1639,20 @@ results (verdicts and numbers) \\
 \texttt{make\_coulomb\_readout\_figures\_v1.py} & Generation of Figures
 1 through 5, in Japanese and English versions, as SVG and PNG \\
 \texttt{verify\_coulomb\_readout\_identities\_sympy\_v1.py} & Symbolic
-check of the identities of Appendix A (A.13 through A.21). The three
-types including the parabolic one are treated by a single expression
-using the normalized generator (written \(N\) in the script). T19'
-(\(\mu=2q\operatorname{tr}(\Omega A)\)) is included \\
+verification of the identities of Appendix A (A.13-A.22), including T19'
+(\(\mu=2q\operatorname{tr}(\Omega A)\)) and T22 (the reflection
+\(D'_\varphi\) at a general angle). The three types, parabolic included,
+are treated in one formula with the normalized generator (written \(N\)
+in the script) \\
 \texttt{fig01\_coulomb\_readout\_two\_readouts\_ja\_v1.svg} and others &
 Figures 1 through 5 (\texttt{\_ja\_} / \texttt{\_en\_}, \texttt{.svg} /
 \texttt{.png}) \\
 \end{longtable}
 }
+
+The failure condition of E1b and the internal variable names in the
+script keep the notation of v1.0 as the record of the pre-declaration
+(\(A=g_{11}\), \(B=g_{12}\), \(C=g_{22}\)).
 
 Run with \texttt{python3\ run\_coulomb\_readout\_experiments\_v1.py}
 (depends on numpy) and

@@ -81,16 +81,16 @@
 二つの値と線形の法則のまま、焦点・引力と斥力・中性を出し、二つの値では書けないものを確定する
 ―}
 \author{Noriaki Kihara (ORCID 0009-0004-6753-4020)}
-\date{2026-09-21 / v1.0 / Version DOI 10.5281/zenodo.22867337}
+\date{2026-09-21 / v1.1 / Version DOI 10.5281/zenodo.22867900}
 
 \begin{document}
 \maketitle
 
 \textbf{著者:} 木原範昭 (Noriaki Kihara)\\
 \textbf{ORCID:} 0009-0004-6753-4020\\
-\textbf{Version DOI:} 10.5281/zenodo.22867337\\
+\textbf{Version DOI:} 10.5281/zenodo.22867900\\
 \textbf{Concept DOI:} 10.5281/zenodo.22867336\\
-\textbf{版:} v1.0\\
+\textbf{版:} v1.1\\
 \textbf{日付:} 2026-09-21
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -142,7 +142,8 @@ A1（保存される読み出しが存在する）を読み出し平面にも課
 \item
   軌道は原点を焦点とする円錐曲線で、その式は第一思考実験の保存量 \(q\)
   そのものである。\(q\) は読み出しの一次式
-  \(\frac{A-C}{2}x+By+\frac{A+C}{2}r\) に等しく、これは
+  \(\frac{g_{11}-g_{22}}{2}x+g_{12}y+\frac{g_{11}+g_{22}}{2}r\)
+  に等しく（\(g_{ij}\) は誘導計量 \(G\) の成分）、これは
   \(r=p-\mathbf e\cdot(x,y)\) の形である。離心率は誘導計量から
   \(e^2=1-4\det G/(\operatorname{tr}G)^2\) と読める。\(\tau\)
   が決めるのは型（\(e\) が 1
@@ -504,7 +505,7 @@ T16】}\label{ux9006ux4e8cux4e57ux306eux529b-ux5c0eux51fa-t16}
 \boxed{\;\frac{d^2z}{dt^2}=-\mu\,\frac{z}{r^3},\qquad \mu=2\lvert X'\rvert^2-E\lvert X\rvert^2,\quad E=2\sigma,\ \ \sigma=-\det A\;}
 \]
 
-に従う。\(E\) は楕円型で \(-2\)、双曲型で \(+2\)
+に従う。\(E\) は楕円型で \(-2\)、放物型で \(0\)、双曲型で \(+2\)
 である。力の中心は原点、すなわち軌道の焦点である。
 
 \(\mu\) は法則のパラメータではなく、軌道の側の保存量である。\(q\)
@@ -534,14 +535,14 @@ T17】【照合
 C1】}\label{ux5186ux9310ux66f2ux7ddaux306fux7b2cux4e00ux601dux8003ux5b9fux9a13ux306eux4fddux5b58ux91cfux3067ux3042ux308b-ux5c0eux51fa-t17ux7167ux5408-c1}
 
 【導出 T17】{[}1{]} の保存量
-\(q=X^{\mathsf T}GX\)（\(G=\Omega(S-S^{-1})/2\)、成分を \(A,B,C\)
-とする）は、読み出しの一次式に等しい。
+\(q=X^{\mathsf T}GX\)（\(G=\Omega(S-S^{-1})/2\)、成分を
+\(g_{11},g_{12},g_{22}\) とする）は、読み出しの一次式に等しい。
 
 \[
-\boxed{\;q=\frac{A-C}{2}\,x+B\,y+\frac{A+C}{2}\,r\;}
+\boxed{\;q=\frac{g_{11}-g_{22}}{2}\,x+g_{12}\,y+\frac{g_{11}+g_{22}}{2}\,r\;}
 \]
 
-\(\operatorname{tr}G=A+C\neq0\) なら、これは
+\(\operatorname{tr}G=g_{11}+g_{22}\neq0\) なら、これは
 
 \[
 r=p-\mathbf e\cdot(x,y),\qquad \lvert\mathbf e\rvert=e=\sqrt{1-\frac{4\det G}{(\operatorname{tr}G)^2}}
@@ -555,9 +556,10 @@ r=p-\mathbf e\cdot(x,y),\qquad \lvert\mathbf e\rvert=e=\sqrt{1-\frac{4\det G}{(\
 の法則
 \(S_\lambda=T_\lambda R_\theta T_\lambda^{-1}\)（\(T_\lambda=\mathrm{diag}(\lambda,\lambda^{-1})\)、\(2\cos\theta=1\)）は、\(\lambda=1\)
 で \(e=0\)、\(\lambda=2\) で \(e=15/17\) である。\(e\) は \(S\)
-で決まる量、すなわち {[}1{]}
-の言葉では法則と初期データで決まる量であって、§8.1 で \(\tau\) と \(e\)
-を別の可読量として挙げていることと整合する。
+だけで決まり、同じ \(S\) の軌道のあいだでは初期配置 \(X_0\)
+によらない。実際、§5.2 の T19′ から
+\(e^2=1+2E/\operatorname{tr}(\Omega A)^2\) である。§8.1 で \(\tau\) と
+\(e\) を別の可読量として挙げていることと整合する。
 
 【照合 C1】これは Kepler の第一法則に当たる。\(\operatorname{tr}G\neq0\)
 のとき、楕円型で \(e<1\)、放物型で \(e=1\)、双曲型で \(e>1\)
@@ -878,7 +880,9 @@ E7】}\label{ux4e8cux3064ux306eux5024ux3067ux8aadux3081ux308bux3082ux306e-ux6570
 \begin{itemize}
 \tightlist
 \item
-  法則の数 \(\tau\)（エネルギーに当たる）
+  法則の数 \(\tau\)（エネルギー \(E\) の型を決める。§3.1
+  の規格化のもとで \(E\) の値は \(-2\)、\(0\)、\(+2\)
+  のどれかに限られる）
 \item
   離心率 \(e\)
 \item
@@ -1114,7 +1118,8 @@ E4c′）が、有限分解能のもとでの因果的な順序づけの条件�
   Claude が組んだ。範囲を二体に切って公開するという判断は木原による。
 \item
   \textbf{各要素の出どころ。} P1、P2、A1、D1〜D3 は {[}0{]} と {[}1{]}
-  による。D5、D6 と T13〜T21 は本稿で組んだ。§8.2
+  による。D5、D6 と T13〜T22 は本稿で組んだ（T19′ は検算の過程で、T22
+  は査読の提案を受けて加えた）。§8.2
   の「二つの値では質量比も電荷比も読めない」、§8.3 の三体の構造、§10 の
   \(\tau\) の二役、§11 の共通の \(\tau\)
   の問題は、木原の指摘による。特に「相互作用にも無名性があり、引力に見える場合と斥力に見える場合を外部の介入なしに決められるか」という問いが
@@ -1179,6 +1184,24 @@ E4c′）が、有限分解能のもとでの因果的な順序づけの条件�
   \textbf{書誌の確認。} {[}3{]}〜{[}6{]}、{[}4a{]}、{[}8{]}、{[}9{]}
   は複数の引用元で巻・頁まで確認した。{[}7{]} は arXiv
   の書誌のみ確認した。
+\item
+  \textbf{v1.1 での訂正。} v1.0（Version DOI
+  10.5281/zenodo.22867337）の公開後に次の不整合が見つかり、v1.1
+  で直した。(1) §8.1 の「法則の数 \(\tau\)（エネルギーに当たる）」が
+  §4.1 の訂正と食い違っていた。(2) §4.1 の \(E\)
+  の値に放物型（\(E=0\)）が抜けていた。(3) §4.2 で \(e\)
+  を「法則と初期データで決まる量」と書いていたが、\(e\) は \(S\)
+  だけで決まり初期配置によらない。(4) 付録 A.19 で \(S\) の成分に
+  \(q,r\) を使い、保存量と距離の記号と衝突していた。また T17 で \(G\)
+  の成分を \(A,B,C\) と書き、規格化した生成子 \(A\)
+  と衝突していた。成分をそれぞれ \(s_{ij}\)、\(g_{ij}\) に改めた。(5)
+  付録 B とスクリプトの説明で、検証範囲が A.13〜A.21 のままだった。(6)
+  §12 の出どころの範囲が T13〜T21
+  のままだった。導出と数値の結果は変わらない。(1)〜(3) は草稿を書いた
+  Claude の修正指示の誤りまたは漏れ、(4) は初稿の記号の選び方、(5)(6)
+  は修正指示が適用されないまま公開に至ったことによる。検算した Claude
+  Code は (1)(3)(6)
+  に適用中に気づいていたが、警告せずに付記にとどめていた。
 \item
   \textbf{再現性。}
   数値は二つの環境で追試し、判定が一致した（§7）。スクリプトは相対パスだけを使う。図は一度だけ記述し、同じ記述から
@@ -1284,15 +1307,17 @@ N-body problem}, \emph{Celestial Mechanics}, \textbf{10}(2) (1974),
 \(d\mu/ds=4\operatorname{Re}(\bar w'w'')-4\sigma\operatorname{Re}(\bar ww')=0\)
 による。
 
-\textbf{A.17（T17）} \(q=Aa^2+2Bab+Cb^2\) に
-\(a^2=(r+x)/2\)、\(b^2=(r-x)/2\)、\(ab=y/2\) を代入すると
-\(q=\frac{A-C}{2}x+By+\frac{A+C}{2}r\)。これを
+\textbf{A.17（T17）} \(G\) の成分を \(g_{11},g_{12},g_{22}\) とすると
+\(q=g_{11}a^2+2g_{12}ab+g_{22}b^2\)。\(a^2=(r+x)/2\)、\(b^2=(r-x)/2\)、\(ab=y/2\)
+を代入すると
+\(q=\frac{g_{11}-g_{22}}{2}x+g_{12}y+\frac{g_{11}+g_{22}}{2}r\)。これを
 \(r=p-\mathbf e\cdot(x,y)\) の形に直すと
-\(p=2q/(A+C)\)、\(\mathbf e=\frac{2}{A+C}\bigl(\frac{A-C}{2},B\bigr)\)
-で、\(e^2=\lvert\mathbf e\rvert^2=\frac{(A-C)^2+4B^2}{(A+C)^2}=1-\frac{4(AC-B^2)}{(A+C)^2}=1-\frac{4\det G}{(\operatorname{tr}G)^2}\)。\(\det G=1-\tau^2/4\)（{[}1{]}
-の T5）なので、楕円型で \(\det G>0\)、したがって \(A\) と \(C\)
-は同符号で \(\operatorname{tr}G\neq0\)、\(e<1\)。双曲型と放物型では
-\(\det G\le0\) なので \(\operatorname{tr}G\neq0\)
+\(p=2q/(g_{11}+g_{22})\)、\(\mathbf e=\frac{2}{g_{11}+g_{22}}\bigl(\frac{g_{11}-g_{22}}{2},g_{12}\bigr)\)
+で、\(e^2=\lvert\mathbf e\rvert^2=\frac{(g_{11}-g_{22})^2+4g_{12}^2}{(g_{11}+g_{22})^2}=1-\frac{4(g_{11}g_{22}-g_{12}^2)}{(g_{11}+g_{22})^2}=1-\frac{4\det G}{(\operatorname{tr}G)^2}\)。\(\det G=1-\tau^2/4\)（{[}1{]}
+の T5）なので、楕円型で \(\det G>0\)、したがって \(g_{11}\) と
+\(g_{22}\) は同符号で
+\(\operatorname{tr}G\neq0\)、\(e<1\)。双曲型と放物型では \(\det G\le0\)
+なので \(\operatorname{tr}G\neq0\)
 は自動ではない。\(\operatorname{tr}G\neq0\) のとき、双曲型で
 \(e>1\)、放物型で \(e=1\) である。\(\operatorname{tr}G=0\) は T19
 の中性の場合そのもので、このとき \(e\)
@@ -1308,12 +1333,15 @@ N-body problem}, \emph{Celestial Mechanics}, \textbf{10}(2) (1974),
 で、符号は \(\cos\psi\) の符号の反対である。
 
 \textbf{A.19（T19）} \(v_+\!\cdot v_-=0\) ⟺ \(S\) の固有方向が直交する ⟺
-\(S\) が対称。成分で \(S=\begin{pmatrix}p&q\\r&s\end{pmatrix}\)
+\(S\) が対称。成分で
+\(S=\begin{pmatrix}s_{11}&s_{12}\\s_{21}&s_{22}\end{pmatrix}\)
 とすると、\(G=\operatorname{sym}(\Omega S)\) の成分は
-\(A=r\)、\(B=(s-p)/2\)、\(C=-q\) なので
-\(\operatorname{tr}G=r-q\)、すなわち \(\operatorname{tr}G=0\) ⟺ \(q=r\)
-⟺ \(S\) 対称。また T18 より、すべての配置で \(\mu=0\) ⟺
-\(v_+\!\cdot v_-=0\)。\(\mu=0\) なら A.16 の力はゼロで、\(\ddot z=0\)
+\(g_{11}=s_{21}\)、\(g_{12}=(s_{22}-s_{11})/2\)、\(g_{22}=-s_{12}\)
+なので \(\operatorname{tr}G=s_{21}-s_{12}\)、すなわち
+\(\operatorname{tr}G=0\) ⟺ \(s_{12}=s_{21}\) ⟺ \(S\) 対称。また T18
+より、すべての配置で \(\mu=0\) ⟺ \(v_+\!\cdot v_-=0\)（T19′ の
+\(\mu=2q\operatorname{tr}(\Omega A)\) からも直ちに出る）。\(\mu=0\) なら
+A.16 の力はゼロで、\(\ddot z=0\)
 である。対称な実行列の固有値は実数なので、この場合
 \(\lvert\tau\rvert\ge2\) であり、楕円型には起こらない。
 
@@ -1386,13 +1414,18 @@ B：ファイルと再現手順}\label{ux4ed8ux9332-bux30d5ux30a1ux30a4ux30ebux3
 \texttt{make\_coulomb\_readout\_figures\_v1.py} & 図 fig01〜fig05
 の生成。日本語版・英語版、SVG・PNG \\
 \texttt{verify\_coulomb\_readout\_identities\_sympy\_v1.py} & 付録
-A（A.13〜A.21）の恒等式の記号計算による確認。放物型を含む三つの型を、規格化した生成子で一本の式として扱う（スクリプト中の記号は
-\(N\)）。T19′（\(\mu=2q\operatorname{tr}(\Omega A)\)）も含む \\
+A（A.13〜A.22）の恒等式の記号計算による確認。T19′（\(\mu=2q\operatorname{tr}(\Omega A)\)）と、反転
+\(D'_\varphi\) を一般の角で扱う T22
+を含む。放物型を含む三つの型を、規格化した生成子で一本の式として扱う（スクリプト中の記号は
+\(N\)） \\
 \texttt{fig01\_coulomb\_readout\_two\_readouts\_ja\_v1.svg} ほか &
 図1〜図5（\texttt{\_ja\_} / \texttt{\_en\_}、\texttt{.svg} /
 \texttt{.png}） \\
 \end{longtable}
 }
+
+スクリプトの E1b の落ちる条件と内部の変数名は、事前宣言の記録として v1.0
+の記号のままである（\(A=g_{11}\)、\(B=g_{12}\)、\(C=g_{22}\)）。
 
 実行は
 \texttt{python3\ run\_coulomb\_readout\_experiments\_v1.py}（依存は
