@@ -1,0 +1,1731 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={第二思考実験：クーロン型の逆二乗の力を、積の読み出しと面積の時計から導く ― 二つの値と線形の法則のまま、焦点・引力と斥力・中性を出し、二つの値では書けないものを確定する ―},
+  pdfauthor={Noriaki Kihara (ORCID 0009-0004-6753-4020)},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{第二思考実験：クーロン型の逆二乗の力を、積の読み出しと面積の時計から導く
+―
+二つの値と線形の法則のまま、焦点・引力と斥力・中性を出し、二つの値では書けないものを確定する
+―}
+\author{Noriaki Kihara (ORCID 0009-0004-6753-4020)}
+\date{2026-09-21 / v1.2 / Version DOI 10.5281/zenodo.22876596}
+
+\begin{document}
+\maketitle
+
+\textbf{著者:} 木原範昭 (Noriaki Kihara)\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Version DOI:} 10.5281/zenodo.22876596\\
+\textbf{Concept DOI:} 10.5281/zenodo.22867336\\
+\textbf{版:} v1.2\\
+\textbf{日付:} 2026-09-21
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+第一思考実験 {[}1{]} の法則をそのまま使う。二つの値
+\(X=(a,b)\)、面積読み出しの保存、無向の二階則
+\(X_{k+1}+X_{k-1}=\tau X_k\)
+である。新しく置くのは二つの設計仮定（D5、D6）だけで、どちらも設計書
+{[}0{]}
+の原則を読み出しの側へ適用したものである。位置もまた積の読み出しであること、そして時計も読み出しから決めることである。
+
+位置については、原則
+P2（状態単独は読めない）を位置にも適用する（D5）。積的演算を双線形形式と解する（D3）と、位置は状態と関係の組の積として読まれる。入れ替え
+\(P\) は原則 P1 から出る。もう一つ、符号反転 \(D\)
+を最小の第二の反転として D5 で置く。ただし \(D\)
+をほかのどの反転に取り替えても（\(\pm P\) を除く）、読み出し平面と距離
+\(r\)、したがって以下の結論は変わらない。\(D\)
+の向きの選択は、位置の座標を直交にとる約束に当たる。第二の反転があること自体は
+D5 の仮定である。\(P\) と \(D\) が生む群の恒等でない三元
+\(P\)、\(D\)、\(J_0=DP\)
+が、二次の読み出しの空間の基底をちょうど与える。そこから読み出しは三つに決まる。
+
+\[
+x=\omega(X,PX)=a^2-b^2,\qquad y=\omega(X,DX)=2ab,\qquad r=\omega(X,J_0X)=a^2+b^2
+\]
+
+このとき恒等的に \(x^2+y^2-r^2=0\) が成り立つ。\(P\) と \(D\)
+の両方で不変な読み出しは \(r\)
+の定数倍に限られるので、どれが距離かを選ぶ必要はない。読み出し平面の距離は、ゼロ閉塞として出る。
+
+時計については、公理候補
+A1（保存される読み出しが存在する）を読み出し平面にも課す（D6）。一歩に掃く面積は
+\(q\cdot(X_k\cdot X_{k+1})\) に厳密に等しいので、時計の刻みは
+\(\Delta t_k\propto X_k\cdot X_{k+1}\) に、連続では \(dt\propto r\,ds\)
+に決まる。時間は \(r\) の累積であり、独立した自由度ではない。
+
+このとき次が導かれる。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  読み出し位置を実二次写像 \(Y=\Phi(X)=(a^2-b^2,2ab)^{\mathsf T}\)
+  で定めると、焦点を原点とする逆二乗の力に従う。\(dt\propto r\,ds\)
+  で作る連続補間の軌道では \(d^2Y/dt^2=-\mu Y/r^3\)
+  が厳密に成り立ち、離散の読み出しでは歩幅の 2 次で収束する。
+\item
+  軌道は原点を焦点とする円錐曲線で、その式は第一思考実験の保存量 \(q\)
+  そのものである。\(q\) は読み出しの一次式
+  \(\frac{g_{11}-g_{22}}{2}x+g_{12}y+\frac{g_{11}+g_{22}}{2}r\)
+  に等しく（\(g_{ij}\) は誘導計量 \(G\) の成分）、これは
+  \(r=p-\mathbf e\cdot(x,y)\) の形である。離心率は誘導計量から
+  \(e^2=1-4\det G/(\operatorname{tr}G)^2\) と読める。\(\tau\)
+  が決めるのは型（\(e\) が 1
+  より小さいか、等しいか、大きいか）だけで、\(e\) の値は
+  \(\operatorname{tr}G\) にもよる。
+\item
+  結合 \(\mu\) の符号は外から与えなくてよい。双曲型では
+  \(\mu=-8\alpha\beta\cos\psi\) で、\(\psi\)
+  は配置が入っている区画の開き角である。引力と斥力は、同じ線形の法則の中で区画の違いとして現れる。楕円型では常に引力になる。
+\item
+  中性の場合がある。双曲型で \(S\)
+  が対称であること、二つの零方向が直交すること、\(\operatorname{tr}G=0\)
+  であること、すべての軌道で \(\mu=0\)
+  であることは、互いに同値である。第一思考実験の「厳密に無名な法則」（ブースト）はこの場合に当たり、読み出しの点は等速直線運動をする。
+\item
+  角運動量ゼロの軌道は、結合もゼロになる（\(\mu=2q\operatorname{tr}(\Omega A)\)）。二つの値と
+  D2
+  の範囲では、結合がゼロでない衝突軌道（\(L=0\)、\(\mu\neq0\)）は表せない。実二次写像
+  \(Y=\Phi(X)\) と時計 \(dt\propto r\,ds\) は、実座標で書いた
+  Levi-Civita
+  型の正則化写像と同じ構造を持つが、正則化の対象である衝突軌道そのものはこのモデルの外にある。
+\item
+  二つの値では書けないものが確定する。地図（方向）は、平面の \(N\)
+  体の形の自由度 \(2N-4\) が \(N=2\)
+  でゼロになるので書けない。質量比と電荷比は、二体の相対運動から読めるのが結合
+  \(\mu_{12}\) 一つだけで、そこから個々の比を逆算できないので書けない。
+\end{enumerate}
+
+数値検証は、落ちる条件を事前に宣言した 16 項目と、事後に追加した 2
+項目（E4c′、E6b）で行った。事前宣言の 1
+項目（E4c）は実際に落ちた。原因と処置は §7 に書く。数学としては Bohlin
+と Levi-Civita
+の正則化として古典的である。本稿固有の位置づけは、既知の写像をどの原則・設計仮定から組み立てるかという導出の経路にあり、その範囲は
+§9 に書く。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{0.
+この稿の位置づけ}\label{ux3053ux306eux7a3fux306eux4f4dux7f6eux3065ux3051}
+
+本稿は、設計書 {[}0{]} のもとでの第二思考実験である。第一思考実験
+{[}1{]}
+の法則を変えずに、位置と時計を読み出しの側から決めると何が出るかを見る。定理の番号は
+{[}1{]} からの続きとし、T13 から始める。{[}1{]} の T1 から T12 と
+T3′、および記号 \(\omega\)、\(q\)、\(G\)、\(\tau\)、\(\kappa\)
+は再導出せずに使う。
+
+札は {[}1{]} と同じものを使う。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+札 & 意味 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+【原則】 & 哲学的原則 \\
+【公理候補】 & 公理として置く候補 \\
+【ゴール像】 & 設計書 §7 のゴール像との対応 \\
+【設計仮定】 & 予備設計上の仮定（外してよい、外す予定のもの） \\
+【導出】 & 上の札の言明から証明されるもの（証明は付録 A） \\
+【数値】 & 数値実験で確認したこと \\
+【照合】 & 既知物理との対応。導出ではない \\
+\end{longtable}
+}
+
+\textbf{入力の一覧（これ以外は使わない）}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+記号
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+札
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+P1 & 【原則】 &
+状態と関係を区別するには値が二つ要る。その最小の表現としての無名な二つの値。\((a,b)\sim(b,a)\)（{[}1{]}
+§2.1） \\
+P2 & 【原則】 &
+状態単独は読めない。読めるのは積的演算だけで、読み出しは相互作用である（設計書
+§5） \\
+A1 & 【公理候補】 & 保存される読み出しが存在する（設計書
+§7.1）。本稿でも符号つきの \(q\) の保存（\(\det S=1\)）として使う \\
+D1 & 【設計仮定】 & 二つの値はそれぞれ実数とする（{[}1{]} §10
+のとおり未導出） \\
+D2 & 【設計仮定】 & 相互作用は可逆な線形写像 \(X\mapsto SX\) \\
+D3 & 【設計仮定】 & 「積的演算」を、二つの配置の双線形形式と解する \\
+D5 & 【設計仮定】 & 位置もまた積の読み出しである。入れ替え \(P\)（P1
+から出る）に、第二の反転 \(D\) を加えた群から読み出しを取る。\(D\) は P1
+からは出ないが、\(\pm P\)
+以外のどの反転を選んでも結論は変わらない（§2.4、T22）。\(D\)
+の向きの選択は位置の座標を直交にとる約束に当たる。第二の反転があること自体が
+D5 の仮定である \\
+D6 & 【設計仮定】 & A1
+を読み出し平面にも課す。時計はそこから決める（§3） \\
+\end{longtable}
+}
+
+使わないもの：外から与えた計量・内積、複素数および複素演算、閉路条件
+\(S^n=I\)、外から与えた時間座標、力の法則、質量、電荷。{[}1{]} の
+D4（固定分解能）も本稿では使わない。\(X\cdot Y\) は後に \(\omega\) と
+\(J_0\) から誘導される実双線形形式であり、入力ではない。
+
+D5 と D6
+は新しい設計仮定である。どちらも原則を読み出しの側へ適用したもので、原則そのものではない。何が強制され何が選択かは
+§2 と §3 で分けて書く。
+
+\subsubsection{v1.2
+での重大な訂正}\label{v1.2-ux3067ux306eux91cdux5927ux306aux8a02ux6b63}
+
+v1.0 / v1.1
+は入力一覧で「複素数を使わない」と宣言しながら、T14〜T16、T20、T22
+の証明と数値検証コードで複素数記法・複素演算を計算上の近道として使用していた。これは自由度を増やしてはいないが、本稿が本来示すべき「二つの実数値と実相互作用演算だけから読み出し写像を構成する」という導出経路を隠しており、方法上の不整合であった。
+
+v1.2 ではこの近道を廃止する。四分の一回転は複素単位として置かず、D5
+から得られる実行列
+
+\[
+J_0=DP=\begin{pmatrix}0&-1\\1&0\end{pmatrix},\qquad J_0^2=-I
+\]
+
+として扱う。さらに \(X=(a,b)^{\mathsf T}\) に対して
+
+\[
+B(X):=aI+bJ_0=\begin{pmatrix}a&-b\\b&a\end{pmatrix},\qquad
+\boxed{Y:=\Phi(X):=B(X)X=\begin{pmatrix}a^2-b^2\\2ab\end{pmatrix}}
+\]
+
+という実行列・実配列だけの二次写像を用いる。以下の証明、数値実験、記号検算、図化はすべてこの実写像で書き直した。v1.2
+のプログラムには複素型、複素共役、実部・虚部抽出、複素偏角を使用しない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 問い}\label{ux554fux3044}
+
+第一思考実験では、二つの値と線形の法則から楕円軌道が出た。ただし力の中心は楕円の中心にあり、中心力は距離に比例する型だった。逆二乗則は出ていない。{[}1{]}
+§4.3 にはその理由も書いた。線形の法則では \(\kappa\)
+が軌道の大きさによらないので、\(\kappa\) と \(C\) の間に関係が要る、と。
+
+本稿の問いは次である。
+
+\[
+\boxed{\text{一つの状態と一つの関係性だけで、クーロン型の逆二乗の力を書けるか。相互作用は線形のままでよいか。}}
+\]
+
+答えは、相互作用は線形のままでよい、である。逆二乗の力は、法則の側ではなく読み出しと時計の側から出る。
+
+これは設計書 §11
+の探索にとって一つの帰結を与える。観測される力が非線形であることは、基礎の相互作用が非線形であることを意味しない。
+
+\[
+\boxed{\;\text{線形な法則}\;+\;\text{二次の読み出し}\;+\;\text{読み出しから決めた時計}\;\Longrightarrow\;\text{逆二乗の力}\;}
+\]
+
+第一思考実験の「線形では逆二乗則は出ない」（{[}1{]}
+§4.3）と矛盾しない。あちらは二つの値の平面での力、こちらは読み出し平面での力であり、階層が違う。二体の逆二乗則を得るために
+\(f\) を非線形にする必要はない、ということである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2.
+位置もまた積の読み出しである}\label{ux4f4dux7f6eux3082ux307eux305fux7a4dux306eux8aadux307fux51faux3057ux3067ux3042ux308b}
+
+\subsubsection{2.1 読み出しの空間は三次元である　【設計仮定 D5】【導出
+T13】}\label{ux8aadux307fux51faux3057ux306eux7a7aux9593ux306fux4e09ux6b21ux5143ux3067ux3042ux308b-ux8a2dux8a08ux4eeeux5b9a-d5ux5c0eux51fa-t13}
+
+P2
+により、位置も単独の配置からは読めない。二つの配置の積として読まれなければならない。{[}1{]}
+の T1 により、読み出しは面積形式 \(\omega\)
+に限られる。そこで、配置とその像の読み出し
+
+\[
+\omega(X,MX),\qquad M\ \text{は}\ 2\times2\ \text{の実行列}
+\]
+
+を考える。\(M\)
+は外から与える定数ではなく、関係の入力である。\(\omega(X,MX)\) は、状態
+\(X\) と、関係 \(M\) が作る像 \(MX\)
+という二つの配置の面積であって、単独の配置の読み出しではない。{[}1{]}
+の保存量 \(q=\omega(X,SX)\) と同じ型の読み出しである。P2
+が求めるのは状態と関係の組からの読み出しであり、D5 はその最小の形として
+\(\omega(X,MX)\) を採る。【導出 T13】この対応の核は \(M\)
+が単位行列の定数倍の場合に限られ（{[}1{]}
+の「自分自身との関係量はゼロ」がこれである）、像は二次形式の全体、すなわち三次元である。
+
+読み出しを三つ取るのに、どの基底を選ぶかは決めなくてよい。無名性に関わる操作が、ちょうど基底を与えるからである。
+
+\[
+P=\begin{pmatrix}0&1\\1&0\end{pmatrix}\ \text{（入れ替え）},\qquad
+D=\begin{pmatrix}-1&0\\0&1\end{pmatrix}\ \text{（片方の符号反転）},\qquad
+J_0=DP=\begin{pmatrix}0&-1\\1&0\end{pmatrix}
+\]
+
+\(P\) と \(D\) が生む群は、符号を除いて四つの元 \(\{I,P,D,J_0\}\)
+からなる（符号は {[}1{]} §2.2 の注意 (ii)
+により読めない）。恒等でない三元が、三つの読み出しを与える。
+
+\[
+\boxed{\;x=\omega(X,PX)=a^2-b^2,\qquad y=\omega(X,DX)=2ab,\qquad r=\omega(X,J_0X)=a^2+b^2\;}
+\]
+
+【導出
+T13】この三つは二次の読み出しの空間の基底である。したがって、位置として読めるものはこの三つの一次結合に限られる。
+
+選択はどこにあるか。群を \(P\) と \(D\)
+から生成したことが選択である。基底の取り方は選択ではない。三元がそのまま基底になるからである。
+
+なお、本稿は以後 \(X\cdot Y\) や \(\lvert X\rvert^2\)
+を使うが、これは外から入れた内積ではない。\(\langle X,Y\rangle_0:=\omega(X,J_0Y)\)
+と置けば \(\langle X,X\rangle_0=a^2+b^2=r\) であり、ユークリッド内積は
+\(\omega\) と \(J_0\) から誘導される。したがってこの内積も D5
+に依存する。
+
+\subsubsection{2.2 距離はゼロ閉塞として出る　【導出
+T14】}\label{ux8dddux96e2ux306fux30bcux30edux9589ux585eux3068ux3057ux3066ux51faux308b-ux5c0eux51fa-t14}
+
+三つの読み出しのあいだには恒等式がある。
+
+\[
+\boxed{\;x^2+y^2-r^2=0\;}
+\]
+
+この式は実数だけで閉じた零錐である。ここで、四分の一回転 \(J_0\)
+を使って
+
+\[
+B(X):=aI+bJ_0=
+\begin{pmatrix}a&-b\\b&a\end{pmatrix},
+\qquad
+Y:=\Phi(X):=B(X)X=
+\begin{pmatrix}x\\y\end{pmatrix}
+\]
+
+と置く。これは新しい自由度の導入ではなく、同じ二つの実数 \(a,b\)
+から作る実二次写像である。直接計算すると
+
+\[
+B(X)^{\mathsf T}B(X)=rI,
+\qquad
+Y^{\mathsf T}Y=r^2,
+\]
+
+したがって \(x^2+y^2=r^2\) が得られる。
+
+どれを距離と読むかを選ぶ必要はない。一般の二次の読み出し \(Q=ux+vy+wr\)
+のうち、\(P\) と \(D\) の両方で不変なものは \(u=v=0\)、すなわち \(r\)
+の定数倍に限る。（定符号というだけでは足りない。\(w>\sqrt{u^2+v^2}\)
+なら \(Q\) は正定値で、そのような読み出しは無限にある。）\(r\)
+は無名性の群 \(\langle P,D\rangle\) に不変な唯一の読み出しであり、それが
+\(Y=(x,y)^{\mathsf T}\)
+の距離になる。読み出し平面のピタゴラスの定理が、仮定ではなく実二次写像のゼロ閉塞として出る。
+
+三つの注意。
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\item
+  入れ替え \(P\) は読み出しを \((x,y,r)\mapsto(-x,y,r)\) に、符号反転
+  \(D\) は \((x,y,r)\mapsto(x,-y,r)\) に移す。どちらでも \(r\)
+  は変わらない。読み出し平面の向き（右回りか左回りか）は読めない。
+\item
+  \(X\) と \(-X\)
+  は同じ読み出しを与える。二つの値の平面での一周は、読み出し平面での二周に当たる。
+\item
+  \(P\) と \(D\) は \(\det=-1\) の鏡映である。これは {[}1{]} §3.1
+  で「本稿では扱わない枝」として残したものに当たる。本稿ではそれが、法則としてではなく位置を読む演算子として働いている。
+\end{enumerate}
+
+\subsubsection{2.3
+読み出し平面は地図ではない}\label{ux8aadux307fux51faux3057ux5e73ux9762ux306fux5730ux56f3ux3067ux306fux306aux3044}
+
+\(Y=(x,y)^{\mathsf T}\) は既存の空間の座標ではない。中身は二つの値の比
+\(a:b\) と大きさ \(r\) の二つである。読み出し方向は
+\(x=a^2-b^2\)、\(y=2ab\) から決まり、\(x\neq0\) なら
+
+\[
+\tan\theta_{\rm read}=\frac{2ab}{a^2-b^2}
+\]
+
+である。これは比 \(a:b\) の言い換えで、その基準は \(P,D,J_0\)
+が定める内部の読み出し基底であり、外の空間軸ではない。
+
+内側から読めるのは、法則の数 \(\tau\)、離心率 \(e\)、結合 \(\mu\)
+の符号、歩ごとの角度の差、距離の比の五つである（§8、E7）。方向と地図はこの中にない。
+
+\subsubsection{\texorpdfstring{2.4 \(D\) の選び方によらないこと　【導出
+T22】}{2.4 D の選び方によらないこと　【導出 T22】}}\label{d-ux306eux9078ux3073ux65b9ux306bux3088ux3089ux306aux3044ux3053ux3068-ux5c0eux51fa-t22}
+
+\(D\) は P1
+から出ないので、別の反転を選べば結論が変わるのではないか、という疑問が残る。変わらない。
+
+\(D\) を、角 \(\varphi\) の直線に関する任意の鏡映
+
+\[
+D'_\varphi=\begin{pmatrix}\cos2\varphi&\sin2\varphi\\\sin2\varphi&-\cos2\varphi\end{pmatrix}
+\]
+
+に取り替える（\(\varphi=\pi/2\) が \(D\) である）。\(D'\neq\pm P\)
+なら次が成り立つ。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  三つの読み出しは
+  \(\omega(X,PX)=x\)、\(\omega(X,D'X)=\sin2\varphi\,x-\cos2\varphi\,y\)、\(\omega(X,D'PX)=-\cos2\varphi\,r\)
+  となる。係数の行列式は \(\cos^22\varphi\neq0\)
+  なので、二次の読み出しの基底のままである。
+\item
+  \(\langle P,D'\rangle\) で不変な読み出しは \(r\) の定数倍に限る。
+\item
+  実二次写像 \(Y=\Phi(X)\) に対して
+\end{enumerate}
+
+\[
+\Phi(D'_\varphi X)=R_4(\varphi)\Phi(X),\qquad
+R_4(\varphi)=
+\begin{pmatrix}
+\cos4\varphi&\sin4\varphi\\
+\sin4\varphi&-\cos4\varphi
+\end{pmatrix}.
+\]
+
+ここで \(R_4^{\mathsf T}R_4=I\)、\(\det R_4=-1\) なので、\(D'\)
+は読み出し平面上の実鏡映として働くだけであり、\(Y^{\mathsf T}Y=r^2\)
+は変わらない。
+
+したがって時計
+\(dt\propto r\,ds\)、逆二乗の力、焦点が原点の円錐曲線、および T15〜T21
+は、どの \(D'\) を選んでも変わらない。\(D'\)
+が変えるのは、同じ読み出し幾何に付ける実座標の組だけである。\(D'=\pm D\)
+のときに限り二つの座標が直交し、ゼロ閉塞がピタゴラスの形 \(x^2+y^2=r^2\)
+になる。\(D'=\pm P\) では二つの反転が一致して群が縮み、\(r\)
+が基底から落ちる。
+
+第二の反転の向き（どの \(D'\)
+を選ぶか）は、位置の座標を直交にとる約束に当たり、物理の仮定ではない。一方、\(P\)
+のほかに第二の反転があること自体は D5 の仮定である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3.
+時計も読み出しから決まる}\label{ux6642ux8a08ux3082ux8aadux307fux51faux3057ux304bux3089ux6c7aux307eux308b}
+
+\subsubsection{3.1 掃く面積は積の読み出しである　【設計仮定 D6】【導出
+T15】}\label{ux6383ux304fux9762ux7a4dux306fux7a4dux306eux8aadux307fux51faux3057ux3067ux3042ux308b-ux8a2dux8a08ux4eeeux5b9a-d6ux5c0eux51fa-t15}
+
+時計をどう決めるか。設計書 §7.6
+は時間的な方向を単調な累積として求めているが、その刻みは与えていない。そこで
+A1
+を読み出し平面にも課す。読み出し平面で一歩に掃く面積が、時計あたり一定である、とする。これが
+D6 である。
+
+【導出 T15】\(X_k,X_{k+1}\) の実内積と面積読み出しを
+
+\[
+p_k:=X_k\cdot X_{k+1},\qquad q:=\omega(X_k,X_{k+1})
+\]
+
+と置き、\(Y_k:=\Phi(X_k)\) とする。実二次写像を直接展開すると
+
+\[
+\boxed{\;\frac12\,\omega(Y_k,Y_{k+1})=q\,p_k\;}
+\]
+
+が厳密に成り立つ。\(q\) は {[}1{]}
+の保存量なので、読み出し平面で一歩に掃く三角形の面積は
+\(p_k=X_k\cdot X_{k+1}\) だけで決まる。したがって時計の刻みは
+
+\[
+\boxed{\;\Delta t_k\propto X_k\cdot X_{k+1}\;}
+\]
+
+に決まる。
+
+連続では、双線形写像
+
+\[
+\mathcal B(U,V):=(u_1I+u_2J_0)V
+\]
+
+を使えば \(Y'=2\mathcal B(X,X')\) であり、
+
+\[
+\boxed{\;\frac12\omega(Y,Y')=r\,\omega(X,X')=q\,r\;}
+\]
+
+となる。したがって連続時計は
+
+\[
+\boxed{\;dt\propto r\,ds\;}
+\]
+
+である。ここまで複素演算は使っていない。
+
+以後、楕円型で \(\Delta s=\arccos(\tau/2)\)、双曲型で
+\(\Delta s=\operatorname{arccosh}(|\tau|/2)\)
+とし、\(\Delta t_k=(2\Delta s/\tau)\,X_k\cdot X_{k+1}\)
+と規格化する（放物型では \(\Delta s=0\)
+となるので、この規格化は使わない）。
+
+\subsubsection{\texorpdfstring{3.2 時間は \(r\)
+の累積である}{3.2 時間は r の累積である}}\label{ux6642ux9593ux306f-r-ux306eux7d2fux7a4dux3067ux3042ux308b}
+
+時計と距離は別々の読み出しではない。離散では刻みは
+\(\Delta t_k\propto X_k\cdot X_{k+1}\) であり、これは \(r_k\)
+とは一般に異なる。連続極限で \(t\propto\int r\,ds\)、すなわち \(r\)
+の累積になる。いずれも独立した自由度ではない。歩数 \(k\)
+は相互作用の回数であって時間ではない。
+
+なお、単調性を課す前の \(\Delta t_k\) は符号を持ちうる（§7 の
+E4c、図2(d)）。符号つきの時計の助変数と呼ぶべきもので、\(e<\cos\theta\)
+を満たすところで初めて物理時計として採れる。この条件のもとでは
+\(\cos\theta>e\ge0\) なので \(\tau=2\cos\theta>0\) となり、規格化
+\(\Delta t_k=(2\Delta s/\tau)X_k\cdot X_{k+1}\) が \(\tau=0\)（一周 4
+歩）で特異になる問題も同時に消える。{[}1{]} の T3′
+のとおり法則の水準に向きはないので、この時計も時間の矢は与えない。
+
+連続極限では、物理時間あたりの相互作用の回数は \(dk/dt\propto1/r\)
+である。近い配置ほど頻繁に相互作用する。
+
+【数値】離散の時計が掃く面積に比例することは、相対 \(2.4\times10^{-14}\)
+で確かめた（E4a）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4.
+逆二乗の力と円錐曲線}\label{ux9006ux4e8cux4e57ux306eux529bux3068ux5186ux9310ux66f2ux7dda}
+
+\subsubsection{4.1 逆二乗の力　【導出
+T16】}\label{ux9006ux4e8cux4e57ux306eux529b-ux5c0eux51fa-t16}
+
+【導出 T16】読み出し位置を
+
+\[
+Y=\Phi(X)=B(X)X,\qquad r=X^{\mathsf T}X
+\]
+
+とし、物理時間を \(dt=r\,ds\) とする。規格化した生成子 \(A\) を
+\(X'=AX\) と書くと、Cayley--Hamilton より
+
+\[
+A^2=\sigma I,\qquad \sigma=-\det A
+\]
+
+である。\(\sigma=-1,0,+1\) がそれぞれ楕円型、放物型、双曲型に当たる。
+
+\(V:=X'\) と置く。実二次写像の微分は
+
+\[
+Y'=2\mathcal B(X,V),\qquad
+Y''=2\Phi(V)+2\sigma Y,
+\qquad
+r'=2X\cdot V.
+\]
+
+さらに、実配列だけの恒等式
+
+\[
+\boxed{\;r\,\Phi(V)-2(X\cdot V)\mathcal B(X,V)+\lvert V\rvert^2Y=0\;}
+\]
+
+が成り立つ。したがって \(d/dt=(1/r)d/ds\) を用いると
+
+\[
+\frac{d^2Y}{dt^2}
+=\frac{rY''-r'Y'}{r^3}
+=-\mu\frac{Y}{r^3},
+\]
+
+\[
+\boxed{\;\mu=2\lvert X'\rvert^2-E\lvert X\rvert^2,\qquad E=2\sigma\;}
+\]
+
+を得る。すなわち
+
+\[
+\boxed{\;\frac{d^2Y}{dt^2}=-\mu\frac{Y}{r^3}\;}
+\]
+
+である。力の中心は読み出し原点、すなわち軌道の焦点である。
+
+また \(B(X)^{\mathsf T}B(X)=rI\) から
+
+\[
+\frac12\left\lvert\frac{dY}{dt}\right\rvert^2-\frac{\mu}{r}=E,
+\qquad
+\omega\!\left(Y,\frac{dY}{dt}\right)=2\omega(X,X')
+\]
+
+も実数配列演算だけで得られる。\(\mu\) の保存は \(X''=\sigma X\) を
+\(d\mu/ds\) に代入すれば直ちに従う。
+
+\(E\) は楕円型で \(-2\)、放物型で \(0\)、双曲型で \(+2\) である。\(\mu\)
+は法則のパラメータではなく軌道の側の保存量であり、\(q\)
+が角運動量に対応する。\(\tau\) が決めるのは \(E\)
+の値そのものではなく型である。
+
+【数値】v1.2
+の実配列コードで、補間した軌道の楕円型・双曲型、引力・斥力のすべてについて、逆二乗式を最大相対誤差
+\(9.3\times10^{-13}\) で確認した（E3）。離散の時計での差分加速度も、歩幅
+\(\theta\) の 2 次で逆二乗に収束する（E4d、次数 1.998）。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図1　二つの値の平面と読み出し平面}]{figs/fig01_coulomb_readout_two_readouts_ja_v1.png}}
+\caption{図1　二つの値の平面と読み出し平面}
+\end{figure}
+
+\textbf{図1}　(a)
+二つの値の平面での楕円型の軌道。中心が原点の楕円である。(b)
+同じ軌道の実二次読み出し。原点が焦点の楕円になる。(c)
+双曲型の法則の、二つの区画の軌道。(d)
+その読み出し。一方は引力、他方は斥力の双曲線である。
+
+\subsubsection{4.2 円錐曲線は第一思考実験の保存量である　【導出
+T17】【照合
+C1】}\label{ux5186ux9310ux66f2ux7ddaux306fux7b2cux4e00ux601dux8003ux5b9fux9a13ux306eux4fddux5b58ux91cfux3067ux3042ux308b-ux5c0eux51fa-t17ux7167ux5408-c1}
+
+【導出 T17】{[}1{]} の保存量
+\(q=X^{\mathsf T}GX\)（\(G=\Omega(S-S^{-1})/2\)、成分を
+\(g_{11},g_{12},g_{22}\) とする）は、読み出しの一次式に等しい。
+
+\[
+\boxed{\;q=\frac{g_{11}-g_{22}}{2}\,x+g_{12}\,y+\frac{g_{11}+g_{22}}{2}\,r\;}
+\]
+
+\(\operatorname{tr}G=g_{11}+g_{22}\neq0\) なら、これは
+
+\[
+r=p-\mathbf e\cdot(x,y),\qquad \lvert\mathbf e\rvert=e=\sqrt{1-\frac{4\det G}{(\operatorname{tr}G)^2}}
+\]
+
+と書ける。原点を焦点とする円錐曲線の式である。\(\det G=1-\tau^2/4\)
+は法則の数 \(\tau\) だけで決まるので、\(e\) が 1
+より小さいか、等しいか、大きいかは \(\tau\) が決める。しかし
+\(\operatorname{tr}G\) は \(\tau\) では決まらないので、\(e\)
+の値そのものは \(\tau\) だけでは決まらない。反例として、\(\tau=1\)
+の法則
+\(S_\lambda=T_\lambda R_\theta T_\lambda^{-1}\)（\(T_\lambda=\mathrm{diag}(\lambda,\lambda^{-1})\)、\(2\cos\theta=1\)）は、\(\lambda=1\)
+で \(e=0\)、\(\lambda=2\) で \(e=15/17\) である。\(e\) は \(S\)
+だけで決まり、同じ \(S\) の軌道のあいだでは初期配置 \(X_0\)
+によらない。実際、§5.2 の T19′ から
+\(e^2=1+2E/\operatorname{tr}(\Omega A)^2\) である。§8.1 で \(\tau\) と
+\(e\) を別の可読量として挙げていることと整合する。
+
+【照合 C1】これは Kepler の第一法則に当たる。\(\operatorname{tr}G\neq0\)
+のとき、楕円型で \(e<1\)、放物型で \(e=1\)、双曲型で \(e>1\)
+である（\(\operatorname{tr}G=0\) は中性の場合で、T19 を見よ）。Kepler
+の式 \(e^2=1+2EL^2/\mu^2\) と一致する。
+
+【照合 C2】時計の定義そのものが Kepler の第二法則である（§3.1）。
+
+【照合 C3】閉軌道では、読み出し位置 \(Y\) の一周の物理時間は
+\(T=2\pi\sqrt{a^3/\mu}\) である（\(a=\mu/2\lvert E\rvert\)）。ただし
+\(X\) の一周は \(Y\) の二周に当たるため、E4b で和を取っている \(X\)
+一周分の離散時計は \(2T=4\pi\sqrt{a^3/\mu}\) に一致する。これが本稿での
+Kepler の第三法則との照合である。
+
+【数値】\(q\)
+が読み出しの一次式であることは有理数の厳密計算で確かめた（E1b、違反
+0）。離心率の二つの式の一致は相対
+\(5.3\times10^{-13}\)（E2a）、型と離心率の対応は 2000 の法則で違反
+0（E2b）、第三法則は相対 \(9.3\times10^{-15}\)（E4b）である。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図2　時計と逆二乗則}]{figs/fig02_coulomb_readout_clock_and_force_ja_v1.png}}
+\caption{図2　時計と逆二乗則}
+\end{figure}
+
+\textbf{図2}　(a) 時計の刻みと距離。(b) 差分加速度に \(r^2\) を掛けて
+\(\mu\) で割った値。1 なら逆二乗である。(c) 逆二乗則からのずれは歩幅の 2
+次で減る。(d) 時計がどの初期位相でも単調になる範囲。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+引力と斥力と中性}\label{ux5f15ux529bux3068ux65a5ux529bux3068ux4e2dux6027}
+
+\subsubsection{5.1 結合の符号は内側で決まる　【導出
+T18】}\label{ux7d50ux5408ux306eux7b26ux53f7ux306fux5185ux5074ux3067ux6c7aux307eux308b-ux5c0eux51fa-t18}
+
+以下、双曲型では \(\tau>2\) としてよい。\(\tau<-2\) の法則 \(S\)
+に対して \(-S\) は \(\tau>2\) で、配置は \(X_k\to(-1)^kX_k\)
+と移る。読み出しは二次なので \(Y_k=\Phi(X_k)\) は変わらず、時計の規格化
+\(2\Delta s/\tau\)
+も符号がそろって同じ刻みを与える。数値検証（E5b、E5d）もこの範囲で行った。
+
+引力か斥力かを、外から電荷の符号を与えずに決められるか。決められる。
+
+【導出 T18】双曲型の法則の二つの零方向を \(v_\pm\) とし、配置を
+\(X=\alpha v_++\beta v_-\) と分ける。このとき
+
+\[
+\boxed{\;\mu=-8\alpha\beta\,(v_+\!\cdot v_-)=-8\alpha\beta\cos\psi\;}
+\]
+
+である。\(\psi\) は、\(\alpha>0\)、\(\beta>0\) となるよう \(v_\pm\)
+の向きを取ったときの、配置が入っている区画の開き角である。符号を決めるのは、配置がどの区画にいるかと、その区画の開き角だけである。名前の付け替え
+\(P\) でこの符号は変わらない。
+
+\[
+\psi>90^\circ\ \Longleftrightarrow\ \text{引力},\qquad \psi<90^\circ\ \Longleftrightarrow\ \text{斥力}
+\]
+
+楕円型では零方向がないので、この分岐は起こらない。楕円型は常に引力である。
+
+【数値】\(\mu\) の式は相対 \(5.3\times10^{-13}\) で成り立つ（E5b）。1518
+の楕円型で \(\mu\le0\) は 0 件（E5a）。482 の双曲型で引力 336 件、斥力
+146 件、開き角との対応の破れは 0 件（E5b、E5d）。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図3　結合の符号}]{figs/fig03_coulomb_readout_coupling_sign_ja_v1.png}}
+\caption{図3　結合の符号}
+\end{figure}
+
+\textbf{図3}　結合の符号は、配置が入っている区画の開き角で決まる。直角が中性である。
+
+\subsubsection{5.2 中性　【導出
+T19】}\label{ux4e2dux6027-ux5c0eux51fa-t19}
+
+その前に、一つの恒等式を置く。【導出 T19′】規格化した生成子
+\(A\)（\(X'=AX\)）について
+
+\[
+\boxed{\;\mu=2\,q\,\operatorname{tr}(\Omega A)\;}
+\]
+
+が恒等的に成り立つ。\(q=\omega(X,AX)\) は連続版の保存量で、離散の \(q\)
+の定数倍である。この一本から次が出る。同じ法則の中では \(\mu\) は \(q\)
+に比例する。T17
+の二つの離心率の式の一致（E2a）は数値の一致ではなく恒等式である。そして次の
+T19 も直ちに従う。
+
+【導出 T19】双曲型について、次の四つは同値である。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  二つの零方向が直交する（\(\psi=90^\circ\)）
+\item
+  \(S\) が対称行列である
+\item
+  \(\operatorname{tr}G=0\)
+\item
+  すべての軌道で \(\mu=0\)
+\end{enumerate}
+
+このとき読み出しの点は等速直線運動をする。力がない。{[}1{]} §4.1 の注意
+(iii)
+の「厳密に無名な法則」（ブースト）と、その記述を取り直した圧搾は、この場合に当たる。
+
+したがって、電荷を持たない関係性は、このモデルの中に最初から居場所がある。中性は特別な調整ではなく、\(S\)
+が対称という一つの条件である。なお対称な実行列の固有値は実数なので、中性は楕円型には起こらない。
+
+【数値】ブーストと圧搾の正規形で \(\lvert\mu\rvert\) と加速度はともに
+\(5.3\times10^{-15}\) 以下（E5c）。\(\operatorname{tr}G\)
+はこれらの正規形で厳密に 0 である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. 角運動量ゼロの軌道と、表せない衝突　【導出
+T20】}\label{ux89d2ux904bux52d5ux91cfux30bcux30edux306eux8eccux9053ux3068ux8868ux305bux306aux3044ux885dux7a81-ux5c0eux51fa-t20}
+
+角運動量ゼロの軌道は、二つの値の平面では \(q=0\) の軌道、すなわち
+\(X_0\) と \(X_1\) が平行な軌道である。これは {[}1{]} の T7
+の零錐（相互作用で向きが変わらない配置）に当たる。
+
+ただし、この軌道が D2 の範囲にあるのは \(\lvert\tau\rvert\ge2\)
+のときに限る。\(X_1=\lambda X_0\) を \(\det S=1\) の \(S\)
+で実現するには \(X_0\) が \(S\)
+の実固有ベクトルでなければならず、\(\tau=\lambda+\lambda^{-1}\)、すなわち
+\(\lvert\tau\rvert\ge2\)
+が要る。同じことは読み出しの側からも言える。楕円型では
+\(\det G=1-\tau^2/4>0\) で \(G\) が定符号なので、\(q=0\) となる配置は
+\(X=0\) しかない。\(\lvert\tau\rvert<2\)
+でも二階則を満たす共線な数列は書けるが、それは \(S\) の軌道ではない。
+
+【導出 T20】D2 の範囲では、\(q=0\) の軌道は固有軌道 \(X_k=\lambda^kX_0\)
+に限られる。\(S\) は可逆なので \(\lambda\neq0\)
+で、有限の歩数で原点に達することはない。読み出し位置は原点からの一本の半直線の上を
+\(Y_k=\lambda^{2k}Y_0\) と動く。T19′ により、この軌道の結合は \(\mu=0\)
+である。すなわち \(q=0\)
+の軌道は中性であり、クーロンの衝突軌道（\(L=0\)、\(\mu\neq0\)）ではない。双曲型（\(\lvert\tau\rvert>2\)）では、連続極限で読み出しの点は半直線の上を等速で動く（\(r=r_0\pm2t\)）。内向きの軌道（\(\lvert\lambda\rvert<1\)）は、無限の歩数が有限の物理時間
+\(t=r_0/2\)
+に収まり、その極限で原点に達する。放物型（\(\lvert\tau\rvert=2\)）では
+\(\lambda=\pm1\) で、読み出しの点は動かない（\(Y_k=Y_0\)）。
+
+時計には一つ手当てが要る。T15
+の時計は掃く面積の保存から決めたが、\(q=0\)
+の軌道では掃く面積が恒等的にゼロなので、その議論では時計が決まらない。\(q\neq0\)
+の軌道で得た \(dt\propto r\,ds\) を、\(q=0\)
+へ連続に延長して使う。実二次写像 \(Y=\Phi(X)\)
+とこの時計は、実座標で書いた Levi-Civita の正則化 {[}4,4a{]}
+と同じ構造である。しかし、正則化の対象である結合がゼロでない衝突軌道は、T19′
+によりこのモデルには現れない。
+
+二つの値と D2 の範囲では、結合がゼロでない衝突軌道は表せない。結合の強さ
+\(\mu\) と角運動量 \(L=2q\) が法則ごとに比例する（T19′）ので、\(L\to0\)
+で \(\mu\to0\)
+となるからである。双曲型（\(\lvert\tau\rvert>2\)）で二階則だけを見るなら、原点を横切る共線な数列
+\(c_k=C_+\lambda^k+C_-\lambda^{-k}\)（\(C_+C_-<0\)）も書けるが、それは単一の
+\(S\)
+の軌道ではない。放物型（\(\lvert\tau\rvert=2\)）の二階則の一般解は重根を持ち、\(c_k=(C_0+C_1k)(\pm1)^k\)
+である。これは欠点として隠すより、次の思考実験の境界条件として記録すべき結果である（§11）。
+
+【数値】E6 は有理数の厳密計算で、40 歩にわたり \(q_k\) が厳密に
+0、読み出しの点が半直線の上にあり、値がすべて有限であることを確かめた。ただし
+E6 が使った \(\tau=17/10\) は楕円型で、上のとおり D2
+の範囲にない。そこで D2 の範囲の衝突軌道を E6b
+として別に検証した。\(\tau=149/70=\lambda+\lambda^{-1}\)（\(\lambda=7/10\)）とすると、固有軌道（\(S\)
+の軌道）では \(c_k=\lambda^k\) が厳密に出て、原点の通過は 0
+回である。係数が異符号の数列は二階則を満たして原点をちょうど 1
+回横切るが、\(X_0\parallel X_1\) のとき \(S\)
+の軌道は固有軌道に限られるので、これは \(S\) の軌道ではない。E6
+が報告した「40 歩で 7 回の通過」は \(\lvert\tau\rvert<2\)
+の振動する数列に固有のもので、\(S\) の軌道の性質ではない。A.20
+の証明は二階則だけを使っており、そのまま成り立つ。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. 数値検証}\label{ux6570ux5024ux691cux8a3c}
+
+約束は {[}1{]} と同じである。検証される形式は \(S\) から導き、\(S\)
+を形式が成り立つように作らない。落ちる条件は実行前にスクリプト冒頭の
+\texttt{FAIL\_CONDITIONS}
+に宣言する。状態更新に丸め・クリッピング・正規化を入れない（設計書
+§12）。恒等式は有理数の厳密計算でも確かめる。乱数の種は固定（20260921）。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+記号
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+落ちる条件（事前宣言）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+結果
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+判定
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+E1a & 厳密計算で \(x^2+y^2-r^2\) が一度でも 0 にならない & 300 の法則 ×
+10 歩で違反 0 & PASS \\
+E1b & 厳密計算で \(q\) が読み出しの一次式と食い違う & 違反 0 & PASS \\
+E2a & 計量から出した離心率が Kepler の式とずれる（\(10^{-9}\)） & 2000
+の法則（楕円 1518、双曲 482）で最大 \(5.3\times10^{-13}\) & PASS \\
+E2b & 型と離心率の対応が破れる & 違反 0 & PASS \\
+E3 & 加速度が \(-\mu Y/r^3\) からずれる（\(10^{-9}\)） & 最大
+\(9.3\times10^{-13}\) & PASS \\
+E4a & 掃く面積 ÷ 時計の刻みが軌道に沿って変わる（\(10^{-12}\)） & 最大
+\(2.4\times10^{-14}\) & PASS \\
+E4b & \(X\) 一周分の時計の和が Kepler の周期の 2
+倍からずれる（\(10^{-12}\)） & 最大 \(9.3\times10^{-15}\) & PASS \\
+\textbf{E4c} & 「時計が単調 \(\iff\cos\theta>e\)」が一件でも破れる &
+\textbf{400 件中 3 件で破れた} & \textbf{FAIL} \\
+E4d & 差分加速度の誤差の、歩幅に対する次数が \([1.8,2.2]\) を外れる &
+次数 1.998（\(n=32\ldots1024\)、誤差
+\(1.3\times10^{-2}\to1.3\times10^{-5}\)） & PASS \\
+E5a & 楕円型で \(\mu\le0\) が一件でも出る & 1518 件で違反 0 & PASS \\
+E5b & \(\mu\) の式がずれる、または引力・斥力のどちらかが出ない & 最大
+\(5.3\times10^{-13}\)、引力 336・斥力 146 & PASS \\
+E5c & 中性の正規形で \(\lvert\mu\rvert\) か加速度が \(10^{-12}\)
+を超える & 最大 \(5.3\times10^{-15}\) & PASS \\
+E5d & 「引力 \(\iff\psi>90^\circ\)」が一件でも破れる & 482 件で違反 0 &
+PASS \\
+E6 & 衝突軌道で \(q_k\neq0\)、半直線を外れる、値が有限でなくなる &
+厳密計算で違反 0、実配列読み出しの半直線からの最大ずれ
+\(1.1\times10^{-16}\)。ただし検証した数列は D2
+の外にあり、モデルの軌道の検証ではない（§6。D2 の範囲は E6b） & PASS \\
+E6b & \textbf{後から追加}。\(\tau=149/70\) で、(i) D2 の範囲の \(q=0\)
+の軌道（固有軌道）で \(c_k=\lambda^k\)
+が崩れる、\(q_k\neq0\)、半直線を外れる、原点通過が 0 回でない、(ii)
+二階則の一般解（係数が異符号、\(S\) の軌道ではない）で原点通過が 1
+回でない & 厳密計算で違反 0、通過は 0 回と 1 回 & PASS \\
+E7a & 記述の回転で、離心率・角度差・距離の比が変わる（\(10^{-10}\)） &
+最大 \(2.8\times10^{-14}\) & PASS \\
+E7b & 入れ替えで \((x,y,r)\to(-x,y,r)\) にならない、\(X\to-X\) で変わる
+& 違反 0 & PASS \\
+\end{longtable}
+}
+
+数値検証は楕円型と双曲型で行った。放物型（\(\lvert\tau\rvert=2\)）は乱数の選び方から外れているので、T16
+と C1 の放物型の枝は記号計算（付録 B のスクリプト）でのみ確かめている。
+
+\textbf{v1.2 実数配列版と旧版の照合。} v1.2
+の実数配列コードを再実行し、保存済みの旧版 JSON
+と全数値項目・判定を比較した。PASS/FAIL は完全に一致し、E4c
+だけが従来どおり FAIL
+である。有理数の厳密計算と整数値の結論も変わらない。浮動小数値には演算順序の違いによる丸め差があり、最大の差は
+E4d の推定次数で \(4.8\times10^{-8}\)、その他の主要恒等式は \(10^{-12}\)
+以下の差である。したがって v1.2
+は旧版の物理結果を変更する修正ではなく、旧版が複素演算で省略していた導出と実装を、宣言どおり実数配列だけで再構成した修正である。
+
+\textbf{E4c が落ちたことについて。}
+許容値を後から緩めて書き換えることはしていない。落ちたのは 400 件中 3
+件で、すべて「\(\cos\theta\le e\)
+なのに、その初期位相では単調だった」側であり、逆向き（\(\cos\theta>e\)
+なのに単調でない）は 0 件だった。
+
+原因は、事前に宣言した条件の書き方にある。刻みは
+\(X_k\cdot X_{k+1}=a[\cos\theta-e\cos(u_k+\theta)]\) という形で、\(u_k\)
+は離心近点角である（この式は数値でも確かめた）。\(\cos\theta>e\)
+は、どの初期位相でも単調であるための条件である。\(\cos\theta\le e\)
+でも、たまたま負になる位相を軌道が踏まなければ単調になる。宣言した同値は、初期位相を走査しない限り成り立たない。落ちたのは定理ではなく、検証の書き方である。
+
+そこで次の診断を加えた。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+記号
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+性格
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+落ちる条件
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+結果
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+判定
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+E4c′ & \textbf{事後に追加した診断}。事前登録ではない & (i)
+\(\cos\theta>e\) なのに負の刻みが出る、または (ii) \(\cos\theta<e\)
+なのに、初期位相を細かく走査しても負の刻みが一度も出ない & 200 の法則 ×
+400 位相で、(i) 0 件、(ii) 0 件 & PASS \\
+\end{longtable}
+}
+
+正しい言明は次である。\(\cos\theta>e\)
+は、どの初期位相でも時計が単調であることと同値である。\(\cos\theta<e\)
+では、単調でなくなる初期位相が存在する。
+
+この失敗が教えたことがある。離散の時計は、歩幅が粗く離心率が大きいと、負の刻みを取りうる。時間が単調に進むことは、この系では自動ではない。歩幅と離心率が条件
+\(e<\cos(2\pi/n)\)
+を満たすときに限る（図2(d)）。有限分解能のもとでの因果的な順序づけの条件として、次の思考実験に引き継ぐ。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8.
+読めるものと読めないもの}\label{ux8aadux3081ux308bux3082ux306eux3068ux8aadux3081ux306aux3044ux3082ux306e}
+
+\subsubsection{8.1 二つの値で読めるもの　【数値
+E7】}\label{ux4e8cux3064ux306eux5024ux3067ux8aadux3081ux308bux3082ux306e-ux6570ux5024-e7}
+
+内側から読めるのは次である。
+
+\begin{itemize}
+\tightlist
+\item
+  法則の数 \(\tau\)（エネルギー \(E\) の型を決める。§3.1
+  の規格化のもとで \(E\) の値は \(-2\)、\(0\)、\(+2\)
+  のどれかに限られる）
+\item
+  離心率 \(e\)
+\item
+  結合 \(\mu\) の符号（引力、斥力、中性）
+\item
+  歩ごとの角度の差の列
+\item
+  距離の比の列。有限の歩幅では時計の刻みの比とは別の列で、一致するのは連続極限だけである（\(r_k=1-e\cos2u_k\)、\(\Delta t_k\propto\cos\theta-e\cos(2u_k+\theta)\)）
+\end{itemize}
+
+【数値】記述を回転しても（\(X\to RX\)、\(S\to RSR^{-1}\)）、この五つは
+\(2.8\times10^{-14}\)
+の範囲で変わらない（E7a）。入れ替えと符号反転に対する振る舞いも確かめた（E7b）。
+
+\subsubsection{8.2 二つの値では書けないもの　【導出 T21a】【導出
+T21b】}\label{ux4e8cux3064ux306eux5024ux3067ux306fux66f8ux3051ux306aux3044ux3082ux306e-ux5c0eux51fa-t21aux5c0eux51fa-t21b}
+
+【導出 T21a】平面の \(N\)
+体の配置から並進・回転・尺度を除いた形の自由度は \(2N-4\)
+である。\(N=2\) では 0
+になる。二体には形（地図）が原理的にない。方向は三体で初めて意味を持つ。
+
+質量比と電荷比が書けない理由は別である。【導出 T21b】【照合
+C4】ニュートンとクーロンの式を相対座標で書くと、相対加速度の係数は
+
+\[
+\mu_{12}=(m_1+m_2)\bigl(G-k\,\sigma_1\sigma_2\bigr),\qquad \sigma_i=q_i/m_i
+\]
+
+である。関係性が一つなら読めるのはこの一つの組合せだけで、その絶対値は尺度なので読めず、残るのは符号だけである。写像
+\((m_1,m_2,\sigma_1,\sigma_2)\mapsto\mu_{12}\)
+は単射でないので、\(\mu_{12}\)
+から個々の比を逆算することはできない。これは自由度の数え上げではなく、識別不能性の言明である。標準の物理でも、質量比
+\(m_1/m_2=-a_2/a_1\)
+を読み出すには、二つの加速度を同一の慣性基準で比較できる追加の関係情報が要る。電荷比は積
+\(q_1q_2\) だけからは決まらない。
+
+したがって本稿の結果は、質量と電荷をまだ区別していない段階のものである。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図4　三つの面積読み出しと、モデルの流れ}]{figs/fig04_coulomb_readout_three_readouts_ja_v1.png}}
+\caption{図4　三つの面積読み出しと、モデルの流れ}
+\end{figure}
+
+\textbf{図4}　三つの読み出しと、入力から結論までの流れ。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図5　二つの値の限界}]{figs/fig05_coulomb_readout_two_values_limit_ja_v1.png}}
+\caption{図5　二つの値の限界}
+\end{figure}
+
+\textbf{図5}　二つの値で読めるものと、三体で初めて読めるもの。
+
+\subsubsection{8.3 三体で読めるようになるもの　【照合
+C5】}\label{ux4e09ux4f53ux3067ux8aadux3081ux308bux3088ux3046ux306bux306aux308bux3082ux306e-ux7167ux5408-c5}
+
+【照合 C5】既知の物理を関係性の言葉に直すと、物体 \(i\) が \(k\)
+から受ける加速度の係数は \(c_{ik}=m_k(G-k\,\sigma_i\sigma_k)\)
+である。対称ではない。ここから次が言える。
+
+\begin{itemize}
+\tightlist
+\item
+  質量比は、向きつきの結合の非対称として読める。\(c_{ik}/c_{ki}=m_k/m_i\)
+  である。Mach の定義を関係性だけで書いた形に当たる。
+\item
+  電荷は、質量を除いた残りの対称な部分として読める。積
+  \(\sigma_i\sigma_k\) が三つ読めれば個々の \(\sigma_i\)
+  が決まる。ただし全体の符号は決まらない。全部の符号を一斉に反転しても何も変わらないからで、これは無名性と同じ型の読めなさである。
+\item
+  対の符号 \(s_{ij}\) が個々の符号の積 \(\sigma_i\sigma_j\)
+  で書けるのは、\(s_{12}s_{23}s_{31}=+1\)
+  のときに限る。固有の電荷は、入力ではなく三角形の整合条件として立つ。
+\item
+  質量は結合に足し算で入り、電荷は掛け算で入る。質量と電荷が別の読み出しになる理由の候補が、この入り方の違いにある。
+\end{itemize}
+
+これは導出ではない。三つ以上の値のモデルを作ったとき、対の結合がこの構造に分解するかどうかを、落ちる条件として使う。
+
+\subsubsection{8.4
+設計書への戻し}\label{ux8a2dux8a08ux66f8ux3078ux306eux623bux3057}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+条件（設計書 §11）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+本稿で言えること
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1. 全体保存量を持てるか & {[}1{]} のとおり。本稿ではその \(q\)
+が、読み出し平面での角運動量であり、かつ円錐曲線の式そのものであることが分かった（T17） \\
+2. 自己相互作用を含む相互作用が定義できるか & {[}1{]}
+のとおり。本稿では位置と時計も同じ読み出しから作った \\
+3. 状態数が増減しても保存構造を維持できるか & 本稿でも扱えていない。§8.3
+が次の検証条件 \\
+4. 有限に保たれるか & 楕円型は有界。双曲型は非有界。\(q=0\)
+の軌道は中性で、有限の歩数では原点に達しない（T20） \\
+5. 外から軸を与えずに関係方向が生成されるか &
+距離はゼロ閉塞として生成される（T14）。方向（地図）は生成されない（T21a） \\
+\end{longtable}
+}
+
+設計書 §7.9
+の「透過・分配・再配分」に当たるものは本稿にない。二体だからである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9.
+既知の数学との関係と、本稿固有の組み立て}\label{ux65e2ux77e5ux306eux6570ux5b66ux3068ux306eux95a2ux4fc2ux3068ux672cux7a3fux56faux6709ux306eux7d44ux307fux7acbux3066}
+
+数学としては古典的である。実座標で書けば \(\Phi(a,b)=(a^2-b^2,2ab)\)
+という二次写像と時間変換 \(dt\propto r\,ds\) によって平面の Kepler
+問題が調和振動子に移ることは、Bohlin (1911) {[}3{]} に遡り、Levi-Civita
+{[}4{]} の正則化の中心にある。Arnold {[}5{]} が「Hooke と Newton
+の双対性」として扱い、3 次元版は Kustaanheimo--Stiefel {[}6{]}
+である。この双対性のもとでの保存量の対応（振動子の Fradkin テンソルと
+Kepler の Runge--Lenz ベクトル）も調べられている {[}7{]}。本稿 v1.2
+は、この古典的二次写像を複素記法ではなく、\(J_0\) と \(B(X)\)
+からなる実行列写像として再構成する。
+
+したがって、本稿の T15 から T17
+の内容は、既知の正則化を本稿の言葉で言い直したものに当たる。特に T17
+の離心率の対応は、既知の保存量の対応と同じものである可能性が高い。重なりの範囲は確定していない（§11）。
+
+新規性を確定したと主張するのではなく、本稿で固有の組み立てとして提示するのは次である。先行研究との重なりは今後さらに調べる。なお
+T17 は、第一思考実験の保存量が既知の Kepler
+保存量対応の中に入ることを本モデルの記号で明示したものとして扱い、新規性の項目には数えない。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  P2 を位置に適用する D5 と、積的演算を双線形形式と解する D3
+  から、位置が積の読み出しとして定まり、読み出しの空間が三次元であること、そして
+  \(P\) と \(D\)
+  が生む群がその基底をちょうど与えること（T13）。正則化の写像が、便利な変数変換としてではなく、原則と明示した設計仮定から出る。\(D\)
+  は D5 で置いたが、\(\pm P\)
+  以外のどの反転を選んでも結論は変わらない（T22）。
+\item
+  距離が読み出しのゼロ閉塞として出ること、どれが距離かを選ぶ必要がないこと（T14）。
+\item
+  A1 を読み出し平面に適用する D6
+  から時計が決まること。時間が独立な自由度ではなく、連続極限で \(r\)
+  の累積であること（T15）。
+\item
+  結合の符号が、区画の開き角として内側で決まること。中性が \(S\)
+  の対称性と同値であること（T18、T19）。
+\item
+  二つの値で書けるものと書けないものの境界（T21a、T21b）。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. 限界}\label{ux9650ux754c}
+
+\begin{itemize}
+\tightlist
+\item
+  平面のクーロン問題までである。既知の Kustaanheimo--Stiefel 正則化は 3
+  次元の Kepler 問題を 4 次元の調和振動子に持ち上げる {[}6{]}
+  が、本稿の原則から 3 次元に値が四つ要ることは導出していない。
+\item
+  一つの法則の軌道族は「\(E\) が共通で \(\mu\)
+  が異なる」族である。同じ電荷のまわりのいろいろな軌道（\(\mu\)
+  を固定して \(E\) を変える）を扱うには、\(\tau\)
+  と軌道の大きさの間の関係が要る。{[}1{]} §4.3
+  で書いた点の、正確な形がこれである。
+\item
+  D5 と D6
+  は新しい設計仮定である。どちらも原則を読み出しの側へ適用したもので、原則そのものではない。
+\item
+  質量と電荷を区別していない。地図もない（T21a、T21b）。
+\item
+  結合がゼロでない衝突軌道（\(L=0\)、\(\mu\neq0\)）を表せない（T19′、T20）。写像と時計は
+  Levi-Civita
+  の正則化と同じ形だが、正則化が扱う衝突そのものはこのモデルの外にある。
+\item
+  \(\tau\)
+  は本稿でも二役を兼ねている。法則の数であり、同時に一歩あたりの位相である。二つが同じ数に見えるのは関係性が一つしかないからで、三体以降にそのまま持ち越すことはできない（§11）。
+\item
+  D1（実数）と D2（線形）は {[}1{]} のとおり仮定のままである。A1
+  も公理候補のままである。
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{11.
+次の思考実験}\label{ux6b21ux306eux601dux8003ux5b9fux9a13}
+
+\textbf{共通の \(\tau\) は仮定できない。}
+三体では次の三つが同時には成り立たない。共通の法則の数
+\(\tau\)、共通の歩み、共通の物理時間である。時計が関係性ごとに違うからである（連続極限では
+\(dt_{ij}\propto r_{ij}\,ds_{ij}\)、離散では
+\(\Delta t_{ij,k}\propto X_{ij,k}\cdot X_{ij,k+1}\)）。少なくとも一つを手放す必要がある。既知の正則化でも、複数の対を同時に扱うには対ごとの時間変換では足りず、大域的な時間変換が要る
+{[}8,9{]}。第三思考実験の最初の分岐はここに置く。
+
+\textbf{検証の条件。}
+二体の極限で本稿の結果に戻ること。結合がゼロでない衝突軌道を表せること（本稿では表せない。§6）。三体で第三体の影響が
+§8.3 の構造で出ること。三条件のいずれかを満たせない選択肢は落ちる。
+
+\textbf{次の問い。} (i) \(D\)
+を一般の第二の反転に取り替えても逆二乗の構造が残るかは、§2.4
+で解いた。残る（T22）。クーロン則は \(D\)
+の向きの選び方によらない。第二の反転の向きに物理の内容はなく、第二の反転があること自体が
+D5 の仮定である。(ii)
+三つの関係性が整合するとき、形（地図）と固有の状態（電荷）が同時に読めるようになるか。(iii)
+電荷の大きさは離散化するか。本稿で離散なのは符号だけで、\(\mu\)
+の大きさは連続である。{[}1{]}
+の有限分解能が量子化するのは軌道の閉路数であって、結合の大きさではない。(iv)
+時計の単調性（§7 の
+E4c′）が、有限分解能のもとでの因果的な順序づけの条件になるか。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{12. 作業記録}\label{ux4f5cux696dux8a18ux9332}
+
+設計書 §14 に従って記す。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{経緯。}
+  本稿は、木原の問い「最もシンプルなクーロン力のモデルを一つの状態と一つの関係性だけで表現できるか。相互作用は線形で表現できるか」に対して、Claude
+  が草稿を作成した。位置を積の読み出しにする、時計を面積の保存から決める、という二点は
+  Claude が組んだ。範囲を二体に切って公開するという判断は木原による。
+\item
+  \textbf{各要素の出どころ。} P1、P2、A1、D1〜D3 は {[}0{]} と {[}1{]}
+  による。D5、D6 と T13〜T22 は本稿で組んだ（T19′ は検算の過程で、T22
+  は査読の提案を受けて加えた）。§8.2
+  の「二つの値では質量比も電荷比も読めない」、§8.3 の三体の構造、§10 の
+  \(\tau\) の二役、§11 の共通の \(\tau\)
+  の問題は、木原の指摘による。特に「相互作用にも無名性があり、引力に見える場合と斥力に見える場合を外部の介入なしに決められるか」という問いが
+  T18 と T19 につながった。
+\item
+  \textbf{この草稿に特有の危うさ。} {[}1{]}
+  と同じく、木原の訂正を受けずに一息で書かれている。独立に確かめるべき箇所は、付録
+  A の各証明、§9 で既知とした範囲の切り分け、照合 C4・C5
+  の妥当性である。特に文献 {[}7{]}
+  は本文を読んでいない。既知の保存量の対応と T17
+  がどこまで同じものかは確定していない。第三者の査読で確かめる。
+\item
+  \textbf{検証の記録。} E4c の失敗は書き換えずに残した。E4c′
+  は事後の診断である。E5d は E5b
+  の結果を見たあとに立てた予測だが、実行前に宣言した。この区別を表に明記した。
+\item
+  \textbf{査読による訂正。} 初稿は T17
+  で「離心率は法則の数だけで決まる」と誤っていた（反例は \(\tau=1\) で
+  \(\lambda\)
+  を変える族）。ほかに、距離の一意性の理由が弱かったこと、\(D\) が P1
+  から出るかのように書いていたこと、離散の時計と連続の時計を混ぜていたこと、\(q=0\)
+  の軌道で時計の定義が空回りしていたこと、自由度の数え上げを識別不能性の証明として使っていたこと、\(\tau<-2\)
+  を扱っていないこと、3
+  次元に四つの値が要ると言い切っていたことが、ChatGPT
+  の査読で見つかった。草稿を書いた Claude と検算した Claude Code
+  はいずれも見落としていた。第一思考実験に続き、同じ系統の検算では見つからず、別系統の査読が見つけている。
+\item
+  \textbf{検算による訂正。} Claude Code が T13〜T21 と付録 A
+  を独立に再導出し、T17 の同じ誤りを別経路で見つけた。あわせて、A.17
+  の双曲型・放物型に \(\operatorname{tr}G\neq0\)
+  の条件が抜けていたこと、T16 の \(E=\mp2\)
+  が放物型を覆っていなかったこと、E6 の衝突軌道が D2
+  の範囲になかったこと（\(\tau=17/10\) は楕円型で、\(q=0\)
+  の非自明な配置を持たない）、\(E\) と \(\tau\)
+  の対応の書き方が不正確だったこと、距離の比と時計の刻みの比を同じものと書いていたことが見つかった。恒等式
+  \(\mu=2q\operatorname{tr}(\Omega A)\)（T19′）も検算の過程で出たもので、初稿にはなかった。記号計算は付録
+  B のスクリプトに残した。
+\item
+  \textbf{\(D\) の一般化（T22）。} ChatGPT
+  の査読が「三体へ進む前に、\(D\)
+  を一般の反転に取り替えて逆二乗の構造が残るかを確かめるべき」と提案した。Claude
+  が計算し、残ることを確かめた。\(D\)
+  の向きの選択は位置の座標を直交にとる約束であり、物理の仮定ではない。第二の反転があること自体は
+  D5 の仮定である。
+\item
+  \textbf{二回目の査読による訂正。} ChatGPT が次を指摘した。T19′ から
+  \(q=0\Rightarrow\mu=0\) が出るので、T20 の \(q=0\)
+  の軌道はクーロンの衝突軌道ではなく中性の軌道であること。E6b
+  の異符号の数列は \(S\) の軌道ではないこと。P2 から \(\omega(X,MX)\)
+  への間に「\(M\) は関係の入力である」という一段が要ること。T22
+  で物理の仮定でないのは第二の反転の向きの選択であって、存在そのものではないこと。いずれも正しい。T19′
+  を導いた Claude と Claude Code は、その帰結を T20
+  に反映していなかった。
+\item
+  \textbf{三回目の査読による訂正。} ChatGPT が、T20
+  の連続極限が放物型では成り立たないこと（\(A^2=0\)
+  で読み出しの点は動かない）、要旨の項目6に T21a と T21b
+  の区別が反映されていないこと、§9
+  などで「設計仮定から出る」ものを「原則から出る」と圧縮していたこと、§11
+  に旧い時計の式が残っていたことを指摘した。いずれも正しい。
+\item
+  \textbf{書誌の確認。} {[}3{]}〜{[}6{]}、{[}4a{]}、{[}8{]}、{[}9{]}
+  は複数の引用元で巻・頁まで確認した。{[}7{]} は arXiv
+  の書誌のみ確認した。
+\item
+  \textbf{v1.1 での訂正。} v1.0（Version DOI
+  10.5281/zenodo.22867337）の公開後に次の不整合が見つかり、v1.1
+  で直した。(1) §8.1 の「法則の数 \(\tau\)（エネルギーに当たる）」が
+  §4.1 の訂正と食い違っていた。(2) §4.1 の \(E\)
+  の値に放物型（\(E=0\)）が抜けていた。(3) §4.2 で \(e\)
+  を「法則と初期データで決まる量」と書いていたが、\(e\) は \(S\)
+  だけで決まり初期配置によらない。(4) 付録 A.19 で \(S\) の成分に
+  \(q,r\) を使い、保存量と距離の記号と衝突していた。また T17 で \(G\)
+  の成分を \(A,B,C\) と書き、規格化した生成子 \(A\)
+  と衝突していた。成分をそれぞれ \(s_{ij}\)、\(g_{ij}\) に改めた。(5)
+  付録 B とスクリプトの説明で、検証範囲が A.13〜A.21 のままだった。(6)
+  §12 の出どころの範囲が T13〜T21
+  のままだった。導出と数値の結果は変わらない。(1)〜(3) は草稿を書いた
+  Claude の修正指示の誤りまたは漏れ、(4) は初稿の記号の選び方、(5)(6)
+  は修正指示が適用されないまま公開に至ったことによる。検算した Claude
+  Code は (1)(3)(6)
+  に適用中に気づいていたが、警告せずに付記にとどめていた。
+\item
+  \textbf{公開前最終監査。} v1.1 の公開前に ChatGPT
+  が全文と検証コードを再照合し、(1) C3/E4b で \(X\) 一周と読み出し位置
+  \(Y\) 一周を混同していたこと（\(X\) 一周は \(Y\) 二周なので、E4b
+  の時計和は Kepler 周期の 2 倍）、(2) A.20
+  の二階則の一般解に放物型の重根を明示していなかったこと、(3) §9 で T17
+  を既知保存量対応と重なる可能性を認めながら新規性候補に残していたこと、(4)
+  C4 の質量比の運用的説明が強すぎたこと、(5) §11
+  の三条件に対して「どちらか」と書いていたことを修正した。主定理と数値データは変わらない。
+\item
+  \textbf{v1.2 の重大訂正（実数配列化）。} v1.0 / v1.1
+  は「複素数を使わない」と宣言しながら、T14〜T16、T20、T22
+  と検証コードで複素演算を近道として使っていた。木原の指摘により、この導出経路は本稿の方法上の要求に反すると判断した。v1.2
+  では \(J_0^2=-I\)
+  を実行列の性質として用い、\(B(X)=aI+bJ_0\)、\(Y=\Phi(X)=B(X)X\)
+  に全面的に書き換えた。数値実験、記号検算、図化の三プログラムから複素型・複素共役・実部/虚部・複素偏角を除去した。記号検算は全恒等式が厳密に
+  0、数値検証の PASS/FAIL は旧版と同じで、E4c の既知の FAIL
+  だけが残った。したがって主結果は維持されたが、旧版の「複素数を使わない」という記述と実装の不整合は
+  v1.2 で初めて解消された。
+\item
+  \textbf{再現性。}
+  数値は二つの環境で追試し、判定が一致した（§7）。スクリプトは相対パスだけを使う。図は一度だけ記述し、同じ記述から
+  SVG と PNG を、日本語版と英語版で出す。SVG
+  は依存なしで常に生成され、PNG は matplotlib がある場合だけ生成される。
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsubsection{本系列}\label{ux672cux7cfbux5217}
+
+{[}0{]} 木原範昭,
+\textbf{状態と関係性から時空・粒子・相互作用の創発を探索する研究プロジェクト設計
+― 不確実性下の基礎物理モデル探索に対する予備設計と実装可能性検証の枠組み
+―}, v1.0 (2026-09-20). Concept DOI: 10.5281/zenodo.22851944.
+
+{[}1{]} 木原範昭, \textbf{第一思考実験：等価原理を無名な二自由度まで遡る
+―
+面積読み出しの保存から、二乗和の符号・曲率半径・三つの系（慣性／一様加速／回転）を導く
+―}, v1.0 (2026-09-20). Concept DOI: 10.5281/zenodo.22857952.
+
+\subsubsection{外部}\label{ux5916ux90e8}
+
+{[}2{]} Newton, I., \textbf{Philosophiæ Naturalis Principia
+Mathematica}, London, 1687.
+
+{[}3{]} Bohlin, K., \textbf{Note sur le problème des deux corps et sur
+une intégration nouvelle dans le problème des trois corps},
+\emph{Bulletin Astronomique}, \textbf{28} (1911), 113--119.
+
+{[}4{]} Levi-Civita, T., \textbf{Sur la régularisation du problème des
+trois corps}, \emph{Acta Mathematica}, \textbf{42} (1920), 99--144. DOI:
+10.1007/BF02404404.
+
+{[}4a{]} Levi-Civita, T., \textbf{Sur la résolution qualitative du
+problème restreint des trois corps}, \emph{Acta Mathematica},
+\textbf{30} (1906), 305--327.（平面の正則化）
+
+{[}5{]} Arnold, V. I., \textbf{Huygens and Barrow, Newton and Hooke},
+Birkhäuser, 1990.
+
+{[}6{]} Kustaanheimo, P., Stiefel, E., \textbf{Perturbation theory of
+Kepler motion based on spinor regularization}, \emph{Journal für die
+reine und angewandte Mathematik}, \textbf{218} (1965), 204--219. DOI:
+10.1515/crll.1965.218.204.
+
+{[}7{]} Grandati, Y., Bérard, A., Mohrbach, H.,
+\textbf{Bohlin--Arnold--Vassiliev's duality and conserved quantities},
+arXiv:0803.2610 (2008).
+
+{[}8{]} Aarseth, S., Zare, K., \textbf{A regularization of the
+three-body problem}, \emph{Celestial Mechanics}, \textbf{10}(2) (1974),
+185--205. DOI: 10.1007/BF01227619.
+
+{[}9{]} Heggie, D., \textbf{A global regularisation of the gravitational
+N-body problem}, \emph{Celestial Mechanics}, \textbf{10}(2) (1974),
+217--241. DOI: 10.1007/BF01227621.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{付録 A：証明}\label{ux4ed8ux9332-aux8a3cux660e}
+
+\textbf{A.13（T13）} 二次形式 \(\omega(X,MX)=X^{\mathsf T}\Omega MX\) は
+\(\Omega M\)
+の対称部分で決まる。\(M\mapsto\operatorname{sym}(\Omega M)\) は 4
+次元から 3 次元への線形写像で、核は \(\Omega M\) が反対称、すなわち
+\(\Omega M=c\Omega\)、すなわち \(M=cI\)
+の場合に限る。したがって像は二次形式の全体（3
+次元）である。\(M=P,D,J_0\) を入れると、それぞれ
+\(a^2-b^2\)、\(2ab\)、\(a^2+b^2\) となり、これらは一次独立である。
+
+\textbf{A.14（T14）} \(X=(a,b)^{\mathsf T}\)、\(B(X)=aI+bJ_0\)
+とする。\(J_0^{\mathsf T}=-J_0\)、\(J_0^2=-I\) なので
+
+\[
+B(X)^{\mathsf T}B(X)=(aI-bJ_0)(aI+bJ_0)=(a^2+b^2)I=rI.
+\]
+
+また \(Y=\Phi(X)=B(X)X=(a^2-b^2,2ab)^{\mathsf T}=(x,y)^{\mathsf T}\)
+だから
+
+\[
+Y^{\mathsf T}Y=X^{\mathsf T}B(X)^{\mathsf T}B(X)X=r\,X^{\mathsf T}X=r^2,
+\]
+
+すなわち \(x^2+y^2-r^2=0\)。\(P\) は \(x\) の符号を、\(D\) は \(y\)
+の符号を変え、どちらも \(r\) を変えない。したがって \(Q=ux+vy+wr\) が
+\(P\) で不変なら \(u=0\)、\(D\) で不変なら \(v=0\)
+で、両方で不変な読み出しは \(r\)
+の定数倍に限る。入れ替えについては、\(\omega(PX,P\,MPX)=-\omega(X,(PMP)X)\)
+と \(PPP=P\)、\(PDP=-D\)、\(PJ_0P=-J_0\) から \((x,y,r)\mapsto(-x,y,r)\)
+を得る。\(X\to-X\) では二次形式なので変わらない。
+
+\textbf{A.15（T15）}
+\(X_0=(a_0,b_0)^{\mathsf T}\)、\(X_1=(a_1,b_1)^{\mathsf T}\)
+とし、\(p=X_0\cdot X_1\)、\(q=\omega(X_0,X_1)\)、\(Y_j=\Phi(X_j)\)
+とする。成分を直接展開すると
+
+\[
+\omega(Y_0,Y_1)
+=(a_0^2-b_0^2)(2a_1b_1)-(2a_0b_0)(a_1^2-b_1^2)
+=2pq.
+\]
+
+よって掃く三角形の面積は \(pq\) である。\(q\) は {[}1{]} の T2
+により保存されるので、面積は \(p\) に比例する。連続では双線形写像
+\(\mathcal B(U,V)=B(U)V\) を用いて
+\(Y'=2\mathcal B(X,X')\)。直接展開または同じ双線形恒等式から
+
+\[
+\frac12\omega(Y,Y')=r\,\omega(X,X')=qr
+\]
+
+となり、\(dA/ds=qr\) を得る。
+
+\textbf{A.16（T16）} \(Y=\Phi(X)\)、\(r=X^{\mathsf T}X\)、\(dt=r\,ds\)
+とする。規格化した生成子 \(A\)（\(X'=AX\)、トレースゼロ。{[}1{]} の
+\(N=(S-S^{-1})/2\) を規格化したもの）は Cayley--Hamilton より
+\(A^2=\sigma I\)、\(\sigma=-\det A\) を満たす。\(\sigma=-1\)
+が楕円型、\(0\) が放物型、\(+1\) が双曲型である。\(V=X'\) と置けば
+\(X''=\sigma X\) なので
+
+\[
+Y'=2\mathcal B(X,V),\qquad
+Y''=2\Phi(V)+2\sigma Y,\qquad
+r'=2X\cdot V.
+\]
+
+ここで成分を展開すると
+
+\[
+r\Phi(V)-2(X\cdot V)\mathcal B(X,V)+\lvert V\rvert^2Y=0
+\]
+
+が成り立つ。したがって
+
+\[
+\ddot Y=\frac{rY''-r'Y'}{r^3}
+=-\frac{2\lvert V\rvert^2-2\sigma r}{r^3}Y
+=-\mu\frac{Y}{r^3},
+\]
+
+\[
+\mu=2\lvert X'\rvert^2-2\sigma\lvert X\rvert^2,
+\qquad E=2\sigma.
+\]
+
+また \(B(X)^{\mathsf T}B(X)=rI\) から
+\(\frac12\lvert\dot Y\rvert^2-\mu/r=E\)、A.15 から
+\(\omega(Y,\dot Y)=2\omega(X,X')\) を得る。\(\mu\) の保存は
+
+\[
+\frac{d\mu}{ds}=4X'\cdot X''-4\sigma X\cdot X'=0
+\]
+
+である。全て実行列・実ベクトルの演算で閉じる。
+
+\textbf{A.17（T17）} \(G\) の成分を \(g_{11},g_{12},g_{22}\) とすると
+\(q=g_{11}a^2+2g_{12}ab+g_{22}b^2\)。\(a^2=(r+x)/2\)、\(b^2=(r-x)/2\)、\(ab=y/2\)
+を代入すると
+\(q=\frac{g_{11}-g_{22}}{2}x+g_{12}y+\frac{g_{11}+g_{22}}{2}r\)。これを
+\(r=p-\mathbf e\cdot(x,y)\) の形に直すと
+\(p=2q/(g_{11}+g_{22})\)、\(\mathbf e=\frac{2}{g_{11}+g_{22}}\bigl(\frac{g_{11}-g_{22}}{2},g_{12}\bigr)\)
+で、\(e^2=\lvert\mathbf e\rvert^2=\frac{(g_{11}-g_{22})^2+4g_{12}^2}{(g_{11}+g_{22})^2}=1-\frac{4(g_{11}g_{22}-g_{12}^2)}{(g_{11}+g_{22})^2}=1-\frac{4\det G}{(\operatorname{tr}G)^2}\)。\(\det G=1-\tau^2/4\)（{[}1{]}
+の T5）なので、楕円型で \(\det G>0\)、したがって \(g_{11}\) と
+\(g_{22}\) は同符号で
+\(\operatorname{tr}G\neq0\)、\(e<1\)。双曲型と放物型では \(\det G\le0\)
+なので \(\operatorname{tr}G\neq0\)
+は自動ではない。\(\operatorname{tr}G\neq0\) のとき、双曲型で
+\(e>1\)、放物型で \(e=1\) である。\(\operatorname{tr}G=0\) は T19
+の中性の場合そのもので、このとき \(e\)
+は定義されず、読み出しの点は円錐曲線ではなく直線を描く。
+
+\textbf{A.18（T18）} 双曲型で \(S\) の固有値を \(e^{\pm H}\)、固有方向を
+\(v_\pm\) とし、\(X=\alpha v_++\beta v_-\) とする。規格化した生成子
+\(A\)（\(A^2=I\)）は \(Av_\pm=\pm v_\pm\) なので
+\(X'=AX=\alpha v_+-\beta v_-\)。\(\lvert X'\rvert^2-\lvert X\rvert^2=-4\alpha\beta(v_+\!\cdot v_-)\)
+より
+\(\mu=2(\lvert X'\rvert^2-\lvert X\rvert^2)=-8\alpha\beta(v_+\!\cdot v_-)\)。\(v_\pm\)
+を \(\alpha,\beta>0\) となるよう取り直せば \(\mu=-8\alpha\beta\cos\psi\)
+で、符号は \(\cos\psi\) の符号の反対である。
+
+\textbf{A.19（T19）} \(v_+\!\cdot v_-=0\) ⟺ \(S\) の固有方向が直交する ⟺
+\(S\) が対称。成分で
+\(S=\begin{pmatrix}s_{11}&s_{12}\\s_{21}&s_{22}\end{pmatrix}\)
+とすると、\(G=\operatorname{sym}(\Omega S)\) の成分は
+\(g_{11}=s_{21}\)、\(g_{12}=(s_{22}-s_{11})/2\)、\(g_{22}=-s_{12}\)
+なので \(\operatorname{tr}G=s_{21}-s_{12}\)、すなわち
+\(\operatorname{tr}G=0\) ⟺ \(s_{12}=s_{21}\) ⟺ \(S\) 対称。また T18
+より、すべての配置で \(\mu=0\) ⟺ \(v_+\!\cdot v_-=0\)（T19′ の
+\(\mu=2q\operatorname{tr}(\Omega A)\) からも直ちに出る）。\(\mu=0\) なら
+A.16 の力はゼロで、\(\ddot Y=0\)
+である。対称な実行列の固有値は実数なので、この場合
+\(\lvert\tau\rvert\ge2\) であり、楕円型には起こらない。
+
+\textbf{A.20（T20）} \(q=0\) ⟺ \(X_0\parallel X_1\)（{[}1{]} の
+T7）。このとき二階則から、すべての \(X_k\)
+が同じ直線上にあり、\(X_k=c_ku\) と書ける。実二次写像の斉次性
+\(\Phi(cu)=c^2\Phi(u)\) により
+
+\[
+Y_k=\Phi(X_k)=c_k^2\Phi(u),
+\]
+
+だから読み出し位置は原点から \(\Phi(u)\) の向きの同じ半直線上にある。D2
+の範囲では \(SX_0=X_1=\lambda X_0\) なので \(X_0\)
+は固有ベクトルで、\(X_k=\lambda^kX_0\)、\(\lambda\neq0\)。双曲型（\(\lvert\tau\rvert>2\)）では二階則の一般解は
+\(c_k=C_+\lambda^k+C_-\lambda^{-k}\) で、そのうち \(S\) の軌道になるのは
+\(C_+C_-=0\) の場合だけである（\(c_1/c_0\) が固有値でなければ、\(S\)
+では \(c_2\)
+が再現できない）。放物型（\(\lvert\tau\rvert=2\)）では重根を持つため一般解は
+\(c_k=(C_0+C_1k)(\pm1)^k\) であり、D2 の \(q=0\) 軌道では固有方向なので
+\(C_1=0\) となる。結合は T19′ から
+\(\mu=2q\operatorname{tr}(\Omega A)=0\)。双曲型（\(A^2=I\)）では固有方向で
+\(AX_0=\pm X_0\) なので、連続極限で
+\(X(s)=e^{\pm s}X_0\)、\(r=r_0e^{\pm2s}\)、\(dt=r\,ds\) から
+\(r=r_0\pm2t\) で、\(Y\) は半直線上を等速で動く。内向き（\(-\)）では
+\(s\to\infty\) で \(t\to r_0/2\)。放物型（\(A^2=0\)）では固有方向で
+\(AX_0=0\) なので \(X(s)=X_0\) で、\(r\) と \(Y\) は一定である。
+
+\textbf{A.21a（T21a）} 平面の \(N\) 点の配置は \(2N\)
+個の実数で、並進（2）、回転（1）、尺度（1）を除くと \(2N-4\)
+である。\(N=2\) で 0、\(N=3\) で 2。
+
+\textbf{A.21b（T21b）} \(\mu_{12}\)
+の式は、二体のニュートン・クーロン系を相対座標で書けば直ちに得られる。\(\mu_{12}=(m_1+m_2)(G-k\sigma_1\sigma_2)\)
+の右辺は四つの量の一つの組合せなので、\((m_1,m_2,\sigma_1,\sigma_2)\)
+の異なる組が同じ \(\mu_{12}\) を与える。たとえば \((m_1,m_2)\)
+を固定して \(\sigma_1\sigma_2\) を保つ取り替え、あるいは \(m_1+m_2\) と
+\(\sigma_1\sigma_2\) をともに保つ取り替えが常にある。したがって
+\(\mu_{12}\) からは \(m_1/m_2\) も \(\sigma_1/\sigma_2\) も決まらない。
+
+\textbf{A.22（T22）} \(D'_\varphi\) は \(\det D'=-1\)、\(D'^2=I\)
+の実鏡映である。\(\omega(X,D'X)=X^{\mathsf T}\Omega D'X\) を展開すると
+\(\sin2\varphi(a^2-b^2)-\cos2\varphi\,(2ab)\)。\(D'P\)
+は二つの鏡映の積で回転になり、\(\omega(X,D'PX)=-\cos2\varphi(a^2+b^2)\)。三つの読み出しの
+\((x,y,r)\) に関する係数行列は下三角で、行列式は
+\(\cos^22\varphi\)。不変性については、\(P\) で \(x\) の符号が変わるので
+\(Q=ux+vy+wr\) の \(u=0\)、\(D'\) で \(y\) が
+\((\sin4\varphi)x-(\cos4\varphi)y\)
+に移るので、\(\cos4\varphi\neq-1\)（すなわち \(D'\neq\pm P\)）なら
+\(v=0\)。
+
+実二次写像を直接展開すると
+
+\[
+\Phi(D'_\varphi X)=R_4(\varphi)\Phi(X),\qquad
+R_4(\varphi)=
+\begin{pmatrix}
+\cos4\varphi&\sin4\varphi\\
+\sin4\varphi&-\cos4\varphi
+\end{pmatrix}.
+\]
+
+\(R_4^{\mathsf T}R_4=I\)、\(\det R_4=-1\) なので、\(D'\)
+は読み出し平面上の実鏡映であり、\(Y^{\mathsf T}Y=r^2\)
+を保存する。したがって読み出し平面の距離・角度、およびそれらから作る
+T15〜T21 は \(D'\) の選択によらない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{付録
+B：ファイルと再現手順}\label{ux4ed8ux9332-bux30d5ux30a1ux30a4ux30ebux3068ux518dux73feux624bux9806}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+ファイル
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{run\_coulomb\_readout\_experiments\_v1.py} & E1〜E7
+の全検証。状態・読み出し・加速度計算は実数配列のみ。冒頭の
+\texttt{FAIL\_CONDITIONS} が落ちる条件の宣言 \\
+\texttt{coulomb\_readout\_experiments\_results\_v1.json} & v1.2
+実数配列版の実行結果（判定、数値） \\
+\texttt{make\_coulomb\_readout\_figures\_v1.py} & 図 fig01〜fig05
+の生成。日本語版・英語版、SVG・PNG。幾何計算も実数配列のみ \\
+\texttt{verify\_coulomb\_readout\_identities\_sympy\_v1.py} & 付録
+A（A.13〜A.22）の恒等式の記号計算。\(B(X)\)、\(\Phi(X)\)、\(R_4(\varphi)\)
+を実行列として検証 \\
+\texttt{verification\_v1\_real\_array.txt} &
+複素演算不使用の静的監査、記号検算、数値検証、旧版との比較の記録 \\
+\texttt{fig01\_coulomb\_readout\_two\_readouts\_ja\_v1.svg} ほか &
+図1〜図5（\texttt{\_ja\_} / \texttt{\_en\_}、\texttt{.svg} /
+\texttt{.png}） \\
+\end{longtable}
+}
+
+スクリプトの E1b の落ちる条件と内部の変数名は、事前宣言の記録として v1.0
+の記号のままである（\(A=g_{11}\)、\(B=g_{12}\)、\(C=g_{22}\)）。
+
+v1.2
+の三つのプログラムには、複素数型の生成、複素共役、実部・虚部抽出、複素偏角を使用しない。読み出し位置は常に
+
+\[
+Y=\Phi(X)=\begin{pmatrix}a^2-b^2\\2ab\end{pmatrix}
+\]
+
+として実配列で計算する。
+
+実行は
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{python3 run\_coulomb\_readout\_experiments\_v1.py}
+\NormalTok{python3 verify\_coulomb\_readout\_identities\_sympy\_v1.py}
+\NormalTok{python3 make\_coulomb\_readout\_figures\_v1.py}
+\end{Highlighting}
+\end{Shaded}
+
+である。数値実験の依存は numpy、記号検算は sympy、PNG 図化は matplotlib
+を使う。出力はスクリプトと同じフォルダに書かれる。図の生成は数値実験を再実行せず、fig02
+の収束の表だけを v1.2 の JSON から読む。
+
+\end{document}

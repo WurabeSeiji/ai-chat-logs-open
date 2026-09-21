@@ -20,7 +20,9 @@ r = a^2+b^2
 
 ## v1.2 のファイル
 
-- `thought_experiment_02_coulomb_readout_ja_v1.md` — 修正版論文本文
+- `thought_experiment_02_coulomb_readout_ja_v1.md` — 修正版論文本文（日本語）
+- `thought_experiment_02_coulomb_readout_en_v1.md` — 修正版論文本文（英語）
+- `thought_experiment_02_coulomb_readout_{ja,en}_v1.tex` / `.pdf` — 組版した論文（日英）
 - `run_coulomb_readout_experiments_v1.py` — 数値検証 E1〜E7。実数配列のみ
 - `coulomb_readout_experiments_results_v1.json` — v1.2 の数値結果
 - `verify_coulomb_readout_identities_sympy_v1.py` — T13〜T22 の記号検算。実行列のみ
