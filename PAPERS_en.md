@@ -545,6 +545,10 @@ Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PA
    第二思考実験：クーロン型の逆二乗の力を、積の読み出しと面積の時計から導く  
    DOI [10.5281/zenodo.22876596](https://doi.org/10.5281/zenodo.22876596) · Concept [10.5281/zenodo.22867336](https://doi.org/10.5281/zenodo.22867336) · 2026-09-21 · v1.2 · [PDF en](https://zenodo.org/records/22876596/files/thought_experiment_02_coulomb_readout_en_v1.pdf) [PDF ja](https://zenodo.org/records/22876596/files/thought_experiment_02_coulomb_readout_ja_v1.pdf)  
    folder: [次元の生成構造/第二思考実験_クーロン力の積読み出し_20260921](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E7%AC%AC%E4%BA%8C%E6%80%9D%E8%80%83%E5%AE%9F%E9%A8%93_%E3%82%AF%E3%83%BC%E3%83%AD%E3%83%B3%E5%8A%9B%E3%81%AE%E7%A9%8D%E8%AA%AD%E3%81%BF%E5%87%BA%E3%81%97_20260921)
+41. **The Third Thought Experiment: Reading Out the State of Two Bodies a, b from the Orbit of Two Celestial Bodies a, b - Obtaining the Mass Ratio, the Relative Distance and the Relative Time from Orbit and Gravitational-Wave Readouts, with Two Values of Undetermined Meaning and the Knowledge G = c = M = 1 Alone**  
+   第三思考実験：a b 2体の天体の軌道から a b 2体の状態を読み出す  
+   DOI [10.5281/zenodo.22909661](https://doi.org/10.5281/zenodo.22909661) · Concept [10.5281/zenodo.22909660](https://doi.org/10.5281/zenodo.22909660) · 2026-09-23 · v1.5 · [PDF en](https://zenodo.org/records/22909661/files/thought_experiment_03_two_body_orbit_readout_en_v1.5.pdf) [PDF ja](https://zenodo.org/records/22909661/files/thought_experiment_03_two_body_orbit_readout_ja_v1.5.pdf)  
+   folder: [匿名頂点状態生成幾何-匿名内部観測者から不変な関係量の体系/強い場の二体軌道_読出し実験_v1](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E5%8C%BF%E5%90%8D%E9%A0%82%E7%82%B9%E7%8A%B6%E6%85%8B%E7%94%9F%E6%88%90%E5%B9%BE%E4%BD%95-%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E8%A6%B3%E6%B8%AC%E8%80%85%E3%81%8B%E3%82%89%E4%B8%8D%E5%A4%89%E3%81%AA%E9%96%A2%E4%BF%82%E9%87%8F%E3%81%AE%E4%BD%93%E7%B3%BB/%E5%BC%B7%E3%81%84%E5%A0%B4%E3%81%AE%E4%BA%8C%E4%BD%93%E8%BB%8C%E9%81%93_%E8%AA%AD%E5%87%BA%E3%81%97%E5%AE%9F%E9%A8%93_v1)
 
 ## Time Axis, Q Axis, and Fermion Generation / 時間軸Q軸とフェルミオンの生成構造
 

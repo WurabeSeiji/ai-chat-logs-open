@@ -1,0 +1,457 @@
+# The Third Thought Experiment: Reading Out the State of Two Bodies a, b from the Orbit of Two Celestial Bodies a, b
+## - Obtaining the Mass Ratio, the Relative Distance and the Relative Time from Orbit and Gravitational-Wave Readouts, with Two Values of Undetermined Meaning and the Knowledge G = c = M = 1 Alone -
+
+**Author:** Noriaki Kihara  
+**ORCID:** 0009-0004-6753-4020  
+**Version DOI:** 10.5281/zenodo.22909661  
+**Concept DOI:** 10.5281/zenodo.22909660  
+**Version:** v1.5  
+**Date:** 2026-09-23  
+
+---
+
+## Abstract
+
+The first thought experiment [1] and the second thought experiment [2] started from two nameless values $a, b$ and derived Kepler-type orbits and an inverse-square force. On the other hand, [2] concluded that the only quantity readable from the relative motion of two bodies is the single coupling $\mu_{12}$, and that the mass ratio cannot be written with two values. This paper starts from a doubt about that conclusion and re-examines it along a route different from the previous ones. The orbits of two celestial bodies were computed with the exact Newtonian equations and with general relativity (the post-Newtonian approximation), and for the latter a numerical experiment tested whether the mass ratio, the relative distance and the relative time can be read out from the observed orbit.
+
+The only condition imposed on the state $\Psi$ is that distinguishing a state from a relation requires at least two values of undetermined meaning (P1). What $a, b$ are (the semi-major and semi-minor axes of the orbit, or the masses of the two bodies) is zero knowledge for the observer. The readout side holds the knowledge $G=c=M=1$ ($M$ the total mass) and reads the observational data as the motion of two bodies. "Two bodies" is not a condition imposed on $\Psi$; it is the way the readout side reads the data.
+
+In numerical experiment 01, shape point sequences of the relative orbit - circle, ellipse, parabola and hyperbola - were generated as exact solutions of the Newtonian equations, with the information of time, position and orientation removed. In numerical experiment 02, orbits in a strong field with $a$ from 30 to 120 ($b$ from 27 to 112) were computed in the post-Newtonian approximation including radiation reaction (1PN, 2PN, 2.5PN). Two kinds of data obtained by a distant, light observer $C$ were produced: the positions of the two celestial bodies on the celestial sphere seen along the normal of the orbital plane (observation 1), and the two polarizations of the gravitational wave (observation 2). The distance, the conversion of $M$ into seconds, the origin of time, the orientation of the celestial sphere, and which of the two bodies is the heavier were all hidden. The readout used the observational data only, and the truth was read only in the final cross-check.
+
+For all three data sets, with mass ratios 1, 2 and 4, the mass ratio, the orbital shape $a, b$, the conversion $T_M$ of $M$ into seconds, the distance $D$, the relative distance $r(t)$, the elapsed time and the difference of the proper times of the two bodies were read out. Most relative errors are $10^{-4}$ to $10^{-3}$, and apart from the mass ratio of D2 read from the gravitational wave alone by way of $\nu$ ($6\times10^{-2}$) the largest is $4.7\times10^{-3}$. The noise added to the positions of observation 1 and to the amplitude of observation 2 has a standard deviation of $1/1000$ of the reference quantity in each case. From observation 1 it was also possible to decide correctly which of the two bodies is the heavier. In a strong field, if the orbit in the two-dimensional plane can be read out, then the mass ratio, the relative distance and the relative time can be read out. If the observer $C$ itself is counted as a state, the system is extended to three states; this paper treats $C$ as a test observer, and the dynamics of the three relations is the subject of the next thought experiment.
+
+**Keywords:** two-body problem, readout, mass ratio, post-Newtonian approximation, gravitational waves, proper time, zero knowledge, thought experiment
+
+---
+
+## 0. Position of this paper
+
+This paper is the third thought experiment under the design document [0]. [1] and [2] started from two nameless values and a law, and derived orbits from the side of the law. This paper runs in the opposite direction: it looks at what can be read out about the system from data obtained by observing an orbit.
+
+The labels are the same as in [1, 2]. Only those used in this paper are listed.
+
+| Label | Meaning |
+|---|---|
+| [Principle] | Philosophical principle |
+| [Design assumption] | Assumption of the preliminary design (removable, intended to be removed) |
+| [Numerical] | Confirmed by numerical experiment |
+| [Cross-check] | Correspondence with known physics; not a derivation |
+
+**List of inputs (nothing else is used)**
+
+| Symbol | Label | Content |
+|---|---|---|
+| P1 | [Principle] | Distinguishing a state from a relation requires at least two values of undetermined meaning (Section 2.1 of [1]). No internal ground is posited for deciding which is the state and which is the relation |
+| P2 | [Principle] | A state alone is unreadable. What is readable is only what passes through a readout (an interaction) (Section 5 of [0]) |
+| D7 | [Design assumption] | The readout side interprets the observational data in the units $G=c=M=1$ ($M$ the total mass) |
+| D8 | [Design assumption] | The readout side reads the observational data as the motion of two bodies, using a known model of gravity and a known map of the observation: the equations of relative motion with the 2PN conservative terms and the 2.5PN radiation reaction, the 1PN center-of-mass relation, the lowest-order (quadrupole) gravitational waveform, and the 1PN rate of proper time. This model has no independent term of self-interaction (Section 2.2) |
+| D9 | [Design assumption] | The observer $C$ is light enough not to affect the motion of the two bodies, is far away, and looks along the normal of the orbital plane. It has coordinates on the celestial sphere and a clock. It reads the two celestial bodies as point masses without spin, and neglects the Doppler effect and the difference of the light travel time. During the observation, the celestial coordinate system of $C$ is treated as a fixed inertial reference, and the proper motion of the center of mass of the two bodies, the parallax, the acceleration of $C$ itself, and a time-dependent rotation of the coordinates are neglected. The resolution of the observation is as given in Section 4.4 |
+
+What the readout side does not use: the values of $a, b$ on the generating side and the truth, the way the data were made (the random seed and the assignment of the conditions), and the hidden conditions of the observation (the distance, the conversion of $M$ into seconds, the origin of time, the rotation, reflection and origin of the celestial sphere, and which of the two bodies is the heavier). The design assumptions of [1, 2] (the invertible linear map D2, the product operation D3, the three-dimensional readout space D5, the area clock D6) are not used either. The only law used in this paper is D8, which the readout side brings in as known.
+
+The numbering of the design assumptions continues from D1 through D4 of [1] and D5, D6 of [2], and starts here at D7.
+
+---
+
+## 1. The question
+
+Section 8.2 of [2] (derivation T21b) states the following. With two values, the mass ratio and the charge ratio cannot be written. The reason is that the only quantity readable from the relative motion of two bodies is the single coupling $\mu_{12}$, from which the individual ratios cannot be recovered.
+
+A doubt about this conclusion remained. The question of this paper is the following.
+
+$$
+\boxed{\text{When a system written with two values of undetermined meaning is read with the knowledge }G=c=M=1,\ \text{can the mass ratio, the relative distance and the relative time be read out from the orbit?}}
+$$
+
+---
+
+## 2. Setting
+
+### 2.1 The state $\Psi$ and the two values
+
+The only condition imposed on the state $\Psi$ is P1. P1 is carried over from [1]: distinguishing a state from a relation requires at least two values of undetermined meaning. In the generation of this paper, the two values $a, b$ were taken to be the semi-major and semi-minor axes of the relative orbit at the start (in units of $M$). This is one way of writing on the generating side, and it does not mean that P1 limits the degrees of freedom of $\Psi$ to two.
+
+What $a, b$ are is zero knowledge for the observer. The readout does not use the values of $a, b$ on the generating side or the truth. What the readout side holds is the known two-body model (D8) and the coordinates in which that model is written. The definition of those coordinates is the same as in the generation, but this is not knowledge of the input of the generation (Section 7.1). The observational data are determined by the configuration of the two bodies (positions and velocities) alone, and do not depend on what names were given to the input. If the same configuration is produced by another way of writing, the observational data are the same and the values read out are the same. For instance, one may take $a, b$ to be the masses of the two bodies and give the size and the shape of the orbit separately. Even in the generation of this paper, the mass ratio is not put into $a, b$; it is given as a separate input.
+
+### 2.2 The knowledge on the readout side
+
+**The interpretation $G=c=M=1$ (D7).** [Cross-check] In Newtonian mechanics, multiplying the size of the orbit by $\lambda$ and the time by $\lambda^{3/2}$ leaves the equations of motion unchanged (mechanical similarity [4]). For this reason, $G=M=1$ alone provides no scale by which to compare the sizes of orbits. What can be read from the shape is only the eccentricity $e$ and the time up to its unit.
+
+Adding $c=1$ makes the gravitational length $GM/c^2$ a unit. The dimensionless quantities that fix the orbit of two bodies become three: the eccentricity $e$, the field strength $M/p$ ($p$ the semi-latus rectum), and the symmetric mass ratio $\nu=m_Am_B/M^2$. To hold the knowledge $G=c=M=1$ is to be able to read the observed size and period of the orbit in these units. When $a, b$ are in the range of a few tens, the field is strong enough for the periastron advance and the effect of gravitational radiation to appear in the orbit.
+
+**Reading as two bodies (D8).** The readout side reads the observational data as two point masses moving under gravity. The law used there is the equations of motion of the post-Newtonian approximation including radiation reaction [9, 10], the same as the one used to generate the data. This law describes the relative motion of two point masses. In the standard post-Newtonian point-mass model the self-field singularity is regularized, and the two-body equations of motion up to 2.5PN are finally written with the two masses [10]. Accordingly, D8 does not add to the law of the readout an independent term corresponding to the self-interaction of Section 6 of [0] (the 2.5PN radiation reaction is included as the reaction of the gravitational wave emitted by the system). This is not a derivation from Section 6 of [0]; it is a design assumption made explicit in accordance with Section 12 of [0]. "Two bodies" is not a condition imposed on $\Psi$; it is this way of reading. The information obtained by the readout is not equal to what $\Psi$ holds, and the readout is not a map of the whole of $\Psi$.
+
+**Observation along the normal (D9).** A tilted circle looks like an ellipse. To read the shape of an orbit in a two-dimensional plane presupposes that one is looking along the normal of that plane (or that the tilt is known). This paper makes that presupposition explicit as D9. D9 does not deny "observation $\equiv$ readout accompanied by interaction" of Section 5 of [0]; it is the approximation of neglecting the dynamical back-reaction of the interaction accompanying the observation on the motion of the two bodies.
+
+If the observer $C$ too is counted as one state, having the degrees of freedom of position, orientation and clock, the system is extended to three states: the two celestial bodies $A, B$ and $C$. What matters in this paper, however, is not that the number of states becomes three, but that there is a hierarchy of geometry among the three relations $(A,B)$, $(A,C)$, $(B,C)$. $C$ is placed far enough away, nearly along the normal of the plane of the relative orbit of the two bodies, and the viewing angle $\theta_{AB}^{(C)}$ of the two bodies seen from $C$ is small enough (at most $2\times10^{-4}$ rad in the setting of this paper). On the other hand, the angle $\theta_{BC}^{(A)}$ between the directions of $B$ and $C$ seen from $A$, and the angle $\theta_{AC}^{(B)}$ between the directions of $A$ and $C$ seen from $B$, are nearly $\pi/2$. That is,
+
+$$
+\theta_{AB}^{(C)}\ll\theta_{AC}^{(B)},\ \theta_{BC}^{(A)}
+$$
+
+By this configuration, $C$ can read out the relation of $A, B$ against the common celestial coordinates and clock. On the other hand, this paper treats $C$ as a test observer, light enough and far enough away, and neglects the back-reaction of the observation by $C$ on the motion of the two celestial bodies. This is not a claim that the back-reaction is exactly zero but a hypothesis, and its validity is left as a task for later research. What this paper treats ends here. Treating $A, B, C$ all as states internal to the system, and asking what self-consistent dynamics the three relations make, is the subject of the next thought experiment, and the entry point to the three-body problem in this research.
+
+### 2.3 The quantities to be read out
+
+The quantities seen from the observer $C$ are the following.
+
+- The mass ratio $q=m_A/m_B\ (\ge 1)$ and which of the two bodies is the heavier. The symmetric mass ratio $\nu$
+- The shape of the orbit $a, b$ (in units of $M$)
+- The conversion $T_M=GM/c^3$ [s] of $M$ into seconds, and the distance $D$ (in units of $M$)
+- The relative distance $r(t)$ and the elapsed time $t$ (both in units of $M$). Here $r$ is the coordinate separation $|\mathbf x_A-\mathbf x_B|$ of the two bodies in the harmonic coordinates adopted in D8, and not the proper distance itself, which is coordinate independent
+
+The quantities of each of the two bodies are the following (the heavier is called $A$).
+
+- The proper times $\tau_A(t)$, $\tau_B(t)$ (in units of $M$). From the 1PN metric containing the field of the other body only, $d\tau_A/dt=1-m_B/r-v_A^2/2$ with $v_A=m_Bv$ ($v$ the relative velocity) [15, 16]. Likewise for $\tau_B$.
+- The clock-rate-converted distances $d_A=r\,d\tau_A/dt$, $d_B=r\,d\tau_B/dt$. These are the coordinate separation $r$ converted by the rate of the proper clock [15] of each body. This is not the operational radar distance defined from the proper time of a round trip of light; the propagation of light including the Shapiro delay [17] is not computed.
+
+---
+
+## 3. Numerical experiment 01: orbits from the Newtonian equations
+
+### 3.1 Purpose and design
+
+The Newtonian two-body problem is exactly solvable. Passing to the reduced mass, the relative motion becomes a one-body central-force problem, and the orbit is a conic $r(\theta)=p/(1+e\cos\theta)$ with the origin at a focus [3, 4, 5]. Only the total mass $M$ enters the equation of the relative orbit; the mass ratio does not. [Cross-check]
+
+In numerical experiment 01, shape point sequences containing no information of time were made from this exact solution. They are data for a blind test, to examine whether the type of the orbit, the two degrees of freedom of the shape, the position and the orientation of the focus, and the position in time can be estimated from the shape and the ordering alone.
+
+- **Generating formula**: with a standard coordinate system whose origin is the focus and whose $+x$ direction is that of the periastron, $\mathbf q(\theta)=r(\theta)(\cos\theta,\sin\theta)$ was made and placed in the data coordinates by a random rotation $R(\varphi)$ and a translation $O$ ($P=O+R(\varphi)\,\mathbf q(\theta)$).
+- **The two degrees of freedom of the shape**: $(p, e)$. Here $p$ was a uniform random number between 0.5 and 3.0. For ellipses, $a=p/(1-e^2)$ and $b=p/\sqrt{1-e^2}$ were also saved as derived values.
+- **Cases**: circle ($e=0$), ellipse ($e=0.02$, 0.6, 0.97), a partial arc of a long thin ellipse ($e=0.97$), parabola ($e=1$), hyperbola ($e=1.03$, 1.8), eight cases in all. Each case was made with two ways of spacing, giving 16 data sets in total (318 to 1274 points each).
+- **Removal of time**: the points were placed at irregular intervals based on arc length, unrelated to time. If they were spaced by an angle proportional to time, the information of time would remain in the density of the points.
+- **Removal of preconceptions**: the position of the focus, the direction of the major axis and the direction of travel were given at random. The correspondence between the data set number and the case was also shuffled at random.
+- **The truth of time**: since $GM$ is not fixed by the shape, time was saved as the dimensionless time $\tau=\sqrt{GM/p^3}\,(t-t_p)=\int_0^\theta d\theta'/(1+e\cos\theta')^2$ with $p$ as the unit of length.
+
+### 3.2 Self-verification [Numerical]
+
+The generated data satisfied all the self-verifications. Satisfaction of the equation of the conic, recovery of the ordering by a nearest-neighbour sort, agreement of the analytic formula for time with the numerical integration, and so forth: the largest residual was below $1\times10^{-14}\,p$. Point sequences regenerated from the saved parameters alone also agreed to a relative error of $3\times10^{-15}$.
+
+### 3.3 What this computation shows [Cross-check]
+
+- The shape of the relative orbit is fixed by two values ($p, e$, or $a, b$), and the mass ratio does not enter.
+- Time is fixed only up to the unit $\sqrt{p^3/GM}$ and an origin, because $GM$ is not fixed by the shape alone.
+- Reading the shape itself rests on the presupposition (D9) of looking along the normal of the orbital plane.
+
+In numerical experiment 01, the generation and the self-verification were carried out. A readout from the shape point sequences is not performed in this paper. The readout experiment is carried out in numerical experiment 02 below.
+
+![Figure 1a. The input of numerical experiment 01 (the point sequence as seen by the solving side)](../円錐曲線軌道_形状点列データ生成_v1/figures/overview_input_en.png)
+
+![Figure 1b. The truth of numerical experiment 01 (focus, periastron direction, direction of travel, time)](../円錐曲線軌道_形状点列データ生成_v1/figures/overview_truth_en.png)
+
+---
+
+## 4. Numerical experiment 02: orbits from general relativity, and the observational data
+
+### 4.1 The equations of motion
+
+The relative motion was computed with the equations of motion of the post-Newtonian approximation in harmonic coordinates. To the Newtonian term were added the 1PN and 2PN conservative terms and the 2.5PN radiation-reaction term. Of the expression for the relative acceleration given by Kidder [9], the part not containing spin was used (review [10]).
+
+The integration was done with the fourth-order Runge-Kutta method, with the step proportional to the local dynamical time, $h=(2\pi/4000)\,r^{3/2}$. The setting was to stop if the relative distance fell below $8M$, but no stop occurred in any of the data sets.
+
+The individual positions of the two bodies were obtained from the 1PN center-of-mass relation [9, 10].
+
+$$
+\mathbf x_A=\Bigl(m_B+\tfrac12\nu\,\delta m\,(v^2-1/r)\Bigr)\mathbf x,\qquad
+\mathbf x_B=\Bigl(-m_A+\tfrac12\nu\,\delta m\,(v^2-1/r)\Bigr)\mathbf x
+$$
+
+Here $\mathbf x=\mathbf x_A-\mathbf x_B$ and $\delta m=m_A-m_B$. The proper times $\tau_A$, $\tau_B$ were integrated with the formulas of Section 2.3.
+
+### 4.2 Definition of $a, b$
+
+$a, b$ are the semi-major and semi-minor axes of the relative orbit at the start ($t=0$). In the 2PN motion without radiation reaction, the tangential velocity at the periastron was fixed by bisection so that the turning points (periastron and apastron) fall exactly at $a(1-e)$ and $a(1+e)$ (with $e=\sqrt{1-b^2/a^2}$).
+
+In a strong field this velocity differs from the Newtonian value by up to about 10 per cent (0.2624 against 0.2913 at $a=30$). $a, b$ are not the Newtonian osculating ellipse; they are quantities defined by the turning points of the 2PN motion.
+
+### 4.3 The three data sets
+
+| Data set | $a$ | $b$ | $e$ | semi-latus rectum $p$ | mass ratio $q$ | $\nu$ | computed length |
+|---|---|---|---|---|---|---|---|
+| D1 | 120 | 112 | 0.3590 | 104.5 | 4 | 0.1600 | 30 times $T_0$ |
+| D2 | 30 | 27 | 0.4359 | 24.3 | 1 | 0.2500 | 20 times $T_0$ |
+| D3 | 60 | 50 | 0.5528 | 41.7 | 2 | 0.2222 | 30 times $T_0$ |
+
+Here $T_0=2\pi a^{3/2}$ is the Newtonian period. The field is strongest in D2, whose periastron distance is $16.9M$. The correspondence between the data set numbers and the conditions was shuffled at random on the generating side.
+
+### 4.4 The observer $C$ and the observational data
+
+The observer $C$ is far away along the normal of the orbital plane and does not affect the motion of the two bodies. The Doppler effect and the difference of the light travel time from the two bodies were neglected.
+
+- **Observation 1 (orbit observation)**: the positions of each of the two bodies on the celestial sphere (in nrad) and the time of the observer (in seconds). The sampling interval is $T_0/48$, and the error of the position is $1/1000$ of the size $a$ of the orbit converted into an angle on the celestial sphere ($\sigma=10^{-3}\,a/D$ rad).
+- **Observation 2 (gravitational-wave observation)**: the two polarizations $h_+$, $h_\times$ of the gravitational wave and the time of the observer. The sampling interval is $T_0/192$. The waveform is the quadrupole formula $h_{ij}=(4\nu/D)(v_iv_j-n_in_j/r)$ [11, 12, 14], and the error is $1/1000$ of the maximum amplitude.
+
+The hidden conditions of the observation (not given to the readout side) are the following.
+
+- The distance $D$: a log-uniform random number between $3\times10^5$ and $3\times10^6\,M$
+- The conversion $T_M$ of $M$ into seconds: fixed by taking the total mass to be a uniform random number between 20 and 80 solar masses
+- The origin of time: a shift between 0 and 1000 s
+- The rotation angle of the celestial sphere, the presence or absence of a reflection, and a shift of the origin on the celestial sphere (up to $\pm2\times10^5$ nrad)
+- Whether "body 1" and "body 2" of observation 1 are the heavier or the lighter
+
+![Figure 2. The observational data of numerical experiment 02 (D1)](../強い場の二体軌道_観測1観測2データ生成_v1/figures/obs_D1_en.png)
+
+D2 and D3 are shown in obs_D2_en.png and obs_D3_en.png in the same folder.
+
+### 4.5 Self-verification [Numerical]
+
+| Item | D1 | D2 | D3 |
+|---|---|---|---|
+| Periastron advance per revolution $\div$ the lowest-order value $6\pi/p$ [6] | 1.032 | 1.218 | 1.092 |
+| Rate of energy loss $\div$ the lowest-order formula of Peters [12, 13] | 0.974 | 0.982 | 0.968 |
+| Difference of position on refining the step $\div\ a$ | $5.8\times10^{-12}$ | $3.8\times10^{-12}$ | $9.1\times10^{-12}$ |
+
+The departure of the periastron advance from the lowest order is larger the stronger the field. This agrees with the size of the 2PN correction. In every data set the 2PN energy was better conserved than the 1PN energy.
+
+The consistency of the post-Newtonian approximation was also checked. When the field strength was varied ($\nu=0.25$, $e=0.436$, $a=60$ to 480), the violation of the conservation of the 1PN and 2PN energies decreased as the 1.83rd and 3.95th powers of the field strength at the periastron respectively (the pass criteria were above 1.5 and above 2.7; asymptotically the second and third powers are expected).
+
+![Figure 3. The truth of numerical experiment 02 (D1: relative orbit, relative distance, difference of proper times)](../強い場の二体軌道_観測1観測2データ生成_v1/figures/truth_D1_en.png)
+
+D2 and D3 are shown in truth_D2_en.png and truth_D3_en.png in the same folder.
+
+---
+
+## 5. The readout method
+
+### 5.1 Principles of the procedure
+
+The readout uses the observational data (observation 1 and observation 2) only. The truth is read only in the cross-check of Section 6. What the readout side holds is the knowledge D7 through D9.
+
+### 5.2 Reading the mass ratio from the center of mass (observation 1)
+
+Writing the positions of the two bodies on the celestial sphere as $\mathbf X_1$, $\mathbf X_2$ and $\boldsymbol\rho=\mathbf X_1-\mathbf X_2$, the 1PN center-of-mass relation gives the following.
+
+$$
+\mathbf X_1=\mathbf X_0+\bigl(\mu_2+\nu(\mu_1-\mu_2)f(t)\bigr)\boldsymbol\rho,\qquad f=\tfrac12\left(v^2-1/r\right)
+$$
+
+Here $\mu_i$ is the mass fraction of body $i$ and $\mathbf X_0$ is the position of the center of mass on the celestial sphere. First, with $f=0$ (the Newtonian approximation), $\mathbf X_0$ and $\mu_2$ were obtained by least squares. Then $f(t)$ was computed from the orbit reconstructed in Section 5.4 and they were obtained again. If $\mu_2<1/2$, body 1 is the heavier.
+
+### 5.3 Features at each periastron passage
+
+- **Observation 1**: the distance and the angle of the relative position $\boldsymbol\rho$ are used. At each periastron, a conic with periastron advance, $1/r=A+B\cos\kappa\phi+C\sin\kappa\phi$, was fitted locally, and the time of the periastron, the direction of the periastron, the periastron distance and the following apastron distance were obtained. Here $\kappa=1/(1+k)$, with $k$ the fractional periastron advance per radial period.
+- **Observation 2**: the complex amplitude $H=h_+-ih_\times$ is used. The time of a maximum of $|H|$, the phase at that time, the maximum value and the following minimum value were obtained. For the quadrupole waveform, $|H|$ is maximal at the periastron and minimal at the apastron, and the phase advances by $4\pi(1+k)$ per periastron. The oscillation of the gravitational field itself plays the role of a clock.
+
+### 5.4 Fitting the sequence of model features
+
+A model orbit is computed with the equations of motion of D8, sampled at the same times as the observation, and features are extracted by the same procedure as in Section 5.3. These are fitted to the sequence of features of the observation. In this way the bias originating in the way the features are extracted cancels between the observation and the model. The step of the model computation was 500 per revolution.
+
+- **Nonlinear parameters**: $a$, $e$. For observation 1, $\nu$ was fixed to the value from the center of mass of Section 5.2; for observation 2 it was free. A separate fit in which $\nu$ was also free was performed for observation 1, and $\nu$ was read from the decrease of the period.
+- **Linear parameters**: the origin of time, $T_M$, the origin of the direction (phase), and the scale (nrad/$M$ for observation 1, $1/D$ for observation 2). These were eliminated by least squares [24].
+- **Fitting**: the Levenberg-Marquardt method [22, 23] was used. The error of each feature was estimated from the residuals, and 1$\sigma$ was obtained from the covariance over all parameters.
+
+The main clue that fixes each quantity is the following. [Cross-check]
+
+| Quantity read out | Clue |
+|---|---|
+| $a$ (in units of $M$) | the periastron advance per radial period [6, 7, 8] |
+| $e$ | the ratio of the periastron and apastron distances (for observation 2, the ratio of the maximum and minimum of the amplitude) |
+| $\nu$ | the decrease of the radial period (gravitational radiation) [12, 13] |
+| $T_M$ | the radial period in seconds $\div$ the period of the model (in units of $M$) |
+| $D$ | the size in angle $\div$ the size in units of $M$ (observation 1), the amplitude (observation 2) [21] |
+| the mass ratio and which is the heavier | the individual positions of the two bodies and the center of mass (observation 1) |
+
+### 5.5 Reconstruction
+
+With the parameters read out, the model orbit was rebuilt, and the relative distance $r(t)$, the elapsed time $t$, the proper times $\tau_A$, $\tau_B$ and the clock-rate-converted distances $d_A$, $d_B$ at the times of the observation were computed (the heavier is called $A$). The relative distance was also computed by the direct method of dividing the angle of observation 1 by the scale that was read out.
+
+---
+
+## 6. Results [Numerical]
+
+### 6.1 Errors of the quantities read out
+
+The table gives the relative error $|\text{readout}-\text{truth}|/\text{truth}$.
+
+| Quantity | Method | D1 | D2 | D3 |
+|---|---|---|---|---|
+| mass ratio $q$ | center of mass (observation 1) | $2.0\times10^{-4}$ | $1.9\times10^{-4}$ | $3.2\times10^{-5}$ |
+| mass ratio $q$ | gravitational wave (from $\nu$) | $7.9\times10^{-4}$ | $6.0\times10^{-2}$ | $3.3\times10^{-3}$ |
+| $\nu$ | center of mass (observation 1) | $1.2\times10^{-4}$ | $8.7\times10^{-9}$ | $1.1\times10^{-5}$ |
+| $\nu$ | decrease of the period (observation 1) | $4.3\times10^{-3}$ | $1.4\times10^{-4}$ | $9.1\times10^{-4}$ |
+| $\nu$ | gravitational wave | $4.8\times10^{-4}$ | $8.6\times10^{-4}$ | $1.1\times10^{-3}$ |
+| $a$ | observation 1 / gravitational wave | $4.4\times10^{-4}$ / $1.0\times10^{-3}$ | $1.8\times10^{-4}$ / $5.1\times10^{-5}$ | $2.4\times10^{-4}$ / $6.3\times10^{-4}$ |
+| $b$ | observation 1 / gravitational wave | $4.9\times10^{-4}$ / $8.9\times10^{-4}$ | $1.5\times10^{-4}$ / $7.6\times10^{-5}$ | $1.9\times10^{-4}$ / $3.3\times10^{-4}$ |
+| $e$ | observation 1 / gravitational wave | $3.2\times10^{-4}$ / $7.0\times10^{-4}$ | $1.4\times10^{-4}$ / $5.4\times10^{-4}$ | $1.3\times10^{-4}$ / $6.8\times10^{-4}$ |
+| $T_M$ | observation 1 / gravitational wave | $6.6\times10^{-4}$ / $1.5\times10^{-3}$ | $3.1\times10^{-4}$ / $4.5\times10^{-6}$ | $3.5\times10^{-4}$ / $9.0\times10^{-4}$ |
+| $D$ | observation 1 / gravitational wave | $3.5\times10^{-4}$ / $1.2\times10^{-3}$ | $3.3\times10^{-4}$ / $6.6\times10^{-4}$ | $3.7\times10^{-4}$ / $7.9\times10^{-4}$ |
+| $\tau_A-\tau_B$ (final) | observation 1 / gravitational wave | $3.2\times10^{-4}$ / $9.1\times10^{-4}$ | truth is 0 (*) | $5.9\times10^{-5}$ / $4.7\times10^{-3}$ |
+| $d_A-d_B$ (mean) | observation 1 / gravitational wave | $1.2\times10^{-4}$ / $4.0\times10^{-4}$ | truth is 0 (*) | $5.3\times10^{-5}$ / $4.4\times10^{-3}$ |
+| root mean square of $r(t)$ | angle of observation 1 $\div$ scale | $1.5\times10^{-3}$ | $1.8\times10^{-3}$ | $1.7\times10^{-3}$ |
+| root mean square of $r(t)$ | reconstruction (observation 1 / gravitational wave) | $4.6\times10^{-4}$ / $1.1\times10^{-3}$ | $3.9\times10^{-4}$ / $3.3\times10^{-4}$ | $3.0\times10^{-4}$ / $7.8\times10^{-4}$ |
+
+(*) D2 has equal masses, so the truth of $\tau_A-\tau_B$ and $d_A-d_B$ is 0. The readout from observation 1 gave $5.7\times10^{-6}$ of $\tau_A$ and $5.1\times10^{-6}$ of $d_A$ respectively. From the gravitational wave it gave $1.8\times10^{-3}$ of $\tau_A$ and $1.6\times10^{-3}$ of $d_A$.
+
+The error of the final value of the elapsed time (in units of $M$) was $6.6\times10^{-4}$ for D1, $3.0\times10^{-4}$ for D2 and $3.6\times10^{-4}$ for D3 in observation 1. This agrees with the error of $T_M$.
+
+### 6.2 Examples of the values read out
+
+| Data set | Quantity | Readout | Truth |
+|---|---|---|---|
+| D1 | mass ratio $q$ (center of mass) | 4.0008 | 4 |
+| D1 | $\tau_A-\tau_B$ (final, observation 1) | 1853.15 $M$ | 1852.56 $M$ |
+| D1 | $T_M$ (observation 1) | $3.4320\times10^{-4}$ s | $3.4343\times10^{-4}$ s |
+| D1 | $D$ (observation 1) | $8.740\times10^5\,M$ | $8.737\times10^5\,M$ |
+| D2 | mass ratio $q$ (center of mass) | 1.0002 | 1 |
+| D2 | $a$ / $b$ (gravitational wave) | 30.002 / 26.998 | 30 / 27 |
+| D3 | mass ratio $q$ (center of mass) | 2.0001 | 2 |
+| D3 | $\tau_A-\tau_B$ (final, observation 1) | 778.85 $M$ | 778.90 $M$ |
+
+Which of the two bodies is the heavier was decided correctly for D1 and D3 from the center of mass of observation 1. D2 has equal masses, so it is not subject to the decision.
+
+### 6.3 Validity of the fit, and the remaining bias
+
+In the fit, the scale of the error of each feature is fixed from the root mean square of the same residuals (Section 5.4). For this reason $\chi^2$ per degree of freedom is nearly equal to $N/(N-p)$, which is fixed by the number of residuals $N$ and the number of parameters $p$ alone (1.05 to 1.09), and is not an independent goodness-of-fit test against the noise of the observation. The 1$\sigma$ obtained from the covariance and the pull are likewise local estimates based on these residuals. The actual error against the estimated 1$\sigma$ (the pull) fell mostly within $\pm2$, but since there is only one realization of the noise, the coverage of the 1$\sigma$ has not been checked.
+
+The $e$ read from the gravitational wave was displaced to the positive side by $5\times10^{-4}$ to $7\times10^{-4}$ in all three data sets (pull 2.5 to 3.2). This is the bias of obtaining the values of the maxima and minima of the amplitude from noisy data, which is not cancelled on the side of the noiseless model. Part of the displacement of $a$ and $T_M$ read from the gravitational wave (pull about 2.8 in D3) is linked to this.
+
+The mass ratio obtained from the gravitational wave alone goes by way of $\nu$, so it cannot distinguish $q$ from $1/q$. Near equal masses the variation of $q$ with respect to $\nu$ is large, so in D2 an error of $8.6\times10^{-4}$ in $\nu$ gave $q=1.06$. For the same reason, in the reconstruction of D2 from the gravitational wave, $\nu=0.24979$ was treated as a mass difference of about 0.03, and $\tau_A-\tau_B$ became 35.9 $M$ at the end (the truth is 0).
+
+The fit of D2 with $\nu$ free in observation 1 gave $\nu=0.25003$, slightly above the physical upper limit $1/4$. In the readout, the search range of $\nu$ was taken to be 0.01 to 0.27 so that the search does not stick at the boundary of equal masses, and the upper limit was not imposed as a hard boundary. This value is treated as an estimate of a coefficient near the boundary (Section 7.4).
+
+![Figure 4. The relative errors of the quantities read out, and the 1 sigma estimated by the readout](figures/readout_summary_en.png)
+
+![Figure 5. Inside the readout: the advance of the direction of the periastron, the decrease of the radial period, the relative error of r(t), and tau_A - tau_B](figures/readout_details_en.png)
+
+---
+
+## 7. Discussion
+
+### 7.1 The meaning of $a, b$ is not needed for the readout
+
+The readout does not use the values of $a, b$ on the generating side or the files of the truth. What it used is the observational data and the knowledge D7 through D9 only. The mass ratio was given without being put into $a, b$, and even so it was read out. Inside the readout, the model was fitted in the coordinates $a, e, \nu$. These coordinates use the same definition as the generation, namely that the turning points of the conservative 2PN motion are $a(1\pm e)$, but they are coordinates chosen by the readout side in order to write the model, and this is not knowledge of the input of the generation. The optimum of the fit is unchanged under a one-to-one change of coordinates, so fitting in other coordinates should give the same mass ratio, relative distance and relative time; a re-implementation in other coordinates is not carried out in this paper. What this paper has confirmed is therefore that, without knowing the values of $a, b$ on the generating side, the parameters of the model of D8 are fixed by the observational data.
+
+With the reading as two bodies (D8), the sequence of features extracted from the observation could be fitted consistently by the sequence of features of a single model (the $\chi^2$ per degree of freedom of Section 6.3 is an internal diagnostic whose scale is fixed by the residuals, not an independent goodness-of-fit test). This shows that "the inverse problem of this paper closes under the reading as two bodies", and not that "$\Psi$ is two bodies".
+
+The information obtained by the readout is not equal to what $\Psi$ holds. The $\nu$ readable from the relative motion alone is unchanged under exchange of the two bodies. From the relative position of observation 1 or from the gravitational wave alone, which is the heavier cannot be read. It was possible to say which is the heavier only when the positions of the two bodies were seen separately on the celestial sphere of the observer $C$. In D2, with equal masses, they cannot be distinguished even then.
+
+### 7.2 The knowledge added to the readout
+
+The readout rested on the following knowledge.
+
+- Interpreting in the units $G=c=M=1$ (D7)
+- Reading as the motion of two bodies, using a known model and a known map of the observation (D8). The model is the one of the post-Newtonian approximation, the same as in the generation of the data
+- That the observer $C$ looks along the normal, and is light and far away and has coordinates on the celestial sphere (D9). That the two bodies are read as point masses without spin, and that the Doppler effect and the difference of the light travel time are neglected
+
+The meaning of $a, b$ remained zero knowledge, and what the readout needed was this knowledge alone.
+
+### 7.3 Relation to the conclusion of [2]
+
+Section 8.2 of [2] (derivation T21b) is a statement about the relative motion of two bodies under an inverse-square coupling, and within that range it still holds. The mass ratio could be read in this paper because the material for the readout increased. One part is that observation 1 contains the individual positions of the two bodies, which is what Section 8.2 of [2] called "additional relational information allowing two accelerations to be compared against one and the same inertial reference", required for reading the mass ratio (the structure treated in Section 8.3 of [2], of reading the mass ratio from the directed couplings of three interacting bodies, is not realized in this paper; Section 2.2). The other part is that in a strong field $\nu$ enters the relative motion itself (it enters the equations of motion from the 1PN term; it does not enter the lowest-order periastron advance $6\pi/p$, and appears in the 2PN term of the periastron advance [8] and in the radiation reaction [12, 13]). This paper does not contradict [2]. Also, in this paper the mass ratio is given as an input of the generation, and whether the mass ratio can be written with two values is not tested.
+
+Reading masses from relativistic orbital effects (periastron advance, delay of proper time, decrease of the period) is what has been done with binary pulsars [18, 19] and with gravitational-wave observations [20], and the theoretical ground used in this paper is the same as theirs. What is specific to this paper lies in the setting: the meaning of $a, b$ is zero knowledge, and the knowledge of the readout side is limited to $G=c=M=1$ and the reading as two bodies.
+
+### 7.4 Limits
+
+- The orbits of general relativity were computed in the post-Newtonian approximation (the 2PN conservative terms and the 2.5PN radiation reaction). This is not a full computation in general relativity. The field strength was limited to the range in which the periastron distance is $16.9M$ or more.
+- The readout used the same equations of motion as the generation of the data. Moreover the readout program imports and uses, as they are, the functions for integration, interpolation and apastron search of the generating program. What this paper has confirmed is that, under the same known model and the same implementation, the parameters are fixed by the observed quantities, and that the readout procedure from the extraction of features to the inverse problem works. Robustness against model error of the equations of motion and against differences between independent implementations has not been tested.
+- The step of the model computation of the readout is 500 per revolution, coarser than the roughly 4000 of the generation. Redoing the readout of D2 with a step of 1000, the change of the parameters read out was at most $8\times10^{-9}$ in relative terms, which is $1\times10^{-5}$ times the estimated 1$\sigma$ and sufficiently smaller than the error of the readout (stepsize_check_D2.csv in results).
+- The noise of each data set is one realization. The $e$ read from the gravitational wave retains the bias of Section 6.3.
+- In the fits with $\nu$ free, the search range was $0.01\le\nu\le0.27$, and the physical upper limit $\nu\le1/4$ was not imposed as a hard boundary. The free fit of D2 in observation 1 gave $\nu=0.25003$, slightly above the upper limit (Section 6.3).
+- The proper times were obtained in the 1PN approximation containing the field of the other body only. The clock-rate-converted distance $d$ is the coordinate separation converted by the rate of the proper clock; it is not the operational radar distance and does not include the Shapiro delay. $r$ is the coordinate separation in harmonic coordinates.
+- In numerical experiment 01, the generation and the self-verification were carried out. A readout from the shape point sequences was not carried out.
+- That the observation by the observer $C$ does not affect the motion of the two celestial bodies is a hypothesis under the approximation of a test observer, with $C$ placed far enough away along the normal of the plane of the relative orbit and the viewing angle small enough (D9, Section 2.2). Counting $C$ as a state too, the system has three states, and the back-reaction of $C$ and the dynamics of the three relations are left as tasks for the next thought experiment.
+
+---
+
+## 8. Conclusion
+
+The only condition imposed on the state $\Psi$ was that distinguishing a state from a relation requires at least two values of undetermined meaning (P1). What $a, b$ are was taken to be zero knowledge, and the readout side, holding the knowledge $G=c=M=1$, read the observational data as the motion of two bodies.
+
+[Numerical] In this setting, from the orbit observation and the gravitational-wave observation of two bodies in a strong field, the mass ratio, the shape of the orbit, the conversion of $M$ into seconds, the distance, the relative distance, the elapsed time and the difference of the proper times of the two bodies were read out. The noise added to the observation is $1/1000$ of the reference quantity, and most relative errors are $10^{-4}$ to $10^{-3}$; apart from the mass ratio of D2 read from the gravitational wave alone by way of $\nu$ ($6\times10^{-2}$, Section 6.3) the largest is $4.7\times10^{-3}$. Which of the two bodies is the heavier could also be decided from the observation of the positions of the two bodies.
+
+In this paper, "the orbit in the two-dimensional plane can be read out" means that a sequence of positions of the two bodies on the celestial sphere, time-stamped by the clock of the observer $C$ (observation 1), is obtained. A readout from the shape alone without time (the data of numerical experiment 01) is not carried out in this paper.
+
+In a strong field, if the orbit in the two-dimensional plane can be read out, then the mass ratio, the relative distance and the relative time can be read out.
+
+In this paper it was confirmed that information not obtainable from the relative motion of the two celestial bodies alone can be read out by way of the common celestial coordinates and clock of the observer $C$. If $C$ itself is counted as a state having degrees of freedom, the system is extended from two states to three, and the observational configuration of this paper has the hierarchy of relations $\theta_{AB}^{(C)}\ll\theta_{AC}^{(B)},\theta_{BC}^{(A)}$ (Section 2.2). This paper treated $C$ as a test observer, light enough and far enough away, and neglected its back-reaction. Treating $A, B, C$ all as states internal to the system, and investigating the self-consistent dynamics made by the three relations $(A,B)$, $(A,C)$, $(B,C)$, is beyond the range of this paper. This is the next thought experiment, and the entry point to the three-body problem in this research.
+
+---
+
+## Location of the data and programs
+
+Everything is under the folder anonymous_vertex_state_generation_geometry (Google Drive).
+
+- **Numerical experiment 01**: conic_orbit_shape_point_generation_v1/ (generate_conic_orbit_samples.py, reproduce_from_meta.py, plot_conic_orbit_samples.py, README.md). The random seed is fixed (20260922), and the data and the figures can be regenerated by running the programs.
+- **Numerical experiment 02**: strong_field_binary_orbit_observation_generation_v1/ (generate_binary_pn_observations.py, plot_binary_pn_observations.py, README.md, data/input, data/truth, figures). The random seed is 2026092202.
+- **Readout**: strong_field_binary_orbit_readout_experiment_v1/ (readout_binary_pn.py, plot_readout_results.py, README.md, results/, figures/).
+
+---
+
+## Work record
+
+- In the generation of numerical experiment 02, it was found that if the tangential velocity at the periastron is given by the Newtonian value, the turning points depart greatly from $a(1\pm e)$ in a strong field. The definition was therefore changed to that of Section 4.2 (the turning points of the 2PN motion).
+- In the first version of the readout, the estimated error was about one third of the actual error, too small, and there was also an error in the computation of the error of the distance $D$. Moreover, a test on noiseless data showed that in D2, where the field is strongest, the extraction of the features itself has a bias ($5\times10^{-4}$ of the radial period in the time of the maximum of the gravitational-wave amplitude). The method was changed to one in which the model orbit is also sampled at the same times as the observation and extracted by the same procedure, the ends of the fitting window were made to fall smoothly, and the computation of the covariance was corrected. Section 6 gives the results after this improvement.
+- The bias of the $e$ read from the gravitational wave (Section 6.3) remains after the improvement.
+- Points corrected in v1.1 (2026-09-23). "In a strong field" was added to the one-line conclusion (to make it compatible with Section 3.3). "Two bodies" was rewritten as "not a condition imposed on $\Psi$" rather than as a property of $\Psi$. It was made explicit that the degrees of freedom of $\Psi$ are not necessarily only two, and that the mass ratio was given as an input of the generation. The order at which $\nu$ enters the equations of motion (from 1PN) was corrected. It was written that D8 has no term of self-interaction, that D9 makes explicit the celestial coordinates, the clock, the point masses and the neglect of the Doppler effect, and that D9 is an approximation from Section 5 of [0]. The names of the design assumptions of [1, 2] and the cited place in [2] (Section 8.2, T21b) were matched to the originals. The range of $a, b$ in the abstract, the exception of the mass ratio from the gravitational wave alone, the unit of the error of observation 1, the wording of the pass criteria of the PN consistency check, the way the formula of Kidder is cited, and a missing label were corrected. The effect of the step of the model computation of the readout was checked with D2 (Section 7.4).
+- Points corrected in v1.2 (2026-09-23, in reply to an external review). P1 was matched to the definition of [1] (two values of undetermined meaning). It was made explicit that what the readout does not use are the values of $a, b$ on the generating side and the truth, and it was written that the coordinates of the model of the readout use the same definition as the generation and that the readout program shares functions with the generating program. It was made explicit that the $\chi^2$ per degree of freedom is an internal diagnostic whose scale is fixed by the residuals ($N/(N-p)$) and not a goodness-of-fit test. "Radar distance" was changed to "clock-rate-converted distance", and it was written that $r$ is the coordinate separation in harmonic coordinates. It was recorded that the free fit of $\nu$ in D2 slightly exceeded the upper limit $1/4$. The range of the errors in the abstract and the conclusion was matched to the actual distribution, and the meaning of "the orbit can be read out" was defined. The relation of D8 and D9 to Sections 5 and 6 of [0] was rewritten as design assumptions.
+- Points added in v1.3 (2026-09-23). It was made explicit in Sections 2.2 and 7.4 that including the observer $C$ the system is strictly one of three states, that $C$ is placed at nearly infinite distance along the normal and the hypothesis is made, under the approximation of a sufficiently narrow viewing angle, that the observation by $C$ does not affect the states $a, b$, and that the validity of this is a task for later research. It was also written that this point is consistent with Section 8.3 of [2] (what becomes readable with three bodies).
+- Points corrected in v1.4 (2026-09-23, in reply to a second review). That the observer $C$ can be counted as a state having the degrees of freedom of position, orientation and clock, the hierarchy of viewing angles $\theta_{AB}^{(C)}\ll\theta_{AC}^{(B)},\theta_{BC}^{(A)}$ among the three relations $(A,B)$, $(A,C)$, $(B,C)$, and that this paper treats $C$ as a test observer while the dynamics of the three relations is the subject of the next thought experiment, were written in the abstract and in Sections 2.2, 7.4 and 8. The sentence of v1.3 saying that this is consistent with Section 8.3 of [2] was reorganized as the additional relational information of Section 8.2 of [2] (T21b), and it was restated that the structure of three interacting bodies of Section 8.3 is not realized in this paper. The two celestial bodies are written $A, B$ and the values $a, b$, distinctly. What the readout does not use was changed to "the values of $a, b$ on the generating side and the truth", and the use of the coordinates of the known model was made explicit in Sections 0 and 2.1 as well. D8 lists the known model and the map of the observation (equations of motion, center-of-mass relation, quadrupole waveform, rate of proper time), and D9 adds that the celestial coordinate system is treated as a fixed inertial reference. P1 was unified with "at least two".
+- v1.5 (2026-09-23, final correction before publication). The symbol of the observer was changed from the lower-case $c$ to the upper-case $C$. The reason is that it collided with the speed of light $c$ of $G=c=M=1$, and did not correspond with the two celestial bodies $A, B$. The symbol of the position of the center of mass on the celestial sphere in Section 5.2 was changed from $\mathbf C$ to $\mathbf X_0$ accordingly. The past lines of the work record were changed to the same symbols.
+
+---
+
+## References
+
+**Self-citations**
+
+[0] Noriaki Kihara, "Designing a Research Project to Explore the Emergence of Spacetime, Particles, and Interactions from States and Relations: A Framework of Preliminary Design and Feasibility Verification for Foundational-Physics Model Exploration under Uncertainty", v1.0 (2026). Concept DOI: 10.5281/zenodo.22851944 (Version DOI: 10.5281/zenodo.22851945)
+
+[1] Noriaki Kihara, "The First Thought Experiment: Tracing the Equivalence Principle Down to Two Nameless Degrees of Freedom - Deriving the Sign of the Sum of Squares, the Curvature Radius, and Three Systems (Inertial, Uniformly Accelerated, Rotating) from the Conservation of an Area Readout", v1.0 (2026). Concept DOI: 10.5281/zenodo.22857952 (Version DOI: 10.5281/zenodo.22857953)
+
+[2] Noriaki Kihara, "The Second Thought Experiment: Deriving the Coulomb-Type Inverse-Square Force from a Product Readout and an Area Clock - Keeping Two Values and a Linear Law, Obtaining the Focus, Attraction and Repulsion and Neutrality, and Fixing What Two Values Cannot Write", v1.2 (2026). Concept DOI: 10.5281/zenodo.22867336 (Version DOI: 10.5281/zenodo.22876596)
+
+**The Newtonian two-body problem**
+
+[3] I. Newton, *Philosophiae Naturalis Principia Mathematica* (London, 1687).
+
+[4] L. D. Landau and E. M. Lifshitz, *Mechanics*, 3rd ed., Course of Theoretical Physics Vol. 1 (Pergamon, Oxford, 1976).
+
+[5] H. Goldstein, C. P. Poole, and J. L. Safko, *Classical Mechanics*, 3rd ed. (Addison-Wesley, 2002).
+
+**The two-body motion in general relativity**
+
+[6] A. Einstein, "Erklaerung der Perihelbewegung des Merkur aus der allgemeinen Relativitaetstheorie," *Sitzungsber. Preuss. Akad. Wiss. Berlin*, 831-839 (1915).
+
+[7] T. Damour and N. Deruelle, "General relativistic celestial mechanics of binary systems. I. The post-Newtonian motion," *Ann. Inst. Henri Poincare, Phys. Theor.* **43**, 107-132 (1985).
+
+[8] T. Damour and G. Schaefer, "Higher-order relativistic periastron advances and binary pulsars," *Nuovo Cimento B* **101**, 127-176 (1988).
+
+[9] L. E. Kidder, "Coalescing binary systems of compact objects to (post)$^{5/2}$-Newtonian order. V. Spin effects," *Phys. Rev. D* **52**, 821-847 (1995).
+
+[10] L. Blanchet, "Gravitational radiation from post-Newtonian sources and inspiralling compact binaries," *Living Rev. Relativ.* **17**, 2 (2014).
+
+**Gravitational radiation and waveforms**
+
+[11] A. Einstein, "Ueber Gravitationswellen," *Sitzungsber. Preuss. Akad. Wiss. Berlin*, 154-167 (1918).
+
+[12] P. C. Peters and J. Mathews, "Gravitational radiation from point masses in a Keplerian orbit," *Phys. Rev.* **131**, 435-440 (1963).
+
+[13] P. C. Peters, "Gravitational radiation and the motion of two point masses," *Phys. Rev.* **136**, B1224-B1232 (1964).
+
+[14] M. Maggiore, *Gravitational Waves, Vol. 1: Theory and Experiments* (Oxford University Press, 2008).
+
+**Clocks and distances**
+
+[15] L. D. Landau and E. M. Lifshitz, *The Classical Theory of Fields*, 4th ed., Course of Theoretical Physics Vol. 2 (Pergamon, Oxford, 1975).
+
+[16] T. Damour and N. Deruelle, "General relativistic celestial mechanics of binary systems. II. The post-Newtonian timing formula," *Ann. Inst. Henri Poincare, Phys. Theor.* **44**, 263-292 (1986).
+
+[17] I. I. Shapiro, "Fourth test of general relativity," *Phys. Rev. Lett.* **13**, 789-791 (1964).
+
+**Earlier examples of reading masses and distances from relativistic orbital effects**
+
+[18] J. H. Taylor and J. M. Weisberg, "A new test of general relativity: Gravitational radiation and the binary pulsar PSR 1913+16," *Astrophys. J.* **253**, 908-920 (1982).
+
+[19] T. Damour and J. H. Taylor, "Strong-field tests of relativistic gravity and binary pulsars," *Phys. Rev. D* **45**, 1840-1868 (1992).
+
+[20] C. Cutler and E. E. Flanagan, "Gravitational waves from merging compact binaries: How accurately can one extract the binary's parameters from the inspiral waveform?," *Phys. Rev. D* **49**, 2658-2697 (1994).
+
+[21] B. F. Schutz, "Determining the Hubble constant from gravitational wave observations," *Nature* **323**, 310-311 (1986).
+
+**Numerical methods**
+
+[22] K. Levenberg, "A method for the solution of certain non-linear problems in least squares," *Q. Appl. Math.* **2**, 164-168 (1944).
+
+[23] D. W. Marquardt, "An algorithm for least-squares estimation of nonlinear parameters," *J. Soc. Ind. Appl. Math.* **11**, 431-441 (1963).
+
+[24] G. H. Golub and V. Pereyra, "The differentiation of pseudo-inverses and nonlinear least squares problems whose variables separate," *SIAM J. Numer. Anal.* **10**, 413-432 (1973).
