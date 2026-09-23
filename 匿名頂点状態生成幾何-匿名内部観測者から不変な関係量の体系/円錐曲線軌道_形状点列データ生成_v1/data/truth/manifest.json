@@ -1,0 +1,326 @@
+{
+  "experiment": "数値実験01 円錐曲線軌道の形状点列データ（形と並び順のみ）",
+  "project": "匿名頂点状態生成幾何 ― 匿名内部観測者から不変な関係量の体系",
+  "generator": "generate_conic_orbit_samples.py",
+  "generator_version": "1.0.0",
+  "generated_at_utc": "2026-09-23T00:18:36+00:00",
+  "python_version": "3.9.6",
+  "numpy_version": "2.0.2",
+  "master_seed": 20260922,
+  "per_dataset_seed_rule": "seed = master_seed * 1000 + job_index",
+  "settings": {
+    "p_range": [
+      0.5,
+      3.0
+    ],
+    "offset_range_each_axis": [
+      -20.0,
+      20.0
+    ],
+    "rotation_phi_range_rad": [
+      0.0,
+      6.283185307179586
+    ],
+    "motion_direction": "counterclockwise / clockwise, each assigned to exactly half of the datasets at random",
+    "input_order_reversal": "input rows reversed relative to the motion in exactly half of the datasets (assigned at random)",
+    "window_r_max_over_p": 10.0,
+    "arc_gap_upper_bound_over_p": 0.2,
+    "min_points_rule": "arc gap upper bound <= L / 250"
+  },
+  "generation_equation": "P = O + R(phi) q(theta);  q(theta) = r(theta) (cos theta, sin theta);  r(theta) = p / (1 + e cos theta);  R(phi) = [[cos phi, -sin phi], [sin phi, cos phi]]",
+  "time_definition": "tau = sqrt(GM/p^3) (t - t_p) = integral_0^theta dtheta' / (1 + e cos theta')^2;  t_p = periapsis passage.  GM is not determined by the shape, so time is dimensionless in units of sqrt(p^3/GM).",
+  "cases": [
+    {
+      "case_id": "C01",
+      "case_label": "circle",
+      "e": 0.0,
+      "span": "full"
+    },
+    {
+      "case_id": "C02",
+      "case_label": "ellipse_near_circular",
+      "e": 0.02,
+      "span": "full"
+    },
+    {
+      "case_id": "C03",
+      "case_label": "ellipse",
+      "e": 0.6,
+      "span": "full"
+    },
+    {
+      "case_id": "C04",
+      "case_label": "ellipse_high_e",
+      "e": 0.97,
+      "span": "full"
+    },
+    {
+      "case_id": "C05",
+      "case_label": "ellipse_high_e_partial_arc",
+      "e": 0.97,
+      "span": "window"
+    },
+    {
+      "case_id": "C06",
+      "case_label": "parabola",
+      "e": 1.0,
+      "span": "window"
+    },
+    {
+      "case_id": "C07",
+      "case_label": "hyperbola_near_parabolic",
+      "e": 1.03,
+      "span": "window"
+    },
+    {
+      "case_id": "C08",
+      "case_label": "hyperbola",
+      "e": 1.8,
+      "span": "window"
+    }
+  ],
+  "sampling_modes": {
+    "A": {
+      "name": "arc_jitter",
+      "rule": "gap = h_max * U(0.55, 1.0)"
+    },
+    "B": {
+      "name": "arc_cluster",
+      "rule": "gap = h_max * exp(beta * (sin(2*pi*k*s/L + psi) - 1)) * U(0.7, 1.0)",
+      "beta": 0.9,
+      "k_choices": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  "solver_input": "data/input/ only (the truth/ folder must not be given to the solver)",
+  "all_datasets_passed_validation": true,
+  "datasets": [
+    {
+      "dataset_id": "D01",
+      "case_id": "C06",
+      "case_label": "parabola",
+      "pattern": "parabola",
+      "e": 1.0,
+      "span": "window r <= 10 p",
+      "sampling_mode": "B",
+      "n_points": 884,
+      "validation_passed": true,
+      "input_file": "input/orbit_D01.csv",
+      "meta_file": "truth/orbit_D01_meta.json",
+      "truth_file": "truth/orbit_D01_truth.csv"
+    },
+    {
+      "dataset_id": "D02",
+      "case_id": "C05",
+      "case_label": "ellipse_high_e_partial_arc",
+      "pattern": "ellipse",
+      "e": 0.97,
+      "span": "window r <= 10 p",
+      "sampling_mode": "B",
+      "n_points": 877,
+      "validation_passed": true,
+      "input_file": "input/orbit_D02.csv",
+      "meta_file": "truth/orbit_D02_meta.json",
+      "truth_file": "truth/orbit_D02_truth.csv"
+    },
+    {
+      "dataset_id": "D03",
+      "case_id": "C07",
+      "case_label": "hyperbola_near_parabolic",
+      "pattern": "hyperbola",
+      "e": 1.03,
+      "span": "window r <= 10 p",
+      "sampling_mode": "B",
+      "n_points": 879,
+      "validation_passed": true,
+      "input_file": "input/orbit_D03.csv",
+      "meta_file": "truth/orbit_D03_meta.json",
+      "truth_file": "truth/orbit_D03_truth.csv"
+    },
+    {
+      "dataset_id": "D04",
+      "case_id": "C02",
+      "case_label": "ellipse_near_circular",
+      "pattern": "ellipse",
+      "e": 0.02,
+      "span": "full revolution",
+      "sampling_mode": "A",
+      "n_points": 325,
+      "validation_passed": true,
+      "input_file": "input/orbit_D04.csv",
+      "meta_file": "truth/orbit_D04_meta.json",
+      "truth_file": "truth/orbit_D04_truth.csv"
+    },
+    {
+      "dataset_id": "D05",
+      "case_id": "C08",
+      "case_label": "hyperbola",
+      "pattern": "hyperbola",
+      "e": 1.8,
+      "span": "window r <= 10 p",
+      "sampling_mode": "A",
+      "n_points": 327,
+      "validation_passed": true,
+      "input_file": "input/orbit_D05.csv",
+      "meta_file": "truth/orbit_D05_meta.json",
+      "truth_file": "truth/orbit_D05_truth.csv"
+    },
+    {
+      "dataset_id": "D06",
+      "case_id": "C08",
+      "case_label": "hyperbola",
+      "pattern": "hyperbola",
+      "e": 1.8,
+      "span": "window r <= 10 p",
+      "sampling_mode": "B",
+      "n_points": 882,
+      "validation_passed": true,
+      "input_file": "input/orbit_D06.csv",
+      "meta_file": "truth/orbit_D06_meta.json",
+      "truth_file": "truth/orbit_D06_truth.csv"
+    },
+    {
+      "dataset_id": "D07",
+      "case_id": "C04",
+      "case_label": "ellipse_high_e",
+      "pattern": "ellipse",
+      "e": 0.97,
+      "span": "full revolution",
+      "sampling_mode": "B",
+      "n_points": 1274,
+      "validation_passed": true,
+      "input_file": "input/orbit_D07.csv",
+      "meta_file": "truth/orbit_D07_meta.json",
+      "truth_file": "truth/orbit_D07_truth.csv"
+    },
+    {
+      "dataset_id": "D08",
+      "case_id": "C05",
+      "case_label": "ellipse_high_e_partial_arc",
+      "pattern": "ellipse",
+      "e": 0.97,
+      "span": "window r <= 10 p",
+      "sampling_mode": "A",
+      "n_points": 322,
+      "validation_passed": true,
+      "input_file": "input/orbit_D08.csv",
+      "meta_file": "truth/orbit_D08_meta.json",
+      "truth_file": "truth/orbit_D08_truth.csv"
+    },
+    {
+      "dataset_id": "D09",
+      "case_id": "C03",
+      "case_label": "ellipse",
+      "pattern": "ellipse",
+      "e": 0.6,
+      "span": "full revolution",
+      "sampling_mode": "A",
+      "n_points": 323,
+      "validation_passed": true,
+      "input_file": "input/orbit_D09.csv",
+      "meta_file": "truth/orbit_D09_meta.json",
+      "truth_file": "truth/orbit_D09_truth.csv"
+    },
+    {
+      "dataset_id": "D10",
+      "case_id": "C02",
+      "case_label": "ellipse_near_circular",
+      "pattern": "ellipse",
+      "e": 0.02,
+      "span": "full revolution",
+      "sampling_mode": "B",
+      "n_points": 876,
+      "validation_passed": true,
+      "input_file": "input/orbit_D10.csv",
+      "meta_file": "truth/orbit_D10_meta.json",
+      "truth_file": "truth/orbit_D10_truth.csv"
+    },
+    {
+      "dataset_id": "D11",
+      "case_id": "C04",
+      "case_label": "ellipse_high_e",
+      "pattern": "ellipse",
+      "e": 0.97,
+      "span": "full revolution",
+      "sampling_mode": "A",
+      "n_points": 468,
+      "validation_passed": true,
+      "input_file": "input/orbit_D11.csv",
+      "meta_file": "truth/orbit_D11_meta.json",
+      "truth_file": "truth/orbit_D11_truth.csv"
+    },
+    {
+      "dataset_id": "D12",
+      "case_id": "C06",
+      "case_label": "parabola",
+      "pattern": "parabola",
+      "e": 1.0,
+      "span": "window r <= 10 p",
+      "sampling_mode": "A",
+      "n_points": 318,
+      "validation_passed": true,
+      "input_file": "input/orbit_D12.csv",
+      "meta_file": "truth/orbit_D12_meta.json",
+      "truth_file": "truth/orbit_D12_truth.csv"
+    },
+    {
+      "dataset_id": "D13",
+      "case_id": "C07",
+      "case_label": "hyperbola_near_parabolic",
+      "pattern": "hyperbola",
+      "e": 1.03,
+      "span": "window r <= 10 p",
+      "sampling_mode": "A",
+      "n_points": 327,
+      "validation_passed": true,
+      "input_file": "input/orbit_D13.csv",
+      "meta_file": "truth/orbit_D13_meta.json",
+      "truth_file": "truth/orbit_D13_truth.csv"
+    },
+    {
+      "dataset_id": "D14",
+      "case_id": "C03",
+      "case_label": "ellipse",
+      "pattern": "ellipse",
+      "e": 0.6,
+      "span": "full revolution",
+      "sampling_mode": "B",
+      "n_points": 877,
+      "validation_passed": true,
+      "input_file": "input/orbit_D14.csv",
+      "meta_file": "truth/orbit_D14_meta.json",
+      "truth_file": "truth/orbit_D14_truth.csv"
+    },
+    {
+      "dataset_id": "D15",
+      "case_id": "C01",
+      "case_label": "circle",
+      "pattern": "circle",
+      "e": 0.0,
+      "span": "full revolution",
+      "sampling_mode": "B",
+      "n_points": 884,
+      "validation_passed": true,
+      "input_file": "input/orbit_D15.csv",
+      "meta_file": "truth/orbit_D15_meta.json",
+      "truth_file": "truth/orbit_D15_truth.csv"
+    },
+    {
+      "dataset_id": "D16",
+      "case_id": "C01",
+      "case_label": "circle",
+      "pattern": "circle",
+      "e": 0.0,
+      "span": "full revolution",
+      "sampling_mode": "A",
+      "n_points": 324,
+      "validation_passed": true,
+      "input_file": "input/orbit_D16.csv",
+      "meta_file": "truth/orbit_D16_meta.json",
+      "truth_file": "truth/orbit_D16_truth.csv"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "experiment": "数値実験02 強い場の2体の観測データ（観測1 軌道観測・観測2 重力波観測）",
+  "project": "匿名頂点状態生成幾何 ― 匿名内部観測者から不変な関係量の体系",
+  "generator": "generate_binary_pn_observations.py",
+  "generator_version": "1.0.0",
+  "generated_at_utc": "2026-09-22T10:13:28+00:00",
+  "python_version": "3.12.3",
+  "numpy_version": "2.4.4",
+  "master_seed": 2026092202,
+  "units": "G = c = M = 1 (M = m_A + m_B)",
+  "cases": [
+    {
+      "case_id": "C1",
+      "label": "strong",
+      "a": 30.0,
+      "b": 27.0,
+      "q_mA_over_mB": 1.0,
+      "orbits": 20
+    },
+    {
+      "case_id": "C2",
+      "label": "intermediate",
+      "a": 60.0,
+      "b": 50.0,
+      "q_mA_over_mB": 2.0,
+      "orbits": 30
+    },
+    {
+      "case_id": "C3",
+      "label": "moderate",
+      "a": 120.0,
+      "b": 112.0,
+      "q_mA_over_mB": 4.0,
+      "orbits": 30
+    }
+  ],
+  "solver_input": "data/input/ only (truth/ must not be given to the analysis)",
+  "pn_consistency_scaling_test": {
+    "nu": 0.25,
+    "e": 0.436,
+    "rows": [
+      {
+        "a": 60.0,
+        "x_periapsis": 0.029550827423167846,
+        "energy_variation_1pn": 0.004704082782551664,
+        "energy_variation_2pn": 0.00019544335069560036
+      },
+      {
+        "a": 120.0,
+        "x_periapsis": 0.014775413711583923,
+        "energy_variation_1pn": 0.0014598009384631473,
+        "energy_variation_2pn": 1.0081007385741421e-05
+      },
+      {
+        "a": 240.0,
+        "x_periapsis": 0.0073877068557919616,
+        "energy_variation_1pn": 0.00040089823973436773,
+        "energy_variation_2pn": 3.1960547987984547e-07
+      },
+      {
+        "a": 480.0,
+        "x_periapsis": 0.0036938534278959808,
+        "energy_variation_1pn": 0.0001047367965967217,
+        "energy_variation_2pn": 6.688187299364387e-08
+      }
+    ],
+    "slope_1pn": 1.8331683141075652,
+    "slope_2pn": 3.9517746755040104,
+    "passed": true
+  },
+  "all_datasets_passed_validation": true,
+  "datasets": [
+    {
+      "dataset_id": "D1",
+      "case_id": "C3",
+      "case_label": "moderate",
+      "a": 120.0,
+      "b": 112.0,
+      "q_mA_over_mB": 4.0,
+      "orbits_covered_in_T0": 30.000074313073547,
+      "validation_passed": true,
+      "obs1_file": "input/obs1_D1.csv",
+      "obs2_file": "input/obs2_D1.csv",
+      "meta_file": "truth/D1_meta.json",
+      "timeseries_file": "truth/D1_timeseries.csv"
+    },
+    {
+      "dataset_id": "D2",
+      "case_id": "C1",
+      "case_label": "strong",
+      "a": 30.0,
+      "b": 27.0,
+      "q_mA_over_mB": 1.0,
+      "orbits_covered_in_T0": 20.000004004267726,
+      "validation_passed": true,
+      "obs1_file": "input/obs1_D2.csv",
+      "obs2_file": "input/obs2_D2.csv",
+      "meta_file": "truth/D2_meta.json",
+      "timeseries_file": "truth/D2_timeseries.csv"
+    },
+    {
+      "dataset_id": "D3",
+      "case_id": "C2",
+      "case_label": "intermediate",
+      "a": 60.0,
+      "b": 50.0,
+      "q_mA_over_mB": 2.0,
+      "orbits_covered_in_T0": 30.000044330140213,
+      "validation_passed": true,
+      "obs1_file": "input/obs1_D3.csv",
+      "obs2_file": "input/obs2_D3.csv",
+      "meta_file": "truth/D3_meta.json",
+      "timeseries_file": "truth/D3_timeseries.csv"
+    }
+  ]
+}

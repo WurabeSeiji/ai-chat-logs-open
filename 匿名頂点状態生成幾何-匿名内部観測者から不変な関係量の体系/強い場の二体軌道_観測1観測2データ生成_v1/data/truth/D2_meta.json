@@ -1,0 +1,103 @@
+{
+  "case_id": "C1",
+  "case_label": "strong",
+  "generator": "generate_binary_pn_observations.py",
+  "generator_version": "1.0.0",
+  "seed": 20260922020,
+  "units": "G = c = M = 1 (M = m_A + m_B); lengths and times in units of M",
+  "orbit_shape_parameters": {
+    "a": 30.0,
+    "b": 27.0,
+    "definition": "semi-major / semi-minor axes of the orbit at t = 0 in harmonic coordinates: the conservative 2PN motion has its turning points at a(1-e) and a(1+e), e = sqrt(1 - b^2/a^2); start at periapsis with the tangential speed found by bisection",
+    "initial_condition": {
+      "r_periapsis": 16.923303169377984,
+      "r_apoapsis_target": 43.07669683062202,
+      "r_apoapsis_achieved": 43.07669683062195,
+      "v_periapsis": 0.2624121293921128,
+      "v_periapsis_newtonian": 0.29128492045608606
+    },
+    "e": 0.4358898943540673,
+    "p": 24.3,
+    "r_periapsis": 16.923303169377984,
+    "newtonian_period_T0": 1032.4326977181856
+  },
+  "masses": {
+    "q_mA_over_mB": 1.0,
+    "m_A": 0.5,
+    "m_B": 0.5,
+    "nu": 0.25,
+    "note": "A is the heavier body"
+  },
+  "dynamics": "relative motion in harmonic coordinates: Newtonian + 1PN + 2PN + 2.5PN radiation reaction (Kidder 1995, Eq. 2.2); individual positions from the 1PN centre-of-mass relation; proper times from the 1PN metric of the companion only",
+  "integration": {
+    "method": "RK4 with step = (2*pi/steps_per_orbit) * r^1.5",
+    "steps_per_orbit": 4000,
+    "r_stop": 8.0,
+    "orbits_requested": 20,
+    "t_end_M": 20648.658088500644,
+    "orbits_covered_in_T0": 20.000004004267726,
+    "stop_reason": "t_end"
+  },
+  "observation_1": {
+    "file_columns": [
+      "t_s",
+      "body1_x_nrad",
+      "body1_y_nrad",
+      "body2_x_nrad",
+      "body2_y_nrad"
+    ],
+    "cadence_M": 21.509014535795533,
+    "n_samples": 961,
+    "resolution_fraction_of_a": 0.001,
+    "noise_sigma_nrad": 12.784471860209843,
+    "geometry": "face-on, observer far away; Doppler and light-travel-time differences neglected"
+  },
+  "observation_2": {
+    "file_columns": [
+      "t_s",
+      "h_plus",
+      "h_cross"
+    ],
+    "cadence_M": 5.377253633948883,
+    "n_samples": 3841,
+    "resolution_fraction_of_max_amplitude": 0.001,
+    "noise_sigma_strain": 3.080377656167674e-11,
+    "waveform": "leading-order quadrupole h_ij = (4 nu / D)(v_i v_j - n_i n_j / r), TT in the sky plane"
+  },
+  "hidden_observer_parameters": {
+    "distance_D_in_M": 2346596.740798613,
+    "angular_scale_nrad_per_M": 426.14906200699477,
+    "total_mass_solar": 75.01851342793785,
+    "T_M_seconds_per_M": 0.0003695030087467058,
+    "time_offset_s": 969.6422995828835,
+    "sky_rotation_rad": 1.4982765257542239,
+    "mirror_flip": false,
+    "sky_offset_nrad": [
+      43899.54643534857,
+      -189335.17636680635
+    ],
+    "body1_is": "B",
+    "body2_is": "A",
+    "sky_transform": "X = offset + scale * R(rotation) * diag(1, -1 if mirror else 1) * x"
+  },
+  "validation": {
+    "convergence_position_diff_over_a": 3.8523137430001395e-12,
+    "conservative_energy_variation_1pn": 0.010037736735330606,
+    "conservative_energy_variation_2pn": 0.003258375096160441,
+    "periapsis_passages_found": 23,
+    "precession_per_orbit_rad": 0.9449807127951129,
+    "precession_leading_order_rad": 0.7757018897752576,
+    "precession_ratio_to_leading_order": 1.2182266476995436,
+    "energy_loss_rate_per_mu": -2.1516264510749178e-07,
+    "energy_loss_rate_peters_per_mu": -2.1913557367667016e-07,
+    "energy_loss_ratio_to_peters": 0.9818699971779098,
+    "checks": {
+      "convergence": true,
+      "conservative_energy_2pn_improves_on_1pn": true,
+      "precession_sane": true,
+      "energy_loss_sane": true
+    },
+    "all_passed": true
+  },
+  "dataset_id": "D2"
+}

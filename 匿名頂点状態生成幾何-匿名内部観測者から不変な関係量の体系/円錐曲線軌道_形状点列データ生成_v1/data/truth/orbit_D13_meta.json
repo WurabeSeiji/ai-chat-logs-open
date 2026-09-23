@@ -1,0 +1,104 @@
+{
+  "dataset_id": "D13",
+  "case_id": "C07",
+  "case_label": "hyperbola_near_parabolic",
+  "pattern": "hyperbola",
+  "generator": "generate_conic_orbit_samples.py",
+  "generator_version": "1.0.0",
+  "seed": 20260922012,
+  "job_index": 12,
+  "shape_parameters": {
+    "p": 2.2328217086937925,
+    "e": 1.03
+  },
+  "pose": {
+    "focus_offset_O_xy": [
+      -7.861210702055171,
+      13.4606748216682
+    ],
+    "rotation_phi_rad": 3.9126990680500593,
+    "rotation_phi_deg": 224.18114310403888
+  },
+  "motion_direction": "clockwise",
+  "motion_direction_sign": -1,
+  "closed_curve": false,
+  "span": "window r <= 10 p",
+  "sampling": {
+    "mode": "A",
+    "name": "arc_jitter",
+    "rule": "gap = h_max * U(0.55, 1.0)",
+    "mode_parameters": {},
+    "h_max": 0.1921469256037553,
+    "h_max_over_p": 0.0860556509530543,
+    "gap_scale_factor": 0.9975903090396459,
+    "arc_length_total": 48.03673140093882,
+    "arc_start_offset_from_periapsis": null,
+    "arc_measured_from": "theta = -theta_max end",
+    "n_points": 327
+  },
+  "input_order": {
+    "description": "input rows carry only what nearest-neighbour sorting can recover: orientation reversed at random relative to the motion; closed curves also start at a random point",
+    "reversed_relative_to_motion": true,
+    "cyclic_shift": 0
+  },
+  "generation_equation": "P = O + R(phi) q(theta);  q(theta) = r(theta) (cos theta, sin theta);  r(theta) = p / (1 + e cos theta);  R(phi) = [[cos phi, -sin phi], [sin phi, cos phi]]",
+  "time_definition": "tau = sqrt(GM/p^3) (t - t_p) = integral_0^theta dtheta' / (1 + e cos theta')^2;  t_p = periapsis passage.  GM is not determined by the shape, so time is dimensionless in units of sqrt(p^3/GM).",
+  "anomaly_type": "H: hyperbolic anomaly",
+  "derived_geometry": {
+    "pattern": "hyperbola",
+    "p_semi_latus_rectum": 2.2328217086937925,
+    "e_eccentricity": 1.03,
+    "a": 36.6637390590114,
+    "b": 9.047850158620289,
+    "r_periapsis": 1.099912171770341,
+    "attracting_focus_xy": [
+      -7.861210702055171,
+      13.4606748216682
+    ],
+    "periapsis_direction_rad": 3.9126990680500593,
+    "periapsis_point_xy": [
+      -8.650001734800462,
+      12.69411400068322
+    ],
+    "center_xy": [
+      -34.94303615964351,
+      -12.85791336548278
+    ],
+    "empty_focus_xy": [
+      -62.02486161723186,
+      -39.17650155263376
+    ],
+    "theta_infinity_rad": 2.8996475708238165,
+    "asymptote_direction_angles_rad": [
+      0.52916133169429,
+      1.0130514972262428
+    ],
+    "deflection_angle_rad": 2.6577024880578404,
+    "general_conic_equation": "A x^2 + B x y + C y^2 + D x + E y + F = 0",
+    "general_conic_coefficients_ABCDEF": [
+      0.4543899480843786,
+      -1.0604666431829257,
+      0.48471005191562133,
+      18.120140547951568,
+      -24.591204549017306,
+      240.35416686322696
+    ],
+    "discriminant_B2_minus_4AC": 0.24360000000000015,
+    "theta_range_rad": [
+      -2.6337310085867065,
+      2.6337310085867065
+    ]
+  },
+  "truth_columns": {
+    "n": "row index of the input file",
+    "time_rank": "true order in time (0 = first)",
+    "theta_rad": "true anomaly theta (closed curves: (-pi, pi])",
+    "anomaly": "see anomaly_type",
+    "tau_since_periapsis": "dimensionless time since periapsis passage",
+    "tau_elapsed": "dimensionless time since the first point in time order",
+    "r": "distance from the attracting focus",
+    "x_canonical": "x in the canonical frame (focus at origin, periapsis on +x)",
+    "y_canonical": "y in the canonical frame",
+    "arc_from_periapsis": "signed arc length from periapsis (positive for theta > 0)"
+  }
+}
