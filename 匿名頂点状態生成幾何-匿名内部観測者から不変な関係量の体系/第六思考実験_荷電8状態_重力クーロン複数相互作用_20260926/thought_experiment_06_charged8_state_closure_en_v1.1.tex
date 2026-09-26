@@ -1,0 +1,2700 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={The Sixth Thought Experiment: Can Two Kinds of Long-Range Interaction Be Internalized into a Single Closed State Map? - Reconstructing Gravity{,} Coulomb{,} GW-Quadrupole and EM-Dipole Radiation of a Charged Quasi-Circular Binary with Eight Persistent States{,} and Verifying the Transferability of the Same Transition over Five Conditions -},
+  pdfauthor={Noriaki Kihara (ORCID 0009-0004-6753-4020)},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{The Sixth Thought Experiment: Can Two Kinds of Long-Range
+Interaction Be Internalized into a Single Closed State Map? -
+Reconstructing Gravity, Coulomb, GW-Quadrupole and EM-Dipole Radiation
+of a Charged Quasi-Circular Binary with Eight Persistent States, and
+Verifying the Transferability of the Same Transition over Five
+Conditions -}
+\author{Noriaki Kihara (ORCID 0009-0004-6753-4020)}
+\date{2026-09-26 / v1.1 / Version DOI 10.5281/zenodo.22974632}
+
+\sloppy
+\emergencystretch=3em
+\begin{document}
+\maketitle
+
+\textbf{Author:} Noriaki Kihara\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Version DOI:} 10.5281/zenodo.22974632\\
+\textbf{Concept DOI:} 10.5281/zenodo.22974631\\
+\textbf{Version:} v1.1\\
+\textbf{Date:} 2026-09-26
+
+\textbf{Keywords:} charged binary, state closure, synchronous state map,
+Coulomb interaction, gravitational-wave radiation, electric-dipole
+radiation, radiation reaction, persistent logical state, discrete
+dynamics, reproducibility
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Abstract}\label{abstract}
+
+The fifth thought experiment {[}5{]} self-audited, from the viewpoint of
+information flow, the gravitational-orbit generator that the fourth
+thought experiment {[}4{]} had displayed as two states, and confirmed
+that in the present representation the information held across macro
+steps must be made explicit as
+
+\[
+Z_6=(U,P,E,H,Q,N).
+\]
+
+Furthermore, the RK4 intermediate quantities and the processing phase
+were placed inside the state as machine/work states, and the generator
+was reconstructed into an OLD-state-only synchronous update, with no
+external physical parameters, a non-feedback readout, and a single
+\texttt{transition(z)} as the only generating path.
+
+In this paper those audit rules are applied for the first time to
+\textbf{a system extended from one kind of interaction to two kinds}.
+The object is a charged two-body system restricted to \(G=M=c=1\),
+non-spinning point particles, quasi-circular orbits and a leading-order
+adiabatic inspiral. The conservative motion uses Newtonian gravity and
+the Coulomb interaction, and the dissipation uses the leading
+gravitational quadrupole radiation and the leading electric-dipole
+radiation. On the independent analytic reference side, the charge
+dependence can be organized into the two relational quantities
+
+\[
+C=1-\lambda_A\lambda_B,
+\qquad
+D=(\lambda_A-\lambda_B)^2,
+\]
+
+where \(\lambda_A=q_A/m_A\) and \(\lambda_B=q_B/m_B\). \(C\) enters the
+conservative force and the orbital angular velocity, and \(D\) decides
+the presence and the strength of the leading electric-dipole radiation.
+
+Adding \(C,D\) to the six persistent states of the fifth thought
+experiment gives
+
+\[
+\boxed{
+Z_8=(U,P,E,H,Q,N,C,D).
+}
+\]
+
+In the implementation, a full microstate of 41 real components is used,
+consisting of these eight persistent logical states, the RK4 work
+registers and the 11-phase one-hot phase. \texttt{transition(z)}
+receives no external physical argument, builds every candidate value
+from the OLD full state only, and generates the next state
+simultaneously by a one-hot sum of products. Since \(N,C,D\) are held as
+identity candidates in all phases, they are preserved as the result of
+the same map, not by an external copy.
+
+For the reference case
+
+\[
+\lambda_A=+0.30,
+\qquad
+\lambda_B=-0.30,
+\]
+
+that is,
+
+\[
+C=1.09,
+\qquad
+D=0.36,
+\qquad
+N=\nu=0.25,
+\]
+
+the strict eight-state generation from \(r=50\rightarrow20\) completed
+in 488,345 macro steps. The differences from the analytic reference were
+
+\[
+|\Delta t|=1.46\times10^{-8},
+\qquad
+|\Delta\phi|=8.44\times10^{-11},
+\]
+
+and over the whole stored range
+
+\[
+\max|\Delta r|=9.12\times10^{-9},
+\]
+
+with
+
+\[
+\Delta N=\Delta C=\Delta D=0.
+\]
+
+Furthermore, with the same \texttt{transition(z)}, the same 11-phase
+machine and the same eight persistent states unchanged, the five
+conditions differing only in the initial \(C,D\),
+
+\[
+(+0.30,-0.30),
+(+0.30,+0.30),
+(+0.90,-0.90),
+(+0.90,+0.90),
+(+1.20,-1.20),
+\]
+
+were run. In all five conditions the orbital state generation completed,
+and the drift of \(N,C,D\) was 0. In particular, for equal-sign
+equal-ratio cases \(D=0\), so that only the leading electric-dipole term
+adopted in this paper vanishes, while the Coulomb repulsion effect with
+\(C<1\) remains in the conservative motion. The \texttt{n3\_repulsive}
+case with \(C=0.19\) required about 3816.7 orbits; \(P,H\) could be
+generated to the end, but the time readout through the exponential clock
+\(Q\) exceeded the finite-precision range. This fact is not corrected;
+it is recorded as it is, as a limit of the domain and of the numerical
+representation.
+
+What this paper shows is that, for the restricted leading-order
+quasi-circular charged binary, the conservative effects of gravity and
+Coulomb and the dissipative effects of GW quadrupole and EM dipole
+radiation \textbf{can be rearranged into a single synchronous state map
+with no external charge parameters and no branching by force type}. This
+does not mean a fundamental unification of gravity and electromagnetism,
+a derivation of the Einstein--Maxwell equations, the minimality of eight
+states, the ontological fundamentality of \(C,D\), or universality for
+general charged binaries.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{0. Position of this paper}\label{position-of-this-paper}
+
+This paper is the sixth thought experiment under the research project
+design {[}0{]}.
+
+The first thought experiment {[}1{]} examined, without placing a
+background spacetime or a metric first, the minimal construction that
+distinguishes inertial, uniformly accelerated and rotating motion, from
+two degrees of freedom of unfixed meaning and the conservation of an
+area readout.
+
+The second thought experiment {[}2{]} applied a fixed action repeatedly
+to two values and constructed Coulomb-type inverse-square motion from a
+product readout and an area clock.
+
+The third thought experiment {[}3{]} reversed the direction and treated
+the inverse problem of reading out the mass ratio, the relative distance
+and the relative time from known two-body orbits.
+
+The fourth thought experiment {[}4{]} brought the gravitational orbits
+computed externally in the third thought experiment back to an internal
+sequential generation by the state-dependent action
+
+\[
+X_{n+1}=S_nX_n.
+\]
+
+The fifth thought experiment {[}5{]} self-audited that fourth thought
+experiment. What became important there was the point that
+
+\begin{center}
+\fbox{\parbox{0.90\linewidth}{\centering even if a numerical result agrees with a known orbit, the system is not necessarily closed by the explicit states alone.}}
+\end{center}
+
+Since information held across macro steps remained outside the apparent
+two states \(X=(a,b)^T\) of the fourth thought experiment, it was made
+explicit as the six persistent logical states
+
+\[
+Z_6=(U,P,E,H,Q,N),
+\]
+
+and the intermediate RK4 values and the 11-phase one-hot phase were also
+placed inside the full state as machine/work states.
+
+The sixth thought experiment does not change these audit rules
+themselves. The new question is
+
+\[
+\boxed{
+\begin{array}{c}
+\text{when the interaction is increased from one kind, gravity, to two kinds, gravity + Coulomb,}\\
+\text{and the dissipation too is increased to the two channels GW quadrupole + EM dipole,}\\
+\text{can the system still be closed as a single synchronous state map without external physical information?}
+\end{array}
+}
+\]
+
+The subject of this paper is therefore not merely ``computing charged
+orbits''. With the known charged binary placed on the answer-checking
+side, it is to audit \textbf{what must be held internally as persistent
+states so that the same update rule transfers to several conditions}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{1. Motivation}\label{motivation}
+
+\subsection{1.1 From one kind of interaction to
+two}\label{from-one-kind-of-interaction-to-two}
+
+In a gravity-only binary, there is one kind of central interaction. When
+the Coulomb interaction is added, on the conservative side the same
+\(1/r^2\) type changes between attraction and repulsion according to the
+sign. On the dissipative side, moreover, a leading electric-dipole
+radiation appears, distinct from the gravitational quadrupole radiation
+{[}6--11{]}.
+
+The charged binary is therefore the minimal next stage that tests
+
+\begin{center}
+\fbox{\parbox{0.90\linewidth}{\centering multiplication of conservative interactions$+$multiplication of dissipation channels}}
+\end{center}
+
+at the same time.
+
+On the other hand, going to the general Einstein--Maxwell two-body
+problem makes the object of verification rapidly complex. This paper
+deliberately restricts itself to
+
+\begin{itemize}
+\tightlist
+\item
+  non-spinning point particles,
+\item
+  quasi-circular orbits,
+\item
+  leading-order conservative dynamics,
+\item
+  leading GW quadrupole radiation,
+\item
+  leading EM electric-dipole radiation,
+\item
+  adiabatic energy balance,
+\item
+  \(G=M=c=1\).
+\end{itemize}
+
+Within this range an independent analytic reference can be stated
+explicitly, and the direction of comparison with the state generator can
+be fixed to the one direction
+
+\[
+\boxed{
+\text{state generator output}
+\longrightarrow
+\text{independent analytic reference}.
+}
+\]
+
+\subsection{1.2 Not supplying the charge parameters from outside at
+every
+step}\label{not-supplying-the-charge-parameters-from-outside-at-every-step}
+
+If a charged binary is implemented in the ordinary way, at each step
+
+\[
+\lambda_A,
+\qquad
+\lambda_B
+\]
+
+can be referred to as external parameters. Seen from the audit rules of
+the fifth thought experiment {[}5{]}, however, ``the physical
+information that determines the next state'' then remains outside the
+state.
+
+This paper therefore first audits the combinations that actually appear
+in the analytic formulas. For the present restricted model it turns out
+that, instead of holding the individual \(\lambda_A,\lambda_B\)
+directly,
+
+\[
+\boxed{
+C=1-\lambda_A\lambda_B
+}
+\]
+
+and
+
+\[
+\boxed{
+D=(\lambda_A-\lambda_B)^2
+}
+\]
+
+suffice.
+
+\(C\) enters the conservative force and the orbital frequency, and \(D\)
+enters the leading electric-dipole radiation. If these two can be
+internalized into the state, \texttt{transition(z)} needs neither the
+individual labels of bodies A/B, nor an external attraction/repulsion
+branch, nor a gravity/electromagnetism force-type branch.
+
+\subsection{1.3 Looking at transferability, not agreement in one
+condition}\label{looking-at-transferability-not-agreement-in-one-condition}
+
+Even if one condition agrees with the analytic reference, the
+possibility remains that the coefficients were made for that case only.
+This paper therefore keeps the same \texttt{transition(z)} fixed and
+changes only the \(C,D\) put into the initial state.
+
+In particular, by including
+
+\begin{itemize}
+\tightlist
+\item
+  opposite-sign charges: \(C>1\), \(D>0\),
+\item
+  equal-sign equal charge-to-mass ratios: \(C<1\), \(D=0\),
+\end{itemize}
+
+the strength of the conservative force and the presence of dipole
+radiation are changed at the same time.
+
+The success criterion is
+
+\begin{center}
+\fbox{\parbox{0.90\linewidth}{\centering that the same transition handles different conditions by the difference of state values alone$.$}}
+\end{center}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{2. The question and the scope of the
+claims}\label{the-question-and-the-scope-of-the-claims}
+
+The question verified in this paper is divided into the following four
+stages.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Analytic closure}\\
+  Can the charge dependence of the present leading-order quasi-circular
+  charged binary be organized into \(C,D\)?
+\item
+  \textbf{State closure}\\
+  With \(C,D\) added to the six persistent states of the fifth thought
+  experiment, \[
+  Z_8=(U,P,E,H,Q,N,C,D),
+  \] can the physical case values needed to determine the next state be
+  placed inside the state?
+\item
+  \textbf{Single map}\\
+  Can the full state, including the RK4 intermediate quantities, the
+  processing phase and the conserved relational quantities, be updated
+  by a single \texttt{transition(z)} that takes no external physical
+  argument?
+\item
+  \textbf{Transferability}\\
+  Can the same \texttt{transition(z)}, unchanged, be transferred to five
+  different conditions by changing only the \(C,D\) of the initial
+  state?
+\end{enumerate}
+
+The affirmative conclusions of this paper are stated \textbf{only for
+this restricted model and this range of implementation}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{3. Independent analytic
+reference}\label{independent-analytic-reference}
+
+\subsection{3.1 Approximations and
+units}\label{approximations-and-units}
+
+The analytic reference is constructed independently of the state
+generator that follows. The adopted conditions are
+
+\[
+G=M=c=1,
+\qquad
+\epsilon_0=\frac{1}{4\pi},
+\]
+
+\[
+M=m_A+m_B=1.
+\]
+
+The object is non-spinning point particles in an adiabatic
+quasi-circular inspiral; the conservative dynamics is the leading order
+of Newtonian gravity + Coulomb, and the dissipation is the leading
+mass-quadrupole gravitational radiation and the leading electric-dipole
+electromagnetic radiation. Peters--Mathews {[}6,7{]} is the basis of
+gravitational quadrupole radiation and orbital decay, and as prior work
+treating both GW and EM in charged binaries, Liu et al.~{[}8{]},
+Benavides-Gallego and Han {[}9{]}, Zhang et al.~{[}10{]} and Verma et
+al.~{[}11{]} are referred to.
+
+In the notation of Zhang et al.~{[}10{]} a quantity corresponding to
+\(1-\lambda_A\lambda_B\) is used; in this paper it is written \(C\) to
+avoid a clash with the state vector \(Z_8\).
+
+\subsection{3.2 Dimensionless mass and charge
+quantities}\label{dimensionless-mass-and-charge-quantities}
+
+The charge-to-mass ratios are
+
+\[
+\lambda_A=\frac{q_A}{m_A},
+\qquad
+\lambda_B=\frac{q_B}{m_B}.
+\]
+
+The reduced mass and the symmetric mass ratio are
+
+\[
+\mu=\frac{m_A m_B}{M},
+\qquad
+\nu=\frac{m_A m_B}{M^2}.
+\]
+
+For \(M=1\),
+
+\[
+\mu=\nu.
+\]
+
+Since this experiment has equal masses,
+
+\[
+\mu=\nu=\frac14.
+\]
+
+\subsection{\texorpdfstring{3.3 The relational quantity \(C\) that
+collects the conservative
+motion}{3.3 The relational quantity C that collects the conservative motion}}\label{the-relational-quantity-c-that-collects-the-conservative-motion}
+
+Collecting the leading-order effective central interaction of gravity
+and Coulomb, put
+
+\[
+\boxed{
+C=1-\lambda_A\lambda_B.
+}
+\]
+
+For quasi-circular orbits,
+
+\[
+\boxed{
+\omega^2=\frac{C}{r^3},
+}
+\]
+
+and the binding energy is
+
+\[
+\boxed{
+E_{\rm orb}=-\frac{\mu C}{2r}.
+}
+\]
+
+If \(\lambda_A\lambda_B<0\) then \(C>1\), and Coulomb acts as an
+attraction in the same direction as gravity. If \(\lambda_A\lambda_B>0\)
+then \(C<1\), and the Coulomb repulsion weakens the effective central
+attraction.
+
+The real quasi-circular reference of this paper requires
+
+\[
+\boxed{C>0}.
+\]
+
+\(C\le0\) is therefore outside the domain of the present analytic
+reference.
+
+\subsection{3.4 GW quadrupole radiation}\label{gw-quadrupole-radiation}
+
+The leading mass-quadrupole power is
+
+\[
+P_{\rm GW}
+=
+\frac{32}{5}\mu^2 r^4\omega^6.
+\]
+
+Substituting \(\omega^2=C/r^3\),
+
+\[
+\boxed{
+P_{\rm GW}
+=
+\frac{32}{5}
+\frac{\mu^2C^3}{r^5}
+}
+\]
+
+{[}6,7{]}.
+
+\subsection{3.5 EM electric-dipole
+radiation}\label{em-electric-dipole-radiation}
+
+The electric dipole moment in the COM frame is, at leading order,
+
+\[
+\mathbf d
+=
+\mu(\lambda_A-\lambda_B)\mathbf r.
+\]
+
+Here put
+
+\[
+\boxed{
+D=(\lambda_A-\lambda_B)^2.
+}
+\]
+
+The leading dipole power is
+
+\[
+\boxed{
+P_{\rm EM}
+=
+\frac23
+\frac{\mu^2 D C^2}{r^4}
+}
+\]
+
+{[}8--11{]}.
+
+From this expression, if
+
+\[
+\lambda_A=\lambda_B
+\quad\Longrightarrow\quad
+D=0,
+\]
+
+then \textbf{the leading electric-dipole term adopted in this paper}
+vanishes. The Coulomb conservative force itself, however, does not
+vanish.
+
+\subsection{3.6 Energy balance and radius
+evolution}\label{energy-balance-and-radius-evolution}
+
+The radiative loss is taken as
+
+\[
+\frac{dE_{\rm orb}}{dt}
+=-(P_{\rm GW}+P_{\rm EM}).
+\]
+
+From
+
+\[
+\frac{dE_{\rm orb}}{dr}
+=
+\frac{\mu C}{2r^2},
+\]
+
+we obtain
+
+\[
+\boxed{
+\frac{dr}{dt}
+=-\frac{A}{r^2}-\frac{B}{r^3}.
+}
+\]
+
+Here
+
+\[
+\boxed{
+A=\frac43\mu D C
+}
+\]
+
+is the coefficient on the EM dipole side and
+
+\[
+\boxed{
+B=\frac{64}{5}\mu C^2
+}
+\]
+
+is the coefficient on the GW quadrupole side.
+
+In the radius evolution, therefore, two dissipative contributions with
+different distance dependences,
+
+\[
+\boxed{
+r^{-2}\ \text{and}\ r^{-3},
+}
+\]
+
+appear at the same time.
+
+\subsection{\texorpdfstring{3.7 Analytic \(t(r)\) and
+\(\phi(r)\)}{3.7 Analytic t(r) and \textbackslash phi(r)}}\label{analytic-tr-and-phir}
+
+Since
+
+\[
+\frac{dt}{dr}
+=-\frac{r^3}{Ar+B},
+\]
+
+for \(A\ne0\), putting
+
+\[
+F_t(r)
+=
+\frac{r^3}{3A}
+-\frac{Br^2}{2A^2}
++\frac{B^2r}{A^3}
+-\frac{B^3}{A^4}\ln(Ar+B),
+\]
+
+we have
+
+\[
+\boxed{
+t(r)=F_t(r_0)-F_t(r)}.
+\]
+
+Also, from
+
+\[
+\frac{d\phi}{dt}=\sqrt{\frac{C}{r^3}},
+\]
+
+\[
+\frac{d\phi}{dr}
+=-\frac{\sqrt C\,r^{3/2}}{Ar+B}.
+\]
+
+For \(A\ne0\), with
+
+\[
+F_\phi(r)
+=
+\sqrt C
+\left[
+\frac{2r^{3/2}}{3A}
+-\frac{2B\sqrt r}{A^2}
++\frac{2B^{3/2}}{A^{5/2}}
+\tan^{-1}\sqrt{\frac{Ar}{B}}
+\right],
+\]
+
+\[
+\boxed{
+\phi(r)=F_\phi(r_0)-F_\phi(r)}.
+\]
+
+For equal-sign equal ratios, \(D=0\) and hence \(A=0\). In this case the
+limit is used directly,
+
+\[
+\boxed{
+t(r)=\frac{r_0^4-r^4}{4B}}
+\]
+
+and
+
+\[
+\boxed{
+\phi(r)=\frac{2\sqrt C}{5B}
+\left(r_0^{5/2}-r^{5/2}\right)
+}.
+\]
+
+The relative orbit is read out as
+
+\[
+\boxed{
+x=r\cos\phi,
+\qquad
+y=r\sin\phi}.
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{4. The analytic reference
+case}\label{the-analytic-reference-case}
+
+The reference condition is
+
+\[
+m_A=m_B=0.5,
+\]
+
+\[
+\lambda_A=+0.30,
+\qquad
+\lambda_B=-0.30.
+\]
+
+Then
+
+\[
+C=1.09,
+\qquad
+D=0.36,
+\qquad
+\mu=\nu=0.25.
+\]
+
+The independent analytic reference for \(r=50\rightarrow20\) is
+
+\[
+t_f=169032.31760706357,
+\]
+
+\[
+\phi_f=767.0889994015913,
+\]
+
+\[
+N_{\rm cyc}=\frac{\phi_f}{2\pi}
+=122.086006046.
+\]
+
+In the reference case,
+
+\[
+\frac{P_{\rm EM}}{P_{\rm GW}}
+=
+\frac{5}{48}\frac{D}{C}r,
+\]
+
+so that at
+
+\[
+r_{\rm cross}
+=
+\frac{48C}{5D}
+\simeq29.0667
+\]
+
+the EM dipole and the GW quadrupole are comparable. Outside, the EM
+dipole is relatively stronger; going inward, the \(r^{-5}\) GW
+quadrupole overtakes it.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{5. Extension from six states to eight
+states}\label{extension-from-six-states-to-eight-states}
+
+\subsection{5.1 The six persistent states of the fifth thought
+experiment}\label{the-six-persistent-states-of-the-fifth-thought-experiment}
+
+In the fifth thought experiment {[}5{]}, the macro persistent
+information needed for the present gravitational-orbit reconstruction
+was taken to be
+
+\[
+Z_6=(U,P,E,H,Q,N).
+\]
+
+Here
+
+\[
+U=e^{i\chi},
+\qquad
+H=e^{i\phi},
+\qquad
+Q=e^{t/\tau_0},
+\qquad
+N=\nu.
+\]
+
+\(P\) is the state corresponding to the orbital radius / semi-latus
+rectum, and \(E\) is the eccentricity state. In the quasi-circular
+reference of this paper the update rate of \(E\) is 0, and it is kept at
+its initial value 0.
+
+\subsection{5.2 The conserved relational quantities added in the charged
+system}\label{the-conserved-relational-quantities-added-in-the-charged-system}
+
+Looking at the present analytic reference from the viewpoint of the
+information needed to determine the next state, what is newly needed is
+
+\[
+C=1-\lambda_A\lambda_B
+\]
+
+and
+
+\[
+D=(\lambda_A-\lambda_B)^2.
+\]
+
+Accordingly,
+
+\[
+\boxed{
+Z_8=(U,P,E,H,Q,N,C,D).
+}
+\]
+
+What matters here is not to assert that \(C,D\) are ``new fundamental
+physical degrees of freedom''. They are \textbf{the persistent
+relational quantities needed to close the present restricted analytic
+representation}.
+
+\subsection{5.3 Table of persistent
+states}\label{table-of-persistent-states}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+State
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Present meaning
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Kind
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Update across macro steps
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(U\) & \(e^{i\chi}\) & Phase state & Rotation \\
+\(P\) & Orbital radius / semi-latus rectum state & Dynamical & Decreases
+by radiation reaction \\
+\(E\) & Eccentricity state & Dynamical state & \(dE/d\phi=0\) in this
+quasi-circular model \\
+\(H\) & \(e^{i\phi}\) & Observed azimuth phase & Rotation \\
+\(Q\) & \(e^{t/\tau_0}\) & Clock encoding & Multiplicative update \\
+\(N\) & \(\nu\) & Conserved relational quantity & \(N'=N\) \\
+\(C\) & \(1-\lambda_A\lambda_B\) & Conserved relational quantity &
+\(C'=C\) \\
+\(D\) & \((\lambda_A-\lambda_B)^2\) & Conserved relational quantity &
+\(D'=D\) \\
+\end{longtable}
+}
+
+The individual \(\lambda_A,\lambda_B\) are not passed to
+\texttt{transition(z)}. The difference between attraction and repulsion,
+and the presence or absence of the EM dipole, are expressed as
+differences of the state values \(C,D\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{6. The state generator}\label{the-state-generator}
+
+\subsection{6.1 Local update formulas with the phase as the independent
+variable}\label{local-update-formulas-with-the-phase-as-the-independent-variable}
+
+Combining
+
+\[
+\frac{dr}{dt}
+=-\frac{A}{r^2}-\frac{B}{r^3}
+\]
+
+of the analytic reference with
+
+\[
+\frac{d\phi}{dt}=\sqrt{\frac{C}{r^3}},
+\]
+
+\[
+\frac{dr}{d\phi}
+=
+-\frac{4}{3}\mu D\frac{\sqrt C}{\sqrt r}
+-\frac{64}{5}\mu C\frac{\sqrt C}{r\sqrt r}.
+\]
+
+For \(M=1\), \(\mu=\nu=N\), so in state variables
+
+\[
+\boxed{
+\frac{dP}{d\phi}
+=
+-\frac{4}{3}ND\frac{\sqrt C}{\sqrt P}
+-\frac{64}{5}NC\frac{\sqrt C}{P\sqrt P}.
+}
+\]
+
+Also
+
+\[
+\boxed{
+\frac{dE}{d\phi}=0
+}
+\]
+
+and
+
+\[
+\boxed{
+\frac{dt}{d\phi}
+=
+\frac{P\sqrt P}{\sqrt C}.
+}
+\]
+
+The local rate
+
+\[
+R(P,E,N,C,D)
+=
+\left(
+\frac{dP}{d\phi},
+0,
+\frac{dt}{d\phi}
+\right)
+\]
+
+can thus be evaluated \textbf{from the present states \(P,N,C,D\)
+alone}.
+
+\subsection{6.2 Numerical resolution and encoding
+constants}\label{numerical-resolution-and-encoding-constants}
+
+One orbit is divided into 4000 macro steps,
+
+\[
+h=\frac{2\pi}{4000}.
+\]
+
+The clock state is encoded as
+
+\[
+Q=e^{t/\tau_0},
+\qquad
+\tau_0=10^4.
+\]
+
+\(h\) and \(\tau_0\) are not states specifying the physical case; they
+are treated as constants of the numerical resolution and of the readout
+encoding.
+
+\subsection{6.3 The 41-real-component full
+microstate}\label{the-41-real-component-full-microstate}
+
+Of the eight persistent logical states, \(U,H\) are complex, so in the
+implementation they become the 10 real components
+
+\[
+(U_R,U_I,P,E,H_R,H_I,Q,N,C,D).
+\]
+
+To these are added the RK4
+
+\[
+(k_1,k_2,k_3,k_4),
+\]
+
+the three components of each \(k_j\), the stage states, the composite
+increment, the midpoint, \(\Delta\phi\) and the 11-phase one-hot phase
+
+\[
+q=(q_0,\ldots,q_{10}),
+\]
+
+making the full state 41 real components.
+
+Conceptually,
+
+\[
+\begin{aligned}
+z=&(U_R,U_I,P,E,H_R,H_I,Q,N,C,D;\\
+&k_1,k_2,k_3,k_4;P_s,E_s;d;P_m,E_m;\Delta\phi;q_0,\ldots,q_{10}).
+\end{aligned}
+\]
+
+Here the work states are not pushed outside on the grounds that ``they
+are used only temporarily until the next macro state, so they are not
+states''; if they are needed between microsteps they are made explicit
+as part of the full state.
+
+\subsection{6.4 Correspondence between the initialization code and the
+formulas}\label{correspondence-between-the-initialization-code-and-the-formulas}
+
+The initialization function actually used in the generator for the
+reference case is the following. It is the actual code of
+\texttt{run\_strict\_charged8\_final.py} itself.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ init\_state(p0}\OperatorTok{=}\FloatTok{50.0}\NormalTok{,n0}\OperatorTok{=}\FloatTok{0.25}\NormalTok{,c0}\OperatorTok{=}\FloatTok{1.09}\NormalTok{,d0}\OperatorTok{=}\FloatTok{0.36}\NormalTok{):}
+\NormalTok{    z}\OperatorTok{=}\NormalTok{np.zeros(NST,dtype}\OperatorTok{=}\NormalTok{np.float64)}
+\NormalTok{    z[UR]}\OperatorTok{=}\FloatTok{1.0}\OperatorTok{;}\NormalTok{ z[P]}\OperatorTok{=}\NormalTok{p0}\OperatorTok{;}\NormalTok{ z[HR]}\OperatorTok{=}\FloatTok{1.0}\OperatorTok{;}\NormalTok{ z[Q]}\OperatorTok{=}\FloatTok{1.0}
+\NormalTok{    z[N]}\OperatorTok{=}\NormalTok{n0}\OperatorTok{;}\NormalTok{ z[C]}\OperatorTok{=}\NormalTok{c0}\OperatorTok{;}\NormalTok{ z[D]}\OperatorTok{=}\NormalTok{d0}
+\NormalTok{    z[PS]}\OperatorTok{=}\NormalTok{p0}\OperatorTok{;}\NormalTok{ z[PM]}\OperatorTok{=}\NormalTok{p0}\OperatorTok{;}\NormalTok{ z[QB]}\OperatorTok{=}\FloatTok{1.0}
+    \ControlFlowTok{return}\NormalTok{ z}
+\end{Highlighting}
+\end{Shaded}
+
+By \texttt{np.zeros}, all components not explicitly assigned start from
+0. For the persistent logical states this corresponds to
+
+\[
+U_0=1+0i,
+\qquad
+P_0=p_0,
+\qquad
+E_0=0,
+\]
+
+\[
+H_0=1+0i,
+\qquad
+Q_0=1,
+\]
+
+\[
+N_0=n_0,
+\qquad
+C_0=c_0,
+\qquad
+D_0=d_0.
+\]
+
+In the reference case
+
+\[
+p_0=50,
+\qquad
+n_0=0.25,
+\qquad
+c_0=1.09,
+\qquad
+d_0=0.36.
+\]
+
+Since
+
+\[
+Q_0=1=e^{0/\tau_0},
+\]
+
+the initial readout time is \(t_0=0\). Also,
+
+\[
+U_0=e^{i\chi_0}=1,
+\qquad
+H_0=e^{i\phi_0}=1
+\]
+
+express
+
+\[
+\chi_0=0,
+\qquad
+\phi_0=0.
+\]
+
+\texttt{z{[}PS{]}=p0} and \texttt{z{[}PM{]}=p0} are the initial values
+of the work registers for the RK4 stage / midpoint, and
+\texttt{z{[}QB{]}=1.0} expresses that the 11-phase one-hot phase is
+
+\[
+q=(1,0,\ldots,0),
+\]
+
+that is, the processing starts from phase 0.
+
+What matters is that the individual
+
+\[
+\lambda_A,
+\qquad
+\lambda_B
+\]
+
+are not passed to \texttt{transition(z)}. The charge condition is
+mapped, before the initialization, to
+
+\[
+C=1-\lambda_A\lambda_B,
+\qquad
+D=(\lambda_A-\lambda_B)^2,
+\]
+
+and thereafter \(C,D\) propagate as persistent states. Therefore, the
+only physical information changed in the five-condition test is the
+initial values of \(C,D\) in the same state format.
+
+\subsection{6.5 Correspondence between the local interaction-rate code
+and the
+formulas}\label{correspondence-between-the-local-interaction-rate-code-and-the-formulas}
+
+The local rate, evaluated uniquely from the present state, is collected
+in the following function in the actual code.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AttributeTok{@njit}\NormalTok{(cache}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\KeywordTok{def}\NormalTok{ \_rates(p,n,c,d):}
+\NormalTok{    rp}\OperatorTok{=}\NormalTok{math.sqrt(p)}\OperatorTok{;}\NormalTok{ rc}\OperatorTok{=}\NormalTok{math.sqrt(c)}
+\NormalTok{    dp}\OperatorTok{={-}}\NormalTok{(}\FloatTok{4.0}\OperatorTok{/}\FloatTok{3.0}\NormalTok{)}\OperatorTok{*}\NormalTok{n}\OperatorTok{*}\NormalTok{d}\OperatorTok{*}\NormalTok{rc}\OperatorTok{/}\NormalTok{rp }\OperatorTok{{-}}\NormalTok{(}\FloatTok{64.0}\OperatorTok{/}\FloatTok{5.0}\NormalTok{)}\OperatorTok{*}\NormalTok{n}\OperatorTok{*}\NormalTok{c}\OperatorTok{*}\NormalTok{rc}\OperatorTok{/}\NormalTok{(p}\OperatorTok{*}\NormalTok{rp)}
+\NormalTok{    dt}\OperatorTok{=}\NormalTok{p}\OperatorTok{*}\NormalTok{rp}\OperatorTok{/}\NormalTok{rc}
+    \ControlFlowTok{return}\NormalTok{ dp,}\FloatTok{0.0}\NormalTok{,dt}
+\end{Highlighting}
+\end{Shaded}
+
+These three components correspond directly to
+
+\[
+R(P,E,N,C,D)
+=
+\left(
+\frac{dP}{d\phi},
+\frac{dE}{d\phi},
+\frac{dt}{d\phi}
+\right).
+\]
+
+The line
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dp}\OperatorTok{={-}}\NormalTok{(}\FloatTok{4.0}\OperatorTok{/}\FloatTok{3.0}\NormalTok{)}\OperatorTok{*}\NormalTok{n}\OperatorTok{*}\NormalTok{d}\OperatorTok{*}\NormalTok{rc}\OperatorTok{/}\NormalTok{rp }\OperatorTok{{-}}\NormalTok{(}\FloatTok{64.0}\OperatorTok{/}\FloatTok{5.0}\NormalTok{)}\OperatorTok{*}\NormalTok{n}\OperatorTok{*}\NormalTok{c}\OperatorTok{*}\NormalTok{rc}\OperatorTok{/}\NormalTok{(p}\OperatorTok{*}\NormalTok{rp)}
+\end{Highlighting}
+\end{Shaded}
+
+evaluates
+
+\[
+\boxed{
+\frac{dP}{d\phi}
+=
+-\frac{4}{3}ND\frac{\sqrt C}{\sqrt P}
+-\frac{64}{5}NC\frac{\sqrt C}{P\sqrt P}
+}
+\]
+
+as it is. The first term is the \(r^{-2}\)-type radial decay originating
+in the leading electric-dipole radiation, and the second is the
+\(r^{-3}\)-type radial decay originating in the leading gravitational
+quadrupole radiation, converted into phase derivatives by
+\(d\phi/dt=\sqrt{C/P^3}\).
+
+The second component of \texttt{return\ dp,0.0,dt} is 0 because this
+paper is restricted to circular orbits,
+
+\[
+E=0,
+\qquad
+\frac{dE}{d\phi}=0.
+\]
+
+Also,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dt}\OperatorTok{=}\NormalTok{p}\OperatorTok{*}\NormalTok{rp}\OperatorTok{/}\NormalTok{rc}
+\end{Highlighting}
+\end{Shaded}
+
+corresponds to
+
+\[
+\boxed{
+\frac{dt}{d\phi}
+=
+\frac{P\sqrt P}{\sqrt C}.
+}
+\]
+
+This \texttt{\_rates} does not switch between the attractive and the
+repulsive case, or between the GW and the EM term, by an external
+branch. The difference goes into the state values \(C,D\) and is
+evaluated continuously within the same formula. In particular, for
+equal-sign equal charge-to-mass ratios
+
+\[
+D=0,
+\]
+
+so that only the EM dipole term becomes 0 automatically, without
+rewriting the code.
+
+\subsection{\texorpdfstring{6.6 The actual code of the single map
+\texttt{transition(z)}}{6.6 The actual code of the single map transition(z)}}\label{the-actual-code-of-the-single-map-transitionz}
+
+The one-hot sum of products of the candidate values is the following.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AttributeTok{@njit}\NormalTok{(cache}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\KeywordTok{def}\NormalTok{ \_blend(q,c):}
+\NormalTok{    x}\OperatorTok{=}\FloatTok{0.0}
+    \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{11}\NormalTok{): x }\OperatorTok{+=}\NormalTok{ q[j]}\OperatorTok{*}\NormalTok{c[j]}
+    \ControlFlowTok{return}\NormalTok{ x}
+\end{Highlighting}
+\end{Shaded}
+
+This implements the formula
+
+\[
+\boxed{
+z_i'=\sum_{j=0}^{10}q_jF_{ij}(z)}
+\]
+
+as it is, as a sum of 11 products.
+
+The core of the sole state update \texttt{transition(z)} used in the
+reference case is the following.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AttributeTok{@njit}\NormalTok{(cache}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\KeywordTok{def}\NormalTok{ transition(z):}
+    \CommentTok{"""Sole legal state{-}transition map."""}
+\NormalTok{    q}\OperatorTok{=}\NormalTok{z[QB:QB}\OperatorTok{+}\DecValTok{11}\NormalTok{]}
+\NormalTok{    p}\OperatorTok{=}\NormalTok{z[P]}\OperatorTok{;}\NormalTok{ e}\OperatorTok{=}\NormalTok{z[E]}\OperatorTok{;}\NormalTok{ n}\OperatorTok{=}\NormalTok{z[N]}\OperatorTok{;}\NormalTok{ c}\OperatorTok{=}\NormalTok{z[C]}\OperatorTok{;}\NormalTok{ dd}\OperatorTok{=}\NormalTok{z[D]}
+    \CommentTok{\# old work values}
+\NormalTok{    k1}\OperatorTok{=}\NormalTok{z[K1:K1}\OperatorTok{+}\DecValTok{3}\NormalTok{]}\OperatorTok{;}\NormalTok{ k2}\OperatorTok{=}\NormalTok{z[K2:K2}\OperatorTok{+}\DecValTok{3}\NormalTok{]}\OperatorTok{;}\NormalTok{ k3}\OperatorTok{=}\NormalTok{z[K3:K3}\OperatorTok{+}\DecValTok{3}\NormalTok{]}\OperatorTok{;}\NormalTok{ k4}\OperatorTok{=}\NormalTok{z[K4:K4}\OperatorTok{+}\DecValTok{3}\NormalTok{]}
+\NormalTok{    ps}\OperatorTok{=}\NormalTok{z[PS]}\OperatorTok{;}\NormalTok{ es}\OperatorTok{=}\NormalTok{z[ES]}\OperatorTok{;}\NormalTok{ dv}\OperatorTok{=}\NormalTok{z[DV:DV}\OperatorTok{+}\DecValTok{3}\NormalTok{]}\OperatorTok{;}\NormalTok{ pm}\OperatorTok{=}\NormalTok{z[PM]}\OperatorTok{;}\NormalTok{ em}\OperatorTok{=}\NormalTok{z[EM]}\OperatorTok{;}\NormalTok{ dphi}\OperatorTok{=}\NormalTok{z[DPHI]}
+
+    \CommentTok{\# stage rates are functions of OLD state only}
+\NormalTok{    rP,rE,rT}\OperatorTok{=}\NormalTok{\_rates(p,n,c,dd)}
+\NormalTok{    rPsP,rPsE,rPsT}\OperatorTok{=}\NormalTok{\_rates(ps,n,c,dd)}
+
+\NormalTok{    cand}\OperatorTok{=}\NormalTok{np.empty((}\DecValTok{30}\NormalTok{,}\DecValTok{11}\NormalTok{),dtype}\OperatorTok{=}\NormalTok{np.float64)  }\CommentTok{\# all non{-}q registers 0..29}
+    \CommentTok{\# default: identity candidate in all phases for every non{-}q register}
+    \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{30}\NormalTok{):}
+        \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{11}\NormalTok{): cand[i,j]}\OperatorTok{=}\NormalTok{z[i]}
+
+    \CommentTok{\# k1: phase 0 compute, phase 10 reset}
+\NormalTok{    cand[K1,}\DecValTok{0}\NormalTok{]}\OperatorTok{=}\NormalTok{rP}\OperatorTok{;}\NormalTok{ cand[K1}\OperatorTok{+}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{]}\OperatorTok{=}\NormalTok{rE}\OperatorTok{;}\NormalTok{ cand[K1}\OperatorTok{+}\DecValTok{2}\NormalTok{,}\DecValTok{0}\NormalTok{]}\OperatorTok{=}\NormalTok{rT}
+    \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{): cand[K1}\OperatorTok{+}\NormalTok{a,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\FloatTok{0.0}
+    \CommentTok{\# stage2 fields phase 1}
+\NormalTok{    cand[PS,}\DecValTok{1}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\FloatTok{0.5}\OperatorTok{*}\NormalTok{HSTEP}\OperatorTok{*}\NormalTok{k1[}\DecValTok{0}\NormalTok{]}\OperatorTok{;}\NormalTok{ cand[ES,}\DecValTok{1}\NormalTok{]}\OperatorTok{=}\NormalTok{e}\OperatorTok{+}\FloatTok{0.5}\OperatorTok{*}\NormalTok{HSTEP}\OperatorTok{*}\NormalTok{k1[}\DecValTok{1}\NormalTok{]}
+    \CommentTok{\# k2 phase 2, reset phase 10}
+\NormalTok{    cand[K2,}\DecValTok{2}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsP}\OperatorTok{;}\NormalTok{ cand[K2}\OperatorTok{+}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsE}\OperatorTok{;}\NormalTok{ cand[K2}\OperatorTok{+}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsT}
+    \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{): cand[K2}\OperatorTok{+}\NormalTok{a,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\FloatTok{0.0}
+    \CommentTok{\# stage3 fields phase 3}
+\NormalTok{    cand[PS,}\DecValTok{3}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\FloatTok{0.5}\OperatorTok{*}\NormalTok{HSTEP}\OperatorTok{*}\NormalTok{k2[}\DecValTok{0}\NormalTok{]}\OperatorTok{;}\NormalTok{ cand[ES,}\DecValTok{3}\NormalTok{]}\OperatorTok{=}\NormalTok{e}\OperatorTok{+}\FloatTok{0.5}\OperatorTok{*}\NormalTok{HSTEP}\OperatorTok{*}\NormalTok{k2[}\DecValTok{1}\NormalTok{]}
+    \CommentTok{\# k3 phase 4 uses OLD Ps,Es}
+\NormalTok{    cand[K3,}\DecValTok{4}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsP}\OperatorTok{;}\NormalTok{ cand[K3}\OperatorTok{+}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsE}\OperatorTok{;}\NormalTok{ cand[K3}\OperatorTok{+}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsT}
+    \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{): cand[K3}\OperatorTok{+}\NormalTok{a,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\FloatTok{0.0}
+    \CommentTok{\# stage4 fields phase 5}
+\NormalTok{    cand[PS,}\DecValTok{5}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\NormalTok{HSTEP}\OperatorTok{*}\NormalTok{k3[}\DecValTok{0}\NormalTok{]}\OperatorTok{;}\NormalTok{ cand[ES,}\DecValTok{5}\NormalTok{]}\OperatorTok{=}\NormalTok{e}\OperatorTok{+}\NormalTok{HSTEP}\OperatorTok{*}\NormalTok{k3[}\DecValTok{1}\NormalTok{]}
+    \CommentTok{\# k4 phase 6 uses OLD Ps,Es}
+\NormalTok{    cand[K4,}\DecValTok{6}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsP}\OperatorTok{;}\NormalTok{ cand[K4}\OperatorTok{+}\DecValTok{1}\NormalTok{,}\DecValTok{6}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsE}\OperatorTok{;}\NormalTok{ cand[K4}\OperatorTok{+}\DecValTok{2}\NormalTok{,}\DecValTok{6}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsT}
+    \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{): cand[K4}\OperatorTok{+}\NormalTok{a,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\FloatTok{0.0}
+    \CommentTok{\# combined d phase 7; reset 10}
+    \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{):}
+\NormalTok{        cand[DV}\OperatorTok{+}\NormalTok{a,}\DecValTok{7}\NormalTok{]}\OperatorTok{=}\NormalTok{(HSTEP}\OperatorTok{/}\FloatTok{6.0}\NormalTok{)}\OperatorTok{*}\NormalTok{(k1[a]}\OperatorTok{+}\FloatTok{2.0}\OperatorTok{*}\NormalTok{k2[a]}\OperatorTok{+}\FloatTok{2.0}\OperatorTok{*}\NormalTok{k3[a]}\OperatorTok{+}\NormalTok{k4[a])}
+\NormalTok{        cand[DV}\OperatorTok{+}\NormalTok{a,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\FloatTok{0.0}
+    \CommentTok{\# midpoint phase 8; commit{-}safe values phase 10}
+\NormalTok{    cand[PM,}\DecValTok{8}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\FloatTok{0.5}\OperatorTok{*}\NormalTok{dv[}\DecValTok{0}\NormalTok{]}\OperatorTok{;}\NormalTok{ cand[EM,}\DecValTok{8}\NormalTok{]}\OperatorTok{=}\NormalTok{e}\OperatorTok{+}\FloatTok{0.5}\OperatorTok{*}\NormalTok{dv[}\DecValTok{1}\NormalTok{]}
+\NormalTok{    cand[PM,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\NormalTok{dv[}\DecValTok{0}\NormalTok{]}\OperatorTok{;}\NormalTok{ cand[EM,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{e}\OperatorTok{+}\NormalTok{dv[}\DecValTok{1}\NormalTok{]}
+    \CommentTok{\# dphi phase 9; reset 10. Circular model dphi=h exactly.}
+\NormalTok{    cand[DPHI,}\DecValTok{9}\NormalTok{]}\OperatorTok{=}\NormalTok{HSTEP}\OperatorTok{;}\NormalTok{ cand[DPHI,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\FloatTok{0.0}
+    \CommentTok{\# commit phase 10 for persistent states}
+\NormalTok{    ur}\OperatorTok{=}\NormalTok{z[UR]}\OperatorTok{;}\NormalTok{ ui}\OperatorTok{=}\NormalTok{z[UI]}\OperatorTok{;}\NormalTok{ hr}\OperatorTok{=}\NormalTok{z[HR]}\OperatorTok{;}\NormalTok{ hi}\OperatorTok{=}\NormalTok{z[HI]}
+\NormalTok{    cand[UR,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{ur}\OperatorTok{*}\NormalTok{PH\_RE}\OperatorTok{{-}}\NormalTok{ui}\OperatorTok{*}\NormalTok{PH\_IM}\OperatorTok{;}\NormalTok{ cand[UI,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{ur}\OperatorTok{*}\NormalTok{PH\_IM}\OperatorTok{+}\NormalTok{ui}\OperatorTok{*}\NormalTok{PH\_RE}
+\NormalTok{    cand[P,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\NormalTok{dv[}\DecValTok{0}\NormalTok{]}\OperatorTok{;}\NormalTok{ cand[E,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{e}\OperatorTok{+}\NormalTok{dv[}\DecValTok{1}\NormalTok{]}
+\NormalTok{    cd}\OperatorTok{=}\NormalTok{math.cos(dphi)}\OperatorTok{;}\NormalTok{ sd}\OperatorTok{=}\NormalTok{math.sin(dphi)}
+\NormalTok{    cand[HR,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{hr}\OperatorTok{*}\NormalTok{cd}\OperatorTok{{-}}\NormalTok{hi}\OperatorTok{*}\NormalTok{sd}\OperatorTok{;}\NormalTok{ cand[HI,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{hr}\OperatorTok{*}\NormalTok{sd}\OperatorTok{+}\NormalTok{hi}\OperatorTok{*}\NormalTok{cd}
+\NormalTok{    cand[Q,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{z[Q]}\OperatorTok{*}\NormalTok{math.exp(dv[}\DecValTok{2}\NormalTok{]}\OperatorTok{/}\NormalTok{TAU0)}
+    \CommentTok{\# N,C,D remain identity candidates in all phases via default rows.}
+\NormalTok{    cand[PS,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\NormalTok{dv[}\DecValTok{0}\NormalTok{]}\OperatorTok{;}\NormalTok{ cand[ES,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{e}\OperatorTok{+}\NormalTok{dv[}\DecValTok{1}\NormalTok{]}
+
+\NormalTok{    out}\OperatorTok{=}\NormalTok{np.empty(NST,dtype}\OperatorTok{=}\NormalTok{np.float64)}
+    \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{30}\NormalTok{): out[i]}\OperatorTok{=}\NormalTok{\_blend(q,cand[i])}
+    \CommentTok{\# fixed cyclic linear map q\textquotesingle{} = C\_11 q (not external loop counter)}
+\NormalTok{    out[QB]}\OperatorTok{=}\NormalTok{q[}\DecValTok{10}\NormalTok{]}
+    \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{11}\NormalTok{): out[QB}\OperatorTok{+}\NormalTok{j]}\OperatorTok{=}\NormalTok{q[j}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]}
+    \ControlFlowTok{return}\NormalTok{ out}
+\end{Highlighting}
+\end{Shaded}
+
+The meaning of each phase is
+
+\[
+\begin{array}{c|l}
+0 & \text{evaluation of }k_1\\
+1 & \text{stage state for }k_2\\
+2 & \text{evaluation of }k_2\\
+3 & \text{stage state for }k_3\\
+4 & \text{evaluation of }k_3\\
+5 & \text{stage state for }k_4\\
+6 & \text{evaluation of }k_4\\
+7 & \Delta=(h/6)(k_1+2k_2+2k_3+k_4)\\
+8 & \text{midpoint work state}\\
+9 & \Delta\phi=h\\
+10 & \text{commit to the persistent states}
+\end{array}
+\]
+
+For example, in phase 1,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cand[PS,}\DecValTok{1}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\FloatTok{0.5}\OperatorTok{*}\NormalTok{HSTEP}\OperatorTok{*}\NormalTok{k1[}\DecValTok{0}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+corresponds to
+
+\[
+P_s=P+\frac{h}{2}k_{1P},
+\]
+
+and in phase 7,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cand[DV}\OperatorTok{+}\NormalTok{a,}\DecValTok{7}\NormalTok{]}\OperatorTok{=}\NormalTok{(HSTEP}\OperatorTok{/}\FloatTok{6.0}\NormalTok{)}\OperatorTok{*}\NormalTok{(k1[a]}\OperatorTok{+}\FloatTok{2.0}\OperatorTok{*}\NormalTok{k2[a]}\OperatorTok{+}\FloatTok{2.0}\OperatorTok{*}\NormalTok{k3[a]}\OperatorTok{+}\NormalTok{k4[a])}
+\end{Highlighting}
+\end{Shaded}
+
+corresponds to the usual RK4 composition
+
+\[
+\Delta
+=
+\frac{h}{6}
+\left(k_1+2k_2+2k_3+k_4\right).
+\]
+
+Unlike ordinary sequential code, however, a next value written just
+before within the same microstep is not used for the next operation. The
+candidates of each phase are built from the OLD full state read at the
+beginning of \texttt{transition(z)}, and only the candidate valid in
+that microstep is selected by the one-hot \(q\). The next evaluation is
+performed only after moving to the next microstep.
+
+In the commit phase,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cand[P,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\NormalTok{dv[}\DecValTok{0}\NormalTok{]}
+\NormalTok{cand[E,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{e}\OperatorTok{+}\NormalTok{dv[}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+correspond to
+
+\[
+P'=P+\Delta P,
+\qquad
+E'=E+\Delta E.
+\]
+
+Also,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cand[Q,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{z[Q]}\OperatorTok{*}\NormalTok{math.exp(dv[}\DecValTok{2}\NormalTok{]}\OperatorTok{/}\NormalTok{TAU0)}
+\end{Highlighting}
+\end{Shaded}
+
+is
+
+\[
+Q'=Q\exp\left(\frac{\Delta t}{\tau_0}\right),
+\]
+
+which maintains the clock encoding
+
+\[
+Q=e^{t/\tau_0}
+\]
+
+without an additive time update.
+
+For circular orbits the phase increment of one macro step is
+
+\[
+\Delta\phi=h,
+\]
+
+so the update of \(H=e^{i\phi}\) is
+
+\[
+H'=He^{ih}.
+\]
+
+In the code the two real components \texttt{HR,HI} are updated as a
+rotation matrix.
+
+One macro step applies the sole \texttt{transition} exactly 11 times, as
+in the following actual code.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AttributeTok{@njit}\NormalTok{(cache}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\KeywordTok{def}\NormalTok{ macrostep(z):}
+    \CommentTok{\# exactly 11 applications of the sole transition, no alternate formula}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{11}\NormalTok{): z}\OperatorTok{=}\NormalTok{transition(z)}
+    \ControlFlowTok{return}\NormalTok{ z}
+\end{Highlighting}
+\end{Shaded}
+
+The macrostep itself is therefore not a separate physical update rule,
+but only the repetition that runs through the 11 phases once.
+
+\subsection{\texorpdfstring{6.7 The conserved relational quantities
+\(N,C,D\)}{6.7 The conserved relational quantities N,C,D}}\label{the-conserved-relational-quantities-ncd}
+
+\texttt{cand} is first filled, for every non-\(q\) register, with the
+identity candidate of the OLD state.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{30}\NormalTok{):}
+    \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{11}\NormalTok{):}
+\NormalTok{        cand[i,j]}\OperatorTok{=}\NormalTok{z[i]}
+\end{Highlighting}
+\end{Shaded}
+
+Into the rows of \(N,C,D\), no other candidate is written afterwards in
+any phase. Therefore, even through the one-hot sum of products,
+
+\[
+\boxed{
+N'=N,
+\qquad
+C'=C,
+\qquad
+D'=D.
+}
+\]
+
+This is not a copying of Python external constants at each step.
+\(N,C,D\) are also contained in the full state, and propagate as
+identities as the result of passing through the same candidate rows and
+the same one-hot selection as the other registers.
+
+\subsection{6.8 Correspondence between the readout code and the
+formulas}\label{correspondence-between-the-readout-code-and-the-formulas}
+
+The actual code of the readout for observation is the following.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ readout(z):}
+\NormalTok{    t}\OperatorTok{=}\NormalTok{TAU0}\OperatorTok{*}\NormalTok{math.log(z[Q])}
+    \ControlFlowTok{return}\NormalTok{ t,z[P]}\OperatorTok{*}\NormalTok{z[HR],z[P]}\OperatorTok{*}\NormalTok{z[HI]}
+\end{Highlighting}
+\end{Shaded}
+
+The first component is the inverse map
+
+\[
+\boxed{
+t=\tau_0\ln Q}
+\]
+
+of
+
+\[
+Q=e^{t/\tau_0}.
+\]
+
+Since the present experiment is a quasi-circular orbit with
+
+\[
+E=0,
+\]
+
+the radius is
+
+\[
+r=P.
+\]
+
+Since \(H=e^{i\phi}=H_R+iH_I\),
+
+\[
+PH
+=
+P(\cos\phi+i\sin\phi)
+=
+x+iy,
+\]
+
+so that
+
+\[
+\boxed{
+x=P H_R,
+\qquad
+y=P H_I}.
+\]
+
+The return value of \texttt{readout(z)} is therefore exactly
+
+\[
+(t,x,y).
+\]
+
+This function is not part of the state update rule. In the generation
+loop it is called only when writing the log for storing the states, and
+its return value is not passed to \texttt{transition(z)}.
+
+Since the terminal \(P=20\) generally does not coincide with a macrostep
+grid point, only after the generation ends is a linear interpolation
+made from the two adjacent points,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t1,\_,\_}\OperatorTok{=}\NormalTok{readout(z)}\OperatorTok{;}\NormalTok{ p1}\OperatorTok{=}\NormalTok{z[P]}
+\NormalTok{t0,\_,\_}\OperatorTok{=}\NormalTok{readout(prev)}\OperatorTok{;}\NormalTok{ p0}\OperatorTok{=}\NormalTok{prev[P]}
+\NormalTok{frac}\OperatorTok{=}\NormalTok{(p0}\OperatorTok{{-}}\FloatTok{20.0}\NormalTok{)}\OperatorTok{/}\NormalTok{(p0}\OperatorTok{{-}}\NormalTok{p1)}
+\NormalTok{tcross}\OperatorTok{=}\NormalTok{t0}\OperatorTok{+}\NormalTok{frac}\OperatorTok{*}\NormalTok{(t1}\OperatorTok{{-}}\NormalTok{t0)}
+\NormalTok{phicross}\OperatorTok{=}\NormalTok{(nstep}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{+}\NormalTok{frac)}\OperatorTok{*}\NormalTok{HSTEP}
+\end{Highlighting}
+\end{Shaded}
+
+which corresponds to
+
+\[
+f
+=
+\frac{P_0-20}{P_0-P_1},
+\]
+
+\[
+t_{20}=t_0+f(t_1-t_0),
+\]
+
+\[
+\phi_{20}=(n-1+f)h.
+\]
+
+The \(t_{20},\phi_{20}\) obtained here are also readouts for comparison,
+and are not fed back into the orbit already generated.
+
+\subsection{6.9 Qualification concerning ``fully
+multiplicative''}\label{qualification-concerning-fully-multiplicative}
+
+The strict single map of this implementation means
+
+\begin{itemize}
+\tightlist
+\item
+  no external physical argument,
+\item
+  a sole \texttt{transition(z)},
+\item
+  OLD-state-only,
+\item
+  explicit work states,
+\item
+  one-hot sum of products,
+\item
+  non-feedback readout.
+\end{itemize}
+
+On the other hand, it is not claimed that square roots, reciprocals and
+exponential functions have been removed from the primitive operations.
+They remain as ``interaction functions computed uniquely from the
+present state''. This paper is therefore not a proof that every
+operation has been reduced to multiplication alone.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{7. Experimental design}\label{experimental-design}
+
+\subsection{7.1 The reference case}\label{the-reference-case}
+
+The reference case is
+
+\[
+\lambda_A=+0.30,
+\qquad
+\lambda_B=-0.30,
+\]
+
+\[
+N=0.25,
+\qquad
+C=1.09,
+\qquad
+D=0.36,
+\qquad
+P_0=50.
+\]
+
+The initial state is
+
+\[
+U_0=1,
+\qquad
+H_0=1,
+\qquad
+Q_0=1,
+\qquad
+E_0=0.
+\]
+
+The generator continues the state update until \(P\le20\) is reached.
+
+\subsection{7.2 The five-condition transferability
+test}\label{the-five-condition-transferability-test}
+
+From the series of integer multiples of the reference value \(0.30\),
+the five cases satisfying \(C>0\) in the present quasi-circular
+reference are chosen.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1364}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1818}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1818}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1818}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1818}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1364}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+case
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(\lambda_A\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(\lambda_B\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(C\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(D\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Physical feature
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+n1 attractive & +0.30 & -0.30 & 1.09 & 0.36 & Coulomb attraction + EM
+dipole \\
+n1 repulsive & +0.30 & +0.30 & 0.91 & 0 & Coulomb repulsion, no leading
+dipole \\
+n3 attractive & +0.90 & -0.90 & 1.81 & 3.24 & Strong Coulomb attraction
++ strong dipole \\
+n3 repulsive & +0.90 & +0.90 & 0.19 & 0 & Strong Coulomb repulsion, no
+leading dipole \\
+n4 attractive & +1.20 & -1.20 & 2.44 & 5.76 & Strongest attractive side
++ dipole \\
+\end{longtable}
+}
+
+For \(\lambda_A=\lambda_B=1.20\),
+
+\[
+C=1-1.44=-0.44,
+\]
+
+which is outside the domain of the present real quasi-circular analytic
+reference, so it is not included in the five cases. Corrections such as
+taking \(|C|\) would be a different physical model, and are not made.
+
+What is changed in the five cases is only the \(C,D\) of the initial
+state; \texttt{transition(z)}, \texttt{macrostep(z)}, the 11-phase
+machine, the eight persistent states and the numerical resolution are
+not changed.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{8. Results}\label{results}
+
+\subsection{8.1 First, ``how the orbit changes with the
+condition''}\label{first-how-the-orbit-changes-with-the-condition}
+
+The most important visualization in Paper 6 is the orbit itself under
+each condition.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 1: Independent analytic reference orbits for the five conditions}]{figs/figure01_five_case_reference_orbits_same_scale.png}}
+\caption{Figure 1: Independent analytic reference orbits for the five
+conditions}
+\end{figure}
+
+\textbf{Figure 1.} The independent analytic reference orbits for the
+five conditions. The display range of \(x,y\) is fixed to the same in
+all panels. Each condition is drawn for \(r=50\rightarrow20\). For
+opposite signs, the larger \(C,D\) the faster the inspiral; for
+equal-sign equal ratios \(D=0\), so the leading EM dipole vanishes, and
+in particular the n3 repulsive case with \(C=0.19\) requires a very
+large number of orbits.
+
+For the same five conditions, the overlays with the stored strict
+eight-state generator are placed side by side.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 2: Overlay of the analytic reference and the strict eight-state generator for the five conditions}]{figs/figure02_five_case_strict_generator_overlay_panels.png}}
+\caption{Figure 2: Overlay of the analytic reference and the strict
+eight-state generator for the five conditions}
+\end{figure}
+
+\textbf{Figure 2.} Orbit overlays of the analytic reference and the
+strict 8-state generator for all five conditions. The source figure of
+each panel is integrated as it is from the stored individual
+experiments; the orbit data themselves are not altered.
+
+Comparing the radius and the accumulated number of orbits directly, the
+difference in density of the orbit figures can be read quantitatively.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 3: Radius and accumulated number of orbits}]{figs/figure03_five_case_radius_vs_cycles.png}}
+\caption{Figure 3: Radius and accumulated number of orbits}
+\end{figure}
+
+\textbf{Figure 3.} Radius and accumulated number of orbits for
+\(r=50\rightarrow20\). The speed of the orbital decay changes by several
+orders of magnitude over the five conditions.
+
+Comparing only the first 10 orbits at the same spatial scale makes the
+difference in the decay speed at the initial stage easy to read.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 4: The first 10 orbits for the five conditions}]{figs/figure04_five_case_first_10_orbits_same_scale.png}}
+\caption{Figure 4: The first 10 orbits for the five conditions}
+\end{figure}
+
+\textbf{Figure 4.} Comparison of the orbits over the first 10 orbits.
+The display range is fixed, showing the difference of the initial
+inspiral between the conditions.
+
+The total number of orbits and the final time of the analytic reference
+are as follows.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1111}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+case
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(C\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(D\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(A_{\rm EM}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(B_{\rm GW}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+cycles \(50\to20\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(t_f\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+n1 attractive & 1.09 & 0.36 & 0.1308 & 3.80192 & 122.086006 &
+169032.317607 \\
+n1 repulsive & 0.91 & 0 & 0 & 2.64992 & 364.132605 & 574545.646661 \\
+n3 attractive & 1.81 & 3.24 & 1.9548 & 10.48352 & 16.671907 &
+17450.031850 \\
+n3 repulsive & 0.19 & 0 & 0 & 0.11552 & 3816.728393 & 13179536.011080 \\
+n4 attractive & 2.44 & 5.76 & 4.6848 & 19.05152 & 8.348877 &
+7507.620157 \\
+\end{longtable}
+}
+
+What this table shows is not the mere monotone relation ``stronger
+charge, faster''. The direction of \(C\) changes with the sign, and for
+equal-sign equal ratios \(D=0\), so that both the conservative force and
+the dissipation change at the same time.
+
+\subsection{8.2 Strict eight-state generation of the reference
+case}\label{strict-eight-state-generation-of-the-reference-case}
+
+The strict generation of the reference case reached \(P=20\) with
+
+\begin{itemize}
+\tightlist
+\item
+  macro steps: 488,345
+\item
+  microsteps: 5,371,795
+\end{itemize}
+
+The readouts of the generator are
+
+\[
+t_{\rm gen}=169032.317607049,
+\]
+
+\[
+\phi_{\rm gen}=767.088999401507.
+\]
+
+The independent analytic reference is
+
+\[
+t_{\rm ref}=169032.31760706357,
+\]
+
+\[
+\phi_{\rm ref}=767.0889994015913.
+\]
+
+Therefore
+
+\[
+\boxed{
+|\Delta t|=1.463923\times10^{-8}
+}
+\]
+
+\[
+\boxed{
+|\Delta\phi|=8.435563\times10^{-11}
+}
+\]
+
+In the comparison at identical physical times over the whole stored
+range,
+
+\[
+\max|\Delta r|=9.116260\times10^{-9},
+\]
+
+\[
+\operatorname{RMS}(|\Delta r|)=3.771324\times10^{-9},
+\]
+
+\[
+\max\|\Delta(x,y)\|=3.763773\times10^{-6},
+\]
+
+\[
+\operatorname{RMS}(\|\Delta(x,y)\|)=2.130252\times10^{-6}.
+\]
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 5: Radius-time comparison for the reference case}]{figs/figure05_baseline_radius_vs_time.png}}
+\caption{Figure 5: Radius-time comparison for the reference case}
+\end{figure}
+
+\textbf{Figure 5.} Radius--time comparison for the reference case. The
+independent analytic reference is used only for the comparison after the
+state generation.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 6: Residuals for the reference case}]{figs/figure06_baseline_reference_residuals.png}}
+\caption{Figure 6: Residuals for the reference case}
+\end{figure}
+
+\textbf{Figure 6.} Residuals against the independent analytic reference
+in the reference case.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 7: Identity holding of N, C, D}]{figs/figure07_identity_states_NCD.png}}
+\caption{Figure 7: Identity holding of N, C, D}
+\end{figure}
+
+\textbf{Figure 7.} Holding of \(N,C,D\) in the reference case. The
+maximum drift over the whole run was 0.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 8: The first macrostep of the 11-phase machine/work states}]{figs/figure08_microphase_work_states.png}}
+\caption{Figure 8: The first macrostep of the 11-phase machine/work
+states}
+\end{figure}
+
+\textbf{Figure 8.} Evolution of the explicit work states in the first
+macrostep. The RK4 stage values are not reused directly within the same
+microstep; they are referred to for the first time as OLD state in the
+next microstep.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 9: EM dipole / GW quadrupole power ratio in the reference case}]{figs/figure09_em_to_gw_power_ratio.png}}
+\caption{Figure 9: EM dipole / GW quadrupole power ratio in the
+reference case}
+\end{figure}
+
+\textbf{Figure 9.} \(P_{\rm EM}/P_{\rm GW}\) in the reference case. This
+figure is a diagnostic on the side of the independent analytic reference
+and is not fed back into the update of the state generator.
+
+\subsection{8.3 All five conditions generated by the same strict
+map}\label{all-five-conditions-generated-by-the-same-strict-map}
+
+For the five conditions of Figure 2, the numerical summary is as
+follows.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1905}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1905}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1905}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+case
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+macro steps
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(|\Delta\phi|\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(|\Delta t|\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+time readout
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\Delta N,\Delta C,\Delta D\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+n1 attractive & 488,345 & \(8.436\times10^{-11}\) &
+\(1.464\times10^{-8}\) & finite & 0, 0, 0 \\
+n1 repulsive & 1,456,531 & \(1.305\times10^{-9}\) &
+\(3.203\times10^{-7}\) & finite & 0, 0, 0 \\
+n3 attractive & 66,688 & \(4.229\times10^{-9}\) & \(8.739\times10^{-7}\)
+& finite & 0, 0, 0 \\
+n3 repulsive & 15,266,914 & \(3.653\times10^{-9}\) & N/A & nonfinite
+after step 6,316,005 & 0, 0, 0 \\
+n4 attractive & 33,396 & \(8.323\times10^{-9}\) & \(1.545\times10^{-6}\)
+& finite & 0, 0, 0 \\
+\end{longtable}
+}
+
+What matters is that no separate generating formula was used for the
+five cases. In all cases,
+
+\[
+\boxed{
+\text{same }transition(z)
++
+\text{same 11-phase machine}
++
+\text{same }Z_8
+}
+\]
+
+were used, and the difference of the physical condition was given only
+by the initial \(C,D\) of the state.
+
+\subsection{8.4 The time-readout limit of n3
+repulsive}\label{the-time-readout-limit-of-n3-repulsive}
+
+\texttt{n3\_repulsive} has
+
+\[
+C=0.19,
+\qquad
+D=0,
+\]
+
+and is the slowest case, requiring about 3816.7 orbits.
+
+The orbital states \(P,H\) could be generated to the end, and the phase
+residual is finite. On the other hand, the clock encoding by
+
+\[
+Q=e^{t/\tau_0}
+\]
+
+exceeded the finite-precision range because of the long duration, and
+became nonfinite after step 6,316,005.
+
+In this paper this case is not deleted, and no clipping of \(Q\),
+renormalization, or switch to another clock is made. This is recorded as
+
+\begin{center}
+\fbox{\parbox{0.90\linewidth}{\centering not a failure of the orbit generation, but a finite-precision limit of the present exponential clock readout$.$}}
+\end{center}
+
+However, since the time cannot be read out to the end, no agreement of a
+finite value of \(\Delta t\) is claimed for this case.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{9. Discussion}\label{discussion}
+
+\subsection{9.1 Not the individual charges but relational quantities
+remained in the
+state}\label{not-the-individual-charges-but-relational-quantities-remained-in-the-state}
+
+In the present restricted model, what \texttt{transition(z)} directly
+needs is not
+
+\[
+\lambda_A,
+\lambda_B
+\]
+
+themselves, but
+
+\[
+C=1-\lambda_A\lambda_B,
+\qquad
+D=(\lambda_A-\lambda_B)^2.
+\]
+
+This shows that the state can be expressed by the \textbf{relational
+quantities} that actually appear in the interaction formulas, rather
+than by labelled parameters attached to individual bodies. This is,
+however, a representational fact in the present quasi-circular LO model;
+it does not prove that \(C,D\) alone are fundamental in general charged
+binaries too.
+
+\subsection{9.2 Attraction/repulsion was not made an external
+branch}\label{attractionrepulsion-was-not-made-an-external-branch}
+
+\texttt{transition(z)} contains
+
+\begin{itemize}
+\tightlist
+\item
+  no attractive / repulsive if-branch,
+\item
+  no identity of bodies A/B,
+\item
+  no gravity / Coulomb force-type branch.
+\end{itemize}
+
+The difference of the state values, \(C>1,D>0\) for opposite signs and
+\(C<1,D=0\) for equal-sign equal ratios, unfolds as it is into different
+orbits.
+
+What was confirmed in this experiment is therefore
+
+\begin{center}
+\fbox{\parbox{0.90\linewidth}{\centering that different physical conditions can be handled not by switching algorithms but as differences of state values$.$}}
+\end{center}
+
+\subsection{9.3 Two kinds of dissipation enter one
+rate}\label{two-kinds-of-dissipation-enter-one-rate}
+
+The radius evolution is
+
+\[
+\frac{dr}{dt}
+=-\frac{A}{r^2}-\frac{B}{r^3},
+\]
+
+and the EM dipole and the GW quadrupole have different distance
+dependences. Nevertheless, converted into phase derivatives,
+
+\[
+\frac{dP}{d\phi}
+=
+-\frac{4}{3}ND\frac{\sqrt C}{\sqrt P}
+-\frac{64}{5}NC\frac{\sqrt C}{P\sqrt P},
+\]
+
+they enter the same rate function, and \texttt{transition(z)} itself
+need not be switched.
+
+In this sense this paper gives \textbf{an example in which several known
+interaction and dissipation terms can be internalized into one closed
+state-update form}.
+
+\subsection{9.4 This is not ``a unification of gravity and
+electromagnetism''}\label{this-is-not-a-unification-of-gravity-and-electromagnetism}
+
+That two kinds of contribution could be handled by the same state map,
+and that they are the same fundamental interaction in nature, are
+separate matters.
+
+In this paper the known gravitational and electromagnetic terms are
+given in advance as the analytic reference, and their coefficients and
+the required states are audited. Therefore
+
+\[
+\boxed{
+\text{same representation}
+\not\Rightarrow
+\text{same fundamental interaction}.
+}
+\]
+
+\subsection{9.5 Eight states are not necessarily
+minimal}\label{eight-states-are-not-necessarily-minimal}
+
+Since \(C,D\) are constructed from \(\lambda_A,\lambda_B\), they are not
+independent fundamental degrees of freedom. Also, in the present
+symmetric series \(|\lambda_A|=|\lambda_B|\), so that the admissible
+\((C,D)\) are strongly related.
+
+Therefore it is not claimed that
+
+\[
+\boxed{
+8\text{ is the mathematically minimal number of states}.
+}
+\]
+
+What is confirmed now is only that
+
+\[
+\boxed{
+\text{the present representation can be closed with }Z_8.
+}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{10. Limits and non-claims}\label{limits-and-non-claims}
+
+This paper does not claim the following.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{That the Einstein--Maxwell equations have been derived from
+  eight states.}\\
+  This paper reverse-constructs a known leading-order analytic model.
+\item
+  \textbf{That gravity and electromagnetism have been fundamentally
+  unified.}\\
+  That they can be handled in one state-update form is separate from the
+  ontological identity of the interactions.
+\item
+  \textbf{That eight states are minimal or physically real.}\\
+  \(Z_8\) is the set of persistent logical states that closes the
+  present representation.
+\item
+  \textbf{Universality for general charged binaries.}\\
+  Eccentricity, spin, tidal/finite-size effects, generic mass ratios,
+  higher PN, NLO radiation, strong-field merger and full nonlinear
+  Einstein--Maxwell numerical relativity are not treated.
+\item
+  \textbf{Quasi-circular orbits with \(C\le0\).}\\
+  The present real quasi-circular reference requires \(C>0\).
+\item
+  \textbf{That all electromagnetic radiation vanishes when the leading
+  dipole vanishes.}\\
+  What \(D=0\) removes is the leading electric-dipole term adopted in
+  this paper.
+\item
+  \textbf{That every internal operation has been reduced to
+  multiplication alone.}\\
+  Square roots, reciprocals, exponential functions and so on remain as
+  current-state interaction functions.
+\item
+  \textbf{That the 11 phases are a fundamental structure of nature.}\\
+  The 11 phases are the machine schedule that expands the present RK4
+  processing into OLD-state-only form.
+\end{enumerate}
+
+Also, the nonfinite \(Q\) of \texttt{n3\_repulsive} is left as it is, as
+a numerical limit of the present readout encoding.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{11. Reproducibility}\label{reproducibility}
+
+(The folder names in the repository are in Japanese; they are
+transliterated here.)
+
+\subsection{11.1 Analytic reference}\label{analytic-reference}
+
+The analytic formulas, the initial conditions, the independent solver,
+the validation and the raw CSV files are stored in
+
+\texttt{fifth\_\allowbreak{}thought\_\allowbreak{}experiment\_\allowbreak{}multiplicative\_\allowbreak{}state\_\allowbreak{}expansion\_\allowbreak{}and\_\allowbreak{}order\_\allowbreak{}verification\_\allowbreak{}20260924/\allowbreak{}07\_\allowbreak{}charged\_\allowbreak{}binary\_\allowbreak{}analytic\_\allowbreak{}reference\_\allowbreak{}20260925/\allowbreak{}}
+
+Main code:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{solve\_charged\_binary\_analytic\_reference\_v1.py}
+\item
+  \texttt{validate\_charged\_binary\_analytic\_reference\_v1.py}
+\item
+  \texttt{plot\_charged\_binary\_analytic\_reference\_v1.py}
+\end{itemize}
+
+The state generator does not read these reference data.
+
+\subsection{11.2 Strict eight-state generator for the reference
+case}\label{strict-eight-state-generator-for-the-reference-case}
+
+Stored in:
+
+\texttt{fifth\_\allowbreak{}thought\_\allowbreak{}experiment\_\allowbreak{}multiplicative\_\allowbreak{}state\_\allowbreak{}expansion\_\allowbreak{}and\_\allowbreak{}order\_\allowbreak{}verification\_\allowbreak{}20260924/\allowbreak{}11\_\allowbreak{}charged8\_\allowbreak{}strict\_\allowbreak{}single\_\allowbreak{}map\_\allowbreak{}experiment\_\allowbreak{}20260925/\allowbreak{}}
+
+Main code:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{01\_\allowbreak{}CODE/\allowbreak{}run\_\allowbreak{}strict\_\allowbreak{}charged8\_\allowbreak{}final.py}
+\item
+  \texttt{01\_\allowbreak{}CODE/\allowbreak{}postprocess\_\allowbreak{}strict\_\allowbreak{}charged8.py}
+\end{itemize}
+
+Audit evidence:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{00\_\allowbreak{}RULES\_\allowbreak{}AND\_\allowbreak{}AUDIT/\allowbreak{}preexec\_\allowbreak{}audit.json}
+\item
+  \texttt{03\_\allowbreak{}ANALYSIS/\allowbreak{}generator\_\allowbreak{}summary.json}
+\item
+  \texttt{03\_\allowbreak{}ANALYSIS/\allowbreak{}reference\_\allowbreak{}comparison.json}
+\end{itemize}
+
+\subsection{11.3 Five-case transfer
+experiment}\label{five-case-transfer-experiment}
+
+Stored in:
+
+\texttt{fifth\_\allowbreak{}thought\_\allowbreak{}experiment\_\allowbreak{}multiplicative\_\allowbreak{}state\_\allowbreak{}expansion\_\allowbreak{}and\_\allowbreak{}order\_\allowbreak{}verification\_\allowbreak{}20260924/\allowbreak{}13\_\allowbreak{}charged8\_\allowbreak{}integer\_\allowbreak{}multiple\_\allowbreak{}5case\_\allowbreak{}strict\_\allowbreak{}numeric\_\allowbreak{}20260925/\allowbreak{}}
+
+Main code:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{00\_\allowbreak{}CODE\_\allowbreak{}AND\_\allowbreak{}RULES/\allowbreak{}run\_\allowbreak{}strict\_\allowbreak{}charged8\_\allowbreak{}5cases.py}
+\item
+  \texttt{00\_\allowbreak{}CODE\_\allowbreak{}AND\_\allowbreak{}RULES/\allowbreak{}run\_\allowbreak{}n3\_\allowbreak{}repulsive\_\allowbreak{}checkpointed.py}
+\item
+  \texttt{00\_\allowbreak{}CODE\_\allowbreak{}AND\_\allowbreak{}RULES/\allowbreak{}postprocess\_\allowbreak{}strict\_\allowbreak{}charged8\_\allowbreak{}5cases.py}
+\item
+  \texttt{00\_\allowbreak{}CODE\_\allowbreak{}AND\_\allowbreak{}RULES/\allowbreak{}CASE\_\allowbreak{}MATRIX.json}
+\end{itemize}
+
+All macrostep rows are stored in HDF5 part files. \texttt{n3\_repulsive}
+was run in parts because of the run-time limit, but what was carried
+over between parts was only the complete 41-component full state; no
+switch to another generating formula was made.
+
+\subsection{11.4 Orbit comparison figures for Paper
+6}\label{orbit-comparison-figures-for-paper-6}
+
+Stored in:
+
+\texttt{sixth\_\allowbreak{}thought\_\allowbreak{}experiment\_\allowbreak{}charged8\_\allowbreak{}gravity\_\allowbreak{}coulomb\_\allowbreak{}multiple\_\allowbreak{}interactions\_\allowbreak{}20260926/\allowbreak{}01\_\allowbreak{}orbit\_\allowbreak{}condition\_\allowbreak{}comparison\_\allowbreak{}figures/\allowbreak{}}
+
+Reproduction code:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{generate\_paper6\_orbit\_condition\_comparison\_v1.py}
+\end{itemize}
+
+Products:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{figures/\allowbreak{}figure01\_\allowbreak{}five\_\allowbreak{}case\_\allowbreak{}reference\_\allowbreak{}orbits\_\allowbreak{}same\_\allowbreak{}scale.svg}
+\item
+  \texttt{figures/\allowbreak{}figure02\_\allowbreak{}five\_\allowbreak{}case\_\allowbreak{}strict\_\allowbreak{}generator\_\allowbreak{}overlay\_\allowbreak{}panels.svg}
+\item
+  \texttt{figures/\allowbreak{}figure03\_\allowbreak{}five\_\allowbreak{}case\_\allowbreak{}radius\_\allowbreak{}vs\_\allowbreak{}cycles.svg}
+\item
+  \texttt{figures/\allowbreak{}figure04\_\allowbreak{}five\_\allowbreak{}case\_\allowbreak{}first\_\allowbreak{}10\_\allowbreak{}orbits\_\allowbreak{}same\_\allowbreak{}scale.svg}
+\item
+  \texttt{figures/\allowbreak{}paper6\_\allowbreak{}orbit\_\allowbreak{}condition\_\allowbreak{}case\_\allowbreak{}summary.csv}
+\end{itemize}
+
+The source figures of the strict overlays of the five cases are stored
+in \texttt{strict\_\allowbreak{}sources/\allowbreak{}}; the orbit data were not changed when
+integrating them.
+
+\subsection{11.5 Auxiliary figures for the main
+text}\label{auxiliary-figures-for-the-main-text}
+
+Stored in:
+
+\texttt{sixth\_\allowbreak{}thought\_\allowbreak{}experiment\_\allowbreak{}charged8\_\allowbreak{}gravity\_\allowbreak{}coulomb\_\allowbreak{}multiple\_\allowbreak{}interactions\_\allowbreak{}20260926/\allowbreak{}02\_\allowbreak{}paper\_\allowbreak{}main\_\allowbreak{}figures/\allowbreak{}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{figure05\_baseline\_radius\_vs\_time.svg}
+\item
+  \texttt{figure06\_baseline\_reference\_residuals.svg}
+\item
+  \texttt{figure07\_identity\_states\_NCD.svg}
+\item
+  \texttt{figure08\_microphase\_work\_states.svg}
+\item
+  \texttt{figure09\_em\_to\_gw\_power\_ratio.svg}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{12. Conclusion}\label{conclusion}
+
+In the fifth thought experiment {[}5{]}, the gravitational-orbit
+generator was self-audited, and it was confirmed that, in the present
+representation, not the apparent two states but six persistent logical
+states and explicit machine/work states are needed.
+
+In the sixth thought experiment, those audit rules were extended from
+the gravity-only system to the charged binary with gravity + Coulomb.
+
+Organizing the independent analytic reference, the charge dependence in
+the present leading-order quasi-circular model was collected into
+
+\[
+C=1-\lambda_A\lambda_B
+\]
+
+and
+
+\[
+D=(\lambda_A-\lambda_B)^2.
+\]
+
+Adding these to the six states of the fifth thought experiment,
+
+\[
+\boxed{
+Z_8=(U,P,E,H,Q,N,C,D),
+}
+\]
+
+the charged quasi-circular inspiral could be generated without bringing
+the external \(\lambda_A,\lambda_B\), an attraction/repulsion branch, or
+a force-type branch into \texttt{transition(z)}.
+
+In the reference case, the differences from the analytic reference were
+
+\[
+|\Delta t|\simeq1.46\times10^{-8},
+\qquad
+|\Delta\phi|\simeq8.44\times10^{-11},
+\]
+
+with
+
+\[
+\Delta N=\Delta C=\Delta D=0.
+\]
+
+Furthermore, with the same \texttt{transition(z)}, the same 11-phase
+machine and the same eight persistent states, it could be transferred to
+five kinds of charge condition. The difference of the conditions
+unfolded into differences of orbit not as an external branch of the same
+algorithm but as the values of \(C,D\) in the initial state.
+
+The result obtained in this paper is therefore
+
+\[
+\boxed{
+\begin{array}{c}
+\text{for the restricted known gravity + Coulomb quasi-circular binary,}\\
+\text{the conservative force and the two kinds of radiation reaction}\\
+\text{can be internalized and reconstructed into a single synchronous state map}\\
+\text{with no external physical parameters.}
+\end{array}
+}
+\]
+
+This is not ``the completion of a unified theory''. It is rather the
+next fixed point of this research series, which \textbf{audits, one step
+at a time, what information must be placed inside the state for the
+system to close when known physics is reverse-constructed}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Appendix A. Audit items of the strict single
+map}\label{appendix-a.-audit-items-of-the-strict-single-map}
+
+In the pre-execution audit, the following were confirmed.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Item
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Content
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Result
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+A1 & The only argument of \texttt{transition} is \texttt{z}; the
+persistent states are \(U,P,E,H,Q,N,C,D\) & pass \\
+A2 & The sole generator is \texttt{transition}; no
+fast/collapsed/shortcut path & pass \\
+A3 & The non-\(q\) next state is the one-hot sum of products of 11
+candidates; \(q\) is a fixed cyclic linear map & pass \\
+A4 & Every candidate uses the OLD full state only; the work registers
+are explicit & pass \\
+A5 & The readout is at output only and is not fed back into the dynamics
+& pass \\
+A6 & No A/B identity, no force-type branch & pass \\
+A7 & The physical case values \(N,C,D\) are states; the others are
+resolution, encoding and RK coefficients & pass \\
+A8 & The old failed experiments are stored; no reference import, no
+other generator & pass \\
+\end{longtable}
+}
+
+The failed experiments of the old \texttt{09\_...} and \texttt{10\_...}
+are stored without deletion or overwriting.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Appendix B. List of figures}\label{appendix-b.-list-of-figures}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Figure 1}
+  \texttt{01\_\allowbreak{}orbit\_\allowbreak{}condition\_\allowbreak{}comparison\_\allowbreak{}figures/\allowbreak{}figures/\allowbreak{}figure01\_\allowbreak{}five\_\allowbreak{}case\_\allowbreak{}reference\_\allowbreak{}orbits\_\allowbreak{}same\_\allowbreak{}scale.svg}\\
+  Independent analytic reference orbits for the five conditions, same
+  scale.
+\item
+  \textbf{Figure 2}
+  \texttt{01\_\allowbreak{}orbit\_\allowbreak{}condition\_\allowbreak{}comparison\_\allowbreak{}figures/\allowbreak{}figures/\allowbreak{}figure02\_\allowbreak{}five\_\allowbreak{}case\_\allowbreak{}strict\_\allowbreak{}generator\_\allowbreak{}overlay\_\allowbreak{}panels.svg}\\
+  Analytic reference vs strict eight-state generator for the five
+  conditions.
+\item
+  \textbf{Figure 3}
+  \texttt{01\_\allowbreak{}orbit\_\allowbreak{}condition\_\allowbreak{}comparison\_\allowbreak{}figures/\allowbreak{}figures/\allowbreak{}figure03\_\allowbreak{}five\_\allowbreak{}case\_\allowbreak{}radius\_\allowbreak{}vs\_\allowbreak{}cycles.svg}\\
+  Radius vs accumulated number of orbits.
+\item
+  \textbf{Figure 4}
+  \texttt{01\_\allowbreak{}orbit\_\allowbreak{}condition\_\allowbreak{}comparison\_\allowbreak{}figures/\allowbreak{}figures/\allowbreak{}figure04\_\allowbreak{}five\_\allowbreak{}case\_\allowbreak{}first\_\allowbreak{}10\_\allowbreak{}orbits\_\allowbreak{}same\_\allowbreak{}scale.svg}\\
+  Same-scale comparison of the first 10 orbits.
+\item
+  \textbf{Figure 5}
+  \texttt{02\_\allowbreak{}paper\_\allowbreak{}main\_\allowbreak{}figures/\allowbreak{}figure05\_\allowbreak{}baseline\_\allowbreak{}radius\_\allowbreak{}vs\_\allowbreak{}time.svg}\\
+  Radius--time comparison for the reference case.
+\item
+  \textbf{Figure 6}
+  \texttt{02\_\allowbreak{}paper\_\allowbreak{}main\_\allowbreak{}figures/\allowbreak{}figure06\_\allowbreak{}baseline\_\allowbreak{}reference\_\allowbreak{}residuals.svg}\\
+  Residuals against the independent analytic reference for the reference
+  case.
+\item
+  \textbf{Figure 7}
+  \texttt{02\_\allowbreak{}paper\_\allowbreak{}main\_\allowbreak{}figures/\allowbreak{}figure07\_\allowbreak{}identity\_\allowbreak{}states\_\allowbreak{}NCD.svg}\\
+  Identity holding of \(N,C,D\).
+\item
+  \textbf{Figure 8}
+  \texttt{02\_\allowbreak{}paper\_\allowbreak{}main\_\allowbreak{}figures/\allowbreak{}figure08\_\allowbreak{}microphase\_\allowbreak{}work\_\allowbreak{}states.svg}\\
+  11-phase machine/work states.
+\item
+  \textbf{Figure 9}
+  \texttt{02\_\allowbreak{}paper\_\allowbreak{}main\_\allowbreak{}figures/\allowbreak{}figure09\_\allowbreak{}em\_\allowbreak{}to\_\allowbreak{}gw\_\allowbreak{}power\_\allowbreak{}ratio.svg}\\
+  EM/GW power ratio for the reference case.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{References}\label{references}
+
+\subsection{This series}\label{this-series}
+
+{[}0{]} Noriaki Kihara, \textbf{Designing a Research Project to Explore
+the Emergence of Spacetime, Particles, and Interactions from States and
+Relations: A Framework of Preliminary Design and Feasibility
+Verification for Foundational-Physics Model Exploration under
+Uncertainty}, v1.0 (2026-09-20). Concept DOI: 10.5281/zenodo.22851944;
+Version DOI: 10.5281/zenodo.22851945.
+
+{[}1{]} Noriaki Kihara, \textbf{The First Thought Experiment: Tracing
+the Equivalence Principle Down to Two Nameless Degrees of Freedom -
+Deriving the Sign of the Sum of Squares, the Curvature Radius, and Three
+Systems (Inertial, Uniformly Accelerated, Rotating) from the
+Conservation of an Area Readout}, v1.0 (2026-09-20). Concept DOI:
+10.5281/zenodo.22857952; Version DOI: 10.5281/zenodo.22857953.
+
+{[}2{]} Noriaki Kihara, \textbf{The Second Thought Experiment: Deriving
+the Coulomb-Type Inverse-Square Force from a Product Readout and an Area
+Clock - Keeping Two Values and a Linear Law, Obtaining the Focus,
+Attraction and Repulsion and Neutrality, and Fixing What Two Values
+Cannot Write}, v1.2 (2026-09-21). Concept DOI: 10.5281/zenodo.22867336;
+Version DOI: 10.5281/zenodo.22876596.
+
+{[}3{]} Noriaki Kihara, \textbf{The Third Thought Experiment: Reading
+Out the State of Two Bodies a, b from the Orbit of Two Celestial Bodies
+a, b - Obtaining the Mass Ratio, the Relative Distance and the Relative
+Time from Orbit and Gravitational-Wave Readouts, with Two Values of
+Undetermined Meaning and the Knowledge \(G=c=M=1\) Alone}, v1.5
+(2026-09-23). Concept DOI: 10.5281/zenodo.22909660; Version DOI:
+10.5281/zenodo.22909661.
+
+{[}4{]} Noriaki Kihara, \textbf{The Fourth Thought Experiment: From a
+Fixed Action \(S\) to a State-Dependent Action \(S_n\) - Can the
+Relativistic Gravitational Orbits Computed Externally in the Third
+Thought Experiment Be Regenerated from the Sequential Interaction
+\(X_{n+1}=S_nX_n\)?}, v1.0 (2026-09-23). Concept DOI:
+10.5281/zenodo.22919787; Version DOI: 10.5281/zenodo.22919788.
+
+{[}5{]} Noriaki Kihara, \textbf{The Fifth Thought Experiment: Was There
+No Hidden State? - A Self-Audit of the Two-State Orbit Generation of the
+Fourth Thought Experiment, Tracking the State Closure from Five States
+to the Sixth Persistent State \(\mathcal N=\nu\) -}, v2.1 (2026-09-26).
+Concept DOI: 10.5281/zenodo.22973086; Version DOI:
+10.5281/zenodo.22973087.
+
+\subsection{External}\label{external}
+
+{[}6{]} P. C. Peters and J. Mathews, ``Gravitational Radiation from
+Point Masses in a Keplerian Orbit,'' \emph{Physical Review}
+\textbf{131}, 435-440 (1963). DOI: 10.1103/PhysRev.131.435.
+
+{[}7{]} P. C. Peters, ``Gravitational Radiation and the Motion of Two
+Point Masses,'' \emph{Physical Review} \textbf{136}, B1224-B1232 (1964).
+DOI: 10.1103/PhysRev.136.B1224.
+
+{[}8{]} L. Liu, O. Christiansen, Z.-K. Guo, R.-G. Cai, and S. P. Kim,
+``Gravitational and electromagnetic radiation from binary black holes
+with electric and magnetic charges: Circular orbits on a cone,''
+\emph{Physical Review D} \textbf{102}, 103520 (2020). DOI:
+10.1103/PhysRevD.102.103520.
+
+{[}9{]} C. A. Benavides-Gallego and W.-B. Han, ``Gravitational Waves and
+Electromagnetic Radiation from Charged Black Hole Binaries,''
+\emph{Symmetry} \textbf{15}, 537 (2023). DOI: 10.3390/sym15020537.
+
+{[}10{]} Z.-H. Zhang, T. Liu, S. Zhang, and Z.-K. Guo, ``Post-Newtonian
+dynamics of charged compact binaries,'' \emph{Physical Review D}
+\textbf{114}, 044088 (2026). DOI: 10.1103/4x8q-2kzm.
+
+{[}11{]} S. Verma et al., ``Post-newtonian dynamics of radiating
+charges: canonical formulation and binary inspiral laws,''
+\emph{European Physical Journal C} \textbf{86}, 830 (2026). DOI:
+10.1140/epjc/s10052-026-16076-2.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Revision history}\label{revision-history}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{v1.1 (2026-09-26):} The actual code of the initialization of
+  the state generator, the local interaction rate, the sole
+  \texttt{transition(z)}, the macrostep, the readout and the terminal
+  interpolation was added to the main text, and the corresponding
+  formulas and information flow were made explicit.
+\item
+  \textbf{v1.0 (2026-09-26):} First version of the sixth thought
+  experiment. The charged LO quasi-circular analytic reference, the
+  strict single map with eight persistent states, the five-condition
+  transferability, the orbit comparison figures, the reproducibility
+  information, and the scope of claims and non-claims were integrated.
+\end{itemize}
+
+\end{document}

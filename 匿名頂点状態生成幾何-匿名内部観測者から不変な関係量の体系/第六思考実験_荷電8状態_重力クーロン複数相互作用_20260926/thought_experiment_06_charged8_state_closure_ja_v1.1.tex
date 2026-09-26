@@ -1,0 +1,2610 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={第六思考実験：二種類の長距離相互作用を一つの閉じた状態写像へ内部化できるか ― 荷電準円二体系の重力・Coulomb・GW四重極・EM双極放射を8永続状態で再構成し、5条件で同一 transition の移植可能性を検証する ―},
+  pdfauthor={Noriaki Kihara (ORCID 0009-0004-6753-4020)},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{第六思考実験：二種類の長距離相互作用を一つの閉じた状態写像へ内部化できるか
+―
+荷電準円二体系の重力・Coulomb・GW四重極・EM双極放射を8永続状態で再構成し、5条件で同一
+transition の移植可能性を検証する ―}
+\author{Noriaki Kihara (ORCID 0009-0004-6753-4020)}
+\date{2026-09-26 / v1.1 / Version DOI 10.5281/zenodo.22974632}
+
+\sloppy
+\emergencystretch=3em
+\begin{document}
+\maketitle
+
+\textbf{著者:} 木原範昭 (Noriaki Kihara)\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Version DOI:} 10.5281/zenodo.22974632\\
+\textbf{Concept DOI:} 10.5281/zenodo.22974631\\
+\textbf{版:} v1.1\\
+\textbf{日付:} 2026-09-26
+
+\textbf{キーワード:} 荷電二体系、状態閉包、同期状態写像、Coulomb
+相互作用、重力波放射、電磁双極放射、放射反作用、永続論理状態、離散力学、再現可能性
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{要旨}\label{ux8981ux65e8}
+
+第五思考実験 {[}5{]} では、第四思考実験 {[}4{]}
+で二状態として表示されていた重力軌道生成器を情報流の観点から自己監査し、現在の表現では、マクロ
+step を越えて保持される情報を
+
+\[
+Z_6=(U,P,E,H,Q,N)
+\]
+
+として明示する必要があることを確認した。さらに、RK4 の途中量と処理位相を
+machine/work state として状態内部へ置き、OLD-state-only
+の同期更新、外部物理パラメータ禁止、読み出し非帰還、一つの
+\texttt{transition(z)} のみを生成経路とする形へ再構成した。
+
+本稿では、その監査規則を初めて、\textbf{一種類の相互作用から二種類の相互作用へ拡張した系}に適用する。対象は、\(G=M=c=1\)、非回転点粒子、準円軌道、leading-order
+adiabatic inspiral に限定した荷電二体系である。保存運動は Newtonian
+重力と Coulomb 相互作用、散逸は leading gravitational quadrupole
+radiation と leading electric-dipole radiation
+を用いる。独立な解析基準側では、荷電依存性は
+
+\[
+C=1-\lambda_A\lambda_B,
+\qquad
+D=(\lambda_A-\lambda_B)^2
+\]
+
+の二つの関係量へ整理できる。ここで
+\(\lambda_A=q_A/m_A\)、\(\lambda_B=q_B/m_B\) である。\(C\)
+は保存力と軌道角速度に入り、\(D\) は leading electric-dipole radiation
+の有無と強さを決める。
+
+第五思考実験の六永続状態へ \(C,D\) を追加し、
+
+\[
+\boxed{
+Z_8=(U,P,E,H,Q,N,C,D)
+}
+\]
+
+とした。実装では、これら8永続論理状態に RK4 work register と11相 one-hot
+位相を加えた41実数成分の full microstate
+を用いる。\texttt{transition(z)} は外部物理引数を受け取らず、全候補値を
+OLD full state のみから作り、one-hot
+積和で次状態を同時生成する。\(N,C,D\)
+は全相で恒等候補として保持されるため、外部コピーではなく同一写像の結果として保存される。
+
+基準ケース
+
+\[
+\lambda_A=+0.30,
+\qquad
+\lambda_B=-0.30,
+\]
+
+すなわち
+
+\[
+C=1.09,
+\qquad
+D=0.36,
+\qquad
+N=\nu=0.25
+\]
+
+について、\(r=50\rightarrow20\) の厳格8状態生成は 488,345 macro steps
+で完了した。解析基準との差は
+
+\[
+|\Delta t|=1.46\times10^{-8},
+\qquad
+|\Delta\phi|=8.44\times10^{-11},
+\]
+
+全保存範囲で
+
+\[
+\max|\Delta r|=9.12\times10^{-9},
+\]
+
+であり、
+
+\[
+\Delta N=\Delta C=\Delta D=0
+\]
+
+であった。
+
+さらに、同じ
+\texttt{transition(z)}、同じ11相機械、同じ8永続状態を変更せず、初期状態の
+\(C,D\) だけを変えた5条件
+
+\[
+(+0.30,-0.30),
+(+0.30,+0.30),
+(+0.90,-0.90),
+(+0.90,+0.90),
+(+1.20,-1.20)
+\]
+
+を実行した。5条件すべてで軌道状態生成は完了し、\(N,C,D\) の drift は 0
+であった。特に同符号等比率では \(D=0\) となり、本稿で採用した leading
+electric-dipole 項だけが消える一方、\(C<1\) の Coulomb
+斥力効果は保存運動に残る。\(C=0.19\) の \texttt{n3\_repulsive}
+は約3816.7周を要し、\(P,H\) は最後まで生成できたが、指数時計 \(Q\)
+による時刻読み出しは有限精度範囲を超えた。この事実は修正せず、そのまま定義域・数値表現上の限界として記録する。
+
+本稿が示すのは、限定された leading-order 準円荷電二体系について、重力と
+Coulomb の保存効果、および GW quadrupole と EM dipole
+の散逸効果を、\textbf{外部の荷電物理パラメータや力種別分岐を持たない一つの同期状態写像へ再配置できる}ということである。これは重力と電磁気の基礎的統一、Einstein--Maxwell
+方程式の導出、8状態の最小性、\(C,D\)
+の存在論的基本性、あるいは一般荷電二体系への普遍性を意味しない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{0.
+本稿の位置づけ}\label{ux672cux7a3fux306eux4f4dux7f6eux3065ux3051}
+
+本稿は研究プロジェクト設計 {[}0{]} のもとでの第六思考実験である。
+
+第一思考実験 {[}1{]}
+では、背景時空や計量を先に置かず、意味を固定しない二自由度と面積読み出しの保存から、慣性・一様加速・回転を区別する最小構成を調べた。
+
+第二思考実験 {[}2{]}
+では、二つの値へ固定作用を反復し、積の読み出しと面積時計から Coulomb
+型の逆二乗運動を構成した。
+
+第三思考実験 {[}3{]}
+では方向を逆転し、既知の二体軌道から質量比・相対距離・相対時間を読み出す逆問題を扱った。
+
+第四思考実験 {[}4{]}
+では、第三思考実験で外部計算していた重力軌道を、状態依存作用
+
+\[
+X_{n+1}=S_nX_n
+\]
+
+による内部逐次生成へ戻した。
+
+第五思考実験 {[}5{]}
+では、その第四思考実験を自己監査した。そこで重要になったのは、
+
+\[
+\boxed{
+\text{数値結果が既知軌道と一致しても、明示状態だけで系が閉じているとは限らない}
+}
+\]
+
+という点である。第四思考実験の見かけの二状態 \(X=(a,b)^T\)
+の外側に、マクロ step
+を越えて保持される情報が残っていたため、それらを六永続論理状態
+
+\[
+Z_6=(U,P,E,H,Q,N)
+\]
+
+として明示し、処理途中の RK4 値と11相 one-hot 位相も machine/work state
+として full state 内へ置いた。
+
+第六思考実験では、この監査規則自体は変更しない。新しい問いは、
+
+\[
+\boxed{
+\begin{array}{c}
+\text{相互作用を重力一種類から、重力+Coulomb の二種類へ増やし、}\\
+\text{散逸も GW quadrupole + EM dipole の二チャネルへ増やしたとき、}\\
+\text{それでも外部物理情報なしの一つの同期状態写像として閉じられるか。}
+\end{array}
+}
+\]
+
+である。
+
+したがって、本稿の主題は単に「荷電軌道を計算すること」ではない。既知の荷電二体系を答え合わせ側に置いたうえで、\textbf{何を永続状態として内部に持てば、同じ更新規則のまま複数条件へ移植できるか}を監査することである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{1. 動機}\label{ux52d5ux6a5f}
+
+\subsection{1.1
+一種類の相互作用から二種類へ}\label{ux4e00ux7a2eux985eux306eux76f8ux4e92ux4f5cux7528ux304bux3089ux4e8cux7a2eux985eux3078}
+
+重力だけの二体系では、中心相互作用の種類は一つである。そこへ Coulomb
+相互作用を加えると、保存力側では同じ \(1/r^2\)
+型であっても符号によって引力・斥力が変わる。さらに散逸側には、重力四重極放射とは別の
+leading electric-dipole radiation が現れる {[}6--11{]}。
+
+したがって荷電二体系は、
+
+\[
+\boxed{
+\text{保存相互作用の複数化}
++
+\text{散逸チャネルの複数化}
+}
+\]
+
+を同時に試す最小の次段階になる。
+
+一方、一般の Einstein--Maxwell
+二体問題へ進むと、検証対象が急速に複雑になる。本稿では意図的に、
+
+\begin{itemize}
+\tightlist
+\item
+  非回転点粒子、
+\item
+  準円軌道、
+\item
+  leading-order 保存力学、
+\item
+  leading GW quadrupole radiation、
+\item
+  leading EM electric-dipole radiation、
+\item
+  adiabatic energy balance、
+\item
+  \(G=M=c=1\)
+\end{itemize}
+
+へ限定する。この範囲なら独立解析基準を明示でき、状態生成器との比較方向を
+
+\begin{center}
+\fbox{\parbox{0.90\linewidth}{\centering state generator output$\longrightarrow$independent analytic reference}}
+\end{center}
+
+の一方向に固定できる。
+
+\subsection{1.2 荷電パラメータを外部から毎 step
+与えない}\label{ux8377ux96fbux30d1ux30e9ux30e1ux30fcux30bfux3092ux5916ux90e8ux304bux3089ux6bce-step-ux4e0eux3048ux306aux3044}
+
+荷電二体系を普通に実装すれば、各 step で
+
+\[
+\lambda_A,
+\qquad
+\lambda_B
+\]
+
+を外部パラメータとして参照できる。しかし第五思考実験 {[}5{]}
+の監査規則から見ると、それでは「次状態を決める物理情報」が状態の外に残る。
+
+そこで本稿では、解析式に実際に現れる組合せを先に監査する。すると今回の限定モデルでは、個々の
+\(\lambda_A,\lambda_B\) を直接保持する代わりに、
+
+\[
+\boxed{
+C=1-\lambda_A\lambda_B
+}
+\]
+
+と
+
+\[
+\boxed{
+D=(\lambda_A-\lambda_B)^2
+}
+\]
+
+で十分である。
+
+\(C\) は保存力と軌道周波数へ入り、\(D\) は leading electric-dipole
+radiation へ入る。この二つを状態へ内部化できれば、\texttt{transition(z)}
+は天体 A/B
+の個別ラベルも、引力/斥力の外部分岐も、重力/電磁の力種別分岐も必要としない。
+
+\subsection{1.3
+一条件一致ではなく移植可能性を見る}\label{ux4e00ux6761ux4ef6ux4e00ux81f4ux3067ux306fux306aux304fux79fbux690dux53efux80fdux6027ux3092ux898bux308b}
+
+一条件だけで解析基準と一致しても、そのケース専用の係数化である可能性が残る。そのため本稿では、同一の
+\texttt{transition(z)} を固定したまま、初期状態に入れる \(C,D\)
+だけを変更する。
+
+特に、
+
+\begin{itemize}
+\tightlist
+\item
+  反対符号電荷: \(C>1\), \(D>0\)、
+\item
+  同符号等 charge-to-mass ratio: \(C<1\), \(D=0\)、
+\end{itemize}
+
+を含めることで、保存力の強弱と dipole radiation の有無を同時に変える。
+
+成功条件は、
+
+\begin{center}
+\fbox{\parbox{0.90\linewidth}{\centering 同じ transition が、異なる条件を状態値の違いだけで処理すること}}
+\end{center}
+
+である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{2.
+本稿の問いと主張範囲}\label{ux672cux7a3fux306eux554fux3044ux3068ux4e3bux5f35ux7bc4ux56f2}
+
+本稿で検証する問いを、次の四段階に分ける。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{解析閉包}\\
+  今回の leading-order 荷電準円二体系は、荷電依存性を \(C,D\)
+  へ整理できるか。
+\item
+  \textbf{状態閉包}\\
+  第五思考実験の六永続状態へ \(C,D\) を追加した \[
+  Z_8=(U,P,E,H,Q,N,C,D)
+  \] で、次状態決定に必要な物理ケース値を状態内部へ置けるか。
+\item
+  \textbf{一回写像}\\
+  RK4 の途中量、処理位相、保存関係量を含む full state
+  を、外部物理引数を取らない一つの \texttt{transition(z)}
+  で更新できるか。
+\item
+  \textbf{移植可能性}\\
+  同じ \texttt{transition(z)} を変更せず、異なる5条件へ初期状態の
+  \(C,D\) だけを変えて移植できるか。
+\end{enumerate}
+
+本稿の肯定的結論は、\textbf{この限定モデルとこの実装範囲について}のみ述べる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{3. 独立解析基準}\label{ux72ecux7acbux89e3ux6790ux57faux6e96}
+
+\subsection{3.1 近似と単位}\label{ux8fd1ux4f3cux3068ux5358ux4f4d}
+
+解析基準は、後続の状態生成器とは独立に構成する。採用する条件は、
+
+\[
+G=M=c=1,
+\qquad
+\epsilon_0=\frac{1}{4\pi},
+\]
+
+\[
+M=m_A+m_B=1
+\]
+
+である。
+
+対象は、非回転点粒子、adiabatic quasi-circular inspiral とし、保存力学は
+Newtonian 重力 + Coulomb の leading order、散逸は leading
+mass-quadrupole gravitational radiation と leading electric-dipole
+electromagnetic radiation とする。Peters--Mathews {[}6,7{]}
+は重力四重極放射と軌道縮退の基礎であり、荷電二体系で GW/EM
+の双方を扱う先行研究として Liu et al.~{[}8{]}、Benavides-Gallego and Han
+{[}9{]}、Zhang et al.~{[}10{]}、Verma et al.~{[}11{]} を参照する。
+
+Zhang et al.~{[}10{]} の記号では \(1-\lambda_A\lambda_B\)
+に相当する量を用いるが、本稿では状態ベクトル \(Z_8\)
+との衝突を避けるため、これを \(C\) と書く。
+
+\subsection{3.2
+質量・電荷の無次元量}\label{ux8ceaux91cfux96fbux8377ux306eux7121ux6b21ux5143ux91cf}
+
+charge-to-mass ratio を
+
+\[
+\lambda_A=\frac{q_A}{m_A},
+\qquad
+\lambda_B=\frac{q_B}{m_B}
+\]
+
+とする。
+
+換算質量と対称質量比は
+
+\[
+\mu=\frac{m_A m_B}{M},
+\qquad
+\nu=\frac{m_A m_B}{M^2}
+\]
+
+である。\(M=1\) では
+
+\[
+\mu=\nu.
+\]
+
+本実験は等質量なので、
+
+\[
+\mu=\nu=\frac14.
+\]
+
+\subsection{\texorpdfstring{3.3 保存運動をまとめる関係量
+\(C\)}{3.3 保存運動をまとめる関係量 C}}\label{ux4fddux5b58ux904bux52d5ux3092ux307eux3068ux3081ux308bux95a2ux4fc2ux91cf-c}
+
+重力と Coulomb の leading-order 有効中心相互作用をまとめ、
+
+\[
+\boxed{
+C=1-\lambda_A\lambda_B
+}
+\]
+
+とする。
+
+準円軌道では
+
+\[
+\boxed{
+\omega^2=\frac{C}{r^3}
+}
+\]
+
+であり、束縛エネルギーは
+
+\[
+\boxed{
+E_{\rm orb}=-\frac{\mu C}{2r}
+}
+\]
+
+となる。
+
+\(\lambda_A\lambda_B<0\) なら \(C>1\) で、Coulomb
+は重力と同じ向きの引力として働く。\(\lambda_A\lambda_B>0\) なら \(C<1\)
+で、Coulomb 斥力が実効中心引力を弱める。
+
+本稿の実数準円基準は
+
+\[
+\boxed{C>0}
+\]
+
+を必要とする。したがって \(C\le0\) は、現在の解析基準の定義域外である。
+
+\subsection{3.4 GW quadrupole radiation}\label{gw-quadrupole-radiation}
+
+leading mass-quadrupole power は
+
+\[
+P_{\rm GW}
+=
+\frac{32}{5}\mu^2 r^4\omega^6.
+\]
+
+\(\omega^2=C/r^3\) を代入すると、
+
+\[
+\boxed{
+P_{\rm GW}
+=
+\frac{32}{5}
+\frac{\mu^2C^3}{r^5}
+}
+\]
+
+となる {[}6,7{]}。
+
+\subsection{3.5 EM electric-dipole
+radiation}\label{em-electric-dipole-radiation}
+
+COM 系の electric dipole moment は leading order で
+
+\[
+\mathbf d
+=
+\mu(\lambda_A-\lambda_B)\mathbf r.
+\]
+
+ここで、
+
+\[
+\boxed{
+D=(\lambda_A-\lambda_B)^2
+}
+\]
+
+と置く。
+
+leading dipole power は
+
+\[
+\boxed{
+P_{\rm EM}
+=
+\frac23
+\frac{\mu^2 D C^2}{r^4}
+}
+\]
+
+である {[}8--11{]}。
+
+この式から、
+
+\[
+\lambda_A=\lambda_B
+\quad\Longrightarrow\quad
+D=0
+\]
+
+なら、\textbf{本稿で採用した leading electric-dipole 項}は消える。ただし
+Coulomb 保存力そのものが消えるわけではない。
+
+\subsection{3.6 energy balance
+と半径進化}\label{energy-balance-ux3068ux534aux5f84ux9032ux5316}
+
+放射損失を
+
+\[
+\frac{dE_{\rm orb}}{dt}
+=-(P_{\rm GW}+P_{\rm EM})
+\]
+
+とする。
+
+\[
+\frac{dE_{\rm orb}}{dr}
+=
+\frac{\mu C}{2r^2}
+\]
+
+より、
+
+\[
+\boxed{
+\frac{dr}{dt}
+=-\frac{A}{r^2}-\frac{B}{r^3}
+}
+\]
+
+を得る。ここで、
+
+\[
+\boxed{
+A=\frac43\mu D C
+}
+\]
+
+は EM dipole 側、
+
+\[
+\boxed{
+B=\frac{64}{5}\mu C^2
+}
+\]
+
+は GW quadrupole 側の係数である。
+
+したがって半径進化には、
+
+\[
+\boxed{
+r^{-2}\ \text{と}\ r^{-3}
+}
+\]
+
+という異なる距離依存性を持つ二つの散逸寄与が同時に現れる。
+
+\subsection{\texorpdfstring{3.7 解析的な \(t(r)\) と
+\(\phi(r)\)}{3.7 解析的な t(r) と \textbackslash phi(r)}}\label{ux89e3ux6790ux7684ux306a-tr-ux3068-phir}
+
+\[
+\frac{dt}{dr}
+=-\frac{r^3}{Ar+B}
+\]
+
+なので、\(A\ne0\) では
+
+\[
+F_t(r)
+=
+\frac{r^3}{3A}
+-\frac{Br^2}{2A^2}
++\frac{B^2r}{A^3}
+-\frac{B^3}{A^4}\ln(Ar+B)
+\]
+
+と置けば、
+
+\[
+\boxed{
+t(r)=F_t(r_0)-F_t(r)}.
+\]
+
+また、
+
+\[
+\frac{d\phi}{dt}=\sqrt{\frac{C}{r^3}}
+\]
+
+より、
+
+\[
+\frac{d\phi}{dr}
+=-\frac{\sqrt C\,r^{3/2}}{Ar+B}.
+\]
+
+\(A\ne0\) では、
+
+\[
+F_\phi(r)
+=
+\sqrt C
+\left[
+\frac{2r^{3/2}}{3A}
+-\frac{2B\sqrt r}{A^2}
++\frac{2B^{3/2}}{A^{5/2}}
+\tan^{-1}\sqrt{\frac{Ar}{B}}
+\right]
+\]
+
+として、
+
+\[
+\boxed{
+\phi(r)=F_\phi(r_0)-F_\phi(r)}.
+\]
+
+同符号等比率では \(D=0\)、したがって \(A=0\)
+となる。この場合は極限を直接用い、
+
+\[
+\boxed{
+t(r)=\frac{r_0^4-r^4}{4B}}
+\]
+
+および
+
+\[
+\boxed{
+\phi(r)=\frac{2\sqrt C}{5B}
+\left(r_0^{5/2}-r^{5/2}\right)
+}
+\]
+
+とする。
+
+相対軌道は
+
+\[
+\boxed{
+x=r\cos\phi,
+\qquad
+y=r\sin\phi}
+\]
+
+で読み出す。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{4.
+解析基準ケース}\label{ux89e3ux6790ux57faux6e96ux30b1ux30fcux30b9}
+
+基準条件を
+
+\[
+m_A=m_B=0.5,
+\]
+
+\[
+\lambda_A=+0.30,
+\qquad
+\lambda_B=-0.30
+\]
+
+とする。
+
+このとき、
+
+\[
+C=1.09,
+\qquad
+D=0.36,
+\qquad
+\mu=\nu=0.25.
+\]
+
+\(r=50\rightarrow20\) の独立解析基準は、
+
+\[
+t_f=169032.31760706357,
+\]
+
+\[
+\phi_f=767.0889994015913,
+\]
+
+\[
+N_{\rm cyc}=\frac{\phi_f}{2\pi}
+=122.086006046
+\]
+
+となる。
+
+基準ケースでは、
+
+\[
+\frac{P_{\rm EM}}{P_{\rm GW}}
+=
+\frac{5}{48}\frac{D}{C}r
+\]
+
+なので、
+
+\[
+r_{\rm cross}
+=
+\frac{48C}{5D}
+\simeq29.0667
+\]
+
+で EM dipole と GW quadrupole が同程度になる。外側では EM dipole
+が相対的に強く、内側へ入るほど \(r^{-5}\) の GW quadrupole が追い越す。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{5.
+六状態から八状態への拡張}\label{ux516dux72b6ux614bux304bux3089ux516bux72b6ux614bux3078ux306eux62e1ux5f35}
+
+\subsection{5.1
+第五思考実験の六永続状態}\label{ux7b2cux4e94ux601dux8003ux5b9fux9a13ux306eux516dux6c38ux7d9aux72b6ux614b}
+
+第五思考実験 {[}5{]} では、現在の重力軌道再構成に必要なマクロ永続情報を
+
+\[
+Z_6=(U,P,E,H,Q,N)
+\]
+
+とした。
+
+ここで、
+
+\[
+U=e^{i\chi},
+\qquad
+H=e^{i\phi},
+\qquad
+Q=e^{t/\tau_0},
+\qquad
+N=\nu.
+\]
+
+\(P\) は軌道半径/半直弦に相当する状態、\(E\)
+は離心率状態である。本稿の準円基準では \(E\) の更新率は 0 であり、初期値
+0 のまま保持される。
+
+\subsection{5.2
+荷電系で追加される保存関係量}\label{ux8377ux96fbux7cfbux3067ux8ffdux52a0ux3055ux308cux308bux4fddux5b58ux95a2ux4fc2ux91cf}
+
+今回の解析基準を次状態決定に必要な情報という観点で見ると、新たに必要なのは
+
+\[
+C=1-\lambda_A\lambda_B
+\]
+
+と
+
+\[
+D=(\lambda_A-\lambda_B)^2
+\]
+
+である。
+
+そこで、
+
+\[
+\boxed{
+Z_8=(U,P,E,H,Q,N,C,D)
+}
+\]
+
+とする。
+
+ここで重要なのは、\(C,D\)
+を「新しい基本物理自由度」と断定しないことである。これらは、\textbf{今回の限定された解析表現を閉じるために必要な永続関係量}である。
+
+\subsection{5.3 永続状態表}\label{ux6c38ux7d9aux72b6ux614bux8868}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+状態 & 現在の意味 & 種類 & macro step を越える更新 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(U\) & \(e^{i\chi}\) & 位相状態 & 回転 \\
+\(P\) & 軌道半径/半直弦状態 & 動的 & 放射反作用で減少 \\
+\(E\) & 離心率状態 & 動的状態 & 本準円モデルでは \(dE/d\phi=0\) \\
+\(H\) & \(e^{i\phi}\) & 観測方位位相 & 回転 \\
+\(Q\) & \(e^{t/\tau_0}\) & 時計符号化 & 乗法更新 \\
+\(N\) & \(\nu\) & 保存関係量 & \(N'=N\) \\
+\(C\) & \(1-\lambda_A\lambda_B\) & 保存関係量 & \(C'=C\) \\
+\(D\) & \((\lambda_A-\lambda_B)^2\) & 保存関係量 & \(D'=D\) \\
+\end{longtable}
+}
+
+個々の \(\lambda_A,\lambda_B\) は \texttt{transition(z)}
+に渡さない。引力/斥力の違いも、EM dipole の有無も、\(C,D\)
+の状態値の違いとして表す。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{6. 状態生成器}\label{ux72b6ux614bux751fux6210ux5668}
+
+\subsection{6.1
+位相を独立変数とした局所更新式}\label{ux4f4dux76f8ux3092ux72ecux7acbux5909ux6570ux3068ux3057ux305fux5c40ux6240ux66f4ux65b0ux5f0f}
+
+解析基準の
+
+\[
+\frac{dr}{dt}
+=-\frac{A}{r^2}-\frac{B}{r^3}
+\]
+
+と
+
+\[
+\frac{d\phi}{dt}=\sqrt{\frac{C}{r^3}}
+\]
+
+を組み合わせると、
+
+\[
+\frac{dr}{d\phi}
+=
+-\frac{4}{3}\mu D\frac{\sqrt C}{\sqrt r}
+-\frac{64}{5}\mu C\frac{\sqrt C}{r\sqrt r}.
+\]
+
+\(M=1\) では \(\mu=\nu=N\) なので、状態変数で
+
+\[
+\boxed{
+\frac{dP}{d\phi}
+=
+-\frac{4}{3}ND\frac{\sqrt C}{\sqrt P}
+-\frac{64}{5}NC\frac{\sqrt C}{P\sqrt P}
+}
+\]
+
+と書ける。
+
+また、
+
+\[
+\boxed{
+\frac{dE}{d\phi}=0
+}
+\]
+
+および
+
+\[
+\boxed{
+\frac{dt}{d\phi}
+=
+\frac{P\sqrt P}{\sqrt C}
+}
+\]
+
+である。
+
+これにより、局所 rate は
+
+\[
+R(P,E,N,C,D)
+=
+\left(
+\frac{dP}{d\phi},
+0,
+\frac{dt}{d\phi}
+\right)
+\]
+
+として、\textbf{現在の状態 \(P,N,C,D\) だけ}から評価できる。
+
+\subsection{6.2
+数値解像度と符号化定数}\label{ux6570ux5024ux89e3ux50cfux5ea6ux3068ux7b26ux53f7ux5316ux5b9aux6570}
+
+1軌道を4000 macro steps に分割し、
+
+\[
+h=\frac{2\pi}{4000}
+\]
+
+とする。
+
+時計状態は
+
+\[
+Q=e^{t/\tau_0},
+\qquad
+\tau_0=10^4
+\]
+
+で符号化する。
+
+\(h\) と \(\tau_0\)
+は物理ケースを指定する状態ではなく、数値解像度および読み出し符号化の定数として扱う。
+
+\subsection{6.3 41実数成分の full
+microstate}\label{ux5b9fux6570ux6210ux5206ux306e-full-microstate}
+
+8永続論理状態のうち \(U,H\) は複素数なので、実装では
+
+\[
+(U_R,U_I,P,E,H_R,H_I,Q,N,C,D)
+\]
+
+の10実数成分となる。
+
+これに、RK4 の
+
+\[
+(k_1,k_2,k_3,k_4),
+\]
+
+各 \(k_j\) の3成分、stage state、合成増分、中点、\(\Delta\phi\)、11相
+one-hot 位相
+
+\[
+q=(q_0,\ldots,q_{10})
+\]
+
+を加え、full state は41実数成分とする。
+
+概念的には、
+
+\[
+\begin{aligned}
+z=&(U_R,U_I,P,E,H_R,H_I,Q,N,C,D;\\
+&k_1,k_2,k_3,k_4;P_s,E_s;d;P_m,E_m;\Delta\phi;q_0,\ldots,q_{10}).
+\end{aligned}
+\]
+
+ここで work state は「次 macro state
+までだけ一時的に使うから状態ではない」と外部へ逃がさず、microstep
+間で必要なら full state の一部として明示する。
+
+\subsection{6.4
+初期化コードと数式の対応}\label{ux521dux671fux5316ux30b3ux30fcux30c9ux3068ux6570ux5f0fux306eux5bfeux5fdc}
+
+基準ケースの生成器で実際に用いた初期化関数は次である。これは
+\texttt{run\_strict\_charged8\_final.py} の実コードそのものである。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ init\_state(p0}\OperatorTok{=}\FloatTok{50.0}\NormalTok{,n0}\OperatorTok{=}\FloatTok{0.25}\NormalTok{,c0}\OperatorTok{=}\FloatTok{1.09}\NormalTok{,d0}\OperatorTok{=}\FloatTok{0.36}\NormalTok{):}
+\NormalTok{    z}\OperatorTok{=}\NormalTok{np.zeros(NST,dtype}\OperatorTok{=}\NormalTok{np.float64)}
+\NormalTok{    z[UR]}\OperatorTok{=}\FloatTok{1.0}\OperatorTok{;}\NormalTok{ z[P]}\OperatorTok{=}\NormalTok{p0}\OperatorTok{;}\NormalTok{ z[HR]}\OperatorTok{=}\FloatTok{1.0}\OperatorTok{;}\NormalTok{ z[Q]}\OperatorTok{=}\FloatTok{1.0}
+\NormalTok{    z[N]}\OperatorTok{=}\NormalTok{n0}\OperatorTok{;}\NormalTok{ z[C]}\OperatorTok{=}\NormalTok{c0}\OperatorTok{;}\NormalTok{ z[D]}\OperatorTok{=}\NormalTok{d0}
+\NormalTok{    z[PS]}\OperatorTok{=}\NormalTok{p0}\OperatorTok{;}\NormalTok{ z[PM]}\OperatorTok{=}\NormalTok{p0}\OperatorTok{;}\NormalTok{ z[QB]}\OperatorTok{=}\FloatTok{1.0}
+    \ControlFlowTok{return}\NormalTok{ z}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{np.zeros} により、明示代入していない成分はすべて 0
+から始まる。したがって永続論理状態については、
+
+\[
+U_0=1+0i,
+\qquad
+P_0=p_0,
+\qquad
+E_0=0,
+\]
+
+\[
+H_0=1+0i,
+\qquad
+Q_0=1,
+\]
+
+\[
+N_0=n_0,
+\qquad
+C_0=c_0,
+\qquad
+D_0=d_0
+\]
+
+に対応する。
+
+基準ケースでは
+
+\[
+p_0=50,
+\qquad
+n_0=0.25,
+\qquad
+c_0=1.09,
+\qquad
+d_0=0.36.
+\]
+
+ここで
+
+\[
+Q_0=1=e^{0/\tau_0}
+\]
+
+なので初期読み出し時刻は \(t_0=0\) である。また、
+
+\[
+U_0=e^{i\chi_0}=1,
+\qquad
+H_0=e^{i\phi_0}=1
+\]
+
+より
+
+\[
+\chi_0=0,
+\qquad
+\phi_0=0
+\]
+
+を表す。
+
+\texttt{z{[}PS{]}=p0} と \texttt{z{[}PM{]}=p0} は RK4 の stage /
+midpoint 用 work register の初期値であり、\texttt{z{[}QB{]}=1.0} は11相
+one-hot 位相
+
+\[
+q=(1,0,\ldots,0)
+\]
+
+すなわち phase 0 から処理を開始することを表す。
+
+重要なのは、個々の
+
+\[
+\lambda_A,
+\qquad
+\lambda_B
+\]
+
+を \texttt{transition(z)}
+へ渡していないことである。荷電条件は初期化以前に
+
+\[
+C=1-\lambda_A\lambda_B,
+\qquad
+D=(\lambda_A-\lambda_B)^2
+\]
+
+へ写像され、その後は \(C,D\)
+が永続状態として伝播する。したがって5条件試験で変更される物理情報は、同じ状態形式の
+\(C,D\) の初期値だけである。
+
+\subsection{6.5
+局所相互作用率コードと数式の対応}\label{ux5c40ux6240ux76f8ux4e92ux4f5cux7528ux7387ux30b3ux30fcux30c9ux3068ux6570ux5f0fux306eux5bfeux5fdc}
+
+現在状態から一意に評価される局所 rate
+は、実コードでは次の関数にまとめた。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AttributeTok{@njit}\NormalTok{(cache}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\KeywordTok{def}\NormalTok{ \_rates(p,n,c,d):}
+\NormalTok{    rp}\OperatorTok{=}\NormalTok{math.sqrt(p)}\OperatorTok{;}\NormalTok{ rc}\OperatorTok{=}\NormalTok{math.sqrt(c)}
+\NormalTok{    dp}\OperatorTok{={-}}\NormalTok{(}\FloatTok{4.0}\OperatorTok{/}\FloatTok{3.0}\NormalTok{)}\OperatorTok{*}\NormalTok{n}\OperatorTok{*}\NormalTok{d}\OperatorTok{*}\NormalTok{rc}\OperatorTok{/}\NormalTok{rp }\OperatorTok{{-}}\NormalTok{(}\FloatTok{64.0}\OperatorTok{/}\FloatTok{5.0}\NormalTok{)}\OperatorTok{*}\NormalTok{n}\OperatorTok{*}\NormalTok{c}\OperatorTok{*}\NormalTok{rc}\OperatorTok{/}\NormalTok{(p}\OperatorTok{*}\NormalTok{rp)}
+\NormalTok{    dt}\OperatorTok{=}\NormalTok{p}\OperatorTok{*}\NormalTok{rp}\OperatorTok{/}\NormalTok{rc}
+    \ControlFlowTok{return}\NormalTok{ dp,}\FloatTok{0.0}\NormalTok{,dt}
+\end{Highlighting}
+\end{Shaded}
+
+この3成分はそのまま
+
+\[
+R(P,E,N,C,D)
+=
+\left(
+\frac{dP}{d\phi},
+\frac{dE}{d\phi},
+\frac{dt}{d\phi}
+\right)
+\]
+
+に対応する。
+
+コード中の
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dp}\OperatorTok{={-}}\NormalTok{(}\FloatTok{4.0}\OperatorTok{/}\FloatTok{3.0}\NormalTok{)}\OperatorTok{*}\NormalTok{n}\OperatorTok{*}\NormalTok{d}\OperatorTok{*}\NormalTok{rc}\OperatorTok{/}\NormalTok{rp }\OperatorTok{{-}}\NormalTok{(}\FloatTok{64.0}\OperatorTok{/}\FloatTok{5.0}\NormalTok{)}\OperatorTok{*}\NormalTok{n}\OperatorTok{*}\NormalTok{c}\OperatorTok{*}\NormalTok{rc}\OperatorTok{/}\NormalTok{(p}\OperatorTok{*}\NormalTok{rp)}
+\end{Highlighting}
+\end{Shaded}
+
+は、
+
+\[
+\boxed{
+\frac{dP}{d\phi}
+=
+-\frac{4}{3}ND\frac{\sqrt C}{\sqrt P}
+-\frac{64}{5}NC\frac{\sqrt C}{P\sqrt P}
+}
+\]
+
+をそのまま評価している。第一項は leading electric-dipole radiation
+に由来する \(r^{-2}\) 型の半径減衰、第二項は leading gravitational
+quadrupole radiation に由来する \(r^{-3}\)
+型の半径減衰を、\(d\phi/dt=\sqrt{C/P^3}\)
+で位相微分へ変換したものである。
+
+\texttt{return\ dp,0.0,dt} の第2成分が 0 なのは、本稿が円軌道
+
+\[
+E=0,
+\qquad
+\frac{dE}{d\phi}=0
+\]
+
+に限定されるためである。
+
+また、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dt}\OperatorTok{=}\NormalTok{p}\OperatorTok{*}\NormalTok{rp}\OperatorTok{/}\NormalTok{rc}
+\end{Highlighting}
+\end{Shaded}
+
+は、
+
+\[
+\boxed{
+\frac{dt}{d\phi}
+=
+\frac{P\sqrt P}{\sqrt C}
+}
+\]
+
+に対応する。
+
+この \texttt{\_rates} は、引力ケースと斥力ケース、GW 項と EM
+項を外部分岐で切り替えない。違いは状態値 \(C,D\)
+に入り、同じ式の中で連続的に評価される。特に同符号等 charge-to-mass
+ratio では
+
+\[
+D=0
+\]
+
+となるため、コードを書き換えずに EM dipole 項だけが自動的に 0 になる。
+
+\subsection{\texorpdfstring{6.6 一回写像 \texttt{transition(z)}
+の実コード}{6.6 一回写像 transition(z) の実コード}}\label{ux4e00ux56deux5199ux50cf-transitionz-ux306eux5b9fux30b3ux30fcux30c9}
+
+候補値の one-hot 積和は次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AttributeTok{@njit}\NormalTok{(cache}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\KeywordTok{def}\NormalTok{ \_blend(q,c):}
+\NormalTok{    x}\OperatorTok{=}\FloatTok{0.0}
+    \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{11}\NormalTok{): x }\OperatorTok{+=}\NormalTok{ q[j]}\OperatorTok{*}\NormalTok{c[j]}
+    \ControlFlowTok{return}\NormalTok{ x}
+\end{Highlighting}
+\end{Shaded}
+
+これは数式
+
+\[
+\boxed{
+z_i'=\sum_{j=0}^{10}q_jF_{ij}(z)}
+\]
+
+を、そのまま11項の積和として実装している。
+
+基準ケースで使用した唯一の状態更新 \texttt{transition(z)}
+の中核は次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AttributeTok{@njit}\NormalTok{(cache}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\KeywordTok{def}\NormalTok{ transition(z):}
+    \CommentTok{"""Sole legal state{-}transition map."""}
+\NormalTok{    q}\OperatorTok{=}\NormalTok{z[QB:QB}\OperatorTok{+}\DecValTok{11}\NormalTok{]}
+\NormalTok{    p}\OperatorTok{=}\NormalTok{z[P]}\OperatorTok{;}\NormalTok{ e}\OperatorTok{=}\NormalTok{z[E]}\OperatorTok{;}\NormalTok{ n}\OperatorTok{=}\NormalTok{z[N]}\OperatorTok{;}\NormalTok{ c}\OperatorTok{=}\NormalTok{z[C]}\OperatorTok{;}\NormalTok{ dd}\OperatorTok{=}\NormalTok{z[D]}
+    \CommentTok{\# old work values}
+\NormalTok{    k1}\OperatorTok{=}\NormalTok{z[K1:K1}\OperatorTok{+}\DecValTok{3}\NormalTok{]}\OperatorTok{;}\NormalTok{ k2}\OperatorTok{=}\NormalTok{z[K2:K2}\OperatorTok{+}\DecValTok{3}\NormalTok{]}\OperatorTok{;}\NormalTok{ k3}\OperatorTok{=}\NormalTok{z[K3:K3}\OperatorTok{+}\DecValTok{3}\NormalTok{]}\OperatorTok{;}\NormalTok{ k4}\OperatorTok{=}\NormalTok{z[K4:K4}\OperatorTok{+}\DecValTok{3}\NormalTok{]}
+\NormalTok{    ps}\OperatorTok{=}\NormalTok{z[PS]}\OperatorTok{;}\NormalTok{ es}\OperatorTok{=}\NormalTok{z[ES]}\OperatorTok{;}\NormalTok{ dv}\OperatorTok{=}\NormalTok{z[DV:DV}\OperatorTok{+}\DecValTok{3}\NormalTok{]}\OperatorTok{;}\NormalTok{ pm}\OperatorTok{=}\NormalTok{z[PM]}\OperatorTok{;}\NormalTok{ em}\OperatorTok{=}\NormalTok{z[EM]}\OperatorTok{;}\NormalTok{ dphi}\OperatorTok{=}\NormalTok{z[DPHI]}
+
+    \CommentTok{\# stage rates are functions of OLD state only}
+\NormalTok{    rP,rE,rT}\OperatorTok{=}\NormalTok{\_rates(p,n,c,dd)}
+\NormalTok{    rPsP,rPsE,rPsT}\OperatorTok{=}\NormalTok{\_rates(ps,n,c,dd)}
+
+\NormalTok{    cand}\OperatorTok{=}\NormalTok{np.empty((}\DecValTok{30}\NormalTok{,}\DecValTok{11}\NormalTok{),dtype}\OperatorTok{=}\NormalTok{np.float64)  }\CommentTok{\# all non{-}q registers 0..29}
+    \CommentTok{\# default: identity candidate in all phases for every non{-}q register}
+    \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{30}\NormalTok{):}
+        \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{11}\NormalTok{): cand[i,j]}\OperatorTok{=}\NormalTok{z[i]}
+
+    \CommentTok{\# k1: phase 0 compute, phase 10 reset}
+\NormalTok{    cand[K1,}\DecValTok{0}\NormalTok{]}\OperatorTok{=}\NormalTok{rP}\OperatorTok{;}\NormalTok{ cand[K1}\OperatorTok{+}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{]}\OperatorTok{=}\NormalTok{rE}\OperatorTok{;}\NormalTok{ cand[K1}\OperatorTok{+}\DecValTok{2}\NormalTok{,}\DecValTok{0}\NormalTok{]}\OperatorTok{=}\NormalTok{rT}
+    \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{): cand[K1}\OperatorTok{+}\NormalTok{a,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\FloatTok{0.0}
+    \CommentTok{\# stage2 fields phase 1}
+\NormalTok{    cand[PS,}\DecValTok{1}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\FloatTok{0.5}\OperatorTok{*}\NormalTok{HSTEP}\OperatorTok{*}\NormalTok{k1[}\DecValTok{0}\NormalTok{]}\OperatorTok{;}\NormalTok{ cand[ES,}\DecValTok{1}\NormalTok{]}\OperatorTok{=}\NormalTok{e}\OperatorTok{+}\FloatTok{0.5}\OperatorTok{*}\NormalTok{HSTEP}\OperatorTok{*}\NormalTok{k1[}\DecValTok{1}\NormalTok{]}
+    \CommentTok{\# k2 phase 2, reset phase 10}
+\NormalTok{    cand[K2,}\DecValTok{2}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsP}\OperatorTok{;}\NormalTok{ cand[K2}\OperatorTok{+}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsE}\OperatorTok{;}\NormalTok{ cand[K2}\OperatorTok{+}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsT}
+    \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{): cand[K2}\OperatorTok{+}\NormalTok{a,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\FloatTok{0.0}
+    \CommentTok{\# stage3 fields phase 3}
+\NormalTok{    cand[PS,}\DecValTok{3}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\FloatTok{0.5}\OperatorTok{*}\NormalTok{HSTEP}\OperatorTok{*}\NormalTok{k2[}\DecValTok{0}\NormalTok{]}\OperatorTok{;}\NormalTok{ cand[ES,}\DecValTok{3}\NormalTok{]}\OperatorTok{=}\NormalTok{e}\OperatorTok{+}\FloatTok{0.5}\OperatorTok{*}\NormalTok{HSTEP}\OperatorTok{*}\NormalTok{k2[}\DecValTok{1}\NormalTok{]}
+    \CommentTok{\# k3 phase 4 uses OLD Ps,Es}
+\NormalTok{    cand[K3,}\DecValTok{4}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsP}\OperatorTok{;}\NormalTok{ cand[K3}\OperatorTok{+}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsE}\OperatorTok{;}\NormalTok{ cand[K3}\OperatorTok{+}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsT}
+    \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{): cand[K3}\OperatorTok{+}\NormalTok{a,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\FloatTok{0.0}
+    \CommentTok{\# stage4 fields phase 5}
+\NormalTok{    cand[PS,}\DecValTok{5}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\NormalTok{HSTEP}\OperatorTok{*}\NormalTok{k3[}\DecValTok{0}\NormalTok{]}\OperatorTok{;}\NormalTok{ cand[ES,}\DecValTok{5}\NormalTok{]}\OperatorTok{=}\NormalTok{e}\OperatorTok{+}\NormalTok{HSTEP}\OperatorTok{*}\NormalTok{k3[}\DecValTok{1}\NormalTok{]}
+    \CommentTok{\# k4 phase 6 uses OLD Ps,Es}
+\NormalTok{    cand[K4,}\DecValTok{6}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsP}\OperatorTok{;}\NormalTok{ cand[K4}\OperatorTok{+}\DecValTok{1}\NormalTok{,}\DecValTok{6}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsE}\OperatorTok{;}\NormalTok{ cand[K4}\OperatorTok{+}\DecValTok{2}\NormalTok{,}\DecValTok{6}\NormalTok{]}\OperatorTok{=}\NormalTok{rPsT}
+    \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{): cand[K4}\OperatorTok{+}\NormalTok{a,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\FloatTok{0.0}
+    \CommentTok{\# combined d phase 7; reset 10}
+    \ControlFlowTok{for}\NormalTok{ a }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{):}
+\NormalTok{        cand[DV}\OperatorTok{+}\NormalTok{a,}\DecValTok{7}\NormalTok{]}\OperatorTok{=}\NormalTok{(HSTEP}\OperatorTok{/}\FloatTok{6.0}\NormalTok{)}\OperatorTok{*}\NormalTok{(k1[a]}\OperatorTok{+}\FloatTok{2.0}\OperatorTok{*}\NormalTok{k2[a]}\OperatorTok{+}\FloatTok{2.0}\OperatorTok{*}\NormalTok{k3[a]}\OperatorTok{+}\NormalTok{k4[a])}
+\NormalTok{        cand[DV}\OperatorTok{+}\NormalTok{a,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\FloatTok{0.0}
+    \CommentTok{\# midpoint phase 8; commit{-}safe values phase 10}
+\NormalTok{    cand[PM,}\DecValTok{8}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\FloatTok{0.5}\OperatorTok{*}\NormalTok{dv[}\DecValTok{0}\NormalTok{]}\OperatorTok{;}\NormalTok{ cand[EM,}\DecValTok{8}\NormalTok{]}\OperatorTok{=}\NormalTok{e}\OperatorTok{+}\FloatTok{0.5}\OperatorTok{*}\NormalTok{dv[}\DecValTok{1}\NormalTok{]}
+\NormalTok{    cand[PM,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\NormalTok{dv[}\DecValTok{0}\NormalTok{]}\OperatorTok{;}\NormalTok{ cand[EM,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{e}\OperatorTok{+}\NormalTok{dv[}\DecValTok{1}\NormalTok{]}
+    \CommentTok{\# dphi phase 9; reset 10. Circular model dphi=h exactly.}
+\NormalTok{    cand[DPHI,}\DecValTok{9}\NormalTok{]}\OperatorTok{=}\NormalTok{HSTEP}\OperatorTok{;}\NormalTok{ cand[DPHI,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\FloatTok{0.0}
+    \CommentTok{\# commit phase 10 for persistent states}
+\NormalTok{    ur}\OperatorTok{=}\NormalTok{z[UR]}\OperatorTok{;}\NormalTok{ ui}\OperatorTok{=}\NormalTok{z[UI]}\OperatorTok{;}\NormalTok{ hr}\OperatorTok{=}\NormalTok{z[HR]}\OperatorTok{;}\NormalTok{ hi}\OperatorTok{=}\NormalTok{z[HI]}
+\NormalTok{    cand[UR,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{ur}\OperatorTok{*}\NormalTok{PH\_RE}\OperatorTok{{-}}\NormalTok{ui}\OperatorTok{*}\NormalTok{PH\_IM}\OperatorTok{;}\NormalTok{ cand[UI,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{ur}\OperatorTok{*}\NormalTok{PH\_IM}\OperatorTok{+}\NormalTok{ui}\OperatorTok{*}\NormalTok{PH\_RE}
+\NormalTok{    cand[P,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\NormalTok{dv[}\DecValTok{0}\NormalTok{]}\OperatorTok{;}\NormalTok{ cand[E,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{e}\OperatorTok{+}\NormalTok{dv[}\DecValTok{1}\NormalTok{]}
+\NormalTok{    cd}\OperatorTok{=}\NormalTok{math.cos(dphi)}\OperatorTok{;}\NormalTok{ sd}\OperatorTok{=}\NormalTok{math.sin(dphi)}
+\NormalTok{    cand[HR,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{hr}\OperatorTok{*}\NormalTok{cd}\OperatorTok{{-}}\NormalTok{hi}\OperatorTok{*}\NormalTok{sd}\OperatorTok{;}\NormalTok{ cand[HI,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{hr}\OperatorTok{*}\NormalTok{sd}\OperatorTok{+}\NormalTok{hi}\OperatorTok{*}\NormalTok{cd}
+\NormalTok{    cand[Q,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{z[Q]}\OperatorTok{*}\NormalTok{math.exp(dv[}\DecValTok{2}\NormalTok{]}\OperatorTok{/}\NormalTok{TAU0)}
+    \CommentTok{\# N,C,D remain identity candidates in all phases via default rows.}
+\NormalTok{    cand[PS,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\NormalTok{dv[}\DecValTok{0}\NormalTok{]}\OperatorTok{;}\NormalTok{ cand[ES,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{e}\OperatorTok{+}\NormalTok{dv[}\DecValTok{1}\NormalTok{]}
+
+\NormalTok{    out}\OperatorTok{=}\NormalTok{np.empty(NST,dtype}\OperatorTok{=}\NormalTok{np.float64)}
+    \ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{30}\NormalTok{): out[i]}\OperatorTok{=}\NormalTok{\_blend(q,cand[i])}
+    \CommentTok{\# fixed cyclic linear map q\textquotesingle{} = C\_11 q (not external loop counter)}
+\NormalTok{    out[QB]}\OperatorTok{=}\NormalTok{q[}\DecValTok{10}\NormalTok{]}
+    \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{11}\NormalTok{): out[QB}\OperatorTok{+}\NormalTok{j]}\OperatorTok{=}\NormalTok{q[j}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]}
+    \ControlFlowTok{return}\NormalTok{ out}
+\end{Highlighting}
+\end{Shaded}
+
+各 phase の意味は、
+
+\[
+\begin{array}{c|l}
+0 & k_1\text{ の評価}\\
+1 & k_2\text{ 用 stage state}\\
+2 & k_2\text{ の評価}\\
+3 & k_3\text{ 用 stage state}\\
+4 & k_3\text{ の評価}\\
+5 & k_4\text{ 用 stage state}\\
+6 & k_4\text{ の評価}\\
+7 & \Delta=(h/6)(k_1+2k_2+2k_3+k_4)\\
+8 & midpoint work state\\
+9 & \Delta\phi=h\\
+10 & \text{永続状態への commit}
+\end{array}
+\]
+
+である。
+
+例えば phase 1 の
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cand[PS,}\DecValTok{1}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\FloatTok{0.5}\OperatorTok{*}\NormalTok{HSTEP}\OperatorTok{*}\NormalTok{k1[}\DecValTok{0}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+は
+
+\[
+P_s=P+\frac{h}{2}k_{1P}
+\]
+
+に、phase 7 の
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cand[DV}\OperatorTok{+}\NormalTok{a,}\DecValTok{7}\NormalTok{]}\OperatorTok{=}\NormalTok{(HSTEP}\OperatorTok{/}\FloatTok{6.0}\NormalTok{)}\OperatorTok{*}\NormalTok{(k1[a]}\OperatorTok{+}\FloatTok{2.0}\OperatorTok{*}\NormalTok{k2[a]}\OperatorTok{+}\FloatTok{2.0}\OperatorTok{*}\NormalTok{k3[a]}\OperatorTok{+}\NormalTok{k4[a])}
+\end{Highlighting}
+\end{Shaded}
+
+は通常の RK4 合成
+
+\[
+\Delta
+=
+\frac{h}{6}
+\left(k_1+2k_2+2k_3+k_4\right)
+\]
+
+に対応する。
+
+ただし通常の逐次コードと違い、同じ microstep の中で直前に書いた next
+値を次の演算へ使わない。\texttt{transition(z)} の冒頭で読んだ OLD full
+state から各 phase の候補を構成し、one-hot \(q\) によってその microstep
+で有効な候補だけを選ぶ。次の評価は次の microstep に移ってから行う。
+
+commit phase では、
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cand[P,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{p}\OperatorTok{+}\NormalTok{dv[}\DecValTok{0}\NormalTok{]}
+\NormalTok{cand[E,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{e}\OperatorTok{+}\NormalTok{dv[}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+が
+
+\[
+P'=P+\Delta P,
+\qquad
+E'=E+\Delta E
+\]
+
+に対応する。また
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cand[Q,}\DecValTok{10}\NormalTok{]}\OperatorTok{=}\NormalTok{z[Q]}\OperatorTok{*}\NormalTok{math.exp(dv[}\DecValTok{2}\NormalTok{]}\OperatorTok{/}\NormalTok{TAU0)}
+\end{Highlighting}
+\end{Shaded}
+
+は
+
+\[
+Q'=Q\exp\left(\frac{\Delta t}{\tau_0}\right)
+\]
+
+であり、
+
+\[
+Q=e^{t/\tau_0}
+\]
+
+という時計符号化を加法的時刻更新なしで維持する。
+
+円軌道では1 macro step の位相増分は
+
+\[
+\Delta\phi=h
+\]
+
+なので、\(H=e^{i\phi}\) の更新は
+
+\[
+H'=He^{ih}
+\]
+
+となる。コードでは \texttt{HR,HI}
+の2実数成分を回転行列として更新している。
+
+1 macro step は次の実コードの通り、唯一の \texttt{transition}
+をちょうど11回作用させる。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AttributeTok{@njit}\NormalTok{(cache}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\KeywordTok{def}\NormalTok{ macrostep(z):}
+    \CommentTok{\# exactly 11 applications of the sole transition, no alternate formula}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{11}\NormalTok{): z}\OperatorTok{=}\NormalTok{transition(z)}
+    \ControlFlowTok{return}\NormalTok{ z}
+\end{Highlighting}
+\end{Shaded}
+
+したがって macrostep
+自身は別の物理更新則ではなく、11相を一巡させるための反復だけである。
+
+\subsection{\texorpdfstring{6.7 保存関係量
+\(N,C,D\)}{6.7 保存関係量 N,C,D}}\label{ux4fddux5b58ux95a2ux4fc2ux91cf-ncd}
+
+\texttt{cand} は最初にすべての非-\(q\) レジスタについて OLD state
+の恒等候補で埋める。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{30}\NormalTok{):}
+    \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\DecValTok{11}\NormalTok{):}
+\NormalTok{        cand[i,j]}\OperatorTok{=}\NormalTok{z[i]}
+\end{Highlighting}
+\end{Shaded}
+
+\(N,C,D\) の行には、その後いずれの phase
+でも別候補を書き込まない。したがって one-hot 積和を通しても
+
+\[
+\boxed{
+N'=N,
+\qquad
+C'=C,
+\qquad
+D'=D
+}
+\]
+
+となる。
+
+これは Python の外部定数を毎回コピーしているのではない。\(N,C,D\) も
+full state に含まれ、他のレジスタと同じ候補行・同じ one-hot
+選択を通過した結果として恒等伝播する。
+
+\subsection{6.8
+読み出しコードと数式の対応}\label{ux8aadux307fux51faux3057ux30b3ux30fcux30c9ux3068ux6570ux5f0fux306eux5bfeux5fdc}
+
+観測用読み出しの実コードは次である。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ readout(z):}
+\NormalTok{    t}\OperatorTok{=}\NormalTok{TAU0}\OperatorTok{*}\NormalTok{math.log(z[Q])}
+    \ControlFlowTok{return}\NormalTok{ t,z[P]}\OperatorTok{*}\NormalTok{z[HR],z[P]}\OperatorTok{*}\NormalTok{z[HI]}
+\end{Highlighting}
+\end{Shaded}
+
+第一成分は
+
+\[
+Q=e^{t/\tau_0}
+\]
+
+の逆写像
+
+\[
+\boxed{
+t=\tau_0\ln Q}
+\]
+
+である。
+
+また現在の実験は
+
+\[
+E=0
+\]
+
+の準円軌道なので、半径は
+
+\[
+r=P
+\]
+
+である。\(H=e^{i\phi}=H_R+iH_I\) だから、
+
+\[
+PH
+=
+P(\cos\phi+i\sin\phi)
+=
+x+iy
+\]
+
+より
+
+\[
+\boxed{
+x=P H_R,
+\qquad
+y=P H_I}
+\]
+
+を得る。したがって \texttt{readout(z)} の返り値は、そのまま
+
+\[
+(t,x,y)
+\]
+
+である。
+
+この関数は状態更新則の一部ではない。生成ループでは、状態保存用のログを書き出すときにのみ呼び出し、その返り値を
+\texttt{transition(z)} へ渡さない。
+
+終端 \(P=20\) は一般に macrostep
+の格子点と一致しないため、生成終了後だけ隣接2点から
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t1,\_,\_}\OperatorTok{=}\NormalTok{readout(z)}\OperatorTok{;}\NormalTok{ p1}\OperatorTok{=}\NormalTok{z[P]}
+\NormalTok{t0,\_,\_}\OperatorTok{=}\NormalTok{readout(prev)}\OperatorTok{;}\NormalTok{ p0}\OperatorTok{=}\NormalTok{prev[P]}
+\NormalTok{frac}\OperatorTok{=}\NormalTok{(p0}\OperatorTok{{-}}\FloatTok{20.0}\NormalTok{)}\OperatorTok{/}\NormalTok{(p0}\OperatorTok{{-}}\NormalTok{p1)}
+\NormalTok{tcross}\OperatorTok{=}\NormalTok{t0}\OperatorTok{+}\NormalTok{frac}\OperatorTok{*}\NormalTok{(t1}\OperatorTok{{-}}\NormalTok{t0)}
+\NormalTok{phicross}\OperatorTok{=}\NormalTok{(nstep}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{+}\NormalTok{frac)}\OperatorTok{*}\NormalTok{HSTEP}
+\end{Highlighting}
+\end{Shaded}
+
+と線形補間する。これは
+
+\[
+f
+=
+\frac{P_0-20}{P_0-P_1},
+\]
+
+\[
+t_{20}=t_0+f(t_1-t_0),
+\]
+
+\[
+\phi_{20}=(n-1+f)h
+\]
+
+に対応する。ここで得た \(t_{20},\phi_{20}\) も比較用 readout
+であり、すでに生成された軌道へ帰還させない。
+
+\subsection{6.9
+「完全乗法」についての限定}\label{ux5b8cux5168ux4e57ux6cd5ux306bux3064ux3044ux3066ux306eux9650ux5b9a}
+
+本実装でいう厳格一回写像は、
+
+\begin{itemize}
+\tightlist
+\item
+  外部物理引数なし、
+\item
+  唯一の \texttt{transition(z)}、
+\item
+  OLD-state-only、
+\item
+  work state 明示、
+\item
+  one-hot 積和、
+\item
+  readout 非帰還
+\end{itemize}
+
+を意味する。
+
+一方、平方根、逆数、指数関数まで原始演算から除去したことは主張しない。それらは「現在状態から一意に計算される相互作用関数」として残る。したがって、本稿はあらゆる演算を乗算だけへ還元した証明ではない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{7. 実験設計}\label{ux5b9fux9a13ux8a2dux8a08}
+
+\subsection{7.1 基準ケース}\label{ux57faux6e96ux30b1ux30fcux30b9}
+
+基準ケースは
+
+\[
+\lambda_A=+0.30,
+\qquad
+\lambda_B=-0.30,
+\]
+
+\[
+N=0.25,
+\qquad
+C=1.09,
+\qquad
+D=0.36,
+\qquad
+P_0=50.
+\]
+
+初期状態は
+
+\[
+U_0=1,
+\qquad
+H_0=1,
+\qquad
+Q_0=1,
+\qquad
+E_0=0.
+\]
+
+生成器は \(P\le20\) に到達するまで状態更新を続ける。
+
+\subsection{7.2 5条件 transferability
+試験}\label{ux6761ux4ef6-transferability-ux8a66ux9a13}
+
+基準値 \(0.30\) の整数倍系列から、現在の準円基準で \(C>0\)
+を満たす5ケースを選ぶ。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1364}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1818}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1818}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1818}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1818}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1364}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+case
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(\lambda_A\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(\lambda_B\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(C\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(D\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+物理的特徴
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+n1 attractive & +0.30 & -0.30 & 1.09 & 0.36 & Coulomb 引力 + EM
+dipole \\
+n1 repulsive & +0.30 & +0.30 & 0.91 & 0 & Coulomb 斥力、leading dipole
+なし \\
+n3 attractive & +0.90 & -0.90 & 1.81 & 3.24 & 強い Coulomb 引力 + 強い
+dipole \\
+n3 repulsive & +0.90 & +0.90 & 0.19 & 0 & 強い Coulomb 斥力、leading
+dipole なし \\
+n4 attractive & +1.20 & -1.20 & 2.44 & 5.76 & 最も強い引力側 + dipole \\
+\end{longtable}
+}
+
+\(\lambda_A=\lambda_B=1.20\) なら
+
+\[
+C=1-1.44=-0.44
+\]
+
+となるため、現在の実数準円解析基準の定義域外であり、5ケースには含めない。\(|C|\)
+を取る等の修正は別の物理モデルになるため行わない。
+
+5ケースで変更するのは初期状態の \(C,D\)
+だけであり、\texttt{transition(z)}、\texttt{macrostep(z)}、11相機械、8永続状態、数値解像度は変更しない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{8. 結果}\label{ux7d50ux679c}
+
+\subsection{8.1
+まず「条件によって軌道がどう変わるか」}\label{ux307eux305aux6761ux4ef6ux306bux3088ux3063ux3066ux8eccux9053ux304cux3069ux3046ux5909ux308fux308bux304b}
+
+論文6で最も重要な可視化は、各条件の軌道そのものである。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図1: 5条件の独立解析基準軌道}]{figs/figure01_five_case_reference_orbits_same_scale.png}}
+\caption{図1: 5条件の独立解析基準軌道}
+\end{figure}
+
+\textbf{図1.} 5条件の独立解析基準軌道。全パネルで \(x,y\)
+の表示範囲を同一に固定している。各条件で \(r=50\rightarrow20\)
+を描く。反対符号で \(C,D\) が大きいほど inspiral
+が速く、同符号等比率では \(D=0\) のため leading EM dipole が消え、特に
+\(C=0.19\) の n3 repulsive は非常に多数の周回を要する。
+
+同じ5条件について、保存済みの厳格8状態生成器との overlay を並べる。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図2: 5条件の解析基準と厳格8状態生成器の overlay}]{figs/figure02_five_case_strict_generator_overlay_panels.png}}
+\caption{図2: 5条件の解析基準と厳格8状態生成器の overlay}
+\end{figure}
+
+\textbf{図2.} 5条件すべてに対する analytic reference と strict 8-state
+generator の軌道
+overlay。各パネルの元図は保存済み個別実験からそのまま統合し、軌道データ自体を改変していない。
+
+半径と累積周回数を直接比較すると、軌道図の密度差を定量的に読める。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図3: 半径と累積周回数}]{figs/figure03_five_case_radius_vs_cycles.png}}
+\caption{図3: 半径と累積周回数}
+\end{figure}
+
+\textbf{図3.} \(r=50\rightarrow20\)
+における半径と累積周回数。5条件で軌道縮退の速さが数桁規模で変わる。
+
+最初の10周だけを同一空間スケールで比較すると、初期段階の縮退速度差が読みやすい。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図4: 5条件の最初の10周}]{figs/figure04_five_case_first_10_orbits_same_scale.png}}
+\caption{図4: 5条件の最初の10周}
+\end{figure}
+
+\textbf{図4.} 最初の10周の軌道比較。表示範囲を固定し、初期 inspiral
+の条件差を示す。
+
+解析基準の総周回数と最終時刻は次の通りである。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1111}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1481}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+case
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(C\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(D\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(A_{\rm EM}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(B_{\rm GW}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+cycles \(50\to20\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(t_f\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+n1 attractive & 1.09 & 0.36 & 0.1308 & 3.80192 & 122.086006 &
+169032.317607 \\
+n1 repulsive & 0.91 & 0 & 0 & 2.64992 & 364.132605 & 574545.646661 \\
+n3 attractive & 1.81 & 3.24 & 1.9548 & 10.48352 & 16.671907 &
+17450.031850 \\
+n3 repulsive & 0.19 & 0 & 0 & 0.11552 & 3816.728393 & 13179536.011080 \\
+n4 attractive & 2.44 & 5.76 & 4.6848 & 19.05152 & 8.348877 &
+7507.620157 \\
+\end{longtable}
+}
+
+この表が示すのは単なる「電荷を強くすると速い」という単調関係ではない。符号によって
+\(C\) の方向が変わり、同符号等比率では \(D=0\)
+になるため、保存力と散逸の両方が同時に変化する。
+
+\subsection{8.2
+基準ケースの厳格8状態生成}\label{ux57faux6e96ux30b1ux30fcux30b9ux306eux53b3ux683c8ux72b6ux614bux751fux6210}
+
+基準ケースの厳格生成は、
+
+\begin{itemize}
+\tightlist
+\item
+  macro steps: 488,345
+\item
+  microsteps: 5,371,795
+\end{itemize}
+
+で \(P=20\) へ到達した。
+
+生成器の読み出しは
+
+\[
+t_{\rm gen}=169032.317607049,
+\]
+
+\[
+\phi_{\rm gen}=767.088999401507.
+\]
+
+独立解析基準は
+
+\[
+t_{\rm ref}=169032.31760706357,
+\]
+
+\[
+\phi_{\rm ref}=767.0889994015913.
+\]
+
+したがって、
+
+\[
+\boxed{
+|\Delta t|=1.463923\times10^{-8}
+}
+\]
+
+\[
+\boxed{
+|\Delta\phi|=8.435563\times10^{-11}
+}
+\]
+
+である。
+
+保存全範囲の同一物理時刻比較では、
+
+\[
+\max|\Delta r|=9.116260\times10^{-9},
+\]
+
+\[
+\operatorname{RMS}(|\Delta r|)=3.771324\times10^{-9},
+\]
+
+\[
+\max\|\Delta(x,y)\|=3.763773\times10^{-6},
+\]
+
+\[
+\operatorname{RMS}(\|\Delta(x,y)\|)=2.130252\times10^{-6}.
+\]
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図5: 基準ケースの半径-時間比較}]{figs/figure05_baseline_radius_vs_time.png}}
+\caption{図5: 基準ケースの半径-時間比較}
+\end{figure}
+
+\textbf{図5.}
+基準ケースの半径--時間比較。独立解析基準は状態生成後の比較にのみ使用する。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図6: 基準ケースの残差}]{figs/figure06_baseline_reference_residuals.png}}
+\caption{図6: 基準ケースの残差}
+\end{figure}
+
+\textbf{図6.} 基準ケースにおける独立解析基準との残差。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図7: N,C,D の恒等保持}]{figs/figure07_identity_states_NCD.png}}
+\caption{図7: N,C,D の恒等保持}
+\end{figure}
+
+\textbf{図7.} 基準ケースにおける \(N,C,D\) の保持。全走行で最大 drift は
+0 であった。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図8: 11相 machine/work state の最初の macrostep}]{figs/figure08_microphase_work_states.png}}
+\caption{図8: 11相 machine/work state の最初の macrostep}
+\end{figure}
+
+\textbf{図8.} 最初の macrostep における明示 work state の推移。RK4 の
+stage 値は同一 microstep 内で直接再利用せず、次 microstep で OLD state
+として初めて参照する。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={図9: 基準ケースにおける EM dipole / GW quadrupole power ratio}]{figs/figure09_em_to_gw_power_ratio.png}}
+\caption{図9: 基準ケースにおける EM dipole / GW quadrupole power ratio}
+\end{figure}
+
+\textbf{図9.} 基準ケースにおける
+\(P_{\rm EM}/P_{\rm GW}\)。この図は独立解析基準側の診断であり、状態生成器の更新には帰還させない。
+
+\subsection{8.3
+5条件すべてを同じ厳格写像で生成}\label{ux6761ux4ef6ux3059ux3079ux3066ux3092ux540cux3058ux53b3ux683cux5199ux50cfux3067ux751fux6210}
+
+図2の5条件について、数値要約は次の通りである。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1429}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1905}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1905}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1905}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+case
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+macro steps
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(|\Delta\phi|\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(|\Delta t|\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+time readout
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\Delta N,\Delta C,\Delta D\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+n1 attractive & 488,345 & \(8.436\times10^{-11}\) &
+\(1.464\times10^{-8}\) & finite & 0, 0, 0 \\
+n1 repulsive & 1,456,531 & \(1.305\times10^{-9}\) &
+\(3.203\times10^{-7}\) & finite & 0, 0, 0 \\
+n3 attractive & 66,688 & \(4.229\times10^{-9}\) & \(8.739\times10^{-7}\)
+& finite & 0, 0, 0 \\
+n3 repulsive & 15,266,914 & \(3.653\times10^{-9}\) & N/A & nonfinite
+after step 6,316,005 & 0, 0, 0 \\
+n4 attractive & 33,396 & \(8.323\times10^{-9}\) & \(1.545\times10^{-6}\)
+& finite & 0, 0, 0 \\
+\end{longtable}
+}
+
+重要なのは、5ケースで別々の生成式を使っていないことである。全ケースで、
+
+\begin{center}
+\fbox{\parbox{0.90\linewidth}{\centering same $transition(z)
++$same 11-phase machine$+$same $Z_8$}}
+\end{center}
+
+を使い、物理条件の違いは初期状態の \(C,D\) だけで与えた。
+
+\subsection{8.4 n3 repulsive
+の時刻読み出し限界}\label{n3-repulsive-ux306eux6642ux523bux8aadux307fux51faux3057ux9650ux754c}
+
+\texttt{n3\_repulsive} は
+
+\[
+C=0.19,
+\qquad
+D=0
+\]
+
+であり、約3816.7周を要する最も遅いケースである。
+
+軌道状態 \(P,H\) は最後まで生成でき、位相残差も有限である。一方、
+
+\[
+Q=e^{t/\tau_0}
+\]
+
+による時計符号化は長時間のため有限精度範囲を超え、step 6,316,005 以後に
+nonfinite となった。
+
+本稿ではこのケースを削除せず、\(Q\)
+のクリップ、再正規化、別時計への切り替えも行わない。これは、
+
+\[
+\boxed{
+\text{軌道生成の失敗ではなく、現在の指数時計読み出しの有限精度限界}
+}
+\]
+
+として記録する。
+
+ただし、時刻を最後まで読み出せない以上、このケースについて \(\Delta t\)
+の有限値一致を主張しない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{9. 考察}\label{ux8003ux5bdf}
+
+\subsection{9.1
+個別電荷ではなく関係量が状態へ残った}\label{ux500bux5225ux96fbux8377ux3067ux306fux306aux304fux95a2ux4fc2ux91cfux304cux72b6ux614bux3078ux6b8bux3063ux305f}
+
+今回の限定モデルでは、\texttt{transition(z)} が直接必要とするのは
+
+\[
+\lambda_A,
+\lambda_B
+\]
+
+そのものではなく、
+
+\[
+C=1-\lambda_A\lambda_B,
+\qquad
+D=(\lambda_A-\lambda_B)^2
+\]
+
+であった。
+
+これは、個々の物体へ貼ったラベル付きパラメータより、相互作用式に実際に現れる\textbf{関係量}で状態を表現できることを示す。ただし、これは今回の準円
+LO モデルにおける表現上の事実であり、一般の荷電二体系でも \(C,D\)
+だけが基本であることを証明したわけではない。
+
+\subsection{9.2
+引力/斥力を外部分岐にしなかった}\label{ux5f15ux529bux65a5ux529bux3092ux5916ux90e8ux5206ux5c90ux306bux3057ux306aux304bux3063ux305f}
+
+\texttt{transition(z)} には、
+
+\begin{itemize}
+\tightlist
+\item
+  attractive / repulsive の if 分岐、
+\item
+  天体 A/B の identity、
+\item
+  gravity / Coulomb の force-type branch
+\end{itemize}
+
+を置いていない。
+
+異符号なら \(C>1,D>0\)、同符号等比率なら \(C<1,D=0\)
+という状態値の違いが、そのまま異なる軌道へ展開する。
+
+したがって本実験で確認したのは、
+
+\[
+\boxed{
+\text{異なる物理条件を、アルゴリズム切替ではなく状態値の違いとして扱える}
+}
+\]
+
+という点である。
+
+\subsection{9.3 二種類の散逸が一つの rate
+に入る}\label{ux4e8cux7a2eux985eux306eux6563ux9038ux304cux4e00ux3064ux306e-rate-ux306bux5165ux308b}
+
+半径進化は
+
+\[
+\frac{dr}{dt}
+=-\frac{A}{r^2}-\frac{B}{r^3}
+\]
+
+であり、EM dipole と GW quadrupole
+は異なる距離依存性を持つ。それでも位相微分へ変換すると、
+
+\[
+\frac{dP}{d\phi}
+=
+-\frac{4}{3}ND\frac{\sqrt C}{\sqrt P}
+-\frac{64}{5}NC\frac{\sqrt C}{P\sqrt P}
+\]
+
+として同じ rate 関数に入り、\texttt{transition(z)}
+自身を切り替える必要がない。
+
+この意味で本稿は、\textbf{複数の既知相互作用・散逸項を一つの閉じた状態更新形式へ内部化できる例}を与える。
+
+\subsection{9.4
+これは「重力と電磁気の統一」ではない}\label{ux3053ux308cux306fux91cdux529bux3068ux96fbux78c1ux6c17ux306eux7d71ux4e00ux3067ux306fux306aux3044}
+
+同じ state map
+で二種類の寄与を扱えたことと、それらが自然界で同一の基本相互作用であることは別問題である。
+
+本稿では既知の重力項と既知の電磁項を解析基準として先に与え、その係数と必要状態を監査している。したがって、
+
+\begin{center}
+\fbox{\parbox{0.90\linewidth}{\centering same representation$\not\Rightarrow$same fundamental interaction}}
+\end{center}
+
+である。
+
+\subsection{9.5
+8状態は最小とは限らない}\label{ux72b6ux614bux306fux6700ux5c0fux3068ux306fux9650ux3089ux306aux3044}
+
+\(C,D\) は \(\lambda_A,\lambda_B\)
+から構成されるため、独立な基本自由度ではない。また今回の対称系列では
+\(|\lambda_A|=|\lambda_B|\) なので、許される \((C,D)\)
+に強い関係がある。
+
+したがって、
+
+\[
+\boxed{
+8\text{ が数学的最小状態数である}
+}
+\]
+
+とは主張しない。
+
+今確認したのは、
+
+\[
+\boxed{
+\text{現在の表現では }Z_8\text{ で閉包できる}
+}
+\]
+
+ということまでである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{10. 限界と非主張}\label{ux9650ux754cux3068ux975eux4e3bux5f35}
+
+本稿は次を主張しない。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Einstein--Maxwell 方程式を8状態から導出したこと。}\\
+  本稿は既知の leading-order 解析モデルを逆構成している。
+\item
+  \textbf{重力と電磁気を基礎的に統一したこと。}\\
+  一つの状態更新形式で扱えることと、相互作用の存在論的同一性は別である。
+\item
+  \textbf{8状態が最小または物理的実在であること。}\\
+  \(Z_8\) は現在の表現を閉じる永続論理状態である。
+\item
+  \textbf{一般の荷電二体系への普遍性。}\\
+  eccentricity、spin、tidal/finite-size、generic mass ratio、higher
+  PN、NLO radiation、strong-field merger、full nonlinear
+  Einstein--Maxwell numerical relativity は扱わない。
+\item
+  \textbf{\(C\le0\) の準円軌道。}\\
+  現在の実数準円基準は \(C>0\) を必要とする。
+\item
+  \textbf{leading dipole が消えたとき電磁放射がすべて消えること。}\\
+  \(D=0\) が消すのは本稿で採用した leading electric-dipole 項である。
+\item
+  \textbf{あらゆる内部演算を乗算だけへ還元したこと。}\\
+  平方根、逆数、指数関数などは current-state interaction function
+  として残る。
+\item
+  \textbf{11相が自然界の基本構造であること。}\\
+  11相は現在の RK4 処理を OLD-state-only に展開する machine schedule
+  である。
+\end{enumerate}
+
+また \texttt{n3\_repulsive} の \(Q\) nonfinite
+は、現在の読み出し符号化の数値限界としてそのまま残す。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{11. 再現性}\label{ux518dux73feux6027}
+
+\subsection{11.1 解析基準}\label{ux89e3ux6790ux57faux6e96}
+
+解析式、初期条件、独立 solver、validation、raw CSV は、
+
+\texttt{第五思考実験\_\allowbreak{}乗法状態内部展開と近似次数検証\_\allowbreak{}20260924/\allowbreak{}07\_\allowbreak{}荷電二体系\_\allowbreak{}解析近似基準解\_\allowbreak{}20260925/\allowbreak{}}
+
+に保存している。
+
+主要コード:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{solve\_charged\_binary\_analytic\_reference\_v1.py}
+\item
+  \texttt{validate\_charged\_binary\_analytic\_reference\_v1.py}
+\item
+  \texttt{plot\_charged\_binary\_analytic\_reference\_v1.py}
+\end{itemize}
+
+状態生成器はこれらの reference data を読み込まない。
+
+\subsection{11.2
+基準ケースの厳格8状態生成器}\label{ux57faux6e96ux30b1ux30fcux30b9ux306eux53b3ux683c8ux72b6ux614bux751fux6210ux5668}
+
+保存先:
+
+\texttt{第五思考実験\_\allowbreak{}乗法状態内部展開と近似次数検証\_\allowbreak{}20260924/\allowbreak{}11\_\allowbreak{}荷電8状態\_\allowbreak{}厳格一回写像実験\_\allowbreak{}20260925/\allowbreak{}}
+
+主要コード:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{01\_\allowbreak{}CODE/\allowbreak{}run\_\allowbreak{}strict\_\allowbreak{}charged8\_\allowbreak{}final.py}
+\item
+  \texttt{01\_\allowbreak{}CODE/\allowbreak{}postprocess\_\allowbreak{}strict\_\allowbreak{}charged8.py}
+\end{itemize}
+
+監査証拠:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{00\_\allowbreak{}RULES\_\allowbreak{}AND\_\allowbreak{}AUDIT/\allowbreak{}preexec\_\allowbreak{}audit.json}
+\item
+  \texttt{03\_\allowbreak{}ANALYSIS/\allowbreak{}generator\_\allowbreak{}summary.json}
+\item
+  \texttt{03\_\allowbreak{}ANALYSIS/\allowbreak{}reference\_\allowbreak{}comparison.json}
+\end{itemize}
+
+\subsection{11.3
+5ケース移植実験}\label{ux30b1ux30fcux30b9ux79fbux690dux5b9fux9a13}
+
+保存先:
+
+\texttt{第五思考実験\_\allowbreak{}乗法状態内部展開と近似次数検証\_\allowbreak{}20260924/\allowbreak{}13\_\allowbreak{}charged8\_\allowbreak{}integer\_\allowbreak{}multiple\_\allowbreak{}5case\_\allowbreak{}strict\_\allowbreak{}numeric\_\allowbreak{}20260925/\allowbreak{}}
+
+主要コード:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{00\_\allowbreak{}CODE\_\allowbreak{}AND\_\allowbreak{}RULES/\allowbreak{}run\_\allowbreak{}strict\_\allowbreak{}charged8\_\allowbreak{}5cases.py}
+\item
+  \texttt{00\_\allowbreak{}CODE\_\allowbreak{}AND\_\allowbreak{}RULES/\allowbreak{}run\_\allowbreak{}n3\_\allowbreak{}repulsive\_\allowbreak{}checkpointed.py}
+\item
+  \texttt{00\_\allowbreak{}CODE\_\allowbreak{}AND\_\allowbreak{}RULES/\allowbreak{}postprocess\_\allowbreak{}strict\_\allowbreak{}charged8\_\allowbreak{}5cases.py}
+\item
+  \texttt{00\_\allowbreak{}CODE\_\allowbreak{}AND\_\allowbreak{}RULES/\allowbreak{}CASE\_\allowbreak{}MATRIX.json}
+\end{itemize}
+
+全 macrostep 行は HDF5 part files に保存した。\texttt{n3\_repulsive}
+は実行時間上限のため分割実行したが、part 間で継続したのは完全41成分 full
+state のみであり、別の生成式へ切り替えていない。
+
+\subsection{11.4
+論文6用軌道比較図}\label{ux8ad6ux65876ux7528ux8eccux9053ux6bd4ux8f03ux56f3}
+
+保存先:
+
+\texttt{第六思考実験\_\allowbreak{}荷電8状態\_\allowbreak{}重力クーロン複数相互作用\_\allowbreak{}20260926/\allowbreak{}01\_\allowbreak{}軌道条件比較図/\allowbreak{}}
+
+再現コード:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{generate\_paper6\_orbit\_condition\_comparison\_v1.py}
+\end{itemize}
+
+生成物:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{figures/\allowbreak{}figure01\_\allowbreak{}five\_\allowbreak{}case\_\allowbreak{}reference\_\allowbreak{}orbits\_\allowbreak{}same\_\allowbreak{}scale.svg}
+\item
+  \texttt{figures/\allowbreak{}figure02\_\allowbreak{}five\_\allowbreak{}case\_\allowbreak{}strict\_\allowbreak{}generator\_\allowbreak{}overlay\_\allowbreak{}panels.svg}
+\item
+  \texttt{figures/\allowbreak{}figure03\_\allowbreak{}five\_\allowbreak{}case\_\allowbreak{}radius\_\allowbreak{}vs\_\allowbreak{}cycles.svg}
+\item
+  \texttt{figures/\allowbreak{}figure04\_\allowbreak{}five\_\allowbreak{}case\_\allowbreak{}first\_\allowbreak{}10\_\allowbreak{}orbits\_\allowbreak{}same\_\allowbreak{}scale.svg}
+\item
+  \texttt{figures/\allowbreak{}paper6\_\allowbreak{}orbit\_\allowbreak{}condition\_\allowbreak{}case\_\allowbreak{}summary.csv}
+\end{itemize}
+
+5ケースの strict overlay 元図は \texttt{strict\_\allowbreak{}sources/\allowbreak{}}
+に保存し、統合時に軌道データは変更していない。
+
+\subsection{11.5
+論文本文用補助図}\label{ux8ad6ux6587ux672cux6587ux7528ux88dcux52a9ux56f3}
+
+保存先:
+
+\texttt{第六思考実験\_\allowbreak{}荷電8状態\_\allowbreak{}重力クーロン複数相互作用\_\allowbreak{}20260926/\allowbreak{}02\_\allowbreak{}論文本文図/\allowbreak{}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{figure05\_baseline\_radius\_vs\_time.svg}
+\item
+  \texttt{figure06\_baseline\_reference\_residuals.svg}
+\item
+  \texttt{figure07\_identity\_states\_NCD.svg}
+\item
+  \texttt{figure08\_microphase\_work\_states.svg}
+\item
+  \texttt{figure09\_em\_to\_gw\_power\_ratio.svg}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{12. 結論}\label{ux7d50ux8ad6}
+
+第五思考実験 {[}5{]}
+では、重力軌道生成器を自己監査し、見かけの二状態ではなく、現在の表現では六永続論理状態と明示
+machine/work state が必要であることを確認した。
+
+第六思考実験では、その監査規則を、重力だけの系から重力 + Coulomb
+の荷電二体系へ拡張した。
+
+独立解析基準を整理すると、今回の leading-order
+準円モデルにおける荷電依存性は、
+
+\[
+C=1-\lambda_A\lambda_B
+\]
+
+と
+
+\[
+D=(\lambda_A-\lambda_B)^2
+\]
+
+へ集約された。これらを第五思考実験の六状態へ加え、
+
+\[
+\boxed{
+Z_8=(U,P,E,H,Q,N,C,D)
+}
+\]
+
+とすると、外部の \(\lambda_A,\lambda_B\)、引力/斥力分岐、力種別分岐を
+\texttt{transition(z)} に持ち込まずに、荷電準円 inspiral を生成できた。
+
+基準ケースでは、解析基準との差は
+
+\[
+|\Delta t|\simeq1.46\times10^{-8},
+\qquad
+|\Delta\phi|\simeq8.44\times10^{-11},
+\]
+
+であり、
+
+\[
+\Delta N=\Delta C=\Delta D=0
+\]
+
+であった。
+
+さらに、同じ
+\texttt{transition(z)}、同じ11相機械、同じ8永続状態のまま、5種類の荷電条件へ移植できた。条件の違いは、同一アルゴリズムの外部分岐ではなく、初期状態の
+\(C,D\) の値として軌道差へ展開された。
+
+したがって本稿で得た結果は、
+
+\[
+\boxed{
+\begin{array}{c}
+\text{限定された既知の重力+Coulomb準円二体系について、}\\
+\text{保存力と二種類の放射反作用を、}\\
+\text{外部物理パラメータを持たない一つの同期状態写像へ}\\
+\text{内部化して再構成できる。}
+\end{array}
+}
+\]
+
+というものである。
+
+これは「統一理論の完成」ではない。むしろ、\textbf{既知物理を逆構成したとき、どの情報を状態内部へ置けば閉じるのかを一段ずつ監査する}という本研究系列の次の固定点である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{付録A.
+厳格一回写像の監査項目}\label{ux4ed8ux9332a.-ux53b3ux683cux4e00ux56deux5199ux50cfux306eux76e3ux67fbux9805ux76ee}
+
+実行前監査では、次を確認した。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+項目
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+結果
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+A1 & \texttt{transition} の引数は \texttt{z} のみ、永続状態は
+\(U,P,E,H,Q,N,C,D\) & pass \\
+A2 & 唯一の generator は \texttt{transition}、fast/collapsed/shortcut
+経路なし & pass \\
+A3 & 非-\(q\) 次状態は11候補の one-hot 積和、\(q\) は固定巡回線形写像 &
+pass \\
+A4 & 各候補は OLD full state のみを使用、work register を明示 & pass \\
+A5 & readout は出力時のみで dynamics へ非帰還 & pass \\
+A6 & A/B identity、force-type branch なし & pass \\
+A7 & 物理ケース値 \(N,C,D\) は状態、その他は解像度・符号化・RK係数 &
+pass \\
+A8 & 旧失敗実験を保存、reference import・別generatorなし & pass \\
+\end{longtable}
+}
+
+旧 \texttt{09\_...}、\texttt{10\_...}
+の失敗実験は削除・上書きせず保存している。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{付録B. 図一覧}\label{ux4ed8ux9332b.-ux56f3ux4e00ux89a7}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{図1}
+  \texttt{01\_\allowbreak{}軌道条件比較図/\allowbreak{}figures/\allowbreak{}figure01\_\allowbreak{}five\_\allowbreak{}case\_\allowbreak{}reference\_\allowbreak{}orbits\_\allowbreak{}same\_\allowbreak{}scale.svg}\\
+  5条件の独立解析基準軌道、同一スケール。
+\item
+  \textbf{図2}
+  \texttt{01\_\allowbreak{}軌道条件比較図/\allowbreak{}figures/\allowbreak{}figure02\_\allowbreak{}five\_\allowbreak{}case\_\allowbreak{}strict\_\allowbreak{}generator\_\allowbreak{}overlay\_\allowbreak{}panels.svg}\\
+  5条件の解析基準 vs 厳格8状態生成器。
+\item
+  \textbf{図3}
+  \texttt{01\_\allowbreak{}軌道条件比較図/\allowbreak{}figures/\allowbreak{}figure03\_\allowbreak{}five\_\allowbreak{}case\_\allowbreak{}radius\_\allowbreak{}vs\_\allowbreak{}cycles.svg}\\
+  半径 vs 累積周回数。
+\item
+  \textbf{図4}
+  \texttt{01\_\allowbreak{}軌道条件比較図/\allowbreak{}figures/\allowbreak{}figure04\_\allowbreak{}five\_\allowbreak{}case\_\allowbreak{}first\_\allowbreak{}10\_\allowbreak{}orbits\_\allowbreak{}same\_\allowbreak{}scale.svg}\\
+  最初の10周の同一スケール比較。
+\item
+  \textbf{図5}
+  \texttt{02\_\allowbreak{}論文本文図/\allowbreak{}figure05\_\allowbreak{}baseline\_\allowbreak{}radius\_\allowbreak{}vs\_\allowbreak{}time.svg}\\
+  基準ケースの半径--時間比較。
+\item
+  \textbf{図6}
+  \texttt{02\_\allowbreak{}論文本文図/\allowbreak{}figure06\_\allowbreak{}baseline\_\allowbreak{}reference\_\allowbreak{}residuals.svg}\\
+  基準ケースの独立解析基準残差。
+\item
+  \textbf{図7}
+  \texttt{02\_\allowbreak{}論文本文図/\allowbreak{}figure07\_\allowbreak{}identity\_\allowbreak{}states\_\allowbreak{}NCD.svg}\\
+  \(N,C,D\) の恒等保持。
+\item
+  \textbf{図8}
+  \texttt{02\_\allowbreak{}論文本文図/\allowbreak{}figure08\_\allowbreak{}microphase\_\allowbreak{}work\_\allowbreak{}states.svg}\\
+  11相 machine/work state。
+\item
+  \textbf{図9}
+  \texttt{02\_\allowbreak{}論文本文図/\allowbreak{}figure09\_\allowbreak{}em\_\allowbreak{}to\_\allowbreak{}gw\_\allowbreak{}power\_\allowbreak{}ratio.svg}\\
+  基準ケースの EM/GW power ratio。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsection{本研究系列}\label{ux672cux7814ux7a76ux7cfbux5217}
+
+{[}0{]} 木原範昭,
+\textbf{状態と関係性から時空・粒子・相互作用の創発を探索する研究プロジェクト設計
+― 不確実性下の基礎物理モデル探索に対する予備設計と実装可能性検証の枠組み
+―}, v1.0 (2026-09-20). Concept DOI: 10.5281/zenodo.22851944; Version
+DOI: 10.5281/zenodo.22851945.
+
+{[}1{]} 木原範昭, \textbf{第一思考実験：等価原理を無名な二自由度まで遡る
+―
+面積読み出しの保存から、二乗和の符号・曲率半径・三つの系（慣性／一様加速／回転）を導く
+―}, v1.0 (2026-09-20). Concept DOI: 10.5281/zenodo.22857952; Version
+DOI: 10.5281/zenodo.22857953.
+
+{[}2{]} 木原範昭,
+\textbf{第二思考実験：クーロン型の逆二乗の力を、積の読み出しと面積の時計から導く
+―
+二つの値と線形の法則のまま、焦点・引力と斥力・中性を出し、二つの値では書けないものを確定する
+―}, v1.2 (2026-09-21). Concept DOI: 10.5281/zenodo.22867336; Version
+DOI: 10.5281/zenodo.22876596.
+
+{[}3{]} 木原範昭, \textbf{第三思考実験：a b 2体の天体の軌道から a b
+2体の状態を読み出す ― 意味を定めない二つの値と \(G=c=M=1\)
+の知識だけで、軌道と重力波の読み出しから質量比・相対距離・相対時間を得る
+―}, v1.5 (2026-09-23). Concept DOI: 10.5281/zenodo.22909660; Version
+DOI: 10.5281/zenodo.22909661.
+
+{[}4{]} 木原範昭, \textbf{第四思考実験：固定作用 \(S\) から状態依存作用
+\(S_n\) へ ―
+第三思考実験で外部計算していた相対論的重力軌道を、\(X_{n+1}=S_nX_n\)
+の逐次相互作用から再生成できるか ―}, v1.0 (2026-09-23). Concept DOI:
+10.5281/zenodo.22919787; Version DOI: 10.5281/zenodo.22919788.
+
+{[}5{]} 木原範昭, \textbf{第五思考実験：隠れた状態はなかったか ―
+第四思考実験の二状態軌道生成を自己監査し、五状態から第六永続状態
+\(\mathcal N=\nu\) まで状態閉包を追跡する ―}, v2.1 (2026-09-26). Concept
+DOI: 10.5281/zenodo.22973086; Version DOI: 10.5281/zenodo.22973087.
+
+\subsection{外部文献}\label{ux5916ux90e8ux6587ux732e}
+
+{[}6{]} P. C. Peters and J. Mathews, ``Gravitational Radiation from
+Point Masses in a Keplerian Orbit,'' \emph{Physical Review}
+\textbf{131}, 435--440 (1963). DOI: 10.1103/PhysRev.131.435.
+
+{[}7{]} P. C. Peters, ``Gravitational Radiation and the Motion of Two
+Point Masses,'' \emph{Physical Review} \textbf{136}, B1224--B1232
+(1964). DOI: 10.1103/PhysRev.136.B1224.
+
+{[}8{]} L. Liu, Ø. Christiansen, Z.-K. Guo, R.-G. Cai, and S. P. Kim,
+``Gravitational and electromagnetic radiation from binary black holes
+with electric and magnetic charges: Circular orbits on a cone,''
+\emph{Physical Review D} \textbf{102}, 103520 (2020). DOI:
+10.1103/PhysRevD.102.103520.
+
+{[}9{]} C. A. Benavides-Gallego and W.-B. Han, ``Gravitational Waves and
+Electromagnetic Radiation from Charged Black Hole Binaries,''
+\emph{Symmetry} \textbf{15}, 537 (2023). DOI: 10.3390/sym15020537.
+
+{[}10{]} Z.-H. Zhang, T. Liu, S. Zhang, and Z.-K. Guo, ``Post-Newtonian
+dynamics of charged compact binaries,'' \emph{Physical Review D}
+\textbf{114}, 044088 (2026). DOI: 10.1103/4x8q-2kzm.
+
+{[}11{]} S. Verma et al., ``Post-newtonian dynamics of radiating
+charges: canonical formulation and binary inspiral laws,''
+\emph{European Physical Journal C} \textbf{86}, 830 (2026). DOI:
+10.1140/epjc/s10052-026-16076-2.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{変更履歴}\label{ux5909ux66f4ux5c65ux6b74}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{v1.1 (2026-09-26):} 状態生成器の初期化、局所相互作用率、唯一の
+  \texttt{transition(z)}、macrostep、読み出し、および終端補間の実コードを本文へ追加し、対応する数式と情報流を明示。
+\item
+  \textbf{v1.0 (2026-09-26):} 第六思考実験の初版。荷電 LO
+  準円解析基準、8永続状態の厳格一回写像、5条件
+  transferability、軌道比較図、再現性情報、主張範囲と非主張を統合。
+\end{itemize}
+
+\end{document}
