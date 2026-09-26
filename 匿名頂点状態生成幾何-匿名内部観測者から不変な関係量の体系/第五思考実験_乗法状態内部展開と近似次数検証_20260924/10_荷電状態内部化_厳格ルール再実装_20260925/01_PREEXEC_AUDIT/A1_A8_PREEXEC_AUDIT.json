@@ -1,0 +1,57 @@
+{
+  "audit": {
+    "A1_state_closure": {
+      "status": "PASS",
+      "evidence": "all case-dependent physical quantities are encoded in state before evolution; transition(z) has one argument"
+    },
+    "A2_one_map": {
+      "status": "PASS",
+      "evidence": "single dynamical path only: transition(z); all next components written by znext=sum_j q_j*cand_j"
+    },
+    "A3_product_sum": {
+      "status": "PASS",
+      "evidence": "generator RHS contains only products/sums of OLD state components and fixed coefficients; sqrt/inverse are represented by X,Y,S,T states"
+    },
+    "A4_sync_boundary": {
+      "status": "PASS",
+      "evidence": "candidate rows read OLD z only; RK work registers and phase q are explicit state"
+    },
+    "A5_no_feedback": {
+      "status": "PASS",
+      "evidence": "log is used only by readout after generation"
+    },
+    "A6_anonymity": {
+      "status": "PASS",
+      "evidence": "no A/B labels, sign branches, or force-type selector in generator"
+    },
+    "A7_constants": {
+      "status": "PASS",
+      "evidence": "HSTEP numerical resolution; PH derived from HSTEP; TAU0 encoding scale; A=2/3,B=32/5 fixed non-fitted coefficients of declared LO benchmark"
+    },
+    "A8_consistency": {
+      "status": "PASS",
+      "evidence": "new folder and code are separate; invalid folder 09 retained unchanged; outputs/hashes saved with this revision"
+    }
+  },
+  "static": {
+    "forbidden_alternate_path_functions_present": [],
+    "defined_functions": [
+      "Fp",
+      "Ft",
+      "audit_A1_A8",
+      "closed_form",
+      "initial_state",
+      "macro_step",
+      "main",
+      "readout",
+      "rhs_xyz",
+      "sha256",
+      "static_audit_source",
+      "transition"
+    ],
+    "transition_signature": "transition(z)",
+    "state_dimension": 36,
+    "phase_count": 9
+  },
+  "gate_pass": true
+}

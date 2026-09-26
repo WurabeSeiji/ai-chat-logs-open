@@ -1,0 +1,73 @@
+{
+  "model": "leading-order Einstein-Maxwell adiabatic quasi-circular inspiral reference",
+  "units": "G=M=c=1, epsilon0=1/(4*pi)",
+  "source_primary": {
+    "title": "Post-Newtonian dynamics of charged compact binaries",
+    "authors": "Zi-Han Zhang, Tan Liu, Shuai Zhang, Zong-Kuan Guo",
+    "arxiv": "2604.10654",
+    "date": "2026-04-12",
+    "used_for": [
+      "Q=qA qB/(G mA mB), Z=1-Q definitions (Eq. 63)",
+      "zeta0 definition (Eq. 73)",
+      "charged 1PN Kepler law diagnostic (Eq. 79/80)",
+      "GW quadrupole and EM dipole radiation hierarchy / flux-balance framework"
+    ]
+  },
+  "initial_conditions": {
+    "M": 1.0,
+    "mA": 0.5,
+    "mB": 0.5,
+    "mass_ratio_mA_over_mB": 1.0,
+    "eta": 0.25,
+    "mu": 0.25,
+    "lambda_A_q_over_m": 0.9,
+    "lambda_B_q_over_m": -0.9,
+    "qA": 0.45,
+    "qB": -0.45,
+    "Q": -0.81,
+    "Z": 1.81,
+    "delta_lambda": 1.8,
+    "zeta0": 0.81,
+    "r0": 50.0,
+    "rf": 20.0,
+    "phi0": 0.0,
+    "n_rows": 40001
+  },
+  "analytic_coefficients": {
+    "A_em_in_dr_dt": 1.9548,
+    "B_gw_in_dr_dt": 10.48352,
+    "F1_1pn_kepler_diagnostic": -8.063600000000001,
+    "r_power_crossover_Pem_eq_Pgw": 5.362962962962961
+  },
+  "closed_form_relations": {
+    "omega": "sqrt(Z/r^3)",
+    "E_orb": "-mu*Z/(2*r)",
+    "P_gw": "(32/5)*mu^2*Z^3/r^5",
+    "P_em": "(2/3)*mu^2*(lambda_A-lambda_B)^2*Z^2/r^4",
+    "dr_dt": "-(4/3)*mu*DeltaLambda^2*Z/r^2 - (64/5)*mu*Z^2/r^3",
+    "t_of_r": "F_t(r0)-F_t(r), with F_t'=r^3/(A*r+B)",
+    "phi_of_r": "F_phi(r0)-F_phi(r), with F_phi'=sqrt(Z)*r^(3/2)/(A*r+B)"
+  },
+  "scope_warning": "This is a controlled leading-order analytic benchmark, not the full general Einstein-Maxwell two-body solution. The 1PN charged Kepler expression is diagnostic only and is not fed back into the LO inspiral.",
+  "results_summary": {
+    "t_final": 17450.03184990649,
+    "phi_final": 104.75268106341164,
+    "orbital_cycles": 16.671906993370744,
+    "omega_initial": 0.00380525951808809,
+    "omega_final": 0.015041608956491323,
+    "P_em_over_P_gw_initial": 9.323204419889501,
+    "P_em_over_P_gw_final": 3.729281767955801,
+    "E_gw_emitted": 0.0010639278225356022,
+    "E_em_emitted": 0.005723572190196985,
+    "E_total_emitted": 0.006787500012732587,
+    "orbital_energy_loss_expected": 0.006787499999999999,
+    "max_abs_energy_balance_residual": 1.273258755374318e-11,
+    "final_energy_balance_residual": 1.273258755374318e-11,
+    "max_pn_epsilon": 0.0905,
+    "max_abs_rel_r_1pn_diagnostic": 0.041022353815003854,
+    "max_abs_rel_omega_1pn_diagnostic": 0.11838295230608753
+  },
+  "sha256": {
+    "raw_csv": "ee002362d56d2b29448c35e7cf08e96df37fd631ae6d2dfa5ad4a9a5d6dbd41d"
+  }
+}

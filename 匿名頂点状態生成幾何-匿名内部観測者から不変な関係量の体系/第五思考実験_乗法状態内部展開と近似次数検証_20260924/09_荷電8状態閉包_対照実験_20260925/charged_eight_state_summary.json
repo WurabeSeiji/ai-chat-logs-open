@@ -1,0 +1,292 @@
+{
+  "experiment": "charged eight-state closure control v1",
+  "date": "2026-09-25",
+  "state_vector": [
+    "U",
+    "P",
+    "E",
+    "H",
+    "Q",
+    "N",
+    "C",
+    "D"
+  ],
+  "state_meaning": {
+    "N": "eta=symmetric mass ratio",
+    "C": "Z=1-lambda_A*lambda_B",
+    "D": "(lambda_A-lambda_B)^2"
+  },
+  "generator_equations": {
+    "dP_dphi": "-(4/3)*N*D*sqrt(C)/sqrt(P) -(64/5)*N*C^(3/2)/P^(3/2)",
+    "dE_dphi": "0 in quasi-circular sector",
+    "dt_dphi": "P^(3/2)/sqrt(C)"
+  },
+  "static_audit": {
+    "micro_eight_args": [
+      "s"
+    ],
+    "external_physical_runtime_names_present": [],
+    "identity_phase_coefficients": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "N_C_D_identity_coefficients_exact": true,
+    "persistent_state_vector": [
+      "U",
+      "P",
+      "E",
+      "H",
+      "Q",
+      "N",
+      "C",
+      "D"
+    ],
+    "historical_R4_limitation_retained": true
+  },
+  "external_vs_internal_bitwise_controls": [
+    {
+      "case": "benchmark",
+      "steps": 4000,
+      "max_core5_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bitwise_mismatch_count": 0,
+      "identity_fail_count": 0
+    },
+    {
+      "case": "same_C_different_D",
+      "steps": 4000,
+      "max_core5_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bitwise_mismatch_count": 0,
+      "identity_fail_count": 0
+    },
+    {
+      "case": "same_charge_sign",
+      "steps": 4000,
+      "max_core5_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bitwise_mismatch_count": 0,
+      "identity_fail_count": 0
+    },
+    {
+      "case": "unequal_mass",
+      "steps": 4000,
+      "max_core5_abs": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "bitwise_mismatch_count": 0,
+      "identity_fail_count": 0
+    }
+  ],
+  "random_micro_audit": {
+    "seed": 20260925,
+    "microsteps": 5500,
+    "max_core5_abs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "bitwise_micro_mismatch_count": 0,
+    "identity_micro_fail_count": 0,
+    "phase_fail_count": 0
+  },
+  "closure_counterexamples": [
+    {
+      "scenario": "A_benchmark",
+      "same_first6": true,
+      "N": 0.25,
+      "P": 50.0,
+      "C": 1.09,
+      "D": 0.36,
+      "lambda_pair_label": "+0.30,-0.30",
+      "dP_dphi": -0.028017728239098903,
+      "dt_dphi": 338.6427307392982,
+      "omega": 0.0029529646120466805,
+      "P_gw": 1.6576371200000005e-09,
+      "P_em": 2.8514400000000002e-09
+    },
+    {
+      "scenario": "B_same_C_diff_D",
+      "same_first6": true,
+      "N": 0.25,
+      "P": 50.0,
+      "C": 1.09,
+      "D": 0.4225,
+      "lambda_pair_label": "+0.45,-0.20",
+      "dP_dphi": -0.031093733043314194,
+      "dt_dphi": 338.6427307392982,
+      "omega": 0.0029529646120466805,
+      "P_gw": 1.6576371200000005e-09,
+      "P_em": 3.3464816666666664e-09
+    },
+    {
+      "scenario": "C_same_D_diff_C",
+      "same_first6": true,
+      "N": 0.25,
+      "P": 50.0,
+      "C": 1.08,
+      "D": 0.36,
+      "lambda_pair_label": "+0.40,-0.20",
+      "dP_dphi": -0.02779485000930928,
+      "dt_dphi": 340.2069087198858,
+      "omega": 0.002939387691339814,
+      "P_gw": 1.6124313600000005e-09,
+      "P_em": 2.79936e-09
+    },
+    {
+      "scenario": "D_same_sign",
+      "same_first6": true,
+      "N": 0.25,
+      "P": 50.0,
+      "C": 0.91,
+      "D": 0.0,
+      "lambda_pair_label": "+0.30,+0.30",
+      "dP_dphi": -0.007857005556826342,
+      "dt_dphi": 370.6246583305506,
+      "omega": 0.0026981475126464085,
+      "P_gw": 9.645708800000001e-10,
+      "P_em": 0.0
+    }
+  ],
+  "benchmark": {
+    "sampled_csv": "charged_eight_state_benchmark_sampled.csv",
+    "execution_path": "collapsed macro_fast_eight validated bitwise against explicit 11-micro path",
+    "macro_steps_to_cross_rf": 488345,
+    "equivalent_microsteps_if_explicit": 5371795,
+    "last_r": 19.999894652364606,
+    "crossing_interpolation": {
+      "t_at_r20": 169032.31760704893,
+      "t_reference": 169032.31760706357,
+      "abs_t_error": 1.4639226719737053e-08,
+      "phi_at_r20": 767.088999401507,
+      "phi_reference": 767.0889994015913,
+      "abs_phi_error": 8.43556335894391e-11,
+      "cycles_at_r20": 122.08600604616578,
+      "cycles_reference": 122.08600604617921
+    },
+    "max_sampled_errors": {
+      "abs_t_vs_closed_form": 1.1528754839673638e-08,
+      "abs_H_vs_closed_form_phase_vector": 4.2482729081731716e-11,
+      "abs_r_vs_saved_reference_at_same_t": 9.069200501699015e-09,
+      "xy_norm_vs_saved_reference_at_same_t": 3.754312359683735e-06
+    },
+    "max_identity_drifts": {
+      "N": 0.0,
+      "C": 0.0,
+      "D": 0.0
+    }
+  },
+  "convergence": [
+    {
+      "steps_per_orbit": 500,
+      "h": 0.012566370614359173,
+      "macro_steps": 50000,
+      "target_orbits": 100,
+      "r_at_100_orbits": 27.87525768887041,
+      "r_reference": 27.875257688870036,
+      "abs_r_error": 3.730349362740526e-13,
+      "t_at_100_orbits": 153191.843815612,
+      "t_reference": 153191.8438156112,
+      "abs_t_error": 7.8580342233181e-10
+    },
+    {
+      "steps_per_orbit": 1000,
+      "h": 0.006283185307179587,
+      "macro_steps": 100000,
+      "target_orbits": 100,
+      "r_at_100_orbits": 27.87525768887015,
+      "r_reference": 27.875257688870036,
+      "abs_r_error": 1.1368683772161603e-13,
+      "t_at_100_orbits": 153191.84381561127,
+      "t_reference": 153191.8438156112,
+      "abs_t_error": 5.820766091346741e-11
+    },
+    {
+      "steps_per_orbit": 2000,
+      "h": 0.0031415926535897933,
+      "macro_steps": 200000,
+      "target_orbits": 100,
+      "r_at_100_orbits": 27.875257688869794,
+      "r_reference": 27.875257688870036,
+      "abs_r_error": 2.4158453015843406e-13,
+      "t_at_100_orbits": 153191.8438156103,
+      "t_reference": 153191.8438156112,
+      "abs_t_error": 9.022187441587448e-10
+    },
+    {
+      "steps_per_orbit": 4000,
+      "h": 0.0015707963267948967,
+      "macro_steps": 400000,
+      "target_orbits": 100,
+      "r_at_100_orbits": 27.87525768887131,
+      "r_reference": 27.875257688870036,
+      "abs_r_error": 1.2754242106893798e-12,
+      "t_at_100_orbits": 153191.84381561528,
+      "t_reference": 153191.8438156112,
+      "abs_t_error": 4.0745362639427185e-09
+    },
+    {
+      "steps_per_orbit": 8000,
+      "h": 0.0007853981633974483,
+      "macro_steps": 800000,
+      "target_orbits": 100,
+      "r_at_100_orbits": 27.87525768886757,
+      "r_reference": 27.875257688870036,
+      "abs_r_error": 2.4655832930875476e-12,
+      "t_at_100_orbits": 153191.8438156073,
+      "t_reference": 153191.8438156112,
+      "abs_t_error": 3.899913281202316e-09
+    }
+  ],
+  "explicit_micro_vs_collapsed_fast_12000": {
+    "max_core8_abs": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "bitwise_mismatch_count": 0
+  },
+  "reference": {
+    "raw_csv": "reference_raw.csv",
+    "raw_sha256": "f4f49789e0555903f77cd76b34a3a617d6bf0970a5a077ef0e8ccf38cc111689",
+    "metadata": "reference_metadata.json",
+    "metadata_sha256": "ed9d213735fc9f693728b69c3a7073f8f5cb3127f0bfa5f56ac2438e9800dc82"
+  },
+  "scope_warning": "LO adiabatic quasi-circular charged benchmark only; does not establish full Einstein-Maxwell closure or full R4 multiplicative closure.",
+  "strict_product_sum_audit_file": "strict_product_sum_audit.json"
+}

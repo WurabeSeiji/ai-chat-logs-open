@@ -1,0 +1,64 @@
+{
+  "common": {
+    "P0": 50.0,
+    "target_P": 20.0,
+    "N": 0.25,
+    "steps_per_orbit": 4000,
+    "persistent_state": [
+      "U",
+      "P",
+      "E",
+      "H",
+      "Q",
+      "N",
+      "C",
+      "D"
+    ],
+    "generator": "transition(z) only",
+    "reference_feedback": false
+  },
+  "cases": [
+    {
+      "id": "n1_attractive",
+      "lambda_A": 0.3,
+      "lambda_B": -0.3,
+      "C": 1.09,
+      "D": 0.36
+    },
+    {
+      "id": "n1_repulsive",
+      "lambda_A": 0.3,
+      "lambda_B": 0.3,
+      "C": 0.91,
+      "D": 0.0
+    },
+    {
+      "id": "n3_attractive",
+      "lambda_A": 0.9,
+      "lambda_B": -0.9,
+      "C": 1.81,
+      "D": 3.24
+    },
+    {
+      "id": "n3_repulsive",
+      "lambda_A": 0.9,
+      "lambda_B": 0.9,
+      "C": 0.19,
+      "D": 0.0
+    },
+    {
+      "id": "n4_attractive",
+      "lambda_A": 1.2,
+      "lambda_B": -1.2,
+      "C": 2.44,
+      "D": 5.76
+    }
+  ],
+  "excluded": {
+    "id": "n4_repulsive",
+    "lambda_A": 1.2,
+    "lambda_B": 1.2,
+    "C": -0.44,
+    "reason": "User explicitly excluded from this numerical run because the unchanged analytic method stopped for C<=0."
+  }
+}

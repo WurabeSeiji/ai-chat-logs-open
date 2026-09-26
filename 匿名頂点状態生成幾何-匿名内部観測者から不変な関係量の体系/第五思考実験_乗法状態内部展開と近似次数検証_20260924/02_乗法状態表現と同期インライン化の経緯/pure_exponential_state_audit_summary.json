@@ -1,0 +1,40 @@
+{
+  "state_definition": {
+    "U_chi": "exp(i chi)",
+    "P": "exp(log p) = p (positive multiplicative scale state)",
+    "E": "exp(log e) = e (positive multiplicative scale state)",
+    "H_phi": "exp(i phi/2)",
+    "T": "exp(lambda_t t), lambda_t=1e-4"
+  },
+  "update_rule": "Z_next = Z_current elementwise-multiplied by factors computed only from Z_current; no decoded/readout values are fed back",
+  "forbidden_calls_in_update": [],
+  "twelve_case_global_max_error_vs_legacy_reference": {
+    "chi_phase": 5.02779650e-12,
+    "p": 1.60582658e-12,
+    "e": 3.00870440e-14,
+    "phi_half_phase": 1.28507731e-13,
+    "t_readout": 1.23473001e-08
+  },
+  "c1_csv_max_error": {
+    "p": 1.8118839761882555e-13,
+    "e": 3.608224830031759e-15,
+    "t": 1.9372237147763371e-10,
+    "x": 3.9399594697897555e-12,
+    "y": 4.9187320882992935e-12,
+    "r": 6.679101716144942e-13,
+    "X0": 4.246047957678911e-13,
+    "X1": 4.0234482412415673e-13
+  },
+  "paper4_map_audit": {
+    "max_SX_minus_Xnext": 3.299101647648242e-13,
+    "max_abs_detS_minus_1": 6.150635556423367e-14,
+    "max_xy_vs_legacy": 4.872191329788594e-10,
+    "note": "these are dominated by floating-point unit-phase drift; theoretical phase factors are unit modulus"
+  },
+  "strict_literal_encoding_obstruction": {
+    "encoding": "U=exp(i chi), P=exp(p), E=exp(e)",
+    "radius_after_substitution": "log(P)/(1 + (U^2+1) log(E)/(2U))",
+    "contains_log": true,
+    "interpretation": "literal exp(p), exp(e) cannot evaluate the current RR/orbit formulas without log; p/e must be reparameterized or the state basis enlarged"
+  }
+}
