@@ -48,7 +48,7 @@ $$
 
 となる。したがって $n=1$ では $(C,D)=(0.91,0)$、$n=3$ では $(0.19,0)$、$n=4$ では $(-0.44,0)$ となる。
 
-第六思考実験と同じ $P=50\rightarrow20$、4000 macro steps/orbit の条件で数値実験を行った。$n=1$ は 1,456,531 macro steps、約364.13周で $P=19.999971790606857$ に到達した。$n=3$ は既存の同一初期状態に対する完全走行と、新規に再走行した先頭100,001 macro steps の双方で同一生成則を確認し、完全走行では 15,266,914 macro steps、約3816.7周で $P=19.999998005124105$ に到達した。$N,C,D$ の drift は 0 であった。$n=4$ は $C<0$ となり、現在の実数準円写像が必要とする $C>0$ の定義域外となったため、新しい規則を追加せず実行不能として記録した。
+第六思考実験と同じ $P=50\rightarrow20$、4000 macro steps/orbit の条件で、$aa$ と $bb$ を別々に、$n=1$ と $n=3$ について $P\le20$ に到達するまで実行した。$n=1$ は 1,456,531 macro steps、約364.13周で $P=19.999971790606857$ に到達した。$n=3$ は 15,266,914 macro steps、約3816.7周で $P=19.999998005124105$ に到達した。$aa$ と $bb$ の結果は全 macro step で同じであった。$N,C,D$ の drift は 0 であった。$n=4$ は $C<0$ となり、現在の実数準円写像が必要とする $C>0$ の定義域外となったため、新しい規則を追加せず実行不能として記録した。
 
 自己関係では $D=0$ であるため、本稿で採用する leading electric-dipole radiation は全域で 0 となった。一方、$C>0$ の $n=1,3$ では gravitational quadrupole radiation に対応する散逸が残り、状態だけから軌道に相当する周期運動と軌道縮小を読み出せた。
 
@@ -362,15 +362,16 @@ $$
 
 ## 6.1 実験方法
 
-第六思考実験の strict generator を変更せず、自己相互作用用の初期化だけを追加した。
+第六思考実験の strict generator と、第六思考実験補遺 [2] の初期化プログラムを、書き換えずに読み込んで実行した。初期状態の41成分は、補遺の初期化プログラムの `init_case` が作る。状態の更新、行の生成、保存は、第六思考実験の strict generator がそのまま行う。ラッパーが与えるのは実行条件と保存先である。strict generator が初期状態を受け取る関数 `init_state` は、補遺が作った初期状態を返すものに替えた。
 
 実験コード:
 
 ```text
-01_独立自己相互作用数値実験_v1/
-  run_paper7_self_interaction.py
-  run_strict_charged8_5cases.py
-  paper6_init_G_q0_c1.py
+03_第六プログラム直接インポート再実行_v1/
+  paper6_programs/run_strict_charged8_5cases.py   第六思考実験の strict generator（無変更）
+  paper6_programs/paper6_init_G_q0_c1.py          第六思考実験補遺の初期化（無変更）
+  wrapper_common.py
+  wrap10_run_generator.py
 ```
 
 実験条件は
@@ -385,7 +386,9 @@ $$
 
 である。
 
-$n=1$ は今回完全再走行した。$n=3$ は計算量が大きいため、今回新たに先頭100,001 macro steps を再走行するとともに、同一初期 full state と同一 `transition(z)` を持つ第六思考実験 `n3_repulsive` の保存済み完全走行を参照した。最初の macrostep の raw microstate は byte 単位で一致した。
+$a$ の電荷を $+nq_0$、$b$ の電荷を $-nq_0$ とし、$aa$ と $bb$ を別々に、$n=1$ と $n=3$ の4ケースを $P\le20$ に到達するまで実行した。全 macro step の行を、第六思考実験と同じ形式で保存した。
+
+同じ初期状態を持つ第六思考実験の保存データ `n1_repulsive`、`n3_repulsive` と、全行を比較した。保存している15列のうち、$P,E,U,H,N,C,D$ と軌道の読み出し $x,y$ を含む13列は、全行で同じであった。時計状態 $Q$ と時刻の読み出し $t$ は、最後の桁が異なった。差は、その値の最小刻みで数えて、$Q$ が $n=1$ で $-8$ から $+31$ 個、$n=3$ で $-80$ から $+124$ 個、$t$ が $n=1$ で $-2$ から $+4$ 個、$n=3$ で $-2$ から $+2$ 個である。$Q$ の更新に用いる指数関数の値が、実行環境によって最後の桁で異なるためである。最終状態の41成分、macro step 数、最終 $P$ は同じであった。最初の macrostep の raw microstate は byte 単位で一致した。
 
 ## 6.2 $n=1$
 
@@ -427,15 +430,7 @@ $$
 C=0.19,\qquad D=0.
 $$
 
-今回新規に再走行した先頭100,001 macro steps では
-
-$$
-P:50\rightarrow49.88204444925427
-$$
-
-となり、保存済み strict generator と同じ状態発展を確認した。
-
-完全走行は
+完全走行結果は
 
 $$
 15,266,914\ \text{macro steps}
@@ -481,7 +476,7 @@ $$
 
 を必要とする。
 
-したがって $n=4$ 自己相互作用は現在のモデルの定義域外である。本稿では複素化、絶対値化、符号反転などの追加規則を導入せず、**実行不能という結果をそのまま保存した**。
+したがって $n=4$ 自己相互作用は現在のモデルの定義域外である。本稿では複素化、絶対値化、符号反転などの追加規則を導入せず、**$n=4$ は実行していない**。
 
 ---
 
@@ -495,52 +490,93 @@ $$
 | $aa=bb$ | 3 | 0.19 | 0 | 15,266,914 | 3816.7 | 19.999998005124105 | 非零 | 0 |
 | $aa=bb$ | 4 | -0.44 | 0 | — | — | — | 現写像では未定義 | 0 |
 
-$aa$ と $bb$ は今回の等質量・等電荷絶対値条件では同一初期状態を持つため、数値軌道も完全に同一である。したがって図では一つの自己相互作用結果として表示する。
+$aa$ と $bb$ は今回の等質量・等電荷絶対値条件では同一初期状態を持つ。$aa$ と $bb$ を別々に実行し、全 macro step の全列が同じであることを確認した。
 
 ## 7.2 軌道図
 
-![図1 自己相互作用 n=1, n=3 の軌道比較](02_論文図_自己相互作用_v1/figure01_self_orbits_n1_n3_same_scale.svg)
+以下の図は、第六思考実験の図化プログラムを書き換えずに用いて描いた。図中の題名と軸の名前は同プログラムのものである。ケース別の図は $aa$ の結果を示す。
 
-**図1.** $n=1$ と $n=3$ の自己相互作用軌道。$aa$ と $bb$ は同一結果である。両ケースとも $P=50$ から $P=20$ へ向かう inspiral 型の周期運動を生成するが、$C=0.19$ の $n=3$ は $n=1$ よりはるかに多い周回を要する。
+![図1 4ケースの軌道の重ね描き](03_第六プログラム直接インポート再実行_v1/orbit_condition_comparison/figures/figure02_five_case_strict_generator_overlay_panels.svg)
 
-通常の $x=P\cos\phi$, $y=P\sin\phi$ 表示では、多数周回する軌道は線が密になり、内向きのスパイラル構造が視覚的に判別しにくい。そこで、力学には一切帰還させない図化専用の対数半径
+**図1.** 4ケース（`self_aa_n1`、`self_bb_n1`、`self_aa_n3`、`self_bb_n3`）の軌道。独立解析基準（実線）と strict generator の出力（破線）を重ねて描いたケース別の図を、1枚に並べたものである。図中の題名にある "Five" は第六思考実験の図化プログラムの固定文字列であり、並んでいるのは4ケースである。
 
-$$
-\rho_{\log}=\ln\left(\frac{P}{P_f}\right),
-\qquad P_f=20
-$$
+![図2 aa, n=1 の軌道](03_第六プログラム直接インポート再実行_v1/cases/self_aa_n1/figures/figure01_orbit_overlay.svg)
 
-を定義し、
+**図2.** $aa$、$n=1$ の軌道。独立解析基準（実線）と strict generator の出力（破線）。strict generator の出力は、全 1,456,532 行から 182 macro steps ごとに取り出した点を結んで描いている。$P=50$ から $P=20$ へ向かう inspiral 型の周期運動である。
 
-$$
-\tilde x=\rho_{\log}\cos\phi,
-\qquad
-\tilde y=\rho_{\log}\sin\phi
-$$
+![図3 aa, n=3 の軌道](03_第六プログラム直接インポート再実行_v1/cases/self_aa_n3/figures/figure01_orbit_overlay.svg)
 
-として同一軌道を再表示した。位相 $\phi$ は変更せず、半径の読み出しだけを対数化している。
+**図3.** $aa$、$n=3$ の軌道。strict generator の出力は、全 15,266,915 行から 1908 macro steps ごとに取り出した点を結んで描いている。取り出す間隔が約0.48周にあたるため、点を結ぶ線が軌道の内側を横切り、図は円板状に塗りつぶされて見える。
 
-![図2 自己相互作用軌道の対数半径表示](02_論文図_自己相互作用_v1/figure01b_self_log_radius_spirals.svg)
+多数周回する軌道は、$x=P\cos\phi$、$y=P\sin\phi$ の表示では線が密になり、内向きのスパイラル構造を判別しにくい。そこで、最初の10周を、半径軸を対数にした極座標で表示した。用いたのは strict generator が保存した $P$ と読み出し座標 $x,y$ であり、軌道の再計算はしていない。角度は $\operatorname{atan2}(y,x)$ を連続につないだもの、半径は $P$ である。半径軸の範囲は、10周の間に通過した範囲に合わせている。この表示は可視化専用であり、状態更新や readout dynamics には使用していない。
 
-**図2.** 同じ $n=1,n=3$ 自己相互作用軌道を $\rho_{\log}=\ln(P/P_f)$ で再表示したもの。上段は全走行、下段は同一軌道の終端40周だけを拡大している。終端拡大では、$P$ が連続的に縮小しながら位相が回転するスパイラル構造を直接確認できる。この変換は可視化専用であり、状態更新や readout dynamics には使用していない。
+![図4 aa, n=1 の最初の10周、対数半径表示](03_第六プログラム直接インポート再実行_v1/cases/self_aa_n1/figures/figure07_first_10_orbits_log_radial_scale.svg)
+
+**図4.** $aa$、$n=1$ の最初の10周。半径軸は対数。$P$ は $50$ から $49.5026252158739$ へ縮小する。
+
+![図5 aa, n=3 の最初の10周、対数半径表示](03_第六プログラム直接インポート再実行_v1/cases/self_aa_n3/figures/figure07_first_10_orbits_log_radial_scale.svg)
+
+**図5.** $aa$、$n=3$ の最初の10周。半径軸は対数。$P$ は $50$ から $49.9528683833194$ へ縮小する。
 
 ## 7.3 半径縮小
 
-![図3 自己相互作用の半径縮小](02_論文図_自己相互作用_v1/figure02_self_radius_vs_cycles.svg)
+![図6 半径と累積周回数](03_第六プログラム直接インポート再実行_v1/orbit_condition_comparison/figures/figure03_five_case_radius_vs_cycles.svg)
 
-**図3.** 累積周回数に対する半径状態 $P$。$n=1$ は約364周、$n=3$ は約3817周で $P\simeq20$ に達する。
+**図6.** 累積周回数に対する半径。独立解析基準の曲線である。$n=1$ は約364周、$n=3$ は約3817周で $P=20$ に達する。$aa$ と $bb$ の曲線は重なっている。図中の題名にある "five" は図化プログラムの固定文字列である。
+
+![図7 aa, n=1 の半径と時刻](03_第六プログラム直接インポート再実行_v1/cases/self_aa_n1/figures/figure02_radius_vs_time.svg)
+
+**図7.** $aa$、$n=1$ の半径と時刻。独立解析基準（実線）と strict generator の出力（破線）。
+
+![図8 aa, n=3 の半径と時刻](03_第六プログラム直接インポート再実行_v1/cases/self_aa_n3/figures/figure02_radius_vs_time.svg)
+
+**図8.** $aa$、$n=3$ の半径と時刻。strict generator の線は、時刻の読み出しが有限である範囲だけを描いている。$n=3$ では指数時計 $Q$ が macro step 6,316,005、$P=41.514301346976836$ で有限精度範囲を超えるため、線はそこで終わる。軌道状態 $P,H$ の生成は $P=20$ まで続いている。
 
 ## 7.4 放射項
 
-![図4 自己相互作用のGWとEM放射](02_論文図_自己相互作用_v1/figure03_self_gw_and_em_power.svg)
+![図9 aa, n=1 の放射量](03_第六プログラム直接インポート再実行_v1/analytic_reference/self_aa_n1/figures/figure04_radiation_power.svg)
 
-**図4.** 第六思考実験と同じ leading-order readout による放射量。自己相互作用では $D=0$ であるため leading electric-dipole power は全域で 0。一方、$C>0$ の $n=1,3$ では GW quadrupole power は非零であり、軌道縮小を生じる。
+**図9.** $aa$、$n=1$ の放射量。第六思考実験と同じ leading-order の式による、独立解析基準の値である。縦軸は対数。自己相互作用では $D=0$ であるため leading electric-dipole power は全域で 0 であり、対数軸には描かれない。GW quadrupole power の線と total の線は重なっている。
+
+![図10 aa, n=3 の放射量](03_第六プログラム直接インポート再実行_v1/analytic_reference/self_aa_n3/figures/figure04_radiation_power.svg)
+
+**図10.** $aa$、$n=3$ の放射量。図9と同じ表示である。
 
 ## 7.5 生成器との整合確認
 
-![図5 strict generator と参照値の確認](02_論文図_自己相互作用_v1/figure04_self_generator_reference_checks.svg)
+strict generator の出力と独立解析基準の差を、全 macro step について計算した。以下の図は、全行から約8000点を取り出して描いている。図の説明に書いた最大値は、全点について計算した値である。
 
-**図5.** strict generator の実データと、第六思考実験から継承した独立解析基準との整合確認。図化コード、SVG、数値要約、SHA256 は再現用フォルダに保存した。
+![図11 aa, n=1 の同じ位相での残差](03_第六プログラム直接インポート再実行_v1/cases/self_aa_n1/figures/figure06_full_phase_residuals.svg)
+
+**図11.** $aa$、$n=1$ の、同じ位相での残差。全走行 1,456,531 点での最大値は $|\Delta r|=5.25\times10^{-9}$、$\|\Delta(x,y)\|=4.97\times10^{-9}$ である。
+
+![図12 aa, n=3 の同じ位相での残差](03_第六プログラム直接インポート再実行_v1/cases/self_aa_n3/figures/figure06_full_phase_residuals.svg)
+
+**図12.** $aa$、$n=3$ の、同じ位相での残差。全走行 15,266,914 点での最大値は $|\Delta r|=5.26\times10^{-9}$、$\|\Delta(x,y)\|=3.58\times10^{-9}$ である。
+
+![図13 aa, n=1 の同じ時刻での残差](03_第六プログラム直接インポート再実行_v1/cases/self_aa_n1/figures/figure03_reference_residuals.svg)
+
+**図13.** $aa$、$n=1$ の、同じ時刻での残差。1,456,531 点での最大値は $|\Delta r|=1.05\times10^{-8}$、$\|\Delta(x,y)\|=1.34\times10^{-5}$ である。
+
+![図14 aa, n=3 の同じ時刻での残差](03_第六プログラム直接インポート再実行_v1/cases/self_aa_n3/figures/figure03_reference_residuals.svg)
+
+**図14.** $aa$、$n=3$ の、同じ時刻での残差。時刻の読み出しが有限である 6,316,005 点での最大値は $|\Delta r|=5.07\times10^{-9}$、$\|\Delta(x,y)\|=1.41\times10^{-4}$ である。
+
+![図15 aa, n=1 の N, C, D の保持](03_第六プログラム直接インポート再実行_v1/cases/self_aa_n1/figures/figure04_identity_states.svg)
+
+**図15.** $aa$、$n=1$ の $N,C,D$。全走行で $N=0.25$、$C=0.91$、$D=0$ のまま保持される。
+
+![図16 aa, n=3 の N, C, D の保持](03_第六プログラム直接インポート再実行_v1/cases/self_aa_n3/figures/figure04_identity_states.svg)
+
+**図16.** $aa$、$n=3$ の $N,C,D$。全走行で $N=0.25$、$C=0.19$、$D=0$ のまま保持される。
+
+![図17 aa, n=1 の最初の macrostep の work state](03_第六プログラム直接インポート再実行_v1/cases/self_aa_n1/figures/figure05_microphase_work_states.svg)
+
+**図17.** $aa$、$n=1$ の最初の macrostep における work state（$k_1,k_2,k_3,k_4$ の $P$ 成分と $\Delta P$）の推移。
+
+![図18 aa, n=3 の最初の macrostep の work state](03_第六プログラム直接インポート再実行_v1/cases/self_aa_n3/figures/figure05_microphase_work_states.svg)
+
+**図18.** $aa$、$n=3$ の最初の macrostep における work state の推移。
 
 ---
 
@@ -723,50 +759,62 @@ $$
 
 # 12. 再現性
 
-数値実験一式は次のフォルダに保存した。
+数値実験、図化、比較の一式は次のフォルダに保存した。
 
 ```text
 第七思考実験_自己相互作用_aa_bb_20260927/
-  01_独立自己相互作用数値実験_v1/
+  03_第六プログラム直接インポート再実行_v1/
 ```
 
-主要ファイル:
+第六思考実験と第六思考実験補遺のプログラムは、書き換えずに `paper6_programs/` へコピーし、そこから読み込んで実行した。コピー元とコピー先の SHA-256 は `paper6_programs/COPY_MANIFEST.json` に記録した。
+
+コピーしたプログラム:
 
 ```text
-run_paper7_self_interaction.py
-run_strict_charged8_5cases.py
-paper6_init_G_q0_c1.py
-all_aa_bb_case_results.csv
-verification_against_paper6.json
-SHA256SUMS.json
-SOURCE_PROVENANCE_ja.md
-README_ja.md
+paper6_programs/run_strict_charged8_5cases.py
+paper6_programs/paper6_init_G_q0_c1.py
+paper6_programs/solve_charged_binary_analytic_reference_v1.py
+paper6_programs/plot_charged_binary_analytic_reference_v1.py
+paper6_programs/postprocess_strict_5case.py
+paper6_programs/postprocess_strict_charged8_5cases.py
+paper6_programs/generate_paper6_orbit_condition_comparison_v1.py
+paper6_programs/plot_first_10_orbits_log_radial_scale.py
 ```
 
-図化一式は
+ラッパー（実行条件、保存先、初期状態の受け渡しを与える）と、比較のプログラム:
 
 ```text
-第七思考実験_自己相互作用_aa_bb_20260927/
-  02_論文図_自己相互作用_v1/
+step00_copy_programs.py
+wrapper_common.py
+wrap10_run_generator.py
+wrap20_analytic_reference.py
+wrap30_postprocess_figures.py
+wrap40_orbit_condition_comparison.py
+wrap50_log_radial_orbits.py
+wrap60_analytic_reference_figures.py
+compare_with_previous.py
+inspect_Q_difference.py
+step90_write_sha256sums.py
+run_all.sh
 ```
 
-に保存した。
-
-主要ファイル:
+出力:
 
 ```text
-generate_paper7_self_interaction_figures_v1.py
-figure01_self_orbits_n1_n3_same_scale.svg
-figure01b_self_log_radius_spirals.svg
-figure02_self_radius_vs_cycles.svg
-figure03_self_gw_and_em_power.svg
-figure04_self_generator_reference_checks.svg
-paper7_self_figure_summary.csv
+cases/<ケース名>/               全 macro step の行（HDF5）、最終状態、要約、解析基準との比較、図
+analytic_reference/<ケース名>/  独立解析基準とその図
+orbit_condition_comparison/     条件比較の図
+comparison_results/             第六思考実験の保存データ、および書き換える前のプログラムの出力との比較
+CASE_TABLE.json                 実行条件と、補遺の初期化が返した値
 SHA256SUMS.txt
 README_ja.md
 ```
 
-図化プログラムは同じデータから SVG と PNG の双方を生成する。論文本文では可逆なベクトル形式である SVG を参照する。
+ケース名は `self_aa_n1`、`self_bb_n1`、`self_aa_n3`、`self_bb_n3` である。一式は `run_all.sh` で再実行できる。
+
+図化プログラムは SVG を生成する。条件比較の重ね描きの図（図1）を除き、同じデータから PNG も生成する。論文本文では可逆なベクトル形式である SVG を参照する。
+
+`01_独立自己相互作用数値実験_v1/` と `02_論文図_自己相互作用_v1/` は、書き換える前のプログラムによる出力である。本稿の結果と図には用いていない。
 
 ---
 
@@ -868,4 +916,4 @@ $$
 
 ## 再現性注記
 
-本稿の新規数値実験は、第六思考実験の状態生成器を変更せず、自己関係用の初期状態生成だけを追加して実施した。数値実験コード、初期化コード、raw/sampled data、Paper 6 との照合結果、図化コード、SVG、数値要約、SHA256 を同一研究フォルダ内に保存した。$n=4$ の定義域外条件については、新しい規則を導入せず失敗条件をそのまま記録した。
+本稿の数値実験は、第六思考実験の状態生成器と第六思考実験補遺の初期化プログラムを書き換えずに読み込み、自己関係の実行条件、保存先、および補遺が作った初期状態の受け渡しだけをラッパーで与えて実施した。数値実験コード、初期化コード、全 macro step の raw data、第六思考実験の保存データとの比較結果、図化コード、SVG、SHA256 を同一研究フォルダ内に保存した。$n=4$ の定義域外条件については、新しい規則を導入せず、実行していない。
