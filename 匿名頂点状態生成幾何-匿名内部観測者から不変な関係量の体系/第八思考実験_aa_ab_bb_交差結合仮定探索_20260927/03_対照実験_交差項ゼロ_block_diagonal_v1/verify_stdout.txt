@@ -1,0 +1,153 @@
+{
+  "tolerance": 1e-14,
+  "Paper7_aa_vs_stored_self_n1": {
+    "stored_file": "paper7_self_n1_raw_first_macro_microsteps.csv",
+    "channel": "aa",
+    "rows_compared": 12,
+    "max_abs_diff_by_field": {
+      "q_index": 0.0,
+      "P": 0.0,
+      "N": 0.0,
+      "C": 0.0,
+      "D": 0.0,
+      "k1p": 0.0,
+      "k2p": 0.0,
+      "k3p": 0.0,
+      "k4p": 0.0,
+      "dP": 1.6940658945086007e-21,
+      "Q": 0.0
+    },
+    "max_abs_diff_all_fields": 1.6940658945086007e-21,
+    "ieee754_exact_by_field": {
+      "q_index": true,
+      "P": true,
+      "N": true,
+      "C": true,
+      "D": true,
+      "k1p": true,
+      "k2p": true,
+      "k3p": true,
+      "k4p": true,
+      "dP": false,
+      "Q": true
+    },
+    "all_fields_ieee754_exact": false,
+    "pass_tolerance": true,
+    "tolerance": 1e-14
+  },
+  "Paper6_ab_vs_stored_n1_attractive": {
+    "stored_file": "paper6_n1_attractive_raw_first_macro_microsteps.csv",
+    "channel": "ab",
+    "rows_compared": 12,
+    "max_abs_diff_by_field": {
+      "q_index": 0.0,
+      "P": 0.0,
+      "N": 0.0,
+      "C": 0.0,
+      "D": 0.0,
+      "k1p": 3.469446951953614e-18,
+      "k2p": 0.0,
+      "k3p": 0.0,
+      "k4p": 3.469446951953614e-18,
+      "dP": 6.776263578034403e-21,
+      "Q": 0.0
+    },
+    "max_abs_diff_all_fields": 3.469446951953614e-18,
+    "ieee754_exact_by_field": {
+      "q_index": true,
+      "P": true,
+      "N": true,
+      "C": true,
+      "D": true,
+      "k1p": false,
+      "k2p": true,
+      "k3p": true,
+      "k4p": false,
+      "dP": false,
+      "Q": true
+    },
+    "all_fields_ieee754_exact": false,
+    "pass_tolerance": true,
+    "tolerance": 1e-14
+  },
+  "Paper7_bb_vs_stored_self_n1": {
+    "stored_file": "paper7_self_n1_raw_first_macro_microsteps.csv",
+    "channel": "bb",
+    "rows_compared": 12,
+    "max_abs_diff_by_field": {
+      "q_index": 0.0,
+      "P": 0.0,
+      "N": 0.0,
+      "C": 0.0,
+      "D": 0.0,
+      "k1p": 0.0,
+      "k2p": 0.0,
+      "k3p": 0.0,
+      "k4p": 0.0,
+      "dP": 1.6940658945086007e-21,
+      "Q": 0.0
+    },
+    "max_abs_diff_all_fields": 1.6940658945086007e-21,
+    "ieee754_exact_by_field": {
+      "q_index": true,
+      "P": true,
+      "N": true,
+      "C": true,
+      "D": true,
+      "k1p": true,
+      "k2p": true,
+      "k3p": true,
+      "k4p": true,
+      "dP": false,
+      "Q": true
+    },
+    "all_fields_ieee754_exact": false,
+    "pass_tolerance": true,
+    "tolerance": 1e-14
+  },
+  "block_diagonal_internal_control": {
+    "experiment": "Paper 8 control: block-diagonal S(Psi) on the same 123-state vector",
+    "state_dimension": 123,
+    "S_dimension": [
+      123,
+      123
+    ],
+    "channels": [
+      "aa",
+      "ab",
+      "bb"
+    ],
+    "initial_relations": {
+      "aa": {
+        "C": 0.91,
+        "D": 0.0
+      },
+      "ab": {
+        "C": 1.09,
+        "D": 0.36
+      },
+      "bb": {
+        "C": 0.91,
+        "D": 0.0
+      }
+    },
+    "cross_blocks_exactly_zero": true,
+    "max_cross_block_abs_first_macro": 0.0,
+    "first_macro_max_abs_diff_matrix_vs_three_independent": 3.469446951953614e-18,
+    "one_orbit_macrosteps": 4000,
+    "one_orbit_max_abs_diff_matrix_vs_three_independent": 3.3306690738754696e-16,
+    "one_orbit_location_of_max_diff": {
+      "macro": 2718,
+      "micro": 10
+    },
+    "final_P_after_4000": {
+      "aa": 49.950596373381714,
+      "ab": 49.823689591083934,
+      "bb": 49.950596373381714
+    },
+    "claim_scope": "This validates the long-vector / block-diagonal-matrix implementation against three independent copies of the accepted Paper-6/7 transition. It does not add cross physics."
+  },
+  "internal_control_pass": true,
+  "overall_pass": true,
+  "roundoff_note": "Dense S@Psi uses BLAS summation order, so a few work-register values differ from the scalar reference at ~1e-18 to 1e-16. Physical/state values agree within machine precision; no tolerance failure occurred."
+}
