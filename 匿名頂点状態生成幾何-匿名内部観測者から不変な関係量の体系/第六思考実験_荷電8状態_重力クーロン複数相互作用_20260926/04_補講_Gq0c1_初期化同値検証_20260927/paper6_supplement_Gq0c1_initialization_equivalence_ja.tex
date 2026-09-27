@@ -1,0 +1,1106 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={第六思考実験 補遺：規格化基準を質量から電荷単位へ変更しても状態生成は変わるか ― G=M=c=1 から G=q\_0=c=1 への限定的再規格化と、保存済み5条件の初期状態完全一致検証 ―},
+  pdfauthor={Noriaki Kihara (ORCID 0009-0004-6753-4020)},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{第六思考実験
+補遺：規格化基準を質量から電荷単位へ変更しても状態生成は変わるか ―
+\(G=M=c=1\) から \(G=q_0=c=1\)
+への限定的再規格化と、保存済み5条件の初期状態完全一致検証 ―}
+\author{Noriaki Kihara (ORCID 0009-0004-6753-4020)}
+\date{2026-09-27 / v1.0 / Version DOI 10.5281/zenodo.22985300}
+
+\sloppy
+\emergencystretch=3em
+\begin{document}
+\maketitle
+
+\textbf{著者:} 木原範昭 (Noriaki Kihara)\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Version DOI:} 10.5281/zenodo.22985300\\
+\textbf{Concept DOI:} 10.5281/zenodo.22985299\\
+\textbf{版:} v1.0\\
+\textbf{日付:} 2026-09-27\\
+\textbf{対象論文:} 第六思考実験 v1.1, Version DOI:
+10.5281/zenodo.22974632, Concept DOI: 10.5281/zenodo.22974631
+
+\textbf{キーワード:}
+状態閉包、規格化、電荷単位、質量電荷比、初期状態、荷電二体系、再現可能性、決定論的状態写像
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{要旨}\label{ux8981ux65e8}
+
+第六思考実験 {[}6{]} では、\(G=M=c=1\)
+の規格化のもとで、荷電準円二体系の重力・Coulomb 保存効果と GW
+quadrupole・EM dipole 散逸効果を、8永続論理状態
+
+\[
+Z_8=(U,P,E,H,Q,N,C,D)
+\]
+
+と一つの同期状態写像 \texttt{transition(z)}
+に内部化した。そこでは、\texttt{transition(z)} が状態 \(z\)
+以外の外部物理引数を受け取らず、物理条件の差が初期状態へ格納された
+\(N,C,D\)
+によってのみ与えられることをコード監査と5条件の数値実験で確認した。
+
+本補遺では、同じ物理系について規格化基準だけを
+
+\[
+G=M=c=1
+\]
+
+から
+
+\[
+\boxed{G=q_0=c=1}
+\]
+
+へ変更する。ここで \(q_0\)
+は離散電荷を数える基準電荷単位であり、本研究では
+
+\[
+q_0=\frac{e}{3}
+\]
+
+を採用する。新しい力学、相互作用項、状態、更新則、読み出し、近似は一切追加しない。変更対象は、質量と電荷から初期状態を作る初期化処理だけである。
+
+等質量
+
+\[
+m_A=m_B=\frac{M}{2}
+\]
+
+および
+
+\[
+q_A=s_A n q_0,\qquad q_B=s_B n q_0,
+\qquad s_A,s_B\in\{+1,-1\}
+\]
+
+を用いると、第六思考実験の荷電比
+
+\[
+\lambda_A=\frac{q_A}{m_A},\qquad
+\lambda_B=\frac{q_B}{m_B}
+\]
+
+は
+
+\[
+\lambda_A=s_A\frac{2nq_0}{M},\qquad
+\lambda_B=s_B\frac{2nq_0}{M}
+\]
+
+となる。第六思考実験の \(n=1\) 条件 \(|\lambda|=0.30\) を保存するには
+
+\[
+\boxed{\frac{M}{q_0}=\frac{20}{3}}
+\]
+
+とすればよい。この一つの質量電荷比を用いるだけで、\(n=1,3,4\) に対して
+\(|\lambda|=0.30,0.90,1.20\) が再生成される。
+
+この初期化式を独立した初期化プログラムとして実装し、第六思考実験で保存済みの5条件の
+raw データ \texttt{raw\_first\_macro\_microsteps.csv} の micro=0
+行と比較した。その結果、全5条件で
+
+\[
+P,N,C,D,Q
+\]
+
+および初期 work register を含む保存診断列
+
+\texttt{micro,\ q\_index,\ P,\ N,\ C,\ D,\ k1p,\ k2p,\ k3p,\ k4p,\ dP,\ Q}
+
+が CSV 読込後の IEEE-754 値として完全一致した。
+
+第六思考実験では、次状態が現在状態だけから
+
+\[
+z_{k+1}=T(z_k)
+\]
+
+によって決定されることがすでに監査済みである。したがって、今回の新規格化で同じ初期状態
+\(z_0\)
+が生成された時点で、その後の全状態列も既存実験と同一である。よって相互作用走行の再実行は新しい独立検証を与えず、本補遺では実施しない。
+
+本補遺の結論は限定的である。第六思考実験の5条件について、規格化を
+\(G=M=c=1\) から \(G=q_0=c=1\) へ変更しても、\(M/q_0=20/3\)
+を与えることで同一の初期状態を生成でき、したがって既存の状態発展を変更しないことを確認した。これは新しい物理法則の導出ではなく、第六思考実験で質量基準に吸収されていた自由度を、電荷単位を基準とする質量電荷比として明示し直したものである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{1. 本補遺の目的}\label{ux672cux88dcux907aux306eux76eeux7684}
+
+第六思考実験 {[}6{]} の規格化は
+
+\[
+G=M=c=1
+\]
+
+であった。この規格化では全質量 \(M\) が単位へ吸収されるため、荷電条件は
+
+\[
+\lambda_A=\frac{q_A}{m_A},\qquad
+\lambda_B=\frac{q_B}{m_B}
+\]
+
+を通して初期状態へ与えられていた。
+
+本補遺で問うのは一つだけである。
+
+\[
+\boxed{
+G=M=c=1
+\quad\longrightarrow\quad
+G=q_0=c=1
+}
+\]
+
+と基準を変更し、質量 \(M\)
+を明示的に残しても、第六思考実験と\textbf{まったく同じ初期状態を生成できるか}。
+
+この問いに対して、新しい軌道計算や相互作用走行は必要ない。第六思考実験の生成器は、状態以外の物理情報を保持しないことがすでに監査されているからである。
+
+したがって本補遺の検証範囲は、次の三段階だけである。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  第六思考実験の初期化コードで、質量・電荷依存性がどのように \(C,D\)
+  へ格納されていたかを確認する。
+\item
+  その初期化部分だけを \(G=q_0=c=1\)、\(M\) 可変の表現へ置換する。
+\item
+  新初期化器が生成した初期 row を、第六思考実験の保存済み raw 初期 row
+  と直接比較する。
+\end{enumerate}
+
+更新写像 \texttt{transition(z)}、11相機械、RK4 work
+register、readout、数値積分条件、既存 raw 軌道データは変更しない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{2.
+第六思考実験で既に確定している事項}\label{ux7b2cux516dux601dux8003ux5b9fux9a13ux3067ux65e2ux306bux78baux5b9aux3057ux3066ux3044ux308bux4e8bux9805}
+
+\subsection{2.1 状態閉包}\label{ux72b6ux614bux9589ux5305}
+
+第六思考実験では永続論理状態を
+
+\[
+Z_8=(U,P,E,H,Q,N,C,D)
+\]
+
+とし、RK4 work register と11相 one-hot 位相を含めて41実数成分の full
+microstate を構成した {[}6{]}。
+
+重要なのは、唯一の生成写像が
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{transition(z)}
+\end{Highlighting}
+\end{Shaded}
+
+であり、引数として現在状態 \(z\) 以外を受け取らないことである。
+
+したがって、生成則は抽象的に
+
+\[
+\boxed{z_{k+1}=T(z_k)}
+\]
+
+と書ける。
+
+\subsection{2.2
+物理条件は初期状態へ格納される}\label{ux7269ux7406ux6761ux4ef6ux306fux521dux671fux72b6ux614bux3078ux683cux7d0dux3055ux308cux308b}
+
+第六思考実験では荷電依存性を
+
+\[
+C=1-\lambda_A\lambda_B,
+\]
+
+\[
+D=(\lambda_A-\lambda_B)^2
+\]
+
+として整理した。ここで
+
+\[
+\lambda_A=\frac{q_A}{m_A},\qquad
+\lambda_B=\frac{q_B}{m_B}.
+\]
+
+実装上、5条件の違いは初期状態に格納する \(C,D\) だけであり、同一の
+\texttt{transition(z)} を全条件に使用した {[}6{]}。
+
+したがって本補遺では、\(C,D\) を同一値として再生成できればよい。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{3. 規格化の変更}\label{ux898fux683cux5316ux306eux5909ux66f4}
+
+\subsection{3.1 旧規格化}\label{ux65e7ux898fux683cux5316}
+
+第六思考実験では
+
+\[
+G=M=c=1
+\]
+
+を採用した。
+
+ここで \(M\) は二体系の全質量である。等質量条件では
+
+\[
+m_A=m_B=\frac{M}{2}=\frac12.
+\]
+
+5条件で用いた荷電比は
+
+\[
+(\lambda_A,\lambda_B)
+=
+(+0.30,-0.30),
+(+0.30,+0.30),
+(+0.90,-0.90),
+(+0.90,+0.90),
+(+1.20,-1.20).
+\]
+
+\subsection{3.2 新規格化}\label{ux65b0ux898fux683cux5316}
+
+本補遺では
+
+\[
+\boxed{G=q_0=c=1}
+\]
+
+とする。
+
+\(q_0\) は基準電荷単位であり、
+
+\[
+q_0=\frac{e}{3}
+\]
+
+とする。電荷を整数倍
+
+\[
+q_A=s_A n q_0,
+\qquad
+q_B=s_B n q_0,
+\]
+
+で表す。ここで
+
+\[
+s_A,s_B\in\{+1,-1\},\qquad n\in\mathbb N.
+\]
+
+一方、質量は単位へ吸収せず、
+
+\[
+m_A=m_B=\frac{M}{2}
+\]
+
+とする。
+
+すると
+
+\[
+\lambda_A
+=
+\frac{s_A n q_0}{M/2}
+=
+s_A\frac{2nq_0}{M},
+\]
+
+\[
+\lambda_B
+=
+s_B\frac{2nq_0}{M}.
+\]
+
+したがって、規格化変更後に残る連続自由度は
+
+\[
+\boxed{\frac{M}{q_0}}
+\]
+
+である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{4.
+旧初期条件を再生成する質量電荷比}\label{ux65e7ux521dux671fux6761ux4ef6ux3092ux518dux751fux6210ux3059ux308bux8ceaux91cfux96fbux8377ux6bd4}
+
+第六思考実験の \(n=1\) 条件では
+
+\[
+|\lambda|=0.30=\frac{3}{10}.
+\]
+
+新規格化では
+
+\[
+|\lambda|
+=
+\frac{2q_0}{M}.
+\]
+
+よって
+
+\[
+\frac{2q_0}{M}=\frac{3}{10},
+\]
+
+すなわち
+
+\[
+\boxed{\frac{M}{q_0}=\frac{20}{3}}.
+\]
+
+\(q_0=1\) の単位では
+
+\[
+\boxed{M=\frac{20}{3}},
+\]
+
+\[
+\boxed{m_A=m_B=\frac{10}{3}}.
+\]
+
+この一つの値を固定すると、一般の整数 \(n\) に対して
+
+\[
+|\lambda_n|
+=
+\frac{2n}{20/3}
+=
+\frac{3n}{10}.
+\]
+
+したがって
+
+\[
+n=1\Rightarrow |\lambda|=0.30,
+\]
+
+\[
+n=3\Rightarrow |\lambda|=0.90,
+\]
+
+\[
+n=4\Rightarrow |\lambda|=1.20.
+\]
+
+第六思考実験の5条件が一つの \(M/q_0\) からそのまま再生成される。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{5. 初期状態 \(C,D\)
+の再生成}{5. 初期状態 C,D の再生成}}\label{ux521dux671fux72b6ux614b-cd-ux306eux518dux751fux6210}
+
+同符号・異符号を \(s_A,s_B\) で表すと、
+
+\[
+\lambda_A=s_A\frac{3n}{10},
+\qquad
+\lambda_B=s_B\frac{3n}{10}.
+\]
+
+したがって
+
+\[
+C
+=
+1-\lambda_A\lambda_B
+=
+1-s_As_B\frac{9n^2}{100},
+\]
+
+\[
+D
+=
+(\lambda_A-\lambda_B)^2
+=
+\frac{9n^2}{100}(s_A-s_B)^2.
+\]
+
+異符号 \(s_A=-s_B\) では
+
+\[
+C=1+\frac{9n^2}{100},
+\]
+
+\[
+D=\frac{36n^2}{100}.
+\]
+
+同符号 \(s_A=s_B\) では
+
+\[
+C=1-\frac{9n^2}{100},
+\]
+
+\[
+D=0.
+\]
+
+よって5条件は
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrllrr@{}}
+\toprule\noalign{}
+case & \(n\) & \((s_A,s_B)\) & \((\lambda_A,\lambda_B)\) & \(C\) &
+\(D\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+n1\_attractive & 1 & \((+,-)\) & \((+0.30,-0.30)\) & 1.09 & 0.36 \\
+n1\_repulsive & 1 & \((+,+)\) & \((+0.30,+0.30)\) & 0.91 & 0.00 \\
+n3\_attractive & 3 & \((+,-)\) & \((+0.90,-0.90)\) & 1.81 & 3.24 \\
+n3\_repulsive & 3 & \((+,+)\) & \((+0.90,+0.90)\) & 0.19 & 0.00 \\
+n4\_attractive & 4 & \((+,-)\) & \((+1.20,-1.20)\) & 2.44 & 5.76 \\
+\end{longtable}
+}
+
+となり、第六思考実験の初期値と一致する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{6. コード検証}\label{ux30b3ux30fcux30c9ux691cux8a3c}
+
+\subsection{6.1 変更範囲}\label{ux5909ux66f4ux7bc4ux56f2}
+
+第六思考実験の既存コードでは、ケース表に
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\StringTok{"n1\_attractive"}\NormalTok{, }\FloatTok{0.30}\NormalTok{, }\OperatorTok{{-}}\FloatTok{0.30}\NormalTok{, }\FloatTok{1.09}\NormalTok{, }\FloatTok{0.36}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+のように \(\lambda_A,\lambda_B,C,D\) が与えられ、\texttt{init\_state()}
+には最終的な \(C,D\) が渡されていた。
+
+本補遺では \texttt{transition(z)}
+を変更しない。新たに独立した初期化モジュール
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{paper6\_init\_G\_q0\_c1.py}
+\end{Highlighting}
+\end{Shaded}
+
+を作成し、入力を
+
+\[
+(q_0,M,n,s_A,s_B)
+\]
+
+として
+
+\[
+\lambda_A,\lambda_B,C,D
+\]
+
+を生成し、その値から第六思考実験と同じ初期診断 row を作るようにした。
+
+\subsection{6.2
+テストスタブ}\label{ux30c6ux30b9ux30c8ux30b9ux30bfux30d6}
+
+5条件を一括生成するテストスタブ
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test\_stub\_generate\_initial\_rows.py}
+\end{Highlighting}
+\end{Shaded}
+
+を作成した。出力は
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generated\_initial\_rows\_G\_q0\_c1.csv}
+\end{Highlighting}
+\end{Shaded}
+
+である。
+
+比較対象には、第六思考実験の保存済み5ケースそれぞれの
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{raw\_first\_macro\_microsteps.csv}
+\end{Highlighting}
+\end{Shaded}
+
+から micro=0 行を抽出した。抽出結果を
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{original\_initial\_rows\_paper6.csv}
+\end{Highlighting}
+\end{Shaded}
+
+として固定した。
+
+\subsection{6.3 比較方法}\label{ux6bd4ux8f03ux65b9ux6cd5}
+
+比較プログラム
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{compare\_initial\_rows.py}
+\end{Highlighting}
+\end{Shaded}
+
+により、次の12列を比較した。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{micro, q\_index, P, N, C, D,}
+\NormalTok{k1p, k2p, k3p, k4p, dP, Q}
+\end{Highlighting}
+\end{Shaded}
+
+比較は CSV を数値として読み込んだ後の IEEE-754 float
+の完全一致で行った。
+
+なお、\(M/q_0=20/3\) と \(\lambda=3n/10\) は有理数として構成し、最後に
+float へ変換した。これは \texttt{1.81} 等の10進表記を、旧 raw
+データと同じ IEEE-754
+値として再現するための実装上の措置であり、物理モデルの変更ではない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{7. 検証結果}\label{ux691cux8a3cux7d50ux679c}
+
+結果は5条件すべて PASS であった。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrrrrrl@{}}
+\toprule\noalign{}
+case & \(P\) & \(N\) & \(C\) & \(D\) & \(Q\) & result \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+n1\_attractive & 50.0 & 0.25 & 1.09 & 0.36 & 1.0 & PASS \\
+n1\_repulsive & 50.0 & 0.25 & 0.91 & 0.00 & 1.0 & PASS \\
+n3\_attractive & 50.0 & 0.25 & 1.81 & 3.24 & 1.0 & PASS \\
+n3\_repulsive & 50.0 & 0.25 & 0.19 & 0.00 & 1.0 & PASS \\
+n4\_attractive & 50.0 & 0.25 & 2.44 & 5.76 & 1.0 & PASS \\
+\end{longtable}
+}
+
+全ケースについて
+
+\[
+\boxed{
+\Delta P=
+\Delta N=
+\Delta C=
+\Delta D=
+\Delta Q=0
+}
+\]
+
+であり、初期 work register についても
+
+\[
+\boxed{
+\Delta k_{1p}=
+\Delta k_{2p}=
+\Delta k_{3p}=
+\Delta k_{4p}=
+\Delta dP=0
+}
+\]
+
+であった。
+
+さらに
+
+\[
+\Delta \mathrm{micro}=0,
+\qquad
+\Delta q_{\mathrm{index}}=0.
+\]
+
+したがって、保存済み raw データで観測される初期 row
+は全12列で完全一致した。
+
+機械可読な詳細結果は
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{initial\_row\_verification\_result.json}
+\end{Highlighting}
+\end{Shaded}
+
+に保存した。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{8.
+なぜ相互作用走行を再実行しないのか}\label{ux306aux305cux76f8ux4e92ux4f5cux7528ux8d70ux884cux3092ux518dux5b9fux884cux3057ux306aux3044ux306eux304b}
+
+これは本補遺の重要な点である。
+
+第六思考実験では、生成写像が
+
+\[
+z_{k+1}=T(z_k)
+\]
+
+として状態 \(z_k\) だけから次状態を生成し、\(G,M,q_A,q_B\)
+やケース名などを外部引数として参照しないことを既に監査している {[}6{]}。
+
+旧規格化による初期状態を
+\(z_0^{\mathrm{old}}\)、新規格化による初期状態を \(z_0^{\mathrm{new}}\)
+とする。
+
+今回の検証により
+
+\[
+\boxed{
+z_0^{\mathrm{new}}=z_0^{\mathrm{old}}
+}
+\]
+
+が、規格化変更の影響を受ける初期化部分について確認された。
+
+同じ写像 \(T\) を使用するので、
+
+\[
+z_1^{\mathrm{new}}
+=T(z_0^{\mathrm{new}})
+=T(z_0^{\mathrm{old}})
+=z_1^{\mathrm{old}}.
+\]
+
+同様に帰納的に
+
+\[
+\boxed{
+z_k^{\mathrm{new}}=z_k^{\mathrm{old}}
+\qquad (k=0,1,2,\ldots)
+}
+\]
+
+である。
+
+したがって、既存の5条件について相互作用走行を再実行しても、同じ決定論的状態列を再生成するだけである。それは新しい独立検証ではない。
+
+本補遺ではこの理由から、\textbf{初期化同値性の検証だけを実施し、軌道走行は再実行しない}。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{9. 解釈}\label{ux89e3ux91c8}
+
+\subsection{\texorpdfstring{9.1 \(M=1\)
+は今回の5条件の力学に追加情報を与えていなかった}{9.1 M=1 は今回の5条件の力学に追加情報を与えていなかった}}\label{m1-ux306fux4ecaux56deux306e5ux6761ux4ef6ux306eux529bux5b66ux306bux8ffdux52a0ux60c5ux5831ux3092ux4e0eux3048ux3066ux3044ux306aux304bux3063ux305f}
+
+第六思考実験では \(M=1\) を規格化に用いた。本補遺では、電荷単位 \(q_0\)
+を1とし、代わりに
+
+\[
+\frac{M}{q_0}
+\]
+
+を残した。
+
+その結果、
+
+\[
+\frac{M}{q_0}=\frac{20}{3}
+\]
+
+とすれば、第六思考実験と同一の初期状態が得られた。
+
+したがって、少なくとも今回検証した5条件については、\(M=1\)
+という選択そのものが状態発展へ追加の独立情報を与えていたわけではない。必要な情報は、初期化時の無次元な質量電荷比として再表現できる。
+
+\subsection{9.2
+離散電荷と連続質量を分離して記述できる}\label{ux96e2ux6563ux96fbux8377ux3068ux9023ux7d9aux8ceaux91cfux3092ux5206ux96e2ux3057ux3066ux8a18ux8ff0ux3067ux304dux308b}
+
+新しい表現では
+
+\[
+q=nq_0
+\]
+
+によって電荷側を整数 \(n\) で表し、質量側を
+
+\[
+M/q_0
+\]
+
+として残せる。
+
+今回の5条件では一つの
+
+\[
+M/q_0=20/3
+\]
+
+を固定し、\(n=1,3,4\) を変えるだけで旧条件を再生成できた。
+
+ただし、本補遺はこの離散性から新しい量子化則を導出するものではない。ここで確認したのは、\textbf{第六思考実験の既存条件を、電荷単位基準の初期化へ損失なく書き換えられる}という事実だけである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{10.
+本補遺が示していないこと}\label{ux672cux88dcux907aux304cux793aux3057ux3066ux3044ux306aux3044ux3053ux3068}
+
+本補遺は、次を主張しない。
+
+\begin{itemize}
+\tightlist
+\item
+  \(q_0=e/3\) が本理論から導出されたこと。
+\item
+  \(M/q_0=20/3\) が普遍的な物理定数であること。
+\item
+  質量量子化または電荷量子化の起源を説明したこと。
+\item
+  第六思考実験の近似範囲を越えた一般荷電二体系への妥当性。
+\item
+  重力と電磁気の基礎的統一を導出したこと。
+\item
+  新しい軌道または新しい放射現象を発見したこと。
+\end{itemize}
+
+本補遺の検証対象は、第六思考実験で既に実行された5条件の\textbf{初期化規格化の同値性}だけである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{11.
+再現用ファイル}\label{ux518dux73feux7528ux30d5ux30a1ux30a4ux30eb}
+
+本補遺の再現に必要なファイルは、第六思考実験の保存フォルダ内の
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{04\_補講\_Gq0c1\_初期化同値検証\_20260927/}
+\end{Highlighting}
+\end{Shaded}
+
+に保存した。
+
+主要ファイルは次の通りである。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{paper6\_init\_G\_q0\_c1.py}
+\end{Highlighting}
+\end{Shaded}
+
+\(G=q_0=c=1\)、\(M/q_0=20/3\)
+から5条件の初期状態を生成する限定的初期化実装。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test\_stub\_generate\_initial\_rows.py}
+\end{Highlighting}
+\end{Shaded}
+
+5条件の初期 row を生成するテストスタブ。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generated\_initial\_rows\_G\_q0\_c1.csv}
+\end{Highlighting}
+\end{Shaded}
+
+新初期化器による出力。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{original\_initial\_rows\_paper6.csv}
+\end{Highlighting}
+\end{Shaded}
+
+第六思考実験の保存済み raw データから抽出した比較対象。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{compare\_initial\_rows.py}
+\end{Highlighting}
+\end{Shaded}
+
+新旧初期 row の完全一致検証プログラム。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{initial\_row\_verification\_result.json}
+\end{Highlighting}
+\end{Shaded}
+
+全フィールドの比較結果。
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{initial\_row\_verification\_result\_ja.md}
+\end{Highlighting}
+\end{Shaded}
+
+検証結果の短い日本語要約。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{12. 結論}\label{ux7d50ux8ad6}
+
+第六思考実験の規格化
+
+\[
+G=M=c=1
+\]
+
+を
+
+\[
+G=q_0=c=1
+\]
+
+へ変更し、質量を明示的な自由度として残した。
+
+等質量二体系と電荷単位 \(q_0\) に対して
+
+\[
+\lambda_{A,B}=s_{A,B}\frac{2nq_0}{M}
+\]
+
+であり、第六思考実験の基準値 \(|\lambda|=0.30\) から
+
+\[
+\boxed{\frac{M}{q_0}=\frac{20}{3}}
+\]
+
+を得た。
+
+この一つの比を用いて \(n=1,3,4\)
+の5条件を初期化したところ、第六思考実験の保存済み初期 raw row
+と全比較列で完全一致した。
+
+したがって、今回の検証範囲では
+
+\[
+\boxed{
+G=M=c=1
+\quad\text{と}\quad
+G=q_0=c=1,\;M/q_0=20/3
+}
+\]
+
+は、\textbf{同一の内部初期状態を生成する二つの規格化表現}である。
+
+第六思考実験で既に確立した状態閉包
+
+\[
+z_{k+1}=T(z_k)
+\]
+
+のもとでは、初期状態が同一なら全後続状態も同一である。このため、相互作用走行の再実行は不要である。
+
+本補遺によって、第六思考実験で質量単位へ吸収されていた自由度を、電荷単位を基準とする
+
+\[
+\boxed{M/q_0}
+\]
+
+という一つの質量電荷比へ移しても、既存5条件の物理状態生成に影響しないことを確認した。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsection{本研究系列}\label{ux672cux7814ux7a76ux7cfbux5217}
+
+{[}0{]} 木原範昭,
+\textbf{状態と関係性から時空・粒子・相互作用の創発を探索する研究プロジェクト設計
+― 不確実性下の基礎物理モデル探索に対する予備設計と実装可能性検証の枠組み
+―}, v1.0 (2026-09-20). Concept DOI: 10.5281/zenodo.22851944; Version
+DOI: 10.5281/zenodo.22851945.
+
+{[}1{]} 木原範昭, \textbf{第一思考実験：等価原理を無名な二自由度まで遡る
+―
+面積読み出しの保存から、二乗和の符号・曲率半径・三つの系（慣性／一様加速／回転）を導く
+―}, v1.0 (2026-09-20). Concept DOI: 10.5281/zenodo.22857952; Version
+DOI: 10.5281/zenodo.22857953.
+
+{[}2{]} 木原範昭,
+\textbf{第二思考実験：クーロン型の逆二乗の力を、積の読み出しと面積の時計から導く
+―
+二つの値と線形の法則のまま、焦点・引力と斥力・中性を出し、二つの値では書けないものを確定する
+―}, v1.2 (2026-09-21). Concept DOI: 10.5281/zenodo.22867336; Version
+DOI: 10.5281/zenodo.22876596.
+
+{[}3{]} 木原範昭, \textbf{第三思考実験：a b 2体の天体の軌道から a b
+2体の状態を読み出す ― 意味を定めない二つの値と \(G=c=M=1\)
+の知識だけで、軌道と重力波の読み出しから質量比・相対距離・相対時間を得る
+―}, v1.5 (2026-09-23). Concept DOI: 10.5281/zenodo.22909660; Version
+DOI: 10.5281/zenodo.22909661.
+
+{[}4{]} 木原範昭, \textbf{第四思考実験：固定作用 \(S\) から状態依存作用
+\(S_n\) へ ―
+第三思考実験で外部計算していた相対論的重力軌道を、\(X_{n+1}=S_nX_n\)
+の逐次相互作用から再生成できるか ―}, v1.0 (2026-09-23). Concept DOI:
+10.5281/zenodo.22919787; Version DOI: 10.5281/zenodo.22919788.
+
+{[}5{]} 木原範昭, \textbf{第五思考実験：隠れた状態はなかったか ―
+第四思考実験の二状態軌道生成を自己監査し、五状態から第六永続状態
+\(\mathcal N=\nu\) まで状態閉包を追跡する ―}, v2.1 (2026-09-26). Concept
+DOI: 10.5281/zenodo.22973086; Version DOI: 10.5281/zenodo.22973087.
+
+{[}6{]} 木原範昭,
+\textbf{第六思考実験：二種類の長距離相互作用を一つの閉じた状態写像へ内部化できるか
+―
+荷電準円二体系の重力・Coulomb・GW四重極・EM双極放射を8永続状態で再構成し、5条件で同一
+transition の移植可能性を検証する ―}, v1.1 (2026-09-26). Concept DOI:
+10.5281/zenodo.22974631; Version DOI: 10.5281/zenodo.22974632.
+
+\subsection{外部文献}\label{ux5916ux90e8ux6587ux732e}
+
+{[}7{]} P. C. Peters and J. Mathews, ``Gravitational Radiation from
+Point Masses in a Keplerian Orbit,'' \emph{Physical Review}
+\textbf{131}, 435--440 (1963). DOI: 10.1103/PhysRev.131.435.
+
+{[}8{]} P. C. Peters, ``Gravitational Radiation and the Motion of Two
+Point Masses,'' \emph{Physical Review} \textbf{136}, B1224--B1232
+(1964). DOI: 10.1103/PhysRev.136.B1224.
+
+{[}9{]} L. Liu, Ø. Christiansen, Z.-K. Guo, R.-G. Cai, and S. P. Kim,
+``Gravitational and electromagnetic radiation from binary black holes
+with electric and magnetic charges: Circular orbits on a cone,''
+\emph{Physical Review D} \textbf{102}, 103520 (2020). DOI:
+10.1103/PhysRevD.102.103520.
+
+{[}10{]} C. A. Benavides-Gallego and W.-B. Han, ``Gravitational Waves
+and Electromagnetic Radiation from Charged Black Hole Binaries,''
+\emph{Symmetry} \textbf{15}, 537 (2023). DOI: 10.3390/sym15020537.
+
+{[}11{]} Z.-H. Zhang, T. Liu, S. Zhang, and Z.-K. Guo, ``Post-Newtonian
+dynamics of charged compact binaries,'' \emph{Physical Review D}
+\textbf{114}, 044088 (2026). DOI: 10.1103/4x8q-2kzm.
+
+{[}12{]} S. Verma et al., ``Post-newtonian dynamics of radiating
+charges: canonical formulation and binary inspiral laws,''
+\emph{European Physical Journal C} \textbf{86}, 830 (2026). DOI:
+10.1140/epjc/s10052-026-16076-2.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{再現性注記}\label{ux518dux73feux6027ux6ce8ux8a18}
+
+本補遺は既存の第六思考実験の力学を変更しない。検証に用いた新規コード、生成初期
+row、旧 raw から抽出した初期
+row、比較コード、比較結果は本文第11節記載の同一保存フォルダに配置した。相互作用走行データについては第六思考実験の既存
+raw データをそのまま検証先とし、再生成していない。
+
+\end{document}

@@ -1,0 +1,1162 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Supplement to the Sixth Thought Experiment: Does the State Generation Change When the Normalization Reference Is Changed from Mass to a Charge Unit? - A Restricted Renormalization from G=M=c=1 to G=q\_0=c=1{,} and an Exact-Match Verification of the Initial States of the Five Stored Conditions -},
+  pdfauthor={Noriaki Kihara (ORCID 0009-0004-6753-4020)},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Supplement to the Sixth Thought Experiment: Does the State
+Generation Change When the Normalization Reference Is Changed from Mass
+to a Charge Unit? - A Restricted Renormalization from \(G=M=c=1\) to
+\(G=q_0=c=1\), and an Exact-Match Verification of the Initial States of
+the Five Stored Conditions -}
+\author{Noriaki Kihara (ORCID 0009-0004-6753-4020)}
+\date{2026-09-27 / v1.0 / Version DOI 10.5281/zenodo.22985300}
+
+\sloppy
+\emergencystretch=3em
+\begin{document}
+\maketitle
+
+\textbf{Author:} Noriaki Kihara\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Version DOI:} 10.5281/zenodo.22985300\\
+\textbf{Concept DOI:} 10.5281/zenodo.22985299\\
+\textbf{Version:} v1.0\\
+\textbf{Date:} 2026-09-27\\
+\textbf{Target paper:} The Sixth Thought Experiment v1.1, Version DOI:
+10.5281/zenodo.22974632, Concept DOI: 10.5281/zenodo.22974631
+
+\textbf{Keywords:} state closure, normalization, charge unit,
+mass-to-charge ratio, initial state, charged binary, reproducibility,
+deterministic state map
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Abstract}\label{abstract}
+
+In the sixth thought experiment {[}6{]}, under the normalization
+\(G=M=c=1\), the conservative effects of gravity and Coulomb and the
+dissipative effects of GW quadrupole and EM dipole radiation of a
+charged quasi-circular binary were internalized into the eight
+persistent logical states
+
+\[
+Z_8=(U,P,E,H,Q,N,C,D)
+\]
+
+and a single synchronous state map \texttt{transition(z)}. There it was
+confirmed, by a code audit and by numerical experiments over five
+conditions, that \texttt{transition(z)} receives no external physical
+argument other than the state \(z\), and that the difference of the
+physical conditions is given only by the \(N,C,D\) stored in the initial
+state.
+
+In this supplement, for the same physical system, only the normalization
+reference is changed from
+
+\[
+G=M=c=1
+\]
+
+to
+
+\[
+\boxed{G=q_0=c=1}.
+\]
+
+Here \(q_0\) is the reference charge unit that counts discrete charges,
+and in this research
+
+\[
+q_0=\frac{e}{3}
+\]
+
+is adopted. No new dynamics, interaction term, state, update rule,
+readout or approximation is added at all. The only thing changed is the
+initialization that makes the initial state from the masses and the
+charges.
+
+Using equal masses
+
+\[
+m_A=m_B=\frac{M}{2}
+\]
+
+and
+
+\[
+q_A=s_A n q_0,\qquad q_B=s_B n q_0,
+\qquad s_A,s_B\in\{+1,-1\},
+\]
+
+the charge-to-mass ratios of the sixth thought experiment,
+
+\[
+\lambda_A=\frac{q_A}{m_A},\qquad
+\lambda_B=\frac{q_B}{m_B},
+\]
+
+become
+
+\[
+\lambda_A=s_A\frac{2nq_0}{M},\qquad
+\lambda_B=s_B\frac{2nq_0}{M}.
+\]
+
+To preserve the \(n=1\) condition \(|\lambda|=0.30\) of the sixth
+thought experiment, it suffices to take
+
+\[
+\boxed{\frac{M}{q_0}=\frac{20}{3}}.
+\]
+
+Using this single mass-to-charge ratio alone,
+\(|\lambda|=0.30,0.90,1.20\) are regenerated for \(n=1,3,4\).
+
+This initialization formula was implemented as an independent
+initialization program and compared with the micro=0 rows of the raw
+data \texttt{raw\_first\_macro\_microsteps.csv} of the five conditions
+stored in the sixth thought experiment. As a result, in all five
+conditions
+
+\[
+P,N,C,D,Q
+\]
+
+and the stored diagnostic columns including the initial work registers,
+
+\texttt{micro,\ q\_index,\ P,\ N,\ C,\ D,\ k1p,\ k2p,\ k3p,\ k4p,\ dP,\ Q}
+
+matched exactly as IEEE-754 values after reading the CSV.
+
+In the sixth thought experiment it has already been audited that the
+next state is determined from the present state alone by
+
+\[
+z_{k+1}=T(z_k).
+\]
+
+Therefore, at the point where the same initial state \(z_0\) has been
+generated under the present new normalization, the whole subsequent
+state sequence is also identical to the existing experiment. Re-running
+the interaction runs therefore gives no new independent verification,
+and is not carried out in this supplement.
+
+The conclusion of this supplement is restricted. For the five conditions
+of the sixth thought experiment, it was confirmed that even when the
+normalization is changed from \(G=M=c=1\) to \(G=q_0=c=1\), the same
+initial states can be generated by giving \(M/q_0=20/3\), and therefore
+the existing state evolution is not changed. This is not a derivation of
+a new physical law; it restates the degree of freedom that had been
+absorbed into the mass reference in the sixth thought experiment,
+explicitly, as a mass-to-charge ratio referred to the charge unit.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{1. Purpose of this
+supplement}\label{purpose-of-this-supplement}
+
+The normalization of the sixth thought experiment {[}6{]} was
+
+\[
+G=M=c=1.
+\]
+
+In this normalization the total mass \(M\) is absorbed into the unit, so
+the charge condition was given to the initial state through
+
+\[
+\lambda_A=\frac{q_A}{m_A},\qquad
+\lambda_B=\frac{q_B}{m_B}.
+\]
+
+This supplement asks only one thing.
+
+\[
+\boxed{
+G=M=c=1
+\quad\longrightarrow\quad
+G=q_0=c=1
+}
+\]
+
+When the reference is changed in this way and the mass \(M\) is kept
+explicitly, \textbf{can exactly the same initial state as in the sixth
+thought experiment be generated?}
+
+For this question, no new orbit computation or interaction run is
+needed, because it has already been audited that the generator of the
+sixth thought experiment holds no physical information other than the
+state.
+
+The scope of verification of this supplement is therefore only the
+following three steps.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Confirm how the mass and charge dependence was stored into \(C,D\) in
+  the initialization code of the sixth thought experiment.
+\item
+  Replace only that initialization part by a representation with
+  \(G=q_0=c=1\) and variable \(M\).
+\item
+  Compare the initial rows generated by the new initializer directly
+  with the stored raw initial rows of the sixth thought experiment.
+\end{enumerate}
+
+The update map \texttt{transition(z)}, the 11-phase machine, the RK4
+work registers, the readout, the numerical integration conditions and
+the existing raw orbit data are not changed.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{2. What is already established in the sixth thought
+experiment}\label{what-is-already-established-in-the-sixth-thought-experiment}
+
+\subsection{2.1 State closure}\label{state-closure}
+
+In the sixth thought experiment the persistent logical states were taken
+to be
+
+\[
+Z_8=(U,P,E,H,Q,N,C,D),
+\]
+
+and a full microstate of 41 real components was constructed, including
+the RK4 work registers and the 11-phase one-hot phase {[}6{]}.
+
+What matters is that the sole generating map is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{transition(z)}
+\end{Highlighting}
+\end{Shaded}
+
+and that it receives nothing other than the present state \(z\) as an
+argument.
+
+The generating rule can therefore be written abstractly as
+
+\[
+\boxed{z_{k+1}=T(z_k)}.
+\]
+
+\subsection{2.2 The physical condition is stored in the initial
+state}\label{the-physical-condition-is-stored-in-the-initial-state}
+
+In the sixth thought experiment the charge dependence was organized as
+
+\[
+C=1-\lambda_A\lambda_B,
+\]
+
+\[
+D=(\lambda_A-\lambda_B)^2,
+\]
+
+where
+
+\[
+\lambda_A=\frac{q_A}{m_A},\qquad
+\lambda_B=\frac{q_B}{m_B}.
+\]
+
+In the implementation, the difference between the five conditions is
+only the \(C,D\) stored in the initial state, and the same
+\texttt{transition(z)} was used for all conditions {[}6{]}.
+
+In this supplement, therefore, it suffices to regenerate \(C,D\) as the
+same values.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{3. Change of the
+normalization}\label{change-of-the-normalization}
+
+\subsection{3.1 The old normalization}\label{the-old-normalization}
+
+The sixth thought experiment adopted
+
+\[
+G=M=c=1.
+\]
+
+Here \(M\) is the total mass of the binary. Under the equal-mass
+condition,
+
+\[
+m_A=m_B=\frac{M}{2}=\frac12.
+\]
+
+The charge-to-mass ratios used in the five conditions are
+
+\[
+(\lambda_A,\lambda_B)
+=
+(+0.30,-0.30),
+(+0.30,+0.30),
+(+0.90,-0.90),
+(+0.90,+0.90),
+(+1.20,-1.20).
+\]
+
+\subsection{3.2 The new normalization}\label{the-new-normalization}
+
+In this supplement,
+
+\[
+\boxed{G=q_0=c=1}.
+\]
+
+\(q_0\) is the reference charge unit,
+
+\[
+q_0=\frac{e}{3}.
+\]
+
+The charges are expressed as integer multiples,
+
+\[
+q_A=s_A n q_0,
+\qquad
+q_B=s_B n q_0,
+\]
+
+where
+
+\[
+s_A,s_B\in\{+1,-1\},\qquad n\in\mathbb N.
+\]
+
+On the other hand, the mass is not absorbed into the unit:
+
+\[
+m_A=m_B=\frac{M}{2}.
+\]
+
+Then
+
+\[
+\lambda_A
+=
+\frac{s_A n q_0}{M/2}
+=
+s_A\frac{2nq_0}{M},
+\]
+
+\[
+\lambda_B
+=
+s_B\frac{2nq_0}{M}.
+\]
+
+The continuous degree of freedom remaining after the change of
+normalization is therefore
+
+\[
+\boxed{\frac{M}{q_0}}.
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{4. The mass-to-charge ratio that regenerates the old initial
+conditions}\label{the-mass-to-charge-ratio-that-regenerates-the-old-initial-conditions}
+
+In the \(n=1\) condition of the sixth thought experiment,
+
+\[
+|\lambda|=0.30=\frac{3}{10}.
+\]
+
+In the new normalization,
+
+\[
+|\lambda|
+=
+\frac{2q_0}{M}.
+\]
+
+Hence
+
+\[
+\frac{2q_0}{M}=\frac{3}{10},
+\]
+
+that is,
+
+\[
+\boxed{\frac{M}{q_0}=\frac{20}{3}}.
+\]
+
+In units with \(q_0=1\),
+
+\[
+\boxed{M=\frac{20}{3}},
+\]
+
+\[
+\boxed{m_A=m_B=\frac{10}{3}}.
+\]
+
+Fixing this single value, for a general integer \(n\)
+
+\[
+|\lambda_n|
+=
+\frac{2n}{20/3}
+=
+\frac{3n}{10}.
+\]
+
+Therefore
+
+\[
+n=1\Rightarrow |\lambda|=0.30,
+\]
+
+\[
+n=3\Rightarrow |\lambda|=0.90,
+\]
+
+\[
+n=4\Rightarrow |\lambda|=1.20.
+\]
+
+The five conditions of the sixth thought experiment are regenerated as
+they are from a single \(M/q_0\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{\texorpdfstring{5. Regeneration of the initial states
+\(C,D\)}{5. Regeneration of the initial states C,D}}\label{regeneration-of-the-initial-states-cd}
+
+Expressing equal and opposite signs by \(s_A,s_B\),
+
+\[
+\lambda_A=s_A\frac{3n}{10},
+\qquad
+\lambda_B=s_B\frac{3n}{10}.
+\]
+
+Therefore
+
+\[
+C
+=
+1-\lambda_A\lambda_B
+=
+1-s_As_B\frac{9n^2}{100},
+\]
+
+\[
+D
+=
+(\lambda_A-\lambda_B)^2
+=
+\frac{9n^2}{100}(s_A-s_B)^2.
+\]
+
+For opposite signs \(s_A=-s_B\),
+
+\[
+C=1+\frac{9n^2}{100},
+\]
+
+\[
+D=\frac{36n^2}{100}.
+\]
+
+For equal signs \(s_A=s_B\),
+
+\[
+C=1-\frac{9n^2}{100},
+\]
+
+\[
+D=0.
+\]
+
+Hence the five conditions are
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrllrr@{}}
+\toprule\noalign{}
+case & \(n\) & \((s_A,s_B)\) & \((\lambda_A,\lambda_B)\) & \(C\) &
+\(D\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+n1\_attractive & 1 & \((+,-)\) & \((+0.30,-0.30)\) & 1.09 & 0.36 \\
+n1\_repulsive & 1 & \((+,+)\) & \((+0.30,+0.30)\) & 0.91 & 0.00 \\
+n3\_attractive & 3 & \((+,-)\) & \((+0.90,-0.90)\) & 1.81 & 3.24 \\
+n3\_repulsive & 3 & \((+,+)\) & \((+0.90,+0.90)\) & 0.19 & 0.00 \\
+n4\_attractive & 4 & \((+,-)\) & \((+1.20,-1.20)\) & 2.44 & 5.76 \\
+\end{longtable}
+}
+
+which coincide with the initial values of the sixth thought experiment.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{6. Code verification}\label{code-verification}
+
+\subsection{6.1 Scope of the change}\label{scope-of-the-change}
+
+In the existing code of the sixth thought experiment, the case table
+gave \(\lambda_A,\lambda_B,C,D\) as in
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\StringTok{"n1\_attractive"}\NormalTok{, }\FloatTok{0.30}\NormalTok{, }\OperatorTok{{-}}\FloatTok{0.30}\NormalTok{, }\FloatTok{1.09}\NormalTok{, }\FloatTok{0.36}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+and the final \(C,D\) were passed to \texttt{init\_state()}.
+
+In this supplement \texttt{transition(z)} is not changed. A new,
+independent initialization module
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{paper6\_init\_G\_q0\_c1.py}
+\end{Highlighting}
+\end{Shaded}
+
+was created, which takes as input
+
+\[
+(q_0,M,n,s_A,s_B)
+\]
+
+generates
+
+\[
+\lambda_A,\lambda_B,C,D,
+\]
+
+and from those values makes the same initial diagnostic row as the sixth
+thought experiment.
+
+\subsection{6.2 Test stub}\label{test-stub}
+
+A test stub that generates the five conditions at once,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test\_stub\_generate\_initial\_rows.py}
+\end{Highlighting}
+\end{Shaded}
+
+was created. Its output is
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generated\_initial\_rows\_G\_q0\_c1.csv}
+\end{Highlighting}
+\end{Shaded}
+
+As the object of comparison, the micro=0 row was extracted from each
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{raw\_first\_macro\_microsteps.csv}
+\end{Highlighting}
+\end{Shaded}
+
+of the five stored cases of the sixth thought experiment. The result of
+the extraction was fixed as
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{original\_initial\_rows\_paper6.csv}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{6.3 Method of comparison}\label{method-of-comparison}
+
+With the comparison program
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{compare\_initial\_rows.py}
+\end{Highlighting}
+\end{Shaded}
+
+the following 12 columns were compared.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{micro, q\_index, P, N, C, D,}
+\NormalTok{k1p, k2p, k3p, k4p, dP, Q}
+\end{Highlighting}
+\end{Shaded}
+
+The comparison was made as an exact match of IEEE-754 floats after
+reading the CSV as numbers.
+
+Note that \(M/q_0=20/3\) and \(\lambda=3n/10\) were constructed as
+rational numbers and converted to float at the end. This is an
+implementation measure to reproduce decimal notations such as
+\texttt{1.81} as the same IEEE-754 values as the old raw data; it is not
+a change of the physical model.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{7. Verification results}\label{verification-results}
+
+The result was PASS in all five conditions.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrrrrrl@{}}
+\toprule\noalign{}
+case & \(P\) & \(N\) & \(C\) & \(D\) & \(Q\) & result \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+n1\_attractive & 50.0 & 0.25 & 1.09 & 0.36 & 1.0 & PASS \\
+n1\_repulsive & 50.0 & 0.25 & 0.91 & 0.00 & 1.0 & PASS \\
+n3\_attractive & 50.0 & 0.25 & 1.81 & 3.24 & 1.0 & PASS \\
+n3\_repulsive & 50.0 & 0.25 & 0.19 & 0.00 & 1.0 & PASS \\
+n4\_attractive & 50.0 & 0.25 & 2.44 & 5.76 & 1.0 & PASS \\
+\end{longtable}
+}
+
+For all cases,
+
+\[
+\boxed{
+\Delta P=
+\Delta N=
+\Delta C=
+\Delta D=
+\Delta Q=0
+}
+\]
+
+and for the initial work registers as well,
+
+\[
+\boxed{
+\Delta k_{1p}=
+\Delta k_{2p}=
+\Delta k_{3p}=
+\Delta k_{4p}=
+\Delta dP=0
+}
+\]
+
+Furthermore,
+
+\[
+\Delta \mathrm{micro}=0,
+\qquad
+\Delta q_{\mathrm{index}}=0.
+\]
+
+The initial rows observed in the stored raw data therefore matched
+exactly in all 12 columns.
+
+The machine-readable detailed results were saved in
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{initial\_row\_verification\_result.json}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{8. Why the interaction runs are not
+re-executed}\label{why-the-interaction-runs-are-not-re-executed}
+
+This is an important point of this supplement.
+
+In the sixth thought experiment it has already been audited that the
+generating map generates the next state from the state \(z_k\) alone, as
+
+\[
+z_{k+1}=T(z_k),
+\]
+
+and does not refer to \(G,M,q_A,q_B\), the case name or the like as
+external arguments {[}6{]}.
+
+Let the initial state under the old normalization be
+\(z_0^{\mathrm{old}}\) and the initial state under the new normalization
+be \(z_0^{\mathrm{new}}\).
+
+By the present verification,
+
+\[
+\boxed{
+z_0^{\mathrm{new}}=z_0^{\mathrm{old}}
+}
+\]
+
+was confirmed for the initialization part that is affected by the change
+of normalization.
+
+Since the same map \(T\) is used,
+
+\[
+z_1^{\mathrm{new}}
+=T(z_0^{\mathrm{new}})
+=T(z_0^{\mathrm{old}})
+=z_1^{\mathrm{old}}.
+\]
+
+Likewise, by induction,
+
+\[
+\boxed{
+z_k^{\mathrm{new}}=z_k^{\mathrm{old}}
+\qquad (k=0,1,2,\ldots)
+}
+\]
+
+Therefore, re-executing the interaction runs for the five existing
+conditions would only regenerate the same deterministic state sequence.
+That is not a new independent verification.
+
+For this reason, in this supplement \textbf{only the verification of the
+initialization equivalence is carried out, and the orbit runs are not
+re-executed}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{9. Interpretation}\label{interpretation}
+
+\subsection{\texorpdfstring{9.1 \(M=1\) gave no additional information
+to the dynamics of the present five
+conditions}{9.1 M=1 gave no additional information to the dynamics of the present five conditions}}\label{m1-gave-no-additional-information-to-the-dynamics-of-the-present-five-conditions}
+
+The sixth thought experiment used \(M=1\) for the normalization. In this
+supplement the charge unit \(q_0\) was set to 1 and, instead,
+
+\[
+\frac{M}{q_0}
+\]
+
+was kept.
+
+As a result, with
+
+\[
+\frac{M}{q_0}=\frac{20}{3}
+\]
+
+the same initial states as in the sixth thought experiment were
+obtained.
+
+Therefore, at least for the five conditions verified here, the choice
+\(M=1\) itself did not give additional independent information to the
+state evolution. The necessary information can be re-expressed as a
+dimensionless mass-to-charge ratio at the time of initialization.
+
+\subsection{9.2 Discrete charge and continuous mass can be described
+separately}\label{discrete-charge-and-continuous-mass-can-be-described-separately}
+
+In the new representation, the charge side is expressed by the integer
+\(n\) through
+
+\[
+q=nq_0,
+\]
+
+and the mass side can be kept as
+
+\[
+M/q_0.
+\]
+
+In the present five conditions, fixing the single
+
+\[
+M/q_0=20/3
+\]
+
+and only changing \(n=1,3,4\) regenerated the old conditions.
+
+However, this supplement does not derive a new quantization rule from
+this discreteness. What was confirmed here is only the fact that
+\textbf{the existing conditions of the sixth thought experiment can be
+rewritten, without loss, into an initialization referred to the charge
+unit}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{10. What this supplement does not
+show}\label{what-this-supplement-does-not-show}
+
+This supplement does not claim the following.
+
+\begin{itemize}
+\tightlist
+\item
+  That \(q_0=e/3\) has been derived from this theory.
+\item
+  That \(M/q_0=20/3\) is a universal physical constant.
+\item
+  That the origin of mass quantization or charge quantization has been
+  explained.
+\item
+  Validity for general charged binaries beyond the range of
+  approximation of the sixth thought experiment.
+\item
+  That a fundamental unification of gravity and electromagnetism has
+  been derived.
+\item
+  That a new orbit or a new radiation phenomenon has been discovered.
+\end{itemize}
+
+The object of verification of this supplement is only the
+\textbf{equivalence of the initialization normalization} of the five
+conditions already executed in the sixth thought experiment.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{11. Files for reproduction}\label{files-for-reproduction}
+
+The files needed to reproduce this supplement were saved in the folder
+(the folder names in the repository are in Japanese; transliterated
+here)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{04\_supplement\_Gq0c1\_initialization\_equivalence\_verification\_20260927/}
+\end{Highlighting}
+\end{Shaded}
+
+inside the storage folder of the sixth thought experiment.
+
+The main files are as follows.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{paper6\_init\_G\_q0\_c1.py}
+\end{Highlighting}
+\end{Shaded}
+
+The restricted initialization implementation that generates the initial
+states of the five conditions from \(G=q_0=c=1\), \(M/q_0=20/3\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test\_stub\_generate\_initial\_rows.py}
+\end{Highlighting}
+\end{Shaded}
+
+The test stub that generates the initial rows of the five conditions.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{generated\_initial\_rows\_G\_q0\_c1.csv}
+\end{Highlighting}
+\end{Shaded}
+
+The output of the new initializer.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{original\_initial\_rows\_paper6.csv}
+\end{Highlighting}
+\end{Shaded}
+
+The object of comparison extracted from the stored raw data of the sixth
+thought experiment.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{compare\_initial\_rows.py}
+\end{Highlighting}
+\end{Shaded}
+
+The program verifying the exact match of the new and old initial rows.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{initial\_row\_verification\_result.json}
+\end{Highlighting}
+\end{Shaded}
+
+The comparison results of all fields.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{initial\_row\_verification\_result\_ja.md}
+\end{Highlighting}
+\end{Shaded}
+
+A short summary of the verification results in Japanese.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{12. Conclusion}\label{conclusion}
+
+The normalization of the sixth thought experiment,
+
+\[
+G=M=c=1,
+\]
+
+was changed to
+
+\[
+G=q_0=c=1,
+\]
+
+and the mass was kept as an explicit degree of freedom.
+
+For the equal-mass binary and the charge unit \(q_0\),
+
+\[
+\lambda_{A,B}=s_{A,B}\frac{2nq_0}{M},
+\]
+
+and from the reference value \(|\lambda|=0.30\) of the sixth thought
+experiment,
+
+\[
+\boxed{\frac{M}{q_0}=\frac{20}{3}}
+\]
+
+was obtained.
+
+Initializing the five conditions of \(n=1,3,4\) with this single ratio,
+they matched exactly, in all compared columns, the stored initial raw
+rows of the sixth thought experiment.
+
+Therefore, within the present scope of verification,
+
+\[
+\boxed{
+G=M=c=1
+\quad\text{and}\quad
+G=q_0=c=1,\;M/q_0=20/3
+}
+\]
+
+are \textbf{two normalization representations that generate the same
+internal initial state}.
+
+Under the state closure
+
+\[
+z_{k+1}=T(z_k)
+\]
+
+already established in the sixth thought experiment, if the initial
+state is the same then all subsequent states are also the same. For this
+reason, re-execution of the interaction runs is unnecessary.
+
+By this supplement it was confirmed that moving the degree of freedom
+that had been absorbed into the mass unit in the sixth thought
+experiment into the single mass-to-charge ratio
+
+\[
+\boxed{M/q_0}
+\]
+
+referred to the charge unit does not affect the generation of the
+physical states of the five existing conditions.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{References}\label{references}
+
+\subsection{This series}\label{this-series}
+
+{[}0{]} Noriaki Kihara, \textbf{Designing a Research Project to Explore
+the Emergence of Spacetime, Particles, and Interactions from States and
+Relations: A Framework of Preliminary Design and Feasibility
+Verification for Foundational-Physics Model Exploration under
+Uncertainty}, v1.0 (2026-09-20). Concept DOI: 10.5281/zenodo.22851944;
+Version DOI: 10.5281/zenodo.22851945.
+
+{[}1{]} Noriaki Kihara, \textbf{The First Thought Experiment: Tracing
+the Equivalence Principle Down to Two Nameless Degrees of Freedom -
+Deriving the Sign of the Sum of Squares, the Curvature Radius, and Three
+Systems (Inertial, Uniformly Accelerated, Rotating) from the
+Conservation of an Area Readout}, v1.0 (2026-09-20). Concept DOI:
+10.5281/zenodo.22857952; Version DOI: 10.5281/zenodo.22857953.
+
+{[}2{]} Noriaki Kihara, \textbf{The Second Thought Experiment: Deriving
+the Coulomb-Type Inverse-Square Force from a Product Readout and an Area
+Clock - Keeping Two Values and a Linear Law, Obtaining the Focus,
+Attraction and Repulsion and Neutrality, and Fixing What Two Values
+Cannot Write}, v1.2 (2026-09-21). Concept DOI: 10.5281/zenodo.22867336;
+Version DOI: 10.5281/zenodo.22876596.
+
+{[}3{]} Noriaki Kihara, \textbf{The Third Thought Experiment: Reading
+Out the State of Two Bodies a, b from the Orbit of Two Celestial Bodies
+a, b - Obtaining the Mass Ratio, the Relative Distance and the Relative
+Time from Orbit and Gravitational-Wave Readouts, with Two Values of
+Undetermined Meaning and the Knowledge \(G=c=M=1\) Alone}, v1.5
+(2026-09-23). Concept DOI: 10.5281/zenodo.22909660; Version DOI:
+10.5281/zenodo.22909661.
+
+{[}4{]} Noriaki Kihara, \textbf{The Fourth Thought Experiment: From a
+Fixed Action \(S\) to a State-Dependent Action \(S_n\) - Can the
+Relativistic Gravitational Orbits Computed Externally in the Third
+Thought Experiment Be Regenerated from the Sequential Interaction
+\(X_{n+1}=S_nX_n\)?}, v1.0 (2026-09-23). Concept DOI:
+10.5281/zenodo.22919787; Version DOI: 10.5281/zenodo.22919788.
+
+{[}5{]} Noriaki Kihara, \textbf{The Fifth Thought Experiment: Was There
+No Hidden State? - A Self-Audit of the Two-State Orbit Generation of the
+Fourth Thought Experiment, Tracking the State Closure from Five States
+to the Sixth Persistent State \(\mathcal N=\nu\) -}, v2.1 (2026-09-26).
+Concept DOI: 10.5281/zenodo.22973086; Version DOI:
+10.5281/zenodo.22973087.
+
+{[}6{]} Noriaki Kihara, \textbf{The Sixth Thought Experiment: Can Two
+Kinds of Long-Range Interaction Be Internalized into a Single Closed
+State Map? - Reconstructing Gravity, Coulomb, GW-Quadrupole and
+EM-Dipole Radiation of a Charged Quasi-Circular Binary with Eight
+Persistent States, and Verifying the Transferability of the Same
+Transition over Five Conditions -}, v1.1 (2026-09-26). Concept DOI:
+10.5281/zenodo.22974631; Version DOI: 10.5281/zenodo.22974632.
+
+\subsection{External}\label{external}
+
+{[}7{]} P. C. Peters and J. Mathews, ``Gravitational Radiation from
+Point Masses in a Keplerian Orbit,'' \emph{Physical Review}
+\textbf{131}, 435-440 (1963). DOI: 10.1103/PhysRev.131.435.
+
+{[}8{]} P. C. Peters, ``Gravitational Radiation and the Motion of Two
+Point Masses,'' \emph{Physical Review} \textbf{136}, B1224-B1232 (1964).
+DOI: 10.1103/PhysRev.136.B1224.
+
+{[}9{]} L. Liu, O. Christiansen, Z.-K. Guo, R.-G. Cai, and S. P. Kim,
+``Gravitational and electromagnetic radiation from binary black holes
+with electric and magnetic charges: Circular orbits on a cone,''
+\emph{Physical Review D} \textbf{102}, 103520 (2020). DOI:
+10.1103/PhysRevD.102.103520.
+
+{[}10{]} C. A. Benavides-Gallego and W.-B. Han, ``Gravitational Waves
+and Electromagnetic Radiation from Charged Black Hole Binaries,''
+\emph{Symmetry} \textbf{15}, 537 (2023). DOI: 10.3390/sym15020537.
+
+{[}11{]} Z.-H. Zhang, T. Liu, S. Zhang, and Z.-K. Guo, ``Post-Newtonian
+dynamics of charged compact binaries,'' \emph{Physical Review D}
+\textbf{114}, 044088 (2026). DOI: 10.1103/4x8q-2kzm.
+
+{[}12{]} S. Verma et al., ``Post-newtonian dynamics of radiating
+charges: canonical formulation and binary inspiral laws,''
+\emph{European Physical Journal C} \textbf{86}, 830 (2026). DOI:
+10.1140/epjc/s10052-026-16076-2.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Reproducibility note}\label{reproducibility-note}
+
+This supplement does not change the dynamics of the existing sixth
+thought experiment. The new code used for the verification, the
+generated initial rows, the initial rows extracted from the old raw
+data, the comparison code and the comparison results were placed in the
+same storage folder described in Section 11 of the main text. For the
+interaction-run data, the existing raw data of the sixth thought
+experiment are taken as the object of verification as they are, and are
+not regenerated.
+
+\end{document}
