@@ -1,0 +1,159 @@
+{
+  "experiment": "Paper 8 harmonic-state extension control v1",
+  "purpose": "Verify that adding conserved harmonic-series state with harmonics disabled does not change the existing 123-component dynamics.",
+  "pattern": {
+    "pattern_id": "harmonic_extension_control_no_harmonics_v1",
+    "charge_multiple_n": 1,
+    "sign_a": 1,
+    "sign_b": -1
+  },
+  "normalization": {
+    "G": 1.0,
+    "q0": 1.0,
+    "c": 1.0,
+    "M_over_q0": "20/3"
+  },
+  "relation_meta": [
+    {
+      "case_id": "aa",
+      "charge_multiple_n": 1,
+      "q0": 1.0,
+      "M_total": 6.666666666666667,
+      "m_A": 3.3333333333333335,
+      "m_B": 3.3333333333333335,
+      "lambda_A": 0.3,
+      "lambda_B": 0.3,
+      "N": 0.25,
+      "C": 0.91,
+      "D": 0.0
+    },
+    {
+      "case_id": "ab",
+      "charge_multiple_n": 1,
+      "q0": 1.0,
+      "M_total": 6.666666666666667,
+      "m_A": 3.3333333333333335,
+      "m_B": 3.3333333333333335,
+      "lambda_A": 0.3,
+      "lambda_B": -0.3,
+      "N": 0.25,
+      "C": 1.09,
+      "D": 0.36
+    },
+    {
+      "case_id": "bb",
+      "charge_multiple_n": 1,
+      "q0": 1.0,
+      "M_total": 6.666666666666667,
+      "m_A": 3.3333333333333335,
+      "m_B": 3.3333333333333335,
+      "lambda_A": -0.3,
+      "lambda_B": -0.3,
+      "N": 0.25,
+      "C": 0.91,
+      "D": 0.0
+    }
+  ],
+  "macrosteps": 4000,
+  "microsteps_per_macrostep": 11,
+  "original_state_dimension": 123,
+  "extended_state_dimension": 127,
+  "added_state_names": [
+    "B0_re",
+    "B0_im",
+    "R_re",
+    "R_im"
+  ],
+  "added_state_initial": [
+    1.0,
+    0.0,
+    1.0,
+    0.0
+  ],
+  "added_state_update": "identity map; zero cross-coupling",
+  "control_interpretation": "B0=1+0i, R=1+0i; harmonic structure disabled",
+  "bitwise_equal_all_macrosteps_original_123": true,
+  "first_mismatch_macrostep": null,
+  "first_mismatch_original_index": null,
+  "max_abs_diff_original_123": 0.0,
+  "max_abs_drift_added_state": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "final_added_state": [
+    1.0,
+    0.0,
+    1.0,
+    0.0
+  ],
+  "checkpoints": [
+    {
+      "macrostep": 0,
+      "bitwise_equal_original_123": true,
+      "max_abs_diff_original_123": 0.0,
+      "harmonic_state": [
+        1.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "macrostep": 1,
+      "bitwise_equal_original_123": true,
+      "max_abs_diff_original_123": 0.0,
+      "harmonic_state": [
+        1.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "macrostep": 10,
+      "bitwise_equal_original_123": true,
+      "max_abs_diff_original_123": 0.0,
+      "harmonic_state": [
+        1.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "macrostep": 100,
+      "bitwise_equal_original_123": true,
+      "max_abs_diff_original_123": 0.0,
+      "harmonic_state": [
+        1.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "macrostep": 1000,
+      "bitwise_equal_original_123": true,
+      "max_abs_diff_original_123": 0.0,
+      "harmonic_state": [
+        1.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "macrostep": 4000,
+      "bitwise_equal_original_123": true,
+      "max_abs_diff_original_123": 0.0,
+      "harmonic_state": [
+        1.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    }
+  ]
+}

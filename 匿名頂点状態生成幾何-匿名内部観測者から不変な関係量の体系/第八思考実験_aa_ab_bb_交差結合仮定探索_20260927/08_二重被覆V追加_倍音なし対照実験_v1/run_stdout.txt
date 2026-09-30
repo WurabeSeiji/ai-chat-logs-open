@@ -1,0 +1,210 @@
+/mnt/data/paper8_double_cover_control/run_double_cover_V_control_v1.py:267: SyntaxWarning: invalid escape sequence '\['
+  "unified_init_sha256": sha256_file(HERE / "unified_init.py"),
+/mnt/data/paper8_double_cover_control/run_double_cover_V_control_v1.py:262: SyntaxWarning: invalid escape sequence '\]'
+  (OUT / "EXPERIMENT_CHANGE_AND_RESULT_ANALYSIS_ja.md").write_text(analysis, encoding="utf-8")
+{
+  "experiment": "Paper 8 numerical experiment 2: minimal double-cover V control v1",
+  "baseline": "Experiment 1 / original 123-state dynamics",
+  "change_only": "add one complex V for U_ab; V rotates by half-angle at the same q10 stage; no harmonics; no feedback to original 123 states",
+  "pattern": {
+    "pattern_id": "double_cover_V_control_no_harmonics_v1",
+    "charge_multiple_n": 1,
+    "sign_a": 1,
+    "sign_b": -1
+  },
+  "normalization": {
+    "G": 1.0,
+    "q0": 1.0,
+    "c": 1.0,
+    "M_over_q0": "20/3"
+  },
+  "relation_meta": [
+    {
+      "case_id": "aa",
+      "charge_multiple_n": 1,
+      "q0": 1.0,
+      "M_total": 6.666666666666667,
+      "m_A": 3.3333333333333335,
+      "m_B": 3.3333333333333335,
+      "lambda_A": 0.3,
+      "lambda_B": 0.3,
+      "N": 0.25,
+      "C": 0.91,
+      "D": 0.0
+    },
+    {
+      "case_id": "ab",
+      "charge_multiple_n": 1,
+      "q0": 1.0,
+      "M_total": 6.666666666666667,
+      "m_A": 3.3333333333333335,
+      "m_B": 3.3333333333333335,
+      "lambda_A": 0.3,
+      "lambda_B": -0.3,
+      "N": 0.25,
+      "C": 1.09,
+      "D": 0.36
+    },
+    {
+      "case_id": "bb",
+      "charge_multiple_n": 1,
+      "q0": 1.0,
+      "M_total": 6.666666666666667,
+      "m_A": 3.3333333333333335,
+      "m_B": 3.3333333333333335,
+      "lambda_A": -0.3,
+      "lambda_B": -0.3,
+      "N": 0.25,
+      "C": 0.91,
+      "D": 0.0
+    }
+  ],
+  "macrosteps": 4000,
+  "microsteps_per_macrostep": 11,
+  "original_state_dimension": 123,
+  "extended_state_dimension": 125,
+  "added_state_names": [
+    "V_re",
+    "V_im"
+  ],
+  "V_initial": [
+    1.0,
+    0.0
+  ],
+  "cover_relation": "V^2 = U_ab",
+  "harmonic_generation_enabled": false,
+  "bitwise_equal_all_microsteps_original_123": true,
+  "first_mismatch_macrostep": null,
+  "first_mismatch_microstep": null,
+  "first_mismatch_original_index": null,
+  "max_abs_diff_original_123": 0.0,
+  "max_abs_cover_error_V2_vs_Uab": 1.6564527527407336e-13,
+  "max_abs_V_norm2_minus_1": 1.219024881038422e-13,
+  "final_U_ab": [
+    0.9999999999999563,
+    -1.235990476633475e-15
+  ],
+  "final_V": [
+    -1.0000000000000608,
+    2.115820539605462e-15
+  ],
+  "expected_after_one_orbit": "U_ab approximately +1, V approximately -1",
+  "checkpoints": [
+    {
+      "macrostep": 0,
+      "U_ab": [
+        1.0,
+        0.0
+      ],
+      "V": [
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "macrostep": 1,
+      "U_ab": [
+        0.9999987662997035,
+        0.001570795680830879
+      ],
+      "V": [
+        0.9999996915748783,
+        0.0007853980826519387
+      ],
+      "V_squared": [
+        0.9999987662997036,
+        0.001570795680830879
+      ]
+    },
+    {
+      "macrostep": 10,
+      "U_ab": [
+        0.9998766324816605,
+        0.015707317311820675
+      ],
+      "V": [
+        0.9999691576447897,
+        0.007853900888711336
+      ],
+      "V_squared": [
+        0.9998766324816605,
+        0.01570731731182068
+      ]
+    },
+    {
+      "macrostep": 100,
+      "U_ab": [
+        0.9876883405951362,
+        0.15643446504023079
+      ],
+      "V": [
+        0.9969173337331292,
+        0.07845909572784505
+      ],
+      "V_squared": [
+        0.9876883405951402,
+        0.15643446504023129
+      ]
+    },
+    {
+      "macrostep": 1000,
+      "U_ab": [
+        1.2073675392798577e-15,
+        0.9999999999999885
+      ],
+      "V": [
+        0.707106781186559,
+        0.7071067811865562
+      ],
+      "V_squared": [
+        3.885780586188048e-15,
+        1.0000000000000286
+      ]
+    },
+    {
+      "macrostep": 2000,
+      "U_ab": [
+        -0.9999999999999778,
+        1.375635716449608e-15
+      ],
+      "V": [
+        3.341944776469319e-15,
+        1.0000000000000302
+      ],
+      "V_squared": [
+        -1.0000000000000604,
+        6.68388955293884e-15
+      ]
+    },
+    {
+      "macrostep": 3999,
+      "U_ab": [
+        0.9999987662996598,
+        -0.0015707956808320462
+      ],
+      "V": [
+        -0.9999996915749392,
+        0.0007853980826541023
+      ],
+      "V_squared": [
+        0.9999987662998253,
+        -0.0015707956808353018
+      ]
+    },
+    {
+      "macrostep": 4000,
+      "U_ab": [
+        0.9999999999999563,
+        -1.235990476633475e-15
+      ],
+      "V": [
+        -1.0000000000000608,
+        2.115820539605462e-15
+      ],
+      "V_squared": [
+        1.0000000000001217,
+        -4.231641079211181e-15
+      ]
+    }
+  ]
+}
