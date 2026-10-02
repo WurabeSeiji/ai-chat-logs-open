@@ -28,5 +28,5 @@ echo "== checks"
 python3 checks.py | tee results/checks.txt
 
 echo "== SHA256"
-shasum -a 256 em_two_body_node_map.py checks.py run_all.sh README.md results/*.csv results/*.json results/*.txt > SHA256SUMS.txt
+shasum -a 256 em_two_body_node_map.py checks.py plot_readouts.py run_all.sh README.md results/*.csv results/*.json results/*.txt results/figures/* results_B3/* > SHA256SUMS.txt
 echo done

@@ -9,9 +9,13 @@
 |---|---|
 | `em_two_body_node_map.py` | 本体。`init_state`（§8 初期化。呼吸の軌道を一周だけ厳密に解いて級数に展開）、`node_map`（§2.1 手順 0〜8。相互作用の唯一の関数）、`readout`（§2.2・§7）、`selftest` |
 | `checks.py` | 動作確認走行の結果を仕様の数値と照合し、保存・エネルギー収支を数値で出す（合否判定は書かない） |
+| `plot_readouts.py` | 図化（仕様 §7 の読み出し）。F1 ロック、F2 エネルギー収支、F3 倍音分布、F4 呼吸、F5 時計の比、F6 位相。SVG と PNG を保存。CSV と .csv.gz を読む |
 | `run_all.sh` | 動作確認走行一式（約 1 分）と SHA256 の生成 |
-| `results/` | 走行の CSV・summary JSON・標準出力・`checks.txt` |
+| `results/` | 動作確認走行の CSV・summary JSON・標準出力・`checks.txt`。`results/figures/` に図 |
+| `results_B3/` | B3 本走行（δ = 0.065、f = 1、200,000 周）の出力・図・`SUMMARY.md` |
 | `SHA256SUMS.txt` | 一式のハッシュ |
+
+図化：`python3 plot_readouts.py results/test3_delta065_f1.csv results_B3/run_B3_delta065_f1_updown_200000orb.csv.gz --out results/figures`。表示規約は dataviz（一つの軸に一つの単位、細い線、控えめな格子、2 系列以上は凡例、固定配色 青・橙・水色、記録点 > 5000 は窓平均と最小–最大の帯）。横軸はすべて共通時計（呼吸の周 = 節点/62）。
 
 ## 実行
 
