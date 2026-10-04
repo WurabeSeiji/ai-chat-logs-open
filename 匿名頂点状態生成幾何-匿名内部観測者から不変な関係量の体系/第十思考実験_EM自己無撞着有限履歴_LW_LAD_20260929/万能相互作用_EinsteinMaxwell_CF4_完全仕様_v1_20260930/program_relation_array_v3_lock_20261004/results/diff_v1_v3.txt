@@ -1,0 +1,117 @@
+--- ../program_relation_array_v1_20261004/relation_array_node_map_v1.py	2026-10-04 17:46:40
++++ relation_array_node_map_v3.py	2026-10-04 19:09:26
+@@ -1,6 +1,18 @@
+ #!/usr/bin/env python3
+-"""関係配列写像 v1（辞書 10/4・固定点 1〜3 の最小実装）
++"""関係配列写像 v3 ＝ v1 の忠実コピー ＋ 決定済みの引き込み（--lock off|on）
+ 
++決定済み（チャット 10/1、STATUS §7.1・7.5）を v1 の上にそのまま実装する。窓・分母・刻みの入力はない。
++  1. 三つの位相の進み：a の時計 x3a、b の時計 x3b、関係の位相 2θ。読めるのはその差だけ。
++     Δa = 2θ − x3a、Δb = 2θ − x3b、Δab = x3b − x3a（mod 2π）。三つが整数関係（≡ 0）なら何も変化が読めない。
++  2. 放出の源は位相配位の関数：s = (1/3)Σ sin²(Δ_i/2)。整数関係で s = 0 ⇒ 方向を失い放出が止まる。
++     E–M の放射反作用（ALD の P_rad、Δm）はそのまま。背景は B3（等方な吸収体、戻らない）。
++  3. 節点の時計 δτ は動的：a の位相が関係の位相と閉じる値 x3a = 2πK + 2θ（Δa ≡ 0）で各節点ごとに決まる。
++     K は v1 の節点幅（v7 の 10153 ＝ 1615.86 周）から継承した整数の周数 1616。新しい入力ではない。
++  --lock off は v1 と同一（対照走行で照合）。
++
++---- 以下 v1 の説明 ----
++関係配列写像 v1（辞書 10/4・固定点 1〜3 の最小実装）
++
+ 状態は a, b の成分ではなく「関係の配列」とその率（固定点 2 §4, §6）:
+   λ   : 対数距離（長さの対）          ξ = e^λ  [a_a 単位]
+   Δλ  : λ の一節点の増分（長さの率）   π = ξ Δλ / Δθ_k
+@@ -100,6 +112,11 @@
+                for p, a, b, ca, cb, c in MONO if b > 0 and a > 0)
+ 
+ 
++def wrap_pi(x):
++    """角を (−π, π] に写す（v3：位相の進みの差を読むため）"""
++    return (x + math.pi) % (2 * math.pi) - math.pi
++
++
+ def clock_factors(xi, P2):
+     """v7 §3 手順 0（表の平均ではなく節点の値）"""
+     va2 = P2 / G**2
+@@ -111,7 +128,7 @@
+     return Fa, Fb
+ 
+ 
+-def run(delta, f, nodes, sa, sb, out_csv, tol_turn=1e-3):
++def run(delta, f, nodes, sa, sb, out_csv, tol_turn=1e-3, lock="off"):
+     # ---- 初期化（v7 §8：半径 ξ1、近点 π = 0、m = 1 + δ、節点幅 DTH0 を x3a に写す）
+     m = 1.0 + delta
+     xi = XI1
+@@ -119,6 +136,7 @@
+     P2 = pi**2 + (2 * G * m / xi)**2
+     Fa, Fb = clock_factors(xi, P2)
+     x3a = Fa * DTH0            # a の位相の一節点の増分 = 節点の時計（以後、v1 では不変）
++    K = int(round(x3a / (2 * math.pi)))   # v3: 継承した節点の周数（1616）。lock on では x3a = 2πK + 2θ で閉じる
+     lam = math.log(xi)
+     dlam = 0.0
+     psi = 0.0                  # 関係の位相（配列の回転角の積算）
+@@ -130,7 +148,8 @@
+ 
+     fields = ["node", "xi", "pi", "m", "theta", "R_sin2theta", "two_theta_over_2pi", "theta_X",
+               "gamma", "F_a", "F_b", "x3b_over_x3a", "eps", "psi", "cum_turns",
+-              "theta_rad", "sin2_theta_rad", "dE_node", "eta_a", "eta_b"]
++              "theta_rad", "sin2_theta_rad", "dE_node", "eta_a", "eta_b",
++              "Delta_a", "Delta_b", "Delta_ab", "s_dir", "x3a", "K"]   # v3: 末尾 6 列（先頭 20 列は v1 と同一）
+     with open(out_csv, "w", newline="") as fh:
+         w = csv.writer(fh)
+         w.writerow(fields)
+@@ -139,10 +158,16 @@
+             xi = math.exp(lam)
+             Fa, Fb = clock_factors(xi, pi**2 + (2 * G * m / xi)**2)
+             for _ in range(3):                      # Δθ_k と F の自己無撞着（一節点内の反復）
++                if lock == "on":
++                    # v3: 節点の時計は a の位相が関係の位相と閉じる値。x3a = 2πK + 2θ、θ = (x3a/(4gFa))∂ε/∂m
++                    #     ⇒ x3a = 2πK / (1 − ∂ε/∂m /(2 g Fa))。Δa ≡ 0 が恒等的に成り立つ
++                    x3a = 2 * math.pi * K / (1.0 - d_m(xi, pi, m, sa, sb) / (2 * G * Fa))
+                 dth = x3a / Fa
+                 pi = xi * dlam / dth if k > 0 else pi
+                 P2 = pi**2 + (2 * G * m / xi)**2
+                 Fa, Fb = clock_factors(xi, P2)
++            if lock == "on":
++                x3a = 2 * math.pi * K / (1.0 - d_m(xi, pi, m, sa, sb) / (2 * G * Fa))
+             dth = x3a / Fa
+             x3b = RATIO * Fb * dth
+             e = eps(xi, pi, m, sa, sb)
+@@ -161,14 +186,21 @@
+             phiddot = (d_mxi(xi, pi, m, sa, sb) * xidot + d_mpi(xi, pi, m, sa, sb) * xiddot) / (2 * G)
+             D2 = (xiddot - xi * phidot**2)**2 + (2 * xidot * phidot + xi * phiddot)**2
+             P_D = (2.0 / 3.0) * KC * D2
+-            dE = f * P_D * dth
++            # ---- v3: 三つの位相の進み（x3a, x3b, 2θ）の差（STATUS §7.1）。整数関係なら s_dir = 0 ⇒ 放出停止（§7.5）
++            Da = wrap_pi(2 * theta - x3a)
++            Db = wrap_pi(2 * theta - x3b)
++            Dab = wrap_pi(x3b - x3a)
++            s_dir = (math.sin(Da / 2)**2 + math.sin(Db / 2)**2 + math.sin(Dab / 2)**2) / 3.0
++            s_eff = s_dir if lock == "on" else 1.0
++            dE = f * P_D * dth * s_eff
+             sin2_rad = dE / abs(e) if e != 0 else 0.0
+             theta_rad = math.asin(math.sqrt(min(sin2_rad, 1.0)))
+             w.writerow([k, f"{xi:.12e}", f"{pi:.12e}", f"{m:.12e}", f"{theta:.12e}",
+                         f"{math.sin(theta)**2:.12e}", f"{theta / math.pi:.12e}", f"{theta_X:.12e}",
+                         f"{theta / theta_X if theta_X else float('nan'):.12e}", f"{Fa:.15e}", f"{Fb:.15e}",
+                         f"{x3b / x3a:.12e}", f"{e:.12e}", f"{psi:.12e}", f"{cum_turns:.9f}",
+-                        f"{theta_rad:.6e}", f"{sin2_rad:.6e}", f"{dE:.6e}", f"{eta_a:.6e}", f"{eta_b:.6e}"])
++                        f"{theta_rad:.6e}", f"{sin2_rad:.6e}", f"{dE:.6e}", f"{eta_a:.6e}", f"{eta_b:.6e}",
++                        f"{Da:.9e}", f"{Db:.9e}", f"{Dab:.9e}", f"{s_dir:.9e}", f"{x3a:.9f}", K])
+             if k == nodes:
+                 break
+             # ---- 手順 2: 面②（呼吸。E–M の正準更新。シンプレクティック Euler）
+@@ -198,10 +230,12 @@
+     ap.add_argument("--sa", type=int, default=1)
+     ap.add_argument("--sb", type=int, default=-1)
+     ap.add_argument("--out", required=True)
++    ap.add_argument("--lock", choices=["off", "on"], default="off",
++                    help="off: v1 と同一 / on: 決定済みの引き込み（三位相の整数関係、δτ 動的、源は位相配位の関数）")
+     a = ap.parse_args()
+     os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)
+-    r = run(a.delta, a.f, a.nodes, a.sa, a.sb, a.out)
+-    print(f"delta={a.delta} f={a.f} nodes={a.nodes} eps0={r['eps0']:.9e} x3a={r['x3a']:.6f} "
++    r = run(a.delta, a.f, a.nodes, a.sa, a.sb, a.out, lock=a.lock)
++    print(f"delta={a.delta} f={a.f} nodes={a.nodes} lock={a.lock} eps0={r['eps0']:.9e} x3a_final={r['x3a']:.6f} "
+           f"recur_count={r['n_recur']} first_recur(node,turns)={r['recur']}")
+ 
+ 
