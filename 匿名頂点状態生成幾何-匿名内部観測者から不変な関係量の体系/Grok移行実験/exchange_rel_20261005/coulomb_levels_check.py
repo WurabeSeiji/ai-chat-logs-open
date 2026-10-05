@@ -51,7 +51,7 @@ worst_prog = 0.0
 worst_exp = 0.0
 for n in range(1, 4):
     for ell in range(n):
-        for s_e in (-1, 1):
+        for s_e in ((1,) if ell == 0 else (-1, 1)):
             j, bohr, dirac, recoil, breit, somm = terms(n, ell, s_e)
             total = dirac + recoil + breit
             prog = X.ORB_C[X.IDX[(n, ell, s_e, -1)]]
@@ -65,7 +65,7 @@ lines.append("プログラムの ORB_C と本検算の合計の最大差 = %.1e�
 lines.append("閉じた式と α⁴ 展開式の最大相対差 = %.1e（次の項は準位に対して相対 O(α⁴)。1s では α⁴/8 = %.1e）" % (worst_exp, A**4 / 8))
 lines.append("")
 
-e1s = -X.ORB_C[X.IDX[(1, 0, -1, -1)]] * X.EV
+e1s = -X.ORB_C[X.IDX[(1, 0, 1, -1)]] * X.EV
 e1s_meas = 13.598434599702
 lamb_1s = 8172.9 * MHZ
 lines.append("1S 電離エネルギー：本式 %.7f eV、実測 %.7f eV、差 %.3e eV = %.1f MHz" % (e1s, e1s_meas, e1s - e1s_meas, (e1s - e1s_meas) / MHZ))
@@ -79,8 +79,6 @@ lines.append("2P3/2 − 2P1/2：本式 %.2f MHz（Dirac 単体 %.2f MHz）、実
              % (fs / MHZ, (d32 - d12) * X.EV / MHZ, fs / MHZ - 10969.04))
 ls = (X.ORB_C[X.IDX[(2, 0, 1, -1)]] - X.ORB_C[X.IDX[(2, 1, -1, -1)]]) * X.EV
 lines.append("2S1/2 − 2P1/2：本式 %.2f MHz（Dirac では縮退）、実測 1057.845 MHz（Lamb、QED）" % (ls / MHZ))
-deg = max(abs(X.ORB_C[X.IDX[(n, 0, 1, -1)]] - X.ORB_C[X.IDX[(n, 0, -1, -1)]]) for n in range(1, 6))
-lines.append("ℓ = 0 の s_e = ±1 は同じ j = 1/2：最大差 %.1e（縮退）" % deg)
 lines.append("")
 lines.append("1s の内訳：Dirac シフト（相対 α²/4）= %.3e eV、反跳 = %.3e eV、Breit = 0（ℓ = 0）"
              % ((terms(1, 0, -1)[2] - (-mu * A**2 / 2)) * X.EV, terms(1, 0, -1)[3] * X.EV))

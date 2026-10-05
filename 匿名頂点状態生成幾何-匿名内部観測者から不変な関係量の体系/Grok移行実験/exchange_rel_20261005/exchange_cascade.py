@@ -2,10 +2,10 @@
 """水素型二体（電子 q = −3、陽子 q = +3）の多段放出。準位は Einstein–Maxwell（Dirac–Coulomb 厳密解＋二体反跳、
 二体 1PN 重力、超微細）、遷移は Einstein の A 係数、時間発展はマスター方程式 dp/dt = R p。
 
-基底は (n, ℓ, s_e, s_p)、n = 1..5。s_e は j − ℓ の符号（ℓ = 0 は j = ½ のみで s_e = −1 は重複：動力学から除外）、
-s_p は F − j の符号。
+基底は (n, ℓ, s_e, s_p)、n = 1..5、50 準位。s_e は j − ℓ の符号（ℓ = 0 は j = ½ のみ）、s_p は F − j の符号。
 遷移は全ての下向き対（ΔE > 0）：E1（Δℓ = ±1）、E2 と重力波（Δℓ = 0, ±2、同じ四重極演算子、比 W_GW）、
-超微細 M1（同じ nℓj で ΔF = ±1）、2s→1s の二光子（8.2206 s⁻¹、ΔF = 0）と M1（2.496e-6 s⁻¹）。n → n−1 の拘束はない。
+M1（同じ nℓ：超微細 ΔF = ±1 と微細構造間 Δj = ±1。μ = −μ_B(L+2S) + g_pμ_N I）、
+2s→1s の二光子（8.2206 s⁻¹、ΔF = 0）と M1（2.496e-6 s⁻¹）。n → n−1 の拘束はない。
 外からの吸収は 0 で、増えたら失敗にする。
 電荷と静止質量は初期値と比較し、違えば失敗にする。
 重力辺は残す。物理の重み W_GW と、重み 1 の実験を両方記録する。
@@ -21,8 +21,12 @@ from matplotlib import font_manager
 from scipy.integrate import quad, solve_ivp
 from scipy.special import genlaguerre
 
-font_manager.fontManager.addfont("/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc")
-plt.rcParams["font.family"] = "WenQuanYi Zen Hei"
+# フォント：元の Linux 固定パスは他の OS で失敗するので、あれば登録し、無ければ OS にある日本語フォントへ落とす。
+if Path("/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc").exists():
+    font_manager.fontManager.addfont("/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc")
+_FONT_PREF = ["WenQuanYi Zen Hei", "Hiragino Sans", "Noto Sans CJK JP", "IPAexGothic", "Yu Gothic"]
+_FONTS = {f.name for f in font_manager.fontManager.ttflist}
+plt.rcParams["font.family"] = next((f for f in _FONT_PREF if f in _FONTS), "DejaVu Sans")
 plt.rcParams["axes.unicode_minus"] = False
 
 OUT = Path(__file__).resolve().parent
@@ -52,17 +56,18 @@ W_GW = 4.0 * (MU_P * MU**2 / 9.0) * MU_P / (MU_P - 1.0) ** 2
 
 
 def basis():
+    """(n, ℓ, s_e, s_p)。ℓ = 0 は j = ½ だけなので s_e = +1 のみ（元の基底にあった s_e = −1 の重複は除いた）。50 準位。"""
     return [(n, ell, se, sp)
             for n in range(1, 6)
             for ell in range(n)
-            for se in (-1, 1)
+            for se in ((1,) if ell == 0 else (-1, 1))
             for sp in (-1, 1)]
 
 
 ST = basis()
 IDX = {s: i for i, s in enumerate(ST)}
 DIM = len(ST)
-VALID = [i for i, (n, ell, se, sp) in enumerate(ST) if not (ell == 0 and se == -1)]   # ℓ = 0 の s_e = −1 は j = ½ の重複
+VALID = list(range(DIM))
 
 
 def jf_of(ell, s_e, s_p):
@@ -243,14 +248,28 @@ def lande_g(ell, j):
     return 1.0 + (j * (j + 1) + 0.75 - ell * (ell + 1)) / (2.0 * j * (j + 1))
 
 
-def m1_hyperfine(n, ell, j, F, F2, omega):
-    """同じ nℓj の超微細 M1（ΔF = ±1）。A = (4ω³/3ħc³)|⟨F'||μ||F⟩|²/(2F+1)、μ = −g_j μ_B J/ħ + g_p μ_N I/ħ。
-    1s F=1→0（21 cm）：(α/3)ω³(ħ/m_ec²)²(2μ_B + g_pμ_N)²/μ_B² ... = 2.877e-15 s⁻¹（実測 2.884e-15、差は g_e/2）。"""
-    I = 0.5
-    redJ = (-1) ** int(j + I + F + 1) * sqrt((2 * F + 1) * (2 * F2 + 1)) * wigner6j(j, F2, I, F, j, 1) * sqrt(j * (j + 1) * (2 * j + 1))
-    redI = (-1) ** int(j + I + F2 + 1) * sqrt((2 * F + 1) * (2 * F2 + 1)) * wigner6j(I, F2, j, F, I, 1) * sqrt(I * (I + 1) * (2 * I + 1))
-    moment_sq = (-lande_g(ell, j) * redJ + (G_P / MU_P) * redI) ** 2 / (2 * F + 1)      # μ_B 単位
-    return (ALPHA / 3.0) * omega**3 * (HBAR_SI / (ME_SI * C_SI**2)) ** 2 * moment_sq
+def m1_reduced(ell, j, F, j2, F2):
+    """同じ nℓ の二準位間の M1 の換算行列要素（μ_B 単位）。μ = −μ_B(L + 2S)/ħ + g_p μ_N I/ħ = −μ_B(J + S)/ħ + g_p μ_N I/ħ。
+    結合 ((ℓ s) j I) F。Edmonds 7.1.7／7.1.8：
+      ⟨(j' I)F'||J||(j I)F⟩ = δ_jj' (−1)^{j+I+F+1} √((2F+1)(2F'+1)) {j F' I; F j 1} √(j(j+1)(2j+1))
+      ⟨((ℓs)j' I)F'||S||((ℓs)j I)F⟩ = (−1)^{j'+I+F+1} √((2F+1)(2F'+1)) {j' F' I; F j 1} ⟨(ℓs)j'||S||(ℓs)j⟩、
+         ⟨(ℓs)j'||S||(ℓs)j⟩ = (−1)^{ℓ+s+j'+1} √((2j+1)(2j'+1)) {s j' ℓ; j s 1} √(s(s+1)(2s+1))
+      ⟨(j I)F'||I||(j I)F⟩ = δ_jj' (−1)^{j+I+F'+1} √((2F+1)(2F'+1)) {I F' j; F I 1} √(I(I+1)(2I+1))
+    j' = j では ⟨J⟩ + ⟨S⟩ = g_j⟨J⟩（射影定理。rates_check.py で確認）。j' ≠ j は微細構造間の M1（⟨S⟩ だけ）。"""
+    I, s = 0.5, 0.5
+    pref = sqrt((2 * F + 1) * (2 * F2 + 1))
+    redJ = 0.0 if j2 != j else (-1) ** int(j + I + F + 1) * pref * wigner6j(j, F2, I, F, j, 1) * sqrt(j * (j + 1) * (2 * j + 1))
+    redS_j = (-1) ** int(ell + s + j2 + 1) * sqrt((2 * j + 1) * (2 * j2 + 1)) * wigner6j(s, j2, ell, j, s, 1) * sqrt(s * (s + 1) * (2 * s + 1))
+    redS = (-1) ** int(j2 + I + F + 1) * pref * wigner6j(j2, F2, I, F, j, 1) * redS_j
+    redI = 0.0 if j2 != j else (-1) ** int(j + I + F2 + 1) * pref * wigner6j(I, F2, j, F, I, 1) * sqrt(I * (I + 1) * (2 * I + 1))
+    return -(redJ + redS) + (G_P / MU_P) * redI
+
+
+def m1_rate(ell, j, F, j2, F2, omega):
+    """同じ nℓ の二準位間の M1。A = (4ω³/3ħc³)|⟨F'||μ||F⟩|²/(2F+1) = (α/3)ω³(ħ/m_ec²)²|M|²/(2F+1)、M は μ_B 単位。
+    超微細（j' = j、ΔF = ±1）：1s F=1→0（21 cm）2.868e-15 s⁻¹（実測 2.884e-15、差は g_e/2 の 2 乗と ω³）。
+    微細構造間（j' = j ± 1）：2p₃/₂→2p₁/₂ は 1e-12 s⁻¹ 台。"""
+    return (ALPHA / 3.0) * omega**3 * (HBAR_SI / (ME_SI * C_SI**2)) ** 2 * m1_reduced(ell, j, F, j2, F2) ** 2 / (2 * F + 1)
 
 
 def edges(gw_weight):
@@ -278,8 +297,10 @@ def edges(gw_weight):
                 if A > 0.0:
                     out.append((i, f, "e2", A))
                     out.append((i, f, "gw", gw_weight * A))
-            if (n, l, j) == (n2, l2, j2) and abs(F2 - F) == 1:
-                out.append((i, f, "m1", m1_hyperfine(n, l, j, F, F2, w)))
+            if (n, l) == (n2, l2) and abs(j2 - j) <= 1 and abs(F2 - F) <= 1 and F + F2 >= 1:
+                A = m1_rate(l, j, F, j2, F2, w)
+                if A > 0.0:
+                    out.append((i, f, "m1", A))
             if (n, l) == (2, 0) and (n2, l2) == (1, 0):
                 if F2 == F:
                     out.append((i, f, "2ph", A_2GAMMA))
@@ -316,12 +337,14 @@ def run(gw_weight, t_max=1.0e17, n_times=300):
     tau[trans] = np.linalg.solve(-R[np.ix_(trans, trans)], p0[trans])
     p_inf = p0.copy()
     p_inf[trans] = 0.0
-    p_inf[absb] += R[np.ix_(absb, trans)] @ tau[trans]
+    p_inf[absb] += np.dot(R[np.ix_(absb, trans)], tau[trans])
     flux_E = {}
     for src, dst, kind, A in ed:
         flux_E[kind] = flux_E.get(kind, 0.0) + A * tau[src] * (ETOT[src] - ETOT[dst])
     times = np.concatenate([[0.0], np.logspace(-12, np.log10(t_max), n_times)])
-    sol = solve_ivp(lambda t, p: R @ p, (0.0, t_max), p0, method="Radau", jac=lambda t, p: R,
+    # np.dot を使う：この環境（numpy 2.0.2 + Accelerate）では 50×50 以上の `@` が有限な乱数行列でも
+    # "divide by zero in matmul" の偽の警告を出す（np.dot は出さず、値は一致。README 参照）。
+    sol = solve_ivp(lambda t, p: np.dot(R, p), (0.0, t_max), p0, method="Radau", jac=lambda t, p: R,
                     t_eval=times, rtol=1e-11, atol=1e-30)
     if not sol.success:
         raise RuntimeError("時間発展が解けない：" + sol.message)

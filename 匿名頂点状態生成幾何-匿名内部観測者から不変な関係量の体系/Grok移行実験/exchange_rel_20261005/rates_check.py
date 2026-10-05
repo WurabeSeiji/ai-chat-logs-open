@@ -85,11 +85,23 @@ A21 = sum(A for src, dst, k, A in ed if src == i1 and dst == i0 and k == "m1")
 w21 = (X.ETOT[i1] - X.ETOT[i0]) * X.ME_EV * X.E_SI / X.HBAR_SI
 gp_save = X.G_P
 X.G_P = 0.0
-A21_e = X.m1_hyperfine(1, 0, 0.5, 1.0, 0.0, w21)
+A21_e = X.m1_rate(0, 0.5, 1.0, 0.5, 0.0, w21)
+# 射影定理：j' = j では ⟨J⟩ + ⟨S⟩ = g_j⟨J⟩。電子部分だけの換算行列要素を −g_j·redJ と比較
+worst_proj = 0.0
+for (l, j) in ((0, 0.5), (1, 0.5), (1, 1.5), (2, 1.5), (2, 2.5)):
+    for F, F2 in ((j + 0.5, j - 0.5), (j - 0.5, j + 0.5)):
+        if F2 < 0 or F < 0:
+            continue
+        pref = np.sqrt((2 * F + 1) * (2 * F2 + 1))
+        redJ = (-1) ** int(j + 0.5 + F + 1) * pref * X.wigner6j(j, F2, 0.5, F, j, 1) * np.sqrt(j * (j + 1) * (2 * j + 1))
+        worst_proj = max(worst_proj, abs(X.m1_reduced(l, j, F, j, F2) + X.lande_g(l, j) * redJ))
 X.G_P = gp_save
 L.append("   本式 %.4e s⁻¹、実測 2.8843e-15 s⁻¹、比 %.5f（(2/2.00232)² = %.5f：電子異常磁気能率）" % (A21, A21 / 2.8843e-15, (2 / 2.00231930) ** 2))
 L.append("   核スピン項を落とした値との比 %.5f、(1 + g_pμ_N/2μ_B)² = %.5f：電子と陽子のモーメントは足し合う（符号正しい）" % (A21 / A21_e, (1 + X.G_P / (2 * X.MU_P)) ** 2))
+L.append("   射影定理 ⟨J⟩ + ⟨S⟩ = g_j⟨J⟩（j' = j、s/p/d の全 j、ΔF = ±1）：最大差 %.1e" % worst_proj)
 L.append("   ω は本式の超微細間隔（1418.8 MHz）で計算。周波数を実測に置けば ω³ で %.4f 倍" % ((1420.405752 / hfs_split(1, 0, 0.5)) ** 3))
+A_fs = sum(A for src, dst, k, A in ed if k == "m1" and X.ST[src][:3] == (2, 1, 1) and X.ST[dst][:3] == (2, 1, -1))
+L.append("   微細構造間の M1 2p₃/₂→2p₁/₂（全 F→F'、1 つの F から）：%.3e s⁻¹（E1 崩壊 6.3e8 の 1e-21）" % (A_fs / 2))
 
 # 5. E2 と重力波
 L.append("")
