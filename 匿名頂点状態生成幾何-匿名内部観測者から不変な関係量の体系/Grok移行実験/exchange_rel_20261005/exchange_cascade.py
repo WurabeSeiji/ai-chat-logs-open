@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""水素型二体（電子 q = −3、陽子 q = +3）の多段放出。準位は Einstein–Maxwell（Dirac–Coulomb 厳密解＋二体反跳、
-二体 1PN 重力、超微細）、遷移は Einstein の A 係数、時間発展はマスター方程式 dp/dt = R p。
+"""水素型二体（電子 q = −3、陽子 q = +3）の多段放出。準位は Einstein–Maxwell（Dirac–Coulomb 厳密解＋二体反跳
+＋遅延の高次 (Zα)⁵・(Zα)⁶、二体 1PN 重力、超微細）、遷移は Einstein の A 係数、時間発展はマスター方程式 dp/dt = R p。
 
 基底は (n, ℓ, s_e, s_p)、n = 1..5、50 準位。s_e は j − ℓ の符号（ℓ = 0 は j = ½ のみ）、s_p は F − j の符号。
 遷移は全ての下向き対（ΔE > 0）：E1（Δℓ = ±1）、E2 と重力波（Δℓ = 0, ±2、同じ四重極演算子、比 W_GW）、
@@ -135,6 +135,45 @@ def gravity_level(n, ell, j, F):
             "so_e": so_e, "so_p": so_p, "ss": ss}
 
 
+# Bethe 対数 ln k0(n,ℓ)。CODATA 2010 Table V（Drake–Swainson 1990）の 10 桁、無いものは Jentschura–Mohr 2005
+# （quant-ph/0504002、9 桁）。非相対論の水素固有状態だけで決まる量。
+LN_K0 = {(1, 0): 2.984128556, (2, 0): 2.811769893, (3, 0): 2.767663612, (4, 0): 2.749811840, (5, 0): 2.74082373,
+         (2, 1): -0.030016709, (3, 1): -0.0381902294, (4, 1): -0.0419548946, (5, 1): -0.0440346956,
+         (3, 2): -0.00523214814, (4, 2): -0.00674093888, (5, 2): -0.00760075126,
+         (4, 3): -0.00173366148, (5, 3): -0.00220216838,
+         (5, 4): -0.000772098902}
+
+
+def recoil_level(n, ell):
+    """二体の遅延（反跳）の高次。Breit（1/c²）の先、電子–陽子間の遅延した光子交換が束縛状態で出す項。m_e c² 単位。
+    CODATA 2010（Mohr–Taylor–Newell, RMP 84, 1527）式 (28)–(33)、Eides–Grotch–Shelyuto 2001 式 (144)(146)(147)。
+      E_S（Salpeter 1952、(Zα)⁵ m²/M、m/M の全次数）
+        = (m_r³/(m_e² m_N))(α⁵/(πn³)) m_e c² {(1/3)δ_ℓ0 ln α⁻² − (8/3) ln k0(n,ℓ) − (1/9)δ_ℓ0 − (7/3)a_n
+                                               − (2/(m_N²−m_e²)) δ_ℓ0 [m_N² ln(m_e/m_r) − m_e² ln(m_N/m_r)]}
+        a_n = −2[ln(2/n) + Σ_{i=1}^n 1/i + 1 − 1/(2n)] δ_ℓ0 + (1−δ_ℓ0)/(ℓ(ℓ+1)(2ℓ+1))
+      E_R（(Zα)⁶ m²/M と (Zα)⁷ の先頭項）
+        = (m_e/m_N)(α⁶/n³) m_e c² [D60 + D72 α ln²α⁻²]
+        D60 = 4 ln 2 − 7/2（nS、Pachucki–Grotch 1995、Eides–Grotch 1997）
+        D60 = [3 − ℓ(ℓ+1)/n²]·2/((4ℓ²−1)(2ℓ+3))（ℓ ≥ 1、Golosov ほか 1995、Jentschura–Pachucki 1996）
+        D72 = −11/(60π)（nS、Pachucki–Karshenboim 1999、Melnikov–Yelkhovsky 1999。(Zα)⁷ はこの対数二乗項だけが既知）
+    検証：1S の E_S = 2409.5 kHz、2S 341.3 kHz、E_R(1S) = −7.38 kHz（Eides 表 VIII。coulomb_levels_check.py）。
+    放射補正（Lamb シフト、異常磁気能率）と核サイズは含まない。
+    """
+    mu = MU_P / (1.0 + MU_P)
+    d0 = 1.0 if ell == 0 else 0.0
+    Hn = sum(1.0 / i for i in range(1, n + 1))
+    a_n = -2.0 * (np.log(2.0 / n) + Hn + 1.0 - 1.0 / (2.0 * n)) * d0 + (0.0 if ell == 0 else 1.0 / (ell * (ell + 1) * (2 * ell + 1)))
+    masslog = (2.0 / (MU_P**2 - 1.0)) * d0 * (MU_P**2 * np.log(1.0 / mu) - np.log(MU_P / mu))
+    E_S = (mu**3 / MU_P) * (ALPHA**5 / (np.pi * n**3)) * (
+        (1.0 / 3.0) * d0 * np.log(ALPHA**-2) - (8.0 / 3.0) * LN_K0[(n, ell)] - d0 / 9.0 - (7.0 / 3.0) * a_n - masslog)
+    if ell == 0:
+        D60, D72 = 4.0 * np.log(2.0) - 3.5, -11.0 / (60.0 * np.pi)
+    else:
+        D60, D72 = (3.0 - ell * (ell + 1) / n**2) * 2.0 / ((4 * ell**2 - 1) * (2 * ell + 3)), 0.0
+    E_R = (1.0 / MU_P) * (ALPHA**6 / n**3) * (D60 + D72 * ALPHA * np.log(ALPHA**-2) ** 2)
+    return E_S, E_R
+
+
 def hyperfine_level(n, ell, j, F):
     """超微細（Maxwell の磁気双極子相互作用：Fermi 接触＋スピン双極子＋軌道。μ の Bohr 半径、g_e = 2）。m_e c² 単位。
     E = K [F(F+1) − j(j+1) − ¾] / [4 n³ (ℓ+½) j(j+1)]、K = g_p α⁴ μ³ / (m_p/m_e)。
@@ -157,13 +196,15 @@ def parts():
         #   第 2 項：陽子の反跳。二体の相対論的運動学 W² = m² + M² + 2mM·f の展開 −μ²(f−1)²/(2(m+M))
         #   第 3 項：Breit 相互作用の軌道–軌道・スピン–他軌道（磁気・遅延）α⁴μ³/(2n³M²)[1/(j+½) − 1/(ℓ+½)]、ℓ ≥ 1
         # 展開：−μα²/(2n²) − μα⁴/(2n³)[1/(j+½) − 3/(4n) + μ/(4n(m+M))] + α⁴μ³/(2n³M²)[1/(j+½) − 1/(ℓ+½)](1−δ_ℓ0)
+        # これは CODATA の E_M（式 (26)、(1−δ_ℓ0)/(κ(2ℓ+1)) は上の [1/(j+½) − 1/(ℓ+½)] と同じ）。
+        #   第 4 項：遅延の高次（recoil_level）。Salpeter の (Zα)⁵ と (Zα)⁶・(Zα)⁷ の既知項。
         j, F = jf_of(ell, s_e, s_p)
         kappa = j + 0.5
         delta = kappa - np.sqrt(kappa**2 - ALPHA**2)
         f_dirac = (1.0 + (ALPHA / (n - delta))**2) ** -0.5
         breit = (ALPHA**4 * mu_red**3 / (2.0 * n**3 * MU_P**2)
                  * (1.0 / (j + 0.5) - 1.0 / (ell + 0.5)) if ell > 0 else 0.0)
-        coul = mu_red * (f_dirac - 1.0) - mu_red**2 * (f_dirac - 1.0)**2 / (2.0 * m_tot) + breit
+        coul = mu_red * (f_dirac - 1.0) - mu_red**2 * (f_dirac - 1.0)**2 / (2.0 * m_tot) + breit + sum(recoil_level(n, ell))
         orb_c.append(coul)
         # 重力：二体 1PN（gravity_level）。クーロンと桁が 1e-40 違うので ETOT の中では倍精度で消えるが、
         # 配列 ORB_G として別に保持し、重力の pool はこの配列で数える。

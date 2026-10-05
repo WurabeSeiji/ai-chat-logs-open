@@ -46,37 +46,55 @@ def terms(n, ell, s_e):
 lines = []
 lines.append("単位 eV。EV = m_e c² = %.5f eV（釘付けなし）" % X.EV)
 lines.append("")
-lines.append("準位 (n,ℓ,s_e→j)        Bohr(元)        Dirac        反跳(2項)      Breit(3項)     合計=ORB_C×EV    展開式との差")
+lines.append("準位 (n,ℓ,s_e→j)        Bohr(元)        Dirac        反跳(2項)      Breit(3項)    遅延(Zα)⁵⁺⁶   合計=ORB_C×EV    展開式との差")
 worst_prog = 0.0
 worst_exp = 0.0
 for n in range(1, 4):
     for ell in range(n):
         for s_e in ((1,) if ell == 0 else (-1, 1)):
             j, bohr, dirac, recoil, breit, somm = terms(n, ell, s_e)
-            total = dirac + recoil + breit
+            rec_hi = sum(X.recoil_level(n, ell))
+            total = dirac + recoil + breit + rec_hi
             prog = X.ORB_C[X.IDX[(n, ell, s_e, -1)]]
             worst_prog = max(worst_prog, abs(prog - total))
-            worst_exp = max(worst_exp, abs(total - somm) / abs(total))
-            lines.append("(%d,%d,%+d→%.1f)  %14.9f %14.9f %+14.3e %+14.3e %16.9f   %+.1e"
-                         % (n, ell, s_e, j, bohr * X.EV, dirac * X.EV, recoil * X.EV, breit * X.EV, prog * X.EV,
-                            (total - somm) * X.EV))
+            worst_exp = max(worst_exp, abs((dirac + recoil + breit) - somm) / abs(total))
+            lines.append("(%d,%d,%+d→%.1f)  %14.9f %14.9f %+14.3e %+14.3e %+14.3e %16.9f   %+.1e"
+                         % (n, ell, s_e, j, bohr * X.EV, dirac * X.EV, recoil * X.EV, breit * X.EV, rec_hi * X.EV, prog * X.EV,
+                            ((dirac + recoil + breit) - somm) * X.EV))
 lines.append("")
 lines.append("プログラムの ORB_C と本検算の合計の最大差 = %.1e（m_e 単位）" % worst_prog)
-lines.append("閉じた式と α⁴ 展開式の最大相対差 = %.1e（次の項は準位に対して相対 O(α⁴)。1s では α⁴/8 = %.1e）" % (worst_exp, A**4 / 8))
+lines.append("閉じた式（Dirac＋反跳＋Breit）と α⁴ 展開式の最大相対差 = %.1e（次の項は準位に対して相対 O(α⁴)。1s では α⁴/8 = %.1e）" % (worst_exp, A**4 / 8))
+lines.append("")
+
+# 遅延の高次（Salpeter (Zα)⁵、(Zα)⁶ D60、(Zα)⁷ D72）を Eides–Grotch–Shelyuto 2001 表 VIII の値と比較（kHz）
+KHZ = 1e3 * H_EV_S
+eides = {(1, 0): (2409.51, -7.38, -0.42), (2, 0): (341.29, -0.92, -0.05)}   # (E_S, (Zα)⁶, (Zα)⁷ log²) kHz、1S と 2S
+lines.append("遅延の高次（kHz）と Eides 表 VIII")
+for (n, ell), (es_ref, er6_ref, er7_ref) in eides.items():
+    E_S, E_R = X.recoil_level(n, ell)
+    D72 = -11.0 / (60.0 * np.pi)
+    er7 = (1.0 / X.MU_P) * (A**6 / n**3) * D72 * A * np.log(A**-2) ** 2
+    er6 = E_R - er7
+    lines.append("   %dS：E_S 本式 %.2f（Eides %.2f）、(Zα)⁶ 本式 %.2f（%.2f）、(Zα)⁷ log² 本式 %.2f（%.2f）"
+                 % (n, E_S * X.EV / KHZ, es_ref, er6 * X.EV / KHZ, er6_ref, er7 * X.EV / KHZ, er7_ref))
+lines.append("   2P：E_S %.2f kHz、(Zα)⁶ %.3f kHz（D60(ℓ=1) = (2/5)(1 − 2/(3n²))）。3D：E_S %.3f kHz" % (
+    X.recoil_level(2, 1)[0] * X.EV / KHZ, X.recoil_level(2, 1)[1] * X.EV / KHZ, X.recoil_level(3, 2)[0] * X.EV / KHZ))
 lines.append("")
 
 e1s = -X.ORB_C[X.IDX[(1, 0, 1, -1)]] * X.EV
 e1s_meas = 13.598434599702
-lamb_1s = 8172.9 * MHZ
-lines.append("1S 電離エネルギー：本式 %.7f eV、実測 %.7f eV、差 %.3e eV = %.1f MHz" % (e1s, e1s_meas, e1s - e1s_meas, (e1s - e1s_meas) / MHZ))
-lines.append("   1S Lamb シフト（QED、本式の外）= %.3e eV = 8172.9 MHz。残差との差 %.1f MHz" % (lamb_1s, (e1s - e1s_meas - lamb_1s) / MHZ))
+lamb_1s = 8172.84 * MHZ                       # 1S Lamb シフト（QED＋反跳＋核サイズ）、実測・理論とも 8172.84 MHz
+rec_1s = sum(X.recoil_level(1, 0)) * X.EV
+lines.append("1S 電離エネルギー：本式 %.7f eV、実測 %.7f eV、差 %.3e eV = %.2f MHz" % (e1s, e1s_meas, e1s - e1s_meas, (e1s - e1s_meas) / MHZ))
+lines.append("   1S Lamb シフト 8172.84 MHz のうち反跳 %.2f MHz は本式に入ったので、残るべきは QED＋核サイズ %.2f MHz。残差との差 %.2f MHz"
+             % (rec_1s / MHZ, (lamb_1s - rec_1s) / MHZ, (e1s - e1s_meas - (lamb_1s - rec_1s)) / MHZ))
 lines.append("   元の Bohr 釘付け 13.605693 eV は実測と %.3e eV（%.0f MHz）ずれていた" % (13.605693 - e1s_meas, (13.605693 - e1s_meas) / MHZ))
 lines.append("")
 fs = (X.ORB_C[X.IDX[(2, 1, 1, -1)]] - X.ORB_C[X.IDX[(2, 1, -1, -1)]]) * X.EV
 _, _, d32, _, _, _ = terms(2, 1, 1)
 _, _, d12, _, _, _ = terms(2, 1, -1)
-lines.append("2P3/2 − 2P1/2：本式 %.2f MHz（Dirac 単体 %.2f MHz）、実測 10969.04 MHz、差 %.1f MHz（電子異常磁気能率などの QED）"
-             % (fs / MHZ, (d32 - d12) * X.EV / MHZ, fs / MHZ - 10969.04))
+lines.append("2P3/2 − 2P1/2：本式 %.2f MHz（Dirac 単体 %.2f MHz）、実測 10969.04 MHz、差 %.1f MHz（電子異常磁気能率 (α/π)×分裂 = %.1f MHz などの QED）"
+             % (fs / MHZ, (d32 - d12) * X.EV / MHZ, fs / MHZ - 10969.04, (A / np.pi) * fs / MHZ))
 ls = (X.ORB_C[X.IDX[(2, 0, 1, -1)]] - X.ORB_C[X.IDX[(2, 1, -1, -1)]]) * X.EV
 lines.append("2S1/2 − 2P1/2：本式 %.2f MHz（Dirac では縮退）、実測 1057.845 MHz（Lamb、QED）" % (ls / MHZ))
 lines.append("")
