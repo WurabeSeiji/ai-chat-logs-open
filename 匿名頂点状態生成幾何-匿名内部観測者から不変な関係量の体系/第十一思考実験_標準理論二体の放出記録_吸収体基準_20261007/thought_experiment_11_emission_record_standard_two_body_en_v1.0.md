@@ -1,0 +1,731 @@
+# The Eleventh Thought Experiment: Emission Records of Two-Body Systems without a Background Spacetime
+## - Computing Standard Theory (Dirac–Coulomb Bound States, 1PN Two-Body Gravity, Einstein A Coefficients) Referenced Only to the Rest Frame of an Absorber at Infinity, and Reading Out Emission–Absorption Relations for the Hydrogen Atom, Electron–Electron, Proton–Proton and the Hydrogen Molecule -
+
+**Author:** Noriaki Kihara  
+**ORCID:** 0009-0004-6753-4020  
+**Version DOI:** 10.5281/zenodo.23199300  
+**Concept DOI:** 10.5281/zenodo.23199299  
+**Version:** v1.0  
+**Date:** 2026-10-07  
+**Related papers:** the design document (Paper 0) [S1], the sixth thought experiment v1.1 [S2], its supplement [S3], the composition of central projection [S4], the radial projection note [S5] (all as references; this paper is a separate line)
+
+**Keywords:** two-body system, emission record, absorber, Einstein A coefficients, master equation, Dirac–Coulomb, recoil corrections, 1PN gravity, gravitational waves, hydrogen atom, hydrogen molecule, Mott scattering, radiative association, cosmic microwave background, reproducibility
+
+---
+
+# Abstract
+
+A re-examination of the previous paper (the sixth thought experiment [S2] and its supplement [S3]) showed that gravity, the Coulomb force and the gravitational-wave and electromagnetic radiation were not updated there by the distribution-array operation of the state interaction, but by known equations supplied from outside. The seventh to tenth thought experiments therefore tried to derive the dynamics of gravity and the Coulomb force from the distribution-array interaction, and none of them reached a two-body orbit with gravity included. Changing course, the known Einstein–Maxwell equations were expanded at initialization and implemented as discrete variational maps to be replaced by distribution-array operations; the run with an absorber did not reach a lock and collapsed, and the goal was not met.
+
+This paper is a separate line. Setting aside the derivation of the dynamics by the distribution-array operation of a universal interaction, it builds a program that computes the known standard theory - the Dirac–Coulomb bound states of the electron with recoil and QED-type corrections, the 1PN two-body gravity of general relativity with quadrupole gravitational waves, and the master equation of Einstein A coefficients - without holding any coordinate grid or metric of a background spacetime in the state. The units are $G=c=q_0=1$ ($q_0$ is one third of the elementary charge); the inputs are the fine-structure constant $\alpha$, the mass ratio $\mu_p=m_p/m_e$, the ratio $\mu=m_e\sqrt{G}/q_0$ that carries the strength of gravity, and the proton $g$-factor, all at their known values. The only reference frame is the rest frame of an absorber at infinity, which corresponds to the asymptotic region of general relativity. Readouts use only the record of emission and absorption (frequency, rate, branching, time differences, single or pair, direction, polarization); no internal state is read.
+
+Accordingly this paper claims no new discovery. It is the record of an experiment that made known knowledge computable under restricted conditions, and at the same time it supplies the reference (the answer table) of emission records that a future distribution-array operation must reproduce.
+
+The experiments were run on four systems: the cascade of the hydrogen atom (proton and electron) from 5p; the same-sign pairs electron–electron and proton–proton (no bound levels; only the in–out quantities, the Mott cross section and quadrupole bremsstrahlung); and hydrogen atom–hydrogen atom (the rovibrational cascade on the singlet X¹Σg⁺ and radiative association from the continuum; the potential and the quadrupole moment are literature values). The absorber is placed at infinity, far enough not to affect the pair, as a complete absorber covering all directions, and the isotropic case ($T=0$ and 2.7255 K) is compared with an anisotropy close to the actual universe (a dipole from the centre-of-mass velocity 370 km/s, a quadrupole $a_2=4\times10^{-6}$, $N=10^{60}$ cells).
+
+Main numbers. Hydrogen atom: 50 levels ($n\le5$), total emission from 5p₃/₂ F=1 13.054539268 eV (equal to the level drop, difference $4\times10^{-15}$), of which E1 11.84, two-photon 1.21 (11.9 % of cascades pass through 2s), M1 $2.4\times10^{-6}$, E2 $1.5\times10^{-6}$, gravitational waves $1.4\times10^{-48}$ eV. Comparison with external values: a 0.12 MHz mismatch in the 1S ionization energy (the remainder after removing QED and nuclear size), all digits of the recoil terms in the table of Eides et al. reproduced, E1 A coefficients within $1.2\times10^{-4}$ of NIST, the Lyman-α width 99.71 MHz (measured 99.7). With the absorber at 2.7255 K the 1s hyperfine doublet equilibrates to 0.745286 : 0.254714 $=3e^{-\hbar\omega/kT}$ (relaxation $6.9\times10^4$ years); the centre-of-mass velocity 370 km/s is recovered to 0.09 m/s from the Doppler record of 200 atoms, and from 29 events of the 21 cm line of a single atom, together with the history of its kicks, to $2.4\times10^{-10}$ m/s. The steady alignment of 1s F=1 due to the anisotropy of the background is $5\times10^{-9}$ (dipole only) to $2.5\times10^{-8}$ (with the quadrupole). Electron–electron and proton–proton: the net potential is positive, there are no bound levels, and the only things left in the record are the Mott cross section (one half of the distinguishable-particle value at 90°) and quadrupole bremsstrahlung ($5\times10^{-16}$ / $5\times10^{-23}$ photons per collision). Hydrogen molecule: 301 levels from a sinc-DVR on the BO + adiabatic potential, $D_0=36118.364$ cm⁻¹ (fully corrected value 36118.070), E2 A coefficients agreeing with the 4669 lines of Roueff et al. (2019) to a median $8\times10^{-4}$. Since 2.7255 K is 1/310 of the lowest transition, the background excites nothing, and the velocity recovery from the Doppler record reaches 0.002 m/s because the line widths are $10^{-22}$. Radiative association H + H → H₂ + γ has a capture probability $10^{-19}$ per pass and $k(T)=2$–$4\times10^{-29}$ cm³ s⁻¹. Inter-atomic gravity, $10^{-31}$ cm⁻¹ per level, is kept as a separate account.
+
+The absorber is not a sphere but the family of cuts of each emission event's future light cone at infinity. Cut by the time slice of the absorber's rest frame it is a sphere; cut by the time slice of the two-body rest frame it is the ellipsoid $r(\theta)=t_0/(1-\beta\cos\theta)$, and the Doppler shift and aberration of layer 1 are the geometry of this cut. Since the phase is invariant along null geodesics, the record keeps the phase relations at emission. "No background spacetime" and "a complete absorber at infinity" do not contradict each other: the latter is a map onto the null surface of the light cone, the same operation as the central and radial projections of this research series.
+
+---
+
+# 0. Position of this paper
+
+Under the design document [S1], this research series has aimed to close the motion of two bodies into one map that generates the next state from the state alone. The sixth thought experiment [S2] put gravity and the Coulomb force, gravitational-wave and electric-dipole radiation into a single transition with eight persistent states, but its update rule for radiation was the known multipole formula supplied from outside. The attempts to derive the dynamics including radiation from the distribution-array operation itself (thought experiments 7–10, unpublished) and to put the Einstein–Maxwell equations into discrete variational maps expanded at initialization (same, unpublished) both failed to reach the intended result.
+
+This paper does not aim at that derivation. Instead it fixes, as a program that holds no background spacetime in its state, the emission record that standard theory gives for the same two-body systems. If a future distribution-array operation is correct, it must reproduce this record. This paper supplies the target of that comparison.
+
+By "standard theory" this paper means the Dirac–Coulomb bound states of the electron and the two-body recoil corrections [4, 6, 8], the higher orders of retardation including the Bethe logarithm [3, 11–19], the 1PN two-body Hamiltonian of general relativity [21, 22] and quadrupole radiation [27], Einstein A coefficients with the detailed balance of stimulated emission and absorption [28, 29], and for the hydrogen molecule the Born–Oppenheimer potential with the adiabatic correction [46–48] and the quadrupole moment [49]. The field equations themselves are not evolved in time.
+
+---
+
+# 1. Motivation and purpose
+
+## 1.1 Re-examination of the previous paper
+
+The `transition(z)` of the sixth thought experiment [S2] produces the next state from the eight persistent states $Z_8=(U,P,E,H,Q,N,C,D)$. The decrease of $E$ and $H$ by radiation, however, was given as rates from outside by the known GW-quadrupole and EM-dipole radiation formulas, not produced by a distribution-array operation of the state interaction. The conservative part of gravity and the Coulomb force was likewise a known effective potential turned into coefficients at initialization. Thus what was "closed in the state alone" was the form of the bookkeeping, not a derivation of the interaction.
+
+## 1.2 Outcome of thought experiments 7–10 and of the Einstein–Maxwell discrete variation
+
+The seventh (self-interaction aa, bb), eighth (cross coupling of aa, ab, bb), ninth (finite-history readout by harmonic interference) and tenth (finite history of the Liénard–Wiechert field and the Lorentz–Dirac self-force, Regge–Wheeler–Zerilli, the coupled Reissner–Nordström problem, exact anchors such as Kastor–Traschen) all failed to reach a two-body orbit with gravity included. Next the Einstein–Maxwell equations were expanded around the initial configuration (the EIH / Infeld–Wallace procedure), implemented in a discrete action with a variable step, and replaced by distribution-array operations; the run with an absorber (200,000 periods) did not reach a phase lock and headed for a Rutherford-type collapse. These records are kept in the repository (§8) and are not cited in this paper.
+
+## 1.3 Purpose of this paper
+
+To turn the known standard theory into a numerically computable program under the following conditions.
+
+1. No coordinate grid or metric of a background spacetime is held in the state. The only reference frame is the rest frame of an absorber at infinity (§2.2).
+2. The units are $G=c=q_0=1$; the inputs are $\alpha$, $\mu_p$, $\mu$, $g_p$ and, for H₂, literature potential curves (§2.1).
+3. Readouts are made only from the record of emission and absorption (§2.3).
+4. The absorber is given as isotropic ($T=0$, 2.7255 K) and as anisotropic (dipole, quadrupole), and we see what is added to the record (§2.4).
+
+The same framework is run on four systems (hydrogen atom, electron–electron, proton–proton, hydrogen molecule), compared with external measured and literature values, and all programs, data and figures are stored in reproducible form.
+
+---
+
+# 2. Framework
+
+## 2.1 Units and inputs
+
+The units are Gaussian geometric units with $G=c=q_0=1$, $q_0=e/3$. In these units $\alpha=e^2/(\hbar c)=9q_0^2/(\hbar c)$ fixes $\hbar=9/\alpha$, so the Planck constant is not an independent input. The independent dimensionless inputs are the following four.
+
+| Input | Symbol | Value | Source |
+|---|---|---|---|
+| fine-structure constant | $\alpha$ | $7.297352564\times10^{-3}$ ($1/137.035999177$) | CODATA 2022 [1] (H₂: 2018 [2], $7.2973525693\times10^{-3}$) |
+| mass ratio | $\mu_p=m_p/m_e$ | 1836.152673426 (H₂: 1836.15267343) | same |
+| strength of gravity | $\mu=m_e\sqrt{G}/q_0=3\sqrt{\alpha_{G,e}/\alpha}$ | $1.469880\times10^{-21}$ ($\alpha_{G,e}=Gm_e^2/\hbar c=1.751809\times10^{-45}$) | from the SI values of $G$, $m_e$, $\hbar$, $c$ [1] |
+| proton $g$-factor | $g_p$ | 5.5856946893 | [1] |
+
+Gravity enters only through the single ratio $g=Gm_em_p/e^2=\mu_p\mu^2/9=4.407886\times10^{-40}$. $g_p$ is the only external input due to the internal structure of the proton; the electron has the Dirac value $g=2$ (no QED). For the hydrogen molecule the literature Born–Oppenheimer potential $E_{\rm el}(R)$ [46, 47], the adiabatic correction $E_a(R)$ [48], the quadrupole moment $\Theta(R)$ [49] and the rotational $g$-factor $g(R)$ [50] are further inputs (§5.1).
+
+Outputs are displayed in eV and seconds, but only ratios are physical. The energy scale $m_ec^2=510998.95069$ eV is used only for conversion in the display.
+
+## 2.2 The rest frame of the absorber and the meaning of "no background spacetime"
+
+The state consists only of the occupations of levels (or of $m$ sublevels) and the centre-of-mass velocity $\vec v$ relative to the absorber; it holds no coordinate grid and no metric. Emitted photons and gravitational waves are absorbed by a complete absorber that covers all directions without gaps at a place far enough from the pair that neither differences of viewing angle nor distances can be measured. The rest frame of the absorber is the only reference frame and corresponds to the asymptotic region in which the momentum and the centre of mass of an isolated system are defined in general relativity (ADM, Bondi [60, 61]). The formulas of standard theory (Einstein A coefficients, the 1PN expansion) presuppose an asymptotically flat spacetime; this paper places that presupposition in this rest frame.
+
+A uniform translation and the position of the centre of mass cannot be read in principle. What can be read is which cell of the absorber received the photon (the direction) and its frequency (Doppler). The number of absorber cells is set to $N=10^{60}$; directions are treated as continuous and only the resolution floor $\sqrt{4\pi/N}=3.5\times10^{-30}$ rad is kept. It has been checked that this value does not appear in the record (from the relative width $3.2\times10^{-25}$ of the sharpest line, 21 cm, and the recoil $v/c=1.1\times10^{-8}$, the upper limit at which the angular resolution would limit the record is $N\approx1.5\times10^{34}$).
+
+## 2.3 The principle of readout
+
+The only information that leaves the system is the events of emission and absorption. The record of each event is (time, kind of quantum, frequency, single or pair, direction, polarization). Readouts are made from this record alone; the level occupations and the dwell times $\tau$ are computed as bookkeeping for checking the calculation, but are not called observables. Among the figures of this paper, the time evolution of occupations (Fig. 3, Fig. 4 left) is bookkeeping and is distinguished from emission records (Figs. 2, 5, 10).
+
+## 2.4 The three layers of the absorber
+
+The properties given to the absorber are divided into three layers and introduced in the order 2 → 1 → 3.
+
+- **Layer 2 (temperature)**: the absorber is a radiation field with the Planck distribution $\bar n(\omega)=1/(e^{\hbar\omega/kT}-1)$; to each edge stimulated emission $A(1+\bar n)$ and absorption $A\bar n\,g_i/g_f$ are added (Einstein 1917 [28], $g=2F+1$ or $2J+1$). No temperature is applied to gravitational waves or to the two-photon channel. At $T=0$ the isotropic complete absorber is recovered.
+- **Layer 1 (direction and velocity)**: a mark $\hat z$ (a dipole axis) is placed in the absorber's rest frame, and the centre of mass of the pair is given a finite inertia $M$ and a velocity $\vec v$. Each emission or absorption changes $\vec v$ by momentum conservation (recoil), and the recorded frequency is the exact Doppler $\omega_{\rm lab}=\omega'/[\gamma(1-\beta n_\parallel)]$. In the rest frame of the atom the background becomes dipolar, $T(\hat n)=T_0/[\gamma(1-\beta\hat n\cdot\hat z)]$, and absorption and stimulated emission acquire a directional bias. $v_0=370$ km/s matches the velocity of the solar-system barycentre read from the dipole of the background radiation, 369.82 ± 0.11 km/s [42].
+- **Layer 3 (alignment)**: the basis is resolved down to $m$ sublevels, and the rates are split by Wigner–Eckart as $A_{m\to m'}=A\,(2J+1)\begin{pmatrix}J'&k&J\\ m'&q&-m\end{pmatrix}^2$. The background is given a quadrupole $a_2$, $T(\hat n)=T_0/[\gamma(1-\beta x)]\,(1+a_2P_2(x))$, and the sublevels are pumped by the occupation number of each type $\Delta m=q$, $\langle\bar n\rangle_q=\int\bar n\,P_q\,d\Omega$. $a_2=4\times10^{-6}$ is a guide value, the COBE DMR quadrupole $Q_{\rm rms}=10.7\,\mu$K [43] divided by $T_0$; the actual axis of the quadrupole differs from that of the dipole, but here both are placed on the same axis.
+
+## 2.5 The geometry of the absorber: a map onto the null surface of the light cone
+
+The absorber of §2.2 is restated in spacetime (Fig. 16). The information of one emission event lies only on the future light cone of that event. The absorber at infinity is the cut of this cone by future null infinity, a different cut for each event. The record (retarded time $u$, direction $\hat n$, frequency, polarization) consists of coordinates on this cut, and the free data on the whole family of cuts $\mathbb R_u\times S^2$ are all the degrees of freedom of the radiation field (Bondi–Sachs [61]). In this sense "the record of the absorber" and "the radiation field" name the same thing.
+
+Cut by the time slice $t=t_0$ of the absorber's rest frame the cut is a sphere; cut by the time slice $t=t_0+\beta x$ of the rest frame of a pair moving with velocity $\beta$ it is the ellipsoid
+
+$$
+r(\theta)=\frac{t_0}{1-\beta\cos\theta}.
+$$
+
+The background temperature $T(\hat n)=T_0/[\gamma(1-\beta\cos\theta)]$ of layer 1 and the aberration (Appendix B) are exactly the geometry of this tilted cut. The ellipsoid is not the shape of the absorber but the shape of the same cone cut by a different time slice.
+
+The past and future light cones share only their vertex (the event). The incoming background radiation (2.7255 K) is the cut of the past cone by the last-scattering surface; the outgoing record is the cut of the future cone by infinity (in the universe, the event horizon); they are different surfaces (§6.5).
+
+Along a null geodesic the phase of a wave is constant ($k\cdot dx=0$ gives $d\phi=0$). A photon has no proper time, and the phase relation at emission reaches the cut of the absorber unchanged. The Doppler factor is not a change of phase along the way but the mismatch between the clocks of the source and of the absorber at the two ends of the cone. Therefore the phase relations between records are defined even though no time evolution of the field is held in the state.
+
+This map is the same operation that has appeared repeatedly in this research series. The central projection $\pi:\mathbb R^n\to S^{n-1}(r_1)$ [S4] and the radial projection $\sigma_R:\mathbb R^{n+1}\setminus\{0\}\to S^n(R)$ [S5] are projections from the vertex onto the cut of the cone (the celestial sphere), and the readout of a wave by amplitude and frequency alone is likewise the operation of mapping the event at the vertex onto (direction, frequency, phase) on the cut. The absorber of this paper is that operation with the time $u$ of the cut and the frame that cuts it (the absorber's rest frame) attached. "No background spacetime" and "a complete absorber at infinity" do not contradict each other; the latter is a map onto the null surface of the light cone.
+
+![Fig. 16](figures/fig16_lightcone_absorber.png)
+**Fig. 16.** The absorber is a map of the null surface of the light cone. Left: the future and past light cones with the emission event at the vertex. Cut by the time slice of the absorber's rest frame, a sphere (blue); cut by that of the two-body rest frame, the ellipsoid $r(\theta)=t_0/(1-\beta\cos\theta)$ (red). The cut of the past cone (orange) is the last-scattering surface. Phase marks on the null generators keep their spacing. Right: the record of each event emitted from the two-body worldline lands on a separate cut $(u,\hat n)$ of future infinity (the horizon). Between events there is no readable change.
+
+---
+
+# 3. System 1: the hydrogen atom (proton and electron)
+
+## 3.1 Levels
+
+The basis is $(n,\ell,s_e,s_p)$, $n\le5$, with $s_e$ the sign of $j-\ell$ and $s_p$ the sign of $F-j$: 50 levels. The level energy is
+
+$$
+E = E_{\rm C} + E_{\rm G} + E_{\rm HFS}.
+$$
+
+**Coulomb (electromagnetic).** To the exact Dirac–Coulomb solution $f(n,j)$ of the electron [4, 5] are added the two-body recoil $E_M$ (Barker–Glover [6], CODATA 2010 [3] eq. (16)),
+
+$$
+E_M=-\frac{\mu^2(f-1)^2}{2(m_e+m_p)}+\frac{\alpha^4\mu^3}{2n^3m_p^2}\left[\frac{1}{j+\tfrac12}-\frac{1}{\ell+\tfrac12}\right](1-\delta_{\ell0}),
+$$
+
+and the higher orders of the retarded photon exchange $E_S$ (Salpeter's $(Z\alpha)^5m^2/M$ [8, 9, 10], with the Bethe logarithms $\ln k_0(n,\ell)$ of Drake–Swainson [17] and Jentschura–Mohr [18]), $(Z\alpha)^6m^2/M$ ($D_{60}=4\ln2-7/2$ for S states [11, 12], $[3-\ell(\ell+1)/n^2]\cdot2/((4\ell^2-1)(2\ell+3))$ for $\ell\ge1$ [13, 14]), and the squared-logarithm term of order $(Z\alpha)^7$ ($D_{72}=-11/(60\pi)$ [15, 16]), in the form of CODATA 2010 eqs. (28)–(33). QED (the Lamb shift) and the nuclear size are not included.
+
+**Gravity.** The two-body 1PN Hamiltonian of Barker–O'Connell [22] is quantized in the ordering fixed by the Foldy–Wouthuysen transformation [24] of the Dirac Hamiltonian in a static metric, $H=\beta mV+\tfrac12\{F,\boldsymbol\alpha\cdot\mathbf p\}$ (Obukhov [23]),
+
+$$
+m\Phi+\frac{3}{4m}\{p^2,\Phi\}+\frac{3\hbar^2}{8m}\nabla^2\Phi+\frac{3}{2m}(\nabla\Phi\times\mathbf p)\cdot\mathbf S,
+$$
+
+and the Newtonian term, the EIH self and cross terms, the $G^2$ term, the gravity–electromagnetism 1PN cross term $+\tfrac{27}{2}G(m_e+m_p)/r^2$ (Khalil et al. 2018 [25]; EFT re-derivation Gupta 2025 [26], eq. (4.8)) and the spin–orbit term $(G/r^3)[(2+\tfrac32m_p/m_e)\mathbf L\cdot\mathbf S_e+(2+\tfrac32m_e/m_p)\mathbf L\cdot\mathbf S_p]$ are placed on the levels as expectation values. For 1s this gives $-1.1988\times10^{-38}$ eV.
+
+**Hyperfine.** $E_{\rm HFS}=K[F(F+1)-j(j+1)-\tfrac34]/[4n^3(\ell+\tfrac12)j(j+1)]$, $K=g_p\alpha^4\mu^3/\mu_p$ (Fermi [20]). The relativistic corrections ($(3/2)\alpha^2$ for 1s, $(17/8)\alpha^2$ for 2s [7]) were confirmed by the numerical solver of §3.6.
+
+## 3.2 Emission rates and time evolution
+
+Einstein A coefficients are computed for all downward pairs.
+
+$$
+A_{E1}=\frac{4\alpha\omega^3}{3c^2}\,|\langle n'\ell'|r|n\ell\rangle|^2\frac{\ell_>}{2\ell+1}\,\mathcal R_1,
+$$
+
+$$
+A_{E2}=\frac{\alpha\omega^5}{15c^4}\,|\langle r^2\rangle|^2(2\ell'+1)\begin{pmatrix}\ell&2&\ell'\\0&0&0\end{pmatrix}^2\mathcal R_2
+$$
+
+$\mathcal R_k$ is the recoupling to $j$ and $F$ (6j symbols, Racah's formula [31], exact in rational arithmetic). M1 is taken for all pairs within the same $n\ell$ (hyperfine $\Delta F=\pm1$ and fine-structure $\Delta j=\pm1$) with the reduced matrix elements of $\boldsymbol\mu=-\mu_B(\mathbf L+2\mathbf S)+g_p\mu_N\mathbf I$ (Edmonds 7.1.7 / 7.1.8 [30]). For 2s→1s the two-photon rate 8.2206 s⁻¹ (Breit–Teller [32], Goldman [33]) and the relativistic M1 rate $2.496\times10^{-6}$ s⁻¹ (Johnson [34]) are given as constants. Gravitational waves have the matrix elements of the same quadrupole operator $r_ir_j$, so the emission ratio to E2 equals the ratio of the classical quadrupole formulas $(G/45)/(1/180)=4G$ (Landau–Lifshitz §110 / §71 [27]):
+
+$$
+W_{GW}=\frac{4G\mu^2M^2}{e^2(m_p-m_e)^2}=9.6129\times10^{-43},
+$$
+
+$A_{GW}=W_{GW}A_{E2}$. The numbers of edges are E1 320, E2 376, GW 376, M1 59, two-photon 2.
+
+The time evolution is the master equation $\dot{\mathbf p}=R\mathbf p$. The dwell times $\boldsymbol\tau=-R_{TT}^{-1}\mathbf p_0$ (transient set $T$) are solved exactly as a linear system, and the emission is counted by multiplying the flow $A\tau_{\rm src}$ of each edge by $\Delta E$ (no time-step error). Occupations as functions of time are integrated with the implicit Radau method. The initial state is 5p₃/₂ F=1.
+
+## 3.3 Comparison with external values
+
+| Quantity | This work | Reference | Ratio / difference |
+|---|---|---|---|
+| 1S ionization energy | 13.5984684 eV | measured 13.5984346 eV [35, 37] | difference 8170.31 MHz. Of the 1S Lamb shift 8172.84, the recoil 2.40 is included here, so the remainder should be QED + nuclear size 8170.44. Mismatch 0.12 MHz |
+| higher orders of retardation 1S / 2S [kHz] | $E_S$ 2409.51 / 341.29, $(Z\alpha)^6$ −7.39 / −0.92, $(Z\alpha)^7\log^2$ −0.42 / −0.05 | Eides–Grotch–Shelyuto [19] Table VIII: 2409.51 / 341.29, −7.38 / −0.92, −0.42 / −0.05 | all digits agree |
+| 2P₃/₂ − 2P₁/₂ | 10943.68 MHz | measured 10969.04 MHz [38] | difference 25.4 MHz $=(\alpha/\pi)\times$ splitting (QED) |
+| 2S₁/₂ − 2P₁/₂ | 0.35 MHz (difference of recoil) | measured 1057.85 MHz | the remaining 1057.5 MHz is QED (Lamb) |
+| $g=Gm_em_p/e^2$ | $4.407886\times10^{-40}$ | independently from SI $4.407886\times10^{-40}$ | 1.00000000 |
+| 10 E1 A coefficients (2p→1s $6.2651\times10^8$ s⁻¹ etc.) | | NIST ASD [35, 36] | max difference $1.2\times10^{-4}$ |
+| hyperfine 1s / 2s / 2p₁/₂ / 2p₃/₂ | 1418.84 / 177.36 / 59.12 / 23.65 MHz | measured 1420.41 / 177.56 / 59.22 / 23.65 [40] | 0.9989 $=1/(g_e/2)$ (QED) |
+| A of 21 cm | $2.868\times10^{-15}$ s⁻¹ | measured $2.884\times10^{-15}$ | 0.9944 ($(g_e/2)^2$ and $\omega^3$) |
+| E2 / GW of 3d→1s | 593.8 s⁻¹ / $5.71\times10^{-40}$ s⁻¹ | literature 594 s⁻¹ | |
+| identities of expectation values, sum rules, projection theorem | | | $10^{-16}$ |
+
+Every mismatch equals the size of the QED and nuclear-size terms that were not included.
+
+## 3.4 Results
+
+**Emission record** (Figs. 1, 2). The total emission 13.054539268 eV equals the level drop 13.054539268 eV (difference $3.6\times10^{-15}$ eV). Breakdown:
+
+| Kind | Emission [eV] |
+|---|---|
+| E1 | 11.84379 |
+| two-photon (2s→1s) | 1.210747 (fraction passing through 2s: 11.9 %) |
+| M1 | $2.410\times10^{-6}$ |
+| E2 | $1.477\times10^{-6}$ |
+| gravitational waves | $1.420\times10^{-48}$ |
+
+The final state is 1s F=0 with probability 1.0 ($t=10^{17}$ s; 1s F=1 has a 21 cm lifetime of $1.1\times10^7$ years). The increment of gravitational binding is $-1.151\times10^{-38}$ eV $=2g\times13.05$ eV.
+
+**Time structure** (Fig. 3). Within $10^{-8}$ s 88 % falls to 1s; 12 % stays in 2s and decays by two-photon emission in 0.1 s.
+
+**Widths.** The line width is $\Gamma_i+\Gamma_f$: Lyman-α 99.71 MHz (measured 99.7), coherence length $c/(\Gamma_i+\Gamma_f)=0.48$ m. For the two-photon pair only the sum frequency is sharp ($\Gamma_{2s}+\Gamma_{1s}=8.2$ s⁻¹); each photon is continuous (coherence time $6.5\times10^{-17}$ s, 19 nm). The spatial extent of the levels is $\langle r\rangle=79.4$ pm for 1s, with $\Delta r\cdot\Delta p/\hbar=0.866$.
+
+![Fig. 1](figures/fig01_H_levels_cascade.png)
+**Fig. 1.** Hydrogen atom: 50 levels (hyperfine summed) and the cascade from 5p₃/₂ F=1. Arrow width is proportional to the square root of the number of photons per cascade. Solid E1, dashed two-photon, dotted M1 and E2.
+
+![Fig. 2](figures/fig02_H_spectrum_widths.png)
+**Fig. 2.** Emission record of the hydrogen atom ($T=0$). Top: expected photon number versus $\hbar\omega$, coloured by kind. Bottom: line width $\Gamma=\Gamma_{\rm src}+\Gamma_{\rm dst}$ and coherence length $c/\Gamma$.
+
+![Fig. 3](figures/fig03_H_time_evolution.png)
+**Fig. 3.** Time evolution of the occupation of each shell $n$ (bookkeeping) and the cumulative emission by kind.
+
+## 3.5 Readouts with the three layers of the absorber
+
+**Layer 2 (temperature 2.7255 K)** (Fig. 4). $kT=2.3487\times10^{-4}$ eV. For 21 cm, $\hbar\omega=5.8679\times10^{-6}$ eV, $\hbar\omega/kT=0.02498$, $\bar n=39.53$. For Lyman-α, $\hbar\omega/kT=4.3\times10^4$ and $\bar n=0$. The 1s F=1→0 rates are spontaneous $2.868\times10^{-15}$, stimulated $1.134\times10^{-13}$, absorption 0→1 $3.401\times10^{-13}$ s⁻¹, relaxation rate $4.563\times10^{-13}$ s⁻¹ (time constant $2.191\times10^{12}$ s $=6.94\times10^4$ years). The steady distribution is F=1 : F=0 $=0.745286:0.254714=3e^{-\hbar\omega/kT}$ (difference $4\times10^{-16}$), steady residual $\max|R\mathbf p|=0$. The spin temperature read from the ratio of the 21 cm doublet is 2.72550 K, equal to the absorber temperature. The multistep emission from 5p is unchanged.
+
+![Fig. 4](figures/fig04_H_layer2_temperature.png)
+**Fig. 4.** Layer 2. Left: time evolution of the occupation of the 1s hyperfine doublet ($T=0$ and 2.7255 K). Right: temperature dependence of the ratio $p(F{=}1)/p(F{=}0)$ at $t=10^{17}$ s and $3e^{-\hbar\omega/kT}$.
+
+**Layer 1 (direction, centre-of-mass velocity, recoil)** (Fig. 5). The recoil shift of Lyman-α $\Delta E^2/(2Mc^2)=13.40$ MHz, the recoil velocity per photon $\hbar\omega/(Mc)=3.257$ m/s, for 21 cm $1.874\times10^{-6}$ m/s. First-order Doppler $\beta=1.2342\times10^{-3}$, second order $\beta^2/2=7.616\times10^{-7}$. The background temperature seen in the atom's rest frame is 2.728866 K forward and 2.722138 K backward. Readouts:
+
+1. From the record $(\delta,\hat n)$ of 212 multistep photons of an ensemble of 200 atoms, a least-squares fit with the exact Doppler model gives $\vec v=(-0.03,-0.03,370000.08)$ m/s, a difference of 0.09 m/s from the given $(0,0,370000)$ (the same computation in the engine version with another random sequence gives 0.11 m/s). The first-order linear solution is off by tens of m/s because of the second-order Doppler term.
+2. For the sequence of 21 cm events of a single atom (absorption, stimulated and spontaneous emission), the $\delta$ of each event agrees to double precision with the exact Doppler of the true velocity (the relative width $5\times10^{-23}$ of 21 cm is below the double-precision floor $10^{-19}$).
+3. From the same 29 events, accumulating the kicks $\mp\hbar\omega\hat n/c$ contained in the record (whether absorption or emission is in the record) and solving jointly, the three components of $\vec v_0$ before the first event are recovered to $2.39\times10^{-10}$ m/s ($2\times10^{-4}$ of the recoil $1.9\times10^{-6}$ m/s).
+
+![Fig. 5](figures/fig05_H_layer1_doppler_recoil.png)
+**Fig. 5.** Layer 1. Left: $(\delta/\beta,\ \hat n\cdot\hat v_0)$ of the photons of 200 atoms and the exact Doppler. Middle: residuals (converted to m/s). Right: the history of $|\vec v|$ over the 21 cm events of one atom (true values) and its reconstruction from the record.
+
+**Layer 3 (alignment, polarization)** (Fig. 6). Basis of 220 states, 15103 $m$-resolved edges, maximum relative error of the sum rule $\sum_{m'}A_{mm'}=A$ of $5.5\times10^{-16}$. (A) From the initial 5p₃/₂ F=1 with $m_F=0$, the 5p→1s F0 line has $\Delta m=0$ only (pure π, $I\propto\sin^2\theta$, linear polarization degree at 90° equal to +1); from $m_F=+1$ it is σ; averaged over $m$ all lines return to isotropic and unpolarized, and the total emission is 13.054539268 eV. The initial $m$ appears in the record as the angular distribution and polarization of the emitted light. (B) Steady alignment $A_2=(p_++p_--2p_0)/\sum p$ at 2.7255 K:
+
+| Background | $\langle\bar n\rangle_0$ (π) | $\langle\bar n\rangle_{\pm1}$ (σ) | alignment $A_2$ of 1s F=1 | polarization degree of 21 cm emission at 90° |
+|---|---|---|---|---|
+| isotropic | 39.52787894 | 39.52787894 | 0 | 0 |
+| dipole β only (quadrupole at second order) | 39.52786065 | 39.52787285 | $+5.074\times10^{-9}$ | $-3.806\times10^{-9}$ |
+| dipole β + quadrupole $a_2=4\times10^{-6}$ | 39.52782863 | 39.52788886 | $+2.506\times10^{-8}$ | $-1.880\times10^{-8}$ |
+
+An unpolarized intensity dipole produces no alignment at first order; the quadrupole component $\beta^2\approx1.5\times10^{-6}$ at second order and the quadrupole $a_2$ of the background do. Since the steady sublevel occupations are $p_m\propto\langle\bar n\rangle_q/(1+\langle\bar n\rangle_q)$, the relative difference $10^{-6}$ of the occupation numbers is suppressed by $1/(\bar n(1+\bar n))\approx1/1600$, and the alignment is of order $10^{-8}$. Reading the linear polarization degree $2\times10^{-8}$ of 21 cm would require $10^{16}$ photons.
+
+![Fig. 6](figures/fig06_H_layer3_alignment.png)
+**Fig. 6.** Layer 3. Left: angular patterns of the $\Delta m$ types (the 5p→1s F0 line from $m_F=0$ is pure π). Right: steady alignment of 1s F=1 at 2.7255 K versus the background quadrupole $a_2$.
+
+## 3.6 Comparison with a numerical solver that takes the sign of the charge as input
+
+A general solver was built separately that produces the levels not from closed formulas but from a two-sided shooting of the radial Dirac equation (solved in $\eta=1-\varepsilon$ to avoid cancellation) and from expectation values over Schrödinger solutions, and it was compared with the fixed set under the same conditions ($n\le5$, 5p₃/₂ F=1, $t_{\max}=10^{17}$ s). Over the 50 levels the maximum difference of the Coulomb levels is $3.0\times10^{-11}$ eV (relative $10^{-11}$), the maximum relative difference of gravity $3.9\times10^{-9}$, the hyperfine Dirac/NR − 1 is $(3/2)\alpha^2=8.0\times10^{-5}$ for 1s and 2s (reproducing Breit's relativistic correction), and the maximum difference of the total energy $3.3\times10^{-10}$ eV. The A coefficients agree in the set of edges (E1 320, E2 376, M1 58) with a median relative difference of $6.6\times10^{-5}$ (the $\alpha^2$ difference between the Dirac $(G_aG_b+F_aF_b)$ and the Schrödinger radial integrals), and the total emission 13.054539268 eV agrees. Since this solver takes the sign of the charge as input, it is used for the same-sign pairs of §4.
+
+---
+
+# 4. Systems 2 and 3: electron–electron, proton–proton
+
+## 4.1 Absence of bound levels
+
+With everything but the particles kept as for hydrogen (basis $n\le5$, the level corresponding to the initial 5p₃/₂ F=1, the absorber), the solver of §3.6 was given same-sign charges. The net coupling is $+7.297\times10^{-3}$ (Coulomb) against gravity $+1.752\times10^{-45}$ for electron–electron, and gravity/Coulomb $=8.09\times10^{-37}$ for proton–proton. The net potential is positive (repulsive) at every $r$, so there are exactly zero bound levels; the model of levels and rates has nothing to represent, emission 0, no final state. This is the set's own answer to the question whether "levels and radiation alone" can solve the problem.
+
+## 4.2 Scattering: the Mott cross section
+
+What Einstein–Maxwell theory predicts for same-sign pairs is scattering. The intermediate orbit is not observed; what remains in the record is the distribution of deflection angles, and for identical particles assuming a real orbit drops the Mott interference term and gives the wrong answer (the S-matrix standpoint [63]). The relative kinetic energy is set to the initial hydrogen level, $E=|E(5p_{3/2}F1)|=0.543934$ eV, and the impact parameter for the spectrum is $b=L/(\mu v)$ with the $\ell=1$ angular momentum $L=\hbar\sqrt2$.
+
+| Quantity | electron–electron | proton–proton |
+|---|---|---|
+| reduced mass $\mu$ | 0.5000 $m_e$ | 918.0763 $m_e$ |
+| $v/c$ | $2.0634\times10^{-3}$ | $4.8155\times10^{-5}$ |
+| Sommerfeld parameter $\eta=(q_aq_b/\hbar c)/(v/c)$ | 3.5365 (quantum regime) | 151.5398 (semiclassical) |
+| wave number $k$, de Broglie wavelength | 0.1414 $/a_0$, 2.352 nm | 6.0583 $/a_0$, 0.055 nm |
+| distance parameter $a=q_aq_b/(\mu v^2)$, head-on closest approach $2a$ | 25.014 $a_0$, 2.647 nm | 25.014 $a_0$, 2.647 nm |
+| impact parameter $b$, eccentricity $e$ | 10.003 $a_0$, 1.0770 | 0.233 $a_0$, 1.0000 |
+| Darwin (magnetic) term $v^2/c^2$ | $4.26\times10^{-6}$ | $2.32\times10^{-9}$ |
+| gravity/Coulomb, gravitational-wave/electric-quadrupole $4Gm^2/q^2$ | $2.401\times10^{-43}$, $9.602\times10^{-43}$ | $8.094\times10^{-37}$, $3.237\times10^{-36}$ |
+| Mott $d\sigma/d\Omega$ (90°), distinguishable particles both counted | 1.7521, 3.5041 nm²/sr | 1.7521, 3.5041 nm²/sr |
+
+The Mott cross section [44], obtained by symmetrizing the exact Coulomb amplitude
+
+$$
+f(\theta)=-\frac{\eta}{2k\sin^2(\theta/2)}\exp\!\left[-i\eta\ln\sin^2(\theta/2)+2i\sigma_0\right]
+$$
+
+for identical unpolarized spin-½ particles,
+
+$$
+\frac{d\sigma}{d\Omega}=\left(\frac{\eta}{2k}\right)^2\left[\frac{1}{\sin^4(\theta/2)}+\frac{1}{\cos^4(\theta/2)}-\frac{\cos(\eta\ln\tan^2(\theta/2))}{\sin^2(\theta/2)\cos^2(\theta/2)}\right],
+$$
+
+is one half of the distinguishable-particle value at 90° (fermionic antisymmetrization). The interference term oscillates more finely the larger $\eta$ is (Fig. 7). It diverges in the forward direction and the total cross section is not defined.
+
+![Fig. 7](figures/fig07_ee_pp_mott.png)
+**Fig. 7.** Mott cross sections of electron–electron ($\eta=3.54$) and proton–proton ($\eta=151.5$) and the classical distinguishable-particle values.
+
+## 4.3 Quadrupole bremsstrahlung
+
+For identical particles the electric dipole in the centre-of-mass frame vanishes identically, so bremsstrahlung is quadrupole, $P=(1/180c^5)\dddot D_{\alpha\beta}\dddot D_{\alpha\beta}$ (Landau–Lifshitz §71 [27]). On the repulsive hyperbola $x=a(e+\cosh\xi)$, $y=a\sqrt{e^2-1}\sinh\xi$, $t=(a/v)(e\sinh\xi+\xi)$, $\dddot D$ is obtained in closed form and Fourier-transformed in $\xi$ to give $dE/d\omega$. The Parseval self-check $\int P\,dt=\int(dE/d\omega)d\omega$ gives 0.9996 for electron–electron and 1.0001 for proton–proton.
+
+| Quantity | electron–electron | proton–proton |
+|---|---|---|
+| radiated energy $E_{\rm rad}=\int(dE/d\omega)d\omega$ | $1.54\times10^{-16}$ eV | $3.58\times10^{-25}$ eV |
+| characteristic photon energy $\hbar v/a$ | 0.31 eV | $7.18\times10^{-3}$ eV |
+| expected photons per collision $E_{\rm rad}/\hbar(v/a)$ | $5.0\times10^{-16}$ | $5.0\times10^{-23}$ |
+| gravitational waves | $9.6\times10^{-43}$ of that | $3.2\times10^{-36}$ of that |
+
+The spectrum is flat as $\omega\to0$ (the difference of $\ddot D$ before and after the encounter) and falls exponentially for $\omega\gtrsim v/a$ (Fig. 8). For proton–proton, $\eta\gg1$, the classical spectrum is valid; for electron–electron, $\eta\approx3.5$, it is a guide (no quantum Gaunt factor is included). Nothing comes out of a single collision; only the in–out relation remains in the record.
+
+![Fig. 8](figures/fig08_ee_pp_bremsstrahlung.png)
+**Fig. 8.** Spectra $dE/d\omega$ of quadrupole bremsstrahlung. The dashed line marks $\hbar v/a$.
+
+---
+
+# 5. System 4: the hydrogen molecule (hydrogen atom–hydrogen atom)
+
+## 5.1 Potential and levels
+
+Neutron–neutron is meaningless unless the strong force is included; the two-body systems without charge and with mass that can be built without assuming the strong force are pairs of neutral atoms, the smallest of which is H₂. The rovibrational levels $(v,J)$ of the ground electronic state X¹Σg⁺ are taken as the levels of the system.
+
+The radial nuclear equation in the adiabatic approximation is
+
+$$
+-\frac{1}{2\mu_n}f''+\left[V(R)+\frac{J(J+1)}{2\mu_nR^2}\right]f=Ef,\qquad \mu_n=\frac{m_p}{2},\qquad V(R)=E_{\rm el}(R)+E_a(R).
+$$
+
+$E_{\rm el}$ is the analytic fit (Łach; FUNCTION V of H2SPECTRE 7.4 [47], ported) of Pachucki's BO potential [46] (82 points at R = 0.1–20 bohr, precision $10^{-15}$; the maximum difference between fit and table is $2.2\times10^{-12}$ hartree), and $E_a$ is the fit (Eaint of the same program) of the adiabatic correction of Pachucki–Komasa [48]. Both take two hydrogen atoms as the origin, $V(\infty)=0$. Nonadiabatic, relativistic and QED corrections are not included. The discretization is a sinc-DVR (Colbert–Miller [55], the same matrix elements as H2SPECTRE), $dr=0.025$ bohr, $R\le50$ bohr. Changing the grid to $dr=0.02$, $R\le60$ changes the levels by $2.2\times10^{-7}$ cm⁻¹.
+
+The bound levels are the 301 with $E<0$ (of the 302 of Roueff et al. [51], (14,4) is not bound without the nonadiabatic correction; with all corrections it lies 0.027 cm⁻¹ below dissociation). $D_0=36118.3637$ cm⁻¹ (E2(FULL) 36118.7977, all corrections 36118.0695), (0,1)−(0,0) = 118.4919 cm⁻¹ (all corrections 118.4868). Even $J$ is para ($I=0$), odd $J$ ortho ($I=1$).
+
+## 5.2 Rates
+
+In atomic units ($\hbar=m_e=e=1$, $c=1/\alpha$),
+
+$$
+A_{E2}=\frac{\alpha^5\omega^5}{15}(2J_f+1)\begin{pmatrix}J_i&2&J_f\\0&0&0\end{pmatrix}^2|\langle f_f|\Theta|f_i\rangle|^2,
+$$
+
+$$
+A_{M1}=\frac{\alpha^5\omega^3}{3}\left(\frac{m_e}{m_p}\right)^2J(J+1)|\langle f_f|g|f_i\rangle|^2.
+$$
+
+E2 has $\Delta J=0,\pm2$; M1 has $\Delta J=0$, $v_i\ne v_f$. $\Theta(R)$ is the molecular quadrupole moment, one half of $Q_{\rm WSD}(R)$ (257 points) of Table 3 of Wolniewicz–Simbotin–Dalgarno [49] (the note in §3.1 of Roueff et al.). In the Q branch $(2J+1)\begin{pmatrix}J&2&J\\0&0&0\end{pmatrix}^2=J(J+1)/((2J-1)(2J+3))$, which agrees with eq. (14) of Pachucki–Komasa 2011 [50]. $g(R)$ is Table I of the same paper [50]. Gravitational waves follow the same derivation of the ratio as for hydrogen,
+
+$$
+A_{GW}=4\frac{\alpha_{Gp}}{\alpha}\frac{|\langle q_m\rangle|^2}{|\langle\Theta\rangle|^2}A_{E2},\qquad q_m(R)=\frac{R^2}{2}+\frac{m_e}{m_p}\left(\frac{R^2}{2}-\Theta(R)\right),\qquad \alpha_{Gp}=\frac{Gm_p^2}{\hbar c}.
+$$
+
+The edges are E2 4669, M1 1467, GW 4669. E2, M1 and GW all preserve the parity of $J$, so ortho and para are not connected (0 edges change the parity). The mass is $M=2(m_p+m_e)+E/c^2$. The nuclear-spin degeneracy is common to src and dst, so the detailed-balance factor $g_{\rm src}/g_{\rm dst}=(2J_s+1)/(2J_d+1)$ can be used as it is.
+
+## 5.3 Validation
+
+Comparison with Roueff et al. 2019 [51] (CDS J/A+A/630/A58, 4712 transitions; the same BO + adiabatic $V$, $\Theta$ and $g$ from Pachucki–Komasa, levels with all corrections from Pachucki–Komasa 2018 [52]) (Fig. 11).
+
+| Quantity | Result |
+|---|---|
+| level energies, this work − CDS | −0.29 ((0,0)) to +4.6 cm⁻¹ ($v=10$); grows with $v$ = the nonadiabatic correction |
+| relative difference of wavenumbers σ | median $1.6\times10^{-4}$ (up to $4\times10^{-2}$ for small σ between close levels) |
+| relative difference of $A_{E2}$ (4669 lines) | median $8.2\times10^{-4}$; $7.7\times10^{-4}$ with σ⁵ rescaled so that only the Θ matrix element differs; for strong lines $A>10^{-9}$ s⁻¹ up to 6 % (lines with $\Delta v\ge3$ and large cancellation) |
+| relative difference of $A_{M1}$ (1467 lines) | median $5.8\times10^{-4}$ |
+| 1-0 S(1) (2.12 μm) | $3.471\times10^{-7}$ vs $3.470\times10^{-7}$ s⁻¹ |
+| 0-0 S(0) (28.2 μm) | $2.942\times10^{-11}$ vs $2.943\times10^{-11}$ s⁻¹ |
+| M1 of 1-0 Q(1) | $7.137\times10^{-10}$ vs $7.137\times10^{-10}$ s⁻¹ |
+
+The entry (2,24) of the level table H2.dat distributed with H2SPECTRE is 115 cm⁻¹ off from its neighbours in $J$ and is taken to be a misprint in the distributed data.
+
+![Fig. 11](figures/fig11_H2_validation.png)
+**Fig. 11.** Validation of H₂. Left: $A_{E2}$ of this work against CDS (4669 lines, coloured by $\Delta v$). Middle: distribution of the relative differences. Right: level-energy differences versus $v$.
+
+## 5.4 Results of the cascades
+
+With initial levels (1,3) (the upper level of 1-0 S(1)), (3,5), and (14,0), (14,1) just below the dissociation limit, the same master equation as in §3.2 was run (Figs. 9, 10).
+
+| Initial | depth below dissociation [cm⁻¹] | total emission [eV] ($=E_{\rm init}-E_{\rm final}$, difference) | photons E2 / M1 | final state |
+|---|---|---|---|---|
+| (1,3) | 31286.1 | 0.584431745 ($1\times10^{-15}$) | 1.830 / 0.0051 | (0,1), ortho ground |
+| (3,5) | 22850.8 | 1.630280932 ($2\times10^{-15}$) | 3.537 / 0.027 | (0,1) |
+| (14,0) | 143.3 | 4.460335799 ($2\times10^{-15}$) | 7.479 / 0.022 | (0,0), para ground |
+| (14,1) | 126.2 | 4.447765200 ($1\times10^{-14}$) | 6.972 / 0.024 | (0,1) |
+
+The first step from (14,J) goes to (10,J±2), (9,J±2), (8,J±2) ($\hbar\omega$ 0.6–1.1 eV, branching 0.37 / 0.36 / 0.14) and not directly to $v'=0$. Thereafter $v$ decreases by 1–3 at a time, and the cascade ends with the pure-rotational (0,2)→(0,0) (lifetime $3.4\times10^{10}$ s, 28 μm) or (0,3)→(0,1) (lifetime $2.1\times10^9$ s, 17 μm, $A=4.76\times10^{-10}$ s⁻¹). The natural widths $\Gamma\hbar/\hbar\omega$ of the lines are $10^{-24}$–$10^{-20}$, far sharper than the $10^{-8}$ of the hydrogen atom. The gravitational-wave emission is $1.5\times10^{-35}$–$5.4\times10^{-35}$ eV.
+
+![Fig. 9](figures/fig09_H2_levels_cascades.png)
+**Fig. 9.** The 301 levels of H₂ X¹Σg⁺ (abscissa $J$, ordinate the excitation above (0,0)) and the E2 cascades from (1,3) and (14,1).
+
+![Fig. 10](figures/fig10_H2_cascade_spectra.png)
+**Fig. 10.** Emission records of the cascades (photon number versus wavelength). From top: (1,3), (3,5), (14,1).
+
+## 5.5 Readouts with the three layers of the absorber
+
+**Layer 2.** The lowest excitation from the ground level, (0,1)→(0,3), is 587 cm⁻¹ $=0.0728$ eV $=310\,kT$ (2.7255 K), with Boltzmann ratio $g_f/g_i\,e^{-\hbar\omega/kT}=6\times10^{-135}$. The largest Planck occupation among all edges is $\langle\bar n\rangle=0.65$ for the accidentally close pair of highly excited levels (6,20)→(7,18) (1.77 cm⁻¹). The steady state is the single lowest level of the nuclear-spin series, and there is no temperature readout like that of the hydrogen 21 cm line ($\bar n=39.5$).
+
+**Layer 1** (Fig. 13). For the cascade from (1,3), 200 molecules and 360 photons, the recoil is 0.01–0.09 m/s and the line widths $2\times10^{-24}$–$7\times10^{-22}$. Recovering $\vec v$ from the record $(\delta,\hat n)$ alone gives a difference of 0.002 m/s (the first-order linear solution is off by 27 m/s). For (3,5), 695 photons give 0.007 m/s; for (14,1), 1430 photons give 0.026 m/s (recoil up to 0.32 m/s). No absorption or stimulated emission occurs within $t\le10^{17}$ s.
+
+**Layer 3** (Fig. 14). From the initial $m=0$, the 1-0 S(1) line ((1,3)→(0,1)) has $N_0:N_{+1}:N_{-1}=0.6:0.2:0.2$ (polarization degree at 90° equal to +0.5), and the M1 line 1-0 Q(3) has zero $\Delta m=0$ component ($(3\,1\,3;000)=0$). The $m$ distribution of the final state (0,1) is 0.240 / 0.521 / 0.240 (alignment −0.187); starting from (14,1) it is 0.330 / 0.339 / 0.330 (−0.006). Since the background has $\langle\bar n\rangle\approx0$, no relaxation or alignment between $m$ sublevels occurs, and the memory of the initial $m$ remains in the final state as it is.
+
+![Fig. 13](figures/fig13_H2_layer1_doppler.png)
+**Fig. 13.** Layer 1 of H₂. Doppler record of the 360 photons from (1,3) and the residuals of the recovery of $\vec v$ with the exact model.
+
+![Fig. 14](figures/fig14_H2_layer3_polarization.png)
+**Fig. 14.** Layer 3 of H₂. Distribution of $\Delta m$ of each line from the initial $m=0$, and the $m$ distribution of the final state (0,1).
+
+## 5.6 Radiative association H + H → H₂ + γ
+
+Two hydrogen atoms do not approach each other by gravity. The inter-atomic gravitational potential $-Gm_H^2/R$ is $8\times10^{-37}$ of the electromagnetic interaction; it exceeds the dispersion force (Casimir–Polder $-C_7/R^7$) only for $R\gtrsim0.2$ mm, but to be gravitationally bound there would require a "gravitational atom" with Bohr radius $7\times10^{22}$ m (2.3 Mpc) and binding energy $8\times10^{-69}$ eV. The actual path splits by electron spin: the triplet b³Σu⁺ (3/4) is repulsive, while the singlet X¹Σg⁺ (1/4) falls into a well 4.75 eV deep, but the nuclei approach only to the inner turning point ($R=0.776\,a_0$ at the dissociation limit) under the Coulomb repulsion and return. To unite, 4.5 eV must be given to a partner; with two bodies only, radiation is the only way, and E1 is absent for a homonuclear pair.
+
+Therefore the rates from discretized continuum states $\psi_n$ ($E_n>0$, partial wave $J$) normalized in a box $R\le50$ bohr to the bound levels were computed with the same formulas as in §5.2, and
+
+$$
+P_J(E_n)=2\pi\hbar\rho_J(E_n)\sum_fA(n\to f),\qquad
+\sigma(E)=\frac{\pi}{k^2}\sum_Jw_J(2J+1)P_J(E),\qquad k(E)=\sigma v,
+$$
+
+where $\rho_J=dn/dE$ is the level density of the box and $2\pi\hbar\rho_J$ is the round-trip time in the box ($2.181\times10^{-12}$ s for $J=0$, $E\approx100$ cm⁻¹; the classical $2\int dR/v$ is $2.161\times10^{-12}$ s). $P_J$ is the capture probability per pass and is independent of $R_{\max}$ (relative difference $10^{-5}$ between 50 and 100 bohr). The weights $w_J$ are the electronic singlet 1/4 times the nuclear-spin weights (1/4 for even $J$, 3/4 for odd $J$). $J\le24$, $E\le4389$ cm⁻¹.
+
+| $E$ [cm⁻¹] | $E/k_B$ [K] | $P_0$ | $\sigma$ [cm²] | $k(E)$ [cm³ s⁻¹] |
+|---|---|---|---|---|
+| 3 | 4.3 | $9.4\times10^{-20}$ | $1.12\times10^{-34}$ | $4.2\times10^{-30}$ |
+| 10 | 14 | $1.03\times10^{-19}$ | $8.9\times10^{-35}$ | $6.1\times10^{-30}$ |
+| 100 | 144 | $1.12\times10^{-19}$ | $9.8\times10^{-35}$ | $2.1\times10^{-29}$ |
+| 1000 | 1439 | $1.18\times10^{-19}$ | $4.4\times10^{-35}$ | $3.1\times10^{-29}$ |
+| 3000 | 4316 | $1.27\times10^{-19}$ | $2.3\times10^{-35}$ | $2.7\times10^{-29}$ |
+
+The Maxwell–Boltzmann average $k(T)$ is $2.4\times10^{-29}$ at 10 K, $3.2\times10^{-29}$ at 100 K, $3.8\times10^{-29}$ at 300 K, $3.5\times10^{-29}$ at 1000 K and $2.4\times10^{-29}$ cm³ s⁻¹ at 3000 K. The main final levels are $v'=8$–11 ($\hbar\omega$ 0.4–1.1 eV); capture does not go to $v'=0$. At $E\approx1$ cm⁻¹ the quasi-bound level (14,4) (0.74 cm⁻¹ above the dissociation limit in this calculation, $P_4=9\times10^{-18}$) accounts for 99 % of σ; with the nonadiabatic correction it returns to a bound level and disappears from the continuum. The sharp peaks in $k(E)$ are quasi-bound $(v,J)$ behind the centrifugal barrier (shape resonances), whose widths the box discretization does not resolve.
+
+The estimate made before the calculation, $10^{-14}$ from the E2 rate at $\hbar\omega=D_e$ and the transit time through the well, was five orders of magnitude too large. The actual capture is a transition with $\hbar\omega\approx0.4$–1.1 eV, for which $\omega^5$ is $10^{-4}$ times smaller.
+
+![Fig. 12](figures/fig12_H2_radiative_association.png)
+**Fig. 12.** Radiative association. Left: capture probability per pass $P_J(E)$ ($J=0$–4). Middle: $\sigma(E)$ and $k(E)$. Right: $k(E)$ and the thermal average $k(T)$.
+
+## 5.7 Separate account of inter-atomic gravity
+
+The Newtonian gravity between the atoms, $\langle f_{vJ}|-Gm_H^2/R|f_{vJ}\rangle$ (point masses $m_H=m_p+m_e-E_b/c^2$), is $-1.244\times10^{-31}$ cm⁻¹ for (0,0) and $-3.97\times10^{-32}$ cm⁻¹ for (14,0); the line shifts are $10^{-37}$–$10^{-36}$ eV. This is 20 orders of magnitude below the double-precision floor of the level energies ($10^{-12}$ cm⁻¹), so adding it to $E$ changes nothing, and it is kept as a separate column (Fig. 15). The gravitational cross terms electron–nucleus and electron–electron (about $10^{-3}$ and $10^{-7}$ of the nucleus–nucleus term; they require $\sum\langle1/r_{ia}\rangle(R)$ and $\langle1/r_{12}\rangle(R)$) and the 1PN terms ($(v/c)^2\sim10^{-10}$) are not included. In this system gravity appears only as a shift of $10^{-31}$ cm⁻¹ in the levels and as gravitational-wave emission of $10^{-35}$ eV.
+
+![Fig. 15](figures/fig15_H2_gravity_accounting.png)
+**Fig. 15.** Left: $\langle-Gm_H^2/R\rangle$ per level. Right: the ratio of the gravitational-wave to the E2 rate for each E2 line (the ratio rises for lines with large $\Delta v$ where $\langle\Theta\rangle$ is small by cancellation).
+
+---
+
+# 6. Comparison of the four systems and discussion
+
+## 6.1 What remains in the record
+
+| | Hydrogen atom | Electron–electron, proton–proton | Hydrogen molecule |
+|---|---|---|---|
+| bound levels | 50 ($n\le5$) | 0 | 301 |
+| kinds of emission | E1, two-photon, M1, E2, GW | quadrupole bremsstrahlung only (dipole vanishes identically) | E2, M1, GW (no E1) |
+| photons per cascade / collision | a few | $5\times10^{-16}$ / $5\times10^{-23}$ | 2–7 |
+| lowest transition vs $kT$ at 2.7255 K | 21 cm $=0.025\,kT$, $\bar n=39.5$ | — | 587 cm⁻¹ $=310\,kT$, $\bar n\sim10^{-135}$ |
+| readout of layer 2 | spin temperature 2.72550 K | — | none |
+| readout of layer 1 | 0.09 m/s (ensemble), $2.4\times10^{-10}$ m/s (history of one atom) | distribution of deflection angles only | 0.002 m/s (line width $10^{-22}$) |
+| readout of layer 3 | polarization of the initial $m$, steady alignment $10^{-8}$ | — | polarization of the initial $m$, no relaxation |
+| how gravity appears | levels $10^{-38}$ eV, GW $10^{-48}$ eV | GW/E2 $10^{-43}$–$10^{-36}$ | levels $10^{-31}$ cm⁻¹, GW $10^{-35}$ eV |
+
+The properties of the absorber enter the record in three different ways. Temperature changes the generator (upward rates); direction and velocity change only the readout of the record (Doppler and recoil); anisotropy changes the state space, the generator and the readout. An isotropic, infinitely distant, completely absorbing shell has no relational quantity "direction", and neither translation nor recoil can be defined. Direction is defined only as the assignment to the anonymous equal-weight cells of the absorber, and is read from the angular correlation of two-photon pairs and from the $\cos\theta$ of the dipole.
+
+## 6.2 Internal states cannot be read
+
+The occupations of the 50 levels of the hydrogen atom, of the 301 levels of H₂, and the intermediate orbit in scattering never appear in the record. What appears is the sequence of emission and absorption events, and two models that give the same record cannot be distinguished. The bookkeeping of this paper ($\tau$, the time evolution of occupations) was computed for checking and is not observable. That assuming a real orbit in the scattering of identical particles drops the Mott interference term is one example.
+
+## 6.3 The structure of standard theory
+
+In this set the interaction is used up at the moment the eigenvalue problem is solved; during the run a constant generator $R$ merely moves probability. The exponential waiting-time distribution is memoryless, and the system has no time of its own between events. The line width is not an uncertainty of the level but the length of the emission process, and it is Lorentzian if the envelope is exponential. The two-photon pair is one event in which two quanta leave together; only the sum frequency is sharp, each is continuous, and the simultaneity of the pair carries the sharing of the origin to the outside. These are the structure of the record that standard theory gives for two-body systems, not claims of this paper. They are what a future distribution-array operation must reproduce.
+
+## 6.4 The difference between the hydrogen atom and the hydrogen molecule
+
+Running the same framework, the readout of the 2.7255 K absorber exists only for the hydrogen atom. The hydrogen 21 cm line is 1/40 of $kT$ and equilibrates with the background, whereas the lowest transition of H₂ is 310 times $kT$ and the background neither excites nor relaxes $m$. The velocity recovery of layer 1 is more precise for H₂ because the E2 lines are extremely narrow, $10^{-22}$: 0.002 m/s with 200 molecules against 0.09 m/s with 200 hydrogen atoms.
+
+## 6.5 Time evolution of the field, the record, and the physical counterpart of the absorber
+
+The generator of this paper has no field degrees of freedom. The static field is folded into the eigenvalue problem, the radiation field into the Einstein A coefficients, and a photon disappears into the absorber at infinity at the moment of emission. What the time evolution of the field leaves in the record is exactly the amount by which this paper deviates from measurement: the 8170 MHz of 1S and the 1057.85 MHz of 2S–2P₁/₂ (Lamb shift), and the factors 0.9989 and 0.9944 of the hyperfine structure and of 21 cm ($g_e-2$). Evolving the field classically gives no stationary state and leads to collapse (the tenth thought experiment of §1.2), so the record's "the ground state does not radiate" requires both the time evolution of the field and a discrete lock. This paper supplies the record that a generator with both must reproduce.
+
+The standpoint that takes the state of the field as the reality and the standpoint that takes the record at infinity as the reality say the same thing in different words as far as the radiative part is concerned (§2.5). The two give the same predictions when the absorber is complete: that is the condition under which the Wheeler–Feynman absorber theory [58] agrees with the Maxwell radiation reaction, and under which direct-action quantum electrodynamics [67] agrees with ordinary quantum electrodynamics. If absorption is incomplete the two predict differently. Partridge [59] looked for a directional dependence of radiated power and found none, but Pegg [68] and others argued that the null result was inevitable because the Earth itself acts as an absorber, so that experiment does not decide whether absorption on a cosmic scale is complete. The premise of this paper (a complete absorber covering the whole sky) is not a fact established by measurement; it is placed as the cosmological condition of Hogarth and Hoyle–Narlikar.
+
+The physical counterpart of the absorber is the cosmological event horizon, and its rest frame is the rest frame of the background radiation. Hogarth [64] and Hoyle–Narlikar [65] argued that whether radiation is completely absorbed is decided by the future structure of the universe. The horizon of an accelerating universe (radius $c/H_0\approx4.4$ Gpc), seen from inside, is a complete absorber covering all directions, and its area in Planck units, $4\pi(R_H/l_P)^2\approx7\times10^{122}$ (the de Sitter entropy [66]), is the upper limit of the cell number $N$ of §2.2. This paper combines the incoming background (the past cone, 2.7255 K) and the absorption (the future cone, with the horizon temperature $\hbar H_0/2\pi k\approx2\times10^{-30}$ K) into a heat bath of one temperature. This is an approximation valid when the duration of the experiment is shorter than the expansion time; in the runs to $t_{\max}=10^{17}$ s (3 billion years) the background temperature changes by 20 %, so strictly it is violated.
+
+The only source of change of the internal phase is exchange with the absorber. Recorded exchanges (emission and absorption) give the frequencies themselves; unrecorded (virtual) exchanges give the shifts of the frequencies (the Lamb shift). While there is no exchange with the outside, the system has its eigenfrequencies, its own internal clock and its spatial extent, but is stationary, and all that can be read is the statistics of the next event. The phase of a superposition appears in the time distribution of the next event as quantum beats, but the master equation of this paper moves occupations only and does not produce them.
+
+## 6.6 Directions for further work
+
+1. **Correlations of the record.** The record of this paper stops at first order (intensities). The phase of the field appears as reality in correlations between records: $g^{(1)}(\tau)$ (the line shape is properly its Fourier transform), $g^{(2)}$ (antibunching of a single atom, $g^{(2)}(0)=0$, and the time correlations of cascade photons), the polarization correlation of two-photon pairs (Bell [62]) and the interference of two sources. All can be computed in standard quantum optics and can be added to this paper as a second-order answer table.
+2. **Traces of the vacuum field.** Bethe's nonrelativistic calculation (a mode sum of the radiation field with cutoff $m_ec^2$) gives a 2S Lamb shift of 1040 MHz. The dipole matrix elements and Bethe logarithms it needs are already in the present set.
+3. **Separation of past and future.** Hold the temperature of the incoming background and the future absorption as separate surfaces and include the change of temperature by expansion.
+4. **The generator.** A generator (distribution-array operation) that produces both radiation and the lock from one exchange must reproduce the record of this paper and its correlations. That is the goal of this research series.
+
+---
+
+# 7. Limitations and non-claims
+
+This paper does not claim the following.
+
+1. **That the Einstein–Maxwell equations were implemented.** The field is not evolved in time. The levels are bound-state formulas, gravity is 1PN expectation values, radiation is Einstein A coefficients.
+2. **That the dynamics was derived from a distribution-array operation of a universal interaction.** This paper only supplies the target of comparison.
+3. **The derivation of new physical laws or constants.** All inputs are known values (§2.1).
+4. **Hydrogen levels including QED and nuclear size.** Apart from the 0.12 MHz of 1S, every mismatch equals the size of the omitted QED and nuclear-size terms (§3.3). Gravity beyond 2PN is not included.
+5. **H₂ levels including nonadiabatic, relativistic and QED corrections.** The levels differ from the fully corrected values by −0.3 to +4.6 cm⁻¹ and (14,4) is not bound. $\Theta(R)$ is the 1998 value, and the A coefficients of strong lines differ by up to 6 %.
+6. **The triplet channel and electronically excited states of H₂.** b³Σu⁺ (repulsive, 3/4 of electron spin) and the Lyman and Werner bands are not included.
+7. **A quantum theory of electron–electron bremsstrahlung.** At $\eta\approx3.5$ the classical spectrum is a guide; no Gaunt factor is included.
+8. **A complete account of inter-atomic gravity.** Only the point-mass Newtonian term; the electron cross terms and 1PN are not included (§5.7).
+9. **The actual axis of the absorber quadrupole.** $a_2=4\times10^{-6}$ is a guide value from the COBE $Q_{\rm rms}$ and is placed on the same axis as the dipole.
+10. **The widths of the radiative-association resonances.** The box discretization does not resolve the widths of shape resonances. The (14,4) resonance disappears when the nonadiabatic correction is included.
+11. **A physical derivation of the cell number $N=10^{60}$.** It was placed as a value sufficiently above the saturation lower limit $1.5\times10^{34}$ and below the area-law upper limit $4\pi(R_H/l_P)^2\approx7\times10^{122}$. The value does not appear in the record.
+12. **The identification of the absorber with the cosmological horizon, and the premise of complete absorption.** The identification of §6.5 is an interpretation; the computation was done with a static absorber of one temperature. Complete absorption is a condition placed, not a fact established by measurement. The separation of the past background from the future absorption and the change of temperature by expansion are not included.
+13. **Correlations of the record.** The record of this paper is intensities (first order) only; $g^{(1)}$, $g^{(2)}$, the polarization correlation of two-photon pairs and quantum beats were not computed.
+
+---
+
+# 8. Reproducibility
+
+All programs, data and figures are in the GitHub repository ai-chat-logs-open under `匿名頂点状態生成幾何-匿名内部観測者から不変な関係量の体系/Grok移行実験/`; each folder regenerates its set with `run_all.sh` and carries a `SHA256SUMS`. The same files are included in the Zenodo record.
+
+| Folder | Contents | Reproduction |
+|--------------------|------------------------------|------------|
+| `exchange_rel_20261005/` | the fixed hydrogen set: `exchange_cascade.py` (levels, A coefficients, master equation), three checks (`coulomb_levels_check.py`, `gravity_levels_check.py`, `rates_check.py`), the tables `structure_tables.py`, the structure document `プログラム構造_ja_20261006.md`, the gravity survey `重力項目_調査と修正_ja_20261005.md`, the diff from the original `CHANGES_vs_original.diff` | `run_all.sh`, SHA 16 files |
+| `exchange_general_20261006/` | the sign-input numerical solver `two_body_general.py` (ep / ee / pp), the control `control_general_vs_closed_form.py`, scattering `scattering_same_sign.py`, the three absorber layers `absorber_temperature.py`, `absorber_direction_recoil.py`, `absorber_alignment.py` | `run_all.sh`, SHA 19 files |
+| `exchange_engine_20261006/` | the common engine `engine.py`, the hydrogen component with its regression test, the H₂ component `system_h2.py`, validation `validation_h2.py`, runs `run_h2.py`, radiative association `radiative_association_h2.py`, literature data `h2_data/` (sources and SHA of the downloaded files in `SOURCES.md`), JSON for the figures | `run_all.sh` (about 5 min), SHA 29 files |
+| `figures_paper_20261006/` | the 15 figures of this paper, `make_figures.py`, the plotted numbers `data/*.json` | `run_all.sh`, SHA 29 files |
+
+Main checks: the regression of the engine version against the fixed hydrogen set (difference of the emission 13.054539268 eV $-3.6\times10^{-15}$; differences of generator, dwell times and final state 0), the control of the fixed set against the numerical solver (§3.6), the comparison of H₂ with literature (§5.3), the box independence and the round-trip time of the radiative association (§5.6), and energy conservation (total emission $=E_{\rm init}-E_{\rm final}$, difference $\le10^{-14}$ eV).
+
+Random sequences: `default_rng(7)` for the layer-1 ensemble, `default_rng(20261006)` for the one-atom history, `default_rng(11)` for layer 1 of H₂. Environment: Python 3.9, numpy 2.0.2, scipy, matplotlib. On macOS with Accelerate, `@` on matrices of 50×50 or larger emits a false warning, so `np.dot` is used. The distribution site of H2SPECTRE 7.4 has an expired certificate, and the archive contains duplicated hard links, so only the regular files were extracted with Python's tarfile. Running heavy computations in parallel makes Accelerate contend for all cores and slows them down by more than a factor of ten.
+
+Every number in this paper is transcribed as it stands from the values written in `audit*.txt`, `*.md` and `*.json` of these folders.
+
+---
+
+# 9. Record of AI involvement
+
+- **Grok** (2026-10-05): the first program of the multistep emission of the hydrogen atom (a series cascade). The present set started from a copy of it and replaced the Coulomb levels with Dirac–Coulomb plus recoil, gravity with the 1PN of general relativity, and the dynamics with the master equation of Einstein A coefficients. Grok's rates ($\propto\Delta E$), spin terms, rate feedback and the $n\to n-1$ constraint were all removed. The diff is `CHANGES_vs_original.diff`.
+- **ChatGPT** (2026-09-30 to 10-01): the Einstein–Maxwell complete specification (v1.0–v3.1) that preceded this paper. Not used here.
+- **Claude** (2026-10-05 to 07): the above corrections and implementation, the numerical solver, scattering, the three layers, the engine, H₂, radiative association, the figures and the drafting of this paper. Design and judgement are the author's.
+
+---
+
+# 10. Conclusion
+
+A program was built that computes the emission record standard theory gives for two-body systems, holding neither a coordinate grid nor a metric of a background spacetime and referenced only to the rest frame of an absorber at infinity, and it was run on four systems: the hydrogen atom, electron–electron, proton–proton and the hydrogen molecule. The hydrogen atom agrees with external measurements to the precision that excludes QED and nuclear size, and the hydrogen molecule agrees with the literature A coefficients to $10^{-3}$. Same-sign pairs have no bound levels, and only the Mott cross section and quadrupole bremsstrahlung remain in the record. The temperature, direction and velocity, and anisotropy of the absorber enter the record each in a different way; in the 21 cm line of the hydrogen atom the temperature of the absorber can be read, in H₂ it cannot. In every system gravity appears only at $10^{-31}$–$10^{-38}$ of the levels and as $10^{-35}$–$10^{-48}$ eV of gravitational waves.
+
+This record is the reference that a future distribution-array operation must reproduce.
+
+---
+
+# Appendix A. States and edges of the hydrogen set
+
+50 levels ($n\le5$, $(n,\ell,s_e,s_p)$), initial 5p₃/₂ F=1. Edges: E1 320, E2 376, GW 376, M1 59, two-photon 2, in total 1133. The full tables of levels, edges, emission and widths are in `exchange_rel_20261005/structure_tables.md` (Tables A–F), and the correspondence between formulas and code is in `プログラム構造_ja_20261006.md`.
+
+# Appendix B. Formulas of the absorber layers
+
+- Doppler: $\delta=\omega_{\rm lab}/\omega'-1=\dfrac{\beta n_\parallel\gamma-(\gamma-1)}{\gamma(1-\beta n_\parallel)}$ (without cancellation).
+- Recoil: exact two-body kinematics in the rest frame, emission $\hbar\omega'=\Delta E(1-\Delta E/2Mc^2)$, absorption $\Delta E(1+\Delta E/2M_fc^2)$. $\vec v$ is updated from the momentum $\vec P\to\vec P\mp(\hbar\omega_{\rm lab}/c)\hat n$ and the energy $E\to E\mp\hbar\omega_{\rm lab}$.
+- Angular patterns $P_q(\theta)$ of layer 3: for $k=1$, $q=0$: $(3/8\pi)\sin^2\theta$, $q=\pm1$: $(3/16\pi)(1+\cos^2\theta)$. For $k=2$, $q=0$: $(15/8\pi)\sin^2\theta\cos^2\theta$, $|q|=1$: $(5/16\pi)(1-3\cos^2\theta+4\cos^4\theta)$, $|q|=2$: $(5/16\pi)(1-\cos^4\theta)$.
+- Occupation number by type $\langle\bar n\rangle_q=\int\bar n(\omega,T(\hat n))P_q\,d\Omega$; steady sublevels $p_m\propto\langle\bar n\rangle_q/(1+\langle\bar n\rangle_q)$.
+
+# Appendix C. List of figures
+
+| Fig. | File |
+|--|--------------------------------------------------------------|
+| 1 | `figures/fig01_H_levels_cascade.png` |
+| 2 | `figures/fig02_H_spectrum_widths.png` |
+| 3 | `figures/fig03_H_time_evolution.png` |
+| 4 | `figures/fig04_H_layer2_temperature.png` |
+| 5 | `figures/fig05_H_layer1_doppler_recoil.png` |
+| 6 | `figures/fig06_H_layer3_alignment.png` |
+| 7 | `figures/fig07_ee_pp_mott.png` |
+| 8 | `figures/fig08_ee_pp_bremsstrahlung.png` |
+| 9 | `figures/fig09_H2_levels_cascades.png` |
+| 10 | `figures/fig10_H2_cascade_spectra.png` |
+| 11 | `figures/fig11_H2_validation.png` |
+| 12 | `figures/fig12_H2_radiative_association.png` |
+| 13 | `figures/fig13_H2_layer1_doppler.png` |
+| 14 | `figures/fig14_H2_layer3_polarization.png` |
+| 15 | `figures/fig15_H2_gravity_accounting.png` |
+| 16 | `figures/fig16_lightcone_absorber.png` (schematic, `figures/make_fig16_lightcone.py`) |
+
+Figures 1–15 are generated by `Grok移行実験/figures_paper_20261006/make_figures.py`, and the plotted numbers are in `data/*.json` of that folder. Figure 16 is a schematic drawn by `figures/make_fig16_lightcone.py` in this folder and has no data behind it.
+
+---
+
+# References
+
+## This research series
+
+[S1] N. Kihara, **Designing a Research Project to Explore the Emergence of Spacetime, Particles, and Interactions from States and Relations: A Framework of Preliminary Design and Feasibility Verification for Foundational-Physics Model Exploration under Uncertainty** (Paper 0, the design document). Concept DOI: 10.5281/zenodo.22851944.
+
+[S2] N. Kihara, **The Sixth Thought Experiment: Can Two Kinds of Long-Range Interaction Be Internalized into a Single Closed State Map? - Reconstructing Gravity, Coulomb, GW-Quadrupole and EM-Dipole Radiation of a Charged Quasi-Circular Binary with Eight Persistent States, and Verifying the Transferability of the Same Transition over Five Conditions**, v1.1 (2026-09-26). Concept DOI: 10.5281/zenodo.22974631; Version DOI: 10.5281/zenodo.22974632.
+
+[S3] N. Kihara, **Supplement to the Sixth Thought Experiment: Does the State Generation Change When the Normalization Reference Is Changed from Mass to a Charge Unit? - A Restricted Renormalization from G=M=c=1 to G=q₀=c=1, and an Exact-Match Verification of the Initial States of the Five Stored Conditions**, v1.0 (2026-09-27). Concept DOI: 10.5281/zenodo.22985299; Version DOI: 10.5281/zenodo.22985300.
+
+[S4] N. Kihara, **Composition of Central Projection and the Closed Form of the Composite Curvature Radius: An Algebraic Formulation of High-Dimensional Reduction via One Central Projection and Commutative Cuts on the Sphere**, v1 (2026-05-07). Concept DOI: 10.5281/zenodo.20060728; Version DOI: 10.5281/zenodo.20060729.
+
+[S5] N. Kihara, **Radial Projection: Definition and Relation to Central Projection**, v3.3 (2026-06-06). Concept DOI: 10.5281/zenodo.20462569; Version DOI: 10.5281/zenodo.20567347.
+
+Records of thought experiments 7–10 and of the Einstein–Maxwell discrete variation (unpublished): the folders `第七思考実験_自己相互作用_aa_bb_20260927/`, `第八思考実験_aa_ab_bb_交差結合仮定探索_20260927/`, `第九思考実験_倍音干渉による有限履歴読出し_20260929/`, `第十思考実験_EM自己無撞着有限履歴_LW_LAD_20260929/` of the same repository.
+
+## External literature
+
+[1] P. J. Mohr, D. B. Newell, B. N. Taylor, E. Tiesinga, CODATA recommended values of the fundamental physical constants: 2022, Rev. Mod. Phys. 97, 025002 (2025).
+
+[2] E. Tiesinga, P. J. Mohr, D. B. Newell, B. N. Taylor, CODATA recommended values of the fundamental physical constants: 2018, Rev. Mod. Phys. 93, 025010 (2021).
+
+[3] P. J. Mohr, B. N. Taylor, D. B. Newell, CODATA recommended values of the fundamental physical constants: 2010, Rev. Mod. Phys. 84, 1527 (2012).
+
+[4] P. A. M. Dirac, The quantum theory of the electron, Proc. R. Soc. London A 117, 610 (1928).
+
+[5] A. Sommerfeld, Zur Quantentheorie der Spektrallinien, Ann. Phys. 51, 1 (1916).
+
+[6] W. A. Barker, F. N. Glover, Reduction of relativistic two-particle wave equations to approximate forms. III, Phys. Rev. 99, 317 (1955).
+
+[7] G. Breit, Possible effects of nuclear spin on X-ray terms, Phys. Rev. 35, 1447 (1930).
+
+[8] E. E. Salpeter, Mass corrections to the fine structure of hydrogen-like atoms, Phys. Rev. 87, 328 (1952).
+
+[9] G. W. Erickson, Energy levels of one-electron atoms, J. Phys. Chem. Ref. Data 6, 831 (1977).
+
+[10] J. R. Sapirstein, D. R. Yennie, Theory of hydrogenic bound states, in Quantum Electrodynamics, ed. T. Kinoshita (World Scientific, Singapore, 1990), p. 560.
+
+[11] K. Pachucki, H. Grotch, Pure recoil corrections to hydrogen energy levels, Phys. Rev. A 51, 1854 (1995).
+
+[12] M. I. Eides, H. Grotch, Recoil corrections of order (Zα)⁶(m/M)m to the hydrogen energy levels, Phys. Rev. A 55, 3351 (1997).
+
+[13] E. A. Golosov, I. B. Khriplovich, A. I. Milstein, A. S. Yelkhovsky, Order α⁴(m/M)R∞ corrections to hydrogen P levels, JETP 80, 208 (1995).
+
+[14] U. Jentschura, K. Pachucki, Higher-order binding corrections to the Lamb shift of 2P states, Phys. Rev. A 54, 1853 (1996).
+
+[15] K. Pachucki, S. G. Karshenboim, Higher order recoil corrections to energy levels of two-body systems, Phys. Rev. A 60, 2792 (1999).
+
+[16] K. Melnikov, A. Yelkhovsky, O(mα⁷ln²α) corrections to positronium energy levels, Phys. Lett. B 458, 143 (1999).
+
+[17] G. W. F. Drake, R. A. Swainson, Bethe logarithms for hydrogen up to n = 20, and approximations for two-electron atoms, Phys. Rev. A 41, 1243 (1990).
+
+[18] U. D. Jentschura, P. J. Mohr, Calculation of hydrogenic Bethe logarithms for Rydberg states, Phys. Rev. A 72, 012110 (2005).
+
+[19] M. I. Eides, H. Grotch, V. A. Shelyuto, Theory of light hydrogenlike atoms, Phys. Rep. 342, 63 (2001).
+
+[20] E. Fermi, Über die magnetischen Momente der Atomkerne, Z. Phys. 60, 320 (1930).
+
+[21] A. Einstein, L. Infeld, B. Hoffmann, The gravitational equations and the problem of motion, Ann. Math. 39, 65 (1938).
+
+[22] B. M. Barker, R. F. O'Connell, Gravitational two-body problem with arbitrary masses, spins, and quadrupole moments, Phys. Rev. D 12, 329 (1975).
+
+[23] Yu. N. Obukhov, Spin, gravity, and inertia, Phys. Rev. Lett. 86, 192 (2001).
+
+[24] L. L. Foldy, S. A. Wouthuysen, On the Dirac theory of spin 1/2 particles and its non-relativistic limit, Phys. Rev. 78, 29 (1950).
+
+[25] M. Khalil, N. Sennett, J. Steinhoff, J. Vines, A. Buonanno, Hairy binary black holes in Einstein-Maxwell-dilaton theory and their effective-one-body description, Phys. Rev. D 98, 104010 (2018).
+
+[26] P. K. Gupta, Binary dynamics from Einstein-Maxwell theory at second post-Newtonian order using effective field theory, Phys. Rev. D 112, 104047 (2025); arXiv:2205.11591.
+
+[27] L. D. Landau, E. M. Lifshitz, The Classical Theory of Fields, 4th ed. (Butterworth-Heinemann, Oxford, 1975), §71, §110.
+
+[28] A. Einstein, Zur Quantentheorie der Strahlung, Phys. Z. 18, 121 (1917).
+
+[29] I. I. Sobelman, Atomic Spectra and Radiative Transitions, 2nd ed. (Springer, Berlin, 1992).
+
+[30] A. R. Edmonds, Angular Momentum in Quantum Mechanics (Princeton University Press, Princeton, 1957).
+
+[31] G. Racah, Theory of complex spectra. II, Phys. Rev. 62, 438 (1942).
+
+[32] G. Breit, E. Teller, Metastability of hydrogen and helium levels, Astrophys. J. 91, 215 (1940).
+
+[33] S. P. Goldman, Generalized Laguerre representation: Application to relativistic two-photon decay rates, Phys. Rev. A 40, 1185 (1989).
+
+[34] W. R. Johnson, Radiative decay rates of metastable one-electron atoms, Phys. Rev. Lett. 29, 1123 (1972).
+
+[35] A. Kramida, Yu. Ralchenko, J. Reader, NIST ASD Team, NIST Atomic Spectra Database (ver. 5.12), https://physics.nist.gov/asd (accessed October 2026).
+
+[36] W. L. Wiese, J. R. Fuhr, Accurate atomic transition probabilities for hydrogen, helium, and lithium, J. Phys. Chem. Ref. Data 38, 565 (2009).
+
+[37] A. E. Kramida, A critical compilation of experimental data on spectral lines and energy levels of hydrogen, deuterium, and tritium, At. Data Nucl. Data Tables 96, 586 (2010).
+
+[38] E. W. Hagley, F. M. Pipkin, Separated oscillatory field measurement of hydrogen 2S₁/₂–2P₃/₂ fine structure interval, Phys. Rev. Lett. 72, 1172 (1994).
+
+[39] C. G. Parthey et al., Improved measurement of the hydrogen 1S–2S transition frequency, Phys. Rev. Lett. 107, 203001 (2011).
+
+[40] L. Essen, R. W. Donaldson, M. J. Bangham, E. G. Hope, Frequency of the hydrogen maser, Nature 229, 110 (1971).
+
+[41] D. J. Fixsen, The temperature of the cosmic microwave background, Astrophys. J. 707, 916 (2009).
+
+[42] Planck Collaboration, Planck 2018 results. I. Overview and the cosmological legacy of Planck, Astron. Astrophys. 641, A1 (2020).
+
+[43] C. L. Bennett et al., Four-year COBE DMR cosmic microwave background observations: Maps and basic results, Astrophys. J. 464, L1 (1996).
+
+[44] N. F. Mott, The collision between two electrons, Proc. R. Soc. London A 126, 259 (1930).
+
+[45] E. Rutherford, The scattering of α and β particles by matter and the structure of the atom, Philos. Mag. 21, 669 (1911).
+
+[46] K. Pachucki, Born-Oppenheimer potential for H₂, Phys. Rev. A 82, 032509 (2010).
+
+[47] J. Komasa, M. Puchalski, P. Czachorowski, G. Łach, K. Pachucki, Rovibrational energy levels of the hydrogen molecule through nonadiabatic perturbation theory, Phys. Rev. A 100, 032519 (2019); H2SPECTRE ver. 7.4 (2022), https://qcg.home.amu.edu.pl/H2Spectre.html.
+
+[48] K. Pachucki, J. Komasa, Accurate adiabatic correction in the hydrogen molecule, J. Chem. Phys. 141, 224103 (2014).
+
+[49] L. Wolniewicz, I. Simbotin, A. Dalgarno, Quadrupole transition probabilities for the excited rovibrational states of H₂, Astrophys. J. Suppl. Ser. 115, 293 (1998).
+
+[50] K. Pachucki, J. Komasa, Magnetic dipole transitions in the hydrogen molecule, Phys. Rev. A 83, 032501 (2011).
+
+[51] E. Roueff, H. Abgrall, P. Czachorowski, K. Pachucki, M. Puchalski, J. Komasa, The full infrared spectrum of molecular hydrogen, Astron. Astrophys. 630, A58 (2019); CDS J/A+A/630/A58.
+
+[52] K. Pachucki, J. Komasa, Nonadiabatic rotational states of the hydrogen molecule, Phys. Chem. Chem. Phys. 20, 247 (2018).
+
+[53] K. T. Tang, J. P. Toennies, An improved simple model for the van der Waals potential based on universal damping functions for the dispersion coefficients, J. Chem. Phys. 80, 3726 (1984).
+
+[54] Z.-C. Yan, J. F. Babb, A. Dalgarno, G. W. F. Drake, Variational calculations of dispersion coefficients for interactions among H, He, and Li atoms, Phys. Rev. A 54, 2824 (1996).
+
+[55] D. T. Colbert, W. H. Miller, A novel discrete variable representation for quantum mechanical reactive scattering via the S-matrix Kohn method, J. Chem. Phys. 96, 1982 (1992).
+
+[56] W. Kołos, L. Wolniewicz, Potential-energy curves for the X¹Σg⁺, b³Σu⁺, and C¹Πu states of the hydrogen molecule, J. Chem. Phys. 43, 2429 (1965).
+
+[57] E. P. Wigner, On the behavior of cross sections near thresholds, Phys. Rev. 73, 1002 (1948).
+
+[58] J. A. Wheeler, R. P. Feynman, Interaction with the absorber as the mechanism of radiation, Rev. Mod. Phys. 17, 157 (1945).
+
+[59] R. B. Partridge, Absorber theory of radiation and the future of the universe, Nature 244, 263 (1973).
+
+[60] R. Arnowitt, S. Deser, C. W. Misner, The dynamics of general relativity, in Gravitation: An Introduction to Current Research, ed. L. Witten (Wiley, New York, 1962).
+
+[61] H. Bondi, M. G. J. van der Burg, A. W. K. Metzner, Gravitational waves in general relativity. VII. Waves from axi-symmetric isolated systems, Proc. R. Soc. London A 269, 21 (1962).
+
+[62] W. Perrie, A. J. Duncan, H. J. Beyer, H. Kleinpoppen, Polarization correlation of the two photons emitted by metastable atomic deuterium: A test of Bell's inequality, Phys. Rev. Lett. 54, 1790 (1985).
+
+[63] W. Heisenberg, Die „beobachtbaren Größen" in der Theorie der Elementarteilchen, Z. Phys. 120, 513 (1943).
+
+[64] J. E. Hogarth, Cosmological considerations of the absorber theory of radiation, Proc. R. Soc. London A 267, 365 (1962).
+
+[65] F. Hoyle, J. V. Narlikar, Time symmetric electrodynamics and the arrow of time in cosmology, Proc. R. Soc. London A 277, 1 (1964).
+
+[66] G. W. Gibbons, S. W. Hawking, Cosmological event horizons, thermodynamics, and particle creation, Phys. Rev. D 15, 2738 (1977).
+
+[67] P. C. W. Davies, Extension of Wheeler-Feynman quantum theory to the relativistic domain. I. Scattering processes, J. Phys. A 4, 836 (1971); II. Emission processes, J. Phys. A 5, 1025 (1972).
+
+[68] D. T. Pegg, Absorber theory of radiation, Rep. Prog. Phys. 38, 1339 (1975).
+
+---
+
+# Revision history
+
+- v1.0 (2026-10-07): first version. Translated from the Japanese original of the same date.

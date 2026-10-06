@@ -1,10 +1,10 @@
-# 背景時空を置かない二体系の放出記録
+# 第十一思考実験：背景時空を置かない二体系の放出記録
 ## ― 標準理論（Dirac–Coulomb 束縛状態・1PN 二体重力・Einstein の A 係数）を無限遠の吸収体の静止系だけを基準に数値計算し、水素原子・電子–電子・陽子–陽子・水素分子の 4 系で放出と吸収の関係量を読み出す ―
 
 **著者:** 木原範昭 (Noriaki Kihara)  
 **ORCID:** 0009-0004-6753-4020  
-**Version DOI:** （Zenodo 公開時に発番）  
-**Concept DOI:** （Zenodo 公開時に発番）  
+**Version DOI:** 10.5281/zenodo.23199300  
+**Concept DOI:** 10.5281/zenodo.23199299  
 **版:** v1.0  
 **日付:** 2026-10-07  
 **関連論文:** 設計書（第 0 論文）[S1]、第六思考実験 v1.1 [S2]、同 補遺 [S3]、中心投影合成演算 [S4]、球面投影 [S5]（いずれも references。本稿は別系列）
@@ -153,7 +153,10 @@ $$
 全ての下向きの対について Einstein の A 係数を計算する。
 
 $$
-A_{E1}=\frac{4\alpha\omega^3}{3c^2}\,|\langle n'\ell'|r|n\ell\rangle|^2\frac{\ell_>}{2\ell+1}\,\mathcal R_1,\qquad
+A_{E1}=\frac{4\alpha\omega^3}{3c^2}\,|\langle n'\ell'|r|n\ell\rangle|^2\frac{\ell_>}{2\ell+1}\,\mathcal R_1,
+$$
+
+$$
 A_{E2}=\frac{\alpha\omega^5}{15c^4}\,|\langle r^2\rangle|^2(2\ell'+1)\begin{pmatrix}\ell&2&\ell'\\0&0&0\end{pmatrix}^2\mathcal R_2
 $$
 
@@ -268,7 +271,13 @@ $$
 | 重力／Coulomb、重力波／電気四重極 $4Gm^2/q^2$ | $2.401\times10^{-43}$、$9.602\times10^{-43}$ | $8.094\times10^{-37}$、$3.237\times10^{-36}$ |
 | Mott $d\sigma/d\Omega$（90°）、区別できる粒子の両方を数えた値 | 1.7521、3.5041 nm²/sr | 1.7521、3.5041 nm²/sr |
 
-Coulomb の厳密な振幅 $f(\theta)=-(\eta/2k\sin^2(\theta/2))\exp[-i\eta\ln\sin^2(\theta/2)+2i\sigma_0]$ を同種スピン ½ 非偏極で対称化した Mott 断面積 [44]
+Coulomb の厳密な振幅
+
+$$
+f(\theta)=-\frac{\eta}{2k\sin^2(\theta/2)}\exp\!\left[-i\eta\ln\sin^2(\theta/2)+2i\sigma_0\right]
+$$
+
+を同種スピン ½ 非偏極で対称化した Mott 断面積 [44]
 
 $$
 \frac{d\sigma}{d\Omega}=\left(\frac{\eta}{2k}\right)^2\left[\frac{1}{\sin^4(\theta/2)}+\frac{1}{\cos^4(\theta/2)}-\frac{\cos(\eta\ln\tan^2(\theta/2))}{\sin^2(\theta/2)\cos^2(\theta/2)}\right]
@@ -318,7 +327,10 @@ $E_{\rm el}$ は Pachucki の BO ポテンシャル [46]（R = 0.1–20 bohr の
 原子単位（$\hbar=m_e=e=1$、$c=1/\alpha$）で
 
 $$
-A_{E2}=\frac{\alpha^5\omega^5}{15}(2J_f+1)\begin{pmatrix}J_i&2&J_f\\0&0&0\end{pmatrix}^2|\langle f_f|\Theta|f_i\rangle|^2,\qquad
+A_{E2}=\frac{\alpha^5\omega^5}{15}(2J_f+1)\begin{pmatrix}J_i&2&J_f\\0&0&0\end{pmatrix}^2|\langle f_f|\Theta|f_i\rangle|^2,
+$$
+
+$$
 A_{M1}=\frac{\alpha^5\omega^3}{3}\left(\frac{m_e}{m_p}\right)^2J(J+1)|\langle f_f|g|f_i\rangle|^2
 $$
 
@@ -452,7 +464,7 @@ Maxwell–Boltzmann の熱平均 $k(T)$ は 10 K $2.4\times10^{-29}$、100 K $3.
 
 本稿の生成子に場の自由度は無い。静的な場は固有値問題に、放射場は Einstein の A 係数に畳み込まれ、光子は放出の瞬間に無限遠の吸収体へ消える。場の時間発展が記録に残す分は、本稿が実測とずれている量そのものである：1S の 8170 MHz と 2S–2P₁/₂ の 1057.85 MHz（Lamb シフト）、超微細と 21 cm の因子 0.9989・0.9944（$g_e-2$）。古典的に場を時間発展させると定常状態が無く崩壊する（§1.2 の第十思考実験）ので、記録の「基底状態は放射しない」には場の時間発展と離散的なロックの両方が要る。本稿はその両方を持つ生成子が再現すべき記録を与える。
 
-場の状態を実体とみなす立場と、無限遠の記録を実体とみなす立場は、放射の部分については同じことを別の言葉で言っている（§2.5）。両者が同じ予言を与えるのは吸収体が完全なときで、Wheeler–Feynman の吸収体理論 [58] が Maxwell の放射反作用と一致する条件、直接作用型の量子電磁力学 [67] が通常の量子電磁力学と一致する条件がそれである。吸収が不完全なら両者は異なる予言をし、Partridge [59] は放射パワーの方向依存を $10^{-6}$ の精度で探して見つけなかった。本稿の前提（全天を覆う完全吸収体）は、この実測に支えられている。
+場の状態を実体とみなす立場と、無限遠の記録を実体とみなす立場は、放射の部分については同じことを別の言葉で言っている（§2.5）。両者が同じ予言を与えるのは吸収体が完全なときで、Wheeler–Feynman の吸収体理論 [58] が Maxwell の放射反作用と一致する条件、直接作用型の量子電磁力学 [67] が通常の量子電磁力学と一致する条件がそれである。吸収が不完全なら両者は異なる予言をする。Partridge [59] は放射パワーの方向依存を探して見つけなかったが、Pegg [68] らは地球自体が吸収体になるため零結果は必然だったと論じており、この実験は宇宙規模の吸収が完全かどうかを決めていない。本稿の前提（全天を覆う完全吸収体）は実測で確定したものではなく、Hogarth・Hoyle–Narlikar の宇宙論的な条件として置いたものである。
 
 吸収体の物理的な対応物は宇宙論的な事象の地平線で、その静止系は背景放射の静止系である。Hogarth [64] と Hoyle–Narlikar [65] は、放射が完全に吸収されるかを宇宙の未来の構造で論じた。加速膨張する宇宙の地平線（半径 $c/H_0\approx4.4$ Gpc）は内側から見れば全方向を覆う完全吸収体で、その面積を Planck 単位で測った $4\pi(R_H/l_P)^2\approx7\times10^{122}$（de Sitter エントロピー [66]）が §2.2 の要素数 $N$ の上限である。本稿は入射する背景（過去円錐、2.7255 K）と吸収（未来円錐、地平線の温度 $\hbar H_0/2\pi k\approx2\times10^{-30}$ K）を一つの温度の熱浴にまとめている。これは実験の時間が膨張時間より短い近似で、$t_{\max}=10^{17}$ s（30 億年）の走行では背景の温度が 2 割変わるので、厳密には破れている。
 
@@ -482,7 +494,7 @@ Maxwell–Boltzmann の熱平均 $k(T)$ は 10 K $2.4\times10^{-29}$、100 K $3.
 9. **吸収体の四重極の実際の軸。** $a_2=4\times10^{-6}$ は COBE の $Q_{\rm rms}$ からの目安で、双極子と同じ軸に置いた。
 10. **放射会合の共鳴の幅。** 箱の離散化は形状共鳴の幅を解像しない。(14,4) 共鳴は非断熱補正を入れれば消える。
 11. **吸収体の要素数 $N=10^{60}$ の物理的な導出。** 飽和の下限 $1.5\times10^{34}$ より十分大きく、面積則の上限 $4\pi(R_H/l_P)^2\approx7\times10^{122}$ より小さい値として置いた。値は記録に現れない。
-12. **吸収体と宇宙論的地平線の同定。** §6.5 の同定は解釈であり、計算は静的な一温度の吸収体で行った。過去の背景と未来の吸収の分離、膨張による温度変化は入れていない。
+12. **吸収体と宇宙論的地平線の同定、完全吸収の前提。** §6.5 の同定は解釈であり、計算は静的な一温度の吸収体で行った。完全吸収は実測で確定した事実ではなく置いた条件である。過去の背景と未来の吸収の分離、膨張による温度変化は入れていない。
 13. **記録の相関。** 本稿の記録は強度（一次）だけで、$g^{(1)}$・$g^{(2)}$・二光子対の偏光相関・量子ビートは計算していない。
 
 ---
@@ -492,9 +504,9 @@ Maxwell–Boltzmann の熱平均 $k(T)$ は 10 K $2.4\times10^{-29}$、100 K $3.
 全プログラム・データ・図は GitHub リポジトリ ai-chat-logs-open の `匿名頂点状態生成幾何-匿名内部観測者から不変な関係量の体系/Grok移行実験/` にあり、各フォルダは `run_all.sh` で一式を再生成し、`SHA256SUMS` を持つ。Zenodo には同じファイルを同梱する。
 
 | フォルダ | 内容 | 再現 |
-|---|---|---|
+|--------------------|------------------------------|------------|
 | `exchange_rel_20261005/` | 水素原子の固定一式：`exchange_cascade.py`（準位・A 係数・マスター方程式）、検算 3 本（`coulomb_levels_check.py`、`gravity_levels_check.py`、`rates_check.py`）、付表 `structure_tables.py`、構造文書 `プログラム構造_ja_20261006.md`、重力の調査 `重力項目_調査と修正_ja_20261005.md`、原本との差分 `CHANGES_vs_original.diff` | `run_all.sh`、SHA 16 ファイル |
-| `exchange_general_20261006/` | 符号を入力にした数値解法 `two_body_general.py`（ep／ee／pp）、対照 `control_general_vs_closed_form.py`、散乱 `scattering_same_sign.py`、吸収体の三層 `absorber_temperature.py`・`absorber_direction_recoil.py`・`absorber_alignment.py` | `run_all.sh`、SHA 19 ファイル |
+| `exchange_general_20261006/` | 符号を入力にした数値解法 `two_body_general.py`（ep／ee／pp）、対照 `control_general_vs_closed_form.py`、散乱 `scattering_same_sign.py`、吸収体の三層 `absorber_temperature.py`、`absorber_direction_recoil.py`、`absorber_alignment.py` | `run_all.sh`、SHA 19 ファイル |
 | `exchange_engine_20261006/` | 共通エンジン `engine.py`、水素の部品と回帰テスト、H₂ の部品 `system_h2.py`、検証 `validation_h2.py`、走行 `run_h2.py`、放射会合 `radiative_association_h2.py`、文献データ `h2_data/`（出典と取得物の SHA は `SOURCES.md`）、図化用 JSON | `run_all.sh`（約 5 分）、SHA 29 ファイル |
 | `figures_paper_20261006/` | 本稿の図 15 枚 `make_figures.py`、描いた数値 `data/*.json` | `run_all.sh`、SHA 29 ファイル |
 
@@ -536,7 +548,7 @@ Maxwell–Boltzmann の熱平均 $k(T)$ は 10 K $2.4\times10^{-29}$、100 K $3.
 # 付録 C. 図一覧
 
 | 図 | ファイル |
-|---|---|
+|--|--------------------------------------------------------------|
 | 1 | `figures/fig01_H_levels_cascade.png` |
 | 2 | `figures/fig02_H_spectrum_widths.png` |
 | 3 | `figures/fig03_H_time_evolution.png` |
@@ -709,6 +721,8 @@ Maxwell–Boltzmann の熱平均 $k(T)$ は 10 K $2.4\times10^{-29}$、100 K $3.
 [66] G. W. Gibbons, S. W. Hawking, Cosmological event horizons, thermodynamics, and particle creation, Phys. Rev. D 15, 2738 (1977).
 
 [67] P. C. W. Davies, Extension of Wheeler-Feynman quantum theory to the relativistic domain. I. Scattering processes, J. Phys. A 4, 836 (1971); II. Emission processes, J. Phys. A 5, 1025 (1972).
+
+[68] D. T. Pegg, Absorber theory of radiation, Rep. Prog. Phys. 38, 1339 (1975).
 
 ---
 
