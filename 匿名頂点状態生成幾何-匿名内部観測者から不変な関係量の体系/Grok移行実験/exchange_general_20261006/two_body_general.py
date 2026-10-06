@@ -343,22 +343,56 @@ def run_master(levels, ed, ETOT, init_label=(5, 1, 1, -1), t_max=1.0e17, n_times
     return dict(R=R, tau=tau, p_inf=p_inf, p0=p0, flux_E=flux_E, times=times, hist=sol.y.T, idx=idx, absorbing=absb)
 
 
+# ---------- 粒子対の指定 ----------
+# 電荷は q₀ = e/3 単位、質量は m_e 単位。ep が水素（固定一式と同じ）。ee、pp は同符号。
+PAIRS = {
+    "ep": dict(q_a=-3.0, m_a=1.0, q_b=+3.0, m_b=MU_P, name="電子–陽子（水素）"),
+    "ee": dict(q_a=-3.0, m_a=1.0, q_b=-3.0, m_b=1.0, name="電子–電子"),
+    "pp": dict(q_a=+3.0, m_a=MU_P, q_b=+3.0, m_b=MU_P, name="陽子–陽子"),
+}
+
+
+def pair_couplings(p):
+    """対の結合定数。クーロン q_aq_b/(ħc) = (q_aq_b/9)α、重力 G m_a m_b/(ħc) = α_G (m_a m_b/m_e²)。
+    正味のポテンシャル V(r) = [(q_aq_b/9)α − α_G m_a m_b] ħc/r。係数が正なら斥力で、どの r でも V > 0、束縛状態は存在しない
+    （斥力のみのポテンシャルに束縛状態が無いのは厳密）。"""
+    coul = (p["q_a"] * p["q_b"] / 9.0) * ALPHA
+    grav = X.ALPHA_G * p["m_a"] * p["m_b"]
+    mu = p["m_a"] * p["m_b"] / (p["m_a"] + p["m_b"])
+    return dict(coul=coul, grav=grav, net=coul - grav, sign=np.sign(coul - grav), mu=mu, M=p["m_a"] + p["m_b"],
+                g_ratio=grav / abs(coul), w_gw_identical=4.0 * grav / abs(coul))
+
+
 def main():
     import time
     global SIGN
-    if len(sys.argv) > 1:
-        SIGN = float(sys.argv[1])          # 例：python3 two_body_general.py +1（斥力）、−1（引力、既定）
-    tag = "attract" if SIGN < 0 else "repel"
+    pair = sys.argv[1] if len(sys.argv) > 1 else "ep"      # 例：python3 two_body_general.py ee
+    if pair not in PAIRS:
+        raise SystemExit("pair は ep / ee / pp")
+    p = PAIRS[pair]
+    c = pair_couplings(p)
+    SIGN = float(c["sign"])
+    tag = pair
     t0 = time.time()
-    print("SIGN = %+d（%s）" % (SIGN, "引力" if SIGN < 0 else "斥力"))
+    print("対 %s（%s）：クーロン結合 %+.6e、重力結合 %+.6e、正味 %+.6e → %s" % (pair, p["name"], c["coul"], c["grav"], c["net"], "引力" if SIGN < 0 else "斥力"))
+    if SIGN > 0:
+        txt = ("pair=%s（%s）\nq_a=%+g q_b=%+g（q₀ 単位）、m_a=%g m_b=%g（m_e 単位）\n"
+               "coulomb_coupling=%+.6e（(q_aq_b/9)α）\ngravity_coupling=%+.6e（α_G m_a m_b）\nnet_coupling=%+.6e（正：斥力）\n"
+               "gravity_over_coulomb=%.3e\nbound_levels=0\n"
+               "正味のポテンシャルは全ての r で正（斥力）なので束縛状態は存在しない（厳密）。重力（比 %.1e）はクーロンを覆せない。\n"
+               "この一式（準位と率の模型）には表現する対象が無く、初期状態 5p₃/₂ F=1 に当たる準位も無い。放出 0、終状態なし。\n"
+               "E–M が予言するのは散乱：Rutherford／Mott（同種粒子は a↔b 交換の干渉）の反跳。同種粒子では重心系の電気双極子が恒等的にゼロで、\n"
+               "制動放射は四重極だけ。重力波と電気四重極の放出比 4Gm²/q² = %.3e。これには準位ではなく過程を時間に沿って追う計算が要る。\n"
+               % (pair, p["name"], p["q_a"], p["q_b"], p["m_a"], p["m_b"], c["coul"], c["grav"], c["net"], c["g_ratio"], c["g_ratio"], c["w_gw_identical"]))
+        (HERE / ("audit_general_%s.txt" % tag)).write_text(txt, encoding="utf-8")
+        print(txt)
+        return
+    if pair != "ep":
+        raise SystemExit("引力の対で実装してあるのは ep（反跳・超微細の式が m_a ≪ m_b を前提）")
     levels = build_levels(SIGN)
     print("束縛準位数 %d（%.1f s）" % (len(levels), time.time() - t0))
     if not levels:
-        (HERE / ("audit_general_%s.txt" % tag)).write_text(
-            "SIGN=%+d\nbound_levels=0\n"
-            "同符号の電荷：クーロンが斥力で、重力（比 %.3e）では束縛できず、束縛準位が一つも無い。\n"
-            "準位と率の模型（この一式）には表現する対象が無い。E–M が予言するのは散乱（Rutherford／Mott の反跳、同種粒子では双極子が消え四重極の制動放射、\n"
-            "重力波との比 4Gm²/q²）で、それには過程を時間に沿って追う計算が要る。\n" % (SIGN, MU_P * X.MU**2 / 9.0), encoding="utf-8")
+        (HERE / ("audit_general_%s.txt" % tag)).write_text("pair=%s\nbound_levels=0\n" % pair, encoding="utf-8")
         print((HERE / ("audit_general_%s.txt" % tag)).read_text())
         return
     ed, ETOT = edges_general(levels, X.W_GW)
@@ -368,7 +402,7 @@ def main():
     kinds = {}
     for _, _, k, _ in ed:
         kinds[k] = kinds.get(k, 0) + 1
-    lines = ["SIGN=%+d" % SIGN, "bound_levels=%d" % len(levels),
+    lines = ["pair=%s（%s）" % (pair, p["name"]), "SIGN=%+d" % SIGN, "bound_levels=%d" % len(levels),
              "final_state=%s" % [(levels[i]["label"], float(res["p_inf"][i])) for i in res["absorbing"] if res["p_inf"][i] > 0],
              "emitted_eV=%.9f" % emitted, "energy_drop_eV=%.9f" % drop, "energy_balance=%.3e" % (emitted - drop),
              "edges=%s" % kinds] + ["emitted_%s_eV=%.6e" % (k, v * ME_EV) for k, v in sorted(res["flux_E"].items())] + [

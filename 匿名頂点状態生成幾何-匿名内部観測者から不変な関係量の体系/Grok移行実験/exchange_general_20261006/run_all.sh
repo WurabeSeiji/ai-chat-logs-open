@@ -4,8 +4,11 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 python3 control_general_vs_closed_form.py > /dev/null
-python3 two_body_general.py -1 > /dev/null
-python3 two_body_general.py +1 > /dev/null
-shasum -a 256 two_body_general.py control_general_vs_closed_form.py run_all.sh \
-    control_report.md audit_general_attract.txt audit_general_repel.txt README.md > SHA256SUMS
+python3 two_body_general.py ep > /dev/null
+python3 two_body_general.py ee > /dev/null
+python3 two_body_general.py pp > /dev/null
+python3 scattering_same_sign.py > /dev/null
+rm -f audit_general_attract.txt audit_general_repel.txt
+shasum -a 256 two_body_general.py control_general_vs_closed_form.py scattering_same_sign.py run_all.sh \
+    control_report.md audit_general_ep.txt audit_general_ee.txt audit_general_pp.txt scattering_same_sign.md README.md > SHA256SUMS
 echo "done: $(wc -l < SHA256SUMS) files in SHA256SUMS"
