@@ -7,8 +7,9 @@ python3 exchange_cascade.py
 python3 coulomb_levels_check.py > /dev/null
 python3 gravity_levels_check.py > /dev/null
 python3 rates_check.py > /dev/null
+python3 structure_tables.py > /dev/null
 diff -u ../exchange_latest_20261005/exchange_cascade.py exchange_cascade.py > CHANGES_vs_original.diff || true
-shasum -a 256 exchange_cascade.py coulomb_levels_check.py gravity_levels_check.py rates_check.py run_all.sh \
-    audit.txt coulomb_levels_check.txt gravity_levels_check.txt rates_check.txt cascade_result.png \
-    CHANGES_vs_original.diff README.md 重力項目_調査と修正_ja_20261005.md > SHA256SUMS
+shasum -a 256 exchange_cascade.py coulomb_levels_check.py gravity_levels_check.py rates_check.py structure_tables.py run_all.sh \
+    audit.txt coulomb_levels_check.txt gravity_levels_check.txt rates_check.txt structure_tables.md cascade_result.png \
+    CHANGES_vs_original.diff README.md 重力項目_調査と修正_ja_20261005.md プログラム構造_ja_20261006.md > SHA256SUMS
 echo "done: $(wc -l < SHA256SUMS) files in SHA256SUMS"
