@@ -150,3 +150,14 @@ L += ["## 4. 格子の収束とオルト／パラ", "",
 out = "\n".join(L) + "\n"
 (HERE / "validation_h2.md").write_text(out, encoding="utf-8")
 print(out)
+
+# 図化用 JSON（上と同じ数値）
+import json  # noqa: E402
+pairs = []
+for r in cds:
+    u, l = (r["vu"], r["Ju"]), (r["vl"], r["Jl"])
+    if u in Emine and l in Emine:
+        pairs.append(dict(u=list(u), l=list(l), sigma_cds=r["sigma"], sigma_mine=Emine[u] - Emine[l], Aq_cds=r["Aq"], Aq_mine=chan.get((u, l, "e2"), 0.0),
+                          Am_cds=r["Am"], Am_mine=chan.get((u, l, "m1"), 0.0)))
+levels_json = [dict(v=k[0], J=k[1], E_mine_cm=Emine[k], E_cds_cm=Ecds.get(k)) for k in sorted(Emine)]
+(HERE / "validation_h2.json").write_text(json.dumps(dict(bo_fit=dict(R=R.tolist(), diff=d.tolist()), levels=levels_json, pairs=pairs), indent=1), encoding="utf-8")

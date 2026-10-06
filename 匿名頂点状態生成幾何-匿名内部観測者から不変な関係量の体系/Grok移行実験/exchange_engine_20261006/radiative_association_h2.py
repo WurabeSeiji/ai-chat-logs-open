@@ -154,6 +154,26 @@ def main():
     out = "\n".join(L) + "\n"
     (HERE / "radiative_association_h2.md").write_text(out, encoding="utf-8")
     print(out)
+    # 図化用 JSON（上と同じ数値）
+    import json
+    dump = dict(E_MAX=E_MAX, J_MAX=J_MAX, W_SPIN={str(k): v for k, v in W_SPIN.items()},
+                tabs={str(J): [dict(E_h=r[0], rho=r[1], a_e2=r[2], a_m1=r[3], a_gw=r[4],
+                                    top=[[list(k), v] for k, v in sorted(r[5].items(), key=lambda kv: -kv[1])[:3]]) for r in tabs[J]] for J in tabs},
+                sigma_rows=[], kT_rows=[], check_rmax=dict(E50=Ec50.tolist(), P50=P50.tolist(), E100=Ec100.tolist(), P100=P100.tolist()))
+    for Ecm in E_SEL_CM:
+        E_h = Ecm / CM
+        k2 = 2 * S.MU_N * E_h
+        Ps = {J: interp_P(J, E_h)[0] for J in range(J_MAX + 1)}
+        tot = sum(W_SPIN[J % 2] * (2 * J + 1) * Ps[J] for J in Ps)
+        dump["sigma_rows"].append(dict(E_cm=Ecm, P={str(J): Ps[J] for J in Ps}, sigma_cm2=np.pi / k2 * tot * A0_CM**2,
+                                       k_cm3s=np.pi / k2 * tot * np.sqrt(2 * E_h / S.MU_N) * A0_CM**3 / S.AU_TIME_S))
+    dump["kE_fine"] = dict(E_h=Eg.tolist(), k_cm3s=kEf.tolist())
+    for T in (10.0, 30.0, 100.0, 300.0, 1000.0, 3000.0):
+        kT = K_B_CM * T / CM
+        x = Eg / kT
+        w = 2 / np.sqrt(np.pi) * np.sqrt(x) * np.exp(-x) / kT
+        dump["kT_rows"].append(dict(T=T, k_cm3s=float(np.trapezoid(kEf * w, Eg))))
+    (HERE / "radiative_association_h2.json").write_text(json.dumps(dump, indent=1), encoding="utf-8")
 
 
 if __name__ == "__main__":

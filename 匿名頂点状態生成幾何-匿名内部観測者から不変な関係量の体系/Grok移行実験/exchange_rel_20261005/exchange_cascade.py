@@ -89,7 +89,8 @@ def gravity_level(n, ell, j, F):
       1PN 交差項    −(G/2) p_i [(7δ_ij + n_i n_j)/r] p_j           （EIH の −(7/2)p₁·p₂ − ½(p₁·n)(p₂·n)）
       G² 項         +G² m_e m_p (m_e + m_p)/(2r²)
       重力–電磁交差 +G[−q_e q_p (m_e+m_p) + (m_p q_e² + m_e q_p²)/2]/r² = (27/2) G (m_e+m_p)/r²
-                    （Khalil–Buonanno–Steinhoff–Vines 2018、EFT 再導出 arXiv:2205.11591 式(4.8) の静的項 H = −L。
+                    （Khalil–Sennett–Steinhoff–Vines–Buonanno 2018 PRD 98, 104010 の荷電二体 1PN ラグランジアン。EFT 再導出 Gupta 2025 PRD 112, 104047
+                      [arXiv:2205.11591] 式(4.8) の静的項 H = −L。
                       第十思考実験 v7 の T8 = (3/2)κ_Cκ_G/ξ²。調和座標と等方座標は 1PN で一致するので FW の項と足せる）
       スピン軌道    (G/r³)[(2 + (3/2)m_p/m_e) L·S_e + (2 + (3/2)m_e/m_p) L·S_p]  （測地 3/2、Lense–Thirring 2。g 因子なし）
       スピン・スピン G[(3(S_e·n)(S_p·n) − S_e·S_p)/r³ + (8π/3) S_e·S_p δ³(r)]      （B_g = ∇×A_g の接触項）

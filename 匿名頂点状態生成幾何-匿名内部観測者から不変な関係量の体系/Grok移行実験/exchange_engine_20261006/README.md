@@ -14,6 +14,7 @@
 | `run_h2.py [v J]` → `audit_h2_v{v}J{J}.txt` | H₂ の走行（(1,3)、(3,5)、解離限界直下の (14,0)、(14,1)）：T = 0 の厳密解、放出線と幅、原子間重力 ⟨−Gm_H²/R⟩ の別勘定、層 2・1・3。 |
 | `radiative_association_h2.py` → `radiative_association_h2.md` | H + H → H₂ + 光子（連続状態 → 束縛準位、E2・M1・GW）。箱で規格化した散乱状態から、通過 1 回あたりの捕獲確率 P_J(E)、σ(E)、k(E)、熱平均 k(T)。 |
 | `h2_data/` | 文献の表の写し（出典・取得物の SHA は `h2_data/SOURCES.md`）：BO ポテンシャル 82 点、Q_WSD(R) 257 点、g(R) 52 点。`validation/` に CDS の表と H2SPECTRE の準位表（検証用）。 |
+| `*.json` | 図化用に同じ数値を保存したもの（`audit_h2_*.json`、`validation_h2.json`、`radiative_association_h2.json`）。図は `../figures_paper_20261006/` で生成。 |
 | `run_all.sh` | 一式の再現と SHA256SUMS。 |
 
 ## 1. 水素原子の回帰（regression_hydrogen.md）

@@ -126,3 +126,22 @@ L += ["", "終状態 %s の m 分布：%s。整列 ⟨m²⟩ − J(J+1)/3 = %+.4
 out = "\n".join(L) + "\n"
 (HERE / ("audit_h2_v%dJ%d.txt" % (v0q, J0q))).write_text(out, encoding="utf-8")
 print(out)
+
+# ---------- 図化用に同じ数値を JSON で保存（計算は上と同一、出力形式だけ） ----------
+import json  # noqa: E402
+dump = dict(
+    init=[v0q, J0q], T=T0,
+    states=[dict(label=list(s["label"]), E_eV=s["E_eV"], J=s["J"], I=s["I"], E_grav_eV=s["E_grav_eV"], E_grav_cm=s["E_grav_cm"]) for s in states],
+    tau=tau.tolist(), p_inf=p_inf.tolist(), out_rate=out_rate.tolist(), fluxes=fl, photons=nph,
+    lines=[dict(src=int(a), dst=int(b), kind=kind, A=A, n=A * tau[a], hw_eV=states[a]["E_eV"] - states[b]["E_eV"],
+                Gamma=out_rate[a] + out_rate[b]) for a, b, kind, k, A in channels if A * tau[a] > 1e-12],
+    layer2=dict(ground=int(g_i), first=int(g_f), p_ground=float(pT[g_i]), p_first=float(pT[g_f]), boltzmann=float(boltz),
+                times=times.tolist(), hist_ground=hist[:, g_i].tolist(), hist_init=hist[:, init].tolist()),
+    layer1=dict(v0=vdrift.tolist(), vfit=vfit.tolist(), v_lin=(b0 * EN.C).tolist(), n_mol=n_mol,
+                events=[dict(n=[float(x) for x in e["n_lab"]], delta=float(e["delta"]), hw_eV=float(e["hw_lab"]), kind=e["kind"],
+                             dv=float(np.linalg.norm(e["v_after"] - e["v_before"])), rel_width=float(e["rel_width"])) for e in ev_all]),
+    layer3=dict(n_sub=len(sub), n_m=len(mb), lines={"%d,%d->%d,%d:%s" % (*sstates[k[0]]["label"], *sstates[k[1]]["label"], k[2]): {str(q): v for q, v in Nq.items()}
+                                                   for k, Nq in ph.items() if sum(Nq.values()) > 1e-6},
+                final_m={str(mm): p / tot for mm, p in pm_fin.items()}, align=align),
+)
+(HERE / ("audit_h2_v%dJ%d.json" % (v0q, J0q))).write_text(json.dumps(dump, indent=1), encoding="utf-8")
