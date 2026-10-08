@@ -1,0 +1,1662 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={第十二思考実験：微細構造定数から観測写像とゲージ対称性へ},
+  pdfauthor={木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{第十二思考実験：微細構造定数から観測写像とゲージ対称性へ}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{―
+微細構造定数から始めて、光円錐の方程式と観測可能な軸の選択から、時空・質量・電荷・色荷・ゲージ対称性を読み直す
+―}
+\author{木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020}
+\date{2026年10月8日　Version DOI 10.5281/zenodo.23226259}
+
+\ltjsetparameter{jacharrange={-2,-3}}
+\begin{document}
+\maketitle
+
+\textbf{著者:} 木原範昭 (Noriaki Kihara)\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Version DOI:} 10.5281/zenodo.23226259\\
+\textbf{Concept DOI:} 10.5281/zenodo.23226258\\
+\textbf{版:} v1.0\\
+\textbf{日付:} 2026-10-08\\
+\textbf{関連論文:} 設計書（第 0 論文）{[}S1{]}、第十一思考実験
+{[}S2{]}、非自明二乗閉鎖 {[}S3{]}、xyztRQ の再検討
+{[}S4{]}、中心投影の合成演算 {[}S5{]}
+
+\textbf{キーワード:}
+微細構造定数、ボーア模型、光円錐、ミンコフスキー計量、固有時間、二乗閉塞、観測写像、区別不能性、ゲージ対称性、Kaluza--Klein、SU(5)
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{要旨}\label{ux8981ux65e8}
+
+前回の第十一思考実験 {[}S2{]} では、微細構造定数 \(\alpha\)
+を既知の入力値としてそのまま用いた。本稿は、その \(\alpha\)
+がどこから現れた定数なのかを問い直すところから始める。ボーア模型の水素基底状態では
+\(\alpha=v/c\) であり、\(\alpha\)
+はまず速度比として読める。ローレンツ因子 \(\gamma=1/\sqrt{1-\alpha^2}\)
+は、光円錐の方程式 \(x^2+y^2+z^2+(it)^2=0\) に固有時間の軸を一本足した
+\(r^2+\tau^2+(it)^2=0\)
+の成分比にすぎない。光より遅い世界線は、軸を一本足した空間では光円錐の上に乗る。
+
+この光円錐の方程式を、空間 3 方向と、直接は読めない
+\(R\)・\(Q_1\)・\(Q_2\)・\(Q_3\) を含む 8 方向
+\(x^2+y^2+z^2+R^2+Q_1^2+Q_2^2+Q_3^2+(it)^2=0\)
+に広げ、軸に最初から物理的な名前を与えず、無名の 8 方向
+\((u_1,\ldots,u_8)\)
+として扱う。観測者が直接読める部分空間を選ぶと、残りの方向は区別できず、二乗和としてだけ現れる。観測写像
+\(P\) が \(P(U)=P(GU)\) を満たす変換 \(G\)
+は観測上の対称変換であり、対称性は区別不能性の数学的な表現として読める。\(t\)
+だけを読む観測者には \(O(7)\) 型の対称性が現れ、隠れた 5 方向が 3+2
+に分かれれば
+\(S(U(3)\times U(2))\simeq(SU(3)\times SU(2)\times U(1))/\mathbb Z_6\)
+が候補として現れる。これは SU(5) 大統一理論の 3+2 分割と同じ構造である。
+
+本稿は計算を伴わない概念整理であり、§4 以降の 8 次元・符号・3+2
+分割は仮定として手で置いている。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{0.
+本稿の位置づけ}\label{ux672cux7a3fux306eux4f4dux7f6eux3065ux3051}
+
+第十一思考実験 {[}S2{]}
+は、標準理論の二体系を、無限遠の吸収体の静止系だけを基準に数値計算した。入力の
+\(\alpha\) は CODATA の値 {[}1{]} であり、その意味は問わなかった。
+
+本稿はその逆向きの作業である。\(\alpha\)
+を入力値として受け取らず、「そもそも \(\alpha\)
+とは何か」から始め、光円錐の方程式に戻り、軸の名前を外し、観測者が何を区別できるかから時空・質量・電荷・色荷・ゲージ対称性を読み直す。設計書
+{[}S1{]}
+の第一原則候補「名前は存在しないが、互いに区別可能で、数を数えられる状態が存在する」と、「状態そのものは直接読めない」という立場を、幾何の言葉で書き直したものでもある。
+
+本稿は計算を伴わない概念整理であり、§4 以降の 8 次元・符号・3+2
+分割は仮定として手で置いている。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{1. はじめに}\label{ux306fux3058ux3081ux306b}
+
+この思考実験は、非常に素朴な疑問から始まった。
+
+\textbf{微細構造定数 \(\alpha\) は、そもそもどこから現れた定数なのか。}
+
+標準的には、
+
+\[
+\alpha=
+\frac{e^2}{4\pi\varepsilon_0\hbar c}
+\simeq\frac{1}{137.036}
+\]
+
+と定義され
+{[}1{]}、量子電磁力学では電磁相互作用の強さを表す無次元結合定数として扱われる。
+
+しかし歴史的な出発点まで戻ると {[}2, 3,
+4{]}、水素原子のボーア模型では、基底状態について
+
+\[
+\frac{v}{c}=\alpha
+\]
+
+である。
+
+すなわち、
+
+\[
+\boxed{\alpha=\frac{\text{水素基底状態の電子の速度}}{\text{光速度}}}
+\]
+
+である。
+
+したがって、
+
+\[
+\alpha^{-1}\simeq137
+\]
+
+とは、まず素朴には、
+
+\[
+c\simeq137\,v
+\]
+
+という速度比として読むことができる。
+
+この単純な事実から出発すると、微細構造定数、特殊相対論、ミンコフスキー計量、さらには質量・電荷・色荷・ゲージ対称性までを、別の角度から読み直せるのではないか。
+
+本稿では、この問いを順番に追う。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{2.
+微細構造定数を速度比として読む}\label{ux5faeux7d30ux69cbux9020ux5b9aux6570ux3092ux901fux5ea6ux6bd4ux3068ux3057ux3066ux8aadux3080}
+
+水素原子のボーア模型 {[}2{]} では、
+
+\[
+\frac{mv^2}{r}
+=
+\frac{e^2}{4\pi\varepsilon_0r^2}
+\]
+
+および
+
+\[
+mvr=\hbar
+\]
+
+から、
+
+\[
+v=
+\frac{e^2}{4\pi\varepsilon_0\hbar}
+\]
+
+を得る。
+
+光速度 \(c\) で割れば、
+
+\[
+\frac vc
+=
+\frac{e^2}{4\pi\varepsilon_0\hbar c}
+=\alpha.
+\]
+
+したがって水素基底状態では、
+
+\[
+\boxed{\frac vc=\alpha}
+\]
+
+である。
+
+ゾンマーフェルトが水素原子に特殊相対論的補正を入れたときに \(\alpha\)
+が現れること {[}3{]} も、この形なら不思議ではない。
+
+特殊相対論のローレンツ因子は、
+
+\[
+\gamma=
+\frac1{\sqrt{1-v^2/c^2}}
+\]
+
+だから、
+
+\[
+\frac vc=\alpha
+\]
+
+を代入すれば、
+
+\[
+\gamma=
+\frac1{\sqrt{1-\alpha^2}}
+\]
+
+となる。
+
+低速近似では、
+
+\[
+\gamma
+=
+1+\frac12\alpha^2
++\frac38\alpha^4+\cdots .
+\]
+
+微細構造に \(\alpha^2,\alpha^4,\ldots\)
+が現れる理由は、この形では非常に直観的である。
+
+しかし、ここでさらに単純な見方ができる。
+
+そもそも、なぜ \(\gamma\) から考えなければならないのか。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{3.
+ローレンツ因子ではなく光円錐の方程式から見る}\label{ux30edux30fcux30ecux30f3ux30c4ux56e0ux5b50ux3067ux306fux306aux304fux5149ux5186ux9310ux306eux65b9ux7a0bux5f0fux304bux3089ux898bux308b}
+
+\(c=1\) とする。光の伝播は、ミンコフスキーの光円錐の方程式
+
+\[
+x^2+y^2+z^2-t^2=0
+\]
+
+で表される。時間を虚数 \(it\) として書けば {[}5{]}、
+
+\[
+\boxed{x^2+y^2+z^2+(it)^2=0}
+\]
+
+である。ローレンツ変換は、この形を保つ線形変換として決まる。先にあるのは光円錐の方程式であり、ローレンツ変換はそれを保つ変換として後から現れる。
+
+次に、速度 \(v\) で動く粒子を考える。移動距離を \(r\)、固有時間を
+\(\tau\) とすれば、
+
+\[
+t^2-r^2=\tau^2
+\]
+
+である。\(\tau^2\) を左辺に移せば、
+
+\[
+\boxed{r^2+\tau^2+(it)^2=0}
+\]
+
+となる。
+
+これは光円錐の方程式と同じ形である。\((r,t)\)
+では光より遅い世界線が、固有時間の軸 \(\tau\) を一本足した
+\((r,\tau,t)\) では光円錐の上に乗る {[}6, 11{]}（図 1(a)(b)）。
+
+\(t^2\) で割れば、
+
+\[
+\left(\frac rt\right)^2+
+\left(\frac \tau t\right)^2=1.
+\]
+
+ここで、
+
+\[
+\frac rt=\frac vc=\alpha
+\]
+
+と読めば、
+
+\[
+\boxed{
+\left(\frac \tau t\right)^2+\alpha^2=1
+}
+\]
+
+であり、
+
+\[
+\frac \tau t=\sqrt{1-\alpha^2}.
+\]
+
+その逆数を取れば、
+
+\[
+\gamma=\frac t\tau
+=\frac1{\sqrt{1-\alpha^2}}
+\]
+
+となる。
+
+したがって、\(\gamma\) が基本なのではない。
+
+先にあるのは、
+
+\[
+\boxed{r^2+\tau^2+(it)^2=0}
+\]
+
+という、軸を一本足した光円錐の方程式であり、ローレンツ因子はその成分比を一つの軸から読んだ結果にすぎない。
+
+本稿では、虚の成分を一つ含むこの形の零二乗和を\textbf{二乗閉塞}と呼ぶ。名前は本稿のものだが、式は光円錐の方程式そのものである。零二乗和が自明でない解を持つには、実でない成分が少なくとも一つ要ることは
+{[}S3{]} で示した。
+
+ここで問題の見え方が変わる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{4.
+時空を拡張する}\label{ux6642ux7a7aux3092ux62e1ux5f35ux3059ux308b}
+
+次に、通常の三次元空間を用い、§3 の \(\tau^2\) を二つの方向 \(R\) と
+\(Q\) に分けて、
+
+\[
+\boxed{
+x^2+y^2+z^2+R^2+Q^2=t^2
+}
+\]
+
+と置く。
+
+移項すれば、
+
+\[
+x^2+y^2+z^2
++R^2+Q^2+(it)^2=0.
+\]
+
+これも光円錐の方程式であり、軸を増やしただけである。虚の軸は \(t\)
+の一本だけである。
+
+ここで重要なのは、各軸の物理的意味を最初から固定しないことである。
+
+まず単純に、
+
+\[
+(x,y,z)
+\]
+
+を直接空間的に計量できる方向、
+
+\[
+(R,Q)
+\]
+
+を同じ方法では直接計量できない方向として読む。
+
+すると、
+
+\[
+t^2-(x^2+y^2+z^2)
+=
+R^2+Q^2
+\]
+
+とは、
+
+\[
+\boxed{
+\text{時間と直接読める部分の二乗差}
+=
+\text{直接読めない部分の二乗和}
+}
+\]
+
+という観測関係として読むことができる。
+
+\(xyz\) を読む観測者にとって、この式は中心投影の式と同じ形である。中心
+\(O\) から距離 \(R_c\) の接平面上の点 \(P=(x,y,z)\) を半径 \(R_c\)
+の球へ \(\pi(P)=R_c\,P/\ell\) で写すとき {[}S5{]}、\(O\) から \(P\)
+までの距離 \(\ell\) は
+
+\[
+\ell^2=x^2+y^2+z^2+R_c^2
+\]
+
+を満たす。上の式と並べれば、投影方向の曲率半径は直接読めない方向の二乗和のルート
+\(R_c=\sqrt{R^2+Q^2}\) であり、中心から点までの距離 \(\ell\) が \(t\)
+に当たる。§3 の固有時間 \(\tau\) は \(R_c\) に、空間の距離 \(r\)
+は接平面上の距離 \(|x|\) に対応し、世界線の傾き \(v=r/t\)
+は投影の光線の角度 \(\theta\) の \(\sin\theta=|x|/\ell\)
+に一致する。光円錐の式から虚数単位 \(i\)
+を外したものが、中心投影の三平方の式である（図 1(c)）。
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={図 1}]{figs/fig01_lightcone_central_projection.png}}
+\textbf{図 1.} 光円錐と中心投影は同じ直角三角形。(a) \((r,t)\)
+平面の光円錐。傾き \(v<1\) の世界線は円錐の内側にある。(b) 固有時間の軸
+\(\tau\) を足すと \(r^2+\tau^2+(it)^2=0\)
+となり、同じ世界線が円錐の表面に乗る。時刻 \(t\)
+の断面で、\(r\)（青）・\(\tau\)（緑）を二辺、断面の半径
+\(t\)（赤）を斜辺とする直角三角形ができる。(c) 中心投影
+\(\ell^2=|x|^2+R_c^2\)。同じ三角形が、接平面上の距離
+\(|x|\)（青）、投影方向の曲率半径 \(R_c\)（緑）、中心から点までの距離
+\(\ell\)（赤）として現れる。\(r\leftrightarrow|x|\)、\(\tau=\sqrt{R^2+\sum Q_i^2}\leftrightarrow R_c\)、\(t\leftrightarrow\ell\)、\(\sin\theta=v\)。\(v\)
+は一般の値で描いた模式図で、データは無い。
+
+この時点では、
+
+\begin{itemize}
+\tightlist
+\item
+  \(t\) は本質的に「時間軸」である
+\item
+  \(R\) は本質的に「質量軸」である
+\item
+  \(Q\) は本質的に「電荷軸」である
+\end{itemize}
+
+と仮定する必要はない。
+
+これは後から観測結果につけた名前かもしれない。\(t,R,Q\) という呼び名は
+{[}S4{]} で用いたものである。5
+番目の座標を静止質量と結び付ける読み方は、Wesson の Space-Time-Matter
+理論 {[}12{]} にもある。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{5.
+運動量も一種類しかないのではないか}\label{ux904bux52d5ux91cfux3082ux4e00ux7a2eux985eux3057ux304bux306aux3044ux306eux3067ux306fux306aux3044ux304b}
+
+状態を一つの位相
+
+\[
+\Phi
+\]
+
+で表すとする。
+
+すると各方向の運動量は、一般にその位相勾配として
+
+\[
+K_A=\partial_A\Phi
+\]
+
+と書ける。
+
+通常の空間方向については、
+
+\[
+(p_x,p_y,p_z)
+\]
+
+として読む。
+
+同じ考えを他の軸にも適用すれば、
+
+\[
+K=
+(K_x,K_y,K_z,K_t,K_R,K_Q)
+\]
+
+という一つの勾配ベクトルがあるだけになる。
+
+われわれが、
+
+\[
+K_t\rightarrow E,
+\]
+
+\[
+K_R\rightarrow m,
+\]
+
+\[
+K_Q\rightarrow q
+\]
+
+と呼んでいる可能性がある。
+
+§4 の閉塞をこの勾配に当てはめれば、
+
+\[
+K_t^2=K_x^2+K_y^2+K_z^2+K_R^2+K_Q^2,
+\]
+
+すなわち
+
+\[
+E^2=p^2+m^2+q^2
+\]
+
+となり、\(q=0\) で通常の質量殻 \(E^2=p^2+m^2\)
+に戻る。隠れた方向の運動量が電荷として読まれ、その二乗が質量殻に加わるという読み方は、Kaluza--Klein
+理論 {[}7, 8{]} において、5
+次元で光円錐の上を進む粒子が、隠れた方向の運動量を 4
+次元では電荷として持ち、その二乗を 4
+次元の質量として持つ構造と同じである。
+
+しかし、ここでも順序を逆転させる必要がある。
+
+本当に存在するものが最初から
+
+\[
+E,m,q
+\]
+
+なのではない。
+
+まず無名の勾配成分があり、その観測上の現れ方に、
+
+\[
+\text{energy},
+\quad
+\text{mass},
+\quad
+\text{charge}
+\]
+
+という名前を与えているだけかもしれない。
+
+すると、
+
+\[
+\boxed{
+\begin{array}{c}
+\text{運動量・エネルギー・質量・電荷は、}\\
+\text{一つの勾配の異なる方向への射影}
+\end{array}
+}
+\]
+
+という見方が可能になる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{6.
+Qを三方向に分ける}\label{qux3092ux4e09ux65b9ux5411ux306bux5206ux3051ux308b}
+
+ここで \(Q\) を一軸とする必要もない。
+
+むしろ、
+
+\[
+(Q_1,Q_2,Q_3)
+\]
+
+という三方向を置く。
+
+すると全体は、
+
+\[
+\boxed{
+(x,y,z,t,R,Q_1,Q_2,Q_3)
+}
+\]
+
+という8次元になる。
+
+二乗閉塞は、
+
+\[
+\boxed{
+x^2+y^2+z^2
++R^2+Q_1^2+Q_2^2+Q_3^2
+=
+t^2
+}
+\]
+
+あるいは、
+
+\[
+\boxed{
+x^2+y^2+z^2
++R^2+Q_1^2+Q_2^2+Q_3^2+(it)^2=0
+}
+\]
+
+である。8 次元の光円錐の方程式である。\(xyz\)
+を読む観測者にとって、中心投影の曲率半径は
+\(R_c=\sqrt{R^2+Q_1^2+Q_2^2+Q_3^2}\) になる。
+
+標準模型の群を隠れた方向の等長変換として得るには、時空 4
+方向の外に少なくとも 7 方向が必要であることが Kaluza--Klein
+の枠組みで示されている {[}13{]}。本稿では時空 4 方向の外は
+\(R,Q_1,Q_2,Q_3\) の 4
+方向であり、等長変換としてはこの数では足りない。本稿は群を等長変換からではなく区別不能性から読む（§9〜§11）。8
+次元（八元数）から標準模型の群を読む先行例としては Furey {[}14{]}
+がある。
+
+ここでも、最初から
+
+\[
+x,y,z,t,R,Q_1,Q_2,Q_3
+\]
+
+という物理的意味が存在すると考えない。
+
+本来は、
+
+\[
+(u_1,u_2,\ldots,u_8)
+\]
+
+という\textbf{無名の8方向}があるだけだと考える。
+
+観測者がそのうち三方向を直接空間として読むことができたとき、
+
+\[
+(u_1,u_2,u_3)\rightarrow(x,y,z)
+\]
+
+と名付ける。
+
+残りの方向について観測される特徴を、
+
+\[
+t,\quad R,\quad Q_1,Q_2,Q_3
+\]
+
+と名付けているだけかもしれない。
+
+ここで、物理量の意味そのものが観測者依存の写像となる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{7.
+異なる軸を読める観測者}\label{ux7570ux306aux308bux8ef8ux3092ux8aadux3081ux308bux89b3ux6e2cux8005}
+
+ここから強い思考実験が可能になる。
+
+われわれが
+
+\[
+(x,y,z)
+\]
+
+を直接読んでいるからといって、それだけが可能な観測写像とは限らない。
+
+例えば、
+
+\[
+(Q_1,Q_2,Q_3)
+\]
+
+だけを直接読める観測者を数学的には定義できる。
+
+その観測者にとって、
+
+\[
+(Q_1,Q_2,Q_3)
+\]
+
+が通常の三次元空間に見える。
+
+逆に、
+
+\[
+x,y,z,t,R
+\]
+
+が直接は読めない内部方向になる。
+
+その世界の物理現象は、われわれの世界とは極めて異なって見えるだろう。
+
+しかし、8次元側の状態と相互作用が同じなら、
+
+\[
+\boxed{
+\text{同じ物理の異なる観測写像}
+}
+\]
+
+にすぎない。
+
+これは、「異なる物理法則」ではなく、
+
+\[
+\boxed{
+\text{異なる部分空間を観測空間として選択した結果}
+}
+\]
+
+ということになる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{8.
+t軸しか読めなかったら何が見えるか}\label{tux8ef8ux3057ux304bux8aadux3081ux306aux304bux3063ux305fux3089ux4f55ux304cux898bux3048ux308bux304b}
+
+さらに極端な場合を考える。
+
+8方向のうち、
+
+\[
+t
+\]
+
+だけを直接読める観測者を考える。
+
+残り七方向、
+
+\[
+x,y,z,R,Q_1,Q_2,Q_3
+\]
+
+を個別には区別できない。
+
+すると観測できるのは、その内訳ではなく、
+
+\[
+\boxed{
+\rho^2=
+x^2+y^2+z^2
++R^2
++Q_1^2+Q_2^2+Q_3^2
+}
+\]
+
+という二乗和だけになる。
+
+すなわち、
+
+\[
+\boxed{
+t^2=\rho^2
+}
+\]
+
+としてしか見えない。この観測者には、8 次元の光円錐がその半径 \(\rho=t\)
+としてだけ見える。
+
+七つの自由度を持つ複雑な状態が、一つのスカラー量に縮退する。
+
+これは重要である。
+
+観測できない自由度は消えたのではない。
+
+\textbf{区別できないため、一つのノルムとしてしか現れない。}
+
+一般に、8次元のうち \(k\) 次元だけを直接読めるなら、
+
+\[
+\mathbb R^8
+\rightarrow
+\mathbb R^k_{\rm observed}
+\oplus
+\mathbb R^{8-k}_{\rm hidden}
+\]
+
+となる。
+
+hidden側を個別に区別できなければ、
+
+\[
+\rho_{\rm hidden}^2
+=
+\sum_{\rm hidden}u_a^2
+\]
+
+という一つの量として観測される。
+
+したがって、
+
+\[
+\boxed{
+\begin{array}{c}
+\text{次元縮退とは、}\\
+\text{次元が物理的に消えることではなく、}\\
+\text{観測者がそれらを区別できなくなること}
+\end{array}
+}
+\]
+
+と読むことができる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{9.
+ここから対称性が現れる}\label{ux3053ux3053ux304bux3089ux5bfeux79f0ux6027ux304cux73feux308cux308b}
+
+この思考実験から、標準理論がなぜ強い対称性を要求するのかについて、別の見方が得られる。
+
+観測写像を
+
+\[
+P
+\]
+
+とする。
+
+ある変換 \(G\) を状態 \(U\) に作用させても、
+
+\[
+P(U)=P(GU)
+\]
+
+なら、観測者は二つを区別できない。
+
+したがって、
+
+\[
+\boxed{
+P(U)=P(GU)
+\quad\Longrightarrow\quad
+G\text{ は観測上の対称変換}
+}
+\]
+
+である。
+
+つまり、
+
+\[
+\boxed{
+\text{対称性とは、区別不能性の数学的表現}
+}
+\]
+
+と読むことができる。ゲージ対称性と観測・関係の結び付きについては Rovelli
+{[}15{]} が論じている。
+
+対称性を自然界に後から要求する必要がない。
+
+観測者が名前を付けられない軸を交換・回転しても、観測結果が変わらないのであれば、それがそのまま対称性になる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{10.
+tだけが読める場合の巨大な対称性}\label{tux3060ux3051ux304cux8aadux3081ux308bux5834ux5408ux306eux5de8ux5927ux306aux5bfeux79f0ux6027}
+
+\(t\) だけが読める場合、
+
+\[
+\rho^2=
+x^2+y^2+z^2+R^2+Q_1^2+Q_2^2+Q_3^2
+\]
+
+しか観測できない。
+
+実数の二乗ノルムだけを考えるなら、hiddenな七方向を回転しても \(\rho\)
+は変化しない。
+
+したがって、
+
+\[
+O(7)
+\]
+
+型の大きな対称性が現れる。
+
+重要なのは、
+
+\[
+\boxed{
+\begin{array}{c}
+\text{観測可能な次元が少ないほど、}\\
+\text{hidden側の区別不能性は大きくなり、}\\
+\text{見かけの対称性も大きくなる}
+\end{array}
+}
+\]
+
+ことである（図 2）。
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={図 2}]{figs/fig02_observers_symmetry.png}}
+\textbf{図 2.} 同じ 8
+方向に対する三つの観測写像と、隠れた方向の回転対称性の大きさ。左：\(xyz\)
+を読む観測者、\(Q_1Q_2Q_3\) を読む観測者、\(t\)
+だけを読む観測者が直接読める方向（青）と、区別できない方向（灰）。右：直接読める方向の数
+\(k\) と、隠れた方向の回転群の次元 \((8-k)(7-k)/2\)。\(t\) だけを読むと
+\(O(7)\)（21 次元）、\(xyz\) を読むと 10 次元。\(t\) が隠れる場合は群が
+\(O(7-k,1)\) になるが、次元は同じである。
+
+逆に、観測分解能が上がり、それまで区別不能だった方向を区別できるようになると、対称性は小さくなる。
+
+したがって、
+
+\[
+\boxed{
+\begin{array}{c}
+\text{対称性の破れ}
+=
+\text{それまで区別できなかった方向が}\\
+\text{区別可能になること}
+\end{array}
+}
+\]
+
+という解釈も可能になる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{11. 3+2という分割}\label{ux3068ux3044ux3046ux5206ux5272}
+
+われわれが
+
+\[
+(x,y,z)
+\]
+
+を直接読む観測者だとする。
+
+するとhidden側には、
+
+\[
+(t,R,Q_1,Q_2,Q_3)
+\]
+
+の五方向が残る。
+
+ところが観測によって、その五方向が
+
+\[
+(Q_1,Q_2,Q_3)
+\]
+
+と
+
+\[
+(t,R)
+\]
+
+という
+
+\[
+\boxed{3+2}
+\]
+
+の二群としてのみ区別可能になったとする。
+
+このとき、内部の三成分が複素状態として基底変換に対して区別不能なら、
+
+\[
+U(3)
+\]
+
+型の対称性が候補になる。
+
+同様に二成分について、
+
+\[
+U(2)
+\]
+
+型の対称性が候補になる。
+
+したがって、
+
+\[
+U(3)\times U(2)
+\]
+
+という構造が自然に現れ得る。
+
+さらに共通の全体位相・行列式条件を課した
+
+\[
+S(U(3)\times U(2))
+\]
+
+を考えると、
+
+\[
+S(U(3)\times U(2))
+\simeq
+\frac{
+SU(3)\times SU(2)\times U(1)
+}{
+\mathbb Z_6
+}
+\]
+
+となる {[}10{]}。
+
+これは標準模型のゲージ群として通常採用される大域形
+\((SU(3)\times SU(2)\times U(1))/\mathbb Z_6\) と一致する。
+
+この 3+2 分割は、SU(5) 大統一理論において
+\(S(U(3)\times U(2))\subset SU(5)\) が残る構造と同じである {[}9,
+10{]}（図 3）。
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={図 3}]{figs/fig03_split_3_2.png}}
+\textbf{図 3.} 隠れた 5 方向の 3+2 分割。\((Q_1,Q_2,Q_3)\)
+の中の混合（青）が \(U(3)\)、\((t,R)\) の中の混合（橙）が \(U(2)\)
+に当たり、二群の間の混合（灰）は観測で区別できる。共通の全体位相・行列式条件を課すと
+\(S(U(3)\times U(2))\subset SU(5)\)、\(S(U(3)\times U(2))\simeq(SU(3)\times SU(2)\times U(1))/\mathbb Z_6\)
+{[}9, 10{]}。
+
+ただし、これは現段階では\textbf{導出ではない}。
+
+特に、本研究で基本に置く二乗閉塞
+
+\[
+\sum z_n^2=0
+\]
+
+と、通常のユニタリ群が保存するエルミートノルム
+
+\[
+\sum |z_n|^2
+\]
+
+は同一ではない。
+
+実の8方向から \(U(n)\)
+を得るには複素構造を新たに仮定する必要があり、本稿ではこれを導出していない。
+
+したがって、
+
+\[
+3+2
+\rightarrow
+SU(3)\times SU(2)\times U(1)
+\]
+
+を主張するには、どの観測量を不変量とするのかを今後明確にする必要がある。
+
+しかし、
+
+\[
+\boxed{
+\text{3つの区別不能方向}
++
+\text{2つの区別不能方向}
+}
+\]
+
+という観測構造だけから、標準模型のゲージ群に極めて近い数学的構造が候補として現れることは注目に値する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{12. 見方の反転}\label{ux898bux65b9ux306eux53cdux8ee2}
+
+通常の記述では、
+
+\[
+\text{空間},
+\quad
+\text{時間},
+\quad
+\text{質量},
+\quad
+\text{電荷},
+\quad
+\text{色荷}
+\]
+
+を異なる種類の物理量として最初から導入する。
+
+そして、それらを結び付けるために対称性を要求する。
+
+本思考実験では順序を逆にする。
+
+まず存在するのは、
+
+\[
+\boxed{
+(u_1,\ldots,u_8)
+}
+\]
+
+という無名の状態空間だけである。
+
+その中から観測者が直接区別できる部分空間を選ぶ。
+
+残りは直接区別できない。
+
+そして、それらが観測可能な空間へ投影された結果を、
+
+\[
+\text{time},
+\quad
+\text{mass},
+\quad
+\text{charge},
+\quad
+\text{color charge}
+\]
+
+と名付ける。
+
+すると、
+
+\[
+\boxed{
+\begin{array}{c}
+\text{物理量とは軸固有の属性ではなく、}\\
+\text{観測写像に依存した読み名}
+\end{array}
+}
+\]
+
+となる。
+
+同様に、
+
+\[
+\boxed{
+\begin{array}{c}
+\text{対称性とは自然界に追加された制約ではなく、}\\
+\text{観測者が区別できない自由度の存在}
+\end{array}
+}
+\]
+
+となる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{13.
+微細構造定数へ戻る}\label{ux5faeux7d30ux69cbux9020ux5b9aux6570ux3078ux623bux308b}
+
+ここで出発点だった微細構造定数へ戻る。
+
+水素基底状態では、
+
+\[
+\alpha=\frac vc.
+\]
+
+最初はこれは単なる速度比に見えた。
+
+しかし、本思考実験の見方では、
+
+\[
+v
+\]
+
+と
+
+\[
+c
+\]
+
+も、無名の高次元勾配を異なる観測方向から読んだ比である可能性がある。
+
+したがって、
+
+\[
+\boxed{
+\alpha
+=
+\text{二つの観測方向への勾配成分の比}
+}
+\]
+
+として解釈できる可能性が出てくる。
+
+すると、微細構造定数は単なる「電磁相互作用の強さ」ではなく、
+
+\[
+\boxed{
+\text{高次元状態を特定の観測部分空間へ射影したときに生じる角度または比率}
+}
+\]
+
+である可能性がある。
+
+この段階では、それが
+
+\[
+Q_i/t,
+\quad
+Q_i/R,
+\quad
+|\mathbf Q|/R,
+\quad
+\text{あるいは別の投影角}
+\]
+
+のどれに対応するかは未決定である。
+
+しかし少なくとも、
+
+\[
+\alpha=\frac vc
+\]
+
+という歴史的事実から出発すると、\(\alpha\)
+を純粋な幾何学的比率として探すことに出発点を置く。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{14.
+この思考実験から出る検証項目}\label{ux3053ux306eux601dux8003ux5b9fux9a13ux304bux3089ux51faux308bux691cux8a3cux9805ux76ee}
+
+少なくとも次の検証可能な方向が生じる。
+
+第一に、
+
+\[
+\boxed{
+\begin{array}{c}
+\text{同一の8次元力学から、}\\
+\text{観測部分空間を変更するだけで}\\
+\text{異なる有効物理が得られる}
+\end{array}
+}
+\]
+
+はずである。
+
+したがって、同じ相互作用則を一切変更せず、
+
+\[
+xyz
+\]
+
+を読む場合、
+
+\[
+Q_1Q_2Q_3
+\]
+
+を読む場合、
+
+\[
+t
+\]
+
+だけを読む場合などについて、それぞれの有効運動を数値的に計算できる。
+
+第二に、
+
+\[
+\boxed{
+\begin{array}{c}
+\text{観測可能次元を減らすほど}\\
+\text{有効対称性が大きくなる}
+\end{array}
+}
+\]
+
+はずである。
+
+第三に、
+
+\[
+\boxed{
+\begin{array}{c}
+\text{観測分解能が上がり、}\\
+\text{それまで区別不能だった内部方向が分離されると、}\\
+\text{対称性が破れる}
+\end{array}
+}
+\]
+
+はずである。
+
+第四に、質量・電荷・色荷の少なくとも一部は、
+
+\[
+\boxed{
+\begin{array}{c}
+\text{異なる基本属性ではなく、}\\
+\text{同一の無名状態空間の異なる射影成分}
+\end{array}
+}
+\]
+
+として再現できる可能性がある。
+
+第五に、標準模型の
+
+\[
+SU(3)\times SU(2)\times U(1)
+\]
+
+型の対称性が、
+
+\[
+\boxed{
+\begin{array}{c}
+\text{3方向と2方向という}\\
+\text{観測上の区別不能クラス}
+\end{array}
+}
+\]
+
+から生じる可能性を検証できる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{15. 結論}\label{ux7d50ux8ad6}
+
+この思考実験は、
+
+\[
+\boxed{\alpha\simeq1/137}
+\]
+
+という一つの無次元定数の意味を問い直すところから始まった。
+
+水素基底状態では、
+
+\[
+\alpha=\frac vc.
+\]
+
+これをローレンツ因子からではなく、
+
+\[
+r^2+\tau^2+(it)^2=0
+\]
+
+という、軸を一本足した光円錐の方程式から読むと、\(\alpha\)
+は単純な方向比として現れる。
+
+これを、
+
+\[
+x^2+y^2+z^2+R^2+Q_1^2+Q_2^2+Q_3^2
+=
+t^2
+\]
+
+へ拡張すると、
+
+\[
+(x,y,z,t,R,Q_1,Q_2,Q_3)
+\]
+
+という8次元構造が得られる。
+
+しかし、この八軸に最初から物理的名称を与える必要はない。
+
+本質的には、
+
+\[
+(u_1,\ldots,u_8)
+\]
+
+という無名の状態空間しか存在せず、
+
+\[
+\boxed{
+\text{どの軸を観測可能空間として読むか}
+}
+\]
+
+によって、
+
+\[
+\text{space},
+\quad
+\text{time},
+\quad
+\text{mass},
+\quad
+\text{charge},
+\quad
+\text{color}
+\]
+
+という物理的意味が生まれると考えることができる。
+
+すると、
+
+\[
+\boxed{
+\text{異なる物理}
+=
+\text{異なる基本法則}
+}
+\]
+
+である必要はない。
+
+むしろ、
+
+\[
+\boxed{
+\text{異なる物理}
+=
+\text{同じ無名の物理の異なる観測写像}
+}
+\]
+
+である可能性がある。
+
+さらに、
+
+\[
+\boxed{
+\text{対称性}
+=
+\text{観測者が区別できない変換}
+}
+\]
+
+と読むなら、標準理論が強いゲージ対称性を要求する理由も、別の形で理解できる。
+
+そして対称性の破れとは、
+
+\[
+\boxed{
+\begin{array}{c}
+\text{それまで区別できなかった方向が}\\
+\text{区別可能になること}
+\end{array}
+}
+\]
+
+かもしれない。
+
+この見方では、時間、質量、電荷、色荷、そしてゲージ対称性は、最初から独立した概念ではない。
+
+それらはすべて、
+
+\[
+\boxed{
+\begin{array}{c}
+\text{一つの無名の高次元状態を、}\\
+\text{限られた観測部分空間から読んだ結果}
+\end{array}
+}
+\]
+
+として統一的に捉えられる可能性がある。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{最後の問い}\label{ux6700ux5f8cux306eux554fux3044}
+
+もし物理法則そのものが8次元側では一つしかなく、
+
+\[
+\boxed{
+\sum_{a=1}^{8} z_a^2=0
+}
+\]
+
+だけで閉じているとしたら、
+
+われわれが
+
+\[
+xyz
+\]
+
+を「空間」、
+
+\[
+t
+\]
+
+を「時間」、
+
+\[
+R
+\]
+
+を「質量・曲率」、
+
+\[
+Q_1,Q_2,Q_3
+\]
+
+を「電荷・色荷」
+
+と呼んでいること自体が、
+
+\textbf{物理法則なのか、それとも単なる観測者の選択なのか？}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{図の再現}\label{ux56f3ux306eux518dux73fe}
+
+図 1〜3
+は模式図で、データは無い。\texttt{figures/make\_figures.py}（Python
+3.9、numpy、matplotlib）を実行すると、英語ラベルの SVG と PNG
+が同じフォルダに生成される。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+図 & ファイル \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 &
+\texttt{figures/fig01\_lightcone\_central\_projection.\{svg,png\}} \\
+2 & \texttt{figures/fig02\_observers\_symmetry.\{svg,png\}} \\
+3 & \texttt{figures/fig03\_split\_3\_2.\{svg,png\}} \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{AI の関与の記録}\label{ai-ux306eux95a2ux4e0eux306eux8a18ux9332}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{ChatGPT}（2026-10-08）：本稿の初稿（§1〜§15
+  と「最後の問い」の構成と本文）。
+\item
+  \textbf{Claude}（2026-10-08）：Google
+  ドキュメントからの書き出しで生じたエスケープの修正、§3
+  を光円錐の方程式から始める形への書き直し、§4・§6・§15 の符号を虚の軸
+  \(t\) 一本に統一、§5 の質量殻と Kaluza--Klein の対応、§11
+  の大域形・SU(5)・複素構造の記述、要旨・§0・参考文献の追加と書誌の照合（\texttt{引用文献台帳\_20261008.md}）、§4
+  の中心投影との対応、図 1〜3 と生成スクリプト
+  \texttt{figures/make\_figures.py}。設計と判断は著者。
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsection{本研究系列}\label{ux672cux7814ux7a76ux7cfbux5217}
+
+{[}S1{]} 木原範昭, \textbf{設計書（第 0 論文）}. Concept DOI:
+10.5281/zenodo.22851944.
+
+{[}S2{]} 木原範昭,
+\textbf{第十一思考実験：背景時空を置かない二体系の放出記録 ―
+標準理論（Dirac--Coulomb 束縛状態・1PN 二体重力・Einstein の A
+係数）を無限遠の吸収体の静止系だけを基準に数値計算し、水素原子・電子--電子・陽子--陽子・水素分子の
+4 系で放出と吸収の関係量を読み出す ―}, v1.0 (2026-10-07). Concept DOI:
+10.5281/zenodo.23199299; Version DOI: 10.5281/zenodo.23199300.
+
+{[}S3{]} 木原範昭, \textbf{非自明二乗閉鎖から現れる複素位相構造}, v1.0
+(2026-07-18). Concept DOI: 10.5281/zenodo.21422505; Version DOI:
+10.5281/zenodo.21422506.
+
+{[}S4{]} 木原範昭, \textbf{6次元符号化 xyztRQ
+の再検討――次論文化に向けた思考実験ノート}, v4 (2026-04-30). Concept DOI:
+10.5281/zenodo.19902677; Version DOI: 10.5281/zenodo.19904714.
+
+{[}S5{]} 木原範昭, \textbf{中心投影の合成演算と合成曲率半径の閉形式 ―― 1
+回の中心投影と球面上の可換切断による高次元削減の代数的定式化}, v1
+(2026-05-07). Concept DOI: 10.5281/zenodo.20060728; Version DOI:
+10.5281/zenodo.20060729.
+
+\subsection{外部文献}\label{ux5916ux90e8ux6587ux732e}
+
+{[}1{]} P. J. Mohr, D. B. Newell, B. N. Taylor, E. Tiesinga, CODATA
+recommended values of the fundamental physical constants: 2022,
+Rev.~Mod. Phys. 97, 025002 (2025).
+
+{[}2{]} N. Bohr, On the constitution of atoms and molecules, Phil. Mag.
+26, 1 (1913).
+
+{[}3{]} A. Sommerfeld, Zur Quantentheorie der Spektrallinien, Ann. Phys.
+51, 1 (1916).
+
+{[}4{]} H. Kragh, Magic number: A partial history of the fine-structure
+constant, Arch. Hist. Exact Sci. 57, 395 (2003).
+
+{[}5{]} H. Minkowski, Raum und Zeit, Phys. Z. 10, 104 (1909).
+
+{[}6{]} L. C. Epstein, \emph{Relativity Visualized} (Insight Press, San
+Francisco, 1983).
+
+{[}7{]} Th. Kaluza, Zum Unitätsproblem der Physik, Sitzungsber. Preuss.
+Akad. Wiss. Berlin (Math. Phys.), 966 (1921).
+
+{[}8{]} O. Klein, Quantentheorie und fünfdimensionale
+Relativitätstheorie, Z. Phys. 37, 895 (1926).
+
+{[}9{]} H. Georgi, S. L. Glashow, Unity of all elementary-particle
+forces, Phys. Rev.~Lett. 32, 438 (1974).
+
+{[}10{]} J. Baez, J. Huerta, The algebra of grand unified theories,
+Bull. Amer. Math. Soc. 47, 483 (2010).
+
+{[}11{]} J. M. C. Montanus, Proper-time formulation of relativistic
+dynamics, Found. Phys. 31, 1357 (2001).
+
+{[}12{]} P. S. Wesson, \emph{Space-Time-Matter: Modern Kaluza-Klein
+Theory} (World Scientific, Singapore, 1999).
+
+{[}13{]} E. Witten, Search for a realistic Kaluza-Klein theory, Nucl.
+Phys. B 186, 412 (1981).
+
+{[}14{]} C. Furey, SU(3)\_C × SU(2)\_L × U(1)\_Y (× U(1)\_X) as a
+symmetry of division algebraic ladder operators, Eur. Phys. J. C 78, 375
+(2018).
+
+{[}15{]} C. Rovelli, Why gauge?, Found. Phys. 44, 91 (2014).
+
+\end{document}

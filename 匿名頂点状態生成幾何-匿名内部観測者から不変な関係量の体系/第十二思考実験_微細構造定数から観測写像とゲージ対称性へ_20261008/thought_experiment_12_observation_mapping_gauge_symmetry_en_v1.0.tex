@@ -1,0 +1,1655 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{luatexja}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={The Twelfth Thought Experiment: From the Fine-Structure Constant to Observation Maps and Gauge Symmetry},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{The Twelfth Thought Experiment: From the Fine-Structure Constant
+to Observation Maps and Gauge Symmetry}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{― Starting from the Fine-Structure Constant, Rereading
+Spacetime, Mass, Charge, Color Charge and Gauge Symmetry from the
+Light-Cone Equation and the Choice of Observable Axes ―}
+\author{Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020}
+\date{October 8, 2026 Version DOI 10.5281/zenodo.23226259}
+
+\ltjsetparameter{jacharrange={-2,-3}}
+\begin{document}
+\maketitle
+
+\textbf{Author:} Noriaki Kihara\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Version DOI:} 10.5281/zenodo.23226259\\
+\textbf{Concept DOI:} 10.5281/zenodo.23226258\\
+\textbf{Version:} v1.0\\
+\textbf{Date:} 2026-10-08\\
+\textbf{Related papers:} Design document (Paper 0) {[}S1{]}, the
+Eleventh Thought Experiment {[}S2{]}, nontrivial quadratic closure
+{[}S3{]}, reexamination of xyztRQ {[}S4{]}, composition of central
+projection {[}S5{]}
+
+\textbf{Keywords:} fine-structure constant, Bohr model, light cone,
+Minkowski metric, proper time, quadratic closure, observation map,
+indistinguishability, gauge symmetry, Kaluza--Klein, SU(5)
+
+\emph{This is an English translation of the Japanese original
+(thought\_experiment\_12\_observation\_mapping\_gauge\_symmetry\_ja\_v1.0.md).}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Abstract}\label{abstract}
+
+In the previous paper, the Eleventh Thought Experiment {[}S2{]}, the
+fine-structure constant \(\alpha\) was used as a known input value as it
+stands. This paper starts by asking where that \(\alpha\) comes from. In
+the Bohr ground state of hydrogen \(\alpha=v/c\), so \(\alpha\) can
+first be read as a velocity ratio. The Lorentz factor
+\(\gamma=1/\sqrt{1-\alpha^2}\) is only a component ratio of
+\(r^2+\tau^2+(it)^2=0\), which is the light-cone equation
+\(x^2+y^2+z^2+(it)^2=0\) with one proper-time axis added. A worldline
+slower than light lies on the light cone in the space with one more
+axis.
+
+We extend this light-cone equation to eight directions, the three
+spatial directions plus the not directly readable \(R\), \(Q_1\),
+\(Q_2\), \(Q_3\): \(x^2+y^2+z^2+R^2+Q_1^2+Q_2^2+Q_3^2+(it)^2=0\). We
+give the axes no physical names from the start and treat them as eight
+unnamed directions \((u_1,\ldots,u_8)\). When an observer chooses a
+directly readable subspace, the remaining directions cannot be
+distinguished and appear only as a sum of squares. A transformation
+\(G\) for which the observation map \(P\) satisfies \(P(U)=P(GU)\) is an
+observational symmetry, so symmetry can be read as the mathematical
+expression of indistinguishability. An observer who reads only \(t\)
+sees an \(O(7)\)-type symmetry, and if the five hidden directions split
+as 3+2,
+\(S(U(3)\times U(2))\simeq(SU(3)\times SU(2)\times U(1))/\mathbb Z_6\)
+appears as a candidate. This is the same structure as the 3+2 split of
+the SU(5) grand unified theory.
+
+This paper is a conceptual note without computation; the eight
+dimensions, the signature and the 3+2 split from §4 on are put in by
+hand as assumptions.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{0. Position of this paper}\label{position-of-this-paper}
+
+The Eleventh Thought Experiment {[}S2{]} computed two-body systems of
+standard theory numerically, referenced only to the rest frame of an
+absorber at infinity. The input \(\alpha\) was the CODATA value {[}1{]},
+and its meaning was not asked.
+
+This paper is the work in the opposite direction. It does not accept
+\(\alpha\) as an input value; it starts from ``what is \(\alpha\) in the
+first place'', returns to the light-cone equation, removes the names of
+the axes, and rereads spacetime, mass, charge, color charge and gauge
+symmetry from what an observer can distinguish. It is also a rewriting,
+in geometric language, of the first-principle candidate of the design
+document {[}S1{]}, ``states exist that have no names but are
+distinguishable from one another and can be counted'', and of the
+position that ``a state itself cannot be read directly''.
+
+This paper is a conceptual note without computation; the eight
+dimensions, the signature and the 3+2 split from §4 on are put in by
+hand as assumptions.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{1. Introduction}\label{introduction}
+
+This thought experiment started from a very simple question.
+
+\textbf{Where does the fine-structure constant \(\alpha\) come from in
+the first place?}
+
+In the standard treatment it is defined as
+
+\[
+\alpha=
+\frac{e^2}{4\pi\varepsilon_0\hbar c}
+\simeq\frac{1}{137.036}
+\]
+
+{[}1{]}, and in quantum electrodynamics it is treated as the
+dimensionless coupling constant that expresses the strength of the
+electromagnetic interaction.
+
+But if we go back to the historical starting point {[}2, 3, 4{]}, in the
+Bohr model of the hydrogen atom the ground state satisfies
+
+\[
+\frac{v}{c}=\alpha .
+\]
+
+That is,
+
+\[
+\boxed{\alpha=\frac{\text{velocity of the electron in the hydrogen ground state}}{\text{speed of light}}}
+\]
+
+Therefore
+
+\[
+\alpha^{-1}\simeq137
+\]
+
+can first be read, naively, as the velocity ratio
+
+\[
+c\simeq137\,v .
+\]
+
+Starting from this simple fact, might we be able to reread the
+fine-structure constant, special relativity, the Minkowski metric, and
+even mass, charge, color charge and gauge symmetry from a different
+angle?
+
+This paper follows that question step by step.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{2. Reading the fine-structure constant as a velocity
+ratio}\label{reading-the-fine-structure-constant-as-a-velocity-ratio}
+
+In the Bohr model of the hydrogen atom {[}2{]},
+
+\[
+\frac{mv^2}{r}
+=
+\frac{e^2}{4\pi\varepsilon_0r^2}
+\]
+
+and
+
+\[
+mvr=\hbar
+\]
+
+give
+
+\[
+v=
+\frac{e^2}{4\pi\varepsilon_0\hbar}.
+\]
+
+Dividing by the speed of light \(c\),
+
+\[
+\frac vc
+=
+\frac{e^2}{4\pi\varepsilon_0\hbar c}
+=\alpha.
+\]
+
+Therefore in the hydrogen ground state
+
+\[
+\boxed{\frac vc=\alpha}
+\]
+
+It is then no surprise that \(\alpha\) appeared when Sommerfeld put
+special-relativistic corrections into the hydrogen atom {[}3{]}.
+
+The Lorentz factor of special relativity is
+
+\[
+\gamma=
+\frac1{\sqrt{1-v^2/c^2}},
+\]
+
+so substituting
+
+\[
+\frac vc=\alpha
+\]
+
+gives
+
+\[
+\gamma=
+\frac1{\sqrt{1-\alpha^2}}.
+\]
+
+In the low-velocity approximation,
+
+\[
+\gamma
+=
+1+\frac12\alpha^2
++\frac38\alpha^4+\cdots .
+\]
+
+In this form, the reason why \(\alpha^2,\alpha^4,\ldots\) appear in the
+fine structure is very intuitive.
+
+But here an even simpler view is possible.
+
+Why do we have to think from \(\gamma\) at all?
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{3. Seeing it from the light-cone equation rather than the
+Lorentz
+factor}\label{seeing-it-from-the-light-cone-equation-rather-than-the-lorentz-factor}
+
+Set \(c=1\). The propagation of light is expressed by Minkowski's
+light-cone equation
+
+\[
+x^2+y^2+z^2-t^2=0 .
+\]
+
+Writing time as the imaginary number \(it\) {[}5{]},
+
+\[
+\boxed{x^2+y^2+z^2+(it)^2=0}
+\]
+
+The Lorentz transformations are determined as the linear transformations
+that preserve this form. What comes first is the light-cone equation;
+the Lorentz transformations appear afterwards as the transformations
+that preserve it.
+
+Next consider a particle moving with velocity \(v\). With the distance
+traveled \(r\) and the proper time \(\tau\),
+
+\[
+t^2-r^2=\tau^2 .
+\]
+
+Moving \(\tau^2\) to the left-hand side gives
+
+\[
+\boxed{r^2+\tau^2+(it)^2=0}
+\]
+
+This has the same form as the light-cone equation. A worldline that is
+slower than light in \((r,t)\) lies on the light cone in \((r,\tau,t)\),
+where one proper-time axis \(\tau\) has been added {[}6, 11{]} (Fig.
+1(a)(b)).
+
+Dividing by \(t^2\),
+
+\[
+\left(\frac rt\right)^2+
+\left(\frac \tau t\right)^2=1.
+\]
+
+Reading here
+
+\[
+\frac rt=\frac vc=\alpha ,
+\]
+
+we have
+
+\[
+\boxed{
+\left(\frac \tau t\right)^2+\alpha^2=1
+}
+\]
+
+and
+
+\[
+\frac \tau t=\sqrt{1-\alpha^2}.
+\]
+
+Taking the reciprocal,
+
+\[
+\gamma=\frac t\tau
+=\frac1{\sqrt{1-\alpha^2}} .
+\]
+
+Therefore \(\gamma\) is not fundamental.
+
+What comes first is
+
+\[
+\boxed{r^2+\tau^2+(it)^2=0},
+\]
+
+the light-cone equation with one axis added, and the Lorentz factor is
+nothing but its component ratio read from one axis.
+
+In this paper we call a zero sum of squares of this form, containing one
+imaginary component, a \textbf{quadratic closure}. The name belongs to
+this paper, but the equation is the light-cone equation itself. That a
+zero sum of squares can have a nontrivial solution only if at least one
+component is not real was shown in {[}S3{]}.
+
+Here the way the problem looks changes.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{4. Extending spacetime}\label{extending-spacetime}
+
+Next, using ordinary three-dimensional space and splitting the
+\(\tau^2\) of §3 into two directions \(R\) and \(Q\), we put
+
+\[
+\boxed{
+x^2+y^2+z^2+R^2+Q^2=t^2
+}
+\]
+
+Moving terms,
+
+\[
+x^2+y^2+z^2
++R^2+Q^2+(it)^2=0.
+\]
+
+This is also the light-cone equation, only with more axes. The imaginary
+axis is \(t\) alone.
+
+What matters here is not to fix the physical meaning of each axis from
+the start.
+
+First, simply, we read
+
+\[
+(x,y,z)
+\]
+
+as the directions that can be measured directly as space, and
+
+\[
+(R,Q)
+\]
+
+as the directions that cannot be measured directly in the same way.
+
+Then
+
+\[
+t^2-(x^2+y^2+z^2)
+=
+R^2+Q^2
+\]
+
+can be read as the observational relation
+
+\[
+\boxed{
+\begin{array}{c}
+\text{difference of squares of time and the directly readable part}\\
+=\ \text{sum of squares of the not directly readable part}
+\end{array}
+}
+\]
+
+For an observer who reads \(xyz\), this equation has the same form as
+the equation of central projection. When a point \(P=(x,y,z)\) on the
+tangent plane at distance \(R_c\) from the center \(O\) is mapped to the
+sphere of radius \(R_c\) by \(\pi(P)=R_c\,P/\ell\) {[}S5{]}, the
+distance \(\ell\) from \(O\) to \(P\) satisfies
+
+\[
+\ell^2=x^2+y^2+z^2+R_c^2 .
+\]
+
+Comparing with the equation above, the curvature radius in the
+projection direction is the square root of the sum of squares of the not
+directly readable directions, \(R_c=\sqrt{R^2+Q^2}\), and the distance
+\(\ell\) from the center to the point corresponds to \(t\). The proper
+time \(\tau\) of §3 corresponds to \(R_c\), the spatial distance \(r\)
+to the distance \(|x|\) on the tangent plane, and the slope \(v=r/t\) of
+the worldline coincides with \(\sin\theta=|x|/\ell\) of the angle
+\(\theta\) of the projection ray. Removing the imaginary unit \(i\) from
+the light-cone equation gives the Pythagorean equation of central
+projection (Fig. 1(c)).
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 1}]{figs/fig01_lightcone_central_projection.png}}
+\textbf{Figure 1.} The light cone and central projection are the same
+right triangle. (a) The light cone in the \((r,t)\) plane. A worldline
+of slope \(v<1\) lies inside the cone. (b) Adding the proper-time axis
+\(\tau\) gives \(r^2+\tau^2+(it)^2=0\), and the same worldline lies on
+the surface of the cone. In the cut at time \(t\), a right triangle
+forms with legs \(r\) (blue) and \(\tau\) (green) and the cut radius
+\(t\) (red) as hypotenuse. (c) Central projection
+\(\ell^2=|x|^2+R_c^2\). The same triangle appears as the distance
+\(|x|\) on the tangent plane (blue), the curvature radius \(R_c\) in the
+projection direction (green), and the distance \(\ell\) from the center
+to the point (red). \(r\leftrightarrow|x|\),
+\(\tau=\sqrt{R^2+\sum Q_i^2}\leftrightarrow R_c\),
+\(t\leftrightarrow\ell\), \(\sin\theta=v\). A schematic drawn for a
+generic \(v\); there are no data.
+
+At this point we do not need to assume that
+
+\begin{itemize}
+\tightlist
+\item
+  \(t\) is essentially a ``time axis''
+\item
+  \(R\) is essentially a ``mass axis''
+\item
+  \(Q\) is essentially a ``charge axis''.
+\end{itemize}
+
+These may be names attached afterwards to observational results. The
+names \(t,R,Q\) are those used in {[}S4{]}. The reading that relates the
+fifth coordinate to rest mass also appears in Wesson's Space-Time-Matter
+theory {[}12{]}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{5. Perhaps there is only one kind of
+momentum}\label{perhaps-there-is-only-one-kind-of-momentum}
+
+Suppose a state is expressed by one phase
+
+\[
+\Phi .
+\]
+
+Then the momentum in each direction can in general be written as its
+phase gradient,
+
+\[
+K_A=\partial_A\Phi .
+\]
+
+For the ordinary spatial directions we read it as
+
+\[
+(p_x,p_y,p_z).
+\]
+
+Applying the same idea to the other axes, there is only one gradient
+vector
+
+\[
+K=
+(K_x,K_y,K_z,K_t,K_R,K_Q).
+\]
+
+It is possible that what we call
+
+\[
+K_t\rightarrow E,
+\]
+
+\[
+K_R\rightarrow m,
+\]
+
+\[
+K_Q\rightarrow q
+\]
+
+are its components.
+
+Applying the closure of §4 to this gradient gives
+
+\[
+K_t^2=K_x^2+K_y^2+K_z^2+K_R^2+K_Q^2,
+\]
+
+that is,
+
+\[
+E^2=p^2+m^2+q^2,
+\]
+
+which returns to the ordinary mass shell \(E^2=p^2+m^2\) for \(q=0\).
+The reading in which the momentum in a hidden direction is read as
+charge and its square is added to the mass shell is the same structure
+as in Kaluza--Klein theory {[}7, 8{]}, where a particle moving on the
+light cone in five dimensions carries its momentum in the hidden
+direction as charge in four dimensions and its square as the
+four-dimensional mass.
+
+But here too the order has to be reversed.
+
+What really exists from the start is not
+
+\[
+E,m,q .
+\]
+
+There are first unnamed gradient components, and we may merely be giving
+the names
+
+\[
+\text{energy},
+\quad
+\text{mass},
+\quad
+\text{charge}
+\]
+
+to the ways they appear in observation.
+
+Then the view
+
+\[
+\boxed{
+\begin{array}{c}
+\text{momentum, energy, mass and charge are}\\
+\text{projections of one gradient onto different directions}
+\end{array}
+}
+\]
+
+becomes possible.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{6. Splitting Q into three
+directions}\label{splitting-q-into-three-directions}
+
+There is no need to take \(Q\) as a single axis either.
+
+Rather, we put the three directions
+
+\[
+(Q_1,Q_2,Q_3).
+\]
+
+The whole is then the eight-dimensional
+
+\[
+\boxed{
+(x,y,z,t,R,Q_1,Q_2,Q_3)
+}
+\]
+
+The quadratic closure is
+
+\[
+\boxed{
+x^2+y^2+z^2
++R^2+Q_1^2+Q_2^2+Q_3^2
+=
+t^2
+}
+\]
+
+or
+
+\[
+\boxed{
+x^2+y^2+z^2
++R^2+Q_1^2+Q_2^2+Q_3^2+(it)^2=0
+}
+\]
+
+It is the light-cone equation in eight dimensions. For an observer who
+reads \(xyz\), the curvature radius of the central projection is
+\(R_c=\sqrt{R^2+Q_1^2+Q_2^2+Q_3^2}\).
+
+It has been shown in the Kaluza--Klein framework that obtaining the
+Standard Model group as isometries of the hidden directions requires at
+least seven directions outside the four spacetime directions {[}13{]}.
+In this paper the directions outside the four spacetime directions are
+the four \(R,Q_1,Q_2,Q_3\), which is not enough as isometries. This
+paper reads the group not from isometries but from indistinguishability
+(§9--§11). A precedent that reads the Standard Model group from eight
+dimensions (the octonions) is Furey {[}14{]}.
+
+Here too we do not think that the physical meanings
+
+\[
+x,y,z,t,R,Q_1,Q_2,Q_3
+\]
+
+exist from the start.
+
+Originally we think there are only
+
+\[
+(u_1,u_2,\ldots,u_8),
+\]
+
+\textbf{eight unnamed directions}.
+
+When an observer can read three of them directly as space, it names them
+
+\[
+(u_1,u_2,u_3)\rightarrow(x,y,z).
+\]
+
+It may merely be naming the features observed in the remaining
+directions
+
+\[
+t,\quad R,\quad Q_1,Q_2,Q_3 .
+\]
+
+Here the meaning of physical quantities itself becomes an
+observer-dependent map.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{7. Observers who can read different
+axes}\label{observers-who-can-read-different-axes}
+
+From here a strong thought experiment becomes possible.
+
+That we directly read
+
+\[
+(x,y,z)
+\]
+
+does not mean that this is the only possible observation map.
+
+For example, an observer that can directly read only
+
+\[
+(Q_1,Q_2,Q_3)
+\]
+
+can be defined mathematically.
+
+For that observer,
+
+\[
+(Q_1,Q_2,Q_3)
+\]
+
+looks like ordinary three-dimensional space.
+
+Conversely,
+
+\[
+x,y,z,t,R
+\]
+
+become internal directions that cannot be read directly.
+
+The physical phenomena of that world would look extremely different from
+those of ours.
+
+But if the state and the interactions on the eight-dimensional side are
+the same, this is nothing but
+
+\[
+\boxed{
+\text{different observation maps of the same physics}
+}
+\]
+
+This is not ``different physical laws'' but
+
+\[
+\boxed{
+\text{the result of choosing a different subspace as the observed space}
+}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{8. What is seen if only the t axis can be
+read}\label{what-is-seen-if-only-the-t-axis-can-be-read}
+
+Consider an even more extreme case.
+
+Consider an observer that can directly read, of the eight directions,
+only
+
+\[
+t .
+\]
+
+The remaining seven directions,
+
+\[
+x,y,z,R,Q_1,Q_2,Q_3 ,
+\]
+
+cannot be distinguished individually.
+
+What can then be observed is not their breakdown but only the sum of
+squares
+
+\[
+\boxed{
+\rho^2=
+x^2+y^2+z^2
++R^2
++Q_1^2+Q_2^2+Q_3^2
+}
+\]
+
+That is, it appears only as
+
+\[
+\boxed{
+t^2=\rho^2
+}
+\]
+
+To this observer, the eight-dimensional light cone is seen only as its
+radius \(\rho=t\).
+
+A complicated state with seven degrees of freedom degenerates into one
+scalar quantity.
+
+This is important.
+
+The unobservable degrees of freedom have not disappeared.
+
+\textbf{Because they cannot be distinguished, they appear only as one
+norm.}
+
+In general, if only \(k\) of the eight dimensions can be read directly,
+
+\[
+\mathbb R^8
+\rightarrow
+\mathbb R^k_{\rm observed}
+\oplus
+\mathbb R^{8-k}_{\rm hidden} .
+\]
+
+If the hidden side cannot be distinguished individually, it is observed
+as one quantity
+
+\[
+\rho_{\rm hidden}^2
+=
+\sum_{\rm hidden}u_a^2 .
+\]
+
+Therefore
+
+\[
+\boxed{
+\begin{array}{c}
+\text{dimensional reduction is not that dimensions}\\
+\text{physically disappear, but that the observer}\\
+\text{can no longer distinguish them}
+\end{array}
+}
+\]
+
+can be read.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{9. Symmetry appears from
+here}\label{symmetry-appears-from-here}
+
+This thought experiment gives another view of why standard theory
+requires strong symmetries.
+
+Let the observation map be
+
+\[
+P .
+\]
+
+If, after acting with a transformation \(G\) on a state \(U\),
+
+\[
+P(U)=P(GU),
+\]
+
+then the observer cannot distinguish the two.
+
+Therefore
+
+\[
+\boxed{
+P(U)=P(GU)
+\quad\Longrightarrow\quad
+G\text{ is an observational symmetry transformation}
+}
+\]
+
+That is,
+
+\[
+\boxed{
+\text{symmetry is the mathematical expression of indistinguishability}
+}
+\]
+
+can be read. The connection between gauge symmetry and observation and
+relations is discussed by Rovelli {[}15{]}.
+
+There is no need to impose symmetry on nature afterwards.
+
+If exchanging or rotating axes that the observer cannot name leaves the
+observational results unchanged, that is directly a symmetry.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{10. The huge symmetry when only t can be
+read}\label{the-huge-symmetry-when-only-t-can-be-read}
+
+When only \(t\) can be read, only
+
+\[
+\rho^2=
+x^2+y^2+z^2+R^2+Q_1^2+Q_2^2+Q_3^2
+\]
+
+can be observed.
+
+Considering only the real squared norm, rotating the seven hidden
+directions leaves \(\rho\) unchanged.
+
+Therefore a large symmetry of type
+
+\[
+O(7)
+\]
+
+appears.
+
+What matters is that
+
+\[
+\boxed{
+\begin{array}{c}
+\text{the fewer the observable dimensions,}\\
+\text{the larger the indistinguishability on the hidden side,}\\
+\text{and the larger the apparent symmetry}
+\end{array}
+}
+\]
+
+(Fig. 2).
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 2}]{figs/fig02_observers_symmetry.png}}
+\textbf{Figure 2.} Three observation maps of the same eight directions
+and the size of the rotational symmetry of the hidden directions. Left:
+the directions that can be read directly (blue) and the directions that
+cannot be distinguished (gray) for an observer reading \(xyz\), an
+observer reading \(Q_1Q_2Q_3\) and an observer reading only \(t\).
+Right: the number \(k\) of directly readable directions and the
+dimension \((8-k)(7-k)/2\) of the rotation group of the hidden
+directions. Reading only \(t\) gives \(O(7)\) (21 dimensions); reading
+\(xyz\) gives 10 dimensions. When \(t\) is hidden the group becomes
+\(O(7-k,1)\), but the dimension is the same.
+
+Conversely, when the observational resolution rises and directions that
+were indistinguishable become distinguishable, the symmetry becomes
+smaller.
+
+Therefore the interpretation
+
+\[
+\boxed{
+\begin{array}{c}
+\text{symmetry breaking}
+=
+\text{directions that could not be distinguished}\\
+\text{becoming distinguishable}
+\end{array}
+}
+\]
+
+also becomes possible.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{11. The 3+2 split}\label{the-32-split}
+
+Suppose we are observers who directly read
+
+\[
+(x,y,z).
+\]
+
+Then on the hidden side the five directions
+
+\[
+(t,R,Q_1,Q_2,Q_3)
+\]
+
+remain.
+
+Suppose that observation makes these five directions distinguishable
+only as the two groups
+
+\[
+(Q_1,Q_2,Q_3)
+\]
+
+and
+
+\[
+(t,R),
+\]
+
+that is, as
+
+\[
+\boxed{3+2}
+\]
+
+If the three internal components, as complex states, are
+indistinguishable under change of basis, a symmetry of type
+
+\[
+U(3)
+\]
+
+becomes a candidate.
+
+Likewise, for the two components a symmetry of type
+
+\[
+U(2)
+\]
+
+becomes a candidate.
+
+Therefore the structure
+
+\[
+U(3)\times U(2)
+\]
+
+can appear naturally.
+
+Further, imposing a common overall phase / determinant condition and
+considering
+
+\[
+S(U(3)\times U(2)),
+\]
+
+we have
+
+\[
+S(U(3)\times U(2))
+\simeq
+\frac{
+SU(3)\times SU(2)\times U(1)
+}{
+\mathbb Z_6
+}
+\]
+
+{[}10{]}.
+
+This coincides with the global form
+\((SU(3)\times SU(2)\times U(1))/\mathbb Z_6\) usually adopted as the
+gauge group of the Standard Model.
+
+This 3+2 split is the same structure as the one in which
+\(S(U(3)\times U(2))\subset SU(5)\) remains in the SU(5) grand unified
+theory {[}9, 10{]} (Fig. 3).
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={Figure 3}]{figs/fig03_split_3_2.png}}
+\textbf{Figure 3.} The 3+2 split of the five hidden directions. Mixing
+within \((Q_1,Q_2,Q_3)\) (blue) corresponds to \(U(3)\), mixing within
+\((t,R)\) (orange) to \(U(2)\), and mixing between the two groups (gray)
+can be distinguished by observation. Imposing a common overall phase /
+determinant condition gives \(S(U(3)\times U(2))\subset SU(5)\),
+\(S(U(3)\times U(2))\simeq(SU(3)\times SU(2)\times U(1))/\mathbb Z_6\)
+{[}9, 10{]}.
+
+However, at this stage this is \textbf{not a derivation}.
+
+In particular, the quadratic closure taken as basic in this research,
+
+\[
+\sum z_n^2=0 ,
+\]
+
+and the Hermitian norm preserved by the ordinary unitary groups,
+
+\[
+\sum |z_n|^2 ,
+\]
+
+are not the same.
+
+Obtaining \(U(n)\) from eight real directions requires newly assuming a
+complex structure, and this paper does not derive it.
+
+Therefore, to claim
+
+\[
+3+2
+\rightarrow
+SU(3)\times SU(2)\times U(1),
+\]
+
+it will be necessary to make clear which observable is taken as the
+invariant.
+
+Still, it is noteworthy that from the observational structure
+
+\[
+\boxed{
+\text{3 indistinguishable directions}
++
+\text{2 indistinguishable directions}
+}
+\]
+
+alone, a mathematical structure extremely close to the Standard Model
+gauge group appears as a candidate.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{12. Reversing the viewpoint}\label{reversing-the-viewpoint}
+
+In the usual description,
+
+\[
+\text{space},
+\quad
+\text{time},
+\quad
+\text{mass},
+\quad
+\text{charge},
+\quad
+\text{color charge}
+\]
+
+are introduced from the start as different kinds of physical quantities.
+
+Then symmetry is required to connect them.
+
+In this thought experiment the order is reversed.
+
+What exists first is only the unnamed state space
+
+\[
+\boxed{
+(u_1,\ldots,u_8)
+}
+\]
+
+The observer chooses from it a subspace it can distinguish directly.
+
+The rest cannot be distinguished directly.
+
+And the results of projecting them onto the observable space are named
+
+\[
+\text{time},
+\quad
+\text{mass},
+\quad
+\text{charge},
+\quad
+\text{color charge}.
+\]
+
+Then
+
+\[
+\boxed{
+\begin{array}{c}
+\text{a physical quantity is not an attribute proper to an axis}\\
+\text{but a reading name that depends on the observation map}
+\end{array}
+}
+\]
+
+Likewise,
+
+\[
+\boxed{
+\begin{array}{c}
+\text{symmetry is not a constraint added to nature}\\
+\text{but the existence of degrees of freedom the observer cannot distinguish}
+\end{array}
+}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{13. Back to the fine-structure
+constant}\label{back-to-the-fine-structure-constant}
+
+Here we return to the fine-structure constant, our starting point.
+
+In the hydrogen ground state,
+
+\[
+\alpha=\frac vc.
+\]
+
+At first this looked like a mere velocity ratio.
+
+But in the view of this thought experiment,
+
+\[
+v
+\]
+
+and
+
+\[
+c
+\]
+
+may also be ratios of reading an unnamed higher-dimensional gradient
+from different observation directions.
+
+Therefore the possibility arises that it can be interpreted as
+
+\[
+\boxed{
+\alpha
+=
+\text{ratio of gradient components onto two observation directions}
+}
+\]
+
+Then the fine-structure constant may not be merely ``the strength of the
+electromagnetic interaction'' but
+
+\[
+\boxed{
+\begin{array}{c}
+\text{an angle or ratio arising when a higher-dimensional state}\\
+\text{is projected onto a particular observed subspace}
+\end{array}
+}
+\]
+
+At this stage it is undetermined which of
+
+\[
+Q_i/t,
+\quad
+Q_i/R,
+\quad
+|\mathbf Q|/R,
+\quad
+\text{or another projection angle}
+\]
+
+it corresponds to.
+
+But at least, starting from the historical fact
+
+\[
+\alpha=\frac vc ,
+\]
+
+we place a starting point for looking for \(\alpha\) as a purely
+geometric ratio.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{14. Verification items from this thought
+experiment}\label{verification-items-from-this-thought-experiment}
+
+At least the following verifiable directions arise.
+
+First,
+
+\[
+\boxed{
+\begin{array}{c}
+\text{from the same eight-dimensional dynamics,}\\
+\text{different effective physics should be obtained}\\
+\text{only by changing the observed subspace}
+\end{array}
+}
+\]
+
+Therefore, without changing the interaction law at all, the effective
+motion can be computed numerically for each case, such as reading
+
+\[
+xyz ,
+\]
+
+reading
+
+\[
+Q_1Q_2Q_3 ,
+\]
+
+or reading only
+
+\[
+t .
+\]
+
+Second,
+
+\[
+\boxed{
+\begin{array}{c}
+\text{the fewer the observable dimensions,}\\
+\text{the larger the effective symmetry should be}
+\end{array}
+}
+\]
+
+Third,
+
+\[
+\boxed{
+\begin{array}{c}
+\text{when the observational resolution rises and}\\
+\text{previously indistinguishable internal directions are separated,}\\
+\text{the symmetry should break}
+\end{array}
+}
+\]
+
+Fourth, at least some of mass, charge and color charge may be
+reproducible as
+
+\[
+\boxed{
+\begin{array}{c}
+\text{not different basic attributes but}\\
+\text{different projected components of the same unnamed state space}
+\end{array}
+}
+\]
+
+Fifth, it can be tested whether the Standard Model symmetry of type
+
+\[
+SU(3)\times SU(2)\times U(1)
+\]
+
+can arise from
+
+\[
+\boxed{
+\begin{array}{c}
+\text{the observational indistinguishability classes}\\
+\text{of 3 directions and 2 directions}
+\end{array}
+}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{15. Conclusion}\label{conclusion}
+
+This thought experiment started by questioning the meaning of one
+dimensionless constant,
+
+\[
+\boxed{\alpha\simeq1/137}
+\]
+
+In the hydrogen ground state,
+
+\[
+\alpha=\frac vc.
+\]
+
+Reading this not from the Lorentz factor but from
+
+\[
+r^2+\tau^2+(it)^2=0 ,
+\]
+
+the light-cone equation with one axis added, \(\alpha\) appears as a
+simple direction ratio.
+
+Extending this to
+
+\[
+x^2+y^2+z^2+R^2+Q_1^2+Q_2^2+Q_3^2
+=
+t^2
+\]
+
+gives the eight-dimensional structure
+
+\[
+(x,y,z,t,R,Q_1,Q_2,Q_3).
+\]
+
+But there is no need to give these eight axes physical names from the
+start.
+
+Essentially there exists only the unnamed state space
+
+\[
+(u_1,\ldots,u_8),
+\]
+
+and it can be thought that physical meanings such as
+
+\[
+\text{space},
+\quad
+\text{time},
+\quad
+\text{mass},
+\quad
+\text{charge},
+\quad
+\text{color}
+\]
+
+arise according to
+
+\[
+\boxed{
+\text{which axes are read as the observable space}
+}
+\]
+
+Then
+
+\[
+\boxed{
+\text{different physics}
+=
+\text{different basic laws}
+}
+\]
+
+need not hold.
+
+Rather,
+
+\[
+\boxed{
+\text{different physics}
+=
+\text{different observation maps of the same unnamed physics}
+}
+\]
+
+may hold.
+
+Further, if we read
+
+\[
+\boxed{
+\text{symmetry}
+=
+\text{transformations the observer cannot distinguish}
+}
+\]
+
+the reason why standard theory requires strong gauge symmetries can also
+be understood in another form.
+
+And symmetry breaking may be
+
+\[
+\boxed{
+\begin{array}{c}
+\text{directions that could not be distinguished}\\
+\text{becoming distinguishable}
+\end{array}
+}
+\]
+
+In this view, time, mass, charge, color charge and gauge symmetry are
+not independent concepts from the start.
+
+They may all be grasped in a unified way as
+
+\[
+\boxed{
+\begin{array}{c}
+\text{the results of reading one unnamed higher-dimensional state}\\
+\text{from a limited observed subspace}
+\end{array}
+}
+\]
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{The last question}\label{the-last-question}
+
+If the physical law on the eight-dimensional side were only one, closed
+by
+
+\[
+\boxed{
+\sum_{a=1}^{8} z_a^2=0
+}
+\]
+
+alone, then is the very fact that we call
+
+\[
+xyz
+\]
+
+``space'',
+
+\[
+t
+\]
+
+``time'',
+
+\[
+R
+\]
+
+``mass and curvature'', and
+
+\[
+Q_1,Q_2,Q_3
+\]
+
+``charge and color charge''
+
+\textbf{a physical law, or merely the observer's choice?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Reproducing the figures}\label{reproducing-the-figures}
+
+Figures 1--3 are schematics without data. Running
+\texttt{figures/make\_figures.py} (Python 3.9, numpy, matplotlib)
+generates SVG and PNG files with English labels in the same folder.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Fig. & File \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 &
+\texttt{figures/fig01\_lightcone\_central\_projection.\{svg,png\}} \\
+2 & \texttt{figures/fig02\_observers\_symmetry.\{svg,png\}} \\
+3 & \texttt{figures/fig03\_split\_3\_2.\{svg,png\}} \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Record of AI involvement}\label{record-of-ai-involvement}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{ChatGPT} (2026-10-08): first draft of this paper (structure
+  and text of §1--§15 and ``The last question'').
+\item
+  \textbf{Claude} (2026-10-08): correction of escapes produced by export
+  from Google Docs, rewriting §3 to start from the light-cone equation,
+  unifying the signs of §4, §6 and §15 to a single imaginary axis \(t\),
+  the correspondence between the mass shell and Kaluza--Klein in §5, the
+  statements on the global form, SU(5) and complex structure in §11,
+  addition of the abstract, §0 and references with bibliographic checks
+  (\texttt{引用文献台帳\_20261008.md}), the correspondence with central
+  projection in §4, Figures 1--3 and the script
+  \texttt{figures/make\_figures.py}, and this English translation.
+  Design and judgment are the author's.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{References}\label{references}
+
+\subsection{This research series}\label{this-research-series}
+
+{[}S1{]} N. Kihara, \textbf{Design document (Paper 0)}. Concept DOI:
+10.5281/zenodo.22851944.
+
+{[}S2{]} N. Kihara, \textbf{The Eleventh Thought Experiment: Emission
+Records of Two-Body Systems without a Background Spacetime - Computing
+Standard Theory (Dirac-Coulomb Bound States, 1PN Two-Body Gravity,
+Einstein A Coefficients) Referenced Only to the Rest Frame of an
+Absorber at Infinity, and Reading Out Emission-Absorption Relations for
+the Hydrogen Atom, Electron-Electron, Proton-Proton and the Hydrogen
+Molecule}, v1.0 (2026-10-07). Concept DOI: 10.5281/zenodo.23199299;
+Version DOI: 10.5281/zenodo.23199300.
+
+{[}S3{]} N. Kihara, \textbf{Complex Phase Structure Emerging from
+Nontrivial Quadratic Closure: A Foundational Connection to Finite-Order
+Exchange Systems and Discrete Born-Type Weights}, v1.0 (2026-07-18).
+Concept DOI: 10.5281/zenodo.21422505; Version DOI:
+10.5281/zenodo.21422506.
+
+{[}S4{]} N. Kihara, \textbf{Reexamination of the 6-Dimensional Sign
+Vector xyztRQ: A Thought Experiment Toward a Future Paper}, v4
+(2026-04-30). Concept DOI: 10.5281/zenodo.19902677; Version DOI:
+10.5281/zenodo.19904714.
+
+{[}S5{]} N. Kihara, \textbf{Composition of Central Projection and the
+Closed Form of the Composite Curvature Radius: An Algebraic Formulation
+of High-Dimensional Reduction via One Central Projection and Commutative
+Cuts on the Sphere}, v1 (2026-05-07). Concept DOI:
+10.5281/zenodo.20060728; Version DOI: 10.5281/zenodo.20060729.
+
+\subsection{External references}\label{external-references}
+
+{[}1{]} P. J. Mohr, D. B. Newell, B. N. Taylor, E. Tiesinga, CODATA
+recommended values of the fundamental physical constants: 2022,
+Rev.~Mod. Phys. 97, 025002 (2025).
+
+{[}2{]} N. Bohr, On the constitution of atoms and molecules, Phil. Mag.
+26, 1 (1913).
+
+{[}3{]} A. Sommerfeld, Zur Quantentheorie der Spektrallinien, Ann. Phys.
+51, 1 (1916).
+
+{[}4{]} H. Kragh, Magic number: A partial history of the fine-structure
+constant, Arch. Hist. Exact Sci. 57, 395 (2003).
+
+{[}5{]} H. Minkowski, Raum und Zeit, Phys. Z. 10, 104 (1909).
+
+{[}6{]} L. C. Epstein, \emph{Relativity Visualized} (Insight Press, San
+Francisco, 1983).
+
+{[}7{]} Th. Kaluza, Zum Unitätsproblem der Physik, Sitzungsber. Preuss.
+Akad. Wiss. Berlin (Math. Phys.), 966 (1921).
+
+{[}8{]} O. Klein, Quantentheorie und fünfdimensionale
+Relativitätstheorie, Z. Phys. 37, 895 (1926).
+
+{[}9{]} H. Georgi, S. L. Glashow, Unity of all elementary-particle
+forces, Phys. Rev.~Lett. 32, 438 (1974).
+
+{[}10{]} J. Baez, J. Huerta, The algebra of grand unified theories,
+Bull. Amer. Math. Soc. 47, 483 (2010).
+
+{[}11{]} J. M. C. Montanus, Proper-time formulation of relativistic
+dynamics, Found. Phys. 31, 1357 (2001).
+
+{[}12{]} P. S. Wesson, \emph{Space-Time-Matter: Modern Kaluza-Klein
+Theory} (World Scientific, Singapore, 1999).
+
+{[}13{]} E. Witten, Search for a realistic Kaluza-Klein theory, Nucl.
+Phys. B 186, 412 (1981).
+
+{[}14{]} C. Furey, SU(3)\_C × SU(2)\_L × U(1)\_Y (× U(1)\_X) as a
+symmetry of division algebraic ladder operators, Eur. Phys. J. C 78, 375
+(2018).
+
+{[}15{]} C. Rovelli, Why gauge?, Found. Phys. 44, 91 (2014).
+
+\end{document}
