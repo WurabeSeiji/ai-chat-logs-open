@@ -3,8 +3,8 @@
 
 **著者:** 木原範昭 (Noriaki Kihara)  
 **ORCID:** 0009-0004-6753-4020  
-**Version DOI:** （取得後に記入）  
-**Concept DOI:** （取得後に記入）  
+**Version DOI:** 10.5281/zenodo.23266251  
+**Concept DOI:** 10.5281/zenodo.23266250  
 **版:** v1.0  
 **日付:** 2026-10-10  
 **関連論文:** 第十二思考実験 [S1]、局在波の二重スリット [S2]、二波交換の先行実験 [S3]、有限位数共鳴 [S4]、交換重み [S5]、xyztRQ の再検討 [S6]、先行実験の再実行 [S7]
@@ -472,13 +472,13 @@ $$
 しかし、そこで順序を取り違えてはいけない。
 
 $$
-\boxed{
+\boxed{\begin{array}{c}
 \text{周期があるから安定なのではない。}
 \\
 \text{まず相互作用があり、何が安定に残るかを問う。}
 \\
 \text{周期や整数比が現れるなら、それは結果である。}
-}
+\end{array}}
 $$
 
 第十二思考実験が「物理量の名前を先に与えない」試みだったとすれば、第十三思考実験は「**周期条件や質量を先に与えない**」試みである。両者に共通するのは、読めた性質を出発点へ遡って押し込まないという原則である。
@@ -512,7 +512,7 @@ $$
 # AI の関与の記録
 
 - **ChatGPT**（2026-10-09）：著者との対話を基にした初稿の作成（着想が生じた順序での再構成、構成・式の区別・未検証事項の明記）。
-- **Claude**（2026-10-09〜10）：§6 を自己論文の再引用として書き直し、自己引用 [S4]〜[S6] の追加、補遺の本文への統合（§4.0・§14）、外部文献 [3]〜[13] の本文での引用、§5・§12.1 の文の修正、先行実験の元プログラムの忠実コピーによる再実行と記録（[S7]、§6.1、図2）、章立てと体裁の整理。問題提起、主要な因果順序の訂正、安定性選別と質量・寿命への着想、既存図の提供、設計と判断は著者。
+- **Claude**（2026-10-09〜10）：§6 を自己論文の再引用として書き直し、自己引用 [S4]〜[S6] の追加、補遺の本文への統合（§4.0・§14）、外部文献 [3]〜[13] の本文での引用、§5・§12.1 の文の修正、先行実験の元プログラムの忠実コピーによる再実行と記録（[S7]、§6.1、図2）、章立てと体裁の整理、英訳。問題提起、主要な因果順序の訂正、安定性選別と質量・寿命への着想、既存図の提供、設計と判断は著者。
 
 ---
 
@@ -532,7 +532,7 @@ $$
 
 [S6] 木原範昭, **6次元符号化 xyztRQ の再検討──次論文化に向けた思考実験ノート**, v4 (2026-04-30). Concept DOI: https://doi.org/10.5281/zenodo.19902677 ; Version DOI: https://doi.org/10.5281/zenodo.19904714 .
 
-[S7] 木原範昭, **検証：R=0.70 の再帰交換における正規化と振幅**（2026-10-09、本稿と同じフォルダ）. `検証_R070交換の正規化と振幅_20261009/` : 元プログラムの忠実コピー `original_copy/run_exchange_scattering_matrix_fermionic_localization_transfer_preliminary_v1.py` とその出力（対照）、記録プログラム `measure_normalization_trace.py`、データ `results/trace_renormalized_R070.csv`・`trace_pure_unitary_R070.csv`・`control_vs_original_snapshots.csv`・`summary.json`、図 `results/normalization_trace_R070.png`、`README.md`・`run_all.sh`・`SHA256SUMS`.
+[S7] 木原範昭, **検証：R=0.70 の再帰交換における正規化と振幅**（2026-10-09、本稿と同じフォルダ）. `検証_R070交換の正規化と振幅_20261009/` : 元プログラムの忠実コピー `original_copy/run_exchange_scattering_matrix_fermionic_localization_transfer_preliminary_v1.py` とその出力（対照）、記録プログラム `measure_normalization_trace.py`、データ `results/trace_renormalized_R070.csv`・`trace_pure_unitary_R070.csv`・`control_vs_original_snapshots.csv`・`summary.json`、図 `results/normalization_trace_R070.png`、`README.md`・`run_all.sh`・`SHA256SUMS`. 本稿の Zenodo レコード（10.5281/zenodo.23266251）に `verification_R070_exchange_20261009.zip` として同梱。
 
 ## 外部文献
 
