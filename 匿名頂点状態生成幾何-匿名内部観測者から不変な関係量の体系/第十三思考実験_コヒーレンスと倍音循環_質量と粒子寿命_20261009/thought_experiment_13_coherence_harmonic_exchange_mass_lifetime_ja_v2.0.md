@@ -3,7 +3,7 @@
 
 **著者:** 木原範昭 (Noriaki Kihara)  
 **ORCID:** 0009-0004-6753-4020  
-**Version DOI:** （v2.0 公開時に記入。v1.0 は 10.5281/zenodo.23266251）  
+**Version DOI:** 10.5281/zenodo.23280070  
 **Concept DOI:** 10.5281/zenodo.23266250  
 **版:** v2.0（v1.0 からの変更は末尾の「変更履歴」）  
 **日付:** 2026-10-10  
@@ -575,7 +575,7 @@ $$
 
 # 変更履歴
 
-**v2.0（2026-10-10）** v1.0（Version DOI 10.5281/zenodo.23266251）からの変更は次のとおりである。v1.0 の主張と結論は変えていない。
+**v2.0（2026-10-10、Version DOI 10.5281/zenodo.23280070）** v1.0（Version DOI 10.5281/zenodo.23266251）からの変更は次のとおりである。v1.0 の主張と結論は変えていない。
 
 - **ヘッダー:** 版を v2.0 とし、関連論文に [S8]、キーワードに「有限位数根」を加えた。
 - **要旨:** 末尾から 2 段落目に、§6.2 の結果と、その周期が入力した $R$ の帰結であることを記す段落を加えた。最終段落に「v2 で加えた数値実験（§6.2）も、この位置づけを変えない」を加えた。
@@ -616,7 +616,7 @@ $$
 
 [S7] 木原範昭, **検証：R=0.70 の再帰交換における正規化と振幅**（2026-10-09、本稿と同じフォルダ）. `検証_R070交換の正規化と振幅_20261009/` : 元プログラムの忠実コピー `original_copy/run_exchange_scattering_matrix_fermionic_localization_transfer_preliminary_v1.py` とその出力（対照）、記録プログラム `measure_normalization_trace.py`、データ `results/trace_renormalized_R070.csv`・`trace_pure_unitary_R070.csv`・`control_vs_original_snapshots.csv`・`summary.json`、図 `results/normalization_trace_R070.png`、`README.md`・`run_all.sh`・`SHA256SUMS`. 本稿の Zenodo レコード（10.5281/zenodo.23266251）に `verification_R070_exchange_20261009.zip` として同梱。
 
-[S8] 木原範昭, **検証：厳密根 $R_{124,23}$ における二波交換の完全回帰**（2026-10-10、本稿と同じフォルダ）. `検証_R12423厳密根の完全回帰_20261010/` : 元プログラムの写し `original_copy/run_exchange_scattering_matrix_fermionic_localization_transfer_preliminary_v1.py`、記録プログラム `run_exact_root_recurrence_R12423.py`、図化プログラム `plot_exact_root_recurrence_R12423.py`、データ `results/trace_R12423.csv`・`trace_pure_unitary_R12423.csv`・`coefficients_R12423.csv`・`basis_density_R12423.csv`・`control_R070_vs_S7.json`・`summary.json`、図 `figures/`、`README.md`・`run_all.sh`・`SHA256SUMS`. 本稿 v2.0 の Zenodo レコードに `verification_R12423_exact_root_20261010.zip` として同梱。
+[S8] 木原範昭, **検証：厳密根 $R_{124,23}$ における二波交換の完全回帰**（2026-10-10、本稿と同じフォルダ）. `検証_R12423厳密根の完全回帰_20261010/` : 元プログラムの写し `original_copy/run_exchange_scattering_matrix_fermionic_localization_transfer_preliminary_v1.py`、記録プログラム `run_exact_root_recurrence_R12423.py`、図化プログラム `plot_exact_root_recurrence_R12423.py`、データ `results/trace_R12423.csv`・`trace_pure_unitary_R12423.csv`・`coefficients_R12423.csv`・`basis_density_R12423.csv`・`control_R070_vs_S7.json`・`summary.json`、図 `figures/`、`README.md`・`run_all.sh`・`SHA256SUMS`. 一式は GitHub の本稿と同じフォルダにある（https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E5%8C%BF%E5%90%8D%E9%A0%82%E7%82%B9%E7%8A%B6%E6%85%8B%E7%94%9F%E6%88%90%E5%B9%BE%E4%BD%95-%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E8%A6%B3%E6%B8%AC%E8%80%85%E3%81%8B%E3%82%89%E4%B8%8D%E5%A4%89%E3%81%AA%E9%96%A2%E4%BF%82%E9%87%8F%E3%81%AE%E4%BD%93%E7%B3%BB/%E7%AC%AC%E5%8D%81%E4%B8%89%E6%80%9D%E8%80%83%E5%AE%9F%E9%A8%93_%E3%82%B3%E3%83%92%E3%83%BC%E3%83%AC%E3%83%B3%E3%82%B9%E3%81%A8%E5%80%8D%E9%9F%B3%E5%BE%AA%E7%92%B0_%E8%B3%AA%E9%87%8F%E3%81%A8%E7%B2%92%E5%AD%90%E5%AF%BF%E5%91%BD_20261009/%E6%A4%9C%E8%A8%BC_R12423%E5%8E%B3%E5%AF%86%E6%A0%B9%E3%81%AE%E5%AE%8C%E5%85%A8%E5%9B%9E%E5%B8%B0_20261010 ）。Zenodo レコードには含めない。npz 2 本（全ステップの密度と複素状態）は容量のため GitHub にも置かず、`run_all.sh` で再生成する。
 
 ## 外部文献
 

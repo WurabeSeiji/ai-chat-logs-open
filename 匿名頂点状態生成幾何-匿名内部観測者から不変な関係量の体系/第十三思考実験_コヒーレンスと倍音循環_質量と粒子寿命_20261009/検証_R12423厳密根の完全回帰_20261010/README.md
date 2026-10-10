@@ -93,7 +93,7 @@ claude.ai の環境（Python 3.12.3、numpy 2.4.4）で最初に実行したと�
 | `results/rho_all_steps_R12423.npz` | 全ステップの chi 密度（1 MB） |
 | `results/states_R12423.npz` | 全ステップの複素状態（8192 成分 × 2 × 249、55 MB） |
 
-npz の 2 本はリポジトリの規則（`*.npz` を git に入れない）により GitHub には置かず、Zenodo の zip に同梱する。`sh run_all.sh` で同じものが再生成される。
+npz の 2 本はリポジトリの規則（`*.npz` を git に入れない）により GitHub には置かない。Zenodo のレコードにも含めない（2026-10-10、58 MB の zip のアップロードが 2 回とも HTTP 502 で失敗したため）。`sh run_all.sh` で同じものが再生成され、`SHA256SUMS` で照合できる。
 | `results/control_R070_vs_S7.json` | 対照: R=0.70 の再計算と [S7] の記録値との差 |
 | `results/reference_summary_R070_S7.json` | [S7] の summary.json の写し |
 | `results/summary.json` | 要点（要所の値、閉形式との差、復元残差、版）。所要時間は標準エラーに出し、ファイルには残さない |
