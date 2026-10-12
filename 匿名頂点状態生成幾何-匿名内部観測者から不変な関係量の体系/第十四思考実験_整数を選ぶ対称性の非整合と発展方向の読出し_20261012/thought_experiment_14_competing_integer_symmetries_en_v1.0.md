@@ -1,0 +1,743 @@
+# The Fourteenth Thought Experiment: Why Can Different Symmetries Never Be Fully Reconciled?
+## ― Non-commensurability, Pull-in and Metastability of Integer-Selecting Symmetries, and Readout along the Direction of Evolution ―
+
+**Author:** Noriaki Kihara  
+**ORCID:** 0009-0004-6753-4020  
+**Version DOI:** 10.5281/zenodo.23315558  
+**Concept DOI:** 10.5281/zenodo.23315557  
+**Version:** v1.0 (a discovery record from dialogue; the research hypothesis fixed in writing)  
+**Date:** 2026-10-12  
+**Related papers:** Twelfth Thought Experiment [K6], Thirteenth Thought Experiment [K7], finite-order resonance [K4]  
+**Classification:** thought experiment / exploratory theoretical conception / verification tasks for numerical correspondences  
+**Recording method:** Starting from dialogues between the author and AI (first draft with ChatGPT, revision with Claude), organized while preserving the order of the author's corrections and questions. Recalculation of numbers and checking of related literature were done as support.  
+**Keywords:** discrete symmetry, competing symmetries, integer selection, number-theoretic selection, non-commensurability, pull-in, incomplete locking, phase slip, metastability, direction of evolution, emergence of time, origin of uncertainty, projective readout, frustration, E₈, zero square sum, central projection, anonymity
+
+---
+
+## Abstract
+
+This paper began with a dialogue about the quantum-mechanical explanation of "why the electron does not fall into the nucleus". Planck's constant and the uncertainty principle explain the stability of the hydrogen atom, but they do not ask why quantum structure itself exists. The author focused on why the Standard Model requires several heterogeneous symmetries, on the difference between the integer structure of charge and the non-integer hierarchy of masses, and on the discrete selection conditions for space, time and causal order.
+
+The central hypothesis of this paper is as follows. **Several symmetries that select integers, in space, in the order of evolution, in charge and elsewhere, are required simultaneously on one relational structure; they cannot be satisfied completely at the same time, yet they pull each other in. This incomplete locking produces metastability and sudden change, and the observed constants appear as effective quantities read out from that history along a particular direction.** The author's outlook that, without symmetries requiring integers for order and causality, neither time nor uncertainty would arise is also part of this hypothesis.
+
+**The proposal of this paper is to specify what should be searched for under this hypothesis.** That is: **search for pairs that appear theoretically unrelated, with neither an exact map nor a line of derivation between them, and yet lie close to each other in number or structure. Such a pair pulls in when the two are imposed together, but never locks completely.** There is no need to explain why they are close. Being near but not identical is itself the clue for finding candidates for incomplete locking, and a pair for which an exact agreement (a lock) is found is removed from the candidates.
+
+What led the author to notice this structure was the fine-structure constant. The four-dimensional cell count $137=1+8+128$ and the finite-order root of two-wave exchange $R_{124,23}=\cos^2(23\pi/124)$ each give, independently, a value near $\alpha^{-1}$. This paper treats this in Chapter 7 as **one case** of a pair that is near but not identical. The numerical closeness is treated not as a proof of agreement but as a clue for the search, and it is recorded that the four-dimensional 137 and 23/124 also share integers with E₈ while differing in form. Further, above these integer-selecting symmetries the author places the zero square sum $\sum x^2=0$, which the author positions as the ultimate symmetry of the author's theoretical system. Chapter 11 states that, like $U^n=I$, it holds not as an assumption but as a consequence of combining other symmetries; that it is a definition expressing that a conserved quantity can exist, rather than fixing the value of a conserved quantity to 0 (the value $R$ moves to an axis $iR$); that central projection separates observable from unobservable directions; the anonymity of axes; and the sharing of the origin under constant curvature. This paper is not one that completes the derivation of a specific constant; it is a discovery record that fixes a general principle and verification tasks.
+
+---
+
+## 0. Research Stance Fixed First in This Paper
+
+1. **Keep the order of questions.** Symmetry comes first; conserved quantities are consequences that can be read by projecting onto particular directions. Do not go straight from continuous symmetries to conserved quantities.
+2. **Do not give $U^n=I$ and $\sum x^2=0$ in advance as explanatory principles.** Finite recurrence and the zero square sum are properties observed after examining interactions and integer conditions, or consequences of combining several symmetries (§11.1).
+3. **Searching only for a "common fixed point" of several symmetries is not enough.** The idea of this paper concerns the case in which different conditions cannot be fully compatible and nevertheless pull each other in.
+4. **Do not posit physical time a priori.** The index of evolution is a computational order; the readout condition that identifies it with physical time is a separate problem.
+5. **Do not fit observed values afterwards to the integers treated as cases.** The reasons for selecting the integers and the maps to the observed constants are to be specified and verified independently of the respective observed values.
+6. **Do not add a third symmetry by assumption.** Consider a missing constraint only when two conditions are not enough.
+
+## 1. How the Idea Arose: The Order of Questions
+
+The idea of this paper took shape along the order of the author's corrections in the dialogue (the original statements are in Chapter 9).
+
+| Stage | Author's point (statement number in Chapter 9) | Question fixed at that stage |
+|---|---|---|
+| 2026-10-10 | In the Thirteenth Thought Experiment, dissipation, reversible exchange and particle lifetime were examined, and it was stated that "$U^n=I$ is a result, not a cause" | The mechanism by which two or more symmetries select long-lived states remains unsolved |
+| Dialogue 1 | Planck's constant is not the end point of explanation. The structure that determines the symmetries of spacetime is fundamental (statement 1) | Ask about the origin of quantum structure, going back before $\hbar$ |
+| Dialogue 2 | Combinations of several symmetries require discreteness and periodicity of space and time, and conserved quantities are read by projection onto particular directions (statement 2) | Start not from conserved quantities but from symmetries |
+| Dialogue 3 | Discretization requires symmetries that give integers (magic numbers). Order and causality also require symmetries demanding integers; without them neither time nor uncertainty arises (statements 3 and 4) | Ask about integer selection not only on the side of space but also on the side of order and causality |
+| Dialogue 4 | From here on it is not the world of physical symmetries but of number theory (statement 5) | Treat the problem of symmetry as a problem of selecting sets of integers |
+| Dialogue 5 | Several symmetries cannot hold simultaneously; they pull in but never lock completely, and this produces sudden change and metastability (statement 6) | Search not for common solutions but for combinations of non-commensurability and pull-in |
+| Dialogue 6 | What led to the noticing was the existence of two 137s near the fine-structure constant (statements 7–9) | Examine the four-dimensional 137 and the 23/124 of the direction of evolution as a case of the general principle |
+| Revision dialogue | α is one case. Precedents for integer selection and E₈. The zero square sum is a consequence, not an assumption, and a definition that a conserved quantity can exist. Being near but not identical is the content of the hypothesis (statements 12–20) | Search for pairs that appear theoretically unrelated yet lie close, pull in, but never lock completely |
+
+Therefore, the new point of this paper is not the discovery of specific numbers but **the reinterpretation of the fact that different integer-selecting structures cannot be fully reconciled as a candidate condition that, on the contrary, produces emergent oscillation, stability and readout**, and the proposal of this as a search strategy: **search for pairs that appear theoretically unrelated yet lie close, and that pull in but never lock completely**.
+
+## 2. The First Question: Is Planck's Constant the End Point or the Starting Point of Explanation?
+
+The energy of a hydrogen-like atom has, non-relativistically, a finite minimum from the competition
+
+$$
+E(r)\sim\frac{\hbar^2}{2\mu r^2}-\frac{e^2}{4\pi\varepsilon_0r}
+$$
+
+This is a valid explanation in standard quantum mechanics. This calculation, however, takes $\hbar$ and the quantum structure of position and momentum as input. The author's question is **why such quantum structures become necessary**. This paper therefore does not deny the results of standard theory, but asks about the origin of the structure, going further back.
+
+Instead of giving $\hbar$ and coupling constants first as observed quantities, it asks whether they can be reconstructed from relations, symmetries, integer selection, stability and observation maps. Merely rewriting the equations with $\hbar$ removed, however, is not a derivation of $\hbar$.
+
+## 3. What Should Be Searched For: The Simultaneous Requirement of Heterogeneous Integer-Selecting Symmetries
+
+### 3.1 Heterogeneous Symmetries
+
+The symmetries of the Standard Model have a spacetime side (Lorentz transformations) and an internal side ($SU(3)_C\times SU(2)_L\times U(1)_Y$), and in addition there are unexplained integer and algebraic structures such as the number of generations and the mass hierarchy. The author's claim is not to list what each symmetry conserves, but to ask **why several conditions of such different character are required at the same time**. In the author's theoretical system, the symmetry of the zero square sum $\sum x^2=0$, which has neither a scale nor names for the axes, is placed above these (Chapter 11).
+
+### 3.2 Symmetries That Give Integers (Magic Numbers)
+
+Continuous symmetries alone do not produce discretization. For discretization to arise, symmetries are needed that give specific integers to the allowed numbers of configurations, directions and recurrences. In this paper these are called "integer-selecting symmetries".
+
+### 3.3 Discretization of Order and Causality: Time and Uncertainty
+
+Integer selection on the side of space alone is not enough. Integers giving a minimal distinguishable structure are also required for the order of evolution and for causal relations. In the author's outlook, without such symmetries neither time nor uncertainty would arise. There are three footholds from known structures for this outlook.
+
+**(a) The scale of time can be made as an integer count of beats.** To make a scale of time without positing an external clock, it suffices that two mutually coherent oscillations with different frequencies coexist. Each time their relative phase shifts by $2\pi$ (each time one of them gains a full turn on the other), the intensity of the sum returns to the same brightness. This single shift is an **integer event** without fractions, and the scale is counted as the number of such events. Clock comparison by heterodyne detection and optical frequency combs measure time by this principle. Duration is read not as a length of delay but as a number of integer slips. The phase slip of H4 in Chapter 4 is an integer event of the same kind.
+
+**(b) The cost of having a scale becomes the frame of uncertainty.** To mark a scale with spacing $\delta t$, a coherent pair with frequency difference $\Delta\nu\gtrsim1/\delta t$ is needed. Hence
+
+$$
+\delta t\,\Delta\nu\gtrsim1
+$$
+
+appears not as an axiom imposed from outside but as the cost of making the scale (Gabor's time-frequency cell [12]). What comes out here is the **form** of the inequality; no value linking its unit to Planck's constant $h$ comes out. The derivation of the value remains with the question of §2.
+
+**(c) The phases that can be marked exactly with integers are limited.** If a phase is represented by a pair of integers $(a,b)$ and its rotation is carried out exactly with integer operations alone, the allowed steps are limited, for the same reason as in the crystallographic restriction theorem, to the two families of 90° ($Z_4$) and 60° ($Z_6$) (§10.1.1). Integer selection on the side of evolution comes from the same theorem as the crystallographic restriction of space.
+
+Using (a)–(c) as footholds, this paper fixes **the question that seeks the origin of time and uncertainty in the integer selection of order and causality**. The starting point for thinking about uncertainty without taking $\hbar$ as input lies here.
+
+### 3.4 Transition to Number Theory
+
+At this point the problem becomes not the properties of individual physical symmetries but **the problem of characterizing the sets of integers simultaneously allowed by several symmetries**. As mathematical precedents there are the crystallographic restriction theorem, Hurwitz's dimension restriction and E₈ (Chapter 10).
+
+### 3.5 Candidates for Integer Selection
+
+The integer structures to be selected are not limited to one. Candidates to which the hypothesis of this paper may apply are listed.
+
+| Candidate | Example of selected integers | Treatment in this paper |
+|---|---|---|
+| Number of directions read as space | Number of dimensions, and why its increase is not allowed without limit | Task: identify the two constraints that select this integer, in the form of §4 |
+| Minimal number of structures distinguishing the order and causality of evolution | Integer slips of beats (§3.3(a)) | Fixed as a question in §3.3 |
+| Phases that can be marked exactly with integers | Orders 1, 2, 3, 4, 6 ($Z_4$, $Z_6$) | §3.3(c), §10.1.1 |
+| The difference between charge quantum numbers and non-integer masses and couplings | $q=nq_0,\ q_0=e/3$ | Task: identify the two constraints that select this integer, in the form of §4 |
+| Number of generations and mass hierarchy | 3 generations | Task: identify the two constraints that select this integer, in the form of §4 |
+| Finite recurrence of phase, resonance, metastability, discrete transitions | Finite-order root $R_{n,m}$ | Part of the case in Chapter 7 |
+| Lattices satisfying evenness and self-duality at the same time | Dimension 8 (E₈), 240 roots | §10.3 |
+| Integer count of four-dimensional geometry and finite-order root of the direction of evolution | 137, 23/124 | **Case in Chapter 7 (fine-structure constant)** |
+
+## 4. The Central Hypothesis of This Paper: Symmetries That Cannot Be Fully Reconciled and Still Pull In
+
+Call the two families of constraints, provisionally, $\mathcal C_{\rm A}$ (the side of space) and $\mathcal C_{\rm B}$ (the side of evolution).
+
+If the two conditions simply have common solutions, a completely fixed state may be explained, but metastable oscillation and sudden switching are not necessarily explained. What is sought here is a structure that has the following properties at the same time.
+
+**H1 (selection):** The constraint of each symmetry imposes integer restrictions on the allowed numbers of configurations, numbers of directions and order relations.  
+**H2 (non-commensurability):** No physical state satisfies the two constraints completely at the same time, or such a state cannot persist under evolution.  
+**H3 (pull-in):** The interaction tends to reduce the deviation from each constraint and creates locally long residence times.  
+**H4 (incomplete locking):** Complete fixing is not reached; phase slips or state transitions occur occasionally.  
+**H5 (readout):** An integral readout of the evolution gives an effective constant that depends on the measurement conditions.
+
+**The search proposal (the core of this paper's claim).** Structures satisfying H1–H5 are not derived from theory but searched for by the following four conditions.
+
+1. **Appear theoretically unrelated:** neither an exact map nor a line of derivation between the two structures is known.
+2. **Nevertheless lie close:** they share integers or values, or their values are close. But their forms or values do not agree.
+3. **Pull in:** when the two are imposed together, the state moves toward each side and stays locally long (H3).
+4. **Never lock completely:** agreement is not reached; phase slips, metastability and sudden change remain (H2, H4).
+
+The reason for the closeness is not explained. Closeness is an input to the search, not a result to be explained. A pair for which an exact correspondence is found is locked and is removed from the candidates; a pair that is completely unrelated does not pull in and is not a candidate. Known examples are the edges of the tongues of the circle map (end of this chapter), the quasicrystals that arise from incompatible symmetries (§10.1), and the case of Chapter 7 (the four-dimensional 137, 23/124, E₈ and the values near the fine-structure constant).
+
+In an abstract model for verification, one may define two non-negative violation measures $D_{\rm A}(S),D_{\rm B}(S)$ for a state $S$ and consider the case
+
+$$
+\operatorname*{argmin}D_{\rm A}
+\;\cap\;
+\operatorname*{argmin}D_{\rm B}
+=\varnothing
+\tag{1}
+$$
+
+Constructing $D_{\rm A},D_{\rm B}$ satisfying Eq. (1) from a concrete update rule is Task 1. The evaluation functions are readouts for analyzing the state, not internal variables to be added to the update rule without permission.
+
+**From a mere mismatch of integers, such as the integers selected by the two constraints being coprime, complete non-commensurability cannot be concluded.** If both are regarded simply as periods, a least common multiple exists. To prove the competition, one must show the operational conditions that both sides impose on the same state.
+
+**A known example: the circle map.** The simplest known example satisfying H1–H4 at the same time is the circle map
+
+$$
+\theta_{k+1}=\theta_k+\Omega-\frac{K}{2\pi}\sin2\pi\theta_k\pmod 1
+$$
+
+This is an update rule containing no external time, of the form of Eq. (2) in Chapter 5. For $0<K<1$, intervals of $\Omega$ open (Arnold tongues) in which the mean rotation number $\rho$ is pulled in to a rational number $p/q$, and a pair of integers $(p,q)$ is selected (H1). The driving rotation $\Omega$ and the rational rotation favored by the nonlinear term generally do not agree (H2). Inside a tongue the phase is pulled in to $p/q$ (H3). Just outside the edge of a tongue, long nearly locked residences and short slips in which the phase shifts by one full turn alternate (H4). At $K=1$ the pull-in intervals occupy the full measure of $\Omega$, and $\rho(\Omega)$ becomes a devil's staircase [11]. The hypothesis of this paper can be read as replacing the two periods given from outside in this example ($\Omega$ and the period of the nonlinear term) by two integer selections arising from inside the relational structure.
+
+## 5. Reading along the Direction of Evolution without Assuming External Time
+
+Write the basic update as
+
+$$
+S_{k+1}=F(S_k)
+\tag{2}
+$$
+
+Here $k$ is a computational update number, not a physical time $t$. The requirement is kept that the update rule $F$ needs no hidden clock or event label other than the state.
+
+If the readout of the observed interaction amplitude is $A_q(S_k)$, one can formally set, as a candidate for the quantity obtained from the history along the direction of evolution,
+
+$$
+\overline{A}_q
+=\lim_{N\to\infty}
+\frac{\sum_{k=0}^{N-1}w_q(k)\,A_q(S_k)}
+{\sum_{k=0}^{N-1}w_q(k)}
+\tag{3}
+$$
+
+Here $q$ is an observational scale defined afterwards, and $w_q$ is the weight required by the measurement response. On that basis, the effective constant that is read out is taken as
+
+$$
+c_{\mathrm{read}}(q)=\mathcal R_q(\overline A_q)
+\tag{4}
+$$
+
+The fine-structure constant $\alpha_{\rm read}(q)$ is one example of it (Chapter 7).
+
+**This is not a claim that simply averaging instantaneous values gives the observed value.** The readout after integrating complex amplitudes including phase generally differs from the average of the constant itself. Moreover, if $w_q$ or $\mathcal R_q$ could be adjusted freely afterwards, any number could be obtained; they too must be defined independently from the interaction and the observational structure.
+
+Only if metastable oscillation, sudden switching and finite lifetimes appear as *results* of Eq. (2), and the response can be read as Eq. (4), does the central hypothesis of this paper acquire dynamical content.
+
+## 6. Verification Tasks and Falsification Conditions for the General Principle
+
+The priority is not the search for solutions of $U^n=I$ but **the discovery of integer-selecting constraints and their competition**.
+
+**Task 1: Proof of non-commensurability.** State explicitly in which operation the two constraints collide on the same state. If common solutions exist in the ordinary way, the hypothesis of "impossibility of complete locking" is rejected.
+
+**Task 2: Metastable dynamics.** Reproduce distributions of residence times, frequencies of phase slips, finite lifetimes and sudden changes without hidden clocks, additional state variables or post-hoc selection rules. A third constraint is not added until its necessity is shown.
+
+**Task 3: Observation map.** Define $c_{\rm read}(q)$ from interaction amplitudes and predict values at different scales with a common parameter setting. Fix the definition before any numerical fitting.
+
+**Task 4: Integer selection of order and causality.** Show whether the minimal structure distinguishing the order and causality of evolution requires integers, and how this appears in the readout of time and uncertainty (§3.3). As a concrete candidate, there is the combination that assigns to $\mathcal C_{\rm A}$ the rotation restriction of spatial lattices (§10.1) and to $\mathcal C_{\rm B}$ the restriction of phases that can be marked with integers (§10.1.1). The rotation orders allowed by four-dimensional spatial lattices, $\{1,2,3,4,5,6,8,10,12\}$, and the orders allowed for phases represented by a pair of integers, $\{1,2,3,4,6\}$, do not agree. Examine whether this mismatch becomes a collision of operations on the same state (H2).
+
+If the necessary conditions fail in any of these, the strong claim of this paper is rejected or revised.
+
+## 7. Case: The Four-Dimensional 137 and the 23/124 of the Direction of Evolution (Fine-Structure Constant)
+
+This chapter treats the case that led the author to notice this structure. The verification of the general hypothesis is in Chapter 6; the numbers in this chapter remain one example of it.
+
+### 7.1 Research History of the Case
+
+| Date | Research record / result | Problem remaining at that time |
+|---|---|---|
+| 2026-04-21 | Conceived the integer representation $137=8^2+8^2+3^2$ | The mechanism by which it becomes an actual physical constant is unknown |
+| 2026-05-14 | Examined the energy dependence of $\alpha$ and the hypothesis of 137 as a ground structure | The connection between crystal geometry and the running in the Standard Model is incomplete |
+| 2026-05-30 | Organized the number 137 of unit cells inside a four-dimensional ball of radius 3 (the three-layer representation at that time was 9+64+64) | Why four dimensions and radius 3 are selected is not derived |
+| 2026-07-17 | Wrote up the four-dimensional cell count $137=1+8+128$, the geometric self-consistent value and the readout of the 128 outer shell as a paper | The correspondence to electromagnetic coupling and an independent selection principle are unproven |
+| 2026-07 to 09 | Analyzed and numerically verified the finite-order root 23/124 of the two-wave exchange operator | The periodicity obtained by giving $R$ must be distinguished from a mechanism by which $R$ is selected spontaneously |
+
+### 7.2 Integer Structure on the Side of Space: The Four-Dimensional 137 Cells
+
+The author's earlier work used the condition that a four-dimensional cube of side 1 with integer center $c=(c_1,c_2,c_3,c_4)\in\mathbb Z^4$,
+
+$$
+C_c=c+[-1/2,1/2]^4
+$$
+
+is completely contained in the four-dimensional ball of radius 3 centered at the origin:
+
+$$
+C_c\subseteq B_4(3)
+\quad\Longleftrightarrow\quad
+\sum_{j=1}^4\left(|c_j|+\frac12\right)^2\le9.
+\tag{5}
+$$
+
+The number of cells satisfying this condition is, by direct enumeration, exactly
+
+$$
+\boxed{N_4(3)=137=1+8+128}
+\tag{6}
+$$
+
+This is a division into one central cell, eight axial neighbouring cells and 128 other cells. The attached re-verification script performs this count independently.
+
+Here, **that a cell count of 137 is obtained** and **that nature spontaneously selects this sector of four dimensions and radius 3** are entirely different. The latter is unproven and is included in the task of integer selection asked in §3.
+
+From the geometric self-consistency relation of the earlier work,
+
+$$
+\alpha_g^{-1}=137+\frac{\pi^2}{2}\alpha_g
+\tag{7}
+$$
+
+setting $x=\alpha_g^{-1}$ gives
+
+$$
+x_g=\frac{137+\sqrt{137^2+2\pi^2}}{2}
+=137.036010988388\ldots
+\tag{8}
+$$
+
+Eq. (7), however, is a relation proposed in the earlier work, not a physical law necessarily derived from the lattice count alone. Below, $\alpha_g$ is distinguished from the observed electromagnetic coupling $\alpha_{\mathrm{EM}}$.
+
+### 7.3 Integer Structure on the Side of Evolution: The Finite-Order Root 23/124
+
+Let the finite-order candidates for the reflectance in the earlier two-channel exchange experiment be
+
+$$
+R_{n,m}=\cos^2\left(\frac{\pi m}{n}\right),
+\qquad \gcd(m,n)=1
+\tag{9}
+$$
+
+For $n=124,m=23$,
+
+$$
+R_{124,23}=0.6971779275566594\ldots
+\tag{10}
+$$
+
+and the eigenvalues of the symmetric and antisymmetric modes of the exchange operator show finite recurrence. This is an analytic consequence of giving the existing operator and Eq. (9).
+
+The correspondence candidate adopted in the earlier work,
+
+$$
+x_{23/124}=\frac{4\pi}{(1-R_{124,23})^2}
+=\frac{4\pi}{\sin^4(23\pi/124)}
+=137.036042914599\ldots
+\tag{11}
+$$
+
+lies near the observed value.
+
+**However, neither that Eq. (11) physically represents $\alpha^{-1}$ nor that 23/124 is spontaneously selected from the infinitely many finite-order roots has been derived.** As emphasized in the Thirteenth Thought Experiment, one must not place finite recurrence $U^n=I$ first as a cause and regard stability as thereby explained.
+
+### 7.4 Do Not Confuse Independent Numbers and Residuals
+
+| Object | Value proposed to correspond to $\alpha^{-1}$ | Mathematical / observational status |
+|---|---:|---|
+| Four-dimensional cell count | $137$ | Exact integer count under the specified geometric condition |
+| Geometric self-consistency $x_g$ | $137.036010988389\ldots$ | Mathematical solution of the proposed self-consistency equation |
+| Finite-order-root correspondence $x_{23/124}$ | $137.036042914599\ldots$ | Value of the proposed correspondence formula from $R$ |
+| CODATA 2022 $\alpha_{\mathrm{EM}}^{-1}(0)$ | $137.035999177(21)$ | Recommended observed value in the low-momentum limit |
+
+The computed differences are
+
+$$
+\begin{aligned}
+x_{23/124}-x_g&=0.000031926210\ldots,\\
+x_g-\alpha_{\mathrm{EM}}^{-1}(0)&=0.000011811389\ldots,\\
+x_{23/124}-\alpha_{\mathrm{EM}}^{-1}(0)&=0.000043737599\ldots.
+\end{aligned}
+\tag{12}
+$$
+
+These differences greatly exceed the measurement uncertainty. **Numerical closeness does not prove a common physical origin.** In the hypothesis of this paper, the very fact that the three values are near but not identical may be a manifestation of several structures pulling each other in without locking completely (§7.6). Searching for a correction mechanism that fills the differences is not a task of this paper.
+
+### 7.5 Application to the General Hypothesis
+
+In this case, the families of constraints of Chapter 4 are examined as candidates assigning $\mathcal C_{\rm A}$ to the 137 of four-dimensional geometry and $\mathcal C_{\rm B}$ to the 23/124 of the direction of evolution. Complete non-commensurability cannot be concluded from the fact that 137 and 124 are coprime: if both are regarded simply as periods, the least common multiple 16988 exists. Only when the operational conditions that both sides impose on the same state are shown does this case satisfy H2 of Chapter 4.
+
+If this assignment holds and the value obtained by reading the history of incomplete locking with Eq. (4) gives $\alpha_{\rm read}(q)$, the observed fine-structure constant appears as an effective quantity composed of two or more discrete constraints.
+
+### 7.6 Integer Correspondences with E₈
+
+E₈, treated in Chapter 10 (§10.3), shares the following integers with the two integer structures of this chapter. They are recorded not in the order in which the correspondences were made but as integer relations that can be checked (all items can be recalculated with the attached `verify_e8.py`).
+
+**Side of space: 137 and 248.**
+
+$$
+137=1+8+128,\qquad 248=8+112+128
+\tag{12a}
+$$
+
+The "axial 8" and the "other 128" of the four-dimensional cell count (Eq. (6)) agree in number with the "8 of the Cartan part" and the "128 half-integer roots" of E₈. What remains on the E₈ side are the 112 integer roots. However, the 128 four-dimensional cells break down by coordinate type into $(1,1,0,0)$ 24, $(1,1,1,0)$ 32, $(1,1,1,1)$ 16, $(2,0,0,0)$ 8 and $(2,1,0,0)$ 48, which differ in form from the half-integer roots of E₈ (all coordinates $\pm1/2$). At present, **only the numbers** agree.
+
+**Side of evolution: 23/124 and 31, 8, 23.** The Coxeter number of E₈ is $h=30$, and
+
+$$
+124=4\times31=4(h+1),\qquad 248=8\times31,\qquad \frac{23\pi}{124}+\frac{8\pi}{124}=\frac{\pi}{4}
+\tag{12b}
+$$
+
+hold. The angle $23\pi/124$ of the finite-order root $R_{124,23}=\cos^2(23\pi/124)$ has complement $8\pi/124$ with respect to $\pi/4$, and $23+8=31=h+1$. Further, the eigenvalues of the Coxeter element of E₈ are $e^{2\pi i m/30}$ with $m\in\{1,7,11,13,17,19,23,29\}$ (the exponents of E₈), and 23 is one of them. 8 is also the rank of E₈.
+
+**How to read these correspondences: near but not identical.** The correspondences of Eqs. (12a) and (12b) are all **near but not identical**. 128 agrees in number but differs in form, and the 31 of $124=4\times31$ is one more than the Coxeter number 30. In the hypothesis of this paper, this very fact of being "near but not identical" is meaningful.
+
+- If there were an exact correspondence between the two structures (a map preserving inner products and symmetry), they would lock completely. Then neither metastability nor sudden change would arise, and H2 (non-commensurability) of Chapter 4 would not hold.
+- If the two structures were completely unrelated, they would not pull each other in either. Then H3 (pull-in) would not hold.
+- A relation in which integers are shared while the forms disagree satisfies H2 and H3 at the same time. It is exactly the form required by the central hypothesis of this paper: pulling in but never locking completely.
+
+Therefore, proving the reason why these correspondences hold (an exact map) is not a task of this paper. If an exact map were found, it would break the hypothesis of this paper for this case.
+
+Under this reading, the hypothesis breaks in the following two cases.
+
+1. **Discovery of a lock:** an exact correspondence preserving inner products and symmetry is found between the four-dimensional 137 cells and the structure of E₈, or between the finite-order root 23/124 and the Coxeter element of E₈. The two structures are then fully reconciled, and this case is not an example of non-commensurability.
+2. **Absence of pull-in:** in evolution with the two constraints imposed together, no bias in residence times, no phase slips and no metastability appear (Task 2 of Chapter 6). Closeness then has no effect on the dynamics, and this case is not an example of pull-in.
+
+### 7.7 The Running of the Fine-Structure Constant and the Position of Resonances
+
+The low-energy $\alpha^{-1}(0)\simeq137.036$ and the electroweak-scale $\alpha^{-1}(M_Z)\simeq128$ do not mean two moments of time. In standard theory they are **effective couplings at different momentum scales**, and the running due to vacuum polarization is experimentally supported.
+
+In particular, KLOE-2 measured the change of the effective electromagnetic coupling and the hadronic contribution in the timelike momentum region $0.6<\sqrt s<0.975\,\mathrm{GeV}$. The appearance of the $\rho$–$\omega$ resonance is an example of interference between different particle channels affecting the effective response. This, however, is not a measurement showing that "the hidden symmetries of 137 and 23/124 interfere" as in this paper.
+
+This case must fit **not only a numerical match at a single low-energy point** but also the $q$ dependence, threshold and resonance structures, complex amplitudes and the relation to scattering cross sections. A concrete response map for reading the observed running as "the result of time integration" is the central task of this case.
+
+### 7.8 Verification Tasks of the Case
+
+**Task A: Selection theorem on the side of space.** Not only reproduce the 137 of Eq. (5), but derive why the sector of four dimensions, radius 3 and side 1 is allowed and other integer candidates are not selected. If four dimensions and radius 3 remain inputs, it is not a selection theorem.
+
+**Task B: Selection theorem on the side of evolution.** Show that 23/124 is selected by the interaction alone from the infinitely many rational-angle candidates of Eq. (9). Examine sensitivity to initial values, labelling of states and arbitrary thresholds.
+
+**Task C: Observation map to electromagnetic coupling.** Define $c_{\rm read}(q)$ of Task 3 in Chapter 6 as $\alpha_{\rm read}(q)$, and predict energy regions different from the Thomson limit with a common parameter setting.
+
+**Task D: Search for pairs that are near but not identical.** For rational angles other than 23/124, exceptional structures other than E₈ and values near other physical constants, list widely the pairs satisfying the four search conditions of Chapter 4. For each, compute the evolution with the two constraints imposed together and examine whether pull-in and incomplete locking occur.
+
+**Task E: Whether the closeness to E₈ produces pull-in.** Examine the two ways of breaking in §7.6. If an exact correspondence (a lock) is found, this case becomes a counterexample to the hypothesis. If pull-in and incomplete locking (bias in residence times, phase slips, metastability) appear in evolution with the two constraints imposed together, this case becomes an instance of the hypothesis.
+
+If the competition between 137 and 23/124 does not hold, the closeness of the two values remains, at least for now, a numerical coincidence. Even then, the general hypothesis of Chapter 4 is verified independently of this case.
+
+## 8. Similar Prior Studies and Differences
+
+**Aubry (1983) and Bak (1982).** They treat the Frenkel–Kontorova model, commensurate and incommensurate phases, the devil's staircase and metastable configurations. They are the most direct mathematical precedent for the competition of different periods and the selection of integer ratios.
+
+**Zhu et al. (2026).** They observed a discrete time quasicrystal in Rydberg atoms. A modern experimental example studying several temporal symmetries and aperiodic order. The experiment, however, uses external driving and known time, so it does not explain the emergence of time itself.
+
+**Martin, Refael and Halperin (2017).** They studied time-averaged quantized energy transfer under driving by several frequencies and in higher-dimensional Floquet lattices. A reference example for considering integral readout of evolution, but it takes $\hbar$ as input and does not seek physical constants.
+
+The difference between these and this paper is that **this paper tries to verify, from one unknown underlying relational structure at the same time, several integer-selecting symmetries, their incomplete locking, a direction of evolution without external time, and the projection to observed constants**.
+
+## 9. Record of the Discovery Dialogue: The Order of the Author's Shifts of Argument
+
+The following are **short original excerpts of the author's statements** in this dialogue, each given in English translation followed by the original Japanese. The order of statements has not been changed to smooth the meaning. Typos are mostly preserved in the originals.
+
+1. "Why explain it with Planck's constant? I think the root is a different structure, precisely the structure that determines the symmetries of spacetime?" (Original: 「なぜプランク定数で説明するのですかね？根本は別の構造まさに時空の対称性を決める構造が根本だと思いますが？」)
+2. "It is complicated because several symmetries combine and require discreteness and periodicity in space and time; conserved quantities are read as particular conserved quantities by projection onto particular directions." (Original: 「複雑なのは、複数の対称性が組み合わさって、空間　時間に離散性　と　周期性を要求するからで　保存量は特定の方向での射影で特定の保存量が読めるんですよ」)
+3. "A symmetry that gives magic numbers is needed; otherwise discretization does not arise." (Original: 「マジックナンバーを与える対称性が必要です　でないと離散化が生まれません」)
+4. "Order and causality also need a symmetry that requires discretized magic numbers; without it, time and uncertainty do not arise." (Original: 「順番や因果にも離散化したマジックナンバーを要求する対称性が必要でこれがないと時間や不確定性が生まれません」)
+5. "At this point it is no longer the world of physical symmetries but of number theory." (Original: 「ここまでくると物理の対称性ではなく整数論の世界です」)
+6. "Further, a difficult condition is needed: the several symmetries in fact cannot hold at the same time, and a combination is needed that produces sudden change and metastability in a situation where they pull in but never lock completely." (Original: 「さらに複数の対称性は実は同時に成立できないという難しい条件が必要で、引き込むけど完全にはロックしないという状況で急激な変化と準安定を生じる組み合わせが必要です」)
+7. "The way I noticed this is simple: why does a complex 137 happen to exist near the fine-structure constant? Do you see?" (Original: 「これ気づいたの簡単でなぜ微細構造定数の付近に複素の137が偶然存在するのかですよ？わかりますか？」; "complex" (複素) is as in the original)
+8. "The second one is exactly the 23/124 of U^n=I." (Original: 「二つ目がまさにU ^n=I の23／124ですよ」)
+9. "So, with the 137 that determines the four-dimensional spatial crystal structure, the 23/124 that determines the crystallization of the direction of evolution, and perhaps something else, a symmetry constraint that may not exist, the α that oscillates metastably, read by time integration along the direction of evolution, becomes the presently observed α, I suppose." (Original: 「だから4次元空間結晶構造を決める137と発展方向の結晶化を決める23/124とあと何か？ないかもしれない対称性の拘束で準安定振動するαを発展方向に時間積分して読むと現在の観測値のαになるんでしょう」)
+10. "This is a structure I had already noticed four months ago when I found the second 137; are there similar prior studies?" (Original: 「これは二つ目の137を見つけた4ヶ月前にすでに気づいていた構造ですが、類似性のある先行研究ありますか？」)
+11. "Well then, since this chat itself becomes the discovery record, let us write up and fix the Fourteenth Thought Experiment. What do you think?" (Original: 「んーでは第14思考実験をまさにこのチャット自身が発見記録になるので論文化して固定しておきましょう　どう考えますか？」)
+
+Statements 1–6 are the general principle of this paper, and statements 7–9 are what led to noticing it and the case applying the principle to the fine-structure constant. What matters in this record is the logical order in which the author repeatedly corrected, before the conclusion: "not from conserved quantities", "do not chase $U^n=I$", and "dimension, order and causality also require integer selection".
+
+**Dialogue at the time of revision (2026-10-12).** The author's statements in the revision dialogue (with Claude) before fixing v1.0 are recorded with continuing numbers under the same policy.
+
+12. "For some reason it is too fixated on α, and the paper is muddied. α=137 is only one case among them." (Original: 「なぜかαにこだわり過ぎて、論文が濁っています。α=137はそのなかの事例の一つでしかありません。」)
+13. "The crystallographic restriction theorem and Hurwitz's dimension restriction are important, so set up a separate chapter at the end and add an explanation." (Original: 「結晶学的制限定理やフルヴィッツの次元制限　は重要なので、末尾に別に章を立てて説明を追加しなさい。」)
+14. "It is rather unnatural not to take up E8, the symmetry with the most famous magic number. E8 is not a general symmetry requirement of theoretical physics, but it is a symmetry that appears in some reactions, isn't it?" (Original: 「もっとも有名なマジックナンバーのある対称性E8をとりあげていないのが逆に不自然ですよね、E８はあくまで理論物理学の一般てきな対称性の要請ではないですが、一部の反応ではあらわれる対称性ですよね？」)
+15. "If E8 is treated, … it is more unnatural to avoid its relation to alpha?" (Original: 「E8を扱うと、…アルファとの関係もさける方が不自然ですよ？」)
+16. "Σx^2 = 0 is the ultimate conserved quantity or fixed point, and, read by central projection, there is the symmetry that the left side reads as observable space and the right side (or the imaginary axis on the left side) as the unobservable direction; further, from anonymity, which is also an ultimate symmetry, any axis may be the projection axis; further, in central projection, if the curvature is constant, the origin is shared; this symmetry too should be explained here. In a sense, in my theoretical system, this is the ultimate symmetry." (Original: 「Σx^2 = 0 って、究極の保存量または、固定点であるとともに、中心投影の読み方をすると、左辺が観測可能空間で、右辺（または左辺の虚数軸）が観測できない方向によめるという、対称性と、さらには、無名性というこれも究竟の対称性から、どの軸を、投影軸にしてもよい、さらに、中心投影では、曲率が一定なら、原点が共有されるという対称性もここで、説明しておくべきですよ、ある意味私の理論体系では、これが究極の対称性ですよ」)
+17. "Σxn^2 = 0, like U^n=I, is rather not an assumption but derived as a result of combining other symmetries … In fact, in past experiments too, without placing Σxn^2=0 or U^n=I as assumptions to derive from, they turned out to hold as a result; this is an empirical rule." (Original: 「Σxn^2 = 0 も、U^n=I と同様に、むしろ仮定ではなく、他の対称性の組み合わせで結果的に導出される…実際も過去の実験でも、Σxn^2=0 、U^n=I を仮定として置いて導出しなくても、結果的に、それが成り立っていたという経験則です。」)
+18. "It is not that there is a reason for it to hold; being in the vicinity is what is meaningful, and I am hypothesizing that it does not lock completely but causes pull-in, producing rapid development and metastability; so, conversely, if there were a mechanism that locks, this hypothesis would collapse." (Original: 「成立する理由があるのではなく、近傍になることにいみがあり、それが、完全にはロックしないが、引き込みを起こして、急激な発展や、準安定を生むのではないか、と仮定しているので、逆にロックする仕組があったら、この仮説が崩れますよ」)
+19. "It is a proposal: why not search for such relations, seemingly not theoretical, strangely unrelated yet close, causing pull-in but never locking completely?" (Original: 「この一見理論的でない、不思議な無関係だけど、近くにあり、引き込みは起こすけど、完全ロックしない、という関係をさがしてはどうか？という提案なんですよ」)
+20. "Σxn^2 = 0 can be said as 0 + 0 = 0, so in fact anything looks like a conserved quantity, that is what I am saying. … If Σxn^2 = R^2, then Σxn^2 + (iR)^2 = 0, and as a result Σx'^2 = 0, right? That is, it does not give a conserved quantity of 0; it is only a definition saying that a conserved quantity can exist." (Original: 「Σxn^2 = 0 って、 0 + 0 = 0 といっちえるので、実は何でも保存量にみえるといっています。…Σxn-2 = R^2 とすると、　Σxn^2 + (iR)^2 = 0 となり、結果敵に、 Σx'^2 = 0 ですよね　つまり保存料０をあたえるのではなく、保存量が存在し得るといっているだけの定義なんですよ？」)
+
+Statements 12–20 determined the content of the paper in the revision: that α is one case (statement 12); precedents for integer selection and E₈ (statements 13–15); that the zero square sum is the ultimate symmetry, a consequence rather than an assumption, and a definition that a conserved quantity can exist rather than the value of a conserved quantity (statements 16, 17, 20); and that being near but not identical is the content of the hypothesis, with the proposal to search for such pairs being the core of this paper's claim (statements 18, 19).
+
+## 10. Precedents in Which the Compatibility of Two Structures Selects Integers: The Crystallographic Restriction Theorem, Hurwitz's Theorem and E₈
+
+The hypothesis of this paper (§3.2–3.4) rests on the view that integers are selected not by a single symmetry but **only when several structures of different character are imposed at the same time**. Mathematics has at least three rigorous precedents for this view: the crystallographic restriction theorem, Hurwitz's theorem, and E₈. E₈ is also an example in which the selected structure appears in real matter only under particular conditions. This chapter describes for each the content, the selected integers, and the correspondence to and limits with respect to the hypothesis of this paper.
+
+### 10.1 The Crystallographic Restriction Theorem: Compatibility of Rotation and Translation
+
+**Content.** The rotations that preserve a lattice in the plane or in three-dimensional space (a periodic structure with translational symmetry) are limited to those of order 1, 2, 3, 4, 6. Five-fold rotations and rotations of order seven or more are compatible with no lattice.
+
+**Reason.** Written in the basis of the lattice, the matrix of a rotation has all integer entries. Hence its trace is an integer. On the other hand, if the rotation angle is $\theta$, the trace is $2\cos\theta$ in the plane and $1+2\cos\theta$ in three dimensions. In either case $2\cos\theta$ must be an integer, so
+
+$$
+2\cos\theta\in\{-2,-1,0,1,2\}
+\quad\Longrightarrow\quad
+\theta\in\left\{0,\ \tfrac{\pi}{3},\ \tfrac{\pi}{2},\ \tfrac{2\pi}{3},\ \pi\right\}
+\tag{13}
+$$
+
+If the rotation angle is $2\pi/m$, the allowed orders are limited to $m=1,2,3,4,6$.
+
+**Selected integers.** Rotation (the discrete part of a continuous symmetry) and translation (the periodicity of the lattice) each forbid no order by themselves. The integers $\{1,2,3,4,6\}$ appear **only when both are required at the same time**.
+
+**Extension to dimensions.** In a general dimension $d$ as well, a finite-order rotation preserving a lattice needs a minimal dimension depending on its order $m$. Let $\psi(m)$ be the function given by the sum of Euler's function over the prime-power factors of $m$ (subtracting 1 when $m\equiv2\pmod 4$); a rotation of order $m$ is compatible with a $d$-dimensional lattice only when $\psi(m)\le d$. In four dimensions the allowed orders widen to $1,2,3,4,5,6,8,10,12$. **Which integers are allowed changes with the dimension of space.**
+
+**When incompatible: quasicrystals.** Five-fold symmetry and periodic translation are incompatible in three dimensions. Yet in 1984 an alloy showing a diffraction pattern with five-fold (icosahedral) symmetry was observed. This is a structure (a quasicrystal) that has lost periodicity but keeps long-range order, and mathematically it can be described as a structure obtained by projecting a higher-dimensional lattice to a lower dimension. **When incompatible symmetries are required at the same time, the result is not disorder but another order that can be read as a projection from higher dimensions.**
+
+#### 10.1.1 Application to Phase: Only $Z_4$ and $Z_6$ Can Be Marked Exactly with Integers
+
+Represent the phase of an oscillation by a pair of integers $(a,b)$ (a point of the two-dimensional integer lattice, for example $a+bi$). Suppose the operation of rotating this phase by a fixed angle is to be implemented exactly by integer addition, subtraction and exchange only. That operation is a $2\times2$ matrix with integer entries and determinant $\pm1$, and, for the same reason as Eq. (13), the orders of those that return after finitely many steps are limited to 1, 2, 3, 4, 6. The implementations fall into two lattices.
+
+| Lattice | Step | Integer map | Trace | Order |
+|---|---|---|---:|---:|
+| $Z_4$ (Gaussian integers) | 90° | $(a,b)\mapsto(-b,a)$ | 0 | 4 |
+| $Z_6$ (Eisenstein integers) | 60° | $(a,b)\mapsto(a-b,a)$ | 1 | 6 |
+
+The $Z_4$ map consists only of exchanging the components and reversing the sign of one of them, and corresponds to multiplication by $i$. Applying the $Z_6$ map twice gives 120° ($Z_3$). With the attached `verify_phase_lattice.py` it was confirmed that, for all integer matrices with determinant $\pm1$ and entries of absolute value at most 4, the finite orders are only $\{1,2,3,4,6\}$.
+
+45° (order 8) is the first angle that cannot be marked exactly on the two-dimensional integer lattice (it is possible on a four-dimensional lattice, corresponding to $\psi(8)=4$ in §10.1). In quantum computation, circuits made of Hadamard gates, CNOT and 90° phase gates (Clifford circuits) can be tracked efficiently by classical computers (the Gottesman–Knill theorem [13]), and adding the 45° phase gate (the T gate) makes them universal. The phase steps of Clifford circuits agree with the 90° of $Z_4$, and the first angle outside them is 45°. The boundary of phases that can be marked exactly with integers and the boundary of circuits that can be tracked classically are drawn at the same angle. This paper records this correspondence as a concrete clue for integer selection on the side of evolution (§3.3(c)).
+
+### 10.2 Hurwitz's Theorem: Compatibility of Multiplication and Norm
+
+**Content.** The algebras over the reals whose norm preserves products (normed division algebras satisfying $|xy|=|x||y|$, without zero divisors) are limited to dimensions 1, 2, 4, 8: the real numbers, complex numbers, quaternions and octonions.
+
+**Equivalent form: sum-of-squares identities.** This is the same as saying that the $n$ for which
+
+$$
+(x_1^2+\cdots+x_n^2)(y_1^2+\cdots+y_n^2)=z_1^2+\cdots+z_n^2
+\tag{14}
+$$
+
+can be satisfied identically with each $z_k$ bilinear in $x$ and $y$ are limited to $1,2,4,8$. $n=2$ corresponds to the absolute value of complex numbers, $n=4$ to Euler's four-square identity, and $n=8$ to Degen's eight-square identity.
+
+**Selected integers.** Multiplication alone (algebraic structure) or norm alone (metric structure) can be made in any dimension. The integers $\{1,2,4,8\}$ appear **only when product and norm are made compatible at the same time**.
+
+**Properties lost as the dimension is raised.** Each time the dimension is doubled, one property is lost.
+
+| Dimension | Algebra | Property newly lost |
+|---:|---|---|
+| 1 | real numbers | ― |
+| 2 | complex numbers | ordering |
+| 4 | quaternions | commutativity |
+| 8 | octonions | associativity |
+| 16 | sedenions | multiplicativity of the norm (zero divisors appear) |
+
+In 16 dimensions, the compatibility of product and norm itself fails.
+
+**Related results.** The same integers $1,2,4,8$ appear in the parallelizability of the spheres $S^{n-1}$ (only $S^0,S^1,S^3,S^7$) and in the existence of maps of Hopf invariant one (Adams, 1960). That mutually different questions select the same set of integers shows that the integers stem not from the individual questions but from the compatibility conditions of structures.
+
+### 10.3 E₈: The Compatibility of Evenness and Self-Duality Selects 8, and a Symmetry That Appears in Particular Reactions
+
+E₈ is the best-known "symmetry with a magic number". E₈ is not a symmetry that theoretical physics requires in general, nor is it contained in the gauge group of the Standard Model. Yet in mathematics it is selected uniquely by the compatibility of two structures, and in physics it appears only under particular conditions. A single object shows both sides of the theme of this paper.
+
+**Mathematics: the compatibility of evenness and self-duality selects dimension 8.** Impose two conditions on a lattice.
+
+- **Even:** the squared length of every lattice vector is an even integer.
+- **Self-dual (unimodular):** the lattice coincides with its own dual lattice. The volume of the fundamental domain is 1.
+
+Positive-definite lattices satisfying both at the same time exist only in dimensions that are multiples of 8. In 8 dimensions there is exactly one, the E₈ lattice (in 16 dimensions there are 2, in 24 dimensions the 24 Niemeier lattices). Each condition alone forbids no dimension, but making them compatible selects 8. This is a selection of the same form as in §10.1 and §10.2. The integers that the two integer structures of the case in Chapter 7 share with E₈ are recorded in §7.6.
+
+The shortest vectors (roots) of the E₈ lattice number 240 and split into two types:
+
+$$
+240=112+128
+\tag{15}
+$$
+
+The 112 are of the type with two coordinates $\pm1$ and the rest 0; the 128 are of the type with all coordinates $\pm1/2$ and an even number of minus signs. Adding eight mutually commuting directions (the Cartan part) gives the dimension $248=8+240$ of the Lie group E₈. In sphere packing in 8 dimensions the E₈ lattice is the densest (Viazovska 2017 [15]), and the number of spheres touching one sphere is 240.
+
+**Connection with Hurwitz's theorem.** Within the octonions, which correspond to the last dimension 8 of §10.2, the set of elements corresponding to "integers" (the integral octonions) forms the E₈ lattice (Coxeter 1946 [14]). The 8 selected by the compatibility of product and norm and the 8 selected by the compatibility of evenness and self-duality meet in the same lattice.
+
+**Connection with quasicrystals.** Projecting the root system of E₈ suitably to four dimensions gives a four-dimensional quasicrystal with the symmetry $H_4$ of the 600-cell (Elser and Sloane 1987 [16]). As seen in §10.1, five-fold symmetry is incompatible with three-dimensional periodic lattices. That five-fold symmetry appears, with order preserved, as a projection from the eight-dimensional E₈. The golden ratio $(1+\sqrt5)/2=2\cos(\pi/5)$ appears in the construction of $H_4$.
+
+**Physics: E₈ appearing only in particular reactions.** The one-dimensional transverse-field Ising model is at a quantum critical point when the transverse field takes a certain value. Adding a weak longitudinal field there turns the low-energy excitations into eight kinds of particles, whose mass ratios are determined by the structure of E₈ (Zamolodchikov 1989 [17]). The ratio of the two lightest masses is
+
+$$
+\frac{m_2}{m_1}=2\cos\frac{\pi}{5}=1.618\ldots
+\tag{16}
+$$
+
+equal to the golden ratio. In 2010, neutron scattering on the quasi-one-dimensional Ising magnet CoNb₂O₆ observed that the mass ratio of the two lightest excitations near the critical point approaches the golden ratio (Coldea et al. 2010 [18]). Since then, E₈ spectra have also been reported in BaCo₂V₂O₈ (Zou et al. 2021 [19]).
+
+This E₈ is not a symmetry of the fundamental laws that make matter. It appears in the low-energy excitations only at **a particular point combining two conditions**: the critical point due to the transverse field, and the longitudinal field that moves away from it. This fits the view of this paper that integer structures are selected from combinations of conditions, rather than a single symmetry being given at the root. It is also recorded that the golden ratio that appeared in quasicrystals appears here as a mass ratio.
+
+**E₈ as a consistency condition of theory.** In superstring theory, the condition of anomaly cancellation selects $SO(32)$ and $E_8\times E_8$ as gauge groups (Green and Schwarz 1984 [20]). The heterotic string with $E_8\times E_8$ was constructed from this condition (Gross et al. 1985 [21]). Here too E₈ is selected as a consistency condition of the framework of placing strings in a background spacetime.
+
+### 10.4 Correspondence to and Limits with Respect to the Hypothesis of This Paper
+
+| Aspect | Crystallographic restriction theorem | Hurwitz's theorem | E₈ | Hypothesis of this paper |
+|---|---|---|---|---|
+| Structures imposed together | rotation and translation | multiplication and norm | evenness and self-duality | constraints on the side of space and on the side of evolution |
+| Selected integers | $\{1,2,3,4,6\}$ (depending on dimension) | $\{1,2,4,8\}$ | dimension 8 (multiples of 8), 240 roots | unspecified (in the case of Chapter 7, candidates 137 and 23/124) |
+| When incompatible | quasicrystal (order readable as projection from higher dimensions) | multiplicativity of the norm breaks in 16 dimensions | does not exist in dimensions other than multiples of 8 | metastability that pulls in but never locks completely (H2–H4) |
+| Appearance in physics | crystals, quasicrystals | ― | excitation spectrum under the particular condition of critical point plus longitudinal field | readout of metastable oscillation |
+| Time and evolution | static compatibility condition | static compatibility condition | static compatibility condition (the physical example is the spectrum near the critical point) | direction of evolution without external time (Chapter 5) |
+
+The three precedents give a rigorous mathematical basis to the starting point of this paper (§3.2–3.4) that **integers are selected not by a single symmetry but by the compatibility conditions of several structures**. In particular, the crystallographic restriction theorem and E₈ show that, even when incompatible symmetries are required at the same time, order remains and can be read as a projection from higher dimensions. This is the precedent closest to the "projective readout" and "incomplete locking" of this paper. E₈ further shows that the structure so selected appears in real matter only under a particular combination of conditions.
+
+Applying the crystallographic restriction to both space and phase gives one concrete example of mismatch. The rotation orders allowed by four-dimensional spatial lattices are $\{1,2,3,4,5,6,8,10,12\}$, and the orders allowed for phases represented by a pair of integers are $\{1,2,3,4,6\}$; the two do not agree. On the side of space and on the side of evolution, the same theorem selects different sets of integers. Whether this mismatch becomes a collision of operations on the same state is Task 4 of Chapter 6.
+
+On the other hand, these precedents deal with static compatibility conditions and do not contain **non-commensurability within evolution**, such as pull-in, phase slips and metastability. The hypothesis of this paper asks whether these precedents can be extended to dynamics along the direction of evolution without external time.
+
+## 11. The Ultimate Symmetry: The Zero Square Sum $\sum x^2=0$ and Central Projection
+
+The symmetries treated in this paper (rotation of lattices, multiplication and norm, evenness and self-duality, constraints on the side of space and of evolution) were all integer-selecting symmetries. In the author's theoretical system, one symmetry is placed above them. It is the zero square sum
+
+$$
+\sum_{i=1}^{n}x_i^2=0
+\tag{17}
+$$
+
+This is the same equation introduced as the equation of the light cone in the Twelfth Thought Experiment [K6]. This chapter first states that this equation holds not as an assumption but as a consequence of combining other symmetries (§11.1), and then that this single equation has four symmetries at the same time.
+
+### 11.1 Holding Not as an Assumption but as a Consequence
+
+Eq. (17) is not an axiom placed at the starting point of this paper. Like $U^n=I$ (item 2 of §0), **it holds as a result of combining other symmetries**. In the author's numerical experiments so far, too, neither $U^n=I$ nor $\sum x^2=0$ was placed as an input. It was confirmed afterwards that they held as consequences of the interaction and integer conditions (for $U^n=I$, the Thirteenth Thought Experiment [K7] confirmed that the period was a consequence of the input $R$). This is an empirical rule, and mathematics has two rigorous facts of the same form.
+
+**$U^n=I$ comes from the combination of integrality and norm preservation.** Transformations that preserve a lattice (can be written with integer entries) and transformations that preserve the norm (orthogonal or unitary) do not, each by themselves, require returning after finitely many steps. But the set of transformations satisfying both at the same time is a finite group, and for every element $U$ of it there is a finite $n$ with
+
+$$
+U^n=I
+\tag{17a}
+$$
+
+In three dimensions there are 48 matrices with integer entries that preserve length, and their orders are limited to 1, 2, 3, 4, 6. This is the same set as the crystallographic restriction of §10.1. Finite recurrence is not an assumption but a consequence of imposing two symmetries at the same time.
+
+**$\sum x^2=0$ comes from the compatibility of multiplication and norm.** Squaring a complex number $Z=a+ib$,
+
+$$
+(\mathrm{Re}\,Z^2)^2+(\mathrm{Im}\,Z^2)^2=|Z|^4,
+\qquad
+(a^2-b^2)^2+(2ab)^2=(a^2+b^2)^2
+\tag{17b}
+$$
+
+holds identically, regardless of $a,b$. Placing $|Z|^2$ on the imaginary axis, $(a^2-b^2,\ 2ab,\ i(a^2+b^2))$ is a solution of Eq. (17). Eq. (17) is not placed anywhere as an assumption. It holds automatically from the fact that the norm of a product equals the product of the norms ($|Z^2|=|Z|^2$, the compatibility of multiplication and norm in §10.2). Integer $(a,b)$ give all primitive Pythagorean triples (Euclid's formula; $(a,b)=(2,1)$ gives $3,4,5$).
+
+The same construction extends to pairs of two components. From a pair $(p,q)$ of elements of the algebras of dimension $k=1,2,4,8$ allowed by Hurwitz's theorem (real numbers, complex numbers, quaternions, octonions), form
+
+$$
+t=|p|^2+|q|^2,\qquad z=|p|^2-|q|^2,\qquad w=2\bar p\,q
+\tag{17c}
+$$
+
+Then $t^2-z^2-|w|^2=4\left(|p|^2|q|^2-|\bar p\,q|^2\right)=0$ holds identically, and points on the light cone of dimension $k+2=3,4,6,10$ are obtained [22][23]. The case $k=2$ is the correspondence between the four-dimensional light cone and spinors. In the algebra of dimension 16 (the sedenions) the norm does not preserve products, so this identity fails (confirmed by the attached re-verification). **The light cone appears without assumption only in the dimensions in which multiplication and norm are compatible.**
+
+**The meaning of "ultimate".** Eq. (17) is called the ultimate symmetry not because it is the starting point (axiom) of everything else, but because it is **the common form** that appears as a result when structures of different character, such as integrality, norm and multiplication, are combined. That form does not fix the value of a conserved quantity; it expresses only that a conserved quantity can exist (§11.3). $U^n=I$ and $\sum x^2=0$ are both "relations that hold as results of combination", and placing them at the starting point reverses cause and effect. The same discipline by which this paper, in item 2 of Chapter 0, does not give $U^n=I$ in advance as an explanatory principle is applied to $\sum x^2=0$ as well.
+
+### 11.2 Nontrivial Solutions Need an Imaginary Axis
+
+Within the real numbers, the only solution of Eq. (17) is $x=0$. For a nonzero solution to exist, the square of at least one axis must be negative, that is, its component must be imaginary. And one imaginary axis suffices. Setting one imaginary axis $x_n=it$, Eq. (17) becomes
+
+$$
+\sum_{i=1}^{n-1}x_i^2=t^2
+\tag{18}
+$$
+
+which is the equation of the light cone itself. Its integer solutions are Pythagorean tuples such as $3^2+4^2=5^2$; the structure of integers is in this equation from the outset.
+
+### 11.3 A Definition That a Conserved Quantity Can Exist (0 + 0 = 0)
+
+The 0 of Eq. (17) is not the value of a conserved quantity. A system whose conserved quantity has the value $R^2$,
+
+$$
+\sum_i x_i^2=R^2
+$$
+
+can be rewritten, by adding the value $R$ as one axis $iR$, as
+
+$$
+\sum_i x_i^2+(iR)^2=0,\qquad\text{that is}\qquad \sum_j x_j'^2=0
+\tag{18a}
+$$
+
+A conserved quantity of any value takes the form of Eq. (17) when one axis is added. Eq. (17) therefore does not fix the value of a conserved quantity to 0; it is a definition expressing only that **a conserved quantity can exist** (that the system is closed). The value has not disappeared; it has moved onto the added axis.
+
+Since $0+0=0$, combining systems that satisfy Eq. (17) gives a combined system that again satisfies Eq. (17). However many closed systems are combined, the result stays closed, and in this sense anything looks like a conserved quantity. 0 itself carries no information. The information lies in which axis carries the value ($R$).
+
+Multiplying everything by $\lambda$ does not change Eq. (17). Since the value $R$ has become one of the axes, Eq. (17) needs no external scale. Scale is read as an internal ratio of the system.
+
+### 11.4 The Reading by Central Projection: Observable and Unobservable Directions
+
+Regard the nonzero solutions of Eq. (18) as a collection of half-lines (rays) drawn from the origin. Under central projection from the origin, $x_i\mapsto x_i/t$, each ray is mapped to
+
+$$
+\sum_{i=1}^{n-1}\left(\frac{x_i}{t}\right)^2=1
+$$
+
+that is, to one point of the unit sphere of dimension $n-2$. The position on the sphere (the direction) can still be read after projection. The position along the ray (the size of $t$) is folded into a single point by the projection and can no longer be read. Integer solutions (Pythagorean tuples) are mapped by the projection to rational points on the sphere.
+
+In this reading, the left side of Eq. (18) corresponds to **observable space**, and the right side (the imaginary axis when moved to the left side) to **the unobservable direction**. The very division into observable and unobservable directions is built into Eq. (17). The loss of one dimension under projection is not an approximation added from outside but a consequence of reading Eq. (17) by central projection. It is by this reading that Chapter 5 set the observed constants as a projective readout of the history along the direction of evolution.
+
+### 11.5 Anonymity: Any Axis May Be the Projection Axis
+
+Viewed over the complex numbers, all axes of Eq. (17) are equivalent. Permutations of axes, and indeed all complex orthogonal transformations, preserve Eq. (17). The equation itself does not decide which axis is chosen as the imaginary axis (the projection axis). Solutions obtained with different choices are carried into one another by permutations of axes.
+
+That the axes have no names (labels), that is, **anonymity**, is the most fundamental symmetry in the author's theoretical system. Eq. (17) has this anonymity as it is. That a certain axis is read as "time" is the result of choosing that axis as the projection axis, not because the axis bears the name of time from the outset.
+
+### 11.6 If the Curvature Is Constant, the Origin Is Shared
+
+On a surface of constant curvature, the origin of central projection is shared by all points. On a sphere, the normals at all points pass through one point (the center). Conversely, a connected surface all of whose normals pass through one point is limited to part of a sphere centered at that point (since motion perpendicular to the normal does not change the distance from that point).
+
+The same holds for constant negative curvature. With the right side of Eq. (18) set to a constant,
+
+$$
+t^2-\sum_{i=1}^{n-1}x_i^2=R^2
+\tag{19}
+$$
+
+is a hyperbolic space of curvature $-1/R^2$, and central projection from the origin uses the same origin at all points (the Beltrami–Klein model). As in §11.3, adding the value $R$ as one axis turns Eq. (19) into $\sum_i x_i^2+(it)^2+R^2=0$, that is, a zero square sum of one higher dimension. The sphere $\sum_i x_i^2=R^2$ likewise becomes $\sum_i x_i^2+(iR)^2=0$. Every surface of constant curvature is a section of a zero square sum of one higher dimension and shares the origin of that zero square sum.
+
+If the curvature is constant, an observer standing at any point sees the projection from the same origin, and there is no special observer. The sharing of the origin expresses geometrically the anonymity of observers (that all points are equivalent). Eq. (17) represents these surfaces that share the origin together, in one form in which the value $R$ has been moved to an axis.
+
+### 11.7 Relation to the Hypothesis of This Paper
+
+None of the four symmetries (that a conserved quantity can exist, the division into observable and unobservable directions, the anonymity of axes, and the sharing of the origin) selects a specific integer. What Eq. (17) selects is a **framework**: the minimal number of imaginary axes (one) and the shape of the light cone, not the values of $\alpha$, masses or the number of generations.
+
+Eq. (17) does not fix values. It only gives the framework in which a conserved quantity can exist. What holds exactly is this layer of the framework; on top of it, the layer that selects integers is near but not identical and never locks completely. The statement in item 3 of Chapter 0 that "searching only for a common fixed point is not enough" concerns this layer of integer selection.
+
+The symmetries of Chapters 3–10 are integer-selecting symmetries on top of this framework. In the author's outlook, the structure is layered in the following order.
+
+1. **Eq. (17):** the ultimate symmetry, with neither scale nor names.
+2. **Central projection:** choosing one projection axis separates observable space from the unobservable direction.
+3. **Integer-selecting symmetries:** integers are selected on the observable side (spatial lattices) and on the unobservable side (phases of evolution) respectively (§3.3, §10.1.1).
+4. **Non-commensurability and pull-in:** the integer selections of the two sides cannot be fully reconciled, and metastable evolution arises (Chapter 4).
+5. **Readout:** the history read from the direction of projection becomes the observed constants (Chapter 5).
+
+$\mathcal C_{\rm A}$ (the side of space) and $\mathcal C_{\rm B}$ (the side of evolution) of Chapter 4 correspond to the observable and unobservable sides when Eq. (17) is read by central projection. That the two constraints cannot be fully reconciled may be a consequence of reading one and the same equation from two sides. Showing this possibility is the deepest candidate this paper has for Task 1 of Chapter 6.
+
+## 12. Conclusion
+
+1. The question of this paper is **why symmetries that select different integer conditions are required at the same time, why they cannot be fully reconciled, and why they are nevertheless pulled in by interaction**.
+2. The proposal of this paper is to carry out this question as **a search strategy**. Search for pairs that appear theoretically unrelated yet lie close, and that pull in but never lock completely. The reason for the closeness is not explained. A pair for which an exact agreement is found is removed from the candidates.
+3. If that incomplete locking produces metastable oscillation and sudden change, and the integral readout along the direction of evolution connects to the observed constants, this becomes a concrete candidate for thinking about the origin of quantum structure without first assuming Planck's constant.
+4. Whether symmetries that require integers for order and causality are the origin of time and uncertainty is included in the question of this paper.
+5. The 137-cell count of the four-dimensional lattice and the 23/124 finite recurrence in the two-wave exchange system, treated as a case, are separate mathematical results that can be recalculated. The numerical closeness to the fine-structure constant was what prompted the idea, not evidence that both explain the same electromagnetic phenomenon.
+6. From here on, verification proceeds in the order: proof of non-commensurability, computation of metastable dynamics, the observation map, integer selection of order and causality, and the selection theorems for each case together with comparison with the standard running.
+7. Above these integer-selecting symmetries, the zero square sum $\sum x^2=0$ is placed as the ultimate symmetry. It is, however, not an axiom but, like $U^n=I$, a common form holding as a consequence of combining integrality, norm and multiplication. This equation is a definition expressing that a conserved quantity can exist, rather than fixing the value of a conserved quantity to 0; it separates observable and unobservable directions under central projection, any axis may be the projection axis (anonymity), and under constant curvature it shares the origin (Chapter 11).
+
+**The shortest statement of this thought experiment:**
+
+> Several symmetries that select special integers cannot be fully reconciled and continue a metastable evolution while pulling each other in. Is not what is read, by integrating the history of that incomplete locking from a particular direction, the observed physical constants? The fine-structure constant is one example. What should therefore be searched for are pairs that appear theoretically unrelated yet lie close, and that pull in but never lock completely.
+
+---
+
+## References and Prior Materials
+
+### The Author's Earlier Work and Discovery Materials
+
+- [K1] Noriaki Kihara, `project_w10_alpha137.md`, 2026-04-21 to 05-30, research record on the three-dimensional representation of 137 and the four-dimensional cell count. Stored in Google Drive.
+- [K2] Noriaki Kihara, `思考実験_αのエネルギー依存性.md` (thought experiment: energy dependence of α), 2026-05-14, exploratory examination of the 137 ground structure and the running. [Google Drive](https://drive.google.com/file/d/1yhH5Wk-Qi2IojaEgZLc_P2V2Z9Cng1nH/view).
+- [K3] Noriaki Kihara, `20260717_axiomatic_approach_v2.md`, 2026-07-17, the four-dimensional cell count 137, the 128 shell, the numerical readout axiom and independent calculation. [Google Drive](https://drive.google.com/file/d/1FGNsJHZqMyTWUm6pwqWxDbpfq3BvZa6T/view).
+- [K4] Noriaki Kihara, `反復交換散乱における有限位数共鳴の発見...` (discovery of finite-order resonance in iterated exchange scattering), analysis and numerical results of finite order. [Google Drive](https://drive.google.com/file/d/1F19s-4mlGYB93IkSYrNtS9CUfGvaOFs3/view).
+- [K5] Noriaki Kihara, `project_alpha_transmission_charge_bridge.md`, from 2026-07-30, research record examining the relation between two values near $\alpha$ and finite-order roots. [Google Drive](https://drive.google.com/file/d/1F2RUrAS7Aj6xTwU9MbVm-JfqW5dgK6yo/view).
+- [K6] Noriaki Kihara, The Twelfth Thought Experiment, 2026-10-08, DOI: [10.5281/zenodo.23226258](https://doi.org/10.5281/zenodo.23226258).
+- [K7] Noriaki Kihara, The Thirteenth Thought Experiment v2.0, 2026-10-10, DOI: [10.5281/zenodo.23280070](https://doi.org/10.5281/zenodo.23280070); [Markdown manuscript](https://drive.google.com/file/d/10SJBaaaI7OktbwF6-0Q_PYHR8v_XcJr8/view).
+
+### External Studies
+
+- [1] P. Bak, “Commensurate phases, incommensurate phases and the devil's staircase,” *Reports on Progress in Physics* **45**, 587 (1982). DOI: [10.1088/0034-4885/45/6/001](https://doi.org/10.1088/0034-4885/45/6/001).
+- [2] S. Aubry, “The twist map, the extended Frenkel-Kontorova model and the devil's staircase,” *Physica D* **7**, 240–258 (1983). DOI: [10.1016/0167-2789(83)90129-X](https://doi.org/10.1016/0167-2789(83)90129-X).
+- [3] D.-Y. Zhu et al., “Observation of discrete time quasicrystal in Rydberg atomic gases,” *Nature Communications* **17**, 9186 (2026), published July 29, 2026. DOI: [10.1038/s41467-026-75966-x](https://doi.org/10.1038/s41467-026-75966-x).
+- [4] I. Martin, G. Refael and B. Halperin, “Topological Frequency Conversion in Strongly Driven Quantum Systems,” *Physical Review X* **7**, 041008 (2017). DOI: [10.1103/PhysRevX.7.041008](https://doi.org/10.1103/PhysRevX.7.041008).
+- [5] KLOE-2 Collaboration, “Measurement of the running of the fine structure constant below 1 GeV with the KLOE detector,” *Physics Letters B* **767**, 485–492 (2017). DOI: [10.1016/j.physletb.2016.12.016](https://doi.org/10.1016/j.physletb.2016.12.016).
+- [6] P. J. Mohr et al., “CODATA Recommended Values of the Fundamental Physical Constants: 2022,” NIST / *Reviews of Modern Physics* (2025). [NIST Constants](https://physics.nist.gov/constants).
+- [7] A. Hurwitz, “Über die Composition der quadratischen Formen von beliebig vielen Variablen,” *Nachrichten von der Gesellschaft der Wissenschaften zu Göttingen, Mathematisch-Physikalische Klasse*, 309–316 (1898).
+- [8] J. F. Adams, “On the non-existence of elements of Hopf invariant one,” *Annals of Mathematics* **72**, 20–104 (1960). DOI: [10.2307/1970147](https://doi.org/10.2307/1970147).
+- [9] D. Shechtman, I. Blech, D. Gratias and J. W. Cahn, “Metallic Phase with Long-Range Orientational Order and No Translational Symmetry,” *Physical Review Letters* **53**, 1951–1953 (1984). DOI: [10.1103/PhysRevLett.53.1951](https://doi.org/10.1103/PhysRevLett.53.1951).
+- [10] J. Bamberg, G. Cairns and D. Kilminster, “The crystallographic restriction, permutations, and Goldbach's conjecture,” *The American Mathematical Monthly* **110**, 202–209 (2003). DOI: [10.1080/00029890.2003.11919956](https://doi.org/10.1080/00029890.2003.11919956).
+- [11] M. H. Jensen, P. Bak and T. Bohr, “Transition to chaos by interaction of resonances in dissipative systems. I. Circle maps,” *Physical Review A* **30**, 1960–1969 (1984). DOI: [10.1103/PhysRevA.30.1960](https://doi.org/10.1103/PhysRevA.30.1960).
+- [12] D. Gabor, “Theory of communication. Part 1: The analysis of information,” *Journal of the Institution of Electrical Engineers – Part III* **93**, 429–441 (1946). DOI: [10.1049/ji-3-2.1946.0074](https://doi.org/10.1049/ji-3-2.1946.0074).
+- [13] D. Gottesman, “The Heisenberg Representation of Quantum Computers,” arXiv: [quant-ph/9807006](https://arxiv.org/abs/quant-ph/9807006) (1998).
+- [14] H. S. M. Coxeter, “Integral Cayley numbers,” *Duke Mathematical Journal* **13**, 561–578 (1946). DOI: [10.1215/S0012-7094-46-01347-6](https://doi.org/10.1215/S0012-7094-46-01347-6).
+- [15] M. S. Viazovska, “The sphere packing problem in dimension 8,” *Annals of Mathematics* **185**, 991–1015 (2017). DOI: [10.4007/annals.2017.185.3.7](https://doi.org/10.4007/annals.2017.185.3.7).
+- [16] V. Elser and N. J. A. Sloane, “A highly symmetric four-dimensional quasicrystal,” *Journal of Physics A: Mathematical and General* **20**, 6161–6167 (1987). DOI: [10.1088/0305-4470/20/18/016](https://doi.org/10.1088/0305-4470/20/18/016).
+- [17] A. B. Zamolodchikov, “Integrals of motion and S-matrix of the (scaled) T = T_c Ising model with magnetic field,” *International Journal of Modern Physics A* **4**, 4235–4248 (1989). DOI: [10.1142/S0217751X8900176X](https://doi.org/10.1142/S0217751X8900176X).
+- [18] R. Coldea et al., “Quantum Criticality in an Ising Chain: Experimental Evidence for Emergent E8 Symmetry,” *Science* **327**, 177–180 (2010). DOI: [10.1126/science.1180085](https://doi.org/10.1126/science.1180085).
+- [19] H. Zou et al., “E8 Spectra of Quasi-One-Dimensional Antiferromagnet BaCo2V2O8 under Transverse Field,” *Physical Review Letters* **127**, 077201 (2021). DOI: [10.1103/PhysRevLett.127.077201](https://doi.org/10.1103/PhysRevLett.127.077201).
+- [20] M. B. Green and J. H. Schwarz, “Anomaly cancellations in supersymmetric D = 10 gauge theory and superstring theory,” *Physics Letters B* **149**, 117–122 (1984). DOI: [10.1016/0370-2693(84)91565-X](https://doi.org/10.1016/0370-2693(84)91565-X).
+- [21] D. J. Gross, J. A. Harvey, E. Martinec and R. Rohm, “Heterotic String,” *Physical Review Letters* **54**, 502–505 (1985). DOI: [10.1103/PhysRevLett.54.502](https://doi.org/10.1103/PhysRevLett.54.502).
+- [22] T. Kugo and P. Townsend, “Supersymmetry and the division algebras,” *Nuclear Physics B* **221**, 357–380 (1983). DOI: [10.1016/0550-3213(83)90584-9](https://doi.org/10.1016/0550-3213(83)90584-9).
+- [23] J. C. Baez and J. Huerta, “Division algebras and supersymmetry I,” in *Superstrings, Geometry, Topology, and C*-algebras*, Proceedings of Symposia in Pure Mathematics **81**, 65–80 (2010). arXiv: [0909.0551](https://arxiv.org/abs/0909.0551).
+
+## Appendix A: How to Reproduce the Numbers and Integer Counts
+
+The attached `verify_te14.py` computes, for the case of Chapter 7, the full enumeration of four-dimensional cells, the finite root, the positive root of the geometric self-consistent value, and the three differences. It uses the standard library only.
+
+The attached `verify_e8.py` confirms, for §10.3, the construction of the 240 roots of E₈ (112 + 128), that all roots have squared length 2 and integer inner products (an even lattice), that the Gram matrix of the simple roots has determinant 1 (unimodular), the dimension 248 and the Coxeter number 30, and that $2\cos(\pi/5)$ is the golden ratio, by exact arithmetic with fractions. For §7.6 it also confirms that the Coxeter element satisfies the cyclotomic polynomial $\Phi_{30}$ (exponents 1, 7, 11, 13, 17, 19, 23, 29), the integer relations of Eqs. (12a) and (12b), and the breakdown of the four-dimensional 137 cells by coordinate type.
+
+The attached `verify_null_from_products.py` confirms, for §11.1, that all matrices with integer entries preserving length (8 in two dimensions, 48 in three dimensions) have finite order, that Eq. (17c) gives points on the light cone identically for the Cayley–Dickson dimensions $k=1,2,4,8$ and fails for $k=16$, and Euclid's formula, by exact integer arithmetic.
+
+The attached `verify_phase_lattice.py` computes, for §3.3(c), §10.1 and §10.1.1, the exhaustive check of finite orders of integer matrices, the orders of the $Z_4$ and $Z_6$ maps, and the rotation orders allowed in dimensions 2–4 ($\psi(m)\le d$). It uses the standard library only.
+
+```sh
+python verify_te14.py
+python verify_phase_lattice.py
+python verify_e8.py
+python verify_null_from_products.py
+```
+
+## Version History
+
+- **v1.0 — 2026-10-12**: First fixing of the research hypothesis of this dialogue. States the order of the author's questions; the general principle (non-commensurability, pull-in and incomplete locking of integer-selecting symmetries, and readout along the direction of evolution); the search proposal (search for pairs that appear theoretically unrelated yet lie close, and that pull in but never lock completely); the fine-structure constant as one case of it; footholds for time and uncertainty (integer counting of beats, the cost of a scale, integer phases $Z_4$/$Z_6$); the known example of the circle map; precedents for integer selection (the crystallographic restriction theorem, Hurwitz's theorem, E₈); the integer correspondences between the case and E₈ (near but not identical); the zero square sum and central projection as the ultimate symmetry, and that $U^n=I$ and $\sum x^2=0$ are consequences rather than assumptions (Chapter 11); underived conditions; prior studies; and falsification conditions. Even if later numerical experiments arise, the claims of this version will not be rewritten retroactively; differences will be recorded from v1.1 onward.
