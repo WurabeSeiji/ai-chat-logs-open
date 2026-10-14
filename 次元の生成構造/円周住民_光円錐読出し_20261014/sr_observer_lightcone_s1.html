@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<style>:root{--text-primary:#1f1e1d;--text-secondary:#5f5e5a;--border:rgba(0,0,0,.12);--border-strong:rgba(0,0,0,.25);color-scheme:light dark}
+@media(prefers-color-scheme:dark){:root{--text-primary:#f0efea;--text-secondary:#b4b2a9;--border:rgba(255,255,255,.12);--border-strong:rgba(255,255,255,.25)}body{background:#1f1e1d}}
+body{font-family:sans-serif;max-width:760px;margin:1rem auto;padding:0 1rem;color:var(--text-primary)}
+.rw{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-secondary)}.rw>span:first-child{min-width:90px}.rw>span:last-child{min-width:52px;color:var(--text-primary)}.ck{display:flex;align-items:center;gap:4px;font-size:13px;color:var(--text-secondary)}.ro{display:grid;grid-template-columns:1fr 1fr;gap:3px 12px;font-size:12px;color:var(--text-secondary);margin-top:6px}.ro b{font-weight:500;color:var(--text-primary)}.sec{margin-top:10px;border-top:0.5px solid var(--border);padding-top:8px}
+</style><title>円周住民：特殊相対性理論の思考実験（観測者と粒子）</title></head><body>
+<h3 style="font-weight:500">円周住民：特殊相対性理論の思考実験 2026-10-14</h3>
+<p style="font-size:13px;color:var(--text-secondary);margin:0 0 8px">紫＝粒子の波（虚部・振幅）　橙破線＝観測者の波（自分の固有時の物差し）　緑＝粒子の実部（進行方向）。観測者 ln(a/b)=0 → 静止。観測者を粒子に合わせると v'→0。</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:6px;align-items:center">
+<label class="ck"><input type="checkbox" id="act" checked> 作用を進める</label>
+<button id="rst">リセット</button></div>
+<div style="font-size:12px;color:var(--text-secondary);margin-bottom:2px">── 観測される粒子</div>
+<div class="rw"><span>粒子 ln(a/b)</span><input type="range" id="lp" min="-3" max="3" step="0.05" value="1.2" style="flex:1"><span id="lpo">1.20</span></div>
+<div class="rw"><label class="ck" style="min-width:90px"><input type="checkbox" id="oddp" checked> 奇数 N</label><input type="range" id="Np" min="1" max="17" step="2" value="11" style="flex:1"><span id="Npo">11</span></div>
+<div class="rw"><label class="ck" style="min-width:90px"><input type="checkbox" id="evenp" checked> 偶数 N</label><input type="range" id="Nep" min="2" max="18" step="2" value="12" style="flex:1"><span id="Nepo">12</span></div>
+<div class="sec"></div>
+<div style="font-size:12px;color:var(--text-secondary);margin-bottom:2px">── 観測者（自分の波）</div>
+<div class="rw"><span>観測者 ln(a/b)</span><input type="range" id="lo" min="-3" max="3" step="0.05" value="0" style="flex:1"><span id="loo">0.00</span></div>
+<div class="rw"><label class="ck" style="min-width:90px"><input type="checkbox" id="oddo" checked> 奇数 N</label><input type="range" id="No_" min="1" max="17" step="2" value="7" style="flex:1"><span id="Noo">7</span></div>
+<div class="rw"><label class="ck" style="min-width:90px"><input type="checkbox" id="eveno" checked> 偶数 N</label><input type="range" id="Neo_" min="2" max="18" step="2" value="8" style="flex:1"><span id="Neoo">8</span></div>
+<div class="sec"></div>
+<div class="rw"><span>並進距離 d</span><input type="range" id="ds" min="-720" max="720" step="0.5" value="0" style="flex:1"><span id="dso">0°</span></div>
+<canvas id="cv" style="width:100%;height:380px;display:block;touch-action:none;margin-top:8px"></canvas>
+<div class="ro">
+<span>粒子の v（神視点）：<b id="vp"></b></span><span>観測者の v（神視点）：<b id="vo"></b></span>
+<span>観測者から見た v'：<b id="vrel"></b></span><span>相対論の合成則：<b id="vcalc"></b></span>
+<span>観測者の β（固有時 τ_obs）：<b id="btobs"></b></span><span>観測者が読む粒子の τ'：<b id="taup"></b></span></div>
+<p style="font-size:11px;color:var(--text-secondary);margin-top:4px">観測者 ln(a/b)=0 → 静止。観測者を粒子に合わせると v'→0、粒子が止まって見える。観測者が逆向き → v' が大きく見え、粒子の固有時が縮む。v' と相対論の合成則は常に一致。神の目線は存在しない：どの観測者から見ても法則は同じ形。</p>
+<script>
+const cv=document.getElementById('cv'),ctx=cv.getContext('2d'),$=id=>document.getElementById(id);
+let yaw=0.5,pitch=0.4,drag=null,beta=0,dist=0,last=null,sliding=false;
+const RATE=35*Math.PI/180,D=180/Math.PI;
+function css(v){try{return getComputedStyle(document.documentElement).getPropertyValue(v).trim()||'#888'}catch(e){return'#888'}}
+function ns(oddId,evenId,NoId,NeId){const a=[];if($(oddId).checked)for(let n=1;n<=+$(NoId).value;n+=2)a.push(n);if($(evenId).checked)for(let n=2;n<=+$(NeId).value;n+=2)a.push(n);return a.sort((x,y)=>x-y)}
+function wts(lr){const r=Math.exp(lr);const a=r/(1+r),b=1/(1+r);const s=a*a+b*b;return{a,b,v:(a*a-b*b)/s,ig:2*a*b/s}}
+function wave(L,a,b,th0,M){const im=[],re=[];let mx=1e-9;for(let i=0;i<=M;i++){const t=2*Math.PI*i/M;let sc_=0,ss=0;for(const n of L){const u=n*(t-th0)/2;sc_+=Math.cos(u);ss+=Math.sin(u)}const I=(a+b)*sc_,Re=-(a-b)*ss;im.push(I);re.push(Re);mx=Math.max(mx,Math.abs(I),Math.abs(Re))}return{im,re,mx}}
+function draw(){
+const dpr=window.devicePixelRatio||1,W=cv.clientWidth||700,H=cv.clientHeight||380;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+const lp=+$('lp').value,lo=+$('lo').value,wp=wts(lp),wo=wts(lo);
+const Lp=ns('oddp','evenp','Np','Nep'),Lo=ns('oddo','eveno','No_','Neo_');
+$('lpo').textContent=lp.toFixed(2);$('loo').textContent=lo.toFixed(2);
+$('Npo').textContent=$('Np').value;$('Nepo').textContent=$('Nep').value;
+$('Noo').textContent=$('No_').value;$('Neoo').textContent=$('Neo_').value;
+$('ds').value=(dist*D).toFixed(1);$('dso').textContent=(dist*D).toFixed(1)+'°';
+const vrel=Math.tanh(lp-lo),vcalc=(wp.v-wo.v)/(1+wp.v*wo.v),igp_obs=1/Math.cosh(lp-lo);
+$('vp').textContent=wp.v.toFixed(4);$('vo').textContent=wo.v.toFixed(4);
+$('vrel').textContent=vrel.toFixed(4);$('vcalc').textContent=vcalc.toFixed(4);
+$('btobs').textContent=(beta*wo.ig*D).toFixed(1)+'°';$('taup').textContent=(beta*igp_obs*D).toFixed(1)+'°';
+const sc=Math.min(W,H)*0.33,cx=W/2,cy=H*0.52,c1=Math.cos(yaw),s1=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
+const P=(x,y,z)=>{const X=x*c1-y*s1,Y=x*s1+y*c1;return[cx+X*sc,cy-(z*cp-Y*sp)*sc]};
+ctx.strokeStyle=css('--border-strong');ctx.lineWidth=1;ctx.beginPath();for(let i=0;i<=360;i++){const t=2*Math.PI*i/360,p=P(Math.cos(t),Math.sin(t),0);i?ctx.lineTo(...p):ctx.moveTo(...p)}ctx.stroke();
+let a0=P(0,0,-0.85),a1=P(0,0,0.85);ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(...a0);ctx.lineTo(...a1);ctx.stroke();ctx.setLineDash([]);
+const M=900,th0p=dist,th0o=Math.abs(wp.v)>1e-6?wo.v*dist/wp.v:0;
+if(Lp.length){const wd=wave(Lp,wp.a,wp.b,th0p,M),zs=0.75/wd.mx;ctx.strokeStyle='#7F77DD';ctx.lineWidth=2;ctx.beginPath();for(let i=0;i<=M;i++){const t=2*Math.PI*i/M,p=P(Math.cos(t),Math.sin(t),wd.im[i]*zs);i?ctx.lineTo(...p):ctx.moveTo(...p)}ctx.stroke();ctx.strokeStyle='#1D9E75';ctx.lineWidth=1.8;ctx.beginPath();for(let i=0;i<=M;i++){const t=2*Math.PI*i/M,d=0.4*wd.re[i]/wd.mx,p=P((1+d)*Math.cos(t),(1+d)*Math.sin(t),0);i?ctx.lineTo(...p):ctx.moveTo(...p)}ctx.stroke();const pk=P(Math.cos(th0p),Math.sin(th0p),0),pk2=P(1.45*Math.cos(th0p),1.45*Math.sin(th0p),0);ctx.strokeStyle='#7F77DD';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(...pk);ctx.lineTo(...pk2);ctx.stroke()}
+if(Lo.length){const wd=wave(Lo,wo.a,wo.b,th0o,M),zs=0.75/wd.mx;ctx.strokeStyle='#EF9F27';ctx.lineWidth=1.4;ctx.setLineDash([5,3]);ctx.beginPath();for(let i=0;i<=M;i++){const t=2*Math.PI*i/M,p=P(Math.cos(t),Math.sin(t),wd.im[i]*zs);i?ctx.lineTo(...p):ctx.moveTo(...p)}ctx.stroke();ctx.setLineDash([]);const pk=P(Math.cos(th0o),Math.sin(th0o),0),pk2=P(1.45*Math.cos(th0o),1.45*Math.sin(th0o),0);ctx.strokeStyle='#EF9F27';ctx.lineWidth=1;ctx.setLineDash([3,3]);ctx.beginPath();ctx.moveTo(...pk);ctx.lineTo(...pk2);ctx.stroke();ctx.setLineDash([])}}
+function loop(ts){if(last===null)last=ts;const dt=Math.min(0.05,(ts-last)/1000);last=ts;if($('act').checked&&!sliding){const wp=wts(+$('lp').value);const db=RATE*dt;beta+=db;dist+=wp.v*db;if(Math.abs(dist)>4*Math.PI){beta=0;dist=0}}draw();requestAnimationFrame(loop)}
+$('ds').addEventListener('pointerdown',()=>sliding=true);$('ds').addEventListener('pointerup',()=>sliding=false);$('ds').addEventListener('input',()=>{dist=(+$('ds').value)/D;draw()});
+function reset(){beta=0;dist=0;draw()}
+$('rst').addEventListener('click',reset);['lp','lo','Np','Nep','No_','Neo_','oddp','evenp','oddo','eveno'].forEach(id=>$(id).addEventListener('input',reset));
+cv.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];cv.setPointerCapture(e.pointerId)});
+cv.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-drag[0])*0.01;pitch=Math.max(-1.5,Math.min(1.5,pitch+(e.clientY-drag[1])*0.01));drag=[e.clientX,e.clientY]});
+cv.addEventListener('pointerup',()=>drag=null);window.addEventListener('resize',draw);
+requestAnimationFrame(loop);
+</script></body></html>

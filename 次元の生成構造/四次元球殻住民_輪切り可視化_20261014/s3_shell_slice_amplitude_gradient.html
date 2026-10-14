@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<style>:root{--text-primary:#1f1e1d;--text-secondary:#5f5e5a;--border:rgba(0,0,0,.12);--border-strong:rgba(0,0,0,.25);color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--text-primary:#f0efea;--text-secondary:#b4b2a9;--border:rgba(255,255,255,.12);--border-strong:rgba(255,255,255,.25)}body{background:#1f1e1d}}
+body{font-family:sans-serif;max-width:760px;margin:1rem auto;padding:0 1rem;color:var(--text-primary)}
+.rw{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-secondary)}.rw span:first-child{min-width:64px}.rw span:last-child{min-width:40px;color:var(--text-primary)}.ck{display:flex;align-items:center;gap:4px;font-size:13px;color:var(--text-secondary)}
+</style><title>四次元球殻 S³ の輪切り：振幅（濃淡・透明度）と傾斜 ∂ψ ln|R²|</title></head><body>
+<h3 style="font-weight:500">四次元球殻 S³ の輪切り：振幅（濃淡・透明度）と傾斜 ∂ψ ln|R²| 2026-10-14</h3>
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px">
+<select id="frm"><option value="a">cos(nψ)</option><option value="b">Uₙ/(n+1)</option></select>
+<select id="def"><option value="rot">±回転項</option><option value="sq">iA×成分</option></select></div>
+<div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px"><label class="ck"><input type="checkbox" id="gon"> 傾斜の凹凸</label><label class="ck"><input type="checkbox" id="bon"> R=0 の境界線</label></div>
+<div class="rw"><label class="ck" style="min-width:64px"><input type="checkbox" id="odd" checked> 奇数 N</label><input type="range" id="No_" min="1" max="17" step="2" value="11" style="flex:1"><span id="Noo">11</span></div>
+<div class="rw"><label class="ck" style="min-width:64px"><input type="checkbox" id="even" checked> 偶数 N</label><input type="range" id="Ne_" min="2" max="18" step="2" value="12" style="flex:1"><span id="Neo">12</span></div>
+<div class="rw"><span>切断 χc</span><input type="range" id="cc" min="1" max="179" step="1" value="60" style="flex:1"><span id="cco">60°</span></div>
+<div class="rw"><span>ピーク χ0</span><input type="range" id="c0" min="0" max="180" step="1" value="60" style="flex:1"><span id="c0o">60°</span></div>
+<div class="rw"><span>ピーク θ0</span><input type="range" id="t0" min="0" max="180" step="1" value="70" style="flex:1"><span id="t0o">70°</span></div>
+<div class="rw"><span>ピーク φ0</span><input type="range" id="p0" min="0" max="360" step="1" value="30" style="flex:1"><span id="p0o">30°</span></div>
+<canvas id="cv" style="width:100%;height:440px;display:block;touch-action:none"></canvas>
+<div style="font-size:12px;color:var(--text-secondary)">紫＝振幅 +i／橙＝振幅 −i／濃さ・不透明度＝|振幅|/ピーク値（成分数）／凹凸＝∂ψ ln|R²|（発散は上限で頭打ち）／黒線＝R=0。切断は極からの測地距離 χc の球殻（半径 sin χc）。ドラッグで回転。 <span id="info" style="color:var(--text-primary)"></span></div>
+<script>
+const cv=document.getElementById('cv'),ctx=cv.getContext('2d'),$=id=>document.getElementById(id);let yaw=0.5,pitch=0.4,drag=null;
+function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()||'#888'}
+function ns(){const a=[];if($('odd').checked)for(let n=1;n<=+$('No_').value;n+=2)a.push(n);if($('even').checked)for(let n=2;n<=+$('Ne_').value;n+=2)a.push(n);return a.sort((x,y)=>x-y)}
+function fields(psi,L,frm,def){const s=Math.max(Math.sin(psi),1e-6);let amp=0,r2=0;
+for(const n of L){if(frm==='a'){const c=Math.cos(n*psi);amp+=c;r2+=def==='rot'?-0.5*Math.cos(2*n*psi):-c*c}else{const u=Math.sin((n+1)*psi)/s/(n+1);amp+=u;r2+=def==='rot'?Math.cos(2*(n+1)*psi)/(2*(n+1)*(n+1)*s*s):-u*u}}return[amp,r2]}
+function draw(){const dpr=window.devicePixelRatio||1,W=cv.clientWidth,H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+const D=Math.PI/180,cc=+$('cc').value*D,c0=+$('c0').value*D,t0=+$('t0').value*D,p0=+$('p0').value*D,frm=$('frm').value,def=$('def').value,L=ns(),gon=$('gon').checked,bon=$('bon').checked;
+['cc','c0','t0','p0'].forEach(k=>$(k+'o').textContent=$(k).value+'°');$('Noo').textContent=$('No_').value;$('Neo').textContent=$('Ne_').value;
+const rs=Math.sin(cc),sc=Math.min(W,H)*0.33,cx=W/2,cy=H/2,c1=Math.cos(yaw),s1=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
+const P=(x,y,z)=>{const X=x*c1-y*s1,Y=x*s1+y*c1;return[cx+X*sc,cy-(z*cp-Y*sp)*sc,Y*cp+z*sp]};
+ctx.strokeStyle=css('--border-strong');ctx.lineWidth=1;ctx.setLineDash([3,4]);ctx.beginPath();for(let j=0;j<=96;j++){const ph=2*Math.PI*j/96,p=P(Math.cos(ph),Math.sin(ph),0);j?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1])}ctx.stroke();ctx.setLineDash([]);
+if(!L.length){$('info').textContent='成分が選ばれていません';return}
+const N=L[L.length-1],ampRef=L.length,pk=[Math.sin(c0)*Math.sin(t0)*Math.cos(p0),Math.sin(c0)*Math.sin(t0)*Math.sin(p0),Math.sin(c0)*Math.cos(t0),Math.cos(c0)];
+const NT=56,NP=112,h=1e-3,grid=[];let amax=0;
+for(let i=0;i<=NT;i++){const th=Math.PI*i/NT,row=[];for(let j=0;j<=NP;j++){const ph=2*Math.PI*j/NP,nx=Math.sin(th)*Math.cos(ph),ny=Math.sin(th)*Math.sin(ph),nz=Math.cos(th);
+const dot=Math.sin(cc)*(nx*pk[0]+ny*pk[1]+nz*pk[2])+Math.cos(cc)*pk[3],psi=Math.acos(Math.max(-1,Math.min(1,dot))),f=fields(psi,L,frm,def);let g=0;
+if(gon){const fp=fields(Math.min(Math.PI-1e-4,psi+h),L,frm,def),fm=fields(Math.max(1e-4,psi-h),L,frm,def);g=(Math.log(Math.abs(fp[1])+1e-30)-Math.log(Math.abs(fm[1])+1e-30))/(2*h)}
+amax=Math.max(amax,Math.abs(f[0]));row.push({nx,ny,nz,amp:f[0],r2:f[1],g})}grid.push(row)}
+$('info').textContent='成分数 '+L.length+'　球の半径 '+rs.toFixed(2)+'　最短ψ '+Math.abs(+$('cc').value-+$('c0').value)+'°　切り口の最大|振幅|/ピーク '+(amax/ampRef).toFixed(2);
+const k=0.12/Math.max(N,1),lim=0.35,pts=grid.map(r=>r.map(q=>{const d=gon?Math.max(-lim,Math.min(lim,k*q.g)):0,rr=rs*(1+d);return P(rr*q.nx,rr*q.ny,rr*q.nz)})),quads=[];
+for(let i=0;i<NT;i++)for(let j=0;j<NP;j++){const a=pts[i][j],b=pts[i][j+1],c=pts[i+1][j+1],d=pts[i+1][j],am=(grid[i][j].amp+grid[i+1][j+1].amp+grid[i][j+1].amp+grid[i+1][j].amp)/4,t=Math.min(1,Math.abs(am)/ampRef);
+const bd=bon&&(Math.sign(grid[i][j].r2)!==Math.sign(grid[i+1][j].r2)||Math.sign(grid[i][j].r2)!==Math.sign(grid[i][j+1].r2));
+quads.push({p:[a,b,c,d],z:(a[2]+b[2]+c[2]+d[2])/4,col:am>=0?'127,119,221':'239,159,39',al:0.04+0.92*Math.pow(t,0.7),bd})}
+quads.sort((u,v)=>u.z-v.z);for(const q of quads){ctx.beginPath();ctx.moveTo(q.p[0][0],q.p[0][1]);for(let m=1;m<4;m++)ctx.lineTo(q.p[m][0],q.p[m][1]);ctx.closePath();ctx.fillStyle='rgba('+q.col+','+q.al.toFixed(3)+')';ctx.fill();if(q.bd){ctx.strokeStyle='rgba(44,44,42,0.6)';ctx.lineWidth=1;ctx.stroke()}}}
+cv.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];cv.setPointerCapture(e.pointerId)});cv.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-drag[0])*0.01;pitch=Math.max(-1.5,Math.min(1.5,pitch+(e.clientY-drag[1])*0.01));drag=[e.clientX,e.clientY];draw()});cv.addEventListener('pointerup',()=>drag=null);
+['frm','def','cc','No_','Ne_','c0','t0','p0','gon','bon','odd','even'].forEach(id=>$(id).addEventListener('input',draw));window.addEventListener('resize',draw);draw();
+</script></body></html>

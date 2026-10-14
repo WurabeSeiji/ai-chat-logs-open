@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<style>:root{--text-primary:#1f1e1d;--text-secondary:#5f5e5a;--border:rgba(0,0,0,.12);--border-strong:rgba(0,0,0,.25);color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--text-primary:#f0efea;--text-secondary:#b4b2a9;--border:rgba(255,255,255,.12);--border-strong:rgba(255,255,255,.25)}body{background:#1f1e1d}}
+body{font-family:sans-serif;max-width:760px;margin:1rem auto;padding:0 1rem;color:var(--text-primary)}
+.rw{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-secondary)}.rw span:first-child{min-width:70px}.rw span:last-child{min-width:44px;color:var(--text-primary)}.ck{display:flex;align-items:center;gap:4px;font-size:13px;color:var(--text-secondary)}.ro{font-size:12px;color:var(--text-secondary);display:grid;grid-template-columns:1fr 1fr;gap:2px 12px;margin-top:6px}.ro b{font-weight:500;color:var(--text-primary)}
+</style><title>円周：位相回転の作用と光円錐の配分</title></head><body>
+<h3 style="font-weight:500">円周：位相回転の作用と光円錐の配分 2026-10-14</h3>
+<div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:6px;align-items:center">
+<label class="ck"><input type="checkbox" id="act" checked> 位相回転の作用</label>
+<label class="ck"><input type="checkbox" id="odd" checked> 奇数次</label>
+<label class="ck"><input type="checkbox" id="even" checked> 偶数次</label>
+<select id="rad"><option value="re">半径方向：振幅の実部</option><option value="grad">半径方向：傾斜 ∂ ln|R²|</option><option value="none">半径方向：なし</option></select>
+<button id="rst">リセット</button></div>
+<div class="rw"><span>N</span><input type="range" id="N" min="1" max="18" step="1" value="12" style="flex:1"><span id="No">12</span></div>
+<div class="rw"><span>ln(a/b)</span><input type="range" id="lr" min="-3" max="3" step="0.05" value="0.8" style="flex:1"><span id="lro">0.80</span></div>
+<div class="rw"><span>回転の速さ</span><input type="range" id="sp" min="5" max="120" step="1" value="40" style="flex:1"><span id="spo">40°/s</span></div>
+<canvas id="cv" style="width:100%;height:420px;display:block;touch-action:none"></canvas>
+<div class="ro"><span>速さ v = k/R：<b id="v"></b></span><span>1/γ = m/R：<b id="ig"></b></span>
+<span>回転の総量 β：<b id="bt"></b></span><span>並進した距離 Δθ0：<b id="dx"></b></span>
+<span>固有時 τ = Σβ/γ：<b id="tau"></b></span><span>実測 Δθ0/β：<b id="vm"></b></span></div>
+<div style="font-size:12px;color:var(--text-secondary);margin-top:4px">成分 x_n = iA(a e^{inφ/2} + b e^{−inφ/2})、a+b=1。v=(a²−b²)/(a²+b²)、1/γ=2ab/(a²+b²)。作用：段1 回転の総量 dβ、段2 空間 v·dβ と内部時計 dβ/γ に配分、段3 全成分を同じ並進で一度に回す。紫＝振幅の虚部（垂直）。ドラッグで回転。</div>
+<script>
+const cv=document.getElementById('cv'),ctx=cv.getContext('2d'),$=id=>document.getElementById(id);
+let yaw=0.6,pitch=0.55,drag=null,th0=0,beta=0,dist=0,tau=0,last=null;
+function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()||'#888'}
+function ns(){const a=[],N=+$('N').value;for(let n=1;n<=N;n++){if(($('odd').checked&&n%2)||($('even').checked&&!(n%2)))a.push(n)}return a}
+function wts(){const r=Math.exp(+$('lr').value);const a=r/(1+r),b=1/(1+r);const s=a*a+b*b;return{a,b,v:(a*a-b*b)/s,ig:2*a*b/s}}
+function draw(){
+const dpr=window.devicePixelRatio||1,W=cv.clientWidth,H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+const L=ns(),{a,b,v,ig}=wts(),mode=$('rad').value;
+$('No').textContent=$('N').value;$('lro').textContent=(+$('lr').value).toFixed(2);$('spo').textContent=$('sp').value+'°/s';
+$('v').textContent=v.toFixed(4);$('ig').textContent=ig.toFixed(4);$('bt').textContent=(beta*180/Math.PI).toFixed(1)+'°';
+$('dx').textContent=(dist*180/Math.PI).toFixed(1)+'°';$('tau').textContent=(tau*180/Math.PI).toFixed(1)+'°';$('vm').textContent=beta>1e-6?(dist/beta).toFixed(4):'—';
+const sc=Math.min(W,H)*0.3,cx=W/2,cy=H*0.55,c1=Math.cos(yaw),s1=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
+const P=(x,y,z)=>{const X=x*c1-y*s1,Y=x*s1+y*c1;return[cx+X*sc,cy-(z*cp-Y*sp)*sc]};
+const grid=css('--border-strong'),txt=css('--text-secondary');
+ctx.strokeStyle=grid;ctx.lineWidth=1;ctx.beginPath();for(let i=0;i<=360;i++){const t=2*Math.PI*i/360,p=P(Math.cos(t),Math.sin(t),0);i?ctx.lineTo(...p):ctx.moveTo(...p)}ctx.stroke();
+let a0=P(0,0,-0.9),a1=P(0,0,0.9);ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(...a0);ctx.lineTo(...a1);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=txt;ctx.font='12px sans-serif';ctx.fillText('虚数軸',a1[0]+4,a1[1]);
+if(!L.length)return;
+const M=1080,im=[],re=[],g=[];let mx=1e-9;
+for(let i=0;i<=M;i++){const t=2*Math.PI*i/M;let sc_=0,ss=0,R2r=0,R2i=0,dR2r=0,dR2i=0;
+for(const n of L){const u=n*(t-th0)/2;sc_+=Math.cos(u);ss+=Math.sin(u);
+const c2=Math.cos(2*u),s2=Math.sin(2*u);R2r+=-(a*a*c2+b*b*c2+2*a*b);R2i+=-(a*a-b*b)*s2;
+dR2r+=n*(a*a+b*b)*s2;dR2i+=-n*(a*a-b*b)*c2}
+const I=(a+b)*sc_,Re=-(a-b)*ss;im.push(I);re.push(Re);mx=Math.max(mx,Math.abs(I),Math.abs(Re));
+const m2=R2r*R2r+R2i*R2i;g.push(m2>1e-12?(R2r*dR2r+R2i*dR2i)/m2:0)}
+const zs=0.8/mx;
+ctx.strokeStyle='#AFA9EC';ctx.lineWidth=0.6;for(let i=0;i<M;i+=9){const t=2*Math.PI*i/M,c=Math.cos(t),s=Math.sin(t);ctx.beginPath();ctx.moveTo(...P(c,s,0));ctx.lineTo(...P(c,s,im[i]*zs));ctx.stroke()}
+ctx.strokeStyle='#7F77DD';ctx.lineWidth=2;ctx.beginPath();for(let i=0;i<=M;i++){const t=2*Math.PI*i/M,p=P(Math.cos(t),Math.sin(t),im[i]*zs);i?ctx.lineTo(...p):ctx.moveTo(...p)}ctx.stroke();
+if(mode!=='none'){const N=L[L.length-1];ctx.lineWidth=2;ctx.strokeStyle=mode==='re'?'#1D9E75':'#D85A30';ctx.beginPath();
+for(let i=0;i<=M;i++){const t=2*Math.PI*i/M;const d=mode==='re'?0.45*re[i]/mx:Math.max(-0.6,Math.min(0.6,0.22*g[i]/N));const p=P((1+d)*Math.cos(t),(1+d)*Math.sin(t),0);i?ctx.lineTo(...p):ctx.moveTo(...p)}ctx.stroke()}
+const pk=P(Math.cos(th0),Math.sin(th0),0),pk2=P(1.5*Math.cos(th0),1.5*Math.sin(th0),0);ctx.strokeStyle=grid;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(...pk);ctx.lineTo(...pk2);ctx.stroke();ctx.fillStyle=txt;ctx.fillText('θ0',pk2[0]+3,pk2[1]);
+}
+function loop(ts){
+if(last===null)last=ts;const dt=Math.min(0.05,(ts-last)/1000);last=ts;
+if($('act').checked){const {v,ig}=wts();const db=(+$('sp').value)*Math.PI/180*dt;
+beta+=db;const ds=v*db;th0=(th0+ds)%(4*Math.PI);dist+=ds;tau+=ig*db}
+draw();requestAnimationFrame(loop)}
+function reset(){th0=0;beta=0;dist=0;tau=0;draw()}
+$('rst').addEventListener('click',reset);['lr','N','odd','even'].forEach(id=>$(id).addEventListener('input',reset));
+cv.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];cv.setPointerCapture(e.pointerId)});
+cv.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-drag[0])*0.01;pitch=Math.max(-1.5,Math.min(1.5,pitch+(e.clientY-drag[1])*0.01));drag=[e.clientX,e.clientY]});
+cv.addEventListener('pointerup',()=>drag=null);window.addEventListener('resize',draw);
+requestAnimationFrame(loop);
+</script></body></html>

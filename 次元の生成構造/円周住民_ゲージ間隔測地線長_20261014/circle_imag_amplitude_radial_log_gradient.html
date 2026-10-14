@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<style>:root{--text-primary:#1f1e1d;--text-secondary:#5f5e5a;--border:rgba(0,0,0,.12);--border-strong:rgba(0,0,0,.25);color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--text-primary:#f0efea;--text-secondary:#b4b2a9;--border:rgba(255,255,255,.12);--border-strong:rgba(255,255,255,.25)}body{background:#1f1e1d}}
+body{font-family:sans-serif;max-width:760px;margin:1rem auto;padding:0 1rem;color:var(--text-primary)}
+</style><title>円周：虚数振幅（垂直）と傾斜 ∂θ ln|R²|（半径方向）</title></head><body>
+<h3 style="font-weight:500">円周：虚数振幅（垂直）と傾斜 ∂θ ln|R²|（半径方向） 2026-10-14</h3>
+<div style="font-size:13px;color:var(--text-secondary)">
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+<select id="sys"><option value="all">全次数</option><option value="odd">奇数次</option><option value="even">偶数次</option></select>
+<select id="def"><option value="rot">成分＝±回転項</option><option value="cos">成分＝iA cos</option></select></div>
+<div style="display:flex;align-items:center;gap:8px"><span style="min-width:44px">N</span><input type="range" id="N" min="1" max="18" step="1" value="18" style="flex:1"><span id="No" style="min-width:36px">18</span></div>
+<div style="display:flex;align-items:center;gap:8px"><span style="min-width:44px">θ0</span><input type="range" id="t0" min="0" max="720" step="1" value="0" style="flex:1"><span id="t0o" style="min-width:36px">0°</span></div></div>
+<canvas id="cv" style="width:100%;height:420px;display:block;touch-action:none"></canvas>
+<div style="font-size:12px;color:var(--text-secondary)">紫＝虚数振幅（垂直）／珊瑚＝傾斜 R²&lt;0／緑＝傾斜 R²&gt;0／●＝R=0。ドラッグで回転。</div>
+<script>
+const cv=document.getElementById('cv'),ctx=cv.getContext('2d');let yaw=0.6,pitch=0.55,drag=null;const $=id=>document.getElementById(id);
+function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()||'#888'}
+function ns(){const s=$('sys').value,N=+$('N').value,a=[];for(let n=1;n<=N;n++){if(s==='all'||(s==='odd'&&n%2)||(s==='even'&&!(n%2)))a.push(n)}return a}
+function draw(){const dpr=window.devicePixelRatio||1,W=cv.clientWidth,H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+const L=ns(),N=Math.max(1,L.length?L[L.length-1]:1),t0=+$('t0').value*Math.PI/180,def=$('def').value;$('No').textContent=$('N').value;$('t0o').textContent=$('t0').value+'°';
+const r0=1,sc=Math.min(W,H)*0.3,cx=W/2,cy=H*0.55,c1=Math.cos(yaw),s1=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
+const P=(x,y,z)=>{const X=x*c1-y*s1,Y=x*s1+y*c1;return[cx+X*sc,cy-(z*cp-Y*sp)*sc]};
+const M=1440,amp=[],g=[],r2=[];let ampMax=1e-9;
+for(let i=0;i<=M;i++){const th=2*Math.PI*i/M,ph=th-t0;let a=0,num=0,den=0;for(const n of L){a+=Math.cos(n*ph/2);if(def==='rot'){den+=Math.cos(n*ph);num+=-n*Math.sin(n*ph)}else{den+=Math.cos(n*ph/2)**2;num+=-0.5*n*Math.sin(n*ph)}}
+amp.push(a);ampMax=Math.max(ampMax,Math.abs(a));r2.push(-den);g.push(den===0?0:num/den)}
+const grid=css('--border-strong'),txt=css('--text-secondary');ctx.lineWidth=1;ctx.strokeStyle=grid;ctx.beginPath();for(let i=0;i<=M;i+=4){const th=2*Math.PI*i/M,p=P(Math.cos(th),Math.sin(th),0);i?ctx.lineTo(...p):ctx.moveTo(...p)}ctx.stroke();
+let a0=P(0,0,-0.9),a1=P(0,0,0.9);ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(...a0);ctx.lineTo(...a1);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=txt;ctx.font='12px sans-serif';ctx.fillText('虚数軸',a1[0]+4,a1[1]);
+const pk=P(Math.cos(t0),Math.sin(t0),0),pk2=P(1.55*Math.cos(t0),1.55*Math.sin(t0),0);ctx.beginPath();ctx.moveTo(...pk);ctx.lineTo(...pk2);ctx.stroke();ctx.fillText('θ0',pk2[0]+3,pk2[1]);
+const zs=0.8/ampMax;ctx.strokeStyle='#AFA9EC';ctx.lineWidth=0.6;for(let i=0;i<M;i+=12){const th=2*Math.PI*i/M,c=Math.cos(th),s=Math.sin(th);ctx.beginPath();ctx.moveTo(...P(c,s,0));ctx.lineTo(...P(c,s,amp[i]*zs));ctx.stroke()}
+ctx.strokeStyle='#7F77DD';ctx.lineWidth=2;ctx.beginPath();for(let i=0;i<=M;i++){const th=2*Math.PI*i/M,p=P(Math.cos(th),Math.sin(th),amp[i]*zs);i?ctx.lineTo(...p):ctx.moveTo(...p)}ctx.stroke();
+const k=0.22/N,lim=0.6;ctx.lineWidth=2.2;for(let i=0;i<M;i++){const th=2*Math.PI*i/M,th2=2*Math.PI*(i+1)/M,d1=Math.max(-lim,Math.min(lim,k*g[i])),d2=Math.max(-lim,Math.min(lim,k*g[i+1]));if(Math.sign(r2[i])!==Math.sign(r2[i+1]))continue;
+ctx.strokeStyle=r2[i]<0?'#D85A30':'#1D9E75';ctx.beginPath();ctx.moveTo(...P((r0+d1)*Math.cos(th),(r0+d1)*Math.sin(th),0));ctx.lineTo(...P((r0+d2)*Math.cos(th2),(r0+d2)*Math.sin(th2),0));ctx.stroke()}
+ctx.fillStyle=css('--text-primary');for(let i=0;i<M;i++){if(Math.sign(r2[i])!==Math.sign(r2[i+1])){const th=2*Math.PI*(i+0.5)/M,p=P(Math.cos(th),Math.sin(th),0);ctx.beginPath();ctx.arc(p[0],p[1],3,0,7);ctx.fill()}}}
+cv.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];cv.setPointerCapture(e.pointerId)});cv.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-drag[0])*0.01;pitch=Math.max(-1.5,Math.min(1.5,pitch+(e.clientY-drag[1])*0.01));drag=[e.clientX,e.clientY];draw()});cv.addEventListener('pointerup',()=>drag=null);
+['sys','def','N','t0'].forEach(id=>$(id).addEventListener('input',draw));window.addEventListener('resize',draw);draw();
+</script></body></html>
