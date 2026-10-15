@@ -1,0 +1,1280 @@
+# Reading Out Time, Space, Mass, Charge, Translational Velocity and Spin from the Relations and Interference of Complex Waves without a Background Spacetime
+## ― An Integrated Hypothesis in the Order of the Thought Experiment, from Residents of a Closed Circle to Residents of a Four-Dimensional Spherical Shell, and on to α, the Four-Dimensional Lattice and E₈ ―
+
+**Author:** Noriaki Kihara  
+**ORCID:** 0009-0004-6753-4020  
+**Version DOI:** 10.5281/zenodo.23386447  
+**Concept DOI:** 10.5281/zenodo.23384928  
+**Version:** v1.1 (corrected version. v0.1, which made α the subject, was rejected by the author; v0.2 was rewritten in full along the order of the author's questions; v1.0 tidied the quotations, fixed the figures and was published; v1.1 recast the direct-download URLs of the HTML in Appendix A as one link per line and fixed the misinterpretation of table delimiters)  
+**Date:** 2026-10-15  
+**Related papers:** Wave model of closed-sphere residents [H1], Fourteenth Thought Experiment [A1], Thirteenth Thought Experiment [D1], Eleventh Thought Experiment [D2], Twelfth Thought Experiment [F1], finite-order resonance [B1]  
+**Classification:** Hypothesis paper following the order of a thought experiment / an alternative interpretive hypothesis of the standard theory / presentation of tasks that can be taken over and verified  
+**Method of record:** The primary sources are the full texts of two dialogues between the author and Claude ("Intrinsic geometry on a circle", 2026-10-13 to 14; "The dialogue after the Fourteenth Thought Experiment", 2026-10-14 to 15). The order of the author's questions and corrections is used as the order of the chapters. Claude's errors and the author's corrections are kept as part of the derivation. All numerical experiments were re-run and checked.  
+**Keywords:** closed-sphere residents, imaginary amplitude, true squares, Σxₙ² = R², light cone, gauge interval and geodesic length, pinned phase (Higgs-like background), cross term, proper time, velocity addition, necessity of three dimensions, spin, Hopf-fibre winding, observation as the cross term, four-dimensional Hurwitz lattice, 23/124, three 137s, near but not locked, complete absorbing shell at infinity, E₈ gluing
+
+---
+
+## Abstract
+
+This paper makes one claim. **Without placing a background spacetime, and from nothing but the relations and interference of complex waves that are not even travelling waves of odd and even harmonics, time, space, mass, charge, translational velocity and spin can all be read out.** What is placed is only a phase θ and an imaginary-direction amplitude A on a closed circle (S¹), and the single condition that the sum of the true squares (squares without conjugation) of the components equals R², Σxₙ² = R². Written as Σxₙ² + (iR)² = 0 this is the light-cone condition, and R is not a radius placed outside but a quantity of the same kind as the components (an amplitude).
+
+The derivation proceeds in the order of the author's questions and corrections. A resident of the circle has no direction for a transverse wave, so the amplitude is placed in the imaginary direction. The number n of nodes (phases where the amplitude vanishes) counts half-wavelengths, so odd n is allowed; odd n closes in two laps and even n in one. Summing harmonics of equal amplitude localises them at one point; the appearance of localisation and the fixing of the origin θ₀ are one event, and the fundamental component n = 1 or n = 2 acts as the gauge and carries a virtual origin. In two dimensions R does not enter. Extending the residents to the four-dimensional spherical shell (S³), R enters and θ₀ becomes three (two phases and one mixing angle). A numerical experiment that solved a self-consistent shell with absolute squares and a real radius was fixed as an error by the author's corrections "true squares", "not a norm", "there is no outside of the circle", and its results are not adopted. Residents cannot read curvature, but the geodesic length per gauge interval becomes non-uniform (the peak interval is 1.245 times longer for all orders N = 18). In slices of S³, even components raise a peak of the same sign at the antipode and odd components one of the opposite sign, and only with both present is the position fixed at one point.
+
+Then the author's eleven stages follow. (1) Mass: from the question that a travelling wave cannot be represented, through the pinned phase (which corresponds to the Higgs field and does not oscillate) whose beat with the wave reads out mass, time and space at once, through "the speed of light is not exceeded because the gauge is widened", to the realisation that the way of thinking of the Lorentz factor is the light cone Σxₙ² = 0 itself; on the circle v² + (1/γ)² = 1 holds as an identity (residual 10⁻¹⁵), v = tanh ln(a/b), the velocity-addition law agrees to six digits, and mass 1/γ = m/R is read out as the fraction of the cross term 2ab of the counter-rotating terms. (2) Three dimensions: the only sphere satisfying the three conditions—uniform translations form a group (S¹, S³), propagation without a tail (odd dimensions), and a mass gap from curvature the residents can read (all but S¹)—is S³. (10) Spin: the odd/even distinction is spin 1/2 and integer spin as it stands, the cross term has spin 0, localisation at one point and a spin eigenstate are incompatible, a spin eigenstate is a two-point localisation, and the opposite spin on the far side can be observed by no one. (3) Charge: the Hopf-fibre winding number, whose integrality gives quantisation. Observation is the cross term between particle and observer, and being able to read, radiating, and distributing energy are the same event. (4) Can it be read as the electron: from the questions about the weak force (redistribution of harmonic components) and the strong force, through Koide's relation being a zero square sum, the electron is chosen as the testing ground (E1). (5) When α is introduced, Claude's reasoning about "why 23/124" is dismissed by the author; the problem is "why does it lock to that window". (9) The four-dimensional lattice: only in four dimensions, where the diagonal is an integer, do Z₄ and Z₆ coexist in one lattice, and this is why the background is four-dimensional and the visible space three-dimensional (E2). (6) A detour: Planck's constant was placed at its SI value to judge the electron mass (E3). (7) In G = c = q₀ = 1 (q₀ = e/3), ħ = 9α⁻¹ is an output; once α is fixed the electron mass necessarily agrees, and α alone is what must be verified. (8) α is obtained from 23/124 through N(R) = 4π/(1−R)², and the four-dimensional lattice makes it easy to pull in there (E4). The observed value deviates slightly because observation is an average that includes states in transition, and the electron itself distorts the gauge (E5). The harmonic content, in a system of ratios with no absolute scale, is fixed by the degree of localisation, and the minimal structure is two spin components × three three-phase components. Localisation occurs by exchange and returns after one cycle; the only self-consistent lock is 23/124; the dynamics is inherent in the system as the record on the complete absorbing shell at infinity, and the answer table of the Eleventh Thought Experiment allows the answers to be checked. The beginning of the universe (geometric expansion of an unstable self-consistent closure of a highly symmetric monochromatic wave), the places of the three forces, the inflaton and the Higgs, and the background radiation line up as stages of the same system. (11) If the Lamb shift and the g-factor cannot be derived, the E₈ that has not yet been used supplies the constraint. E₈ is two Hurwitz quaternions glued by "their difference is a multiple of (1+i)"; the point 180° opposite enters automatically; and since the way of connection has been identified, what remains is a derivation problem.
+
+α, 137 and 23/124 are one stage of this development, not the subject of the paper. The paper separates what has been verified, what has been connected as hypothesis, and the means of verification, and fixes the whole not as a paper that aims at completion but as an alternative interpretive hypothesis of the standard theory in a form that can be taken over and verified.
+
+---
+
+## 0. Position of this paper and how to read it
+
+1. **The order has meaning.** The order of the chapters is exactly the order in which, in the two dialogues, the author asked, Claude erred, and the author corrected until the road was fixed. Claude's errors are not erased; the author's corrections are written as part of the derivation. Nothing has been reordered, merged or shortened. The numbers of the eleven stages the author stated on 2026-10-15 are attached to the chapter headings. The correspondence between the eleven stages and the chapters is: stage 1 = Chapter 7, stage 2 = Chapter 9, stage 3 = Chapter 12, stage 4 = Chapter 14, stage 5 = Chapter 15, stage 6 = Chapter 17, stage 7 = Chapter 18, stage 8 = Chapter 19, stage 9 = Chapter 16, stage 10 = Chapter 11 (and, on the four-dimensional lattice, §20.3), stage 11 = Chapter 24. The two stages whose position in the dialogue differs from the enumeration (spin, the four-dimensional lattice) are placed at their position in the dialogue, following the author's decision that the dialogue order is the basis and readability may decide. Spin is read out directly from the geometry of S³ (left and right multiplication in SU(2)), so it reads best right after three dimensions; the four-dimensional lattice is the answer to "why does it lock to that window" and E2 fixes the method of E3 onwards, so it reads best right after the introduction of α.
+2. **Three distinctions.** The paper separates what has been verified (what has numbers from papers and numerical experiments), what has been connected as hypothesis (what was placed in the dialogue in answer to the author's questions), and the means of verification (the answer table of the Eleventh Thought Experiment and measured values). Chapter 25 lists them.
+3. **Units.** G = c = q₀ = 1 (q₀ = e/3, Gaussian). Planck's constant is not placed as an input. From α = 9q₀²/(ħc), ħ = 9α⁻¹ is an output (Chapter 18).
+4. **The meaning of locking.** Dynamic locking—a state being pulled in to a nearby value and locking there, with quasi-oscillation and sudden change on top—must occur. What would break the hypothesis is that the values chosen by several symmetries (137, 23/124, the integers of E₈, …) coincided exactly from the start, not the discovery of a dynamic lock [A1 §7.6]. "Near but not identical" is not a hole to be filled; it is the content of the hypothesis.
+5. **Wording.** This is a hypothesis paper, not a record of a dialogue, and its claims are stated outright. At the head of each section, however, the author's question is placed, because it is the primary source that fixed the order of the derivation. The quotations are the dialogue text with typographical errors, colloquial interjections and expressions of reproach removed; the meaning has not been changed. The originals are in `chat_logs/`.
+6. **Symbols and experiment names of the earlier papers are kept.** The section numbers of the sphere-resident paper [H1], the equation numbers and H1–H5 of the Fourteenth Thought Experiment [A1], U_R, N_A and ε_state of the Thirteenth [D1], the comparison table of the Eleventh [D2], N(R) and R_{n,m} of the K4 paper [B1], and the names of the numerical experiments E0–E5 are unchanged.
+
+## 1. Motivation: from the answer table to this thought experiment
+
+This research series stands under the design document [G1]. Its starting point is two questions. Why is it difficult to derive the Standard Model and general relativity from one and the same underlying structure, although each succeeds with high precision? Why does the Standard Model, with its high symmetry and many conserved structures, need several experimental parameters? The candidate first principle is "there exist states that have no names but are mutually distinguishable and countable", and the states are given no attributes such as electron, photon, mass, charge, spatial position or time coordinate in advance. Among the prohibitions are fixing spatial or temporal axes from outside, naming particle species, and adding normalisation merely to obtain a desired result.
+
+The First Thought Experiment [G2] derived, from two nameless values (a, b) and the principle that "a state alone cannot be read; only products can", that the readout is uniquely an area form, that the first readable dynamical quantity is the central acceleration (the operational content of the equivalence principle), that the sum of squares Σz² = C² is induced rather than input, and that C is the radius of curvature. The Second Thought Experiment [G3] derived position too as a product readout, x = a² − b², y = 2ab, r = a² + b², with x² + y² − r² = 0 emerging as a zero closure, and showed that the readout point traces a conic obeying an inverse-square force; at the same time it concluded that "the mass ratio and the charge ratio cannot be written with two values". The Third Thought Experiment [G4] reversed the direction and confirmed that, from two-body orbits computed with the known Newtonian equations and post-Newtonian approximations, the mass ratio, relative distance and relative time can be read out with zero knowledge. The Fourth to Sixth Thought Experiments [G5–G7] generated the orbits from a state-dependent action Sₙ, made explicit through self-audit the information remaining outside the state, and placed the two interactions, gravity and Coulomb, in eight persistent states and one map. The supplement to the Sixth [G8] changed the normalisation from G = M = c = 1 to G = q₀ = c = 1 (q₀ = e/3).
+
+The Eleventh Thought Experiment [D2] changed course here. The radiation update rule of the Sixth had been given from outside as known multipole formulas; "closed in the state alone" was the form of the ledger, not a derivation of the interaction. The attempts to derive the dynamics including radiation from the distribution-array operation itself (the Seventh to Tenth Thought Experiments, unpublished), and to expand the Einstein–Maxwell equations around the initial configuration and place them in a discrete variational scheme, neither reached a two-body orbit with gravity, and the run with an absorber did not reach a lock but collapsed. So the Eleventh did not aim at derivation; it computed the known standard theory (Dirac–Coulomb bound states with recoil, 1PN two-body gravity with quadrupole gravitational waves, Einstein's A coefficients) without holding any coordinate grid or metric of a background spacetime in the state, with the rest frame of the complete absorber at infinity as the only reference frame, in units G = c = q₀ = 1, with inputs α, μ_p, μ and g_p, reading out only from the record of emission and absorption (frequency, rate, branching ratio, time difference, direction, polarisation), for four systems (hydrogen atom, electron–electron, proton–proton, hydrogen molecule), and produced the "answer table" that a future generating rule must reproduce. The absorber is the set of sections where the future light cone of each emission event cuts infinity, and "no background spacetime" and "a complete absorber at infinity" do not contradict each other. Recorded exchanges (emission and absorption) give the frequency itself; unrecorded exchanges give its shift (the Lamb shift). For "the ground state does not radiate", both the time evolution of the field and a discrete lock are needed.
+
+The Twelfth Thought Experiment [F1] asked where the α used as an input in the answer table had come from. In the hydrogen ground state α = v/c, and the Lorentz factor γ = 1/√(1−α²) is nothing but a component ratio in the light-cone equation with one proper-time axis added, r² + τ² + (it)² = 0. Treating the axes as nameless directions, when an observer chooses the subspace that can be read directly, the remaining directions appear only as a sum of squares, and symmetry can be read as an expression of indistinguishability. The Thirteenth Thought Experiment [D1] asked why a particle that has acquired mass does not dissipate and vanish, showed that localisation shuttles reversibly between two waves, that U^n = I is a result and not a cause, and that in an exchange system with the finite-order root R_{124,23} the state recovers at the 124th collision, but reserved: "R is an input value, and this is not a confirmation that the periodic closure arose from the interaction; to determine the mixing angle from the interaction a dynamics is needed." The Fourteenth Thought Experiment [A1] traced the question back behind Planck's constant as the end point of explanation, set up the hypothesis that several integer-selecting symmetries cannot be fully reconciled and pull each other in, the incomplete lock producing metastability and sudden change, and proposed "to search for pairs that look theoretically unrelated yet lie close, that pull in but never lock completely". Its trigger was that the four-dimensional cell count 137 = 1 + 8 + 128 and the finite-order root of two-wave exchange R_{124,23} = cos²(23π/124) each separately give a value near α⁻¹.
+
+The series up to this point had built an answer table with the known equations, asked after the origin of the constant left in its input (α, the charge coupling), found the structure of exchange and incomplete locking, and stopped there. What remained was to show, in one system and one stage at a time, where mass, charge, translation and spin are read out from, without placing either time or space. The thought experiment of this paper begins there: with a resident of a closed circle.
+
+---
+
+## 2. Residents of the circle (S¹)
+
+From this chapter to Chapter 6 the development of the dialogue "Intrinsic geometry on a circle" (2026-10-13 to 14) [H1] is written in the order of the author's questions and corrections. The author's question is placed at the head of each section. All formulas are written with nothing but the phase θ on the closed circle and the imaginary-direction amplitude A; no background time or space is used.
+
+### 2.1 Setting: no background time or space is assumed
+
+> Consider a resident living on a circle of radius R in two dimensions. No background time or space is assumed. (10-13 17:59)
+
+The resident's world is the closed circle alone. The centre, and the plane inside and outside the circle, do not exist for the resident. "Radius R" is a word seen from outside and is not something the resident can measure from inside. A one-dimensional manifold has no intrinsic curvature, so the only clue left to the resident is the closure, "one lap brings you back". There is no background time either, so if time is to be spoken of it must be assembled from the relations among changes within the resident's world.
+
+### 2.2 No direction for a transverse wave: the amplitude is in the imaginary direction
+
+> Now consider a cosine or sine wave. We take the wave to be transverse only. There is no direction for a transverse wave; it should be orthogonal to the tangent of the circle, but no such direction exists, so we assume the amplitude may also lie in the imaginary direction. (18:03)
+
+The direction orthogonal to the tangent is the direction of a background space, which the resident does not have. The only direction in which the amplitude of a transverse wave can be placed is an internal degree of freedom attached to the resident's world, not a spatial direction. That is taken to be the imaginary direction. Because the circle is closed, the allowed waves are discrete.
+
+### 2.3 The number of nodes n: the phases where the amplitude vanishes
+
+> Here n is the point: think of it as the number of nodes (vertices) on the circle. (18:05)
+> No. Nodes (vertices) are the phases where the amplitude becomes zero. (18:06)
+> Can a complex amplitude not become zero? (18:07)
+> Superfluous assumptions have crept in. All there is are the phase θ and the imaginary amplitude A. (18:09)
+
+Here Claude erred three times. It read the points where the phase aligns as "nodes"; then restricted to the circularly polarised e^{iks} and said "a complex amplitude cannot vanish"; then introduced C·cos(mθ + δ) with a complex constant C, a phase δ and an integer m. Through the author's three corrections the elements of the system were fixed as two: θ and the imaginary amplitude A. A node is a phase where the amplitude vanishes, and there are n such θ in one lap.
+
+> Do you see the meaning of n here? 2n gives the ordinary 360 degrees; n gives 180 degrees. (18:10)
+
+From node to node is 180 degrees of phase. With 2n nodes the wave advances n×360 degrees per lap, an ordinary wave; with n nodes it advances n×180 degrees. n counts half-wavelengths. Waves with odd n are therefore allowed, and for them one lap returns the amplitude A as −A. Since A may take values in the imaginary direction, −A is A rotated by 180 degrees in the complex plane and causes no contradiction.
+
+### 2.4 n = 0 is ±iA
+
+> Then what waveform is n = 0? (18:11)
+> ±iA, surely? (18:13)
+
+Claude answered that n = 0 is "a uniform A with nothing appearing", and the author corrected it. At n = 0 the phase does not advance, so the amplitude remains constant, and that amplitude can only be placed in the imaginary direction. n = 0 is not empty: it is the state in which the whole circle uniformly carries a purely imaginary amplitude, and there are two states distinguished by sign, +iA and −iA.
+
+### 2.5 n = 1, n = 2, odd and even
+
+> Then n = 1? (18:14)
+> Can you draw it? (18:14)
+> Make it 3D. It should be obvious that taking the imaginary axis in the radial direction is wrong. (18:16)
+> Now draw n = 2. (18:17)
+> Is there a difference here between odd and even? (18:19)
+
+n = 1 is the wave with one node. From +iA at some point it decreases along the circle, passes through zero at the single point on the opposite side (the node), and after one lap it has become −iA. n = 1 is the wave that joins the two states +iA and −iA of n = 0 across a single node; it does not return after one lap but reverses sign, and returns only after two laps.
+
+In the figure, the imaginary axis cannot be taken in the radial direction, because the radial direction is the direction of a background space. The imaginary amplitude is drawn perpendicular to the plane of the circle.
+
+n = 2 has two nodes and advances 360 degrees per lap; starting from +iA it crosses the plane twice at the two nodes and returns to +iA after one lap.
+
+For odd n the phase advances an odd multiple of 180 degrees per lap, so after one lap +iA has become −iA and two laps are needed to return. Even n closes in one lap. Under the rotation that goes once round the circle, odd waves return after 720 degrees and even waves after 360 degrees. This difference in how they return has the same structure as the difference between a spinor and a vector.
+
+### 2.6 Summing harmonics and localisation
+
+> Can you draw n = 1, 3, 5 in one figure? (18:20)
+> Add the linear sum as well. (18:21)
+> Likewise show the linear sum of n = 2, 4, 6. (18:23)
+> Now show only the linear sum of the odd orders up to n = 17. (18:24)
+> Likewise only the linear sum of the even orders up to n = 18. (18:26)
+> Now only the linear sum of odd and even together up to n = 18. (18:27)
+
+Each component is summed with the same amplitude A.
+
+- Odd orders n = 1, 3, …, 17 (9 components): a single sharp peak of +9iA stands at θ = 0; at the end of the first lap the same point is a trough of −9iA, and it returns to +9iA on the second lap. There are 17 nodes per lap, equally spaced at θ = π/9. The closed form is A·sin(9θ)/(2 sin(θ/2)).
+- Even orders n = 2, 4, …, 18 (9 components): +9iA at θ = 0, returning to +9iA at the same point after one lap. At θ = π the value is −iA, not a node. There are 18 nodes per lap, with two interleaved equally spaced sequences of different spacing.
+- Both, n = 1, …, 18: +18iA at θ = 0. At the end of the first lap the odd sum −9iA and the even sum +9iA cancel and the amplitude is exactly zero; but at this point the wave only touches the plane of the circle without crossing it. At the end of the second lap it returns to +18iA. The closed form is A·sin(9θ/2)·cos(19θ/4)/sin(θ/4).
+
+> Do you see the intention? (18:30)
+
+Claude's reading was as follows, and the author said "roughly OK". Since there is no background space, the direction of the amplitude is i, and it cannot be taken radially because that is the direction of a background space. From the closure of the circle alone the allowed waves become discrete, and n is the only quantity the resident can read out—the resolution itself. n = 0 is the two values ±iA. Odd n closes in two laps and even n in one, so the distinction between fermionic and bosonic waves comes out of the closed circle and the parity of the number of nodes alone. Summing equal-amplitude harmonics localises a sharp peak at one point, and a structure that can be called "position" is born from interference alone although there is no background space. Summing odd and even together, the two cancel at the end of the first lap and the localised peak appears only once in two laps. From the closed circle and the imaginary-direction amplitude alone, quantisation (n), the fermion/boson distinction (parity) and a localised particle (harmonic summation) come out without bringing anything in from outside.
+
+### 2.7 The peak phase θ₀ and the three formulas
+
+> Add to this figure a peak phase θ0 that can be moved with a slider. (18:44)
+> Show the formulas for the linear sums fodd(n,θ0), feven(n,θ0), fall(n,θ0) when the maximum n and θ0 are specified, for odd only, even only and both. (18:48)
+
+Put φ = θ − θ₀ and let the amplitude be iA. N is the largest n included in the sum.
+
+$$
+f_{\mathrm{odd}}(N,\theta_0)=iA\sum_{k=0}^{(N-1)/2}\cos\frac{(2k+1)\varphi}{2}=iA\,\frac{\sin\frac{(N+1)\varphi}{2}}{2\sin\frac{\varphi}{2}},
+$$
+
+$$
+f_{\mathrm{even}}(N,\theta_0)=iA\sum_{k=1}^{N/2}\cos k\varphi=iA\,\frac{\sin\frac{N\varphi}{4}\cos\frac{(N+2)\varphi}{4}}{\sin\frac{\varphi}{2}},
+$$
+
+$$
+f_{\mathrm{all}}(N,\theta_0)=iA\sum_{n=1}^{N}\cos\frac{n\varphi}{2}=iA\,\frac{\sin\frac{N\varphi}{4}\cos\frac{(N+1)\varphi}{4}}{\sin\frac{\varphi}{4}}.
+$$
+
+The peak values are i(N+1)A/2, iNA/2 and iNA respectively; the periods are 4π (two laps) for f_odd and f_all and 2π (one lap) for f_even. The θ₀ slider runs from 0 to 720°; θ₀ and θ₀ + 360° put the peak at the same point of the circle but differ in whether the peak appears on the first or the second lap, and are different states.
+
+### 2.8 Exponential representation and the E function
+
+> Write this in exponential form, including the amplitude. (18:49)
+> Put the amplitude in exponential form too. (18:51)
+> You have ignored that the amplitude is imaginary. (18:53)
+> Do not skip the expansion of Σ. (18:54)
+> Now show, as Eeven and so on, the functions that give only the exponent. (18:56)
+> Do you see what is being done? (18:58)
+
+After four corrections, the amplitude iA = e^{α+iπ/2} (α = ln A) was kept as an independent factor and the sums were closed as geometric series.
+
+$$
+f_{\mathrm{odd}}(N,\theta_0)=e^{\alpha+i\frac{\pi}{2}}\;\frac{e^{i\frac{(N+1)\varphi}{2}}-e^{-i\frac{(N+1)\varphi}{2}}}{2\left(e^{i\frac{\varphi}{2}}-e^{-i\frac{\varphi}{2}}\right)},
+$$
+
+$$
+f_{\mathrm{all}}(N,\theta_0)=e^{\alpha+i\frac{\pi}{2}}\;\frac{\left(e^{i\frac{N\varphi}{4}}-e^{-i\frac{N\varphi}{4}}\right)\left(e^{i\frac{(N+1)\varphi}{4}}+e^{-i\frac{(N+1)\varphi}{4}}\right)}{2\left(e^{i\frac{\varphi}{4}}-e^{-i\frac{\varphi}{4}}\right)}.
+$$
+
+The differences in numerator and denominator are both purely imaginary, so their ratio is real and f always lies on the imaginary axis. Only e^{iπ/2} fixes the direction of the amplitude; its size is e^{α}.
+
+Let E_odd, E_even, E_all be the exponents with f = e^{E}. Products become sums and quotients become differences.
+
+$$
+E_{\mathrm{odd}}(N,\theta_0)=\alpha-\ln2+i\frac{\pi}{2}+\ln\!\left(e^{i\frac{(N+1)\varphi}{2}}-e^{-i\frac{(N+1)\varphi}{2}}\right)-\ln\!\left(e^{i\frac{\varphi}{2}}-e^{-i\frac{\varphi}{2}}\right).
+$$
+
+The real part of E is the logarithm of the size of the amplitude, ln|f|, and diverges to −∞ at the nodes where |f| = 0. The imaginary part of E takes only the two values π/2 and 3π/2 (mod 2π): the direction of the amplitude is either +i or −i and jumps by π at each node.
+
+To the author's "do you see what is being done?", Claude's reading was as follows, and the author said "roughly OK". Not the wave itself but its exponent E = ln f is being taken as the descriptive quantity of the system. The amplitude α = ln A is only a constant added to E and disappears on differentiation with respect to θ or θ₀, so the quantities read out as gradients do not depend on A. "Only ratios are physics" holds automatically in the formula. The remaining parameters are N and θ₀ only. The readout is the gradient of E, and since φ = θ − θ₀, ∂E/∂θ₀ = −∂E/∂θ: moving the peak and reading at that place are tied by the same quantity.
+
+### 2.9 In two dimensions R does not enter
+
+> From here the bar goes up. In the two-dimensional case R does not enter this calculation, does it? (19:00)
+
+E_odd, E_even and E_all are all written in φ alone, and R appears nowhere. R appears only when the phase θ is converted to arc length s = Rθ. The resident has no background ruler; the only unit of length available is the wave itself (the node spacing), and measured in that unit 1/R disappears and only the ratio of node numbers N remains. The circle is one-dimensional and has no intrinsic curvature, so whatever the resident measures locally, R cannot be detected.
+
+### 2.10 θ₀ is a virtual origin: the base n = 1 or n = 2 is the gauge
+
+> Right. There is one more strange thing: θ0. This system has no background origin, and yet θ0 is somehow defined. (19:06)
+> The formula holds without any such assumption. (19:07)
+> Exactly. The base n = 1 or n = 2 becomes the gauge and carries a virtual origin. (19:08)
+
+Claude answered that "θ₀ has meaning only when there are two or more waves, and only the phase difference can be read", and the author corrected it. No second wave is needed. In the exponential representation,
+
+$$
+e^{i\frac{n\varphi}{2}}=e^{i\frac{n\theta}{2}}\,e^{-i\frac{n\theta_0}{2}},
+$$
+
+so θ₀ is not an origin placed from outside but the arrangement of the phases nθ₀/2 of the components n themselves. The point where the phases of all components align is the peak, and that point is θ₀. Without a background origin, the phase relations among the components fix a single point on the circle by themselves. This holds because they are summed: with a single component the points of aligned phase are several and none can be singled out as θ₀. The appearance of a localised peak and the fixing of an origin are one and the same event.
+
+The fundamental component has only one peak within its period: once in two laps (4π) for n = 1, once in one lap (2π) for n = 2. So the phase of the fundamental alone fixes a single point on the circle. That is the virtual origin. A higher component n has n peaks and cannot fix an origin by itself, but in the composite wave the phase nθ₀/2 of each component is fixed as an integer multiple of the phase of the fundamental, and the higher components merely line up according to the origin the fundamental has fixed. The phase of the fundamental itself can be chosen freely; shifting θ₀ to θ₀ + δ shifts all component phases by nδ/2 in step and the waveform moves without changing shape. The choice of the fundamental's phase is the gauge freedom, and what is invariant under that choice is the ratio of the component phases (the integer-multiple relation). In the odd and the full systems n = 1 plays this gauge role; in the even system n = 2 does.
+
+## 3. To residents of the four-dimensional spherical shell
+
+### 3.1 R enters and θ₀ becomes three
+
+> Next. Extend this to residents of the surface of a four-dimensional spherical shell. Suddenly R enters and θ0 becomes three, does it not? (19:12)
+
+The surface S³ of a four-dimensional ball is a closed three-dimensional space. Three angles are needed to specify a point of the resident's world, so the peak position of the composite wave, the virtual origin, is fixed by three angles (χ₀, θ₀, φ₀), and the gauge freedom becomes three.
+
+The circle was one-dimensional with no intrinsic curvature and R was invisible to the resident, but S³ has intrinsic curvature 1/R² and the resident can read R from local measurements without looking outside. On the side of the wave, where on the circle the eigenvalue of component n was proportional to n², for harmonics on S³ it is n(n+2)/R². This can be written (n+1)² − 1, and the "−1" is the term due to curvature. The ratio between the ruler measured by the node spacing of the wave and the bending of the space remains as a quantity the resident can read. S³ has the same shape as SU(2) and possesses, as a space, the spinor property of reversing sign in one lap and returning in two. The "wave that closes in two laps" seen in the odd system of the circle appears on S³ as a property of the space itself.
+
+### 3.2 The same exponential form: N and R are common
+
+> Can this be expressed in the same exponential form as before? Take N and R to be common. (19:14)
+
+Let s be the geodesic distance between a point and the peak and put ψ = s/R.
+
+$$
+\cos\psi=\cos\chi\cos\chi_0+\sin\chi\sin\chi_0\left[\cos\theta\cos\theta_0+\sin\theta\sin\theta_0\cos(\phi-\phi_0)\right].
+$$
+
+Regarding S³ as the unit quaternions, this can also be written x = x₀·e^{ψu} (u a pure imaginary unit quaternion), and ψ is the angle of the exponent as seen from the virtual origin. Replacing φ/2 by ψ in the formulas for the circle,
+
+$$
+f_{\mathrm{odd}}=e^{\alpha+i\frac{\pi}{2}}\,\frac{e^{i(N+1)\psi}-e^{-i(N+1)\psi}}{2\left(e^{i\psi}-e^{-i\psi}\right)},
+$$
+
+$$
+f_{\mathrm{even}}=e^{\alpha+i\frac{\pi}{2}}\,\frac{1}{2}\left(\frac{e^{i(N+1)\psi}-e^{-i(N+1)\psi}}{e^{i\psi}-e^{-i\psi}}-1\right),
+$$
+
+$$
+f_{\mathrm{all}}=e^{\alpha+i\frac{\pi}{2}}\,\frac{1}{2}\left(\frac{e^{i\frac{(2N+1)\psi}{2}}-e^{-i\frac{(2N+1)\psi}{2}}}{e^{i\frac{\psi}{2}}-e^{-i\frac{\psi}{2}}}-1\right).
+$$
+
+Three things change relative to the circle. The denominator e^{iψ} − e^{−iψ} was, on the circle, merely the result of taking the sum; on S³ it is the geometric factor corresponding to the size R sin(s/R) of the sphere at distance s from the virtual origin, and its deviation from the s that flat space would give is the curvature 1/R². R enters the resident's physics here. f_odd is itself a single harmonic on S³ with eigenvalue N(N+2)/R²: the "composite wave" on the circle is one wave on S³. One lap of the circle (φ = 2π) corresponds on S³ to the antipode (ψ = π); f_odd reverses sign at the antipode, f_even returns, and f_all with even N is exactly zero there.
+
+### 3.3 The three θ₀: two phases and one mixing angle
+
+> Now put in the three θ0. (19:16)
+
+Representing a point of S³ by two complex numbers (z₁, z₂) = (cos η·e^{iξ₁}, sin η·e^{iξ₂}) and the peak by (η₀, ξ₁₀, ξ₂₀),
+
+$$
+\cos\psi=\mathrm{Re}\left[\cos\eta\cos\eta_0\,e^{i(\xi_1-\xi_{10})}+\sin\eta\sin\eta_0\,e^{i(\xi_2-\xi_{20})}\right].
+$$
+
+ξ₁₀ and ξ₂₀ appear only as phase differences, like e^{−inθ₀/2} on the circle, and are gauges of the same kind as on the circle. η₀ appears as cos η₀ and sin η₀, fixing the ratio of the two phase terms: a mixing angle, not a phase. Whatever coordinates are chosen, the three θ₀ cannot all be made pure phases at once, because among the rotational symmetries of S³ at most two rotations commute. Setting η = η₀ = 0 recovers the circle. The single θ₀ of the circle becomes on S³ "two phases (gauges) and one mixing angle".
+
+### 3.4 One equation localises at any position of three-dimensional space
+
+> Is this not strange? With (A,N,θn), n = 1,2,3, the same equation can express movement to and localisation at any position of the three-dimensional space of the universe, can it not? (19:23)
+
+Every point of S³ is equivalent (homogeneous), so however the three θ₀ are chosen, the waveform around the peak keeps the same shape and can be localised at any point of the space. One equation with five parameters (A, N, θ₁, θ₂, θ₃) can place a localised object anywhere in three-dimensional space. This movement is not movement through a background space; because S³ is SU(2) itself, it is realised by the symmetry of the space, as multiplication by an element of the group. A is the strength of the peak, N its width (about πR/(N+1), the ratio of the particle's size to the size of the universe), and the three θ₀ the position. What the equation expresses at this point is the position and movement of a localised object; the odd and even systems distinguish fermionic from bosonic. Where a quantity such as charge is read out from has not yet been shown.
+
+### 3.5 Why does the wave appear to translate: it is at rest
+
+> And why does the wave appear to translate? That cannot be explained yet, can it? It is at rest. (19:25)
+
+Time enters nowhere in the formulas so far. Every f is a stationary waveform, θ₀ is only a parameter saying where it is localised, and waveforms with different θ₀ are different stationary states. For translation to be seen, the states with different θ₀ would have to be ordered and one would have to pass into another; that is the same as bringing in a direction of time, and this system, which assumes no background time, has no such mechanism yet. What can be said from the formula is that the phase of each component is e^{−inθ₀/2}, so for the peak to translate means that the phases of all components advance in step in proportion to n. The problem narrows to "does a common parameter that advances the phases of all components in proportion to n come out of the system itself, without being brought in from outside?" Chapter 7 answers this question.
+
+### 3.6 R becomes R(θn, φn): fixed by Σxₙ² = R²
+
+> Here it suddenly becomes difficult when R becomes R(θn). In reality a direction of the centroid is needed, so it is R(θn,φn). (19:28)
+> Properly it is fixed by Σxn^2 = R^2. (19:32)
+
+While R is constant every point of S³ is equivalent and the three θ₀ are pure gauges. When R varies from place to place, θ₀ ceases to be a gauge, the closed formula ceases to be an eigenfunction, the node spacing stretches and shrinks in proportion to the local R and the wave is refracted along the gradient of R. To define R(θ) a centre "from which the radius is measured" is needed; if that is fixed by the centroid, a circle arises in which the centroid is fixed by the distribution of the wave, R by the centroid, and the wave by R.
+
+R is fixed neither from outside nor from |f|² by some separate rule, but by the sum of squares of the components themselves:
+
+$$
+\sum_n x_n(\theta_n,\phi_n)^2=R(\theta_n,\phi_n)^2 .
+$$
+
+The circle of wave and geometry is not an assumption added later; it is contained in this formula from the start. That the wave fixes the shape of the shell and the shape of the shell fixes the wave on it are two faces of one formula. Since the square of a component in the imaginary direction is negative, moving R² to the left and writing it as (iR)² gives Σxₙ² + (iR)² = 0, and R is not a special quantity but enters the same sum as one of the components.
+
+## 4. The error of the self-consistent shell, and the true squares
+
+### 4.1 Claude's numerical experiment: absolute squares and a real radius
+
+> Can you examine it? (21:01)　Go ahead. (21:04)　Can this be extended to the four-dimensional spherical shell? (21:32)　Do both and compare. (21:33)
+
+Claude computed a self-consistent shell numerically with the following setting: components xₙ = iA·cos(n(φ−φ₀)/2); the shape of the shell fixed in each direction as R(θ)² = A²·Σcos²(n(φ−φ₀)/2); the resident's phase measured by arc length on the deformed shell; the centroid of the shell recomputed and R re-measured from it; iterated until the shape stops changing. On the circle, in systems containing odd components the centroid and the centre from which R was measured did not coincide, and for both N = 18 the centroid was displaced towards the peak by d = 0.682 (2.86% of the circumference); for even only d ≈ 0; the peak became a thin radial spike. On S³, with components (a) cos(nψ) the symmetry ψ → π−ψ gave d = 0, and with (b) Uₙ(cos ψ)/(n+1) the cases both N = 2, 4 converged to asymmetric solutions. Claude went on to propose "fixing R from the square of the composite wave |Σxₙ|²" [H2: `円周住民_自己無撞着殻_20261013`, `四次元球殻住民_自己無撞着殻_20261013`].
+
+### 4.2 The author's corrections: true squares, not a norm, there is no outside of the circle
+
+> The absolute square? Who decided that definition? It is the true square. (21:42)
+> Σxn^2 = 0 is not a norm. (21:43)
+> There is no outside of the circle. (21:44)
+
+Σxₙ² is the sum of true squares without conjugation, not a positive-definite norm. With complex components the sum can vanish even for a non-zero vector; that is the meaning of Σxₙ² = 0. Claude had set the shell equation as R² = A²·Σcos², adding |xₙ|² of each component. With true squares, xₙ = iA·cos(…) gives xₙ² = −A²·cos², so Σxₙ² = R² gives R² = −A²·Σcos² and R is purely imaginary. Treating R as a positive real number, Claude had drawn the shell as a figure in the real plane or real four-space and computed the centroid in it. That is precisely the background space that had been excluded at the start. The centroid displacement d, the radial spikes, the d = 0 by symmetry on S³ and the asymmetric solutions all arose from this embedding by a norm and are not results that follow from the axiom. This paper does not adopt them as results [H1 §5].
+
+Claude further wrote that "R points in the imaginary direction, that is, in a direction outside the system", and the author corrected: "there is no outside of the circle". A resident of the circle has only θ and the imaginary amplitude; the imaginary direction is not an outside space but the direction of the amplitude the resident has had from the start. Σxₙ² = R² says: each xₙ is an imaginary amplitude and xₙ² a negative real number; the R² equal to their sum is also negative, so R too is imaginary; that is, R is a quantity of the same kind as xₙ, an amplitude, and not a radius placed outside. R(θ) = iA√(Σcos²(n(θ−θ₀)/2)) is a quantity fixed by the sum of squares of the components at each phase, closed in θ and the imaginary amplitude alone. This correction is the premise of every readout that follows.
+
+## 5. The non-uniform geodesic length per gauge interval
+
+### 5.1 Curvature cannot be read, but the same tick has different lengths
+
+> First we think on a two-dimensional arc, surely? Curvature cannot be read, but the geodesic length per gauge interval becomes non-uniform. (21:48)
+> Go ahead and draw it too. (10-14 07:58)
+
+The resident cannot read curvature. What can be read is the relation between the gauge intervals of the phase and the corresponding geodesic lengths. The gauge is cut in the phase θ: the fundamental fixes the origin and the nodes of the higher components cut θ at equal intervals. On the other hand R(θ)² = −A²·Σcos²(n(θ−θ₀)/2) varies with θ, so the geodesic length Δs = ∫R dθ = i∫|R|dθ corresponding to an equal phase interval Δθ differs from place to place. Since i is common to all intervals, the ratio Δs/⟨Δs⟩ is real. The nodes of the highest component n = N (equally spaced in phase, 2π/N) were used as gauge ticks. The earlier numerical experiment had, conversely, measured the phase by arc length; here the phase is fixed as the gauge and the non-uniformity of length is read.
+
+| System | Peak interval | Antipodal interval | Others |
+|---|---|---|---|
+| All orders N=18 | 1.245 | 0.988 (ordinary) | 0.97–0.99 |
+| Odd orders N=17 | 1.252 | 0.835 (short) | about 1.00 |
+| Even orders N=18 | 1.236 | 1.236 (same length) | 0.96–0.98 |
+| All orders N=2 / N=4 | 1.159 / 1.211 | 0.841 / 0.938 | — |
+
+The resident cannot read curvature, but at the peak one tick is about 1.25 times longer. Localisation can be read inside the resident's world as a distortion of the ruler, not as a shape seen from outside. What distinguishes the peak from the antipode is the odd components. With even orders alone the peak and the antipode have the same length and which is the peak is undecided; in the odd systems all components share a node at the antipode and R → 0, so the peak is long and the antipode short; in the all-orders system only the peak is long and the antipode has ordinary length—a single localisation in which one point alone stands out. The odd/even difference seen first (two-lap or one-lap return) appears as the asymmetry of geodesic length [H2: `円周住民_ゲージ間隔測地線長_20261014`].
+
+![](figures/fig1_R_vs_phase.png)
+
+**Fig. 1.** Phase dependence of the amplitude |R(θ)| = R/i fixed by R² = Σxₙ² (true squares). From top: all orders N=18, odd orders N=17, even orders N=18. Dotted lines are the nodes of the highest component (gauge ticks). `gauge_geodesic_s1.py`, `plot_gauge_geodesic_s1.py`.
+
+![](figures/fig2_gauge_interval_lengths.png)
+
+**Fig. 2.** Ratio of geodesic length Δs/⟨Δs⟩ for the same tick (equally spaced in phase, 360°/N). All orders N=2, 4, 18, odd orders N=17, even orders N=18. Only the peak interval is long (1.245 times); in the odd orders the antipodal interval is short (0.835 times).
+
+![](figures/fig3_resident_ruler.png)
+
+**Fig. 3.** The resident's ruler. Upper row: gauge ticks equally spaced in phase; lower row: the positions of the same ticks in geodesic length (normalised to the total length). The same tick has different lengths at different places.
+
+### 5.2 Negative curvature, and the slope being the same under the tensor reading
+
+> That a larger distortion widens the gauge is intuitively easy to understand, but what happens in the case of negative curvature? (08:29)
+> Correct. In fact, whether negative or positive, when the distortion is read as a tensor only the direction differs and the slope is the same. (08:32)
+
+With true squares R² = −A²·Σcos², so R is imaginary and 1/R² negative, and the computation above is already on the side of negative curvature. At the peak |R| is maximal, the curvature is negative and close to zero, and one tick is long. At the antipode of the odd system R → 0, the curvature goes to −∞ and one tick is short. If the components are taken as the ± rotation terms of the exponential representation, the sum of true squares is −(A²/2)·Σcos(nφ) and changes sign. For all orders, near the peak Σcos(nφ) ≈ N > 0 so R² < 0 (R imaginary, negative curvature); away from it ≈ −1/2 so R² > 0 (R real, positive curvature); at the boundary R = 0 and the length of one tick is zero. In this case Δs is imaginary in the peak interval and real elsewhere, and the kind of length itself is exchanged.
+
+The metric is the single component g = R²dθ². Read as a tensor, what matters is not g itself but the gradient of its logarithm; the connection is Γ = ½∂θ ln g. For R² < 0, ln g = ln|R²| + iπ; for R² > 0, ln g = ln|R²|; the difference is only the constant iπ, which disappears on differentiation with respect to θ. The slope ∂θ ln|R²| is the same for positive and negative curvature, and the sign decides only the direction (imaginary length or real length). This is the same structure as in the E function: the real part ln|f| carried all the gradient information and the imaginary part only showed the direction with the two values π/2 and 3π/2. At the boundary R = 0, ln|R²| goes to −∞ and across it the imaginary part jumps by π. The reversal of the sign of curvature can be read as the π jump of the phase that occurs at a node of the metric.
+
+### 5.3 Drawing the real curve radially, orthogonal to the imaginary amplitude
+
+> Now draw this real curve in the radial direction, orthogonal to the imaginary-direction amplitude on the circle. (08:36)
+
+The circle is laid in a horizontal plane, the imaginary amplitude is drawn perpendicular to the plane and the slope ∂θ ln|R²| in the radial direction. Coral marks R² < 0, green R² > 0, and black dots the boundary R = 0; the radial curve continues as a single curve across the change of colour. With "components = iA cos", R² is negative all the way round and no black dots appear. Moving θ₀ through 360° reverses the amplitude in systems containing odd components, but the slope, built from squares, is unchanged [H2: `circle_imag_amplitude_radial_log_gradient.html`].
+
+## 6. Slices of the four-dimensional spherical shell and the antipode
+
+### 6.1 The projection surface is the radius of the shell
+
+> Now I want to extend this figure to the four-dimensional spherical shell, but it cannot be drawn without cutting a projection surface somewhere. Onto which surface do you project? And can the position of the projection surface be made slidable? (08:40)
+> Both. I want the peak to be easy to see. Projected to three dimensions it looks like a sphere. I want to cut it in the way that makes the size of the sphere change as it slides, so the projection surface is precisely the radius of the shell, is it not? (08:44)
+> Fix it, and vary the transparency with the shading too. (08:46)　Add an on/off for the slope lines. (08:57)　Add odd and even check boxes, both on by default. (09:00)
+
+A point of S³ is written (sin χc·n̂, cos χc) and cut by the spherical shell at geodesic distance χc from the pole (radius sin χc). As χc moves, the shell swells from a point, is largest at the equator, and shrinks again. When the cut reaches the latitude of the peak fixed by the three θ₀, a dark spot and a radial bulge appear in the direction (θ₀, φ₀). The imaginary amplitude is drawn by colour and opacity (the ratio of |amplitude| to the global peak value, the number of components), the slope ∂ψ ln|R²| by radial relief, and the sign of R² by the boundary line R = 0. The components can be switched between cos(nψ) (direct correspondence from the circle) and Uₙ(cos ψ)/(n+1) (the eigenmodes of S³), and between ± rotation terms and iA × component. With true squares, R² is −(A²/2)·Σcos(2nψ) for cos(nψ) with ± rotation terms, −A²·Σcos²(nψ) for cos(nψ) with iA × component, A²·Σcos(2(n+1)ψ)/(2(n+1)²sin²ψ) for Uₙ/(n+1) with ± rotation terms, and −A²·ΣUₙ²/(n+1)² for Uₙ/(n+1) with iA × component [H2: `s3_shell_slice_amplitude_gradient.html`].
+
+### 6.2 Even orders too raise a peak at the antipode: without both parities the position is ambiguous
+
+> In three dimensions, does a peak not form at the symmetric point even for even orders? (09:02)
+> Can N be specified separately for odd and even orders? (09:07)
+> This is easy to see. Indeed, with even components present a peak always forms at the symmetric point. (09:25)
+> So, properly, without both odd and even, the position becomes ambiguous. (09:26)
+
+At the antipode ψ = π the value of a component is (−1)ⁿ in both the direct-correspondence form and the eigenmode form. With even orders alone all components are +1 and a second peak of +i, equal to the first, stands at the antipode; with odd orders alone all components are −1 and a peak of reversed sign −i stands there; with all orders (N even) +1 and −1 are equal in number and cancel, and the antipode is zero. The antipode ψ = π of S³ corresponds to one lap (φ = 2π) of the circle, and the parity difference that appeared on the circle as "how many laps to close" appears on S³ as the spatial arrangement "what stands at the antipode". With separate maxima N for odd and even orders, the value at the antipode is the number of even components minus the number of odd ones (6 odd with N = 11 and 6 even with N = 12 cancel; odd N = 13 leaves a faint −i spot; even N = 14 a faint +i spot).
+
+"Always, with even components present" cannot quite be said. Precisely: even components make a peak of the same sign at the antipode, odd components one of the opposite sign, and when both are present they cancel and the localisation is at one point. With even orders alone, equal peaks stand at p and −p and the resident cannot tell which of the two points it is at; the even components are functions on the space that identifies p with −p (S³ divided by ±) and cannot point to a single point in the first place. With odd orders alone, p is +i and −p is −i and they seem distinguishable by sign, but the direction ±i of the amplitude is a gauge that can be reversed as a whole; reversing the overall sign exchanges the two peaks, their sizes are equal and the square R² is the same at p and −p, so the position stays ambiguous between the two points. With both present they cancel at the antipode and a single peak remains; reversing the overall sign does not move the position of the peak, and only here is the position fixed uniquely. The even system is the bosonic component and the odd system the fermionic one; localisation at one point does not occur with either alone, only when both are present and balanced.
+
+### 6.3 The symmetric point on the far side of the universe has not been observed. A photon, a single tone, has no position. n = 1 alone is special
+
+> But it is strange: has anyone observed that a boson has a symmetric point on the far side of the universe? (09:27)
+> A photon is generally regarded as a single tone without harmonics, so the localisation in spacetime itself has no meaning, has it? (09:28)
+> But even the state with odd 1 alone shows some localisation in the figure, does it not? (09:36)
+> So it diverges at the boundary R = 0. But this is a typical ten-gallon hat. (09:38)
+> I merely thought it resembles a potential curve with symmetry. (09:40)
+
+It has not been observed. Even if the universe is a closed S³, the curvature is almost zero, the antipode lies beyond the horizon, and searches for pairs of ghost images in the cosmic microwave background have found no trace. On the side of the model there is no need to read "a boson has a double on the far side of the universe". A wave of even components alone always takes the same value at p and −p; for the even components p and −p are the same single point from the start, and there is no place called "the far side". p and −p become distinguishable as different places only when odd components are added. The even system (bosonic) is not a particle localised at one point but a spread existence that does not distinguish p from −p, and a particle localised at one point appears only when both the odd and the even systems are present.
+
+A single component n alone has nodes and peaks lined up periodically and no peak that points to one point; since the appearance of localisation and the fixing of the origin are one event, a single tone has no position defined, and all that is fixed is n (frequency, energy). The position of a photon is not something the photon has; it is read out, when it meets a localised system (a composite wave with odd and even together), by the localisation on the other side.
+
+n = 1 alone, however, is special. The single component n = 1 is cos ψ and has only one peak and one trough over the whole of S³. This is precisely the property that "n = 1 becomes the gauge and, having only one peak in its period, fixes the origin uniquely". A single tone with n ≥ 2 has several peaks of the same height and none can be chosen, but n = 1 has one peak. It differs from the localisation made by summing harmonics in two respects. The width is ψ < 90°, spread over half of the space. Reversing the overall sign ±i exchanges peak and trough, so what n = 1 fixes is strictly not a point but the "axis and orientation" joining p and −p, and only when even components are added to cancel the antipode is it narrowed to one point. n = 1 is the gauge that gives the orientation of position; the harmonics (odd system) sharpen the peak and the even system erases the antipode, and the localisation at one point is complete.
+
+With ± rotation terms and n = 1, R² = −(1/2)·cos 2ψ and the slope is ∂ψ ln|R²| = −2·tan 2ψ. In the crown (ψ < 45°) R² < 0; on the ring ψ = 45°, R = 0 and the slope jumps from −∞ to +∞; in the brim (ψ > 45°) R² > 0. The ring is a two-sphere surrounding the peak inside S³ and appears as a circle in the slice. A rotationally symmetric ring around a centre, a central rise, a wall around it and an outer brim is the shape of a symmetric potential curve, but here that shape comes from inside, as the slope of the logarithm of R fixed by Σxₙ² = R², not as a potential given from outside.
+
+## 7. Stage 1: first, read out mass
+
+From this chapter we enter the order of derivation (eleven stages) the author stated on 2026-10-15. Stage 1 is the readout of mass.
+
+### 7.1 A travelling wave cannot be represented
+
+> Let us begin a different examination. This cannot represent a travelling wave. What do you think? Does it travel in the direction of the slope? (10-14 11:42)
+
+The composite waves so far are made of cosines, standing waves in which the ± rotation terms are added with equal weight. The direction of travel is not the direction of the slope ∂ ln|R²|. As the gauge-interval calculation showed, the distortion of geodesic length is symmetric on both sides of the peak (0.972, 1.245, 0.972); the slope ∂ ln|R²| is positive on one side of the peak and negative on the other and points nowhere on balance. It shows where the localisation is, not where it goes. The difference between standing and travelling waves shows up in the imaginary part of ln R². For a standing wave R² is real and the imaginary part of ln R² takes only the two values 0 and π, jumping at the nodes R = 0. With only one rotation term (xₙ = iA·e^{inφ/2}) the true square is xₙ² = −A²·e^{inφ}, R² is complex,
+
+$$
+R^2=-A^2\,e^{i(N+1)\varphi/2}\,\frac{\sin(N\varphi/2)}{\sin(\varphi/2)},
+$$
+
+its modulus is localised at the peak and its argument arg R² increases uniformly as (N+1)φ/2. The slope of the modulus (real part) carries the shape of the localisation; the slope of the phase (imaginary part) carries the direction and its strength. A phase slope alone is not motion; motion needs a common parameter advancing all component phases in proportion to n (the problem of §3.5). For a composite wave with one rotation term only, advancing the phases in proportion to n coincides with shifting θ₀ uniformly, and the peak translates in one direction without changing shape.
+
+### 7.2 A state travelling at the speed of light and a state travelling slowly, with no t
+
+> So, in a state with no t, can a stationary wave represent both a state that travels at the speed of light and a state that looks as if it has energy and travels slowly? (11:45)
+
+A background time cannot be placed, so the advance of the phase of some reference component is used as the clock. Speed is the ratio "how far the peak position θ₀ shifts while the clock's phase advances one unit", and no t appears. When the phases of all components advance in proportion to n, the peak shifts without changing shape, the ratio is 1, and this is read as the speed of light. When the advance of each component's phase departs from proportionality and goes as √(k²+m²), the group velocity of the peak becomes k/√(k²+m²) < 1, and the smaller the imbalance of weights the less the peak moves while only its phase turns. That is the state "with energy but not moving", the rest mass.
+
+m comes out without being brought in. On the circle curvature cannot be read, so the phase advance can only be proportional to n and only the light-speed state can be represented. The eigenvalues of S³ are (n+1)² − 1 with the curvature term −1. With true squares R is imaginary, so the space is the sphere of imaginary radius, the hyperbolic side, where the eigenvalues are (k²+1)/|R|² and the gap 1/|R|² plays the role of m². The mass needed to travel slowly comes from the curvature 1/|R| that the residents can read, and since R is fixed by the wave itself through Σxₙ² = R², the mass is made on the side of the wave. At this stage Claude wrote that "the assumption that the phase advance is proportional to the square root of the eigenvalue presupposes a second-order wave equation and has not been derived from the axiom"; this was an error, corrected by the author in §7.8.
+
+### 7.3 Dividing the rotation of phase into three steps
+
+> Here I want to express the rotation of phase generically: a part that finds the rotation angle, a part that distributes it by direction, and an array operation that actually rotates three components at once according to the distribution. (11:48)
+
+Since S³ $\cong$ SU(2), a rotation on S³ is written by a single unit quaternion and corresponds directly to this division. Step 1 finds the rotation angle (a scalar): the phase advance Δφₙ of component n is converted to a geometric angle αₙ = Δφₙ/κₙ (κₙ the wavenumber of the component, n/2 for cos(nφ/2) on the circle, n for cos(nψ) on S³). If the phase advance is proportional to n all αₙ are equal and the translation is rigid (speed of light); with a gap αₙ differs with n and the peak lags and spreads. The difference is confined to this step. Step 2 distributes by direction (3 components): aₙ = αₙ·u with a unit vector u. Step 3 rotates everything at once by an array operation: qₙ = cos αₙ + sin αₙ·(u₁i + u₂j + u₃k) is multiplied from the left onto the quaternion p of every lattice point. On S³, left multiplication by a quaternion moves every point the same distance in the same direction with no fixed point (a Clifford translation). A rotation of S² always has fixed points, but on S³ this translation plays the role of translation in flat space. Multiplication from both sides, q p q*, is a rotation that changes orientation around the peak and is not a translation. Right multiplication is also a fixed-point-free translation, but of a different kind from the left one, and may correspond to the two hands of travel (left- and right-handed).
+
+### 7.4 What corresponds to the Higgs field: a pinned phase that does not oscillate
+
+> Here, let us suppose that what corresponds to the Higgs field is an intrinsic internal clock. Do you see the picture? (11:50)
+> Think carefully. This intrinsic clock does not oscillate. It merely distributes phase over space and is pinned there. That is exactly the Higgs field. (11:51)
+
+Claude had treated the internal clock as "a component of rotation assigned to no direction", wrote α² = α_clock² + α_space², said "zero to the clock is the speed of light, all to the clock is rest", and added that "the vacuum expectation value of the Higgs field in the standard theory is a static value that does not oscillate, so Higgs field = internal clock is a reinterpretation peculiar to this model". The author corrected this. The model has no t, so nothing turns. What corresponds to the clock is a distribution of phase assigned to each place and fixed there; it does not move and does not oscillate. The reading of the clock is the value of the phase pinned at that place, and differences of time appear only as differences of phase from place to place. This is the same form as the vacuum expectation value of the Higgs field in the standard theory, which does not oscillate and sits statically over the whole of space; precisely because it is static it corresponds to the Higgs field itself. When a composite wave (particle) changes position within this background it picks up the difference ΔΦ = ∫∇Φ·dl of the pinned phase. A component that does not couple to the background (photon-like) picks up no phase difference and passes straight through at ratio 1; a component that couples must, each time it changes position, rotate by the amount needed to match the pinned phase, and by that amount its rotation in the spatial direction is reduced and it is slower. That corresponds to mass. For a particle at rest the clock naturally does not advance; the phase changes only when the place changes. The origin of the pinned phase need not be placed from outside: the arrangement of the component phases nθ₀/2, and especially the phase of the gauge component n = 1 that fixes the origin, is a static distribution of phase pinned to space.
+
+### 7.5 The beat with the static Higgs field reads out mass, time and space at once
+
+> So the beat with the static Higgs field gives the quantity read as mass, and the phase velocity and direction of translation, realising the readout of mass, time and space simultaneously. (11:54)
+
+From one quantity (the difference between the phase of the static background and the phase of the composite wave, the beat) three readouts come out at once. Mass is the strength of the beat that remains even at rest; as long as there is coupling to the background, the phase difference does not vanish without a change of position. Space is the direction and size of the slope of the beat, giving the direction of translation and k. Time is the number of beats accumulated while changing position; since the background clock is pinned and does not move, the time the particle experiences (proper time) appears only as the count of beats. The three are not independent: the square of the strength of the beat splits as m² + k², the Pythagorean relation. A photon-like component that does not couple to the background has no beat, accumulates zero however many times it changes position, and its proper time is zero.
+
+### 7.6 The speed of light is not exceeded: the spatial gauge is widened
+
+> The speed of light is not exceeded. Have you forgotten that the spatial gauge has widened? (11:55)
+> Look into it. (11:56)
+
+Claude had written that "the phase velocity of the beat is ω/k > 1 and exceeds the speed of light". That measured the phase velocity with a flat ruler of uniform ticks—the same error as bringing in an outside ruler. All the resident can use is the gauge of phase, and where there is localisation one tick is longer (1.245 times at the peak for all orders N = 18). For the same phase advance, if the tick that measures it is widened s times, the phase velocity read with the resident's ruler is (ω/k)/s. If this is consistent, s = ω/k = √(1 + m²/k²) should hold, and mass m would be readable as the widening of the gauge (the distortion of geodesic length) itself.
+
+On verification, with the present definitions s = ω/k did not hold. s was taken in two ways (the value of the interval containing the peak and the value at the peak point); ω/k was taken as √(1 + 1/κ_N²) with m = 1/|R| (the hyperbolic gap) and k = κ_N/|R| (the wavenumber of the highest component). For N = 2 to 18, ω/k tends to 1 while s stays constant (converging to √2 at the peak point) or keeps growing; the trends are opposite and do not agree. The comparison itself was flawed: all the composite waves examined were cosine standing waves with zero translational momentum k, whose ω/k is properly infinite, and using the highest wavenumber in place of k was beside the point. That the widening at the peak point converges to √2 independently of N is a clear result in itself, because |R|² = N at the peak and about N/2 on average [H2: `ゲージ広がりと分散比の検証_20261014`]. This failure produced the next question.
+
+![](figures/fig_gauge_stretch_vs_dispersion.png)
+
+**Fig. 4.** Comparison of the gauge widening s (peak interval, peak point) with ω/k = √(1 + 1/κ_N²). From left: circle cos(nφ/2), S³ cos(nψ), S³ Uₙ/(n+1). As N grows ω/k tends to 1 while s stays near √2 or keeps growing; they do not agree. `gauge_stretch_vs_dispersion.py`, `plot_gauge_stretch_vs_dispersion.py`.
+
+### 7.7 In general relativity both time and space are distorted: it depends on how the gauge is fixed
+
+> Let us think it over. In general relativity gravity distorts both time and space, so it depends on how the gauge is fixed. (14:10)
+
+The previous check fixed only the spatial gauge (the nodes of the highest component) and compared with ω/k on the premise that the time side is undistorted. In the Schwarzschild solution rulers lengthen and clocks slow near the source; the speed of light measured in coordinates looks slow, but measured with the local ruler and clock it is always c. The resident can have two gauges: the spatial gauge, the ticks cut by the nodes of the phase, whose geodesic length is distorted by |R|; and the temporal gauge, the count of beats with the background. What must be checked is not a one-sided equation like s = ω/k but how the ratio of the distortions of the two gauges is fixed. With ± rotation terms, R² changes sign from place to place; where R is imaginary the length is imaginary, where real it is real. Two kinds of length of different sign coming from one R² closely resembles the distinction between timelike and spacelike intervals (the signature of the metric). The distortions of time and space are not to be placed separately; they are fixed together by the same Σxₙ² = R².
+
+### 7.8 The way of thinking of the Lorentz factor: the light cone Σxₙ² = 0
+
+> It depends on how you think of the Lorentz factor γ = √(1 − v²/c²). The result is the light cone Σxn^2 = 0. (14:14)
+
+Σxₙ² = 0 is the light-cone condition itself. What Claude wrote in §7.2, that "the dispersion √(k²+m²) is an assumption not derived from the axiom", was wrong: it was the axiom Σxₙ² = 0 itself. Divide the components into three groups: R (the total budget of rotation) corresponds to ω, the components with a direction (the share assigned to spatial directions) to k, and the components without a direction (the beat with the pinned background) to m. Then Σxₙ² = R² is
+
+$$
+R^2=k^2+m^2,
+$$
+
+and moving one term across as imaginary gives the light-cone form in which the sum of squares is zero. The whole system is always on the cone, always "turning" at the speed of light. The speed ratio is v/c = k/R and 1/γ = √(1 − v²/c²) = m/R; 1/γ is the share of the rotation budget that goes to the internal clock (the beat with the background), and this is how proper time advances. Photon-like (m = 0): v = c, 1/γ = 0, proper time does not advance. At rest (k = 0): 1/γ = 1, the whole budget goes to the internal clock. In between, the faster it moves the smaller the share to the clock and the slower time runs. Time dilation and length contraction both come from the same projection ratio 1/γ, so the speed of light measured by the resident with the local ruler and clock is 1 in every state. The disagreement in §7.6 arose from comparing only the widening of the spatial gauge, without the temporal gauge, with ω/k. Speed, mass, proper time and the constancy of the speed of light are none of them newly placed; they are the result of reading the one cone condition Σxₙ² = 0 by splitting it into components with and without a direction.
+
+### 7.9 Checking: the light cone holds exactly on the circle and mass is read out
+
+> Check it. (16:19)
+
+Take the components xₙ = iA·(a·e^{inφ/2} + b·e^{−inφ/2}) (a, b the weights of the ± rotation terms). The true square is
+
+$$
+x_n^2=-A^2\left(a^2e^{in\varphi}+b^2e^{-in\varphi}+2ab\right).
+$$
+
+The cross term 2ab does not depend on φ and is a uniform component pinned to space. R² = Σxₙ² is Fourier-decomposed and three quantities are read from the field: the directional component k, the sum of the coefficients of positive rotation minus the sum for negative rotation; the pinned component m, the φ-independent coefficient (the cross term); and the total R, the sum of the coefficients of both directions. The speed is v = k/R and the clock share 1/γ = m/R. The results (N = 18) are as follows [H2: `円周住民_光円錐読出し_20261014`, `lightcone_readout_s1.py`, `results_summary_lightcone_readout_s1.json`].
+
+1. **The light cone holds exactly.** The residual of v² + (1/γ)² = 1 is 10⁻¹⁵. The coefficients are Na², Nb² and 2abN, so (a² + b²)² = (a² − b²)² + (2ab)² holds identically and N cancels.
+2. **The speed is fixed by the logarithm of the weight ratio.** v = tanh(ln(a/b)), 1/γ = sech(ln(a/b)). ln(a/b) is the rapidity.
+3. **The two ends.** With one rotation only (b = 0), v = 1 and 1/γ = 0: no pinned component and proper time does not advance (photon-like). With a = b, v = 0 and 1/γ = 1: everything is pinned component (rest).
+4. **Velocity addition.** Composing by multiplying the weight ratios, the speed read from the field agrees with the relativistic addition law (v₁ + v₂)/(1 + v₁v₂) to six decimal places. The simple sum gives values exceeding 1 (1.33, 1.73).
+
+![](figures/fig_lightcone_readout_s1.png)
+
+**Fig. 5.** Reading Σxₙ² = R² (true squares) as a light cone on the circle. Left: v = k/R and 1/γ = m/R read from the field lie on tanh(ln(a/b)) and sech(ln(a/b)). Centre: all points lie on the circle v² + (1/γ)² = 1, with the photon-like (b = 0) and rest (a = b) states at the ends. Right: the speed read from the field for the product of weight ratios agrees with the relativistic addition law, while the simple sum exceeds 1. `lightcone_readout_s1.py`, `plot_lightcone_readout_s1.py`.
+
+The background pinned to space that corresponds to the Higgs field did not need to be placed from outside. It arises naturally from the true squares as the cross term of the two counter-rotating terms. **Mass (1/γ) is the fraction of the whole occupied by this pinned component, and speed is the remaining directional component.** The constancy of the speed of light and the velocity-addition law both come out as the result of reading Σxₙ² = R² with true squares. This is the end point of stage 1. Without a background spacetime, from the relations and interference of the complex components of a standing wave that is not even a travelling wave, mass has been read out.
+
+## 8. The action of phase rotation, the observer, prior work, and z = a + ib
+
+### 8.1 The action that rotates the phase: shifting θ₀ is enough
+
+> Now add the action that rotates the phase, and add an on/off for this action to the figure, on by default. (16:33)
+> I do not see why changing the phase directly is a problem. It is just shifting θ0, is it not? (16:44)
+> Moreover, the separate N for odd and even harmonics and their on/off have disappeared. (16:46)
+> The rotation speed is artificial and unnecessary. Rather, put the translated distance on the slider. (16:48)
+
+The action is the three steps of §7.3 as they stand. The total rotation dβ is advanced, distributed in the proportion of the light cone read from the field as v·dβ to the spatial direction and dβ/γ to the internal clock, and all components are translated by the same amount at once (θ₀ advanced by v·dβ). The internal clock's share is not drawn as an oscillation but counted as the accumulation of beats with the pinned background (proper time τ). Always β² = Δθ₀² + τ².
+
+Claude had objected that "a naive action advancing each rotation term's phase in proportion to n splits the + and − parts in opposite directions at the speed of light" and wrote that "the measured Δθ₀/β = v confirms that the implementation moves as distributed and is not a physical proof". The author corrected this. Shifting θ₀ by δ changes the phase of the + rotation term by −nδ/2 and of the − term by +nδ/2, in opposite directions, so the composite wave translates rigidly keeping its shape, and since the cross term 2ab of the true square does not contain θ₀ the background does not move and only the directional component moves: the part corresponding to the Higgs field stays pinned while only the particle moves. What Claude called "a problem" was a different procedure, multiplying both terms by the same-direction phase as in standard time evolution; the model has no t, so there is no need to turn all terms in the same direction, and the change of phase is sufficiently defined as the shift of θ₀. What fraction of β the shift of θ₀ takes is fixed by the field's own light-cone decomposition R² = k² + m² as k/R = v, and both the action and the distribution close within the axiom.
+
+The rotation speed is a tick for display and not a physical quantity. The translated distance Δθ₀ is put on the slider; with the action on it advances automatically, and dragging it back-computes β = Δθ₀/v and τ = β/γ. Only the ratios of Δθ₀, β and τ have meaning. The maximum N of the odd and even sides are specified separately and each can be switched on and off [H2: `circle_phase_rotation_action_lightcone_v2.html`].
+
+### 8.2 The four-dimensional shell version: the Clifford translation
+
+> Can you make the four-dimensional shell version of this? (17:32)　I will test it first. (17:38)　It works. (17:44)
+
+The peak p₀ is multiplied from the left by the quaternion q = cos d + u·sin d and moved a distance d. Left multiplication is the fixed-point-free Clifford translation and corresponds to the shift of θ₀ on the circle. The direction of travel u is chosen from i, j, k. v and 1/γ are fixed by ln(a/b) alone, as on the circle, and do not depend on N or on the dimension. Colour and opacity show the imaginary part of the amplitude, (a+b)·Σcos(nψ); the radial relief shows the real part (the component in the direction of travel). Three assumptions were made. The real part was taken as −(a−b)·Σsin(nψ)·cos α (α the angle to the direction of travel seen from the peak; on the circle cos α = ±1 and this agrees with the sine part, but the extension to S³ is not unique). Only the direct-correspondence components cos(nψ) were used. Great circles of S³ close at 360°, so the translated distance runs over ±360° (corresponding to 720° on the circle) [H2: `s3_phase_rotation_action_lightcone.html`].
+
+### 8.3 There is no time, yet time evolution is visible
+
+> Leaving the details for later, this is an interesting experiment, is it not? There is no time, and yet time evolution is visible. (17:55)
+
+What enters this system is only phase, imaginary amplitude, Σxₙ² = R², and the action that shifts θ₀. Yet the following come out as readouts of the field: speed (v = tanh(ln(a/b)) from the weight ratio of the ± rotation terms), proper time (the count τ of beats with the pinned background, which stays 0 in the photon-like state), and the constancy of the speed of light and velocity addition (measured with the two gauges, translated distance and beat count, every state lies on the light cone and composition follows the relativistic law). "Time passes" is written nowhere. What is seen is a fixed relation among three quantities—translated distance, total rotation, beat count—and that relation has the same form as what relativity calls time. What is still placed is the parameter β that orders the sequence of states (what β is advanced one step against has not been derived from inside) and the tick of the animation for display. The reference for β is fixed in Chapter 10 as the wave of the observer.
+
+### 8.4 Close prior work
+
+> Are there prior papers close to this idea? (17:56)　Look into it. (17:58)
+
+There is close prior work. Shanahan [X8-Shanahan] models a massive particle as a standing wave of two counter-propagating waves and argues that when the particle moves the two waves are Doppler-shifted in frequency and become a travelling wave. The present model differs in three points. Shanahan changes the frequencies of the two waves while keeping the amplitudes equal; the present model keeps the frequencies (harmonics n) and changes the amplitude weights a, b. On computation a²/b² = (1+v)/(1−v) = ω₁/ω₂, so the ratio of squared amplitudes plays the same role as Shanahan's Doppler frequency ratio. Shanahan states explicitly that he assumed the Lorentz factor γ, whereas here 1/γ = 2ab/(a² + b²) comes out of the cross term of the true squares. Shanahan places t and x from the start and argues for a preferred frame in which ω₁ = ω₂; this corresponds to the state a = b in the present model, in which only the pinned background remains.
+
+Feynman's checkerboard model [X8-Feynman–Hibbs] and Jacobson–Schulman [X8-Jacobson–Schulman] have the particle zigzag at the speed of light in one dimension with mass proportional to the frequency of reversals. For plane waves of the 1+1-dimensional Dirac equation with right-moving component R and left-moving component L, |R|²/|L|² = (E+p)/(E−p), v = (|R|² − |L|²)/(|R|² + |L|²), the ratio of the scalar density 2|R||L| to the total density is m/E = 1/γ, and (|R|² + |L|²)² = (|R|² − |L|²)² + (2|R||L|)²; with a = |R| and b = |L| these are the same formulas as the light-cone readout here. In the standard theory, too, the mass term ψ̄ψ is the cross term of the left- and right-handed components and the Higgs vacuum expectation value multiplies it. In Bondi's k-calculus v = (k² − 1)/(k² + 1), and the present v = (a² − b²)/(a² + b²) is the same formula with k = a/b. Page–Wootters [X3-Page–Wootters] derived time evolution as internal correlation within a globally stationary entangled state. De Broglie's internal clock and Hestenes's zitterbewegung tie mass to an internal frequency.
+
+What overlaps with prior work is that mixing two light-speed components yields speed, Lorentz factor and mass; this is established as 1+1-dimensional Dirac theory and no novelty is claimed for it. What is not in prior work is reaching that structure from the closed circle and the true-square condition Σxₙ² = R² alone, without spacetime, t or a Hamiltonian; the localisation born of harmonic superposition and narrowed to one point by the balance of odd and even; and translation expressed on S³ as a Clifford translation.
+
+### 8.5 z = a + ib: a and b are both real
+
+> a and b are real: z = a + ib. Both are real. (18:00)
+
+Claude had raised the question "if a, b are given phases, the true square a² and the conjugate product |a|² no longer agree", but it was not a question that stands. a and b are real from the start, and treated as a complex number they are the real and imaginary parts of one number z = a + ib. The true square of z is
+
+$$
+z^2=(a^2-b^2)+i\cdot2ab,
+$$
+
+whose real part is the directional component k, imaginary part the pinned component m, and modulus |z²| = a² + b² = R. The light-cone decomposition R² = k² + m² is the relation among real part, imaginary part and modulus of the single complex number z². Writing z = |z|·e^{iφ}, v = cos 2φ and 1/γ = sin 2φ; in the photon-like case (b = 0) φ = 0 and z² is real, at rest (a = b) φ = 45° and z² is purely imaginary. What fixes the speed is not a phase brought in from outside but the argument of z itself, and what enters the imaginary part of z² is the clock (mass) and what enters the real part is the advance in the spatial direction. The bilinear relations of Dirac theory are gathered in this model into the real part, imaginary part and modulus of z².
+
+## 9. Stage 2: why three dimensions? Because three dimensions has the symmetry
+
+### 9.1 Neither time nor space is assumed. Only the three-dimensional reading is assumed
+
+> This experiment is strange. Not only time but space, too, is not assumed. R is merely interpreted as space. What I am dissatisfied with is that only the three-dimensional reading is assumed. (18:02)
+
+In this experiment not only time but space has not been placed. There is only the phase on the closed ring, the imaginary amplitude and the true-square condition Σxₙ² = R²; reading R or the translated distance as "space" is only an interpretation. "Three dimensions" alone has been placed: at the moment S³ was chosen and at the moment the directions of translation were taken as the three quaternion units i, j, k.
+
+This three can be narrowed down from the condition on the action. The translation of step 3 is an action in which "every point moves the same distance in the same direction and no point stays fixed", and two translations performed in succession must compose into one (velocity addition). This is the condition that the space itself can move uniformly over itself as a group. Among spheres, only S¹ and S³ can carry such a group structure. On S² any flow necessarily has a stationary point (the hairy-ball theorem). On S⁷ something like a uniform translation can be made with the octonions, but the octonions are not associative, so two translations do not compose into one. Higher spheres admit no uniform translation at all. The structure in which the light cone closes under the true square of z = a + ib is subject to the same restriction: the number systems in which squaring preserves the size relation are only the reals, complexes, quaternions and octonions (Hurwitz's theorem [X1-Hurwitz]), with 0, 1, 3, 7 directions, and of these only 1 (complex, S¹) and 3 (quaternions, S³) are also associative. From the condition on the action alone—"on a closed space, rotations of phase can be composed as uniform translations"—the number of directions is limited to 1 or 3. Three dimensions is not an assumption but can be read as the largest dimension in which composition works.
+
+### 9.2 In other than three dimensions the system is not stable: it cancels cleanly at the symmetric point
+
+> Exactly. In fact, from the four-dimensional symmetry and the special nature of the three-sphere it should be derivable that the system is not stable in other than three dimensions. Only in three dimensions does it conveniently vanish cleanly at the symmetric point. (18:03)
+
+The sign (−1)ⁿ at the antipode alone holds in any dimension. The eigenfunctions on Sᵈ symmetric about the peak are Gegenbauer polynomials Cₙ^λ(cos ψ) (λ = (d−1)/2) with Cₙ^λ(−1) = (−1)ⁿ·Cₙ^λ(1), so normalised, the antipodal value is ±1 in every dimension. That "odd and even cancel at the antipode when equal in number" happens on S² and S⁵ too. What is peculiar to S³ is that they cancel "cleanly". On S³, λ = 1 and the eigenfunctions are Uₙ(cos ψ) = sin((n+1)ψ)/sin ψ—the sine wave of the circle divided by sin ψ—and the eigenvalues have the form "square minus one", (n+1)² − 1. A spherical wave on S³ propagates as a one-dimensional wave f(ψ ± β) divided by sin ψ without changing shape (Huygens' principle holds exactly and no tail is left behind), so a wave leaving the peak refocuses sharply at the antipode, where the odd and even components cancel without excess or deficiency. On S² (λ = 1/2, Legendre polynomials) Huygens' principle fails, the wave spreads with a tail, the cancellation at the antipode is incomplete and the remainder accumulates in the system. This is the concrete content of "in other than three dimensions the system is not stable".
+
+### 9.3 A higher dimension with the same symmetry: S⁷
+
+> So, since why it becomes three dimensions can be explained, it can no longer be said to be contrived. What is curious here is whether there is a higher dimension that in fact has the same symmetry. (18:05)
+
+There is: S⁷. S¹, S³ and S⁷ are the only spheres on which a flow with aligned direction can be laid over every point (Adams' theorem, parallelisability), and left multiplication by a unit octonion is an isometry of S⁷ with no fixed point. There is a Hopf fibration S³ → S⁷ → S⁴ of the same form as S¹ → S³ → S². The octonions are one of Hurwitz's four and the structure that closes the light cone from the real part, imaginary part and modulus of z² can be built directly (7 directions). Being odd-dimensional, Huygens' principle holds and the refocusing at the antipode is sharp. What S⁷ lacks is associativity: (pq)r ≠ p(qr), so two successive translations do not make one, left multiplications do not close into a group, and velocity addition cannot be kept. The simplicity of the S³ eigenfunctions, sin((n+1)ψ)/sin ψ, is also lost. S⁷ reaches to within one step of building a space with uniform translation and a light cone, and breaks at composition. As a conjecture: S³, where composition closes, becomes the "space" in which particles translate; S⁷, where it does not, cannot be a space but part of its symmetry survives as an internal degree of freedom. This agrees in direction with work (Furey [X7-Furey]) that uses the fact that the subgroup of the octonion automorphism group G₂ fixing one imaginary unit is SU(3) to tie the octonions to the colour symmetry.
+
+### 9.4 Only in three dimensions do conditions A, B and C all hold
+
+> Conditions A and B hold for S3 alone, do they not? (18:31)
+> Shall we correct it to: A, B and C hold only in three dimensions? (18:31)
+
+The sphere-resident paper [H1 §9] narrows to S³ by three conditions. Condition A (uniform translations form a group) is satisfied by S¹ and S³. Condition B (Huygens' principle, propagation without a tail) by the odd-dimensional spheres S¹, S³, S⁵, …. Condition C (a mass gap arises from curvature the residents can read, and left and right translations differ so that handedness arises) by all but S¹. All three of A, B and C hold only for S³, three-dimensional space. A localised massive particle can exist stably only in three dimensions. In fixing paper v1, Claude made three self-corrections: a note that the early self-consistent-shell results are not adopted (§5); the antipodal ratio in the table of §6, 0.972 → 0.988 (0.972 was the interval next to the peak); and the distinction that Adams' theorem says only "the spheres with a uniform flow are S¹, S³, S⁷" while "those that compose as a group are S¹ and S³" is a separate fact (§9).
+
+## 10. The observer is inside the system: a resident of the circle, not a god's-eye view
+
+> The remaining issue is β. How is β being used now? (18:32)
+> Is it something to agonise over? β is, as its name says, the observer's observing wave. Here is the point: where is the observer? A resident of the circle, or a god's-eye view? (18:34)
+> Exactly. This allows the experiment of special relativity. When the observer moves at some speed the visible result changes. (18:36)
+> Does it not affect the three-dimensional version too? (18:48)
+
+β was the total rotation, advanced one step at a time in step 1 of the action. At a = b (rest) β = τ, and in general β = γτ; β played the role of the time of an observer at rest with respect to the pinned background, coordinate time. Claude was ticking it from outside and, as a candidate for fixing it from inside, named "the proper time of another composite wave", tying it to the unsolved problem of the coexistence of several localisations. The author answered. There is nothing to agonise over. β is the observer's observing wave. The observer is a resident of the circle; the system has no outside and so no god's-eye view. β is the advance of the phase of the observer's own wave, its proper time, and the observer measures the progress of the other wave against its own wave as a ruler.
+
+That a = b looks like rest is because the observer had tacitly been placed at a = b; the pinned background, too, is not a special preferred frame but the component at rest as seen by the observer. With the observer's rapidity η_obs = ln(a_obs/b_obs) and the other's η, the speed the observer reads is v' = tanh(η − η_obs); changing the observer is multiplying weight ratios, which is the relativistic addition law already confirmed. Advancing β by the browser clock was ticking with a god's eye; that alone had brought in an outside.
+
+Adding one slider for the observer's weight ratio ln(a_obs/b_obs) changes three things: the visible speed tanh(η_particle − η_obs), the visible advance of proper time sech(η_particle − η_obs), and the ticking of β (the phase of the observer's own wave). Matching the observer to the particle's speed makes the particle appear at rest with maximal proper time; moving the observer the other way makes the speed look larger and the proper time shrink; two observers measuring the same particle read different speeds but both lie on the light cone. The laws of physics have the same form for every observer and there is no preferred observer. This is special relativity coming out of the model without bringing in an outside [H2: `sr_observer_lightcone_s1.html`].
+
+On S³ too the observer is a resident of the same sphere, exists as a wave localised on the same sphere as the particle, and its peak position (χ_obs, θ_obs, φ_obs) can be specified independently. The speed readout is fixed by the difference of rapidities tanh(η_particle − η_obs) alone and does not depend on where in space the two peaks are. That every resident of S³ can use the same law is inherent in the structure of this readout. v'² + (1/γ')² stays 1.000000 however the sliders are moved [H2: `sr_s3_observer_lightcone.html`].
+
+## 11. Stage 10: can spin be read out?
+
+In the author's eleven stages this is stage 10 (after the four-dimensional lattice), but in the dialogue it was asked right after three dimensions (10-14 18:54) and is read out directly from the geometry of S³, so the paper places it here. The two spin components on the four-dimensional lattice reappear in §20.3.
+
+### 11.1 Spin is already in the model
+
+> With this, in a sense, we can express the photon and a particle that has mass but no charge. Does it not concern you where spin is read from? (18:54)
+
+The odd/even distinction of Chapter 2 is the readout of spin as it stands. An odd component reverses sign in one lap (360°) and returns only after two (720°). That is the definition of spin 1/2. An even component returns in one lap: integer spin. Since S³ $\cong$ SU(2), the three generators i, j, k of left quaternion multiplication are the spin operators Sₓ, Sᵧ, S_z, and the axis chosen as "direction of travel i / j / k" in the figure is both the direction of spatial translation and the axis along which spin is oriented. Moving the peak from the left by q = cos d + u·sin d, at d = π (360°) q = −1 and p → −p jumps to the antipode, where the odd-component wave has reversed sign and is not back in its original state; only at d = 2π (720°) does q = +1. Left multiplication (SU(2)_L) and right multiplication (SU(2)_R) are independent and together give SU(2)_L × SU(2)_R $\cong$ SO(4). On S¹ there was no such distinction; on S³ two kinds of hand appear for the first time. One may correspond to spatial rotation (spin) and the other to a different internal degree of freedom; since in the standard theory the weak interaction has an SU(2) symmetry distinguishing left- from right-handed, the right SU(2) is a candidate. The procedure for reading out spin is three steps: whether odd components are included decides spin 1/2 or integer; which axis (i, j, k) generates the translation decides the orientation; which of the two SU(2)s, left or right, is used decides whether it is spin or another internal quantum number.
+
+### 11.2 Mixing odd and even harmonics makes the spin indefinite
+
+> This is where it is strange: if the even and odd harmonics are mixed, what happens to the spin? (18:56)
+
+Multiplying from the left by q = −1 (a 360° translation), the even components cos(nπ) = +1 are unchanged and the odd ones −1 are reversed. The mixed state after 360° is a different state in which the even part is unchanged and only the odd part is reversed—neither the original nor minus the original. Only after 720° do all components return. In the representation theory of SU(2), integer spin (even) and half-integer spin (odd) belong to different irreducible representations, and the mixed state belongs to neither and has no definite spin. In Chapter 6 it was confirmed that localisation narrows to one point only when odd and even are balanced; but then the spin is a superposition of irreducible representations and indefinite. Conversely, making the spin definite (purely odd or purely even) destroys the localisation at one point. In nature no particle exists in a superposition of half-integer and integer spin (a superselection rule). In this model that prohibition appears geometrically as "fixing the position at one point makes the spin indefinite".
+
+### 11.3 Why the Higgs wave has spin 0
+
+> And do you see why the Higgs wave of this waveform has spin 0? (18:57)
+
+The reason fits in one line: the cross term is the product of the + and − rotation terms. Taking the true square of xₙ = iA(a·e^{inφ/2} + b·e^{−inφ/2}), the cross term is a·e^{inφ/2} × b·e^{−inφ/2} = ab. The + rotation term carries angular momentum +n/2 and the − term −n/2, and their product carries 0. The same holds for every n, so the cross term 2ab·N is a constant depending on neither φ nor ψ. A constant function on S³ is unchanged by every element of SU(2)_L × SU(2)_R: the trivial representation, the definition of a spin-0 scalar field. The reason the Higgs field has spin 0 in the standard theory is essentially the same: the left- and right-handed components are combined into a scalar whose angular momenta cancel. In this model it comes out automatically from the structure that "the + and − rotation terms live together on the same circle". The particle wave (odd + even mixed) is localised but spin-indefinite; the Higgs-like background (cross term) is pinned to the whole of space with spin 0 definite; when the particle moves through the background the beat with it gives proper time and produces mass. Because the partner of the beat has spin 0, the particle's spin is unchanged, in agreement with the property of the standard theory that acquiring mass through the Higgs mechanism does not change spin.
+
+### 11.4 Odd harmonics alone are also localised to some extent: two-point localisation
+
+> You misread. In fact, the odd harmonics alone also look localised to some extent. (19:00)
+
+Claude's wording was inaccurate. A composite wave of odd components alone has sharp peaks in two places, the peak (+i) and the antipode (−i). This is not "not localised" but "localised at two points". That the two peaks stand in a sign-reversed relation is precisely the geometric form of spin 1/2. A spinor reverses sign under a 360° rotation, and in space too this appears as "the peak and the antipode form a ±i pair". Odd only: sharply localised at two points with reversed signs (spin 1/2 definite). Even only: localised at two points with the same sign (integer spin definite). Odd and even balanced: the antipodal peak cancelled, localisation at one point (spin indefinite). The correct form of the "position–spin uncertainty" is that localisation at one point and a spin eigenstate are incompatible. A spin eigenstate is localised at two points; to localise at one point odd and even must be mixed, and then the spin is indefinite.
+
+### 11.5 The opposite spin on the far side of the world. But no one can observe it
+
+> But this does not contradict the localisation of the particle, does it? Strangely, there is an opposite spin on the far side of the world? Strangely, no one can observe it. (19:01)
+
+It does not contradict. The particle is localised at θ₀. The antipodal peak exists, but from the resident's point of view reaching it needs a geodesic distance πR, and if S³ is the whole universe the antipode lies beyond the observable horizon. The observer, too, is a resident of the same S³ with a wave localised at θ₀, and the beat readout has meaning only where two waves share the same phase, so as long as the observer's wave is localised at θ₀ the information at the antipode cannot be read. In a spin-1/2 eigenstate of odd components alone, a +i peak stands at θ₀ and a −i peak at the antipode. This is the structure "whenever a particle is created, a pair with opposite spin is created on the far side of S³", and it can be read as the geometric origin of the antiparticle: the positive- and negative-energy solutions of the Dirac equation realised as the peak and the antipodal peak on S³. Adding even components to localise at one point cancels the antipodal peak, and this erasing operation is the same as the operation that gives mass (produces the Higgs-like background). To have mass and to erase the shadow on the far side are one and the same event. The photon-like state (spin definite, a shadow at the antipode, zero mass) and the massive particle (a spin-indefinite superposition, the antipodal shadow erased, mass present) can be drawn in one figure as this contrast.
+
+## 12. Stage 3: can charge be read?
+
+> Now, you think charge cannot be read, do you not? Is that really so? (19:03)
+> Probably that is charge. (19:05)
+
+It can. Moreover it is already in the model. S³ carries the natural Hopf fibration S¹ → S³ → S². In the representation (z₁, z₂) = (cos η·e^{iξ₁}, sin η·e^{iξ₂}) the sum (or difference) of the phases ξ₁ and ξ₂ goes round this S¹ fibre. The winding number—how many times the wave xₙ goes round this fibre—is the charge. The component e^{inφ/2} winds the fibre +n/2 times and e^{−inφ/2} −n/2 times.
+
+| State | Fibre winding number | Charge |
+|---|---|---|
+| Purely + rotation terms (b = 0) | +Σn | Positive |
+| Purely − rotation terms (a = 0) | −Σn | Negative |
+| Balanced standing wave (a = b) | 0 | Neutral |
+| Cross term (Higgs-like background) | 0 (does not wind the fibre) | 0 |
+
+That the cross term has charge 0 is consistent with its spin 0 in §11.3. The quantisation of charge comes from the structure that was in the E function (§2.8): when Im(E) jumps by π at each node, the total winding of the phase per lap is an integer. That integer is the origin of charge quantisation, not something placed from outside but a topological invariant, the winding number of phase on a closed space. When a ≠ b and the cross term (Higgs-like background) appears, the symmetry SU(2)_L × SU(2)_R is broken at the same time and the remaining U(1) is the electromagnetic U(1); the eigenvalue of the generator of this remaining U(1) is the fibre winding number, the charge. To establish the readout of charge, the fibre winding number must be distinguished from the rapidity imbalance k = P₊ − P₋. k is the information "which way it moves" (translation) and the winding number the topological information "how many times it winds the fibre"; at rest (a = b) k = 0 but the winding number may be non-zero, and that is the key to the distinction. The author's verdict was "probably that is charge".
+
+## 13. Observation is the cross term: being able to read, radiating, and distributing energy. Uncertainty and quantisation
+
+### 13.1 How could the measuring apparatus accelerate?
+
+> Another curious thing: you placed the measuring apparatus C for readout, but how is it able to accelerate? Neither gravitational nor electromagnetic waves can be observed without radiation. Have you taken account of the interaction with the apparatus? The apparatus, too, changes R. (19:08)
+
+The implementation of Chapter 10 had placed three things from outside. The observer's rapidity was moved by a slider (acceleration by the hand of god). The observer's wave and the particle's wave were drawn separately and R computed separately. Observation was done as a computation of the rapidity difference, with no physical process that makes that readout possible. The axiom Σxₙ² = R² is a condition on the whole system and the observer must enter the same sum. Taking the true square of the whole with the particle's components x^(p) and the observer's x^(o),
+
+$$
+\sum\left(x^{(p)}+x^{(o)}\right)^2=\sum\left(x^{(p)}\right)^2+\sum\left(x^{(o)}\right)^2+2\sum x^{(p)}x^{(o)},
+$$
+
+and the cross term 2Σx^(p)·x^(o) is the interaction, and is observation itself. It contains the terms a_p·b_o and b_p·a_o whose ratio is e^{η_p − η_o}; the relative rapidity the observer reads is the quantity that should properly be read from this cross term. Changing the observer's a_o/b_o changes the weights of the ± rotation terms; in a closed system that can only happen through the cross term with the particle or the background, and when the weights change the shared R² changes, and that change is radiation. Without radiation there is no acceleration and without the cross term no observation. Adding the observer's components changes R²; when "the observer measures the particle", seen from the particle "the observer's wave changed my R". The interaction is symmetric and observation is not one-sided.
+
+### 13.2 Being able to read means energy has been distributed
+
+> No need to experiment on this yet, but in the end, being able to read means that an electromagnetic or gravitational wave must have been emitted; in a sense energy is distributed. (19:09)
+> This is an interesting next task: charge and spin, and further the emission and absorption of electromagnetic and gravitational waves, and from them recoil and even attraction, may all become drawable. (19:16)
+
+R² is constant by the axiom, but its distribution changes. The observer can read the particle because the cross term is non-zero, and by that amount R² is subtracted from the self-terms of the particle and the observer. The moment a readout happens, the energy is distributed three ways: the particle's self-term (its mass and motion), the observer's self-term, and the cross term (interaction = radiation). If the cross term is zero nothing can be read; if something can be read the cross term is necessarily present and that part has been emitted as radiation. To read and to radiate are one and the same event. Expanding the cross term gives two kinds of terms. The position-dependent terms (products of same-direction rotations such as a_p·a_o·e^{in(2φ−φ_o)/2}) ride on the spatial phase and propagate—the radiated wave (the electromagnetic part). The position-independent terms (products of opposite rotations such as a_p·b_o, b_p·a_o) are beat terms depending on the relative rapidity η_p − η_o—the very speed the observer reads. Since R was the reading of space itself, when the observer reads the particle the distribution of R changes and so does the metric of space: this is the gravitational aspect of the interaction. The part in which the Hopf-fibre winding (charge) is exchanged through the cross term is the electromagnetic aspect. Both are inside the same cross term, and which part is read decides whether it looks like a gravitational wave or an electromagnetic one. In standard quantum theory the disturbance of the object by measurement is a separately placed principle; in this model, once Σxₙ² = R² is imposed on the whole system, reading cannot help being a redistribution of R, and the back-action is a consequence of the axiom.
+
+The next tasks are five: emission and absorption (the movement of the position-dependent part of the cross term), the distinction between gravitational and electromagnetic waves (redistribution of R versus exchange of fibre winding), recoil (the change in the ratio of k to m after emission), attraction (the distance dependence of the cross term's distribution), and the contribution of spin and charge to the interaction. All of them are expected to be reachable with no new assumption, by imposing Σxₙ² = R² on the whole system and reading the cross term. The numerical experiments are left to the next stage. In Chapter 21 it turns out that this task is inherent in the system as the complete absorbing shell at infinity of the Eleventh Thought Experiment.
+
+### 13.3 Uncertainty and quantisation are consequences of the axiom
+
+> And do you not already see the possibility of uncertainty and of the discretisation and quantisation of phase? (19:20)
+
+Both are already visible. Three kinds of uncertainty have appeared. Position and harmonic number n (Chapter 2: a single n has uniform amplitude and no position; many n localise to width πR/(N+1); Δθ·Δn ≈ constant; reading n as momentum, this is Heisenberg's position–momentum uncertainty itself, coming automatically from Fourier conjugacy). Position and spin (Chapter 11: one-point localisation needs odd and even mixed, and then the spin is a superposition of irreducible representations; a spin eigenstate is a two-point localisation; a form not found in standard quantum theory). Readout and back-action (§13.1: if something can be read there is a cross term, and if there is a cross term R has been redistributed; there is in principle no way to read without disturbing).
+
+Five kinds of quantisation have appeared. n ∈ ℤ (closure on the circle). Winding number ∈ ℤ (the Hopf-fibre winding, the charge, is a topological integer). Discretisation of phase (in a standing wave Im(E) takes only the two values π/2 and 3π/2). The closure condition (component n accumulates phase 2π·(n/2) per lap and closes in one lap if even, two if odd; $\oint$(phase) = 2π × integer is the Bohr–Sommerfeld quantisation condition itself). The discreteness of readout (position can only be read as the gauge interval, proper time only as the number of beats; a continuous θ₀ or τ is invisible to the resident, who reads only which interval and how many beats). As a mere suggestion: the rapidity a/b is continuous at this stage, but once the observer is put into the same Σxₙ² = R², the cross terms e^{i(n_p ± n_o)φ/2} must also satisfy the closure condition, from which a discrete constraint on a/b may follow. If so, relative velocity would be quantised—a prediction absent from the standard theory. Uncertainty follows from "readout can only be a ratio", quantisation from "on a closed space the phase must close", both as consequences of the axiom, with nothing placed as a separate principle.
+
+### 13.4 Fixing what has been reached so far
+
+> Tidy it up. (19:22)　Correct it and save. (19:24)
+
+The development to this point was organised as the sphere-resident paper v1 [H1] with an abstract and 14 sections and saved to Drive (2026-10-14 19:54). The sections are: the setting of the problem / the circle-resident model / the exponential representation and the E function / the extension to S³ / the self-consistent shell and Σxₙ² = R² / the gauge interval and the non-uniform geodesic length / the light-cone readout / the action of phase rotation and time evolution / why three dimensions / the readout of spin and the spin 0 of the Higgs field / the readout of charge / uncertainty and quantisation as consequences of the axiom / comparison with prior work / conclusion and future tasks. Chapters 2–13 of this paper rewrite the content of that paper, giving priority to the order of the dialogue and the author's corrections.
+
+## 14. Stage 4: can it be read as the electron?
+
+From this chapter to Chapter 24 we follow the development of the dialogue "The dialogue after the Fourteenth Thought Experiment" (2026-10-14 20:29 to 10-15 07:32) [A2]. By Chapter 13 the photon, a massive particle without charge, and a candidate for charge (the Hopf-fibre winding number) had been read out. The next question is how this system reads the neutron, baryons, quarks, and the electron.
+
+### 14.1 The weak force appears as a redistribution of harmonic components. The lifetime of the neutron
+
+> The weak force appears when the flavour changes, so in this system it should look like a redistribution of harmonic components. If the strong force is thought of plainly, the neutron is a heavy particle without charge, and it has a finite lifetime, does it not? In the case of a single particle? (10-14 20:29)
+
+A free neutron has a finite lifetime, a mean of about 880 seconds, decaying as n → p + e⁻ + ν̄ₑ. What causes this decay is the weak force: one d quark turns into a u quark, a change of flavour, the representative example of a phenomenon that should appear in this system as "a redistribution of harmonic components". A neutron in a nucleus does not decay because decay would raise the total energy. Claude here placed the strong force as "the condition that locks the components into one closed bundle (confinement)", the weak force as "the process in which the distribution of harmonic components inside the bundle shifts to lower energy", and the lifetime as "whether the destination of the shift is energetically open". This placement is a connected part, a hypothesis.
+
+### 14.2 Baryons and the stability of the proton, the harmonics of quarks, the 1/3 charge, the energy hierarchy
+
+> So it will do if the baryons, the composite particles of quarks, can be explained. The point is why the proton is stable. Quarks are indivisible elementary particles, but in this system they clearly have harmonics. The energy hierarchy and the 1/3 charge are also keys. (20:32)
+> Are the order and amplitude integers? Besides, oscillating between integers looks like a continuous value. (20:34)
+> Probably there is a relation that is near an integer but cannot lock, which makes a potential wall that prevents falling to the ground state. (20:36)
+> So E8 symmetry may come out. (20:38)
+> What does it mean that three generations of fermions cannot be embedded chirally? (20:40)
+> Probably it oscillates in the irrational relations among several pull-ins—the pull-in of the E8 symmetry, three-phase current, probably also the pull-in of 23/124, the crystal structure of four-dimensional spacetime—so that the energy hierarchy looks irrational. (20:43)
+
+In this system "indivisible" and "having harmonics" are compatible. Harmonics are an internal structure that cannot be taken out singly, consistent with confinement. The order of a harmonic is an integer but its amplitude need not be, and if the state oscillates among integer states the observed value looks continuous as a time average. That quark masses change with the scale of measurement (running masses), that flavour states are superpositions of mass states (CKM mixing), and neutrino oscillation are not in conflict with this picture. The task is therefore not "integer or not" but "what fixes the weights of the oscillation".
+
+A relation that is near an integer ratio but cannot lock makes a potential wall that prevents falling to the ground state. Claude placed this in correspondence with the theory of synchronisation (the Adler equation dφ/dt = Δω − K sin φ, a tilted washboard potential) and noted that the exponential dependence of the escape rate on the wall height (Kramers) could correspond to the spread of particle lifetimes over many orders (proton > 10³⁴ years, neutron 880 s, muon 2.2 μs). On E₈ it cited Zamolodchikov's result that the mass ratios of excitations in the one-dimensional Ising model near its critical point follow the E₈ structure (m₂/m₁ = the golden ratio), confirmed experimentally by Coldea et al.; that projecting the 240 roots of E₈ to four dimensions yields the H₄ symmetry containing the golden ratio; and that Lisi's E₈ theory was shown by Distler–Garibaldi to be unable to embed even one generation chirally (the representations of E₈ are real, so every left-handed particle comes with a right-handed partner). The author's view was that the energy hierarchy looks irrational because the system oscillates in the irrational relations among several pull-ins—the pull-in of E₈, three-phase current, the pull-in of 23/124, the crystal structure of four-dimensional spacetime. That an integer structure in a higher dimension looks irrational when read in a lower one has precedents in quasicrystals (cut-and-project from a higher-dimensional integer lattice) and in the projection E₈ → H₄.
+
+> Read this (the note on the Fourteenth Thought Experiment) and the original paper and the meaning will be clear. The arrangement of the electron's mass is certainly involved. (20:45)
+
+After reading the Fourteenth Thought Experiment [A1], the mass arrangement of the charged leptons was checked (E0). Koide's relation (mₑ + m_μ + m_τ)/(√mₑ + √m_μ + √m_τ)² = 2/3 is, for v = (√mₑ, √m_μ, √m_τ) split into its (1,1,1) component and the perpendicular component, equivalent to |v⊥|² − |v∥|² = 0: the light-cone condition of a zero square sum Σx² = 0 with (1,1,1) as the imaginary axis. The central projection onto the perpendicular plane gives three phases 120° apart, and the amplitude √2 is fixed by this zero condition. Imposing Q = 2/3 exactly and solving for the τ mass gives 1776.969 MeV (measured 1776.93 ± 0.09), and the three-phase angle is δ = 2/9 − 1.75×10⁻⁷ rad. The uncertainty of δ from the electron and muon masses is about 4×10⁻¹⁰, so this offset is about 450 times the error. It is extremely close to 2/9 yet not equal, and 2/9 rad is not a rational multiple of π, so it never recurs finitely. This is precisely a "pulls in but never locks completely" pair of the Fourteenth Thought Experiment. Nambu's m_μ/mₑ ≈ 3/(2α) (1 + 3/(2α) = 206.55, measured 206.77) is also a near-but-not-equal pair [A2 §3, `te14_E0_koide_phase_check.py`].
+
+### 14.3 Try it with the electron: E1
+
+> Why not try it with the electron, which is free of the strong force and little affected by the weak force? (20:49)
+> Go ahead. (20:49)
+
+The electron is the best testing ground. It feels no strong force and can be taken out singly and its mass measured directly. Being the lightest charged lepton it has nowhere to decay, with a lifetime above 10²⁸ years, "the lowest valley of its series" like the proton among baryons. The weak force acts only in the decays of the muon and τ to the electron. Its mass is measured to about 3×10⁻¹⁰ and its g-factor to 10⁻¹³ relative precision. With the electron series, the "zero-square-sum framework plus a near-but-unlocked phase" of the Fourteenth Thought Experiment can be isolated with the strong and weak forces almost removed.
+
+The design of E1 uses the method of the Fourteenth Thought Experiment as it stands. The state is the three-phase vector (its amplitude fixed by the zero square sum, not an input). The two constraints are the rotation orders allowed by the four-dimensional lattice, $\mathcal{C}_A$ = {1,2,3,4,5,6,8,10,12}, and those allowed by integer phases, $\mathcal{C}_B$ = {1,2,3,4,6} (Z₄, Z₆). The update is of circle-map form with no external time. The readouts are the dwell-time distribution of the phase δ and the frequency of phase slips. The falsification conditions fixed in advance: if δ settles on a rational multiple of π (locks), the hypothesis fails; whether it comes near 2/9 is looked at only after the rule and parameters are fixed (adjusting the rule after seeing the result is no verification).
+
+Results of E1. In the control (compatible pairs m = 3, 6) all 860 orbits locked completely with period m and the conserved quantity (norm) was constant. In the test (incompatible pairs m = 5, 8, 10) the rotation was mostly pulled in to 1/m, but the conserved quantity kept fluctuating within the period on almost every periodic orbit, and some orbits moved to other rationals near 1/m (11/54, 13/66 for m = 5). The "pulls in but never locks completely" state did appear. U^n = I came out as a result. What did not appear was metastability in the strong sense (H4), long dwelling with rare sudden changes; the intervals of constant conserved quantity were short, 1–3 updates. m = 4, 12 were excluded because of ties in rounding. An orbit of rotation number 2/9 appeared for m = 5, but its unit is rotations per update, unrelated to Koide's δ. The cause is that this model has no knob to vary "how near" continuously and cannot be brought to the edge of an Arnold tongue [A2 §3, §23, `数値実験E1_レプトン三相位相の格子引き込み_20261014`].
+
+![](figures/te14_E1_fig.png)
+
+**Fig. 6.** E1: lattice pull-in of the three-phase lepton angle. Compatible pairs (m = 3, 6) lock completely on every orbit; incompatible pairs (m = 5, 8, 10) have their rotation pulled in to 1/m while the conserved quantity fluctuates, and some orbits move to other rationals. `te14_E1_lepton_phase_lattice.py`, `te14_E1_plot.py`.
+
+## 15. Stage 5: when α is introduced
+
+> Then conversely, if we do it with 23/124, this agrees from the outset if we use the electron mass and α. The ground state, that is. (21:17)
+
+Claude here set up two arguments. The electron, being a non-decaying ground state, should be on the completely locked side; for R_{124,23} U^124 = I holds exactly, so this corresponds to the electron, while the decaying muon and τ come on the "near but unlocked" side—an assignment. And an argument for "why there is no metastability without 23/124": in the circle map a low-order rational (1/6) has a wide locking interval so that all nearby states lock deeply, whereas a high-order root such as 23/124 has an extremely narrow interval so that states just outside it sit at the edge and behave intermittently.
+
+> No "why" is needed. Because it is so, the electron mass can be predicted—that is all. Is a reason needed? Rather, the problem is why it locks to that window. The answer is written in the note I gave you. (21:23)
+
+The author dismissed it. The Fourteenth Thought Experiment states explicitly "the reason for the nearness is not explained; nearness is the input of the search", and the argument about the width of the locking interval was unnecessary. The assignment "electron = exact lock U^124 = I" also conflicts with the paper. The answer written in the paper is this. Why does it lock to that window? Because the integer-selecting structures lie near each other there. The four-dimensional cells on the space side, 137 = 1 + 8 + 128; the 23/124 on the evolution side; the 248 = 8 + 112 + 128 and 124 = 4 × 31 of E₈—these share integers in this neighbourhood while differing in form. So the state is pulled into this window but, agreeing with none of them, never locks completely and keeps moving among the three 137s. The observed α is the value read by integrating that history along the direction of evolution [A1, eqs. (3)(4)]. Numerically: the integer 137; the observed α⁻¹ = 137.035999177; x_g = 137.036010988; x_{23/124} = 137.036042915. The observed value is smaller than both non-integer values, so moving only between those two can never reach it, but it lies within the range of the three 137s including the integer.
+
+## 16. Stage 9: the symmetry of the four-dimensional lattice—why the background is four-dimensional
+
+In the author's eleven stages this is stage 9, but in the dialogue it was brought in immediately (10-14 21:25) as the answer to "why does it lock to that window" of Chapter 15, and E2 designed here fixes the method of E3 onwards, so the paper places it here.
+
+### 16.1 The length of the diagonal is an integer ratio
+
+> Have you forgotten the special symmetry of the four-dimensional lattice? Have you forgotten that the length of the diagonal becomes an integer ratio? (21:25)
+
+The diagonal of the four-dimensional unit cube is √4 = 2, an exact integer multiple of the edge. This happens only in four dimensions. Half the diagonal is 1, so the half-integer point (½,½,½,½) at the centre of the cube has the same length 1 as the axis point (1,0,0,0); 8 integer points and 16 half-integer points lie on the same sphere, 24 in all. This is the 24-cell, the 24 units of the Hurwitz integers in quaternion terms. In four dimensions the cell centre (integer point) and the cell corner (half-integer point) are equivalent under the symmetry. Recounting 137 by shells of the farthest corner (half-integer point) of each cell gives 137 = 1 + 8 + 24 + 40 + 64 (corner norms 1, 3, 5, 7, 9), and the 128 of 1 + 8 + 128 splits as 24 + 40 + 64. The 128 is a quantity counted at half-integer points, on the same side, in the manner of counting, as the 128 half-integer roots of E₈.
+
+The discrepancy of E1 resolves in four dimensions. In two dimensions the 90° Z₄ (Gaussian integers) and the 60° Z₆ (Eisenstein integers) are separate lattices and incompatible; the rounding ties that excluded m = 4 on the hexagonal lattice in E1 came from this incompatibility. Among the 24 Hurwitz units in four dimensions, the order-4 elements i, j, k and the order-6 element (1+i+j+k)/2 are present together. Z₄ and Z₆ coexist in one lattice in four dimensions. The evolution side (23/124) is λₐ³¹ = i in the K4 paper [B1 §6.5], and the "4" of 124 = 31 × 4 is the four phases of 90°, the Z₄ side; the three phases (leptons) are the 120° and 60° phases, the Z₆ side.
+
+### 16.2 Why the background is four-dimensional. This is the answer
+
+> Yes. You seem to have noticed the reason for three dimensions, but you have forgotten why the background is four-dimensional. This is the answer. (21:28)
+
+The background is four-dimensional because four is the smallest dimension in which all the needed integer symmetries fit simultaneously into one lattice. The three-phase leptons of E0 took the (1,1,1) direction of three dimensions as the invisible axis; but the diagonal of the three-dimensional cube is √3, not an integer, so the length of the invisible axis is irrational and the three phases and the invisible axis cannot be closed on an integer lattice. The three-dimensional cubic lattice has 90° (Z₄) and 120° (Z₃) rotations but no pure 60° (Z₆) rotation. Adding one axis makes the diagonal (1,1,1,1) of length 2 with half-length 1, so centre and corner become equivalent and the 24 Hurwitz units arise, with the order-4 i (the Z₄ of the evolution side) and the order-6 (1+i+j+k)/2 (the Z₆ of the three phases) coexisting, and a point of the four-dimensional light cone arising automatically from a pair of complex numbers [A1 eq. (17c)]. Choosing one axis as the projection axis in central projection drops the dimension by one [A1 §11.4]. Since the background is four-dimensional, the visible space is three-dimensional and the direction of the projection axis becomes invisible. The three phases (three generations) and three-dimensional space are the same "3": both are "what remains of a four-dimensional space with an integer diagonal when one axis is dropped by projection". The "why three dimensions" of Chapter 9 (the three conditions on S³) and this "why the background is four-dimensional" (the integer diagonal) are two faces of one answer.
+
+### 16.3 E2: the four-dimensional Hurwitz lattice and 23/124
+
+> Go ahead. (21:29)
+
+The state is placed on the Hurwitz lattice (four dimensions); the evolution side identifies λₐ³¹ = i with the quaternion i and updates with U_{R₁₂₄,₂₃}; the lepton three-phase is represented by the Hurwitz units of order 3 and 6; the 23/124 rotation and the rounding onto the lattice are imposed on the same state at once; no external clock is placed. Results: the controls (the 90° Z₄ axis and the 60° Z₆ axis, compatible with the lattice) lock completely on every orbit with constant conserved quantity and zero rounding ties. At radius 3 (the 137-cell ball) the 23/124 rotation is fully captured by the lattice; on the Z₆ axis (the three-phase axis) all 936 points lock to 1/6, and on the Z₄ axis they fall to orbits of period 4, 6, 16. As the radius grows, the effective rotation number is captured step by step by the convergents of the continued fraction [0; 5, 2, 1, 1, 4] of 23/124 and approaches 23/124, in the order 1/6 → 3/16 → 5/27 → 13/70, 18/97 → 23/124; from radius 16 orbits of period 124, 248, 372 appear. This staircase was not input; it emerged from the combination of lattice and rotation. The readout of α varies from orbit to orbit and has not converged to a single value [A2 §5, `数値実験E2_四次元フルヴィッツ格子と23_124_20261014`. Note: E2 measured the rotation number as the mean of the per-step angle, which is not additive in four dimensions; the α values of E2 come from that measurement and are not used in this paper. From E3 on it is computed from winding numbers].
+
+![](figures/te14_E2_fig.png)
+
+**Fig. 7.** E2: the 23/124 rotation and rounding onto the four-dimensional Hurwitz lattice imposed together. As the radius grows the orbit is captured along the staircase of convergents 1/6 → 3/16 → 5/27 → 13/70, 18/97 → 23/124. The α readout in panel (b) uses the withdrawn measurement (angle averaging) and is not used in this paper. `te14_E2_hurwitz_124_23.py`, `te14_E2_radius_scan.py`, `te14_E2_plot.py`.
+
+## 17. Stage 6: a detour when mass cannot be read
+
+### 17.1 If α is known the electron mass is fixed (the standard theory)
+
+> Have you forgotten that the standard theory explains that the electron mass is fixed once α is known? (21:35)
+
+The electron mass follows directly from α: mₑ = 2hR∞/(α²c), where the Rydberg constant R∞ is measured separately by hydrogen spectroscopy to about 10⁻¹², and CODATA indeed fixes the electron mass by this formula. Here Claude fixed h and c at their SI defined values and computed: the integer 137 → 0.5107305 MeV, x_g → 0.5109990388 MeV, x_{23/124} → 0.5109992769 MeV, observed 0.5109989500 MeV. Since the mass is proportional to the square of α⁻¹, δmₑ/mₑ = 2δ(α⁻¹)/α⁻¹.
+
+### 17.2 The ground state: the electron has no internal structure, but its energy levels are not one
+
+> So have you forgotten that it is the ground state? The electron has no internal structure, but is its energy level only one? (21:37)
+> Go ahead. (21:38)
+
+The electron itself has no internal structure, but bound to a nucleus it has the ladder of energy levels numbered by the integer n, Eₙ = −α²mₑc²/(2n²), and the energy of its ground state n = 1 is the Rydberg constant itself, hcR∞ = ½α²mₑc² = 13.6057 eV. "Once α is known the electron mass is fixed" means "fixed through the ground-state energy", and to read the electron mass from α one must read it from the ground state. The ground state has nowhere lower to fall and does not decay: a completely locked state. The excited states are metastable with finite lifetimes (2p about 1.6 ns, 2s about 0.12 s) and fall by emitting one photon, a single transition without fraction. This connects to the starting question of the Fourteenth Thought Experiment, "why does the electron not fall into the nucleus". The answer to reading the orbit-to-orbit scatter of α in E2 as one value is not to average everything but to read from the orbit corresponding to the ground state.
+
+### 17.3 E3, and the verdict in SI units (the detour)
+
+In E3 the rotation number was computed instead from the integer winding numbers of the two complex components of the isoclinic rotation; then every orbit of period 124 is exactly 23/124. Results: orbits with rotation number 23/124 and constant conserved quantity (norm): 0 of 480. Orbits whose rotation number is exactly 23/124 are many, reaching 85% on the Z₄ axis at radius 96, but all of them have a norm that fluctuates within the period—the rotation is fully engaged but the conserved quantity is not. In the level series on the Z₄ axis 23/124 is most occupied, then 3/16, 29/156, 5/27, 13/70; on the three-phase axis (Z₆) 5/27 is most occupied (141 of 240). The transients before entering a periodic orbit were short, a few hundred updates, and no stepwise descent through the levels was seen.
+
+Here Claude took α⁻¹ = 137.036042915 from the state locked at 23/124, derived an electron mass of 0.5109992769 MeV, and judged it "larger than the observed value by 6.4×10⁻⁷ relative, about 2000 times the measurement precision; locking on the 23/124 side alone does not give the electron mass". This is the detour: with Planck's constant left as an input, it concluded that mass could not be read [A2 §7, §23, `数値実験E3_基底状態と準位系列_20261014`].
+
+![](figures/te14_E3_fig.png)
+
+**Fig. 8.** E3: ground state and level series. With the rotation number taken from winding numbers, orbits locked exactly to 23/124 reach 85% on the Z₄ axis at radius 96, but no orbit has a constant conserved quantity (norm). The occupied levels are 23/124, 3/16, 29/156, 5/27, 13/70. `te14_E3_ground_and_levels.py`, `te14_E3_plot.py`.
+
+## 18. Stage 7: reading α plainly, and deriving the electron mass
+
+### 18.1 The natural units G = c = q₀ = 1: Planck's constant is an output
+
+> It is the other way round. You have forgotten to compute in the natural units G = c = q0 = 1, q0 = e/3. (21:45)
+
+In computing the electron mass as 2hR∞/(α²c), h had been fixed at its SI defined value. That is placing Planck's constant as an input, the very procedure the Fourteenth Thought Experiment rejected at the outset. Recomputing in G = c = q₀ = 1 (q₀ = e/3, Gaussian): α = e²/(ħc) = 9q₀²/(ħc), so
+
+$$
+\hbar=9\,\alpha^{-1},
+$$
+
+and Planck's constant is not an input but an output fixed by α. The direction is reversed: α comes first and ħ comes afterwards. With the 23/124 readout ħ = 9 × 137.036043 = 1233.32439; with the observed value 1233.32399. The unit of mass is m₀ = q₀/√G = 6.1974×10⁻¹⁰ kg and the electron mass is mₑ = 1.46988×10⁻²¹ m₀. The relative uncertainty of the electron mass in this unit system is fixed by the measurement precision of G, about 1.1×10⁻⁵. The difference in α between the 23/124 readout and the observed value is 3.2×10⁻⁷ relative, far smaller than the uncertainty of the electron mass, so in this unit system it cannot be distinguished and is not rejected. The conclusion written in E3, that "the ground state locked at 23/124 does not give the electron mass", was an appearance created by a unit system that fixed ħ, and was withdrawn [A2 §6, §23].
+
+### 18.2 If α is 137, the electron mass necessarily agrees
+
+> Or rather, if α is 137 the electron mass necessarily agrees, does it not? (21:48)
+
+The electron mass is not an independent test from α. mₑ = 4πħR∞/(α²c) with R∞ measured by hydrogen spectroscopy, and in G = c = q₀ = 1 ħ = 9α⁻¹ is also fixed by α. Fixing one α, combined with the measured R∞, fixes the electron mass automatically and no contradiction arises. Checking separately whether the electron mass agrees adds no information. What must be verified is α alone. α is dimensionless and its value is the same in every unit system. The difference between the observed 137.035999177(21) and the 23/124 readout 137.036042915 is 4.4×10⁻⁵, and as α itself they do not agree. This does not contradict the position of the Fourteenth Thought Experiment, which presupposes that none of the three 137s agrees exactly with the observed value and reads the observed value as the state that never locks completely among them, read along the direction of evolution.
+
+## 19. Stage 8: why α, why 23/124, is it not a circular derivation?
+
+### 19.1 α is obtained from 23/124, and the four-dimensional lattice condition makes it easy to lock there
+
+> Rather, the point is that α is obtained from 23/124, and that the four-dimensional lattice condition makes it easy to lock to that α. (21:50)
+
+There are two points. α is obtained from 23/124: from the finite-order root R_{124,23} of the K4 paper [B1] through N(R) = 4π/(1−R)². And the four-dimensional lattice condition makes the state easy to lock to that 23/124. The E3 results show the second point: on the Z₄ axis (the four-phase side of λₐ³¹ = i) the fraction of orbits locking exactly to 23/124 grows with radius to 85% at radius 96, gathering through the convergents 3/16 → 5/27 → 13/70 → 18/97. The conserved quantity still fluctuates, so only the rotation number locks and the rest fluctuates—"pulls in but never locks completely". To say "the four-dimensional lattice selects 23/124" a comparison is missing: as the radius grows the effect of rounding shrinks, and any rotation number may become easier to lock to its own value. Hence E4 compares the locking rate with neighbouring roots and measures the pull-in width of 23/124. The answer to the suspicion of circularity—that the agreement is an input if 23/124 was chosen using α—is to show, without looking at α, that 23/124 is easily selected by the lattice condition.
+
+### 19.2 Why the observed value deviates slightly: observation is an average over many samples
+
+> Further, why does it deviate slightly from the exact observed value? You have not noticed that you explained it yourself: because observation is an average over many samples. Because values in transition are observed too. (21:52)
+
+The observed α is not a single value but an average over many samples, which include not only the state locked at 23/124 but states in transition towards the lock. So the observed value is not 137.036043 itself but slightly off. Checking the direction with the E3 data: of the states in transition (Z₄ axis, 122 unlocked orbits) 86 lie below 137.036043 and 36 above, with mean 135.39 (3/16 gives 131.90, 13/70 136.44, 18/97 136.82, 29/156 135.96, 5/27 137.82). The states in transition lie mainly below, so mixing them lowers the average, and the observed 137.035999 lies below—the direction agrees. With this mean, a fraction of about 2.65×10⁻⁵ of the observation time in transition would suffice, but that breakdown was taken from an ensemble of initial conditions, not weighted by time. The running of α (137.036 at low energy, 128.9 at the Z-boson scale) admits a reading of the same direction: measuring at higher energy samples more states in transition and pulls α⁻¹ down. This is a verification task.
+
+### 19.3 E4: selection, pull-in, recovery
+
+> Try it. (21:53)
+
+(A) Does the four-dimensional lattice make 23/124 easy to lock? Replacing the rotation by 23/124 and by nearby roots, the fraction locking to its own ratio was compared at radii 32, 64, 96. 23/124: 40% → 70% → 86%. Neighbouring roots of similar denominator (23/122, 23/126, 22/119, 24/131): 0–27%. 17/92: 53% → 93% → 100%. A further check showed that roots whose denominator is a multiple of 4 lock easily (40–76% at radius 64 against 10–40% for the others): with a denominator divisible by 4 the rotation is exactly i after n/4 steps, and i is a symmetry of the lattice, so the rounding error can be closed. 124 = 4 × 31 belongs to this group, and the "4" in λₐ³¹ = i of the K4 paper is precisely the reason it locks easily on the four-dimensional lattice. Since 17/92 and others of the same group lock just as easily, the four-dimensional lattice alone does not select 23/124 uniquely.
+
+(B) Pull-in to 23/124. With the rotation displaced slightly from 23/124, 83–93% were pulled in to 23/124 for displacements within 1.4×10⁻⁵ and 24–31% even at 1.4×10⁻⁴. The comparison 23/122 reached at most 43% and was not pulled in at 1.4×10⁻⁴. The pull-in width of 23/124 is wide and strong.
+
+(C) Leaving the lock and returning. Disturbing a state locked at 23/124 by one lattice unit, 18 of 20 returned to 23/124, after 274 updates on average. The time-weighted mean of the readout on the way back was α⁻¹ = 136.74, below the 23/124 value, agreeing in direction with the downward offset of the observed value. With this mean, a fraction of about 1.46×10⁻⁴ of the observation time in transition would give the observed value, and the lock would have to break about once in 1.9 million updates. The mechanism producing that frequency is not in this deterministic system [A2 §5, §8, `数値実験E4_選択・引き込み・回復_20261014`].
+
+![](figures/te14_E4_fig.png)
+
+**Fig. 9.** E4: selection, pull-in, recovery. (A) Radius dependence of the locking rate of 23/124 and neighbouring roots (roots with denominator divisible by 4 lock easily); (B) pull-in width to 23/124; (C) recovery after a one-lattice-unit kick, with the readout during the return lying below. `te14_E4_selection_pullin_recovery.py`, `te14_E4_mod4_check.py`, `te14_E4_plot.py`.
+
+### 19.4 The electron itself distorts the gauge: E5
+
+> You seem to have forgotten that the mass-energy of the electron itself slightly distorts the four-dimensional gauge, so that it can fall out of the gauge. (22:09)
+> Save only the programs and the documents. Then check the gauge deviation. (22:16)
+
+The lattice used in E4 was fixed and the electron merely moved on it, so once locked at 23/124 it never left, and the frequency of leaving had to be assumed from outside. In reality the electron's own mass-energy slightly distorts the four-dimensional lattice (gauge); on the distorted lattice the locking condition itself shifts slightly, so the state leaves the lock from time to time and returns. The cause of leaving need not be brought in from outside. In the language of the standard theory it is the same kind of effect as the self-energy of the electron interacting with its own field, which produces the anomalous magnetic moment (g − 2 ≈ α/π).
+
+In E5 the lattice used for rounding was stretched at each update in proportion to the electron's Coulomb-like self-energy α/r (r the radius in lattice units), in both the stretching (s = +1) and the shrinking (s = −1) direction, decided before looking at results; α was updated from the readout and iterated three times, with no externally tuned parameter. Results: the distortion does change the orbits (15 of the same 24 initial points fell to different periodic orbits). But it does not act to break the lock: the orbits locked at 23/124 were 14 without distortion, 19 with stretching and 17 with shrinking—more, not fewer. No leaving-and-returning appeared: within the locked orbits the intervals where the local rotation number departs from 23/124 were zero; every orbit is either "always locked" or "always on another level". The α⁻¹ averaged over all orbits was 137.0059 for stretching and 137.0940 for shrinking, but these are ensemble averages, not time averages, and cannot be compared with the observed value. Updating α changed it only by 2×10⁻⁴ relative and it was a fixed point after the first iteration. With a distortion fixed instantaneously by the electron's position, the map on a finite lattice is deterministic and must enter a periodic orbit, so leaving the gauge and returning cannot in principle occur. Claude wrote here that "the gauge side must have a state of its own and follow with a delay", but in Chapter 21 it turns out that the partner that leaves and returns is the partner wave of the exchange itself [A2 §9, `数値実験E5_ゲージの自己歪み_20261014`; the plotting program `te14_E5_plot.py` for E5 was added by the author].
+
+![](figures/te14_E5_fig.png)
+
+**Fig. 10.** E5: self-distortion of the gauge. (a) Number of orbits locked at 23/124 (none 14, stretched 19, shrunk 17); (b) difference between each orbit's rotation number and 23/124; (c) number of orbits whose periodic orbit changed under distortion (15 of 24). The self-distortion does not break the lock but increases it, and intervals of leaving and returning are zero. `te14_E5_gauge_backreaction.py`, `te14_E5_control.py`, `te14_E5_plot.py`.
+
+### 19.5 Single electrons have been observed. Time average and ensemble average
+
+> Fine for now. But is the behaviour of a single electron not, in fact, little observed? (22:20)
+
+Single electrons are well observed. In Penning-trap experiments that confine one electron for months, the g-factor of a single electron was measured in 2023 to 10⁻¹³, giving α⁻¹ = 137.035999166(15) [X5-Fan]. This is not an average over many electrons but the time average of one electron measured for a long time. In 1999 the quantum jumps of a single trapped electron between the lowest cyclotron level and the next were observed directly: the electron dwells in one level for seconds and suddenly jumps one step [X5-Peil]. The "stays almost engaged for a long time and occasionally slips one step" of the Fourteenth Thought Experiment is seen directly in one electron. Precise values of α come in two families: from the g-factor of a single electron (time average), and from atomic recoil (ensembles of many atoms: rubidium 137.035999206(11) [X5-Morel], caesium 137.035999046(27) [X5-Parker]), which disagree by more than 5σ for reasons unknown. In this system's view, measuring one electron for a long time and measuring many particles at once pick up states in transition in different proportions and need not give the same α.
+
+### 19.6 Expectation values do not behave like classical probability
+
+> As expected. In the standard theory, energy shifts merely because particles are crowded together, so it shifts easily. Likewise a deviation appears even in the time average. Do you see? The behaviour of expectation values differs from classical probability. (22:23)
+> The experiment can wait; write down the insights. There are many other things to do. (22:25)
+
+The average taken in E4 and E5, ⟨α⁻¹⟩ = (1−f)·x_{23/124} + f·x_transition, weighting the locked and transitional values by their fractions, is the average of a classical mixture, being in one state or the other with some probability, and cannot be used as it stands. For a superposition ψ = a·ψ_lock + b·ψ_transition the expectation value is ⟨A⟩ = |a|²A₁₁ + |b|²A₂₂ + 2Re(a*b·A₁₂·e^{iΔωt}), and the last interference term is proportional to the amplitude b, not the probability |b|². Even a slight admixture of the transitional state shifts the value by its square root (for |b|² = 10⁻¹⁰ the interference term can be 10⁻⁵). This is as §5 of the Fourteenth Thought Experiment says: "the readout after integrating complex amplitudes with their phases differs in general from the average of the constant itself". When particles are crowded, the interaction energy enters as an overlap term and the levels themselves move (collision and density shifts in atomic clocks). The interference term oscillates as e^{iΔωt}, but when the frequency ratio is near but not locked (irrational), the beats do not cancel completely in a finite time and a deviation remains; even one electron measured for a long time gives slightly different values depending on how the measurement time is taken. The transitional fraction 1.46×10⁻⁴ estimated in E4 assumed a classical mixture; with amplitudes superposed, the admixture needed is orders of magnitude smaller. The readout should not average α over orbits but integrate the exchange amplitude of the K4 paper (G_R = 1 − R with a phase attached) along the history as a complex number, and read α afterwards [A2 §10, §11].
+
+## 20. The harmonic content of the electron, the absence of an absolute scale, and the minimal structure of the wave
+
+### 20.1 The arrangement of harmonics can be predicted: the quarter-period symmetry
+
+> The problem is: can the harmonic content of the electron be predicted? (22:27)
+
+Part of it can. Of the 33 orbits of period 124 locked at 23/124 (radius 64), in 29 the state multiplied by i coincided with the state exactly 93 updates later (3 × 31). Since i is a symmetry of the four-dimensional lattice (a 90° rotation), these orbits coincide with themselves when shifted by a quarter period. With this symmetry, when the orbit is decomposed in frequency the components that appear are limited to (23 + 4k)/124 (k an integer): the fundamental 23/124 and sidebands at spacing 1/31 on either side. In all 29 orbits 100% of the energy fell in this series. In the remaining 4 without the symmetry the state multiplied by i belonged to another orbit, and 0.01–0.07% fell outside the series. This is a rule of the same form as for a square wave: a square wave has the symmetry of reversing sign under a half-period shift, so only odd harmonics appear; on the four-dimensional lattice it becomes a quarter-period symmetry and only every fourth component appears. The "4" and the "31" of the period 124 = 4 × 31 are directly the selection rule and the spacing of the harmonics. At radius 64 the fundamental holds 99.93%, the adjacent sidebands 19/124 and 27/124 1.8×10⁻⁴ and 3.2×10⁻⁴, decreasing with order. These strengths, however, change with the ratio of the lattice cell to the orbit radius [A2 §12.1, §23, `te14_harmonic_selection_check.py`].
+
+### 20.2 This system has no absolute scale; everything is a ratio
+
+> Before that: this system has no absolute scale; everything is a ratio. Is the electron always localised? If unobserved, is its position not undetermined, like the photon? Depending on that, the harmonic content differs by 10^60 orders. (22:33)
+
+Claude had written that "the radius at which the electron lives must be decided", which presupposed an absolute scale. This system has only ratios. An unobserved electron, like the photon, has no determined position. In a spread state few harmonics are needed, close to the fundamental alone; observed and localised, many harmonics are needed. The number of harmonics needed is roughly the ratio "total extent / width of localisation": the ratio of the size of the universe to the electron's Compton wavelength is about 10³⁸, and to the Planck length about 10⁶¹. The same electron can have a number of harmonics differing by 10⁶⁰ orders according to its degree of localisation. "The harmonic content of the electron" cannot be fixed as one thing; it is a readout quantity depending on how localised it is (how it was observed). What can still be predicted as a ratio is the selection rule (that the components are limited to the series (23 + 4k)/124), independent of scale and of the degree of localisation. What was called the initial radius in E2–E4 was not an absolute size but the ratio of orbit size to lattice cell, the resolution of localisation; that the sidebands weakened at larger radius expresses that a coarser (more spread) localisation needs fewer harmonics. The question becomes not "what is the harmonic content of the electron" but "how are the harmonic strengths fixed when the localisation ratio is given, and how does observation (interaction) choose that ratio".
+
+### 20.3 Yet it is not a single tone: the minimal structure is two spin components × three three-phase components
+
+> Well done. But as long as interactions and masses differ, there must be a minimal structure of the wave; it cannot be a single tone, can it? The degrees of freedom are insufficient. (22:35)
+
+It cannot be a single tone, for two reasons. First, the four-dimensional lattice does not permit a single tone. A single tone is a pure rotation whose phase turns at a constant rate; a 23/124 single tone would be a rotation of order 124, but the rotation orders the four-dimensional lattice allows are 1, 2, 3, 4, 5, 6, 8, 10, 12 only (the crystallographic restriction [A1 §10.1]). A pure rotation of order 124 cannot exist on the lattice, so a state locked at 23/124 on the lattice necessarily contains components besides the fundamental. In E3, even among orbits locked exactly to 23/124, not one had a constant conserved quantity (a pure rotation). The sidebands (23 ± 4k)/124 weaken as the localisation ratio changes but do not vanish; in this system the ratio is always finite, so the sidebands never disappear. This is the smallest part of "the minimal structure of the wave". Second, a single tone has too few degrees of freedom. In a system of ratios alone, the amplitude and phase of a single tone are relative to the observer and the only thing it can own is one frequency ratio; one number cannot express the differences of charge, spin, mass, generation and interaction. The minimum needed is: spin (a state on the Hurwitz lattice is a quaternion with two complex components z₁, z₂, and left multiplication on the Z₄ axis rotates both at once, so it behaves as a two-component spinor), charge (the electron's charge is 3 × q₀ with q₀ = e/3; only with the three three-phase components together does an integer charge arise), generation and mass (the position of the three-phase angle, Koide's δ, distinguishes the generation, and the rotation ratio fixes the mass), and the sidebands forced by the lattice. The candidate minimal structure of the electron is "two spin components × three three-phase components, each with its fundamental and the sidebands the lattice forces". When observation localises it, the many harmonics needed for localisation are added on top of this minimal structure; the minimal structure remains even when spread, and what changes by up to 10⁶⁰ orders is the added part. These "two spin components" are the spin read out in Chapter 11 as left quaternion multiplication on S³, reappearing on the four-dimensional lattice [A2 §12.3].
+
+## 21. Localisation and return, the self-consistent lock, observation itself as dynamics, checking the answers
+
+### 21.1 The mechanism by which observation localises the electron, and by which it returns
+
+> Having examined this far, I had forgotten one thing. Do you remember the mechanism by which observation localises the electron? And there is also a mechanism by which it returns even after localisation. Read the note on the Thirteenth Thought Experiment and the original paper. (10-15 03:12)
+
+The mechanism of the Thirteenth Thought Experiment [D1] is this. Localisation occurs not because an observer shrinks a wave packet but because harmonics gather through interaction. When a spread, nearly single-tone wave A (effective order 1) scatters by exchange with a sharply localised wave B (effective order 32), B's harmonics move to A and A localises (at R = 0.70, A's effective order reaches 31.1 at the third collision). An unobserved electron is spread and appears localised when it exchanges with the localised wave of the measuring apparatus and receives harmonics. The mechanism of return is that a closed exchange is reversible. The transferred harmonics are not lost but shuttle back and forth; there is no dissipation, the total power of each wave stays 1 and the sum of effective orders is always N_A + N_B = 33. At exchange phase kω = 90° the two waves share equally, at 180° they are completely exchanged, at 360° they return. For R = R_{124,23} the shapes are exactly exchanged at the 62nd collision and the complex state itself returns to the initial state at the 124th (ε_state = 5.1×10⁻¹⁵) [D1 §6.2]. A localised electron returns to the spread state when the exchange completes one cycle.
+
+The connection with the present examination is fourfold. It is the same structure of 124: the phase difference of the exchange eigenvalues is ω/2π = 101/124 with 101 = 124 − 23; the 23/124 rotation on the four-dimensional lattice and the phase of one exchange are the same number with opposite direction, and the quarter marks λ³¹ = i, λ⁶² = −1, λ⁹³ = −i coincide. That the state multiplied by i appeared 93 updates later in the lattice orbits is this structure. The harmonic content is not fixed by the electron alone; the effective order shuttles between the electron and its partner and what is conserved is the sum. The "difference of 10⁶⁰ orders" of §20.2 is the difference of the phase at which this shuttling is read. The mechanism of "leaving and returning" was here: in E5 Claude wrote that "the gauge side needs delay or memory", but that is the partner wave of the exchange itself, which holds the harmonics and gives them back. When the electron's own energy distorts the gauge slightly and R departs a little from R_{124,23}, the complete return at the 124th collision becomes a "nearly returns" like the 103rd at R = 0.70, and a small remainder (1.6 parts in 10⁴ at R = 0.70) is left. This remainder that fails to return is a candidate cause of the slight deviation of the observed α from the 23/124 value [A2 §13].
+
+### 21.2 The mechanism that pulls α in to 137 is the mechanism that makes the reflectance R 0.7
+
+> This connects with the later paper and dynamics has nothing to do with it. In the examination so far, the mechanism that pulls α in to 137 is itself the answer, and it is the mechanism that makes the reflectance R 0.7. At the time of that note I simply had not noticed. (03:17)
+
+The Thirteenth Thought Experiment had reserved: "R is a value put in by hand and the return at the 124th collision is merely its consequence; to fix R from the interaction a dynamical model is needed." The order was reversed. R and α are tied one-to-one by N(R) = 4π/(1−R)². The mechanism that pulls α in to 137 and the mechanism that pulls the reflectance R in to about 0.7 are one and the same phenomenon. R_{124,23} = cos²(23π/124) = 0.69718, which in α⁻¹ is 137.036043. R was not a value put in from outside but the value selected as the result of locking to 23/124. That 0.7 looked cleanest in the coarse sweep of July (0, 0.51, 0.55, 0.6, 0.7, 0.9, 1) and that the centre converged to R_{124,23} on fine sweeping can be read as this pull-in seen from outside (the coarse sweep was on the two-wave exchange system and the fine sweep on the metastable-interface system, different systems sharing the same U_R [D1 §6.2]). On the four-dimensional lattice, roots with denominator divisible by 4 lock easily and 124 = 4 × 31 belongs to that group (E4); the pull-in width of 23/124 is wider and stronger than that of its neighbours (E4); and the phase of one exchange, 101/124, and the lattice rotation 23/124 are the same number with coinciding marks. The "state returns at the 124th collision" of the Thirteenth Thought Experiment is then not the consequence of a period put in by hand but one continuous story: the four-dimensional lattice selects 23/124, as a result R becomes 0.697, and at that R the exchange closes in 124 collisions. 17/92, of the same "denominator divisible by 4" group, locks at least as easily in E4 and R_{92,17} = 0.69920 is also right next to 0.7, but in α⁻¹ it is 138.885, not 137. That R is pulled in to about 0.7 can be explained by the four-dimensional lattice alone; for 23/124 to be selected within that, the other constraint of the Fourteenth Thought Experiment—the 137 cells on the space side, or the 124 = 4 × 31 of E₈—is needed [A2 §14].
+
+### 21.3 The only self-consistent lock is this one. Observation itself is dynamics
+
+> That is, because this lock is the only one that becomes self-consistent. Simple. Further, the reason I thought dynamics was needed at that time was that the mechanisms of translation and of recoil and approach by emission and absorption had not been integrated; but this mechanism, too, is inherent in the system. Observation itself is dynamics. To be exact, it suffices to add a complete absorbing shell at infinity to the present system—the note on the Eleventh Thought Experiment. (03:23)
+
+Once α is fixed, in G = c = q₀ = 1 ħ = 9/α is fixed and so is R, by N(R) = 4π/(1−R)². That R must be a finite-order root the four-dimensional lattice can lock to. And the α read from the locked state must equal the starting α. This loop closes for 23/124. 17/92, although it locks easily on the lattice, gives α⁻¹ = 138.885 and the loop does not close with the 137 of the space side; it falls out by the condition of self-consistency alone. At present, however, the only evidence that 23/124 is the only closing root is that 17/92 falls out; no computation has yet enumerated the roots with denominators divisible by 4 and counted those whose N(R) falls near 137. That is a verification task.
+
+Observation itself is dynamics. In the framework of the Eleventh Thought Experiment [D2] the state is only the occupation of levels and the centre-of-mass velocity relative to the absorber, with neither coordinates nor metric. Motion is read only from the record (time, direction, frequency, polarisation) arriving at the complete absorbing shell at infinity, and no readable change exists between events. That from 29 records of 21 cm the velocity was recovered to 2.4×10⁻¹⁰ m/s, recoil history included, and from the records of 200 atoms the centre-of-mass velocity of 370 km/s to 0.09 m/s, shows that translation and recoil are already in the record. An isotropic absorbing shell has no direction and neither translation nor recoil can be defined [D2 §6.1]; direction arises only as an assignment to the anonymous elements of the shell. The shell itself is not a background spacetime but the map onto the section (the null surface) where the future light cone of each emission event cuts infinity, the same operation as central and radial projection [D2 §2.5]. The number of elements of the shell is N = 10⁶⁰, fixing the resolution of direction (a value placed in the Eleventh Thought Experiment, not derived [D2, non-claim 11]). The localisation of the electron is fixed by which of these anonymous elements it exchanged with. The discrete lock needed, in §6.5 of the Eleventh, for "the ground state does not radiate" together with the time evolution of the field, is the self-consistent lock to 23/124. In the same §6.5, recorded exchanges (emission and absorption) give the frequency itself and unrecorded exchanges give its shift (the Lamb shift). The difference between the 23/124 value 137.036043 and the observed 137.035999 can be read as a "shift by unrecorded exchange" of the same kind.
+
+Adding a complete absorbing shell at infinity to the present system (the four-dimensional Hurwitz lattice, the exchange of the Thirteenth Thought Experiment, the lock of the Fourteenth) brings together in one system localisation (observation), the mechanism of return (closed exchange), translation and recoil (the record), and the slight deviation of α (unrecorded exchange). The five tasks at the end of Chapter 13 (emission and absorption, the distinction of gravitational and electromagnetic waves, recoil, attraction, the contributions of spin and charge) are inherent in the system as this record on the absorbing shell. Both reservations of the Thirteenth Thought Experiment (that R is an input, that a dynamics is needed) are lifted. This is a connected part, a hypothesis [A2 §15].
+
+### 21.4 The answers can be checked against the theory
+
+> Please. Moreover, that note also prepares the numbers for checking the answers for the hydrogen atom. So the theory can be checked against the answers. (03:29)
+
+The Eleventh Thought Experiment has already produced the answer table of the standard theory in the same unit system (G = c = q₀ = 1) and with the same absorbing-shell reference. The integrated system must reproduce it. For the hydrogen atom: the total emission from 5p₃/₂ F=1, 13.054539268 eV (equal to the level drop); the 1S ionisation energy 13.5984684 eV (its difference from measurement coincides with the omitted QED and nuclear size, 8170.44 MHz, with a discrepancy of 0.12 MHz); E1 A-coefficients within 1.2×10⁻⁴ of NIST; the Lyman-α width 99.71 MHz (measured 99.7); the 21 cm A-coefficient 2.868×10⁻¹⁵ s⁻¹; the spin temperature 2.72550 K at 2.7255 K; the recovery of the centre-of-mass velocity from the record, 0.09 m/s (200 atoms) and 2.4×10⁻¹⁰ m/s (29 events of one atom). For the hydrogen molecule: 301 levels, E2 A-coefficients agreeing with the 4669 lines of Roueff et al. (2019) to a median of 8×10⁻⁴. For electron–electron and proton–proton: no bound levels, only the Mott cross-section and quadrupole bremsstrahlung. The check can be done in two steps. Everything in which the Eleventh Thought Experiment deviated from measurement was the omitted time evolution of the field, i.e. unrecorded exchange: the 8170 MHz of 1S and the 1057.85 MHz of 2S–2P₁/₂ (the Lamb shift), and the factors 0.9989 and 0.9944 of the hyperfine and 21 cm lines (g_e − 2). If the unrecorded exchange of the integrated system yields these values, the check goes beyond the answer table of the standard theory to measurement itself. Whether the slight deviation of α from 137.036043 can be read by the same mechanism belongs to the same verification [A2 §16, D2 §3.3, §5.3, §6.5].
+
+## 22. The beginning of the universe, the places of the three forces, from particles to cosmology
+
+### 22.1 Inflation from a slight symmetry breaking of a highly symmetric monochromatic wave
+
+> The last. This system is powerful, but it cannot predict the beginning of the universe. Why does a tiny monochromatic wave of high symmetry undergo inflation and rapid geometric expansion through a slight breaking of symmetry? This too has been thoroughly studied (the note on time vertexing). If this can be built into the model it will look very much like a unified theory. (03:38)
+
+Established in the papers [E1, E2]: the interaction of relational waves K_ef = Im(z̄_e z_f) is a real antisymmetric matrix and the flow conserves the norm and Σz² exactly; in a self-consistent state the zero closure Σz² = 0 is a theorem, not an axiom [E1 §4.1]. Among the self-consistent relative equilibria, those linearly unstable amplify any disturbance, however small, exponentially and saturate non-linearly; this is the geometric expansion. The growth rate, from the linearised matrix fixed before the run, classified 53 of 54 runs correctly and agreed with measurement to 0.997–1.008 [E1 §7]. After saturation the state is a metastable state localised on a few relations (PR/M 0.05–0.31) [E1 §7.3]. Taking the phase states themselves as vertices instead of advancing time from outside, the smallest exact closed system is N = 1, K = 4, U = i, U⁴ = 1, and for K = 4 only odd harmonics close with Σz² = 0 [E2 §14]. That for N = 40 the relational waves concentrate in a cross of four directions of the 90° family, that the initial anisotropy remains after saturation, and that a Mexican-hat effective potential is reconstructed from the measured evolution of the order parameter, are in §2, Figs. 1–4 of the time-vertex K₄ paper (the raw data are from the unpublished interference-preserving-dynamics series). Two points were unresolved: the source of the perturbation was unidentified [E1 §10.6], and self-consistency alone cannot select the physical state uniquely, the additional selection principle being undiscovered [E1 §11].
+
+The connections to the present system are hypotheses. The initial highly symmetric monochromatic wave is the 90° family (Z₄, U = i), and λ³¹ = i, the i of the four-dimensional lattice and the quarter-period symmetry of the harmonic selection rule are all this Z₄ (the step Δ = 2π/124 of the unified protocol of the inflation paper [E1 §3.4] is an input value and cannot be used as evidence that Z₄ survives as a factor of 124). The numerators of the selection-rule components (23 + 4k)/124 are all odd (but Q_loop(m; 124) vanishes not only for odd m but for even m not divisible by 62, so the parity selection is specific to K = 4 and Q_loop is not what selects the odd ones). Candidate sources of the disturbance: by the crystallographic restriction of the four-dimensional lattice a pure rotation does not fit the lattice and a complete lock is never exactly realised (E3: zero orbits with constant norm), and the three 137s are near but not identical; an exactly symmetric state is not permitted by the system itself. The candidate missing selection principle is "the only self-consistent lock is 23/124". The Eleventh Thought Experiment identified the absorbing shell with the event horizon of an accelerating universe and required it to be slightly anisotropic to read direction; the rapid expansion creates the horizon and the anisotropy of the initial 90° family left after saturation supplies that anisotropy. The single line is: a highly symmetric Z₄ monochromatic wave → unavoidable symmetry breaking by the crystallographic restriction and the non-coincidence of the three 137s → geometric expansion and saturation of an unstable self-consistent closure → self-consistent lock to 23/124 (α, ħ = 9/α, R ≈ 0.7, the four-dimensional lattice, the odd-harmonic selection rule) → localisation and return by exchange → observation and dynamics as the record on the horizon = the complete absorbing shell at infinity → checking against the answer table of the Eleventh Thought Experiment and measurement [A2 §17].
+
+### 22.2 The place of the strong force and the place of the mechanism of the weak force
+
+> Further, have not the place of the strong force and the place of the mechanism of the weak force also almost come into view? (03:53)
+
+The following is a hypothetical placement [A2 §18]. A rotation in four dimensions is composed of multiplication by a unit quaternion from the left (SU(2)_L) and from the right (SU(2)_R) (SO(4) $\cong$ SU(2)_L × SU(2)_R / Z₂). The electromagnetic force is the phase rotation about the i axis (23/124); α is read from this rotation, and being a high-order root of denominator 124 its pull-in width is narrow and its coupling weak. The weak force is multiplication from the left (SU(2)_L): the update rules of E1–E5 were all left multiplications u·q and right multiplication was never used; that the weak force acts only on left-handed particles (parity violation) can be read as this "acts only from the left" structure. The mechanism side is "flavour change = redistribution of harmonics" of §14.1: the generation is distinguished by the position of the three-phase angle (Koide's δ), and decay is a slip over the potential wall between levels that are near but do not lock. The strong force is on the three-phase Z₃ side: the Hurwitz units contain the order-3 element ω = (−1+i+j+k)/2. The quark charge q₀ = e/3 is one component of the three phases; only with all three aligned does an integer charge arise and Σz² = 0 close, and a single component does not close and cannot be taken out alone. In the Standard Model too, confinement is tied to the Z₃ symmetry at the centre of SU(3). The three-phase axis locks at the low order the lattice allows (order 6; in E2 all orbits at radius 3 locked completely to 1/6 with constant conserved quantity), with a wide pull-in width and a deep lock, hence strong coupling. The ordering "low-order lattice lock = strong force, high-order root 23/124 = electromagnetism, left multiplication and slips between levels = weak force" puts all three within the same four-dimensional Hurwitz lattice and three phases. What remains: only the centre Z₃ of the continuous group SU(3) is visible (the rest of SU(3) is to be sought from E₈ ⊃ SU(3) × E₆), and whether the Standard Model charge relation Q = T₃ + Y/2 and the assignment of third-integer charges come out of this arrangement. The reading in Chapter 11 that one of the two hands of S³ (left and right multiplication) is a candidate for the weak interaction returns here on the four-dimensional lattice.
+
+### 22.3 The inflaton, the Higgs, the cosmic background radiation, the slight anisotropy
+
+> Add it. Further, there is probably no prior work for the whole of this assembled hypothesis, but there is prior work quite close to its parts. Is it not connectable from particles to cosmology—as far as what the inflaton field and the Higgs field are seen to be, and the cosmic background radiation and its slight anisotropy? (03:59)
+> Then save it. If this much is written up as a paper tomorrow, it will be a sufficient hypothesis paper. (04:03)
+
+The following is a hypothetical placement [A2 §19]. The inflaton is the order parameter of the inflation system, r = √(H⊥/H), the size of the transverse component leaving the initial highly symmetric plane (the Z₄ cross)—a collective mode of all the relational waves, not a fundamental field. The process of rolling from the centre of the Mexican hat reconstructed from measurement to its rim is inflation. The Higgs is the radial mode of the same order parameter oscillating around the rim (r_vac) after saturation; the inflaton and the Higgs can be read as two stages of the same order parameter. The origin of mass is the "delay of the internal clock by the cycle of exchange with the background" of the Thirteenth Thought Experiment, which is the beat with the pinned phase (the cross term) of Chapter 7. For the cosmic background radiation, the absorbing shell of the Eleventh Thought Experiment has an incoming background (the section of the past light cone, 2.7255 K) and an outgoing record (the section of the future light cone), and to read direction the shell must be slightly anisotropic; the candidate origins of that anisotropy are the anisotropy of the initial 90° family (Z₄) left after saturation of inflation and the unavoidable residue of the crystallographic restriction. If this correspondence is right, a trace of the Z₄ (cubic) family may remain in the low multipoles of the background radiation and can be compared with observation. The size of the anisotropy (about 10⁻⁵) has not yet been derived from this system.
+
+One correction by the author is recorded here. At the stage of the inflation paper the state after saturation had been assumed to be a "homogeneous vacuum" (an undistorted, evenly spaced gauge); this was an error. Even a vacuum, if it has energy, distorts the gauge. In fact even the results of that stage were not completely uniform: localisation remained (PR/M 0.05–0.31) and the initial 90° family, the cross symmetry, survived to the end. In the present system the gauge is deliberately not evenly spaced, in order to read gravitational effects (the non-uniform geodesic length per gauge interval of Chapter 5, the self-distortion of E5). The saturated vacuum is "a state that has energy and distorts its own gauge, in which the cross (Z₄) symmetry remains and which never becomes completely uniform", and the remaining cross symmetry connects to the candidate for the slight anisotropy of the background radiation.
+
+Prior work close in parts: reading the Standard Model gauge group from the division algebras (Günaydin–Gürsey, Dixon, Furey [X7]); the A₄ flavour symmetry isomorphic to the binary tetrahedral group (the 24 Hurwitz units) (Ma–Rajasekaran [X7]); Z₃ centre symmetry and confinement ('t Hooft [X7]); Higgs as inflaton (Bezrukov–Shaposhnikov [X6]); the E₈ mass spectrum (Zamolodchikov, Coldea [X7]); absorber theory (Wheeler–Feynman, Hoyle–Narlikar [X6]); Page–Wootters time [X3]. Each part has come quite close to existing work, but nothing is found that connects them into "one system beginning from a Z₄ monochromatic wave, passing through the self-consistent lock 23/124, and reaching the record on the absorbing shell".
+
+## 23. Completeness, infinite arrays, normalisation, interference terms, and divergence
+
+### 23.1 The completeness of Hilbert space is a definition, not a fact confirmed by experiment
+
+> This X thread by Professor Hotta is comparatively easy to follow. (06:11)
+
+The points of Masahiro Hotta's thread as the author cited them: von Neumann "defined" the space of quantum states as a complete Hilbert space and observables as self-adjoint operators, without proof or demonstration; nowhere in the results of experiment and observation is the completeness of the state space required; any theory that explains all the data within error survives as physics; a discontinuous, non-differentiable wave function is physically meaningless because its energy cost is infinite; and even the harmonic oscillator is fully explained by a model with a finite-dimensional state space and discrete position coordinates. The system of this paper, too, presupposes no complete continuous space and is built from a finite lattice, integer vertices, finite-order roots (U¹²⁴ = I) and ratios alone. Mathematics is a tool; what is physically realised is decided by the data and the readout.
+
+### 23.2 The author's doubts: infinite arrays, normalisation, a norm that ignores the interference term
+
+> In Professor Hayashi's textbook of quantum mechanics I liked the beautiful hypothesis that Hilbert space is an infinite array of conjugate complex numbers and that maps by self-adjoint operations can express physical phenomena; but I doubted it because in actual computation classical theory gets mixed in and many assumptions about time and space enter undefined, spoiling the beauty. My greatest dissatisfaction was that an infinite array is used to force a representation of continuous quantities; and that there was no explanation of why the amplitude is normalised and why the norm, which squares and ignores the interference term, the important cross term, is used so much—understood only by the reasoning that a probability must not exceed 1. In short, nobody had prepared answers to my questions, so I decided to research them myself. (06:22)
+
+To each of these doubts the system of this paper has prepared a different answer. To time and space entering undefined: the time-vertex K₄ paper does not advance time from outside but makes the distinct phase states themselves the vertices; the Eleventh Thought Experiment places neither coordinates nor metric and reads only from the record arriving at the absorbing shell; and Chapter 7 of this paper produced both time and space as readouts. To forcing continuous quantities with an infinite array: the system is built from a finite lattice, integer vertices and finite-order roots, values that look continuous appear as averages of oscillation between integer states, there is no absolute scale, and everything is a ratio. To normalising the amplitude: in the inflation paper the interaction K_ef is a real antisymmetric matrix, so conservation of the norm is a theorem that follows from the flow, not something imposed so that a probability does not exceed 1, and in a system of ratios normalisation is merely a choice of scale. To squaring and discarding the interference term: even in standard quantum mechanics |aψ₁ + bψ₂|² = |a|² + |b|² only when the two are orthogonal, but the real question lies before that—why does measurement choose an orthogonal basis in which the interference term vanishes?—and the textbooks do not explain it. In this paper the interference term is the protagonist. The interference term of an expectation value is proportional to the amplitude b, not the probability |b|², and the candidate reason why the observed α deviates slightly from the 23/124 value lies in this term (§19.6). That something can be read as a probability is a matter of the readout, not a property of the system. The flow of this research series has been to keep the "beautiful hypothesis" part of the textbook (expressing phenomena by an array of complex numbers and self-adjoint maps) and to replace, one by one, the parts of classical theory mixed in undefined afterwards by readouts.
+
+### 23.3 Gravitational effects are contained in the interference term and the amplitude: why divergence is hard to produce
+
+> Gravitational effects and the distortion of spacetime by gravity are present in this interference term and amplitude, and because they are discarded one later has to restore the divergence by renormalisation. Why did nobody notice this for a hundred years? In my system divergence by the squared feedback of self-energy is essentially hard to produce. (06:28)
+> Why are you making the argument circular? Have you already forgotten that the definition of the electron mass can be derived from the fine-structure constant of the structure of space? (06:31)
+
+The result that putting gravity in removes the divergence of the self-energy appeared early. Arnowitt–Deser–Misner (1960) [X6-ADM1960] showed that the classical self-energy of a point charge, computed with general-relativistic gravity included, is finite; Isham–Salam–Strathdee (1971) [X6-ISS] proposed that gravitational effects in quantum electrodynamics suppress the ultraviolet divergences. It did not become mainstream because the mass remaining in the ADM calculation when the bare mass is set to zero is of order e/√G (the Stoney mass, about 1.9×10⁻⁹ kg) and does not match the electron (the hierarchy problem); because quantising gravity and expanding perturbatively made the divergences worse; and because renormalisation succeeded so spectacularly and was justified in Wilson's effective-field theory. The problem was not that nobody noticed that gravitational effects were being discarded; it was the attempt to put gravity in while keeping the framework of continuous spacetime and point particles.
+
+Divergence is hard to produce in the system of this paper because there is no point limit (a system of ratios alone, no absolute scale, built from a finite lattice and finite-order roots, with no integration down to infinitely short distances); because the generating matrix of the interaction is real antisymmetric so the norm is conserved exactly and there is no path along which a self-energy returning to itself is amplified by squaring (the exponential amplification of inflation, too, saturates non-linearly); and because the lattice distortion by the electron itself introduced in E5 did not diverge but rather stabilised the lock.
+
+Here Claude wrote that "the wall ADM could not cross—that the electron mass is 1.47×10⁻²¹ of the Stoney mass—would be crossed if it came out of the ratios of this system", and the author corrected it: the argument was being made circular. It has already been confirmed that the electron mass follows from α and that α follows from the structure of space (the lock of the four-dimensional lattice to 23/124) (Chapter 18). The order in this system is: from the structure of space (the four-dimensional lattice, 137, the self-consistent lock to 23/124) α is fixed; in G = c = q₀ = 1, ħ = 9/α is fixed; and through the energy of the ground state (the state locked at 23/124) the electron mass is fixed. ADM could not cross the wall because it placed the mass as a free bare parameter and added gravity afterwards; in this system G is in the unit system from the start and the electron mass is not a bare parameter but a quantity read out from the structure of space through α, so a wall of the ADM form never arises. What remains to be checked is the answer table of the Eleventh Thought Experiment, and the Lamb shift and the g_e − 2 factor that the unrecorded exchange must produce while remaining finite.
+
+## 24. Stage 11: reading out E₈ from the remaining symmetry
+
+### 24.1 The constraint on the Lamb shift and the g-factor comes from the E₈ not yet used
+
+> Do you see? If, with symmetry this high, the Lamb shift and the g-factor could not be derived, then I predict that the constraint comes from the remaining, insufficiently used E8 symmetry. I have a strong feeling that something is still being overlooked. (06:35)
+
+Of the structure of E₈ the numerical experiments so far used only a small part; five parts are unused. First, only 4 of the 8 dimensions were used. E₈ is an eight-dimensional lattice, the integral octonions themselves; the octonions are a pair of quaternions (the Cayley–Dickson construction), so the E₈ lattice can be built as two four-dimensional Hurwitz lattices joined by a gluing condition (D₄ ⊕ D₄ plus a glue vector). The exchange of the Thirteenth Thought Experiment takes place between two waves A and B. If the electron and its exchange partner each have one four-dimensional space, together they make eight, and the gluing condition of E₈ constrains how the electron's state and the partner's state may combine. Both the Lamb shift and g − 2 are effects of the electron exchanging with the field it creates itself (the partner), and this constraint may be what fixes the coefficients of the unrecorded exchange. Second, the conjugate rotation (the antiparticle) was not used. The phase of one exchange, 101/124, is −23/124, opposite to the electron's rotation, but the system so far used only left multiplication, neither the reverse rotation nor right multiplication (SU(2)_R). The Lamb shift contains vacuum polarisation (about −27 MHz). Third, the triality of four dimensions was not used. The Hurwitz lattice is made of the D₄ lattice and three cosets, and the symmetry permuting the three exists only in four dimensions; this "3" is a candidate for the number of generations and the three phases. Fourth, 23 is an exponent of E₈. The Coxeter number of E₈ is h = 30 and its exponents are 1, 7, 11, 13, 17, 19, 23, 29; the Fourteenth Thought Experiment had 124 = 4 × 31 = 4(h + 1), and the numerator 23 is also one of these exponents, so 23/124 has the form "exponent of E₈ / 4(h+1)". 17/92 has an exponent as numerator but its denominator 4 × 23 is not of the form h + 1. Fifth, the golden-ratio side (the projection to H₄) was not used. What seems most directly to affect the Lamb shift and g − 2 is the combination of the first and second: the electron (one quaternion) and its partner (another) bound by the gluing condition of E₈ while rotating in opposite directions, and the unrecorded exchange under that condition fixing, while remaining finite, a coefficient such as α/2π. The author's response was "almost the same reading" [A2 §20].
+
+### 24.2 Present theoretical physics uses E₈ as a representation; this system uses it as a geometric constraint
+
+> Almost the same reading. Present theoretical physics also fails to master the E8 symmetry, which is presumably why it cannot connect the geometry of spacetime with physics well. (06:37)
+
+E₈ appears repeatedly in present physics (E₈ × E₈ of heterotic string theory, the boundary of M-theory, the mass spectrum of the one-dimensional Ising model at criticality, the densest sphere packing in eight dimensions [X1-Viazovska]). On the particle side every attempt uses E₈ as "an internal symmetry into which particles are placed (a representation)", and there it always meets a wall: all representations of E₈ are real, so the distinction between left- and right-handed (chirality) does not come out. That is also where Lisi's attempt was refuted by Distler–Garibaldi [X7]. As a result E₈ has been confined to an internal-space symmetry cut off from the geometry of spacetime, unable to play the role of connecting spacetime with physics. This system uses it differently. E₈ is not a representation into which particles are placed but a geometric constraint joining the electron's four dimensions with the partner's four dimensions by a gluing condition. Chirality comes not from E₈ but from the direction of motion—that the update happens only by left multiplication (SU(2)_L). That the representations of E₈ are real is no obstacle in this use. The reason present theoretical physics could not master E₈ and the reason this system can avoid that are explained by the same single point: whether E₈ is used as a representation or as a geometric constraint.
+
+### 24.3 The position of the paper: completion is not the aim
+
+> Put it in. In fact I think this thought experiment need not be completed by itself, and cannot be completed entirely. I lack the resources for numerical experiments in the high-energy region or on composite particles beyond the hydrogen atom. If it serves as a hint for a stagnating physics, as an alternative interpretive hypothesis to the standard theory, that is a sufficient result for an independent researcher. (06:42)
+
+This paper is written from that position. It shows separately what has been verified, what has been connected, and the means of verification, in a form that lets researchers with resources take out the single stage they are best at and test it (Chapter 25).
+
+### 24.4 Can 137 be read as a four-dimensional image of the eight-dimensional densest packing of E₈? The residual volume of the voids
+
+> The proof that the densest sphere packing in eight dimensions is the E8 lattice (Viazovska 2016) is an interesting point. Can α ≈ 137—that 137 four-dimensional unit hypercubes of edge 1 pack into the four-dimensional hyperball of radius 3—be read as a four-dimensional image of the eight-dimensional densest packing of E8? (06:49)
+> It may serve as a hint, so add it. In fact I had merely assumed cubes; perhaps four-dimensional hyperballs of diameter 1 can really pack exactly α of them. (06:52)
+> The residual volume of the voids is the point. (06:56)
+
+There are four structural correspondences. The 248 dimensions of E₈ split as 8 + 112 + 128 (the Cartan part 8, the 112 integer roots, the 128 half-integer roots); 137 = 1 + 8 + 128 is this with the integer 112 replaced by 1, sharing the 8 and the 128. The 128 is in both cases the half-integer side: the 128 roots of E₈ are the half-integer points (±½)⁸, and the 128 = 24 + 40 + 64 of 137 recounted by the farthest corner of each cell are all shells of half-integer points (corners). The mechanism making integer and half-integer points equivalent is the same: the E₈ lattice is the union of the integer and half-integer points, and in four dimensions the diagonal is an integer (√4 = 2) so cell centre and corner are equivalent. The E₈ lattice is two four-dimensional D₄ lattices glued, and the densest four-dimensional lattice is D₄ (the lattice of the 24-cell). But a unit hypercube of edge 1 fills space without gaps, so 137 is "the number of cells completely inside the ball of radius 3" rather than "a densest-packing count", a different kind of problem from sphere packing.
+
+The author's idea—"I had merely assumed cubes; perhaps one should count with four-dimensional hyperballs"—was checked. Counting four-dimensional balls centred at the points of the integer lattice Z⁴ that lie entirely inside the ball of radius 3: balls of diameter 1 give 233 (409 on the densest lattice D₄), not 137. Balls with the same volume as the unit cube (radius (2/π²)^{1/4} = 0.67094) give exactly 137, and the same set as the 137 counted with cubes (the points of centre norm 0–5: 1 + 8 + 24 + 32 + 24 + 48). The count is 137 for every ball radius greater than 3 − √6 = 0.5505 and up to 3 − √5 = 0.7639. So 137 is not a number peculiar to the cube; it appears regardless of shape as "the number of integer points of norm at most 5" (the upper bound 3 − √5 equals 2/φ², an arithmetical coincidence whose meaning is unconfirmed). An exact α (a non-integer such as 137.036) does not come out of the count, which is an integer. Weighting each ball by the fraction of its volume inside the ball of radius 3 gives about 400, nearly the volume 81π²/2 ≈ 399.7 of the radius-3 ball. The exact α comes not from the integer count on the space side but from the 23/124 readout on the evolution side—consistent with the picture of the three 137s of the Fourteenth Thought Experiment [A2 §21, `te14_ball_count_in_radius3.py`].
+
+The residual volume of the voids at radius 3 is 81π²/2 − 137 = 262.719 (packing fraction 34.27%). As the radius grows: R = 10, 34,569 cells inside and void 14,779; R = 20, 663,617 and 125,951; R = 40, 11,595,937 and 1,037,157; the packing fraction tends to 1 while the absolute void keeps growing. Void/R³ settles near a constant (about 16), growing as a layer of thickness about 0.8 along the surface (the three-sphere) of the four-dimensional ball, of size 2π²R³.
+
+### 24.5 It was used in black-hole thermodynamics. The absorbing shell is an inside-out black hole
+
+> I used this in black-hole thermodynamics. (07:00)
+> Does the map onto the complete absorbing shell at infinity not resemble a black hole? That is why it concerns me. (07:03)
+
+The residual volume of the voids Δ(R) was already the central quantity in Papers 3 and 4 of the BH thermodynamics programme [C1, C2]. For the number N(k) of integer-centred unit cubes completely inside the four-dimensional ball of radius R = 2k + 1 (137 for R = 3), the volume deficit satisfies Δ(R) = (16π/3)R³ − 6πR² + 4R − 1 + O(R⁻¹), concentrated in a boundary layer of thickness c = 8/(3π) ≈ 0.849 along the sphere. Its ratio to the Bekenstein–Hawking entropy S_BH = (π²/2)R³ of the 4+1-dimensional Tangherlini black hole is Δ/S_BH → 32/(3π) ≈ 3.40 with no free parameter. Claude's remark in the previous section that "the void goes as R³, not R²" was half right: the leading term is R³ and the second term is −6πR² (the second term is an analytic value from inclusion–exclusion; the numerically fitted coefficient is not stable [C1 §7.2]).
+
+The connection between the voids and the system of this paper (a hypothetical placement). The voids cannot be perceived by an inside observer and lie in a boundary layer attached to the sphere; they coincide with the place of the complete absorbing shell at infinity (the cosmological horizon) of the Eleventh Thought Experiment, and the number of elements of the shell and Δ(R) as entropy can be read as counting the same "degrees of freedom on the imperceptible side". The 137 cells are the perceptible (recorded) side and the voids the imperceptible (unrecorded) side, and the slight deviation of the observed α both from the integer 137 of the space side and from the 23/124 value of the evolution side is borne by the unrecorded exchange between cells and voids. That the three 137s do not coincide and that voids always remain are two faces of the same circumstance. The rapid expansion creates the horizon and its entropy is counted as the voids. The entropy of a 3+1-dimensional black hole follows the area law, proportional to R², and the second term −6πR² of the voids is an R² term with the integer ratio 6, so when central projection drops one dimension this second term may appear as the 3+1-dimensional area law (unconfirmed, including the unit system).
+
+A complete absorbing shell has the same properties as a black-hole horizon. It returns nothing. In central projection, infinity is mapped onto a finite sphere of radius R, and the BH thermodynamics programme identified this R with the horizon radius r_h [C2 §2.3]. The voids concentrate in a boundary layer along the sphere and correspond to the horizon entropy with a constant ratio. The difference is which side the observer is on: outside the horizon for a black hole, at the centre for the absorbing shell. The event horizon of an accelerating universe has temperature and entropy like a black hole (Gibbons–Hawking [X6]). The cosmological horizon is an inside-out black hole. The number of elements of the shell (about 10⁶⁰) is the resolution per direction; the ratio of the horizon to the Planck length is about 10⁶¹ and its square, about 10¹²², is the size of the entropy of the cosmological horizon. The BH thermodynamics programme (a black hole as the projection of a higher spacetime structure = the horizon seen from outside) and the Eleventh Thought Experiment (observation as the record on the complete absorbing shell at infinity = the horizon seen from inside) were looking at one structure from both sides. The 2.7255 K read on the shell in the Eleventh Thought Experiment is the temperature of the cosmic background radiation, not the temperature of the cosmological horizon itself (the Gibbons–Hawking temperature, about 10⁻³⁰ K) [A2 §25–27].
+
+### 24.6 The cosmic background radiation is the energy of a stationary wave filling space and acting as the Higgs field
+
+> Exactly. I am dissatisfied with a model that makes the cosmic background radiation a faint radiation of the complete absorber; it is more natural, in connection with inflation, to see it as the energy of a stationary wave filling all of space and acting as the Higgs field. (07:07)
+
+A complete absorber and a stationary wave do not contradict each other. Planck's law of black-body radiation was derived as "counting the modes of the standing waves in a closed cavity in equilibrium with perfectly absorbing walls". That the cosmic background radiation has a perfect black-body spectrum fits the picture of standing waves filling a cavity whose wall is the absorbing shell (the horizon). The role of the shell is not the source of the radiation but the wall of the cavity; the content of the radiation is on the side of the stationary wave filling space. The saturated state of the inflation system is the stationary wave filling space, the order parameter at the rim of the Mexican hat (what corresponds to the Higgs). Within one stationary wave field the roles divide: the vacuum expectation value of the Higgs is the amplitude of the stationary wave itself (the radius of the rim, constant); the cosmic background radiation is the thermally occupied fluctuation modes of the same field; the slight anisotropy (about 10⁻⁵) is the anisotropy of the initial 90° family (Z₄) left after saturation. That the vacuum expectation value stays constant under expansion while the background temperature falls (T ∝ 1/a) is reconciled by reading that the amplitude is unchanged and only the wavelengths of the fluctuation modes on top of it stretch. The pinned phase (the cross term) of Chapter 7 is the local form of this "stationary wave" [A2 §28].
+
+### 24.7 The photon-to-baryon ratio is a problem in number theory
+
+> Where the ratio of the numbers of photons and baryons (about 1.6 billion to 1) comes from: have you forgotten that this was computed before? It is fairly simple. (07:09)
+> Think of it as the fraction of M that can be a denominator, M/N being an integer ratio, for a resolution N. As N grows, M becomes sparse. (07:12)
+> It is simple; 10^60 will do. (07:14)
+> So this is number play, but there is a possibility of explaining it fairly simply. I am assuming it is a problem in number theory, not physics. (07:16)
+
+Within a resolution N, only those M for which N/M is an integer (M divides N) become states consistent on both sides. Their number is the number of divisors of N, on average only about ln N, and their fraction of the whole N is roughly ln N/N in one dimension and (ln N/N)^d in d dimensions, becoming sparse rapidly as N grows (the f(N) = 2(ln N + 2γ − 2)/N of Paper 9 [C4 §5]). Taking photons as all modes with any denominator (the standing waves of the cavity) and baryons as only the states that can lock to an integer ratio (the three phases closed and self-consistently engaged), the observed ratio η ≈ 6.1×10⁻¹⁰ (1.6 billion photons per baryon) can be read as this fraction itself, with no fine tuning for so extreme a value. With N = 10⁶⁰: taken literally as "the fraction of M dividing N", 10⁶⁰ = 2⁶⁰ × 5⁶⁰ has 61 × 61 = 3721 divisors, a fraction of 3.7×10⁻⁵⁷, far too small. Taking the fraction that can form an integer ratio as 1/ln N per direction (ln 10⁶⁰ = 138.2): 7.2×10⁻³ in one dimension (138 photons per baryon), 3.8×10⁻⁷ in three (2.6×10⁶), 2.7×10⁻⁹ in four (3.6×10⁸); in four dimensions the order of magnitude approaches but differs from the observed 1.63×10⁹ by a factor 4.5. That ln(10⁶⁰) = 138.2 is close to 137, and that the remaining factor 4.5 is close to the volume π²/2 ≈ 4.93 of the four-dimensional unit ball so that α⁴ × 2/π² would give η ≈ 5.7×10⁻¹⁰ (6% from observation), are number play fitted after seeing the result, and are recorded only.
+
+The advantage of reading it as number theory: the density of states satisfying an integer ratio grows only logarithmically with resolution, so extremely small ratios arise naturally; π² appears repeatedly in number-theoretic densities through the zeta function (the probability that two integers are coprime is 6/π², Σσ(n) ≈ (π²/12)x²), so the coefficients may come out of the counting rule with no free parameter; and in Paper 3 of the BH programme the four-dimensional count containing 137 reduced to the sum-of-four-squares function r₄(N) = 8σ(N), so α (137) and η may come out of the same number-theoretic structure. To distinguish from number play: fix the counting rule first; derive the density analytically (zeta functions etc.) and use only the coefficients that come from it; use for N a value fixed within the system (the resolution 10⁶⁰ of the absorbing shell) and do not move it after seeing the result; and then compare with η [A2 §29].
+
+### 24.8 The cosmological constant had already been derived as the curvature of central projection, Λ = 3/R²
+
+> As for how to explain the orders of magnitude of the background radiation (about 4×10⁻¹⁴ J/m³), the vacuum energy of the Higgs and the cosmological constant (about 6×10⁻¹⁰ J/m³): I computed in the early central-projection studies of the Σxn^2 = R^2 line, and in the review around July, that interpreting it as a light cone and as a general relativity of the vacuum derives the cosmological constant. (07:20)
+> Add it. These are comparatively low hurdles. The mountain is E8. (07:22)
+
+That Claude wrote "how to explain the orders of magnitude" as if unresolved was an error. In the central-projection study of Σxₙ² = R² [F2, Proposition 6.1], de Sitter spacetime is not fundamental but appears as the subjective image of a four-axis-symmetric structure centrally projected along one axis, and the cosmological constant comes from the curvature radius R of the projection as Λ = 3/R². The review in July reached the same Λ = 3/R² from the light-cone reading of the zero square sum. ρ_Λ = Λc⁴/(8πG) = 3c⁴/(8πG R²); with R the Hubble radius c/H₀ (H₀ = 67.4 km/s/Mpc [X6-Planck2018VI]), ρ_Λ ≈ 7.7×10⁻¹⁰ J/m³ (the critical density), of which the observed cosmological-constant share (69%) is about 5.3×10⁻¹⁰ J/m³, matching "about 6×10⁻¹⁰" to the order. The cosmological constant comes geometrically from the single curvature radius R. Summing the Higgs vacuum energy or the zero-point energies in the standard theory gives 55–120 orders too much (the cosmological-constant problem); in this system Λ is not a sum of zero-point energies but the curvature of the projection, so that discrepancy never arises. There is no point limit and no infinite sum of continuous modes (§23.3). Two questions remain: why R is of the size of the Hubble radius (the same question as the resolution of the absorbing shell, about 10⁶⁰, since the ratio of horizon to Planck length is just that order), and whether the ratio of background radiation (about 4×10⁻¹⁴ J/m³) to cosmological constant (about 1 to 13,000) can be read from the same R as the ratio of the amplitude of the stationary wave (vacuum, Λ) to the thermal modes on top of it (background radiation). The author's assessment: these (voids and entropy, absorbing shell and horizon, background radiation and stationary wave, cosmological constant, photon-to-baryon ratio) are comparatively low hurdles; the mountain is E₈ [A2 §30–31].
+
+### 24.9 There is a symmetric point 180° opposite, so it is E₈: identifying the connection
+
+> But it may be unexpectedly simple. There is a symmetric point 180° opposite, so it looks like E8, does it not? (07:28)
+> Add it. At least the method of connection has been identified, so the rest can be made a derivation problem. (07:31)
+
+The author's intuition was right. Placing the electron's state x and the partner's state y each as a Hurwitz integer (four dimensions) and imposing the gluing condition
+
+$$
+x-y\in(1+i)\,\mathcal H\qquad\text{(}x-y\text{ is a multiple of }(1+i)\text{)},
+$$
+
+the set of pairs (x, y) has exactly 240 vectors of norm 2 and none of norm 1: it is the E₈ lattice. E₈ is two four-dimensional spaces joined by this single congruence condition (the construction itself is known mathematics). The point 180° opposite enters E₈ automatically: for the partner at the electron's antipode y = −x, x − y = 2x, and 2 = −i(1+i)² is a multiple of (1+i), so the gluing condition always holds. Taking the partner as y = u·x with u among the 24 Hurwitz units, the units satisfying the condition are exactly the 8 elements ±1, ±i, ±j, ±k (the 90° and 180° rotations, the Z₄ side), and the 16 of the three-phase side (±1 ± i ± j ± k)/2 do not (when x ∉ (1+i)H; if x ∈ (1+i)H it holds for every u). Mathematically, the quotient of the Hurwitz integers by (1+i) is the field F₄ with four elements, whose multiplicative group is Z₃ (the three phases) [A2 §33, `te14_e8_hurwitz_pair_glue.py`].
+
+The correspondence with the structure of this paper is threefold. The marks of the exchange in the Thirteenth Thought Experiment, λ³¹ = i (exchange phase 90°, equal sharing) and λ⁶² = −1 (180°, complete exchange of shapes), are exactly rotations the E₈ gluing condition allows, so the marks of the exchange between electron and partner fit E₈ naturally. The gluing condition does not allow three-phase rotations and becomes the constraint that "the electron and the partner must belong to the same three-phase class"; the three-phase Z₃ (the centre of SU(3)) placed in §22.2 as the seat of the strong force is directly constrained by E₈. In summary, the E₈ gluing freely allows the Z₄ side (90° and 180°, the side of the weak force and electromagnetism) and restricts the Z₃ side (three phases, the strong force) to the same class. This is the first concrete form of the prediction that "E₈ supplies the constraint". What is new is the reading that assigns the two quaternions to the electron and the exchange partner and maps them to the marks of the exchange and the three-phase constraint.
+
+Since the connection has been identified as a single congruence condition, the Lamb shift and the g-factor become a derivation problem. Place the electron x and the partner y each on the four-dimensional Hurwitz lattice and evolve the pair (x, y) on the E₈ lattice. Rotate the electron side by 23/124 (λₐ) and the partner side by the opposite 101/124 (= −23/124), with the constraint that the pair does not leave E₈ (x − y ∈ (1+i)H, the same three-phase class). Under that constraint integrate the amplitude of the unrecorded exchange (the shuttling with the partner not recorded on the absorbing shell) along the history as a complex number, and obtain the correction to the g-factor (whether it is α/2π at first order), the Lamb shift of 2S–2P₁/₂ (1057.85 MHz) and the shift of 1S (8170 MHz), and the difference between the α of 137.036043 and the observed 137.035999. The answers are checked against the answer table of the Eleventh Thought Experiment and against measurement. The first step, rather than aiming straight at the Lamb shift, is to check whether the combinations that can lock are indeed narrowed when the two four-dimensional rotations (23/124 and 101/124) are turned together under the E₈ gluing condition. If they are, that is numerical evidence that E₈ supplies a constraint [A2 §34].
+
+## 25. What has been verified, what has been connected as hypothesis, and the means of verification
+
+| Category | Content | Basis |
+|---|---|---|
+| Verified | Odd n closes in two laps, even n in one. Equal-amplitude harmonics localise at one point, and the appearance of localisation and the fixing of the origin θ₀ are one event. The imaginary part of E = ln f takes only π/2 or 3π/2 | Chapter 2, [H1 §2–3] |
+| Verified | Eigenvalues (n+1)² − 1 on S³; the three θ₀ are two phases and one mixing angle. The antipodal value is (−1)ⁿ; balanced odd and even give one-point localisation | Chapters 3, 6, [H1 §4] |
+| Verified | With true squares R is imaginary (an amplitude). Geodesic length per gauge interval: all orders N=18 peak 1.245, antipode 0.988; odd N=17 1.252, 0.835; even N=18 1.236, 1.236. The slope ∂θ ln\|R²\| does not depend on the sign of curvature | Chapters 4, 5, [H2 gauge interval] |
+| Verified | On the circle v² + (1/γ)² = 1 (residual 10⁻¹⁵, an identity), v = tanh ln(a/b), velocity addition to six digits, mass 1/γ = m/R as the fraction of the cross term 2ab. s = ω/k does not hold | Chapter 7, [H2 light-cone readout, gauge widening] |
+| Verified (mathematics) | The spheres on which uniform translations form a group are S¹ and S³. Huygens' principle holds in odd dimensions. Hurwitz: 0, 1, 3, 7 directions, associative 1, 3 | Chapter 9 |
+| Verified | Koide's Q = 2/3 is equivalent to a zero square sum; δ = 2/9 − 1.75×10⁻⁷ (about 450 times the error). E1: compatible pairs lock fully; incompatible pairs have the rotation pulled in while the conserved quantity fluctuates, some moving to other rationals. H4 does not appear | Chapter 14, E0, E1 |
+| Verified | In four dimensions the diagonal is √4 = 2; the 24-cell; 137 = 1 + 8 + 24 + 40 + 64; Z₄ and Z₆ coexist. E2: the staircase of convergents 1/6 → 3/16 → 5/27 → 13/70, 18/97 → 23/124. E3: rotation-number locking 85% on the Z₄ axis at radius 96; constant norm 0/480 | Chapters 16, 17, E2, E3 |
+| Verified | In G = c = q₀ = 1, ħ = 9α⁻¹. Once α is fixed, mₑ follows automatically with R∞. The difference between observed α and x_{23/124} is 4.4×10⁻⁵ | Chapter 18 |
+| Verified | E4: locking rate of 23/124 40→70→86%, neighbours 0–27%, denominators divisible by 4 lock easily, pull-in 83–93% within 1.4×10⁻⁵, 18/20 return after a kick in 274 updates on average, the readout during return lies below at 136.74. E5: self-distortion increases the lock (14→19/17), zero intervals of leaving and returning | Chapter 19, E4, E5 |
+| Verified | Harmonic selection rule (23 + 4k)/124 (100% in 29 of 33 orbits). The four-dimensional lattice allows no pure rotation of order 124 | Chapter 20 |
+| Verified | At R_{124,23} the state recovers at the 124th collision (ε_state 5.1×10⁻¹⁵), ω/2π = 101/124, mark λ³¹ = i | Chapter 21, [D1 §6.2] |
+| Verified | Balls of volume 1 also give 137 (radius 0.5505–0.7639); no non-integer comes out. Void 262.719 (R=3); leading term R³ and second term −6πR² of Δ(R) (analytic). Λ = 3/R² gives ρ_Λ ≈ 7.7×10⁻¹⁰ J/m³ | Chapter 24, [C1, F2] |
+| Verified (mathematics) | Gluing two Hurwitz integers by x − y ∈ (1+i)H gives E₈ (240 vectors). y = −x always enters. The allowed units are the 8 elements ±1, ±i, ±j, ±k (x ∉ (1+i)H) | §24.9 |
+| Hypothesis | The pinned phase (cross term) corresponds to the Higgs field. To have mass and to erase the antipodal shadow are the same event. Charge = Hopf-fibre winding (numerical separation of winding from k not yet done) | Chapters 7, 11, 12 |
+| Hypothesis | Observation = the cross term between particle and observer. Being able to read, radiation and energy distribution are one event. Gravity = redistribution of R, electromagnetism = exchange of winding. Quantisation of relative velocity | Chapter 13 |
+| Hypothesis | Why it locks to the window = the integer-selecting structures (137, 23/124, the 248 of E₈, 124 = 4×31) lie nearby. The deviation of the observed value = an average including states in transition and unrecorded exchange. Running in the same direction | Chapters 15, 19, 21 |
+| Hypothesis | The background is four-dimensional because that is the smallest dimension in which the integer symmetries fit one lattice. The "3" of three generations and three dimensions has the same origin | Chapter 16 |
+| Hypothesis | The minimal structure = two spin components × three three-phase components. The pull-ins of α and R are the same phenomenon. Only 23/124 closes the loop (the only evidence is that 17/92 falls out; enumeration not done). Dynamics = the record on the absorbing shell. The two reservations of the Thirteenth are lifted | Chapters 20, 21 |
+| Hypothesis | The initial Z₄ survives as a factor of 124. The residue of the crystallographic restriction is the perturbation source. The 23/124 lock is the selection principle. The anisotropy of the horizon = the remnant of Z₄. The placement of the three forces. Inflaton = rolling of the order parameter, Higgs = radial mode, CMB = fluctuations of the stationary wave. Voids = the place of unrecorded exchange, the absorbing shell = an inside-out black hole. η is number theory | Chapters 22, 24 |
+| Hypothesis | E₈ as a geometric constraint, not a representation. The gluing condition fixes the coefficients of the Lamb shift, the g-factor and the deviation of α | Chapter 24 |
+| Means of verification | The answer table of the Eleventh Thought Experiment (hydrogen atom, hydrogen molecule). Second step: whether unrecorded exchange yields 8170 MHz, 1057.85 MHz, 0.9989 and 0.9944 | [D2 §3.3, §5.3, §6.5] |
+| Means of verification | The measured α 137.035999177(21), the single-electron g-factor value 137.035999166(15), the difference between the Rb and Cs recoil values. A trace of the Z₄ family in the low multipoles of the background radiation. η = 6.1×10⁻¹⁰ | [X5], [X6] |
+| Means of verification (numerical) | Enumeration of roots with denominators divisible by 4 and of those whose N(R) falls near 137. Separation of winding from k. The cross term of two localisations (emission, absorption, recoil, attraction). Whether the lockable pairs narrow when 23/124 and 101/124 are turned together under the E₈ gluing. Readout of α by integrating complex amplitudes. Invariance of the ratios of the minimal structure. Whether 23/124 and the four-dimensional lattice appear after saturation of inflation. Whether the −6πR² of the voids becomes the 3+1-dimensional area law. Analytic density of integer ratios in four dimensions at N = 10⁶⁰ compared with η | Chapter 25 |
+
+## 26. Conclusion
+
+1. Give a resident of a closed circle nothing but a phase θ, an imaginary-direction amplitude A and the sum of true squares Σxₙ² = R², and the following are read out in turn: quantisation (the number of nodes n), the distinction between fermionic and bosonic return (parity), localisation at one point and the fixing of the origin (harmonic summation, the fundamental as gauge), the readout of R (the non-uniform geodesic length per gauge interval), the light cone R² = k² + m² (an identity), the speed v = tanh ln(a/b), proper time, velocity addition, the Higgs-like background (the cross term 2ab of the counter-rotating terms), and mass (the fraction of the cross term, 1/γ = m/R). Extending to residents of the four-dimensional spherical shell, the necessity of three dimensions (associativity, Huygens' principle, curvature), spin (parity and the generators of SU(2)_L; the cross term has spin 0; one-point localisation and a spin eigenstate are incompatible; the opposite spin on the far side cannot be observed), charge (the Hopf-fibre winding), observation (the cross term between particle and observer), and uncertainty and quantisation are read out. This is the most important result of the paper. Without placing a background spacetime, from nothing but the relations and interference of complex waves that are not even travelling waves of odd and even harmonics, time, space, mass, charge, translational velocity and spin can all be read out.
+2. Reading the electron in this system, the electron mass is fixed through α, and in G = c = q₀ = 1 Planck's constant is an output. α is obtained from the finite-order root 23/124 through N(R), and the four-dimensional Hurwitz lattice makes it easy to pull in there. The reason the background is four-dimensional is that it is the smallest dimension in which the diagonal is an integer, and it is the other face of the same answer as the reason the visible space is three-dimensional. The observed α deviates slightly from the 23/124 value because observation is an average including states in transition and unrecorded exchange gives the shift. These are one stage of the development of this paper, not its subject.
+3. Localisation occurs by exchange and returns after one cycle. The only self-consistent lock is 23/124; the dynamics is inherent in the system as the record on the complete absorbing shell at infinity, and the answers can be checked against the answer table of the Eleventh Thought Experiment. From the beginning of the universe to the background radiation, everything lines up as stages of the same system. The remaining symmetry is E₈; since the connection has been identified as the gluing condition of two Hurwitz quaternions, the Lamb shift and the g-factor become a derivation problem.
+4. This paper is not a completed theory. It has shown separately what has been verified, what has been connected as hypothesis, and the means of verification. Numerical experiments in the high-energy region and on composite particles beyond the hydrogen atom are tasks for the researchers who take this over. As an alternative interpretive hypothesis of the standard theory, it is enough if it serves as a hint.
+
+---
+
+## References
+
+Self-citations are grouped by role as H and A–G, external references as X1–X8. DOIs were confirmed against the papers themselves.
+
+### Self-citations
+
+**H Backbone: residents of a closed sphere**
+- [H1] N. Kihara, "Spacetime, Mass and Dimension Emerging from a Wave Model of Closed-Sphere Residents" (閉じた球面住民の波動モデルから時空・質量・次元が現れること), v1 (2026-10-14). `次元の生成構造/思考実験論文_閉じた球面住民の波動モデル_20261014/`. Unpublished (this repository). A summary of the dialogue "Intrinsic geometry on a circle" (2026-10-13 to 14); this paper gives priority to the dialogue for order and the author's corrections.
+- [H2] The numerical experiments and interactive figures of the same days (unpublished, this repository, `次元の生成構造/`): `円周住民_自己無撞着殻_20261013`, `四次元球殻住民_自己無撞着殻_20261013` (results not adopted by the correction of §4.2), `円周住民_ゲージ間隔測地線長_20261014`, `ゲージ広がりと分散比の検証_20261014`, `円周住民_光円錐読出し_20261014`, `四次元球殻住民_輪切り可視化_20261014`. Listed in Appendix A.
+
+**A Parent: the Fourteenth Thought Experiment and its addenda**
+- [A1] N. Kihara, "The Fourteenth Thought Experiment: Why Can Different Symmetries Never Be Fully Reconciled? – Non-commensurability, Pull-in and Metastability of Integer-Selecting Symmetries, and Readout along the Direction of Evolution", v1.0 (2026-10-12). Version DOI 10.5281/zenodo.23315558, Concept DOI 10.5281/zenodo.23315557.
+- [A2] N. Kihara, "Fourteenth Thought Experiment, Addendum: Insights from the Dialogue (2026-10-14, §§1–24)" and "Addendum (continued) (2026-10-15, §§25–34)", numerical experiments E0–E5, and the check programs `te14_harmonic_selection_check.py`, `te14_ball_count_in_radius3.py`, `te14_e8_hurwitz_pair_glue.py`. In the parent folder of this paper (Appendix A). A summary by claude.ai of the dialogue "The dialogue after the Fourteenth Thought Experiment" (2026-10-14 to 15), containing claude.ai's inferences; this paper cites it after confirming the author's statements in the dialogue.
+
+**B The evolution side: finite-order resonance**
+- [B1] N. Kihara, "Discovery of Finite-Order Resonance in Iterated Exchange Scattering – Identification of the Cause of the Peaks near 137 and 128 of the Fine-Structure Constant and a Reproducible Wave-Packet Model", v1 (2026-07-18). Version DOI 10.5281/zenodo.21421367, Concept DOI 10.5281/zenodo.21421366.
+- [B2] N. Kihara, "Selection of the Exchange Weight G_R = 1−R and Numerical Experiments on Candidate Correspondences with the Fine-Structure Constant", v1 (2026-07-15). Version DOI 10.5281/zenodo.21396761, Concept DOI 10.5281/zenodo.21396760.
+- [B3] N. Kihara, "Summary of Preliminary Experiments on the Acceleration Basis and Localisation Exchange in Fermionic Collisions of the Exchange-Interference Scattering Matrix", v1 (2026-07-13). Version DOI 10.5281/zenodo.21333768, Concept DOI 10.5281/zenodo.21333766.
+- [B4] N. Kihara, "Summary of Preliminary Experiments on Weak Readout C and Strong Observation Selection D at White-Cat / Black-Cat / Grey-Cat Metastable Interfaces" (2026-07-14). Version DOI 10.5281/zenodo.21358203, Concept DOI 10.5281/zenodo.21353208.
+
+**C The space side: the four-dimensional lattice, 137, voids, abundances**
+- [C1] N. Kihara, "Discrete Structure of a Four-Dimensional Ball: Unit-Cube Packing and the Asymptotic Volume Deficit Δ(R) (Paper 3)" (2026-04). DOI 10.5281/zenodo.19839395.
+- [C2] N. Kihara, "A Quantitative Correspondence between the Lattice Volume Deficit and the Tangherlini Bekenstein–Hawking Entropy (Paper 4)" (2026-04). DOI 10.5281/zenodo.19839396.
+- [C3] N. Kihara, "A Geometric Identity for the Fine-Structure Constant: From the 4D Unit Ball Volume and its Cube-Packing Deficit (Paper 7)", v3 (2026-04). Version DOI 10.5281/zenodo.19876200, Concept DOI 10.5281/zenodo.19869266.
+- [C4] N. Kihara, "The Generation Structure of Fermions – Particles as Completed Closures in a Sea of Light" (2026-08-04). Version DOI 10.5281/zenodo.21766707, Concept DOI 10.5281/zenodo.21766706.
+- [C5] N. Kihara, "Thermodynamic Readout from a Self-Consistent Complex Relational System without Assuming Spacetime" (2026-09-02). DOI 10.5281/zenodo.22240463, Concept DOI 10.5281/zenodo.22240462.
+
+**D Particles and observation**
+- [D1] N. Kihara, "The Thirteenth Thought Experiment: Why Does a Particle That Has Acquired Mass Not Dissipate and Vanish?", v2.0 (2026-10-10). Version DOI 10.5281/zenodo.23280070, Concept DOI 10.5281/zenodo.23266250.
+- [D2] N. Kihara, "The Eleventh Thought Experiment: Emission Records of Two-Body Systems without a Background Spacetime", v1.0 (2026-10-07). Version DOI 10.5281/zenodo.23199300, Concept DOI 10.5281/zenodo.23199299.
+
+**E The beginning and closed relational systems**
+- [E1] N. Kihara, "The Mechanism of Inflationary Rapid Expansion in Self-Consistent Closed Systems of Relational Waves – Second Edition" (2026-08-30). Version DOI 10.5281/zenodo.22176949, Concept DOI 10.5281/zenodo.22112008.
+- [E2] N. Kihara, "A Finite Complete Relational Closed System with Time Vertexed – the Minimal Exact Closed System N=1, K=4 by U^K=I and a Complete-Network Analysis of Odd and Even Harmonics", v1.2 (2026-09-15). Version DOI 10.5281/zenodo.22763330, Concept DOI 10.5281/zenodo.22763329.
+
+**F Projection and curvature**
+- [F1] N. Kihara, "The Twelfth Thought Experiment: From the Fine-Structure Constant to the Observation Map and Gauge Symmetry", v1.0 (2026-10-08). Version DOI 10.5281/zenodo.23226259, Concept DOI 10.5281/zenodo.23226258.
+- [F2] N. Kihara, "Geometric Formulation of 4-Dimensional Space via Central Projection", v1.0 (2026-04-05). DOI 10.5281/zenodo.19427780, Concept DOI 10.5281/zenodo.19427779.
+- [F3] N. Kihara, "Schwarzschild–de Sitter Exact Solution in the Central Projection Framework" (2026-04-12). DOI 10.5281/zenodo.19538098, Concept DOI 10.5281/zenodo.19538097.
+- [F4] N. Kihara, "Radial Projection: Definition and Relation to Central Projection", v3.3 (2026-06-06). Version DOI 10.5281/zenodo.20567347, Concept DOI 10.5281/zenodo.20462569.
+
+**G The research framework and the First to Sixth Thought Experiments**
+- [G1] N. Kihara, "Design of a Research Project Exploring the Emergence of Spacetime, Particles and Interactions from States and Relations", v1.0 (2026-09-20). Version DOI 10.5281/zenodo.22851945, Concept DOI 10.5281/zenodo.22851944.
+- [G2] N. Kihara, "The First Thought Experiment: Tracing the Equivalence Principle back to Two Nameless Degrees of Freedom", v1.0 (2026-09-20). Version DOI 10.5281/zenodo.22857953, Concept DOI 10.5281/zenodo.22857952.
+- [G3] N. Kihara, "The Second Thought Experiment: Deriving a Coulomb-Type Inverse-Square Force from Product Readout and an Area Clock", v1.2 (2026-09-21). Version DOI 10.5281/zenodo.22876596, Concept DOI 10.5281/zenodo.22867336.
+- [G4] N. Kihara, "The Third Thought Experiment: Reading Out the State of a–b Two Bodies from the Orbits of a–b Two Celestial Bodies", v1.5 (2026-09-23). Version DOI 10.5281/zenodo.22909661, Concept DOI 10.5281/zenodo.22909660.
+- [G5] N. Kihara, "The Fourth Thought Experiment: From a Fixed Action S to a State-Dependent Action S_n", v1.0 (2026-09-23). Version DOI 10.5281/zenodo.22919788, Concept DOI 10.5281/zenodo.22919787.
+- [G6] N. Kihara, "The Fifth Thought Experiment: Was There No Hidden State?", v2.1 (2026-09-26). Version DOI 10.5281/zenodo.22973087, Concept DOI 10.5281/zenodo.22973086.
+- [G7] N. Kihara, "The Sixth Thought Experiment: Can Two Kinds of Long-Range Interaction Be Internalised into One Closed State Map?", v1.1 (2026-09-26). Version DOI 10.5281/zenodo.22974632, Concept DOI 10.5281/zenodo.22974631.
+- [G8] N. Kihara, "Supplement to the Sixth Thought Experiment: Does the State Generation Change When the Normalisation Is Switched from Mass to the Charge Unit?", v1.0 (2026-09-27). Version DOI 10.5281/zenodo.22985300, Concept DOI 10.5281/zenodo.22985299.
+
+### External references
+
+**X1 Mathematical structures that select integers**
+- [X1-Hurwitz] A. Hurwitz, "Über die Composition der quadratischen Formen von beliebig vielen Variablen," *Nachr. Ges. Wiss. Göttingen, Math.-Phys. Kl.*, 309–316 (1898).
+- [X1-Coxeter] H. S. M. Coxeter, "Integral Cayley numbers," *Duke Math. J.* **13**, 561–578 (1946). DOI 10.1215/S0012-7094-46-01347-6.
+- [X1-Korkin–Zolotarev] A. Korkine and G. Zolotareff, "Sur les formes quadratiques," *Math. Ann.* **6**, 366–389 (1873).
+- [X1-Conway–Smith] J. H. Conway and D. A. Smith, *On Quaternions and Octonions* (A K Peters, 2003).
+- [X1-Viazovska] M. S. Viazovska, "The sphere packing problem in dimension 8," *Ann. of Math.* **185**, 991–1015 (2017). DOI 10.4007/annals.2017.185.3.7.
+- [X1-Bamberg] J. Bamberg, G. Cairns and D. Kilminster, "The crystallographic restriction, permutations, and Goldbach's conjecture," *Amer. Math. Monthly* **110**, 202–209 (2003). DOI 10.1080/00029890.2003.11919956.
+- [X1-Hardy–Wright] G. H. Hardy and E. M. Wright, *An Introduction to the Theory of Numbers*, 6th ed. (Oxford University Press, 2008).
+- [X1-Koide] Y. Koide, "A new view of quark and lepton mass hierarchy," *Phys. Rev. D* **28**, 252 (1983); first in *Lett. Nuovo Cimento* **34**, 201 (1982).
+- [X1-Żenczykowski] P. Żenczykowski, "A note on Koide's doubly special parametrization of quark masses," *Open Phys.* **16**, 427–429 (2018). DOI 10.1515/phys-2018-0058.
+
+**X2 Dynamics of pull-in and incommensurability**
+- [X2-Adler] R. Adler, "A study of locking phenomena in oscillators," *Proc. IRE* **34**, 351–357 (1946).
+- [X2-Bak] P. Bak, "Commensurate phases, incommensurate phases and the devil's staircase," *Rep. Prog. Phys.* **45**, 587 (1982). DOI 10.1088/0034-4885/45/6/001.
+- [X2-Jensen] M. H. Jensen, P. Bak and T. Bohr, "Transition to chaos by interaction of resonances in dissipative systems. I. Circle maps," *Phys. Rev. A* **30**, 1960–1969 (1984). DOI 10.1103/PhysRevA.30.1960.
+- [X2-Kuramoto] Y. Kuramoto, "Self-entrainment of a population of coupled non-linear oscillators," *Lecture Notes in Physics* **39**, 420–422 (1975). DOI 10.1007/BFb0013365.
+
+**X3 Finite recurrence and the readout of time**
+- [X3-Page–Wootters] D. N. Page and W. K. Wootters, "Evolution without evolution: Dynamics described by stationary observables," *Phys. Rev. D* **27**, 2885 (1983). DOI 10.1103/PhysRevD.27.2885.
+- [X3-Schwinger1960] J. Schwinger, "Unitary operator bases," *Proc. Natl. Acad. Sci. USA* **46**, 570–579 (1960).
+- [X3-Gabor] D. Gabor, "Theory of communication. Part 1," *J. IEE III* **93**, 429–441 (1946). DOI 10.1049/ji-3-2.1946.0074.
+
+**X4 Localisation, non-dissipation, mass**
+- [X4-deBroglie] L. de Broglie, "Waves and quanta," *Nature* **112**, 540 (1923). DOI 10.1038/112540a0.
+- [X4-Haus] H. A. Haus, "Mode-locking of lasers," *IEEE J. Sel. Top. Quantum Electron.* **6**, 1173–1185 (2000). DOI 10.1109/2944.902165.
+
+**X5 Measured values and the answer table of the standard theory**
+- [X5-CODATA2022] P. J. Mohr, D. B. Newell, B. N. Taylor and E. Tiesinga, "CODATA recommended values of the fundamental physical constants: 2022," *Rev. Mod. Phys.* **97**, 025002 (2025).
+- [X5-Fan] X. Fan, T. G. Myers, B. A. D. Sukra and G. Gabrielse, "Measurement of the electron magnetic moment," *Phys. Rev. Lett.* **130**, 071801 (2023).
+- [X5-Morel] L. Morel, Z. Yao, P. Cladé and S. Guellati-Khélifa, "Determination of the fine-structure constant with an accuracy of 81 parts per trillion," *Nature* **588**, 61–65 (2020). DOI 10.1038/s41586-020-2964-7.
+- [X5-Parker] R. H. Parker, C. Yu, W. Zhong, B. Estey and H. Müller, "Measurement of the fine-structure constant as a test of the Standard Model," *Science* **360**, 191–195 (2018). DOI 10.1126/science.aap7706.
+- [X5-Peil] S. Peil and G. Gabrielse, "Observing the quantum limit of an electron cyclotron: QND measurements of quantum jumps between Fock states," *Phys. Rev. Lett.* **83**, 1287 (1999). DOI 10.1103/PhysRevLett.83.1287.
+- [X5-Lamb–Retherford] W. E. Lamb and R. C. Retherford, "Fine structure of the hydrogen atom by a microwave method," *Phys. Rev.* **72**, 241–243 (1947). DOI 10.1103/PhysRev.72.241.
+- [X5-Bethe] H. A. Bethe, "The electromagnetic shift of energy levels," *Phys. Rev.* **72**, 339–341 (1947). DOI 10.1103/PhysRev.72.339.
+- [X5-Schwinger1948] J. Schwinger, "On quantum-electrodynamics and the magnetic moment of the electron," *Phys. Rev.* **73**, 416–417 (1948). DOI 10.1103/PhysRev.73.416.
+- [X5-Eides] M. I. Eides, H. Grotch and V. A. Shelyuto, "Theory of light hydrogenlike atoms," *Phys. Rep.* **342**, 63 (2001).
+- [X5-Keshavarzi] A. Keshavarzi, D. Nomura and T. Teubner, "The muon g−2 and α(M_Z²): a new data-based analysis," *Phys. Rev. D* **101**, 014029 (2020). DOI 10.1103/PhysRevD.101.014029.
+- [X5-Roueff] E. Roueff et al., "The full infrared spectrum of molecular hydrogen," *Astron. Astrophys.* **630**, A58 (2019).
+
+**X6 Absorbers, horizons, cosmology, self-energy**
+- [X6-Wheeler–Feynman] J. A. Wheeler and R. P. Feynman, "Interaction with the absorber as the mechanism of radiation," *Rev. Mod. Phys.* **17**, 157 (1945).
+- [X6-Hoyle–Narlikar] F. Hoyle and J. V. Narlikar, "Time symmetric electrodynamics and the arrow of time in cosmology," *Proc. R. Soc. Lond. A* **277**, 1 (1964).
+- [X6-Gibbons–Hawking] G. W. Gibbons and S. W. Hawking, "Cosmological event horizons, thermodynamics, and particle creation," *Phys. Rev. D* **15**, 2738–2751 (1977). DOI 10.1103/PhysRevD.15.2738.
+- [X6-Bekenstein] J. D. Bekenstein, "Black holes and entropy," *Phys. Rev. D* **7**, 2333 (1973).
+- [X6-Tangherlini] F. R. Tangherlini, "Schwarzschild field in n dimensions and the dimensionality of space problem," *Nuovo Cimento* **27**, 636 (1963).
+- [X6-ADM1960] R. Arnowitt, S. Deser and C. W. Misner, "Gravitational-electromagnetic coupling and the classical self-energy problem," *Phys. Rev.* **120**, 313–320 (1960).
+- [X6-ISS] C. J. Isham, A. Salam and J. Strathdee, "Infinity suppression in gravity-modified quantum electrodynamics," *Phys. Rev. D* **3**, 1805–1817 (1971). DOI 10.1103/PhysRevD.3.1805.
+- [X6-Planck2018VI] Planck Collaboration, "Planck 2018 results. VI. Cosmological parameters," *Astron. Astrophys.* **641**, A6 (2020).
+- [X6-PDG-BBN] B. D. Fields, P. Molaro and S. Sarkar, "Big-Bang nucleosynthesis," in Particle Data Group, *Review of Particle Physics*, *Phys. Rev. D* **110**, 030001 (2024).
+- [X6-Schwarz] D. J. Schwarz, C. J. Copi, D. Huterer and G. D. Starkman, "CMB anomalies after Planck," *Class. Quantum Grav.* **33**, 184001 (2016).
+- [X6-Bezrukov–Shaposhnikov] F. Bezrukov and M. Shaposhnikov, "The Standard Model Higgs boson as the inflaton," *Phys. Lett. B* **659**, 703 (2008).
+
+**X7 Particle symmetries and the physics of E₈**
+- [X7-Furey] C. Furey, "SU(3)_C × SU(2)_L × U(1)_Y (× U(1)_X) as a symmetry of division algebraic ladder operators," *Eur. Phys. J. C* **78**, 375 (2018).
+- [X7-Günaydin–Gürsey] M. Günaydin and F. Gürsey, "Quark structure and octonions," *J. Math. Phys.* **14**, 1651–1667 (1973).
+- [X7-Pati–Salam] J. C. Pati and A. Salam, "Lepton number as the fourth 'color'," *Phys. Rev. D* **10**, 275–289 (1974). DOI 10.1103/PhysRevD.10.275.
+- [X7-Ma–Rajasekaran] E. Ma and G. Rajasekaran, "Softly broken A4 symmetry for nearly degenerate neutrino masses," *Phys. Rev. D* **64**, 113012 (2001). DOI 10.1103/PhysRevD.64.113012.
+- [X7-Lisi] A. G. Lisi, "An exceptionally simple theory of everything," arXiv:0711.0770 (2007).
+- [X7-Distler–Garibaldi] J. Distler and S. Garibaldi, "There is no 'Theory of Everything' inside E8," *Commun. Math. Phys.* **298**, 419–436 (2010). DOI 10.1007/s00220-010-1006-y.
+- [X7-'t Hooft] G. 't Hooft, "On the phase transition towards permanent quark confinement," *Nucl. Phys. B* **138**, 1 (1978).
+- [X7-Zamolodchikov] A. B. Zamolodchikov, "Integrals of motion and S-matrix of the (scaled) T=T_c Ising model with magnetic field," *Int. J. Mod. Phys. A* **4**, 4235–4248 (1989).
+- [X7-Coldea] R. Coldea et al., "Quantum criticality in an Ising chain: Experimental evidence for emergent E8 symmetry," *Science* **327**, 177–180 (2010). DOI 10.1126/science.1180085.
+
+**X8 Close prior work raised in Chapter 8 (surveyed within the dialogue; volume and page details are to be confirmed by the author before citation elsewhere)**
+- [X8-Shanahan] D. Shanahan, "A Case for Lorentzian Relativity," *Found. Phys.* **44** (2014).
+- [X8-Feynman–Hibbs] R. P. Feynman and A. R. Hibbs, *Quantum Mechanics and Path Integrals* (McGraw-Hill, 1965): the checkerboard model.
+- [X8-Jacobson–Schulman] T. Jacobson and L. S. Schulman, *J. Phys. A* **17**, 375 (1984): mass as the frequency of path reversals.
+- [X8-Bondi] H. Bondi, the k-calculus (*Relativity and Common Sense*, 1964).
+- [X8-Adams] J. F. Adams, "On the non-existence of elements of Hopf invariant one," *Ann. of Math.* **72**, 20–104 (1960): the parallelisable spheres are S¹, S³, S⁷.
+- [X8-Hestenes] D. Hestenes, "The zitterbewegung interpretation of quantum mechanics," *Found. Phys.* **20**, 1213–1232 (1990).
+
+---
+
+## Appendix A　Reproduction and the interactive figures
+
+Everything is in GitHub `WurabeSeiji/ai-chat-logs-open` (the Zenodo record https://doi.org/10.5281/zenodo.23386447 holds the Japanese and English md, tex and PDF, the seven interactive HTML figures, `build_tex.py` and `SHA256SUMS.txt`). The folder of this paper is `匿名頂点状態生成幾何-匿名内部観測者から不変な関係量の体系/第十四思考実験_整数を選ぶ対称性の非整合と発展方向の読出し_20261012/統合仮説論文_20261015/`. The full texts of the primary-source dialogues are `chat_logs/01_円周上の内在的な幾何学_20261013-14_full.md` and `chat_logs/02_中性子の寿命と弱い力によるフレーバー変化_20261014-15_full.md`. The correspondence table between each stage and the passages of the dialogue, the sections of the paper and the experiment folders is §4 of `working_notes.md`.
+
+**Numerical experiments of the sphere residents (`次元の生成構造/`)**
+
+| Content | Folder | Computation and plotting | Results | Interactive figures (HTML) |
+|---|---|---|---|---|
+| Self-consistent shell (§4.1, results not adopted) | `円周住民_自己無撞着殻_20261013`, `四次元球殻住民_自己無撞着殻_20261013` | `selfconsistent_shell_s1.py`, `plot_…_s1.py`, `…_s3.py` | `results_summary_selfconsistent_shell_s1.json`, `…_s3.json` | — |
+| Gauge interval and geodesic length (Chapter 5) | `円周住民_ゲージ間隔測地線長_20261014` | `gauge_geodesic_s1.py`, `plot_gauge_geodesic_s1.py` (generates PNG and SVG of `fig1_R_vs_phase`, `fig2_gauge_interval_lengths`, `fig3_resident_ruler`) | `results_summary_gauge_geodesic_s1.json` | `circle_imag_amplitude_radial_log_gradient.html` |
+| Gauge widening versus dispersion ratio (§7.6, does not hold) | `ゲージ広がりと分散比の検証_20261014` | `gauge_stretch_vs_dispersion.py`, `plot_gauge_stretch_vs_dispersion.py` (`fig_gauge_stretch_vs_dispersion`) | `results_summary_gauge_stretch_vs_dispersion.json` | — |
+| Light-cone readout (§7.9), action of phase rotation (§8.1), observer (Chapter 10) | `円周住民_光円錐読出し_20261014` | `lightcone_readout_s1.py`, `plot_lightcone_readout_s1.py` (`fig_lightcone_readout_s1`) | `results_summary_lightcone_readout_s1.json` | `circle_phase_rotation_action_lightcone.html`, `circle_phase_rotation_action_lightcone_v2.html`, `sr_observer_lightcone_s1.html` |
+| Slices of S³ (Chapter 6), action on S³ (§8.2), observer on S³ (Chapter 10) | `四次元球殻住民_輪切り可視化_20261014` | — | — | `s3_shell_slice_amplitude_gradient.html`, `s3_phase_rotation_action_lightcone.html`, `sr_s3_observer_lightcone.html` |
+
+The HTML files are interactive figures that open in a browser on their own; they are included in this Zenodo record (Version DOI 10.5281/zenodo.23386447). Download and open in a browser. The direct-download URLs are as follows (one link per line; the GitHub raw links display the source; save and open).
+
+- `circle_imag_amplitude_radial_log_gradient.html`: Circle: imaginary amplitude (vertical) and slope ∂θ ln|R²| (radial) (§5.3)
+  - Zenodo: <https://zenodo.org/records/23386447/files/circle_imag_amplitude_radial_log_gradient.html?download=1>
+  - GitHub raw: <https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%86%86%E5%91%A8%E4%BD%8F%E6%B0%91_%E3%82%B2%E3%83%BC%E3%82%B8%E9%96%93%E9%9A%94%E6%B8%AC%E5%9C%B0%E7%B7%9A%E9%95%B7_20261014/circle_imag_amplitude_radial_log_gradient.html>
+- `circle_phase_rotation_action_lightcone.html`: Circle: action of phase rotation and light-cone distribution (first version, §8.1)
+  - Zenodo: <https://zenodo.org/records/23386447/files/circle_phase_rotation_action_lightcone.html?download=1>
+  - GitHub raw: <https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%86%86%E5%91%A8%E4%BD%8F%E6%B0%91_%E5%85%89%E5%86%86%E9%8C%90%E8%AA%AD%E5%87%BA%E3%81%97_20261014/circle_phase_rotation_action_lightcone.html>
+- `circle_phase_rotation_action_lightcone_v2.html`: Circle: action of phase rotation and light-cone distribution (translated-distance slider, separate odd/even N, §8.1)
+  - Zenodo: <https://zenodo.org/records/23386447/files/circle_phase_rotation_action_lightcone_v2.html?download=1>
+  - GitHub raw: <https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%86%86%E5%91%A8%E4%BD%8F%E6%B0%91_%E5%85%89%E5%86%86%E9%8C%90%E8%AA%AD%E5%87%BA%E3%81%97_20261014/circle_phase_rotation_action_lightcone_v2.html>
+- `sr_observer_lightcone_s1.html`: Circle residents: the special-relativity thought experiment (observer and particle, Chapter 10)
+  - Zenodo: <https://zenodo.org/records/23386447/files/sr_observer_lightcone_s1.html?download=1>
+  - GitHub raw: <https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%86%86%E5%91%A8%E4%BD%8F%E6%B0%91_%E5%85%89%E5%86%86%E9%8C%90%E8%AA%AD%E5%87%BA%E3%81%97_20261014/sr_observer_lightcone_s1.html>
+- `s3_shell_slice_amplitude_gradient.html`: Slices of the four-dimensional shell S³: amplitude (shading, opacity) and slope ∂ψ ln|R²| (Chapter 6)
+  - Zenodo: <https://zenodo.org/records/23386447/files/s3_shell_slice_amplitude_gradient.html?download=1>
+  - GitHub raw: <https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%9B%9B%E6%AC%A1%E5%85%83%E7%90%83%E6%AE%BB%E4%BD%8F%E6%B0%91_%E8%BC%AA%E5%88%87%E3%82%8A%E5%8F%AF%E8%A6%96%E5%8C%96_20261014/s3_shell_slice_amplitude_gradient.html>
+- `s3_phase_rotation_action_lightcone.html`: Four-dimensional shell S³: action of phase rotation and light-cone distribution (§8.2)
+  - Zenodo: <https://zenodo.org/records/23386447/files/s3_phase_rotation_action_lightcone.html?download=1>
+  - GitHub raw: <https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%9B%9B%E6%AC%A1%E5%85%83%E7%90%83%E6%AE%BB%E4%BD%8F%E6%B0%91_%E8%BC%AA%E5%88%87%E3%82%8A%E5%8F%AF%E8%A6%96%E5%8C%96_20261014/s3_phase_rotation_action_lightcone.html>
+- `sr_s3_observer_lightcone.html`: Four-dimensional shell S³: the special-relativity thought experiment with an observer (Chapter 10)
+  - Zenodo: <https://zenodo.org/records/23386447/files/sr_s3_observer_lightcone.html?download=1>
+  - GitHub raw: <https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%9B%9B%E6%AC%A1%E5%85%83%E7%90%83%E6%AE%BB%E4%BD%8F%E6%B0%91_%E8%BC%AA%E5%88%87%E3%82%8A%E5%8F%AF%E8%A6%96%E5%8C%96_20261014/sr_s3_observer_lightcone.html>
+
+The PNG and SVG files of the plotting programs were generated on 2026-10-15 by re-running the computation programs unchanged in each folder and then the plotting programs (Figs. 1–5). The re-run results agree with the saved summary JSON (the gauge-interval ratios agree to four decimals in every system, the s versus ω/k table agrees in every row, the light-cone residual is 1.75×10⁻¹⁵, the v − tanh difference 7.77×10⁻¹⁶, and the five velocity-addition cases agree to six digits). The font Noto Sans CJK JP specified by the plotting programs was installed on this Mac by the author's decision (`~/Library/Fonts/NotoSansCJKjp-Regular.otf`); the programs were not modified. Copies of the PNG files of Figs. 1–10 are in `figures/` of this paper.
+
+**Numerical experiments of the Fourteenth Thought Experiment (parent folder of this paper)**
+
+| Experiment | Folder | Run | Figure |
+|---|---|---|---|
+| E0, E1 | `数値実験E1_レプトン三相位相の格子引き込み_20261014/` | `te14_E0_koide_phase_check.py`, `te14_E1_lepton_phase_lattice.py`, `te14_E1_plot.py` | `te14_E1_fig.png`, `.svg` |
+| E2 | `数値実験E2_四次元フルヴィッツ格子と23_124_20261014/` | `te14_E2_hurwitz_124_23.py`, `te14_E2_radius_scan.py`, `te14_E2_plot.py` | `te14_E2_fig.png`, `.svg` (the readout in panel (b) uses the withdrawn measurement and is not used here) |
+| E3 | `数値実験E3_基底状態と準位系列_20261014/` | `te14_E3_ground_and_levels.py`, `te14_E3_plot.py` (with the E2 programs in the same folder) | `te14_E3_fig.png`, `.svg` |
+| E4 | `数値実験E4_選択・引き込み・回復_20261014/` | `te14_E4_selection_pullin_recovery.py`, `te14_E4_mod4_check.py`, `te14_E4_plot.py` | `te14_E4_fig.png`, `.svg` |
+| E5 | `数値実験E5_ゲージの自己歪み_20261014/` | `te14_E5_gauge_backreaction.py`, `te14_E5_control.py`, `te14_E5_plot.py` | `te14_E5_fig.png`, `.svg` |
+| Harmonic selection rule | parent folder | `te14_harmonic_selection_check.py` | — |
+| 137 with balls | parent folder | `te14_ball_count_in_radius3.py` (argument r) | — |
+| E₈ gluing | parent folder | `te14_e8_hurwitz_pair_glue.py` | — |
+
+On 2026-10-15 E0–E5 were re-run with the original programs unchanged and checked against the original summaries (the summaries of E1–E3 agree completely; in E4 the re-lock targets and transient lengths agree completely and only the last digits of the mean rotation number during transients differ; E5 reproduces the values in its README). Environment: Python 3.9, numpy 2.0.2, matplotlib 3.9.4.
+
+## Appendix B　Record of corrections
+
+Claude's errors and the author's corrections that this paper kept in the text as part of the derivation.
+
+| Place | Claude's error | Author's correction |
+|---|---|---|
+| §2.3 | Took the points of aligned phase as nodes. Restricted to e^{iks}. Introduced C cos(mθ+δ) | Nodes are the phases where the amplitude vanishes. There is only θ and the imaginary amplitude A |
+| §2.4 | n=0 is a state in which nothing appears | The two states ±iA |
+| §2.5 | Drew the imaginary axis radially | The radial direction is that of a background space; not allowed |
+| §2.8 | Left the amplitude as a coefficient. Mixed the imaginary amplitude into the phase. Skipped the Σ expansion | Amplitude into the exponent too; the imaginary amplitude as an independent factor; expand |
+| §2.10 | θ₀ needs a second wave | The arrangement of the component phases is θ₀ itself. The fundamental is the gauge |
+| §4.1–4.2 | \|xₙ\|², a real radius, a centroid, \|Σxₙ\|² | True squares. Not a norm. There is no outside of the circle |
+| §7.2 | The dispersion √(k²+m²) is an assumption not derived from the axiom | It is the light cone Σxₙ² = 0 itself (§7.8) |
+| §7.4 | The internal clock oscillates | A phase pinned to space that does not oscillate. Exactly the Higgs field |
+| §7.6 | The phase velocity exceeds the speed of light | The spatial gauge is widened |
+| §8.1 | A naive phase advance is a problem. The distribution is not a physical proof | Shifting θ₀ is enough. Action and distribution close within the axiom. The rotation speed is unnecessary |
+| §8.5 | What if a, b are given phases | a, b are real. z = a + ib |
+| Chapter 10 | β ticked from outside. Several localisations needed | β is the observer's wave. The observer is a resident of the circle; no god's-eye view |
+| §11.4 | Odd alone is not localised | Odd alone is localised at two points |
+| §13.1 | The observer accelerated by a slider, R computed separately | Observation is the cross term. No acceleration without radiation. The apparatus too changes R |
+| Chapter 15 | Electron = complete lock; the argument that metastability needs 23/124 | No "why" needed. The problem is why it locks to that window |
+| Chapters 15–16 | The design of E2 was facile | The diagonal of the four-dimensional lattice is an integer. Why the background is four-dimensional |
+| §17.3 | h fixed at its SI value, "2000 times off" | In G = c = q₀ = 1, ħ = 9α⁻¹ is an output. Withdrawn |
+| §18.2 | Made the electron mass a separate test | If α is 137 it necessarily agrees. Only α is tested |
+| §19.2 | Did not notice the reason for the deviation | Observation is an average over many samples; transitions are observed too |
+| §19.4 | The gauge was fixed | The electron itself distorts the gauge |
+| §19.6 | A classical-probability average | The interference term of the expectation value is proportional to the amplitude |
+| §20.1 | At what radius does the electron live | There is no absolute scale. Everything is a ratio |
+| §20.1 | The selection rule in all 33 orbits | 29 (4 lack the symmetry) |
+| §21.1–21.2 | The gauge side needs a delay. R is an input and a dynamics is needed | The partner wave holds and returns. The pull-in of α is the mechanism that makes R 0.7. Dynamics is inherent as the absorbing shell |
+| §23.3 | Made the electron mass a separate test as a ratio to the Stoney mass | A circular argument. The electron mass from α, α from the structure of space |
+| §24.4 | The void goes as R³, not R² | Leading term R³, second term −6πR². Used in BH thermodynamics |
+| §24.7 | Could not find the earlier computation of the photon–baryon ratio | The fraction of integer ratios for resolution N, N = 10⁶⁰ |
+| §24.8 | Left the orders of magnitude of the cosmological constant unresolved | Already derived as Λ = 3/R² |
+| E2→E3 | Measured the rotation number as the mean per-step angle | Compute from the (integer) winding numbers |
+| Sphere-resident paper v1 | 0.972 in the table of §6; conflation of Adams' theorem with group composition | 0.988; distinguished |
+
+## Version history
+
+- **v0.1 — 2026-10-15**: Written following claude.ai's instruction v1, in a 25-chapter structure with the self-consistent lock α = 23/124 as the central claim. Rejected by the author (α is one stage of the development, not the subject; the development from residents of the circle to residents of the four-dimensional shell, and the most important result—that time, space, mass, charge, translational velocity and spin can be read out from the relations and interference of complex waves alone—had been dropped). Kept as a record in `unified_hypothesis_paper_ja_v0.1.md`.
+- **v0.2 — 2026-10-15**: Following instruction v3, rewritten in full with the full texts of the two dialogues as primary sources, in the exact order of the author's questions and corrections. The chapter order follows the correspondence table in §4 of `working_notes.md`.
+- **v1.0 — 2026-10-15**: Published version. By the author's decision the quotations were tidied (typographical errors, colloquial interjections and expressions of reproach removed; meaning unchanged), Figs. 1–10 embedded, and the figures of the sphere-resident experiments generated by re-running. Registered on Zenodo with Japanese and English md, tex and PDF and the seven interactive HTML files (Version DOI 10.5281/zenodo.23384929, Concept DOI 10.5281/zenodo.23384928). The claims of this version are not rewritten retroactively when later numerical experiments appear; differences are recorded from v1.1 onwards.
+- **v1.1 — 2026-10-15**: Corrected version. In the tex and PDF of v1.0, the absolute-value bars `|` written inside table cells (ln|R²|, |xₙ|² and so on) were interpreted as Markdown table delimiters: two rows of links were missing from the table of direct-download URLs of the HTML in Appendix A, and columns were shifted in some rows of other tables. The `|` in the md were escaped so that the columns align, and the URL table of Appendix A was replaced by a list with one entry per file (Zenodo and GitHub raw, one link per line, as link text). The claims, numbers, figures and quotations are unchanged from v1.0. Version DOI 10.5281/zenodo.23386447 (Concept DOI 10.5281/zenodo.23384928 unchanged). The v1.0 files are kept unchanged as the record of Version DOI 10.5281/zenodo.23384929.
+
+## Record of AI involvement
+
+The primary sources of this paper are two dialogues between the author and Claude (claude.ai). Claude's errors in the dialogues and the author's corrections are kept in the text as part of the derivation. The writing was done by Claude Code; the structure follows the order of the author's eleven stages and of the dialogues, and Claude Code did not create an order by its own inference. The re-running and checking of the numerical experiments E0–E5 were done by Claude Code. Every statement in the text rests on the primary sources and the texts of the earlier papers. The English version is a translation of the Japanese v1.0 by Claude Code, with the v1.1 corrections applied in both languages.
