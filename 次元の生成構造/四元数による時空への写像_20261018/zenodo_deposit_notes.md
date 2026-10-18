@@ -24,3 +24,12 @@
 4. bucket へ PUT（済、15 ファイル、サーバー側 MD5 は手元と一致）：md・tex・pdf 各 2、build_tex.py、自己引用・外部引用の対応表、SHA256SUMS.txt、figures_tables_v1.zip（`図表/` を zip にしたもの。リポジトリには置かず Zenodo のみ）、HTML 4 本（`../四元数を基本量とする思考実験_20261018/`）。最初の試行は Python の urllib が Zenodo への IPv6 接続の確立待ちで止まり、1 本目のあと進まなかった。curl -4 に切り替えて残り 14 本を送った
 5. publish（済、2026-10-18、HTTP 202、state done・submitted True。無認証 GET：doi 10.5281/zenodo.23451495、conceptdoi 10.5281/zenodo.23451494、version v1.0、publication_date 2026-10-18、files 15、status published。PDF 日英と HTML の download URL は 200）
 6. Zenn 記事 `articles/quaternion-spacetime-map.md`、RELEASE_NOTES.md、PAPERS_ja/en.md の 52 番・docs/index.html・docs/papers.json・docs/p/23451495.html の追記、コミット・プッシュ（同日）
+
+## v1.1（2026-10-18）：英語版の図を英語のラベルに
+
+- 経緯：v1.0 の英語版の PDF は、日本語のラベルの図 6 枚をそのまま使っていた（英訳のとき図を作り直さなかった手落ち）。木原指示「すぐに英語版の図を作って、もう一度、論文V1.1にしてアップロードしなさい」
+- 図表：`make_figures.py` に引数 `en` を加え（46 個の日本語の文字列を L(日本語, 英語) で切り替え、計算と描画は同じ）、`figures/fig*_en.png/pdf` 6 枚を追加。図 2 の小見出し・図 3 の説明・図 5 の小見出しの重なりと言い回しを直した。`run_all.sh` が日英の両方を作る。確認 8 項目すべて合格、図表の SHA256SUMS 31 ファイル
+- 原稿：英語版 md の図のリンクを `*_en.png` に差し替え、日英のヘッダーを v1.1・Version DOI 10.5281/zenodo.23452319 に、版管理に v1.1 の行、付録 A に英語の図の作り方を追記。build_tex.py の DOI も 23452319 に
+- tex/PDF：日本語 23 頁・英語 22 頁、LaTeX エラー 0・欠字 0。英語版の tex が `figs/fig*_en.png` を読み込むことと、PDF の図が英語であることを確認
+- Zenodo：newversion（deposit 23452319、Version DOI 10.5281/zenodo.23452319、Concept 23451494）。v1.0 から引き継いだファイルを消し、15 ファイルを curl -4 で PUT（MD5 一致）。図表一式は figures_tables_v1.1.zip。メタデータは version v1.1、説明に v1.1 の段落を追加（HTTP 200）。publish HTTP 202、無認証 GET で version v1.1・files 15・published、PDF と zip の download は 200、Concept DOI は v1.1 を指す
+- リポジトリ：PAPERS_ja/en.md の 52 番、docs/papers.json・docs/index.html・docs/p/23451495.html の DOI・版・PDF のリンクを v1.1 に（ページのファイル名は 23451495 のまま）

@@ -10,11 +10,11 @@ def prep(name, title, subtitle, author, date, out):
 prep("quaternion_spacetime_map_ja_v1.md",
      "複素数の集合から時空 (1＋3) への写像",
      "― 四元数による読み出しと部分投射 ―",
-     "木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020", "2026年10月18日　Version DOI 10.5281/zenodo.23451495", "ja.md")
+     "木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020", "2026年10月18日　Version DOI 10.5281/zenodo.23452319", "ja.md")
 prep("quaternion_spacetime_map_en_v1.md",
      "A Map from a Set of Complex Numbers to Spacetime (1+3)",
      "― Readout by Quaternions and Partial Projection ―",
-     "Noriaki Kihara (WF System Co., Ltd.)  ORCID 0009-0004-6753-4020", "October 18, 2026  Version DOI 10.5281/zenodo.23451495", "en.md")
+     "Noriaki Kihara (WF System Co., Ltd.)  ORCID 0009-0004-6753-4020", "October 18, 2026  Version DOI 10.5281/zenodo.23452319", "en.md")
 common = ["-s", "-f", "markdown", "--top-level-division=section", "-V", "papersize=a4", "-V", "geometry:margin=25mm",
           "-V", "mainfont=DejaVu Serif", "-V", "sansfont=DejaVu Sans", "-V", "monofont=DejaVu Sans Mono", "-V", "colorlinks=true",
           "-V", "header-includes=\\usepackage{xurl}"]

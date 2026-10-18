@@ -3,9 +3,9 @@
 
 **Author:** Noriaki Kihara  
 **ORCID:** 0009-0004-6753-4020  
-**Version DOI:** 10.5281/zenodo.23451495  
+**Version DOI:** 10.5281/zenodo.23452319  
 **Concept DOI:** 10.5281/zenodo.23451494  
-**Version:** v1.0  
+**Version:** v1.1  
 **Date:** 2026-10-18
 
 ---
@@ -38,7 +38,7 @@ In the course of the study, it turned out that two complex numbers can be used t
 
 is possible (Figure 1). All figures in the text are static; interactive figures (HTML), in which the quaternion circle, the central projection and the light cone can be rotated, are given in Appendix C.
 
-![Figure 1. The chain of maps. The step that pairs 2N complex numbers into N quaternions is a full projection; the step that reads the quaternions by central projection is a partial projection.](図表/figures/fig1_mapping_chain.png)
+![Figure 1. The chain of maps. The step that pairs 2N complex numbers into N quaternions is a full projection; the step that reads the quaternions by central projection is a partial projection.](図表/figures/fig1_mapping_chain_en.png)
 
 This paper builds the map from the axioms and the closure definition of the previous catalogue [S3] alone. The only new element is a way of reading: "pair two complex numbers and read them as one quaternion". No background space, metric, derivative or gauge field is placed. The names (time t, space xyz) are not attached to the quaternion components from the start; they are names attached afterwards to properties of the readout (§10).
 
@@ -164,7 +164,7 @@ Here n = n₁i + n₂j + n₃k is just a three-dimensional unit vector with n₁
 
 The quaternions of size 1 form the three-dimensional sphere S³, which we call the quaternion circle in this paper. Fixing θ fixes the real part at cos θ, and the vector part n sin θ moves over a sphere S² of radius sin θ as n changes direction. The quaternion circle is this S² stacked over the values of the real part: θ = 0 is the north pole (q = 1), θ = π/2 the equator (real part 0, the largest S² of radius 1), and θ = π the south pole (q = −1) (Figure 2). On the complex circle, fixing θ gives the two points ±sin θ for the imaginary part; on the quaternion circle those two points spread over a whole S².
 
-![Figure 2. Cutting the quaternion circle S³ at real part q₀ = cos θ gives a sphere S² of radius sin θ in (q₁, q₂, q₃) (top). The bottom row shows the position of the cut on the meridian.](図表/figures/fig2_s3_latitude_slices.png)
+![Figure 2. Cutting the quaternion circle S³ at real part q₀ = cos θ gives a sphere S² of radius sin θ in (q₁, q₂, q₃) (top). The bottom row shows the position of the cut on the meridian.](図表/figures/fig2_s3_latitude_slices_en.png)
 
 Like the unit circle S¹, S³ is a group closed under multiplication (the unit quaternions, SU(2)). S¹ and S³ are the only spheres that are groups [S3 §3.4]. On S³, however, the result depends on the order of multiplication, so the three angles cannot simply be added.
 
@@ -216,7 +216,7 @@ A quaternion with positive real part can be written q = q₀ (1 + v/q₀). Here 
 
 A point at distance tan θ from the north pole on the hyperplane maps to the point at angle θ on the sphere (Figure 3). The polar form of a quaternion is the same thing as the central projection (gnomonic projection) from the tangent hyperplane at the north pole.
 
-![Figure 3. Central projection onto the tangent plane at the north pole. Left: in the three dimensions q₃ = 0, the latitude circle at θ = 40° (blue) maps to a circle of radius tan θ on the tangent plane q₀ = 1 (orange). Right: in the cross-section, a point at angle θ maps to tan θ on the tangent line, and the point at θ = 120° passes through the opposite side of the origin and maps to the same point as −q.](図表/figures/fig3_gnomonic_projection.png)
+![Figure 3. Central projection onto the tangent plane at the north pole. Left: in the three dimensions q₃ = 0, the latitude circle at θ = 40° (blue) maps to a circle of radius tan θ on the tangent plane q₀ = 1 (orange). Right: in the cross-section, a point at angle θ maps to tan θ on the tangent line, and the point at θ = 120° passes through the opposite side of the origin and maps to the same point as −q.](図表/figures/fig3_gnomonic_projection_en.png)
 
 From this correspondence the following can be read directly.
 
@@ -245,7 +245,7 @@ so the real part of the true square is q₀² − |v|² = cos 2θ (Figure 4).
 
 The quaternion circle meets the light cone at θ = 45° (q₀ = ±1/√2). The light cone meets the tangent hyperplane q₀ = 1 in the sphere |u| = 1; in the image of the central projection, points inside the cone map to |u| < 1 and points outside to |u| > 1.
 
-![Figure 4. The light cone and the true square. For q = cos θ + n sin θ, the real part of the true square q² = cos 2θ + n sin 2θ is q₀² − |v|² = cos 2θ. At θ = 45°, q lies on the cone and q² comes to real part 0. The green circles are where the quaternion circle meets the cone.](図表/figures/fig4_light_cone_true_square.png)
+![Figure 4. The light cone and the true square. For q = cos θ + n sin θ, the real part of the true square q² = cos 2θ + n sin 2θ is q₀² − |v|² = cos 2θ. At θ = 45°, q lies on the cone and q² comes to real part 0. The green circles are where the quaternion circle meets the cone.](図表/figures/fig4_light_cone_true_square_en.png)
 
 The origin of the light cone was treated in the twelfth thought experiment [S19], and the relation between the sum of true squares and the light cone in the integrated-hypothesis paper [S18]. That a zero-sum condition gives the (+, +, +, +, −) light cone [S20], and that the basic representation of zero closure imposes a light cone in four dimensions [S6], have also been published. This paper shows that it is already contained within a single quaternion, as the scalar part of its true square.
 
@@ -283,7 +283,7 @@ For complex numbers the two coincided, because Σa² = Σb² and Σab = 0 are ex
 
 The 16-cell {±1, ±i, ±j, ±k} (N = 8) is an example. These eight points themselves form a group closed under multiplication (the quaternion group Q₈), of the same form as the complex cross being the rotation group Z₄: it is the four-dimensional version of the cross. Σq = 0, and the second moment is 2I, satisfying the thirteen isotropic conditions, but Σq₀² = 2, Σ|v|² = 6 and Σq² = −4 (Figure 5). This value does not change under any four-dimensional rotation.
 
-![Figure 5. The 16-cell {±1, ±i, ±j, ±k}. Left: the imaginary parts of the vertices and the 24 edges (great-circle arcs). Centre: positions relative to the light cone; ±1 are inside and ±i, ±j, ±k outside. Right: Σq₀² : Σ|v|² = 1 : 3, so Σq² = −4.](図表/figures/fig5_16cell_isotropic_vs_true_square.png)
+![Figure 5. The 16-cell {±1, ±i, ±j, ±k}. Left: the imaginary parts of the vertices and the 24 edges (great-circle arcs). Centre: positions relative to the light cone; ±1 are inside and ±i, ±j, ±k outside. Right: Σq₀² : Σ|v|² = 1 : 3, so Σq² = −4.](図表/figures/fig5_16cell_isotropic_vs_true_square_en.png)
 
 ### 7.3 The symmetry preserving the closure
 
@@ -328,7 +328,7 @@ The case of one complex plane (n = ±i, N = 4) is the complex cross rotated by 4
 
 In the icosahedral case, the 24 q map under central projection to 12 points u = n, all lying on the image |u| = 1 of the light cone and forming the vertices of an icosahedron (Figure 6, left). Shifting the overall latitude θ from 45° to q = ±(cos θ + n sin θ), the sum over the 24 becomes Σq² = 24 cos 2θ, which vanishes only at θ = 45° and 135° (Figure 6, right).
 
-![Figure 6. The most symmetric form q = ±e^(π n/4) (n the 12 icosahedral directions, N = 24). Left: the image u = n in the tangent hyperplane, all on |u| = 1, with edges mapped to straight lines. Right: the real part of Σq² against the overall latitude θ, equal to 24 cos 2θ.](図表/figures/fig6_most_symmetric_icosahedral.png)
+![Figure 6. The most symmetric form q = ±e^(π n/4) (n the 12 icosahedral directions, N = 24). Left: the image u = n in the tangent hyperplane, all on |u| = 1, with edges mapped to straight lines. Right: the real part of Σq² against the overall latitude θ, equal to 24 cos 2θ.](図表/figures/fig6_most_symmetric_icosahedral_en.png)
 
 ### 8.3 Difference from complex numbers, and a less symmetric solution
 
@@ -531,7 +531,7 @@ Three tasks remain: the (1+3) map of localization by equal-amplitude harmonics, 
 
 ## Appendix A: Reproducing the figures and tables
 
-Figures 1–6 and Tables 1–5 were made by `make_figures.py` and `verify_tables.py` in `図表/` (the figures folder, in the same folder as this paper). They can be regenerated with `bash 図表/run_all.sh`. All points, curves and numbers are computed directly from the quaternion formulas, with no approximation or fitting. Where random numbers are used, the seed is fixed at 20261018. The pass/fail summary is in `図表/results/checks.txt` (all eight checks passed) and the full tables are in `図表/results/tables.md`.
+Figures 1–6 and Tables 1–5 were made by `make_figures.py` (the English-labelled figures used in this version by `make_figures.py en`) and `verify_tables.py` in `図表/` (the figures folder, in the same folder as this paper). They can be regenerated with `bash 図表/run_all.sh`. All points, curves and numbers are computed directly from the quaternion formulas, with no approximation or fitting. Where random numbers are used, the seed is fixed at 20261018. The pass/fail summary is in `図表/results/checks.txt` (all eight checks passed) and the full tables are in `図表/results/tables.md`.
 
 ## Appendix B: Citation tables
 
@@ -555,3 +555,4 @@ Opened in a browser after download, they can be operated with sliders and draggi
 ## Version history
 
 - v1.0 (2026-10-18): first version. Version DOI 10.5281/zenodo.23451495, Concept DOI 10.5281/zenodo.23451494. The Japanese version is the original; this English version is a translation.
+- v1.1 (2026-10-18): the six figures of the English version were redrawn with English labels (in v1.0 the English version still used the figures with Japanese labels). An English output (argument en) was added to the figure script, and the English figures were added to the figures bundle. Claims, numbers and the Japanese figures are unchanged. Version DOI 10.5281/zenodo.23452319.

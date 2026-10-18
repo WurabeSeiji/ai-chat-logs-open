@@ -3,6 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 python3 make_figures.py
+python3 make_figures.py en
 python3 verify_tables.py
 python3 - <<'PY'
 import hashlib, pathlib
