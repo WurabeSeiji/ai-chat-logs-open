@@ -1,0 +1,1426 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{xurl}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={複素数の集合から時空 (1＋3) への写像},
+  pdfauthor={木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{複素数の集合から時空 (1＋3) への写像}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{― 四元数による読み出しと部分投射 ―}
+\author{木原 範昭（WF System Co., Ltd.）　ORCID 0009-0004-6753-4020}
+\date{2026年10月18日　Version DOI 10.5281/zenodo.23451495}
+
+\ltjsetparameter{jacharrange={-2,-3}}
+\begin{document}
+\maketitle
+
+\textbf{著者:} 木原範昭 (Noriaki Kihara)\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Version DOI:} 10.5281/zenodo.23451495\\
+\textbf{Concept DOI:} 10.5281/zenodo.23451494\\
+\textbf{版:} v1.0\\
+\textbf{日付:} 2026-10-18
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+筆者の研究計画は、背景の時空・物差し・粒子の種類を外から置かずに、複素数の集合
+\{zₙ\}
+の関係だけから時空と粒子を読み出し、一般相対性理論と標準理論が精密に成り立っていることに接続することを目標にしている。前回の論文「状態空間から時空を読み出すための対称性とマジックナンバーの目録」{[}S3{]}
+を整理する中で、残った大きな課題は、\{zₙ\} を時空 (1＋3)(t, xyz)
+に写像する方法と、観測できない時空にも拡張した (1＋3)(1＋3)(t, xyz)(R,
+Q₁Q₂Q₃) に写像する方法であった。
+
+本稿は前者に答える。二つの複素数から四元数 q ＝ z₁ ＋ z₂ j ∈ ℍ
+が作れる。四元数は、足し算と大きさだけを見ればただの 4
+次元ベクトルだが、掛け算で読むと 1＋3 に分かれる対称性をもつ。その結果、
+
+\{zₙ\}（n ＝ 1, \ldots, 2N）↦ \{qₙ\}（n ＝ 1, \ldots, N）↦ \{(t,
+xyz)ₙ\}（n ＝ 1, \ldots, N）
+
+という写像が、無名性・自己無撞着・区別可能性の公理と、線形和のゼロ閉塞
+Σq ＝ 0 および本当の二乗のゼロ閉塞 Σq² ＝ 0
+だけから、外の構造を持ち込まずに組み立てられることを示す。
+
+主な結果は次のとおりである。(1) 四元数の極形式 q ＝
+\textbar q\textbar(cos θ ＋ n sin θ)
+は、そのまま北極に接する超平面への中心投影（グノモン射影）u ＝ v/q₀ ＝ n
+tan θ になっている。(2) 共役をとらない本当の二乗のスカラー部 q₀² −
+\textbar v\textbar² が (1, 3) の符号をもち、θ ＝ 45° が光円錐になる。(3)
+4 成分を対等に扱う等方的な閉塞（13 本の条件）と本当の二乗の閉塞 Σq² ＝ 0
+は両立しない。正十六胞体 \{±1, ±i, ±j, ±k\} は前者を満たすが Σq² ＝ −4
+である。(4) Σq ＝ 0 と Σq² ＝ 0 を満たす最も対称な配置は q ＝ ±e\^{}(π
+n/4) ＝ ±(1 ＋ n)/√2 で、n は正多面体の頂点の方向である。一つ一つの q
+が光円錐に乗り、q² ＝ n、q⁸ ＝ 1 となる。正二十面体のとき N ＝ 24
+で最も対称性が高い。(5) N 個の四元数で空間として開ける方向の数は min(3,
+N−2) で、3 方向で飽和する。3 方向が等方的に開ける最小の数は N ＝ 5
+である。(6)
+写像の連鎖は、複素数から四元数への段が全投射、中心投影の段が部分投射で、全体として部分投射である。大きさ
+\textbar q\textbar、符号 ±、赤道、全体の回転は読み出しから逃げる。
+
+これらは図表のフォルダの計算で数値として確かめた（付録
+A）。最後に、次の課題として、等振幅の倍音による局在の (1＋3)
+への写像、四元数 2 つによる八元数と (1＋3)(1＋3)
+への写像、高い対称性の四元数の全員対全員の自己相互作用によるインフレーション的展開の三つを挙げる。
+
+\textbf{キーワード:}
+四元数、状態空間、時空の読み出し、中心投影、グノモン射影、光円錐、ゼロ閉塞、本当の二乗、無名性、自己無撞着、部分投射、正多面体、八元数
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 動機}\label{ux52d5ux6a5f}
+
+前回の論文（対称性とマジックナンバーの目録）{[}S3{]}
+を整理していくなかで、大きな課題は、複素数の集合 \{zₙ\} を時空 (1＋3)(t,
+xyz) に写像する方法、さらには、観測できない時空にも拡張した
+(1＋3)(1＋3)(t, xyz)(R, Q₁Q₂Q₃) に写像する方法であった。
+
+検討の中で、二つの複素数を使うと、四元数 q
+という量が作れることが分かった。少し検討してみると、この四元数 q ∈ ℍ
+は、掛け算で読むと 1＋3
+に分かれる対称性をもっていることが分かり、結果として
+
+\{zₙ\}（n ＝ 1, \ldots, 2N）↦ \{qₙ\}（n ＝ 1, \ldots, N）↦ \{(t,
+xyz)ₙ\}（n ＝ 1, \ldots, N）
+
+という写像が可能であることが分かった（図
+1）。本文の図はすべて静的な図で、四元円・中心投影・光円錐を回して見られる対話型の図（HTML）を付録
+C に置いた。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={写像の連鎖。複素数 2N 個を二つずつ組にして四元数 N 個を作る段は全投射、四元数を中心投影で読む段は部分投射である。}]{figs/fig1_mapping_chain.png}}
+\caption{写像の連鎖。複素数 2N 個を二つずつ組にして四元数 N
+個を作る段は全投射、四元数を中心投影で読む段は部分投射である。}
+\end{figure}
+
+本稿は、この写像を、前回の目録 {[}S3{]}
+の公理と閉塞の定義だけから組み立てる。新しく置くのは「二つの複素数を組にして四元数として読む」という読み方だけで、背景の空間・計量・微分・ゲージ場は置かない。名前（時間
+t、空間
+xyz）は、四元数の成分に最初から付いているものではない。読み出しの性質に後から付ける名前である（§10）。
+
+本稿の構成は次のとおりである。§2
+で出発点（公理、閉塞、複素数の最も対称な配置）をまとめる。§3
+で二つの複素数から四元数を作る。§4 で四元数の幾何（極形式、四元円
+S³、左右の掛け算）を述べ、§5
+で極形式がそのまま中心投影になることを示す。§6 で光円錐、§7
+で閉塞の二つの形とその両立しなさ、§8 で最も対称な配置、§9 で N
+と空間の方向の数を扱う。§10 で写像の連鎖が部分投射であることを示し、§11
+で先行研究の中での位置、§12 で次の課題を述べる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2.
+出発点：公理、閉塞、複素数の最も対称な配置}\label{ux51faux767aux70b9ux516cux7406ux9589ux585eux8907ux7d20ux6570ux306eux6700ux3082ux5bfeux79f0ux306aux914dux7f6e}
+
+\subsubsection{2.1 公理と閉塞}\label{ux516cux7406ux3068ux9589ux585e}
+
+前回の目録 {[}S3{]} の公理と定義をそのまま使う。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+番号
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+A1 &
+\textbf{無名性}（第ゼロ公理）：要素に名札がなく、特別な原点・座標・距離・符号・型がない。読めるのはすべての要素の入れ替えで変わらない関係だけ
+{[}S1{]} \\
+A1′ &
+\textbf{区別可能性の公理}：読み出しは、読み出した値がどの層のものかを区別できない。二乗量
+z′ ＝ z² もただの複素数なので、z と z′ は区別できない {[}S3{]} \\
+A2 &
+\textbf{自己無撞着}（第一公理）：外に基準がないので、系は自分自身を基準にする
+{[}S2{]} \\
+Z1 & \textbf{線形和のゼロ閉塞} Σzₙ ＝ 0：唯一の閉塞の定義。二乗和の閉塞
+Σzₙ² ＝ Σz′ₙ ＝ 0 は、Z1 を z′ の層で読んだもの {[}S3{]} \\
+\end{longtable}
+}
+
+非自明な二乗の閉塞は実数の中では解をもたず、複素数を要求する
+{[}S4{]}。共役をとるノルム z z̄ と、共役をとらない本当の二乗 z²
+は別の量である {[}S5{]}。
+
+\subsubsection{2.2
+複素数の三つの式}\label{ux8907ux7d20ux6570ux306eux4e09ux3064ux306eux5f0f}
+
+z ＝ a ＋ bi と書くと、Σz ＝ 0 と Σz² ＝ 0 は次の三つの実数の式になる。
+
+\begin{itemize}
+\tightlist
+\item
+  Σaₙ ＝ Σbₙ ＝ 0
+\item
+  Σaₙ² ＝ Σbₙ²
+\item
+  Σaₙbₙ ＝ 0
+\end{itemize}
+
+頂点ごとの値を並べた二本の実ベクトル a, b で言えば、どちらも和が 0
+の空間（N−1
+次元）にあり、長さが同じで、直交している。つまり、点の集まりは重心が原点にあり、二つの方向に同じだけ広がり、二つの方向の相関がない。特別な原点も特別な向きもないことを二次まで表しており、どちらを実部、どちらを虚部と呼ぶかに意味が残らない。この同じ長さで直交する
+2 本という読みは、すでに {[}S6{]}
+がシュティーフェル多様体として出している。
+
+全体に掛ける複素数
+λ（大きさと位相の原点）は閉塞では決まらず、読めもしない。これを除くと、閉塞を満たす配置の形の空間は複素二次曲面
+Q\_\{N−3\}（複素 N−3 次元、実 2N−6 次元）で、向き付き 2
+平面のグラスマン多様体と同じものである {[}S7, S8, X12{]}。N ＝ 3
+では一点（正三角形）、N ＝ 4 では Q₁ \(\cong\) S² である。Σz² ＝ 0
+の解は等方ベクトルで、カルタンの単純スピノルの二乗として表されることが知られている
+{[}X11{]}。
+
+\subsubsection{2.3
+自分と自分以外：無名な読み方}\label{ux81eaux5206ux3068ux81eaux5206ux4ee5ux5916ux7121ux540dux306aux8aadux307fux65b9}
+
+要素に番号を付けて対ごとの関係の一覧を作る読み方は、頂点を輪の上に並べて番号を付ける仮定を含み、無名性に反する。本稿では、読めるのは
+N ≥ 3
+で「自分」と「自分以外」だけだと読む。「自分」は名札ではなく視点であり、どの要素も等しく自分になれる。「自分以外」は名札のない一塊で、Σz
+＝ 0 から自分以外の和はちょうど −z\_k に決まる。
+
+このとき、自分と他の二点は三角を作り、視野角が読める。視野角は差の比の偏角であり、全体に
+λ を掛けても変わらない無次元の数である。辺は向きのない複素数 e ＝ (zⱼ −
+zₖ)²
+で表せる。両端を入れ替えても同じ値になるからで、これは区別可能性の公理（z
+と −z は二乗の層で区別できない）と同じ仕組みである。辺の層の線形和は
+
+Σ（すべての辺）(zⱼ − zₖ)² ＝ N·Σzₙ² − (Σzₙ)² ＝ 0
+
+となり、頂点の層の閉塞から何も足さずに閉じる。どの辺も N−2
+個の三角に共有され、辺は互いに区別できない。
+
+相互作用の相手の範囲としては、「自分と自分以外」は全員対全員である。過去の論文が関係
+M ＝ N(N−1)/2
+本の完全リストの上で得た結果のうち、全員対全員の相互作用から出たものは、一覧を捨てても持ち込める。
+
+\subsubsection{2.4
+複素数の最も対称な配置：十字}\label{ux8907ux7d20ux6570ux306eux6700ux3082ux5bfeux79f0ux306aux914dux7f6eux5341ux5b57}
+
+三つの式を、和として釣り合うのではなく、対称操作で一項ずつ満たす場合を考える。−1
+を掛けると Σz ＝ 0 が、i を掛けると Σz² ＝ 0 が満たされる。点の集まりは
+\{1, i, −1, −i\} の回転 Z₄ で閉じ、N は 4
+の倍数、振幅はすべて同じ、位相の差は 90° に決まり、形は十字 \{±z, ±iz\}
+になる。十字は 2 次元の正軸体で、二乗すると ±i の対になる。N ＝ 8k で ±i
+の対が全体を覆うことは {[}S10{]} が示している。
+
+位相の原点（0 度の方向）は決まらない。閉塞の式は全体に e\^{}(iφ)
+を掛けても変わらないからである。読み出しの軸を置くと、十字の向き φ
+は系の側からは決まらず、一般の向きでは四本の腕すべてが cos φ と sin φ
+で一部だけ写る。読み出しは一般に部分投射になる {[}S3 §4.4{]}。
+
+\subsubsection{2.5
+状態の次元と、読める次元}\label{ux72b6ux614bux306eux6b21ux5143ux3068ux8aadux3081ux308bux6b21ux5143}
+
+形の空間の次元 2N−6 は N
+とともに際限なく増える。これは状態の自由度であって、空間の次元ではない。N
+個の粒子が 3 次元空間にあっても状態の自由度は 3N
+で増えるのと同じである。空間として読める次元は、対称性の側から上限がかかるはずである。上限を与える事実は、どれも数学として確立していて、有限の数で止まる。
+
+\begin{itemize}
+\tightlist
+\item
+  割り算のできる数の体系：結合法則つきは実数・複素数・四元数（1・2・4
+  次元）に限り {[}X6{]}、ノルムを保つ掛け算は 1・2・4・8 次元に限る
+  {[}X7{]}。この系列が 4 次元に収束することは {[}S11{]} が記録している。
+\item
+  正多面体・正多胞体：3 次元で 5 種類、4 次元で 6 種類、5 次元以上は 3
+  種類しかない {[}X15{]}。
+\item
+  格子と波：格子と両立する回転は 1・2・3・4・6
+  回に限られ、四回と六回が共存するのは 4 次元のフルヴィッツ格子である
+  {[}S15, X18{]}。波が尾を引かずに伝わるのは奇数次元である {[}X17, S3
+  §3.4, S21{]}。
+\end{itemize}
+
+実数や複素数を基本量にすると、二点の関係は角一つしかなく、関係が足りない。そこで基本量を四元数にとる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3.
+二つの複素数から四元数へ}\label{ux4e8cux3064ux306eux8907ux7d20ux6570ux304bux3089ux56dbux5143ux6570ux3078}
+
+\subsubsection{3.1 作り方}\label{ux4f5cux308aux65b9}
+
+二つの複素数 z₁, z₂ から、四元数
+
+q ＝ z₁ ＋ z₂ j ∈ ℍ
+
+が作れる（ケーリー＝ディクソン構成 {[}X2, X3{]}）。実数の成分で書くと q
+＝ q₀ ＋ q₁i ＋ q₂j ＋ q₃k で、i² ＝ j² ＝ k² ＝ ijk ＝ −1 である
+{[}X1{]}。複素数 2N 個（実数 4N 個）を二つずつ組にすると、四元数 N
+個（実数 4N 個）になる。逆にも戻せるので、この段は全投射である（§10）。
+
+どの複素数を組にするか、組の中でどちらを先にするかは、無名な実数 a, b
+に「実部」「虚部」と名前を付けるのと同じ種類の読み方の選択である。閉塞の条件を成分について対称に書けば、名前は条件にも読める量にも効かない。
+
+\subsubsection{3.2 本当の二乗}\label{ux672cux5f53ux306eux4e8cux4e57}
+
+q ＝ z₁ ＋ z₂ j の本当の二乗（共役をとらない二乗）は
+
+q² ＝ (z₁² − \textbar z₂\textbar²) ＋ 2 Re(z₁)·z₂ j
+
+である（数値で確かめた、表
+4）。前半の本当の二乗から後半のノルムを引き、後半には前半の実部が掛かる。スカラー部とベクトル部で書けば、q
+＝ s ＋ v（s ＝ q₀、v ＝ q₁i ＋ q₂j ＋ q₃k）に対して
+
+q² ＝ (s² − \textbar v\textbar²) ＋ 2s v
+
+である。
+
+\subsubsection{3.3 記法}\label{ux8a18ux6cd5}
+
+本稿の記法を次の表にまとめる（図表のフォルダの表 5 と同じ）。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+記号
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+意味
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+ℍ & 四元数全体 \\
+q ＝ q₀ ＋ q₁i ＋ q₂j ＋ q₃k & 四元数（qᵢ は実数） \\
+s（＝ q₀）, v & スカラー部（実部）とベクトル部（純虚部、3 成分） \\
+q̄ ＝ q₀ − v & 共役。ノルム \textbar q\textbar² ＝ q q̄ ＝ q₀² ＋
+\textbar v\textbar² \\
+q² ＝ (q₀² − \textbar v\textbar²) ＋ 2 q₀ v &
+本当の二乗（共役をとらない） \\
+n & 大きさ 1 の純虚四元数（n² ＝ −1） \\
+q ＝ \textbar q\textbar{} e\^{}(n θ) ＝ \textbar q\textbar(cos θ ＋ n
+sin θ) & 極形式。θ は北極（q ＝ 1）からの角 \\
+S³ & 大きさ 1 の四元数全体（四元円） \\
+u ＝ v/q₀ & 北極の接超平面 q₀ ＝ 1 の上の座標（中心投影の像） \\
+q ＝ z₁ ＋ z₂ j & 複素数 2 つによる表し方（ℍ \(\cong\) ℂ²） \\
+\end{longtable}
+}
+
+記法の表
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. 四元数の幾何}\label{ux56dbux5143ux6570ux306eux5e7eux4f55}
+
+\subsubsection{4.1 ただの 4
+次元ベクトルと、掛け算}\label{ux305fux3060ux306e-4-ux6b21ux5143ux30d9ux30afux30c8ux30ebux3068ux639bux3051ux7b97}
+
+足し算と大きさだけを見れば、四元数はただの 4
+次元ベクトル（ℝ⁴）である。Σq ＝ 0 は 4
+次元ベクトルの重心が原点にあるという条件にすぎず、ノルム
+\textbar q\textbar² はユークリッドの長さ q₀² ＋ q₁² ＋ q₂² ＋ q₃²
+である。点の集まりとしては 4 成分は完全に対称で、特別な方向はない。
+
+4 次元ベクトルと違うのは掛け算だけである。本当の二乗 q² のスカラー部は
+q₀² − \textbar v\textbar² で、ベクトルのままでは出てこない (1, 3)
+の形が現れる（§6）。左右からの掛け算は 4
+次元の回転全体（SO(4)）になり、両側から同じ単位を掛ける q ↦ u q u⁻¹
+は、スカラー部を動かさずにベクトル部を回す 3 次元の回転になる
+{[}X3{]}。四元数が 1 と 3 に分かれるのは、掛け算で読んだときである。
+
+\subsubsection{4.2
+極形式と四元円}\label{ux6975ux5f62ux5f0fux3068ux56dbux5143ux5186}
+
+複素数 z ＝ \textbar z\textbar{} e\^{}(iθ) と同じく、四元数は
+
+q ＝ \textbar q\textbar{} e\^{}(n θ) ＝ \textbar q\textbar(cos θ ＋ n
+sin θ)
+
+と書ける。n ＝ n₁i ＋ n₂j ＋ n₃k は、n₁² ＋ n₂² ＋ n₃² ＝ 1
+を満たすただの 3 次元の単位ベクトルである。ただし四元数として掛けると n²
+＝ −1 になり、虚数単位 i と同じ働きをする。四元数の中で二乗して −1
+になるものは、単位球面 S² の上のすべての n である。複素数では ±i
+の二つだけだった虚数単位が、四元数では球面いっぱいにある。
+
+大きさ 1 の四元数全体は 3 次元球面 S³
+である。これを本稿では四元円と呼ぶ。θ を一つ決めると実部は cos θ
+に決まり、ベクトル部 n sin θ は、n が向きを変えるたびに半径 sin θ の球面
+S² の上を動く。四元円は、実部の値ごとにこの S² を重ねたもので、θ ＝ 0
+が北極（q ＝ 1）、θ ＝ π/2 が赤道（実部 0、半径 1 の最大の S²）、θ ＝ π
+が南極（q ＝ −1）である（図 2）。複素円では θ を決めると虚部は ±sin θ
+の二点だったが、四元円ではその二点が S² 全体に広がる。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={四元円 S³ を実部 q₀ ＝ cos θ で切ると、(q₁, q₂, q₃) の中の半径 sin θ の球面 S² になる（上）。下は子午線の上での切断の位置。}]{figs/fig2_s3_latitude_slices.png}}
+\caption{四元円 S³ を実部 q₀ ＝ cos θ で切ると、(q₁, q₂, q₃) の中の半径
+sin θ の球面 S² になる（上）。下は子午線の上での切断の位置。}
+\end{figure}
+
+単位円 S¹ と同じく、S³
+も掛け算で閉じた群（単位四元数、SU(2)）になる。球面で群になるのは S¹ と
+S³ だけである {[}S3 §3.4{]}。ただし、S³
+では掛ける順序で結果が変わるので、3
+つの角を単純に足し合わせることはできない。
+
+指数部まで書くと、
+
+q ＝ e\^{}(ln\textbar q\textbar{} ＋ θ n)
+
+で、指数部 ln\textbar q\textbar{} ＋ θn
+も四元数である。スカラー部が振幅の対数、ベクトル部が長さ θ・方向 n の 3
+次元ベクトルで、ここでも 1＋3 の形が保たれる。複素数と違い、e\^{}(E₁)
+e\^{}(E₂) ＝ e\^{}(E₁＋E₂)
+はベクトル部が平行なときにしか成り立たない。スカラー部どうしはいつでも足し算で合成される。
+
+S³ の上の座標の取り方は一通りではない。指数形（回転の角 θ と軸 n の 2
+つの角）のほか、ホップ座標 q ＝ \textbar q\textbar(cos η·e\^{}(iξ₁) ＋
+sin η·e\^{}(iξ₂) j) では、二つの複素円の位相 ξ₁, ξ₂ と配分の角 η
+になる。どれも同じ S³ の点の別の座標である。
+
+\subsubsection{4.3
+左右の掛け算}\label{ux5de6ux53f3ux306eux639bux3051ux7b97}
+
+n を左から掛ける操作と右から掛ける操作は、成分の順を (q₀, q₁, q₂, q₃)
+として、それぞれ次の 4×4 の実行列になる。
+
+\begin{verbatim}
+L(n) = [  0   -n1  -n2  -n3 ]        R(n) = [  0   -n1  -n2  -n3 ]
+       [  n1   0   -n3   n2 ]               [  n1   0    n3  -n2 ]
+       [  n2   n3   0   -n1 ]               [  n2  -n3   0    n1 ]
+       [  n3  -n2   n1   0  ]               [  n3   n2  -n1   0  ]
+\end{verbatim}
+
+どちらも二乗すると −I になり、複素数の i の行列 {[}{[}0, −1{]}, {[}1,
+0{]}{]} と同じ働きをする回転の生成子である。左右の違いは右下 3×3
+の符号だけで、L(n) では n との外積、R(n)
+ではその符号を反転したものになる。1 行目と 1
+列目（スカラー部とベクトル部をつなぐところ）は左右で同じである。L(n) と
+R(n) は互いに可換である。
+
+4 次元を \{1, n\} の面とそれに直交する面に分けると、左から e\^{}(nθ)
+を掛けても右から掛けても \{1, n\} の面は同じ角 θ
+だけ回り、直交する面は左からだと ＋θ、右からだと −θ
+回る。両側から掛けると、
+
+\begin{itemize}
+\tightlist
+\item
+  e\^{}(nθ) q e\^{}(−nθ)：\{1, n\} の面は動かず、直交する面が 2θ
+  回る。スカラー部を動かさない 3 次元の回転である（角が 2
+  倍になるのは二重被覆による）。
+\item
+  e\^{}(nθ) q e\^{}(nθ)：\{1, n\} の面が 2θ 回り、直交する面は動かない。
+\end{itemize}
+
+実部が他と違う理由は、行列の形から読める。実部 1
+は、すべての四元数と可換な唯一の方向で、両側から同じ単位を掛けても動かない。残りの
+3 成分は、互いに区別のつかないまま、同じ球面の上で回る。
+
+\subsubsection{4.4
+三角の視野角}\label{ux4e09ux89d2ux306eux8996ux91ceux89d2}
+
+§2.3 の視野角は、四元数でも表せる。頂点 k から二点 j, l
+を見るとき、二辺を d₁ ＝ qⱼ − qₖ、d₂ ＝ qₗ − qₖ とすると、
+
+d̄₁ d₂ ＝ \textbar d₁\textbar\textbar d₂\textbar(cos θ ＋ n\_R sin θ)、
+d₁ d̄₂ ＝ \textbar d₁\textbar\textbar d₂\textbar(cos θ ＋ n\_L sin θ)
+
+と書ける。スカラー部はどちらも同じ cos θ で、θ が視野角である。三点は 4
+次元の中でも一枚の平面に乗るので、θ
+はその平面の中の普通の角で、三つの角の和は π になる。全体を s·a q b̄（a,
+b は単位四元数、s は実数）と写しても cos θ は変わらない。ベクトル部 n\_R
+と n\_L は、それぞれ右の b と左の a だけで回る 3
+次元の単位方向で、三角が乗る平面はこの二つの方向の組で決まる。向き付き平面全体の空間は
+S² × S² で、§2.2 の Q₂ \(\cong\) S² × S² と同じ形である {[}X12{]}。
+
+この角は共役 d̄ を使ったユークリッドの角である。共役を使わずに d₁d₂
+のスカラー部を使うと (1, 3)
+の内積になり、時間的な組では双曲線の角になる。どちらの角が自然かは、§7
+の閉塞の二つの形のどちらに立つかで決まる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+中心投影：極形式はそのままグノモン射影である}\label{ux4e2dux5fc3ux6295ux5f71ux6975ux5f62ux5f0fux306fux305dux306eux307eux307eux30b0ux30ceux30e2ux30f3ux5c04ux5f71ux3067ux3042ux308b}
+
+実部が正の四元数は q ＝ q₀ (1 ＋ v/q₀) と書ける。1 ＋ v/q₀ は北極（q ＝
+1）に接する 3 次元の超平面 q₀ ＝ 1 の上の点で、その座標は比 u ＝ v/q₀
+である。これを原点から球面に射影した点 q/\textbar q\textbar{}
+が四元円の上の点 cos θ ＋ n sin θ で、
+
+u ＝ v/q₀ ＝ n tan θ
+
+である。超平面の上で北極から距離 tan θ の点が、球面の上で角 θ
+の点に写る（図
+3）。四元数の極形式は、北極の接超平面からの中心投影（グノモン射影）と同じものである。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={北極の接平面への中心投影。左は q₃ ＝ 0 の 3 次元で、θ ＝ 40° の緯線（青）が接平面 q₀ ＝ 1 の上の半径 tan θ の円（橙）に写る。右は断面で、角 θ の点は接線の上の tan θ に写り、θ ＝ 120° の点は原点の反対側を通って −q と同じ点に写る。}]{figs/fig3_gnomonic_projection.png}}
+\caption{北極の接平面への中心投影。左は q₃ ＝ 0 の 3 次元で、θ ＝ 40°
+の緯線（青）が接平面 q₀ ＝ 1 の上の半径 tan θ
+の円（橙）に写る。右は断面で、角 θ の点は接線の上の tan θ に写り、θ ＝
+120° の点は原点の反対側を通って −q と同じ点に写る。}
+\end{figure}
+
+この対応から、次のことがそのまま読める。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{スケール不変性と同じ構造。} 中心投影は q と λq（λ
+  は正の実数）を同じ点に写す。閉塞の式が物差しを決めないこと {[}S3
+  §3.3{]} と同じ構造で、読める量は比 v/q₀ であり、無次元である。
+\item
+  \textbf{赤道は無限遠へ行く。} 実部 0 の赤道（θ ＝
+  π/2）は超平面の無限遠に写る。超平面 1 枚で写せるのは北半球だけである。
+\item
+  \textbf{±q は同じ点に写る。} q と −q
+  は原点を通る同じ直線の上にあるので同じ点に写り、超平面が表すのは S³ で
+  ±q を同一視したもの（RP³）である。単位四元数による 3 次元の回転で q と
+  −q が同じ回転を与える二重被覆と同じ形である。
+\item
+  \textbf{大円は直線に写る。}
+  グノモン射影は大円（球面の上の測地線）を直線に写す
+  {[}X10{]}。四元円の上で大円に沿う一様な回転（e\^{}(nθ)
+  を掛け続けること）は、超平面の上ではまっすぐな線に見える。ただし θ
+  が一様に進んでも、超平面の上の距離は tan θ で進むので、一様ではない。
+\end{enumerate}
+
+中心投影は筆者の研究計画の出発点で {[}S13{]}、S⁴ からのグノモン投影は
+{[}S14{]} で、中心投影の赤道の発散と南半球の不可視は {[}S16{]}
+で扱った。時間の方向を選ぶことが四元数の中で複素構造を選ぶことであり、極形式が時計と位相を同時に与えることは
+{[}S12{]}
+が示している。本稿の結果は、四元数の極形式と中心投影をつなぐ位置にある。二つは数学として同じものなので、どちらで読んでも同じ写像になる。中心投影による読み出しが理論物理とつながることはこれまでの論文で示してきた
+{[}S13, S14{]}。四元数で読んでも、同じつながりをそのまま受け継ぐ。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. 光円錐}\label{ux5149ux5186ux9310}
+
+本当の二乗のスカラー部 q₀² − \textbar v\textbar² は、スカラー 1
+成分とベクトル 3 成分の二乗を逆符号で並べたもので、(1, 3)
+の符号、つまりミンコフスキーの形をもつ。複素数では a² − b² で (1, 1)
+だったものが、四元数では (1, 3)
+になる。計量を外から置いたのではなく、本当の二乗から出てくる。
+
+大きさ 1 の q ＝ cos θ ＋ n sin θ では
+
+q² ＝ cos 2θ ＋ n sin 2θ
+
+なので、本当の二乗の実部は q₀² − \textbar v\textbar² ＝ cos 2θ
+である（図 4）。
+
+\begin{itemize}
+\tightlist
+\item
+  θ ＜ 45°：cos 2θ ＞ 0 で、q は光円錐 q₀ ＝ ±\textbar v\textbar{}
+  の内側にある。
+\item
+  θ ＝ 45°：q は光円錐の上にあり、q² は実部 0（赤道）に来る。
+\item
+  θ ＞ 45°：cos 2θ ＜ 0 で、q は光円錐の外側にある。
+\end{itemize}
+
+四元円と光円錐は θ ＝ 45°（q₀ ＝ ±1/√2）で交わる。光円錐と接超平面 q₀ ＝
+1 の交わりは \textbar u\textbar{} ＝ 1
+の球面で、中心投影の像では、円錐の内側の点が \textbar u\textbar{} ＜ 1
+に、外側の点が \textbar u\textbar{} ＞ 1 に写る。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={光円錐と本当の二乗。q ＝ cos θ ＋ n sin θ の本当の二乗 q² ＝ cos 2θ ＋ n sin 2θ の実部 q₀² − \textbar v\textbar² ＝ cos 2θ。θ ＝ 45° で q は円錐に乗り、q² は実部 0 に来る。緑の円は四元円と円錐の交わり。}]{figs/fig4_light_cone_true_square.png}}
+\caption{光円錐と本当の二乗。q ＝ cos θ ＋ n sin θ の本当の二乗 q² ＝
+cos 2θ ＋ n sin 2θ の実部 q₀² − \textbar v\textbar² ＝ cos 2θ。θ ＝ 45°
+で q は円錐に乗り、q² は実部 0 に来る。緑の円は四元円と円錐の交わり。}
+\end{figure}
+
+光円錐の起源は第十二思考実験 {[}S19{]}
+で、本当の二乗の和と光円錐の関係は統合仮説論文 {[}S18{]}
+で扱った。総和ゼロの条件から (＋, ＋, ＋, ＋, −) の光円錐が出ること
+{[}S20{]}、ゼロ閉塞の基本表現が 4 次元で光円錐を課すこと {[}S6{]}
+も既発表である。本稿は、それが四元数の本当の二乗のスカラー部として、一つの四元数の中に最初から入っていることを示す。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7.
+閉塞の二つの形}\label{ux9589ux585eux306eux4e8cux3064ux306eux5f62}
+
+\subsubsection{7.1
+本当の二乗の閉塞と、等方的な閉塞}\label{ux672cux5f53ux306eux4e8cux4e57ux306eux9589ux585eux3068ux7b49ux65b9ux7684ux306aux9589ux585e}
+
+N 個の四元数 \{qₙ\} に閉塞を課す。成分ごとに頂点の値を並べた 4
+本の実ベクトル q₀, q₁, q₂, q₃ で書くと、二つの形が考えられる（表 1）。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{本当の二乗の閉塞}（Σq ＝ 0 かつ Σq² ＝ 0）：線形和の 4
+  本と、q² ＝ (q₀² − \textbar v\textbar²) ＋ 2q₀v の和から出る 4 本、計
+  8 本である。
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Σq₀ ＝ Σq₁ ＝ Σq₂ ＝ Σq₃ ＝ 0
+  \item
+    Σq₀² ＝ Σq₁² ＋ Σq₂² ＋ Σq₃²
+  \item
+    Σq₀q₁ ＝ Σq₀q₂ ＝ Σq₀q₃ ＝ 0
+  \end{itemize}
+
+  q₀ だけが q₁, q₂, q₃ と別扱いになり、1＋3 に分かれる。q₁, q₂, q₃
+  どうしの長さや直交は求めない。
+\item
+  \textbf{等方的な閉塞}：複素数の三つの式を、そのまま 4
+  本に広げたもの。線形和 4 本、二乗和が等しい 3 本、6 個の交差項がすべて
+  0 の 6 本、計 13 本である。4×4 の二次モーメント行列 Σ qqᵀ
+  が単位行列の定数倍になる、つまり 4 方向に等方的に広がるという条件で、4
+  本は対等である。
+\end{enumerate}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+基本量
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+線形和
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+二次（長さ）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+二次（交差項）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+計
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+複素数 z ＝ a ＋ bi & Σa ＝ Σb ＝ 0（2） & Σa² ＝ Σb²（1） & Σab ＝
+0（1） & 4 & Σz ＝ 0 かつ Σz² ＝ 0 と同じ \\
+四元数・本当の二乗 & Σq₀ ＝ \ldots{} ＝ Σq₃ ＝ 0（4） & Σq₀² ＝ Σq₁² ＋
+Σq₂² ＋ Σq₃²（1） & Σq₀q₁ ＝ Σq₀q₂ ＝ Σq₀q₃ ＝ 0（3） & 8 & 1＋3
+に分かれる \\
+四元数・等方的 & Σq₀ ＝ \ldots{} ＝ Σq₃ ＝ 0（4） & Σq₀² ＝ Σq₁² ＝ Σq₂²
+＝ Σq₃²（3） & 6 個の交差項がすべて 0（6） & 13 & 4 成分が対等 \\
+\end{longtable}
+}
+
+表 1　閉塞の条件の本数
+
+複素数では二つは一致していた。Σa² ＝ Σb² と Σab ＝ 0
+は、本当の二乗のゼロ閉塞そのものだったからである。四元数では一致しない。
+
+\subsubsection{7.2
+二つは両立しない}\label{ux4e8cux3064ux306fux4e21ux7acbux3057ux306aux3044}
+
+\textbf{命題 1.} 等方的な閉塞を満たす 0
+でない配置は、本当の二乗の閉塞を満たさない。
+
+\textbf{証明.} 等方的なら Σq₀² ＝ Σq₁² ＝ Σq₂² ＝ Σq₃² ＝ s ＞ 0
+である。Σq² のスカラー部は Σq₀² − Σ\textbar v\textbar² ＝ s − 3s ＝ −2s
+≠ 0。□
+
+正十六胞体 \{±1, ±i, ±j, ±k\}（N ＝ 8）がその例である。この 8
+点は、それ自身が掛け算で閉じた群（四元数群 Q₈）で、複素数の十字が回転群
+Z₄ だったのと同じ形の、十字の 4 次元版である。Σq ＝ 0
+で、二次モーメントは 2I で等方的な 13 本を満たすが、Σq₀² ＝
+2、Σ\textbar v\textbar² ＝ 6 で、Σq² ＝ −4 である（図 5）。任意の 4
+次元の回転で回しても、この値は変わらない。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={正十六胞体 \{±1, ±i, ±j, ±k\}。左は頂点と 24 本の辺（大円の弧）の虚部。中央は光円錐の上での位置で、±1 は内側、±i, ±j, ±k は外側。右は Σq₀² : Σ\textbar v\textbar² ＝ 1 : 3 で、Σq² ＝ −4 になる。}]{figs/fig5_16cell_isotropic_vs_true_square.png}}
+\caption{正十六胞体 \{±1, ±i, ±j, ±k\}。左は頂点と 24
+本の辺（大円の弧）の虚部。中央は光円錐の上での位置で、±1 は内側、±i, ±j,
+±k は外側。右は Σq₀² : Σ\textbar v\textbar² ＝ 1 : 3 で、Σq² ＝ −4
+になる。}
+\end{figure}
+
+\subsubsection{7.3
+閉塞を保つ対称性}\label{ux9589ux585eux3092ux4fddux3064ux5bfeux79f0ux6027}
+
+本当の二乗の閉塞を保つのは、両側から同じ単位を掛ける回転 q ↦ u q u⁻¹（3
+次元の回転）と実数倍だけである。片側から単位四元数を掛けると Σq²
+は保たれない。たとえば左から u を掛けると (uq)² ＝ uquq で、u q²
+にはならない。正二十面体の配置（§8）で確かめると、両側から同じ単位で回したあとの
+\textbar Σq²\textbar{} は 2.7 × 10⁻¹⁵ で保たれ、左右を別々に回すと 15.71
+で崩れる（表 4）。
+
+複素数では、全体に e\^{}(iφ) を掛けても閉塞が保たれ、a と b
+は対等に混ざった。位相の原点は決まらなかった（§2.4）。四元数では、スカラー軸を動かす操作が閉塞を壊すので、スカラー軸は対称性で動かない別の軸として読める。ベクトル部の
+3 軸は互いに区別がつかず、決まらないのは空間の向き（3
+次元の回転）だけである。3＋1
+の分かれ方が、閉塞を保つ対称性から出てくる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. 最も対称な配置：q ＝ ±e\^{}(π
+n/4)}\label{ux6700ux3082ux5bfeux79f0ux306aux914dux7f6eq-eux3c0-n4}
+
+\subsubsection{8.1 導出}\label{ux5c0eux51fa}
+
+本当の二乗の閉塞 Σq ＝ 0、Σq² ＝ 0
+を満たす配置のうち、最も対称性の高いものを求める。
+
+最も高い対称では、どの q も対称操作で他のどの q
+にも移る。閉塞を保つ対称操作は、両側から同じ単位を掛ける 3
+次元の回転、実数倍、それに ±（二乗の層で z と −z
+を区別できない）である。すべての q が対等なら、大きさ
+\textbar q\textbar{} も、本当の二乗のスカラー部 q₀² −
+\textbar v\textbar² も、すべての q で同じ値 c になる。
+
+Σq² のスカラー部は N·c で、これが 0 なので c ＝ 0、つまり q₀² ＝
+\textbar v\textbar² である。全体の和で 0 になるのではなく、一つ一つの q
+が光円錐に乗る。大きさを 1 にそろえると θ ＝ 45° に決まり、
+
+q ＝ ±(1 ＋ n)/√2 ＝ ±e\^{}(π n/4)
+
+である。本当の二乗は
+
+q² ＝ (1 ＋ n)²/2 ＝ (1 − 1 ＋ 2n)/2 ＝ n
+
+で、純虚の単位ベクトル n そのものになる。Σq ＝ 0 は ±
+の対で自動的に成り立ち、Σq² ＝ 2Σn なので、Σq² ＝ 0 は Σn ＝ 0
+と同じ条件である。方向の集まり \{n\_k\}
+を最も対称に置くと正多面体の頂点になり、正多面体の頂点は Σn ＝ 0
+を満たし、3 方向に等方的にも広がる（球面 2-デザイン {[}X16{]}）。e\^{}(π
+n/4) は 8 乗で 1 に戻るので、有限の位数の回帰 Uⁿ ＝ I（n ＝
+8）がこの形から出る。
+
+\subsubsection{8.2 解の一覧}\label{ux89e3ux306eux4e00ux89a7}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+方向 n の配置
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+N
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbar Σq\textbar{}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbar Σq²\textbar{}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+二次モーメントの対角
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max \textbar q₀² − \textbar v\textbar²\textbar{}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max \textbar q² − n\textbar{}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max \textbar q⁸ − 1\textbar{}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+一つの複素平面（n ＝ ±i） & 4 & 0 & 0 & 2, 2, 0, 0 & 0 & 2.2e-16 &
+6.7e-16 \\
+正四面体 & 8 & 0 & 4.4e-16 & 4, 1.333, 1.333, 1.333 & 1.1e-16 & 2.0e-16
+& 5.3e-16 \\
+正八面体 & 12 & 0 & 0 & 6, 2, 2, 2 & 0 & 2.2e-16 & 6.7e-16 \\
+立方体 & 16 & 0 & 9.9e-16 & 8, 2.667, 2.667, 2.667 & 1.1e-16 & 2.0e-16 &
+5.3e-16 \\
+正二十面体 & 24 & 0 & 2.2e-16 & 12, 4, 4, 4 & 0 & 2.5e-16 & 7.8e-16 \\
+正十二面体 & 40 & 0 & 3.7e-15 & 20, 6.667, 6.667, 6.667 & 1.1e-16 &
+2.0e-16 & 5.3e-16 \\
+\end{longtable}
+}
+
+表 3　最も対称な解 q ＝ ±(1 ＋ n)/√2 の一覧（倍精度の計算。0
+は計算結果がちょうど 0 のもの）
+
+一つの複素平面の場合（n ＝ ±i、N ＝ 4）は、複素数の十字を 45°
+回したもの、つまり 1 の原始 8 乗根で、二次モーメントの対角が (2, 2, 0,
+0) となり空間の 1 方向しか開かない。正四面体（N ＝ 8）から先は空間 3
+方向が等方的で、二次モーメントの比は q₀ : q₁ : q₂ : q₃ ＝ 3 : 1 : 1 : 1
+である。正多面体の中で最も対称性が高いのは正二十面体（N ＝
+24）である。正二十面体の対称性は、E₈ から 4
+次元の準結晶を作る射影にも現れる {[}X19{]}。
+
+正二十面体の場合、24 個の q は中心投影で 12 点 u ＝ n に写り、その 12
+点はすべて光円錐の像 \textbar u\textbar{} ＝ 1
+の上に来て、正二十面体の頂点になる（図 6 左）。全体の緯度 θ を 45°
+からずらして q ＝ ±(cos θ ＋ n sin θ) とすると、24 個の和は Σq² ＝ 24
+cos 2θ となり、0 になるのは θ ＝ 45° と 135° だけである（図 6 右）。
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={最も対称な形 q ＝ ±e\^{}(π n/4)（n は正二十面体の 12 方向、N ＝ 24）。左は接超平面の中の像 u ＝ n で、すべて \textbar u\textbar{} ＝ 1 の上にあり、辺は直線になる。右は全体の緯度 θ に対する Σq² の実部 ＝ 24 cos 2θ。}]{figs/fig6_most_symmetric_icosahedral.png}}
+\caption{最も対称な形 q ＝ ±e\^{}(π n/4)（n は正二十面体の 12 方向、N ＝
+24）。左は接超平面の中の像 u ＝ n で、すべて \textbar u\textbar{} ＝ 1
+の上にあり、辺は直線になる。右は全体の緯度 θ に対する Σq² の実部 ＝ 24
+cos 2θ。}
+\end{figure}
+
+\subsubsection{8.3
+複素数との違い、対称性の低い解}\label{ux8907ux7d20ux6570ux3068ux306eux9055ux3044ux5bfeux79f0ux6027ux306eux4f4eux3044ux89e3}
+
+複素数の十字では位相の原点が自由で、\{±1, ±i\} も 45° 回した
+\{±e\^{}(±iπ/4)\}
+も同じものだった。四元数では、スカラー軸を動かす片側の掛け算が Σq²
+を保たないので、角は 45° に固定される。自由に残るのは空間の向き（3
+次元の回転）だけである。
+
+正十六胞体の空間部分を 1/√3 に縮めた \{±1, ±i/√3, ±j/√3, ±k/√3\}
+も二つの閉塞を満たす（Σq₀² ＝ 2、Σ\textbar v\textbar² ＝ 6 × 1/3 ＝
+2）。ただし ±1 と残りで大きさが違い、すべての q
+が対等ではない。対称性が一段低い型である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. N
+と、空間として開ける方向の数}\label{n-ux3068ux7a7aux9593ux3068ux3057ux3066ux958bux3051ux308bux65b9ux5411ux306eux6570}
+
+本当の二乗の閉塞では、空間の 3 本 q₁, q₂, q₃ は q₀ と直交し（Σq₀qᵢ ＝
+0）、4 本とも和が 0 の N−1 次元に入る。したがって空間の 3 本は、残りの
+N−2 次元の中にしか入れない。空間として開ける方向の数は
+
+min(3, N−2)
+
+である。N ＝ 3 では 1 方向（一つの複素平面、正三角形に固定）、N ＝ 4
+では 2 方向まで（十字はそのうち平面に収まった特別な場合）、N ≥ 5 で 3
+方向であり、3 で飽和する。飽和するのは、四元数のベクトル部が 3
+成分しかないからである。各 N で解を実際に作り、空間成分の階数が min(3,
+N−2) になることを確かめた（表 2）。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+N
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+複素数（複素）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+四元数・本当の二乗（実）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+四元数・等方（実）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+空間の方向 min(3, N−2)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+作った解の空間成分の階数
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+3 & 0 & 0 & 解なし & 1 & 1 \\
+4 & 1 & 4 & 解なし & 2 & 2 \\
+5 & 2 & 8 & 0 & 3 & 3 \\
+6 & 3 & 12 & 4 & 3 & 3 \\
+7 & 4 & 16 & 8 & 3 & 3 \\
+8 & 5 & 20 & 12 & 3 & 3 \\
+9 & 6 & 24 & 16 & 3 & 3 \\
+10 & 7 & 28 & 20 & 3 & 3 \\
+\end{longtable}
+}
+
+表
+2　形の自由度（閉塞の条件と読めない全体の対称性を除いた数）と、空間として開ける方向の数
+
+自由度は、本当の二乗の側が 4(N−3)、等方の側が 4(N−5)
+で、どちらも過剰拘束にはならない。等方の側の最小は N ＝ 5
+の正五胞体（自由度 0、形が一つに決まる）で、複素数で N ＝ 3
+の正三角形しかなかったのと同じ形である。状態の自由度は N
+とともに増えるが、各頂点が住む空間は N によらず 4
+次元の四元数で、空間として開ける方向は 3 で止まる。
+
+空間 3 方向が等方的に開ける最小の数は N ＝ 5 である。N ＝ 5
+は、自己無撞着インフレーションの論文 {[}S28{]} や三方向空間の創発の論文
+{[}S24{]} でも特別な場所に出ていた。ただし、それらの数値（たとえば N ＝
+5 の 13 個の閉包）と本稿の数（等方的な条件の 13
+本）を一致から結びつけることはしない。出どころの違う数の一致を結びつけるのは、エディントンの罠である
+{[}S3 §4.3{]}。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10.
+写像の連鎖と部分投射}\label{ux5199ux50cfux306eux9023ux9396ux3068ux90e8ux5206ux6295ux5c04}
+
+写像の連鎖を段ごとに見ると、次のようになる（表 4）。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+段
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+写像
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+読める成分
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+逃げる成分
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+判定
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+数値で確かめたこと
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+1 & \{zₙ\}（2N 個）→ \{qₙ\}（N 個）、q ＝ z₁ ＋ z₂ j & 実数 4N 個すべて
+& なし & 全投射 & 逆写像で元に戻る（最大誤差 0）。本当の二乗は (z₁² −
+\textbar z₂\textbar²) ＋ 2 Re(z₁)·z₂ j（誤差 4.4e-16） \\
+2 & q → 北極の接超平面への中心投影 u ＝ v/q₀ ＝ n tan θ & 比 v/q₀ の 3
+成分 & 大きさ \textbar q\textbar、符号 ±、赤道（q₀ ＝ 0 は無限遠） &
+部分投射 & 3.7 倍しても像は同じ、−q でも同じ（差 0） \\
+3 & 全体の対称性 & ― & 両側から同じ単位を掛ける 3 次元の回転と実数倍 &
+読めない & 回転後の \textbar Σq²\textbar{} ＝
+2.7e-15（保たれる）、左右を別々に回すと 15.71 \\
+\end{longtable}
+}
+
+表 4　写像の各段：全投射か部分投射か
+
+写像の連鎖全体として、部分投射である。読める部分は比 v/q₀ の 3
+成分で、大きさ
+\textbar q\textbar、符号の二重性、赤道、全体の回転は読み出しから逃げる。
+
+前回の目録 {[}S3 §4.4{]}
+は、時空が比較的安定して読める以上、写像は少なくとも部分投影でなければならないとした。ゼロ投影なら時空が現れず、全投影なら読めない内部も不確定性も離散も残らない。部分投影なら、投影された部分が読める時空になり、直交して逃げた部分が読めない内部と位相になる。本稿の写像は、この条件を満たす具体的な形になっている。部分投射の枠組みは基本公理系
+{[}S1{]} と無名部分投射の論文 {[}S17{]} で立てたものである。
+
+逃げた成分（大きさと符号）が、観測できない側 (R, Q₁Q₂Q₃)
+にあたるかどうかは、もう一つの四元数を加える八元数の段（§12.2）と合わせて見る問いである。本稿では、その対応を主張しない。
+
+名前の付け方について一言しておく。四元数の成分に、時間 t、空間 xyz、内部
+Q、半径 R
+という色は付いていない。スカラー部とベクトル部、左右の掛け算で回る二つの
+3 次元の方向 n\_L,
+n\_R、ノルムと本当の二乗のスカラー部は、どれも無名の成分である。どれを何と呼ぶかは、どの読み出し写像を選ぶかで決まり、名前は読み出しの性質（連続に読めるか、離散で干渉しないか）に後から付ける
+{[}S3{]}。双対の二つの側に同じ量が違う名前で現れることは {[}X23{]}
+の図式と同じである。
+
+また、状態空間には時間も空間も距離もない。二つの存在は一つの状態の中で、干渉できるまま関係している。時空の距離は読み出した後で初めて現れる。EPR
+やベルの不等式の不思議は、読み出した側から見て、距離があるのにもつれていることに見えるものであり、状態空間の側では最初から一つのまま可干渉である。本稿の合成は頂点の足し合わせ（直和）であって、テンソル積を使わない。四元数の量子力学で知られる複数の系の合成の難点
+{[}X8, X9{]}
+は、この系では当たらない。不確定性と離散性も、状態空間そのものの性質ではなく、発展と読み出しの側から出てくる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{11.
+先行研究の中での位置}\label{ux5148ux884cux7814ux7a76ux306eux4e2dux3067ux306eux4f4dux7f6e}
+
+\subsubsection{11.1
+既発表の結果（本稿は四元数の言葉で読み直す）}\label{ux65e2ux767aux8868ux306eux7d50ux679cux672cux7a3fux306fux56dbux5143ux6570ux306eux8a00ux8449ux3067ux8aadux307fux76f4ux3059}
+
+本稿の結果のうち、次のものは筆者の既発表論文がすでに別の言葉で出している。本稿の発見としては書かず、四元数への写像の入口として読み直す。
+
+\begin{itemize}
+\tightlist
+\item
+  複素数の三つの式が「和 0 の空間の中の同じ長さで直交する 2
+  本」になること：ゼロ閉塞のシュティーフェル多様体としての読み
+  {[}S6{]}。
+\item
+  閉塞を満たす配置の形の空間が射影二次曲面になること
+  {[}S7{]}、閉塞空間が C\_k ＝ Q\_\{k−2\}/S\_k であり、z² ＝ 0 の最小が
+  2 波 z₂ ＝ ±iz₁ であること {[}S8{]}。
+\item
+  Z₄ の位相ラベルによる 90° の床と、二乗波の巡回、N ＝ 8k の ±i
+  の対の被覆 {[}S9, S10{]}。
+\item
+  時間の方向を選ぶことが四元数の中で複素構造を選ぶことであり、極形式が時計と位相を同時に与えること
+  {[}S12{]}。
+\item
+  空間方向の読み出しが 3 方向で飽和すること：旧 N
+  体の系列が完全二体関係波の上で数値で示した {[}S22, S23, S24{]}。本稿の
+  min(3, N−2) は、同じ飽和を頂点の読み方で代数として示したものである。
+\item
+  中心投影の逆写像の赤道の発散と南半球の不可視 {[}S16{]}。
+\end{itemize}
+
+\subsubsection{11.2
+本稿で初めて立てる主張}\label{ux672cux7a3fux3067ux521dux3081ux3066ux7acbux3066ux308bux4e3bux5f35}
+
+\begin{itemize}
+\tightlist
+\item
+  四元数の極形式が、そのまま北極の接超平面への中心投影であり、写像
+  \{zₙ\} → \{qₙ\} → (1＋3) がこれで組み立てられること（§5）。
+\item
+  等方的な閉塞と本当の二乗の閉塞が両立しないこと（命題 1、§7.2）。
+\item
+  最も対称な配置 q ＝ ±e\^{}(π n/4) が、一つ一つ光円錐に乗り、q² ＝
+  n、q⁸ ＝ 1 になり、正多面体の頂点で与えられること（§8）。
+\item
+  写像の連鎖が部分投射であり、読める成分と逃げる成分が表 4
+  のとおりであること（§10）。
+\end{itemize}
+
+\subsubsection{11.3
+外部の先行研究との関係}\label{ux5916ux90e8ux306eux5148ux884cux7814ux7a76ux3068ux306eux95a2ux4fc2}
+
+状態空間（ヒルベルト空間）から空間の幾何を読み出す試みとして、Cao・Carroll・Michalakis
+はもつれの構造から幾何を復元し {[}X20{]}、Carroll・Singh
+は最小限の量子力学から出発する {[}X21{]}。Stoica は、3
+次元空間と優先基底は量子構造から一意には出てこないと論じた
+{[}X22{]}。本稿の立場は、写像は部分投射であって、読み方の選択（どの成分に何の名前を付けるか）が入る、というもので、Stoica
+の議論と矛盾しない。一意に出てこないのは、名前を付ける読み方の選択であり、本稿はその選択を状態の側ではなく読み出しの側に置く。
+
+ヒルベルト空間の係数が実数・複素数・四元数に限られることはソレールの定理として知られ
+{[}X8{]}、四元数のヒルベルト空間による量子力学はアドラーが展開した
+{[}X9{]}。本稿の状態 \{qₙ\} は、四元数に値をとるエルミート形式 ⟨p, q⟩ ＝
+Σ p̄ₙqₙ をもつ四元数ベクトルと見られ、線形和の閉塞は (1, 1, \ldots, 1)
+と直交する条件である。違うのは、この系がエルミート形式（ノルムの側）に加えて、共役をとらない本当の二乗
+Σqₙqₙ を閉塞の条件に使う点である。
+
+複素二次曲面 Q₄
+はクラインの二次曲面で、ツイスター理論では複素化してコンパクト化したミンコフスキー時空として使われる
+{[}X13, X14{]}。本稿の形の空間 Q\_\{N−3\} は、N ＝ 7
+でこれと同じものになる。この一致が時空の読み出しと関係するかどうかは、本稿では扱わない。
+
+割り算のできる数の体系（実数・複素数・四元数・八元数）と素粒子の標準理論の対応は、Gürsey・Tze
+{[}X24{]}、Furey {[}X25{]}、Boyle ら {[}X26{]}
+が研究している。本稿は八元数について何も主張しない。§12.2
+の課題の背景として挙げるにとどめる。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{12. 次の課題}\label{ux6b21ux306eux8ab2ux984c}
+
+\subsubsection{12.1 課題 1：等振幅の倍音による局在の (1＋3)
+への写像}\label{ux8ab2ux984c-1ux7b49ux632fux5e45ux306eux500dux97f3ux306bux3088ux308bux5c40ux5728ux306e-13-ux3078ux306eux5199ux50cf}
+
+複素数では、等振幅の倍音（全部・奇数・偶数）を重ねると局在が作れた
+{[}S25,
+S18{]}。奇数の倍音は二周、偶数は一周で閉じる。四元数でも同じ重ね方で局在が作れるとして、それを
+(1＋3)(t, xyz) に写すと何が見えるかは、まだ確かめていない。
+
+一つの軸 n に沿って倍音 e\^{}(n k θ)（k ＝ 1, 2,
+\ldots）を重ねると、すべての項が 1 と n
+の張る一つの複素平面に入り、結果は複素数の局在そのものになる。S³
+の上では一本の大円に沿った局在で、中心投影の像は直線 u ＝ n tan θ
+の上の局在、つまり空間の 1 方向にしか局在しない。空間の 3
+方向に局在した点（粒子の位置）として読めるには、倍音を S³
+全体に広げる必要がある。たとえばホップ座標の二つの位相と配分の角のそれぞれに倍音を持たせる形である。その重ね方で局在の峰がどこにでき、接超平面の像
+u でどんな形に写り、実部 q₀
+の側に何が残るかが、確かめる中身である。局在波の倍音の交換は第十三思考実験
+{[}S26{]} で扱った。
+
+\subsubsection{12.2 課題 2：四元数 2 つで八元数、(1＋3)(1＋3)
+への写像}\label{ux8ab2ux984c-2ux56dbux5143ux6570-2-ux3064ux3067ux516bux5143ux65701313-ux3078ux306eux5199ux50cf}
+
+二つの複素数で四元数ができたのと同じく、二つの四元数で八元数 o ＝ q ＋ p
+\(\ell\) ができる {[}X2, X4, X5{]}。本当の二乗の形は、同じ型で繰り返す。
+
+\begin{itemize}
+\tightlist
+\item
+  四元数（複素数 2 つ）：q² ＝ (z₁² − \textbar z₂\textbar²) ＋ 2
+  Re(z₁)·z₂ j
+\item
+  八元数（四元数 2 つ）：o² ＝ (q² − \textbar p\textbar²) ＋ 2 q₀·p
+  \(\ell\)
+\end{itemize}
+
+これで (1＋3)(1＋3)(t, xyz)(R, Q₁Q₂Q₃)
+への写像まで同じ手順で行けるかが問いである。新しく出る問題は二つある。第一に、八元数では結合法則が成り立たない（フロベニウスの定理の外、フルヴィッツの定理の内側
+{[}X6,
+X7{]}）。四元数で使った左右の掛け算で回す操作がそのままでは合成できず、閉塞を保つ対称性が何になるかを改めて決める必要がある。第二に、整数の八元数の単位は
+240 個で E₈ の根と同じ数である {[}X3,
+X18{]}。最も対称な配置を探すと、目録 {[}S3{]} の E₈
+の行に直接つながる可能性がある。照合先は、標準理論二体の正解表を作った第十一思考実験
+{[}S27{]} である。
+
+\subsubsection{12.3 課題
+3：全員対全員の自己相互作用とインフレーション的展開}\label{ux8ab2ux984c-3ux5168ux54e1ux5bfeux5168ux54e1ux306eux81eaux5df1ux76f8ux4e92ux4f5cux7528ux3068ux30a4ux30f3ux30d5ux30ecux30fcux30b7ux30e7ux30f3ux7684ux5c55ux958b}
+
+高い対称性の複素数の配置を自己相互作用させると、インフレーション的な展開が起こった
+{[}S28, S29,
+S30{]}。最も対称な親は相対平衡で、その親が不安定で、親の平面から外れる成分が指数関数的に育った。効いていたのは関係の一覧ではなく、各要素が自分以外のすべてと相互作用すること（全員対全員）である（§2.3）。
+
+高い対称性の四元数を全員対全員で自己相互作用させると、やはりインフレーション的な展開が起こるかが問いである。親をどこに置くかで意味が二つに分かれる。
+
+\begin{itemize}
+\tightlist
+\item
+  親が一つの複素平面に収まっている場合（十字、正 N
+  角形）：複素数の配置はそのまま四元数の閉塞の解で、平面の中の動きは前回の結果を再現するはずである。新しく問えるのは、平面に直交する二つの虚の方向が育つかどうかで、育てばそれは平面から
+  3 次元空間が開く展開になる。ベクトル部は 3 成分なので、3
+  方向が開いたところで止まるはずで、前回の複素数にはなかったインフレーションの終わりが構造から出る可能性がある。§9
+  の「N ≥ 5 で初めて 3 方向が開ける」と同じ場所に来る。旧系列で 2
+  方向から独立な第 3 方向が生まれ、それ以上は現れなかったこと {[}S24{]}
+  とも比べられる。
+\item
+  親がすでに最も対称な形（正二十面体）の場合：3
+  方向はすでに等方的に開いているので、四元数の中に新しく開く方向は残っていない。それでも不安定になるなら、成長は四元数の外、もう一つの四元数（八元数の後半）へ向かうしかなく、課題
+  2 とつながる。
+\end{itemize}
+
+自己相互作用に使えるのは左右の掛け算だけで、そのうち Σq²
+を保つのは両側から同じ単位を掛ける回転と実数倍だけである（§7.3）。自己相互作用の書き方は、実装の前に全体の設計を照合してから決める。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{13. 結論}\label{ux7d50ux8ad6}
+
+複素数の集合 \{zₙ\} を二つずつ組にして四元数 \{qₙ\}
+を作ると、四元数の極形式がそのまま北極の接超平面への中心投影になり、本当の二乗のスカラー部から
+(1, 3) の光円錐が出る。これにより、\{zₙ\}（2N 個）→ \{qₙ\}（N 個）→
+(1＋3)(t, xyz)
+という写像が、無名性・自己無撞着・区別可能性の公理と二つのゼロ閉塞だけから組み立てられる。新しく置いたのは、二つの複素数を一つの四元数として読む読み方だけである。
+
+閉塞には、4
+成分を対等に扱う等方的な形と、本当の二乗の形の二つがあり、両立しない。本当の二乗の閉塞を保つ対称性は
+3 次元の回転と実数倍だけで、1＋3
+の分かれ方はこの対称性から出てくる。最も対称な配置は q ＝ ±e\^{}(π n/4)
+で、一つ一つが光円錐に乗り、q² ＝ n、q⁸ ＝ 1
+となる。空間として開ける方向は min(3, N−2) で 3 方向で飽和し、3
+方向が等方的に開ける最小の数は N ＝ 5 である。
+
+写像の連鎖は、複素数から四元数への段が全投射、中心投影の段が部分投射で、全体として部分投射である。大きさ、符号、赤道、全体の回転は読み出しから逃げる。これは、時空が安定して読める以上、写像は少なくとも部分投影でなければならない、という前回の目録の要請を満たす具体的な形である。
+
+残る課題は、等振幅の倍音による局在の (1＋3) への写像、八元数による
+(1＋3)(1＋3)
+への写像、全員対全員の自己相互作用によるインフレーション的展開の三つである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsubsection{自己引用（Concept
+DOI、10.5281/zenodo.〔番号〕）}\label{ux81eaux5df1ux5f15ux7528concept-doi10.5281zenodo.ux756aux53f7}
+
+{[}S1{]} 木原範昭「無名等振幅複合波モデル基本公理系 v9」2026-07-24.
+Concept DOI 10.5281/zenodo.21315735.\\
+{[}S2{]}
+木原範昭「零閉包・有限位数・自己無撞着幾何からの対称性生成――唯一の外部指定パラメータ
+\(N\) と、一般化・動力学導出という残された課題」2026-08-20. Concept DOI
+10.5281/zenodo.22028072.\\
+{[}S3{]}
+木原範昭「状態空間から時空を読み出すための対称性とマジックナンバーの目録
+― 無名性と自己無撞着を公理とする研究計画の答え合わせの基準
+―」2026-10-18. Concept DOI 10.5281/zenodo.23444451.\\
+{[}S4{]} 木原範昭「非自明二乗閉鎖から現れる複素位相構造」2026-07-18.
+Concept DOI 10.5281/zenodo.21422505.\\
+{[}S5{]}
+木原範昭「共役複素ノルムと平方量読出しの接続について」2026-07-02.
+Concept DOI 10.5281/zenodo.21126212.\\
+{[}S6{]} 木原範昭「ゼロ閉塞は4次元だった --- 主張案 v4」2026-08-12.
+Concept DOI 10.5281/zenodo.21902805.\\
+{[}S7{]}
+木原範昭「零二乗和拘束とスケール不変性の幾何学的正体」2026-07-22.
+Concept DOI 10.5281/zenodo.21495305.\\
+{[}S8{]}
+木原範昭「無名性と情報の最小単位------最小ゼロ閉塞単位は2波、\(S_N\)
+で割った後に残る最小情報単位は何波か（仮説・検討論文）」2026-09-12.
+Concept DOI 10.5281/zenodo.22729127.\\
+{[}S9{]}
+木原範昭「90度高対称床の解析的厳密解------Z4位相ラベルが定める整数反対称生成子の
+\(\sigma_{\max}\) 固有モードと閉形式スペクトル」2026-09-12. Concept DOI
+10.5281/zenodo.22728995.\\
+{[}S10{]} 木原範昭「高対称床のゼロ閉塞因数分解------偶数系 \(N=8k\) の
+\(\pm i\) 光子対完全被覆と奇数系の最小 \(p\) 波凝縮体」2026-09-12.
+Concept DOI 10.5281/zenodo.22729080.\\
+{[}S11{]}
+木原範昭「あるモデル粒子をめぐる思考実験------位相面積の床から次元の許容条件へ」2026-06-03.
+Concept DOI 10.5281/zenodo.20528511.\\
+{[}S12{]} 木原範昭「論文14:時間方向の選択と振幅の舞台 ---
+マーキング定理・導出 Z₄ 位相・反転ホロノミー・正準規約」2026-06-14.
+Concept DOI 10.5281/zenodo.20665661.\\
+{[}S13{]} 木原範昭「中心投影による4次元空間の幾何学的定式化」2026-04-05.
+Concept DOI 10.5281/zenodo.19427779.\\
+{[}S14{]} 木原範昭「\(S^4\)
+からのグノモン投影と4次元主観座標図上の誘導計量の Schwarzschild
+様の形（論文2：射影の数学的基盤）」2026-04-28. Concept DOI
+10.5281/zenodo.19837589.\\
+{[}S15{]}
+木原範昭「第十四思考実験：なぜ異なる対称性は、完全には整合できないのか？」2026-10-12.
+Concept DOI 10.5281/zenodo.23315557.\\
+{[}S16{]}
+木原範昭「離散空間における中心投影の全球被覆と5次元背景空間の整数論的必然性」2026-04-17.
+Concept DOI 10.5281/zenodo.19624956.\\
+{[}S17{]}
+木原範昭「無名部分投射による物理的対称性選択の公理的枠組み」2026-07-24.
+Concept DOI 10.5281/zenodo.21521899.\\
+{[}S18{]}
+木原範昭「背景時空を置かない複素波の関係と干渉から、時間・空間・質量・電荷・並進速度・スピンを読み出す――閉じた円周の住民から四次元球殻の住民へ、そして
+α・四次元格子・E₈ に至る、思考実験の順序に沿った統合仮説――」2026-10-15.
+Concept DOI 10.5281/zenodo.23384928.\\
+{[}S19{]}
+木原範昭「第十二思考実験：微細構造定数から観測写像とゲージ対称性へ」2026-10-08.
+Concept DOI 10.5281/zenodo.23226258.\\
+{[}S20{]}
+木原範昭「あるモデル粒子をめぐる思考実験（続）------総和ゼロ条件から見る第五の振動数と合成曲率」2026-06-04.
+Concept DOI 10.5281/zenodo.20535894.\\
+{[}S21{]}
+木原範昭「閉じた球面上の形不変定常波------次元ごとの安定性と3+1時空の幾何学的必然性」2026-04-24.
+Concept DOI 10.5281/zenodo.19731593.\\
+{[}S22{]} 木原範昭「完全二体関係波から読み出されるXYZ三方向」2026-07-20.
+Concept DOI 10.5281/zenodo.21454789.\\
+{[}S23{]}
+木原範昭「N体完全二体関係波における生成子ランクの線形上界と空間方向読出しの三方向飽和」2026-07-21.
+Concept DOI 10.5281/zenodo.21465898.\\
+{[}S24{]} 木原範昭「N体関係波閉鎖系における三方向空間の創発」2026-07-26.
+Concept DOI 10.5281/zenodo.21578401.\\
+{[}S25{]}
+木原範昭「半波長位相区間における一定振幅奇数倍音和の孤立ピーク波とその局在性に関する観察」2026-06-30.
+Concept DOI 10.5281/zenodo.20833096.\\
+{[}S26{]}
+木原範昭「第十三思考実験：質量を獲得した粒子は、なぜ散逸して消滅しないのか？」2026-10-10.
+Concept DOI 10.5281/zenodo.23266250.\\
+{[}S27{]}
+木原範昭「第十一思考実験：背景時空を置かない二体系の放出記録」2026-10-07.
+Concept DOI 10.5281/zenodo.23199299.\\
+{[}S28{]}
+木原範昭「自己無撞着な関係波閉鎖系におけるインフレーション的急拡大の機構------正規化監査、rank
+生成、二乗閉包保存、simplex 対称化および公理系の再構成」2026-08-30.
+Concept DOI 10.5281/zenodo.22112008.\\
+{[}S29{]}
+木原範昭「自己無撞着な関係波閉鎖系の力学------90°相対平衡の局所不安定性からインフレーション、自発的対称性の破れ、Grassmann
+幾何、終端普遍性・関係主義まで」2026-09-12. Concept DOI
+10.5281/zenodo.22729146.\\
+{[}S30{]}
+木原範昭「幾何級数的急拡大は不安定な自己無撞着閉包に固有である------一般零閉塞初期状態による開始様式の因果判別」2026-08-05.
+Concept DOI 10.5281/zenodo.21798854.
+
+\subsubsection{外部文献}\label{ux5916ux90e8ux6587ux732e}
+
+{[}X1{]} W. R. Hamilton, ``On Quaternions; or on a new System of
+Imaginaries in Algebra,'' \emph{Philosophical Magazine} (3rd series) 25
+(1844) 10--13（18 回の連載の第 1 回、1844--1850）.\\
+{[}X2{]} L. E. Dickson, ``On Quaternions and Their Generalization and
+the History of the Eight Square Theorem,'' \emph{Annals of Mathematics}
+(2nd series) 20 (1919) 155--171.\\
+{[}X3{]} J. H. Conway, D. A. Smith, \emph{On Quaternions and Octonions:
+Their Geometry, Arithmetic, and Symmetry} (A K Peters, Natick, 2003).\\
+{[}X4{]} J. C. Baez, ``The Octonions,'' \emph{Bulletin of the American
+Mathematical Society} 39 (2002) 145--205.\\
+{[}X5{]} A. Cayley, ``On Jacobi's elliptic functions, in reply to the
+Rev.~Brice Bronwin; and on quaternions,'' \emph{Philosophical Magazine}
+26 (1845) 208--211.\\
+{[}X6{]} G. Frobenius, ``Über lineare Substitutionen und bilineare
+Formen,'' \emph{Journal für die reine und angewandte Mathematik} 84
+(1878) 1--63.\\
+{[}X7{]} A. Hurwitz, ``Ueber die Composition der quadratischen Formen
+von beliebig vielen Variablen,'' \emph{Nachrichten von der Gesellschaft
+der Wissenschaften zu Göttingen, Mathematisch-Physikalische Klasse}
+(1898) 309--316.\\
+{[}X8{]} M. P. Solèr, ``Characterization of Hilbert spaces by
+orthomodular spaces,'' \emph{Communications in Algebra} 23 (1995)
+219--243.\\
+{[}X9{]} S. L. Adler, \emph{Quaternionic Quantum Mechanics and Quantum
+Fields} (Oxford University Press, 1995; International Series of
+Monographs on Physics 88).\\
+{[}X10{]} J. P. Snyder, \emph{Map Projections---A Working Manual}, U.S.
+Geological Survey Professional Paper 1395 (U.S. Government Printing
+Office, Washington, 1987)、グノモン図法 164--168 頁.\\
+{[}X11{]} É. Cartan, \emph{The Theory of Spinors} (MIT Press, 1966;
+Dover, 1981).\\
+{[}X12{]} S. Kobayashi, K. Nomizu, \emph{Foundations of Differential
+Geometry}, Vol. II (Interscience/Wiley, 1969).\\
+{[}X13{]} R. Penrose, ``Twistor Algebra,'' \emph{Journal of Mathematical
+Physics} 8 (1967) 345--366, doi:10.1063/1.1705200.\\
+{[}X14{]} R. S. Ward, R. O. Wells, Jr., \emph{Twistor Geometry and Field
+Theory} (Cambridge University Press, 1990).\\
+{[}X15{]} H. S. M. Coxeter, \emph{Regular Polytopes}, 3rd ed.~(Dover,
+New York, 1973).\\
+{[}X16{]} P. Delsarte, J. M. Goethals, J. J. Seidel, ``Spherical codes
+and designs,'' \emph{Geometriae Dedicata} 6 (1977) 363--388.\\
+{[}X17{]} R. Courant, D. Hilbert, \emph{Methods of Mathematical
+Physics}, Vol. II (Interscience, 1962)。ホイヘンスの原理と奇数次元.\\
+{[}X18{]} J. H. Conway, N. J. A. Sloane, \emph{Sphere Packings, Lattices
+and Groups} (Springer).\\
+{[}X19{]} V. Elser, N. J. A. Sloane, ``A highly symmetric
+four-dimensional quasicrystal,'' \emph{J. Phys. A} (1987).\\
+{[}X20{]} C. Cao, S. M. Carroll, S. Michalakis, ``Space from Hilbert
+Space: Recovering Geometry from Bulk Entanglement,'' \emph{Phys. Rev.~D}
+95 (2017); arXiv:1606.08444.\\
+{[}X21{]} S. M. Carroll, A. Singh, ``Mad-Dog Everettianism: Quantum
+Mechanics at Its Most Minimal,'' arXiv:1801.08132 (2018).\\
+{[}X22{]} O. C. Stoica, ``3D-Space and the preferred basis cannot
+uniquely emerge from the quantum structure,'' arXiv:2102.08620.\\
+{[}X23{]} S. De Haro, J. Butterfield, ``A Schema for Duality,
+Illustrated by Bosonization,'' arXiv:1707.06681.\\
+{[}X24{]} F. Gürsey, C.-H. Tze, \emph{On the Role of Division, Jordan
+and Related Algebras in Particle Physics} (World Scientific, Singapore,
+1996).\\
+{[}X25{]} C. Furey, ``SU(3)\_C × SU(2)\_L × U(1)\_Y (× U(1)\_X) as a
+symmetry of division algebraic ladder operators,'' \emph{Eur. Phys. J.
+C} 78 (2018) 375, doi:10.1140/epjc/s10052-018-5844-7;
+arXiv:1806.00612.\\
+{[}X26{]} L. Boyle et al., ``The C\(\ell\)(8) algebra of three fermion
+generations with spin and full internal symmetries,'' arXiv:1906.05102.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{付録
+A：図表の再現}\label{ux4ed8ux9332-aux56f3ux8868ux306eux518dux73fe}
+
+図 1〜6 と表 1〜5 は、\texttt{図表/\allowbreak{}}（本稿と同じフォルダ）の
+\texttt{make\_\allowbreak{}figures.py} と \texttt{verify\_\allowbreak{}tables.py}
+で作った。\texttt{bash\ 図表/\allowbreak{}run\_\allowbreak{}all.sh}
+で作り直せる。点・曲線・数値はすべて四元数の式から直接計算しており、近似や当てはめは使っていない。乱数を使う箇所は種
+20261018 で固定した。確認の合否は \texttt{図表/\allowbreak{}results/\allowbreak{}checks.txt}（8
+項目すべて合格）、表の全文は \texttt{図表/\allowbreak{}results/\allowbreak{}tables.md} にある。
+
+\subsection{付録
+B：引用の対応表}\label{ux4ed8ux9332-bux5f15ux7528ux306eux5bfeux5fdcux8868}
+
+本稿の主張と自己引用の対応は
+\texttt{自己引用の対応表\_\allowbreak{}20261018.md}、外部文献の対応と書誌の確認先は
+\texttt{外部引用の対応表\_\allowbreak{}20261018.md}（いずれも本稿と同じフォルダ）にある。
+
+\subsection{付録
+C：思考実験の対話記録と対話型の図}\label{ux4ed8ux9332-cux601dux8003ux5b9fux9a13ux306eux5bfeux8a71ux8a18ux9332ux3068ux5bfeux8a71ux578bux306eux56f3}
+
+本稿の内容は、2026-10-18 の著者と Claude の対話から出た。対話記録は
+\texttt{次元の生成構造/\allowbreak{}四元数を基本量とする思考実験\_\allowbreak{}20261018/\allowbreak{}四元数を基本量とする思考実験\_\allowbreak{}20261018.md}
+にある（要約なし、著者の発言は誤字のみ修正）。同じフォルダに、対話型の図（HTML）が四つある。
+
+ダウンロードしたファイルをブラウザで開くと、スライダーとドラッグで操作できる（外部から読み込むのは
+Google Fonts
+の書体だけで、読み込めなくても代わりの書体で表示される）。各ファイルのダイレクトダウンロード（GitHub
+raw）は次のとおり。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{quaternion\_circle\_gnomonic.html}：四元円の切断、実部と虚部の分解、中心投影、光円錐、接超平面の中の像\\
+  \url{https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/\%E6\%AC\%A1\%E5\%85\%83\%E3\%81\%AE\%E7\%94\%9F\%E6\%88\%90\%E6\%A7\%8B\%E9\%80\%A0/\%E5\%9B\%9B\%E5\%85\%83\%E6\%95\%B0\%E3\%82\%92\%E5\%9F\%BA\%E6\%9C\%AC\%E9\%87\%8F\%E3\%81\%A8\%E3\%81\%99\%E3\%82\%8B\%E6\%80\%9D\%E8\%80\%83\%E5\%AE\%9F\%E9\%A8\%93\_20261018/quaternion\_circle\_gnomonic.html}
+\item
+  \textbf{quaternion\_16cell.html}：正十六胞体の配置と閉塞の判定\\
+  \url{https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/\%E6\%AC\%A1\%E5\%85\%83\%E3\%81\%AE\%E7\%94\%9F\%E6\%88\%90\%E6\%A7\%8B\%E9\%80\%A0/\%E5\%9B\%9B\%E5\%85\%83\%E6\%95\%B0\%E3\%82\%92\%E5\%9F\%BA\%E6\%9C\%AC\%E9\%87\%8F\%E3\%81\%A8\%E3\%81\%99\%E3\%82\%8B\%E6\%80\%9D\%E8\%80\%83\%E5\%AE\%9F\%E9\%A8\%93\_20261018/quaternion\_16cell.html}
+\item
+  \textbf{quaternion\_circle\_icosa.html}：四元円の図と同じプログラムで、データを最も対称な形
+  q ＝ ±e\^{}(π n/4)（正二十面体）に差し替えたもの\\
+  \url{https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/\%E6\%AC\%A1\%E5\%85\%83\%E3\%81\%AE\%E7\%94\%9F\%E6\%88\%90\%E6\%A7\%8B\%E9\%80\%A0/\%E5\%9B\%9B\%E5\%85\%83\%E6\%95\%B0\%E3\%82\%92\%E5\%9F\%BA\%E6\%9C\%AC\%E9\%87\%8F\%E3\%81\%A8\%E3\%81\%99\%E3\%82\%8B\%E6\%80\%9D\%E8\%80\%83\%E5\%AE\%9F\%E9\%A8\%93\_20261018/quaternion\_circle\_icosa.html}
+\item
+  \textbf{quaternion\_light\_cone\_icosa.html}：正十六胞体の図と同じプログラムで、データを最も対称な形に差し替えたもの\\
+  \url{https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/\%E6\%AC\%A1\%E5\%85\%83\%E3\%81\%AE\%E7\%94\%9F\%E6\%88\%90\%E6\%A7\%8B\%E9\%80\%A0/\%E5\%9B\%9B\%E5\%85\%83\%E6\%95\%B0\%E3\%82\%92\%E5\%9F\%BA\%E6\%9C\%AC\%E9\%87\%8F\%E3\%81\%A8\%E3\%81\%99\%E3\%82\%8B\%E6\%80\%9D\%E8\%80\%83\%E5\%AE\%9F\%E9\%A8\%93\_20261018/quaternion\_light\_cone\_icosa.html}
+\end{itemize}
+
+\subsection{版管理}\label{ux7248ux7ba1ux7406}
+
+\begin{itemize}
+\tightlist
+\item
+  v1.0（2026-10-18）：初版。Version DOI 10.5281/zenodo.23451495、Concept
+  DOI 10.5281/zenodo.23451494。
+\end{itemize}
+
+\end{document}

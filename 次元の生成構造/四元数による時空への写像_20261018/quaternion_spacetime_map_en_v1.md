@@ -1,0 +1,557 @@
+# A Map from a Set of Complex Numbers to Spacetime (1+3)
+## ― Readout by Quaternions and Partial Projection ―
+
+**Author:** Noriaki Kihara  
+**ORCID:** 0009-0004-6753-4020  
+**Version DOI:** 10.5281/zenodo.23451495  
+**Concept DOI:** 10.5281/zenodo.23451494  
+**Version:** v1.0  
+**Date:** 2026-10-18
+
+---
+
+## Abstract
+
+The author's research programme seeks to read out spacetime and particles from the relations of a set of complex numbers {zₙ} alone, without placing a background spacetime, a ruler or particle species by hand, and to connect the result to the fact that general relativity and the Standard Model hold with high precision. While organising the previous paper, "A Catalogue of Symmetries and Magic Numbers for Reading Out Spacetime from a State Space" [S3], the main open problems were how to map {zₙ} to spacetime (1+3)(t, xyz), and how to map it further to (1+3)(1+3)(t, xyz)(R, Q₁Q₂Q₃), which extends to a spacetime that cannot be observed.
+
+This paper answers the first. Two complex numbers form a quaternion q = z₁ + z₂ j ∈ ℍ. Looking only at addition and size, a quaternion is just a four-dimensional vector, but read through multiplication it has a symmetry that splits it into 1+3. As a result, we show that the map
+
+  {zₙ} (n = 1, …, 2N) ↦ {qₙ} (n = 1, …, N) ↦ {(t, xyz)ₙ} (n = 1, …, N)
+
+can be built from the axioms of anonymity, self-consistency and distinguishability, together with the linear zero closure Σq = 0 and the true-square zero closure Σq² = 0 alone, without importing any outside structure.
+
+The main results are as follows. (1) The polar form of a quaternion, q = |q|(cos θ + n sin θ), is exactly the central projection (gnomonic projection) onto the hyperplane tangent at the north pole, u = v/q₀ = n tan θ. (2) The scalar part of the unconjugated true square, q₀² − |v|², has signature (1, 3), and θ = 45° is the light cone. (3) The isotropic closure that treats the four components equally (13 conditions) and the true-square closure Σq² = 0 are incompatible. The 16-cell {±1, ±i, ±j, ±k} satisfies the former but has Σq² = −4. (4) The most symmetric configuration satisfying Σq = 0 and Σq² = 0 is q = ±e^(π n/4) = ±(1 + n)/√2, where n are the vertex directions of a regular polyhedron. Each q lies on the light cone, with q² = n and q⁸ = 1. The icosahedral case, N = 24, has the highest symmetry. (5) The number of directions that N quaternions can open as space is min(3, N−2), saturating at three. The smallest number that opens three isotropic directions is N = 5. (6) In the chain of maps, the step from complex numbers to quaternions is a full projection and the central-projection step is a partial projection, so the whole is a partial projection. The size |q|, the sign ±, the equator and the global rotation escape the readout.
+
+These were checked numerically by the computations in the figures folder (Appendix A). Finally, three next tasks are listed: the (1+3) map of localization by equal-amplitude harmonics; octonions from two quaternions and the (1+3)(1+3) map; and inflation-like expansion from all-to-all self-interaction of highly symmetric quaternions.
+
+**Keywords:** quaternion, state space, spacetime readout, central projection, gnomonic projection, light cone, zero closure, true square, anonymity, self-consistency, partial projection, regular polyhedra, octonion
+
+---
+
+## 1. Motivation
+
+While organising the previous paper (the catalogue of symmetries and magic numbers) [S3], the main open problems were how to map the set of complex numbers {zₙ} to spacetime (1+3)(t, xyz), and further how to map it to (1+3)(1+3)(t, xyz)(R, Q₁Q₂Q₃), extending to a spacetime that cannot be observed.
+
+In the course of the study, it turned out that two complex numbers can be used to form a quantity called a quaternion q. A little further study showed that this quaternion q ∈ ℍ has a symmetry that splits it into 1+3 when read through multiplication, and as a result the map
+
+  {zₙ} (n = 1, …, 2N) ↦ {qₙ} (n = 1, …, N) ↦ {(t, xyz)ₙ} (n = 1, …, N)
+
+is possible (Figure 1). All figures in the text are static; interactive figures (HTML), in which the quaternion circle, the central projection and the light cone can be rotated, are given in Appendix C.
+
+![Figure 1. The chain of maps. The step that pairs 2N complex numbers into N quaternions is a full projection; the step that reads the quaternions by central projection is a partial projection.](図表/figures/fig1_mapping_chain.png)
+
+This paper builds the map from the axioms and the closure definition of the previous catalogue [S3] alone. The only new element is a way of reading: "pair two complex numbers and read them as one quaternion". No background space, metric, derivative or gauge field is placed. The names (time t, space xyz) are not attached to the quaternion components from the start; they are names attached afterwards to properties of the readout (§10).
+
+The paper is organised as follows. §2 summarises the starting point (axioms, closure, the most symmetric configuration of complex numbers). §3 forms quaternions from two complex numbers. §4 describes the geometry of quaternions (polar form, the quaternion circle S³, left and right multiplication), and §5 shows that the polar form is exactly the central projection. §6 treats the light cone, §7 the two forms of closure and their incompatibility, §8 the most symmetric configuration, and §9 the number of spatial directions as a function of N. §10 shows that the chain of maps is a partial projection, §11 places the work among earlier studies, and §12 lists the next tasks.
+
+---
+
+## 2. Starting point: axioms, closure and the most symmetric configuration of complex numbers
+
+### 2.1 Axioms and closure
+
+We use the axioms and definitions of the previous catalogue [S3] unchanged.
+
+| No. | Content |
+|---|---|
+| A1 | **Anonymity** (zeroth axiom): elements carry no name tags, and there is no special origin, coordinate, distance, sign or type. Only relations unchanged by all permutations of the elements can be read [S1] |
+| A1′ | **Distinguishability axiom**: the readout cannot tell which layer a read value belongs to. The squared quantity z′ = z² is also just a complex number, so z and z′ cannot be told apart [S3] |
+| A2 | **Self-consistency** (first axiom): since there is no outside standard, the system takes itself as its standard [S2] |
+| Z1 | **Linear zero closure** Σzₙ = 0: the single definition of closure. The square-sum closure Σzₙ² = Σz′ₙ = 0 is Z1 read at the z′ layer [S3] |
+
+A nontrivial square closure has no solution within the reals and requires complex numbers [S4]. The conjugated norm z z̄ and the unconjugated true square z² are different quantities [S5].
+
+### 2.2 The three equations for complex numbers
+
+Writing z = a + bi, Σz = 0 and Σz² = 0 become the following three real equations.
+
+- Σaₙ = Σbₙ = 0
+- Σaₙ² = Σbₙ²
+- Σaₙbₙ = 0
+
+In terms of the two real vectors a, b listing the values at each vertex, both lie in the sum-zero space (of dimension N−1), have the same length and are orthogonal. In other words, the set of points has its centroid at the origin, spreads equally in two directions, and has no correlation between the two directions. It expresses, up to second order, that there is neither a special origin nor a special direction, and no meaning is left in which one is called real and which imaginary. This reading as two orthogonal vectors of equal length has already been given by [S6] as a Stiefel manifold.
+
+The complex number λ multiplying the whole (size and phase origin) is not fixed by the closure and cannot be read either. Removing it, the space of shapes of configurations satisfying the closure is the complex quadric Q_{N−3} (complex dimension N−3, real dimension 2N−6), which is the same as the Grassmannian of oriented 2-planes [S7, S8, X12]. For N = 3 it is a point (the equilateral triangle); for N = 4 it is Q₁ ≅ S². Solutions of Σz² = 0 are isotropic vectors, known to be expressible as squares of Cartan's simple spinors [X11].
+
+### 2.3 Self and the rest: an anonymous reading
+
+A reading that numbers the elements and makes a list of pairwise relations contains the assumption that the vertices are arranged on a ring and numbered, and it violates anonymity. In this paper we read that, for N ≥ 3, only "self" and "everything other than self" can be read. "Self" is not a name tag but a viewpoint; every element can equally be self. "The rest" is an unlabelled lump, and Σz = 0 fixes the sum of the rest to be exactly −z_k.
+
+Then self and two other points form a triangle, and a viewing angle can be read. The viewing angle is the argument of a ratio of differences, a dimensionless number unchanged when the whole is multiplied by λ. An edge can be represented by the orientation-free complex number e = (zⱼ − zₖ)², since it takes the same value when the two ends are swapped; this is the same mechanism as the distinguishability axiom (z and −z cannot be told apart at the squared layer). The linear sum at the edge layer is
+
+  Σ(all edges) (zⱼ − zₖ)² = N·Σzₙ² − (Σzₙ)² = 0,
+
+which closes from the vertex-layer closure with nothing added. Every edge is shared by N−2 triangles, and the edges cannot be told apart.
+
+As a range of interaction partners, "self and the rest" is all-to-all. Among the results that earlier papers obtained on a complete list of M = N(N−1)/2 relations, those that came from all-to-all interaction carry over even after the list is discarded.
+
+### 2.4 The most symmetric configuration of complex numbers: the cross
+
+Consider satisfying the three equations term by term through symmetry operations rather than as balanced sums. Multiplying by −1 satisfies Σz = 0, and multiplying by i satisfies Σz² = 0. The set of points closes under the rotation group Z₄ = {1, i, −1, −i}; N is a multiple of 4, all amplitudes are equal, the phase differences are fixed at 90°, and the shape is the cross {±z, ±iz}. The cross is the two-dimensional cross-polytope, and its square becomes a ±i pair. That ±i pairs cover everything for N = 8k was shown in [S10].
+
+The phase origin (the 0° direction) is not fixed, because the closure equations are unchanged when the whole is multiplied by e^(iφ). If a readout axis is placed, the orientation φ of the cross is not fixed from the system's side, and for a general orientation all four arms map only partly, through cos φ and sin φ. The readout is in general a partial projection [S3 §4.4].
+
+### 2.5 The dimension of the state and the readable dimension
+
+The dimension 2N−6 of the shape space grows without bound with N. It is a number of degrees of freedom of the state, not a dimension of space, just as N particles in three-dimensional space have 3N degrees of freedom that grow with N. The dimension readable as space should be bounded from the side of symmetry. The facts that give such bounds are all established mathematics and all stop at finite numbers.
+
+- Division algebras: those with the associative law are limited to the reals, complex numbers and quaternions (dimensions 1, 2, 4) [X6], and norm-preserving multiplication is limited to dimensions 1, 2, 4, 8 [X7]. That this series converges on dimension four is recorded in [S11].
+- Regular polytopes: there are 5 in three dimensions and 6 in four dimensions, and only 3 in five or more dimensions [X15].
+- Lattices and waves: rotations compatible with a lattice are limited to orders 1, 2, 3, 4, 6, and fourfold and sixfold symmetry coexist in the four-dimensional Hurwitz lattice [S15, X18]. Waves propagate without a tail only in odd dimensions [X17, S3 §3.4, S21].
+
+With real or complex numbers as the basic quantity, the relation between two points has only one angle, and relations are insufficient. We therefore take quaternions as the basic quantity.
+
+---
+
+## 3. From two complex numbers to a quaternion
+
+### 3.1 Construction
+
+From two complex numbers z₁, z₂ one forms the quaternion
+
+  q = z₁ + z₂ j ∈ ℍ
+
+(the Cayley–Dickson construction [X2, X3]). In real components, q = q₀ + q₁i + q₂j + q₃k with i² = j² = k² = ijk = −1 [X1]. Pairing 2N complex numbers (4N reals) two by two gives N quaternions (4N reals). The map can be inverted, so this step is a full projection (§10).
+
+Which complex numbers are paired, and which comes first in a pair, is a choice of reading of the same kind as naming two anonymous reals a, b "real part" and "imaginary part". If the closure conditions are written symmetrically in the components, the names affect neither the conditions nor the readable quantities.
+
+### 3.2 The true square
+
+The true (unconjugated) square of q = z₁ + z₂ j is
+
+  q² = (z₁² − |z₂|²) + 2 Re(z₁)·z₂ j
+
+(checked numerically, Table 4). The norm of the second half is subtracted from the true square of the first half, and the second half is multiplied by the real part of the first half. In terms of scalar and vector parts, for q = s + v (s = q₀, v = q₁i + q₂j + q₃k),
+
+  q² = (s² − |v|²) + 2s v.
+
+### 3.3 Notation
+
+The notation of this paper is summarised in the following table (the same as Table 5 of the figures folder).
+
+| Symbol | Meaning |
+|---|---|
+| ℍ | the quaternions |
+| q = q₀ + q₁i + q₂j + q₃k | a quaternion (qᵢ real) |
+| s (= q₀), v | scalar part (real part) and vector part (pure imaginary part, 3 components) |
+| q̄ = q₀ − v | conjugate. Norm \|q\|² = q q̄ = q₀² + \|v\|² |
+| q² = (q₀² − \|v\|²) + 2 q₀ v | true square (no conjugation) |
+| n | a pure imaginary quaternion of size 1 (n² = −1) |
+| q = \|q\| e^(n θ) = \|q\|(cos θ + n sin θ) | polar form; θ is the angle from the north pole (q = 1) |
+| S³ | the quaternions of size 1 (the quaternion circle) |
+| u = v/q₀ | coordinate on the tangent hyperplane q₀ = 1 at the north pole (image of the central projection) |
+| q = z₁ + z₂ j | representation by two complex numbers (ℍ ≅ ℂ²) |
+
+Notation table
+
+---
+
+## 4. The geometry of quaternions
+
+### 4.1 Just a four-dimensional vector, and multiplication
+
+Looking only at addition and size, a quaternion is just a four-dimensional vector (ℝ⁴). Σq = 0 is merely the condition that the centroid of the four-dimensional vectors is at the origin, and the norm |q|² is the Euclidean length q₀² + q₁² + q₂² + q₃². As a set of points the four components are completely symmetric, and there is no special direction.
+
+What differs from a four-dimensional vector is only multiplication. The scalar part of the true square q² is q₀² − |v|², and a (1, 3) form that does not appear for plain vectors shows up (§6). Multiplication from the left and right gives all four-dimensional rotations (SO(4)), and multiplying the same unit from both sides, q ↦ u q u⁻¹, gives a three-dimensional rotation that turns the vector part without moving the scalar part [X3]. A quaternion splits into 1 and 3 when it is read through multiplication.
+
+### 4.2 Polar form and the quaternion circle
+
+As with a complex number z = |z| e^(iθ), a quaternion can be written
+
+  q = |q| e^(n θ) = |q|(cos θ + n sin θ).
+
+Here n = n₁i + n₂j + n₃k is just a three-dimensional unit vector with n₁² + n₂² + n₃² = 1. Multiplied as a quaternion, however, n² = −1, and it works like the imaginary unit i. The quaternions whose square is −1 are all the n on the unit sphere S². The imaginary unit, only ±i for complex numbers, fills a whole sphere for quaternions.
+
+The quaternions of size 1 form the three-dimensional sphere S³, which we call the quaternion circle in this paper. Fixing θ fixes the real part at cos θ, and the vector part n sin θ moves over a sphere S² of radius sin θ as n changes direction. The quaternion circle is this S² stacked over the values of the real part: θ = 0 is the north pole (q = 1), θ = π/2 the equator (real part 0, the largest S² of radius 1), and θ = π the south pole (q = −1) (Figure 2). On the complex circle, fixing θ gives the two points ±sin θ for the imaginary part; on the quaternion circle those two points spread over a whole S².
+
+![Figure 2. Cutting the quaternion circle S³ at real part q₀ = cos θ gives a sphere S² of radius sin θ in (q₁, q₂, q₃) (top). The bottom row shows the position of the cut on the meridian.](図表/figures/fig2_s3_latitude_slices.png)
+
+Like the unit circle S¹, S³ is a group closed under multiplication (the unit quaternions, SU(2)). S¹ and S³ are the only spheres that are groups [S3 §3.4]. On S³, however, the result depends on the order of multiplication, so the three angles cannot simply be added.
+
+Writing the exponent as well,
+
+  q = e^(ln|q| + θ n),
+
+the exponent ln|q| + θn is also a quaternion: the scalar part is the logarithm of the amplitude and the vector part is a three-dimensional vector of length θ and direction n, so the 1+3 form is kept here too. Unlike complex numbers, e^(E₁) e^(E₂) = e^(E₁+E₂) holds only when the vector parts are parallel. Scalar parts always compose by addition.
+
+Coordinates on S³ can be chosen in more than one way. Besides the exponential form (the rotation angle θ and the two angles of the axis n), the Hopf coordinates q = |q|(cos η·e^(iξ₁) + sin η·e^(iξ₂) j) give the phases ξ₁, ξ₂ of two complex circles and the mixing angle η. All are different coordinates for the same points of S³.
+
+### 4.3 Left and right multiplication
+
+With components ordered (q₀, q₁, q₂, q₃), multiplying by n from the left and from the right are the following 4×4 real matrices.
+
+```
+L(n) = [  0   -n1  -n2  -n3 ]        R(n) = [  0   -n1  -n2  -n3 ]
+       [  n1   0   -n3   n2 ]               [  n1   0    n3  -n2 ]
+       [  n2   n3   0   -n1 ]               [  n2  -n3   0    n1 ]
+       [  n3  -n2   n1   0  ]               [  n3   n2  -n1   0  ]
+```
+
+Both square to −I and are rotation generators that work like the matrix [[0, −1], [1, 0]] of the complex i. Left and right differ only in the sign of the lower-right 3×3 block, which is the cross product with n for L(n) and its negative for R(n). The first row and column (which connect the scalar and vector parts) are the same for left and right. L(n) and R(n) commute.
+
+Splitting four dimensions into the {1, n} plane and the plane orthogonal to it, multiplying e^(nθ) from the left or from the right turns the {1, n} plane by the same angle θ, while the orthogonal plane turns by +θ from the left and −θ from the right. Multiplying from both sides,
+
+- e^(nθ) q e^(−nθ): the {1, n} plane does not move and the orthogonal plane turns by 2θ. This is a three-dimensional rotation that leaves the scalar part fixed (the angle doubles because of the double cover).
+- e^(nθ) q e^(nθ): the {1, n} plane turns by 2θ and the orthogonal plane does not move.
+
+Why the real part differs from the others can be read from the form of the matrices. The real part 1 is the only direction commuting with all quaternions, and it does not move when the same unit is multiplied from both sides. The remaining three components turn on the same sphere while remaining indistinguishable from each other.
+
+### 4.4 Viewing angles of triangles
+
+The viewing angle of §2.3 can also be expressed with quaternions. When vertex k looks at two points j, l, with the two edges d₁ = qⱼ − qₖ and d₂ = qₗ − qₖ,
+
+  d̄₁ d₂ = |d₁||d₂|(cos θ + n_R sin θ),  d₁ d̄₂ = |d₁||d₂|(cos θ + n_L sin θ).
+
+Both scalar parts are the same cos θ, and θ is the viewing angle. Three points lie on one plane even in four dimensions, so θ is the ordinary angle within that plane, and the three angles sum to π. Mapping the whole as s·a q b̄ (a, b unit quaternions, s real) leaves cos θ unchanged. The vector parts n_R and n_L are three-dimensional unit directions turned only by the right b and only by the left a, respectively, and the plane on which the triangle lies is determined by this pair of directions. The space of all oriented planes is S² × S², the same form as Q₂ ≅ S² × S² of §2.2 [X12].
+
+This angle is the Euclidean angle using the conjugate d̄. Using the scalar part of d₁d₂ without conjugation instead gives a (1, 3) inner product, and for timelike pairs a hyperbolic angle. Which angle is natural depends on which of the two forms of closure in §7 one takes.
+
+---
+
+## 5. Central projection: the polar form is exactly the gnomonic projection
+
+A quaternion with positive real part can be written q = q₀ (1 + v/q₀). Here 1 + v/q₀ is a point on the three-dimensional hyperplane q₀ = 1 tangent at the north pole (q = 1), and its coordinate is the ratio u = v/q₀. Projecting it from the origin to the sphere gives q/|q|, the point cos θ + n sin θ on the quaternion circle, and
+
+  u = v/q₀ = n tan θ.
+
+A point at distance tan θ from the north pole on the hyperplane maps to the point at angle θ on the sphere (Figure 3). The polar form of a quaternion is the same thing as the central projection (gnomonic projection) from the tangent hyperplane at the north pole.
+
+![Figure 3. Central projection onto the tangent plane at the north pole. Left: in the three dimensions q₃ = 0, the latitude circle at θ = 40° (blue) maps to a circle of radius tan θ on the tangent plane q₀ = 1 (orange). Right: in the cross-section, a point at angle θ maps to tan θ on the tangent line, and the point at θ = 120° passes through the opposite side of the origin and maps to the same point as −q.](図表/figures/fig3_gnomonic_projection.png)
+
+From this correspondence the following can be read directly.
+
+1. **The same structure as scale invariance.** The central projection maps q and λq (λ a positive real) to the same point. This is the same structure as the fact that the closure equations do not fix a ruler [S3 §3.3]; the readable quantity is the ratio v/q₀, which is dimensionless.
+2. **The equator goes to infinity.** The equator with real part 0 (θ = π/2) maps to infinity on the hyperplane. One hyperplane covers only the northern hemisphere.
+3. **±q map to the same point.** q and −q lie on the same line through the origin and map to the same point, so the hyperplane represents S³ with ±q identified (RP³). This has the same form as the double cover in which q and −q give the same three-dimensional rotation by unit quaternions.
+4. **Great circles map to straight lines.** The gnomonic projection maps great circles (geodesics on the sphere) to straight lines [X10]. A uniform rotation along a great circle on the quaternion circle (repeated multiplication by e^(nθ)) looks like a straight line on the hyperplane. Even when θ advances uniformly, however, the distance on the hyperplane advances as tan θ and is not uniform.
+
+The central projection is the starting point of the author's research programme [S13]; the gnomonic projection from S⁴ was treated in [S14], and the equatorial divergence and southern-hemisphere invisibility of the central projection in [S16]. That choosing a time direction is choosing a complex structure inside the quaternions, and that the polar form gives a clock and a phase at once, was shown in [S12]. The result of this paper lies between the polar form of quaternions and the central projection. Since the two are mathematically the same thing, reading by either gives the same map. That readout by central projection connects with theoretical physics has been shown in earlier papers [S13, S14]; reading by quaternions inherits the same connection unchanged.
+
+---
+
+## 6. The light cone
+
+The scalar part of the true square, q₀² − |v|², places the square of one scalar component and the squares of three vector components with opposite signs; it has signature (1, 3), that is, the Minkowski form. What was (1, 1), a² − b², for complex numbers becomes (1, 3) for quaternions. The metric is not placed from outside; it comes from the true square.
+
+For q = cos θ + n sin θ of size 1,
+
+  q² = cos 2θ + n sin 2θ,
+
+so the real part of the true square is q₀² − |v|² = cos 2θ (Figure 4).
+
+- θ < 45°: cos 2θ > 0, and q is inside the light cone q₀ = ±|v|.
+- θ = 45°: q lies on the light cone, and q² comes to real part 0 (the equator).
+- θ > 45°: cos 2θ < 0, and q is outside the light cone.
+
+The quaternion circle meets the light cone at θ = 45° (q₀ = ±1/√2). The light cone meets the tangent hyperplane q₀ = 1 in the sphere |u| = 1; in the image of the central projection, points inside the cone map to |u| < 1 and points outside to |u| > 1.
+
+![Figure 4. The light cone and the true square. For q = cos θ + n sin θ, the real part of the true square q² = cos 2θ + n sin 2θ is q₀² − |v|² = cos 2θ. At θ = 45°, q lies on the cone and q² comes to real part 0. The green circles are where the quaternion circle meets the cone.](図表/figures/fig4_light_cone_true_square.png)
+
+The origin of the light cone was treated in the twelfth thought experiment [S19], and the relation between the sum of true squares and the light cone in the integrated-hypothesis paper [S18]. That a zero-sum condition gives the (+, +, +, +, −) light cone [S20], and that the basic representation of zero closure imposes a light cone in four dimensions [S6], have also been published. This paper shows that it is already contained within a single quaternion, as the scalar part of its true square.
+
+---
+
+## 7. Two forms of closure
+
+### 7.1 The true-square closure and the isotropic closure
+
+Impose a closure on N quaternions {qₙ}. Writing it with the four real vectors q₀, q₁, q₂, q₃ that list the values at each vertex component by component, two forms can be considered (Table 1).
+
+1. **The true-square closure** (Σq = 0 and Σq² = 0): four linear equations and four from the sum of q² = (q₀² − |v|²) + 2q₀v, eight in all.
+   - Σq₀ = Σq₁ = Σq₂ = Σq₃ = 0
+   - Σq₀² = Σq₁² + Σq₂² + Σq₃²
+   - Σq₀q₁ = Σq₀q₂ = Σq₀q₃ = 0
+
+   Only q₀ is treated differently from q₁, q₂, q₃, and the components split into 1+3. No condition is imposed on the lengths or orthogonality among q₁, q₂, q₃.
+2. **The isotropic closure**: the three equations for complex numbers extended directly to four vectors. Four linear equations, three equal square sums and six vanishing cross terms, thirteen in all. It is the condition that the 4×4 second-moment matrix Σ qqᵀ is a multiple of the identity, that is, an isotropic spread in four directions; the four vectors are on an equal footing.
+
+| Basic quantity | Linear sum | Second order (lengths) | Second order (cross terms) | Total | Content |
+|---|---|---|---|---|---|
+| complex z = a + bi | Σa = Σb = 0 (2) | Σa² = Σb² (1) | Σab = 0 (1) | 4 | same as Σz = 0 and Σz² = 0 |
+| quaternion, true square | Σq₀ = … = Σq₃ = 0 (4) | Σq₀² = Σq₁² + Σq₂² + Σq₃² (1) | Σq₀q₁ = Σq₀q₂ = Σq₀q₃ = 0 (3) | 8 | splits into 1+3 |
+| quaternion, isotropic | Σq₀ = … = Σq₃ = 0 (4) | Σq₀² = Σq₁² = Σq₂² = Σq₃² (3) | all six cross terms vanish (6) | 13 | four components on an equal footing |
+
+Table 1. Numbers of closure conditions
+
+For complex numbers the two coincided, because Σa² = Σb² and Σab = 0 are exactly the true-square zero closure. For quaternions they do not.
+
+### 7.2 The two are incompatible
+
+**Proposition 1.** A nonzero configuration satisfying the isotropic closure does not satisfy the true-square closure.
+
+**Proof.** If isotropic, Σq₀² = Σq₁² = Σq₂² = Σq₃² = s > 0. The scalar part of Σq² is Σq₀² − Σ|v|² = s − 3s = −2s ≠ 0. □
+
+The 16-cell {±1, ±i, ±j, ±k} (N = 8) is an example. These eight points themselves form a group closed under multiplication (the quaternion group Q₈), of the same form as the complex cross being the rotation group Z₄: it is the four-dimensional version of the cross. Σq = 0, and the second moment is 2I, satisfying the thirteen isotropic conditions, but Σq₀² = 2, Σ|v|² = 6 and Σq² = −4 (Figure 5). This value does not change under any four-dimensional rotation.
+
+![Figure 5. The 16-cell {±1, ±i, ±j, ±k}. Left: the imaginary parts of the vertices and the 24 edges (great-circle arcs). Centre: positions relative to the light cone; ±1 are inside and ±i, ±j, ±k outside. Right: Σq₀² : Σ|v|² = 1 : 3, so Σq² = −4.](図表/figures/fig5_16cell_isotropic_vs_true_square.png)
+
+### 7.3 The symmetry preserving the closure
+
+The true-square closure is preserved only by rotations multiplying the same unit from both sides, q ↦ u q u⁻¹ (three-dimensional rotations), and by real scaling. Multiplying a unit quaternion from one side does not preserve Σq²; for example, multiplying u from the left gives (uq)² = uquq, which is not u q². Checking with the icosahedral configuration (§8), |Σq²| after rotating with the same unit from both sides is 2.7 × 10⁻¹⁵ and preserved, while rotating left and right separately breaks it to 15.71 (Table 4).
+
+For complex numbers, multiplying the whole by e^(iφ) preserved the closure, a and b mixed on an equal footing, and the phase origin was not fixed (§2.4). For quaternions, operations that move the scalar axis break the closure, so the scalar axis can be read as a separate axis that symmetry does not move. The three axes of the vector part cannot be told apart, and what is not fixed is only the orientation of space (three-dimensional rotation). The 1+3 split comes from the symmetry that preserves the closure.
+
+---
+
+## 8. The most symmetric configuration: q = ±e^(π n/4)
+
+### 8.1 Derivation
+
+Among configurations satisfying the true-square closure Σq = 0, Σq² = 0, we seek the most symmetric.
+
+At the highest symmetry, every q is carried to every other q by a symmetry operation. The operations preserving the closure are three-dimensional rotations multiplying the same unit from both sides, real scaling, and ± (z and −z cannot be told apart at the squared layer). If all q are equivalent, the size |q| and the scalar part of the true square q₀² − |v|² take the same value c for all q.
+
+The scalar part of Σq² is N·c, and since it is 0, c = 0, that is, q₀² = |v|². It is not that the total sum vanishes: each q individually lies on the light cone. Normalising the size to 1 fixes θ = 45°, and
+
+  q = ±(1 + n)/√2 = ±e^(π n/4).
+
+The true square is
+
+  q² = (1 + n)²/2 = (1 − 1 + 2n)/2 = n,
+
+the pure imaginary unit vector n itself. Σq = 0 holds automatically by the ± pairs, and since Σq² = 2Σn, Σq² = 0 is the same condition as Σn = 0. Placing the set of directions {n_k} most symmetrically gives the vertices of a regular polyhedron, which satisfy Σn = 0 and also spread isotropically in three directions (a spherical 2-design [X16]). Since e^(π n/4) returns to 1 at the eighth power, the finite-order return Uⁿ = I (n = 8) comes out of this form.
+
+### 8.2 List of solutions
+
+| Configuration of directions n | N | \|Σq\| | \|Σq²\| | Diagonal of second moment | max \|q₀² − \|v\|²\| | max \|q² − n\| | max \|q⁸ − 1\| |
+|---|---|---|---|---|---|---|---|
+| one complex plane (n = ±i) | 4 | 0 | 0 | 2, 2, 0, 0 | 0 | 2.2e-16 | 6.7e-16 |
+| regular tetrahedron | 8 | 0 | 4.4e-16 | 4, 1.333, 1.333, 1.333 | 1.1e-16 | 2.0e-16 | 5.3e-16 |
+| regular octahedron | 12 | 0 | 0 | 6, 2, 2, 2 | 0 | 2.2e-16 | 6.7e-16 |
+| cube | 16 | 0 | 9.9e-16 | 8, 2.667, 2.667, 2.667 | 1.1e-16 | 2.0e-16 | 5.3e-16 |
+| regular icosahedron | 24 | 0 | 2.2e-16 | 12, 4, 4, 4 | 0 | 2.5e-16 | 7.8e-16 |
+| regular dodecahedron | 40 | 0 | 3.7e-15 | 20, 6.667, 6.667, 6.667 | 1.1e-16 | 2.0e-16 | 5.3e-16 |
+
+Table 3. List of the most symmetric solutions q = ±(1 + n)/√2 (double-precision computation; 0 means the computed result is exactly 0)
+
+The case of one complex plane (n = ±i, N = 4) is the complex cross rotated by 45°, that is, the primitive eighth roots of unity; the diagonal of the second moment is (2, 2, 0, 0), and only one spatial direction opens. From the regular tetrahedron (N = 8) on, the three spatial directions are isotropic, and the ratio of second moments is q₀ : q₁ : q₂ : q₃ = 3 : 1 : 1 : 1. Among the regular polyhedra, the icosahedron (N = 24) has the highest symmetry. Icosahedral symmetry also appears in the projection that makes a four-dimensional quasicrystal from E₈ [X19].
+
+In the icosahedral case, the 24 q map under central projection to 12 points u = n, all lying on the image |u| = 1 of the light cone and forming the vertices of an icosahedron (Figure 6, left). Shifting the overall latitude θ from 45° to q = ±(cos θ + n sin θ), the sum over the 24 becomes Σq² = 24 cos 2θ, which vanishes only at θ = 45° and 135° (Figure 6, right).
+
+![Figure 6. The most symmetric form q = ±e^(π n/4) (n the 12 icosahedral directions, N = 24). Left: the image u = n in the tangent hyperplane, all on |u| = 1, with edges mapped to straight lines. Right: the real part of Σq² against the overall latitude θ, equal to 24 cos 2θ.](図表/figures/fig6_most_symmetric_icosahedral.png)
+
+### 8.3 Difference from complex numbers, and a less symmetric solution
+
+For the complex cross the phase origin was free: {±1, ±i} and {±e^(±iπ/4)}, rotated by 45°, were the same thing. For quaternions, one-sided multiplication that moves the scalar axis does not preserve Σq², so the angle is fixed at 45°. What remains free is only the orientation of space (three-dimensional rotation).
+
+The 16-cell with its spatial part shrunk by 1/√3, {±1, ±i/√3, ±j/√3, ±k/√3}, also satisfies both closures (Σq₀² = 2, Σ|v|² = 6 × 1/3 = 2). However, ±1 and the rest have different sizes, and not all q are equivalent. It is a type one step lower in symmetry.
+
+---
+
+## 9. N and the number of directions that open as space
+
+In the true-square closure, the three spatial vectors q₁, q₂, q₃ are orthogonal to q₀ (Σq₀qᵢ = 0), and all four lie in the (N−1)-dimensional sum-zero space. The three spatial vectors can therefore only lie in the remaining N−2 dimensions. The number of directions that can open as space is
+
+  min(3, N−2).
+
+For N = 3 there is one direction (one complex plane, fixed to the equilateral triangle); for N = 4 up to two (the cross being the special case that fits in a plane); for N ≥ 5 three, saturating at three. It saturates because the vector part of a quaternion has only three components. For each N we actually constructed a solution and confirmed that the rank of the spatial components is min(3, N−2) (Table 2).
+
+| N | complex (complex dim.) | quaternion, true square (real) | quaternion, isotropic (real) | spatial directions min(3, N−2) | rank of spatial components of the constructed solution |
+|---|---|---|---|---|---|
+| 3 | 0 | 0 | no solution | 1 | 1 |
+| 4 | 1 | 4 | no solution | 2 | 2 |
+| 5 | 2 | 8 | 0 | 3 | 3 |
+| 6 | 3 | 12 | 4 | 3 | 3 |
+| 7 | 4 | 16 | 8 | 3 | 3 |
+| 8 | 5 | 20 | 12 | 3 | 3 |
+| 9 | 6 | 24 | 16 | 3 | 3 |
+| 10 | 7 | 28 | 20 | 3 | 3 |
+
+Table 2. Degrees of freedom of shape (after removing the closure conditions and the unreadable global symmetry) and the number of directions that open as space
+
+The degrees of freedom are 4(N−3) on the true-square side and 4(N−5) on the isotropic side, so neither is over-constrained. The minimum on the isotropic side is the 5-cell at N = 5 (zero degrees of freedom, a unique shape), of the same form as the complex case at N = 3, where only the equilateral triangle existed. The degrees of freedom of the state grow with N, but the space in which each vertex lives is the four-dimensional quaternions regardless of N, and the directions that can open as space stop at three.
+
+The smallest number at which three spatial directions open isotropically is N = 5. N = 5 also appeared as a special place in the self-consistent inflation paper [S28] and the paper on the emergence of a three-direction space [S24]. We do not, however, connect those numbers (for example the 13 closures at N = 5) with the numbers of this paper (13 isotropic conditions) because they coincide. Connecting coincident numbers of different origin is the Eddington trap [S3 §4.3].
+
+---
+
+## 10. The chain of maps and partial projection
+
+Looking at the chain step by step gives the following (Table 4).
+
+| Step | Map | Readable components | Escaping components | Verdict | Numerical check |
+|---|---|---|---|---|---|
+| 1 | {zₙ} (2N) → {qₙ} (N), q = z₁ + z₂ j | all 4N reals | none | full projection | inverse map restores the input (max error 0); true square is (z₁² − \|z₂\|²) + 2 Re(z₁)·z₂ j (error 4.4e-16) |
+| 2 | q → central projection onto the tangent hyperplane at the north pole, u = v/q₀ = n tan θ | 3 components of the ratio v/q₀ | size \|q\|, sign ±, equator (q₀ = 0 at infinity) | partial projection | image unchanged under 3.7× scaling and under −q (difference 0) |
+| 3 | global symmetry | ― | three-dimensional rotation by the same unit from both sides, and real scaling | not readable | \|Σq²\| after rotation = 2.7e-15 (preserved); 15.71 when left and right are rotated separately |
+
+Table 4. Each step of the map: full or partial projection
+
+The chain of maps as a whole is a partial projection. The readable part is the three components of the ratio v/q₀; the size |q|, the twofold sign, the equator and the global rotation escape the readout.
+
+The previous catalogue [S3 §4.4] stated that, since spacetime is read fairly stably, the map must be at least a partial projection. If the projection were zero, no spacetime would appear; if it were full, neither an unreadable interior nor uncertainty nor discreteness would remain. For a partial projection, the projected part becomes the readable spacetime and the part escaping orthogonally becomes the unreadable interior and phase. The map of this paper is a concrete form that satisfies this condition. The framework of partial projection was set up in the basic axiom system [S1] and in the paper on anonymous partial projection [S17].
+
+Whether the escaping components (size and sign) correspond to the unobservable side (R, Q₁Q₂Q₃) is a question to be examined together with the octonion stage that adds another quaternion (§12.2). This paper does not claim that correspondence.
+
+A word on naming. The quaternion components carry no colours such as time t, space xyz, interior Q or radius R. The scalar and vector parts, the two three-dimensional directions n_L, n_R turned by left and right multiplication, and the norm and the scalar part of the true square are all anonymous components. Which is called what is decided by the choice of readout map, and names are attached afterwards to properties of the readout (whether it reads as continuous, or as discrete and non-interfering) [S3]. That the same quantity appears under different names on the two sides of a duality is the same as in the scheme of [X23].
+
+Also, the state space has no time, no space and no distance. Two entities are related within one state while remaining able to interfere. Spacetime distance appears only after readout. The puzzle of EPR and the Bell inequalities is how it looks from the readout side, where entities at a distance are entangled; on the state-space side they are one and coherent from the start. Composition in this paper is the summation of vertices (a direct sum) and uses no tensor product. The known difficulty of composing several systems in quaternionic quantum mechanics [X8, X9] does not arise in this system. Uncertainty and discreteness are likewise not properties of the state space itself; they come from evolution and readout.
+
+---
+
+## 11. Position among earlier studies
+
+### 11.1 Results already published (re-read here in the language of quaternions)
+
+The following results of this paper have already been given in other words in the author's published papers. They are not presented as discoveries of this paper, but re-read as the entrance to the map to quaternions.
+
+- That the three equations for complex numbers amount to "two orthogonal vectors of equal length in the sum-zero space": the reading of zero closure as a Stiefel manifold [S6].
+- That the space of shapes of configurations satisfying the closure is a projective quadric [S7]; that the closure space is C_k = Q_{k−2}/S_k and the minimum of z² = 0 is two waves z₂ = ±iz₁ [S8].
+- The 90° floor given by Z₄ phase labels, the cycling of squared waves, and the covering by ±i pairs for N = 8k [S9, S10].
+- That choosing a time direction is choosing a complex structure inside the quaternions, and that the polar form gives a clock and a phase at once [S12].
+- That the readout of spatial directions saturates at three: shown numerically by the earlier N-body series on complete pairwise relational waves [S22, S23, S24]. The min(3, N−2) of this paper shows the same saturation algebraically, in the reading with N vertices.
+- The equatorial divergence and southern-hemisphere invisibility of the inverse of the central projection [S16].
+
+### 11.2 Claims made for the first time in this paper
+
+- That the polar form of a quaternion is exactly the central projection onto the tangent hyperplane at the north pole, and that the map {zₙ} → {qₙ} → (1+3) is built by it (§5).
+- That the isotropic closure and the true-square closure are incompatible (Proposition 1, §7.2).
+- That the most symmetric configuration q = ±e^(π n/4) lies on the light cone element by element, with q² = n and q⁸ = 1, and is given by the vertices of regular polyhedra (§8).
+- That the chain of maps is a partial projection, with readable and escaping components as in Table 4 (§10).
+
+### 11.3 Relation to external earlier work
+
+As attempts to read out spatial geometry from a state space (a Hilbert space), Cao, Carroll and Michalakis recover geometry from the structure of entanglement [X20], and Carroll and Singh start from a minimal quantum mechanics [X21]. Stoica argued that three-dimensional space and a preferred basis cannot emerge uniquely from the quantum structure [X22]. The position of this paper is that the map is a partial projection into which a choice of reading (which name to give to which component) enters, and this does not contradict Stoica's argument. What does not come out uniquely is the choice of reading that gives names, and this paper places that choice not on the side of the state but on the side of the readout.
+
+That the coefficients of a Hilbert space are limited to the reals, complex numbers and quaternions is known as Solèr's theorem [X8], and quantum mechanics on quaternionic Hilbert space was developed by Adler [X9]. The state {qₙ} of this paper can be seen as a quaternionic vector with the quaternion-valued Hermitian form ⟨p, q⟩ = Σ p̄ₙqₙ, and the linear closure is the condition of orthogonality to (1, 1, …, 1). The difference is that, besides the Hermitian form (the side of the norm), this system uses the unconjugated true square Σqₙqₙ as a closure condition.
+
+The complex quadric Q₄ is the Klein quadric, used in twistor theory as the complexified and compactified Minkowski spacetime [X13, X14]. The shape space Q_{N−3} of this paper becomes the same object at N = 7. Whether this coincidence is related to the readout of spacetime is not treated in this paper.
+
+The correspondence between division algebras (reals, complex numbers, quaternions, octonions) and the Standard Model of particle physics has been studied by Gürsey and Tze [X24], Furey [X25] and Boyle et al. [X26]. This paper claims nothing about octonions; they are mentioned only as background to the task of §12.2.
+
+---
+
+## 12. Next tasks
+
+### 12.1 Task 1: the (1+3) map of localization by equal-amplitude harmonics
+
+For complex numbers, superposing equal-amplitude harmonics (all, odd, even) produced localization [S25, S18]. Odd harmonics close after two turns and even harmonics after one. Assuming localization can be produced for quaternions by the same superposition, what is seen when it is mapped to (1+3)(t, xyz) has not yet been checked.
+
+Superposing harmonics e^(n k θ) (k = 1, 2, …) along one axis n puts all terms into the single complex plane spanned by 1 and n, and the result is exactly the complex localization. On S³ it is a localization along one great circle, and its image under central projection is a localization on the straight line u = n tan θ, that is, localized in only one spatial direction. To be read as a point localized in three spatial directions (the position of a particle), the harmonics must be spread over the whole of S³, for example by giving harmonics to each of the two phases and the mixing angle of the Hopf coordinates. Where the peak of localization forms under such a superposition, what shape it takes in the image u on the tangent hyperplane, and what remains on the side of the real part q₀, is what must be checked. The exchange of harmonics of localized waves was treated in the thirteenth thought experiment [S26].
+
+### 12.2 Task 2: octonions from two quaternions, and the (1+3)(1+3) map
+
+Just as two complex numbers make a quaternion, two quaternions make an octonion o = q + p ℓ [X2, X4, X5]. The form of the true square repeats with the same pattern.
+
+- Quaternion (two complex numbers): q² = (z₁² − |z₂|²) + 2 Re(z₁)·z₂ j
+- Octonion (two quaternions): o² = (q² − |p|²) + 2 q₀·p ℓ
+
+The question is whether the map to (1+3)(1+3)(t, xyz)(R, Q₁Q₂Q₃) can be reached by the same procedure. Two new problems arise. First, the associative law fails for octonions (outside Frobenius's theorem, inside Hurwitz's theorem [X6, X7]). The operation of rotating by left and right multiplication used for quaternions cannot be composed as it is, and what symmetry preserves the closure must be decided anew. Second, the units of the integral octonions number 240, the same as the roots of E₈ [X3, X18]. Seeking the most symmetric configuration may connect directly to the E₈ rows of the catalogue [S3]. The reference for comparison is the eleventh thought experiment, which made the answer table for two bodies in the Standard Model [S27].
+
+### 12.3 Task 3: all-to-all self-interaction and inflation-like expansion
+
+Self-interaction of highly symmetric configurations of complex numbers produced inflation-like expansion [S28, S29, S30]. The most symmetric parent was a relative equilibrium; it was unstable, and the components leaving the parent plane grew exponentially. What mattered was not the list of relations but that each element interacts with all others (all-to-all) (§2.3).
+
+The question is whether all-to-all self-interaction of highly symmetric quaternions also produces inflation-like expansion. The meaning splits in two depending on where the parent is placed.
+
+- If the parent fits in one complex plane (the cross, a regular N-gon): configurations of complex numbers are solutions of the quaternion closure as they are, and motion within the plane should reproduce the earlier result. What can newly be asked is whether the two imaginary directions orthogonal to the plane grow; if they do, this is an expansion in which three-dimensional space opens from a plane. Since the vector part has three components, it should stop when three directions have opened, and an end of inflation, absent for complex numbers, may come out of the structure. This comes to the same place as "three directions first open at N ≥ 5" in §9. It can also be compared with the earlier series, in which an independent third direction arose from two and no further direction appeared [S24].
+- If the parent is already the most symmetric form (the icosahedron): the three directions are already open isotropically, and no new direction remains to open within the quaternions. If it is unstable nonetheless, growth can only go outside the quaternions, toward another quaternion (the second half of the octonion), which connects to Task 2.
+
+Only left and right multiplication can be used for the self-interaction, and of these only rotations by the same unit from both sides and real scaling preserve Σq² (§7.3). How to write the self-interaction will be decided after checking the whole design before implementation.
+
+---
+
+## 13. Conclusion
+
+Pairing the set of complex numbers {zₙ} two by two into quaternions {qₙ}, the polar form of a quaternion is exactly the central projection onto the tangent hyperplane at the north pole, and the (1, 3) light cone comes from the scalar part of the true square. With this, the map {zₙ} (2N) → {qₙ} (N) → (1+3)(t, xyz) is built from the axioms of anonymity, self-consistency and distinguishability and the two zero closures alone. The only new element is the reading of two complex numbers as one quaternion.
+
+There are two forms of closure, the isotropic one that treats the four components equally and the true-square one, and they are incompatible. The symmetry preserving the true-square closure is only three-dimensional rotation and real scaling, and the 1+3 split comes from this symmetry. The most symmetric configuration is q = ±e^(π n/4): each lies on the light cone, with q² = n and q⁸ = 1. The directions that open as space number min(3, N−2), saturating at three, and the smallest number at which three directions open isotropically is N = 5.
+
+In the chain of maps, the step from complex numbers to quaternions is a full projection and the central-projection step a partial projection, so the whole is a partial projection. Size, sign, the equator and the global rotation escape the readout. This is a concrete form satisfying the requirement of the previous catalogue that, since spacetime is read stably, the map must be at least a partial projection.
+
+Three tasks remain: the (1+3) map of localization by equal-amplitude harmonics, the (1+3)(1+3) map by octonions, and inflation-like expansion from all-to-all self-interaction.
+
+---
+
+## References
+
+### Self-citations (Concept DOI, 10.5281/zenodo.[number])
+
+[S1] N. Kihara, "Anonymous Equal-Amplitude Composite-Wave Model: Basic Axiom System v9," 2026-07-24. Concept DOI 10.5281/zenodo.21315735.  
+[S2] N. Kihara, "Symmetry Generation from Zero Closure, Finite Order, and Self-Consistent Geometry: The Single External Parameter N and the Remaining Tasks of Generalization and Dynamics," 2026-08-20. Concept DOI 10.5281/zenodo.22028072.  
+[S3] N. Kihara, "A Catalogue of Symmetries and Magic Numbers for Reading Out Spacetime from a State Space: The Answer-Check Standard of a Research Programme Taking Anonymity and Self-Consistency as Axioms," 2026-10-18. Concept DOI 10.5281/zenodo.23444451.  
+[S4] N. Kihara, "Complex Phase Structure Emerging from Nontrivial Quadratic Closure: A Foundational Connection to Finite-Order Exchange Systems and Discrete Born-Type Weights," 2026-07-18. Concept DOI 10.5281/zenodo.21422505.  
+[S5] N. Kihara, "On the Connection Between the Conjugate Complex Norm and Square-Quantity Readout," 2026-07-02. Concept DOI 10.5281/zenodo.21126212.  
+[S6] N. Kihara, "Zero Closure Was Four-Dimensional: An Interpretive Note on the Geometry and Algebra of Sum x_n^2 = 0," 2026-08-12. Concept DOI 10.5281/zenodo.21902805.  
+[S7] N. Kihara, "The Geometric Identity of the Zero-Square-Sum Constraint under Scale Invariance: Isotropic Cone, Projective Quadric, and Intrinsic Quantum Structure — An Expository Note," 2026-07-22. Concept DOI 10.5281/zenodo.21495305.  
+[S8] N. Kihara, "Anonymity and the Minimal Unit of Information: A Single Wave Cannot Carry Information, and the Minimal Zero-Closure Block (Two-Wave +-i Pair) Carries the S_N-Invariant Type (Exploratory Paper)," 2026-09-12. Concept DOI 10.5281/zenodo.22729127.  
+[S9] N. Kihara, "Analytic Exact Solution of the 90-Degree High-Symmetry Floor: The sigma_max Eigenmode of the Integer Antisymmetric Generator Defined by Z4 Phase Labels, and the Closed-Form Spectrum," 2026-09-12. Concept DOI 10.5281/zenodo.22728995.  
+[S10] N. Kihara, "Zero-Closure Factorization of the High-Symmetry Floor: Complete +-i Photon-Pair Covering for Even Systems N=8k and the Minimal p-Wave Condensate for Odd Systems," 2026-09-12. Concept DOI 10.5281/zenodo.22729080.  
+[S11] N. Kihara, "A Thought Experiment on a Model Particle — From the Phase-Area Floor to the Admissibility Condition for Dimension," 2026-06-03. Concept DOI 10.5281/zenodo.20528511.  
+[S12] N. Kihara, "The Choice of Time Direction and the Stage for Amplitudes: the Marking Theorem, Derived Z4 Phases, Inversion Holonomy, and the Canonical Counting Theorem (Dual Geometry of Wavelength and Frequency Spaces, Paper 14)," 2026-06-14. Concept DOI 10.5281/zenodo.20665661.  
+[S13] N. Kihara, "Geometric Formulation of 4-Dimensional Space via Central Projection," 2026-04-05. Concept DOI 10.5281/zenodo.19427779.  
+[S14] N. Kihara, "Gnomonic Projection from $S^4$ and the Schwarzschild-like Form of the Induced Metric on a Four-Dimensional Subjective Chart (Paper 2)," 2026-04-28. Concept DOI 10.5281/zenodo.19837589.  
+[S15] N. Kihara, "The Fourteenth Thought Experiment: Why Can Different Symmetries Never Be Fully Reconciled? - Non-commensurability, Pull-in and Metastability of Integer-Selecting Symmetries, and Readout along the Direction of Evolution," 2026-10-12. Concept DOI 10.5281/zenodo.23315557.  
+[S16] N. Kihara, "Full Spherical Coverage of Central Projection in Discrete Space and the Number-Theoretic Necessity of 5-Dimensional Background Space," 2026-04-17. Concept DOI 10.5281/zenodo.19624956.  
+[S17] N. Kihara, "An Axiomatic Framework for Physical Symmetry Selection by Anonymous Partial Projection: Conditional Identification of E8 in an Eight-Component Two-Quartet Branch," 2026-07-24. Concept DOI 10.5281/zenodo.21521899.  
+[S18] N. Kihara, "Reading Out Time, Space, Mass, Charge, Translational Velocity and Spin from the Relations and Interference of Complex Waves without a Background Spacetime: An Integrated Hypothesis in the Order of the Thought Experiment, from Residents of a Closed Circle to Residents of a Four-Dimensional Spherical Shell, and on to α, the Four-Dimensional Lattice and E8," 2026-10-15. Concept DOI 10.5281/zenodo.23384928.  
+[S19] N. Kihara, "The Twelfth Thought Experiment: From the Fine-Structure Constant to Observation Maps and Gauge Symmetry - Starting from the Fine-Structure Constant, Rereading Spacetime, Mass, Charge, Color Charge and Gauge Symmetry from the Light-Cone Equation and the Choice of Observable Axes," 2026-10-08. Concept DOI 10.5281/zenodo.23226258.  
+[S20] N. Kihara, "A Thought Experiment on a Model Particle (Continued) — The Fifth Frequency and the Composite Curvature Radius Seen from a Zero-Sum Condition," 2026-06-04. Concept DOI 10.5281/zenodo.20535894.  
+[S21] N. Kihara, "Shape-Invariant Standing Waves on Closed Spheres: Stability per Dimension and the Geometric Necessity of 3+1 Spacetime," 2026-04-24. Concept DOI 10.5281/zenodo.19731593.  
+[S22] N. Kihara, "Three XYZ Directions Read from Complete Pairwise Relational Waves: Growth of Internal Relational Directions and Saturation of Spatial-Direction Readout in Closed AB, ABC, and ABCD Systems," 2026-07-20. Concept DOI 10.5281/zenodo.21454789.  
+[S23] N. Kihara, "Linear Upper Bound on Generator Rank and Three-Direction Saturation of Spatial-Direction Readout in N-Body Complete Pairwise Relational Waves," 2026-07-21. Concept DOI 10.5281/zenodo.21465898.  
+[S24] N. Kihara, "Emergence of a Three-Direction Space in an N-Body Relational-Wave Closed System: Generation of a Third Direction from a Two-Direction Initial State and a Quasi-Stable Closure," 2026-07-26. Concept DOI 10.5281/zenodo.21578401.  
+[S25] N. Kihara, "An Observation on the Isolated Peak Wave of a Constant-Amplitude Odd-Harmonic Sum on a Half-Wavelength Phase Interval and Its Localization," 2026-06-30. Concept DOI 10.5281/zenodo.20833096.  
+[S26] N. Kihara, "The Thirteenth Thought Experiment: Why Does a Particle That Has Acquired Mass Not Dissipate and Vanish? - Coherence as a Relation, Harmonic Exchange of Localized Waves, Internal Clocks and Particle Lifetimes Considered from a Single Interaction," 2026-10-10. Concept DOI 10.5281/zenodo.23266250.  
+[S27] N. Kihara, "The Eleventh Thought Experiment: Emission Records of Two-Body Systems without a Background Spacetime - Computing Standard Theory (Dirac-Coulomb Bound States, 1PN Two-Body Gravity, Einstein A Coefficients) Referenced Only to the Rest Frame of an Absorber at Infinity, and Reading Out Emission-Absorption Relations for the Hydrogen Atom, Electron-Electron, Proton-Proton and the Hydrogen Molecule," 2026-10-07. Concept DOI 10.5281/zenodo.23199299.  
+[S28] N. Kihara, "Mechanism of Inflation-like Rapid Expansion in Self-Consistent Closed Relational-Wave Systems — Second Edition: Correction of Computational Conditions and Re-examination for N = 3–16," 2026-08-30. Concept DOI 10.5281/zenodo.22112008.  
+[S29] N. Kihara, "Dynamics of a Self-Consistent Relational-Wave Closed System: From the Local Instability of the 90-Degree Relative Equilibrium to Inflation, Spontaneous Symmetry Breaking, Grassmann Geometry, Terminal Universality and Relationalism," 2026-09-12. Concept DOI 10.5281/zenodo.22729146.  
+[S30] N. Kihara, "Geometric Rapid Expansion Is Specific to Unstable Self-Consistent Closures: Causal Discrimination of Onset Modes via Generic Zero-Closure Initial States," 2026-08-05. Concept DOI 10.5281/zenodo.21798854.  
+
+### External references
+
+[X1] W. R. Hamilton, "On Quaternions; or on a new System of Imaginaries in Algebra," *Philosophical Magazine* (3rd series) 25 (1844) 10–13 (first of 18 instalments, 1844–1850).  
+[X2] L. E. Dickson, "On Quaternions and Their Generalization and the History of the Eight Square Theorem," *Annals of Mathematics* (2nd series) 20 (1919) 155–171.  
+[X3] J. H. Conway, D. A. Smith, *On Quaternions and Octonions: Their Geometry, Arithmetic, and Symmetry* (A K Peters, Natick, 2003).  
+[X4] J. C. Baez, "The Octonions," *Bulletin of the American Mathematical Society* 39 (2002) 145–205.  
+[X5] A. Cayley, "On Jacobi's elliptic functions, in reply to the Rev. Brice Bronwin; and on quaternions," *Philosophical Magazine* 26 (1845) 208–211.  
+[X6] G. Frobenius, "Über lineare Substitutionen und bilineare Formen," *Journal für die reine und angewandte Mathematik* 84 (1878) 1–63.  
+[X7] A. Hurwitz, "Ueber die Composition der quadratischen Formen von beliebig vielen Variablen," *Nachrichten von der Gesellschaft der Wissenschaften zu Göttingen, Mathematisch-Physikalische Klasse* (1898) 309–316.  
+[X8] M. P. Solèr, "Characterization of Hilbert spaces by orthomodular spaces," *Communications in Algebra* 23 (1995) 219–243.  
+[X9] S. L. Adler, *Quaternionic Quantum Mechanics and Quantum Fields* (Oxford University Press, 1995; International Series of Monographs on Physics 88).  
+[X10] J. P. Snyder, *Map Projections—A Working Manual*, U.S. Geological Survey Professional Paper 1395 (U.S. Government Printing Office, Washington, 1987), gnomonic projection pp. 164–168.  
+[X11] É. Cartan, *The Theory of Spinors* (MIT Press, 1966; Dover, 1981).  
+[X12] S. Kobayashi, K. Nomizu, *Foundations of Differential Geometry*, Vol. II (Interscience/Wiley, 1969).  
+[X13] R. Penrose, "Twistor Algebra," *Journal of Mathematical Physics* 8 (1967) 345–366, doi:10.1063/1.1705200.  
+[X14] R. S. Ward, R. O. Wells, Jr., *Twistor Geometry and Field Theory* (Cambridge University Press, 1990).  
+[X15] H. S. M. Coxeter, *Regular Polytopes*, 3rd ed. (Dover, New York, 1973).  
+[X16] P. Delsarte, J. M. Goethals, J. J. Seidel, "Spherical codes and designs," *Geometriae Dedicata* 6 (1977) 363–388.  
+[X17] R. Courant, D. Hilbert, *Methods of Mathematical Physics*, Vol. II (Interscience, 1962); Huygens' principle and odd dimensions.  
+[X18] J. H. Conway, N. J. A. Sloane, *Sphere Packings, Lattices and Groups* (Springer).  
+[X19] V. Elser, N. J. A. Sloane, "A highly symmetric four-dimensional quasicrystal," *J. Phys. A* (1987).  
+[X20] C. Cao, S. M. Carroll, S. Michalakis, "Space from Hilbert Space: Recovering Geometry from Bulk Entanglement," *Phys. Rev. D* 95 (2017); arXiv:1606.08444.  
+[X21] S. M. Carroll, A. Singh, "Mad-Dog Everettianism: Quantum Mechanics at Its Most Minimal," arXiv:1801.08132 (2018).  
+[X22] O. C. Stoica, "3D-Space and the preferred basis cannot uniquely emerge from the quantum structure," arXiv:2102.08620.  
+[X23] S. De Haro, J. Butterfield, "A Schema for Duality, Illustrated by Bosonization," arXiv:1707.06681.  
+[X24] F. Gürsey, C.-H. Tze, *On the Role of Division, Jordan and Related Algebras in Particle Physics* (World Scientific, Singapore, 1996).  
+[X25] C. Furey, "SU(3)_C × SU(2)_L × U(1)_Y (× U(1)_X) as a symmetry of division algebraic ladder operators," *Eur. Phys. J. C* 78 (2018) 375, doi:10.1140/epjc/s10052-018-5844-7; arXiv:1806.00612.  
+[X26] L. Boyle et al., "The Cℓ(8) algebra of three fermion generations with spin and full internal symmetries," arXiv:1906.05102.  
+
+---
+
+## Appendix A: Reproducing the figures and tables
+
+Figures 1–6 and Tables 1–5 were made by `make_figures.py` and `verify_tables.py` in `図表/` (the figures folder, in the same folder as this paper). They can be regenerated with `bash 図表/run_all.sh`. All points, curves and numbers are computed directly from the quaternion formulas, with no approximation or fitting. Where random numbers are used, the seed is fixed at 20261018. The pass/fail summary is in `図表/results/checks.txt` (all eight checks passed) and the full tables are in `図表/results/tables.md`.
+
+## Appendix B: Citation tables
+
+The correspondence between the claims of this paper and the self-citations is in `自己引用の対応表_20261018.md`, and the correspondence and verification sources of the external references are in `外部引用の対応表_20261018.md` (both in the same folder as this paper, in Japanese).
+
+## Appendix C: Dialogue record of the thought experiment and interactive figures
+
+The content of this paper came from a dialogue between the author and Claude on 2026-10-18. The dialogue record is at `次元の生成構造/四元数を基本量とする思考実験_20261018/四元数を基本量とする思考実験_20261018.md` (in Japanese, unabridged; only typos in the author's statements were corrected). The same folder contains four interactive figures (HTML).
+
+Opened in a browser after download, they can be operated with sliders and dragging (the only external resource loaded is the Google Fonts typeface; if it cannot be loaded, a substitute typeface is used). The direct downloads (GitHub raw) are:
+
+- **quaternion_circle_gnomonic.html**: slices of the quaternion circle, decomposition into real and imaginary parts, central projection, light cone, image in the tangent hyperplane  
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%9B%9B%E5%85%83%E6%95%B0%E3%82%92%E5%9F%BA%E6%9C%AC%E9%87%8F%E3%81%A8%E3%81%99%E3%82%8B%E6%80%9D%E8%80%83%E5%AE%9F%E9%A8%93_20261018/quaternion_circle_gnomonic.html
+- **quaternion_16cell.html**: the 16-cell configuration and the closure checks  
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%9B%9B%E5%85%83%E6%95%B0%E3%82%92%E5%9F%BA%E6%9C%AC%E9%87%8F%E3%81%A8%E3%81%99%E3%82%8B%E6%80%9D%E8%80%83%E5%AE%9F%E9%A8%93_20261018/quaternion_16cell.html
+- **quaternion_circle_icosa.html**: the same program as the quaternion-circle figure, with the data replaced by the most symmetric form q = ±e^(π n/4) (icosahedral)  
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%9B%9B%E5%85%83%E6%95%B0%E3%82%92%E5%9F%BA%E6%9C%AC%E9%87%8F%E3%81%A8%E3%81%99%E3%82%8B%E6%80%9D%E8%80%83%E5%AE%9F%E9%A8%93_20261018/quaternion_circle_icosa.html
+- **quaternion_light_cone_icosa.html**: the same program as the 16-cell figure, with the data replaced by the most symmetric form  
+  https://raw.githubusercontent.com/WurabeSeiji/ai-chat-logs-open/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%9B%9B%E5%85%83%E6%95%B0%E3%82%92%E5%9F%BA%E6%9C%AC%E9%87%8F%E3%81%A8%E3%81%99%E3%82%8B%E6%80%9D%E8%80%83%E5%AE%9F%E9%A8%93_20261018/quaternion_light_cone_icosa.html
+
+## Version history
+
+- v1.0 (2026-10-18): first version. Version DOI 10.5281/zenodo.23451495, Concept DOI 10.5281/zenodo.23451494. The Japanese version is the original; this English version is a translation.

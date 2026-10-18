@@ -592,6 +592,10 @@
    A Catalogue of Symmetries and Magic Numbers for Reading Out Spacetime from a State Space: The Answer-Check Standard of a Research Programme Taking Anonymity and Self-Consistency as Axioms  
    DOI [10.5281/zenodo.23444452](https://doi.org/10.5281/zenodo.23444452) · Concept [10.5281/zenodo.23444451](https://doi.org/10.5281/zenodo.23444451) · 2026-10-18 · v1.0 · [PDF en](https://zenodo.org/records/23444452/files/symmetry_magic_number_catalogue_en_v1.pdf) [PDF ja](https://zenodo.org/records/23444452/files/symmetry_magic_number_catalogue_ja_v1.pdf)  
    フォルダ: [次元の生成構造/対称性とマジックナンバーの目録_20261017](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%AF%BE%E7%A7%B0%E6%80%A7%E3%81%A8%E3%83%9E%E3%82%B8%E3%83%83%E3%82%AF%E3%83%8A%E3%83%B3%E3%83%90%E3%83%BC%E3%81%AE%E7%9B%AE%E9%8C%B2_20261017)
+52. **複素数の集合から時空 (1＋3) への写像 ― 四元数による読み出しと部分投射 ―**  
+   A Map from a Set of Complex Numbers to Spacetime (1+3): Readout by Quaternions and Partial Projection  
+   DOI [10.5281/zenodo.23451495](https://doi.org/10.5281/zenodo.23451495) · Concept [10.5281/zenodo.23451494](https://doi.org/10.5281/zenodo.23451494) · 2026-10-18 · v1.0 · [PDF en](https://zenodo.org/records/23451495/files/quaternion_spacetime_map_en_v1.pdf) [PDF ja](https://zenodo.org/records/23451495/files/quaternion_spacetime_map_ja_v1.pdf)  
+   フォルダ: [次元の生成構造/四元数による時空への写像_20261018](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%9B%9B%E5%85%83%E6%95%B0%E3%81%AB%E3%82%88%E3%82%8B%E6%99%82%E7%A9%BA%E3%81%B8%E3%81%AE%E5%86%99%E5%83%8F_20261018)
 
 ## 時間軸Q軸とフェルミオンの生成構造 / Time Axis, Q Axis, and Fermion Generation
 
