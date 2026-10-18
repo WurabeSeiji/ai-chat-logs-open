@@ -49,6 +49,13 @@ canvas{width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab;borde
 canvas:active{cursor:grabbing}
 figcaption{font-size:.86rem;color:var(--muted)}
 figcaption .eq{color:var(--ink)}
+.decomp{display:grid;grid-template-columns:76px minmax(0,1fr);gap:8px;border-top:1px dashed var(--line);padding-top:10px}
+.bar{position:relative;min-height:0}
+.bar canvas{position:absolute;inset:0;width:100%;height:100%;cursor:default;touch-action:auto}
+.cv2{position:relative;width:100%;aspect-ratio:3/2;max-width:100%}
+.decomp.lc{grid-template-columns:minmax(0,1fr)}
+.sub{font-size:.86rem;color:var(--muted);margin:0}
+.sub .eq{color:var(--ink)}
 .readout{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px;
   display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px 20px;margin:0}
 .readout div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-block:3px;min-width:0}
@@ -60,7 +67,7 @@ figcaption .eq{color:var(--ink)}
 <div class="wrap">
   <header>
     <h1>四元円とグノモン射影</h1>
-    <p class="lead">四元数 <span class="eq">q ＝ t ＋ xi ＋ yj ＋ zk</span> の大きさ 1 の集まりは 3 次元球面 S³（四元円）で、<span class="eq">q ＝ cos θ ＋ n sin θ</span> と書ける。これを北極 <span class="eq">q＝1</span> に接する超平面へ原点から中心投影すると <span class="eq">v/t ＝ n tan θ</span> になり、<b>四元数の極形式がそのままグノモン射影になる</b>。4 次元の図は 3 次元の切断で描いている。図はドラッグで回せる。</p>
+    <p class="lead">四元数 <span class="eq">q ＝ q₀ ＋ q₁i ＋ q₂j ＋ q₃k</span> の大きさ 1 の集まりは 3 次元球面 S³（四元円）で、<span class="eq">q ＝ cos θ ＋ n sin θ</span> と書ける。これを北極 <span class="eq">q＝1</span> に接する超平面へ原点から中心投影すると <span class="eq">v/q₀ ＝ n tan θ</span> になり、<b>四元数の極形式がそのままグノモン射影になる</b>。4 次元の図は 3 次元の切断で描いている。図はドラッグで回せる。</p>
   </header>
 
   <section class="controls" aria-label="操作">
@@ -71,7 +78,7 @@ figcaption .eq{color:var(--ink)}
     <div class="ctl">
       <span class="lab">左の図の切断に使う成分</span>
       <div class="row"><div class="seg" role="group" aria-label="切断に使う成分">
-        <button id="axT" type="button" aria-pressed="true">実部 t</button><button id="axZ" type="button" aria-pressed="false">虚部 z</button>
+        <button id="axT" type="button" aria-pressed="true">実部 q₀</button><button id="axZ" type="button" aria-pressed="false">虚部 q₃</button>
       </div></div>
     </div>
     <div class="ctl">
@@ -89,16 +96,25 @@ figcaption .eq{color:var(--ink)}
       <h2><i style="background:var(--s3)"></i>四元円 S³ の切断</h2>
       <div class="cv"><canvas id="c1" aria-label="S³ を一つの成分の値で切った球面"></canvas></div>
       <figcaption id="cap1"></figcaption>
+      <div class="decomp">
+        <div class="bar"><canvas id="c4a" aria-label="実部 q₀ を表す縦の棒"></canvas></div>
+        <div class="cv2"><canvas id="c4b" aria-label="虚部 n sin θ を表す 3 次元ベクトル"></canvas></div>
+      </div>
+      <p class="sub">同じ四元数の分解。<span class="eq">q ＝ cos θ ＋ n sin θ</span> の実部 <span class="eq">q₀ ＝ cos θ</span> はただの縦の 1 本（左）、虚部は単位ベクトル <span class="eq">n</span>（|n|＝1）に <span class="eq">sin θ</span> を掛けた 3 次元ベクトル（右）。θ を決めると q₀ は動かず、n だけが球面の上を回り、虚部の先端は半径 sin θ の同じ球面に乗ったままになる。</p>
     </figure>
     <figure>
       <h2><i style="background:var(--proj)"></i>北極の接平面への中心投影</h2>
-      <div class="cv"><canvas id="c2" aria-label="z＝0 の切断での中心投影"></canvas></div>
-      <figcaption>4 次元のうち <span class="eq">z＝0</span> の 3 次元（t, x, y）で見た図。原点から、角 θ の緯線を北極 <span class="eq">t＝1</span> の接平面へ射影すると、半径 <span class="eq">tan θ</span> の円になる。赤道（θ＝90°）は無限遠に、南半球の点は原点の反対側を通って写り、<span class="eq">q</span> と <span class="eq">−q</span> は同じ点になる。</figcaption>
+      <div class="cv"><canvas id="c2" aria-label="q₃＝0 の切断での中心投影"></canvas></div>
+      <figcaption>4 次元のうち <span class="eq">q₃＝0</span> の 3 次元（q₀, q₁, q₂）で見た図。原点から、角 θ の緯線を北極 <span class="eq">q₀＝1</span> の接平面へ射影すると、半径 <span class="eq">tan θ</span> の円になる。赤道（θ＝90°）は無限遠に、南半球の点は原点の反対側を通って写り、<span class="eq">q</span> と <span class="eq">−q</span> は同じ点になる。</figcaption>
+      <div class="decomp lc">
+        <div class="cv"><canvas id="c5" aria-label="光円錐と四元円"></canvas></div>
+      </div>
+      <p class="sub" id="cap5"></p>
     </figure>
     <figure>
-      <h2><i style="background:var(--geo)"></i>接超平面 t＝1 の中の像</h2>
+      <h2><i style="background:var(--geo)"></i>接超平面 q₀＝1 の中の像</h2>
       <div class="cv"><canvas id="c3" aria-label="接超平面の 3 次元の中の像"></canvas></div>
-      <figcaption>接超平面の座標は <span class="eq">u ＝ v/t ＝ (x/t, y/t, z/t)</span>。緯度 θ の球面 S² は半径 <span class="eq">tan θ</span> の球面に写る。大円 <span class="eq">q(s) ＝ e^{is}(cos α ＋ j sin α)</span> は直線 <span class="eq">u ＝ (0, tan α, 0) ＋ tan s·(1, 0, tan α)</span> に写る。s が一様に進んでも、像の上の進み方は tan s で一様ではない。</figcaption>
+      <figcaption>接超平面の座標は <span class="eq">u ＝ v/q₀ ＝ (q₁/q₀, q₂/q₀, q₃/q₀)</span>。緯度 θ の球面 S² は半径 <span class="eq">tan θ</span> の球面に写る。大円 <span class="eq">q(s) ＝ e^{is}(cos α ＋ j sin α)</span> は直線 <span class="eq">u ＝ (0, tan α, 0) ＋ tan s·(1, 0, tan α)</span> に写る。s が一様に進んでも、像の上の進み方は tan s で一様ではない。</figcaption>
     </figure>
   </section>
 
@@ -107,10 +123,12 @@ figcaption .eq{color:var(--ink)}
     <div><dt>切断の値 cos θ</dt><dd id="r-c"></dd></div>
     <div><dt>切断球の半径 sin θ</dt><dd id="r-r"></dd></div>
     <div><dt>射影の半径 |tan θ|</dt><dd id="r-tan"></dd></div>
-    <div><dt>大円の点 q(s)：t</dt><dd id="r-qt"></dd></div>
-    <div><dt>q(s)：(x, y, z)</dt><dd id="r-qv"></dd></div>
+    <div><dt>大円の点 q(s)：q₀</dt><dd id="r-qt"></dd></div>
+    <div><dt>q(s)：(q₁, q₂, q₃)</dt><dd id="r-qv"></dd></div>
     <div><dt>像 u(s)</dt><dd id="r-u"></dd></div>
     <div><dt>|q(s)|</dt><dd id="r-n"></dd></div>
+    <div><dt>q² の実部 q₀²−|v|² ＝ cos 2θ</dt><dd id="r-c2"></dd></div>
+    <div><dt>光円錐に対する位置</dt><dd id="r-lc"></dd></div>
   </dl>
   <p class="note">すべての点は式から直接計算している（近似なし）。図の範囲を超える像（tan θ が大きいとき）は、範囲内の部分だけを描いている。</p>
 </div>
@@ -119,7 +137,7 @@ figcaption .eq{color:var(--ink)}
 (function(){
   const $ = id => document.getElementById(id);
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const st = {theta:0.9, axis:'t', alpha:0.55, s:0, playing:false, dir:1};
+  const st = {theta:0.9, axis:'t', alpha:0.55, s:0, playing:false, dir:1, phi:0.7};
   const FONT = "12px 'JetBrains Mono', ui-monospace, Menlo, monospace";
 
   function col(){
@@ -212,12 +230,86 @@ figcaption .eq{color:var(--ink)}
   const v1 = makeView('c1', 1.25, 0.55, 0.32);
   const v2 = makeView('c2', 2.75, 0.62, 0.28);
   const v3 = makeView('c3', 3.3, 0.6, 0.3);
+  const v4 = makeView('c4b', 1.2, 0.55, 0.32);
+  const v5 = makeView('c5', 1.75, 0.6, 0.22);
+
+  // 光円錐の図：z＝0 の 3 次元（t, x, y）。表示は 横＝x、上＝t、奥＝y。n は x-y 面の中で回す
+  function draw5(K){
+    const v = v5, c = v.ctx; c.clearRect(0,0,v.w,v.h);
+    const th = st.theta, ct = Math.cos(th), sn = Math.sin(th), c2 = Math.cos(2*th), s2 = Math.sin(2*th);
+    const ph = st.phi, nx = Math.cos(ph), ny = Math.sin(ph), H = 1.45, seg = 72;
+    axes(v, 1.5, ['q₁','q₀','q₂'], K.muted);
+    // 光円錐 t² ＝ x² ＋ y²（上下）
+    for(let j=0;j<12;j++){ const a = 2*Math.PI*j/12; line(v, [[-H*Math.cos(a),-H,-H*Math.sin(a)],[H*Math.cos(a),H,H*Math.sin(a)]], K.muted, 1, 0.55); }
+    [-1.3,-0.9,-0.5,0.5,0.9,1.3].forEach(t => { const pts = []; for(let j=0;j<=seg;j++){ const a = 2*Math.PI*j/seg; pts.push([Math.abs(t)*Math.cos(a), t, Math.abs(t)*Math.sin(a)]); } line(v, pts, K.muted, 1, 0.45); });
+    // 四元円（z＝0 の切断では単位球面）
+    sphere(v, 1, K.grid, 0.55, 8, 12);
+    // 四元円と光円錐の交わり：t ＝ ±1/√2
+    const r0 = Math.SQRT1_2;
+    [r0, -r0].forEach(t => { const pts = []; for(let j=0;j<=seg;j++){ const a = 2*Math.PI*j/seg; pts.push([r0*Math.cos(a), t, r0*Math.sin(a)]); } line(v, pts, K.geo, 2.2, 1); });
+    // 接平面 t＝1 と、光円錐との交わり（半径 1 の円）
+    for(let g=-1.4; g<=1.41; g+=0.7){ line(v, [[g,1,-1.4],[g,1,1.4]], K.grid, 1, 0.6); line(v, [[-1.4,1,g],[1.4,1,g]], K.grid, 1, 0.6); }
+    { const pts = []; for(let j=0;j<=seg;j++){ const a = 2*Math.PI*j/seg; pts.push([Math.cos(a), 1, Math.sin(a)]); } line(v, pts, K.proj, 2, 1, [6,4]); }
+    // q の緯線と q² の緯線
+    { const pts = []; for(let j=0;j<=seg;j++){ const a = 2*Math.PI*j/seg; pts.push([sn*Math.cos(a), ct, sn*Math.sin(a)]); } line(v, pts, K.s3, 1.6, 0.8); }
+    { const pts = []; for(let j=0;j<=seg;j++){ const a = 2*Math.PI*j/seg; pts.push([Math.abs(s2)*Math.cos(a), c2, Math.abs(s2)*Math.sin(a)]); } line(v, pts, K.proj, 1.2, 0.7, [3,3]); }
+    const q = [sn*nx, ct, sn*ny], q2 = [s2*nx, c2, s2*ny];
+    if(ct > 1e-3){ const T = sn/ct, u = [T*nx, 1, T*ny]; if(T <= 1.6){ line(v, [[0,0,0], u], K.s3, 1, 0.8, [4,4]); dot(v, u, K.s3, 3); } }
+    line(v, [[0,0,0], q], K.s3, 2.4, 1); dot(v, q, K.s3, 5, 'q');
+    line(v, [[0,0,0], q2], K.proj, 1.4, 0.9); dot(v, q2, K.proj, 4, 'q²');
+    const where = Math.abs(c2) < 0.01 ? '光円錐の上' : (c2 > 0 ? '光円錐の内側' : '光円錐の外側');
+    text(v, 'q₀² − |v|² = cos 2θ = ' + c2.toFixed(3) + '  → ' + where, 10, 18, K.ink);
+  }
+  const bar = {cv:$('c4a'), w:1, h:1, dpr:1};
+  bar.ctx = bar.cv.getContext('2d');
+  new ResizeObserver(() => {
+    const r = bar.cv.getBoundingClientRect(); bar.dpr = window.devicePixelRatio || 1;
+    bar.cv.width = Math.max(1, Math.round(r.width*bar.dpr)); bar.cv.height = Math.max(1, Math.round(r.height*bar.dpr));
+    bar.w = bar.cv.width; bar.h = bar.cv.height; drawAll();
+  }).observe(bar.cv);
+
+  // n：単位球面 S² の上を、傾いた大円に沿って回る単位ベクトル（成分は x, y, z）
+  const nvec = ph => { const b = 0.5; return [Math.cos(ph), Math.sin(ph)*Math.cos(b), Math.sin(ph)*Math.sin(b)]; };
+
+  // 分解の左：実部 t ＝ cos θ を縦の 1 本で表す
+  function draw4a(K){
+    const c = bar.ctx, d = bar.dpr, W = bar.w, H = bar.h; c.clearRect(0,0,W,H);
+    const top = 22*d, bot = H - 22*d, x = W*0.42, y = t => top + (1 - t)/2*(bot - top);
+    const ct = Math.cos(st.theta);
+    c.strokeStyle = K.grid; c.lineWidth = 6*d; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(x, y(1)); c.lineTo(x, y(-1)); c.stroke();
+    c.strokeStyle = K.s3; c.lineWidth = 6*d;
+    c.beginPath(); c.moveTo(x, y(0)); c.lineTo(x, y(ct)); c.stroke();
+    c.fillStyle = K.s3; c.beginPath(); c.arc(x, y(ct), 6*d, 0, 2*Math.PI); c.fill();
+    c.font = (11*d) + "px 'JetBrains Mono', ui-monospace, monospace"; c.fillStyle = K.muted; c.textAlign = 'left';
+    [[1,'1'],[0,'0'],[-1,'−1']].forEach(([t,s]) => { c.fillRect(x + 6*d, y(t) - 0.5*d, 5*d, d); c.fillText(s, x + 13*d, y(t) + 4*d); });
+    c.textAlign = 'center'; c.fillStyle = K.ink; c.fillText('q₀', x, 13*d);
+    c.fillStyle = K.s3; c.fillText(ct.toFixed(3), x, H - 6*d); c.textAlign = 'left';
+  }
+
+  // 分解の右：虚部 v ＝ n sin θ。表示は 横＝x、上＝z、奥＝y
+  function draw4b(K){
+    const v = v4, c = v.ctx; c.clearRect(0,0,v.w,v.h);
+    const sn = Math.abs(Math.sin(st.theta)), n = nvec(st.phi), D = p => [p[0], p[2], p[1]];
+    axes(v, 1.1, ['q₁','q₃','q₂'], K.muted);
+    sphere(v, 1, K.grid, 0.5, 6, 10);
+    if(sn > 1e-4) sphere(v, sn, K.s3, 0.35, 6, 10);
+    const tr = [], trv = [];
+    for(let i=0;i<=96;i++){ const m = nvec(2*Math.PI*i/96); tr.push(D(m)); trv.push(D(m.map(a => a*sn))); }
+    line(v, tr, K.muted, 1, 0.6, [3,4]);
+    line(v, trv, K.s3, 1.4, 0.7);
+    line(v, [[0,0,0], D(n)], K.muted, 1.4, 0.9);
+    dot(v, D(n), K.muted, 3, 'n');
+    line(v, [[0,0,0], D(n.map(a => a*sn))], K.s3, 3, 1);
+    dot(v, D(n.map(a => a*sn)), K.s3, 4.5, 'n sin θ');
+    text(v, '|n| = 1   |n sin θ| = ' + sn.toFixed(3), 10, 18, K.ink);
+  }
 
   // 図 1：S³ を一つの成分の値 cos θ で切った球面（半径 sin θ）
   function draw1(K){
     const v = v1, c = v.ctx; c.clearRect(0,0,v.w,v.h);
     const th = st.theta, r = Math.abs(Math.sin(th));
-    const lab = st.axis === 't' ? ['x','z','y'] : ['x','t','y'];
+    const lab = st.axis === 't' ? ['q₁','q₃','q₂'] : ['q₁','q₀','q₂'];
     axes(v, 1.15, lab, K.muted);
     sphere(v, 1, K.grid, 0.55, 8, 12);
     if(r > 1e-4) sphere(v, r, K.s3, 0.95, 9, 14);
@@ -232,7 +324,7 @@ figcaption .eq{color:var(--ink)}
     c.strokeStyle = K.s3; c.lineWidth = 2.5*v.dpr; c.beginPath(); c.moveTo((ox-hx)*v.dpr, hy*v.dpr); c.lineTo((ox+hx)*v.dpr, hy*v.dpr); c.stroke();
     c.fillStyle = K.s3; [ -hx, hx ].forEach(d => { c.beginPath(); c.arc((ox+d)*v.dpr, hy*v.dpr, 3.2*v.dpr, 0, 2*Math.PI); c.fill(); });
     c.restore();
-    const nm = st.axis === 't' ? 't' : 'z';
+    const nm = st.axis === 't' ? 'q₀' : 'q₃';
     text(v, nm + ' = ' + Math.cos(th).toFixed(3), ox + R0 + 12, oy - 6, K.ink);
     text(v, '半径 ' + r.toFixed(3), ox + R0 + 12, oy + 12, K.s3);
     text(v, '子午線', ox - 18, oy - R0 - 12, K.muted);
@@ -242,7 +334,7 @@ figcaption .eq{color:var(--ink)}
   function draw2(K){
     const v = v2, c = v.ctx; c.clearRect(0,0,v.w,v.h);
     const th = st.theta, ct = Math.cos(th), sn = Math.sin(th), L = 2.4;
-    axes(v, 1.3, ['x','t','y'], K.muted);
+    axes(v, 1.3, ['q₁','q₀','q₂'], K.muted);
     sphere(v, 1, K.grid, 0.6, 8, 12);
     for(let g=-L; g<=L+1e-9; g+=0.6){
       line(v, [[g,1,-L],[g,1,L]], K.grid, 1, 0.8);
@@ -282,10 +374,12 @@ figcaption .eq{color:var(--ink)}
   function draw3(K){
     const v = v3, c = v.ctx; c.clearRect(0,0,v.w,v.h);
     const B = 2.9;
-    axes(v, B, ['u_x','u_z','u_y'], K.muted);
+    axes(v, B, ['u₁','u₃','u₂'], K.muted);
     const ct = Math.cos(st.theta), T = Math.abs(Math.sin(st.theta)/ct);
     if(Math.abs(ct) > 1e-3 && T > 1e-4 && T <= B*1.05) sphere(v, T, K.proj, 0.85, 9, 14);
     else if(T > B*1.05 || Math.abs(ct) <= 1e-3) text(v, '射影の球面は図の範囲の外（半径 ' + (Math.abs(ct) <= 1e-3 ? '∞' : T.toFixed(2)) + '）', 12, 22, K.proj);
+    sphere(v, 1, K.ink, 0.35, 6, 10);
+    { const q = P(v, [0.72, 0.72, 0]); text(v, '|u| = 1（光円錐の像）', q.x/v.dpr + 6, q.y/v.dpr - 4, K.muted); }
     dot(v, [0,0,0], K.ink, 3.5, '北極の像');
     const ta = Math.tan(st.alpha), pts = [];
     for(let i=0;i<=400;i++){
@@ -312,12 +406,16 @@ figcaption .eq{color:var(--ink)}
     $('r-qv').textContent = '(' + f(q[1]) + ', ' + f(q[2]) + ', ' + f(q[3]) + ')';
     $('r-u').textContent = '(' + f(q[1]/q[0],2) + ', ' + f(q[2]/q[0],2) + ', ' + f(q[3]/q[0],2) + ')';
     $('r-n').textContent = Math.hypot(...q).toFixed(12);
+    const c2 = Math.cos(2*th);
+    $('r-c2').textContent = f(c2);
+    $('r-lc').textContent = Math.abs(c2) < 0.01 ? '円錐の上' : (c2 > 0 ? '内側' : '外側');
+    $('cap5').innerHTML = '光円錐 <span class="eq">q₀² ＝ q₁²＋q₂²＋q₃²</span> を q₃＝0 の 3 次元（q₀, q₁, q₂）で描いた。四元円は θ＝45°（<span class="eq">q₀ ＝ 1/√2</span>、緑の円）で円錐と交わる。<span class="eq">q² ＝ cos 2θ ＋ n sin 2θ</span> なので、本当の二乗の実部 <span class="eq">q₀²−|v|² ＝ cos 2θ</span> は θ＜45° で正（内側）、θ＞45° で負（外側）。q が円錐の上にあるとき q² は赤道（実部 0）に来る。円錐と接平面 q₀＝1 の交わりは半径 1 の円（破線）で、右の図の <span class="eq">|u|＝1</span> の球面がその像になる。';
     $('cap1').innerHTML = st.axis === 't'
-      ? 'S³：<span class="eq">t²＋x²＋y²＋z²＝1</span> を実部 <span class="eq">t＝cos θ</span> で切ると、(x, y, z) の中の半径 <span class="eq">sin θ</span> の球面 S² になる。θ を動かすと、北極（点）→ 赤道（半径 1）→ 南極（点）と緯度の球面が重なって S³ を作る。左下は子午線の上での切断の位置。'
-      : '同じ S³ を虚部 <span class="eq">z＝cos θ</span> で切っても、(t, x, y) の中の同じ半径 <span class="eq">sin θ</span> の球面になる。点の集まりとしての S³ は 4 成分とも対称で、1 と 3 に分かれるのは掛け算（両側からの掛け算、本当の二乗）で読んだときだけ。';
+      ? 'S³：<span class="eq">q₀²＋q₁²＋q₂²＋q₃²＝1</span> を実部 <span class="eq">q₀＝cos θ</span> で切ると、(q₁, q₂, q₃) の中の半径 <span class="eq">sin θ</span> の球面 S² になる。θ を動かすと、北極（点）→ 赤道（半径 1）→ 南極（点）と緯度の球面が重なって S³ を作る。左下は子午線の上での切断の位置。'
+      : '同じ S³ を虚部 <span class="eq">q₃＝cos θ</span> で切っても、(q₁, q₂, q₀) の中の同じ半径 <span class="eq">sin θ</span> の球面になる。点の集まりとしての S³ は 4 成分とも対称で、1 と 3 に分かれるのは掛け算（両側からの掛け算、本当の二乗）で読んだときだけ。';
   }
 
-  function drawAll(){ const K = col(); draw1(K); draw2(K); draw3(K); readout(); }
+  function drawAll(){ const K = col(); draw1(K); draw2(K); draw3(K); draw4a(K); draw4b(K); draw5(K); readout(); }
 
   $('theta').addEventListener('input', e => { st.theta = +e.target.value; drawAll(); });
   $('alpha').addEventListener('input', e => { st.alpha = +e.target.value; drawAll(); });
@@ -332,7 +430,8 @@ figcaption .eq{color:var(--ink)}
     const dt = last ? Math.min(50, ts - last) : 16; last = ts;
     st.s += st.dir*0.00045*dt;
     if(st.s > 1.42){ st.s = 1.42; st.dir = -1; } else if(st.s < -1.42){ st.s = -1.42; st.dir = 1; }
-    $('s').value = st.s; const K = col(); draw3(K); readout();
+    st.phi += 0.0009*dt;
+    $('s').value = st.s; const K = col(); draw3(K); draw4b(K); draw5(K); readout();
     requestAnimationFrame(tick);
   }
   function setPlay(p){ st.playing = p; $('play').textContent = p ? '停止' : '再生'; if(p){ last = 0; requestAnimationFrame(tick); } }
