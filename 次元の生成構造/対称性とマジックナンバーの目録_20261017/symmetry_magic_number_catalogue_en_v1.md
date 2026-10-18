@@ -1,0 +1,610 @@
+# A Catalogue of Symmetries and Magic Numbers for Reading Out Spacetime from a State Space
+## ― The Answer-Check Standard of a Research Programme Taking Anonymity and Self-Consistency as Axioms ―
+
+**Author:** Noriaki Kihara  
+**ORCID:** 0009-0004-6753-4020  
+**Version DOI:** 10.5281/zenodo.23444452  
+**Concept DOI:** 10.5281/zenodo.23444451  
+**Version:** v1.0  
+**Date:** 2026-10-18
+
+---
+
+## Abstract
+
+The author's research programme asks whether time, space, mass, charge and interactions can be read out from the relations of a set of complex numbers {zₙ} alone, without placing a background spacetime, a ruler or particle species from outside. The programme has published 156 papers so far, but the numbering of axioms, the symbols and the claims differ slightly from paper to paper, and it had become unclear against what standard a given numerical experiment or thought experiment is to be judged correct.
+
+This paper presents no new derivation. Instead, it fixes a catalogue of the symmetries the programme must satisfy and of the dimensionless numbers (magic numbers) attached to those symmetries, giving every entry a status (established, theory, candidate, open) and a provenance (a published paper or external literature). The catalogue is a reference document that determines which papers later papers should use as their answer-check standard; that is why it contains many self-citations and external citations.
+
+The skeleton of the catalogue is as follows. (1) The zeroth axiom is anonymity and the first axiom is self-consistency. As an axiom derived from anonymity, we place the distinguishability axiom: the readout cannot tell which layer a value belongs to. The squared quantity z′ = z² is also just a complex number, so z and z′ cannot be distinguished in the readout. On that basis the closure is defined by a single definition, the linear zero closure of complex numbers Σzₙ = 0. The square-sum closure Σzₙ² = Σz′ₙ = 0 is the same definition read at the z′ layer, not a new definition. The return of time evolution Uⁿ = I is a theorem. (2) Below these we place the big-picture symmetries (time symmetry of emission and absorption, local and global, the scale of observation, electric–magnetic duality, Galois symmetry, conservation of information), conjugacy and duality, and the projection symmetry. (3) We set out a candidate axiom: an essential symmetry carries a dimensionless magic number rather than the conserved quantity assumed by Noether's theorem. (4) The requirements of the Standard Model, general relativity and E₈, the algebra and geometry of this system, and the locking symmetries of complex systems are listed in the same format. (5) Magic numbers are divided into four systems: integer, coupling-convention, irrational and derived.
+
+We also present two mathematically confirmed results. A linear map that preserves both the sum of true squares and the norm is necessarily a real orthogonal map. The 24 units of the Hurwitz lattice D₄ split into one vector set and two spinor sets (8 + 8 + 8), and triality cycles them as the quaternion operation q ↦ a q a (a = (−1 + i + j + k)/2) while preserving the 240 roots of E₈.
+
+All 156 published papers are mapped to the rows of the catalogue: 81 rows have a published standard and 15 rows are set up for the first time in this paper. The axiom numbering is reset in this paper, with a correspondence table to the old numbering. The earlier claim that filled the gap between 137 and α⁻¹ with a closed identity is revised to the position that the gap itself is the content to be read. Numerical disagreements, such as the rotation orders of the four-dimensional lattice, the decomposition of 137 and the number of components of one generation, are kept as open problems, with "several interpretations are possible" as the present answer. Finally, we place the root difficulty of the map from the state space to spacetime in the fact that what is visible depends on the projection method, and we show that, since spacetime is stably readable, the map must be at least a partial projection.
+
+**Keywords:** anonymity, self-consistency, zero square sum, linear zero closure, distinguishability, finite order, symmetry, magic number, Noether's theorem, conjugacy, duality, partial projection, triality, E₈, mode locking
+
+---
+
+## 1. Position of This Paper
+
+### 1.1 Why a catalogue is needed
+
+The research programme published 156 papers between April and October 2026. Among the papers that state an axiom system alone, the Anonymous Equal-Amplitude Composite-Wave Model: Basic Axiom System v9.1 [S1], the symmetry generation from zero closure, finite order and self-consistent geometry [S3], the research project design [S14] and the first and second thought experiments [S15, S16] each number their axioms differently (§11). On the side of numerical experiments, no document fixed the criterion for judging whether a result was derived from the skeleton or came from parts imported from outside the skeleton. In the author's own numerical experiments, a failure occurred in which parts were swapped each time a result did not match until the experiment "passed" (§13.4).
+
+This paper fixes that criterion. Whereas the research project design [S14] fixes the direction of the project (goal image, prohibitions, success conditions), this paper fixes the symmetries and numbers that individual papers and numerical experiments must satisfy. The research project design adopted a policy of no self-citation; this paper, on the contrary, covers self-citations and external citations exhaustively, because it determines which papers are to be used as the answer-check standard.
+
+### 1.2 How statuses are assigned
+
+Each row of the catalogue is given one of the following four statuses.
+
+| Status | Meaning |
+|---|---|
+| Established | An established mathematical or physical fact, supported by external literature or by the checks in this paper (§10) |
+| Theory | A proposition set up within the theory of the programme, with a published paper as provenance |
+| Candidate | A conjectured correspondence, not yet checked |
+| Open | Something that stands only as a question, including items admitting several interpretations |
+
+### 1.3 Resetting the numbering
+
+The numbering of this paper (A1–A6, A1′, Z1, W1–W6, K1–K7, P1, S1–S20, E1–E6, G1–G18, C1–C4, L1–L9) is the standard for later papers. The numbering of published papers is kept as numbering within each paper and is not rewritten. The correspondence with the old numbering is given in §11.1.
+
+---
+
+## 2. Starting Point: The State Is Only a Set of Complex Numbers
+
+The state of this system is only a set of complex numbers
+
+$$
+\{z_n\},\qquad z_n=a_n+i\,b_n .
+$$
+
+In a sense it is a Hilbert space, and there are no positions, lattice points, values sitting on vertices, fields or background spacetime. Each zₙ is merely a point in the complex plane, and its magnitude
+
+$$
+R^2=a^2+b^2
+$$
+
+is read not as the radius of some space but as the magnitude of the complex number itself.
+
+Spacetime {xyzt}, distance, time and R are all read out from the relations among the zₙ (ratios, phase differences, true squares, cross terms). The largest misreading the author repeated during the research was to believe that the background is xyz space. Under that misreading one regards lattices and spheres as containers and tries to arrange complex numbers in them. In this paper, lattices, S³ and Clifford translations are treated as structures in phase space, not as arrangements in xyz space.
+
+The destination of the readout is split into the eight directions of two quaternions:
+
+$$
+A=t+xi+yj+zk\quad(\text{readable side}),\qquad B=R+Q_1i+Q_2j+Q_3k\quad(\text{unreadable interior}) .
+$$
+
+The dimensions of number systems that preserve magnitude under squaring are limited to 1, 2, 4 and 8 (Hurwitz's theorem), and eight directions are the upper limit. Setting R and Q₁Q₂Q₃ up as independent axes avoids the confusion by which Weyl's 1918 scale gauge theory made R (scale) also carry the role of Q (charge) and reached an impasse. t is the clock of space and R is the internal clock (mass), so two clocks can be read separately.
+
+---
+
+## 3. Axioms and Theorems
+
+### 3.0 The distinguishability axiom and the single definition of closure
+
+| No. | Content | Kind |
+|---|---|---|
+| A1′ | **Distinguishability axiom**: the readout cannot tell which layer a read-out value belongs to. This applies anonymity (A1) to layers rather than to elements | Axiom (derived from A1) |
+| ― | **Its appearance in the readout**: the squared quantity z′ = z² is also just a complex number, so z and z′ cannot be distinguished in the readout | Symmetry |
+| ― | **Choice of basic quantity**: the squared quantity z′ₙ = zₙ² is also a basic quantity. Writing z′ = A + iB, A = a² − b² and B = 2ab | Definition |
+| Z1 | **Linear zero closure**: Σzₙ = 0 (Σaₙ = 0 and Σbₙ = 0). The single definition of closure in this paper | Definition |
+| ― | **Its consequence**: the square-sum closure Σzₙ² = Σz′ₙ = 0 is Z1 read at the z′ layer, not a new definition | Consequence |
+
+Under the distinguishability axiom, the one definition "the sum of the readable values is 0" is imposed so that it holds whichever layer it is read at. As a result, both Σzₙ = 0 and Σzₙ² = 0 follow. What looked like two conditions is one definition seen in two readings. Together they give
+
+$$
+\sum_n a_n=\sum_n b_n=0,\qquad \sum_n a_n^2=\sum_n b_n^2,\qquad \sum_n a_nb_n=0 ,
+$$
+
+and (Σaₙ)(Σbₙ) = 0 follows trivially. If the points (aₙ, bₙ) are placed in the complex plane, their centroid is at the origin, their spreads along the two axes are equal, and the two axes are uncorrelated. Up to second order, the point set has no special origin and no special direction, and no meaning is left in which axis is called real and which imaginary. This is the first- and second-order expression, on the complex plane, of Axiom 0 of the basic axiom system (no privileged axis, sign or type) [S1].
+
+The linear sum is the lowest-degree quantity among those unchanged by every permutation, so the definition of closure can be written with only the lowest-degree invariant of anonymity and the indistinguishability of layers. The squaring map z ↦ z² is not part of the definition; it stands outside the definition as the map connecting the two readings.
+
+Provenance: a precedent that used the linear closure as a condition on parent states (centroid at the origin) is the complex-simplex study of 2026-08-30. The view that places the linear closure as the definition and identifies it with the square-sum closure, and the distinguishability axiom, come from the thought-experiment dialogue record on which this paper is based (Appendix D).
+
+### 3.1 Two axioms
+
+| No. | Axiom | Content | Forbids |
+|---|---|---|---|
+| A1 | **Anonymity** (zeroth axiom) | Elements carry no labels; there is no special origin, coordinate, distance, sign or type. Only relations unchanged by every permutation of the elements are readable | Placing a background by hand, distinguishable vertices, a ruler given from outside, an observer standing outside |
+| A2 | **Self-consistency** (first axiom) | There is no external reference, so the system takes itself as its reference. The loop in which the state determines itself and that state again determines itself closes | Placing the observer or R outside the system |
+
+Provenance: A1 is Axiom 0 of the basic axiom system [S1]; A2 is A4 of the zero-closure paper [S3].
+
+### 3.2 Closure and return
+
+| No. | Content | Explanation | Status |
+|---|---|---|---|
+| A3 | **Closure of true squares** Σzₙ² = 0 (Z1 read at the z′ layer) | When the whole closes consistently with itself without an external scale, the sum of true squares (squares without conjugation) closes. The 0 is not a value but a statement that a conserved quantity can exist. By §3.0 it is not an independent definition but the reading of the linear closure Z1 at the layer of squared quantities | Theory. A proof as a theorem following from self-consistency is in [S12]; that nontrivial closure requires complex numbers is in [S11] |
+| A4 | **Return** Uⁿ = I | There is no external clock, so time evolution can only be written as a permutation among indistinguishable elements. A permutation of finitely many indistinguishable elements has finite order and always returns somewhere | Theory. Finite-order resonance in [S7], selection of roots by finite order in [S20], the exact solution of the Z₄ phase in [S23], the minimal exact example in [S24] |
+
+A3 and A4 correspond to the two ways of closing. A3 is the closure of structure, on the side where the three dimensions of space support stationary states while remaining continuous. A4 is the closure of time, on the side where four-dimensional spacetime becomes discrete (§3.4). The fourteenth thought experiment [S19] treated Σx² = 0 and Uⁿ = I not as assumptions placed at the start but as a common form appearing when structures of different character are combined. This paper follows that discipline and does not take either as a starting assumption: A3 is a reading of the definition Z1 of §3.0, and A4 is a theorem.
+
+### 3.3 The closure equation does not fix the scale
+
+With zₙ = aₙ + i bₙ,
+
+$$
+\sum_n z_n^2=\sum_n(a_n^2-b_n^2)+2i\sum_n a_nb_n ,
+$$
+
+so Σzₙ² = 0 requires both Σaₙ² = Σbₙ² and Σaₙbₙ = 0. Both are homogeneous equations and hold when every zₙ is multiplied by the same complex number λ (Σ(λzₙ)² = λ²Σzₙ²). Scale invariance and invariance under the global phase are built into the closure equation from the start. The imaginary part of the closure, Σaₙbₙ = 0, is also the condition that the generator of scale transformations vanishes [S1, S6].
+
+Therefore the closure does not fix the unit of the ruler. What fixes the ruler remains a separate question (§13).
+
+### 3.4 Three dimensions are continuous, four dimensions are discrete
+
+- **Three-dimensional space can form self-consistent states while remaining continuous.** Only on odd-dimensional spheres do waves propagate without tails and refocus sharply at the antipode (Huygens' principle). The spheres on which uniform translations form a group are only S¹ and S³. Circular waves and localized waves close as standing waves in space and need not advance their phase.
+- **Introducing time makes the phase rotate.** For self-consistency to keep closing, the rotation of the phase must return exactly (A4). With continuous time and a generic angle, the phase never returns to the same place and drifts quasi-periodically. To keep closing, the rotation angle must be a rational fraction, and time becomes discrete.
+- **Four-dimensional spacetime must be discrete.** For spatial translation and phase rotation to be compatible within one structure a lattice is needed, and the rotation orders compatible with a lattice are restricted to 1, 2, 3, 4, 6 by the crystallographic restriction. Four-fold and six-fold symmetries coexist on the same lattice in the Hurwitz lattice D₄ (24 units). There are six regular polytopes in four dimensions, more than the three in five or more dimensions.
+
+### 3.5 Other theorems and propositions
+
+| No. | Content | Status | Provenance |
+|---|---|---|---|
+| A5 | **0 + 0 = 0 (composition)**: the closure of parts becomes the closure of the whole. Decomposition is hard; composition is easy | Theory | [S25] |
+| A6 | **Compatibility of the norm and the true square**: a linear map preserving both is necessarily real orthogonal | Established (§10.1) | [S22], Check 1 of this paper |
+
+---
+
+## 4. The Layer Just Below the Axioms: Big Picture, Conjugacy and Duality, Numbers, Projection
+
+### 4.1 Big-picture symmetries
+
+These are symmetries concerning the state of the whole system rather than individual numbers or groups. Before entering individual symmetries, this layer is checked first.
+
+| No. | Symmetry | Related to | Conserved quantity / fixed point | Status |
+|---|---|---|---|---|
+| W1 | Time symmetry of emission and absorption, and the arrow of time | The perfect absorber at infinity. The boundary condition of the absorber breaks an equation that is time-symmetric in retarded and advanced waves and selects the arrow of time (Wheeler–Feynman [X27]) | The time-symmetric pair of fields. The record on the absorber increases monotonically | Candidate. The absorber map is in [S17] |
+| W2 | Local and global (Mach's principle, cosmological principle) | Local R is determined by global R₀. Homogeneity and isotropy of the universe | The representative curvature R₀ made by the eigen-oscillation of the whole, which cancels local curvature and closes to zero | Candidate |
+| W3 | The scale of observation (renormalization group), micro and macro | α moves continuously between 128 and 137 with the energy of observation. A closed system owns its scale. Dirac's large numbers, the resolution N₀ of the absorber | Renormalization fixed points, scale-independent ratios | Candidate |
+| W4 | Electric–magnetic duality | The Hopf fibration is the bundle of the Dirac monopole. A single monopole quantizes charge | Electric and magnetic charge (topological) | Candidate (set up for the first time here) |
+| W5 | Symmetry on the side of numbers (Galois symmetry) | Which rationals are locked onto and which irrationals remain. The projection that makes the 600-cell quasicrystal from E₈ uses the Galois conjugation sending the golden ratio φ to −1/φ | Quantities unchanged by conjugation (field norm and trace) | Candidate |
+| W6 | Conservation of information | In a closed system information is not lost and is recorded in the gap at the boundary | The total amount of record (boundary area, resolution N₀) | Candidate. The minimal unit of information is in [S13] |
+
+### 4.2 Conjugacy and duality
+
+**Conjugacy.** Physical quantities always appear as pairs with a fixed product: frequency and wavelength (νλ = c), position and momentum, time and energy, mass and Compton wavelength, near and far (large and small view angles), large and small (R and 1/R). The question at which the programme was long stuck was what the conjugate of the amplitude A is. As a candidate this paper names the pair of amplitude and phase. In the exponential representation E = ln A + iφ, ln A and φ pair up as the real and imaginary parts of the same complex number E. In quantum optics the number N (∝ A²) and the phase are conjugate. If the phase is periodic and becomes discrete by Uⁿ = I, its conjugate (the number) is quantized to integers (duality of the circle U(1) and the integers ℤ). This is a candidate for the origin of the unit of the ruler (status: candidate). Precedents for conjugate pairs are νλ = 1 in the dual-geometry series [S8] and the discussion of Pontryagin duality [S10].
+
+**Duality.** Duality is the structural version of conjugacy. There are two sides, such as inside and outside, spacetime and interior, front and back; the same conserved quantity exists on both sides, but it is called by a different name on each side. In Kaluza–Klein theory the momentum along the fifth axis is called charge; in E = mc² the same thing is called energy and mass; in holography the area and entropy of the boundary are called the energy of the interior. Within this system too, the clock of space t and the internal clock R divide one rotation by v² + (1/γ)² = 1, and it is called velocity on one side and mass on the other.
+
+**Combination with anonymity.** Under anonymity, the two sides of a duality carry no labels. Which side one reads from is only a choice of labels, and conserved quantities called by different names on different sides are one and the same quantity. Hence different symmetries, conserved quantities and fixed points are often different views of one symmetry. In the duality schema of De Haro and Butterfield [X12], the "common core" shared by two models is the content of the theory, and the interpretation maps assign meanings. In the language of this paper, the common core corresponds to the same conserved quantity whose name changes, and the interpretation map to the renaming. If renamings become indistinguishable under anonymity, dual models become the same thing. This is the claim this paper adds.
+
+Seven groups that may merge into one are listed as candidates.
+
+| Group | Rows that may merge | Common content |
+|---|---|---|
+| K1 Allocation of one rotation | A3, S3 (Lorentz), S4 (signature), S9 (cross term 2ab), the two clocks t and R | Invariant mass = rest frequency = rest energy |
+| K2 Return of one step | A4, S2 (energy), G8 (crystallographic orders), L3 (orders 4 and 6 of the modular group), L6 (FPUT recurrence), G14 (parity), G18 (order of the exchange) | Rotation of finite order |
+| K3 Winding | G5 (winding number of the Clifford translation), S1 (momentum), G13 (Hopf winding number), W4 (magnetic charge), S6 (U(1)), Kaluza–Klein momentum | Integer winding number |
+| K4 Inside and outside | G16, W6, W1, S5, W2 | Record on the boundary = energy of the interior |
+| K5 Oneself as a fixed point | A2, L4 (renormalization fixed point), W3, the scale freedom of A3, amplitude and phase | A point returning to itself when the scale is changed |
+| K6 Permutation of three | G11 (triality), S17 (spin and statistics), S19 (three generations), E2, S8 | Permutation of a vector and two spinors |
+| K7 Labels of sides | A1, S10–S13 (C, P, T, CPT) | Which charge is positive, which side is left, which direction is past are choices of labels. The CPT theorem, invariance under changing all three labels at once, is a candidate expression of the anonymity of sides |
+
+Whether a group merges is checked by whether the conserved quantities of the group agree up to renaming alone.
+
+### 4.3 Dimensionless numbers attached to symmetries (candidate axiom of magic numbers)
+
+Noether's theorem says that each continuous symmetry has a conserved quantity. The author does not regard this as an essential axiom. The candidate axiom set up in this paper is:
+
+> An essential symmetry carries not a conserved quantity but always a dimensionless magic number. These are the numbers hidden behind e, π and α, and they are fixed almost entirely by number theory, group theory and geometric structure.
+
+This system is scale invariant, and only ratios are physical (§3.3). What a symmetry fixes is not a dimensional conserved quantity but a dimensionless number. A conserved quantity is only that number read out after multiplying by a ruler. In a world of ratios only, every ratio is preserved however the ruler is changed, and there are no special values. What does not vanish under a change of scale is only the pure numbers determined by structure. Integer numbers (orders, winding numbers, counts) select allowed values discretely from continuous ratios and bring in discreteness. Numbers that determine groups, lattices and geometries (π, φ, E₈'s 240 and 248) determine the form of relations and bring in structure. Scale invariance cannot break itself, so in a system that brings in no ruler from outside, the only source of discreteness and structure left is magic numbers.
+
+Known examples abound. The nuclear magic numbers 2, 8, 20, 28, 50, 82, 126 come from adding a spin–orbit term to the SU(3) symmetry of the three-dimensional harmonic oscillator (2, 8, 20, 40, 70, 112) [X30]. Universal constants at renormalization fixed points (the Feigenbaum constants, the dimension of the devil's staircase) are determined by structure alone, independently of the details of the system [X23]. E₈ has many numbers, in proportion to the many symmetries imposing constraints (§9).
+
+When different symmetries require nearby numbers, the observed value does not settle on any one of them; it is pulled in and oscillates metastably between them. Observed constants are close to, but not equal to, structural numbers. Eddington demanded agreement by claiming that α⁻¹ is the integer 136, later 137, while the mainstream discarded the structural numbers themselves because of the gap [X18]. This paper takes neither side and treats the gap not as an error but as content to be read. This relation is why a world that is uncertain and discrete looks continuous and deterministic. Because structural numbers give the points of locking, jumps are observed discretely. Because several numbers compete, observed values drift continuously with scale (the running of α). Quasi-periodic motion that is not locked takes exponentially long to break down (KAM and Nekhoroshev), and meanwhile it looks like a fixed orbit.
+
+### 4.4 The projection symmetry
+
+| No. | Symmetry | Related to | Conserved quantity / fixed point | Status |
+|---|---|---|---|---|
+| P1 | Full, partial and zero projection of an operation interchange with the projection method | The map between state space and spacetime, uncertainty, discreteness, the Born rule, the exchange ratio | The ratio of projection (a fixed point of locking if stable) | Hypothesis. Axiom 0.7 of the basic axiom system [S1], the anonymous partial projection paper [S2] |
+
+The same state and the same operation can look like a full projection, a partial projection or a zero projection depending on the projection through which they are viewed. A complex number looks like a full projection in one projection (it maps onto all values) and like a zero projection in another (multiplying by i leaves zero projection onto the original direction). The two are not contradictory; they are different projections.
+
+| How it looks | Examples | What comes out |
+|---|---|---|
+| As a full projection | The norm (always positive, never 0), magnification and reduction | Continuity, definiteness, determinism |
+| As a partial projection | Rotation by an angle θ (cos θ remains in the original direction), measurement of a superposition (probability cos²θ), the right exchange R = cos²θ | Probability, locking ratios |
+| As a zero projection | Multiplication by i, the antisymmetric part of a product (commutator), measurement of an orthogonal state | Uncertainty (bounded below by the commutator, [x, p] = iħ), discreteness (i⁴ = 1) |
+
+The map from the state space {zₙ} to spacetime corresponds to viewing the state space through some projection. Until the projection method is chosen, what is readable and what is not is undetermined. **This is the root difficulty of the map between state space and spacetime.** Since spacetime is relatively stably readable, the projection must be at least a partial projection. With a zero projection spacetime would not appear; with a full projection neither the unreadable interior (RQ₁Q₂Q₃) nor uncertainty nor discreteness would remain. With a partial projection, the projected part becomes readable spacetime {xyzt}, the part escaping orthogonally becomes the unreadable interior and phase, and uncertainty and discreteness come from the escaped part. For spacetime to be stably readable the ratio of projection must also be stable, and a stable ratio should be locked onto some structural number. The right exchange R = cos²θ ≈ 0.7 has the form of a partial-projection ratio, but whether it is the candidate is unknown (candidate).
+
+---
+
+## 5. Symmetries Required by the Standard Model, General Relativity and E₈
+
+External standards are listed with their candidate correspondences in this system.
+
+| No. | Symmetry | Conserved quantity | Noether's theorem | Correspondence in this system | Status |
+|---|---|---|---|---|---|
+| S1 | Spatial translation | Momentum | Holds; not localizable in gravity | Left Clifford translation (fixed-point free; winding number and one-step angle are gauge invariants) | Candidate |
+| S2 | Time translation | Energy | Holds classically | Eigenphase of Uⁿ = I | Candidate |
+| S3 | Lorentz transformation | Angular momentum, boost charges | Holds | Decomposition z² = (a² − b²) + i·2ab, v² + (1/γ)² = 1, additivity of rapidity | Identity is theory [S16, S21] |
+| S4 | Signature of spacetime | ― | ― | Relocating terms by multiplying a coordinate by i; groups of different signature all lie in the same O(n, ℂ) | Established (§10.1) |
+| S5 | General coordinate transformation, equivalence principle | No local conserved quantity (identity by the second theorem) | Doubtful | Stretch γ by a localized wave, deficit angles of view-angle triangles | Candidate [S15] |
+| S6 | U(1)_Y and U(1)_EM | Charge | Holds | Hopf winding number, the charge formula of sign vectors Q_em = −(1/6)(Q₁ + Q₂ + Q₃) − t/2 | Candidate |
+| S7 | SU(2)_L | Weak isospin | Spontaneously broken | One of SU(2)_L × SU(2)_R, simultaneous flip of (t, R) | Candidate |
+| S8 | SU(3) | Colour charge | Holds | G₂ ⊃ SU(3) fixed by triality, or the 3 + 2 decomposition [S3, S18] | Candidate |
+| S9 | Electroweak symmetry breaking | ― | Broken | Pinned cross term 2ab (spin 0) | Candidate |
+| S10–S13 | C, P, T, CPT | ― | Discrete | Sign flip of Q, quaternion conjugation q ↦ q̄ (exchange of left and right multiplication), complex conjugation | Candidate |
+| S14 | CP violation | ― | Broken | Mismatch between the exchange rotation and the lattice | Candidate |
+| S15 | Baryon number, lepton number | B, L | B + L anomalous at the quantum level | Components of sign vectors | Open |
+| S16 | Chiral symmetry | Axial charge | Broken by quantum anomaly | Left and right multiplication [S4] | Candidate |
+| S17 | Spin and statistics | Type of statistics | Follows from Lorentz invariance | Parity (−1)ⁿ | Candidate |
+| S18 | Gauge anomaly cancellation | Sum of charges per generation is 0 | Consistency condition | Charges of sign vectors come out without excess or deficit [S4] | Candidate |
+| S19 | Three generations | ― | Reason unknown | Triality (order 3) | Candidate |
+| S20 | Scale and conformal symmetry | Dilation charge | Broken by mass and quantum anomaly | Σz² = 0 is trivially scale invariant | Theory (§3.3) |
+
+| No. | Where E₈ appears | Correspondence in this system | Status |
+|---|---|---|---|
+| E1 | Gluing of the readable side and the interior | Pairing two D₄ lattices in the same coset gives the 240 roots of E₈ | Established (§10.2); precedent [S2] |
+| E2 | E₈ ⊃ SO(16) ⊃ D₄ × D₄ | Triality of the pair preserves the roots of E₈ | Established (§10.2) |
+| E3 | Grand-unification chain E₈ ⊃ E₆ ⊃ SO(10) ⊃ SU(5) | ― | Open |
+| E4 | The spinor 16 of SO(10) | Same number as the 16 even sign vectors tRQ₁Q₂Q₃ | Candidate (set up for the first time here) |
+| E5 | Heterotic string, Lisi's E₈ theory | ― | Reference |
+| E6 | Contact between E₈ and 137 | ― | Open |
+
+---
+
+## 6. Symmetries of the Algebra and Geometry of This System
+
+| No. | Symmetry | Related to | Status | Provenance |
+|---|---|---|---|---|
+| G1 | Composition algebras (dimensions 1, 2, 4, 8) | The eight directions | Established | Hurwitz's theorem |
+| G2 | S³ = SU(2), uniform translations form a group | The three dimensions of space (only S¹ and S³; S⁷ violates associativity) | Established | Adams' theorem [S21] |
+| G3 | Huygens' principle | Stationarity of localized waves | Established | [S21] |
+| G4 | Mass gap from curvature | The −1 in the S³ eigenvalues (n + 1)² − 1 | Established | [S21] |
+| G5 | Left multiplication (Clifford translation) | An equally spaced scale unaffected by the distortion of space (gauge) | Theory | [S21] |
+| G6 | Right multiplication (array of component rotations, exchange) | Interaction, R = cos²θ ≈ 0.7 | Theory | [S7, S27] |
+| G7 | Continuous rotations in three dimensions | Angular momentum; the centre θ₀ is a fixed point | Established | ― |
+| G8 | Crystallographic symmetry in four dimensions | Discreteness of spacetime; orders 1, 2, 3, 4, 6 (see the open item in §11.3) | Theory | §3.4 |
+| G9 | The 24 units of the R = 3 system | Multiplication from left or right preserves the lattice H and D₄; the ball centre (½,½,½,½) is one of the units | Established | Checks of this paper |
+| G10 | Odd R | Vertices lie on a cell-centred hypersphere only for odd R; R = 3 gives 137 | Established (count) | [S9, S31, S32] |
+| G11 | Triality | One vector set and two spinor sets, candidate for three generations | Established (math), candidate (physics) | §10.2, [X28] |
+| G12 | Quaternion form of triality | q ↦ a q a | Established | §10.2 (set up for the first time here) |
+| G13 | Hopf fibration | Charge (winding number) | Theory | [S21] |
+| G14 | Parity (−1)ⁿ, antipode | Fermions and bosons | Theory | [S21] |
+| G15 | Sign vectors tRQ₁Q₂Q₃ | 16 even ones form a generation; xyz carries spin | Theory | This paper (study of 2026-10-16) |
+| G16 | Duality of inside and outside | Cross-polytope and hypercube, particle and absorber | Candidate | The mathematics of the cross-polytope–hypercube duality is in [S28] |
+| G17 | Central projection | R is unreadable; the origin is shared | Theory | Axiom 3 of the basic axiom system [S1], chapter 11 of the fourteenth [S19] |
+| G18 | Exchange rotation 23π/124 | Finite order, not crystallographic; not a symmetry of the lattice | Established (not a lattice symmetry) | [S7, S19] |
+
+---
+
+## 7. Symmetries of Locking and Metastable Oscillation
+
+When nearby discrete values are required by different symmetries, the system may not lock onto any of them and may instead oscillate metastably or asymptotically with an extremely long period. Symmetries found by complex systems and nonlinear dynamics are listed with their correspondences in this system.
+
+| No. | Known structure | Content | Correspondence in this system | Status |
+|---|---|---|---|---|
+| L1 | Arnold tongues, circle map | Frequency ratios lock onto nearby rationals; the width narrows as the denominator grows | Locking between the exchange rotation and the lattice orders; measured in the model in [S26] | Established (math), candidate (correspondence) |
+| L2 | Devil's staircase | At criticality a step stands at every rational; the remainder is a Cantor set of dimension about 0.868 [X23] | The structure, as a set, of being near but not equal | Established, candidate |
+| L3 | Farey tree, modular group SL(2, ℤ) | Steps are ordered by mediants (p + p′)/(q + q′) [X24]. The modular group is generated by elements of order 4 and 6 | The crystallographic orders Z₄ and Z₆ enter the symmetry of the locking hierarchy. In the quantum Hall effect the subgroup Γ₀(2) gives the selection rule of transitions [X25] | Established, candidate |
+| L4 | Golden ratio, renormalization fixed point | The ratio least prone to locking; scale symmetry of self-similarity | Limit of metastability | Established, candidate |
+| L5 | KAM theorem, Nekhoroshev stability | Quasi-periodicity survives; even when it breaks, the time to break down is exponentially long | Asymptotic oscillation with an extremely long period | Established, candidate |
+| L6 | FPUT recurrence | No approach to thermal equilibrium; near return after a long time | Approximate return of Uⁿ = I | Established, candidate |
+| L7 | Kuramoto model | Transition between synchrony and asynchrony | How the phases of many zₙ align; the single-wave equation is of Kuramoto type [S22] | Established, candidate |
+| L8 | Quasicrystals | Projecting E₈ to four dimensions gives a quasicrystal with the 600-cell symmetry H₄, with the golden ratio entering [X26] | A symmetry incompatible with the lattice appears as an order that is near but not equal | Established, candidate |
+| L9 | Theta function of E₈ | A modular form (Eisenstein series of weight 4) | Contact between E₈ and the modular group | Established, candidate |
+
+Locking appears not as a conserved quantity of a flow but as a fixed point (the lock) and quasi-oscillation around it. The symmetries of the devil's staircase, the Farey tree and renormalization fixed points are discrete hierarchies and scale self-similarity, outside Noether's theorem.
+
+---
+
+## 8. Where Noether's Theorem Fails or Is Doubtful
+
+1. **Discrete symmetries** (A1, A4, G8, G11, G14, G15): there is no current. What is conserved is an eigenvalue (a phase or a sign).
+2. **Fixed points** (A2): self-consistency is a fixed point rather than a symmetry; the conserved quantity and the fixed point are the same thing.
+3. **Topological conservation** (G13, W4): winding numbers are conserved by topological structure rather than by symmetry.
+4. **Scale** (A3, S20): there is a symmetry, yet the closure does not fix the ruler.
+5. **Gravity** (S5): local stretching breaks translation symmetry and energy cannot be localized. By Noether's second theorem conservation laws become identities holding identically ("strong laws") [X8].
+6. **Quantum anomalies** (S15, S16, S20): the axial U(1), B + L and scale symmetry are conserved classically but broken by quantization [X9].
+7. **Big-picture symmetries** (W1, W4, W5): the arrow of time is broken by a boundary condition, and electric–magnetic duality and Galois symmetry lie outside Noether's theorem.
+8. **Mismatch of the exchange** (G18): there is no exact conserved quantity, only locking and quasi-oscillation.
+9. **Locking symmetries** (§7): they appear as fixed points and quasi-oscillation around them.
+
+All of these lie on the side of the view of §4.3 that what is attached to a symmetry is not a conserved quantity but a number.
+
+---
+
+## 9. Catalogue of Magic Numbers
+
+Numbers that look like magic numbers are divided into four systems by their origin. When a new number appears, first decide its system. Mistaking a derived number for an integer or irrational one leads into the trap of demanding agreement.
+
+### 9.1 Integer system (numbers required by structure)
+
+**Easily overlooked integers**: 0 (closure, a statement of existence), 1 (one closure, v² + (1/γ)² = 1), 2 (one complex number cannot close; the minimal system is a two-body system), 3 (the dimension of space, triality, three generations), 4 (the dimension of spacetime, quaternions), 8 (the upper limit of composition algebras, the eight directions), n (the order of Uⁿ = I).
+
+**Integers required as sequences** (mostly from number theory, group theory and geometry):
+
+| Sequence | Origin | Status |
+|---|---|---|
+| 1, 2, 4, 8 | Dimensions of composition algebras | Established |
+| 1, 3, 7 | Dimensions of parallelizable spheres (S¹ and S³ form groups) | Established |
+| 1, 3, 7, 15 | Dimensions of the total spaces of Hopf fibrations | Established |
+| 1, 2, 3, 4, 6 | Rotation orders compatible with a lattice | Established |
+| 5, 6, 3 | Numbers of regular polyhedra and polytopes (three, four, five or more dimensions) | Established |
+| 2, 6, 12, 24, 240, 196560 | Kissing numbers (dimensions 1, 2, 3, 4, 8, 24) | Established |
+| 24, 48, 120 | Orders of the binary tetrahedral, octahedral and icosahedral groups | Established |
+| 14, 52, 78, 133, 248 | Dimensions of the exceptional Lie groups G₂, F₄, E₆, E₇, E₈ | Established |
+| 2, 8, 20, 28, 50, 82, 126 | Nuclear magic numbers | Established |
+| 1, 137, 1545, 7281 | Numbers of hypercubes inscribed in a cell-centred hypersphere (R = 1, 3, 5, 7) | Established (count) [S9] |
+| 1, 2, 3, 7, 11, 19, 43, 67, 163 | Heegner numbers | Established |
+| 8 | Bott periodicity | Established |
+
+**Integers of E₈ and related lattices** ([X29]): rank 8, dimension 248, 240 roots, Coxeter number 30 (also 30 for the 600-cell group H₄), Weyl group order 696,729,600, determinant 1. The exponents of E₈, 1, 7, 11, 13, 17, 19, 23, 29, are the integers below 30 coprime to 30; their number is φ(30) = 8 = rank, and their sum 120 is the number of positive roots, equal to the number of vertices of the 600-cell. The binary icosahedral group (the 120 vertices of the 600-cell) corresponds to E₈ by the McKay correspondence. For D₄: 24 roots, Weyl group order 192, 1152 automorphisms (§10.2).
+
+**Ratios of integers**: 1/2 of spin and of Dirac's condition, charges 1/3 and 2/3, 16 per generation, 12 gauge particles (8 + 3 + 1).
+
+### 9.2 Coupling-convention system (numbers set by unit conventions)
+
+G = c = q₀ = 1, q₀ = e/3, J = ħ/2, natural units ħ = c = 1. These are not magic numbers but numbers set to 1 or 3 by the choice of units. Only dimensional constants can be set to 1 by a unit convention; dimensionless numbers (α and others) cannot be changed by the choice of units.
+
+### 9.3 Irrational system
+
+- **Geometry (space)**: π, √2, √3, the golden ratio φ, the dihedral angle of the regular tetrahedron arccos(1/3) ≈ 70.53° (five of them fall short of 360° by 7.356°), the complement of the magic angle 35.264°, the solid angle 4π.
+- **Evolution (phase, time)**: e (the exponential map of a group), 2π/n (one step of Uⁿ = I), e^{iπ} = −1 (connecting geometry and evolution), rapidity.
+- **Statistics (an easily overlooked system)**: √(2π), Euler's constant, ln 2, ζ(3), π⁴/15, the constants of Wien's displacement law, Onsager's critical temperature 2/ln(1 + √2), percolation thresholds, the Feigenbaum constants, the dimension 0.868 of the devil's staircase, the golden-mean critical constant of the circle map, Khinchin's constant, Lévy's constant π²/(12 ln 2), the critical coupling of the Kuramoto model, critical exponents.
+
+### 9.4 Derived system (numbers that look like magic numbers but are derived from other numbers)
+
+α⁻¹ = 137.035999… (the electromagnetic coupling, running with energy), the Thomson cross-section (8π/3) r_e², the first term of the anomalous magnetic moment α/2π, fine-structure splitting ∝ α², the Rydberg constant α² m_e c/(2h), the Bohr radius λ̄_C/α, sin²θ_W, the proton–electron mass ratio, the strong coupling, the gravitational coupling. These should be assembled by the readout map from numbers of the integer and irrational systems, and they appear as cross-sections and interaction coefficients.
+
+### 9.5 Pairs that are near but not equal
+
+| Structural number | Observed or nearby number | Explanation | Status |
+|---|---|---|---|
+| 137 | α⁻¹ = 137.036 | Unexplained. Candidate for locking and quasi-oscillation among several structural numbers | Candidate |
+| 640320³ + 744 | e^{π√163} (smaller by 7.5 × 10⁻¹³) | Explained by class number 1 and the expansion of the j-function [X32] | Established |
+| 196883 + 1 | The coefficient 196884 of the j-function | The nearness revealed a hidden symmetry (the Monster) and became a theorem [X31] | Established |
+| 2/3 | Koide's value | Unexplained | Candidate |
+| Lattice orders 4 and 6 | Order of the exchange | Not crystallographic; locking in the fourteenth [S19] | Theory |
+
+e^{π√163} and moonshine are examples where "near but not equal" comes from the structure of number theory and group theory itself, and they are precedents for a method of finding hidden symmetries from near coincidences.
+
+---
+
+## 10. Confirmed Results
+
+The checks in this section were made only with the mathematics of objects already in the theory, without using the readout map (which is open). No parts were added. Programs and results are in the folder of Appendix A.
+
+### 10.1 Check 1: true square and norm
+
+**Proposition.** A linear map T that preserves both the sum of true squares zᵀz and the norm z†z is necessarily a real orthogonal map.
+
+**Proof.** From TᵀT = I and T†T = I we get Tᵀ = T†, that is, T̄ = T, so T is real. Being real with TᵀT = I, it is orthogonal. For generators, the intersection of complex antisymmetric and anti-Hermitian matrices is the real antisymmetric matrices. □
+
+Numerically, in eight dimensions, complex orthogonal maps preserved the true square (change 3.6 × 10⁻¹⁴) and changed the norm (change 100), unitary maps preserved the norm (1.8 × 10⁻¹⁵) and changed the true square (2.9), and real orthogonal maps preserved both (10⁻¹⁵). The dimension of the intersection of generators was 28, equal to the dimension of real antisymmetric matrices in eight dimensions.
+
+**Relocating terms.** With D = diag(1, …, i, …), which multiplies coordinates by i, an element Λ of the group O(p, q) of signature (4,0), (3,1) or (2,2) is mapped to DΛD⁻¹, and all of these became elements of the same O(4, ℂ) (error 10⁻¹⁶). Exchanging space and time corresponds to a different real slice of the same complex quadric.
+
+### 10.2 Check 2: triality of D₄
+
+| What was checked | Result |
+|---|---|
+| Automorphisms of the D₄ root system | 1152 (the order of W(F₄)) |
+| Action on the three cosets of D₄*/D₄: v (odd class), s and c (two half-integer classes) | Each of the 6 permutations occurs 192 times; triality is present in full as S₃ |
+| An element T of order 3 cycling v → s → c | Exists |
+| The 24 Hurwitz units | Split into 8 each in v, s, c; T cycles the three octets and preserves the set of 24 |
+| The pair (T, T) | Preserves the 240 roots of E₈ |
+| The centre (½,½,½,½) of the ball in which 137 was counted | In class s; T sends it to class c, T² to class v |
+| Quaternion form of T | **q ↦ a q a**, a = (−1 + i + j + k)/2 (a unit of order 3); the operation of multiplying by the same unit from left and right |
+
+The 24 units of the equally spaced gauge of the R = 3 system split into one vector set and two spinor sets, and triality exchanges them by left and right multiplication. The subgroup fixed by triality is G₂, and G₂ contains SU(3) (a mathematical fact). Whether this corresponds to physical colour or to three generations is a candidate.
+
+---
+
+## 11. Correspondence with Published Papers
+
+The 156 published papers (13 series) were mapped to the rows of the catalogue. 81 rows have a published standard; the 15 rows to which no paper corresponds are W4, K3, K6, K7, S13, S15, E4, E5, G12, C3, C4, L4, L5, L8 and L9. These 15 rows are supported by external literature or by the checks of this paper. The full mapping table is in Appendix B.
+
+### 11.1 Resetting the axiom numbering
+
+| Document | Old number | Number in this paper |
+|---|---|---|
+| Basic axiom system v9.1 [S1] | Axiom 0 anonymity | A1 |
+| Same | Axiom 0.5 scale anonymity | Consequence of A3, S20 |
+| Same | Axiom 0.6 dimension-wise central-projection readout | No corresponding row (a readout rule for curvature correction) |
+| Same | Axiom 0.7 existence of anonymous partial projection | P1 |
+| Same | Axiom 1 all-positive-sign zero closure | A3 (moved from axiom to theorem) |
+| Same | Axiom 2 nontrivial existence | Premise of A3 |
+| Same | Axiom 3 degeneracy of the projection axis and imaginary-direction readout | G17 |
+| Same | Axiom 15 discreteness of observed phase | A4, G13 |
+| Zero closure, finite order, self-consistent geometry [S3] | A1 complex zero closure | A3 |
+| Same | A2 finite order | A4 |
+| Same | A3 simplex consistency | No corresponding row (later found to impose no constraint [S12]) |
+| Same | A4 self-consistency | A2 |
+| Earlier N-body series | Axiom 1, first axiom (zero closure) | A3 |
+| Research project design [S14] | First-principle candidate (anonymous distinguishable states) | A1 |
+| First and second thought experiments [S15, S16] | P1 anonymity, A1 a conserved readout | A1, A3 and K1 |
+| Dual-geometry series | νλ = 1, zero-point ½, one asymmetric bit | The conjugate pairs of §4.2, the integer ratio ½, S12 |
+
+### 11.2 Revision of a claim
+
+Papers 7 and 9 and the supplement of the BH thermodynamics programme [S29, S30] took the locking side, filling the gap between 137 and α⁻¹ with a closed identity. This paper revises that to the position that reads the gap itself as content (§4.3, §9.5). The earlier papers are cited as the record of the position before revision.
+
+### 11.3 Interpretations of numbers kept as open problems
+
+For the following disagreements, no single interpretation is taken as correct. That several interpretations are possible is the present answer, and these remain as problems.
+
+| Item | Interpretations |
+|---|---|
+| Rotation orders of the four-dimensional lattice | Crystallographic 1, 2, 3, 4, 6 (§3.4) / 1, 2, 3, 4, 5, 6, 8, 10, 12 of §20.3 of the unified hypothesis paper [S21] |
+| Decomposition of 137 | 1 + 8 + 128 [S19] / 1 + 8 + 24 + 40 + 64 [S21] |
+| Oddness | Odd R (G10) / a single state has odd R² (paper 5 of the dual-geometry series) |
+| Number of components per generation | 16 (G15, E4) / 15 [S4] |
+| Order of the exchange | 248 (clock of observation) / 124 (order of the root) [S7]. The lock-dynamics paper finds that locking does not select order 124 [S26] |
+| Parity and statistics | Type of statistics (G14, S17) / a conventional label |
+| Cross term 2ab | Mass (S9) / oscillation of curvature (the complex-rotating-wave paper) |
+| Time reversal and the arrow of time | One side (S12, W1) / the forced bit is separate from the arrow of time (paper 14 of the dual-geometry series) |
+| Axis Q | Three axes Q₁Q₂Q₃ and 16 states (G15) / one axis with 8 values and 62 states (W8, the three-layer model) |
+| Lorentz signature | Assumed (gnomonic 1) / derived (gnomonic 10, S3) |
+| How SU(3) is obtained | Through G₂ (S8) / by the 3 + 2 decomposition [S18] |
+
+### 11.4 Withdrawn or corrected claims
+
+When citing, the corrected version is the standard. "Zero Closure Was Four-Dimensional" v4 withdrew "compactness implies a discrete spectrum" [S5]. Three-layer model 7 and D1 v2.1 withdrew H_xyz_inphase and δδt. Paper 5 of the BH thermodynamics programme corrected the "disagreement" in the abstract of paper 1 as a confusion between 3 + 1 and 4 + 1. Paper 8 of the BH thermodynamics programme changed its title to "structural correspondence" in v2. Papers 6 and 12 of the dual-geometry series and the observer–system beat conjecture have also been corrected.
+
+---
+
+## 12. Position among Prior Studies
+
+There are prior studies close to individual elements.
+
+- **Space from Hilbert space**: Cao, Carroll and Michalakis [X1] assumed a tensor-product decomposition into subsystems and assembled space from mutual information. Carroll and Singh [X2] took only the list of eigenvalues of the Hamiltonian and the components of one vector as the minimal ontology. Both give time evolution from outside and place the tensor-product decomposition (labels of subsystems) first; from the side of anonymity, the latter is a hidden assumption. Stoica [X3] criticized that three-dimensional space does not emerge uniquely from the minimal quantum structure and that a choice is needed. This points to the same place as this paper's "until the projection method is chosen, what is readable is undetermined" (§4.4).
+- **Philosophy of symmetry**: from the classics of Weyl [X22] and Wigner to the collection on the philosophy of symmetry in physics [X21].
+- **Anonymity**: permutation invariance is considered a postulate consistent with quantum theory but not derivable from it [X4]. Structural realism holds that what exists in the world is only the structure of relations [X5, X6]. A Japanese exposition of relationalism (Leibniz, Mach), which regards spacetime as relations among things, is [X33].
+- **Self-consistency**: Chew's bootstrap combined self-consistency with the absence of elementary particles ("democracy") but placed spacetime as a background [X7].
+- **A world of ratios only**: Barbour's shape dynamics holds that only ratios carry objective information and showed that imposing scale invariance makes the energy and angular momentum of an island universe zero [X10, X11]. This has the same form as the closure of this paper but does not treat discreteness or magic numbers.
+- **Dimensionless numbers**: Duff holds that the number of dimensional fundamental constants is zero and that only dimensionless numbers are fundamental [X13].
+- **Noether's theorem**: the second theorem and strong laws [X8], quantum anomalies [X9], the view of symmetries as meta-laws [X14].
+- **Duality**: the schema of De Haro and Butterfield [X12]; Kaluza–Klein momentum and charge [X15].
+- **Triality and three generations**: the proposals of Boyle and of Furey and Hughes start from octonions and Clifford algebras and are at the stage of conjecture [X16, X17].
+- **Attempts to derive α from structure**: Eddington, Rosen, Smith and claims from E₈ all lie on the side demanding agreement [X18, X19, X20].
+- **Locking**: the devil's staircase of the circle map and the renormalization of the Farey tree [X23, X24]; the modular group in the quantum Hall effect [X25].
+- **Precedents for magic numbers**: nuclear magic numbers [X30], moonshine [X31], e^{π√163} [X32].
+
+Within the range examined, the following combinations were not found: (1) a construction taking anonymity and self-consistency as axioms and obtaining closure and return as two theorems; (2) an axiom that what is attached to a symmetry is not a conserved quantity but a dimensionless number; (3) an argument combining conjugacy and duality with anonymity to merge separate symmetries as different views of one symmetry; (4) the position reading "near but not equal" as locking and quasi-oscillation among several structural numbers; (5) a route into three generations from the triality q ↦ a q a built into the Hurwitz lattice. Details of the survey are in Appendix C.
+
+---
+
+## 13. Open Problems
+
+### 13.1 The root difficulty
+
+What is visible depends on the projection method (§4.4). The map from the state space {zₙ} to spacetime {xyzt} must be at least a partial projection. The projection method is unknown.
+
+### 13.2 The readout map
+
+One zₙ is merely a point in a two-dimensional plane. How do three independent spatial directions and one time assemble from the relations among many zₙ? It is not known how a set of complex numbers carries the quaternion structure required by the condition on composition algebras. Standard theory proceeded without this map: it accepted discreteness as a result, gave the background spacetime and the ruler by hand, and advanced with the computational methods of bra–ket notation, gauge theory and renormalization. Weyl made R carry the role of Q in 1918 and discarded R from gauge theory in 1929.
+
+### 13.3 The unit of the ruler and the two orders
+
+The closure does not fix the ruler (§3.3). What fixes the unit of R? How do the order of the exchange and the lattice orders 4 and 6 combine? These two are different faces of the fact that the readout map is unknown. Candidates are the conjugacy of amplitude and phase (§4.2) and the locking of the projection ratio (§4.4).
+
+### 13.4 Discipline of numerical experiments
+
+The catalogue of this paper is also the pass/fail standard for numerical experiments. The author's model built on the 600-cell imported a Dirac-type generator, derivatives of position, spin matrices and a Poisson equation, none of which are in the skeleton, and passed all stages by swapping parts and readings each time a result did not match. That pass is not a derivation from the skeleton. Later numerical experiments are to be built only from the finite operations in the skeleton (the Clifford translation multiplying a unit quaternion from the left and the array of component rotations multiplied from the right); as soon as a part not in the catalogue turns out to be needed, the work stops and the part is stated explicitly as a new assumption. The group 2I of the 600-cell contains five-fold and ten-fold rotations and lies outside the crystallographic restriction, so it does not satisfy the condition of discreteness of spacetime (§3.4).
+
+### 13.5 Checking the consequences of the distinguishability axiom
+
+The following have not been checked for the distinguishability axiom (A1′). (1) If the indistinguishability of layers is carried through, does it require the same definition to hold at the layers below the square of z′ (z⁴ and beyond)? If so, power sums vanish one after another and may connect to the return Uⁿ = I. (2) In the exponential representation E = ln|z| + iφ, z ↦ z² is E ↦ 2E, a discrete scale symmetry with factor 2. It is a semigroup symmetry with no inverse, outside Noether's theorem. (3) At the squared layer z and −z cannot be distinguished, and the information of parity (sign reversal at 360°) disappears. The disagreement between the exchange orders 248 and 124 (§11.3) is a candidate for the difference in reading the same rotation at two layers. (4) The relation between the choice of layer of the squaring map and the four readings by the combination of t and R (xyz + t, Q₁Q₂Q₃ + R, xyz + R, Q₁Q₂Q₃ + t) (Appendix D).
+
+### 13.6 Checking the correspondences listed as candidates
+
+Whether the groups K1–K7 agree up to renaming alone. Whether the duality of inside and outside means the exchange of particle and absorber. Whether triality connects to three generations and to the relation between bosons and fermions. The correspondence between the 16 sign vectors and the spinor 16 of SO(10). Agreement between the Hopf winding number and the charge of sign vectors. The interpretations of numbers in §11.3.
+
+---
+
+## 14. Conclusion
+
+This paper fixed, as a catalogue with statuses and provenances, the symmetries and magic numbers that a research programme placing no background spacetime must satisfy. The zeroth axiom was anonymity and the first axiom self-consistency; the distinguishability axiom was derived from anonymity; the single definition of closure was the linear zero closure; the square-sum closure was shown to be the same definition read at the squared layer; and the return of time evolution was a theorem. Below them we placed big-picture symmetries, conjugacy and duality, the dimensionless numbers attached to symmetries and the projection symmetry, and listed the Standard Model, general relativity, E₈, the algebra and geometry of this system and the locking symmetries in the same format.
+
+Mathematically, we confirmed that only real orthogonal maps preserve both the true square and the norm, and that the 24 Hurwitz units are cycled 8 + 8 + 8 by the triality q ↦ a q a, which preserves the roots of E₈. We mapped the 156 published papers to the catalogue, reset the axiom numbering, revised the earlier claim on the gap of α, and kept the numerical disagreements as problems admitting several interpretations.
+
+The root difficulty of the map between state space and spacetime lies in the dependence of what is visible on the projection method. Since spacetime is stably readable, the map must be at least a partial projection. In the light of one of the success conditions of the research project design [S14], "to show that certain requirements are mathematically incompatible", this paper lays out each requirement and its provenance in one table and shows which requirements are already confirmed, which disagree with each other and which are open. Later papers and numerical experiments take the numbering and statuses of this paper as their answer-check standard.
+
+---
+
+## References
+
+### Self-citations (Concept DOI)
+
+[S1] N. Kihara, "Anonymous Equal-Amplitude Composite-Wave Model: Basic Axiom System v9," 2026-07-24. Concept DOI 10.5281/zenodo.21315735.  
+[S2] N. Kihara, "An Axiomatic Framework for Physical Symmetry Selection by Anonymous Partial Projection: Conditional Identification of E8 in an Eight-Component Two-Quartet Branch," 2026-07-24. Concept DOI 10.5281/zenodo.21521899.  
+[S3] N. Kihara, "Symmetry Generation from Zero Closure, Finite Order, and Self-Consistent Geometry," 2026-08-20. Concept DOI 10.5281/zenodo.22028072.  
+[S4] N. Kihara, "Noether Conservation Laws and Relational Phase Dynamics from Discrete Zero Closure," 2026-08-21. Concept DOI 10.5281/zenodo.22040735.  
+[S5] N. Kihara, "Zero Closure Was Four-Dimensional: An Interpretive Note on the Geometry and Algebra of Σx_n² = 0," v4, 2026-08-12. Concept DOI 10.5281/zenodo.21902805.  
+[S6] N. Kihara, "The Geometric Identity of the Zero-Square-Sum Constraint under Scale Invariance," 2026-07-22. Concept DOI 10.5281/zenodo.21495305.  
+[S7] N. Kihara, "Discovery of Finite-Order Resonance in Iterated Exchange Scattering," 2026-07-18. Concept DOI 10.5281/zenodo.21421366.  
+[S8] N. Kihara, "Dual Geometry of Wavelength Space and Frequency Space (Paper 1)," 2026-06-08. Concept DOI 10.5281/zenodo.20588036.  
+[S9] N. Kihara, "Closed Four-Degree-of-Freedom Structure and Its Correspondence with 4-Dimensional Lattice Counting (Paper 3)," 2026-06-08. Concept DOI 10.5281/zenodo.20589261.  
+[S10] N. Kihara, "Position Had Never Been Read: Sign Sectors, Duality Theorems, the Readout Hierarchy, and the Derived Clock (Paper 13)," 2026-06-14. Concept DOI 10.5281/zenodo.20665633.  
+[S11] N. Kihara, "Complex Phase Structure Emerging from Nontrivial Quadratic Closure," 2026-07-18. Concept DOI 10.5281/zenodo.21422505.  
+[S12] N. Kihara, "Mechanism of Inflation-like Rapid Expansion in Self-Consistent Closed Relational-Wave Systems," second edition, 2026-08-30. Concept DOI 10.5281/zenodo.22112008.  
+[S13] N. Kihara, "Anonymity and the Minimal Unit of Information," 2026-09-12. Concept DOI 10.5281/zenodo.22729127.  
+[S14] N. Kihara, "Designing a Research Project to Explore the Emergence of Spacetime, Particles, and Interactions from States and Relations," 2026-09-20. Concept DOI 10.5281/zenodo.22851944.  
+[S15] N. Kihara, "The First Thought Experiment: Tracing the Equivalence Principle Down to Two Nameless Degrees of Freedom," 2026-09-20. Concept DOI 10.5281/zenodo.22857952.  
+[S16] N. Kihara, "The Second Thought Experiment: Deriving the Coulomb-Type Inverse-Square Force from a Product Readout and an Area Clock," 2026-09-21. Concept DOI 10.5281/zenodo.22867336.  
+[S17] N. Kihara, "The Eleventh Thought Experiment: Emission Records of Two-Body Systems without a Background Spacetime," 2026-10-07. Concept DOI 10.5281/zenodo.23199299.  
+[S18] N. Kihara, "The Twelfth Thought Experiment: From the Fine-Structure Constant to Observation Maps and Gauge Symmetry," 2026-10-08. Concept DOI 10.5281/zenodo.23226258.  
+[S19] N. Kihara, "The Fourteenth Thought Experiment: Why Can Different Symmetries Never Be Fully Reconciled?," 2026-10-12. Concept DOI 10.5281/zenodo.23315557.  
+[S20] N. Kihara, "Emergence of Discrete Born-Type Weights in Iterated Two-Channel Exchange Systems," 2026-07-18. Concept DOI 10.5281/zenodo.21422470.  
+[S21] N. Kihara, "Reading Out Time, Space, Mass, Charge, Translational Velocity and Spin from the Relations and Interference of Complex Waves without a Background Spacetime," v1.1, 2026-10-15. Concept DOI 10.5281/zenodo.23384928.  
+[S22] N. Kihara, "The Equation of Motion of a Single Wave in a Relational-Wave Closed System," 2026-09-12. Concept DOI 10.5281/zenodo.22728760.  
+[S23] N. Kihara, "Analytic Exact Solution of the 90-Degree High-Symmetry Floor," 2026-09-12. Concept DOI 10.5281/zenodo.22728995.  
+[S24] N. Kihara, "A Finite Complete-Relation Closed System with Time Evolution as Vertices: Exact Minimal Closure at N=1, K=4 under U^K=I," 2026-09-15. Concept DOI 10.5281/zenodo.22763329.  
+[S25] N. Kihara, "Quadratic Condensation and Relational Local Time in a Many-Wave Complete Relational System," 2026-09-16. Concept DOI 10.5281/zenodo.22788737.  
+[S26] N. Kihara, "Lock Dynamics in an Anonymous Two-Channel Closed Wave System," 2026-08-02. Concept DOI 10.5281/zenodo.21763999.  
+[S27] N. Kihara, "Selection of the State-Exchange Weight G_R = 1 − R and Candidate Correspondence with the Fine-Structure Constant," 2026-07-16. Concept DOI 10.5281/zenodo.21396760.  
+[S28] N. Kihara, "Chain Complex Structure on the 4D Hypercubic Lattice: Structural Correspondence between Kihara Cube-Packing and Wilson Lattice Gauge Theory (BH Thermodynamics Programme, Paper 8)," 2026-04-29. Concept DOI 10.5281/zenodo.19880467.  
+[S29] N. Kihara, "A Geometric Identity for the Fine-Structure Constant: From the 4D Unit Ball Volume and its Cube-Packing Deficit (BH Thermodynamics Programme, Paper 7)," 2026-04-29. Concept DOI 10.5281/zenodo.19869266.  
+[S30] N. Kihara, "BH Thermodynamics Programme Paper 7 Supplement: Geometric Observations on the Second-Order Correction of the α Identity," 2026-05-01. Concept DOI 10.5281/zenodo.19933729.  
+[S31] N. Kihara, "Discrete Structure of a Four-Dimensional Ball: Unit-Cube Packing and the Asymptotic Volume Deficit Δ(R) (BH Thermodynamics Programme, Paper 3)," 2026-04-28. Concept DOI 10.5281/zenodo.19837591.  
+[S32] N. Kihara, "Diameter of the Circumscribed Hypersphere of a Unit Four-Dimensional Hyperrectangle (Gnomonic Projection 10)," 2026-04-28. Concept DOI 10.5281/zenodo.19533312.  
+
+### External literature
+
+[X1] C. Cao, S. M. Carroll, S. Michalakis, "Space from Hilbert Space: Recovering Geometry from Bulk Entanglement," Phys. Rev. D 95 (2017); arXiv:1606.08444.  
+[X2] S. M. Carroll, A. Singh, "Mad-Dog Everettianism: Quantum Mechanics at Its Most Minimal," arXiv:1801.08132 (2018).  
+[X3] O. C. Stoica, "3D-Space and the preferred basis cannot uniquely emerge from the quantum structure," arXiv:2102.08620.  
+[X4] "Quantum Statistics of Identical Particles," Foundations of Physics 52:77 (2022).  
+[X5] S. French, J. Ladyman, "Remodelling structural realism," Synthese (2003).  
+[X6] J. Ladyman, D. Ross, *Every Thing Must Go* (Oxford University Press, 2007).  
+[X7] G. F. Chew, the bootstrap programme (1959–); "Bootstrap model," Wikipedia.  
+[X8] Y. Kosmann-Schwarzbach, *The Noether Theorems* (Springer, 2011); "The Noether theorems in context," arXiv:2004.09254.  
+[X9] "Anomalies," in *Renormalization* (Cambridge University Press).  
+[X10] J. Barbour, "Scale-invariant gravity: particle dynamics," arXiv:gr-qc/0211021.  
+[X11] J. Barbour, "Shape dynamics. An introduction," arXiv:1105.0183; "The Physics and Metaphysics of Pure Shape Dynamics," arXiv:2203.02773.  
+[X12] S. De Haro, J. Butterfield, "A Schema for Duality, Illustrated by Bosonization," arXiv:1707.06681; *The Philosophy and Physics of Duality* (OUP, 2025).  
+[X13] M. J. Duff, L. B. Okun, G. Veneziano, "Trialogue on the number of fundamental constants," JHEP (2002); arXiv:physics/0110060.  
+[X14] M. Lange, "Are symmetry principles meta-laws?" Synthese (2025).  
+[X15] "A New Perspective on Kaluza-Klein Theories," arXiv:2404.05302.  
+[X16] L. Boyle et al., "The Cℓ(8) algebra of three fermion generations with spin and full internal symmetries," arXiv:1906.05102.  
+[X17] "Sedenions, Clifford Algebras, and Three Fermion Generations: A Focused Review," arXiv:2609.10569; "The Standard Model, The Exceptional Jordan Algebra, and Triality," arXiv:2006.16265.  
+[X18] H. Kragh, "Magic Number: A Partial History of the Fine-Structure Constant," Archive for History of Exact Sciences 57 (2003) 395–431.  
+[X19] U. D. Jentschura, I. Nandori, "Attempts at a determination of the fine-structure constant from first principles: A brief historical overview," Eur. Phys. J. H 39 (2014) 591–613; arXiv:1411.4673.  
+[X20] "On Arthur Eddington's Theory of Everything," arXiv:1510.04046.  
+[X21] K. Brading, E. Castellani (eds.), *Symmetries in Physics: Philosophical Reflections* (Cambridge University Press, 2003).  
+[X22] H. Weyl, *Symmetry* (Princeton University Press, 1952).  
+[X23] P. Cvitanović, M. H. Jensen, L. P. Kadanoff, I. Procaccia, "Renormalization, unstable manifolds, and the fractal structure of mode locking," Phys. Rev. Lett. (1985).  
+[X24] P. Cvitanović, B. Shraiman, B. Söderberg, "Scaling laws for mode lockings in circle maps," Physica Scripta (1985).  
+[X25] B. P. Dolan, "Duality and the Modular Group in the Quantum Hall Effect," J. Phys. A 32 (1999) L243; arXiv:cond-mat/9805171.  
+[X26] V. Elser, N. J. A. Sloane, "A highly symmetric four-dimensional quasicrystal," J. Phys. A (1987).  
+[X27] J. A. Wheeler, R. P. Feynman, "Interaction with the Absorber as the Mechanism of Radiation," Rev. Mod. Phys. 17 (1945); "Classical Electrodynamics in Terms of Direct Interparticle Action," Rev. Mod. Phys. 21 (1949).  
+[X28] J. C. Baez, "The Octonions," Bull. Amer. Math. Soc. 39 (2002).  
+[X29] J. H. Conway, N. J. A. Sloane, *Sphere Packings, Lattices and Groups* (Springer).  
+[X30] D. Bonatsos et al., "Magic numbers of cylindrical symmetry," arXiv:1909.00233; "Magic numbers for shape coexistence," arXiv:1811.01071.  
+[X31] "Monstrous moonshine and the classification of CFT," arXiv:math/9906167; "Introduction to Sporadic Groups for physicists," arXiv:1305.5974.  
+[X32] "Lectures on modular forms and strings," arXiv:2208.07242.  
+[X33] S. Uchii, *Kūkan no nazo, jikan no nazo* [Mysteries of space, mysteries of time] (Chūkō Shinsho, 2006), in Japanese.
+
+---
+
+## Appendix A: Reproducing the Checks
+
+The programs and results of Checks 1, 2 and 2b are in the repository folder `次元の生成構造/四次元球殻住民_自己無撞着_視野角三角形_20261016/見落とされた対称性の確認_20261017/`. They are reproduced by `./run_all.sh`, and the results are written as JSON to `results/`.
+
+## Appendix B: Self-Citation Correspondence Table
+
+The correspondence between the 156 published papers and the catalogue rows, the disagreements and the correspondence with the old numbering are in `自己引用の対応表_20261017.md` (self-citation correspondence table, in the same folder as this paper; in Japanese).
+
+## Appendix C: The Original Lists and the Prior-Study Survey
+
+The working documents on which this paper is based are (in Japanese):
+
+- `次元の生成構造/対称性の一覧_保存量と固定点_20261017.md` (list of symmetries)
+- `次元の生成構造/マジックナンバーの一覧_20261017.md` (list of magic numbers)
+- `次元の生成構造/対称性の一覧_先行研究調査_20261017.md` (survey of prior studies)
+
+## Appendix D: Dialogue Record of the Thought Experiment on Linear Zero Closure
+
+The distinguishability axiom and the definition of linear closure in §3.0 came from the dialogue between the author and Claude on 2026-10-18. The dialogue record is in `次元の生成構造/線形和のゼロ閉塞_思考実験_20261018/線形和のゼロ閉塞Σzn=0仮定の追加の思考実験_20261018.md` (no summarization; only typos in the author's remarks corrected; in Japanese).
+
+## Version History
+
+- v1.0 (2026-10-18): first edition. Version DOI 10.5281/zenodo.23444452, Concept DOI 10.5281/zenodo.23444451.
