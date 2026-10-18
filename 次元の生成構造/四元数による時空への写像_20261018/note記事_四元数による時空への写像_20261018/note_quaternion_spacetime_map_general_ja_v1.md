@@ -247,16 +247,16 @@ https://wurabeseiji.github.io/ai-chat-logs-open/interactive/quaternion_light_con
 「複素数の集合から時空 (1＋3) への写像
 ― 四元数による読み出しと部分投射 ―」
 
-Version: v1.0（2026-10-18）
+Version: v1.1（2026-10-18）
 
 Concept DOI:
 https://doi.org/10.5281/zenodo.23451494
 
 Version DOI:
-https://doi.org/10.5281/zenodo.23451495
+https://doi.org/10.5281/zenodo.23452319
 
 日本語 PDF（Zenodo）:
-https://zenodo.org/records/23451495/files/quaternion_spacetime_map_ja_v1.pdf
+https://zenodo.org/records/23452319/files/quaternion_spacetime_map_ja_v1.pdf
 
 論文のフォルダ（日英の原稿、図表と再現スクリプト、引用の対応表、GitHub）:
 https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%9B%9B%E5%85%83%E6%95%B0%E3%81%AB%E3%82%88%E3%82%8B%E6%99%82%E7%A9%BA%E3%81%B8%E3%81%AE%E5%86%99%E5%83%8F_20261018

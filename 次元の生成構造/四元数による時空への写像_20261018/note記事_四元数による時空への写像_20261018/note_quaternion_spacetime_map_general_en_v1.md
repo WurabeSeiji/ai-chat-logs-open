@@ -260,7 +260,7 @@ The Japanese full text and the four interactive figures (HTML) are included in t
 
 ### The Japanese version of this article
 
-【日本語版の note の URL を記入】
+https://note.com/kiharanoriaki/n/n70ffbdc2526f
 
 ### The previous article
 
