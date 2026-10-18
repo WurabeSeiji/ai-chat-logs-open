@@ -1,0 +1,350 @@
+<title>四元円とグノモン射影</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600&family=Zen+Kaku+Gothic+New:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: 説明の帯 → 操作の帯 → 3 枚の図（幅に応じて 3 列〜1 列）→ 数値の読み取り */
+:root{
+  --bg:#f4f6f8; --panel:#ffffff; --ink:#18212c; --muted:#596577; --line:#d3d9e1;
+  --s3:#2a56c6;      /* 四元円 S³ の切断 */
+  --proj:#c4470f;    /* 中心投影 */
+  --geo:#0e7a6e;     /* 大円とその像 */
+  --grid:#b9c2ce;
+  --f-display:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --f-body:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  --f-data:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e131a; --panel:#151c25; --ink:#e4e9f0; --muted:#97a3b4; --line:#283341;
+  --s3:#7ea2ff; --proj:#ff9a5c; --geo:#3fd3bf; --grid:#3a4656; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e131a; --panel:#151c25; --ink:#e4e9f0; --muted:#97a3b4; --line:#283341;
+  --s3:#7ea2ff; --proj:#ff9a5c; --geo:#3fd3bf; --grid:#3a4656; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);line-height:1.65;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px}
+.wrap{max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+h1{font-family:var(--f-display);font-weight:600;font-size:clamp(1.5rem,3.2vw,2.1rem);margin:0;text-wrap:balance;letter-spacing:.02em}
+.lead{margin:6px 0 0;color:var(--muted);max-width:70ch}
+.lead b{color:var(--ink);font-weight:700}
+.eq{font-family:var(--f-data);font-size:.92em;white-space:nowrap}
+.controls{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px 22px}
+.ctl{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ctl label,.ctl .lab{font-size:.82rem;color:var(--muted);letter-spacing:.04em}
+.ctl .row{display:flex;align-items:center;gap:10px}
+.ctl input[type=range]{flex:1;min-width:0;accent-color:var(--s3)}
+#alpha,#s{accent-color:var(--geo)}
+.val{font-family:var(--f-data);font-variant-numeric:tabular-nums;font-size:.85rem;min-width:7.5ch;text-align:right}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{font:inherit;font-size:.85rem;padding:6px 12px;border:0;background:transparent;color:var(--ink);cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--s3);color:var(--panel)}
+.btn{font:inherit;font-size:.85rem;padding:6px 14px;border:1px solid var(--geo);border-radius:8px;background:transparent;color:var(--geo);cursor:pointer}
+button:focus-visible,input:focus-visible{outline:2px solid var(--s3);outline-offset:2px}
+.panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;min-width:0}
+figure h2{font-size:1rem;margin:0;font-weight:700;display:flex;align-items:center;gap:8px}
+figure h2 i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.cv{position:relative;width:100%;aspect-ratio:1/1;max-width:100%}
+canvas{width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab;border-radius:6px}
+canvas:active{cursor:grabbing}
+figcaption{font-size:.86rem;color:var(--muted)}
+figcaption .eq{color:var(--ink)}
+.readout{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px 20px;margin:0}
+.readout div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-block:3px;min-width:0}
+.readout dt{color:var(--muted);font-size:.84rem}
+.readout dd{margin:0;font-family:var(--f-data);font-variant-numeric:tabular-nums;font-size:.84rem;text-align:right}
+.note{font-size:.82rem;color:var(--muted)}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>四元円とグノモン射影</h1>
+    <p class="lead">四元数 <span class="eq">q ＝ t ＋ xi ＋ yj ＋ zk</span> の大きさ 1 の集まりは 3 次元球面 S³（四元円）で、<span class="eq">q ＝ cos θ ＋ n sin θ</span> と書ける。これを北極 <span class="eq">q＝1</span> に接する超平面へ原点から中心投影すると <span class="eq">v/t ＝ n tan θ</span> になり、<b>四元数の極形式がそのままグノモン射影になる</b>。4 次元の図は 3 次元の切断で描いている。図はドラッグで回せる。</p>
+  </header>
+
+  <section class="controls" aria-label="操作">
+    <div class="ctl">
+      <label for="theta">緯度 θ（北極からの角）</label>
+      <div class="row"><input id="theta" type="range" min="0" max="3.1416" step="0.001" value="0.9"><span class="val" id="thetaV"></span></div>
+    </div>
+    <div class="ctl">
+      <span class="lab">左の図の切断に使う成分</span>
+      <div class="row"><div class="seg" role="group" aria-label="切断に使う成分">
+        <button id="axT" type="button" aria-pressed="true">実部 t</button><button id="axZ" type="button" aria-pressed="false">虚部 z</button>
+      </div></div>
+    </div>
+    <div class="ctl">
+      <label for="alpha">大円の傾き α</label>
+      <div class="row"><input id="alpha" type="range" min="0" max="1.25" step="0.01" value="0.55"><span class="val" id="alphaV"></span></div>
+    </div>
+    <div class="ctl">
+      <label for="s">大円の上の位置 s</label>
+      <div class="row"><input id="s" type="range" min="-1.42" max="1.42" step="0.001" value="0"><button class="btn" id="play" type="button">再生</button></div>
+    </div>
+  </section>
+
+  <section class="panels">
+    <figure>
+      <h2><i style="background:var(--s3)"></i>四元円 S³ の切断</h2>
+      <div class="cv"><canvas id="c1" aria-label="S³ を一つの成分の値で切った球面"></canvas></div>
+      <figcaption id="cap1"></figcaption>
+    </figure>
+    <figure>
+      <h2><i style="background:var(--proj)"></i>北極の接平面への中心投影</h2>
+      <div class="cv"><canvas id="c2" aria-label="z＝0 の切断での中心投影"></canvas></div>
+      <figcaption>4 次元のうち <span class="eq">z＝0</span> の 3 次元（t, x, y）で見た図。原点から、角 θ の緯線を北極 <span class="eq">t＝1</span> の接平面へ射影すると、半径 <span class="eq">tan θ</span> の円になる。赤道（θ＝90°）は無限遠に、南半球の点は原点の反対側を通って写り、<span class="eq">q</span> と <span class="eq">−q</span> は同じ点になる。</figcaption>
+    </figure>
+    <figure>
+      <h2><i style="background:var(--geo)"></i>接超平面 t＝1 の中の像</h2>
+      <div class="cv"><canvas id="c3" aria-label="接超平面の 3 次元の中の像"></canvas></div>
+      <figcaption>接超平面の座標は <span class="eq">u ＝ v/t ＝ (x/t, y/t, z/t)</span>。緯度 θ の球面 S² は半径 <span class="eq">tan θ</span> の球面に写る。大円 <span class="eq">q(s) ＝ e^{is}(cos α ＋ j sin α)</span> は直線 <span class="eq">u ＝ (0, tan α, 0) ＋ tan s·(1, 0, tan α)</span> に写る。s が一様に進んでも、像の上の進み方は tan s で一様ではない。</figcaption>
+    </figure>
+  </section>
+
+  <dl class="readout" aria-label="数値">
+    <div><dt>θ</dt><dd id="r-th"></dd></div>
+    <div><dt>切断の値 cos θ</dt><dd id="r-c"></dd></div>
+    <div><dt>切断球の半径 sin θ</dt><dd id="r-r"></dd></div>
+    <div><dt>射影の半径 |tan θ|</dt><dd id="r-tan"></dd></div>
+    <div><dt>大円の点 q(s)：t</dt><dd id="r-qt"></dd></div>
+    <div><dt>q(s)：(x, y, z)</dt><dd id="r-qv"></dd></div>
+    <div><dt>像 u(s)</dt><dd id="r-u"></dd></div>
+    <div><dt>|q(s)|</dt><dd id="r-n"></dd></div>
+  </dl>
+  <p class="note">すべての点は式から直接計算している（近似なし）。図の範囲を超える像（tan θ が大きいとき）は、範囲内の部分だけを描いている。</p>
+</div>
+
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const st = {theta:0.9, axis:'t', alpha:0.55, s:0, playing:false, dir:1};
+  const FONT = "12px 'JetBrains Mono', ui-monospace, Menlo, monospace";
+
+  function col(){
+    const cs = getComputedStyle(document.body);
+    const g = n => cs.getPropertyValue(n).trim();
+    return {ink:g('--ink'), muted:g('--muted'), s3:g('--s3'), proj:g('--proj'), geo:g('--geo'), grid:g('--grid'), panel:g('--panel')};
+  }
+
+  function makeView(id, R, yaw, pitch){
+    const cv = $(id), v = {cv, ctx:cv.getContext('2d'), R, yaw, pitch, dist:R*4.2, w:0, h:0, k:1, cx:0, cy:0, dpr:1};
+    const fit = () => {
+      const r = cv.getBoundingClientRect(); v.dpr = window.devicePixelRatio || 1;
+      cv.width = Math.max(1, Math.round(r.width*v.dpr)); cv.height = Math.max(1, Math.round(r.height*v.dpr));
+      v.w = cv.width; v.h = cv.height; v.cx = v.w/2; v.cy = v.h/2; v.k = Math.min(v.w, v.h)/2/(R*1.12);
+      drawAll();
+    };
+    new ResizeObserver(fit).observe(cv);
+    let drag = null;
+    cv.addEventListener('pointerdown', e => { drag = {x:e.clientX, y:e.clientY, m:e.pointerType==='mouse'}; try{cv.setPointerCapture(e.pointerId)}catch(_){} });
+    cv.addEventListener('pointermove', e => {
+      if(!drag) return;
+      v.yaw += (e.clientX-drag.x)*0.01;
+      if(drag.m) v.pitch = Math.max(-1.45, Math.min(1.45, v.pitch + (e.clientY-drag.y)*0.01));
+      drag.x = e.clientX; drag.y = e.clientY; drawAll();
+    });
+    const end = () => { drag = null; };
+    cv.addEventListener('pointerup', end); cv.addEventListener('pointercancel', end);
+    return v;
+  }
+
+  function P(v, p){
+    const [X,Y,Z] = p, cy = Math.cos(v.yaw), sy = Math.sin(v.yaw);
+    const x1 = X*cy + Z*sy, z1 = -X*sy + Z*cy;
+    const cp = Math.cos(v.pitch), sp = Math.sin(v.pitch);
+    const y2 = Y*cp - z1*sp, z2 = Y*sp + z1*cp;
+    const f = v.dist/(v.dist - z2);
+    return {x:v.cx + x1*v.k*f, y:v.cy - y2*v.k*f, z:z2};
+  }
+
+  function line(v, pts, color, width, base, dash){
+    const c = v.ctx; c.strokeStyle = color; c.lineWidth = width*v.dpr; c.setLineDash(dash ? dash.map(d=>d*v.dpr) : []);
+    let prev = null;
+    for(const p of pts){
+      if(!p){ prev = null; continue; }
+      const q = P(v, p);
+      if(prev){
+        const zn = ((prev.z + q.z)/2 + v.R)/(2*v.R);
+        c.globalAlpha = base*(0.28 + 0.72*Math.max(0, Math.min(1, zn)));
+        c.beginPath(); c.moveTo(prev.x, prev.y); c.lineTo(q.x, q.y); c.stroke();
+      }
+      prev = q;
+    }
+    c.globalAlpha = 1; c.setLineDash([]);
+  }
+
+  function sphere(v, r, color, base, nLat, nLon, center){
+    const C = center || [0,0,0], seg = 56;
+    for(let i=1;i<nLat;i++){
+      const ph = Math.PI*i/nLat, y = r*Math.cos(ph), rr = r*Math.sin(ph), pts = [];
+      for(let j=0;j<=seg;j++){ const a = 2*Math.PI*j/seg; pts.push([C[0]+rr*Math.cos(a), C[1]+y, C[2]+rr*Math.sin(a)]); }
+      line(v, pts, color, 1, base);
+    }
+    for(let j=0;j<nLon;j++){
+      const a = 2*Math.PI*j/nLon, pts = [];
+      for(let i=0;i<=seg;i++){ const ph = Math.PI*i/seg; pts.push([C[0]+r*Math.sin(ph)*Math.cos(a), C[1]+r*Math.cos(ph), C[2]+r*Math.sin(ph)*Math.sin(a)]); }
+      line(v, pts, color, 1, base);
+    }
+  }
+
+  function axes(v, L, labels, color){
+    const c = v.ctx; c.font = FONT.replace('12px', (12*v.dpr)+'px'); c.fillStyle = color;
+    const dirs = [[1,0,0],[0,1,0],[0,0,1]];
+    dirs.forEach((d,i) => {
+      line(v, [[-L*d[0],-L*d[1],-L*d[2]],[L*d[0],L*d[1],L*d[2]]], color, 1, 0.75, [4,4]);
+      const q = P(v, [d[0]*L*1.06, d[1]*L*1.06, d[2]*L*1.06]);
+      c.globalAlpha = 0.95; c.fillText(labels[i], q.x - 4*v.dpr, q.y + 4*v.dpr); c.globalAlpha = 1;
+    });
+  }
+
+  function dot(v, p, color, r, label){
+    const c = v.ctx, q = P(v, p);
+    c.fillStyle = color; c.beginPath(); c.arc(q.x, q.y, r*v.dpr, 0, 2*Math.PI); c.fill();
+    if(label){ c.font = FONT.replace('12px', (12*v.dpr)+'px'); c.fillText(label, q.x + 7*v.dpr, q.y - 6*v.dpr); }
+  }
+
+  function text(v, s, x, y, color){
+    const c = v.ctx; c.font = FONT.replace('12px', (12*v.dpr)+'px'); c.fillStyle = color; c.fillText(s, x*v.dpr, y*v.dpr);
+  }
+
+  const v1 = makeView('c1', 1.25, 0.55, 0.32);
+  const v2 = makeView('c2', 2.75, 0.62, 0.28);
+  const v3 = makeView('c3', 3.3, 0.6, 0.3);
+
+  // 図 1：S³ を一つの成分の値 cos θ で切った球面（半径 sin θ）
+  function draw1(K){
+    const v = v1, c = v.ctx; c.clearRect(0,0,v.w,v.h);
+    const th = st.theta, r = Math.abs(Math.sin(th));
+    const lab = st.axis === 't' ? ['x','z','y'] : ['x','t','y'];
+    axes(v, 1.15, lab, K.muted);
+    sphere(v, 1, K.grid, 0.55, 8, 12);
+    if(r > 1e-4) sphere(v, r, K.s3, 0.95, 9, 14);
+    else dot(v, [0,0,0], K.s3, 4);
+    // 子午線の挿入図：切断の値と半径
+    const R0 = 44, ox = 62, oy = v.h/v.dpr - 62;
+    c.save(); c.strokeStyle = K.muted; c.lineWidth = v.dpr; c.globalAlpha = 0.9;
+    c.beginPath(); c.arc(ox*v.dpr, oy*v.dpr, R0*v.dpr, 0, 2*Math.PI); c.stroke();
+    c.setLineDash([3*v.dpr,3*v.dpr]); c.beginPath(); c.moveTo((ox-R0-6)*v.dpr, oy*v.dpr); c.lineTo((ox+R0+6)*v.dpr, oy*v.dpr);
+    c.moveTo(ox*v.dpr, (oy-R0-6)*v.dpr); c.lineTo(ox*v.dpr, (oy+R0+6)*v.dpr); c.stroke(); c.setLineDash([]);
+    const hy = oy - R0*Math.cos(th), hx = R0*Math.sin(th);
+    c.strokeStyle = K.s3; c.lineWidth = 2.5*v.dpr; c.beginPath(); c.moveTo((ox-hx)*v.dpr, hy*v.dpr); c.lineTo((ox+hx)*v.dpr, hy*v.dpr); c.stroke();
+    c.fillStyle = K.s3; [ -hx, hx ].forEach(d => { c.beginPath(); c.arc((ox+d)*v.dpr, hy*v.dpr, 3.2*v.dpr, 0, 2*Math.PI); c.fill(); });
+    c.restore();
+    const nm = st.axis === 't' ? 't' : 'z';
+    text(v, nm + ' = ' + Math.cos(th).toFixed(3), ox + R0 + 12, oy - 6, K.ink);
+    text(v, '半径 ' + r.toFixed(3), ox + R0 + 12, oy + 12, K.s3);
+    text(v, '子午線', ox - 18, oy - R0 - 12, K.muted);
+  }
+
+  // 図 2：z＝0 の 3 次元（t, x, y）で見た中心投影。表示は 横＝x、上＝t、奥＝y
+  function draw2(K){
+    const v = v2, c = v.ctx; c.clearRect(0,0,v.w,v.h);
+    const th = st.theta, ct = Math.cos(th), sn = Math.sin(th), L = 2.4;
+    axes(v, 1.3, ['x','t','y'], K.muted);
+    sphere(v, 1, K.grid, 0.6, 8, 12);
+    for(let g=-L; g<=L+1e-9; g+=0.6){
+      line(v, [[g,1,-L],[g,1,L]], K.grid, 1, 0.8);
+      line(v, [[-L,1,g],[L,1,g]], K.grid, 1, 0.8);
+    }
+    dot(v, [0,1,0], K.ink, 3.5, '北極 1');
+    dot(v, [0,0,0], K.muted, 2.5);
+    const seg = 72, lat = [];
+    for(let j=0;j<=seg;j++){ const a = 2*Math.PI*j/seg; lat.push([sn*Math.cos(a), ct, sn*Math.sin(a)]); }
+    line(v, lat, K.s3, 2.2, 1);
+    if(Math.abs(ct) > 1e-3){
+      const T = sn/ct, rr = Math.abs(T), img = [];
+      if(rr <= L*1.42){
+        for(let j=0;j<=seg;j++){ const a = 2*Math.PI*j/seg, x = T*Math.cos(a), y = T*Math.sin(a);
+          img.push(Math.abs(x) <= L && Math.abs(y) <= L ? [x,1,y] : null); }
+        line(v, img, K.proj, 2.4, 1);
+      }
+      for(let j=0;j<8;j++){
+        const a = 2*Math.PI*j/8, ps = [sn*Math.cos(a), ct, sn*Math.sin(a)], pi = [T*Math.cos(a), 1, T*Math.sin(a)];
+        if(Math.abs(pi[0]) <= L && Math.abs(pi[2]) <= L){
+          line(v, ct > 0 ? [[0,0,0], pi] : [ps, [0,0,0], pi], K.proj, 1, 0.7, [5,4]);
+          dot(v, pi, K.proj, 2.6);
+        } else {
+          const f = L*1.1/Math.max(Math.abs(pi[0]), Math.abs(pi[2]), 1e-9);
+          line(v, [[0,0,0],[pi[0]*f, f*1, pi[2]*f]], K.proj, 1, 0.5, [5,4]);
+        }
+        dot(v, ps, K.s3, 2.6);
+      }
+    } else {
+      for(let j=0;j<8;j++){ const a = 2*Math.PI*j/8; line(v, [[0,0,0],[2.6*Math.cos(a),0,2.6*Math.sin(a)]], K.proj, 1, 0.6, [5,4]); }
+      text(v, '赤道：像は無限遠', 12, 22, K.proj);
+    }
+    if(ct < -1e-3) text(v, '南半球：原点の反対側から写る（q と −q は同じ点）', 12, 22, K.proj);
+  }
+
+  // 図 3：接超平面 t＝1 の 3 次元。表示は 横＝u_x、上＝u_z、奥＝u_y
+  function draw3(K){
+    const v = v3, c = v.ctx; c.clearRect(0,0,v.w,v.h);
+    const B = 2.9;
+    axes(v, B, ['u_x','u_z','u_y'], K.muted);
+    const ct = Math.cos(st.theta), T = Math.abs(Math.sin(st.theta)/ct);
+    if(Math.abs(ct) > 1e-3 && T > 1e-4 && T <= B*1.05) sphere(v, T, K.proj, 0.85, 9, 14);
+    else if(T > B*1.05 || Math.abs(ct) <= 1e-3) text(v, '射影の球面は図の範囲の外（半径 ' + (Math.abs(ct) <= 1e-3 ? '∞' : T.toFixed(2)) + '）', 12, 22, K.proj);
+    dot(v, [0,0,0], K.ink, 3.5, '北極の像');
+    const ta = Math.tan(st.alpha), pts = [];
+    for(let i=0;i<=400;i++){
+      const s = -Math.PI/2 + 0.02 + (Math.PI - 0.04)*i/400, ts = Math.tan(s), u = [ts, ta, ta*ts];
+      pts.push(Math.abs(u[0]) <= B*1.05 && Math.abs(u[1]) <= B*1.05 && Math.abs(u[2]) <= B*1.05 ? [u[0], u[2], u[1]] : null);
+    }
+    line(v, pts, K.geo, 2.4, 1);
+    const ts = Math.tan(st.s), u = [ts, ta, ta*ts];
+    if(Math.abs(u[0]) <= B*1.05 && Math.abs(u[2]) <= B*1.05 && Math.abs(u[1]) <= B*1.05) dot(v, [u[0], u[2], u[1]], K.geo, 5, 'u(s)');
+    else text(v, 'u(s) は図の範囲の外', 12, 40, K.geo);
+  }
+
+  const f = (x, d=3) => (Math.abs(x) > 1e6 ? '∞' : (x >= 0 ? ' ' : '') + x.toFixed(d));
+  function readout(){
+    const th = st.theta, ct = Math.cos(th), sn = Math.sin(th);
+    $('thetaV').textContent = (th*180/Math.PI).toFixed(1) + '°';
+    $('alphaV').textContent = (st.alpha*180/Math.PI).toFixed(1) + '°';
+    $('r-th').textContent = (th*180/Math.PI).toFixed(2) + '°';
+    $('r-c').textContent = f(ct); $('r-r').textContent = f(Math.abs(sn));
+    $('r-tan').textContent = Math.abs(ct) < 1e-9 ? '∞' : f(Math.abs(sn/ct));
+    const a = st.alpha, s = st.s;
+    const q = [Math.cos(a)*Math.cos(s), Math.cos(a)*Math.sin(s), Math.sin(a)*Math.cos(s), Math.sin(a)*Math.sin(s)];
+    $('r-qt').textContent = f(q[0]);
+    $('r-qv').textContent = '(' + f(q[1]) + ', ' + f(q[2]) + ', ' + f(q[3]) + ')';
+    $('r-u').textContent = '(' + f(q[1]/q[0],2) + ', ' + f(q[2]/q[0],2) + ', ' + f(q[3]/q[0],2) + ')';
+    $('r-n').textContent = Math.hypot(...q).toFixed(12);
+    $('cap1').innerHTML = st.axis === 't'
+      ? 'S³：<span class="eq">t²＋x²＋y²＋z²＝1</span> を実部 <span class="eq">t＝cos θ</span> で切ると、(x, y, z) の中の半径 <span class="eq">sin θ</span> の球面 S² になる。θ を動かすと、北極（点）→ 赤道（半径 1）→ 南極（点）と緯度の球面が重なって S³ を作る。左下は子午線の上での切断の位置。'
+      : '同じ S³ を虚部 <span class="eq">z＝cos θ</span> で切っても、(t, x, y) の中の同じ半径 <span class="eq">sin θ</span> の球面になる。点の集まりとしての S³ は 4 成分とも対称で、1 と 3 に分かれるのは掛け算（両側からの掛け算、本当の二乗）で読んだときだけ。';
+  }
+
+  function drawAll(){ const K = col(); draw1(K); draw2(K); draw3(K); readout(); }
+
+  $('theta').addEventListener('input', e => { st.theta = +e.target.value; drawAll(); });
+  $('alpha').addEventListener('input', e => { st.alpha = +e.target.value; drawAll(); });
+  $('s').addEventListener('input', e => { st.s = +e.target.value; drawAll(); });
+  const setAxis = a => { st.axis = a; $('axT').setAttribute('aria-pressed', a==='t'); $('axZ').setAttribute('aria-pressed', a==='z'); drawAll(); };
+  $('axT').addEventListener('click', () => setAxis('t'));
+  $('axZ').addEventListener('click', () => setAxis('z'));
+
+  let last = 0;
+  function tick(ts){
+    if(!st.playing) return;
+    const dt = last ? Math.min(50, ts - last) : 16; last = ts;
+    st.s += st.dir*0.00045*dt;
+    if(st.s > 1.42){ st.s = 1.42; st.dir = -1; } else if(st.s < -1.42){ st.s = -1.42; st.dir = 1; }
+    $('s').value = st.s; const K = col(); draw3(K); readout();
+    requestAnimationFrame(tick);
+  }
+  function setPlay(p){ st.playing = p; $('play').textContent = p ? '停止' : '再生'; if(p){ last = 0; requestAnimationFrame(tick); } }
+  $('play').addEventListener('click', () => setPlay(!st.playing));
+
+  if(window.matchMedia){
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    (mq.addEventListener ? mq.addEventListener('change', drawAll) : mq.addListener && mq.addListener(drawAll));
+  }
+  new MutationObserver(drawAll).observe(document.documentElement, {attributes:true, attributeFilter:['data-theme']});
+
+  drawAll();
+  if(!reduce) setPlay(true);
+})();
+</script>
