@@ -46,7 +46,10 @@
 |---|---|
 | `run_N40_locked_step_20261020.py` | 元プログラムの忠実コピー＋刻みを直接与える一点の変更。`control`・`q8`・`q4` で実行 |
 | `analyze_locked_pairing_20261020.py` | 判定（前段と同じ量） |
-| `run_all.sh` | 対照・本走行・判定・SHA256 |
+| `plot_locked_inflation_complex_20261020.py` | インフレーション図（H⊥/H 対 τ）と複素図（床・終端） |
+| `figures/fig1_inflation_locked_vs_unlocked_N40.{png,svg}` | インフレーション図：ロックあり q=8・4 とロックなし den=40 |
+| `figures/fig2_complex_plane_locked_vs_unlocked_N40.{png,svg}` | 複素図：上が床、下が終端 |
+| `run_all.sh` | 対照・本走行・判定・作図・SHA256 |
 | `results/run_meta_{control,q8,q4}.json` | 対照の一致度、σ、走行の要約 |
 | `results/locked_pairing_N40.{md,json}` | 判定の結果 |
 | `results/locked_N40_q{8,4}_states.npz` | 状態の全履歴（.gitignore の対象。ローカルのみ、45 MB と 23 MB） |
