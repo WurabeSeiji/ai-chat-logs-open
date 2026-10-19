@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ゼロ閉塞の解集合 — 複素ヌル錐と線形閉塞の切断（N = 1〜4）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#eef0f3;
+  --panel:#ffffff;
+  --panel-2:#f6f7f9;
+  --fg:#17191e;
+  --muted:#5c6270;
+  --border:#d3d7de;
+  --accent:#1f4fd6;
+  --cS:#2457e6;
+  --cA:#d9800f;
+  --cI:#d1247a;
+  --axis:#8d93a0;
+  --canvas:#ffffff;
+  box-sizing:border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#101217;
+    --panel:#171a21;
+    --panel-2:#1e222b;
+    --fg:#e9eaee;
+    --muted:#9aa1ae;
+    --border:#2c313c;
+    --accent:#86a4ff;
+    --cS:#5f8cff;
+    --cA:#f0a23f;
+    --cI:#ff5fa8;
+    --axis:#6b7280;
+    --canvas:#0d0f14;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#101217;
+  --panel:#171a21;
+  --panel-2:#1e222b;
+  --fg:#e9eaee;
+  --muted:#9aa1ae;
+  --border:#2c313c;
+  --accent:#86a4ff;
+  --cS:#5f8cff;
+  --cA:#f0a23f;
+  --cI:#ff5fa8;
+  --axis:#6b7280;
+  --canvas:#0d0f14;
+}
+html{ scroll-padding-top: env(safe-area-inset-top, 0px); }
+*{ box-sizing:border-box; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:"IBM Plex Sans JP", system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", "Yu Gothic UI", sans-serif;
+  font-size:15px;
+  line-height:1.6;
+  font-variant-numeric: tabular-nums;
+}
+.wrap{ max-width:1180px; margin:0 auto; padding:14px 12px 40px; }
+header h1{
+  font-size:1.35rem; font-weight:600; letter-spacing:-0.01em; margin:4px 0 2px; line-height:1.35;
+}
+header p{ margin:0 0 12px; color:var(--muted); max-width:70ch; }
+.layout{ display:grid; grid-template-columns: 1fr; gap:12px; }
+@media (min-width: 900px){
+  .layout{ grid-template-columns: 1fr 340px; align-items:start; }
+  .controls{ position:sticky; top: calc(env(safe-area-inset-top, 0px) + 8px); max-height: calc(100vh - 24px); overflow:auto; }
+}
+.panel{
+  background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:12px 14px;
+}
+.panel + .panel{ margin-top:12px; }
+.controls fieldset{ border:0; padding:0; margin:0 0 14px; min-width:0; }
+.controls legend{ padding:0; font-weight:600; font-size:0.95rem; margin-bottom:6px; }
+.row{ display:flex; flex-wrap:wrap; gap:6px 10px; align-items:center; }
+.row + .row{ margin-top:6px; }
+.seg{ display:inline-flex; border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+.seg button{
+  appearance:none; border:0; background:var(--panel-2); color:var(--fg); padding:6px 14px; font:inherit; cursor:pointer;
+}
+.seg button + button{ border-left:1px solid var(--border); }
+.seg button[aria-pressed="true"]{ background:var(--accent); color:#fff; }
+.seg button:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+label.chk{ display:flex; align-items:flex-start; gap:8px; cursor:pointer; line-height:1.4; }
+label.chk input{ margin-top:4px; }
+.sw{ display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:6px; vertical-align:-1px; }
+.sw.S{ background:var(--cS); } .sw.A{ background:var(--cA); } .sw.I{ background:var(--cI); }
+.dim{ color:var(--muted); font-size:0.86rem; }
+select, input[type="number"], input[type="text"]{
+  font:inherit; color:var(--fg); background:var(--panel-2); border:1px solid var(--border); border-radius:6px; padding:5px 8px; max-width:100%;
+}
+input[type="range"]{ width:100%; accent-color:var(--accent); }
+.slider{ display:grid; grid-template-columns: 1fr auto; gap:4px 10px; align-items:center; }
+.slider .val{ color:var(--muted); font-size:0.9rem; min-width:4.5em; text-align:right; }
+.slider input[type="range"]{ grid-column:1 / -1; }
+.axes{ display:grid; grid-template-columns: repeat(3, 1fr); gap:6px; }
+.axes label{ font-size:0.86rem; color:var(--muted); display:block; }
+.axes select{ width:100%; }
+button.btn{
+  appearance:none; font:inherit; cursor:pointer; border:1px solid var(--border); background:var(--panel-2); color:var(--fg);
+  border-radius:6px; padding:6px 10px; text-align:left;
+}
+button.btn.primary{ background:var(--accent); border-color:var(--accent); color:#fff; }
+.presets{ display:grid; gap:6px; }
+.stage{ position:relative; }
+canvas#main{
+  display:block; width:100%; height:auto; background:var(--canvas); border:1px solid var(--border); border-radius:8px;
+  touch-action:none; cursor:grab;
+}
+canvas#main:active{ cursor:grabbing; }
+.legend{ display:flex; flex-wrap:wrap; gap:4px 18px; margin-top:8px; font-size:0.9rem; }
+.legend .item{ display:flex; align-items:center; gap:6px; }
+.legend .cnt{ color:var(--muted); }
+.stats{ margin-top:6px; color:var(--muted); font-size:0.86rem; line-height:1.5; }
+.stats b{ color:var(--fg); font-weight:500; }
+.note{ color:var(--muted); font-size:0.88rem; margin-top:8px; }
+.inspector h2, .how h2{ font-size:1.05rem; font-weight:600; margin:0 0 8px; }
+.insp-grid{ display:grid; grid-template-columns: 1fr; gap:12px; }
+@media (min-width: 640px){ .insp-grid{ grid-template-columns: 300px 1fr; align-items:start; } }
+canvas#cplane{ display:block; width:100%; height:auto; background:var(--canvas); border:1px solid var(--border); border-radius:8px; }
+table.vals{ border-collapse:collapse; width:100%; font-size:0.92rem; }
+table.vals th, table.vals td{ text-align:right; padding:3px 8px; border-bottom:1px solid var(--border); white-space:nowrap; }
+table.vals th{ color:var(--muted); font-weight:500; }
+table.vals td:first-child, table.vals th:first-child{ text-align:left; }
+.flags{ display:flex; gap:10px; flex-wrap:wrap; margin:8px 0; font-size:0.92rem; }
+.flag{ padding:2px 10px; border-radius:999px; border:1px solid var(--border); color:var(--muted); }
+.flag.on{ color:#fff; border-color:transparent; }
+.flag.on.S{ background:var(--cS); } .flag.on.A{ background:var(--cA); } .flag.on.I{ background:var(--cI); }
+.how p{ margin:6px 0; color:var(--muted); font-size:0.92rem; max-width:80ch; }
+.how code{ font-family:inherit; background:var(--panel-2); padding:0 4px; border-radius:4px; color:var(--fg); }
+.empty{ color:var(--muted); font-size:0.92rem; }
+@media (prefers-reduced-motion: reduce){
+  .seg button, .btn{ transition:none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>ゼロ閉塞の解集合：複素ヌル錐と線形閉塞の切断（N = 1〜4）</h1>
+  <p>S = {Σzₙ² = 0}（二乗和閉塞・複素ヌル錐）、A = {Σzₙ = 0, Σaₙbₙ = 0}（線形閉塞＋積和閉塞）、S∩A = {Σzₙ = 0, Σzₙ² = 0}。各点は方程式を解析的に解いて生成した厳密解で、切断は |q(z) − v| ≤ ε を満たす点だけを描きます。</p>
+</header>
+
+<div class="layout">
+<main>
+  <div class="panel stage">
+    <canvas id="main" width="800" height="800" aria-label="解集合の 3 次元射影"></canvas>
+    <div class="legend" id="legend"></div>
+    <div class="stats" id="stats"></div>
+    <div class="note">点をタップすると、その解を下の複素平面で確認できます。</div>
+  </div>
+
+  <div class="panel inspector">
+    <h2>選択した解</h2>
+    <div class="insp-grid">
+      <div>
+        <canvas id="cplane" width="600" height="600" aria-label="選択した解の複素平面表示"></canvas>
+        <div class="slider" style="margin-top:8px"><span>全体の位相回転 θ</span><span class="val" id="thetaTxt">0°</span>
+          <input type="range" id="theta" min="0" max="360" step="1" value="0"></div>
+        <div class="dim">zₙ → e<sup>iθ</sup>zₙ。S と S∩A は回しても保たれ、A は等長でない限り外れます。</div>
+      </div>
+      <div id="inspBody"><div class="empty">まだ選んでいません。上の図の点をタップしてください。</div></div>
+    </div>
+  </div>
+
+  <div class="panel how">
+    <h2>生成と切断の方法</h2>
+    <p>S：z₁…z_{N−1} をガウス乱数で与え、最後の成分を <code>z_N = ±√(−Σ_{k&lt;N} z_k²)</code> で解析的に解きます。</p>
+    <p>A：a は和が 0 になるよう最後の成分で閉じ、b は和零と a·b = 0 の線形 2×2 系を最後の 2 成分について厳密に解きます（N = 2 は 2 本の直線を直接生成）。</p>
+    <p>S∩A：z₁…z_{N−2} を与え、残り 2 成分を p = −Σz_k、q = −Σz_k² から <code>t = (p ± √(2q − p²)) / 2</code>（2 次方程式の解の公式）で解きます。N = 3 では自動的に正三角形 c·(1, ω, ω²) と c·(1, ω², ω) になります。</p>
+    <p>生成後に添字をランダムに置換し、|z| = 1（球面）または |z| ≤ 1（錐）に正規化します。「最大残差」は全生成点について Σz、Σz²、Σab を倍精度で評価した絶対値の最大値です。描画は、選んだ 3 つの量を直交射影し、切断量 q(z) が |q(z) − v| ≤ ε を満たす点だけを描きます。</p>
+  </div>
+</main>
+<aside class="controls">
+  <div class="panel">
+    <fieldset>
+      <legend>成分数 N</legend>
+      <div class="seg" id="nSeg" role="group" aria-label="成分数">
+        <button type="button" data-n="1">1</button><button type="button" data-n="2">2</button><button type="button" data-n="3">3</button><button type="button" data-n="4">4</button>
+      </div>
+      <div class="dim" id="dimText"></div>
+    </fieldset>
+    <fieldset>
+      <legend>見かた</legend>
+      <div class="presets">
+        <button type="button" class="btn" data-preset="p0">射影のみ（切断なし）</button>
+        <button type="button" class="btn" data-preset="p1">S を Σa = 0, Σb = 0 で切る（線形閉塞で切断）</button>
+        <button type="button" class="btn" data-preset="p2">A を |a|² − |b|² = 0 で切る（等長条件で切断）</button>
+        <button type="button" class="btn" data-preset="p3">a₁ で掃引しながら見る</button>
+      </div>
+      <div class="dim">切断で残った点が S∩A に重なることは、「表示する集合」で S∩A をオンにして確かめられます。</div>
+    </fieldset>
+    <fieldset>
+      <legend>表示する集合</legend>
+      <label class="chk"><input type="checkbox" id="showS" checked><span><span class="sw S"></span>S：Σzₙ² = 0 <span class="dim" id="dimS"></span></span></label>
+      <label class="chk"><input type="checkbox" id="showA" checked><span><span class="sw A"></span>A：Σzₙ = 0, Σaₙbₙ = 0 <span class="dim" id="dimA"></span></span></label>
+      <label class="chk"><input type="checkbox" id="showI" checked><span><span class="sw I"></span>S∩A：Σzₙ = 0, Σzₙ² = 0 <span class="dim" id="dimI"></span></span></label>
+    </fieldset>
+    <fieldset>
+      <legend>切断 1</legend>
+      <div class="row"><select id="sl1q"></select>
+        <label class="chk" style="margin:0"><input type="checkbox" id="sweep"> <span>掃引（アニメ）</span></label></div>
+      <div class="slider"><span>位置 v₁</span><span class="val" id="sl1vTxt">0.000</span>
+        <input type="range" id="sl1v" min="-1" max="1" step="0.001" value="0"></div>
+    </fieldset>
+    <fieldset>
+      <legend>切断 2</legend>
+      <div class="row"><select id="sl2q"></select></div>
+      <div class="slider"><span>位置 v₂</span><span class="val" id="sl2vTxt">0.000</span>
+        <input type="range" id="sl2v" min="-1" max="1" step="0.001" value="0"></div>
+    </fieldset>
+    <fieldset>
+      <div class="slider"><span>切断の厚さ ε</span><span class="val" id="epsTxt">0.040</span>
+        <input type="range" id="eps" min="0.005" max="0.25" step="0.001" value="0.04"></div>
+      <div class="slider"><span>掃引の速さ</span><span class="val" id="spdTxt">1.0</span>
+        <input type="range" id="spd" min="0.2" max="3" step="0.1" value="1"></div>
+      <label class="chk"><input type="checkbox" id="focus"><span>切断面の近くに点を集めて生成する<br><span class="dim">S は Σz = w（|w| 小）の厳密解、A は |b| を |a| の近くに取り直した厳密解。薄い切断でも点が残ります。</span></span></label>
+    </fieldset>
+    <fieldset>
+      <legend>射影する 3 軸</legend>
+      <div class="axes">
+        <div><label for="axX">X</label><select id="axX"></select></div>
+        <div><label for="axY">Y</label><select id="axY"></select></div>
+        <div><label for="axZ">Z</label><select id="axZ"></select></div>
+      </div>
+      <div class="dim">残りの座標は射影で潰れます。切断を入れると潰れる次元を減らせます。</div>
+    </fieldset>
+    <fieldset>
+      <legend>点の分布</legend>
+      <div class="seg" id="modeSeg" role="group" aria-label="点の分布">
+        <button type="button" data-mode="sphere">球面 |z| = 1</button><button type="button" data-mode="cone">錐 |z| ≤ 1</button>
+      </div>
+      <div class="dim">3 集合はすべて錐なので、球面上の点集合（錐の底）を見れば構造は尽きます。</div>
+    </fieldset>
+    <fieldset>
+      <legend>視点</legend>
+      <label class="chk"><input type="checkbox" id="autoRot" checked><span>自動回転（ドラッグで手動）</span></label>
+      <div class="slider"><span>拡大</span><span class="val" id="zoomTxt">1.00</span>
+        <input type="range" id="zoom" min="0.5" max="2.5" step="0.01" value="1"></div>
+    </fieldset>
+    <fieldset>
+      <legend>乱数</legend>
+      <div class="row">
+        <label for="seed" class="dim">シード</label>
+        <input type="number" id="seed" value="20261018" style="width:9em">
+        <button type="button" class="btn" id="regen">再生成</button>
+      </div>
+      <div class="dim">同じシードなら同じ点集合が再現されます。S・A 各 30 000 点、S∩A 60 000 点。</div>
+    </fieldset>
+  </div>
+</aside>
+</div>
+</div>
+
+<script>
+// ============================================================
+// Numerics: exact generation of the three solution sets
+// ============================================================
+function mulberry32(seed){
+  let t = seed >>> 0;
+  return function(){
+    t = (t + 0x6D2B79F5) >>> 0;
+    let r = Math.imul(t ^ (t >>> 15), 1 | t);
+    r ^= r + Math.imul(r ^ (r >>> 7), 61 | r);
+    return ((r ^ (r >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function makeGauss(rng){
+  let spare = null;
+  return function(){
+    if (spare !== null){ const v = spare; spare = null; return v; }
+    let u, v, s;
+    do { u = rng()*2 - 1; v = rng()*2 - 1; s = u*u + v*v; } while (s >= 1 || s === 0);
+    const m = Math.sqrt(-2*Math.log(s)/s);
+    spare = v*m;
+    return u*m;
+  };
+}
+// principal complex square root of x + iy (cancellation-free form)
+function csqrt(x, y){
+  if (x === 0 && y === 0) return [0, 0];
+  const r = Math.hypot(x, y);
+  if (x >= 0){
+    const re = Math.sqrt((r + x)/2);
+    return [re, y/(2*re)];
+  }
+  let im = Math.sqrt((r - x)/2);
+  if (y < 0) im = -im;
+  return [y/(2*im), im];
+}
+const SET_KEYS = ['S','A','I'];
+function setDim(key, N){
+  if (key === 'S') return N >= 2 ? 2*N - 2 : 0;
+  if (key === 'A') return N >= 2 ? 2*N - 3 : 0;
+  return N >= 3 ? 2*N - 4 : 0;
+}
+// coords layout per point: [a_0..a_{N-1}, b_0..b_{N-1}]
+// derived layout per point: [Σa, Σb, Σa²−Σb², Σab]
+function generateSet(key, N, n, mode, rng, gauss, focus){
+  const dim = setDim(key, N);
+  if (dim === 0){
+    return { key, N, coords: new Float64Array(2*N), derived: new Float64Array(4), count: 1,
+             res: {lin:0, sq:0, dot:0}, trivial: true, dim };
+  }
+  const coords = new Float64Array(n*2*N);
+  const derived = new Float64Array(n*4);
+  const a = new Float64Array(N), b = new Float64Array(N), perm = new Int32Array(N);
+  let maxLin = 0, maxSq = 0, maxDot = 0;
+  let k = 0, guard = 0;
+  while (k < n && guard < n*20){
+    guard++;
+    let ok = true;
+    if (key === 'S' && focus){
+      // exact points of S with a prescribed small sum Σz = w (hyperplane section near the linear closure)
+      const R = 0.35*Math.sqrt(2*N), u0 = rng(), rho = R*u0*u0, phi = 2*Math.PI*rng();
+      let pr = rho*Math.cos(phi), pi = rho*Math.sin(phi), qr = 0, qi = 0;
+      for (let j = 0; j < N-2; j++){
+        const x = gauss(), y = gauss();
+        a[j] = x; b[j] = y; pr -= x; pi -= y; qr -= (x*x - y*y); qi -= 2*x*y;
+      }
+      const p2r = pr*pr - pi*pi, p2i = 2*pr*pi;
+      const sq = csqrt(2*qr - p2r, 2*qi - p2i);
+      a[N-2] = (pr + sq[0])/2; b[N-2] = (pi + sq[1])/2;
+      a[N-1] = (pr - sq[0])/2; b[N-1] = (pi - sq[1])/2;
+    } else if (key === 'S'){
+      let s2r = 0, s2i = 0;
+      for (let j = 0; j < N-1; j++){
+        const x = gauss(), y = gauss();
+        a[j] = x; b[j] = y; s2r += x*x - y*y; s2i += 2*x*y;
+      }
+      const sq = csqrt(-s2r, -s2i);
+      const sg = rng() < 0.5 ? 1 : -1;
+      a[N-1] = sg*sq[0]; b[N-1] = sg*sq[1];
+    } else if (key === 'A'){
+      if (N === 2){
+        const t = gauss();
+        if (rng() < 0.5){ a[0] = t; a[1] = -t; b[0] = 0; b[1] = 0; }
+        else { a[0] = 0; a[1] = 0; b[0] = t; b[1] = -t; }
+      } else {
+        let sa = 0;
+        for (let j = 0; j < N-1; j++){ a[j] = gauss(); sa += a[j]; }
+        a[N-1] = -sa;
+        let B = 0, C = 0;
+        for (let j = 0; j < N-2; j++){ b[j] = gauss(); B += b[j]; C += a[j]*b[j]; }
+        const det = a[N-2] - a[N-1];
+        if (Math.abs(det) < 1e-6){ ok = false; }
+        else { b[N-2] = (a[N-1]*B - C)/det; b[N-1] = -B - b[N-2]; }
+        if (ok && focus){
+          // Σb = 0 and a·b = 0 are linear in b, so b may be rescaled freely: bring |b| close to |a|
+          let na = 0, nb = 0;
+          for (let j = 0; j < N; j++){ na += a[j]*a[j]; nb += b[j]*b[j]; }
+          if (nb > 1e-24){ const lam = Math.sqrt(na/nb)*(1 + 0.3*(2*rng() - 1)); for (let j = 0; j < N; j++) b[j] *= lam; }
+        }
+      }
+    } else {
+      // S∩A: last two components from p = −Σz, q = −Σz²
+      let pr = 0, pi = 0, qr = 0, qi = 0;
+      for (let j = 0; j < N-2; j++){
+        const x = gauss(), y = gauss();
+        a[j] = x; b[j] = y; pr -= x; pi -= y; qr -= (x*x - y*y); qi -= 2*x*y;
+      }
+      const p2r = pr*pr - pi*pi, p2i = 2*pr*pi;
+      const dr = 2*qr - p2r, di = 2*qi - p2i;
+      const sq = csqrt(dr, di);
+      a[N-2] = (pr + sq[0])/2; b[N-2] = (pi + sq[1])/2;
+      a[N-1] = (pr - sq[0])/2; b[N-1] = (pi - sq[1])/2;
+    }
+    if (!ok) continue;
+    let nn = 0;
+    for (let j = 0; j < N; j++) nn += a[j]*a[j] + b[j]*b[j];
+    if (!(nn > 1e-24)) continue;
+    let sc = 1/Math.sqrt(nn);
+    if (mode === 'cone') sc *= Math.pow(rng(), 1/dim);
+    for (let j = 0; j < N; j++) perm[j] = j;
+    for (let j = N-1; j > 0; j--){ const r = Math.floor(rng()*(j+1)); const tmp = perm[j]; perm[j] = perm[r]; perm[r] = tmp; }
+    const base = k*2*N;
+    let Sa = 0, Sb = 0, Se = 0, Sd = 0;
+    for (let j = 0; j < N; j++){
+      const aj = a[perm[j]]*sc, bj = b[perm[j]]*sc;
+      coords[base + j] = aj; coords[base + N + j] = bj;
+      Sa += aj; Sb += bj; Se += aj*aj - bj*bj; Sd += aj*bj;
+    }
+    derived[k*4] = Sa; derived[k*4+1] = Sb; derived[k*4+2] = Se; derived[k*4+3] = Sd;
+    const lin = Math.hypot(Sa, Sb), sqr = Math.hypot(Se, 2*Sd);
+    if (key === 'S'){ if (sqr > maxSq) maxSq = sqr; }
+    else if (key === 'A'){ if (lin > maxLin) maxLin = lin; if (Math.abs(Sd) > maxDot) maxDot = Math.abs(Sd); }
+    else { if (lin > maxLin) maxLin = lin; if (sqr > maxSq) maxSq = sqr; }
+    k++;
+  }
+  return { key, N, coords, derived, count: k, res: {lin:maxLin, sq:maxSq, dot:maxDot}, trivial: false, dim };
+}
+function generateAll(N, mode, seed, nPer, focus){
+  const rng = mulberry32(seed);
+  const gauss = makeGauss(rng);
+  const out = {};
+  for (const key of SET_KEYS) out[key] = generateSet(key, N, nPer[key], mode, rng, gauss, !!focus);
+  return out;
+}
+const SUB = ['₀','₁','₂','₃','₄','₅'];
+function quantityList(N){
+  const list = [];
+  for (let j = 0; j < N; j++) list.push({ id:'a'+j, label:'a'+SUB[j+1] });
+  for (let j = 0; j < N; j++) list.push({ id:'b'+j, label:'b'+SUB[j+1] });
+  list.push({ id:'d0', label:'Σa（u 方向成分）' });
+  list.push({ id:'d1', label:'Σb（u 方向成分）' });
+  list.push({ id:'d2', label:'|a|² − |b|²' });
+  list.push({ id:'d3', label:'a·b' });
+  return list;
+}
+function qRange(id, N){
+  if (id === 'd0' || id === 'd1') return Math.sqrt(N);
+  if (id === 'd3') return 0.5;
+  return 1;
+}
+// returns Float64Array of quantity values for every point of a set (cached)
+function getQ(set, id){
+  if (!set._q) set._q = {};
+  if (set._q[id]) return set._q[id];
+  const n = set.count, N = set.N;
+  const out = new Float64Array(n);
+  if (id[0] === 'd'){
+    const d = parseInt(id.slice(1), 10);
+    for (let i = 0; i < n; i++) out[i] = set.derived[i*4 + d];
+  } else {
+    const j = parseInt(id.slice(1), 10) + (id[0] === 'b' ? N : 0);
+    const stride = 2*N;
+    for (let i = 0; i < n; i++) out[i] = set.coords[i*stride + j];
+  }
+  set._q[id] = out;
+  return out;
+}
+
+// ============================================================
+// UI
+// ============================================================
+function initUI(){
+  const $ = id => document.getElementById(id);
+  const NPER = { S: 30000, A: 30000, I: 60000 };
+  const state = {
+    N: 3, mode: 'sphere', seed: 20261018,
+    show: { S:true, A:true, I:true },
+    axes: ['a0','a1','b0'],
+    slice: [{ q:'', v:0 }, { q:'', v:0 }],
+    eps: 0.04, sweep: false, speed: 1, focus: false,
+    autoRot: true, yaw: 0.65, pitch: 0.38, zoom: 1,
+    data: null, selected: null, theta: 0, dirty: true,
+    frame: { S:null, A:null, I:null }
+  };
+  const canvas = $('main'), ctx = canvas.getContext('2d');
+  const cpl = $('cplane'), cctx = cpl.getContext('2d');
+  let colors = {};
+  function readColors(){
+    const cs = getComputedStyle(document.documentElement);
+    colors = { S: cs.getPropertyValue('--cS').trim(), A: cs.getPropertyValue('--cA').trim(), I: cs.getPropertyValue('--cI').trim(),
+               axis: cs.getPropertyValue('--axis').trim(), fg: cs.getPropertyValue('--fg').trim(), muted: cs.getPropertyValue('--muted').trim(),
+               border: cs.getPropertyValue('--border').trim() };
+    state.dirty = true;
+  }
+  function hexToRgb(h){
+    h = h.replace('#','');
+    if (h.length === 3) h = h.split('').map(c => c + c).join('');
+    const v = parseInt(h, 16);
+    return [(v >> 16) & 255, (v >> 8) & 255, v & 255];
+  }
+  function rgba(hex, al){ const [r,g,b] = hexToRgb(hex); return `rgba(${r},${g},${b},${al})`; }
+
+  // ---------- data ----------
+  function regenerate(){
+    state.data = generateAll(state.N, state.mode, state.seed, NPER, state.focus);
+    state.selected = null;
+    renderInspector();
+    state.dirty = true;
+    updateStatsText();
+  }
+
+  // ---------- controls wiring ----------
+  function fillSelect(sel, items, value, allowNone){
+    sel.innerHTML = '';
+    if (allowNone){ const o = document.createElement('option'); o.value = ''; o.textContent = 'なし'; sel.appendChild(o); }
+    for (const it of items){ const o = document.createElement('option'); o.value = it.id; o.textContent = it.label; sel.appendChild(o); }
+    sel.value = value;
+    if (sel.value !== value) sel.value = allowNone ? '' : items[0].id;
+  }
+  function rebuildSelects(){
+    const q = quantityList(state.N);
+    const ids = q.map(x => x.id);
+    const def = state.N === 1 ? ['a0','b0','b0'] : state.N === 2 ? ['a0','b0','a1'] : ['a0','a1','b0'];
+    for (let i = 0; i < 3; i++) if (!ids.includes(state.axes[i])) state.axes[i] = def[i];
+    fillSelect($('axX'), q, state.axes[0], false);
+    fillSelect($('axY'), q, state.axes[1], false);
+    fillSelect($('axZ'), q, state.axes[2], false);
+    for (let i = 0; i < 2; i++) if (state.slice[i].q && !ids.includes(state.slice[i].q)) state.slice[i].q = '';
+    fillSelect($('sl1q'), q, state.slice[0].q, true);
+    fillSelect($('sl2q'), q, state.slice[1].q, true);
+    updateSliceLabels();
+  }
+  function updateSliceLabels(){
+    for (let i = 0; i < 2; i++){
+      const s = state.slice[i];
+      const r = s.q ? qRange(s.q, state.N) : 1;
+      $(i === 0 ? 'sl1vTxt' : 'sl2vTxt').textContent = s.q ? (s.v*r).toFixed(3) : '—';
+      $(i === 0 ? 'sl1v' : 'sl2v').value = String(s.v);
+      $(i === 0 ? 'sl1v' : 'sl2v').disabled = !s.q;
+    }
+    $('epsTxt').textContent = state.eps.toFixed(3);
+    $('spdTxt').textContent = state.speed.toFixed(1);
+    $('zoomTxt').textContent = state.zoom.toFixed(2);
+  }
+  function dimText(){
+    const N = state.N;
+    const f = (k) => { const d = setDim(k, N); return d === 0 ? '原点のみ' : `実 ${d} 次元（球面上 ${d-1} 次元）`; };
+    $('dimS').textContent = '— ' + f('S');
+    $('dimA').textContent = '— ' + f('A');
+    $('dimI').textContent = '— ' + f('I');
+    const notes = {
+      1: 'N = 1：3 集合とも自明解 z = 0 だけです。',
+      2: 'N = 2：S は 2 本の複素直線 z₂ = ±i z₁、A は実軸上と虚軸上の 2 本の直線。交差は原点だけなので、球面上では S∩A は空です。',
+      3: 'N = 3：S∩A は c·(1, ω, ω²) と c·(1, ω², ω) の 2 本の複素直線（2 つのヘリシティ）。球面上では 2 本の円になります。',
+      4: 'N = 4：S∩A は和零空間 C³ 内の既約な 2 次錐（実 4 次元）。射影だけでは潰れるので、切断を 1〜2 枚入れると形が見えます。'
+    };
+    $('dimText').textContent = notes[N];
+  }
+  function setN(N){
+    state.N = N;
+    for (const b of $('nSeg').querySelectorAll('button')) b.setAttribute('aria-pressed', String(parseInt(b.dataset.n,10) === N));
+    rebuildSelects();
+    dimText();
+    regenerate();
+  }
+  function setMode(m){
+    state.mode = m;
+    for (const b of $('modeSeg').querySelectorAll('button')) b.setAttribute('aria-pressed', String(b.dataset.mode === m));
+    regenerate();
+  }
+  $('nSeg').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setN(parseInt(b.dataset.n, 10)); });
+  $('modeSeg').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setMode(b.dataset.mode); });
+  for (const k of SET_KEYS){
+    $('show'+k).addEventListener('change', e => { state.show[k] = e.target.checked; state.dirty = true; });
+  }
+  ['axX','axY','axZ'].forEach((id, i) => $(id).addEventListener('change', e => { state.axes[i] = e.target.value; state.dirty = true; }));
+  $('sl1q').addEventListener('change', e => { state.slice[0].q = e.target.value; updateSliceLabels(); state.dirty = true; });
+  $('sl2q').addEventListener('change', e => { state.slice[1].q = e.target.value; updateSliceLabels(); state.dirty = true; });
+  $('sl1v').addEventListener('input', e => { state.slice[0].v = parseFloat(e.target.value); state.sweep = false; $('sweep').checked = false; updateSliceLabels(); state.dirty = true; });
+  $('sl2v').addEventListener('input', e => { state.slice[1].v = parseFloat(e.target.value); updateSliceLabels(); state.dirty = true; });
+  $('eps').addEventListener('input', e => { state.eps = parseFloat(e.target.value); updateSliceLabels(); state.dirty = true; });
+  $('spd').addEventListener('input', e => { state.speed = parseFloat(e.target.value); updateSliceLabels(); });
+  $('zoom').addEventListener('input', e => { state.zoom = parseFloat(e.target.value); updateSliceLabels(); state.dirty = true; });
+  $('sweep').addEventListener('change', e => { state.sweep = e.target.checked; if (state.sweep && !state.slice[0].q){ state.slice[0].q = 'a0'; $('sl1q').value = 'a0'; updateSliceLabels(); } state.dirty = true; });
+  $('autoRot').addEventListener('change', e => { state.autoRot = e.target.checked; });
+  $('focus').addEventListener('change', e => { state.focus = e.target.checked; regenerate(); });
+  $('regen').addEventListener('click', () => { const v = parseInt($('seed').value, 10); state.seed = Number.isFinite(v) ? v : 1; regenerate(); });
+  $('seed').addEventListener('keydown', e => { if (e.key === 'Enter') $('regen').click(); });
+  $('theta').addEventListener('input', e => { state.theta = parseFloat(e.target.value); $('thetaTxt').textContent = state.theta.toFixed(0) + '°'; renderInspector(); });
+
+  function applyPreset(p){
+    const N = state.N;
+    let wantFocus = state.focus;
+    if (p === 'p0'){
+      state.slice[0] = { q:'', v:0 }; state.slice[1] = { q:'', v:0 }; state.sweep = false; state.eps = 0.04; wantFocus = false;
+      state.show = { S:true, A:true, I:true };
+    } else if (p === 'p1'){
+      state.slice[0] = { q:'d0', v:0 }; state.slice[1] = { q:'d1', v:0 }; state.sweep = false; state.eps = 0.04; wantFocus = true;
+      state.show = { S:true, A:false, I:false };
+    } else if (p === 'p2'){
+      state.slice[0] = { q:'d2', v:0 }; state.slice[1] = { q:'', v:0 }; state.sweep = false; state.eps = 0.04; wantFocus = true;
+      state.show = { S:false, A:true, I:false };
+    } else if (p === 'p3'){
+      state.slice[0] = { q:'a0', v:0 }; state.slice[1] = { q:'', v:0 }; state.sweep = true; state.eps = 0.04; wantFocus = false;
+      state.show = { S:true, A:true, I:true };
+    }
+    if (N < 3 && p !== 'p0'){ state.slice[1].q = ''; }
+    $('sl1q').value = state.slice[0].q; $('sl2q').value = state.slice[1].q; $('sweep').checked = state.sweep;
+    $('eps').value = String(state.eps);
+    for (const k of SET_KEYS) $('show'+k).checked = state.show[k];
+    updateSliceLabels(); state.dirty = true;
+    if (wantFocus !== state.focus){ state.focus = wantFocus; $('focus').checked = wantFocus; regenerate(); }
+  }
+  document.querySelector('.presets').addEventListener('click', e => { const b = e.target.closest('button'); if (b) applyPreset(b.dataset.preset); });
+
+  // ---------- canvas sizing ----------
+  function resize(){
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    const cssW = canvas.clientWidth || 600;
+    const cssH = Math.max(280, Math.min(cssW, Math.round(window.innerHeight*0.68)));
+    canvas.style.height = cssH + 'px';
+    const W = Math.round(cssW*dpr), H = Math.round(cssH*dpr);
+    if (canvas.width !== W || canvas.height !== H){ canvas.width = W; canvas.height = H; }
+    const cw = cpl.clientWidth || 300;
+    const CW = Math.round(cw*dpr);
+    if (cpl.width !== CW){ cpl.width = CW; cpl.height = CW; renderInspector(); }
+    state.dirty = true;
+  }
+  window.addEventListener('resize', resize);
+
+  // ---------- pointer: rotate / pick ----------
+  let drag = null;
+  canvas.addEventListener('pointerdown', e => {
+    drag = { x:e.clientX, y:e.clientY, sx:e.clientX, sy:e.clientY, moved:false };
+    canvas.setPointerCapture(e.pointerId);
+  });
+  canvas.addEventListener('pointermove', e => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (Math.hypot(e.clientX - drag.sx, e.clientY - drag.sy) > 5) drag.moved = true;
+    if (drag.moved){
+      state.yaw += dx*0.01;
+      state.pitch = Math.max(-1.5, Math.min(1.5, state.pitch + dy*0.01));
+      state.dirty = true;
+    }
+    drag.x = e.clientX; drag.y = e.clientY;
+  });
+  function endDrag(e){
+    if (!drag) return;
+    if (!drag.moved) pick(e);
+    drag = null;
+  }
+  canvas.addEventListener('pointerup', endDrag);
+  canvas.addEventListener('pointercancel', () => { drag = null; });
+
+  function pick(e){
+    const rect = canvas.getBoundingClientRect();
+    const dpr = canvas.width / rect.width;
+    const px = (e.clientX - rect.left)*dpr, py = (e.clientY - rect.top)*dpr;
+    let best = null, bd = 16*dpr;
+    for (const k of SET_KEYS){
+      const f = state.frame[k];
+      if (!f) continue;
+      for (let i = 0; i < f.n; i++){
+        const d = Math.hypot(f.sx[i] - px, f.sy[i] - py);
+        if (d < bd){ bd = d; best = { key:k, idx:f.idx[i] }; }
+      }
+    }
+    if (best){
+      const set = state.data[best.key];
+      const N = set.N, z = new Float64Array(2*N);
+      for (let j = 0; j < 2*N; j++) z[j] = set.coords[best.idx*2*N + j];
+      state.selected = { key: best.key, idx: best.idx, z };
+      state.theta = 0; $('theta').value = '0'; $('thetaTxt').textContent = '0°';
+      renderInspector();
+      state.dirty = true;
+    }
+  }
+
+  // ---------- drawing ----------
+  const idxBuf = {}, passCount = {};
+  function passingIndices(set){
+    const n = set.count;
+    if (!idxBuf[set.key] || idxBuf[set.key].length < n) idxBuf[set.key] = new Int32Array(n);
+    const buf = idxBuf[set.key];
+    const s1 = state.slice[0], s2 = state.slice[1];
+    const q1 = s1.q ? getQ(set, s1.q) : null, q2 = s2.q ? getQ(set, s2.q) : null;
+    const v1 = s1.q ? s1.v*qRange(s1.q, set.N) : 0, v2 = s2.q ? s2.v*qRange(s2.q, set.N) : 0;
+    const eps = state.eps;
+    let c = 0;
+    if (set.trivial){ buf[0] = 0; return 1; }
+    for (let i = 0; i < n; i++){
+      if (q1 && Math.abs(q1[i] - v1) > eps) continue;
+      if (q2 && Math.abs(q2[i] - v2) > eps) continue;
+      buf[c++] = i;
+    }
+    return c;
+  }
+  const CAP = { S: 9000, A: 9000, I: 14000 };
+  const frameBuf = {};
+  for (const k of SET_KEYS){
+    const m = CAP[k] + 1;
+    frameBuf[k] = { sx: new Float32Array(m), sy: new Float32Array(m), dz: new Float32Array(m), idx: new Int32Array(m) };
+  }
+  function draw(){
+    const W = canvas.width, H = canvas.height;
+    const dpr = canvas.width / (canvas.clientWidth || 1);
+    ctx.clearRect(0, 0, W, H);
+    const s = Math.min(W, H)*0.40*state.zoom, cx = W/2, cy = H/2;
+    const cyw = Math.cos(state.yaw), syw = Math.sin(state.yaw), cp = Math.cos(state.pitch), sp = Math.sin(state.pitch);
+    function proj(x, y, z){
+      const x1 = cyw*x + syw*z, z1 = -syw*x + cyw*z;
+      const y2 = cp*y - sp*z1, z2 = sp*y + cp*z1;
+      return [cx + x1*s, cy - y2*s, z2];
+    }
+    // axes
+    const labels = { };
+    for (const it of quantityList(state.N)) labels[it.id] = it.label;
+    ctx.lineWidth = 1*dpr;
+    ctx.font = `${12*dpr}px "IBM Plex Sans JP", system-ui, sans-serif`;
+    ctx.textBaseline = 'middle';
+    const axisDirs = [[1,0,0],[0,1,0],[0,0,1]];
+    for (let i = 0; i < 3; i++){
+      const d = axisDirs[i];
+      const p0 = proj(-d[0], -d[1], -d[2]), p1 = proj(d[0], d[1], d[2]);
+      ctx.strokeStyle = rgba(colors.axis, 0.55); ctx.beginPath(); ctx.moveTo(p0[0], p0[1]); ctx.lineTo(p1[0], p1[1]); ctx.stroke();
+      ctx.fillStyle = colors.muted;
+      const lab = labels[state.axes[i]] || state.axes[i];
+      const t = proj(d[0]*1.12, d[1]*1.12, d[2]*1.12);
+      ctx.textAlign = 'center'; ctx.fillText(lab, t[0], t[1]);
+    }
+    // unit circle guide (equator of the sphere in current view)
+    ctx.strokeStyle = rgba(colors.axis, 0.25); ctx.beginPath(); ctx.arc(cx, cy, s, 0, Math.PI*2); ctx.stroke();
+
+    const counts = {};
+    if (!state.data) return;
+    // collect projected points
+    const order = ['S','A','I'];
+    const frames = {};
+    for (const k of order){
+      state.frame[k] = null;
+      if (!state.show[k]) continue;
+      const set = state.data[k];
+      const c = passingIndices(set);
+      passCount[k] = c;
+      const stride = c > CAP[k] ? Math.ceil(c/CAP[k]) : 1;
+      const m = Math.ceil(c/stride);
+      const X = getQ(set, state.axes[0]), Y = getQ(set, state.axes[1]), Z = getQ(set, state.axes[2]);
+      const fb = frameBuf[k];
+      const sx = fb.sx, sy = fb.sy, dz = fb.dz, idx = fb.idx;
+      const buf = idxBuf[set.key];
+      let n = 0;
+      for (let t = 0; t < c; t += stride){
+        const i = buf[t];
+        const p = proj(X[i], Y[i], Z[i]);
+        sx[n] = p[0]; sy[n] = p[1]; dz[n] = p[2]; idx[n] = i; n++;
+      }
+      frames[k] = { sx, sy, dz, idx, n };
+      state.frame[k] = frames[k];
+      counts[k] = c;
+    }
+    // draw back → front in three depth bins so near points read as brighter
+    const bins = [[-Infinity, -0.33, 0.28], [-0.33, 0.33, 0.55], [0.33, Infinity, 0.95]];
+    for (const [lo, hi, al] of bins){
+      for (const k of order){
+        const f = frames[k]; if (!f) continue;
+        const base = k === 'S' ? 1.3 : k === 'A' ? 1.8 : 2.3;
+        const boost = f.n < 400 ? 1.7 : f.n < 2000 ? 1.25 : 1;
+        const r = base*boost*dpr;
+        ctx.fillStyle = rgba(colors[k], k === 'S' ? al*0.85 : al);
+        for (let i = 0; i < f.n; i++){
+          const z = f.dz[i];
+          if (z < lo || z >= hi) continue;
+          ctx.fillRect(f.sx[i] - r/2, f.sy[i] - r/2, r, r);
+        }
+      }
+    }
+    // selected highlight
+    if (state.selected){
+      const sel = state.selected, set = state.data[sel.key];
+      if (set && sel.idx < set.count){
+        const X = getQ(set, state.axes[0]), Y = getQ(set, state.axes[1]), Z = getQ(set, state.axes[2]);
+        const p = proj(X[sel.idx], Y[sel.idx], Z[sel.idx]);
+        ctx.strokeStyle = colors.fg; ctx.lineWidth = 1.5*dpr;
+        ctx.beginPath(); ctx.arc(p[0], p[1], 7*dpr, 0, Math.PI*2); ctx.stroke();
+      }
+    }
+    updateLegend(counts);
+  }
+  function fmtExp(v){
+    if (v === 0) return '0';
+    const e = Math.floor(Math.log10(v)); const m = v/Math.pow(10, e);
+    return m.toFixed(1) + 'e' + (e < 0 ? '−' : '+') + Math.abs(e);
+  }
+  function updateLegend(counts){
+    const names = { S:'S', A:'A', I:'S∩A' };
+    let html = '';
+    for (const k of SET_KEYS){
+      if (!state.show[k]) continue;
+      const set = state.data[k];
+      const c = counts[k] || 0;
+      const shown = state.frame[k] ? state.frame[k].n : 0;
+      const total = set.trivial ? 1 : set.count;
+      const cTxt = set.trivial ? '原点のみ' : (shown < c ? `${shown.toLocaleString()} 点表示 / 切断通過 ${c.toLocaleString()} / 全 ${total.toLocaleString()}` : `${c.toLocaleString()} 点 / 全 ${total.toLocaleString()}`);
+      html += `<div class="item"><span class="sw ${k}"></span><span>${names[k]}</span><span class="cnt">${cTxt}</span></div>`;
+    }
+    if (html !== lastLegend){ lastLegend = html; $('legend').innerHTML = html; }
+  }
+  let lastLegend = '';
+  function updateStatsText(){
+    const d = state.data; if (!d) return;
+    const parts = [];
+    if (!d.S.trivial) parts.push(`S：max |Σz²| = <b>${fmtExp(d.S.res.sq)}</b>`);
+    if (!d.A.trivial) parts.push(`A：max |Σz| = <b>${fmtExp(d.A.res.lin)}</b>、max |Σab| = <b>${fmtExp(d.A.res.dot)}</b>`);
+    if (!d.I.trivial) parts.push(`S∩A：max |Σz| = <b>${fmtExp(d.I.res.lin)}</b>、max |Σz²| = <b>${fmtExp(d.I.res.sq)}</b>`);
+    $('stats').innerHTML = (parts.length ? '最大残差（全生成点、倍精度）— ' + parts.join('　') : '生成点なし') + `　シード <b>${state.seed}</b>` + (state.focus ? '　<b>S・A は切断面近傍を重点生成</b>' : '');
+  }
+
+  // ---------- inspector ----------
+  function renderInspector(){
+    const W = cpl.width, H = cpl.height;
+    cctx.clearRect(0, 0, W, H);
+    const body = $('inspBody');
+    if (!state.selected || !state.data){
+      body.innerHTML = '<div class="empty">まだ選んでいません。上の図の点をタップしてください。</div>';
+      const dpr0 = W / (cpl.clientWidth || 300);
+      cctx.lineWidth = 1*dpr0; cctx.strokeStyle = rgba(colors.axis, 0.5);
+      cctx.beginPath(); cctx.moveTo(0, H/2); cctx.lineTo(W, H/2); cctx.moveTo(W/2, 0); cctx.lineTo(W/2, H); cctx.stroke();
+      cctx.font = `${12*dpr0}px "IBM Plex Sans JP", system-ui, sans-serif`;
+      cctx.fillStyle = colors.muted; cctx.textAlign = 'center'; cctx.textBaseline = 'middle';
+      cctx.fillText('複素平面（点を選ぶと表示）', W/2, H*0.12);
+      return;
+    }
+    const sel = state.selected, N = state.N;
+    const th = state.theta*Math.PI/180, ct = Math.cos(th), st = Math.sin(th);
+    const a = new Float64Array(N), b = new Float64Array(N);
+    for (let j = 0; j < N; j++){
+      const a0 = sel.z[j], b0 = sel.z[N+j];
+      a[j] = a0*ct - b0*st; b[j] = a0*st + b0*ct;
+    }
+    let Sa = 0, Sb = 0, Se = 0, Sd = 0, Sa2 = 0, Sb2 = 0;
+    for (let j = 0; j < N; j++){ Sa += a[j]; Sb += b[j]; Se += a[j]*a[j] - b[j]*b[j]; Sd += a[j]*b[j]; Sa2 += a[j]*a[j]; Sb2 += b[j]*b[j]; }
+    const tol = 1e-9;
+    const inS = Math.hypot(Se, 2*Sd) < tol, inA = Math.hypot(Sa, Sb) < tol && Math.abs(Sd) < tol;
+    // --- drawing
+    const dpr = W / (cpl.clientWidth || 300);
+    const cx = W/2, cy = H/2;
+    let maxR = 1e-9;
+    let pr = 0, pi = 0, qr = 0, qi = 0;
+    const path1 = [[0,0]], path2 = [[0,0]];
+    for (let j = 0; j < N; j++){
+      maxR = Math.max(maxR, Math.hypot(a[j], b[j]));
+      pr += a[j]; pi += b[j]; path1.push([pr, pi]); maxR = Math.max(maxR, Math.hypot(pr, pi));
+      const zr = a[j]*a[j] - b[j]*b[j], zi = 2*a[j]*b[j];
+      qr += zr; qi += zi; path2.push([qr, qi]); maxR = Math.max(maxR, Math.hypot(qr, qi));
+    }
+    const sc = (W*0.42)/maxR;
+    const P = (x, y) => [cx + x*sc, cy - y*sc];
+    cctx.lineWidth = 1*dpr;
+    cctx.strokeStyle = rgba(colors.axis, 0.5);
+    cctx.beginPath(); cctx.moveTo(0, cy); cctx.lineTo(W, cy); cctx.moveTo(cx, 0); cctx.lineTo(cx, H); cctx.stroke();
+    cctx.strokeStyle = rgba(colors.axis, 0.3);
+    cctx.beginPath(); cctx.arc(cx, cy, maxR*sc, 0, Math.PI*2); cctx.stroke();
+    cctx.font = `${11*dpr}px "IBM Plex Sans JP", system-ui, sans-serif`;
+    cctx.fillStyle = colors.muted; cctx.textAlign = 'left'; cctx.textBaseline = 'top';
+    cctx.fillText('Re', W - 22*dpr, cy + 4*dpr); cctx.fillText('Im', cx + 6*dpr, 4*dpr);
+    // closure path of Σz
+    cctx.lineWidth = 2*dpr; cctx.strokeStyle = colors.I; cctx.setLineDash([]);
+    cctx.beginPath(); for (let i = 0; i < path1.length; i++){ const p = P(path1[i][0], path1[i][1]); if (i === 0) cctx.moveTo(p[0], p[1]); else cctx.lineTo(p[0], p[1]); } cctx.stroke();
+    // closure path of Σz²
+    cctx.lineWidth = 1.5*dpr; cctx.strokeStyle = colors.S; cctx.setLineDash([6*dpr, 4*dpr]);
+    cctx.beginPath(); for (let i = 0; i < path2.length; i++){ const p = P(path2[i][0], path2[i][1]); if (i === 0) cctx.moveTo(p[0], p[1]); else cctx.lineTo(p[0], p[1]); } cctx.stroke();
+    cctx.setLineDash([]);
+    // the points z_n
+    cctx.font = `${12*dpr}px "IBM Plex Sans JP", system-ui, sans-serif`;
+    for (let j = 0; j < N; j++){
+      const p = P(a[j], b[j]);
+      cctx.fillStyle = colors.fg; cctx.beginPath(); cctx.arc(p[0], p[1], 4*dpr, 0, Math.PI*2); cctx.fill();
+      cctx.fillStyle = colors.fg; cctx.textAlign = 'left'; cctx.textBaseline = 'bottom';
+      cctx.fillText('z' + SUB[j+1], p[0] + 6*dpr, p[1] - 4*dpr);
+    }
+    // origin marker
+    cctx.fillStyle = colors.muted; cctx.beginPath(); cctx.arc(cx, cy, 2.5*dpr, 0, Math.PI*2); cctx.fill();
+    // legend inside
+    cctx.textAlign = 'left'; cctx.textBaseline = 'alphabetic';
+    cctx.fillStyle = colors.I; cctx.fillText('— 部分和 Σz の閉路', 8*dpr, H - 24*dpr);
+    cctx.fillStyle = colors.S; cctx.fillText('- - 部分和 Σz² の閉路', 8*dpr, H - 8*dpr);
+    // --- table
+    const names = { S:'S', A:'A', I:'S∩A' };
+    const f = v => (Math.abs(v) < 5e-7 ? '0.000000' : v.toFixed(6));
+    let rows = '';
+    for (let j = 0; j < N; j++) rows += `<tr><td>z${SUB[j+1]}</td><td>${f(a[j])}</td><td>${f(b[j])}</td><td>${f(a[j]*b[j])}</td></tr>`;
+    body.innerHTML = `
+      <div class="dim">集合 ${names[sel.key]} の点 #${sel.idx}、θ = ${state.theta.toFixed(0)}°</div>
+      <div class="flags">
+        <span class="flag ${inS ? 'on S' : ''}">S：Σz² = 0</span>
+        <span class="flag ${inA ? 'on A' : ''}">A：Σz = 0, Σab = 0</span>
+        <span class="flag ${(inS && inA) ? 'on I' : ''}">S∩A</span>
+      </div>
+      <table class="vals">
+        <tr><th></th><th>aₙ</th><th>bₙ</th><th>aₙbₙ</th></tr>
+        ${rows}
+        <tr><th>和</th><td>${f(Sa)}</td><td>${f(Sb)}</td><td>${f(Sd)}</td></tr>
+      </table>
+      <table class="vals" style="margin-top:8px">
+        <tr><td>|Σz|</td><td>${fmtExp(Math.hypot(Sa, Sb))}</td></tr>
+        <tr><td>|Σz²|</td><td>${fmtExp(Math.hypot(Se, 2*Sd))}</td></tr>
+        <tr><td>Σa²　/　Σb²</td><td>${f(Sa2)}　/　${f(Sb2)}</td></tr>
+        <tr><td>|a|² − |b|²</td><td>${f(Se)}</td></tr>
+        <tr><td>a·b</td><td>${f(Sd)}</td></tr>
+      </table>`;
+  }
+
+  // ---------- main loop ----------
+  let last = performance.now(), tSweep = 0;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function loop(now){
+    const dt = Math.min(0.1, (now - last)/1000); last = now;
+    if (state.autoRot && !drag && !reduced.matches){ state.yaw += dt*0.25; state.dirty = true; }
+    if (state.sweep && state.slice[0].q){
+      tSweep += dt*state.speed;
+      state.slice[0].v = Math.sin(tSweep*0.9);
+      $('sl1v').value = String(state.slice[0].v);
+      $('sl1vTxt').textContent = (state.slice[0].v*qRange(state.slice[0].q, state.N)).toFixed(3);
+      state.dirty = true;
+    }
+    if (state.dirty){ state.dirty = false; draw(); }
+    requestAnimationFrame(loop);
+  }
+
+  // ---------- init ----------
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  mq.addEventListener ? mq.addEventListener('change', () => { readColors(); renderInspector(); }) : mq.addListener(() => { readColors(); renderInspector(); });
+  readColors();
+  $('seed').value = String(state.seed);
+  for (const b of $('modeSeg').querySelectorAll('button')) b.setAttribute('aria-pressed', String(b.dataset.mode === state.mode));
+  setN(state.N);
+  resize();
+  requestAnimationFrame(() => { resize(); requestAnimationFrame(loop); });
+}
+if (typeof document !== 'undefined') initUI();
+</script>
+</body>
+</html>
