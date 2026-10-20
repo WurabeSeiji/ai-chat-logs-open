@@ -7,5 +7,6 @@ python3 assoc_stage2_20261020.py > results/assoc_stage2_log.txt 2> results/assoc
 python3 assoc_releq_persistence_20261020.py > results/assoc_releq_persistence_log.txt 2>/dev/null
 python3 assoc_contraction_identity_20261020.py > /dev/null 2>&1
 python3 assoc_releq_persistence_retract_20261020.py > results/assoc_releq_persistence_retract_log.txt 2>/dev/null
+python3 assoc_stage3_20261020.py > results/assoc_stage3_log.txt 2> results/assoc_stage3_stderr.txt
 rmdir figures 2>/dev/null || true   # 読み込み元の閉塞プログラムが作る空のフォルダ
 shasum -a 256 *.py results/* > SHA256SUMS.txt
