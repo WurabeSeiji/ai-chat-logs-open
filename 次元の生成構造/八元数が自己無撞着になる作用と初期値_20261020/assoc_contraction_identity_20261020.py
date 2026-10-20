@@ -11,6 +11,11 @@ claude.ai の `定式化の突き合わせと走行の直し方_20261020.md` §4
     ORTHO_AB・N4 は要素が基底 ±e_a の上にあり、S_w が対角、w_e w_f も ±e_c なので固有ベクトル → 静止。
 確認：(1) 縮約の式と F_assoc の差（N4, N5, NULL28, ORTHO_AB, RAND8, RAND16）。
       (2) 各配置で「全ての w_e w_f が S_w の固有ベクトルか」の残差と max|F_assoc|。
+追記（同日）：NULL28 は (2) を満たさないのに静止する。S_w = αI + β·1·1ᵀ（G₂ で不変な対称行列の一般形）なら
+  S_w(p) = αp + β Re(p)·1 で、[w_e, w_f, w_e w_f] = 0（Artin）と実数との結合子 0 から ASSOC ≡ 0。NULL28 は S_w = 2I + 12·1·1ᵀ。
+  項ごとの一般条件は「S_w(w_e w_f) が w_e, w_f の生成する部分代数 span{1, w_e, w_f, w_e w_f} に入る」。
+      (3) S_w の G₂ 不変形からのずれ ‖S_w − (αI + β·1·1ᵀ)‖/‖S_w‖（α, β は最小二乗）。
+      (4) 項ごとの一般条件の残差：S_w(w_e w_f) の span{1, w_e, w_f, w_e w_f} からの距離の最大。
 """
 import importlib.util
 import json
@@ -45,6 +50,25 @@ def eig_products_resid(X):
     return m
 
 
+def g2_invariant_dev(X):
+    W = X / np.linalg.norm(X, axis=1, keepdims=True); Sw = W.T @ W
+    B = np.stack([np.eye(8).ravel(), np.outer(np.eye(8)[0], np.eye(8)[0]).ravel()], axis=1)
+    c, *_ = np.linalg.lstsq(B, Sw.ravel(), rcond=None)
+    return float(np.linalg.norm(Sw.ravel() - B @ c) / np.linalg.norm(Sw)), [float(c[0]), float(c[1])]
+
+
+def subalgebra_resid(X):
+    W = X / np.linalg.norm(X, axis=1, keepdims=True); Sw = W.T @ W; m = 0.0
+    for e in range(len(W)):
+        for f in range(len(W)):
+            p = mul(W[e], W[f])
+            A = np.stack([np.eye(8)[0], W[e], W[f], p], axis=1)
+            q = Sw @ p
+            c, *_ = np.linalg.lstsq(A, q, rcond=None)
+            m = max(m, float(np.linalg.norm(q - A @ c)))
+    return m
+
+
 if __name__ == '__main__':
     cfg = sca.configs(np.random.default_rng(sca.SEED))
     out = {}
@@ -52,5 +76,7 @@ if __name__ == '__main__':
         F = F_assoc(X, 1)
         out[n] = dict(contracted_minus_F=float(np.linalg.norm(contracted(X) - F)), max_F=float(max(np.linalg.norm(F, axis=1))),
                       products_eigvec_resid=eig_products_resid(X))
+        dev, ab = g2_invariant_dev(X)
+        out[n].update(Sw_g2_invariant_dev=dev, Sw_alpha_beta=ab, subalgebra_resid=subalgebra_resid(X))
         print(n, json.dumps(out[n]), flush=True)
     json.dump(out, open(os.path.join(HERE, 'results', 'assoc_contraction_identity.json'), 'w'), ensure_ascii=False, indent=1)

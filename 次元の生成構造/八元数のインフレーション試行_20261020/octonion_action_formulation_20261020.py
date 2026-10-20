@@ -1,42 +1,50 @@
 #!/usr/bin/env python3
 """
-作用の定式化と、自己無撞着になる配置の条件（2026-10-20）
+八元数の作用の定式化と、自己無撞着になる配置の探索空間（2026-10-20）
 
 `次元の生成構造/八元数閉塞と関係の分解_20261019/octonion_closure_check_20261019.py`
-を同じフォルダか、環境変数 OCTO_BASE の指すフォルダに置いて実行する
-（八元数の積の定義を読み込む。親フォルダ経由のフォールバックも入れてある）。
+を同じフォルダか一つ上の隣のフォルダに置いて実行する（代数の定義だけを読み込む）。
 
-問い（著者、2026-10-20）：高対称な八元数の初期値と、それが自己無撞着になりうる作用の
-組み合わせと値を定式化できるか。
+問い（著者）：高対称な八元数の初期値と、それが自己無撞着になりうる作用の組み合わせ・値を
+定式化せよ。
 
-このプログラムが示すこと
-  1. 許される作用の形：o_e の大きさを厳密に保つ作用は o'_e = u_e o_e、u_e in Im(O) に限る。
-  2. 定理 A：G2 共変で双線形な作用（3 本しかない）は Sum o = 0 で厳密にゼロになる。
-  3. 生き残る最小の作用（第二層）：u_e = (1/2) Sum Im(w_ef^2)、w_ef = o_f conj(o_e)。
+定式化（本文は 作用の定式化と探索空間_20261020.md）
+  1. 無名性・ノルム保存・積からの構成を課すと、作用は o_e' = u_e o_e、u_e in Im(O) に限る。
+  2. 定理 A：G2 共変な双線形の作用は Sum o = 0 で厳密にゼロ（3 本すべて）。
+  3. 生き残る最小の作用（第二層）：u_e = (1/2) Sum_f Im(w_ef^2)、w_ef = o_f conj(o_e)。
      駆動因子は |Im(w^2)| = |o_e|^2 |o_f|^2 |sin 2 theta_ef|。
-  4. 定理 B：高対称な配置が静止する二つの仕組み
-       (a) 全対の角が 0/90/180 度 -> sin 2theta = 0（正軸体）
-       (b) 各要素に直交する鏡映で集合が閉じる -> 60 度の寄与が対で打ち消される（E8、24 胞体）
-  5. 自己無撞着の条件：∃ D in g2 で u_e o_e = D o_e（全 e）。D は自己同型なので条件が持続する。
-     g2 の重みは正六角形なので三振動数は和ゼロ。ロックには通約可能、最小は 1 : 1 : 2。
-  6. 各配置・各作用の残差と振動数の表。
+  4. 定理 B：全対が 0/90/180 度、または各要素に直交する鏡映で集合が閉じるとき、
+     この作用は厳密にゼロ（正軸体・E8 の根・24 胞体がこれに当たる）。
+  5. 自己無撞着（持続する相対平衡）の条件：ある D in g2 で u_e o_e = D o_e（全 e）。
+     そのとき o_e(tau) = exp(tau D) o_e(0)。D の虚 7 次元での三つの振動数は
+     omega_1 + omega_2 + omega_3 = 0（符号付き）を満たし、
+     ロック（U^n = I）には通約可能であることが要る。最小の比は 1 : 1 : -2。
 
-再現性：固定シード。出力は標準出力のみ。
+出力：標準出力と results/action_formulation.json
+再現性：乱数シード 20261020
 """
-import os, itertools
+import json, os, itertools
 import numpy as np
 
-BASE = os.environ.get("OCTO_BASE", os.path.dirname(os.path.abspath(__file__)))
-src = os.path.join(BASE, "octonion_closure_check_20261019.py")
-if not os.path.exists(src):
-    src = os.path.join(BASE, "..", "八元数閉塞と関係の分解_20261019", "octonion_closure_check_20261019.py")
-exec(open(src).read().split("results = {")[0])
+HERE = os.path.dirname(os.path.abspath(__file__))
+CAND = [os.path.join(HERE, "octonion_closure_check_20261019.py"),
+        os.path.join(HERE, "..", "八元数閉塞と関係の分解_20261019", "octonion_closure_check_20261019.py")]
+SRC = next((p for p in CAND if os.path.exists(p)), None)
+if SRC is None:
+    raise SystemExit("octonion_closure_check_20261019.py が見つかりません（同じフォルダに置いてください）")
+exec(open(SRC).read().split("results = {")[0])          # omul, oconj, ojordan, E
 
-rng = np.random.default_rng(20261020)
+SEED = 20261020
+rng = np.random.default_rng(SEED)
+OUT = os.path.join(HERE, "results"); os.makedirs(OUT, exist_ok=True)
+out = {"seed": SEED}
+
 def Im(x):
     y = np.asarray(x, float).copy(); y[0] = 0.0; return y
+
 def nullbasis(A, tol=1e-9):
-    u, s, vt = np.linalg.svd(A); return vt[int(np.sum(s > tol * s[0])):]
+    u, s, vt = np.linalg.svd(A)
+    return vt[int(np.sum(s > tol * s[0])):]
 
 # --- g2 と so(8) -----------------------------------------------------------
 rows = []
@@ -54,136 +62,28 @@ so8 = []
 for i in range(8):
     for j in range(i+1, 8):
         D = np.zeros((8, 8)); D[i, j] = -1; D[j, i] = 1; so8.append(D)
-L = E[4]                                   # 参照の向き l
+L = E[4]                                                 # 参照の向き ell
+print(f"dim g2 = {len(g2)}, dim so(8) = {len(so8)}")
 
-print("=== 1. ノルムを保つ作用の形 ===")
-print("  o'_e = u_e o_e、u_e in Im(O) なら d|o_e|^2/dt = 2 Re((u_e o_e) conj(o_e)) = 2 Re(u_e |o_e|^2) = 0")
-print(f"  Re((u o) conj(o)) = 0 の誤差: "
-      f"{max(abs(float(omul(omul(Im(a), b), oconj(b))[0])) for a, b in rng.normal(size=(500, 2, 8))):.1e}")
+# ---------------------------------------------------------------------------
+# 1. 双線形の分類と、ノルム保存
+# ---------------------------------------------------------------------------
+print("\n=== 1. G2 共変・双線形・純虚への写像は 3 本で尽きる ===")
+e1 = max(np.linalg.norm(Im(omul(x, oconj(y)))
+                        - (y[0]*Im(x) - x[0]*Im(y) - Im(omul(Im(x), Im(y)))))
+         for x, y in rng.normal(size=(500, 2, 8)))
+print(f"  Im(x conj(y)) = Re(y)Im(x) - Re(x)Im(y) - Im(x)xIm(y) の誤差: {e1:.1e}")
+e2 = max(abs(float(omul(omul(Im(u), o), oconj(o))[0])) for u, o in rng.normal(size=(500, 2, 8)))
+print(f"  Re((u o) conj(o)) = 0（u 純虚）の誤差: {e2:.1e}  -> |o_e| は厳密に保存")
+out["bilinear_identity_err"] = float(e1); out["norm_preserving_err"] = float(e2)
 
-print("\n=== 2. G2 共変な双線形写像は 3 本（1x7, 7x1, 7x7）===")
-mx = 0.0
-for _ in range(500):
-    x, y = rng.normal(size=(2, 8))
-    mx = max(mx, np.linalg.norm(Im(omul(x, oconj(y)))
-                                - (y[0]*Im(x) - x[0]*Im(y) - Im(omul(Im(x), Im(y))))))
-print(f"  Im(x conj(y)) = Re(y)Im(x) - Re(x)Im(y) - Im(x)xIm(y) の誤差: {mx:.1e}")
-
-def gen_closure(N, r, k=7):
-    one = np.ones(N)/np.sqrt(N); q0 = r.normal(size=N); q0 -= one*(one @ q0)
-    P = np.eye(N) - np.outer(one, one) - np.outer(q0, q0)/(q0 @ q0)
-    C = np.array([P @ r.normal(size=N) for _ in range(k)]); C *= np.sqrt((q0 @ q0)/np.sum(C*C))
-    bs = []
-    for _ in range(k):
-        v = r.normal(size=8); v[0] = 0
-        for b in bs: v -= (b @ v)*b
-        bs.append(v/np.linalg.norm(v))
-    return np.outer(q0, E[0]) + C.T @ np.array(bs)
-
-print("\n=== 定理 A：双線形の作用は Sum o = 0 で厳密にゼロ ===")
-S = gen_closure(9, np.random.default_rng(1))
-def u_first(S):
-    return np.array([Im(sum(omul(S[f], oconj(S[e])) for f in range(len(S)) if f != e))
-                     for e in range(len(S))])
-def u_cross(S):
-    return np.array([sum(Im(omul(Im(S[e]), Im(S[f]))) for f in range(len(S)) if f != e)
-                     for e in range(len(S))])
-print(f"  試験配置 N=9: |Sum o| = {np.linalg.norm(S.sum(0)):.0e}, "
-      f"|Sum o^2| = {np.linalg.norm(sum(ojordan(v, v) for v in S)):.0e}")
-print(f"  Sum Im(w)             の最大ノルム: {max(np.linalg.norm(u) for u in u_first(S)):.1e}")
-print(f"  Sum Im(o_e) x Im(o_f) の最大ノルム: {max(np.linalg.norm(u) for u in u_cross(S)):.1e}")
-print("  理由: Sum_{f != e} o_f = -o_e。Im(-o_e conj(o_e)) = 0、Im(o_e) x Im(o_e) = 0。")
-
-print("\n=== 3. 生き残る最小の作用（第二層）と駆動因子 ===")
-print("  u_e = (1/2) Sum_{f != e} Im(w_ef^2) = Sum Re(w_ef) Im(w_ef)、w_ef = o_f conj(o_e)")
-mx = 0.0
-for _ in range(500):
-    a, b = rng.normal(size=(2, 8))
-    w = omul(b, oconj(a)); na, nb = np.linalg.norm(a), np.linalg.norm(b)
-    th = np.arccos(np.clip((a @ b)/(na*nb), -1, 1))
-    mx = max(mx, abs(np.linalg.norm(Im(omul(w, w))) - na*na*nb*nb*abs(np.sin(2*th))))
-print(f"  |Im(w^2)| = |o_e|^2 |o_f|^2 |sin 2theta| の誤差: {mx:.1e}")
-print("  -> 0, 90, 180 度で厳密にゼロ、45 度で最大")
-
-def u_second(S):
-    N = len(S); U = np.zeros((N, 8))
-    for e in range(N):
-        s = np.zeros(8); oe = oconj(S[e])
-        for f in range(N):
-            if f == e: continue
-            w = omul(S[f], oe); s += w[0]*Im(w)
-        U[e] = s
-    return U
-
-# --- 配置 -------------------------------------------------------------------
-cfg = {}
-cfg["ORTHO16"] = np.vstack([np.vstack([E[i], -E[i]]) for i in range(8)])
-nl = []
-for i in range(1, 8):
-    for s in (1, -1):
-        v = (E[0] + s*E[i])/np.sqrt(2); nl.append(v); nl.append(-v)
-cfg["NULL28"] = np.array(nl)
-c16 = np.zeros((8, 8)); sc = 1/np.sqrt(3); c16[0, 0] = 1; c16[1, 0] = -1
-for i in range(1, 4): c16[2*i, i] = sc; c16[2*i+1, i] = -sc
-cfg["16-cell v/sqrt3"] = c16
-roots = []
-for i in range(8):
-    for j in range(i+1, 8):
-        for si in (1, -1):
-            for sj in (1, -1):
-                v = np.zeros(8); v[i] = si; v[j] = sj; roots.append(v)
-for s in itertools.product([0.5, -0.5], repeat=8):
-    if np.prod([1 if x > 0 else -1 for x in s]) > 0: roots.append(np.array(s))
-cfg["E8 roots 240"] = np.array(roots)/np.sqrt(2)
-d24 = []
-for i in range(4):
-    for s in (1, -1):
-        v = np.zeros(8); v[i] = s; d24.append(v)
-for sg in itertools.product([0.5, -0.5], repeat=4):
-    v = np.zeros(8); v[:4] = sg; d24.append(v)
-cfg["24-cell in H"] = np.array(d24)
-cfg["random closure N=9"] = gen_closure(9, np.random.default_rng(3))
-
-def angles(S):
-    out = set()
-    for i in range(len(S)):
-        for j in range(i+1, len(S)):
-            c = (S[i] @ S[j])/(np.linalg.norm(S[i])*np.linalg.norm(S[j]))
-            out.add(round(float(np.degrees(np.arccos(np.clip(c, -1, 1)))), 1))
-    return sorted(out)
-def refl_closed(S, tol=1e-9, cap=12):
-    for e in range(min(len(S), cap)):
-        a = S[e]; n2 = a @ a
-        for f in range(len(S)):
-            y = S[f] - 2*(S[f] @ a)/n2*a
-            if min(np.linalg.norm(y - S[g]) for g in range(len(S))) > tol: return False
-    return True
-
-print("\n=== 定理 B：高対称な配置で第二層の作用が消える二つの仕組み ===")
-print(f"  {'配置':<20}{'N':>5}  {'角度':<26}{'鏡映で閉じる':>12}{'max |u|':>12}")
-for nm, S in cfg.items():
-    U = u_second(S)
-    print(f"  {nm:<20}{len(S):>5}  {str(angles(S))[:26]:<26}"
-          f"{str(refl_closed(S)):>12}{max(np.linalg.norm(u) for u in U):>12.3e}")
-print("  (a) 全対が 0/90/180 度 -> sin 2theta = 0（ORTHO16）")
-print("  (b) 各要素に直交する鏡映で閉じる -> 60 度の寄与が対で打ち消される（E8、24-cell）")
-print("  NULL28 だけが鏡映で閉じず、u != 0 になる。")
-
-# --- 自己無撞着の判定 --------------------------------------------------------
-def resid(S, V, rig):
-    A = np.column_stack([(S @ D.T).reshape(-1) for D in rig]); b = V.reshape(-1)
-    nb = np.linalg.norm(b)
-    if nb < 1e-10: return 0.0, None, True
-    c, _, _, _ = np.linalg.lstsq(A, b, rcond=None)
-    return float(np.linalg.norm(A @ c - b)/nb), sum(ci*D for ci, D in zip(c, rig)), False
-def freqs(Om):
-    w = np.sort(np.abs(np.linalg.eigvals(Om).imag))[::-1]; out = []
-    for x in w:
-        if x > 1e-9 and (not out or abs(x - out[-1]) > 1e-6*max(1, x)): out.append(x)
-    return np.round(out, 5)
-
+# ---------------------------------------------------------------------------
+# 2. 作用の基底
+# ---------------------------------------------------------------------------
 def actions(S):
-    N = len(S); W = [[omul(S[f], oconj(S[e])) for f in range(N)] for e in range(N)]
+    """各作用の u_e（N x 8）。すべて純虚。"""
+    N = len(S)
+    W = [[omul(S[f], oconj(S[e])) for f in range(N)] for e in range(N)]
     def acc(fn):
         U = np.zeros((N, 8))
         for e in range(N):
@@ -193,37 +93,167 @@ def actions(S):
                 s += fn(e, f, W[e][f])
             U[e] = s
         return U
-    a = {}
-    a["A1 Sum Im(w)"]            = acc(lambda e, f, w: Im(w))
-    a["A2 Sum Re(w)Im(w)"]       = acc(lambda e, f, w: w[0]*Im(w))
-    a["A3 Sum Re(w)^2 Im(w)"]    = acc(lambda e, f, w: w[0]**2*Im(w))
-    a["A6 Sum Im(oe)xIm(of)"]    = acc(lambda e, f, w: Im(omul(Im(S[e]), Im(S[f]))))
-    a["B1 Sum <l oe,of> Im(w)"]  = acc(lambda e, f, w: float(omul(L, S[e]) @ S[f])*Im(w))
-    a["B2 u_e = l (uniform)"]    = np.tile(L, (N, 1))
-    return a
-def label_motion(S):
+    g = {}
+    g["A1 Sum Im(w)"]            = acc(lambda e, f, w: Im(w))
+    g["A2 Sum Re(w)Im(w)"]       = acc(lambda e, f, w: w[0]*Im(w))      # = (1/2) Sum Im(w^2)
+    g["A3 Sum Re(w)^2 Im(w)"]    = acc(lambda e, f, w: w[0]**2*Im(w))
+    g["A6 Sum Im(o_e)xIm(o_f)"]  = acc(lambda e, f, w: Im(omul(Im(S[e]), Im(S[f]))))
+    g["B1 Sum<l o_e,o_f>Im(w)"]  = acc(lambda e, f, w: float(omul(L, S[e]) @ S[f])*Im(w))
+    g["B2 u_e = l (uniform)"]    = np.tile(L, (N, 1))
+    return g
+
+def vel_elem(S, U):
+    return np.array([omul(U[e], S[e]) for e in range(len(S))])
+
+def vel_label(S):
+    """番号の側：dot o_e = Sum_f K_ef o_f、K_ef = <l o_e, o_f>（反対称）"""
     N = len(S)
     K = np.array([[float(omul(L, S[e]) @ S[f]) for f in range(N)] for e in range(N)])
     return K @ S
 
-print("\n=== 4. 自己無撞着の判定：∃ D で u_e o_e = D o_e ===")
-print("  g2 の残差が 0 なら条件は時間発展で持続する（D は自己同型）。")
-print("  so(8) だけ 0 のときは形は保つが、持続は別に確かめる必要がある。")
-for nm in ["ORTHO16", "NULL28", "16-cell v/sqrt3", "random closure N=9"]:
-    S = cfg[nm]
-    print(f"\n  --- {nm} (N = {len(S)}) ---")
-    print(f"      {'作用':<26}{'g2 残差':>11}{'so(8) 残差':>12}   振動数(so(8))")
-    items = [(k, np.array([omul(v[e], S[e]) for e in range(len(S))]))
-             for k, v in actions(S).items()]
-    items.append(("C1 label side K=<l oe,of>", label_motion(S)))
+def resid(S, V, rig):
+    """min_Omega |V - Omega o| / |V|。Omega は rig（g2 か so(8)）の張る空間。"""
+    A = np.column_stack([(S @ D.T).reshape(-1) for D in rig]); b = V.reshape(-1)
+    nb = np.linalg.norm(b)
+    if nb < 1e-10: return 0.0, None, True
+    c, _, _, _ = np.linalg.lstsq(A, b, rcond=None)
+    return float(np.linalg.norm(A @ c - b)/nb), sum(ci*D for ci, D in zip(c, rig)), False
+
+def freqs(Om):
+    w = np.sort(np.abs(np.linalg.eigvals(Om).imag))[::-1]; o = []
+    for x in w:
+        if x > 1e-9 and (not o or abs(x - o[-1]) > 1e-6*max(1, x)): o.append(x)
+    return np.round(o, 6)
+
+# ---------------------------------------------------------------------------
+# 3. 駆動因子 sin 2theta
+# ---------------------------------------------------------------------------
+print("\n=== 3. 第二層の作用の駆動因子 ===")
+mx = 0.0
+for a, b in rng.normal(size=(500, 2, 8)):
+    w = omul(b, oconj(a)); na, nb = np.linalg.norm(a), np.linalg.norm(b)
+    th = np.arccos(np.clip((a @ b)/(na*nb), -1, 1))
+    mx = max(mx, abs(np.linalg.norm(Im(omul(w, w))) - na*na*nb*nb*abs(np.sin(2*th))))
+print(f"  |Im(w^2)| = |o_e|^2|o_f|^2 |sin 2theta| の誤差: {mx:.1e}")
+print("  -> 0, 90, 180 度で厳密にゼロ、45 度で最大")
+out["sin2theta_err"] = float(mx)
+
+# ---------------------------------------------------------------------------
+# 4. 配置
+# ---------------------------------------------------------------------------
+def angles_of(S):
+    s = set()
+    for i in range(len(S)):
+        for j in range(i+1, len(S)):
+            c = (S[i] @ S[j])/(np.linalg.norm(S[i])*np.linalg.norm(S[j]))
+            s.add(round(float(np.degrees(np.arccos(np.clip(c, -1, 1)))), 2))
+    return sorted(s)
+
+def refl_closed(S, tol=1e-9, probe=12):
+    """各 o_e について、o_e に直交する鏡映で集合が閉じるか。"""
+    for e in range(min(len(S), probe)):
+        a = S[e]; n2 = a @ a
+        for f in range(len(S)):
+            y = S[f] - 2*(S[f] @ a)/n2*a
+            if min(np.linalg.norm(y - S[g]) for g in range(len(S))) > tol:
+                return False
+    return True
+
+cfgs = {}
+cfgs["ORTHO16"] = np.vstack([np.vstack([E[i], -E[i]]) for i in range(8)])
+nl = []
+for i in range(1, 8):
+    for s in (1, -1):
+        v = (E[0] + s*E[i])/np.sqrt(2); nl.append(v); nl.append(-v)
+cfgs["NULL28"] = np.array(nl)
+c16 = np.zeros((8, 8)); sc = 1/np.sqrt(3); c16[0, 0] = 1; c16[1, 0] = -1
+for i in range(1, 4): c16[2*i, i] = sc; c16[2*i+1, i] = -sc
+cfgs["16-cell v/sqrt3"] = c16
+d24 = []
+for i in range(4):
+    for s in (1, -1):
+        v = np.zeros(8); v[i] = s; d24.append(v)
+for sg in itertools.product([0.5, -0.5], repeat=4):
+    v = np.zeros(8); v[:4] = sg; d24.append(v)
+cfgs["24-cell (in H)"] = np.array(d24)
+roots = []
+for i in range(8):
+    for j in range(i+1, 8):
+        for si in (1, -1):
+            for sj in (1, -1):
+                v = np.zeros(8); v[i] = si; v[j] = sj; roots.append(v)
+for s in itertools.product([0.5, -0.5], repeat=8):
+    if np.prod([1 if x > 0 else -1 for x in s]) > 0: roots.append(np.array(s))
+cfgs["E8 roots 240"] = np.array(roots)/np.sqrt(2)
+def gen_closure(N, r, k=7):
+    one = np.ones(N)/np.sqrt(N); q0 = r.normal(size=N); q0 -= one*(one @ q0)
+    P = np.eye(N) - np.outer(one, one) - np.outer(q0, q0)/(q0 @ q0)
+    C = np.array([P @ r.normal(size=N) for _ in range(k)]); C *= np.sqrt((q0 @ q0)/np.sum(C*C))
+    bs = []
+    for i in range(k):
+        v = r.normal(size=8); v[0] = 0
+        for b in bs: v -= (b @ v)*b
+        bs.append(v/np.linalg.norm(v))
+    return np.outer(q0, E[0]) + C.T @ np.array(bs)
+cfgs["random closure N=9"] = gen_closure(9, np.random.default_rng(3))
+
+# ---------------------------------------------------------------------------
+# 5. 定理 B：第二層の作用が消える条件
+# ---------------------------------------------------------------------------
+print("\n=== 5. 定理 B：第二層の作用が消える条件 ===")
+print(f"  {'config':<20}{'N':>5}  {'angles':<28}{'refl.closed':>12}{'max|u|':>12}")
+tabB = []
+for nm, S in cfgs.items():
+    U = actions(S)["A2 Sum Re(w)Im(w)"]
+    mu = max(np.linalg.norm(u) for u in U)
+    rc = refl_closed(S); ang = str(angles_of(S))
+    tabB.append({"name": nm, "N": len(S), "angles": angles_of(S),
+                 "reflection_closed": bool(rc), "max_u_second_layer": float(mu)})
+    print(f"  {nm:<20}{len(S):>5}  {ang[:28]:<28}{str(rc):>12}{mu:>12.2e}")
+out["theorem_B"] = tabB
+print("  -> 全対が 0/90/180 度、または鏡映で閉じる配置では厳密にゼロ。")
+
+# ---------------------------------------------------------------------------
+# 6. 各作用の自己無撞着性
+# ---------------------------------------------------------------------------
+print("\n=== 6. 各作用の相対平衡の残差と振動数 ===")
+tabC = []
+for nm, S in cfgs.items():
+    if len(S) > 60: continue                              # E8 は重いので省く
+    print(f"\n  --- {nm}（N = {len(S)}、|Sum o| = {np.linalg.norm(S.sum(0)):.0e}、"
+          f"|Sum o^2| = {np.linalg.norm(sum(ojordan(v, v) for v in S)):.0e}）")
+    print(f"    {'action':<26}{'res g2':>11}{'res so(8)':>12}   freqs(so(8))")
+    G = actions(S)
+    items = [(k, vel_elem(S, v)) for k, v in G.items()] + [("C1 label K=<l o_e,o_f>", vel_label(S))]
     for k, V in items:
         r2, _, z2 = resid(S, V, g2); r8, Om8, z8 = resid(S, V, so8)
         tag = "static" if z8 else (str(freqs(Om8)[:4]) if r8 < 1e-8 else "-")
-        print(f"      {k:<26}{r2:>11.2e}{r8:>12.2e}   {tag}")
+        tabC.append({"config": nm, "action": k, "res_g2": r2, "res_so8": r8,
+                     "static": bool(z8), "freqs": [] if z8 or r8 >= 1e-8 else [float(x) for x in freqs(Om8)[:4]]})
+        print(f"    {k:<26}{r2:>11.2e}{r8:>12.2e}   {tag}")
+out["relative_equilibria"] = tabC
 
-print("\n=== 5. g2 の中の回転は三振動数が和ゼロ ===")
-X = sum(c*D for c, D in zip(rng.normal(size=14), g2))
-ev = np.linalg.eigvals(X).imag; w = np.sort(ev[ev > 1e-9])
-print(f"  一般の D in g2 の正の振動数: {np.round(w, 6)}  "
-      f"最大 - 他の二つの和 = {w.max() - (w.sum() - w.max()):.1e}")
-print("  -> omega1 + omega2 = omega3。ロック U^n = I には通約可能が要り、最小は 1 : 1 : 2。")
+# ---------------------------------------------------------------------------
+# 7. g2 の振動数の拘束（符号付きで和ゼロ）
+# ---------------------------------------------------------------------------
+print("\n=== 7. D in g2 の虚 7 次元での三つの振動数は符号付きで和ゼロ ===")
+print("  （固有値からは絶対値しか出ないので、最大 = 他の二つの和 で検定する）")
+chk = []
+for t in range(6):
+    D = sum(c*M for c, M in zip(np.random.default_rng(SEED + t).normal(size=14), g2))
+    im = np.sort(np.abs(np.linalg.eigvals(D).imag))[::-1]
+    a = []
+    for x in im:
+        if x > 1e-9 and (not a or abs(x - a[-1]) > 1e-7*max(1, x)): a.append(x)
+    a = a[:3]
+    d = abs(a[0] - (a[1] + a[2])) / a[0]
+    chk.append(d)
+    print(f"  freqs {np.round(a, 6)}  |max - (sum of other two)| / max = {d:.1e}")
+print("  -> omega_1 + omega_2 + omega_3 = 0（符号付き）。G2 の 7 次元表現の重みが")
+print("     正六角形の一つおきの三つ組で和ゼロになることの帰結。")
+print("     ロック（U^n = I）には三つが通約可能であることが要り、最小の比は 1 : 1 : -2。")
+out["g2_frequency_sum_test_max_rel_dev"] = float(max(chk))
+
+with open(os.path.join(OUT, "action_formulation.json"), "w", encoding="utf-8") as f:
+    json.dump(out, f, ensure_ascii=False, indent=1)
+print("\nsaved:", os.path.join(OUT, "action_formulation.json"))
