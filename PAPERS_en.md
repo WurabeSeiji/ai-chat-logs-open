@@ -596,6 +596,10 @@ Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PA
    複素数の集合から時空 (1＋3) への写像 ― 四元数による読み出しと部分投射 ―  
    DOI [10.5281/zenodo.23452319](https://doi.org/10.5281/zenodo.23452319) · Concept [10.5281/zenodo.23451494](https://doi.org/10.5281/zenodo.23451494) · 2026-10-18 · v1.1 · [PDF en](https://zenodo.org/records/23452319/files/quaternion_spacetime_map_en_v1.pdf) [PDF ja](https://zenodo.org/records/23452319/files/quaternion_spacetime_map_ja_v1.pdf)  
    folder: [次元の生成構造/四元数による時空への写像_20261018](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%9B%9B%E5%85%83%E6%95%B0%E3%81%AB%E3%82%88%E3%82%8B%E6%99%82%E7%A9%BA%E3%81%B8%E3%81%AE%E5%86%99%E5%83%8F_20261018)
+53. **Relational Readout of Quaternions and Crystallization as Inflation: Anonymity-Preserving Autonomous Structuring and Partial Projection**  
+   四元数の関係読み出しと、結晶化としてのインフレーション ― 無名性を保った自律的構造化と部分投射 ―  
+   DOI [10.5281/zenodo.23523238](https://doi.org/10.5281/zenodo.23523238) · Concept [10.5281/zenodo.23523237](https://doi.org/10.5281/zenodo.23523237) · 2026-10-21 · v1.1 · [PDF en](https://zenodo.org/records/23523238/files/quaternion_crystallization_inflation_en_v1.1.pdf) [PDF ja](https://zenodo.org/records/23523238/files/quaternion_crystallization_inflation_ja_v1.1.pdf)  
+   folder: [次元の生成構造/四元数関係の結晶化とインフレーション_20261021](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%9B%9B%E5%85%83%E6%95%B0%E9%96%A2%E4%BF%82%E3%81%AE%E7%B5%90%E6%99%B6%E5%8C%96%E3%81%A8%E3%82%A4%E3%83%B3%E3%83%95%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3_20261021)
 
 ## Time Axis, Q Axis, and Fermion Generation / 時間軸Q軸とフェルミオンの生成構造
 
