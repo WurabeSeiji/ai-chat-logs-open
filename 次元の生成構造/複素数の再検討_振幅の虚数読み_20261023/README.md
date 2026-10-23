@@ -1,7 +1,7 @@
 # 複素数の再検討：振幅はどこに住むか（次の論文の準備フォルダ）
 
-**作成：** 2026-10-23　**状態：** 日本語原稿 v1 作成済み（公開前稿、Zenodo 未公開。英訳・tex/PDF・公開は未着手）
-**仮の題名：** 複素数を正しく理解していたか ― 振幅はどこに住むか、虚数読み、ℂ → ℍ → 𝕆 の帰属 ―（題名は著者が決める）
+**作成：** 2026-10-23　**状態：** v1 公開済み（Zenodo Version DOI [10.5281/zenodo.23585437](https://doi.org/10.5281/zenodo.23585437)、Concept DOI [10.5281/zenodo.23585436](https://doi.org/10.5281/zenodo.23585436)、2026-10-23）
+**題名：** 複素数を正しく理解していたか ― 振幅はどこに住むか、虚数読み、ℂ → ℍ → 𝕆 の帰属 ―（英題 Did We Understand Complex Numbers Correctly? Where the Amplitude Lives, the Imaginary Reading, and Attribution across ℂ → ℍ → 𝕆）
 **位置づけ：** 前稿「四元数の関係読み出しと、結晶化としてのインフレーション」v1.1（Concept DOI 10.5281/zenodo.23523237）の次。主旨・動機・導出の方向は `../四元数関係の結晶化とインフレーション_20261021/思考実験メモ2_…_20261021.md` の §24〜§30 に整理済み。
 
 ## 主旨（§29）
@@ -14,6 +14,11 @@
 
 | ファイル | 内容 |
 |---|---|
+| `complex_revisited_amplitude_imaginary_en_v1.md` | 英語版（翻訳。日本語版が正本。図は `図表/figures/fig*_en.svg`、自己引用の題名は Zenodo の英題） |
+| `complex_revisited_amplitude_imaginary_{ja,en}_v1.tex` / `.pdf` | `build_tex.py` で生成（pandoc → lualatex ×2、/tmp で組版）。日本語 23 頁・英語 24 頁 |
+| `build_tex.py` | tex 生成スクリプト（前稿のものを元に、図の参照先・DOI のヘッダー読み・黒板太字の \mathbb 置換・参考文献の段落分けを変更） |
+| `figures_and_programs.zip` / `SHA256SUMS.txt` | Zenodo に上げた `図表/` 一式の zip と、Zenodo 掲載ファイル 11 本の SHA-256 |
+| `zenodo_deposit_notes.md` | Zenodo deposit の作業記録（メタデータ・進捗） |
 | `complex_revisited_amplitude_imaginary_ja_v1.md` | 日本語原稿 v1（§1 動機 → §3 振幅の置き場所 → §4 複素数の段 → §5 四元数 → §6 八元数 → §7 帰属の台帳 → §8 先行研究 → §9 主張の区分・反証・次の課題 → §10 結論、参考文献 [S1]〜[S50]・[X1]〜[X44]、付録 A 図の再現、付録 B 対話の記録、版の履歴） |
 | `外部引用の対応表_20261023.md` | 本稿の主張と外部文献の対応、書誌の確認状況（2026-10-23 に Crossref・arXiv・ウェブで確認） |
 | `自己引用の対応表_20261023.md` | 本稿の主張と既発表の自己論文の対応（前提／既出／課題） |
@@ -21,4 +26,4 @@
 | `図表/` | 図版生成プログラム（`make_figures.py`、図 1〜6、日英）、恒等式の確認（`verify_identities.py`、C0〜C10 11 件 OK）、`run_all.sh`、`SHA256SUMS.txt` |
 
 ## 作業の順序（木原承認 2026-10-23）
-① 外部引用の整理 → ② 自己引用の整理 → ③ 課題の整理 → ④ 図表の整理 → ⑤ 原稿（2026-10-23 日本語 v1 作成）。基本公理系 v10 は検討不足のため原稿の後（木原 2026-10-23）。凝縮体の定義と数値実験はこの論文の後。英訳・tex/PDF・Zenodo 公開は明示の指示があってから。
+① 外部引用の整理 → ② 自己引用の整理 → ③ 課題の整理 → ④ 図表の整理 → ⑤ 原稿（2026-10-23 日本語 v1 作成）→ ⑥ 公開（同日：DOI 取得・英訳・tex/PDF・Zenodo 公開・Zenn・RELEASE_NOTES・PAPERS/docs）。基本公理系 v10 は検討不足のため原稿の後（木原 2026-10-23）。凝縮体の定義と数値実験はこの論文の後。note・Facebook・X の記事は未作成（指示があってから）。

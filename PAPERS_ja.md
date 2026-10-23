@@ -4,7 +4,7 @@
 全論文は Zenodo で CC BY 4.0 公開。各行：題名（日本語 / 英語）・Version DOI・Concept DOI・公開日・版・PDF・リポジトリ内フォルダ・リリースノート。
 本ファイルは `tools/gen_paper_index.py` により Zenodo API から自動生成。English: [PAPERS_en.md](PAPERS_en.md) / Scholar 用ページ: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**論文数: 146**
+**論文数: 147**
 
 ## グノモン正写像による4次元時空の幾何学的定式化 / Central Projection Framework (Gnomonic Spacetime Geometry)
 
@@ -600,6 +600,11 @@
    Relational Readout of Quaternions and Crystallization as Inflation: Anonymity-Preserving Autonomous Structuring and Partial Projection  
    DOI [10.5281/zenodo.23523238](https://doi.org/10.5281/zenodo.23523238) · Concept [10.5281/zenodo.23523237](https://doi.org/10.5281/zenodo.23523237) · 2026-10-21 · v1.1 · [PDF en](https://zenodo.org/records/23523238/files/quaternion_crystallization_inflation_en_v1.1.pdf) [PDF ja](https://zenodo.org/records/23523238/files/quaternion_crystallization_inflation_ja_v1.1.pdf)  
    フォルダ: [次元の生成構造/四元数関係の結晶化とインフレーション_20261021](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%9B%9B%E5%85%83%E6%95%B0%E9%96%A2%E4%BF%82%E3%81%AE%E7%B5%90%E6%99%B6%E5%8C%96%E3%81%A8%E3%82%A4%E3%83%B3%E3%83%95%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3_20261021)
+
+54. **複素数を正しく理解していたか ― 振幅はどこに住むか、虚数読み、ℂ → ℍ → 𝕆 の帰属 ―**  
+   Did We Understand Complex Numbers Correctly? Where the Amplitude Lives, the Imaginary Reading, and Attribution across ℂ → ℍ → 𝕆  
+   DOI [10.5281/zenodo.23585437](https://doi.org/10.5281/zenodo.23585437) · Concept [10.5281/zenodo.23585436](https://doi.org/10.5281/zenodo.23585436) · 2026-10-23 · v1 · [PDF en](https://zenodo.org/records/23585437/files/complex_revisited_amplitude_imaginary_en_v1.pdf) [PDF ja](https://zenodo.org/records/23585437/files/complex_revisited_amplitude_imaginary_ja_v1.pdf)  
+   フォルダ: [次元の生成構造/複素数の再検討_振幅の虚数読み_20261023](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E8%A4%87%E7%B4%A0%E6%95%B0%E3%81%AE%E5%86%8D%E6%A4%9C%E8%A8%8E_%E6%8C%AF%E5%B9%85%E3%81%AE%E8%99%9A%E6%95%B0%E8%AA%AD%E3%81%BF_20261023)
 
 ## 時間軸Q軸とフェルミオンの生成構造 / Time Axis, Q Axis, and Fermion Generation
 
