@@ -1,0 +1,26 @@
+--- /Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/分配率Rの読出し_解析床_20261025/走行1_全順序対_M_N2_隣接あり_解析床_20261025/floor_analytic_v1.py	2026-10-25 17:05:16
++++ floor_analytic_v2_noadj.py	2026-10-25 17:18:19
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+-"""90度床の解析的生成器・辺集合一般化版（2026-10-25）。
++"""90度床の解析的生成器・辺集合一般化版・走行2 版（2026-10-25）: 隣接重みづけなし（adjacency が全対 1）。それ以外は走行1 の floor_analytic_v1.py と同一。
+ 
+ 論文3（2026-09-09/12）の `make_90deg_floor_analytic_v1.py`（同梱 original_reference_…）の `integer_K` / `releq_residual` /
+ `build_analytic_floor` を文字どおり写し、変更は次の 2 点だけ：
+@@ -43,12 +43,10 @@
+ 
+ 
+ def adjacency_from_edges(ea, eb):
++    """走行2（2026-10-25）: 隣接重みづけをやめる。全対 1、対角 0（対角は integer_K の sin(0)=0 と one_step の対角ゼロ化で元々効かない）。ea, eb は M を決めるためだけに使う。"""
+     M = len(ea)
+-    A = np.zeros((M, M), dtype=np.float64)
+-    for e in range(M):
+-        share = (ea == ea[e]) | (ea == eb[e]) | (eb == ea[e]) | (eb == eb[e])
+-        share[e] = False
+-        A[e, share] = 1.0
++    A = np.ones((M, M), dtype=np.float64)
++    np.fill_diagonal(A, 0.0)
+     return A
+ 
+ 
