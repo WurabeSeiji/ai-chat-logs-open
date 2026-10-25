@@ -93,3 +93,7 @@ CONTROL vs paper3 manifest: PASS
 図：`results_all/fig_Hperp_denominator_controls_with_124_N3_N40_stage123.png`（H⊥/H グリッド）、`results_all/fig_complex_plane_{step0,final,final_zoom}_RUN1_allpairs_analytic.png`、基準側 `results_triu/fig_complex_plane_*_BASELINE_triu_analytic.png`。
 
 解釈は書かない。走行 2（隣接なし）・走行 3（配列シャッフル）はこの床で組み直す（指示待ち）。
+
+## 訂正（10/25 夜）
+`run_sweep_from_parents_v1.py` は原本の `fig.savefig(...)` を落としていたため、H⊥/H グリッド図を出力していなかった。
+`../../分配率Rの読出し_解析床_初期値のみ変更_走行系固定_20261025/plot_hperp_grid_from_timeseries_v1.py`（読み出しのみ）で timeseries CSV から再生成した（results_all・results_triu）。走行本体は無変更。
