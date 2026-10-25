@@ -1,0 +1,20 @@
+--- analyze_sweep_summary_v1.py	2026-09-05 11:15:44
++++ analyze_subset_summary_v1.py	2026-10-25 15:06:09
+@@ -65,7 +65,7 @@
+ sigma_max_by_N = {}
+ psi_max_denN = {}
+ psi_max_den124 = {}
+-for N in range(3, 41):
++for N in (3,4,5,6,8,10,12,15,20,25,30,40):   # 案B
+     sig = np.load(os.path.join(PARENT_DIR, f'parent_static_N{N:05d}_makeparent_20260905.npz'))['sigma']
+     smax = float(np.max(sig))
+     sigma_max_by_N[N] = smax
+@@ -74,7 +74,7 @@
+ out['sigma_max_by_N'] = sigma_max_by_N
+ out['psi_max_over_2pi_denN'] = {n: v / (2 * math.pi) for n, v in psi_max_denN.items()}
+ out['psi_max_over_2pi_den124'] = {n: v / (2 * math.pi) for n, v in psi_max_den124.items()}
+-path = os.path.join(RES, 'analysis_sweep_summary_v1.json')
++path = os.path.join(RES, 'analysis_subset_summary_v1.json')
+ with open(path, 'w') as fh:
+     json.dump(out, fh, indent=2, ensure_ascii=False)
+ print(json.dumps({k: v for k, v in out.items() if k not in ('onset_by_series',)}, indent=2))

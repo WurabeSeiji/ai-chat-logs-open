@@ -1,0 +1,10 @@
+--- /Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/分配率Rの読出し_予備実験_20261025/走行1_全順序対_M_N2_隣接重みあり_20261025/run_sweep_from_parents_v1.py	2026-10-25 15:29:29
++++ run_sweep_from_parents_v1_shuffle.py	2026-10-25 16:09:17
+@@ -32,6 +32,7 @@
+     # 初期データ: 各 N の静的親ファイルの Z0 を使用
+     _d=np.load(os.path.join(PARENT_DIR,PARENT_PATTERN.format(N=N)))
+     z0=np.array(_d['Z0'],dtype=np.complex128,copy=True); ea,eb=_d['ea'],_d['eb']; assert len(ea)==z0.size
++    z0=z0[np.random.default_rng(20261025+N).permutation(z0.size)]   # 走行3（2026-10-25）: 初期配列を乱数で入れ替える。この 1 行だけが走行 1 との違い
+     A=adjacency(ea,eb); p,q=plane(z0)
+     pairs=[(N,'N'),(124,'124')]   # 案B: 6 系列 → den=N と 124 の 2 系列
+     for den,label in pairs:

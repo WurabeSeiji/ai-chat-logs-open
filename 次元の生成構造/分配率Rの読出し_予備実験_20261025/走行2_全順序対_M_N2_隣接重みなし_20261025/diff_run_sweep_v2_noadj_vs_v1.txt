@@ -1,0 +1,15 @@
+--- /Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/分配率Rの読出し_予備実験_20261025/走行1_全順序対_M_N2_隣接重みあり_20261025/run_sweep_from_parents_v1.py	2026-10-25 15:29:29
++++ run_sweep_from_parents_v2_noadj.py	2026-10-25 15:43:03
+@@ -10,10 +10,8 @@
+ NS=tuple(int(x) for x in sys.argv[5:])   # N は引数で与える
+ assert np.dtype(np.float64).itemsize==8 and np.dtype(np.complex128).itemsize==16
+ 
+-def adjacency(ea,eb):   # 辺集合は親 npz の ea, eb から読む（構造を親と走行で共有する）。規則は原本と同一
+-    M=len(ea); A=np.zeros((M,M),dtype=np.float64)
+-    for e in range(M):
+-        share=(ea==ea[e])|(ea==eb[e])|(eb==ea[e])|(eb==eb[e]); share[e]=False; A[e,share]=1.0
++def adjacency(ea,eb):   # 走行2: 隣接重みづけをやめる。全対 1、対角 0（対角は H_of と sin(0)=0 で元々効かない）。ea, eb は M を決めるためだけに使う
++    M=len(ea); A=np.ones((M,M),dtype=np.float64); np.fill_diagonal(A,0.0)
+     return A
+ def H_of(z,A):
+     H=A*(np.conj(z)[:,None]*z[None,:]); np.fill_diagonal(H,0.0); return H.astype(np.complex128,copy=False)

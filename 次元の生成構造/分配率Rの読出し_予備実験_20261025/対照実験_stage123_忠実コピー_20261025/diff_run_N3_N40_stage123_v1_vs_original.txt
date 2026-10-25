@@ -1,0 +1,19 @@
+--- /Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/電子の反跳実験/seed除去による準安定相追試/chatgpt追試/干渉保存力学_資格審査とシード無し系列_20260831/N3_N40_stage123_sweep_20260905/run_N3_N40_stage123_v1.py	2026-09-05 09:10:35
++++ /Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/分配率Rの読出し_予備実験_20261025/対照実験_stage123_忠実コピー_20261025/run_N3_N40_stage123_v1.py	2026-10-25 14:55:25
+@@ -2,12 +2,12 @@
+ import numpy as np
+ import matplotlib.pyplot as plt
+ 
+-ROOT='/Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/電子の反跳実験/seed除去による準安定相追試/chatgpt追試/干渉保存力学_資格審査とシード無し系列_20260831'
++ROOT=os.path.dirname(os.path.abspath(__file__))  # 対照実験: 本フォルダ（パス変更 1/4）
+ OLD_IN=os.path.join(ROOT,'data')
+-NEW_IN=os.path.join(ROOT,'hm_mp_free_N3_N40_20260901','data')
+-OUT=os.path.join(ROOT,'N3_N40_stage123_sweep_20260905','results')
++NEW_IN=os.path.join(ROOT,'hm_mp_free_N3_N40_20260901','data')  # 未使用（原本どおり残置、パス変更 4/4 は ROOT 経由）
++OUT=os.path.join(ROOT,'results')  # パス変更 2/4
+ # 初期データ: 各 N の make_parent 静的親（make_static_parents_N3_N40_v1.py が生成、N=40 は正本と bit 一致ゲート済み）
+-PARENT_DIR=os.path.join(ROOT,'N3_N40_stage123_sweep_20260905','parents')
++PARENT_DIR=os.path.join(ROOT,'parents')  # パス変更 3/4
+ STEPS=500; OFFSETS=(-2,-1,0,1,2)
+ assert np.dtype(np.float64).itemsize==8 and np.dtype(np.complex128).itemsize==16
+ 

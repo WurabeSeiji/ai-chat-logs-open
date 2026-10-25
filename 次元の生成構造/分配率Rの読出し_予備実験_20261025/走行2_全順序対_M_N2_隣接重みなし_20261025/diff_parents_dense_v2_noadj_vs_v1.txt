@@ -1,0 +1,28 @@
+--- /Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/分配率Rの読出し_予備実験_20261025/走行1_全順序対_M_N2_隣接重みあり_20261025/parents_dense_v1.py	2026-10-25 15:26:51
++++ parents_dense_v2_noadj.py	2026-10-25 15:43:03
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+-"""密行列版の自己無撞着親生成器（2026-10-25）。
++"""密行列版の自己無撞着親生成器・走行2 版（2026-10-25）: 隣接重みづけなし（adjacency が全対 1）。それ以外は parents_dense_v1.py と同一。
+ 
+ 旧エンジン run_n_scaling_lowrank_v1.py の make_parent / zero_closure_kernel_seed と同じ手順を、
+ 走行本体 run_subset_stage123_v1.py と同じ H_of から作る密行列 K（式18）で行う。
+@@ -44,13 +44,11 @@
+ 
+ 
+ def adjacency(ea, eb):
+-    """走行本体 run_subset_stage123_v1.py の adjacency と同じ規則：頂点を共有すれば 1、それ以外 0、対角 0。"""
++    """走行2（2026-10-25）: 隣接重みづけをやめる。全対 1、対角 0。
++    （対角は H_of の fill_diagonal と sin(θ_e−θ_e)=0 で元々効かないので、対角込み 1 と結果は同じ。ea, eb は M を決めるためだけに使う）"""
+     M = len(ea)
+-    A = np.zeros((M, M), dtype=np.float64)
+-    for e in range(M):
+-        share = (ea == ea[e]) | (ea == eb[e]) | (eb == ea[e]) | (eb == eb[e])
+-        share[e] = False
+-        A[e, share] = 1.0
++    A = np.ones((M, M), dtype=np.float64)
++    np.fill_diagonal(A, 0.0)
+     return A
+ 
+ 

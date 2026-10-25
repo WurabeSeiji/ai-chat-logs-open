@@ -1,0 +1,68 @@
+--- plot_complex_plane_N3_N40_stage123_v1.py	2026-09-05 10:17:28
++++ plot_complex_plane_subset_v1.py	2026-10-25 15:06:09
+@@ -14,6 +14,7 @@
+ 
+ BASE = os.path.dirname(os.path.abspath(__file__))
+ IN = os.path.join(BASE, 'results')
++NS = (3,4,5,6,8,10,12,15,20,25,30,40)   # 案B: 12 N → 3×4 グリッド
+ 
+ def load(N, step):
+     d = np.load(os.path.join(IN, f'hm_N{N}_den_{N}_states_500.npz'))
+@@ -21,9 +22,9 @@
+     return np.asarray(d['Z'][step], dtype=np.complex128)
+ 
+ def draw_grid(step, fname, title):
+-    fig, axs = plt.subplots(8, 5, figsize=(20, 24))
++    fig, axs = plt.subplots(3, 4, figsize=(16, 12))
+     axs = axs.ravel()
+-    for k, N in enumerate(range(3, 41)):
++    for k, N in enumerate(NS):
+         ax = axs[k]
+         z = load(N, step)
+         M = N * (N - 1) // 2
+@@ -45,24 +46,22 @@
+         ax.tick_params(labelsize=6)
+         ax.ticklabel_format(style='sci', scilimits=(-2, 3))
+         ax.set_title(f'N={N} (M={M})', fontsize=9)
+-        if k // 5 == 7: ax.set_xlabel('Re z', fontsize=7)
+-        if k % 5 == 0: ax.set_ylabel('Im z', fontsize=7)
+-    for k in range(38, 40):
+-        axs[k].axis('off')
++        if k // 4 == 2: ax.set_xlabel('Re z', fontsize=7)
++        if k % 4 == 0: ax.set_ylabel('Im z', fontsize=7)
+     fig.suptitle(title, y=.998)
+     fig.tight_layout()
+     fig.savefig(os.path.join(BASE, fname), dpi=180)
+     plt.close(fig)
+ 
+-draw_grid(0, 'fig_complex_plane_step0_N3_N40_stage123.png',
+-          'Stage1+2+3 sweep: complex-plane readout at step 0 (make_parent static parents, dt=2pi/N files); N=3..40')
+-draw_grid(500, 'fig_complex_plane_final_N3_N40_stage123.png',
+-          'Stage1+2+3 sweep: complex-plane readout at final step 500 (dt=2pi/N); N=3..40')
++draw_grid(0, 'fig_complex_plane_step0_subset_control.png',
++          'CONTROL subset B: complex-plane readout at step 0 (make_parent static parents, dt=2pi/N files)')
++draw_grid(500, 'fig_complex_plane_final_subset_control.png',
++          'CONTROL subset B: complex-plane readout at final step 500 (dt=2pi/N)')
+ 
+ # (3) 終了時の最大角クラスター拡大グリッド
+-fig, axs = plt.subplots(8, 5, figsize=(20, 24))
++fig, axs = plt.subplots(3, 4, figsize=(16, 12))
+ axs = axs.ravel()
+-for k, N in enumerate(range(3, 41)):
++for k, N in enumerate(NS):
+     ax = axs[k]
+     z = load(N, 500)
+     amp = float(np.abs(z).max())
+@@ -88,10 +87,8 @@
+     ax.tick_params(labelsize=5)
+     ax.ticklabel_format(style='sci', scilimits=(-2, 3), useOffset=True)
+     ax.set_title(f'N={N}: {len(zz)} waves, dev={spread:.2e} (|z|max={amp:.2e})', fontsize=7)
+-for k in range(38, 40):
+-    axs[k].axis('off')
+-fig.suptitle('Stage1+2+3 sweep: zoom into largest angle cluster at final step 500 (dt=2pi/N); N=3..40', y=.998)
++fig.suptitle('CONTROL subset B: zoom into largest angle cluster at final step 500 (dt=2pi/N)', y=.998)
+ fig.tight_layout()
+-fig.savefig(os.path.join(BASE, 'fig_complex_plane_final_zoom_N3_N40_stage123.png'), dpi=180)
++fig.savefig(os.path.join(BASE, 'fig_complex_plane_final_zoom_subset_control.png'), dpi=180)
+ plt.close(fig)
+ print('ALL DONE')

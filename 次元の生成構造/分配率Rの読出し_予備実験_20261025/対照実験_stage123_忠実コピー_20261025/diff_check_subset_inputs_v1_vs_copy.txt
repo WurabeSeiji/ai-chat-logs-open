@@ -1,0 +1,23 @@
+--- check_sweep_inputs_v1.py	2026-09-05 10:12:15
++++ check_subset_inputs_v1.py	2026-10-25 15:06:09
+@@ -15,9 +15,9 @@
+ 
+ ok = True
+ n_checked = 0
+-for N in range(3, 41):
++for N in (3,4,5,6,8,10,12,15,20,25,30,40):   # 案B
+     Z0 = np.load(os.path.join(PARENT_DIR, f'parent_static_N{N:05d}_makeparent_20260905.npz'))['Z0']
+-    dens = [N + o for o in (-2, -1, 0, 1, 2) if N + o > 0] + [124]
++    dens = [N, 124]   # 案B
+     for den in dens:
+         p = os.path.join(RESULT_DIR, f'hm_N{N}_den_{den}_states_500.npz')
+         same = bool(np.array_equal(np.load(p)['Z'][0], Z0))
+@@ -25,7 +25,7 @@
+         if not same:
+             print(f'MISMATCH: N={N} den={den}')
+             ok = False
+-print(f'checked {n_checked} state files against 38 static parents')
++print(f'checked {n_checked} state files against 12 static parents (subset B)')
+ print('INPUT GATE:', 'PASS' if ok else 'FAIL')
+ 
+ with open(os.path.join(RESULT_DIR, 'summary_64bit_with124_N3_N40.csv')) as fh:
