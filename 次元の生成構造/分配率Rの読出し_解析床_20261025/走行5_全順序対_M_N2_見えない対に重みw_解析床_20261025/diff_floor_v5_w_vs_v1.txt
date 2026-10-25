@@ -1,0 +1,54 @@
+--- /Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/分配率Rの読出し_解析床_20261025/走行1_全順序対_M_N2_隣接あり_解析床_20261025/floor_analytic_v1.py	2026-10-25 17:05:16
++++ floor_analytic_v5_w.py	2026-10-25 18:00:19
+@@ -1,6 +1,6 @@
+ #!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+-"""90度床の解析的生成器・辺集合一般化版（2026-10-25）。
++"""90度床の解析的生成器・辺集合一般化版・走行5 版（2026-10-25）: 見えない対に重み W_FAR（引数）。W_FAR=0 で走行1 の floor_analytic_v1.py と同一。
+ 
+ 論文3（2026-09-09/12）の `make_90deg_floor_analytic_v1.py`（同梱 original_reference_…）の `integer_K` / `releq_residual` /
+ `build_analytic_floor` を文字どおり写し、変更は次の 2 点だけ：
+@@ -42,6 +42,9 @@
+     return a.ravel().astype(np.int64), b.ravel().astype(np.int64)
+ 
+ 
++W_FAR = 0.0   # 走行5（2026-10-25）: 見えない対（添字を共有しない対）の重み。引数で与える。0 なら走行1 と同一
++
++
+ def adjacency_from_edges(ea, eb):
+     M = len(ea)
+     A = np.zeros((M, M), dtype=np.float64)
+@@ -49,6 +52,7 @@
+         share = (ea == ea[e]) | (ea == eb[e]) | (eb == ea[e]) | (eb == eb[e])
+         share[e] = False
+         A[e, share] = 1.0
++    A = A + W_FAR * (1.0 - A); np.fill_diagonal(A, 0.0)   # 走行5: 触れる対 1、触れない対 W_FAR、対角 0
+     return A
+ 
+ 
+@@ -110,14 +114,14 @@
+ 
+ if __name__ == '__main__':
+     structure, outdir = sys.argv[1], sys.argv[2]
+-    Ns = [int(x) for x in sys.argv[3:]]
++    W_FAR = float(sys.argv[3]); Ns = [int(x) for x in sys.argv[4:]]   # 走行5: 第 3 引数が w
+     fn = {'triu': edges_triu, 'all': edges_all}[structure]
+     os.makedirs(outdir, exist_ok=True)
+     manifest = {}
+     print('N    M | 象限 軸上 振幅種 | |Σz| |Σz²| | 残差 σ rank | 反復 種ラベル保持')
+     for N in Ns:
+         z, labels, chk, ea, eb = build_analytic_floor(N, fn)
+-        if structure == 'triu':
++        if structure == 'triu' and W_FAR == 0.0:
+             assert np.array_equal(adjacency_from_edges(ea, eb), canonical_adjacency(N))
+         name = f'floor_90deg_{structure}_N{N:05d}_analytic.npz'
+         np.savez_compressed(os.path.join(outdir, name), v=z, g=np.zeros(len(z), dtype=np.complex128), Z0=z,
+@@ -125,7 +129,7 @@
+                             n=np.array(N), seed=np.array(-1), delta=np.array(0.0), tol=np.array(0.0),
+                             iters=np.array(chk['iters']), family=labels.astype(np.int64), theta=np.angle(z),
+                             rule=np.array(f'theoretical_floor_90deg_integerK_sigmamax_analytic_{structure}'),
+-                            ea=ea, eb=eb, M=np.array(len(z)), structure=np.array(structure))
++                            ea=ea, eb=eb, M=np.array(len(z)), structure=np.array(structure), w_far=np.array(W_FAR))
+         manifest[name] = chk
+         print(f"{N:>2} {chk['M']:>4} | {chk['n_quadrant']:>3} {str(chk['on_90deg_axes']):>5} {chk['n_distinct_amp']:>3} | "
+               f"{chk['centroid_abs']:.3f} {chk['closure_abs']:.1e} | {chk['releq_residual']:.1e} {chk['sigma']:.4f} {chk['rank_K']:>3} | "

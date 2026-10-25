@@ -1,0 +1,28 @@
+--- /Users/kiharahanakira/Library/CloudStorage/GoogleDrive-kihara.noriaki@gmail.com/マイドライブ/OneDrive/GitHub/ai-chat-logs-open/次元の生成構造/分配率Rの読出し_解析床_20261025/走行1_全順序対_M_N2_隣接あり_解析床_20261025/run_sweep_from_parents_v1.py	2026-10-25 15:29:29
++++ run_sweep_from_parents_v5_w.py	2026-10-25 18:00:19
+@@ -5,15 +5,17 @@
+ ROOT=os.path.dirname(os.path.abspath(__file__))
+ # 引数: PARENT_DIR PARENT_PATTERN OUT TITLE N1 N2 ...（親 npz は parents_dense_v1.py の形式: Z0, ea, eb を持つ）
+ PARENT_DIR=sys.argv[1]; PARENT_PATTERN=sys.argv[2]; OUT=sys.argv[3]; TITLE=sys.argv[4]
++W_FAR=float(sys.argv[5])   # 走行5（2026-10-25）: 見えない対の重み。0 なら走行1 と同一
+ os.makedirs(OUT,exist_ok=True)
+ STEPS=500; OFFSETS=(-2,-1,0,1,2)
+-NS=tuple(int(x) for x in sys.argv[5:])   # N は引数で与える
++NS=tuple(int(x) for x in sys.argv[6:])   # N は引数で与える（走行5: w の後ろ）
+ assert np.dtype(np.float64).itemsize==8 and np.dtype(np.complex128).itemsize==16
+ 
+ def adjacency(ea,eb):   # 辺集合は親 npz の ea, eb から読む（構造を親と走行で共有する）。規則は原本と同一
+     M=len(ea); A=np.zeros((M,M),dtype=np.float64)
+     for e in range(M):
+         share=(ea==ea[e])|(ea==eb[e])|(eb==ea[e])|(eb==eb[e]); share[e]=False; A[e,share]=1.0
++    A=A+W_FAR*(1.0-A); np.fill_diagonal(A,0.0)   # 走行5: 触れる対 1、触れない対 W_FAR、対角 0
+     return A
+ def H_of(z,A):
+     H=A*(np.conj(z)[:,None]*z[None,:]); np.fill_diagonal(H,0.0); return H.astype(np.complex128,copy=False)
+@@ -62,5 +64,5 @@
+     ax.legend(fontsize=7,loc='lower right')
+ for k in range(38,40): axs[k].axis('off')
+ fig.suptitle(TITLE,y=.995)
+-with open(os.path.join(OUT,'RUN_METADATA_N3_N40_stage123.json'),'w') as f: json.dump({'dtype_state':'complex128','dtype_real':'float64','steps':STEPS,'N_list':list(NS),'denominators':'N,124','parent_dir':PARENT_DIR,'parent_pattern':PARENT_PATTERN,'title':TITLE,'numpy':np.__version__,'python':platform.python_version(),'input':'per-N static make_parent parents/parent_static_N*_makeparent_20260905.npz Z0 (N=40 bit-identical to canonical)','generator_normalization':'stage1+2+3: phase-only imaginary part H = 1j*Im(H_of(exp(1j*angle(z)))) = i*K, map = exp(dtau*K) real orthogonal, fixed dtau=2pi/den'},f,indent=2)
++with open(os.path.join(OUT,'RUN_METADATA_N3_N40_stage123.json'),'w') as f: json.dump({'dtype_state':'complex128','dtype_real':'float64','steps':STEPS,'N_list':list(NS),'denominators':'N,124','parent_dir':PARENT_DIR,'parent_pattern':PARENT_PATTERN,'title':TITLE,'w_far':W_FAR,'numpy':np.__version__,'python':platform.python_version(),'input':'per-N static make_parent parents/parent_static_N*_makeparent_20260905.npz Z0 (N=40 bit-identical to canonical)','generator_normalization':'stage1+2+3: phase-only imaginary part H = 1j*Im(H_of(exp(1j*angle(z)))) = i*K, map = exp(dtau*K) real orthogonal, fixed dtau=2pi/den'},f,indent=2)
+ print('ALL DONE')
