@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>球面投影と符号の読み</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.34.0/plotly.min.js"></script>
+<style>
+  :root { --bg:#ffffff; --fg:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --panel:#f5f5f7; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16161a; --fg:#ececf1; --muted:#9a9aa3; --line:#3a3a42; --panel:#202027; }
+  }
+  html, body { margin:0; background:var(--bg); color:var(--fg);
+    font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  .bar { display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center;
+    padding:10px 16px; background:var(--panel); border-bottom:1px solid var(--line); font-size:14px; }
+  select { font-size:14px; padding:3px 8px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--fg); }
+  #plot { width:100%; height:calc(100vh - 205px); min-height:420px; }
+  .note { font-size:12.5px; color:var(--muted); padding:8px 16px 12px; line-height:1.7; }
+  .sw { display:inline-block; width:14px; height:4px; vertical-align:middle; margin:0 4px 0 10px; }
+  .dot { display:inline-block; width:10px; height:10px; border-radius:50%; vertical-align:middle; margin:0 4px 0 10px; }
+  code { font-family: Menlo, monospace; font-size:12px; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <label>N <select id="selN"></select></label>
+  <label>R² の読み <select id="selRead">
+    <option value="plus" selected>＋R²：曲率 ＋1/R²</option>
+    <option value="minus">−R²：曲率 −1/R²（符号を逆に読む）</option>
+  </select></label>
+  <label>接平面の範囲 ±<select id="selL"><option selected>2</option><option>3</option><option>5</option></select></label>
+  <label><input type="checkbox" id="ckRay" checked> 投影線</label>
+  <label><input type="checkbox" id="ckImg" checked> 格子線の像</label>
+  <label><input type="checkbox" id="ckBnd" checked> 円 |x| ＝ R（θ ＝ π/4）</label>
+</div>
+<div id="plot"></div>
+<div class="note">
+  <b>構成（論文「中心投影による 4 次元空間の幾何学的定式化」定義 2.1）。</b>
+  投影中心 O ＝ 原点。接超平面 Π_R ＝ 面 Y³ ＝ R（R ＝ 1）。主観座標 (x¹, x²) は接平面の上に住む。
+  <code>l² = R² + |x|²</code>、<code>Y = (R x¹/l, R x²/l, R²/l)</code>。像は球面 S²(R) の上半球。接平面の直線は大円に写る。<br>
+  <b>読み。</b>図はこれ一枚で、曲面はこの球面だけ。誘導計量は
+  <code>g = R²[(R² + |x|²)|dx|² − (x·dx)²]/(R² + |x|²)²</code>、曲率 ＋1/R²。
+  R² を −R² と読めば同じ式が <code>g = R²[(R² − |x|²)|dx|² + (x·dx)²]/(R² − |x|²)²</code>、曲率 −1/R² になる。
+  変わるのは読みだけで、点も直線も投影線も動かない。その読みでは破線の円 |x| ＝ R（球面上では θ ＝ π/4 の緯線、ホライズン）が到達できない境界、光円錐になる。<br>
+  <b>格子。</b>関係 (v, w) を x¹ ＝ tan(πv/N)、x² ＝ tan(πw/N) に置く。
+  <span class="sw" style="background:#2f6fdf"></span>始点 v を固定した線
+  <span class="sw" style="background:#e8862a"></span>終点 w を固定した線
+  <span class="dot" style="background:#1d1d1f"></span>関係 (v, w)
+  <span class="dot" style="background:#c8102e"></span>自己対 (v, v)：対角線 x¹ ＝ x² の上。
+  濃い点は球面上の像。四元数のときの第 3 座標 z ＝ x¹x² は従属量なので落としている。
+</div>
+<script>
+const R = 1;
+const selN = document.getElementById('selN'), selRead = document.getElementById('selRead'), selL = document.getElementById('selL');
+for (let n = 2; n <= 12; n++) selN.add(new Option(String(n), String(n)));
+selN.value = '4';
+const ck = Object.fromEntries(['ckRay', 'ckImg', 'ckBnd'].map(i => [i, document.getElementById(i)]));
+const isInf = t => !isFinite(t) || Math.abs(t) > 1e6;
+const tanv = (v, N) => { const t = Math.tan(Math.PI * v / N); return isInf(t) ? Infinity : t; };
+const toTS = (x, y) => [x, y];
+const EPS = {sph: [1, 1]};
+function embed(t, s, eps) {
+  const l2 = R * R + eps[0] * t * t + eps[1] * s * s;
+  if (l2 <= 1e-9) return null;
+  const l = Math.sqrt(l2);
+  return [R * t / l, R * s / l, R * R / l];
+}
+function curveImage(pts, eps) {   // pts: array of [t,s]; returns segments of embedded points
+  const segs = []; let cur = null;
+  for (const [t, s] of pts) {
+    const p = embed(t, s, eps);
+    if (!p) { cur = null; continue; }
+    if (!cur) { cur = {x: [], y: [], z: []}; segs.push(cur); }
+    cur.x.push(p[0]); cur.y.push(p[1]); cur.z.push(p[2]);
+  }
+  return segs.filter(s => s.x.length > 1);
+}
+const line = (pts, color, width, dash) => ({type: 'scatter3d', mode: 'lines', x: pts.map(p => p[0]), y: pts.map(p => p[1]), z: pts.map(p => p[2]),
+  line: {color, width, dash: dash || 'solid'}, hoverinfo: 'skip', showlegend: false});
+
+function build() {
+  const N = Number(selN.value), L = Number(selL.value), read = selRead.value;
+  const reads = ['sph']; const minus = read === 'minus';
+  const traces = [];
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  const fg = dark ? '#ececf1' : '#1d1d1f', grid = dark ? '#3a3a42' : '#d2d2d7';
+  // 投影中心
+  traces.push({type: 'scatter3d', mode: 'markers+text', x: [0], y: [0], z: [0], text: ['O'], textposition: 'bottom center',
+               marker: {size: 6, color: fg}, hoverinfo: 'text', showlegend: false});
+  // 接平面
+  traces.push({type: 'surface', x: [[-L, L], [-L, L]], y: [[-L, -L], [L, L]], z: [[R, R], [R, R]], opacity: 0.12, showscale: false,
+               colorscale: [[0, '#9a9aa3'], [1, '#9a9aa3']], hoverinfo: 'skip', showlegend: false});
+  // 曲面
+  if (reads.includes('sph')) {
+    const nu = 48, nv = 24, X = [], Y = [], Z = [];
+    for (let i = 0; i <= nv; i++) { const ph = 0.5 * Math.PI * i / nv, rx = [], ry = [], rz = [];
+      for (let j = 0; j <= nu; j++) { const th = 2 * Math.PI * j / nu;
+        rx.push(R * Math.sin(ph) * Math.cos(th)); ry.push(R * Math.sin(ph) * Math.sin(th)); rz.push(R * Math.cos(ph)); }
+      X.push(rx); Y.push(ry); Z.push(rz); }
+    traces.push({type: 'surface', x: X, y: Y, z: Z, opacity: 0.25, showscale: false, colorscale: [[0, '#7fb3ff'], [1, '#7fb3ff']], hoverinfo: 'skip', showlegend: false});
+  }
+  // 格子
+  const finite = []; for (let v = 0; v < N; v++) { const t = tanv(v, N); if (!isInf(t)) finite.push([v, t]); }
+  const sample = (fn) => { const pts = []; for (let i = 0; i <= 200; i++) pts.push(fn(-L + 2 * L * i / 200)); return pts; };
+  for (const [v, c] of finite) {
+    const lineA = sample(y => toTS(c, y)), lineB = sample(x => toTS(x, c));   // x=c（v固定）, y=c（w固定）
+    const inBox = pts => pts.filter(p => Math.abs(p[0]) <= L && Math.abs(p[1]) <= L);
+    const A = inBox(lineA), B = inBox(lineB);
+    if (A.length > 1) traces.push(line(A.map(p => [p[0], p[1], R]), '#2f6fdf', 3));
+    if (B.length > 1) traces.push(line(B.map(p => [p[0], p[1], R]), '#e8862a', 3));
+    if (ck.ckImg.checked) for (const rd of reads) {
+      for (const sg of curveImage(A, EPS[rd])) traces.push({type: 'scatter3d', mode: 'lines', ...sg, line: {color: '#2f6fdf', width: 3}, hoverinfo: 'skip', showlegend: false});
+      for (const sg of curveImage(B, EPS[rd])) traces.push({type: 'scatter3d', mode: 'lines', ...sg, line: {color: '#e8862a', width: 3}, hoverinfo: 'skip', showlegend: false});
+    }
+  }
+  // 自己対の線 x = y（s = 0）
+  const diag = sample(t => [t, 0]);
+  traces.push(line(diag.map(p => [p[0], 0, R]), '#c8102e', 3, 'dot'));
+  if (ck.ckImg.checked) for (const rd of reads)
+    for (const sg of curveImage(diag, EPS[rd])) traces.push({type: 'scatter3d', mode: 'lines', ...sg, line: {color: '#c8102e', width: 3, dash: 'dot'}, hoverinfo: 'skip', showlegend: false});
+  // 円 |x| = R（θ = π/4 の緯線）
+  if (ck.ckBnd.checked) {
+    const pts = []; for (let i = 0; i <= 200; i++) { const th = 2 * Math.PI * i / 200; pts.push([R * Math.cos(th), R * Math.sin(th)]); }
+    traces.push(line(pts.map(p => [p[0], p[1], R]), minus ? '#c8102e' : '#8e8e93', 2, 'dash'));
+    if (ck.ckImg.checked) for (const sg of curveImage(pts, EPS.sph)) traces.push({type: 'scatter3d', mode: 'lines', ...sg, line: {color: minus ? '#c8102e' : '#8e8e93', width: 2, dash: 'dash'}, hoverinfo: 'skip', showlegend: false});
+  }
+  // 格子点と投影線
+  const P = {x: [], y: [], z: [], t: []}, D = {x: [], y: [], z: [], t: []}; let nInf = 0, nOut = 0;
+  const imgs = {sph: {x: [], y: [], z: [], t: []}};
+  for (let v = 0; v < N; v++) for (let w = 0; w < N; w++) {
+    const x = tanv(v, N), y = tanv(w, N);
+    if (isInf(x) || isInf(y)) { nInf++; continue; }
+    const [t, s] = toTS(x, y);
+    if (Math.abs(t) > L || Math.abs(s) > L) { nOut++; continue; }
+    const lab = `(v, w) = (${v}, ${w})`;
+    const T = v === w ? D : P; T.x.push(t); T.y.push(s); T.z.push(R); T.t.push(lab);
+    for (const rd of reads) { const p = embed(t, s, EPS[rd]); if (p) { imgs[rd].x.push(p[0]); imgs[rd].y.push(p[1]); imgs[rd].z.push(p[2]); imgs[rd].t.push(lab); } }
+    if (ck.ckRay.checked) {
+      const far = 1.15;   // 接平面の少し外まで
+      traces.push(line([[0, 0, 0], [t * far, s * far, R * far]], dark ? '#c0c0c8' : '#55555c', 3, 'solid'));
+    }
+  }
+  traces.push({type: 'scatter3d', mode: 'markers', x: P.x, y: P.y, z: P.z, text: P.t, hoverinfo: 'text', marker: {size: 5, color: '#1d1d1f'}, showlegend: false});
+  traces.push({type: 'scatter3d', mode: 'markers', x: D.x, y: D.y, z: D.z, text: D.t, hoverinfo: 'text', marker: {size: 6, color: '#c8102e'}, showlegend: false});
+  for (const rd of reads) traces.push({type: 'scatter3d', mode: 'markers', ...imgs[rd], hoverinfo: 'text',
+    marker: {size: 4, color: '#1d4ed8', symbol: 'circle'}, showlegend: false});
+  const ax = (t, rng) => ({title: t, range: rng, color: fg, gridcolor: grid, zerolinecolor: grid, backgroundcolor: 'rgba(0,0,0,0)'});
+  Plotly.react('plot', traces, {
+    uirevision: 'keep', paper_bgcolor: 'rgba(0,0,0,0)', font: {color: fg}, margin: {l: 0, r: 0, t: 32, b: 0},
+    title: {text: `球面投影（N ＝ ${N}）　読み：${minus ? 'R² → −R²、曲率 −1/R²、破線の円＝光円錐' : '＋R²、曲率 ＋1/R²、破線の円＝θ ＝ π/4'}　無限遠の格子点 ${nInf}、範囲外 ${nOut}`, font: {size: 14}},
+    scene: {aspectmode: 'manual', aspectratio: {x: 1, y: 1, z: (L + 0.5) / (2 * L)}, xaxis: ax('Y¹（x¹）', [-L, L]), yaxis: ax('Y²（x²）', [-L, L]), zaxis: ax('Y³（投影中心軸）', [-0.2, L + 0.3]),
+            camera: {eye: {x: 1.7, y: -1.4, z: 0.9}}}
+  }, {responsive: true});
+}
+[selN, selRead, selL].forEach(e => e.addEventListener('change', build));
+Object.values(ck).forEach(e => e.addEventListener('change', build));
+build();
+</script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>四元数 3D 表示</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.34.0/plotly.min.js"></script>
+<style>
+  :root { --bg:#ffffff; --fg:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --panel:#f5f5f7; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16161a; --fg:#ececf1; --muted:#9a9aa3; --line:#3a3a42; --panel:#202027; }
+  }
+  html, body { margin:0; background:var(--bg); color:var(--fg);
+    font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  .bar { display:flex; flex-wrap:wrap; gap:12px 18px; align-items:center;
+    padding:12px 16px; background:var(--panel); border-bottom:1px solid var(--line); }
+  .bar label { font-size:14px; color:var(--muted); }
+  select, button { font-size:15px; padding:4px 10px; border-radius:6px;
+    border:1px solid var(--line); background:var(--bg); color:var(--fg); }
+  button.on { background:#2f6fdf; color:#fff; border-color:#2f6fdf; }
+  .slider { display:flex; align-items:center; gap:10px; flex:1 1 320px; }
+  .slider input { flex:1; }
+  .step { font-variant-numeric: tabular-nums; min-width:7.5em; font-size:15px; }
+  #plot { width:100%; height:calc(100vh - 150px); min-height:420px; }
+  .note { font-size:12px; color:var(--muted); padding:6px 16px 10px; line-height:1.6; }
+  .dot { display:inline-block; width:10px; height:10px; border-radius:50%; vertical-align:middle; margin:0 4px 0 10px; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <label>N <select id="selN"></select></label>
+  <label>den <select id="selDen"></select></label>
+  <button id="btnAuto">Auto</button>
+  <div class="slider">
+    <input id="slider" type="range" min="0" max="500" value="0" step="1">
+    <span class="step" id="stepLabel">step 0 / 500</span>
+  </div>
+</div>
+<div id="plot"></div>
+<div class="note">
+  <span class="dot" style="background:#2f6fdf"></span>初期状態で 1–i 面にいた関係（終点 w が偶数）
+  <span class="dot" style="background:#e8862a"></span>初期状態で j–k 面にいた関係（終点 w が奇数）<br>
+  表示：各四元数を |q| で割って S³ 上の点にし、固定の回転 p = (1+i+j+k)/2 を左から掛けたあと、−1 を極とする立体射影 (b, c, d)/(1+a) で 3 次元に写す。
+  点の大きさは |q|（その走行の最大値に対する比）。半径 4 を超える点は向きを保って半径 4 に寄せている。
+  データ：段階 2 本走行 results_main/hm_N*_den_*_states_500.npz。
+</div>
+<script>
+const NS = [3,4,5,6,8,10,12,15,20,25];
+const COLORS = ['#2f6fdf', '#e8862a'];
+const RCLIP = 4;
+const selN = document.getElementById('selN'), selDen = document.getElementById('selDen');
+const slider = document.getElementById('slider'), stepLabel = document.getElementById('stepLabel');
+const btnAuto = document.getElementById('btnAuto');
+NS.forEach(n => selN.add(new Option(String(n), String(n))));
+selN.value = '6';
+function fillDen() {
+  const n = selN.value, cur = selDen.value;
+  selDen.innerHTML = '';
+  selDen.add(new Option('N (= ' + n + ')', n));
+  selDen.add(new Option('124', '124'));
+  selDen.value = (cur === '124') ? '124' : n;
+}
+fillDen();
+
+let run = null, arr = null, idx = [[], []], timer = null;
+
+function loadRun(key, done) {
+  if (window.RUNS && window.RUNS[key]) { done(window.RUNS[key]); return; }
+  const s = document.createElement('script');
+  s.src = 'data/run_' + key + '.js';
+  s.onload = () => done(window.RUNS[key]);
+  s.onerror = () => alert('データを読めませんでした: ' + s.src);
+  document.head.appendChild(s);
+}
+
+function decode(b64) {
+  const bin = atob(b64), buf = new ArrayBuffer(bin.length), u8 = new Uint8Array(buf);
+  for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+  return new Int16Array(buf);
+}
+
+function frame(step) {
+  const M = run.M, base = step * M * 4, sc = run.scale;
+  return [0, 1].map(g => {
+    const x = [], y = [], z = [], size = [];
+    for (const e of idx[g]) {
+      const o = base + e * 4;
+      x.push(arr[o] / sc); y.push(arr[o + 1] / sc); z.push(arr[o + 2] / sc);
+      size.push(3 + 11 * (arr[o + 3] / 32767));
+    }
+    return {x, y, z, size};
+  });
+}
+
+function draw(step) {
+  const f = frame(step);
+  Plotly.restyle('plot', {
+    x: [f[0].x, f[1].x], y: [f[0].y, f[1].y], z: [f[0].z, f[1].z],
+    'marker.size': [f[0].size, f[1].size]
+  }, [0, 1]);
+  stepLabel.textContent = 'step ' + step + ' / ' + run.steps;
+}
+
+function init() {
+  const key = 'N' + selN.value + '_den' + selDen.value;
+  loadRun(key, r => {
+    run = r; arr = decode(r.b64);
+    idx = [[], []]; r.group.forEach((g, e) => idx[g].push(e));
+    slider.max = String(r.steps);
+    const step = Math.min(Number(slider.value), r.steps);
+    const f = frame(step);
+    const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+    const fg = dark ? '#ececf1' : '#1d1d1f', grid = dark ? '#3a3a42' : '#d2d2d7';
+    const ax = t => ({title: t, range: [-RCLIP, RCLIP], color: fg, gridcolor: grid, zerolinecolor: grid, backgroundcolor: 'rgba(0,0,0,0)'});
+    const traces = [0, 1].map(g => ({
+      type: 'scatter3d', mode: 'markers', name: g === 0 ? '初期 1–i 面' : '初期 j–k 面',
+      x: f[g].x, y: f[g].y, z: f[g].z,
+      marker: {size: f[g].size, color: COLORS[g], opacity: 0.85, line: {width: 0}}
+    }));
+    Plotly.react('plot', traces, {
+      uirevision: 'keep', paper_bgcolor: 'rgba(0,0,0,0)', font: {color: fg},
+      margin: {l: 0, r: 0, t: 30, b: 0},
+      title: {text: 'N = ' + r.N + ',  den = ' + r.den + ',  M = ' + r.M, font: {size: 15}},
+      legend: {x: 0, y: 1},
+      scene: {aspectmode: 'cube', xaxis: ax('x'), yaxis: ax('y'), zaxis: ax('z')}
+    }, {responsive: true});
+    stepLabel.textContent = 'step ' + step + ' / ' + r.steps;
+  });
+}
+
+slider.addEventListener('input', () => { if (run) draw(Number(slider.value)); });
+selN.addEventListener('change', () => { fillDen(); init(); });
+selDen.addEventListener('change', init);
+btnAuto.addEventListener('click', () => {
+  if (timer) { clearInterval(timer); timer = null; btnAuto.classList.remove('on'); return; }
+  btnAuto.classList.add('on');
+  timer = setInterval(() => {
+    if (!run) return;
+    let s = Number(slider.value) + 1;
+    if (s > run.steps) s = 0;
+    slider.value = String(s);
+    draw(s);
+  }, 60);
+});
+init();
+</script>
+</body>
+</html>
