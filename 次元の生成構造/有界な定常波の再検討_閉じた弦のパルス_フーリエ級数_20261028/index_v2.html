@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>閉じた弦のパルスと矩形波</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.34.0/plotly.min.js"></script>
+<style>
+  :root { --bg:#ffffff; --fg:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --panel:#f5f5f7; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16161a; --fg:#ececf1; --muted:#9a9aa3; --line:#3a3a42; --panel:#202027; }
+  }
+  html, body { margin:0; background:var(--bg); color:var(--fg);
+    font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center;
+    padding:10px 16px; background:var(--panel); border-bottom:1px solid var(--line); font-size:14px; }
+  .sl { display:flex; align-items:center; gap:8px; flex:1 1 220px; }
+  .sl input { flex:1; }
+  .sl .v { font-variant-numeric: tabular-nums; min-width:4.5em; text-align:right; }
+  button { font-size:15px; padding:4px 12px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--fg); }
+  button.on { background:#2f6fdf; color:#fff; border-color:#2f6fdf; }
+  #plot { width:100%; height:calc(100vh - 215px); min-height:420px; }
+  .note { font-size:12.5px; color:var(--muted); padding:6px 16px 10px; line-height:1.7; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="sl"><span>θ</span><input id="th" type="range" min="0" max="360" step="1" value="180"><span class="v" id="thv">180°</span></div>
+  <div class="sl"><span>φ</span><input id="ph" type="range" min="0" max="360" step="1" value="10"><span class="v" id="phv">10°</span></div>
+  <div class="sl"><span>R</span><input id="rr" type="range" min="0" max="10" step="0.1" value="3"><span class="v" id="rrv">3.0</span></div>
+  <div class="sl"><span>M</span><input id="mm" type="range" min="1" max="100" step="1" value="10"><span class="v" id="mmv">10</span></div>
+  <button id="sq">矩形波</button>
+  <button id="auto" class="on">Auto</button>
+</div>
+<div id="plot"></div>
+<div class="note">
+  弦に沿った角 ψ ∈ [0, 360)。高さは倍音の和だけで計算する。M は和に入れる倍音の本数。<br>
+  パルス（矩形波 OFF）：z_M(ψ) ＝ φ/360 ＋ (2/π) Σ_{m=1}^{M} [ sin(mπφ/360) / m ] · cos( mπ(ψ−θ)/180 )　　倍音 1, 2, …, M<br>
+  矩形波（ON）：s_M(ψ) ＝ (4/π) Σ_{k=0}^{M−1} [ (−1)^k / (2k+1) ] · cos( (2k+1) N π(ψ−θ)/180 )、N ＝ 180/φ　　倍音 N, 3N, …, (2M−1)N、幅 φ の区間に ±1 が交互、ψ ＝ θ が ＋1 の区間の中心<br>
+  φ が 180 を割り切らないときは N ＝ round(180/φ) に丸め、φ_eff ＝ 180/N を使う（題に表示）。矩形波のときの Auto は θ ← θ ＋ φ_eff で、一区間ずれるので毎ティック符号が反転する。<br>
+  3D の点は (R cos ψ, R sin ψ, z)。振幅は円筒の軸方向（R に直交）、高さは絶対値で R に依らない。軸は等倍。ψ の刻みは最高波数の 1 周期あたり 8 点以上になるように取る。
+</div>
+<script>
+const $ = id => document.getElementById(id);
+const th = $('th'), ph = $('ph'), rr = $('rr'), mm = $('mm'), btn = $('auto'), sqb = $('sq');
+let square = false;
+
+function grid(n) {                       // ψ を n 点（両端を含めて閉じる）
+  const psi = new Float64Array(n), c = new Float64Array(n), s = new Float64Array(n);
+  for (let i = 0; i < n; i++) { psi[i] = i * 360 / (n - 1); c[i] = Math.cos(Math.PI * psi[i] / 180); s[i] = Math.sin(Math.PI * psi[i] / 180); }
+  return {psi, c, s};
+}
+
+// パルス：倍音 m = 1..M を各 ψ でそのまま足す
+function pulse(psi, theta, phi, M) {
+  const coef = new Float64Array(M + 1);
+  for (let m = 1; m <= M; m++) coef[m] = (2 / Math.PI) * Math.sin(m * Math.PI * phi / 360) / m;
+  const z = new Float64Array(psi.length), dc = phi / 360;
+  for (let i = 0; i < psi.length; i++) {
+    const x = Math.PI * (psi[i] - theta) / 180;
+    let v = dc;
+    for (let m = 1; m <= M; m++) v += coef[m] * Math.cos(m * x);
+    z[i] = v;
+  }
+  return z;
+}
+
+// 矩形波：奇数倍音 (2k+1)N、k = 0..M−1 を各 ψ でそのまま足す
+function squareWave(psi, theta, N, M) {
+  const z = new Float64Array(psi.length);
+  if (!isFinite(N)) return z;
+  for (let i = 0; i < psi.length; i++) {
+    const x = N * Math.PI * (psi[i] - theta) / 180;
+    let v = 0;
+    for (let k = 0; k < M; k++) v += (k % 2 ? -1 : 1) / (2 * k + 1) * Math.cos((2 * k + 1) * x);
+    z[i] = (4 / Math.PI) * v;
+  }
+  return z;
+}
+
+function cylinder(R, zlo, zhi) {
+  const n = 73, xs = [], ys = [], z0 = [], z1 = [];
+  for (let i = 0; i < n; i++) {
+    const a = 2 * Math.PI * i / (n - 1);
+    xs.push(R * Math.cos(a)); ys.push(R * Math.sin(a)); z0.push(zlo); z1.push(zhi);
+  }
+  return {type: 'surface', x: [xs, xs], y: [ys, ys], z: [z0, z1], opacity: 0.12, showscale: false,
+          colorscale: [[0, '#8a8a8f'], [1, '#8a8a8f']], hoverinfo: 'skip', name: '円筒', showlegend: false};
+}
+
+function params() {
+  const theta = Number(th.value), phi = Number(ph.value), R = Number(rr.value), M = Number(mm.value);
+  const N = phi > 0 ? Math.max(1, Math.round(180 / phi)) : Infinity;
+  const phiEff = isFinite(N) ? 180 / N : 0;
+  const kmax = square ? (2 * M - 1) * N : M;                // 最高波数
+  return {theta, phi, R, M, N, phiEff, kmax};
+}
+
+function draw() {
+  const p = params();
+  $('thv').textContent = p.theta + '°'; $('phv').textContent = p.phi + '°';
+  $('rrv').textContent = p.R.toFixed(1); $('mmv').textContent = p.M;
+  const n = Math.min(40001, Math.max(1441, (isFinite(p.kmax) ? 8 * p.kmax : 0) + 1));
+  const g = grid(n);
+  const z = square ? squareWave(g.psi, p.theta, p.N, p.M) : pulse(g.psi, p.theta, p.phi, p.M);
+  let zmax = -Infinity, zmin = Infinity;
+  for (const v of z) { if (v > zmax) zmax = v; if (v < zmin) zmin = v; }
+  const X = Array.from(g.c, c => p.R * c), Y = Array.from(g.s, s => p.R * s);
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  const fg = dark ? '#ececf1' : '#1d1d1f', gridc = dark ? '#3a3a42' : '#d2d2d7';
+  const zlo = square ? -1 : 0, zrange = square ? [-1.5, 1.5] : [-0.5, 1.5];
+  const traces = [
+    cylinder(p.R, zlo, 1),
+    {type: 'scatter3d', mode: 'lines', x: X, y: Y, z: X.map(() => 0), line: {color: '#8a8a8f', width: 2}, hoverinfo: 'skip', showlegend: false},
+    {type: 'scatter3d', mode: 'lines', x: X, y: Y, z: Array.from(z), line: {color: square ? '#e8862a' : '#2f6fdf', width: 5},
+     showlegend: false, hovertemplate: 'ψ=%{customdata:.2f}°<br>z=%{z:.4f}<extra></extra>', customdata: Array.from(g.psi)}
+  ];
+  const ax = (t, rng) => ({title: t, range: rng, color: fg, gridcolor: gridc, zerolinecolor: fg, backgroundcolor: 'rgba(0,0,0,0)'});
+  const head = square
+    ? `矩形波　θ = ${p.theta}°, φ = ${p.phi}° (φ_eff = ${p.phiEff.toFixed(3)}°, N = ${p.N}), R = ${p.R.toFixed(1)}, M = ${p.M} 本（最高波数 ${p.kmax}）`
+    : `パルス　θ = ${p.theta}°, φ = ${p.phi}°, R = ${p.R.toFixed(1)}, M = ${p.M} 本（最高波数 ${p.kmax}）`;
+  const layout = {
+    uirevision: 'keep', paper_bgcolor: 'rgba(0,0,0,0)', font: {color: fg}, margin: {l: 0, r: 0, t: 32, b: 0},
+    title: {text: `${head}　　max z = ${zmax.toFixed(4)}, min z = ${zmin.toFixed(4)}　　点数 ${n}`, font: {size: 14}},
+    scene: {aspectmode: 'data', xaxis: ax('x', [-10.5, 10.5]), yaxis: ax('y', [-10.5, 10.5]), zaxis: ax('z', zrange),
+            camera: {eye: {x: 0.75, y: -0.9, z: 0.45}}}
+  };
+  Plotly.react('plot', traces, layout, {responsive: true});
+}
+
+let timer = null;
+function tick() {
+  const p = params();
+  const step = square ? p.phiEff : p.phi;
+  let t = Number(th.value) + step;
+  if (t > 360) t -= 360;
+  th.value = String(t);
+  draw();
+}
+function setAuto(on) {
+  if (on && !timer) { timer = setInterval(tick, 150); btn.classList.add('on'); }
+  if (!on && timer) { clearInterval(timer); timer = null; btn.classList.remove('on'); }
+}
+btn.addEventListener('click', () => setAuto(!timer));
+sqb.addEventListener('click', () => { square = !square; sqb.classList.toggle('on', square); draw(); });
+for (const s of [th, ph, rr, mm]) s.addEventListener('input', draw);
+draw();
+setAuto(true);
+</script>
+</body>
+</html>
