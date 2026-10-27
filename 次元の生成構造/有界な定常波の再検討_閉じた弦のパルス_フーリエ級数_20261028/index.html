@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>閉じた弦のパルス</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.34.0/plotly.min.js"></script>
+<style>
+  :root { --bg:#ffffff; --fg:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --panel:#f5f5f7; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16161a; --fg:#ececf1; --muted:#9a9aa3; --line:#3a3a42; --panel:#202027; }
+  }
+  html, body { margin:0; background:var(--bg); color:var(--fg);
+    font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center;
+    padding:10px 16px; background:var(--panel); border-bottom:1px solid var(--line); font-size:14px; }
+  .sl { display:flex; align-items:center; gap:8px; flex:1 1 220px; }
+  .sl input { flex:1; }
+  .sl .v { font-variant-numeric: tabular-nums; min-width:4.5em; text-align:right; }
+  button { font-size:15px; padding:4px 12px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--fg); }
+  button.on { background:#2f6fdf; color:#fff; border-color:#2f6fdf; }
+  #plot { width:100%; height:calc(100vh - 200px); min-height:420px; }
+  .note { font-size:12.5px; color:var(--muted); padding:6px 16px 10px; line-height:1.7; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="sl"><span>θ</span><input id="th" type="range" min="0" max="360" step="1" value="180"><span class="v" id="thv">180°</span></div>
+  <div class="sl"><span>φ</span><input id="ph" type="range" min="0" max="360" step="1" value="10"><span class="v" id="phv">10°</span></div>
+  <div class="sl"><span>R</span><input id="rr" type="range" min="0" max="10" step="0.1" value="3"><span class="v" id="rrv">3.0</span></div>
+  <div class="sl"><span>M</span><input id="mm" type="range" min="1" max="100" step="1" value="10"><span class="v" id="mmv">10</span></div>
+  <button id="auto" class="on">Auto</button>
+</div>
+<div id="plot"></div>
+<div class="note">
+  弦に沿った角 ψ ∈ [0, 360)。高さは倍音の和だけで計算する（井戸関数は使わない）：<br>
+  z_M(ψ) ＝ φ/360 ＋ (2/π) Σ_{m=1}^{M} [ sin(mπφ/360) / m ] · cos( mπ(ψ−θ)/180 )<br>
+  3D の点は (R cos ψ, R sin ψ, z_M(ψ))。振幅は円筒の軸方向（R に直交）、高さ 1 は絶対値で R に依らない。軸は等倍。
+  Auto は 1 ティックごとに θ ← θ ＋ φ、360 を超えたら 0 に戻す。薄い面は半径 R の円筒（高さ 0〜1）、細い線は z ＝ 0 の弦の位置。
+</div>
+<script>
+const NPSI = 1441;                       // 0.25° 刻み、両端を含めて閉じる
+const PSI = Array.from({length: NPSI}, (_, i) => i * 360 / (NPSI - 1));
+const COS = PSI.map(p => Math.cos(Math.PI * p / 180));
+const SIN = PSI.map(p => Math.sin(Math.PI * p / 180));
+const $ = id => document.getElementById(id);
+const th = $('th'), ph = $('ph'), rr = $('rr'), mm = $('mm'), btn = $('auto');
+
+// 倍音の和を各 ψ でそのまま足す
+function amplitude(theta, phi, M) {
+  const coef = new Float64Array(M + 1);
+  for (let m = 1; m <= M; m++) coef[m] = (2 / Math.PI) * Math.sin(m * Math.PI * phi / 360) / m;
+  const z = new Float64Array(NPSI);
+  const dc = phi / 360;
+  for (let i = 0; i < NPSI; i++) {
+    const x = Math.PI * (PSI[i] - theta) / 180;
+    let s = dc;
+    for (let m = 1; m <= M; m++) s += coef[m] * Math.cos(m * x);
+    z[i] = s;
+  }
+  return z;
+}
+
+function cylinder(R) {
+  const n = 73, xs = [], ys = [], z0 = [], z1 = [];
+  for (let i = 0; i < n; i++) {
+    const a = 2 * Math.PI * i / (n - 1);
+    xs.push(R * Math.cos(a)); ys.push(R * Math.sin(a)); z0.push(0); z1.push(1);
+  }
+  return {type: 'surface', x: [xs, xs], y: [ys, ys], z: [z0, z1], opacity: 0.12, showscale: false,
+          colorscale: [[0, '#8a8a8f'], [1, '#8a8a8f']], hoverinfo: 'skip', name: '円筒', showlegend: false};
+}
+
+function draw() {
+  const theta = Number(th.value), phi = Number(ph.value), R = Number(rr.value), M = Number(mm.value);
+  $('thv').textContent = theta + '°'; $('phv').textContent = phi + '°';
+  $('rrv').textContent = R.toFixed(1); $('mmv').textContent = M;
+  const z = amplitude(theta, phi, M);
+  let zmax = -Infinity, zmin = Infinity;
+  for (const v of z) { if (v > zmax) zmax = v; if (v < zmin) zmin = v; }
+  const X = COS.map(c => R * c), Y = SIN.map(s => R * s);
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  const fg = dark ? '#ececf1' : '#1d1d1f', grid = dark ? '#3a3a42' : '#d2d2d7';
+  const traces = [
+    cylinder(R),
+    {type: 'scatter3d', mode: 'lines', x: X, y: Y, z: X.map(() => 0), line: {color: '#8a8a8f', width: 2}, hoverinfo: 'skip', name: 'z = 0', showlegend: false},
+    {type: 'scatter3d', mode: 'lines', x: X, y: Y, z: Array.from(z), line: {color: '#2f6fdf', width: 5},
+     name: 'z_M(ψ)', showlegend: false, hovertemplate: 'ψ=%{customdata:.2f}°<br>z=%{z:.4f}<extra></extra>', customdata: PSI}
+  ];
+  const ax = (t, rng) => ({title: t, range: rng, color: fg, gridcolor: grid, zerolinecolor: fg, backgroundcolor: 'rgba(0,0,0,0)'});
+  const layout = {
+    uirevision: 'keep', paper_bgcolor: 'rgba(0,0,0,0)', font: {color: fg}, margin: {l: 0, r: 0, t: 32, b: 0},
+    title: {text: `θ = ${theta}°, φ = ${phi}°, R = ${R.toFixed(1)}, M = ${M}　　max z = ${zmax.toFixed(4)}, min z = ${zmin.toFixed(4)}`, font: {size: 14}},
+    scene: {aspectmode: 'data', xaxis: ax('x', [-10.5, 10.5]), yaxis: ax('y', [-10.5, 10.5]), zaxis: ax('z', [-0.5, 1.5]),
+            camera: {eye: {x: 0.75, y: -0.9, z: 0.45}}}
+  };
+  Plotly.react('plot', traces, layout, {responsive: true});
+}
+
+let timer = null;
+function tick() {
+  const phi = Number(ph.value);
+  let t = Number(th.value) + phi;
+  if (t > 360) t -= 360;
+  th.value = String(t);
+  draw();
+}
+function setAuto(on) {
+  if (on && !timer) { timer = setInterval(tick, 150); btn.classList.add('on'); }
+  if (!on && timer) { clearInterval(timer); timer = null; btn.classList.remove('on'); }
+}
+btn.addEventListener('click', () => setAuto(!timer));
+for (const s of [th, ph, rr, mm]) s.addEventListener('input', draw);
+draw();
+setAuto(true);
+</script>
+</body>
+</html>
