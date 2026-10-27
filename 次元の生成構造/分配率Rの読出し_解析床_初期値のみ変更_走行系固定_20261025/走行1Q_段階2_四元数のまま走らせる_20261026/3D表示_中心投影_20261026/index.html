@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>四元数 複素図形式</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.34.0/plotly.min.js"></script>
+<style>
+  :root { --bg:#ffffff; --fg:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --panel:#f5f5f7; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16161a; --fg:#ececf1; --muted:#9a9aa3; --line:#3a3a42; --panel:#202027; }
+  }
+  html, body { margin:0; background:var(--bg); color:var(--fg);
+    font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  .bar { display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center;
+    padding:10px 16px; background:var(--panel); border-bottom:1px solid var(--line); font-size:14px; }
+  select, button { font-size:15px; padding:4px 10px; border-radius:6px;
+    border:1px solid var(--line); background:var(--bg); color:var(--fg); }
+  button.on { background:#2f6fdf; color:#fff; border-color:#2f6fdf; }
+  .slider { display:flex; align-items:center; gap:10px; flex:1 1 320px; }
+  .slider input { flex:1; }
+  .step { font-variant-numeric: tabular-nums; min-width:7.5em; font-size:15px; }
+  #plot { width:100%; height:calc(100vh - 190px); min-height:420px; }
+  .note { font-size:12.5px; color:var(--muted); padding:6px 16px 10px; line-height:1.7; }
+  .dot { display:inline-block; width:10px; height:10px; border-radius:50%; vertical-align:middle; margin:0 4px 0 10px; }
+  code { font-family: Menlo, monospace; font-size:12px; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <label>N <select id="selN"></select></label>
+  <label>den <select id="selDen"></select></label>
+  <label><input type="checkbox" id="ckLine" checked> 原点からの線</label>
+  <button id="btnPrev">−1</button>
+  <button id="btnAuto">Auto</button>
+  <button id="btnNext">+1</button>
+  <div class="slider">
+    <input id="slider" type="range" min="0" max="500" value="0" step="1">
+    <span class="step" id="stepLabel">step 0 / 500</span>
+  </div>
+</div>
+<div id="plot"></div>
+<div class="note">
+  <span class="dot" style="background:#2f6fdf"></span>初期状態で 1–i 面にいた関係（終点 w が偶数）
+  <span class="dot" style="background:#e8862a"></span>初期状態で j–k 面にいた関係（終点 w が奇数）
+  　◯の大きさ＝同じ位置に乗っている関係の数（複素図の ×n と同じ。重ねると数字を表示）<br>
+  位置：各関係の四元数 q ＝ a ＋ bi ＋ cj ＋ dk を、実軸 1 から接する局所 3 次元空間へ中心投影した座標 (b, c, d)/a に、振幅 |q| を掛けたもの
+  <code>X = |q|·(b, c, d)/a</code>。q と −q は同じ点なので a ≥ 0 に揃える。軸の範囲は毎歩、全点が収まるように自動で決める。
+  a が小さい関係（純虚に近い）は遠くにある。|a| ≤ 10⁻¹⁴|q| の関係は実部が丸めの範囲で 0 とみなし、無限遠として描かない（題に個数を出す）。走行 1 の床の純虚の関係がこれに当たる。
+  データ：段階 2 本走行 results_main/hm_N*_den_*_states_500.npz（make_3d_central_data_v1.py で変換）。
+</div>
+<script>
+const NS = [3,4,5,6,8,10,12,15,20,25];
+const COLORS = ['#2f6fdf', '#e8862a'];
+const selN = document.getElementById('selN'), selDen = document.getElementById('selDen');
+const slider = document.getElementById('slider'), stepLabel = document.getElementById('stepLabel');
+const btnAuto = document.getElementById('btnAuto'), btnPrev = document.getElementById('btnPrev'), btnNext = document.getElementById('btnNext');
+const ckLine = document.getElementById('ckLine');
+NS.forEach(n => selN.add(new Option(String(n), String(n))));
+selN.value = '6';
+function fillDen() {
+  const n = selN.value, cur = selDen.value;
+  selDen.innerHTML = '';
+  selDen.add(new Option('N (= ' + n + ')', n));
+  selDen.add(new Option('124', '124'));
+  selDen.value = (cur === '124') ? '124' : n;
+}
+fillDen();
+
+let run = null, arr = null, idx = [[], []], timer = null;
+
+function loadRun(key, done) {
+  if (window.RUNS && window.RUNS[key]) { done(window.RUNS[key]); return; }
+  const s = document.createElement('script');
+  s.src = 'data/run_' + key + '.js';
+  s.onload = () => done(window.RUNS[key]);
+  s.onerror = () => alert('データを読めませんでした: ' + s.src);
+  document.head.appendChild(s);
+}
+function decode(b64) {
+  const bin = atob(b64), buf = new ArrayBuffer(bin.length), u8 = new Uint8Array(buf);
+  for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+  return new Float32Array(buf);
+}
+
+// 1 歩分：位置 X = |q|·(b,c,d)/a（a ≥ 0 に揃える）。同じ位置の関係はまとめて、◯の大きさを個数にする
+function frame(step) {
+  const M = run.M, base = step * M * 3;
+  const pts = [];
+  let nInf = 0, maxAbs = 0;
+  for (const g of [0, 1]) for (const e of idx[g]) {
+    const o = base + e * 3;
+    const x = arr[o], y = arr[o + 1], z = arr[o + 2];
+    if (!isFinite(x) || !isFinite(y) || !isFinite(z)) { nInf++; continue; }
+    pts.push({g, x, y, z});
+    maxAbs = Math.max(maxAbs, Math.abs(x), Math.abs(y), Math.abs(z));
+  }
+  const L = maxAbs > 0 ? maxAbs * 1.05 : 1;
+  const out = [0, 1].map(() => ({x: [], y: [], z: [], size: [], text: [], lx: [], ly: [], lz: []}));
+  const groups = new Map();
+  const q = L * 1e-9;   // 同じ位置の判定：表示範囲の 1e-9
+  for (const p of pts) {
+    const key = p.g + '|' + Math.round(p.x / q) + '|' + Math.round(p.y / q) + '|' + Math.round(p.z / q);
+    const h = groups.get(key); if (h) h.n++; else groups.set(key, {g: p.g, x: p.x, y: p.y, z: p.z, n: 1});
+  }
+  for (const h of groups.values()) {
+    const T = out[h.g];
+    T.x.push(h.x); T.y.push(h.y); T.z.push(h.z); T.size.push(4 + 3 * (h.n - 1)); T.text.push(h.n > 1 ? '×' + h.n : '');
+    if (ckLine.checked) { T.lx.push(0, h.x, null); T.ly.push(0, h.y, null); T.lz.push(0, h.z, null); }
+  }
+  return {out, L, nInf, nPts: pts.length};
+}
+
+function traceList(f) {
+  const t = [];
+  for (const g of [0, 1]) {
+    t.push({type: 'scatter3d', mode: 'lines', x: f.out[g].lx, y: f.out[g].ly, z: f.out[g].lz, line: {color: COLORS[g], width: 1}, opacity: 0.5, hoverinfo: 'skip', showlegend: false});
+    t.push({type: 'scatter3d', mode: 'markers+text', name: g === 0 ? '初期 1–i 面' : '初期 j–k 面', x: f.out[g].x, y: f.out[g].y, z: f.out[g].z,
+            text: f.out[g].text, textposition: 'top right', textfont: {size: 11},
+            marker: {size: f.out[g].size, color: COLORS[g], opacity: 0.85, line: {width: 0}}});
+  }
+  return t;
+}
+
+function layoutFor(f, step) {
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  const fg = dark ? '#ececf1' : '#1d1d1f', grid = dark ? '#3a3a42' : '#d2d2d7';
+  const ax = t => ({title: t, range: [-f.L, f.L], color: fg, gridcolor: grid, zerolinecolor: fg, zerolinewidth: 2, backgroundcolor: 'rgba(0,0,0,0)'});
+  return {
+    uirevision: 'keep', paper_bgcolor: 'rgba(0,0,0,0)', font: {color: fg}, margin: {l: 0, r: 0, t: 30, b: 0},
+    title: {text: `N = ${run.N},  den = ${run.den},  M = ${run.M}　step ${step}　軸 ±${f.L.toExponential(2)}　無限遠 ${f.nInf}`, font: {size: 14}},
+    legend: {x: 0, y: 1},
+    scene: {aspectmode: 'cube', xaxis: ax('i'), yaxis: ax('j'), zaxis: ax('k')}
+  };
+}
+
+function draw(step) {
+  const f = frame(step);
+  Plotly.react('plot', traceList(f), layoutFor(f, step), {responsive: true});
+  stepLabel.textContent = 'step ' + step + ' / ' + run.steps;
+}
+
+function init() {
+  const key = 'N' + selN.value + '_den' + selDen.value;
+  loadRun(key, r => {
+    run = r; arr = decode(r.b64);
+    idx = [[], []]; r.group.forEach((g, e) => idx[g].push(e));
+    slider.max = String(r.steps);
+    draw(Math.min(Number(slider.value), r.steps));
+  });
+}
+
+function stepBy(d) {
+  if (!run) return;
+  let s = Number(slider.value) + d;
+  if (s > run.steps) s = 0;
+  if (s < 0) s = run.steps;
+  slider.value = String(s);
+  draw(s);
+}
+slider.addEventListener('input', () => { if (run) draw(Number(slider.value)); });
+selN.addEventListener('change', () => { fillDen(); init(); });
+selDen.addEventListener('change', init);
+ckLine.addEventListener('change', () => { if (run) draw(Number(slider.value)); });
+btnPrev.addEventListener('click', () => stepBy(-1));
+btnNext.addEventListener('click', () => stepBy(+1));
+btnAuto.addEventListener('click', () => {
+  if (timer) { clearInterval(timer); timer = null; btnAuto.classList.remove('on'); return; }
+  btnAuto.classList.add('on');
+  timer = setInterval(() => stepBy(+1), 60);
+});
+init();
+</script>
+</body>
+</html>
