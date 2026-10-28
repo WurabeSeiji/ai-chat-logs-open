@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>球面のブロック（鏡映群の市松）</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.34.0/plotly.min.js"></script>
+<style>
+  :root { --bg:#ffffff; --fg:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --panel:#f5f5f7; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16161a; --fg:#ececf1; --muted:#9a9aa3; --line:#3a3a42; --panel:#202027; }
+  }
+  html, body { margin:0; background:var(--bg); color:var(--fg);
+    font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center;
+    padding:10px 16px; background:var(--panel); border-bottom:1px solid var(--line); font-size:14px; }
+  .sl { display:flex; align-items:center; gap:8px; flex:1 1 200px; }
+  .sl input { flex:1; }
+  .sl .v { font-variant-numeric: tabular-nums; min-width:4.5em; text-align:right; }
+  button { font-size:15px; padding:4px 12px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--fg); }
+  button.on { background:#2f6fdf; color:#fff; border-color:#2f6fdf; }
+  .grp { display:flex; gap:4px; }
+  #plot { width:100%; height:calc(100vh - 235px); min-height:420px; }
+  .note { font-size:12.5px; color:var(--muted); padding:6px 16px 10px; line-height:1.7; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="grp">
+    <button id="md-dihedral">二面体 4m</button>
+    <button id="md-24">24</button>
+    <button id="md-48">48</button>
+    <button id="md-120" class="on">120</button>
+  </div>
+  <div class="sl"><span>m</span><input id="mm" type="range" min="1" max="24" step="1" value="24"><span class="v" id="mmv">24</span></div>
+  <div class="sl"><span>θlo</span><input id="lo" type="range" min="0" max="360" step="1" value="345"><span class="v" id="lov">345°</span></div>
+  <div class="sl"><span>θla</span><input id="la" type="range" min="-90" max="90" step="1" value="0"><span class="v" id="lav">0°</span></div>
+  <div class="sl"><span>R</span><input id="rr" type="range" min="0" max="10" step="0.1" value="7.6"><span class="v" id="rrv">7.6</span></div>
+  <div class="sl"><span>L</span><input id="ll" type="range" min="1" max="100" step="1" value="12"><span class="v" id="llv">12</span></div>
+  <button id="auto" class="on">Auto</button>
+</div>
+<div id="plot"></div>
+<div class="note">
+  半径 R の球面を鏡映群の鏡（大円）で切り、ブロックごとに ±1 を交互に置く。鏡 1 枚ごとに、その法線 n_i を軸にした半球 ±1 の矩形波をルジャンドル級数で作り、全部の鏡について掛ける。<br>
+  S_L(u) ＝ Σ_{l 奇数 ≤ L} c_l P_l(u)、c_l ＝ P_{l−1}(0) − P_{l+1}(0)（c_1 ＝ 3/2, c_3 ＝ −7/8, c_5 ＝ 11/16, …）。　F(x) ＝ Π_{i=1}^{M} S_L(n_i · x)、M は鏡の枚数。正規化なし、L ＝ 1 なら F は法線の積（最低次の倍音）。<br>
+  鏡の組：二面体 4m ＝ 赤道 ＋ 角 πk/m の子午面 m 枚（ブロック 4m）。24 ＝ (1,±1,0),(0,1,±1),(1,0,±1)/√2 の 6 枚（正四面体）。48 ＝ その 6 枚 ＋ e_x, e_y, e_z（立方体）。120 ＝ e_x, e_y, e_z ＋ (±φ⁻¹, ±φ, ±1)/2 の巡回置換 12 本（正二十面体）。<br>
+  群の軸 e_z を基準点方向（θlo, θla）に回し、全法線に同じ回転を掛ける。3D の点は (R ＋ F) x。面の色は F（−1〜+1 固定、0 が白、+1 赤、−1 青）、透明度 50%。薄い面は半径 R の球、細線は鏡の大円（半径 R）、赤点は基準点、青点は対蹠点。軸は等倍、±11.5 固定。<br>
+  格子は経度 nL ＝ min(721, max(181, 8L+1)) 点、緯度は同じ刻み。Auto は 150 ms ごとに θlo ← θlo ＋ 5°。URL 引数 ?mode=dihedral|24|48|120&m=&lo=&la=&R=&L=&auto=0 で初期値を与えられる（図の記録用）。
+</div>
+<script>
+const $ = id => document.getElementById(id);
+const mm = $('mm'), lo = $('lo'), la = $('la'), rr = $('rr'), ll = $('ll'), btn = $('auto');
+const MODES = ['dihedral', '24', '48', '120'];
+const D = Math.PI / 180, PHI = (1 + Math.sqrt(5)) / 2;
+let mode = '120';
+
+// URL 引数（図の記録用）
+const query = new URLSearchParams(location.search);
+if (MODES.includes(query.get('mode'))) mode = query.get('mode');
+if (query.has('m'))  mm.value = query.get('m');
+if (query.has('lo')) lo.value = query.get('lo');
+if (query.has('la')) la.value = query.get('la');
+if (query.has('R'))  rr.value = query.get('R');
+if (query.has('L'))  ll.value = query.get('L');
+
+const unit = v => { const s = Math.hypot(v[0], v[1], v[2]); return [v[0] / s, v[1] / s, v[2] / s]; };
+const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+
+// 鏡の法線（群の軸は e_z）
+function mirrors(md, m) {
+  const n = [];
+  if (md === 'dihedral') {
+    n.push([0, 0, 1]);
+    for (let k = 0; k < m; k++) n.push([Math.cos(Math.PI * k / m), Math.sin(Math.PI * k / m), 0]);
+  } else {
+    if (md !== '24') n.push([1, 0, 0], [0, 1, 0], [0, 0, 1]);
+    if (md !== '120') for (const v of [[1, 1, 0], [1, -1, 0], [0, 1, 1], [0, 1, -1], [1, 0, 1], [1, 0, -1]]) n.push(unit(v));
+    if (md === '120') for (const s1 of [1, -1]) for (const s2 of [1, -1]) {
+      const a = [s1 / PHI / 2, s2 * PHI / 2, 0.5];
+      n.push(a, [a[2], a[0], a[1]], [a[1], a[2], a[0]]);
+    }
+  }
+  return n;
+}
+const blocks = (md, m) => md === 'dihedral' ? 4 * m : Number(md);
+
+// 群の軸 e_z を基準点方向 (θlo, θla) に回す回転：R_z(θlo) · R_y(90° − θla)
+function rotator(loDeg, laDeg) {
+  const a = (90 - laDeg) * D, b = loDeg * D;
+  const ca = Math.cos(a), sa = Math.sin(a), cb = Math.cos(b), sb = Math.sin(b);
+  return v => { const x1 = ca * v[0] + sa * v[2], y1 = v[1], z1 = -sa * v[0] + ca * v[2]; return [cb * x1 - sb * y1, sb * x1 + cb * y1, z1]; };
+}
+
+// 半球 ±1 の矩形波の係数 c_l = P_{l−1}(0) − P_{l+1}(0)（l 奇数 ≤ L）。Lo は使う最高の奇数次数
+function coeffs(L) {
+  const Lo = L % 2 ? L : L - 1;
+  const P0 = new Float64Array(Lo + 2); P0[0] = 1; P0[1] = 0;
+  for (let k = 1; k <= Lo; k++) P0[k + 1] = -k * P0[k - 1] / (k + 1);
+  const c = new Float64Array(Lo + 1);
+  for (let l = 1; l <= Lo; l += 2) c[l] = P0[l - 1] - P0[l + 1];
+  return {c, Lo};
+}
+// S_L(u) = Σ_{l 奇数} c_l P_l(u)：三項漸化式 (l+1) P_{l+1} = (2l+1) u P_l − l P_{l−1}
+function squareSeries(u, c, Lo) {
+  let p0 = 1, p1 = u, v = c[1] * u;
+  for (let l = 1; l < Lo; l++) {
+    const p2 = ((2 * l + 1) * u * p1 - l * p0) / (l + 1);
+    p0 = p1; p1 = p2;
+    if ((l + 1) % 2) v += c[l + 1] * p2;
+  }
+  return v;
+}
+
+// 球面格子の上で F と 3D 座標を計算
+function field(p, N, c, Lo) {
+  const nL = Math.min(721, Math.max(181, 8 * Lo + 1)), nB = (nL - 1) / 2 + 1;
+  const X = [], Y = [], Z = [], C = [];
+  let fmax = -Infinity, fmin = Infinity;
+  for (let j = 0; j < nB; j++) {
+    const beta = (-90 + 180 * j / (nB - 1)) * D, sb = Math.sin(beta), cb = Math.cos(beta);
+    const xr = new Array(nL), yr = new Array(nL), zr = new Array(nL), cr = new Array(nL);
+    for (let i = 0; i < nL; i++) {
+      const lam = (360 * i / (nL - 1)) * D;
+      const x0 = cb * Math.cos(lam), x1 = cb * Math.sin(lam), x2 = sb;
+      let f = 1;
+      for (const n of N) {
+        let u = n[0] * x0 + n[1] * x1 + n[2] * x2;
+        if (u > 1) u = 1; else if (u < -1) u = -1;
+        f *= squareSeries(u, c, Lo);
+      }
+      if (f > fmax) fmax = f; if (f < fmin) fmin = f;
+      const r = p.R + f;
+      xr[i] = r * x0; yr[i] = r * x1; zr[i] = r * x2; cr[i] = f;
+    }
+    X.push(xr); Y.push(yr); Z.push(zr); C.push(cr);
+  }
+  return {nL, nB, X, Y, Z, C, fmax, fmin};
+}
+
+// 半径 R の薄い球
+function sphere(R) {
+  const n = 49, m = 25, X = [], Y = [], Z = [];
+  for (let j = 0; j < m; j++) {
+    const b = -Math.PI / 2 + Math.PI * j / (m - 1), xr = [], yr = [], zr = [];
+    for (let i = 0; i < n; i++) {
+      const l = 2 * Math.PI * i / (n - 1);
+      xr.push(R * Math.cos(b) * Math.cos(l)); yr.push(R * Math.cos(b) * Math.sin(l)); zr.push(R * Math.sin(b));
+    }
+    X.push(xr); Y.push(yr); Z.push(zr);
+  }
+  return {type: 'surface', x: X, y: Y, z: Z, opacity: 0.12, showscale: false,
+          colorscale: [[0, '#8a8a8f'], [1, '#8a8a8f']], hoverinfo: 'skip', name: '球', showlegend: false};
+}
+
+// 鏡の大円（半径 R）
+function circles(N, R) {
+  const out = [];
+  for (const n of N) {
+    const u = unit(cross(n, Math.abs(n[2]) < 0.9 ? [0, 0, 1] : [1, 0, 0])), v = cross(n, u);
+    const xs = [], ys = [], zs = [];
+    for (let k = 0; k <= 180; k++) {
+      const t = 2 * Math.PI * k / 180, ct = Math.cos(t), st = Math.sin(t);
+      xs.push(R * (u[0] * ct + v[0] * st)); ys.push(R * (u[1] * ct + v[1] * st)); zs.push(R * (u[2] * ct + v[2] * st));
+    }
+    out.push({type: 'scatter3d', mode: 'lines', x: xs, y: ys, z: zs, line: {color: '#55555a', width: 1.5}, hoverinfo: 'skip', showlegend: false});
+  }
+  return out;
+}
+
+function params() {
+  return {m: Number(mm.value), lo: Number(lo.value), la: Number(la.value), R: Number(rr.value), L: Number(ll.value)};
+}
+
+function draw() {
+  const p = params();
+  $('mmv').textContent = p.m; $('lov').textContent = p.lo + '°'; $('lav').textContent = p.la + '°';
+  $('rrv').textContent = p.R.toFixed(1); $('llv').textContent = p.L;
+  mm.disabled = mode !== 'dihedral';
+  const rot = rotator(p.lo, p.la);
+  const N = mirrors(mode, p.m).map(rot);
+  const {c, Lo} = coeffs(p.L);
+  const f = field(p, N, c, Lo);
+  const n0 = rot([0, 0, 1]);
+  const P0 = n0.map(x => p.R * x), P1 = n0.map(x => -p.R * x);
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  const fg = dark ? '#ececf1' : '#1d1d1f', gridc = dark ? '#3a3a42' : '#d2d2d7';
+  const traces = [
+    sphere(p.R),
+    {type: 'surface', x: f.X, y: f.Y, z: f.Z, surfacecolor: f.C, colorscale: 'RdBu',
+     cmin: -1, cmax: 1, opacity: 0.5, showscale: true, colorbar: {title: 'F', thickness: 12, len: 0.6, tickfont: {color: fg}, titlefont: {color: fg}},
+     hoverinfo: 'skip', showlegend: false},
+    ...circles(N, p.R),
+    {type: 'scatter3d', mode: 'lines+markers', x: [P1[0], P0[0]], y: [P1[1], P0[1]], z: [P1[2], P0[2]],
+     line: {color: '#8a8a8f', width: 3}, marker: {size: [5, 6], color: ['#2f6fdf', '#d62728']},
+     text: ['対蹠点', '基準点'], hovertemplate: '%{text}<extra></extra>', showlegend: false}
+  ];
+  const ax = (t, rng) => ({title: t, range: rng, color: fg, gridcolor: gridc, zerolinecolor: fg, backgroundcolor: 'rgba(0,0,0,0)'});
+  const name = mode === 'dihedral' ? `二面体 m = ${p.m}` : {'24': '正四面体', '48': '立方体', '120': '正二十面体'}[mode];
+  const head = `${name}　ブロック ${blocks(mode, p.m)}、鏡 ${N.length} 枚、θlo = ${p.lo}°, θla = ${p.la}°, R = ${p.R.toFixed(1)}, L = ${Lo}（奇数 l ≤ ${Lo}）`;
+  const layout = {
+    uirevision: 'keep', paper_bgcolor: 'rgba(0,0,0,0)', font: {color: fg}, margin: {l: 0, r: 0, t: 32, b: 0},
+    title: {text: `${head}　　max F = ${f.fmax.toFixed(4)}, min F = ${f.fmin.toFixed(4)}　　格子 ${f.nL}×${f.nB}`, font: {size: 14}},
+    scene: {aspectmode: 'data', xaxis: ax('x', [-11.5, 11.5]), yaxis: ax('y', [-11.5, 11.5]), zaxis: ax('z', [-11.5, 11.5]),
+            camera: {eye: {x: 0.75, y: -0.9, z: 0.45}}}
+  };
+  Plotly.react('plot', traces, layout, {responsive: true});
+}
+
+let timer = null;
+function tick() {
+  let t = Number(lo.value) + 5;
+  if (t > 360) t -= 360;
+  lo.value = String(t);
+  draw();
+}
+function setAuto(on) {
+  if (on && !timer) { timer = setInterval(tick, 150); btn.classList.add('on'); }
+  if (!on && timer) { clearInterval(timer); timer = null; btn.classList.remove('on'); }
+}
+function setMode(md) {
+  mode = md;
+  for (const k of MODES) $('md-' + k).classList.toggle('on', k === md);
+  draw();
+}
+btn.addEventListener('click', () => setAuto(!timer));
+for (const k of MODES) $('md-' + k).addEventListener('click', () => setMode(k));
+for (const s of [mm, lo, la, rr, ll]) s.addEventListener('input', draw);
+setMode(mode);
+setAuto(query.get('auto') !== '0');
+</script>
+</body>
+</html>
