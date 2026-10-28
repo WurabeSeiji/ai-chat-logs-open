@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>球面のパルス（ルジャンドル倍音）</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.34.0/plotly.min.js"></script>
+<style>
+  :root { --bg:#ffffff; --fg:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --panel:#f5f5f7; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16161a; --fg:#ececf1; --muted:#9a9aa3; --line:#3a3a42; --panel:#202027; }
+  }
+  html, body { margin:0; background:var(--bg); color:var(--fg);
+    font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center;
+    padding:10px 16px; background:var(--panel); border-bottom:1px solid var(--line); font-size:14px; }
+  .sl { display:flex; align-items:center; gap:8px; flex:1 1 220px; }
+  .sl input { flex:1; }
+  .sl .v { font-variant-numeric: tabular-nums; min-width:4.5em; text-align:right; }
+  button { font-size:15px; padding:4px 12px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--fg); }
+  button.on { background:#2f6fdf; color:#fff; border-color:#2f6fdf; }
+  #plot { width:100%; height:calc(100vh - 215px); min-height:420px; }
+  .note { font-size:12.5px; color:var(--muted); padding:6px 16px 10px; line-height:1.7; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="sl"><span>θlo</span><input id="lo" type="range" min="0" max="360" step="1" value="180"><span class="v" id="lov">180°</span></div>
+  <div class="sl"><span>θla</span><input id="la" type="range" min="-90" max="90" step="1" value="0"><span class="v" id="lav">0°</span></div>
+  <div class="sl"><span>R</span><input id="rr" type="range" min="0" max="10" step="0.1" value="3"><span class="v" id="rrv">3.0</span></div>
+  <div class="sl"><span>N</span><input id="nn" type="range" min="1" max="100" step="1" value="50"><span class="v" id="nnv">50</span></div>
+  <button id="fj">フェイエール</button>
+  <button id="auto" class="on">Auto</button>
+</div>
+<div id="plot"></div>
+<div class="note">
+  半径 R の球面。基準点（経度 θlo、緯度 θla）からの角距離 γ：cos γ ＝ sin β sin θla ＋ cos β cos θla cos(λ−θlo)。振幅は倍音（ルジャンドル多項式 P_l(cos γ)）の和だけで計算する。N は和に入れる倍音の本数。<br>
+  等振幅（フェイエール OFF）：A(γ) ＝ (1/N) Σ_{l=1}^{N} P_l(cos γ)<br>
+  フェイエール（ON）：A(γ) ＝ Σ_{l=1}^{N} w_l P_l(cos γ) / Σ w_l、w_l ＝ 1 − l/(N+1)、Σ w_l ＝ N/2<br>
+  どちらも A(基準点) ＝ 1、球面上の平均 0、N ＝ 1 で A ＝ cos γ（基準点 +1、対蹠点 −1、γ ＝ 90° が節）。P_l は三項漸化式 (l+1) P_{l+1} ＝ (2l+1) x P_l − l P_{l−1} で計算。<br>
+  3D の点は (R ＋ A) · (cos β cos λ, cos β sin λ, sin β)。振幅は半径方向、絶対値で R に依らない。面の色は A（−1〜+1 固定、0 が白）、面の透明度 50%。薄い面は半径 R の球、赤点は基準点、青点は対蹠点、線はその軸。軸は等倍、±11.5 固定。<br>
+  格子は経度 nL ＝ min(721, max(181, 8N+1)) 点、緯度は同じ刻み（P_N の 1 周期あたり約 8 点）。Auto は 150 ms ごとに θlo ← θlo ＋ 5°。URL 引数 ?lo=&la=&R=&N=&fejer=1&auto=0 で初期値を与えられる（図の記録用）。
+</div>
+<script>
+const $ = id => document.getElementById(id);
+const lo = $('lo'), la = $('la'), rr = $('rr'), nn = $('nn'), btn = $('auto'), fjb = $('fj');
+const D = Math.PI / 180;
+let fejer = false;
+
+// URL 引数（図の記録用）：?lo=180&la=0&R=3&N=10&fejer=1&auto=0
+const query = new URLSearchParams(location.search);
+if (query.has('lo')) lo.value = query.get('lo');
+if (query.has('la')) la.value = query.get('la');
+if (query.has('R'))  rr.value = query.get('R');
+if (query.has('N'))  nn.value = query.get('N');
+if (query.get('fejer') === '1') fejer = true;
+
+// 重み w_l（l = 1..N）を Σ w_l = 1 に正規化して返す
+function weights(N, fj) {
+  const w = new Float64Array(N + 1); let s = 0;
+  for (let l = 1; l <= N; l++) { w[l] = fj ? 1 - l / (N + 1) : 1; s += w[l]; }
+  for (let l = 1; l <= N; l++) w[l] /= s;
+  return w;
+}
+
+// Σ_{l=1}^{N} w_l P_l(x)：三項漸化式 (l+1) P_{l+1} = (2l+1) x P_l − l P_{l−1}
+function legendreSum(x, N, w) {
+  let p0 = 1, p1 = x, v = w[1] * p1;
+  for (let l = 1; l < N; l++) {
+    const p2 = ((2 * l + 1) * x * p1 - l * p0) / (l + 1);
+    v += w[l + 1] * p2; p0 = p1; p1 = p2;
+  }
+  return v;
+}
+
+// 球面格子の上で A と 3D 座標を計算
+function field(p, w) {
+  const nL = Math.min(721, Math.max(181, 8 * p.N + 1)), nB = (nL - 1) / 2 + 1;
+  const sla = Math.sin(p.la * D), cla = Math.cos(p.la * D), lo0 = p.lo * D;
+  const X = [], Y = [], Z = [], C = [];
+  let amax = -Infinity, amin = Infinity;
+  for (let j = 0; j < nB; j++) {
+    const beta = (-90 + 180 * j / (nB - 1)) * D, sb = Math.sin(beta), cb = Math.cos(beta);
+    const xr = new Array(nL), yr = new Array(nL), zr = new Array(nL), cr = new Array(nL);
+    for (let i = 0; i < nL; i++) {
+      const lam = (360 * i / (nL - 1)) * D;
+      let cg = sb * sla + cb * cla * Math.cos(lam - lo0);
+      if (cg > 1) cg = 1; else if (cg < -1) cg = -1;
+      const a = legendreSum(cg, p.N, w);
+      if (a > amax) amax = a; if (a < amin) amin = a;
+      const r = p.R + a;
+      xr[i] = r * cb * Math.cos(lam); yr[i] = r * cb * Math.sin(lam); zr[i] = r * sb; cr[i] = a;
+    }
+    X.push(xr); Y.push(yr); Z.push(zr); C.push(cr);
+  }
+  return {nL, nB, X, Y, Z, C, amax, amin};
+}
+
+// 半径 R の薄い球
+function sphere(R) {
+  const n = 49, m = 25, X = [], Y = [], Z = [];
+  for (let j = 0; j < m; j++) {
+    const b = -Math.PI / 2 + Math.PI * j / (m - 1), xr = [], yr = [], zr = [];
+    for (let i = 0; i < n; i++) {
+      const l = 2 * Math.PI * i / (n - 1);
+      xr.push(R * Math.cos(b) * Math.cos(l)); yr.push(R * Math.cos(b) * Math.sin(l)); zr.push(R * Math.sin(b));
+    }
+    X.push(xr); Y.push(yr); Z.push(zr);
+  }
+  return {type: 'surface', x: X, y: Y, z: Z, opacity: 0.12, showscale: false,
+          colorscale: [[0, '#8a8a8f'], [1, '#8a8a8f']], hoverinfo: 'skip', name: '球', showlegend: false};
+}
+
+function params() {
+  return {lo: Number(lo.value), la: Number(la.value), R: Number(rr.value), N: Number(nn.value)};
+}
+
+function draw() {
+  const p = params();
+  $('lov').textContent = p.lo + '°'; $('lav').textContent = p.la + '°';
+  $('rrv').textContent = p.R.toFixed(1); $('nnv').textContent = p.N;
+  const w = weights(p.N, fejer);
+  const f = field(p, w);
+  const a0 = legendreSum(1, p.N, w), a1 = legendreSum(-1, p.N, w);      // 基準点、対蹠点の A
+  const n0 = [Math.cos(p.la * D) * Math.cos(p.lo * D), Math.cos(p.la * D) * Math.sin(p.lo * D), Math.sin(p.la * D)];
+  const P0 = n0.map(c => (p.R + a0) * c), P1 = n0.map(c => -(p.R + a1) * c);
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  const fg = dark ? '#ececf1' : '#1d1d1f', gridc = dark ? '#3a3a42' : '#d2d2d7';
+  const traces = [
+    sphere(p.R),
+    {type: 'surface', x: f.X, y: f.Y, z: f.Z, surfacecolor: f.C, colorscale: 'RdBu',
+     cmin: -1, cmax: 1, opacity: 0.5, showscale: true, colorbar: {title: 'A', thickness: 12, len: 0.6, tickfont: {color: fg}, titlefont: {color: fg}},
+     hoverinfo: 'skip', showlegend: false},
+    {type: 'scatter3d', mode: 'lines+markers', x: [P1[0], P0[0]], y: [P1[1], P0[1]], z: [P1[2], P0[2]],
+     line: {color: '#8a8a8f', width: 3}, marker: {size: [5, 6], color: ['#2f6fdf', '#d62728']},
+     text: ['対蹠点', '基準点'], hovertemplate: '%{text}<extra></extra>', showlegend: false}
+  ];
+  const ax = (t, rng) => ({title: t, range: rng, color: fg, gridcolor: gridc, zerolinecolor: fg, backgroundcolor: 'rgba(0,0,0,0)'});
+  const head = `${fejer ? 'フェイエール' : '等振幅'}　θlo = ${p.lo}°, θla = ${p.la}°, R = ${p.R.toFixed(1)}, N = ${p.N} 本`;
+  const layout = {
+    uirevision: 'keep', paper_bgcolor: 'rgba(0,0,0,0)', font: {color: fg}, margin: {l: 0, r: 0, t: 32, b: 0},
+    title: {text: `${head}　　max A = ${f.amax.toFixed(4)}, min A = ${f.amin.toFixed(4)}, A(基準点) = ${a0.toFixed(4)}, A(対蹠点) = ${a1.toFixed(4)}　　格子 ${f.nL}×${f.nB}`, font: {size: 14}},
+    scene: {aspectmode: 'data', xaxis: ax('x', [-11.5, 11.5]), yaxis: ax('y', [-11.5, 11.5]), zaxis: ax('z', [-11.5, 11.5]),
+            camera: {eye: {x: 0.75, y: -0.9, z: 0.45}}}
+  };
+  Plotly.react('plot', traces, layout, {responsive: true});
+}
+
+let timer = null;
+function tick() {
+  let t = Number(lo.value) + 5;
+  if (t > 360) t -= 360;
+  lo.value = String(t);
+  draw();
+}
+function setAuto(on) {
+  if (on && !timer) { timer = setInterval(tick, 150); btn.classList.add('on'); }
+  if (!on && timer) { clearInterval(timer); timer = null; btn.classList.remove('on'); }
+}
+btn.addEventListener('click', () => setAuto(!timer));
+fjb.addEventListener('click', () => { fejer = !fejer; fjb.classList.toggle('on', fejer); draw(); });
+fjb.classList.toggle('on', fejer);
+for (const s of [lo, la, rr, nn]) s.addEventListener('input', draw);
+draw();
+setAuto(query.get('auto') !== '0');
+</script>
+</body>
+</html>
