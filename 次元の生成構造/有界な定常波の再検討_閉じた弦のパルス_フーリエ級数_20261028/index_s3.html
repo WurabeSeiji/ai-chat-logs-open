@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S³ のパルス（倍音の位相読み）</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.34.0/plotly.min.js"></script>
+<style>
+  :root { --bg:#ffffff; --fg:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --panel:#f5f5f7; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16161a; --fg:#ececf1; --muted:#9a9aa3; --line:#3a3a42; --panel:#202027; }
+  }
+  html, body { margin:0; background:var(--bg); color:var(--fg);
+    font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center;
+    padding:10px 16px; background:var(--panel); border-bottom:1px solid var(--line); font-size:14px; }
+  .sl { display:flex; align-items:center; gap:8px; flex:1 1 200px; }
+  .sl input { flex:1; }
+  .sl .v { font-variant-numeric: tabular-nums; min-width:4.5em; text-align:right; }
+  button { font-size:15px; padding:4px 12px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--fg); }
+  button.on { background:#2f6fdf; color:#fff; border-color:#2f6fdf; }
+  #plot { width:100%; height:calc(100vh - 235px); min-height:420px; }
+  .note { font-size:12.5px; color:var(--muted); padding:6px 16px 10px; line-height:1.7; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="sl"><span>θlo</span><input id="lo" type="range" min="0" max="360" step="1" value="180"><span class="v" id="lov">180°</span></div>
+  <div class="sl"><span>θla</span><input id="la" type="range" min="-90" max="90" step="1" value="0"><span class="v" id="lav">0°</span></div>
+  <div class="sl"><span>σ</span><input id="sg" type="range" min="0" max="180" step="1" value="0"><span class="v" id="sgv">0°</span></div>
+  <div class="sl"><span>R</span><input id="rr" type="range" min="0" max="10" step="0.1" value="3"><span class="v" id="rrv">3.0</span></div>
+  <div class="sl"><span>N</span><input id="nn" type="range" min="1" max="100" step="1" value="50"><span class="v" id="nnv">50</span></div>
+  <button id="fj">フェイエール</button>
+  <button id="auto" class="on">Auto</button>
+</div>
+<div id="plot"></div>
+<div class="note">
+  4 次元球殻の表面 S³（半径 R）を、観測者を中心に置いた主観座標系で半径 πR の球体に写す。表示点 p に対し ρ ＝ |p|/R（観測者からの角距離）、u ＝ p/|p|。
+  中心位相は 3 角（θlo, θla, σ）で与え、方向 ŝ ＝ (cos θla cos θlo, cos θla sin θlo, sin θla)、表示位置 σR ŝ。対蹠点は (π−σ)R(−ŝ)。<br>
+  中心位相からの角距離 χ：cos χ ＝ cos ρ cos σ ＋ sin ρ sin σ (u · ŝ)。振幅は倍音の和だけで計算する。N は和に入れる倍音の本数。<br>
+  倍音：Z_n(χ) ＝ sin((n+1)χ) / ((n+1) sin χ) ＝ U_n(cos χ)/(n+1)（チェビシェフ第 2 種、三項漸化式 U_{n+1} ＝ 2x U_n − U_{n−1}）。節は χ ＝ kπ/(n+1) で等間隔、中心位相で 1、対蹠点で (−1)^n。<br>
+  等振幅（フェイエール OFF）：A(χ) ＝ (1/N) Σ_{n=1}^{N} Z_n(χ)。　フェイエール（ON）：A ＝ Σ w_n Z_n / Σ w_n、w_n ＝ 1 − n/(N+1)。どちらも A(中心位相) ＝ 1、S³ 上の平均 0。<br>
+  振幅は色（−1〜+1 固定、0 が白、+1 赤、−1 青、円盤は陰影なしで色がそのまま A、透明度 10%）。球体を中心位相の子午面（e_z と θlo 方向が張る面）と水平面の 2 枚で切った円盤に塗る。薄い面は半径 πR の球体の輪郭、赤点は中心位相、青点は対蹠点、黒点は観測者、線は三点を通る測地線。赤の半透明の面は半値の殻：A(χ) が中心位相から最初に 1/2 を切る角距離 χ½ の測地球面（χ ＝ χ½）。σ ＝ 0 なら半径 χ½R の球、σ ≠ 0 でも 4 次元で作って主観座標系に写した正確な面（透明度 30%）。右のパネルは振幅曲線 A(χ)（横 A は −1〜+1、縦 χ は 0〜180°、赤の点線が χ½）。軸は等倍、±32 固定。<br>
+  格子は円盤の半径方向 nρ ＝ min(405, max(181, 4(N+1)+1)) 点、角方向 nα ＝ min(721, max(361, 8(N+1)+1)) 点。Auto は 150 ms ごとに θlo ← θlo ＋ 5°。URL 引数 ?lo=&la=&sg=&R=&N=&fejer=1&auto=0 で初期値を与えられる（図の記録用）。
+</div>
+<script>
+const $ = id => document.getElementById(id);
+const lo = $('lo'), la = $('la'), sg = $('sg'), rr = $('rr'), nn = $('nn'), btn = $('auto'), fjb = $('fj');
+const D = Math.PI / 180;
+let fejer = false;
+
+// URL 引数（図の記録用）
+const query = new URLSearchParams(location.search);
+if (query.has('lo')) lo.value = query.get('lo');
+if (query.has('la')) la.value = query.get('la');
+if (query.has('sg')) sg.value = query.get('sg');
+if (query.has('R'))  rr.value = query.get('R');
+if (query.has('N'))  nn.value = query.get('N');
+if (query.get('fejer') === '1') fejer = true;
+
+// 重み w_n（n = 1..N）を Σ w_n = 1 に正規化して返す
+function weights(N, fj) {
+  const w = new Float64Array(N + 1); let s = 0;
+  for (let n = 1; n <= N; n++) { w[n] = fj ? 1 - n / (N + 1) : 1; s += w[n]; }
+  for (let n = 1; n <= N; n++) w[n] /= s;
+  return w;
+}
+// A = Σ_{n=1}^{N} w_n U_n(x)/(n+1)、U_0 = 1, U_1 = 2x, U_{n+1} = 2x U_n − U_{n−1}（x = cos χ）
+function harmonicSum(x, N, w) {
+  let u0 = 1, u1 = 2 * x, v = w[1] * u1 / 2;
+  for (let n = 1; n < N; n++) {
+    const u2 = 2 * x * u1 - u0;
+    u0 = u1; u1 = u2;
+    v += w[n + 1] * u2 / (n + 2);
+  }
+  return v;
+}
+
+// 平面（正規直交 e1, e2）で切った円盤の格子に A を塗る
+function disc(p, e1, e2, sh, N, w, nR, nA) {
+  const cs = Math.cos(p.sg * D), ss = Math.sin(p.sg * D);
+  const X = [], Y = [], Z = [], C = [];
+  let amax = -Infinity, amin = Infinity;
+  for (let j = 0; j < nR; j++) {
+    const rho = Math.PI * j / (nR - 1), cr = Math.cos(rho), sr = Math.sin(rho);
+    const xr = new Array(nA), yr = new Array(nA), zr = new Array(nA), cr_ = new Array(nA);
+    for (let i = 0; i < nA; i++) {
+      const al = 2 * Math.PI * i / (nA - 1), ca = Math.cos(al), sa = Math.sin(al);
+      const ux = ca * e1[0] + sa * e2[0], uy = ca * e1[1] + sa * e2[1], uz = ca * e1[2] + sa * e2[2];
+      let cx = cr * cs + sr * ss * (ux * sh[0] + uy * sh[1] + uz * sh[2]);
+      if (cx > 1) cx = 1; else if (cx < -1) cx = -1;
+      const a = harmonicSum(cx, N, w);
+      if (a > amax) amax = a; if (a < amin) amin = a;
+      const r = p.R * rho;
+      xr[i] = r * ux; yr[i] = r * uy; zr[i] = r * uz; cr_[i] = a;
+    }
+    X.push(xr); Y.push(yr); Z.push(zr); C.push(cr_);
+  }
+  return {X, Y, Z, C, amax, amin};
+}
+
+// 半径 πR の薄い球（輪郭）
+function sphere(R) {
+  const n = 49, m = 25, X = [], Y = [], Z = [];
+  for (let j = 0; j < m; j++) {
+    const b = -Math.PI / 2 + Math.PI * j / (m - 1), xr = [], yr = [], zr = [];
+    for (let i = 0; i < n; i++) {
+      const l = 2 * Math.PI * i / (n - 1);
+      xr.push(R * Math.cos(b) * Math.cos(l)); yr.push(R * Math.cos(b) * Math.sin(l)); zr.push(R * Math.sin(b));
+    }
+    X.push(xr); Y.push(yr); Z.push(zr);
+  }
+  return {type: 'surface', x: X, y: Y, z: Z, opacity: 0.08, showscale: false,
+          colorscale: [[0, '#8a8a8f'], [1, '#8a8a8f']], hoverinfo: 'skip', name: '球体', showlegend: false};
+}
+
+const unit = v => { const s = Math.hypot(v[0], v[1], v[2]); return [v[0] / s, v[1] / s, v[2] / s]; };
+const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+
+// A(χ) が中心位相から見て最初に level を切る角距離（度、0.01° 刻みで線形補間）
+function firstCross(N, w, level) {
+  const step = 0.01;
+  let prev = harmonicSum(1, N, w);
+  for (let g = step; g <= 180 + 1e-9; g += step) {
+    const v = harmonicSum(Math.cos(g * D), N, w);
+    if (prev > level && v <= level) return g - step + step * (prev - level) / (prev - v);
+    prev = v;
+  }
+  return null;
+}
+
+// 半値の殻：中心位相 S から角距離 χ½（A が最初に 1/2 を切る所）の面（S³ の測地球面）を 4 次元で作り、主観座標系に写す
+function shell(p, sh, chi0) {
+  const cs = Math.cos(p.sg * D), ss = Math.sin(p.sg * D);
+  const S  = [cs, ss * sh[0], ss * sh[1], ss * sh[2]];
+  const E1 = [-ss, cs * sh[0], cs * sh[1], cs * sh[2]];
+  const v = unit(cross(sh, Math.abs(sh[2]) < 0.9 ? [0, 0, 1] : [1, 0, 0])), wv = cross(sh, v);
+  const E2 = [0, v[0], v[1], v[2]], E3 = [0, wv[0], wv[1], wv[2]];
+  const c0 = Math.cos(chi0 * D), s0 = Math.sin(chi0 * D);
+  const nT = 61, nP = 121, X = [], Y = [], Z = [];
+  for (let j = 0; j < nT; j++) {
+    const th = Math.PI * j / (nT - 1), xr = [], yr = [], zr = [];
+    for (let i = 0; i < nP; i++) {
+      const ph = 2 * Math.PI * i / (nP - 1);
+      const a = Math.cos(th), b = Math.sin(th) * Math.cos(ph), c = Math.sin(th) * Math.sin(ph);
+      const Q = [0, 1, 2, 3].map(k => c0 * S[k] + s0 * (a * E1[k] + b * E2[k] + c * E3[k]));
+      const q0 = Math.max(-1, Math.min(1, Q[0])), rho = Math.acos(q0), nrm = Math.hypot(Q[1], Q[2], Q[3]);
+      const u = nrm > 1e-12 ? [Q[1] / nrm, Q[2] / nrm, Q[3] / nrm] : [0, 0, 1];
+      const r = p.R * rho;
+      xr.push(r * u[0]); yr.push(r * u[1]); zr.push(r * u[2]);
+    }
+    X.push(xr); Y.push(yr); Z.push(zr);
+  }
+  return {type: 'surface', x: X, y: Y, z: Z, opacity: 0.3, showscale: false, colorscale: [[0, '#d62728'], [1, '#d62728']],
+          lighting: {ambient: 1, diffuse: 0, specular: 0, roughness: 1, fresnel: 0}, hoverinfo: 'skip', name: '半値の殻', showlegend: false};
+}
+
+function params() {
+  return {lo: Number(lo.value), la: Number(la.value), sg: Number(sg.value), R: Number(rr.value), N: Number(nn.value)};
+}
+
+function draw() {
+  const p = params();
+  $('lov').textContent = p.lo + '°'; $('lav').textContent = p.la + '°'; $('sgv').textContent = p.sg + '°';
+  $('rrv').textContent = p.R.toFixed(1); $('nnv').textContent = p.N;
+  const w = weights(p.N, fejer);
+  const h = [Math.cos(p.lo * D), Math.sin(p.lo * D), 0];                                   // θlo 方向（水平）
+  const sh = [Math.cos(p.la * D) * h[0], Math.cos(p.la * D) * h[1], Math.sin(p.la * D)];   // 中心位相の方向 ŝ
+  const nR = Math.min(405, Math.max(181, 4 * (p.N + 1) + 1)), nA = Math.min(721, Math.max(361, 8 * (p.N + 1) + 1));
+  const d1 = disc(p, h, [0, 0, 1], sh, p.N, w, nR, nA);        // 子午面（e_z と θlo 方向）
+  const d2 = disc(p, [1, 0, 0], [0, 1, 0], sh, p.N, w, nR, nA); // 水平面
+  const amax = Math.max(d1.amax, d2.amax), amin = Math.min(d1.amin, d2.amin);
+  const a0 = harmonicSum(1, p.N, w), a1 = harmonicSum(-1, p.N, w);
+  const chiH = firstCross(p.N, w, 0.5);
+  const cx = [], cy = [];                                   // 振幅曲線 A(χ)、0.1° 刻み
+  for (let g = 0; g <= 180 + 1e-9; g += 0.1) { cx.push(harmonicSum(Math.cos(g * D), p.N, w)); cy.push(g); }
+  const P0 = sh.map(c => p.sg * D * p.R * c), P1 = sh.map(c => -(Math.PI - p.sg * D) * p.R * c);
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  const fg = dark ? '#ececf1' : '#1d1d1f', gridc = dark ? '#3a3a42' : '#d2d2d7';
+  const surf = d => ({type: 'surface', x: d.X, y: d.Y, z: d.Z, surfacecolor: d.C, colorscale: 'RdBu', cmin: -1, cmax: 1,
+                      opacity: 0.1, lighting: {ambient: 1, diffuse: 0, specular: 0, roughness: 1, fresnel: 0}, showscale: false, hoverinfo: 'skip', showlegend: false});
+  const traces = [
+    sphere(Math.PI * p.R),
+    surf(d1),
+    surf(d2),
+    ...(chiH !== null ? [shell(p, sh, chiH)] : []),
+    {type: 'scatter3d', mode: 'lines+markers', x: [P1[0], 0, P0[0]], y: [P1[1], 0, P0[1]], z: [P1[2], 0, P0[2]],
+     line: {color: '#8a8a8f', width: 3}, marker: {size: [5, 4, 6], color: ['#2f6fdf', fg, '#d62728']},
+     text: ['対蹠点', '観測者', '中心位相'], hovertemplate: '%{text}<extra></extra>', showlegend: false},
+    {type: 'scatter', mode: 'lines', x: cx, y: cy, xaxis: 'x', yaxis: 'y', line: {color: '#2f6fdf', width: 2},
+     hovertemplate: 'χ = %{y:.2f}°<br>A = %{x:.4f}<extra></extra>', showlegend: false},
+    ...(chiH !== null ? [{type: 'scatter', mode: 'lines', x: [-1.05, 1.05], y: [chiH, chiH], xaxis: 'x', yaxis: 'y',
+                          line: {color: '#d62728', width: 1.5, dash: 'dot'}, hoverinfo: 'skip', showlegend: false}] : [])
+  ];
+  const ax = (t, rng) => ({title: t, range: rng, color: fg, gridcolor: gridc, zerolinecolor: fg, backgroundcolor: 'rgba(0,0,0,0)'});
+  const head = `${fejer ? 'フェイエール' : '等振幅'}　θlo = ${p.lo}°, θla = ${p.la}°, σ = ${p.sg}°, R = ${p.R.toFixed(1)}（球体の半径 πR = ${(Math.PI * p.R).toFixed(2)}）, N = ${p.N} 本`;
+  const layout = {
+    uirevision: 'keep', paper_bgcolor: 'rgba(0,0,0,0)', font: {color: fg}, margin: {l: 0, r: 0, t: 32, b: 0},
+    title: {text: `${head}　　max A = ${amax.toFixed(4)}, min A = ${amin.toFixed(4)}, A(中心位相) = ${a0.toFixed(4)}, A(対蹠点) = ${a1.toFixed(4)}　　半値の殻 χ½ = ${chiH === null ? 'なし' : chiH.toFixed(2) + '°（半径 ' + (chiH * D * p.R).toFixed(2) + '）'}　　格子 ${nR}×${nA}×2`, font: {size: 12.5}},
+    showlegend: false,
+    scene: {domain: {x: [0, 0.84], y: [0, 1]}, aspectmode: 'data', xaxis: ax('x', [-32, 32]), yaxis: ax('y', [-32, 32]), zaxis: ax('z', [-32, 32]),
+            camera: {eye: {x: 0.75, y: -0.9, z: 0.45}}},
+    xaxis: {domain: [0.88, 0.995], range: [-1.05, 1.05], tickvals: [-1, -0.5, 0, 0.5, 1], title: {text: 'A', font: {size: 12}},
+            zeroline: true, zerolinecolor: fg, gridcolor: gridc, color: fg, fixedrange: true},
+    yaxis: {domain: [0.06, 0.92], range: [0, 180], tickvals: [0, 30, 60, 90, 120, 150, 180], title: {text: 'χ [°]', font: {size: 12}},
+            gridcolor: gridc, color: fg, fixedrange: true}
+  };
+  Plotly.react('plot', traces, layout, {responsive: true});
+}
+
+let timer = null;
+function tick() {
+  let t = Number(lo.value) + 5;
+  if (t > 360) t -= 360;
+  lo.value = String(t);
+  draw();
+}
+function setAuto(on) {
+  if (on && !timer) { timer = setInterval(tick, 150); btn.classList.add('on'); }
+  if (!on && timer) { clearInterval(timer); timer = null; btn.classList.remove('on'); }
+}
+btn.addEventListener('click', () => setAuto(!timer));
+fjb.addEventListener('click', () => { fejer = !fejer; fjb.classList.toggle('on', fejer); draw(); });
+fjb.classList.toggle('on', fejer);
+for (const s of [lo, la, sg, rr, nn]) s.addEventListener('input', draw);
+draw();
+setAuto(query.get('auto') !== '0');
+</script>
+</body>
+</html>
