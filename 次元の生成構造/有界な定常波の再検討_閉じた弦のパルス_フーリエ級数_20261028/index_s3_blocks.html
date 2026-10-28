@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S³ の矩形波（殻と鏡映群のブロック）</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.34.0/plotly.min.js"></script>
+<style>
+  :root { --bg:#ffffff; --fg:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --panel:#f5f5f7; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16161a; --fg:#ececf1; --muted:#9a9aa3; --line:#3a3a42; --panel:#202027; }
+  }
+  html, body { margin:0; background:var(--bg); color:var(--fg);
+    font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center;
+    padding:10px 16px; background:var(--panel); border-bottom:1px solid var(--line); font-size:14px; }
+  .sl { display:flex; align-items:center; gap:8px; flex:1 1 170px; }
+  .sl input { flex:1; }
+  .sl .v { font-variant-numeric: tabular-nums; min-width:4.5em; text-align:right; }
+  button { font-size:15px; padding:4px 12px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--fg); }
+  button.on { background:#2f6fdf; color:#fff; border-color:#2f6fdf; }
+  .grp { display:flex; gap:4px; }
+  #plot { width:100%; height:calc(100vh - 255px); min-height:420px; }
+  .note { font-size:12.5px; color:var(--muted); padding:6px 16px 10px; line-height:1.7; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="grp">
+    <button id="md-shell">殻 Nz</button>
+    <button id="md-torus">トーラス 4mn</button>
+    <button id="md-120">120</button>
+    <button id="md-192">192</button>
+    <button id="md-384" class="on">384</button>
+    <button id="md-1152">1152</button>
+  </div>
+  <div class="sl"><span>Nz</span><input id="nz" type="range" min="1" max="12" step="1" value="3"><span class="v" id="nzv">3</span></div>
+  <div class="sl"><span>m</span><input id="mm" type="range" min="1" max="12" step="1" value="3"><span class="v" id="mmv">3</span></div>
+  <div class="sl"><span>n</span><input id="nn" type="range" min="1" max="12" step="1" value="2"><span class="v" id="nnv">2</span></div>
+  <div class="sl"><span>θlo</span><input id="lo" type="range" min="0" max="360" step="1" value="180"><span class="v" id="lov">180°</span></div>
+  <div class="sl"><span>θla</span><input id="la" type="range" min="-90" max="90" step="1" value="0"><span class="v" id="lav">0°</span></div>
+  <div class="sl"><span>σ</span><input id="sg" type="range" min="0" max="180" step="1" value="0"><span class="v" id="sgv">0°</span></div>
+  <div class="sl"><span>R</span><input id="rr" type="range" min="0" max="10" step="0.1" value="3"><span class="v" id="rrv">3.0</span></div>
+  <div class="sl"><span>L</span><input id="ll" type="range" min="1" max="100" step="1" value="49"><span class="v" id="llv">49</span></div>
+  <button id="cut">断面</button>
+  <button id="auto">Auto</button>
+</div>
+<div id="plot"></div>
+<div class="note">
+  4 次元球殻の表面 S³（半径 R）の矩形波。表示は index_s3.html と同じ主観座標系（観測者を中心に半径 πR の球体、ρ ＝ |p|/R、x ＝ (cos ρ, sin ρ u) ∈ S³）。中心位相（群の軸）は 3 角 θlo, θla, σ、方向 ŝ、S ＝ (cos σ, sin σ ŝ)。<br>
+  殻：f ＝ sgn(cos Nz χ)（χ は中心位相からの角距離、幅 π/Nz の球殻が ±1 で交互）。g ＝ f sin χ を正弦級数に展開：A(χ) ＝ Σ_{N=1}^{L+1} b_N sin(Nχ)/sin χ、b_N ＝ (2/π)∫ f sin χ sin(Nχ) dχ（区分ごとに閉じた式）。N ＝ 1 の項が直流。<br>
+  ブロック：鏡 1 枚ごとに法線 n_i ∈ ℝ⁴ を軸にした半球 ±1 の矩形波 S_L(u) ＝ Σ_{n 奇数 ≤ L} a_n U_n(u)、a_n ＝ (−1)^{(n−1)/2} · 4(n+1)/(π n (n+2))（U_n はチェビシェフ第 2 種、S³ の倍音 sin((n+1)χ)/sin χ）を作り、全部掛ける：F(x) ＝ Π_i S_L(n_i · x)。正規化なし。<br>
+  鏡の組（群の枠 e₀…e₃ を S, E1, E2, E3 に回す）：トーラス ＝ (x₀,x₁) 面に角 πk/m の鏡 m 枚 ＋ (x₂,x₃) 面に n 枚（ブロック 4mn）。120 ＝ A₄（正五胞体の頂点差 v_i − v_j、10 枚）。192 ＝ D₄（e_i ± e_j、12 枚）。384 ＝ B₄（＋ e_i、16 枚）。1152 ＝ F₄（＋ (±1,±1,±1,±1)/2、24 枚）。<br>
+  赤の半透明は A ＝ +1/2 の面（+1 のブロックを囲む）、青は A ＝ −1/2 の面（−1 のブロック）。殻は式で交差半径を求めて測地球面を描き、ブロックは球体を覆う 81³ の格子で F を計算して等値面を切り出す（球体の外は 0）。薄い面は球体の輪郭、黒点は観測者、赤点は中心位相、青点は対蹠点、線は測地線。軸は等倍、±32 固定。<br>
+  断面（初期 OFF）：ON にすると原点を通り視線に垂直な平面で球体を切り、その断面の A を色で塗る（−1〜+1 固定、0 が白、不透明、陰影なし）。視線を回して離すと新しい断面に切り替わる（CT の断層像）。ON の間は赤と青の塊を消す。断面の格子は半径方向 min(361, max(181, 4L+1)) 点、角方向はその 2 倍。<br>
+  Auto（初期 OFF）は 150 ms ごとに θlo ← θlo ＋ 5°。URL 引数 ?mode=shell|torus|120|192|384|1152&nz=&m=&n=&lo=&la=&sg=&R=&L=&g=&cut=1&auto=1 で初期値を与えられる（g は格子の一辺、図の記録用）。
+</div>
+<script>
+const $ = id => document.getElementById(id);
+const nz = $('nz'), mm = $('mm'), nn = $('nn'), lo = $('lo'), la = $('la'), sg = $('sg'), rr = $('rr'), ll = $('ll'), btn = $('auto'), cutb = $('cut');
+const MODES = ['shell', 'torus', '120', '192', '384', '1152'];
+const D = Math.PI / 180;
+let mode = '384';
+let G = 81;                                      // ブロックの等値面を切り出す格子の一辺
+let cut = false;                                 // 断面表示（原点を通り視線に垂直な平面）
+
+// URL 引数（図の記録用）
+const query = new URLSearchParams(location.search);
+if (MODES.includes(query.get('mode'))) mode = query.get('mode');
+for (const [k, el] of [['nz', nz], ['m', mm], ['n', nn], ['lo', lo], ['la', la], ['sg', sg], ['R', rr], ['L', ll]]) if (query.has(k)) el.value = query.get(k);
+if (query.has('g')) G = Math.max(21, Math.min(121, Number(query.get('g')) | 1));
+if (query.get('cut') === '1') cut = true;
+
+const unit3 = v => { const s = Math.hypot(v[0], v[1], v[2]); return [v[0] / s, v[1] / s, v[2] / s]; };
+const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+const unit4 = v => { const s = Math.hypot(v[0], v[1], v[2], v[3]); return [v[0] / s, v[1] / s, v[2] / s, v[3] / s]; };
+
+// ---- 鏡の組（ℝ⁴、群の枠 e₀ e₁ e₂ e₃）----
+function mirrors4(md, m, n) {
+  const N = [];
+  if (md === 'torus') {
+    for (let k = 0; k < m; k++) N.push([Math.cos(Math.PI * k / m), Math.sin(Math.PI * k / m), 0, 0]);
+    for (let k = 0; k < n; k++) N.push([0, 0, Math.cos(Math.PI * k / n), Math.sin(Math.PI * k / n)]);
+  } else if (md === '120') {
+    const s5 = Math.sqrt(5);
+    const V = [[1, 1, 1, -1 / s5], [1, -1, -1, -1 / s5], [-1, 1, -1, -1 / s5], [-1, -1, 1, -1 / s5], [0, 0, 0, 4 / s5]];
+    for (let i = 0; i < 5; i++) for (let j = i + 1; j < 5; j++) N.push(unit4(V[i].map((x, k) => x - V[j][k])));
+  } else {
+    for (let i = 0; i < 4; i++) for (let j = i + 1; j < 4; j++) for (const s of [1, -1]) { const v = [0, 0, 0, 0]; v[i] = 1; v[j] = s; N.push(unit4(v)); }
+    if (md === '384' || md === '1152') for (let i = 0; i < 4; i++) { const v = [0, 0, 0, 0]; v[i] = 1; N.push(v); }
+    if (md === '1152') for (const s1 of [1, -1]) for (const s2 of [1, -1]) for (const s3 of [1, -1]) N.push([0.5, 0.5 * s1, 0.5 * s2, 0.5 * s3]);
+  }
+  return N;
+}
+const blocks = (md, m, n, Nz) => md === 'shell' ? Nz : md === 'torus' ? 4 * m * n : Number(md);
+
+// ---- 半球 ±1 の S³ 倍音展開：S_L(u) = Σ_{n 奇数 ≤ L} a_n U_n(u) ----
+function hemiCoeffs(L) {
+  const Lo = L % 2 ? L : L - 1, a = new Float64Array(Lo + 1);
+  for (let n = 1; n <= Lo; n += 2) a[n] = (((n - 1) / 2) % 2 ? -1 : 1) * 4 * (n + 1) / (Math.PI * n * (n + 2));
+  return {a, Lo};
+}
+function hemiSeries(u, a, Lo) {
+  let u0 = 1, u1 = 2 * u, v = a[1] * u1;
+  for (let n = 1; n < Lo; n++) { const u2 = 2 * u * u1 - u0; u0 = u1; u1 = u2; if ((n + 1) % 2) v += a[n + 1] * u2; }
+  return v;
+}
+
+// ---- 殻：f = sgn(cos Nz χ) の正弦級数（g = f sin χ）。A(χ) = Σ_{N=1}^{L+1} b_N U_{N−1}(cos χ) ----
+function shellCoeffs(Nz, L) {
+  const Nmax = L + 1, b = new Float64Array(Nmax + 1);
+  const I = (N, x) => N === 1 ? x / 2 - Math.sin(2 * x) / 4 : Math.sin((N - 1) * x) / (2 * (N - 1)) - Math.sin((N + 1) * x) / (2 * (N + 1));
+  for (let N = 1; N <= Nmax; N++) {
+    let s = 0, x0 = 0;
+    for (let j = 0; j <= Nz; j++) {                       // 区分 j：[x0, x1]、符号 (−1)^j
+      const x1 = j < Nz ? (j + 0.5) * Math.PI / Nz : Math.PI;
+      s += (j % 2 ? -1 : 1) * (I(N, x1) - I(N, x0));
+      x0 = x1;
+    }
+    b[N] = 2 / Math.PI * s;
+  }
+  return {b, Nmax};
+}
+function shellSeries(x, b, Nmax) {                        // Σ b_N U_{N−1}(x)
+  let u0 = 1, u1 = 2 * x, v = b[1] * u0;
+  if (Nmax >= 2) v += b[2] * u1;
+  for (let N = 3; N <= Nmax; N++) { const u2 = 2 * x * u1 - u0; u0 = u1; u1 = u2; v += b[N] * u2; }
+  return v;
+}
+function crossings(fn, level) {                           // fn(χ度) が level を横切る χ を全部（0.01° 刻み、線形補間）
+  const out = [], step = 0.01; let prev = fn(0);
+  for (let g = step; g <= 180 + 1e-9; g += step) {
+    const v = fn(g);
+    if ((prev - level) * (v - level) < 0) out.push(g - step + step * (prev - level) / (prev - v));
+    prev = v;
+  }
+  return out;
+}
+
+// ---- 4 次元の枠：e₀→S, e₁→E1, e₂→E2, e₃→E3 ----
+function frame4(p, sh) {
+  const cs = Math.cos(p.sg * D), ss = Math.sin(p.sg * D);
+  const v = unit3(cross(sh, Math.abs(sh[2]) < 0.9 ? [0, 0, 1] : [1, 0, 0])), w = cross(sh, v);
+  return [[cs, ss * sh[0], ss * sh[1], ss * sh[2]], [-ss, cs * sh[0], cs * sh[1], cs * sh[2]], [0, v[0], v[1], v[2]], [0, w[0], w[1], w[2]]];
+}
+const rot4 = (Fr, n) => [0, 1, 2, 3].map(k => n[0] * Fr[0][k] + n[1] * Fr[1][k] + n[2] * Fr[2][k] + n[3] * Fr[3][k]);
+
+// ---- 測地球面（中心位相から角距離 chi の面）を主観座標系に写す ----
+function geoSphere(p, Fr, chiDeg, color) {
+  const [S, E1, E2, E3] = Fr, c0 = Math.cos(chiDeg * D), s0 = Math.sin(chiDeg * D);
+  const nT = 61, nP = 121, X = [], Y = [], Z = [];
+  for (let j = 0; j < nT; j++) {
+    const th = Math.PI * j / (nT - 1), xr = [], yr = [], zr = [];
+    for (let i = 0; i < nP; i++) {
+      const ph = 2 * Math.PI * i / (nP - 1);
+      const a = Math.cos(th), b = Math.sin(th) * Math.cos(ph), c = Math.sin(th) * Math.sin(ph);
+      const Q = [0, 1, 2, 3].map(k => c0 * S[k] + s0 * (a * E1[k] + b * E2[k] + c * E3[k]));
+      const rho = Math.acos(Math.max(-1, Math.min(1, Q[0]))), nrm = Math.hypot(Q[1], Q[2], Q[3]);
+      const u = nrm > 1e-12 ? [Q[1] / nrm, Q[2] / nrm, Q[3] / nrm] : [0, 0, 1], r = p.R * rho;
+      xr.push(r * u[0]); yr.push(r * u[1]); zr.push(r * u[2]);
+    }
+    X.push(xr); Y.push(yr); Z.push(zr);
+  }
+  return {type: 'surface', x: X, y: Y, z: Z, opacity: 0.3, showscale: false, colorscale: [[0, color], [1, color]], hoverinfo: 'skip', showlegend: false};
+}
+
+// ---- ブロック：球体を覆う格子で F を計算 ----
+function blockField(p, Nr, a, Lo) {
+  const n3 = G * G * G, xs = new Float32Array(n3), ys = new Float32Array(n3), zs = new Float32Array(n3), vs = new Float32Array(n3);
+  const Rb = Math.PI * p.R; let fmax = -Infinity, fmin = Infinity, idx = 0;
+  const M = Nr.length;
+  for (let k = 0; k < G; k++) for (let j = 0; j < G; j++) for (let i = 0; i < G; i++) {
+    const x = -Rb + 2 * Rb * i / (G - 1), y = -Rb + 2 * Rb * j / (G - 1), z = -Rb + 2 * Rb * k / (G - 1);
+    xs[idx] = x; ys[idx] = y; zs[idx] = z;
+    const r = Math.hypot(x, y, z), rho = p.R > 0 ? r / p.R : Infinity;
+    let f = 0;
+    if (rho <= Math.PI) {
+      const X0 = Math.cos(rho), s = r > 1e-12 ? Math.sin(rho) / r : 0;
+      const X1 = s * x, X2 = s * y, X3 = s * z;
+      f = 1;
+      for (let q = 0; q < M; q++) {
+        const n = Nr[q]; let u = n[0] * X0 + n[1] * X1 + n[2] * X2 + n[3] * X3;
+        if (u > 1) u = 1; else if (u < -1) u = -1;
+        f *= hemiSeries(u, a, Lo);
+      }
+      if (f > fmax) fmax = f; if (f < fmin) fmin = f;
+    }
+    vs[idx] = f; idx++;
+  }
+  return {xs, ys, zs, vs, fmax, fmin};
+}
+function iso(fld, level, color) {
+  return {type: 'isosurface', x: fld.xs, y: fld.ys, z: fld.zs, value: fld.vs, isomin: level, isomax: level, surface: {count: 1},
+          caps: {x: {show: false}, y: {show: false}, z: {show: false}}, colorscale: [[0, color], [1, color]], showscale: false,
+          opacity: 0.3, hoverinfo: 'skip', showlegend: false};
+}
+
+function sphere(R) {
+  const n = 49, m = 25, X = [], Y = [], Z = [];
+  for (let j = 0; j < m; j++) {
+    const b = -Math.PI / 2 + Math.PI * j / (m - 1), xr = [], yr = [], zr = [];
+    for (let i = 0; i < n; i++) { const l = 2 * Math.PI * i / (n - 1); xr.push(R * Math.cos(b) * Math.cos(l)); yr.push(R * Math.cos(b) * Math.sin(l)); zr.push(R * Math.sin(b)); }
+    X.push(xr); Y.push(yr); Z.push(zr);
+  }
+  return {type: 'surface', x: X, y: Y, z: Z, opacity: 0.08, showscale: false, colorscale: [[0, '#8a8a8f'], [1, '#8a8a8f']], hoverinfo: 'skip', showlegend: false};
+}
+
+// ---- 断面：視線の方向（カメラの eye − center）を法線にする ----
+function viewNormal() {
+  const gd = $('plot'), cam = gd._fullLayout && gd._fullLayout.scene && gd._fullLayout.scene.camera;
+  const eye = cam && cam.eye ? cam.eye : {x: 0.75, y: -0.9, z: 0.45}, ctr = cam && cam.center ? cam.center : {x: 0, y: 0, z: 0};
+  return unit3([eye.x - ctr.x, eye.y - ctr.y, eye.z - ctr.z]);
+}
+// 原点を通り法線 nv の平面で球体を切り、各点の A を色にした円盤（valueAt は S³ の点（4 成分）→ A）
+function cutDisc(p, valueAt, nv, L) {
+  const Lo = L % 2 ? L : L - 1;
+  const nR = Math.min(361, Math.max(181, 4 * Lo + 1)), nA = 2 * (nR - 1) + 1;
+  const e1 = unit3(cross(nv, Math.abs(nv[2]) < 0.9 ? [0, 0, 1] : [1, 0, 0])), e2 = cross(nv, e1);
+  const X = [], Y = [], Z = [], C = [];
+  let amax = -Infinity, amin = Infinity;
+  for (let j = 0; j < nR; j++) {
+    const rho = Math.PI * j / (nR - 1), cr = Math.cos(rho), sr = Math.sin(rho);
+    const xr = new Array(nA), yr = new Array(nA), zr = new Array(nA), cl = new Array(nA);
+    for (let i = 0; i < nA; i++) {
+      const al = 2 * Math.PI * i / (nA - 1), ca = Math.cos(al), sa = Math.sin(al);
+      const ux = ca * e1[0] + sa * e2[0], uy = ca * e1[1] + sa * e2[1], uz = ca * e1[2] + sa * e2[2];
+      const v = valueAt([cr, sr * ux, sr * uy, sr * uz]);
+      if (v > amax) amax = v; if (v < amin) amin = v;
+      const r = p.R * rho;
+      xr[i] = r * ux; yr[i] = r * uy; zr[i] = r * uz; cl[i] = v;
+    }
+    X.push(xr); Y.push(yr); Z.push(zr); C.push(cl);
+  }
+  return {nR, nA, amax, amin, trace: {type: 'surface', x: X, y: Y, z: Z, surfacecolor: C, colorscale: 'RdBu', cmin: -1, cmax: 1, showscale: false,
+          lighting: {ambient: 1, diffuse: 0, specular: 0, roughness: 1, fresnel: 0}, hoverinfo: 'skip', showlegend: false}};
+}
+
+function params() {
+  return {Nz: Number(nz.value), m: Number(mm.value), n: Number(nn.value), lo: Number(lo.value), la: Number(la.value), sg: Number(sg.value), R: Number(rr.value), L: Number(ll.value)};
+}
+
+function draw() {
+  const p = params();
+  $('nzv').textContent = p.Nz; $('mmv').textContent = p.m; $('nnv').textContent = p.n;
+  $('lov').textContent = p.lo + '°'; $('lav').textContent = p.la + '°'; $('sgv').textContent = p.sg + '°';
+  $('rrv').textContent = p.R.toFixed(1); $('llv').textContent = p.L;
+  nz.disabled = mode !== 'shell'; mm.disabled = mode !== 'torus'; nn.disabled = mode !== 'torus';
+  const sh = [Math.cos(p.la * D) * Math.cos(p.lo * D), Math.cos(p.la * D) * Math.sin(p.lo * D), Math.sin(p.la * D)];
+  const Fr = frame4(p, sh);
+  const P0 = sh.map(c => p.sg * D * p.R * c), P1 = sh.map(c => -(Math.PI - p.sg * D) * p.R * c);
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  const fg = dark ? '#ececf1' : '#1d1d1f', gridc = dark ? '#3a3a42' : '#d2d2d7';
+  const traces = [sphere(Math.PI * p.R)];
+  let head, valueAt;                                       // valueAt：S³ の点（4 成分）→ A
+  if (mode === 'shell') {
+    const {b, Nmax} = shellCoeffs(p.Nz, p.L), S = Fr[0];
+    valueAt = X => shellSeries(Math.max(-1, Math.min(1, X[0] * S[0] + X[1] * S[1] + X[2] * S[2] + X[3] * S[3])), b, Nmax);
+    const A = g => shellSeries(Math.cos(g * D), b, Nmax);
+    const cp = crossings(A, 0.5), cm = crossings(A, -0.5);
+    if (!cut) {
+      for (const c of cp) traces.push(geoSphere(p, Fr, c, '#d62728'));
+      for (const c of cm) traces.push(geoSphere(p, Fr, c, '#2f6fdf'));
+    }
+    let amax = -Infinity, amin = Infinity;
+    for (let g = 0; g <= 180; g += 0.05) { const v = A(g); if (v > amax) amax = v; if (v < amin) amin = v; }
+    const fmt = arr => arr.length ? arr.map(c => c.toFixed(1)).join(', ') + '°' : 'なし';
+    head = `殻　Nz = ${p.Nz}（幅 ${(180 / p.Nz).toFixed(1)}°）, 倍音 N = 1 … ${Nmax}, 直流 b₁ = ${b[1].toFixed(4)}　　max A = ${amax.toFixed(4)}, min A = ${amin.toFixed(4)}　　A = +½ の殻：${fmt(cp)}　A = −½ の殻：${fmt(cm)}`;
+  } else {
+    const {a, Lo} = hemiCoeffs(p.L);
+    const Nr = mirrors4(mode, p.m, p.n).map(nv => rot4(Fr, nv));
+    valueAt = X => { let f = 1; for (const n of Nr) { let u = n[0] * X[0] + n[1] * X[1] + n[2] * X[2] + n[3] * X[3]; if (u > 1) u = 1; else if (u < -1) u = -1; f *= hemiSeries(u, a, Lo); } return f; };
+    const name = mode === 'torus' ? `トーラス m = ${p.m}, n = ${p.n}` : {'120': 'A₄ 正五胞体', '192': 'D₄', '384': 'B₄ 超立方体', '1152': 'F₄ 正二十四胞体'}[mode];
+    let stat = '';
+    if (!cut) {
+      const fld = blockField(p, Nr, a, Lo);
+      traces.push(iso(fld, 0.5, '#d62728'), iso(fld, -0.5, '#2f6fdf'));
+      stat = `　　max F = ${fld.fmax.toFixed(4)}, min F = ${fld.fmin.toFixed(4)}　　格子 ${G}³`;
+    }
+    head = `${name}　ブロック ${blocks(mode, p.m, p.n, p.Nz)}、鏡 ${Nr.length} 枚、L = ${Lo}${stat}`;
+  }
+  if (cut) {
+    const nv = viewNormal(), d = cutDisc(p, valueAt, nv, p.L);
+    traces.push(d.trace);
+    head += `　　断面 ON（法線 ＝ 視線 (${nv.map(c => c.toFixed(2)).join(', ')})、断面の max = ${d.amax.toFixed(4)}, min = ${d.amin.toFixed(4)}、格子 ${d.nR}×${d.nA}）`;
+  }
+  traces.push({type: 'scatter3d', mode: 'lines+markers', x: [P1[0], 0, P0[0]], y: [P1[1], 0, P0[1]], z: [P1[2], 0, P0[2]],
+     line: {color: '#8a8a8f', width: 3}, marker: {size: [5, 4, 6], color: ['#2f6fdf', fg, '#d62728']},
+     text: ['対蹠点', '観測者', '中心位相'], hovertemplate: '%{text}<extra></extra>', showlegend: false});
+  const ax = (t, rng) => ({title: t, range: rng, color: fg, gridcolor: gridc, zerolinecolor: fg, backgroundcolor: 'rgba(0,0,0,0)'});
+  const layout = {
+    uirevision: 'keep', paper_bgcolor: 'rgba(0,0,0,0)', font: {color: fg}, margin: {l: 0, r: 0, t: 32, b: 0}, showlegend: false,
+    title: {text: `${head}　　θlo = ${p.lo}°, θla = ${p.la}°, σ = ${p.sg}°, R = ${p.R.toFixed(1)}`, font: {size: 12.5}},
+    scene: {aspectmode: 'data', xaxis: ax('x', [-32, 32]), yaxis: ax('y', [-32, 32]), zaxis: ax('z', [-32, 32]),
+            camera: {eye: {x: 0.75, y: -0.9, z: 0.45}}}
+  };
+  Plotly.react('plot', traces, layout, {responsive: true});
+}
+
+let timer = null;
+function tick() { let t = Number(lo.value) + 5; if (t > 360) t -= 360; lo.value = String(t); draw(); }
+function setAuto(on) {
+  if (on && !timer) { timer = setInterval(tick, 150); btn.classList.add('on'); }
+  if (!on && timer) { clearInterval(timer); timer = null; btn.classList.remove('on'); }
+}
+function setMode(md) { mode = md; for (const k of MODES) $('md-' + k).classList.toggle('on', k === md); draw(); }
+btn.addEventListener('click', () => setAuto(!timer));
+cutb.addEventListener('click', () => { cut = !cut; cutb.classList.toggle('on', cut); draw(); });
+cutb.classList.toggle('on', cut);
+for (const k of MODES) $('md-' + k).addEventListener('click', () => setMode(k));
+for (const s of [nz, mm, nn, lo, la, sg, rr, ll]) s.addEventListener('change', draw);
+for (const s of [nz, mm, nn, lo, la, sg, rr, ll]) s.addEventListener('input', () => {
+  $('nzv').textContent = nz.value; $('mmv').textContent = mm.value; $('nnv').textContent = nn.value;
+  $('lov').textContent = lo.value + '°'; $('lav').textContent = la.value + '°'; $('sgv').textContent = sg.value + '°';
+  $('rrv').textContent = Number(rr.value).toFixed(1); $('llv').textContent = ll.value;
+});
+setMode(mode);
+// 断面 ON のとき、視線（カメラ）が変わったら切断面を作り直す
+let redrawing = false;
+$('plot').on('plotly_relayout', ev => {
+  if (cut && !redrawing && Object.keys(ev).some(k => k.startsWith('scene.camera'))) { redrawing = true; draw(); redrawing = false; }
+});
+if (query.get('auto') === '1') setAuto(true);
+</script>
+</body>
+</html>
