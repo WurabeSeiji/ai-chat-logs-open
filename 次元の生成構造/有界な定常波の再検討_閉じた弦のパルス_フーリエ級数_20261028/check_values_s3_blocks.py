@@ -7,8 +7,8 @@
 
 1) a_n の閉じた式を数値積分 (2/π)∫_0^π sgn(cos χ) sin((n+1)χ) sin χ dχ と突き合わせ。1 因子の行き過ぎ max S_L
 2) b_N の閉じた式を数値積分と突き合わせ（Nz = 1, 2, 3）。直流 b_1、A = ±1/2 の交差半径（L = 49）
-3) 4 次元の鏡の組の閉包（反射で組の ±法線に戻る）と、乱数点 200000 個の符号ベクトルの種類（＝ブロック数）、面積比 × B、いちばん深い点
-4) 各モード、L = 9, 49, 99：球体を覆う 61³ の格子（index_s3_blocks.html と同じ写像、σ = 0）で max F・min F、いちばん深い点の F
+3) 4 次元の鏡の組の閉包（反射で組の ±法線に戻る）と、乱数点 600000 個の符号ベクトルの種類（＝ブロック数）、面積比 × B、いちばん深い点
+4) 各モード、L = 9, 49, 99, 199：球体を覆う 61³ の格子（index_s3_blocks.html と同じ写像、σ = 0）で max F・min F、いちばん深い点の F
 """
 import math
 import numpy as np
@@ -25,6 +25,27 @@ def mirrors4(mode, m=3, n=2):
         V = [[1,1,1,-1/s5],[1,-1,-1,-1/s5],[-1,1,-1,-1/s5],[-1,-1,1,-1/s5],[0,0,0,4/s5]]
         for i in range(5):
             for j in range(i+1, 5): N.append(unit(np.array(V[i]) - np.array(V[j])))
+    elif mode == '14400':
+        import itertools
+        PHI = (1 + 5 ** 0.5) / 2; roots = []
+        for i in range(4):
+            for s in (1, -1):
+                v = [0.0]*4; v[i] = s; roots.append(v)
+        for b in range(16): roots.append([-0.5 if (b >> k) & 1 else 0.5 for k in range(4)])
+        base = [PHI/2, 0.5, 1/(2*PHI), 0.0]
+        def parity(p):
+            return sum(1 for i in range(4) for j in range(i+1, 4) if p[i] > p[j]) % 2
+        for pm in itertools.permutations(range(4)):
+            if parity(pm): continue
+            for b in range(8):
+                v = [0.0]*4; bit = 0
+                for k in range(4):
+                    val = base[pm[k]]
+                    if val != 0: v[k] = (-1 if (b >> bit) & 1 else 1) * val; bit += 1
+                roots.append(v)
+        for v in roots:
+            k = next(i for i, x in enumerate(v) if abs(x) > 1e-12)
+            if v[k] > 0: N.append(v)
     else:
         for i in range(4):
             for j in range(i+1, 4):
@@ -115,7 +136,7 @@ if __name__ == "__main__":
     print()
     print("3)-4) mirror sets in R^4")
     rng = np.random.default_rng(0)
-    P = rng.normal(size=(200000, 4)); P /= np.linalg.norm(P, axis=1, keepdims=True)
+    P = rng.normal(size=(600000, 4)); P /= np.linalg.norm(P, axis=1, keepdims=True)
     Gc = 61; Rb = math.pi
     g1 = np.linspace(-Rb, Rb, Gc); gx, gy, gz = np.meshgrid(g1, g1, g1, indexing='ij')
     r = np.sqrt(gx**2 + gy**2 + gz**2); inside = r <= math.pi
@@ -123,15 +144,15 @@ if __name__ == "__main__":
     X4 = np.stack([np.cos(r), s*gx, s*gy, s*gz], axis=-1)[inside]
     print("mode, M mirrors, B expected, closure failures, distinct sign vectors, min/max area*B, deepest point angle [deg]")
     print("    L, grid points inside ball, max F, min F, F(deepest)")
-    for mode, B in (('torus', 24), ('120', 120), ('192', 192), ('384', 384), ('1152', 1152)):
+    for mode, B in (('torus', 24), ('120', 120), ('192', 192), ('384', 384), ('1152', 1152), ('14400', 14400)):
         A = mirrors4(mode); M = len(A)
         bad = closure_failures(A)
-        sgn = np.sign(np.einsum('ij,kj->ik', P, A))
+        sgn = np.sign(np.einsum('ij,kj->ik', P, A)).astype(np.int8)
         keys, counts = np.unique(sgn, axis=0, return_counts=True)
         frac = counts/len(P)*B
         depth = np.abs(np.einsum('ij,kj->ik', P, A)).min(axis=1); k = int(depth.argmax()); deep = P[k]
         print(f"{mode}, {M}, {B}, {bad}, {len(keys)}, {frac.min():.3f}/{frac.max():.3f}, {math.degrees(math.asin(depth[k])):.2f}")
-        for L in (9, 49, 99):
+        for L in (9, 49, 99, 199):
             a, Lo = hemi_coeffs(L)
             F = np.ones(len(X4))
             for nv in A: F = F * hemi_series(np.clip(np.einsum('ij,j->i', X4, nv), -1, 1), a, Lo)
