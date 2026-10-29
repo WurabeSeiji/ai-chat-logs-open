@@ -31,9 +31,10 @@
 <div class="bar">
   <span>1:</span>
   <div class="sl"><span>θ₁</span><input id="th1" type="range" min="0" max="360" step="1" value="180"><span class="v" id="th1v">180°</span></div>
-  <div class="sl"><span>φ₁</span><input id="ph1" type="range" min="0" max="360" step="1" value="10"><span class="v" id="ph1v">10°</span></div>
+  <div class="sl"><span>φ₁</span><input id="ph1" type="range" min="0" max="360" step="1" value="20"><span class="v" id="ph1v">20°</span></div>
   <div class="sl"><span>M₁</span><input id="mm1" type="range" min="1" max="100" step="1" value="10"><span class="v" id="mm1v">10</span></div>
   <span class="grp"><label class="ck"><input id="odd1" type="checkbox" checked>奇</label><label class="ck"><input id="even1" type="checkbox" checked>偶</label></span>
+  <div class="sl"><span>δ₁</span><input id="dl1" type="range" min="-30" max="30" step="1" value="20"><span class="v" id="dl1v">20°/t</span></div>
 </div>
 <div class="bar">
   <span>2:</span>
@@ -41,6 +42,7 @@
   <div class="sl"><span>φ₂</span><input id="ph2" type="range" min="0" max="360" step="1" value="10"><span class="v" id="ph2v">10°</span></div>
   <div class="sl"><span>M₂</span><input id="mm2" type="range" min="1" max="100" step="1" value="10"><span class="v" id="mm2v">10</span></div>
   <span class="grp"><label class="ck"><input id="odd2" type="checkbox" checked>奇</label><label class="ck"><input id="even2" type="checkbox" checked>偶</label></span>
+  <div class="sl"><span>δ₂</span><input id="dl2" type="range" min="-30" max="30" step="1" value="0"><span class="v" id="dl2v">0°/t</span></div>
 </div>
 <div class="bar">
   <div class="sl"><span>R×</span><input id="rr" type="range" min="1" max="20" step="1" value="10"><span class="v" id="rrv">10</span></div>
@@ -49,17 +51,20 @@
 <div class="head"><div id="h1"></div><div id="h2" class="ratios"></div></div>
 <div id="plot"></div>
 <div class="note">
-  弦に沿った角 ψ ∈ [0, 360)。同じ弦の上の複素パルス二つの線形合成：Z ＝ Z₁ ＋ Z₂、Z_i(ψ) ＝ φ_i/360 ＋ (2/π) Σ_m [ sin(mπφ_i/360) / m ] · e^{imπ(ψ−θ_i)/180}（m は 1..M_i のうち奇・偶で選んだもの）。各パルスは index_v2c.html と同じ式で、描くのは和だけ。<br>
-  半径は和の親のノルム R(Δ) ＝ √Σ_m |c_m|²、c_m ＝ c⁽¹⁾_m e^{−imθ₁} ＋ c⁽²⁾_m e^{−imθ₂}（直流は含めない）。R² ＝ R₁² ＋ R₂² ＋ 2 Σ c⁽¹⁾c⁽²⁾ cos(mΔ)、Δ ＝ θ₁ − θ₂ で、Auto で Δ が動くと R が脈打つ（R の軌道）。表示では倍率 k（R×、1〜20、初期 10）を掛けた kR を円・円筒・曲線の半径に使い、ティックごとに更新する（振幅はそのまま）。実部と虚部は別の曲線：青 ＝ 和の実部を半径方向に乗せた ((kR ＋ Re Z) cos ψ, (kR ＋ Re Z) sin ψ, 0)、橙 ＝ 和の虚部を垂直に乗せた (kR cos ψ, kR sin ψ, Im Z)。細い線は半径 kR の基準円、薄い面は半径 kR・高さ ±1 の円筒。円の上の印：青の菱形 ＝ パルス 1 の中心 θ₁、紫の四角 ＝ パルス 2 の中心 θ₂、灰の十字 ＝ 対の真ん中（零閉塞が実になる基準）、点線 ＝ 二つの中心を結ぶ対の向き。x・y・z は同じ範囲・縮尺 1:1:1、正射影。<br>
+  弦に沿った角 ψ ∈ [0, 360)。同じ弦の上の複素パルス二つの線形合成：Z ＝ Z₁ ＋ Z₂、Z_i(ψ) ＝ e^{iφ₀i} [ φ_i/360 ＋ (2/π) Σ_m [ sin(mπφ_i/360) / m ] · e^{imπ(ψ−θ_i)/180} ]（m は 1..M_i のうち奇・偶で選んだもの）。φ₀i は各パルスの内部位相（偏角）で、位置 θ_i とは独立。各パルスは index_v2c.html と同じ式で、描くのは和だけ。<br>
+  半径は和の親のノルム R ＝ √Σ_m |c_m|²、c_m ＝ c⁽¹⁾_m e^{i(φ₀₁−mθ₁)} ＋ c⁽²⁾_m e^{i(φ₀₂−mθ₂)}（直流は含めない）。R² ＝ R₁² ＋ R₂² ＋ 2 Σ c⁽¹⁾c⁽²⁾ cos(mΔ − Φ)、Δ ＝ θ₁ − θ₂（位置の差、m に比例して効く）、Φ ＝ φ₀₁ − φ₀₂（内部位相の差、m に依らない）。Auto は各パルスで独立に二つのステップを持つ：位置 θ_i ← θ_i ＋ φ_i と、内部位相 φ₀i ← φ₀i ＋ δ_i（スライダー δ、−30〜30°/ティック、初期 0）。並進は δ ＝ 0 の特別な場合で、発展の規則は固定しない。表示では倍率 k（R×、1〜20、初期 10）を掛けた kR を円・円筒・曲線の半径に使い、ティックごとに更新する（振幅はそのまま）。実部と虚部は別の曲線：青 ＝ 和の実部を半径方向に乗せた ((kR ＋ Re Z) cos ψ, (kR ＋ Re Z) sin ψ, 0)、橙 ＝ 和の虚部を垂直に乗せた (kR cos ψ, kR sin ψ, Im Z)。細い線は半径 kR の基準円、薄い面は半径 kR・高さ ±1 の円筒。円の上の印：青の菱形 ＝ パルス 1 の中心 θ₁、紫の四角 ＝ パルス 2 の中心 θ₂、灰の十字 ＝ 対の真ん中（零閉塞が実になる基準）、点線 ＝ 二つの中心を結ぶ対の向き。x・y・z は同じ範囲・縮尺 1:1:1、正射影。<br>
   印：黒 × ＝ 曲率中心（原点）、橙の球 ＝ 線形重心（Re Z を半径方向に乗せた曲線の ψ 平均）、緑の球 ＝ パワー重心（|Z|² を重みにした円周上の重心）。どちらも計算上の点で、そこに波はなく観測者もいないので、位置の読みではない（スペクトルの性質）。<br>
-  右上に出すのは読める量だけ。二つ目で新しく読めるもの：Δ（位相差。スペクトル読みは、共通の倍音で |c_m|/(c₁＋c₂) が最も小さい m ＝ 消える倍音から Δ ≈ 180°/m。同じパルスなら |c_m| ∝ |cos(mΔ/2)| で最初の零点が m ＝ 180°/Δ。零点が M の範囲にないときは読めない）、対の真ん中（基準をここに置くと Σc² が実）、対の向き（中心を結ぶ線）、波数の比 ⟨m⟩₁/⟨m⟩₂、相対運動（Auto で Δ が毎ティック φ₁−φ₂ 進む。読めるのは積 v·t で、t と v は分けられない）、R₁・R₂（各ノルム）、R と R/(R₁＋R₂)（親の R の軌道）、cos Θ ＝ Σ c⁽¹⁾c⁽²⁾ cos(mΔ)/(R₁R₂) と Θ（重なりの角。近接の距離、幅を超えると 90° に張り付く）、tan α ＝ R₂/R₁ と α（視野角。相手の大きさを単位にした遠方の距離）。和について：c₀/R、P(π)/R² ＝ (Σ_偶 |c|² − Σ_奇 |c|²)/R²、Σ c_m²/R²（基準 ψ ＝ 0 から見た本当の二乗和。同じパルスなら基準が真ん中のとき実）、⟨m⟩ ＝ Σ m|c_m|/Σ|c_m|、巻き数（|w| ＝ 0.999 の円上）。<br>
-  読めないもの：位置の絶対値（読めるのは Δ と比だけ）、時間・エネルギー・質量・運動量の値（発展の規則が要る）、幅を超えた距離（重なりが消え Θ ＝ 90°、視野角だけが残る）。Auto は各 θ_i ← θ_i ＋ φ_i。ψ の刻みは最高波数の 1 周期あたり 8 点以上。
+  右：光円錐。横軸 ＝ 相対位置 Δ の累積、縦軸 ＝ 内部位相の差 Φ の累積（度、始点を原点、縮尺 1:1）。倍音 m の二つの寄与の相対位相は mΔ − Φ で、その一歩の変化は m(φ₁−φ₂) − (δ₁−δ₂)。倍音 m の干渉が止まる方向が Φ ＝ mΔ で、巻き数 1 の倍音が止まる Φ ＝ ±Δ（赤の破線）を光円錐（c ＝ 1）とする。細線は Φ ＝ ±mΔ（m ＝ 2〜5）の扇、緑は傾きが整数のときに凍結する倍音の線。橙の折れ線が Auto の世界線で、傾き (δ₁−δ₂)/(φ₁−φ₂)。世界線は折り返さない（時間は遡らない）。動かすのはゲージ（目盛）で、点が枠からはみ出したら目盛の範囲をはみ出した向きに 180° ずつ書き換え、図全体を累積の座標のまま描き直し、またはみ出すまで描く。光円錐 Φ ＝ ±Δ と扇 Φ ＝ ±mΔ は原点（Auto の始点）から伸びる本物の直線で、新しい目盛の範囲に入る部分が見える。巻数 (n_Δ, n_Φ) はメモリとして併記する。二つの位相はトーラスの上にあり、世界線は (φ₁−φ₂):(δ₁−δ₂) を約分した巻数の対のトーラス曲線で、対が同時に原点へ戻る周期（360/最大公約数 ティック）も表示する。初期値は φ₁ ＝ 20、δ₁ ＝ 20、φ₂ ＝ 10、δ₂ ＝ 0 で傾き 2（内側、m ＝ 2 が凍結）。δ₁ ＝ 10 で光円錐の上、5 で外側、0 で横軸の上（並進だけ）、φ₁ ＝ φ₂ で縦軸の上（静止した内部時計の差）。<br>
+  右上に出すのは読める量だけ。二つ目で新しく読めるもの：Δ（位相差。スペクトル読みは、共通の倍音で |c_m|/(c₁＋c₂) が最も小さい m ＝ 消える倍音から Δ ≈ 180°/m。同じパルスなら |c_m| ∝ |cos(mΔ/2)| で最初の零点が m ＝ 180°/Δ。零点が M の範囲にないときは読めない）、対の真ん中（基準をここに置くと Σc² が実）、対の向き（中心を結ぶ線）、波数の比 ⟨m⟩₁/⟨m⟩₂、内部位相の差 Φ（スペクトルで Δ と別々に読める：消える倍音は mΔ − Φ ＝ ±180°）、相対運動（Δ が毎ティック φ₁−φ₂ 進む）、内部時計（Φ が毎ティック δ₁−δ₂ 進む。位置の運動と独立な相対の回転）、比 (δ₁−δ₂)/(φ₁−φ₂)（内部位相の速さと位置の速さの比。E・m 型の量が比として出る）、R₁・R₂（各ノルム）、R と R/(R₁＋R₂)（親の R の軌道）、cos Θ ＝ Σ c⁽¹⁾c⁽²⁾ cos(mΔ)/(R₁R₂) と Θ（重なりの角。近接の距離、幅を超えると 90° に張り付く）、tan α ＝ R₂/R₁ と α（視野角。相手の大きさを単位にした遠方の距離）。和について：c₀/R、P(π)/R² ＝ (Σ_偶 |c|² − Σ_奇 |c|²)/R²、Σ c_m²/R²（基準 ψ ＝ 0 から見た本当の二乗和。同じパルスなら基準が真ん中のとき実）、⟨m⟩ ＝ Σ m|c_m|/Σ|c_m|、巻き数（|w| ＝ 0.999 の円上）。<br>
+  読めないもの：位置の絶対値（読めるのは Δ と比だけ）、t・E・m の絶対値（読めるのは相対の進みと比）、幅を超えた距離（重なりが消え Θ ＝ 90°、視野角だけが残る）。スライダーを動かすとティックと内部位相は 0 に戻る。ψ の刻みは最高波数の 1 周期あたり 8 点以上。
 </div>
 <script>
 const $ = id => document.getElementById(id);
 const rr = $('rr'), btn = $('auto');
-let ticks = 0;                               // Auto のティック数（スライダーを動かすと 0 に戻す）。相対運動 (φ₁−φ₂)·ticks の読みに使う
-const P = [1, 2].map(i => ({th: $('th' + i), ph: $('ph' + i), mm: $('mm' + i), odd: $('odd' + i), even: $('even' + i), thv: $('th' + i + 'v'), phv: $('ph' + i + 'v'), mmv: $('mm' + i + 'v')}));
+let ticks = 0;                               // Auto のティック数（スライダーを動かすと 0 に戻す）
+let hist = [[0, 0]];                         // 右パネルの世界線：(Δ の累積, Φ の累積)。始点を原点にする
+let win0 = [-180, -180];                     // 右パネルの目盛（ゲージ）の左下。点がはみ出したら 180° ずつ書き換える
+const P = [1, 2].map(i => ({th: $('th' + i), ph: $('ph' + i), mm: $('mm' + i), odd: $('odd' + i), even: $('even' + i), dl: $('dl' + i), thv: $('th' + i + 'v'), phv: $('ph' + i + 'v'), mmv: $('mm' + i + 'v'), dlv: $('dl' + i + 'v'), phase0: 0}));   // phase0 = 内部位相（偏角）。Auto で δ ずつ進む。位置 θ とは独立
 
 function grid(n) {                       // ψ を n 点（両端を含めて閉じる）
   const psi = new Float64Array(n), c = new Float64Array(n), s = new Float64Array(n);
@@ -105,19 +110,20 @@ function wrap180(d) { return ((d + 180) % 360 + 360) % 360 - 180; }
 function params() {
   const k = Number(rr.value);
   const pulses = P.map(u => {
-    const theta = Number(u.th.value), phi = Number(u.ph.value), M = Number(u.mm.value);
+    const theta = Number(u.th.value), phi = Number(u.ph.value), M = Number(u.mm.value), delta = Number(u.dl.value), phase0 = u.phase0;
     const co = coeffs(phi, M, u.odd.checked, u.even.checked);
     let R2 = 0; for (const c of co.cs) R2 += c * c;
-    return {theta, phi, M, co, R: Math.sqrt(R2), R2, kmax: co.ms.length ? co.ms[co.ms.length - 1] : 1};
+    return {theta, phi, M, delta, phase0, co, R: Math.sqrt(R2), R2, kmax: co.ms.length ? co.ms[co.ms.length - 1] : 1};
   });
   const [a, b] = pulses, Delta = wrap180(a.theta - b.theta), dr = Math.PI * (a.theta - b.theta) / 180;
-  // 和の係数 c_m = c1_m e^{-imθ1} + c2_m e^{-imθ2}（複素）。交差項 Σ c1 c2 cos(mΔ) は共通の m だけ
+  const Phi = wrap180(a.phase0 - b.phase0), pr = Math.PI * (a.phase0 - b.phase0) / 180;   // 内部位相の差 Φ = φ₀₁ − φ₀₂
+  // 和の係数 c_m = c1_m e^{i(φ₀₁ − mθ1)} + c2_m e^{i(φ₀₂ − mθ2)}（複素）。交差項 Σ c1 c2 cos(mΔ − Φ) は共通の m だけ。Δ は m に比例して効き、Φ は m に依らない
   const Am = new Map();
   for (const [i, u] of pulses.entries()) {
-    const t = Math.PI * u.theta / 180;
-    u.co.ms.forEach((m, j) => { const c = u.co.cs[j], v = Am.get(m) || [0, 0]; v[0] += c * Math.cos(m * t); v[1] -= c * Math.sin(m * t); Am.set(m, v); });
+    const t = Math.PI * u.theta / 180, f = Math.PI * u.phase0 / 180;
+    u.co.ms.forEach((m, j) => { const c = u.co.cs[j], v = Am.get(m) || [0, 0]; v[0] += c * Math.cos(f - m * t); v[1] += c * Math.sin(f - m * t); Am.set(m, v); });
   }
-  let cross = 0; a.co.ms.forEach((m, j) => { const jb = b.co.ms.indexOf(m); if (jb >= 0) cross += a.co.cs[j] * b.co.cs[jb] * Math.cos(m * dr); });
+  let cross = 0; a.co.ms.forEach((m, j) => { const jb = b.co.ms.indexOf(m); if (jb >= 0) cross += a.co.cs[j] * b.co.cs[jb] * Math.cos(m * dr - pr); });
   const R2 = a.R2 + b.R2 + 2 * cross, R = Math.sqrt(R2);        // 親のノルム（直流は含めない）
   const cosT = cross / (a.R * b.R), Theta = Math.acos(Math.max(-1, Math.min(1, cosT))) * 180 / Math.PI;
   const alpha = Math.atan2(b.R, a.R) * 180 / Math.PI;
@@ -129,19 +135,20 @@ function params() {
   let mmin = null, rmin = Infinity;
   a.co.ms.forEach((m, j) => { const jb = b.co.ms.indexOf(m); if (jb < 0) return; const v = Am.get(m), den = Math.abs(a.co.cs[j]) + Math.abs(b.co.cs[jb]);
     const r = den > 0 ? Math.hypot(v[0], v[1]) / den : 1; if (r < rmin) { rmin = r; mmin = m; } });
-  const DeltaSpec = (mmin !== null && rmin < 0.5) ? 180 / mmin : null;
+  const specRes = (mmin !== null && rmin < 0.5) ? wrap180(mmin * Delta - Phi) : null;   // 消える倍音の条件 mΔ − Φ ≡ ±180°（mod 360）の残差。±180° なら整合
   const mbar1 = a.co.cs.reduce((t, c, j) => t + a.co.ms[j] * Math.abs(c), 0) / a.co.cs.reduce((t, c) => t + Math.abs(c), 0);
   const mbar2 = b.co.cs.reduce((t, c, j) => t + b.co.ms[j] * Math.abs(c), 0) / b.co.cs.reduce((t, c) => t + Math.abs(c), 0);
-  return {pulses, k, Delta, Am, cross, R, R2, cosT, Theta, alpha, c0, Rd, kmax, mid, mmin, rmin, DeltaSpec, mbar1, mbar2};
+  return {pulses, k, Delta, Phi, Am, cross, R, R2, cosT, Theta, alpha, c0, Rd, kmax, mid, mmin, rmin, specRes, mbar1, mbar2};
 }
 
 function draw() {
   const p = params();
-  P.forEach((u, i) => { const q = p.pulses[i]; u.thv.textContent = q.theta + '°'; u.phv.textContent = q.phi + '°'; u.mmv.textContent = q.M; });
+  P.forEach((u, i) => { const q = p.pulses[i]; u.thv.textContent = q.theta + '°'; u.phv.textContent = q.phi + '°'; u.mmv.textContent = q.M; u.dlv.textContent = q.delta + '°/t'; });
   $('rrv').textContent = p.k;
   const n = Math.min(40001, Math.max(1441, 8 * p.kmax + 1));
   const g = grid(n);
-  const Z1 = pulse(g.psi, p.pulses[0].theta, p.pulses[0].co), Z2 = pulse(g.psi, p.pulses[1].theta, p.pulses[1].co);
+  const rot = (Zi, f) => { const c = Math.cos(f), s = Math.sin(f); return {re: Zi.re.map((v, i) => v * c - Zi.im[i] * s), im: Zi.im.map((v, i) => Zi.re[i] * s + v * c)}; };   // 全体位相 e^{iφ₀} を掛ける（直流も含めて回す）
+  const Z1 = rot(pulse(g.psi, p.pulses[0].theta, p.pulses[0].co), Math.PI * p.pulses[0].phase0 / 180), Z2 = rot(pulse(g.psi, p.pulses[1].theta, p.pulses[1].co), Math.PI * p.pulses[1].phase0 / 180);
   const Z = {re: Z1.re.map((v, i) => v + Z2.re[i]), im: Z1.im.map((v, i) => v + Z2.im[i])};   // 線形合成
   let zmax = -Infinity, zmin = Infinity, imax = -Infinity, imin = Infinity;
   for (let i = 0; i < n; i++) { const v = Z.re[i], w = Z.im[i]; if (v > zmax) zmax = v; if (v < zmin) zmin = v; if (w > imax) imax = w; if (w < imin) imin = w; }
@@ -160,12 +167,12 @@ function draw() {
     s2re += v[0] * v[0] - v[1] * v[1]; s2im += 2 * v[0] * v[1]; Ppi += (m % 2 ? -1 : 1) * q; sAbs += ab; sMAbs += m * ab; }
   const mbar = sAbs ? sMAbs / sAbs : 0;
   let wind = 0;
-  { const A = pulse(g.psi, p.pulses[0].theta, p.pulses[0].co, 0.999), B = pulse(g.psi, p.pulses[1].theta, p.pulses[1].co, 0.999);
+  { const A = rot(pulse(g.psi, p.pulses[0].theta, p.pulses[0].co, 0.999), Math.PI * p.pulses[0].phase0 / 180), B = rot(pulse(g.psi, p.pulses[1].theta, p.pulses[1].co, 0.999), Math.PI * p.pulses[1].phase0 / 180);
     let prev = Math.atan2(A.im[0] + B.im[0], A.re[0] + B.re[0]), tot = 0;
     for (let i = 1; i < n; i++) { const a = Math.atan2(A.im[i] + B.im[i], A.re[i] + B.re[i]); let d = a - prev; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI; tot += d; prev = a; }
     wind = Math.round(tot / (2 * Math.PI)); }
   const dark = matchMedia('(prefers-color-scheme: dark)').matches;
-  const fg = dark ? '#ececf1' : '#1d1d1f', gridc = dark ? '#3a3a42' : '#d2d2d7';
+  const fg = dark ? '#ececf1' : '#1d1d1f', gridc = dark ? '#3a3a42' : '#d2d2d7', thin = dark ? '#55555f' : '#b8b8bf';
   const L = Math.max(p.Rd + Math.max(Math.abs(zmax), Math.abs(zmin)), Math.abs(imax), Math.abs(imin), p.Rd + 0.5) * 1.15;
   const zrange = [-L, L];                                     // x・y・z を同じ範囲にして目盛の間隔をそろえる
   const traces = [
@@ -183,25 +190,57 @@ function draw() {
     {type: 'scatter3d', mode: 'markers', x: [p.Rd * Math.cos(Math.PI * p.mid / 180)], y: [p.Rd * Math.sin(Math.PI * p.mid / 180)], z: [0], marker: {symbol: 'cross', size: 3, color: '#8a8a8f'}, name: '対の真ん中', hovertemplate: `対の真ん中 ${p.mid.toFixed(1)}°（零閉塞の基準）<extra></extra>`},
     {type: 'scatter3d', mode: 'lines', x: [p.Rd * Math.cos(Math.PI * p.pulses[0].theta / 180), p.Rd * Math.cos(Math.PI * p.pulses[1].theta / 180)], y: [p.Rd * Math.sin(Math.PI * p.pulses[0].theta / 180), p.Rd * Math.sin(Math.PI * p.pulses[1].theta / 180)], z: [0, 0], line: {color: '#8a8a8f', width: 1.5, dash: 'dot'}, hoverinfo: 'skip', showlegend: false}
   ];
+  // ---- 右パネル：光円錐。横軸 Δ の累積、縦軸 Φ の累積（度）。倍音 m の相対位相 mΔ − Φ が止まる方向が Φ = mΔ、m = 1 を光円錐（c = 1）とする
+  const dphi = p.pulses[0].phi - p.pulses[1].phi, ddl = p.pulses[0].delta - p.pulses[1].delta;
+  const slope = dphi === 0 ? (ddl === 0 ? null : Infinity) : ddl / dphi;
+  const mstar = (slope !== null && isFinite(slope) && Math.abs(slope - Math.round(slope)) < 0.05 && Math.round(Math.abs(slope)) >= 1) ? Math.round(slope) : null;
+  const cur = hist[hist.length - 1], interval = cur[1] * cur[1] - cur[0] * cur[0];
+  // 折り返し：Δ も Φ も角なので ±180° で巻き戻し、巻数 (n_Δ, n_Φ) を数える。世界線は折り返しのたびに切る（null）
+  const wrapN = v => Math.round(v / 360), nD = wrapN(cur[0]), nF = wrapN(cur[1]);
+  // 世界線は折り返さない（時間は遡らない）。動かすのはゲージ（目盛）：点が枠からはみ出したら、目盛の範囲をはみ出した向きに 180° ずつ書き換え、
+  // 図全体を累積の座標のまま描き直す。光円錐 Φ = ±Δ と扇 Φ = ±mΔ は原点から伸びる本物の直線で、新しい目盛の範囲に入る部分が見える
+  while (cur[0] > win0[0] + 360) win0[0] += 180; while (cur[0] < win0[0]) win0[0] -= 180;
+  while (cur[1] > win0[1] + 360) win0[1] += 180; while (cur[1] < win0[1]) win0[1] -= 180;
+  const GX0 = win0[0], GX1 = win0[0] + 360, GY0 = win0[1], GY1 = win0[1] + 360;   // 目盛の範囲
+  const wx = hist.map(h => h[0]), wy = hist.map(h => h[1]);
+  const curW = cur;
+  const g2 = (a, b) => b ? g2(b, a % b) : Math.abs(a);
+  const gcdv = g2(Math.round(dphi), Math.round(ddl)), per = gcdv ? 360 / gcdv : null;         // 対が同時に原点へ戻る周期（ティック）と、そのときの巻数の対
+  const knot = gcdv ? `(${Math.round(dphi) / gcdv}, ${Math.round(ddl) / gcdv})` : '—';
+  const XL = [Math.min(GX0, GY0 / 5) - 400, Math.max(GX1, GY1) + 400];   // 原点を通る直線を枠より十分長く引く（軸の範囲で切られる）
+  for (const sgn of [1, -1]) traces.push({type: 'scatter', mode: 'lines', x: XL, y: XL.map(v => sgn * v), xaxis: 'x2', yaxis: 'y2', line: {color: '#d62728', width: 1.5, dash: 'dash'}, hoverinfo: 'skip', showlegend: false});
+  for (const m of [2, 3, 4, 5]) for (const sgn of [1, -1]) traces.push({type: 'scatter', mode: 'lines', x: XL, y: XL.map(v => sgn * m * v), xaxis: 'x2', yaxis: 'y2', line: {color: thin, width: 0.8}, hoverinfo: 'skip', showlegend: false});
+  if (mstar !== null && Math.abs(mstar) > 1) traces.push({type: 'scatter', mode: 'lines', x: XL, y: XL.map(v => mstar * v), xaxis: 'x2', yaxis: 'y2', line: {color: '#2ca02c', width: 1.5}, hoverinfo: 'skip', showlegend: false});
+  traces.push({type: 'scatter', mode: 'lines+markers', x: wx, y: wy, xaxis: 'x2', yaxis: 'y2', line: {color: '#e8862a', width: 2}, marker: {size: 4}, connectgaps: false, name: '世界線', hovertemplate: 'Δ の累積 %{x:.0f}°<br>Φ の累積 %{y:.0f}°<extra></extra>'});
+  traces.push({type: 'scatter', mode: 'markers', x: [curW[0]], y: [curW[1]], xaxis: 'x2', yaxis: 'y2', marker: {symbol: 'circle-open', size: 10, color: fg, line: {width: 2}}, hoverinfo: 'skip', showlegend: false});
+  traces.push({type: 'scatter', mode: 'markers', x: [0], y: [0], xaxis: 'x2', yaxis: 'y2', marker: {symbol: 'x', size: 7, color: fg}, name: '原点（始点）', hovertemplate: '原点（Auto の始点）<extra></extra>'});
   const ax = (t, rng) => ({title: t, range: rng, color: fg, gridcolor: gridc, zerolinecolor: fg, backgroundcolor: 'rgba(0,0,0,0)'});
   const desc = p.pulses.map((q, i) => { const nOdd = q.co.ms.filter(m => m % 2).length; return `${i + 1}: θ = ${q.theta}°, φ = ${q.phi}°, M = ${q.M}（奇 ${nOdd}・偶 ${q.co.ms.length - nOdd}）R${i + 1} = ${q.R.toFixed(4)}`; }).join('　');
   $('h1').textContent = `${desc}　　和：R = ${p.R.toFixed(4)}（表示 ×${p.k} = ${p.Rd.toFixed(3)}）　max Re = ${zmax.toFixed(4)}, min Re = ${zmin.toFixed(4)}　max Im = ${imax.toFixed(4)}, min Im = ${imin.toFixed(4)}　点数 ${n}`;
-  const dphi = p.pulses[0].phi - p.pulses[1].phi;
-  $('h2').textContent = `読める量　Δ = ${p.Delta.toFixed(1)}°（スペクトル読み：消える倍音 m = ${p.mmin === null ? '—' : p.mmin}、|c_m|/(c₁+c₂) = ${p.rmin === Infinity ? '—' : p.rmin.toFixed(3)} → Δ ≈ ${p.DeltaSpec === null ? '—（零点が M の範囲にない）' : p.DeltaSpec.toFixed(1) + '°'}）　対の真ん中 = ${p.mid.toFixed(1)}°（零閉塞の基準）　R/(R₁+R₂) = ${(p.R / (p.pulses[0].R + p.pulses[1].R)).toFixed(4)}　cos Θ = ${p.cosT.toFixed(4)}, Θ = ${p.Theta.toFixed(2)}°　tan α = R₂/R₁ = ${(p.pulses[1].R / p.pulses[0].R).toFixed(4)}, α = ${p.alpha.toFixed(2)}°　波数の比 ⟨m⟩₁/⟨m⟩₂ = ${p.mbar1.toFixed(3)}/${p.mbar2.toFixed(3)} = ${(p.mbar1 / p.mbar2).toFixed(4)}　相対運動 φ₁−φ₂ = ${dphi}°/ティック、ティック ${ticks}、Δ の累積 = ${(dphi * ticks).toFixed(0)}°（v·t）　｜　和：c₀/R = ${(p.c0 / p.R).toFixed(4)}　P(π)/R² = ${(Ppi / p.R2).toFixed(4)}　Σc²/R² = ${(s2re / p.R2).toFixed(4)} ${s2im >= 0 ? '+' : '−'} ${Math.abs(s2im / p.R2).toFixed(4)}i　⟨m⟩ = ${mbar.toFixed(4)}　巻き数 = ${wind}`;
+  const coneLabel = slope === null ? '静止（Δ も Φ も進まない）' : !isFinite(slope) ? '縦軸の上（位置は動かず内部時計だけ進む）' : `${slope.toFixed(3)}（${Math.abs(slope) > 1 ? '円錐の内側、時間的' : Math.abs(slope) < 1 ? '円錐の外側、空間的' : '光円錐の上'}）`;
+  $('h2').textContent = `光円錐　傾き (δ₁−δ₂)/(φ₁−φ₂) = ${coneLabel}　止まる倍音 m* = ${mstar === null ? '—' : mstar + '（倍音 ' + Math.abs(mstar) + ' の干渉が凍結）'}　累積 (Δ, Φ) = (${cur[0].toFixed(0)}°, ${cur[1].toFixed(0)}°)、巻数 (n_Δ, n_Φ) = (${nD}, ${nF})、目盛の範囲 Δ∈[${GX0}, ${GX1}]、Φ∈[${GY0}, ${GY1}]、対が原点に戻る周期 = ${per === null ? '—' : per.toFixed(0) + ' ティック'}、そのときの巻数の対 = ${knot}、区間 Φ² − Δ² = ${interval.toFixed(0)}（累積、m = 1 を光的とした定義、${interval > 0 ? '時間的' : interval < 0 ? '空間的' : '光的'}）　｜　読める量　Δ = ${p.Delta.toFixed(1)}°、Φ = φ₀₁−φ₀₂ = ${p.Phi.toFixed(1)}°（内部位相の差）（スペクトル読み：消える倍音 m = ${p.mmin === null ? '—' : p.mmin}、|c_m|/(c₁+c₂) = ${p.rmin === Infinity ? '—' : p.rmin.toFixed(3)}、条件 mΔ − Φ ≡ ±180°：m_minΔ − Φ = ${p.specRes === null ? '—（零点が M の範囲にない）' : p.specRes.toFixed(1) + '°'}）　対の真ん中 = ${p.mid.toFixed(1)}°　R/(R₁+R₂) = ${(p.R / (p.pulses[0].R + p.pulses[1].R)).toFixed(4)}　cos Θ = ${p.cosT.toFixed(4)}, Θ = ${p.Theta.toFixed(2)}°　tan α = R₂/R₁ = ${(p.pulses[1].R / p.pulses[0].R).toFixed(4)}, α = ${p.alpha.toFixed(2)}°　波数の比 ⟨m⟩₁/⟨m⟩₂ = ${p.mbar1.toFixed(3)}/${p.mbar2.toFixed(3)} = ${(p.mbar1 / p.mbar2).toFixed(4)}　相対運動 φ₁−φ₂ = ${dphi}°/ティック、内部時計 δ₁−δ₂ = ${ddl}°/ティック、比 (δ₁−δ₂)/(φ₁−φ₂) = ${dphi === 0 ? '—' : (ddl / dphi).toFixed(4)}、ティック ${ticks}、Δ の累積 = ${(dphi * ticks).toFixed(0)}°、Φ の累積 = ${(ddl * ticks).toFixed(0)}°　｜　和：c₀/R = ${(p.c0 / p.R).toFixed(4)}　P(π)/R² = ${(Ppi / p.R2).toFixed(4)}　Σc²/R² = ${(s2re / p.R2).toFixed(4)} ${s2im >= 0 ? '+' : '−'} ${Math.abs(s2im / p.R2).toFixed(4)}i　⟨m⟩ = ${mbar.toFixed(4)}　巻き数 = ${wind}`;
   const layout = {
     uirevision: 'keep', paper_bgcolor: 'rgba(0,0,0,0)', font: {color: fg}, margin: {l: 0, r: 0, t: 10, b: 0},
     showlegend: false,
-    scene: {aspectmode: 'manual', aspectratio: {x: 1, y: 1, z: 1},   // x・y・z を同じ範囲・同じ縮尺に固定
+    scene: {domain: {x: [0, 0.6], y: [0, 1]}, aspectmode: 'manual', aspectratio: {x: 1, y: 1, z: 1},   // x・y・z を同じ範囲・同じ縮尺に固定
             xaxis: ax('x', [-L, L]), yaxis: ax('y', [-L, L]), zaxis: ax('z', zrange),
-            camera: {eye: {x: 1.2, y: -1.45, z: 0.72}, projection: {type: 'orthographic'}}}   // 向きは index_v2.html と同じ、距離 1.6 倍、正射影
+            camera: {eye: {x: 1.2, y: -1.45, z: 0.72}, projection: {type: 'orthographic'}}},   // 向きは index_v2.html と同じ、距離 1.6 倍、正射影
+    xaxis2: {domain: [0.66, 1], anchor: 'y2', range: [GX0, GX1], dtick: 45, title: 'Δ の累積（度。はみ出すと目盛を 180° ずつ書き換える）', color: fg, gridcolor: gridc, zerolinecolor: fg},
+    yaxis2: {domain: [0.08, 0.95], anchor: 'x2', scaleanchor: 'x2', scaleratio: 1, range: [GY0, GY1], dtick: 45, title: 'Φ の累積（度）', color: fg, gridcolor: gridc, zerolinecolor: fg}
   };
   Plotly.react('plot', traces, layout, {responsive: true});
 }
 
 let timer = null;
 function tick() {
-  for (const u of P) { let t = Number(u.th.value) + Number(u.ph.value); if (t > 360) t -= 360; u.th.value = String(t); }
+  for (const u of P) {
+    let t = Number(u.th.value) + Number(u.ph.value); if (t > 360) t -= 360; u.th.value = String(t);   // 位置 θ ← θ + φ
+    u.phase0 = ((u.phase0 + Number(u.dl.value)) % 360 + 360) % 360;                                    // 内部位相 φ₀ ← φ₀ + δ（位置とは独立）
+  }
   ticks += 1;
+  const last = hist[hist.length - 1];
+  hist.push([last[0] + Number(P[0].ph.value) - Number(P[1].ph.value), last[1] + Number(P[0].dl.value) - Number(P[1].dl.value)]);
+  if (hist.length > 4000) hist.shift();
   draw();
 }
 function setAuto(on) {
@@ -210,12 +249,13 @@ function setAuto(on) {
 }
 btn.addEventListener('click', () => setAuto(!timer));
 rr.addEventListener('input', draw);
-for (const u of P) { for (const s of [u.th, u.ph, u.mm]) s.addEventListener('input', () => { ticks = 0; draw(); }); for (const c of [u.odd, u.even]) c.addEventListener('change', () => { ticks = 0; draw(); }); }
-(function fromURL() {                        // 撮影用：?th1=&phi1=&M1=&odd1=0&even1=0&th2=&phi2=&M2=&odd2=0&even2=0&k=&auto=0
+for (const u of P) { for (const s of [u.th, u.ph, u.mm, u.dl]) s.addEventListener('input', () => { ticks = 0; hist = [[0, 0]]; win0 = [-180, -180]; for (const w of P) w.phase0 = 0; draw(); }); for (const c of [u.odd, u.even]) c.addEventListener('change', () => { ticks = 0; hist = [[0, 0]]; win0 = [-180, -180]; for (const w of P) w.phase0 = 0; draw(); }); }
+(function fromURL() {                        // 撮影用：?th1=&phi1=&M1=&odd1=0&even1=0&dl1=&p01=&th2=…&k=&auto=0（既定は φ₁=20, δ₁=20, φ₂=10, δ₂=0）
   const q = new URLSearchParams(location.search);
   P.forEach((u, i) => { const j = i + 1;
     if (q.has('th' + j)) u.th.value = q.get('th' + j); if (q.has('phi' + j)) u.ph.value = q.get('phi' + j); if (q.has('M' + j)) u.mm.value = q.get('M' + j);
-    if (q.get('odd' + j) === '0') u.odd.checked = false; if (q.get('even' + j) === '0') u.even.checked = false; });
+    if (q.get('odd' + j) === '0') u.odd.checked = false; if (q.get('even' + j) === '0') u.even.checked = false;
+    if (q.has('dl' + j)) u.dl.value = q.get('dl' + j); if (q.has('p0' + j)) u.phase0 = Number(q.get('p0' + j)); });   // p0i = 内部位相の初期値（撮影用）
   if (q.has('k')) rr.value = q.get('k');
   draw();
   setAuto(q.get('auto') !== '0');
