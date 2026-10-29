@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>閉じた弦の複素パルス（index_v2.html の複素化）</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.34.0/plotly.min.js"></script>
+<style>
+  :root { --bg:#ffffff; --fg:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --panel:#f5f5f7; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16161a; --fg:#ececf1; --muted:#9a9aa3; --line:#3a3a42; --panel:#202027; }
+  }
+  html, body { margin:0; background:var(--bg); color:var(--fg);
+    font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center;
+    padding:10px 16px; background:var(--panel); border-bottom:1px solid var(--line); font-size:14px; }
+  .sl { display:flex; align-items:center; gap:8px; flex:1 1 220px; }
+  .sl input { flex:1; }
+  .sl .v { font-variant-numeric: tabular-nums; min-width:4.5em; text-align:right; }
+  button { font-size:15px; padding:4px 12px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--fg); }
+  button.on { background:#2f6fdf; color:#fff; border-color:#2f6fdf; }
+  #plot { width:100%; height:calc(100vh - 260px); min-height:420px; }
+  .head { display:flex; gap:16px; padding:6px 16px 0; font-size:13px; font-variant-numeric: tabular-nums; }
+  .head div { flex:1 1 0; }
+  .head .ratios { border-left:1px solid var(--line); padding-left:12px; }
+  label.ck { display:inline-flex; align-items:center; gap:4px; font-size:14px; }
+  .note { font-size:12.5px; color:var(--muted); padding:6px 16px 10px; line-height:1.7; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="sl"><span>θ</span><input id="th" type="range" min="0" max="360" step="1" value="180"><span class="v" id="thv">180°</span></div>
+  <div class="sl"><span>φ</span><input id="ph" type="range" min="0" max="360" step="1" value="10"><span class="v" id="phv">10°</span></div>
+  <div class="sl"><span>R×</span><input id="rr" type="range" min="1" max="20" step="1" value="10"><span class="v" id="rrv">10</span></div>
+  <div class="sl"><span>M</span><input id="mm" type="range" min="1" max="100" step="1" value="10"><span class="v" id="mmv">10</span></div>
+  <span class="grp"><label class="ck"><input id="odd" type="checkbox" checked>奇</label><label class="ck"><input id="even" type="checkbox" checked>偶</label></span>
+  <button id="auto" class="on">Auto</button>
+</div>
+<div class="head"><div id="h1"></div><div id="h2" class="ratios"></div></div>
+<div id="plot"></div>
+<div class="note">
+  弦に沿った角 ψ ∈ [0, 360)。index_v2.html のパルスを複素化したもの：Z(ψ) ＝ φ/360 ＋ (2/π) Σ_m [ sin(mπφ/360) / m ] · e^{imπ(ψ−θ)/180}、m は 1..M のうち「奇」「偶」で選んだもの。実部は index_v2.html の高さと同じ式、虚部は同じ係数の sin の和。<br>
+  半径は導出値 R ＝ √Σ_m c_m²（直流は含めない）。表示では倍率 k（スライダー R×、1〜20、初期 10）を掛けた kR を円・円筒・曲線の半径に使う（振幅はそのまま）。実部と虚部は別の曲線：青 ＝ 実部を半径方向に乗せた ((kR ＋ Re Z) cos ψ, (kR ＋ Re Z) sin ψ, 0)、橙 ＝ 虚部を垂直に乗せた (kR cos ψ, kR sin ψ, Im Z)。細い線は半径 kR の基準円（z ＝ 0）、薄い面は半径 kR・高さ ±1 の円筒。x・y・z は同じ範囲・縮尺 1:1:1、正射影。<br>
+  印：黒 × ＝ 曲率中心（原点）、橙の球 ＝ 線形重心（Re Z を半径方向に乗せた曲線の ψ 平均）、緑の球 ＝ パワー重心（|Z|² を重みにした円周上の重心）。どちらも計算上の点で、そこに波はなく観測者もいないので、位置の読みではない（スペクトルの性質）。<br>
+  右上に出すのは単独のパルスから読める量だけ：R（倍音のノルム。値はスケールで、比だけが物理）、c₀/R（直流／ノルム）、P(π)/R² ＝ (Σ_偶 c² − Σ_奇 c²)/Σc²（対蹠点の値、奇偶の不均衡）、Σ c_m² e^{−2imθ}/R²（基準から見た本当の二乗和）、⟨m⟩ ＝ Σ m|c_m|/Σ|c_m|（平均の波数）、巻き数（|w| ＝ 0.999 の円上で arg Z を一周追う）。<br>
+  読めないもの：自分の位置（自分しかいないので基準は自分）、対蹠点との位相差（倍音ごとに mπ で固定）、内部時計・時間（発展の規則が要る。Auto の並進では中心の位相は毎ティック 0）、エネルギー・質量・運動量・長さの値。θ は基準に対する中心で、Auto は θ ← θ ＋ φ（基準を回しているだけ）。ψ の刻みは最高波数の 1 周期あたり 8 点以上。
+</div>
+<script>
+const $ = id => document.getElementById(id);
+const th = $('th'), ph = $('ph'), rr = $('rr'), mm = $('mm'), btn = $('auto'), ckOdd = $('odd'), ckEven = $('even');
+
+function grid(n) {                       // ψ を n 点（両端を含めて閉じる）
+  const psi = new Float64Array(n), c = new Float64Array(n), s = new Float64Array(n);
+  for (let i = 0; i < n; i++) { psi[i] = i * 360 / (n - 1); c[i] = Math.cos(Math.PI * psi[i] / 180); s[i] = Math.sin(Math.PI * psi[i] / 180); }
+  return {psi, c, s};
+}
+
+// 係数：index_v2.html のパルスと同じ (2/π) sin(mπφ/360)/m。奇・偶のチェックで m を選ぶ。直流 c₀ = φ/360
+function coeffs(phi, M, odd, even) {
+  const ms = [], cs = [];
+  for (let m = 1; m <= M; m++) {
+    if ((m % 2 === 1 && !odd) || (m % 2 === 0 && !even)) continue;
+    ms.push(m); cs.push((2 / Math.PI) * Math.sin(m * Math.PI * phi / 360) / m);
+  }
+  return { ms, cs, c0: phi / 360 };
+}
+
+// パルス（複素化）：実部は元の高さ z と同じ式（直流 + Σ c_m cos）、虚部は同じ係数の Σ c_m sin
+function pulse(psi, theta, co, r) {
+  const n = psi.length, re = new Float64Array(n), im = new Float64Array(n);
+  const w = co.ms.map((m, j) => (r === undefined ? 1 : Math.pow(r, m)) * co.cs[j]);
+  for (let i = 0; i < n; i++) {
+    const x = Math.PI * (psi[i] - theta) / 180;
+    let a = co.c0, b = 0;
+    for (let j = 0; j < co.ms.length; j++) { a += w[j] * Math.cos(co.ms[j] * x); b += w[j] * Math.sin(co.ms[j] * x); }
+    re[i] = a; im[i] = b;
+  }
+  return { re, im };
+}
+
+function cylinder(R, zlo, zhi) {
+  const n = 73, xs = [], ys = [], z0 = [], z1 = [];
+  for (let i = 0; i < n; i++) {
+    const a = 2 * Math.PI * i / (n - 1);
+    xs.push(R * Math.cos(a)); ys.push(R * Math.sin(a)); z0.push(zlo); z1.push(zhi);
+  }
+  return {type: 'surface', x: [xs, xs], y: [ys, ys], z: [z0, z1], opacity: 0.12, showscale: false,
+          colorscale: [[0, '#8a8a8f'], [1, '#8a8a8f']], hoverinfo: 'skip', name: '円筒', showlegend: false};
+}
+
+function params() {
+  const theta = Number(th.value), phi = Number(ph.value), M = Number(mm.value), k = Number(rr.value);
+  const co = coeffs(phi, M, ckOdd.checked, ckEven.checked);
+  let R2 = 0; for (const c of co.cs) R2 += c * c;
+  const R = Math.sqrt(R2);                                   // 導出した半径（直流は含めない）。比はこの R で計算
+  const Rd = k * R;                                          // 表示用の半径 = 倍率 k × R（円・円筒・曲線・重心の位置に使う）
+  const kmax = co.ms.length ? co.ms[co.ms.length - 1] : 1;    // 最高波数
+  return {theta, phi, M, k, co, R, R2, Rd, kmax};
+}
+
+function draw() {
+  const p = params();
+  $('thv').textContent = p.theta + '°'; $('phv').textContent = p.phi + '°'; $('mmv').textContent = p.M; $('rrv').textContent = p.k;
+  const n = Math.min(40001, Math.max(1441, 8 * p.kmax + 1));
+  const g = grid(n);
+  const Z = pulse(g.psi, p.theta, p.co);
+  let zmax = -Infinity, zmin = Infinity, imax = -Infinity, imin = Infinity;
+  for (let i = 0; i < n; i++) { const v = Z.re[i], w = Z.im[i]; if (v > zmax) zmax = v; if (v < zmin) zmin = v; if (w > imax) imax = w; if (w < imin) imin = w; }
+  const X = Array.from(g.c, (c, i) => (p.Rd + Z.re[i]) * c), Y = Array.from(g.s, (s, i) => (p.Rd + Z.re[i]) * s);   // 実部：半径方向の曲線（z = 0）
+  const X0 = Array.from(g.c, c => p.Rd * c), Y0 = Array.from(g.s, s => p.Rd * s);                                    // 虚部：半径 kR の円の上の高さの曲線
+  // 重心二種（両端の重複点を除く）。計算上の点で、位置の読みではない
+  let lx = 0, ly = 0, px = 0, py = 0, pw = 0;
+  for (let i = 0; i < n - 1; i++) {
+    const a = p.Rd + Z.re[i], q = Z.re[i] * Z.re[i] + Z.im[i] * Z.im[i];
+    lx += a * g.c[i]; ly += a * g.s[i]; px += q * p.Rd * g.c[i]; py += q * p.Rd * g.s[i]; pw += q;
+  }
+  lx /= (n - 1); ly /= (n - 1); if (pw > 0) { px /= pw; py /= pw; }
+  // 読める量（自分の性質）
+  let s2re = 0, s2im = 0, Ppi = 0, sAbs = 0, sMAbs = 0;
+  const thr = Math.PI * p.theta / 180;
+  p.co.ms.forEach((m, j) => { const c = p.co.cs[j]; s2re += c * c * Math.cos(2 * m * thr); s2im -= c * c * Math.sin(2 * m * thr); Ppi += (m % 2 ? -1 : 1) * c * c; sAbs += Math.abs(c); sMAbs += m * Math.abs(c); });
+  const mbar = sAbs ? sMAbs / sAbs : 0;
+  let wind = 0;
+  { const Zr = pulse(g.psi, p.theta, p.co, 0.999); let prev = Math.atan2(Zr.im[0], Zr.re[0]), tot = 0;
+    for (let i = 1; i < n; i++) { const a = Math.atan2(Zr.im[i], Zr.re[i]); let d = a - prev; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI; tot += d; prev = a; }
+    wind = Math.round(tot / (2 * Math.PI)); }
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  const fg = dark ? '#ececf1' : '#1d1d1f', gridc = dark ? '#3a3a42' : '#d2d2d7';
+  const L = Math.max(p.Rd + Math.max(Math.abs(zmax), Math.abs(zmin)), Math.abs(imax), Math.abs(imin), p.Rd + 0.5) * 1.15;
+  const zrange = [-L, L];                                     // x・y・z を同じ範囲にして目盛の間隔をそろえる
+  const traces = [
+    cylinder(p.Rd, -1, 1),                                    // 円筒は高さ ±1 で切る（振幅ははみ出してよい）
+    {type: 'scatter3d', mode: 'lines', x: X0, y: Y0, z: X0.map(() => 0), line: {color: '#8a8a8f', width: 2}, hoverinfo: 'skip', showlegend: false},
+    {type: 'scatter3d', mode: 'lines', x: X, y: Y, z: X.map(() => 0), line: {color: '#2f6fdf', width: 5},
+     showlegend: false, hovertemplate: 'ψ=%{customdata[0]:.2f}°<br>Re Z=%{customdata[1]:.4f}（半径方向）<extra></extra>', customdata: Array.from(g.psi, (v, i) => [v, Z.re[i]])},
+    {type: 'scatter3d', mode: 'lines', x: X0, y: Y0, z: Array.from(Z.im), line: {color: '#e8862a', width: 5},
+     showlegend: false, hovertemplate: 'ψ=%{customdata:.2f}°<br>Im Z=%{z:.4f}（垂直）<extra></extra>', customdata: Array.from(g.psi)},
+    {type: 'scatter3d', mode: 'markers', x: [0], y: [0], z: [0], marker: {symbol: 'x', size: 2, color: fg}, name: '曲率中心', hovertemplate: '曲率中心<extra></extra>'},
+    {type: 'scatter3d', mode: 'markers', x: [lx], y: [ly], z: [0], marker: {symbol: 'circle', size: 2, color: '#e8862a'}, name: '線形重心', hovertemplate: `線形重心 (${lx.toFixed(4)}, ${ly.toFixed(4)})<extra></extra>`},
+    {type: 'scatter3d', mode: 'markers', x: [px], y: [py], z: [0], marker: {symbol: 'circle', size: 2, color: '#2ca02c'}, name: 'パワー重心', hovertemplate: `パワー重心 (${px.toFixed(4)}, ${py.toFixed(4)})<extra></extra>`}
+  ];
+  const ax = (t, rng) => ({title: t, range: rng, color: fg, gridcolor: gridc, zerolinecolor: fg, backgroundcolor: 'rgba(0,0,0,0)'});
+  const nOdd = p.co.ms.filter(m => m % 2).length, nEven = p.co.ms.length - nOdd;
+  $('h1').textContent = `パルス　θ = ${p.theta}°, φ = ${p.phi}°, M = ${p.M}（奇 ${nOdd} 本・偶 ${nEven} 本、最高波数 ${p.kmax}）　R = ${p.R.toFixed(4)}（表示 ×${p.k} = ${p.Rd.toFixed(3)}）　　max Re = ${zmax.toFixed(4)}, min Re = ${zmin.toFixed(4)}　max Im = ${imax.toFixed(4)}, min Im = ${imin.toFixed(4)}　　点数 ${n}`;
+  $('h2').textContent = `読める量　R = ${p.R.toFixed(4)}　c₀/R = ${(p.co.c0 / p.R).toFixed(4)}　P(π)/R² = ${(Ppi / p.R2).toFixed(4)}　Σc²e^{−2imθ}/R² = ${(s2re / p.R2).toFixed(4)} ${s2im >= 0 ? '+' : '−'} ${Math.abs(s2im / p.R2).toFixed(4)}i　⟨m⟩ = ${mbar.toFixed(4)}（平均の波数）　巻き数 = ${wind}`;
+  const layout = {
+    uirevision: 'keep', paper_bgcolor: 'rgba(0,0,0,0)', font: {color: fg}, margin: {l: 0, r: 0, t: 10, b: 0},
+    showlegend: false,
+    scene: {aspectmode: 'manual', aspectratio: {x: 1, y: 1, z: 1},   // x・y・z を同じ範囲・同じ縮尺に固定
+            xaxis: ax('x', [-L, L]), yaxis: ax('y', [-L, L]), zaxis: ax('z', zrange),
+            camera: {eye: {x: 1.2, y: -1.45, z: 0.72}, projection: {type: 'orthographic'}}}   // 向きは index_v2.html と同じ、距離 1.6 倍、正射影
+  };
+  Plotly.react('plot', traces, layout, {responsive: true});
+}
+
+let timer = null;
+function tick() {
+  const p = params();
+  let t = Number(th.value) + p.phi;
+  if (t > 360) t -= 360;
+  th.value = String(t);
+  draw();
+}
+function setAuto(on) {
+  if (on && !timer) { timer = setInterval(tick, 150); btn.classList.add('on'); }
+  if (!on && timer) { clearInterval(timer); timer = null; btn.classList.remove('on'); }
+}
+btn.addEventListener('click', () => setAuto(!timer));
+for (const s of [th, ph, rr, mm]) s.addEventListener('input', draw);
+for (const c of [ckOdd, ckEven]) c.addEventListener('change', draw);
+(function fromURL() {                        // 撮影用：?th=&phi=&M=&k=&odd=0&even=0&auto=0
+  const q = new URLSearchParams(location.search);
+  if (q.has('th')) th.value = q.get('th'); if (q.has('phi')) ph.value = q.get('phi'); if (q.has('M')) mm.value = q.get('M'); if (q.has('k')) rr.value = q.get('k');
+  if (q.get('odd') === '0') ckOdd.checked = false; if (q.get('even') === '0') ckEven.checked = false;
+  draw();
+  setAuto(q.get('auto') !== '0');
+})();
+</script>
+</body>
+</html>
