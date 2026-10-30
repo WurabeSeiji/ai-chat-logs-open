@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>閉じた弦の複素パルス 3 波（index_v2c2.html の 3 段化）</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.34.0/plotly.min.js"></script><style id="plotly.js-style-global"></style>
+<style>
+  :root { --bg:#ffffff; --fg:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --panel:#f5f5f7; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16161a; --fg:#ececf1; --muted:#9a9aa3; --line:#3a3a42; --panel:#202027; }
+  }
+  html, body { margin:0; background:var(--bg); color:var(--fg);
+    font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center;
+    padding:10px 16px; background:var(--panel); border-bottom:1px solid var(--line); font-size:14px; }
+  .sl { display:flex; align-items:center; gap:8px; flex:1 1 220px; }
+  .sl input { flex:1; }
+  .sl .v { font-variant-numeric: tabular-nums; min-width:4.5em; text-align:right; }
+  button { font-size:15px; padding:4px 12px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--fg); }
+  button.on { background:#2f6fdf; color:#fff; border-color:#2f6fdf; }
+  #plot { width:100%; height:calc(100vh - 460px); min-height:420px; }
+  .head { display:flex; gap:16px; padding:6px 16px 0; font-size:13px; font-variant-numeric: tabular-nums; }
+  .head div { flex:1 1 0; }
+  .head .ratios { border-left:1px solid var(--line); padding-left:12px; }
+  label.ck { display:inline-flex; align-items:center; gap:4px; font-size:14px; }
+  .note { font-size:12.5px; color:var(--muted); padding:6px 16px 10px; line-height:1.7; }
+</style>
+<style id="plotly.js-style-modebar-069457"></style></head>
+<body>
+<div class="bar">
+  <span>1:</span>
+  <div class="sl"><span>θ₁</span><input id="th1" type="range" min="0" max="360" step="1" value="180"><span class="v" id="th1v">180°</span></div>
+  <div class="sl"><span>φ₁</span><input id="ph1" type="range" min="0" max="360" step="1" value="20"><span class="v" id="ph1v">10°</span></div>
+  <div class="sl"><span>M₁</span><input id="mm1" type="range" min="1" max="100" step="1" value="10"><span class="v" id="mm1v">10</span></div>
+  <span class="grp"><label class="ck"><input id="odd1" type="checkbox" checked="">奇</label><label class="ck"><input id="even1" type="checkbox" checked="">偶</label></span>
+  <div class="sl"><span>δ₁</span><input id="dl1" type="range" min="-30" max="30" step="1" value="20"><span class="v" id="dl1v">0°/t</span></div>
+</div>
+<div class="bar">
+  <span>2:</span>
+  <div class="sl"><span>θ₂</span><input id="th2" type="range" min="0" max="360" step="1" value="180"><span class="v" id="th2v">200°</span></div>
+  <div class="sl"><span>φ₂</span><input id="ph2" type="range" min="0" max="360" step="1" value="10"><span class="v" id="ph2v">10°</span></div>
+  <div class="sl"><span>M₂</span><input id="mm2" type="range" min="1" max="100" step="1" value="10"><span class="v" id="mm2v">10</span></div>
+  <span class="grp"><label class="ck"><input id="odd2" type="checkbox" checked="">奇</label><label class="ck"><input id="even2" type="checkbox" checked="">偶</label></span>
+  <div class="sl"><span>δ₂</span><input id="dl2" type="range" min="-30" max="30" step="1" value="0"><span class="v" id="dl2v">0°/t</span></div>
+</div>
+<div class="bar">
+  <span>3:</span>
+  <div class="sl"><span>θ₃</span><input id="th3" type="range" min="0" max="360" step="1" value="180"><span class="v" id="th3v">160°</span></div>
+  <div class="sl"><span>φ₃</span><input id="ph3" type="range" min="0" max="360" step="1" value="10"><span class="v" id="ph3v">10°</span></div>
+  <div class="sl"><span>M₃</span><input id="mm3" type="range" min="1" max="100" step="1" value="10"><span class="v" id="mm3v">10</span></div>
+  <span class="grp"><label class="ck"><input id="odd3" type="checkbox" checked="">奇</label><label class="ck"><input id="even3" type="checkbox" checked="">偶</label></span>
+  <div class="sl"><span>δ₃</span><input id="dl3" type="range" min="-30" max="30" step="1" value="10"><span class="v" id="dl3v">0°/t</span></div>
+</div>
+<div class="bar">
+  <span>右：観測者</span>
+  <span class="grp"><label class="ck"><input type="radio" name="obs" value="0">1</label><label class="ck"><input type="radio" name="obs" value="1">2</label><label class="ck"><input type="radio" name="obs" value="2" checked="">3</label></span>
+  <span>標準の対</span>
+  <span class="grp"><label class="ck"><input type="radio" name="std" value="0">12</label><label class="ck"><input type="radio" name="std" value="1" checked="">23</label><label class="ck"><input type="radio" name="std" value="2">13</label></span>
+  <label class="ck"><input id="unit" type="checkbox">標準の対で測る（物差し＝その距離、時計＝その内部時計）</label>
+</div>
+<div class="bar">
+  <div class="sl"><span>R×</span><input id="rr" type="range" min="1" max="20" step="1" value="10"><span class="v" id="rrv">10</span></div>
+  <button id="auto" class="on">Auto</button>
+</div>
+<div class="head"><div id="h1">1: θ = 180°, φ = 10°, δ = 0°/t, M = 10（奇 5・偶 5）R1 = 0.1675　2: θ = 200°, φ = 10°, δ = 0°/t, M = 10（奇 5・偶 5）R2 = 0.1675　3: θ = 160°, φ = 10°, δ = 0°/t, M = 10（奇 5・偶 5）R3 = 0.1675　　和：R = 0.3493（表示 ×10 = 3.493）　max Re = 0.8799, min Re = -0.1877　max Im = 0.6856, min Im = -0.6856　点数 1441</div><div id="h2" class="ratios">観測者 3 の時空　単位：度（c = 1）　三辺　3–1：距離 20.0°、時計のずれ 45.0°　3–2：距離 40.0°、時計のずれ 90.0°　1–2：距離 20.0°、時計のずれ -45.0°　｜　対ごとの傾き　12：静止　23：静止　13：静止　合成則 v₁₂ − (v₁₃ − v₂₃) = (0, 0)　距離の比 Δ₁₃/Δ₂₃ = 0.5000　時間の比 Φ₁₃/Φ₂₃ = —　内部時計の比 (δ₁−δ₃)/(δ₂−δ₃) = —　三角形の向き = ＋　鏡映対の条件 δ₂＋δ₃ = 0　ティック 0　｜　対ごとの読み　12：Δ = -20.0°、Φ = -45.0°、cos Θ = 0.2959（72.8°）、tan α = 1.0000　23：Δ = 40.0°、Φ = 90.0°、cos Θ = 0.0839（85.2°）、tan α = 1.0000　13：Δ = 20.0°、Φ = 45.0°、cos Θ = 0.2959（72.8°）、tan α = 1.0000　｜　和：c₀/R = 0.2386　P(π)/R² = -0.0805　Σc²/R² = 1.0000 + 0.0000i　⟨m⟩ = 3.8059　巻き数 = 3</div></div>
+<div id="plot" class="js-plotly-plot"><div class="plot-container plotly"><div class="user-select-none svg-container" style="position: relative; width: 100%; height: 100%;"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="756" height="420" style="background: rgba(0, 0, 0, 0);"><defs id="defs-069457"><g class="clips"><clipPath id="clip069457x2y2plot" class="plotclip"><rect width="257.03999999999996" height="356.7"></rect></clipPath><clipPath class="axesclip" id="clip069457x2"><rect x="498.96000000000004" y="0" width="257.03999999999996" height="420"></rect></clipPath><clipPath class="axesclip" id="clip069457y2"><rect x="0" y="30.500000000000018" width="756" height="356.7"></rect></clipPath><clipPath class="axesclip" id="clip069457x2y2"><rect x="498.96000000000004" y="30.500000000000018" width="257.03999999999996" height="356.7"></rect></clipPath></g><g class="gradients"></g><g class="patterns"></g></defs><g class="bglayer"><rect class="bg" x="498.96000000000004" y="30.500000000000018" width="257.03999999999996" height="356.7" style="fill: rgb(255, 255, 255); fill-opacity: 1; stroke-width: 0;"></rect></g><g class="draglayer cursor-crosshair"><g class="x2y2"><rect class="nsewdrag drag" data-subplot="x2y2" x="498.96000000000004" y="30.500000000000018" width="257.03999999999996" height="356.7" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nwdrag drag cursor-nw-resize" data-subplot="x2y2" x="478.96000000000004" y="10.500000000000018" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nedrag drag cursor-ne-resize" data-subplot="x2y2" x="756" y="10.500000000000018" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="swdrag drag cursor-sw-resize" data-subplot="x2y2" x="478.96000000000004" y="387.2" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sedrag drag cursor-se-resize" data-subplot="x2y2" x="756" y="387.2" width="20" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ewdrag drag cursor-ew-resize" data-subplot="x2y2" x="524.664" y="387.7" width="205.63199999999998" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="wdrag drag cursor-w-resize" data-subplot="x2y2" x="498.96000000000004" y="387.7" width="25.703999999999997" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="edrag drag cursor-e-resize" data-subplot="x2y2" x="730.296" y="387.7" width="25.703999999999997" height="20" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="nsdrag drag cursor-ns-resize" data-subplot="x2y2" x="478.46000000000004" y="66.17000000000002" width="20" height="285.36" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="sdrag drag cursor-s-resize" data-subplot="x2y2" x="478.46000000000004" y="351.53" width="20" height="35.67" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect><rect class="ndrag drag cursor-n-resize" data-subplot="x2y2" x="478.46000000000004" y="30.500000000000018" width="20" height="35.67" style="fill: transparent; stroke-width: 0; pointer-events: all;"></rect></g></g><g class="layer-below"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="cartesianlayer"><g class="subplot x2y2"><g class="layer-subplot"><g class="shapelayer"></g><g class="imagelayer"></g></g><g class="minor-gridlayer"><g class="x2"></g><g class="y2"></g></g><g class="gridlayer"><g class="x2"><path class="x2grid crisp" transform="translate(531.09,0)" d="M0,30.500000000000018v356.7" style="stroke: rgb(210, 210, 215); stroke-opacity: 1; stroke-width: 1px;"></path><path class="x2grid crisp" transform="translate(563.22,0)" d="M0,30.500000000000018v356.7" style="stroke: rgb(210, 210, 215); stroke-opacity: 1; stroke-width: 1px;"></path><path class="x2grid crisp" transform="translate(595.35,0)" d="M0,30.500000000000018v356.7" style="stroke: rgb(210, 210, 215); stroke-opacity: 1; stroke-width: 1px;"></path><path class="x2grid crisp" transform="translate(659.61,0)" d="M0,30.500000000000018v356.7" style="stroke: rgb(210, 210, 215); stroke-opacity: 1; stroke-width: 1px;"></path><path class="x2grid crisp" transform="translate(691.74,0)" d="M0,30.500000000000018v356.7" style="stroke: rgb(210, 210, 215); stroke-opacity: 1; stroke-width: 1px;"></path><path class="x2grid crisp" transform="translate(723.87,0)" d="M0,30.500000000000018v356.7" style="stroke: rgb(210, 210, 215); stroke-opacity: 1; stroke-width: 1px;"></path></g><g class="y2"><path class="y2grid crisp" transform="translate(0,369.5)" d="M498.96000000000004,0h257.03999999999996" style="stroke: rgb(210, 210, 215); stroke-opacity: 1; stroke-width: 1px;"></path><path class="y2grid crisp" transform="translate(0,337.37)" d="M498.96000000000004,0h257.03999999999996" style="stroke: rgb(210, 210, 215); stroke-opacity: 1; stroke-width: 1px;"></path><path class="y2grid crisp" transform="translate(0,305.24)" d="M498.96000000000004,0h257.03999999999996" style="stroke: rgb(210, 210, 215); stroke-opacity: 1; stroke-width: 1px;"></path><path class="y2grid crisp" transform="translate(0,273.11)" d="M498.96000000000004,0h257.03999999999996" style="stroke: rgb(210, 210, 215); stroke-opacity: 1; stroke-width: 1px;"></path><path class="y2grid crisp" transform="translate(0,240.98000000000002)" d="M498.96000000000004,0h257.03999999999996" style="stroke: rgb(210, 210, 215); stroke-opacity: 1; stroke-width: 1px;"></path><path class="y2grid crisp" transform="translate(0,176.72000000000003)" d="M498.96000000000004,0h257.03999999999996" style="stroke: rgb(210, 210, 215); stroke-opacity: 1; stroke-width: 1px;"></path><path class="y2grid crisp" transform="translate(0,144.59000000000003)" d="M498.96000000000004,0h257.03999999999996" style="stroke: rgb(210, 210, 215); stroke-opacity: 1; stroke-width: 1px;"></path><path class="y2grid crisp" transform="translate(0,112.46000000000001)" d="M498.96000000000004,0h257.03999999999996" style="stroke: rgb(210, 210, 215); stroke-opacity: 1; stroke-width: 1px;"></path><path class="y2grid crisp" transform="translate(0,80.33000000000001)" d="M498.96000000000004,0h257.03999999999996" style="stroke: rgb(210, 210, 215); stroke-opacity: 1; stroke-width: 1px;"></path><path class="y2grid crisp" transform="translate(0,48.20000000000002)" d="M498.96000000000004,0h257.03999999999996" style="stroke: rgb(210, 210, 215); stroke-opacity: 1; stroke-width: 1px;"></path></g></g><g class="zerolinelayer"><path class="x2zl zl crisp" transform="translate(627.48,0)" d="M0,30.500000000000018v356.7" style="stroke: rgb(29, 29, 31); stroke-opacity: 1; stroke-width: 1px;"></path><path class="y2zl zl crisp" transform="translate(0,208.85000000000002)" d="M498.96000000000004,0h257.03999999999996" style="stroke: rgb(29, 29, 31); stroke-opacity: 1; stroke-width: 1px;"></path></g><g class="layer-between"><g class="shapelayer"></g><g class="imagelayer"></g></g><path class="xlines-below"></path><path class="ylines-below"></path><g class="overlines-below"></g><g class="xaxislayer-below"></g><g class="yaxislayer-below"></g><g class="overaxes-below"></g><g class="overplot"><g class="x2y2" transform="translate(498.96000000000004,30.500000000000018)" clip-path="url(#clip069457x2y2plot)"><g class="scatterlayer mlayer"><g class="trace scatter traceaa46a4" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"><path class="js-line" d="M-1028.16,1335.03L1285.2,-978.33" style="vector-effect: non-scaling-stroke; fill: none; stroke: rgb(214, 39, 40); stroke-opacity: 1; stroke-dasharray: 9px, 9px; stroke-width: 1.5px; opacity: 1;"></path></g><g class="points"></g><g class="text"></g></g><g class="trace scatter tracec00f57" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"><path class="js-line" d="M-1028.16,-978.33L1285.2,1335.03" style="vector-effect: non-scaling-stroke; fill: none; stroke: rgb(214, 39, 40); stroke-opacity: 1; stroke-dasharray: 9px, 9px; stroke-width: 1.5px; opacity: 1;"></path></g><g class="points"></g><g class="text"></g></g><g class="trace scatter trace1741ce" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"><path class="js-line" d="M-1028.16,2491.71L1285.2,-2135.01" style="vector-effect: non-scaling-stroke; fill: none; stroke: rgb(184, 184, 191); stroke-opacity: 1; stroke-width: 0.8px; opacity: 1;"></path></g><g class="points"></g><g class="text"></g></g><g class="trace scatter trace667357" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"><path class="js-line" d="M-1028.16,-2135.01L1285.2,2491.71" style="vector-effect: non-scaling-stroke; fill: none; stroke: rgb(184, 184, 191); stroke-opacity: 1; stroke-width: 0.8px; opacity: 1;"></path></g><g class="points"></g><g class="text"></g></g><g class="trace scatter trace0ea377" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"><path class="js-line" d="M-1028.16,3648.39L1285.2,-3291.69" style="vector-effect: non-scaling-stroke; fill: none; stroke: rgb(184, 184, 191); stroke-opacity: 1; stroke-width: 0.8px; opacity: 1;"></path></g><g class="points"></g><g class="text"></g></g><g class="trace scatter trace284aae" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"><path class="js-line" d="M-1028.16,-3291.69L1285.2,3648.39" style="vector-effect: non-scaling-stroke; fill: none; stroke: rgb(184, 184, 191); stroke-opacity: 1; stroke-width: 0.8px; opacity: 1;"></path></g><g class="points"></g><g class="text"></g></g><g class="trace scatter tracefd203f" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"><path class="js-line" d="M-1028.16,4805.07L1285.2,-4448.37" style="vector-effect: non-scaling-stroke; fill: none; stroke: rgb(184, 184, 191); stroke-opacity: 1; stroke-width: 0.8px; opacity: 1;"></path></g><g class="points"></g><g class="text"></g></g><g class="trace scatter trace93c5e5" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"><path class="js-line" d="M-1028.16,-4448.37L1285.2,4805.07" style="vector-effect: non-scaling-stroke; fill: none; stroke: rgb(184, 184, 191); stroke-opacity: 1; stroke-width: 0.8px; opacity: 1;"></path></g><g class="points"></g><g class="text"></g></g><g class="trace scatter trace1d4c8e" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"><path class="js-line" d="M-1028.16,5961.75L1285.2,-5605.05" style="vector-effect: non-scaling-stroke; fill: none; stroke: rgb(184, 184, 191); stroke-opacity: 1; stroke-width: 0.8px; opacity: 1;"></path></g><g class="points"></g><g class="text"></g></g><g class="trace scatter trace6d6433" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"><path class="js-line" d="M-1028.16,-5605.05L1285.2,5961.75" style="vector-effect: non-scaling-stroke; fill: none; stroke: rgb(184, 184, 191); stroke-opacity: 1; stroke-width: 0.8px; opacity: 1;"></path></g><g class="points"></g><g class="text"></g></g><g class="trace scatter trace8e615d" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"><path class="js-line" d="M142.8,146.22" style="vector-effect: non-scaling-stroke; fill: none; stroke: rgb(31, 119, 180); stroke-opacity: 1; stroke-width: 2px; opacity: 1;"></path></g><g class="points"><path class="point" transform="translate(142.8,146.22)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" style="opacity: 1; stroke-width: 0px; fill: rgb(31, 119, 180); fill-opacity: 1;"></path></g><g class="text"></g></g><g class="trace scatter trace7739c0" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"></g><g class="points"><path class="point" transform="translate(142.8,146.22)" d="M7.15,0L0,7.15L-7.15,0L0,-7.15Z" style="opacity: 1; stroke-width: 0px; fill: rgb(31, 119, 180); fill-opacity: 1;"></path></g><g class="text"></g></g><g class="trace scatter trace5a2a97" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"><path class="js-line" d="M157.08,114.09" style="vector-effect: non-scaling-stroke; fill: none; stroke: rgb(148, 103, 189); stroke-opacity: 1; stroke-width: 2px; opacity: 1;"></path></g><g class="points"><path class="point" transform="translate(157.08,114.09)" d="M1.5,0A1.5,1.5 0 1,1 0,-1.5A1.5,1.5 0 0,1 1.5,0Z" style="opacity: 1; stroke-width: 0px; fill: rgb(148, 103, 189); fill-opacity: 1;"></path></g><g class="text"></g></g><g class="trace scatter trace710823" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"></g><g class="points"><path class="point" transform="translate(157.08,114.09)" d="M5.5,5.5H-5.5V-5.5H5.5Z" style="opacity: 1; stroke-width: 0px; fill: rgb(148, 103, 189); fill-opacity: 1;"></path></g><g class="text"></g></g><g class="trace scatter traced49e0e" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"><path class="js-line" d="M128.52,178.35L157.08,114.09L128.52,178.35" style="vector-effect: non-scaling-stroke; fill: none; stroke: rgb(138, 138, 143); stroke-opacity: 1; stroke-dasharray: 3px, 3px; stroke-width: 1.2px; opacity: 1;"></path></g><g class="points"></g><g class="text"></g></g><g class="trace scatter tracea98843" style="stroke-miterlimit: 2; opacity: 1;"><g class="fills"></g><g class="errorbars"></g><g class="lines"></g><g class="points"><path class="point" transform="translate(128.52,178.35)" d="M7.2,2.4H2.4V7.2H-2.4V2.4H-7.2V-2.4H-2.4V-7.2H2.4V-2.4H7.2Z" style="opacity: 1; stroke-width: 2px; fill: rgb(44, 160, 44); fill-opacity: 1; stroke: rgb(29, 29, 31); stroke-opacity: 1;"></path></g><g class="text"></g></g></g></g></g><path class="xlines-above crisp" d="M0,0" style="fill: none;"></path><path class="ylines-above crisp" d="M0,0" style="fill: none;"></path><g class="overlines-above"></g><g class="xaxislayer-above"><g class="x2tick"><text text-anchor="start" x="0" y="400.2" data-unformatted="−180" data-math="N" transform="translate(498.96000000000004,0) rotate(29.999999999999996,0,394.2)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;">−180</text></g><g class="x2tick"><text text-anchor="start" x="0" y="400.2" data-unformatted="−135" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;" transform="translate(531.09,0) rotate(29.999999999999996,0,394.2)">−135</text></g><g class="x2tick"><text text-anchor="start" x="0" y="400.2" data-unformatted="−90" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;" transform="translate(563.22,0) rotate(29.999999999999996,0,394.2)">−90</text></g><g class="x2tick"><text text-anchor="start" x="0" y="400.2" data-unformatted="−45" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;" transform="translate(595.35,0) rotate(29.999999999999996,0,394.2)">−45</text></g><g class="x2tick"><text text-anchor="start" x="0" y="400.2" data-unformatted="0" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;" transform="translate(627.48,0) rotate(29.999999999999996,0,394.2)">0</text></g><g class="x2tick"><text text-anchor="start" x="0" y="400.2" data-unformatted="45" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;" transform="translate(659.61,0) rotate(29.999999999999996,0,394.2)">45</text></g><g class="x2tick"><text text-anchor="start" x="0" y="400.2" data-unformatted="90" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;" transform="translate(691.74,0) rotate(29.999999999999996,0,394.2)">90</text></g><g class="x2tick"><text text-anchor="start" x="0" y="400.2" data-unformatted="135" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;" transform="translate(723.87,0) rotate(29.999999999999996,0,394.2)">135</text></g><g class="x2tick"><text text-anchor="start" x="0" y="400.2" data-unformatted="180" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 0;" transform="translate(756,0) rotate(29.999999999999996,0,394.2)">180</text></g></g><g class="yaxislayer-above"><g class="y2tick"><text text-anchor="end" x="497.96000000000004" y="4.199999999999999" data-unformatted="−225" data-math="N" transform="translate(0,369.5)" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;">−225</text></g><g class="y2tick"><text text-anchor="end" x="497.96000000000004" y="4.199999999999999" data-unformatted="−180" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;" transform="translate(0,337.37)">−180</text></g><g class="y2tick"><text text-anchor="end" x="497.96000000000004" y="4.199999999999999" data-unformatted="−135" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;" transform="translate(0,305.24)">−135</text></g><g class="y2tick"><text text-anchor="end" x="497.96000000000004" y="4.199999999999999" data-unformatted="−90" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;" transform="translate(0,273.11)">−90</text></g><g class="y2tick"><text text-anchor="end" x="497.96000000000004" y="4.199999999999999" data-unformatted="−45" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;" transform="translate(0,240.98000000000002)">−45</text></g><g class="y2tick"><text text-anchor="end" x="497.96000000000004" y="4.199999999999999" data-unformatted="0" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;" transform="translate(0,208.85000000000002)">0</text></g><g class="y2tick"><text text-anchor="end" x="497.96000000000004" y="4.199999999999999" data-unformatted="45" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;" transform="translate(0,176.72000000000003)">45</text></g><g class="y2tick"><text text-anchor="end" x="497.96000000000004" y="4.199999999999999" data-unformatted="90" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;" transform="translate(0,144.59000000000003)">90</text></g><g class="y2tick"><text text-anchor="end" x="497.96000000000004" y="4.199999999999999" data-unformatted="135" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;" transform="translate(0,112.46000000000001)">135</text></g><g class="y2tick"><text text-anchor="end" x="497.96000000000004" y="4.199999999999999" data-unformatted="180" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;" transform="translate(0,80.33000000000001)">180</text></g><g class="y2tick"><text text-anchor="end" x="497.96000000000004" y="4.199999999999999" data-unformatted="225" data-math="N" style="font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 12px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre; opacity: 1;" transform="translate(0,48.20000000000002)">225</text></g></g><g class="overaxes-above"></g></g></g><g class="polarlayer"></g><g class="smithlayer"></g><g class="ternarylayer"></g><g class="geolayer"></g><g class="funnelarealayer"></g><g class="pielayer"></g><g class="iciclelayer"></g><g class="treemaplayer"></g><g class="sunburstlayer"></g><g class="glimages"></g></svg><div class="gl-container"><div id="scene" style="position: absolute; left: 0px; top: 10px; height: 410px; width: 453.6px;"><svg viewBox="0 0 453.59375 410" width="453.59375" height="410" style="position: absolute; left: 0px; top: 0px; height: 100%; width: 100%; z-index: 20; pointer-events: none;"></svg><canvas width="908" height="820" style="position: absolute; left: 0px; top: 0px; width: 454px; height: 410px;"></canvas></div></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="756" height="420"><defs id="topdefs-069457"><g class="clips"></g></defs><g class="indicatorlayer"></g><g class="layer-above"><g class="imagelayer"></g><g class="shapelayer"></g></g><g class="selectionlayer"></g><g class="infolayer"><g class="g-gtitle"></g><g class="g-x2title" transform="translate(0,-22.19999999999999)"><text class="x2title" x="627.48" y="439.2" text-anchor="middle" data-unformatted="x = 中心位相の差（度。観測者が原点、はみ出すと目盛を書き換える）" data-math="N" style="opacity: 1; font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 14px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre;">x = 中心位相の差（度。観測者が原点、はみ出すと目盛を書き換える）</text></g><g class="g-y2title"><text class="y2title" transform="rotate(-90,460.96000000000004,208.85000000000002)" x="460.96000000000004" y="208.85000000000002" text-anchor="middle" data-unformatted="t = 内部位相の差（度）" data-math="N" style="opacity: 1; font-family: &quot;Open Sans&quot;, verdana, arial, sans-serif; font-size: 14px; fill: rgb(29, 29, 31); fill-opacity: 1; font-weight: normal; font-style: normal; font-variant: normal; white-space: pre;">t = 内部位相の差（度）</text></g></g><g class="menulayer"></g><g class="zoomlayer"></g></svg><div class="modebar-container" style="position: absolute; top: 0px; right: 0px; width: 100%;"><div id="modebar-069457" class="modebar modebar--hover ease-bg"><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Download plot as a png" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m500 450c-83 0-150-67-150-150 0-83 67-150 150-150 83 0 150 67 150 150 0 83-67 150-150 150z m400 150h-120c-16 0-34 13-39 29l-31 93c-6 15-23 28-40 28h-340c-16 0-34-13-39-28l-31-94c-6-15-23-28-40-28h-120c-55 0-100-45-100-100v-450c0-55 45-100 100-100h800c55 0 100 45 100 100v450c0 55-45 100-100 100z m-400-550c-138 0-250 112-250 250 0 138 112 250 250 250 138 0 250-112 250-250 0-138-112-250-250-250z m365 380c-19 0-35 16-35 35 0 19 16 35 35 35 19 0 35-16 35-35 0-19-16-35-35-35z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Zoom" data-attr="scene.dragmode" data-val="zoom" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m1000-25l-250 251c40 63 63 138 63 218 0 224-182 406-407 406-224 0-406-182-406-406s183-406 407-406c80 0 155 22 218 62l250-250 125 125z m-812 250l0 438 437 0 0-438-437 0z m62 375l313 0 0-312-313 0 0 312z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Pan" data-attr="scene.dragmode" data-val="pan" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m1000 350l-187 188 0-125-250 0 0 250 125 0-188 187-187-187 125 0 0-250-250 0 0 125-188-188 186-187 0 125 252 0 0-250-125 0 187-188 188 188-125 0 0 250 250 0 0-126 187 188z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Orbital rotation" data-attr="scene.dragmode" data-val="orbit" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m922 660c-5 4-9 7-14 11-359 263-580-31-580-31l-102 28 58-400c0 1 1 1 2 2 118 108 351 249 351 249s-62 27-100 42c88 83 222 183 347 122 16-8 30-17 44-27-2 1-4 2-6 4z m36-329c0 0 64 229-88 296-62 27-124 14-175-11 157-78 225-208 249-266 8-19 11-31 11-31 2 5 6 15 11 32-5-13-8-20-8-20z m-775-239c70-31 117-50 198-32-121 80-199 346-199 346l-96-15-58-12c0 0 55-226 155-287z m603 133l-317-139c0 0 4-4 19-14 7-5 24-15 24-15s-177-147-389 4c235-287 536-112 536-112l31-22 100 299-4-1z m-298-153c6-4 14-9 24-15 0 0-17 10-24 15z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn active" data-title="Turntable rotation" data-attr="scene.dragmode" data-val="turntable" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m833 5l-17 108v41l-130-65 130-66c0 0 0 38 0 39 0-1 36-14 39-25 4-15-6-22-16-30-15-12-39-16-56-20-90-22-187-23-279-23-261 0-341 34-353 59 3 60 228 110 228 110-140-8-351-35-351-116 0-120 293-142 474-142 155 0 477 22 477 142 0 50-74 79-163 96z m-374 94c-58-5-99-21-99-40 0-24 65-43 144-43 79 0 143 19 143 43 0 19-42 34-98 40v216h87l-132 135-133-135h88v-216z m167 515h-136v1c16 16 31 34 46 52l84 109v54h-230v-71h124v-1c-16-17-28-32-44-51l-89-114v-51h245v72z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Box Select" data-attr="dragmode" data-val="select" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m0 850l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-285l0-143 143 0 0 143-143 0z m857 0l0-143 143 0 0 143-143 0z m-857-286l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z m285 0l0-143 143 0 0 143-143 0z m286 0l0-143 143 0 0 143-143 0z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Lasso Select" data-attr="dragmode" data-val="lasso" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1031 1000" class="icon" height="1em" width="1em"><path d="m1018 538c-36 207-290 336-568 286-277-48-473-256-436-463 10-57 36-108 76-151-13-66 11-137 68-183 34-28 75-41 114-42l-55-70 0 0c-2-1-3-2-4-3-10-14-8-34 5-45 14-11 34-8 45 4 1 1 2 3 2 5l0 0 113 140c16 11 31 24 45 40 4 3 6 7 8 11 48-3 100 0 151 9 278 48 473 255 436 462z m-624-379c-80 14-149 48-197 96 42 42 109 47 156 9 33-26 47-66 41-105z m-187-74c-19 16-33 37-39 60 50-32 109-55 174-68-42-25-95-24-135 8z m360 75c-34-7-69-9-102-8 8 62-16 128-68 170-73 59-175 54-244-5-9 20-16 40-20 61-28 159 121 317 333 354s407-60 434-217c28-159-121-318-333-355z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a rel="tooltip" class="modebar-btn" data-title="Zoom in" data-attr="zoom" data-val="in" data-toggle="false" data-gravity="n"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m1 787l0-875 875 0 0 875-875 0z m687-500l-187 0 0-187-125 0 0 187-188 0 0 125 188 0 0 187 125 0 0-187 187 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Zoom out" data-attr="zoom" data-val="out" data-toggle="false" data-gravity="n"><svg viewBox="0 0 875 1000" class="icon" height="1em" width="1em"><path d="m0 788l0-876 875 0 0 876-875 0z m688-500l-500 0 0 125 500 0 0-125z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Autoscale" data-attr="zoom" data-val="auto" data-toggle="false" data-gravity="n"><svg viewBox="0 0 1000 1000" class="icon" height="1em" width="1em"><path d="m250 850l-187 0-63 0 0-62 0-188 63 0 0 188 187 0 0 62z m688 0l-188 0 0-62 188 0 0-188 62 0 0 188 0 62-62 0z m-875-938l0 188-63 0 0-188 0-62 63 0 187 0 0 62-187 0z m875 188l0-188-188 0 0-62 188 0 62 0 0 62 0 188-62 0z m-125 188l-1 0-93-94-156 156 156 156 92-93 2 0 0 250-250 0 0-2 93-92-156-156-156 156 94 92 0 2-250 0 0-250 0 0 93 93 157-156-157-156-93 94 0 0 0-250 250 0 0 0-94 93 156 157 156-157-93-93 0 0 250 0 0 250z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a><a rel="tooltip" class="modebar-btn" data-title="Reset views" data-toggle="false" data-gravity="n"><svg viewBox="0 0 928.6 1000" class="icon" height="1em" width="1em"><path d="m786 296v-267q0-15-11-26t-25-10h-214v214h-143v-214h-214q-15 0-25 10t-11 26v267q0 1 0 2t0 2l321 264 321-264q1-1 1-4z m124 39l-34-41q-5-5-12-6h-2q-7 0-12 3l-386 322-386-322q-7-4-13-4-7 2-12 7l-35 41q-4 5-3 13t6 12l401 334q18 15 42 15t43-15l136-114v109q0 8 5 13t13 5h107q8 0 13-5t5-13v-227l122-102q5-5 6-12t-4-13z" transform="matrix(1 0 0 -1 0 850)"></path></svg></a></div><div class="modebar-group"><a href="https://plotly.com/" target="_blank" data-title="Produced with Plotly.js (v2.34.0)" class="modebar-btn plotlyjsicon modebar-btn--logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 132" height="1em" width="1em"><defs> <style>  .cls-0{fill:#000;}  .cls-1{fill:#FFF;}  .cls-2{fill:#F26;}  .cls-3{fill:#D69;}  .cls-4{fill:#BAC;}  .cls-5{fill:#9EF;} </style></defs> <title>plotly-logomark</title> <g id="symbol">  <rect class="cls-0" x="0" y="0" width="132" height="132" rx="18" ry="18"></rect>  <circle class="cls-5" cx="102" cy="30" r="6"></circle>  <circle class="cls-4" cx="78" cy="30" r="6"></circle>  <circle class="cls-4" cx="78" cy="54" r="6"></circle>  <circle class="cls-3" cx="54" cy="30" r="6"></circle>  <circle class="cls-2" cx="30" cy="30" r="6"></circle>  <circle class="cls-2" cx="30" cy="54" r="6"></circle>  <path class="cls-1" d="M30,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,30,72Z"></path>  <path class="cls-1" d="M78,72a6,6,0,0,0-6,6v24a6,6,0,0,0,12,0V78A6,6,0,0,0,78,72Z"></path>  <path class="cls-1" d="M54,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,54,48Z"></path>  <path class="cls-1" d="M102,48a6,6,0,0,0-6,6v48a6,6,0,0,0,12,0V54A6,6,0,0,0,102,48Z"></path> </g></svg></a></div></div></div><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="756" height="420"><g class="hoverlayer"></g></svg></div></div></div>
+<div class="note">
+  弦に沿った角 ψ ∈ [0, 360)。同じ弦の上の複素パルス三つの線形合成：Z ＝ Z₁ ＋ Z₂ ＋ Z₃、Z_i(ψ) ＝ e^{iφ₀i} [ φ_i/360 ＋ (2/π) Σ_m [ sin(mπφ_i/360) / m ] · e^{imπ(ψ−θ_i)/180} ]（m は 1..M_i のうち奇・偶で選んだもの）。φ₀i は各パルスの内部位相（偏角）で、位置 θ_i とは独立。各パルスは index_v2c.html と同じ式で、描くのは和だけ。<br>
+  半径は和の親のノルム R ＝ √Σ_m |c_m|²、c_m ＝ Σ_i c⁽ⁱ⁾_m e^{i(φ₀i−mθ_i)}（直流は含めない）。R² ＝ Σ_i R_i² ＋ 2 Σ_{i<j} Σ_m="" c⁽ⁱ⁾c⁽ʲ⁾="" cos(mΔ_ij="" −="" Φ_ij)、Δ_ij="" ＝="" θ_i="" θ_j、Φ_ij="" φ₀i="" φ₀j。対は="" 12・23・13="" の三組で、独立なのは二組。auto="" は各パルスで独立に二つのステップを持つ：位置="" ←="" ＋="" φ_i="" と、内部位相="" δ_i（スライダー="" δ、−30〜30°="" ティック、初期="" 0）。並進は="" δ="" 0="" の特別な場合で、発展の規則は固定しない。表示では倍率="" k（r×、1〜20、初期="" 10）を掛けた="" kr="" を円・円筒・曲線の半径に使い、ティックごとに更新する（振幅はそのまま）。実部と虚部は別の曲線：青="" 和の実部を半径方向に乗せた="" ((kr="" re="" z)="" cos="" ψ,="" (kr="" sin="" 0)、橙="" 和の虚部を垂直に乗せた="" im="" z)。細い線は半径="" の基準円、薄い面は半径="" kr・高さ="" ±1="" の円筒。円の上の印：青の菱形="" 中心="" θ₁、紫の四角="" θ₂、緑の十字="" θ₃、点線="" 三つの中心を結ぶ三角形（向き="" 1→2→3="" の回る向きの符号）。x・y・z="" は同じ範囲・縮尺="" 1:1:1、正射影。<br="">
+  印：黒 × ＝ 曲率中心（原点）、橙の球 ＝ 線形重心（Re Z を半径方向に乗せた曲線の ψ 平均）、緑の球 ＝ パワー重心（|Z|² を重みにした円周上の重心）。どちらも計算上の点で、そこに波はなく観測者もいないので、位置の読みではない（スペクトルの性質）。<br>
+  右：光円錐。横軸 ＝ 相対位置 Δ の累積、縦軸 ＝ 内部位相の差 Φ の累積（度、始点を原点、縮尺 1:1）。倍音 m の二つの寄与の相対位相は mΔ − Φ で、その一歩の変化は m(φ₁−φ₂) − (δ₁−δ₂)。倍音 m の干渉が止まる方向が Φ ＝ mΔ で、巻き数 1 の倍音が止まる Φ ＝ ±Δ（赤の破線）を光円錐（c ＝ 1）とする。細線は Φ ＝ ±mΔ（m ＝ 2〜5）の扇、緑は傾きが整数のときに凍結する倍音の線。橙の折れ線が Auto の世界線で、傾き (δ₁−δ₂)/(φ₁−φ₂)。世界線は折り返さない（時間は遡らない）。動かすのはゲージ（目盛）で、点が枠からはみ出したら目盛の範囲をはみ出した向きに 180° ずつ書き換え、図全体を累積の座標のまま描き直し、またはみ出すまで描く。光円錐 Φ ＝ ±Δ と扇 Φ ＝ ±mΔ は原点（Auto の始点）から伸びる本物の直線で、新しい目盛の範囲に入る部分が見える。巻数 (n_Δ, n_Φ) はメモリとして併記する。二つの位相はトーラスの上にあり、世界線は (φ₁−φ₂):(δ₁−δ₂) を約分した巻数の対のトーラス曲線で、対が同時に原点へ戻る周期（360/最大公約数 ティック）も表示する。三つでは右パネルが「観測者の時空」になる。観測者（1／2／3 から選ぶ）を原点に置き、他の二つのパルスを点 P_i ＝ (Δ_io, Φ_io) で描く。x は中心位相 θ の差（位相則の傾きの差＝倍音が揃う点の差）、t は内部位相 φ₀ の差（切片の差）。重心は基準に使わない。三点が三角形を作り、三辺が三つの間隔（距離 ＝ x の差、時計のずれ ＝ t の差）。三つ目の関係は差のベクトルで、合成則 v₁₂ ＝ v₁₃ − v₂₃ は三角形が閉じること。単位は「度」（光円錐 c ＝ 1）か、標準の対で測る：物差し ＝ その対の距離 |Δ_s|、時計 ＝ その対の内部時計の 1 ティックあたりの進み |δ_s1 − δ_s2|（1 拍）。標準の単位では光円錐の傾きが |Δ_s|/|δ_s| になり、c ＝ |δ_s|/|Δ_s| 本/拍という標準の選び方で決まる数になる（φ が等しい対を標準にすると物差しが固定される）。初期値は φ ＝ (20, 10, 10)、δ ＝ (20, 0, 10)、観測者 3、標準 23：パルス 1 は傾き 1 で光円錐の上、パルス 2 は縦軸の上（位置は動かず内部時計だけ進む）、辺 1–2 は傾き 2。光円錐は対の性質で、基準を取り替えると保たれない。<br>
+  右上に出すのは読める量。この系はスケール不変で絶対量は存在せず、量はすべて差と比である。二つで読めていたもの：位置 x ＝ Δ_ij、時間 t ＝ Φ_ij（内部時計）、速度 v ＝ dΔ/dΦ、E/p ＝ 傾き dΦ/dΔ、静止の時計（φ_i ＝ φ_j のとき Φ だけが進む）、重なりの角 Θ_ij、視野角 tan α_ij ＝ R_j/R_i。三つで新しく読めるもの：単位つきの距離 Δ₁₃/Δ₂₃ と時間 Φ₁₃/Φ₂₃（一組の対を物差し・時計にして他の対を測る）、内部時計どうしの比 (δ₁−δ₃)/(δ₂−δ₃)（共通の基準に対する二つのうなりの比）、速度の比 (φ₁−φ₃)/(φ₂−φ₃)、合成則 v₁₂ − (v₁₃ − v₂₃) ＝ 0 の検算、各対が光的かどうか、三角形の向き、グラム行列 cos Θ_ij、鏡映対の条件（軸上の 1 個と対 Φ₂ ＝ −Φ₃、保存には δ₂ ＋ δ₃ ＝ 0）。和について：c₀/R、P(π)/R²、Σ c_m²/R²（基準 ψ ＝ 0）、⟨m⟩、巻き数。スライダーを動かすとティックと内部位相は 0 に戻る。ψ の刻みは最高波数の 1 周期あたり 8 点以上。
+</j}></div>
+<script>
+const $ = id => document.getElementById(id);
+const rr = $('rr'), btn = $('auto');
+let ticks = 0;                               // Auto のティック数（スライダーを動かすと 0 に戻す）
+const PAIRS = [[0, 1], [1, 2], [0, 2]], PAIRC = ['#e8862a', '#9467bd', '#2ca02c'], PAIRL = ['12', '23', '13'];
+let hist = PAIRS.map(() => [[0, 0]]);         // 対ごとの (Δ の累積, Φ の累積)。合成則の検算に使う
+let cum = [0, 1, 2].map(() => [[0, 0]]);      // パルスごとの (位置の累積 Σφ_i, 内部位相の累積 Σδ_i)。観測者の時空はこれと基準値 base から作る
+let base = [0, 1, 2].map(() => [0, 0]);       // リセット時の (θ_i, φ₀i)
+const obsOf = () => Number(document.querySelector('input[name=obs]:checked').value), stdOf = () => Number(document.querySelector('input[name=std]:checked').value);
+let win0 = null, winW = 360;                  // 右パネルの目盛（ゲージ）の左下と幅。null なら作り直す。点がはみ出したら書き換える
+const P = [1, 2, 3].map(i => ({th: $('th' + i), ph: $('ph' + i), mm: $('mm' + i), odd: $('odd' + i), even: $('even' + i), dl: $('dl' + i), thv: $('th' + i + 'v'), phv: $('ph' + i + 'v'), mmv: $('mm' + i + 'v'), dlv: $('dl' + i + 'v'), phase0: 0}));   // phase0 = 内部位相（偏角）。Auto で δ ずつ進む。位置 θ とは独立
+
+function grid(n) {                       // ψ を n 点（両端を含めて閉じる）
+  const psi = new Float64Array(n), c = new Float64Array(n), s = new Float64Array(n);
+  for (let i = 0; i < n; i++) { psi[i] = i * 360 / (n - 1); c[i] = Math.cos(Math.PI * psi[i] / 180); s[i] = Math.sin(Math.PI * psi[i] / 180); }
+  return {psi, c, s};
+}
+
+// 係数：index_v2.html のパルスと同じ (2/π) sin(mπφ/360)/m。奇・偶のチェックで m を選ぶ。直流 c₀ = φ/360
+function coeffs(phi, M, odd, even) {
+  const ms = [], cs = [];
+  for (let m = 1; m <= M; m++) {
+    if ((m % 2 === 1 && !odd) || (m % 2 === 0 && !even)) continue;
+    ms.push(m); cs.push((2 / Math.PI) * Math.sin(m * Math.PI * phi / 360) / m);
+  }
+  return { ms, cs, c0: phi / 360 };
+}
+
+// パルス（複素化）：実部は元の高さ z と同じ式（直流 + Σ c_m cos）、虚部は同じ係数の Σ c_m sin
+function pulse(psi, theta, co, r) {
+  const n = psi.length, re = new Float64Array(n), im = new Float64Array(n);
+  const w = co.ms.map((m, j) => (r === undefined ? 1 : Math.pow(r, m)) * co.cs[j]);
+  for (let i = 0; i < n; i++) {
+    const x = Math.PI * (psi[i] - theta) / 180;
+    let a = co.c0, b = 0;
+    for (let j = 0; j < co.ms.length; j++) { a += w[j] * Math.cos(co.ms[j] * x); b += w[j] * Math.sin(co.ms[j] * x); }
+    re[i] = a; im[i] = b;
+  }
+  return { re, im };
+}
+
+function cylinder(R, zlo, zhi) {
+  const n = 73, xs = [], ys = [], z0 = [], z1 = [];
+  for (let i = 0; i < n; i++) {
+    const a = 2 * Math.PI * i / (n - 1);
+    xs.push(R * Math.cos(a)); ys.push(R * Math.sin(a)); z0.push(zlo); z1.push(zhi);
+  }
+  return {type: 'surface', x: [xs, xs], y: [ys, ys], z: [z0, z1], opacity: 0.12, showscale: false,
+          colorscale: [[0, '#8a8a8f'], [1, '#8a8a8f']], hoverinfo: 'skip', name: '円筒', showlegend: false};
+}
+
+function wrap180(d) { return ((d + 180) % 360 + 360) % 360 - 180; }
+
+function params() {
+  const k = Number(rr.value);
+  const pulses = P.map(u => {
+    const theta = Number(u.th.value), phi = Number(u.ph.value), M = Number(u.mm.value), delta = Number(u.dl.value), phase0 = u.phase0;
+    const co = coeffs(phi, M, u.odd.checked, u.even.checked);
+    let R2 = 0; for (const c of co.cs) R2 += c * c;
+    return {theta, phi, M, delta, phase0, co, R: Math.sqrt(R2), R2, kmax: co.ms.length ? co.ms[co.ms.length - 1] : 1};
+  });
+  // 和の係数 c_m = Σ_i c_i,m e^{i(φ₀i − mθ_i)}（複素）
+  const Am = new Map();
+  for (const u of pulses) {
+    const t = Math.PI * u.theta / 180, f = Math.PI * u.phase0 / 180;
+    u.co.ms.forEach((m, j) => { const c = u.co.cs[j], v = Am.get(m) || [0, 0]; v[0] += c * Math.cos(f - m * t); v[1] += c * Math.sin(f - m * t); Am.set(m, v); });
+  }
+  // 対ごと：位置の差 Δ、内部位相の差 Φ、交差項 Σ c_i c_j cos(mΔ − Φ)、重なりの角、視野角、速度ベクトル (φ_i−φ_j, δ_i−δ_j) と傾き
+  const pairs = PAIRS.map(([i, j], q) => {
+    const a = pulses[i], b = pulses[j], Delta = wrap180(a.theta - b.theta), dr = Math.PI * (a.theta - b.theta) / 180;
+    const Phi = wrap180(a.phase0 - b.phase0), pr = Math.PI * (a.phase0 - b.phase0) / 180;
+    let cross = 0; a.co.ms.forEach((m, ja) => { const jb = b.co.ms.indexOf(m); if (jb >= 0) cross += a.co.cs[ja] * b.co.cs[jb] * Math.cos(m * dr - pr); });
+    const cosT = cross / (a.R * b.R), Theta = Math.acos(Math.max(-1, Math.min(1, cosT))) * 180 / Math.PI;
+    const vx = a.phi - b.phi, vy = a.delta - b.delta;
+    const slope = vx === 0 ? (vy === 0 ? null : Infinity) : vy / vx;
+    const mstar = (slope !== null && isFinite(slope) && Math.abs(slope - Math.round(slope)) < 0.05 && Math.round(Math.abs(slope)) >= 1) ? Math.round(slope) : null;
+    return {i, j, q, label: PAIRL[q], color: PAIRC[q], Delta, Phi, cross, cosT, Theta, alpha: Math.atan2(b.R, a.R) * 180 / Math.PI, vx, vy, slope, mstar};
+  });
+  let R2 = 0; for (const u of pulses) R2 += u.R2; for (const q of pairs) R2 += 2 * q.cross;
+  const R = Math.sqrt(R2), Rd = k * R;
+  const c0 = pulses.reduce((t, u) => t + u.co.c0, 0);
+  const kmax = Math.max(...pulses.map(u => u.kmax));
+  const mbars = pulses.map(u => u.co.cs.reduce((t, c, j) => t + u.co.ms[j] * Math.abs(c), 0) / u.co.cs.reduce((t, c) => t + Math.abs(c), 0));
+  const pt = pulses.map(u => [Math.cos(Math.PI * u.theta / 180), Math.sin(Math.PI * u.theta / 180)]);
+  const area2 = (pt[1][0] - pt[0][0]) * (pt[2][1] - pt[0][1]) - (pt[2][0] - pt[0][0]) * (pt[1][1] - pt[0][1]);
+  const orient = Math.abs(area2) < 1e-9 ? 0 : Math.sign(area2);
+  return {pulses, k, Am, pairs, R, R2, Rd, c0, kmax, mbars, orient};
+}
+
+function draw() {
+  const p = params();
+  P.forEach((u, i) => { const q = p.pulses[i]; u.thv.textContent = q.theta + '°'; u.phv.textContent = q.phi + '°'; u.mmv.textContent = q.M; u.dlv.textContent = q.delta + '°/t'; });
+  $('rrv').textContent = p.k;
+  const n = Math.min(40001, Math.max(1441, 8 * p.kmax + 1));
+  const g = grid(n);
+  const rot = (Zi, f) => { const c = Math.cos(f), s = Math.sin(f); return {re: Zi.re.map((v, i) => v * c - Zi.im[i] * s), im: Zi.im.map((v, i) => Zi.re[i] * s + v * c)}; };   // 全体位相 e^{iφ₀} を掛ける（直流も含めて回す）
+  const Zs = p.pulses.map(u => rot(pulse(g.psi, u.theta, u.co), Math.PI * u.phase0 / 180));
+  const Z = {re: Zs[0].re.map((v, i) => Zs.reduce((t, q) => t + q.re[i], 0)), im: Zs[0].im.map((v, i) => Zs.reduce((t, q) => t + q.im[i], 0))};   // 線形合成
+  let zmax = -Infinity, zmin = Infinity, imax = -Infinity, imin = Infinity;
+  for (let i = 0; i < n; i++) { const v = Z.re[i], w = Z.im[i]; if (v > zmax) zmax = v; if (v < zmin) zmin = v; if (w > imax) imax = w; if (w < imin) imin = w; }
+  const X = Array.from(g.c, (c, i) => (p.Rd + Z.re[i]) * c), Y = Array.from(g.s, (s, i) => (p.Rd + Z.re[i]) * s);   // 実部：半径方向の曲線（z = 0）
+  const X0 = Array.from(g.c, c => p.Rd * c), Y0 = Array.from(g.s, s => p.Rd * s);                                    // 虚部：半径 kR の円の上の高さの曲線
+  // 重心二種（両端の重複点を除く）。計算上の点で、位置の読みではない
+  let lx = 0, ly = 0, px = 0, py = 0, pw = 0;
+  for (let i = 0; i < n - 1; i++) {
+    const a = p.Rd + Z.re[i], q = Z.re[i] * Z.re[i] + Z.im[i] * Z.im[i];
+    lx += a * g.c[i]; ly += a * g.s[i]; px += q * p.Rd * g.c[i]; py += q * p.Rd * g.s[i]; pw += q;
+  }
+  lx /= (n - 1); ly /= (n - 1); if (pw > 0) { px /= pw; py /= pw; }
+  // 読める量（和の係数 c_m から）
+  let s2re = 0, s2im = 0, Ppi = 0, sAbs = 0, sMAbs = 0;
+  for (const [m, v] of p.Am) { const q = v[0] * v[0] + v[1] * v[1], ab = Math.sqrt(q);
+    s2re += v[0] * v[0] - v[1] * v[1]; s2im += 2 * v[0] * v[1]; Ppi += (m % 2 ? -1 : 1) * q; sAbs += ab; sMAbs += m * ab; }
+  const mbar = sAbs ? sMAbs / sAbs : 0;
+  let wind = 0;
+  { const Zr = p.pulses.map(u => rot(pulse(g.psi, u.theta, u.co, 0.999), Math.PI * u.phase0 / 180));
+    const ang = i => Math.atan2(Zr.reduce((t, q) => t + q.im[i], 0), Zr.reduce((t, q) => t + q.re[i], 0));
+    let prev = ang(0), tot = 0;
+    for (let i = 1; i < n; i++) { const a = ang(i); let d = a - prev; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI; tot += d; prev = a; }
+    wind = Math.round(tot / (2 * Math.PI)); }
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  const fg = dark ? '#ececf1' : '#1d1d1f', gridc = dark ? '#3a3a42' : '#d2d2d7', thin = dark ? '#55555f' : '#b8b8bf';
+  const L = Math.max(p.Rd + Math.max(Math.abs(zmax), Math.abs(zmin)), Math.abs(imax), Math.abs(imin), p.Rd + 0.5) * 1.15;
+  const zrange = [-L, L];                                     // x・y・z を同じ範囲にして目盛の間隔をそろえる
+  const traces = [
+    cylinder(p.Rd, -1, 1),                                    // 円筒は高さ ±1 で切る（振幅ははみ出してよい）
+    {type: 'scatter3d', mode: 'lines', x: X0, y: Y0, z: X0.map(() => 0), line: {color: '#8a8a8f', width: 2}, hoverinfo: 'skip', showlegend: false},
+    {type: 'scatter3d', mode: 'lines', x: X, y: Y, z: X.map(() => 0), line: {color: '#2f6fdf', width: 5},
+     showlegend: false, hovertemplate: 'ψ=%{customdata[0]:.2f}°<br>Re Z=%{customdata[1]:.4f}（半径方向）<extra></extra>', customdata: Array.from(g.psi, (v, i) => [v, Z.re[i]])},
+    {type: 'scatter3d', mode: 'lines', x: X0, y: Y0, z: Array.from(Z.im), line: {color: '#e8862a', width: 5},
+     showlegend: false, hovertemplate: 'ψ=%{customdata:.2f}°<br>Im Z=%{z:.4f}（垂直）<extra></extra>', customdata: Array.from(g.psi)},
+    {type: 'scatter3d', mode: 'markers', x: [0], y: [0], z: [0], marker: {symbol: 'x', size: 2, color: fg}, name: '曲率中心', hovertemplate: '曲率中心<extra></extra>'},
+    {type: 'scatter3d', mode: 'markers', x: [lx], y: [ly], z: [0], marker: {symbol: 'circle', size: 2, color: '#e8862a'}, name: '線形重心', hovertemplate: `線形重心 (${lx.toFixed(4)}, ${ly.toFixed(4)})<extra></extra>`},
+    {type: 'scatter3d', mode: 'markers', x: [px], y: [py], z: [0], marker: {symbol: 'circle', size: 2, color: '#2ca02c'}, name: 'パワー重心', hovertemplate: `パワー重心 (${px.toFixed(4)}, ${py.toFixed(4)})<extra></extra>`},
+    ...p.pulses.map((u, i) => ({type: 'scatter3d', mode: 'markers', x: [p.Rd * Math.cos(Math.PI * u.theta / 180)], y: [p.Rd * Math.sin(Math.PI * u.theta / 180)], z: [0],
+      marker: {symbol: ['diamond', 'square', 'cross'][i], size: 3, color: ['#1f77b4', '#9467bd', '#2ca02c'][i]}, name: '中心 ' + (i + 1), hovertemplate: `パルス ${i + 1} の中心 θ = ${u.theta}°<extra></extra>`})),
+    {type: 'scatter3d', mode: 'lines', x: [...p.pulses, p.pulses[0]].map(u => p.Rd * Math.cos(Math.PI * u.theta / 180)), y: [...p.pulses, p.pulses[0]].map(u => p.Rd * Math.sin(Math.PI * u.theta / 180)), z: [0, 0, 0, 0], line: {color: '#8a8a8f', width: 1.5, dash: 'dot'}, hoverinfo: 'skip', showlegend: false}
+  ];
+  // ---- 右パネル：観測者の時空。観測者 o を原点に置き、他の二つのパルス i を点 P_i = (Δ_io, Φ_io) で描く。
+  // 位置は中心位相 θ の差（位相則の傾きの差）、時間は内部位相 φ₀ の差（切片の差）。重心は使わない。
+  // 単位：「度」か、標準の対 (s1, s2) で測る（物差し = |Δ_s|、時計 = 1 ティックあたりの |δ_s1 − δ_s2|）。標準の単位では光円錐の傾きが c の値になる
+  const o = obsOf(), sp = PAIRS[stdOf()], useStd = $('unit').checked;
+  const others = [0, 1, 2].filter(i => i !== o);
+  const nT = Math.min(...cum.map(c => c.length));
+  const rawP = (i, k) => [base[i][0] - base[o][0] + cum[i][k][0] - cum[o][k][0], base[i][1] - base[o][1] + cum[i][k][1] - cum[o][k][1]];   // 度
+  const Lstd = Math.abs(base[sp[0]][0] - base[sp[1]][0] + cum[sp[0]][nT - 1][0] - cum[sp[1]][nT - 1][0]);   // 物差し（度）
+  const Tstd = Math.abs(Number(P[sp[0]].dl.value) - Number(P[sp[1]].dl.value));                                  // 時計：1 ティックあたりの内部位相（度）
+  const stdOK = useStd && Lstd > 0 && Tstd > 0;
+  const scl = v => stdOK ? [v[0] / Lstd, v[1] / Tstd] : v;
+  const pos = (i, k) => scl(rawP(i, k));
+  const curP = others.map(i => pos(i, nT - 1));
+  const cSlope = stdOK ? Lstd / Tstd : 1;                     // 光円錐の傾き dt/dx。度なら 1、標準の単位なら |Δ_s|/|δ_s|（c = |δ_s|/|Δ_s|）
+  // 目盛（ゲージ）：原点と二つの現在点を含む正方形。はみ出したときだけ書き換える
+  const allx = [0, ...curP.map(q => q[0])], ally = [0, ...curP.map(q => q[1])];
+  const minW = stdOK ? 4 : 360, gstep = stdOK ? 1 : 180;
+  const outside = win0 === null || allx.some(x => x < win0[0] || x > win0[0] + winW) || ally.some(y => y < win0[1] || y > win0[1] + winW);
+  if (outside) {
+    const spread = Math.max(Math.max(...allx) - Math.min(...allx), Math.max(...ally) - Math.min(...ally));
+    winW = Math.max(minW, Math.ceil((spread + gstep / 2) / gstep) * gstep);
+    win0 = [Math.floor((Math.min(...allx) - gstep / 4) / gstep) * gstep, Math.floor((Math.min(...ally) - gstep / 4) / gstep) * gstep];
+    while (Math.max(...allx) > win0[0] + winW) win0[0] += gstep; while (Math.max(...ally) > win0[1] + winW) win0[1] += gstep;
+  }
+  const GX0 = win0[0], GX1 = win0[0] + winW, GY0 = win0[1], GY1 = win0[1] + winW;
+  const dtk = [0.5, 1, 2, 5, 10, 20, 45, 90, 180, 360, 720, 1800].find(v => v >= winW / 8) || 3600;   // 目盛の間隔は枠の幅の 1/8 程度
+  const XL = [GX0 - 4 * winW, GX1 + 4 * winW];
+  for (const sgn of [1, -1]) traces.push({type: 'scatter', mode: 'lines', x: XL, y: XL.map(v => sgn * cSlope * v), xaxis: 'x2', yaxis: 'y2', line: {color: '#d62728', width: 1.5, dash: 'dash'}, hoverinfo: 'skip', showlegend: false});
+  for (const m of [2, 3, 4, 5]) for (const sgn of [1, -1]) traces.push({type: 'scatter', mode: 'lines', x: XL, y: XL.map(v => sgn * m * cSlope * v), xaxis: 'x2', yaxis: 'y2', line: {color: thin, width: 0.8}, hoverinfo: 'skip', showlegend: false});
+  const PC = ['#1f77b4', '#9467bd', '#2ca02c'];
+  others.forEach((i, q) => {
+    const tr = Array.from({length: nT}, (_, k) => pos(i, k));
+    traces.push({type: 'scatter', mode: 'lines+markers', x: tr.map(v => v[0]), y: tr.map(v => v[1]), xaxis: 'x2', yaxis: 'y2', line: {color: PC[i], width: 2}, marker: {size: 3}, name: 'パルス ' + (i + 1), hovertemplate: `パルス ${i + 1}（観測者 ${o + 1} から）<br>x %{x:.2f}<br>t %{y:.2f}<extra></extra>`});
+    traces.push({type: 'scatter', mode: 'markers', x: [curP[q][0]], y: [curP[q][1]], xaxis: 'x2', yaxis: 'y2', marker: {symbol: ['diamond', 'square', 'cross'][i], size: 11, color: PC[i]}, hoverinfo: 'skip', showlegend: false});
+  });
+  traces.push({type: 'scatter', mode: 'lines', x: [0, curP[0][0], curP[1][0], 0], y: [0, curP[0][1], curP[1][1], 0], xaxis: 'x2', yaxis: 'y2', line: {color: '#8a8a8f', width: 1.2, dash: 'dot'}, hoverinfo: 'skip', showlegend: false});
+  traces.push({type: 'scatter', mode: 'markers', x: [0], y: [0], xaxis: 'x2', yaxis: 'y2', marker: {symbol: ['diamond', 'square', 'cross'][o], size: 12, color: PC[o], line: {width: 2, color: fg}}, name: '観測者 ' + (o + 1), hovertemplate: `観測者 ${o + 1}（原点）<extra></extra>`});
+  // 三辺：観測者–a、観測者–b、a–b。各辺に距離（x の差）と時計のずれ（t の差）
+  const [a, b] = others, Pa = curP[0], Pb = curP[1], Pab = [Pa[0] - Pb[0], Pa[1] - Pb[1]];
+  const side = (lab, v) => `${lab}：距離 ${Math.abs(v[0]).toFixed(stdOK ? 3 : 1)}${stdOK ? ' 本' : '°'}、時計のずれ ${v[1].toFixed(stdOK ? 3 : 1)}${stdOK ? ' 拍' : '°'}`;
+  const pairIdx = (i, j) => PAIRS.findIndex(([x, y]) => (x === i && y === j) || (x === j && y === i));
+  const sl = q => q.slope === null ? '静止' : !isFinite(q.slope) ? '∞（縦軸の上）' : q.slope.toFixed(3) + (Math.abs(q.slope) > 1 ? '（内側）' : Math.abs(q.slope) < 1 ? '（外側）' : '（光円錐の上）');
+  const [q12, q23, q13] = p.pairs;
+  const comp = [q12.vx - (q13.vx - q23.vx), q12.vy - (q13.vy - q23.vy)];
+  const ratio = (x, y) => y === 0 ? '—' : (x / y).toFixed(4);
+  const desc = p.pulses.map((u, i) => { const nOdd = u.co.ms.filter(m => m % 2).length; return `${i + 1}: θ = ${u.theta}°, φ = ${u.phi}°, δ = ${u.delta}°/t, M = ${u.M}（奇 ${nOdd}・偶 ${u.co.ms.length - nOdd}）R${i + 1} = ${u.R.toFixed(4)}`; }).join('　');
+  $('h1').textContent = `${desc}　　和：R = ${p.R.toFixed(4)}（表示 ×${p.k} = ${p.Rd.toFixed(3)}）　max Re = ${zmax.toFixed(4)}, min Re = ${zmin.toFixed(4)}　max Im = ${imax.toFixed(4)}, min Im = ${imin.toFixed(4)}　点数 ${n}`;
+  $('h2').textContent = `観測者 ${o + 1} の時空　単位：${stdOK ? `標準の対 ${PAIRL[stdOf()]}（物差し |Δ| = ${Lstd.toFixed(1)}°、時計 1 拍 = ${Tstd}°/ティック）、光円錐の傾き dt/dx = ${cSlope.toFixed(3)}、c = ${(1 / cSlope).toFixed(4)} 本/拍` : (useStd ? '度（標準の対の距離か時計が 0 なので度に戻した）' : '度（c = 1）')}　三辺　${side(`${o + 1}–${a + 1}`, Pa)}　${side(`${o + 1}–${b + 1}`, Pb)}　${side(`${a + 1}–${b + 1}`, Pab)}　｜　対ごとの傾き　` + p.pairs.map(q => `${q.label}：${sl(q)}${q.mstar !== null ? '、倍音 ' + Math.abs(q.mstar) + ' が凍結' : ''}`).join('　') + `　合成則 v₁₂ − (v₁₃ − v₂₃) = (${comp[0]}, ${comp[1]})　距離の比 Δ₁₃/Δ₂₃ = ${ratio(hist[2][hist[2].length - 1][0] + base[0][0] - base[2][0], hist[1][hist[1].length - 1][0] + base[1][0] - base[2][0])}　時間の比 Φ₁₃/Φ₂₃ = ${ratio(hist[2][hist[2].length - 1][1], hist[1][hist[1].length - 1][1])}　内部時計の比 (δ₁−δ₃)/(δ₂−δ₃) = ${ratio(q13.vy, q23.vy)}　三角形の向き = ${p.orient > 0 ? '＋' : p.orient < 0 ? '−' : '0'}　鏡映対の条件 δ₂＋δ₃ = ${p.pulses[1].delta + p.pulses[2].delta}　ティック ${ticks}　｜　対ごとの読み　` + p.pairs.map(q => `${q.label}：Δ = ${q.Delta.toFixed(1)}°、Φ = ${q.Phi.toFixed(1)}°、cos Θ = ${q.cosT.toFixed(4)}（${q.Theta.toFixed(1)}°）、tan α = ${(p.pulses[q.j].R / p.pulses[q.i].R).toFixed(4)}`).join('　') + `　｜　和：c₀/R = ${(p.c0 / p.R).toFixed(4)}　P(π)/R² = ${(Ppi / p.R2).toFixed(4)}　Σc²/R² = ${(s2re / p.R2).toFixed(4)} ${s2im >= 0 ? '+' : '−'} ${Math.abs(s2im / p.R2).toFixed(4)}i　⟨m⟩ = ${mbar.toFixed(4)}　巻き数 = ${wind}`;
+  const ax = (t, rng) => ({title: t, range: rng, color: fg, gridcolor: gridc, zerolinecolor: fg, backgroundcolor: 'rgba(0,0,0,0)'});
+  const layout = {
+    uirevision: 'keep', paper_bgcolor: 'rgba(0,0,0,0)', font: {color: fg}, margin: {l: 0, r: 0, t: 10, b: 0},
+    showlegend: false,
+    scene: {domain: {x: [0, 0.6], y: [0, 1]}, aspectmode: 'manual', aspectratio: {x: 1, y: 1, z: 1},   // x・y・z を同じ範囲・同じ縮尺に固定
+            xaxis: ax('x', [-L, L]), yaxis: ax('y', [-L, L]), zaxis: ax('z', zrange),
+            camera: {eye: {x: 1.2, y: -1.45, z: 0.72}, projection: {type: 'orthographic'}}},   // 向きは index_v2.html と同じ、距離 1.6 倍、正射影
+    xaxis2: {domain: [0.66, 1], anchor: 'y2', range: [GX0, GX1], dtick: dtk, title: stdOK ? 'x（物差し何本分。観測者が原点）' : 'x = 中心位相の差（度。観測者が原点、はみ出すと目盛を書き換える）', color: fg, gridcolor: gridc, zerolinecolor: fg},
+    yaxis2: {domain: [0.08, 0.95], anchor: 'x2', scaleanchor: 'x2', scaleratio: 1, range: [GY0, GY1], dtick: dtk, title: stdOK ? 't（標準時計の拍）' : 't = 内部位相の差（度）', color: fg, gridcolor: gridc, zerolinecolor: fg}
+  };
+  Plotly.react('plot', traces, layout, {responsive: true});
+}
+
+let timer = null;
+function tick() {
+  for (const u of P) {
+    let t = Number(u.th.value) + Number(u.ph.value); if (t > 360) t -= 360; u.th.value = String(t);   // 位置 θ ← θ + φ
+    u.phase0 = ((u.phase0 + Number(u.dl.value)) % 360 + 360) % 360;                                    // 内部位相 φ₀ ← φ₀ + δ（位置とは独立）
+  }
+  ticks += 1;
+  PAIRS.forEach(([i, j], k) => { const last = hist[k][hist[k].length - 1];
+    hist[k].push([last[0] + Number(P[i].ph.value) - Number(P[j].ph.value), last[1] + Number(P[i].dl.value) - Number(P[j].dl.value)]);
+    if (hist[k].length > 4000) hist[k].shift(); });
+  P.forEach((u, i) => { const last = cum[i][cum[i].length - 1]; cum[i].push([last[0] + Number(u.ph.value), last[1] + Number(u.dl.value)]); if (cum[i].length > 4000) cum[i].shift(); });
+  draw();
+}
+function setAuto(on) {
+  if (on && !timer) { timer = setInterval(tick, 150); btn.classList.add('on'); }
+  if (!on && timer) { clearInterval(timer); timer = null; btn.classList.remove('on'); }
+}
+btn.addEventListener('click', () => setAuto(!timer));
+rr.addEventListener('input', draw);
+const resetAll = () => { ticks = 0; hist = PAIRS.map(() => [[0, 0]]); cum = [0, 1, 2].map(() => [[0, 0]]); win0 = null; for (const w of P) w.phase0 = 0; base = P.map(u => [Number(u.th.value), 0]); draw(); };
+for (const r of document.querySelectorAll('input[name=obs], input[name=std]')) r.addEventListener('change', () => { win0 = null; draw(); });
+$('unit').addEventListener('change', () => { win0 = null; draw(); });
+for (const u of P) { for (const s of [u.th, u.ph, u.mm, u.dl]) s.addEventListener('input', resetAll); for (const c of [u.odd, u.even]) c.addEventListener('change', resetAll); }
+(function fromURL() {                        // 撮影用：?th1=&phi1=&M1=&odd1=0&even1=0&dl1=&p01=&th2=…&th3=…&k=&auto=0（既定は φ₁=20, δ₁=20, φ₂=10, δ₂=0, φ₃=10, δ₃=10）
+  const q = new URLSearchParams(location.search);
+  P.forEach((u, i) => { const j = i + 1;
+    if (q.has('th' + j)) u.th.value = q.get('th' + j); if (q.has('phi' + j)) u.ph.value = q.get('phi' + j); if (q.has('M' + j)) u.mm.value = q.get('M' + j);
+    if (q.get('odd' + j) === '0') u.odd.checked = false; if (q.get('even' + j) === '0') u.even.checked = false;
+    if (q.has('dl' + j)) u.dl.value = q.get('dl' + j); if (q.has('p0' + j)) u.phase0 = Number(q.get('p0' + j)); });   // p0i = 内部位相の初期値（撮影用）
+  if (q.has('k')) rr.value = q.get('k');
+  if (q.has('obs')) document.querySelector(`input[name=obs][value="${q.get('obs')}"]`).checked = true;
+  if (q.has('std')) document.querySelector(`input[name=std][value="${q.get('std')}"]`).checked = true;
+  if (q.get('unit') === '1') $('unit').checked = true;
+  base = P.map(u => [Number(u.th.value), u.phase0]);
+  draw();
+  setAuto(q.get('auto') !== '0');
+})();
+</script><svg id="js-plotly-tester" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute; left: -10000px; top: -10000px; width: 9000px; height: 9000px; z-index: 1;"><path class="js-reference-point" d="M0,0H1V1H0Z" style="stroke-width: 0; fill: black;"></path></svg>
+
+
+</body></html>

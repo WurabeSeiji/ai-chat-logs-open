@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>閉じた弦の四元数パルス 3 波（index_v2c3.html の四元数化）</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.34.0/plotly.min.js"></script>
+<style>
+  :root { --bg:#ffffff; --fg:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --panel:#f5f5f7; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#16161a; --fg:#ececf1; --muted:#9a9aa3; --line:#3a3a42; --panel:#202027; }
+  }
+  html, body { margin:0; background:var(--bg); color:var(--fg);
+    font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  .bar { display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center;
+    padding:10px 16px; background:var(--panel); border-bottom:1px solid var(--line); font-size:14px; }
+  .sl { display:flex; align-items:center; gap:8px; flex:1 1 220px; }
+  .sl input { flex:1; }
+  .sl .v { font-variant-numeric: tabular-nums; min-width:4.5em; text-align:right; }
+  .sl.nv { flex:1 1 120px; }
+  .sl.nv .v { min-width:2.5em; }
+  .nn { font-variant-numeric: tabular-nums; min-width:11em; }
+  button { font-size:15px; padding:4px 12px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--fg); }
+  button.on { background:#2f6fdf; color:#fff; border-color:#2f6fdf; }
+  #plot { width:100%; height:calc(100vh - 460px); min-height:420px; }
+  .head { display:flex; gap:16px; padding:6px 16px 0; font-size:13px; font-variant-numeric: tabular-nums; }
+  .head div { flex:1 1 0; }
+  .head .ratios { border-left:1px solid var(--line); padding-left:12px; }
+  label.ck { display:inline-flex; align-items:center; gap:4px; font-size:14px; }
+  .note { font-size:12.5px; color:var(--muted); padding:6px 16px 10px; line-height:1.7; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <span>1:</span>
+  <div class="sl"><span>θ₁</span><input id="th1" type="range" min="0" max="360" step="1" value="180"><span class="v" id="th1v">180°</span></div>
+  <div class="sl"><span>φ₁</span><input id="ph1" type="range" min="0" max="360" step="1" value="20"><span class="v" id="ph1v">20°</span></div>
+  <div class="sl"><span>M₁</span><input id="mm1" type="range" min="1" max="100" step="1" value="10"><span class="v" id="mm1v">10</span></div>
+  <span class="grp"><label class="ck"><input id="odd1" type="checkbox" checked>奇</label><label class="ck"><input id="even1" type="checkbox" checked>偶</label></span>
+  <div class="sl"><span>δ₁</span><input id="dl1" type="range" min="-30" max="30" step="1" value="20"><span class="v" id="dl1v">20°/t</span></div>
+  <div class="sl nv"><span>i₁</span><input id="ni1" type="range" min="-1" max="1" step="0.05" value="0"><span class="v" id="ni1v">0</span></div>
+  <div class="sl nv"><span>j₁</span><input id="nj1" type="range" min="-1" max="1" step="0.05" value="0"><span class="v" id="nj1v">0</span></div>
+  <div class="sl nv"><span>k₁</span><input id="nk1" type="range" min="-1" max="1" step="0.05" value="1"><span class="v" id="nk1v">1</span></div>
+  <span class="nn" id="nn1"></span>
+</div>
+<div class="bar">
+  <span>2:</span>
+  <div class="sl"><span>θ₂</span><input id="th2" type="range" min="0" max="360" step="1" value="180"><span class="v" id="th2v">180°</span></div>
+  <div class="sl"><span>φ₂</span><input id="ph2" type="range" min="0" max="360" step="1" value="10"><span class="v" id="ph2v">10°</span></div>
+  <div class="sl"><span>M₂</span><input id="mm2" type="range" min="1" max="100" step="1" value="10"><span class="v" id="mm2v">10</span></div>
+  <span class="grp"><label class="ck"><input id="odd2" type="checkbox" checked>奇</label><label class="ck"><input id="even2" type="checkbox" checked>偶</label></span>
+  <div class="sl"><span>δ₂</span><input id="dl2" type="range" min="-30" max="30" step="1" value="0"><span class="v" id="dl2v">0°/t</span></div>
+  <div class="sl nv"><span>i₂</span><input id="ni2" type="range" min="-1" max="1" step="0.05" value="0"><span class="v" id="ni2v">0</span></div>
+  <div class="sl nv"><span>j₂</span><input id="nj2" type="range" min="-1" max="1" step="0.05" value="0"><span class="v" id="nj2v">0</span></div>
+  <div class="sl nv"><span>k₂</span><input id="nk2" type="range" min="-1" max="1" step="0.05" value="1"><span class="v" id="nk2v">1</span></div>
+  <span class="nn" id="nn2"></span>
+</div>
+<div class="bar">
+  <span>3:</span>
+  <div class="sl"><span>θ₃</span><input id="th3" type="range" min="0" max="360" step="1" value="180"><span class="v" id="th3v">180°</span></div>
+  <div class="sl"><span>φ₃</span><input id="ph3" type="range" min="0" max="360" step="1" value="10"><span class="v" id="ph3v">10°</span></div>
+  <div class="sl"><span>M₃</span><input id="mm3" type="range" min="1" max="100" step="1" value="10"><span class="v" id="mm3v">10</span></div>
+  <span class="grp"><label class="ck"><input id="odd3" type="checkbox" checked>奇</label><label class="ck"><input id="even3" type="checkbox" checked>偶</label></span>
+  <div class="sl"><span>δ₃</span><input id="dl3" type="range" min="-30" max="30" step="1" value="10"><span class="v" id="dl3v">10°/t</span></div>
+  <div class="sl nv"><span>i₃</span><input id="ni3" type="range" min="-1" max="1" step="0.05" value="0"><span class="v" id="ni3v">0</span></div>
+  <div class="sl nv"><span>j₃</span><input id="nj3" type="range" min="-1" max="1" step="0.05" value="0"><span class="v" id="nj3v">0</span></div>
+  <div class="sl nv"><span>k₃</span><input id="nk3" type="range" min="-1" max="1" step="0.05" value="1"><span class="v" id="nk3v">1</span></div>
+  <span class="nn" id="nn3"></span>
+</div>
+<div class="bar">
+  <span>右：観測者</span>
+  <span class="grp"><label class="ck"><input type="radio" name="obs" value="0">1</label><label class="ck"><input type="radio" name="obs" value="1">2</label><label class="ck"><input type="radio" name="obs" value="2" checked>3</label></span>
+  <span>標準の対</span>
+  <span class="grp"><label class="ck"><input type="radio" name="std" value="0">12</label><label class="ck"><input type="radio" name="std" value="1" checked>23</label><label class="ck"><input type="radio" name="std" value="2">13</label></span>
+  <label class="ck"><input id="unit" type="checkbox">標準の対で測る（物差し＝その距離、時計＝その内部時計）</label>
+</div>
+<div class="bar">
+  <div class="sl"><span>R×</span><input id="rr" type="range" min="1" max="20" step="1" value="10"><span class="v" id="rrv">10</span></div>
+  <button id="auto" class="on">Auto</button>
+</div>
+<div class="head"><div id="h1"></div><div id="h2" class="ratios"></div></div>
+<div id="plot"></div>
+<div class="note">
+  弦に沿った角 ψ ∈ [0, 360)。同じ弦の上の四元数パルス三つの線形合成：Q ＝ Q₁ ＋ Q₂ ＋ Q₃、Q_i(ψ) ＝ e^{n_i φ₀i} [ φ_i/360 ＋ (2/π) Σ_m [ sin(mπφ_i/360) / m ] · e^{n_i mπ(ψ−θ_i)/180} ]（m は 1..M_i のうち奇・偶で選んだもの）。n_i は単位純虚四元数（n_i² ＝ −1）で、各パルスの虚部の向き。スライダー i・j・k の成分 ∈ [−1, 1]³ を正規化して n_i にする（全部 0 なら k）。名付けは i ＝ 円周方向、j ＝ 半径方向、k ＝ 垂直方向で、読み出し写像の選択であって状態の側に色はない（u n u⁻¹ で回しても積の規則・ノルム・位相は不変）。各パルスは平面 span(1, n_i) ≅ ℂ の中にあり、式は複素パルス（index_v2c3.html）の i を n_i に置き換えただけ。n_i ＝ k（既定）なら index_v2c3.html と同じ。φ₀i は各パルスの内部位相（偏角）で、位置 θ_i とは独立。描くのは和だけ。<br>
+  半径は和の親のノルム R ＝ √Σ_m |c_m|²、c_m ＝ Σ_i c⁽ⁱ⁾_m e^{n_i(φ₀i−mθ_i)} ∈ ℍ（直流は含めない）。R² ＝ Σ_i R_i² ＋ 2 Σ_{i<j} Σ_m c⁽ⁱ⁾c⁽ʲ⁾ Sc[e^{n_i α_i} e^{−n_j α_j}]、α_i ＝ φ₀i − mθ_i、Sc ＝ スカラー部。n_i n_j ＝ −n_i·n_j ＋ n_i×n_j なので Sc[e^{n_i α_i} e^{−n_j α_j}] ＝ cos α_i cos α_j ＋ (n_i·n_j) sin α_i sin α_j（n_i ＝ n_j で cos(mΔ_ij − Φ_ij) に戻る）、ベクトル部は sin α_i cos α_j n_i − cos α_i sin α_j n_j − sin α_i sin α_j (n_i×n_j)。R に効くのはスカラー部だけで、n_i×n_j はベクトル部にしか入らない。Δ_ij ＝ θ_i − θ_j、Φ_ij ＝ φ₀i − φ₀j。対は 12・23・13 の三組で、独立なのは二組。Auto は各パルスで独立に二つのステップを持つ：位置 θ_i ← θ_i ＋ φ_i と、内部位相 φ₀i ← φ₀i ＋ δ_i（スライダー δ、−30〜30°/ティック、初期 0）。並進は δ ＝ 0 の特別な場合で、発展の規則は固定しない。表示では倍率 k（R×、1〜20、初期 10）を掛けた kR を円・円筒・曲線の半径に使い、ティックごとに更新する（振幅はそのまま）。和 Q ＝ W ＋ V_i i ＋ V_j j ＋ V_k k の四成分は別の曲線：黒（ダークモードでは白）＝ 実部 W を半径方向に乗せた ((kR ＋ W) cos ψ, (kR ＋ W) sin ψ, 0)、赤 ＝ j 成分 V_j を半径方向に乗せた ((kR ＋ V_j) cos ψ, (kR ＋ V_j) sin ψ, 0)、緑 ＝ i 成分 V_i を円周（接線）方向に乗せた (kR cos ψ − V_i sin ψ, kR sin ψ ＋ V_i cos ψ, 0)、青 ＝ k 成分 V_k を垂直に乗せた (kR cos ψ, kR sin ψ, V_k)。細い線は半径 kR の基準円、薄い面は半径 kR・高さ ±1 の円筒。円の上の印：青の菱形 ＝ 中心 θ₁、紫の四角 ＝ 中心 θ₂、緑の十字 ＝ 中心 θ₃、点線 ＝ 三つの中心を結ぶ三角形（向き ＝ 1→2→3 の回る向きの符号）。x・y・z は同じ範囲・縮尺 1:1:1、正射影。<br>
+  印：黒 × ＝ 曲率中心（原点）、橙の球 ＝ 線形重心（W を半径方向に乗せた曲線の ψ 平均）、緑の球 ＝ パワー重心（|Q|² ＝ W² ＋ V_i² ＋ V_j² ＋ V_k² を重みにした円周上の重心）。どちらも計算上の点で、そこに波はなく観測者もいないので、位置の読みではない（スペクトルの性質）。<br>
+  右：光円錐。横軸 ＝ 相対位置 Δ の累積、縦軸 ＝ 内部位相の差 Φ の累積（度、始点を原点、縮尺 1:1）。倍音 m の二つの寄与の相対位相は mΔ − Φ で、その一歩の変化は m(φ₁−φ₂) − (δ₁−δ₂)。倍音 m の干渉が止まる方向が Φ ＝ mΔ で、巻き数 1 の倍音が止まる Φ ＝ ±Δ（赤の破線）を光円錐（c ＝ 1）とする。細線は Φ ＝ ±mΔ（m ＝ 2〜5）の扇、緑は傾きが整数のときに凍結する倍音の線。橙の折れ線が Auto の世界線で、傾き (δ₁−δ₂)/(φ₁−φ₂)。世界線は折り返さない（時間は遡らない）。動かすのはゲージ（目盛）で、点が枠からはみ出したら目盛の範囲をはみ出した向きに 180° ずつ書き換え、図全体を累積の座標のまま描き直し、またはみ出すまで描く。光円錐 Φ ＝ ±Δ と扇 Φ ＝ ±mΔ は原点（Auto の始点）から伸びる本物の直線で、新しい目盛の範囲に入る部分が見える。巻数 (n_Δ, n_Φ) はメモリとして併記する。二つの位相はトーラスの上にあり、世界線は (φ₁−φ₂):(δ₁−δ₂) を約分した巻数の対のトーラス曲線で、対が同時に原点へ戻る周期（360/最大公約数 ティック）も表示する。三つでは右パネルが「観測者の時空」になる。観測者（1／2／3 から選ぶ）を原点に置き、他の二つのパルスを点 P_i ＝ (x_io, Φ_io) で描く。四元数では位置が向きを持つ：パルス i の位置ベクトルは vec x_i ＝ Θ_i n_i（中心位相の累積 Θ_i をその軸 n_i に乗せた回転ベクトル、度）、観測者からの相対位置は vec x_io ＝ vec x_i − vec x_o（3 成分。複素の x ＝ Δ_io が vec x になった）。横軸は x_io ＝ ±|vec x_io|（符号は観測者の軸 n_o への射影の符号。n が全部同じなら Δ_io そのもの）、t は内部位相 φ₀ の差（切片の差、スカラーのまま）。光円錐は Φ ＝ ±|vec x|。重心は基準に使わない。三点が三角形を作り、三辺が三つの間隔（距離 ＝ x の差、時計のずれ ＝ t の差）。三つ目の関係は差のベクトルで、合成則 v₁₂ ＝ v₁₃ − v₂₃ は三角形が閉じること。単位は「度」（光円錐 c ＝ 1）か、標準の対で測る：物差し ＝ その対の距離 |vec x_s|、時計 ＝ その対の内部時計の 1 ティックあたりの進み |δ_s1 − δ_s2|（1 拍）。標準の単位では光円錐の傾きが |vec x_s|/|δ_s| になり、c ＝ |δ_s|/|vec x_s| 本/拍という標準の選び方で決まる数になる（φ が等しい対を標準にすると物差しが固定される）。初期値は φ ＝ (20, 10, 10)、δ ＝ (20, 0, 10)、観測者 3、標準 23：パルス 1 は傾き 1 で光円錐の上、パルス 2 は縦軸の上（位置は動かず内部時計だけ進む）、辺 1–2 は傾き 2。光円錐は対の性質で、基準を取り替えると保たれない。<br>
+  右上に出すのは読める量。この系はスケール不変で絶対量は存在せず、量はすべて差と比である。二つで読めていたもの：位置 x ＝ Δ_ij、時間 t ＝ Φ_ij（内部時計）、速度 v ＝ dΔ/dΦ、E/p ＝ 傾き dΦ/dΔ、静止の時計（φ_i ＝ φ_j のとき Φ だけが進む）、重なりの角 Θ_ij、視野角 tan α_ij ＝ R_j/R_i。三つで新しく読めるもの：単位つきの距離 Δ₁₃/Δ₂₃ と時間 Φ₁₃/Φ₂₃（一組の対を物差し・時計にして他の対を測る）、内部時計どうしの比 (δ₁−δ₃)/(δ₂−δ₃)（共通の基準に対する二つのうなりの比）、速度の比 (φ₁−φ₃)/(φ₂−φ₃)、合成則 v₁₂ − (v₁₃ − v₂₃) ＝ 0 の検算、各対が光的かどうか、三角形の向き、グラム行列 cos Θ_ij、鏡映対の条件（軸上の 1 個と対 Φ₂ ＝ −Φ₃、保存には δ₂ ＋ δ₃ ＝ 0）。和について：c₀/R、P(π)/R²、Σ c_m²/R²（基準 ψ ＝ 0。四元数の二乗なのでスカラー部＋ベクトル部）、⟨m⟩、巻き数。四元数で加わる読み（対ごと）：軸の角 n_i·n_j と n_i×n_j、対の位置ベクトル vec Δ_ij ＝ e^{n_i θ_i} e^{−n_j θ_j} の角 × 軸（n_i ＝ n_j なら Δ_ij n_i。軸が違うと角は同じ m の刻みで変わらないが軸が倍音ごとに n_j のまわりを歳差するので、対だけでは距離が決まり向きは決まらない）、交差項のベクトル部 vec V_ij/(R_i R_j)（n_i ＝ n_j なら Σ c⁽ⁱ⁾c⁽ʲ⁾ sin(Φ_ij − mΔ_ij) n_i）。巻き数は n が全部同じときだけ定義する（ℍ∖{0} は単連結で、平面が共有されないと巻き数がない）。スライダーを動かすとティックと内部位相は 0 に戻る。ψ の刻みは最高波数の 1 周期あたり 8 点以上。
+</div>
+<script>
+const $ = id => document.getElementById(id);
+const rr = $('rr'), btn = $('auto');
+let ticks = 0;                               // Auto のティック数（スライダーを動かすと 0 に戻す）
+const PAIRS = [[0, 1], [1, 2], [0, 2]], PAIRC = ['#e8862a', '#9467bd', '#2ca02c'], PAIRL = ['12', '23', '13'];
+let hist = PAIRS.map(() => [[0, 0]]);         // 対ごとの (Δ の累積, Φ の累積)。合成則の検算に使う
+let cum = [0, 1, 2].map(() => [[0, 0]]);      // パルスごとの (位置の累積 Σφ_i, 内部位相の累積 Σδ_i)。観測者の時空はこれと基準値 base から作る
+let base = [0, 1, 2].map(() => [0, 0]);       // リセット時の (θ_i, φ₀i)
+const obsOf = () => Number(document.querySelector('input[name=obs]:checked').value), stdOf = () => Number(document.querySelector('input[name=std]:checked').value);
+let win0 = null, winW = 360;                  // 右パネルの目盛（ゲージ）の左下と幅。null なら作り直す。点がはみ出したら書き換える
+const P = [1, 2, 3].map(i => ({th: $('th' + i), ph: $('ph' + i), mm: $('mm' + i), odd: $('odd' + i), even: $('even' + i), dl: $('dl' + i), thv: $('th' + i + 'v'), phv: $('ph' + i + 'v'), mmv: $('mm' + i + 'v'), dlv: $('dl' + i + 'v'), phase0: 0,
+  ni: $('ni' + i), nj: $('nj' + i), nk: $('nk' + i), niv: $('ni' + i + 'v'), njv: $('nj' + i + 'v'), nkv: $('nk' + i + 'v'), nn: $('nn' + i)}));   // phase0 = 内部位相（偏角）。Auto で δ ずつ進む。位置 θ とは独立。ni/nj/nk = 虚部の向き n の成分（i 円周・j 半径・k 垂直）
+
+function grid(n) {                       // ψ を n 点（両端を含めて閉じる）
+  const psi = new Float64Array(n), c = new Float64Array(n), s = new Float64Array(n);
+  for (let i = 0; i < n; i++) { psi[i] = i * 360 / (n - 1); c[i] = Math.cos(Math.PI * psi[i] / 180); s[i] = Math.sin(Math.PI * psi[i] / 180); }
+  return {psi, c, s};
+}
+
+// 係数：index_v2.html のパルスと同じ (2/π) sin(mπφ/360)/m。奇・偶のチェックで m を選ぶ。直流 c₀ = φ/360
+function coeffs(phi, M, odd, even) {
+  const ms = [], cs = [];
+  for (let m = 1; m <= M; m++) {
+    if ((m % 2 === 1 && !odd) || (m % 2 === 0 && !even)) continue;
+    ms.push(m); cs.push((2 / Math.PI) * Math.sin(m * Math.PI * phi / 360) / m);
+  }
+  return { ms, cs, c0: phi / 360 };
+}
+
+// パルス（複素化）：実部は元の高さ z と同じ式（直流 + Σ c_m cos）、虚部は同じ係数の Σ c_m sin
+function pulse(psi, theta, co, r) {
+  const n = psi.length, re = new Float64Array(n), im = new Float64Array(n);
+  const w = co.ms.map((m, j) => (r === undefined ? 1 : Math.pow(r, m)) * co.cs[j]);
+  for (let i = 0; i < n; i++) {
+    const x = Math.PI * (psi[i] - theta) / 180;
+    let a = co.c0, b = 0;
+    for (let j = 0; j < co.ms.length; j++) { a += w[j] * Math.cos(co.ms[j] * x); b += w[j] * Math.sin(co.ms[j] * x); }
+    re[i] = a; im[i] = b;
+  }
+  return { re, im };
+}
+
+function cylinder(R, zlo, zhi) {
+  const n = 73, xs = [], ys = [], z0 = [], z1 = [];
+  for (let i = 0; i < n; i++) {
+    const a = 2 * Math.PI * i / (n - 1);
+    xs.push(R * Math.cos(a)); ys.push(R * Math.sin(a)); z0.push(zlo); z1.push(zhi);
+  }
+  return {type: 'surface', x: [xs, xs], y: [ys, ys], z: [z0, z1], opacity: 0.12, showscale: false,
+          colorscale: [[0, '#8a8a8f'], [1, '#8a8a8f']], hoverinfo: 'skip', name: '円筒', showlegend: false};
+}
+
+function wrap180(d) { return ((d + 180) % 360 + 360) % 360 - 180; }
+
+// 四元数 [w, x, y, z]（x ↔ i 円周、y ↔ j 半径、z ↔ k 垂直）。足すのは成分ごと、要るのは掛け算一つ
+function nvec(u) { const x = Number(u.ni.value), y = Number(u.nj.value), z = Number(u.nk.value), L = Math.hypot(x, y, z); return L < 1e-12 ? [0, 0, 1] : [x / L, y / L, z / L]; }   // 単位純虚四元数 n（全部 0 なら k）
+const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+const crs = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+const qmul = (p, q) => [p[0] * q[0] - p[1] * q[1] - p[2] * q[2] - p[3] * q[3], p[0] * q[1] + p[1] * q[0] + p[2] * q[3] - p[3] * q[2], p[0] * q[2] - p[1] * q[3] + p[2] * q[0] + p[3] * q[1], p[0] * q[3] + p[1] * q[2] - p[2] * q[1] + p[3] * q[0]];
+const qexp = (nv, a) => [Math.cos(a), nv[0] * Math.sin(a), nv[1] * Math.sin(a), nv[2] * Math.sin(a)];   // e^{n a} = cos a + n sin a
+const qconj = q => [q[0], -q[1], -q[2], -q[3]];
+const v3 = (v, d) => '(' + v.map(x => x.toFixed(d)).join(', ') + ')';
+
+function params() {
+  const k = Number(rr.value);
+  const pulses = P.map(u => {
+    const theta = Number(u.th.value), phi = Number(u.ph.value), M = Number(u.mm.value), delta = Number(u.dl.value), phase0 = u.phase0;
+    const co = coeffs(phi, M, u.odd.checked, u.even.checked);
+    let R2 = 0; for (const c of co.cs) R2 += c * c;
+    return {theta, phi, M, delta, phase0, co, nv: nvec(u), R: Math.sqrt(R2), R2, kmax: co.ms.length ? co.ms[co.ms.length - 1] : 1};
+  });
+  // 和の係数 c_m = Σ_i c_i,m e^{n_i(φ₀i − mθ_i)}（四元数 [w, x, y, z]。各パルスの寄与は平面 span(1, n_i) の中）
+  const Am = new Map();
+  for (const u of pulses) {
+    const t = Math.PI * u.theta / 180, f = Math.PI * u.phase0 / 180;
+    u.co.ms.forEach((m, j) => { const c = u.co.cs[j], v = Am.get(m) || [0, 0, 0, 0], s = c * Math.sin(f - m * t); v[0] += c * Math.cos(f - m * t); v[1] += s * u.nv[0]; v[2] += s * u.nv[1]; v[3] += s * u.nv[2]; Am.set(m, v); });
+  }
+  // 対ごと：位置の差 Δ、内部位相の差 Φ、交差項 Σ c_i c_j e^{n_i α_i} e^{−n_j α_j}（スカラー部が R に入る。ベクトル部 Vc は新しい読み）、重なりの角、視野角、速度ベクトル (φ_i−φ_j, δ_i−δ_j) と傾き
+  // 軸の角 n_i·n_j と n_i×n_j、対の位置ベクトル Dvec = e^{n_i θ_i} e^{−n_j θ_j} の角 × 軸（n_i = n_j なら wrap(Δ) n）
+  const pairs = PAIRS.map(([i, j], q) => {
+    const a = pulses[i], b = pulses[j], Delta = wrap180(a.theta - b.theta), ta = Math.PI * a.theta / 180, tb = Math.PI * b.theta / 180;
+    const Phi = wrap180(a.phase0 - b.phase0), fa = Math.PI * a.phase0 / 180, fb = Math.PI * b.phase0 / 180;
+    let cross = 0; const Vc = [0, 0, 0];
+    a.co.ms.forEach((m, ja) => { const jb = b.co.ms.indexOf(m); if (jb >= 0) { const g = qmul(qexp(a.nv, fa - m * ta), qconj(qexp(b.nv, fb - m * tb))), w = a.co.cs[ja] * b.co.cs[jb]; cross += w * g[0]; Vc[0] += w * g[1]; Vc[1] += w * g[2]; Vc[2] += w * g[3]; } });
+    const cosT = cross / (a.R * b.R), Theta = Math.acos(Math.max(-1, Math.min(1, cosT))) * 180 / Math.PI;
+    const nd = dot(a.nv, b.nv), nx = crs(a.nv, b.nv);
+    const g0 = qmul(qexp(a.nv, ta), qconj(qexp(b.nv, tb))), Dabs = Math.acos(Math.max(-1, Math.min(1, g0[0]))) * 180 / Math.PI, gv = Math.hypot(g0[1], g0[2], g0[3]);
+    const Dvec = gv < 1e-12 ? [0, 0, 0] : [g0[1], g0[2], g0[3]].map(x => x / gv * Dabs);
+    const vx = a.phi - b.phi, vy = a.delta - b.delta;
+    const slope = vx === 0 ? (vy === 0 ? null : Infinity) : vy / vx;
+    const mstar = (slope !== null && isFinite(slope) && Math.abs(slope - Math.round(slope)) < 0.05 && Math.round(Math.abs(slope)) >= 1) ? Math.round(slope) : null;
+    return {i, j, q, label: PAIRL[q], color: PAIRC[q], Delta, Phi, cross, Vc, nd, nx, Dvec, Dabs, cosT, Theta, alpha: Math.atan2(b.R, a.R) * 180 / Math.PI, vx, vy, slope, mstar};
+  });
+  let R2 = 0; for (const u of pulses) R2 += u.R2; for (const q of pairs) R2 += 2 * q.cross;
+  const R = Math.sqrt(R2), Rd = k * R;
+  const c0 = pulses.reduce((t, u) => t + u.co.c0, 0);
+  const kmax = Math.max(...pulses.map(u => u.kmax));
+  const mbars = pulses.map(u => u.co.cs.reduce((t, c, j) => t + u.co.ms[j] * Math.abs(c), 0) / u.co.cs.reduce((t, c) => t + Math.abs(c), 0));
+  const pt = pulses.map(u => [Math.cos(Math.PI * u.theta / 180), Math.sin(Math.PI * u.theta / 180)]);
+  const area2 = (pt[1][0] - pt[0][0]) * (pt[2][1] - pt[0][1]) - (pt[2][0] - pt[0][0]) * (pt[1][1] - pt[0][1]);
+  const orient = Math.abs(area2) < 1e-9 ? 0 : Math.sign(area2);
+  return {pulses, k, Am, pairs, R, R2, Rd, c0, kmax, mbars, orient};
+}
+
+function draw() {
+  const p = params();
+  P.forEach((u, i) => { const q = p.pulses[i]; u.thv.textContent = q.theta + '°'; u.phv.textContent = q.phi + '°'; u.mmv.textContent = q.M; u.dlv.textContent = q.delta + '°/t';
+    u.niv.textContent = Number(u.ni.value).toFixed(2); u.njv.textContent = Number(u.nj.value).toFixed(2); u.nkv.textContent = Number(u.nk.value).toFixed(2); u.nn.textContent = 'n' + '₁₂₃'[i] + ' = ' + v3(q.nv, 3); });
+  $('rrv').textContent = p.k;
+  const n = Math.min(40001, Math.max(1441, 8 * p.kmax + 1));
+  const g = grid(n);
+  const rot = (Zi, f) => { const c = Math.cos(f), s = Math.sin(f); return {re: Zi.re.map((v, i) => v * c - Zi.im[i] * s), im: Zi.im.map((v, i) => Zi.re[i] * s + v * c)}; };   // 全体位相 e^{iφ₀} を掛ける（直流も含めて回す）
+  const Zs = p.pulses.map(u => rot(pulse(g.psi, u.theta, u.co), Math.PI * u.phase0 / 180));
+  // 線形合成（四元数）Q = W + V_i i + V_j j + V_k k。各パルスは平面 span(1, n_i) の中なので、実部は W に、虚部は n_i の向きで V に足す
+  const W = new Float64Array(n), Vi = new Float64Array(n), Vj = new Float64Array(n), Vk = new Float64Array(n);
+  Zs.forEach((q, s) => { const nv = p.pulses[s].nv; for (let i = 0; i < n; i++) { W[i] += q.re[i]; Vi[i] += q.im[i] * nv[0]; Vj[i] += q.im[i] * nv[1]; Vk[i] += q.im[i] * nv[2]; } });
+  const mm = A => { let lo = Infinity, hi = -Infinity; for (let i = 0; i < n; i++) { if (A[i] > hi) hi = A[i]; if (A[i] < lo) lo = A[i]; } return [lo, hi]; };
+  const [zmin, zmax] = mm(W), [imin, imax] = mm(Vi), [jmin, jmax] = mm(Vj), [kmin, kmax] = mm(Vk);
+  const X = Array.from(g.c, (c, i) => (p.Rd + W[i]) * c), Y = Array.from(g.s, (s, i) => (p.Rd + W[i]) * s);       // 実部 W：半径方向の曲線（z = 0）黒
+  const Xj = Array.from(g.c, (c, i) => (p.Rd + Vj[i]) * c), Yj = Array.from(g.s, (s, i) => (p.Rd + Vj[i]) * s);   // j 成分：半径方向の曲線（z = 0）赤
+  const Xi = Array.from(g.c, (c, i) => p.Rd * c - Vi[i] * g.s[i]), Yi = Array.from(g.s, (s, i) => p.Rd * s + Vi[i] * g.c[i]);   // i 成分：円周（接線）方向の曲線（z = 0）緑
+  const X0 = Array.from(g.c, c => p.Rd * c), Y0 = Array.from(g.s, s => p.Rd * s);                                    // k 成分：半径 kR の円の上の高さの曲線 青
+  // 重心二種（両端の重複点を除く）。計算上の点で、位置の読みではない
+  let lx = 0, ly = 0, px = 0, py = 0, pw = 0;
+  for (let i = 0; i < n - 1; i++) {
+    const a = p.Rd + W[i], q = W[i] * W[i] + Vi[i] * Vi[i] + Vj[i] * Vj[i] + Vk[i] * Vk[i];
+    lx += a * g.c[i]; ly += a * g.s[i]; px += q * p.Rd * g.c[i]; py += q * p.Rd * g.s[i]; pw += q;
+  }
+  lx /= (n - 1); ly /= (n - 1); if (pw > 0) { px /= pw; py /= pw; }
+  // 読める量（和の係数 c_m から）。Σc² は四元数の二乗 c² = (w² − |v|²) + 2w v
+  const s2 = [0, 0, 0, 0]; let Ppi = 0, sAbs = 0, sMAbs = 0;
+  for (const [m, v] of p.Am) { const vv = v[1] * v[1] + v[2] * v[2] + v[3] * v[3], q = v[0] * v[0] + vv, ab = Math.sqrt(q);
+    s2[0] += v[0] * v[0] - vv; s2[1] += 2 * v[0] * v[1]; s2[2] += 2 * v[0] * v[2]; s2[3] += 2 * v[0] * v[3]; Ppi += (m % 2 ? -1 : 1) * q; sAbs += ab; sMAbs += m * ab; }
+  const mbar = sAbs ? sMAbs / sAbs : 0;
+  const sameAxis = p.pulses.every(u => dot(u.nv, p.pulses[0].nv) > 1 - 1e-9);   // 巻き数は n が全部同じ（平面を共有する）ときだけ定義
+  let wind = null;
+  if (sameAxis) { const Zr = p.pulses.map(u => rot(pulse(g.psi, u.theta, u.co, 0.999), Math.PI * u.phase0 / 180));
+    const ang = i => Math.atan2(Zr.reduce((t, q) => t + q.im[i], 0), Zr.reduce((t, q) => t + q.re[i], 0));
+    let prev = ang(0), tot = 0;
+    for (let i = 1; i < n; i++) { const a = ang(i); let d = a - prev; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI; tot += d; prev = a; }
+    wind = Math.round(tot / (2 * Math.PI)); }
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  const fg = dark ? '#ececf1' : '#1d1d1f', gridc = dark ? '#3a3a42' : '#d2d2d7', thin = dark ? '#55555f' : '#b8b8bf';
+  const L = Math.max(p.Rd + Math.max(Math.abs(zmax), Math.abs(zmin), Math.abs(jmax), Math.abs(jmin), Math.abs(imax), Math.abs(imin)), Math.abs(kmax), Math.abs(kmin), p.Rd + 0.5) * 1.15;
+  const zrange = [-L, L];                                     // x・y・z を同じ範囲にして目盛の間隔をそろえる
+  const traces = [
+    cylinder(p.Rd, -1, 1),                                    // 円筒は高さ ±1 で切る（振幅ははみ出してよい）
+    {type: 'scatter3d', mode: 'lines', x: X0, y: Y0, z: X0.map(() => 0), line: {color: '#8a8a8f', width: 2}, hoverinfo: 'skip', showlegend: false},
+    {type: 'scatter3d', mode: 'lines', x: X, y: Y, z: X.map(() => 0), line: {color: fg, width: 5},
+     showlegend: false, hovertemplate: 'ψ=%{customdata[0]:.2f}°<br>Re Q=%{customdata[1]:.4f}（実部、半径方向）<extra></extra>', customdata: Array.from(g.psi, (v, i) => [v, W[i]])},
+    {type: 'scatter3d', mode: 'lines', x: Xj, y: Yj, z: Xj.map(() => 0), line: {color: '#d62728', width: 4},
+     showlegend: false, hovertemplate: 'ψ=%{customdata[0]:.2f}°<br>j 成分=%{customdata[1]:.4f}（半径方向）<extra></extra>', customdata: Array.from(g.psi, (v, i) => [v, Vj[i]])},
+    {type: 'scatter3d', mode: 'lines', x: Xi, y: Yi, z: Xi.map(() => 0), line: {color: '#2ca02c', width: 4},
+     showlegend: false, hovertemplate: 'ψ=%{customdata[0]:.2f}°<br>i 成分=%{customdata[1]:.4f}（円周方向）<extra></extra>', customdata: Array.from(g.psi, (v, i) => [v, Vi[i]])},
+    {type: 'scatter3d', mode: 'lines', x: X0, y: Y0, z: Array.from(Vk), line: {color: '#2f6fdf', width: 5},
+     showlegend: false, hovertemplate: 'ψ=%{customdata:.2f}°<br>k 成分=%{z:.4f}（垂直）<extra></extra>', customdata: Array.from(g.psi)},
+    {type: 'scatter3d', mode: 'markers', x: [0], y: [0], z: [0], marker: {symbol: 'x', size: 2, color: fg}, name: '曲率中心', hovertemplate: '曲率中心<extra></extra>'},
+    {type: 'scatter3d', mode: 'markers', x: [lx], y: [ly], z: [0], marker: {symbol: 'circle', size: 2, color: '#e8862a'}, name: '線形重心', hovertemplate: `線形重心 (${lx.toFixed(4)}, ${ly.toFixed(4)})<extra></extra>`},
+    {type: 'scatter3d', mode: 'markers', x: [px], y: [py], z: [0], marker: {symbol: 'circle', size: 2, color: '#2ca02c'}, name: 'パワー重心', hovertemplate: `パワー重心 (${px.toFixed(4)}, ${py.toFixed(4)})<extra></extra>`},
+    ...p.pulses.map((u, i) => ({type: 'scatter3d', mode: 'markers', x: [p.Rd * Math.cos(Math.PI * u.theta / 180)], y: [p.Rd * Math.sin(Math.PI * u.theta / 180)], z: [0],
+      marker: {symbol: ['diamond', 'square', 'cross'][i], size: 3, color: ['#1f77b4', '#9467bd', '#2ca02c'][i]}, name: '中心 ' + (i + 1), hovertemplate: `パルス ${i + 1} の中心 θ = ${u.theta}°<extra></extra>`})),
+    {type: 'scatter3d', mode: 'lines', x: [...p.pulses, p.pulses[0]].map(u => p.Rd * Math.cos(Math.PI * u.theta / 180)), y: [...p.pulses, p.pulses[0]].map(u => p.Rd * Math.sin(Math.PI * u.theta / 180)), z: [0, 0, 0, 0], line: {color: '#8a8a8f', width: 1.5, dash: 'dot'}, hoverinfo: 'skip', showlegend: false}
+  ];
+  // ---- 右パネル：観測者の時空。観測者 o を原点に置き、他の二つのパルス i を点 P_i = (Δ_io, Φ_io) で描く。
+  // 位置は中心位相 θ の差（位相則の傾きの差）、時間は内部位相 φ₀ の差（切片の差）。重心は使わない。
+  // 単位：「度」か、標準の対 (s1, s2) で測る（物差し = |Δ_s|、時計 = 1 ティックあたりの |δ_s1 − δ_s2|）。標準の単位では光円錐の傾きが c の値になる
+  const o = obsOf(), sp = PAIRS[stdOf()], useStd = $('unit').checked;
+  const others = [0, 1, 2].filter(i => i !== o);
+  const nT = Math.min(...cum.map(c => c.length));
+  // 位置ベクトル vec x_i = Θ_i n_i（中心位相の累積をその軸に乗せる、度）。相対位置 vec x_io = vec x_i − vec x_o。横軸は ±|vec x_io|（符号は観測者の軸 n_o への射影）。n が全部同じなら元の Δ_io に一致
+  const nvs = p.pulses.map(u => u.nv);
+  const xv = (i, k) => { const T = base[i][0] + cum[i][k][0]; return [T * nvs[i][0], T * nvs[i][1], T * nvs[i][2]]; };
+  const relv = (i, j, k) => { const a = xv(i, k), b = xv(j, k); return [a[0] - b[0], a[1] - b[1], a[2] - b[2]]; };
+  const sgnlen = (v, ref) => (dot(v, ref) < 0 ? -1 : 1) * Math.hypot(v[0], v[1], v[2]);
+  const rawP = (i, k) => [sgnlen(relv(i, o, k), nvs[o]), base[i][1] - base[o][1] + cum[i][k][1] - cum[o][k][1]];   // 度
+  const Lstd = Math.hypot(...relv(sp[0], sp[1], nT - 1));                                                          // 物差し |vec x_s|（度）
+  const Tstd = Math.abs(Number(P[sp[0]].dl.value) - Number(P[sp[1]].dl.value));                                  // 時計：1 ティックあたりの内部位相（度）
+  const stdOK = useStd && Lstd > 0 && Tstd > 0;
+  const scl = v => stdOK ? [v[0] / Lstd, v[1] / Tstd] : v;
+  const pos = (i, k) => scl(rawP(i, k));
+  const curP = others.map(i => pos(i, nT - 1));
+  const cSlope = stdOK ? Lstd / Tstd : 1;                     // 光円錐の傾き dt/dx。度なら 1、標準の単位なら |Δ_s|/|δ_s|（c = |δ_s|/|Δ_s|）
+  // 目盛（ゲージ）：原点と二つの現在点を含む正方形。はみ出したときだけ書き換える
+  const allx = [0, ...curP.map(q => q[0])], ally = [0, ...curP.map(q => q[1])];
+  const minW = stdOK ? 4 : 360, gstep = stdOK ? 1 : 180;
+  const outside = win0 === null || allx.some(x => x < win0[0] || x > win0[0] + winW) || ally.some(y => y < win0[1] || y > win0[1] + winW);
+  if (outside) {
+    const spread = Math.max(Math.max(...allx) - Math.min(...allx), Math.max(...ally) - Math.min(...ally));
+    winW = Math.max(minW, Math.ceil((spread + gstep / 2) / gstep) * gstep);
+    win0 = [Math.floor((Math.min(...allx) - gstep / 4) / gstep) * gstep, Math.floor((Math.min(...ally) - gstep / 4) / gstep) * gstep];
+    while (Math.max(...allx) > win0[0] + winW) win0[0] += gstep; while (Math.max(...ally) > win0[1] + winW) win0[1] += gstep;
+  }
+  const GX0 = win0[0], GX1 = win0[0] + winW, GY0 = win0[1], GY1 = win0[1] + winW;
+  const dtk = [0.5, 1, 2, 5, 10, 20, 45, 90, 180, 360, 720, 1800].find(v => v >= winW / 8) || 3600;   // 目盛の間隔は枠の幅の 1/8 程度
+  const XL = [GX0 - 4 * winW, GX1 + 4 * winW];
+  for (const sgn of [1, -1]) traces.push({type: 'scatter', mode: 'lines', x: XL, y: XL.map(v => sgn * cSlope * v), xaxis: 'x2', yaxis: 'y2', line: {color: '#d62728', width: 1.5, dash: 'dash'}, hoverinfo: 'skip', showlegend: false});
+  for (const m of [2, 3, 4, 5]) for (const sgn of [1, -1]) traces.push({type: 'scatter', mode: 'lines', x: XL, y: XL.map(v => sgn * m * cSlope * v), xaxis: 'x2', yaxis: 'y2', line: {color: thin, width: 0.8}, hoverinfo: 'skip', showlegend: false});
+  const PC = ['#1f77b4', '#9467bd', '#2ca02c'];
+  others.forEach((i, q) => {
+    const tr = Array.from({length: nT}, (_, k) => pos(i, k));
+    traces.push({type: 'scatter', mode: 'lines+markers', x: tr.map(v => v[0]), y: tr.map(v => v[1]), xaxis: 'x2', yaxis: 'y2', line: {color: PC[i], width: 2}, marker: {size: 3}, name: 'パルス ' + (i + 1), hovertemplate: `パルス ${i + 1}（観測者 ${o + 1} から）<br>x %{x:.2f}<br>t %{y:.2f}<extra></extra>`});
+    traces.push({type: 'scatter', mode: 'markers', x: [curP[q][0]], y: [curP[q][1]], xaxis: 'x2', yaxis: 'y2', marker: {symbol: ['diamond', 'square', 'cross'][i], size: 11, color: PC[i]}, hoverinfo: 'skip', showlegend: false});
+  });
+  traces.push({type: 'scatter', mode: 'lines', x: [0, curP[0][0], curP[1][0], 0], y: [0, curP[0][1], curP[1][1], 0], xaxis: 'x2', yaxis: 'y2', line: {color: '#8a8a8f', width: 1.2, dash: 'dot'}, hoverinfo: 'skip', showlegend: false});
+  traces.push({type: 'scatter', mode: 'markers', x: [0], y: [0], xaxis: 'x2', yaxis: 'y2', marker: {symbol: ['diamond', 'square', 'cross'][o], size: 12, color: PC[o], line: {width: 2, color: fg}}, name: '観測者 ' + (o + 1), hovertemplate: `観測者 ${o + 1}（原点）<extra></extra>`});
+  // 三辺：観測者–a、観測者–b、a–b。各辺に距離（x の差）と時計のずれ（t の差）
+  const [a, b] = others, Pa = curP[0], Pb = curP[1], Pab = [Pa[0] - Pb[0], Pa[1] - Pb[1]];
+  const side = (lab, v) => `${lab}：距離 ${Math.abs(v[0]).toFixed(stdOK ? 3 : 1)}${stdOK ? ' 本' : '°'}、時計のずれ ${v[1].toFixed(stdOK ? 3 : 1)}${stdOK ? ' 拍' : '°'}`;
+  const pairIdx = (i, j) => PAIRS.findIndex(([x, y]) => (x === i && y === j) || (x === j && y === i));
+  const sl = q => q.slope === null ? '静止' : !isFinite(q.slope) ? '∞（縦軸の上）' : q.slope.toFixed(3) + (Math.abs(q.slope) > 1 ? '（内側）' : Math.abs(q.slope) < 1 ? '（外側）' : '（光円錐の上）');
+  const [q12, q23, q13] = p.pairs;
+  const comp = [q12.vx - (q13.vx - q23.vx), q12.vy - (q13.vy - q23.vy)];
+  const ratio = (x, y) => y === 0 ? '—' : (x / y).toFixed(4);
+  const desc = p.pulses.map((u, i) => { const nOdd = u.co.ms.filter(m => m % 2).length; return `${i + 1}: θ = ${u.theta}°, φ = ${u.phi}°, δ = ${u.delta}°/t, M = ${u.M}（奇 ${nOdd}・偶 ${u.co.ms.length - nOdd}）n = ${v3(u.nv, 3)} R${i + 1} = ${u.R.toFixed(4)}`; }).join('　');
+  $('h1').textContent = `${desc}　　和：R = ${p.R.toFixed(4)}（表示 ×${p.k} = ${p.Rd.toFixed(3)}）　max Re = ${zmax.toFixed(4)}, min Re = ${zmin.toFixed(4)}　i 成分 [${imin.toFixed(4)}, ${imax.toFixed(4)}]　j 成分 [${jmin.toFixed(4)}, ${jmax.toFixed(4)}]　k 成分 [${kmin.toFixed(4)}, ${kmax.toFixed(4)}]　点数 ${n}`;
+  const d13 = sgnlen(relv(0, 2, nT - 1), nvs[2]), d23 = sgnlen(relv(1, 2, nT - 1), nvs[2]);   // 距離の比の分子・分母（パルス 3 を基準、±|vec x|）
+  $('h2').textContent = `観測者 ${o + 1} の時空　単位：${stdOK ? `標準の対 ${PAIRL[stdOf()]}（物差し |Δ| = ${Lstd.toFixed(1)}°、時計 1 拍 = ${Tstd}°/ティック）、光円錐の傾き dt/dx = ${cSlope.toFixed(3)}、c = ${(1 / cSlope).toFixed(4)} 本/拍` : (useStd ? '度（標準の対の距離か時計が 0 なので度に戻した）' : '度（c = 1）')}　三辺　${side(`${o + 1}–${a + 1}`, Pa)}　${side(`${o + 1}–${b + 1}`, Pb)}　${side(`${a + 1}–${b + 1}`, Pab)}　｜　対ごとの傾き　` + p.pairs.map(q => `${q.label}：${sl(q)}${q.mstar !== null ? '、倍音 ' + Math.abs(q.mstar) + ' が凍結' : ''}`).join('　') + `　合成則 v₁₂ − (v₁₃ − v₂₃) = (${comp[0]}, ${comp[1]})　距離の比 x₁₃/x₂₃ = ${ratio(d13, d23)}　時間の比 Φ₁₃/Φ₂₃ = ${ratio(hist[2][hist[2].length - 1][1], hist[1][hist[1].length - 1][1])}　内部時計の比 (δ₁−δ₃)/(δ₂−δ₃) = ${ratio(q13.vy, q23.vy)}　三角形の向き = ${p.orient > 0 ? '＋' : p.orient < 0 ? '−' : '0'}　鏡映対の条件 δ₂＋δ₃ = ${p.pulses[1].delta + p.pulses[2].delta}　ティック ${ticks}　｜　対ごとの読み　` + p.pairs.map(q => `${q.label}：Δ = ${q.Delta.toFixed(1)}°、Φ = ${q.Phi.toFixed(1)}°、cos Θ = ${q.cosT.toFixed(4)}（${q.Theta.toFixed(1)}°）、tan α = ${(p.pulses[q.j].R / p.pulses[q.i].R).toFixed(4)}、n·n = ${q.nd.toFixed(4)}、n×n = ${v3(q.nx, 3)}、vec Δ = ${v3(q.Dvec, 1)}°（|vec Δ| = ${q.Dabs.toFixed(1)}°）、vec V/(R_iR_j) = ${v3(q.Vc.map(x => x / (p.pulses[q.i].R * p.pulses[q.j].R)), 4)}`).join('　') + `　｜　和：c₀/R = ${(p.c0 / p.R).toFixed(4)}　P(π)/R² = ${(Ppi / p.R2).toFixed(4)}　Σc²/R² = ${(s2[0] / p.R2).toFixed(4)} + ${v3([s2[1], s2[2], s2[3]].map(x => x / p.R2), 4)}·(i, j, k)　⟨m⟩ = ${mbar.toFixed(4)}　巻き数 = ${wind === null ? '—（軸が異なる）' : wind}`;
+  const ax = (t, rng) => ({title: t, range: rng, color: fg, gridcolor: gridc, zerolinecolor: fg, backgroundcolor: 'rgba(0,0,0,0)'});
+  const layout = {
+    uirevision: 'keep', paper_bgcolor: 'rgba(0,0,0,0)', font: {color: fg}, margin: {l: 0, r: 0, t: 10, b: 0},
+    showlegend: false,
+    scene: {domain: {x: [0, 0.6], y: [0, 1]}, aspectmode: 'manual', aspectratio: {x: 1, y: 1, z: 1},   // x・y・z を同じ範囲・同じ縮尺に固定
+            xaxis: ax('x', [-L, L]), yaxis: ax('y', [-L, L]), zaxis: ax('z', zrange),
+            camera: {eye: {x: 1.2, y: -1.45, z: 0.72}, projection: {type: 'orthographic'}}},   // 向きは index_v2.html と同じ、距離 1.6 倍、正射影
+    xaxis2: {domain: [0.66, 1], anchor: 'y2', range: [GX0, GX1], dtick: dtk, title: stdOK ? 'x（物差し何本分。観測者が原点）' : 'x = ±|vec x|、vec x = Θᵢnᵢ − Θₒnₒ（度。符号は観測者の軸への射影。観測者が原点、はみ出すと目盛を書き換える）', color: fg, gridcolor: gridc, zerolinecolor: fg},
+    yaxis2: {domain: [0.08, 0.95], anchor: 'x2', scaleanchor: 'x2', scaleratio: 1, range: [GY0, GY1], dtick: dtk, title: stdOK ? 't（標準時計の拍）' : 't = 内部位相の差（度）', color: fg, gridcolor: gridc, zerolinecolor: fg}
+  };
+  Plotly.react('plot', traces, layout, {responsive: true});
+}
+
+let timer = null;
+function tick() {
+  for (const u of P) {
+    let t = Number(u.th.value) + Number(u.ph.value); if (t > 360) t -= 360; u.th.value = String(t);   // 位置 θ ← θ + φ
+    u.phase0 = ((u.phase0 + Number(u.dl.value)) % 360 + 360) % 360;                                    // 内部位相 φ₀ ← φ₀ + δ（位置とは独立）
+  }
+  ticks += 1;
+  PAIRS.forEach(([i, j], k) => { const last = hist[k][hist[k].length - 1];
+    hist[k].push([last[0] + Number(P[i].ph.value) - Number(P[j].ph.value), last[1] + Number(P[i].dl.value) - Number(P[j].dl.value)]);
+    if (hist[k].length > 4000) hist[k].shift(); });
+  P.forEach((u, i) => { const last = cum[i][cum[i].length - 1]; cum[i].push([last[0] + Number(u.ph.value), last[1] + Number(u.dl.value)]); if (cum[i].length > 4000) cum[i].shift(); });
+  draw();
+}
+function setAuto(on) {
+  if (on && !timer) { timer = setInterval(tick, 150); btn.classList.add('on'); }
+  if (!on && timer) { clearInterval(timer); timer = null; btn.classList.remove('on'); }
+}
+btn.addEventListener('click', () => setAuto(!timer));
+rr.addEventListener('input', draw);
+const resetAll = () => { ticks = 0; hist = PAIRS.map(() => [[0, 0]]); cum = [0, 1, 2].map(() => [[0, 0]]); win0 = null; for (const w of P) w.phase0 = 0; base = P.map(u => [Number(u.th.value), 0]); draw(); };
+for (const r of document.querySelectorAll('input[name=obs], input[name=std]')) r.addEventListener('change', () => { win0 = null; draw(); });
+$('unit').addEventListener('change', () => { win0 = null; draw(); });
+for (const u of P) { for (const s of [u.th, u.ph, u.mm, u.dl, u.ni, u.nj, u.nk]) s.addEventListener('input', resetAll); for (const c of [u.odd, u.even]) c.addEventListener('change', resetAll); }
+(function fromURL() {                        // 撮影用：?th1=&phi1=&M1=&odd1=0&even1=0&dl1=&p01=&ni1=&nj1=&nk1=&th2=…&th3=…&k=&auto=0（既定は φ₁=20, δ₁=20, φ₂=10, δ₂=0, φ₃=10, δ₃=10、n は全部 k）
+  const q = new URLSearchParams(location.search);
+  P.forEach((u, i) => { const j = i + 1;
+    if (q.has('th' + j)) u.th.value = q.get('th' + j); if (q.has('phi' + j)) u.ph.value = q.get('phi' + j); if (q.has('M' + j)) u.mm.value = q.get('M' + j);
+    if (q.get('odd' + j) === '0') u.odd.checked = false; if (q.get('even' + j) === '0') u.even.checked = false;
+    if (q.has('dl' + j)) u.dl.value = q.get('dl' + j); if (q.has('p0' + j)) u.phase0 = Number(q.get('p0' + j));   // p0i = 内部位相の初期値（撮影用）
+    if (q.has('ni' + j)) u.ni.value = q.get('ni' + j); if (q.has('nj' + j)) u.nj.value = q.get('nj' + j); if (q.has('nk' + j)) u.nk.value = q.get('nk' + j); });   // nii/nji/nki = 虚部の向きの成分
+  if (q.has('k')) rr.value = q.get('k');
+  if (q.has('obs')) document.querySelector(`input[name=obs][value="${q.get('obs')}"]`).checked = true;
+  if (q.has('std')) document.querySelector(`input[name=std][value="${q.get('std')}"]`).checked = true;
+  if (q.get('unit') === '1') $('unit').checked = true;
+  base = P.map(u => [Number(u.th.value), u.phase0]);
+  draw();
+  setAuto(q.get('auto') !== '0');
+})();
+</script>
+</body>
+</html>
