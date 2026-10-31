@@ -48,7 +48,7 @@ def main():
         if c is None or q is None: print("  読めない（Plotly か DOM の取得に失敗）"); bad += 1; continue
         ic, iq = items(*c), items(*q)
         # 名前の対応（複素 → 四元数）
-        alias = {"距離の比 Δ₁₃/Δ₂₃": "距離の比 x₁₃/x₂₃"}
+        alias = {"距離の比 Δ₁₃/Δ₂₃": "距離の比 r₁₃/r₂₃"}   # 四元数版は r ≥ 0 の比（対照の 4 例では Δ が正なので同じ値）
         shared = 0; mism = []
         for k, v in ic.items():
             kq = alias.get(k, k)

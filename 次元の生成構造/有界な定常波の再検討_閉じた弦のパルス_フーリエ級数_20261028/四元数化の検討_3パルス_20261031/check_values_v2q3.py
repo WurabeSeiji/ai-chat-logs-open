@@ -10,7 +10,7 @@
   Vec[e^{n_i a} e^{−n_j b}] = sin a cos b n_i − cos a sin b n_j − sin a sin b (n_i×n_j)  （n_i = n_j で sin(a − b) n）
 対照：n_i = k（全部）で原本 check_values_v2c3.py（原本/ に無変更コピー、import）の全ケースと機械的に突き合わせる。
 新しい量：n_i·n_j、n_i×n_j、対の位置ベクトル Δ⃗_ij（e^{n_iθ_i} e^{−n_jθ_j} の角 × 軸）、交差項のベクトル部 V⃗_ij、Σc² のベクトル部、
-位置ベクトルの持ち上げ x⃗_i = Θ_i n_i と ±|x⃗_io|（右パネルの横軸）。巻き数は n が全部同じときだけ定義する。
+位置ベクトルの持ち上げ x⃗_i = Θ_i n_i と r_io = |x⃗_io| ≥ 0（右パネルの横軸。3 次元の光円錐 t = ±r、原点は観測者）。巻き数は n が全部同じときだけ定義する。
 振幅 A_i（ps の 6 番目、省略時 1）：係数 c⁽ⁱ⁾_m と直流 c⁽ⁱ⁾₀ を A_i 倍する（Q_i → A_i Q_i、R_i → A_i R_i）。共通の A では比の量が不変であることを確かめる。
 """
 import math, cmath, os, importlib.util
@@ -124,14 +124,14 @@ def run(ps, f0=(0, 0, 0), steps=None, ns=None):
     return out
 
 def lift(Th, ns, o):
-    """右パネルの横軸：位置ベクトル x⃗_i = Θ_i n_i（度）、x⃗_io = x⃗_i − x⃗_o、±|x⃗_io|（符号は n_o への射影）"""
+    """右パネルの横軸：位置ベクトル x⃗_i = Θ_i n_i（度）、x⃗_io = x⃗_i − x⃗_o、r_io = |x⃗_io| ≥ 0"""
     nvs = [unit(n) for n in ns]
     xs = [tuple(T * v for v in nv) for T, nv in zip(Th, nvs)]
     out = []
     for i in range(len(Th)):
         if i == o: continue
         r = tuple(a - b for a, b in zip(xs[i], xs[o])); L = math.sqrt(dot(r, r))
-        out.append((i, r, (-1 if dot(r, nvs[o]) < 0 else 1) * L))
+        out.append((i, r, L))
     return out
 
 I, J = (1.0, 0.0, 0.0), (0.0, 1.0, 0.0)
@@ -211,9 +211,9 @@ if __name__ == "__main__":
     v = run([(180, 10, 10, 1, 1)] * 3, (0, 0, 0), steps=[(20, 20), (10, 20), (10, 10)])['vel']
     print(f"  対 13 が光的・対 23 が傾き ∞ のとき対 12：v12 = {v['v12']} 傾き {v['s12']}（光的でない：光円錐は対の性質で基準の取り替えで保たれない）")
     print()
-    print("位置ベクトルの持ち上げ x⃗_i = Θ_i n_i と右パネルの横軸 ±|x⃗_io|（観測者 o = 3、Θ = 180, 150, 100）")
+    print("位置ベクトルの持ち上げ x⃗_i = Θ_i n_i と右パネルの横軸 r_io = |x⃗_io| ≥ 0（観測者 o = 3、Θ = 180, 150, 100）")
     for name, ns in (("軸 k, k, k", [K, K, K]), ("軸 i, j, k", [I, J, K]), ("軸 k, 45°, k", [K, N45, K])):
-        s = "、".join(f"x⃗_{i + 1}3 = {v3(r, 1)}° → x = {x:+.1f}°" for i, r, x in lift((180, 150, 100), ns, 2))
+        s = "、".join(f"x⃗_{i + 1}3 = {v3(r, 1)}° → r = {x:.1f}°" for i, r, x in lift((180, 150, 100), ns, 2))
         print(f"  {name}：{s}（弦に沿った Δ_13 = +80°、Δ_23 = +50°）")
     print()
     # ---- 対照：原本 check_values_v2c3.py（原本/ に無変更コピー）を import し、軸が全部 k のとき全ケースで一致することを機械的に確かめる
