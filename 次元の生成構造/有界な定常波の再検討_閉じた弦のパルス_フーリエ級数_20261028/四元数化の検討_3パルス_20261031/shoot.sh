@@ -26,6 +26,7 @@ shot v2q3_tri_ijk   "$D/index_v2q3.html?$Q_TRI&ni1=1&nk1=0&nj2=1&nk2=0"         
 shot v2q3_same_ijk  "$D/index_v2q3.html?th1=150&th2=150&th3=150&phi1=10&dl1=0&dl2=0&dl3=0&auto=0&ni1=1&nk1=0&nj2=1&nk2=0"   # 同じ位置、軸 i, j, k
 shot v2q3_mirror_k_i_i  "$D/index_v2q3.html?$Q_MIR&ni2=1&nk2=0&ni3=1&nk3=0"                                 # 鏡映配置、対が i を共有（Σc² 実）
 shot v2q3_mirror_k_i_mi "$D/index_v2q3.html?$Q_MIR&ni2=1&nk2=0&ni3=-1&nk3=0"                                # 鏡映配置、対の軸が逆 i, −i（Σc² 閉じない）。ファイル名は大文字小文字を使わない（macOS は区別しない）
+shot v2q3_tri_A     "$D/index_v2q3.html?$Q_TRI&A1=2&A2=1&A3=0.5"                                             # 三角形、振幅 A = 2, 1, 0.5、軸 k, k, k
 shot v2q3_cone      "$D/index_v2q3.html"                                                                    # 既定（Auto）、軸 k, k, k
 shot v2q3_cone_ijk  "$D/index_v2q3.html?ni1=1&nk1=0&nj2=1&nk2=0"                                            # 既定（Auto）、軸 i, j, k
 echo done

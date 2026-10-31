@@ -1,5 +1,5 @@
 --- 原本/index_v2c3.html	2026-10-29 23:09:14
-+++ index_v2q3.html	2026-10-31 08:53:47
++++ index_v2q3.html	2026-10-31 09:10:07
 @@ -3,7 +3,7 @@
  <head>
  <meta charset="utf-8">
@@ -19,10 +19,11 @@
    button { font-size:15px; padding:4px 12px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--fg); }
    button.on { background:#2f6fdf; color:#fff; border-color:#2f6fdf; }
    #plot { width:100%; height:calc(100vh - 460px); min-height:420px; }
-@@ -35,6 +38,10 @@
+@@ -35,6 +38,11 @@
    <div class="sl"><span>M₁</span><input id="mm1" type="range" min="1" max="100" step="1" value="10"><span class="v" id="mm1v">10</span></div>
    <span class="grp"><label class="ck"><input id="odd1" type="checkbox" checked>奇</label><label class="ck"><input id="even1" type="checkbox" checked>偶</label></span>
    <div class="sl"><span>δ₁</span><input id="dl1" type="range" min="-30" max="30" step="1" value="20"><span class="v" id="dl1v">20°/t</span></div>
++  <div class="sl nv"><span>A₁</span><input id="aa1" type="range" min="0" max="10" step="0.1" value="1"><span class="v" id="aa1v">1.0</span></div>
 +  <div class="sl nv"><span>i₁</span><input id="ni1" type="range" min="-1" max="1" step="0.05" value="0"><span class="v" id="ni1v">0</span></div>
 +  <div class="sl nv"><span>j₁</span><input id="nj1" type="range" min="-1" max="1" step="0.05" value="0"><span class="v" id="nj1v">0</span></div>
 +  <div class="sl nv"><span>k₁</span><input id="nk1" type="range" min="-1" max="1" step="0.05" value="1"><span class="v" id="nk1v">1</span></div>
@@ -30,10 +31,11 @@
  </div>
  <div class="bar">
    <span>2:</span>
-@@ -43,6 +50,10 @@
+@@ -43,6 +51,11 @@
    <div class="sl"><span>M₂</span><input id="mm2" type="range" min="1" max="100" step="1" value="10"><span class="v" id="mm2v">10</span></div>
    <span class="grp"><label class="ck"><input id="odd2" type="checkbox" checked>奇</label><label class="ck"><input id="even2" type="checkbox" checked>偶</label></span>
    <div class="sl"><span>δ₂</span><input id="dl2" type="range" min="-30" max="30" step="1" value="0"><span class="v" id="dl2v">0°/t</span></div>
++  <div class="sl nv"><span>A₂</span><input id="aa2" type="range" min="0" max="10" step="0.1" value="1"><span class="v" id="aa2v">1.0</span></div>
 +  <div class="sl nv"><span>i₂</span><input id="ni2" type="range" min="-1" max="1" step="0.05" value="0"><span class="v" id="ni2v">0</span></div>
 +  <div class="sl nv"><span>j₂</span><input id="nj2" type="range" min="-1" max="1" step="0.05" value="0"><span class="v" id="nj2v">0</span></div>
 +  <div class="sl nv"><span>k₂</span><input id="nk2" type="range" min="-1" max="1" step="0.05" value="1"><span class="v" id="nk2v">1</span></div>
@@ -41,10 +43,11 @@
  </div>
  <div class="bar">
    <span>3:</span>
-@@ -51,6 +62,10 @@
+@@ -51,6 +64,11 @@
    <div class="sl"><span>M₃</span><input id="mm3" type="range" min="1" max="100" step="1" value="10"><span class="v" id="mm3v">10</span></div>
    <span class="grp"><label class="ck"><input id="odd3" type="checkbox" checked>奇</label><label class="ck"><input id="even3" type="checkbox" checked>偶</label></span>
    <div class="sl"><span>δ₃</span><input id="dl3" type="range" min="-30" max="30" step="1" value="10"><span class="v" id="dl3v">10°/t</span></div>
++  <div class="sl nv"><span>A₃</span><input id="aa3" type="range" min="0" max="10" step="0.1" value="1"><span class="v" id="aa3v">1.0</span></div>
 +  <div class="sl nv"><span>i₃</span><input id="ni3" type="range" min="-1" max="1" step="0.05" value="0"><span class="v" id="ni3v">0</span></div>
 +  <div class="sl nv"><span>j₃</span><input id="nj3" type="range" min="-1" max="1" step="0.05" value="0"><span class="v" id="nj3v">0</span></div>
 +  <div class="sl nv"><span>k₃</span><input id="nk3" type="range" min="-1" max="1" step="0.05" value="1"><span class="v" id="nk3v">1</span></div>
@@ -52,7 +55,7 @@
  </div>
  <div class="bar">
    <span>右：観測者</span>
-@@ -66,11 +81,11 @@
+@@ -66,11 +84,11 @@
  <div class="head"><div id="h1"></div><div id="h2" class="ratios"></div></div>
  <div id="plot"></div>
  <div class="note">
@@ -61,7 +64,7 @@
 -  印：黒 × ＝ 曲率中心（原点）、橙の球 ＝ 線形重心（Re Z を半径方向に乗せた曲線の ψ 平均）、緑の球 ＝ パワー重心（|Z|² を重みにした円周上の重心）。どちらも計算上の点で、そこに波はなく観測者もいないので、位置の読みではない（スペクトルの性質）。<br>
 -  右：光円錐。横軸 ＝ 相対位置 Δ の累積、縦軸 ＝ 内部位相の差 Φ の累積（度、始点を原点、縮尺 1:1）。倍音 m の二つの寄与の相対位相は mΔ − Φ で、その一歩の変化は m(φ₁−φ₂) − (δ₁−δ₂)。倍音 m の干渉が止まる方向が Φ ＝ mΔ で、巻き数 1 の倍音が止まる Φ ＝ ±Δ（赤の破線）を光円錐（c ＝ 1）とする。細線は Φ ＝ ±mΔ（m ＝ 2〜5）の扇、緑は傾きが整数のときに凍結する倍音の線。橙の折れ線が Auto の世界線で、傾き (δ₁−δ₂)/(φ₁−φ₂)。世界線は折り返さない（時間は遡らない）。動かすのはゲージ（目盛）で、点が枠からはみ出したら目盛の範囲をはみ出した向きに 180° ずつ書き換え、図全体を累積の座標のまま描き直し、またはみ出すまで描く。光円錐 Φ ＝ ±Δ と扇 Φ ＝ ±mΔ は原点（Auto の始点）から伸びる本物の直線で、新しい目盛の範囲に入る部分が見える。巻数 (n_Δ, n_Φ) はメモリとして併記する。二つの位相はトーラスの上にあり、世界線は (φ₁−φ₂):(δ₁−δ₂) を約分した巻数の対のトーラス曲線で、対が同時に原点へ戻る周期（360/最大公約数 ティック）も表示する。三つでは右パネルが「観測者の時空」になる。観測者（1／2／3 から選ぶ）を原点に置き、他の二つのパルスを点 P_i ＝ (Δ_io, Φ_io) で描く。x は中心位相 θ の差（位相則の傾きの差＝倍音が揃う点の差）、t は内部位相 φ₀ の差（切片の差）。重心は基準に使わない。三点が三角形を作り、三辺が三つの間隔（距離 ＝ x の差、時計のずれ ＝ t の差）。三つ目の関係は差のベクトルで、合成則 v₁₂ ＝ v₁₃ − v₂₃ は三角形が閉じること。単位は「度」（光円錐 c ＝ 1）か、標準の対で測る：物差し ＝ その対の距離 |Δ_s|、時計 ＝ その対の内部時計の 1 ティックあたりの進み |δ_s1 − δ_s2|（1 拍）。標準の単位では光円錐の傾きが |Δ_s|/|δ_s| になり、c ＝ |δ_s|/|Δ_s| 本/拍という標準の選び方で決まる数になる（φ が等しい対を標準にすると物差しが固定される）。初期値は φ ＝ (20, 10, 10)、δ ＝ (20, 0, 10)、観測者 3、標準 23：パルス 1 は傾き 1 で光円錐の上、パルス 2 は縦軸の上（位置は動かず内部時計だけ進む）、辺 1–2 は傾き 2。光円錐は対の性質で、基準を取り替えると保たれない。<br>
 -  右上に出すのは読める量。この系はスケール不変で絶対量は存在せず、量はすべて差と比である。二つで読めていたもの：位置 x ＝ Δ_ij、時間 t ＝ Φ_ij（内部時計）、速度 v ＝ dΔ/dΦ、E/p ＝ 傾き dΦ/dΔ、静止の時計（φ_i ＝ φ_j のとき Φ だけが進む）、重なりの角 Θ_ij、視野角 tan α_ij ＝ R_j/R_i。三つで新しく読めるもの：単位つきの距離 Δ₁₃/Δ₂₃ と時間 Φ₁₃/Φ₂₃（一組の対を物差し・時計にして他の対を測る）、内部時計どうしの比 (δ₁−δ₃)/(δ₂−δ₃)（共通の基準に対する二つのうなりの比）、速度の比 (φ₁−φ₃)/(φ₂−φ₃)、合成則 v₁₂ − (v₁₃ − v₂₃) ＝ 0 の検算、各対が光的かどうか、三角形の向き、グラム行列 cos Θ_ij、鏡映対の条件（軸上の 1 個と対 Φ₂ ＝ −Φ₃、保存には δ₂ ＋ δ₃ ＝ 0）。和について：c₀/R、P(π)/R²、Σ c_m²/R²（基準 ψ ＝ 0）、⟨m⟩、巻き数。スライダーを動かすとティックと内部位相は 0 に戻る。ψ の刻みは最高波数の 1 周期あたり 8 点以上。
-+  弦に沿った角 ψ ∈ [0, 360)。同じ弦の上の四元数パルス三つの線形合成：Q ＝ Q₁ ＋ Q₂ ＋ Q₃、Q_i(ψ) ＝ e^{n_i φ₀i} [ φ_i/360 ＋ (2/π) Σ_m [ sin(mπφ_i/360) / m ] · e^{n_i mπ(ψ−θ_i)/180} ]（m は 1..M_i のうち奇・偶で選んだもの）。n_i は単位純虚四元数（n_i² ＝ −1）で、各パルスの虚部の向き。スライダー i・j・k の成分 ∈ [−1, 1]³ を正規化して n_i にする（全部 0 なら k）。名付けは i ＝ 円周方向、j ＝ 半径方向、k ＝ 垂直方向で、読み出し写像の選択であって状態の側に色はない（u n u⁻¹ で回しても積の規則・ノルム・位相は不変）。各パルスは平面 span(1, n_i) ≅ ℂ の中にあり、式は複素パルス（index_v2c3.html）の i を n_i に置き換えただけ。n_i ＝ k（既定）なら index_v2c3.html と同じ。φ₀i は各パルスの内部位相（偏角）で、位置 θ_i とは独立。描くのは和だけ。<br>
++  弦に沿った角 ψ ∈ [0, 360)。同じ弦の上の四元数パルス三つの線形合成：Q ＝ Q₁ ＋ Q₂ ＋ Q₃、Q_i(ψ) ＝ A_i e^{n_i φ₀i} [ φ_i/360 ＋ (2/π) Σ_m [ sin(mπφ_i/360) / m ] · e^{n_i mπ(ψ−θ_i)/180} ]（m は 1..M_i のうち奇・偶で選んだもの）。A_i は振幅（スライダー A、0〜10、刻み 0.1、初期 1）で、係数 c⁽ⁱ⁾_m と直流 c⁽ⁱ⁾₀ を A_i 倍する。R_i も A_i 倍になり、三つとも同じ A なら比の量（cos Θ、tan α、c₀/R、P(π)/R²、Σc²/R²、⟨m⟩）は変わらない。n_i は単位純虚四元数（n_i² ＝ −1）で、各パルスの虚部の向き。スライダー i・j・k の成分 ∈ [−1, 1]³ を正規化して n_i にする（全部 0 なら k）。名付けは i ＝ 円周方向、j ＝ 半径方向、k ＝ 垂直方向で、読み出し写像の選択であって状態の側に色はない（u n u⁻¹ で回しても積の規則・ノルム・位相は不変）。各パルスは平面 span(1, n_i) ≅ ℂ の中にあり、式は複素パルス（index_v2c3.html）の i を n_i に置き換えただけ。n_i ＝ k（既定）なら index_v2c3.html と同じ。φ₀i は各パルスの内部位相（偏角）で、位置 θ_i とは独立。描くのは和だけ。<br>
 +  半径は和の親のノルム R ＝ √Σ_m |c_m|²、c_m ＝ Σ_i c⁽ⁱ⁾_m e^{n_i(φ₀i−mθ_i)} ∈ ℍ（直流は含めない）。R² ＝ Σ_i R_i² ＋ 2 Σ_{i<j} Σ_m c⁽ⁱ⁾c⁽ʲ⁾ Sc[e^{n_i α_i} e^{−n_j α_j}]、α_i ＝ φ₀i − mθ_i、Sc ＝ スカラー部。n_i n_j ＝ −n_i·n_j ＋ n_i×n_j なので Sc[e^{n_i α_i} e^{−n_j α_j}] ＝ cos α_i cos α_j ＋ (n_i·n_j) sin α_i sin α_j（n_i ＝ n_j で cos(mΔ_ij − Φ_ij) に戻る）、ベクトル部は sin α_i cos α_j n_i − cos α_i sin α_j n_j − sin α_i sin α_j (n_i×n_j)。R に効くのはスカラー部だけで、n_i×n_j はベクトル部にしか入らない。Δ_ij ＝ θ_i − θ_j、Φ_ij ＝ φ₀i − φ₀j。対は 12・23・13 の三組で、独立なのは二組。Auto は各パルスで独立に二つのステップを持つ：位置 θ_i ← θ_i ＋ φ_i と、内部位相 φ₀i ← φ₀i ＋ δ_i（スライダー δ、−30〜30°/ティック、初期 0）。並進は δ ＝ 0 の特別な場合で、発展の規則は固定しない。表示では倍率 k（R×、1〜20、初期 10）を掛けた kR を円・円筒・曲線の半径に使い、ティックごとに更新する（振幅はそのまま）。和 Q ＝ W ＋ V_i i ＋ V_j j ＋ V_k k の四成分は別の曲線：黒（ダークモードでは白）＝ 実部 W を半径方向に乗せた ((kR ＋ W) cos ψ, (kR ＋ W) sin ψ, 0)、赤 ＝ j 成分 V_j を半径方向に乗せた ((kR ＋ V_j) cos ψ, (kR ＋ V_j) sin ψ, 0)、青 ＝ k 成分 V_k を垂直に乗せた (kR cos ψ, kR sin ψ, V_k)、緑 ＝ i 成分 V_i を垂直に反対符号で乗せた (kR cos ψ, kR sin ψ, −V_i)。円周方向に乗せると位置 ψ と同じ向きになり基準円の上を滑るだけで見えないので、半径方向に 1（黒）と j（赤）、垂直方向に k（青、＋）と i（緑、−）の対として描く（描き方の選択で、成分の意味は変えない）。細い線は半径 kR の基準円、薄い面は半径 kR・高さ ±1 の円筒。円の上の印：青の菱形 ＝ 中心 θ₁、紫の四角 ＝ 中心 θ₂、緑の十字 ＝ 中心 θ₃、点線 ＝ 三つの中心を結ぶ三角形（向き ＝ 1→2→3 の回る向きの符号）。x・y・z は同じ範囲・縮尺 1:1:1、正射影。<br>
 +  印：黒 × ＝ 曲率中心（原点）、橙の球 ＝ 線形重心（W を半径方向に乗せた曲線の ψ 平均）、緑の球 ＝ パワー重心（|Q|² ＝ W² ＋ V_i² ＋ V_j² ＋ V_k² を重みにした円周上の重心）。どちらも計算上の点で、そこに波はなく観測者もいないので、位置の読みではない（スペクトルの性質）。<br>
 +  右：光円錐。横軸 ＝ 相対位置 Δ の累積、縦軸 ＝ 内部位相の差 Φ の累積（度、始点を原点、縮尺 1:1）。倍音 m の二つの寄与の相対位相は mΔ − Φ で、その一歩の変化は m(φ₁−φ₂) − (δ₁−δ₂)。倍音 m の干渉が止まる方向が Φ ＝ mΔ で、巻き数 1 の倍音が止まる Φ ＝ ±Δ（赤の破線）を光円錐（c ＝ 1）とする。細線は Φ ＝ ±mΔ（m ＝ 2〜5）の扇、緑は傾きが整数のときに凍結する倍音の線。橙の折れ線が Auto の世界線で、傾き (δ₁−δ₂)/(φ₁−φ₂)。世界線は折り返さない（時間は遡らない）。動かすのはゲージ（目盛）で、点が枠からはみ出したら目盛の範囲をはみ出した向きに 180° ずつ書き換え、図全体を累積の座標のまま描き直し、またはみ出すまで描く。光円錐 Φ ＝ ±Δ と扇 Φ ＝ ±mΔ は原点（Auto の始点）から伸びる本物の直線で、新しい目盛の範囲に入る部分が見える。巻数 (n_Δ, n_Φ) はメモリとして併記する。二つの位相はトーラスの上にあり、世界線は (φ₁−φ₂):(δ₁−δ₂) を約分した巻数の対のトーラス曲線で、対が同時に原点へ戻る周期（360/最大公約数 ティック）も表示する。三つでは右パネルが「観測者の時空」になる。観測者（1／2／3 から選ぶ）を原点に置き、他の二つのパルスを点 P_i ＝ (x_io, Φ_io) で描く。四元数では位置が向きを持つ：パルス i の位置ベクトルは vec x_i ＝ Θ_i n_i（中心位相の累積 Θ_i をその軸 n_i に乗せた回転ベクトル、度）、観測者からの相対位置は vec x_io ＝ vec x_i − vec x_o（3 成分。複素の x ＝ Δ_io が vec x になった）。横軸は x_io ＝ ±|vec x_io|（符号は観測者の軸 n_o への射影の符号。n が全部同じなら Δ_io そのもの）、t は内部位相 φ₀ の差（切片の差、スカラーのまま）。光円錐は Φ ＝ ±|vec x|。重心は基準に使わない。三点が三角形を作り、三辺が三つの間隔（距離 ＝ x の差、時計のずれ ＝ t の差）。三つ目の関係は差のベクトルで、合成則 v₁₂ ＝ v₁₃ − v₂₃ は三角形が閉じること。単位は「度」（光円錐 c ＝ 1）か、標準の対で測る：物差し ＝ その対の距離 |vec x_s|、時計 ＝ その対の内部時計の 1 ティックあたりの進み |δ_s1 − δ_s2|（1 拍）。標準の単位では光円錐の傾きが |vec x_s|/|δ_s| になり、c ＝ |δ_s|/|vec x_s| 本/拍という標準の選び方で決まる数になる（φ が等しい対を標準にすると物差しが固定される）。初期値は φ ＝ (20, 10, 10)、δ ＝ (20, 0, 10)、観測者 3、標準 23：パルス 1 は傾き 1 で光円錐の上、パルス 2 は縦軸の上（位置は動かず内部時計だけ進む）、辺 1–2 は傾き 2。光円錐は対の性質で、基準を取り替えると保たれない。<br>
@@ -69,17 +72,17 @@
  </div>
  <script>
  const $ = id => document.getElementById(id);
-@@ -82,7 +97,8 @@
+@@ -82,7 +100,8 @@
  let base = [0, 1, 2].map(() => [0, 0]);       // リセット時の (θ_i, φ₀i)
  const obsOf = () => Number(document.querySelector('input[name=obs]:checked').value), stdOf = () => Number(document.querySelector('input[name=std]:checked').value);
  let win0 = null, winW = 360;                  // 右パネルの目盛（ゲージ）の左下と幅。null なら作り直す。点がはみ出したら書き換える
 -const P = [1, 2, 3].map(i => ({th: $('th' + i), ph: $('ph' + i), mm: $('mm' + i), odd: $('odd' + i), even: $('even' + i), dl: $('dl' + i), thv: $('th' + i + 'v'), phv: $('ph' + i + 'v'), mmv: $('mm' + i + 'v'), dlv: $('dl' + i + 'v'), phase0: 0}));   // phase0 = 内部位相（偏角）。Auto で δ ずつ進む。位置 θ とは独立
 +const P = [1, 2, 3].map(i => ({th: $('th' + i), ph: $('ph' + i), mm: $('mm' + i), odd: $('odd' + i), even: $('even' + i), dl: $('dl' + i), thv: $('th' + i + 'v'), phv: $('ph' + i + 'v'), mmv: $('mm' + i + 'v'), dlv: $('dl' + i + 'v'), phase0: 0,
-+  ni: $('ni' + i), nj: $('nj' + i), nk: $('nk' + i), niv: $('ni' + i + 'v'), njv: $('nj' + i + 'v'), nkv: $('nk' + i + 'v'), nn: $('nn' + i)}));   // phase0 = 内部位相（偏角）。Auto で δ ずつ進む。位置 θ とは独立。ni/nj/nk = 虚部の向き n の成分（i 円周・j 半径・k 垂直）
++  aa: $('aa' + i), aav: $('aa' + i + 'v'), ni: $('ni' + i), nj: $('nj' + i), nk: $('nk' + i), niv: $('ni' + i + 'v'), njv: $('nj' + i + 'v'), nkv: $('nk' + i + 'v'), nn: $('nn' + i)}));   // phase0 = 内部位相（偏角）。Auto で δ ずつ進む。位置 θ とは独立。aa = 振幅 A（0〜10、初期 1）。ni/nj/nk = 虚部の向き n の成分（i 円周・j 半径・k 垂直）
  
  function grid(n) {                       // ψ を n 点（両端を含めて閉じる）
    const psi = new Float64Array(n), c = new Float64Array(n), s = new Float64Array(n);
-@@ -125,30 +141,44 @@
+@@ -125,30 +144,45 @@
  
  function wrap180(d) { return ((d + 180) % 360 + 360) % 360 - 180; }
  
@@ -97,9 +100,10 @@
    const pulses = P.map(u => {
      const theta = Number(u.th.value), phi = Number(u.ph.value), M = Number(u.mm.value), delta = Number(u.dl.value), phase0 = u.phase0;
      const co = coeffs(phi, M, u.odd.checked, u.even.checked);
++    const A = Number(u.aa.value); co.cs = co.cs.map(c => A * c); co.c0 *= A;   // 振幅 A_i：Q_i → A_i Q_i（係数と直流を A_i 倍。既定 1 で原本と同じ）
      let R2 = 0; for (const c of co.cs) R2 += c * c;
 -    return {theta, phi, M, delta, phase0, co, R: Math.sqrt(R2), R2, kmax: co.ms.length ? co.ms[co.ms.length - 1] : 1};
-+    return {theta, phi, M, delta, phase0, co, nv: nvec(u), R: Math.sqrt(R2), R2, kmax: co.ms.length ? co.ms[co.ms.length - 1] : 1};
++    return {theta, phi, M, delta, phase0, co, A, nv: nvec(u), R: Math.sqrt(R2), R2, kmax: co.ms.length ? co.ms[co.ms.length - 1] : 1};
    });
 -  // 和の係数 c_m = Σ_i c_i,m e^{i(φ₀i − mθ_i)}（複素）
 +  // 和の係数 c_m = Σ_i c_i,m e^{n_i(φ₀i − mθ_i)}（四元数 [w, x, y, z]。各パルスの寄与は平面 span(1, n_i) の中）
@@ -132,13 +136,13 @@
    });
    let R2 = 0; for (const u of pulses) R2 += u.R2; for (const q of pairs) R2 += 2 * q.cross;
    const R = Math.sqrt(R2), Rd = k * R;
-@@ -163,46 +193,56 @@
+@@ -163,46 +197,56 @@
  
  function draw() {
    const p = params();
 -  P.forEach((u, i) => { const q = p.pulses[i]; u.thv.textContent = q.theta + '°'; u.phv.textContent = q.phi + '°'; u.mmv.textContent = q.M; u.dlv.textContent = q.delta + '°/t'; });
 +  P.forEach((u, i) => { const q = p.pulses[i]; u.thv.textContent = q.theta + '°'; u.phv.textContent = q.phi + '°'; u.mmv.textContent = q.M; u.dlv.textContent = q.delta + '°/t';
-+    u.niv.textContent = Number(u.ni.value).toFixed(2); u.njv.textContent = Number(u.nj.value).toFixed(2); u.nkv.textContent = Number(u.nk.value).toFixed(2); u.nn.textContent = 'n' + '₁₂₃'[i] + ' = ' + v3(q.nv, 3); });
++    u.aav.textContent = q.A.toFixed(1); u.niv.textContent = Number(u.ni.value).toFixed(2); u.njv.textContent = Number(u.nj.value).toFixed(2); u.nkv.textContent = Number(u.nk.value).toFixed(2); u.nn.textContent = 'n' + '₁₂₃'[i] + ' = ' + v3(q.nv, 3); });
    $('rrv').textContent = p.k;
    const n = Math.min(40001, Math.max(1441, 8 * p.kmax + 1));
    const g = grid(n);
@@ -207,7 +211,7 @@
      {type: 'scatter3d', mode: 'markers', x: [0], y: [0], z: [0], marker: {symbol: 'x', size: 2, color: fg}, name: '曲率中心', hovertemplate: '曲率中心<extra></extra>'},
      {type: 'scatter3d', mode: 'markers', x: [lx], y: [ly], z: [0], marker: {symbol: 'circle', size: 2, color: '#e8862a'}, name: '線形重心', hovertemplate: `線形重心 (${lx.toFixed(4)}, ${ly.toFixed(4)})<extra></extra>`},
      {type: 'scatter3d', mode: 'markers', x: [px], y: [py], z: [0], marker: {symbol: 'circle', size: 2, color: '#2ca02c'}, name: 'パワー重心', hovertemplate: `パワー重心 (${px.toFixed(4)}, ${py.toFixed(4)})<extra></extra>`},
-@@ -216,8 +256,13 @@
+@@ -216,8 +260,13 @@
    const o = obsOf(), sp = PAIRS[stdOf()], useStd = $('unit').checked;
    const others = [0, 1, 2].filter(i => i !== o);
    const nT = Math.min(...cum.map(c => c.length));
@@ -223,21 +227,21 @@
    const Tstd = Math.abs(Number(P[sp[0]].dl.value) - Number(P[sp[1]].dl.value));                                  // 時計：1 ティックあたりの内部位相（度）
    const stdOK = useStd && Lstd > 0 && Tstd > 0;
    const scl = v => stdOK ? [v[0] / Lstd, v[1] / Tstd] : v;
-@@ -255,9 +300,10 @@
+@@ -255,9 +304,10 @@
    const [q12, q23, q13] = p.pairs;
    const comp = [q12.vx - (q13.vx - q23.vx), q12.vy - (q13.vy - q23.vy)];
    const ratio = (x, y) => y === 0 ? '—' : (x / y).toFixed(4);
 -  const desc = p.pulses.map((u, i) => { const nOdd = u.co.ms.filter(m => m % 2).length; return `${i + 1}: θ = ${u.theta}°, φ = ${u.phi}°, δ = ${u.delta}°/t, M = ${u.M}（奇 ${nOdd}・偶 ${u.co.ms.length - nOdd}）R${i + 1} = ${u.R.toFixed(4)}`; }).join('　');
 -  $('h1').textContent = `${desc}　　和：R = ${p.R.toFixed(4)}（表示 ×${p.k} = ${p.Rd.toFixed(3)}）　max Re = ${zmax.toFixed(4)}, min Re = ${zmin.toFixed(4)}　max Im = ${imax.toFixed(4)}, min Im = ${imin.toFixed(4)}　点数 ${n}`;
 -  $('h2').textContent = `観測者 ${o + 1} の時空　単位：${stdOK ? `標準の対 ${PAIRL[stdOf()]}（物差し |Δ| = ${Lstd.toFixed(1)}°、時計 1 拍 = ${Tstd}°/ティック）、光円錐の傾き dt/dx = ${cSlope.toFixed(3)}、c = ${(1 / cSlope).toFixed(4)} 本/拍` : (useStd ? '度（標準の対の距離か時計が 0 なので度に戻した）' : '度（c = 1）')}　三辺　${side(`${o + 1}–${a + 1}`, Pa)}　${side(`${o + 1}–${b + 1}`, Pb)}　${side(`${a + 1}–${b + 1}`, Pab)}　｜　対ごとの傾き　` + p.pairs.map(q => `${q.label}：${sl(q)}${q.mstar !== null ? '、倍音 ' + Math.abs(q.mstar) + ' が凍結' : ''}`).join('　') + `　合成則 v₁₂ − (v₁₃ − v₂₃) = (${comp[0]}, ${comp[1]})　距離の比 Δ₁₃/Δ₂₃ = ${ratio(hist[2][hist[2].length - 1][0] + base[0][0] - base[2][0], hist[1][hist[1].length - 1][0] + base[1][0] - base[2][0])}　時間の比 Φ₁₃/Φ₂₃ = ${ratio(hist[2][hist[2].length - 1][1], hist[1][hist[1].length - 1][1])}　内部時計の比 (δ₁−δ₃)/(δ₂−δ₃) = ${ratio(q13.vy, q23.vy)}　三角形の向き = ${p.orient > 0 ? '＋' : p.orient < 0 ? '−' : '0'}　鏡映対の条件 δ₂＋δ₃ = ${p.pulses[1].delta + p.pulses[2].delta}　ティック ${ticks}　｜　対ごとの読み　` + p.pairs.map(q => `${q.label}：Δ = ${q.Delta.toFixed(1)}°、Φ = ${q.Phi.toFixed(1)}°、cos Θ = ${q.cosT.toFixed(4)}（${q.Theta.toFixed(1)}°）、tan α = ${(p.pulses[q.j].R / p.pulses[q.i].R).toFixed(4)}`).join('　') + `　｜　和：c₀/R = ${(p.c0 / p.R).toFixed(4)}　P(π)/R² = ${(Ppi / p.R2).toFixed(4)}　Σc²/R² = ${(s2re / p.R2).toFixed(4)} ${s2im >= 0 ? '+' : '−'} ${Math.abs(s2im / p.R2).toFixed(4)}i　⟨m⟩ = ${mbar.toFixed(4)}　巻き数 = ${wind}`;
-+  const desc = p.pulses.map((u, i) => { const nOdd = u.co.ms.filter(m => m % 2).length; return `${i + 1}: θ = ${u.theta}°, φ = ${u.phi}°, δ = ${u.delta}°/t, M = ${u.M}（奇 ${nOdd}・偶 ${u.co.ms.length - nOdd}）n = ${v3(u.nv, 3)} R${i + 1} = ${u.R.toFixed(4)}`; }).join('　');
++  const desc = p.pulses.map((u, i) => { const nOdd = u.co.ms.filter(m => m % 2).length; return `${i + 1}: θ = ${u.theta}°, φ = ${u.phi}°, δ = ${u.delta}°/t, M = ${u.M}（奇 ${nOdd}・偶 ${u.co.ms.length - nOdd}）A = ${u.A.toFixed(1)} n = ${v3(u.nv, 3)} R${i + 1} = ${u.R.toFixed(4)}`; }).join('　');
 +  $('h1').textContent = `${desc}　　和：R = ${p.R.toFixed(4)}（表示 ×${p.k} = ${p.Rd.toFixed(3)}）　max Re = ${zmax.toFixed(4)}, min Re = ${zmin.toFixed(4)}　i 成分 [${imin.toFixed(4)}, ${imax.toFixed(4)}]　j 成分 [${jmin.toFixed(4)}, ${jmax.toFixed(4)}]　k 成分 [${kmin.toFixed(4)}, ${kmax.toFixed(4)}]　点数 ${n}`;
 +  const d13 = sgnlen(relv(0, 2, nT - 1), nvs[2]), d23 = sgnlen(relv(1, 2, nT - 1), nvs[2]);   // 距離の比の分子・分母（パルス 3 を基準、±|vec x|）
 +  $('h2').textContent = `観測者 ${o + 1} の時空　単位：${stdOK ? `標準の対 ${PAIRL[stdOf()]}（物差し |Δ| = ${Lstd.toFixed(1)}°、時計 1 拍 = ${Tstd}°/ティック）、光円錐の傾き dt/dx = ${cSlope.toFixed(3)}、c = ${(1 / cSlope).toFixed(4)} 本/拍` : (useStd ? '度（標準の対の距離か時計が 0 なので度に戻した）' : '度（c = 1）')}　三辺　${side(`${o + 1}–${a + 1}`, Pa)}　${side(`${o + 1}–${b + 1}`, Pb)}　${side(`${a + 1}–${b + 1}`, Pab)}　｜　対ごとの傾き　` + p.pairs.map(q => `${q.label}：${sl(q)}${q.mstar !== null ? '、倍音 ' + Math.abs(q.mstar) + ' が凍結' : ''}`).join('　') + `　合成則 v₁₂ − (v₁₃ − v₂₃) = (${comp[0]}, ${comp[1]})　距離の比 x₁₃/x₂₃ = ${ratio(d13, d23)}　時間の比 Φ₁₃/Φ₂₃ = ${ratio(hist[2][hist[2].length - 1][1], hist[1][hist[1].length - 1][1])}　内部時計の比 (δ₁−δ₃)/(δ₂−δ₃) = ${ratio(q13.vy, q23.vy)}　三角形の向き = ${p.orient > 0 ? '＋' : p.orient < 0 ? '−' : '0'}　鏡映対の条件 δ₂＋δ₃ = ${p.pulses[1].delta + p.pulses[2].delta}　ティック ${ticks}　｜　対ごとの読み　` + p.pairs.map(q => `${q.label}：Δ = ${q.Delta.toFixed(1)}°、Φ = ${q.Phi.toFixed(1)}°、cos Θ = ${q.cosT.toFixed(4)}（${q.Theta.toFixed(1)}°）、tan α = ${(p.pulses[q.j].R / p.pulses[q.i].R).toFixed(4)}、n·n = ${q.nd.toFixed(4)}、n×n = ${v3(q.nx, 3)}、vec Δ = ${v3(q.Dvec, 1)}°（|vec Δ| = ${q.Dabs.toFixed(1)}°）、vec V/(R_iR_j) = ${v3(q.Vc.map(x => x / (p.pulses[q.i].R * p.pulses[q.j].R)), 4)}`).join('　') + `　｜　和：c₀/R = ${(p.c0 / p.R).toFixed(4)}　P(π)/R² = ${(Ppi / p.R2).toFixed(4)}　Σc²/R² = ${(s2[0] / p.R2).toFixed(4)} + ${v3([s2[1], s2[2], s2[3]].map(x => x / p.R2), 4)}·(i, j, k)　⟨m⟩ = ${mbar.toFixed(4)}　巻き数 = ${wind === null ? '—（軸が異なる）' : wind}`;
    const ax = (t, rng) => ({title: t, range: rng, color: fg, gridcolor: gridc, zerolinecolor: fg, backgroundcolor: 'rgba(0,0,0,0)'});
    const layout = {
      uirevision: 'keep', paper_bgcolor: 'rgba(0,0,0,0)', font: {color: fg}, margin: {l: 0, r: 0, t: 10, b: 0},
-@@ -265,7 +311,7 @@
+@@ -265,7 +315,7 @@
      scene: {domain: {x: [0, 0.6], y: [0, 1]}, aspectmode: 'manual', aspectratio: {x: 1, y: 1, z: 1},   // x・y・z を同じ範囲・同じ縮尺に固定
              xaxis: ax('x', [-L, L]), yaxis: ax('y', [-L, L]), zaxis: ax('z', zrange),
              camera: {eye: {x: 1.2, y: -1.45, z: 0.72}, projection: {type: 'orthographic'}}},   // 向きは index_v2.html と同じ、距離 1.6 倍、正射影
@@ -246,20 +250,21 @@
      yaxis2: {domain: [0.08, 0.95], anchor: 'x2', scaleanchor: 'x2', scaleratio: 1, range: [GY0, GY1], dtick: dtk, title: stdOK ? 't（標準時計の拍）' : 't = 内部位相の差（度）', color: fg, gridcolor: gridc, zerolinecolor: fg}
    };
    Plotly.react('plot', traces, layout, {responsive: true});
-@@ -293,13 +339,14 @@
+@@ -293,13 +343,15 @@
  const resetAll = () => { ticks = 0; hist = PAIRS.map(() => [[0, 0]]); cum = [0, 1, 2].map(() => [[0, 0]]); win0 = null; for (const w of P) w.phase0 = 0; base = P.map(u => [Number(u.th.value), 0]); draw(); };
  for (const r of document.querySelectorAll('input[name=obs], input[name=std]')) r.addEventListener('change', () => { win0 = null; draw(); });
  $('unit').addEventListener('change', () => { win0 = null; draw(); });
 -for (const u of P) { for (const s of [u.th, u.ph, u.mm, u.dl]) s.addEventListener('input', resetAll); for (const c of [u.odd, u.even]) c.addEventListener('change', resetAll); }
 -(function fromURL() {                        // 撮影用：?th1=&phi1=&M1=&odd1=0&even1=0&dl1=&p01=&th2=…&th3=…&k=&auto=0（既定は φ₁=20, δ₁=20, φ₂=10, δ₂=0, φ₃=10, δ₃=10）
-+for (const u of P) { for (const s of [u.th, u.ph, u.mm, u.dl, u.ni, u.nj, u.nk]) s.addEventListener('input', resetAll); for (const c of [u.odd, u.even]) c.addEventListener('change', resetAll); }
-+(function fromURL() {                        // 撮影用：?th1=&phi1=&M1=&odd1=0&even1=0&dl1=&p01=&ni1=&nj1=&nk1=&th2=…&th3=…&k=&auto=0（既定は φ₁=20, δ₁=20, φ₂=10, δ₂=0, φ₃=10, δ₃=10、n は全部 k）
++for (const u of P) { for (const s of [u.th, u.ph, u.mm, u.dl, u.aa, u.ni, u.nj, u.nk]) s.addEventListener('input', resetAll); for (const c of [u.odd, u.even]) c.addEventListener('change', resetAll); }
++(function fromURL() {                        // 撮影用：?th1=&phi1=&M1=&odd1=0&even1=0&dl1=&p01=&A1=&ni1=&nj1=&nk1=&th2=…&th3=…&k=&auto=0（既定は φ₁=20, δ₁=20, φ₂=10, δ₂=0, φ₃=10, δ₃=10、A は全部 1、n は全部 k）
    const q = new URLSearchParams(location.search);
    P.forEach((u, i) => { const j = i + 1;
      if (q.has('th' + j)) u.th.value = q.get('th' + j); if (q.has('phi' + j)) u.ph.value = q.get('phi' + j); if (q.has('M' + j)) u.mm.value = q.get('M' + j);
      if (q.get('odd' + j) === '0') u.odd.checked = false; if (q.get('even' + j) === '0') u.even.checked = false;
 -    if (q.has('dl' + j)) u.dl.value = q.get('dl' + j); if (q.has('p0' + j)) u.phase0 = Number(q.get('p0' + j)); });   // p0i = 内部位相の初期値（撮影用）
 +    if (q.has('dl' + j)) u.dl.value = q.get('dl' + j); if (q.has('p0' + j)) u.phase0 = Number(q.get('p0' + j));   // p0i = 内部位相の初期値（撮影用）
++    if (q.has('A' + j)) u.aa.value = q.get('A' + j);   // Ai = 振幅
 +    if (q.has('ni' + j)) u.ni.value = q.get('ni' + j); if (q.has('nj' + j)) u.nj.value = q.get('nj' + j); if (q.has('nk' + j)) u.nk.value = q.get('nk' + j); });   // nii/nji/nki = 虚部の向きの成分
    if (q.has('k')) rr.value = q.get('k');
    if (q.has('obs')) document.querySelector(`input[name=obs][value="${q.get('obs')}"]`).checked = true;

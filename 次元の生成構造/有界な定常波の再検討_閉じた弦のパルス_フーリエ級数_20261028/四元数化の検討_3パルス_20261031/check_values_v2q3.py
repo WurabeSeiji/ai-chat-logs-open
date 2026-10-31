@@ -11,6 +11,7 @@
 対照：n_i = k（全部）で原本 check_values_v2c3.py（原本/ に無変更コピー、import）の全ケースと機械的に突き合わせる。
 新しい量：n_i·n_j、n_i×n_j、対の位置ベクトル Δ⃗_ij（e^{n_iθ_i} e^{−n_jθ_j} の角 × 軸）、交差項のベクトル部 V⃗_ij、Σc² のベクトル部、
 位置ベクトルの持ち上げ x⃗_i = Θ_i n_i と ±|x⃗_io|（右パネルの横軸）。巻き数は n が全部同じときだけ定義する。
+振幅 A_i（ps の 6 番目、省略時 1）：係数 c⁽ⁱ⁾_m と直流 c⁽ⁱ⁾₀ を A_i 倍する（Q_i → A_i Q_i、R_i → A_i R_i）。共通の A では比の量が不変であることを確かめる。
 """
 import math, cmath, os, importlib.util
 
@@ -39,7 +40,10 @@ def wrap(d): return ((d + 180) % 360 + 360) % 360 - 180
 def v3(v, d=4): return "(" + ", ".join(f"{x:+.{d}f}" for x in v) + ")"
 
 def run(ps, f0=(0, 0, 0), steps=None, ns=None):
-    cs = [coeffs(phi, M, o, e) for (th, phi, M, o, e) in ps]
+    cs = []
+    for p in ps:   # (θ, φ, M, 奇, 偶[, A])。振幅 A は係数と直流を A 倍（省略時 1 で原本と同じ）
+        c, c0 = coeffs(*p[1:5]); A = p[5] if len(p) > 5 else 1.0
+        cs.append(({m: A * v for m, v in c.items()}, A * c0))
     ths = [math.radians(th) for (th, *_r) in ps]
     gs = [math.radians(f) for f in f0]
     nvs = [unit(n) for n in (ns if ns is not None else [K] * len(ps))]
@@ -181,6 +185,24 @@ if __name__ == "__main__":
     print(hdr)
     for label, ps, f0, ns in qcases:
         print(line(label, run(ps, f0, ns=ns)))
+    print()
+    print("== 振幅を変えた例（A_i：係数と直流を A_i 倍）==")
+    print(hdr)
+    triA = [(180, 10, 10, 1, 1, 2.0), (150, 10, 10, 1, 1, 1.0), (100, 10, 10, 1, 1, 0.5)]
+    acases = [
+        ("三角形 θ = 180, 150, 100、A = 2, 1, 0.5、軸 k, k, k", triA, (0, 0, 0), [K, K, K]),
+        ("三角形 θ = 180, 150, 100、A = 2, 1, 0.5、軸 i, j, k", triA, (0, 0, 0), [I, J, K]),
+        ("同じパルス 3 つ Δ=0（θ = 150）、A = 1, 1, 0（3 つ目を消す ＝ 2 パルス）、軸 k, k, k", [(150, 10, 10, 1, 1, 1.0), (150, 10, 10, 1, 1, 1.0), (150, 10, 10, 1, 1, 0.0)], (0, 0, 0), [K, K, K]),
+        ("三角形 θ = 180, 150, 100、A = 2, 2, 2（共通の倍率）", [(180, 10, 10, 1, 1, 2.0), (150, 10, 10, 1, 1, 2.0), (100, 10, 10, 1, 1, 2.0)], (0, 0, 0), [K, K, K]),
+    ]
+    for label, ps, f0, ns in acases:
+        print(line(label, run(ps, f0, ns=ns)))
+    d1 = run(tri); d2 = run([(th, phi, M, o, e, 2.0) for (th, phi, M, o, e) in tri])   # 共通の A = 2：R は 2 倍、比の量は不変
+    inv = max(abs(d1['ratio'] - d2['ratio']), abs(d1['c0R'] - d2['c0R']), abs(d1['PpiR2'] - d2['PpiR2']), abs(d1['mbar'] - d2['mbar']),
+              max(abs(a - b) for a, b in zip(d1['s2R2'], d2['s2R2'])), max(abs(q1['cosT'] - q2['cosT']) for q1, q2 in zip(d1['pairs'], d2['pairs'])))
+    print(f"  共通の A = 2：R {d1['R']:.4f} → {d2['R']:.4f}（比 {d2['R'] / d1['R']:.6f}）、R_i も 2 倍、max Re {d1['remax']:.4f} → {d2['remax']:.4f}。"
+          f"比の量（R/ΣR、cos Θ、c₀/R、P(π)/R²、Σc²/R²、⟨m⟩）の最大差 {inv:.1e}、巻き数 {d1['wind']} → {d2['wind']}")
+    assert abs(d2['R'] / d1['R'] - 2) < 1e-12 and inv < 1e-12 and d1['wind'] == d2['wind']
     print()
     print("Auto のステップと対の速度ベクトル（既定：φ = 20, 10, 10、δ = 20, 0, 10。軸に依らない）")
     v = run([(180, 10, 10, 1, 1)] * 3, (0, 0, 0), steps=[(20, 20), (10, 0), (10, 10)])['vel']
