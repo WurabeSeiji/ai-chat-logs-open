@@ -1,5 +1,5 @@
 --- 原本/index_v2c3.html	2026-10-29 23:09:14
-+++ index_v2q3.html	2026-10-31 09:25:20
++++ index_v2q3.html	2026-10-31 09:28:26
 @@ -3,7 +3,7 @@
  <head>
  <meta charset="utf-8">
@@ -264,16 +264,19 @@
    const ax = (t, rng) => ({title: t, range: rng, color: fg, gridcolor: gridc, zerolinecolor: fg, backgroundcolor: 'rgba(0,0,0,0)'});
    const layout = {
      uirevision: 'keep', paper_bgcolor: 'rgba(0,0,0,0)', font: {color: fg}, margin: {l: 0, r: 0, t: 10, b: 0},
-@@ -265,7 +316,7 @@
+@@ -265,8 +316,9 @@
      scene: {domain: {x: [0, 0.6], y: [0, 1]}, aspectmode: 'manual', aspectratio: {x: 1, y: 1, z: 1},   // x・y・z を同じ範囲・同じ縮尺に固定
              xaxis: ax('x', [-L, L]), yaxis: ax('y', [-L, L]), zaxis: ax('z', zrange),
              camera: {eye: {x: 1.2, y: -1.45, z: 0.72}, projection: {type: 'orthographic'}}},   // 向きは index_v2.html と同じ、距離 1.6 倍、正射影
 -    xaxis2: {domain: [0.66, 1], anchor: 'y2', range: [GX0, GX1], dtick: dtk, title: stdOK ? 'x（物差し何本分。観測者が原点）' : 'x = 中心位相の差（度。観測者が原点、はみ出すと目盛を書き換える）', color: fg, gridcolor: gridc, zerolinecolor: fg},
-+    xaxis2: {domain: [0.66, 1], anchor: 'y2', range: [GX0, GX1], dtick: dtk, title: stdOK ? 'r（物差し何本分。観測者が原点、r ≥ 0）' : 'r = |vec x|、vec x = Θᵢnᵢ − Θₒnₒ（度。r ≥ 0、観測者が原点、はみ出すと目盛を書き換える）', color: fg, gridcolor: gridc, zerolinecolor: fg},
-     yaxis2: {domain: [0.08, 0.95], anchor: 'x2', scaleanchor: 'x2', scaleratio: 1, range: [GY0, GY1], dtick: dtk, title: stdOK ? 't（標準時計の拍）' : 't = 内部位相の差（度）', color: fg, gridcolor: gridc, zerolinecolor: fg}
+-    yaxis2: {domain: [0.08, 0.95], anchor: 'x2', scaleanchor: 'x2', scaleratio: 1, range: [GY0, GY1], dtick: dtk, title: stdOK ? 't（標準時計の拍）' : 't = 内部位相の差（度）', color: fg, gridcolor: gridc, zerolinecolor: fg}
++    // 右パネルの縮尺 1:1 は範囲の拡張でなく描画域の圧縮で保つ（constrain: domain）。r ≥ 0 の左端 0 が対称な範囲の拡張で負に押し出されないため
++    xaxis2: {domain: [0.66, 1], anchor: 'y2', constrain: 'domain', constraintoward: 'left', range: [GX0, GX1], dtick: dtk, title: stdOK ? 'r（物差し何本分。観測者が原点、r ≥ 0）' : 'r = |vec x|、vec x = Θᵢnᵢ − Θₒnₒ（度。r ≥ 0、観測者が原点、はみ出すと目盛を書き換える）', color: fg, gridcolor: gridc, zerolinecolor: fg},
++    yaxis2: {domain: [0.08, 0.95], anchor: 'x2', scaleanchor: 'x2', scaleratio: 1, constrain: 'domain', range: [GY0, GY1], dtick: dtk, title: stdOK ? 't（標準時計の拍）' : 't = 内部位相の差（度）', color: fg, gridcolor: gridc, zerolinecolor: fg}
    };
    Plotly.react('plot', traces, layout, {responsive: true});
-@@ -293,13 +344,15 @@
+ }
+@@ -293,13 +345,15 @@
  const resetAll = () => { ticks = 0; hist = PAIRS.map(() => [[0, 0]]); cum = [0, 1, 2].map(() => [[0, 0]]); win0 = null; for (const w of P) w.phase0 = 0; base = P.map(u => [Number(u.th.value), 0]); draw(); };
  for (const r of document.querySelectorAll('input[name=obs], input[name=std]')) r.addEventListener('change', () => { win0 = null; draw(); });
  $('unit').addEventListener('change', () => { win0 = null; draw(); });
