@@ -606,6 +606,11 @@ Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PA
    DOI [10.5281/zenodo.23585437](https://doi.org/10.5281/zenodo.23585437) · Concept [10.5281/zenodo.23585436](https://doi.org/10.5281/zenodo.23585436) · 2026-10-23 · v1 · [PDF en](https://zenodo.org/records/23585437/files/complex_revisited_amplitude_imaginary_en_v1.pdf) [PDF ja](https://zenodo.org/records/23585437/files/complex_revisited_amplitude_imaginary_ja_v1.pdf)  
    folder: [次元の生成構造/複素数の再検討_振幅の虚数読み_20261023](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E8%A4%87%E7%B4%A0%E6%95%B0%E3%81%AE%E5%86%8D%E6%A4%9C%E8%A8%8E_%E6%8C%AF%E5%B9%85%E3%81%AE%E8%99%9A%E6%95%B0%E8%AA%AD%E3%81%BF_20261023)
 
+55. **Observation as Simultaneous Emission and Absorption: Deriving the Born Rule, Bell Correlations and the Tsirelson Bound from a Viewing-Angle Readout Rule**  
+   観測は放射と吸収の同時成立である ― 視野角と大きさの読出し規則からボルン則・ベル相関・ツィレルソン限界を導く ―  
+   DOI [10.5281/zenodo.23857885](https://doi.org/10.5281/zenodo.23857885) · Concept [10.5281/zenodo.23857884](https://doi.org/10.5281/zenodo.23857884) · 2026-11-01 · v1.4 · [PDF en](https://zenodo.org/records/23857885/files/paper_observation_handshake_bell_tsirelson_en_v1.4.pdf) [PDF ja](https://zenodo.org/records/23857885/files/paper_observation_handshake_bell_tsirelson_ja_v1.4.pdf)  
+   folder: [次元の生成構造/観測は放射と吸収の同時成立_ベル相関とツィレルソン限界の読出し導出_20261101](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E8%A6%B3%E6%B8%AC%E3%81%AF%E6%94%BE%E5%B0%84%E3%81%A8%E5%90%B8%E5%8F%8E%E3%81%AE%E5%90%8C%E6%99%82%E6%88%90%E7%AB%8B_%E3%83%99%E3%83%AB%E7%9B%B8%E9%96%A2%E3%81%A8%E3%83%84%E3%82%A3%E3%83%AC%E3%83%AB%E3%82%BD%E3%83%B3%E9%99%90%E7%95%8C%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97%E5%B0%8E%E5%87%BA_20261101)
+
 ## Time Axis, Q Axis, and Fermion Generation / 時間軸Q軸とフェルミオンの生成構造
 
 1. **An Axiomatic Framework for Physical Symmetry Selection by Anonymous Partial Projection: Conditional Identification of E8 in an Eight-Component Two-Quartet Branch**  
