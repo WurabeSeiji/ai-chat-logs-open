@@ -5,7 +5,8 @@
       大きさ D_A・D_B と距離 d＝D/θ。同じ視野角なら相手が大きいほど遠い、視野角が狭いほど遠い、
       自分自身は二本の線が平行で θ_AA＝0（関係点なし）
 図 2  三体：三つの視野角と大きさの比は読め、全体のスケール λ は読めない（λ 倍の写しで角は同じ）
-図 3  倍音（P3）：パルス形と自己相関 E(θ)＝Σ w_m cos mθ。単音は cos θ、弦の半分の矩形パルスは三角波
+図 3  倍音（P3）：有限和 N＝13 で厳密に計算したパルス形と自己相関 E(θ)＝Σ w_m cos mθ。単音、矩形波（奇数倍音 m≤13、c_m∝sin(mπ/2)/m）、
+      等振幅の局在波（m＝1…13、奇数・偶数）。三角波は矩形波の M→∞ の極限として参考に点線で重ねる
 図 4  ツィレルソン限界（3.4）：単位ベクトル a, a′, b, b′ と b±b′、S(δ)＝|3cos nδ − cos 3nδ| の 2 と 2√2
 図 5  二者相関（§4）：E(θ)＝−cos nθ（n＝1, 2, 4）と最大の破れを与える角の刻み π/(4n)
 
@@ -244,55 +245,58 @@ def coeffs(phi, M):
 
 
 def fig3():
-    fig, axs = plt.subplots(1, 2, figsize=(11.5, 4.6))
-    psi = np.linspace(-180, 180, 1441)
-    th = np.linspace(-180, 180, 1441)
-    M = 400
-    cases = [(L("単音（m ＝ 1）", "single tone (m = 1)"), C_B, None), (L("矩形パルス、幅 180°（弦の半分）", "rectangular pulse, width 180° (half the string)"), C_A, 180.0),
-             (L("矩形パルス、幅 90°", "rectangular pulse, width 90°"), C_C, 90.0)]
+    """有限和 N ＝ 13 で厳密に計算する。矩形波：奇数倍音 m ≤ N、c_m ∝ sin(mπ/2)/m（符号は交互、弦の半分で +1・残りで −1 の矩形）。局在波：等振幅、m ＝ 1…N（奇数・偶数）"""
+    N = 13
+    fig, axs = plt.subplots(1, 2, figsize=(11.5, 4.8))
+    x = np.linspace(-180, 180, 2881)
+    m_all = np.arange(1, N + 1)
+    m_odd = m_all[m_all % 2 == 1]
+
+    def partial(ms, cs, xx):
+        """Σ_m c_m cos(m xx)（xx は度）"""
+        return (cs[:, None] * np.cos(np.radians(ms[:, None] * xx[None, :]))).sum(0)
+
+    cases = [
+        (L("単音（m ＝ 1）", "single tone (m = 1)"), C_B, np.array([1]), np.array([1.0])),
+        (L("矩形波（奇数倍音 m ≤ %d、c_m ∝ sin(mπ/2)/m）" % N, "square wave (odd harmonics m ≤ %d, c_m ∝ sin(mπ/2)/m)" % N), C_A, m_odd, np.sin(m_odd * np.pi / 2) / m_odd),
+        (L("局在波（等振幅、m ＝ 1…%d、奇数・偶数）" % N, "localized wave (equal amplitudes, m = 1…%d, odd and even)" % N), C_C, m_all, np.ones(N)),
+    ]
     ax = axs[0]
-    for lab, col, phi in cases:
-        if phi is None:
-            f = np.cos(np.radians(psi))
-            fn = f
-        else:
-            # 極限（M → ∞）の矩形そのもの：|ψ−θ₀| < φ/2 で 1、他で 0。c₀ ＝ φ/360 を除き最大 1 に正規化
-            c0 = phi / 360.0
-            f = (np.abs(psi) < phi / 2).astype(float)
-            fn = (f - c0) / (1 - c0)
-        ax.plot(psi, fn, color=col, lw=1.6, label=lab)
+    for lab, col, ms, cs in cases:
+        f = partial(ms, cs, x)
+        ax.plot(x, f / np.abs(f).max(), color=col, lw=1.6, label=lab)
     ax.axhline(0, color=C_GRID, lw=0.8)
     ax.set_xlim(-180, 180)
     ax.set_xticks([-180, -90, 0, 90, 180])
     ax.set_xlabel(L("弦の上の角 ψ − θ₀ [°]", "angle on the string ψ − θ₀ [deg]"))
-    ax.set_ylabel(L("パルス f − c₀（最大 1 に正規化）", "pulse f − c₀ (scaled to max 1)"))
-    ax.set_title(L("(a) パルス形（M → ∞ の極限）", "(a) pulse shapes (limit M → ∞)"), loc="left", fontsize=11)
-    ax.legend(fontsize=8.5, loc="upper center", bbox_to_anchor=(0.5, -0.17), ncol=2, frameon=False)
+    ax.set_ylabel(L("パルス f ＝ Σ c_m cos m(ψ−θ₀)（最大 1 に正規化）", "pulse f = Σ c_m cos m(ψ−θ₀) (scaled to max 1)"))
+    ax.set_title(L("(a) パルス形（有限和、N ＝ %d）" % N, "(a) pulse shapes (finite sums, N = %d)" % N), loc="left", fontsize=11)
+    ax.legend(fontsize=8.5, loc="upper center", bbox_to_anchor=(0.5, -0.17), ncol=1, frameon=False)
     ax.grid(color=C_GRID, lw=0.6)
     ax = axs[1]
-    for lab, col, phi in cases:
-        if phi is None:
-            E = np.cos(np.radians(th))
-        else:
-            c0, cm, m = coeffs(phi, M)
-            w = cm ** 2 / (cm ** 2).sum()
-            E = (w[:, None] * np.cos(np.radians(m[:, None] * th[None, :]))).sum(0)
-        ax.plot(th, E, color=col, lw=1.6, label=lab)
-    tri = 1 - 2 * np.abs(np.radians(th)) / np.pi
-    ax.plot(th, tri, color=C_INK, lw=1.0, ls=(0, (2, 2)), label=L("三角波 1 − 2|θ|/π（恒等式）", "triangle wave 1 − 2|θ|/π (identity)"))
+    report = {}
+    for lab, col, ms, cs in cases:
+        w = cs ** 2 / (cs ** 2).sum()
+        E = partial(ms, w, x)
+        ax.plot(x, E, color=col, lw=1.6, label=lab)
+        report[lab] = (E.min(), partial(ms, w, np.array([180.0]))[0])
+    tri = 1 - 2 * np.abs(np.radians(x)) / np.pi
+    ax.plot(x, tri, color=C_INK, lw=0.9, ls=(0, (2, 2)), label=L("三角波 1 − 2|θ|/π（矩形波の M → ∞ の極限、参考）", "triangle wave 1 − 2|θ|/π (square wave as M → ∞, reference)"))
     ax.axhline(0, color=C_GRID, lw=0.8)
     ax.set_xlim(-180, 180)
     ax.set_ylim(-1.1, 1.1)
     ax.set_xticks([-180, -90, 0, 90, 180])
     ax.set_xlabel(L("位相差 θ [°]", "phase difference θ [deg]"))
-    ax.set_ylabel(L("E(θ) ＝ Σ w_m cos mθ", "E(θ) = Σ w_m cos mθ"))
-    ax.set_title(L("(b) 自己相関（同じ軸、c₀ を除く、M ＝ 400）", "(b) autocorrelation (same axis, c₀ removed, M = 400)"), loc="left", fontsize=11)
-    ax.legend(fontsize=8.5, loc="upper center", bbox_to_anchor=(0.5, -0.17), ncol=2, frameon=False)
+    ax.set_ylabel(L("E(θ) ＝ Σ w_m cos mθ、w_m ＝ c_m²/Σc_m²", "E(θ) = Σ w_m cos mθ,  w_m = c_m²/Σc_m²"))
+    ax.set_title(L("(b) 自己相関（同じ軸、有限和、N ＝ %d）" % N, "(b) autocorrelation (same axis, finite sums, N = %d)" % N), loc="left", fontsize=11)
+    ax.legend(fontsize=8.5, loc="upper center", bbox_to_anchor=(0.5, -0.17), ncol=1, frameon=False)
     ax.grid(color=C_GRID, lw=0.6)
-    fig.suptitle(L("図 3　倍音（P3）：相関はパルス形の自己相関。単音は cos θ（2√2 に届く）、矩形は弧の重なり（局所隠れ変数、S ≤ 2）",
-                   "Fig. 3  Harmonics (P3): the correlation is the autocorrelation of the pulse. A single tone gives cos θ (reaches 2√2); a rectangle gives arc overlap (local hidden variable, S ≤ 2)"), fontsize=11.5, color=C_INK, y=1.0)
+    fig.suptitle(L("図 3　倍音（P3）：相関はパルス形の自己相関。単音は cos θ、矩形波（奇数倍音）は三角波に近づき、等振幅の局在波は θ ＝ 0 の峰に集まる",
+                   "Fig. 3  Harmonics (P3): the correlation is the pulse's autocorrelation (single tone, square wave, equal-amplitude localized wave; N = 13)"), fontsize=11, color=C_INK, y=1.0)
     fig.tight_layout()
     save(fig, "fig3_harmonics_autocorrelation")
+    for lab, (emin, epi) in report.items():
+        print("  E min = %.4f, E(180°) = %.4f  <- %s" % (emin, epi, lab))
 
 
 # ================================================================ 図 4  ツィレルソン限界（3.4）
