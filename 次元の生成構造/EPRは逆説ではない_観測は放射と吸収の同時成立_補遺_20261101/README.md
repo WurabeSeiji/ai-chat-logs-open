@@ -1,6 +1,6 @@
 # EPR パラドックスはパラドックスではない（補遺論文フォルダ）
 
-**作成：** 2026-11-01　**状態：** v1 草稿（DOI 未付与、公開前）
+**作成：** 2026-11-01　**状態：** v1 公開済み（Zenodo Version DOI [10.5281/zenodo.23860606](https://doi.org/10.5281/zenodo.23860606)、Concept DOI [10.5281/zenodo.23860605](https://doi.org/10.5281/zenodo.23860605)、本丸 23857884 の isSupplementTo）
 **題名：** EPR パラドックスはパラドックスではない ― 「観測は放射と吸収の同時成立である」の補遺：位置と運動量の対を閉包の恒等式として読む ―（英題 The EPR Paradox Is Not a Paradox: A Supplement to "Observation as Simultaneous Emission and Absorption": Reading the Position–Momentum Pair as a Closure Identity）
 **位置づけ：** 本丸は公開済みの「観測は放射と吸収の同時成立である」（Concept DOI 10.5281/zenodo.23857884）。本稿はその系で、新しい前提も新しい数も置かず、EPR の三段論法を閉包の恒等式と既知の破壊的読出しで読み替える。
 
@@ -14,6 +14,9 @@
 | `paper_epr_not_a_paradox_supplement_en_v1.md` | 英語版（翻訳。日本語版が正本。図は fig*_en） |
 | `図表/make_figures.py`、`図表/figures/` | 図 1（閉包の対：対蹠、時間発展、A の読出しは B に出来事を起こさない）、図 2（順序非依存：ローレンツ変換で二つの枠）。日英、PNG・SVG・PDF |
 | `図表/verify_identities.py`、`図表/results/checks.txt` | 恒等式 C1〜C4 の数値確認（固定格子、乱数なし） |
-| `build_tex.py` | 本丸の build_tex.py の忠実コピー（入力名・題名だけ変更）。DOI 埋め込み後に tex/PDF を生成する |
+| `paper_epr_not_a_paradox_supplement_{ja,en}_v1.tex` / `.pdf` | `build_tex.py` で生成（pandoc → lualatex ×2、ローカルディスクで組版）。日本語 8 頁・英語 7 頁、LaTeX エラー 0・欠字 0 |
+| `build_tex.py` | 本丸の build_tex.py の忠実コピー（入力名・題名だけ変更） |
+| `figures_and_programs.zip` / `SHA256SUMS.txt` | Zenodo に上げた `図表/` 一式の zip と、Zenodo 掲載ファイルの SHA-256 |
+| `zenodo_deposit_notes.md` | Zenodo deposit の作業記録 |
 
 外部文献 16 本は Crossref で実在確認済み（2026-11-01）。

@@ -611,6 +611,11 @@ Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PA
    DOI [10.5281/zenodo.23857885](https://doi.org/10.5281/zenodo.23857885) · Concept [10.5281/zenodo.23857884](https://doi.org/10.5281/zenodo.23857884) · 2026-11-01 · v1.4 · [PDF en](https://zenodo.org/records/23857885/files/paper_observation_handshake_bell_tsirelson_en_v1.4.pdf) [PDF ja](https://zenodo.org/records/23857885/files/paper_observation_handshake_bell_tsirelson_ja_v1.4.pdf)  
    folder: [次元の生成構造/観測は放射と吸収の同時成立_ベル相関とツィレルソン限界の読出し導出_20261101](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E8%A6%B3%E6%B8%AC%E3%81%AF%E6%94%BE%E5%B0%84%E3%81%A8%E5%90%B8%E5%8F%8E%E3%81%AE%E5%90%8C%E6%99%82%E6%88%90%E7%AB%8B_%E3%83%99%E3%83%AB%E7%9B%B8%E9%96%A2%E3%81%A8%E3%83%84%E3%82%A3%E3%83%AC%E3%83%AB%E3%82%BD%E3%83%B3%E9%99%90%E7%95%8C%E3%81%AE%E8%AA%AD%E5%87%BA%E3%81%97%E5%B0%8E%E5%87%BA_20261101)
 
+56. **The EPR Paradox Is Not a Paradox: A Supplement to "Observation as Simultaneous Emission and Absorption" — Reading the Position–Momentum Pair as a Closure Identity**  
+   EPR パラドックスはパラドックスではない ― 「観測は放射と吸収の同時成立である」の補遺：位置と運動量の対を閉包の恒等式として読む ―  
+   DOI [10.5281/zenodo.23860606](https://doi.org/10.5281/zenodo.23860606) · Concept [10.5281/zenodo.23860605](https://doi.org/10.5281/zenodo.23860605) · 2026-11-01 · v1 · [PDF en](https://zenodo.org/records/23860606/files/paper_epr_not_a_paradox_supplement_en_v1.pdf) [PDF ja](https://zenodo.org/records/23860606/files/paper_epr_not_a_paradox_supplement_ja_v1.pdf)  
+   folder: [次元の生成構造/EPRは逆説ではない_観測は放射と吸収の同時成立_補遺_20261101](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/EPR%E3%81%AF%E9%80%86%E8%AA%AC%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84_%E8%A6%B3%E6%B8%AC%E3%81%AF%E6%94%BE%E5%B0%84%E3%81%A8%E5%90%B8%E5%8F%8E%E3%81%AE%E5%90%8C%E6%99%82%E6%88%90%E7%AB%8B_%E8%A3%9C%E9%81%BA_20261101)
+
 ## Time Axis, Q Axis, and Fermion Generation / 時間軸Q軸とフェルミオンの生成構造
 
 1. **An Axiomatic Framework for Physical Symmetry Selection by Anonymous Partial Projection: Conditional Identification of E8 in an Eight-Component Two-Quartet Branch**  
