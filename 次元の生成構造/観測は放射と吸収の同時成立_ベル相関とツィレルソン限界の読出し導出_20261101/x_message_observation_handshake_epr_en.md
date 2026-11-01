@@ -4,4 +4,4 @@ Read observation as a handshake of emission and absorption: EPR's perfect correl
 
 https://note.com/kiharanoriaki/n/nbde4a827ca01
 
-#Physics #QuantumMechanics #EPRParadox #Entanglement
+#Physics #QuantumMechanics #EPRParadox
