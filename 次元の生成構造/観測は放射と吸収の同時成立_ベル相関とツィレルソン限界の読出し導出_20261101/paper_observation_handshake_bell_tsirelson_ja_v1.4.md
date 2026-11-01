@@ -10,19 +10,19 @@
 
 ## 要旨
 
-量子力学の「観測」は、相手の離散状態を切り替える相互作用、相手の状態を切り替えずに内部位相だけをずらす相互作用、相互の位相関係を切ってしまう相互作用という性質の異なる三つを区別せずに一括してきた。本稿は、観測の本体を二番目の「位相差の干渉の読出し」に置き、次の三つの前提だけを置く。(P1) 二者間の距離は共有された視野角と相手の大きさの比で決まり、読めるのは比だけで絶対スケールは読めない。(P2) 相互作用は放射と吸収が同時に成立する一回の関係であり、光速は局所時計どうしの換算係数として読出し側に現れる。(P3) 関係の位相は波の種類ごとに倍音次数 $n$ をもつ。これらから、確率が振幅と共役振幅の積になること（ボルン則の形）、二者相関 $E=\mp\cos n\theta$、CHSH 量の上限 $2\sqrt{2}$（ツィレルソン限界）、信号不能性が数行で出る。確率として読むための正規化は大きさの比を落とす割り算であり、$\eta=0$ の断面の選択である[29]。帰結として、上限は波の種類によらず $2\sqrt{2}$ であり、最大の破れを与える検出器角は $1/n$ に比例して縮む（スピン½で45°、光子で22.5°、重力波で11.25°）。
+量子力学の「観測」は、相手の離散状態を切り替える相互作用、相手の状態を切り替えずに内部位相だけをずらす相互作用、相互の位相関係を切ってしまう相互作用という性質の異なる三つを区別せずに一括してきた。本稿は、観測の本体を二番目の「位相差の干渉の読出し」に置き、次の三つの前提だけを置く。(P1) 二者間の距離は共有された視野角と相手の大きさの比で決まり、読めるのは比だけで絶対スケールは読めない。(P2) 相互作用は放射と吸収が同時に成立する一回の関係であり、光速は局所時計どうしの換算係数として読出し側に現れる。(P3) 関係の位相は波の種類ごとに倍音次数 $n$ をもつ。これらから、確率が振幅と共役振幅の積になること（ボルン則の形）、二者相関 $E=\mp\cos n\theta$、CHSH 量の上限 $2\sqrt{2}$（ツィレルソン限界）、信号不能性が数行で出る。確率として読むための正規化は大きさの比を落とす割り算であり、$\eta=0$ の断面の選択である[S1]。帰結として、上限は波の種類によらず $2\sqrt{2}$ であり、最大の破れを与える検出器角は $1/n$ に比例して縮む（スピン½で45°、光子で22.5°、重力波で11.25°）。
 
 ---
 
 ## 1. はじめに：「観測」に混在している三つの相互作用
 
-標準的な記述では「系を観測すると波動関数が収縮する」とされ、近年はこれを観測者の情報の更新とみなす立場も有力である[1] [2]。しかしこの記述は、物理的に性質の異なる次の三つを「観測」の一語で括っている。
+標準的な記述では「系を観測すると波動関数が収縮する」とされ、近年はこれを観測者の情報の更新とみなす立場も有力である[X1] [X2]。しかしこの記述は、物理的に性質の異なる次の三つを「観測」の一語で括っている。
 
 第一は、相手の離散状態を切り替える相互作用である。共鳴吸収のようにエネルギー階層がジャンプし、選択が起こる。
 
-第二は、相手の離散状態を切り替えず、双方の内部位相だけがわずかにずれる相互作用である。ずれた位相差を干渉として読み出す。非共鳴の分散結合による位相シフトの検出、空洞量子電気力学における非破壊光子計数、超伝導量子ビットの分散読出しがこれに当たる[3] [4] [5] [6]。
+第二は、相手の離散状態を切り替えず、双方の内部位相だけがわずかにずれる相互作用である。ずれた位相差を干渉として読み出す。非共鳴の分散結合による位相シフトの検出、空洞量子電気力学における非破壊光子計数、超伝導量子ビットの分散読出しがこれに当たる[X3] [X4] [X5] [X6]。
 
-第三は、作用が強すぎるか多すぎて相互の位相関係そのものが切れ、情報が環境に散って干渉として読み出せなくなる相互作用である[7] [8] [9]。
+第三は、作用が強すぎるか多すぎて相互の位相関係そのものが切れ、情報が環境に散って干渉として読み出せなくなる相互作用である[X7] [X8] [X9]。
 
 教科書的な「観測→収縮」は第三を第一と同一視し、第二をほとんど扱わない。だが第三は読めるようになる過程ではなく、読めなくなる過程である。本稿は、観測の本体は第二の「関係を保ったまま位相差を読む」領域にあり、第一と第三はその両端の境界だとみなす。そのうえで、この読出しを規定する最小の前提から量子相関の構造が導かれることを示す。
 
@@ -38,9 +38,9 @@ $$
 d_{A\to B}=\frac{D_B}{\theta_{AB}},\qquad d_{B\to A}=\frac{D_A}{\theta_{AB}}
 $$
 
-で与えられる（第三思考実験 [11] の天体配置での読み）。視野角が狭いほど遠く、同じ視野角なら相手が大きいほど遠い。本稿の導出で使うのは、読めるのが比だけであること、全体の向きと大きさが読めないことの二つだけである。視野角は関係の対称な部分を、大きさは「どちらがどちらにどれだけ影響するか」という非対称な部分を担う。
+で与えられる（第三思考実験 [S2] の天体配置での読み）。視野角が狭いほど遠く、同じ視野角なら相手が大きいほど遠い。本稿の導出で使うのは、読めるのが比だけであること、全体の向きと大きさが読めないことの二つだけである。視野角は関係の対称な部分を、大きさは「どちらがどちらにどれだけ影響するか」という非対称な部分を担う。
 
-自分自身に対しては見る線と見られる線が平行で $\theta_{AA}=0$ となり、距離は定義できない。すなわち自分自身は観測できない。二体だけでは、視野角は読めても大きさを測る外部の物差しがないので距離の目盛りは決まらない（読めるのは角だけである）。三体で三角形ができると、内角（三つの視野角）から形が、大きさの比から結合の非対称が決まり、相互作用の係数は無次元の比として読める。全体の共通スケール（ゲージ）は最後まで読めない[10] [11] [12]。
+自分自身に対しては見る線と見られる線が平行で $\theta_{AA}=0$ となり、距離は定義できない。すなわち自分自身は観測できない。二体だけでは、視野角は読めても大きさを測る外部の物差しがないので距離の目盛りは決まらない（読めるのは角だけである）。三体で三角形ができると、内角（三つの視野角）から形が、大きさの比から結合の非対称が決まり、相互作用の係数は無次元の比として読める。全体の共通スケール（ゲージ）は最後まで読めない[S3] [S2] [S4]。
 
 ![図1](図表/figures/fig1_viewing_angle_and_size.svg)
 
@@ -54,7 +54,7 @@ $$
 
 A が B の放った電磁波や重力波を読むとき、同時に B も自身の放ったものを A を介して読む。放射と吸収は一回の関係の両端であり、時間的に前後する二つの出来事ではない。関係そのものは時空間隔ゼロの一回の関係として成立し、前後はない。
 
-光速は相互作用の伝播速度ではなく、A と B の局所時計がこの関係を刻んだ記録のずれを距離で割った換算係数として、読出し側に現れる。これは相対論とも矛盾しない。光が結ぶ二点の時空間隔はゼロであり、遅れは各観測者の座標時間にしか現れない[13] [14] [15] [16]。
+光速は相互作用の伝播速度ではなく、A と B の局所時計がこの関係を刻んだ記録のずれを距離で割った換算係数として、読出し側に現れる。これは相対論とも矛盾しない。光が結ぶ二点の時空間隔はゼロであり、遅れは各観測者の座標時間にしか現れない[X10] [X11] [X12] [X13]。
 
 ### (P3) 関係の位相は倍音次数 $n$ をもつ
 
@@ -80,7 +80,7 @@ $$E(\theta)=\mp\sum_{m\ge1}w_m\cos m\theta,\qquad w_m=\frac{c_m^{2}}{\sum_{m'\ge
 
 ### 3.1 正規化：比しか読めないから長さ1の向き
 
-(P1) により、関係から読めるのは比だけである。各関係から相手の大きさを割り算で落とすと、残るのは向き（視野角）だけになる。この割り算で落ちる一次元が大きさの比の対数 $\eta=\log(D_B/D_A)$（[29] のラピディティ）であり、本稿の導出はすべて $\eta=0$ の断面で行う。$\eta\neq0$ の帰結は §6 の二点に残す。したがって各検出器の設定は長さ1の向き $\boldsymbol{u}$ として表され、二つの関係の読出し上の重なりは内積
+(P1) により、関係から読めるのは比だけである。各関係から相手の大きさを割り算で落とすと、残るのは向き（視野角）だけになる。この割り算で落ちる一次元が大きさの比の対数 $\eta=\log(D_B/D_A)$（[S1] のラピディティ）であり、本稿の導出はすべて $\eta=0$ の断面で行う。$\eta\neq0$ の帰結は §6 の二点に残す。したがって各検出器の設定は長さ1の向き $\boldsymbol{u}$ として表され、二つの関係の読出し上の重なりは内積
 
 $$
 \boldsymbol{u}\cdot\boldsymbol{v}=\cos\varphi
@@ -96,7 +96,7 @@ $$
 P=a\,a^{*}=|a|^{2}
 $$
 
-となる。向きが実の単位ベクトルで表される場合は $P=\cos^{2}\varphi$ である。二値の読出しでは、設定方向とそれに直交する方向への射影の二つが排他的な結果に対応し、$\cos^{2}\varphi+\sin^{2}\varphi=1$ により規格化は自動的に満たされる。積 $a\,a^{*}$ が読める量になる理由は、読出しが放射と吸収の同時成立だからである[17] [18]。これを確率と読む正規化（和を 1 にする割り算）は 3.1 の割り算そのもので、和は一般に $\cosh\eta=\gamma$、$\eta=0$ でだけ 1 になる[29]。
+となる。向きが実の単位ベクトルで表される場合は $P=\cos^{2}\varphi$ である。二値の読出しでは、設定方向とそれに直交する方向への射影の二つが排他的な結果に対応し、$\cos^{2}\varphi+\sin^{2}\varphi=1$ により規格化は自動的に満たされる。積 $a\,a^{*}$ が読める量になる理由は、読出しが放射と吸収の同時成立だからである[X14] [X15]。これを確率と読む正規化（和を 1 にする割り算）は 3.1 の割り算そのもので、和は一般に $\cosh\eta=\gamma$、$\eta=0$ でだけ 1 になる[S1]。
 
 ### 3.3 二者相関
 
@@ -129,7 +129,7 @@ $$
 S\le|\boldsymbol{b}+\boldsymbol{b}'|+|\boldsymbol{b}-\boldsymbol{b}'|\le\sqrt{2}\sqrt{|\boldsymbol{b}+\boldsymbol{b}'|^{2}+|\boldsymbol{b}-\boldsymbol{b}'|^{2}}=2\sqrt{2}.
 $$
 
-等号は $\boldsymbol{b}\perp\boldsymbol{b}'$、$\boldsymbol{a}\parallel\boldsymbol{b}+\boldsymbol{b}'$、$\boldsymbol{a}'\parallel\boldsymbol{b}-\boldsymbol{b}'$ のとき、すなわち $n\alpha=0,\ n\alpha'=\pi/2,\ n\beta=\pi/4,\ n\beta'=-\pi/4$ で達成される[19] [20] [21]。
+等号は $\boldsymbol{b}\perp\boldsymbol{b}'$、$\boldsymbol{a}\parallel\boldsymbol{b}+\boldsymbol{b}'$、$\boldsymbol{a}'\parallel\boldsymbol{b}-\boldsymbol{b}'$ のとき、すなわち $n\alpha=0,\ n\alpha'=\pi/2,\ n\beta=\pi/4,\ n\beta'=-\pi/4$ で達成される[X16] [X17] [X18]。
 
 ![図4](図表/figures/fig4_tsirelson_bound.svg)
 
@@ -137,7 +137,7 @@ $$
 
 対照として、各側の結果が光源で $\pm1$ に決まり、相手の設定によらない場合は $S\le2$ となる（ベルの不等式）。本稿の描像では、単一倍音の関係の読出しは両側の設定がそろった三者の関係として同時に成立するので（P2）、この前提は満たされない。矩形パルスの関係では前提が満たされ、$S\le2$ に戻る（P3）。
 
-また $S=4$ に達する相関（PR ボックス）は、相関を長さ1の向きどうしの内積として表せない[22]。読出しは両端の向きに双線形（放射側と吸収側の積、P2）で、長さは 1 に正規化されている（P1）から、相関は必ず内積であり、PR 型の相関は最初から現れない。上限が $2$ でも $4$ でもなく $2\sqrt{2}$ である理由は、この双線形性と正規化の二つに帰着する。
+また $S=4$ に達する相関（PR ボックス）は、相関を長さ1の向きどうしの内積として表せない[X19]。読出しは両端の向きに双線形（放射側と吸収側の積、P2）で、長さは 1 に正規化されている（P1）から、相関は必ず内積であり、PR 型の相関は最初から現れない。上限が $2$ でも $4$ でもなく $2\sqrt{2}$ である理由は、この双線形性と正規化の二つに帰着する。
 
 ### 3.5 信号不能性
 
@@ -177,11 +177,11 @@ $$
 
 ## 5. 先行研究との関係
 
-放射は吸収体との関係として成立するという考えは、ウィーラー＝ファインマンの吸収体理論にさかのぼる。そこでは吸収体の先進波応答が放射源に戻ったものが放射反作用であり、単独の電荷は自身に作用しない[15] [16]。これは (P2) の「相手も自身の放ったものを読む」と、(P1) の「自分自身は読めない」に対応する。クレイマーのトランザクション解釈は、申し出波と確認波の握手として量子遷移を描き、ボルン則とベル相関の説明を試みた[17] [18]。
+放射は吸収体との関係として成立するという考えは、ウィーラー＝ファインマンの吸収体理論にさかのぼる。そこでは吸収体の先進波応答が放射源に戻ったものが放射反作用であり、単独の電荷は自身に作用しない[X12] [X13]。これは (P2) の「相手も自身の放ったものを読む」と、(P1) の「自分自身は読めない」に対応する。クレイマーのトランザクション解釈は、申し出波と確認波の握手として量子遷移を描き、ボルン則とベル相関の説明を試みた[X14] [X15]。
 
-これらは握手が成立する条件を与えたが、何がどれだけ読めるかの規則はもたなかった。本稿の差分は、握手の中身を読出し規則として先に置いた点にある。共有された視野角が握手の対称部分を、互いの大きさが非対称な結合を決め、読めるのは三体以上での比だけで、スケールは無名のまま残る。この規則から、ボルン則の二乗、相関の cos 型、上限 $2\sqrt{2}$、信号不能性が一続きに出る。吸収体理論が必要とした「宇宙の完全吸収体」の仮定は、三体で比が閉じる条件に置き換えられる可能性がある[23]。
+これらは握手が成立する条件を与えたが、何がどれだけ読めるかの規則はもたなかった。本稿の差分は、握手の中身を読出し規則として先に置いた点にある。共有された視野角が握手の対称部分を、互いの大きさが非対称な結合を決め、読めるのは三体以上での比だけで、スケールは無名のまま残る。この規則から、ボルン則の二乗、相関の cos 型、上限 $2\sqrt{2}$、信号不能性が一続きに出る。吸収体理論が必要とした「宇宙の完全吸収体」の仮定は、三体で比が閉じる条件に置き換えられる可能性がある[S5]。
 
-ベルの定理が排除するのは局所的な隠れた変数理論であり、本稿の描像は相互作用の同時成立（P2）によって、各側の結果が光源で決まるというベルの局所性の前提を最初から採らない。信号は送れない（3.5）。したがってベルの不等式の破れは驚きではなく帰結である。量子相関の上限がなぜ $2\sqrt{2}$ で止まるかについては、情報因果律などの原理からの導出が試みられてきた[24] [25] [26] [27] [28]。本稿はこれを、比しか読めないという読出し規則の幾何から与える。
+ベルの定理が排除するのは局所的な隠れた変数理論であり、本稿の描像は相互作用の同時成立（P2）によって、各側の結果が光源で決まるというベルの局所性の前提を最初から採らない。信号は送れない（3.5）。したがってベルの不等式の破れは驚きではなく帰結である。量子相関の上限がなぜ $2\sqrt{2}$ で止まるかについては、情報因果律などの原理からの導出が試みられてきた[X20] [X21] [X22] [X23] [X24]。本稿はこれを、比しか読めないという読出し規則の幾何から与える。
 
 ---
 
@@ -195,7 +195,7 @@ $$
 
 | 区分 | 内容 |
 |---|---|
-| 恒等式 | 3.4 単位ベクトルの内積の上限 $2\sqrt{2}$ [21]、3.5 周辺分布 $\tfrac12$、P3 の自己相関と矩形→局所隠れ変数 |
+| 恒等式 | 3.4 単位ベクトルの内積の上限 $2\sqrt{2}$ [X18]、3.5 周辺分布 $\tfrac12$、P3 の自己相関と矩形→局所隠れ変数 |
 | 読み | 3.1 正規化＝$\eta=0$ 断面の選択、3.2 $a\,a^{*}$＝確率、3.3 B 端の直交と係数 $\tfrac12$ |
 | 仮説 | P2 放射と吸収の同時成立、P3 $n$＝スピン・ヘリシティの二倍、§5 完全吸収体→三体の閉じ |
 | 既知との一致 | §4 の三値（45°、22.5°、11.25°） |
@@ -205,35 +205,40 @@ $$
 
 ## 参考文献
 
-[1] C. A. Fuchs, R. Schack, "Quantum-Bayesian coherence," Rev. Mod. Phys. 85, 1693–1715 (2013). DOI 10.1103/RevModPhys.85.1693
-[2] C. A. Fuchs, N. D. Mermin, R. Schack, "An introduction to QBism with an application to the locality of quantum mechanics," Am. J. Phys. 82, 749–754 (2014). DOI 10.1119/1.4874855
-[3] V. B. Braginsky, Y. I. Vorontsov, K. S. Thorne, "Quantum Nondemolition Measurements," Science 209, 547–557 (1980). DOI 10.1126/science.209.4456.547
-[4] C. M. Caves, K. S. Thorne, R. W. P. Drever, V. D. Sandberg, M. Zimmermann, "On the measurement of a weak classical force coupled to a quantum-mechanical oscillator. I. Issues of principle," Rev. Mod. Phys. 52, 341–392 (1980). DOI 10.1103/RevModPhys.52.341
-[5] S. Haroche, J.-M. Raimond, *Exploring the Quantum: Atoms, Cavities, and Photons* (Oxford University Press, Oxford, 2006). DOI 10.1093/acprof:oso/9780198509141.001.0001
-[6] A. Blais, A. L. Grimsmo, S. M. Girvin, A. Wallraff, "Circuit quantum electrodynamics," Rev. Mod. Phys. 93, 025005 (2021). DOI 10.1103/RevModPhys.93.025005
-[7] W. H. Zurek, "Decoherence, einselection, and the quantum origins of the classical," Rev. Mod. Phys. 75, 715–775 (2003). DOI 10.1103/RevModPhys.75.715
-[8] M. Schlosshauer, "Quantum decoherence," Phys. Rep. 831, 1–57 (2019). DOI 10.1016/j.physrep.2019.10.001
-[9] B.-G. Englert, "Fringe Visibility and Which-Way Information: An Inequality," Phys. Rev. Lett. 77, 2154–2157 (1996). DOI 10.1103/PhysRevLett.77.2154
-[10] 木原範昭「状態と関係性から時空・粒子・相互作用の創発を探索する研究プロジェクト設計」2026-09-20. Concept DOI 10.5281/zenodo.22851944.
-[11] 木原範昭「第三思考実験：a b 2体の天体の軌道から a b 2体の状態を読み出す」2026-09-23. Concept DOI 10.5281/zenodo.22909660.
-[12] 木原範昭「無名等振幅複合波モデル基本公理系 v9」2026-07-24. Concept DOI 10.5281/zenodo.21315735.
-[13] H. Tetrode, "Über den Wirkungszusammenhang der Welt. Eine Erweiterung der klassischen Dynamik," Z. Phys. 10, 317–328 (1922). DOI 10.1007/BF01332574
-[14] A. D. Fokker, "Ein invarianter Variationssatz für die Bewegung mehrerer elektrischer Massenteilchen," Z. Phys. 58, 386–393 (1929). DOI 10.1007/BF01340389
-[15] J. A. Wheeler, R. P. Feynman, "Interaction with the Absorber as the Mechanism of Radiation," Rev. Mod. Phys. 17, 157–181 (1945). DOI 10.1103/RevModPhys.17.157
-[16] J. A. Wheeler, R. P. Feynman, "Classical Electrodynamics in Terms of Direct Interparticle Action," Rev. Mod. Phys. 21, 425–433 (1949). DOI 10.1103/RevModPhys.21.425
-[17] J. G. Cramer, "The transactional interpretation of quantum mechanics," Rev. Mod. Phys. 58, 647–687 (1986). DOI 10.1103/RevModPhys.58.647
-[18] R. E. Kastner, *The Transactional Interpretation of Quantum Mechanics: The Reality of Possibility* (Cambridge University Press, Cambridge, 2013). DOI 10.1017/CBO9780511675768
-[19] J. S. Bell, "On the Einstein Podolsky Rosen paradox," Physics Physique Fizika 1, 195–200 (1964). DOI 10.1103/PhysicsPhysiqueFizika.1.195
-[20] J. F. Clauser, M. A. Horne, A. Shimony, R. A. Holt, "Proposed Experiment to Test Local Hidden-Variable Theories," Phys. Rev. Lett. 23, 880–884 (1969). DOI 10.1103/PhysRevLett.23.880
-[21] B. S. Cirel'son, "Quantum generalizations of Bell's inequality," Lett. Math. Phys. 4, 93–100 (1980). DOI 10.1007/BF00417500
-[22] S. Popescu, D. Rohrlich, "Quantum nonlocality as an axiom," Found. Phys. 24, 379–385 (1994). DOI 10.1007/BF02058098
-[23] 木原範昭「第十一思考実験：背景時空を置かない二体系の放出記録」2026-10-07. Concept DOI 10.5281/zenodo.23199299.
-[24] M. Pawłowski, T. Paterek, D. Kaszlikowski, V. Scarani, A. Winter, M. Żukowski, "Information causality as a physical principle," Nature 461, 1101–1104 (2009). DOI 10.1038/nature08400
-[25] M. Navascués, H. Wunderlich, "A glance beyond the quantum model," Proc. R. Soc. A 466, 881–890 (2010). DOI 10.1098/rspa.2009.0453
-[26] L. Hardy, "Quantum Theory From Five Reasonable Axioms," arXiv:quant-ph/0101012 (2001).
-[27] G. Chiribella, G. M. D'Ariano, P. Perinotti, "Informational derivation of quantum theory," Phys. Rev. A 84, 012311 (2011). DOI 10.1103/PhysRevA.84.012311
-[28] Ll. Masanes, M. P. Müller, "A derivation of quantum theory from physical requirements," New J. Phys. 13, 063001 (2011). DOI 10.1088/1367-2630/13/6/063001
-[29] 木原範昭「複素数を正しく理解していたか ― 振幅はどこに住むか、虚数読み、ℂ → ℍ → 𝕆 の帰属 ―」2026-10-23. Concept DOI 10.5281/zenodo.23585436.
+### 自己引用（Concept DOI、10.5281/zenodo.〔番号〕）
+
+[S1] 木原範昭「複素数を正しく理解していたか ― 振幅はどこに住むか、虚数読み、ℂ → ℍ → 𝕆 の帰属 ―」2026-10-23. Concept DOI 10.5281/zenodo.23585436.
+[S2] 木原範昭「第三思考実験：a b 2体の天体の軌道から a b 2体の状態を読み出す」2026-09-23. Concept DOI 10.5281/zenodo.22909660.
+[S3] 木原範昭「状態と関係性から時空・粒子・相互作用の創発を探索する研究プロジェクト設計」2026-09-20. Concept DOI 10.5281/zenodo.22851944.
+[S4] 木原範昭「無名等振幅複合波モデル基本公理系 v9」2026-07-24. Concept DOI 10.5281/zenodo.21315735.
+[S5] 木原範昭「第十一思考実験：背景時空を置かない二体系の放出記録」2026-10-07. Concept DOI 10.5281/zenodo.23199299.
+
+### 外部文献
+
+[X1] C. A. Fuchs, R. Schack, "Quantum-Bayesian coherence," Rev. Mod. Phys. 85, 1693–1715 (2013). DOI 10.1103/RevModPhys.85.1693
+[X2] C. A. Fuchs, N. D. Mermin, R. Schack, "An introduction to QBism with an application to the locality of quantum mechanics," Am. J. Phys. 82, 749–754 (2014). DOI 10.1119/1.4874855
+[X3] V. B. Braginsky, Y. I. Vorontsov, K. S. Thorne, "Quantum Nondemolition Measurements," Science 209, 547–557 (1980). DOI 10.1126/science.209.4456.547
+[X4] C. M. Caves, K. S. Thorne, R. W. P. Drever, V. D. Sandberg, M. Zimmermann, "On the measurement of a weak classical force coupled to a quantum-mechanical oscillator. I. Issues of principle," Rev. Mod. Phys. 52, 341–392 (1980). DOI 10.1103/RevModPhys.52.341
+[X5] S. Haroche, J.-M. Raimond, *Exploring the Quantum: Atoms, Cavities, and Photons* (Oxford University Press, Oxford, 2006). DOI 10.1093/acprof:oso/9780198509141.001.0001
+[X6] A. Blais, A. L. Grimsmo, S. M. Girvin, A. Wallraff, "Circuit quantum electrodynamics," Rev. Mod. Phys. 93, 025005 (2021). DOI 10.1103/RevModPhys.93.025005
+[X7] W. H. Zurek, "Decoherence, einselection, and the quantum origins of the classical," Rev. Mod. Phys. 75, 715–775 (2003). DOI 10.1103/RevModPhys.75.715
+[X8] M. Schlosshauer, "Quantum decoherence," Phys. Rep. 831, 1–57 (2019). DOI 10.1016/j.physrep.2019.10.001
+[X9] B.-G. Englert, "Fringe Visibility and Which-Way Information: An Inequality," Phys. Rev. Lett. 77, 2154–2157 (1996). DOI 10.1103/PhysRevLett.77.2154
+[X10] H. Tetrode, "Über den Wirkungszusammenhang der Welt. Eine Erweiterung der klassischen Dynamik," Z. Phys. 10, 317–328 (1922). DOI 10.1007/BF01332574
+[X11] A. D. Fokker, "Ein invarianter Variationssatz für die Bewegung mehrerer elektrischer Massenteilchen," Z. Phys. 58, 386–393 (1929). DOI 10.1007/BF01340389
+[X12] J. A. Wheeler, R. P. Feynman, "Interaction with the Absorber as the Mechanism of Radiation," Rev. Mod. Phys. 17, 157–181 (1945). DOI 10.1103/RevModPhys.17.157
+[X13] J. A. Wheeler, R. P. Feynman, "Classical Electrodynamics in Terms of Direct Interparticle Action," Rev. Mod. Phys. 21, 425–433 (1949). DOI 10.1103/RevModPhys.21.425
+[X14] J. G. Cramer, "The transactional interpretation of quantum mechanics," Rev. Mod. Phys. 58, 647–687 (1986). DOI 10.1103/RevModPhys.58.647
+[X15] R. E. Kastner, *The Transactional Interpretation of Quantum Mechanics: The Reality of Possibility* (Cambridge University Press, Cambridge, 2013). DOI 10.1017/CBO9780511675768
+[X16] J. S. Bell, "On the Einstein Podolsky Rosen paradox," Physics Physique Fizika 1, 195–200 (1964). DOI 10.1103/PhysicsPhysiqueFizika.1.195
+[X17] J. F. Clauser, M. A. Horne, A. Shimony, R. A. Holt, "Proposed Experiment to Test Local Hidden-Variable Theories," Phys. Rev. Lett. 23, 880–884 (1969). DOI 10.1103/PhysRevLett.23.880
+[X18] B. S. Cirel'son, "Quantum generalizations of Bell's inequality," Lett. Math. Phys. 4, 93–100 (1980). DOI 10.1007/BF00417500
+[X19] S. Popescu, D. Rohrlich, "Quantum nonlocality as an axiom," Found. Phys. 24, 379–385 (1994). DOI 10.1007/BF02058098
+[X20] M. Pawłowski, T. Paterek, D. Kaszlikowski, V. Scarani, A. Winter, M. Żukowski, "Information causality as a physical principle," Nature 461, 1101–1104 (2009). DOI 10.1038/nature08400
+[X21] M. Navascués, H. Wunderlich, "A glance beyond the quantum model," Proc. R. Soc. A 466, 881–890 (2010). DOI 10.1098/rspa.2009.0453
+[X22] L. Hardy, "Quantum Theory From Five Reasonable Axioms," arXiv:quant-ph/0101012 (2001).
+[X23] G. Chiribella, G. M. D'Ariano, P. Perinotti, "Informational derivation of quantum theory," Phys. Rev. A 84, 012311 (2011). DOI 10.1103/PhysRevA.84.012311
+[X24] Ll. Masanes, M. P. Müller, "A derivation of quantum theory from physical requirements," New J. Phys. 13, 063001 (2011). DOI 10.1088/1367-2630/13/6/063001
 
 ---
 
@@ -245,6 +250,6 @@ $$
 
 - v1（2026-11-01）：初稿。新横浜〜東京の車中で Claude.ai と作成。
 - v1.1（2026-11-01）：引用を番号化し、参考文献 28 本を付けた（本文は同じ）。
-- v1.2（2026-11-01）：自己分析の修正点 A〜F を適用。複素数論文 [29] との整合（ボルン則は形まで、正規化は $\eta=0$ の断面の選択）、3.3 の反転を位相 $\pi/2$ のずらしに一般化、3.4 の内積の根拠を双線形性＋正規化に、3.5 を検算に、P3 に倍音の一般化、§4 を「帰結と既知との照合」に、§7 区分を追加。
+- v1.2（2026-11-01）：自己分析の修正点 A〜F を適用。複素数論文 [S1] との整合（ボルン則は形まで、正規化は $\eta=0$ の断面の選択）、3.3 の反転を位相 $\pi/2$ のずらしに一般化、3.4 の内積の根拠を双線形性＋正規化に、3.5 を検算に、P3 に倍音の一般化、§4 を「帰結と既知との照合」に、§7 区分を追加。
 - v1.3（2026-11-01）：図 1〜5 を追加（`図表/make_figures.py`）。本文の変更は図の参照と付録 A のみ。図 3 は著者の指摘で有限和 $N=13$（矩形波は奇数倍音、局在波は等振幅の奇数・偶数）に差し替えた。
-- v1.4（2026-11-01）：公開準備稿。ヘッダーを系列の形式に合わせ、数値実験 E0〜E5 への言及を今後の課題に改め、P3 の矩形の命題に $M\to\infty$ の限定と $c_m$ の符号を入れた。英語版 `paper_observation_handshake_bell_tsirelson_en_v1.4.md` を作成（翻訳、日本語版が正本）。
+- v1.4（2026-11-01）：公開準備稿。ヘッダーを系列の形式に合わせ、数値実験 E0〜E5 への言及を今後の課題に改め、P3 の矩形の命題に $M\to\infty$ の限定と $c_m$ の符号を入れた。英語版 `paper_observation_handshake_bell_tsirelson_en_v1.4.md` を作成（翻訳、日本語版が正本）。引用を系列の作法に合わせ、自己引用 [S1]〜[S5] と外部文献 [X1]〜[X24] に分けて初出順に採番し直した。
