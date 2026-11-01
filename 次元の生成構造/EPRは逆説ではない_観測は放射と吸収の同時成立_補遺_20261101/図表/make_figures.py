@@ -30,12 +30,12 @@ def fig1():
     xa = np.array([np.cos(th), np.sin(th)]) * A; xb = -xa; va = w * np.array([-np.sin(th), np.cos(th)]) * A; vb = -va
     ax.plot([0], [0], "o", color=C_INK, ms=5); ax.text(0.0, -0.17, "S", ha="center", va="top", fontsize=11)
     arrow(ax, (0, 0), xa, C_A); arrow(ax, (0, 0), xb, C_B)
-    ax.text(*(xa * 1.22), r"$\boldsymbol{x}_A$", color=C_A, ha="center", va="center", fontsize=11); ax.text(*(xb * 1.22), r"$\boldsymbol{x}_B=-\boldsymbol{x}_A$", color=C_B, ha="center", va="center", fontsize=11)
+    ax.text(*(xa * 1.22), r"$\boldsymbol{x}_A$", color=C_A, ha="center", va="center", fontsize=11); ax.text(xb[0] - 0.08, xb[1] - 0.22, r"$\boldsymbol{x}_B=-\boldsymbol{x}_A$", color=C_B, ha="right", va="top", fontsize=11)
     arrow(ax, xa, xa + 0.55 * va, C_A, ls=(0, (3, 2))); arrow(ax, xb, xb + 0.55 * vb, C_B, ls=(0, (3, 2)))
-    ax.text(*(xa + 0.75 * va), r"$\boldsymbol{v}_A$", color=C_A, fontsize=10, ha="center"); ax.text(*(xb + 0.75 * vb), r"$\boldsymbol{v}_B=-\boldsymbol{v}_A$", color=C_B, fontsize=10, ha="center")
+    ax.text(*(xa + 0.85 * va), r"$\boldsymbol{v}_A$", color=C_A, fontsize=10, ha="center", va="bottom"); ax.text(xb[0] + 0.85 * vb[0] + 0.25, xb[1] + 0.85 * vb[1] - 0.05, r"$\boldsymbol{v}_B=-\boldsymbol{v}_A$", color=C_B, fontsize=10, ha="left", va="top")
     ax.plot(*xa, "o", color=C_A, ms=7); ax.plot(*xb, "o", color=C_B, ms=7)
     ax.text(0, -1.55, L("閉包 $q_A+q_B=0$ ⇒ 位置の和と速度の和が同時にゼロ", "closure $q_A+q_B=0$ ⇒ positions and velocities sum to zero at once"), ha="center", fontsize=9.5)
-    tidy(ax, (-1.75, 1.75), (-1.8, 1.5), L("(a) 対蹠の対：$\\boldsymbol{x}_B=-\\boldsymbol{x}_A$、$\\boldsymbol{p}_B=-\\boldsymbol{p}_A$", "(a) antipodal pair: $\\boldsymbol{x}_B=-\\boldsymbol{x}_A$, $\\boldsymbol{p}_B=-\\boldsymbol{p}_A$"))
+    tidy(ax, (-2.3, 1.75), (-1.95, 1.5), L("(a) 対蹠の対：$\\boldsymbol{x}_B=-\\boldsymbol{x}_A$、$\\boldsymbol{p}_B=-\\boldsymbol{p}_A$", "(a) antipodal pair: $\\boldsymbol{x}_B=-\\boldsymbol{x}_A$, $\\boldsymbol{p}_B=-\\boldsymbol{p}_A$"))
     # (b)
     ax = axs[1]
     ax.add_patch(Circle((0, 0), A, fill=False, color=C_GRID, lw=1.0)); ax.plot([0], [0], "o", color=C_INK, ms=5)
@@ -51,7 +51,7 @@ def fig1():
     ax.add_patch(Circle((0, 0), A, fill=False, color=C_GRID, lw=1.0)); ax.plot([0], [0], "o", color=C_INK, ms=5)
     ax.plot([-1.5, 1.5], [0, 0], color=C_INK, lw=1.0, ls=(0, (4, 2))); ax.text(1.55, 0.0, r"$\boldsymbol{n}_A$", va="center", fontsize=11)
     ax.plot(*xa, "o", color=C_A, ms=7, alpha=0.4); arrow(ax, xa, (np.dot(xa, nA), 0.0), C_A, ls=(0, (2, 2)), lw=1.2)
-    ax.plot([np.dot(xa, nA)], [0], "s", color=C_A, ms=8); ax.text(np.dot(xa, nA), 0.17, L("A：＋に落ちる", "A: falls to +"), color=C_A, ha="center", fontsize=9.5)
+    ax.plot([np.dot(xa, nA)], [0], "s", color=C_A, ms=8); ax.text(np.dot(xa, nA), -0.2, L("A：＋に落ちる", "A: falls to +"), color=C_A, ha="center", va="top", fontsize=9.5)
     ax.plot(*xb, "o", color=C_B, ms=7); ax.text(*(xb * 1.25), L("B：何も変わらない", "B: nothing changes"), color=C_B, ha="center", fontsize=9.5)
     ax.text(0, -1.55, L("A を軸に対して破壊的に読む（P4、既知）。B の状態には作用しない", "A is read destructively against its axis (P4, known); B is untouched"), ha="center", fontsize=9.5)
     tidy(ax, (-1.75, 1.95), (-1.8, 1.5), L("(c) A の読出しは B に出来事を起こさない", "(c) reading A is no event at B"))
@@ -62,7 +62,7 @@ def fig2():
     # 事象：S=(0,0) から null 線で A=(−d, d), B=(d, d)。読出し事象 EA=(−d, tA), EB=(d, tB)。枠 2 は速度 β で boost。
     d, tA, tB = 1.0, 1.4, 1.7; beta = 0.6; g = 1 / np.sqrt(1 - beta ** 2)
     def boost(x, t): return g * (x - beta * t), g * (t - beta * x)
-    fig, axs = plt.subplots(1, 2, figsize=(11.0, 4.6))
+    fig, axs = plt.subplots(1, 2, figsize=(11.0, 5.0))
     for ax, bb, ttl in ((axs[0], 0.0, L("(a) 枠 1：A の読出しが先（t_A < t_B）", "(a) frame 1: A is read first ($t_A<t_B$)")), (axs[1], beta, L("(b) 枠 2（速度 0.6c）：B の読出しが先", "(b) frame 2 (speed 0.6c): B is read first"))):
         def T(x, t):
             if bb == 0: return x, t
@@ -74,13 +74,13 @@ def fig2():
             ax.plot([pts[a][0], pts[b_][0]], [pts[a][1], pts[b_][1]], color=col, lw=1.6)
         ax.plot(*pts["S"], "o", color=C_INK, ms=6); ax.text(pts["S"][0], pts["S"][1] - 0.15, "S", ha="center", va="top", fontsize=11)
         ax.plot(*pts["EA"], "s", color=C_A, ms=8); ax.plot(*pts["EB"], "s", color=C_B, ms=8)
-        ax.text(pts["EA"][0] - 0.1, pts["EA"][1], L("A の読出し", "readout at A"), color=C_A, ha="right", va="center", fontsize=10)
-        ax.text(pts["EB"][0] + 0.1, pts["EB"][1], L("B の読出し", "readout at B"), color=C_B, ha="left", va="center", fontsize=10)
+        ax.text(pts["EA"][0], pts["EA"][1] + 0.15, L("A の読出し", "readout at A"), color=C_A, ha="center", va="bottom", fontsize=10)
+        ax.text(pts["EB"][0], pts["EB"][1] + 0.15, L("B の読出し", "readout at B"), color=C_B, ha="center", va="bottom", fontsize=10)
         for name, col in (("EA", C_A), ("EB", C_B)):
             ax.axhline(pts[name][1], color=col, lw=0.8, ls=(0, (2, 3)))
-        ax.text(-2.4, pts["EA"][1], "t = %.2f" % pts["EA"][1], color=C_A, fontsize=9, va="bottom"); ax.text(-2.4, pts["EB"][1], "t = %.2f" % pts["EB"][1], color=C_B, fontsize=9, va="bottom")
-        ax.text(0.0, -0.75, L("S–A、S–B は時空間隔ゼロの一回の関係（P2）\n二つの読出しは空間的に離れ、順序は枠で変わる。記録の突き合わせは同じ", "S–A and S–B are one relation of zero interval (P2)\nthe two readouts are spacelike; their order depends on the frame, the compared records do not"), ha="center", va="top", fontsize=9.5, color=C_INK)
-        ax.set_xlim(-2.6, 2.6); ax.set_ylim(-1.5, 3.4); ax.set_xlabel("x"); ax.set_ylabel("t"); ax.set_title(ttl, loc="left", fontsize=11); ax.grid(color=C_GRID, lw=0.6); ax.set_aspect("equal")
+        ax.text(2.9, pts["EA"][1], "t_A = %.2f" % pts["EA"][1], color=C_A, fontsize=9, va="bottom", ha="right"); ax.text(2.9, pts["EB"][1], "t_B = %.2f" % pts["EB"][1], color=C_B, fontsize=9, va="bottom", ha="right")
+        ax.text(0.5, -0.2, L("S–A、S–B は時空間隔ゼロの一回の関係（P2）。二つの読出しは空間的に離れ、順序は枠で変わる。記録の突き合わせは同じ", "S–A and S–B are one relation of zero interval (P2); the readouts are spacelike, their order depends on the frame, the compared records do not"), ha="center", va="top", fontsize=9, color=C_INK, transform=ax.transAxes, wrap=True)
+        ax.set_xlim(-3.0, 3.0); ax.set_ylim(-0.5, 3.4); ax.set_xlabel("x"); ax.set_ylabel("t"); ax.set_title(ttl, loc="left", fontsize=11); ax.grid(color=C_GRID, lw=0.6); ax.set_aspect("equal")
     fig.suptitle(L("図 2　順序への非依存：A が先か B が先かは枠に依存し、相関は依存しない", "Fig. 2  Order independence: which readout comes first depends on the frame; the correlation does not"), fontsize=12, color=C_INK, y=1.0)
     fig.tight_layout(); save(fig, "fig2_order_independence")
 
