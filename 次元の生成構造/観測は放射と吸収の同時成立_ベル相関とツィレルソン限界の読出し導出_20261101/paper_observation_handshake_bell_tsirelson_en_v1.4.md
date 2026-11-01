@@ -4,7 +4,6 @@
 **Author:** Noriaki Kihara (WF System Co., Ltd.)　ORCID 0009-0004-6753-4020
 **Date:** 2026-11-01　　**Version:** v1.4 (pre-publication draft)
 **Version DOI:** (assigned at publication)　　**Concept DOI:** (assigned at publication)
-**Same folder:** figures in `図表/` (`make_figures.py`; English-label figures `fig*_en`), the self-review correction list `修正点_自己分析_v1.1_20261101.md`, and the hand-over note for the numerical experiments `申し送り_ClaudeCode_引用作成とベル数値実験E0-E5_20261101.md` (future work)
 **Note:** The Japanese version (`paper_observation_handshake_bell_tsirelson_ja_v1.4.md`) is the authoritative text; this English version is a translation.
 
 ---
