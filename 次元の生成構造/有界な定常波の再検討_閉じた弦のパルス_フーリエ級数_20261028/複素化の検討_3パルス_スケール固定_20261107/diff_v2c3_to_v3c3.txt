@@ -1,0 +1,62 @@
+--- 原本/index_v2c3.html	2026-11-07 08:10:54
++++ index_v3c3.html	2026-11-07 08:10:54
+@@ -3,7 +3,7 @@
+ <head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+-<title>閉じた弦の複素パルス 3 波（index_v2c2.html の 3 段化）</title>
++<title>閉じた弦の複素パルス 3 波（index_v2c3.html のスケール固定版）</title>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.34.0/plotly.min.js"></script>
+ <style>
+   :root { --bg:#ffffff; --fg:#1d1d1f; --muted:#6e6e73; --line:#d2d2d7; --panel:#f5f5f7; }
+@@ -62,12 +62,13 @@
+ <div class="bar">
+   <div class="sl"><span>R×</span><input id="rr" type="range" min="1" max="20" step="1" value="10"><span class="v" id="rrv">10</span></div>
+   <button id="auto" class="on">Auto</button>
++  <button id="fit">スケール調整</button>
+ </div>
+ <div class="head"><div id="h1"></div><div id="h2" class="ratios"></div></div>
+ <div id="plot"></div>
+ <div class="note">
+   弦に沿った角 ψ ∈ [0, 360)。同じ弦の上の複素パルス三つの線形合成：Z ＝ Z₁ ＋ Z₂ ＋ Z₃、Z_i(ψ) ＝ e^{iφ₀i} [ φ_i/360 ＋ (2/π) Σ_m [ sin(mπφ_i/360) / m ] · e^{imπ(ψ−θ_i)/180} ]（m は 1..M_i のうち奇・偶で選んだもの）。φ₀i は各パルスの内部位相（偏角）で、位置 θ_i とは独立。各パルスは index_v2c.html と同じ式で、描くのは和だけ。<br>
+-  半径は和の親のノルム R ＝ √Σ_m |c_m|²、c_m ＝ Σ_i c⁽ⁱ⁾_m e^{i(φ₀i−mθ_i)}（直流は含めない）。R² ＝ Σ_i R_i² ＋ 2 Σ_{i<j} Σ_m c⁽ⁱ⁾c⁽ʲ⁾ cos(mΔ_ij − Φ_ij)、Δ_ij ＝ θ_i − θ_j、Φ_ij ＝ φ₀i − φ₀j。対は 12・23・13 の三組で、独立なのは二組。Auto は各パルスで独立に二つのステップを持つ：位置 θ_i ← θ_i ＋ φ_i と、内部位相 φ₀i ← φ₀i ＋ δ_i（スライダー δ、−30〜30°/ティック、初期 0）。並進は δ ＝ 0 の特別な場合で、発展の規則は固定しない。表示では倍率 k（R×、1〜20、初期 10）を掛けた kR を円・円筒・曲線の半径に使い、ティックごとに更新する（振幅はそのまま）。実部と虚部は別の曲線：青 ＝ 和の実部を半径方向に乗せた ((kR ＋ Re Z) cos ψ, (kR ＋ Re Z) sin ψ, 0)、橙 ＝ 和の虚部を垂直に乗せた (kR cos ψ, kR sin ψ, Im Z)。細い線は半径 kR の基準円、薄い面は半径 kR・高さ ±1 の円筒。円の上の印：青の菱形 ＝ 中心 θ₁、紫の四角 ＝ 中心 θ₂、緑の十字 ＝ 中心 θ₃、点線 ＝ 三つの中心を結ぶ三角形（向き ＝ 1→2→3 の回る向きの符号）。x・y・z は同じ範囲・縮尺 1:1:1、正射影。<br>
++  半径は和の親のノルム R ＝ √Σ_m |c_m|²、c_m ＝ Σ_i c⁽ⁱ⁾_m e^{i(φ₀i−mθ_i)}（直流は含めない）。R² ＝ Σ_i R_i² ＋ 2 Σ_{i<j} Σ_m c⁽ⁱ⁾c⁽ʲ⁾ cos(mΔ_ij − Φ_ij)、Δ_ij ＝ θ_i − θ_j、Φ_ij ＝ φ₀i − φ₀j。対は 12・23・13 の三組で、独立なのは二組。Auto は各パルスで独立に二つのステップを持つ：位置 θ_i ← θ_i ＋ φ_i と、内部位相 φ₀i ← φ₀i ＋ δ_i（スライダー δ、−30〜30°/ティック、初期 0）。並進は δ ＝ 0 の特別な場合で、発展の規則は固定しない。表示では倍率 k（R×、1〜20、初期 10）を掛けた kR を円・円筒・曲線の半径に使い、ティックごとに更新する（振幅はそのまま）。実部と虚部は別の曲線：青 ＝ 和の実部を半径方向に乗せた ((kR ＋ Re Z) cos ψ, (kR ＋ Re Z) sin ψ, 0)、橙 ＝ 和の虚部を垂直に乗せた (kR cos ψ, kR sin ψ, Im Z)。細い線は半径 kR の基準円、薄い面は半径 kR・高さ ±1 の円筒。円の上の印：青の菱形 ＝ 中心 θ₁、紫の四角 ＝ 中心 θ₂、緑の十字 ＝ 中心 θ₃、点線 ＝ 三つの中心を結ぶ三角形（向き ＝ 1→2→3 の回る向きの符号）。x・y・z は同じ範囲・縮尺 1:1:1、正射影。3D の枠 ±L は最初の描画で一度だけ決め、R が変わっても動かさない（R の変化がそのまま円筒と曲線の大きさの変化として見える）。「スケール調整」を押したときだけ、その時点の kR と振幅に枠を合わせ直す。右上に枠といま必要な枠を併記し、はみ出していれば示す。<br>
+   印：黒 × ＝ 曲率中心（原点）、橙の球 ＝ 線形重心（Re Z を半径方向に乗せた曲線の ψ 平均）、緑の球 ＝ パワー重心（|Z|² を重みにした円周上の重心）。どちらも計算上の点で、そこに波はなく観測者もいないので、位置の読みではない（スペクトルの性質）。<br>
+   右：光円錐。横軸 ＝ 相対位置 Δ の累積、縦軸 ＝ 内部位相の差 Φ の累積（度、始点を原点、縮尺 1:1）。倍音 m の二つの寄与の相対位相は mΔ − Φ で、その一歩の変化は m(φ₁−φ₂) − (δ₁−δ₂)。倍音 m の干渉が止まる方向が Φ ＝ mΔ で、巻き数 1 の倍音が止まる Φ ＝ ±Δ（赤の破線）を光円錐（c ＝ 1）とする。細線は Φ ＝ ±mΔ（m ＝ 2〜5）の扇、緑は傾きが整数のときに凍結する倍音の線。橙の折れ線が Auto の世界線で、傾き (δ₁−δ₂)/(φ₁−φ₂)。世界線は折り返さない（時間は遡らない）。動かすのはゲージ（目盛）で、点が枠からはみ出したら目盛の範囲をはみ出した向きに 180° ずつ書き換え、図全体を累積の座標のまま描き直し、またはみ出すまで描く。光円錐 Φ ＝ ±Δ と扇 Φ ＝ ±mΔ は原点（Auto の始点）から伸びる本物の直線で、新しい目盛の範囲に入る部分が見える。巻数 (n_Δ, n_Φ) はメモリとして併記する。二つの位相はトーラスの上にあり、世界線は (φ₁−φ₂):(δ₁−δ₂) を約分した巻数の対のトーラス曲線で、対が同時に原点へ戻る周期（360/最大公約数 ティック）も表示する。三つでは右パネルが「観測者の時空」になる。観測者（1／2／3 から選ぶ）を原点に置き、他の二つのパルスを点 P_i ＝ (Δ_io, Φ_io) で描く。x は中心位相 θ の差（位相則の傾きの差＝倍音が揃う点の差）、t は内部位相 φ₀ の差（切片の差）。重心は基準に使わない。三点が三角形を作り、三辺が三つの間隔（距離 ＝ x の差、時計のずれ ＝ t の差）。三つ目の関係は差のベクトルで、合成則 v₁₂ ＝ v₁₃ − v₂₃ は三角形が閉じること。単位は「度」（光円錐 c ＝ 1）か、標準の対で測る：物差し ＝ その対の距離 |Δ_s|、時計 ＝ その対の内部時計の 1 ティックあたりの進み |δ_s1 − δ_s2|（1 拍）。標準の単位では光円錐の傾きが |Δ_s|/|δ_s| になり、c ＝ |δ_s|/|Δ_s| 本/拍という標準の選び方で決まる数になる（φ が等しい対を標準にすると物差しが固定される）。初期値は φ ＝ (20, 10, 10)、δ ＝ (20, 0, 10)、観測者 3、標準 23：パルス 1 は傾き 1 で光円錐の上、パルス 2 は縦軸の上（位置は動かず内部時計だけ進む）、辺 1–2 は傾き 2。光円錐は対の性質で、基準を取り替えると保たれない。<br>
+   右上に出すのは読める量。この系はスケール不変で絶対量は存在せず、量はすべて差と比である。二つで読めていたもの：位置 x ＝ Δ_ij、時間 t ＝ Φ_ij（内部時計）、速度 v ＝ dΔ/dΦ、E/p ＝ 傾き dΦ/dΔ、静止の時計（φ_i ＝ φ_j のとき Φ だけが進む）、重なりの角 Θ_ij、視野角 tan α_ij ＝ R_j/R_i。三つで新しく読めるもの：単位つきの距離 Δ₁₃/Δ₂₃ と時間 Φ₁₃/Φ₂₃（一組の対を物差し・時計にして他の対を測る）、内部時計どうしの比 (δ₁−δ₃)/(δ₂−δ₃)（共通の基準に対する二つのうなりの比）、速度の比 (φ₁−φ₃)/(φ₂−φ₃)、合成則 v₁₂ − (v₁₃ − v₂₃) ＝ 0 の検算、各対が光的かどうか、三角形の向き、グラム行列 cos Θ_ij、鏡映対の条件（軸上の 1 個と対 Φ₂ ＝ −Φ₃、保存には δ₂ ＋ δ₃ ＝ 0）。和について：c₀/R、P(π)/R²、Σ c_m²/R²（基準 ψ ＝ 0）、⟨m⟩、巻き数。スライダーを動かすとティックと内部位相は 0 に戻る。ψ の刻みは最高波数の 1 周期あたり 8 点以上。
+@@ -83,6 +84,7 @@
+ const obsOf = () => Number(document.querySelector('input[name=obs]:checked').value), stdOf = () => Number(document.querySelector('input[name=std]:checked').value);
+ let win0 = null, winW = 360;                  // 右パネルの目盛（ゲージ）の左下と幅。null なら作り直す。点がはみ出したら書き換える
+ const P = [1, 2, 3].map(i => ({th: $('th' + i), ph: $('ph' + i), mm: $('mm' + i), odd: $('odd' + i), even: $('even' + i), dl: $('dl' + i), thv: $('th' + i + 'v'), phv: $('ph' + i + 'v'), mmv: $('mm' + i + 'v'), dlv: $('dl' + i + 'v'), phase0: 0}));   // phase0 = 内部位相（偏角）。Auto で δ ずつ進む。位置 θ とは独立
++let Lfix = null;                              // 3D の枠 ±L。null なら次の draw で合わせ直す（スケール調整ボタン）。それ以外では R が変わっても枠は動かさない
+ 
+ function grid(n) {                       // ψ を n 点（両端を含めて閉じる）
+   const psi = new Float64Array(n), c = new Float64Array(n), s = new Float64Array(n);
+@@ -194,7 +196,9 @@
+     wind = Math.round(tot / (2 * Math.PI)); }
+   const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+   const fg = dark ? '#ececf1' : '#1d1d1f', gridc = dark ? '#3a3a42' : '#d2d2d7', thin = dark ? '#55555f' : '#b8b8bf';
+-  const L = Math.max(p.Rd + Math.max(Math.abs(zmax), Math.abs(zmin)), Math.abs(imax), Math.abs(imin), p.Rd + 0.5) * 1.15;
++  const Lnow = Math.max(p.Rd + Math.max(Math.abs(zmax), Math.abs(zmin)), Math.abs(imax), Math.abs(imin), p.Rd + 0.5) * 1.15;   // いま必要な枠
++  if (Lfix === null) Lfix = Lnow;
++  const L = Lfix;                                             // 枠は固定。スケール調整を押したときだけ Lnow に合わせ直す
+   const zrange = [-L, L];                                     // x・y・z を同じ範囲にして目盛の間隔をそろえる
+   const traces = [
+     cylinder(p.Rd, -1, 1),                                    // 円筒は高さ ±1 で切る（振幅ははみ出してよい）
+@@ -256,7 +260,7 @@
+   const comp = [q12.vx - (q13.vx - q23.vx), q12.vy - (q13.vy - q23.vy)];
+   const ratio = (x, y) => y === 0 ? '—' : (x / y).toFixed(4);
+   const desc = p.pulses.map((u, i) => { const nOdd = u.co.ms.filter(m => m % 2).length; return `${i + 1}: θ = ${u.theta}°, φ = ${u.phi}°, δ = ${u.delta}°/t, M = ${u.M}（奇 ${nOdd}・偶 ${u.co.ms.length - nOdd}）R${i + 1} = ${u.R.toFixed(4)}`; }).join('　');
+-  $('h1').textContent = `${desc}　　和：R = ${p.R.toFixed(4)}（表示 ×${p.k} = ${p.Rd.toFixed(3)}）　max Re = ${zmax.toFixed(4)}, min Re = ${zmin.toFixed(4)}　max Im = ${imax.toFixed(4)}, min Im = ${imin.toFixed(4)}　点数 ${n}`;
++  $('h1').textContent = `${desc}　　和：R = ${p.R.toFixed(4)}（表示 ×${p.k} = ${p.Rd.toFixed(3)}）　max Re = ${zmax.toFixed(4)}, min Re = ${zmin.toFixed(4)}　max Im = ${imax.toFixed(4)}, min Im = ${imin.toFixed(4)}　点数 ${n}　枠 ±${L.toFixed(3)}（いま必要な枠 ±${Lnow.toFixed(3)}${Lnow > L ? '、はみ出し' : ''}）`;
+   $('h2').textContent = `観測者 ${o + 1} の時空　単位：${stdOK ? `標準の対 ${PAIRL[stdOf()]}（物差し |Δ| = ${Lstd.toFixed(1)}°、時計 1 拍 = ${Tstd}°/ティック）、光円錐の傾き dt/dx = ${cSlope.toFixed(3)}、c = ${(1 / cSlope).toFixed(4)} 本/拍` : (useStd ? '度（標準の対の距離か時計が 0 なので度に戻した）' : '度（c = 1）')}　三辺　${side(`${o + 1}–${a + 1}`, Pa)}　${side(`${o + 1}–${b + 1}`, Pb)}　${side(`${a + 1}–${b + 1}`, Pab)}　｜　対ごとの傾き　` + p.pairs.map(q => `${q.label}：${sl(q)}${q.mstar !== null ? '、倍音 ' + Math.abs(q.mstar) + ' が凍結' : ''}`).join('　') + `　合成則 v₁₂ − (v₁₃ − v₂₃) = (${comp[0]}, ${comp[1]})　距離の比 Δ₁₃/Δ₂₃ = ${ratio(hist[2][hist[2].length - 1][0] + base[0][0] - base[2][0], hist[1][hist[1].length - 1][0] + base[1][0] - base[2][0])}　時間の比 Φ₁₃/Φ₂₃ = ${ratio(hist[2][hist[2].length - 1][1], hist[1][hist[1].length - 1][1])}　内部時計の比 (δ₁−δ₃)/(δ₂−δ₃) = ${ratio(q13.vy, q23.vy)}　三角形の向き = ${p.orient > 0 ? '＋' : p.orient < 0 ? '−' : '0'}　鏡映対の条件 δ₂＋δ₃ = ${p.pulses[1].delta + p.pulses[2].delta}　ティック ${ticks}　｜　対ごとの読み　` + p.pairs.map(q => `${q.label}：Δ = ${q.Delta.toFixed(1)}°、Φ = ${q.Phi.toFixed(1)}°、cos Θ = ${q.cosT.toFixed(4)}（${q.Theta.toFixed(1)}°）、tan α = ${(p.pulses[q.j].R / p.pulses[q.i].R).toFixed(4)}`).join('　') + `　｜　和：c₀/R = ${(p.c0 / p.R).toFixed(4)}　P(π)/R² = ${(Ppi / p.R2).toFixed(4)}　Σc²/R² = ${(s2re / p.R2).toFixed(4)} ${s2im >= 0 ? '+' : '−'} ${Math.abs(s2im / p.R2).toFixed(4)}i　⟨m⟩ = ${mbar.toFixed(4)}　巻き数 = ${wind}`;
+   const ax = (t, rng) => ({title: t, range: rng, color: fg, gridcolor: gridc, zerolinecolor: fg, backgroundcolor: 'rgba(0,0,0,0)'});
+   const layout = {
+@@ -289,6 +293,7 @@
+   if (!on && timer) { clearInterval(timer); timer = null; btn.classList.remove('on'); }
+ }
+ btn.addEventListener('click', () => setAuto(!timer));
++$('fit').addEventListener('click', () => { Lfix = null; draw(); });   // スケール調整：その時点の R と振幅に枠を合わせ直す
+ rr.addEventListener('input', draw);
+ const resetAll = () => { ticks = 0; hist = PAIRS.map(() => [[0, 0]]); cum = [0, 1, 2].map(() => [[0, 0]]); win0 = null; for (const w of P) w.phase0 = 0; base = P.map(u => [Number(u.th.value), 0]); draw(); };
+ for (const r of document.querySelectorAll('input[name=obs], input[name=std]')) r.addEventListener('change', () => { win0 = null; draw(); });
