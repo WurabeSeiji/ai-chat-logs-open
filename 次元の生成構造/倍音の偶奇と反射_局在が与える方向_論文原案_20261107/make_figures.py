@@ -85,21 +85,21 @@ fig.tight_layout(); save(fig, "fig2_parity_balance_visibility.svg"); plt.close(f
 ms = harmonics("both"); c = np.ones(len(ms)) / len(ms)
 def fit_phase(Sc, Vc):
     ph = np.unwrap(np.arctan2(Vc, Sc)); A_ = np.vstack([ms, np.ones(len(ms))]).T
-    slope, icpt = np.linalg.lstsq(A_, ph, rcond=None)[0]; return slope, -icpt
+    slope, icpt = np.linalg.lstsq(A_, ph, rcond=None)[0]; return -slope, icpt   # ϑ_m = Φ − mΔ：傾き −Δ、切片 Φ
 fig, axs = plt.subplots(1, 3, figsize=(13, 3.4))
 cases = [(+30.0, 20.0, "#1f77b4", "Δ = +30°, Φ = 20°"), (-30.0, 20.0, "#d62728", "Δ = −30°, Φ = 20°")]
 for D_, F_, col, lab in cases:
-    ph = ms * D_ / deg - F_ / deg; Sc = c * c * np.cos(ph); Vc = c * c * np.sin(ph)
+    ph = F_ / deg - ms * D_ / deg; Sc = c * c * np.cos(ph); Vc = c * c * np.sin(ph)   # q_i q̄_j の順：α_i − α_j = Φ − mΔ
     axs[0].plot(ms, Sc / (c * c), "o-", color=col, lw=1.2, ms=4, label=lab)
     axs[1].plot(ms, Vc / (c * c), "o-", color=col, lw=1.2, ms=4, label=lab)
     s, f0 = fit_phase(Sc, Vc); vals[f"fig3_fit_D{D_:+.0f}"] = {"Delta_deg": float(s * deg), "Phi_deg": float(f0 * deg)}
 # Φ = 0 のときは Sc だけでは ±Δ が区別できない
 for D_, col, lab in [(+30.0, "#1f77b4", "Δ = +30°, Φ = 0"), (-30.0, "#d62728", "Δ = −30°, Φ = 0")]:
     axs[2].plot(ms, np.cos(ms * D_ / deg), "o-" if D_ > 0 else "x--", color=col, lw=1.2, ms=5, label=lab + "（Sc）")
-    axs[2].plot(ms, np.sin(ms * D_ / deg), "s-" if D_ > 0 else "+--", color=col, lw=0.8, ms=4, alpha=0.6, label=lab + "（Vec）")
-axs[0].set_title("Sc 部 cos(mΔ − Φ)", fontsize=10); axs[1].set_title("Vec 部 sin(mΔ − Φ)：符号が ±Δ で違う", fontsize=10); axs[2].set_title("Φ = 0：Sc は ±Δ で同じ、Vec で分かれる", fontsize=10)
+    axs[2].plot(ms, np.sin(-ms * D_ / deg), "s-" if D_ > 0 else "+--", color=col, lw=0.8, ms=4, alpha=0.6, label=lab + "（Vec）")
+axs[0].set_title("Sc 部 cos(Φ − mΔ)", fontsize=10); axs[1].set_title("Vec 部 sin(Φ − mΔ)：符号が ±Δ で違う", fontsize=10); axs[2].set_title("Φ = 0：Sc は ±Δ で同じ、Vec で分かれる", fontsize=10)
 for ax in axs: ax.set_xlabel("倍音 m"); ax.axhline(0, color="#999", lw=0.5); ax.legend(fontsize=7)
-fig.suptitle("図3　対の交差項を倍音ごとに並べると、縞の傾きが符号つきの位置差 Δ、切片が内部時計の差 Φ。基本波 m = 1 だけでは決まらない", fontsize=10)
+fig.suptitle("図3　対の交差項 q_i q̄_j を倍音ごとに並べると、縞の位相 Φ − mΔ の傾きが −Δ（符号つき）、切片が Φ。基本波 m = 1 だけでは決まらない", fontsize=10)
 fig.tight_layout(); save(fig, "fig3_harmonic_fringes_direction.svg"); plt.close(fig)
 
 # 四元数：軸が違う対の Vec 部の三成分（n_i, n_j, n_i×n_j）
