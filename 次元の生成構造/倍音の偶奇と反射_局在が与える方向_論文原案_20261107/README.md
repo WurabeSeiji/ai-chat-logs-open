@@ -4,7 +4,8 @@
 
 | ファイル | 内容 |
 |---|---|
-| `paper_parity_reflection_localization_direction_ja_v0.5.md` | 論文原案（草稿 v0.5。§3.3「帰結は三つある」→「四つある」） |
+| `paper_parity_reflection_localization_direction_ja_v0.6.md` | 論文原案（草稿 v0.6。§7 末尾に代数の帰属の向き（読めた関係に名前を与える、無名性は破られない）を一文追加。11/7 木原氏「入れてください」） |
+| `paper_parity_reflection_localization_direction_ja_v0.5.md` | 第五稿（草稿 v0.5。§3.3「帰結は三つある」→「四つある」） |
 | `paper_parity_reflection_localization_direction_ja_v0.4.md` | 第四稿（草稿 v0.4。v0.3 への査読 1 点を反映：局在と偶奇の釣り合いは同値でない。13 項の両方パルスは w_e = 6/13、w_o = 7/13、η = −1/13 で釣り合っていない。§2 と §7 を修正） |
 | `paper_parity_reflection_localization_direction_ja_v0.3.md` | 第三稿（草稿 v0.3。v0.2 への査読 3 点を反映：0 < w_e, w_o < 1 なら位置は区別できるが重なり (w_e − w_o)² が残り、反射確率が R̃ に一致するのは完全直交 w_e = w_o だけ。縞の位相は積の順序 q_i q̄_j に合わせて Φ − mΔ（傾き −Δ、切片 Φ）。標本点数 N_s（N_s ≥ 2M_i + 1、表せる倍音 m ≤ (N_s − 1)/2）と最大倍音番号 M_i を区別） |
 | `paper_parity_reflection_localization_direction_ja_v0.2.md` | 第二稿（草稿 v0.2。v0.1 への査読 4 点を反映：R を対蹠像への重なり R̃ と移る量に分ける、η は状態・Δ_F は作用素で U(π) = P だけがつなぐ、グラム行列は閾値による有効階数、ℍ の制限は合成半径への投射の性質。ヘッダーは 11/1 論文 v1.4 の形式、引用は自己 [S]・外部 [X] 別採番） |
