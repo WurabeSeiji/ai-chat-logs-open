@@ -17,6 +17,8 @@ for pair in "default:$Q_DEF" "tri:$Q_TRI"; do
 done
 dom "v8q3_newdefault_rc1" "$D/index_v8q3.html?auto=0&rc=1" 6000
 dom "v8q3_auto6s_rc1"     "$D/index_v8q3.html?rc=1" 6000
+dom "v8q3_auto6s_ijk_rc1" "$D/index_v8q3.html?rc=1&ni1=1&nk1=0&nj2=1&nk2=0" 6000
 shot v8q3_default_rc1 "$D/index_v8q3.html?auto=0&rc=1" 6000
 shot v8q3_auto6s_rc1  "$D/index_v8q3.html?rc=1" 6000
+shot v8q3_auto6s_ijk_rc1 "$D/index_v8q3.html?rc=1&ni1=1&nk1=0&nj2=1&nk2=0" 6000
 echo done

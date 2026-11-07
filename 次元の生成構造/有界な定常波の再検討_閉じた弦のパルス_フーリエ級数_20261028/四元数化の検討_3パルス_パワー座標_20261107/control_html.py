@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """HTML の対照（2026-11-07）：(1) 右のパワー＝円周上（rc=0）では、index_v8q3.html の h1・h2 が原本 index_v7q3.html と完全一致。
-(2) 座標（rc=1）では h2 が一致し、h1 は「　軌道：」の項目を除いて一致。軌道の点 (kR sin θ₁, kR sin θ₂, kR sin θ₃) を h1 の kR と θ_i から検算。
+(2) 座標（rc=1）では h2 が一致し、h1 は「　軌道：」の項目を除いて一致。波ごとの点 P_i n_i sin θ_i（P_i = kR_i）を h1 の k・R_i・θ_i・n_i から検算。
 (3) Auto を仮想時間 6 秒走らせた後、軌道の点数がティック数 + 1 になっている（ティックごとに 1 点）。"""
 import re, os, sys, html, math
 base = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
-ORB = r"　軌道：\(kR sin θ₁, kR sin θ₂, kR sin θ₃\) = \((-?\d+\.\d+), (-?\d+\.\d+), (-?\d+\.\d+)\)、(\d+) 点"
+ORB = r"　軌道（P_i n_i sin θ_i）：1: \((-?\d+\.\d+), (-?\d+\.\d+), (-?\d+\.\d+)\)、2: \((-?\d+\.\d+), (-?\d+\.\d+), (-?\d+\.\d+)\)、3: \((-?\d+\.\d+), (-?\d+\.\d+), (-?\d+\.\d+)\)、各 (\d+) 点"
 def head(path):
     s = open(path, encoding="utf-8").read()
     h1 = re.search(r'id="h1">(.*?)</div>', s, re.S); h2 = re.search(r'id="h2"[^>]*>(.*?)</div>', s, re.S)
@@ -15,11 +15,13 @@ def strip_orb(h1):
 def check_orb(b, tag):
     h1s, m = strip_orb(b[0])
     if not m: print(f"  {tag}軌道の項目がない"); return 1
-    ths = [float(t) for t in re.findall(r"\d: θ = (-?\d+)°", b[0])]; mk = re.search(r"表示 ×\d+ = (\d+\.\d+)", b[0])
-    pt = [float(m.group(i)) for i in (1, 2, 3)]; npts = int(m.group(4))
-    ok = bool(mk) and len(ths) == 3 and all(abs(pt[i] - float(mk.group(1)) * math.sin(math.radians(ths[i]))) < 2e-3 for i in range(3))
+    ths = [float(t) for t in re.findall(r"\d: θ = (-?\d+)°", b[0])]; Rs = [float(r) for r in re.findall(r"R\d = (\d+\.\d+)", b[0])]
+    mk = re.search(r"表示 ×(\d+) = ", b[0]); k = float(mk.group(1)) if mk else None
+    nvs = [[float(x) for x in t] for t in re.findall(r"n = \((-?\d+\.\d+), (-?\d+\.\d+), (-?\d+\.\d+)\)", b[0])] if "q" == "q" else [[1.0, 0.0, 0.0]] * 3
+    pts = [[float(m.group(3 * i + a + 1)) for a in range(3)] for i in range(3)]; npts = int(m.group(10))
+    ok = k is not None and len(ths) == 3 and len(Rs) == 3 and len(nvs) == 3 and all(abs(pts[i][a] - k * Rs[i] * nvs[i][a] * math.sin(math.radians(ths[i]))) < 2e-3 for i in range(3) for a in range(3))
     t = re.search(r"ティック (\d+)", b[1]); okn = t is not None and npts == int(t.group(1)) + 1
-    print(f"  {tag}軌道の点 ({pt[0]:.4f}, {pt[1]:.4f}, {pt[2]:.4f}) = kR sin θ：{'一致' if ok else '不一致'}　点数 {npts}（ティック {t.group(1) if t else '?'} + 1）{'一致' if okn else '不一致'}")
+    print(f"  {tag}波ごとの点 " + "、".join(f"{i + 1}: ({pts[i][0]:.4f}, {pts[i][1]:.4f}, {pts[i][2]:.4f})" for i in range(3)) + f" = kR_i n_i sin θ_i：{'一致' if ok else '不一致'}　点数 {npts}（ティック {t.group(1) if t else '?'} + 1）{'一致' if okn else '不一致'}")
     return (not ok) + (not okn)
 def main():
     bad = 0
@@ -35,6 +37,9 @@ def main():
                     h1s, m = strip_orb(b[0]); ok = (h1s == a[0] and b[1] == a[1]); print(f"  表示 {pw}、座標：h1（軌道の項目を除く）・h2 {'一致' if ok else '不一致'}"); bad += (not ok)
                     bad += check_orb(b, "")
     print("== auto6s（rc=1）=="); b = head(os.path.join(base, "dom_v8q3_auto6s_rc1.html"))
+    if b is None: print("  読めない"); bad += 1
+    else: bad += check_orb(b, "")
+    print("== auto6s_ijk（rc=1、軸 i, j, k）=="); b = head(os.path.join(base, "dom_v8q3_auto6s_ijk_rc1.html"))
     if b is None: print("  読めない"); bad += 1
     else: bad += check_orb(b, "")
     print("== newdefault（rc=1）=="); b = head(os.path.join(base, "dom_v8q3_newdefault_rc1.html"))
