@@ -16,8 +16,8 @@ def check(name, pw):
     a = head(os.path.join(base, f"dom_v6c3_pow{pw}_{name}.html")); b = head(os.path.join(base, f"dom_v7c3_pow{pw}_{name}.html"))
     if a is None or b is None: print(f"  pow={pw} 読めない"); return 1
     k = b[0].find("　クリップ："); ok1 = (k > 0 and b[0][:k] == a[0]); ok2 = (b[1] == a[1])
-    ths = re.findall(r"(\d): θ = (-?\d+)°, φ = (\d+)°", b[0]); cl = re.findall(r"(\d): (-?\d+\.\d+)°〜\+(-?\d+\.\d+)°", b[0])
-    okc = len(ths) == 3 and len(cl) == 3 and all(abs(float(x) - chk.clip(float(t), float(f))[0]) < 0.3 and abs(float(y) - chk.clip(float(t), float(f))[1]) < 0.3 for (i, t, f), (j, x, y) in zip(ths, cl))
+    ths = re.findall(r"(\d): θ = (-?\d+)°, φ = (\d+)°, δ = -?\d+°/t, M = (\d+)", b[0]); cl = re.findall(r"(\d): (-?\d+\.\d+)°〜\+(-?\d+\.\d+)°", b[0])
+    okc = len(ths) == 3 and len(cl) == 3 and all(abs(float(x) - chk.clip(float(t), float(f), M=int(mm))[0]) < 0.3 and abs(float(y) - chk.clip(float(t), float(f), M=int(mm))[1]) < 0.3 for (i, t, f, mm), (j, x, y) in zip(ths, cl))
     print(f"  表示 {['Re・Im', '合計', '分離'][pw]}：h1（クリップより前）{'一致' if ok1 else '不一致'}　h2 {'一致' if ok2 else '不一致'}　山の範囲 " + "、".join(f"{i}: {x}°〜+{y}°" for i, x, y in cl) + f" → Python 再計算と {'一致' if okc else '不一致'}")
     return (not ok1) + (not ok2) + (not okc)
 
@@ -26,6 +26,13 @@ def main():
     for name in ["default", "tri", "mirror", "std"]:
         print(f"== {name} =="); bad += sum(check(name, pw) for pw in (0, 1, 2))
     print("== auto6s =="); bad += check("auto6s", 0)
+    print("== newdefault（v7c3 の新しい初期値、URL 引数なし）==")
+    b = head(os.path.join(base, "dom_v7c3_newdefault.html"))
+    if b is None: print("  読めない"); bad += 1
+    else:
+        ok = ("1: θ = 97°, φ = 1°, δ = 20°/t, M = 100" in b[0] and "2: θ = 194°, φ = 1°, δ = 0°/t, M = 100" in b[0] and "3: θ = 58°, φ = 1°, δ = 10°/t, M = 100" in b[0] and "表示 ×1 = " in b[0] and "パワー合計：" in b[0])
+        cl = re.findall(r"(\d): (-?\d+\.\d+)°〜\+(-?\d+\.\d+)°", b[0])
+        print(f"  初期値 θ = 97, 194, 58、φ = 1、M = 100、δ = 20, 0, 10、R× = 1、パワー合計：{'一致' if ok else '不一致'}　山の範囲 " + "、".join(f"{i}: {x}°〜+{y}°" for i, x, y in cl)); bad += (not ok)
     print("対照 " + ("一致" if bad == 0 else f"不一致 {bad}"))
     return 0 if bad == 0 else 2
 if __name__ == "__main__": sys.exit(main())
