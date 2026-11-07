@@ -47,5 +47,18 @@ rep("  if (q.has('pow')) document.querySelector(`input[name=pw][value=\"${q.get(
     "  if (q.get('rc') === '1') document.querySelector('input[name=rc][value=\"1\"]').checked = true;   // rc=1 で右を座標表示（撮影用）\n")
 rep("観測者の時空の図は外し、その読みは文字のまま残す。",
     "観測者の時空の図は外し、その読みは文字のまま残す。「右のパワー」を「座標」にすると、右パネルには波ごとの軌道だけを描く：波 i の四元数 q_i ＝ P_i(cos θ_i ＋ n_i sin θ_i) の虚部を x, y, z に分解した点 (P_i i_i sin θ_i, P_i j_i sin θ_i, P_i k_i sin θ_i)、P_i ＝ kR_i（波 i 自身のパワー）、θ_i ＝ 波 i の位相（中心位相）。Auto のティックごとに 1 点を取り、波ごとに色を分けてつなぐ。現在位置には、その波の色の球を置く（半径 ＝ 振幅 A_i、q ＝ A(a ＋ n b) の A。表示倍率 k は掛けない）。原点と結ぶ線分・円筒・弧・印は描かない。スライダーを動かすと軌道は消える。左パネル、読める量、枠は変わらない。")
+# 追加（11/7 木原氏）：R× の横にスライダー s（1〜100%、初期 10%）。球の半径に s を掛ける。他は不変
+rep('<div class="sl"><span>R×</span><input id="rr" type="range" min="1" max="20" step="1" value="1"><span class="v" id="rrv">1</span></div>\n',
+    '<div class="sl"><span>R×</span><input id="rr" type="range" min="1" max="20" step="1" value="1"><span class="v" id="rrv">1</span></div>\n'
+    '  <div class="sl"><span>s</span><input id="ss" type="range" min="1" max="100" step="1" value="10"><span class="v" id="ssv">10%</span></div>\n')
+rep("const rr = $('rr'), btn = $('auto');", "const rr = $('rr'), ss = $('ss'), btn = $('auto');   // ss = 球の倍率 s（1〜100%、初期 10%）")
+rep("  $('rrv').textContent = p.k;\n", "  $('rrv').textContent = p.k; $('ssv').textContent = ss.value + '%';\n")
+rep("// 現在位置に、その波の色の球。半径 = 振幅 A_i（q = A(a + n b) の A）。k は掛けない", "// 現在位置に、その波の色の球。半径 = s × 振幅 A_i（q = A(a + n b) の A、s = スライダー s、1〜100%）。k は掛けない")
+rep('const c = o[o.length - 1], r = p.pulses[i].A, col = ', 'const c = o[o.length - 1], r = Number(ss.value) / 100 * p.pulses[i].A, col = ')
+rep("name: `波 ${i + 1} の球（半径 A = ${r}）`", "name: `波 ${i + 1} の球（半径 s A = ${r.toFixed(3)}）`")
+rep("rr.addEventListener('input', draw);\n", "rr.addEventListener('input', draw);\nss.addEventListener('input', draw);   // s は球の大きさだけ（軌道は消さない）\n")
+rep("  if (q.has('k')) rr.value = q.get('k');\n", "  if (q.has('k')) rr.value = q.get('k');\n  if (q.has('s')) ss.value = q.get('s');   // s = 球の倍率（%、撮影用）\n")
+rep("現在位置には、その波の色の球を置く（半径 ＝ 振幅 A_i、q ＝ A(a ＋ n b) の A。表示倍率 k は掛けない）。",
+    "現在位置には、その波の色の球を置く（半径 ＝ s × 振幅 A_i、q ＝ A(a ＋ n b) の A、s ＝ R× の横のスライダー s、1〜100%、初期 10%。表示倍率 k は掛けない）。")
 io.open(p, "w", encoding="utf-8").write(s); print("html ok")
 js = re.search(r"<script>\n(.*?)</script>", s, re.S).group(1); open("/tmp/vx_check.js", "w", encoding="utf-8").write(js)
