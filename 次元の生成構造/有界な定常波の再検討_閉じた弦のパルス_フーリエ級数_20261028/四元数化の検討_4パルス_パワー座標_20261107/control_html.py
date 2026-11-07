@@ -1,25 +1,27 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """HTML の対照（2026-11-07、4 パルス版）。原本 index_v8q3.html（3 パルス）と index_v9q4.html（4 パルス、A₄ = 0・n₄ = k）を同じ 1〜3 の配置で比べる。
-(1) h1：v9q4 からパルス 4 の項（4: θ = …、Θ の 4 つ目、軌道の 4: (…)、平行移動の 4:、クリップの 4:）を除くと v8q3 の h1 と完全一致（和の量・1〜3 の読み・軌道 1〜3・枠）。
+(1) h1：v9q4 からパルス 4 の項（4: θ = …、平行移動の 4:、クリップの 4:）と軌道の項目を除くと、軌道の項目を除いた v8q3 の h1 と完全一致（和の量・1〜3 の読み・枠）。軌道は写像が違う（v8q3 は n_i ∘ (Θ₁,Θ₂,Θ₃)、v9q4 は Θ_i n_i、11/7 訂正）ので別に検算。
 (2) h2：対 12・23・13 の「対ごとの読み」、合成則〜鏡映対の条件、和の尾（c₀/R … 巻き数）が v8q3 と一致。
-(3) v9q4 自身：座標の軌道 4 本が n_i ∘ (Θ₁, Θ₂, Θ₃)、Θ_i = θ_i(初期) + ティック × φ_i（i = 1..4）、Θ_i ≡ θ_i (mod 360)、右の枠 = max(360, max|点|)、点数 = ティック + 1。
+(3) v9q4 自身：座標の軌道 4 本が Θ_i n_i（自分の位相を自分の軸に）、Θ_i = θ_i(初期) + ティック × φ_i（i = 1..4）、Θ_i ≡ θ_i (mod 360)、右の枠 = max(360, max|点|)、点数 = ティック + 1。
     既定（newdefault）の初期値（1〜3 と、4: θ₄ = 300, φ₄ = 1, δ₄ = −10, M₄ = 100, A₄ = 1, n₄ = (0.577, 0.577, 0.577)）。h1・h2 に NaN・undefined がない（A₄ = 0 の対照では 4 を含む対の読みは R₄ = 0 で割るので対照外、4 の項を除いた h1 と 12・23・13・和の尾で調べる）。"""
 import re, os, sys, html
 base = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
 NUM = r"(-?\d+\.\d)"
-ORB = r"　軌道（i_i Θ₁, j_i Θ₂, k_i Θ₃）：Θ = \(%s, %s, %s, %s\)、1: \(%s, %s, %s\)、2: \(%s, %s, %s\)、3: \(%s, %s, %s\)、4: \(%s, %s, %s\)、各 (\d+) 点、右の枠 ±(\d+)°" % ((NUM,) * 16)
+ORB = r"　軌道（Θ_i n_i）：Θ = \(%s, %s, %s, %s\)、1: \(%s, %s, %s\)、2: \(%s, %s, %s\)、3: \(%s, %s, %s\)、4: \(%s, %s, %s\)、各 (\d+) 点、右の枠 ±(\d+)°" % ((NUM,) * 16)
 TH0 = {"default": [180, 180, 180, 300], "tri": [180, 150, 100, 300], "new": [97, 194, 58, 300]}
 def head(path):
     if not os.path.exists(path): return None
     s = open(path, encoding="utf-8").read()
     h1 = re.search(r'id="h1">(.*?)</div>', s, re.S); h2 = re.search(r'id="h2"[^>]*>(.*?)</div>', s, re.S)
     return None if not h1 or not h2 else (html.unescape(h1.group(1)), html.unescape(h2.group(1)))
+def strip_orb8(h1):
+    """v8q3 の h1 から軌道の項目を除く"""
+    return re.sub(r"　軌道（i_i Θ₁, j_i Θ₂, k_i Θ₃）：.*?右の枠 ±\d+°", "", h1, count=1)
 def strip4(h1):
-    """v9q4 の h1 からパルス 4 の項を除く"""
+    """v9q4 の h1 からパルス 4 の項と軌道の項目を除く"""
     h = re.sub(r"　4: θ = .*? R4 = \d+\.\d+", "", h1, count=1)
-    h = re.sub(r"(Θ = \(-?\d+\.\d, -?\d+\.\d, -?\d+\.\d), -?\d+\.\d\)", r"\1)", h, count=1)
-    h = re.sub(r"、4: \(-?\d+\.\d, -?\d+\.\d, -?\d+\.\d\)(、各 \d+ 点)", r"\1", h, count=1)
+    h = re.sub(r"　軌道（Θ_i n_i）：.*?右の枠 ±\d+°", "", h, count=1)   # 軌道の項目は写像が違う（v8q3 は n_i ∘ (Θ₁,Θ₂,Θ₃)、v9q4 は Θ_i n_i）ので外して比べ、v9q4 の軌道は check_orb で検算
     h = re.sub(r"(平行移動 1: \([^)]*\)、2: \([^)]*\)、3: \([^)]*\))、4: \([^)]*\)", r"\1", h, count=1)
     h = re.sub(r"(1: -?[\d.]+°〜\+?-?[\d.]+°、2: -?[\d.]+°〜\+?-?[\d.]+°、3: -?[\d.]+°〜\+?-?[\d.]+°)、4: -?[\d.]+°〜\+?-?[\d.]+°", r"\1", h, count=1)
     return h
@@ -36,12 +38,12 @@ def check_orb(b, tag, th0):
     ths = [float(t) for t in re.findall(r"\d: θ = (-?\d+)°", b[0])]; phis = [float(t) for t in re.findall(r"\d: θ = -?\d+°, φ = (\d+)°", b[0])]
     nvs = [[float(x) for x in t] for t in re.findall(r"n = \((-?\d+\.\d+), (-?\d+\.\d+), (-?\d+\.\d+)\)", b[0])]
     t = re.search(r"ティック (\d+)", b[1]); tk = int(t.group(1)) if t else None
-    ok1 = len(nvs) == 4 and all(abs(pts[i][a] - nvs[i][a] * Th[a]) < 0.3 for i in range(4) for a in range(3))   # n は 3 桁表示なので 0.577×300 で 0.15 程度の丸め
+    ok1 = len(nvs) == 4 and all(abs(pts[i][a] - nvs[i][a] * Th[i]) < 0.3 for i in range(4) for a in range(3))   # 波 i の点 = Θ_i n_i。n は 3 桁表示なので 0.577×300 で 0.15 程度の丸め
     ok2 = tk is not None and len(phis) == 4 and all(abs(Th[i] - (th0[i] + tk * phis[i])) < 0.06 for i in range(4))
     ok3 = len(ths) == 4 and all(min(abs((Th[i] - ths[i]) % 360), abs(360 - (Th[i] - ths[i]) % 360)) < 0.06 for i in range(4))
     ok4 = L2 == round(max(360.0, max(abs(v) for q in pts for v in q)))
     okn = tk is not None and npts == tk + 1
-    print(f"  {tag}Θ = ({Th[0]:.1f}, {Th[1]:.1f}, {Th[2]:.1f}, {Th[3]:.1f})　点 " + "、".join(f"{i + 1}: ({pts[i][0]:.1f}, {pts[i][1]:.1f}, {pts[i][2]:.1f})" for i in range(4)) + f" = n_i ∘ (Θ₁, Θ₂, Θ₃)：{'一致' if ok1 else '不一致'}　Θ_i = θ_i(初期) + ティック × φ_i（4 本）：{'一致' if ok2 else '不一致'}　Θ_i ≡ θ_i (mod 360)：{'一致' if ok3 else '不一致'}　右の枠 ±{L2}°：{'一致' if ok4 else '不一致'}　点数 {npts}（ティック {tk if tk is not None else '?'} + 1）{'一致' if okn else '不一致'}")
+    print(f"  {tag}Θ = ({Th[0]:.1f}, {Th[1]:.1f}, {Th[2]:.1f}, {Th[3]:.1f})　点 " + "、".join(f"{i + 1}: ({pts[i][0]:.1f}, {pts[i][1]:.1f}, {pts[i][2]:.1f})" for i in range(4)) + f" = Θ_i n_i：{'一致' if ok1 else '不一致'}　Θ_i = θ_i(初期) + ティック × φ_i（4 本）：{'一致' if ok2 else '不一致'}　Θ_i ≡ θ_i (mod 360)：{'一致' if ok3 else '不一致'}　右の枠 ±{L2}°：{'一致' if ok4 else '不一致'}　点数 {npts}（ティック {tk if tk is not None else '?'} + 1）{'一致' if okn else '不一致'}")
     return (not ok1) + (not ok2) + (not ok3) + (not ok4) + (not okn)
 def nonan(b, tag):
     bad = any(w in b[0] or w in b[1] for w in ["NaN", "undefined", "Infinity°"])
@@ -54,7 +56,7 @@ def main():
             for rc in (0, 1):
                 a = head(os.path.join(base, f"dom_v8q3_pow{pw}_rc{rc}_{name}.html")); b = head(os.path.join(base, f"dom_v9q4_pow{pw}_rc{rc}_{name}.html"))
                 if a is None or b is None: print(f"  pow={pw} rc={rc} 読めない"); bad += 1; continue
-                ok1 = strip4(b[0]) == a[0]
+                ok1 = strip4(b[0]) == strip_orb8(a[0])
                 pa, pb = seg_pairs(a[1]), seg_pairs(b[1]); ok2 = all(pa[l] is not None and pa[l] == pb[l] for l in pa)
                 ok3 = seg_rules(a[1]) is not None and seg_rules(a[1]) == seg_rules(b[1]); ok4 = seg_tail(a[1]) is not None and seg_tail(a[1]) == seg_tail(b[1])
                 print(f"  表示 {pw}、{'座標' if rc else '円周上'}：h1（4 の項を除く）{'一致' if ok1 else '不一致'}　h2 対 12・23・13 {'一致' if ok2 else '不一致'}　合成則〜鏡映対 {'一致' if ok3 else '不一致'}　和の尾 {'一致' if ok4 else '不一致'}")
