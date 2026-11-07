@@ -40,14 +40,14 @@ def main():
                 else:
                     h1s, m = strip_orb(b[0]); ok = (h1s == a[0] and b[1] == a[1]); print(f"  表示 {pw}、座標：h1（軌道の項目を除く）・h2 {'一致' if ok else '不一致'}"); bad += (not ok)
                     bad += check_orb(b, "", TH0[name])
-    print("== auto6s（rc=1）=="); b = head(os.path.join(base, "dom_v8q3_auto6s_rc1.html"))
+    print("== auto6s（rc=1、既定 軸 i, j, k）=="); b = head(os.path.join(base, "dom_v8q3_auto6s_rc1.html"))
     if b is None: print("  読めない"); bad += 1
     else: bad += check_orb(b, "", TH0["new"])
-    print("== auto6s_ijk（rc=1、軸 i, j, k）=="); b = head(os.path.join(base, "dom_v8q3_auto6s_ijk_rc1.html"))
+    print("== auto6s_kkk（rc=1、軸 全部 k）=="); b = head(os.path.join(base, "dom_v8q3_auto6s_kkk_rc1.html"))
     if b is None: print("  読めない"); bad += 1
     else: bad += check_orb(b, "", TH0["new"])
     print("== newdefault（rc=1）=="); b = head(os.path.join(base, "dom_v8q3_newdefault_rc1.html"))
-    ok = b is not None and "1: θ = 97°, φ = 1°, δ = 20°/t, M = 100" in b[0]; print(f"  初期値 {'一致' if ok else '不一致'}"); bad += (not ok)
+    ok = b is not None and "1: θ = 97°, φ = 1°, δ = 20°/t, M = 100" in b[0] and "A = 1.0 n = (1.000, 0.000, 0.000) R1" in b[0] and "A = 1.0 n = (0.000, 1.000, 0.000) R2" in b[0] and "A = 1.0 n = (0.000, 0.000, 1.000) R3" in b[0]; print(f"  初期値（θ・φ・δ・M、n = i, j, k）{'一致' if ok else '不一致'}"); bad += (not ok)
     if b is not None: bad += check_orb(b, "", TH0["new"])
     print("対照 " + ("一致" if bad == 0 else f"不一致 {bad}"))
     return 0 if bad == 0 else 2
