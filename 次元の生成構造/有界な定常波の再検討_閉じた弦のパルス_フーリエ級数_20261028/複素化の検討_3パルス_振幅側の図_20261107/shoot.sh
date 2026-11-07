@@ -10,23 +10,19 @@ Q_DEF='auto=0'
 Q_TRI='th1=180&phi1=10&dl1=0&th2=150&phi2=10&dl2=0&th3=100&phi3=10&dl3=0&auto=0'
 Q_MIR='th1=180&th2=200&th3=160&phi1=10&phi2=10&phi3=10&dl1=0&dl2=0&dl3=0&p02=45&p03=-45&auto=0'
 Q_STD='th3=90&unit=1&auto=0'
-for pair in "default:$Q_DEF" "tri:$Q_TRI" "mirror:$Q_MIR" "std:$Q_STD"; do
+for pair in "default:$Q_DEF" "tri:$Q_TRI" "tri_obs1:$Q_TRI&obs=0" "mirror:$Q_MIR" "std:$Q_STD"; do
   name=${pair%%:*}; q=${pair#*:}
   for pw in 0 1 2; do
     dom "v5c3_pow${pw}_$name" "$D/原本/index_v5c3.html?$q&pow=$pw" 6000
     dom "v6c3_pow${pw}_$name" "$D/index_v6c3.html?$q&pow=$pw" 6000
   done
-  dom "v6c3_seg_$name" "$D/index_v6c3.html?$q&right=1" 6000
 done
 dom "v5c3_pow0_auto6s" "$D/原本/index_v5c3.html" 6000
 dom "v6c3_pow0_auto6s" "$D/index_v6c3.html" 6000
-dom "v6c3_seg_auto6s"  "$D/index_v6c3.html?right=1" 6000
-shot v6c3_default     "$D/index_v6c3.html?auto=0" 6000
-shot v6c3_tri         "$D/index_v6c3.html?$Q_TRI" 6000
-shot v6c3_tri_pow1    "$D/index_v6c3.html?$Q_TRI&pow=1" 6000
-shot v6c3_tri_pow2    "$D/index_v6c3.html?$Q_TRI&pow=2" 6000
-shot v6c3_tri_seg     "$D/index_v6c3.html?$Q_TRI&right=1" 6000
-shot v6c3_mirror_seg  "$D/index_v6c3.html?$Q_MIR&right=1" 6000
-shot v6c3_auto6s      "$D/index_v6c3.html" 6000
-shot v6c3_auto6s_seg  "$D/index_v6c3.html?right=1" 6000
+shot v6c3_default   "$D/index_v6c3.html?auto=0" 6000
+shot v6c3_tri       "$D/index_v6c3.html?$Q_TRI" 6000
+shot v6c3_tri_obs1  "$D/index_v6c3.html?$Q_TRI&obs=0" 6000
+shot v6c3_tri_pow1  "$D/index_v6c3.html?$Q_TRI&pow=1" 6000
+shot v6c3_mirror    "$D/index_v6c3.html?$Q_MIR" 6000
+shot v6c3_auto6s    "$D/index_v6c3.html" 6000
 echo done
