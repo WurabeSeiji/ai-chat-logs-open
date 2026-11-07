@@ -76,9 +76,9 @@ for chi, col, lab in [(0.0, "#d62728", "χ = 0（偶数だけ）"), (np.pi / 8, 
     maxerr = max(maxerr, float(np.max(np.abs(R - Rth))))
     axs[1].plot(Delta * deg, R, lw=1.6, color=col, label=lab)
 vals["fig2_R_max_err"] = maxerr
-axs[1].set_xlabel("交換位相 Δ_F（度）"); axs[1].set_ylabel("R(Δ_F) = |〈PA, A′〉|²/‖A‖⁴"); axs[1].set_xlim(0, 360); axs[1].set_ylim(-0.02, 1.05); axs[1].legend(fontsize=8); axs[1].set_xticks([0, 90, 180, 270, 360])
-axs[1].set_title("A′ = A_e + e^{iΔ_F} A_o。釣り合いで R = sin²(Δ_F/2)、純偶奇では R ≡ 1（0° と 90°、22.5° と 67.5° は重なる）", fontsize=9)
-fig.suptitle("図2　R(Δ_F) = (w_e − w_o)² + 4 w_e w_o sin²(Δ_F/2)。数値（13 項の等振幅パルス）と式の最大差 %.1e" % maxerr, fontsize=10)
+axs[1].set_xlabel("交換位相 Δ_F（度）"); axs[1].set_ylabel("R̃(Δ_F) = |〈PA, A′〉|²/‖A‖⁴"); axs[1].set_xlim(0, 360); axs[1].set_ylim(-0.02, 1.05); axs[1].legend(fontsize=8); axs[1].set_xticks([0, 90, 180, 270, 360])
+axs[1].set_title("A′ = A_e + e^{iΔ_F} A_o。釣り合いで R̃ = R = sin²(Δ_F/2)、純偶奇では R̃ ≡ 1 で移る量 0（0° と 90°、22.5° と 67.5° は重なる）", fontsize=9)
+fig.suptitle("図2　対蹠像への重なり R̃(Δ_F) = (w_e − w_o)² + 4 w_e w_o sin²(Δ_F/2)。数値（13 項の等振幅パルス）と式の最大差 %.1e" % maxerr, fontsize=10)
 fig.tight_layout(); save(fig, "fig2_parity_balance_visibility.svg"); plt.close(fig)
 
 # ---------- 図3：倍音ごとの交差項から方向（符号つき Δ と Φ）を読む ----------
@@ -144,7 +144,7 @@ for ax, M in zip(axs, [13, 39]):
     below = svals[E[:, 0] < thr]; s_res = float(below.max()) if len(below) else float("nan"); res[M] = s_res
     ax.axvline(s_res, color="#d62728", lw=0.8); ax.text(s_res + 1, 0.5, f"λ_min < {thr} は s ≦ {s_res:.1f}°", fontsize=8, color="#d62728")
 vals["fig5_rank_drop_s_deg"] = res
-fig.suptitle("図5　間隔が分解能より小さいと最小固有値が消え、階数 4 → 3。二つの波が一つの凝縮体として読まれる。帯域が広いほど分解できる", fontsize=10)
+fig.suptitle("図5　間隔が分解能より小さいと最小固有値が閾値の下に沈み、有効階数 4 → 3。二つの波が一つの凝縮体として読まれる", fontsize=10)
 fig.tight_layout(); save(fig, "fig5_gram_rank_condensate.svg"); plt.close(fig)
 
 with open(os.path.join(RES, "values.json"), "w", encoding="utf-8") as f: json.dump(vals, f, ensure_ascii=False, indent=2)
