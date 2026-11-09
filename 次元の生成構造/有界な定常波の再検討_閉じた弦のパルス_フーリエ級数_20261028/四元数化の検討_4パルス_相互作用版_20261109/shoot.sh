@@ -1,8 +1,8 @@
 #!/bin/sh
-# 確認と撮影（ヘッドレス Chrome、180 秒で打ち切り）。算出根拠 v0.2 §9 の K0〜K7。
+# 確認と撮影（ヘッドレス Chrome、180 秒で打ち切り）。算出根拠 v0.5 §9 の K0〜K7。
 #  K0：κ = 0 の本版と原本 v11q4 を、どちらも URL なしの既定で tick 40 の DOM 比較（既定値は同一）。
-#  K1〜K7：?test=1 の自己検査（<pre id="ktest">）。K1〜K6 は全量 1 tick、K7 は率／全量の通過を相対速度 2 と 1 で。
-#  走行：既定（斜めの衝突）を率／全量で tick 5, 10, 15, 20, 30 の DOM。静止画は率と全量。
+#  K1〜K7：?test=1 の自己検査（<pre id="ktest">）。K1 運動量・運動エネルギーの保存、K3 正面 Δ_F=180 の反転、K4 恒等、K5 質量 A² の違う正面＝古典の弾性衝突、K6 置換、K7 率／全量の通過を相対速度 2 と 1 で（tick ごとの α と散乱面の法線の記録つき）。
+#  走行：既定（X 軸の対・Y 軸の対）を率／全量で tick 50, 60, 70, 90, 100, 130 の DOM。静止画は率と全量。
 set -e
 cd "$(dirname "$0")"
 CH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -35,7 +35,7 @@ def strip(t, new=False):
         t = re.sub(r'<div class="sl"><span>κ 相互作用</span>.*?</div>\s*', '', t, flags=re.S)
         t = re.sub(r'<span class="grp">交換 .*?</span>\s*', '', t, flags=re.S)
         t = re.sub(r'<pre id="ktest"[^>]*></pre>\s*', '', t); t = re.sub(r'φ₀ = -?[\d.]+°, ', '', t); t = re.sub(r'　　κ = [^　]*（まだ交換なし）', '', t)
-        t = t.replace('<title>閉じた弦の四元数パルス 4 波 相互作用版（index_v11q4.html に重なりの核と二チャネル交換）</title>', '<title>閉じた弦の四元数パルス 4 波（index_v8q3.html の 4 パルス版）</title>')
+        t = t.replace('<title>閉じた弦の四元数パルス 4 波 相互作用版（index_v11q4.html に重なりの核とゲージ回転）</title>', '<title>閉じた弦の四元数パルス 4 波（index_v8q3.html の 4 パルス版）</title>')
     return t
 A, B = strip(a), strip(b, True); res["K0_identical"] = (A == B)
 if A != B:
@@ -48,15 +48,15 @@ for XM in ("rate", "full"):
     runs[XM] = []
     for T in (7500, 9000, 10500, 13500, 15000, 19500):
         s = open(f"results/dom_v12q4i_{XM}_vt{T}.html", encoding="utf-8").read()
-        k = re.search(r'ティック (\d+)', s); th = re.findall(r'(\d): θ = (-?[\d.]+)°, φ = 20°, v = (-?\d+)°/t, δ = (-?\d+)°/t, φ₀ = (-?[\d.]+)°', s)
-        nn = re.findall(r'A = ([\d.]+) n = \(([-\d., ]+)\) R\d = ([\d.]+)', s); F = re.search(r'核 F: ([^　]*)　Δ_F: ([^　]*)　ΣA² = ([\d.]+)', s)
-        runs[XM].append({"vt": T, "tick": k.group(1) if k else None, "phi0": [x[4] for x in th], "A": [x[0] for x in nn], "n": [x[1] for x in nn], "F": F.group(1) if F else None, "dF": F.group(2) if F else None, "sumA2": F.group(3) if F else None})
-res["default_runs_oblique"] = runs
+        k = re.search(r'ティック (\d+)', s); th = re.findall(r'(\d): θ = (-?[\d.]+)°, φ = 20°, v = (-?[\d.]+)°/t, δ = (-?\d+)°/t, φ₀ = (-?[\d.]+)°', s)
+        nn = re.findall(r'A = ([\d.]+) n = \(([-\d., ]+)\) R\d = ([\d.]+)', s); F = re.search(r'核 F: ([^　]*)　Δ_F: ([^　]*)　α: ([^　]*)　Σ m v n = \(([^)]*)\)　Σ ½ m v² = ([\d.]+)', s)
+        runs[XM].append({"vt": T, "tick": k.group(1) if k else None, "theta": [x[1] for x in th], "v": [x[2] for x in th], "phi0": [x[4] for x in th], "A": [x[0] for x in nn], "n": [x[1] for x in nn], "F": F.group(1) if F else None, "dF": F.group(2) if F else None, "alpha": F.group(3) if F else None, "P": F.group(4) if F else None, "K": F.group(5) if F else None})
+res["default_runs_xy"] = runs
 json.dump(res, open("results/checks_v12q4i.json", "w"), ensure_ascii=False, indent=2)
 kt = res["ktest"]; print("K0 identical:", res["K0_identical"], res.get("K0_first_diff", ""))
 for k in sorted(kt): print(" ", k, "=", kt[k])
 for XM in ("rate", "full"):
     print("==", XM)
-    for r in runs[XM]: print(" tick", r["tick"], "| φ₀:", r["phi0"], "| A:", r["A"], "| F:", r["F"], "| ΔF:", r["dF"], "| ΣA²:", r["sumA2"])
+    for r in runs[XM]: print(" tick", r["tick"], "| θ:", r["theta"], "| v:", r["v"], "| n:", r["n"], "\n      F:", r["F"], "| ΔF:", r["dF"], "| α:", r["alpha"], "| P:", r["P"], "| K:", r["K"])
 PY
 echo done
