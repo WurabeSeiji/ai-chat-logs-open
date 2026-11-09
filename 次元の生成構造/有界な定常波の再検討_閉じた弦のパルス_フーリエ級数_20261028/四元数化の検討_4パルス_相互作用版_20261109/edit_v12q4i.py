@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # index_v11q4.html → index_v12q4i.html：相互作用版（2026-11-09 夜、三度目の再生成）。
 # 状態は角のまま持つ：各パルスの振幅 A_i、内部位相 φ₀_i（角）、軸 n_i（向き）。e^{nφ₀} に落として虚部から読み戻さない（11/9 木原氏：θ を sin θ にした、それだけのミス）。
+# 核の距離は位相の差 |Θ_i − Θ_j|（巻数込み）。向きは (1 + n_i·n_j)/2 として別に掛かる（11/9 木原氏：位相が合っていなければ衝突しない、合っていれば衝突する。図の座標の距離を使ったのは誤り）。
 # 交換は [S1] 7/10 の二チャネル写像を対の共有平面で複素数として掛ける：z_i = A_i e^{iφ₀i}、z′ = U z、U = exp(i H)、H = κ Σ F Δ_F w P_D（実対称）。
 # 変わるのは A_i と φ₀_i だけ。軸 n_i・位置 θ_i・速さ v_i・包絡は変えない（偏向は置かない。木原氏「軸が崩れる件は無視」）。
 # 入れるもの：κ スライダー、交換の率／全量スイッチ（木原氏「スイッチ付けて両方」）、核 F_ij（原本の包絡の重なり、直流を含む）、全対同時の交換、記録、自己検査（?test=1）。
@@ -45,8 +46,7 @@ function exchangeStep(S) {   // S = {Th, n, v, A, phi0（度）, co, mode}。純
   const N = S.A.length, k = Number(kap.value);
   const F = S.A.map(() => new Array(N).fill(0)), dF = S.A.map(() => new Array(N).fill(0)), H = S.A.map(() => new Array(N).fill(0));
   for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) {
-    const ri = S.n[i].map(x => x * S.Th[i]), rj = S.n[j].map(x => x * S.Th[j]);
-    const d = Math.hypot(ri[0] - rj[0], ri[1] - rj[1], ri[2] - rj[2]);                                      // 図の距離 d_ij = |Θ_i n_i − Θ_j n_j|（度、巻数込み）
+    const d = Math.abs(S.Th[i] - S.Th[j]);                                                                  // 位相の差 d_ij = |Θ_i − Θ_j|（度、巻数込み）。位置は位相、向き n は別の因子（11/9 木原氏：図の座標の距離 |Θ_i n_i − Θ_j n_j| は軸の角を距離に混ぜる誤り）
     const c = dot(S.n[i], S.n[j]), cii = xcorr(S.co[i], S.co[i], 0), cjj = xcorr(S.co[j], S.co[j], 0);
     const Ft = (cii > 0 && cjj > 0) ? xcorr(S.co[i], S.co[j], d) / Math.sqrt(cii * cjj) : 0;
     const Fij = 0.5 * (1 + c) * Ft; F[i][j] = F[j][i] = Fij;                                                 // 核 F_ij = (1 + n_i·n_j)/2 · ⟨S_i S_j⟩(d)/√(⟨S_i²⟩⟨S_j²⟩)
@@ -57,8 +57,7 @@ function exchangeStep(S) {   // S = {Th, n, v, A, phi0（度）, co, mode}。純
     const dFij = sg * wrap180(S.phi0[i] - S.phi0[j]) * Math.PI / 180; dF[i][j] = dF[j][i] = dFij;            // Δ_F = s (φ₀i − φ₀j)、角の差をそのまま
     let w = 1;                                                                                              // 全量：毎 tick κ F Δ_F
     if (S.mode === 'rate') {                                                                                 // 率：κ F Δ_F |Δd|/W、W = ∫ F⁺ dd（1° 刻み、円周一周）。通過で Σ ≈ Δ_F を狙う
-      const rin = S.n[i].map(x => x * (S.Th[i] + S.v[i])), rjn = S.n[j].map(x => x * (S.Th[j] + S.v[j]));
-      const dd = Math.abs(Math.hypot(rin[0] - rjn[0], rin[1] - rjn[1], rin[2] - rjn[2]) - d), nrm = 0.5 * (1 + c) / Math.sqrt(cii * cjj);
+      const dd = Math.abs(S.v[i] - S.v[j]), nrm = 0.5 * (1 + c) / Math.sqrt(cii * cjj);                      // 1 tick に位相の差が変わる量 = 相対角速度
       let W = 0; for (let g = -180; g <= 180; g++) W += Math.max(0, nrm * xcorr(S.co[i], S.co[j], g));
       w = W > 0 ? dd / W : 0; }
     const h = k * Fij * dFij * w;                                                                            // H = κ Σ F Δ_F w P_D^{(ij)}（実対称）：H_ii += h/2, H_jj += h/2, H_ij = H_ji −= h/2
