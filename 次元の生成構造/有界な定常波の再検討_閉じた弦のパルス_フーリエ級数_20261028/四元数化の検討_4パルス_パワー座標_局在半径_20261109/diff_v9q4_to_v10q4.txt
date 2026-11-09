@@ -1,0 +1,10 @@
+310,311c310,311
+<   if (rcoord) orb.forEach((o, i) => {                           // 現在位置に、その波の色の球。半径 = s × 振幅 A_i（q = A(a + n b) の A、s = スライダー s、1〜100）。k は掛けない
+<     const c = o[o.length - 1], r = Number(ss.value) * p.pulses[i].A, col = ['#1f77b4', '#9467bd', '#2ca02c', '#8c564b'][i], xs = [], ys = [], zs = [];
+---
+>   if (rcoord) orb.forEach((o, i) => {                           // 現在位置に、その波の色の球。半径 = 局在の幅 2/√M_i（ラジアンを度に、M_i = その波の倍音数。11/9 木原氏：cos² 型分布として読んだ大きさ、球の重なり = 衝突可能性）。s も A_i も掛けない
+>     const c = o[o.length - 1], r = (2 / Math.sqrt(p.pulses[i].M)) * 180 / Math.PI, col = ['#1f77b4', '#9467bd', '#2ca02c', '#8c564b'][i], xs = [], ys = [], zs = [];
+313c313
+<     traces2.push({type: 'surface', x: xs, y: ys, z: zs, scene: 'scene2', opacity: 0.35, showscale: false, colorscale: [[0, col], [1, col]], hoverinfo: 'skip', showlegend: false, name: `波 ${i + 1} の球（半径 s A = ${r.toFixed(3)}）`});
+---
+>     traces2.push({type: 'surface', x: xs, y: ys, z: zs, scene: 'scene2', opacity: 0.35, showscale: false, colorscale: [[0, col], [1, col]], hoverinfo: 'skip', showlegend: false, name: `波 ${i + 1} の球（半径 2/√M = ${r.toFixed(2)}°）`});
