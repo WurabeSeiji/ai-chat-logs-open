@@ -30,4 +30,5 @@ HEAD='th1=20&phi1=1&v1=1&M1=100&dl1=0&ni1=1&nj1=0&nk1=0&th2=200&phi2=1&v2=-1&M2=
 shot v11q4_default_rc1_auto0 "$D/index_v11q4.html?auto=0&rc=1" 6000
 shot v11q4_headon_t0        "$D/index_v11q4.html?$HEAD&auto=0" 6000
 shot v11q4_headon_auto6s    "$D/index_v11q4.html?$HEAD" 6000
+shot v11q4_headon_tick90    "$D/index_v11q4.html?$HEAD" 13500   # tick 90：対 1–2 が Θ = 110° で重なる
 echo done
