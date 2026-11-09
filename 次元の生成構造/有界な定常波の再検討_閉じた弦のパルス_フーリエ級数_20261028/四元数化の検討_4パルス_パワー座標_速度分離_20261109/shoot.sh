@@ -21,6 +21,7 @@ b = b.replace("v = 1°/t, ", "")
 def strip(t):
     t = re.sub(r'<script>.*?</script>', '', t, flags=re.S)
     t = re.sub(r'(<input [^>]*?)value="[^"]*"', r'\1value=""', t)   # input の value 属性は HTML の初期値で、URL で与えた生の状態ではない（表示の数値は別の span で比べる）
+    t = re.sub(r'(<input [^>]*?) checked(="")?', r'\1', t)   # radio の checked 属性も HTML の既定（本版は座標が既定）。描画は rcoord で決まり、それは URL の rc で揃えてある
     m = re.search(r'plotly\.js-style-modebar-([0-9a-f]+)', t)   # plotly が描画ごとに振る乱数 id（modebar と defs に同じ値）
     return t.replace(m.group(1), 'X') if m else t
 a, b = strip(a), strip(b)
