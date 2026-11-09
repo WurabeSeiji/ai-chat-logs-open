@@ -2,7 +2,7 @@
 # 確認と撮影（ヘッドレス Chrome、180 秒で打ち切り）。算出根拠 v0.2 §9 の K0〜K7。
 #  K0：κ = 0 の本版と原本 v11q4 を、どちらも URL なしの既定で tick 40 の DOM 比較（既定値は同一）。
 #  K1〜K7：?test=1 の自己検査（<pre id="ktest">）。K1〜K6 は全量 1 tick、K7 は率／全量の通過を相対速度 2 と 1 で。
-#  走行：衝突の例 dl2=2&dl4=1（tick 90 に Δ_F,12 ≈ 180°、tick 80 に Δ_F,34 ≈ 80°）を率／全量で tick 70, 90, 110, 130 の DOM。静止画は率。
+#  走行：既定（斜めの衝突）を率／全量で tick 5, 10, 15, 20, 30 の DOM。静止画は率と全量。
 set -e
 cd "$(dirname "$0")"
 CH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -10,13 +10,16 @@ D="file://$(pwd)"
 shot() { perl -e 'alarm shift; exec @ARGV' 180 "$CH" --headless=new --hide-scrollbars --window-size=1800,1400 --virtual-time-budget=$3 --screenshot="figs/$1.png" "$2" >/dev/null 2>&1 || echo "shot $1 timed out"; echo "shot $1"; }
 dom()  { perl -e 'alarm shift; exec @ARGV' 180 "$CH" --headless=new --virtual-time-budget=$3 --dump-dom "$2" 2>/dev/null > "results/dom_$1.html" || true; echo "dom  $1 ($(wc -c < "results/dom_$1.html") bytes)"; }
 dom ktest "$D/index_v12q4i.html?test=1&auto=0" 4000
-dom v11q4_default_tick40  "$D/原本/index_v11q4.html" 6000
+# K0：本版の既定（斜めの衝突・振幅ばらつき）を原本には URL で与え、κ = 0 の本版の既定と比べる
+DEF='th1=0&v1=1&dl1=0&A1=0.5&ni1=1&nj1=0&nk1=0&th2=30&v2=-1&dl2=12&A2=1&ni2=1&nj2=0.05&nk2=0&th3=5&v3=2&dl3=0&A3=1.5&ni3=0.5&nj3=0.5&nk3=0.7&th4=35&v4=-1&dl4=9&A4=2&ni4=0.5&nj4=0.55&nk4=0.7'
+dom v11q4_default_tick40  "$D/原本/index_v11q4.html?$DEF" 6000
 dom v12q4i_k0_tick40      "$D/index_v12q4i.html?kap=0" 6000
-COL='dl2=2&dl4=1'
-for XM in rate full; do for T in 10500 13500 16500 19500; do dom "v12q4i_${XM}_vt$T" "$D/index_v12q4i.html?$COL&xm=$XM" $T; done; done
-shot v12q4i_rate_t0      "$D/index_v12q4i.html?$COL&auto=0" 6000
-shot v12q4i_rate_tick90  "$D/index_v12q4i.html?$COL" 13500
-shot v12q4i_rate_tick130 "$D/index_v12q4i.html?$COL" 19500
+# 既定（URL なし）の走行：対 3–4 が tick 10、対 1–2 が tick 15 に出会う。tick 5, 10, 15, 20, 30
+for XM in rate full; do for T in 750 1500 2250 3000 4500; do dom "v12q4i_${XM}_vt$T" "$D/index_v12q4i.html?xm=$XM" $T; done; done
+shot v12q4i_rate_t0      "$D/index_v12q4i.html?auto=0" 3000
+shot v12q4i_rate_tick15  "$D/index_v12q4i.html" 2250
+shot v12q4i_rate_tick30  "$D/index_v12q4i.html" 4500
+shot v12q4i_full_tick30  "$D/index_v12q4i.html?xm=full" 4500
 python3 - <<'PY'
 # -*- coding: utf-8 -*-
 import re, json
@@ -42,17 +45,17 @@ if A != B:
 runs = {}
 for XM in ("rate", "full"):
     runs[XM] = []
-    for T in (10500, 13500, 16500, 19500):
+    for T in (750, 1500, 2250, 3000, 4500):
         s = open(f"results/dom_v12q4i_{XM}_vt{T}.html", encoding="utf-8").read()
         k = re.search(r'ティック (\d+)', s); th = re.findall(r'(\d): θ = (-?[\d.]+)°, φ = 1°, v = (-?\d+)°/t, δ = (-?\d+)°/t, φ₀ = (-?[\d.]+)°', s)
         nn = re.findall(r'A = ([\d.]+) n = \(([-\d., ]+)\) R\d = ([\d.]+)', s); F = re.search(r'核 F: ([^　]*)　Δ_F: ([^　]*)　ΣA² = ([\d.]+)', s)
         runs[XM].append({"vt": T, "tick": k.group(1) if k else None, "phi0": [x[4] for x in th], "A": [x[0] for x in nn], "n": [x[1] for x in nn], "F": F.group(1) if F else None, "dF": F.group(2) if F else None, "sumA2": F.group(3) if F else None})
-res["collision_runs_dl2_2_dl4_1"] = runs
+res["default_runs_oblique"] = runs
 json.dump(res, open("results/checks_v12q4i.json", "w"), ensure_ascii=False, indent=2)
 kt = res["ktest"]; print("K0 identical:", res["K0_identical"], res.get("K0_first_diff", ""))
 for k in sorted(kt): print(" ", k, "=", kt[k])
 for XM in ("rate", "full"):
     print("==", XM)
-    for r in runs[XM]: print(" tick", r["tick"], "| φ₀:", r["phi0"], "| A:", r["A"], "| n:", r["n"], "| F:", r["F"], "| ΣA²:", r["sumA2"])
+    for r in runs[XM]: print(" tick", r["tick"], "| φ₀:", r["phi0"], "| A:", r["A"], "| F:", r["F"], "| ΔF:", r["dF"], "| ΣA²:", r["sumA2"])
 PY
 echo done
