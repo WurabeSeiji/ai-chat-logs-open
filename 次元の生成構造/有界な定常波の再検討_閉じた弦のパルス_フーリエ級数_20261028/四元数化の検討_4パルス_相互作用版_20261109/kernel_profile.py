@@ -8,14 +8,20 @@ cs_sinc = [(2 / math.pi) * math.sin(m * math.pi * phi / 360) / m for m in range(
 lg = [0.0] * (2 * M + 1)
 for n in range(1, 2 * M + 1): lg[n] = lg[n - 1] + math.log(n)
 cs_cos = [math.exp(lg[2 * M] - lg[M - m] - lg[M + m] - 2 * M * math.log(2) + math.log(2)) for m in range(1, M + 1)]   # 2^{1−2k} C(2k, k−m)
+def Fdc(cs, c0, d):   # 直流を含めた重なり ⟨S_i S_j⟩ = c0² + ½Σ c_m² cos(m d)、同じ式の d=0 で割る（正の山どうしなら離れれば ≈ 0 になるはず）
+    r = math.radians(d); num = c0 * c0 + 0.5 * sum(c * c * math.cos((m + 1) * r) for m, c in enumerate(cs)); den = c0 * c0 + 0.5 * sum(c * c for c in cs); return num / den
 def F(cs, d):
     r = math.radians(d); num = sum(c * c * math.cos((m + 1) * r) for m, c in enumerate(cs)); den = sum(c * c for c in cs); return num / den
 ds = [0, 1, 2, 3, 5, 8, 10, 15, 20, 30, 45, 90, 180]
 out = {"M": M, "phi_deg": phi, "d_deg": ds, "F_sinc": [F(cs_sinc, d) for d in ds], "F_cos2": [F(cs_cos, d) for d in ds],
        "sinc_max_abs_F_beyond_30deg": max(abs(F(cs_sinc, d)) for d in range(30, 181)), "cos2_max_abs_F_beyond_30deg": max(abs(F(cs_cos, d)) for d in range(30, 181)),
        "half_width_deg_sinc": next(d / 10 for d in range(0, 3600) if F(cs_sinc, d / 10) < 0.5), "half_width_deg_cos2": next(d / 10 for d in range(0, 3600) if F(cs_cos, d / 10) < 0.5),
-       "two_over_sqrtk_deg": math.degrees(2 / math.sqrt(M))}
+       "two_over_sqrtk_deg": math.degrees(2 / math.sqrt(M)),
+       "c0_sinc": phi / 360, "c0_cos2": math.exp(lg[2 * M] - 2 * lg[M] - 2 * M * math.log(2)),
+       "F_sinc_with_DC": [Fdc(cs_sinc, phi / 360, d) for d in ds], "F_cos2_with_DC": [Fdc(cs_cos, math.exp(lg[2 * M] - 2 * lg[M] - 2 * M * math.log(2)), d) for d in ds],
+       "cos2_with_DC_max_abs_F_beyond_30deg": max(abs(Fdc(cs_cos, math.exp(lg[2 * M] - 2 * lg[M] - 2 * M * math.log(2)), d)) for d in range(30, 181))}
 json.dump(out, open("results/kernel_profiles.json", "w"), ensure_ascii=False, indent=2)
 print("d°      F_sinc      F_cos2"); [print(f"{d:4d}  {a:+.5f}  {b:+.5f}") for d, a, b in zip(ds, out["F_sinc"], out["F_cos2"])]
 print("半値幅（度）sinc", out["half_width_deg_sinc"], "cos2", out["half_width_deg_cos2"], "2/√k =", round(out["two_over_sqrtk_deg"], 2))
-print("30° 以遠の |F| 最大：sinc", f"{out['sinc_max_abs_F_beyond_30deg']:.4f}", " cos2", f"{out['cos2_max_abs_F_beyond_30deg']:.2e}")
+print("30° 以遠の |F| 最大：sinc", f"{out['sinc_max_abs_F_beyond_30deg']:.4f}", " cos2（直流なし）", f"{out['cos2_max_abs_F_beyond_30deg']:.2e}", " cos2（直流あり）", f"{out['cos2_with_DC_max_abs_F_beyond_30deg']:.2e}")
+print("直流あり d°  F_sinc  F_cos2"); [print(f"{d:4d}  {a:+.5f}  {b:+.5f}") for d, a, b in zip(ds, out["F_sinc_with_DC"], out["F_cos2_with_DC"])]
