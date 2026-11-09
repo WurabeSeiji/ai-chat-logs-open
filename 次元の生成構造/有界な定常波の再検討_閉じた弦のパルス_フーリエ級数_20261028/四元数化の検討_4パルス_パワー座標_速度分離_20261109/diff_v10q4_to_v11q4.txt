@@ -1,0 +1,48 @@
+37a38
+>   <div class="sl"><span>v₁</span><input id="vv1" type="range" min="-360" max="360" step="1" value="1"><span class="v" id="vv1v">1°/t</span></div>
+50a52
+>   <div class="sl"><span>v₂</span><input id="vv2" type="range" min="-360" max="360" step="1" value="1"><span class="v" id="vv2v">1°/t</span></div>
+63a66
+>   <div class="sl"><span>v₃</span><input id="vv3" type="range" min="-360" max="360" step="1" value="1"><span class="v" id="vv3v">1°/t</span></div>
+76a80
+>   <div class="sl"><span>v₄</span><input id="vv4" type="range" min="-360" max="360" step="1" value="1"><span class="v" id="vv4v">1°/t</span></div>
+122c126
+< const P = [1, 2, 3, 4].map(i => ({th: $('th' + i), ph: $('ph' + i), mm: $('mm' + i), odd: $('odd' + i), even: $('even' + i), dl: $('dl' + i), thv: $('th' + i + 'v'), phv: $('ph' + i + 'v'), mmv: $('mm' + i + 'v'), dlv: $('dl' + i + 'v'), phase0: 0,
+---
+> const P = [1, 2, 3, 4].map(i => ({th: $('th' + i), ph: $('ph' + i), vv: $('vv' + i), mm: $('mm' + i), odd: $('odd' + i), even: $('even' + i), dl: $('dl' + i), thv: $('th' + i + 'v'), phv: $('ph' + i + 'v'), vvv: $('vv' + i + 'v'), mmv: $('mm' + i + 'v'), dlv: $('dl' + i + 'v'), phase0: 0,
+180c184
+<     const theta = Number(u.th.value), phi = Number(u.ph.value), M = Number(u.mm.value), delta = Number(u.dl.value), phase0 = u.phase0;
+---
+>     const theta = Number(u.th.value), phi = Number(u.ph.value), v = Number(u.vv.value), M = Number(u.mm.value), delta = Number(u.dl.value), phase0 = u.phase0;   // φ は幅、v は速度（°/tick、負も可）
+184c188
+<     return {theta, phi, M, delta, phase0, co, A, nv: nvec(u), R: Math.sqrt(R2), R2, kmax: co.ms.length ? co.ms[co.ms.length - 1] : 1};
+---
+>     return {theta, phi, v, M, delta, phase0, co, A, nv: nvec(u), R: Math.sqrt(R2), R2, kmax: co.ms.length ? co.ms[co.ms.length - 1] : 1};
+221c225
+<   P.forEach((u, i) => { const q = p.pulses[i]; u.thv.textContent = q.theta + '°'; u.phv.textContent = q.phi + '°'; u.mmv.textContent = q.M; u.dlv.textContent = q.delta + '°/t';
+---
+>   P.forEach((u, i) => { const q = p.pulses[i]; u.thv.textContent = q.theta + '°'; u.phv.textContent = q.phi + '°'; u.vvv.textContent = q.v + '°/t'; u.mmv.textContent = q.M; u.dlv.textContent = q.delta + '°/t';
+399c403
+<   const desc = p.pulses.map((u, i) => { const nOdd = u.co.ms.filter(m => m % 2).length; return `${i + 1}: θ = ${u.theta}°, φ = ${u.phi}°, δ = ${u.delta}°/t, M = ${u.M}（奇 ${nOdd}・偶 ${u.co.ms.length - nOdd}）A = ${u.A.toFixed(1)} n = ${v3(u.nv, 3)} R${i + 1} = ${u.R.toFixed(4)}`; }).join('　');
+---
+>   const desc = p.pulses.map((u, i) => { const nOdd = u.co.ms.filter(m => m % 2).length; return `${i + 1}: θ = ${u.theta}°, φ = ${u.phi}°, v = ${u.v}°/t, δ = ${u.delta}°/t, M = ${u.M}（奇 ${nOdd}・偶 ${u.co.ms.length - nOdd}）A = ${u.A.toFixed(1)} n = ${v3(u.nv, 3)} R${i + 1} = ${u.R.toFixed(4)}`; }).join('　');
+421c425
+<     let t = Number(u.th.value) + Number(u.ph.value); if (t > 360) t -= 360; u.th.value = String(t);   // 位置 θ ← θ + φ
+---
+>     let t = Number(u.th.value) + Number(u.vv.value); t = ((t % 360) + 360) % 360; u.th.value = String(t);   // 位置 θ ← θ + v（負も折り返す）
+426c430
+<     hist[k].push([last[0] + Number(P[i].ph.value) - Number(P[j].ph.value), last[1] + Number(P[i].dl.value) - Number(P[j].dl.value)]);
+---
+>     hist[k].push([last[0] + Number(P[i].vv.value) - Number(P[j].vv.value), last[1] + Number(P[i].dl.value) - Number(P[j].dl.value)]);
+428c432
+<   P.forEach((u, i) => { const last = cum[i][cum[i].length - 1]; cum[i].push([last[0] + Number(u.ph.value), last[1] + Number(u.dl.value)]); if (cum[i].length > 4000) cum[i].shift(); });
+---
+>   P.forEach((u, i) => { const last = cum[i][cum[i].length - 1]; cum[i].push([last[0] + Number(u.vv.value), last[1] + Number(u.dl.value)]); if (cum[i].length > 4000) cum[i].shift(); });
+443c447
+< for (const u of P) { for (const s of [u.th, u.ph, u.mm, u.dl, u.aa, u.ni, u.nj, u.nk]) s.addEventListener('input', resetAll); for (const c of [u.odd, u.even]) c.addEventListener('change', resetAll); }
+---
+> for (const u of P) { for (const s of [u.th, u.ph, u.vv, u.mm, u.dl, u.aa, u.ni, u.nj, u.nk]) s.addEventListener('input', resetAll); for (const c of [u.odd, u.even]) c.addEventListener('change', resetAll); }
+447c451
+<     if (q.has('th' + j)) u.th.value = q.get('th' + j); if (q.has('phi' + j)) u.ph.value = q.get('phi' + j); if (q.has('M' + j)) u.mm.value = q.get('M' + j);
+---
+>     if (q.has('th' + j)) u.th.value = q.get('th' + j); if (q.has('phi' + j)) u.ph.value = q.get('phi' + j); if (q.has('v' + j)) u.vv.value = q.get('v' + j); if (q.has('M' + j)) u.mm.value = q.get('M' + j);
