@@ -16,6 +16,8 @@ cfg = {1: dict(th=20, vv=1, dl=0, n=(1, 0, 0)), 2: dict(th=200, vv=-1, dl=0, n=(
 for i, c in cfg.items():
     slider(i, "th", c["th"], "%d°" % c["th"]); slider(i, "vv", c["vv"], "%d°/t" % c["vv"]); slider(i, "dl", c["dl"], "%d°/t" % c["dl"])
     for key, val in zip(("ni", "nj", "nk"), c["n"]): slider(i, key, val, str(val))
-rep('<input type="radio" name="rc" value="0" checked>円周上', '<input type="radio" name="rc" value="0">円周上')
-rep('<input type="radio" name="rc" value="1">座標', '<input type="radio" name="rc" value="1" checked>座標')
+if '<input type="radio" name="rc" value="0" checked>円周上' in s:   # 二度目以降は既に座標が既定（冪等）
+    rep('<input type="radio" name="rc" value="0" checked>円周上', '<input type="radio" name="rc" value="0">円周上')
+    rep('<input type="radio" name="rc" value="1">座標', '<input type="radio" name="rc" value="1" checked>座標')
+assert s.count('<input type="radio" name="rc" value="1" checked>座標') == 1
 io.open(p, "w", encoding="utf-8").write(s); print("ok")
