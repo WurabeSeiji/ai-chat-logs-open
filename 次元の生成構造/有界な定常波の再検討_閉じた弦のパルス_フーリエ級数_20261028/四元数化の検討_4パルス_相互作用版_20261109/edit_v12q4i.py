@@ -126,3 +126,71 @@ def slider(i, key, val, label):
     s, n = pat.subn(lambda m: m.group(1) + str(val) + m.group(2) + label + m.group(3), s); assert n == 1, (key, i, n)
 slider(2, "dl", 2, "2°/t"); slider(4, "dl", 1, "1°/t")
 io.open(p, "w", encoding="utf-8").write(s); print("ok")
+
+# ===== 第二段（11/9 夜）：背景の決着と、交換の二方式 =====
+# 1. 包絡のスイッチ env：cos²（二項、既定）／sinc（従来）。cos² は c_m = 2^{1−2k} C(2k, k−m)、c₀ = 2^{−2k} C(2k, k)、k = M。正の山で裾がない。
+# 2. 核は直流を含む全重なり C_ij(d) = c₀i c₀j + ½ Σ c_i,m c_j,m cos(m d)（背景は対の核に入らず、正の山どうしなら離れて 0 になる）。
+# 3. 交換のスイッチ xm：率（既定。毎 tick の角 = κ F Δ_F |Δd|/W、W = ∫F⁺ dd、通過で合計 Δ_F）／全量（毎 tick κ F Δ_F）。
+s = io.open(p, encoding="utf-8").read()
+rep('  <div class="sl"><span>κ 相互作用</span><input id="kap" type="range" min="0" max="1" step="0.01" value="1"><span class="v" id="kapv">1.00</span></div>\n',
+    '  <div class="sl"><span>κ 相互作用</span><input id="kap" type="range" min="0" max="1" step="0.01" value="1"><span class="v" id="kapv">1.00</span></div>\n'
+    '  <span class="grp">包絡 <label class="ck"><input type="radio" name="env" value="cos2" checked>cos²（二項、k ＝ M）</label><label class="ck"><input type="radio" name="env" value="sinc">sinc（従来、幅 φ）</label></span>\n'
+    '  <span class="grp">交換 <label class="ck"><input type="radio" name="xm" value="rate" checked>率（通過で合計 Δ_F）</label><label class="ck"><input type="radio" name="xm" value="full">全量（毎 tick F Δ_F）</label></span>\n')
+rep("  return { ms, cs, c0: phi / 360 };\n}\n",
+    "  return { ms, cs, c0: phi / 360 };\n}\n"
+    "function coeffsCos2(k, odd, even) {   // cos^{2k}(ψ/2) = 2^{−2k}[C(2k,k) + 2 Σ_m C(2k,k−m) cos mψ]：正の山、倍音 0…k、二項係数。幅 ≈ 2/√k\n"
+    "  const lg = [0]; for (let n = 1; n <= 2 * k; n++) lg.push(lg[n - 1] + Math.log(n));\n"
+    "  const ms = [], cs = [];\n"
+    "  for (let m = 1; m <= k; m++) { if ((m % 2 === 1 && !odd) || (m % 2 === 0 && !even)) continue; ms.push(m); cs.push(Math.exp(lg[2 * k] - lg[k - m] - lg[k + m] - 2 * k * Math.LN2 + Math.LN2)); }\n"
+    "  return { ms, cs, c0: Math.exp(lg[2 * k] - 2 * lg[k] - 2 * k * Math.LN2) };\n}\n"
+    "const envOf = () => document.querySelector('input[name=env]:checked').value, xmOf = () => document.querySelector('input[name=xm]:checked').value;\n"
+    "const coeffsEnv = (phi, M, odd, even) => envOf() === 'cos2' ? coeffsCos2(M, odd, even) : coeffs(phi, M, odd, even);   // 包絡のスイッチ\n")
+rep("co: P.map(u => coeffs(Number(u.ph.value), Number(u.mm.value), u.odd.checked, u.even.checked))});", "co: P.map(u => coeffsEnv(Number(u.ph.value), Number(u.mm.value), u.odd.checked, u.even.checked)), mode: 'full'});")
+rep("    const co = coeffs(phi, M, u.odd.checked, u.even.checked);\n", "    const co = coeffsEnv(phi, M, u.odd.checked, u.even.checked);\n")
+rep("    const co = P.map(u => coeffs(Number(u.ph.value), Number(u.mm.value), u.odd.checked, u.even.checked));\n", "    const co = P.map(u => coeffsEnv(Number(u.ph.value), Number(u.mm.value), u.odd.checked, u.even.checked));\n")
+rep("    const S = {Th, n: nDyn.map(x => x.slice()), v: P.map(u => Number(u.vv.value)), A: aDyn.slice(), phi0: P.map(u => u.phase0), co};\n",
+    "    const S = {Th, n: nDyn.map(x => x.slice()), v: P.map(u => Number(u.vv.value)), A: aDyn.slice(), phi0: P.map(u => u.phase0), co, mode: xmOf()};\n")
+# 核：直流を含む
+rep("function xcorr(coI, coJ, dDeg) {   // 包絡の相互相関 C_ij(d) = Σ_m c_i,m c_j,m cos(m d)（共有する m だけ、直流は入れない）\n"
+    "  const mapJ = new Map(); coJ.ms.forEach((m, k) => mapJ.set(m, coJ.cs[k])); const d = dDeg * Math.PI / 180; let t = 0;\n"
+    "  coI.ms.forEach((m, k) => { const cj = mapJ.get(m); if (cj !== undefined) t += coI.cs[k] * cj * Math.cos(m * d); }); return t;\n}\n",
+    "function xcorr(coI, coJ, dDeg) {   // 包絡の重なり C_ij(d) = c₀i c₀j + ½ Σ_m c_i,m c_j,m cos(m d)（共有する m、直流を含む全重なり。背景は対の核に入らず、正の山なら離れて 0）\n"
+    "  const mapJ = new Map(); coJ.ms.forEach((m, k) => mapJ.set(m, coJ.cs[k])); const d = dDeg * Math.PI / 180; let t = coI.c0 * coJ.c0;\n"
+    "  coI.ms.forEach((m, k) => { const cj = mapJ.get(m); if (cj !== undefined) t += 0.5 * coI.cs[k] * cj * Math.cos(m * d); }); return t;\n}\n")
+# 交換の二方式
+rep("    const coef = k * Fij * dFij, R = Rmat([0, u[0], u[1], u[2]]);                                            // 生成子 κ F Δ_F · P_D ⊗ R(û)\n",
+    "    let w = 1;                                                                                              // 全量：毎 tick κ F Δ_F\n"
+    "    if (S.mode === 'rate') {                                                                                 // 率：κ F Δ_F |Δd|/W、W = ∫ F⁺ dd（1° 刻み）。通過で Σ = Δ_F\n"
+    "      const rin = S.n[i].map(x => x * (S.Th[i] + S.v[i])), rjn = S.n[j].map(x => x * (S.Th[j] + S.v[j]));\n"
+    "      const dd = Math.abs(Math.hypot(rin[0] - rjn[0], rin[1] - rjn[1], rin[2] - rjn[2]) - d); const nrm = 0.5 * (1 + c) / Math.sqrt(cii * cjj);\n"
+    "      let W = 0; for (let g = -180; g <= 180; g++) W += Math.max(0, nrm * xcorr(S.co[i], S.co[j], g));\n"
+    "      w = W > 0 ? dd / W : 0; }\n"
+    "    const coef = k * Fij * dFij * w, R = Rmat([0, u[0], u[1], u[2]]);                                        // 生成子 κ F Δ_F (w) · P_D ⊗ R(û)\n")
+rep("  return `κ = ${kv}　核 F: ` + PAIRS.map", "  return `κ = ${kv}、包絡 ${envOf()}、交換 ${xmOf() === 'rate' ? '率' : '全量'}　核 F: ` + PAIRS.map")
+# K7：率モードの通過で合計が Δ_F になること（2 波、同軸 x、正面、Δ_F = 180：120 tick で入替え）
+rep("  $('ktest').textContent = 'KTEST ' + JSON.stringify(out);\n}\n",
+    "  let T2 = {Th: [50, 170], n: [x, x], v: [1, -1], A: [1, 1], phi0: [0, 180], co: [S.co[0], S.co[1]], mode: 'rate'}, maxF = 0;   // K7\n"
+    "  for (let t = 0; t < 120; t++) { T2.Th = [T2.Th[0] + 1, T2.Th[1] - 1]; const Y = exchangeStep(T2); maxF = Math.max(maxF, Math.abs(Y.F[0][1])); T2 = {Th: T2.Th, n: Y.n, v: T2.v, A: Y.A, phi0: Y.phi0, co: T2.co, mode: 'rate'}; }\n"
+    "  out.K7_rate_passage_phi0 = T2.phi0; out.K7_rate_passage_A = T2.A; out.K7_rate_maxF = maxF; out.K7_rate_swap_err_deg = Math.max(Math.abs(wrap180(T2.phi0[0] - 180)), Math.abs(wrap180(T2.phi0[1])));\n"
+    "  $('ktest').textContent = 'KTEST ' + JSON.stringify(out);\n}\n")
+# URL と監視
+rep("  if (q.has('kap')) kap.value = q.get('kap');   // kap = 相互作用の強さ（0 で相互作用なし版と同一）\n",
+    "  if (q.has('kap')) kap.value = q.get('kap');   // kap = 相互作用の強さ（0 で相互作用なし版と同一）\n"
+    "  if (q.has('env')) document.querySelector(`input[name=env][value=\"${q.get('env')}\"]`).checked = true;   // env = cos2 | sinc\n"
+    "  if (q.has('xm')) document.querySelector(`input[name=xm][value=\"${q.get('xm')}\"]`).checked = true;      // xm = rate | full\n")
+rep("kap.addEventListener('input', resetAll);   // κ を変えたら最初から（resetAll の定義のあと）", "kap.addEventListener('input', resetAll);   // κ を変えたら最初から（resetAll の定義のあと）\nfor (const r of document.querySelectorAll('input[name=env], input[name=xm]')) r.addEventListener('change', resetAll);")
+io.open(p, "w", encoding="utf-8").write(s); print("ok2")
+
+# ===== 第三段：読み戻しの軸の不定（A → 0 の瞬間）を絶対しきい値で守る。K7 を速度非依存の検査に =====
+s = io.open(p, encoding="utf-8").read()
+rep("    if (A > 1e-15) { if (vn > 1e-12 * A) { nn = [q[1] / vn, q[2] / vn, q[3] / vn]; const ang = Math.atan2(vn, q[0]) * 180 / Math.PI;",
+    "    if (A > 1e-9) { if (vn > 1e-9) { nn = [q[1] / vn, q[2] / vn, q[3] / vn]; const ang = Math.atan2(vn, q[0]) * 180 / Math.PI;   // 振幅が零を通る瞬間は軸を前の値に保つ（絶対しきい値。相対だと零ベクトルの向きを拾う）")
+old7 = s[s.index("  let T2 = {Th: [50, 170]"):s.index("  $('ktest').textContent = 'KTEST ' + JSON.stringify(out);\n}\n")]
+new7 = ("  const passage = (mode, sp, nt) => { let T2 = {Th: [50, 170], n: [x, x], v: [sp, -sp], A: [1, 1], phi0: [0, 150], co: [S.co[0], S.co[1]], mode}, mF = 0;   // K7：2 波、同軸 x、正面、Δ_F = 150、相対速度 2sp\n"
+        "    for (let t = 0; t < nt; t++) { T2.Th = [T2.Th[0] + sp, T2.Th[1] - sp]; const Y = exchangeStep(T2); mF = Math.max(mF, Math.abs(Y.F[0][1])); T2 = {Th: T2.Th, n: Y.n, v: T2.v, A: Y.A, phi0: Y.phi0, co: T2.co, mode}; }\n"
+        "    return {phi0: T2.phi0, A: T2.A, maxF: mF}; };\n"
+        "  const r1 = passage('rate', 1, 120), r2 = passage('rate', 0.5, 240), f1 = passage('full', 1, 120), f2 = passage('full', 0.5, 240);   // 同じ道のりを速さ 2 と 1 で\n"
+        "  out.K7_rate_v1 = r1; out.K7_rate_v05 = r2; out.K7_rate_speed_dep_deg = Math.max(Math.abs(wrap180(r1.phi0[0] - r2.phi0[0])), Math.abs(wrap180(r1.phi0[1] - r2.phi0[1])));\n"
+        "  out.K7_full_v1 = f1; out.K7_full_v05 = f2; out.K7_full_speed_dep_deg = Math.max(Math.abs(wrap180(f1.phi0[0] - f2.phi0[0])), Math.abs(wrap180(f1.phi0[1] - f2.phi0[1])));\n")
+s = s.replace(old7, new7); assert "K7_rate_speed_dep_deg" in s
+io.open(p, "w", encoding="utf-8").write(s); print("ok3")
