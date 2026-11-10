@@ -19,4 +19,11 @@ for name, y0, y1 in (("note_fig3_ladder_two_readings", 0, 390), ("note_fig2_firs
                      ("note_fig4_rigid_crystal_lowpass", 670, 965), ("note_fig5_coarse_wave_centre_phase", 965, 1260),
                      ("note_fig6_power_tooth_jump", 1260, 1798)):
     c.crop((0, y0, c.width, y1)).save(os.path.join(HERE, name + ".png"))
-print("saved 6")
+# 英語版：概念図の英語版を同じ順に切る（図 1 は文字がないので日英共通）
+e = Image.open(os.path.join(ROOT, "概念図_次数を逆に読む/figs/fig_reverse_reading_v0.1_en.png")).convert("RGB")
+assert e.size == (1363, 1799), e.size
+for name, y0, y1 in (("note_fig3_ladder_two_readings", 0, 391), ("note_fig2_first_reading_harmonics", 391, 670),
+                     ("note_fig4_rigid_crystal_lowpass", 670, 953), ("note_fig5_coarse_wave_centre_phase", 953, 1249),
+                     ("note_fig6_power_tooth_jump", 1249, 1799)):
+    e.crop((0, y0, e.width, y1)).save(os.path.join(HERE, name + "_en.png"))
+print("saved 6 + 5 (en)")

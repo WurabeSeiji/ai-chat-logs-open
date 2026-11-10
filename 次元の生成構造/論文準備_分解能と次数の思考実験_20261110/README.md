@@ -42,8 +42,8 @@
 
 ## note 記事
 
-`note記事_観測者の分解能はゲージである_20261110/`：一般向けの日本語版の原稿 `note_observer_resolution_gauge_general_ja_v1.md`（著者の動機の文を導入に使用）、図 6 枚（`make_note_figs.py` が論文の図 1〜3 の PNG を切り分けるだけで、画素の加工はしない）。公開前の数値実験のフォルダの GitHub の URL を載せた。note への投稿は未実施。
+`note記事_観測者の分解能はゲージである_20261110/`：一般向けの日本語版の原稿 `note_observer_resolution_gauge_general_ja_v1.md`（著者の動機の文を導入に使用）、図 6 枚（`make_note_figs.py` が論文の図 1〜3 の PNG を切り分けるだけで、画素の加工はしない）。公開前の数値実験のフォルダの GitHub の URL を載せた。日本語版は 2026-11-10 に著者が公開（https://note.com/kiharanoriaki/n/n2a42913c3f07 、原稿どおり）。英語版の原稿 `note_observer_resolution_gauge_general_en_v1.md` と英語の図 5 枚（`*_en.png`、図 1 は文字がなく日英共通）を作成、投稿は未実施。
 
 ## 未実施
 
-note への投稿、note の英語版、Facebook・X の記事。
+note 英語版の投稿、Facebook・X の記事、RELEASE_NOTES への note の行。
