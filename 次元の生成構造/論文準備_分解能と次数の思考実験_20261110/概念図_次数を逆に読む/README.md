@@ -6,8 +6,9 @@
 
 | ファイル | 内容 |
 |---|---|
-| `fig_reverse_reading.py` | 図を描くスクリプト（numpy・matplotlib、フォントは Hiragino Sans） |
+| `fig_reverse_reading.py` | 図を描くスクリプト（numpy・matplotlib、フォントは Hiragino Sans）。引数 `en` で英語版の図（文字だけが違う） |
 | `figs/fig_reverse_reading_v0.1.png` | 図 |
+| `figs/fig_reverse_reading_v0.1_en.png` | 図の英語版（2026-11-10 公開時に追加。英語の切り替えを入れる前後で、日本語版の図は画素が一致） |
 | `figs/check_v0.1.txt` | パネル (e) の確認計算の出力 |
 | `run_all.sh` | 再生成 |
 | `SHA256SUMS` | 上のファイルのハッシュ |
