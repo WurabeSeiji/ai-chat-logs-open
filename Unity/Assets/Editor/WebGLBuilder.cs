@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.Build.Reporting;
@@ -11,7 +12,7 @@ public static class WebGLBuilder
     [MenuItem("Build/Build WebGL (WASM)")]
     public static void BuildWebGL()
     {
-        // PC・スマホの静的ホスティング（GitHub Pages / python http.server 等）で確実に起動する設定
+        // PC・スマホの静的ホスティング（Apache / GitHub Pages / python http.server 等）で確実に起動する設定
         PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Gzip;
         PlayerSettings.WebGL.decompressionFallback = true;
         PlayerSettings.WebGL.threadsSupport = false;
@@ -40,6 +41,7 @@ public static class WebGLBuilder
 
         if (summary.result == BuildResult.Succeeded)
         {
+            WriteApacheHtaccess(OutputPath);
             Debug.Log($"[WebGLBuilder] Build succeeded: {summary.totalSize} bytes -> {OutputPath}");
             if (Application.isBatchMode)
             {
@@ -54,5 +56,23 @@ public static class WebGLBuilder
                 EditorApplication.Exit(1);
             }
         }
+    }
+
+    private static void WriteApacheHtaccess(string outputDir)
+    {
+        string htaccessPath = Path.Combine(outputDir, ".htaccess");
+        const string content =
+@"<IfModule mod_mime.c>
+  AddType application/wasm .wasm
+  AddType application/javascript .js
+  AddType application/octet-stream .unityweb
+</IfModule>
+
+<IfModule mod_dir.c>
+  DirectorySlash On
+</IfModule>
+";
+        File.WriteAllText(htaccessPath, content);
+        Debug.Log($"[WebGLBuilder] Wrote Apache .htaccess -> {htaccessPath}");
     }
 }
