@@ -625,6 +625,11 @@
    DOI [10.5281/zenodo.24267348](https://doi.org/10.5281/zenodo.24267348) · Concept [10.5281/zenodo.24267347](https://doi.org/10.5281/zenodo.24267347) · 2026-11-16 · v1.0 · [PDF en](https://zenodo.org/records/24267348/files/emergent_spacetime_particles_bounded_hilbert_octonion_en.pdf) [PDF ja](https://zenodo.org/records/24267348/files/%E6%9C%89%E7%95%8C%E3%81%AA%E3%83%92%E3%83%AB%E3%83%99%E3%83%AB%E3%83%88%E7%A9%BA%E9%96%93%E3%81%A8%E5%85%AB%E5%85%83%E6%95%B0%E3%81%AB%E3%82%88%E3%82%8B%E6%99%82%E7%A9%BA%E3%83%BB%E7%B4%A0%E7%B2%92%E5%AD%90%E3%81%AE%E5%89%B5%E7%99%BA.pdf)  
    フォルダ: [次元の生成構造/有界なヒルベルト空間と八元数による時空・素粒子の創発](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E6%9C%89%E7%95%8C%E3%81%AA%E3%83%92%E3%83%AB%E3%83%99%E3%83%AB%E3%83%88%E7%A9%BA%E9%96%93%E3%81%A8%E5%85%AB%E5%85%83%E6%95%B0%E3%81%AB%E3%82%88%E3%82%8B%E6%99%82%E7%A9%BA%E3%83%BB%E7%B4%A0%E7%B2%92%E5%AD%90%E3%81%AE%E5%89%B5%E7%99%BA)
 
+59. **投影軸の選択と保存則の共変性 ― 全波が乗る「2つの $R$」、$1, 2, 4$ 次元部分多元体の投射非対称性、および最小系への縮約原理 ―**  
+   Projection Axis Selection and Covariance of Conservation Laws ― Two Radii Carried by All Waves, Projection Asymmetry of 1-, 2-, and 4-Dimensional Subalgebras, and Reduction to Minimal Systems ―  
+   DOI [10.5281/zenodo.24273724](https://doi.org/10.5281/zenodo.24273724) · Concept [10.5281/zenodo.24273723](https://doi.org/10.5281/zenodo.24273723) · 2026-11-16 · v1.0 · [PDF en](https://zenodo.org/records/24273724/files/projection_axis_selection_covariance_conservation_en.pdf) [PDF ja](https://zenodo.org/records/24273724/files/%E6%8A%95%E5%BD%B1%E8%BB%B8%E3%81%AE%E9%81%B8%E6%8A%9E%E3%81%A8%E4%BF%9D%E5%AD%98%E5%89%87%E3%81%AE%E5%85%B1%E5%A4%89%E6%80%A7.pdf)  
+   フォルダ: [次元の生成構造/投影軸の選択と保存則の共変性_20261116](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E6%8A%95%E5%BD%B1%E8%BB%B8%E3%81%AE%E9%81%B8%E6%8A%9E%E3%81%A8%E4%BF%9D%E5%AD%98%E5%89%87%E3%81%AE%E5%85%B1%E5%A4%89%E6%80%A7_20261116)
+
 ## 時間軸Q軸とフェルミオンの生成構造 / Time Axis, Q Axis, and Fermion Generation
 
 1. **無名部分投射による物理的対称性選択の公理的枠組み**  
