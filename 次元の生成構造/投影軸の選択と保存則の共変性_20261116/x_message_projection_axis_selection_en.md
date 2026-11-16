@@ -1,7 +1,7 @@
-Projection Axis Selection and Covariance of Conservation Laws
+Projection Axis Selection & Conservation Covariance
 
-All waves reside on two radii; choosing 1, 2, or 4D subalgebras switches spacetime and internal spaces, preserving composite conservation laws in minimal systems.
+All waves carry two radii. Subalgebra choice (1, 2, 4D) switches spacetime and internal spaces while preserving conservation laws.
 
-https://doi.org/10.5281/zenodo.24273723
+https://note.com/kiharanoriaki/n/nbd90fac6a6f2
 
 #Physics #Octonions #EmergentSpacetime
