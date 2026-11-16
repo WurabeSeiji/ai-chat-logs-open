@@ -71,3 +71,5 @@
 - GitHub フォルダ：https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E6%8A%95%E5%BD%B1%E8%BB%B8%E3%81%AE%E9%81%B8%E6%8A%9E%E3%81%A8%E4%BF%9D%E5%AD%98%E5%89%87%E3%81%AE%E5%85%B1%E5%A4%89%E6%80%A7_20261116
 - Zenn 記事：https://zenn.dev/noriaki_kihara/articles/projection-axis-selection-covariance-conservation
 - 前回の記事（有界なヒルベルト空間と八元数による時空・素粒子の創発）：https://note.com/kiharanoriaki/n/ndb9286ade778
+
+#理論物理学 #量子力学 #時空の創発 #八元数 #四元数 #ヒルベルト空間 #ホップ写像 #保存則 #共変性 #独立研究 #オープンサイエンス #Zenodo
