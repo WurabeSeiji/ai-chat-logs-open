@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
@@ -11,6 +12,7 @@ public class OrbitCameraController : MonoBehaviour
 {
     [Header("Target & Distance")]
     public Transform target;
+    public Vector3 targetOffset = Vector3.zero;
     public float distance = 8.0f;
     public float minDistance = 2.0f;
     public float maxDistance = 30.0f;
@@ -23,6 +25,17 @@ public class OrbitCameraController : MonoBehaviour
 
     private float _yaw = 45f;
     private float _pitch = 25f;
+    private bool _mouseLockedToUI;
+    private bool _touchLockedToUI;
+
+    public void SetView(float yaw, float pitch, float dist, Vector3 focusOffset)
+    {
+        _yaw = yaw;
+        _pitch = Mathf.Clamp(pitch, -80f, 80f);
+        distance = Mathf.Clamp(dist, minDistance, maxDistance);
+        targetOffset = focusOffset;
+        UpdateCameraTransform();
+    }
 
     private void OnEnable()
     {
@@ -49,38 +62,65 @@ public class OrbitCameraController : MonoBehaviour
         UpdateCameraTransform();
     }
 
+    private static bool IsPointerOverUI(int pointerId = -1)
+    {
+        return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(pointerId);
+    }
+
     private void HandleMouseInput()
     {
         Mouse mouse = Mouse.current;
         if (mouse == null) return;
 
-        if (mouse.leftButton.isPressed)
+        if (mouse.leftButton.wasPressedThisFrame)
+        {
+            _mouseLockedToUI = IsPointerOverUI();
+        }
+        if (mouse.leftButton.wasReleasedThisFrame)
+        {
+            _mouseLockedToUI = false;
+        }
+
+        if (mouse.leftButton.isPressed && !_mouseLockedToUI)
         {
             Vector2 delta = mouse.delta.ReadValue();
             _yaw += delta.x * mouseOrbitSpeed;
             _pitch = Mathf.Clamp(_pitch - delta.y * mouseOrbitSpeed, -80f, 80f);
         }
 
-        float scroll = mouse.scroll.ReadValue().y;
-        if (Mathf.Abs(scroll) > 0.01f)
+        if (!IsPointerOverUI())
         {
-            distance = Mathf.Clamp(distance - scroll * scrollZoomSpeed, minDistance, maxDistance);
+            float scroll = mouse.scroll.ReadValue().y;
+            if (Mathf.Abs(scroll) > 0.01f)
+            {
+                distance = Mathf.Clamp(distance - scroll * scrollZoomSpeed, minDistance, maxDistance);
+            }
         }
     }
 
     private void HandleTouchInput()
     {
         var touches = Touch.activeTouches;
+        if (touches.Count == 0)
+        {
+            _touchLockedToUI = false;
+            return;
+        }
+
         if (touches.Count == 1)
         {
             var t = touches[0];
-            if (t.phase == UnityEngine.InputSystem.TouchPhase.Moved)
+            if (t.phase == UnityEngine.InputSystem.TouchPhase.Began)
+            {
+                _touchLockedToUI = IsPointerOverUI(t.touchId);
+            }
+            if (!_touchLockedToUI && t.phase == UnityEngine.InputSystem.TouchPhase.Moved)
             {
                 _yaw += t.delta.x * touchOrbitSpeed;
                 _pitch = Mathf.Clamp(_pitch - t.delta.y * touchOrbitSpeed, -80f, 80f);
             }
         }
-        else if (touches.Count >= 2)
+        else if (touches.Count >= 2 && !_touchLockedToUI)
         {
             var t0 = touches[0];
             var t1 = touches[1];
@@ -97,7 +137,7 @@ public class OrbitCameraController : MonoBehaviour
 
     private void UpdateCameraTransform()
     {
-        Vector3 focus = target != null ? target.position : Vector3.zero;
+        Vector3 focus = (target != null ? target.position : Vector3.zero) + targetOffset;
         Quaternion rot = Quaternion.Euler(_pitch, _yaw, 0f);
         transform.position = focus + rot * new Vector3(0f, 0f, -distance);
         transform.LookAt(focus);
