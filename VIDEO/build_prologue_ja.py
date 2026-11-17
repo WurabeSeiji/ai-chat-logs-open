@@ -293,6 +293,81 @@ def build_cues() -> list[dict]:
     return cues
 
 
+def load_video_frames(mp4_path: str) -> tuple[list[Image.Image], int, int]:
+    """ffmpeg を使って動画の全フレームを RGB Image のリストとして読み込む。"""
+    probe = subprocess.check_output(
+        [
+            "ffprobe", "-v", "error",
+            "-select_streams", "v:0",
+            "-show_entries", "stream=width,height",
+            "-of", "csv=p=0",
+            mp4_path,
+        ],
+        text=True,
+    ).strip()
+    vw, vh = map(int, probe.split(","))
+    raw = subprocess.check_output(
+        [
+            "ffmpeg", "-v", "error",
+            "-i", mp4_path,
+            "-f", "rawvideo",
+            "-pix_fmt", "rgb24",
+            "-",
+        ]
+    )
+    frame_bytes = vw * vh * 3
+    n_frames = len(raw) // frame_bytes
+    frames = [
+        Image.frombytes("RGB", (vw, vh), raw[i * frame_bytes : (i + 1) * frame_bytes])
+        for i in range(n_frames)
+    ]
+    return frames, vw, vh
+
+
+def render_slow_video_frame(
+    frames: list[Image.Image],
+    progress: float,
+    z0: float = 1.00,
+    z1: float = 1.08,
+) -> Image.Image:
+    """
+    動画フレームをスロー再生（前後フレーム補間あり）しつつ 1920x1080 に合わせてズーム描画する。
+    """
+    n = len(frames)
+    p = max(0.0, min(1.0, progress))
+    pos = p * (n - 1)
+    idx0 = int(pos)
+    idx1 = min(n - 1, idx0 + 1)
+    frac = pos - idx0
+
+    if frac > 1e-4 and idx0 != idx1:
+        frame = Image.blend(frames[idx0], frames[idx1], frac)
+    else:
+        frame = frames[idx0]
+
+    iw, ih = frame.size
+    # 16:9 に合わせてクロップ基準サイズを計算
+    target_ar = W / H
+    if iw / ih > target_ar:
+        base_h = float(ih)
+        base_w = ih * target_ar
+    else:
+        base_w = float(iw)
+        base_h = iw / target_ar
+
+    z = z0 + (z1 - z0) * p
+    crop_w = base_w / z
+    crop_h = base_h / z
+    x0 = (iw - crop_w) / 2.0
+    y0 = (ih - crop_h) / 2.0
+
+    return frame.resize(
+        (W, H),
+        resample=Image.Resampling.BILINEAR,
+        box=(x0, y0, x0 + crop_w, y0 + crop_h),
+    )
+
+
 def render_pan_zoom(
     img: Image.Image,
     progress: float,
@@ -328,27 +403,41 @@ def render_pan_zoom(
     )
 
 
+def load_scene_source(prefix: str):
+    """同名プレフィックスの .mp4 があればフレームリストを、なければ .jpeg を読み込む。"""
+    try:
+        mp4_path = find_asset(prefix, ".mp4")
+        print(f"Loading video (slow-motion fit): {os.path.basename(mp4_path)}")
+        frames, _, _ = load_video_frames(mp4_path)
+        print(f"  -> Loaded {len(frames)} frames.")
+        return frames
+    except FileNotFoundError:
+        jpg_path = find_asset(prefix, ".jpeg")
+        print(f"Loading image: {os.path.basename(jpg_path)}")
+        return Image.open(jpg_path).convert("RGB")
+
+
 def main():
-    img1 = Image.open(find_asset("01) 天国", ".jpeg")).convert("RGB")
-    img2 = Image.open(find_asset("02) 神様", ".jpeg")).convert("RGB")
-    img3 = Image.open(find_asset("03) 神様", ".jpeg")).convert("RGB")
-    img4 = Image.open(find_asset("04) 神様", ".jpeg")).convert("RGB")
+    src1 = load_scene_source("01) 天国")
+    src2 = load_scene_source("02) 神様")
+    src3 = load_scene_source("03) 神様")
+    src4 = load_scene_source("04) 神様")
     audio = find_asset("01) プロローグ（日本語)", ".mp3")
 
     # シーン定義（曲尺 178.42s に合わせた割り当て）
-    # (start, end, img, z0, z1, cx0, cy0, cx1, cy1)
+    # (start, end, source, z0, z1, cx0, cy0, cx1, cy1)
     xfade_dur = 1.6
     scenes = [
-        # Intro (0〜12s)
-        (0.0,   12.0 + xfade_dur, img1, 1.00, 1.12, 0.50, 0.50, 0.50, 0.46),
+        # Intro (0〜12s, +1.6s xfade)
+        (0.0,   12.0 + xfade_dur, src1, 1.00, 1.08, 0.50, 0.50, 0.50, 0.48),
         # Verse 1 前半 (12〜30s)
-        (12.0,  30.0 + xfade_dur, img2, 1.02, 1.15, 0.46, 0.50, 0.54, 0.48),
+        (12.0,  30.0 + xfade_dur, src2, 1.02, 1.15, 0.46, 0.50, 0.54, 0.48),
         # Verse 1 後半〜Pre-Chorus〜Chorus 1 (30〜82s)
-        (30.0,  82.0 + xfade_dur, img3, 1.00, 1.18, 0.48, 0.52, 0.52, 0.48),
+        (30.0,  82.0 + xfade_dur, src3, 1.00, 1.18, 0.48, 0.52, 0.52, 0.48),
         # Verse 2〜Chorus 2〜Bridge (82〜138s)
-        (82.0,  138.0 + xfade_dur, img4, 1.04, 1.20, 0.44, 0.55, 0.52, 0.50),
+        (82.0,  138.0 + xfade_dur, src4, 1.04, 1.20, 0.44, 0.55, 0.52, 0.50),
         # Outro (138〜178.42s) 引き構図へ
-        (138.0, TOTAL_SEC + 1.0,  img4, 1.20, 1.00, 0.52, 0.50, 0.50, 0.50),
+        (138.0, TOTAL_SEC + 1.0,  src4, 1.20, 1.00, 0.52, 0.50, 0.50, 0.50),
     ]
 
     cues = build_cues()
@@ -391,10 +480,14 @@ def main():
 
         # アクティブなシーン（クロスフェード考慮で最大2つ）
         active = []
-        for s_idx, (st, en, im, z0, z1, cx0, cy0, cx1, cy1) in enumerate(scenes):
+        for s_idx, (st, en, src, z0, z1, cx0, cy0, cx1, cy1) in enumerate(scenes):
             if st <= t < en:
                 prog = (t - st) / max(0.001, en - st)
-                active.append((s_idx, st, en, render_pan_zoom(im, prog, z0, z1, cx0, cy0, cx1, cy1)))
+                if isinstance(src, list):
+                    frame_img = render_slow_video_frame(src, prog, z0, z1)
+                else:
+                    frame_img = render_pan_zoom(src, prog, z0, z1, cx0, cy0, cx1, cy1)
+                active.append((s_idx, st, en, frame_img))
 
         if len(active) == 1:
             canvas = active[0][3]
