@@ -223,7 +223,7 @@ def create_overlay_image(
     return img
 
 
-def build_cues() -> list[dict]:
+def build_cues(has_vid4: bool = False) -> list[dict]:
     # 元の構成案 (0:00〜2:15 = 135s) を曲尺 (~168s + エンドカード) に合わせてスケーリング
     scale = 1.24
     raw = [
@@ -247,24 +247,24 @@ def build_cues() -> list[dict]:
         (65.0, 72.0, "Verse 2", ["やがて、真っ直ぐコピペを続けるだけでは", "散らかってしまうことに気づいた神様は…"], None, None),
         (72.0, 80.0, "Verse 2", ["コピペの向きを少しひねって、", "ぐるっと輪を描くように並べる遊びを思いついた。"], None, None),
         (80.0, 85.0, "Chorus 2", ["すると不思議なことに、何も計算していないのに", "かたまりの増殖の勢いから e が立ち上がり…"],
-         {"kind": "symbols", "items": [("e", "増殖の自然定規", (255, 215, 110, 255))]}, None),
+         None if has_vid4 else {"kind": "symbols", "items": [("e", "増殖の自然定規", (255, 215, 110, 255))]}, None),
         (85.0, 90.0, "Chorus 2", ["ひねりの直角方向から i が顔を出し…"],
-         {"kind": "symbols", "items": [
+         None if has_vid4 else {"kind": "symbols", "items": [
              ("e", "増殖の自然定規", (255, 215, 110, 255)),
              ("i", "ひねりの直角方向", (120, 225, 255, 255)),
          ]}, None),
         (90.0, 95.0, "Chorus 2", ["一周して最初の山とぴったり噛み合う周期から", "π が勝手に浮かび上がった。"],
-         {"kind": "symbols", "items": [
+         None if has_vid4 else {"kind": "symbols", "items": [
              ("e", "増殖の自然定規", (255, 215, 110, 255)),
              ("i", "ひねりの直角方向", (120, 225, 255, 255)),
              ("π", "一周の周期", (255, 165, 200, 255)),
          ]}, None),
         (95.0, 102.0, "Bridge", ["そして、半周ずれたかたまり同士が正面からぶつかり、", "きれいさっぱり打ち消し合った瞬間…"],
-         {"kind": "banner", "big": "e^(iπ) + 1 = 0", "small": "半周の衝突と打ち消し合い", "color": (160, 235, 255, 255)}, None),
+         None if has_vid4 else {"kind": "banner", "big": "e^(iπ) + 1 = 0", "small": "半周の衝突と打ち消し合い", "color": (160, 235, 255, 255)}, None),
         (102.0, 105.0, "Bridge", ["神様は手を叩いて喜んだ。"],
-         {"kind": "banner", "big": "0  ＆  負の数", "small": "計算なしで生まれた奇跡", "color": (255, 225, 130, 255)}, None),
+         None if has_vid4 else {"kind": "banner", "big": "0  ＆  負の数", "small": "計算なしで生まれた奇跡", "color": (255, 225, 130, 255)}, None),
         (105.0, 110.0, "Bridge", ["そこで初めて", "「ゼロ」と「負の数」が発明されたのである。"],
-         {"kind": "banner", "big": "0  ＆  負の数", "small": "ここに誕生", "color": (255, 225, 130, 255)}, None),
+         None if has_vid4 else {"kind": "banner", "big": "0  ＆  負の数", "small": "ここに誕生", "color": (255, 225, 130, 255)}, None),
         (110.0, 120.0, "Outro", ["気まぐれに200回ほどコピペを繰り返したころ、", "カードの山は 10⁶⁰ 枚ほどの規模に膨れ上がっていた。"],
          {"kind": "banner", "big": "2²⁰⁰ ≈ 10⁶⁰ 枚", "small": "途方もない宇宙のスケール"}, None),
         (120.0, 133.0, "Outro", ["神様は自分の作った山の大きさに満足し、", "そのまま遊び続けていた。"], None, None),
@@ -422,6 +422,8 @@ def main():
     src2 = load_scene_source("02) 神様")
     src3 = load_scene_source("03) 神様")
     src4 = load_scene_source("04) 神様")
+    img4_still = Image.open(find_asset("04) 神様", ".jpeg")).convert("RGB")
+    has_vid4 = isinstance(src4, list)
     audio = find_asset("01) プロローグ（日本語)", ".mp3")
 
     # シーン定義（曲尺 178.42s に合わせた割り当て）
@@ -435,12 +437,12 @@ def main():
         # Verse 1 後半〜Pre-Chorus〜Chorus 1 (30〜82s)
         (30.0,  82.0 + xfade_dur, src3, 1.00, 1.18, 0.48, 0.52, 0.52, 0.48),
         # Verse 2〜Chorus 2〜Bridge (82〜138s)
-        (82.0,  138.0 + xfade_dur, src4, 1.04, 1.20, 0.44, 0.55, 0.52, 0.50),
-        # Outro (138〜178.42s) 引き構図へ
-        (138.0, TOTAL_SEC + 1.0,  src4, 1.20, 1.00, 0.52, 0.50, 0.50, 0.50),
+        (82.0,  138.0 + xfade_dur, src4, 1.00, 1.08 if has_vid4 else 1.20, 0.48, 0.50, 0.50, 0.50),
+        # Outro (138〜178.42s) 静止画で引き構図へ
+        (138.0, TOTAL_SEC + 1.0,  img4_still, 1.18, 1.00, 0.52, 0.50, 0.50, 0.50),
     ]
 
-    cues = build_cues()
+    cues = build_cues(has_vid4=has_vid4)
     for cue in cues:
         cue["img"] = create_overlay_image(
             lines=cue.get("lines", []),
