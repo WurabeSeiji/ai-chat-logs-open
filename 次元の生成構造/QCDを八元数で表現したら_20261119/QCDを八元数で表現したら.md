@@ -3,7 +3,7 @@
 
 **著者：** 木原範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020
 **日付：** 2026-11-19　　**版：** v1.0
-**Version DOI：** （Zenodo 登録時に付与）　　**Concept DOI：** （Zenodo 登録時に付与）
+**Version DOI：** 10.5281/zenodo.24369466　　**Concept DOI：** 10.5281/zenodo.24369465
 **ライセンス：** CC BY 4.0
 
 ---

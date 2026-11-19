@@ -27,7 +27,7 @@ prep("QCDを八元数で表現したら.md",
      "木原 範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020", "2026年11月19日", "2026年11月19日　Version DOI %s", "ja.md")
 prep("qcd_expressed_in_octonions_en.md",
      "QCD Expressed in Octonions",
-     "― The Lagrangian of Quantum Chromodynamics Written As It Stands in Octonions, as an Answer Key for Later Checks ―",
+     "― Writing the Lagrangian of Quantum Chromodynamics As It Stands in Octonions, as a Reference for Checking Answers ―",
      "Noriaki Kihara (WF System Co., Ltd.)  ORCID 0009-0004-6753-4020", "November 19, 2026", "November 19, 2026  Version DOI %s", "en.md")
 common = ["-s", "-f", "markdown", "--top-level-division=section", "-V", "papersize=a4", "-V", "geometry:margin=25mm",
           "-V", "mainfont=DejaVu Serif", "-V", "sansfont=DejaVu Sans", "-V", "monofont=DejaVu Sans Mono", "-V", "colorlinks=true",

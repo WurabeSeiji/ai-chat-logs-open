@@ -4,7 +4,7 @@ Noriaki Kihara / WF System Co., Ltd. / ORCID [0009-0004-6753-4020](https://orcid
 All papers are published on Zenodo under CC BY 4.0. Columns: title (English / Japanese), Version DOI, Concept DOI, date, version, PDFs, folder in this repository, release notes.
 Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PAPERS_ja.md](PAPERS_ja.md) / Scholar landing pages: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**Papers: 147**
+**Papers: 148**
 
 ## Central Projection Framework (Gnomonic Spacetime Geometry) / グノモン正写像による4次元時空の幾何学的定式化
 
@@ -629,6 +629,11 @@ Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PA
    投影軸の選択と保存則の共変性 ― 全波が乗る「2つの $R$」、$1, 2, 4$ 次元部分多元体の投射非対称性、および最小系への縮約原理 ―  
    DOI [10.5281/zenodo.24273724](https://doi.org/10.5281/zenodo.24273724) · Concept [10.5281/zenodo.24273723](https://doi.org/10.5281/zenodo.24273723) · 2026-11-16 · v1.0 · [PDF en](https://zenodo.org/records/24273724/files/projection_axis_selection_covariance_conservation_en.pdf) [PDF ja](https://zenodo.org/records/24273724/files/%E6%8A%95%E5%BD%B1%E8%BB%B8%E3%81%AE%E9%81%B8%E6%8A%9E%E3%81%A8%E4%BF%9D%E5%AD%98%E5%89%87%E3%81%AE%E5%85%B1%E5%A4%89%E6%80%A7.pdf)  
    folder: [次元の生成構造/投影軸の選択と保存則の共変性_20261116](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E6%8A%95%E5%BD%B1%E8%BB%B8%E3%81%AE%E9%81%B8%E6%8A%9E%E3%81%A8%E4%BF%9D%E5%AD%98%E5%89%87%E3%81%AE%E5%85%B1%E5%A4%89%E6%80%A7_20261116)
+
+60. **QCD Expressed in Octonions ― Writing the Lagrangian of Quantum Chromodynamics As It Stands in Octonions, as a Reference for Checking Answers ―**  
+   QCD を八元数で表現したら ― 量子色力学のラグランジアンをそのまま八元数で書き、答え合わせの基準とする ―  
+   DOI [10.5281/zenodo.24369466](https://doi.org/10.5281/zenodo.24369466) · Concept [10.5281/zenodo.24369465](https://doi.org/10.5281/zenodo.24369465) · 2026-11-19 · v1.0 · [PDF en](https://zenodo.org/records/24369466/files/qcd_expressed_in_octonions_en.pdf) [PDF ja](https://zenodo.org/records/24369466/files/QCD%E3%82%92%E5%85%AB%E5%85%83%E6%95%B0%E3%81%A7%E8%A1%A8%E7%8F%BE%E3%81%97%E3%81%9F%E3%82%89.pdf)  
+   folder: [次元の生成構造/QCDを八元数で表現したら_20261119](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/QCD%E3%82%92%E5%85%AB%E5%85%83%E6%95%B0%E3%81%A7%E8%A1%A8%E7%8F%BE%E3%81%97%E3%81%9F%E3%82%89_20261119)
 
 ## Time Axis, Q Axis, and Fermion Generation / 時間軸Q軸とフェルミオンの生成構造
 

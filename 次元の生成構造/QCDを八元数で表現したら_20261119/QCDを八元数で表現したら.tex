@@ -1,0 +1,676 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{xurl}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={QCD を八元数で表現したら},
+  pdfauthor={木原 範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{QCD を八元数で表現したら}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{―
+量子色力学のラグランジアンをそのまま八元数で書き、答え合わせの基準とする
+―}
+\author{木原 範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020}
+\date{2026年11月19日　Version DOI 10.5281/zenodo.24369466}
+
+\ltjsetparameter{jacharrange={-2,-3}}
+\begin{document}
+\maketitle
+
+\textbf{著者：} 木原範昭（株式会社WFシステム）　ORCID
+0009-0004-6753-4020\\
+\textbf{日付：} 2026-11-19　　\textbf{版：} v1.0\\
+\textbf{Version DOI：} 10.5281/zenodo.24369466　　\textbf{Concept DOI：}
+10.5281/zenodo.24369465\\
+\textbf{ライセンス：} CC BY 4.0
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+著者はこれまで、背景の時空を置かずに、有限な複素ヒルベルト空間の状態の関係から時空・粒子・相互作用を読み出すことを目標に検討を続けてきたが、量子色力学（QCD）には取り組んでいなかった。大阪大学大学院理学研究科の公開講座で、大野木哲也教授による講義
+{[}X1{]} を聴講した。講義は一般の参加者に向けて分かりやすく、しかも QCD
+の難しい概念を曖昧にせず丁寧に説明するもので、なかでも QCD
+のラグランジアンの一般式が強く印象に残った。そこで、まずこの式をそのまま八元数で表現できないかを考えてみた。
+
+八元数の虚数単位を 1 つ固定すると、八元数は複素数 1 つと複素数 3
+つに分かれ、その単位を動かさない八元数の自己同型が SU(3) になる。これは
+Günaydin と Gürsey {[}X2{]}
+による既知の構成である。本稿はこの構成を著者の積の表で確かめ直し、(1)
+QCD のラグランジアンを八元数の言葉で書き、(2)
+グルーオンだけの項を八元数の成分で展開して 7 本の条件として書き下し、(3)
+著者がこれまで用いてきた八元数の読み方 \((t, xyz)(R, Q_1Q_2Q_3)\)
+との対応を与え、(4)
+この書き直しで八元数の側から出たものと、外から置いたままのものを仕分ける。
+
+本稿は新しい定理を含まない。QCD
+を八元数から導いたものでもない。目的は、今後、背景を置かずに八元数で表した状態の関係から時空・粒子・相互作用が読み出せるかを検討するときの、答え合わせの基準を用意することである。本文の式はすべて付属のプログラムで数値的に確かめた。
+
+\textbf{キーワード：}
+量子色力学、ラグランジアン、八元数、SU(3)、\(G_2\)、格子ゲージ理論、答え合わせの基準
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{はじめに：きっかけとなった講義}\label{ux306fux3058ux3081ux306bux304dux3063ux304bux3051ux3068ux306aux3063ux305fux8b1bux7fa9}
+
+本稿は、2026 年 11 月 18
+日に大阪大学大学院理学研究科の公開講座「サイエンスナイト
+2026」で行われた、大野木哲也教授（物理学専攻・素粒子論）の講義「素粒子の世界をコンピュータ上でどこまで再現できるか？」{[}X1{]}
+を聴講したことから生まれた。
+
+講義では、強い力の理論である量子色力学（QCD）が、次の 1
+行の式で書かれることが示された。
+
+\[
+\mathcal{L}_{\rm QCD} = -\frac{1}{4g^2}F^a_{\mu\nu}F^{a\,\mu\nu} + \sum_q \bar q\,(i\gamma^\mu D_\mu - m_q)\,q
+\]
+
+この式で調節できるのは、力の強さ \(g\) とクォークの質量 \(m_q\)
+だけである。また、この式を解く方法として、時空を格子で近似し、クォークを格子点に、グルーオンを格子点を結ぶリンクに置く格子
+QCD {[}X4{]} が説明された。
+
+講義は、一般の参加者に向けて分かりやすく語られながら、QCD
+の難しい概念を曖昧にせず、一つひとつ丁寧に説明されるものであった。そのおかげで、著者のように専門教育を受けていない初学者の独立研究者にも、たいへん理解しやすかった。なかでも、QCD
+のラグランジアンの一般式が強く印象に残った。そこで、この式を八元数でそのまま表現できないかを考えてみた。それが本稿である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1.
+動機と位置づけ}\label{ux52d5ux6a5fux3068ux4f4dux7f6eux3065ux3051}
+
+著者の研究計画は、背景の時空・物差し・粒子の種類を外から置かずに、状態の集合とその関係だけから時空・粒子・相互作用を読み出すことを目標にしている。標準理論と一般相対性理論は置き換える対象ではなく、再現すべき答え合わせの基準である。これまでに、複素数の集合から時空
+(1＋3) への写像を四元数で書き {[}S4{]}、四元数 2 つからなる八元数で
+(1＋3)(1＋3) の読み方を検討してきた {[}S2{]}{[}S3{]}。
+
+一方で、強い相互作用の理論である QCD
+には、これまで取り組んでいなかった。上に記した講義 {[}X1{]}
+を聞いて、専門教育を受けていない著者にも QCD
+に取り組めるのではないかと考えた。
+
+そこで最初の一歩として、講義で示されたラグランジアンの一般式を、形を変えずに八元数で表現できないかを考えた。本稿はその記録である。
+
+本稿の位置づけは次のとおりである。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{行ったこと：} 標準的な QCD
+  のラグランジアンを、色の自由度を八元数の中に置いて書き直した。式の内容は標準の
+  QCD と同じである。
+\item
+  \textbf{目的：}
+  今後の検討のための答え合わせの基準を作ること。背景を置かない定式化から
+  QCD
+  に相当するものが読み出せたかどうかを照合するとき、照合先を八元数の言葉であらかじめ書いておく。
+\item
+  \textbf{行っていないこと：}
+  背景の時空を置かない定式化そのもの。本稿では時空 \(x^\mu\)
+  とスピノルを標準の QCD のとおりに使っている（§9）。
+\end{itemize}
+
+以下の各節の主張の区分は、末尾の「区分」にまとめた。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. 出発点：QCD
+のラグランジアン}\label{ux51faux767aux70b9qcd-ux306eux30e9ux30b0ux30e9ux30f3ux30b8ux30a2ux30f3}
+
+出発点は、講義 {[}X1{]} で示された次の式である。
+
+\[
+\mathcal{L}_{\rm QCD} = -\frac{1}{4g^2}F^a_{\mu\nu}F^{a\,\mu\nu} + \sum_q \bar q\,(i\gamma^\mu D_\mu - m_q)\,q \tag{2.1}
+\]
+
+第 1 項はグルーオンだけの項、第 2
+項はクォークとその相互作用の項である。\(g\) は結合の強さ、\(m_q\)
+はクォークの質量で、和はクォークの種類についてとる。
+
+以下では、ゲージ場を \(A_\mu = -iA^a_\mu\lambda^a/2\)（\(\lambda^a\)
+はゲルマン行列）、共変微分を
+\(D_\mu = \partial_\mu + A_\mu\)、場の強さを
+\(F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu + [A_\mu, A_\nu] = -iF^a_{\mu\nu}\lambda^a/2\)
+と書く。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. 八元数を「複素数 1 つと複素数 3
+つ」に分ける}\label{ux516bux5143ux6570ux3092ux8907ux7d20ux6570-1-ux3064ux3068ux8907ux7d20ux6570-3-ux3064ux306bux5206ux3051ux308b}
+
+\subsubsection{3.1 積の表}\label{ux7a4dux306eux8868}
+
+八元数 \(\mathbb{O}\) の基底を \(1, e_1, \dots, e_7\) とし、積を
+
+\[
+e_i e_j = -\delta_{ij} + f_{ijk}\,e_k \tag{3.1}
+\]
+
+で定める。\(f_{ijk}\)
+は完全反対称で、\((ijk) = (123), (145), (176), (246), (257), (347), (365)\)
+のとき \(+1\) とする。この積はノルムの乗法性 \(|xy| = |x||y|\)
+を満たし、結合則は満たさない。
+
+\subsubsection{3.2 虚数単位を 1
+つ固定する}\label{ux865aux6570ux5358ux4f4dux3092-1-ux3064ux56faux5b9aux3059ux308b}
+
+虚数単位を 1 つ選んで固定する。本稿では \(e_7\) を選び、\(e_7\)
+を左から掛けることを複素数の \(i\) とみなす。(3.1) の表では
+\(e_7e_1 = -e_6\)、\(e_7e_2 = e_5\)、\(e_7e_3 = e_4\) なので、八元数は
+
+\[
+\mathbb{O} = \mathbb{C} \oplus \mathbb{C}^3,\qquad
+\mathbb{C} = \langle 1, e_7\rangle,\qquad
+\mathbb{C}^3 = \langle e_1, e_2, e_3\rangle_{\mathbb C} \tag{3.2}
+\]
+
+と分かれる。実 6 次元の部分は、3 枚の平面
+\((e_1, e_6)\)、\((e_2, e_5)\)、\((e_3, e_4)\)
+からなる。\(\mathbb{C}^3\) の元は
+\(\psi = \psi^1e_1 + \psi^2e_2 + \psi^3e_3\) と書き、複素数の係数
+\(\psi^a\) は左から掛ける。以下、八元数を
+\(x = a + \psi\)（\(a \in \mathbb{C}\)、\(\psi \in \mathbb{C}^3\)）と書き、その二つの成分を
+\([x]_{\mathbb C} = a\)、\([x]_{\mathbb C^3} = \psi\) と表す。
+
+\subsubsection{3.3
+積の成分表示}\label{ux7a4dux306eux6210ux5206ux8868ux793a}
+
+\(x = a + \psi\) と \(y = b + \chi\)
+の八元数としての積は、次の形になる。
+
+\[
+(a + \psi)(b + \chi) = \underbrace{\left(ab - \chi^\dagger\psi\right)}_{\mathbb{C}}
+\;+\; \underbrace{\left(a\chi + \bar b\,\psi + \bar\psi\times\bar\chi\right)}_{\mathbb{C}^3} \tag{3.3}
+\]
+
+ここで \(\chi^\dagger\psi = \sum_a \bar\chi^a\psi^a\) は
+\(\mathbb{C}^3\)
+のエルミート内積、\((\bar\psi\times\bar\chi)^c = \epsilon_{abc}\,\bar\psi^a\bar\chi^b\)
+である。二つの八元数の積の中に、内積と \(\epsilon_{abc}\)
+の両方が現れる。内積は
+
+\[
+\psi^\dagger\chi = \left[\chi\,\psi^*\right]_{\mathbb C} \tag{3.4}
+\]
+
+と、八元数の積の \(\mathbb{C}\) 成分として取り出せる（\(\psi^*\)
+は八元数としての共役）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{4. \(e_7\) を動かさない自己同型が SU(3)
+になる}{4. e\_7 を動かさない自己同型が SU(3) になる}}\label{e_7-ux3092ux52d5ux304bux3055ux306aux3044ux81eaux5df1ux540cux578bux304c-su3-ux306bux306aux308b}
+
+八元数の積を保つ変換（自己同型）の全体は、14 次元の群 \(G_2\)
+である。そのうち \(e_7\) を動かさないものは
+
+\[
+\{\,g \in G_2 \mid g(e_7) = e_7\,\} \cong SU(3) \tag{4.1}
+\]
+
+であり、8 次元である。この変換は \(\mathbb{C}\)
+の部分には何もせず、\(\mathbb{C}^3\) の部分に \(3\times3\)
+のユニタリ行列（行列式 1）として働く。逆に、ゲルマン行列から作った
+
+\[
+-\tfrac{i}{2}\lambda^a \ \text{ を } \mathbb{C}^3 \text{ に作用させ、} \mathbb{C} \text{ では } 0 \text{ とした写像は、八元数の積を保つ無限小の変換である。} \tag{4.2}
+\]
+
+八元数の 8 個の成分は、この SU(3) のもとで \(1 + 1 + 3 + \bar 3\)
+に分かれる。グルーオンの 8 個は八元数の 8
+成分そのものではなく、八元数に働く変換の側にある。
+
+以上は Günaydin と Gürsey {[}X2{]}
+が示した構成であり、八元数の一般的な性質は {[}X3{]} にまとめられている。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+ラグランジアンを八元数で書く}\label{ux30e9ux30b0ux30e9ux30f3ux30b8ux30a2ux30f3ux3092ux516bux5143ux6570ux3067ux66f8ux304f}
+
+§3、§4 を使うと、QCD の場は次のように読み替えられる。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+標準の書き方
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+八元数での読み方
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+クォーク \(q\) & 色を 3 つ持つ場 & 各成分が
+\(\mathbb{C}^3\subset\mathbb{O}\) に値をとる場 \\
+グルーオン \(A_\mu\) & SU(3) のゲージ場 & \(e_7\)
+を動かさない八元数の変換に値をとる場 \\
+色についての和 & \(\psi^\dagger\chi\) & \([\chi\psi^*]_{\mathbb C}\) \\
+\end{longtable}
+}
+
+このとき (2.1) は
+
+\[
+\mathcal{L}_{\rm QCD} = \frac{1}{4g^2}\,{\rm Tr}_{\mathbb O}\!\left(F_{\mu\nu}F^{\mu\nu}\right)
++ \sum_q \sum_\alpha \left[\,\left(\gamma^0 (i\gamma^\mu D_\mu - m_q)\,q\right)_\alpha \left(q_{\alpha}\right)^{*}\,\right]_{\mathbb C} \tag{5.1}
+\]
+
+と書ける。\(\alpha\) はスピノルの添字で、各成分 \(q_\alpha\) は
+\(\mathbb{C}^3\) の元である。(3.4) により、第 2 項は
+\(q^\dagger\gamma^0(i\gamma^\mu D_\mu - m_q)q = \bar q(i\gamma^\mu D_\mu - m_q)q\)
+に等しい。ここでは場を古典的な場として扱っている。\({\rm Tr}_{\mathbb O}\)
+は八元数の 8 成分に働く \(8\times8\) 行列としてのトレースで、
+
+\[
+{\rm Tr}_{\mathbb O}(F_{\mu\nu}F^{\mu\nu}) = -F^a_{\mu\nu}F^{a\,\mu\nu} \tag{5.2}
+\]
+
+となるので、(5.1) は (2.1) と同じものである。式の形は変わらず、SU(3)
+が八元数の性質として現れる、という書き直しになっている。
+
+グルーオンの交換子 \([A_\mu, A_\nu]\)
+は行列（変換）の交換子であり、八元数の積が結合則を満たさないことの影響は受けない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. 第 1
+項を八元数の成分で展開する}\label{ux7b2c-1-ux9805ux3092ux516bux5143ux6570ux306eux6210ux5206ux3067ux5c55ux958bux3059ux308b}
+
+第 1
+項だけの理論（グルーオンだけの理論）は、それ自体で完結した理論である。この項を、八元数の成分で書き下す。
+
+場の強さ \(F_{\mu\nu}\) は、\(e_1, \dots, e_6\) に働く反対称な実
+\(6\times6\) 行列 \(F^{ij}_{\mu\nu}\) として表される。\(F^{ij}\) は
+\(e_i\) と \(e_j\) が張る平面の中の回転を表す成分である。このとき第 1
+項は
+
+\[
+\mathcal{L}_1 = -\frac{1}{4g^2}\sum_{i,j=1}^{6} F^{ij}_{\mu\nu}F^{ij\,\mu\nu} \tag{6.1}
+\]
+
+となる。ただし \(F^{ij}\) は自由な \(6\times6\) の反対称行列（15
+成分）ではなく、積の表から決まる 7 本の条件
+
+\[
+f_{ijk}F^{jk} = 0\quad(i = 1, \dots, 7),\qquad F^{7j} = 0 \tag{6.2}
+\]
+
+を満たす。(3.1) の表で書き下すと、
+
+\[
+\begin{aligned}
+&F^{23} + F^{45} = 0,\quad F^{13} = F^{46},\quad F^{12} = F^{56},\quad F^{15} + F^{26} = 0,\\
+&F^{14} + F^{36} = 0,\quad F^{24} = F^{35},\quad F^{16} = F^{25} + F^{34}
+\end{aligned}
+\]
+
+である。15 − 7 ＝ 8 で、グルーオンの 8 個と一致する。
+
+この 7 本は、積の符号の表をそのまま書き写したものである。たとえば
+\(e_1\) を作る積は
+\(e_2e_3 = +e_1\)、\(e_4e_5 = +e_1\)、\(e_6e_7 = -e_1\) の 3
+組であり、これが 1 本目の条件
+\(F^{23} + F^{45} - F^{67} = 0\)（\(F^{67} = 0\)）に対応する。
+
+幾何としては次のように読める。
+
+\begin{itemize}
+\tightlist
+\item
+  6 次元は 3 枚の平面 \((e_1, e_6)\)、\((e_2, e_5)\)、\((e_3, e_4)\)
+  に分かれる。\(e_7\) を掛ける操作は、3 枚をそれぞれ 90° 回す。
+\item
+  グルーオンの 8 個は、平面の中の回転 2 個と、2
+  枚の平面を連動して回す回転 6 個からなる。平面の中の回転は 3
+  つあるが、7 本目の条件により独立なのは 2 つである。
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7.
+格子の上での形}\label{ux683cux5b50ux306eux4e0aux3067ux306eux5f62}
+
+講義 {[}X1{]} で説明された格子の上での形（格子ゲージ理論
+{[}X4{]}）も、八元数で書ける。
+
+リンクの変数 \(U\) は SU(3) の元であり、§4 により、\(e_7\)
+を動かさない八元数の自己同型である。\(U\) は \(\mathbb{C}\)
+上で恒等、\(\mathbb{C}^3\) 上で \(3\times3\) のユニタリ行列なので
+\({\rm Tr}_{\mathbb O}\,U = 2 + 2\,{\rm Re}\,{\rm tr}_3 U\)
+となり、ウィルソンの作用（\(\beta = 6/g^2\)）は
+
+\[
+S_G = \beta\sum_P\left(1 - \tfrac13\,{\rm Re}\,{\rm tr}_3 U_P\right) = \frac{1}{g^2}\sum_P {\rm Tr}_{\mathbb O}\!\left(1 - U_P\right) \tag{7.1}
+\]
+
+と書ける。\(U_P\) は格子の最小の四角を一周したリンクの積である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8.
+著者のこれまでの読み方との対応}\label{ux8457ux8005ux306eux3053ux308cux307eux3067ux306eux8aadux307fux65b9ux3068ux306eux5bfeux5fdc}
+
+著者はこれまで、八元数を二つの四元数の組 \(o = q + p\,\ell\)
+として読んできた
+{[}S3{]}{[}S4{]}{[}S5{]}。\(q = t + x\mathbf{i} + y\mathbf{j} + z\mathbf{k}\)
+を外部（時空）側、\(p = R + Q_1\mathbf{i} + Q_2\mathbf{j} + Q_3\mathbf{k}\)
+を内部側とする読み方である。
+
+\(\mathbf{i},\mathbf{j},\mathbf{k} = e_1,e_2,e_3\)、\(\ell = e_7\)
+ととり、\(p\) に \(\ell\) を右から掛けると、§3 の分け方での成分は
+
+\[
+[o]_{\mathbb C} = t + iR,\qquad [o]_{\mathbb C^3} = \mathbf{x} - i\mathbf{Q} \tag{8.1}
+\]
+
+となる。色を持たない成分が \((t, R)\) の組、色を持つ成分が
+\((\mathbf{x}, \mathbf{Q})\) の組である。
+
+(8.1) の分け方では、SU(3) の変換は外部側の \(\mathbf{x}\) と内部側の
+\(\mathbf{Q}\) を組にして回す。ただしこれは、\(\ell\)
+を内部側に置く分け方を選んだ場合の見え方である。たとえば SU(3)
+の中心（位数 3 の変換）は、\(\ell\)
+を含む四元数を外部側にとる分け方では、外部側と内部側を混ぜない。この点は著者の検討メモ
+{[}S5{]}
+で数値的に確かめてある。どの分け方が選ばれるのかは決まっていない。
+
+八元数の中で固定するものを増やすと、8
+成分の分かれ方と残る自己同型は次のように変わる
+{[}S1{]}{[}S5{]}{[}X3{]}。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+固定するもの & 8 成分の分かれ方 & 残る自己同型 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+なし & 1 ＋ 7 & \(G_2\)（14 次元） \\
+虚数単位 1 つ & 2 ＋ 6 & SU(3)（8 次元） \\
+四元数の部分代数 1 つ（全体として） & 4 ＋ 4 & SO(4)（6 次元） \\
+\end{longtable}
+}
+
+本稿の §3〜§7 は、このうち 2 行目の場合を QCD
+の式に当てはめたものである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9.
+八元数の側から出たものと、外から置いたままのもの}\label{ux516bux5143ux6570ux306eux5074ux304bux3089ux51faux305fux3082ux306eux3068ux5916ux304bux3089ux7f6eux3044ux305fux307eux307eux306eux3082ux306e}
+
+本稿の書き直しで、何が八元数の性質として現れ、何を標準の QCD
+のとおりに外から置いたかを仕分ける。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+八元数の側から現れたもの
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+外から置いたままのもの
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+色の 3 成分（\(\mathbb{C}^3\)） & 時空 \(x^\mu\) と微分
+\(\partial_\mu\) \\
+色の SU(3)（\(e_7\) を動かさない自己同型） & 計量の符号 \\
+グルーオンの 8 個（15 − 7） & スピノルと \(\gamma^\mu\) \\
+色についての内積と \(\epsilon_{abc}\)（積の成分） & クォークの種類と質量
+\(m_q\) \\
+色を持たない成分（\(\mathbb{C}\)） & 結合の強さ \(g\) \\
+& 格子（§7 の場合）と、量子論としての和のとり方 \\
+\end{longtable}
+}
+
+八元数の側から現れたのは色に関する部分だけである。時空に関する部分はすべて外から置いている。また、虚数単位
+\(e_7\) を 1 つ選ぶこと自体も、本稿では手で行っている。
+
+量子論の \(i\) を \(e_7\)
+を左から掛ける操作と同一視した点にも注意が要る。\(e_7\)
+を右から掛ける操作は反線形になり（\(\psi a = \bar a\psi\)）、左と右は同じでない。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10.
+答え合わせの基準として}\label{ux7b54ux3048ux5408ux308fux305bux306eux57faux6e96ux3068ux3057ux3066}
+
+今後、背景を置かずに八元数で表した状態の関係から相互作用を読み出す検討を行うとき、強い相互作用については、次の点を照合の基準とする。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  色に相当する 3 成分と、色を持たない成分が、(3.2)
+  の分かれ方で現れるか。
+\item
+  相互作用を担う変換が、(6.2) の 7 本の条件を満たす 8 個として現れるか。
+\item
+  色を持たない組み合わせが、(3.3) の内積と \(\epsilon_{abc}\)
+  の形で現れるか。
+\item
+  グルーオンだけの項が (6.1) の形、または (7.1) の形で現れるか。
+\item
+  調節できる量が、結合の強さとクォークの質量だけになるか。
+\end{enumerate}
+
+これらは標準の QCD
+の内容を八元数の言葉で書いたものであり、新しい予言ではない。照合の結果、一致しない点が出た場合には、それを記録する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{11.
+主張しないこと}\label{ux4e3bux5f35ux3057ux306aux3044ux3053ux3068}
+
+\begin{itemize}
+\tightlist
+\item
+  QCD を八元数から導いたとは主張しない。
+\item
+  §3〜§5 の構成は Günaydin と Gürsey {[}X2{]}
+  によるもので、新しい結果ではない。§6 の展開と §7
+  の書き換えも、同じ内容を成分で書き下したものである。
+\item
+  標準理論を置き換えるとは主張しない。
+\item
+  背景の時空を置かない定式化を与えたとは主張しない。本稿は時空を外から置いている。
+\item
+  (8.1)
+  の対応が物理的に正しい読み方であるとは主張しない。これは著者の記法と
+  §3 の分け方を並べた対応表である。
+\item
+  クォークの種類、質量、電弱相互作用については何も述べていない。
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{謝辞}\label{ux8b1dux8f9e}
+
+本稿は、大野木哲也教授の公開講座 {[}X1{]}
+に多くを負っている。分かりやすく、かつ誠実なご講義に深く感謝する。本稿の内容は著者が独自に試みたものであり、誤りの責任はすべて著者にある。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsubsection{自己引用（Concept
+DOI、10.5281/zenodo.〔番号〕）}\label{ux81eaux5df1ux5f15ux7528concept-doi10.5281zenodo.ux756aux53f7}
+
+{[}S1{]} 木原範昭「投影軸の選択と保存則の共変性 ― 全波が乗る「2つの
+\(R\)」、\(1, 2, 4\)
+次元部分多元体の投射非対称性、および最小系への縮約原理 ―」2026-11-16.
+Concept DOI 10.5281/zenodo.24273723.
+
+{[}S2{]} 木原範昭「有界なヒルベルト空間と八元数による時空・素粒子の創発
+―
+光子の幾何学・中心投影から、背景時空を仮定しない四元数・八元数動力学の課題整理まで
+―」2026-11-16. Concept DOI 10.5281/zenodo.24267347.
+
+{[}S3{]} 木原範昭「複素数を正しく理解していたか ―
+振幅はどこに住むか、虚数読み、\(\mathbb{C} \to \mathbb{H} \to \mathbb{O}\)
+の帰属 ―」2026-10-23. Concept DOI 10.5281/zenodo.23585436.
+
+{[}S4{]} 木原範昭「複素数の集合から時空 (1＋3) への写像 ―
+四元数による読み出しと部分投射 ―」2026-10-18. Concept DOI
+10.5281/zenodo.23451494.
+
+{[}S5{]}
+木原範昭「八元数閉塞と関係の分解」検討メモと数値検算、2026-10-19.
+GitHub: \url{https://github.com/WurabeSeiji/ai-chat-logs-open} の
+\texttt{次元の生成構造/\allowbreak{}八元数閉塞と関係の分解\_\allowbreak{}20261019/\allowbreak{}}（Zenodo
+未登録）.
+
+\subsubsection{外部文献}\label{ux5916ux90e8ux6587ux732e}
+
+{[}X1{]}
+大野木哲也「素粒子の世界をコンピュータ上でどこまで再現できるか？」大阪大学大学院理学研究科
+公開講座 サイエンスナイト 2026、2026 年 11 月 18 日。
+
+{[}X2{]} M. Günaydin and F. Gürsey, ``Quark structure and octonions,''
+\emph{J. Math. Phys.} 14, 1651--1667 (1973).
+
+{[}X3{]} J. C. Baez, ``The Octonions,'' \emph{Bull. Amer. Math. Soc.}
+39, 145--205 (2002). DOI 10.1090/S0273-0979-01-00934-X.
+arXiv:math/0105155
+
+{[}X4{]} K. G. Wilson, ``Confinement of quarks,'' \emph{Phys. Rev.~D}
+10, 2445--2459 (1974). DOI 10.1103/PhysRevD.10.2445
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{付録：検算プログラム}\label{ux4ed8ux9332ux691cux7b97ux30d7ux30edux30b0ux30e9ux30e0}
+
+\texttt{verify\_\allowbreak{}qcd\_\allowbreak{}octonion\_\allowbreak{}paper\_\allowbreak{}v1.py}（Python 3、NumPy）。本文の
+(3.1)〜(8.1) を、乱数で作った値で確かめる。乱数の種は固定してあり、25
+項目がすべて成立する。出力は
+\texttt{results/\allowbreak{}verify\_\allowbreak{}qcd\_\allowbreak{}octonion\_\allowbreak{}paper\_\allowbreak{}v1.txt} に保存した。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{区分}\label{ux533aux5206}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+区分
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+内容
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+恒等式・既知の数学 & (3.1) の積の表とノルムの乗法性／(3.2)
+の分解／(3.3)(3.4) の積の成分表示／(4.1)(4.2) \(e_7\)
+を動かさない自己同型が SU(3) であること {[}X2{]}{[}X3{]}／(5.2)
+トレースの関係／(6.2) の 7 本の条件と 15 − 7 ＝ 8／(7.1)
+ウィルソン作用の書き換え／§8 の表（\(G_2\) の部分群） \\
+書き直し（内容は標準の QCD と同じ） & (5.1)
+ラグランジアンの八元数表示／(6.1) 第 1 項の成分展開 \\
+読み・解釈 & §6 の幾何としての読み（3 枚の平面と、連動する回転）／(8.1)
+著者の記法との対応 \\
+整理 & §9 の仕分け／§10 の照合の基準 \\
+未解決・本稿の範囲外 &
+時空・スピノル・計量の符号を八元数の側から読み出すこと／虚数単位 \(e_7\)
+と分け方が何によって選ばれるか／左から掛ける操作と右から掛ける操作の違いの意味／クォークの種類・質量・電弱相互作用 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{版の履歴}\label{ux7248ux306eux5c65ux6b74}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{v1.0（2026-11-19）：} 初版。大阪大学公開講座 {[}X1{]}
+  を聴講して作成した勉強中のメモをもとに、論文の形に整理した。
+\item
+  整理・検算環境：Claude（Claude Code）を利用。§6
+  の成分展開は、claude.ai
+  での検討をもとに著者が確認したものである。本文の数式はすべて付属のプログラムで検算した。
+\end{itemize}
+
+\end{document}
