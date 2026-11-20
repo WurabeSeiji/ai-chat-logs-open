@@ -266,6 +266,8 @@ for r, m, n in itertools.product(range(8), repeat=3):
     lhs += 0.5 * T[r, m, n] * mul(E[r], mul(conj(E[m]), E[n]))
 rhs = np.einsum('mmn->n', T)
 check(3, "ビアンキ恒等式のもとで 𝔇𝔉 の e_ν 成分 = D_μF_μν", np.abs(lhs - rhs).max())
+err = max(abs(mul(conj(E[m]), E[n])[0] - (m == n)) for m in range(8) for n in range(8))
+check(3, "Re(ē_μ e_ν) = δ_μν  (𝔉 = ½Σ ē_μ e_ν F_μν は虚部だけ、7 成分)", err)
 pairs8 = [(m, n) for m in range(8) for n in range(m + 1, 8)]
 Top = np.array([[chi[m, n, r, s] for (r, s) in pairs8] for (m, n) in pairs8])
 ev = np.round(np.linalg.eigvalsh(Top), 6)
@@ -303,6 +305,24 @@ for _ in range(100):
     tang = np.concatenate([[-np.sin(tA)], np.zeros(6), [np.cos(tA)]])
     e1 = max(e1, abs(G @ tang + np.sin(tA + tB + tC)))
 check(11, "一つの複素平面では、接線方向の成分 = −sin(θ_A+θ_B+θ_C)", e1)
+
+# ---- §11 参考: §5 の連続の流れ (§17 で退けられる更新) を小さな系で一例だけ走らせる
+def flow_once(weighted, Nn=6, steps=400, eps=0.01):
+    os2 = np.array([rnd(True) for _ in range(Nn)])
+    sign = np.array([1] + [-1] * 7)
+    for _ in range(steps):
+        Qc = np.einsum('ijk,bi,cj->bck', M, os2, os2) * sign          # conj(o_B o_C)
+        c = np.einsum('ak,bck->abc', os2, Qc)                          # c_ABC = Re(o_A o_B o_C)
+        w = (1 + c) / 2 if weighted else np.ones_like(c)
+        G = np.einsum('abc,bck->ak', w, Qc) - np.einsum('abc,abc->a', w, c)[:, None] * os2
+        os2 = os2 + eps * G
+        os2 /= np.linalg.norm(os2, axis=1, keepdims=True)
+    Qc = np.einsum('ijk,bi,cj->bck', M, os2, os2) * sign
+    return np.einsum('ak,bck->abc', os2, Qc).min()
+
+
+print(f"[§11] 参考  連続の流れを N = 6 で一例: 重み一定で c の最小 = {flow_once(False):.4f}、"
+      f"距離の重み (1+c)/2 で c の最小 = {flow_once(True):.4f}  (1 なら全員が同じ値に揃った)")
 
 # ---- §12 倍音の和、干渉項、視野角
 e1 = 0.0
