@@ -309,10 +309,46 @@ def build_cues() -> list[dict]:
     ]
 
 
-def load_image_asset(prefix: str) -> Image.Image:
-    jpg_path = find_asset(prefix, ".jpeg")
-    print(f"Loading image: {os.path.basename(jpg_path)}")
-    return Image.open(jpg_path).convert("RGB")
+def load_video_frames(mp4_path: str) -> list[Image.Image]:
+    probe = subprocess.check_output(
+        [
+            "ffprobe", "-v", "error",
+            "-select_streams", "v:0",
+            "-show_entries", "stream=width,height",
+            "-of", "csv=p=0",
+            mp4_path,
+        ],
+        text=True,
+    ).strip()
+    vw, vh = map(int, probe.split(","))
+    raw = subprocess.check_output(
+        [
+            "ffmpeg", "-v", "error",
+            "-i", mp4_path,
+            "-f", "rawvideo",
+            "-pix_fmt", "rgb24",
+            "-",
+        ]
+    )
+    frame_bytes = vw * vh * 3
+    n_frames = len(raw) // frame_bytes
+    return [
+        Image.frombytes("RGB", (vw, vh), raw[i * frame_bytes : (i + 1) * frame_bytes])
+        for i in range(n_frames)
+    ]
+
+
+def load_scene_source(prefix: str):
+    try:
+        mp4_path = find_asset(prefix, ".mp4")
+        print(f"Loading video (audio stripped): {os.path.basename(mp4_path)}")
+        frames = load_video_frames(mp4_path)
+        print(f"  -> Loaded {len(frames)} frames.")
+        return frames
+    except FileNotFoundError:
+        jpg_path = find_asset(prefix, ".jpeg")
+        print(f"Loading image: {os.path.basename(jpg_path)}")
+        return Image.open(jpg_path).convert("RGB")
 
 
 def render_pan_zoom(
@@ -351,17 +387,38 @@ def render_pan_zoom(
     )
 
 
+def render_slow_video_frame(
+    frames: list[Image.Image],
+    progress: float,
+    z0: float,
+    z1: float,
+    cx0: float,
+    cy0: float,
+    cx1: float,
+    cy1: float,
+) -> Image.Image:
+    n = len(frames)
+    p = max(0.0, min(1.0, progress))
+    pos = p * (n - 1)
+    idx0 = int(pos)
+    idx1 = min(n - 1, idx0 + 1)
+    frac = pos - idx0
+
+    frame = Image.blend(frames[idx0], frames[idx1], frac) if (frac > 1e-4 and idx0 != idx1) else frames[idx0]
+    return render_pan_zoom(frame, progress, z0, z1, cx0, cy0, cx1, cy1)
+
+
 def main():
-    src30 = load_image_asset("30)")
-    src31 = load_image_asset("31)")
-    src32 = load_image_asset("32)")
-    src33 = load_image_asset("33)")
-    src34 = load_image_asset("34)")
-    src35 = load_image_asset("35)")
-    src36 = load_image_asset("36)")
-    src37 = load_image_asset("37)")
-    src38 = load_image_asset("38)")
-    src39 = load_image_asset("39)")
+    src30 = load_scene_source("30)")
+    src31 = load_scene_source("31)")
+    src32 = load_scene_source("32)")
+    src33 = load_scene_source("33)")
+    src34 = load_scene_source("34)")
+    src35 = load_scene_source("35)")
+    src36 = load_scene_source("36)")
+    src37 = load_scene_source("37)")
+    src38 = load_scene_source("38)")
+    src39 = load_scene_source("39)")
     bgm = find_asset("30)", ".mp3")
 
     xfade_dur = 0.85
@@ -420,7 +477,10 @@ def main():
         for s_idx, (st, en, src, z0, z1, cx0, cy0, cx1, cy1) in enumerate(scenes):
             if st <= t < en:
                 prog = (t - st) / max(0.001, en - st)
-                frame_img = render_pan_zoom(src, prog, z0, z1, cx0, cy0, cx1, cy1)
+                if isinstance(src, list):
+                    frame_img = render_slow_video_frame(src, prog, z0, z1, cx0, cy0, cx1, cy1)
+                else:
+                    frame_img = render_pan_zoom(src, prog, z0, z1, cx0, cy0, cx1, cy1)
                 active.append((s_idx, st, en, frame_img))
 
         if len(active) == 1:
