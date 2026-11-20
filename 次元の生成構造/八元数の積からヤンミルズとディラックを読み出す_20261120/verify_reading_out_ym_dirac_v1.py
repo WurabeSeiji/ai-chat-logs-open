@@ -446,4 +446,40 @@ note(17, "一回ごとの値は変わる (一回だけ見ると保存されな�
 check(17, "1 の n 乗根の総和は 0、m 乗の総和も m が n の倍数でなければ 0",
       max(abs(np.sum(np.exp(2j * np.pi * np.arange(n) * m / n))) for m in range(1, n)))
 
+print("=" * 20, "追記 (§20)", "=" * 20)
+# ---- §20.1 虚部と結合子
+e1 = e2 = 0.0
+for _ in range(300):
+    x, y, w = rnd(), rnd(), rnd()
+    e1 = max(e1, abs((mul(mul(x, y), w) - mul(x, mul(y, w)))[0]))
+    qx, qy, qw = [np.concatenate([rng.normal(size=4), np.zeros(4)]) for _ in range(3)]
+    e2 = max(e2, np.abs(mul(mul(qx, qy), qw) - mul(qx, mul(qy, qw))).max())
+check("20.1", "括弧の付け替えの差 (xy)z − x(yz) は実部を持たない (純虚)", e1)
+check("20.1", "三つが一つの四元数 <1,e1,e2,e3> に入っていれば、括弧の付け替えの差は 0", e2)
+
+# ---- §20.2 無名な和とモーメント
+def csums(os_):
+    os_ = np.array(os_)
+    Qc = np.einsum('ijk,bi,cj->bck', M, os_, os_) * np.array([1] + [-1] * 7)
+    c = np.einsum('ak,bck->abc', os_, Qc)
+    return c.sum(), (c ** 2).sum()
+
+
+A_ = np.array([rnd(True) for _ in range(9)])
+B_ = np.linalg.qr(rng.normal(size=(9, 9)))[0] @ A_          # 2 次のモーメント Σ o oᵀ は同じ、中身は別の集まり
+(sA1, sA2), (sB1, sB2) = csums(A_), csums(B_)
+check("20.2", "2 次のモーメント Σ o oᵀ が同じ二つの集まりで、Σc² が一致する",
+      max(np.abs(A_.T @ A_ - B_.T @ B_).max(), abs(sA2 - sB2)))
+note("20.2", "同じ二つの集まりで、Σc は一致しない (中身は別である)", abs(sA1 - sB1) > 1e-3, f"Σc = {sA1:.4f} と {sB1:.4f}、Σc² = {sA2:.4f} と {sB2:.4f}")
+
+# ---- §20.3 三つの積の冪
+e1 = 0.0
+for _ in range(200):
+    x, y, w = rnd(True), rnd(True), rnd(True)
+    X1, X2 = mul(mul(x, y), w), mul(x, mul(y, w))
+    for nn in (2, 3, 5, 8):
+        tn = np.cos(nn * np.arccos(np.clip(X1[0], -1, 1)))
+        e1 = max(e1, abs(power(X1, nn)[0] - tn), abs(power(X1, nn)[0] - power(X2, nn)[0]))
+check("20.3", "Re((o_A o_B o_C)ⁿ) = cos nΘ (c = cosΘ)。括弧の付け方によらない", e1)
+
 print(f"\n合計 {len(results)} 項目、成立 {sum(results)}、不成立 {len(results)-sum(results)}")
