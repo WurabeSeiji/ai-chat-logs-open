@@ -1,0 +1,956 @@
+# Reading Out Yang–Mills and Dirac from the Product of Octonions
+## ― A Thought Experiment in the Reverse Direction: The Hypothesis That Action, Distance, and Coupling Are One Number ―
+
+**Author:** Noriaki Kihara (WF System Co., Ltd.)  ORCID 0009-0004-6753-4020
+**Date:** 2026-11-20    **Version:** v1.0
+**Version DOI:** 10.5281/zenodo.24387754    **Concept DOI:** 10.5281/zenodo.24387753
+**License:** CC BY 4.0
+
+---
+
+## Abstract
+
+The author has been working toward the goal of reading out spacetime, particles, and interactions from the relations among the states of a complex Hilbert space, without placing a background spacetime. In the preceding paper [S1], the Lagrangian of quantum chromodynamics (QCD) was written down in octonions. While considering, in the course of that work, which operations on octonions could express the Yang–Mills equation [X1] and the Dirac equation [X2], the author noticed that the direction was reversed. This paper records that thought experiment in the order in which it was carried out.
+
+Only one rule is placed. States are represented by octonions, and the product of octonions determines the next state. This product is computed not as the square of a norm but as the product as it stands, including the cross terms. Then a single number, the real part of the product of three octonions, plays the following three roles at once. (1) Action. Read with all three as "links", it takes the form of the Yang–Mills action; read with the middle one as a "link" and the two ends as "matter", it takes the form of the Dirac action. (2) Distance. It is the distance, measured by triangulation, between the position pointed to by the product of two and the third. (3) Coupling coefficient. That distance becomes, as it stands, the weight of the action. No gauge field, no particle species, no kinds of interaction, and no arrangement of operations are given from outside. Only the initial state is given from outside.
+
+The forms in (1) and (2) follow from known facts and simple calculations. This paper checks them with the attached program. (3), and what lies beyond it, namely that "computing the coefficient of the action is, as it stands, reading out spacetime", is a hypothesis and requires verification. As the conclusion of the thought experiment, the author arrived at two hypotheses about the ruler that bears the distortion of gravity. Which is right, whether both are right, or whether both are wrong, is not known. Deciding this is the next task. Readings noticed after the paper was written (such as reading the imaginary part of the triple product) are added at the end.
+
+This is a hypothesis paper and an interpretation paper. It contains no new theorem. Most of the parts are known. What this paper states is that, when the known parts are placed side by side, they can be interpreted in this way.
+
+**Keywords:** octonions, Yang–Mills equation, Dirac equation, real part of the triple product, triangulation, coupling coefficient, viewing angle, harmonics, self-consistency, finite order, anonymity, gnomonic projection, ruler, Higgs field, thought experiment, hypothesis
+
+---
+
+## How to Read This Paper
+
+**Order.** This paper is written not from the conclusion but in the order in which the thought experiment was carried out. If only the conclusion is shown first, the theory looks like a leap. Each step along the way is small, and each is either a known fact or a simple calculation. At each step the reader can check for themselves whether that step is right. The author's process of thought is itself the handle for verification and the guide for the reader. §2 is the consideration on the night before the thought experiment, §3–§18 are the thought experiment, §19 is the summary, and §20 is an addendum of readings noticed after the paper was written.
+
+**Record of misreadings.** In the course of the thought experiment, misreadings and errors of interpretation occurred many times. They are written, as they are, at the places where they occurred, because many readers will make the same misreading at the same place.
+
+**Speakers.** The thought experiment was carried out as a dialogue. [Kihara] is the author. [Claude] is Claude Code and claude.ai (both Claude Fable 5.2).
+
+**Marking of status.** Claims and hypotheses are written as plain assertions. The status of each claim is then marked by one of the following four.
+
+| Mark | Meaning |
+|---|---|
+| [Known] | Known mathematics or physics. A source is given. Not proved in this paper |
+| [Checked] | Checked numerically with the attached program (Appendix A) |
+| [Hypothesis, unverified] | The author's hypothesis. Verification is required |
+| [Juxtaposed] | A point that conflicts with another consideration, or that the author cannot decide at present. Both are placed side by side without choosing one |
+
+**Notation.** The units of the octonions are $1, e_1, \dots, e_7$. The product is $e_ie_j = -\delta_{ij} + f_{ijk}e_k$, and the triples with $f_{ijk} = +1$ are (123), (145), (176), (246), (257), (347), (365) and their cyclic permutations (the same table as in the preceding paper [S1]). An octonion is written $o = a + b$ ($a$ is the real part, $b$ is the imaginary part with seven components). The conjugate is $\bar o = a - b$.
+
+---
+
+## 1. Motivation
+
+I have been studying the direction of reading out spacetime, particles, and interactions from the relations among the states of a complex Hilbert space, without placing a background spacetime [S2][S9][S10][S11]. In the preceding paper [S1], I examined whether the Lagrangian of QCD, which I had not taken up until then, could be written down in octonions.
+
+In the course of that examination, I noticed that the Yang–Mills equation and the Dirac equation are extremely important for solving the dynamics. I therefore examined by which operations on octonions each of them could be expressed. As a result, I noticed that the direction was reversed.
+
+Only one rule is placed. States are represented by octonions, and the product of octonions determines the next state. When this product is computed not as the square of a norm but as the product as it stands, including the cross terms, the terms required by the Yang–Mills equation and the Dirac equation can be read out as different readings of the same product. No gauge field, no particle species, no kinds of interaction, and no arrangement of operations are given from outside. Only the initial state is given from outside.
+
+In symbols, this rule is a map $\Psi : \{O\} \to \{O\}'$ that sends a collection of states $\{O\}$ to the next collection of states $\{O\}'$. As an image, it is close to a map $\{O\}^2 \to \{O\}'$ that forms all the products among the states and then returns to the original number (§2.1; whether the product is of two or of three is in the [Juxtaposed] item of §5, and the concrete form of $\Psi$ is item 5 of §19.3).
+
+Furthermore, the real part of the same product is the distance between states measured by triangulation. That distance becomes, as it stands, the coupling coefficient of the action. Therefore it is expected that computing the coefficient of the action is, as it stands, reading out spacetime.
+
+To express localization, harmonics are used, as in my previous papers [S7][S22][S27]. From the assumption that the Hilbert space is finite and bounded, two readings as closed phase spaces become possible: $S^1$, reading the octonion as 1+7, and $S^3$, reading it as (1+3)+(1+3), two quaternions. As a result, there is a possibility that local time, and local spatial distance and direction, can be read out. There is also a possibility that, without giving particle species from outside, they can be read out as differences of interaction.
+
+**Work from a nearby standpoint.** As attempts to read out space from the states of a Hilbert space without placing a background spacetime, there are [X25][X26]. Their handle is quantum entanglement, which differs from the product of octonions used here.
+
+**Relation to the preceding paper.** The preceding paper started from standard QCD and wrote it in octonions. The standard theory was "the thing to be copied". This paper starts from octonion states and their product, and reads out Yang–Mills, Dirac, distance, and coupling coefficients from them. The standard theory becomes "the reference for checking answers". The preceding paper is used, as it is, as that reference.
+
+---
+
+## 2. Prior Considerations
+
+On the night before the thought experiment, I was examining, with Claude Code, the update rule of a numerical experiment with octonions. There I was thinking about the following. Some points are not fully consistent with the flow of the thought experiment, but they are used in its sections, so they are listed first.
+
+### 2.1 Interaction is a single operation
+
+The numerical experiments until then added states together and normalized afterwards. I had Claude expand the standard equations of motion into operations on octonions. Claude wrote a document that placed the Yang–Mills equation as a premise from outside. I rejected it.
+
+**A misreading that occurred here.** Claude wrote "place two octonions and make a rotation from that pair".
+
+> [Kihara] Why can two be chosen? How can the two that interact be chosen? The processing is completed in a single step. If there are N octonions, compute N×N, and return the result to N in a single operation. Interaction has three parts: choosing the partner, computing with the partner, and updating oneself and the partner. These three are executed in just one operation, without any IF statement.
+
+> [Kihara] This is the very definition of least action, δS. One acts even with a partner at the edge of the universe. One also acts with oneself. But the coupling constant of the action (you may call it emission and absorption, or reflection and transmission) becomes extremely small, so the result is the same as if no interaction had occurred. The result of accumulating that is the sum-of-products operation.
+
+This is the very definition of least action. One acts with a partner at the edge of the universe and with oneself. Because the coefficient of the action becomes extremely small, the result is merely the same as if no interaction had occurred. What accumulates this is the sum-of-products operation. [Hypothesis, unverified]
+
+### 2.2 The total is conserved because one acts with everyone at once
+
+> [Kihara] Here is the question. The reason why the power does not change under the sum of products. It is not that emission and absorption occur between two; emission and absorption occur all at once with everything, including oneself, and that is why the total does not change. If pairs of two are processed repeatedly, the power is not conserved.
+
+With a rotation, the total (the power) does not change however much one rotates. No normalization is needed. But pairs of two are not processed in turn. Emission and absorption are carried out at once with everyone, including oneself. That is why the total does not change.
+
+This was checked in a system of complex numbers. For states $z_e$, make the antisymmetric $K_{ef} = {\rm Im}(\bar z_e z_f)$, and apply a single rotation $\exp(\kappa K)$ ($\kappa$ real) to everyone at once. [Checked]
+
+| Procedure | Total |
+|---|---|
+| Apply a single N×N rotation to everyone at once | Unchanged. In each row the sum of $\lvert U_{ij}\rvert^2$ is 1 |
+| Compute pair by pair separately, and add | Changes (example: 7.850 → 9.308) |
+| Apply pair by pair in sequence | Unchanged, but the result changes when the order is reversed |
+
+Conservation is not a property of each pair. It comes from the fact that the shares given to everyone, including oneself, form a single balance.
+
+### 2.3 The rotation is not given from outside. Distance is determined by viewing angle and size
+
+Nobody gives the rotation matrix from outside. Neither a reflectance nor an angle of rotation is given from outside. The rotation is determined spontaneously from the octonion states. The Yang–Mills equation must be answering how this angle of rotation is determined. The point is "strength of coupling × coefficient of propagation", and the coefficient of propagation is a function of distance.
+
+Then what is distance? Distance is determined by the mutual viewing angle and the size of the partner [S8]. To determine distance including direction in three dimensions, at least four bodies are needed (the author's examination of the readout of three spatial directions is [S28]).
+
+Whether a single operation suffices or whether it must be repeated until self-consistency was not known at this point. [Hypothesis, unverified]
+
+### 2.4 Localization is made by stacking harmonics downward
+
+A bare octonion is not localized. It has a central phase but no extent. If the amplitude is read as size, as many peaks stand as the winding number, and as many things would exist.
+
+To make only one peak stand, harmonics are stacked not upward but downward, down to the wave for which the bounded, closed circumference is one period (the base wave). Since it is a standing wave on a bounded, closed circumference, the wavelength is always an integer fraction of the circumference. The numbers of peaks are as follows. [Checked]
+
+| Stacking (winding number 12) | Number of highest peaks |
+|---|---|
+| Only the wave of winding number 12 | 12 |
+| Stacked upward (orders 12, 24, 36, 48) | 12 |
+| Stacked downward (orders 12 down to 1) | 1 |
+
+The central phase of the base wave, whose single period is the whole circumference, becomes, as it stands, the center of localization. The base wave, which is the least localized, determines the center, and the highest order (the resolution) determines the extent. When the highest order is changed to 6, 12, 24, 48, the position of the peak does not change, and only the width narrows in nearly inverse proportion. [Checked] This is the same structure as stated in [S7]: "resolution is not a property of the wave but a gauge of the observer".
+
+The orders to be stacked are most likely all orders down to 1; otherwise many sidebands stand. However, the arrangement of the amplitudes of the harmonics (the waveform) is not decided. Whether the amplitudes are equal, or a waveform shaped so that sidebands decrease, is an open task. [Hypothesis, unverified]
+
+Unless both odd and even harmonics are present, a peak of one's own shadow appears exactly on the opposite side, at 180°. The value of the autocorrelation at 180° is 0 when both are present, −1 with only odd, and +1 with only even. [Checked]
+
+### 2.5 What determines the coupling is the viewing angle, and the viewing angle is an area
+
+Distance is the difference of phase. But the viewing angle is different. Even if far away, if the resolution of the partner is low, its extent is large and the viewing angle is large. Even if near, if the resolution of the partner is high, its extent is narrow and the viewing angle is small. What determines the coupling is not the distance but the viewing angle. [Hypothesis, unverified]
+
+The circumference $S^1$ is one-dimensional, yet the viewing angle is an area. For two states $a, b$, the real and imaginary parts of the cross term are
+$$
+{\rm Re}(\bar a b) = \lvert a\rvert\lvert b\rvert\cos\vartheta,\qquad \lvert{\rm Im}(\bar a b)\rvert = \lvert a\rvert\lvert b\rvert\sin\vartheta \tag{2.1}
+$$
+($\vartheta$ is the angle between $a$ and $b$ regarded as vectors with eight components). The imaginary part is the area of the parallelogram spanned by the two. This holds for complex numbers and for octonions. [Checked]
+
+### 2.6 The worries remaining at this point
+
+- How to determine the rotation from the states.
+- How to read distance and viewing angle from octonions.
+- When the octonion is read as 1+7, the central phase $\theta$ expresses position, but the direction is not known. Directions are lacking. Perhaps the reading (1+3)+(1+3) is being made at the same time, not only 1+7.
+- There is also the choice of multiplying from the left or from the right.
+- There is the idea of adding a scalar cos wave as the Higgs field. A Higgs field lined up at equal intervals becomes the ruler of spacetime. In the 1+7 reading, the central phase on the circumference becomes, as it stands, the local clock $\tau$.
+- That Higgs field perhaps cannot be rotated (does not rotate) in interaction. Being a scalar wave, it has the concept of phase and yet does not have it, because it has no imaginary part.
+- Who determines the radius of curvature R of the circumference? Is it always constant? When there is a localized wave, the center of gravity of the circumference moves. Where the power is large, the local curvature should change. My expectation is that the circle stays a true circle and only the interval of the ruler changes. For that, $S^1$ alone lacks a direction. Perhaps it is distorted in the vertical direction of a cylinder (the radius does not change, but $x^2 + \tau^2$ changes). The image is not yet clear to me.
+- Is copying the first term (the gauge-field term) of the QCD Lagrangian into octonions a map of spacetime, or a map of an internal space? If it is the internal space, the three charge axes are fixed at 120°, and all distances become equal.
+- Perhaps the second term of the Lagrangian (the matter term) has in effect been taken in.
+- Perhaps, when the product of states is computed, the cases that look like Yang–Mills, the cases that look like Dirac, and the cases that look like their mixture are simply arising by themselves.
+
+The last point became the starting point of the thought experiment the next morning.
+
+---
+
+## 3. Rewriting the Yang–Mills Equation in Octonions
+
+The thought experiment began from the question of what the Yang–Mills equation is.
+
+[Known] The Yang–Mills equation [X1] is a field equation that extends the Maxwell equations to groups in which the order of multiplication cannot be exchanged. The field strength is $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu + [A_\mu, A_\nu]$, the equation of motion is $D_\mu F^{\mu\nu} = J^\nu$, and the Bianchi identity is $D_{[\lambda}F_{\mu\nu]} = 0$.
+
+What happens when it is rewritten in octonions?
+
+[Known] If the octonions themselves are taken as the values of the gauge field, it does not work. Since the octonions do not satisfy associativity, the set $S^7$ of unit octonions is not a group (there is an attempt to build, on a continuous spacetime, a gauge theory whose structure is $S^7$ [X16]). A way that works uses the group $G_2$ of transformations that preserve the octonion product. When one imaginary unit is fixed, the subgroup that does not move it is SU(3) [X3][X5]. The preceding paper [S1] used this way.
+
+[Claude] explained that, in eight dimensions, the equation of motion is gathered into a single equation using octonions.
+$$
+\mathfrak{D}\mathfrak{F} = \mathfrak{J},\qquad \mathfrak{D} = \sum_\mu e_\mu D_\mu,\quad \mathfrak{F} = \tfrac12\sum_{\mu\nu}\bar e_\mu e_\nu F_{\mu\nu},\quad \mathfrak{J} = \sum_\nu e_\nu J_\nu \tag{3.1}
+$$
+($\mu = 0, \dots, 7$, $e_0 = 1$.) The reason lies in the following decomposition of the octonion product.
+$$
+e_\rho(\bar e_\mu e_\nu) = \delta_{\rho\mu}e_\nu - \delta_{\rho\nu}e_\mu + \delta_{\mu\nu}e_\rho + \chi_{\rho\mu\nu\sigma}e_\sigma \tag{3.2}
+$$
+$\chi$ is totally antisymmetric. The failure of associativity appears only in the $\chi$ term, and the Bianchi identity cancels it exactly. As a result, the $e_\nu$ component of (3.1) agrees with $D_\mu F_{\mu\nu} = J_\nu$. [Checked] (That is, (3.2), and the agreement of the components of (3.1) for an arbitrary quantity satisfying the Bianchi identity.) Related known work includes first-order equations in higher dimensions [X14] and the octonionic instanton [X15]. Whether the form (3.1) itself appears in those papers has not been confirmed by the author.
+
+The 28 components of $F_{\mu\nu}$ split into 7 components and 21 components. $\mathfrak{F}$ has only an imaginary part and picks up only the 7 components among them. [Checked]
+
+**My impression at this point.** $\mathfrak{D}\mathfrak{F} = \mathfrak{J}$ is remarkably simple.
+
+---
+
+## 4. Squaring As It Stands, Not the Square of the Norm
+
+[Claude] explained the action as "the square of the octonionic norm of $\mathfrak{F}$".
+
+> [Kihara] Instead of taking the square of the norm, would it not be easier to understand the meaning of the cross terms if we think of it as the square of the octonion as it stands?
+
+Square $\mathfrak{F} = \sum_i e_i F_i$ ($F_i$ takes values in the gauge algebra) as it stands.
+$$
+\mathfrak{F}^2 = -\sum_i F_iF_i + \tfrac12 f_{ijk}[F_i, F_j]\,e_k \tag{4.1}
+$$
+[Checked] The real part is the density of the action and corresponds to the square of the norm. The imaginary part is the cross term. It vanishes when the order of multiplication can be exchanged, as in electromagnetism, and remains only when it cannot. Taking the square of the norm discards this imaginary part from the start.
+
+Turning a square into the square of a norm and discarding the cross terms is often done in standard calculations. In my previous papers I have said that it is precisely the cross terms that carry meaning [S4][S10]. It is the same here.
+
+> [Kihara] Basically, if we think of this simply as the real and imaginary parts of a product of complex numbers, the imaginary unit merely becomes seven components, and it is not a complicated operation at all, is it?
+
+That is right. Only two things are added to the complex numbers. One is the multiplication table (seven triples) by which multiplying different imaginary units gives a third imaginary unit. The other is that, when three directions not belonging to the same triple are multiplied, the result changes with the placement of parentheses. [Known] As long as only the same two elements are multiplied, the result does not depend on the placement of parentheses (alternativity) [X3]. [Checked]
+
+---
+
+## 5. The Product of Octonions Determines the Next Octonion
+
+> [Kihara] If there are n octonions related to the action, can a variation by product be defined in which the product of all of them determines the next octonion?
+
+With three, it can be defined without contradiction.
+
+[Known] [Checked] The real part of the product of three octonions does not depend on the placement of parentheses, and is cyclic.
+$$
+{\rm Re}((xy)z) = {\rm Re}(x(yz)) = {\rm Re}((yz)x) \tag{5.1}
+$$
+With four, the real part depends on the placement of parentheses. [Checked] Three is the largest number for which the real part is determined independently of parentheses. This is not something chosen; it is a property of the octonions.
+
+Write the product of two, and the real part of the product of three, in components.
+$$
+xy = (a_xa_y - b_x\cdot b_y) + (a_xb_y + a_yb_x + b_x\times b_y) \tag{5.2}
+$$
+$$
+{\rm Re}(o_1o_2o_3) = a_1a_2a_3 - a_1(b_2\cdot b_3) - a_2(b_1\cdot b_3) - a_3(b_1\cdot b_2) - \varphi(b_1, b_2, b_3) \tag{5.3}
+$$
+Here $(b\times c)_k = f_{ijk}b_ic_j$ is the seven-dimensional cross product, and $\varphi(b_1,b_2,b_3) = f_{ijk}b_1^ib_2^jb_3^k$. [Checked] The only terms absent in the complex case are the cross product and $\varphi$.
+
+Let the action be $S = {\rm Re}(o_1o_2o_3)$. Since ${\rm Re}(xw) = \langle x, \bar w\rangle$, the variation with respect to $o_1$ is $\overline{o_2o_3}$. Setting $o_1' = \overline{o_2o_3}$, $S$ reaches its maximum value 1. Since the norm is preserved by the product, no normalization is needed. [Checked]
+
+If there is only one triple, it reaches $o_1o_2o_3 = 1$ in one move and stops. [Checked] If there are M triples sharing octonions, then for each octonion the contributions from all triples containing it are added.
+$$
+V_A = \sum_{B,C} W_{ABC}\,\overline{o_Bo_C} \tag{5.4}
+$$
+$W_{ABC}$ is an array expressing which three form a triple.
+
+**A misreading that occurred here (understood later).** [Claude] wrote the next state as $o_A' = V_A/\lvert V_A\rvert$, explaining that normalization is needed because the norm is not preserved when a sum is taken. It also wrote a continuous flow (a gradient flow) in which the action increases monotonically and stops. This goes against "no normalization afterwards" in §2.2. This error is corrected in §15 and §17. That the array $W$ was given from outside also becomes a problem in §9.
+
+**[Juxtaposed] Product of two, or product of three.** In the prior consideration (§2.1), I thought of computing N states as N×N and returning to N. In this section, the product of three octonions was taken as the basis. In §10, a two-step wording appears: choose two (including oneself), and then choose one more. Which is the right way to state the rule, the author cannot decide at present. They are placed side by side.
+
+---
+
+## 6. Is This Not the Form of Yang–Mills?
+
+> [Kihara] It is strange, but is this not, extremely simply, an expression of the variational formula of Yang–Mills?
+
+It is.
+
+[Known] In lattice gauge theory [X10], link variables are multiplied along a closed path, and the invariant part of the product is read. That becomes the action, and in the continuum limit it becomes the square of the field strength.
+
+Multiplying three octonions as a closed set has the same form. Putting the three sides as $o = \exp(\varepsilon a), \exp(\varepsilon b), \exp(\varepsilon c)$ ($a, b, c$ imaginary octonions),
+$$
+{\rm Re}(o_Ao_Bo_C) \to 1 - \tfrac12\lvert\mathfrak{F}\rvert^2,\qquad \mathfrak{F} = \varepsilon(a+b+c) + \varepsilon^2(a\times b + a\times c + b\times c) \tag{6.1}
+$$
+$\mathfrak{F}$ is the "closure remainder": the amount by which the product of the three fails to return to 1. For three sides closed to first order ($c = -a-b$),
+$$
+{\rm Re}(o_Ao_Bo_C) \to 1 - \frac{\varepsilon^4}{2}\lvert a\times b\rvert^2 \tag{6.2}
+$$
+and the closure remainder is only the commutator (the cross product). [Checked] (Each time $\varepsilon$ is halved, the ratio of the two sides approaches 1 as 0.962, 0.990, 0.998, 0.999.)
+
+If the three sides lie in the same complex plane, $a\times b = 0$ and no closure remainder arises. [Checked] This is the electromagnetic type. Only when the imaginary directions differ does the commutator term remain. This is the Yang–Mills type.
+
+**Scope of the claim in this section.** What was checked is the form for a single triple. It is not claimed that the Yang–Mills equation as a field theory on spacetime has come out. The form in this section is obtained with the array of triples given from outside. Whether the same form comes out without giving the array is a hypothesis and requires verification. [Hypothesis, unverified] Also, the values in this form are in $S^7$, not SU(3). Whether it can be read as SU(3) color must be worked out separately. [Hypothesis, unverified]
+
+---
+
+## 7. The Defect Leads Straight to the Dirac Equation
+
+> [Kihara] Apart from Yang–Mills, there is one more famous equation, is there not? I feel it is closer to that.
+
+[Claude] named Kuramoto's model of entrainment [X17]. The update formula of §5 has the same form as a Kuramoto-type formula in which the oscillators have moved from the unit circle to $S^7$ [X18] and the coupling has changed from two-body to three-body [X19]. Restricted to one complex plane, the component in the tangential direction of the phase is $-\sin(\theta_A+\theta_B+\theta_C)$. [Checked]
+
+> [Kihara] That it was connected to the Kuramoto model is a new discovery, but what I had in mind was the Dirac equation. Without thinking of them separately, the defect of the present expression, when it is considered as Yang–Mills, appears to connect straight to the Dirac equation.
+
+The defect, seen as Yang–Mills, was that $S^7$ is not a group. Writing $L_x$ for the operation of multiplying by the octonion $x$ from the left, $L_xL_y \ne L_{xy}$. [Checked]
+
+Yet this same operation satisfies the following relation.
+$$
+\{L_{e_i}, L_{e_j}\} = -2\delta_{ij}\qquad(i, j = 1, \dots, 7) \tag{7.1}
+$$
+[Known] [Checked] This is the relation satisfied by the gamma matrices of the Dirac equation (a Clifford algebra) [X2][X3]. That the product does not form a group is a defect for a link, but for gamma matrices it is exactly the required property.
+
+The property of becoming the Laplacian when squared is also there from the start. For $\mathfrak{D} = \sum e_\mu p_\mu$,
+$$
+\mathfrak{D}(\bar{\mathfrak{D}}x) = \lvert p\rvert^2 x \tag{7.2}
+$$
+holds for an arbitrary octonion $x$. [Checked]
+
+Furthermore, the same triple product can be read as the form of the coupling between matter and a link.
+$$
+{\rm Re}(o_Ao_Bo_C) = \bar\psi^{\,T}\,L(o_B)\,\psi,\qquad \bar\psi = \bar o_A,\quad \psi = o_C \tag{7.3}
+$$
+When $\lvert o_B\rvert = 1$, $L(o_B)$ is a rotation of eight components. [Checked] This has the same form as the term $\bar\psi U\psi$ in the Dirac action on a lattice, which joins matter at neighboring points by a link.
+
+In summary, the one and the same quantity ${\rm Re}(o_Ao_Bo_C)$ becomes
+
+- the form of the Yang–Mills action (the square of the closure remainder, (6.1)) when all three are read as "links", and
+- the form of the Dirac action ((7.3)) when the middle one is read as a "link" and the two ends as "matter".
+
+Two equations were not prepared separately and copied into octonions. They are different readings of one product.
+
+[Known] As a symmetry that exchanges these two readings, triality in eight dimensions is known [X3]. This paper has not checked that triality gives this pair of readings.
+
+(7.3) can be read as an answer to the question of §2.3, "who gives the rotation?". What gives the rotation is the state $o_B$ itself. What makes the rotation and what receives the rotation are of the same kind (octonion states). There is no room, from the start, for giving it from outside.
+
+**Scope of the claim in this section.** What was checked is the form within eight components. (7.3) is an algebraic prototype of the term that joins matter by a link. It contains neither the difference between neighboring states (what corresponds to a derivative), nor the four directions of spacetime, nor the distinction between right-handed and left-handed. It is not claimed that the Dirac equation, with the four directions of spacetime and spin read out, has come out. [Hypothesis, unverified]
+
+---
+
+## 8. Nothing Was Given, Yet Both Are Contained
+
+[Claude] listed, as things needed beyond this point, quantization (Grassmann numbers), the problem of extra particles appearing on a lattice [X11][X12], and the difference of sign between time and space. (On the sign, see §13 and §20.6.)
+
+**A misreading that occurred here.** [Claude] wrote these as "things to be added on the side of the states".
+
+> [Kihara] Is this not a task of readout, in a sense separate from the update by variation of the product of states?
+
+That is right. All three are tasks on the side of readout, not of the update rule. [Hypothesis, unverified]
+
+> [Kihara] It is strangely simple. From outside, neither the arrangement of operations, nor the particle species, nor the kinds of interaction are given; a complex Hilbert space is merely expressed in the form of an array of three octonions, and the only rule of operation laid down is that the product of all of them determines the next state. Has it not somehow become an operation that includes both Yang–Mills and Dirac? Not even a gauge field is assumed.
+
+As a form, it contains both. The reasons are as follows.
+
+- [Known] There are only four algebras in which the norm is preserved by the product: the real numbers, the complex numbers, the quaternions, and the octonions [X4]. The octonions are the largest of them.
+- [Known] In such an algebra, multiplication from the left always produces the relation (7.1).
+- [Checked] Three is the largest number for which the real part is determined independently of parentheses (§5).
+- [Known] When one imaginary unit is chosen and a complex representation is made, the octonions split into one complex number and three, which become a singlet and a triplet under SU(3) [X5][X6][X7][X8][X9]. This is why a distinction appears although no particle species was given. The view that the species of a particle is not a fixed attribute of the wave but is determined by the address on the side of the state and its relation to the clock of observation was stated in [S18].
+
+However, at this point there was still one thing that I was giving from outside.
+
+---
+
+## 9. Why Can Three Be Chosen So Conveniently?
+
+> [Kihara] Now, about the triples: this is where anonymity is broken. Do you see? Why can three be chosen so conveniently out of 3×N? Is it not strange?
+
+What breaks it is the array $W_{ABC}$. "Which three form a triple" cannot be specified without attaching names and numbers to the octonions. I have so far taken not attaching names to states (anonymity) as an axiom [S6][S9][S16].
+
+What happens if anonymity is kept and all triples are added with the same weight?
+$$
+\sum_{A,B,C}{\rm Re}(o_Ao_Bo_C) = {\rm Re}(P^3) = a^3 - 3a\lvert b\rvert^2 = R^3\cos3\theta,\qquad P = \sum_A o_A = a + b \tag{9.1}
+$$
+[Checked] It collapses into a function of the single total $P$. The cross-product and $\varphi$ terms vanish completely. The content peculiar to the octonions lies exactly in the part that anonymity erases. The forms of Yang–Mills and Dirac came out in §6 and §7 because the array was given from outside.
+
+**A misreading that occurred here.** [Claude] thought that "the triples must be chosen by the states themselves", and then wrote that, to read distance, "naming is needed to say with which three points a triangle is formed, and anonymity is broken here". Both stand on the premise that there is a stage of choosing. This is the same premise that I rejected in §2.1.
+
+---
+
+## 10. Distance Is Being Measured by Triangulation. That Distance Becomes the Coupling Coefficient
+
+> [Kihara] This is interesting: it is measuring distance by triangulation.
+
+The operation of taking the real part is the law of cosines itself. For unit octonions,
+$$
+\lvert x - y\rvert^2 = 2 - 2\,{\rm Re}(x\bar y) \tag{10.1}
+$$
+$$
+\lvert o_Ao_B - \bar o_C\rvert^2 = 2 - 2\,{\rm Re}(o_Ao_Bo_C) \tag{10.2}
+$$
+[Checked] The real part of the triple product measures the distance between "the position pointed to by the product of two" and "the position of the third (its conjugate)". Maximizing the action is minimizing the sum of squared distances. The update $o_C' = \overline{o_Ao_B}$ is a triangulation that determines the position of the third point from two points. The closure remainder, by which the triple product fails to return to 1, was $\mathfrak{F}$ of (6.1).
+
+Distance is not given from outside. At the moment it is decided to read the real part of the product, distance is in, as a readout.
+
+> [Kihara] This is how I think of it. First choose two (including oneself), then choose one more, compute the distances of all combinations, and that becomes the coupling coefficient with which the update by the product operation is made, does it not? Distant relations simply end up not coupling.
+
+This is the answer to the question of §9. There is no need to choose. Compute all combinations, and let the distance be the weight.
+
+- Anonymity is kept. The sum runs over all sets, and the weight is determined by the states alone. The array $W$ becomes not an input but a function of the states.
+- Since the weight depends on distance, the sum does not collapse into a function of a single total as in (9.1). The cross-product and $\varphi$ terms cancel at first order, but at second order their signs align and they do not vanish. The content peculiar to the octonions remains. (That the sum of squared real parts does not agree with the square of (9.1) is [Checked]. A more precise statement of how far it collapses is in §20.2.)
+- Distant relations simply do not couple. Locality, that only near things act, becomes not an assumption but a result.
+
+This can be summarized as follows. **A single number $c = {\rm Re}(o_Ao_Bo_C)$ plays three roles at once.**
+
+| Role | Content | Status |
+|---|---|---|
+| Action | The Yang–Mills form (6.1), the Dirac form (7.3) | [Checked] for a single triple |
+| Distance | The distance between the position pointed to by the product of two and the third (10.2) | [Checked] |
+| Coupling coefficient | That distance becomes the weight of the update | [Hypothesis, unverified] |
+
+The standard theory first places spacetime, and on it computes how the action propagates as a function of distance. Here it is the reverse. From the products of states, the coupling coefficients are computed. What is read from those coupling coefficients is distance, and is spacetime. **Computing the coefficient of the action is, as it stands, reading out spacetime.** [Hypothesis, unverified]
+
+In §2.3, "strength of coupling × coefficient of propagation" and "what is distance" were listed as separate questions, but they were two readings of the same computation.
+
+---
+
+## 11. Because It Is Bounded and Closed, It Becomes a Standing Wave
+
+[Claude] worried that, if things attract one another with a weight given by distance, then left alone everyone would gather at one point.
+
+**A misreading that occurred here.** This brought in the view of entrainment in an open space.
+
+> [Kihara] If the system is assumed to be bounded and closed, the phase closes at 360 degrees, so nodes form and the constraint of becoming a standing wave takes effect. The distance is bounded too.
+
+$R^3\cos3\theta$ of (9.1) is exactly a standing wave of order 3 on a closed phase. What should be asked is not "whether it collapses" but "which wave remains".
+
+To state it honestly: when the continuous flow of §5 is run for just one example with six octonions, everyone ended up at the same value, whether the weight was constant or the distance was used as the weight (a reference item in Appendix A). However, this flow is the update that is rejected in §17. Which wave remains under an update that uses neither sum nor normalization has not been checked. [Hypothesis, unverified]
+
+> [Kihara] So it is the Kuramoto model. When the variation of the product is repeated, it becomes self-consistent and becomes quasi-stationary, I suppose.
+>
+> [Kihara] In other words, the initial state is the only external parameter given to the system, and after that it moves deterministically.
+
+I have so far taken self-consistency as an axiom [S12][S15]. It is the same here. There is no number to adjust on the side of the rule. Only the initial state is given from outside. It is the same system if the whole is rotated by $G_2$, or if the states are permuted.
+
+**A misreading that occurred here.** [Claude] wrote of the form of the weight function that "it is not something derived from a theorem, but chosen as a rule".
+
+> [Kihara] If this produces results close to Yang–Mills and Dirac, then it is not a choice but physics.
+
+Every physical law becomes a law by its results agreeing with nature. This rule stands in the same position.
+
+**Amount of computation.** This computation is of order $N^3$. Even for $N = 100$ it is a million sets, which can be computed on a personal computer. Standard lattice gauge theory prepares a large number of lattice points and uses most of them to describe empty space. Here, all N are the states themselves. Not assuming a background spacetime becomes an advantage for computation. [Hypothesis, unverified] (At what N the quantities to be read out become stable is not yet known.)
+
+---
+
+## 12. Only Angles Are Being Read. The Coupling Coefficient Should Be an Area
+
+> [Kihara] What I noticed here is that being able to compute distance with three octonions is an advantage, but it is only a ratio, and what can be read is only an angle. This is what bothers me. At first sight it seems right, but I feel something is off. The coupling coefficient should have the dimension of area.
+
+The dimensions here are in the geometric unit system with $c = 1$, $G = 1$, and in addition $q_0 =$ elementary charge / 3 as the unit [S25]. $h = 1$ is not used. In this unit system, charge and mass both have the dimension of length, and the coupling coefficient (the product of two charges) has the dimension of area. [Known] In this unit system, $\hbar = 9q_0^2/\alpha \approx 1233\,q_0^2$.
+
+> [Kihara] I know how to solve this. Use the viewing angle. Using the distance to the partner and the size (extent) of the partner, compute a viewing angle with the dimension of area. If far but large, the coupling is strong; if near but small, the coupling is weak.
+
+Then what is size?
+
+> [Kihara] Formerly I thought it was the power (the amplitude), but now I think of it differently. Use harmonics. If the radius of curvature of the whole system is R, then, starting from the base wave whose wavelength is the circumference $2\pi R$, adding harmonics of the same amplitude in order produces a localized pulse, and its width is roughly the reciprocal of the highest harmonic order. And what is strange is that the central phase of this pulse is the central phase of the base wave itself.
+
+This is the same as §2.4. The sum of harmonics of equal amplitude is
+$$
+\sum_{n=1}^{N}\cos n\theta = \frac{\cos\!\big(\tfrac{(N+1)\theta}{2}\big)\sin\!\big(\tfrac{N\theta}{2}\big)}{\sin\!\big(\tfrac{\theta}{2}\big)} = \frac{\sin\!\big((N+\tfrac12)\theta\big)}{2\sin\!\big(\tfrac{\theta}{2}\big)} - \frac12 \tag{12.1}
+$$
+with central height $N$ and width about $2\pi/N$. [Checked]
+
+In octonions, harmonics are powers. When $O = A(\cos\theta + n\sin\theta)$, $O^m = A^m(\cos m\theta + n\sin m\theta)$, and powers of the same element do not depend on parentheses. [Checked] $\cos3\theta$ in (9.1) was the third harmonic.
+
+**A misreading that occurred here.** [Claude] understood the viewing angle as the ratio "size ÷ distance".
+
+> [Kihara] My definition is this. First, this difference of central phases is the angle of distance between two octonions (here consider only the base wave), 360 degrees / the highest harmonic order is the angle of size, and their product is the viewing angle with the dimension of area.
+
+**[Juxtaposed] The direction of the viewing angle.** Immediately afterwards I also said the following.
+
+> [Kihara] This I do not understand well. It seems better to think in terms of the reciprocal of the extent, but then it does not have the dimension of area, and becomes a dimensionless coupling coefficient, does it not?
+
+For the angle of distance $\Delta$ and the angle of size $\delta = 2\pi/N$, there are two forms.
+
+| Form | Expression | Dimension | Property |
+|---|---|---|---|
+| Product | $\Delta\times\delta$ | Area (in units of $R^2$) | Area of the band joining the two. Increases in proportion to distance |
+| Ratio | $(\delta_A/\Delta)\times(\delta_B/\Delta)$ | Dimensionless | Product of the angles under which each sees the other. Inversely proportional to the square of the distance |
+
+A product of an angle and an angle is, as it stands, dimensionless. The product form has the dimension of area when multiplied by $R^2$. What that R is has not yet been decided (§13, §18). Therefore the area of the product form is not yet fixed.
+
+"Even if far, the viewing angle is large if the resolution is low", stated in §2.5, belongs to the side of the ratio form. Which of them determines the coupling coefficient, the author cannot decide at present. They are placed side by side.
+
+About the ratio form, the following can be said from the interference term between pulses of harmonics. The cross term when two pulses (the same highest order $N$, amplitudes $a_A, a_B$ of each harmonic, difference of central phases $\Delta$) are superposed is $a_Aa_B\sum_{n=1}^N\cos n\Delta$. From the second form of (12.1), outside the width, its square averaged over the fast oscillation is
+$$
+a_A^2a_B^2\Big[\frac{1}{8\sin^2(\Delta/2)} + \frac14\Big] \tag{12.2}
+$$
+[Checked] For small $\Delta$ this is $a_A^2a_B^2/(2\Delta^2)$. Normalizing by the power, $a^2 = P/N = P\delta/2\pi$, so this is proportional to $P_AP_B(\delta_A/\Delta)(\delta_B/\Delta)$. It has the form of the product of the mutual viewing angles, and is inversely proportional to the square of the distance (the author's examination deriving an inverse-square force from a product readout and an area is [S24]). Inside the width ($\Delta \ll \delta$), the sum is constant at $N$ and does not depend on distance. [Checked] On the opposite side ($\Delta = 180°$) it is at its minimum and does not diverge.
+
+The case where the highest orders of the two pulses differ, and the case where the imaginary directions of the octonions differ, have not been checked. [Hypothesis, unverified]
+
+> [Kihara] This is the crux, so let us think carefully. This determines all of the action. It is an ambitious plan that tries to explain all the coupling coefficients of the weak force, the strong force, gravity, and the electromagnetic force with just one, so it is difficult.
+
+From where in this single formula the differences among the four forces come has not been derived. [Hypothesis, unverified]
+
+---
+
+## 13. What Is the Central Phase? Who Determines R?
+
+> [Kihara] The problem starts here. Then what is this central phase? For a complex number it is the $\theta$ of $Z = A(\cos\theta + i\sin\theta)$. For an octonion, the imaginary symbol merely becomes seven-dimensional. With $O = A(\cos\theta + n\sin\theta)$, the central phase is still $\theta$.
+>
+> [Kihara] In other words, in 1+7 it is merely a map onto one axis.
+
+The operation of reading the central phase looks only at the single real component of the octonion. The remaining seven components are gathered into the magnitude $A\sin\theta$, and the direction $n$ is not read. Phases can be read one by one, but directions can be read only when two are multiplied. The real part of the interference of two $m$-th harmonics with different directions is
+$$
+\cos^2(\psi/2)\cos m(\theta_A - \theta_B) + \sin^2(\psi/2)\cos m(\theta_A + \theta_B) \tag{13.1}
+$$
+($\psi$ is the angle between the two directions). [Checked] "Directions are lacking" in §2.6 refers to this.
+
+> [Kihara] The problem is that this rides on the radius of curvature R of $S^1$. That is, $\sum O^2 = R^2$. The square is not the norm.
+
+Squared as it stands,
+$$
+O^2 = (a^2 - \lvert b\rvert^2) + 2ab = A^2(\cos2\theta + n\sin2\theta) \tag{13.2}
+$$
+[Checked] so $\sum O^2 = R^2$ splits into the real condition $\sum(a^2 - \lvert b\rvert^2) = R^2$ and the seven imaginary conditions $\sum 2ab = 0$. The real part has a form split into positive and negative. With a norm everything would be positive; because it was squared as it stands, a form with split signs is in, without any assumption.
+
+> [Kihara] In a vacuum universe it is isotropic, so the local curvature equals the global curvature R. But what happens when things are localized by harmonics? Depending on the configuration, the center of gravity easily shifts from the center of the global curvature. It also seems right to think that R itself changes locally. Furthermore, for a certain pulse k, another $R_k$ can be read. And what is even stranger is that, besides R and $R_k$ read as 1+7, when it is read as (1+3)+(1+3) there is yet another way of reading R. Do you see the difficulty?
+
+For the harmonics $o_{kn} = a(\cos n\theta + n_k\sin n\theta)$ of pulse $k$,
+$$
+\sum_{n=1}^N o_{kn}^2 = a^2\,\frac{\sin N\theta}{\sin\theta}\big[\cos(N+1)\theta + n_k\sin(N+1)\theta\big] \tag{13.3}
+$$
+[Checked] If the pulse is on the real axis ($\theta = 0$), this is the real number $a^2N$, equal to the power of the pulse. Away from the real axis an imaginary part appears.
+
+The same expression $\sum O^2 = R^2$ returns different R depending on what is summed over, from where it is measured, and how the eight components are divided. Which is to be called the curvature is not determined uniquely by the algebra. [Hypothesis, unverified]
+
+---
+
+## 14. Is This Physics, or Readout?
+
+> [Kihara] Is this physics? In other words, is it that the states themselves are updated by a physical action, by the equation of variation of the product, or is it merely a problem of readout in which the interval of the ruler changes? It is almost general and special relativity themselves.
+
+**A misreading that occurred here (the first).** [Claude] divided things as "a quantity that can be removed by some transformation is readout, and one that cannot is physics".
+
+> [Kihara] The point is that the shift of the ruler does not vanish. I think that is what is read out, as the effect of distortion, in the cross terms.
+
+**A misreading that occurred here (the second).** [Claude] read the distortion at first order, as the slope $\tan((N+1)\theta)$.
+
+> [Kihara] That is the first-order approximation, reading $\sin\theta = \theta$, $\tan\theta = \theta$. The effect of gravitational distortion appears in the cross terms of the second-order approximation and higher.
+
+Expand (13.3) to second order in the shift $\theta$ ($P_k = a^2N$, $N$ large and $N\theta$ small).
+$$
+R_k^2 \approx P_k\big[1 + n_k(N+1)\theta - \tfrac23N^2\theta^2\big] \tag{14.1}
+$$
+[Checked] The first-order term is purely imaginary and carries the direction $n_k$. It cancels by the global condition $\sum(\text{imaginary parts}) = 0$. The second-order term enters the real part, with negative sign, and adds up without cancelling. That R itself changes with the configuration is this second-order term.
+
+**A misreading that occurred here (the third).** In this explanation, [Claude] treated $\sin$ and $\tan$ as the exact quantities and $\theta$ as their approximation.
+
+> [Kihara] My intention is the reverse. It is reading the plain $\theta$ as $\sin\theta$ or $\tan\theta$ that is the problem. Think of the central projection as the gnomonic projection. Think of us, living in three-dimensional space, as the inhabitants of the shell of a four-dimensional hypersphere, of the central projection of $S^3$. For us, a great circle is a straight line, and the difference of angle (the difference of phase) is, as it stands, the distance. Nowhere does $\sin\theta$ or $\tan\theta$ appear. They appear when things are projected, by the gnomonic projection, onto the hyperplane tangent at the north pole. This is the problem. Even when projected, the states have not changed at all. What has changed is the side of the ruler. Near the north pole it is almost flat, so the lattice is still a hypercube. Toward the equator the distortion increases rapidly, and near the equator the lattice interval becomes infinite. But the states have not changed. That is, what is affected by the gravitational distortion is the ruler, not the states.
+
+The central projection (the gnomonic projection) is the starting point of my research [S19][S20][S21]. Writing the distance on the sphere in the coordinates $x$ of the tangent plane ($R = 1$, $r = \lvert x\rvert$),
+$$
+ds^2 = \frac{dx\cdot dx}{1+r^2} - \frac{(x\cdot dx)^2}{(1+r^2)^2} \tag{14.2}
+$$
+[Known] [Checked] The second term is a cross term that begins at second order in the coordinates. That the distortion appears in cross terms of second order and higher refers to this term. If one moves along only one direction, $ds = d\theta$ and no distortion appears.
+
+The idea of placing the gravitational distortion not on the side of the states but in the layer of readout was stated in [S17]. There it was said that distorting the scale of the readout does not touch the states.
+
+---
+
+## 15. If There Is No Background, the Ruler Too Is a State
+
+> [Kihara] In which coordinate system is $O = A(\cos\theta + n\sin\theta)$ itself a reading? Is it a reading in a background spacetime with Euclidean coordinates, or a reading in subjective coordinates with curvature (this is my term; generally, local coordinates)? Mixing these and leaving it ambiguous is the problem.
+
+**A misreading that occurred here.** [Claude] called the eight components $(a, b)$ "background coordinates" and $(\theta, n)$ "subjective coordinates", and sorted the operations so far into two. It then admitted that the update $o' = V/\lvert V\rvert$ of §5 is an operation of "adding in the background space and then returning to the sphere", going back and forth between two coordinate systems within one formula.
+
+The latter point, that the update of §5 uses sum and normalization, is right in light of §2.2. But sorting into two coordinate systems was itself the error.
+
+> [Kihara] This is a point I want to think about carefully. An easy interpretation produces confusion later. As with the product of interaction earlier, they rather cannot be separated. Do you see? There is no ruler to be distorted, because no background is assumed.
+
+If no background is placed, there is no container called an eight-dimensional Euclidean space either. Neither the tangent plane nor the lattice is given from outside. There are only the states and the products of states.
+
+The operation of reading is the product itself. For A to read B is to form $\bar O_AO_B$, and the result again has the same form, $(\text{magnitude})\times(\cos\Delta + n_{AB}\sin\Delta)$. $\cos$ and $\sin$ do not come out as a projection onto a background; they come out within the result of forming the relation of two states by the product. And the product is, at the same time as being a readout, the interaction that determines the next state.
+
+> [Kihara] In other words, the ruler too must be a state, and an object of interaction. Does this not therefore predict that there is an action by which, somehow, only the ruler is distorted and the other states are not?
+
+**The ruler too is a state. An action that changes only the relations among the states that play the role of the ruler, and does not change the relations among the other states, is contained in the same rule of the product.** [Hypothesis, unverified]
+
+That action should work to the same degree regardless of the kind of thing measured, because it is the ruler that changes. This is the same property as gravity acting in the same way on everything (the equivalence principle; the author's examination is [S29]).
+
+---
+
+## 16. Where Is the Ruler? Two Hypotheses
+
+In the course of the above examination, I arrived at two hypotheses about the ruler.
+
+### 16.1 First hypothesis: one half of (1+3)+(1+3) is the ruler
+
+> [Kihara] My interpretation is that, since there is no ruler outside, it may be inside the octonion. In 1+7 there is no ruler. In another reading, (1+3)+(1+3), it is read as two quaternions. For convenience, name one of them spacetime and the other the internal phase space. That is, perhaps the spacetime half is the ruler. I think there may be a pattern in which only this side has its state changed by the product operation, and as a result the interval of the ruler changes. This is only one interpretation.
+
+An octonion can be written with two quaternions $q_1, q_2$ as $o = q_1 + q_2\ell$ ($\ell = e_7$). The product is
+$$
+(q_1 + q_2\ell)(p_1 + p_2\ell) = (q_1p_1 - \bar p_2q_2) + (p_2q_1 + q_2\bar p_1)\ell \tag{16.1}
+$$
+$$
+O^2 = (q_1^2 - \lvert q_2\rvert^2) + 2\,{\rm Re}(q_1)\,q_2\ell \tag{16.2}
+$$
+[Known] [Checked] The two parts are not treated on an equal footing. The first halves are multiplied together as quaternions. The second half is only transformed by the first half. In the square, the second half does not change direction, and only its magnitude is multiplied by $2\,{\rm Re}(q_1)$. The asymmetry, that one side only stretches and shrinks while the other is multiplied together including direction, is in the octonion product from the start.
+
+**A misreading that occurred here.** [Claude] cautioned that "the side that has a spacetime-like sign when squared and the side whose interval alone changes are different. It must be decided first which is to be called spacetime."
+
+> [Kihara] So, as I said, it is only called so provisionally. The direction that looks that way is spacetime, and it is a problem of the choice of readout.
+
+That the distinction between spacetime and internal space is determined by which axis is chosen as the axis of projection was stated in [S3] (the readout of (1+3) by quaternions is [S5]). When a quaternion is chosen as the axis, a closed four-dimensional space opens (the map from $S^7$ to $S^4$ [X28]); when a complex number is chosen, SU(3) opens. [Known] There is a theorem that the symmetry of spacetime and internal symmetry cannot be mixed [X27]. That theorem presupposes a background spacetime.
+
+### 16.2 Second hypothesis: a scalar cos wave sharing the axis of 1 is the ruler
+
+> [Kihara] Here is another way of thinking. Suppose that, on the 1+7 space, a standing wave of a scalar cos wave (1+0) is riding. This looks almost like the Higgs field. In the vacuum, this Higgs field is completely flat and gives the universe a ruler with perfectly equal intervals. But when the Higgs field interacts with particles, if we suppose that the phase of the scalar wave can change locally, slightly, through the interaction, then the ruler is distorted automatically. The map here is still vague.
+
+The second hypothesis is that, on the space in which the octonion is read as 1+7, a scalar cos wave (1+0) rides as a standing wave, and that it is the ruler. This wave shares the axis of 1 with all states and has no imaginary part.
+
+From sharing the axis of 1 and having no imaginary part, the following come out.
+
+- [Known] [Checked] A real number can be exchanged in the order of multiplication with any octonion, and does not depend on the placement of parentheses. Among the octonions, only the real numbers have this property. Therefore the (1+0) wave, multiplied with any state, produces neither a commutator (cross product) nor a difference from re-bracketing.
+- [Known] The color rotations of the preceding paper [S1] do not move 1. The (1+0) wave is unchanged by color rotations.
+- Every state has the component $A\cos\theta$ on the axis of 1. So the (1+0) wave is involved with all states in the same way, regardless of the kind of partner. Having no direction $n$, it chooses no direction.
+- The central phase $\theta$ is the angle measured from the axis of 1 (§13). The wave riding on that axis becomes the reference for measuring $\theta$. The central phase on the circumference becomes, as it stands, the local clock $\tau$ (§2.6).
+- Having no imaginary part, it cannot be rotated. What can change is only its value on the axis of 1, that is, the phase (interval) of the cos wave. The circle stays a true circle and only the interval of the ruler changes.
+
+The last three are the author's reading, and are [Hypothesis, unverified].
+
+The Higgs wave has been touched on in my previous papers as well [S26][S10]. However, the author recalls having heard that a model treating the Higgs wave as a quaternion has the drawback that light no longer bends (the source has not been confirmed; see the [Juxtaposed] item below).
+
+> [Kihara] I have a feeling I have heard of the drawback of that quaternion model. I think it was that light no longer bends. That is why I deliberately made it a scalar cos wave. It is just a real number. I wonder whether there is a strange kind of map in which it gives no mass to the partner (that is, it does not act on the partner's side) but only it itself receives the action. It is strange, is it not? If it received radiation from the partner and its own phase moved by the reaction, then the partner must have lost something. In this case, light, by bending along the geodesic, is losing potential energy. That is, can it not be read as a kind of emission? In exchange, the Higgs field is partly excited and its phase changes.
+
+In this paper, therefore, it is treated not as a quaternion but as a plain real scalar wave. This is the hypothesis set up for the first time in this paper. This scalar wave gives no mass to the partner; that is, it does not act on the partner's side. But it itself receives the action. When light bends along a geodesic, light loses potential energy. This is read as a kind of emission. In exchange, part of the scalar wave is excited and its phase changes locally. When the phase changes, the interval of the ruler changes. In this way light bends without being given mass. [Hypothesis, unverified]
+
+[Known] Nordström's theory [X20], which builds gravity from a scalar alone, does not predict the bending of light [X21]. The reason is as follows. The scalar field of that theory couples only to the sum of the diagonal components (the trace) of the quantity expressing the energy and momentum of matter. For light, that sum is zero. In geometric terms, that theory only stretches and shrinks the interval of time and the interval of space in the same ratio, so the way light travels does not change. Therefore, for the second hypothesis to hold, the shift of the phase of the scalar wave must change the interval of time and the interval of space not in the same ratio but in opposite directions. If it changes them in the same ratio, light does not bend. On the other hand, it is known that, when the gravitational field is treated as a medium with a refractive index, the bending of light is derived [X22]. A medium gives no mass to light, yet changes the direction in which light travels. The second hypothesis is close in form to this treatment. However, the author has not found a paper that states the second hypothesis itself. [Known] The Higgs field [X23][X24] is a scalar field that has a uniform value in the vacuum.
+
+**[Juxtaposed] In which case does light fail to bend?** There are two ways of thinking. One is the author's recollection: that in a model treating the Higgs wave as a quaternion, light no longer bends. The source has not been confirmed. That is why a real scalar wave was chosen. The other is the known result: in a gravity of a scalar alone, light does not bend, for the reason above. The two appear to point in opposite directions. What differs between the quaternion case and the real scalar wave case? Does the scalar wave of the second hypothesis change the interval of time and the interval of space in opposite directions? Neither has yet been derived. The author cannot decide at present. This is left as a future task.
+
+**[Juxtaposed] Relation to [S3].** [S3] concluded that there is no reason to place only the scalar cos wave specially, and that all waves ride on both the side of the axis of projection and the side that appears opened. The second hypothesis of this paper places the (1+0) scalar wave as one state. Whether this revises the previous conclusion or is compatible with it, the author cannot decide at present. They are placed side by side.
+
+The map of how the phase of the scalar wave changes is not yet determined. How much the shift of phase changes the interval of time and the interval of space respectively, and whether the magnitude of the bending of light (the factor 2 in the refractive index $1 - 2\varphi/c^2$) comes out, are the first points to be checked. [Hypothesis, unverified]
+
+### 16.3 Which is right is not known
+
+> [Kihara] I think this map is also possible. That is, I still do not know which map is closer to physics, or whether both are wrong.
+
+**Which is right, whether both are right and only the readout differs, or whether neither is right, is not known. Deciding this is the next task.**
+
+The two are not two theories with different actions. The states and the rule of the product are the same; only the way of reading differs. The real axis of 1+7 is also the real part of one of the halves when divided into two quaternions.
+
+**A misreading that occurred here.** For the case where the factor 2 does not come out, [Claude] wrote "if a number has to be added from outside".
+
+> [Kihara] What can be added from outside is only the initial value of the state. This is the principle.
+>
+> [Kihara] So it is fine to think that, like the scalar cos wave, a wave in such a state exists as an initial value. Harmonics have already been conveniently added as initial values, have they not?
+
+Neither the pulse of harmonics nor the scalar cos wave is added as an action. They are the content of the initial state.
+
+---
+
+## 17. The Axioms Are Self-Consistency and Finite Order
+
+> [Kihara] Some kind of symmetry and conservation law is needed.
+
+**A misreading that occurred here.** [Claude] wrote: "$\sum O^2 = R^2$ was placed as a constraint, but whether the update by the product automatically preserves it has not been checked."
+
+> [Kihara] This is a result. The axioms are exactly what theoretical physics calls the principle of least action, in my words self-consistency, and $U^n = I$. As a result, $R^2$ appears to be conserved.
+
+**There are two axioms: self-consistency (the principle of least action), and $U^n = I$ (returning to the original after a finite number of steps).** [S12][S14] $\sum O^2 = R^2$ is not an axiom but a result.
+
+From $U^n = I$, the following come out.
+
+- The allowed phases are only integer multiples of $360°/n$. This is the sequence of harmonics itself.
+- The sum of all $n$-th roots of 1 is 0. The sum of their $m$-th powers is also 0 unless $m$ is a multiple of $n$. [Checked] That the total of the imaginary parts closes to 0 is not a condition that was placed; it comes out from here.
+- For any quantity, the sum over one full cycle of the development does not change when the state is advanced by one step. [Checked]
+
+> [Kihara] During the transient it looks as though it is not conserved, but when the direction of development is also taken into account, the hidden conservation law is restored.
+
+The value at each single step rises and falls, and looks as though it is not conserved. Lined up over one full cycle in the direction of development, it is conserved exactly. [Checked] (The author's examination of conservation laws in a discrete closed system is [S13].)
+
+**A misreading that occurred here (correction from §5).** The flow written by [Claude] in §5, in which the action increases monotonically and stops, is incompatible with $U^n = I$. A development that always returns to the original never stops. "Quasi-stationary" too should have been read not as a stopped state but as a state that returns to itself after one cycle. The update that takes a sum and normalizes also cannot be used, for the reasons of §2.2 and §15. **The concrete form of an update that uses neither sum nor normalization and satisfies the two axioms has not yet been written.** [Hypothesis, unverified]
+
+The conditions that the map $\Psi : \{O\} \to \{O\}'$ being sought (§1) must satisfy are gathered here. They have been stated in various places in this paper.
+
+| Condition | Where stated |
+|---|---|
+| Built only from products of states. No sum followed by normalization | §2.2, §15 |
+| Preserves the total (the norm) | §2.2, §5 |
+| Does not choose partners. Works on everyone at once | §2.1, §2.2, §10 |
+| Unchanged when the states are permuted (anonymity). Unchanged when the whole is rotated by $G_2$ | §9, §11 |
+| Can be traced backward. Returns to the original after a finite number of steps ($U^n = I$) | §17, §20.4 |
+| Its own result does not conflict with what determines it (self-consistency) | §11, §17 |
+| No number is given from outside. Only the initial state is given | §11, §16.3 |
+
+In the system of complex numbers, the single rotation $\exp(\kappa K)$ of §2.2 satisfies the first four (that $\kappa$ is given from outside is a separate matter). When one tries to make the same form with octonions, the relation between states $\bar o_e o_f$ is not a real number but an octonion. How to define the exponential of these arranged as N×N, independently of the placement of parentheses, is not decided. [Hypothesis, unverified]
+
+**A misreading that occurred here.** [Claude] wrote: "If the ratio of the phase advances is not rational, it never returns exactly. n = ∞."
+
+> [Kihara] Since it is defined as bounded and finite, n is always finite. But if it is extremely large, it cannot be distinguished from ∞ in observation. In the formulas it diverges and cannot be distinguished from ∞.
+
+n is not something given but a result. It is always finite.
+
+> [Kihara] Actually, this has been understood for quite a long time. In theoretical physics, when phenomena of non-convergence or divergence occur, it seems that in many cases continuity is being used while convergence in a finite development is assumed.
+
+**A misreading that occurred here.** [Claude] explained: "Standard lattice calculations place the destination of the limit, in which the lattice interval is taken to zero, in a flat infinite space."
+
+> [Kihara] What I place is a finite resolution. I do not place the hypothesis of continuity. It cannot be divided infinitely finely.
+
+If it is finite and bounded from the start, the answer cannot be a Euclidean space. It is necessarily a closed space with curvature. Seen in one direction, a great circle is a straight line, so a scale of equal intervals holds exactly. It is not an approximation. When an area is swept, a slight remainder of curvature appears in the cross terms (the second term of (14.2)).
+
+Curvature is defined, from the start as a finite quantity, not as "the rotation when an infinitely small loop is traversed" but as "the mismatch remaining when the smallest loop is traversed". In octonions that is the commutator $xy - yx$, and for three directions the re-bracketing difference $(xy)z - x(yz)$.
+
+---
+
+## 18. Why the Resolution Is Finite. Duality and Conjugacy
+
+> [Kihara] To think that this circumference can be divided infinitely is an illusion. There is always a finite resolution. In the early days I was much troubled by why there is a finite resolution. It is extremely simple. It is because the radius R of the circumference on which one rides is itself determined by one's own power. A strange thing happens: a system on which the owner of large power rides ends up with a small radius R. To make the resolution finer, raise the power. Raising the power makes the system smaller. As a result, the ratio of the resolution does not change, or rather goes down.
+
+The ruler and the thing against which the ruler is laid are determined by the same power. If there were a ruler fixed outside, things could be divided as finely as desired. In a system with no background, where the ruler too is a state, that cannot be done. **The finite resolution is not an additional axiom but a consequence of the ruler being a state.** [Hypothesis, unverified]
+
+**A discrepancy that occurred here.** [Claude] pointed out that in §13 R is larger the larger the power, while here R is smaller the larger the power. The directions are opposite.
+
+> [Kihara] This is the problem that arises when reading with the spacetime (1+3), the internal phase space (1+3), and the whole (1+7). In fact, spacetime and the internal phase space (they are called so only for convenience; in reality what can be read that way is merely called that) are in a relation of duality and conjugacy. When one becomes larger, the other becomes smaller. This too took me a long time to understand. In other words, it is the same as the relation between frequency and wavelength.
+
+The width of the pulse is $\delta = 360°/N$, and the range of harmonics used is $N$. The product of the two is constant. If one is made smaller, the other necessarily becomes larger.
+
+> [Kihara] This has been understood since the early stage of my research, when I tried to understand spacetime with frequency and wavelength alone. The number that has both this conjugacy and this duality was precisely the complex number.
+
+The author's early examination of the duality of frequency and wavelength is in [S23].
+
+[Known] $z^{-1} = \bar z/\lvert z\rvert^2$ holds in all of the real numbers, complex numbers, quaternions, and octonions. Taking the reciprocal inverts the magnitude (duality) and at the same time reverses the phase (conjugacy).
+
+That the (1+3) on the spacetime side and the (1+3) on the internal side are dual and conjugate in this sense is a hypothesis and has not been checked. [Hypothesis, unverified]
+
+> [Kihara] Since I began my examination from the central projection, a finite and bounded system that appears to have positive curvature, I wondered from an early stage why theoretical physics, while easily assuming local flatness and Euclidean coordinates, assumes without grounds that traveling waves do not diverge and dissipate and that standing waves can exist.
+
+In a closed system of positive curvature, waves do not escape far away but gather again on the opposite side. The existence of standing waves is not an assumption but a consequence.
+
+---
+
+## 19. Summary
+
+### 19.1 What was understood in the thought experiment
+
+The worries listed in the prior considerations (§2.6) were not things to be solved by adding a separate mechanism one by one. They were in the single rule of the octonion product from the start.
+
+| Worry | The answer that was in the octonion product | Status |
+|---|---|---|
+| A gauge field is placed from outside | It is not placed. The closure remainder of three states multiplied as a closed set plays the role of the field strength (§6) | Form [Checked] |
+| What operation on octonions is interaction? | The product. Multiplying by a unit octonion is a rotation, and the norm is preserved by the product (§5, §7) | [Checked] |
+| Who gives the rotation matrix? | The state itself. $L(o_B)$ is a rotation (§7) | [Checked] |
+| Why can the partner of interaction be chosen? | It is not chosen. All combinations are computed, and the distance becomes the weight (§10) | [Hypothesis, unverified] |
+| What is distance? | The real part of the triple product is, as it stands, the distance (§10) | [Checked] |
+| Can the kind of action be read from the relations of octonions? | They are different readings of the same product. If the imaginary directions are the same the commutator vanishes; if they differ it remains (§6, §7) | Form [Checked] |
+| Are Yang–Mills and Dirac separate things? | They are two readings of the same product (§7) | Form [Checked] |
+| Is the map of the first term spacetime, or internal? | The computation of the action and the reading of distance are the same number (§10) | [Hypothesis, unverified] |
+| Does it depend on a background spacetime? | Spacetime is not in the rule. Spacetime is the result of reading the coupling coefficients (§10) | [Hypothesis, unverified] |
+
+[Checked] in the table refers to the formulas that support the answers. The reading that those formulas are answers to the worries is the interpretation of this paper.
+
+What the standard theory places separately, as spacetime, gauge field, matter, two equations, and coupling constants, lines up as differences in the reading of a single operation, the product of octonions.
+
+### 19.2 What was checked
+
+With the attached program (Appendix A), 57 items were checked (including the 5 items of the addendum §20). The main ones are as follows.
+
+- That the real part of the triple product is independent of parentheses and cyclic (5.1). That with four it depends on parentheses.
+- That the real part of the product of a closed triple takes the form of the square of the closure remainder (6.1)(6.2).
+- That multiplication from the left satisfies (7.1) and becomes the Laplacian when squared (7.2).
+- That the same product can be read in the form matter–link–matter (7.3).
+- That the anonymous sum collapses into a function of the single total (9.1).
+- That the real part of the triple product is a distance (10.2).
+- The sum of harmonics and the form of the interference term (12.1)(12.2).
+- The square as it stands and the formulas for the local R (13.2)(13.3)(14.1).
+- The product divided into two quaternions (16.1)(16.2). That only the real numbers commute with all octonions.
+- That under finite order the sum over one full cycle is conserved.
+- That the total is conserved when acting with everyone at once, and not conserved pair by pair.
+
+### 19.3 What is hypothesis and an unverified task
+
+1. That the forms of Yang–Mills and Dirac come out with only all combinations and the weight of distance, without giving the array from outside (§6, §7, §10).
+2. That the Yang–Mills equation as a field theory on spacetime, the Dirac equation with the four directions of spacetime and spin, and the reading as SU(3) color come out (§6, §7).
+3. That computing the coefficient of the action is, as it stands, reading out spacetime (§10).
+4. That the coupling coefficients of the four forces come out from a single formula of the viewing angle (§12).
+5. The concrete form of an update that uses neither sum nor normalization and satisfies self-consistency and $U^n = I$. Whether a single operation suffices or whether it is repeated until self-consistency (§2.3, §17; the conditions to be satisfied are in the table of §17, and the view of a map that can be traced backward is in §20.4).
+6. Which part of the octonion product is the action that distorts only the ruler (§15).
+7. How the shift of the phase of the scalar wave changes the interval of time and the interval of space. Whether the factor 2 of the bending of light comes out (§16.2).
+8. The relation between the local R and the global R. The arrangement of the amplitudes of the harmonics (§2.4, §13).
+9. That the spacetime side and the internal side are dual and conjugate (§18).
+10. The distinction between right-handed and left-handed, the hierarchy of masses, and whether particles are entrained to the frequency of the Higgs field. These were raised as questions in the prior considerations but are not treated in this paper.
+
+### 19.4 What the author cannot decide at present and has placed side by side
+
+1. How to state the rule: product of two, or product of three (§5).
+2. The direction of the viewing angle: product, or ratio (§12).
+3. Whether light fails to bend in the quaternion case or in the scalar case (§16.2).
+4. The relation between the conclusion of [S3] and the second hypothesis (§16.2).
+
+### 19.5 Conclusion: the next task
+
+About the ruler there are two hypotheses: that one half of (1+3)+(1+3) is the ruler, and that a scalar cos wave (1+0) sharing the axis of 1 is the ruler. Which is right, whether both are right and only the readout differs, or whether neither is right, is not known. Deciding this is the next task.
+
+---
+
+## 20. Addendum: Readings Noticed After the Paper Was Written
+
+After §1–§19 were written, and before publication, the manuscript was given to [Claude] (claude.ai) for a close reading. Several readings that use only the parts of this paper were pointed out there. Since they did not arise in the thought experiment, they are not mixed into the main text but added here. The formulas were checked with the attached program. The readings themselves are all [Hypothesis, unverified].
+
+One of the points raised in the close reading was wrong: the remark that "(3.1) is not a product of octonions". Even if the seven-component $\mathfrak{F}$ is formed first and then multiplied by $\mathfrak{D}$ as an octonion, the result is the same (the product is linear). This remark was not adopted.
+
+### 20.1 Only the real part was being read. Read the imaginary part
+
+In §4 I said that one must not take the square of the norm and discard the cross terms (the imaginary part). Yet in §10 and §12 the triple product $X = o_Ao_Bo_C$ is read by its real part alone. The principle of §4 was not being applied in §10.
+
+- ${\rm Re}\,X = \cos\Theta$ is the distance (an angle). It does not depend on the placement of parentheses (5.1).
+- ${\rm Im}\,X = n\sin\Theta$ carries a quantity with the dimension of area, and a direction. The "coupling coefficient with the dimension of area" sought in §12 and the "direction" lacking in §13 may be here. [Hypothesis, unverified]
+- The re-bracketing difference $(xy)z - x(yz)$ has no real part. If the three lie within one quaternion, it is 0. [Checked] This corresponds to curvature as "the mismatch remaining when the smallest loop is traversed", stated in §17.
+
+This reading gives a quantity for comparing the two hypotheses of §16. In the first hypothesis, the re-bracketing difference appears only when the halves of the two quaternions are mixed. Its magnitude becomes a quantity measuring how much the quaternion on the ruler's side has been disturbed. In the second hypothesis, the axis of 1 is the only component that does not receive the re-bracketing difference (§16.2). If, from the result of the same computation, both the distribution of the re-bracketing difference and the shift of phase on the axis of 1 are read, the two hypotheses can be compared. [Hypothesis, unverified]
+
+The [Juxtaposed] item of §16.2 (the relation to [S3]) may also be compatible if read as "all waves ride on both sides, but only the axis of 1 does not receive the re-bracketing difference". [Hypothesis, unverified]
+
+### 20.2 How far does the anonymous sum collapse?
+
+In §10 it was written that, when the weight is made to depend on distance, the anonymous sum does not collapse into a function of a single total. This is right, but more precisely it is as follows.
+
+The sum, over everything anonymously, of the $k$-th power of $c = {\rm Re}(o_Ao_Bo_C)$ collapses into a function of the $k$-th moment of the states. For $k = 1$ it is a function of the total $P$ (9.1); for $k = 2$ it is a function of the second moment $\sum o\,o^T$. [Checked] (For two collections with the same second moment and different contents, $\sum c^2$ agrees. $\sum c$ does not agree.)
+
+Therefore, to obtain locality, that only near things act, low orders are not enough. It is necessary to stack up to high orders. [Hypothesis, unverified]
+
+### 20.3 Not choosing the weight function from outside
+
+In §11 it was said that the form of the weight function is not a choice but physics. But that function was not written. With the parts of this paper, one candidate can be written.
+
+The powers of the triple product $X$ satisfy
+$$
+{\rm Re}(X^n) = \cos n\Theta \tag{20.1}
+$$
+independently of the placement of parentheses. [Checked] This is the $n$-th harmonic with respect to the angle of distance $\Theta$. So let the action be
+$$
+S = \sum_{A,B,C}\ \sum_{n=1}^{N}{\rm Re}\big((o_Ao_Bo_C)^n\big) \tag{20.2}
+$$
+This is the sum of harmonics of (12.1) read at the angle of distance of the triple. No function is given from outside. The only remaining number is the resolution $N$, and according to §18, $N$ is determined by the power of the state. Outside the width, by (12.2), the average of the squared weight is inversely proportional to the square of the distance. This supports the ratio form among the [Juxtaposed] forms of §12. [Hypothesis, unverified]
+
+However, (20.2) stacks harmonics with equal amplitudes. The arrangement of the amplitudes of the harmonics is still an open task (§2.4). (20.2) is one candidate.
+
+### 20.4 The update is a map that can be traced backward
+
+In §17 it was said that a flow in which the action increases monotonically and stops is incompatible with $U^n = I$. The reason is that that flow cannot be traced backward. A map that can be traced backward will do.
+
+If the resolution is finite (§18), the collection of states is finite. A map on a finite collection that can be traced backward is a permutation. A permutation always returns to the original after a finite number of steps. That is, the axiom $U^n = I$ and the finite resolution of §18 are one and the same thing. That $n$ can become extremely large also agrees with §17. [Hypothesis, unverified]
+
+The concrete form is not yet decided. In the close reading, a form holding two states, the previous one and the present one, was proposed as a candidate. But that candidate gives from outside one number expressing the size of the step, and also needs two initial states. Whether it fits the principle that only the initial state is given from outside requires examination.
+
+### 20.5 The duality can be checked as a constant area
+
+[Known] For a mass $m$, the Compton wavelength $\hbar/(mc)$ is smaller the larger the mass, and the Schwarzschild radius $2Gm/c^2$ is larger the larger the mass. The product of the two is $2G\hbar/c^3$, independent of the mass. In the unit system of this paper it is an area of $2\hbar \approx 2466\,q_0^2$.
+
+In §13, R was larger the larger the power, and in §18, R was smaller the larger the power. It can be read that these two correspond to the two lengths above. If so, item 9 of §19.3 can be checked in the form "is the product of the R obtained by the two readings a constant area?". It has the same dimension as the product form of the viewing angle, $\Delta\times\delta$, of §12. [Hypothesis, unverified]
+
+### 20.6 The sign of time and space
+
+In §8, the difference of sign between time and space was left as a task of readout. But squaring as it stands, without taking the conjugate, gives the real part $a^2 - \lvert b\rvert^2$ (13.2). A sign with one positive and seven negative is already in "the product as it stands" of §4 and §13. Taking out one of the quaternions in (16.2) gives one positive and three negative. [Hypothesis, unverified] (Whether this corresponds to the sign of spacetime has not been checked.)
+
+### 20.7 Related known work
+
+The view of curvature as the mismatch of the smallest loop is known in a formulation of general relativity without coordinates [X29]. A gauge theory with the triangle as its basic unit is known in a formulation on a random lattice [X30]. In this paper, the property of the octonions that "three is the largest number for which the real part is determined independently of parentheses" makes the triple the basic unit. The same triple may serve both as the closure remainder of the gauge field and as the mismatch of curvature. [Hypothesis, unverified]
+
+---
+
+## What Is Not Claimed
+
+- It is not claimed that the Yang–Mills equation and the Dirac equation have been derived from the product of octonions. What was checked is the form of the action for a single triple.
+- It is not claimed that this replaces the standard theory. The standard theory is the reference for checking answers.
+- It is not claimed that the parts (the properties of octonions, lattice gauge theory, Clifford algebras, the Kuramoto model, the gnomonic projection) are new. All are known.
+- It is not claimed that results of numerical experiments have been shown. There is no numerical experiment in this paper. The attached program only checks that the formulas of the text hold.
+- It is not claimed that either of the two hypotheses is right.
+
+---
+
+## Acknowledgments
+
+As with the preceding paper, the occasion for this paper was the public lecture by Professor Tetsuya Onogi [X13]. I am deeply grateful that the general form of the QCD Lagrangian was explained clearly and without vagueness. The content of this paper is the author's own attempt, and all responsibility for errors lies with the author.
+
+---
+
+## References
+
+### Self-Citations (Concept DOI, `10.5281/zenodo.<number>`)
+
+[S1] N. Kihara, "QCD Expressed in Octonions ― Writing the Lagrangian of Quantum Chromodynamics As It Stands in Octonions, as a Reference for Checking Answers ―," 2026-11-19. Concept DOI 10.5281/zenodo.24369465.  
+[S2] N. Kihara, "Emergence of Spacetime and Elementary Particles from a Bounded Hilbert Space and Octonions ― From Photon Geometry and Gnomonic Central Projection to Open Problems in Background-Free Quaternionic and Octonionic Dynamics ―," 2026-11-16. Concept DOI 10.5281/zenodo.24267347.  
+[S3] N. Kihara, "Projection Axis Selection and Covariance of Conservation Laws ― Two Radii Carried by All Waves, Projection Asymmetry of 1-, 2-, and 4-Dimensional Subalgebras, and Reduction to Minimal Systems ―," 2026-11-16. Concept DOI 10.5281/zenodo.24273723.  
+[S4] N. Kihara, "Did We Understand Complex Numbers Correctly? Where the Amplitude Lives, the Imaginary Reading, and Attribution across $\mathbb{C} \to \mathbb{H} \to \mathbb{O}$," 2026-10-23. Concept DOI 10.5281/zenodo.23585436.  
+[S5] N. Kihara, "A Map from a Set of Complex Numbers to Spacetime (1+3): Readout by Quaternions and Partial Projection," 2026-10-18. Concept DOI 10.5281/zenodo.23451494.  
+[S6] N. Kihara, "Relational Readout of Quaternions and Crystallization as Inflation: Anonymity-Preserving Autonomous Structuring and Partial Projection," 2026-10-21. Concept DOI 10.5281/zenodo.23523237.  
+[S7] N. Kihara, "The Observer's Resolution Is a Gauge: A Thought Experiment That Reads the Harmonic Order in Reverse, and the Prediction of a Theory Assembled from Known Symmetries," 2026-11-10. Concept DOI 10.5281/zenodo.24097611.  
+[S8] N. Kihara, "Observation as Simultaneous Emission and Absorption: Deriving the Born Rule, Bell Correlations and the Tsirelson Bound from a Viewing-Angle Readout Rule," 2026-11-01. Concept DOI 10.5281/zenodo.23857884.  
+[S9] N. Kihara, "A Catalogue of Symmetries and Magic Numbers for Reading Out Spacetime from a State Space: The Answer-Check Standard of a Research Programme Taking Anonymity and Self-Consistency as Axioms," 2026-10-18. Concept DOI 10.5281/zenodo.23444451.  
+[S10] N. Kihara, "Reading Out Time, Space, Mass, Charge, Translational Velocity and Spin from the Relations and Interference of Complex Waves without a Background Spacetime: An Integrated Hypothesis in the Order of the Thought Experiment, from Residents of a Closed Circle to Residents of a Four-Dimensional Spherical Shell, and on to α, the Four-Dimensional Lattice and E8," 2026-10-15. Concept DOI 10.5281/zenodo.23384928.  
+[S11] N. Kihara, "Designing a Research Project to Explore the Emergence of Spacetime, Particles, and Interactions from States and Relations: A Framework of Preliminary Design and Feasibility Verification for Foundational-Physics Model Exploration under Uncertainty," 2026-09-20. Concept DOI 10.5281/zenodo.22851944.  
+[S12] N. Kihara, "Symmetry Generation from Zero Closure, Finite Order, and Self-Consistent Geometry: The Single External Parameter N and the Remaining Tasks of Generalization and Dynamics," 2026-08-20. Concept DOI 10.5281/zenodo.22028072.  
+[S13] N. Kihara, "Noether Conservation Laws and Relational Phase Dynamics from Discrete Zero Closure: A Zero-Closure-Preserving Discrete Self-Map, the N→∞ Continuum Field Equations, Local Gauge Geometry, and the Standard-Model One-Generation Representation with Chirality Selection," 2026-08-21. Concept DOI 10.5281/zenodo.22040735.  
+[S14] N. Kihara, "A Finite Complete-Relation Closed System with Time Evolution as Vertices: Exact Minimal Closure at N=1, K=4 under U^K=I and Complete-Network Analysis of Even and Odd Harmonics," 2026-09-15. Concept DOI 10.5281/zenodo.22763329.  
+[S15] N. Kihara, "The Equation of Motion of a Single Wave in a Relational-Wave Closed System: Kuramoto-Type Phase Coupling on L(K_N) and the Condition for a Self-Consistent Floor on the 90-Degree Phase-Difference Skeleton," 2026-09-12. Concept DOI 10.5281/zenodo.22728760.  
+[S16] N. Kihara, "Anonymity and the Minimal Unit of Information: A Single Wave Cannot Carry Information, and the Minimal Zero-Closure Block (Two-Wave +-i Pair) Carries the S_N-Invariant Type (Exploratory Paper)," 2026-09-12. Concept DOI 10.5281/zenodo.22729127.  
+[S17] N. Kihara, "Two-Layer Separation of Waves and Fields — Unifying Gauge and Gravitational Fields via a Universal Field-Readout Function," 2026-08-07. Concept DOI 10.5281/zenodo.21832256.  
+[S18] N. Kihara, "The Periodic Table of Waves v2 — Particle Classification by Winding Addresses and Observation Clocks, and the Unification of Mass, Lifetime, and Splitting by the Clock Field ω(x)," 2026-08-07. Concept DOI 10.5281/zenodo.21822358.  
+[S19] N. Kihara, "Geometric Formulation of 4-Dimensional Space via Central Projection," 2026-04-05. Concept DOI 10.5281/zenodo.19427779.  
+[S20] N. Kihara, "Gnomonic Projection from $S^4$ and the Schwarzschild-like Form of the Induced Metric on a Four-Dimensional Subjective Chart (Paper 2)," 2026-04-28. Concept DOI 10.5281/zenodo.19837589.  
+[S21] N. Kihara, "Paper 0: Distortion of the Geodesic Unit Cell in Positively-Curved Constant-Curvature Space — Exact Evaluation of Edge, Angle, Area, and Volume," 2026-07-11. Concept DOI 10.5281/zenodo.20680269.  
+[S22] N. Kihara, "An Observation on the Isolated Peak Wave of a Constant-Amplitude Odd-Harmonic Sum on a Half-Wavelength Phase Interval and Its Localization," 2026-06-30. Concept DOI 10.5281/zenodo.20833096.  
+[S23] N. Kihara, "Dual Geometry of Wavelength Space and Frequency Space: A Geometric and Topological Observational Model of Reciprocal Conditions, Logarithmic Representation, and Uncertainty-Weighted Counting," 2026-06-08. Concept DOI 10.5281/zenodo.20588036.  
+[S24] N. Kihara, "The Second Thought Experiment: Deriving the Coulomb-Type Inverse-Square Force from a Product Readout and an Area Clock - Keeping Two Values and a Linear Law, Obtaining the Focus, Attraction, Repulsion and Neutrality, and Fixing What Two Values Cannot Write," 2026-09-21. Concept DOI 10.5281/zenodo.22867336.  
+[S25] N. Kihara, "Supplement to the Sixth Thought Experiment: Does the State Generation Change When the Normalization Reference Is Changed from Mass to a Charge Unit? - A Restricted Renormalization from G = M = c = 1 to G = q_0 = c = 1, and an Exact-Match Verification of the Initial States of the Five Stored Conditions," 2026-09-27. Concept DOI 10.5281/zenodo.22985299.  
+[S26] N. Kihara, "Reexamination of the 6-Dimensional Sign Vector xyztRQ: A Thought Experiment Toward a Future Paper," 2026-04-30. Concept DOI 10.5281/zenodo.19902677.  
+[S27] N. Kihara, "The Thirteenth Thought Experiment: Why Does a Particle That Has Acquired Mass Not Dissipate and Vanish? - Coherence as a Relation, Harmonic Exchange of Localized Waves, Internal Clocks and Particle Lifetimes Considered from a Single Interaction," 2026-10-10. Concept DOI 10.5281/zenodo.23266250.  
+[S28] N. Kihara, "Three XYZ Directions Read from Complete Pairwise Relational Waves: Growth of Internal Relational Directions and Saturation of Spatial-Direction Readout in Closed AB, ABC, and ABCD Systems," 2026-07-20. Concept DOI 10.5281/zenodo.21454789.  
+[S29] N. Kihara, "The First Thought Experiment: Tracing the Equivalence Principle Down to Two Nameless Degrees of Freedom - Deriving the Sign of the Sum of Squares, the Curvature Radius, and Three Systems (Inertial, Uniformly Accelerated, Rotating) from the Conservation of an Area Readout," 2026-09-20. Concept DOI 10.5281/zenodo.22857952.
+
+### External References
+
+[X1] C. N. Yang and R. L. Mills, "Conservation of Isotopic Spin and Isotopic Gauge Invariance," *Phys. Rev.* 96, 191–195 (1954). DOI 10.1103/PhysRev.96.191  
+[X2] P. A. M. Dirac, "The Quantum Theory of the Electron," *Proc. R. Soc. Lond. A* 117, 610–624 (1928). DOI 10.1098/rspa.1928.0023  
+[X3] J. C. Baez, "The Octonions," *Bull. Amer. Math. Soc.* 39, 145–205 (2002). DOI 10.1090/S0273-0979-01-00934-X. arXiv:math/0105155  
+[X4] A. Hurwitz, "Über die Composition der quadratischen Formen von beliebig vielen Variabeln," *Nachr. Ges. Wiss. Göttingen*, 309–316 (1898).  
+[X5] M. Günaydin and F. Gürsey, "Quark structure and octonions," *J. Math. Phys.* 14, 1651–1667 (1973).  
+[X6] M. Günaydin and F. Gürsey, "Quark statistics and octonions," *Phys. Rev. D* 9, 3387–3391 (1974). DOI 10.1103/PhysRevD.9.3387  
+[X7] G. M. Dixon, *Division Algebras: Octonions, Quaternions, Complex Numbers and the Algebraic Design of Physics*, Mathematics and Its Applications 290, Kluwer Academic Publishers, Dordrecht (1994).  
+[X8] C. Furey, "Standard model physics from an algebra?" Ph.D. thesis, University of Waterloo (2016). arXiv:1611.09182  
+[X9] C. Furey, "Three generations, two unbroken gauge symmetries, and one eight-dimensional algebra," *Phys. Lett. B* 785, 84–89 (2018). DOI 10.1016/j.physletb.2018.08.032  
+[X10] K. G. Wilson, "Confinement of quarks," *Phys. Rev. D* 10, 2445–2459 (1974). DOI 10.1103/PhysRevD.10.2445  
+[X11] H. B. Nielsen and M. Ninomiya, "Absence of neutrinos on a lattice: (I). Proof by homotopy theory," *Nucl. Phys. B* 185, 20–40 (1981).  
+[X12] D. B. Kaplan, "A method for simulating chiral fermions on the lattice," *Phys. Lett. B* 288, 342–347 (1992). DOI 10.1016/0370-2693(92)91112-M  
+[X13] T. Onogi, "How Far Can the World of Elementary Particles Be Reproduced on a Computer?" (in Japanese), public lecture, Science Night 2026, Graduate School of Science, The University of Osaka, November 18, 2026.  
+[X14] E. Corrigan, C. Devchand, D. B. Fairlie, and J. Nuyts, "First-order equations for gauge fields in spaces of dimension greater than four," *Nucl. Phys. B* 214, 452–464 (1983). DOI 10.1016/0550-3213(83)90244-4  
+[X15] S. Fubini and H. Nicolai, "The octonionic instanton," *Phys. Lett. B* 155, 369–372 (1985).  
+[X16] T. Ootsuka, E. Tanaka, and E. Loginov, "Non-associative Gauge Theory," arXiv:hep-th/0512349 (2005).  
+[X17] Y. Kuramoto, "Self-entrainment of a population of coupled non-linear oscillators," in *International Symposium on Mathematical Problems in Theoretical Physics*, ed. H. Araki, Lecture Notes in Physics 39, Springer, pp. 420–422 (1975).  
+[X18] M. A. Lohe, "Non-Abelian Kuramoto models and synchronization," *J. Phys. A: Math. Theor.* 42, 395101 (2009).  
+[X19] A. P. Millán, J. J. Torres, and G. Bianconi, "Explosive Higher-Order Kuramoto Dynamics on Simplicial Complexes," *Phys. Rev. Lett.* 124, 218301 (2020). DOI 10.1103/PhysRevLett.124.218301  
+[X20] G. Nordström, "Zur Theorie der Gravitation vom Standpunkt des Relativitätsprinzips," *Ann. Phys.* 347 (4. Folge 42), 533–554 (1913). DOI 10.1002/andp.19133471303  
+[X21] J. D. Norton, "Einstein, Nordström and the early demise of scalar, Lorentz-covariant theories of gravitation," *Arch. Hist. Exact Sci.* 45, 17–94 (1992). DOI 10.1007/BF00375886  
+[X22] F. de Felice, "On the gravitational field acting as an optical medium," *Gen. Relativ. Gravit.* 2, 347–357 (1971). DOI 10.1007/BF00758153  
+[X23] F. Englert and R. Brout, "Broken Symmetry and the Mass of Gauge Vector Mesons," *Phys. Rev. Lett.* 13, 321–323 (1964).  
+[X24] P. W. Higgs, "Broken Symmetries and the Masses of Gauge Bosons," *Phys. Rev. Lett.* 13, 508–509 (1964).  
+[X25] C. Cao, S. M. Carroll, and S. Michalakis, "Space from Hilbert space: Recovering geometry from bulk entanglement," *Phys. Rev. D* 95, 024031 (2017). DOI 10.1103/PhysRevD.95.024031  
+[X26] S. M. Carroll and A. Singh, "Quantum Mereology: Factorizing Hilbert Space into Subsystems with Quasi-Classical Dynamics," *Phys. Rev. A* 103, 022213 (2021).  
+[X27] S. R. Coleman and J. Mandula, "All Possible Symmetries of the S Matrix," *Phys. Rev.* 159, 1251–1256 (1967).  
+[X28] H. Hopf, "Über die Abbildungen von Sphären auf Sphären niedrigerer Dimension," *Fund. Math.* 25, 427–440 (1935).  
+[X29] T. Regge, "General relativity without coordinates," *Nuovo Cimento* 19, 558–571 (1961). DOI 10.1007/BF02733251  
+[X30] N. H. Christ, R. Friedberg, and T. D. Lee, "Gauge theory on a random lattice," *Nucl. Phys. B* 210, 310–336 (1982). DOI 10.1016/0550-3213(82)90123-7
+
+**Note on the external references.** As an attempt to build, on a continuous spacetime, a gauge theory whose structure is $S^7$, there is [X16]. The author has not found work that, as in this paper, places no spacetime and reads the real part of the product of three octonions as action, distance, and coupling coefficient. As attempts to read out space from the states of a Hilbert space without placing a background spacetime, there are [X25][X26]. Their handle is quantum entanglement, not the product of octonions. The theorem that the symmetry of spacetime and internal symmetry cannot be mixed [X27] presupposes a background spacetime.
+
+---
+
+## Appendix A: Verification Program
+
+`verify_reading_out_ym_dirac_v1.py` (Python 3, NumPy). It checks the formulas of the text with values made from random numbers. The random seed is fixed, and all 57 items hold. In addition there are two reference items for which no pass/fail is judged (the single example run of §11 and the numerical values of the unit system of §12). Each item carries the section number of the text. The output is saved in `results/verify_reading_out_ym_dirac_v1.txt`.
+
+This program only checks that the formulas of the text hold. It is not a numerical experiment that evolves states in time.
+
+## Appendix B: Record of the Thought Experiment
+
+The original text of the utterances of the thought experiment (utterances 1–59, 2026-11-20, 06:30–10:11 JST) and the record of the prior considerations (night of 2026-11-19 to early morning of 11-20) are in the following places of the public repository https://github.com/WurabeSeiji/ai-chat-logs-open (in Japanese; the directory names below are romanized, and the actual names are in Japanese).
+
+- `Jigen no Seisei Kozo/QCD wo Hachigensu de Hyogen shitara_20261119/Hachigensu Yang-Mills to Dirac_Shiko Jikken_20261120/` (15 parts of the dialogue log, and their analysis)
+- `Jigen no Seisei Kozo/QCD wo Hachigensu de Hyogen shitara_20261119/Undo Hoteishiki no Hachigensu Tenkai_Kento_20261119/` (record of the prior considerations)
+
+The correspondence between the sections of the text and the numbers of the utterances is as follows.
+
+| Section | Utterances | Section | Utterances |
+|---|---|---|---|
+| §3 | 1–4 | §11 | 18–23 |
+| §4 | 5, 6 | §12 | 24–29 |
+| §5 | 7–9 | §13 | 30–33 |
+| §6 | 10 | §14 | 34–37 |
+| §7 | 11, 12 | §15 | 38–40 |
+| §8 | 13, 14 | §16 | 41–47 |
+| §9 | 15 | §17 | 48–55 |
+| §10 | 16, 17 | §18 | 56–59 |
+
+---
+
+## Classification
+
+| Class | Content |
+|---|---|
+| Known mathematics and physics | The multiplication table of the octonions, alternativity, multiplicativity of the norm, $G_2$ and SU(3) [X3][X5] / first-order equations in higher dimensions and the octonionic instanton [X14][X15] / (5.1) the real part of the triple product / (7.1) left multiplication and the Clifford algebra / the form of the action of lattice gauge theory [X10] / the Kuramoto model and its extensions [X17][X18][X19] / (14.2) the metric of the gnomonic projection / (16.1) decomposition into two quaternions / Nordström's theory and the bending of light [X20][X21] / the gravitational field as a refractive index [X22] |
+| Formulas checked in this paper | (2.1), agreement of the components of (3.1), (3.2), (4.1), (5.1)–(5.3), (6.1), (6.2), (7.1)–(7.3), (9.1), (10.1), (10.2), (12.1), (12.2), (13.1)–(13.3), (14.1), (14.2), (16.1), (16.2), and the items of §2.2, §2.4, §17 |
+| Interpretation (the claims of this paper) | Reading the real part of the same triple product as the Yang–Mills form and as the Dirac form / reading the same number as action and as distance / that the defect is, as it stands, the property of Dirac / that the worries were already in the product (§19.1) |
+| Hypothesis, unverified | The 10 items of §19.3. In particular, that distance becomes the coupling coefficient, that computing the coefficient of the action is reading out spacetime, that the ruler too is a state and there is an action distorting only the ruler, and the two hypotheses about the ruler |
+| Juxtaposed | The 4 items of §19.4 |
+| Readings noticed after the paper was written | The items of §20. Formula (20.1) and the properties of §20.1 and §20.2 were checked. The readings are hypotheses, unverified |
+| Record of misreadings that occurred in the thought experiment | "A misreading that occurred here" in §2.1, §5, §8, §9, §11, §12, §14, §15, §16, §17, §18 |
+
+---
+
+## Version History
+
+- **v1.0 (2026-11-20):** First version. The considerations and the thought experiment from the night of 2026-11-19 to the morning of 11-20 were arranged, in the order in which they were carried out, into the form of a paper.
+- Before publication, the manuscript was given to claude.ai and Gemini for close reading, and part of their remarks was reflected. §20 is an addendum of the readings obtained in that close reading. The known reason concerning the bending of light in §16.2, the table of conditions in §17, the sentence on dimension in §12, and the scope of the claim in §7 were added in response to the close reading. The remarks to move the dialogue and the record of misreadings to an appendix, to change the title, and to add a numerical experiment were not adopted.
+- Environment for arrangement and verification: Claude (Claude Code and claude.ai, both Claude Fable 5.2) was used. The partner of the thought experiment was claude.ai; the prior considerations, and the verification and arrangement of the formulas, were with Claude Code. All formulas of the text were verified with the attached program.

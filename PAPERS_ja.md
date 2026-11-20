@@ -4,7 +4,7 @@
 全論文は Zenodo で CC BY 4.0 公開。各行：題名（日本語 / 英語）・Version DOI・Concept DOI・公開日・版・PDF・リポジトリ内フォルダ・リリースノート。
 本ファイルは `tools/gen_paper_index.py` により Zenodo API から自動生成。English: [PAPERS_en.md](PAPERS_en.md) / Scholar 用ページ: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**論文数: 148**
+**論文数: 149**
 
 ## グノモン正写像による4次元時空の幾何学的定式化 / Central Projection Framework (Gnomonic Spacetime Geometry)
 
@@ -634,6 +634,10 @@
    QCD Expressed in Octonions ― Writing the Lagrangian of Quantum Chromodynamics As It Stands in Octonions, as a Reference for Checking Answers ―  
    DOI [10.5281/zenodo.24369466](https://doi.org/10.5281/zenodo.24369466) · Concept [10.5281/zenodo.24369465](https://doi.org/10.5281/zenodo.24369465) · 2026-11-19 · v1.0 · [PDF en](https://zenodo.org/records/24369466/files/qcd_expressed_in_octonions_en.pdf) [PDF ja](https://zenodo.org/records/24369466/files/QCD%E3%82%92%E5%85%AB%E5%85%83%E6%95%B0%E3%81%A7%E8%A1%A8%E7%8F%BE%E3%81%97%E3%81%9F%E3%82%89.pdf)  
    フォルダ: [次元の生成構造/QCDを八元数で表現したら_20261119](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/QCD%E3%82%92%E5%85%AB%E5%85%83%E6%95%B0%E3%81%A7%E8%A1%A8%E7%8F%BE%E3%81%97%E3%81%9F%E3%82%89_20261119)
+61. **八元数の積から、ヤン＝ミルズとディラックを読み出す ― 方向を逆にした思考実験：作用・距離・結合係数が一つの数であるという仮説 ―**  
+   Reading Out Yang–Mills and Dirac from the Product of Octonions ― A Thought Experiment in the Reverse Direction: The Hypothesis That Action, Distance, and Coupling Are One Number ―  
+   DOI [10.5281/zenodo.24387754](https://doi.org/10.5281/zenodo.24387754) · Concept [10.5281/zenodo.24387753](https://doi.org/10.5281/zenodo.24387753) · 2026-11-20 · v1.0 · [PDF en](https://zenodo.org/records/24387754/files/reading_out_yang_mills_dirac_from_octonion_product_en.pdf) [PDF ja](https://zenodo.org/records/24387754/files/%E5%85%AB%E5%85%83%E6%95%B0%E3%81%AE%E7%A9%8D%E3%81%8B%E3%82%89%E3%83%A4%E3%83%B3%E3%83%9F%E3%83%AB%E3%82%BA%E3%81%A8%E3%83%87%E3%82%A3%E3%83%A9%E3%83%83%E3%82%AF%E3%82%92%E8%AA%AD%E3%81%BF%E5%87%BA%E3%81%99.pdf)  
+   フォルダ: [次元の生成構造/八元数の積からヤンミルズとディラックを読み出す_20261120](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%85%AB%E5%85%83%E6%95%B0%E3%81%AE%E7%A9%8D%E3%81%8B%E3%82%89%E3%83%A4%E3%83%B3%E3%83%9F%E3%83%AB%E3%82%BA%E3%81%A8%E3%83%87%E3%82%A3%E3%83%A9%E3%83%83%E3%82%AF%E3%82%92%E8%AA%AD%E3%81%BF%E5%87%BA%E3%81%99_20261120)
 
 ## 時間軸Q軸とフェルミオンの生成構造 / Time Axis, Q Axis, and Fermion Generation
 
