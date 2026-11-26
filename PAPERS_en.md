@@ -4,7 +4,7 @@ Noriaki Kihara / WF System Co., Ltd. / ORCID [0009-0004-6753-4020](https://orcid
 All papers are published on Zenodo under CC BY 4.0. Columns: title (English / Japanese), Version DOI, Concept DOI, date, version, PDFs, folder in this repository, release notes.
 Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PAPERS_ja.md](PAPERS_ja.md) / Scholar landing pages: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**Papers: 149**
+**Papers: 150**
 
 ## Central Projection Framework (Gnomonic Spacetime Geometry) / グノモン正写像による4次元時空の幾何学的定式化
 
@@ -638,6 +638,10 @@ Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PA
    八元数の積から、ヤン＝ミルズとディラックを読み出す ― 方向を逆にした思考実験：作用・距離・結合係数が一つの数であるという仮説 ―  
    DOI [10.5281/zenodo.24387754](https://doi.org/10.5281/zenodo.24387754) · Concept [10.5281/zenodo.24387753](https://doi.org/10.5281/zenodo.24387753) · 2026-11-20 · v1.0 · [PDF en](https://zenodo.org/records/24387754/files/reading_out_yang_mills_dirac_from_octonion_product_en.pdf) [PDF ja](https://zenodo.org/records/24387754/files/%E5%85%AB%E5%85%83%E6%95%B0%E3%81%AE%E7%A9%8D%E3%81%8B%E3%82%89%E3%83%A4%E3%83%B3%E3%83%9F%E3%83%AB%E3%82%BA%E3%81%A8%E3%83%87%E3%82%A3%E3%83%A9%E3%83%83%E3%82%AF%E3%82%92%E8%AA%AD%E3%81%BF%E5%87%BA%E3%81%99.pdf)  
    folder: [次元の生成構造/八元数の積からヤンミルズとディラックを読み出す_20261120](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%85%AB%E5%85%83%E6%95%B0%E3%81%AE%E7%A9%8D%E3%81%8B%E3%82%89%E3%83%A4%E3%83%B3%E3%83%9F%E3%83%AB%E3%82%BA%E3%81%A8%E3%83%87%E3%82%A3%E3%83%A9%E3%83%83%E3%82%AF%E3%82%92%E8%AA%AD%E3%81%BF%E5%87%BA%E3%81%99_20261120)
+62. **The Coin and Cup Thought Experiment ― Reverse-Deriving the Requirement Specification of a System from the Conditions under Which an Action Holds ―**  
+   コインとコップの思考実験 ― 作用の成立条件から、系の要求仕様を逆算する ―  
+   DOI [10.5281/zenodo.24562868](https://doi.org/10.5281/zenodo.24562868) · Concept [10.5281/zenodo.24562867](https://doi.org/10.5281/zenodo.24562867) · 2026-11-26 · v1.0 · [PDF en](https://zenodo.org/records/24562868/files/coin_and_cup_thought_experiment_en.pdf) [PDF ja](https://zenodo.org/records/24562868/files/%E3%82%B3%E3%82%A4%E3%83%B3%E3%81%A8%E3%82%B3%E3%83%83%E3%83%97%E3%81%AE%E6%80%9D%E8%80%83%E5%AE%9F%E9%A8%93.pdf)  
+   folder: [次元の生成構造/堀田先生のnoteとコインとコップの思考実験_20261124](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E5%A0%80%E7%94%B0%E5%85%88%E7%94%9F%E3%81%AEnote%E3%81%A8%E3%82%B3%E3%82%A4%E3%83%B3%E3%81%A8%E3%82%B3%E3%83%83%E3%83%97%E3%81%AE%E6%80%9D%E8%80%83%E5%AE%9F%E9%A8%93_20261124)
 
 ## Time Axis, Q Axis, and Fermion Generation / 時間軸Q軸とフェルミオンの生成構造
 
