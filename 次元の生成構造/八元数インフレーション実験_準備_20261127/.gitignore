@@ -1,0 +1,15 @@
+# 図 (png) は git に入れない (2026-11-27、木原さんの指示。数が多く容量が大きいため)。
+# ダンプ (.txt) と指数部のデータ (.json) とプログラムから、図化プログラムで作り直せる。
+# この決まりより前にコミットした図は、追跡されたまま残る。
+/results/**/*.png
+
+# ダンプも git に入れない (2026-11-27、木原さんの指示。容量が大きいため)。
+# 対象は、指数部による実行のダンプと、N=144 の積による対照のダンプ。
+# 指数部のデータ (.json) とプログラムから作り直せる (N=144 で 1 本 11 秒、積による対照は 33 秒)。
+# 経過のログ、集計、位置の数 (どれも小さい) は入れる。
+# 積による計算のダンプ (results/array_product_cumulative_*.txt) は対照の基準なので、追跡したまま残す。
+/results/exponent_run_v0/*.txt
+!/results/exponent_run_v0/*経過.txt
+!/results/exponent_run_v0/*_集計.txt
+!/results/exponent_run_v0/*_位置の数.txt
+/results/product_control_N144/*_n12.txt
