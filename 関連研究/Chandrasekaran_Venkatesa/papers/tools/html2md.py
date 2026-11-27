@@ -24,6 +24,7 @@ def tex_of(m):
     ann = m.find("annotation", attrs={"encoding": "application/x-tex"})
     t = ann.get_text() if ann else m.get("alttext", "")
     t = t.replace("\n", " ")
+    t = t.replace("\\displaystyle}{", "")     # LaTeXML が複数行の式の継ぎ目に残す断片
     t = re.sub(r"%\s*", "", t) if "%" in t and "\\%" not in t else t
     t = re.sub(r"\s+", " ", t).strip()
     return re.sub(r"(?<!\\)\\$", "", t).strip()      # 末尾の「\ 」が削れて残る \ を除く
@@ -57,8 +58,10 @@ def inline(node, in_note=False):
     c = cls(node)
     n = node.name
     if n == "math":
-        stats["inline_math"] += 1
         t = tex_of(node)
+        if "pgfpicture" in t or "lxSVG" in t:      # 図の TikZ が数式として入っているもの。図は別に画像で付く
+            return ""
+        stats["inline_math"] += 1
         if node.get("display") == "block":
             return f" $\\displaystyle {t}$ "
         return f"${t}$"
@@ -117,7 +120,46 @@ def emit(s):
         out.append(s)
 
 
+def intertext_of(tr):
+    """数式の行に地の文(\\intertext)が入っていれば、その文を返す。"""
+    import copy
+    for td in tr.find_all(["td", "span"], recursive=False) or tr.find_all("td"):
+        if "ltx_eqn_eqno" in cls(td):
+            continue
+        t2 = copy.copy(td)
+        for m in t2.find_all("math"):
+            m.decompose()
+        if re.sub(r"[\s\u2061-\u2063]", "", t2.get_text()):
+            return clean("".join(inline(ch) for ch in td.children))
+    return None
+
+
 def emit_equations(table):
+    rows = table.find_all(lambda t: t.name in ("tr", "span") and "ltx_eqn_row" in cls(t))
+    for tr in rows:
+        txt = intertext_of(tr)
+        if txt is not None:
+            stats["intertext"] = stats.get("intertext", 0) + 1
+            emit(txt)
+            continue
+        for tex, tag in eq_rows_one(tr):
+            stats["display_eq"] += 1
+            if tag:
+                stats["tagged"] += 1
+                emit(f"$$\n{tex} \\tag{{{tag}}}\n$$")
+            else:
+                emit(f"$$\n{tex}\n$$")
+
+
+def eq_rows_one(tr):
+    maths = [tex_of(m) for m in tr.find_all("math")]
+    maths = [m for m in maths if m]
+    tagel = tr.find(lambda t: "ltx_tag_equation" in cls(t) or "ltx_tag_equationgroup" in cls(t))
+    tag = tagel.get_text().strip().strip("()") if tagel else None
+    return [(" ".join(maths), tag)] if (maths or tag) else []
+
+
+def emit_equations_old(table):
     for tex, tag in eq_rows(table):
         stats["display_eq"] += 1
         if tag:
