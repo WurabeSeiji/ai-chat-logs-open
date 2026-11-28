@@ -4,7 +4,7 @@ Noriaki Kihara / WF System Co., Ltd. / ORCID [0009-0004-6753-4020](https://orcid
 All papers are published on Zenodo under CC BY 4.0. Columns: title (English / Japanese), Version DOI, Concept DOI, date, version, PDFs, folder in this repository, release notes.
 Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PAPERS_ja.md](PAPERS_ja.md) / Scholar landing pages: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**Papers: 172**
+**Papers: 173**
 
 ## Central Projection Framework (Gnomonic Spacetime Geometry) / グノモン正写像による4次元時空の幾何学的定式化
 
@@ -605,6 +605,10 @@ Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PA
    三次元正方配列の三角形ループ積における多殻大格子重力、因果伝播、およびスピン 2 による g_00(d) 解禁（Part V）  
    DOI [10.5281/zenodo.24627520](https://doi.org/10.5281/zenodo.24627520) · Concept [10.5281/zenodo.24627519](https://doi.org/10.5281/zenodo.24627519) · 2026-11-28 · v1.0 · [PDF en](https://zenodo.org/records/24627520/files/triangle_loop_multishell_gravity_causal_part5_en.pdf) [PDF ja](https://zenodo.org/records/24627520/files/%E4%B8%89%E6%AC%A1%E5%85%83%E6%AD%A3%E6%96%B9%E9%85%8D%E5%88%97%E3%81%AE%E4%B8%89%E8%A7%92%E5%BD%A2%E3%83%AB%E3%83%BC%E3%83%97%E7%A9%8D%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E5%A4%9A%E6%AE%BB%E5%A4%A7%E6%A0%BC%E5%AD%90%E9%87%8D%E5%8A%9B%E3%81%A8%E5%9B%A0%E6%9E%9C%E4%BC%9D%E6%92%AD_Part5.pdf)  
    folder: [次元の生成構造/三次元正方配列の積と自己無撞着_20261127](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E4%B8%89%E6%AC%A1%E5%85%83%E6%AD%A3%E6%96%B9%E9%85%8D%E5%88%97%E3%81%AE%E7%A9%8D%E3%81%A8%E8%87%AA%E5%B7%B1%E7%84%A1%E6%92%9E%E7%9D%80_20261127) · [release notes](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_triangle_loop_part5_multishell_gravity_v1.md)
+57. **Two-Particle Dynamical Scattering, Gauge-Mediated Interactions, and Dynamical CHSH Bell Violation in the 3D Triangle-Loop Product (Part VI)**  
+   三次元正方配列の三角形ループ積における 2 粒子動的散乱、ゲージ媒介相互作用、および空間分離 CHSH ベル不等式の動的破れ（Part VI）  
+   DOI [10.5281/zenodo.24628298](https://doi.org/10.5281/zenodo.24628298) · Concept [10.5281/zenodo.24628297](https://doi.org/10.5281/zenodo.24628297) · 2026-11-28 · v1.0 · [PDF en](https://zenodo.org/records/24628298/files/triangle_loop_two_particle_scattering_chsh_part6_en.pdf) [PDF ja](https://zenodo.org/records/24628298/files/%E4%B8%89%E6%AC%A1%E5%85%83%E6%AD%A3%E6%96%B9%E9%85%8D%E5%88%97%E3%81%AE%E4%B8%89%E8%A7%92%E5%BD%A2%E3%83%AB%E3%83%BC%E3%83%97%E7%A9%8D%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B2%E7%B2%92%E5%AD%90%E5%8B%95%E7%9A%84%E6%95%A3%E4%B9%B1%E3%81%A8CHSH%E3%83%99%E3%83%AB%E4%B8%8D%E7%AD%89%E5%BC%8F%E3%81%AE%E5%8B%95%E7%9A%84%E7%A0%B4%E3%82%8C_Part6.pdf)  
+   folder: [次元の生成構造/三次元正方配列の積と自己無撞着_20261127](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E4%B8%89%E6%AC%A1%E5%85%83%E6%AD%A3%E6%96%B9%E9%85%8D%E5%88%97%E3%81%AE%E7%A9%8D%E3%81%A8%E8%87%AA%E5%B7%B1%E7%84%A1%E6%92%9E%E7%9D%80_20261127) · [release notes](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_triangle_loop_part6_scattering_chsh_v1.md)
 
 ## Time Axis, Q Axis, and Fermion Generation / 時間軸Q軸とフェルミオンの生成構造
 
