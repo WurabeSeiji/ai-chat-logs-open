@@ -11,6 +11,9 @@
 - **Facebook 投稿**：
   - 日本語版：https://www.facebook.com/kihara.noriaki/posts/pfbid02gJSJwmZbgVY3UiSoJqQuMuc4yYJu8GQKgUmJySXVnBD4FfErNiLdszCBhFSk8hGZl
   - 英語版：https://www.facebook.com/kihara.noriaki/posts/pfbid0CLEPfoGYxCooNU9e4YYTjVZjvHyVAmPRsAmMVPispC34pbjRFQM2UccgQu7CjQwal
+- **X（Twitter）投稿**：
+  - 日本語版：https://x.com/NoriakiKihara/status/2126619594475651582
+  - 英語版：https://x.com/NoriakiKihara/status/2126619901754523842
 - **統合した速報シリーズ（全 7 報）**：
   - 第 1 速報：`10.5281/zenodo.24616931`
   - 第 2 速報：`10.5281/zenodo.24618400`

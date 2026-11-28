@@ -11,6 +11,9 @@
 - **Facebook 投稿**：
   - 日本語版：https://www.facebook.com/kihara.noriaki/posts/pfbid02gJSJwmZbgVY3UiSoJqQuMuc4yYJu8GQKgUmJySXVnBD4FfErNiLdszCBhFSk8hGZl
   - 英語版：https://www.facebook.com/kihara.noriaki/posts/pfbid0CLEPfoGYxCooNU9e4YYTjVZjvHyVAmPRsAmMVPispC34pbjRFQM2UccgQu7CjQwal
+- **X（Twitter）投稿**：
+  - 日本語版：https://x.com/NoriakiKihara/status/2126619594475651582
+  - 英語版：https://x.com/NoriakiKihara/status/2126619901754523842
 - **接続する先行論文**：
   - Part I（統合完成論文：速報 1–7 統合）：`10.5281/zenodo.24622201`（Concept: `10.5281/zenodo.24622200`）
   - 八元数 QCD 閉じ込め・質量ギャップ論文：`10.5281/zenodo.24369465`
