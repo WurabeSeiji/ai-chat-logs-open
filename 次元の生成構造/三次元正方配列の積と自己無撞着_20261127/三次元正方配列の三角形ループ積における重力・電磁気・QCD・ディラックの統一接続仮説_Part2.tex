@@ -1,0 +1,560 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{xurl}
+\usepackage{float}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}
+\usepackage{float}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={三次元正方配列の三角形ループ積における重力・電磁気・QCD・ディラックの統一接続仮説（Part II）},
+  pdfauthor={木原 範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{三次元正方配列の三角形ループ積における重力・電磁気・QCD・ディラックの統一接続仮説（Part
+II）}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{― 外部時空 \(O_8^{\mathrm{ext}}\) × 内部ゲージ
+\(O_8^{\mathrm{int}}\)
+分離仮説、マクスウェル／ヤン＝ミルズ読み分け、および 1
+世代選択的ゲージ結合 ―}
+\author{木原 範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020}
+\date{2026年11月28日}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\textbf{著者：} 木原 範昭（株式会社WFシステム）\\
+\textbf{ORCID：} 0009-0004-6753-4020\\
+\textbf{日付：} 2026年11月28日\\
+\textbf{位置づけ：} 統合完成論文 Part I（DOI:
+\texttt{10.5281/zenodo.24622201}、速報第 1〜第 7 報 {[}S1--S7{]}
+を統合）の続編となる\textbf{統合仮説論文（Part
+II）}。著者の先行仮説論文『八元数の積から、ヤン＝ミルズとディラックを読み出す』{[}K7{]}（Concept
+DOI: \texttt{10.5281/zenodo.24387753}）および『QCD
+を八元数で表現したら』{[}K6{]}（Concept DOI:
+\texttt{10.5281/zenodo.24369465}）で残された核心課題に対し、Part I
+の確立事実と新規の機械精度検証（\texttt{tri\_loop\_part2\_unified\_forces\_verify\_v0.py}）を直結することで、\textbf{重力・電磁気（マクスウェル）・強い力（QCD
+ヤン＝ミルズ）・物質場（ディラック）}の 4 者を矛盾なく 1
+本の枠組みへ接続する統一仮説を提示する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+Part I {[}P1{]} では、背景時空や量子公理を一切仮定しない純粋な実数 3
+階テンソルの三角形ループ積
+\(\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r} T_{ipq} T_{qjr} T_{rpk}\)
+から、Hurwitz 結晶選別・4 段階倍々エンタングルメント相転移・\(SO(3)\)
+スピン選別・\(G_2/SU(3)\) ゲージ次元・量子 4 定理・4
+クラス空間計量歪みと臨界崩壊・Hurwitz 質量階層・28 次元 \(Spin(8)\)
+Triality スピン \(1/2\)・CAR フェルミオン \texttt{1:3:3:1}
+電荷スペクトルが自発創発することを仮説なしで確立した。
+
+しかし、重力・電磁気・強い力（QCD）・ディラック物質場を同一系内で矛盾なく同時結合させるには、単一の
+\(O_8\) の虚数軸 \(\{e_1, \dots, e_7\}\) を外部 3
+次元空間（\(\{e_1, e_2, e_3\}\)）と内部カラー空間（\(\{e_1, \dots, e_6\}\)）に二重使用してはならず、Coleman--Mandula
+定理 {[}E13{]}
+に整合する\textbf{外部時空と内部ゲージの分離仮説}が不可欠である。本 Part
+II では、先行論文 {[}K7{]} の未検証課題（無名更新写像・Triality・物差し
+2 仮説）を Part I によって決着させつつ、以下 4
+点を決定論的機械精度検証（乱数なし）とともに定式化する。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{外部時空 \(O_8^{\mathrm{ext}}\) × 内部ゲージ
+  \(O_8^{\mathrm{int}}\) 分離仮説（Coleman--Mandula
+  回避の最小構成）}：\(N = 64\) 空間
+  \(O_8^{\mathrm{ext}} \otimes O_8^{\mathrm{int}}\) において、外側
+  \(SO(3)\) 空間回転生成子 \(G_{\mathrm{ext}} \otimes I_8\) と内側
+  \(SU(3) \times U(1)_Q\) ゲージ生成子 \(I_8 \otimes G_{\mathrm{int}}\)
+  の全 \(3 \times 9 = 27\) 組は厳密可換（最大誤差
+  \textbf{\texttt{0.000e+00}}）であり、直積準同型
+  \(\mathrm{Tri}(A\otimes B) = \mathrm{Tri}(A)\otimes\mathrm{Tri}(B)\)（誤差
+  \texttt{2.86e-16}）で独立進化しつつ、第 3
+  層の単一複素構造ロックによって単一時計を共有する。
+\item
+  \textbf{同一三つ組からの電磁気（Maxwell）vs 強い力（QCD
+  Yang--Mills）読み分け}：{[}K7{]} の三つ組閉じ残り
+  \(\mathrm{Re}(o_A o_B o_C)\) において、可換 \(U(1)_Q\)（\(e_7\)
+  方向）では非可換閉じ残りが厳密ゼロ（\texttt{0.000e+00}＝マクスウェル型）である一方、非可換
+  \(SU(3)\) 8 グルーオン方向では \(\varepsilon = 0.2 \to 0.025\)
+  で厳密な \(O(\varepsilon^4)\) ヤン＝ミルズ作用極限へ収束（理論比
+  \texttt{0.9955\ \$\textbackslash{}to\$\ 0.99993}）し、全 56 組の
+  \(SU(3)\) ヤコビ／ビアンキ恒等式も誤差 \textbf{\texttt{0.000e+00}}
+  で成立する。
+\item
+  \textbf{ディラック分散関係と 1 世代 8
+  状態の選択的ゲージ結合}：外側クリフォード代数によるディラック演算子
+  \(\not{D} = \sum_{a=1}^3 L_a p_a\) は分散関係
+  \(\|(i\not{D}+m)(i\not{D}-m) - (|p|^2 - m^2)I\| = 2.591 \times 10^{-15}\)
+  を満たし、三つ組読み替え
+  \(\mathrm{Re}(o_A o_B o_C) = \bar{o}_A^T L(o_B) o_C\) も誤差
+  \texttt{1.110e-16} で一致する。さらに 1 世代 8 状態への \(U(1)_Q\)
+  光子回転（\(\theta=0.73\)）および \(SU(3)\)
+  グルーオン回転（\(\theta_g=0.51\)）の応答は、\(\nu\)（EM=\texttt{0.000},
+  QCD=\texttt{0.000}）、\(\bar{d}\)（EM=\texttt{0.243},
+  QCD=\texttt{0.504}）、\(u\)（EM=\texttt{0.482},
+  QCD=\texttt{0.580}）、\(e^+\)（EM=\texttt{0.714},
+  QCD=\texttt{0.000}）と標準模型の相互作用選択則に完全一致する。
+\item
+  \textbf{先行論文 {[}K7{]} §19.5「2
+  つの物差し仮説」への決着と重力統一見取図}：{[}K7{]}
+  で未決着だった「物差し仮説 1（\((1+3)+(1+3)\) 分割）」と「仮説
+  2（実軸スカラー波）」は、Part I の \(H = O_8 \otimes M_8\)
+  において外側 \(O_8\)（球対称 4 クラス空間計量歪み＋臨界崩壊）と内側
+  \(M_8\)（複素スカラー時計＋スピン 2
+  引きずり）として\textbf{二層同時に実現している}ことを示し、大格子
+  \(O_8^{\otimes K}\) 展開による連続極限（\(1/r^2\) クーロン力・\(1/r\)
+  重力・一般相対論・微細構造定数）への検証ロードマップを提示する。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 導入：先行論文 {[}K6, K7{]} から Part I {[}P1{]} を経て
+Part II
+へ}\label{ux5c0eux5165ux5148ux884cux8ad6ux6587-k6-k7-ux304bux3089-part-i-p1-ux3092ux7d4cux3066-part-ii-ux3078}
+
+本論文は、2026 年 11 月の三部作的展開を 1
+本の統一仮説へ結実させるものである。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{前史（2026-11-19〜20）{[}K6, K7{]}}：{[}K6{]}
+  で量子色力学（QCD）ラグランジアンを八元数で書き直し、{[}K7{]}
+  では方向を逆転させて「八元数の積だけを置けば、三つの積の実部
+  \(\mathrm{Re}(o_A o_B o_C)\)
+  の読み分けとしてヤン＝ミルズ・ディラック・距離・結合係数が同時に現れる」という仮説を提示した。しかし
+  {[}K7{]} §19.3・§19.5 には、(a) 無名性を破る配列 \(W_{ABC}\)
+  を使わない具体的な更新写像 \(\Psi\) の不在、(b) 8 次元 Triality
+  の未検証、(c) 重力の歪みを受ける「物差し」の 2
+  仮説の未決着、が残されていた。
+\item
+  \textbf{仮説なしの確定基盤（Part I）{[}P1, S1--S7{]}}：実数 3
+  階テンソルの三角形ループ積 \(\mathrm{Tri}(T)_{ijk}\) だけから、Hurwitz
+  結晶選別・4 段階相転移・量子 4 定理・4
+  クラス空間計量歪みと臨界崩壊・Hurwitz 質量階層・\(Spin(8)\) Triality
+  スピン \(1/2\)・CAR フェルミオン \texttt{1:3:3:1}
+  電荷をすべて仮説なし・機械精度で確定した。
+\item
+  \textbf{本論文（Part II）の役割と資格表示}：Part I
+  の確定事実の上に、\textbf{外部時空と内部ゲージの分離仮説}を明示的に導入し、重力・電磁気（マクスウェル）・QCD（ヤン＝ミルズ）・物質場（ディラック）の
+  4 本柱を統一接続する。科学的誠実さのため、{[}K7{]}
+  と同様に各主張の資格を \textbf{【既知】・【Part I 確立】・【Part II
+  検証】・【仮説・未検証】} の 4 段階で厳密に表示する。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. 先行論文 {[}K7{]} の未検証課題への決着（Part I
+による答え合わせ）}\label{ux5148ux884cux8ad6ux6587-k7-ux306eux672aux691cux8a3cux8ab2ux984cux3078ux306eux6c7aux7740part-i-ux306bux3088ux308bux7b54ux3048ux5408ux308fux305b}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+2026-11-20 論文 {[}K7{]} の未検証課題
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+本日 Part I {[}P1{]} / Part II による決着
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+資格
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+無名性を破る配列 \(W_{ABC}\) を外から与えず、総和 \(P^3\)
+に潰れない更新写像 \(\Psi\)（{[}K7{]} §9, §19.3-1/5） & 三角形ループ積
+\(\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r} T_{ipq} T_{qjr} T_{rpk}\)
+が無名性を厳守しつつ \(O_8\) 結晶を自発選別 & 【Part I 確立】 \\
+ヤン＝ミルズとディラックの読み分けを与える 8 次元 Triality（{[}K7{]}
+§7） & \(O_8\) の 3 添字で 28 次元 \(Spin(8)\) Triality と \(2\pi\)
+回転スピン \(1/2\) 符号反転（\(-I\)）を実証 {[}S7{]} & 【Part I
+確立】 \\
+\(SU(3)\) の色と電荷、右巻き／左巻きの区別、質量階層（{[}K7{]} §6,
+§19.3-2/10） & \(e_7\) 固定 CAR 代数で 1
+世代電荷（\texttt{0,\ 1/3,\ 2/3,\ 1}）・\(SU(3)\) カシミール・内側
+\(M_8\) カイラル分裂・Hurwitz 質量階層を実証 {[}S6, S7{]} & 【Part I
+確立】 \\
+有限分解能と双対性・最小分解能の起源（{[}K7{]} §17, §18） &
+\(\mathbb{Z}_2^3\) Donoho--Stark / Shannon
+不確定性下限（\(\ln 8\)）の厳密飽和と最小分解能
+\(\Delta x_{\min}=1, k_{\max}=3\) {[}S4{]} & 【Part I 確立】 \\
+重力の歪みを受ける「物差し」の 2 仮説：(1+3)+(1+3)
+分割か、スカラー波か（{[}K7{]} §19.5） & \(H = O_8 \otimes M_8\)
+において、外側 \(O_8\)（空間骨格・4 クラス計量歪み）と内側
+\(M_8\)（複素スカラー時計・スピン 2 引きずり）が\textbf{二層同時に実現}
+& 【Part I 確立】＋【仮説・未検証】 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{3. 外部時空 \(O_8^{\mathrm{ext}}\) ×
+内部ゲージ \(O_8^{\mathrm{int}}\) 分離仮説（Coleman--Mandula
+回避）}{3. 外部時空 O\_8\^{}\{\textbackslash mathrm\{ext\}\} × 内部ゲージ O\_8\^{}\{\textbackslash mathrm\{int\}\} 分離仮説（Coleman--Mandula 回避）}}\label{ux5916ux90e8ux6642ux7a7a-o_8mathrmext-ux5185ux90e8ux30b2ux30fcux30b8-o_8mathrmint-ux5206ux96e2ux4eeeux8aaccolemanmandula-ux56deux907f}
+
+単一の \(O_8\) のみでは、虚数軸 \(\{e_1, e_2, e_3\}\) を外部 3
+次元空間（\(SO(3)\)）に使うと同時に、\(e_7\) 固定下の
+\(\{e_1, \dots, e_6\}\)
+を内部カラー空間（\(SU(3)\times U(1)_Q\)）に使うことになり、外部時空と内部ゲージが軸を奪い合う。
+
+\textbf{統一分離仮説（Hypothesis U1）}：物理的状態空間の最小単位は
+\(N = 64\) テンソル積構造
+\(O_8^{\mathrm{ext}} \otimes O_8^{\mathrm{int}}\) であり、 -
+\textbf{外側セクター \(O_8^{\mathrm{ext}}\)} が外部 3 次元空間（四元数
+\(\{e_1, e_2, e_3\}\) の \(SO(3)\) 回転、球対称 4
+クラス空間計量歪み、離散曲率 \(\rho\)、ディラック空間微分
+\(\not{D} = \sum_{a=1}^3 L_a p_a\)）を担い、 - \textbf{内側セクター
+\(O_8^{\mathrm{int}}\)}（およびその凝縮相
+\(M_8\)）が内部ゲージ対称性（\(e_7\) 固定による
+\(SU(3) \times U(1)_Q\)、1 世代 CAR フェルミオン電荷、複素時計
+\(J = -i\sigma_y\)）を担う。
+
+\textbf{【Part II 検証 P2-1】}：外側 \(SO(3)\) の 3 生成子
+\(G_{\mathrm{ext}} \otimes I_8\) と内側 \(SU(3) \times U(1)_Q\) の 9
+生成子 \(I_8 \otimes G_{\mathrm{int}}\) の全 \(3 \times 9 = 27\)
+組の交換子を計算した結果、最大誤差は \textbf{\texttt{0.000e+00}}
+で厳密可換であった。さらに Part I {[}S6{]} の直積準同型
+\(\mathrm{Tri}(A\otimes B) = \mathrm{Tri}(A)\otimes\mathrm{Tri}(B)\)（誤差
+\texttt{2.86e-16}）により両セクターは対称性を混ぜることなく独立進化し、Coleman--Mandula
+定理 {[}E13{]} に抵触しない。そのうえで第 3
+層の単一複素構造ロック（\(U_{\text{Layer 3}} = \frac{1}{\sqrt{2}}(u\otimes v + (Ju)\otimes(-Jv))\)）{[}S2{]}
+が、外部時空と内部ゲージに共通の単一時計を与える【仮説・未検証】。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. 電磁気（Maxwell）と強い力（QCD
+Yang--Mills）の統一読み分け}\label{ux96fbux78c1ux6c17maxwellux3068ux5f37ux3044ux529bqcd-yangmillsux306eux7d71ux4e00ux8aadux307fux5206ux3051}
+
+{[}K7{]} §6 で提案された三つ組閉じ残り
+\(\mathrm{Re}(o_A o_B o_C) \approx 1 - \frac{1}{2}|\mathfrak{F}|^2\)
+を、Part I で確定した \(e_7\) 固定の可換 \(U(1)_Q\) 方向と非可換
+\(SU(3)\) 8 グルーオン方向へ直接適用した（図 1(a)）【Part II 検証
+P2-2】：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{電磁気（可換
+  \(U(1)_Q\)・マクスウェル型）}：一次閉ループ（\(c = -a-b\)）を同一虚数軸
+  \(e_7\) 上にとると、交換子 \(a \times b = 0\) のため非可換閉じ残り
+  \(1 - \mathrm{Re}(o_A o_B o_C)\) は \(\varepsilon = 0.2 \to 0.025\)
+  の全点で \textbf{\texttt{0.000e+00}}（機械ゼロ）となる。
+\item
+  \textbf{強い力（非可換 \(SU(3)\)・QCD
+  ヤン＝ミルズ型）}：異なる虚数方向（\(e_1, e_2\)）および \(SU(3)\) 8
+  グルーオン生成子（\(i\Lambda_1, i\Lambda_4\)）上の三つ組プラケット
+  \(1 - \frac{1}{8}\mathrm{Re}\,\mathrm{Tr}(U_A U_B U_C)\)
+  を計測すると、\(\varepsilon = 0.200 \to 0.100 \to 0.050 \to 0.025\)
+  で厳密 \(O(\varepsilon^4)\) ヤン＝ミルズ作用極限に対する比が
+  \textbf{\texttt{0.995540\ \$\textbackslash{}to\$\ 0.998888\ \$\textbackslash{}to\$\ 0.999722\ \$\textbackslash{}to\$\ 0.999931}}
+  へと厳密収束する。
+\item
+  \textbf{ビアンキ恒等式（同次マクスウェル／ヤン＝ミルズ方程式）}：\(SU(3)\)
+  8 グルーオン生成子の全 \(\binom{8}{3} = 56\)
+  組についてヤコビ恒等式を検証し、最大誤差 \textbf{\texttt{0.000e+00}}
+  を確認した。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. ディラック演算子と 1 世代 8
+状態の選択的ゲージ結合}\label{ux30c7ux30a3ux30e9ux30c3ux30afux6f14ux7b97ux5b50ux3068-1-ux4e16ux4ee3-8-ux72b6ux614bux306eux9078ux629eux7684ux30b2ux30fcux30b8ux7d50ux5408}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{ディラック分散関係と三つ組読み替え【Part II 検証 P2-3,
+  P2-4】}：外側 \(O_8^{\mathrm{ext}}\) の左乗算クリフォード行列
+  \(L_1, L_2, L_3\) から構成した空間ディラック演算子
+  \(\not{D} = \sum_{a=1}^3 L_a p_a\) は、任意の運動量 \(p\)・質量 \(m\)
+  に対して
+  \(\|(i\not{D} + m)(i\not{D} - m) - (|p|^2 - m^2)I\| = \mathbf{2.591 \times 10^{-15}}\)
+  を満たす。また {[}K7{]} 式 (7.3) の三つ組ディラック読み替え
+  \(\mathrm{Re}(o_A o_B o_C) = \bar{o}_A^T L(o_B) o_C\) も誤差
+  \textbf{\texttt{1.110\ \textbackslash{}times\ 10\^{}\{-16\}}}
+  で厳密成立する。
+\item
+  \textbf{標準模型 1 世代の選択的ゲージ結合【Part II 検証 P2-3】}：内側
+  \(O_8^{\mathrm{int}}\) の CAR 1 世代 8
+  状態（\(\nu, \bar{d}, u, e^+\)）に、\(U(1)_Q\) 光子回転
+  \(U_Q(\theta) = \exp(i\theta Q)\)（\(\theta = 0.73\)）および \(SU(3)\)
+  全 8 グルーオン回転
+  \(U_g = \exp(i\theta_g \Lambda_A)\)（\(\theta_g = 0.51\)）を作用させた結果（表
+  1、図 1(b)）：
+\end{enumerate}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2083}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2083}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2083}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2083}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+1 世代セクター（8 状態）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+電荷 \(Q\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(U_Q\psi = e^{iQ\theta}\psi\) 誤差
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{電磁結合 \(\|U_Q\psi - \psi\|\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{強い力結合 \(\max_A\|U_g\psi - \psi\|\)}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\(\nu\)（ニュートリノ型・1 重項）} & \texttt{0} &
+\texttt{1.570e-16} & \textbf{\texttt{0.000000}（非結合）} &
+\textbf{\texttt{0.000000}（非結合）} \\
+\textbf{\(\bar{d}\)（反ダウン型・3 重項）} & \texttt{+1/3} &
+\texttt{1.943e-16} & \textbf{\texttt{0.242733}（結合）} &
+\textbf{\texttt{0.504491}（結合）} \\
+\textbf{\(u\)（アップ型・3 重項）} & \texttt{+2/3} & \texttt{2.289e-16}
+& \textbf{\texttt{0.481878}（結合）} &
+\textbf{\texttt{0.580425}（結合）} \\
+\textbf{\(e^+\)（陽電子型・1 重項）} & \texttt{+1} & \texttt{1.570e-16}
+& \textbf{\texttt{0.713899}（最大結合）} &
+\textbf{\texttt{0.000000}（非結合）} \\
+\end{longtable}
+}
+
+すなわち、外部から粒子ラベルや相互作用表を一切与えずとも、ニュートリノは電磁・強い力の双方に結合せず、電子は電磁のみに結合し、クォークは電磁・強い力の双方に結合するという標準模型の選択則が、\texttt{0.000e+00}〜\texttt{10\^{}\{-16\}}
+の精度で自動成立する。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={Part II 機械精度検証結果：(a) 同一三つ組からの可換 Maxwell（閉じ残り 0）vs 非可換 SU(3) Yang--Mills（O(\textbackslash varepsilon\^{}4) 厳密収束）の読み分け。(b) 1 世代 8 状態（\textbackslash nu, \textbackslash bar\{d\}, u, e\^{}+）に対する U(1)\_Q 光子および SU(3) グルーオンの選択的ゲージ結合。}]{figs_ja/fig_p2_ym_maxwell_and_selective_coupling_ja.png}
+\caption{Part II 機械精度検証結果：(a) 同一三つ組からの可換
+Maxwell（閉じ残り 0）vs 非可換 \(SU(3)\)
+Yang--Mills（\(O(\varepsilon^4)\) 厳密収束）の読み分け。(b) 1 世代 8
+状態（\(\nu, \bar{d}, u, e^+\)）に対する \(U(1)_Q\) 光子および \(SU(3)\)
+グルーオンの選択的ゲージ結合。}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6.
+重力との統一見取図・未検証課題・次段階ロードマップ}\label{ux91cdux529bux3068ux306eux7d71ux4e00ux898bux53d6ux56f3ux672aux691cux8a3cux8ab2ux984cux6b21ux6bb5ux968eux30edux30fcux30c9ux30deux30c3ux30d7}
+
+図 2 に、本 Part II
+が提示する\textbf{重力・電磁気・QCD・ディラック物質場の統一見取図}を示す。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{重力（外側 \(O_8^{\mathrm{ext}}\) ＋内側 \(M_8\) 時計）}：Part
+  I {[}S5{]} で確立した 7 方向 7 桁等方な 4 クラス空間計量歪み、離散曲率
+  \(\langle\rho\rangle_w\) 勾配、臨界点
+  \(\epsilon_c \in (0.270, 0.275)\) での遠方空間切断崩壊、およびスピン
+  2（\(\sigma_x\)）による背景時計引きずりが、{[}K7{]} §19.5 の 2
+  つの物差し仮説（空間骨格＋スカラー時計）を二層統合する。
+\item
+  \textbf{電磁気・QCD・ディラック（内側 \(O_8^{\mathrm{int}}\) ＋外側
+  \(O_8^{\mathrm{ext}}\) 微分）}：同一三つ組の閉じ残りが可換 \(U(1)_Q\)
+  でマクスウェル型、非可換 \(SU(3)\) でヤン＝ミルズ型を与え、Triality
+  と左乗算クリフォード代数が 1
+  世代フェルミオンのディラック構造と選択的ゲージ結合を与える。
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={Part II 統一見取図：単一公理 \textbackslash mathrm\{Tri\}(T) の直積準同型から生じる外部時空 O\_8\^{}\{\textbackslash mathrm\{ext\}\}（重力・空間微分）× 内部ゲージ O\_8\^{}\{\textbackslash mathrm\{int\}\} / M\_8（電磁気・QCD・時計）の分離と、第 3 層単一時計ロック・Triality・大格子展開 O\_8\^{}\{\textbackslash otimes K\} による統一結合。}]{figs_ja/fig_p2_unified_architecture_ja.png}
+\caption{Part II 統一見取図：単一公理 \(\mathrm{Tri}(T)\)
+の直積準同型から生じる外部時空 \(O_8^{\mathrm{ext}}\)（重力・空間微分）×
+内部ゲージ \(O_8^{\mathrm{int}} / M_8\)（電磁気・QCD・時計）の分離と、第
+3 層単一時計ロック・Triality・大格子展開 \(O_8^{\otimes K}\)
+による統一結合。}
+\end{figure}
+
+\subsubsection{本論文でまだ主張しないこと（【仮説・未検証】の明記）}\label{ux672cux8ad6ux6587ux3067ux307eux3060ux4e3bux5f35ux3057ux306aux3044ux3053ux3068ux4eeeux8aacux672aux691cux8a3cux306eux660eux8a18}
+
+誠実性のため、以下は未検証の次段階課題として明確に切り分ける： 1.
+\textbf{\(N = 64\) を超える大格子 \(O_8^{\otimes K}\)
+での連続極限}：\(1/r^2\) クーロン力、\(1/r\)
+ニュートン重力、光円錐の遠方伝播速度 \(c\)、ローレンツ因子
+\(\sqrt{1 - v^2/c^2}\)、および一般相対論の光の曲がり（係数 2）{[}K7{]}
+§16.2 の直接数値検証。 2.
+\textbf{動的散乱と結合定数}：電子・光子散乱の動的シミュレーションおよび微細構造定数
+\(\alpha \approx 1/137.036\)・強結合定数 \(\alpha_s\) の第一原理導出。
+3. \textbf{電弱統一と 3 世代}：\(SU(2)_L\)
+弱ボソン結合、パリティ最大破れ、および 3 世代フェルミオンの精密質量比。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7.
+再現手順と公開ファイル}\label{ux518dux73feux624bux9806ux3068ux516cux958bux30d5ux30a1ux30a4ux30eb}
+
+\begin{itemize}
+\tightlist
+\item
+  検証スクリプト：\texttt{tri\_loop\_part2\_unified\_forces\_verify\_v0.py}（実行時間
+  0.02 秒）
+\item
+  数値ログ：\texttt{results/tri\_loop\_part2\_unified\_forces\_verify\_v0.txt}
+\item
+  作図スクリプト：\texttt{plot\_part2\_figures\_v0.py}
+\item
+  図出力（図
+  1）：\texttt{results/fig\_p2\_ym\_maxwell\_and\_selective\_coupling\_\{ja,en\}.png}
+\item
+  図出力（図
+  2）：\texttt{results/fig\_p2\_unified\_architecture\_\{ja,en\}.png}
+\item
+  ビルドスクリプト：\texttt{build\_tex\_part2.py}
+\end{itemize}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsubsection{自己引用}\label{ux81eaux5df1ux5f15ux7528}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}P1{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積からの量子・ゲージ・重力・フェルミオン構造の自発創発（統合完成論文
+  Part I）}, Zenodo (2026-11-28), Version DOI:
+  \texttt{10.5281/zenodo.24622201} (Concept:
+  \texttt{10.5281/zenodo.24622200}).
+\item
+  \textbf{{[}S1--S7{]}} 木原範昭, \emph{速報第 1〜第 7 報}, Zenodo
+  (2026-11-28), DOIs: \texttt{10.5281/zenodo.24616931},
+  \texttt{24618400}, \texttt{24619357}, \texttt{24620262},
+  \texttt{24621139}, \texttt{24621454}, \texttt{24621788}.
+\item
+  \textbf{{[}K6{]}} 木原範昭, \emph{QCD を八元数で表現したら}, Zenodo
+  (2026-11-19), Concept DOI: \texttt{10.5281/zenodo.24369465}.
+\item
+  \textbf{{[}K7{]}} 木原範昭,
+  \emph{八元数の積から、ヤン＝ミルズとディラックを読み出す ―
+  方向を逆にした思考実験 ―}, Zenodo (2026-11-20), Concept DOI:
+  \texttt{10.5281/zenodo.24387753}.
+\end{itemize}
+
+\subsubsection{外部一次文献}\label{ux5916ux90e8ux4e00ux6b21ux6587ux732e}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}E1{]}} C. N. Yang and R. L. Mills, \emph{Phys. Rev.}
+  \textbf{96}, 191--195 (1954).
+\item
+  \textbf{{[}E2{]}} P. A. M. Dirac, \emph{Proc. R. Soc. Lond. A}
+  \textbf{117}, 610--624 (1928).
+\item
+  \textbf{{[}E3{]}} K. G. Wilson, \emph{Phys. Rev.~D} \textbf{10},
+  2445--2459 (1974).
+\item
+  \textbf{{[}E4{]}} J. C. Baez, \emph{Bull. Amer. Math. Soc.}
+  \textbf{39}, 145--205 (2002).
+\item
+  \textbf{{[}E5{]}} M. Günaydin and F. Gürsey, \emph{J. Math. Phys.}
+  \textbf{14}, 1651--1667 (1973); C. Furey, arXiv:1611.09182 (2015);
+  \emph{Eur. Phys. J. C} \textbf{78}, 375 (2018).
+\item
+  \textbf{{[}E13{]}} S. Coleman and J. Mandula, \emph{Phys. Rev.}
+  \textbf{159}, 1251--1256 (1967).
+\item
+  \textbf{{[}E14{]}} T. Regge, \emph{Nuovo Cimento} \textbf{19},
+  558--571 (1961).
+\end{itemize}
+
+\end{document}
