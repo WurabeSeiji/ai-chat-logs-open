@@ -17,6 +17,12 @@
 ---
 
 【コメント欄用】
+note（日本語・第 2 速報）：
+https://note.com/kiharanoriaki/n/n5154046345f9
+
+note（英語・Second Rapid Communication）：
+https://note.com/kiharanoriaki/n/nf599037a9a87
+
 第 2 速報（Zenodo・日英全文・PDF・全再現コード、Concept DOI）：
 https://doi.org/10.5281/zenodo.24618399
 

@@ -6,6 +6,24 @@
 - Zenodo record: https://zenodo.org/records/24618400
 - 前報（第 1 速報 Concept DOI）: https://doi.org/10.5281/zenodo.24614040
 
+## note
+- 日本語版: https://note.com/kiharanoriaki/n/n5154046345f9
+  （元原稿: `次元の生成構造/三次元正方配列の積と自己無撞着_20261127/note_triangle_loop_rapid2_ja_v1.md`）
+- 英語版: https://note.com/kiharanoriaki/n/nf599037a9a87
+  （元原稿: `次元の生成構造/三次元正方配列の積と自己無撞着_20261127/note_triangle_loop_rapid2_en_v1.md`）
+
+## Facebook
+- 日本語版: https://www.facebook.com/kihara.noriaki/posts/pfbid02sEjGGs4derXb4rQb6AwfDqrqGC5fh2hSN9bAdP7QdCS95EoPVWbCC6oshT3efeWxl
+  （元原稿: `次元の生成構造/三次元正方配列の積と自己無撞着_20261127/fb_message_triangle_loop_rapid2_ja.md`）
+- 英語版: https://www.facebook.com/kihara.noriaki/posts/pfbid02yHd1E32WWEphLvetxXoARPAxDqcorFihHBDgFrQqRC9x6zurdpw74svhVYuYqj3Nl
+  （元原稿: `次元の生成構造/三次元正方配列の積と自己無撞着_20261127/fb_message_triangle_loop_rapid2_en.md`）
+
+## X
+- 日本語版: https://x.com/NoriakiKihara/status/2126540453973782715
+  （元原稿: `次元の生成構造/三次元正方配列の積と自己無撞着_20261127/x_message_triangle_loop_rapid2_ja.md`）
+- 英語版: https://x.com/NoriakiKihara/status/2126541305186775549
+  （元原稿: `次元の生成構造/三次元正方配列の積と自己無撞着_20261127/x_message_triangle_loop_rapid2_en.md`）
+
 ## 公開ファイル（Zenodo, 9点）
 - `三次元正方配列の三角形ループ積における4段階相転移とプローブ選別_第2速報.md` / `triangle_loop_four_stage_transitions_probe_selection_rapid2_en.md`
 - `三次元正方配列の三角形ループ積における4段階相転移とプローブ選別_第2速報.tex` / `triangle_loop_four_stage_transitions_probe_selection_rapid2_en.tex`
@@ -23,4 +41,7 @@
 ## 変更履歴
 | 日付 | 内容 |
 |---|---|
-| 2026-11-28 | v1.0 公開。Zenodo 9 ファイル（DOI `10.5281/zenodo.24618400` / Concept `10.5281/zenodo.24618399`）、note・X・Facebook 原稿作成 |
+| 2026-11-28 | v1.0 公開。Zenodo 9 ファイル（DOI `10.5281/zenodo.24618400` / Concept `10.5281/zenodo.24618399`） |
+| 2026-11-28 | note 日英公開（日本語: https://note.com/kiharanoriaki/n/n5154046345f9 / 英語: https://note.com/kiharanoriaki/n/nf599037a9a87） |
+| 2026-11-28 | Facebook 日英公開（日本語: https://www.facebook.com/kihara.noriaki/posts/pfbid02sEjGGs4derXb4rQb6AwfDqrqGC5fh2hSN9bAdP7QdCS95EoPVWbCC6oshT3efeWxl / 英語: https://www.facebook.com/kihara.noriaki/posts/pfbid02yHd1E32WWEphLvetxXoARPAxDqcorFihHBDgFrQqRC9x6zurdpw74svhVYuYqj3Nl） |
+| 2026-11-28 | X 日英公開（日本語: https://x.com/NoriakiKihara/status/2126540453973782715 / 英語: https://x.com/NoriakiKihara/status/2126541305186775549）。SNS 展開一式完了 |
