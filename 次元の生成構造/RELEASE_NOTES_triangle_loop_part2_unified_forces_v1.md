@@ -13,6 +13,8 @@
 - **Facebook 投稿**：
   - 日本語版：https://www.facebook.com/kihara.noriaki/posts/pfbid02gJSJwmZbgVY3UiSoJqQuMuc4yYJu8GQKgUmJySXVnBD4FfErNiLdszCBhFSk8hGZl
   - 英語版：https://www.facebook.com/kihara.noriaki/posts/pfbid0CLEPfoGYxCooNU9e4YYTjVZjvHyVAmPRsAmMVPispC34pbjRFQM2UccgQu7CjQwal
+  - Part I〜VII 総括（日本語版）：https://www.facebook.com/kihara.noriaki/posts/pfbid0QX3FBTuwMpv2W3FvfC92BsaDpEsa45ERJuTyxk3trJa4wFQ5NAK4iSur2VPFEwz1l
+  - Part I〜VII 総括（英語版）：https://www.facebook.com/kihara.noriaki/posts/pfbid0Q17gHw7gzCko7svW61xx4NW3ernhnqFeKhybhKNSNV5jhtRqcR9LM9fqNMnABu3Tl
 - **X（Twitter）投稿**：
   - 日本語版：https://x.com/NoriakiKihara/status/2126619594475651582
   - 英語版：https://x.com/NoriakiKihara/status/2126619901754523842
