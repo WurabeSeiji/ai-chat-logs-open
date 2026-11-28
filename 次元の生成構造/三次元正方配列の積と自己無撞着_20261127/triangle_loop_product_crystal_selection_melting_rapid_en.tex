@@ -1,0 +1,1055 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=22mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{luatexja}
+\usepackage{xurl}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Spontaneous Selection of Quaternionic and Octonionic Crystals{,} Cascade Melting{,} and Bimodal View-Angle Splitting under the Triangle-Loop Product on Cubic Arrays (Rapid Communication)},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Spontaneous Selection of Quaternionic and Octonionic Crystals,
+Cascade Melting, and Bimodal View-Angle Splitting under the
+Triangle-Loop Product on Cubic Arrays (Rapid Communication)}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{― Numerical Demonstration of Particle Condensation and Spatial
+Rarefaction in a Self-Updating System without Background Spacetime,
+External Operators, or Randomness ―}
+\author{Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020}
+\date{November 28, 2026 Version DOI 10.5281/zenodo.24614041}
+
+\ltjsetparameter{jacharrange={-2,-3}}
+\begin{document}
+\maketitle
+
+\textbf{Author:} Noriaki Kihara (WF System Co., Ltd.)　ORCID
+0009-0004-6753-4020\\
+\textbf{Date:} 2026-11-28　　\textbf{Version:} v1.0 (Rapid
+Communication)\\
+\textbf{Version DOI:} 10.5281/zenodo.24614041　　\textbf{Concept DOI:}
+10.5281/zenodo.24614040\\
+\textbf{Repository:}
+\texttt{次元の生成構造/\allowbreak{}三次元正方配列の積と自己無撞着\_\allowbreak{}20261127/\allowbreak{}}\\
+\textbf{License:} CC BY 4.0
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+The author has been investigating a framework that derives spacetime,
+particles, and interactions (observation) solely from relational
+structures of states without assuming a background spacetime. Following
+the release on 2026-11-25 of V. Chandrasekaran's preprint on
+background-independent quantum gravity (arXiv:2611.34924v1) and the
+growing international attention to background-free approaches, this
+rapid communication reports interim results extending the author's
+previous complex-number numerical inflation experiments to octonions and
+higher-dimensional three-index cubic arrays, together with all
+reproducible source code, datasets, and plotting scripts.
+
+The core of this work is the \textbf{triangle-loop product} on an
+\(N \times N \times N\) cubic array \(T\):
+\[\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r=0}^{N-1} T_{ipq}\, T_{qjr}\, T_{rpk}.\]
+This operation treats all three axes symmetrically (anonymity), is
+non-associative, and contains no background spacetime, no external
+operators, no randomness, and no division. Through exact integer
+arithmetic, analytical reductions, and exact BLAS computations, we
+establish five results:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Spontaneous Algebraic Selection (Exact Integer Arithmetic):}
+  Among the multiplication tables \(f_{abc} \in \{0, \pm 1\}\) of
+  Cayley--Dickson algebras, \textbf{only the quaternions (\(N=4\)) and
+  octonions (\(N=8\))} form exact period-2 crystals (\(U^2 = I\)) under
+  the triangle-loop product (complex numbers \(N=2\) vanish at step 1;
+  sedenions \(N=16\) self-destruct without defects).
+\item
+  \textbf{Exhaustive 1,024 Single-Cell Defect Spectrum on the Octonion
+  Crystal (Zero Extinctions: 0):} Whereas the star-contraction
+  Bhattacharya--Mesner (BM) product suffers 100\% zero extinction after
+  defect collapse for \(N = 8\text{–}24\), the triangle-loop product
+  exhibits \textbf{0 zero extinctions (100\% survival)} across all 512
+  cells \(\times\) real/imaginary = 1,024 single-cell defects of the
+  octonion table. Under real defects, all 448 originally zero cells
+  precipitate into an \textbf{8-cell complex rotation-matrix pair};
+  under imaginary defects, the 448 originally zero cells split strictly
+  \textbf{336 : 112 (exact 3 : 1)} into a \textbf{32-cell
+  quaternionic-subalgebra intermediate phase} and an \textbf{8-cell
+  complex-subalgebra fixed point} (both satisfying \(\sum U^2 = 0\) and
+  Pauli projection \(I \pm \sigma_y\) structure without external
+  constraints).
+\item
+  \textbf{Exact Analytical Theorem for the 8-Cell Survivor and Two-Stage
+  Cascade Phase Transition (20,000-Step Tracking):} The real 8-cell
+  survivor obeys the exact closed equation
+  \(z_j' = (z_0^2 + z_1^2) z_j\), conserving the internal ratio
+  \(z_1/z_0\) while executing a \(3\times\)-angle rotation on \(S^1\)
+  for more than 20,000 steps and blocking or neutrally deflecting
+  perturbations from all 504 external cells. Meanwhile, the imaginary
+  32-cell intermediate phase undergoes a \textbf{two-stage cascade phase
+  transition from octonions (8D) \(\to\) quaternions (4D, 32 cells)
+  \(\to\) complex numbers (2D, 8 cells)}, fully saturating by step 100
+  and remaining invariant through step 20,000.
+\item
+  \textbf{Composite Survivor and Discrete Energy Hierarchy in Coupled
+  Large Crystals (\(N = 32, 64\)):} Using the tensor-product covariance
+  \(\mathrm{Tri}(A \otimes B) = \mathrm{Tri}(A) \otimes \mathrm{Tri}(B)\),
+  a real single-cell defect in the coupled large crystal \(N = 64\)
+  (\(O_8 \otimes O_8\), 262,144 components) melts through an
+  \(8 \times 8\) lattice intermediate phase (3,072 cells) and
+  recrystallizes into a \textbf{512-cell composite survivor} (stable
+  through steps 70--500, with a strict three-level discrete energy
+  hierarchy across the 64 elements).
+\item
+  \textbf{Bimodal Splitting of the Triangle View-Angle Spectrum
+  (Simultaneous Emergence of Expansion and Condensation):} Measuring the
+  coordinate-free triangle view-angle ratio \(\rho = L_3 / L_1\) across
+  all 262,144 triangle loops shows that triangles connected to the
+  melted background collapse exponentially to causal separation
+  (\(\Delta\ln > 687\)), while particle-internal triangles undergo a
+  V-shaped rebound back to nearly equilateral geometry
+  (\(\rho \sim 1\)), synchronized with the energy concentration
+  \(E_{512} \to 1\).
+\end{enumerate}
+
+This paper strictly separates \textbf{Layer 1: mathematical definitions,
+exact theorems, and reproducible numerical experiments}, \textbf{Layer
+2: physical interpretations as spacetime, distance, particles, and
+inflation}, and \textbf{Layer 3: current limitations and open problems}.
+All scripts, raw data, and plotting programs are openly available and
+can be independently verified in a standard Python environment within
+seconds to tens of seconds.
+
+\textbf{Keywords:} background independence, cubic array, triangle-loop
+product, octonions, quaternions, self-consistency, cascade phase
+transition, inflation, view-angle spectrum, \(\sum z_n^2 = 0\),
+reproducible numerical experiment
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{How to Read This Paper and Evidentiary
+Labels}\label{how-to-read-this-paper-and-evidentiary-labels}
+
+Following the author's previous papers {[}K1, K5{]}, each claim is
+explicitly tagged with one of four evidentiary labels. Unlabeled
+sentences state definitions or experimental setups.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Label
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Meaning
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{{[}Known{]}} & Established mathematical or physical fact, with
+citation \\
+\textbf{{[}Analytically Proven{]}} & Theorem derived algebraically in
+this work and verified numerically to \(< 10^{-14}\) \\
+\textbf{{[}Verified{]}} & Fact confirmed by deterministic exact or
+double-precision computation using the published scripts (Appendix A)
+without randomness \\
+\textbf{{[}Hypothesis / Unverified{]}} & Physical interpretation or
+prediction based on numerical facts; requires future theoretical and
+quantitative verification \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Motivation}\label{motivation}
+
+The author has been using AI to investigate whether spacetime,
+particles, and interactions (observation) can be derived solely from
+relational structures of states---without assuming any background
+spacetime---in a manner consistent with the Standard Model, General
+Relativity, and other established theories {[}K1--K5{]}.
+
+Until recently, relatively few studies pursued a strictly
+background-free starting point. However, on 2026-11-25, V.
+Chandrasekaran released the preprint \emph{``An algebraic quantization
+of gravity from the null cone''} (arXiv:2611.34924v1) {[}C1{]},
+prominently featuring AI-assisted theoretical work. A full-text
+comparison revealed substantial points of contact with the author's
+research: a formulation without a fixed background metric,
+finite-dimensional Hilbert spaces for finite regions, corner edge-mode
+frames with triple gluing consistency conditions, and subspace
+separation via null states (exact citation points and contrasts are
+detailed in §9).
+
+Accordingly, the author decided to release this rapid communication
+reporting interim results from extending the previously published
+complex-number numerical inflation experiments on Zenodo {[}K1, K2{]} to
+octonions and three-dimensional cubic arrays. A major strength of this
+report is that \textbf{every single experimental result is accompanied
+by deterministic, randomness-free computation scripts, raw numerical
+data (CSV/NPZ/TXT), dedicated plotting scripts, and rendered figures},
+enabling straightforward independent verification by any third party.
+
+As a note on methodology, this investigation initially began with
+another AI (Claude Code), which stalled in dead ends involving 2D matrix
+multiplication and a misinterpretation of ``exponentiation.'' After
+handing the redesign of the algebraic operation over to Google Gemini 4
+Neon, the entire sequence---from conceiving the triangle-loop product to
+proving analytical theorems, completing the exhaustive 1,024-case
+classification, 20,000-step long-term tracking, and the \(N = 64\)
+large-crystal melting and view-angle spectral measurements---was
+completed in roughly half a day. For full transparency, the record of
+the earlier AI's failed attempts and detours is also preserved in the
+repository {[}R1{]}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Starting Axioms and Limitations of 2D Matrix and BM
+Products}\label{starting-axioms-and-limitations-of-2d-matrix-and-bm-products}
+
+\subsubsection{2.1 Three Foundational
+Requirements}\label{three-foundational-requirements}
+
+The author's framework rests on three requirements ({[}K1, K5{]} and
+repository notes):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Anonymity (Axiom 0):} No external labels, coordinates, or
+  fixed real/imaginary distinctions are imposed on elements or axes.
+\item
+  \textbf{Self-Consistency (Axiom 1):} Without assuming background time,
+  repeated application of the same operation yields self-consistent
+  states such as fixed points, finite cycles (\(U^n = I\)), or
+  quasi-periodic orbits. In prior complex-number experiments, the
+  complex sum-of-squares condition \(\sum z_n^2 = 0\) (not the norm
+  squared) emerged spontaneously in metastable states without external
+  enforcement, serving as an independent consistency check.
+\item
+  \textbf{Interaction = Observation (Axiom 2):} No external operator
+  \(U\) or external measuring apparatus is introduced; the next state is
+  determined solely by mutual relations among internal states.
+\end{enumerate}
+
+\subsubsection{2.2 Why 2D Matrix Multiplication Cannot Reach This Regime
+{[}Known /
+Verified{]}}\label{why-2d-matrix-multiplication-cannot-reach-this-regime-known-verified}
+
+Left multiplication \(L(x)\) by a single octonion \(x\) can be written
+as an \(8 \times 8\) real matrix, but ordinary matrix multiplication is
+associative, so \(L(x)L(y) = L(xy)\) fails for distinct octonions
+\textbf{{[}Known{]}}. Moreover, squaring a single matrix
+\(M \mapsto M^2\) permanently fixes the eigenspaces determined by the
+initial matrix \(M\), making it impossible in principle for a small
+defect in a highly symmetric crystal to trigger a phase transition and
+spontaneous arrest into a different metastable remnant.
+
+\subsubsection{2.3 Verification of the Star-Contraction (BM) Product and
+100\% Zero Extinction
+{[}Verified{]}}\label{verification-of-the-star-contraction-bm-product-and-100-zero-extinction-verified}
+
+As a standard non-associative ternary product on a cubic array
+\(T \in \mathbb{C}^{N \times N \times N}\), we analyzed and numerically
+tested the Bhattacharya--Mesner (BM) product
+(\texttt{bm\_\allowbreak{}product\_\allowbreak{}*.py}):
+\[\mathrm{Prod}_{\mathrm{BM}}(T)_{ijk} = \sum_{t=0}^{N-1} T_{itk}\, T_{ijt}\, T_{tjk}.\]
+The results established that:
+
+\begin{itemize}
+\tightlist
+\item
+  Applying the BM product once to the multiplication tables \(f_{abc}\)
+  of \(\mathbb{C}\) (\(2^3\)), \(\mathbb{H}\) (\(4^3\)), or
+  \(\mathbb{O}\) (\(8^3\)) collapses them strictly onto diagonal entries
+  \((+1, -1, \dots, -1)\), eliminating all off-diagonal cross terms.
+\item
+  In fully anonymous (\(S_N\)-invariant) 5-variable reductions and
+  circulant antisymmetric plane waves
+  \(F_{a,b}(u,v) = \omega^{au+bv} - \omega^{av+bu}\), exact crystals
+  satisfying \(\sum T^2 = 0\) and arbitrary-period solutions exist
+  (\(\mathrm{Prod}_{\mathrm{BM}}(F_{a,b}) = N F_{2a,2b}\) for odd \(N\),
+  period \(\mathrm{ord}_N(2)\)) \textbf{{[}Analytically Proven{]}}.
+\item
+  However, apart from one special \(N = 4\) case (diagonal
+  \(+i\varepsilon\) arresting at an 18-cell \(N = 3\) state),
+  \textbf{100\% of tested single-cell defects in \(S_N\) crystals
+  (\(N = 8, 12, 16, 24\)) and antisymmetric wave crystals
+  (\(N = 5, 7, 11, 13\)) suffered complete zero extinction within steps
+  23--49}.
+\end{itemize}
+
+Because the BM product contracts three factors through a single shared
+index \(t\) (a star contraction without closed loops), defect-induced
+collapse cascades directly into zero absorption. Even a conjugated
+variant \(\sum_t T_{itk} \overline{T}_{ijt} T_{tjk}\) exhibited complete
+extinction at \(N = 8\) for initial \(\sum T^2 = 0\) complex crystals.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. Definition and Basic Properties of the Triangle-Loop
+Product}\label{definition-and-basic-properties-of-the-triangle-loop-product}
+
+We replace the star contraction with the \textbf{triangle-loop product},
+in which three internal indices \((p, q, r)\) are shared pairwise among
+the three factors to form a closed triangular loop:
+
+\[\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r=0}^{N-1} T_{ipq}\, T_{qjr}\, T_{rpk}. \tag{1}\]
+
+This operation satisfies the following exact properties
+\textbf{{[}Analytically Proven{]}}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Anonymity and Cyclic Symmetry:} The three external legs
+  \((i, j, k)\) and three internal edges \((p, q, r)\) are completely
+  symmetric, and \(\mathrm{Tri}\) is covariant under simultaneous
+  permutations of element indices.
+\item
+  \textbf{Cubic Homogeneity:} For any scalar \(s\),
+  \(\mathrm{Tri}(s T) = s^3 \mathrm{Tri}(T)\). Therefore, factoring out
+  a common scalar \(s_n = \|\mathrm{Tri}(U_{n-1})\|_F\) during numerical
+  tracking to prevent floating-point overflow---recording the direction
+  \(U_n = \mathrm{Tri}(U_{n-1}) / s_n\) and growth factor
+  \(\|P_n\| = s_n\) separately---is an exact equivalence that leaves all
+  ratios and directions strictly unchanged.
+\item
+  \textbf{Tensor-Product Covariance:} For the Kronecker-type tensor
+  product
+  \((A \otimes B)_{(i_1 i_2)(j_1 j_2)(k_1 k_2)} = A_{i_1 j_1 k_1} B_{i_2 j_2 k_2}\)
+  of an \(m^3\) array \(A\) and an \(n^3\) array \(B\),
+  \[\mathrm{Tri}(A \otimes B) = \mathrm{Tri}(A) \otimes \mathrm{Tri}(B). \tag{2}\]
+\item
+  \textbf{Fast Exact Evaluation:} Equation (1) decomposes exactly into
+  two BLAS matrix multiplications
+  (\(X_{ipjr} = \sum_q T_{ipq} T_{qjr}\),
+  \(R_{ijk} = \sum_{r,p} X_{ijrp} T_{rpk}\)) at \(O(N^5)\) cost, running
+  in \(\sim 64\text{ ms}\) per step at \(N = 64\) (verified against
+  direct \texttt{einsum} at \(N = 8\) to error \(< 10^{-13}\)).
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. Result 1: Spontaneous Selection of Cayley--Dickson
+Algebras (Exact Integer
+Arithmetic)}\label{result-1-spontaneous-selection-of-cayleydickson-algebras-exact-integer-arithmetic}
+
+Using the multiplication tables \(f_{abc} \in \{0, +1, -1\}\) generated
+by the Cayley--Dickson construction
+\((a,b)(c,d) = (ac - \bar{d}b,\, da + b\bar{c})\) for \(\mathbb{C}\)
+(\(N=2\)), \(\mathbb{H}\) (\(N=4\)), \(\mathbb{O}\) (\(N=8\)), and
+\(\mathbb{S}\) (\(N=16\)) directly as the initial array \(T^{(0)}\), we
+iterated \(\mathrm{Tri}\) with exact integer arithmetic (no division, no
+floating point; double precision for \(N = 16\))
+(\texttt{tri\_\allowbreak{}loop\_\allowbreak{}product\_\allowbreak{}v0.py},
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}sedenion\_\allowbreak{}and\_\allowbreak{}multi\_\allowbreak{}v0.py})
+\textbf{{[}Verified{]}}.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Algebra
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Dim \(N\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Initial nonzeros
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Step 1 (\(P_1\))
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Step 2 (\(P_2\))
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Defect-free long-term behavior
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pairwise \(\sum z^2\) (\(P_1\))
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Complex \(\mathbb{C}\) & 2 & 4 / 8 & \textbf{Complete extinction to 0}
+(all 6 axis perms) & --- & Extinct & --- \\
+\textbf{Quaternion \(\mathbb{H}\)} & \textbf{4} & \textbf{16 / 64} &
+\textbf{All 16 survive} (values \(\pm 2\)) & \textbf{\(P_2 = 16\, P_0\)
+(exact period 2)} & \textbf{Exact period-2 crystal} & \textbf{0 for all
+6 pairs} \\
+\textbf{Octonion \(\mathbb{O}\)} & \textbf{8} & \textbf{64 / 512} &
+\textbf{All 64 survive} (values \(\pm 6\), 4 axis perms) &
+\textbf{\(P_2 = 1296\, P_0\) (exact period 2)} & \textbf{Exact period-2
+crystal} & \textbf{0 for all 28 pairs} \\
+Sedenion \(\mathbb{S}\) & 16 & 256 / 4,096 & Values split into
+\(\{-14,-6,6,14\}\) & Departs \(P_0\) (\texttt{dist=0.427}) &
+\textbf{Self-destructs to 4 cells at step 36} & --- \\
+\end{longtable}
+}
+
+\textbf{Key takeaway:} Under the triangle-loop product, \textbf{only the
+quaternions (\(N=4\)) and octonions (\(N=8\))} survive intact as exact
+period-2 crystals (\(U^2 = I\)) preserving all nonzero table entries.
+For octonions, the remaining two axis permutations
+\texttt{perm=(0,2,1),\ (1,2,0)} split into \(\{-6, -2, 2, 6\}\),
+directly exposing non-associativity in contrast to associative
+quaternions (period 2 for all 6 axis permutations).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Result 2: Exhaustive 1,024-Case Single-Cell Defect
+Spectrum on the Octonion Crystal and Exact
+Theorem}\label{result-2-exhaustive-1024-case-single-cell-defect-spectrum-on-the-octonion-crystal-and-exact-theorem}
+
+We tracked all \textbf{1,024 single-cell defects}---real
+\(+\varepsilon\) (\(\varepsilon = 10^{-4}\)) and imaginary
+\(+i\varepsilon\) on every one of the 512 cells of the octonion table
+\(O_8\) (64 originally nonzero + 448 originally zero)---for 150 steps
+(\texttt{tri\_\allowbreak{}loop\_\allowbreak{}octonion\_\allowbreak{}spectrum\_\allowbreak{}v0.py},
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}32cell\_\allowbreak{}analysis\_\allowbreak{}v0.py}) \textbf{{[}Verified{]}}.
+
+\subsubsection{5.1 Complete Classification of All 1,024 Cases (Zero
+Extinctions:
+0)}\label{complete-classification-of-all-1024-cases-zero-extinctions-0}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Defect type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Initial cell
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Classification at step 150
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Nonzeros
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\|P\|\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Count
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Real \(+\varepsilon\) & Nonzero (64) & \textbf{Complete self-repair} to
+\(O_8\) (period 2: 62, period 4: 2) & 64 / 512 & 0.0937 & \textbf{64} \\
+Real \(+\varepsilon\) & Zero (448) & \textbf{8-cell complex
+rotation-matrix pair} (\(3\times\)-angle on \(S^1\)) & \textbf{8 / 512}
+& \textbf{0.5000} & \textbf{448} \\
+Imag \(+i\varepsilon\) & Nonzero (64) & \textbf{Complete self-repair} to
+\(O_8\) (period 2: 54, period 4: 10) & 64 / 512 & 0.0937 &
+\textbf{64} \\
+Imag \(+i\varepsilon\) & Zero (448) & \textbf{32-cell
+quaternionic-subalgebra intermediate phase} (\(\sum U^2 = 0\)) &
+\textbf{32 / 512} & \textbf{0.2500} & \textbf{336} \\
+Imag \(+i\varepsilon\) & Zero (448) & \textbf{8-cell complex-subalgebra
+fixed point} (\(\sum U^2 = 0\)) & \textbf{8 / 512} & \textbf{0.8140} &
+\textbf{112} \\
+\end{longtable}
+}
+
+Across all 1,024 cases, \textbf{zero extinctions occurred (100\%
+survival)}. Moreover, the exact \textbf{336 : 112 (3 : 1)} bifurcation
+rule for imaginary defects on the 448 originally zero cells was
+completely identified: - \textbf{8-cell fixed point (112 cases):}
+\(j = 0\) or \(i = k\) (the defect closes inside a 2D complex subalgebra
+\(\mathbb{C} \subset \mathbb{O}\)). The two \(2 \times 2\) slices form
+orthogonal Pauli projections \(a(I - \sigma_y)\) and
+\(ib(I + \sigma_y)\), satisfying \(|\sum U^2| / \sum |U|^2 = 0.000000\)
+without external constraints; internal perturbations are neutrally
+stable, and strictly external perturbations are blocked to exact zero in
+one step. - \textbf{32-cell intermediate phase (336 cases):}
+\(j \neq 0\) and \(i \neq k\) (the defect spans a 4D quaternionic
+subalgebra \(\mathbb{H} \subset \mathbb{O}\)). It likewise forms a
+Pauli-projection block structure satisfying exact \(\sum U^2 = 0\)
+without external constraints.
+
+\subsubsection{5.2 Exact Analytical Theorem for the Real 8-Cell Survivor
+{[}Analytically Proven /
+Verified{]}}\label{exact-analytical-theorem-for-the-real-8-cell-survivor-analytically-proven-verified}
+
+For the 8-cell survivor into which all 448 real zero-cell defects
+condense---consisting of two \(2 \times 2\) complex rotation matrices
+\(M_j = \begin{pmatrix} a_j & b_j \\ -b_j & a_j \end{pmatrix} \leftrightarrow z_j = a_j + i b_j\)
+supported on two index pairs
+\(I = \{i_0, i_1\},\; J = \{j_0, j_1\}\)---the triangle-loop product
+preserves this 8-cell subspace exactly (numerical residual
+\(1.39 \times 10^{-17}\), exact zero outside the 8 cells) and obeys
+(\texttt{tri\_\allowbreak{}loop\_\allowbreak{}8cell\_\allowbreak{}analysis\_\allowbreak{}v0.py}):
+
+\[M_j' = \bigl(M_{j_0}^2 + M_{j_1}^2\bigr)\, M_j \quad \Longleftrightarrow \quad z_j' = \bigl(z_0^2 + z_1^2\bigr)\, z_j \qquad (j = 0, 1). \tag{3}\]
+
+Three exact consequences follow and match numerical measurements: 1.
+\textbf{Internal conserved invariant:} The complex ratio \(z_1 / z_0\)
+(both amplitude ratio and phase difference
+\(\Delta = \theta_1 - \theta_0\)) is strictly conserved. 2.
+\textbf{\(3\times\)-angle rotation on \(S^1\):} The common phase obeys
+\(\theta_{n+1} = 3\theta_n + \delta \pmod{2\pi}\) with constant
+\(\delta = \arg(r_0^2 + r_1^2 e^{2i\Delta})\). The orbit never leaves
+the circle \(S^1\) (angular stretch factor per step is strictly
+\(3.0000\), Lyapunov exponent \(\ln 3\)). 3. \textbf{Shielding against
+external perturbations:} Infinitesimal \(10^{-6}\) perturbations placed
+in the remaining 504 cells vanish in one step (complete shielding) at
+external and 1-axis-shared positions, and remain neutrally stable
+without growth at 2-axis-shared positions.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{6. Result 3: 20,000-Step Long-Term Tracking
+--- Two-Stage Cascade Phase Transition (\(8 \to 4 \to 2\)
+Dimensions)}{6. Result 3: 20,000-Step Long-Term Tracking --- Two-Stage Cascade Phase Transition (8 \textbackslash to 4 \textbackslash to 2 Dimensions)}}\label{result-3-20000-step-long-term-tracking-two-stage-cascade-phase-transition-8-to-4-to-2-dimensions}
+
+We tracked three representative imaginary 32-cell patterns and two
+comparison patterns up to \textbf{20,000 steps}
+(\texttt{tri\_\allowbreak{}loop\_\allowbreak{}32cell\_\allowbreak{}long\_\allowbreak{}v0.py}) \textbf{{[}Verified{]}}.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Imaginary 32-cell type (all 3 patterns):}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Steps 1--20: Octonionic crystal (8D, 64--112 cells,
+    \(\|P\| \approx 0.09375\)).
+  \item
+    Steps 30--50: Temporary dwell in the \textbf{quaternionic
+    intermediate phase (4D, 32 cells, \(\|P\| = 0.2500\),
+    \(\sum U^2 \sim 10^{-14}\))}.
+  \item
+    Steps 60--80: Second-stage phase transition.
+  \item
+    Steps 100--20,000: Full saturation into the \textbf{complex fixed
+    point (2D, 8 cells, \(\sum U^2 \sim 10^{-13}\text{–}10^{-11}\))},
+    remaining completely invariant through step 20,000 with
+    \(d_1 = d_2 = 0.00 \times 10^0\).
+  \end{itemize}
+\item
+  \textbf{Real 8-cell rotating particle \texttt{(0,1,0)+ε}:} After
+  entering the 8-cell complex rotation-matrix pair at step 80, it
+  \textbf{never decays through step 20,000}, maintaining
+  \(\|P\| = 0.499999\) on \(S^1\).
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{7. Result 4: 512-Cell Composite Survivor and
+Lattice Crystallization in Coupled Large Crystals
+(\(N = 32, 64\))}{7. Result 4: 512-Cell Composite Survivor and Lattice Crystallization in Coupled Large Crystals (N = 32, 64)}}\label{result-4-512-cell-composite-survivor-and-lattice-crystallization-in-coupled-large-crystals-n-32-64}
+
+In a block-diagonal system of two decoupled octonion crystals
+(\(16^3\)), slightly asymmetric defects (\texttt{1.00e-4} vs
+\texttt{1.01e-4}) exhibited \textbf{Winner-Take-All} competition leaving
+only one 8-cell survivor
+(\texttt{tri\_\allowbreak{}loop\_\allowbreak{}sedenion\_\allowbreak{}and\_\allowbreak{}multi\_\allowbreak{}v0.py}).
+
+Using Eq. (2), we constructed globally coupled large crystals \(N = 32\)
+(\(H_4 \otimes O_8\), 1,024 initial nonzeros) and \(N = 64\)
+(\(O_8 \otimes O_8\), 262,144 components, 4,096 initial nonzeros, exact
+period 2) and tracked their defect evolution
+(\texttt{tri\_\allowbreak{}loop\_\allowbreak{}large\_\allowbreak{}crystal\_\allowbreak{}v0.py},
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}512melt\_\allowbreak{}run\_\allowbreak{}v0.py},
+\texttt{plot\_\allowbreak{}tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}512melt\_\allowbreak{}v0.py}) \textbf{{[}Verified{]}}.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\(N = 64\) real single-cell defect \texttt{(0,1,0)+1e-4} (full
+  tracking, steps 0--500):}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Steps 0--20: Uniform large crystal (4,096 cells,
+    \(64 \times 64 \times 64\), \(\|P\| = 0.008789\)).
+  \item
+    Step 30: Global ripple and transient expansion (6,656 cells,
+    effective count \(N_{\mathrm{eff}} = 1/\sum|U|^4 = 4,676\)).
+  \item
+    Steps 40--60: An \(8 \times 8\) grid of dark melting channels carves
+    the \(64 \times 64\) projected intensity map into 64 blocks of
+    \(6 \times 6\) (3,072 cells, \(48 \times 64 \times 48\)).
+  \item
+    \textbf{Steps 70--500: 512-cell composite survivor}
+    (\(16 \times 16 \times 16\) active axes, 32 connected vertices,
+    \(\|P\| = 0.046873 = 0.09375 \times 0.5\) constant to six digits),
+    recrystallizing into an \(8 \times 8\) lattice of \(2 \times 2\)
+    spots and persisting stably through step 500 without collapsing to a
+    single 8-cell unit (Figures 1--2).
+  \end{itemize}
+\item
+  \textbf{Three-level discrete energy hierarchy across 64 elements
+  (Figure 3):} Energy initially distributed uniformly across all 64
+  elements (\(1/64 = 0.015625\)) separates after step 80 into a strict
+  period-8 three-level hierarchy (\(\approx 0.0417 \times 16\),
+  \(0.0264 \times 8\), \(0.0152 \times 8\), and \(0.0000 \times 32\)
+  elements), identically preserved from step 80 to step 500.
+\item
+  \textbf{\(N = 64\) imaginary single-cell defect:} Undergoes a
+  large-scale cascade collapse: 64D (4,096 cells) \(\to\) 32D (2,048
+  cells, \(\sum U^2 \sim 10^{-12}\)) \(\to\) 2D (8 cells,
+  \(\sum U^2 \sim 10^{-9}\text{–}10^{-7}\)).
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio,alt={N=64 Crystal Melting and Recombination Evolution}]{figs_en/fig_n64_512melt_evolution_en.png}
+\caption{N=64 Crystal Melting and Recombination Evolution}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio,alt={N=64 64x64 Projected Intensity Maps}]{figs_en/fig_n64_512melt_snapshots_en.png}
+\caption{N=64 64x64 Projected Intensity Maps}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio,alt={N=64 Amplitude Spectrum and 64-Element Energy Concentration}]{figs_en/fig_n64_512melt_spectrum_en.png}
+\caption{N=64 Amplitude Spectrum and 64-Element Energy Concentration}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{8. Result 5: Bimodal Splitting of the Triangle View-Angle
+Spectrum (Simultaneous Background Rarefaction and Particle
+Condensation)}\label{result-5-bimodal-splitting-of-the-triangle-view-angle-spectrum-simultaneous-background-rarefaction-and-particle-condensation}
+
+To measure ``distance'' strictly inside an anonymous system without
+coordinates, for all \(64^3 = 262,144\) triangle loops \((p, q, r)\)
+contributing to a target component \((i, j, k)\), we sort the three side
+magnitudes \((|U_{ipq}|, |U_{qjr}|, |U_{rpk}|)\) in descending order
+\(L_1 \ge L_2 \ge L_3 > 0\), defining the \textbf{view-angle ratio
+\(\rho = L_3 / L_1 \in (0, 1]\)} (\(1\) = equilateral, smaller =
+elongated / distant) and \textbf{exponent stretching
+\(\Delta\ln = \ln(L_1 / L_3)\)}. We exhaustively measured these
+quantities across steps 0--100 at a particle representative
+\texttt{(5,\ 16,\ 20)} (maximum component in the 512-cell survivor) and
+a melted background representative \texttt{(0,\ 0,\ 0)} (representative
+of the 3,840 melted cells)
+(\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}triangle\_\allowbreak{}viewangle\_\allowbreak{}run\_\allowbreak{}v0.py},
+\texttt{plot\_\allowbreak{}tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}viewangle\_\allowbreak{}v0.py})
+\textbf{{[}Verified{]}}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Exponential collapse along background directions and V-shaped
+  rebound inside the particle (Figure 4, Panel 3):}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    For background-side triangles, \(\rho = L_3/L_1\) plunges linearly
+    on a log scale during steps 35--70
+    (\(\Delta\ln = 1.5 \to 11.3 \to 30.4 \to 47.6 \to 89.6\)), crossing
+    the \texttt{float64} floor \(10^{-300}\) at step 75 into complete
+    causal separation from the background.
+  \item
+    Particle-side triangles first stretch to \(\rho \sim 10^{-9}\)
+    (steps 35--48), then undergo a \textbf{V-shaped rebound during steps
+    50--68 back to \(\rho \sim 0.1\text{–}1.0\) (nearly equilateral)};
+    after step 75, only 64 particle-internal triangles remain,
+    maintaining tight coupling (\(\Delta\ln \approx 0.14\text{–}4.1\)).
+  \end{itemize}
+\item
+  \textbf{Bimodal splitting of the view-angle spectrum (Figure 5,
+  Left):}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The 256 active triangles at the particle representative split
+    sharply across steps \(30 \to 40 \to 60 \to 70\) into \textbf{192
+    background-connected triangles marching leftward (distant) at
+    uniform logarithmic intervals
+    (\(\log_{10}\rho \approx -6 \to -13 \to -19 \to -25\), vanishing at
+    step 75)} and \textbf{64 particle-internal triangles condensing near
+    the equilateral peak \(\log_{10}\rho \approx 0\)}.
+  \end{itemize}
+\item
+  \textbf{Exact synchronization of particle condensation and exponent
+  contrast (Figure 4, Panels 1--2):}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Precisely during steps 65--75, as energy concentrates into the 512
+    survivor cells (\(E_{512}: 0.28 \to 1.00\)), the exponent contrast
+    between particle and melted background
+    \(\ln(\langle|U_{512}|\rangle / \langle|U_{\text{melt}}|\rangle)\)
+    expands doubly exponentially from \(1.85 \to 31.8 \to 687.5\)
+    (saturating at the \(10^{-300}\) floor).
+  \end{itemize}
+\end{enumerate}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio,alt={N=64 Particle Condensation vs.~Triangle View-Angle and Exponent Stretching}]{figs_en/fig_n64_viewangle_vs_condensation_en.png}
+\caption{N=64 Particle Condensation vs.~Triangle View-Angle and Exponent
+Stretching}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio,alt={N=64 Evolution of Triangle View-Angle Spectrum}]{figs_en/fig_n64_viewangle_spectrum_en.png}
+\caption{N=64 Evolution of Triangle View-Angle Spectrum}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. Physical Interpretation and Comparison with
+Chandrasekaran
+(arXiv:2611.34924)}\label{physical-interpretation-and-comparison-with-chandrasekaran-arxiv2611.34924}
+
+\subsubsection{9.1 Physical Interpretation {[}Hypothesis /
+Unverified{]}}\label{physical-interpretation-hypothesis-unverified}
+
+\begin{itemize}
+\tightlist
+\item
+  The closed-loop structure of \(\sum_{p,q,r} T_{ipq} T_{qjr} T_{rpk}\)
+  naturally parallels geometric holonomy (solid/view angle): the
+  exponential collapse of \(\rho = L_3/L_1\) may be interpreted as
+  coordinate-free spatial expansion (rapidly growing distance /
+  inflation), while the V-shaped rebound to \(\rho \sim 1\) inside the
+  512-cell structure corresponds to particle condensation as an unmelted
+  remnant.
+\item
+  The spontaneous selection of quaternions (4D) and octonions (8D) as
+  the sole exact crystals, together with the \(8 \to 4 \to 2\)D
+  two-stage cascade and unconstrained \(\sum U^2 = 0\) Pauli-projection
+  remnants, structurally aligns with the hypothesis of emergent
+  spacetime and particle hierarchies from high-symmetry crystal melting
+  {[}K1, K3, K4{]}.
+\end{itemize}
+
+\subsubsection{9.2 Rigorous Comparison with Chandrasekaran
+(arXiv:2611.34924v1)
+{[}C1{]}}\label{rigorous-comparison-with-chandrasekaran-arxiv2611.34924v1-c1}
+
+Chandrasekaran (2026-11-25, preprint) formulates background-independent
+quantum gravity starting from 4D vacuum General Relativity on the
+reduced phase space of a null cone. The precise points of contact and
+contrast are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Accurate citation points (stating premises and claim
+  strength):}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Background-independent formulation ({[}C1{]} Sec. 1,
+    3.1--3.2):} No fixed background metric is assumed, but 4D Lorentzian
+    signature \((-,+,+,+)\), vacuum first-order GR action (Eq. 3.2),
+    smooth globally hyperbolic solutions, and a cap regulator
+    \(\varepsilon\) are assumed as inputs.
+  \item
+    \textbf{Corner edge-mode frames and triple gluing consistency (Sec.
+    3.3--3.6):} Placing reference frames inside the system and enforcing
+    triple consistency share structural direction with our anonymous
+    triangle-loop product.
+  \item
+    \textbf{Finite-dimensional causal-diamond Hilbert space (Sec.
+    5.1--5.2, App. D.2--D.3):} State existence (Sec. 5.1) is explicitly
+    qualified in {[}C1{]} as ``strong evidence'' / ``heuristic'' (fn.
+    18), and parts of the contradiction argument (Sec. 5.2) rely on
+    1-loop evaluations around smooth solutions; no numerical experiments
+    are included.
+  \item
+    \textbf{Non-perturbative finiteness via unexpanded sums (Sec. 4.4)
+    and null-state subspace separation (Sec. 5.4):} Structurally
+    resonate with our nonlinear saturation and exponential causal
+    separation from the melted background (\(\rho < 10^{-300}\)).
+  \end{itemize}
+\item
+  \textbf{Additional derivations and strengths of the present work:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Verifiable exact code and complete datasets:} Unlike
+    {[}C1{]}, which contains no code or numerical experiments, this
+    report releases all 18 scripts, CSV/NPZ datasets, and plotting
+    programs for immediate third-party verification.
+  \item
+    \textbf{Spontaneous selection of dimensionality and algebra:}
+    Without assuming 4D spacetime or a gravitational action, exact
+    integer arithmetic demonstrates that the triangle-loop product
+    selects solely quaternions (\(N=4\)) and octonions (\(N=8\)) as
+    exact crystals.
+  \item
+    \textbf{Particle-like structures, cascade melting, and bimodal
+    view-angle splitting:} Whereas {[}C1{]} does not address
+    matter/particles or inflation (zero occurrences of \emph{Standard
+    Model}, \emph{fermion}, \emph{Higgs}, or \emph{inflation} in the
+    full text), our system demonstrates \(8 \to 4 \to 2\)D cascade
+    melting, unconstrained \(\sum U^2 = 0\) Pauli-projection remnants,
+    and bimodal view-angle splitting without an inflaton field.
+  \item
+    \textbf{Self-updating without external clocks or measuring devices:}
+    Addressing the critique raised by Masahiro Hotta {[}H1{]} regarding
+    {[}C1{]}'s reliance on classical Raychaudhuri equations (introducing
+    external time/measurement notions), our system provides a minimal
+    self-updating model with neither external operators \(U\) nor
+    external clocks.
+  \end{itemize}
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10. Current Limitations and Open
+Problems}\label{current-limitations-and-open-problems}
+
+For scientific honesty, we explicitly list the current unresolved
+limitations:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Multi-particle coexistence vs.~Winner-Take-All:} In decoupled
+  two-block octonions, asymmetric defects led to Winner-Take-All
+  collapse into a single block. While the coupled \(N = 64\) crystal
+  stably sustains a 512-cell composite survivor (64 spots of
+  \(2 \times 2\) on an \(8 \times 8\) lattice) through step 500,
+  constructing multiple spatially separated independent particles that
+  scatter and interact remains an open problem.
+\item
+  \textbf{Angular Lyapunov exponent of the real 8-cell survivor:} The
+  \(3\times\)-angle map of Eq. (3) remains strictly on \(S^1\) but has
+  angular Lyapunov exponent \(\ln 3 > 0\). Whether strictly
+  quasi-periodic orbits (Lyapunov exponent \(0\)) arise in larger arrays
+  or modified operations is not yet established.
+\item
+  \textbf{Quantitative connection to established physics:} Deriving the
+  semiclassical limit of General Relativity (the domain addressed in
+  {[}C1{]} Sec. 6) or quantitative Standard Model mass ratios and
+  coupling constants lies beyond the scope of this rapid communication
+  and remains future work.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Appendix A: Reproducibility --- Published Programs and
+Datasets}\label{appendix-a-reproducibility-published-programs-and-datasets}
+
+All files are stored under
+\texttt{次元の生成構造/\allowbreak{}三次元正方配列の積と自己無撞着\_\allowbreak{}20261127/\allowbreak{}}.
+Execution environment: macOS, Python 3.9.6 (\texttt{/\allowbreak{}usr/\allowbreak{}bin/\allowbreak{}python3}),
+NumPy 2.0.2, Matplotlib 3.9.4. Zero randomness is used.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Section
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Script(s)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Main Output Data \& Figures
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+§2.3 &
+\texttt{bm\_\allowbreak{}product\_\allowbreak{}algebra\_\allowbreak{}tables\_\allowbreak{}v0.py}--\texttt{bm\_\allowbreak{}product\_\allowbreak{}conj\_\allowbreak{}v0.py}
+(10 scripts) & \texttt{results/\allowbreak{}bm\_\allowbreak{}product\_\allowbreak{}*.txt} (10 files) & Exact
+verification of BM and conjugated BM products (\(N=2\text{–}24\)) \\
+§4 & \texttt{tri\_\allowbreak{}loop\_\allowbreak{}product\_\allowbreak{}v0.py} &
+\texttt{results/\allowbreak{}tri\_\allowbreak{}loop\_\allowbreak{}product\_\allowbreak{}v0.txt} & Exact integer arithmetic
+for \(\mathbb{C}, \mathbb{H}, \mathbb{O}\) tables \\
+§4, §7 & \texttt{tri\_\allowbreak{}loop\_\allowbreak{}sedenion\_\allowbreak{}and\_\allowbreak{}multi\_\allowbreak{}v0.py} &
+\texttt{results/\allowbreak{}tri\_\allowbreak{}loop\_\allowbreak{}sedenion\_\allowbreak{}and\_\allowbreak{}multi\_\allowbreak{}v0.txt} &
+\(\mathbb{S}\) (\(N=16\)) self-destruction and 2-block octonion test \\
+§5.1 & \texttt{tri\_\allowbreak{}loop\_\allowbreak{}octonion\_\allowbreak{}spectrum\_\allowbreak{}v0.py} &
+\texttt{results/\allowbreak{}tri\_\allowbreak{}loop\_\allowbreak{}octonion\_\allowbreak{}spectrum\_\allowbreak{}v0.txt} & Exhaustive
+1,024-case single-cell defect classification on \(O_8\) \\
+§5.1 & \texttt{tri\_\allowbreak{}loop\_\allowbreak{}32cell\_\allowbreak{}analysis\_\allowbreak{}v0.py} &
+\texttt{results/\allowbreak{}tri\_\allowbreak{}loop\_\allowbreak{}32cell\_\allowbreak{}analysis\_\allowbreak{}v0.txt} & 32-cell \& 8-cell
+imaginary defect structure and 3:1 bifurcation rule \\
+§5.2 & \texttt{tri\_\allowbreak{}loop\_\allowbreak{}octonion\_\allowbreak{}survivor\_\allowbreak{}v0.py},
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}8cell\_\allowbreak{}analysis\_\allowbreak{}v0.py} &
+\texttt{results/\allowbreak{}tri\_\allowbreak{}loop\_\allowbreak{}*\_\allowbreak{}v0.txt} & 500-step tracking and exact
+theorem for the 8-cell rotating survivor \\
+§6 & \texttt{tri\_\allowbreak{}loop\_\allowbreak{}32cell\_\allowbreak{}long\_\allowbreak{}v0.py} &
+\texttt{results/\allowbreak{}tri\_\allowbreak{}loop\_\allowbreak{}32cell\_\allowbreak{}long\_\allowbreak{}v0.txt} & 20,000-step long-term
+tracking (\(8 \to 4 \to 2\)D cascade transition) \\
+§7 & \texttt{tri\_\allowbreak{}loop\_\allowbreak{}large\_\allowbreak{}crystal\_\allowbreak{}v0.py} &
+\texttt{results/\allowbreak{}tri\_\allowbreak{}loop\_\allowbreak{}large\_\allowbreak{}crystal\_\allowbreak{}v0.txt} & 80-step test for
+\(N=32, 64\) coupled large crystals \\
+§7 & \texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}512melt\_\allowbreak{}run\_\allowbreak{}v0.py},
+\texttt{plot\_\allowbreak{}tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}512melt\_\allowbreak{}v0.py} &
+\texttt{tri\_loop\_n64\_512melt\_\{timeseries.csv,snapshots.npz\}},
+\texttt{fig\_\allowbreak{}n64\_\allowbreak{}512melt\_\allowbreak{}*.png} (3 figs) & 500-step melting tracking
+\& plotting for \(N=64\) 512-cell survivor \\
+§8 & \texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}triangle\_\allowbreak{}viewangle\_\allowbreak{}run\_\allowbreak{}v0.py},
+\texttt{plot\_\allowbreak{}tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}viewangle\_\allowbreak{}v0.py} &
+\texttt{tri\_loop\_n64\_viewangle\_\{timeseries.csv,snapshots.npz\}},
+\texttt{fig\_\allowbreak{}n64\_\allowbreak{}viewangle\_\allowbreak{}*.png} (2 figs) & Triangle view-angle
+spectrum, particle condensation \& plotting \\
+En Figs & \texttt{make\_\allowbreak{}figures\_\allowbreak{}en.py} &
+\texttt{results/\allowbreak{}figures\_\allowbreak{}en/\allowbreak{}fig\_\allowbreak{}*\_\allowbreak{}en.png} (5 figs) & English-label
+regeneration of all 5 figures from saved CSV/NPZ \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}C1{]}} V. Chandrasekaran, \emph{``An algebraic quantization
+  of gravity from the null cone,''} arXiv:2611.34924v1 (2026-11-25,
+  preprint).
+\item
+  \textbf{{[}H1{]}} M. Hotta, X thread commenting on arXiv:2611.34924,
+  2026-11-27, \url{https://x.com/hottaqu/status/2126098332707930567} (summary
+  note:
+  \texttt{関連研究/\allowbreak{}Chandrasekaran\_\allowbreak{}Venkatesa/\allowbreak{}講評/\allowbreak{}堀田先生のコメント\_\allowbreak{}20261127.md}).
+\item
+  \textbf{{[}K1{]}} N. Kihara, \emph{Dynamics of a Self-Consistent
+  Closed Relational-Wave System --- From Local Instability of 90°
+  Relative Equilibria to Inflation, Spontaneous Symmetry Breaking,
+  Grassmann Geometry, and Terminal Universality}, Zenodo Concept DOI:
+  \texttt{10.5281/\allowbreak{}zenodo.22729146} (2026-09-12).
+\item
+  \textbf{{[}K2{]}} N. Kihara, \emph{The Inflation Curve Is Exponential
+  Amplification of Linear Unstable Modes of the Floor}, Zenodo Concept
+  DOI: \texttt{10.5281/\allowbreak{}zenodo.22729095} (2026-09-12).
+\item
+  \textbf{{[}K3{]}} N. Kihara, \emph{QCD Expressed in Octonions}, Zenodo
+  Concept DOI: \texttt{10.5281/\allowbreak{}zenodo.24369465} (2026-11-19).
+\item
+  \textbf{{[}K4{]}} N. Kihara, \emph{Reading Out Yang--Mills and Dirac
+  from the Product of Octonions}, Zenodo Concept DOI:
+  \texttt{10.5281/\allowbreak{}zenodo.24387753} (2026-11-20).
+\item
+  \textbf{{[}K5{]}} N. Kihara, \emph{The Coin and Cup Thought Experiment
+  ― Reverse-Deriving the Requirement Specification of a System from the
+  Conditions under Which an Action Holds ―}, Zenodo Concept DOI:
+  \texttt{10.5281/\allowbreak{}zenodo.24562867} (2026-11-26).
+\item
+  \textbf{{[}R1{]}} Thought-experiment and failure logs:
+  \texttt{次元の生成構造/\allowbreak{}八元数インフレーション実験\_\allowbreak{}準備\_\allowbreak{}20261127/\allowbreak{}失敗の記録\_\allowbreak{}指数化の偽り\_\allowbreak{}20261127.md}
+  and
+  \texttt{次元の生成構造/\allowbreak{}三次元正方配列の積と自己無撞着\_\allowbreak{}20261127/\allowbreak{}思考実験.md}.
+\end{itemize}
+
+\end{document}
