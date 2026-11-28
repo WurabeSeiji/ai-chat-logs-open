@@ -1,0 +1,529 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{xurl}
+\usepackage{float}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}
+\usepackage{float}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={三次元正方配列の三角形ループ積における球対称空間計量歪み、離散曲率勾配、スピン 2 時空引きずり、および臨界質量崩壊（第 5 速報）},
+  pdfauthor={木原 範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{三次元正方配列の三角形ループ積における球対称空間計量歪み、離散曲率勾配、スピン
+2 時空引きずり、および臨界質量崩壊（第 5 速報）}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{― 7 方向等方な 4 クラス計量分裂、臨界点
+\(\epsilon_c \in (0.270, 0.275)\)
+での遠方空間切断崩壊、および背景単一時計剛性の厳密反証検証 ―}
+\author{木原 範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020}
+\date{2026年11月28日}
+
+\begin{document}
+\maketitle
+
+\textbf{著者：} 木原 範昭（株式会社WFシステム）\\
+\textbf{ORCID：} 0009-0004-6753-4020\\
+\textbf{日付：} 2026年11月28日\\
+\textbf{位置づけ：} 第 1〜第 4 速報（DOI: 10.5281/zenodo.24616931,
+24618400, 24619357, 24620262）に続く第 5 速報。第 1 層時間結晶
+\(H = O_8 \otimes M_8\) の上に局在質量（P4）およびスピン 2
+モード（\(\sigma_x\)）を配置したときの空間計量歪み・離散曲率勾配・臨界質量崩壊・時空時計引きずりを定量確定するとともに、厳密反証チェックによって「背景位相の単一時計剛性（弱摂動では背景側の周波数ズレは生じない）」ことも明確に切り分ける。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+背景時空や重力場を一切仮定しない実数 3 階テンソルの三角形ループ積
+\(\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r} T_{ipq} T_{qjr} T_{rpk}\)
+について、\(N = 64\)（\(O_8 \otimes O_8\)）の第 1 層時間結晶
+\(H = O_8 \otimes M_8\) 上に単一サイト局在凝縮体 P4 およびスピン 2
+モード（\(\sigma_x\)）を配置し、空間幾何（エッジ重み・視野角曲率）と時間進行の応答を乱数なしの決定論的計算により精密検証した。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{球対称 4 クラス空間計量歪み（7 方向 7 桁等方）}：サイト
+  \(A = 0\) に局在質量
+  P4（\(\epsilon = 0.16, \tau = 40\)）を置くと、背景 \(H\) の 64 本の
+  \(O_8\) エッジのエネルギー比 \(E/E_{\mathrm{ref}}\) は、中心自己成分
+  \((0,0,0)\) が \(+32.48\%\)（\texttt{1.3248375}）、遠方接線エッジ
+  \((m,n,p)\) が
+  \(+7.19\%\)（\texttt{1.0718855}）、中心と遠方を結ぶ動径接続エッジ
+  \((0,m,m), (m,m,0)\) が
+  \(+1.23\%\)（\texttt{1.0122646}）、遠方自己成分 \((m,0,m)\) が基準
+  \texttt{1.0000000} の 4 クラスに厳密分裂し、7 虚数方向
+  \(m = 1 \dots 7\) は小数 7 桁で完全等方となる。虚数サイト \(A = 1\)
+  での対照実験、および 2 質量配置（\(A = 0, 1\)：両サイト 6 桁一致、残り
+  6 サイト標準偏差
+  \(7.5 \times 10^{-17}\)）でも完全なサイト対称性が確認された。
+\item
+  \textbf{離散曲率（三角形視野角
+  \(\rho = L_3/L_1\)）の空間勾配}：質量なしの真空 \(H\)
+  は全サイト完全平坦（\texttt{n\_tri\ =\ 64}, 重み付き視野角
+  \(\langle\rho\rangle_w = 0.576699\)）であるのに対し、質量
+  P4（\(\epsilon = 0.20, \tau = 30\)）の導入により交差三角形が \(+8\)
+  個増えて \texttt{n\_tri\ =\ 72} となり、質量直上
+  \(A = 0\)（\(\langle\rho\rangle_w = 0.796889\)）が遠方
+  \(A = 1, 7\)（\texttt{0.787796}）より大きく歪む球対称曲率勾配が生じた。
+\item
+  \textbf{臨界質量 \(\epsilon_c \in (0.270, 0.275)\) における動径切断・1
+  サイト特異点崩壊}：質量振幅が臨界値 \(\epsilon_c\)
+  を越えると、\texttt{nz:\ 576\ \$\textbackslash{}to\$\ 16}、\(\|P\|: 0.04682 \to 0.49998\;(=1/2)\)
+  へ不連続 1
+  次相転移し、質量サイト内部の背景（\texttt{0.2768}）と粒子（\texttt{0.7232}）だけを残して遠方
+  7 サイトの空間エネルギー
+  \(E_{\mathrm{bg}}(\mathrm{far}), E_P(\mathrm{far})\) が厳密
+  \texttt{0.000000} へ消滅する。この崩壊終状態は \(A = 0\) と
+  \(A = 1\)（\(\epsilon = 0.30\)）で小数 6 桁まで完全一致した。
+\item
+  \textbf{背景位相の単一時計剛性（厳密反証チェック）vs スピン 2
+  時空時計引きずり}：対角・非対角を問わず背景 \(H\)
+  の全エッジの複素位相ズレは \texttt{dtheta\ \textless{}\ 10\^{}\{-9\}}
+  rad に強制同期されており、第 1
+  層弱摂動では背景側の累積的な周波数ズレ（重力時間遅延）は生じないことが確定した（見かけのサイト別変化角比
+  \(\delta\phi/\delta g \approx 0.71\) は基準回転角 \(\phi_1(\tau)\)
+  依存の時間平均アーティファクトであることを明示）。一方、粒子セクター自身（\(\phi_P/\phi_0 = 0.56 \sim 0.86\)）およびスピン
+  2（\(\sigma_x\)）モード（\(d_1 = 0.7071 = 1/\sqrt{2}\)、\(\phi/\phi_0 = 0.6578\)
+  に普遍ロックし、\(\epsilon = 0.20\) では背景全体の時計まで
+  \texttt{0.6579} へ引きずり込む）では実体的な時間進行減速が生じる。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1.
+導入と検証方針}\label{ux5c0eux5165ux3068ux691cux8a3cux65b9ux91dd}
+
+先行する第 1〜第 4 速報 {[}1--4{]}
+により、\(N = 64\)（\(O_8 \otimes O_8\)）の三角形ループ積反復は、Hurwitz
+結晶選別・4 段階倍々エンタングルメント相転移・\(SO(3)\)
+スピン選別・\(G_2 \supset SU(3)\) ゲージ対称性・空間倍音局在・2
+粒子共存、および量子構造 4 定理（離散化・単一複素構造・Born
+則・\(\mathbb{Z}_2^3\)
+離散不確定性飽和）を公理なしに生成することが確定した。
+
+次の核心課題は、「局在質量およびスピン 2 励起を置いたとき、背景時空
+\(H = O_8 \otimes M_8\)
+の空間幾何（計量・曲率）と時間進行はどのように応答するか」である。重力・時空に関する主張は計測アーティファクトを混同しやすいため、本速報では
+3
+本の決定論的検証スクリプト（\texttt{tri\_loop\_n64\_gravity\_time\_lorentz\_v0.py},
+\texttt{tri\_loop\_n64\_gravity\_rigorous\_check\_v0.py},
+\texttt{tri\_loop\_n64\_dphi\_dg\_anatomy\_v0.py}）を用い、\textbf{「反証チェックを通過した確実な空間計量歪み・曲率・臨界崩壊・スピン
+2 引きずり」}と\textbf{「第 1
+層ではまだ生じていない背景側の累積時間遅延」}を厳密に区別して報告する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. 球対称 4
+クラス空間計量歪みと完全サイト対称性}\label{ux7403ux5bfeux79f0-4-ux30afux30e9ux30b9ux7a7aux9593ux8a08ux91cfux6b6aux307fux3068ux5b8cux5168ux30b5ux30a4ux30c8ux5bfeux79f0ux6027}
+
+第 1 層 \(H = O_8 \otimes M_8\)（\(\tau = 200\)）のサイト \(A = 0\)
+に単一サイト局在質量
+P4（\(\delta_{000} \otimes M_8[b=\{2,3\}]\)）を初期振幅 \(\epsilon\)
+で加え、\(\tau = 40\) の安定状態における背景セクター（\(b = 0\)）の全 64
+本の \(O_8\) エッジ \((A, B, C)\) のエネルギー \(E(A, B, C)\)
+を、遠方自己成分 \(E_{\mathrm{ref}} = E(1, 0, 1)\)
+で規格化して全数分解した（表 1、図 1(a)）。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1739}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1739}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2174}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2174}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2174}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+空間エッジの幾何学的クラス
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+該当成分（本数）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E/E_{\mathrm{ref}}\)（\(\epsilon=0.08\)）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E/E_{\mathrm{ref}}\)（\(\epsilon=0.16\)）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+複素位相ズレ \(\|\Delta\theta\|\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{1. 中心自己成分} & \((0, 0, 0)\)（1 本） &
+\texttt{1.1173232}（\(+11.7\%\)） &
+\textbf{\texttt{1.3248375}（\(+32.5\%\)）} & \(6.07 \times 10^{-11}\)
+rad \\
+\textbf{2. 動径接続エッジ} & \((0, m, m), (m, m, 0)\)（14 本） &
+\texttt{1.0054810}（\(+0.55\%\)） &
+\textbf{\texttt{1.0122646}（\(+1.23\%\)）} & \(6.08 \times 10^{-9}\)
+rad \\
+\textbf{3. 遠方接線エッジ} & \((m, n, p)\; (m,n,p\neq 0)\)（42 本） &
+\texttt{1.0257321}（\(+2.57\%\)） &
+\textbf{\texttt{1.0718855}（\(+7.19\%\)）} & \(6.10 \times 10^{-9}\)
+rad \\
+\textbf{4. 遠方自己成分} & \((m, 0, m)\)（7 本） &
+\texttt{1.0000000}（基準） & \texttt{1.0000000}（基準） &
+\(0\)（基準） \\
+\end{longtable}
+}
+
+注目すべき点は 3 つある。(1) 7 つの虚数方向 \(m = 1 \dots 7\) は小数 7
+桁まで完全等方（球対称）であり、\(O_8 = 0\) 領域へのエネルギー漏れは厳密
+\texttt{0.000000e+00} であった。(2) 質量中心 \((0,0,0)\)
+へ巨大なエネルギーが集中（\(+32.5\%\)）する一方、中心と遠方を繋ぐ動径エッジ
+\((0,m,m)\)
+は遠方接線エッジ（\(+7.2\%\)）より細く抑えられる（動径結合の相対的希薄化）。(3)
+虚数サイト \(A = 1\)
+に質量を置いた対照実験でも同じ計量歪み（\(\epsilon = 0.16\):
+\texttt{dg\ =\ 0.002967}）が生じ、2 質量配置（\(A = 0, 1\)、各
+\(\epsilon = 0.12\)）では両質量サイトが \texttt{dg\ =\ 0.003451} で小数
+6 桁完全一致し、残り 6 サイトは標準偏差 \(7.52 \times 10^{-17}\)
+で完全一様であった。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{3. 離散曲率（三角形視野角
+\(\rho = L_3/L_1\)）の空間勾配}{3. 離散曲率（三角形視野角 \textbackslash rho = L\_3/L\_1）の空間勾配}}\label{ux96e2ux6563ux66f2ux7387ux4e09ux89d2ux5f62ux8996ux91ceux89d2-rho-l_3l_1ux306eux7a7aux9593ux52feux914d}
+
+第 1・第 2 速報 {[}1, 2{]} で導入した三角形ループ視野角
+\(\rho = L_3 / L_1 \in (0, 1]\)（正三角形ほど \(1\)
+に近く、細長い遠方結合ほど \(0\) に近い離散曲率指標）を、真空 \(H\)
+と質量 P4
+導入後（\(\epsilon = 0.20, \tau = 30\)）について質量直上（\(A = 0\)）と遠方（\(A = 1, 7\)）で比較した（表
+2、図 1(b)）。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2083}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2083}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2083}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2083}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+条件・サイト
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+有効三角形数 \(n_{\mathrm{tri}}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+算術平均 \(\bar{\rho}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+重み付き視野角 \(\langle\rho\rangle_w\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+最小値 \(\rho_{\min}\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+真空 \(H\)（全サイト \(A = 0, 1, 7\)） & 64 & \texttt{0.621227} &
+\texttt{0.576699} & \texttt{0.414735} \\
+質量あり（\(\epsilon=0.20\)）：遠方 \(A = 1, 7\) & 72（\(+8\)） &
+\texttt{0.709985} & \texttt{0.787796} & \texttt{0.064441} \\
+\textbf{質量あり（\(\epsilon=0.20\)）：直上 \(A = 0\)} &
+\textbf{72（\(+8\)）} & \textbf{\texttt{0.716065}} &
+\textbf{\texttt{0.796889}} & \texttt{0.064441} \\
+\end{longtable}
+}
+
+真空 \(H\) では全サイトが完全平坦だが、質量導入により交差三角形が \(+8\)
+本追加され、質量直上 \(A = 0\) が遠方 \(A = 1, 7\) より
+\(\Delta\langle\rho\rangle_w = +0.009093\)
+だけ強く歪む球対称な離散曲率勾配が形成された。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={(a) 局在質量 P4 が背景 H に生む球対称 4 クラス空間計量歪み（\textbackslash epsilon=0.08, 0.16、7 方向 7 桁等方）。(b) 三角形視野角 \textbackslash rho = L\_3/L\_1 による離散曲率勾配（真空平坦 vs 質量直上 A=0 vs 遠方 A=1,7）。}]{figs_ja/fig_r5_metric_and_curvature_ja.png}
+\caption{(a) 局在質量 P4 が背景 \(H\) に生む球対称 4
+クラス空間計量歪み（\(\epsilon=0.08, 0.16\)、7 方向 7 桁等方）。(b)
+三角形視野角 \(\rho = L_3/L_1\) による離散曲率勾配（真空平坦 vs 質量直上
+\(A=0\) vs 遠方 \(A=1,7\)）。}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{4. 臨界質量
+\(\epsilon_c \in (0.270, 0.275)\) における動径切断・1
+サイト特異点崩壊}{4. 臨界質量 \textbackslash epsilon\_c \textbackslash in (0.270, 0.275) における動径切断・1 サイト特異点崩壊}}\label{ux81e8ux754cux8ceaux91cf-epsilon_c-in-0.270-0.275-ux306bux304aux3051ux308bux52d5ux5f84ux5207ux65ad1-ux30b5ux30a4ux30c8ux7279ux7570ux70b9ux5d29ux58ca}
+
+質量振幅 \(\epsilon\) を \(0.250 \to 0.300\) まで \texttt{0.005}
+刻みで精密スキャンした結果（\(\tau = 60\)）、\(\epsilon_c \in (0.270, 0.275)\)
+にナイフエッジ型の 1 次相転移が見出された（表 3、図 2(a)）。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\(\epsilon\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\texttt{nz}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(\|P\|\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E_{\mathrm{bg}}(0)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E_{\mathrm{bg}}(\mathrm{far})\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E_P(0)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E_P(\mathrm{far})\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+SVD \(\sigma_1, \sigma_2\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{0.260} & 576 & \texttt{0.04682} & \texttt{0.124530} &
+\texttt{0.875458} & \texttt{0.000002} & \texttt{0.000010} &
+\texttt{1.0000,\ 0.0032} \\
+\texttt{0.270} & 576 & \texttt{0.04682} & \texttt{0.124188} &
+\texttt{0.873854} & \texttt{0.000321} & \texttt{0.001637} &
+\texttt{0.9991,\ 0.0414} \\
+\textbf{\texttt{0.275}} & \textbf{16} & \textbf{\texttt{0.49998}} &
+\textbf{\texttt{0.276774}} & \textbf{\texttt{0.000000}} &
+\textbf{\texttt{0.723226}} & \textbf{\texttt{0.000000}} &
+\textbf{\texttt{1.0000,\ 0.0000}} \\
+\texttt{0.300} & 16 & \texttt{0.49998} & \texttt{0.061260} &
+\texttt{0.000000} & \texttt{0.938740} & \texttt{0.000000} &
+\texttt{1.0000,\ 0.0000} \\
+\end{longtable}
+}
+
+重要な点は、これが単なる「粒子チャネルによる背景の乗っ取り」ではないことである。崩壊後も質量サイト
+\(A = 0\)
+の内部には背景セクター（\texttt{0.2768}）と粒子セクター（\texttt{0.7232}）が共存したまま、\textbf{動径接続エッジの希薄化が臨界に達して遠方
+7
+サイトとの空間接続だけが完全消滅}する（\texttt{nz:\ 576\ \$\textbackslash{}to\$\ 16},
+\(\|P\| \to 1/2\)）。しかも虚数サイト
+\(A = 1\)（\(\epsilon = 0.30\)）での崩壊終状態も \texttt{nz\ =\ 16},
+\(\|P\| = 0.49998\), \(E_{\mathrm{bg}}(1) = 0.061260\),
+\(E_P(1) = 0.938740\), \(E_{\mathrm{bg}}(\mathrm{oth}) = 0.000000\)
+と小数 6 桁まで完全一致した。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. 背景位相の単一時計剛性（反証チェック）vs スピン 2
+時空引きずり}\label{ux80ccux666fux4f4dux76f8ux306eux5358ux4e00ux6642ux8a08ux525bux6027ux53cdux8a3cux30c1ux30a7ux30c3ux30afvs-ux30b9ux30d4ux30f3-2-ux6642ux7a7aux5f15ux304dux305aux308a}
+
+本検証では、局所時間の遅れについて 2 つの厳密な対照事実を確定した。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{背景位相の単一時計剛性（反証チェックの結論）}：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    サイト全体の状態ベクトル内積から計算した 1 ステップ変化角
+    \(\phi_{\mathrm{bg}}(A) = \arccos(|\langle v_{\tau-1}, v_\tau\rangle|)\)
+    は、時間平均では \(\delta\phi/\delta g \approx 0.71\)
+    の遅延を示した。しかしステップ別解剖（\texttt{tri\_loop\_n64\_dphi\_dg\_anatomy\_v0.py}）の結果、\(\delta\phi/\delta g\)
+    は \(\tau\) ごとの基準回転角 \(\phi_1(\tau)\) に応じて
+    \texttt{0.020}〜\texttt{1.311}
+    の間を変動する見かけの量であり、\textbf{背景全エッジの複素位相ズレ
+    \(|\Delta\theta|\) は \(\tau = 1 \to 100\) を通じて \(10^{-9}\) rad
+    以下に強制同期されている}ことが確定した。すなわち第 1 層
+    \(H = O_8 \otimes M_8\) の弱結合領域では、外側 \(O_8\) と内側
+    \(M_8\) のランク 1
+    直積剛性のため、背景側の累積的な周波数ズレ（重力時間遅延）はまだ生じない。
+  \end{itemize}
+\item
+  \textbf{粒子側およびスピン
+  2（\(\sigma_x\)）モードによる実体的な時間進行減速}：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    一方、粒子セクター自身（P4）の時計速度は
+    \(\phi_P(0)/\phi_0 = 0.559 \sim 0.860\) へ明確に減速する。
+  \item
+    さらにスピン 2
+    候補（\(O_8 \otimes \sigma_x[b=\{2,3\}]\)）は、初期振幅
+    \(\epsilon = 0.05, 0.10, 0.20\) のいずれでも
+    \(d_1 = 0.7071\;(=1/\sqrt{2})\)・\(\phi_{b23}/\phi_0 = 0.65778\)
+    に普遍ロックし、\textbf{\(\epsilon = 0.20\) では背景時空 \(H\)
+    全体の時計速度まで \texttt{0.65788}
+    へ丸ごと引きずり込んで同期}した（図 2(b)）。また
+    P4(\(0.10\))＋\(\sigma_x\)(\(0.10\)) の同時投入でも背景時計は
+    \texttt{0.9345\ \$\textbackslash{}to\$\ 0.8664}、粒子ステップ距離は
+    \texttt{1.1865\ \$\textbackslash{}to\$\ 0.7602} へ減速した。
+  \end{itemize}
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={(a) 臨界質量 \textbackslash epsilon\_c \textbackslash in (0.270, 0.275) での鋭い 1 次相転移（nz: 576 \$\textbackslash to\$ 16, \textbackslash\textbar P\textbackslash\textbar: 0.047 \textbackslash to 1/2, E\_\{\textbackslash mathrm\{bg\}\}(\textbackslash mathrm\{far\}) \textbackslash to 0）。(b) スピン 2（\textbackslash sigma\_x）モードの普遍ロック（0.6578, d\_1 = 1/\textbackslash sqrt\{2\}）と背景時空時計の引きずり。}]{figs_ja/fig_r5_collapse_and_spin2_ja.png}
+\caption{(a) 臨界質量 \(\epsilon_c \in (0.270, 0.275)\) での鋭い 1
+次相転移（\protect\texttt{nz:\ 576\ \$\textbackslash{}to\$\ 16},
+\(\|P\|: 0.047 \to 1/2\), \(E_{\mathrm{bg}}(\mathrm{far}) \to 0\)）。(b)
+スピン
+2（\(\sigma_x\)）モードの普遍ロック（\(0.6578, d_1 = 1/\sqrt{2}\)）と背景時空時計の引きずり。}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6.
+議論・限界の明記・統合論文に向けて}\label{ux8b70ux8ad6ux9650ux754cux306eux660eux8a18ux7d71ux5408ux8ad6ux6587ux306bux5411ux3051ux3066}
+
+本第 5 速報では、第 1 層 \(H = O_8 \otimes M_8\)
+における局在質量の重力応答として、(1) 7 方向 7 桁等方な 4
+クラス空間計量歪み、(2) 離散曲率（視野角 \(\rho\)）の球対称勾配、(3)
+臨界点 \(\epsilon_c \in (0.270, 0.275)\) での動径切断・1
+サイト特異点崩壊、(4) スピン
+2（\(\sigma_x\)）による時空時計引きずりを確立した。同時に、厳密反証チェックにより
+(a) 第 1 層弱結合では背景位相が単一時計に強制同期されること、(b)
+\(N = 64\)（外側 8 サイト）は空間直径が 1 ステップであるため \(1/r\)
+ポテンシャルや光円錐の遠方伝播・ローレンツ因子 \(\sqrt{1 - v^2/c^2}\)
+の直接検証にはより大きい空間格子（あるいは第 3
+層以降の非直積相）が必要であることを明記した。第 1〜第 5
+速報で確立した全定理・数値法則は、次段の統合本論において統一的枠組みとして整理する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7.
+再現手順と公開ファイル}\label{ux518dux73feux624bux9806ux3068ux516cux958bux30d5ux30a1ux30a4ux30eb}
+
+\begin{itemize}
+\tightlist
+\item
+  メイン検証：\texttt{tri\_loop\_n64\_gravity\_time\_lorentz\_v0.py}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    出力：\texttt{results/tri\_loop\_n64\_gravity\_time\_lorentz\_v0.txt}
+  \end{itemize}
+\item
+  厳密反証チェック：\texttt{tri\_loop\_n64\_gravity\_rigorous\_check\_v0.py}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    出力：\texttt{results/tri\_loop\_n64\_gravity\_rigorous\_check\_v0.txt}
+  \end{itemize}
+\item
+  エッジ全数解剖：\texttt{tri\_loop\_n64\_dphi\_dg\_anatomy\_v0.py}
+\item
+  作図スクリプト：\texttt{plot\_fifth\_report\_figures\_v0.py}
+\item
+  図出力（図
+  1）：\texttt{results/fig\_r5\_metric\_and\_curvature\_\{ja,en\}.png}
+\item
+  図出力（図
+  2）：\texttt{results/fig\_r5\_collapse\_and\_spin2\_\{ja,en\}.png}
+\item
+  ビルドスクリプト：\texttt{build\_tex\_rapid5.py}
+\end{itemize}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  N. Kihara, \emph{Rapid Communication 1}, Zenodo (2026), DOI:
+  10.5281/zenodo.24616931.
+\item
+  N. Kihara, \emph{Second Rapid Communication}, Zenodo (2026), DOI:
+  10.5281/zenodo.24618400.
+\item
+  N. Kihara, \emph{Third Rapid Communication}, Zenodo (2026), DOI:
+  10.5281/zenodo.24619357.
+\item
+  N. Kihara, \emph{Fourth Rapid Communication}, Zenodo (2026), DOI:
+  10.5281/zenodo.24620262.
+\end{enumerate}
+
+\end{document}

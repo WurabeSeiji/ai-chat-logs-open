@@ -1,0 +1,495 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{luatexja}
+\usepackage{xurl}
+\usepackage{float}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}
+\usepackage{float}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Spherically Symmetric Spatial Metric Distortion{,} Discrete Curvature Gradient{,} Spin-2 Clock Dragging{,} and Critical Mass Collapse in the 3D Triangle-Loop Product (Fifth Rapid Communication)},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Spherically Symmetric Spatial Metric Distortion, Discrete
+Curvature Gradient, Spin-2 Clock Dragging, and Critical Mass Collapse in
+the 3D Triangle-Loop Product (Fifth Rapid Communication)}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{― Exact 7-Direction Isotropic 4-Class Metric Splitting,
+Far-Space Disconnection at \(\epsilon_c \in (0.270, 0.275)\), and
+Rigorous Phase-Rigidity Audit ―}
+\author{Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020}
+\date{November 28, 2026}
+
+\begin{document}
+\maketitle
+
+\textbf{Author:} Noriaki Kihara (WF System Co., Ltd.)\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Date:} November 28, 2026\\
+\textbf{Status:} Fifth Rapid Communication following Rapid Reports 1--4
+(DOIs: 10.5281/zenodo.24616931, 24618400, 24619357, 24620262).
+Quantifies the spatial metric distortion, discrete curvature gradient,
+critical mass collapse, and spin-2 clock dragging on the Layer-1 time
+crystal \(H = O_8 \otimes M_8\), while explicitly reporting a rigorous
+falsification audit showing single-clock phase rigidity in the
+weak-coupling background.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+We investigate the geometric and temporal response of the Layer-1 time
+crystal \(H = O_8 \otimes M_8\) in the background-free \(N = 64\) real
+3-tensor triangle-loop product
+\(\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r} T_{ipq} T_{qjr} T_{rpk}\) when
+perturbed by a single-site localized condensate P4 and a spin-2 mode
+(\(\sigma_x\)), using deterministic zero-randomness simulations:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Spherically Symmetric 4-Class Spatial Metric Distortion
+  (7-Digit Isotropic)}: Placing P4 (\(\epsilon = 0.16, \tau = 40\)) at
+  site \(A = 0\) splits the 64 background \(O_8\) edges into four exact
+  geometric classes with 7-digit isotropy across all 7 imaginary
+  directions \(m = 1 \dots 7\): center self-loop \((0,0,0)\) at
+  \(E/E_{\mathrm{ref}} = 1.3248375\) (\(+32.5\%\)), far tangential edges
+  \((m,n,p)\) at \(1.0718855\) (\(+7.2\%\)), radial connecting edges
+  \((0,m,m), (m,m,0)\) at \(1.0122646\) (\(+1.2\%\)), and far self-loops
+  \((m,0,m)\) at \(1.0000000\). Control tests at imaginary site
+  \(A = 1\) and symmetric two-mass configurations (\(A = 0, 1\): 6-digit
+  match; remaining 6 sites uniform to \(7.5 \times 10^{-17}\)) confirm
+  full site equivalence.
+\item
+  \textbf{Discrete Curvature (\(\rho = L_3/L_1\)) Gradient}: While
+  vacuum \(H\) is strictly flat across all sites
+  (\texttt{n\_tri\ =\ 64}, weighted view-angle
+  \(\langle\rho\rangle_w = 0.576699\)), inserting P4
+  (\(\epsilon = 0.20, \tau = 30\)) adds \(+8\) cross triangles
+  (\texttt{n\_tri\ =\ 72}) and generates a spherically symmetric
+  curvature gradient with \(\langle\rho\rangle_w = 0.796889\) at mass
+  site \(A = 0\) versus \(0.787796\) at far sites \(A = 1, 7\).
+\item
+  \textbf{Critical Mass Collapse at \(\epsilon_c \in (0.270, 0.275)\)}:
+  Crossing \(\epsilon_c\) triggers a sharp first-order collapse
+  (\texttt{nz:\ 576\ \$\textbackslash{}to\$\ 16},
+  \(\|P\|: 0.04682 \to 0.49998 = 1/2\)) in which the radial links sever
+  and all far-space energies
+  \(E_{\mathrm{bg}}(\mathrm{far}), E_P(\mathrm{far})\) vanish to
+  \texttt{0.000000}, while background (\texttt{0.2768}) and particle
+  (\texttt{0.7232}) sectors remain coexisting inside the single mass
+  site. Collapsed end-states at \(A = 0\) and \(A = 1\)
+  (\(\epsilon = 0.30\)) match to 6 digits.
+\item
+  \textbf{Rigorous Phase-Rigidity Audit vs.~Spin-2 Clock Dragging}: A
+  direct complex-phase audit reveals that all background edge phases
+  remain synchronized to \(|\Delta\theta| < 10^{-9}\) rad across
+  \(\tau = 1 \dots 100\) (ruling out cumulative background frequency
+  drift in weak coupling and identifying an apparent time-averaged ratio
+  \(\delta\phi/\delta g \approx 0.71\) as a reference-angle artifact).
+  Conversely, genuine temporal slowdown occurs in the particle sector
+  (\(\phi_P/\phi_0 = 0.56\)--\(0.86\)) and under spin-2 (\(\sigma_x\))
+  coupling, which universally locks to \(d_1 = 1/\sqrt{2}\)
+  (\(\phi/\phi_0 = 0.6578\)) and drags the entire background clock down
+  to \texttt{0.6579} at \(\epsilon = 0.20\).
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Introduction and Audit
+Methodology}\label{introduction-and-audit-methodology}
+
+Rapid Communications 1--4 {[}1--4{]} established Hurwitz crystal
+selection, four-stage doubling-entanglement cascades, \(SO(3)\) spin
+selection, \(G_2 \supset SU(3)\) gauge counts, \(\mathbb{Z}_2^3\)
+spatial harmonic localization, two-particle coexistence, and four
+emergent quantum theorems (Q1--Q4). Here we probe how localized mass and
+spin-2 excitations deform the spatial geometry and clock rates of the
+Layer-1 background \(H = O_8 \otimes M_8\). Because gravitational claims
+are prone to measurement artifacts, we pair main sweeps
+(\texttt{tri\_loop\_n64\_gravity\_time\_lorentz\_v0.py}) with a
+five-point falsification audit
+(\texttt{tri\_loop\_n64\_gravity\_rigorous\_check\_v0.py}) and complete
+edge-by-edge dissection
+(\texttt{tri\_loop\_n64\_dphi\_dg\_anatomy\_v0.py}).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Spherically Symmetric 4-Class Spatial Metric
+Distortion}\label{spherically-symmetric-4-class-spatial-metric-distortion}
+
+Adding P4 (\(\delta_{000} \otimes M_8[b=\{2,3\}]\)) at \(A = 0\) and
+evolving to \(\tau = 40\) splits all 64 background (\(b = 0\)) \(O_8\)
+edges \((A, B, C)\) into four exact geometric classes normalized by
+\(E_{\mathrm{ref}} = E(1, 0, 1)\) (Table 1, Fig. 1(a)):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1739}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1739}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2174}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2174}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2174}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Spatial Edge Class
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Components (Count)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E/E_{\mathrm{ref}}\) (\(\epsilon=0.08\))
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E/E_{\mathrm{ref}}\) (\(\epsilon=0.16\))
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Phase Diff \(\|\Delta\theta\|\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{1. Center self-loop} & \((0, 0, 0)\) (1) & \texttt{1.1173232}
+(\(+11.7\%\)) & \textbf{\texttt{1.3248375} (\(+32.5\%\))} &
+\(6.07 \times 10^{-11}\) rad \\
+\textbf{2. Radial links} & \((0, m, m), (m, m, 0)\) (14) &
+\texttt{1.0054810} (\(+0.55\%\)) & \textbf{\texttt{1.0122646}
+(\(+1.23\%\))} & \(6.08 \times 10^{-9}\) rad \\
+\textbf{3. Far tangential} & \((m, n, p)\; (m,n,p\neq 0)\) (42) &
+\texttt{1.0257321} (\(+2.57\%\)) & \textbf{\texttt{1.0718855}
+(\(+7.19\%\))} & \(6.10 \times 10^{-9}\) rad \\
+\textbf{4. Far self-loops} & \((m, 0, m)\) (7) & \texttt{1.0000000}
+(ref) & \texttt{1.0000000} (ref) & \(0\) (ref) \\
+\end{longtable}
+}
+
+All 7 imaginary directions \(m = 1 \dots 7\) are strictly isotropic to 7
+digits, with zero leakage into \(O_8 = 0\) entries
+(\texttt{0.000000e+00}). Energy concentrates strongly at the center
+\((0,0,0)\) while radial connecting links \((0,m,m)\) are relatively
+suppressed compared to far tangential edges. Control experiments placing
+P4 at imaginary site \(A = 1\) reproduce the same distortion
+(\texttt{dg\ =\ 0.002967} at \(\epsilon = 0.16\)), and two-mass
+placement (\(A = 0, 1\), \(\epsilon = 0.12\) each) yields a 6-digit
+symmetric well (\texttt{dg\ =\ 0.003451} at both sites) with the
+remaining 6 sites uniform to \(7.52 \times 10^{-17}\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{3. Discrete Curvature (\(\rho = L_3/L_1\))
+Gradient}{3. Discrete Curvature (\textbackslash rho = L\_3/L\_1) Gradient}}\label{discrete-curvature-rho-l_3l_1-gradient}
+
+Measuring the triangle-loop view-angle \(\rho = L_3/L_1\) {[}1, 2{]} at
+mass site \(A = 0\) versus far sites \(A = 1, 7\) confirms a transition
+from exact flatness in vacuum \(H\) to a spherically symmetric discrete
+curvature gradient (Table 2, Fig. 1(b)):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2083}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2083}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2083}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2083}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Configuration / Site
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Triangles \(n_{\mathrm{tri}}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Mean \(\bar{\rho}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Weighted \(\langle\rho\rangle_w\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Min \(\rho_{\min}\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Vacuum \(H\) (\(A = 0, 1, 7\)) & 64 & \texttt{0.621227} &
+\texttt{0.576699} & \texttt{0.414735} \\
+With Mass (\(\epsilon=0.20\)): Far \(A = 1, 7\) & 72 (\(+8\)) &
+\texttt{0.709985} & \texttt{0.787796} & \texttt{0.064441} \\
+\textbf{With Mass (\(\epsilon=0.20\)): Center \(A = 0\)} & \textbf{72
+(\(+8\))} & \textbf{\texttt{0.716065}} & \textbf{\texttt{0.796889}} &
+\texttt{0.064441} \\
+\end{longtable}
+}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={(a) Spherically symmetric 4-class spatial metric distortion induced by P4 (\textbackslash epsilon=0.08, 0.16, 7-digit isotropic). (b) Discrete curvature (\textbackslash rho = L\_3/L\_1) gradient comparing flat vacuum H with center A=0 and far sites A=1,7.}]{figs_en/fig_r5_metric_and_curvature_en.png}
+\caption{(a) Spherically symmetric 4-class spatial metric distortion
+induced by P4 (\(\epsilon=0.08, 0.16\), 7-digit isotropic). (b) Discrete
+curvature (\(\rho = L_3/L_1\)) gradient comparing flat vacuum \(H\) with
+center \(A=0\) and far sites \(A=1,7\).}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{4. Critical Mass Collapse at
+\(\epsilon_c \in (0.270, 0.275)\)}{4. Critical Mass Collapse at \textbackslash epsilon\_c \textbackslash in (0.270, 0.275)}}\label{critical-mass-collapse-at-epsilon_c-in-0.270-0.275}
+
+Scanning \(\epsilon \in [0.250, 0.300]\) in steps of \texttt{0.005}
+(\(\tau = 60\)) pinpoints a sharp first-order collapse at
+\(\epsilon_c \in (0.270, 0.275)\) (Table 3, Fig. 2(a)):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}
+  >{\centering\arraybackslash}p{(\linewidth - 14\tabcolsep) * \real{0.1250}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+\(\epsilon\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\texttt{nz}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(\|P\|\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E_{\mathrm{bg}}(0)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E_{\mathrm{bg}}(\mathrm{far})\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E_P(0)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E_P(\mathrm{far})\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+SVD \(\sigma_1, \sigma_2\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{0.260} & 576 & \texttt{0.04682} & \texttt{0.124530} &
+\texttt{0.875458} & \texttt{0.000002} & \texttt{0.000010} &
+\texttt{1.0000,\ 0.0032} \\
+\texttt{0.270} & 576 & \texttt{0.04682} & \texttt{0.124188} &
+\texttt{0.873854} & \texttt{0.000321} & \texttt{0.001637} &
+\texttt{0.9991,\ 0.0414} \\
+\textbf{\texttt{0.275}} & \textbf{16} & \textbf{\texttt{0.49998}} &
+\textbf{\texttt{0.276774}} & \textbf{\texttt{0.000000}} &
+\textbf{\texttt{0.723226}} & \textbf{\texttt{0.000000}} &
+\textbf{\texttt{1.0000,\ 0.0000}} \\
+\texttt{0.300} & 16 & \texttt{0.49998} & \texttt{0.061260} &
+\texttt{0.000000} & \texttt{0.938740} & \texttt{0.000000} &
+\texttt{1.0000,\ 0.0000} \\
+\end{longtable}
+}
+
+Crucially, this is not mere channel takeover: inside the collapsed site
+\(A = 0\), background (\texttt{0.2768}) and particle (\texttt{0.7232})
+sectors still coexist, while the radial suppression severs all
+connections to the 7 far sites
+(\texttt{nz:\ 576\ \$\textbackslash{}to\$\ 16}, \(\|P\| \to 1/2\)).
+Collapsing at imaginary site \(A = 1\) (\(\epsilon = 0.30\)) yields the
+exact same end-state to 6 digits
+(\texttt{E\_bg(1)\ =\ 0.061260,\ E\_P(1)\ =\ 0.938740,\ E\_bg(oth)\ =\ 0.000000}).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Phase-Rigidity Audit vs.~Spin-2 Clock
+Dragging}\label{phase-rigidity-audit-vs.-spin-2-clock-dragging}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Background Phase Rigidity (Audit Finding)}: Although a
+  time-averaged site-vector angle ratio initially suggested
+  \(\delta\phi/\delta g \approx 0.71\), step-by-step dissection proves
+  that \(\delta\phi/\delta g\) fluctuates from \texttt{0.020} to
+  \texttt{1.311} with the reference step angle \(\phi_1(\tau)\), and
+  direct complex-phase tracking confirms \(|\Delta\theta| < 10^{-9}\)
+  rad across all background edges for \(\tau = 1 \dots 100\). Thus, due
+  to the rank-1 single-clock rigidity of \(H = O_8 \otimes M_8\),
+  cumulative background gravitational frequency shift does not occur in
+  weak coupling.
+\item
+  \textbf{Genuine Particle \& Spin-2 Slowdown}: In contrast, the
+  particle sector slows down substantially
+  (\(\phi_P(0)/\phi_0 = 0.559\)--\(0.860\)), and the spin-2 candidate
+  (\(O_8 \otimes \sigma_x[b=\{2,3\}]\)) locks universally to
+  \(d_1 = 0.7071 = 1/\sqrt{2}\) and \(\phi_{b23}/\phi_0 = 0.65778\)
+  across \(\epsilon = 0.05, 0.10, 0.20\). At \(\epsilon = 0.20\),
+  \(\sigma_x\) drags the entire background clock down to
+  \texttt{0.65788} (Fig. 2(b)), and joint P4(\(0.10\)) +
+  \(\sigma_x\)(\(0.10\)) injection slows both background
+  (\texttt{0.9345\ \$\textbackslash{}to\$\ 0.8664}) and particle
+  (\texttt{d1:\ 1.1865\ \$\textbackslash{}to\$\ 0.7602}).
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={(a) Sharp first-order collapse at \textbackslash epsilon\_c \textbackslash in (0.270, 0.275) (nz: 576 \$\textbackslash to\$ 16, \textbackslash\textbar P\textbackslash\textbar: 0.047 \textbackslash to 1/2, E\_\{\textbackslash mathrm\{bg\}\}(\textbackslash mathrm\{far\}) \textbackslash to 0). (b) Universal spin-2 (\textbackslash sigma\_x) lock (0.6578, d\_1 = 1/\textbackslash sqrt\{2\}) and background clock dragging.}]{figs_en/fig_r5_collapse_and_spin2_en.png}
+\caption{(a) Sharp first-order collapse at
+\(\epsilon_c \in (0.270, 0.275)\)
+(\protect\texttt{nz:\ 576\ \$\textbackslash{}to\$\ 16},
+\(\|P\|: 0.047 \to 1/2\), \(E_{\mathrm{bg}}(\mathrm{far}) \to 0\)). (b)
+Universal spin-2 (\(\sigma_x\)) lock (\(0.6578, d_1 = 1/\sqrt{2}\)) and
+background clock dragging.}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Discussion, Explicit Limitations, and
+Outlook}\label{discussion-explicit-limitations-and-outlook}
+
+This fifth communication establishes four robust geometric/dynamical
+phenomena on \(H = O_8 \otimes M_8\)---7-digit isotropic 4-class metric
+distortion, discrete curvature gradients, critical far-space
+disconnection at \(\epsilon_c \in (0.270, 0.275)\), and spin-2 clock
+dragging---while transparently documenting two boundaries: (a)
+weak-coupling background phase rigidity (\(|\Delta\theta| < 10^{-9}\)
+rad), and (b) the 1-step spatial diameter of the 8-site \(O_8\) cell,
+which requires larger spatial lattices or entangled higher layers to
+test \(1/r\) potentials, light-cone propagation, and Lorentz factors
+\(\sqrt{1-v^2/c^2}\). Rapid Communications 1--5 now form the complete
+modular foundation for the unified full paper.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. Reproducibility and Released
+Files}\label{reproducibility-and-released-files}
+
+\begin{itemize}
+\tightlist
+\item
+  Main sweep: \texttt{tri\_loop\_n64\_gravity\_time\_lorentz\_v0.py}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Log: \texttt{results/tri\_loop\_n64\_gravity\_time\_lorentz\_v0.txt}
+  \end{itemize}
+\item
+  Falsification audit:
+  \texttt{tri\_loop\_n64\_gravity\_rigorous\_check\_v0.py}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Log:
+    \texttt{results/tri\_loop\_n64\_gravity\_rigorous\_check\_v0.txt}
+  \end{itemize}
+\item
+  Edge dissection: \texttt{tri\_loop\_n64\_dphi\_dg\_anatomy\_v0.py}
+\item
+  Figure generator: \texttt{plot\_fifth\_report\_figures\_v0.py}
+\item
+  Figures (Fig. 1):
+  \texttt{results/fig\_r5\_metric\_and\_curvature\_\{ja,en\}.png}
+\item
+  Figures (Fig. 2):
+  \texttt{results/fig\_r5\_collapse\_and\_spin2\_\{ja,en\}.png}
+\item
+  TeX builder: \texttt{build\_tex\_rapid5.py}
+\end{itemize}
+
+\subsection{References}\label{references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  N. Kihara, \emph{Rapid Communication 1}, Zenodo (2026), DOI:
+  10.5281/zenodo.24616931.
+\item
+  N. Kihara, \emph{Second Rapid Communication}, Zenodo (2026), DOI:
+  10.5281/zenodo.24618400.
+\item
+  N. Kihara, \emph{Third Rapid Communication}, Zenodo (2026), DOI:
+  10.5281/zenodo.24619357.
+\item
+  N. Kihara, \emph{Fourth Rapid Communication}, Zenodo (2026), DOI:
+  10.5281/zenodo.24620262.
+\end{enumerate}
+
+\end{document}
