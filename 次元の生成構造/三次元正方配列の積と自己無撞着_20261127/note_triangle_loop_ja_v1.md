@@ -161,4 +161,4 @@ python3 plot_tri_loop_n64_viewangle_v0.py
 
 ---
 
-#量子重力 #理論物理 #物理学 #数学 #宇宙 #AI #Gemini #Python #八元数 #数値シミュレーション #インフレーション #背景独立 #再現可能研究
+#量子重力 #理論物理 #物理学 #数学 #宇宙 #AI #Gemini #Python #八元数 #数値シミュレーション #インフレーション #背景独立 #再現可能研究 #Chandrasekaran
