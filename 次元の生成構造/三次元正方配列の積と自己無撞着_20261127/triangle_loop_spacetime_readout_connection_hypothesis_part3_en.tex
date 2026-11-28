@@ -1,0 +1,731 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{luatexja}
+\usepackage{xurl}
+\usepackage{float}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}
+\usepackage{float}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Spacetime and Internal-Space Readout Connection Hypothesis in the 3D Triangle-Loop Product (Part III)},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Spacetime and Internal-Space Readout Connection Hypothesis in the
+3D Triangle-Loop Product (Part III)}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{― Logarithmic Transform \(O = e^{\ln A + n\theta}\),
+Observer-Centered Past Light Cone, Resolution Gauge, and
+\((x, y, z, t, R, Q_1, Q_2, Q_3)\) Mapping ―}
+\author{Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020}
+\date{November 28, 2026 Version DOI 10.5281/zenodo.24625963}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\textbf{Author:} Noriaki Kihara (WF System Co., Ltd.)\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Date:} November 28, 2026\\
+\textbf{Version DOI:} 10.5281/zenodo.24625963\\
+\textbf{Concept DOI:} 10.5281/zenodo.24625962\\
+\textbf{Status:} Readout connection hypothesis paper (\textbf{Part III})
+following the Unified Full Paper Part I (Concept DOI:
+\texttt{10.5281/zenodo.24622200}) and Unified Connection Hypothesis Part
+II (Concept DOI: \texttt{10.5281/zenodo.24622565}). Motivated directly
+by two concrete gaps remaining after Part I and Part II---(i) the lack
+of an explicit readout map from the \(\mathrm{Tri}(T)\) state space to
+\((x, y, z, t, R, Q_1, Q_2, Q_3)\) and (ii) the absence of a
+resolution-based definition of visibility---this paper directly connects
+the readout geometry developed in prior thought experiments
+{[}K9--K14{]} to the actual deterministic \(\mathrm{Tri}(T)\) states.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+Part I {[}P1{]} established without external axioms or random numbers
+that the single normalized real 3-tensor map
+\(\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r} T_{ipq} T_{qjr} T_{rpk}\)
+spontaneously generates Hurwitz crystal selection, four quantum theorems
+(Q1--Q4), spherical 4-class metric distortion with critical collapse,
+Hurwitz mass hierarchy, 28D \(Spin(8)\) Triality spin-\(1/2\), and CAR
+\texttt{1:3:3:1} fermion charges. Part II {[}P2{]} introduced the
+\(O_8^{\mathrm{ext}} \otimes O_8^{\mathrm{int}}\) separation hypothesis
+to connect gravity, electromagnetism, QCD, and Dirac matter.
+
+Nevertheless, two essential gaps remained before closing the connection
+to general relativity and the Standard Model: (1) how and why the
+\(\mathrm{Tri}(T)\) state space (phase space) maps onto physical
+spacetime and internal coordinates \((x, y, z, t, R, Q_1, Q_2, Q_3)\),
+and (2) how ``visible vs.~hidden'' is defined by an observer's
+resolution rather than by inspecting all \(64^3\) components from an
+external God's-eye view. In this Part III, we bridge our prior readout
+frameworks---central projection and split-octonion null balance
+{[}K9{]}, two sections of the complex exponent {[}K10{]}, resolution as
+a gauge {[}K11{]}, light-cone projection axes {[}K12, K13{]}, and
+cross-term visibility {[}K14{]}---directly onto the deterministic
+\(\mathrm{Tri}(T)\) states
+(\texttt{tri\_loop\_spacetime\_log\_resolution\_bridge\_v0.py}, no
+random numbers) and establish five results:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{\texttt{(1+3)+(1+3)} Split-Octonion Null Balance \&
+  Projection-Axis Covariance}: On the Part I vacuum time crystal
+  \(H = O_8 \otimes M_8\), all seven Fano quaternion
+  \texttt{(1+3)+(1+3)} splits strictly satisfy
+  \(|a|^2 = |b|^2 = 0.500000\) (max difference
+  \textbf{\texttt{3.331e-16}}), and 1D (\(\mathbb{R}\)), 2D
+  (\(\mathbb{C}\)), and 4D (\(\mathbb{H}\)) projection-axis choices
+  preserve the exact ratio \(d/8\) across all selections (max deviation
+  \texttt{5.55e-17} to \texttt{2.22e-16}).
+\item
+  \textbf{\texttt{1\ +\ 3\ +\ 4} Split of Outer \(O_8^{\mathrm{ext}}\)
+  and Pure \(SU(2)\)}: Inside \(G_2\) (14D), the subgroup preserving the
+  \texttt{3} (\(\{e_1,e_2,e_3\}\)) and \texttt{4}
+  (\(\{e_4,e_5,e_6,e_7\}\)) sectors is 6D \(SO(4)\), containing a
+  \textbf{3D pure \(SU(2)\) subgroup that leaves 3-space strictly
+  invariant (max error \texttt{8.327e-17}) while rotating the 4-space as
+  spin-\(1/2\) (\(2\pi\) rotation \(= -I\), error \texttt{5.778e-15})}.
+  Thus \(O_8^{\mathrm{ext}} \otimes O_8^{\mathrm{int}}\) (64 real DOF)
+  accommodates gravity (\texttt{1+3}), electroweak \(SU(2)_L\)/Higgs
+  4-component doublet (outer \texttt{4}), and \(SU(3)_C \times U(1)_Q\)
+  (inner \texttt{2+6}) without overlap.
+\item
+  \textbf{Logarithmic Transform \(O = e^{\ln A + n\theta}\) (Origin of
+  Duality \& Local Curvature Radius \(R\))}: Because \(\mathrm{Tri}\)
+  operates in the multiplicative state space while spacetime and
+  rapidity live in the additive exponent, \(\ln A\) and \(n\theta\) sit
+  side by side, yielding Born's rule \(\cos^2(\theta/2)\) and the
+  Lorentz factor \(\cosh\phi\) as two sections of one identity (error
+  \texttt{2.220e-16}). Re-reading the Part I §6 mass sweep via
+  \(\Delta\phi = \frac{1}{2}\ln(E_{00}/E_{\mathrm{far}})\) and
+  \(R_{\mathrm{loc}}/R_0 = e^{-\Delta\phi}\) shows monotonic shrinking
+  \texttt{1.0000\ \$\textbackslash{}to\$\ 0.8328} for
+  \(\epsilon = 0 \to 0.270\), followed by a discontinuous horizon cut
+  \(R_{\mathrm{loc}}/R_0 \to 0\) at \(\epsilon = 0.275\).
+\item
+  \textbf{Observer-Centered Past Light Cone \& Tidal Splitting}:
+  Interpreting \(n\) not as shared Cartesian \((x,y,z)\) but as
+  sightlines on the observer's own past light cone, the logarithmic past
+  distance \(D_{\log}(A_{\mathrm{obs}}\to B)\) is strictly isotropic in
+  vacuum (\(0.000000 \pm 10^{-16}\), equivalence principle) for any
+  observer, whereas in the presence of mass P4 a distant observer
+  (\(A_{\mathrm{obs}}=1\)) measures a clear \textbf{tidal splitting
+  \(\Delta D_{\mathrm{tidal}} = +0.028615\)} between the radial mass
+  direction (\texttt{-0.006094}) and the six tangential directions
+  (\texttt{-0.034709\ ±\ 5.27e-16}).
+\item
+  \textbf{Resolution Gauge Definition of Visibility}: (a) Defining
+  visibility at \(\tau = 75\) by \(L_3 > \delta_{\mathrm{res}}\) and
+  sweeping \(\delta_{\mathrm{res}}\) across 18 orders of magnitude
+  (\texttt{1e-2} to \texttt{1e-20}) leaves the visible set (64
+  triangles) and weighted view angle
+  \(\langle\rho\rangle_w = 0.7767719701\) invariant to 10 digits
+  (resolution = gauge). (b) Under the \(\mathbb{Z}_2^3\) Walsh--Hadamard
+  low-pass window \(K_{\mathrm{cut}} \in \{0,1,2,3\}\), the minimum
+  resolution required to fully resolve Hurwitz particles
+  \(\mathbb{O}_8, \mathbb{H}_4, \mathbb{C}_2, \mathbb{R}_1\)
+  (codimension \(m=0,1,2,3\)) strictly matches \(K_{\mathrm{cut}} = m\).
+\end{enumerate}
+
+Section 6 cleanly separates the remaining open problems (multi-shell
+\(O_8^{\otimes K}\) continuum limit, \(J_3(\mathbb{O})\) and three
+generations, dynamical electroweak breaking and parity violation,
+\(\alpha \approx 1/137\), two-particle dynamical scattering, and
+dynamical CHSH violation).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Introduction: Three Remaining Dissatisfactions as the
+Motivation
+Chain}\label{introduction-three-remaining-dissatisfactions-as-the-motivation-chain}
+
+In a paper centered on physical readout and interpretation, stating
+conclusions first invites the impression of post-hoc fitting. The
+motivation for Part III is the direct chain of three concrete
+dissatisfactions remaining after Part I {[}P1{]} and Part II {[}P2{]}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Dissatisfaction 1 (Unclosed Spacetime Connection)}: Although
+  Part I §6 derived 4-class metric distortion and critical collapse and
+  Part II connected gravity, EM, QCD, and Dirac matter, our prior work
+  established central projection
+  \(\sum z_n^2 = 0 \mapsto \sum z_n^2 = R^2\) {[}K9, K12{]} and the 8D
+  sign-vector null equation
+  \[x^2 + y^2 + z^2 + (it)^2 = R^2 + Q_1^2 + Q_2^2 + Q_3^2. \tag{1}\]
+  Part I and Part II lacked the explicit bridge explaining how and why
+  the \(\mathrm{Tri}(T)\) state space maps onto
+  \((x, y, z, t, R, Q_1, Q_2, Q_3)\).
+\item
+  \textbf{Dissatisfaction 2 (Missing Resolution Definition of
+  Visibility)}: Part I §2.3 measured the view angle \(\rho = L_3/L_1\)
+  by inspecting all \(64^3\) tensor entries externally. What was missing
+  is the principle from {[}K11, K14{]}: observation is not ``existence
+  vs.~non-existence'' but ``visible vs.~hidden relative to an observer's
+  resolution,'' where resolution is a gauge freedom and the view angle
+  is its invariant.
+\item
+  \textbf{Dissatisfaction 3 (Misreading \(n\) as Shared \(xyz\) and the
+  Role of \texttt{1–7} Octonion Sectors)}: Reading the unit imaginary
+  vector \(n\) in \(O = e^{\ln A + n\theta}\) as shared Cartesian
+  \((x,y,z)\) violates background independence; the apex of the light
+  cone is always the observer, so \(n\) labels sightlines on the
+  observer's \textbf{past light cone (sector coordinates)}. Moreover,
+  when reading \texttt{1–7} as \texttt{(1+3)+(1+3)} or \texttt{1+3+4}
+  inside \(O_8^{\mathrm{ext}} \otimes O_8^{\mathrm{int}}\), the physical
+  role of the extra \texttt{4} components must be identified.
+\end{enumerate}
+
+As in Part II, every claim is explicitly tagged as \textbf{【Known】},
+\textbf{【Part I/II Established】}, \textbf{【Part III Verified】}, or
+\textbf{【Hypothesis / Unverified】}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{2. \texttt{(1+3)+(1+3)} and \texttt{1+3+4}
+Readings of \(O_8\) and the 64D Role
+Table}{2. (1+3)+(1+3) and 1+3+4 Readings of O\_8 and the 64D Role Table}}\label{and-134-readings-of-o_8-and-the-64d-role-table}
+
+\subsubsection{2.1 Split-Octonion Null Balance and 1D/2D/4D
+Projection-Axis Covariance 【Part III Verified
+P3-1】}\label{split-octonion-null-balance-and-1d2d4d-projection-axis-covariance-part-iii-verified-p3-1}
+
+Testing the actual Part I vacuum time crystal \(H = O_8 \otimes M_8\)
+across all seven Fano quaternion subalgebras \(H_4 \subset O_8\) and
+across 1D (\(\mathbb{R}\)), 2D (\(\mathbb{C}\)), and 4D (\(\mathbb{H}\))
+projection axes {[}K9, K13{]} yields:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{All 7 \texttt{(1+3)+(1+3)} splits}:
+  \(|a|^2 = |b|^2 = 0.500000\) with max difference
+  \textbf{\texttt{3.331e-16}} (exact split-octonion null balance).
+\item
+  \textbf{1D/2D/4D projection-axis covariance}: 1D (\(\mathbb{R}\),
+  \(1+7\)) = \texttt{0.125000} (dev \texttt{5.551e-17}), 2D
+  (\(\mathbb{C}\), \(2+6\)) = \texttt{0.250000} (dev
+  \texttt{2.220e-16}), 4D (\(\mathbb{H}\), \(4+4\)) = \texttt{0.500000}
+  (dev \texttt{2.220e-16}).
+\item
+  \textbf{With localized mass P4 (\(\epsilon=0.16, \tau=40\))}:
+  \(|a|^2 = 0.499002\) vs.~\(|b|^2 = 0.499488\) (ratio
+  \texttt{0.999026}, \(\Delta\phi_{ab} = -0.000487\)), reflecting the
+  greater multiplicity of tangential edges (\texttt{+7.2\%}) relative to
+  the central site (\texttt{+32.5\%}).
+\end{itemize}
+
+\subsubsection{\texorpdfstring{2.2 \texttt{1\ +\ 3\ +\ 4} Split of Outer
+\(O_8^{\mathrm{ext}}\): Pure \(SU(2)\) Subgroup 【Part III Verified
+P3-5】}{2.2 1 + 3 + 4 Split of Outer O\_8\^{}\{\textbackslash mathrm\{ext\}\}: Pure SU(2) Subgroup 【Part III Verified P3-5】}}\label{split-of-outer-o_8mathrmext-pure-su2-subgroup-part-iii-verified-p3-5}
+
+A single \(O_8\) (8 real DOF) lacks sufficient degrees of freedom for
+all Standard Model quantum numbers; Dixon and Furey's
+\(\mathbb{C}\otimes\mathbb{H}\otimes\mathbb{O}\) likewise has
+\(2\times 4\times 8 = 64\) real DOF {[}E1, E2{]}. Extracting via SVD the
+subgroup of \(G_2\) (14D) on \(O_8^{\mathrm{ext}}\) that preserves the
+\texttt{3} (\(\{e_1,e_2,e_3\}\)) and \texttt{4}
+(\(\{e_4,e_5,e_6,e_7\}\)) sectors yields:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Block-preserving subgroup}: strictly \textbf{6D
+  \(SO(4) \cong SU(2)_{\mathrm{space}} \times SU(2)_{\mathrm{pure4}}\)}.
+\item
+  \textbf{Pure 4-space subgroup}: \textbf{3D
+  \(SU(2)_{\mathrm{pure4}}\)}, whose action on 3-space
+  \(\{e_1,e_2,e_3\}\) vanishes to \textbf{\texttt{8.327e-17}}.
+\item
+  \textbf{Spin-\(1/2\) doublet transformation}: under a \(2\pi\)
+  rotation by \(SU(2)_{\mathrm{pure4}}\), the 4-space
+  \(\{e_4,e_5,e_6,e_7\}\) flips sign to \(-I\) with error
+  \textbf{\texttt{5.778e-15}}, matching the geometric carrier of
+  \textbf{weak isospin \(SU(2)_L\) / the 4-real-component Higgs doublet}
+  【Hypothesis / Unverified】.
+\end{itemize}
+
+Table 1 (and Fig. 2(b)) summarizes the complete, non-overlapping 64D
+assignment of \(O_8^{\mathrm{ext}} \otimes O_8^{\mathrm{int}}\).
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Sector
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Split
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Exact Symmetry
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Physical DOF / Coordinates
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Status
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Outer \(O_8^{\mathrm{ext}}\)} & \textbf{\texttt{1}} (\(e_0\)) &
+Scalar (\(\ln A\)) & Time reference \(t\), scale, local curvature radius
+\(R\) & 【Part III Verified】+【Hypothesis】 \\
+& \textbf{\texttt{3}} (\(e_1,e_2,e_3\)) & \(SO(3)\) (3D) & Past
+light-cone sightlines \(n\) (\(x,y,z\) readout), gravity tides & 【Part
+I/III Verified】 \\
+& \textbf{\texttt{4}} (\(e_4,e_5,e_6,e_7\)) & \textbf{Pure \(SU(2)\)
+(3D)} & \textbf{Weak isospin \(SU(2)_L\), Higgs 4-comp. doublet,
+spin-\(1/2\)} & 【Part III Verified】+【Hypothesis】 \\
+\textbf{Inner \(O_8^{\mathrm{int}}\)} & \textbf{\texttt{2\ +\ 6}}
+(\(e_7\) fixed) & \textbf{\(SU(3)_C\) (8D) \(\times U(1)_Q\)} &
+\textbf{Strong/EM forces, CAR \texttt{1:3:3:1} charges
+\((Q_1,Q_2,Q_3)\), clock \(M_8\)} & 【Part I/II Established】 \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{3. Logarithmic Transform
+\(O = e^{\ln A + n\theta}\): Origin of Duality and Local Curvature
+Radius
+\(R\)}{3. Logarithmic Transform O = e\^{}\{\textbackslash ln A + n\textbackslash theta\}: Origin of Duality and Local Curvature Radius R}}\label{logarithmic-transform-o-eln-a-ntheta-origin-of-duality-and-local-curvature-radius-r}
+
+\subsubsection{3.1 Multiplicative Dynamics vs.~Additive Spacetime
+【Known】+【Part III Verified
+P3-2】}\label{multiplicative-dynamics-vs.-additive-spacetime-knownpart-iii-verified-p3-2}
+
+Any octonion \(O \in \mathbb{O}\) admits the single-exponent form
+\[O = A\,e^{n\theta} = e^{\ln A + n\theta} \tag{2}\] (round-trip error
+\texttt{1.665e-16}). While \(\mathrm{Tri}(T)\) evolves in the
+\textbf{multiplicative} state space, physical spacetime intervals,
+rapidities, and energies live in the \textbf{additive} exponent
+(\(\ln A + n\theta\)). Because the logarithm places scale
+\(\phi = \ln A\) and phase \(n\theta\) in the same linear space, the
+identity \(|\cosh(w/2)|^2 \pm |\sinh(w/2)|^2 = (\cosh\phi, \cos\theta)\)
+(error \textbf{\texttt{2.220e-16}}) {[}K10{]} renders Born's rule
+(\(\cos^2(\theta/2)\) at \(\phi=0\)) and the Lorentz factor
+(\(\cosh\phi\) at \(\theta=0\)) dual sections related by a \(90^\circ\)
+rotation. Normalization by Frobenius norm corresponds merely to a
+uniform origin shift in \(\ln A\), and a compact bounded state space
+{[}K14{]} maps to an open horizon
+(\(A \to 0 \Rightarrow \ln A \to -\infty\)).
+
+\subsubsection{\texorpdfstring{3.2 Local Curvature Radius
+\(R_{\mathrm{loc}}\) Shrinking and Horizon Cut 【Part III Verified
+P3-2】}{3.2 Local Curvature Radius R\_\{\textbackslash mathrm\{loc\}\} Shrinking and Horizon Cut 【Part III Verified P3-2】}}\label{local-curvature-radius-r_mathrmloc-shrinking-and-horizon-cut-part-iii-verified-p3-2}
+
+Re-reading the Part I §6 mass P4 sweep (\(\tau=40\)) via
+\(\Delta\phi = \frac{1}{2}\ln(E_{00}/E_{\mathrm{far}})\) and
+\(R_{\mathrm{loc}}/R_0 = e^{-\Delta\phi}\) {[}K12{]} yields Table 2 and
+Fig. 1(a).
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Mass amplitude \(\epsilon\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E_{00}/E_{\mathrm{far}}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(\Delta\phi = \frac{1}{2}\ln(E_{00}/E_{\mathrm{far}})\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{\(R_{\mathrm{loc}}/R_0 = e^{-\Delta\phi}\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(\cosh(\Delta\phi)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E_{\mathrm{far}}\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{0.000} & \texttt{1.000000} & \texttt{0.000000} &
+\textbf{\texttt{1.000000}} & \texttt{1.000000} & \texttt{0.015625} \\
+\texttt{0.050} & \texttt{1.047528} & \texttt{+0.023217} &
+\textbf{\texttt{0.977051}} & \texttt{1.000270} & \texttt{0.015495} \\
+\texttt{0.100} & \texttt{1.174017} & \texttt{+0.080216} &
+\textbf{\texttt{0.922917}} & \texttt{1.003219} & \texttt{0.015162} \\
+\texttt{0.160} & \texttt{1.324838} & \texttt{+0.140645} &
+\textbf{\texttt{0.868798}} & \texttt{1.009907} & \texttt{0.014789} \\
+\texttt{0.220} & \texttt{1.400375} & \texttt{+0.168370} &
+\textbf{\texttt{0.845041}} & \texttt{1.014208} & \texttt{0.014686} \\
+\texttt{0.270} & \texttt{1.441867} & \texttt{+0.182969} &
+\textbf{\texttt{0.832794}} & \texttt{1.016786} & \texttt{0.014492} \\
+\textbf{\texttt{0.275}} & \textbf{\(\infty\) (horizon cut)} &
+\textbf{\(+\infty\)} & \textbf{\texttt{0.000000}} & \textbf{\(\infty\)}
+& \textbf{\texttt{0.000e+00}} \\
+\end{longtable}
+}
+
+This directly connects the working hypothesis of {[}K12{]} (``gravity as
+shrinking of the local curvature radius \(R\) and event horizon'') with
+the Part I critical collapse of \(\mathrm{Tri}(T)\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. Observer-Centered Past Light Cone and Tidal Splitting
+【Part III Verified
+P3-3】}\label{observer-centered-past-light-cone-and-tidal-splitting-part-iii-verified-p3-3}
+
+Treating \(n\) as sightlines from an observer site \(A_{\mathrm{obs}}\)
+on its own past light cone, we define the logarithmic past distance to
+site \(B \neq A_{\mathrm{obs}}\) by
+\[D_{\log}(A_{\mathrm{obs}} \to B) \equiv -\frac{1}{2}\ln\!\left(\frac{E_{A_{\mathrm{obs}}, B}}{E_{A_{\mathrm{obs}}, A_{\mathrm{obs}}}}\right). \tag{3}\]
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Vacuum \(H\) (equivalence principle)}: For both
+  \(A_{\mathrm{obs}}=0\) and \(A_{\mathrm{obs}}=1\), all seven
+  directions are strictly isotropic:
+  \(D_{\log} = 0.000000 \pm 8.32\times 10^{-16}\) (and
+  \(\pm 2.29\times 10^{-11}\) at \(A=1\)). Uniform curvature is
+  invisible; the local readout is flat {[}K9{]}.
+\item
+  \textbf{With mass P4 (\(A=0, \epsilon=0.16\))}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Observer on the mass (\(A_{\mathrm{obs}}=0\)): all 7 directions
+    remain strictly spherical
+    (\(D_{\log} = +0.134551 \pm 7.77\times 10^{-16}\)).
+  \item
+    \textbf{Distant observer (\(A_{\mathrm{obs}}=1\))}: the radial mass
+    direction (\(B=0\)) gives \texttt{D\_log\ =\ -0.006094}, whereas the
+    six tangential directions (\(B=2\dots 7\)) give
+    \texttt{D\_log\ =\ -0.034709\ ±\ 5.27e-16}, producing a clear
+    \textbf{tidal splitting \(\Delta D_{\mathrm{tidal}} = +0.028615\)}
+    (Fig. 1(b)).
+  \end{itemize}
+\end{itemize}
+
+This directly verifies the prediction of {[}K9{]} that uniform gravity
+disappears in an observer-centered readout while directional tidal
+distortion survives.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={Part III Verification (1): (a) Local curvature radius shrinking R\_\{\textbackslash mathrm\{loc\}\}/R\_0 = e\^{}\{-\textbackslash Delta\textbackslash phi\} and critical horizon cut via the logarithmic map; (b) Observer-centered past light cone showing vacuum isotropy (equivalence principle) vs.~distant-observer tidal splitting \textbackslash Delta D\_\{\textbackslash mathrm\{tidal\}\} = +0.0286.}]{figs_en/fig_p3_log_curvature_and_tidal_en.png}
+\caption{Part III Verification (1): (a) Local curvature radius shrinking
+\(R_{\mathrm{loc}}/R_0 = e^{-\Delta\phi}\) and critical horizon cut via
+the logarithmic map; (b) Observer-centered past light cone showing
+vacuum isotropy (equivalence principle) vs.~distant-observer tidal
+splitting \(\Delta D_{\mathrm{tidal}} = +0.0286\).}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Resolution-Gauge Definition of Visibility 【Part III
+Verified
+P3-4】}\label{resolution-gauge-definition-of-visibility-part-iii-verified-p3-4}
+
+To replace the external God's-eye view in Part I, we implement two
+resolution filters {[}K11, K14{]} directly on \(\mathrm{Tri}(T)\) states
+(Fig. 2(a)):
+
+\subsubsection{5.1 18-Order Threshold Sweep: Resolution as Gauge, View
+Angle as
+Invariant}\label{order-threshold-sweep-resolution-as-gauge-view-angle-as-invariant}
+
+At \(\tau = 75\) (representative particle component \(i=4, j=0, k=4\)),
+defining visibility by \textbf{\(L_3 > \delta_{\mathrm{res}}\)} and
+sweeping
+\(\delta_{\mathrm{res}} \in \{10^{-2}, 10^{-5}, 10^{-10}, 10^{-20}\}\)
+leaves the visible set strictly at \textbf{64 triangles} and the
+weighted view angle at \textbf{\(\langle\rho\rangle_w = 0.7767719701\)}
+(10-digit invariant). Detached background triangles fall below
+resolution (\texttt{null} {[}K14{]}), confirming that resolution is a
+gauge and the view angle is a gauge invariant {[}K11{]}.
+
+\subsubsection{\texorpdfstring{5.2 \(\mathbb{Z}_2^3\) Harmonic Low-Pass
+Window \(K_{\mathrm{cut}}\) and Hurwitz Visibility
+Boundary}{5.2 \textbackslash mathbb\{Z\}\_2\^{}3 Harmonic Low-Pass Window K\_\{\textbackslash mathrm\{cut\}\} and Hurwitz Visibility Boundary}}\label{mathbbz_23-harmonic-low-pass-window-k_mathrmcut-and-hurwitz-visibility-boundary}
+
+Applying the \(\mathbb{Z}_2^3\) Walsh--Hadamard low-pass window
+\(K_{\mathrm{cut}} \in \{0,1,2,3\}\) to the exact Part I §7 Hurwitz
+4-level probes (\(\epsilon=0.05, \tau=30\)) yields Table 3.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1379}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Hurwitz Particle (codimension \(m\))
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(K_{\mathrm{cut}}=0\) (DC)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(K_{\mathrm{cut}}\le 1\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(K_{\mathrm{cut}}\le 2\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(K_{\mathrm{cut}}\le 3\) (Full)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Full-visibility \(k_{\max}\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\(\mathbb{O}_8\) (\(m=0\): background)} & \texttt{1.000000} &
+\texttt{1.000000} & \texttt{1.000000} & \texttt{1.000000} &
+\textbf{\texttt{0}} \\
+\textbf{\(\mathbb{H}_4\) (\(m=1\): P5)} & \texttt{0.900000} &
+\texttt{1.000000} & \texttt{1.000000} & \texttt{1.000000} &
+\textbf{\texttt{1}} \\
+\textbf{\(\mathbb{C}_2\) (\(m=2\))} & \texttt{0.749250} &
+\texttt{0.916417} & \texttt{1.000000} & \texttt{1.000000} &
+\textbf{\texttt{2}} \\
+\textbf{\(\mathbb{R}_1\) (\(m=3\): P4)} & \texttt{0.556705} &
+\texttt{0.746689} & \texttt{0.936672} & \texttt{1.000000} &
+\textbf{\texttt{3}} \\
+\end{longtable}
+}
+
+The codimension \(m\) strictly equals the minimum resolution window
+\(K_{\mathrm{cut}} = m\) needed to fully resolve each particle; for
+\(K_{\mathrm{cut}} < m\), finer modes (\(k > K_{\mathrm{cut}}\)) remain
+hidden as internal rigid-crystal structure {[}K11{]}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={Part III Verification (2): (a) Hurwitz 4-level particle visibility boundary at K\_\{\textbackslash mathrm\{cut\}\} = m and 18-order threshold invariance of the view angle; (b) Complete 64D readout mapping from O\_8\^{}\{\textbackslash mathrm\{ext\}\} \textbackslash otimes O\_8\^{}\{\textbackslash mathrm\{int\}\} to (x, y, z, t, R, Q\_1, Q\_2, Q\_3) and SU(2)\_L.}]{figs_en/fig_p3_resolution_gauge_and_mapping_en.png}
+\caption{Part III Verification (2): (a) Hurwitz 4-level particle
+visibility boundary at \(K_{\mathrm{cut}} = m\) and 18-order threshold
+invariance of the view angle; (b) Complete 64D readout mapping from
+\(O_8^{\mathrm{ext}} \otimes O_8^{\mathrm{int}}\) to
+\((x, y, z, t, R, Q_1, Q_2, Q_3)\) and \(SU(2)_L\).}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Clean Separation of Remaining Open
+Problems}\label{clean-separation-of-remaining-open-problems}
+
+The following essential problems remain \textbf{【Hypothesis /
+Unverified】} and are explicitly deferred to subsequent work:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Multi-shell \(O_8^{\otimes K}\) continuum limit}: Deriving
+  \(1/r\) Newtonian gravity, \(1/r^2\) Coulomb force, light-cone
+  propagation speed \(c\), Einstein's field equations, and cumulative
+  gravitational time dilation \(g_{00}(r)\) by interpreting nested
+  shells \(O_8^{\otimes K}\) as concentric depths of the past light
+  cone.
+\item
+  \textbf{Dynamical electroweak breaking and maximal parity violation}:
+  Dynamically coupling the outer pure \(SU(2)\) (4-space) with the inner
+  \(M_8\) chiral asymmetry (\texttt{-1.41\%}), left-handed weak
+  selection, and \(W/Z\) mass generation.
+\item
+  \textbf{Three generations, precision mass ratios, and coupling
+  constants}: Connecting the exceptional Jordan algebra
+  \(J_3(\mathbb{O})\) {[}E3{]} or \(O_8^{\otimes K}\) nesting to three
+  fermion generations, exact lepton/quark mass ratios, and
+  first-principles derivation of \(\alpha \approx 1/137.036\) and
+  \(\alpha_s\).
+\item
+  \textbf{Dynamical scattering and multi-body quantum correlations}:
+  Two-particle attractive/repulsive scattering, electron--photon
+  scattering, and dynamical CHSH Bell inequality violation.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. Reproducibility and Published
+Files}\label{reproducibility-and-published-files}
+
+\begin{itemize}
+\tightlist
+\item
+  Verification script:
+  \texttt{tri\_loop\_spacetime\_log\_resolution\_bridge\_v0.py}
+  (deterministic, \textasciitilde23 s)
+\item
+  Numerical log:
+  \texttt{results/tri\_loop\_spacetime\_log\_resolution\_bridge\_v0.txt}
+\item
+  Figure script: \texttt{plot\_part3\_figures\_v0.py}
+\item
+  Figures:
+  \texttt{results/fig\_p3\_log\_curvature\_and\_tidal\_\{ja,en\}.png},
+  \texttt{results/fig\_p3\_resolution\_gauge\_and\_mapping\_\{ja,en\}.png}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+\subsubsection{A. Self-Citations}\label{a.-self-citations}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}P1{]}} N. Kihara, \emph{Spontaneous Emergence of Quantum,
+  Gauge, Gravitational, and Fermionic Structures from the 3D
+  Triangle-Loop Product (Unified Full Paper, Part I)}, Zenodo
+  (2026-11-28), Concept DOI: \texttt{10.5281/zenodo.24622200}.
+\item
+  \textbf{{[}P2{]}} N. Kihara, \emph{Unified Connection Hypothesis for
+  Gravity, Electromagnetism, QCD, and Dirac Matter in the 3D
+  Triangle-Loop Product (Part II)}, Zenodo (2026-11-28), Concept DOI:
+  \texttt{10.5281/zenodo.24622565}.
+\item
+  \textbf{{[}K9{]}} N. Kihara, \emph{Relational Readout of Quaternions
+  and Inflation as Crystallization}, Zenodo (2026-10-21), Concept DOI:
+  \texttt{10.5281/zenodo.23523237}.
+\item
+  \textbf{{[}K10{]}} N. Kihara, \emph{Did We Properly Understand Complex
+  Numbers?}, Zenodo (2026-10-23), Concept DOI:
+  \texttt{10.5281/zenodo.23585436}.
+\item
+  \textbf{{[}K11{]}} N. Kihara, \emph{Observer Resolution Is a Gauge},
+  Zenodo (2026-11-10), Concept DOI: \texttt{10.5281/zenodo.24097611}.
+\item
+  \textbf{{[}K12{]}} N. Kihara, \emph{Emergence of Spacetime and
+  Elementary Particles from a Bounded Hilbert Space and Octonions},
+  Zenodo (2026-11-16), Concept DOI: \texttt{10.5281/zenodo.24267347}.
+\item
+  \textbf{{[}K13{]}} N. Kihara, \emph{Projection-Axis Selection and
+  Covariance of Conservation Laws}, Zenodo (2026-11-16), Concept DOI:
+  \texttt{10.5281/zenodo.24273723}.
+\item
+  \textbf{{[}K14{]}} N. Kihara, \emph{The Coin-and-Cup Thought
+  Experiment}, Zenodo (2026-11-26), Concept DOI:
+  \texttt{10.5281/zenodo.24562867}.
+\end{itemize}
+
+\subsubsection{B. External Primary
+Literature}\label{b.-external-primary-literature}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}E1{]}} G. M. Dixon, \emph{Division Algebras: Octonions,
+  Quaternions, Complex Numbers and the Algebraic Design of Physics},
+  Kluwer Academic Publishers (1994).
+\item
+  \textbf{{[}E2{]}} C. Furey,
+  \emph{\(SU(3)_C \times SU(2)_L \times U(1)_Y (\times U(1)_X)\) as a
+  symmetry of division algebraic ladder operators}, Eur. Phys. J. C
+  \textbf{78}, 375 (2018), arXiv:1806.00612.
+\item
+  \textbf{{[}E3{]}} J. C. Baez, \emph{The Octonions}, Bull. Amer. Math.
+  Soc. \textbf{39}(2), 145--205 (2002), arXiv:math/0105155.
+\item
+  \textbf{{[}E4{]}} S. Coleman and J. Mandula, \emph{All Possible
+  Symmetries of the \(S\) Matrix}, Phys. Rev.~\textbf{159}(5),
+  1251--1256 (1967).
+\end{itemize}
+
+\end{document}
