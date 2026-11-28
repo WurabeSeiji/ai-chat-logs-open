@@ -1,0 +1,505 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{luatexja}
+\usepackage{xurl}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Supercooled Time-Crystal Background{,} Probe Selection{,} and Four-Stage Doubling Entanglement Phase Transitions in the 3D Triangle-Loop Product (Second Rapid Communication)},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Supercooled Time-Crystal Background, Probe Selection, and
+Four-Stage Doubling Entanglement Phase Transitions in the 3D
+Triangle-Loop Product (Second Rapid Communication)}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{― Self-Repair, Dressed-Cloud Formation, and 3-Axis
+Condensation Revealed by Exact τ = 10,000 Tracking of N = 64 (O8 $\otimes$ O8)
+―}
+\author{Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020}
+\date{November 28, 2026 Version DOI 10.5281/zenodo.24618400}
+
+\ltjsetparameter{jacharrange={-2,-3}}
+\begin{document}
+\maketitle
+
+\textbf{Author:} Noriaki Kihara (WF System Co., Ltd.)\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Date:} November 28, 2026\\
+\textbf{Version DOI:} 10.5281/zenodo.24618400\\
+\textbf{First Rapid Communication:} Zenodo Concept DOI
+\texttt{10.5281/\allowbreak{}zenodo.24614040} (Version DOI
+\texttt{10.5281/\allowbreak{}zenodo.24614041})\\
+\textbf{Repository (all scripts, raw data, figures):}
+\url{https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/\%E6\%AC\%A1\%E5\%85\%83\%E3\%81\%AE\%E7\%94\%9F\%E6\%88\%90\%E6\%A7\%8B\%E9\%80\%A0/\%E4\%B8\%89\%E6\%AC\%A1\%E5\%85\%83\%E6\%AD\%A3\%E6\%96\%B9\%E9\%85\%8D\%E5\%88\%97\%E3\%81\%AE\%E7\%A9\%8D\%E3\%81\%A8\%E8\%87\%AA\%E5\%B7\%B1\%E7\%84\%A1\%E6\%92\%9E\%E7\%9D\%80\_20261127}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+In our first rapid communication, we introduced the
+\textbf{triangle-loop product}
+\(\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r} T_{ipq} T_{qjr} T_{rpk}\) on
+cubic arrays without background spacetime, external operators, division,
+or randomness, showing that only quaternions (\(N=4\)) and octonions
+(\(N=8\)) survive as period-2 crystals and that a single-cell defect in
+the coupled large crystal \(N=64\) (\(O_8 \otimes O_8\), 262,144
+entries) yields a 512-cell composite remnant with bimodal view-angle
+splitting.
+
+In this second rapid communication, we dissect the 512-cell state and
+extend exact full-\(64^3\) tracking up to update step \(\tau = 10,000\).
+We discover that \textbf{the 512-cell state is not an end state but a
+supercooled time-crystal intermediate phase}, followed by
+spin/localization-selective probe interactions, a reheating-like burst,
+and a \textbf{four-stage doubling entanglement cascade}. Our four main
+exact findings (zero randomness, full code open) are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Exact Anatomy \& Self-Repair of the 512-Cell State}: Singular
+  value decomposition (SVD) proves \(H = O_8 \otimes M_8\) to 7 digits
+  (\(\sigma_1 = 1.0000000, \sigma_2 = 2.58\times 10^{-7}\)): an intact
+  outer octonionic skeleton \(O_8\) tensored with an inner pure
+  complex-scalar rotation pair \(c_0 I + c_y(i\sigma_y)\) (spin-2
+  components \(\sigma_x, \sigma_z \sim 10^{-16}\)). Internal triangle
+  view-angle ratios \(\rho = L_3/L_1\) (effective couplings) are
+  quantized into exactly 7 discrete values. The state repels a \(+0.1\)
+  shock in the zero background to \(10^{-165}\) in 5 steps and heals an
+  internal 1-cell hole (\texttt{=\ 0}) back to 512 cells in a single
+  step.
+\item
+  \textbf{Four-Way Probe Branching \& Dressed-Cloud Formation}:
+  Introducing probes into the \(i,k\)-shared channel (\(H^2 P\)
+  cross-coupling, 99--100\% contribution) produces four distinct
+  responses: (i) a global complex rotation wave coexists with 5-digit
+  energy invariance; (ii) a null/chiral wave
+  (\(\sum P^2 = 0,\; I+\sigma_y\)) is absorbed while triggering an exact
+  \(2\times\) norm transition of \(H\) itself
+  (\(\|P\|: 0.0469 \to 0.0938\)); (iii) a spin-2 (\(\sigma_x\)) wave
+  absorbs \(>10\times\) energy from \(H\) and locks into period-2; (iv)
+  localized condensates (1-site or \(H_4\)) survive as stable bound
+  states by clothing themselves with a ``dressed cloud''
+  (\(E_{\mathrm{oth}}\)) across \(O_8\) (\(1:1\) core-to-cloud ratio for
+  \(H_4\); strong transient slowdown for the 1-site condensate).
+\item
+  \textbf{Four-Stage Doubling Entanglement Transitions up to
+  \(\tau = 10,000\) \& Two Exact Theorems}: Seeding the outer \(O_8\)
+  zero sector triggers a universal doubling cascade in both Case 1
+  (local real seed) and Case 2 (global \(10^{-16}\) seed, passing
+  through a reheating-like burst
+  \texttt{nz:\ 512\ \$\textbackslash{}to\$\ 3,072\ \$\textbackslash{}to\$\ 1,560}
+  and a \textasciitilde5,000-step Layer 3 plateau):
+  \(\text{rank } 1\;(1.0) \to \text{rank } 2\;(\frac{1}{\sqrt{2}}\times 2,\; \|P\|\times 2) \to \text{rank } 4\;(\frac{1}{2}\times 4,\; \|P\|\times 2,\; d_1 = 0)\),
+  terminating at a static fixed point. We prove analytically that Layer
+  3 is a single-complex-structure lock
+  \(U = \frac{1}{\sqrt{2}}(u\otimes v + Ju\otimes(-Jv))\), and Layer 4
+  is a rank-1 triple outer product \(U_{ijk} = a_i b_j c_k\)
+  (\(\|P\| = (\mathbf{a}\cdot\mathbf{c})^2 = 0.999534\)) whose vectors
+  form Bell pairs \(\frac{1}{\sqrt{2}}(|0,4\rangle + |1,5\rangle)\),
+  explaining the exact \(0.5 \times 4\) degeneracy.
+\item
+  \textbf{Spontaneous 3-Axis Condensation}: In the final static fixed
+  point of Case 2 (\(\tau = 10,000\), \texttt{nz\ =\ 2,534},
+  \(d_1 = 0\)), the outer real axis \(A=0\) vanishes to \texttt{0.04\%},
+  while exactly \textbf{three imaginary axes} (\(A = 4, 2, 7\)) capture
+  \textbf{84.84\%} of the total energy.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Introduction and
+Notation}\label{introduction-and-notation}
+
+Following our first rapid communication (DOI
+\texttt{10.5281/\allowbreak{}zenodo.24614040}), we study the background-free
+self-updating map on a cubic array
+\(U \in \mathbb{R}^{N\times N\times N}\) (or
+\(\mathbb{C}^{N\times N\times N}\)):
+\[P_{ijk} = \mathrm{Tri}(U)_{ijk} = \sum_{p,q,r=0}^{N-1} U_{ipq}\, U_{qjr}\, U_{rpk}, \qquad U^{(\tau+1)} = \frac{\mathrm{Tri}(U^{(\tau)})}{\|\mathrm{Tri}(U^{(\tau)})\|_F}.\]
+To distinguish iteration count from emergent physical time \(t\), we
+denote the update step strictly by \textbf{\(\tau\)} throughout this
+report.
+
+Previously, a single real defect \texttt{(0,1,0)\ +\ 1e-4} in \(N = 64\)
+(\(O_8 \otimes O_8\)) stabilized into a 512-cell composite remnant over
+\(\tau = 70\text{--}500\). Here we answer three open questions: (1) What
+is the exact algebraic structure and self-repair mechanism of this
+512-cell state? (2) How does it interact with nearby probes of different
+spin, chirality, and localization? (3) Does the 512-cell state undergo
+further phase transitions at larger \(\tau\)?
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Exact Anatomy, Discrete Couplings, and Self-Repair of the
+512-Cell
+State}\label{exact-anatomy-discrete-couplings-and-self-repair-of-the-512-cell-state}
+
+\subsubsection{\texorpdfstring{2.1 Exact Tensor Product
+\(H = O_8 \otimes M_8\) and 3-Level Energy Hierarchy
+{[}Verified{]}}{2.1 Exact Tensor Product H = O\_8 \textbackslash otimes M\_8 and 3-Level Energy Hierarchy {[}Verified{]}}}\label{exact-tensor-product-h-o_8-otimes-m_8-and-3-level-energy-hierarchy-verified}
+
+Reshaping \(H = U^{(200)}\) (\(\|P\| = 0.04687271\)) into a
+\(512\times 512\) matrix separating outer \((A,B,C)\) and inner
+\((a,b,c)\) indices (\(i = 8A+a\)) yields SVD singular values
+\(\sigma_1 = 1.00000000,\; \sigma_2 = 2.58\times 10^{-7},\; \sigma_{3\dots} = 0\)
+(\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}512melt\_\allowbreak{}anatomy\_\allowbreak{}v0.py}). - \textbf{Outer
+\(O_8\) (64 cells)}: Identical to the octonion multiplication table
+(\(d(\text{outer}, O_8) = 0.000\)), with \(i \leftrightarrow k\)
+transpose split \(1/8\) symmetric (real unit) and \(7/8\) antisymmetric
+(\(G_2\)-invariant 3-form). - \textbf{Inner \(M_8\) (8 cells)}:
+Supported on \(a,c \in \{4,5\},\; b \in \{0,1\}\). Pauli decomposition
+\(M_b = c_0 I + c_x \sigma_x + c_y(i\sigma_y) + c_z \sigma_z\) gives
+\(c_x, c_z \sim 10^{-16}\) (exact zero spin-2 anisotropy), leaving a
+pure complex-scalar pair (\(\|M_0\| = 0.796036,\; \|M_1\| = 0.605249\))
+that preserves \(\|M_1\|/\|M_0\| = 0.760329\) and
+\(\theta_1 - \theta_0 = +0.586^\circ\) while rotating on \(S^1\). -
+\textbf{Exact 3-level energy hierarchy}: \(E_{a=4,5} = 1/24 = 0.041667\)
+(16 nodes), \(E_{a=0} = \|M_0\|^2/24 = 0.026403\) (8 nodes), and
+\(E_{a=1} = \|M_1\|^2/24 = 0.015264\) (8 nodes).
+
+\subsubsection{\texorpdfstring{2.2 Quantized Internal Couplings \(\rho\)
+and Self-Repair
+{[}Verified{]}}{2.2 Quantized Internal Couplings \textbackslash rho and Self-Repair {[}Verified{]}}}\label{quantized-internal-couplings-rho-and-self-repair-verified}
+
+All 64 contributing triangles per active entry have view-angle ratios
+\(\rho = L_3/L_1\) quantized to exactly \textbf{7 discrete values}
+(\(1.0000\) {[}8{]}, \(0.7646\) {[}4{]}, \(0.7463\) {[}4{]}, \(0.7268\)
+{[}4{]}, \(0.5558\) {[}16{]}, \(0.5424\) {[}16{]}, \(0.4147\) {[}12{]}).
+Secondary perturbation tests over 100 steps show remarkable self-repair:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Test
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Secondary Perturbation on \(H = U^{(200)}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Outcome (100 steps)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{(A1)(A2)} & Background zero cell \texttt{(0,0,0)} \(+10^{-3}\) /
+\textbf{\(+0.1\) shock} & Even \(+0.1\) is expelled to
+\texttt{out\_\allowbreak{}E\ =\ 4.3e-165} in 5 steps; \textbf{exact recovery} \\
+\textbf{(B1)(B2)} & Internal 1-cell perturbation \texttt{(4,0,4)}
+\(+10^{-4}, +10^{-2}\) & \texttt{nz\ =\ 512} preserved; \(\sigma_2\)
+decays by \(>50\%\) and stabilizes \\
+\textbf{(C)} & Internal \textbf{1-cell complete hole}
+\texttt{(4,0,4)\ =\ 0} & \textbf{Hole heals in 1 step}
+(\texttt{nz\ =\ 512}); \(\sigma_2\) heals
+\(3.27\times 10^{-2} \to 9.58\times 10^{-3}\) \\
+\textbf{(D)(E)} & SVD reconstruction global rounding seed
+(\texttt{out\_E\ \textasciitilde{}\ 4.9e-32}) & Local shocks heal, but a
+global \(10^{-16}\) seed grows exponentially into Layer 2--4 (Sec. 4) \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. Four-Way Probe Selection and Dressed-Cloud
+Formation}\label{four-way-probe-selection-and-dressed-cloud-formation}
+
+Placing probes \(P\) (initial energy \(E_P \approx 0.0099\)) in the
+\(i,k\)-shared channel (\(b \in \{2,3\}\)) activates \(H^2 P\)
+cross-triangles (99--100\% contribution), producing four sharply
+separated regimes (\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}higgs\_\allowbreak{}probe\_\allowbreak{}v0.py}, Fig.
+2).
+
+\begin{figure}
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={Fig. 2: Spin \& localization selection and dressed-cloud formation by the 512-cell time-crystal background H}]{figs_en/fig_r2_probe_branching_en.png}
+\caption{Fig. 2: Spin \& localization selection and dressed-cloud
+formation by the 512-cell time-crystal background H}
+\end{figure}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Probe Type
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Shared Axes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+State at \(\tau = 50\) (\(E_H / E_P / E_{\mathrm{oth}}\))
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\rho_{\mathrm{cross}}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Dynamical Outcome
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{P1, P2} (Null / complex wave) & \(j\) only & \(E_P = 0.00000\)
+(\texttt{nz=512}) & \texttt{0.0000} & Expelled in 1--2 steps
+(decoupled) \\
+\textbf{P3a} (Global complex wave \(O_8\otimes M_8\)) & \(i, k\) &
+\textbf{\texttt{E\_\allowbreak{}P\ =\ 0.00990} invariant} (\texttt{nz=1024}) &
+\texttt{0.47–0.98} (99\%) & \textbf{Exact 5-digit coexistence} \\
+\textbf{P3b, P6} (Null/chiral \(\sum P^2=0,\; I+\sigma_y\)) & \(i, k\) &
+\(E_P \to 0\) (\(\tau=10\), \texttt{nz=512}) & \(0.77 \to 0.00\) &
+\textbf{Absorbed; triggers exact \(2\times\) norm jump of \(H\)
+(\(\|P\|: 0.0469 \to 0.0938\))} \\
+\textbf{P3c} (Spin-2 \(\sigma_x\) wave) & \(i, k\) &
+\textbf{\(E_P: 0.00990 \to 0.10553\) (\(>10\times\))} (\texttt{nz=768})
+& \texttt{0.18–0.98} (89--99\%) & \textbf{Absorbs energy from \(H\)} and
+locks into period-2 (\(d_1 = 0.661\)) \\
+\textbf{P4} (Local 1-site \(\delta_{000}\otimes M_8\)) & \(i, k\) &
+\(E_P=0.00014,\; E_{\mathrm{oth}}=0.00083\) (\texttt{nz=576}) &
+\texttt{0.22–1.00} (100\%) & \textbf{Dressed bound state}; solo
+\(d_1=0.904\) slows sharply to \(0.12\) at \(\tau=2\text{--}10\) \\
+\textbf{P5} (Local \(H_4\otimes M_8\) condensate) & \(i, k\) &
+\textbf{\(E_P=0.00250,\; E_{\mathrm{oth}}=0.00250\)} (\texttt{nz=768}) &
+\texttt{0.64–0.98} (99\%) & \textbf{Exact \(1:1\) core-to-cloud bound
+state}, stable through \(\tau = 50\) \\
+\end{longtable}
+}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{4. Four-Stage Doubling Entanglement Phase
+Transitions up to
+\(\tau = 10,000\)}{4. Four-Stage Doubling Entanglement Phase Transitions up to \textbackslash tau = 10,000}}\label{four-stage-doubling-entanglement-phase-transitions-up-to-tau-10000}
+
+Because the outer \(O_8\) zero entries in \(H = O_8 \otimes M_8\) were
+trapped at exact numerical zero, \(H\) was a supercooled metastable
+state. Seeding the outer \(O_8\) zero sector in three cases and sweeping
+full \(64^3\) dynamics to \(\tau = 10,000\) reveals a universal
+four-stage cascade
+(\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}second\_\allowbreak{}phase\_\allowbreak{}transition\_\allowbreak{}v0.py},
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}tau10000\_\allowbreak{}sweep\_\allowbreak{}v0.py}, Fig. 1).
+
+\begin{figure}
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={Fig. 1: Four-stage doubling entanglement phase transitions from the supercooled 512-cell state in N = 64 (O8 $\otimes$ O8)}]{figs_en/fig_r2_four_stage_cascade_en.png}
+\caption{Fig. 1: Four-stage doubling entanglement phase transitions from
+the supercooled 512-cell state in N = 64 (O8 $\otimes$ O8)}
+\end{figure}
+
+\subsubsection{4.1 Universal Four-Stage Cascade
+{[}Verified{]}}\label{universal-four-stage-cascade-verified}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Stage
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Case 1 (Outer \(O_8\) real seed \texttt{+1e-4})
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Case 2 (Global \texttt{\textasciitilde{}1e-16} seed)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Case 3 (Outer \(O_8\) imag seed \texttt{+1e-4j})
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+SVD Singular Values (Case 1 \& 2)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Layer 1} (Supercooled) & \(\tau=0\): \texttt{nz=520},
+\(\|P\|=0.0469\) & \(\tau=0\text{--}73\): \texttt{nz=512},
+\(\|P\|=0.0469\) & \(\tau=0\): \texttt{nz=520}, \(\|P\|=0.0469\) &
+\texttt{1.0} (rank 1) \\
+\textbf{Layer 2} (Melt / Burst) & \(\tau=26\text{--}48\):
+\texttt{nz=64}, \(\|P\|=0.2409\) & \(\tau=74\text{--}123\):
+\texttt{nz=512\$\textbackslash{}to\$3,072\$\textbackslash{}to\$1,560} &
+\(\tau=30\text{--}100\): \texttt{nz=64}, \(\|P\|=0.4438\),
+\(|\sum U^2|\sim 10^{-9}\) & \texttt{1.0} (rank 1) \\
+\textbf{Layer 3} (Single-Clock Lock) & \(\tau=53\text{--}800\):
+\texttt{nz=64}, \(\|P\|=0.4817\) (\(\times 2\)) &
+\textbf{\(\tau=124\text{--}5,000\)} (\textasciitilde5,000 steps):
+\texttt{nz=1,560}, \(\|P\|=0.4310\) & \(\tau=150\text{--}250\):
+\texttt{nz=64}, \(\|P\|=0.8875\) (\(\times 2\)), \(d_1=0\),
+\(|\sum U^2|\sim 10^{-17}\) & \textbf{\texttt{0.7071\ ×\ 2}}
+(\(\frac{1}{\sqrt{2}}\), rank 2) \\
+\textbf{Layer 4} (Static Fixed Point) & \textbf{\(\tau=928\to 10,000\)}:
+\texttt{nz=64}, \(N_{\mathrm{eff}}=8.02\),
+\textbf{\texttt{\textbackslash{}\textbar{}P\textbackslash{}\textbar{}=0.9995}}
+(\(\times 2\)), \(d_1=0\) & \textbf{\(\tau=6,541\to 10,000\)}:
+\texttt{nz=2,534}, \(N_{\mathrm{eff}}=24.81\),
+\textbf{\texttt{\textbackslash{}\textbar{}P\textbackslash{}\textbar{}=0.8655}}
+(\(\times 2\)), \(d_1=0\) & (Reached static null fixed point at Layer 3)
+& \textbf{\texttt{0.5000\ ×\ 4}} (\(\frac{1}{2}\), 4-fold) \\
+\end{longtable}
+}
+
+In Case 2 at \(\tau = 10,000\) (Fig. 1d), the outer real axis \(A=0\)
+drops to \texttt{0.04\%}, while \textbf{three imaginary axes}
+(\(A=4: 30.96\%,\; A=2: 28.24\%,\; A=7: 25.64\%\)) capture
+\textbf{84.84\%} of total energy (and inner axes reduce strictly to
+\texttt{a\ =\ 0,\ 1,\ 4,\ 5}).
+
+\subsubsection{4.2 Exact Analytical Theorems for Layers 3 and 4
+{[}Verified{]}}\label{exact-analytical-theorems-for-layers-3-and-4-verified}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Theorem 1 (Layer 3: Single-Complex-Structure Lock)}: SVD of
+  Case 1 at \(\tau = 80, 81, 82\) shows
+  \[U_{\text{Layer 3}} = \frac{1}{\sqrt{2}}\Bigl( u \otimes v + (J u) \otimes (-J v) \Bigr), \qquad J = \begin{pmatrix} 0 & -1 \\ 1 & 0 \end{pmatrix}.\]
+  Under
+  \(\mathbb{C}_{\mathrm{outer}} \otimes_{\mathbb{R}} \mathbb{C}_{\mathrm{inner}} \cong \mathbb{C}_{+} \oplus \mathbb{C}_{-}\),
+  selecting solely the phase-locked sector
+  (\(i_{\mathrm{outer}} = -i_{\mathrm{inner}}\)) doubles \(\|P\|\)
+  exactly (\(0.2409 \to 0.4817\)), freezing the outer skeleton \(u\)
+  while inner \(v\) rotates as a single unified clock.
+\item
+  \textbf{Theorem 2 (Layer 4: Rank-1 Triple Outer Product \(\times\)
+  Internal Bell Pairs)}: Gram matrices \(G_i, G_j, G_k\) of the \(4^3\)
+  active block in Case 1 (\(\tau = 1,000\),
+  \texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}layer4\_\allowbreak{}anatomy\_\allowbreak{}v0.py}) all have eigenvalues
+  \texttt{{[}1.0,\ 0,\ 0,\ 0{]}}, proving
+  \[U_{\text{Layer 4}}[i, j, k] = a_i b_j c_k \quad (\|\mathbf{a}\|=\|\mathbf{b}\|=\|\mathbf{c}\|=1)\]
+  \[\implies \quad \mathrm{Tri}(U)_{ijk} = \|\mathbf{b}\|^2(\mathbf{a}\cdot\mathbf{c})^2 U_{ijk}.\]
+  The measured inner product \(\mathbf{a}\cdot\mathbf{c} = 0.999767\)
+  gives \((\mathbf{a}\cdot\mathbf{c})^2 = 0.999534\), matching
+  \(\|P\| = 0.999533\) to 6 digits and forcing \(d_1 = 0\). Moreover,
+  both \(\mathbf{a}\) and \(\mathbf{c}\) form Bell states
+  \(\frac{1}{\sqrt{2}}(|0,4\rangle + |1,5\rangle)\) across outer
+  \(A\in\{0,1\}\) and inner \(a\in\{4,5\}\), so their tensor product
+  yields the exact 4-fold degenerate SVD spectrum
+  \(\left(\frac{1}{2}, \frac{1}{2}, \frac{1}{2}, \frac{1}{2}\right)\).
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Physical Interpretation (Working Hypotheses) and Open
+Problems}\label{physical-interpretation-working-hypotheses-and-open-problems}
+
+We clearly separate the exact numerical/analytical results above from
+our working physical hypotheses: 1. \textbf{Time-Crystal Background \&
+Dressed States}: Layer 1 (\(H = O_8 \otimes M_8\)) acts as a dynamical
+time-crystal vacuum where spatial skeleton (\(O_8\)) and complex phase
+clock (\(M_8\)) remain unseparated, endowing localized condensates with
+a dressed cloud (\(E_{\mathrm{oth}}\)) and transient slowdown. 2.
+\textbf{Reheating-Like Burst \& Spontaneous Entanglement}: The
+\texttt{nz:\ 512\ \$\textbackslash{}to\$\ 3,072\ \$\textbackslash{}to\$\ 1,560}
+excitation upon exiting the supercooled Layer 1 resembles
+post-inflationary reheating, while the \(2\times\) norm advantage
+dynamically selects maximal entanglement (rank \(1 \to 2 \to 4\))
+without imposing quantum entanglement externally. 3.
+\textbf{Limitations}: Quantitative derivation of isotropic 3D
+Euclidean/Lorentzian geometry (\(SO(3)\) / \(SO(3,1)\)) from the 3-axis
+84.8\% condensation in Case 2, and quantitative connection to Standard
+Model or General Relativity constants, remain open problems.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Reproducibility (Zero
+Randomness)}\label{reproducibility-zero-randomness}
+
+All results and figures are reproduced deterministically with standard
+Python 3 (NumPy, Matplotlib) via: 1.
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}512melt\_\allowbreak{}anatomy\_\allowbreak{}v0.py} 2.
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}higgs\_\allowbreak{}probe\_\allowbreak{}v0.py} 3.
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}second\_\allowbreak{}phase\_\allowbreak{}transition\_\allowbreak{}v0.py} 4.
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}tau10000\_\allowbreak{}sweep\_\allowbreak{}v0.py} 5.
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}layer4\_\allowbreak{}anatomy\_\allowbreak{}v0.py},
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}probe\_\allowbreak{}data\_\allowbreak{}v0.py},
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}case2\_\allowbreak{}data\_\allowbreak{}v0.py} 6.
+\texttt{plot\_\allowbreak{}second\_\allowbreak{}report\_\allowbreak{}figures\_\allowbreak{}v0.py}
+
+\end{document}
