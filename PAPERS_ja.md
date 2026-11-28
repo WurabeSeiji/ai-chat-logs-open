@@ -4,7 +4,7 @@
 全論文は Zenodo で CC BY 4.0 公開。各行：題名（日本語 / 英語）・Version DOI・Concept DOI・公開日・版・PDF・リポジトリ内フォルダ・リリースノート。
 本ファイルは `tools/gen_paper_index.py` により Zenodo API から自動生成。English: [PAPERS_en.md](PAPERS_en.md) / Scholar 用ページ: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**論文数: 173**
+**論文数: 174**
 
 ## グノモン正写像による4次元時空の幾何学的定式化 / Central Projection Framework (Gnomonic Spacetime Geometry)
 
@@ -609,6 +609,10 @@
    Two-Particle Dynamical Scattering, Gauge-Mediated Interactions, and Dynamical CHSH Bell Violation in the 3D Triangle-Loop Product (Part VI)  
    DOI [10.5281/zenodo.24628298](https://doi.org/10.5281/zenodo.24628298) · Concept [10.5281/zenodo.24628297](https://doi.org/10.5281/zenodo.24628297) · 2026-11-28 · v1.0 · [PDF en](https://zenodo.org/records/24628298/files/triangle_loop_two_particle_scattering_chsh_part6_en.pdf) [PDF ja](https://zenodo.org/records/24628298/files/%E4%B8%89%E6%AC%A1%E5%85%83%E6%AD%A3%E6%96%B9%E9%85%8D%E5%88%97%E3%81%AE%E4%B8%89%E8%A7%92%E5%BD%A2%E3%83%AB%E3%83%BC%E3%83%97%E7%A9%8D%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B2%E7%B2%92%E5%AD%90%E5%8B%95%E7%9A%84%E6%95%A3%E4%B9%B1%E3%81%A8CHSH%E3%83%99%E3%83%AB%E4%B8%8D%E7%AD%89%E5%BC%8F%E3%81%AE%E5%8B%95%E7%9A%84%E7%A0%B4%E3%82%8C_Part6.pdf)  
    フォルダ: [次元の生成構造/三次元正方配列の積と自己無撞着_20261127](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E4%B8%89%E6%AC%A1%E5%85%83%E6%AD%A3%E6%96%B9%E9%85%8D%E5%88%97%E3%81%AE%E7%A9%8D%E3%81%A8%E8%87%AA%E5%B7%B1%E7%84%A1%E6%92%9E%E7%9D%80_20261127) · [リリースノート](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_triangle_loop_part6_scattering_chsh_v1.md)
+58. **三次元正方配列の三角形ループ積における例外ジョルダン代数 J_3(O) 結晶、3 世代トライアリティ、および素の結合定数幾何統一（Part VII）**  
+   Exceptional Jordan Algebra J_3(O) Crystal, Three-Generation Triality, and Bare Gauge Unification in the 3D Triangle-Loop Product (Part VII)  
+   DOI [10.5281/zenodo.24628777](https://doi.org/10.5281/zenodo.24628777) · Concept [10.5281/zenodo.24628776](https://doi.org/10.5281/zenodo.24628776) · 2026-11-28 · v1.0 · [PDF en](https://zenodo.org/records/24628777/files/triangle_loop_jordan_three_generations_part7_en.pdf) [PDF ja](https://zenodo.org/records/24628777/files/%E4%B8%89%E6%AC%A1%E5%85%83%E6%AD%A3%E6%96%B9%E9%85%8D%E5%88%97%E3%81%AE%E4%B8%89%E8%A7%92%E5%BD%A2%E3%83%AB%E3%83%BC%E3%83%97%E7%A9%8D%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E4%BE%8B%E5%A4%96%E3%82%B8%E3%83%A7%E3%83%AB%E3%83%80%E3%83%B3%E4%BB%A3%E6%95%B0J3O%E3%81%A83%E4%B8%96%E4%BB%A3%E6%A7%8B%E9%80%A0_Part7.pdf)  
+   フォルダ: [次元の生成構造/三次元正方配列の積と自己無撞着_20261127](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E4%B8%89%E6%AC%A1%E5%85%83%E6%AD%A3%E6%96%B9%E9%85%8D%E5%88%97%E3%81%AE%E7%A9%8D%E3%81%A8%E8%87%AA%E5%B7%B1%E7%84%A1%E6%92%9E%E7%9D%80_20261127) · [リリースノート](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_triangle_loop_part7_jordan_generations_v1.md)
 
 ## 時間軸Q軸とフェルミオンの生成構造 / Time Axis, Q Axis, and Fermion Generation
 

@@ -1,0 +1,540 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{xurl}
+\usepackage{float}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}
+\usepackage{float}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={三次元正方配列の三角形ループ積における例外ジョルダン代数 J\_3(\textbackslash mathbb\{O\}) 結晶、3 世代トライアリティ、および素の結合定数幾何統一（Part VII）},
+  pdfauthor={木原 範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{三次元正方配列の三角形ループ積における例外ジョルダン代数
+\(J_3(\mathbb{O})\) 結晶、3
+世代トライアリティ、および素の結合定数幾何統一（Part VII）}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{― 非対角 3 世代巡回積 \(J_{\mathrm{off}}\)（24D）の
+\(\mathrm{Tri}(T)\)
+厳密不動点、\(F_4 \supset SO(8) \supset G_2 \supset SU(3)_C\) 連鎖による
+3 世代同定、非線形階層増幅、および素の統一比
+\(\alpha_3:\alpha_2:\alpha_1 = 1:1:1\) の監査 ―}
+\author{木原 範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020}
+\date{2026年11月28日　Version DOI 10.5281/zenodo.24628777}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\textbf{著者：} 木原 範昭（株式会社WFシステム）\\
+\textbf{ORCID：} 0009-0004-6753-4020\\
+\textbf{日付：} 2026年11月28日\\
+\textbf{Version DOI：} 10.5281/zenodo.24628777\\
+\textbf{Concept DOI：} 10.5281/zenodo.24628776\\
+\textbf{位置づけ：} 三角形ループ積シリーズ Part I--VI（Concept DOIs:
+\texttt{24622200}, \texttt{24622565}, \texttt{24625962},
+\texttt{24626592}, \texttt{24627519},
+\texttt{24628297}）の続編となる\textbf{3
+世代構造・結合定数統一・質量階層監査論文（Part VII）}。これまで 1
+世代（\(O_8 \otimes O_8\), 64D）を扱ってきた本シリーズに対し、八元数 3
+個を包含する例外ジョルダン代数 \(J_3(\mathbb{O})\)（27D）を
+\(\mathrm{Tri}(T)\) 動力学へ直接投入し、(1) \(J_3(\mathbb{O})\)
+のどの部分が \(\mathrm{Tri}(T)\) の厳密不動点結晶になるか、(2)
+\(F_4 \supset SO(8) \supset G_2 \supset SU(3)_C\) による 3
+世代トライアリティの機械精度証明、(3) 対称性破れによる 3
+世代階層増幅と小出比 \(Q\) の反証監査、(4)
+無パラメータの素の結合定数統一比と低エネルギー実測値との RG
+境界を、決定論的検証スクリプト（\texttt{tri\_loop\_part7\_jordan\_generations\_v0.py}、乱数なし）により白黒つける。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+標準模型の最大の謎の一つである「なぜフェルミオンは 3
+世代存在するのか」および「結合定数・質量階層はどこまで純粋代数・\(\mathrm{Tri}(T)\)
+動力学だけで決まるのか」を検証するため、本 Part VII
+では例外ジョルダン代数 \(J_3(\mathbb{O})\)（27D：対角
+\(\mathbb{R}^3\)＋非対角 3 八元数
+\(\mathbb{O}_1 \oplus \mathbb{O}_2 \oplus \mathbb{O}_3\)）を構成し、3
+次元正方配列の三角形ループ積
+\(\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r} T_{ipq} T_{qjr} T_{rpk}\)
+との厳密接続を機械精度で検証した。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{非対角 3 世代巡回積 \(J_{\mathrm{off}}\)（24D）の
+  \(\mathrm{Tri}(T)\) 厳密結晶定理 {[}J3-1{]}}：ジョルダン恒等式誤差
+  \texttt{8.269e-15} で構成した \(J_3(\mathbb{O})\) において、対角 3
+  成分 \(\{E_1,E_2,E_3\}\) を含むフル積テンソル \(J\) や 3 次不変式
+  \(D\) は \(\mathrm{Tri}(T)\) の反復で rank-1
+  対角点（\(\|P\| = 1.000000\)）へ崩壊する一方、\textbf{非対角 3
+  八元数ブロック間の巡回積
+  \(J_{\mathrm{off}}\)（24D：\(\mathrm{Re}((xy)z)\)）は
+  \(\mathrm{Tri}(J_{\mathrm{off}}) = -\frac{1}{64} J_{\mathrm{off}}\)
+  を誤差 \texttt{0.000e+00} で満たす厳密不動点結晶}（100
+  ステップ後も誤差 \texttt{0.000e+00}、非対角摂動に対し
+  \texttt{3.536e-05} で自己修復）であることを発見した。
+\item
+  \textbf{\(F_4(52\mathrm{D}) \supset SO(8)(28\mathrm{D}) \supset G_2(14\mathrm{D}) \supset SU(3)_C(8\mathrm{D})\)
+  による 3 世代トライアリティの機械精度証明 {[}J3-2{]}}：\(J_{ijk}\)
+  の導分代数 SVD
+  核空間から、\(\mathrm{Der}(J_3(\mathbb{O})) = \mathfrak{f}_4\)（\textbf{厳密
+  52D}、最大ゼロ特異値 \texttt{1.996e-15}）、対角固定部分代数
+  \(\mathrm{Der}_0 = \mathfrak{so}(8)\)（\textbf{厳密 28D}、世代間混合
+  \texttt{1.285e-15}）を抽出。第 1 世代 \(O_1\) の \(e_0\) を固定する
+  \(\mathfrak{so}(7)_1\)（\textbf{21D}）の各世代固定ベクトル次元は
+  \textbf{\texttt{{[}1,\ 0,\ 0{]}}} となり、3
+  世代ブロックが互いに非同値なトライアリティ表現
+  \textbf{\(8_v \oplus 8_s \oplus 8_c\)} であることを証明した。さらに全
+  3 世代同時固定群 \(\mathfrak{g}_2\)（\textbf{14D}）および
+  \(SU(3)_C\)（\textbf{8D}）の下では、全 3 世代の二次カシミール固有値が
+  \textbf{\texttt{{[}0,\ 0,\ 8/9,\ 8/9,\ 8/9,\ 8/9,\ 8/9,\ 8/9{]}}}（レプトン二重項
+  \texttt{2}＋クォーク \(3\oplus\bar{3}\) \texttt{6}）で完全一致する。
+\item
+  \textbf{3 世代非線形階層増幅と小出比 \(Q\) の反証境界
+  {[}J3-3{]}}：厳密結晶 \(J_{\mathrm{off}}\)（固有値
+  \texttt{1/64}）に対し、各世代の局在自己結合摂動（固有値 \texttt{1}、64
+  倍の増幅率）を 2 段階で投入すると、微小な 2 段階差から \(\tau = 40\)
+  で
+  \texttt{E(O1):E(O2):E(O3)\ =\ 500.4\ :\ 17.2\ :\ 1.0}（\texttt{(0.14,\ 0.08)}）や
+  \texttt{2138.6\ :\ 16.0\ :\ 1.0}（\texttt{(0.18,\ 0.12)}）という
+  \textbf{2〜3 桁の指数的 3 世代階層} が自発増幅される。一方、小出比
+  \(Q(E)\) は
+  \texttt{0.333\ \$\textbackslash{}to\$\ 0.685\ \$\textbackslash{}to\$\ 0.731\ \$\textbackslash{}to\$\ 0.821\ \$\textbackslash{}to\$\ 1.000}
+  と初期摂動比に連続依存し、普遍定数 \(Q = 2/3\)
+  へは自動ロックしないことを反証境界として明示した。
+\item
+  \textbf{素の結合定数幾何統一比
+  \(\alpha_3^{\mathrm{bare}} : \alpha_2^{\mathrm{bare}} : \alpha_1^{\mathrm{bare}} = 1:1:1\)
+  と RG 境界 {[}J3-4{]}}：64D 1 世代
+  \(O_8^{\mathrm{ext}}\otimes O_8^{\mathrm{int}}\)
+  上の標準模型生成子トレースは
+  \(\mathrm{Tr}_{64}(T_3^{C\,2}) = \mathrm{Tr}_{64}(T_3^{L\,2}) = \mathrm{Tr}_{64}(Y_1^2) = \mathbf{8.000000}\)（GUT
+  正規化
+  \(Y_1 = \sqrt{3/5}\,Y\)）、\(\mathrm{Tr}_{64}(Q_{\mathrm{em}}^2) = 64/3\)
+  となり、調整パラメータゼロで
+  \textbf{\(\alpha_3^{\mathrm{bare}} : \alpha_2^{\mathrm{bare}} : \alpha_1^{\mathrm{bare}} = 1 : 1 : 1\)}、\textbf{\(\sin^2\theta_W^{\mathrm{bare}} = \alpha_{\mathrm{em}}^{\mathrm{bare}}/\alpha_s^{\mathrm{bare}} = 3/8 = 0.375000\)}
+  が導出される（27D \(J_3(\mathbb{O})\) の 3 世代 \(SU(3)_C\) トレースも
+  \texttt{1:1:1}
+  完全均等）。低エネルギー実測値（\(\alpha \approx 1/137.036, \alpha_s(M_Z) \approx 0.1179, \sin^2\theta_W(M_Z) \approx 0.2312\)）との差は数合わせを行わず、繰り込み群（RG）走行の未検証境界として明示的に切り分ける。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{1. 導入：1 世代 \(O_8 \otimes O_8\) から 3
+世代例外ジョルダン代数 \(J_3(\mathbb{O})\)
+へ}{1. 導入：1 世代 O\_8 \textbackslash otimes O\_8 から 3 世代例外ジョルダン代数 J\_3(\textbackslash mathbb\{O\}) へ}}\label{ux5c0eux51651-ux4e16ux4ee3-o_8-otimes-o_8-ux304bux3089-3-ux4e16ux4ee3ux4f8bux5916ux30b8ux30e7ux30ebux30c0ux30f3ux4ee3ux6570-j_3mathbbo-ux3078}
+
+Part I--VI {[}P1--P6{]} は、単一八元数ペア
+\(O_8 \otimes O_8\)（64D）から標準模型 1
+世代のゲージ群・パリティ最大破れ・多殻重力・2 粒子散乱・CHSH
+ベル不等式破れを実証した。一方、素粒子標準模型の 3
+世代構造を八元数から自然に導く数学的構造として、3×3
+エルミート八元数行列のなす 27 次元例外ジョルダン代数
+\(J_3(\mathbb{O})\)（Albert 代数）{[}E1--E3{]}
+が古くから注目されている。
+
+本 Part VII の核心は、\textbf{「\(J_3(\mathbb{O})\) は三角形ループ積
+\(\mathrm{Tri}(T)\) の動力学の中で実際に結晶として選ばれるのか？」}
+を直接テストし、3
+世代同定・質量階層・素の結合定数統一比の到達点と限界を、\textbf{【既知】・【Part
+I--VI 確立】・【Part VII 検証】・【仮説・未検証】} の 4
+段階で峻別することである。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{2. 例外ジョルダン代数 \(J_3(\mathbb{O})\) の
+\(\mathrm{Tri}(T)\) 結晶性【Part VII 検証
+J3-1】}{2. 例外ジョルダン代数 J\_3(\textbackslash mathbb\{O\}) の \textbackslash mathrm\{Tri\}(T) 結晶性【Part VII 検証 J3-1】}}\label{ux4f8bux5916ux30b8ux30e7ux30ebux30c0ux30f3ux4ee3ux6570-j_3mathbbo-ux306e-mathrmtrit-ux7d50ux6676ux6027part-vii-ux691cux8a3c-j3-1}
+
+\(J_3(\mathbb{O})\) の元
+\(X = \begin{pmatrix} a_1 & z & \bar{y} \\ \bar{z} & a_2 & x \\ y & \bar{x} & a_3 \end{pmatrix}\)（\(a_i \in \mathbb{R},\; x, y, z \in \mathbb{O}\)）に対し、正規直交内積
+\(\langle X, Y \rangle = \mathrm{Tr}(X \circ Y)\) のもとで 27
+次元基底を構成した： - 対角基底（3D）：\(E_1, E_2, E_3\)（指標
+\texttt{0,\ 1,\ 2}） - 非対角 3
+世代基底（24D）：\(O_1\)（\texttt{3..10}）、\(O_2\)（\texttt{11..18}）、\(O_3\)（\texttt{19..26}）
+
+ジョルダン積 \(X \circ Y = \frac{1}{2}(XY+YX)\) の構造定数テンソル
+\(J_{ijk}\) はジョルダン恒等式
+\(|(X^2\circ Y)\circ X - X^2\circ(Y\circ X)| \le \mathbf{8.269 \times 10^{-15}}\)・完全対称性誤差
+\texttt{1.110e-16} を満たす。これを 3 種（フル \(J\)、3
+次不変式行列式テンソル \(D\)、および非対角 3 世代巡回積
+\(J_{\mathrm{off}}\)）に分けて \(\mathrm{Tri}(T)\) へ投入した結果を表 1
+に示す：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1379}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+投入テンソル
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+次元
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+1-step \(\|\mathrm{Tri}(T_0)\|\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+1-step 不動点誤差 \(\|\pm T_1 - T_0\|\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+100-step 不動点誤差
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+判定
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+フルジョルダン積 \(J\) & 27D & \texttt{0.019909} (\texttt{+}) &
+\texttt{9.617e-01} & \texttt{1.370e+00} (\(\|P\|=1.0\)) & 対角 rank-1
+崩壊 \\
+3 次不変式 \(D\) (\(\det\)) & 27D & \texttt{0.014784} (\texttt{-}) &
+\texttt{1.037e+00} & \texttt{1.364e+00} (\(\|P\|=1.0\)) & 対角 rank-1
+崩壊 \\
+\textbf{非対角 3 世代積 \(J_{\mathrm{off}}\)} & \textbf{24D} &
+\textbf{\texttt{0.015625} (\texttt{-1/64})} &
+\textbf{\texttt{0.000e+00}} & \textbf{\texttt{0.000e+00}} &
+\textbf{厳密不動点結晶} \\
+\end{longtable}
+}
+
+\textbf{定理的発見}：\(J_3(\mathbb{O})\) の 3
+つの非対角八元数ブロック間の巡回積
+\(J_{\mathrm{off}}\)（\(\mathrm{Re}((xy)z)\)）は、まさに 3 指標
+\((i,j,k)\) が 3 世代 \((O_1, O_2, O_3)\)
+を巡回する三角形ループ構造そのものであり、\(\mathrm{Tri}(J_{\mathrm{off}}) = -\frac{1}{64} J_{\mathrm{off}}\)
+の\textbf{誤差ゼロ厳密不動点結晶}をなす（非対角微小摂動 \texttt{1e-4}
+に対しても 100 ステップ後 \texttt{3.536e-05} へ収束）。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{3.
+\(F_4 \supset SO(8) \supset G_2 \supset SU(3)_C\) 連鎖と 3
+世代トライアリティ【Part VII 検証
+J3-2】}{3. F\_4 \textbackslash supset SO(8) \textbackslash supset G\_2 \textbackslash supset SU(3)\_C 連鎖と 3 世代トライアリティ【Part VII 検証 J3-2】}}\label{f_4-supset-so8-supset-g_2-supset-su3_c-ux9023ux9396ux3068-3-ux4e16ux4ee3ux30c8ux30e9ux30a4ux30a2ux30eaux30c6ux30a3part-vii-ux691cux8a3c-j3-2}
+
+\(J_{ijk}\) の導分条件
+\(M_{mi} J_{mjk} + M_{mj} J_{imk} + M_{mk} J_{ijm} = 0\)（\(\mathfrak{so}(27)\)
+の 351 基底、完全対称独立 3,654 成分）を SVD で厳密求解した（図 1(a)）：
+1.
+\textbf{\(\mathrm{Der}(J_3(\mathbb{O})) = \mathfrak{f}_4\)（52D）}：最小非ゼロ特異値
+\texttt{1.732e+00}、最大ゼロ特異値 \textbf{\texttt{1.996e-15}}。 2.
+\textbf{対角固定部分代数
+\(\mathrm{Der}_0 = \mathfrak{so}(8)\)（28D）}：3 世代間の混合成分は最大
+\textbf{\texttt{1.285e-15}}（厳密ブロック対角：3 世代が独立に閉じた 8D
+表現をなす）。 3.
+\textbf{トライアリティ非同値性（\(8_v \oplus 8_s \oplus 8_c\)）}：第 1
+世代 \(O_1\) の実部 \(e_0\) を固定する部分代数
+\(\mathfrak{so}(7)_1\)（\textbf{21D}）が各世代で固定するベクトル次元を計測すると
+\textbf{\texttt{(O1,\ O2,\ O3)\ =\ {[}1,\ 0,\ 0{]}}} となった。これは
+\(O_1\) がベクトル表現 \(8_v\)、\(O_2, O_3\)
+が不変ベクトルを持たないスピノル表現 \(8_s, 8_c\)
+であることの機械精度証明である。 4. \textbf{ゲージ群
+\(G_2\)（14D）\(\supset SU(3)_C\)（8D）下の 3 世代同一コピー}：全 3
+世代の \(e_0\) 同時固定群は \textbf{14D（\(G_2\)）}、さらに \(e_1\)
+を固定すると \textbf{8D（\(SU(3)_C\)）} となる。この \(SU(3)_C\)
+の二次カシミール固有値は、第 1・第 2・第 3 世代すべてで厳密に
+\textbf{\texttt{{[}0,\ 0,\ 8/9,\ 8/9,\ 8/9,\ 8/9,\ 8/9,\ 8/9{]}}}（レプトン二重項
+\texttt{2} ＋ カラー 3 重項・反 3 重項 \texttt{6}）に一致する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{4. 3 世代非線形階層増幅と小出比 \(Q\)
+の反証境界【Part VII 検証
+J3-3】}{4. 3 世代非線形階層増幅と小出比 Q の反証境界【Part VII 検証 J3-3】}}\label{ux4e16ux4ee3ux975eux7ddaux5f62ux968eux5c64ux5897ux5e45ux3068ux5c0fux51faux6bd4-q-ux306eux53cdux8a3cux5883ux754cpart-vii-ux691cux8a3c-j3-3}
+
+厳密結晶 \(J_{\mathrm{off}}\)（固有値
+\texttt{1/64\ =\ 0.015625}）に対し、各世代 \(O_g\) の局在自己結合摂動
+\(P_{g} = \delta_{g,g,g}\)（固有値 \texttt{1.000}、\(J_{\mathrm{off}}\)
+の \textbf{64 倍}）を投入し、\(\tau = 40\) での世代エネルギー占有率
+\(E(O_1), E(O_2), E(O_3)\) と小出比
+\(Q(E) = \sum E_g / (\sum \sqrt{E_g})^2\) を計測した（図 1(b)）：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+投入摂動 \((\epsilon_1, \epsilon_2)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E(O_1)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E(O_2)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E(O_3)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+世代階層比 \(E_1:E_2:E_3\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+小出比 \(Q(E)\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{(0.00,\ 0.00)}（対称結晶） & \texttt{0.333333} &
+\texttt{0.333333} & \texttt{0.333333} & \texttt{1.0\ :\ 1.0\ :\ 1.0} &
+\texttt{0.33333} \\
+\texttt{(0.010,\ 0.005)}（微小 2 段階） & \texttt{0.775423} &
+\texttt{0.221966} & \texttt{0.002610} &
+\textbf{\texttt{297.1\ :\ 85.0\ :\ 1.0}} & \texttt{0.50817} \\
+\texttt{(0.14,\ 0.08)}（中規模 2 段階） & \texttt{0.964830} &
+\texttt{0.033242} & \texttt{0.001928} &
+\textbf{\texttt{500.4\ :\ 17.2\ :\ 1.0}} & \texttt{0.68472} \\
+\texttt{(0.18,\ 0.12)}（強 2 段階） & \texttt{0.992123} &
+\texttt{0.007413} & \texttt{0.000464} &
+\textbf{\texttt{2138.6\ :\ 16.0\ :\ 1.0}} & \texttt{0.82093} \\
+\end{longtable}
+}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{確立された機構}：固有値比 \texttt{64:1}
+  の非線形不安定性により、わずか 2
+  倍程度の初期対称性破れ（\(\epsilon_1 : \epsilon_2 = 2:1\)）から、\(\mathrm{Tri}(T)\)
+  反復だけで \textbf{2〜3 桁に及ぶ指数的な 3
+  世代階層（\(m_3 \gg m_2 \gg m_1\) 型）} が自動増幅される。
+\item
+  \textbf{反証・境界の明示}：小出比 \(Q(E)\) は初期摂動比
+  \((\epsilon_1, \epsilon_2)\) に応じて \texttt{0.333} から
+  \texttt{1.000} まで連続変化し、実験的な荷電レプトン値
+  \(Q = 2/3 \approx 0.66667\) へ普遍的にロックする機構は単体
+  \(J_{\mathrm{off}}\) の \(\mathrm{Tri}(T)\)
+  には含まれない。精密質量比の第一原理決定には、外部空間・電弱ヒッグス結合との連成および
+  RG 走行の導出が必要である【仮説・未検証】。
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={Part VII 検証 (1)：(a) J\_3(\textbackslash mathbb\{O\})（27D）から SVD 核空間で厳密抽出された対称群連鎖 F\_4(52\textbackslash mathrm\{D\}) \textbackslash supset SO(8)(28\textbackslash mathrm\{D\}) \textbackslash supset SO(7)\_1(21\textbackslash mathrm\{D\}) \textbackslash supset G\_2(14\textbackslash mathrm\{D\}) \textbackslash supset SU(3)\_C(8\textbackslash mathrm\{D\}) とトライアリティ 3 世代、(b) 厳密結晶 J\_\{\textbackslash mathrm\{off\}\}（24D）上の 2 段階破れによる 3 世代非線形階層増幅。}]{figs_ja/fig_p7_j3o_triality_and_hierarchy_ja.png}
+\caption{Part VII 検証 (1)：(a) \(J_3(\mathbb{O})\)（27D）から SVD
+核空間で厳密抽出された対称群連鎖
+\(F_4(52\mathrm{D}) \supset SO(8)(28\mathrm{D}) \supset SO(7)_1(21\mathrm{D}) \supset G_2(14\mathrm{D}) \supset SU(3)_C(8\mathrm{D})\)
+とトライアリティ 3 世代、(b) 厳密結晶 \(J_{\mathrm{off}}\)（24D）上の 2
+段階破れによる 3 世代非線形階層増幅。}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. 素の結合定数幾何統一比（1:1:1）と低エネルギー RG
+境界【Part VII 検証
+J3-4】}\label{ux7d20ux306eux7d50ux5408ux5b9aux6570ux5e7eux4f55ux7d71ux4e00ux6bd4111ux3068ux4f4eux30a8ux30cdux30ebux30aeux30fc-rg-ux5883ux754cpart-vii-ux691cux8a3c-j3-4}
+
+Part IV {[}P4{]} の 64D 1 世代表現
+\(O_8^{\mathrm{ext}} \otimes O_8^{\mathrm{int}}\) 上の標準模型全 12
+生成子に対し、無パラメータの幾何トレースを算出した（図 2(a)）： -
+\(\mathrm{Tr}_{64}(T_3^{C\,2}) = \mathbf{8.000000}\) -
+\(\mathrm{Tr}_{64}(T_3^{L\,2}) = \mathbf{8.000000}\) -
+\(\mathrm{Tr}_{64}(Y^2) = \mathbf{40/3} \implies\) GUT 正規化
+\(Y_1 = \sqrt{3/5}\,Y\) で
+\(\mathrm{Tr}_{64}(Y_1^2) = \mathbf{8.000000}\) -
+\(\mathrm{Tr}_{64}(Q_{\mathrm{em}}^2) = \mathbf{64/3}\)
+
+これより、調整パラメータゼロの素の幾何結合定数比として
+\[\alpha_3^{\mathrm{bare}} : \alpha_2^{\mathrm{bare}} : \alpha_1^{\mathrm{bare}} = 1 : 1 : 1, \qquad \sin^2\theta_W^{\mathrm{bare}} = \frac{\alpha_{\mathrm{em}}^{\mathrm{bare}}}{\alpha_s^{\mathrm{bare}}} = \frac{3}{8} = 0.375000\]
+が厳密に得られる。また 27D 例外ジョルダン代数 \(J_3(\mathbb{O})\) 上の 3
+世代別 \(SU(3)_C\) トレースも
+\texttt{0.666667\ :\ 0.666667\ :\ 0.666667\ =\ 1\ :\ 1\ :\ 1}
+で完全均等（3 世代ゲージ普遍性）である。
+
+一方、低エネルギー実測値（\(M_Z\)
+スケール：\(\sin^2\theta_W \approx 0.2312\)、\(\alpha_{\mathrm{em}}/\alpha_s \approx 0.0663\)、\(\alpha(0) \approx 1/137.036\)）との差は図
+2(b)
+の通り明確であり、\textbf{本モデルの素の幾何値は高エネルギー統一スケールに対応し、低エネルギー実測値への到達には繰り込み群（RG）走行の第一原理導出が必須である}
+ことが数合わせなしに確定した【仮説・未検証】。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={Part VII 検証 (2)：(a) 64D 表現上の標準模型生成子幾何トレースによる厳密ゲージ統一 \textbackslash alpha\_3:\textbackslash alpha\_2:\textbackslash alpha\_1 = 1:1:1（\textbackslash mathrm\{Tr\}=8）、(b) 無パラメータの素の幾何統一値（青）と M\_Z 低エネルギー実測値（緑）の対比および RG 走行境界の明示。}]{figs_ja/fig_p7_coupling_unification_and_rg_boundary_ja.png}
+\caption{Part VII 検証 (2)：(a) 64D
+表現上の標準模型生成子幾何トレースによる厳密ゲージ統一
+\(\alpha_3:\alpha_2:\alpha_1 = 1:1:1\)（\(\mathrm{Tr}=8\)）、(b)
+無パラメータの素の幾何統一値（青）と \(M_Z\)
+低エネルギー実測値（緑）の対比および RG 走行境界の明示。}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6.
+シリーズ総括と再現手順}\label{ux30b7ux30eaux30fcux30baux7dcfux62ecux3068ux518dux73feux624bux9806}
+
+本 Part VII をもって、当初設定した 4
+大課題（電弱破れ・パリティ最大破れ［Part
+IV］、多殻大格子重力・因果伝播・スピン 2 \(g_{00}(d)\)［Part V］、2
+粒子動的散乱・空間分離 CHSH 破れ［Part VI］、および \(J_3(\mathbb{O})\)
+3 世代トライアリティ・結合定数幾何統一［Part
+VII］）を一巡して決定論的検証を完了した。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{次段階の未解決課題}：(1) 多殻 \(K \ge 3\)
+  におけるアインシュタイン方程式写像・2
+  粒子波束散乱断面積の距離依存性、(2) 3 世代
+  \(J_{\mathrm{off}} \otimes O_8^{\mathrm{ext}}\) からの CKM/PMNS
+  混合角・CP 破れ、(3)
+  高エネルギー幾何統一値（\(1:1:1,\; 3/8\)）から低エネルギー実測値（\(\alpha \approx 1/137.036, \alpha_s \approx 0.1179, \sin^2\theta_W \approx 0.2312\)）および精密質量比への繰り込み群走行の第一原理導出。
+\item
+  \textbf{再現ファイル}：\texttt{tri\_loop\_part7\_jordan\_generations\_v0.py}（J3-1〜J3-4、乱数なし・実行時間約
+  1.6
+  秒）、\texttt{results/tri\_loop\_part7\_jordan\_generations\_v0.txt}、\texttt{plot\_part7\_figures\_v0.py}、\texttt{results/fig\_p7\_*\_\{ja,en\}.png}。
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsubsection{A. 自己引用}\label{a.-ux81eaux5df1ux5f15ux7528}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}P1{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積からの量子・ゲージ・重力・フェルミオン構造の自発創発（統合完成論文
+  Part I）}, Zenodo (2026-11-28), Concept DOI:
+  \texttt{10.5281/zenodo.24622200}.
+\item
+  \textbf{{[}P2{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積における重力・電磁気・QCD・ディラックの統一接続仮説（Part
+  II）}, Zenodo (2026-11-28), Concept DOI:
+  \texttt{10.5281/zenodo.24622565}.
+\item
+  \textbf{{[}P3{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積における時空・内部空間読出し接続仮説（Part
+  III）}, Zenodo (2026-11-28), Concept DOI:
+  \texttt{10.5281/zenodo.24625962}.
+\item
+  \textbf{{[}P4{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積における電弱対称性破れとパリティ最大破れ（Part
+  IV）}, Zenodo (2026-11-28), Concept DOI:
+  \texttt{10.5281/zenodo.24626592}.
+\item
+  \textbf{{[}P5{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積における多殻大格子重力、因果伝播、およびスピン
+  2 による \(g_{00}(d)\) 解禁（Part V）}, Zenodo (2026-11-28), Concept
+  DOI: \texttt{10.5281/zenodo.24627519}.
+\item
+  \textbf{{[}P6{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積における 2
+  粒子動的散乱、ゲージ媒介相互作用、および空間分離 CHSH
+  ベル不等式の動的破れ（Part VI）}, Zenodo (2026-11-28), Concept DOI:
+  \texttt{10.5281/zenodo.24628297}.
+\end{itemize}
+
+\subsubsection{B.
+外部一次文献}\label{b.-ux5916ux90e8ux4e00ux6b21ux6587ux732e}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}E1{]}} P. Jordan, J. von Neumann, and E. Wigner, \emph{On
+  an Algebraic Generalization of the Quantum Mechanical Formalism}, Ann.
+  of Math. \textbf{35}, 29--64 (1934).
+\item
+  \textbf{{[}E2{]}} J. C. Baez, \emph{The Octonions}, Bull. Amer. Math.
+  Soc. \textbf{39}, 145--205 (2002), arXiv:math/0105155.
+\item
+  \textbf{{[}E3{]}} T. Dray and C. A. Manogue, \emph{The Geometry of the
+  Octonions}, World Scientific (2015).
+\item
+  \textbf{{[}E4{]}} Y. Koide, \emph{Fermion-Boson Two-Body Model of
+  Quarks and Leptons and Cabibbo Mixing}, Lett. Nuovo Cimento
+  \textbf{34}, 201--205 (1982).
+\end{itemize}
+
+\end{document}

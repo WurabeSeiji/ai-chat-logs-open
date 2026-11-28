@@ -1,0 +1,501 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{luatexja}
+\usepackage{xurl}
+\usepackage{float}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}
+\usepackage{float}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Exceptional Jordan Algebra J\_3(\textbackslash mathbb\{O\}) Crystal{,} Three-Generation Triality{,} and Bare Gauge Unification in the 3D Triangle-Loop Product (Part VII)},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Exceptional Jordan Algebra \(J_3(\mathbb{O})\) Crystal,
+Three-Generation Triality, and Bare Gauge Unification in the 3D
+Triangle-Loop Product (Part VII)}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{― Exact \(\mathrm{Tri}(T)\) Fixed-Point Crystal
+\(J_{\mathrm{off}}\) (24D),
+\(F_4 \supset SO(8) \supset G_2 \supset SU(3)_C\) Three-Generation
+Proof, Nonlinear Hierarchy Amplification, and Parameter-Free
+\(\alpha_3:\alpha_2:\alpha_1 = 1:1:1\) Audit ―}
+\author{Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020}
+\date{November 28, 2026 Version DOI 10.5281/zenodo.24628777}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\textbf{Author:} Noriaki Kihara (WF System Co., Ltd.)\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Date:} November 28, 2026\\
+\textbf{Version DOI:} 10.5281/zenodo.24628777\\
+\textbf{Concept DOI:} 10.5281/zenodo.24628776\\
+\textbf{Positioning:} Part VII of the 3D triangle-loop product series
+(sequel to Parts I--VI, Concept DOIs \texttt{24622200},
+\texttt{24622565}, \texttt{24625962}, \texttt{24626592},
+\texttt{24627519}, \texttt{24628297}). Extending the one-generation
+\(O_8 \otimes O_8\) (64D) framework to the 27-dimensional exceptional
+Jordan algebra \(J_3(\mathbb{O})\), we deterministically verify without
+random numbers (\texttt{tri\_loop\_part7\_jordan\_generations\_v0.py}):
+(1) exact \(\mathrm{Tri}(T)\) crystallinity of the off-diagonal
+three-generation cyclic product \(J_{\mathrm{off}}\) (24D), (2)
+machine-precision \(F_4 \supset SO(8) \supset G_2 \supset SU(3)_C\)
+three-generation triality, (3) nonlinear 3-generation hierarchy
+amplification and Koide-ratio falsification boundary, and (4)
+parameter-free bare gauge unification
+(\(\alpha_3:\alpha_2:\alpha_1 = 1:1:1\)) vs.~the low-energy RG boundary.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+To test how far three-generation fermion structure, mass hierarchies,
+and gauge coupling ratios follow directly from the 3D triangle-loop
+product \(\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r} T_{ipq} T_{qjr} T_{rpk}\)
+without ad-hoc fitting, we construct the 27-dimensional exceptional
+Jordan algebra
+\(J_3(\mathbb{O}) = \mathbb{R}^3 \oplus \mathbb{O}_1 \oplus \mathbb{O}_2 \oplus \mathbb{O}_3\)
+and establish four machine-precision results:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Exact \(\mathrm{Tri}(T)\) fixed-point theorem for the
+  off-diagonal 3-generation cyclic product \(J_{\mathrm{off}}\) (24D)
+  {[}J3-1{]}}: Constructed with Jordan identity error
+  \texttt{8.269e-15}, the full Jordan product \(J\) and cubic
+  determinant tensor \(D\) collapse under \(\mathrm{Tri}(T)\) to rank-1
+  diagonal states (\(\|P\| = 1.000000\)). By contrast, the
+  \textbf{off-diagonal three-octonion cyclic product
+  \(J_{\mathrm{off}}\) (24D, \(\mathrm{Re}((xy)z)\)) satisfies
+  \(\mathrm{Tri}(J_{\mathrm{off}}) = -\frac{1}{64} J_{\mathrm{off}}\)
+  with exact residual \texttt{0.000e+00}} (preserved identically at 100
+  steps and self-healing to \texttt{3.536e-05} under off-diagonal
+  perturbations).
+\item
+  \textbf{Machine-precision proof of three-generation triality via
+  \(F_4(52\mathrm{D}) \supset SO(8)(28\mathrm{D}) \supset G_2(14\mathrm{D}) \supset SU(3)_C(8\mathrm{D})\)
+  {[}J3-2{]}}: SVD null-space extraction on \(J_{ijk}\) yields
+  \(\mathrm{Der}(J_3(\mathbb{O})) = \mathfrak{f}_4\) (\textbf{52D}, max
+  zero singular value \texttt{1.996e-15}) and the diagonal-fixing
+  subalgebra \(\mathrm{Der}_0 = \mathfrak{so}(8)\) (\textbf{28D},
+  inter-generation mixing \texttt{1.285e-15}). The
+  \(\mathfrak{so}(7)_1\) (\textbf{21D}) subalgebra fixing
+  \(e_0 \in O_1\) has fixed-vector dimensions
+  \textbf{\texttt{{[}1,\ 0,\ 0{]}}} across \((O_1, O_2, O_3)\), proving
+  the three generations carry inequivalent triality representations
+  \textbf{\(8_v \oplus 8_s \oplus 8_c\)}. Under the common stabilizer
+  \(\mathfrak{g}_2\) (\textbf{14D}) \(\supset SU(3)_C\) (\textbf{8D}),
+  all three generations exhibit identical quadratic Casimir eigenvalues
+  \textbf{\texttt{{[}0,\ 0,\ 8/9,\ 8/9,\ 8/9,\ 8/9,\ 8/9,\ 8/9{]}}}
+  (lepton doublet \texttt{2} + quark \(3\oplus\bar{3}\) \texttt{6}).
+\item
+  \textbf{Nonlinear three-generation hierarchy amplification and
+  Koide-ratio boundary {[}J3-3{]}}: Because localized self-coupling
+  perturbations \(P_g\) have \(\mathrm{Tri}\) eigenvalue \texttt{1.000}
+  (64× larger than \texttt{1/64} for \(J_{\mathrm{off}}\)), modest
+  two-step symmetry breaking amplifies at \(\tau=40\) into 2--3-order
+  exponential hierarchies:
+  \texttt{E(O1):E(O2):E(O3)\ =\ 500.4\ :\ 17.2\ :\ 1.0} at
+  \texttt{(0.14,\ 0.08)} and \texttt{2138.6\ :\ 16.0\ :\ 1.0} at
+  \texttt{(0.18,\ 0.12)}. However, the Koide ratio \(Q(E)\) varies
+  continuously
+  (\texttt{0.333\ \$\textbackslash{}to\$\ 0.508\ \$\textbackslash{}to\$\ 0.685\ \$\textbackslash{}to\$\ 0.821\ \$\textbackslash{}to\$\ 1.000})
+  with the initial perturbation ratio and does not universally lock to
+  \(Q = 2/3\).
+\item
+  \textbf{Parameter-free bare gauge unification
+  (\(\alpha_3^{\mathrm{bare}}:\alpha_2^{\mathrm{bare}}:\alpha_1^{\mathrm{bare}} = 1:1:1\))
+  and low-energy RG boundary {[}J3-4{]}}: On the 64D one-generation
+  representation \(O_8^{\mathrm{ext}}\otimes O_8^{\mathrm{int}}\),
+  \(\mathrm{Tr}_{64}(T_3^{C\,2}) = \mathrm{Tr}_{64}(T_3^{L\,2}) = \mathrm{Tr}_{64}(Y_1^2) = \mathbf{8.000000}\)
+  (\(Y_1 = \sqrt{3/5}\,Y\)) and
+  \(\mathrm{Tr}_{64}(Q_{\mathrm{em}}^2) = 64/3\), giving
+  \textbf{\(\alpha_3^{\mathrm{bare}}:\alpha_2^{\mathrm{bare}}:\alpha_1^{\mathrm{bare}} = 1:1:1\)}
+  and
+  \textbf{\(\sin^2\theta_W^{\mathrm{bare}} = \alpha_{\mathrm{em}}^{\mathrm{bare}}/\alpha_s^{\mathrm{bare}} = 3/8\)}
+  with zero free parameters (and exact \texttt{1:1:1} \(SU(3)_C\) trace
+  universality across all three generations in \(J_3(\mathbb{O})\)). The
+  gap to low-energy data
+  (\(\alpha \approx 1/137.036, \alpha_s(M_Z) \approx 0.1179, \sin^2\theta_W(M_Z) \approx 0.2312\))
+  is explicitly separated as the unverified RG-running boundary without
+  numerology.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{1. Introduction: From One-Generation
+\(O_8 \otimes O_8\) to Three-Generation
+\(J_3(\mathbb{O})\)}{1. Introduction: From One-Generation O\_8 \textbackslash otimes O\_8 to Three-Generation J\_3(\textbackslash mathbb\{O\})}}\label{introduction-from-one-generation-o_8-otimes-o_8-to-three-generation-j_3mathbbo}
+
+Parts I--VI {[}P1--P6{]} derived one-generation Standard Model gauge
+symmetries, maximal parity violation, multi-shell gravity, two-particle
+scattering, and CHSH Bell violation from \(O_8 \otimes O_8\) (64D). The
+27-dimensional exceptional Jordan algebra \(J_3(\mathbb{O})\) (Albert
+algebra) {[}E1--E3{]} naturally houses three octonions. Here we test
+directly whether \(\mathrm{Tri}(T)\) selects \(J_3(\mathbb{O})\)
+dynamically, tagging every claim as \textbf{{[}Known{]}},
+\textbf{{[}Part I--VI Established{]}}, \textbf{{[}Part VII Verified{]}},
+or \textbf{{[}Hypothesis / Unverified{]}}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{2. Exact \(\mathrm{Tri}(T)\) Crystallinity
+of \(J_3(\mathbb{O})\) {[}Part VII Verified
+J3-1{]}}{2. Exact \textbackslash mathrm\{Tri\}(T) Crystallinity of J\_3(\textbackslash mathbb\{O\}) {[}Part VII Verified J3-1{]}}}\label{exact-mathrmtrit-crystallinity-of-j_3mathbbo-part-vii-verified-j3-1}
+
+Using the orthonormal trace inner product
+\(\langle X, Y \rangle = \mathrm{Tr}(X\circ Y)\) on
+\(X = \begin{pmatrix} a_1 & z & \bar{y} \\ \bar{z} & a_2 & x \\ y & \bar{x} & a_3 \end{pmatrix}\)
+(diagonal \texttt{0..2}, off-diagonal \(O_1, O_2, O_3\) on
+\texttt{3..26}), the structure tensor \(J_{ijk}\) satisfies the Jordan
+identity to \texttt{8.269e-15} and total symmetry to \texttt{1.110e-16}.
+Testing three tensors under \(\mathrm{Tri}(T)\):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1379}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Input tensor
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Dim
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+1-step \(\|\mathrm{Tri}(T_0)\|\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+1-step residual \(\|\pm T_1 - T_0\|\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+100-step residual
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Verdict
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Full Jordan product \(J\) & 27D & \texttt{0.019909} (\texttt{+}) &
+\texttt{9.617e-01} & \texttt{1.370e+00} (\(\|P\|=1.0\)) & Rank-1
+collapse \\
+Cubic determinant \(D\) & 27D & \texttt{0.014784} (\texttt{-}) &
+\texttt{1.037e+00} & \texttt{1.364e+00} (\(\|P\|=1.0\)) & Rank-1
+collapse \\
+\textbf{Off-diagonal 3-gen \(J_{\mathrm{off}}\)} & \textbf{24D} &
+\textbf{\texttt{0.015625} (\texttt{-1/64})} &
+\textbf{\texttt{0.000e+00}} & \textbf{\texttt{0.000e+00}} &
+\textbf{Exact fixed-point crystal} \\
+\end{longtable}
+}
+
+The cyclic 3-generation product \(J_{\mathrm{off}}\)
+(\(\mathrm{Re}((xy)z)\)) is an exact zero-error eigen-crystal of
+\(\mathrm{Tri}(T)\) with eigenvalue \(-1/64\), self-healing to
+\texttt{3.536e-05} after 100 steps under an off-diagonal \texttt{1e-4}
+perturbation.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{3.
+\(F_4 \supset SO(8) \supset G_2 \supset SU(3)_C\) Symmetry Chain and
+Triality {[}Part VII Verified
+J3-2{]}}{3. F\_4 \textbackslash supset SO(8) \textbackslash supset G\_2 \textbackslash supset SU(3)\_C Symmetry Chain and Triality {[}Part VII Verified J3-2{]}}}\label{f_4-supset-so8-supset-g_2-supset-su3_c-symmetry-chain-and-triality-part-vii-verified-j3-2}
+
+Solving the derivation system on the 351 basis elements of
+\(\mathfrak{so}(27)\) by SVD (Fig. 1(a)): 1.
+\textbf{\(\mathrm{Der}(J_3(\mathbb{O})) = \mathfrak{f}_4\) (52D)}:
+smallest nonzero singular value \texttt{1.732e+00}, largest zero
+singular value \textbf{\texttt{1.996e-15}}. 2. \textbf{Diagonal-fixing
+subalgebra \(\mathrm{Der}_0 = \mathfrak{so}(8)\) (28D)}: max
+inter-generation mixing \textbf{\texttt{1.285e-15}} (strictly
+block-diagonal). 3. \textbf{Triality inequivalence
+(\(8_v \oplus 8_s \oplus 8_c\))}: the \(\mathfrak{so}(7)_1\)
+(\textbf{21D}) stabilizer of \(e_0 \in O_1\) has fixed-vector dimensions
+\textbf{\texttt{(O1,\ O2,\ O3)\ =\ {[}1,\ 0,\ 0{]}}}, proving
+\(O_1 = 8_v\) (vector) and \(O_2, O_3 = 8_s, 8_c\) (spinors). 4.
+\textbf{Identical color content across 3 generations}: the common
+\(e_0\) stabilizer is \textbf{14D (\(G_2\))} and further fixing \(e_1\)
+yields \textbf{8D (\(SU(3)_C\))}, whose quadratic Casimir eigenvalues
+are identically
+\textbf{\texttt{{[}0,\ 0,\ 8/9,\ 8/9,\ 8/9,\ 8/9,\ 8/9,\ 8/9{]}}} on all
+three generations (2 leptons + 6 quarks).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. Nonlinear 3-Generation Hierarchy Amplification and Koide
+Boundary {[}Part VII Verified
+J3-3{]}}\label{nonlinear-3-generation-hierarchy-amplification-and-koide-boundary-part-vii-verified-j3-3}
+
+Perturbing \(J_{\mathrm{off}}\) (eigenvalue \texttt{1/64}) with
+localized generation self-couplings \(P_g = \delta_{g,g,g}\) (eigenvalue
+\texttt{1.000}, 64× amplification factor) yields at \(\tau = 40\) (Fig.
+1(b)):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Perturbation \((\epsilon_1, \epsilon_2)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E(O_1)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E(O_2)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E(O_3)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Hierarchy \(E_1:E_2:E_3\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Koide \(Q(E)\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{(0.00,\ 0.00)} (symmetric) & \texttt{0.333333} &
+\texttt{0.333333} & \texttt{0.333333} & \texttt{1.0\ :\ 1.0\ :\ 1.0} &
+\texttt{0.33333} \\
+\texttt{(0.010,\ 0.005)} (tiny 2-step) & \texttt{0.775423} &
+\texttt{0.221966} & \texttt{0.002610} &
+\textbf{\texttt{297.1\ :\ 85.0\ :\ 1.0}} & \texttt{0.50817} \\
+\texttt{(0.14,\ 0.08)} (medium 2-step) & \texttt{0.964830} &
+\texttt{0.033242} & \texttt{0.001928} &
+\textbf{\texttt{500.4\ :\ 17.2\ :\ 1.0}} & \texttt{0.68472} \\
+\texttt{(0.18,\ 0.12)} (strong 2-step) & \texttt{0.992123} &
+\texttt{0.007413} & \texttt{0.000464} &
+\textbf{\texttt{2138.6\ :\ 16.0\ :\ 1.0}} & \texttt{0.82093} \\
+\end{longtable}
+}
+
+While \(\mathrm{Tri}(T)\) naturally amplifies a factor-of-2 seed into a
+2--3-order 3-generation hierarchy, \(Q(E)\) depends continuously on
+\((\epsilon_1, \epsilon_2)\) and does not lock to \(2/3\)
+\textbf{{[}Hypothesis / Unverified{]}}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={Part VII Verification (1): (a) Exact symmetry chain F\_4(52\textbackslash mathrm\{D\}) \textbackslash supset SO(8)(28\textbackslash mathrm\{D\}) \textbackslash supset SO(7)\_1(21\textbackslash mathrm\{D\}) \textbackslash supset G\_2(14\textbackslash mathrm\{D\}) \textbackslash supset SU(3)\_C(8\textbackslash mathrm\{D\}) from SVD null spaces of J\_3(\textbackslash mathbb\{O\}); (b) Nonlinear 3-generation hierarchy amplification on the exact crystal J\_\{\textbackslash mathrm\{off\}\} (24D).}]{figs_en/fig_p7_j3o_triality_and_hierarchy_en.png}
+\caption{Part VII Verification (1): (a) Exact symmetry chain
+\(F_4(52\mathrm{D}) \supset SO(8)(28\mathrm{D}) \supset SO(7)_1(21\mathrm{D}) \supset G_2(14\mathrm{D}) \supset SU(3)_C(8\mathrm{D})\)
+from SVD null spaces of \(J_3(\mathbb{O})\); (b) Nonlinear 3-generation
+hierarchy amplification on the exact crystal \(J_{\mathrm{off}}\)
+(24D).}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{5. Bare Gauge Coupling Unification
+(\(1:1:1\)) and Low-Energy RG Boundary {[}Part VII Verified
+J3-4{]}}{5. Bare Gauge Coupling Unification (1:1:1) and Low-Energy RG Boundary {[}Part VII Verified J3-4{]}}}\label{bare-gauge-coupling-unification-111-and-low-energy-rg-boundary-part-vii-verified-j3-4}
+
+On the 64D one-generation representation
+\(O_8^{\mathrm{ext}}\otimes O_8^{\mathrm{int}}\) (Fig. 2(a)):
+\[\mathrm{Tr}_{64}(T_3^{C\,2}) = \mathrm{Tr}_{64}(T_3^{L\,2}) = \mathrm{Tr}_{64}(Y_1^2) = 8.000000, \qquad \mathrm{Tr}_{64}(Q_{\mathrm{em}}^2) = \frac{64}{3},\]
+yielding parameter-free bare gauge unification:
+\[\alpha_3^{\mathrm{bare}} : \alpha_2^{\mathrm{bare}} : \alpha_1^{\mathrm{bare}} = 1 : 1 : 1, \qquad \sin^2\theta_W^{\mathrm{bare}} = \frac{\alpha_{\mathrm{em}}^{\mathrm{bare}}}{\alpha_s^{\mathrm{bare}}} = \frac{3}{8} = 0.375000.\]
+Across the three generations of \(J_3(\mathbb{O})\), the \(SU(3)_C\)
+traces are identically
+\texttt{0.666667\ :\ 0.666667\ :\ 0.666667\ =\ 1\ :\ 1\ :\ 1}. As shown
+in Fig. 2(b), bridging from these bare unification ratios to low-energy
+measurements
+(\(\alpha(0) \approx 1/137.036, \alpha_s(M_Z) \approx 0.1179, \sin^2\theta_W(M_Z) \approx 0.2312\))
+requires a first-principles derivation of renormalization-group (RG)
+running \textbf{{[}Hypothesis / Unverified{]}}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={Part VII Verification (2): (a) Parameter-free bare gauge unification \textbackslash alpha\_3:\textbackslash alpha\_2:\textbackslash alpha\_1 = 1:1:1 (\textbackslash mathrm\{Tr\}=8) on 64D; (b) Bare unification values (blue) contrasted with low-energy M\_Z experimental values (green), marking the RG-running boundary.}]{figs_en/fig_p7_coupling_unification_and_rg_boundary_en.png}
+\caption{Part VII Verification (2): (a) Parameter-free bare gauge
+unification \(\alpha_3:\alpha_2:\alpha_1 = 1:1:1\) (\(\mathrm{Tr}=8\))
+on 64D; (b) Bare unification values (blue) contrasted with low-energy
+\(M_Z\) experimental values (green), marking the RG-running boundary.}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Series Summary and
+Reproducibility}\label{series-summary-and-reproducibility}
+
+With Part VII, all four initially posed core challenges---electroweak
+symmetry breaking and maximal parity violation (Part IV), multi-shell
+gravity and spin-2 \(g_{00}(d)\) unlock (Part V), two-particle
+scattering and CHSH Bell violation (Part VI), and \(J_3(\mathbb{O})\)
+three-generation triality and bare coupling unification (Part
+VII)---have been verified deterministically.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Next-stage open problems}: (1) \(K\ge 3\) Einstein-equation
+  mapping and multi-shell two-particle scattering cross-sections; (2)
+  CKM/PMNS mixing and CP violation from
+  \(J_{\mathrm{off}}\otimes O_8^{\mathrm{ext}}\); (3) first-principles
+  RG running from bare unification (\(1:1:1, 3/8\)) to low-energy
+  \(\alpha, \alpha_s, \sin^2\theta_W\) and precision fermion mass
+  ratios.
+\item
+  \textbf{Reproducibility files}:
+  \texttt{tri\_loop\_part7\_jordan\_generations\_v0.py} (J3-1--J3-4,
+  deterministic, \textasciitilde1.6 s),
+  \texttt{results/tri\_loop\_part7\_jordan\_generations\_v0.txt},
+  \texttt{plot\_part7\_figures\_v0.py}, and
+  \texttt{results/fig\_p7\_*\_\{ja,en\}.png}.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+\subsubsection{A. Self-Citations}\label{a.-self-citations}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}P1{]}} N. Kihara, \emph{Spontaneous Emergence of Quantum,
+  Gauge, Gravitational, and Fermionic Structures from the 3D
+  Triangle-Loop Product (Integrated Part I)}, Zenodo (2026-11-28),
+  Concept DOI: \texttt{10.5281/zenodo.24622200}.
+\item
+  \textbf{{[}P2{]}} N. Kihara, \emph{Unified Connection Hypothesis for
+  Gravity, Electromagnetism, QCD, and Dirac Fermions in the 3D
+  Triangle-Loop Product (Part II)}, Zenodo (2026-11-28), Concept DOI:
+  \texttt{10.5281/zenodo.24622565}.
+\item
+  \textbf{{[}P3{]}} N. Kihara, \emph{Spacetime and Internal-Space
+  Readout Connection Hypothesis in the 3D Triangle-Loop Product (Part
+  III)}, Zenodo (2026-11-28), Concept DOI:
+  \texttt{10.5281/zenodo.24625962}.
+\item
+  \textbf{{[}P4{]}} N. Kihara, \emph{Electroweak Symmetry Breaking and
+  Maximal Parity Violation in the 3D Triangle-Loop Product (Part IV)},
+  Zenodo (2026-11-28), Concept DOI: \texttt{10.5281/zenodo.24626592}.
+\item
+  \textbf{{[}P5{]}} N. Kihara, \emph{Multi-Shell Large-Lattice Gravity,
+  Causal Propagation, and Spin-2 Unlock of \(g_{00}(d)\) in the 3D
+  Triangle-Loop Product (Part V)}, Zenodo (2026-11-28), Concept DOI:
+  \texttt{10.5281/zenodo.24627519}.
+\item
+  \textbf{{[}P6{]}} N. Kihara, \emph{Two-Particle Dynamical Scattering,
+  Gauge-Mediated Interactions, and Dynamical CHSH Bell Violation in the
+  3D Triangle-Loop Product (Part VI)}, Zenodo (2026-11-28), Concept DOI:
+  \texttt{10.5281/zenodo.24628297}.
+\end{itemize}
+
+\subsubsection{B. External Primary
+Literature}\label{b.-external-primary-literature}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}E1{]}} P. Jordan, J. von Neumann, and E. Wigner, \emph{On
+  an Algebraic Generalization of the Quantum Mechanical Formalism}, Ann.
+  of Math. \textbf{35}, 29--64 (1934).
+\item
+  \textbf{{[}E2{]}} J. C. Baez, \emph{The Octonions}, Bull. Amer. Math.
+  Soc. \textbf{39}, 145--205 (2002), arXiv:math/0105155.
+\item
+  \textbf{{[}E3{]}} T. Dray and C. A. Manogue, \emph{The Geometry of the
+  Octonions}, World Scientific (2015).
+\item
+  \textbf{{[}E4{]}} Y. Koide, \emph{Fermion-Boson Two-Body Model of
+  Quarks and Leptons and Cabibbo Mixing}, Lett. Nuovo Cimento
+  \textbf{34}, 201--205 (1982).
+\end{itemize}
+
+\end{document}
