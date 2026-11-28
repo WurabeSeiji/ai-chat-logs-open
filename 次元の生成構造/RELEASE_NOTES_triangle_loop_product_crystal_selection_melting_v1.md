@@ -23,7 +23,7 @@
 ## X
 - 日本語版: https://x.com/NoriakiKihara/status/2126491889566429190
   （元原稿: `次元の生成構造/三次元正方配列の積と自己無撞着_20261127/x_message_triangle_loop_ja.md`）
-- 英語版: 作成済み（投稿待ち）
+- 英語版: https://x.com/NoriakiKihara/status/2126492466178347320
   （元原稿: `次元の生成構造/三次元正方配列の積と自己無撞着_20261127/x_message_triangle_loop_en.md`）
 
 ## 公開ファイル（Zenodo, 9点）
@@ -56,3 +56,4 @@
 | 2026-11-28 | Facebook 日本語版公開（https://www.facebook.com/kihara.noriaki/posts/pfbid02sQT1LuEaH7iJq2gvUrRy1zA467jCyDvyBs8YPLJqhkFG8aAzHghvLxHLJzVvrpQcl）、Facebook 英語版原稿作成 |
 | 2026-11-28 | Facebook 英語版公開（https://www.facebook.com/kihara.noriaki/posts/pfbid02m9eqfe1GEYbnEEyehDckaF6Wa3rhCgQJxEwvbcTCZ9X9UvmLggTgswWzTDrc3Za8l）、X 日本語版原稿作成 |
 | 2026-11-28 | X 日本語版公開（https://x.com/NoriakiKihara/status/2126491889566429190）、X 英語版原稿作成 |
+| 2026-11-28 | X 英語版公開（https://x.com/NoriakiKihara/status/2126492466178347320）。SNS 展開一式完了（Zenn・note 日英・Facebook 日英・X 日英） |
