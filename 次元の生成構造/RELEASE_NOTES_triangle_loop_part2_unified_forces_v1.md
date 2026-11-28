@@ -8,6 +8,9 @@
 - **解説記事（note.com）**：
   - 日本語版：https://note.com/kiharanoriaki/n/n09cbc13c6be5
   - 英語版：https://note.com/kiharanoriaki/n/n0b72e078fd3b
+- **Facebook 投稿**：
+  - 日本語版：https://www.facebook.com/kihara.noriaki/posts/pfbid02gJSJwmZbgVY3UiSoJqQuMuc4yYJu8GQKgUmJySXVnBD4FfErNiLdszCBhFSk8hGZl
+  - 英語版：https://www.facebook.com/kihara.noriaki/posts/pfbid0CLEPfoGYxCooNU9e4YYTjVZjvHyVAmPRsAmMVPispC34pbjRFQM2UccgQu7CjQwal
 - **接続する先行論文**：
   - Part I（統合完成論文：速報 1–7 統合）：`10.5281/zenodo.24622201`（Concept: `10.5281/zenodo.24622200`）
   - 八元数 QCD 閉じ込め・質量ギャップ論文：`10.5281/zenodo.24369465`

@@ -8,6 +8,9 @@
 - **解説記事（note.com）**：
   - 日本語版：https://note.com/kiharanoriaki/n/n09cbc13c6be5
   - 英語版：https://note.com/kiharanoriaki/n/n0b72e078fd3b
+- **Facebook 投稿**：
+  - 日本語版：https://www.facebook.com/kihara.noriaki/posts/pfbid02gJSJwmZbgVY3UiSoJqQuMuc4yYJu8GQKgUmJySXVnBD4FfErNiLdszCBhFSk8hGZl
+  - 英語版：https://www.facebook.com/kihara.noriaki/posts/pfbid0CLEPfoGYxCooNU9e4YYTjVZjvHyVAmPRsAmMVPispC34pbjRFQM2UccgQu7CjQwal
 - **統合した速報シリーズ（全 7 報）**：
   - 第 1 速報：`10.5281/zenodo.24616931`
   - 第 2 速報：`10.5281/zenodo.24618400`
