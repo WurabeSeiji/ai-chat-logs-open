@@ -12,6 +12,9 @@
 - **Facebook 投稿**：Part I〜VII 総括
   - 日本語版：https://www.facebook.com/kihara.noriaki/posts/pfbid0QX3FBTuwMpv2W3FvfC92BsaDpEsa45ERJuTyxk3trJa4wFQ5NAK4iSur2VPFEwz1l
   - 英語版：https://www.facebook.com/kihara.noriaki/posts/pfbid0Q17gHw7gzCko7svW61xx4NW3ernhnqFeKhybhKNSNV5jhtRqcR9LM9fqNMnABu3Tl
+- **X（Twitter）投稿**：Part I〜VII 総括
+  - 日本語版：https://x.com/NoriakiKihara/status/2126693283250532491
+  - 英語版：https://x.com/NoriakiKihara/status/2126693505334657414
 - **接続する先行論文**：
   - Part I（統合完成論文：速報 1–7 統合）：`10.5281/zenodo.24622200`（v1: `24622201`）
   - Part II（重力・電磁気・QCD・ディラック統一接続仮説）：`10.5281/zenodo.24622565`（v1: `24622566`）
