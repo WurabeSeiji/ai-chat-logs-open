@@ -11,7 +11,7 @@
 ## note
 - 日本語版: https://note.com/kiharanoriaki/n/n6a1c65eb049b
   （元原稿: `次元の生成構造/三次元正方配列の積と自己無撞着_20261127/note_triangle_loop_ja_v1.md`）
-- 英語版: 作成済み（投稿待ち）
+- 英語版: https://note.com/kiharanoriaki/n/na8f7739b447d
   （元原稿: `次元の生成構造/三次元正方配列の積と自己無撞着_20261127/note_triangle_loop_en_v1.md`）
 
 ## 公開ファイル（Zenodo, 9点）
@@ -40,3 +40,4 @@
 |---|---|
 | 2026-11-28 | v1.0 公開。Zenodo 9 ファイル（日英 md/tex/pdf、`build_tex.py`、`figures_and_programs.zip`、`SHA256SUMS`）、DOI 取得、Zenn 記事原稿作成、PAPERS 目次更新 |
 | 2026-11-28 | note 日本語版公開（https://note.com/kiharanoriaki/n/n6a1c65eb049b）、ヘッダー画像・note 英語版原稿作成 |
+| 2026-11-28 | note 英語版公開（https://note.com/kiharanoriaki/n/na8f7739b447d） |
