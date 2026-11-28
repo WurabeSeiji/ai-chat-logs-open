@@ -8,6 +8,8 @@
 - **解説記事（note.com）**：
   - 日本語版：https://note.com/kiharanoriaki/n/n09cbc13c6be5
   - 英語版：https://note.com/kiharanoriaki/n/n0b72e078fd3b
+  - Part I〜VII 総括（日本語版、2026-11-28 公開）：https://note.com/kiharanoriaki/n/n6f27afeb5795
+  - Part I〜VII 総括（英語版、2026-11-28 公開）：https://note.com/kiharanoriaki/n/nd11ac852843b
 - **Facebook 投稿**：
   - 日本語版：https://www.facebook.com/kihara.noriaki/posts/pfbid02gJSJwmZbgVY3UiSoJqQuMuc4yYJu8GQKgUmJySXVnBD4FfErNiLdszCBhFSk8hGZl
   - 英語版：https://www.facebook.com/kihara.noriaki/posts/pfbid0CLEPfoGYxCooNU9e4YYTjVZjvHyVAmPRsAmMVPispC34pbjRFQM2UccgQu7CjQwal

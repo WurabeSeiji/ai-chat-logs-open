@@ -6,6 +6,9 @@
 - **Concept DOI（全版共通）**：`10.5281/zenodo.24628297`（https://doi.org/10.5281/zenodo.24628297）
 - **Version DOI（v1）**：`10.5281/zenodo.24628298`（https://doi.org/10.5281/zenodo.24628298）
 - **Zenn 記事**：`articles/triangle-loop-two-particle-scattering-chsh-part6.md`
+- **解説記事（note.com）**：Part I〜VII 総括（2026-11-28 公開）
+  - 日本語版：https://note.com/kiharanoriaki/n/n6f27afeb5795
+  - 英語版：https://note.com/kiharanoriaki/n/nd11ac852843b
 - **接続する先行論文**：
   - Part I（統合完成論文）：`10.5281/zenodo.24622200`（v1: `24622201`）
   - Part II（重力・電磁気・QCD・ディラック統一接続仮説）：`10.5281/zenodo.24622565`（v1: `24622566`）
