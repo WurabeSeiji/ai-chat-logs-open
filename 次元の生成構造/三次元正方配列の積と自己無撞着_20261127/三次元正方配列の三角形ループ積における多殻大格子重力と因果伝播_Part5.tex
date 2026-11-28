@@ -1,0 +1,573 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{xurl}
+\usepackage{float}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}
+\usepackage{float}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={三次元正方配列の三角形ループ積における多殻大格子重力、因果伝播、およびスピン 2 による g\_\{00\}(d) 解禁（Part V）},
+  pdfauthor={木原 範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{三次元正方配列の三角形ループ積における多殻大格子重力、因果伝播、およびスピン
+2 による \(g_{00}(d)\) 解禁（Part V）}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{― 5D×4D/6D 厳密閉包エンジンによる \(N = 32{,}768\)（280 TB
+相当）近似ゼロ解析、臨界崩壊スケーリング、多殻ポテンシャル、独立時計ロック監査、およびスピン
+2 (\(\sigma_x\)) 弱結合時間遅延解禁 ―}
+\author{木原 範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020}
+\date{2026年11月28日　Version DOI 10.5281/zenodo.24627520}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\textbf{著者：} 木原 範昭（株式会社WFシステム）\\
+\textbf{ORCID：} 0009-0004-6753-4020\\
+\textbf{日付：} 2026年11月28日\\
+\textbf{Version DOI：} 10.5281/zenodo.24627520\\
+\textbf{Concept DOI：} 10.5281/zenodo.24627519\\
+\textbf{位置づけ：} 三角形ループ積シリーズ Part I--IV（Concept DOIs:
+\texttt{24622200}, \texttt{24622565}, \texttt{24625962},
+\texttt{24626592}）の続編となる\textbf{多殻大格子重力・因果伝播・時間遅延検証論文（Part
+V）}。単一 \(O_8\)（中心 1＋遠方 7 の 1
+殻構造）では測れなかった「距離の関数形」「有限速度の因果伝播」「多殻での重力時間遅延
+\(g_{00}(d)\)
+のロック条件と解禁機構」を、近似ゼロの厳密閉包エンジン（\texttt{tri\_loop\_part5\_multishell\_gravity\_v0.py}
+および \texttt{tri\_loop\_part5\_spin2\_g00\_v0.py}、乱数なし）により
+\(K = 1 \dots 4\) 殻（最大 \(N = 32{,}768\)）まで直接検証する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+Part I {[}P1{]}・Part III {[}P3{]} では単一 \(O_8\)（1 殻 8 サイト）上で
+4
+クラス空間計量歪み・潮汐分裂・臨界崩壊を実証したが、中心から複数段階の距離
+\(d = 0, 1, 2, \dots, K\) を持つ\textbf{多殻大格子
+\(O_8^{\otimes K} \otimes M_8\)}
+の直接計算は、\(K = 4\)（\(N = 32{,}768\)）で密配列
+\(3.52 \times 10^{13}\) 成分（約 280
+TB）に達するため従来不可能であった。
+
+本 Part V では、外側 1 殻 \(\{O_8, \delta_{000}\}\) が \(\mathrm{Tri}\)
+の下で \textbf{厳密 5 次元}、内側 \(\{M_8, M_{\mathrm{probe}}\}\) が
+\textbf{厳密 4 次元}（スピン 2 局在源 \(\{M_8, M_{\sigma_x}\}\) は
+\textbf{厳密 6 次元}）で打ち切り誤差ゼロの閉包をなすことを発見し、SVD
+厳密分解による多殻閉包エンジン（乱数なし）を構築した。その結果、以下 6
+点を機械精度で確立・報告する。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{\(K=1\;(N=64)\) 密配列対照テストと \(K=4\;(N=32{,}768)\)
+  近似ゼロ計算}：20 変数厳密閉包エンジンは 262,144 成分フル密配列の
+  \(\tau = 40\) 発展と \(\|P\|\) 差
+  \textbf{\texttt{8.890e-14}}・\(E_{\mathrm{bg}}(0)/E_{\mathrm{bg}}(1)\)
+  差 \textbf{\texttt{3.437e-10}} で厳密一致し、280 TB 相当の
+  \(K=4\;(N=32{,}768)\) をわずか 9.5 秒で近似ゼロ計算した。
+\item
+  \textbf{臨界崩壊（事象の地平面）振幅 \(\epsilon_c(K)\)
+  の急激なスケーリング}：\(\tau = 40\)
+  での地平面切断臨界点は、\(K=1\;(N=64)\) の
+  \(\epsilon_c(1) \approx \mathbf{0.2736}\) から \(K=2\;(N=512)\) で
+  \(\mathbf{0.01347}\)（比 \texttt{0.0492}）、\(K=3\;(N=4{,}096)\) で
+  \(\mathbf{0.001997}\)（\(K=2\to 3\) 比 \texttt{0.1482}）へと急減する。
+\item
+  \textbf{多殻計量ポテンシャル \(\Delta\phi(d)\) の 2 相構造（弱結合
+  \(1/5\) 減衰 vs 強結合線形勾配）}：
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{弱結合共存相（\(\epsilon = 0.6\,\epsilon_c(K)\)）}：\(K=4\)
+    において内殻 \(d=0 \to 1 \to 2\) で \(\Delta\phi(d)\) が殻あたり約
+    \texttt{0.20}（\(1/5\)）倍で減衰し、Part III の対数変換 \(r = 5^d\)
+    のもとで \textbf{\(\Delta\phi(r) \propto 1/r\) 型}
+    に対応する（最外殻手前 \(d=K-1\)
+    では総ノルム保存に伴う符号反転波紋が生じる）。
+  \item
+    \textbf{強結合・地平面形成相（\(\epsilon = 0.16 > \epsilon_c(K)\)）}：特異点
+    \(d=0\)（\(\Delta\phi \approx +44 \sim +52\)）の外側
+    \(d = 1 \dots K\) にわたって、\(K=2\):
+    \texttt{+4.09,\ 0.00}、\(K=3\):
+    \texttt{+7.85,\ +4.03,\ 0.00}、\(K=4\):
+    \texttt{+11.43,\ +7.81,\ +4.18,\ 0.00} という極めて規則的な
+    \textbf{等間隔線形勾配 \(\Delta\phi(d) \approx 3.8\,(K - d)\)}
+    が現れる。
+  \end{itemize}
+\item
+  \textbf{有限速度の因果伝播（光円錐フロント）}：弱結合
+  \(K=3\;(N=4{,}096)\) で中心 \(d=0\)
+  にインパルスを投入すると、\(\tau=1\) では \(d=0\)
+  のみが応答し（\(d=1,2,3\) は厳密 \texttt{0.000000}）、\(\tau=2\) で
+  \(d=2\)、\(\tau=3\) で \(d=1\)
+  を含む全殻へ到達する有限ステップ伝播を確認した。
+\item
+  \textbf{スカラー質量における \(g_{00}(d)\)
+  弱結合ロックの普遍性（独立時計 \(H^{\otimes 2}\) 監査）}：共通時計
+  \(O_8^{\otimes K}\otimes M_8\)（\(K=1\dots 4\)）だけでなく、各殻が独立の時計を持つ
+  \textbf{\(H^{\otimes 2} = (O_8\otimes M_8)^{\otimes 2}\;(N=4{,}096)\)}
+  においても、通常の \(M_8\) スカラー質量では弱結合共存相で空間計量
+  \(E(0)/E(2)\) が最大 \texttt{2.765}
+  倍に歪むにもかかわらず、殻間時計位相差は
+  \textbf{\(|\Delta\theta(d)| \le 1.35 \times 10^{-13}\,\mathrm{rad}\)
+  に厳密ロック}される（強結合崩壊相 \(\epsilon=0.050\) でのみ
+  \texttt{2.759\ rad} 解禁）。
+\item
+  \textbf{スピン 2 (\(\sigma_x\)) 局在質量による弱結合多殻 \(g_{00}(d)\)
+  の 12 桁解禁（新発見）}：一方、中心 \(d=0\) の局在源を Part I のスピン
+  2 モード（\(\sigma_x\) 結合）に切り替えると（\(K=2, N=512\)、5D×6D
+  厳密閉包）、宇宙が崩壊しない\textbf{弱結合共存相（\(\|P\|(40) = 0.004394 \to 0.004357\)）のまま}、殻間時計位相差
+  \(\Delta\theta(d)\) が 12 桁以上解禁され、\texttt{ε\_sx\ =\ 0.002} で
+  \texttt{+0.0234\ rad}、\texttt{0.005} で
+  \texttt{+0.1411\ rad}、\texttt{0.008} で
+  \texttt{+0.3368\ rad}、\texttt{0.015} で \texttt{+0.8784\ rad}
+  と連続成長する。弱結合領域では質量エネルギー比例則
+  \textbf{\(\Delta\theta(0) \propto \epsilon_{\mathrm{sx}}^2\)}
+  および殻深さ減衰勾配（\(d=0 \to 1 \to 2\)）が自発出現する。すなわち、\textbf{「スカラー質量は空間計量
+  \(g_{ij}\) のみを歪め、時間計量 \(g_{00}(d)\) の弱結合歪みにはスピン 2
+  自由度が本質的である」} という選択則が第一原理から実証された。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 導入：多殻大格子の計算壁と 5D×4D
+厳密閉包の発見}\label{ux5c0eux5165ux591aux6bbbux5927ux683cux5b50ux306eux8a08ux7b97ux58c1ux3068-5d4d-ux53b3ux5bc6ux9589ux5305ux306eux767aux898b}
+
+Part I--IV {[}P1--P4{]} は単一 \(O_8\)（中心 1＋遠方 7 の 1
+殻）を外部空間として扱ってきた。しかし一般相対性理論の距離依存ポテンシャル（\(1/r\)
+重力）、光円錐の有限速度伝播、および多殻での重力時間遅延 \(g_{00}(d)\)
+を検証するには、\(K\) 殻の同心球殻（中心 \((0,\dots,0)\)
+からのハミング距離 \(d = 0, 1, \dots, K\)、サイト数
+\(\binom{K}{d} 7^d\)）を持つ入れ子空間 \(O_8^{\otimes K} \otimes M_8\)
+が不可欠である。
+
+密配列では \(K=2\;(N=512)\) で \(1.34\times 10^8\) 成分（約 1
+GB）、\(K=3\;(N=4{,}096)\) で \(6.87\times 10^{10}\) 成分（550
+GB）、\(K=4\;(N=32{,}768)\) で \(3.52\times 10^{13}\) 成分（280
+TB）となり直接計算は不可能である。しかし本研究では、\(\mathrm{Tri}\)
+の直積準同型
+\(\mathrm{Tri}(A\otimes B)=\mathrm{Tri}(A)\otimes\mathrm{Tri}(B)\)
+{[}P1{]} と 7 虚数方向等方性により、 - 外側 1 殻
+\(\{O_8, \delta_{000}\}\) の \(\mathrm{Tri}(X,Y,Z)\) 閉包が \textbf{厳密
+5 次元} - 内側 \(\{M_8, M_{\mathrm{probe}}\}\) の
+\(\mathrm{Tri}(X,Y,Z)\) 閉包が \textbf{厳密 4 次元}
+
+で完全に閉じることを見出した。これにより打ち切り誤差ゼロのまま
+\(K = 4\;(N=32{,}768)\) まで数秒で厳密反復が可能となる。本稿でも各主張を
+\textbf{【既知】・【Part I--IV 確立】・【Part V
+検証】・【仮説・未検証】} の 4 段階で明示する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{2. 対照一致テストと臨界崩壊スケーリング
+\(\epsilon_c(K)\)【Part V 検証 MS-0,
+MS-1】}{2. 対照一致テストと臨界崩壊スケーリング \textbackslash epsilon\_c(K)【Part V 検証 MS-0, MS-1】}}\label{ux5bfeux7167ux4e00ux81f4ux30c6ux30b9ux30c8ux3068ux81e8ux754cux5d29ux58caux30b9ux30b1ux30fcux30eaux30f3ux30b0-epsilon_ckpart-v-ux691cux8a3c-ms-0-ms-1}
+
+\subsubsection{\texorpdfstring{2.1 \(K=1\;(N=64)\)
+フル密配列との対照一致}{2.1 K=1\textbackslash;(N=64) フル密配列との対照一致}}\label{k1n64-ux30d5ux30ebux5bc6ux914dux5217ux3068ux306eux5bfeux7167ux4e00ux81f4}
+
+\(\epsilon = 0.16, \tau = 40\) において、20 変数厳密閉包エンジンと
+262,144 成分フル密配列を比較した結果： - \(\|P\|(\tau=40)\)：閉包
+\texttt{0.046830053421} vs 密配列 \texttt{0.046830053421}（差
+\textbf{\texttt{8.890e-14}}） -
+\(E_{\mathrm{bg}}(d=0)/E_{\mathrm{bg}}(d=1)\)：閉包
+\texttt{1.324837524948} vs 密配列 \texttt{1.324837524604}（差
+\textbf{\texttt{3.437e-10}}）
+
+\subsubsection{\texorpdfstring{2.2 事象の地平面臨界振幅
+\(\epsilon_c(K)\) の \(K=1\dots 3\) スケーリング（図
+1(a)）}{2.2 事象の地平面臨界振幅 \textbackslash epsilon\_c(K) の K=1\textbackslash dots 3 スケーリング（図 1(a)）}}\label{ux4e8bux8c61ux306eux5730ux5e73ux9762ux81e8ux754cux632fux5e45-epsilon_ck-ux306e-k1dots-3-ux30b9ux30b1ux30fcux30eaux30f3ux30b0ux56f3-1a}
+
+対数二分探索（\(\tau=40\)）で特定した臨界崩壊振幅 \(\epsilon_c(K)\)
+は以下の通りである：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+殻数 \(K\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+空間サイト数 \(8^K\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+総サイズ \(N = 8^{K+1}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+臨界崩壊振幅 \(\epsilon_c(K)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(\epsilon_c(K)/\epsilon_c(1)\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{1} & \texttt{8} & \texttt{64} & \texttt{(0.273544,\ 0.273693)} &
+\texttt{1.000000} \\
+\texttt{2} & \texttt{64} & \texttt{512} & \texttt{(0.013466,\ 0.013481)}
+& \texttt{4.924e-02} \\
+\texttt{3} & \texttt{512} & \texttt{4,096} &
+\texttt{(0.001994,\ 0.002000)} & \texttt{7.299e-03} \\
+\texttt{4}（外挿） & \texttt{4,096} & \texttt{32,768} &
+\texttt{≈\ 2.960e-04}（\(r_{23}=0.1482\)） & \texttt{1.082e-03} \\
+\end{longtable}
+}
+
+背景の 1 サイト当たりエネルギーが \(8^{-K}\) で薄まるため、中心 1
+サイトへの局在質量が地平面崩壊を起こす臨界振幅は \(K\)
+とともに指数的に急減する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{3. 多殻計量ポテンシャル
+\(\Delta\phi(d)\)：弱結合相 vs 強結合地平面相【Part V 検証 MS-2,
+MS-4】}{3. 多殻計量ポテンシャル \textbackslash Delta\textbackslash phi(d)：弱結合相 vs 強結合地平面相【Part V 検証 MS-2, MS-4】}}\label{ux591aux6bbbux8a08ux91cfux30ddux30c6ux30f3ux30b7ux30e3ux30eb-deltaphidux5f31ux7d50ux5408ux76f8-vs-ux5f37ux7d50ux5408ux5730ux5e73ux9762ux76f8part-v-ux691cux8a3c-ms-2-ms-4}
+
+\subsubsection{\texorpdfstring{3.1
+弱結合共存相（\(\epsilon = 0.6\,\epsilon_c(K)\)）の \(1/5\)
+減衰とノルム補償波紋}{3.1 弱結合共存相（\textbackslash epsilon = 0.6\textbackslash,\textbackslash epsilon\_c(K)）の 1/5 減衰とノルム補償波紋}}\label{ux5f31ux7d50ux5408ux5171ux5b58ux76f8epsilon-0.6epsilon_ckux306e-15-ux6e1bux8870ux3068ux30ceux30ebux30e0ux88dcux511fux6ce2ux7d0b}
+
+弱結合共存相で殻深さ \(d = 0 \dots K\) の対数計量ズレ
+\(\Delta\phi(d) = \frac{1}{2}\ln(E_{\mathrm{bg}}(d)/E_{\mathrm{bg}}(K))\)
+を計測した： -
+\textbf{\(K = 2\;(N=512, \tau=40)\)}：\(\Delta\phi(d=0,1,2) = \mathbf{+0.6121,\; -0.1452,\; 0.0000}\)（比
+\texttt{-0.237}） -
+\textbf{\(K = 3\;(N=4{,}096, \tau=40)\)}：\(\Delta\phi(d=0..3) = \mathbf{-0.00456,\; -0.00101,\; +0.00051,\; 0.00000}\)（比
+\texttt{0.222,\ -0.500}） -
+\textbf{\(K = 4\;(N=32{,}768, \tau=15, 9.5\text{s})\)}：\(\Delta\phi(d=0..4) = \mathbf{+4.3\times 10^{-7},\; +8.0\times 10^{-8},\; +2.0\times 10^{-8},\; -2.0\times 10^{-8},\; 0.0}\)
+
+内殻側（\(d = 0 \to 1 \to 2\)）では殻あたり約
+\textbf{\texttt{0.20}（\(1/5\)）倍} の指数減衰が現れ、Part III {[}P3{]}
+の対数変換（実距離 \(r = 5^d\)）を通せば
+\(\Delta\phi(r) \propto 5^{-d} = 1/r\)
+型に対応する【仮説・未検証】。一方、最外殻の 1
+つ手前（\(d=K-1\)）では、Frobenius
+ノルム保存による背景エネルギーの再配分として符号反転（反発的な補償波紋）が普遍的に生じる。
+
+\subsubsection{\texorpdfstring{3.2
+強結合・地平面形成相（\(\epsilon = 0.16 > \epsilon_c(K), \tau=40\)）の等間隔線形勾配（図
+1(b)）}{3.2 強結合・地平面形成相（\textbackslash epsilon = 0.16 \textgreater{} \textbackslash epsilon\_c(K), \textbackslash tau=40）の等間隔線形勾配（図 1(b)）}}\label{ux5f37ux7d50ux5408ux5730ux5e73ux9762ux5f62ux6210ux76f8epsilon-0.16-epsilon_ck-tau40ux306eux7b49ux9593ux9694ux7ddaux5f62ux52feux914dux56f3-1b}
+
+臨界点を超えた地平面相（\(\|P\| = 0.499976 = 1/2\)）では、特異点コア
+\(d=0\)（\(\Delta\phi \approx +44 \sim +52\)）の外側 \(d = 1 \dots K\)
+で驚くほど規則的な等間隔線形勾配が現れる： -
+\textbf{\(K = 2\)}：\(\Delta\phi(d=1, 2) = \mathbf{+4.0935,\; 0.0000}\)
+-
+\textbf{\(K = 3\)}：\(\Delta\phi(d=1, 2, 3) = \mathbf{+7.8490,\; +4.0299,\; 0.0000}\)（差
+\texttt{3.82,\ 4.03}） -
+\textbf{\(K = 4\)}：\(\Delta\phi(d=1, 2, 3, 4) = \mathbf{+11.4299,\; +7.8055,\; +4.1808,\; 0.0000}\)（差
+\texttt{3.62,\ 3.63,\ 4.18}）
+
+すなわち、地平面外側では
+\(\Delta\phi(d) \approx 3.8\,(K - d)\)（元のエネルギー比
+\(E_{\mathrm{bg}}(d)/E_{\mathrm{bg}}(K) \propto e^{7.6(K-d)}\)）という単純な等差則が全
+\(K\) で成立する。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={Part V 検証 (1)：(a) 多殻大格子 O\_8\^{}\{\textbackslash otimes K\}\textbackslash otimes M\_8 の臨界崩壊振幅 \textbackslash epsilon\_c(K) スケーリング、(b) 強結合地平面外側（d\textbackslash ge 1）における等間隔線形勾配 \textbackslash Delta\textbackslash phi(d) \textbackslash approx 3.8(K-d) と弱結合 1/5 減衰の対比。}]{figs_ja/fig_p5_multishell_scaling_and_potential_ja.png}
+\caption{Part V 検証 (1)：(a) 多殻大格子 \(O_8^{\otimes K}\otimes M_8\)
+の臨界崩壊振幅 \(\epsilon_c(K)\) スケーリング、(b)
+強結合地平面外側（\(d\ge 1\)）における等間隔線形勾配
+\(\Delta\phi(d) \approx 3.8(K-d)\) と弱結合 \(1/5\) 減衰の対比。}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{4. 因果伝播（光円錐フロント）、独立時計
+\(H^{\otimes 2}\) 監査、およびスピン 2 による \(g_{00}(d)\) 解禁【Part V
+検証 MS-3, MS-5,
+MS-6】}{4. 因果伝播（光円錐フロント）、独立時計 H\^{}\{\textbackslash otimes 2\} 監査、およびスピン 2 による g\_\{00\}(d) 解禁【Part V 検証 MS-3, MS-5, MS-6】}}\label{ux56e0ux679cux4f1dux64adux5149ux5186ux9310ux30d5ux30edux30f3ux30c8ux72ecux7acbux6642ux8a08-hotimes-2-ux76e3ux67fbux304aux3088ux3073ux30b9ux30d4ux30f3-2-ux306bux3088ux308b-g_00d-ux89e3ux7981part-v-ux691cux8a3c-ms-3-ms-5-ms-6}
+
+\subsubsection{4.1 有限速度の因果伝播（図
+2(a)）}\label{ux6709ux9650ux901fux5ea6ux306eux56e0ux679cux4f1dux64adux56f3-2a}
+
+弱結合 \(K = 3\;(N=4{,}096, \epsilon = 0.6\,\epsilon_c(3))\) で中心
+\(d = 0\) にインパルスを投入し \(\tau = 0 \dots 10\) を追跡したところ、
+- \(\tau = 1\)：\textbf{\(d = 0\) のみ} \texttt{-0.001744}
+が応答（\(d = 1, 2, 3\) はすべて厳密 \texttt{0.000000}） -
+\(\tau = 2\)：\(d = 2\)（\texttt{+0.000016}）へ波及 -
+\(\tau = 3\)：\(d = 1\)（\texttt{-0.000007}）を含む全殻へ到達
+
+と、有限ステップで外殻へ広がる因果伝播（離散光円錐フロント）が確認された。
+
+\subsubsection{\texorpdfstring{4.2 スカラー質量における \(g_{00}(d)\)
+弱結合ロックの普遍性：独立時計 \(H^{\otimes 2}\)
+監査（MS-5）}{4.2 スカラー質量における g\_\{00\}(d) 弱結合ロックの普遍性：独立時計 H\^{}\{\textbackslash otimes 2\} 監査（MS-5）}}\label{ux30b9ux30abux30e9ux30fcux8ceaux91cfux306bux304aux3051ux308b-g_00d-ux5f31ux7d50ux5408ux30edux30c3ux30afux306eux666eux904dux6027ux72ecux7acbux6642ux8a08-hotimes-2-ux76e3ux67fbms-5}
+
+Part I §6 では単一殻弱結合で背景時計の位相差が
+\(|\Delta\theta| < 10^{-9}\,\mathrm{rad}\)
+にロックした。これが「全殻で単一時計 \(M_8\)
+を共有したため」なのかを白黒つけるため、各殻が独立の時計を持つ
+\textbf{\(H^{\otimes 2} = (O_8\otimes M_8) \otimes (O_8\otimes M_8)\;(N=4{,}096)\)}
+を厳密 20×20 閉包エンジンで検証した（表 1 上段）。
+
+結果として、各殻に独立の時計を与えても、通常の \(M_8\)
+スカラー質量では弱結合共存相で空間計量比が \texttt{2.765}
+倍まで歪むにもかかわらず背景時計は \texttt{1.346e-13\ rad}
+に剛直同期ロックしたままであり、強結合崩壊相（\(\epsilon = 0.050\)）でのみ
+\texttt{2.759\ rad} へ解禁される。
+
+\subsubsection{\texorpdfstring{4.3 スピン 2 (\(\sigma_x\))
+局在質量による弱結合多殻 \(g_{00}(d)\) の 12 桁解禁（MS-6・図
+2(b)）}{4.3 スピン 2 (\textbackslash sigma\_x) 局在質量による弱結合多殻 g\_\{00\}(d) の 12 桁解禁（MS-6・図 2(b)）}}\label{ux30b9ux30d4ux30f3-2-sigma_x-ux5c40ux5728ux8ceaux91cfux306bux3088ux308bux5f31ux7d50ux5408ux591aux6bbb-g_00d-ux306e-12-ux6841ux89e3ux7981ms-6ux56f3-2b}
+
+では、弱結合共存相のまま多殻の重力時間遅延 \(g_{00}(d)\)
+を生み出す物理機構は何か。Part I で時計引きずりの種として見出された
+\textbf{スピン 2 (\(\sigma_x\)) モード} を多殻中心 \(d=0\)
+の局在質量として投入した（\(K=2, N=512\)、外側 5D × 内側
+\(\{M_8, M_{\sigma_x}\}\) 6D の厳密閉包エンジン
+\texttt{tri\_loop\_part5\_spin2\_g00\_v0.py}、実行時間 10.6 秒）。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1379}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1724}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+系・局在源
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+相（\(\|P\|(40)\)）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+空間計量比 \(E(0)/E(K)\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{中心時計位相差 \(\Delta\theta(0)\) {[}rad{]}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{中間殻 \(\Delta\theta(1)\) {[}rad{]}}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+判定
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+共通時計 \(K=4\)・スカラー（\(\epsilon=0.6\epsilon_c\)） & 弱結合共存 &
+\texttt{1.000001} & \texttt{1.732e-14} & --- & 厳密ロック \\
+独立時計 \(H^{\otimes 2}\)・スカラー（\(\epsilon=0.005\)） & 弱結合共存
+& \texttt{1.050865} & \texttt{2.309e-14} & --- & 厳密ロック \\
+独立時計 \(H^{\otimes 2}\)・スカラー（\(\epsilon=0.020\)） & 弱結合共存
+& \texttt{2.765377} & \texttt{1.346e-13} & --- & 厳密ロック \\
+\textbf{多殻 \(K=2\)・スピン 2
+\(\sigma_x\)（\(\epsilon_{\mathrm{sx}}=0.002\)）} & \textbf{弱結合共存
+(\texttt{0.004394})} & \texttt{0.9817} & \textbf{\texttt{+2.338e-02}} &
+\texttt{-3.861e-03} & \textbf{弱結合 \(g_{00}\) 解禁} \\
+\textbf{多殻 \(K=2\)・スピン 2
+\(\sigma_x\)（\(\epsilon_{\mathrm{sx}}=0.005\)）} & \textbf{弱結合共存
+(\texttt{0.004393})} & \texttt{0.8835} & \textbf{\texttt{+1.411e-01}} &
+\texttt{-2.179e-02} & \textbf{弱結合 \(g_{00}\) 解禁} \\
+\textbf{多殻 \(K=2\)・スピン 2
+\(\sigma_x\)（\(\epsilon_{\mathrm{sx}}=0.008\)）} & \textbf{弱結合共存
+(\texttt{0.004386})} & \texttt{0.7056} & \textbf{\texttt{+3.368e-01}} &
+\texttt{-4.439e-02} & \textbf{弱結合 \(g_{00}\) 解禁} \\
+\textbf{多殻 \(K=2\)・スピン 2
+\(\sigma_x\)（\(\epsilon_{\mathrm{sx}}=0.015\)）} & \textbf{弱結合共存
+(\texttt{0.004357})} & \texttt{0.2604} & \textbf{\texttt{+8.784e-01}} &
+\texttt{-5.057e-02} & \textbf{弱結合 \(g_{00}\) 解禁} \\
+\textbf{多殻 \(K=2\)・スピン 2
+\(\sigma_x\)（\(\epsilon_{\mathrm{sx}}=0.025\)）} & \textbf{弱結合共存
+(\texttt{0.004359})} & \texttt{0.0463} & \textbf{\texttt{+1.491e+00}} &
+\texttt{-1.913e-02} & \textbf{弱結合 \(g_{00}\) 解禁} \\
+独立時計 \(H^{\otimes 2}\)・スカラー（\(\epsilon=0.050\)） & 強結合崩壊
+& \(1.05\times 10^{39}\) & \texttt{2.759} & --- & 崩壊後解禁 \\
+共通時計 \(K=4\)・スカラー（\(\epsilon=0.160\)） & 強結合崩壊 &
+\(1.82\times 10^{44}\) & \texttt{3.049} & --- & 崩壊後解禁 \\
+\end{longtable}
+}
+
+\textbf{決定的な物理結論}： 1. \textbf{12
+桁の解禁と共存相の維持}：スピン 2 (\(\sigma_x\))
+局在源では、宇宙背景が崩壊しない弱結合共存相（\(\|P\|(40) \approx 0.00439\)）のまま、殻間時計位相差
+\(\Delta\theta(0)\) がスカラー質量の \texttt{10\^{}\{-13\}\ rad} から
+\textbf{\texttt{0.023\ \textasciitilde{}\ 1.491\ rad}} へ 12
+桁以上解禁される。 2. \textbf{質量エネルギー比例則
+\(\Delta\theta(0) \propto \epsilon_{\mathrm{sx}}^2\)}：弱結合極限（\(\epsilon_{\mathrm{sx}} = 0.002 \to 0.005 \to 0.008\)）で
+\(\Delta\theta(0)/\epsilon_{\mathrm{sx}}^2 = 5.85\times 10^3,\; 5.64\times 10^3,\; 5.26\times 10^3\)
+とほぼ一定であり、局在場のエネルギー
+\(M \propto \epsilon_{\mathrm{sx}}^2\)
+に線形比例するニュートン・ポストニュートン型重力時間遅延スケーリングが自発出現する。
+3. \textbf{殻深さ勾配の出現}：中心 \(d=0\)（正の進み／ズレ）\(\to\)
+中間殻 \(d=1\)（ノルム補償に伴う減衰波紋、比
+\(|\Delta\theta(1)/\Delta\theta(0)| \approx 0.16\)）\(\to\) 最外殻
+\(d=2\)（基準
+\texttt{0}）の距離依存勾配が確立された。これは、\textbf{スカラー質量は空間計量
+\(g_{ij}\) のみを歪め、時間計量 \(g_{00}(d)\) を弱結合で動かすにはスピン
+2 自由度が不可欠である}という選択則の第一原理実証である。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={Part V 検証 (2)：(a) 弱結合 K=3（N=4\{,\}096）における中心インパルスの有限速度因果伝播、(b) g\_\{00\}(d) 厳密監査：スカラー質量での弱結合ロック（青）vs スピン 2 (\textbackslash sigma\_x) による弱結合共存相での 12 桁解禁（緑）vs 地平面崩壊後の解禁（赤）。}]{figs_ja/fig_p5_causal_and_clock_audit_ja.png}
+\caption{Part V 検証 (2)：(a) 弱結合
+\(K=3\)（\(N=4{,}096\)）における中心インパルスの有限速度因果伝播、(b)
+\(g_{00}(d)\) 厳密監査：スカラー質量での弱結合ロック（青）vs スピン 2
+(\(\sigma_x\)) による弱結合共存相での 12 桁解禁（緑）vs
+地平面崩壊後の解禁（赤）。}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+残課題の切り分けと再現手順}\label{ux6b8bux8ab2ux984cux306eux5207ux308aux5206ux3051ux3068ux518dux73feux624bux9806}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{残課題（Part VI・VII へ切り分け）}：(1) スピン 2 多殻
+  \(g_{00}(d)\) の \(K \ge 3\)
+  連続極限およびアインシュタイン方程式（曲率テンソル
+  \(G_{\mu\nu} = 8\pi G T_{\mu\nu}\)）への直接写像、(2) 2
+  粒子の動的散乱（引力・斥力・運動量交換）と空間分離 CHSH
+  ベル不等式の動的破れ（Part VI 予定）、(3) 3
+  世代構造（\(J_3(\mathbb{O})\)）・精密質量比・微細構造定数
+  \(\alpha\)（Part VII 予定）。
+\item
+  \textbf{再現ファイル}：\texttt{tri\_loop\_part5\_multishell\_gravity\_v0.py}（MS-0〜MS-5、乱数なし・約
+  66
+  秒）、\texttt{results/tri\_loop\_part5\_multishell\_gravity\_v0.txt}、\texttt{tri\_loop\_part5\_spin2\_g00\_v0.py}（MS-6、乱数なし・約
+  11
+  秒）、\texttt{results/tri\_loop\_part5\_spin2\_g00\_v0.txt}、\texttt{plot\_part5\_figures\_v0.py}、\texttt{results/fig\_p5\_*\_\{ja,en\}.png}。
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsubsection{A. 自己引用}\label{a.-ux81eaux5df1ux5f15ux7528}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}P1{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積からの量子・ゲージ・重力・フェルミオン構造の自発創発（統合完成論文
+  Part I）}, Zenodo (2026-11-28), Concept DOI:
+  \texttt{10.5281/zenodo.24622200}.
+\item
+  \textbf{{[}P2{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積における重力・電磁気・QCD・ディラックの統一接続仮説（Part
+  II）}, Zenodo (2026-11-28), Concept DOI:
+  \texttt{10.5281/zenodo.24622565}.
+\item
+  \textbf{{[}P3{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積における時空・内部空間読出し接続仮説（Part
+  III）}, Zenodo (2026-11-28), Concept DOI:
+  \texttt{10.5281/zenodo.24625962}.
+\item
+  \textbf{{[}P4{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積における電弱対称性破れとパリティ最大破れ（Part
+  IV）}, Zenodo (2026-11-28), Concept DOI:
+  \texttt{10.5281/zenodo.24626592}.
+\end{itemize}
+
+\subsubsection{B.
+外部一次文献}\label{b.-ux5916ux90e8ux4e00ux6b21ux6587ux732e}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}E1{]}} A. Einstein, \emph{Die Feldgleichungen der
+  Gravitation}, Sitzungsber. Preuss. Akad. Wiss. Berlin, 844--847
+  (1915).
+\item
+  \textbf{{[}E2{]}} T. Regge, \emph{General Relativity without
+  Coordinates}, Nuovo Cimento \textbf{19}, 558--571 (1961).
+\item
+  \textbf{{[}E3{]}} R. Gurau, \emph{The \(1/N\) expansion of colored
+  tensor models}, Ann. Henri Poincaré \textbf{12}, 829--847 (2011),
+  arXiv:1011.2726.
+\end{itemize}
+
+\end{document}

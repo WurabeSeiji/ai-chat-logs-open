@@ -4,7 +4,7 @@
 全論文は Zenodo で CC BY 4.0 公開。各行：題名（日本語 / 英語）・Version DOI・Concept DOI・公開日・版・PDF・リポジトリ内フォルダ・リリースノート。
 本ファイルは `tools/gen_paper_index.py` により Zenodo API から自動生成。English: [PAPERS_en.md](PAPERS_en.md) / Scholar 用ページ: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**論文数: 171**
+**論文数: 172**
 
 ## グノモン正写像による4次元時空の幾何学的定式化 / Central Projection Framework (Gnomonic Spacetime Geometry)
 
@@ -601,6 +601,10 @@
    Electroweak Symmetry Breaking and Maximal Parity Violation in the 3D Triangle-Loop Product (Part IV): Exact 100%:0% Chiral Splitting in G2, Dynamical Higgs Mass Generation in Tri(T), W/Z/Photon Spectrum, and Bare Weinberg Angle sin^2(theta_W) = 3/8  
    DOI [10.5281/zenodo.24626593](https://doi.org/10.5281/zenodo.24626593) · Concept [10.5281/zenodo.24626592](https://doi.org/10.5281/zenodo.24626592) · 2026-11-28 · v1.0 · [PDF en](https://zenodo.org/records/24626593/files/triangle_loop_electroweak_symmetry_breaking_parity_part4_en.pdf) [PDF ja](https://zenodo.org/records/24626593/files/%E4%B8%89%E6%AC%A1%E5%85%83%E6%AD%A3%E6%96%B9%E9%85%8D%E5%88%97%E3%81%AE%E4%B8%89%E8%A7%92%E5%BD%A2%E3%83%AB%E3%83%BC%E3%83%97%E7%A9%8D%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E9%9B%BB%E5%BC%B1%E5%AF%BE%E7%A7%B0%E6%80%A7%E7%A0%B4%E3%82%8C%E3%81%A8%E3%83%91%E3%83%AA%E3%83%86%E3%82%A3%E6%9C%80%E5%A4%A7%E7%A0%B4%E3%82%8C_Part4.pdf)  
    フォルダ: [次元の生成構造/三次元正方配列の積と自己無撞着_20261127](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E4%B8%89%E6%AC%A1%E5%85%83%E6%AD%A3%E6%96%B9%E9%85%8D%E5%88%97%E3%81%AE%E7%A9%8D%E3%81%A8%E8%87%AA%E5%B7%B1%E7%84%A1%E6%92%9E%E7%9D%80_20261127) · [リリースノート](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_triangle_loop_part4_electroweak_parity_v1.md)
+56. **三次元正方配列の三角形ループ積における多殻大格子重力、因果伝播、およびスピン 2 による g_00(d) 解禁（Part V）**  
+   Multi-Shell Large-Lattice Gravity, Causal Propagation, and Spin-2 Unlock of g_00(d) in the 3D Triangle-Loop Product (Part V)  
+   DOI [10.5281/zenodo.24627520](https://doi.org/10.5281/zenodo.24627520) · Concept [10.5281/zenodo.24627519](https://doi.org/10.5281/zenodo.24627519) · 2026-11-28 · v1.0 · [PDF en](https://zenodo.org/records/24627520/files/triangle_loop_multishell_gravity_causal_part5_en.pdf) [PDF ja](https://zenodo.org/records/24627520/files/%E4%B8%89%E6%AC%A1%E5%85%83%E6%AD%A3%E6%96%B9%E9%85%8D%E5%88%97%E3%81%AE%E4%B8%89%E8%A7%92%E5%BD%A2%E3%83%AB%E3%83%BC%E3%83%97%E7%A9%8D%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E5%A4%9A%E6%AE%BB%E5%A4%A7%E6%A0%BC%E5%AD%90%E9%87%8D%E5%8A%9B%E3%81%A8%E5%9B%A0%E6%9E%9C%E4%BC%9D%E6%92%AD_Part5.pdf)  
+   フォルダ: [次元の生成構造/三次元正方配列の積と自己無撞着_20261127](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E4%B8%89%E6%AC%A1%E5%85%83%E6%AD%A3%E6%96%B9%E9%85%8D%E5%88%97%E3%81%AE%E7%A9%8D%E3%81%A8%E8%87%AA%E5%B7%B1%E7%84%A1%E6%92%9E%E7%9D%80_20261127) · [リリースノート](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_triangle_loop_part5_multishell_gravity_v1.md)
 
 ## 時間軸Q軸とフェルミオンの生成構造 / Time Axis, Q Axis, and Fermion Generation
 
