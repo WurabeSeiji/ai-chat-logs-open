@@ -1,0 +1,384 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{luatexja}
+\usepackage{xurl}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={SO(3) Spin Selection{,} G2/SU(3) Gauge Symmetries{,} Spatial Harmonic Localization{,} and Two-Particle Coexistence in the 3D Triangle-Loop Product (Third Rapid Communication)},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{SO(3) Spin Selection, G2/SU(3) Gauge Symmetries, Spatial Harmonic
+Localization, and Two-Particle Coexistence in the 3D Triangle-Loop
+Product (Third Rapid Communication)}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{― Exact Massless/Gapped Split (1 vs 1/3), Discrete
+\(1/\sqrt{s+1}\) Law, 3:3:1 Spatial Harmonic Binomial Ratio, and
+Coexistence Beyond Winner-Take-All ―}
+\author{Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020}
+\date{November 28, 2026 Version DOI 10.5281/zenodo.24619357}
+
+\ltjsetparameter{jacharrange={-2,-3}}
+\begin{document}
+\maketitle
+
+\textbf{Author:} Noriaki Kihara (WF System Co., Ltd.)\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Date:} November 28, 2026\\
+\textbf{Version DOI:} 10.5281/zenodo.24619357\\
+\textbf{Previous Rapid Communications:} Zenodo Concept DOI
+\texttt{10.5281/\allowbreak{}zenodo.24614040} (1st) /
+\texttt{10.5281/\allowbreak{}zenodo.24618399} (2nd)\\
+\textbf{Repository (all scripts, raw data, figures):}
+\url{https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/\%E6\%AC\%A1\%E5\%85\%83\%E3\%81\%AE\%E7\%94\%9F\%E6\%88\%90\%E6\%A7\%8B\%E9\%80\%A0/\%E4\%B8\%89\%E6\%AC\%A1\%E5\%85\%83\%E6\%AD\%A3\%E6\%96\%B9\%E9\%85\%8D\%E5\%88\%97\%E3\%81\%AE\%E7\%A9\%8D\%E3\%81\%A8\%E8\%87\%AA\%E5\%B7\%B1\%E7\%84\%A1\%E6\%92\%9E\%E7\%9D\%80\_20261127}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+Building on our first and second rapid communications on the
+background-free \textbf{triangle-loop product}
+\(\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r} T_{ipq} T_{qjr} T_{rpk}\) on
+\(N = 64\) (\(O_8 \otimes O_8\)), we test without adding any new rules
+whether \textbf{spin (spatial rotation representations), exact gauge
+symmetry counts, harmonic localization, and multi-particle coexistence}
+can be read out directly from the emergent states. Four exact results
+are established (zero randomness, full code open):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Exact \(SO(3)\) Spin 0 / 1 / 2 Selection (\texttt{1} vs
+  \texttt{(1/3)\^{}τ}) \& Discrete \(1/\sqrt{s+1}\) Law}: Testing
+  irreducible \(SO(3)\) excitations on the quaternionic 3D subspace
+  \(\{1, 2, 3\}\) of the outer \(O_8\) skeleton in Layer 1
+  (\(H = O_8 \otimes M_8\)), all three \textbf{spin-1 antisymmetric
+  rotation modes (\(L_x, L_y, L_z\)) remain strictly massless
+  (\(|\lambda| = 1.000\))}, whereas all seven symmetric modes
+  (\textbf{spin-0 isotropic scalings and the 5-component spin-2 metric
+  deformations}) decay exponentially with the exact rational rate
+  \textbf{\((1/3)^\tau\) (mass gap \(\ln 3\))}. Furthermore, spin
+  \(s = 0, 1, 2\) probes placed in the \(i, k\)-shared channel
+  \(b = \{2, 3\}\) settle into exact stable amplitudes
+  \textbf{\(1/\sqrt{s+1}\)} (\texttt{1.000}, \texttt{0.707},
+  \texttt{0.577}).
+\item
+  \textbf{Exact Gauge Counts (\(G_2 = 14\), \(SU(3) = 8\)) \& Exact
+  64×64 Layer-4 Jacobian}: Exact SVD kernel counts of rotation
+  generators on outer \(O_8\) yield \textbf{14 exact gauge symmetries
+  (\(G_2\))} inside \(SO(8)\) (28) and \(SO(7)\) (21), and \textbf{8
+  exact gauge symmetries (\(SU(3)\), matching the 8 gluons)} inside
+  \(SO(6)\) (15) with one imaginary axis (\(A=7\)) fixed. For the
+  Layer-4 static fixed point (Case 1, \(\tau = 1,000\)), full
+  diagonalization of the 64×64 Jacobian yields \texttt{0} unstable,
+  \textbf{exactly \texttt{9} massless flat modes
+  (\(|\lambda| = 1.000000\), \(S^3\times S^3\times S^3\))}, \texttt{0}
+  intermediate, and \textbf{\texttt{55} immediately expelled modes
+  (\(|\lambda| = 0\))}.
+\item
+  \textbf{Spatial Harmonic Separation of Nonlocal Gauge Waves
+  vs.~Localized Condensates}: Applying the exact Walsh--Hadamard
+  transform on outer \(O_8 \cong \mathbb{Z}_2^3\) (harmonic orders
+  \(k = 0, 1, 2, 3\)) reveals that nonlocal states (\(H\), global wave
+  P3a) have \textbf{\texttt{0.00\%}} spatial harmonics (100\% DC) and
+  the spin-1 gauge wave (\(L_x\)) has only \texttt{3.66\%}, whereas the
+  4-site quaternion lump + cloud (P5) activates strictly the 1st
+  harmonic at \textbf{\texttt{10.00\%} (exact 9:1)}, and the 1-site
+  point-localized lump + cloud (P4) excites all orders \(k = 1, 2, 3\)
+  in the \textbf{exact binomial ratio \texttt{3\ :\ 3\ :\ 1}
+  (\(\binom{3}{1}:\binom{3}{2}:\binom{3}{3}\))} totaling
+  \textbf{\texttt{45.85\%}} spatial harmonic energy.
+\item
+  \textbf{Two-Particle Coexistence Beyond Winner-Take-All}: Whereas
+  independent octonion blocks suffered winner-take-all collapse, placing
+  two localized 1-site condensates (P4) on background \(H\) yields
+  \textbf{exact 1:1 coexistence (\texttt{nz\ =\ 640},
+  \(E_1 = E_2 = 0.000094\))} across distinct sites \(A = 0, 1\) (both
+  in-phase and anti-phase) and across distinct channels
+  (\(b=\{2,3\}, \{6,7\}\)), while opposite-phase overlap on the same
+  site and channel cleanly annihilates (\texttt{nz\ =\ 512},
+  \(E_1 = E_2 = 0\)).
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Introduction}\label{introduction}
+
+Without adding any external fields, coordinates, or parameters to the
+self-updating map
+\[P_{ijk} = \mathrm{Tri}(U)_{ijk} = \sum_{p,q,r=0}^{N-1} U_{ipq}\, U_{qjr}\, U_{rpk}, \qquad U^{(\tau+1)} = \frac{\mathrm{Tri}(U^{(\tau)})}{\|\mathrm{Tri}(U^{(\tau)})\|_F},\]
+we investigate four structural signatures directly on the emergent
+Layer-1 (\(H = O_8 \otimes M_8\)) and Layer-4 (\(\tau = 1,000\)) states:
+\(SO(3)\) spin selection, \(G_2/SU(3)\) gauge dimension counts,
+\(\mathbb{Z}_2^3\) spatial harmonic localization, and two-particle
+coexistence.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{2. \(SO(3)\) Spin Selection, \(G_2/SU(3)\)
+Gauge Counts, and Layer-4
+Jacobian}{2. SO(3) Spin Selection, G\_2/SU(3) Gauge Counts, and Layer-4 Jacobian}}\label{so3-spin-selection-g_2su3-gauge-counts-and-layer-4-jacobian}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={Fig. 1: SO(3) spin selection, G2/SU(3) gauge symmetries, and exact Layer-4 Jacobian in the triangle-loop product}]{figs_en/fig_r3_spin_and_gauge_en.png}
+\caption{Fig. 1: SO(3) spin selection, G2/SU(3) gauge symmetries, and
+exact Layer-4 Jacobian in the triangle-loop product}
+\end{figure}
+
+\subsubsection{\texorpdfstring{2.1 Exact \(SO(3)\) Spin 0 / 1 / 2
+Selection (\texttt{1} vs \texttt{(1/3)\^{}τ})
+{[}Verified{]}}{2.1 Exact SO(3) Spin 0 / 1 / 2 Selection (1 vs (1/3)\^{}τ) {[}Verified{]}}}\label{exact-so3-spin-0-1-2-selection-1-vs-13ux3c4-verified}
+
+On the quaternionic 3D subspace \(\{1, 2, 3\}\) of outer \(O_8\) in
+\(H = O_8 \otimes M_8\)
+(\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}spin\_\allowbreak{}gauge\_\allowbreak{}higgs\_\allowbreak{}v0.py}, Fig. 1a):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Spin (Rep)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Excitation Mode (\(\epsilon = 10^{-5}\))
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Response \(\tau = 1 \to 2 \to 3 \to 5 \to 10\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Regime
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Spin-1} (triplet, antisym.) & \(SO(3)\) generators
+\(L_x, L_y, L_z\) (all 3) &
+\textbf{\texttt{1.000\ \$\textbackslash{}to\$\ 1.000\ \$\textbackslash{}to\$\ 1.000\ \$\textbackslash{}to\$\ 1.000\ \$\textbackslash{}to\$\ 1.000}}
+& Exact massless (\(|\lambda|=1\)) \\
+\textbf{Spin-0} (singlet, sym.) & 3D isotropic scalings (2 modes) &
+\textbf{\texttt{0.333\ \$\textbackslash{}to\$\ 0.111\ \$\textbackslash{}to\$\ 0.037\ \$\textbackslash{}to\$\ 0.004\ \$\textbackslash{}to\$\ 0.000}}
+& Exact \((1/3)^\tau\) (gap \(\ln 3\)) \\
+\textbf{Spin-2} (quintet, sym.) & 3D metric deformations
+\(h_{xx}-h_{yy}, h_{xy}\), etc. (all 5) &
+\textbf{\texttt{0.333\ \$\textbackslash{}to\$\ 0.111\ \$\textbackslash{}to\$\ 0.037\ \$\textbackslash{}to\$\ 0.004\ \$\textbackslash{}to\$\ 0.000}}
+& Exact \((1/3)^\tau\) (gap \(\ln 3\)) \\
+\end{longtable}
+}
+
+In the \(i,k\)-shared \(b=\{2,3\}\) channel, spin \(s = 0, 1, 2\) probes
+settle at \(\tau = 10\) to \texttt{1.000}, \texttt{0.707}, and
+\texttt{0.577} --- matching \textbf{\(1/\sqrt{s+1}\)} exactly (Fig. 1b).
+
+\subsubsection{\texorpdfstring{2.2 Exact \(G_2\) (14) / \(SU(3)\) (8)
+Gauge Counts \& Layer-4 64×64 Jacobian
+{[}Verified{]}}{2.2 Exact G\_2 (14) / SU(3) (8) Gauge Counts \& Layer-4 64×64 Jacobian {[}Verified{]}}}\label{exact-g_2-14-su3-8-gauge-counts-layer-4-6464-jacobian-verified}
+
+SVD kernel counts of outer \(O_8\) rotation generators
+(\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}g2\_\allowbreak{}and\_\allowbreak{}twoparticle\_\allowbreak{}v0.py}, Fig. 1c): -
+\textbf{\(SO(8)\) (28)}: \texttt{14} exact gauge (\(G_2\)) + \texttt{14}
+broken massless (\(|\lambda|=1\)). - \textbf{\(SO(7)\) (imaginary 7D,
+21)}: \texttt{14} exact gauge (\(G_2\)) + \texttt{7} broken massless
+(all 7 verified \(|\lambda| = 1.000000\)). - \textbf{\(SO(6)\) (\(A=7\)
+fixed, 15)}: \textbf{\texttt{8} exact gauge (\(SU(3)\))} + \texttt{7}
+broken massless.
+
+Full 64×64 Jacobian diagonalization of the Layer-4 static fixed point
+(\(\tau = 1,000\), Fig. 1d) yields \textbf{\texttt{0} unstable,
+\texttt{9} exact massless flat (\(|\lambda|=1.000000\), \(3+3+3\)
+rotations on \(S^3\times S^3\times S^3\)), \texttt{0} intermediate, and
+\texttt{55} expelled (\(|\lambda|=0\))} modes.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. Spatial Harmonic Localization and Two-Particle
+Coexistence}\label{spatial-harmonic-localization-and-two-particle-coexistence}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={Fig. 2: Spatial harmonic localization (exact 3:3:1 binomial ratio) and two-particle coexistence on background H}]{figs_en/fig_r3_harmonic_and_2p_en.png}
+\caption{Fig. 2: Spatial harmonic localization (exact 3:3:1 binomial
+ratio) and two-particle coexistence on background H}
+\end{figure}
+
+\subsubsection{\texorpdfstring{3.1 \(\mathbb{Z}_2^3\) Spatial Harmonics
+(Walsh--Hadamard Transform)
+{[}Verified{]}}{3.1 \textbackslash mathbb\{Z\}\_2\^{}3 Spatial Harmonics (Walsh--Hadamard Transform) {[}Verified{]}}}\label{mathbbz_23-spatial-harmonics-walshhadamard-transform-verified}
+
+Evaluating the 1-axis energy distribution \(E(A)\) on outer
+\(O_8 \cong \mathbb{Z}_2^3\) at \(\tau = 30\)
+(\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}harmonic\_\allowbreak{}localization\_\allowbreak{}v0.py}, Fig. 2a):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+State
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Localization
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+DC (\(k=0\))
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(k=1\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(k=2\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(k=3\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Total Harmonics (\(k \ge 1\))
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Background \(H\) / Global P3a} & Nonlocal &
+\textbf{\texttt{1.0000}} & \texttt{0.0000} & \texttt{0.0000} &
+\texttt{0.0000} & \textbf{\texttt{0.00\%}} \\
+\textbf{Spin-1 Gauge Wave (\(L_x\))} & Near-nonlocal &
+\textbf{\texttt{0.9634}} & \texttt{0.0244} & \texttt{0.0122} &
+\texttt{0.0000} & \textbf{\texttt{3.66\%}} \\
+\textbf{Local \(H_4\) Lump + Cloud (P5)} & 4-site local &
+\textbf{\texttt{0.9000}} & \textbf{\texttt{0.1000}} & \texttt{0.0000} &
+\texttt{0.0000} & \textbf{\texttt{10.00\%}} (exact 9:1) \\
+\textbf{Local 1-Site Lump + Cloud (P4)} & Point-local &
+\textbf{\texttt{0.5415}} & \textbf{\texttt{0.1965}} &
+\textbf{\texttt{0.1965}} & \textbf{\texttt{0.0655}} &
+\textbf{\texttt{45.85\%}} (exact 3:3:1) \\
+\end{longtable}
+}
+
+By contrast, 256-step temporal FFTs along \(\tau\) remain uniformly
+broadband (\(H_\tau \approx 4.35\text{--}4.47\)) across all five cases,
+proving that \textbf{spatial harmonics on \(\mathbb{Z}_2^3\) are the
+decisive signature separating nonlocal gauge waves from localized
+lumps}.
+
+\subsubsection{\texorpdfstring{3.2 Two-Particle Coexistence \&
+Annihilation on Background \(H\)
+{[}Verified{]}}{3.2 Two-Particle Coexistence \& Annihilation on Background H {[}Verified{]}}}\label{two-particle-coexistence-annihilation-on-background-h-verified}
+
+Placing two localized 1-site lumps (P4, \(\epsilon = 0.08\)) on \(H\)
+for 30 steps (\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}g2\_\allowbreak{}and\_\allowbreak{}twoparticle\_\allowbreak{}v0.py}, Fig.
+2b): - \textbf{Distinct sites \(A = 0, 1\), same channel (both in-phase
+and anti-phase)}: \texttt{nz\ =\ 640}, \textbf{\(E_1 = E_2 = 0.000094\)}
+(exact 1:1 coexistence with shared cloud
+\(E_{\mathrm{oth}} = 0.001196\)). - \textbf{Distinct channels
+(\(b=\{2,3\}\) and \(\{6,7\}\), same or distinct sites)}:
+\texttt{nz\ =\ 640}, \textbf{\(E_1 = E_2 = 0.000084\) (same site) /
+\(0.000094\) (distinct sites)}. - \textbf{Same site, same channel,
+anti-phase (-)}: \texttt{nz\ =\ 512}, \(E_1 = E_2 = 0\) (complete
+annihilation).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4. Working Hypotheses \&
+Reproducibility}\label{working-hypotheses-reproducibility}
+
+As working physical analogies, antisymmetric spin-1 modes
+(\(|\lambda|=1\)) and \(G_2/SU(3)\) gauge counts correspond to massless
+gauge bosons (photon / 8 gluons), symmetric spin-0 scaling
+(\((1/3)^\tau\), gap \(\ln 3\)) to massive Higgs-like excitations, and
+coexisting 3:3:1 harmonic-rich lumps to localized matter particles.
+Fermionic anticommutation and quantitative Standard Model constants
+remain open problems.
+
+Reproducible deterministically with zero randomness via: 1.
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}spin\_\allowbreak{}gauge\_\allowbreak{}higgs\_\allowbreak{}v0.py} 2.
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}harmonic\_\allowbreak{}localization\_\allowbreak{}v0.py} 3.
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}g2\_\allowbreak{}and\_\allowbreak{}twoparticle\_\allowbreak{}v0.py} 4.
+\texttt{plot\_\allowbreak{}third\_\allowbreak{}report\_\allowbreak{}figures\_\allowbreak{}v0.py}
+
+\end{document}

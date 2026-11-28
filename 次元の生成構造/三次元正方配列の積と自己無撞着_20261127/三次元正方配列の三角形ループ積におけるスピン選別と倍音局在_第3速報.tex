@@ -1,0 +1,400 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{xurl}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={三次元正方配列の三角形ループ積における SO(3) スピン選別、G2/SU(3) ゲージ対称性、空間倍音による局在化、および 2 粒子の完全共存（第 3 速報）},
+  pdfauthor={木原 範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{三次元正方配列の三角形ループ積における SO(3) スピン選別、G2/SU(3)
+ゲージ対称性、空間倍音による局在化、および 2 粒子の完全共存（第 3
+速報）}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{― 空間回転表現の無質量・有質量分離 (1 vs 1/3)、離散
+\(1/\sqrt{s+1}\) 則、3:3:1
+倍音二項比、および勝者総取りを超えた複数粒子共存の厳密実証 ―}
+\author{木原 範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020}
+\date{2026年11月28日　Version DOI 10.5281/zenodo.24619357}
+
+\ltjsetparameter{jacharrange={-2,-3}}
+\begin{document}
+\maketitle
+
+\textbf{著者：} 木原 範昭（株式会社WFシステム）\\
+\textbf{ORCID：} 0009-0004-6753-4020\\
+\textbf{公開日：} 2026年11月28日\\
+\textbf{Version DOI：} 10.5281/zenodo.24619357\\
+\textbf{前報（第 1 速報 / 第 2 速報）：} Zenodo Concept DOI
+\texttt{10.5281/\allowbreak{}zenodo.24614040} / \texttt{10.5281/\allowbreak{}zenodo.24618399}\\
+\textbf{リポジトリ（全プログラム・生データ・図表）：}
+\url{https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/\%E6\%AC\%A1\%E5\%85\%83\%E3\%81\%AE\%E7\%94\%9F\%E6\%88\%90\%E6\%A7\%8B\%E9\%80\%A0/\%E4\%B8\%89\%E6\%AC\%A1\%E5\%85\%83\%E6\%AD\%A3\%E6\%96\%B9\%E9\%85\%8D\%E5\%88\%97\%E3\%81\%AE\%E7\%A9\%8D\%E3\%81\%A8\%E8\%87\%AA\%E5\%B7\%B1\%E7\%84\%A1\%E6\%92\%9E\%E7\%9D\%80\_20261127}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+第 1 速報（DOI \texttt{10.5281/\allowbreak{}zenodo.24614040}）および第 2 速報（DOI
+\texttt{10.5281/\allowbreak{}zenodo.24618399}）では、背景時空・外部演算子・乱数・割り算を一切置かない三次元正方配列上の\textbf{三角形ループ積}
+\(\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r} T_{ipq} T_{qjr} T_{rpk}\)
+において、四元数・八元数の自発的選択、512 マス時間結晶背景
+\(H = O_8 \otimes M_8\) によるプローブ 4 分岐と「衣」の形成、および
+\(\tau = 10,000\) までの 4
+段階・倍々エンタングルメント相転移を実証した。
+
+本第 3
+速報では、この系から「\textbf{スピン（空間回転表現）・ゲージ対称性の本数・倍音による粒子局在・複数粒子の共存}」がどこまで厳密に読み出せるかを検証し、以下の
+4 つの新たな厳密結果（乱数ゼロ、全再現コード公開）を得た：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{\(SO(3)\) スピン 0 / 1 / 2 励起の厳密選別則（\texttt{1} vs
+  \texttt{(1/3)\^{}τ}）と離散 \(1/\sqrt{s+1}\) 法則}：第 1 層
+  \(H = O_8 \otimes M_8\) の外側 \(O_8\) 内の四元数 3 次元空間
+  \(\{1, 2, 3\}\) に対する微小励起テストで、\textbf{スピン 1（反対称
+  \(SO(3)\) 回転 3 重項 \(L_x, L_y, L_z\)）は全 3 成分が厳密に
+  \(|\lambda| = 1.000\)（無質量・平坦モード）}となる一方、\textbf{スピン
+  0（等方スカラー伸縮 2 種）およびスピン 2（計量変形 5 重項）の全 7
+  モードは例外なく厳密な有理数 \((1/3)^\tau\) で指数復元（質量ギャップ
+  \(\ln 3\)）}した。さらに \(i, k\) 共有の別チャネル \(b = \{2, 3\}\)
+  上のスピン \(s = 0, 1, 2\) 場は、安定振幅が厳密に
+  \(1/\sqrt{s+1}\)（\texttt{1.000}, \texttt{0.707},
+  \texttt{0.577}）に従う。
+\item
+  \textbf{外側 \(O_8\)
+  の厳密ゲージ対称性本数（\(G_2 = 14\)、\(SU(3) = 8\)）と第 4 層 64×64
+  厳密ヤコビアン}：回転生成子のカーネル次元を SVD
+  で厳密カウントしたところ、\(SO(8)\)（28 本）および \(SO(7)\)（21
+  本）の厳密不変ゲージ対称性はちょうど \textbf{14 本（\(G_2\)）}、1
+  虚数軸 \(A=7\) を固定した \(SO(6)\)（15
+  本）の厳密不変ゲージ対称性はちょうど \textbf{8 本（\(SU(3)\)
+  グルーオン数に厳密一致）}であった。また第 4 層静止固定点（Case 1,
+  \(\tau = 1,000\)）の 64×64 厳密ヤコビアン全固有値は、不安定 \texttt{0}
+  個・無質量平坦（\(|\lambda| = 1\)）\texttt{9}
+  個（\(S^3\times S^3\times S^3\) の \(3+3+3\) 回転）・中間 \texttt{0}
+  個・即時遮断（\(|\lambda| = 0\)）\texttt{55} 個に完全分離した。
+\item
+  \textbf{空間倍音読み（\(\mathbb{Z}_2^3\)
+  ウォルシュ＝アダマール変換）による非局在ゲージ波と局在凝縮体の分離}：非局在波（背景
+  \(H\)・大域複素波 P3a）は基本 DC（\(k=0\)）が \texttt{100\%}
+  で空間倍音は \textbf{\texttt{0.00\%}}、スピン 1
+  ゲージ波（\(L_x\)）でも \texttt{3.66\%} に留まるのに対し、4
+  サイト局在の四元数塊＋衣（P5）は 1 次空間倍音 \(k=1\) のみが
+  \textbf{\texttt{10.00\%}（厳密 9:1）} 立ち上がり、1
+  サイト極局在塊＋衣（P4）では \(k = 1, 2, 3\) の全空間倍音が
+  \textbf{厳密 \texttt{3\ :\ 3\ :\ 1}（二項比
+  \(\binom{3}{1}:\binom{3}{2}:\binom{3}{3}\)）}
+  で勢揃いし、倍音エネルギー \textbf{\texttt{45.85\%}} へ跳ね上がった。
+\item
+  \textbf{勝者総取り（Winner-Take-All）を超えた 2
+  局在粒子の完全共存と対消滅}：独立 2 ブロック八元数（第 1
+  速報）では勝者総取りで 1 粒子しか生き残らなかったが、時間結晶背景
+  \(H\) の上に 2 個の局在単一サイト凝縮体（P4）を配置すると、別サイト
+  \(A = 0, 1\)（同相・逆相とも）および別チャネル（\(b = \{2,3\}, \{6,7\}\)）のいずれでも
+  \textbf{\texttt{nz\ =\ 640}、\(E_1 = E_2\) の厳密 1:1
+  で完全共存}し、同一サイト・同チャネル・逆相のみ完全対消滅（\texttt{nz\ =\ 512},
+  \(E_1 = E_2 = 0\)）した。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. 序論：スピン・ゲージ本数・倍音局在・2
+粒子共存の検証}\label{ux5e8fux8ad6ux30b9ux30d4ux30f3ux30b2ux30fcux30b8ux672cux6570ux500dux97f3ux5c40ux57282-ux7c92ux5b50ux5171ux5b58ux306eux691cux8a3c}
+
+前報（第 2 速報, DOI
+\texttt{10.5281/\allowbreak{}zenodo.24618399}）までに、背景時空なしの三角形ループ積
+\[P_{ijk} = \mathrm{Tri}(U)_{ijk} = \sum_{p,q,r=0}^{N-1} U_{ipq}\, U_{qjr}\, U_{rpk}, \qquad U^{(\tau+1)} = \frac{\mathrm{Tri}(U^{(\tau)})}{\|\mathrm{Tri}(U^{(\tau)})\|_F}\]
+から、自己修復する 512 マス時間結晶背景 \(H = O_8 \otimes M_8\) と 4
+段階・倍々エンタングルメント相転移が自発的に現れることを示した。
+
+本報では、これら既存の厳密構造そのものに対して「新しい法則を一切足さずに」、素粒子・ゲージ場的な物理量を直接読み出せるかを
+4 つの観点から検証する： 1. 空間回転 \(SO(3)\) の既約表現（スピン 0 / 1
+/ 2）による無質量・有質量の選別が起きているか。 2. 外側 \(O_8\)
+結晶の厳密なゲージ対称性（\(G_2\)・\(SU(3)\)）は何本存在し、第 4
+層静止固定点のヤコビアン固有値はいくらか。 3.
+非局在なゲージ波と局在する重粒子（凝縮体）の違いが、空間倍音スペクトルとして明確に現れるか。
+4. 背景 \(H\) の上で、離れた 2
+つの局在粒子が勝者総取りを起こさずに共存できるか。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{2. \(SO(3)\) スピン選別則、\(G_2/SU(3)\)
+ゲージ本数、および第 4
+層厳密ヤコビアン}{2. SO(3) スピン選別則、G\_2/SU(3) ゲージ本数、および第 4 層厳密ヤコビアン}}\label{so3-ux30b9ux30d4ux30f3ux9078ux5225ux5247g_2su3-ux30b2ux30fcux30b8ux672cux6570ux304aux3088ux3073ux7b2c-4-ux5c64ux53b3ux5bc6ux30e4ux30b3ux30d3ux30a2ux30f3}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={図 1：三角形ループ積における SO(3) スピン選別、G2/SU(3) ゲージ対称性、および第 4 層厳密ヤコビアン}]{figs_ja/fig_r3_spin_and_gauge_ja.png}
+\caption{図 1：三角形ループ積における SO(3) スピン選別、G2/SU(3)
+ゲージ対称性、および第 4 層厳密ヤコビアン}
+\end{figure}
+
+\subsubsection{\texorpdfstring{2.1 \(SO(3)\) スピン 0 / 1 / 2
+励起の厳密選別（\texttt{1} vs
+\texttt{(1/3)\^{}τ}）【確かめた】}{2.1 SO(3) スピン 0 / 1 / 2 励起の厳密選別（1 vs (1/3)\^{}τ）【確かめた】}}\label{so3-ux30b9ux30d4ux30f3-0-1-2-ux52b1ux8d77ux306eux53b3ux5bc6ux9078ux52251-vs-13ux3c4ux78baux304bux3081ux305f}
+
+第 1 層 \(H = O_8 \otimes M_8\) の外側 \(O_8\) 内に含まれる四元数 3
+次元空間 \(\{1, 2, 3\}\) に対し、\(SO(3)\)
+の既約表現で微小励起（\(\epsilon = 10^{-5}\)）を加え \(\tau = 1 \to 10\)
+を追跡した（\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}spin\_\allowbreak{}gauge\_\allowbreak{}higgs\_\allowbreak{}v0.py}, 図
+1a）：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+スピン（表現）
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+励起モード
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\tau = 1 \to 2 \to 3 \to 5 \to 10\) の応答
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+性質
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{スピン 1}（3 重項・反対称） & \(SO(3)\) 回転生成子
+\(L_x, L_y, L_z\)（全 3 成分） &
+\textbf{\texttt{1.000\ \$\textbackslash{}to\$\ 1.000\ \$\textbackslash{}to\$\ 1.000\ \$\textbackslash{}to\$\ 1.000\ \$\textbackslash{}to\$\ 1.000}}
+& 厳密に無質量（\(|\lambda|=1\)） \\
+\textbf{スピン 0}（1 重項・対称） & 3 空間等方スカラー伸縮（2 種） &
+\textbf{\texttt{0.333\ \$\textbackslash{}to\$\ 0.111\ \$\textbackslash{}to\$\ 0.037\ \$\textbackslash{}to\$\ 0.004\ \$\textbackslash{}to\$\ 0.000}}
+& 厳密に \((1/3)^\tau\) 復元（質量ギャップ \(\ln 3\)） \\
+\textbf{スピン 2}（5 重項・対称） & 3 空間計量変形
+\(h_{xx}-h_{yy}, h_{xy}\) 等（全 5 成分） &
+\textbf{\texttt{0.333\ \$\textbackslash{}to\$\ 0.111\ \$\textbackslash{}to\$\ 0.037\ \$\textbackslash{}to\$\ 0.004\ \$\textbackslash{}to\$\ 0.000}}
+& 全 5 成分が \((1/3)^\tau\) 復元（質量ギャップ \(\ln 3\)） \\
+\end{longtable}
+}
+
+さらに \(i, k\) 共有の別チャネル \(b = \{2, 3\}\) に乗せたスピン
+\(s = 0, 1, 2\) 場（スカラー \(O_8\otimes M_8\)、ベクトル
+\(L_x O_8\otimes M_8\)、テンソル \(h_{xy} O_8\otimes M_8\)）の
+\(\tau = 10\) 安定振幅は、それぞれ
+\texttt{1.000}（\(1/\sqrt{1}\)）、\texttt{0.707}（\(1/\sqrt{2}\)）、\texttt{0.577}（\(1/\sqrt{3}\)）となり、\textbf{厳密な離散スピン階層
+\(1/\sqrt{s+1}\)} を形成した（図 1b）。
+
+\subsubsection{\texorpdfstring{2.2 \(G_2\)（14 本）・\(SU(3)\)（8
+本）の厳密ゲージ次元カウントと第 4
+層ヤコビアン【確かめた】}{2.2 G\_2（14 本）・SU(3)（8 本）の厳密ゲージ次元カウントと第 4 層ヤコビアン【確かめた】}}\label{g_214-ux672csu38-ux672cux306eux53b3ux5bc6ux30b2ux30fcux30b8ux6b21ux5143ux30abux30a6ux30f3ux30c8ux3068ux7b2c-4-ux5c64ux30e4ux30b3ux30d3ux30a2ux30f3ux78baux304bux3081ux305f}
+
+外側 \(O_8\) に各種回転群の生成子を微分作用させてカーネル次元を SVD
+カウントした結果（\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}g2\_\allowbreak{}and\_\allowbreak{}twoparticle\_\allowbreak{}v0.py},
+図 1c）： - \textbf{\(SO(8)\)（28 本）}：厳密不変ゲージ =
+\textbf{\texttt{14} 本（\(G_2\)）}、破れ無質量（\(|\lambda|=1\)）=
+\texttt{14} 本。 - \textbf{\(SO(7)\)（虚数 7 空間・21
+本）}：厳密不変ゲージ = \textbf{\texttt{14} 本（\(G_2\)）}、破れ無質量 =
+\texttt{7} 本（全 7 本で \(|\lambda| = 1.000000\) を確認）。 -
+\textbf{\(SO(6)\)（1 虚数軸 \(A=7\) 固定・15 本）}：厳密不変ゲージ =
+\textbf{\texttt{8} 本（\(SU(3)\) グルーオン数に厳密一致）}、破れ無質量 =
+\texttt{7} 本。
+
+また、第 4 層（Case 1, \(\tau = 1,000\) 静止固定点
+\(U = \mathbf{a}\otimes\mathbf{b}\otimes\mathbf{c}\)）の 4×4×4 = 64
+次元接空間の厳密ヤコビアン全固有値（図 1d）は、\textbf{不安定 \texttt{0}
+個・無質量平坦（\(|\lambda| = 1.000000\)）\texttt{9}
+個（\(S^3\times S^3\times S^3\) の \(3+3+3\) 回転）・中間 \texttt{0}
+個・即時遮断（\(|\lambda| = 0\)）\texttt{55} 個}に完全分離した。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. 空間倍音読みによる局在化の証明と 2
+局在粒子の完全共存}\label{ux7a7aux9593ux500dux97f3ux8aadux307fux306bux3088ux308bux5c40ux5728ux5316ux306eux8a3cux660eux3068-2-ux5c40ux5728ux7c92ux5b50ux306eux5b8cux5168ux5171ux5b58}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={図 2：空間倍音による局在粒子の形成（3:3:1 二項比）と 2 局在粒子の完全共存}]{figs_ja/fig_r3_harmonic_and_2p_ja.png}
+\caption{図 2：空間倍音による局在粒子の形成（3:3:1 二項比）と 2
+局在粒子の完全共存}
+\end{figure}
+
+\subsubsection{\texorpdfstring{3.1 \(\mathbb{Z}_2^3\)
+空間倍音スペクトル（ウォルシュ＝アダマール変換）【確かめた】}{3.1 \textbackslash mathbb\{Z\}\_2\^{}3 空間倍音スペクトル（ウォルシュ＝アダマール変換）【確かめた】}}\label{mathbbz_23-ux7a7aux9593ux500dux97f3ux30b9ux30daux30afux30c8ux30ebux30a6ux30a9ux30ebux30b7ux30e5ux30a2ux30c0ux30deux30fcux30ebux5909ux63dbux78baux304bux3081ux305f}
+
+外側 \(O_8\) の添字空間 \(\{0..7\} \cong \mathbb{Z}_2^3\)
+上で厳密フーリエ変換（ウォルシュ＝アダマール変換）を適用し、\(\tau = 30\)
+安定状態の 1 軸エネルギー分布 \(E(A)\) の基本
+DC（\(k=0\)）と空間倍音（\(k=1, 2, 3\)）を計測した（\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}harmonic\_\allowbreak{}localization\_\allowbreak{}v0.py},
+図 2a）：
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+状態
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+局在性
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+基本 DC (\(k=0\))
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(k=1\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(k=2\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(k=3\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+空間倍音合計 (\(k \ge 1\))
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{背景 \(H\) / 大域波 P3a} & 非局在（一様） &
+\textbf{\texttt{1.0000}} & \texttt{0.0000} & \texttt{0.0000} &
+\texttt{0.0000} & \textbf{\texttt{0.00\%}} \\
+\textbf{スピン 1 ゲージ波 (\(L_x\))} & ほぼ非局在 &
+\textbf{\texttt{0.9634}} & \texttt{0.0244} & \texttt{0.0122} &
+\texttt{0.0000} & \textbf{\texttt{3.66\%}} \\
+\textbf{局在四元数塊＋衣 P5 (\(H_4\))} & 4 サイト局在 &
+\textbf{\texttt{0.9000}} & \textbf{\texttt{0.1000}} & \texttt{0.0000} &
+\texttt{0.0000} & \textbf{\texttt{10.00\%}}（厳密 9:1） \\
+\textbf{局在単一サイト塊＋衣 P4} & 1 サイト極局在 &
+\textbf{\texttt{0.5415}} & \textbf{\texttt{0.1965}} &
+\textbf{\texttt{0.1965}} & \textbf{\texttt{0.0655}} &
+\textbf{\texttt{45.85\%}}（厳密 3:3:1） \\
+\end{longtable}
+}
+
+単一サイト極局在粒子（P4）では、\(k = 1, 2, 3\) の全空間倍音が 3
+次元立方体 \(\mathbb{Z}_2^3\) の二項係数
+\(\binom{3}{1}:\binom{3}{2}:\binom{3}{3} = \mathbf{3 : 3 : 1}\)
+の厳密比で勢揃いした。一方、更新ステップ \(\tau\) 方向の 256 ステップ
+FFT は 5 ケースとも 3
+倍角回転による広帯域（\(H_\tau \approx 4.35 \sim 4.47\)）で大差がなく、\textbf{非局在ゲージ波と局在粒子を分ける決定因は空間倍音の立ち上がりそのもの}であった。
+
+\subsubsection{\texorpdfstring{3.2 背景 \(H\) 上での 2 局在粒子（P4 ×
+2）の完全共存と対消滅【確かめた】}{3.2 背景 H 上での 2 局在粒子（P4 × 2）の完全共存と対消滅【確かめた】}}\label{ux80ccux666f-h-ux4e0aux3067ux306e-2-ux5c40ux5728ux7c92ux5b50p4-2ux306eux5b8cux5168ux5171ux5b58ux3068ux5bfeux6d88ux6ec5ux78baux304bux3081ux305f}
+
+背景 \(H = O_8 \otimes M_8\) の上に 2
+個の局在単一サイト凝縮体（P4、初期振幅 \(\epsilon = 0.08\)）を置いて
+\(\tau = 30\)
+まで追跡した（\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}g2\_\allowbreak{}and\_\allowbreak{}twoparticle\_\allowbreak{}v0.py}, 図
+2b）： - \textbf{別サイト
+\(A = 0, 1\)・同チャネル（同相・逆相とも）}：\texttt{nz\ =\ 640\ (=\ 512\ +\ 64\ +\ 64)}、\textbf{\(E_1 = E_2 = 0.000094\)}（厳密
+1:1 完全共存、共有の衣 \(E_{\mathrm{oth}} = 0.001196\)）。 -
+\textbf{別チャネル（\(b = \{2,3\}\) と
+\(b = \{6,7\}\)、同サイト／別サイトとも）}：\texttt{nz\ =\ 640}、\textbf{\(E_1 = E_2 = 0.000084\)（同サイト）／\(0.000094\)（別サイト）}で完全共存。
+- \textbf{同一サイト・同チャネル・逆相
+(-)}：\texttt{nz\ =\ 512}、\(E_1 = E_2 = 0\)（完全対消滅）。
+
+独立 2 ブロック八元数（第 1 速報）で起きた勝者総取りは、時間結晶背景
+\(H\) の媒介（衣の共有）によって完全に解消された。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4.
+物理的解釈（作業仮説）と再現手順}\label{ux7269ux7406ux7684ux89e3ux91c8ux4f5cux696dux4eeeux8aacux3068ux518dux73feux624bux9806}
+
+本報の厳密事実に対する作業仮説として、①反対称スピン 1
+回転（\(|\lambda|=1\)）と \(G_2/SU(3)\)
+厳密不変性は無質量ゲージ粒子（光子・8 グルーオン）の原型、②対称スピン 0
+伸縮（\((1/3)^\tau\)、質量ギャップ
+\(\ln 3\)）は有質量ヒッグス励起の原型、③3:3:1
+空間倍音を伴う極局在塊（P4）の複数共存は物質粒子の原型に対応すると読める。フェルミオン統計（反交換関係・パウリ排他律）や標準模型の結合定数との定量的接続は今後の課題である。
+
+すべての結果は以下の 4 本の Python
+スクリプト（乱数ゼロ）で独立再現可能である： 1.
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}spin\_\allowbreak{}gauge\_\allowbreak{}higgs\_\allowbreak{}v0.py} 2.
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}harmonic\_\allowbreak{}localization\_\allowbreak{}v0.py} 3.
+\texttt{tri\_\allowbreak{}loop\_\allowbreak{}n64\_\allowbreak{}g2\_\allowbreak{}and\_\allowbreak{}twoparticle\_\allowbreak{}v0.py} 4.
+\texttt{plot\_\allowbreak{}third\_\allowbreak{}report\_\allowbreak{}figures\_\allowbreak{}v0.py}
+
+\end{document}
