@@ -14,6 +14,12 @@
 - 英語版: https://note.com/kiharanoriaki/n/na8f7739b447d
   （元原稿: `次元の生成構造/三次元正方配列の積と自己無撞着_20261127/note_triangle_loop_en_v1.md`）
 
+## Facebook
+- 日本語版: https://www.facebook.com/kihara.noriaki/posts/pfbid02sQT1LuEaH7iJq2gvUrRy1zA467jCyDvyBs8YPLJqhkFG8aAzHghvLxHLJzVvrpQcl
+  （元原稿: `次元の生成構造/三次元正方配列の積と自己無撞着_20261127/fb_message_triangle_loop_ja.md`）
+- 英語版: 作成済み（投稿待ち）
+  （元原稿: `次元の生成構造/三次元正方配列の積と自己無撞着_20261127/fb_message_triangle_loop_en.md`）
+
 ## 公開ファイル（Zenodo, 9点）
 - `三次元正方配列の三角形ループ積による結晶選択と融解_速報.md` / `triangle_loop_product_crystal_selection_melting_rapid_en.md`
 - `三次元正方配列の三角形ループ積による結晶選択と融解_速報.tex` / `triangle_loop_product_crystal_selection_melting_rapid_en.tex`
@@ -41,3 +47,4 @@
 | 2026-11-28 | v1.0 公開。Zenodo 9 ファイル（日英 md/tex/pdf、`build_tex.py`、`figures_and_programs.zip`、`SHA256SUMS`）、DOI 取得、Zenn 記事原稿作成、PAPERS 目次更新 |
 | 2026-11-28 | note 日本語版公開（https://note.com/kiharanoriaki/n/n6a1c65eb049b）、ヘッダー画像・note 英語版原稿作成 |
 | 2026-11-28 | note 英語版公開（https://note.com/kiharanoriaki/n/na8f7739b447d） |
+| 2026-11-28 | Facebook 日本語版公開（https://www.facebook.com/kihara.noriaki/posts/pfbid02sQT1LuEaH7iJq2gvUrRy1zA467jCyDvyBs8YPLJqhkFG8aAzHghvLxHLJzVvrpQcl）、Facebook 英語版原稿作成 |
