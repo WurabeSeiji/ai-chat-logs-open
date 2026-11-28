@@ -1,0 +1,1020 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{xurl}
+\usepackage{float}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}
+\usepackage{float}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={三次元正方配列の三角形ループ積からの量子・ゲージ・重力・フェルミオン構造の自発創発},
+  pdfauthor={木原 範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{三次元正方配列の三角形ループ積からの量子・ゲージ・重力・フェルミオン構造の自発創発}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{― 背景不要な実数 3 階テンソル反復の統合解析（第 1〜第 7
+速報の体系的総括） ―}
+\author{木原 範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020}
+\date{2026年11月28日}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\textbf{著者：} 木原 範昭（株式会社WFシステム）\\
+\textbf{ORCID：} 0009-0004-6753-4020\\
+\textbf{日付：} 2026年11月28日\\
+\textbf{位置づけ：} 速報シリーズ第 1〜第 7 報 {[}S1--S7{]}
+で個別に速報・先取権確保した全定理および乱数なしの決定論的数値検証結果を、自己先行研究
+{[}K1--K8{]} および外部一次文献 {[}E1--E15{]}
+との関係のもとで一冊の体系的論文として統合した完成本論である。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+背景時空・計量・作用・複素振幅・確率公理・フェルミオン場・質量パラメータを一切仮定せず、純粋な実数
+3 階テンソル \(T \in \mathbb{R}^{N\times N\times N}\)
+に対する単一の正規化自己無撞着写像
+\[\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r=0}^{N-1} T_{ipq}\, T_{qjr}\, T_{rpk}, \qquad U^{(\tau+1)} = \frac{\mathrm{Tri}(U^{(\tau)})}{\|\mathrm{Tri}(U^{(\tau)})\|_F}\]
+だけを公理とする力学系を解析した。\(N = 1 \dots 64\)、特に
+\(N = 64\)（\(O_8 \otimes O_8\)）における長期的反復（最大
+\(\tau = 10{,}000\)）、摂動応答、厳密 SVD・ヤコビアン・Walsh--Hadamard
+変換・Triality・クリフォード代数解析を乱数なしで実行した結果、現代物理学の
+7 つの骨格構造が外部公理なしに自発創発することを確立した。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Hurwitz 結晶選別・次元融解・視野角二極分裂（第 2
+  章）{[}S1{]}}：\(\mathrm{Tri}\) は Hurwitz 多元環
+  \(\mathbb{R}, \mathbb{C}, \mathbb{H}, \mathbb{O}\)
+  のみを厳密結晶として選別し（16 次元十六元数 \(\mathbb{S}\)
+  は自壊）、\(N = 64\) では 512 マス時間結晶 \(H = O_8 \otimes M_8\)
+  へ凝縮すると同時に、三角形視野角 \(\rho = L_3/L_1\)
+  が背景の指数的離脱（\(< 10^{-300}\)）と粒子内部の正三角形再凝縮（\(\rho \sim 1\)）へ二極分裂する。
+\item
+  \textbf{4 段階倍々エンタングルメント相転移とベル対（第 3
+  章）{[}S2{]}}：微小種から \(\tau = 10{,}000\) へ至る普遍カスケード
+  \(\text{rank } 1\;(1.0) \to \text{rank } 2\;(1/\sqrt{2}\times 2,\; \|P\|\times 2) \to \text{rank } 4\;(1/2\times 4,\; \|P\|\times 2,\; d_1=0)\)
+  が生じ、第 3 層で単一複素構造ロック
+  \(\frac{1}{\sqrt{2}}(u\otimes v + (Ju)\otimes(-Jv))\)、第 4 層で 3
+  重外積 \(a_i b_j c_k\) × 内部ベル対
+  \(\frac{1}{\sqrt{2}}(|0,4\rangle+|1,5\rangle)\) が厳密成立する。
+\item
+  \textbf{\(SO(3)\) スピン選別・\(G_2/SU(3)\) ゲージ次元・倍音局在・2
+  粒子共存（第 4 章）{[}S3{]}}：四元数 3 空間上でスピン
+  1（\(L_x,L_y,L_z\)）が無質量 \(|\lambda|=1.000\)、スピン 0（2
+  種）・スピン 2（5 重項）が厳密 \((1/3)^\tau\)（質量ギャップ
+  \(\ln 3\)）へ分離し、別チャネルで \(1/\sqrt{s+1}\) 則に従う。外側
+  \(O_8\) の厳密不変ゲージ次元は
+  \(SO(8) \to G_2\)（14）、\(SO(6) \to SU(3)\)（8
+  グルーオン）であり、背景 \(H\) 上で 2
+  局在粒子が勝者総取りを超えて完全共存する。
+\item
+  \textbf{量子構造の創発 4 定理 Q1--Q4（第 5 章）{[}S4{]}}：(Q1) 3
+  倍角写像と \(\sum z_n^2 = 0\) による離散化、(Q2)
+  実配列からの単一複素構造 \(\mathbb{C}\)
+  の自発創発（\(|c_x|,|c_z| \sim 10^{-16}\)）、(Q3) \(O(64)\)
+  共変性（誤差 \(8.84\times 10^{-16}\)）と \(L^2\)
+  ノルム一意性（\(2.22\times 10^{-16}\)）＋ Gleason の定理による Born 則
+  \(P = |\psi|^2\)、(Q4) \(\mathbb{Z}_2^3\)
+  Donoho--Stark（\(\ge 8\)）および Shannon
+  エントロピー（\(\ge \ln 8\)）不確定性下限の厳密飽和と最小分解能（\(\Delta x_{\min}=1, k_{\max}=3, \Delta\tau_{\min}=1\)）。
+\item
+  \textbf{球対称 4
+  クラス空間計量歪み・離散曲率・臨界崩壊・厳密反証監査（第 6
+  章）{[}S5{]}}：局在質量 P4 は背景 \(O_8\) エッジを 7 方向 7 桁等方な 4
+  クラス（中心 \(+32.5\%\)・遠方接線 \(+7.2\%\)・動径
+  \(+1.2\%\)・遠方基準 \(0\%\)）へ分裂させ、離散曲率
+  \(\langle\rho\rangle_w\) 勾配（\texttt{0.7969} vs
+  \texttt{0.7878}）を生み、臨界点 \(\epsilon_c \in (0.270, 0.275)\)
+  で遠方空間切断崩壊（\texttt{nz:\ 576\ \$\textbackslash{}to\$\ 16},
+  \(\|P\| \to 1/2\)）を起こす。同時に厳密反証監査により、弱結合背景の複素位相は
+  \(|\Delta\theta| < 10^{-9}\) rad に単一時計ロックする一方、スピン
+  2（\(\sigma_x\)）モードが背景時計全体を
+  \(0.6579\)（\(d_1 = 1/\sqrt{2}\)）へ引きずり込むことを確定した。
+\item
+  \textbf{Hurwitz 4 段階質量階層と直積準同型指数則（第 7
+  章）{[}S6{]}}：全 4 種の Hurwitz 部分代数
+  \(\mathbb{O}_8, \mathbb{H}_4, \mathbb{C}_2, \mathbb{R}_1\)（余次元
+  \(m = 0,1,2,3\)）は、衣／芯比のメルセンヌ公式
+  \((8-d)/d = 2^m - 1 \in \{0,1,3,7\}\)、コアエネルギー \((d/8)^2\)
+  則（\texttt{1\ :\ 1/4\ :\ 1/16\ :\ 1/64}）、およびパスカル二項倍音則
+  \(\binom{m}{k}\) に従う。さらに直積準同型
+  \(\mathrm{Tri}(A\otimes B) = \mathrm{Tri}(A)\otimes\mathrm{Tri}(B)\)（誤差
+  \(2.86\times 10^{-16}\)）により、\(K\) 段入れ子 \(O_8^{\otimes K}\) で
+  \(r^{-K}\) の指数階層が生じ、コア比 \(1/64\) ではわずか \(K=3\) 段で
+  \(2.6\times 10^5\)（電子／トップ比級）、\(K=9\) 段で
+  \(1.8\times 10^{16}\)（電弱／プランク比級）に到達する。
+\item
+  \textbf{\(Spin(8)\) Triality スピン \(1/2\)・CAR
+  フェルミオン電荷（\texttt{1:3:3:1}）・カイラル分裂（第 8
+  章）{[}S7{]}}：\(O_8\) の 3 添字 Triality は 28 次元 \(Spin(8)\)
+  を厳密保持し、空間 \(2\pi\) 回転で \(R_v(2\pi)=+I\) に対し
+  \(R_s(2\pi)=R_c(2\pi)=-I\)（スピン \(1/2\)）を示す。\(e_7\) 固定による
+  \(Cl_6\) フェルミオン演算子 \(\alpha_1,\alpha_2,\alpha_3\)
+  はパウリ排他則を含む CAR を誤差 \texttt{0.000e+00} で満たし、\(SU(3)\)
+  可換な電荷 \(Q=N/3\) が \(0\)（1 重項）, \(+1/3\)（3 重項）,
+  \(+2/3\)（3 重項）, \(+1\)（1 重項）の厳密 \texttt{1:3:3:1}
+  へ分解される。さらに内側 \(M_8\) の回転向きが
+  \(\Delta\|P\| = -1.41\%\) のカイラル非対称分裂を生む。
+\end{enumerate}
+
+最後に第 9 章で、確立済み事実と未解決境界（外部時空 1--3
+軸と内部ゲージの分離仮説、電磁・重力結合、一般相対論・ディラック・ヤン＝ミルズ方程式への接続）を厳密に切り分け、次期仮説論文（Part
+II）の課題を明示する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1.
+導入・公理的定義・先行研究との位置づけ}\label{ux5c0eux5165ux516cux7406ux7684ux5b9aux7fa9ux5148ux884cux7814ux7a76ux3068ux306eux4f4dux7f6eux3065ux3051}
+
+\subsubsection{1.1
+研究動機と単一公理系}\label{ux7814ux7a76ux52d5ux6a5fux3068ux5358ux4e00ux516cux7406ux7cfb}
+
+現代基礎物理学は、一般相対性理論（連続多様体と重力計量）、量子力学（複素ヒルベルト空間・Born
+則・不確定性原理）、および標準模型（\(SU(3)_C \times SU(2)_L \times U(1)_Y\)
+ゲージ群・カイラルフェルミオン・3
+世代・極端な質量階層）という互いに異なる公理系の上に構築されている。著者はこれまで、背景時空や外部観測者を前提としない自己無撞着関係系
+{[}K1--K5{]}、八元数による強相互作用・ディラック構造の読出し {[}K6,
+K7{]}、および作用の成立条件からの逆算 {[}K8{]} を進めてきた。
+
+本論文では、これらを最小限の単一公理へ還元する。すなわち、名前も座標も持たない純粋な実数
+3 階テンソル \(T \in \mathbb{R}^{N\times N\times N}\) に対し、3
+辺が閉ループを組む \textbf{三角形ループ積（Triangle-Loop Product）}
+\[\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r=0}^{N-1} T_{ipq}\, T_{qjr}\, T_{rpk} \tag{1}\]
+とその Frobenius ノルム（\(L^2\) ノルム）正規化反復
+\[U^{(\tau+1)} = \frac{\mathrm{Tri}(U^{(\tau)})}{\|\mathrm{Tri}(U^{(\tau)})\|_F}, \qquad \|P^{(\tau)}\| \equiv \|\mathrm{Tri}(U^{(\tau)})\|_F \tag{2}\]
+のみを定義する。ここで \(\tau \in \mathbb{Z}_{\ge 0}\)
+は離散的な更新反復ステップであり、系内部から創発する物理的時間 \(t\)
+とは明確に区別する。本論文の全計算は乱数を一切用いない決定論的スクリプトによって実行されている。
+
+\subsubsection{1.2
+外部一次文献および関連研究との厳密な位置づけ}\label{ux5916ux90e8ux4e00ux6b21ux6587ux732eux304aux3088ux3073ux95a2ux9023ux7814ux7a76ux3068ux306eux53b3ux5bc6ux306aux4f4dux7f6eux3065ux3051}
+
+本枠組みは以下の外部一次文献と明確な数学的接点と相違点を持つ： -
+\textbf{多元環と八元数標準模型 {[}E1--E6{]}}：Hurwitz の定理 {[}E1{]}
+はノルム付き結合多元環を次元 \(1, 2, 4, 8\) に限定し、Baez {[}E2{]}
+は八元数 \(\mathbb{O}\) と \(G_2, Spin(8)\) Triality
+の幾何学を総括した。Günaydin--Gürsey {[}E3{]}、Dixon {[}E4{]}、Furey
+{[}E5, E6{]} は八元数・\(Cl_6\) 昇降演算子から標準模型 1 世代の
+\(SU(3) \times U(1)_Q\)
+構造を導出した。本論文の新規性は、八元数や複素数体 \(\mathbb{C}\)
+を外から仮定するのではなく、\textbf{純粋な実数テンソル反復 (1)--(2)
+の自己無撞着ダイナミクスが \(\mathbb{O}\) と単一複素構造 \(\mathbb{C}\)
+を自発選別する}点にある。 - \textbf{量子力学の公理基盤
+{[}E7--E10{]}}：Gleason の定理 {[}E7{]} は次元 \(\ge 3\)
+の複素ヒルベルト空間で Born 則の一意性を与え、Renou ら {[}E8{]}
+は実数ヒルベルト空間の実験的反証可能性を示した。また Donoho--Stark
+{[}E9{]} および Maassen--Uffink {[}E10{]}
+は離散・エントロピー不確定性下限を確立した。本論文第 5 章は、これら 4
+本柱が (1)--(2) から直接導出されることを示す。 -
+\textbf{時間結晶・テンソル模型・背景独立量子重力
+{[}E11--E15{]}}：離散時間結晶 {[}E11{]}、色付きテンソル模型
+{[}E12{]}、および光円錐上の背景独立量子重力（Chandrasekaran
+{[}E14{]}・堀田 {[}E15{]}）に対し、本モデルは 4
+次元や重力作用・外部時計を一切仮定せず、全検証コードを公開して再現可能な形で粒子凝縮・相転移・計量歪み・フェルミオン電荷を同時導出する。また第
+9 章では、Coleman--Mandula 定理 {[}E13{]}
+に関わる外部時空と内部ゲージの分離問題を次期課題として厳密に定式化する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Hurwitz 結晶選別・次元融解・視野角二極分裂
+{[}S1{]}}\label{hurwitz-ux7d50ux6676ux9078ux5225ux6b21ux5143ux878dux89e3ux8996ux91ceux89d2ux4e8cux6975ux5206ux88c2-s1}
+
+\subsubsection{\texorpdfstring{2.1
+厳密結晶選別（\(\mathbb{R}, \mathbb{C}, \mathbb{H}, \mathbb{O}\)
+の生存と \(\mathbb{S}\)
+の自壊）}{2.1 厳密結晶選別（\textbackslash mathbb\{R\}, \textbackslash mathbb\{C\}, \textbackslash mathbb\{H\}, \textbackslash mathbb\{O\} の生存と \textbackslash mathbb\{S\} の自壊）}}\label{ux53b3ux5bc6ux7d50ux6676ux9078ux5225mathbbr-mathbbc-mathbbh-mathbbo-ux306eux751fux5b58ux3068-mathbbs-ux306eux81eaux58ca}
+
+結合多元環の構造定数テンソル \(T_{ijk} \in \{0, \pm 1\}\) に
+\(\mathrm{Tri}\) を厳密整数演算で適用すると、Hurwitz 多元環 {[}E1{]}
+である \(\mathbb{R}\;(N=1)\), \(\mathbb{C}\;(N=2)\),
+\(\mathbb{H}\;(N=4)\), \(\mathbb{O}\;(N=8)\)
+のみが自己相似な厳密固定点（結晶）として生き残る。一方、16
+次元の十六元数（Sedenion \(\mathbb{S}\)）では零因子の存在により
+\(\mathrm{Tri}(\mathbb{S})\) が元の構造を保てず自壊する {[}S1{]}。
+
+\subsubsection{\texorpdfstring{2.2 八元数欠陥による 2
+段階カスケード融解と \(N=64\) 512
+マス時間結晶}{2.2 八元数欠陥による 2 段階カスケード融解と N=64 512 マス時間結晶}}\label{ux516bux5143ux6570ux6b20ux9665ux306bux3088ux308b-2-ux6bb5ux968eux30abux30b9ux30b1ux30fcux30c9ux878dux89e3ux3068-n64-512-ux30deux30b9ux6642ux9593ux7d50ux6676}
+
+\(N = 8\) 八元数結晶の全 512 成分に実数・虚数の微小欠陥を入れた 1,024
+通り全数分類では、虚数欠陥により \(8 \to 4 \to 2\) 次元の 2
+段階カスケード融解が生じ、終状態として 8 マス回転粒子（3 倍角写像
+\(\theta \mapsto 3\theta\)）およびヌル射影構造 \(\sum U^2 = 0\)
+が拘束なしで出現した {[}S1, K3{]}。さらに結合大結晶
+\(N = 64\)（\(T_0 = O_8 \otimes O_8\)、4,096 非ゼロセル）に微小欠陥
+\texttt{(0,1,0)\ +\ 1e-4} を入れて反復すると、\(\tau = 75\)
+付近で急激な凝縮が起き、\(\tau = 200\) で 512 非ゼロセルの準安定時間結晶
+\(H = O_8 \otimes M_8\)（\(\|P\| = 0.046873\)）が形成される。
+
+\subsubsection{\texorpdfstring{2.3 三角形視野角 \(\rho = L_3 / L_1\)
+の二極分裂}{2.3 三角形視野角 \textbackslash rho = L\_3 / L\_1 の二極分裂}}\label{ux4e09ux89d2ux5f62ux8996ux91ceux89d2-rho-l_3-l_1-ux306eux4e8cux6975ux5206ux88c2}
+
+系内部だけで距離を測るため、出力成分 \((i,j,k)\) に寄与する全
+\(64^3 = 262{,}144\) 個の三角形ループ \((p,q,r)\) の 3 辺長降順
+\(L_1 \ge L_2 \ge L_3 > 0\) から視野角指標
+\(\rho = L_3 / L_1 \in (0, 1]\) を計測した（図 1）。\(\tau = 35 \to 75\)
+において、背景へ繋がる 192 個の三角形は \(\rho < 10^{-300}\)
+へ幾何級数的に離脱（因果分離）する一方、粒子内部の 64 個の三角形は
+\(\tau = 50 \to 68\) で V 字反転して
+\(\rho \sim 0.1 \sim 1.0\)（正三角形近傍）へ再凝縮し、粒子凝縮
+\(E_{512}: 0.28 \to 1.00\) と同期して粒子／背景の指数部コントラストが
+\(1.85 \to 687.5\) へ二重指数的に拡大した {[}S1, K1, K2{]}。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio,alt={第 1 速報の主要結果：N = 64（O\_8 \textbackslash otimes O\_8）における 512 マス粒子凝縮（E\_\{512\}）、指数部コントラストの二重指数的拡大、および三角形視野角 \textbackslash rho = L\_3 / L\_1 の背景離脱 vs 粒子再凝縮の二極分裂 {[}S1{]}。}]{figs_ja/fig_n64_viewangle_vs_condensation_v0.png}
+\caption{第 1 速報の主要結果：\(N = 64\)（\(O_8 \otimes O_8\)）における
+512
+マス粒子凝縮（\(E_{512}\)）、指数部コントラストの二重指数的拡大、および三角形視野角
+\(\rho = L_3 / L_1\) の背景離脱 vs 粒子再凝縮の二極分裂 {[}S1{]}。}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. 4 段階倍々エンタングルメント相転移・ベル対・プローブ 4
+分岐
+{[}S2{]}}\label{ux6bb5ux968eux500dux3005ux30a8ux30f3ux30bfux30f3ux30b0ux30ebux30e1ux30f3ux30c8ux76f8ux8ee2ux79fbux30d9ux30ebux5bfeux30d7ux30edux30fcux30d6-4-ux5206ux5c90-s2}
+
+\subsubsection{\texorpdfstring{3.1 第 1 層 \(H = O_8 \otimes M_8\)
+の厳密解剖と自己修復}{3.1 第 1 層 H = O\_8 \textbackslash otimes M\_8 の厳密解剖と自己修復}}\label{ux7b2c-1-ux5c64-h-o_8-otimes-m_8-ux306eux53b3ux5bc6ux89e3ux5256ux3068ux81eaux5df1ux4feeux5fa9}
+
+\(\tau = 200\) の 512 マス状態を外側 \((A,B,C)\) × 内側 \((a,b,c)\) に
+SVD 分解すると、特異値は
+\(\sigma_1 = 1.00000000,\; \sigma_2 = 2.58 \times 10^{-7}\) の厳密ランク
+1 直積 \(H = O_8 \otimes M_8\) であり、外側 \(O_8\)
+は無傷（\(d = 0.000\)）、内側 \(M_8\) は純粋な 2×2 複素回転行列
+\(c_0 I + c_J(i\sigma_y)\) である。内部の有効視野角 \(\rho\) は厳密 7
+値（\texttt{1.0000,\ 0.7646,\ 0.7463,\ 0.7268,\ 0.5558,\ 0.5424,\ 0.4147}）に量子化され、背景ゼロ領域への
+\(+0.1\) 大衝撃を 5 ステップ（\texttt{out\_E\ =\ 4.3e-165}）、内部 1
+マス穴あけ欠陥を 1 ステップで自己修復する {[}S2{]}。
+
+\subsubsection{\texorpdfstring{3.2 \(\tau = 10{,}000\) フルスイープと 4
+段階倍々エンタングルメント相転移}{3.2 \textbackslash tau = 10\{,\}000 フルスイープと 4 段階倍々エンタングルメント相転移}}\label{tau-10000-ux30d5ux30ebux30b9ux30a4ux30fcux30d7ux3068-4-ux6bb5ux968eux500dux3005ux30a8ux30f3ux30bfux30f3ux30b0ux30ebux30e1ux30f3ux30c8ux76f8ux8ee2ux79fb}
+
+第 1 層 \(H\) に微小種（Case 1：外側局所実数種、Case 2：大域丸め誤差種
+\(\sim 10^{-16}\)）を入れて \(\tau = 10{,}000\)
+まで追跡したところ、両ケース共通の普遍的 4 段階相転移が発見された（図
+2）：
+\[\text{rank } 1\;(1.0) \;\longrightarrow\; \text{rank } 2\;\left(\tfrac{1}{\sqrt{2}}\times 2,\; \|P\|\times 2\right) \;\longrightarrow\; \text{rank } 4\;\left(\tfrac{1}{2}\times 4,\; \|P\|\times 2,\; d_1 = 0\right). \tag{3}\]
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{定理 1（第 3 層・単一複素構造ロック）}：第 2 層（不安定な直積
+  \(M_8 \otimes M_8\)、独立 2 時計
+  \(\mathbb{C}_{\mathrm{out}}\otimes_{\mathbb{R}}\mathbb{C}_{\mathrm{in}} \cong \mathbb{C}_+ \oplus \mathbb{C}_-\)）は第
+  3 層で
+  \[U_{\text{Layer 3}} = \frac{1}{\sqrt{2}}\Bigl(u\otimes v + (Ju)\otimes(-Jv)\Bigr), \qquad J = \begin{pmatrix}0 & -1\\ 1 & 0\end{pmatrix} \tag{4}\]
+  へ崩壊し、単一の虚数単位 \(J\)（単一時計）にロックすることで \(\|P\|\)
+  を厳密 2 倍（Case 1:
+  \texttt{0.240854\ \$\textbackslash{}to\$\ 0.481707}）へ引き上げる。Case
+  2
+  では再加熱的バースト（\texttt{nz:\ 512\ \$\textbackslash{}to\$\ 3,072\ \$\textbackslash{}to\$\ 1,560}）を経て約
+  5,000 ステップ持続した。
+\item
+  \textbf{定理 2（第 4 層・3 重外積 ×
+  内部ベル対）}：\(\tau = 884\)（Case 1）および \(\tau = 6{,}541\)（Case
+  2）で完全静止固定点（\(d_1 = 0\)）へ遷移する。Case 1 の第 4 層は厳密な
+  3 重外積 \(U_{\text{Layer 4}}[i,j,k] = a_i b_j c_k\)
+  であり、\(\mathrm{Tri}(\mathbf{a}\otimes\mathbf{b}\otimes\mathbf{c}) = (\mathbf{a}\cdot\mathbf{c})^2\,U\)（\(\|P\| = (\mathbf{a}\cdot\mathbf{c})^2 = 0.999534\)
+  が 6 桁一致）を満たす。\(\mathbf{a}, \mathbf{c}\)
+  が外側・内側間でベル状態
+  \(\frac{1}{\sqrt{2}}(|0,4\rangle + |1,5\rangle)\) を組むため、特異値は
+  \(\left(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}\right)^{\otimes 2} = \left(\frac{1}{2}\right)\times 4\)
+  の 4 重縮退となる。Case 2 終状態では外側実数軸 \(A=0\) が
+  \texttt{0.04\%} へ消滅し、3 本の虚数軸（\(A=4,2,7\)）が全エネルギーの
+  \texttt{84.84\%} を独占する。
+\end{itemize}
+
+\subsubsection{3.3 近傍プローブの 4
+分岐選別}\label{ux8fd1ux508dux30d7ux30edux30fcux30d6ux306e-4-ux5206ux5c90ux9078ux5225}
+
+\(i, k\) 共有チャネル（\(b \in \{2,3\}\)）上の 8 種プローブは \(H^2 P\)
+交差三角形（寄与 99--100\%）により 4 分岐した：(1) 大域複素波 P3a＝5
+桁不変共存、(2) ヌル・カイラル波 P3b（\(\sum P^2=0\)）＝吸収され \(H\)
+の \(\|P\|\) を厳密 2 倍化、(3) スピン 2 的 \(\sigma_x\) 波
+P3c＝エネルギー 10 倍吸収＋周期 2 ロック、(4) 局在凝縮体 P4/P5＝背景
+\(O_8\) から「衣（ドレスド雲
+\(E_{\mathrm{oth}}\)）」をまとって減速・安定共存 {[}S2{]}。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio,alt={第 2 速報の主要結果：Case 1・Case 2 の \textbackslash tau = 0 \textbackslash to 10\{,\}000 フルスイープにおける 4 段階倍々エンタングルメント相転移（rank 1 \textbackslash to 2 \textbackslash to 4）、再加熱バースト、および 4 重縮退ベル対固定点 {[}S2{]}。}]{figs_ja/fig_r2_four_stage_cascade_ja.png}
+\caption{第 2 速報の主要結果：Case 1・Case 2 の
+\(\tau = 0 \to 10{,}000\) フルスイープにおける 4
+段階倍々エンタングルメント相転移（rank
+\(1 \to 2 \to 4\)）、再加熱バースト、および 4 重縮退ベル対固定点
+{[}S2{]}。}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{4. \(SO(3)\) スピン選別・\(G_2/SU(3)\)
+ゲージ対称性・倍音局在・2 粒子共存
+{[}S3{]}}{4. SO(3) スピン選別・G\_2/SU(3) ゲージ対称性・倍音局在・2 粒子共存 {[}S3{]}}}\label{so3-ux30b9ux30d4ux30f3ux9078ux5225g_2su3-ux30b2ux30fcux30b8ux5bfeux79f0ux6027ux500dux97f3ux5c40ux57282-ux7c92ux5b50ux5171ux5b58-s3}
+
+\subsubsection{\texorpdfstring{4.1 \(SO(3)\) スピン 0 / 1 / 2 選別則と
+\(1/\sqrt{s+1}\)
+階層}{4.1 SO(3) スピン 0 / 1 / 2 選別則と 1/\textbackslash sqrt\{s+1\} 階層}}\label{so3-ux30b9ux30d4ux30f3-0-1-2-ux9078ux5225ux5247ux3068-1sqrts1-ux968eux5c64}
+
+外側 \(O_8\) の四元数 3 空間 \(\{1, 2, 3\}\) に対する \(SO(3)\)
+既約表現（スピン 0: 1 重項、スピン 1: 3 重項、スピン 2: 5
+重項）の微小摂動応答では（図 3(a)）、\textbf{スピン 1（\(L_x, L_y, L_z\)
+全 3 成分）が厳密
+\(|\lambda| = 1.000\)（無質量平坦モード）}である一方、\textbf{スピン
+0（2 種）とスピン 2（5 重項）の全 7 モードが厳密な有理数
+\((1/3)^\tau\)（質量ギャップ \(\ln 3\)）}で指数復元した。また別チャネル
+\(b = \{2, 3\}\) 上のスピン \(s = 0, 1, 2\) 安定振幅比は厳密に
+\textbf{\(1/\sqrt{s+1}\)}（\texttt{1.000,\ 0.707,\ 0.577}）に従う（図
+3(b)）{[}S3{]}。
+
+\subsubsection{\texorpdfstring{4.2 \(G_2\)（14 次元）・\(SU(3)\)（8
+グルーオン）厳密ゲージ次元と第 4
+層ヤコビアン}{4.2 G\_2（14 次元）・SU(3)（8 グルーオン）厳密ゲージ次元と第 4 層ヤコビアン}}\label{g_214-ux6b21ux5143su38-ux30b0ux30ebux30fcux30aaux30f3ux53b3ux5bc6ux30b2ux30fcux30b8ux6b21ux5143ux3068ux7b2c-4-ux5c64ux30e4ux30b3ux30d3ux30a2ux30f3}
+
+外側 \(O_8\) の微分作用 SVD により、厳密不変ゲージ次元は
+\(SO(8)\)（28）\(= 14\;(G_2) + 14\)、\(SO(7)\)（21）\(= 14\;(G_2) + 7\)（全
+7 本 \(|\lambda|=1.000\) 確認）、\textbf{\(SO(6)\)（\(A=7\) 固定,
+15）\(= 8\;(SU(3)\text{ グルーオン}) + 7\)} と厳密カウントされた（図
+3(c)）。また第 4 層静止固定点（Case 1, \(\tau = 1{,}000\)）の
+\(64\times 64\) 厳密ヤコビアン固有値は、不安定 \texttt{0}・無質量平坦
+\texttt{9}（\(S^3\times S^3\times S^3\)）・中間 \texttt{0}・即時遮断
+\texttt{55} に完全二分される（図 3(d)）{[}S3{]}。
+
+\subsubsection{\texorpdfstring{4.3 \(\mathbb{Z}_2^3\) 空間倍音局在と 2
+局在粒子の完全共存}{4.3 \textbackslash mathbb\{Z\}\_2\^{}3 空間倍音局在と 2 局在粒子の完全共存}}\label{mathbbz_23-ux7a7aux9593ux500dux97f3ux5c40ux5728ux3068-2-ux5c40ux5728ux7c92ux5b50ux306eux5b8cux5168ux5171ux5b58}
+
+外側 \(O_8 \cong \mathbb{Z}_2^3\) 上の Walsh--Hadamard
+変換では、非局在波（\(H\), P3a）の空間倍音が \texttt{0.00\%}、ゲージ波
+\(L_x\) が \texttt{3.66\%} であるのに対し、局在凝縮体 P5（\(H_4\)）は
+\(k=1\) のみ \texttt{10.00\%}、極局在 P4（\(\delta_{000}\)）は
+\texttt{45.85\%} かつ \(k=1,2,3\) が厳密 \texttt{3:3:1} に立ち上がる
+{[}S3, K4{]}。さらに独立 2 ブロック八元数では勝者総取りで 1
+粒子しか残らなかったが、時間結晶背景 \(H\) 上に 2 個の P4
+を配置すると、別サイト（\(A=0,1\)）同相・逆相とも \texttt{nz\ =\ 640},
+\(E_1 = E_2 = 0.000094\) で 1:1
+完全共存し、同一サイト同チャネル逆相のみ対消滅（\(E_1 = E_2 = 0\)）する
+{[}S3{]}。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio,alt={第 3 速報の主要結果：(a) SO(3) スピン 0/1/2 の厳密選別（1 vs (1/3)\^{}\textbackslash tau）、(b) 別チャネル 1/\textbackslash sqrt\{s+1\} 法則、(c) 外側 O\_8 の厳密ゲージ次元（G\_2=14, SU(3)=8）、(d) 第 4 層 64×64 厳密ヤコビアン分類 {[}S3{]}。}]{figs_ja/fig_r3_spin_and_gauge_ja.png}
+\caption{第 3 速報の主要結果：(a) \(SO(3)\) スピン 0/1/2
+の厳密選別（\(1\) vs \((1/3)^\tau\)）、(b) 別チャネル \(1/\sqrt{s+1}\)
+法則、(c) 外側 \(O_8\) の厳密ゲージ次元（\(G_2=14, SU(3)=8\)）、(d) 第 4
+層 64×64 厳密ヤコビアン分類 {[}S3{]}。}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. 量子構造の創発 4
+定理（Q1--Q4）{[}S4{]}}\label{ux91cfux5b50ux69cbux9020ux306eux5275ux767a-4-ux5b9aux7406q1q4s4}
+
+純粋な実数テンソル \(T \in \mathbb{R}^{N\times N\times N}\) の反復
+(1)--(2) から、外部の量子公理を一切仮定せずに量子力学の 4 本柱が以下の 4
+定理として導出される {[}S4{]}。
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{定理 Q1（厳密離散化）}：3 倍角位相写像
+  \(\theta \mapsto 3\theta\) とヌル条件 \(\sum z_n^2 = 0\) {[}K3{]}
+  により周期点の位相は \(2\pi\mathbb{Z}/(3^p - 1)\)
+  の離散有理角へ強制量子化され、空間骨格は Hurwitz 次元 \(1,2,4,8\)
+  {[}E1{]}、内部視野角 \(\rho\) も厳密 7 値に離散化する。
+\item
+  \textbf{定理 Q2（単一複素構造 \(\mathbb{C}\) の自発創発）}：第 1
+  層内側 \(M_8\) のパウリ分解では異方性成分
+  \(|c_x|, |c_z| \sim 10^{-16}\)（機械ゼロ）へ駆逐されて純粋複素数体
+  \(\mathbb{C} \cong \{c_0 I + c_J J\}\) が創発し、さらに第 3 層で
+  \(\mathbb{C}_{\mathrm{out}}\otimes_{\mathbb{R}}\mathbb{C}_{\mathrm{in}} \to \mathbb{C}_{\mathrm{single}}\)
+  の単一グローバル虚数単位へロックする（\(|\sigma_{1,2} - 1/\sqrt{2}| = 3.23 \times 10^{-7}\)、図
+  4(a)）。これは実数ヒルベルト空間ではなく複素ヒルベルト空間が選ばれる力学的機構を与える
+  {[}E8{]}。
+\item
+  \textbf{定理 Q3（\(O(N)\) 共変性・\(L^2\) 一意性・Born
+  則）}：\(\mathrm{Tri}((R\otimes R\otimes R)U) = (R\otimes R\otimes R)\mathrm{Tri}(U)\)
+  が決定論的 \(R_{64} \in SO(64)\) に対し相対誤差
+  \textbf{\texttt{8.843e-16}} で成立し、\(L^p\) ノルムのうち \(O(64)\)
+  回転不変なのは \(p = 2\)（相対変化
+  \textbf{\texttt{2.220e-16}}）のみである（\(L^1\):
+  \(+351.8\%\)、\(L^4\): \(-42.0\%\)、図 4(b)）。定理 Q2 の複素構造
+  \(\mathbb{C}\) と次元 \(d \ge 3\) により、\textbf{Gleason の定理
+  {[}E7{]}} から射影確率測度は Born 則
+  \(P(\Pi) = \mathrm{Tr}(\rho\Pi) = |\langle\phi|\psi\rangle|^2\)
+  に一意決定される。
+\item
+  \textbf{定理 Q4（\(\mathbb{Z}_2^3\)
+  離散不確定性飽和と最小分解能）}：\(O_8 \cong \mathbb{Z}_2^3\)
+  上の正規化状態 \(f\) と Walsh--Hadamard 変換 \(\hat{f} = H_8 f\) は
+  Donoho--Stark 不等式 {[}E9{]}
+  \(|\mathrm{supp}(f)|\cdot|\mathrm{supp}(\hat{f})| \ge 8\) および
+  Maassen--Uffink 型エントロピー不確定性 {[}E10{]}
+  \(H_{\mathrm{space}}(f) + H_{\mathrm{harmonic}}(\hat{f}) \ge \ln 8 \approx 2.079442\)
+  を満たす。非局在（\(8\times 1\)）、四元数芯
+  \(H_4\)（\(4\times 2\)）、1 サイト芯
+  \(\delta_{000}\)（\(1\times 8\)）はいずれも下限を厳密飽和（超過
+  \texttt{0.000000}）し、\(\tau = 30\) ドレスド状態（\(L_x\), P5,
+  P4）は衣の重み分だけ上方（\(+0.0512 \sim +0.3130\)）へシフトする（図
+  5）。最小空間分解能 \(\Delta x_{\min}=1\)（\(\ell_P\) 原型）、UV
+  カットオフ \(k_{\max}=3\)、最小刻み \(\Delta\tau_{\min}=1\)（\(t_P\)
+  原型）、最小セル \(\ln 8\)（\(\hbar\) 原型）が公理から直接立ち上がる。
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio,alt={第 4 速報の主要結果（定理 Q2・Q3）：(a) 実配列 M\_8 のパウリ成分分解と第 3 層単一複素構造ロック、(b) O(64) 回転共変性（8.84 \textbackslash times 10\^{}\{-16\}）および L\^{}2 ノルム一意性（Born 則の代数的基盤）{[}S4{]}。}]{figs_ja/fig_r4_complex_and_born_ja.png}
+\caption{第 4 速報の主要結果（定理 Q2・Q3）：(a) 実配列 \(M_8\)
+のパウリ成分分解と第 3 層単一複素構造ロック、(b) \(O(64)\)
+回転共変性（\(8.84 \times 10^{-16}\)）および \(L^2\) ノルム一意性（Born
+則の代数的基盤）{[}S4{]}。}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio,alt={第 4 速報の主要結果（定理 Q4）：(a) \textbackslash mathbb\{Z\}\_2\^{}3 エントロピー不確定性平面（裸の芯 3 種の厳密飽和 vs \textbackslash tau=30 ドレスド状態の上方シフト）、(b) Donoho--Stark 飽和曲線 xy = 8 と最小分解能 {[}S4{]}。}]{figs_ja/fig_r4_uncertainty_and_cutoff_ja.png}
+\caption{第 4 速報の主要結果（定理 Q4）：(a) \(\mathbb{Z}_2^3\)
+エントロピー不確定性平面（裸の芯 3 種の厳密飽和 vs \(\tau=30\)
+ドレスド状態の上方シフト）、(b) Donoho--Stark 飽和曲線 \(xy = 8\)
+と最小分解能 {[}S4{]}。}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. 球対称空間計量歪み・離散曲率勾配・臨界崩壊・厳密反証監査
+{[}S5{]}}\label{ux7403ux5bfeux79f0ux7a7aux9593ux8a08ux91cfux6b6aux307fux96e2ux6563ux66f2ux7387ux52feux914dux81e8ux754cux5d29ux58caux53b3ux5bc6ux53cdux8a3cux76e3ux67fb-s5}
+
+\subsubsection{6.1 球対称 4
+クラス空間計量歪みと離散曲率勾配}\label{ux7403ux5bfeux79f0-4-ux30afux30e9ux30b9ux7a7aux9593ux8a08ux91cfux6b6aux307fux3068ux96e2ux6563ux66f2ux7387ux52feux914d}
+
+第 1 層 \(H = O_8 \otimes M_8\) のサイト \(A = 0\) に単一サイト局在質量
+P4（\(\epsilon = 0.16, \tau = 40\)）を配置すると、背景 \(O_8\) の 64
+本のエッジエネルギー比 \(E/E_{\mathrm{ref}}\) は、全 7 虚数方向
+\(m = 1 \dots 7\) で小数 7 桁完全等方な 4 クラスへ厳密分裂する（図
+6(a)）：中心自己成分 \((0,0,0)\) =
+\textbf{\texttt{1.3248375}}（\(+32.5\%\)）、遠方接線エッジ \((m,n,p)\) =
+\textbf{\texttt{1.0718855}}（\(+7.2\%\)）、中心と遠方を結ぶ動径接続エッジ
+\((0,m,m), (m,m,0)\) =
+\textbf{\texttt{1.0122646}}（\(+1.2\%\)）、遠方自己成分 \((m,0,m)\) =
+\texttt{1.0000000}。虚数サイト \(A = 1\) の対照実験および 2
+質量配置（\(A=0,1\)：6 桁対称、残り 6 サイト標準偏差
+\(7.5\times 10^{-17}\)）でも完全なサイト対称性が確認された。同時に、三角形視野角
+\(\rho = L_3/L_1\) は真空の完全平坦（\texttt{n\_tri\ =\ 64},
+\(\langle\rho\rangle_w = 0.576699\)）から質量導入後
+\texttt{n\_tri\ =\ 72}（\(+8\)）、質量直上
+\(A=0\)（\texttt{0.796889}）vs 遠方
+\(A=1,7\)（\texttt{0.787796}）の球対称な離散曲率勾配へ移行する（図
+6(b)）{[}S5{]}。
+
+\subsubsection{\texorpdfstring{6.2 臨界質量
+\(\epsilon_c \in (0.270, 0.275)\)
+での遠方空間切断崩壊と反証監査}{6.2 臨界質量 \textbackslash epsilon\_c \textbackslash in (0.270, 0.275) での遠方空間切断崩壊と反証監査}}\label{ux81e8ux754cux8ceaux91cf-epsilon_c-in-0.270-0.275-ux3067ux306eux9060ux65b9ux7a7aux9593ux5207ux65adux5d29ux58caux3068ux53cdux8a3cux76e3ux67fb}
+
+質量振幅を掃引すると、\(\epsilon_c \in (0.270, 0.275)\) に鋭い 1
+次相転移が現れる（図 7(a)）：\(\epsilon = 0.270\)
+の宇宙空間共存相（\texttt{nz\ =\ 576}, \(\|P\| = 0.04682\),
+\(E_{\mathrm{bg}}(\mathrm{far}) = 0.873854\)）から、\(\epsilon = 0.275\)
+で \textbf{\texttt{nz\ =\ 16}, \(\|P\| = 0.49998\;(=1/2)\),
+\(E_{\mathrm{bg}}(\mathrm{far}) = 0.000000\)}
+へ不連続崩壊し、質量サイト内部（背景 \texttt{0.2768}＋粒子
+\texttt{0.7232}）だけを残して遠方 7
+サイトとの空間接続が完全切断される（\(A=0\) と \(A=1\) の
+\(\epsilon=0.30\) 終状態は小数 6 桁完全一致）。
+
+一方、5 項目厳密反証監査の結果、背景 \(H\) の全エッジの複素位相ズレは
+\(\tau = 1 \dots 100\) で \(|\Delta\theta| < 10^{-9}\) rad
+に強制同期されており、第 1
+層弱結合では背景側の累積的な周波数ズレ（重力時間遅延）はまだ生じないことが確定した（見かけの時間平均比
+\(\delta\phi/\delta g \approx 0.71\) は基準角 \(\phi_1(\tau)\)
+依存のアーティファクト）。対照的に、粒子セクター自身（\(\phi_P/\phi_0 = 0.56 \sim 0.86\)）およびスピン
+2（\(\sigma_x\)）モード（\(d_1 = 1/\sqrt{2}\), \(\phi/\phi_0 = 0.6578\)
+に普遍ロックし、\(\epsilon = 0.20\) では背景時空全体の時計まで
+\texttt{0.6579} へ引きずり込む、図
+7(b)）では実体的な時間進行減速が生じる {[}S5{]}。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio,alt={第 5 速報の主要結果：(a) 局在質量 P4 による 7 方向 7 桁等方な 4 クラス空間計量歪み、(b) 三角形視野角 \textbackslash rho による離散曲率勾配 {[}S5{]}。}]{figs_ja/fig_r5_metric_and_curvature_ja.png}
+\caption{第 5 速報の主要結果：(a) 局在質量 P4 による 7 方向 7 桁等方な 4
+クラス空間計量歪み、(b) 三角形視野角 \(\rho\) による離散曲率勾配
+{[}S5{]}。}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio,alt={第 5 速報の主要結果：(a) 臨界質量 \textbackslash epsilon\_c \textbackslash in (0.270, 0.275) での遠方空間切断・1 サイト特異点崩壊（nz: 576 \$\textbackslash to\$ 16, \textbackslash\textbar P\textbackslash\textbar{} \textbackslash to 1/2）、(b) スピン 2（\textbackslash sigma\_x）による d\_1 = 1/\textbackslash sqrt\{2\} 普遍ロックと背景時空時計引きずり {[}S5{]}。}]{figs_ja/fig_r5_collapse_and_spin2_ja.png}
+\caption{第 5 速報の主要結果：(a) 臨界質量
+\(\epsilon_c \in (0.270, 0.275)\) での遠方空間切断・1
+サイト特異点崩壊（\protect\texttt{nz:\ 576\ \$\textbackslash{}to\$\ 16},
+\(\|P\| \to 1/2\)）、(b) スピン 2（\(\sigma_x\)）による
+\(d_1 = 1/\sqrt{2}\) 普遍ロックと背景時空時計引きずり {[}S5{]}。}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{7. Hurwitz 4 段階質量階層と直積準同型指数則
+{[}S6{]}}\label{hurwitz-4-ux6bb5ux968eux8ceaux91cfux968eux5c64ux3068ux76f4ux7a4dux6e96ux540cux578bux6307ux6570ux5247-s6}
+
+外側 \(O_8\) の全 4 種の Hurwitz 部分代数 \(\mathbb{O}_8\)
+(\(d=8, m=0\)), \(\mathbb{H}_4\) (\(d=4, m=1\)), \(\mathbb{C}_2\)
+(\(d=2, m=2\)), \(\mathbb{R}_1\) (\(d=1, m=3\))（余次元
+\(m = \log_2(8/d)\)）上の局在プローブを同一条件（\(\epsilon = 0.05, \tau = 30\)）で計測した結果、1
+層内の離散質量階層を支配する 3 つの厳密有理数法則が確定した {[}S6{]}：
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{メルセンヌ衣／芯比公式}：弱結合極限で
+  \(E_{\mathrm{core}}/E_{\mathrm{tot}} \to d/8\)、
+  \[\frac{E_{\mathrm{cloud}}(d)}{E_{\mathrm{core}}(d)} \;\longrightarrow\; \frac{8 - d}{d} = 2^m - 1 \;\in\; \{0,\; 1,\; 3,\; 7\}\]
+  （実測：\texttt{0.00000,\ 1.00000,\ 2.98804,\ 6.68202}）。
+\item
+  \textbf{総エネルギー \(d/8\) 則およびコアエネルギー \((d/8)^2\)
+  則}：\(\Delta\mathrm{nz}(d) = 64d\)、\(E_{\mathrm{tot}} \propto d/8\)（\texttt{1\ :\ 1/2\ :\ 1/4\ :\ 1/8}）、\(E_{\mathrm{core}} \propto (d/8)^2\)（\textbf{\texttt{1\ :\ 1/4\ :\ 1/16\ :\ 1/64}}、図
+  8(a)）。
+\item
+  \textbf{パスカル二項倍音則}：\(\mathbb{Z}_2^3\) 空間倍音
+  \(k = 1 \dots m\) の比が厳密に二項係数 \(\binom{m}{k}\)
+  に一致（\(m=1\): \texttt{1} {[}\(10.0\%\){]}、\(m=2\): \texttt{2:1}
+  {[}\(25.1\%\){]}、\(m=3\): \texttt{3:3:1} {[}\(44.3\%\){]}）。
+\end{enumerate}
+
+さらに三角形ループ積は厳密な \textbf{直積準同型定理}
+\(\mathrm{Tri}(A\otimes B) = \mathrm{Tri}(A)\otimes\mathrm{Tri}(B)\)
+を機械精度（相対誤差 \textbf{\texttt{2.855e-16}}）で満たす。したがって 1
+層で生じる離散比 \(r < 1\) は \(K\) 段の階層入れ子 \(O_8^{\otimes K}\)
+で厳密に \(r^{-K}\) へ指数増幅される（図 8(b)）。コアエネルギー比
+\(r = 1/64\) を用いれば、外部からの微調整なしでわずか \textbf{\(K = 3\)
+段で \(2.6 \times 10^5\)（電子／トップクォーク比 \(3.4 \times 10^5\)
+級）、\(K = 9\) 段で \(1.8 \times 10^{16}\)（電弱／プランク比
+\(10^{16}\) 級）} に到達する {[}S6{]}。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio,alt={第 6 速報の主要結果：(a) Hurwitz 4 段階の 1 層べき則 E\_\{\textbackslash mathrm\{tot\}\} \textbackslash propto d/8 および E\_\{\textbackslash mathrm\{core\}\} \textbackslash propto (d/8)\^{}2（1 : 1/4 : 1/16 : 1/64）、(b) 直積準同型定理（誤差 2.86 \textbackslash times 10\^{}\{-16\}）による K 段入れ子指数階層 r\^{}\{-K\} と自然界の 2 大質量比スケール {[}S6{]}。}]{figs_ja/fig_r6_core_scaling_and_exponential_ja.png}
+\caption{第 6 速報の主要結果：(a) Hurwitz 4 段階の 1 層べき則
+\(E_{\mathrm{tot}} \propto d/8\) および
+\(E_{\mathrm{core}} \propto (d/8)^2\)（\(1 : 1/4 : 1/16 : 1/64\)）、(b)
+直積準同型定理（誤差 \(2.86 \times 10^{-16}\)）による \(K\)
+段入れ子指数階層 \(r^{-K}\) と自然界の 2 大質量比スケール {[}S6{]}。}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{8. \(Spin(8)\) Triality スピン \(1/2\)・CAR
+フェルミオン電荷・時間結晶カイラル分裂
+{[}S7{]}}{8. Spin(8) Triality スピン 1/2・CAR フェルミオン電荷・時間結晶カイラル分裂 {[}S7{]}}}\label{spin8-triality-ux30b9ux30d4ux30f3-12car-ux30d5ux30a7ux30ebux30dfux30aaux30f3ux96fbux8377ux6642ux9593ux7d50ux6676ux30abux30a4ux30e9ux30ebux5206ux88c2-s7}
+
+\subsubsection{\texorpdfstring{8.1 28 次元 \(Spin(8)\) Triality とスピン
+\(1/2\)
+符号反転}{8.1 28 次元 Spin(8) Triality とスピン 1/2 符号反転}}\label{ux6b21ux5143-spin8-triality-ux3068ux30b9ux30d4ux30f3-12-ux7b26ux53f7ux53cdux8ee2}
+
+外側 \(O_8[i, j, k]\) の 3 添字にベクトル \(8_v\)・左手スピノル
+\(8_s\)・右手スピノル \(8_c\) を割り当てる Triality
+不変線形系（\(512 \times 84\)）{[}E2{]} は
+\texttt{rank\ =\ 56}、厳密不変カーネル次元
+\textbf{\texttt{28}}（最大ゼロ特異値
+\texttt{4.489e-15}、有限回転不変誤差 \texttt{8.934e-16}、図
+9(a)）を持つ。空間 \((e_1, e_2)\) 平面の \(2\pi\) 回転ではベクトル
+\(R_v(2\pi) = +I\)（誤差 \texttt{7.62e-16}）に対し、両スピノルが
+\textbf{\(R_s(2\pi) = -I\)（\texttt{1.58e-14}）、\(R_c(2\pi) = -I\)（\texttt{1.79e-14}）}
+と厳密符号反転し、\(4\pi\) 回転で初めて \(+I\) へ戻る（図
+9(b)）{[}S7{]}。
+
+\subsubsection{\texorpdfstring{8.2 \(e_7\) 固定 CAR
+フェルミオン代数と標準模型 1
+世代電荷（\texttt{1:3:3:1}）}{8.2 e\_7 固定 CAR フェルミオン代数と標準模型 1 世代電荷（1:3:3:1）}}\label{e_7-ux56faux5b9a-car-ux30d5ux30a7ux30ebux30dfux30aaux30f3ux4ee3ux6570ux3068ux6a19ux6e96ux6a21ux578b-1-ux4e16ux4ee3ux96fbux83771331}
+
+左乗算クリフォード代数 \(\{L_a, L_b\} = -2\delta_{ab}I\)（誤差
+\textbf{\texttt{0.000e+00}}）と \(e_7\) が作る 3 つのカラー複素平面
+\((e_1,e_6), (e_2,e_5), (e_3,e_4)\) から構成した 3 つの Furey 演算子
+\(\alpha_1, \alpha_2, \alpha_3\) {[}E5, E6{]} は、正準反交換関係
+\(\{\alpha_m, \alpha_n\} = 0\)（パウリ排他則 \(\alpha_m^2 = 0\)）および
+\(\{\alpha_m, \alpha_n^\dagger\} = \delta_{mn}I\) をともに誤差
+\textbf{\texttt{0.000e+00}} で満たす。電荷演算子
+\(Q = \frac{1}{3}\sum_{m=1}^3 \alpha_m^\dagger\alpha_m\) は \(SU(3)\) 8
+グルーオン生成子と厳密可換（\texttt{0.000e+00}）であり、全 8 状態は
+\(Q = 0\)（1 重項, \(C_2=0\): \(\nu\) 型）、\(+1/3\)（3 重項,
+\(C_2=16/3\): \(\bar{d}\) 型）、\(+2/3\)（3 重項, \(C_2=16/3\): \(u\)
+型）、\(+1\)（1 重項, \(C_2=0\): \(e^+\) 型）の \textbf{厳密
+\texttt{1\ :\ 3\ :\ 3\ :\ 1}} へ分解される（図 10(a)）{[}S7,
+E3--E6{]}。これは第 4・第 7 章の \(\mathbb{Z}_2^3\) 空間倍音比
+\texttt{1\ :\ 3\ :\ 3\ :\ 1} と同一の 3 ビット構造である。
+
+\subsubsection{\texorpdfstring{8.3 時間結晶内側 \(M_8\)
+によるカイラル非対称分裂}{8.3 時間結晶内側 M\_8 によるカイラル非対称分裂}}\label{ux6642ux9593ux7d50ux6676ux5185ux5074-m_8-ux306bux3088ux308bux30abux30a4ux30e9ux30ebux975eux5bfeux79f0ux5206ux88c2}
+
+背景 \(H = O_8 \otimes M_8\) 上の \(\tau = 30\)
+進化では、空間反転（\(O_8 \leftrightarrow O_8^T\)）に対し \(\|P\|\)
+は不変である一方、内側時間結晶の回転向き（\(M_8\) vs \(M_8^T\)）により
+\(\|P\| = 0.046873\) vs
+\texttt{0.046212}（\(-1.41\%\)）の明確なカイラル非対称分裂が生じる（図
+10(b)）{[}S7{]}。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio,alt={第 7 速報の主要結果：(a) 28 次元 Spin(8) Triality 不変性と機械精度残差、(b) 空間 (e\_1, e\_2) 回転角 0 \textbackslash le \textbackslash theta \textbackslash le 4\textbackslash pi に沿ったベクトル（周期 2\textbackslash pi）vs スピノル 8\_s, 8\_c（\textbackslash theta = 2\textbackslash pi で厳密 -I 符号反転）{[}S7{]}。}]{figs_ja/fig_r7_triality_spin_half_ja.png}
+\caption{第 7 速報の主要結果：(a) 28 次元 \(Spin(8)\) Triality
+不変性と機械精度残差、(b) 空間 \((e_1, e_2)\) 回転角
+\(0 \le \theta \le 4\pi\) に沿ったベクトル（周期 \(2\pi\)）vs スピノル
+\(8_s, 8_c\)（\(\theta = 2\pi\) で厳密 \(-I\) 符号反転）{[}S7{]}。}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio,alt={第 7 速報の主要結果：(a) CAR フェルミオン代数（誤差 0.000e+00）による標準模型 1 世代電荷・SU(3) カシミールの 1:3:3:1 構造、(b) 時間結晶内側 M\_8 の回転向きによるカイラル非対称分裂（\textbackslash Delta\textbackslash\textbar P\textbackslash\textbar{} = -1.41\textbackslash\%）{[}S7{]}。}]{figs_ja/fig_r7_fermion_charge_and_chiral_ja.png}
+\caption{第 7 速報の主要結果：(a) CAR フェルミオン代数（誤差
+\protect\texttt{0.000e+00}）による標準模型 1 世代電荷・\(SU(3)\)
+カシミールの \protect\texttt{1:3:3:1} 構造、(b) 時間結晶内側 \(M_8\)
+の回転向きによるカイラル非対称分裂（\(\Delta\|P\| = -1.41\%\)）{[}S7{]}。}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{9. 総合議論：確立事項の総括と次期仮説論文（Part
+II）の課題}\label{ux7dcfux5408ux8b70ux8ad6ux78baux7acbux4e8bux9805ux306eux7dcfux62ecux3068ux6b21ux671fux4eeeux8aacux8ad6ux6587part-iiux306eux8ab2ux984c}
+
+\subsubsection{9.1 本統合論文で確立された 7
+本柱の要約}\label{ux672cux7d71ux5408ux8ad6ux6587ux3067ux78baux7acbux3055ux308cux305f-7-ux672cux67f1ux306eux8981ux7d04}
+
+表 1 に、単一の背景不要な実数 3 階テンソル反復 (1)--(2)
+から外部公理・乱数なしで確立された全 7 本柱と、次期仮説論文（Part
+II）へ切り分ける未解決境界を対比する。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+物理・数学領域
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+本論文（第 1〜第 7 速報統合）で機械精度確立済み
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+未解決境界（次期仮説論文 Part II の課題）
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{次元・結晶・宇宙論} & Hurwitz
+結晶選別（\(\mathbb{R},\mathbb{C},\mathbb{H},\mathbb{O}\)）、\(\mathbb{S}\)
+自壊、4 段階倍々相転移、視野角二極分裂 & 連続時空極限での FLRW
+計量と観測宇宙論パラメータ \\
+\textbf{量子力学の公理} & 離散化（Q1）、単一複素構造
+\(\mathbb{C}\)（Q2）、\(O(64)\) 共変＋Gleason Born
+則（Q3）、\(\mathbb{Z}_2^3\) 不確定性飽和（Q4） &
+多体ベル不等式（CHSH）の動的破れ検証 \\
+\textbf{ボソン・ゲージ対称性} & \(SO(3)\) スピン 1 無質量 vs スピン 0/2
+ギャップ \(\ln 3\)、\(1/\sqrt{s+1}\) 則、\(G_2(14) \supset SU(3)(8)\)、2
+粒子共存 & 明確な \(SU(2)_L\)
+弱ボソン結合とヒッグス質量獲得の動的追跡 \\
+\textbf{重力・時空幾何} & 7 方向 7 桁等方 4
+クラス空間計量歪み、離散曲率勾配、臨界点 \(\epsilon_c\)
+遠方切断崩壊、スピン 2 時計引きずり & 大格子での \(1/r\)
+ポテンシャル・光円錐速度 \(c\)・ローレンツ因子・累積重力時間遅延 \\
+\textbf{質量階層} & Hurwitz 4 段階メルセンヌ衣比
+\((8-d)/d\)・パスカル倍音・\((d/8)^2\) 則、直積準同型 \(r^{-K}\)
+指数階層 & 標準模型 3 世代レプトン・クォークの精密質量比同定 \\
+\textbf{フェルミオン・電荷} & 28D \(Spin(8)\) Triality スピン
+\(1/2\)（\(-I\)）、CAR パウリ排他則、1
+世代電荷（\texttt{0,\ 1/3,\ 2/3,\ 1}）、内側カイラル分裂 & 3
+世代構成、電子・光子の動的散乱、マクスウェル／ディラック／ヤン＝ミルズ方程式への接続 \\
+\end{longtable}
+}
+
+\subsubsection{9.2 次期仮説論文（Part
+II）の中心課題：外部時空と内部ゲージの分離仮説}\label{ux6b21ux671fux4eeeux8aacux8ad6ux6587part-iiux306eux4e2dux5fc3ux8ab2ux984cux5916ux90e8ux6642ux7a7aux3068ux5185ux90e8ux30b2ux30fcux30b8ux306eux5206ux96e2ux4eeeux8aac}
+
+本論文の検証を通じて、標準模型の力学方程式（ディラック方程式・ヤン＝ミルズ／マクスウェル方程式）および一般相対性理論（重力波・アインシュタイン方程式）へ完全接続するための本質的な壁が明確になった。第
+4 章では単一 \(O_8\) の虚数軸 \(\{e_1, e_2, e_3\}\) を外部 3
+次元空間（\(SO(3)\)）として読み、第 8 章では \(e_7\) 固定下の
+\(\{e_1, \dots, e_6\}\)
+を内部カラー空間（\(SU(3)\times U(1)_Q\)）として読んだ。したがって電磁力・強相互作用と重力を同一系内で矛盾なく同時結合させるには、Coleman--Mandula
+定理 {[}E13{]}
+が要請する\textbf{外部時空と内部ゲージ対称性の分離構造}（例えば
+\(O_8^{\mathrm{ext}}\) の \(\{1,2,3\}\) を外部空間＋時間結晶 \(M_8\)
+を時間、\(O_8^{\mathrm{int}}\) を内部ゲージ \(SU(3)\times U(1)\)
+として割り当てる時空接続仮説、あるいは \(O_8^{\otimes K}\)
+大格子展開）を独立の仮説論文（Part
+II）として定式化・検証する必要がある。本完成論文ではその手前の\textbf{仮説ゼロ・反論不能な代数的・力学的基盤}を完全に固定した。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{10.
+完全再現性と公開ファイル一覧}\label{ux5b8cux5168ux518dux73feux6027ux3068ux516cux958bux30d5ux30a1ux30a4ux30ebux4e00ux89a7}
+
+本論文の全数値結果・図・表は、GitHub リポジトリ
+\texttt{WurabeSeiji/ai-chat-logs-open} の
+\texttt{次元の生成構造/三次元正方配列の積と自己無撞着\_20261127/}
+以下および Zenodo 公開アーカイブにて、乱数なしの決定論的 Python
+スクリプト（Python 3.9.6, NumPy 2.0.2, SciPy, Matplotlib
+3.9.4）により完全再現できる。
+
+\begin{itemize}
+\tightlist
+\item
+  第 2 章（{[}S1{]}）：\texttt{tri\_loop\_product\_v0.py},
+  \texttt{tri\_loop\_octonion\_spectrum\_v0.py}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    大規模融解・視野角：\texttt{tri\_loop\_n64\_512melt\_run\_v0.py},
+    \texttt{tri\_loop\_n64\_triangle\_viewangle\_run\_v0.py}
+  \end{itemize}
+\item
+  第 3 章（{[}S2{]}）：\texttt{tri\_loop\_n64\_512melt\_anatomy\_v0.py},
+  \texttt{tri\_loop\_n64\_higgs\_probe\_v0.py}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    長期スイープ・第 4
+    層：\texttt{tri\_loop\_n64\_tau10000\_sweep\_v0.py},
+    \texttt{tri\_loop\_n64\_layer4\_anatomy\_v0.py}
+  \end{itemize}
+\item
+  第 4
+  章（{[}S3{]}）：\texttt{tri\_loop\_n64\_spin\_gauge\_higgs\_v0.py},
+  \texttt{tri\_loop\_n64\_harmonic\_localization\_v0.py}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ゲージ・2 粒子：\texttt{tri\_loop\_n64\_g2\_and\_twoparticle\_v0.py}
+  \end{itemize}
+\item
+  第 5
+  章（{[}S4{]}）：\texttt{tri\_loop\_n64\_quantum\_foundations\_verify\_v0.py}
+\item
+  第 6
+  章（{[}S5{]}）：\texttt{tri\_loop\_n64\_gravity\_time\_lorentz\_v0.py}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    反証監査・解剖：\texttt{tri\_loop\_n64\_gravity\_rigorous\_check\_v0.py},
+    \texttt{tri\_loop\_n64\_dphi\_dg\_anatomy\_v0.py}
+  \end{itemize}
+\item
+  第 7
+  章（{[}S6{]}）：\texttt{tri\_loop\_n64\_hurwitz\_mass\_hierarchy\_v0.py}
+\item
+  第 8 章（{[}S7{]}）：\texttt{tri\_loop\_n64\_triality\_charge\_v0.py}
+\item
+  本論文ビルド：\texttt{build\_tex\_full\_paper.py}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\subsubsection{A. 自己引用：本シリーズ速報（第 1〜第 7
+速報）}\label{a.-ux81eaux5df1ux5f15ux7528ux672cux30b7ux30eaux30fcux30baux901fux5831ux7b2c-1ux7b2c-7-ux901fux5831}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}S1{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積による結晶選択と融解（速報）},
+  Zenodo (2026-11-28), Version DOI: \texttt{10.5281/zenodo.24616931}
+  (Concept DOI: \texttt{10.5281/zenodo.24616930}).
+\item
+  \textbf{{[}S2{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積における 4
+  段階相転移とプローブ選別（第 2 速報）}, Zenodo (2026-11-28), Version
+  DOI: \texttt{10.5281/zenodo.24618400} (Concept DOI:
+  \texttt{10.5281/zenodo.24618399}).
+\item
+  \textbf{{[}S3{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積における \(SO(3)\)
+  スピン選別、\(G_2/SU(3)\) ゲージ対称性、空間倍音による局在化、および 2
+  粒子の完全共存（第 3 速報）}, Zenodo (2026-11-28), Version DOI:
+  \texttt{10.5281/zenodo.24619357} (Concept DOI:
+  \texttt{10.5281/zenodo.24619356}).
+\item
+  \textbf{{[}S4{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積からの量子構造の創発（第 4
+  速報）}, Zenodo (2026-11-28), Version DOI:
+  \texttt{10.5281/zenodo.24620262} (Concept DOI:
+  \texttt{10.5281/zenodo.24620261}).
+\item
+  \textbf{{[}S5{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積における球対称空間計量歪み、離散曲率勾配、スピン
+  2 時空引きずり、および臨界質量崩壊（第 5 速報）}, Zenodo (2026-11-28),
+  Version DOI: \texttt{10.5281/zenodo.24621139} (Concept DOI:
+  \texttt{10.5281/zenodo.24621138}).
+\item
+  \textbf{{[}S6{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積における Hurwitz 4
+  段階局在質量階層と直積準同型による指数関数的階層則（第 6 速報）},
+  Zenodo (2026-11-28), Version DOI: \texttt{10.5281/zenodo.24621454}
+  (Concept DOI: \texttt{10.5281/zenodo.24621453}).
+\item
+  \textbf{{[}S7{]}} 木原範昭,
+  \emph{三次元正方配列の三角形ループ積における八元数 Triality スピン
+  \(1/2\)、CAR
+  フェルミオン電荷スペクトル、および時間結晶カイラル分裂（第 7 速報）},
+  Zenodo (2026-11-28), Version DOI: \texttt{10.5281/zenodo.24621788}
+  (Concept DOI: \texttt{10.5281/zenodo.24621787}).
+\end{itemize}
+
+\subsubsection{B.
+自己引用：直接の前史となる著者先行論文}\label{b.-ux81eaux5df1ux5f15ux7528ux76f4ux63a5ux306eux524dux53f2ux3068ux306aux308bux8457ux8005ux5148ux884cux8ad6ux6587}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}K1{]}} 木原範昭, \emph{自己無撞着な関係波閉鎖系の力学},
+  Zenodo (2026-09-12), Concept DOI: \texttt{10.5281/zenodo.22729146}.
+\item
+  \textbf{{[}K2{]}} 木原範昭,
+  \emph{インフレーション曲線は床の線形不安定モードの指数増幅である},
+  Zenodo (2026-09-12), Concept DOI: \texttt{10.5281/zenodo.22729095}.
+\item
+  \textbf{{[}K3{]}} 木原範昭,
+  \emph{無名複素ゼロ閉包からの時空・波動計量の読出し}, Zenodo
+  (2026-09-03), Concept DOI: \texttt{10.5281/zenodo.22282217}.
+\item
+  \textbf{{[}K4{]}} 木原範昭,
+  \emph{第十三思考実験：質量を獲得した粒子は、なぜ散逸して消滅しないのか？},
+  Zenodo (2026-10-10), Concept DOI: \texttt{10.5281/zenodo.23266250}.
+\item
+  \textbf{{[}K5{]}} 木原範昭,
+  \emph{背景時空を置かない複素波の関係と干渉から、時間・空間・質量・電荷・並進速度・スピンを読み出す（統合仮説論文）},
+  Zenodo (2026-10-15), Concept DOI: \texttt{10.5281/zenodo.23384928}.
+\item
+  \textbf{{[}K6{]}} 木原範昭, \emph{QCD を八元数で表現したら}, Zenodo
+  (2026-11-19), Concept DOI: \texttt{10.5281/zenodo.24369465}.
+\item
+  \textbf{{[}K7{]}} 木原範昭,
+  \emph{八元数の積から、ヤン＝ミルズとディラックを読み出す}, Zenodo
+  (2026-11-20), Concept DOI: \texttt{10.5281/zenodo.24387753}.
+\item
+  \textbf{{[}K8{]}} 木原範昭, \emph{コインとコップの思考実験 ―
+  作用の成立条件から、系の要求仕様を逆算する ―}, Zenodo (2026-11-26),
+  Concept DOI: \texttt{10.5281/zenodo.24562867}.
+\end{itemize}
+
+\subsubsection{C.
+外部一次文献}\label{c.-ux5916ux90e8ux4e00ux6b21ux6587ux732e}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}E1{]}} A. Hurwitz, \emph{Über die Composition der
+  quadratischen Formen von beliebig vielen Variablen}, Nachr. Ges. Wiss.
+  Göttingen, 309--316 (1898).
+\item
+  \textbf{{[}E2{]}} J. C. Baez, \emph{The Octonions}, Bull. Amer. Math.
+  Soc. \textbf{39}(2), 145--205 (2002), arXiv:math/0105155.
+\item
+  \textbf{{[}E3{]}} M. Günaydin and F. Gürsey, \emph{Quark structure and
+  octonions}, J. Math. Phys. \textbf{14}(11), 1651--1667 (1973).
+\item
+  \textbf{{[}E4{]}} G. M. Dixon, \emph{Division Algebras: Octonions,
+  Quaternions, Complex Numbers and the Algebraic Design of Physics},
+  Kluwer Academic Publishers, Dordrecht (1994).
+\item
+  \textbf{{[}E5{]}} C. Furey, \emph{Standard model physics from an
+  algebra?}, Ph.D.~thesis, University of Waterloo (2015),
+  arXiv:1611.09182.
+\item
+  \textbf{{[}E6{]}} C. Furey,
+  \emph{\(SU(3)_C \times SU(2)_L \times U(1)_Y (\times U(1)_X)\) as a
+  symmetry of division algebraic ladder operators}, Eur. Phys. J. C
+  \textbf{78}, 375 (2018), arXiv:1806.00612.
+\item
+  \textbf{{[}E7{]}} A. M. Gleason, \emph{Measures on the Closed
+  Subspaces of a Hilbert Space}, J. Math. Mech. \textbf{6}(6), 885--893
+  (1957).
+\item
+  \textbf{{[}E8{]}} M.-O. Renou, D. Trillo, M. Weilenmann, T. P. Le, A.
+  Tavakoli, N. Gisin, A. Acín, and M. Navascués, \emph{Quantum theory
+  based on real numbers can be experimentally falsified}, Nature
+  \textbf{600}, 625--629 (2021).
+\item
+  \textbf{{[}E9{]}} D. L. Donoho and P. B. Stark, \emph{Uncertainty
+  Principles and Signal Recovery}, SIAM J. Appl. Math. \textbf{49}(3),
+  906--931 (1989).
+\item
+  \textbf{{[}E10{]}} H. Maassen and J. B. M. Uffink, \emph{Generalized
+  entropic uncertainty relations}, Phys. Rev.~Lett. \textbf{60}(12),
+  1103--1106 (1988).
+\item
+  \textbf{{[}E11{]}} F. Wilczek, \emph{Quantum Time Crystals}, Phys.
+  Rev.~Lett. \textbf{109}, 160401 (2012); D. V. Else, B. Bauer, and C.
+  Nayak, \emph{Floquet Time Crystals}, Phys. Rev.~Lett. \textbf{117},
+  090402 (2016).
+\item
+  \textbf{{[}E12{]}} R. Gurau, \emph{The \(1/N\) expansion of colored
+  tensor models}, Ann. Henri Poincaré \textbf{12}, 829--847 (2011),
+  arXiv:1011.2726.
+\item
+  \textbf{{[}E13{]}} S. Coleman and J. Mandula, \emph{All Possible
+  Symmetries of the \(S\) Matrix}, Phys. Rev.~\textbf{159}(5),
+  1251--1256 (1967).
+\item
+  \textbf{{[}E14{]}} V. Chandrasekaran, \emph{An algebraic quantization
+  of gravity from the null cone}, arXiv:2611.34924v1 (2026-11-25,
+  preprint).
+\item
+  \textbf{{[}E15{]}} 堀田昌寛, X 連続投稿（arXiv:2611.34924
+  に関する講評）, 2026-11-27,
+  https://x.com/hottaqu/status/2126098332707930567.
+\end{itemize}
+
+\end{document}
