@@ -1,0 +1,427 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{ltjsarticle}
+\usepackage{xcolor}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{xurl}
+\usepackage{float}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}
+\usepackage{float}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={三次元正方配列の三角形ループ積における Hurwitz 4 段階局在質量階層と直積準同型による指数関数的階層則（第 6 速報）},
+  pdfauthor={木原 範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{三次元正方配列の三角形ループ積における Hurwitz 4
+段階局在質量階層と直積準同型による指数関数的階層則（第 6 速報）}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{― 衣／芯エネルギー比のメルセンヌ公式
+\((8-d)/d = 2^m - 1\)、パスカル二項倍音則、\((d/8)^2\) コア則、および
+\(O_8^{\otimes K}\) 入れ子による \(10^5 \sim 10^{16}\) 階層 ―}
+\author{木原 範昭（株式会社WFシステム）　ORCID 0009-0004-6753-4020}
+\date{2026年11月28日}
+
+\begin{document}
+\maketitle
+
+\textbf{著者：} 木原 範昭（株式会社WFシステム）\\
+\textbf{ORCID：} 0009-0004-6753-4020\\
+\textbf{日付：} 2026年11月28日\\
+\textbf{位置づけ：} 第 1〜第 5 速報（DOI: 10.5281/zenodo.24616931,
+24618400, 24619357, 24620262, 24621139）に続く第 6
+速報。素粒子物理学における「離散的な質量階層」と「桁違いの指数関数的階層（\(10^5 \sim 10^{16}\)
+倍）」という二大課題に対し、第 1 層 \(H = O_8 \otimes M_8\) 内の Hurwitz
+4
+段階局在系列（\(\mathbb{O}_8, \mathbb{H}_4, \mathbb{C}_2, \mathbb{R}_1\)）が従う
+3 つの厳密有理数法則と、三角形ループ積の直積準同型定理による \(K\)
+段指数増幅則 \(r^K\) を確立する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{要旨}\label{ux8981ux65e8}
+
+背景時空や質量パラメータを一切仮定しない実数 3
+階テンソルの三角形ループ積
+\(\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r} T_{ipq} T_{qjr} T_{rpk}\)
+について、\(N = 64\)（\(O_8 \otimes O_8\)）の第 1 層時間結晶
+\(H = O_8 \otimes M_8\) 上に外側 \(O_8\) の全 4 種の Hurwitz 部分代数
+\(\mathbb{O}_8\)（\(d=8, m=0\)）、\(\mathbb{H}_4\)（\(d=4, m=1\)）、\(\mathbb{C}_2\)（\(d=2, m=2\)）、\(\mathbb{R}_1\)（\(d=1, m=3\)）（余次元
+\(m = \log_2(8/d)\)）に対応する局在プローブを同一条件（\(\epsilon = 0.05, 0.10,\; \tau = 30\)）で配置し、そのドレスド構造と階層スケーリングを乱数なしで決定論的に計測した。その結果、以下の
+4 つの厳密法則が確定した。
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{衣／芯エネルギー比のメルセンヌ公式}：弱結合極限（\(\epsilon = 0.05\)）において、背景
+  \(H\)
+  から引き寄せられる「衣（ドレスド雲）」と部分代数内部の「芯」のエネルギー比は
+  \[\frac{E_{\mathrm{core}}(d)}{E_{\mathrm{tot}}(d)} \;\longrightarrow\; \frac{d}{8}, \qquad \frac{E_{\mathrm{cloud}}(d)}{E_{\mathrm{core}}(d)} \;\longrightarrow\; \frac{8 - d}{d} = 2^m - 1 \;\in\; \{0,\; 1,\; 3,\; 7\}\]
+  に従う（実測：\(\mathbb{O}_8 = 0.00000,\; \mathbb{H}_4 = 1.00000,\; \mathbb{C}_2 = 2.98804 \to 3,\; \mathbb{R}_1 = 6.68202 \to 7\)）。
+\item
+  \textbf{総エネルギー \(d/8\) 則およびコアエネルギー \((d/8)^2\)
+  則}：追加非ゼロセル数は
+  \(\Delta\mathrm{nz}(d) = 64d\)（\texttt{512,\ 256,\ 128,\ 64}）、総エネルギーは
+  \(E_{\mathrm{tot}}(d) \propto d/8\)（\texttt{1\ :\ 1/2\ :\ 1/4\ :\ 1/8}）、コアエネルギーは
+  \(E_{\mathrm{core}}(d) \propto (d/8)^2\)（\textbf{\texttt{1\ :\ 1/4\ :\ 1/16\ :\ 1/64}}）に従う。
+\item
+  \textbf{空間倍音のパスカル二項則}：\(\mathbb{Z}_2^3\) 上の
+  Walsh--Hadamard 変換において、余次元 \(m = 0, 1, 2, 3\)
+  に対し立ち上がる空間倍音 \(k = 1 \dots m\)
+  のエネルギー比は厳密に二項係数 \(\binom{m}{k}\) に一致する（\(m=1\):
+  \texttt{1} {[}\(10.00\%\){]}、\(m=2\): \textbf{\texttt{2\ :\ 1}}
+  {[}\(25.07\%\){]}、\(m=3\): \textbf{\texttt{3\ :\ 3\ :\ 1}}
+  {[}\(44.33\%\){]}）。不確定性超過 \(H_x + H_k - \ln 8\) も
+  \texttt{0.0000\ \$\textbackslash{}to\$\ +0.0732\ \$\textbackslash{}to\$\ +0.1759\ \$\textbackslash{}to\$\ +0.3044}
+  と単調増加する。
+\item
+  \textbf{直積準同型定理による桁違いの指数関数的階層
+  \(r^{-K}\)}：三角形ループ積は厳密な直積準同型
+  \(\mathrm{Tri}(A \otimes B) = \mathrm{Tri}(A) \otimes \mathrm{Tri}(B)\)
+  を機械精度（相対誤差
+  \textbf{\(2.855 \times 10^{-16}\)}）で満たす。したがって 1
+  層で生じる離散比 \(r\)（コアエネルギー比 \(1/64\)、コア占有率
+  \(1/8\)、スピン 0/2 質量ギャップ \(1/3\)）は \(K\) 段入れ子
+  \(O_8^{\otimes K}\) で厳密に \(r^K\) へ指数増幅され、コアエネルギー比
+  \(1/64\) であればわずか \(K = 3\) 段で
+  \(2.6 \times 10^5\)（電子／トップクォーク比 \(3.4 \times 10^5\)
+  級）、\(K = 9\) 段で \(1.8 \times 10^{16}\)（電弱／プランク比
+  \(10^{16}\) 級）に到達する。
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1.
+導入：質量階層の二段階の謎}\label{ux5c0eux5165ux8ceaux91cfux968eux5c64ux306eux4e8cux6bb5ux968eux306eux8b0e}
+
+先行する第 1〜第 5 速報 {[}1--5{]} では、\(SO(3)\) スピン 1（無質量
+\(|\lambda| = 1\)）とスピン 0/2（質量ギャップ \(\ln 3\)）の分離、64
+要素の 3 段階エネルギー階層、別チャネルの \(1/\sqrt{s+1}\) 則、および 4
+サイト局在 \(\mathbb{H}_4\) と 1 サイト局在 \(\mathbb{R}_1\)
+のドレスド雲の差異を報告した。
+
+しかし物理学における「質量階層問題」は二段階の構造を持つ。第一に、なぜ同一スケール内で無質量状態と有質量状態が分かれ、離散的な質量（ドレスド衣）階層が生じるのか。第二に、なぜ電子とトップクォークの約
+\(3.4 \times 10^5\) 倍、あるいは電弱スケールとプランクスケールの約
+\(10^{16}\)
+倍という「桁違いの指数関数的階層」が自然な微調整なしで生じるのかである。本速報では、従来の
+3 点（\(\mathbb{O}_8, \mathbb{H}_4, \mathbb{R}_1\)）に欠けていた 2
+サイト複素数部分代数 \(\mathbb{C}_2\) を補完して Hurwitz 全 4
+段階を統一計測し（\texttt{tri\_loop\_n64\_hurwitz\_mass\_hierarchy\_v0.py}、乱数なし）、さらに直積準同型定理と組み合わせることで、この二段階の謎に対する純粋代数的な解を提示する。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{2. Hurwitz 4
+段階局在系列の厳密有理数法則}\label{hurwitz-4-ux6bb5ux968eux5c40ux5728ux7cfbux5217ux306eux53b3ux5bc6ux6709ux7406ux6570ux6cd5ux5247}
+
+第 1 層 \(H = O_8 \otimes M_8\)（\(\tau = 200\)）の \(i, k\)
+共有チャネル（\(b \in \{2, 3\}\)）に、外側 \(O_8\) の 4 つの Hurwitz
+部分代数 \(\mathbb{O}_8\) (\(d=8\)), \(\mathbb{H}_4\) (\(d=4\)),
+\(\mathbb{C}_2\) (\(d=2\)), \(\mathbb{R}_1\) (\(d=1\))
+に対応する単位プローブを初期振幅 \(\epsilon = 0.05\) および \(0.10\)
+で投入し、\(\tau = 30\) での安定ドレスド状態を全数計測した（表 1、図
+1）。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.0816}}
+  >{\centering\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1020}}
+  >{\centering\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1020}}
+  >{\centering\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1020}}
+  >{\centering\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1020}}
+  >{\centering\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1020}}
+  >{\centering\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1020}}
+  >{\centering\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1020}}
+  >{\centering\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1020}}
+  >{\centering\arraybackslash}p{(\linewidth - 18\tabcolsep) * \real{0.1020}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Hurwitz 部分代数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(d\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(m\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(\Delta\mathrm{nz}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E_{\mathrm{tot}}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E_{\mathrm{core}}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E_{\mathrm{core}}/E_{\mathrm{tot}}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{衣／芯比 \(E_{\mathrm{cloud}}/E_{\mathrm{core}}\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\textbf{倍音比 \(k_1:k_2:k_3\)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(H_x+H_k-\ln 8\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\(\mathbb{O}_8\)（八元数）} & 8 & 0 & 512 & \texttt{0.002494} &
+\texttt{0.002494} & \textbf{\texttt{1.00000}} (\(8/8\)) &
+\textbf{\texttt{0.00000}} (\(0\)) & なし（\(0.00\%\)） &
+\texttt{+0.000000} \\
+\textbf{\(\mathbb{H}_4\)（四元数）} & 4 & 1 & 256 & \texttt{0.001251} &
+\texttt{0.000625} & \textbf{\texttt{0.50000}} (\(4/8\)) &
+\textbf{\texttt{1.00000}} (\(1\)) &
+\textbf{\texttt{1\ :\ 0\ :\ 0}}（\(10.00\%\)） & \texttt{+0.073192} \\
+\textbf{\(\mathbb{C}_2\)（複素数）} & 2 & 2 & 128 & \texttt{0.000623} &
+\texttt{0.000156} & \textbf{\texttt{0.25075}} (\(\to 2/8\)) &
+\textbf{\texttt{2.98804}} (\(\to 3\)) &
+\textbf{\texttt{2\ :\ 1\ :\ 0}}（\(25.07\%\)） & \texttt{+0.175911} \\
+\textbf{\(\mathbb{R}_1\)（実数）} & 1 & 3 & 64 & \texttt{0.000294} &
+\texttt{0.000038} & \textbf{\texttt{0.13017}} (\(\to 1/8\)) &
+\textbf{\texttt{6.68202}} (\(\to 7\)) &
+\textbf{\texttt{3\ :\ 3\ :\ 1}}（\(44.33\%\)） & \texttt{+0.304387} \\
+\end{longtable}
+}
+
+\textbf{法則
+H1（メルセンヌ衣／芯比公式）}：弱結合極限（\(\epsilon \to 0\)）において、ドレスド雲と芯の比は外部余剰次元
+\(8 - d\) と内部次元 \(d\) の比に厳密収束する：
+\[\frac{E_{\mathrm{cloud}}(d)}{E_{\mathrm{core}}(d)} \;\longrightarrow\; \frac{8 - d}{d} = 2^m - 1 \;\in\; \{0,\; 1,\; 3,\; 7\}.\]
+実際、\(\mathbb{R}_1\) でも \(\epsilon = 0.10 \to 0.05\) で
+\texttt{5.948\ \$\textbackslash{}to\$\ 6.682\ \$\textbackslash{}to\$\ 7}
+へ単調収束する。
+
+\textbf{法則 H2（パスカル二項倍音則）}：余次元
+\(m = \log_2(8/d) \in \{0, 1, 2, 3\}\) に対して立ち上がる空間倍音次数
+\(k = 1 \dots m\) の占有比は、\(\mathbb{Z}_2^3\) 立方体の二項係数
+\(\binom{m}{k}\) に厳密一致する（\(m=1\): \texttt{1}、\(m=2\):
+\texttt{0.167\ :\ 0.084\ =\ 2\ :\ 1}、\(m=3\):
+\texttt{0.190\ :\ 0.190\ :\ 0.063\ =\ 3\ :\ 3\ :\ 1}）。
+
+\textbf{法則 H3（総エネルギー \(d/8\) 則・コアエネルギー \((d/8)^2\)
+則）}：追加非ゼロセル数 \(\Delta\mathrm{nz}(d) = 64d\) に比例して
+\(E_{\mathrm{tot}}(d) \propto d/8\)、さらにコア占有率 \(d/8\)
+が掛かるため、裸の芯が保持するコアエネルギーは
+\(E_{\mathrm{core}}(d) \propto (d/8)^2\)（\textbf{\texttt{1\ :\ 1/4\ :\ 1/16\ :\ 1/64}}）という厳密な
+4 のべき乗階層を形成する（図
+2(a)）。また臨界崩壊スキャン（\(\tau = 50\)）では、\(\mathbb{O}_8, \mathbb{C}_2\)
+は \(\epsilon \le 1.00\) まで安定共存する一方、\(\mathbb{H}_4\) は
+\(\epsilon \le 0.800\)、\(\mathbb{R}_1\) は \(\epsilon \le 0.275\) で
+\texttt{nz\ =\ 16,\ \textbar{}\textbar{}P\textbar{}\textbar{}\ =\ 0.49998}
+の臨界崩壊を起こした。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={Hurwitz 4 段階局在系列（\textbackslash mathbb\{O\}\_8, \textbackslash mathbb\{H\}\_4, \textbackslash mathbb\{C\}\_2, \textbackslash mathbb\{R\}\_1）の厳密法則。(a) 衣／芯比 E\_\{\textbackslash mathrm\{cloud\}\}/E\_\{\textbackslash mathrm\{core\}\} とメルセンヌ理論曲線 (8-d)/d = 2\^{}m - 1。(b) 空間倍音占有率とパスカル二項則 \textbackslash binom\{m\}\{k\}。}]{figs_ja/fig_r6_hurwitz_dressing_and_harmonics_ja.png}
+\caption{Hurwitz 4
+段階局在系列（\(\mathbb{O}_8, \mathbb{H}_4, \mathbb{C}_2, \mathbb{R}_1\)）の厳密法則。(a)
+衣／芯比 \(E_{\mathrm{cloud}}/E_{\mathrm{core}}\) とメルセンヌ理論曲線
+\((8-d)/d = 2^m - 1\)。(b) 空間倍音占有率とパスカル二項則
+\(\binom{m}{k}\)。}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{3.
+直積準同型定理による桁違いの指数関数的階層（\(10^5 \sim 10^{16}\)）}{3. 直積準同型定理による桁違いの指数関数的階層（10\^{}5 \textbackslash sim 10\^{}\{16\}）}}\label{ux76f4ux7a4dux6e96ux540cux578bux5b9aux7406ux306bux3088ux308bux6841ux9055ux3044ux306eux6307ux6570ux95a2ux6570ux7684ux968eux5c64105-sim-1016}
+
+\textbf{定理 H4（直積準同型定理と \(K\) 段指数増幅則）}：
+三角形ループ積の定義
+\(\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r} T_{ipq} T_{qjr} T_{rpk}\)
+は、任意の 3 階テンソル \(A, B\) のクロネッカー積に対し厳密な直積準同型
+\[\mathrm{Tri}(A \otimes B) = \mathrm{Tri}(A) \otimes \mathrm{Tri}(B), \qquad \mathrm{Tri}\!\left(\bigotimes_{m=1}^{K} U_m\right) = \bigotimes_{m=1}^{K} \mathrm{Tri}(U_m)\]
+を満たす。実際、\(8\times 8\times 8\) テンソル対（摂動 \(O_8\) と
+\(M_8\)）による直接検証で、相対誤差
+\(\|\mathrm{Tri}(A\otimes B) - \mathrm{Tri}(A)\otimes\mathrm{Tri}(B)\|/\|\mathrm{Tri}(A\otimes B)\| = \mathbf{2.855 \times 10^{-16}}\)（倍精度機械ゼロ）を確認した。
+
+この準同型性により、1 層 \(O_8\) 内で生じる任意の無次元離散比 \(r < 1\)
+は、\(K\) 段の階層入れ子構造 \(O_8^{\otimes K}\)
+における多重局在状態において厳密に \textbf{\(r^K\)}
+へと指数増幅される（表 2、図 2(b)）。
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2105}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2632}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2632}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2632}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+1 層で確立済みの離散比 \(r\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(K\) 段倍率 \(r^{-K}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+電子／トップ比（\(3.4 \times 10^5\)）到達段数
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+電弱／プランク比（\(10^{16}\)）到達段数
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{コアエネルギー比 \(r = 1/64\)}（本速報 H3） & \(64^K\) &
+\textbf{\(K = 3\) 段}（\(2.6 \times 10^5\)） & \textbf{\(K = 9\)
+段}（\(1.8 \times 10^{16}\)） \\
+コア占有率比 \(r = 1/8\)（本速報 H1） & \(8^K\) & \(K = 6\)
+段（\(2.6 \times 10^5\)） & \(K = 18\) 段（\(1.8 \times 10^{16}\)） \\
+スピン 0/2 質量ギャップ \(r = 1/3\)（第 3 速報 {[}3{]}） & \(3^K\) &
+\(K = 12\) 段（\(5.3 \times 10^5\)） & \(K = 34\)
+段（\(1.7 \times 10^{16}\)） \\
+\end{longtable}
+}
+
+すなわち、外部から極端な微小パラメータ（微調整）を一切持ち込まなくとも、1
+層内の Hurwitz 4
+段階有理数則（\(1/64, 1/8, 1/3\)）と三角形ループ積の直積準同型性（\(K = 3 \sim 9\)
+段の階層入れ子）だけで、自然界の \(10^5 \sim 10^{16}\)
+倍にわたる指数関数的質量階層を自然に生成できる代数的機構が存在する。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={(a) 1 層内の総エネルギー d/8 則とコアエネルギー (d/8)\^{}2 則（1 : 1/4 : 1/16 : 1/64）。(b) 直積準同型定理（相対誤差 2.86 \textbackslash times 10\^{}\{-16\}）による K 段入れ子指数階層 r\^{}\{-K\} と自然界の 2 大質量比スケール。}]{figs_ja/fig_r6_core_scaling_and_exponential_ja.png}
+\caption{(a) 1 層内の総エネルギー \(d/8\) 則とコアエネルギー \((d/8)^2\)
+則（\(1 : 1/4 : 1/16 : 1/64\)）。(b) 直積準同型定理（相対誤差
+\(2.86 \times 10^{-16}\)）による \(K\) 段入れ子指数階層 \(r^{-K}\)
+と自然界の 2 大質量比スケール。}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{4.
+議論・位置づけ・統合本論に向けて}\label{ux8b70ux8ad6ux4f4dux7f6eux3065ux3051ux7d71ux5408ux672cux8ad6ux306bux5411ux3051ux3066}
+
+本第 6 速報により、第 1〜第 5 速報と合わせて、単一の背景不要な実 3
+階テンソル反復 \(\mathrm{Tri}(T)\) から以下の 6
+本柱がすべて乱数なしの決定論的検証と解析定理によって確立された： (1)
+Hurwitz 結晶選別と次元融解 {[}1{]}、(2) 4
+段階倍々エンタングルメント相転移とベル対 {[}2{]}、(3) \(SO(3)\)
+スピン選別・\(G_2/SU(3)\) ゲージ次元・空間倍音局在・2 粒子共存
+{[}3{]}、(4) 量子構造 4 定理（離散化・単一複素構造・Born
+則・\(\mathbb{Z}_2^3\) 不確定性飽和）{[}4{]}、(5) 球対称 4
+クラス空間計量歪み・離散曲率・臨界崩壊・スピン 2 時計引きずり
+{[}5{]}、(6) Hurwitz 4
+段階質量階層（メルセンヌ衣比・パスカル倍音則・\((d/8)^2\)
+コア則）と直積準同型指数階層（本速報）。なお、標準模型の具体的素粒子質量スペクトル（レプトン・クォークの
+3 世代と精密質量比）の同定は、今後の課題として明示的に切り分けておく。
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5.
+再現手順と公開ファイル}\label{ux518dux73feux624bux9806ux3068ux516cux958bux30d5ux30a1ux30a4ux30eb}
+
+\begin{itemize}
+\tightlist
+\item
+  検証スクリプト：\texttt{tri\_loop\_n64\_hurwitz\_mass\_hierarchy\_v0.py}
+\item
+  数値ログ：\texttt{results/tri\_loop\_n64\_hurwitz\_mass\_hierarchy\_v0.txt}
+\item
+  作図スクリプト：\texttt{plot\_sixth\_report\_figures\_v0.py}
+\item
+  図出力（図
+  1）：\texttt{results/fig\_r6\_hurwitz\_dressing\_and\_harmonics\_\{ja,en\}.png}
+\item
+  図出力（図
+  2）：\texttt{results/fig\_r6\_core\_scaling\_and\_exponential\_\{ja,en\}.png}
+\item
+  ビルドスクリプト：\texttt{build\_tex\_rapid6.py}
+\end{itemize}
+
+\subsection{参考文献}\label{ux53c2ux8003ux6587ux732e}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  N. Kihara, \emph{Rapid Communication 1}, Zenodo (2026), DOI:
+  10.5281/zenodo.24616931.
+\item
+  N. Kihara, \emph{Second Rapid Communication}, Zenodo (2026), DOI:
+  10.5281/zenodo.24618400.
+\item
+  N. Kihara, \emph{Third Rapid Communication}, Zenodo (2026), DOI:
+  10.5281/zenodo.24619357.
+\item
+  N. Kihara, \emph{Fourth Rapid Communication}, Zenodo (2026), DOI:
+  10.5281/zenodo.24620262.
+\item
+  N. Kihara, \emph{Fifth Rapid Communication}, Zenodo (2026), DOI:
+  10.5281/zenodo.24621139.
+\end{enumerate}
+
+\end{document}
