@@ -1,0 +1,510 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{luatexja}
+\usepackage{xurl}
+\usepackage{float}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}
+\usepackage{float}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Electroweak Symmetry Breaking and Maximal Parity Violation in the 3D Triangle-Loop Product (Part IV)},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Electroweak Symmetry Breaking and Maximal Parity Violation in the
+3D Triangle-Loop Product (Part IV)}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{― Exact 100\%:0\% Chiral Splitting in \(G_2 \supset SO(4)\),
+Dynamical Higgs Mass Generation in \(\mathrm{Tri}(T)\),
+\(W^\pm/Z^0/\gamma\) Spectrum, and Bare Weinberg Angle
+\(\sin^2\theta_W^{\mathrm{bare}} = 3/8\) ―}
+\author{Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020}
+\date{November 28, 2026 Version DOI 10.5281/zenodo.24626593}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\textbf{Author:} Noriaki Kihara (WF System Co., Ltd.)\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Date:} November 28, 2026\\
+\textbf{Version DOI:} 10.5281/zenodo.24626593\\
+\textbf{Concept DOI:} 10.5281/zenodo.24626592\\
+\textbf{Status:} Electroweak symmetry breaking and maximal parity
+violation paper (\textbf{Part IV}) following Part I (Concept DOI:
+\texttt{10.5281/zenodo.24622200}), Part II (Concept DOI:
+\texttt{10.5281/zenodo.24622565}), and Part III (Concept DOI:
+\texttt{10.5281/zenodo.24625962}). Starting from the \texttt{1+3+4}
+split (pure 4-space \(SU(2)\)) of outer \(O_8^{\mathrm{ext}}\)
+identified in Part III, we verify the electroweak sector
+(\(SU(2)_L \times U(1)_Y \to U(1)_{\mathrm{em}}\), maximal parity
+violation, dynamical \(W/Z\) mass generation, and bare Weinberg angle)
+using deterministic machine-precision scripts
+(\texttt{tri\_loop\_part4\_electroweak\_parity\_v0.py}, no random
+numbers).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+Parts I--III {[}P1--P3{]} established that the single background-free
+real 3-tensor map
+\(\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r} T_{ipq} T_{qjr} T_{rpk}\) unifies
+gravity (\texttt{1+3} past light cone and tidal splitting), QCD
+(\(SU(3)_C\)), electromagnetism (\(U(1)_Q\)), one-generation CAR
+fermions, and resolution-gauge readout, and identified a pure 3D
+\(SU(2)\) subgroup on the extra 4-space \(\{e_4,e_5,e_6,e_7\}\) of outer
+\(O_8^{\mathrm{ext}}\). To close one full generation of the Standard
+Model, three questions remained: (1) why weak \(SU(2)_L\) couples
+exclusively to one chirality (maximal parity violation), (2) how
+hypercharge \(U(1)_Y\) commutes with all gauge and spatial symmetries,
+and (3) whether dynamical \(\mathrm{Tri}(T)\) condensation generates
+\(W/Z\) masses while leaving a massless residual symmetry.
+
+In this Part IV, deterministic verification
+(\texttt{tri\_loop\_part4\_electroweak\_parity\_v0.py}) establishes five
+results:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Exact Algebraic Origin of Maximal Parity Violation (100\%:0\%
+  Chiral Theorem in \(G_2\))}: Under
+  \(SO(4) \cong SU(2)_{\mathrm{SD}} \times SU(2)_{\mathrm{ASD}}\) on
+  \(\{e_4,e_5,e_6,e_7\}\), imposing the octonionic \(G_2\) (14D)
+  derivation constraint forces the 3-space-invariant internal subgroup
+  \(SU(2)_{\mathrm{pure4}}\) to occupy \textbf{self-dual (SD, +chiral)
+  \texttt{1.000000000000} and anti-self-dual (ASD, −chiral)
+  \texttt{0.000000000000}} (both \(G_2\) derivation residual and
+  Lie-algebra residual \textbf{\texttt{0.000e+00}}). The opposite
+  chirality (ASD) is locked 100\% to external 3D spatial rotations
+  \(SO(3)\) and cannot act as an independent internal gauge force.
+\item
+  \textbf{Exact Closure of All 12 Standard Model Generators and Parity
+  Selection Rules}: Defining the commuting hypercharge
+  \(Y = I_8\otimes Q_{\mathrm{int}} - \frac{1}{2}P_4\otimes I_8\)
+  (\(Q_{\mathrm{em}} = T_3^L + Y\)) on 64D
+  \(O_8^{\mathrm{ext}}\otimes O_8^{\mathrm{int}}\), all commutators
+  \([SO(3)_{\mathrm{ext}}, \mathrm{SM}_{12}]\) (36 pairs),
+  \([SU(3)_C, SU(2)_L]\) (24 pairs), \([SU(3)_C, U(1)_Y]\) (8 pairs),
+  and \([SU(2)_L, U(1)_Y]\) (3 pairs) vanish to
+  \textbf{\texttt{0.000e+00}}. Under a \(W_1\) rotation
+  (\(\theta=0.65\)), left-handed doublets (\(e_4\) sector) respond
+  strongly (\texttt{0.323572}) while right-handed singlets (\(e_0, e_1\)
+  sectors) give \textbf{\texttt{0.000e+00}}.
+\item
+  \textbf{Dynamical Higgs Condensation in \(\mathrm{Tri}(T)\): \(W\)
+  Mass Generation vs.~Massless Residual}: On vacuum
+  \(H = O_8\otimes M_8\), both \(SU(2)_L\) and residual 8D symmetries
+  have breaking norm \(\le 3.8\times 10^{-14}\) (massless). Evolving a
+  localized Higgs condensate P4\(_4\) at site \(A=4\)
+  (\(\epsilon_H = 0.05 \to 0.22, \tau=40\)) under \(\mathrm{Tri}(T)\)
+  generates 6-digit degenerate breaking norms \(\|W_a(U)\|_F =\)
+  \textbf{\texttt{0.012593\ \$\textbackslash{}to\$\ 0.025105\ \$\textbackslash{}to\$\ 0.035323\ \$\textbackslash{}to\$\ 0.035517}}
+  for \(W_1, W_2, W_3\), while the residual 8D symmetry fixing \(e_4\)
+  remains strictly massless (\textbf{\texttt{3.82e-14}}).
+\item
+  \textbf{Bare Weinberg Angle \(\sin^2\theta_W^{\mathrm{bare}} = 3/8\)
+  and 4×4 Electroweak Spectrum (\(\gamma, W^\pm, Z^0\))}: Without
+  assuming \(SU(5)/SO(10)\), raw 64D trace ratios give
+  \(\mathrm{Tr}(T_3^2)=8\), \(\mathrm{Tr}(Y^2)=40/3\),
+  \(\mathrm{Tr}(Q_{\mathrm{em}}^2)=64/3\), yielding
+  \textbf{\(\sin^2\theta_W^{\mathrm{bare}} = 3/8 = 0.375000\)} (matching
+  the canonical GUT value to 6 digits). Substituting this parameter-free
+  geometric ratio \(g'/g = \sqrt{3/5}\) into the 4×4 mass-squared matrix
+  \(M^2\) of the complex Higgs doublet
+  (\(T_3^L=-1/2, Y=+1/2 \Rightarrow Q_{\mathrm{em}}=0\)) produces
+  eigenvalues
+  \([m_\gamma^2, m_{W^+}^2, m_{W^-}^2, m_Z^2] = [\mathbf{-2.082\times 10^{-17}}, \mathbf{0.250000}, \mathbf{0.250000}, \mathbf{0.400000}]\)
+  and
+  \textbf{\(m_W^2/m_Z^2 = 5/8 = 0.625000 = \cos^2\theta_W^{\mathrm{bare}}\)}.
+\item
+  \textbf{Chiral Mirror Audit (\(M_8\) vs.~\(M_8^T\))}: Simultaneously
+  mirroring background and condensate yields identical
+  \(\|P\|=0.046825\) and \(\|W_1(U)\|_F=0.036160\), confirming that the
+  Part I §8.3 \texttt{-1.41\%} chiral splitting arises purely from
+  relative chirality between background and particle.
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Introduction: Closing One Generation of the Standard
+Model}\label{introduction-closing-one-generation-of-the-standard-model}
+
+Part II {[}P2{]} established \(SU(3)_C \times U(1)_Q\) and CAR
+\texttt{1:3:3:1} charges on 64D
+\(O_8^{\mathrm{ext}}\otimes O_8^{\mathrm{int}}\), and Part III {[}P3{]}
+isolated a 3-space-invariant pure \(SU(2)\) on the extra 4-space
+\(\{e_4,e_5,e_6,e_7\}\) of \(O_8^{\mathrm{ext}}\). Closing
+\(SU(3)_C \times SU(2)_L \times U(1)_Y\) requires answering three
+questions: (1) why only one chirality of
+\(SO(4) \cong SU(2)_L \times SU(2)_R\) survives as a weak internal
+force, (2) what bare Weinberg angle emerges from the commuting
+hypercharge \(Y\) with zero free parameters, and (3) whether
+\(\mathrm{Tri}(T)\) dynamics itself spontaneously breaks \(SU(2)_L\) via
+a localized condensate without an externally imposed Mexican-hat
+potential. Every claim is tagged as \textbf{【Known】}, \textbf{【Part
+I--III Established】}, \textbf{【Part IV Verified】}, or
+\textbf{【Hypothesis / Unverified】}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{2. Exact 100\%:0\% Chiral Splitting in
+\(G_2 \supset SO(4)\) 【Part IV Verified
+EW-1】}{2. Exact 100\%:0\% Chiral Splitting in G\_2 \textbackslash supset SO(4) 【Part IV Verified EW-1】}}\label{exact-1000-chiral-splitting-in-g_2-supset-so4-part-iv-verified-ew-1}
+
+The rotation algebra of 4-space \(\{e_4,e_5,e_6,e_7\}\) decomposes
+orthogonally into self-dual (SD, +chiral) and anti-self-dual (ASD,
+−chiral) subalgebras:
+\(\mathfrak{so}(4) \cong \mathfrak{su}(2)_{\mathrm{SD}} \oplus \mathfrak{su}(2)_{\mathrm{ASD}}\)
+【Known】. Projecting the 4×4 blocks of the \texttt{3+4}-preserving
+subgroup
+\(SO(4) = SU(2)_{\mathrm{pure4}} \times SU(2)_{\mathrm{space}} \subset G_2\)
+onto SD and ASD gives (Fig. 1(a)):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2222}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2222}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2778}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2778}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+3D Subgroup of \(G_2\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Action on 3-Space \(\{e_1,e_2,e_3\}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+4-Space SD (+Chiral) Fraction
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+4-Space ASD (−Chiral) Fraction
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{\(SU(2)_{\mathrm{pure4}}\) (Internal Weak)} & Strictly zero (max
+\texttt{8.327e-17}) & \textbf{\texttt{1.000000000000}} &
+\textbf{\texttt{0.000000000000}} \\
+\textbf{\(SU(2)_{\mathrm{space}}\) (Space-Locked)} & \(SO(3)\) spatial
+rotation & \textbf{\texttt{0.000000000000}} &
+\textbf{\texttt{1.000000000000}} \\
+\end{longtable}
+}
+
+The standard \(SU(2)_L\) basis \((T_1, T_2, T_3)\) satisfies both the
+\(G_2\) derivation condition and the \(\mathfrak{su}(2)\) Lie algebra to
+\textbf{\texttt{0.000e+00}}. Thus the octonionic multiplication table
+(\(G_2\)) strictly permits only one chirality (SD) to act as a
+3-space-commuting internal gauge force while locking the opposite
+chirality (ASD) 100\% to spatial rotations \(SO(3)\)---providing a
+direct algebraic origin for maximal parity violation 【Part IV
+Verified】+【Hypothesis】.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{3. Exact Commutativity of All 12 Standard Model Generators
+【Part IV Verified
+EW-2】}\label{exact-commutativity-of-all-12-standard-model-generators-part-iv-verified-ew-2}
+
+On 64D \(O_8^{\mathrm{ext}}\otimes O_8^{\mathrm{int}}\), using the
+4-space projector \(P_4 = \mathrm{diag}(0,0,0,0,1,1,1,1)\), we define
+the commuting hypercharge
+\[Y \equiv I_8 \otimes Q_{\mathrm{int}} - \frac{1}{2}\, P_4 \otimes I_8, \qquad Q_{\mathrm{em}} = T_3^L + Y. \tag{1}\]
+All commutators vanish to machine zero: -
+\([SO(3)_{\mathrm{ext}},\; SU(3)_C \times SU(2)_L \times U(1)_Y]\) (36
+pairs): \textbf{\texttt{0.000e+00}} - \([SU(3)_C,\; SU(2)_L]\) (24
+pairs), \([SU(3)_C,\; U(1)_Y]\) (8 pairs), \([SU(2)_L,\; U(1)_Y]\) (3
+pairs): \textbf{\texttt{0.000e+00}}
+
+Under \(U_W = \exp(0.65\, T_1^L\otimes I_8)\), left-handed doublet
+states (\(e_4\) sector) give
+\(\|U_W\psi_L - \psi_L\| = \mathbf{0.323572}\), whereas right-handed
+singlet states (\(e_0, e_1\) sectors) give \textbf{\texttt{0.000e+00}}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{4. Dynamical Higgs Condensation,
+\(W/Z/\gamma\) Spectrum, and
+\(\sin^2\theta_W^{\mathrm{bare}} = 3/8\)}{4. Dynamical Higgs Condensation, W/Z/\textbackslash gamma Spectrum, and \textbackslash sin\^{}2\textbackslash theta\_W\^{}\{\textbackslash mathrm\{bare\}\} = 3/8}}\label{dynamical-higgs-condensation-wzgamma-spectrum-and-sin2theta_wmathrmbare-38}
+
+\subsubsection{\texorpdfstring{4.1 Dynamical \(W_1, W_2, W_3\) Mass
+Generation vs.~Massless Residual in \(\mathrm{Tri}(T)\) 【Part IV
+Verified
+EW-3(a,b)】}{4.1 Dynamical W\_1, W\_2, W\_3 Mass Generation vs.~Massless Residual in \textbackslash mathrm\{Tri\}(T) 【Part IV Verified EW-3(a,b)】}}\label{dynamical-w_1-w_2-w_3-mass-generation-vs.-massless-residual-in-mathrmtrit-part-iv-verified-ew-3ab}
+
+Without introducing any external potential, we place a localized
+condensate P4\(_4\) at site \(A=4\) on vacuum \(H = O_8\otimes M_8\),
+evolve \(\mathrm{Tri}(T)\) for \(\tau=40\) steps, and measure the
+symmetry-breaking order parameter \(\|G(U_{\mathrm{higgs}})\|_F\) (Table
+1, Fig. 1(b)).
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Condensate Amplitude \(\epsilon_H\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(\|W_1(U)\|_F\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(\|W_2(U)\|_F\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(\|W_3(U)\|_F\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Residual 8D Max
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E_{\mathrm{probe}}\)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{0.00} (Vacuum \(H\)) & \texttt{0.000000} & \texttt{0.000000} &
+\texttt{0.000000} & \texttt{3.802e-14} & \texttt{0.000000} \\
+\texttt{0.05} & \textbf{\texttt{0.012593}} & \textbf{\texttt{0.012593}}
+& \textbf{\texttt{0.012593}} & \texttt{3.821e-14} & \texttt{0.000294} \\
+\texttt{0.10} & \textbf{\texttt{0.025105}} & \textbf{\texttt{0.025105}}
+& \textbf{\texttt{0.025105}} & \texttt{3.821e-14} & \texttt{0.000964} \\
+\texttt{0.16} & \textbf{\texttt{0.035323}} & \textbf{\texttt{0.035323}}
+& \textbf{\texttt{0.035323}} & \texttt{3.828e-14} & \texttt{0.001510} \\
+\texttt{0.22} & \textbf{\texttt{0.035517}} & \textbf{\texttt{0.035517}}
+& \textbf{\texttt{0.035517}} & \texttt{3.821e-14} & \texttt{0.001055} \\
+\end{longtable}
+}
+
+All three \(SU(2)_L\) generators acquire identical 6-digit degenerate
+breaking norms upon condensation while the residual 8D symmetry fixing
+\(e_4\) remains strictly massless (\texttt{3.82e-14}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={Part IV Verification (1): (a) Exact 100\%:0\% SD/ASD chiral splitting in G\_2 \textbackslash supset SO(4) (algebraic origin of maximal parity violation); (b) Dynamical \textbackslash mathrm\{Tri\}(T) Higgs condensate P4\_4 generating degenerate W\_1, W\_2, W\_3 breaking norms vs.~massless residual 8D symmetry.}]{figs_en/fig_p4_parity_and_higgs_mass_en.png}
+\caption{Part IV Verification (1): (a) Exact 100\%:0\% SD/ASD chiral
+splitting in \(G_2 \supset SO(4)\) (algebraic origin of maximal parity
+violation); (b) Dynamical \(\mathrm{Tri}(T)\) Higgs condensate P4\(_4\)
+generating degenerate \(W_1, W_2, W_3\) breaking norms vs.~massless
+residual 8D symmetry.}
+\end{figure}
+
+\subsubsection{\texorpdfstring{4.2 Bare Weinberg Angle
+\(\sin^2\theta_W^{\mathrm{bare}} = 3/8\) and 4×4 Electroweak Mass
+Spectrum 【Part IV Verified EW-3(c),
+EW-5】}{4.2 Bare Weinberg Angle \textbackslash sin\^{}2\textbackslash theta\_W\^{}\{\textbackslash mathrm\{bare\}\} = 3/8 and 4×4 Electroweak Mass Spectrum 【Part IV Verified EW-3(c), EW-5】}}\label{bare-weinberg-angle-sin2theta_wmathrmbare-38-and-44-electroweak-mass-spectrum-part-iv-verified-ew-3c-ew-5}
+
+Evaluating the trace-squared norms over 64D
+\(O_8^{\mathrm{ext}}\otimes O_8^{\mathrm{int}}\) yields (Fig. 2(b)):
+\[\mathrm{Tr}(T_3^2) = 8.000000,\qquad \mathrm{Tr}(Y^2) = \frac{40}{3} = 13.333333,\qquad \mathrm{Tr}(Q_{\mathrm{em}}^2) = \frac{64}{3} = 21.333333, \tag{2}\]
+which directly gives the parameter-free geometric mixing angle {[}E4{]}:
+\[\sin^2\theta_W^{\mathrm{bare}} = \frac{\mathrm{Tr}(T_3^2)}{\mathrm{Tr}(Q_{\mathrm{em}}^2)} = \frac{3}{8} = \mathbf{0.375000}, \qquad \frac{g'}{g} = \sqrt{\frac{3}{5}}. \tag{3}\]
+Diagonalizing the 4×4 mass-squared matrix
+\(M_{ab}^2 = \langle G_a\phi_H, G_b\phi_H\rangle\) for the neutral
+component of the complex Higgs doublet
+(\(T_3^L=-1/2, Y=+1/2 \Rightarrow Q_{\mathrm{em}}=0\)) with
+\(g'/g=\sqrt{3/5}\) yields (Fig. 2(a)):
+\[[m_\gamma^2,\; m_{W^+}^2,\; m_{W^-}^2,\; m_Z^2] = [\mathbf{-2.082\times 10^{-17}},\; \mathbf{0.250000},\; \mathbf{0.250000},\; \mathbf{0.400000}], \qquad \frac{m_W^2}{m_Z^2} = \mathbf{0.625000} = \frac{5}{8} = \cos^2\theta_W^{\mathrm{bare}}. \tag{4}\]
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={Part IV Verification (2): (a) 4×4 electroweak mass-squared spectrum showing exact massless photon \textbackslash gamma, degenerate W\^{}\textbackslash pm, and m\_W\^{}2/m\_Z\^{}2 = 5/8; (b) Bare Weinberg angle \textbackslash sin\^{}2\textbackslash theta\_W\^{}\{\textbackslash mathrm\{bare\}\} = 3/8 from raw 64D trace ratios.}]{figs_en/fig_p4_ew_spectrum_and_weinberg_en.png}
+\caption{Part IV Verification (2): (a) 4×4 electroweak mass-squared
+spectrum showing exact massless photon \(\gamma\), degenerate \(W^\pm\),
+and \(m_W^2/m_Z^2 = 5/8\); (b) Bare Weinberg angle
+\(\sin^2\theta_W^{\mathrm{bare}} = 3/8\) from raw 64D trace ratios.}
+\end{figure}
+
+\subsubsection{\texorpdfstring{4.3 Chiral Mirror Audit (\(M_8\)
+vs.~\(M_8^T\)) 【Part IV Verified
+EW-4】}{4.3 Chiral Mirror Audit (M\_8 vs.~M\_8\^{}T) 【Part IV Verified EW-4】}}\label{chiral-mirror-audit-m_8-vs.-m_8t-part-iv-verified-ew-4}
+
+Simultaneously mirroring the inner time crystal (\(M_8 \to M_8^T\)) for
+both background and condensate produces identical \(\|P\| = 0.046825\)
+and \(\|W_1(U)\|_F = 0.036160\), confirming that the Part I §8.3
+\texttt{-1.41\%} asymmetry is a genuine relative-chirality effect
+between background and particle.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Clean Separation of Remaining Open
+Problems}\label{clean-separation-of-remaining-open-problems}
+
+The following items remain \textbf{【Hypothesis / Unverified】} and are
+explicitly deferred to Parts V--VII: 1. \textbf{Renormalization-group
+running (\(\sin^2\theta_W: 3/8 \to 0.231\))}: Deriving the scale
+evolution from the bare geometric value \(3/8\) to the low-energy
+measured value \(\approx 0.231\). 2. \textbf{Multi-shell
+\(O_8^{\otimes K}\) continuum limit (planned Part V)}: \(1/r\) gravity,
+\(1/r^2\) Coulomb force, light-cone speed \(c\), Einstein's equations,
+and cumulative gravitational time dilation \(g_{00}(r)\). 3.
+\textbf{Dynamical scattering \& multi-body quantum correlations (planned
+Part VI)}: Two-particle scattering and dynamical CHSH Bell inequality
+violation. 4. \textbf{Three generations, precision mass ratios, and
+coupling constants (planned Part VII)}: \(J_3(\mathbb{O})\) /
+\(O_8^{\otimes K}\) three-generation structure, exact mass ratios, and
+first-principles derivation of \(\alpha \approx 1/137.036\) and
+\(\alpha_s\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Reproducibility and Published
+Files}\label{reproducibility-and-published-files}
+
+\begin{itemize}
+\tightlist
+\item
+  Verification script:
+  \texttt{tri\_loop\_part4\_electroweak\_parity\_v0.py} (deterministic,
+  \textasciitilde15 s)
+\item
+  Numerical log:
+  \texttt{results/tri\_loop\_part4\_electroweak\_parity\_v0.txt}
+\item
+  Figure script: \texttt{plot\_part4\_figures\_v0.py}
+\item
+  Figures:
+  \texttt{results/fig\_p4\_parity\_and\_higgs\_mass\_\{ja,en\}.png},
+  \texttt{results/fig\_p4\_ew\_spectrum\_and\_weinberg\_\{ja,en\}.png}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{References}\label{references}
+
+\subsubsection{A. Self-Citations}\label{a.-self-citations}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}P1{]}} N. Kihara, \emph{Spontaneous Emergence of Quantum,
+  Gauge, Gravitational, and Fermionic Structures from the 3D
+  Triangle-Loop Product (Unified Full Paper, Part I)}, Zenodo
+  (2026-11-28), Concept DOI: \texttt{10.5281/zenodo.24622200}.
+\item
+  \textbf{{[}P2{]}} N. Kihara, \emph{Unified Connection Hypothesis for
+  Gravity, Electromagnetism, QCD, and Dirac Matter in the 3D
+  Triangle-Loop Product (Part II)}, Zenodo (2026-11-28), Concept DOI:
+  \texttt{10.5281/zenodo.24622565}.
+\item
+  \textbf{{[}P3{]}} N. Kihara, \emph{Spacetime and Internal-Space
+  Readout Connection Hypothesis in the 3D Triangle-Loop Product (Part
+  III)}, Zenodo (2026-11-28), Concept DOI:
+  \texttt{10.5281/zenodo.24625962}.
+\end{itemize}
+
+\subsubsection{B. External Primary
+Literature}\label{b.-external-primary-literature}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{{[}E1{]}} S. Weinberg, \emph{A Model of Leptons}, Phys.
+  Rev.~Lett. \textbf{19}, 1264--1266 (1967); A. Salam, in
+  \emph{Elementary Particle Theory}, ed.~N. Svartholm (1968).
+\item
+  \textbf{{[}E2{]}} P. W. Higgs, \emph{Broken Symmetries and the Masses
+  of Gauge Bosons}, Phys. Rev.~Lett. \textbf{13}, 508--509 (1964).
+\item
+  \textbf{{[}E3{]}} C. Furey,
+  \emph{\(SU(3)_C \times SU(2)_L \times U(1)_Y (\times U(1)_X)\) as a
+  symmetry of division algebraic ladder operators}, Eur. Phys. J. C
+  \textbf{78}, 375 (2018), arXiv:1806.00612.
+\item
+  \textbf{{[}E4{]}} H. Georgi and S. L. Glashow, \emph{Unity of All
+  Elementary-Particle Forces}, Phys. Rev.~Lett. \textbf{32}, 438--441
+  (1974).
+\item
+  \textbf{{[}E5{]}} J. C. Baez, \emph{The Octonions}, Bull. Amer. Math.
+  Soc. \textbf{39}(2), 145--205 (2002), arXiv:math/0105155.
+\end{itemize}
+
+\end{document}

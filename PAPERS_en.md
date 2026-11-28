@@ -4,7 +4,7 @@ Noriaki Kihara / WF System Co., Ltd. / ORCID [0009-0004-6753-4020](https://orcid
 All papers are published on Zenodo under CC BY 4.0. Columns: title (English / Japanese), Version DOI, Concept DOI, date, version, PDFs, folder in this repository, release notes.
 Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PAPERS_ja.md](PAPERS_ja.md) / Scholar landing pages: https://wurabeseiji.github.io/ai-chat-logs-open/
 
-**Papers: 170**
+**Papers: 171**
 
 ## Central Projection Framework (Gnomonic Spacetime Geometry) / グノモン正写像による4次元時空の幾何学的定式化
 
@@ -597,6 +597,10 @@ Auto-generated from the Zenodo API by `tools/gen_paper_index.py`. 日本語: [PA
    三次元正方配列の三角形ループ積における時空・内部空間読出し接続仮説（Part III）  
    DOI [10.5281/zenodo.24625963](https://doi.org/10.5281/zenodo.24625963) · Concept [10.5281/zenodo.24625962](https://doi.org/10.5281/zenodo.24625962) · 2026-11-28 · v1.0 · [PDF en](https://zenodo.org/records/24625963/files/triangle_loop_spacetime_readout_connection_hypothesis_part3_en.pdf) [PDF ja](https://zenodo.org/records/24625963/files/%E4%B8%89%E6%AC%A1%E5%85%83%E6%AD%A3%E6%96%B9%E9%85%8D%E5%88%97%E3%81%AE%E4%B8%89%E8%A7%92%E5%BD%A2%E3%83%AB%E3%83%BC%E3%83%97%E7%A9%8D%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E6%99%82%E7%A9%BA%E3%83%BB%E5%86%85%E9%83%A8%E7%A9%BA%E9%96%93%E8%AA%AD%E5%87%BA%E3%81%97%E6%8E%A5%E7%B6%9A%E4%BB%AE%E8%AA%AC_Part3.pdf)  
    folder: [次元の生成構造/三次元正方配列の積と自己無撞着_20261127](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E4%B8%89%E6%AC%A1%E5%85%83%E6%AD%A3%E6%96%B9%E9%85%8D%E5%88%97%E3%81%AE%E7%A9%8D%E3%81%A8%E8%87%AA%E5%B7%B1%E7%84%A1%E6%92%9E%E7%9D%80_20261127) · [release notes](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_triangle_loop_part3_spacetime_readout_v1.md)
+55. **Electroweak Symmetry Breaking and Maximal Parity Violation in the 3D Triangle-Loop Product (Part IV): Exact 100%:0% Chiral Splitting in G2, Dynamical Higgs Mass Generation in Tri(T), W/Z/Photon Spectrum, and Bare Weinberg Angle sin^2(theta_W) = 3/8**  
+   三次元正方配列の三角形ループ積における電弱対称性破れとパリティ最大破れ（Part IV）  
+   DOI [10.5281/zenodo.24626593](https://doi.org/10.5281/zenodo.24626593) · Concept [10.5281/zenodo.24626592](https://doi.org/10.5281/zenodo.24626592) · 2026-11-28 · v1.0 · [PDF en](https://zenodo.org/records/24626593/files/triangle_loop_electroweak_symmetry_breaking_parity_part4_en.pdf) [PDF ja](https://zenodo.org/records/24626593/files/%E4%B8%89%E6%AC%A1%E5%85%83%E6%AD%A3%E6%96%B9%E9%85%8D%E5%88%97%E3%81%AE%E4%B8%89%E8%A7%92%E5%BD%A2%E3%83%AB%E3%83%BC%E3%83%97%E7%A9%8D%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E9%9B%BB%E5%BC%B1%E5%AF%BE%E7%A7%B0%E6%80%A7%E7%A0%B4%E3%82%8C%E3%81%A8%E3%83%91%E3%83%AA%E3%83%86%E3%82%A3%E6%9C%80%E5%A4%A7%E7%A0%B4%E3%82%8C_Part4.pdf)  
+   folder: [次元の生成構造/三次元正方配列の積と自己無撞着_20261127](https://github.com/WurabeSeiji/ai-chat-logs-open/tree/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/%E4%B8%89%E6%AC%A1%E5%85%83%E6%AD%A3%E6%96%B9%E9%85%8D%E5%88%97%E3%81%AE%E7%A9%8D%E3%81%A8%E8%87%AA%E5%B7%B1%E7%84%A1%E6%92%9E%E7%9D%80_20261127) · [release notes](https://github.com/WurabeSeiji/ai-chat-logs-open/blob/main/%E6%AC%A1%E5%85%83%E3%81%AE%E7%94%9F%E6%88%90%E6%A7%8B%E9%80%A0/RELEASE_NOTES_triangle_loop_part4_electroweak_parity_v1.md)
 
 ## Time Axis, Q Axis, and Fermion Generation / 時間軸Q軸とフェルミオンの生成構造
 

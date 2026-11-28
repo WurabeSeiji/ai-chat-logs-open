@@ -4,6 +4,8 @@
 **著者：** 木原 範昭（株式会社WFシステム）
 **ORCID：** 0009-0004-6753-4020
 **日付：** 2026年11月28日
+**Version DOI：** 10.5281/zenodo.24626593
+**Concept DOI：** 10.5281/zenodo.24626592
 **位置づけ：** 三角形ループ積シリーズ Part I（Concept DOI: `10.5281/zenodo.24622200`）・Part II（Concept DOI: `10.5281/zenodo.24622565`）・Part III（Concept DOI: `10.5281/zenodo.24625962`）の続編となる**電弱対称性破れ・パリティ最大破れ検証論文（Part IV）**。Part III で特定した外側 $O_8^{\mathrm{ext}}$ の `1+3+4` 分割（純粋 4 空間 $SU(2)$）を起点に、標準模型の電弱セクター（$SU(2)_L \times U(1)_Y \to U(1)_{\mathrm{em}}$、パリティ最大破れ、$W/Z$ ボソン質量獲得、ワインバーグ角）を乱数なしの決定論的計算（`tri_loop_part4_electroweak_parity_v0.py`）で直接検証する。
 
 ---
