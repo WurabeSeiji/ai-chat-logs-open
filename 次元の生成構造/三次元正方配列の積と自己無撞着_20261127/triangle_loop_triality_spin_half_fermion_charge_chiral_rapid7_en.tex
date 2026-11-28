@@ -1,0 +1,423 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+\documentclass[
+  a4paper,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+  \setmainfont[]{DejaVu Serif}
+  \setsansfont[]{DejaVu Sans}
+  \setmonofont[]{DejaVu Sans Mono}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{luatexja}
+\usepackage{xurl}
+\usepackage{float}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}
+\usepackage{float}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Octonionic Spin(8) Triality Spin-1/2{,} CAR Fermion Charge Spectrum (0{,} 1/3{,} 2/3{,} 1){,} and Time-Crystal Chiral Splitting in the 3D Triangle-Loop Product (Seventh Rapid Communication)},
+  pdfauthor={Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020},
+  colorlinks=true,
+  linkcolor={Maroon},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Octonionic Spin(8) Triality Spin-1/2, CAR Fermion Charge Spectrum
+(0, 1/3, 2/3, 1), and Time-Crystal Chiral Splitting in the 3D
+Triangle-Loop Product (Seventh Rapid Communication)}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{― Exact 28D Triality Sign Flip Under \(2\pi\) Rotation, Pauli
+Exclusion and \(SU(3)\) Casimirs in a 1:3:3:1 Hierarchy, and
+Inner-\(M_8\) Chiral Asymmetry ―}
+\author{Noriaki Kihara (WF System Co., Ltd.) ORCID 0009-0004-6753-4020}
+\date{November 28, 2026}
+
+\begin{document}
+\maketitle
+
+\textbf{Author:} Noriaki Kihara (WF System Co., Ltd.)\\
+\textbf{ORCID:} 0009-0004-6753-4020\\
+\textbf{Date:} November 28, 2026\\
+\textbf{Status:} Seventh Rapid Communication following Rapid Reports
+1--6 (DOIs: 10.5281/zenodo.24616931, 24618400, 24619357, 24620262,
+24621139, 24621454). Establishes spin-\(1/2\) sign flips via \(Spin(8)\)
+triality, canonical anticommutation relations (CAR) with exact
+one-generation Standard Model electric charges (\(0, 1/3, 2/3, 1\)) and
+\(SU(3)\) Casimirs, and dynamical chiral splitting driven by the inner
+time crystal \(M_8\).
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Abstract}\label{abstract}
+
+We analyze the internal algebraic and dynamical fermionic structures of
+the outer octonion crystal \(O_8\) and Layer-1 time crystal
+\(H = O_8 \otimes M_8\) selected by the background-free real 3-tensor
+triangle-loop product
+\(\mathrm{Tri}(T)_{ijk} = \sum_{p,q,r} T_{ipq} T_{qjr} T_{rpk}\) at
+\(N = 64\) (\texttt{tri\_loop\_n64\_triality\_charge\_v0.py}, zero
+randomness). Three exact results are established to machine precision:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{28D \(Spin(8)\) Triality and Spin-\(1/2\) Sign Flip (\(-I\)
+  under \(2\pi\) Rotation)}: The 3-index triality invariance system
+  (\(512\times 84\)) on \(O_8[i, j, k]\) has \texttt{rank\ =\ 56} and an
+  exact invariant kernel of dimension \textbf{\texttt{28}} (max zero
+  singular value \texttt{4.489e-15}, finite rotation error
+  \texttt{8.934e-16}). Under a \(2\pi\) rotation in the spatial
+  \((e_1, e_2)\) plane, the vector representation returns to \(+I\)
+  (\texttt{7.622e-16}), whereas both left- and right-handed spinors flip
+  sign strictly to \textbf{\(R_s(2\pi) = -I\) (\texttt{1.584e-14}) and
+  \(R_c(2\pi) = -I\) (\texttt{1.793e-14})}, returning to \(+I\) only
+  after \(4\pi\).
+\item
+  \textbf{CAR Fermion Algebra (Pauli Exclusion) and One-Generation
+  Charge Spectrum (\(1:3:3:1\))}: From the left-multiplication Clifford
+  algebra \(\{L_a, L_b\} = -2\delta_{ab}I\) (error
+  \textbf{\texttt{0.000e+00}}) and the three color complex planes
+  \((e_1,e_6), (e_2,e_5), (e_3,e_4)\) induced by fixing \(e_7\), three
+  fermionic ladder operators \(\alpha_1, \alpha_2, \alpha_3\) satisfy
+  exact canonical anticommutation relations
+  \(\{\alpha_m, \alpha_n\} = 0\) (Pauli exclusion \(\alpha_m^2 = 0\))
+  and \(\{\alpha_m, \alpha_n^\dagger\} = \delta_{mn}I\) (both error
+  \textbf{\texttt{0.000e+00}}). The charge operator
+  \(Q = \frac{1}{3}\sum_{m=1}^3 \alpha_m^\dagger \alpha_m\) commutes
+  strictly with all 8 \(SU(3)\) gluon generators
+  (\(\|[\Lambda_A, Q]\| = \mathbf{0.000\times 10^0}\)) and decomposes
+  the 8 states into \(Q = 0\) (singlet, \(C_2=0\): \(\nu\)-type),
+  \(Q = +1/3\) (triplet, \(C_2=16/3\): \(\bar{d}\)-type), \(Q = +2/3\)
+  (triplet, \(C_2=16/3\): \(u\)-type), and \(Q = +1\) (singlet,
+  \(C_2=0\): \(e^+\)-type)---an exact
+  \textbf{\texttt{1\ :\ 3\ :\ 3\ :\ 1}} binomial degeneracy matching the
+  \(\mathbb{Z}_2^3\) spatial harmonic law of Rapid Reports 3 and 6.
+\item
+  \textbf{Dynamical Chiral Splitting Driven by Inner \(M_8\)}: On
+  \(H = O_8 \otimes M_8\) (\(\tau = 30\)), spatial parity inversion
+  (\(O_8 \leftrightarrow O_8^T\)) leaves \(\|P\|\) invariant, whereas
+  reversing the inner time-crystal rotation
+  (\(M_8 \leftrightarrow M_8^T\)) splits \(\|P\|\) from
+  \texttt{0.046873} to \texttt{0.046212} (\(-1.41\%\)).
+\end{enumerate}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{1. Introduction: From Bosons and Spacetime to Fermions and
+Electric
+Charge}\label{introduction-from-bosons-and-spacetime-to-fermions-and-electric-charge}
+
+Rapid Communications 1--6 {[}1{]} established Hurwitz crystal selection,
+four-stage entanglement cascades, \(SO(3)\) spin selection,
+\(G_2 \supset SU(3)\) gauge dimensions, four emergent quantum theorems,
+4-class spherical metric distortion with critical collapse, and Hurwitz
+4-stage mass hierarchies. Three foundational questions remained open:
+(i) the emergence of spin-\(1/2\) and Pauli exclusion, (ii) the
+algebraic origin of fractional/integer electric charges
+(\(0, 1/3, 2/3, 1\)) and their link to the \texttt{1:3:3:1}
+\(\mathbb{Z}_2^3\) spatial harmonics, and (iii) dynamical left/right
+chiral asymmetry. Here we resolve all three at machine precision.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{2. 28D \(Spin(8)\) Triality and Spin-\(1/2\)
+Sign
+Flip}{2. 28D Spin(8) Triality and Spin-1/2 Sign Flip}}\label{d-spin8-triality-and-spin-12-sign-flip}
+
+While identical rotations \((R, R, R)\) on all three indices of \(O_8\)
+preserve only \(G_2\) (14D), assigning distinct representations
+\((8_v, 8_s, 8_c)\) yields the triality invariance condition
+\(\sum_p ((A_v)_{ip}O_8[p,j,k] + (A_s)_{jp}O_8[i,p,k] + (A_c)_{kp}O_8[i,j,p]) = 0\).
+SVD of this \(512 \times 84\) system confirms \texttt{rank\ =\ 56} and
+an exact \textbf{\texttt{28}-dimensional} \(Spin(8)\) kernel (Table 1,
+Fig. 1). Exponentiating the spatial \((e_1, e_2)\) generator
+demonstrates exact spin-\(1/2\) behavior: \(R_v(2\pi) = +I\), while
+\(R_s(2\pi) = R_c(2\pi) = -I\).
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3077}}
+  >{\centering\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3846}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3077}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Verification Item (\(Spin(8)\) Triality)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Residual Norm
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Exact Property
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Triality kernel dimension (\(512\times 84\) SVD) & \texttt{28} (max zero
+SV \texttt{4.489e-15}) & Full 28D \(Spin(8)\) invariance \\
+Finite triality rotation (\(\theta = 0.7\)) error & \texttt{8.934e-16} &
+\((R_v \otimes R_s \otimes R_c)O_8 = O_8\) \\
+\(2\pi\) rotation: \(\|R_v(2\pi) - (+I)\|\) & \texttt{7.622e-16} &
+Vector \(8_v\) (period \(2\pi\)) \\
+\textbf{\(2\pi\) rotation:
+\(\|R_s(2\pi) - (-I)\|,\; \|R_c(2\pi) - (-I)\|\)} &
+\textbf{\texttt{1.584e-14}, \texttt{1.793e-14}} & \textbf{Spin-\(1/2\)
+sign flip (\(-I\))} \\
+\(4\pi\) rotation: \(\|R_s(4\pi) - (+I)\|,\; \|R_c(4\pi) - (+I)\|\) &
+\texttt{3.168e-14}, \texttt{3.587e-14} & Spinors \(8_s, 8_c\) (period
+\(4\pi\)) \\
+\end{longtable}
+}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={(a) Exact 28D Spin(8) triality invariance and machine-precision residuals. (b) Phase sign along spatial (e\_1, e\_2) rotation 0 \textbackslash le \textbackslash theta \textbackslash le 4\textbackslash pi contrasting vector 8\_v (period 2\textbackslash pi) against spinors 8\_s, 8\_c (period 4\textbackslash pi, exact -I flip at 2\textbackslash pi).}]{figs_en/fig_r7_triality_spin_half_en.png}
+\caption{(a) Exact 28D \(Spin(8)\) triality invariance and
+machine-precision residuals. (b) Phase sign along spatial \((e_1, e_2)\)
+rotation \(0 \le \theta \le 4\pi\) contrasting vector \(8_v\) (period
+\(2\pi\)) against spinors \(8_s, 8_c\) (period \(4\pi\), exact \(-I\)
+flip at \(2\pi\)).}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{3. CAR Fermion Algebra and One-Generation
+Charge Spectrum
+(\texttt{1:3:3:1})}{3. CAR Fermion Algebra and One-Generation Charge Spectrum (1:3:3:1)}}\label{car-fermion-algebra-and-one-generation-charge-spectrum-1331}
+
+Left multiplication matrices \(L_a\) on \(O_8\) satisfy
+\(\{L_a, L_b\} = -2\delta_{ab}I\) (\texttt{0.000e+00}). Fixing \(e_7\)
+defines three color complex planes \((e_1,e_6), (e_2,e_5), (e_3,e_4)\)
+and three Furey ladder operators
+\(\alpha_m = \frac{1}{2}(-L_a + i\,\mathrm{sgn}\cdot L_b)\) {[}2{]}
+obeying exact CAR (\(\{\alpha_m, \alpha_n\} = 0\) and
+\(\{\alpha_m, \alpha_n^\dagger\} = \delta_{mn}I\), both error
+\textbf{\texttt{0.000e+00}}). The electric charge
+\(Q = \frac{1}{3}\sum_{m=1}^3 \alpha_m^\dagger \alpha_m\) commutes
+strictly with all 8 \(SU(3)\) generators
+(\(\|[\Lambda_A, Q]\| = \mathbf{0.000\times 10^0}\)) and partitions the
+8 states into one Standard Model generation (Table 2, Fig. 2(a)):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2083}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2083}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2083}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2083}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Number \(N\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Charge \(Q = N/3\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Multiplicity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(SU(3)\) Casimir \(C_2\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+One-Generation Assignment
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(0\) & \textbf{\texttt{0}} & \textbf{1} & \texttt{0.000000} & Color
+singlet (\(\nu\)-type) \\
+\(1\) & \textbf{\texttt{+1/3}} & \textbf{3} & \texttt{5.333333}
+(\(= 16/3\)) & Color triplet (\(\bar{d}\)-type quark) \\
+\(2\) & \textbf{\texttt{+2/3}} & \textbf{3} & \texttt{5.333333}
+(\(= 16/3\)) & Color triplet (\(u\)-type quark) \\
+\(3\) & \textbf{\texttt{+1}} & \textbf{1} & \texttt{0.000000} & Color
+singlet (\(e^+\)-type) \\
+\end{longtable}
+}
+
+This exact \textbf{\texttt{1\ :\ 3\ :\ 3\ :\ 1}} multiplicity shares the
+identical 3-bit \(\mathbb{Z}_2^3\) binomial structure \(\binom{3}{k}\)
+discovered in the spatial harmonics of Rapid Reports 3 and 6 {[}1{]}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{\texorpdfstring{4. Dynamical Chiral Splitting Driven by
+Inner Time Crystal
+\(M_8\)}{4. Dynamical Chiral Splitting Driven by Inner Time Crystal M\_8}}\label{dynamical-chiral-splitting-driven-by-inner-time-crystal-m_8}
+
+Background \(H\) has parity decomposition
+\(E_{\mathrm{sym}} = 0.700395\) and \(E_{\mathrm{asym}} = 0.299605\).
+Evolving four chiral/parity/CP probes (\(\epsilon = 0.10\)) on \(H\) to
+\(\tau = 30\) shows that spatial reversal
+(\(O_8 \leftrightarrow O_8^T\)) leaves \(\|P\|\) unchanged, whereas
+reversing the inner time-crystal rotation
+(\(M_8 \leftrightarrow M_8^T\)) produces a clean \(-1.41\%\) splitting
+(Table 3, Fig. 2(b)):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1739}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2174}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2174}}
+  >{\centering\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2174}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1739}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Probe (Chiral / Parity / CP Test)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\texttt{nz}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+\(E_{\mathrm{probe}}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Norm \(\|P\|\) at \(\tau = 30\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Outcome
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(O_8 \otimes M_8\) (Co-chiral R,R) & 1024 & \texttt{0.009901} &
+\textbf{\texttt{0.046873}} & Reference (co-rotating) \\
+\textbf{\(O_8 \otimes M_8^T\) (Anti-chiral R,L)} & 1024 &
+\texttt{0.009901} & \textbf{\texttt{0.046212}} & \textbf{\(-1.41\%\)
+chiral split} \\
+\(O_8^T \otimes M_8\) (Parity L,R) & 1024 & \texttt{0.009901} &
+\textbf{\texttt{0.046873}} & Invariant under spatial flip \\
+\textbf{\(O_8^T \otimes M_8^T\) (CP-flip L,L)} & 1024 &
+\texttt{0.009901} & \textbf{\texttt{0.046212}} & \textbf{\(-1.41\%\)
+chiral split} \\
+\end{longtable}
+}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.96\linewidth,height=\textheight,keepaspectratio,alt={(a) Exact CAR fermion algebra and one-generation charge/color spectrum (error 0.000e+00, 1:3:3:1 degeneracy). (b) Chiral splitting driven solely by inner time-crystal rotation M\_8 vs.~M\_8\^{}T (\textbackslash Delta\textbackslash\textbar P\textbackslash\textbar{} = -1.41\textbackslash\%).}]{figs_en/fig_r7_fermion_charge_and_chiral_en.png}
+\caption{(a) Exact CAR fermion algebra and one-generation charge/color
+spectrum (error \protect\texttt{0.000e+00}, \protect\texttt{1:3:3:1}
+degeneracy). (b) Chiral splitting driven solely by inner time-crystal
+rotation \(M_8\) vs.~\(M_8^T\) (\(\Delta\|P\| = -1.41\%\)).}
+\end{figure}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{5. Discussion and Outlook}\label{discussion-and-outlook}
+
+Rapid Communication 7 completes the algebraic identification of
+spin-\(1/2\) (\(Spin(8)\) triality), Pauli exclusion (CAR),
+one-generation electric charges (\(0, 1/3, 2/3, 1\)) with \(SU(3)\)
+Casimirs, and inner time-crystal chiral splitting. Extending to three
+generations, explicit \(SU(2)_L\) weak interactions, and quantitative
+electron-photon scattering (fine-structure constant) remain clear
+targets for future work beyond the unified full paper integrating Rapid
+Communications 1--7.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{6. Reproducibility and Released
+Files}\label{reproducibility-and-released-files}
+
+\begin{itemize}
+\tightlist
+\item
+  Verification script: \texttt{tri\_loop\_n64\_triality\_charge\_v0.py}
+\item
+  Numerical log:
+  \texttt{results/tri\_loop\_n64\_triality\_charge\_v0.txt}
+\item
+  Figure generator: \texttt{plot\_seventh\_report\_figures\_v0.py}
+\item
+  Figures (Fig. 1):
+  \texttt{results/fig\_r7\_triality\_spin\_half\_\{ja,en\}.png}
+\item
+  Figures (Fig. 2):
+  \texttt{results/fig\_r7\_fermion\_charge\_and\_chiral\_\{ja,en\}.png}
+\item
+  TeX builder: \texttt{build\_tex\_rapid7.py}
+\end{itemize}
+
+\subsection{References}\label{references}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  N. Kihara, \emph{Rapid Communications 1--6}, Zenodo (2026), DOIs:
+  10.5281/zenodo.24616931, 24618400, 24619357, 24620262, 24621139,
+  24621454.
+\item
+  C. Furey, \emph{Standard model physics from an algebra?},
+  Ph.D.~thesis, University of Waterloo (2015), arXiv:1611.09182.
+\item
+  J. C. Baez, \emph{The Octonions}, Bull. Amer. Math. Soc. \textbf{39},
+  145--205 (2002).
+\end{enumerate}
+
+\end{document}
