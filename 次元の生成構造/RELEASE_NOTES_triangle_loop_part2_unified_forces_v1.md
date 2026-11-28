@@ -5,6 +5,9 @@
 - **Zenodo URL**：https://zenodo.org/records/24622566
 - **Concept DOI（全版共通）**：`10.5281/zenodo.24622565`（https://doi.org/10.5281/zenodo.24622565）
 - **Version DOI（v1）**：`10.5281/zenodo.24622566`（https://doi.org/10.5281/zenodo.24622566）
+- **解説記事（note.com）**：
+  - 日本語版：https://note.com/kiharanoriaki/n/n09cbc13c6be5
+  - 英語版：https://note.com/kiharanoriaki/n/n0b72e078fd3b
 - **接続する先行論文**：
   - Part I（統合完成論文：速報 1–7 統合）：`10.5281/zenodo.24622201`（Concept: `10.5281/zenodo.24622200`）
   - 八元数 QCD 閉じ込め・質量ギャップ論文：`10.5281/zenodo.24369465`

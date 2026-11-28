@@ -5,6 +5,9 @@
 - **Zenodo URL**：https://zenodo.org/records/24622201
 - **Concept DOI（全版共通）**：`10.5281/zenodo.24622200`（https://doi.org/10.5281/zenodo.24622200）
 - **Version DOI（v1）**：`10.5281/zenodo.24622201`（https://doi.org/10.5281/zenodo.24622201）
+- **解説記事（note.com）**：
+  - 日本語版：https://note.com/kiharanoriaki/n/n09cbc13c6be5
+  - 英語版：https://note.com/kiharanoriaki/n/n0b72e078fd3b
 - **統合した速報シリーズ（全 7 報）**：
   - 第 1 速報：`10.5281/zenodo.24616931`
   - 第 2 速報：`10.5281/zenodo.24618400`
